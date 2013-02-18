@@ -1,0 +1,10 @@
+*.pyc
+defaultTheme
+nohup.out
+.#*
+*.~
+build
+dist
+dtk.egg-info
+*.po~
+*.swp
