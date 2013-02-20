@@ -20,90 +20,138 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from dtk.ui.init_skin import init_skin
 from deepin_utils.file import get_parent_dir
+from dtk.ui.new_slider import HSlider
+from color import color_hex_to_cairo
+from button import SelectButton, ImageButton
 import os
-app_theme = init_skin(
-    "deepin-user-manual", 
-    "1.0",
-    "01",
-    os.path.join(get_parent_dir(__file__, 2), "skin"),
-    os.path.join(get_parent_dir(__file__, 2), "app_theme"),
-)
 
 import gtk
 import cairo
-from dtk.ui.application import Application
-from dtk.ui.new_slider import HSlider
-from dtk.ui.utils import color_hex_to_cairo
-from dtk.ui.box import EventBox, ImageBox, BackgroundBox
+import webkit
+import webbrowser
 
-MAIN_TITLE_TEXT = "LinuxDeepin 用户手册"
+LANGUAGE = "zh_CN"
+
+def parse_content(file_path):
+    s = open(file_path).read()
+    return(eval(s))
 
 class UserManual(gtk.Window):
     def __init__(self):
         gtk.Window.__init__(self)
-        self.set_size_request(685, 500)
-        self.set_decorated(False)
-        
-        self.main_title_bar = MainTitleBar()
 
-        self.icon_image_box = ImageBox(app_theme.get_pixbuf("logo.png"))
-        self.icon_align = gtk.Alignment()
-        self.icon_align.set(0.5, 0.5, 0.0, 0.0)
-        self.icon_align.set_padding(5, 5, 5, 0)
-        self.icon_align.add(self.icon_image_box)
-        h_layout_box = gtk.HBox()
-        h_layout_box.pack_start(self.icon_align, False, False)
-        self.main_title_bar.v_layout_box.pack_start(h_layout_box)
+        self._init_values()
+        self._init_settings()
+        self._init_wedget()
         
-        v_layout_box = gtk.VBox()
-        v_layout_box.pack_start(self.main_title_bar, False, False)
-        self.add(v_layout_box)
-
         self.connect("destroy", gtk.main_quit)
-        self.connect("expose-event", self.expose)
         self.show_all()
         gtk.main()
 
-    def expose(self, widget, event):
-        cr = widget.window.cairo_create()
-        rect = widget.allocation
-        print rect
+    def _init_values(self):
+        self.width = 725
+        self.height = 520
+        self.titlebar_height = 62
+        self.content_vlues = parse_content(os.path.realpath("../contents/%s/index.txt" % LANGUAGE))
 
-        # draw background
-        cr.set_source_rgb(247, 247, 247)
-        cr.rectangle(rect.x, rect.y, rect.width, rect.height)
-        cr.fill()
-    
-class MainTitleBar(EventBox):
-    def __init__(self, height=62):
-        EventBox.__init__(self)
-        self.set_size_request(-1, height)
-        self.v_layout_box = gtk.VBox()
-        self.add(self.v_layout_box)
+    def _init_settings(self):
+        self.set_size_request(self.width, self.height)
+        self.set_decorated(False)
 
-        #self.connect_after("expose-event", self.expose)
+    def _init_wedget(self):
+        self.main_alignment = gtk.Alignment(1, 1, 1, 1)
+        self.main_alignment.set_padding(0, 0, 0, 0)
+        self.v_box = gtk.VBox()
 
-    def expose(self, widget, event):
-        cr = widget.window.cairo_create()
-        rect = widget.allocation
-        print rect
+        self.title_bar = TitleBar()
+        self.title_bar.set_size_request(self.width, self.titlebar_height)
 
-        # draw background
-        cr.set_source_rgba(247, 247, 247, 0.9)
-        cr.rectangle(rect.x, rect.y, rect.width, rect.height)
-        cr.fill()
+        arrow = ImageButton("arrow.png")
+        arrow_align = gtk.Alignment(0, 0.5, 0, 0)
+        arrow_align.set_padding(0, 0, 13, 10)
+        arrow_align.add(arrow)
+        self.title_bar.h_box.pack_start(arrow_align, False, False)
 
-        cr.set_source_rgb(0, 0, 0)
-        cr.select_font_face("WenQuanYi Micro Hei", cairo.FONT_SLANT_NORMAL, 
-            cairo.FONT_WEIGHT_NORMAL)
-        cr.set_font_size(30)
+        IndexWidget = gtk.VBox()
 
-        (x, y, width, height, dx, dy) = cr.text_extents(MAIN_TITLE_TEXT)
-        cr.move_to(70, 42)
-        cr.show_text(MAIN_TITLE_TEXT)
+        subject_hbox = gtk.HBox()
+        subjects = self.content_vlues.get("content")
+        for i in range(len(subjects)):
+            setattr(self, "subject_button%s" % (i+1), SelectButton("subject%s" % (i+1), subjects[i].get("title")))
+            subject_button_align = gtk.Alignment(0, 0.5, 0, 0)
+            subject_button_align.set_padding(0, 0, 5, 5)
+            subject_button_align.add(getattr(self, "subject_button%s" % (i+1)))
+            subject_hbox.pack_start(subject_button_align, False, False)
+        self.subject_button1.selected = True
+        sub_left_align = gtk.Alignment(0, 0.5, 0, 0)
+        sub_left_align.add(subject_hbox)
+        self.title_bar.h_box.pack_start(sub_left_align)
+
+        close = ImageButton("close.png")
+        close.connect("clicked", gtk.main_quit)
+        close_align = gtk.Alignment(1, 0.5, 0, 0)
+        close_align.set_padding(0, 0, 0, 15)
+        close_align.add(close)
+        self.title_bar.h_box.pack_start(close_align, False, False)
+
+        self.v_box.pack_start(self.title_bar, False, False)
+
+        self.web = ContentWebView("index.html", 
+                self.width, self.height - self.titlebar_height)
+        self.v_box.pack_start(self.web, False, False)
+
+        self.slider = HSlider()
+        self.slider.to_page_now(self.main_alignment)
+        self.main_alignment.add(self.v_box)
+        self.add(self.slider)
+
+        arrow.connect("clicked", lambda w: self.slider.to_page(IndexWidget, "left"))
+
+class ContentWebView(webkit.WebView):
+    def __init__(self, index_file, width, height):
+        webkit.WebView.__init__(self)
+        self.set_size_request(width, height)
+
+        base_uri = "file://"+get_parent_dir(index_file)+"/"
+        self.index_string = open(index_file).read()
+        self.load_string(self.index_string, "text/html", "utf8", base_uri)
         
+        self.connect("title-changed", self.title_changed_handler)
+
+    def title_changed_handler(self, widget, webframe, data):
+        print widget
+        print webframe
+        print data
+        webbrowser.open(data)
+
+class TitleBar(gtk.EventBox):
+    def __init__(self):
+        gtk.EventBox.__init__(self)
+        
+        self._init_wedget()
+
+    def _init_wedget(self):
+        self.align = gtk.Alignment(1, 1, 1, 1)
+        self.align.set_padding(0, 0, 0, 0)
+
+        self.h_box = gtk.HBox()
+        self.align.add(self.h_box)
+        self.add(self.align)
+        
+        #self.align.connect("expose-event", self.expose)
+
+    def expose(self, widget, event):
+        print widget, event
+        cr = widget.window.cairo_create()
+        rect = widget.allocation
+        print rect
+
+        cr.rectangle(*rect)
+        cr.set_source_rgb(*color_hex_to_cairo("#e7e7e7"))
+        cr.set_operator(cairo.OPERATOR_DEST_OVER)
+        cr.paint()
+
         return True
 
 if __name__ == "__main__":
