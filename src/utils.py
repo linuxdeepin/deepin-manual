@@ -243,6 +243,44 @@ def in_window_check(widget, event):
         and (y_root >= window_y and y_root < window_y + widget.allocation.height)):
         return True
 
+def propagate_expose(widget, event):
+    '''
+    Propagate expose to children.
+    
+    General, this function use at last position of `expose_event` callback to make child redraw after parent widget.
+    
+    And you must put \"return True\" after \"propagate_expose(widget, event)\".
+    
+    Example:
+    
+    >>> def expose_event_callback(widget, event):
+    >>>     # Do something.
+    >>>     
+    >>>     propagate_expose(widget, event)
+    >>>     return True
+    
+    @param widget: Gtk.Container instance.
+    
+    This function do nothing if widget is not Gtk.Container instance or haven't any child widget.
+    
+    @param event: Gdk.Event instance.
+    '''
+    if hasattr(widget, "get_child") and widget.get_child() != None:
+        widget.propagate_expose(widget.get_child(), event)
+
+def get_same_level_widgets(widget):
+    '''
+    Get same type widgets that in same hierarchy level.
+    
+    @param widget: Gtk.Widget instance to search.
+    @return: Return a list that type match given widget at same hierarchy level.
+    '''
+    parent = widget.get_parent()
+    if parent == None:
+        return []
+    else:
+        return filter(lambda w:type(w).__name__ == type(widget).__name__, parent.get_children())
+
 if __name__ == "__main__":
     print get_home_path()
     print get_config_path()

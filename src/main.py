@@ -23,9 +23,11 @@
 from deepin_utils.file import get_parent_dir
 from dtk.ui.new_slider import HSlider
 from color import color_hex_to_cairo
-from button import SelectButton, ImageButton
-import os
+from button import SelectButton, SelectButtonGroup, ImageButton
+from utils import propagate_expose
+from window import Window
 
+import os
 import gtk
 import cairo
 import webkit
@@ -37,9 +39,9 @@ def parse_content(file_path):
     s = open(file_path).read()
     return(eval(s))
 
-class UserManual(gtk.Window):
+class UserManual(Window):
     def __init__(self):
-        gtk.Window.__init__(self)
+        Window.__init__(self)
 
         self._init_values()
         self._init_settings()
@@ -50,13 +52,13 @@ class UserManual(gtk.Window):
         gtk.main()
 
     def _init_values(self):
-        self.width = 725
-        self.height = 520
+        self.width = 685
+        self.height = 500
         self.titlebar_height = 62
         self.content_vlues = parse_content(os.path.realpath("../contents/%s/index.txt" % LANGUAGE))
 
     def _init_settings(self):
-        self.set_size_request(self.width, self.height)
+        self.set_size_request(self.width+16, self.height+16)
         self.set_decorated(False)
 
     def _init_wedget(self):
@@ -67,7 +69,7 @@ class UserManual(gtk.Window):
         self.title_bar = TitleBar()
         self.title_bar.set_size_request(self.width, self.titlebar_height)
 
-        arrow = ImageButton("arrow.png")
+        arrow = ImageButton("app_image/back.png", "app_image/back-press.png", "app_image/back-press.png")
         arrow_align = gtk.Alignment(0, 0.5, 0, 0)
         arrow_align.set_padding(0, 0, 13, 10)
         arrow_align.add(arrow)
@@ -75,21 +77,18 @@ class UserManual(gtk.Window):
 
         IndexWidget = gtk.VBox()
 
-        subject_hbox = gtk.HBox()
         subjects = self.content_vlues.get("content")
+        self.subjects = []
         for i in range(len(subjects)):
-            setattr(self, "subject_button%s" % (i+1), SelectButton("subject%s" % (i+1), subjects[i].get("title")))
-            subject_button_align = gtk.Alignment(0, 0.5, 0, 0)
-            subject_button_align.set_padding(0, 0, 5, 5)
-            subject_button_align.add(getattr(self, "subject_button%s" % (i+1)))
-            subject_hbox.pack_start(subject_button_align, False, False)
-        self.subject_button1.selected = True
+            self.subjects.append(SelectButton("subject%s" % (i+1), subjects[i].get("title"))) 
+        group = SelectButtonGroup(self.subjects)
+        self.subjects[0].selected = True
         sub_left_align = gtk.Alignment(0, 0.5, 0, 0)
-        sub_left_align.add(subject_hbox)
+        sub_left_align.add(group)
         self.title_bar.h_box.pack_start(sub_left_align)
 
-        close = ImageButton("close.png")
-        close.connect("clicked", gtk.main_quit)
+        close = ImageButton("app_image/close.png", "app_image/close-press.png", "app_image/close-press.png")
+        close.connect("button-release-event", gtk.main_quit)
         close_align = gtk.Alignment(1, 0.5, 0, 0)
         close_align.set_padding(0, 0, 0, 15)
         close_align.add(close)
@@ -97,16 +96,21 @@ class UserManual(gtk.Window):
 
         self.v_box.pack_start(self.title_bar, False, False)
 
-        self.web = ContentWebView("index.html", 
+        self.web = ContentWebView("html/index.html", 
                 self.width, self.height - self.titlebar_height)
-        self.v_box.pack_start(self.web, False, False)
+        self.web_scroll_win = gtk.ScrolledWindow()
+        self.web_scroll_win.add(self.web)
+        self.v_box.pack_start(self.web_scroll_win, False, False)
 
         self.slider = HSlider()
         self.slider.to_page_now(self.main_alignment)
         self.main_alignment.add(self.v_box)
-        self.add(self.slider)
+        self.add_widget(self.slider)
 
-        arrow.connect("clicked", lambda w: self.slider.to_page(IndexWidget, "left"))
+        arrow.connect("button-release-event", lambda w, e: self.slider.to_page(IndexWidget, "left"))
+
+    def print_info(self, *data):
+        print data
 
 class ContentWebView(webkit.WebView):
     def __init__(self, index_file, width, height):
@@ -139,19 +143,22 @@ class TitleBar(gtk.EventBox):
         self.align.add(self.h_box)
         self.add(self.align)
         
-        #self.align.connect("expose-event", self.expose)
+        self.align.connect("expose-event", self.expose)
 
     def expose(self, widget, event):
-        print widget, event
         cr = widget.window.cairo_create()
         rect = widget.allocation
-        print rect
 
         cr.rectangle(*rect)
         cr.set_source_rgb(*color_hex_to_cairo("#e7e7e7"))
-        cr.set_operator(cairo.OPERATOR_DEST_OVER)
-        cr.paint()
+        #cr.set_operator(cairo.OPERATOR_SOURCE)
+        cr.fill()
 
+        cr.set_source_rgba(0, 0, 0, 0.5)
+        cr.rectangle(0, rect.height-1, rect.width, 1)
+        cr.fill()
+
+        propagate_expose(widget, event)
         return True
 
 if __name__ == "__main__":
