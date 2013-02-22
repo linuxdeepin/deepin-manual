@@ -1,5 +1,8 @@
+#!/usr/bin/python
+# -*- coding: utf-8 -*-
+
 from draw import draw_text, draw_pixbuf
-from utils import get_text_size, cairo_disable_antialias, get_same_level_widgets
+from utils import get_text_size, cairo_disable_antialias
 from color import color_hex_to_cairo
 import gtk
 import gobject
@@ -53,10 +56,6 @@ class SelectButton(gtk.Button):
     def _cursor_leave_redraw(self, widget, event):
         self.hover = False
         self.queue_draw()
-
-    def button_clicked_event(self, widget, subject_index):
-        for w in get_same_level_widgets(self):
-            w.selected = (w == self)
 
     def select_button_button_press_event(self, widget, event):
         widget.grab_add()
@@ -127,9 +126,13 @@ class SelectButtonGroup(gtk.HBox):
         return self.current_active
 
 class ImageButton(gtk.Button):        
-    def __init__(self, normal_image, hover_image, press_image):
+    def __init__(self, normal_image, hover_image=None, press_image=None):
         gtk.Button.__init__(self)
         # init values.
+        if not hover_image:
+            hover_image = normal_image
+        if not press_image:
+            press_image = normal_image
         self.normal_image_pixbuf = gtk.gdk.pixbuf_new_from_file(normal_image)
         self.hover_image_pixbuf = gtk.gdk.pixbuf_new_from_file(hover_image)
         self.press_image_pixbuf = gtk.gdk.pixbuf_new_from_file(press_image)

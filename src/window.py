@@ -2,10 +2,10 @@
 # -*- coding: utf-8 -*-
 
 # Copyright (C) 2012 Deepin, Inc.
-#               2012 Hailong Qiu
+#               2012 Kaisheng Ye
 #
-# Author:     Hailong Qiu <356752238@qq.com>
-# Maintainer: Hailong Qiu <356752238@qq.com>
+# Author:     Kaisheng Ye <kaisheng.ye@gmail.com>
+# Maintainer: Kaisheng Ye <kaisheng.ye@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -22,14 +22,12 @@
 
 import cairo
 import gtk
-import math
 from color import alpha_color_hex_to_cairo, color_hex_to_cairo
 from utils import new_surface, propagate_expose
 from utils import cairo_popover, cairo_popover_rectangle 
 from dtk_cairo_blur import gaussian_blur
 
 SAHOW_VALUE = 2 
-ARROW_WIDTH = 10
 
 DRAW_WIN_TYPE_BG = "bg"
 DRAW_WIN_TYPE_FG = "fg"
@@ -199,12 +197,7 @@ class Window(gtk.Window):
 
 
 if __name__ == "__main__":
-    #test = TrayIconWin()
     test = Window()
-    #test.set_pos_type(gtk.POS_TOP)
-    #test.set_pos_type(gtk.POS_BOTTOM)
-    #test.set_bg_pixbuf(gtk.gdk.pixbuf_new_from_file("test.png"))
     test.resize(372, 168)
-    test.move(300, 300)
     test.show_all()
     gtk.main()

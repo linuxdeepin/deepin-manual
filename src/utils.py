@@ -2,10 +2,10 @@
 # -*- coding: utf-8 -*-
 
 # Copyright (C) 2012 Deepin, Inc.
-#               2012 Hailong Qiu
+#               2012 Kaisheng Ye
 #
-# Author:     Hailong Qiu <356752238@qq.com>
-# Maintainer: Hailong Qiu <356752238@qq.com>
+# Author:     Kaisheng Ye <kaisheng.ye@gmail.com>
+# Maintainer: Kaisheng Ye <kaisheng.ye@gmail.com>
 #
 # This program is free software: you can redistribute it and/or modify
 # it under the terms of the GNU General Public License as published by
@@ -146,19 +146,6 @@ def config_file_check():
 def init_config_path():
     os.makedirs(get_config_path())
 
-def init_config_file():
-    fp = open(get_config_file(), "w")
-    fp.write("[tray]\n")
-    fp.write("PATH = /usr/share/deepin-system-settings/modules,\n")
-    fp.close()
-
-def init_config():
-    if not config_path_check():
-        init_config_path()
-    if not config_file_check():
-        init_config_file()
-
-
 def pixbuf_check(element):
     return isinstance(element, gtk.gdk.Pixbuf)
 
@@ -242,49 +229,3 @@ def in_window_check(widget, event):
     if not ((x_root >= window_x and x_root < window_x + widget.allocation.width) 
         and (y_root >= window_y and y_root < window_y + widget.allocation.height)):
         return True
-
-def propagate_expose(widget, event):
-    '''
-    Propagate expose to children.
-    
-    General, this function use at last position of `expose_event` callback to make child redraw after parent widget.
-    
-    And you must put \"return True\" after \"propagate_expose(widget, event)\".
-    
-    Example:
-    
-    >>> def expose_event_callback(widget, event):
-    >>>     # Do something.
-    >>>     
-    >>>     propagate_expose(widget, event)
-    >>>     return True
-    
-    @param widget: Gtk.Container instance.
-    
-    This function do nothing if widget is not Gtk.Container instance or haven't any child widget.
-    
-    @param event: Gdk.Event instance.
-    '''
-    if hasattr(widget, "get_child") and widget.get_child() != None:
-        widget.propagate_expose(widget.get_child(), event)
-
-def get_same_level_widgets(widget):
-    '''
-    Get same type widgets that in same hierarchy level.
-    
-    @param widget: Gtk.Widget instance to search.
-    @return: Return a list that type match given widget at same hierarchy level.
-    '''
-    parent = widget.get_parent()
-    if parent == None:
-        return []
-    else:
-        return filter(lambda w:type(w).__name__ == type(widget).__name__, parent.get_children())
-
-if __name__ == "__main__":
-    print get_home_path()
-    print get_config_path()
-    if not config_path_check():
-        init_config_path()
-    if not config_file_check():
-        init_config_file()

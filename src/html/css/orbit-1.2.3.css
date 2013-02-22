@@ -151,14 +151,14 @@ div.slider-nav span {
     cursor: pointer; }
 
 div.slider-nav span.right0 {
-    background: url(../images/right-arrow.png);opacity: .6;
+    background: url(../images/right-arrow.png) no-repeat;opacity: .6;
     right: 0; }
 	
 div.slider-nav span.right {
     right: 0; }
 
 div.slider-nav span.left0 {
-    background: url(../images/left-arrow.png);opacity: .6;
+    background: url(../images/left-arrow.png) no-repeat;opacity: .6;
     left: 0; }
 	
 div.slider-nav span.left {

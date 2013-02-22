@@ -20,3 +20,34 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import os
+import webkit
+
+class ContentWebView(webkit.WebView):
+    def __init__(self, width, height):
+        webkit.WebView.__init__(self)
+        self.__index_file = None
+        self.set_size_request(width, height)
+        settings = self.get_settings()
+        settings.set_property("enable-default-context-menu", False)
+        settings.set_property("tab-key-cycles-through-elements", False)
+        settings.set_property("default-font-family", "WenQuanYi Micro Hei")
+        
+    @property
+    def index_file(self):
+        return self.__index_file
+
+    @index_file.setter
+    def index_file(self, new_index_file):
+        self.__index_file = new_index_file
+        self.base_uri = "file://"+os.path.realpath(os.path.dirname(self.__index_file))+"/"
+        self.original_index_string = open(self.__index_file).read()
+        self.load(self.original_index_string)
+        #self.reload()
+
+    @index_file.getter
+    def index_file(self):
+        return self.__index_file
+    
+    def load(self, string):
+        self.load_string(string, "text/html", "utf8", self.base_uri)
