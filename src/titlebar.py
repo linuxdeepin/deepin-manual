@@ -26,7 +26,7 @@ from color import color_hex_to_cairo, alpha_color_hex_to_cairo
 from draw import draw_text
 from button import ImageButton, SelectButton, SelectButtonGroup
 
-from parse_content import contents
+from parse_content import get_all_contents
 
 BACKGROUND_COLOR = "#e7e7e7"
 SEPERATOR_COLOR = ("#000", 0.5)
@@ -107,7 +107,7 @@ back_align = gtk.Alignment(0, 0.5, 0, 0)
 back_align.set_padding(0, 0, 13, 10)
 back_align.add(back)
 
-subjects = contents.get("content")
+subjects = get_all_contents()[0]["content"]
 subject_buttons = []
 for i in range(len(subjects)):
     subject_buttons.append(SelectButton("subject%s" % (i+1), subjects[i].get("title"))) 

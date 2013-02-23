@@ -16,5 +16,4 @@ DEFAULT_FONT = get_system_font()
 DEFAULT_FONT_SIZE = 10
 
 LANGUAGE = "zh_CN"
-
-CONTENT_CONFIG_PATH = os.path.realpath("../contents/%s/index.json" % LANGUAGE)
+CONFIG_FILE_PATH = os.path.realpath("../contents/%s/config.ini" % LANGUAGE)

@@ -26,7 +26,7 @@ from button import SelectButton, SelectButtonGroup, ImageButton
 from window import Window
 from titlebar import TitleBar, home_title_bar, index_title_bar, back
 from webview import ContentWebView
-from parse_content import contents
+from parse_content import get_all_contents
 
 import os
 import gtk
@@ -49,7 +49,6 @@ class UserManual(Window):
         self.width = 685
         self.height = 500
         self.titlebar_height = 62
-        self.content_vlues = contents
 
     def _init_settings(self):
         self.set_size_request(self.width+16, self.height+16)
@@ -65,7 +64,7 @@ class UserManual(Window):
         main_v_box.pack_start(self.slider)
 
         self.web_view = ContentWebView(self.width, self.height - self.titlebar_height)
-        self.web_view.index_file = "html/home.html"
+        self.web_view.index_file = "../contents/html/home.html"
         main_v_box.pack_start(self.web_view)
 
         self.main_alignment.add(main_v_box)
@@ -80,11 +79,11 @@ class UserManual(Window):
         if data.startswith("http://") or data.startswith("https://"):
             webbrowser.open(data)
         elif data_dict["type"]=="link" and data_dict["data"].endswith("index.html"):
-            self.web_view.index_file = "html/index.html"
+            self.web_view.index_file = "../contents/html/index.html"
             self.slider.to_page(index_title_bar, None)
 
     def __page_go_back(self, web):
-        web.index_file = "html/home.html"
+        web.index_file = "../contents/html/home.html"
         self.slider.to_page(home_title_bar, None)
 
     def print_info(self, *data):

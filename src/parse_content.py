@@ -21,10 +21,27 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
-from constant import CONTENT_CONFIG_PATH
+from constant import CONFIG_FILE_PATH, LANGUAGE
+from ConfigParser import ConfigParser
 
-def parse_content(file_path):
-    s = open(file_path).read()
-    return(eval(s))
+def get_category():
+    config = ConfigParser()
+    config.read(CONFIG_FILE_PATH)
+    return eval(config.get("config", "category"))
 
-contents = parse_content(CONTENT_CONFIG_PATH)
+def get_all_contents():
+    all_contents = []
+    categorys = get_category()
+    for c in categorys:
+        json_file = os.path.realpath("../contents/%s/%s/content.json" % (LANGUAGE, c))
+        js_dict = eval(open(json_file).read())
+        for subject in js_dict["content"]:
+            for page in subject["page"]:
+                # image path for html file
+                page["iamge"] = "../%s/%s/%s" % (LANGUAGE, c, page["image"])   
+        all_contents.append(js_dict)
+
+    return all_contents
+
+if __name__ == "__main__":
+    print get_all_contents()
