@@ -26,10 +26,9 @@ from color import color_hex_to_cairo, alpha_color_hex_to_cairo
 from draw import draw_text
 from button import ImageButton, SelectButton, SelectButtonGroup
 
-from parse_content import get_all_contents
-
-BACKGROUND_COLOR = "#e7e7e7"
-SEPERATOR_COLOR = ("#000", 0.5)
+BACKGROUND_COLOR = "#f4f4f4"
+SEPERATOR_COLOR_UP = "#a3a3a3"
+SEPERATOR_COLOR_DOWN = "#cdcdcd"
 
 class TitleBar(gtk.EventBox):
     def __init__(self):
@@ -65,7 +64,11 @@ class TitleBar(gtk.EventBox):
         cr.fill()
 
         # draw seperator
-        cr.set_source_rgba(*alpha_color_hex_to_cairo(SEPERATOR_COLOR))
+        cr.set_source_rgb(*color_hex_to_cairo(SEPERATOR_COLOR_UP))
+        cr.rectangle(0, rect.height-2, rect.width, 1)
+        cr.fill()
+
+        cr.set_source_rgb(*color_hex_to_cairo(SEPERATOR_COLOR_DOWN))
         cr.rectangle(0, rect.height-1, rect.width, 1)
         cr.fill()
 
@@ -74,7 +77,7 @@ class TitleBar(gtk.EventBox):
         return True
 
 class TitleLabel(gtk.Label):
-    def __init__(self, text, font_size=20, font_color="#000"):
+    def __init__(self, text, font_size=19, font_color="#373737"):
         gtk.Label.__init__(self)
 
         self.text = text
@@ -102,19 +105,19 @@ title_align = gtk.Alignment(0, 0.5, 0, 0)
 title_align.set_padding(0, 0, 5, 0)
 title_align.add(title)
 
-back = ImageButton("app_image/back.png", "app_image/back-press.png", "app_image/back-press.png")
+back = ImageButton("app_image/back.png", "app_image/back-hover.png")
 back_align = gtk.Alignment(0, 0.5, 0, 0)
 back_align.set_padding(0, 0, 13, 10)
 back_align.add(back)
 
-subjects = get_all_contents()[0]["content"]
-subject_buttons = []
-for i in range(len(subjects)):
-    subject_buttons.append(SelectButton("subject%s" % (i+1), subjects[i].get("title"))) 
-subject_buttons_group = SelectButtonGroup(subject_buttons)
-subject_buttons[0].selected = True
-subjects_align = gtk.Alignment(0, 0.5, 0, 0)
-subjects_align.add(subject_buttons_group)
+#subjects = get_all_contents()[0]["content"]
+#subject_buttons = []
+#for i in range(len(subjects)):
+    #subject_buttons.append(SelectButton(i+1, subjects[i].get("title"))) 
+#subject_buttons_group = SelectButtonGroup(subject_buttons)
+#subject_buttons[0].selected = True
+#subjects_align = gtk.Alignment(0, 0.5, 0, 0)
+#subjects_align.add(subject_buttons_group)
 
 home_title_bar = TitleBar()
 home_title_bar.h_box.pack_start(icon_align, False, False)
@@ -122,7 +125,7 @@ home_title_bar.h_box.pack_start(title_align)
 
 index_title_bar = TitleBar()
 index_title_bar.h_box.pack_start(back_align, False, False)
-index_title_bar.h_box.pack_start(subjects_align)
+#index_title_bar.h_box.pack_start(subjects_align)
 
 if __name__ == "__main__":
     win = gtk.Window()

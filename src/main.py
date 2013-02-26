@@ -24,13 +24,14 @@ from dtk.ui.new_slider import HSlider
 from color import color_hex_to_cairo
 from button import SelectButton, SelectButtonGroup, ImageButton
 from window import Window
-from titlebar import TitleBar, home_title_bar, index_title_bar, back
+from titlebar import TitleBar, home_title_bar, index_title_bar, back 
 from webview import ContentWebView
-from parse_content import get_all_contents
+from parse_content import get_home_item_values, get_category_contents
 
 import os
 import gtk
 import webbrowser
+import javascriptcore as jscore
 
 
 class UserManual(Window):
@@ -51,40 +52,50 @@ class UserManual(Window):
         self.titlebar_height = 62
 
     def _init_settings(self):
-        self.set_size_request(self.width+16, self.height+16)
         self.set_decorated(False)
 
     def _init_wedget(self):
-        self.main_alignment = gtk.Alignment(1, 1, 1, 1)
+        self.main_alignment = gtk.Alignment(0.5, 0.5, 0, 0)
         self.main_alignment.set_padding(0, 0, 0, 0)
         main_v_box = gtk.VBox()
 
         self.slider = HSlider()
+        self.slider.set_size_request(-1, 62)
         self.slider.to_page_now(home_title_bar)
         main_v_box.pack_start(self.slider)
 
         self.web_view = ContentWebView(self.width, self.height - self.titlebar_height)
-        self.web_view.index_file = "../contents/html/home.html"
+        self.web_view.connect("load-committed", self.load_finished_cb)
+        self.home_html_str = open("../contents/html/home.html").read()
+        self.web_view.load(self.home_html_str, "file:///home/iceleaf/Projects/deepin/deepin-user-manual/contents/html/")
         main_v_box.pack_start(self.web_view)
 
         self.main_alignment.add(main_v_box)
         self.add_widget(self.main_alignment)
 
-        back.connect("button-release-event", lambda w, e: self.__page_go_back(self.web_view))
+        back.connect("button-press-event", self.__page_go_back, self.web_view)
 
         self.web_view.connect("title-changed", self.title_changed_handler)
+        #subject_buttons_group.connect("button-press", lambda w, b: self.print_info(b.subject_index))
 
     def title_changed_handler(self, widget, webframe, data):
+        print data
         data_dict = eval(data)
-        if data.startswith("http://") or data.startswith("https://"):
-            webbrowser.open(data)
+        if data_dict["data"].startswith("http://") or data.startswith("https://"):
+            webbrowser.open(data_dict["data"])
         elif data_dict["type"]=="link" and data_dict["data"].endswith("index.html"):
             self.web_view.index_file = "../contents/html/index.html"
             self.slider.to_page(index_title_bar, None)
 
-    def __page_go_back(self, web):
+    def __page_go_back(self, widget, event, web):
         web.index_file = "../contents/html/home.html"
         self.slider.to_page(home_title_bar, None)
+        widget.emit("leave-notify-event", gtk.gdk.Event(gtk.gdk.LEAVE_NOTIFY))
+
+    def load_finished_cb(self, view, frame):
+        self.web_ctx = jscore.JSContext(self.web_view.get_main_frame().get_global_context())
+        document = self.web_ctx.globalObject.document
+        self.web_ctx.globalObject.homeItemValues = get_home_item_values()
 
     def print_info(self, *data):
         print data

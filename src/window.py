@@ -53,7 +53,7 @@ class Window(gtk.Window):
         self.ali_left = 8 
         self.ali_right = 8
         self.ali_top  = 8
-        self.ali_bottom = 8
+        self.ali_bottom = 7
         # pixbuf.
         self.draw_win_type = DRAW_WIN_TYPE_FG
         self.bg_pixbuf = None
@@ -61,8 +61,8 @@ class Window(gtk.Window):
         self.bg_x, self.bg_y = 0,0
         self.fg_alpha = 0.8
         # colors.
-        self.sahow_color = ("#000000", 0.3)
-        self.border_out_color = ("#000000", 1.0)
+        self.sahow_color = ("#000000", 0.1)
+        self.border_out_color = ("#cacaca", 1.0)
 
     def __init_settings(self):
         self.set_colormap(gtk.gdk.Screen().get_rgba_colormap())
@@ -72,7 +72,7 @@ class Window(gtk.Window):
         
     def __init_widgets(self):
         self.__draw = gtk.EventBox()
-        self.main_ali  = gtk.Alignment(1, 1, 1, 1)
+        self.main_ali  = gtk.Alignment(0.5, 0.5, 0, 0)
         # set main_ali padding size.
         self.main_ali.set_padding(self.ali_top,
                                   self.ali_bottom,

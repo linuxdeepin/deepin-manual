@@ -20,28 +20,60 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-import os
+import os, sys
 from constant import CONFIG_FILE_PATH, LANGUAGE
 from ConfigParser import ConfigParser
+from deepin_utils.config import Config
+from deepin_utils.file import touch_file
 
-def get_category():
-    config = ConfigParser()
-    config.read(CONFIG_FILE_PATH)
-    return eval(config.get("config", "category"))
+def get_home_item_values():
+    ini = Config(CONFIG_FILE_PATH)
+    ini.load()
 
-def get_all_contents():
-    all_contents = []
-    categorys = get_category()
-    for c in categorys:
-        json_file = os.path.realpath("../contents/%s/%s/content.json" % (LANGUAGE, c))
-        js_dict = eval(open(json_file).read())
-        for subject in js_dict["content"]:
-            for page in subject["page"]:
-                # image path for html file
-                page["iamge"] = "../%s/%s/%s" % (LANGUAGE, c, page["image"])   
-        all_contents.append(js_dict)
+    home_item_values = []
+    categorys = eval(ini.get("config", "category"))
+    for category in categorys:
+        item = {}
+        item["category"] = category
+        item["title"] = ini.get("title", category)
+        item["icon_path"] = "../%s/%s/icon.png" % (LANGUAGE, category)
+        item["percent"] = get_percent(category)
+        home_item_values.append(item)
 
-    return all_contents
+    return home_item_values
+
+def get_category_contents(category):
+    json_file = os.path.realpath("../contents/%s/%s/content.json" % (LANGUAGE, category))
+    try:
+        content_dict = eval(open(json_file).read())
+    except Exception, e:
+        print "there is something wrong in content file: %s" % json_file
+        traceback.print_exc(file=sys.stdout)
+        sys.exit(1)
+
+    for subject in content_dict["content"]:
+        for page in subject["page"]:
+            # image path for html file
+            page["image"] = "../%s/%s/%s" % (LANGUAGE, category, page["image"])
+
+    return content_dict
+
+def get_percent(category):
+    progress_file = os.path.expanduser("~/.config/deepin-user-manual/progress.ini")
+    progress_config = Config(progress_file)
+
+    if os.path.exists(progress_file):
+        progress_config.load()
+    else:
+        touch_file(progress_file)
+        progress_config.load()
+
+    if progress_config.has_option("progress", category):
+        return progress_config.get("progress", category)
+    else:
+        progress_config.set("progress", category, 0)
+        progress_config.write()
+        return 0
 
 if __name__ == "__main__":
-    print get_all_contents()
+    print get_home_item_values()

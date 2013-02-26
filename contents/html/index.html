@@ -7,11 +7,12 @@
 		<!-- Attach necessary JS -->
 		<script type="text/javascript" src="js/jquery-1.5.1.min.js"></script>
 		<script type="text/javascript" src="js/jquery.orbit-1.2.3.min.js"></script>	
-		<script type="text/javascript" src="js/links.js"></script>	
+		<script type="text/javascript" src="js/common.js"></script>	
 		<script type="text/javascript">
 			$(window).load(function() {
 				$('#featured').orbit(
-				{ bullets:true }
+                    { bullets:true,
+                      timer: false }
 				);
 			});
 		</script>
@@ -19,17 +20,10 @@
 	</head>
 	<body>
 	
-	<div class="container">
+	<div class="container" id="outer">
 		<div id="featured" onMouseOver="document.getElementById('Right').className='right0';document.getElementById('Left').className='left0'" onMouseOut="document.getElementById('Right').className='right';document.getElementById('Left').className='left'"> 
-			<img src="../zh_CN/introduction/images/A1.jpg" data-caption="#A1" />
-			<img src="../zh_CN/introduction/images/A2.jpg" data-caption="#A2" />
-			<img src="../zh_CN/introduction/images/A3.jpg" data-caption="#A3" />
 		</div>
 		<!-- Captions for Orbit -->
-		<span class="orbit-caption" id="A1"><a href="#">网络：</a>选择开启您想要配置的网络类型，输入用户名和密码等信息，点击保存后即可连接到
-相应网络。</span>
-		<span class="orbit-caption" id="A2"><strong>I'm A2:</strong> I can haz <a href="http://www.baidu.com" onclick="javascript: return link_to_title(this);">百度</a>, <em>style</em> or anything that is valid markup :)</span>
-		<span class="orbit-caption" id="A3"><strong>I'm A3:</strong> I can haz <a href="#">links</a>, <em>style</em> or anything that is valid markup :)</span>
 		
 		</div>	
 	</body>

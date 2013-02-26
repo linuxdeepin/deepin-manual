@@ -100,6 +100,10 @@ class SelectButton(gtk.Button):
         return True
 
 class SelectButtonGroup(gtk.HBox):
+    __gsignals__ = {
+            "button-press": (gobject.SIGNAL_RUN_LAST, gobject.TYPE_NONE, (gobject.TYPE_OBJECT,)),
+            }
+            
     def __init__(self, buttons):
         gtk.HBox.__init__(self)
         self.buttons = buttons
@@ -117,10 +121,11 @@ class SelectButtonGroup(gtk.HBox):
             subject_button_align.add(button)
             self.pack_start(subject_button_align, False, False)
     
-    def button_clicked_event(self, widget):
-        self.current_active = widget
-        for w in self.buttons:
-            w.selected = (w == widget)
+    def button_clicked_event(self, active_button):
+        self.current_active = active_button
+        self.emit("button-press", active_button)
+        for button in self.buttons:
+            button.selected = (button == active_button)
 
     def get_active_button(self):
         return self.current_active
@@ -129,21 +134,19 @@ class ImageButton(gtk.Button):
     def __init__(self, normal_image, hover_image=None, press_image=None):
         gtk.Button.__init__(self)
         # init values.
-        if not hover_image:
-            hover_image = normal_image
-        if not press_image:
-            press_image = normal_image
         self.normal_image_pixbuf = gtk.gdk.pixbuf_new_from_file(normal_image)
-        self.hover_image_pixbuf = gtk.gdk.pixbuf_new_from_file(hover_image)
-        self.press_image_pixbuf = gtk.gdk.pixbuf_new_from_file(press_image)
         self.draw_check = False
         self.set_size_request(self.normal_image_pixbuf.get_width(), self.normal_image_pixbuf.get_height())
         # init events.
         self._current_image_pixbuf = self.normal_image_pixbuf
         self.connect("expose-event", self.image_button_expose_event)        
-        self.connect("enter-notify-event", self._cursor_enter_redraw)
-        self.connect("leave-notify-event", self._cursor_leave_redraw)
-        #self.connect("button-press-event", self._cursor_press_redraw)
+        if hover_image:
+            self.hover_image_pixbuf = gtk.gdk.pixbuf_new_from_file(hover_image)
+            self.connect("enter-notify-event", self._cursor_enter_redraw)
+            self.connect("leave-notify-event", self._cursor_leave_redraw)
+        if press_image:
+            self.press_image_pixbuf = gtk.gdk.pixbuf_new_from_file(press_image)
+            self.connect("button-press-event", self._cursor_press_redraw)
         self.add_events(gtk.gdk.ALL_EVENTS_MASK)
 
     def image_button_expose_event(self, widget, event):
@@ -164,6 +167,6 @@ class ImageButton(gtk.Button):
         return True
 
     def _cursor_press_redraw(self, widget, event):
-        self._current_image_pixbuf = self.hover_image_pixbuf
+        self._current_image_pixbuf = self.press_image_pixbuf
         self.queue_draw()
         return True

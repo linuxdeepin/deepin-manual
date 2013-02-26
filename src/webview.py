@@ -22,6 +22,7 @@
 
 import os
 import webkit
+import javascriptcore as jscore
 
 class ContentWebView(webkit.WebView):
     def __init__(self, width, height):
@@ -42,12 +43,13 @@ class ContentWebView(webkit.WebView):
         self.__index_file = new_index_file
         self.base_uri = "file://"+os.path.realpath(os.path.dirname(self.__index_file))+"/"
         self.original_index_string = open(self.__index_file).read()
-        self.load(self.original_index_string)
+        self.load(self.original_index_string, self.base_uri)
         #self.reload()
 
     @index_file.getter
     def index_file(self):
         return self.__index_file
     
-    def load(self, string):
-        self.load_string(string, "text/html", "utf8", self.base_uri)
+    def load(self, string, base_uri):
+        self.load_string(string, "text/html", "utf8", base_uri)
+
