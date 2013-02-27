@@ -94,5 +94,4 @@ def get_category_status(category):
     
 
 if __name__ == "__main__":
-    with file("content.txt", "w") as fp:
-        fp.write(get_category_contents("dss"))
+    pass

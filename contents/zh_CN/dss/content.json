@@ -21,6 +21,12 @@
                     "<img src='description1.png'/><span>多主题选择：</span>默认提供5套外观主题，点击<img src='page1/des_1.png'/>可以选择喜欢的主题。", 
                 "image":"images/A3.jpg"
             },
+            {
+                "id": "A4",
+                "description":
+                    "咝咝咝咝咝岁", 
+                "image":"images/A4.jpg"
+            },
         ]
     },
     {

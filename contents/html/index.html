@@ -11,8 +11,7 @@
 		<script type="text/javascript">
 			$(window).load(function() {
 				$('#featured').orbit(
-                    { bullets:true,
-                      timer: false }
+                    { bullets:true, timer: false, afterSlideChange: function(){ after_slider_change(this);}}
 				);
 			});
 		</script>

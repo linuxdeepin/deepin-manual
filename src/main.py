@@ -31,7 +31,7 @@ from parse_content import get_home_item_values, get_category_contents
 import os
 import gtk
 import webbrowser
-import javascriptcore as jscore
+import json
 
 
 class UserManual(Window):
@@ -103,6 +103,8 @@ class UserManual(Window):
                 index_title_bar.center_align.remove(center_align_child)
             index_title_bar.center_align.add(group)
             self.slider.to_page(index_title_bar, "right")
+        elif data_dict["type"] == "slider_change":
+            pass
 
     def get_subject_button_group(self, category_contents, active_index=0):
         subjects = category_contents["content"]
@@ -128,8 +130,7 @@ class UserManual(Window):
         self.slider.to_page(home_title_bar, "left")
 
     def load_finished_cb(self, view, frame):
-        self.web_ctx = jscore.JSContext(self.web_view.get_main_frame().get_global_context())
-        self.web_ctx.globalObject.Values = self.load_data
+        self.web_view.execute_script("var Values=%s" % json.dumps(self.load_data, encoding="UTF-8", ensure_ascii=False))
 
     def print_info(self, *data):
         print data

@@ -9,9 +9,15 @@ function home_item_link(link){
     write_to_title(type, data);
 }
 
-function browser_link(link){
-    var type = "browser_link";
+function external_link(link){
+    var type = "external_link";
     var data = link.href;
+    write_to_title(type, data);
+}
+
+function after_slider_change(imgObject) {
+    type = "slider_change";
+    data = imgObject.getAttribute("data-caption");
     write_to_title(type, data);
 }
 
