@@ -26,13 +26,15 @@ from button import SelectButton, SelectButtonGroup, ImageButton
 from window import Window
 from titlebar import  home_title_bar, index_title_bar, back 
 from webview import ContentWebView
-from parse_content import get_home_item_values, get_category_contents
+from parse_content import (get_home_item_values, 
+                            get_category_contents,
+                            get_category_pages_id,
+                            get_category_unread_pages)
 
 import os
 import gtk
 import webbrowser
 import json
-
 
 class UserManual(Window):
     def __init__(self):
@@ -53,6 +55,8 @@ class UserManual(Window):
         self.html_base_url = "file://" + os.path.realpath("../contents/html/")+"/"
         self.home_html_str = open(os.path.realpath("../contents/html/home.html")).read()
         self.index_html_str = open(os.path.realpath("../contents/html/index.html")).read()
+        self.home_values = get_home_item_values()
+        self.init_progress_data()
 
     def _init_settings(self):
         self.set_decorated(False)
@@ -71,15 +75,13 @@ class UserManual(Window):
         self.web_view.connect("load-committed", self.load_finished_cb)
 
         # init velues for home
-        self.load_data = []
-        self.load_data.append(get_home_item_values())
-        self.web_view.load(self.home_html_str, self.html_base_url)
+        self.push_data_to_web_view(self.home_html_str, self.home_values)
         main_v_box.pack_start(self.web_view)
         
         self.main_alignment.add(main_v_box)
         self.add_widget(self.main_alignment)
         
-        back.connect("button-release-event", self.__page_go_back, self.web_view)
+        back.connect("button-release-event", self.page_go_back, self.web_view)
         home_title_bar.min_button.connect("clicked", lambda w: self.iconify())
         index_title_bar.min_button.connect("clicked", lambda w: self.iconify())
         self.add_move_event(home_title_bar)
@@ -95,9 +97,11 @@ class UserManual(Window):
         elif data_dict["type"]=="home_item_link":
             category = data_dict["data"]
             category_contents = get_category_contents(category)
-            active_index = 0
-            self.push_data_to_web_view(self.index_html_str, category_contents, active_index)
-            group = self.get_subject_button_group(category_contents, active_index)
+            subject_index = 0
+            page_id = "A1"
+            self.push_data_to_web_view(self.index_html_str, category_contents, subject_index, page_id)
+            self.remove_read_page(category, subject_index, page_id)
+            group = self.get_subject_button_group(category_contents, subject_index)
             center_align_child = index_title_bar.center_align.get_child()
             if center_align_child:
                 index_title_bar.center_align.remove(center_align_child)
@@ -125,12 +129,36 @@ class UserManual(Window):
     def subject_button_press(self, group, active_button, category_contents):
         self.push_data_to_web_view(self.index_html_str, category_contents, active_button.subject_index)
 
-    def __page_go_back(self, widget, event, web):
-        self.push_data_to_web_view(self.home_html_str, get_home_item_values())
+    def page_go_back(self, widget, event, web):
+        self.fresh_read_percent()
+        self.push_data_to_web_view(self.home_html_str, self.home_values)
         self.slider.to_page(home_title_bar, "left")
 
     def load_finished_cb(self, view, frame):
         self.web_view.execute_script("var Values=%s" % json.dumps(self.load_data, encoding="UTF-8", ensure_ascii=False))
+
+    def init_progress_data(self):
+        for item in self.home_values:
+            all_pages = get_category_pages_id(item["category"])
+            item["all_pages"] = all_pages
+            unread_pages = get_category_unread_pages(item["category"])
+            item["unread_pages"] = unread_pages
+        self.fresh_read_percent()
+
+    def fresh_read_percent(self):
+        for item in self.home_values:
+            unread = item["unread_pages"]
+            all_pages = item["all_pages"]
+            percent = 1 - float(len(unread))/len(all_pages)
+            item["percent"] = "%.2f" % percent
+
+    def remove_read_page(self, category, subject_index, page_id):
+        for item in self.home_values:
+            if item["category"] == category:
+                for page in item["unread_pages"]:
+                    if page == (subject_index, page_id):
+                        item["unread_pages"].remove((subject_index, page_id))
+                return
 
     def print_info(self, *data):
         print data
