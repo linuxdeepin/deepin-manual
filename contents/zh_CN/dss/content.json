@@ -1,12 +1,12 @@
 {
 "content":[
     {
-        "title":"简介",
+        "title":"dss主题1",
         "page":[
             {
                 "id": "A1",
                 "description":
-                    "<strong>什么是 Linux Deepin？</strong><br />Linux Deepin (深度 Linux)，简称 LD，是国内最流行的 Linux 发行版。它是一款开源的桌面操作系统，适合于笔记本和台式机。",
+                    "这是dss的A1",
                 "image":"images/A1.jpg"
             },
             {
@@ -24,7 +24,7 @@
         ]
     },
     {
-        "title":"社区参与",
+        "title":"dss主题2",
         "page":[
             {
                 "id": "B1",

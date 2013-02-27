@@ -23,7 +23,7 @@
 import cairo
 import gtk
 from color import alpha_color_hex_to_cairo, color_hex_to_cairo
-from utils import new_surface, propagate_expose
+from utils import new_surface, propagate_expose, move_window
 from utils import cairo_popover, cairo_popover_rectangle 
 from dtk_cairo_blur import gaussian_blur
 
@@ -194,6 +194,9 @@ class Window(gtk.Window):
 
     def add_widget(self, widget):
         self.main_ali.add(widget)
+
+    def add_move_event(self, widget):
+        widget.connect("button-press-event", lambda w, e: move_window(w, e, self))            
 
 
 if __name__ == "__main__":

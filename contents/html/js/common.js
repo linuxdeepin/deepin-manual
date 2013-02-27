@@ -17,16 +17,16 @@ function browser_link(link){
 
 function create_index_img_node(id, img_path){
     var imgObj = document.createElement("img");
-    imgObj.attributes["src"].nodeValue = img_path;
+    imgObj.src = img_path;
     data_caption = "#"+id;
-    imgObj.attributes["data-caption"].nodeValue = data_caption;
+    imgObj.setAttribute("data-caption", data_caption);
     return imgObj;
 }
 
 function create_index_span_content_node(id, content){
     var spanObj = document.createElement("span");
     spanObj.className = "orbit-caption";
-    spanObj.attributes["id"].nodeValue = id;
+    spanObj.id = id;
     spanObj.innerHTML = content;
     return spanObj;
 }
@@ -35,8 +35,8 @@ function insert_pages_into_subject(pages){
     outer = document.getElementById("outer");
     featured = document.getElementById("featured");
     for (var i=0;i < pages.length;i++){
-        featured.appendChild(create_index_img_node(pages[i]["id"], pages[i]["img_path"]));
-        outer.appendChild(create_index_span_content_node(pages[i]["id"], pages[i]["content"]));
+        featured.appendChild(create_index_img_node(pages[i]["id"], pages[i]["image"]));
+        outer.appendChild(create_index_span_content_node(pages[i]["id"], pages[i]["description"]));
     }
 }
 
@@ -82,9 +82,15 @@ function create_home_icon_node(id, category, title, icon_path, percent){
    return home_item;
 }
 //var data = [{"category":"indroduction", "title":"简介", "icon_path":"../zh_CN/introduction/icon.png", "percent":"0.5"}];
-function load(data){
+function home_load(data){
     icon_menu = document.getElementById("icon_menu");
     for (var i=0; i<data.length; i++){
-        icon_menu.appendChild(create_home_icon_node(i, data[i]["category"], data[i]["title"], data[i]["icon_path"], "0.5"));
+        icon_menu.appendChild(create_home_icon_node(i, data[i]["category"], data[i]["title"], data[i]["icon_path"], data[i]["percent"]));
     }
+}
+
+function index_load(data, subject_index){
+    subject_index = Number(subject_index);
+    pages = data["content"][subject_index]["page"];
+    insert_pages_into_subject(pages);
 }

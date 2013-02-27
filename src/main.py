@@ -24,7 +24,7 @@ from dtk.ui.new_slider import HSlider
 from color import color_hex_to_cairo
 from button import SelectButton, SelectButtonGroup, ImageButton
 from window import Window
-from titlebar import TitleBar, home_title_bar, index_title_bar, back 
+from titlebar import  home_title_bar, index_title_bar, back 
 from webview import ContentWebView
 from parse_content import get_home_item_values, get_category_contents
 
@@ -50,6 +50,9 @@ class UserManual(Window):
         self.width = 685
         self.height = 500
         self.titlebar_height = 62
+        self.html_base_url = "file://" + os.path.realpath("../contents/html/")+"/"
+        self.home_html_str = open(os.path.realpath("../contents/html/home.html")).read()
+        self.index_html_str = open(os.path.realpath("../contents/html/index.html")).read()
 
     def _init_settings(self):
         self.set_decorated(False)
@@ -59,43 +62,74 @@ class UserManual(Window):
         self.main_alignment.set_padding(0, 0, 0, 0)
         main_v_box = gtk.VBox()
 
-        self.slider = HSlider()
-        self.slider.set_size_request(-1, 62)
+        self.slider = HSlider(500)
+        self.slider.set_size_request(self.width, self.titlebar_height)
         self.slider.to_page_now(home_title_bar)
         main_v_box.pack_start(self.slider)
-
+        
         self.web_view = ContentWebView(self.width, self.height - self.titlebar_height)
         self.web_view.connect("load-committed", self.load_finished_cb)
-        self.home_html_str = open("../contents/html/home.html").read()
-        self.web_view.load(self.home_html_str, "file:///home/iceleaf/Projects/deepin/deepin-user-manual/contents/html/")
-        main_v_box.pack_start(self.web_view)
 
+        # init velues for home
+        self.load_data = []
+        self.load_data.append(get_home_item_values())
+        self.web_view.load(self.home_html_str, self.html_base_url)
+        main_v_box.pack_start(self.web_view)
+        
         self.main_alignment.add(main_v_box)
         self.add_widget(self.main_alignment)
-
-        back.connect("button-press-event", self.__page_go_back, self.web_view)
-
+        
+        back.connect("button-release-event", self.__page_go_back, self.web_view)
+        home_title_bar.min_button.connect("clicked", lambda w: self.iconify())
+        index_title_bar.min_button.connect("clicked", lambda w: self.iconify())
+        self.add_move_event(home_title_bar)
+        self.add_move_event(index_title_bar)
         self.web_view.connect("title-changed", self.title_changed_handler)
         #subject_buttons_group.connect("button-press", lambda w, b: self.print_info(b.subject_index))
-
+        
     def title_changed_handler(self, widget, webframe, data):
-        print data
+        print "data from web: %s" % data
         data_dict = eval(data)
-        if data_dict["data"].startswith("http://") or data.startswith("https://"):
+        if data_dict["type"]=="external_link":
             webbrowser.open(data_dict["data"])
-        elif data_dict["type"]=="link" and data_dict["data"].endswith("index.html"):
-            self.web_view.index_file = "../contents/html/index.html"
-            self.slider.to_page(index_title_bar, None)
+        elif data_dict["type"]=="home_item_link":
+            category = data_dict["data"]
+            category_contents = get_category_contents(category)
+            active_index = 0
+            self.push_data_to_web_view(self.index_html_str, category_contents, active_index)
+            group = self.get_subject_button_group(category_contents, active_index)
+            center_align_child = index_title_bar.center_align.get_child()
+            if center_align_child:
+                index_title_bar.center_align.remove(center_align_child)
+            index_title_bar.center_align.add(group)
+            self.slider.to_page(index_title_bar, "right")
+
+    def get_subject_button_group(self, category_contents, active_index=0):
+        subjects = category_contents["content"]
+        subject_buttons = []
+        for i in range(len(subjects)):
+            subject_buttons.append(SelectButton(i, subjects[i].get("title"))) 
+        subject_buttons_group = SelectButtonGroup(subject_buttons)
+        subject_buttons[active_index].selected = True
+        subject_buttons_group.connect("button-press", self.subject_button_press, category_contents)
+        return subject_buttons_group
+
+    def push_data_to_web_view(self, html_string, *data):
+        self.load_data = []
+        for d in data:
+            self.load_data.append(d)
+        self.web_view.load(html_string, self.html_base_url)
+
+    def subject_button_press(self, group, active_button, category_contents):
+        self.push_data_to_web_view(self.index_html_str, category_contents, active_button.subject_index)
 
     def __page_go_back(self, widget, event, web):
-        web.index_file = "../contents/html/home.html"
-        self.slider.to_page(home_title_bar, None)
-        widget.emit("leave-notify-event", gtk.gdk.Event(gtk.gdk.LEAVE_NOTIFY))
+        self.push_data_to_web_view(self.home_html_str, get_home_item_values())
+        self.slider.to_page(home_title_bar, "left")
 
     def load_finished_cb(self, view, frame):
         self.web_ctx = jscore.JSContext(self.web_view.get_main_frame().get_global_context())
-        document = self.web_ctx.globalObject.document
-        self.web_ctx.globalObject.homeItemValues = get_home_item_values()
+        self.web_ctx.globalObject.Values = self.load_data
 
     def print_info(self, *data):
         print data

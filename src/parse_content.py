@@ -75,5 +75,24 @@ def get_percent(category):
         progress_config.write()
         return 0
 
+def get_category_status(category):
+    progress_file = os.path.expanduser("~/.config/deepin-user-manual/progress.ini")
+    progress_config = Config(progress_file)
+
+    if os.path.exists(progress_file):
+        progress_config.load()
+    else:
+        touch_file(progress_file)
+        progress_config.load()
+
+    if progress_config.has_option("status", category):
+        return progress_config.get("status", category)
+    else:
+        progress_config.set("status", category, 0)
+        progress_config.write()
+        return 0
+    
+
 if __name__ == "__main__":
-    print get_home_item_values()
+    with file("content.txt", "w") as fp:
+        fp.write(get_category_contents("dss"))

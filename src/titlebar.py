@@ -36,6 +36,7 @@ class TitleBar(gtk.EventBox):
         
         self._init_wedget()
         self.set_size_request(685, 62)
+        self.min_button_callback = None
 
     def _init_wedget(self):
         self.align = gtk.Alignment(1, 1, 1, 1)
@@ -46,13 +47,28 @@ class TitleBar(gtk.EventBox):
         self.add(self.align)
         
         self.align.connect("expose-event", self.expose)
+        
+        self.close_button = ImageButton("app_image/window_close_normal.png", "./app_image/window_close_hover.png", "app_image/window_close_press.png")
+        self.close_button.connect("button-release-event", gtk.main_quit)
+        close_align = gtk.Alignment(1, 0, 0, 0)
+        close_align.set_padding(0, 0, 0, 0)
+        close_align.add(self.close_button)
 
-        close = ImageButton("app_image/close.png", "app_image/close-press.png")
-        close.connect("button-release-event", gtk.main_quit)
-        close_align = gtk.Alignment(1, 0.5, 0, 0)
-        close_align.set_padding(0, 0, 0, 15)
-        close_align.add(close)
-        self.h_box.pack_end(close_align, False, False)
+        self.min_button = ImageButton("app_image/window_min_normal.png", "app_image/window_min_hover.png", "app_image/window_min_press.png")
+        #self.min_button.connect("clicked", self.min_button_callback)
+        min_align = gtk.Alignment(1, 0, 0, 0)
+        min_align.set_padding(0, 0, 0, 0)
+        min_align.add(self.min_button)
+
+        button_align = gtk.Alignment(1, 0, 0, 0)
+        button_h_box = gtk.HBox()
+        button_h_box.pack_end(close_align, False, False)
+        button_align.add(button_h_box)
+        self.h_box.pack_end(button_align, False, False)
+        self.h_box.pack_end(min_align, False, False)
+
+        self.center_align = gtk.Alignment(0, 0.5, 0, 0)
+        self.h_box.pack_end(self.center_align)
 
     def expose(self, widget, event):
         cr = widget.window.cairo_create()
@@ -105,27 +121,19 @@ title_align = gtk.Alignment(0, 0.5, 0, 0)
 title_align.set_padding(0, 0, 5, 0)
 title_align.add(title)
 
-back = ImageButton("app_image/back.png", "app_image/back-hover.png")
+back = ImageButton("app_image/back.png", "app_image/back-hover.png", "app_image/back-hover.png")
 back_align = gtk.Alignment(0, 0.5, 0, 0)
 back_align.set_padding(0, 0, 13, 10)
 back_align.add(back)
 
-#subjects = get_all_contents()[0]["content"]
-#subject_buttons = []
-#for i in range(len(subjects)):
-    #subject_buttons.append(SelectButton(i+1, subjects[i].get("title"))) 
-#subject_buttons_group = SelectButtonGroup(subject_buttons)
-#subject_buttons[0].selected = True
-#subjects_align = gtk.Alignment(0, 0.5, 0, 0)
-#subjects_align.add(subject_buttons_group)
 
 home_title_bar = TitleBar()
 home_title_bar.h_box.pack_start(icon_align, False, False)
-home_title_bar.h_box.pack_start(title_align)
+home_title_bar.center_align.add(title_align)
+
 
 index_title_bar = TitleBar()
 index_title_bar.h_box.pack_start(back_align, False, False)
-#index_title_bar.h_box.pack_start(subjects_align)
 
 if __name__ == "__main__":
     win = gtk.Window()

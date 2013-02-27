@@ -2,7 +2,7 @@
 # -*- coding: utf-8 -*-
 
 from draw import draw_text, draw_pixbuf
-from utils import get_text_size, cairo_disable_antialias
+from utils import get_text_size, cairo_disable_antialias, propagate_expose
 from color import color_hex_to_cairo
 import gtk
 import gobject
@@ -122,8 +122,9 @@ class SelectButtonGroup(gtk.HBox):
             self.pack_start(subject_button_align, False, False)
     
     def button_clicked_event(self, active_button):
-        self.current_active = active_button
-        self.emit("button-press", active_button)
+        if self.current_active != active_button:
+            self.current_active = active_button
+            self.emit("button-press", active_button)
         for button in self.buttons:
             button.selected = (button == active_button)
 
@@ -135,6 +136,8 @@ class ImageButton(gtk.Button):
         gtk.Button.__init__(self)
         # init values.
         self.normal_image_pixbuf = gtk.gdk.pixbuf_new_from_file(normal_image)
+        self.hover_image_pixbuf = self.normal_image_pixbuf
+        self.press_image_pixbuf = self.normal_image_pixbuf
         self.draw_check = False
         self.set_size_request(self.normal_image_pixbuf.get_width(), self.normal_image_pixbuf.get_height())
         # init events.
@@ -142,18 +145,26 @@ class ImageButton(gtk.Button):
         self.connect("expose-event", self.image_button_expose_event)        
         if hover_image:
             self.hover_image_pixbuf = gtk.gdk.pixbuf_new_from_file(hover_image)
-            self.connect("enter-notify-event", self._cursor_enter_redraw)
-            self.connect("leave-notify-event", self._cursor_leave_redraw)
+            #self.connect("enter-notify-event", self._cursor_enter_redraw)
+            #self.connect("leave-notify-event", self._cursor_leave_redraw)
         if press_image:
             self.press_image_pixbuf = gtk.gdk.pixbuf_new_from_file(press_image)
-            self.connect("button-press-event", self._cursor_press_redraw)
+            #self.connect("button-press-event", self._cursor_press_redraw)
         self.add_events(gtk.gdk.ALL_EVENTS_MASK)
 
     def image_button_expose_event(self, widget, event):
         cr = widget.window.cairo_create()
         rect = widget.allocation
+        if widget.state == gtk.STATE_NORMAL:
+            image = self.normal_image_pixbuf
+        elif widget.state == gtk.STATE_PRELIGHT:
+            image = self.hover_image_pixbuf
+        elif widget.state == gtk.STATE_ACTIVE:
+            image = self.press_image_pixbuf
 
-        draw_pixbuf(cr, self._current_image_pixbuf, rect.x, rect.y)
+        draw_pixbuf(cr, image, rect.x, rect.y)
+
+        propagate_expose(widget, event)
         return True
 
     def _cursor_enter_redraw(self, widget, event):

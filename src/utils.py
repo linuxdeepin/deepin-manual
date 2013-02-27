@@ -229,3 +229,22 @@ def in_window_check(widget, event):
     if not ((x_root >= window_x and x_root < window_x + widget.allocation.width) 
         and (y_root >= window_y and y_root < window_y + widget.allocation.height)):
         return True
+
+def move_window(widget, event, window):
+    '''
+    Move window with given widget and event.
+    
+    This function generic use for move window when mouse drag on target widget.
+    
+    @param widget: Gtk.Widget instance to drag.
+    @param event: Gdk.Event instance, generic, event come from gtk signal callback.
+    @param window: Gtk.Window instance.
+    '''
+    if event.button == 1:
+        window.begin_move_drag(
+            event.button, 
+            int(event.x_root), 
+            int(event.y_root), 
+            event.time)
+    
+    return False
