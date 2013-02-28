@@ -22,7 +22,6 @@
 
 import os
 import webkit
-import javascriptcore as jscore
 
 class ContentWebView(webkit.WebView):
     def __init__(self, width, height):
