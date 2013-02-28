@@ -49,13 +49,11 @@ class TitleBar(gtk.EventBox):
         self.align.connect("expose-event", self.expose)
         
         self.close_button = ImageButton("app_image/window_close_normal.png", "./app_image/window_close_hover.png", "app_image/window_close_press.png")
-        self.close_button.connect("button-release-event", gtk.main_quit)
         close_align = gtk.Alignment(1, 0, 0, 0)
         close_align.set_padding(0, 0, 0, 0)
         close_align.add(self.close_button)
 
         self.min_button = ImageButton("app_image/window_min_normal.png", "app_image/window_min_hover.png", "app_image/window_min_press.png")
-        #self.min_button.connect("clicked", self.min_button_callback)
         min_align = gtk.Alignment(1, 0, 0, 0)
         min_align.set_padding(0, 0, 0, 0)
         min_align.add(self.min_button)

@@ -122,9 +122,9 @@ class SelectButtonGroup(gtk.HBox):
             self.pack_start(subject_button_align, False, False)
     
     def button_clicked_event(self, active_button):
+        self.emit("button-press", active_button)
         if self.current_active != active_button:
             self.current_active = active_button
-            self.emit("button-press", active_button)
         for button in self.buttons:
             button.selected = (button == active_button)
 

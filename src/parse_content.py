@@ -99,11 +99,29 @@ def get_category_unread_pages(category):
     return all_pages_id
 
 def write_unread_pages_data(home_value):
-    progress_file = get_progress_config()
+    progress_config = get_progress_config()
     for item in home_value:
         category = item["category"]
         unread_pages = item["unread_pages"]
-        progress_config.set("unread", category, unread_pages)
+        progress_config.set("unread", category, str(unread_pages))
+        progress_config.write()
+
+def write_last_page(last_page):
+    progress_config = get_progress_config()
+    progress_config.set("last", "page", str(last_page))
+    progress_config.write()
+
+def get_last_page():
+    progress_config = get_progress_config()
+    if progress_config.has_option("last", "page"):
+        return eval(progress_config.get("last", "page"))
+    else:
+        last_page = {}
+        home_values = get_home_item_values()
+        for item in home_values:
+            last_page[item["category"]] = [0, "A1"]
+        write_last_page(last_page)
+        return last_page
 
 if __name__ == "__main__":
     pass

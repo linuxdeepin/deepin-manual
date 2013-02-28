@@ -15,9 +15,12 @@ function external_link(link){
     write_to_title(type, data);
 }
 
-function after_slider_change(imgObject) {
-    type = "slider_change";
-    data = imgObject.getAttribute("data-caption");
+function after_slider_change(imgObj, category, subject_index) {
+    var type = "slider_change";
+    var jsObj = {"category": category, 
+        "subject_index": subject_index, 
+        "page_id": imgObj.getAttribute("data-caption")};
+    var data = JSON.stringify(jsObj, "replacer");
     write_to_title(type, data);
 }
 
@@ -99,4 +102,13 @@ function index_load(data, subject_index){
     subject_index = Number(subject_index);
     pages = data["content"][subject_index]["page"];
     insert_pages_into_subject(pages);
+}
+
+function load_page(){
+    if (Values[3]){
+        bullets_ul = document.getElementsByClassName("orbit-bullets");
+        bullets_ul = bullets_ul[0];
+        page_index = Number(Values[3].slice(1))-1;
+        bullets_ul.childNodes[page_index].click();
+    }
 }

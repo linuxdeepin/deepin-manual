@@ -11,7 +11,11 @@
 		<script type="text/javascript">
 			$(window).load(function() {
 				$('#featured').orbit(
-                    { bullets:true, timer: false, afterSlideChange: function(){ after_slider_change(this);}}
+                    { bullets:true, timer: false, afterSlideChange: function(){ 
+                        if (Values){
+                        after_slider_change(this, Values[1], Values[2]);
+                        }
+                    }}
 				);
 			});
 		</script>
@@ -27,7 +31,7 @@
 	</div>	
 <script type="text/javascript">
     if(Values){
-        index_load(Values[0], Values[1]);
+        index_load(Values[0], Values[2]);
     }else{
         alert("no data pass in");
     }

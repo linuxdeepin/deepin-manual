@@ -29,7 +29,11 @@ from webview import ContentWebView
 from parse_content import (get_home_item_values, 
                             get_category_contents,
                             get_category_pages_id,
-                            get_category_unread_pages)
+                            get_category_unread_pages,
+                            get_last_page,
+                            write_last_page,
+                            write_unread_pages_data
+                            )
 
 import os
 import gtk
@@ -57,6 +61,7 @@ class UserManual(Window):
         self.index_html_str = open(os.path.realpath("../contents/html/index.html")).read()
         self.home_values = get_home_item_values()
         self.init_progress_data()
+        self.last_page = get_last_page()
 
     def _init_settings(self):
         self.set_decorated(False)
@@ -72,7 +77,8 @@ class UserManual(Window):
         main_v_box.pack_start(self.slider)
         
         self.web_view = ContentWebView(self.width, self.height - self.titlebar_height)
-        self.web_view.connect("load-committed", self.load_finished_cb)
+        self.web_view.connect("load-committed", self.load_committed_cb)
+        self.web_view.connect("load-finished", self.load_finished_cb)
 
         # init velues for home
         self.push_data_to_web_view(self.home_html_str, self.home_values)
@@ -84,10 +90,17 @@ class UserManual(Window):
         back.connect("button-release-event", self.page_go_back, self.web_view)
         home_title_bar.min_button.connect("clicked", lambda w: self.iconify())
         index_title_bar.min_button.connect("clicked", lambda w: self.iconify())
+        home_title_bar.close_button.connect("clicked", self.close_window)
+        index_title_bar.close_button.connect("clicked", self.close_window)
         self.add_move_event(home_title_bar)
         self.add_move_event(index_title_bar)
         self.web_view.connect("title-changed", self.title_changed_handler)
         #subject_buttons_group.connect("button-press", lambda w, b: self.print_info(b.subject_index))
+
+    def close_window(self, widget):
+        write_last_page(self.last_page)
+        write_unread_pages_data(self.home_values)
+        gtk.main_quit()
         
     def title_changed_handler(self, widget, webframe, data):
         print "data from web: %s" % data
@@ -97,27 +110,30 @@ class UserManual(Window):
         elif data_dict["type"]=="home_item_link":
             category = data_dict["data"]
             category_contents = get_category_contents(category)
-            subject_index = 0
-            page_id = "A1"
-            self.push_data_to_web_view(self.index_html_str, category_contents, subject_index, page_id)
+            subject_index = self.last_page[category][0]
+            page_id = self.last_page[category][1]
+            self.push_data_to_web_view(self.index_html_str, category_contents, category, subject_index, page_id)
             self.remove_read_page(category, subject_index, page_id)
-            group = self.get_subject_button_group(category_contents, subject_index)
+            group = self.get_subject_button_group(category, category_contents, subject_index)
             center_align_child = index_title_bar.center_align.get_child()
             if center_align_child:
                 index_title_bar.center_align.remove(center_align_child)
             index_title_bar.center_align.add(group)
             self.slider.to_page(index_title_bar, "right")
         elif data_dict["type"] == "slider_change":
-            pass
+            page_dict = eval(data_dict["data"])
+            self.remove_read_page(page_dict["category"], page_dict["subject_index"], page_dict["page_id"][1:])
+            self.last_page[page_dict["category"]][0] = page_dict["subject_index"]
+            self.last_page[page_dict["category"]][1] = page_dict["page_id"][1:]
 
-    def get_subject_button_group(self, category_contents, active_index=0):
+    def get_subject_button_group(self, category, category_contents, active_index):
         subjects = category_contents["content"]
         subject_buttons = []
         for i in range(len(subjects)):
-            subject_buttons.append(SelectButton(i, subjects[i].get("title"))) 
+            subject_buttons.append(SelectButton(i, subjects[i].get("title")))
         subject_buttons_group = SelectButtonGroup(subject_buttons)
-        subject_buttons[active_index].selected = True
-        subject_buttons_group.connect("button-press", self.subject_button_press, category_contents)
+        subject_buttons[int(active_index)].selected = True
+        subject_buttons_group.connect("button-press", self.subject_button_press, category, category_contents)
         return subject_buttons_group
 
     def push_data_to_web_view(self, html_string, *data):
@@ -126,16 +142,23 @@ class UserManual(Window):
             self.load_data.append(d)
         self.web_view.load(html_string, self.html_base_url)
 
-    def subject_button_press(self, group, active_button, category_contents):
-        self.push_data_to_web_view(self.index_html_str, category_contents, active_button.subject_index)
+    def subject_button_press(self, group, active_button, category, category_contents):
+        print active_button.subject_index
+        self.last_page[category][0] = active_button.subject_index
+        self.last_page[category][1] = category_contents["content"][active_button.subject_index]["page"][0]["id"]
+        self.push_data_to_web_view(self.index_html_str, category_contents, category, active_button.subject_index)
+        self.remove_read_page(category, active_button.subject_index, self.last_page[category][1])
 
     def page_go_back(self, widget, event, web):
         self.fresh_read_percent()
         self.push_data_to_web_view(self.home_html_str, self.home_values)
         self.slider.to_page(home_title_bar, "left")
 
-    def load_finished_cb(self, view, frame):
+    def load_committed_cb(self, view, frame):
         self.web_view.execute_script("var Values=%s" % json.dumps(self.load_data, encoding="UTF-8", ensure_ascii=False))
+
+    def load_finished_cb(self, view, frame):
+        self.web_view.execute_script("load_page()")
 
     def init_progress_data(self):
         for item in self.home_values:
