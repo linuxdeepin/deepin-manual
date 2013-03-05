@@ -172,7 +172,7 @@ div.slider-nav span.left {
     position: absolute;
     z-index: 1000;
     list-style: none;
-    bottom: -35px;
+    bottom: 0;
     left: 50%;
 	margin-left: -25px;
     padding: 0; }

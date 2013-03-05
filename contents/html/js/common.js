@@ -146,7 +146,7 @@ function after_slider_change(imgObj, book, chapter_index) {
 
 function set_page_unread_img(page_id){
     current_page_img = document.getElementById(page_id);
-    if (current_page_img.className == "unread"){
-        current_page_img.className = "read";
+    if (current_page_img.childNodes[0].className == "unread"){
+        current_page_img.childNodes[0].className = "read";
     }
 }
