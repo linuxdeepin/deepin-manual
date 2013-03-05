@@ -122,18 +122,19 @@ class UserManual(Window):
             book = data_dict["data"]
             book_contents = get_book_contents(book)
             chapter_index = 0
-            page_id = self.last_page[book][1]
+            page_id = self.home_values[book]["all_pages"][chapter_index][0]
             self.push_data_to_web_view(
                     self.index_html_str, 
                     book_contents,  # Values[0]
                     book, # Values[1]
                     chapter_index, # Values[2]
-                    self.home_values[book]["unread_pages"][chapter_index]) # Values[3]
-            group = self.get_chapter_button_group(book, book_contents, chapter_index)
+                    page_id, # Values[3]
+                    self.home_values[book]["unread_pages"][chapter_index]) # Values[4]
+            self.chapter_group = self.get_chapter_button_group(book, book_contents, chapter_index)
             center_align_child = index_title_bar.center_align.get_child()
             if center_align_child:
                 index_title_bar.center_align.remove(center_align_child)
-            index_title_bar.center_align.add(group)
+            index_title_bar.center_align.add(self.chapter_group)
             self.slider.to_page(index_title_bar, "right")
         elif data_dict["type"] == "after_slider_change":
             page_dict = eval(data_dict["data"])
@@ -141,7 +142,27 @@ class UserManual(Window):
             page_info = eval(data_dict["data"])
             book, chapter_index, page_id = page_info["book"], page_info["chapter_index"], page_info["page_id"]
             self.remove_read_page(book, chapter_index, page_id)
-            self.web_view.execute_script("var unread_pages=%s" % json.dumps(self.home_values[book]["unread_pages"], encoding="UTF-8", ensure_ascii=False))
+            self.web_view.execute_script("var all_pages=%s" % json.dumps(self.home_values[book]["all_pages"], encoding="UTF-8", ensure_ascii=False))
+        elif data_dict["type"] == "redirect_next_chapter":
+            page_info = eval(data_dict["data"])
+            book, chapter_index, page_id = page_info["book"], page_info["chapter_index"], page_info["page_id"]
+            self.emit_group_button_press(self.chapter_group, book, chapter_index, page_id)
+            
+    def emit_group_button_press(self, button_group, book, chapter_index, page_id):
+        buttons = button_group.buttons
+        active_button = buttons[chapter_index]
+        if button_group.current_active != active_button:
+            button_group.current_active = active_button
+        for button in buttons:
+            button.selected = (button == active_button)
+        book_contents = get_book_contents(book)
+        self.push_data_to_web_view(
+                self.index_html_str,
+                book_contents, # Values[0]
+                book, # Values[1]
+                chapter_index, # Values[2]
+                page_id, # Values[3]
+                self.home_values[book]["unread_pages"][chapter_index]) # Values[4]
 
     def get_chapter_button_group(self, book, book_contents, active_index):
         chapters = book_contents["content"]
@@ -163,12 +184,14 @@ class UserManual(Window):
         self.last_page[book][0] = active_button.chapter_index
         self.last_page[book][1] = book_contents["content"][active_button.chapter_index]["page"][0]["id"]
         chapter_index = active_button.chapter_index
+        page_id = self.home_values[book]["all_pages"][chapter_index][0]
         self.push_data_to_web_view(
                 self.index_html_str, 
                 book_contents, # Values[0]
                 book, # Values[1]
                 chapter_index, # Values[2]
-                self.home_values[book]["unread_pages"][chapter_index]) # Values[3]
+                page_id, # Values[3]
+                self.home_values[book]["unread_pages"][chapter_index]) # Values[4]
 
     def page_go_back(self, widget, event, web):
         self.fresh_read_percent()
@@ -182,8 +205,9 @@ class UserManual(Window):
         if len(self.load_data) > 1:
             book = self.load_data[1]
             chapter_index = self.load_data[2]
-            page_id = self.home_values[book]["all_pages"][chapter_index][0]
+            page_id = self.load_data[3]
             self.remove_read_page(book, chapter_index, page_id)
+            self.web_view.execute_script("load_page();")
 
     def init_progress_data(self):
         for book in self.home_values:
