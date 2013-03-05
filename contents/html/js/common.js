@@ -15,15 +15,6 @@ function external_link(link){
     write_to_title(type, data);
 }
 
-function after_slider_change(imgObj, category, subject_index) {
-    var type = "slider_change";
-    var jsObj = {"category": category, 
-        "subject_index": subject_index, 
-        "page_id": imgObj.getAttribute("data-caption")};
-    var data = JSON.stringify(jsObj, "replacer");
-    write_to_title(type, data);
-}
-
 function create_index_img_node(id, img_path){
     var imgObj = document.createElement("img");
     imgObj.src = img_path;
@@ -36,11 +27,22 @@ function create_index_span_content_node(id, content){
     var spanObj = document.createElement("span");
     spanObj.className = "orbit-caption";
     spanObj.id = id;
-    spanObj.innerHTML = content;
+
+    var status_img = document.createElement("div");
+    status_img.innerHTML = content;
+    status_img.className = "read";
+
+    for (var i=0;i<Values[3].length;i++){
+        if (Values[3][i] == id){
+            status_img.className = "unread";
+        }
+    }
+
+    spanObj.appendChild(status_img);
     return spanObj;
 }
 
-function insert_pages_into_subject(pages){
+function insert_pages_into_chapter(pages){
     outer = document.getElementById("outer");
     featured = document.getElementById("featured");
     for (var i=0;i < pages.length;i++){
@@ -52,7 +54,7 @@ function insert_pages_into_subject(pages){
 /***
  * Notice: the percent argument is a number between 0.0~1.0 
  * */
-function create_home_icon_node(id, category, title, icon_path, percent){ 
+function create_home_icon_node(id, book, title, icon_path, percent){ 
    percent_div = document.createElement("div");
    percent_div.className = "percent";
    percent_div.innerHTML = (Number(percent) * 100).toString()+"%";
@@ -76,7 +78,7 @@ function create_home_icon_node(id, category, title, icon_path, percent){
 
    icon_a = document.createElement("a");
    icon_a.href = "index.html";
-   icon_a.id = category;
+   icon_a.id = book;
    icon_a.onclick = function(e){
        home_item_link(this);
        return false;
@@ -90,25 +92,61 @@ function create_home_icon_node(id, category, title, icon_path, percent){
    home_item.appendChild(bar_div);
    return home_item;
 }
-//var data = [{"category":"indroduction", "title":"简介", "icon_path":"../zh_CN/introduction/icon.png", "percent":"0.5"}];
+
 function home_load(data){
     icon_menu = document.getElementById("icon_menu");
     for (var i=0; i<data.length; i++){
-        icon_menu.appendChild(create_home_icon_node(i, data[i]["category"], data[i]["title"], data[i]["icon_path"], data[i]["percent"]));
+        icon_menu.appendChild(create_home_icon_node(i, data[i]["book"], data[i]["title"], data[i]["icon_path"], data[i]["percent"]));
     }
 }
 
-function index_load(data, subject_index){
-    subject_index = Number(subject_index);
-    pages = data["content"][subject_index]["page"];
-    insert_pages_into_subject(pages);
+function index_load(data, chapter_index){
+    chapter_index = Number(chapter_index);
+    pages = data["content"][chapter_index]["page"];
+    insert_pages_into_chapter(pages);
 }
 
-function load_page(){
-    if (Values[3]){
-        bullets_ul = document.getElementsByClassName("orbit-bullets");
-        bullets_ul = bullets_ul[0];
-        page_index = Number(Values[3].slice(1))-1;
-        bullets_ul.childNodes[page_index].click();
+function load_page(page_id){
+    bullets_ul = document.getElementsByClassName("orbit-bullets");
+    bullets_ul = bullets_ul[0];
+    page_index = Number(page_id.slice(1))-1;
+    bullets_ul.childNodes[page_index].click();
+}
+
+function nav_click(s) {
+    data = document.getElementsByClassName("orbit-caption");
+    var page_id;
+    for (var i=0;i<data.length;i++){
+        if (data[i].tagName == "DIV"){
+            page_id = data[i].id.slice(1);
+        }
+    }
+    before_slider_change(Values[1], Values[2], page_id);
+    set_page_unread_img(page_id);
+    return false;
+}
+
+function before_slider_change(book, chapter_index, page_id) {
+    var type = "before_slider_change";
+    var jsObj = {"book": book, 
+        "chapter_index": chapter_index, 
+        "page_id": page_id};
+    var data = JSON.stringify(jsObj, "replacer");
+    write_to_title(type, data);
+}
+
+function after_slider_change(imgObj, book, chapter_index) {
+    var type = "after_slider_change";
+    var jsObj = {"book": book, 
+        "chapter_index": chapter_index, 
+        "page_id": imgObj.getAttribute("data-caption")};
+    var data = JSON.stringify(jsObj, "replacer");
+    write_to_title(type, data);
+}
+
+function set_page_unread_img(page_id){
+    current_page_img = document.getElementById(page_id);
+    if (current_page_img.className == "unread"){
+        current_page_img.className = "read";
     }
 }

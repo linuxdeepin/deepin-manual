@@ -26,24 +26,25 @@ from ConfigParser import ConfigParser
 from deepin_utils.config import Config
 from deepin_utils.file import touch_file
 import traceback
+from collections import OrderedDict
 
 def get_home_item_values():
     ini = Config(CONFIG_FILE_PATH)
     ini.load()
-    categorys = eval(ini.get("config", "category"))
-    home_item_values = []
-    for category in categorys:
-        write_category_pages_id_to_config(category)
+    books = eval(ini.get("config", "book"))
+    home_item_values = OrderedDict()
+    for book in books:
+        write_book_pages_id_to_config(book)
         item = {}
-        item["category"] = category
-        item["title"] = ini.get("title", category)
-        item["icon_path"] = "../%s/%s/icon.png" % (LANGUAGE, category)
-        home_item_values.append(item)
+        item["book"] = book
+        item["title"] = ini.get("title", book)
+        item["icon_path"] = "../%s/%s/icon.png" % (LANGUAGE, book)
+        home_item_values[book] = item
 
     return home_item_values
 
-def get_category_contents(category):
-    json_file = os.path.realpath("../contents/%s/%s/content.json" % (LANGUAGE, category))
+def get_book_contents(book):
+    json_file = os.path.realpath("../contents/%s/%s/content.json" % (LANGUAGE, book))
     try:
         content_dict = eval(open(json_file).read())
     except Exception, e:
@@ -51,20 +52,22 @@ def get_category_contents(category):
         traceback.print_exc(file=sys.stdout)
         sys.exit(1)
 
-    for subject in content_dict["content"]:
-        for page in subject["page"]:
+    for chapter in content_dict["content"]:
+        for page in chapter["page"]:
             # image path for html file
-            page["image"] = "../%s/%s/%s" % (LANGUAGE, category, page["image"])
+            page["image"] = "../%s/%s/%s" % (LANGUAGE, book, page["image"])
 
     return content_dict
 
-def get_category_pages_id(category):
+def get_book_pages_id(book):
     data = []
-    category_contents = get_category_contents(category)
-    subjects = category_contents["content"]
-    for subject_index in range(len(subjects)):
-        for page in subjects[subject_index]["page"]:
-            data.append((subject_index, page["id"]))
+    book_contents = get_book_contents(book)
+    chapters = book_contents["content"]
+    for chapter_index in range(len(chapters)):
+        pages = []
+        for page in chapters[chapter_index]["page"]:
+            pages.append(page["id"])
+        data.append(pages)
 
     return data
 
@@ -80,30 +83,34 @@ def get_progress_config():
 
     return progress_config
 
-def write_category_pages_id_to_config(category):
-    ids = str(get_category_pages_id(category))
+def write_book_pages_id_to_config(book):
+    ids = str(get_book_pages_id(book))
     progress_config = get_progress_config()
-    if (not progress_config.has_option("all", category)) or (progress_config.get("all", category) != ids):
-        progress_config.set("all", category, ids)
+    if (not progress_config.has_option("all", book)) or (progress_config.get("all", book) != ids):
+        progress_config.set("all", book, ids)
         progress_config.write()
 
-def get_category_unread_pages(category):
+def get_book_unread_pages(book):
     progress_config = get_progress_config()
-    all_pages_id = eval(progress_config.get("all", category))
-    if progress_config.has_option("unread", category):
-        unread_pages_id = eval(progress_config.get("unread", category))
-        if set(unread_pages_id) < set(all_pages_id):
+    all_pages_id = eval(progress_config.get("all", book))
+    chapter_num = len(all_pages_id)
+    if progress_config.has_option("unread", book):
+        unread_pages_id = eval(progress_config.get("unread", book))
+        if len(unread_pages_id) == chapter_num:
+            for i in range(chapter_num):
+                if set(unread_pages_id[i]) > set(all_pages_id[i]):
+                    return all_pages_id
             return unread_pages_id
-    progress_config.set("unread", category, str(all_pages_id))
+    progress_config.set("unread", book, str(all_pages_id))
     progress_config.write()
     return all_pages_id
 
 def write_unread_pages_data(home_value):
     progress_config = get_progress_config()
-    for item in home_value:
-        category = item["category"]
-        unread_pages = item["unread_pages"]
-        progress_config.set("unread", category, str(unread_pages))
+    for key in home_value:
+        book = key
+        unread_pages = home_value[key]["unread_pages"]
+        progress_config.set("unread", book, str(unread_pages))
         progress_config.write()
 
 def write_last_page(last_page):
@@ -118,10 +125,12 @@ def get_last_page():
     else:
         last_page = {}
         home_values = get_home_item_values()
-        for item in home_values:
-            last_page[item["category"]] = [0, "A1"]
+        for key in home_values:
+            last_page[key] = [0, "A1"]
         write_last_page(last_page)
         return last_page
 
 if __name__ == "__main__":
-    pass
+    m = get_home_item_values()
+    for i in m:
+        print m[i]

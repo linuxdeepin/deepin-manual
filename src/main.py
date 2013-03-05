@@ -20,6 +20,17 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+from dtk.ui.init_skin import init_skin
+from deepin_utils.file import get_parent_dir
+import os
+app_theme = init_skin(
+    "deepin-user-manual", 
+    "1.0",
+    "01",
+    os.path.join(get_parent_dir(__file__, 2), "skin"),
+    os.path.join(get_parent_dir(__file__, 2), "app_theme"),
+    )
+
 from dtk.ui.new_slider import HSlider
 from color import color_hex_to_cairo
 from button import SelectButton, SelectButtonGroup, ImageButton
@@ -27,9 +38,9 @@ from window import Window
 from titlebar import  home_title_bar, index_title_bar, back 
 from webview import ContentWebView
 from parse_content import (get_home_item_values, 
-                            get_category_contents,
-                            get_category_pages_id,
-                            get_category_unread_pages,
+                            get_book_contents,
+                            get_book_pages_id,
+                            get_book_unread_pages,
                             get_last_page,
                             write_last_page,
                             write_unread_pages_data
@@ -77,11 +88,12 @@ class UserManual(Window):
         main_v_box.pack_start(self.slider)
         
         self.web_view = ContentWebView(self.width, self.height - self.titlebar_height)
+        self.web_view.enable_inspector()
         self.web_view.connect("load-committed", self.load_committed_cb)
         self.web_view.connect("load-finished", self.load_finished_cb)
 
         # init velues for home
-        self.push_data_to_web_view(self.home_html_str, self.home_values)
+        self.push_data_to_web_view(self.home_html_str, self.home_values_to_list())
         main_v_box.pack_start(self.web_view)
         
         self.main_alignment.add(main_v_box)
@@ -95,7 +107,7 @@ class UserManual(Window):
         self.add_move_event(home_title_bar)
         self.add_move_event(index_title_bar)
         self.web_view.connect("title-changed", self.title_changed_handler)
-        #subject_buttons_group.connect("button-press", lambda w, b: self.print_info(b.subject_index))
+        #chapter_buttons_group.connect("button-press", lambda w, b: self.print_info(b.chapter_index))
 
     def close_window(self, widget):
         write_last_page(self.last_page)
@@ -103,38 +115,43 @@ class UserManual(Window):
         gtk.main_quit()
         
     def title_changed_handler(self, widget, webframe, data):
-        print "data from web: %s" % data
         data_dict = eval(data)
         if data_dict["type"]=="external_link":
             webbrowser.open(data_dict["data"])
         elif data_dict["type"]=="home_item_link":
-            category = data_dict["data"]
-            category_contents = get_category_contents(category)
-            subject_index = self.last_page[category][0]
-            page_id = self.last_page[category][1]
-            self.push_data_to_web_view(self.index_html_str, category_contents, category, subject_index, page_id)
-            self.remove_read_page(category, subject_index, page_id)
-            group = self.get_subject_button_group(category, category_contents, subject_index)
+            book = data_dict["data"]
+            book_contents = get_book_contents(book)
+            chapter_index = 0
+            page_id = self.last_page[book][1]
+            self.push_data_to_web_view(
+                    self.index_html_str, 
+                    book_contents,  # Values[0]
+                    book, # Values[1]
+                    chapter_index, # Values[2]
+                    self.home_values[book]["unread_pages"][chapter_index]) # Values[3]
+            group = self.get_chapter_button_group(book, book_contents, chapter_index)
             center_align_child = index_title_bar.center_align.get_child()
             if center_align_child:
                 index_title_bar.center_align.remove(center_align_child)
             index_title_bar.center_align.add(group)
             self.slider.to_page(index_title_bar, "right")
-        elif data_dict["type"] == "slider_change":
+        elif data_dict["type"] == "after_slider_change":
             page_dict = eval(data_dict["data"])
-            self.remove_read_page(page_dict["category"], page_dict["subject_index"], page_dict["page_id"][1:])
-            self.last_page[page_dict["category"]][0] = page_dict["subject_index"]
-            self.last_page[page_dict["category"]][1] = page_dict["page_id"][1:]
+        elif data_dict["type"] == "before_slider_change":
+            page_info = eval(data_dict["data"])
+            book, chapter_index, page_id = page_info["book"], page_info["chapter_index"], page_info["page_id"]
+            self.remove_read_page(book, chapter_index, page_id)
+            self.web_view.execute_script("var unread_pages=%s" % json.dumps(self.home_values[book]["unread_pages"], encoding="UTF-8", ensure_ascii=False))
 
-    def get_subject_button_group(self, category, category_contents, active_index):
-        subjects = category_contents["content"]
-        subject_buttons = []
-        for i in range(len(subjects)):
-            subject_buttons.append(SelectButton(i, subjects[i].get("title")))
-        subject_buttons_group = SelectButtonGroup(subject_buttons)
-        subject_buttons[int(active_index)].selected = True
-        subject_buttons_group.connect("button-press", self.subject_button_press, category, category_contents)
-        return subject_buttons_group
+    def get_chapter_button_group(self, book, book_contents, active_index):
+        chapters = book_contents["content"]
+        chapter_buttons = []
+        for i in range(len(chapters)):
+            chapter_buttons.append(SelectButton(i, chapters[i].get("title")))
+        chapter_buttons_group = SelectButtonGroup(chapter_buttons)
+        chapter_buttons[int(active_index)].selected = True
+        chapter_buttons_group.connect("button-press", self.chapter_button_press, book, book_contents)
+        return chapter_buttons_group
 
     def push_data_to_web_view(self, html_string, *data):
         self.load_data = []
@@ -142,49 +159,61 @@ class UserManual(Window):
             self.load_data.append(d)
         self.web_view.load(html_string, self.html_base_url)
 
-    def subject_button_press(self, group, active_button, category, category_contents):
-        print active_button.subject_index
-        self.last_page[category][0] = active_button.subject_index
-        self.last_page[category][1] = category_contents["content"][active_button.subject_index]["page"][0]["id"]
-        self.push_data_to_web_view(self.index_html_str, category_contents, category, active_button.subject_index)
-        self.remove_read_page(category, active_button.subject_index, self.last_page[category][1])
+    def chapter_button_press(self, group, active_button, book, book_contents):
+        self.last_page[book][0] = active_button.chapter_index
+        self.last_page[book][1] = book_contents["content"][active_button.chapter_index]["page"][0]["id"]
+        self.push_data_to_web_view(
+                self.index_html_str, 
+                book_contents, # Values[0]
+                book, # Values[1]
+                active_button.chapter_index, # Values[2]
+                self.home_values[book]["unread_pages"]) # Values[3]
+        self.remove_read_page(book, active_button.chapter_index, self.last_page[book][1])
 
     def page_go_back(self, widget, event, web):
         self.fresh_read_percent()
-        self.push_data_to_web_view(self.home_html_str, self.home_values)
+        self.push_data_to_web_view(self.home_html_str, self.home_values_to_list())
         self.slider.to_page(home_title_bar, "left")
 
     def load_committed_cb(self, view, frame):
         self.web_view.execute_script("var Values=%s" % json.dumps(self.load_data, encoding="UTF-8", ensure_ascii=False))
 
     def load_finished_cb(self, view, frame):
-        self.web_view.execute_script("load_page()")
+        if len(self.load_data) > 1:
+            book = self.load_data[1]
+            chapter_index = self.load_data[2]
+            page_id = self.home_values[book]["all_pages"][chapter_index][0]
+            self.remove_read_page(book, chapter_index, page_id)
 
     def init_progress_data(self):
-        for item in self.home_values:
-            all_pages = get_category_pages_id(item["category"])
-            item["all_pages"] = all_pages
-            unread_pages = get_category_unread_pages(item["category"])
-            item["unread_pages"] = unread_pages
+        for book in self.home_values:
+            all_pages = get_book_pages_id(book)
+            self.home_values[book]["all_pages"] = all_pages
+            unread_pages = get_book_unread_pages(self.home_values[book]["book"])
+            self.home_values[book]["unread_pages"] = unread_pages
         self.fresh_read_percent()
 
     def fresh_read_percent(self):
-        for item in self.home_values:
-            unread = item["unread_pages"]
-            all_pages = item["all_pages"]
-            percent = 1 - float(len(unread))/len(all_pages)
-            item["percent"] = "%.2f" % percent
+        for key in self.home_values:
+            unread_pages = self.home_values[key]["unread_pages"]
+            all_pages = self.home_values[key]["all_pages"]
+            unread_length = 0
+            all_length = 0
+            for i in range(len(all_pages)):
+                unread_length += len(unread_pages[i])
+                all_length += len(all_pages[i])
+            percent = 1 - float(unread_length)/all_length
+            self.home_values[key]["percent"] = "%.2f" % percent
 
-    def remove_read_page(self, category, subject_index, page_id):
-        for item in self.home_values:
-            if item["category"] == category:
-                for page in item["unread_pages"]:
-                    if page == (subject_index, page_id):
-                        item["unread_pages"].remove((subject_index, page_id))
-                return
-
-    def print_info(self, *data):
-        print data
+    def remove_read_page(self, book, chapter_index, page_id):
+        if page_id in self.home_values[book]["unread_pages"][chapter_index]:
+            self.home_values[book]["unread_pages"][chapter_index].remove(page_id)
+        
+    def home_values_to_list(self):
+        data = []
+        for key in self.home_values:
+            data.append(self.home_values[key])
+        return data
 
 if __name__ == "__main__":
     UserManual()

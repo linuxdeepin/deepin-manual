@@ -21,16 +21,14 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import os
-import webkit
+from dtk.ui.browser import WebView
 
-class ContentWebView(webkit.WebView):
+class ContentWebView(WebView):
     def __init__(self, width, height):
-        webkit.WebView.__init__(self)
+        WebView.__init__(self)
         self.__index_file = None
         self.set_size_request(width, height)
         settings = self.get_settings()
-        settings.set_property("enable-default-context-menu", False)
-        settings.set_property("tab-key-cycles-through-elements", False)
         settings.set_property("default-font-family", "WenQuanYi Micro Hei")
         
     @property

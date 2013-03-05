@@ -10,14 +10,14 @@ import threading
 
 class SelectButton(gtk.Button):        
     def __init__(self,
-                 subject_index,
+                 chapter_index,
                  text,
                  ali_padding=13,
                  font_size=10,
                  bg_color="#62b8f0",):
         gtk.Button.__init__(self)
         # init values.
-        self.subject_index = subject_index
+        self.chapter_index = chapter_index
         self.text = text
         self.font_size=font_size 
         self.ali_padding = ali_padding
@@ -116,10 +116,10 @@ class SelectButtonGroup(gtk.HBox):
     def init_group_widget(self):
         for button in self.buttons:
             button.connect("clicked", self.button_clicked_event)
-            subject_button_align = gtk.Alignment(0, 0.5, 0, 0)
-            subject_button_align.set_padding(0, 0, 5, 5)
-            subject_button_align.add(button)
-            self.pack_start(subject_button_align, False, False)
+            chapter_button_align = gtk.Alignment(0, 0.5, 0, 0)
+            chapter_button_align.set_padding(0, 0, 5, 5)
+            chapter_button_align.add(button)
+            self.pack_start(chapter_button_align, False, False)
     
     def button_clicked_event(self, active_button):
         self.emit("button-press", active_button)
