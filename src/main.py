@@ -162,13 +162,13 @@ class UserManual(Window):
     def chapter_button_press(self, group, active_button, book, book_contents):
         self.last_page[book][0] = active_button.chapter_index
         self.last_page[book][1] = book_contents["content"][active_button.chapter_index]["page"][0]["id"]
+        chapter_index = active_button.chapter_index
         self.push_data_to_web_view(
                 self.index_html_str, 
                 book_contents, # Values[0]
                 book, # Values[1]
-                active_button.chapter_index, # Values[2]
-                self.home_values[book]["unread_pages"]) # Values[3]
-        self.remove_read_page(book, active_button.chapter_index, self.last_page[book][1])
+                chapter_index, # Values[2]
+                self.home_values[book]["unread_pages"][chapter_index]) # Values[3]
 
     def page_go_back(self, widget, event, web):
         self.fresh_read_percent()
