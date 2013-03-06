@@ -60,6 +60,7 @@ class UserManual(Window):
         self._init_wedget()
         
         self.connect("destroy", gtk.main_quit)
+        self.set_position(gtk.WIN_POS_CENTER)
         self.show_all()
         gtk.main()
 
