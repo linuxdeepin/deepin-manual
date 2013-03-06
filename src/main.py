@@ -137,7 +137,16 @@ class UserManual(Window):
             index_title_bar.center_align.add(self.chapter_group)
             self.slider.to_page(index_title_bar, "right")
         elif data_dict["type"] == "after_slider_change":
-            page_dict = eval(data_dict["data"])
+            page_info = eval(data_dict["data"])
+            book, chapter_index, page_id = page_info["book"], page_info["chapter_index"], page_info["page_id"]
+            if chapter_index == 0 and self.home_values[book]["all_pages"][chapter_index][0] == page_id[1:]:
+                self.web_view.execute_script('change_nav_status("Left", "none")')
+            elif chapter_index == len(self.home_values[book]["all_pages"])-1 and page_id[1:] == self.home_values[book]["all_pages"][chapter_index][-1]:
+                self.web_view.execute_script('change_nav_status("Right", "none")')
+            else:
+                self.web_view.execute_script('change_nav_status("Left", "block")')
+                self.web_view.execute_script('change_nav_status("Right", "block")')
+                
         elif data_dict["type"] == "before_slider_change":
             page_info = eval(data_dict["data"])
             book, chapter_index, page_id = page_info["book"], page_info["chapter_index"], page_info["page_id"]
@@ -208,6 +217,8 @@ class UserManual(Window):
             page_id = self.load_data[3]
             self.remove_read_page(book, chapter_index, page_id)
             self.web_view.execute_script("load_page();")
+            if chapter_index == 0:
+                self.web_view.execute_script('change_nav_status("Left", "none")')
 
     def init_progress_data(self):
         for book in self.home_values:

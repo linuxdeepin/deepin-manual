@@ -183,3 +183,8 @@ function redirect_action(book, chapter_index, page_id, c){
         return false;
     }
 }
+
+function change_nav_status(direction, style){
+    nav_span = document.getElementById(direction);
+    nav_span.style.display = style;
+}
