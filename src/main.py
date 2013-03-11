@@ -20,17 +20,6 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from dtk.ui.init_skin import init_skin
-from deepin_utils.file import get_parent_dir
-import os
-app_theme = init_skin(
-    "deepin-user-manual", 
-    "1.0",
-    "01",
-    os.path.join(get_parent_dir(__file__, 2), "skin"),
-    os.path.join(get_parent_dir(__file__, 2), "app_theme"),
-    )
-
 from dtk.ui.new_slider import HSlider
 from color import color_hex_to_cairo
 from button import SelectButton, SelectButtonGroup, ImageButton
@@ -117,8 +106,10 @@ class UserManual(Window):
         
     def title_changed_handler(self, widget, webframe, data):
         data_dict = eval(data)
+
         if data_dict["type"]=="external_link":
             webbrowser.open(data_dict["data"])
+
         elif data_dict["type"]=="home_item_link":
             book = data_dict["data"]
             book_contents = get_book_contents(book)
@@ -137,12 +128,14 @@ class UserManual(Window):
                 index_title_bar.center_align.remove(center_align_child)
             index_title_bar.center_align.add(self.chapter_group)
             self.slider.to_page(index_title_bar, "right")
+
         elif data_dict["type"] == "after_slider_change":
             page_info = eval(data_dict["data"])
             book, chapter_index, page_id = page_info["book"], page_info["chapter_index"], page_info["page_id"]
-            if chapter_index == 0 and self.home_values[book]["all_pages"][chapter_index][0] == page_id[1:]:
+            self.remove_read_page(book, chapter_index, page_id)
+            if chapter_index == 0 and self.home_values[book]["all_pages"][chapter_index][0] == page_id:
                 self.web_view.execute_script('change_nav_status("Left", "none")')
-            elif chapter_index == len(self.home_values[book]["all_pages"])-1 and page_id[1:] == self.home_values[book]["all_pages"][chapter_index][-1]:
+            elif chapter_index == len(self.home_values[book]["all_pages"])-1 and page_id == self.home_values[book]["all_pages"][chapter_index][-1]:
                 self.web_view.execute_script('change_nav_status("Right", "none")')
             else:
                 self.web_view.execute_script('change_nav_status("Left", "block")')
@@ -153,6 +146,7 @@ class UserManual(Window):
             book, chapter_index, page_id = page_info["book"], page_info["chapter_index"], page_info["page_id"]
             self.remove_read_page(book, chapter_index, page_id)
             self.web_view.execute_script("var all_pages=%s" % json.dumps(self.home_values[book]["all_pages"], encoding="UTF-8", ensure_ascii=False))
+            
         elif data_dict["type"] == "redirect_next_chapter":
             page_info = eval(data_dict["data"])
             book, chapter_index, page_id = page_info["book"], page_info["chapter_index"], page_info["page_id"]

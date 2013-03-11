@@ -140,7 +140,7 @@ function after_slider_change(imgObj, book, chapter_index) {
     var type = "after_slider_change";
     var jsObj = {"book": book, 
         "chapter_index": chapter_index, 
-        "page_id": imgObj.getAttribute("data-caption")};
+        "page_id": imgObj.getAttribute("data-caption").slice(1)};
     var data = JSON.stringify(jsObj, "replacer");
     write_to_title(type, data);
 }
