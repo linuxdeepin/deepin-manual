@@ -29,22 +29,5 @@
             },
         ]
     },
-    {
-        "title":"dss主题2",
-        "page":[
-            {
-                "id": "B1",
-                "description":
-                    "<img src='description1.png'/><span>多主题选择：</span>默认提供5套外观主题，点击<img src='page1/des_1.png'/>可以选择喜欢的主题。",
-                "image":"images/B1.jpg"
-            },
-            {
-                "id":"B2",
-                "description":
-                    "<img src='description1.png'/><span>多主题选择：</span>默认提供5套外观主题，点击<img src='page1/des_1.png'/>可以选择喜欢的主题。", 
-                "image":"images/B2.jpg"
-            },
-        ]
-    },
 ]
 }

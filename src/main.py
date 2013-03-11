@@ -126,7 +126,9 @@ class UserManual(Window):
             center_align_child = index_title_bar.center_align.get_child()
             if center_align_child:
                 index_title_bar.center_align.remove(center_align_child)
-            index_title_bar.center_align.add(self.chapter_group)
+
+            if len(self.home_values[book]["all_pages"]) > 1:
+                index_title_bar.center_align.add(self.chapter_group)
             self.slider.to_page(index_title_bar, "right")
 
         elif data_dict["type"] == "after_slider_change":
