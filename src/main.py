@@ -24,7 +24,7 @@ from dtk.ui.new_slider import HSlider
 from color import color_hex_to_cairo
 from button import SelectButton, SelectButtonGroup, ImageButton
 from window import Window
-from titlebar import  home_title_bar, index_title_bar, back 
+from titlebar import  home_title_bar, index_title_bar, back, TitleLabel
 from webview import ContentWebView
 from parse_content import (get_home_item_values, 
                             get_book_contents,
@@ -57,6 +57,7 @@ class UserManual(Window):
         self.width = 685
         self.height = 500
         self.titlebar_height = 62
+        self.book_name_label_color = "#6fb8ef"
         self.html_base_url = "file://" + os.path.realpath("../contents/html/")+"/"
         self.home_html_str = open(os.path.realpath("../contents/html/home.html")).read()
         self.index_html_str = open(os.path.realpath("../contents/html/index.html")).read()
@@ -66,6 +67,7 @@ class UserManual(Window):
 
     def _init_settings(self):
         self.set_decorated(False)
+        self.set_icon_from_file(os.path.realpath("./app_image/deepin-user-manual.png"))
 
     def _init_wedget(self):
         self.main_alignment = gtk.Alignment(0.5, 0.5, 0, 0)
@@ -122,13 +124,19 @@ class UserManual(Window):
                     chapter_index, # Values[2]
                     page_id, # Values[3]
                     self.home_values[book]["unread_pages"][chapter_index]) # Values[4]
-            self.chapter_group = self.get_chapter_button_group(book, book_contents, chapter_index)
+            # book name label
+            book_name_label = TitleLabel(self.home_values[book]["title"], font_color=self.book_name_label_color)
             center_align_child = index_title_bar.center_align.get_child()
-            if center_align_child:
+            if index_title_bar.center_align.get_child():
                 index_title_bar.center_align.remove(center_align_child)
-
+            index_title_bar.center_align.add(book_name_label)
+            # chapter button
+            self.chapter_group = self.get_chapter_button_group(book, book_contents, chapter_index)
+            chapter_button_align_child = index_title_bar.chapter_button_align.get_child()
+            if chapter_button_align_child:
+                index_title_bar.chapter_button_align.remove(chapter_button_align_child)
             if len(self.home_values[book]["all_pages"]) > 1:
-                index_title_bar.center_align.add(self.chapter_group)
+                index_title_bar.chapter_button_align.add(self.chapter_group)
             self.slider.to_page(index_title_bar, "right")
 
         elif data_dict["type"] == "after_slider_change":

@@ -58,12 +58,21 @@ class TitleBar(gtk.EventBox):
         min_align.set_padding(0, 0, 0, 0)
         min_align.add(self.min_button)
 
-        button_align = gtk.Alignment(1, 0, 0, 0)
         button_h_box = gtk.HBox()
-        button_h_box.pack_end(close_align, False, False)
+        button_h_box.pack_start(min_align, False, False)
+        button_h_box.pack_start(close_align, False, False)
+
+        button_align = gtk.Alignment(1, 0, 0, 0)
         button_align.add(button_h_box)
-        self.h_box.pack_end(button_align, False, False)
-        self.h_box.pack_end(min_align, False, False)
+
+        self.chapter_button_align = gtk.Alignment(1, 0.5, 0, 0)
+        self.chapter_button_align.set_padding(0, 0, 0, 0)
+
+        button_v_box = gtk.VBox()
+        button_v_box.pack_start(button_align, False, False)
+        button_v_box.pack_start(self.chapter_button_align)
+
+        self.h_box.pack_end(button_v_box, False, False)
 
         self.center_align = gtk.Alignment(0, 0.5, 0, 0)
         self.h_box.pack_end(self.center_align)

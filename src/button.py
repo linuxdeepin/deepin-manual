@@ -13,15 +13,17 @@ class SelectButton(gtk.Button):
                  chapter_index,
                  text,
                  ali_padding=13,
-                 font_size=10,
-                 bg_color="#62b8f0",):
+                 font_size=10):
         gtk.Button.__init__(self)
         # init values.
         self.chapter_index = chapter_index
         self.text = text
         self.font_size=font_size 
         self.ali_padding = ali_padding
-        self.bg_color = bg_color
+        self.selected_bg_color = "#62b8ef"
+        self.normal_bg_color = "#dfdfdf"
+        self.selected_font_color = "#ffffff"
+        self.normal_font_color = "#797979"
         self.draw_check = False
         self.__selected = False
         self.hover = False
@@ -76,7 +78,7 @@ class SelectButton(gtk.Button):
         if self.__selected or self.hover:
             # draw rectangle.
             with cairo_disable_antialias(cr):
-                cr.set_source_rgb(*color_hex_to_cairo(self.bg_color))
+                cr.set_source_rgb(*color_hex_to_cairo(self.selected_bg_color))
                 cr.rectangle(rect.x, 
                             rect.y, 
                             rect.width, 
@@ -87,13 +89,21 @@ class SelectButton(gtk.Button):
                     x_padding,
                     rect.y + rect.height/2 - font_h/2,
                     text_size=self.font_size, 
-                    text_color="#ffffff")        
+                    text_color=self.selected_font_color)        
         else:
+            with cairo_disable_antialias(cr):
+                cr.set_source_rgb(*color_hex_to_cairo(self.normal_bg_color))
+                cr.rectangle(rect.x, 
+                            rect.y, 
+                            rect.width, 
+                            rect.height)
+                cr.fill()
+
             draw_text(cr, self.text,
                     x_padding,
                     rect.y + rect.height/2 - font_h/2,
                     text_size=self.font_size, 
-                    text_color="#000000")        
+                    text_color=self.normal_font_color)        
         # set size.
         if font_h > rect.height:
             widget.set_size_request(rect.width, font_h)
