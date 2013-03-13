@@ -20,9 +20,19 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+from dtk.ui.init_skin import init_skin
+from deepin_utils.file import get_parent_dir
+import os
+app_theme = init_skin(
+    "deepin-user-manual", 
+    "1.0",
+    "01",
+    os.path.join(get_parent_dir(__file__, 2), "skin"),
+    os.path.join(get_parent_dir(__file__, 2), "app_theme"),
+    )
+
 from dtk.ui.new_slider import HSlider
-from color import color_hex_to_cairo
-from button import SelectButton, SelectButtonGroup, ImageButton
+from button import SelectButton, SelectButtonGroup
 from window import Window
 from titlebar import  home_title_bar, index_title_bar, back, TitleLabel
 from webview import ContentWebView
@@ -125,7 +135,7 @@ class UserManual(Window):
                     page_id, # Values[3]
                     self.home_values[book]["unread_pages"][chapter_index]) # Values[4]
             # book name label
-            book_name_label = TitleLabel(self.home_values[book]["title"], font_color=self.book_name_label_color)
+            book_name_label = TitleLabel(self.home_values[book]["title"], font_size=15, font_color=self.book_name_label_color)
             center_align_child = index_title_bar.center_align.get_child()
             if index_title_bar.center_align.get_child():
                 index_title_bar.center_align.remove(center_align_child)

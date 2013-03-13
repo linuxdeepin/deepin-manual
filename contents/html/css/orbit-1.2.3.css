@@ -1,6 +1,6 @@
 html,body{margin:0px;}
 #featured { 
-	background: #000 url('../images/loading.gif') no-repeat center center;
+	background: #fff url('../images/loading.gif') no-repeat center center;
 	overflow: hidden; }
 #featured>img,  
 #featured>div,
@@ -31,7 +31,9 @@ div.orbit>img {
     position: absolute;
     top: 0;
     left: 0;
-    display: none; }
+    display: none; 
+    background:#fff;
+    }
 
 div.orbit>a {
     border: none;
@@ -124,7 +126,7 @@ span.pause.active {
     color: #535353;
     font-size: 14px;
     height: 60px;
-    padding: 24px 35px 0 35px;
+    padding: 10px 35px 0 35px;
     position: absolute;
     right: 0;
 	line-height:22px;
