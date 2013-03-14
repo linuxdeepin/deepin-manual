@@ -62,7 +62,7 @@ class Window(gtk.Window):
         self.fg_alpha = 0.8
         # colors.
         self.sahow_color = ("#000000", 0.1)
-        self.border_out_color = ("#cacaca", 1.0)
+        self.border_out_color = ("#aaaaaa", 1.0)
 
     def __init_settings(self):
         self.set_colormap(gtk.gdk.Screen().get_rgba_colormap())

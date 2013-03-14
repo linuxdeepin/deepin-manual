@@ -155,7 +155,9 @@ class UserManual(Window):
             self.remove_read_page(book, chapter_index, page_id)
             if chapter_index == 0 and self.home_values[book]["all_pages"][chapter_index][0] == page_id:
                 self.web_view.execute_script('change_nav_status("Left", "none")')
+                self.web_view.execute_script('change_nav_status("Right", "block")')
             elif chapter_index == len(self.home_values[book]["all_pages"])-1 and page_id == self.home_values[book]["all_pages"][chapter_index][-1]:
+                self.web_view.execute_script('change_nav_status("Left", "block")')
                 self.web_view.execute_script('change_nav_status("Right", "none")')
             else:
                 self.web_view.execute_script('change_nav_status("Left", "block")')

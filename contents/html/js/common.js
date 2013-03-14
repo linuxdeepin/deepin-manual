@@ -54,43 +54,43 @@ function insert_pages_into_chapter(pages){
 /***
  * Notice: the percent argument is a number between 0.0~1.0 
  * */
-function create_home_icon_node(id, book, title, icon_path, percent){ 
-   percent_div = document.createElement("div");
-   percent_div.className = "percent";
-   percent_div.innerHTML = (Number(percent) * 100).toString()+"%";
+function create_home_icon_node(id, book, title, icon_path, percent){
+    percent_div = document.createElement("div");
+    percent_div.className = "percent";
+    percent_div.innerHTML = (Number(percent) * 100).toFixed().toString()+"%";
 
-   barline_div = document.createElement("div");
-   barline_div.className = "barline";
-   bar_width = (Number(percent) * 66).toFixed(0)+"px";
-   barline_div.style.width=bar_width;
+    barline_div = document.createElement("div");
+    barline_div.className = "barline";
+    bar_width = (Number(percent) * 66).toFixed(0)+"px";
+    barline_div.style.width=bar_width;
 
-   bar_div = document.createElement("div");
-   bar_div.className = "bar";
-   bar_div.appendChild(percent_div);
-   bar_div.appendChild(barline_div);
+    bar_div = document.createElement("div");
+    bar_div.className = "bar";
+    bar_div.appendChild(percent_div);
+    bar_div.appendChild(barline_div);
 
-   title_span = document.createElement("span");
-   title_span.className = "title";
-   title_span.innerHTML = title;
-   
-   icon_img = document.createElement("img");
-   icon_img.src = icon_path;
+    title_span = document.createElement("span");
+    title_span.className = "title";
+    title_span.innerHTML = title;
 
-   icon_a = document.createElement("a");
-   icon_a.href = "index.html";
-   icon_a.id = book;
-   icon_a.onclick = function(e){
-       home_item_link(this);
-       return false;
-   }
-   icon_a.appendChild(icon_img);
+    icon_img = document.createElement("img");
+    icon_img.src = icon_path;
 
-   home_item = document.createElement("li");
-   home_item.className = "m0"+id;
-   home_item.appendChild(title_span);
-   home_item.appendChild(icon_a);
-   home_item.appendChild(bar_div);
-   return home_item;
+    icon_a = document.createElement("a");
+    icon_a.href = "index.html";
+    icon_a.id = book;
+    icon_a.onclick = function(e){
+        home_item_link(this);
+        return false;
+    }
+    icon_a.appendChild(icon_img);
+
+    home_item = document.createElement("li");
+    home_item.className = "m0"+id;
+    home_item.appendChild(title_span);
+    home_item.appendChild(icon_a);
+    home_item.appendChild(bar_div);
+    return home_item;
 }
 
 function home_load(data){
