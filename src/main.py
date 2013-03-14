@@ -152,6 +152,7 @@ class UserManual(Window):
             title_align_child = self.title_align.get_child()
             if title_align_child:
                 self.title_align.remove(title_align_child)
+            back.set_state(gtk.STATE_NORMAL)
             self.title_align.add(index_title_bar)
             self.show_all()
 
@@ -232,6 +233,7 @@ class UserManual(Window):
         if title_align_child:
             self.title_align.remove(title_align_child)
         self.title_align.add(home_title_bar)
+        back.set_state(gtk.STATE_NORMAL)
         self.show_all()
 
     def load_committed_cb(self, view, frame):
