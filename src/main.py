@@ -31,7 +31,6 @@ app_theme = init_skin(
     os.path.join(get_parent_dir(__file__, 2), "app_theme"),
     )
 
-from dtk.ui.new_slider import HSlider
 from button import SelectButton, SelectButtonGroup
 from window import Window
 from titlebar import  home_title_bar, index_title_bar, back, TitleLabel
@@ -84,10 +83,13 @@ class UserManual(Window):
         self.main_alignment.set_padding(0, 0, 0, 0)
         main_v_box = gtk.VBox()
 
-        self.slider = HSlider(100)
-        self.slider.set_size_request(self.width, self.titlebar_height)
-        self.slider.to_page_now(home_title_bar)
-        main_v_box.pack_start(self.slider)
+        #self.slider = HSlider(100)
+        #self.slider.set_size_request(self.width, self.titlebar_height)
+        #self.slider.to_page_now(home_title_bar)
+        self.title_align = gtk.Alignment(0, 0.5, 1, 1)
+        self.title_align.set_padding(0, 0, 0, 0)
+        self.title_align.add(home_title_bar)
+        main_v_box.pack_start(self.title_align)
         
         self.web_view = ContentWebView(self.width, self.height - self.titlebar_height)
         self.web_view.enable_inspector()
@@ -147,7 +149,11 @@ class UserManual(Window):
                 index_title_bar.chapter_button_align.remove(chapter_button_align_child)
             if len(self.home_values[book]["all_pages"]) > 1:
                 index_title_bar.chapter_button_align.add(self.chapter_group)
-            self.slider.to_page(index_title_bar, "right")
+            title_align_child = self.title_align.get_child()
+            if title_align_child:
+                self.title_align.remove(title_align_child)
+            self.title_align.add(index_title_bar)
+            self.show_all()
 
         elif data_dict["type"] == "after_slider_change":
             page_info = eval(data_dict["data"])
@@ -222,7 +228,11 @@ class UserManual(Window):
     def page_go_back(self, widget, event, web):
         self.fresh_read_percent()
         self.push_data_to_web_view(self.home_html_str, self.home_values_to_list())
-        self.slider.to_page(home_title_bar, "left")
+        title_align_child = self.title_align.get_child()
+        if title_align_child:
+            self.title_align.remove(title_align_child)
+        self.title_align.add(home_title_bar)
+        self.show_all()
 
     def load_committed_cb(self, view, frame):
         self.web_view.execute_script("var Values=%s" % json.dumps(self.load_data, encoding="UTF-8", ensure_ascii=False))
