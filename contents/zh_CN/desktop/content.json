@@ -6,37 +6,44 @@
             {
                 "id": "A1",
                 "description":
-                    "<strong>什么是 Linux Deepin？</strong><br />Linux Deepin (深度 Linux)，简称 LD，是国内最流行的 Linux 发行版。它是一款开源的桌面操作系统，适合于笔记本和台式机。",
-                "image":"images/A1.jpg"
+                    "<span class='page-title'>应用程序启动器:</span>打开与退出",
+                "image":"images/02-1.PNG"
             },
             {
                 "id": "A2",
                 "description":
-                    "<strong>为什么要选择 Linux Deepin？</strong><br />Linux Deepin 具有易用、美观、稳定等特点，能够满足用户日常办公、娱乐等各项需求。", 
-                "image":"images/A2.jpg"
+                    "<span class='page-title'>程序启动组:</span>您可以直接拖动喜欢的软件图标，组成程序启动组，高效组织桌面。",
+                "image":"images/02-2.PNG"
             },
             {
                 "id": "A3",
                 "description":
-                    "<img src='description1.png'/><span>多主题选择：</span>默认提供5套外观主题，点击<img src='page1/des_1.png'/>可以选择喜欢的主题。", 
-                "image":"images/A3.jpg"
-            },
-        ]
-    },
-    {
-        "title":"社区参与",
-        "page":[
-            {
-                "id": "B1",
-                "description":
-                    "<img src='description1.png'/><span>多主题选择：</span>默认提供5套外观主题，点击<img src='page1/des_1.png'/>可以选择喜欢的主题。",
-                "image":"images/B1.jpg"
+                    "<span class='page-title'>显示桌面：</span>点击该按钮，最小化当前打开的全部窗口并显示桌面；再次点击，恢复原来窗口状态。",
+                "image":"images/02-3.PNG"
             },
             {
-                "id":"B2",
+                "id": "A4",
                 "description":
-                    "<img src='description1.png'/><span>多主题选择：</span>默认提供5套外观主题，点击<img src='page1/des_1.png'/>可以选择喜欢的主题。", 
-                "image":"images/B2.jpg"
+                    "<span class='page-title'>消息通知区域：</span>在这里，您会看到来自聊天工具或其他应用程序、系统发出的消息。",
+                "image":"images/02-4.PNG"
+            },
+            {
+                "id": "A5",
+                "description":
+                    "<span class='page-title'>建立应用程序快捷方式：</span>更加快速启动哟。",
+                "image":"images/02-5.PNG"
+            },
+            {
+                "id": "A6",
+                "description":
+                    "<span class='page-title'>多用户切换：</span>在登录画面使用左右方向键，可切换不同用户。",
+                "image":"images/02-6.PNG"
+            },
+            {
+                "id": "A7",
+                "description":
+                    "<span class='page-title'>访客登录：</span>在登录画面使用左右方向键，可选择以访客身份登录。",
+                "image":"images/02-7.PNG"
             },
         ]
     },

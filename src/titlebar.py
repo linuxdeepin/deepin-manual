@@ -22,11 +22,11 @@
 
 import gtk
 from utils import propagate_expose, get_text_size
-from color import color_hex_to_cairo, alpha_color_hex_to_cairo
+from color import color_hex_to_cairo 
 from draw import draw_text
-from button import ImageButton, SelectButton, SelectButtonGroup
+from button import ImageButton 
 
-BACKGROUND_COLOR = "#f4f4f4"
+BACKGROUND_COLOR = "#ededed"
 SEPERATOR_COLOR_UP = "#a3a3a3"
 SEPERATOR_COLOR_DOWN = "#cdcdcd"
 

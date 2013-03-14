@@ -1,31 +1,49 @@
 {
 "content":[
     {
-        "title":"dss主题1",
+        "title":"系统设置",
         "page":[
             {
                 "id": "A1",
                 "description":
-                    "这是dss的A1",
-                "image":"images/A1.jpg"
+                    "<span class='page-title'>常规设置：</span>您可以通过应用程序启动器打开系统设置。在这里可以配置显示器、鼠标、键盘、电源等常规功能选项。",
+                "image":"images/05-1.PNG"
             },
             {
                 "id": "A2",
                 "description":
-                    "<strong>为什么要选择 Linux Deepin？</strong><br />Linux Deepin 具有易用、美观、稳定等特点，能够满足用户日常办公、娱乐等各项需求。", 
-                "image":"images/A2.jpg"
+                    "<span class='page-title'>桌面美化：</span>个性化主题，网络下载高清壁纸，装点绚丽桌面。",
+                "image":"images/05-2.PNG"
             },
-            {
+                        {
                 "id": "A3",
                 "description":
-                    "<img src='description1.png'/><span>多主题选择：</span>默认提供5套外观主题，点击<img src='page1/des_1.png'/>可以选择喜欢的主题。", 
-                "image":"images/A3.jpg"
+                    "<span class='page-title'>桌面设置：</span>设置桌面图标、Dock 任务栏样式和登录锁屏画面。",
+                "image":"images/05-3.PNG"
             },
             {
                 "id": "A4",
                 "description":
-                    "咝咝咝咝咝岁", 
-                "image":"images/A4.jpg"
+                    "<span class='page-title'>用户账户设置：</span>添加与删除用户账户，设置用户密码，开启与关闭用户自动登陆功能，可以自定义用户头像。",
+                "image":"images/05-4.PNG"
+            },
+                        {
+                "id": "A5",
+                "description":
+                    "<span class='page-title'>启动项管理：</span>进入“应用程序关联-启动项”添加、删除与修改启动项条目。",
+                "image":"images/05-5.PNG"
+            },
+            {
+                "id": "A6",
+                "description":
+                    "<span class='page-title'>系统快捷键：</span>预设快捷键符合您的使用习惯，助您快速上手。",
+                "image":"images/05-6.PNG"
+            },
+                        {
+                "id": "A7",
+                "description":
+                    "<span class='page-title'>电源管理与节能设置：</span>我们可以选择平衡模式、节能模式和高性能模式三种电源计划。在看电影或玩游戏时可选择高性能模式。在系统设置中可自定义三种模式及设置电源按钮的默认行为。",
+                "image":"images/05-7.PNG"
             },
         ]
     },

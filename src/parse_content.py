@@ -22,7 +22,6 @@
 
 import os, sys
 from constant import CONFIG_FILE_PATH, LANGUAGE
-from ConfigParser import ConfigParser
 from deepin_utils.config import Config
 from deepin_utils.file import touch_file
 import traceback
@@ -34,12 +33,12 @@ def get_home_item_values():
     books = eval(ini.get("config", "book"))
     home_item_values = OrderedDict()
     for book in books:
-        write_book_pages_id_to_config(book)
+        write_book_pages_id_to_config(book[0])
         item = {}
-        item["book"] = book
-        item["title"] = ini.get("title", book)
-        item["icon_path"] = "../%s/%s/icon.png" % (LANGUAGE, book)
-        home_item_values[book] = item
+        item["book"] = book[0]
+        item["title"] = book[1]
+        item["icon_path"] = "../%s/%s/icon.png" % (LANGUAGE, book[0])
+        home_item_values[book[0]] = item
 
     return home_item_values
 
@@ -47,7 +46,7 @@ def get_book_contents(book):
     json_file = os.path.realpath("../contents/%s/%s/content.json" % (LANGUAGE, book))
     try:
         content_dict = eval(open(json_file).read())
-    except Exception, e:
+    except Exception:
         print "there is something wrong in content file: %s" % json_file
         traceback.print_exc(file=sys.stdout)
         sys.exit(1)

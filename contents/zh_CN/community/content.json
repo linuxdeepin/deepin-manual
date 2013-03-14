@@ -6,37 +6,26 @@
             {
                 "id": "A1",
                 "description":
-                    "<strong>什么是 Linux Deepin？</strong><br />Linux Deepin (深度 Linux)，简称 LD，是国内最流行的 Linux 发行版。它是一款开源的桌面操作系统，适合于笔记本和台式机。",
-                "image":"images/A1.jpg"
+                    "<span class='page-title'>参与论坛讨论:</span><a href='http://www.linuxdeepin.com/forum'>Linux Deepin 论坛</a>氛围友好，是广大爱好者交流的聚集地。",
+                "image":"images/07-1.PNG"
             },
             {
                 "id": "A2",
                 "description":
-                    "<strong>为什么要选择 Linux Deepin？</strong><br />Linux Deepin 具有易用、美观、稳定等特点，能够满足用户日常办公、娱乐等各项需求。", 
-                "image":"images/A2.jpg"
+                    "<span class='page-title'>微博:</span>您是微博控？那就来关注 <a href='http://e.weibo.com/linuxdeepinnew'>@LinuxDeepin官方微博</a>吧，每天都有有趣的内容更新喔～",
+                "image":"images/07-2.PNG"
             },
             {
                 "id": "A3",
                 "description":
-                    "<img src='description1.png'/><span>多主题选择：</span>默认提供5套外观主题，点击<img src='page1/des_1.png'/>可以选择喜欢的主题。", 
-                "image":"images/A3.jpg"
-            },
-        ]
-    },
-    {
-        "title":"社区参与",
-        "page":[
-            {
-                "id": "B1",
-                "description":
-                    "<img src='description1.png'/><span>多主题选择：</span>默认提供5套外观主题，点击<img src='page1/des_1.png'/>可以选择喜欢的主题。",
-                "image":"images/B1.jpg"
+                    "<span class='page-title'>邮件列表：</span>订阅我们的<a href='http://www.linuxdeepin.com/forum/mail-lists'>邮件列表</a>，获取最新开发进度与动态，参考讨论您喜欢的话题，发表自己的见解。",
+                "image":"images/07-3.PNG"
             },
             {
-                "id":"B2",
+                "id": "A4",
                 "description":
-                    "<img src='description1.png'/><span>多主题选择：</span>默认提供5套外观主题，点击<img src='page1/des_1.png'/>可以选择喜欢的主题。", 
-                "image":"images/B2.jpg"
+                    "<span class='page-title'>其他：</span><a href='http://tieba.baidu.com/f?kw=linuxdeepin'>百度贴吧</a>、<a href='https://plus.google.com/u/0/communities/110354900680423938393'>Google+ 社群</a>、<a href='http://www.facebook.com/groups/linuxdeepin'>Facebook</a>、IRC 等，都是您参与社区活动的好去处 ^o^",
+                "image":"images/07-4.PNG"
             },
         ]
     },

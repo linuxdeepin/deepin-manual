@@ -1,42 +1,60 @@
 {
 "content":[
     {
-        "title":"简介",
+        "title":"办公",
         "page":[
             {
                 "id": "A1",
                 "description":
-                    "<strong>什么是 Linux Deepin？</strong><br />Linux Deepin (深度 Linux)，简称 LD，是国内最流行的 Linux 发行版。它是一款开源的桌面操作系统，适合于笔记本和台式机。",
-                "image":"images/A1.jpg"
+                    "<span class='page-title'>办公套件 LibreOffice：</span>操作简明直观，工作事半功倍。",
+                "image":"images/06-1-1.PNG"
             },
             {
                 "id": "A2",
                 "description":
-                    "<strong>为什么要选择 Linux Deepin？</strong><br />Linux Deepin 具有易用、美观、稳定等特点，能够满足用户日常办公、娱乐等各项需求。", 
-                "image":"images/A2.jpg"
+                    "<span class='page-title'>信使 iptux：</span>局域网通信利器。",
+                "image":"images/06-1-2.PNG"
             },
             {
                 "id": "A3",
                 "description":
-                    "<img src='description1.png'/><span>多主题选择：</span>默认提供5套外观主题，点击<img src='page1/des_1.png'/>可以选择喜欢的主题。", 
-                "image":"images/A3.jpg"
+                    "<span class='page-title'>文档查看器 Evince：</span>漫画、小说、PDF 一网打尽！",
+                "image":"images/06-1-3.PNG"
+            },
+            {
+                "id": "A4",
+                "description":
+                    "<span class='page-title'>扫描易：</span>轻松扫描，助力办公。",
+                "image":"images/06-1-4.PNG"
+            },
+            {
+                "id": "A5",
+                "description":
+                    "<span class='page-title'>轻松打印：</span>点击“系统设置”中的“打印”，即可配置打印服务。",
+                "image":"images/06-1-5.PNG"
             },
         ]
     },
     {
-        "title":"社区参与",
+        "title":"畅游网络",
         "page":[
             {
-                "id": "B1",
+                "id": "A1",
                 "description":
-                    "<img src='description1.png'/><span>多主题选择：</span>默认提供5套外观主题，点击<img src='page1/des_1.png'/>可以选择喜欢的主题。",
-                "image":"images/B1.jpg"
+                    "<span class='page-title'>网络浏览器：</span>搭载火狐浏览器，帮您快速访问网络。同时，您也可以从软件中心安装 Chromium 浏览器。",
+                "image":"images/06-2-1.PNG"
             },
             {
-                "id":"B2",
+                "id": "A2",
                 "description":
-                    "<img src='description1.png'/><span>多主题选择：</span>默认提供5套外观主题，点击<img src='page1/des_1.png'/>可以选择喜欢的主题。", 
-                "image":"images/B2.jpg"
+                    "<span class='page-title'>即时通讯工具：</span>内置Empathy，享受即时交流，支持 GTalk、MSN、Facebook 等帐号。如果您常用 QQ，可在软件中心安装 pywebQQ。",
+                "image":"images/06-2-2.PNG"
+            },
+            {
+                "id": "A3",
+                "description":
+                    "<span class='page-title'>访问远程桌面：</span>Remmnina 让你运筹帷幄，访控千里。",
+                "image":"images/06-2-3.PNG"
             },
         ]
     },

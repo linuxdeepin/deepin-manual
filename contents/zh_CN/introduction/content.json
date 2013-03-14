@@ -6,26 +6,14 @@
             {
                 "id": "A1",
                 "description":
-                    "<span style='color:#6fb8ef; font-weight:600;'>什么是 Linux Deepin？</span>Linux Deepin (深度 Linux)，简称 LD，是国内最流行的 Linux 发行版。它是一款开源的桌面操作系统，适合于笔记本和台式机。",
-                "image":"images/01_1.PNG"
+                    "<span class='page-title'>什么是 Linux Deepin？</span>Linux Deepin 是国内最流行的操作系统，致力于促进中国开源事业的发展，立足国内，面向国际，建设国际化的用户社区。",
+                "image":"images/01-1.PNG"
             },
             {
                 "id": "A2",
                 "description":
-                    "<strong>为什么要选择 Linux Deepin？</strong><br />Linux Deepin 具有易用、美观、稳定等特点，能够满足用户日常办公、娱乐等各项需求。", 
-                "image":"images/01_2.PNG"
-            },
-            {
-                "id": "A3",
-                "description":
-                    "<span style='color:#6fb8ef; font-weight:600;'>什么是 Linux Deepin？</span>Linux Deepin (深度 Linux)，简称 LD，是国内最流行的 Linux 发行版。它是一款开源的桌面操作系统，适合于笔记本和台式机。",
-                "image":"images/01_3.PNG"
-            },
-            {
-                "id": "A4",
-                "description":
-                    "<strong>为什么要选择 Linux Deepin？</strong><br />Linux Deepin 具有易用、美观、稳定等特点，能够满足用户日常办公、娱乐等各项需求。", 
-                "image":"images/01_4.PNG"
+                    "<span class='page-title'>为什么要选择 Linux Deepin？</span>Linux Deepin 易用、美观、稳定，能够满足您日常办公、娱乐等各项需求。",
+                "image":"images/01-2.PNG"
             },
         ]
     },

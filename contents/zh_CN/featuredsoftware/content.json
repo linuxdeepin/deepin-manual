@@ -1,42 +1,89 @@
 {
 "content":[
     {
-        "title":"简介",
+        "title":"深度音乐播放器",
         "page":[
             {
                 "id": "A1",
                 "description":
-                    "<strong>什么是 Linux Deepin？</strong><br />Linux Deepin (深度 Linux)，简称 LD，是国内最流行的 Linux 发行版。它是一款开源的桌面操作系统，适合于笔记本和台式机。",
-                "image":"images/A1.jpg"
+                    "<span class='page-title'>多模式切换：</span>迷你模式，让您的鼠标更加自由。",
+                "image":"images/03-2-1.PNG"
             },
             {
                 "id": "A2",
                 "description":
-                    "<strong>为什么要选择 Linux Deepin？</strong><br />Linux Deepin 具有易用、美观、稳定等特点，能够满足用户日常办公、娱乐等各项需求。", 
-                "image":"images/A2.jpg"
+                    "<span class='page-title'>歌词秀：</span>精准下载，多彩配色方案，窗口歌词、桌面歌词模式随心切换。",
+                "image":"images/03-2-2.PNG"
             },
             {
                 "id": "A3",
                 "description":
-                    "<img src='description1.png'/><span>多主题选择：</span>默认提供5套外观主题，点击<img src='page1/des_1.png'/>可以选择喜欢的主题。", 
-                "image":"images/A3.jpg"
+                    "<span class='page-title'>丰富的插件系统：</span>提供音乐电台、网络广播、播放通知等插件，让您武装到牙齿。",
+                "image":"images/03-2-3.PNG"
+            },
+            {
+                "id": "A4",
+                "description":
+                    "<span class='page-title'>无损播放：</span>支持音频 CD 及 CUE、FLAC、APE、WAV 等无损格式。",
+                "image":"images/03-2-4.PNG"
+            },
+            {
+                "id": "A5",
+                "description":
+                    "<span class='page-title'>更多功能等待您去发掘：</span>支持音频文件格式转换，记忆播放进度，支持歌曲切换时淡入淡出等。",
+                "image":"images/03-2-5.PNG"
             },
         ]
     },
     {
-        "title":"社区参与",
+        "title":"深度影音播放器",
         "page":[
             {
                 "id": "B1",
                 "description":
-                    "<img src='description1.png'/><span>多主题选择：</span>默认提供5套外观主题，点击<img src='page1/des_1.png'/>可以选择喜欢的主题。",
-                "image":"images/B1.jpg"
+                    "<span class='page-title'>多模式切换：</span>全屏模式，让您专注于影片观赏。",
+                "image":"images/03-3-1.PNG"
             },
             {
-                "id":"B2",
+                "id": "B2",
                 "description":
-                    "<img src='description1.png'/><span>多主题选择：</span>默认提供5套外观主题，点击<img src='page1/des_1.png'/>可以选择喜欢的主题。", 
-                "image":"images/B2.jpg"
+                    "<span class='page-title'>方便的格式转换：</span>将影音文件转换为移动设备使用的流行格式（如  AVI、3GP、MP4、MPG、TS、OGG、MKV、M2TS、FLV、MOV、MXF、ASF、WebM 等）。",
+                "image":"images/03-3-2.PNG"
+            },
+            {
+                "id": "B3",
+                "description":
+                    "<span class='page-title'>视频预览：</span>提前查看精彩剧情。",
+                "image":"images/03-3-3.PNG"
+            },
+            {
+                "id": "B4",
+                "description":
+                    "<span class='page-title'>发掘更多功能：</span>视频截图 (快捷键 Alt + A)、记录播放进度、支持光盘播放等。",
+                "image":"images/03-3-4.PNG"
+            },
+        ]
+    },
+    {
+        "title":"深度截图",
+        "page":[
+            {
+                "id": "C1",
+                "description":
+                    "<span class='page-title'>启用：</span>按下 Ctrl+Alt+A 快速启动，ESC 快速取消。",
+                "image":"images/03-1-1.PNG"
+            },
+            {
+                "id": "C2",
+                "description":
+                    "<span class='page-title'>延时截图：</span>按下Ctrl+PtrSc试试看！",
+                "image":"images/03-1-2.PNG"
+            },
+            {
+                "id": "C3",
+                "description":
+                    "<span class='page-title'>微博分享：</span>绑定新浪微博/腾讯微博帐号，即可一键与朋友分享您的截图。",
+                "image":"images/03-1-3.PNG"
             },
         ]
     },

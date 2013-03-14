@@ -1,6 +1,8 @@
-html,body{margin:0px;}
+html,body{
+    margin:0px;
+}
 #featured { 
-	background: #fff url('../images/loading.gif') no-repeat center center;
+	background: #faf8f9 url('../images/loading.gif') no-repeat center center;
 	overflow: hidden; }
 #featured>img,  
 #featured>div,
@@ -32,7 +34,7 @@ div.orbit>img {
     top: 0;
     left: 0;
     display: none; 
-    background:#fff;
+    background:#faf8f9;
     }
 
 div.orbit>a {
@@ -124,7 +126,7 @@ span.pause.active {
 .orbit-wrapper .orbit-caption {
     bottom: 0;
     color: #535353;
-    font-size: 14px;
+    font-size: 16px;
     height: 60px;
     padding: 10px 35px 0 35px;
     position: absolute;
@@ -206,3 +208,8 @@ div.slider-nav span.left {
 .read { background:url(../images/read.png) no-repeat left 5px; padding-left:25px;}
 
 .unread { background:url(../images/unread.png) no-repeat left 5px; padding-left:25px;}
+
+.page-title {
+    color:#6fb8ef; 
+    font-weight:600;
+}
