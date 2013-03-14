@@ -31,8 +31,6 @@ class SelectButton(gtk.Button):
         self.set_size_request(width+self.ali_padding*2, 23)
         # init events.
         self.add_events(gtk.gdk.ALL_EVENTS_MASK)
-        self.connect("button-press-event", self.select_button_button_press_event)
-        self.connect("button-release-event", self.select_button_button_release_event)
         self.connect("expose-event", self.select_button_expose_event)        
         self.connect("enter-notify-event", self._cursor_enter_redraw)
         self.connect("leave-notify-event", self._cursor_leave_redraw)
@@ -59,12 +57,6 @@ class SelectButton(gtk.Button):
         self.hover = False
         self.queue_draw()
 
-    def select_button_button_press_event(self, widget, event):
-        widget.grab_add()
-
-    def select_button_button_release_event(self, widget, event):
-        widget.grab_remove()
-        
     def select_button_expose_event(self, widget, event):
         cr = widget.window.cairo_create()
         rect = widget.allocation
@@ -152,15 +144,12 @@ class ImageButton(gtk.Button):
         self.set_size_request(self.normal_image_pixbuf.get_width(), self.normal_image_pixbuf.get_height())
         # init events.
         self._current_image_pixbuf = self.normal_image_pixbuf
-        self.connect("expose-event", self.image_button_expose_event)        
         if hover_image:
             self.hover_image_pixbuf = gtk.gdk.pixbuf_new_from_file(hover_image)
-            #self.connect("enter-notify-event", self._cursor_enter_redraw)
-            #self.connect("leave-notify-event", self._cursor_leave_redraw)
         if press_image:
             self.press_image_pixbuf = gtk.gdk.pixbuf_new_from_file(press_image)
-            #self.connect("button-press-event", self._cursor_press_redraw)
         self.add_events(gtk.gdk.ALL_EVENTS_MASK)
+        self.connect("expose-event", self.image_button_expose_event)
 
     def image_button_expose_event(self, widget, event):
         cr = widget.window.cairo_create()
@@ -175,19 +164,4 @@ class ImageButton(gtk.Button):
         draw_pixbuf(cr, image, rect.x, rect.y)
 
         propagate_expose(widget, event)
-        return True
-
-    def _cursor_enter_redraw(self, widget, event):
-        self._current_image_pixbuf = self.hover_image_pixbuf
-        self.queue_draw()
-        return True
-
-    def _cursor_leave_redraw(self, widget, event):
-        self._current_image_pixbuf = self.normal_image_pixbuf
-        self.queue_draw()
-        return True
-
-    def _cursor_press_redraw(self, widget, event):
-        self._current_image_pixbuf = self.press_image_pixbuf
-        self.queue_draw()
         return True

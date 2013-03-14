@@ -111,7 +111,6 @@ class UserManual(Window):
         self.add_move_event(home_title_bar)
         self.add_move_event(index_title_bar)
         self.web_view.connect("title-changed", self.title_changed_handler)
-        #chapter_buttons_group.connect("button-press", lambda w, b: self.print_info(b.chapter_index))
 
     def close_window(self, widget):
         write_last_page(self.last_page)
@@ -233,7 +232,7 @@ class UserManual(Window):
         if title_align_child:
             self.title_align.remove(title_align_child)
         self.title_align.add(home_title_bar)
-        back.set_state(gtk.STATE_NORMAL)
+        widget.set_state(gtk.STATE_NORMAL)
         self.show_all()
 
     def load_committed_cb(self, view, frame):
