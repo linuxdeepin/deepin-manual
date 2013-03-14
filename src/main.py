@@ -84,7 +84,7 @@ class UserManual(Window):
         self.main_alignment.set_padding(0, 0, 0, 0)
         main_v_box = gtk.VBox()
 
-        self.slider = HSlider(500)
+        self.slider = HSlider(100)
         self.slider.set_size_request(self.width, self.titlebar_height)
         self.slider.to_page_now(home_title_bar)
         main_v_box.pack_start(self.slider)

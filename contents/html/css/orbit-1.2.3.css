@@ -1,6 +1,9 @@
 html,body{
     margin:0px;
 }
+:focus {
+        outline: none;
+}
 #featured { 
 	background: #faf8f9 url('../images/loading.gif') no-repeat center center;
 	overflow: hidden; }
@@ -121,14 +124,18 @@ span.pause.active {
 
 .orbit-caption {
     display: none;
-    font-family: "HelveticaNeue", "Helvetica-Neue", Helvetica, Arial, sans-serif; }
+    font-family: "WenQuanYi Micro Hei", "HelveticaNeue", "Helvetica-Neue", Helvetica, Arial, sans-serif; }
+
+.orbit-caption a {
+    color: #2d6bac;
+}
 
 .orbit-wrapper .orbit-caption {
     bottom: 0;
     color: #535353;
-    font-size: 16px;
+    font-size: 14px;
     height: 60px;
-    padding: 10px 35px 0 35px;
+    padding: 20px 35px 0 35px;
     position: absolute;
     right: 0;
 	line-height:22px;
@@ -178,19 +185,20 @@ div.slider-nav span.left {
     list-style: none;
     bottom: 0;
     left: 50%;
-	margin-left: -25px;
-    padding: 0; }
+	margin-left: -100px;
+    padding: 0; 
+    width: 200px;
+}
 
 .orbit-bullets li {
-    float: left;
-    margin-left: 5px;
+    margin: 0 3px;
     cursor: pointer;
-    color: #999;
     text-indent: -9999px;
     background: url(../images/bullets.png) no-repeat 4px 0;
     width: 13px;
     height: 12px;
-    overflow: hidden; }
+    overflow: hidden; 
+    display: inline-block;}
 
 .orbit-bullets li.active {
     color: #222;

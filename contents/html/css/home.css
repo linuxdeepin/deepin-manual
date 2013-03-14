@@ -1,5 +1,5 @@
 html,body{ margin:0}
-.wrap{ height:438px; width:685px; background:#faf8f9;}
+.wrap{ height:425px; width:685px; background:#faf8f9; padding-top: 13px;}
 *:focus {
         outline: none;
 }
@@ -14,5 +14,5 @@ ul,li{ margin:0px; padding:0; list-style:none;}
 .menu a{ display:block; height:60px; width:60px; margin:0 auto;}
 
 .bar{ width:66px; height:12px; border:1px solid #fff; box-shadow:inset -2px 5px 3px #ccc; margin-left:20px; background:#e0e0e0; position:absolute;}
-.barline{ background:#4cabed; height:12px; position:absolute; top:0; z-index:99;}
-.percent{ text-align:center; color:#666; font-size:9px; position:absolute; top:0; z-index:100; width:66px;}
+.barline{ background:#55bef3; height:12px; position:absolute; top:0; z-index:99;}
+.percent{ text-align:center; color:#1b1b1b; font-size:9px; position:absolute; top:0; z-index:100; width:66px;}

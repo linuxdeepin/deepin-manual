@@ -13,6 +13,7 @@ function external_link(link){
     var type = "external_link";
     var data = link.href;
     write_to_title(type, data);
+    return false;
 }
 
 function create_index_img_node(id, img_path){
