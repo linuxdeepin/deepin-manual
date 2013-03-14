@@ -1,4 +1,7 @@
-html,body{ margin:0}
+html,body{ 
+    margin:0;
+    -webkit-user-select: none;
+}
 .wrap{ height:425px; width:685px; background:#faf8f9; padding-top: 13px;}
 *:focus {
         outline: none;

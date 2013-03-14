@@ -111,7 +111,7 @@ function load_page(){
     bullets_ul = document.getElementsByClassName("orbit-bullets");
     bullets_ul = bullets_ul[0];
     page_index = Number(Values[3].slice(1))-1;
-    bullets_ul.childNodes[page_index].click();
+    bullets_ul.childNodes[0].childNodes[page_index].click();
 }
 
 function nav_click(c) {
