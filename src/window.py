@@ -68,6 +68,7 @@ class Window(gtk.Window):
         self.set_colormap(gtk.gdk.Screen().get_rgba_colormap())
         self.set_decorated(False)
         self.set_app_paintable(True)
+        self.set_resizable(False)
         #
         
     def __init_widgets(self):
