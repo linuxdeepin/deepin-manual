@@ -6,7 +6,7 @@
             {
                 "id": "A1",
                 "description":
-                    "<span class='page-title'>首页推荐：</span>聚合优秀软件 分享使用经验。",
+                    "<span class='page-title'>首页推荐：</span>聚合优秀软件，分享使用经验。",
                 "image":"images/04-1.PNG"
             },
             {
@@ -18,7 +18,7 @@
             {
                 "id": "A3",
                 "description":
-                    "<span class='page-title'>安装本地：</span>.deb 软件包：软件中心支持直接安装本地的 .deb 格式软件包，并自动补全依赖。",
+                    "<span class='page-title'>安装本地 .deb 软件包：</span>直接双击.deb 格式软件包或如下图进行操作即可，并自动解决依赖哟。",
                 "image":"images/04-3.PNG"
             },
             {

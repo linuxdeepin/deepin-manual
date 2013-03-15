@@ -18,7 +18,7 @@
                         {
                 "id": "A3",
                 "description":
-                    "<span class='page-title'>桌面设置：</span>设置桌面图标、Dock 任务栏样式和登录锁屏画面。",
+                    "<span class='page-title'>桌面设置：</span>设置桌面图标、Dock 任务栏样式及屏幕热区。",
                 "image":"images/05-3.PNG"
             },
             {
