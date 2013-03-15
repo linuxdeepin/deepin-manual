@@ -6,13 +6,13 @@
             {
                 "id": "A1",
                 "description":
-                    "<span class='page-title'>参与论坛讨论:</span>Linux Deepin<a href='http://www.linuxdeepin.com/forum' onclick='return external_link(this)'>论坛</a>氛围友好，是广大爱好者交流的聚集地。",
+                    "<span class='page-title'>参与论坛讨论：</span>Linux Deepin<a href='http://www.linuxdeepin.com/forum' onclick='return external_link(this)'>论坛</a>氛围友好，是广大爱好者交流的聚集地。",
                 "image":"images/07-1.PNG"
             },
             {
                 "id": "A2",
                 "description":
-                    "<span class='page-title'>微博:</span>您是微博控？那就来关注 <a href='http://e.weibo.com/linuxdeepinnew' onclick='return external_link(this)'>@LinuxDeepin官方微博</a>吧，每天都有有趣的内容更新喔～",
+                    "<span class='page-title'>微博：</span>您是微博控？那就来关注 <a href='http://e.weibo.com/linuxdeepinnew' onclick='return external_link(this)'>@LinuxDeepin官方微博</a>吧，每天都有有趣的内容更新喔～",
                 "image":"images/07-2.PNG"
             },
             {

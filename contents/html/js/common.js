@@ -79,18 +79,18 @@ function create_home_icon_node(id, book, title, icon_path, percent){
 
     icon_a = document.createElement("a");
     icon_a.href = "index.html";
-    icon_a.id = book;
-    icon_a.onclick = function(e){
-        home_item_link(this);
-        return false;
-    }
     icon_a.appendChild(icon_img);
 
     home_item = document.createElement("li");
+    home_item.id = book;
     home_item.className = "m0"+id;
     home_item.appendChild(title_span);
     home_item.appendChild(icon_a);
     home_item.appendChild(bar_div);
+    home_item.onclick = function(e) {
+        home_item_link(this);
+        return false;
+    }
     return home_item;
 }
 
