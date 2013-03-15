@@ -82,7 +82,7 @@ class UserManual(Window):
         main_v_box.pack_start(self.title_align)
         
         self.web_view = ContentWebView(self.width, self.height - self.titlebar_height)
-        self.web_view.enable_inspector()
+        #self.web_view.enable_inspector()
         self.web_view.connect("load-committed", self.load_committed_cb)
         self.web_view.connect("load-finished", self.load_finished_cb)
 
