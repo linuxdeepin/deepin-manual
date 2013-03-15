@@ -2,6 +2,7 @@
 # -*- coding: utf-8 -*-
 
 import os
+from deepin_utils.file import get_parent_dir
 
 ALPHA_PRECISION = 16
 PARAM_PRECISION = 7
@@ -16,4 +17,7 @@ DEFAULT_FONT = get_system_font()
 DEFAULT_FONT_SIZE = 10
 
 LANGUAGE = "zh_CN"
-CONFIG_FILE_PATH = os.path.realpath("../contents/%s/config.ini" % LANGUAGE)
+APP_IMAGE_PATH = os.path.join(get_parent_dir(__file__), "app_image")
+CONTENTS_PATH = os.path.join(get_parent_dir(__file__, 2), "contents")
+
+CONFIG_FILE_PATH = os.path.join(CONTENTS_PATH, LANGUAGE, "config.ini")

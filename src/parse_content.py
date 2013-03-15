@@ -21,7 +21,7 @@
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import os, sys
-from constant import CONFIG_FILE_PATH, LANGUAGE
+from constant import CONTENTS_PATH, CONFIG_FILE_PATH, LANGUAGE
 from deepin_utils.config import Config
 from deepin_utils.file import touch_file
 import traceback
@@ -37,13 +37,13 @@ def get_home_item_values():
         item = {}
         item["book"] = book[0]
         item["title"] = book[1]
-        item["icon_path"] = "../%s/%s/icon.png" % (LANGUAGE, book[0])
+        item["icon_path"] = os.path.join(CONTENTS_PATH, LANGUAGE, book[0], "icon.png")
         home_item_values[book[0]] = item
 
     return home_item_values
 
 def get_book_contents(book):
-    json_file = os.path.realpath("../contents/%s/%s/content.json" % (LANGUAGE, book))
+    json_file = os.path.join(CONTENTS_PATH, LANGUAGE, book, "content.json")
     try:
         content_dict = eval(open(json_file).read())
     except Exception:
@@ -54,7 +54,7 @@ def get_book_contents(book):
     for chapter in content_dict["content"]:
         for page in chapter["page"]:
             # image path for html file
-            page["image"] = "../%s/%s/%s" % (LANGUAGE, book, page["image"])
+            page["image"] = os.path.join(CONTENTS_PATH, LANGUAGE, book, page["image"])
 
     return content_dict
 

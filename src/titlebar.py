@@ -20,11 +20,13 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
+import os
 import gtk
 from utils import propagate_expose, get_text_size
 from color import color_hex_to_cairo 
 from draw import draw_text
 from button import ImageButton 
+from constant import APP_IMAGE_PATH
 
 BACKGROUND_COLOR = "#ededed"
 SEPERATOR_COLOR_UP = "#a3a3a3"
@@ -48,12 +50,18 @@ class TitleBar(gtk.EventBox):
         
         self.align.connect("expose-event", self.expose)
         
-        self.close_button = ImageButton("app_image/window_close_normal.png", "./app_image/window_close_hover.png", "app_image/window_close_press.png")
+        self.close_button = ImageButton(
+                os.path.join(APP_IMAGE_PATH, "window_close_normal.png"), 
+                os.path.join(APP_IMAGE_PATH, "window_close_hover.png"), 
+                os.path.join(APP_IMAGE_PATH, "window_close_press.png"))
         close_align = gtk.Alignment(1, 0, 0, 0)
         close_align.set_padding(0, 0, 0, 0)
         close_align.add(self.close_button)
 
-        self.min_button = ImageButton("app_image/window_min_normal.png", "app_image/window_min_hover.png", "app_image/window_min_press.png")
+        self.min_button = ImageButton(
+                os.path.join(APP_IMAGE_PATH, "window_min_normal.png"), 
+                os.path.join(APP_IMAGE_PATH, "window_min_hover.png"), 
+                os.path.join(APP_IMAGE_PATH, "window_min_press.png"))
         min_align = gtk.Alignment(1, 0, 0, 0)
         min_align.set_padding(0, 0, 0, 0)
         min_align.add(self.min_button)
@@ -117,7 +125,7 @@ class TitleLabel(gtk.Label):
 
         draw_text(cr, self.text, rect.x, rect.y, self.font_size, self.font_color)
 
-icon = ImageButton("app_image/icon.png")
+icon = ImageButton(os.path.join(APP_IMAGE_PATH, "icon.png"))
 icon_align = gtk.Alignment(0, 0.5, 0, 0)
 icon_align.set_padding(0, 0, 13, 10)
 icon_align.add(icon)
@@ -128,7 +136,10 @@ title_align = gtk.Alignment(0, 0.5, 0, 0)
 title_align.set_padding(0, 0, 5, 0)
 title_align.add(title)
 
-back = ImageButton("app_image/back.png", "app_image/back-hover.png", "app_image/back-hover.png")
+back = ImageButton(
+                os.path.join(APP_IMAGE_PATH, "back_normal.png"), 
+                os.path.join(APP_IMAGE_PATH, "back_hover.png"), 
+                os.path.join(APP_IMAGE_PATH, "back_hover.png"))
 back_align = gtk.Alignment(0, 0.5, 0, 0)
 back_align.set_padding(0, 0, 13, 10)
 back_align.add(back)

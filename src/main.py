@@ -20,17 +20,7 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from dtk.ui.init_skin import init_skin
-from deepin_utils.file import get_parent_dir
-import os
-app_theme = init_skin(
-    "deepin-user-manual", 
-    "1.0",
-    "01",
-    os.path.join(get_parent_dir(__file__, 2), "skin"),
-    os.path.join(get_parent_dir(__file__, 2), "app_theme"),
-    )
-
+from constant import APP_IMAGE_PATH, CONTENTS_PATH
 from button import SelectButton, SelectButtonGroup
 from window import Window
 from titlebar import  home_title_bar, index_title_bar, back, TitleLabel
@@ -67,16 +57,16 @@ class UserManual(Window):
         self.height = 500
         self.titlebar_height = 62
         self.book_name_label_color = "#6fb8ef"
-        self.html_base_url = "file://" + os.path.realpath("../contents/html/")+"/"
-        self.home_html_str = open(os.path.realpath("../contents/html/home.html")).read()
-        self.index_html_str = open(os.path.realpath("../contents/html/index.html")).read()
+        self.html_base_url = "file://" + os.path.join(CONTENTS_PATH, "html") + "/"
+        self.home_html_str = open(os.path.join(CONTENTS_PATH, "html", "home.html")).read()
+        self.index_html_str = open(os.path.join(CONTENTS_PATH, "html", "index.html")).read()
         self.home_values = get_home_item_values()
         self.init_progress_data()
         self.last_page = get_last_page()
 
     def _init_settings(self):
         self.set_decorated(False)
-        self.set_icon_from_file(os.path.realpath("./app_image/deepin-user-manual.png"))
+        self.set_icon_from_file(os.path.join(APP_IMAGE_PATH, "deepin-user-manual.png"))
 
     def _init_wedget(self):
         self.main_alignment = gtk.Alignment(0.5, 0.5, 0, 0)
