@@ -22,9 +22,9 @@
 
 import cairo
 import gtk
-from color import alpha_color_hex_to_cairo, color_hex_to_cairo
+from color import alpha_color_hex_to_cairo
 from utils import new_surface, propagate_expose, move_window
-from utils import cairo_popover, cairo_popover_rectangle 
+from utils import cairo_popover_rectangle 
 from dtk_cairo_blur import gaussian_blur
 
 SAHOW_VALUE = 2 

@@ -6,7 +6,6 @@ from utils import get_text_size, cairo_disable_antialias, propagate_expose
 from color import color_hex_to_cairo
 import gtk
 import gobject
-import threading
 
 class SelectButton(gtk.Button):        
     def __init__(self,
