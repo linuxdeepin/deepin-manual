@@ -1,8 +1,8 @@
 [Desktop Entry]
 Name=LinuxDeepin User Manual
-Name[zh_HK]=LinuxDeepin 用戶指南
-Name[zh_TW]=LinuxDeepin 用戶指南
-Name[zh_CN]=LinuxDeepin 用户指南 
+Name[zh_HK]=LinuxDeepin 用戶手冊
+Name[zh_TW]=LinuxDeepin 用戶手冊
+Name[zh_CN]=LinuxDeepin 用户手册 
 Exec=deepin-user-manual
 StartupNotify=true
 Terminal=false

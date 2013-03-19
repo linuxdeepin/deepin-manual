@@ -18,7 +18,7 @@
             {
                 "id": "A3",
                 "description":
-                    "<span class='page-title'>安装本地 .deb 软件包：</span>直接双击.deb 格式软件包或如下图进行操作即可，并自动解决依赖哟。",
+                    "<span class='page-title'>安装本地.deb 软件包：</span>直接双击.deb 格式软件包或如下图进行操作即可，并自动解决依赖哟。",
                 "image":"images/04-3.PNG"
             },
             {
