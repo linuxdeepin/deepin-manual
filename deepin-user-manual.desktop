@@ -8,3 +8,4 @@ StartupNotify=true
 Terminal=false
 Type=Application
 Icon=deepin-user-manual
+Categories=utilities
