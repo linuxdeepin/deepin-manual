@@ -43,12 +43,41 @@ function create_index_span_content_node(id, content){
     return spanObj;
 }
 
+function create_msg_div(book){
+    var divObj = document.createElement("div");
+    divObj.id = "msg";
+    divObj.style.display = "none";
+
+    aNext = document.createElement("a");
+    aNext.href = "#";
+    aNext.id = "next";
+    aNext.className = "act";
+    aNext.onmouseover=function(e){$(this).css('background','#62b8ef');}
+    aNext.onclick = function(e){
+        write_to_title("msg_link", ["next", book]);
+    }
+    aReturn = document.createElement("a");
+    aReturn.href = "#";
+    aReturn.id = "return";
+    aReturn.onmouseover=function(e){$('#next').css('background','none');}
+    aReturn.onmouseout=function(e){$('#next').css('background','#62b8ef');}
+    aReturn.onclick = function(e){
+        write_to_title("msg_link", ["return", book]);
+        return false;
+    }
+
+    divObj.appendChild(aReturn);
+    divObj.appendChild(aNext);
+    return divObj;
+}
+
 function insert_pages_into_chapter(pages){
     outer = document.getElementById("outer");
     featured = document.getElementById("featured");
     for (var i=0;i < pages.length;i++){
         featured.appendChild(create_index_img_node(pages[i]["id"], pages[i]["image"]));
         outer.appendChild(create_index_span_content_node(pages[i]["id"], pages[i]["description"]));
+        outer.appendChild(create_msg_div(Values[1]));
     }
 }
 

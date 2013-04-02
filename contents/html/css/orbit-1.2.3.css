@@ -216,3 +216,28 @@ div.slider-nav span.left0,div.slider-nav span.left {
     color:#6fb8ef; 
     font-weight:600;
 }
+
+#msg{ 
+    width:240px; 
+    height:80px; 
+    background:rgba(0,0,0,0.70); 
+    position:absolute; 
+    top:50%; 
+    left:50%; 
+    margin:-40px 0 0 -120px; 
+    border-radius:5px; 
+    z-index:999999; 
+    text-align:center
+}
+#msg a{ 
+    padding:7px 10px 0 10px; 
+    margin:26px 5px; 
+    height:21px; 
+    font-size:14px; 
+    color:#fff; 
+    display:inline-block; 
+    font-weight: 600; 
+    text-decoration:none;
+    border-radius:1px;
+}
+#msg a:hover, #msg a.act{ background:#62b8ef;}

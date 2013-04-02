@@ -33,8 +33,6 @@ from parse_content import (get_home_item_values,
                             get_book_contents,
                             get_book_pages_id,
                             get_book_unread_pages,
-                            get_last_page,
-                            write_last_page,
                             write_unread_pages_data
                             )
 
@@ -72,7 +70,6 @@ class UserManual(dbus.service.Object):
         self.index_html_str = open(os.path.join(CONTENTS_PATH, "html", "index.html")).read()
         self.home_values = get_home_item_values()
         self.init_progress_data()
-        self.last_page = get_last_page()
 
     def _init_settings(self):
         self.window.set_decorated(False)
@@ -86,7 +83,7 @@ class UserManual(dbus.service.Object):
         self.title_align.add(home_title_bar)
         
         self.web_view = ContentWebView(self.width, self.height - self.titlebar_height)
-        #self.web_view.enable_inspector()
+        self.web_view.enable_inspector()
         self.web_view.connect("load-committed", self.load_committed_cb)
         self.web_view.connect("load-finished", self.load_finished_cb)
 
@@ -101,7 +98,7 @@ class UserManual(dbus.service.Object):
         self.main_alignment.add(main_v_box)
         self.window.add_widget(self.main_alignment)
         
-        back.connect("button-release-event", self.page_go_back, self.web_view)
+        back.connect("button-release-event", self.page_go_back)
         home_title_bar.min_button.connect("clicked", lambda w: self.window.iconify())
         index_title_bar.min_button.connect("clicked", lambda w: self.window.iconify())
         home_title_bar.close_button.connect("clicked", self.close_window)
@@ -111,7 +108,6 @@ class UserManual(dbus.service.Object):
         self.web_view.connect("title-changed", self.title_changed_handler)
 
     def close_window(self, widget):
-        write_last_page(self.last_page)
         write_unread_pages_data(self.home_values)
         gtk.main_quit()
         
@@ -123,35 +119,7 @@ class UserManual(dbus.service.Object):
 
         elif data_dict["type"]=="home_item_link":
             book = data_dict["data"]
-            book_contents = get_book_contents(book)
-            chapter_index = 0
-            page_id = self.home_values[book]["all_pages"][chapter_index][0]
-            self.push_data_to_web_view(
-                    self.index_html_str, 
-                    book_contents,  # Values[0]
-                    book, # Values[1]
-                    chapter_index, # Values[2]
-                    page_id, # Values[3]
-                    self.home_values[book]["unread_pages"][chapter_index]) # Values[4]
-            # book name label
-            book_name_label = TitleLabel(self.home_values[book]["title"], font_size=15, font_color=self.book_name_label_color)
-            center_align_child = index_title_bar.center_align.get_child()
-            if index_title_bar.center_align.get_child():
-                index_title_bar.center_align.remove(center_align_child)
-            index_title_bar.center_align.add(book_name_label)
-            # chapter button
-            self.chapter_group = self.get_chapter_button_group(book, book_contents, chapter_index)
-            chapter_button_align_child = index_title_bar.chapter_button_align.get_child()
-            if chapter_button_align_child:
-                index_title_bar.chapter_button_align.remove(chapter_button_align_child)
-            if len(self.home_values[book]["all_pages"]) > 1:
-                index_title_bar.chapter_button_align.add(self.chapter_group)
-            title_align_child = self.title_align.get_child()
-            if title_align_child:
-                self.title_align.remove(title_align_child)
-            back.set_state(gtk.STATE_NORMAL)
-            self.title_align.add(index_title_bar)
-            self.window.show_all()
+            self.home_item_click_handler(book)
 
         elif data_dict["type"] == "after_slider_change":
             page_info = eval(data_dict["data"])
@@ -160,24 +128,73 @@ class UserManual(dbus.service.Object):
             if chapter_index == 0 and self.home_values[book]["all_pages"][chapter_index][0] == page_id:
                 self.web_view.execute_script('change_nav_status("Left", "none")')
                 self.web_view.execute_script('change_nav_status("Right", "block")')
+                self.web_view.execute_script('$("#msg").css("display", "none")')
             elif chapter_index == len(self.home_values[book]["all_pages"])-1 and page_id == self.home_values[book]["all_pages"][chapter_index][-1]:
                 self.web_view.execute_script('change_nav_status("Left", "block")')
-                self.web_view.execute_script('change_nav_status("Right", "none")')
             else:
                 self.web_view.execute_script('change_nav_status("Left", "block")')
                 self.web_view.execute_script('change_nav_status("Right", "block")')
+                self.web_view.execute_script('$("#msg").css("display", "none")')
                 
         elif data_dict["type"] == "before_slider_change":
             page_info = eval(data_dict["data"])
             book, chapter_index, page_id = page_info["book"], page_info["chapter_index"], page_info["page_id"]
             self.remove_read_page(book, chapter_index, page_id)
             self.web_view.execute_script("var all_pages=%s" % json.dumps(self.home_values[book]["all_pages"], encoding="UTF-8", ensure_ascii=False))
+            if chapter_index == len(self.home_values[book]["all_pages"])-1 and page_id == self.home_values[book]["all_pages"][chapter_index][-1]:
+                self.web_view.execute_script('document.getElementById("return").innerHTML = %s' % json.dumps("再看一次", encoding="UTF-8", ensure_ascii=False))
+                self.web_view.execute_script('document.getElementById("next").innerHTML = %s' % json.dumps("观看下一章", encoding="UTF-8", ensure_ascii=False))
+                self.web_view.execute_script('$("#msg").css("display", "block")')
+                self.web_view.execute_script('change_nav_status("Right", "none")')
+            if book == "7":
+                self.web_view.execute_script('document.getElementById("next").innerHTML = %s' % json.dumps("返回首页", encoding="UTF-8", ensure_ascii=False))
             
         elif data_dict["type"] == "redirect_next_chapter":
             page_info = eval(data_dict["data"])
             book, chapter_index, page_id = page_info["book"], page_info["chapter_index"], page_info["page_id"]
             self.emit_group_button_press(self.chapter_group, book, chapter_index, page_id)
+
+        elif data_dict["type"] == "msg_link":
+            button, book = data_dict["data"]
+            if button == "next":
+                if book == "7":
+                    self.page_go_back(None, None)
+                    return
+                else:
+                    book = str(int(book)+1)
+            self.home_item_click_handler(book)
             
+    def home_item_click_handler(self, book):
+        book_contents = get_book_contents(book)
+        chapter_index = 0
+        page_id = self.home_values[book]["all_pages"][chapter_index][0]
+        self.push_data_to_web_view(
+                self.index_html_str, 
+                book_contents,  # Values[0]
+                book, # Values[1]
+                chapter_index, # Values[2]
+                page_id, # Values[3]
+                self.home_values[book]["unread_pages"][chapter_index]) # Values[4]
+        # book name label
+        book_name_label = TitleLabel(self.home_values[book]["title"], font_size=15, font_color=self.book_name_label_color)
+        center_align_child = index_title_bar.center_align.get_child()
+        if index_title_bar.center_align.get_child():
+            index_title_bar.center_align.remove(center_align_child)
+        index_title_bar.center_align.add(book_name_label)
+        # chapter button
+        self.chapter_group = self.get_chapter_button_group(book, book_contents, chapter_index)
+        chapter_button_align_child = index_title_bar.chapter_button_align.get_child()
+        if chapter_button_align_child:
+            index_title_bar.chapter_button_align.remove(chapter_button_align_child)
+        if len(self.home_values[book]["all_pages"]) > 1:
+            index_title_bar.chapter_button_align.add(self.chapter_group)
+        title_align_child = self.title_align.get_child()
+        if title_align_child:
+            self.title_align.remove(title_align_child)
+        back.set_state(gtk.STATE_NORMAL)
+        self.title_align.add(index_title_bar)
+        self.window.show_all()
+
     def emit_group_button_press(self, button_group, book, chapter_index, page_id):
         buttons = button_group.buttons
         active_button = buttons[chapter_index]
@@ -211,8 +228,6 @@ class UserManual(dbus.service.Object):
         self.web_view.load(html_string, self.html_base_url)
 
     def chapter_button_press(self, group, active_button, book, book_contents):
-        self.last_page[book][0] = active_button.chapter_index
-        self.last_page[book][1] = book_contents["content"][active_button.chapter_index]["page"][0]["id"]
         chapter_index = active_button.chapter_index
         page_id = self.home_values[book]["all_pages"][chapter_index][0]
         self.push_data_to_web_view(
@@ -223,14 +238,14 @@ class UserManual(dbus.service.Object):
                 page_id, # Values[3]
                 self.home_values[book]["unread_pages"][chapter_index]) # Values[4]
 
-    def page_go_back(self, widget, event, web):
+    def page_go_back(self, widget, event):
         self.fresh_read_percent()
         self.push_data_to_web_view(self.home_html_str, self.home_values_to_list())
         title_align_child = self.title_align.get_child()
         if title_align_child:
             self.title_align.remove(title_align_child)
         self.title_align.add(home_title_bar)
-        widget.set_state(gtk.STATE_NORMAL)
+        back.set_state(gtk.STATE_NORMAL)
         self.window.show_all()
 
     def load_committed_cb(self, view, frame):
@@ -245,6 +260,7 @@ class UserManual(dbus.service.Object):
             self.web_view.execute_script("load_page();")
             if chapter_index == 0:
                 self.web_view.execute_script('change_nav_status("Left", "none")')
+                self.web_view.execute_script('$("#msg").css("display", "none")')
 
     def init_progress_data(self):
         for book in self.home_values:

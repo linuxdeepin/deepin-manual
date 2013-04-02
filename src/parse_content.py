@@ -131,5 +131,4 @@ def get_last_page():
 
 if __name__ == "__main__":
     m = get_home_item_values()
-    for i in m:
-        print m[i]
+    print m
