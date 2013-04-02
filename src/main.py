@@ -20,7 +20,11 @@
 # You should have received a copy of the GNU General Public License
 # along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
-from constant import APP_IMAGE_PATH, CONTENTS_PATH
+from constant import (APP_IMAGE_PATH, 
+                      CONTENTS_PATH, 
+                      DEEPIN_USER_MANUAL_NAME,
+                      DEEPIN_USER_MANUAL_PATH)
+
 from button import SelectButton, SelectButtonGroup
 from window import Window
 from titlebar import  home_title_bar, index_title_bar, back, TitleLabel
@@ -39,17 +43,23 @@ import gtk
 import webbrowser
 import json
 
-class UserManual(Window):
-    def __init__(self):
-        Window.__init__(self)
+import dbus
+import dbus.service
+from dbus.mainloop.glib import DBusGMainLoop
+from deepin_utils.ipc import is_dbus_name_exists
 
+class UserManual(dbus.service.Object):
+    def __init__(self, session_bus):
+        dbus.service.Object.__init__(self, session_bus, DEEPIN_USER_MANUAL_PATH)
+
+        self.window = Window()
         self._init_values()
         self._init_settings()
         self._init_wedget()
         
-        self.connect("destroy", gtk.main_quit)
-        self.set_position(gtk.WIN_POS_CENTER)
-        self.show_all()
+        self.window.connect("destroy", gtk.main_quit)
+        self.window.set_position(gtk.WIN_POS_CENTER)
+        self.window.show_all()
         gtk.main()
 
     def _init_values(self):
@@ -65,21 +75,15 @@ class UserManual(Window):
         self.last_page = get_last_page()
 
     def _init_settings(self):
-        self.set_decorated(False)
-        self.set_icon_from_file(os.path.join(APP_IMAGE_PATH, "deepin-user-manual.png"))
+        self.window.set_decorated(False)
+        self.window.set_icon_from_file(os.path.join(APP_IMAGE_PATH, "deepin-user-manual.png"))
 
     def _init_wedget(self):
-        self.main_alignment = gtk.Alignment(0.5, 0.5, 0, 0)
-        self.main_alignment.set_padding(0, 0, 0, 0)
         main_v_box = gtk.VBox()
 
-        #self.slider = HSlider(100)
-        #self.slider.set_size_request(self.width, self.titlebar_height)
-        #self.slider.to_page_now(home_title_bar)
         self.title_align = gtk.Alignment(0, 0.5, 1, 1)
         self.title_align.set_padding(0, 0, 0, 0)
         self.title_align.add(home_title_bar)
-        main_v_box.pack_start(self.title_align)
         
         self.web_view = ContentWebView(self.width, self.height - self.titlebar_height)
         #self.web_view.enable_inspector()
@@ -88,18 +92,22 @@ class UserManual(Window):
 
         # init velues for home
         self.push_data_to_web_view(self.home_html_str, self.home_values_to_list())
+
+        main_v_box.pack_start(self.title_align)
         main_v_box.pack_start(self.web_view)
         
+        self.main_alignment = gtk.Alignment(0.5, 0.5, 0, 0)
+        self.main_alignment.set_padding(0, 0, 0, 0)
         self.main_alignment.add(main_v_box)
-        self.add_widget(self.main_alignment)
+        self.window.add_widget(self.main_alignment)
         
         back.connect("button-release-event", self.page_go_back, self.web_view)
-        home_title_bar.min_button.connect("clicked", lambda w: self.iconify())
-        index_title_bar.min_button.connect("clicked", lambda w: self.iconify())
+        home_title_bar.min_button.connect("clicked", lambda w: self.window.iconify())
+        index_title_bar.min_button.connect("clicked", lambda w: self.window.iconify())
         home_title_bar.close_button.connect("clicked", self.close_window)
         index_title_bar.close_button.connect("clicked", self.close_window)
-        self.add_move_event(home_title_bar)
-        self.add_move_event(index_title_bar)
+        self.window.add_move_event(home_title_bar)
+        self.window.add_move_event(index_title_bar)
         self.web_view.connect("title-changed", self.title_changed_handler)
 
     def close_window(self, widget):
@@ -143,7 +151,7 @@ class UserManual(Window):
                 self.title_align.remove(title_align_child)
             back.set_state(gtk.STATE_NORMAL)
             self.title_align.add(index_title_bar)
-            self.show_all()
+            self.window.show_all()
 
         elif data_dict["type"] == "after_slider_change":
             page_info = eval(data_dict["data"])
@@ -223,7 +231,7 @@ class UserManual(Window):
             self.title_align.remove(title_align_child)
         self.title_align.add(home_title_bar)
         widget.set_state(gtk.STATE_NORMAL)
-        self.show_all()
+        self.window.show_all()
 
     def load_committed_cb(self, view, frame):
         self.web_view.execute_script("var Values=%s" % json.dumps(self.load_data, encoding="UTF-8", ensure_ascii=False))
@@ -268,5 +276,27 @@ class UserManual(Window):
             data.append(self.home_values[key])
         return data
 
+    @dbus.service.method(DEEPIN_USER_MANUAL_NAME, in_signature="", out_signature="")    
+    def hello(self):
+        self.window.present()
+
 if __name__ == "__main__":
-    UserManual()
+    DBusGMainLoop(set_as_default=True)
+    session_bus = dbus.SessionBus()
+    
+    if is_dbus_name_exists(DEEPIN_USER_MANUAL_NAME, True):
+        print "deepin user manual has running!"
+        
+        bus_object = session_bus.get_object(DEEPIN_USER_MANUAL_NAME,
+                                            DEEPIN_USER_MANUAL_PATH)
+        bus_interface = dbus.Interface(bus_object, DEEPIN_USER_MANUAL_NAME)
+        bus_interface.hello()
+        
+    else:
+        # Init dbus.
+        bus_name = dbus.service.BusName(DEEPIN_USER_MANUAL_NAME, session_bus)
+            
+        try:
+            user_manual = UserManual(session_bus)
+        except KeyboardInterrupt:
+            pass
