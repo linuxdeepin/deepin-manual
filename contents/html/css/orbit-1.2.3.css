@@ -220,7 +220,7 @@ div.slider-nav span.left0,div.slider-nav span.left {
 #msg{ 
     width:240px; 
     height:80px; 
-    background:rgba(0,0,0,0.70); 
+    background:rgba(0,0,0,0.60);
     position:absolute; 
     top:50%; 
     left:50%; 

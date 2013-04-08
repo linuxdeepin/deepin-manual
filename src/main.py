@@ -74,6 +74,7 @@ class UserManual(dbus.service.Object):
     def _init_settings(self):
         self.window.set_decorated(False)
         self.window.set_icon_from_file(os.path.join(APP_IMAGE_PATH, "deepin-user-manual.png"))
+        self.window.set_title("LinuxDeepin 用户手册")
 
     def _init_wedget(self):
         main_v_box = gtk.VBox()
