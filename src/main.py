@@ -84,7 +84,7 @@ class UserManual(dbus.service.Object):
         self.title_align.add(home_title_bar)
         
         self.web_view = ContentWebView(self.width, self.height - self.titlebar_height)
-        self.web_view.enable_inspector()
+        #self.web_view.enable_inspector()
         self.web_view.connect("load-committed", self.load_committed_cb)
         self.web_view.connect("load-finished", self.load_finished_cb)
 
