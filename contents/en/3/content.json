@@ -1,0 +1,91 @@
+{
+"content":[
+    {
+        "title":"Deepin Music",
+        "page":[
+            {
+                "id": "A1",
+                "description":
+                    "<span class='page-title'>Different modes: </span>The minimal interface frees your mouse and screen.",
+                "image":"images/03-2-1.PNG"
+            },
+            {
+                "id": "A2",
+                "description":
+                    "<span class='page-title'>Show Lyrcis: </span>Download lyrics automatically. Your can choose different themes and switch between window mode and desktop mode as you prefer.",
+                "image":"images/03-2-2.PNG"
+            },
+            {
+                "id": "A3",
+                "description":
+                    "<span class='page-title'>Extensible with plugins: </span>Your player can be made more versatile with various plugins such as DoubanFM, Network Radio and Karaoke.",
+                "image":"images/03-2-3.PNG"
+            },
+            {
+                "id": "A4",
+                "description":
+                    "<span class='page-title'>Lossless playback: </span>Supports audio CD and lossless formats such as FLAC, APE and WAV.",
+                "image":"images/03-2-4.PNG"
+            },
+            {
+                "id": "A5",
+                "description":
+                    "<span class='page-title'>Discover even more features: </span>Converting to your desired format, remembering last played video position and fade-in and Fade-out playback.",
+                "image":"images/03-2-5.PNG"
+            },
+        ]
+    },
+    {
+        "title":"Deepin Media",
+        "page":[
+            {
+                "id": "B1",
+                "description":
+                    "<span class='page-title'>Different modes: </span>Enter fullscreen and enjoy your movie.",
+                "image":"images/03-3-1.PNG"
+            },
+            {
+                "id": "B2",
+                "description":
+                    "<span class='page-title'>Format conversion: </span>Convert videos to popular formats so you can watch it on your mobile devices, such as AVI, 3GP, MP4, MPG, TS, OGG, MKV, M2TS, FLV, MOV, MXF, ASF, WebM etc.",
+                "image":"images/03-3-2.PNG"
+            },
+            {
+                "id": "B3",
+                "description":
+                    "<span class='page-title'>Video preview: </span>Sometimes you need to know what comes next and the player enables you to do this.",
+                "image":"images/03-3-3.PNG"
+            },
+            {
+                "id": "B4",
+                "description":
+                    "<span class='page-title'>More feautures: </span>Taking screenshots (Hotkey: Alt+A), remembering where you left off last time and DVD playback.",
+                "image":"images/03-3-4.PNG"
+            },
+        ]
+    },
+    {
+        "title":"Deepin Screenshot",
+        "page":[
+            {
+                "id": "C1",
+                "description":
+                    "<span class='page-title'>Take a screenshot: </span>Hold Ctrl + Alt + A with just one hand to launch Deepin Screenshot. The hotkey might seem to be hard to remember at first, but later you'll find it more pleasant to use. Press ESC to cancel screenshot.",
+                "image":"images/03-1-1.PNG"
+            },
+            {
+                "id": "C2",
+                "description":
+                    "<span class='page-title'>Delayed screenshot: </span>Press Ctrl + Prt SC and the screenshot will be taken within 5 seconds.",
+                "image":"images/03-1-2.PNG"
+            },
+            {
+                "id": "C3",
+                "description":
+                    "<span class='page-title'>Share with friends: </span>Share your screenshot with friends on twitter.",
+                "image":"images/03-1-3.PNG"
+            },
+        ]
+    },
+]
+}

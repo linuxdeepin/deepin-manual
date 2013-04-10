@@ -16,7 +16,17 @@ def get_system_font():
 DEFAULT_FONT = get_system_font()
 DEFAULT_FONT_SIZE = 10
 
-LANGUAGE = "zh_CN"
+CONTENTS_LANG = ["en", "zh_CN", "zh_TW"]
+
+import locale
+default_lang = locale.getdefaultlocale()[0]
+print default_lang
+if default_lang in CONTENTS_LANG:
+    LANGUAGE = default_lang
+else:
+    LANGUAGE = CONTENTS_LANG[0]
+
+
 APP_IMAGE_PATH = os.path.join(get_parent_dir(__file__), "app_image")
 CONTENTS_PATH = os.path.join(get_parent_dir(__file__, 2), "contents")
 

@@ -46,6 +46,8 @@ import dbus.service
 from dbus.mainloop.glib import DBusGMainLoop
 from deepin_utils.ipc import is_dbus_name_exists
 
+from nls import _
+
 class UserManual(dbus.service.Object):
     def __init__(self, session_bus):
         dbus.service.Object.__init__(self, session_bus, DEEPIN_USER_MANUAL_PATH)
@@ -74,7 +76,7 @@ class UserManual(dbus.service.Object):
     def _init_settings(self):
         self.window.set_decorated(False)
         self.window.set_icon_from_file(os.path.join(APP_IMAGE_PATH, "deepin-user-manual.png"))
-        self.window.set_title("LinuxDeepin 用户手册")
+        self.window.set_title(_("LinuxDeepin User Manual"))
 
     def _init_wedget(self):
         main_v_box = gtk.VBox()
@@ -143,12 +145,12 @@ class UserManual(dbus.service.Object):
             self.remove_read_page(book, chapter_index, page_id)
             self.web_view.execute_script("var all_pages=%s" % json.dumps(self.home_values[book]["all_pages"], encoding="UTF-8", ensure_ascii=False))
             if chapter_index == len(self.home_values[book]["all_pages"])-1 and page_id == self.home_values[book]["all_pages"][chapter_index][-1]:
-                self.web_view.execute_script('document.getElementById("return").innerHTML = %s' % json.dumps("再看一次", encoding="UTF-8", ensure_ascii=False))
-                self.web_view.execute_script('document.getElementById("next").innerHTML = %s' % json.dumps("观看下一章", encoding="UTF-8", ensure_ascii=False))
+                self.web_view.execute_script('document.getElementById("return").innerHTML = %s' % json.dumps(_("Read Again"), encoding="UTF-8", ensure_ascii=False))
+                self.web_view.execute_script('document.getElementById("next").innerHTML = %s' % json.dumps(_("Next Chapter"), encoding="UTF-8", ensure_ascii=False))
                 self.web_view.execute_script('$("#msg").css("display", "block")')
                 self.web_view.execute_script('change_nav_status("Right", "none")')
             if book == "7":
-                self.web_view.execute_script('document.getElementById("next").innerHTML = %s' % json.dumps("返回首页", encoding="UTF-8", ensure_ascii=False))
+                self.web_view.execute_script('document.getElementById("next").innerHTML = %s' % json.dumps(_("Return to HomePage"), encoding="UTF-8", ensure_ascii=False))
             
         elif data_dict["type"] == "redirect_next_chapter":
             page_info = eval(data_dict["data"])

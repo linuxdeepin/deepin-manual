@@ -1,0 +1,33 @@
+{
+"content":[
+    {
+        "title":"軟體管理",
+        "page":[
+            {
+                "id": "A1",
+                "description":
+                    "<span class='page-title'>首頁推薦：</span>集合優秀軟體，分享使用經驗。",
+                "image":"images/04-1.PNG"
+            },
+            {
+                "id": "A2",
+                "description":
+                    "<span class='page-title'>系統升級：</span>讓系統獲得最佳呵護。",
+                "image":"images/04-2.PNG"
+            },
+            {
+                "id": "A3",
+                "description":
+                    "<span class='page-title'>安裝本地 .deb 軟體包：</span>直接雙擊 .deb 格式軟體包或如下圖進行操作即可，並自動解決依賴喲！",
+                "image":"images/04-3.PNG"
+            },
+            {
+                "id": "A4",
+                "description":
+                    "<span class='page-title'>智能清理下載緩存檔：</span>擁有更多的硬碟空間。",
+                "image":"images/04-4.PNG"
+            },
+        ]
+    },
+]
+}

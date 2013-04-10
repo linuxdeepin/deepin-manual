@@ -1,0 +1,21 @@
+{
+"content":[
+    {
+        "title":"簡介",
+        "page":[
+            {
+                "id": "A1",
+                "description":
+                    "<span class='page-title'>什麼是 Linux Deepin？ </span>Linux Deepin 是中國最流行的操作系統，致力於促進中國開源事業的發展，立足中國，面向國際，建立國際化的用戶社群。",
+                "image":"images/01-1.PNG"
+            },
+            {
+                "id": "A2",
+                "description":
+                    "<span class='page-title'>為什麼要選擇 Linux Deepin？ </span>Linux Deepin 易用、美觀、穩定，能夠滿足您日常辦公、娛樂等各項需求。",
+                "image":"images/01-2.PNG"
+            },
+        ]
+    },
+]
+}

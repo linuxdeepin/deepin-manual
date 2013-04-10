@@ -1,0 +1,51 @@
+{
+"content":[
+    {
+        "title":"系統設定",
+        "page":[
+            {
+                "id": "A1",
+                "description":
+                    "<span class='page-title'>常規設定：</span>您可以通過應用程式啟動器打開系統設定。在這裡可以調整螢幕、滑鼠、鍵盤、電源等日常功能選項。",
+                "image":"images/05-1.PNG"
+            },
+            {
+                "id": "A2",
+                "description":
+                    "<span class='page-title'>桌面美化：</span>個性化佈景主題，網路下載高解析度桌布，裝點絢麗桌面。",
+                "image":"images/05-2.PNG"
+            },
+                        {
+                "id": "A3",
+                "description":
+                    "<span class='page-title'>桌面設定：</span>設定桌面圖示、Dock 任務欄樣式及螢幕熱區。",
+                "image":"images/05-3.PNG"
+            },
+            {
+                "id": "A4",
+                "description":
+                    "<span class='page-title'>使用者帳戶設定：</span>添加與刪除使用者帳戶，設定使用者密碼，開啟與關閉使用者自動登入功能，可以自行調整使用者相片。",
+                "image":"images/05-4.PNG"
+            },
+                        {
+                "id": "A5",
+                "description":
+                    "<span class='page-title'>開機自動啟動程式管理：</span>進入“預設應用程式-開機自動啟動程式”添加、刪除與修改開機自動啟動的程式。",
+                "image":"images/05-5.PNG"
+            },
+            {
+                "id": "A6",
+                "description":
+                    "<span class='page-title'>系統快速鍵：</span>預設快速鍵符合您的使用習慣，幫助您快速上手。",
+                "image":"images/05-6.PNG"
+            },
+                        {
+                "id": "A7",
+                "description":
+                    "<span class='page-title'>電源管理與節能設定：</span>我們可以選擇平衡模式、節能模式和高性能模式三種電源計畫。在看電影或玩遊戲時可以選擇高性能模式。在系統設定中可自行調整三種模式及設定電源按鈕的預設行為。",
+                "image":"images/05-7.PNG"
+            },
+        ]
+    },
+]
+}

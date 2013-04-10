@@ -27,6 +27,7 @@ from color import color_hex_to_cairo
 from draw import draw_text
 from button import ImageButton 
 from constant import APP_IMAGE_PATH
+from nls import _
 
 BACKGROUND_COLOR = "#ededed"
 SEPERATOR_COLOR_UP = "#a3a3a3"
@@ -131,7 +132,7 @@ icon_align.set_padding(0, 0, 13, 10)
 icon_align.add(icon)
 
 
-title = TitleLabel("LinuxDeepin 用户手册")
+title = TitleLabel(_("LinuxDeepin User Manual"))
 title_align = gtk.Alignment(0, 0.5, 0, 0)
 title_align.set_padding(0, 0, 5, 0)
 title_align.add(title)

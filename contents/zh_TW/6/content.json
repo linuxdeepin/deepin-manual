@@ -1,0 +1,62 @@
+{
+"content":[
+    {
+        "title":"辦公",
+        "page":[
+            {
+                "id": "A1",
+                "description":
+                    "<span class='page-title'>辦公套件 LibreOffice：</span>操作簡明直觀，工作事半功倍。",
+                "image":"images/06-1-1.PNG"
+            },
+            {
+                "id": "A2",
+                "description":
+                    "<span class='page-title'>信使 iptux：</span>區域網通信利器。",
+                "image":"images/06-1-2.PNG"
+            },
+            {
+                "id": "A3",
+                "description":
+                    "<span class='page-title'>文件顯示器 Evince：</span>漫畫、小說、PDF 一網打盡！",
+                "image":"images/06-1-3.PNG"
+            },
+            {
+                "id": "A4",
+                "description":
+                    "<span class='page-title'>簡易掃描：</span>輕鬆掃描，協助辦公。",
+                "image":"images/06-1-4.PNG"
+            },
+            {
+                "id": "A5",
+                "description":
+                    "<span class='page-title'>輕鬆列印：</span>點擊“系統設定”中的“列印”，即可調整列印服務。",
+                "image":"images/06-1-5.PNG"
+            },
+        ]
+    },
+    {
+        "title":"暢遊網路",
+        "page":[
+            {
+                "id": "A1",
+                "description":
+                    "<span class='page-title'>網頁瀏覽器：</span>搭載 Firefox 瀏覽器，幫助您快速瀏覽網路。同時，您也可以從軟體中心安裝 Chromium 瀏覽器。",
+                "image":"images/06-2-1.PNG"
+            },
+            {
+                "id": "A2",
+                "description":
+                    "<span class='page-title'>即時訊息工具：</span>內置 Empathy，享受即時交流，支持 GTalk、MSN、Facebook 等帳號。如果您常用 QQ，可在軟體中心安裝 pywebQQ。",
+                "image":"images/06-2-2.PNG"
+            },
+            {
+                "id": "A3",
+                "description":
+                    "<span class='page-title'>訪問遠端桌面：</span>Remmina讓你運籌帷幄，訪控千里。",
+                "image":"images/06-2-3.PNG"
+            },
+        ]
+    },
+]
+}
