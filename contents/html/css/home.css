@@ -8,7 +8,7 @@ html,body{
 }
 ul,li{ margin:0px; padding:0; list-style:none;}
 
-.menu .title{color:#535353; font-size:16px;}
+.menu .title{color:#535353; font-size:13px;}
 
 .menu li {height:108px; width:108px; text-align:center; padding:5px; float:left; display:block; margin:10px 54px;}
 .menu li:hover { background:#d4d4d4; cursor: pointer;}

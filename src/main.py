@@ -23,7 +23,9 @@
 from constant import (APP_IMAGE_PATH, 
                       CONTENTS_PATH, 
                       DEEPIN_USER_MANUAL_NAME,
-                      DEEPIN_USER_MANUAL_PATH)
+                      DEEPIN_USER_MANUAL_PATH,
+                      LANGUAGE,
+                      )
 
 from button import SelectButton, SelectButtonGroup
 from window import Window
@@ -150,7 +152,7 @@ class UserManual(dbus.service.Object):
                 self.web_view.execute_script('$("#msg").css("display", "block")')
                 self.web_view.execute_script('change_nav_status("Right", "none")')
             if book == "7":
-                self.web_view.execute_script('document.getElementById("next").innerHTML = %s' % json.dumps(_("Return to HomePage"), encoding="UTF-8", ensure_ascii=False))
+                self.web_view.execute_script('document.getElementById("next").innerHTML = %s' % json.dumps(_("HomePage"), encoding="UTF-8", ensure_ascii=False))
             
         elif data_dict["type"] == "redirect_next_chapter":
             page_info = eval(data_dict["data"])
@@ -179,7 +181,11 @@ class UserManual(dbus.service.Object):
                 page_id, # Values[3]
                 self.home_values[book]["unread_pages"][chapter_index]) # Values[4]
         # book name label
-        book_name_label = TitleLabel(self.home_values[book]["title"], font_size=15, font_color=self.book_name_label_color)
+        if LANGUAGE == "en":
+            book_name_label = TitleLabel(self.home_values[book]["title"].replace("<br/>", " "), font_size=13, font_color=self.book_name_label_color)
+        else:
+            book_name_label = TitleLabel(self.home_values[book]["title"], font_size=15, font_color=self.book_name_label_color)
+
         center_align_child = index_title_bar.center_align.get_child()
         if index_title_bar.center_align.get_child():
             index_title_bar.center_align.remove(center_align_child)

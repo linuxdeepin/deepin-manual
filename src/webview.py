@@ -22,6 +22,7 @@
 
 import os
 from dtk.ui.browser import WebView
+from constant import LANGUAGE
 
 class ContentWebView(WebView):
     def __init__(self, width, height):
@@ -30,6 +31,8 @@ class ContentWebView(WebView):
         self.set_size_request(width, height)
         settings = self.get_settings()
         settings.set_property("default-font-family", "WenQuanYi Micro Hei")
+        if LANGUAGE == "en":
+            settings.set_property("default-font-size", 10)
         
     @property
     def index_file(self):

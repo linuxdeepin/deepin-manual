@@ -132,7 +132,7 @@ icon_align.set_padding(0, 0, 13, 10)
 icon_align.add(icon)
 
 
-title = TitleLabel(_("LinuxDeepin User Manual"))
+title = TitleLabel(_("LinuxDeepin User Manual"), font_size=17)
 title_align = gtk.Alignment(0, 0.5, 0, 0)
 title_align.set_padding(0, 0, 5, 0)
 title_align.add(title)
