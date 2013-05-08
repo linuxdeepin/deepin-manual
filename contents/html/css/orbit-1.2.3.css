@@ -126,7 +126,7 @@ span.pause.active {
 .orbit-caption {
     display: none;
     cursor: default;
-    font-family: "WenQuanYi Micro Hei", "HelveticaNeue", "Helvetica-Neue", Helvetica, Arial, sans-serif; }
+    font-family: sans-serif, "WenQuanYi Micro Hei", "HelveticaNeue", "Helvetica-Neue", Helvetica, Arial; }
 
 .orbit-caption a {
     color: #2d6bac;

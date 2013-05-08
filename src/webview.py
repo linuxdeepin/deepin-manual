@@ -30,7 +30,6 @@ class ContentWebView(WebView):
         self.__index_file = None
         self.set_size_request(width, height)
         settings = self.get_settings()
-        settings.set_property("default-font-family", "WenQuanYi Micro Hei")
         if LANGUAGE == "en":
             settings.set_property("default-font-size", 10)
         
