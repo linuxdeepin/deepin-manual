@@ -1,7 +1,7 @@
 {
 "content":[
     {
-        "title":"简介",
+        "title":"桌面环境",
         "page":[
             {
                 "id": "A1",
@@ -12,13 +12,13 @@
             {
                 "id": "A2",
                 "description":
-                    "<span class='page-title'>程序启动组：</span>将你喜欢的应用图标拖放到另一个图标之上，组成程序启动组。",
+                    "<span class='page-title'>程序启动组：</span>将一个程序图标直接拖动到另一个程序图标上，即可组建。",
                 "image":"images/02-2.PNG"
             },
             {
                 "id": "A3",
                 "description":
-                    "<span class='page-title'>显示桌面：</span>点击该按钮，最小化当前打开的全部窗口并显示桌面；再次点击，恢复原来窗口状态。",
+                    "<span class='page-title'>显示桌面：</span>点击该按钮，最小化当前打开的全部窗口并显示桌面；再次点击，恢复原来窗口状态。显示桌面快捷键为“Windows徽标键+ D”。",
                 "image":"images/02-3.PNG"
             },
             {

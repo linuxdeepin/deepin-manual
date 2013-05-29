@@ -12,20 +12,20 @@
             {
                 "id": "A2",
                 "description":
-                    "<span class='page-title'>系统升级：</span>让系统得到最佳呵护。",
+                    "<span class='page-title'>系统升级：</span>更新软件列表，及时获取可用更新，让系统得到最佳呵护。",
                 "image":"images/04-2.PNG"
             },
             {
                 "id": "A3",
                 "description":
-                    "<span class='page-title'>安装本地.deb 软件包：</span>直接双击.deb 格式软件包或如下图进行操作即可，并自动解决依赖哟。",
-                "image":"images/04-3.PNG"
+                    "<span class='page-title'>智能清理下载缓存文件：</span>腾出更多的硬盘空间。",
+                "image":"images/04-4.PNG"
             },
             {
                 "id": "A4",
                 "description":
-                    "<span class='page-title'>智能清理下载缓存文件：</span>腾出更多的硬盘空间。",
-                "image":"images/04-4.PNG"
+                    "<span class='page-title'>选项设置：</span>设置软件下载目录，选择系统升级时使用的软件源。",
+                "image":"images/04-3.PNG"
             },
         ]
     },

@@ -47,7 +47,7 @@
             {
                 "id": "A2",
                 "description":
-                    "<span class='page-title'>即时通讯工具：</span>内置 Empathy，享受即时交流，支持 GTalk、MSN、Facebook 等帐号。如果您常用 QQ，可在软件中心安装 pywebQQ。",
+                    "<span class='page-title'>即时通讯工具：</span>内置 Pidgin，享受即时交流，支持 Gtalk、MSN、Facebook 等账号登陆。如果您常用 QQ，可在软件中心搜索“QQ”进行安装。",
                 "image":"images/06-2-2.PNG"
             },
             {
