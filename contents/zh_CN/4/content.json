@@ -19,13 +19,13 @@
                 "id": "A3",
                 "description":
                     "<span class='page-title'>智能清理下载缓存文件：</span>腾出更多的硬盘空间。",
-                "image":"images/04-4.PNG"
+                "image":"images/04-3.PNG"
             },
             {
                 "id": "A4",
                 "description":
                     "<span class='page-title'>选项设置：</span>设置软件下载目录，选择系统升级时使用的软件源。",
-                "image":"images/04-3.PNG"
+                "image":"images/04-4.PNG"
             },
         ]
     },
