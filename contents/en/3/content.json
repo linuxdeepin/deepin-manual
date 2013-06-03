@@ -70,7 +70,7 @@
             {
                 "id": "C1",
                 "description":
-                    "<span class='page-title'>Take a screenshot: </span>Hold Ctrl + Alt + A with just one hand to launch Deepin Screenshot. The hotkey might seem to be hard to remember at first, but later you'll find it more pleasant to use. Press ESC to cancel screenshot.",
+                    "<span class='page-title'>Take a screenshot: </span>Hold Ctrl + Alt + A with just one hand to launch Deepin Screenshot. Press ESC to cancel screenshot.",
                 "image":"images/03-1-1.PNG"
             },
             {

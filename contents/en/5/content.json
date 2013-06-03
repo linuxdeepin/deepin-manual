@@ -1,48 +1,48 @@
 {
 "content":[
     {
-        "title":"系统设置",
+        "title":"System Settings",
         "page":[
             {
                 "id": "A1",
                 "description":
-                    "<span class='page-title'>常规设置：</span>您可以通过应用程序启动器打开系统设置。在这里可以配置显示器、鼠标、键盘、电源等常规功能选项。",
+                    "<span class='page-title'>General Settings: </span>System Settings can be started from the launcher. Here you can configure your display, mouse, keyboard other common options.",
                 "image":"images/05-1.PNG"
             },
             {
                 "id": "A2",
                 "description":
-                    "<span class='page-title'>桌面美化：</span>个性化主题，网络下载高清壁纸，装点绚丽桌面。",
+                    "<span class='page-title'>Personalization: </span>Customize your themes, download wallpapers from the Internet and beautify your desktop.",
                 "image":"images/05-2.PNG"
             },
                         {
                 "id": "A3",
                 "description":
-                    "<span class='page-title'>桌面设置：</span>设置桌面图标、Dock 任务栏样式及屏幕热区。",
+                    "<span class='page-title'>Desktop Settings: </span>Set which icon(s) is/are shown on your desktop, choose a style for your dock panel, and customize the hot zones on your screen.",
                 "image":"images/05-3.PNG"
             },
             {
                 "id": "A4",
                 "description":
-                    "<span class='page-title'>用户账户设置：</span>添加与删除用户账户，设置用户密码，开启与关闭用户自动登陆功能，可以自定义用户头像。",
+                    "<span class='page-title'>User Accounts: </span>Add or remove user accounts, set user password, enable and disable automatic login, and set user's picture.",
                 "image":"images/05-4.PNG"
             },
                         {
                 "id": "A5",
                 "description":
-                    "<span class='page-title'>启动项管理：</span>进入“应用程序关联-启动项”添加、删除与修改启动项条目。",
+                    "<span class='page-title'>Startup Applications: </span>Enter &quot;Default Applications&quot;, click on the tab named &quot;Autostart&quot;, and add, delete or modify items for startup applications.",
                 "image":"images/05-5.PNG"
             },
             {
                 "id": "A6",
                 "description":
-                    "<span class='page-title'>系统快捷键：</span>预设快捷键符合您的使用习惯，助您快速上手。",
+                    "<span class='page-title'>Keyboard shortcuts: </span>The predefined hotkeys are customized to suit your needs and are easy to remember.",
                 "image":"images/05-6.PNG"
             },
                         {
                 "id": "A7",
                 "description":
-                    "<span class='page-title'>电源管理与节能设置：</span>我们可以选择平衡模式、节能模式和高性能模式三种电源计划。在看电影或玩游戏时可选择高性能模式。在系统设置中可自定义三种模式及设置电源按钮的默认行为。",
+                    "<span class='page-title'>Power Management: </span>There are balanced, power saver and high performance modes. It is recommended that you select performance mode when you are watching a movie or playing games.",
                 "image":"images/05-7.PNG"
             },
         ]
