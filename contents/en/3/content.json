@@ -1,7 +1,7 @@
 {
 "content":[
     {
-        "title":"Deepin Music",
+        "title":"DMusic",
         "page":[
             {
                 "id": "A1",
@@ -36,7 +36,7 @@
         ]
     },
     {
-        "title":"Deepin Media",
+        "title":"DPlayer",
         "page":[
             {
                 "id": "B1",
