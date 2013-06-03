@@ -41,13 +41,13 @@
             {
                 "id": "A1",
                 "description":
-                    "<span class='page-title'>Web browser: </span>The Firefox browser gives you fast and easy access to the Internet. The Chromium browser can be installed via the Software Center.",
+                    "<span class='page-title'>Web browser: </span>The Firefox browser gives you fast and easy access to the Internet.",
                 "image":"images/06-2-1.PNG"
             },
             {
                 "id": "A2",
                 "description":
-                    "<span class='page-title'>Instant messaging tool: </span>The Empathy instant messaging tool supports Google talk, MSN, Facebook and so on.",
+                    "<span class='page-title'>Instant messaging tool: </span>The Pidin instant messaging tool supports Google Talk, ICQ, Facebook and more.",
                 "image":"images/06-2-2.PNG"
             },
             {
