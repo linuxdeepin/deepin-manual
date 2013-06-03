@@ -6,26 +6,20 @@
             {
                 "id": "A1",
                 "description":
-                    "<span class='page-title'>Recommendations: </span>Excellent applications and experience are shared to give you a clue of which to use.",
+                    "<span class='page-title'>Recommendations: </span>Topics about excellent applications give you a clue of which to use.",
                 "image":"images/04-1.PNG"
             },
             {
                 "id": "A2",
                 "description":
-                    "<span class='page-title'>Upgrading your system: </span>New features, fixes and improvements give your system best care ever.",
+                    "<span class='page-title'>Upgrading your system: </span>New features, bug fixes and improvements give your system best care ever.",
                 "image":"images/04-2.PNG"
             },
             {
                 "id": "A3",
                 "description":
-                    "<span class='page-title'>Install local packages: </span>Double-click .deb files or install via the menu shown in the illustration. Dependencies are automatically resolved.",
+                    "<span class='page-title'>Clean local cache intelligently: </span>This feature frees up more valuable spaces on your hard disk.",
                 "image":"images/04-3.PNG"
-            },
-            {
-                "id": "A4",
-                "description":
-                    "<span class='page-title'>Clean local cache intelligently: </span>This feature frees up more valuable spaces on your disk.",
-                "image":"images/04-4.PNG"
             },
         ]
     },
