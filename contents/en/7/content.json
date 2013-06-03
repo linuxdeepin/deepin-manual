@@ -12,20 +12,14 @@
             {
                 "id": "A2",
                 "description":
-                    "<span class='page-title'>Twitter: </span>Follow us on twitter  <a href='https://twitter.com/linux_deepin' onclick='return external_link(this)'>@linux_deepin</a>.",
+                    "<span class='page-title'>Mailing list: </span>Subscribe to our <a href='http://www.linuxdeepin.com/forum/mail-lists' onclick='return external_link(this)'>mailing list</a>, get the latest development status and security warnings.",
                 "image":"images/07-2.PNG"
             },
             {
                 "id": "A3",
                 "description":
-                    "<span class='page-title'>Mailing list: </span>Subscribe to our <a href='http://www.linuxdeepin.com/forum/mail-lists' onclick='return external_link(this)'>mailing list</a>, get the latest development status and security warnings.",
-                "image":"images/07-3.PNG"
-            },
-            {
-                "id": "A4",
-                "description":
                     "<span class='page-title'>Other: </span>Google Plus, Facebook Group and our IRC channel at freenode (#linuxdeepin) are all great places to go.",
-                "image":"images/07-4.PNG"
+                "image":"images/07-3.PNG"
             },
         ]
     },
