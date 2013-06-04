@@ -181,7 +181,7 @@ class UserManual(dbus.service.Object):
                 page_id, # Values[3]
                 self.home_values[book]["unread_pages"][chapter_index]) # Values[4]
         # book name label
-        if LANGUAGE == "en":
+        if LANGUAGE == "en_US":
             book_name_label = TitleLabel(self.home_values[book]["title"].replace("<br/>", " "), font_size=13, font_color=self.book_name_label_color)
         else:
             book_name_label = TitleLabel(self.home_values[book]["title"], font_size=15, font_color=self.book_name_label_color)

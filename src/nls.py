@@ -31,8 +31,20 @@ LOCALE_DIR=os.path.join(get_parent_dir(__file__, 2), "locale")
 if not os.path.exists(LOCALE_DIR):
     LOCALE_DIR="/usr/share/locale"
 
-_ = None    
+_ = None
+
+APP_NAME = "deepin-user-manual"
+
 try:
-    _ = gettext.translation("deepin-user-manual", LOCALE_DIR).gettext
+    _ = gettext.translation(APP_NAME, LOCALE_DIR).gettext
 except Exception, e:
-    _ = lambda i : i
+    try:
+        _ = gettext.translation(APP_NAME, LOCALE_DIR, ['en_US']).gettext
+    except Exception, e:
+        _ = lambda i : i
+
+def get_locale_code():
+    try:
+        return gettext.find(APP_NAME, LOCALE_DIR).split(LOCALE_DIR)[1].split('/')[1]
+    except:
+        return "en_US"
