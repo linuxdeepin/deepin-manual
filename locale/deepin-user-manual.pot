@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-10 13:26+0800\n"
+"POT-Creation-Date: 2013-06-06 11:15+0800\n"
 "PO-Revision-Date: YEAR-MO-DA HO:MI+ZONE\n"
 "Last-Translator: FULL NAME <EMAIL@ADDRESS>\n"
 "Language-Team: LANGUAGE <LL@li.org>\n"
@@ -17,18 +17,18 @@ msgstr ""
 "Content-Type: text/plain; charset=CHARSET\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../src/titlebar.py:135 ../src/main.py:79
+#: ../src/titlebar.py:135 ../src/main.py:81
 msgid "LinuxDeepin User Manual"
 msgstr ""
 
-#: ../src/main.py:148
+#: ../src/main.py:150
 msgid "Read Again"
 msgstr ""
 
-#: ../src/main.py:149
+#: ../src/main.py:151
 msgid "Next Chapter"
 msgstr ""
 
-#: ../src/main.py:153
-msgid "HomePage"
+#: ../src/main.py:155
+msgid "Homepage"
 msgstr ""

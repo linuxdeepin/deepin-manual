@@ -152,7 +152,7 @@ class UserManual(dbus.service.Object):
                 self.web_view.execute_script('$("#msg").css("display", "block")')
                 self.web_view.execute_script('change_nav_status("Right", "none")')
             if book == "7":
-                self.web_view.execute_script('document.getElementById("next").innerHTML = %s' % json.dumps(_("HomePage"), encoding="UTF-8", ensure_ascii=False))
+                self.web_view.execute_script('document.getElementById("next").innerHTML = %s' % json.dumps(_("Homepage"), encoding="UTF-8", ensure_ascii=False))
             
         elif data_dict["type"] == "redirect_next_chapter":
             page_info = eval(data_dict["data"])

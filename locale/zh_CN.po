@@ -8,7 +8,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: PACKAGE VERSION\n"
 "Report-Msgid-Bugs-To: \n"
-"POT-Creation-Date: 2013-04-10 13:26+0800\n"
+"POT-Creation-Date: 2013-06-06 11:14+0800\n"
 "PO-Revision-Date: 2013-04-10 09:35+0800\n"
 "Last-Translator: Automatically generated\n"
 "Language-Team: none\n"
@@ -17,18 +17,18 @@ msgstr ""
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 
-#: ../src/titlebar.py:135 ../src/main.py:79
+#: ../src/titlebar.py:135 ../src/main.py:81
 msgid "LinuxDeepin User Manual"
 msgstr "Linux Deepin 用户手册"
 
-#: ../src/main.py:148
+#: ../src/main.py:150
 msgid "Read Again"
 msgstr "再看一遍"
 
-#: ../src/main.py:149
+#: ../src/main.py:151
 msgid "Next Chapter"
 msgstr "下一章"
 
-#: ../src/main.py:153
+#: ../src/main.py:155
 msgid "Homepage"
 msgstr "返回首页"
