@@ -30,5 +30,5 @@ msgid "Next Chapter"
 msgstr "下一章"
 
 #: ../src/main.py:153
-msgid "HomePage"
+msgid "Homepage"
 msgstr "返回首页"
