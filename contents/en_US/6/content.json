@@ -47,13 +47,13 @@
             {
                 "id": "A2",
                 "description":
-                    "<span class='page-title'>Instant messaging tool: </span>The Pidin instant messaging tool supports Google Talk, ICQ, Facebook and more.",
+                    "<span class='page-title'>Instant messaging tool: </span>The Pidin instant messaging tool supports Google Talk, ICQ, Facebook and more. We also provide Skype, the famous VOIP application.",
                 "image":"images/06-2-2.PNG"
             },
             {
                 "id": "A3",
                 "description":
-                    "<span class='page-title'>Remote Desktop: </span>Reminna give you control of the remote desktop without getting to the site.",
+                    "<span class='page-title'>Remote Desktop: </span>Reminna gives you control of the remote desktop without getting to the site.",
                 "image":"images/06-2-3.PNG"
             },
         ]
