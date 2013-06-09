@@ -18,13 +18,13 @@
             {
                 "id": "A3",
                 "description":
-                    "<span class='page-title'>安裝本地 .deb 軟體包：</span>直接雙擊 .deb 格式軟體包或如下圖進行操作即可，並自動解決依賴喲！",
+                    "<span class='page-title'>重新整理應用程式清單：</span>獲取最新可用的軟體清單。",
                 "image":"images/04-3.PNG"
             },
             {
                 "id": "A4",
                 "description":
-                    "<span class='page-title'>智能清理下載緩存檔：</span>擁有更多的硬碟空間。",
+                    "<span class='page-title'>偏好設定：</span>在此處您可以選擇不同區域的軟體下載檔案庫，獲得更快速度的更新。",
                 "image":"images/04-4.PNG"
             },
         ]
