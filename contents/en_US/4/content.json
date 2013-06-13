@@ -21,6 +21,12 @@
                     "<span class='page-title'>Clean local cache intelligently: </span>This feature frees up more valuable spaces on your hard disk.",
                 "image":"images/04-3.PNG"
             },
+            {
+                "id": "A4",
+                "description":
+                    "<span class='page-title'>Preferences: </span>Select your preferred mirror so as to speed up package updates.",
+                "image":"images/04-4.PNG"
+            }
         ]
     },
 ]

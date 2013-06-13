@@ -12,13 +12,13 @@
             {
                 "id": "A2",
                 "description":
-                    "<span class='page-title'>系統升級：</span>讓系統獲得最佳呵護。",
+                    "<span class='page-title'>升級系統：</span>更新軟件清單，及時獲取可用的更新，使系統得到最佳呵護。",
                 "image":"images/04-2.PNG"
             },
             {
                 "id": "A3",
                 "description":
-                    "<span class='page-title'>重新整理應用程式清單：</span>獲取最新可用的軟體清單。",
+                    "<span class='page-title'>智能清理下載快取套件：</span>為磁盤騰出更多空間。",
                 "image":"images/04-3.PNG"
             },
             {
