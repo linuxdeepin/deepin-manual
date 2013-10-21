@@ -30,7 +30,7 @@
                         {
                 "id": "A5",
                 "description":
-                    "<span class='page-title'>启动项管理：</span>进入“应用程序关联-启动项”添加、删除与修改启动项条目。",
+                    "<span class='page-title'>启动项管理：</span>进入“默认程序-开机启动”，添加、删除与修改开机启动项。",
                 "image":"images/05-5.PNG"
             },
             {
