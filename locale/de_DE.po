@@ -3,33 +3,34 @@
 # This file is distributed under the same license as the PACKAGE package.
 # 
 # Translators:
-# 648trindade <rafaelgt.mbin@gmail.com>, 2013
+# corEr <baracus.de@gmail.com>, 2013
+# 胡家润 <hujiadfr@126.com>, 2013
 msgid ""
 msgstr ""
 "Project-Id-Version: Deepin User Manual\n"
 "Report-Msgid-Bugs-To: \n"
 "POT-Creation-Date: 2013-06-06 11:15+0800\n"
-"PO-Revision-Date: 2013-12-11 05:32+0000\n"
-"Last-Translator: 648trindade <rafaelgt.mbin@gmail.com>\n"
-"Language-Team: Portuguese (Brazil) (http://www.transifex.com/projects/p/deepin-user-manual/language/pt_BR/)\n"
+"PO-Revision-Date: 2013-12-17 09:17+0000\n"
+"Last-Translator: corEr <baracus.de@gmail.com>\n"
+"Language-Team: German (Germany) (http://www.transifex.com/projects/p/deepin-user-manual/language/de_DE/)\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
-"Language: pt_BR\n"
-"Plural-Forms: nplurals=2; plural=(n > 1);\n"
+"Language: de_DE\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: ../src/titlebar.py:135 ../src/main.py:81
 msgid "LinuxDeepin User Manual"
-msgstr "Manual do Usuário Linux Deepin"
+msgstr "LinuxDeepin Benutzerhandbuch"
 
 #: ../src/main.py:150
 msgid "Read Again"
-msgstr "Ler Novamente"
+msgstr "Erneut lesen"
 
 #: ../src/main.py:151
 msgid "Next Chapter"
-msgstr "Próximo Capítulo"
+msgstr "Nächstes Kapitel"
 
 #: ../src/main.py:155
 msgid "Homepage"
-msgstr "Página Inicial"
+msgstr "Homepage"
