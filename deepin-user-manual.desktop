@@ -1,11 +1,14 @@
 [Desktop Entry]
+Categories=utilities
+Exec=deepin-user-manual
+Icon=deepin-user-manual
 Name=User Manual
+Name[ar]=دليل المستعمل
+Name[cs]=Uživatelská příručka
+Name[fr]=Manuel d'utilisateur
+Name[zh_CN]=用户手册
 Name[zh_HK]=用戶手冊
 Name[zh_TW]=用戶手冊
-Name[zh_CN]=用户手册 
-Exec=deepin-user-manual
 StartupNotify=true
 Terminal=false
 Type=Application
-Icon=deepin-user-manual
-Categories=utilities
