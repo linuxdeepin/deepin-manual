@@ -1,0 +1,10 @@
+[Desktop Entry]
+Name=LinuxDeepin User Manual
+Name[zh_HK]=LinuxDeepin 用戶指南
+Name[zh_TW]=LinuxDeepin 用戶指南
+Name[zh_CN]=LinuxDeepin 用户指南 
+Exec=deepin-user-manual
+StartupNotify=true
+Terminal=false
+Type=Application
+Icon=deepin-user-manual

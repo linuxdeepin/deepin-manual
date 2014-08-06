@@ -1,0 +1,12 @@
+Source: deepin-user-manual
+Section: doc
+Priority: optional
+Maintainer: Zhang Cheng <zhangcheng@linuxdeepin.com>
+Build-Depends: debhelper (>= 8.0.0)
+Standards-Version: 3.9.2
+
+Package: deepin-user-manual
+Architecture: all
+Depends: ${misc:Depends}, deepin-ui
+Description: Deepin User Manual
+ Deepin User Manual.
