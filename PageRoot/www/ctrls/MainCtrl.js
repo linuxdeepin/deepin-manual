@@ -1,6 +1,6 @@
 "use strict";
 
-var mainCtrl = angular.module("DeepinHelp")
+var mainCtrl = angular.module("DManual")
     .controller("MainCtrl", function($scope, $log, $sce, $window) {
         // trust the following HTML, since it is published by us.
         $scope.isOverview = true;

@@ -1,6 +1,6 @@
 "use strict";
 
-var app = angular.module("DeepinHelp", []);
+var app = angular.module("DManual", []);
 app.filter("keyword", function() {
     var _PLACEHOLDER_RESULT = [];
     var lastTerm = null;

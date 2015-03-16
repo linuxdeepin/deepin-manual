@@ -1,6 +1,6 @@
 "use strict";
 
-var contentCtrl = angular.module("DeepinHelp")
+var contentCtrl = angular.module("DManual")
     .controller("ContentCtrl", function() {
 
     });

@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("DeepinHelp")
+angular.module("DManual")
        .controller("SearchBoxCtrl", function($scope, $rootScope) {
             $scope.headers = [];
             $scope.$watch("searchTerm", function(newValue, oldValue){

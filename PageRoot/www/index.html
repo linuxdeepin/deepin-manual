@@ -17,7 +17,7 @@
     <link rel="stylesheet" href="./style/index.css" />
     <title>Deepin Help</title>
 </head>
-<body class="isOverview" ng-app="DeepinHelp" ng-controller="MainCtrl">
+<body class="isOverview" ng-app="DManual" ng-controller="MainCtrl">
 <div id="OuterFrame" ng-style="outerFrameStyle">
 </div>
 <div id="FrameBar">
@@ -32,7 +32,7 @@
     <iframe id="Content" ng-show="isPageview" srcdoc="{{htmlOutput}}"
         sandbox="allow-same-origin" seamless></iframe>
     <section ng-show="isOverview" id="Overview" ng-include="'./partials/Overview.html'"></section>
-    <div id="Search" nag-if="isSearchview" ng-controller="SearchCtrl">
+    <div id="Search" ng-if="isSearchview" ng-controller="SearchCtrl">
         <ol>
             <li ng-repeat="match in matches | keyword:searchTerm">
                 <h5>{{ match.header }}</h5>

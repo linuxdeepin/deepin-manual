@@ -1,6 +1,6 @@
 "use strict";
 
-var navigationCtrl = angular.module("DeepinHelp")
+var navigationCtrl = angular.module("DManual")
     .controller("NavigationBarCtrl", function($scope, $log) {
         var sideNavItems = document.getElementById("SideNavigationItems");
         angular.element(sideNavItems).on("wheel", function(event) {

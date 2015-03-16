@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("DeepinHelp").controller("SearchCtrl", function($scope, $rootScope) {
+angular.module("DManual").controller("SearchCtrl", function($scope, $rootScope) {
     $scope.searchTerm = null;
     $scope.matches = [];
 
