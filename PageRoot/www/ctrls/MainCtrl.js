@@ -26,7 +26,6 @@ var mainCtrl = angular.module("DManual")
         $scope.isOverview = true;
 
         $scope.appName = "UnnamedApp";
-        $scope.Help = "Help";
 
         loadMarkdown("./manual/manual_zhCN.md", function(error, md) {
             if (!error) {
