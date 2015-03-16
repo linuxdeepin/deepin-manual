@@ -55,13 +55,13 @@ describe("Markdown Renderer", function() {
             it("gives h1 icons", function() {
                 let src = "# H1|1.png|\n";
                 let result = p(src, marked).html;
-                expect(result).to.equal('<h1 id="h1"><img class="HeaderIcon" src="1.png"></img>H1</h1>\n');
+                expect(result).to.equal('<h1 id="h1"><img class="HeaderIcon" src="1.png" />H1</h1>\n');
             });
 
             it("gives h2 icons", function() {
                 let src = "# H1\n## H2|2.png|\n";
                 let result = p(src, marked).html;
-                expect(result).to.equal('<h1 id="h1">H1</h1>\n<h2 id="h2"><img class="HeaderIcon" src="2.png"></img>H2</h2>\n');
+                expect(result).to.equal('<h1 id="h1">H1</h1>\n<h2 id="h2"><img class="HeaderIcon" src="2.png" />H2</h2>\n');
             });
 
             it("doesn't give h3 - h6 icons", function() {

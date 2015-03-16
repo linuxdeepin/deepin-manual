@@ -155,7 +155,7 @@ var getRenderer = function(markedDep) {
                 + normalizeAnchorName(extracted.text)
                 + '">';
         if (extracted.icon) {
-            result += '<img class="HeaderIcon" src="' + extracted.icon + '"></img>';
+            result += '<img class="HeaderIcon" src="' + extracted.icon + '" />';
         }
         result += extracted.text
                 + '</h' + level + '>\n';
