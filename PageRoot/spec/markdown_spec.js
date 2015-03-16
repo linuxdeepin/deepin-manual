@@ -133,6 +133,28 @@ describe("Markdown Renderer", function() {
                 '<p><img src="alt.png" alt="Alt"></p>\n')
         });
     });
+
+    describe("Links", function() {
+        it("understands in-page links", function() {
+            let src = "[Link Description](#Test)";
+            let result = p(src, marked).html;
+            expect(result).to.equal(
+                '<p><a href="javascript: window.parent.jumpTo(\'Test\');">Link Description</a></p>\n'
+            );
+        });
+
+        it("understands external dman pages", function() {
+
+        });
+
+        it("emits dbus signal", function() {
+
+        });
+
+        it("runs command", function() {
+
+        });
+    });
 });
 
 describe("Navigation Parsing", function() {
