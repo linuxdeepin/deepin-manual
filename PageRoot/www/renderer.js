@@ -186,6 +186,18 @@ var getRenderer = function(markedDep) {
         out += this.options.xhtml ? '/>' : '>';
         return out;
     };
+
+    renderer.link = function(href, title, text) {
+        if (href.indexOf("#") === 0) {
+            href = "javascript: window.parent.jumpTo('" + href.substring(1) + "');";
+        }
+        var out = '<a href="' + href + '"';
+        if (title) {
+            out += ' title="' + title + '"';
+        }
+        out += '>' + text + '</a>';
+        return out;
+    };
     return renderer;
 };
 

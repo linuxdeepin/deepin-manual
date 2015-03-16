@@ -1,4 +1,24 @@
 "use strict";
+var jumpTo = function(anchor) {
+    var body = document.getElementsByTagName("body")[0];
+    body = angular.element(body);
+    var contentWin = document.getElementById("Content").contentWindow;
+    if (anchor) {
+        body.removeClass("isOverview");
+        body.removeClass("isSearchview");
+        body.addClass("isPageview");
+        setTimeout(function() {
+            contentWin.location.hash = anchor;
+        }, 0);
+    } else {
+        body.removeClass("isPageview");
+        body.removeClass("isSearchview");
+        body.addClass("isOverview");
+        setTimeout(function() {
+            contentWin.location.hash = "";
+        }, 0);
+    }
+};
 
 var mainCtrl = angular.module("DManual")
     .controller("MainCtrl", function($scope, $log, $sce, $window) {

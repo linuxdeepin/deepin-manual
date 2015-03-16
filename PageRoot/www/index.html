@@ -30,7 +30,7 @@
     <div ng-include="'./partials/NavigationBar.html'"></div>
     <div ng-include="'./partials/SearchBox.html'"></div>
     <iframe id="Content" ng-show="isPageview" srcdoc="{{htmlOutput}}"
-        sandbox="allow-same-origin" seamless></iframe>
+        sandbox="allow-same-origin allow-scripts" seamless></iframe>
     <section ng-show="isOverview" id="Overview" ng-include="'./partials/Overview.html'"></section>
     <div id="Search" ng-if="isSearchview" ng-controller="SearchCtrl">
         <ol>

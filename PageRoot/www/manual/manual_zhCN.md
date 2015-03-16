@@ -303,6 +303,29 @@
 ### 隐形单元格
 通过控制单元格的class，可以让某些单元格隐形。如下：
 ```
+<table>
+    <caption>人员名录</caption>
+    <tbody>
+        <tr>
+            <td>张三</td>
+            <td>男</td>
+            <td>2000-13-32</td>
+            <td class="blank"></td>
+            <td>王五</td>
+            <td>男</td>
+            <td>2000-13-32</td>
+        </tr>
+        <tr>
+            <td>李四</td>
+            <td>女</td>
+            <td>FFFF-FF-FF</td>
+            <td class="blank"></td>
+            <td>赵六</td>
+            <td>女</td>
+            <td>FFFF-FF-FF</td>
+        </tr>
+    </tbody>
+</table>
 ```
 <table>
     <caption>人员名录</caption>
@@ -366,8 +389,22 @@ TODO
 
 - 在页内跳转
 
-  TODO
+  点击此处可在本窗口内回滚[回到插图](#插图)。
 
-- 转向其它页
+  ```
+  点击此处可在本窗口内回滚[回到插图](#插图) 。
+  ```
 
-  TODO
+- 转向其它深度帮助页
+
+  可以像这样，在新开的窗口中打开其它程序的帮助页。
+
+  [在新窗口打开其它程序的帮助页面](dman://license#Others)。
+
+  ```
+  [在新窗口打开其它程序的帮助页面](dman://license#Others)
+  ```
+
+- 实现其它功能的特殊链接
+
+  暂未实现。
