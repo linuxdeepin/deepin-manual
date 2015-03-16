@@ -1,0 +1,179 @@
+@charset "utf-8";
+
+@mixin clearfix {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+$pageWidth: 672px;
+
+body {
+    margin: 0 auto;
+    width: $pageWidth;
+    background-color: white;
+    overflow-x: hidden;
+}
+
+img.inline {
+    width: 1.5em;
+    height: 1.5em;
+    vertical-align: bottom;
+    display: inline;
+}
+
+img.block1 {
+    width: 100%;
+}
+
+img.block2 {
+    width: 48%;
+    float: left;
+    &:nth-child(2n) {
+        margin-left: 4%;
+    }
+}
+
+img.block3 {
+    width: 32%;
+    float: left;
+    &:nth-child(2n), &:nth-child(3n) {
+        margin-left: 2%;
+    }
+}
+
+img.HeaderIcon {
+    width: 50px;
+    height: 50px;
+    display: inline-block;
+    vertical-align: text-bottom;
+}
+
+p {
+    // text-indent: 17px;
+    line-height: 1.5em;
+    margin: 1em 0;
+    @include clearfix;
+}
+
+li {
+    // line-height: 25px;
+}
+
+* {
+    font-family: "Source Han Sans SC";
+    font-size: 14px;
+    color: rgb(80, 80, 80);
+}
+
+h1 {
+    // font-family: "Source Han Sans SC Normal";
+    font-weight: bold;
+    font-size: 24px;
+    color: black;
+    line-height: 2em;
+    margin: 1em 0;
+    @include clearfix;
+}
+
+h2 {
+    // font-family: "Source Han Sans SC Normal";
+    font-weight: bold;
+    font-size: 20px;
+    color: rgb(80, 80, 80);
+    line-height: 2em;
+    margin: 1em 0;
+    @include clearfix;
+}
+
+h3 {
+    // font-family: "Source Han Sans SC Normal";
+    font-weight: bold;
+    font-size: 18px;
+    color: rgb(0, 160, 233);
+    line-height: 2em;
+    margin: 1em 0;
+    @include clearfix;
+}
+
+h4 {
+    // font-family: "Source Han Sans SC Normal";
+    font-weight: bold;
+    font-size: 16px;
+    color: rgb(80, 80, 80);
+    line-height: 2em;
+    margin: 1em;
+    @include clearfix;
+}
+
+code {
+    background-color: lightgrey !important;
+}
+
+pre {
+    padding: 10px;
+    background-color: lightgrey !important;
+    code {
+        background-color: inherit !important;
+    }
+    @include clearfix;
+}
+
+table {
+    caption {
+        margin-bottom: 8px;
+        text-align: left;
+    }
+    thead {
+        tr {
+            th {
+                border: 1px rgb(0, 160, 233) solid;
+                padding: 5px 10px;
+                color: #b4b4b4 !important;
+            }
+        }
+    }
+    tbody {
+        tr {
+            td {
+                border-color: #b4b4b4;
+                border-style: solid;
+                border-width: 1px 0;
+                padding: 5px 10px;
+                color: #b4b4b4 !important;
+                &.blank {
+                    border-width: 0;
+                }
+            }
+            &:first-child {
+                td {
+                    border-top-width: 2px;
+                }
+
+            }
+
+        }
+    }
+}
+
+table.block1 {
+    width: 100%;
+}
+
+table.block2 {
+    width: 48%;
+    float: left;
+    margin: 0 1%;
+}
+
+table.block3 {
+    width: 31%;
+    float: left;
+    margin: 0 1%;
+}
+
+blockquote {
+    border: 1px lightgreen solid;
+}

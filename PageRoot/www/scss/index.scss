@@ -1,0 +1,266 @@
+@charset "utf-8";
+
+@mixin clearfix {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+// client side decoration dimensions.
+$csdTH: 5px;  // Top height
+$csdRW: 5px;  // Right width
+$csdBH: 5px;  // Bottom height
+$csdLW: 5px;  // Left width
+
+// client area width
+$caW: 946px;
+
+$navBgcolor: #252628;
+
+// page view
+$pvNavBarWidth: 200px;
+
+
+// over view
+$ovNavBarHeight: 84px;
+$navLogoBoxHeight: 84px;
+
+
+html, body {
+    overflow: hidden !important;
+    margin: 0 !important;
+    padding: 0 !important;
+    outline: 0 !important;
+}
+
+body {
+    height: 100%;
+}
+
+#OuterFrame {
+    padding: 0 !important;
+    margin: 0 !important;
+    outline: 0 !important;
+    background-color: skyblue;
+    position: fixed;
+    width: 100%;
+    z-index: -100;
+}
+
+#FrameBar {
+    position: fixed;
+    z-index: 10000;
+    right: $csdRW;
+    .Btn {
+        background: purple;
+        width: 30px;
+        height: 30px;
+        margin: 5px;
+        float: left;
+
+    }
+}
+
+
+#Container {
+    position: fixed;
+    padding: 0 !important;
+    outline: 0 !important;
+    margin: $csdTH $csdRW $csdBH $csdLW !important;
+    background-color: red !important;
+    height: calc(100% - #{$csdTH} - #{$csdBH});
+    width: calc(100% - #{$csdLW} - #{$csdRW});
+    overflow: hidden;
+}
+
+input[type='search'] {
+    width: 50px;
+}
+
+#NavigationBar {
+    background-color: $navBgcolor;
+    color: #b5b5b6;
+
+    ol {
+        list-style-type: none;
+        counter-reset: item;
+        padding: 0;
+
+        li {
+            display: table;
+            counter-increment: item;
+            &:before {
+                content: counters(item, ".") ". ";
+                display: table-cell;
+            }
+        }
+    }
+
+    li ol li {
+        margin-left: 5px !important;
+        &:before {
+            content: counters(item, ".") " ";
+        }
+    }
+
+    a, a:link {
+        cursor: pointer;
+    }
+}
+
+#TopLevelItemsBox {
+    display: flex;
+    height: 100%;
+}
+
+#TopLevelItemsView {
+    @include clearfix;
+    width: 232px * 4;
+    margin: 0 auto;
+
+    padding: 34px 0 0;
+
+    li {
+        float: left;
+        display: block;
+        width: 232px;
+        height: 144px;
+        @include clearfix;
+        text-align: center;
+    }
+
+    img {
+        width: 64px;
+        height: 64px;
+        background-color: darkgrey;
+        margin: 0 auto 14px;
+    }
+}
+
+.isOverview {
+    #NavigationBar {
+        height: $ovNavBarHeight;
+    }
+
+    #SideNavigationBar {
+        display: none;
+    }
+
+    #Overview {
+        height: calc(100% - #{$ovNavBarHeight});
+        margin-top: 0;
+        background-color: pink;
+    }
+
+    #SearchInput {
+        top: 36px;
+        right: 50px;
+    }
+
+}
+
+.isPageview {
+    #NavigationBar {
+        width: $pvNavBarWidth;
+        float: left;
+    }
+
+    #NavLogoBox {
+        height: $navLogoBoxHeight;
+    }
+
+    #SideNavigationBar {
+        display: block;
+        overflow: hidden !important;
+        height: calc(100% - #{$navLogoBoxHeight});
+    }
+
+    #Content {
+        width: calc(100% - #{$pvNavBarWidth});
+        height: 100%;
+        background-color: green;
+        overflow: scroll;
+        float: right;
+        display: block !important;
+        border: 0;
+    }
+
+    #SideNavigationBar {
+        height: 600px; //calc(100% - #{$navLogoBoxHeight} - 1300px);
+    }
+
+    #SideNavigationItems { // ol
+        padding-left: 40px;
+        margin: 0 auto;
+        overflow: hidden;
+        height: 100%;
+        width: 136px;
+
+        li {
+            line-height: 30px;
+        }
+
+        .level2 { // li
+            position: relative;
+            img {
+                position: absolute;
+                width: 30px;
+                height: 30px;
+                left: -32px;
+                background-color: skyblue;
+            }
+        }
+
+    }
+
+    #SearchInput {
+        top: 30px;
+        margin: 0 auto;
+    }
+
+    #LabelDot, #LabelManual {
+        display: none;
+    }
+}
+
+#SearchInput {
+    position: absolute;
+    width: 260px;
+    height: 24px;
+}
+
+#Search {
+    position: absolute;
+    top: 300px;
+    background-color: lightgrey;
+    opacity: 50;
+}
+
+$logoHeight: 48px;
+
+#NavLogoBox {
+    height: 100%;
+    display: flex;
+    > a {
+        display: block;
+        margin: auto 0;
+        margin-left: 20px;
+        height: $logoHeight;
+    }
+}
+
+#AppLogo {
+    background-color: green;
+    width: 48px;
+    height: $logoHeight;
+    float: left;
+    margin-right: 15px;
+}
+
+#AppName, #LabelDot, #LabelManual {
+    height: $logoHeight;
+    line-height: $logoHeight;
+    float: left;
+}

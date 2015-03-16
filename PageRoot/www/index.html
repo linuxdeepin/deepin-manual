@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <script src="../node_modules/angular/angular.min.js"></script>
+    <script src="../node_modules/marked/marked.min.js"></script>
+    <script src="../node_modules/angular-gettext/dist/angular-gettext.min.js"></script>
+    <script src="./renderer.js"></script>
+    <script src="./dimensions.js"></script>
+    <script src="./app.js"></script>
+
+    <script src="./ctrls/MainCtrl.js"></script>
+    <script src="./ctrls/NavigationCtrl.js"></script>
+    <script src="./ctrls/ContentCtrl.js"></script>
+    <script src="./ctrls/SearchBoxCtrl.js"></script>
+    <script src="./ctrls/SearchCtrl.js"></script>
+    <link rel="stylesheet" href="./style/index.css" />
+    <title>Deepin Help</title>
+</head>
+<body class="isOverview" ng-app="DeepinHelp" ng-controller="MainCtrl">
+<div id="OuterFrame" ng-style="outerFrameStyle">
+</div>
+<div id="FrameBar">
+    <a class="Btn" href="javascript: minimize()"></a>
+    <a class="Btn" href="javascript: maximize()"></a>
+    <a class="Btn" href="javascript: close()"></a>
+</div>
+
+<div id="Container">
+    <div ng-include="'./partials/NavigationBar.html'"></div>
+    <div ng-include="'./partials/SearchBox.html'"></div>
+    <iframe id="Content" ng-show="isPageview" srcdoc="{{htmlOutput}}"
+        sandbox="allow-same-origin" seamless></iframe>
+    <section ng-show="isOverview" id="Overview" ng-include="'./partials/Overview.html'"></section>
+    <div id="Search" nag-if="isSearchview" ng-controller="SearchCtrl">
+        <ol>
+            <li ng-repeat="match in matches | keyword:searchTerm">
+                <h5>{{ match.header }}</h5>
+                <p>{{ match.text }}</p>
+            </li>
+        </ol>
+    </div>
+</div>
+
+</body>
+</html>

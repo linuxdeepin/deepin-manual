@@ -1,0 +1,28 @@
+<nav id="NavigationBar" ng-controller="NavigationBarCtrl">
+    <div id="NavLogoBox">
+        <a ng-click="jumpTo()">
+            <img id="AppLogo" ng-src="{{appInfo.icon}}" />
+            <span id="AppName">{{appInfo.name}}</span>
+            <span id="LabelDot">.</span>
+            <span id="LabelManual" translate>Manual</span>
+        </a>
+    </div>
+
+    <div id="SideNavigationBar" ng-style="sideNavBarStyle">
+        <ol id="SideNavigationItems">
+            <nav ng-repeat="item in navigationItems">
+                <li class="level2">
+                    <img ng-src="{{item.icon}}" />
+                    <a ng-click="jumpTo(item.anchor)">{{item.name}}</a>
+                </li>
+                <ol ng-if="item.children">
+                    <nav ng-repeat="item2 in item.children">
+                        <li class="level3">
+                            <a ng-click="jumpTo(item2.anchor)">{{item2.name}}</a>
+                        </li>
+                    </nav>
+                </ol>
+            </nav>
+        </ol>
+    </div>
+</nav>

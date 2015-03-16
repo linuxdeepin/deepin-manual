@@ -1,0 +1,10 @@
+<div id="SearchBox" ng-controller="SearchBoxCtrl">
+    <datalist id="HeaderList">
+        <div ng-repeat="header in headers">
+            <option value="{{header}}">
+        </div>
+    </datalist>
+
+    <input type="search" id="SearchInput"
+           placeholder="输入搜索关键词" ng-model="searchTerm" autocomplete list="HeaderList" />
+</div>

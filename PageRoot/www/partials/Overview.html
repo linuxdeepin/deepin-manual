@@ -1,0 +1,8 @@
+<div id="TopLevelItemsBox">
+    <ul id="TopLevelItemsView">
+        <li ng-repeat="item in navigationItems"><a ng-click="jumpTo(item.anchor)">
+            <img ng-src="{{item.icon}}" />
+            <div>{{item.name}}</div>
+        </a></li>
+    </ul>
+</div>
