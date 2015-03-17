@@ -225,7 +225,7 @@ var loadMarkdown = function(url, callback) {
                 callback(null, data.toString());
             }
         });
-    } else {
+    } else if (typeof window !== "undefined") {
         // browser
         var xmlHttp = new XMLHttpRequest();
         xmlHttp.open("GET", url, true);
@@ -237,6 +237,9 @@ var loadMarkdown = function(url, callback) {
                 callback("Error", null);
             }
         };
+    } else {
+        callback(new Error("Cannot loadMarkdown because unable to detect runtime environment."),
+                 null);
     }
 };
 

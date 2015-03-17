@@ -29,7 +29,7 @@ var mainCtrl = angular.module("DManual")
 
         loadMarkdown("./manual/manual_zhCN.md", function(error, md) {
             if (!error) {
-                var result = parseMarkdown(md, marked);
+                var result = parseMarkdown(md);
                 var html = result.html;
                 var parsed = result.parsed;
 
