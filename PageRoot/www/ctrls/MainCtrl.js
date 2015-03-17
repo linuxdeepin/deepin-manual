@@ -44,6 +44,8 @@ var mainCtrl = angular.module("DManual")
                     "<link rel='stylesheet' href='../style/reset.css' />" +
                     "<link rel='stylesheet' href='../style/content.css' />";
                 $scope.htmlOutput = $sce.trustAsHtml(base + html);
+            } else {
+                console.error(error);
             }
         });
 
