@@ -4,7 +4,7 @@ let Renderer = require("../www/renderer");
 let expect = require("expect.js");
 let marked = require("marked");
 
-let r = Renderer.getRenderer(marked);
+let r = Renderer.getRenderer();
 let p = Renderer.parseMarkdown;
 
 describe("Markdown Renderer", function() {
@@ -33,18 +33,18 @@ describe("Markdown Renderer", function() {
 
         it("warns about duplicate anchors", function() {
             let src = "# Hello World\n##hello  world\n";
-            expect(p).withArgs(src, marked).to.throwError();
+            expect(p).withArgs(src).to.throwError();
         });
 
         it("warns about redefinition of titles", function() {
             let src = "# Hello World\n# 你好世界\n";
-            expect(p).withArgs(src, marked).to.throwError();
+            expect(p).withArgs(src).to.throwError();
         });
 
         describe("insists about the header hierarchy", function() {
             it("h2 under h1", function() {
                 let src = "## H2";
-                expect(p).withArgs(src, marked).to.throwError();
+                expect(p).withArgs(src).to.throwError();
             })
 
         })
@@ -54,20 +54,20 @@ describe("Markdown Renderer", function() {
         describe("Icons in headers", function() {
             it("gives h1 icons", function() {
                 let src = "# H1|1.png|\n";
-                let result = p(src, marked).html;
+                let result = p(src).html;
                 expect(result).to.equal('<h1 id="h1"><img class="HeaderIcon" src="1.png" />H1</h1>\n');
             });
 
             it("gives h2 icons", function() {
                 let src = "# H1\n## H2|2.png|\n";
-                let result = p(src, marked).html;
+                let result = p(src).html;
                 expect(result).to.equal('<h1 id="h1">H1</h1>\n<h2 id="h2"><img class="HeaderIcon" src="2.png" />H2</h2>\n');
             });
 
             it("doesn't give h3 - h6 icons", function() {
                 {
                     let src = "# H1\n## H2\n### H3|3.png|\n";
-                    let result = p(src, marked).html;
+                    let result = p(src).html;
                     expect(result).to.equal(
                         '<h1 id="h1">H1</h1>\n' +
                         '<h2 id="h2">H2</h2>\n' +
@@ -76,21 +76,21 @@ describe("Markdown Renderer", function() {
                 }
                 {
                     let src = "#### H4|4.png|\n";
-                    let result = p(src, marked).html;
+                    let result = p(src).html;
                     expect(result).to.equal(
                         '<h4>H4|4.png|</h4>\n'
                     );
                 }
                 {
                     let src = "##### H5|5.png|\n";
-                    let result = p(src, marked).html;
+                    let result = p(src).html;
                     expect(result).to.equal(
                         '<h5>H5|5.png|</h5>\n'
                     );
                 }
                 {
                     let src = "###### H6|6.png|\n";
-                    let result = p(src, marked).html;
+                    let result = p(src).html;
                     expect(result).to.equal(
                         '<h6>H6|6.png|</h6>\n'
                     );
@@ -100,7 +100,7 @@ describe("Markdown Renderer", function() {
 
         it("understands inline icons", function() {
             let src = "![Alt](alt.png)";
-            let result = p(src, marked).html;
+            let result = p(src).html;
             expect(result).to.equal(
                 '<p><img src="alt.png" alt="Alt" class="inline"></p>\n')
         });
@@ -108,19 +108,19 @@ describe("Markdown Renderer", function() {
         it("understands images", function() {
             {
                 let src = "![1|Alt](alt.png)";
-                let result = p(src, marked).html;
+                let result = p(src).html;
                 expect(result).to.equal(
                     '<p><img src="alt.png" alt="Alt" class="block1"></p>\n')
             }
             {
                 let src = "![2|Alt](alt.png)";
-                let result = p(src, marked).html;
+                let result = p(src).html;
                 expect(result).to.equal(
                     '<p><img src="alt.png" alt="Alt" class="block2"></p>\n')
             }
             {
                 let src = "![3|Alt](alt.png)";
-                let result = p(src, marked).html;
+                let result = p(src).html;
                 expect(result).to.equal(
                     '<p><img src="alt.png" alt="Alt" class="block3"></p>\n')
             }
@@ -128,7 +128,7 @@ describe("Markdown Renderer", function() {
 
         it("understands non-autosized images", function() {
             let src = "![0|Alt](alt.png)";
-            let result = p(src, marked).html;
+            let result = p(src).html;
             expect(result).to.equal(
                 '<p><img src="alt.png" alt="Alt"></p>\n')
         });
@@ -137,7 +137,7 @@ describe("Markdown Renderer", function() {
     describe("Links", function() {
         it("understands in-page links", function() {
             let src = "[Link Description](#Test)";
-            let result = p(src, marked).html;
+            let result = p(src).html;
             expect(result).to.equal(
                 '<p><a href="javascript: window.parent.jumpTo(\'Test\');">Link Description</a></p>\n'
             );
@@ -171,7 +171,7 @@ describe("Navigation Parsing", function() {
             "#### H4",
             "H4 Text",
         ].join("\n");
-        let result = p(src, marked).parsed;
+        let result = p(src).parsed;
         expect(result.appInfo.name).to.equal("H1");
         expect(result.appInfo.icon).to.equal("H1.png");
         expect(result.items).to.eql([

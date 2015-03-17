@@ -34,7 +34,6 @@ gulp.task("watch", ['sass'], function() {
     gulp.watch('./www/scss/*.scss', ['sass']);
 });
 
-
 gulp.task('test', function () {
     return gulp.src('./spec/*_spec.js', {
             read: false,
@@ -42,4 +41,16 @@ gulp.task('test', function () {
         .pipe(mocha({
             reporter: 'nyan',
         }));
+});
+
+var browserify = require("browserify");
+var source = require('vinyl-source-stream');
+
+gulp.task('browserify', function() {
+    return browserify('./www/entry.js')
+        .bundle()
+        //Pass desired output filename to vinyl-source-stream
+        .pipe(source('bundle.js'))
+        // Start piping stream to tasks!
+        .pipe(gulp.dest('./www/'));
 });

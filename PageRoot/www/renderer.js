@@ -1,7 +1,7 @@
 "use strict";
 
 // Make a custom version of the marked renderer.
-
+var marked = require("marked");
 var MAX_INDEX_HEADER_LEVEL = 2;
 var MAX_NAV_HEADER_LEVEL = 3;
 
@@ -135,9 +135,9 @@ var extractHeaderIcon = function(text, level) {
     }
 };
 
-var getRenderer = function(markedDep) {
+var getRenderer = function() {
     // export!
-    var renderer = new markedDep.Renderer();
+    var renderer = new marked.Renderer();
 
     renderer.heading = function(text, level, raw) {
         if (level > MAX_NAV_HEADER_LEVEL) {
@@ -240,12 +240,13 @@ var loadMarkdown = function(url, callback) {
     }
 };
 
-var parseMarkdown = function(md, markedDep) {
-    var renderer = getRenderer(markedDep);
-    var html = markedDep(md, {
+var parseMarkdown = function(md) {
+
+    var renderer = getRenderer();
+    var html = marked(md, {
         renderer: renderer,
     });
-    var lexer = new markedDep.Lexer({});
+    var lexer = new marked.Lexer({});
     var tokens = lexer.lex(md);
 
     var parsed = parseNavigationItems(tokens);
