@@ -46,10 +46,22 @@ describe("Resolution: DMan scheme", function() {
     });
 
     it("HTTP scheme", function() {
-        let p = "http://docs.example.com/dman/";
+        let p = "http://docs.example.com/dman/app3/zhCN/main.md";
+        expect(gdmfi(p)).to.eql({
+            baseDir: "http://docs.example.com/dman/app3",
+            dir: "http://docs.example.com/dman/app3/zhCN",
+            hash: null,
+            lang: "zhCN",
+        });
     });
 
     it("HTTPS scheme", function() {
-        let p = "https://docs.example.com/dman/";
+        let p = "https://docs.example.com/dman/app3/zhCN/main.md#使用说明";
+        expect(gdmfi(p)).to.eql({
+            baseDir: "https://docs.example.com/dman/app3",
+            dir: "https://docs.example.com/dman/app3/zhCN",
+            hash: "使用说明",
+            lang: "zhCN",
+        });
     });
 });

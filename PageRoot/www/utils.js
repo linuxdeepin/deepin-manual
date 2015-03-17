@@ -32,11 +32,11 @@ var getDManFileInfo = function(url, lang) {
         lang: null,
         baseDir: null,
         dir: null,
-        hash: null,
+        hash:  parsed.hash.substr(1) || null,
     };
     result.lang = query.lang || lang || null;
 
-    console.log(parsed);
+
     switch (parsed.protocol) {
         case "dman:":
             result.baseDir = ["/usr/share/dman", parsed.hostname].join("/");
@@ -44,15 +44,28 @@ var getDManFileInfo = function(url, lang) {
                 throw new Error("dman scheme must provide a language code");
             }
             result.dir = [result.baseDir, result.lang].join("/");
-            result.hash = parsed.hash.substr(1);
-
             break;
         case "":
             result.baseDir = splitPathFileNames(parsed.pathname)[0];
             result.dir = result.baseDir;
             break;
+        case "http:":
+        case "https:":
+            var parts = parsed.pathname.split("/");
+            console.log("=================", parts);
+            console.log(parts.slice(0, parts.length - 2));
+            result.lang = parts[parts.length - 2];
+            result.dir = [
+                parsed.protocol,
+                "//",
+                parsed.host,
+                parts.slice(0, parts.length - 2).join("/"),
+                result.lang,
+            ].join("");
+
+            break;
         default:
-            console.error(parsed.protocol);
+            throw new Error("Unknown protocol");
             break;
     }
 
