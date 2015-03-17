@@ -11,13 +11,6 @@ var splitPathFileNames = function(pf) {
     }
 };
 
-/**
- *
- * @param url: a url that points to a dman file or a dman directory. It can be one of the following:
- *             dman, http, https, file scheme.
- * @param lang optional. can be used to determine which language code to use.
- * @returns {{absPath: string, version: string, languageDetermined: boolean}}
- */
 var getDManFileInfo = function(url, lang) {
     url = url.trim();
 
@@ -52,14 +45,19 @@ var getDManFileInfo = function(url, lang) {
         case "http:":
         case "https:":
             var parts = parsed.pathname.split("/");
-            console.log("=================", parts);
-            console.log(parts.slice(0, parts.length - 2));
             result.lang = parts[parts.length - 2];
+            result.baseDir = [
+                parsed.protocol,
+                "//",
+                parsed.host,
+                parts.slice(0, parts.length - 2).join("/"),
+            ].join("");
             result.dir = [
                 parsed.protocol,
                 "//",
                 parsed.host,
                 parts.slice(0, parts.length - 2).join("/"),
+                "/",
                 result.lang,
             ].join("");
 
