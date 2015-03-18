@@ -3,4 +3,4 @@ PageRoot/node_modules
 PageRoot/www/style/**/*.css
 unused/
 
-PageRoot/www/bundle.js
+PageRoot/www/scripts

@@ -4,6 +4,8 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var gettext = require("gulp-angular-gettext");
 var mocha = require('gulp-mocha');
+var sourcemaps = require('gulp-sourcemaps');
+var traceur = require('gulp-traceur');
 
 gulp.task('sass', function () {
     gulp.src('./www/scss/*.scss')
@@ -50,7 +52,16 @@ gulp.task('browserify', function() {
     return browserify('./www/entry.js')
         .bundle()
         //Pass desired output filename to vinyl-source-stream
+
         .pipe(source('bundle.js'))
         // Start piping stream to tasks!
         .pipe(gulp.dest('./www/'));
+});
+
+gulp.task('es6', function() {
+    return gulp.src('./www/jssrc/**/*.js')
+        .pipe(sourcemaps.init())
+        .pipe(traceur())
+        .pipe(sourcemaps.write('.'))
+        .pipe(gulp.dest('./www/scripts/'));
 });
