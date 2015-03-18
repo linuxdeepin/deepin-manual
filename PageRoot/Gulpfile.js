@@ -32,8 +32,12 @@ gulp.task('translations', function () {
         .pipe(gulp.dest('translations/'));
 });
 
-gulp.task("watch", ['sass'], function() {
+var entryPath = './www/jssrc/entry.js';
+var jsPath = './www/jssrc/**/*.js';
+gulp.task("watch", ['sass', 'browserify', 'es6'], function() {
     gulp.watch('./www/scss/*.scss', ['sass']);
+    gulp.watch(entryPath, ['browerify']);
+    gulp.watch(jsPath, ['es6']);
 });
 
 gulp.task('test', function () {
@@ -49,7 +53,7 @@ var browserify = require("browserify");
 var source = require('vinyl-source-stream');
 
 gulp.task('browserify', function() {
-    return browserify('./www/jssrc/entry.js')
+    return browserify(entryPath)
         .bundle()
         //Pass desired output filename to vinyl-source-stream
 
@@ -59,7 +63,7 @@ gulp.task('browserify', function() {
 });
 
 gulp.task('es6', function() {
-    return gulp.src('./www/jssrc/**/*.js')
+    return gulp.src(jsPath)
         .pipe(sourcemaps.init())
         .pipe(traceur())
         .pipe(sourcemaps.write('.'))

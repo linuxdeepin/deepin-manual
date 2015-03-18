@@ -238,9 +238,10 @@ var loadMarkdown = function(url, callback) {
         xmlHttp.onreadystatechange = function(target, type, bubbles, cancelable) {
             if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
                 callback(null, xmlHttp.responseText);
-            } else {
-                callback("Error", null);
             }
+        };
+        xmlHttp.onerror = function(event) {
+            callback(new Error(event));
         };
     } else {
         callback(new Error("Cannot loadMarkdown because unable to detect runtime environment."),
