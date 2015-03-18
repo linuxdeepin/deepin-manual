@@ -225,6 +225,11 @@ var loadMarkdown = function(url, callback) {
                 callback(null, data.toString());
             }
         });
+    } else if (typeof DAE !== "undefined") {
+        // DAE
+        let f = new DAE.File("/home/xinkai/projects/deepin-user-manual/PageRoot/www/manual/manual_zhCN.md");
+        // let f = new DAE.File(url);
+        callback(null, f.readText());
     } else if (typeof window !== "undefined") {
         // browser
         var xmlHttp = new XMLHttpRequest();
