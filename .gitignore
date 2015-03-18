@@ -4,3 +4,4 @@ PageRoot/www/style/**/*.css
 unused/
 
 PageRoot/www/scripts
+*.nw
