@@ -70,6 +70,18 @@ var getDManFileInfo = function(url, lang) {
     return result;
 };
 
+let getContentStylePath = function(indexPath) {
+    let parsed = new URL(indexPath);
+    if (parsed.protocol === "http:" || parsed.protocol === "https:") {
+        return [parsed.protocol + "/", parsed.host + splitPathFileNames(parsed.pathname)[0], "style"].join("/");
+    } else if (parsed.protocol === "file:" || parsed.protocol === "") {
+        return [splitPathFileNames(parsed.pathname)[0], "style"].join("/");
+    } else {
+        throw new Error("Unknown protocol.");
+    }
+};
+
 if (typeof exports !== "undefined") {
     exports.getDManFileInfo = getDManFileInfo;
+    exports.getContentStylePath = getContentStylePath;
 }
