@@ -11,9 +11,10 @@ var navigationCtrl = angular.module("DManual")
         var container = document.getElementById("Container");
         var logoBox = document.getElementById("NavLogoBox");
         var updateSidebar = function() {
-            console.log("resizing to " + (container.clientHeight - logoBox.clientHeight));
+            let newHeight = container.clientHeight - logoBox.clientHeight;
+            $log.log("resizing to " + newHeight + "px");
             $scope.sideNavBarStyle = {
-                height: container.clientHeight - logoBox.clientHeight + "px"
+                height: newHeight + "px",
             };
         };
         updateSidebar();
