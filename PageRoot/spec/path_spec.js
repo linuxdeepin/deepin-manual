@@ -1,6 +1,6 @@
 "use strict";
 
-var utils = require("../www/utils");
+var utils = require("../www/jssrc/utils");
 var expect = require("expect.js");
 var gdmfi = utils.getDManFileInfo;
 

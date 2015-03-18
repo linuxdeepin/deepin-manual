@@ -1,6 +1,6 @@
 "use strict";
 
-let Renderer = require("../www/renderer");
+let Renderer = require("../www/jssrc/renderer");
 let expect = require("expect.js");
 let marked = require("marked");
 
