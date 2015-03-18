@@ -1,5 +1,7 @@
 (function(){
-
+    if (typeof DAE === "undefined") {
+        return false;
+    }
     var app = DAE.app;
     
     var main = function(){
@@ -16,7 +18,7 @@
         var stateChangeEvent = function(){
         };
         var closeEvent = function(){
-        }
+        };
         app.addEvent({
 			show: function(){
 			},
