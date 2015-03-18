@@ -49,13 +49,13 @@ var browserify = require("browserify");
 var source = require('vinyl-source-stream');
 
 gulp.task('browserify', function() {
-    return browserify('./www/entry.js')
+    return browserify('./www/jssrc/entry.js')
         .bundle()
         //Pass desired output filename to vinyl-source-stream
 
         .pipe(source('bundle.js'))
         // Start piping stream to tasks!
-        .pipe(gulp.dest('./www/'));
+        .pipe(gulp.dest('./www/scripts/'));
 });
 
 gulp.task('es6', function() {
