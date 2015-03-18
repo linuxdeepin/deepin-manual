@@ -27,7 +27,8 @@ var mainCtrl = angular.module("DManual")
 
         $scope.appName = "UnnamedApp";
 
-        loadMarkdown("./manual/manual_zhCN.md", function(error, md) {
+        loadMarkdown("/home/xinkai/projects/deepin-user-manual/PageRoot/www/manual/manual_zhCN.md", function(error, md) {
+        //loadMarkdown("http://localhost:63342/deepin-user-manual/PageRoot/www/manual/manual_zhCN.md", function(error, md) {
             if (!error) {
                 var result = parseMarkdown(md);
                 var html = result.html;
