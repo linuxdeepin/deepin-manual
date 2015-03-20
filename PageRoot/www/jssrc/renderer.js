@@ -250,13 +250,6 @@ let loadMarkdown = function(url, callback) {
                         });
                     }
                 });
-            } else if (typeof DAE !== "undefined") {
-                // DAE
-                let f = new DAE.File(url);
-                callback(null, {
-                    markdown: f.readText(),
-                    fileInfo: info,
-                });
             } else {
                 callback(new Error("No way to access file system."),
                          null);
