@@ -1,8 +1,9 @@
 "use strict";
+
 var jumpTo = function(anchor) {
-    var body = document.getElementsByTagName("body")[0];
+    let body = document.getElementsByTagName("body")[0];
     body = angular.element(body);
-    var contentWin = document.getElementById("Content").contentWindow;
+    let contentWin = document.getElementById("Content").contentWindow;
     if (anchor) {
         body.removeClass("isOverview");
         body.removeClass("isSearchview");
@@ -22,17 +23,18 @@ var jumpTo = function(anchor) {
 
 var mainCtrl = angular.module("DManual")
     .controller("MainCtrl", function($scope, $log, $sce, $window) {
-        // trust the following HTML, since it is published by us.
         $scope.isOverview = true;
+        $scope.appInfo = {
+            appName: "UnnamedApp",
+        };
 
-        $scope.appName = "UnnamedApp";
-
-        //loadMarkdown("/home/xinkai/projects/deepin-user-manual/PageRoot/www/manual/manual_zhCN.md", function(error, md) {
-        loadMarkdown("http://localhost:63342/deepin-user-manual/PageRoot/www/manual/manual_zhCN.md", function(error, md) {
+        // let mdUrl = "/home/xinkai/projects/deepin-user-manual/PageRoot/www/manual/manual_zhCN.md";
+        let mdUrl = "http://localhost:63342/deepin-user-manual/PageRoot/www/manual/manual_zhCN.md";
+        loadMarkdown(mdUrl, function(error, md) {
             if (!error) {
-                var result = parseMarkdown(md);
-                var html = result.html;
-                var parsed = result.parsed;
+                let result = parseMarkdown(md);
+                let html = result.html;
+                let parsed = result.parsed;
 
                 $scope.navigationItems = parsed.items;
                 $scope.appInfo = parsed.appInfo;
@@ -42,9 +44,10 @@ var mainCtrl = angular.module("DManual")
                     $scope.$broadcast("headersSet", parsed.headers);
                 }, 100);
                 let stylePath = getContentStylePath(location.href);
-                var base = "<base href='http://localhost:63342/deepin-user-manual/PageRoot/www/manual/'>" +
-                    "<link rel='stylesheet' href='" + stylePath + "/reset.css' />" +
-                    "<link rel='stylesheet' href='" + stylePath + "/content.css' />";
+                let markdownDir = "http://localhost:63342/deepin-user-manual/PageRoot/www/manual/";
+                let base = `<base href='${markdownDir}'>
+                    <link rel='stylesheet' href='${stylePath}/reset.css' />" +
+                    <link rel='stylesheet' href='${stylePath}/content.css' />`;
                 $scope.htmlOutput = $sce.trustAsHtml(base + html);
             } else {
                 console.error(error);
@@ -52,9 +55,9 @@ var mainCtrl = angular.module("DManual")
         });
 
         $scope.jumpTo = function(anchor) {
-            var body = document.getElementsByTagName("body")[0];
+            let body = document.getElementsByTagName("body")[0];
             body = angular.element(body);
-            var contentWin = document.getElementById("Content").contentWindow;
+            let contentWin = document.getElementById("Content").contentWindow;
             if (anchor) {
                 $scope.isOverview = false;
                 body.removeClass("isOverview");
@@ -74,8 +77,8 @@ var mainCtrl = angular.module("DManual")
             }
         };
 
-        var win = angular.element($window);
-        var updateOuterFrame = function() {
+        let win = angular.element($window);
+        let updateOuterFrame = function() {
             $scope.outerFrameStyle = {
                 height: $window.innerHeight + "px"
             };
