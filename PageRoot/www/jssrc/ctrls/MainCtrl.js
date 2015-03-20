@@ -1,5 +1,10 @@
 "use strict";
 
+let {
+    loadMarkdown,
+    parseMarkdown,
+} = require("./renderer");
+
 var jumpTo = function(anchor) {
     let body = document.getElementsByTagName("body")[0];
     body = angular.element(body);
@@ -48,7 +53,7 @@ var mainCtrl = angular.module("DManual")
                 let stylePath = getContentStylePath(location.href);
                 let markdownDir = "http://localhost:63342/deepin-user-manual/PageRoot/www/manual/";
                 let base = `<base href='${markdownDir}'>
-                    <link rel='stylesheet' href='${stylePath}/reset.css' />" +
+                    <link rel='stylesheet' href='${stylePath}/reset.css' />
                     <link rel='stylesheet' href='${stylePath}/content.css' />`;
                 $scope.htmlOutput = $sce.trustAsHtml(base + html);
             } else {

@@ -3,9 +3,9 @@
 // Make a custom version of the marked renderer.
 let marked = require("marked");
 let MAX_INDEX_HEADER_LEVEL = 2;
-var MAX_NAV_HEADER_LEVEL = 3;
+let MAX_NAV_HEADER_LEVEL = 3;
 
-var normalizeAnchorName = function(raw) {
+let normalizeAnchorName = function(raw) {
     return raw.toLowerCase()
               // Convert any *space characters* per:
               // http://www.w3.org/TR/html5/dom.html#the-id-attribute            and
@@ -17,9 +17,9 @@ var normalizeAnchorName = function(raw) {
 // Keep track of keyword -> navigation item lookup table.
 
 
-var addItem = function(target, name, anchor, icon) {
+let addItem = function(target, name, anchor, icon) {
     // push toAdd to target
-    var toAdd = Object.create(null);
+    let toAdd = Object.create(null);
     toAdd.name = name;
     toAdd.anchor = anchor;
     toAdd.icon = icon;
@@ -201,7 +201,7 @@ var getRenderer = function() {
     return renderer;
 };
 
-var loadMarkdown = function(url, callback) {
+let loadMarkdown = function(url, callback) {
     let parsed = new URL(url);
     if (parsed.protocol === "file:") {
         parsed.protocol = "";
@@ -261,16 +261,15 @@ var loadMarkdown = function(url, callback) {
     }
 };
 
-var parseMarkdown = function(md) {
-
-    var renderer = getRenderer();
-    var html = marked(md, {
+let parseMarkdown = function(md) {
+    let renderer = getRenderer();
+    let html = marked(md, {
         renderer: renderer,
     });
-    var lexer = new marked.Lexer({});
-    var tokens = lexer.lex(md);
+    let lexer = new marked.Lexer({});
+    let tokens = lexer.lex(md);
 
-    var parsed = parseNavigationItems(tokens);
+    let parsed = parseNavigationItems(tokens);
     return {
         parsed: parsed,
         html: html,
@@ -278,6 +277,7 @@ var parseMarkdown = function(md) {
 };
 
 if (typeof exports !== "undefined") {
+    exports.loadMarkdown = loadMarkdown;
     exports.getRenderer = getRenderer;
     exports.parseMarkdown = parseMarkdown;
 }

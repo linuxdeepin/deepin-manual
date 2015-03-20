@@ -1,9 +1,9 @@
 "use strict";
 
-var URL = require("url-parse");
+let URL = require("url-parse");
 
-var splitPathFileNames = function(pf) {
-    var i = pf.lastIndexOf("/");
+let splitPathFileNames = function(pf) {
+    let i = pf.lastIndexOf("/");
     if (i >= 0) {
         return [pf.substr(0, i), pf.substr(i)];
     } else {
@@ -14,14 +14,14 @@ var splitPathFileNames = function(pf) {
 var getDManFileInfo = function(url, lang) {
     url = url.trim();
 
-    var parsed = new URL(url);
+    let parsed = new URL(url);
     if (parsed.protocol === "file:") {
         parsed.protocol = "";
         parsed.href = parsed.href.substr("file://".length);
     }
-    var query = URL.qs.parse(parsed.query);
+    let query = URL.qs.parse(parsed.query);
 
-    var result = {
+    let result = {
         lang: null,
         baseDir: null,
         dir: null,
