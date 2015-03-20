@@ -30,11 +30,13 @@ var mainCtrl = angular.module("DManual")
 
         // let mdUrl = "/home/xinkai/projects/deepin-user-manual/PageRoot/www/manual/manual_zhCN.md";
         let mdUrl = "http://localhost:63342/deepin-user-manual/PageRoot/www/manual/manual_zhCN.md";
-        loadMarkdown(mdUrl, function(error, md) {
+        loadMarkdown(mdUrl, function(error, payload) {
             if (!error) {
-                let result = parseMarkdown(md);
+                let result = parseMarkdown(payload.md);
                 let html = result.html;
                 let parsed = result.parsed;
+
+                let fileInfo = payload.fileInfo;
 
                 $scope.navigationItems = parsed.items;
                 $scope.appInfo = parsed.appInfo;

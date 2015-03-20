@@ -1,8 +1,8 @@
 "use strict";
 
 // Make a custom version of the marked renderer.
-var marked = require("marked");
-var MAX_INDEX_HEADER_LEVEL = 2;
+let marked = require("marked");
+let MAX_INDEX_HEADER_LEVEL = 2;
 var MAX_NAV_HEADER_LEVEL = 3;
 
 var normalizeAnchorName = function(raw) {
@@ -216,14 +216,18 @@ var loadMarkdown = function(url, callback) {
                 xmlHttp.send();
                 xmlHttp.onreadystatechange = function(target, type, bubbles, cancelable) {
                     if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
-                        callback(null, xmlHttp.responseText);
+                        callback(null, {
+                            markdown: xmlHttp.responseText,
+                        });
                     }
                 };
                 xmlHttp.onerror = function(event) {
-                    callback(new Error(event), null);
+                    callback(new Error(event),
+                             null);
                 };
             } else {
-                callback(new Error("No way to access Http(s)."), null);
+                callback(new Error("No way to access Http(s)."),
+                         null);
             }
             break;
         case "":
@@ -234,19 +238,25 @@ var loadMarkdown = function(url, callback) {
                     if (error) {
                         callback(error, null);
                     } else {
-                        callback(null, data.toString());
+                        callback(null, {
+                            markdown: data.toString()
+                        });
                     }
                 });
             } else if (typeof DAE !== "undefined") {
                 // DAE
                 let f = new DAE.File(url);
-                callback(null, f.readText());
+                callback(null, {
+                    markdown: f.readText(),
+                });
             } else {
-                callback(new Error("No way to access file system."), null);
+                callback(new Error("No way to access file system."),
+                         null);
             }
             break;
         default:
-            callback(new Error("Don't know what to do with the protocol"), null);
+            callback(new Error("Don't know what to do with the protocol"),
+                     null);
             break;
     }
 };
