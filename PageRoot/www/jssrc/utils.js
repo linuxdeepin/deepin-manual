@@ -11,7 +11,7 @@ let splitPathFileNames = function(pf) {
     }
 };
 
-var getDManFileInfo = function(url, lang) {
+let getDManFileInfo = function(url, lang) {
     url = url.trim();
 
     let parsed = new URL(url);
@@ -84,9 +84,4 @@ let getContentStylePath = function(indexPath) {
 if (typeof exports !== "undefined") {
     exports.getDManFileInfo = getDManFileInfo;
     exports.getContentStylePath = getContentStylePath;
-}
-
-if (typeof window !== "undefined") {
-    // TODO: use exports later.
-    window.getContentStylePath = getContentStylePath;
 }

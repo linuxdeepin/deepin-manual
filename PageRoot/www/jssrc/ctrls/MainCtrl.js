@@ -5,6 +5,8 @@ let {
     parseMarkdown,
 } = require("./renderer");
 
+let getContentStylePath = require("./utils").getContentStylePath;
+
 var jumpTo = function(anchor) {
     let body = document.getElementsByTagName("body")[0];
     body = angular.element(body);
@@ -51,8 +53,8 @@ var mainCtrl = angular.module("DManual")
                     $scope.$broadcast("headersSet", parsed.headers);
                 }, 100);
                 let stylePath = getContentStylePath(location.href);
-                let markdownDir = "http://localhost:63342/deepin-user-manual/PageRoot/www/manual/";
-                let base = `<base href='${markdownDir}'>
+                let markdownDir = fileInfo.dir;
+                let base = `<base href='${markdownDir}/'>
                     <link rel='stylesheet' href='${stylePath}/reset.css' />
                     <link rel='stylesheet' href='${stylePath}/content.css' />`;
                 $scope.htmlOutput = $sce.trustAsHtml(base + html);

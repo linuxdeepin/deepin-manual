@@ -1,6 +1,9 @@
 "use strict";
 
 // Make a custom version of the marked renderer.
+
+let getDManFileInfo = require("./utils").getDManFileInfo;
+
 let marked = require("marked");
 let MAX_INDEX_HEADER_LEVEL = 2;
 let MAX_NAV_HEADER_LEVEL = 3;
@@ -202,6 +205,8 @@ var getRenderer = function() {
 };
 
 let loadMarkdown = function(url, callback) {
+    let info = getDManFileInfo(url);
+
     let parsed = new URL(url);
     if (parsed.protocol === "file:") {
         parsed.protocol = "";
@@ -218,6 +223,7 @@ let loadMarkdown = function(url, callback) {
                     if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
                         callback(null, {
                             markdown: xmlHttp.responseText,
+                            fileInfo: info,
                         });
                     }
                 };
@@ -239,7 +245,8 @@ let loadMarkdown = function(url, callback) {
                         callback(error, null);
                     } else {
                         callback(null, {
-                            markdown: data.toString()
+                            markdown: data.toString(),
+                            fileInfo: info,
                         });
                     }
                 });
@@ -248,6 +255,7 @@ let loadMarkdown = function(url, callback) {
                 let f = new DAE.File(url);
                 callback(null, {
                     markdown: f.readText(),
+                    fileInfo: info,
                 });
             } else {
                 callback(new Error("No way to access file system."),
