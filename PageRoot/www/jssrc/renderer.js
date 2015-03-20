@@ -201,19 +201,6 @@ var getRenderer = function() {
     return renderer;
 };
 
-var lookupKeyword = function(indices, keyword) {
-    var result = [];
-    for (var header in indices) {
-        var sentences = indices[header];
-        for (var sentence of sentences) {
-            if (sentence.indexOf(keyword) >= 0) {
-                result.push(header, sentence);
-            }
-        }
-    }
-    return result;
-};
-
 var loadMarkdown = function(url, callback) {
     let parsed = new URL(url);
     if (parsed.protocol === "file:") {
