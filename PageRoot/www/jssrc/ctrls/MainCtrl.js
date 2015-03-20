@@ -32,7 +32,7 @@ var mainCtrl = angular.module("DManual")
         let mdUrl = "http://localhost:63342/deepin-user-manual/PageRoot/www/manual/manual_zhCN.md";
         loadMarkdown(mdUrl, function(error, payload) {
             if (!error) {
-                let result = parseMarkdown(payload.md);
+                let result = parseMarkdown(payload.markdown);
                 let html = result.html;
                 let parsed = result.parsed;
 
