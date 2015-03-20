@@ -36,7 +36,7 @@ var entryPath = './www/jssrc/entry.js';
 var jsPath = './www/jssrc/**/*.js';
 gulp.task("watch", ['sass', 'browserify', 'es6'], function() {
     gulp.watch('./www/scss/*.scss', ['sass']);
-    gulp.watch(entryPath, ['browerify']);
+    gulp.watch(entryPath, ['browserify']);
     gulp.watch(jsPath, ['es6']);
 });
 
