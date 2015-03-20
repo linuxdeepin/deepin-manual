@@ -54,6 +54,7 @@ var mainCtrl = angular.module("DManual")
                 }, 100);
                 let stylePath = getContentStylePath(location.href);
                 let markdownDir = fileInfo.dir;
+                $scope.appInfo.markdownDir = markdownDir;
                 let base = `<base href='${markdownDir}/'>
                     <link rel='stylesheet' href='${stylePath}/reset.css' />
                     <link rel='stylesheet' href='${stylePath}/content.css' />`;

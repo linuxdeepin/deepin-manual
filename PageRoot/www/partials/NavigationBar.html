@@ -1,7 +1,7 @@
 <nav id="NavigationBar" ng-controller="NavigationBarCtrl">
     <div id="NavLogoBox">
         <a ng-click="jumpTo()">
-            <img id="AppLogo" ng-src="{{appInfo.icon}}" />
+            <img id="AppLogo" ng-src="{{appInfo.markdownDir}}/{{appInfo.icon}}" />
             <span id="AppName">{{appInfo.name}}</span>
             <span id="LabelDot">.</span>
             <span id="LabelManual" translate>Manual</span>
@@ -12,7 +12,7 @@
         <ol id="SideNavigationItems">
             <nav ng-repeat="item in navigationItems">
                 <li class="level2">
-                    <img ng-src="{{item.icon}}" />
+                    <img ng-src="{{appInfo.markdownDir}}/{{item.icon}}" />
                     <a ng-click="jumpTo(item.anchor)">{{item.name}}</a>
                 </li>
                 <ol ng-if="item.children">
