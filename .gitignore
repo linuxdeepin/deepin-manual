@@ -2,6 +2,8 @@
 PageRoot/node_modules
 PageRoot/www/style/**/*.css
 unused/
+dist/
 
 PageRoot/www/scripts
 *.nw
+*.log
