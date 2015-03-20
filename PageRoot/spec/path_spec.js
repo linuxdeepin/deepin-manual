@@ -83,12 +83,12 @@ describe("Other Paths", function() {
 
         it("file (implicit)", function() {
             let r = gcsp("/usr/doc/dman/index.html?a=b&c=d#Hello");
-            expect(r).to.equal("/usr/doc/dman/style");
+            expect(r).to.equal("file:///usr/doc/dman/style");
         });
 
         it("file (explicit)", function() {
             let r = gcsp("file:///usr/doc/dman/index.html?a=b&c=d#Hello");
-            expect(r).to.equal("/usr/doc/dman/style");
+            expect(r).to.equal("file:///usr/doc/dman/style");
         });
 
     });

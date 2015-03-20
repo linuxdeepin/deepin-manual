@@ -27,8 +27,8 @@ var mainCtrl = angular.module("DManual")
 
         $scope.appName = "UnnamedApp";
 
-        loadMarkdown("/home/xinkai/projects/deepin-user-manual/PageRoot/www/manual/manual_zhCN.md", function(error, md) {
-        //loadMarkdown("http://localhost:63342/deepin-user-manual/PageRoot/www/manual/manual_zhCN.md", function(error, md) {
+        //loadMarkdown("/home/xinkai/projects/deepin-user-manual/PageRoot/www/manual/manual_zhCN.md", function(error, md) {
+        loadMarkdown("http://localhost:63342/deepin-user-manual/PageRoot/www/manual/manual_zhCN.md", function(error, md) {
             if (!error) {
                 var result = parseMarkdown(md);
                 var html = result.html;
@@ -41,9 +41,10 @@ var mainCtrl = angular.module("DManual")
                     // wait for SearchBoxCtrl to startup
                     $scope.$broadcast("headersSet", parsed.headers);
                 }, 100);
+                let stylePath = getContentStylePath(location.href);
                 var base = "<base href='http://localhost:63342/deepin-user-manual/PageRoot/www/manual/'>" +
-                    "<link rel='stylesheet' href='../style/reset.css' />" +
-                    "<link rel='stylesheet' href='../style/content.css' />";
+                    "<link rel='stylesheet' href='" + stylePath + "/reset.css' />" +
+                    "<link rel='stylesheet' href='" + stylePath + "/content.css' />";
                 $scope.htmlOutput = $sce.trustAsHtml(base + html);
             } else {
                 console.error(error);

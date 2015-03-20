@@ -75,7 +75,7 @@ let getContentStylePath = function(indexPath) {
     if (parsed.protocol === "http:" || parsed.protocol === "https:") {
         return [parsed.protocol + "/", parsed.host + splitPathFileNames(parsed.pathname)[0], "style"].join("/");
     } else if (parsed.protocol === "file:" || parsed.protocol === "") {
-        return [splitPathFileNames(parsed.pathname)[0], "style"].join("/");
+        return ["file:/", splitPathFileNames(parsed.pathname)[0], "style"].join("/");
     } else {
         throw new Error("Unknown protocol.");
     }
@@ -84,4 +84,9 @@ let getContentStylePath = function(indexPath) {
 if (typeof exports !== "undefined") {
     exports.getDManFileInfo = getDManFileInfo;
     exports.getContentStylePath = getContentStylePath;
+}
+
+if (typeof window !== "undefined") {
+    // TODO: use exports later.
+    window.getContentStylePath = getContentStylePath;
 }

@@ -215,37 +215,52 @@ var lookupKeyword = function(indices, keyword) {
 };
 
 var loadMarkdown = function(url, callback) {
-    if (typeof process !== "undefined") {
-        // atom-shell
-        var fs = require("fs");
-        fs.readFile(url, function(error, data) {
-            if (error) {
-                callback(error, null);
+    let parsed = new URL(url);
+    if (parsed.protocol === "file:") {
+        parsed.protocol = "";
+    }
+    switch (parsed.protocol) {
+        case "http:":
+        case "https:":
+            if (typeof XMLHttpRequest !== "undefined") {
+                // browser
+                let xmlHttp = new XMLHttpRequest();
+                xmlHttp.open("GET", url, true);
+                xmlHttp.send();
+                xmlHttp.onreadystatechange = function(target, type, bubbles, cancelable) {
+                    if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                        callback(null, xmlHttp.responseText);
+                    }
+                };
+                xmlHttp.onerror = function(event) {
+                    callback(new Error(event), null);
+                };
             } else {
-                callback(null, data.toString());
+                callback(new Error("No way to access Http(s)."), null);
             }
-        });
-    } else if (typeof DAE !== "undefined") {
-        // DAE
-        let f = new DAE.File("/home/xinkai/projects/deepin-user-manual/PageRoot/www/manual/manual_zhCN.md");
-        // let f = new DAE.File(url);
-        callback(null, f.readText());
-    } else if (typeof window !== "undefined") {
-        // browser
-        var xmlHttp = new XMLHttpRequest();
-        xmlHttp.open("GET", url, true);
-        xmlHttp.send();
-        xmlHttp.onreadystatechange = function(target, type, bubbles, cancelable) {
-            if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
-                callback(null, xmlHttp.responseText);
+            break;
+        case "":
+            if (typeof process !== "undefined") {
+                // atom-shell / nw.js
+                let fs = require("fs");
+                fs.readFile(url, function(error, data) {
+                    if (error) {
+                        callback(error, null);
+                    } else {
+                        callback(null, data.toString());
+                    }
+                });
+            } else if (typeof DAE !== "undefined") {
+                // DAE
+                let f = new DAE.File(url);
+                callback(null, f.readText());
+            } else {
+                callback(new Error("No way to access file system."), null);
             }
-        };
-        xmlHttp.onerror = function(event) {
-            callback(new Error(event));
-        };
-    } else {
-        callback(new Error("Cannot loadMarkdown because unable to detect runtime environment."),
-                 null);
+            break;
+        default:
+            callback(new Error("Don't know what to do with the protocol"), null);
+            break;
     }
 };
 
