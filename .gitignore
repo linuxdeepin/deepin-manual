@@ -10,3 +10,4 @@ PageRoot/www/scripts
 
 *.pyo
 *.pyc
+__pycache__
