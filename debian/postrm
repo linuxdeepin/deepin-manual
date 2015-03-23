@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if [ "$1" = "remove" ]; then
+    return 0
+fi
+
+if [ "$1" = "purge" ]; then
+    return 0
+fi
+
+#DEBHELPER#
+exit 0

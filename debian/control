@@ -1,0 +1,27 @@
+Source: deepin-user-manual
+Maintainer: Xinkai Chen <chenxinkai@linuxdeepin.com>
+Section: net
+Priority: optional
+Build-Depends:
+ gcc [i386], gcc-multilib [amd64],
+ zlib1g [i386], zlib1g:i386 [amd64],
+ coffeescript,
+ pyqt5-dev-tools,
+ pyqt5-dev,
+ python3-sip-dev,
+ qtbase5-dev,
+ debhelper,
+ chrpath,
+ sed,
+ findutils
+Standards-Version: 3.9.5
+Homepage: https://example.com
+Vcs-Git: https://example.com
+Vcs-Browser: https://example.com
+
+Package: deepin-user-manual
+Architecture: i386 amd64
+Depends:
+ python3-pyqt5,
+ oxide-qt
+Description: Deepin User Manual
