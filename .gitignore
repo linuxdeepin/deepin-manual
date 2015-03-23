@@ -7,3 +7,6 @@ dist/
 PageRoot/www/scripts
 *.nw
 *.log
+
+*.pyo
+*.pyc
