@@ -12,7 +12,7 @@ all: nodejs
 
 	echo "Installing dependencies"
 	cd dist/PageRoot && \
-        PATH="../../symdir/:$$PATH" npm --registry=https://r.cnpmjs.org --disturl=https://cnpmjs.org/mirrors/node install
+        PATH="../../symdir/:$$PATH" npm --registry=http://r.cnpmjs.org --disturl=http://cnpmjs.org/mirrors/node install
 
 	echo "Transpiling"
 	cd dist/PageRoot && \
