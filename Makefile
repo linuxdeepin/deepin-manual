@@ -11,7 +11,7 @@ all: nodejs
 	cp -r DMan dist/
 
 	echo "Installing dependencies"
-	PATH=cd dist/PageRoot && \
+	cd dist/PageRoot && \
         PATH="$(shell pwd)/../../symdir/:$$PATH" npm --registry=http://r.cnpmjs.org --disturl=http://cnpmjs.org/mirrors/node install
 
 	echo "Transpiling"
