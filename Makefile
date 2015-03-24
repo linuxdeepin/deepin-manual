@@ -1,6 +1,6 @@
 PREFIX := /opt/deepin-user-manual
 
-all:
+all: nodejs
 	mkdir -p dist
 	mkdir -p dist/PageRoot
 
