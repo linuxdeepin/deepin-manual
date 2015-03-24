@@ -32,14 +32,14 @@ let getDManFileInfo = function(url, lang) {
 
     switch (parsed.protocol) {
         case "dman:":
-            result.baseDir = ["/usr/share/dman", parsed.hostname].join("/");
+            result.baseDir = ["file:/", "/usr/share/dman", parsed.hostname].join("/");
             if (!result.lang) {
                 throw new Error("dman scheme must provide a language code");
             }
             result.dir = [result.baseDir, result.lang].join("/");
             break;
         case "":
-            result.baseDir = splitPathFileNames(parsed.pathname)[0];
+            result.baseDir = "file://" + splitPathFileNames(parsed.pathname)[0];
             result.dir = result.baseDir;
             break;
         case "http:":

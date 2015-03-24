@@ -8,8 +8,8 @@ describe("Resolution: DMan scheme", function() {
     it("Dman scheme", function() {
         let p = "dman://app2#Intro";
         expect(gdmfi(p, "en_US")).to.eql({
-            baseDir: "/usr/share/dman/app2",
-            dir: "/usr/share/dman/app2/en_US",
+            baseDir: "file:///usr/share/dman/app2",
+            dir: "file:///usr/share/dman/app2/en_US",
             hash: "Intro",
             lang: "en_US",
         });
@@ -18,8 +18,8 @@ describe("Resolution: DMan scheme", function() {
     it("Dman scheme with language code in the url", function() {
         let p = "dman://app2?lang=en_US#Conclusion";
         expect(gdmfi(p)).to.eql({
-            baseDir: "/usr/share/dman/app2",
-            dir: "/usr/share/dman/app2/en_US",
+            baseDir: "file:///usr/share/dman/app2",
+            dir: "file:///usr/share/dman/app2/en_US",
             hash: "Conclusion",
             lang: "en_US",
         });
@@ -28,8 +28,8 @@ describe("Resolution: DMan scheme", function() {
     it("File scheme(explicit)", function() {
         let p = "file:///home/user/Desktop/work/app3_enUS.md";
         expect(gdmfi(p)).to.eql({
-            baseDir: "/home/user/Desktop/work",
-            dir: "/home/user/Desktop/work",
+            baseDir: "file:///home/user/Desktop/work",
+            dir: "file:///home/user/Desktop/work",
             hash: null,
             lang: null,
         })
@@ -38,8 +38,8 @@ describe("Resolution: DMan scheme", function() {
     it("File scheme(implicit)", function() {
         let p = "/home/user/Desktop/work/app2_enUS.md";
         expect(gdmfi(p)).to.eql({
-            baseDir: "/home/user/Desktop/work",
-            dir: "/home/user/Desktop/work",
+            baseDir: "file:///home/user/Desktop/work",
+            dir: "file:///home/user/Desktop/work",
             hash: null,
             lang: null,
         });
