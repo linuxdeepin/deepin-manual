@@ -12,11 +12,11 @@ all: nodejs
 
 	echo "Installing dependencies"
 	cd dist/PageRoot && \
-        PATH="./symdir/:$$PATH" npm --registry=https://r.cnpmjs.org --disturl=https://cnpmjs.org/mirrors/node install
+        PATH="../../symdir/:$$PATH" npm --registry=https://r.cnpmjs.org --disturl=https://cnpmjs.org/mirrors/node install
 
 	echo "Transpiling"
 	cd dist/PageRoot && \
-        PATH="./symdir/:$$PATH" node --harmony ./node_modules/gulp/bin/gulp.js dist
+        PATH="../../symdir/:$$PATH" node --harmony ./node_modules/gulp/bin/gulp.js dist
 
 nodejs:
 	mkdir -p symdir
