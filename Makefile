@@ -18,6 +18,10 @@ all: nodejs
 	cd dist/PageRoot && \
 	    PATH="$(shell pwd)/symdir/:$$PATH" node --harmony ./node_modules/gulp/bin/gulp.js dist
 
+	# Copy this missing file.
+	cp dist/PageRoot/node_modules/gulp-traceur/node_modules/traceur/bin/traceur-runtime.js \
+	    dist/PageRoot/www/scripts/traceur-runtime.js
+
 nodejs:
 	mkdir -p symdir
 	ln -s /usr/bin/nodejs ./symdir/node
