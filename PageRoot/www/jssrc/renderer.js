@@ -208,9 +208,6 @@ let loadMarkdown = function(url, callback) {
     let info = getDManFileInfo(url);
 
     let parsed = new URL(url);
-    if (parsed.protocol === "file:") {
-        parsed.protocol = "";
-    }
     switch (parsed.protocol) {
         case "http:":
         case "https:":
@@ -236,8 +233,28 @@ let loadMarkdown = function(url, callback) {
                     null);
             }
             break;
-        case "":
-            if (typeof process !== "undefined") {
+        case "file:":
+            console.log("File scheme!");
+            if (typeof XMLHttpRequest !== "undefined") {
+                // browser
+                let xmlHttp = new XMLHttpRequest();
+                xmlHttp.open("GET", url, true);
+                xmlHttp.send();
+                xmlHttp.onreadystatechange = function(target, type, bubbles, cancelable) {
+                    if (xmlHttp.readyState == 4) {
+                        callback(null, {
+                            markdown: xmlHttp.responseText,
+                            fileInfo: info,
+                        });
+                    } else {
+                        console.log(`xmlHttp ${xmlHttp.readyState} ${xmlHttp.status}`);
+                    }
+                };
+                xmlHttp.onerror = function(event) {
+                    callback(new Error(event),
+                             null);
+                };
+            } else if (typeof process !== "undefined") {
                 // atom-shell / nw.js
                 let fs = require("fs");
                 fs.readFile(url, function(error, data) {
@@ -252,12 +269,12 @@ let loadMarkdown = function(url, callback) {
                 });
             } else {
                 callback(new Error("No way to access file system."),
-                    null);
+                         null);
             }
             break;
         default:
-            callback(new Error("Don't know what to do with the protocol"),
-                null);
+            callback(new Error(`Don't know what to do with the protocol(${parsed.protocol})`),
+                     null);
             break;
     }
 };
