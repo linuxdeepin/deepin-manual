@@ -3,6 +3,7 @@ PageRoot/node_modules
 PageRoot/www/style/**/*.css
 unused/
 dist/
+symdir/
 
 PageRoot/www/scripts
 *.nw

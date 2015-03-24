@@ -28,6 +28,7 @@ install:
 
 
 clean:
+	rm -rf symdir/
 	rm -rf dist/
 
 .PHONY: all dist install clean
