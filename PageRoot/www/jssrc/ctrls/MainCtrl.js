@@ -3,7 +3,7 @@
 let {
     loadMarkdown,
     parseMarkdown,
-} = require("./renderer");
+    } = require("./renderer");
 
 let getContentStylePath = require("./utils").getContentStylePath;
 
@@ -35,8 +35,8 @@ var mainCtrl = angular.module("DManual")
             appName: "UnnamedApp",
         };
 
-        let mdUrl = "file:///home/xinkai/projects/deepin-user-manual/PageRoot/www/manual/manual_zhCN.md";
-        // let mdUrl = "http://localhost:63342/deepin-user-manual/PageRoot/www/manual/manual_zhCN.md";
+        // let mdUrl = "/home/xinkai/projects/deepin-user-manual/PageRoot/www/manual/manual_zhCN.md";
+        let mdUrl = "http://localhost:63342/deepin-user-manual/PageRoot/www/manual/manual_zhCN.md";
         loadMarkdown(mdUrl, function(error, payload) {
             if (!error) {
                 let result = parseMarkdown(payload.markdown);

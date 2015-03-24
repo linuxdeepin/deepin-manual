@@ -10,10 +10,10 @@ let MAX_NAV_HEADER_LEVEL = 3;
 
 let normalizeAnchorName = function(raw) {
     return raw.toLowerCase()
-              // Convert any *space characters* per:
-              // http://www.w3.org/TR/html5/dom.html#the-id-attribute            and
-              // http://www.w3.org/TR/html5/infrastructure.html#space-character
-              .replace(/[\u0020|\u0009|\u000A|\u000C|\u000D]+/g, '-');  // replace spaces to '-'
+        // Convert any *space characters* per:
+        // http://www.w3.org/TR/html5/dom.html#the-id-attribute            and
+        // http://www.w3.org/TR/html5/infrastructure.html#space-character
+        .replace(/[\u0020|\u0009|\u000A|\u000C|\u000D]+/g, '-');  // replace spaces to '-'
 };
 
 // Keep track of navigation items;
@@ -155,13 +155,13 @@ var getRenderer = function() {
         var extracted = extractHeaderIcon(text, level);
 
         result += '<h' + level + ' id="'
-                + normalizeAnchorName(extracted.text)
-                + '">';
+        + normalizeAnchorName(extracted.text)
+        + '">';
         if (extracted.icon) {
             result += '<img class="HeaderIcon" src="' + extracted.icon + '" />';
         }
         result += extracted.text
-                + '</h' + level + '>\n';
+        + '</h' + level + '>\n';
         return result;
     };
 
@@ -208,7 +208,9 @@ let loadMarkdown = function(url, callback) {
     let info = getDManFileInfo(url);
 
     let parsed = new URL(url);
-
+    if (parsed.protocol === "file:") {
+        parsed.protocol = "";
+    }
     switch (parsed.protocol) {
         case "http:":
         case "https:":
@@ -227,19 +229,18 @@ let loadMarkdown = function(url, callback) {
                 };
                 xmlHttp.onerror = function(event) {
                     callback(new Error(event),
-                             null);
+                        null);
                 };
             } else {
                 callback(new Error("No way to access Http(s)."),
-                         null);
+                    null);
             }
             break;
         case "":
-        case "file:":
             if (typeof process !== "undefined") {
                 // atom-shell / nw.js
                 let fs = require("fs");
-                fs.readFile(parsed.pathname, function(error, data) {
+                fs.readFile(url, function(error, data) {
                     if (error) {
                         callback(error, null);
                     } else {
@@ -249,31 +250,14 @@ let loadMarkdown = function(url, callback) {
                         });
                     }
                 });
-            } else if (typeof XMLHttpRequest !== "undefined") {
-                    // browser
-                    let xmlHttp = new XMLHttpRequest();
-                    xmlHttp.open("GET", url, true);
-                    xmlHttp.send();
-                    xmlHttp.onreadystatechange = function(target, type, bubbles, cancelable) {
-                        if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
-                            callback(null, {
-                                markdown: xmlHttp.responseText,
-                                fileInfo: info,
-                            });
-                        }
-                    };
-                    xmlHttp.onerror = function(event) {
-                        callback(new Error(event),
-                            null);
-                    };
             } else {
-                callback(new Error("No way to access Localfile."),
-                         null);
+                callback(new Error("No way to access file system."),
+                    null);
             }
             break;
         default:
-            callback(new Error("Don't know what to do with the protocol: " + parsed.protocol + "."),
-                     null);
+            callback(new Error("Don't know what to do with the protocol"),
+                null);
             break;
     }
 };
