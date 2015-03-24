@@ -3,17 +3,7 @@ Maintainer: Xinkai Chen <chenxinkai@linuxdeepin.com>
 Section: net
 Priority: optional
 Build-Depends:
- gcc [i386], gcc-multilib [amd64],
- zlib1g [i386], zlib1g:i386 [amd64],
- coffeescript,
- pyqt5-dev-tools,
- pyqt5-dev,
- python3-sip-dev,
- qtbase5-dev,
- debhelper,
- chrpath,
- sed,
- findutils
+ nodejs
 Standards-Version: 3.9.5
 Homepage: https://example.com
 Vcs-Git: https://example.com

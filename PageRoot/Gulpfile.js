@@ -69,3 +69,7 @@ gulp.task('es6', function() {
         .pipe(sourcemaps.write('.'))
         .pipe(gulp.dest('./www/scripts/'));
 });
+
+gulp.task('dist', ['sass', 'browserify', 'es6'], function() {
+    console.log("Gulp::dist done.");
+});
