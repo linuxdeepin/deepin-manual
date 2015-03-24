@@ -3,7 +3,8 @@ Maintainer: Xinkai Chen <chenxinkai@linuxdeepin.com>
 Section: net
 Priority: optional
 Build-Depends:
- nodejs
+ debhelper,
+ nodejs, npm
 Standards-Version: 3.9.5
 Homepage: https://example.com
 Vcs-Git: https://example.com
