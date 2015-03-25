@@ -20,8 +20,7 @@ app.filter("keyword", function() {
         var header;
         var texts;
         var text;
-        nextHeader: for (var m in indices) {
-            object = indices[m];
+        nextHeader: for (object of indices) {
             header = object.header;
             texts = object.texts;
             for (text of texts) {
