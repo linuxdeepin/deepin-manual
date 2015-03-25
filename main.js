@@ -24,8 +24,10 @@ app.commandLine.appendSwitch('host-rules', 'MAP * 127.0.0.1');
 app.on('ready', function () {
     // Create the browser window.
     mainWindow = new BrowserWindow({
-        width: 800,
+        width: 946,
+        "min-width": 946,
         height: 600,
+        "min-height": 600,
         frame: false,
     });
     console.log("BrowserWindow created with id", mainWindow.id);
