@@ -39,29 +39,8 @@ body {
     height: 100%;
 }
 
-#OuterFrame {
-    padding: 0 !important;
-    margin: 0 !important;
-    outline: 0 !important;
-    background-color: skyblue;
-    position: fixed;
-    width: 100%;
-    z-index: -100;
-}
 
-#FrameBar {
-    position: fixed;
-    z-index: 10000;
-    right: $csdRW;
-    .Btn {
-        background: purple;
-        width: 30px;
-        height: 30px;
-        margin: 5px;
-        float: left;
 
-    }
-}
 
 
 #Container {
@@ -263,4 +242,49 @@ $logoHeight: 48px;
     height: $logoHeight;
     line-height: $logoHeight;
     float: left;
+}
+
+// Frame, border, etc
+#OuterFrame {
+    padding: 0 !important;
+    margin: 0 !important;
+    outline: 0 !important;
+    background-color: skyblue;
+    position: fixed;
+    width: 100%;
+    z-index: -100;
+}
+
+#FrameBar {
+    position: fixed;
+    z-index: 10000;
+    right: $csdRW;
+    .Btn {
+        width: 30px;
+        height: 30px;
+        margin: 5px;
+        float: left;
+    }
+}
+
+#MinimizeBtn {
+    background-image: url("../resources/frame/dark_minimise_normal.png");
+    &:hover {
+        background-image: url("../resources/frame/dark_minimise_hover.png");
+    }
+}
+
+#MaximizeBtn {
+    background-image: url("../resources/frame/dark_maximize_normal.png");
+    &:hover {
+        background-image: url("../resources/frame/dark_maximize_hover.png");
+    }
+
+}
+
+#CloseBtn {
+    background-image: url("../resources/frame/dark_close_normal.png");
+    &:hover {
+        background-image: url("../resources/frame/dark_close_hover.png");
+    }
 }

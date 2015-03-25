@@ -28,7 +28,7 @@ app.on('ready', function () {
         height: 600,
         frame: false,
     });
-
+    console.log("BrowserWindow created with id", mainWindow.id);
     // and load the index.html of the app.
     mainWindow.loadUrl('file://' + __dirname + "/PageRoot/www/index.html");
 
@@ -40,3 +40,4 @@ app.on('ready', function () {
         mainWindow = null;
     });
 });
+
