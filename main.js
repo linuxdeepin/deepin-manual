@@ -30,6 +30,11 @@ app.on('ready', function () {
         "min-height": 600,
         frame: false,
     });
+
+    mainWindow.webContents.on('did-finish-load', function() {
+        mainWindow.send("Markdown", "TODO!");
+    });
+
     console.log("BrowserWindow created with id", mainWindow.id);
     // and load the index.html of the app.
     mainWindow.loadUrl('file://' + __dirname + "/PageRoot/www/index.html");

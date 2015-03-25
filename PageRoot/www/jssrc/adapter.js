@@ -30,6 +30,11 @@
 
         });
 
+        let ipc = require("ipc");
+        ipc.on("Markdown", function(path) {
+            console.log("Markdown set to " + path);
+        });
+
         // Atom-shell automatically injects the `close` method.
         //window.close = function() {
         //
