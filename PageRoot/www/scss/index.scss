@@ -272,12 +272,18 @@ $logoHeight: 48px;
     &:hover {
         background-image: url("../resources/frame/dark_minimise_hover.png");
     }
+    &:active {
+        background-image: url("../resources/frame/dark_minimise_press.png");
+    }
 }
 
 #MaximizeBtn {
     background-image: url("../resources/frame/dark_maximize_normal.png");
     &:hover {
         background-image: url("../resources/frame/dark_maximize_hover.png");
+    }
+    &:active {
+        background-image: url("../resources/frame/dark_maximize_press.png");
     }
 
 }
@@ -286,5 +292,8 @@ $logoHeight: 48px;
     background-image: url("../resources/frame/dark_close_normal.png");
     &:hover {
         background-image: url("../resources/frame/dark_close_hover.png");
+    }
+    &:active {
+        background-image: url("../resources/frame/dark_close_press.png");
     }
 }
