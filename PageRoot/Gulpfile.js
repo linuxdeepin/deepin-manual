@@ -4,8 +4,10 @@ var gulp = require('gulp');
 var sass = require('gulp-sass');
 var gettext = require("gulp-angular-gettext");
 var mocha = require('gulp-mocha');
-var sourcemaps = require('gulp-sourcemaps');
-var traceur = require('gulp-traceur');
+var fs = require("fs");
+var babelify = require("babelify");
+var browserify = require("browserify");
+
 
 gulp.task('sass', function () {
     gulp.src('./www/scss/*.scss')
@@ -34,10 +36,10 @@ gulp.task('translations', function () {
 
 var entryPath = './www/jssrc/entry.js';
 var jsPath = './www/jssrc/**/*.js';
-gulp.task("watch", ['sass', 'browserify', 'es6'], function() {
+
+gulp.task("watch", ['sass', 'browserify'], function() {
     gulp.watch('./www/scss/*.scss', ['sass']);
-    gulp.watch(entryPath, ['browserify']);
-    gulp.watch(jsPath, ['es6']);
+    gulp.watch(jsPath, ['browserify']);
 });
 
 gulp.task('test', function () {
@@ -49,27 +51,17 @@ gulp.task('test', function () {
         }));
 });
 
-var browserify = require("browserify");
-var source = require('vinyl-source-stream');
-
 gulp.task('browserify', function() {
-    return browserify(entryPath)
+    browserify({ debug: true })
+        .transform(babelify)
+        .require(entryPath, { entry: true })
         .bundle()
-        //Pass desired output filename to vinyl-source-stream
-
-        .pipe(source('bundle.js'))
-        // Start piping stream to tasks!
-        .pipe(gulp.dest('./www/scripts/'));
+        .on("error", function (err) {
+            console.error(err.message);
+        })
+        .pipe(fs.createWriteStream("./www/scripts/bundle.js"));
 });
 
-gulp.task('es6', function() {
-    return gulp.src(jsPath)
-        .pipe(sourcemaps.init())
-        .pipe(traceur())
-        .pipe(sourcemaps.write('.'))
-        .pipe(gulp.dest('./www/scripts/'));
-});
-
-gulp.task('dist', ['sass', 'browserify', 'es6'], function() {
+gulp.task('dist', ['sass', 'browserify'], function() {
     console.log("Gulp::dist done.");
 });

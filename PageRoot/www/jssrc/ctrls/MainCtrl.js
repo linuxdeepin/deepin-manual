@@ -3,9 +3,11 @@
 let {
     loadMarkdown,
     parseMarkdown,
-    } = require("./renderer");
+} = require("../renderer");
 
-let getContentStylePath = require("./utils").getContentStylePath;
+let {
+    getContentStylePath
+} = require("../utils");
 
 var jumpTo = function(anchor) {
     let body = document.getElementsByTagName("body")[0];
