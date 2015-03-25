@@ -241,13 +241,11 @@ let loadMarkdown = function(url, callback) {
                 xmlHttp.open("GET", url, true);
                 xmlHttp.send();
                 xmlHttp.onreadystatechange = function(target, type, bubbles, cancelable) {
-                    if (xmlHttp.readyState == 4) {
+                    if (xmlHttp.readyState === 4) {
                         callback(null, {
                             markdown: xmlHttp.responseText,
                             fileInfo: info,
                         });
-                    } else {
-                        console.log(`xmlHttp ${xmlHttp.readyState} ${xmlHttp.status}`);
                     }
                 };
                 xmlHttp.onerror = function(event) {
