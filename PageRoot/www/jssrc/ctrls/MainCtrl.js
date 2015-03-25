@@ -65,7 +65,7 @@ angular.module("DManual")
                     <link rel='stylesheet' href='${stylePath}/content.css' />`;
                 $scope.htmlOutput = $sce.trustAsHtml(base + html);
             } else {
-                console.error(error);
+                $log.error(error);
             }
         });
 
