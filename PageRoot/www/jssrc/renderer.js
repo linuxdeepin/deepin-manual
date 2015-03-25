@@ -2,7 +2,9 @@
 
 // Make a custom version of the marked renderer.
 
-let getDManFileInfo = require("./utils").getDManFileInfo;
+let {
+    getDManFileInfo,
+} = require("./utils");
 
 let marked = require("marked");
 let MAX_INDEX_HEADER_LEVEL = 2;
@@ -31,7 +33,6 @@ let addItem = function(target, name, anchor, icon) {
 };
 
 var findItem = function(target, anchorName) {
-    var result = null;
     for (var i = 0; i <= target.length; i++) {
         if (target[i].anchor === anchorName) {
             return target[i];
@@ -217,7 +218,7 @@ let loadMarkdown = function(url, callback) {
                 xmlHttp.open("GET", url, true);
                 xmlHttp.send();
                 xmlHttp.onreadystatechange = function(target, type, bubbles, cancelable) {
-                    if (xmlHttp.readyState == 4 && xmlHttp.status == 200) {
+                    if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
                         callback(null, {
                             markdown: xmlHttp.responseText,
                             fileInfo: info,
@@ -226,11 +227,11 @@ let loadMarkdown = function(url, callback) {
                 };
                 xmlHttp.onerror = function(event) {
                     callback(new Error(event),
-                        null);
+                             null);
                 };
             } else {
                 callback(new Error("No way to access Http(s)."),
-                    null);
+                         null);
             }
             break;
         case "file:":

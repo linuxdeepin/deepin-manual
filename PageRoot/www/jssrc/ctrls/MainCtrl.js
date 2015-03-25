@@ -6,10 +6,10 @@ let {
 } = require("../renderer");
 
 let {
-    getContentStylePath
+    getContentStylePath,
 } = require("../utils");
 
-var jumpTo = function(anchor) {
+let jumpTo = function(anchor) {
     let body = document.getElementsByTagName("body")[0];
     body = angular.element(body);
     let contentWin = document.getElementById("Content").contentWindow;
@@ -30,7 +30,11 @@ var jumpTo = function(anchor) {
     }
 };
 
-var mainCtrl = angular.module("DManual")
+if (typeof window !== "undefined") {
+    window.jumpTo = jumpTo;
+}
+
+angular.module("DManual")
     .controller("MainCtrl", function($scope, $log, $sce, $window) {
         $scope.isOverview = true;
         $scope.appInfo = {
@@ -38,7 +42,6 @@ var mainCtrl = angular.module("DManual")
         };
 
         let mdUrl = "file:///home/xinkai/projects/deepin-user-manual/PageRoot/www/manual/manual_zhCN.md";
-        // let mdUrl = "http://localhost:63342/deepin-user-manual/PageRoot/www/manual/manual_zhCN.md";
         loadMarkdown(mdUrl, function(error, payload) {
             if (!error) {
                 let result = parseMarkdown(payload.markdown);
