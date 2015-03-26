@@ -24,8 +24,8 @@
     <section ng-show="isOverview && (!isSearchmode)" id="Overview" ng-include="'./partials/Overview.html'"></section>
     <div id="Search" ng-show="isSearchmode" ng-controller="SearchCtrl">
         <ol>
-            <li ng-repeat="match in matches | keyword:searchTerm">
-                <h5>{{ match.header }}</h5>
+            <li ng-repeat="match in indices | keyword:searchTerm">
+                <h5><a ng-click="jumpTo(match.anchorId)">{{ match.anchorText }}</a></h5>
                 <p>{{ match.text }}</p>
             </li>
         </ol>

@@ -1,33 +1,27 @@
 "use strict";
 
-var app = angular.module("DManual", []);
+let app = angular.module("DManual", []);
 app.filter("keyword", function() {
-    var _PLACEHOLDER_RESULT = [];
-    var lastTerm = null;
-    var cached = null;
+    let _PLACEHOLDER_RESULT = [];
+    let lastTerm = null;
+    let cached = null;
     return function(indices, keyword) {
-        var result = [];
+        let result = [];
         if (!keyword) {
             return _PLACEHOLDER_RESULT;
         }
         if ((keyword === lastTerm) && cached) {
             return cached;
         }
-        var lowerKeyword = keyword.toLowerCase();
-        var lowerText;
-
-        var object;
-        var header;
-        var texts;
-        var text;
-        nextHeader: for (object of indices) {
-            header = object.header;
-            texts = object.texts;
-            for (text of texts) {
-                lowerText = text.toLowerCase();
+        let lowerKeyword = keyword.toLowerCase();
+        nextHeader: for (let index of indices) {
+            let texts = index.texts;
+            for (let text of texts) {
+                let lowerText = text.toLowerCase();
                 if (lowerText.indexOf(lowerKeyword) >= 0) {
                     result.push({
-                        header: header,
+                        anchorId: index.headerId,
+                        anchorText: index.headerText,
                         text: text,
                     });
                     continue nextHeader;

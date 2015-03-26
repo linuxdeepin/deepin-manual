@@ -10,15 +10,15 @@
 
     <div id="SideNavigationBar" ng-style="sideNavBarStyle">
         <ol id="SideNavigationItems">
-            <nav ng-repeat="item in navigationItems">
+            <nav ng-repeat="anchor in anchors">
                 <li class="level2">
-                    <img ng-src="{{appInfo.markdownDir}}/{{item.icon}}" />
-                    <a ng-click="jumpTo(item.anchor)">{{item.name}}</a>
+                    <img ng-src="{{appInfo.markdownDir}}/{{anchor.icon}}" />
+                    <a ng-click="jumpTo(anchor.id)">{{anchor.text}}</a>
                 </li>
-                <ol ng-if="item.children">
-                    <nav ng-repeat="item2 in item.children">
+                <ol ng-if="anchor.children">
+                    <nav ng-repeat="anchor2 in anchor.children">
                         <li class="level3">
-                            <a ng-click="jumpTo(item2.anchor)">{{item2.name}}</a>
+                            <a ng-click="jumpTo(anchor2.id)">{{anchor2.text}}</a>
                         </li>
                     </nav>
                 </ol>

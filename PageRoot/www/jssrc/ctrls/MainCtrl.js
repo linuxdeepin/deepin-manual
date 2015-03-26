@@ -49,7 +49,7 @@ angular.module("DManual")
 
                 let fileInfo = payload.fileInfo;
 
-                $scope.navigationItems = parsed.items;
+                $scope.anchors = parsed.anchors;
                 $scope.appInfo = parsed.appInfo;
                 $scope.$broadcast("indicesSet", parsed.indices);
                 setTimeout(function() {

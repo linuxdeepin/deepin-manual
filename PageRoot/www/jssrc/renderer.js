@@ -22,31 +22,32 @@ let normalizeAnchorName = function(raw) {
 // Keep track of keyword -> navigation item lookup table.
 
 
-let addItem = function(target, name, anchor, icon) {
+let addAnchor = function(target, anchorText, anchorId, icon) {
     // push toAdd to target
     let toAdd = Object.create(null);
-    toAdd.name = name;
-    toAdd.anchor = anchor;
+    toAdd.text = anchorText;
+    toAdd.id = anchorId;
     toAdd.icon = icon;
     toAdd.children = [];
     target.push(toAdd);
 };
 
-let findItem = function(target, anchorName) {
+let findAnchor = function(target, anchorId) {
     for (let i = 0; i <= target.length; i++) {
-        if (target[i].anchor === anchorName) {
+        if (target[i].id === anchorId) {
             return target[i];
         }
     }
-    throw new Error("Cannot find Item", anchorName);
+    throw new Error(`Cannot find anchor ${anchorId}.`);
 };
 
 let parseNavigationItems = function(tokens) {
-    let items = []; // This is the return value.
-    let anchorSet = new Set(); // This is used to detect duplicate anchor names.
+    let anchors = []; // This is the return value.
+    let anchorIds = new Set(); // This is used to detect duplicate anchor ids.
 
-    let currentHeader = null;
-    let currentHeader1 = null;  // h1 header.
+    let currentHeaderId = null;
+    let currentHeaderId1 = null;  // h1 header.
+    let currentHeaderText = null;
 
     let appInfo = {
         name: null,
@@ -58,7 +59,7 @@ let parseNavigationItems = function(tokens) {
     for (let token of tokens) {
         if (token.type === "heading") {
             let extracted = extractHeaderIcon(token.text, token.depth);
-            let text = extracted.text;
+            let anchorText = extracted.text;
             let icon = extracted.icon;
 
             // Lookfor and set appName
@@ -66,41 +67,42 @@ let parseNavigationItems = function(tokens) {
                 if (appInfo.name) {
                     throw new Error("Redefinition appInfo");
                 }
-                appInfo.name = text;
+                appInfo.name = anchorText;
                 appInfo.icon = icon;
             }
 
-            let anchorName = normalizeAnchorName(text);
+            let anchorId = normalizeAnchorName(anchorText);
 
             if (token.depth <= MAX_INDEX_HEADER_LEVEL) {
-                if (anchorSet.has(anchorName)) {
-                    throw new Error("Duplicate anchor names found:", anchorName);
+                if (anchorIds.has(anchorId)) {
+                    throw new Error("Duplicate anchor names found:", anchorId);
                 } else {
-                    anchorSet.add(anchorName);
-                    headers.push(text);
+                    anchorIds.add(anchorId);
+                    headers.push(anchorText);
                 }
             } else {
 //                continue;
             }
-            currentHeader = anchorName;
+            currentHeaderId = anchorId;
+            currentHeaderText = anchorText;
+
             if (token.depth === 2) {
                 if (!appInfo.name) {
                     throw new Error("H2 must be under H1.");
                 }
-                currentHeader1 = anchorName;
-
-                addItem(items, text, anchorName, icon);
+                currentHeaderId1 = anchorId;
+                addAnchor(anchors, anchorText, anchorId, icon);
             } else if (token.depth === 3) {
-                let header1 = findItem(items, currentHeader1);
-                addItem(header1.children, text, anchorName, icon);
+                let anchor_lv1 = findAnchor(anchors, currentHeaderId1);
+                addAnchor(anchor_lv1.children, anchorText, anchorId, icon);
             }
-
         } else {
             if (token.type === "paragraph" || token.type === "text") {
                 if ((indices.length === 0) ||
-                    (indices[indices.length - 1].header !== currentHeader)) {
+                    (indices[indices.length - 1].header !== currentHeaderId)) {
                     indices.push({
-                        header: currentHeader,
+                        headerId: currentHeaderId,
+                        headerText: currentHeaderText,
                         texts: [],
                     })
                 }
@@ -111,10 +113,10 @@ let parseNavigationItems = function(tokens) {
     }
 
     return {
-        appInfo: appInfo,
-        items: items,
-        indices: indices,
-        headers: headers,
+        appInfo: appInfo,  // set logo, icon, and window's title
+        anchors: anchors,  // for navigation purposes
+        indices: indices,  // for indexing and searching reasons
+        headers: headers,  // for search auto-completion
     }
 };
 

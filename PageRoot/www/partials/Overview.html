@@ -1,8 +1,8 @@
 <div id="TopLevelItemsBox">
     <ul id="TopLevelItemsView">
-        <li ng-repeat="item in navigationItems"><a ng-click="jumpTo(item.anchor)">
-            <img ng-src="{{appInfo.markdownDir}}/{{item.icon}}" />
-            <div>{{item.name}}</div>
+        <li ng-repeat="anchor in anchors"><a ng-click="jumpTo(anchor.id)">
+            <img ng-src="{{appInfo.markdownDir}}/{{anchor.icon}}" />
+            <div>{{anchor.text}}</div>
         </a></li>
     </ul>
 </div>
