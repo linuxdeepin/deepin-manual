@@ -11,7 +11,7 @@ let MAX_INDEX_HEADER_LEVEL = 2;
 let MAX_NAV_HEADER_LEVEL = 3;
 
 let normalizeAnchorName = function(raw) {
-    return raw.toLowerCase()
+    return raw
         // Convert any *space characters* per:
         // http://www.w3.org/TR/html5/dom.html#the-id-attribute            and
         // http://www.w3.org/TR/html5/infrastructure.html#space-character
