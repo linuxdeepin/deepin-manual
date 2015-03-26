@@ -37,35 +37,39 @@ angular.module("DManual")
         $scope.isOverview = true;
         $scope.isSearchmode = false;
         $scope.appInfo = {
-            appName: "UnnamedApp",
+            name: "Unnamed",
         };
 
-        let mdUrl = "file:///home/xinkai/projects/deepin-user-manual/PageRoot/www/manual/manual_zhCN.md";
-        loadMarkdown(mdUrl, function(error, payload) {
-            if (!error) {
-                let result = parseMarkdown(payload.markdown);
-                let html = result.html;
-                let parsed = result.parsed;
+        $scope.$on("setMarkdown", function(event, mdUrl) {
+            loadMarkdown(mdUrl, function(error, payload) {
+                if (!error) {
+                    let result = parseMarkdown(payload.markdown);
+                    let html = result.html;
+                    let parsed = result.parsed;
 
-                let fileInfo = payload.fileInfo;
+                    let fileInfo = payload.fileInfo;
 
-                $scope.anchors = parsed.anchors;
-                $scope.appInfo = parsed.appInfo;
-                $scope.$broadcast("indicesSet", parsed.indices);
-                setTimeout(function() {
-                    // wait for SearchBoxCtrl to startup
-                    $scope.$broadcast("headersSet", parsed.headers);
-                }, 100);
-                let stylePath = getContentStylePath(location.href);
-                let markdownDir = fileInfo.dir;
-                $scope.appInfo.markdownDir = markdownDir;
-                let base = `<base href='${markdownDir}/'>
-                    <link rel='stylesheet' href='${stylePath}/reset.css' />
-                    <link rel='stylesheet' href='${stylePath}/content.css' />`;
-                $scope.htmlOutput = $sce.trustAsHtml(base + html);
-            } else {
-                $log.error(error);
-            }
+                    $scope.anchors = parsed.anchors;
+                    $scope.appInfo = parsed.appInfo;
+                    $scope.$broadcast("indicesSet", parsed.indices);
+                    setTimeout(function() {
+                        // wait for SearchBoxCtrl to startup
+                        $scope.$broadcast("headersSet", parsed.headers);
+                    }, 100);
+                    let stylePath = getContentStylePath(location.href);
+                    let markdownDir = fileInfo.dir;
+                    $scope.appInfo.markdownDir = markdownDir;
+                    let base = `<base href='${markdownDir}/'>
+                        <link rel='stylesheet' href='${stylePath}/reset.css' />
+                        <link rel='stylesheet' href='${stylePath}/content.css' />`;
+                    $scope.htmlOutput = $sce.trustAsHtml(base + html);
+
+                    // TUL: Without this, the markdown won't actually be shown.
+                    $scope.$apply();
+                } else {
+                    $log.error(error);
+                }
+            });
         });
 
         $scope.jumpTo = function(anchor) {

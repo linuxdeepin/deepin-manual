@@ -1,5 +1,18 @@
 "use strict";
 
+angular.module("DManual")
+    .factory("AdapterService", function Adapter($log, $rootScope) {
+        let setMarkdown = function(path) {
+            $log.log(`Markdown set to ${path}`);
+            $rootScope.$broadcast("setMarkdown", path);
+        };
+        let result = {
+            setMarkdown: setMarkdown,
+        };
+        window.adapter = result;
+        return result;
+    });
+
 (function() {
     let Remote;
     try {
@@ -31,14 +44,14 @@
         });
 
         let ipc = require("ipc");
-        ipc.on("Markdown", function(path) {
-            console.log("Markdown set to " + path);
+        ipc.on("setMarkdown", function(path) {
+            adapter.setMarkdown(path);
         });
 
         // Atom-shell automatically injects the `close` method.
-        //window.close = function() {
+        // window.close = function() {
         //
-        //};
+        // };
     } else {
         console.warn("Atom-shell support disabled.");
     }

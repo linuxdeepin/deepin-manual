@@ -32,7 +32,8 @@ app.on('ready', function () {
     });
 
     mainWindow.webContents.on('did-finish-load', function() {
-        mainWindow.send("Markdown", "TODO!");
+        let mdUrl = "file:///home/xinkai/projects/deepin-user-manual/PageRoot/www/manual/manual_zhCN.md";
+        mainWindow.send("setMarkdown", mdUrl);
     });
 
     console.log("BrowserWindow created with id", mainWindow.id);
