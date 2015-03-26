@@ -32,8 +32,8 @@ let addItem = function(target, name, anchor, icon) {
     target.push(toAdd);
 };
 
-var findItem = function(target, anchorName) {
-    for (var i = 0; i <= target.length; i++) {
+let findItem = function(target, anchorName) {
+    for (let i = 0; i <= target.length; i++) {
         if (target[i].anchor === anchorName) {
             return target[i];
         }
@@ -41,25 +41,25 @@ var findItem = function(target, anchorName) {
     throw new Error("Cannot find Item", anchorName);
 };
 
-var parseNavigationItems = function(tokens) {
-    var items = []; // This is the return value.
-    var anchorSet = new Set(); // This is used to detect duplicate anchor names.
+let parseNavigationItems = function(tokens) {
+    let items = []; // This is the return value.
+    let anchorSet = new Set(); // This is used to detect duplicate anchor names.
 
-    var currentHeader = null;
-    var currentHeader1 = null;  // h1 header.
+    let currentHeader = null;
+    let currentHeader1 = null;  // h1 header.
 
-    var appInfo = {
+    let appInfo = {
         name: null,
         icon: null,
     };
-    var indices = [];
-    var headers = [];
+    let indices = [];
+    let headers = [];
 
-    for (var token of tokens) {
+    for (let token of tokens) {
         if (token.type === "heading") {
-            var extracted = extractHeaderIcon(token.text, token.depth);
-            var text = extracted.text;
-            var icon = extracted.icon;
+            let extracted = extractHeaderIcon(token.text, token.depth);
+            let text = extracted.text;
+            let icon = extracted.icon;
 
             // Lookfor and set appName
             if (token.depth === 1) {
@@ -70,7 +70,7 @@ var parseNavigationItems = function(tokens) {
                 appInfo.icon = icon;
             }
 
-            var anchorName = normalizeAnchorName(text);
+            let anchorName = normalizeAnchorName(text);
 
             if (token.depth <= MAX_INDEX_HEADER_LEVEL) {
                 if (anchorSet.has(anchorName)) {
@@ -91,7 +91,7 @@ var parseNavigationItems = function(tokens) {
 
                 addItem(items, text, anchorName, icon);
             } else if (token.depth === 3) {
-                var header1 = findItem(items, currentHeader1);
+                let header1 = findItem(items, currentHeader1);
                 addItem(header1.children, text, anchorName, icon);
             }
 
@@ -118,18 +118,18 @@ var parseNavigationItems = function(tokens) {
     }
 };
 
-var extractHeaderIcon = function(text, level) {
-    var icon = null;
+let extractHeaderIcon = function(text, level) {
+    let icon = null;
     if (level >= MAX_NAV_HEADER_LEVEL) {
         return {
             icon: icon,
             text: text,
         }
     }
-    var re = new RegExp(/\|\S+\|$/);
-    var matches = re.exec(text);
+    let re = /\|\S+\|$/;
+    let matches = re.exec(text);
     if (matches && matches.length > 0) {
-        var match = matches[0];
+        let match = matches[0];
         icon = match.substring(1, match.length - 1);
         text = text.substring(0, text.length - match.length);
     }
@@ -139,9 +139,8 @@ var extractHeaderIcon = function(text, level) {
     }
 };
 
-var getRenderer = function() {
-    // export!
-    var renderer = new marked.Renderer();
+let getRenderer = function() {
+    let renderer = new marked.Renderer();
 
     renderer.heading = function(text, level, raw) {
         if (level > MAX_NAV_HEADER_LEVEL) {
@@ -151,9 +150,9 @@ var getRenderer = function() {
                 + '</h' + level + '>\n';
         }
 
-        var result = "";
+        let result = "";
 
-        var extracted = extractHeaderIcon(text, level);
+        let extracted = extractHeaderIcon(text, level);
 
         result += '<h' + level + ' id="'
         + normalizeAnchorName(extracted.text)
@@ -167,14 +166,15 @@ var getRenderer = function() {
     };
 
     renderer.image = function(href, title, text) {
-        var re = /^\d+\|/;
-        var matches = re.exec(text);
+        let re = /^\d+\|/;
+        let matches = re.exec(text);
+        let imgNum;
         if (matches && matches.length > 0) {
-            var match = matches[0];
+            let match = matches[0];
             text = text.substr(match.length);
-            var imgNum = parseInt(match);
+            imgNum = parseInt(match);
         }
-        var out = '<img src="' + href + '" alt="' + text + '"';
+        let out = '<img src="' + href + '" alt="' + text + '"';
         if (title) {
             out += ' title="' + title + '"';
         }
@@ -195,7 +195,7 @@ var getRenderer = function() {
         if (href.indexOf("#") === 0) {
             href = "javascript: window.parent.jumpTo('" + href.substring(1) + "');";
         }
-        var out = '<a href="' + href + '"';
+        let out = '<a href="' + href + '"';
         if (title) {
             out += ' title="' + title + '"';
         }
