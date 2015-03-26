@@ -19,10 +19,10 @@
 <div id="Container">
     <div ng-include="'./partials/NavigationBar.html'"></div>
     <div ng-include="'./partials/SearchBox.html'"></div>
-    <iframe id="Content" ng-show="(!isOverview) && isPageview && (!isSearchview)" srcdoc="{{htmlOutput}}"
+    <iframe id="Content" ng-show="isPageview && (!isSearchmode)" srcdoc="{{htmlOutput}}"
         sandbox="allow-same-origin allow-scripts" seamless></iframe>
-    <section ng-show="isOverview" id="Overview" ng-include="'./partials/Overview.html'"></section>
-    <div id="Search" ng-show="(!isOverview) && isSearchview" ng-controller="SearchCtrl">
+    <section ng-show="isOverview && (!isSearchmode)" id="Overview" ng-include="'./partials/Overview.html'"></section>
+    <div id="Search" ng-show="isSearchmode" ng-controller="SearchCtrl">
         <ol>
             <li ng-repeat="match in matches | keyword:searchTerm">
                 <h5>{{ match.header }}</h5>

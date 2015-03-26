@@ -15,14 +15,12 @@ let jumpTo = function(anchor) {
     let contentWin = document.getElementById("Content").contentWindow;
     if (anchor) {
         body.removeClass("isOverview");
-        body.removeClass("isSearchview");
         body.addClass("isPageview");
         setTimeout(function() {
             contentWin.location.hash = anchor;
         }, 0);
     } else {
         body.removeClass("isPageview");
-        body.removeClass("isSearchview");
         body.addClass("isOverview");
         setTimeout(function() {
             contentWin.location.hash = "";
@@ -37,7 +35,7 @@ if (typeof window !== "undefined") {
 angular.module("DManual")
     .controller("MainCtrl", function($scope, $log, $sce, $window) {
         $scope.isOverview = true;
-        $scope.isSearchview = false;
+        $scope.isSearchmode = false;
         $scope.appInfo = {
             appName: "UnnamedApp",
         };
@@ -78,7 +76,6 @@ angular.module("DManual")
                 $scope.isOverview = false;
                 $scope.isPageview = true;
                 body.removeClass("isOverview");
-                body.removeClass("isSearchview");
                 body.addClass("isPageview");
                 setTimeout(function() {
                     contentWin.location.hash = anchor;
@@ -87,7 +84,6 @@ angular.module("DManual")
                 $scope.isOverview = true;
                 $scope.isPageview = false;
                 body.removeClass("isPageview");
-                body.removeClass("isSearchview");
                 body.addClass("isOverview");
                 setTimeout(function() {
                     contentWin.location.hash = "";
@@ -110,10 +106,11 @@ angular.module("DManual")
         $scope.$on("searchTermChanged", function(event, value) {
             $log.log("searchTermChanged", value);
             if (value && value.length > 0) {
-                $scope.isSearchview = true;
+                $log.log("Enter search mode");
+                $scope.isSearchmode = true;
             } else {
-                $scope.isSearchview = false;
+                $log.log("Leave search mode");
+                $scope.isSearchmode = false;
             }
-            $log.log($scope.isSearchview);
         });
     });
