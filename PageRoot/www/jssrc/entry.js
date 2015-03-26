@@ -8,5 +8,6 @@ require("./renderer");
 require("./utils");
 require("./ctrls/MainCtrl");
 require("./ctrls/NavigationCtrl");
+require("./ctrls/SearchCtrl");
 require("./ctrls/SearchBoxCtrl");
 require("./ctrls/ContentCtrl");

@@ -37,6 +37,7 @@ if (typeof window !== "undefined") {
 angular.module("DManual")
     .controller("MainCtrl", function($scope, $log, $sce, $window) {
         $scope.isOverview = true;
+        $scope.isSearchview = false;
         $scope.appInfo = {
             appName: "UnnamedApp",
         };
@@ -75,6 +76,7 @@ angular.module("DManual")
             let contentWin = document.getElementById("Content").contentWindow;
             if (anchor) {
                 $scope.isOverview = false;
+                $scope.isPageview = true;
                 body.removeClass("isOverview");
                 body.removeClass("isSearchview");
                 body.addClass("isPageview");
@@ -83,6 +85,7 @@ angular.module("DManual")
                 }, 0);
             } else {
                 $scope.isOverview = true;
+                $scope.isPageview = false;
                 body.removeClass("isPageview");
                 body.removeClass("isSearchview");
                 body.addClass("isOverview");
@@ -104,4 +107,13 @@ angular.module("DManual")
             $scope.$apply();
         });
 
+        $scope.$on("searchTermChanged", function(event, value) {
+            $log.log("searchTermChanged", value);
+            if (value && value.length > 0) {
+                $scope.isSearchview = true;
+            } else {
+                $scope.isSearchview = false;
+            }
+            $log.log($scope.isSearchview);
+        });
     });

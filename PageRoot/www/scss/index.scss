@@ -162,7 +162,7 @@ input[type='search'] {
         background-color: green;
         overflow: scroll;
         float: right;
-        display: block !important;
+        display: block;
         border: 0;
     }
 
@@ -204,19 +204,30 @@ input[type='search'] {
     }
 }
 
+// search related.
+.isSearchView {
+
+}
+
+#Search {
+    width: calc(100% - #{$pvNavBarWidth});
+    height: 100%;
+    background-color: orange;
+    overflow: scroll;
+    float: right;
+    display: block !important;
+    border: 0;
+    z-index: 50000;
+}
+
 #SearchInput {
     position: absolute;
     width: 260px;
     height: 24px;
 }
 
-#Search {
-    position: absolute;
-    top: 300px;
-    background-color: lightgrey;
-    opacity: 50;
-}
 
+// Logo related
 $logoHeight: 48px;
 
 #NavLogoBox {
