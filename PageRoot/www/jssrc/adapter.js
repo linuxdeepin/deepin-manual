@@ -14,17 +14,16 @@ angular.module("DManual")
     });
 
 (function() {
-    let Remote;
+    let AtomShell;
     try {
-        Remote = require("remote");
+        AtomShell = require("remote");
     } catch (err) {
-        Remote = null;
+        AtomShell = null;
     }
 
-    if (Remote) {
-        // atom-shell
-        let app = Remote.require("app");
-        let mainWin = Remote.require("browser-window").fromId(1);
+    if (AtomShell) {
+        let app = AtomShell.require("app");
+        let mainWin = AtomShell.require("browser-window").fromId(1);
 
         window.maximize = function() {
             if (mainWin.isMaximized()) {
@@ -53,6 +52,10 @@ angular.module("DManual")
         //
         // };
     } else {
-        console.warn("Atom-shell support disabled.");
+        let stub = function () {
+            console.log("You called a stub.");
+        };
+        window.maximize = window.minimize = window.close = stub;
+        console.warn("No Shell Detected.");
     }
 })();
