@@ -44,7 +44,7 @@ let getDManFileInfo = function(url, lang) {
             break;
         case "http:":
         case "https:":
-            var parts = parsed.pathname.split("/");
+            let parts = parsed.pathname.split("/");
             result.lang = parts[parts.length - 2];
             result.baseDir = [
                 parsed.protocol,
