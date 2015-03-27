@@ -60,6 +60,21 @@ angular.module("DManual")
                     let markdownDir = fileInfo.dir;
                     $scope.appInfo.markdownDir = markdownDir;
                     let base = `<base href='${markdownDir}/'>
+                        <script>
+                        'use strict';
+                        let disallow = function(event) {
+                            event.preventDefault();
+                            return false;
+                        };
+                        window.onload = function() {
+                            let body = document.getElementsByTagName("body")[0];
+                            body.addEventListener("dragenter", disallow);
+                            body.addEventListener("dragover", disallow);
+                            body.addEventListener("dragend", disallow);
+                            body.addEventListener("dragleave", disallow);
+                            body.addEventListener("drop", disallow);
+                        }
+                        </script>
                         <link rel='stylesheet' href='${stylePath}/reset.css' />
                         <link rel='stylesheet' href='${stylePath}/content.css' />`;
                     $scope.htmlOutput = $sce.trustAsHtml(base + html);
