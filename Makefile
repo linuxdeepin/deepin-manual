@@ -1,39 +1,35 @@
 PREFIX := /opt/deepin-user-manual
 
 all: nodejs
-	mkdir -p dist
-	mkdir -p dist/PageRoot
-
-	cp -r PageRoot/www dist/PageRoot/www
-	cp -r PageRoot/po dist/PageRoot/po
-	cp PageRoot/Gulpfile.js dist/PageRoot/
-	cp PageRoot/package.json dist/PageRoot/
-	cp -r DMan dist/
-
 	echo "Installing dependencies"
-	cd dist/PageRoot && \
+	cd PageRoot && \
 	    PATH="$(shell pwd)/symdir/:$$PATH" npm install
 
-	echo "Transpiling"
-	cd dist/PageRoot && \
-	    PATH="$(shell pwd)/symdir/:$$PATH" node --harmony ./node_modules/gulp/bin/gulp.js dist
+	mkdir -p PageRoot/www/scripts
 
-	# Copy this missing file.
-	cp dist/PageRoot/node_modules/gulp-traceur/node_modules/traceur/bin/traceur-runtime.js \
-	    dist/PageRoot/www/scripts/traceur-runtime.js
+	echo "Transpiling"
+	mkdir -p PageRoot/www/scripts
+	cd PageRoot && \
+	    PATH="$(shell pwd)/symdir/:$$PATH" node --harmony ./node_modules/gulp/bin/gulp.js dist
 
 nodejs:
 	mkdir -p symdir
 	ln -sf /usr/bin/nodejs ./symdir/node
 
 install:
-	mkdir -p $(DESTDIR)$(PREFIX)
-	cp -r dist/* $(DESTDIR)$(PREFIX)/
+	mkdir -p $(DESTDIR)$(PREFIX)/{PageRoot,DMan}
+	cp -r PageRoot/{po,www} $(DESTDIR)$(PREFIX)/PageRoot/
+	cp -r DMan/* $(DESTDIR)$(PREFIX)/DMan/
+	rm -r $(DESTDIR)$(PREFIX)/PageRoot/www/{jssrc,scss}
+	find $(DESTDIR)$(PREFIX) -name "__pycache__" -print0 | xargs -0 rm -rf
 	chmod +x $(DESTDIR)$(PREFIX)/DMan/main.py
 
+	cp {main.js,package.json} $(DESTDIR)$(PREFIX)/
 
 clean:
 	rm -rf symdir/
-	rm -rf dist/
 
-.PHONY: all dist install clean
+deepclean:
+	rm -rf PageRoot/www/{style,scripts}
+
+.PHONY: all nodejs install clean deepclean
