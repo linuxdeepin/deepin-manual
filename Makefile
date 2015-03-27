@@ -24,12 +24,11 @@ install:
 	rm -r $(DESTDIR)$(PREFIX)/PageRoot/www/{jssrc,scss}
 	find $(DESTDIR)$(PREFIX) -name "__pycache__" -print0 | xargs -0 rm -rf
 
+	cp {main.js,package.json} $(DESTDIR)$(PREFIX)/
 	chmod +x $(DESTDIR)$(PREFIX)/DMan/main.py
 	chmod +x $(DESTDIR)$(PREFIX)/main.js
 	install -d $(DESTDIR)/usr/bin
 	ln -s $(PREFIX)/main.js $(DESTDIR)/usr/bin/dman
-
-	cp {main.js,package.json} $(DESTDIR)$(PREFIX)/
 
 clean:
 	rm -rf symdir/
