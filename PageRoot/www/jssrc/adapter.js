@@ -28,6 +28,7 @@ angular.module("DManual")
             case "Atom-Shell": {
                 let AtomShell = require("remote");
                 let app = AtomShell.require("app");
+                let body = document.getElementsByTagName("body")[0];
                 let mainWin = AtomShell.require("browser-window").fromId(1);
 
                 window.maximize = function() {
@@ -38,18 +39,16 @@ angular.module("DManual")
                     }
                 };
                 window.minimize = mainWin.minimize;
-                mainWin.on("minimize", function() {
-
-                });
                 mainWin.on("maximize", function() {
-
+                    angular.element(body).addClass("isMaximized");
+                });
+                mainWin.on("unmaximize", function() {
+                    angular.element(body).removeClass("isMaximized");
                 });
                 // Atom-shell automatically injects the `close` method.
                 // window.close = function() {
                 //
                 // };
-
-                let body = document.getElementsByTagName("body")[0];
 
                 let ipc = require("ipc");
                 ipc.on("setMarkdown", function(path) {

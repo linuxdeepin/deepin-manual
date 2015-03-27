@@ -300,7 +300,16 @@ $logoHeight: 48px;
     &:active {
         background-image: url("../resources/frame/dark_maximize_press.png");
     }
+}
 
+.isMaximized #MaximizeBtn {
+    background-image: url("../resources/frame/dark_unmaximize_normal.png");
+    &:hover {
+        background-image: url("../resources/frame/dark_unmaximize_hover.png");
+    }
+    &:active {
+        background-image: url("../resources/frame/dark_unmaximize_press.png");
+    }
 }
 
 #CloseBtn {
