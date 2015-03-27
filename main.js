@@ -1,3 +1,4 @@
+#!/usr/bin/atom-shell
 "use strict";
 
 let app = require('app');  // Module to control application life.
@@ -34,8 +35,12 @@ app.on('ready', function () {
     ipc.on("AdapterReady", function() {
         let argv = process.argv;
         let mdUrl = argv[argv.length - 1];
-        if (mdUrl.indexOf("file://") !== 0) {
-            mdUrl = "file://" + mdUrl;
+        if (mdUrl.indexOf("http://") === 0 ||
+            mdUrl.indexOf("https://") === 0||
+            mdUrl.indexOf("file://") === 0) {
+            // pass
+        } else {
+            mdUrl = "file://" + require("path").resolve(mdUrl);
         }
         mainWindow.send("setMarkdown", mdUrl);
     });
