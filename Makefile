@@ -24,7 +24,7 @@ all: nodejs
 
 nodejs:
 	mkdir -p symdir
-	ln -s /usr/bin/nodejs ./symdir/node
+	ln -sf /usr/bin/nodejs ./symdir/node
 
 install:
 	mkdir -p $(DESTDIR)$(PREFIX)
