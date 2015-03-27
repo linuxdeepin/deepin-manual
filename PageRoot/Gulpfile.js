@@ -36,10 +36,12 @@ gulp.task('translations', function () {
 
 var entryPath = './www/jssrc/entry.js';
 var jsPath = './www/jssrc/**/*.js';
+var adapterPath = './www/jssrc/adapter.js';
 
-gulp.task("watch", ['sass', 'browserify'], function() {
+gulp.task("watch", ['sass', 'browserify', 'adapter'], function() {
     gulp.watch('./www/scss/*.scss', ['sass']);
     gulp.watch(jsPath, ['browserify']);
+    gulp.watch(adapterPath, ['adapter']);
 });
 
 gulp.task('test', function () {
@@ -62,6 +64,12 @@ gulp.task('browserify', function() {
         .pipe(fs.createWriteStream("./www/scripts/bundle.js"));
 });
 
-gulp.task('dist', ['sass', 'browserify'], function() {
+gulp.task('adapter', function() {
+    gulp.src([
+        adapterPath,
+    ]).pipe(gulp.dest('./www/scripts/'));
+});
+
+gulp.task('dist', ['sass', 'browserify', 'adapter'], function() {
     console.log("Gulp::dist done.");
 });
