@@ -12,7 +12,4 @@ Vcs-Browser: https://example.com
 
 Package: deepin-user-manual
 Architecture: i386 amd64
-Depends:
- python3-pyqt5,
- oxide-qt
 Description: Deepin User Manual

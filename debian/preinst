@@ -1,8 +1,0 @@
-#!/bin/bash
-
-if [ "$1" = "install" ]; then
-    return 0
-fi
-
-#DEBHELPER#
-exit 0
