@@ -9,10 +9,10 @@
 }
 
 // client side decoration dimensions.
-$csdTH: 5px;  // Top height
-$csdRW: 5px;  // Right width
-$csdBH: 5px;  // Bottom height
-$csdLW: 5px;  // Left width
+$csdTH: 3px;  // Top height
+$csdRW: 3px;  // Right width
+$csdBH: 3px;  // Bottom height
+$csdLW: 3px;  // Left width
 
 // client area width
 $caW: 946px;
@@ -38,10 +38,6 @@ html, body {
 body {
     height: 100%;
 }
-
-
-
-
 
 #Container {
     position: fixed;
@@ -270,6 +266,13 @@ $logoHeight: 48px;
     z-index: -100;
 }
 
+#MoveHandle {
+    -webkit-app-region: drag;
+    background-color: darkmagenta;
+    height: 30px;
+    margin: 3px 3px 0;
+}
+
 #FrameBar {
     position: fixed;
     z-index: 10000;
@@ -279,6 +282,7 @@ $logoHeight: 48px;
         height: 30px;
         margin: 5px;
         float: left;
+        -webkit-app-region: no-drag;
     }
 }
 
