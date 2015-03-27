@@ -55,6 +55,17 @@ angular.module("DManual")
                     adapter.setMarkdown(path);
                 });
 
+                // Disallowing dropping
+                let disallow = function(event) {
+                    event.canDrop = false;
+                    event.preventDefault();
+                    return false;
+                };
+                angular.element(body).bind("dragstart", disallow);
+                angular.element(body).bind("dragenter", disallow);
+                angular.element(body).bind("dragover", disallow);
+                angular.element(body).bind("dragend", disallow);
+                angular.element(body).bind("drop", disallow);
 
                 ipc.send("AdapterReady", true);
                 break;
