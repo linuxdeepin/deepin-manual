@@ -4,9 +4,6 @@ let app = require('app');  // Module to control application life.
 let BrowserWindow = require('browser-window');  // Module to create native browser window.
 let ipc = require("ipc");
 
-// Report crashes to our server.
-require('crash-reporter').start();
-
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the javascript object is GCed.
 let mainWindow = null;
@@ -53,4 +50,3 @@ app.on('ready', function () {
         mainWindow = null;
     });
 });
-
