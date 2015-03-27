@@ -33,7 +33,11 @@ app.on('ready', function () {
         frame: false,
     });
     ipc.on("AdapterReady", function() {
-        let mdUrl = "file:///home/xinkai/projects/deepin-user-manual/PageRoot/www/manual/manual_zhCN.md";
+        let argv = process.argv;
+        let mdUrl = argv[argv.length - 1];
+        if (mdUrl.indexOf("file://") !== 0) {
+            mdUrl = "file://" + mdUrl;
+        }
         mainWindow.send("setMarkdown", mdUrl);
     });
 
