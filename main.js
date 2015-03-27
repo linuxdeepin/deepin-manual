@@ -15,8 +15,10 @@ app.on('window-all-closed', function () {
     }
 });
 
-app.commandLine.appendSwitch('remote-debugging-port', '18080');
-app.commandLine.appendSwitch('host-rules', 'MAP * 127.0.0.1');
+if (process.env["DEBUG"]) {
+    app.commandLine.appendSwitch('remote-debugging-port', '18080');
+    app.commandLine.appendSwitch('host-rules', 'MAP * 127.0.0.1');
+}
 
 // This method will be called when atom-shell has done everything
 // initialization and ready for creating browser windows.
@@ -37,6 +39,10 @@ app.on('ready', function () {
         }
         mainWindow.send("setMarkdown", mdUrl);
     });
+
+    if (process.env["DEBUG"]) {
+        mainWindow.openDevTools();
+    }
 
     console.log("BrowserWindow created with id", mainWindow.id);
     // and load the index.html of the app.
