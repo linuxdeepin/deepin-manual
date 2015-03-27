@@ -1,61 +1,72 @@
 "use strict";
 
 angular.module("DManual")
-    .factory("AdapterService", function Adapter($log, $rootScope) {
+    .factory("AdapterService", function Adapter($log, $rootScope, $window) {
         let setMarkdown = function(path) {
             $log.log(`Markdown set to ${path}`);
             $rootScope.$broadcast("setMarkdown", path);
         };
+        let getShellType = function() {
+            // try atom-shell
+            try {
+                require("remote");
+                return "Atom-Shell";
+            } catch (e) {}
+
+            return null;
+        };
         let result = {
             setMarkdown: setMarkdown,
+            getShellType: getShellType,
         };
-        window.adapter = result;
+        $window.adapter = result;
         return result;
-    });
+    })
+    .run(function($log, $injector, AdapterService) {
+        let shell = AdapterService.getShellType();
+        switch (shell) {
+            case "Atom-Shell": {
+                let AtomShell = require("remote");
+                let app = AtomShell.require("app");
+                let mainWin = AtomShell.require("browser-window").fromId(1);
 
-(function() {
-    let AtomShell;
-    try {
-        AtomShell = require("remote");
-    } catch (err) {
-        AtomShell = null;
-    }
+                window.maximize = function() {
+                    if (mainWin.isMaximized()) {
+                        mainWin.restore();
+                    } else {
+                        mainWin.maximize();
+                    }
+                };
+                window.minimize = mainWin.minimize;
+                mainWin.on("minimize", function() {
 
-    if (AtomShell) {
-        let app = AtomShell.require("app");
-        let mainWin = AtomShell.require("browser-window").fromId(1);
+                });
+                mainWin.on("maximize", function() {
 
-        window.maximize = function() {
-            if (mainWin.isMaximized()) {
-                mainWin.restore();
-            } else {
-                mainWin.maximize();
+                });
+                // Atom-shell automatically injects the `close` method.
+                // window.close = function() {
+                //
+                // };
+
+                let body = document.getElementsByTagName("body")[0];
+
+                let ipc = require("ipc");
+                ipc.on("setMarkdown", function(path) {
+                    adapter.setMarkdown(path);
+                });
+
+
+                ipc.send("AdapterReady", true);
+                break;
             }
-        };
-        window.minimize = mainWin.minimize;
-
-        let body = document.getElementsByTagName("body")[0];
-        mainWin.on("minimize", function() {
-
-        });
-        mainWin.on("maximize", function() {
-
-        });
-
-        let ipc = require("ipc");
-        ipc.on("setMarkdown", function(path) {
-            adapter.setMarkdown(path);
-        });
-
-        // Atom-shell automatically injects the `close` method.
-        // window.close = function() {
-        //
-        // };
-    } else {
-        let stub = function () {
-            console.log("You called a stub.");
-        };
-        window.maximize = window.minimize = window.close = stub;
-        console.warn("No Shell Detected.");
-    }
-})();
+            default: {
+                let stub = function () {
+                    console.log("You called a stub.");
+                };
+                window.maximize = window.minimize = window.close = stub;
+                console.warn("No Shell Detected.");
+                break;
+            }
+        }
+    });

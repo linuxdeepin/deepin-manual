@@ -1,19 +1,21 @@
 "use strict";
 
-var app = require('app');  // Module to control application life.
-var BrowserWindow = require('browser-window');  // Module to create native browser window.
+let app = require('app');  // Module to control application life.
+let BrowserWindow = require('browser-window');  // Module to create native browser window.
+let ipc = require("ipc");
 
 // Report crashes to our server.
 require('crash-reporter').start();
 
 // Keep a global reference of the window object, if you don't, the window will
 // be closed automatically when the javascript object is GCed.
-var mainWindow = null;
+let mainWindow = null;
 
 // Quit when all windows are closed.
 app.on('window-all-closed', function () {
-    if (process.platform != 'darwin')
+    if (process.platform !== 'darwin') {
         app.quit();
+    }
 });
 
 app.commandLine.appendSwitch('remote-debugging-port', '18080');
@@ -30,8 +32,7 @@ app.on('ready', function () {
         "min-height": 600,
         frame: false,
     });
-
-    mainWindow.webContents.on('did-finish-load', function() {
+    ipc.on("AdapterReady", function() {
         let mdUrl = "file:///home/xinkai/projects/deepin-user-manual/PageRoot/www/manual/manual_zhCN.md";
         mainWindow.send("setMarkdown", mdUrl);
     });
