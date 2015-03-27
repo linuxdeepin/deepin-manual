@@ -1,13 +1,13 @@
 <!DOCTYPE html>
-<html>
-<head lang="en">
+<html ng-app="DManual" lang="en" ng-controller="MainCtrl">
+<head>
     <meta charset="UTF-8">
     <script src="./scripts/bundle.js"></script>
     <script src="./jssrc/adapter.js"></script>
     <link rel="stylesheet" href="./style/index.css" />
-    <title>DManual</title>
+    <title translate>{{appInfo.name}} - DManual</title>
 </head>
-<body class="isOverview" ng-app="DManual" ng-controller="MainCtrl">
+<body class="isOverview">
 <div id="OuterFrame" ng-style="outerFrameStyle">
     <div id="MoveHandle"></div>
 </div>
