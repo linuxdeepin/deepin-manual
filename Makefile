@@ -29,6 +29,11 @@ install:
 
 clean:
 	rm -rf symdir/
+	rm -rf debian/deepin-user-manual
+	rm -rf debian/files
+	rm -rf debian/*.debhelper
+	rm -rf debian/*.debhelper.log
+	rm -rf debian/*.substvars
 
 deepclean:
 	rm -rf PageRoot/www/{style,scripts}
