@@ -267,6 +267,7 @@ $logoHeight: 48px;
 }
 
 #MoveHandle {
+    -webkit-user-select: none;
     -webkit-app-region: drag;
     background-color: darkmagenta;
     height: 30px;
