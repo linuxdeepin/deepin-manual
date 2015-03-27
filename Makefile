@@ -1,3 +1,4 @@
+SHELL   = /bin/bash
 PREFIX := /opt/deepin-user-manual
 
 all: nodejs
