@@ -177,3 +177,18 @@ table.block3 {
 blockquote {
     border: 1px lightgreen solid;
 }
+
+ul {
+    li {
+        ul {
+            list-style-type: none;
+            li {
+                &::before {
+                    content: ">>";
+                    font-size: 10px;
+                    color: rgb(0, 160, 233);
+                }
+            }
+        }
+    }
+}
