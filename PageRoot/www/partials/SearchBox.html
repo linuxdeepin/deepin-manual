@@ -1,8 +1,6 @@
 <div id="SearchBox" ng-controller="SearchBoxCtrl">
     <datalist id="HeaderList">
-        <div ng-repeat="header in headers">
-            <option value="{{header}}">
-        </div>
+        <option ng-repeat="header in headers" value="{{header}}">
     </datalist>
 
     <input type="search" id="SearchInput"
