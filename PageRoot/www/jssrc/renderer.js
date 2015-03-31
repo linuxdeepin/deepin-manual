@@ -95,16 +95,45 @@ let parseNavigationItems = function(tokens) {
                 addAnchor(anchor_lv1.children, anchorText, anchorId, icon);
             }
         } else {
-            if (token.type === "paragraph" || token.type === "text") {
+            let _addText = function(what) {
                 if ((indices.length === 0) ||
                     (indices[indices.length - 1].header !== currentHeaderId)) {
                     indices.push({
                         headerId: currentHeaderId,
                         headerText: currentHeaderText,
                         texts: [],
-                    })
+                    });
                 }
-                indices[indices.length - 1].texts.push(token.text);
+                indices[indices.length - 1].texts.push(what);
+            };
+            switch (token.type) {
+                case "paragraph":
+                case "text":
+                {
+                    _addText(token.text);
+                    break;
+                }
+                case "html": {
+                    console.warn("TODO: html detagging");
+                    break;
+                }
+                case "list_start":
+                case "list_end":
+                case "list_item_start":
+                case "list_item_end":
+                case "loose_item_start":
+                case "loose_item_end":
+                case "blockquote_start":
+                case "blockquote_end":
+                case "space": {
+                    // pass
+                    break;
+                }
+                default:
+                {
+                    console.warn(`Unhandled token ${console.dir(token)}`);
+                    break;
+                }
             }
         }
     }
