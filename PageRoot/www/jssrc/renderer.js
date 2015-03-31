@@ -212,13 +212,29 @@ let loadMarkdown = function(url, callback) {
     }
 };
 
+let extractImageLayout = function(text) {
+    let re = /^\d+\|/;
+    let matches = re.exec(text);
+    let layout;
+    if (matches && matches.length > 0) {
+        let match = matches[0];
+        text = text.substr(match.length);
+        layout = parseInt(match);
+    }
+    return {
+        layout: layout,
+        text: text,
+    }
+};
+
 let getPlainRenderer = function() {
     let renderer = new marked.Renderer();
     let noop = function() { return ""; };
 
     renderer.heading = noop;
     renderer.image = function(href, title, text) {
-        return text;
+        let tmp = extractImageLayout(text);
+        return tmp.text;
     };
     return renderer;
 };
@@ -250,22 +266,18 @@ let getHTMLRenderer = function() {
     };
 
     renderer.image = function(href, title, text) {
-        let re = /^\d+\|/;
-        let matches = re.exec(text);
-        let imgNum;
-        if (matches && matches.length > 0) {
-            let match = matches[0];
-            text = text.substr(match.length);
-            imgNum = parseInt(match);
-        }
+        let tmp = extractImageLayout(text);
+        let layout = tmp.layout;
+        text = tmp.text;
+
         let out = '<img src="' + href + '" alt="' + text + '"';
         if (title) {
             out += ' title="' + title + '"';
         }
-        if (imgNum) {
-            out += ' class="block' + imgNum + '"';
+        if (layout) {
+            out += ' class="block' + layout + '"';
         } else {
-            if (imgNum === 0) {
+            if (layout === 0) {
 
             } else {
                 out += ' class="inline"';
