@@ -2,9 +2,8 @@
 
 let Renderer = require("../www/jssrc/renderer");
 let expect = require("expect.js");
-let marked = require("marked");
 
-let r = Renderer.getHTMLRenderer;
+let r = Renderer.getHTMLRenderer();
 let p = Renderer.processMarkdown;
 
 describe("Markdown Renderer", function() {
@@ -32,7 +31,7 @@ describe("Markdown Renderer", function() {
         });
 
         it("warns about duplicate anchors", function() {
-            let src = "# Hello World\n##hello  world\n";
+            let src = "# Hello World\n##Hello  World\n";
             expect(p).withArgs(src).to.throwError();
         });
 
@@ -174,44 +173,44 @@ describe("Navigation Parsing", function() {
         let result = p(src).parsed;
         expect(result.appInfo.name).to.equal("H1");
         expect(result.appInfo.icon).to.equal("H1.png");
-        expect(result.items).to.eql([
+        expect(result.anchors).to.eql([
             {
-                "anchor": "h2",
+                "id": "H2",
                 "children": [
                     {
-                        "anchor": "h3",
+                        "id": "H3",
                         "children": [],
                         "icon": null,
-                        "name": "H3"
+                        "text": "H3"
                     }
                 ],
                 "icon": "H2.png",
-                "name": "H2"
+                "text": "H2"
             },
             {
-                "anchor": "h2a",
+                "id": "H2a",
                 "children": [],
                 "icon": "H2a.png",
-                "name": "H2a",
+                "text": "H2a",
             },
             {
-                "anchor": "h2b",
+                "id": "H2b",
                 "children": [
                     {
-                        "anchor": "h3a",
+                        "id": "H3a",
                         "children": [],
                         "icon": null,
-                        "name": "H3a"
+                        "text": "H3a"
                     }
                 ],
                 "icon": null,
-                "name": "H2b",
+                "text": "H2b",
             }
         ]);
         expect(result.indices).to.eql([
-            { header: 'h2', texts: [ 'H2 Text' ] },
-            { header: 'h3', texts: [ 'H3 Text' ] },
-            { header: 'h4', texts: [ 'H4 Text' ] }
+            { headerId: 'H2', headerText: 'H2', texts: [ 'H2 Text' ] },
+            { headerId: 'H3', headerText: 'H3', texts: [ 'H3 Text' ] },
+            { headerId: 'H4', headerText: 'H4', texts: [ 'H4 Text' ] },
         ]);
         expect(result.headers).to.eql([ 'H1', 'H2', 'H2a', 'H2b' ]);
     });

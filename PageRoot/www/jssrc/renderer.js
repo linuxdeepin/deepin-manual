@@ -365,7 +365,7 @@ let processMarkdown = function(src) {
     }
 
     // Extract Headers
-    let parsed = parseNavigationItems(tokens);
+
 
     // Pass tokens to HTML renderer
     let html = marked.Parser.parse(tokens2, {
@@ -376,6 +376,8 @@ let processMarkdown = function(src) {
     let plain = marked.Parser.parse(tokens3, {
         renderer: getPlainRenderer(),
     });
+
+    let parsed = parseNavigationItems(tokens);
 
     return {
         plain: plain,
