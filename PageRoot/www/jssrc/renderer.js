@@ -5,7 +5,6 @@
 let getDManFileInfo = require("./utils").getDManFileInfo;
 
 let marked = require("marked");
-let deepcopy = require("deepcopy");
 let MAX_INDEX_HEADER_LEVEL = 2;
 let MAX_NAV_HEADER_LEVEL = 3;
 
@@ -304,11 +303,9 @@ let getHTMLRenderer = function() {
 let processMarkdown = function(src) {
     // Lex
     let lexer = new marked.Lexer({});
-    let tokens, tokens2, tokens3;
+    let tokens;
     try {
         tokens = lexer.lex(src);
-        tokens2 = deepcopy(tokens);
-        tokens3 = deepcopy(tokens);
     } catch (err) {
         throw new Error(`Lexer Error ${err}`);
     }
@@ -317,12 +314,12 @@ let processMarkdown = function(src) {
     let parsed = parseNavigationItems(tokens);
 
     // Pass tokens to HTML renderer
-    let html = marked.Parser.parse(tokens2, {
+    let html = marked(src, {
         renderer: getHTMLRenderer(),
     });
 
     // Pass token to plain text renderer
-    let plain = marked.Parser.parse(tokens3, {
+    let plain = marked(src, {
         renderer: getPlainRenderer(),
     });
 
