@@ -53,87 +53,86 @@ let parseNavigationItems = function(tokens) {
     };
     let indices = [];
     let headers = [];
+    let _addText = function(what) {
+        if ((indices.length === 0) ||
+            (indices[indices.length - 1].header !== currentHeaderId)) {
+            indices.push({
+                headerId: currentHeaderId,
+                headerText: currentHeaderText,
+                texts: [],
+            });
+        }
+        indices[indices.length - 1].texts.push(what);
+    };
 
     for (let token of tokens) {
-        if (token.type === "heading") {
-            let extracted = extractHeaderIcon(token.text, token.depth);
-            let anchorText = extracted.text;
-            let icon = extracted.icon;
+        switch (token.type) {
+            case "heading": {
+                let extracted = extractHeaderIcon(token.text, token.depth);
+                let anchorText = extracted.text;
+                let icon = extracted.icon;
 
-            // Lookfor and set appName
-            if (token.depth === 1) {
-                if (appInfo.name) {
-                    throw new Error(`Redefinition appInfo: ${appInfo.name} ${anchorText}`);
+                // Lookfor and set appName
+                if (token.depth === 1) {
+                    if (appInfo.name) {
+                        throw new Error(`Redefinition appInfo: ${appInfo.name} ${anchorText}`);
+                    }
+                    appInfo.name = anchorText;
+                    appInfo.icon = icon;
                 }
-                appInfo.name = anchorText;
-                appInfo.icon = icon;
-            }
 
-            let anchorId = normalizeAnchorName(anchorText);
+                let anchorId = normalizeAnchorName(anchorText);
 
-            if (token.depth <= MAX_INDEX_HEADER_LEVEL) {
-                if (anchorIds.has(anchorId)) {
-                    throw new Error("Duplicate anchor names found:", anchorId);
+                if (token.depth <= MAX_INDEX_HEADER_LEVEL) {
+                    if (anchorIds.has(anchorId)) {
+                        throw new Error("Duplicate anchor names found:", anchorId);
+                    } else {
+                        anchorIds.add(anchorId);
+                        headers.push(anchorText);
+                    }
                 } else {
-                    anchorIds.add(anchorId);
-                    headers.push(anchorText);
+                    //continue;
                 }
-            } else {
-//                continue;
-            }
-            currentHeaderId = anchorId;
-            currentHeaderText = anchorText;
+                currentHeaderId = anchorId;
+                currentHeaderText = anchorText;
 
-            if (token.depth === 2) {
-                if (!appInfo.name) {
-                    throw new Error("H2 must be under H1.");
+                if (token.depth === 2) {
+                    if (!appInfo.name) {
+                        throw new Error("H2 must be under H1.");
+                    }
+                    currentHeaderId1 = anchorId;
+                    addAnchor(anchors, anchorText, anchorId, icon);
+                } else if (token.depth === 3) {
+                    let anchor_lv1 = findAnchor(anchors, currentHeaderId1);
+                    addAnchor(anchor_lv1.children, anchorText, anchorId, icon);
                 }
-                currentHeaderId1 = anchorId;
-                addAnchor(anchors, anchorText, anchorId, icon);
-            } else if (token.depth === 3) {
-                let anchor_lv1 = findAnchor(anchors, currentHeaderId1);
-                addAnchor(anchor_lv1.children, anchorText, anchorId, icon);
             }
-        } else {
-            let _addText = function(what) {
-                if ((indices.length === 0) ||
-                    (indices[indices.length - 1].header !== currentHeaderId)) {
-                    indices.push({
-                        headerId: currentHeaderId,
-                        headerText: currentHeaderText,
-                        texts: [],
-                    });
-                }
-                indices[indices.length - 1].texts.push(what);
-            };
-            switch (token.type) {
-                case "paragraph":
-                case "text":
-                {
-                    _addText(token.text);
-                    break;
-                }
-                case "html": {
-                    console.warn("TODO: html detagging");
-                    break;
-                }
-                case "list_start":
-                case "list_end":
-                case "list_item_start":
-                case "list_item_end":
-                case "loose_item_start":
-                case "loose_item_end":
-                case "blockquote_start":
-                case "blockquote_end":
-                case "space": {
-                    // pass
-                    break;
-                }
-                default:
-                {
-                    console.warn(`Unhandled token ${console.dir(token)}`);
-                    break;
-                }
+            case "paragraph":
+            case "text":
+            {
+                _addText(token.text);
+                break;
+            }
+            case "html": {
+                console.warn("TODO: html detagging");
+                break;
+            }
+            case "list_start":
+            case "list_end":
+            case "list_item_start":
+            case "list_item_end":
+            case "loose_item_start":
+            case "loose_item_end":
+            case "blockquote_start":
+            case "blockquote_end":
+            case "space": {
+                // pass
+                break;
+            }
+            default:
+            {
+                console.warn(`Unhandled token ${console.dir(token)}`);
+                break;
             }
         }
     }
