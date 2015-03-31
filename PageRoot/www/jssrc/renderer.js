@@ -139,72 +139,6 @@ let extractHeaderIcon = function(text, level) {
     }
 };
 
-let getRenderer = function() {
-    let renderer = new marked.Renderer();
-
-    renderer.heading = function(text, level, raw) {
-        if (level > MAX_NAV_HEADER_LEVEL) {
-            // Do not give h4, h5, h6 anchors.
-            return '<h' + level + '>'
-                + text
-                + '</h' + level + '>\n';
-        }
-
-        let result = "";
-
-        let extracted = extractHeaderIcon(text, level);
-
-        result += '<h' + level + ' id="'
-        + normalizeAnchorName(extracted.text)
-        + '">';
-        if (extracted.icon) {
-            result += '<img class="HeaderIcon" src="' + extracted.icon + '" />';
-        }
-        result += extracted.text
-        + '</h' + level + '>\n';
-        return result;
-    };
-
-    renderer.image = function(href, title, text) {
-        let re = /^\d+\|/;
-        let matches = re.exec(text);
-        let imgNum;
-        if (matches && matches.length > 0) {
-            let match = matches[0];
-            text = text.substr(match.length);
-            imgNum = parseInt(match);
-        }
-        let out = '<img src="' + href + '" alt="' + text + '"';
-        if (title) {
-            out += ' title="' + title + '"';
-        }
-        if (imgNum) {
-            out += ' class="block' + imgNum + '"';
-        } else {
-            if (imgNum === 0) {
-
-            } else {
-                out += ' class="inline"';
-            }
-        }
-        out += this.options.xhtml ? '/>' : '>';
-        return out;
-    };
-
-    renderer.link = function(href, title, text) {
-        if (href.indexOf("#") === 0) {
-            href = "javascript: window.parent.jumpTo('" + href.substring(1) + "');";
-        }
-        let out = '<a href="' + href + '"';
-        if (title) {
-            out += ' title="' + title + '"';
-        }
-        out += '>' + text + '</a>';
-        return out;
-    };
-    return renderer;
-};
-
 let loadMarkdown = function(url, callback) {
     let info = getDManFileInfo(url);
 
@@ -283,6 +217,9 @@ let getPlainRenderer = function() {
     let noop = function() { return ""; };
 
     renderer.heading = noop;
+    renderer.image = function(href, title, text) {
+        return text;
+    };
     return renderer;
 };
 

@@ -4,9 +4,10 @@ let Renderer = require("../www/jssrc/renderer");
 let expect = require("expect.js");
 
 let r = Renderer.getHTMLRenderer();
+let pr = Renderer.getPlainRenderer();
 let p = Renderer.processMarkdown;
 
-describe("Markdown Renderer", function() {
+describe("Markdown HTML Renderer", function() {
     describe("Headers", function() {
         it("understands h1 - h3", function() {
             let result = r.heading("This is a test", 1, "This is a test");
@@ -153,6 +154,94 @@ describe("Markdown Renderer", function() {
         it("runs command", function() {
 
         });
+    });
+});
+
+describe("Markdown Plain Renderer", function() {
+    it("outputs nothing for headers", function() {
+        {
+            let result = pr.heading("This is a test", 1, "This is a test");
+            expect(result).to.equal("");
+        }
+        {
+            let result = pr.heading("This is a test", 2, "This is a test");
+            expect(result).to.equal("");
+        }
+        {
+            let result = pr.heading("This is a test", 3, "This is a test");
+            expect(result).to.equal("");
+        }
+        {
+            let result = pr.heading("This is a test", 4, "This is a test");
+            expect(result).to.equal("");
+        }
+        {
+            let result = pr.heading("This is a test", 5, "This is a test");
+            expect(result).to.equal("");
+        }
+        {
+            let result = pr.heading("This is a test", 6, "This is a test");
+            expect(result).to.equal("");
+        }
+    });
+
+    it("outputs nothing with header even with icons", function() {
+        {
+            let result = pr.heading("This is a test|a.png|", 1, "This is a test|a.png|");
+            expect(result).to.equal("");
+        }
+        {
+            let result = pr.heading("This is a test|a.png|", 2, "This is a test|a.png|");
+            expect(result).to.equal("");
+        }
+        {
+            let result = pr.heading("This is a test|a.png|", 3, "This is a test|a.png|");
+            expect(result).to.equal("");
+        }
+        {
+            let result = pr.heading("This is a test|a.png|", 4, "This is a test|a.png|");
+            expect(result).to.equal("");
+        }
+        {
+            let result = pr.heading("This is a test|a.png|", 5, "This is a test|a.png|");
+            expect(result).to.equal("");
+        }
+        {
+            let result = pr.heading("This is a test|a.png|", 6, "This is a test|a.png|");
+            expect(result).to.equal("");
+        }
+    });
+
+    it("outputs the alt text for non-header images/icons", function() {
+        { // self-sized
+            let src = "![This is an alt!](./hello.png)\n";
+            let result = p(src).plain;
+            expect(result).to.equal('<p>This is an alt!</p>\n');
+        }
+        {
+            let src = "![0|This is an alt!](./hello.png)\n";
+            let result = p(src).plain;
+            expect(result).to.equal('<p>This is an alt!</p>\n');
+        }
+        {
+            let src = "![1|This is an alt!](./hello.png)\n";
+            let result = p(src).plain;
+            expect(result).to.equal('<p>This is an alt!</p>\n');
+        }
+        {
+            let src = "![2|This is an alt!](./hello.png)\n";
+            let result = p(src).plain;
+            expect(result).to.equal('<p>This is an alt!</p>\n');
+        }
+        {
+            let src = "![3|This is an alt!](./hello.png)\n";
+            let result = p(src).plain;
+            expect(result).to.equal('<p>This is an alt!</p>\n');
+        }
+    });
+
+    it("outputs text only for tables", function() {
+
     });
 });
 
