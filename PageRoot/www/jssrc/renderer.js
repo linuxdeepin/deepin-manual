@@ -235,6 +235,51 @@ let getPlainRenderer = function() {
         let tmp = extractImageLayout(text);
         return tmp.text;
     };
+    renderer.table = function(header, body) {
+        return `${header} ${body}`;
+    };
+    renderer.tablerow = function(content) {
+        return content;
+    };
+    renderer.tablecell = function(content, flags) {
+        return content;
+    };
+    renderer.strong = function(text) {
+        return text;
+    };
+    renderer.em = function(text) {
+        return text;
+    };
+    renderer.codespan = function(text) {
+        return text;
+    };
+    renderer.del = function(text) {
+        return text;
+    };
+    renderer.link = function(href, title, text) {
+        return text;
+    };
+    renderer.blockquote = function(quote) {
+        return quote;
+    };
+    renderer.code = function(code, lang, escaped) {
+        return code;
+    };
+    renderer.html = function(html) {
+        return html;
+    };
+    //renderer.hr;
+    //renderer.br;
+    renderer.list = function(body, ordered) {
+        return body;
+    };
+    renderer.listitem = function(text) {
+        return text;
+    };
+    renderer.paragraph = function(text) {
+        return text;
+    };
+
     return renderer;
 };
 
