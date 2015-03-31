@@ -43,7 +43,7 @@ let getDManFileInfo = function(url, lang) {
             result.dir = result.baseDir;
             break;
         case "http:":
-        case "https:":
+        case "https:": {
             let parts = parsed.pathname.split("/");
             result.lang = parts[parts.length - 2];
             result.baseDir = [
@@ -62,6 +62,7 @@ let getDManFileInfo = function(url, lang) {
             ].join("");
 
             break;
+        }
         default:
             throw new Error("Unknown protocol");
             break;

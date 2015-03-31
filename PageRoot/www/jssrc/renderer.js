@@ -2,11 +2,10 @@
 
 // Make a custom version of the marked renderer.
 
-let {
-    getDManFileInfo,
-} = require("./utils");
+let getDManFileInfo = require("./utils").getDManFileInfo;
 
 let marked = require("marked");
+let deepcopy = require("deepcopy");
 let MAX_INDEX_HEADER_LEVEL = 2;
 let MAX_NAV_HEADER_LEVEL = 3;
 
@@ -65,7 +64,7 @@ let parseNavigationItems = function(tokens) {
             // Lookfor and set appName
             if (token.depth === 1) {
                 if (appInfo.name) {
-                    throw new Error("Redefinition appInfo");
+                    throw new Error(`Redefinition appInfo: ${appInfo.name} ${anchorText}`);
                 }
                 appInfo.name = anchorText;
                 appInfo.icon = icon;
@@ -109,7 +108,6 @@ let parseNavigationItems = function(tokens) {
                 indices[indices.length - 1].texts.push(token.text);
             }
         }
-
     }
 
     return {
@@ -280,23 +278,116 @@ let loadMarkdown = function(url, callback) {
     }
 };
 
-let parseMarkdown = function(md) {
-    let renderer = getRenderer();
-    let html = marked(md, {
-        renderer: renderer,
-    });
-    let lexer = new marked.Lexer({});
-    let tokens = lexer.lex(md);
+let getPlainRenderer = function() {
+    let renderer = new marked.Renderer();
+    let noop = function() { return ""; };
 
-    let parsed = parseNavigationItems(tokens);
-    return {
-        parsed: parsed,
-        html: html,
+    renderer.heading = noop;
+    return renderer;
+};
+
+let getHTMLRenderer = function() {
+    let renderer = new marked.Renderer();
+
+    renderer.heading = function(text, level, raw) {
+        if (level > MAX_NAV_HEADER_LEVEL) {
+            // Do not give h4, h5, h6 anchors.
+            return '<h' + level + '>'
+                + text
+                + '</h' + level + '>\n';
+        }
+
+        let result = "";
+
+        let extracted = extractHeaderIcon(text, level);
+
+        result += '<h' + level + ' id="'
+        + normalizeAnchorName(extracted.text)
+        + '">';
+        if (extracted.icon) {
+            result += '<img class="HeaderIcon" src="' + extracted.icon + '" />';
+        }
+        result += extracted.text
+        + '</h' + level + '>\n';
+        return result;
+    };
+
+    renderer.image = function(href, title, text) {
+        let re = /^\d+\|/;
+        let matches = re.exec(text);
+        let imgNum;
+        if (matches && matches.length > 0) {
+            let match = matches[0];
+            text = text.substr(match.length);
+            imgNum = parseInt(match);
+        }
+        let out = '<img src="' + href + '" alt="' + text + '"';
+        if (title) {
+            out += ' title="' + title + '"';
+        }
+        if (imgNum) {
+            out += ' class="block' + imgNum + '"';
+        } else {
+            if (imgNum === 0) {
+
+            } else {
+                out += ' class="inline"';
+            }
+        }
+        out += this.options.xhtml ? '/>' : '>';
+        return out;
+    };
+
+    renderer.link = function(href, title, text) {
+        if (href.indexOf("#") === 0) {
+            href = "javascript: window.parent.jumpTo('" + href.substring(1) + "');";
+        }
+        let out = '<a href="' + href + '"';
+        if (title) {
+            out += ' title="' + title + '"';
+        }
+        out += '>' + text + '</a>';
+        return out;
+    };
+    return renderer;
+};
+
+let processMarkdown = function(src) {
+    // Lex
+    let lexer = new marked.Lexer({});
+    let tokens, tokens2, tokens3;
+    try {
+        tokens = lexer.lex(src);
+        tokens2 = deepcopy(tokens);
+        tokens3 = deepcopy(tokens);
+    } catch (err) {
+        throw new Error(`Lexer Error ${err}`);
     }
+
+    // Extract Headers
+    let parsed = parseNavigationItems(tokens);
+
+    // Pass tokens to HTML renderer
+    let html = marked.Parser.parse(tokens2, {
+        renderer: getHTMLRenderer(),
+    });
+
+    // Pass token to plain text renderer
+    let plain = marked.Parser.parse(tokens3, {
+        renderer: getPlainRenderer(),
+    });
+
+    return {
+        plain: plain,
+        html: html,
+        parsed: parsed,
+    }
+
 };
 
 if (typeof exports !== "undefined") {
     exports.loadMarkdown = loadMarkdown;
-    exports.getRenderer = getRenderer;
-    exports.parseMarkdown = parseMarkdown;
+    exports.getHTMLRenderer = getHTMLRenderer;
+    exports.getPlainRenderer = getPlainRenderer;
+    exports.processMarkdown = processMarkdown;
 }

@@ -2,7 +2,7 @@
 
 let {
     loadMarkdown,
-    parseMarkdown,
+    processMarkdown,
 } = require("../renderer");
 
 let {
@@ -43,8 +43,9 @@ angular.module("DManual")
         $scope.$on("setMarkdown", function(event, mdUrl) {
             loadMarkdown(mdUrl, function(error, payload) {
                 if (!error) {
-                    let result = parseMarkdown(payload.markdown);
+                    let result = processMarkdown(payload.markdown);
                     let html = result.html;
+                    let plain = result.plain;
                     let parsed = result.parsed;
 
                     let fileInfo = payload.fileInfo;

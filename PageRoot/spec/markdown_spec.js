@@ -4,20 +4,20 @@ let Renderer = require("../www/jssrc/renderer");
 let expect = require("expect.js");
 let marked = require("marked");
 
-let r = Renderer.getRenderer();
-let p = Renderer.parseMarkdown;
+let r = Renderer.getHTMLRenderer;
+let p = Renderer.processMarkdown;
 
 describe("Markdown Renderer", function() {
     describe("Headers", function() {
         it("understands h1 - h3", function() {
             let result = r.heading("This is a test", 1, "This is a test");
-            expect(result).to.equal('<h1 id="this-is-a-test">This is a test</h1>\n');
+            expect(result).to.equal('<h1 id="This-is-a-test">This is a test</h1>\n');
 
             result = r.heading("This is header2", 2, "This is header2");
-            expect(result).to.equal('<h2 id="this-is-header2">This is header2</h2>\n');
+            expect(result).to.equal('<h2 id="This-is-header2">This is header2</h2>\n');
 
             result = r.heading("This is header3", 3, "This is header3");
-            expect(result).to.equal('<h3 id="this-is-header3">This is header3</h3>\n');
+            expect(result).to.equal('<h3 id="This-is-header3">This is header3</h3>\n');
         });
 
         it("understands h4 - h6", function() {
@@ -55,13 +55,13 @@ describe("Markdown Renderer", function() {
             it("gives h1 icons", function() {
                 let src = "# H1|1.png|\n";
                 let result = p(src).html;
-                expect(result).to.equal('<h1 id="h1"><img class="HeaderIcon" src="1.png" />H1</h1>\n');
+                expect(result).to.equal('<h1 id="H1"><img class="HeaderIcon" src="1.png" />H1</h1>\n');
             });
 
             it("gives h2 icons", function() {
                 let src = "# H1\n## H2|2.png|\n";
                 let result = p(src).html;
-                expect(result).to.equal('<h1 id="h1">H1</h1>\n<h2 id="h2"><img class="HeaderIcon" src="2.png" />H2</h2>\n');
+                expect(result).to.equal('<h1 id="H1">H1</h1>\n<h2 id="H2"><img class="HeaderIcon" src="2.png" />H2</h2>\n');
             });
 
             it("doesn't give h3 - h6 icons", function() {
@@ -69,9 +69,9 @@ describe("Markdown Renderer", function() {
                     let src = "# H1\n## H2\n### H3|3.png|\n";
                     let result = p(src).html;
                     expect(result).to.equal(
-                        '<h1 id="h1">H1</h1>\n' +
-                        '<h2 id="h2">H2</h2>\n' +
-                        '<h3 id="h3-3.png-">H3|3.png|</h3>\n'
+                        '<h1 id="H1">H1</h1>\n' +
+                        '<h2 id="H2">H2</h2>\n' +
+                        '<h3 id="H3-3.png-">H3|3.png|</h3>\n'
                     );
                 }
                 {
