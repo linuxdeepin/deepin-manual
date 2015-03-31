@@ -106,6 +106,7 @@ let parseNavigationItems = function(tokens) {
                     let anchor_lv1 = findAnchor(anchors, currentHeaderId1);
                     addAnchor(anchor_lv1.children, anchorText, anchorId, icon);
                 }
+                break;
             }
             case "paragraph":
             case "text":
