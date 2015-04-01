@@ -34,9 +34,12 @@ angular.module("General")
         if ((!_wordMap) || _wordMap.size === 0) {
             throw new Error("GSynonym not init yet.");
         }
+        let result = [];
+        if (typeof rawString !== "string") {
+            return result;
+        }
         console.time("GSynonym.lookup");
         rawString = rawString.toLocaleString();
-        let result = [];
         for (let [key, synonymArray] of _wordMap.entries()) {
             if (rawString.indexOf(key.toLocaleLowerCase()) >= 0) {
                 result = result.concat(synonymArray);
