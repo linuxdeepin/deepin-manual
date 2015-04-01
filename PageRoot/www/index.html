@@ -25,9 +25,9 @@
     <section ng-show="isOverview && (!isSearchmode)" id="Overview" ng-include="'./partials/Overview.html'"></section>
     <div id="Search" ng-show="isSearchmode" ng-controller="SearchCtrl">
         <ol>
-            <li ng-repeat="match in indices | keyword:searchTerm">
+            <li ng-repeat="match in indices | filterHighlight:searchTerm:keywords">
                 <h5><a ng-click="jumpTo(match.anchorId)">{{ match.anchorText }}</a></h5>
-                <p>{{ match.text | highlight:keywords}}</p>
+                <p ng-bind-html="match.text"></p>
             </li>
         </ol>
     </div>

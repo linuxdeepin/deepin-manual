@@ -1,34 +1,38 @@
 "use strict";
 
+let {
+    searchHighlight,
+} = require("./utils");
+
 let app = angular.module("DManual", ["General"]);
-app.filter("keyword", function() {
+app.filter("filterHighlight", function($log, $sce) {
     let _PLACEHOLDER_RESULT = [];
     let lastTerm = null;
     let cached = null;
-    return function(indices, keyword) {
+    return function(indices, searchTerm, keywords) {
+        $log.log(`searchTerm: ${searchTerm}\nkeywords: ${keywords}`);
         let result = [];
-        if (!keyword) {
+        if (!searchTerm) {
             return _PLACEHOLDER_RESULT;
         }
-        if ((keyword === lastTerm) && cached) {
+        if ((searchTerm === lastTerm) && cached) {
             return cached;
         }
-        let lowerKeyword = keyword.toLowerCase();
         nextHeader: for (let index of indices) {
             let texts = index.texts;
-            for (let text of texts) {
-                let lowerText = text.toLowerCase();
-                if (lowerText.indexOf(lowerKeyword) >= 0) {
+            nextText: for (let text of texts) {
+                text = searchHighlight(text, keywords);
+                if (text) {
                     result.push({
                         anchorId: index.headerId,
                         anchorText: index.headerText,
-                        text: text,
+                        text: $sce.trustAsHtml(text),
                     });
                     continue nextHeader;
                 }
             }
         }
-        lastTerm = keyword;
+        lastTerm = searchTerm;
         cached = result;
         return cached;
     }
