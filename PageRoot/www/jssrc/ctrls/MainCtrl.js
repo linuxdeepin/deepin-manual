@@ -33,7 +33,7 @@ if (typeof window !== "undefined") {
 }
 
 angular.module("DManual")
-    .controller("MainCtrl", function($scope, $log, $sce, $window, $timeout, Markdown) {
+    .controller("MainCtrl", function($scope, $log, $sce, $window, $timeout, GInput) {
         $scope.isOverview = true;
         $scope.isSearchmode = false;
         $scope.appInfo = {
@@ -42,7 +42,7 @@ angular.module("DManual")
 
         $scope.$on("setMarkdown", function(event, mdUrl) {
             let fileInfo = getDManFileInfo(mdUrl);
-            Markdown.load(mdUrl).then(function(mdText) {
+            GInput.load(mdUrl).then(function(mdText) {
                 $log.log("Markdown::load OK");
                 let result = processMarkdown(mdText);
                 let html = result.html;

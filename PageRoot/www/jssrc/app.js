@@ -1,6 +1,6 @@
 "use strict";
 
-let app = angular.module("DManual", []);
+let app = angular.module("DManual", ["General"]);
 app.filter("keyword", function() {
     let _PLACEHOLDER_RESULT = [];
     let lastTerm = null;

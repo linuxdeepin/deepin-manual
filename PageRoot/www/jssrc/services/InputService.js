@@ -1,7 +1,7 @@
 "use strict";
 
-angular.module("DManual")
-    .factory("Markdown", function($log, $http, $q) {
+angular.module("General", [])
+    .factory("GInput", function($log, $http, $q) {
         let _load = function(url) {
             let parsed = new URL(url);
             return $q(function(resolve, reject) {

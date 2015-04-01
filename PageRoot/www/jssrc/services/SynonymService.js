@@ -1,7 +1,7 @@
 "use strict";
 
-angular.module("DManual")
-    .factory("SynonymService", function($log) {
+angular.module("General", [])
+    .factory("GSynonym", function($log) {
     let _interface = {};
     let _synonymList = [];
 
@@ -31,10 +31,10 @@ angular.module("DManual")
      * @param rawString The raw input user has entered, not yet split.
      */
     _interface.lookup = function(rawString) {
-        console.time("SynonymServiceLookup");
         if ((!_wordMap) || _wordMap.size === 0) {
-            throw new Error("SynonymService not init yet.");
+            throw new Error("GSynonym not init yet.");
         }
+        console.time("GSynonym.lookup");
         rawString = rawString.toLocaleString();
         let result = [];
         for (let [key, synonymArray] of _wordMap.entries()) {
@@ -42,7 +42,7 @@ angular.module("DManual")
                 result = result.concat(synonymArray);
             }
         }
-        console.timeEnd("SynonymServiceLookup");
+        console.timeEnd("GSynonym.lookup");
         return result;
     };
 
