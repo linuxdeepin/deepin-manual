@@ -1,9 +1,5 @@
 "use strict";
 
-// Make a custom version of the marked renderer.
-
-let getDManFileInfo = require("./utils").getDManFileInfo;
-
 let marked = require("marked");
 let MAX_INDEX_HEADER_LEVEL = 2;
 let MAX_NAV_HEADER_LEVEL = 3;
@@ -15,10 +11,6 @@ let normalizeAnchorName = function(raw) {
         // http://www.w3.org/TR/html5/infrastructure.html#space-character
         .replace(/[\u0020|\u0009|\u000A|\u000C|\u000D]+/g, '-');  // replace spaces to '-'
 };
-
-// Keep track of navigation items;
-// Keep track of keyword -> navigation item lookup table.
-
 
 let addAnchor = function(target, anchorText, anchorId, icon) {
     // push toAdd to target
