@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("General", [])
+angular.module("General")
     .factory("GSynonym", function($log) {
     let _interface = {};
     let _synonymList = [];

@@ -1,6 +1,6 @@
 "use strict";
 
-angular.module("General", [])
+angular.module("General")
     .factory("GInput", function($log, $http, $q) {
         let _load = function(url) {
             let parsed = new URL(url);

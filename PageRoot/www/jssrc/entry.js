@@ -10,5 +10,6 @@ require("./ctrls/MainCtrl");
 require("./ctrls/NavigationCtrl");
 require("./ctrls/SearchCtrl");
 require("./ctrls/SearchBoxCtrl");
+require("./services/GeneralEntry");
 require("./services/SynonymService");
 require("./services/InputService");
