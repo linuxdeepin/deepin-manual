@@ -116,7 +116,6 @@ let parseNavigationItems = function(tokens) {
             {
                 let payload = [token];
                 payload.links = tokens.links;
-                let renderer = getPlainRenderer();
                 let parser = new marked.Parser({
                     gfm: true,
                     tables: true,
@@ -129,15 +128,19 @@ let parseNavigationItems = function(tokens) {
                     langPrefix: 'lang-',
                     smartypants: false,
                     headerPrefix: '',
-                    renderer: renderer,
+                    renderer: getPlainRenderer(),
                     xhtml: false,
-                }, renderer);
+                });
                 let text = parser.parse(payload);
                 _addText(text);
                 break;
             }
             case "html": {
                 console.warn("TODO: html detagging");
+                break;
+            }
+            case "code": {
+                console.warn(`TODO: code ${token.text}`);
                 break;
             }
             case "list_start":
@@ -154,7 +157,7 @@ let parseNavigationItems = function(tokens) {
             }
             default:
             {
-                console.warn(`Unhandled token ${console.dir(token)}`);
+                console.warn(`Unhandled token ${token.type}`);
                 break;
             }
         }
@@ -398,7 +401,7 @@ let getHTMLRenderer = function() {
 
 let processMarkdown = function(src) {
     // Lex
-    let lexer = new marked.Lexer({});
+    let lexer = new marked.Lexer();
     let tokens;
     try {
         tokens = lexer.lex(src);
