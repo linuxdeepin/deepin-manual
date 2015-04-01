@@ -82,7 +82,27 @@ let getContentStylePath = function(indexPath) {
     }
 };
 
+let searchHighlight = function(text, keywords) {
+    if (keywords.length === 0) {
+        return "";
+    }
+    let pattern = [];
+    for (let keyword of keywords) {
+        pattern.push(keyword.replace(/([[^$.|?*+(){}])/g, '\\$1'));
+    }
+    pattern = "(?:" + pattern.join(")|(?:") + ")";
+    pattern = new RegExp(pattern, "gi");
+
+    let foundFlag = false;
+    let result = text.replace(pattern, function(match){
+        foundFlag = true;
+        return `<span class="highlight">${match}</span>`;
+    });
+    return foundFlag ? result : "";
+};
+
 if (typeof exports !== "undefined") {
+    exports.searchHighlight = searchHighlight;
     exports.getDManFileInfo = getDManFileInfo;
     exports.getContentStylePath = getContentStylePath;
 }
