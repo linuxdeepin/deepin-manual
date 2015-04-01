@@ -45,7 +45,6 @@ angular.module("DManual")
                 if (!error) {
                     let result = processMarkdown(payload.markdown);
                     let html = result.html;
-                    let plain = result.plain;
                     let parsed = result.parsed;
 
                     let fileInfo = payload.fileInfo;

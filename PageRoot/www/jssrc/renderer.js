@@ -417,13 +417,7 @@ let processMarkdown = function(src) {
         renderer: getHTMLRenderer(),
     });
 
-    // Pass token to plain text renderer
-    //let plain = marked(src, {
-    //    renderer: getPlainRenderer(),
-    //});
-    let plain = "";
     return {
-        plain: plain,
         html: html,
         parsed: parsed,
     }
