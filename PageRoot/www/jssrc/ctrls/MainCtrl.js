@@ -33,7 +33,7 @@ if (typeof window !== "undefined") {
 }
 
 angular.module("DManual")
-    .controller("MainCtrl", function($scope, $log, $sce, $window, Markdown) {
+    .controller("MainCtrl", function($scope, $log, $sce, $window, $timeout, Markdown) {
         $scope.isOverview = true;
         $scope.isSearchmode = false;
         $scope.appInfo = {
@@ -50,7 +50,7 @@ angular.module("DManual")
                 $scope.anchors = parsed.anchors;
                 $scope.appInfo = parsed.appInfo;
                 $scope.$broadcast("indicesSet", parsed.indices);
-                setTimeout(function() {
+                $timeout(function() {
                     // wait for SearchBoxCtrl to startup
                     $scope.$broadcast("headersSet", parsed.headers);
                 }, 100);
@@ -90,7 +90,7 @@ angular.module("DManual")
                 $scope.isPageview = true;
                 body.removeClass("isOverview");
                 body.addClass("isPageview");
-                setTimeout(function() {
+                $timeout(function() {
                     contentWin.location.hash = anchor;
                 }, 0);
             } else {
@@ -98,7 +98,7 @@ angular.module("DManual")
                 $scope.isPageview = false;
                 body.removeClass("isPageview");
                 body.addClass("isOverview");
-                setTimeout(function() {
+                $timeout(function() {
                     contentWin.location.hash = "";
                 }, 0);
             }
