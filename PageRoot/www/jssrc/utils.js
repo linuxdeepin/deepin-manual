@@ -25,7 +25,7 @@ let getDManFileInfo = function(url, lang) {
         lang: null,
         baseDir: null,
         dir: null,
-        hash:  parsed.hash.substr(1) || null,
+        hash: parsed.hash.substr(1) || null,
     };
     result.lang = query.lang || lang || null;
 

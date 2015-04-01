@@ -11,3 +11,4 @@ require("./ctrls/NavigationCtrl");
 require("./ctrls/SearchCtrl");
 require("./ctrls/SearchBoxCtrl");
 require("./services/SynonymService");
+require("./services/LoadMarkdownService");

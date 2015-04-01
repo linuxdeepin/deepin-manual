@@ -1,12 +1,12 @@
 "use strict";
 
 let {
-    loadMarkdown,
     processMarkdown,
 } = require("../renderer");
 
 let {
     getContentStylePath,
+    getDManFileInfo,
 } = require("../utils");
 
 let jumpTo = function(anchor) {
@@ -33,7 +33,7 @@ if (typeof window !== "undefined") {
 }
 
 angular.module("DManual")
-    .controller("MainCtrl", function($scope, $log, $sce, $window) {
+    .controller("MainCtrl", function($scope, $log, $sce, $window, Markdown) {
         $scope.isOverview = true;
         $scope.isSearchmode = false;
         $scope.appInfo = {
@@ -41,49 +41,43 @@ angular.module("DManual")
         };
 
         $scope.$on("setMarkdown", function(event, mdUrl) {
-            loadMarkdown(mdUrl, function(error, payload) {
-                if (!error) {
-                    let result = processMarkdown(payload.markdown);
-                    let html = result.html;
-                    let parsed = result.parsed;
-
-                    let fileInfo = payload.fileInfo;
-
-                    $scope.anchors = parsed.anchors;
-                    $scope.appInfo = parsed.appInfo;
-                    $scope.$broadcast("indicesSet", parsed.indices);
-                    setTimeout(function() {
-                        // wait for SearchBoxCtrl to startup
-                        $scope.$broadcast("headersSet", parsed.headers);
-                    }, 100);
-                    let stylePath = getContentStylePath(location.href);
-                    let markdownDir = fileInfo.dir;
-                    $scope.appInfo.markdownDir = markdownDir;
-                    let base = `<base href='${markdownDir}/'>
-                        <script>
-                        'use strict';
-                        let disallow = function(event) {
-                            event.preventDefault();
-                            return false;
-                        };
-                        window.onload = function() {
-                            let body = document.getElementsByTagName("body")[0];
-                            body.addEventListener("dragenter", disallow);
-                            body.addEventListener("dragover", disallow);
-                            body.addEventListener("dragend", disallow);
-                            body.addEventListener("dragleave", disallow);
-                            body.addEventListener("drop", disallow);
-                        }
-                        </script>
-                        <link rel='stylesheet' href='${stylePath}/reset.css' />
-                        <link rel='stylesheet' href='${stylePath}/content.css' />`;
-                    $scope.htmlOutput = $sce.trustAsHtml(base + html);
-
-                    // TUL: Without this, the markdown won't actually be shown.
-                    $scope.$apply();
-                } else {
-                    $log.error(error);
-                }
+            let fileInfo = getDManFileInfo(mdUrl);
+            Markdown.load(mdUrl).then(function(mdText) {
+                $log.log("Markdown::load OK");
+                let result = processMarkdown(mdText);
+                let html = result.html;
+                let parsed = result.parsed;
+                $scope.anchors = parsed.anchors;
+                $scope.appInfo = parsed.appInfo;
+                $scope.$broadcast("indicesSet", parsed.indices);
+                setTimeout(function() {
+                    // wait for SearchBoxCtrl to startup
+                    $scope.$broadcast("headersSet", parsed.headers);
+                }, 100);
+                let stylePath = getContentStylePath(location.href);
+                let markdownDir = fileInfo.dir;
+                $scope.appInfo.markdownDir = markdownDir;
+                let base = `<base href='${markdownDir}/'>
+                    <script>
+                    'use strict';
+                    let disallow = function(event) {
+                        event.preventDefault();
+                        return false;
+                    };
+                    window.onload = function() {
+                        let body = document.getElementsByTagName("body")[0];
+                        body.addEventListener("dragenter", disallow);
+                        body.addEventListener("dragover", disallow);
+                        body.addEventListener("dragend", disallow);
+                        body.addEventListener("dragleave", disallow);
+                        body.addEventListener("drop", disallow);
+                    }
+                    </script>
+                    <link rel='stylesheet' href='${stylePath}/reset.css' />
+                    <link rel='stylesheet' href='${stylePath}/content.css' />`;
+                $scope.htmlOutput = $sce.trustAsHtml(base + html);
+            }, function(error) {
+                $log.error(`Markdown::load failed: ${error}`);
             });
         });
 

@@ -192,79 +192,6 @@ let extractHeaderIcon = function(text, level) {
     }
 };
 
-let loadMarkdown = function(url, callback) {
-    let info = getDManFileInfo(url);
-
-    let parsed = new URL(url);
-    switch (parsed.protocol) {
-        case "http:":
-        case "https:":
-            if (typeof XMLHttpRequest !== "undefined") {
-                // browser
-                let xmlHttp = new XMLHttpRequest();
-                xmlHttp.open("GET", url, true);
-                xmlHttp.send();
-                xmlHttp.onreadystatechange = function(target, type, bubbles, cancelable) {
-                    if (xmlHttp.readyState === 4 && xmlHttp.status === 200) {
-                        callback(null, {
-                            markdown: xmlHttp.responseText,
-                            fileInfo: info,
-                        });
-                    }
-                };
-                xmlHttp.onerror = function(event) {
-                    callback(new Error(event),
-                             null);
-                };
-            } else {
-                callback(new Error("No way to access Http(s)."),
-                         null);
-            }
-            break;
-        case "file:":
-            console.log("File scheme!");
-            if (typeof XMLHttpRequest !== "undefined") {
-                // browser
-                let xmlHttp = new XMLHttpRequest();
-                xmlHttp.open("GET", url, true);
-                xmlHttp.send();
-                xmlHttp.onreadystatechange = function(target, type, bubbles, cancelable) {
-                    if (xmlHttp.readyState === 4) {
-                        callback(null, {
-                            markdown: xmlHttp.responseText,
-                            fileInfo: info,
-                        });
-                    }
-                };
-                xmlHttp.onerror = function(event) {
-                    callback(new Error(event),
-                             null);
-                };
-            } else if (typeof process !== "undefined") {
-                // atom-shell / nw.js
-                let fs = require("fs");
-                fs.readFile(url, function(error, data) {
-                    if (error) {
-                        callback(error, null);
-                    } else {
-                        callback(null, {
-                            markdown: data.toString(),
-                            fileInfo: info,
-                        });
-                    }
-                });
-            } else {
-                callback(new Error("No way to access file system."),
-                         null);
-            }
-            break;
-        default:
-            callback(new Error(`Don't know what to do with the protocol(${parsed.protocol})`),
-                     null);
-            break;
-    }
-};
-
 let extractImageLayout = function(text) {
     let re = /^\d+\|/;
     let matches = re.exec(text);
@@ -425,7 +352,6 @@ let processMarkdown = function(src) {
 };
 
 if (typeof exports !== "undefined") {
-    exports.loadMarkdown = loadMarkdown;
     exports.getHTMLRenderer = getHTMLRenderer;
     exports.getPlainRenderer = getPlainRenderer;
     exports.processMarkdown = processMarkdown;
