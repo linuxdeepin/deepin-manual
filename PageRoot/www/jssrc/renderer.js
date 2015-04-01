@@ -108,10 +108,32 @@ let parseNavigationItems = function(tokens) {
                 }
                 break;
             }
-            case "paragraph":
+            case "paragraph": {
+                _addText(token.text);
+                break;
+            }
             case "text":
             {
-                _addText(token.text);
+                let payload = [token];
+                payload.links = tokens.links;
+                let renderer = getPlainRenderer();
+                let parser = new marked.Parser({
+                    gfm: true,
+                    tables: true,
+                    breaks: false,
+                    pedantic: false,
+                    sanitize: false,
+                    smartLists: false,
+                    silent: false,
+                    highlight: null,
+                    langPrefix: 'lang-',
+                    smartypants: false,
+                    headerPrefix: '',
+                    renderer: renderer,
+                    xhtml: false,
+                }, renderer);
+                let text = parser.parse(payload);
+                _addText(text);
                 break;
             }
             case "html": {
@@ -393,10 +415,10 @@ let processMarkdown = function(src) {
     });
 
     // Pass token to plain text renderer
-    let plain = marked(src, {
-        renderer: getPlainRenderer(),
-    });
-
+    //let plain = marked(src, {
+    //    renderer: getPlainRenderer(),
+    //});
+    let plain = "";
     return {
         plain: plain,
         html: html,
