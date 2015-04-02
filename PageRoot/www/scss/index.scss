@@ -218,21 +218,38 @@ input[type='search'] {
 
 // search related.
 #Search {
+    background-color: white;
+    .isDebugging & {
+        background-color: orange;
+    }
     .isOverview & {
         height: calc(100% - #{$ovNavBarHeight});
         margin-top: 0;
-        background-color: orange;
         overflow-y: hidden;
     }
     .isPageview & {
         width: calc(100% - #{$pvNavBarWidth});
         height: 100%;
-        background-color: orange;
         overflow: scroll;
         float: right;
         display: block;
         border: 0;
         z-index: 50000;
+    }
+    span.highlight {
+        background-color: yellow;
+        color: blue;
+    }
+    a.anchor {
+        color: #494949;
+        font-size: 13px;
+        font-weight: bold;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    p.match-text {
+        color: #878787;
+        font-size: 13px;
     }
 }
 
@@ -341,9 +358,4 @@ $logoHeight: 48px;
     &:active {
         background-image: url("../resources/frame/dark_close_press.png");
     }
-}
-
-#Search span.highlight {
-    background-color: yellow;
-    color: blue;
 }
