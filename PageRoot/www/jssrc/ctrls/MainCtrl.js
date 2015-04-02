@@ -125,17 +125,19 @@ angular.module("DManual")
         updateOuterFrame();
         win.bind("resize", function(event) {
             updateOuterFrame();
-            $scope.$apply();
         });
 
         $scope.$on("searchTermChanged", function(event, value) {
-            $log.log("searchTermChanged", value);
-            if (value && value.length > 0) {
-                $log.log("Enter search mode");
-                $scope.isSearchmode = true;
+            if ($scope.isSearchmode) {
+                if (!value || value.length === 0) {
+                    $log.log("Leave search mode");
+                    $scope.isSearchmode = false;
+                }
             } else {
-                $log.log("Leave search mode");
-                $scope.isSearchmode = false;
+                if (value && value.length > 0) {
+                    $log.log("Enter search mode");
+                    $scope.isSearchmode = true;
+                }
             }
         });
     });
