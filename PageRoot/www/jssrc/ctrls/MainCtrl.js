@@ -54,7 +54,7 @@ angular.module("DManual")
                 }
                 GSynonym.init(wordsList.filter(words => words.length > 0));
             }, function(error) {
-                $log.error(`Cannot load synonyms ${error}`);
+                $log.warn(`Cannot load synonyms ${error}`);
                 GSynonym.init([]);
             });
             GInput.load(mdUrl).then(function(mdText) {
