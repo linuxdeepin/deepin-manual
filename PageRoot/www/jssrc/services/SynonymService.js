@@ -40,7 +40,7 @@ angular.module("General")
             return result;
         }
         console.time("GSynonym.lookup");
-        rawString = rawString.toLocaleString();
+        rawString = rawString.toLocaleLowerCase();
         for (let [key, synonymArray] of _wordMap.entries()) {
             if (rawString.indexOf(key.toLocaleLowerCase()) >= 0) {
                 result = result.concat(synonymArray);
