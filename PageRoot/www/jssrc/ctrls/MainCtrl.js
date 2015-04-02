@@ -9,33 +9,24 @@ let {
     getDManFileInfo,
 } = require("../utils");
 
-let jumpTo = function(anchor) {
-    let body = document.getElementsByTagName("body")[0];
-    body = angular.element(body);
-    let contentWin = document.getElementById("Content").contentWindow;
-    if (anchor) {
-        body.removeClass("isOverview");
-        body.addClass("isPageview");
-        setTimeout(function() {
-            contentWin.location.hash = anchor;
-        }, 0);
-    } else {
-        body.removeClass("isPageview");
-        body.addClass("isOverview");
-        setTimeout(function() {
-            contentWin.location.hash = "";
-        }, 0);
-    }
-};
-
-if (typeof window !== "undefined") {
-    window.jumpTo = jumpTo;
-}
-
 angular.module("DManual")
     .controller("MainCtrl", function($scope, $log, $sce, $window, $timeout, GInput, GSynonym) {
         $scope.isOverview = true;
-        $scope.isSearchmode = false;
+        let _isSearchmode = false;
+        Object.defineProperty($scope, "isSearchmode", {
+            get: () => _isSearchmode,
+            set: (newValue) => {
+                if (newValue !== _isSearchmode) {
+                    if (newValue) {
+                        $log.log("Enter search mode");
+                        _isSearchmode = true;
+                    } else {
+                        $log.log("Leave search mode");
+                        _isSearchmode = false;
+                    }
+                }
+            }
+        });
         $scope.appInfo = {
             name: "Unnamed",
         };
@@ -117,7 +108,9 @@ angular.module("DManual")
                     contentWin.location.hash = "";
                 }, 0);
             }
+            $scope.isSearchmode = false;
         };
+        $window.jumpTo = $scope.jumpTo;
 
         let win = angular.element($window);
         let updateOuterFrame = function() {
@@ -131,16 +124,6 @@ angular.module("DManual")
         });
 
         $scope.$on("searchTermChanged", function(event, value) {
-            if ($scope.isSearchmode) {
-                if (!value || value.length === 0) {
-                    $log.log("Leave search mode");
-                    $scope.isSearchmode = false;
-                }
-            } else {
-                if (value && value.length > 0) {
-                    $log.log("Enter search mode");
-                    $scope.isSearchmode = true;
-                }
-            }
+            $scope.isSearchmode = value && value.length > 0;
         });
     });
