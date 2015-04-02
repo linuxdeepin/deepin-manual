@@ -45,7 +45,10 @@ angular.module("DManual")
             GInput.load(`${fileInfo.dir}/synonym.txt`).then(function(text) {
                 let lines = text.split("\n");
                 let wordsList = [];
-                for (let line of lines) {
+                nextLine: for (let line of lines) {
+                    if (!line.trim()) {
+                        continue nextLine;
+                    }
                     let words = line.split("|");
                     wordsList.push(words);
                 }
