@@ -46,13 +46,13 @@ angular.module("DManual")
                 let lines = text.split("\n");
                 let wordsList = [];
                 nextLine: for (let line of lines) {
-                    if (!line.trim()) {
-                        continue nextLine;
+                    let words = line.split("|")
+                                    .filter(word => word.trim());
+                    if (words) {
+                        wordsList.push(words);
                     }
-                    let words = line.split("|");
-                    wordsList.push(words);
                 }
-                GSynonym.init(wordsList);
+                GSynonym.init(wordsList.filter(words => words.length > 0));
             }, function(error) {
                 $log.error(`Cannot load synonyms ${error}`);
                 GSynonym.init([]);

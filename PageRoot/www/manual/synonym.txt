@@ -6,3 +6,4 @@ Turn off|Power off|Power down|Shutdown|Shut down
 开启计算机|开机|启动|起动
 屏幕|显示器
 图像|图标|插图
+||
