@@ -33,7 +33,7 @@ if (typeof window !== "undefined") {
 }
 
 angular.module("DManual")
-    .controller("MainCtrl", function($scope, $log, $sce, $window, $timeout, GInput) {
+    .controller("MainCtrl", function($scope, $log, $sce, $window, $timeout, GInput, GSynonym) {
         $scope.isOverview = true;
         $scope.isSearchmode = false;
         $scope.appInfo = {
@@ -42,6 +42,18 @@ angular.module("DManual")
 
         $scope.$on("setMarkdown", function(event, mdUrl) {
             let fileInfo = getDManFileInfo(mdUrl);
+            GInput.load(`${fileInfo.dir}/synonym.txt`).then(function(text) {
+                let lines = text.split("\n");
+                let wordsList = [];
+                for (let line of lines) {
+                    let words = line.split("|");
+                    wordsList.push(words);
+                }
+                GSynonym.init(wordsList);
+            }, function(error) {
+                $log.error(`Cannot load synonyms ${error}`);
+                GSynonym.init([]);
+            });
             GInput.load(mdUrl).then(function(mdText) {
                 $log.log("Markdown::load OK");
                 let result = processMarkdown(mdText);

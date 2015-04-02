@@ -31,10 +31,11 @@ angular.module("General")
      * @param rawString The raw input user has entered, not yet split.
      */
     _interface.lookup = function(rawString) {
-        if ((!_wordMap) || _wordMap.size === 0) {
-            throw new Error("GSynonym not init yet.");
-        }
         let result = [];
+        if (_wordMap === null) {
+            console.warn("GSynonym not init yet.");
+            return result;
+        }
         if (typeof rawString !== "string") {
             return result;
         }

@@ -1,0 +1,7 @@
+PC|Personal Computer|Computer|电脑|计算机
+Turn on|Power up
+Turn off|Power off|Power down|Shutdown|Shut down
+深度|Deepin
+开启计算机|开机|启动|起动
+屏幕|显示器
+深度帮助手册|DManual|DMan
