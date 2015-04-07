@@ -16,3 +16,10 @@ gulp watch
 gulp pot
 gulp translations
 ```
+
+## 运行
+```bash
+./main.js Markdown_Path
+```
+
+如果需要带调试运行，设置DEBUG环境变量为非空值。
