@@ -1,17 +1,14 @@
 # 安装编译说明
 
 ## 环境预备
-1. 安装nvm和iojs。
+1. 安装node 0.12或更新。
 2. 安装依赖。
-
-## 自动更新CSS
-``` bash
-gulp sass
+```bash
+npm install
 ```
-
-## 自动化测试
-``` bash
-gulp test
+3.
+```bash
+gulp watch
 ```
 
 ## I18N
@@ -19,10 +16,3 @@ gulp test
 gulp pot
 gulp translations
 ```
-
-# TODO
-1. Auto reload
-2. Relative path fixing
-3. Fix: the inadequacy of Chromium's native autocompletion
-4. Fix: markdown control characters in the search result.
-5. Entire automated testing
