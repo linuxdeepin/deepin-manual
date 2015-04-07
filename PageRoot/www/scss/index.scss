@@ -209,7 +209,9 @@ input[type='search'] {
                 width: 30px;
                 height: 30px;
                 left: -32px;
-                background-color: skyblue;
+                .isDebugging & {
+                    background-color: skyblue;
+                }
             }
         }
 
