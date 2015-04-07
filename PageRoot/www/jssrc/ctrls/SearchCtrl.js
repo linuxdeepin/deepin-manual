@@ -9,7 +9,7 @@ angular.module("DManual").controller("SearchCtrl", function($scope, GSynonym, $l
         $scope.indices = value;
     });
     $scope.$on("searchTermChanged", function(event, value) {
-        $scope.keywords = [].concat(GSynonym.lookup(value)).concat([value]);
+        $scope.keywords = [].concat(GSynonym.lookup(value)).concat(value.split(" "));
         $scope.searchTerm = value;
     });
 });
