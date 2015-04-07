@@ -59,10 +59,13 @@ body {
     padding: 0 !important;
     outline: 0 !important;
     margin: $csdTH $csdRW $csdBH $csdLW !important;
-    background-color: red !important;
     height: calc(100% - #{$csdTH} - #{$csdBH});
     width: calc(100% - #{$csdLW} - #{$csdRW});
     overflow: hidden;
+    background-color: white;
+    .isDebugging & {
+        background-color: red !important;
+    }
 }
 
 input[type='search'] {
@@ -124,8 +127,10 @@ input[type='search'] {
     img {
         width: 64px;
         height: 64px;
-        background-color: darkgrey;
         margin: 0 auto 14px;
+        .isDebugging & {
+            background-color: darkgrey;
+        }
     }
 }
 
@@ -141,7 +146,9 @@ input[type='search'] {
     #Overview {
         height: calc(100% - #{$ovNavBarHeight});
         margin-top: 0;
-        background-color: pink;
+        .isDebugging & {
+            background-color: pink;
+        }
     }
 
     #SearchInput {
@@ -170,12 +177,14 @@ input[type='search'] {
     #Content {
         width: calc(100% - #{$pvNavBarWidth} - 5px);
         height: 100%;
-        background-color: green;
         overflow: scroll;
         float: right;
         display: block;
         border: 0;
         border-right: 5px white solid;
+        .isDebugging & {
+            background-color: green;
+        }
     }
 
     #SideNavigationBar {
@@ -275,11 +284,13 @@ $logoHeight: 48px;
 }
 
 #AppLogo {
-    background-color: green;
     width: 48px;
     height: $logoHeight;
     float: left;
     margin-right: 15px;
+    .isDebugging & {
+        background-color: green;
+    }
 }
 
 #AppName, #LabelDot, #LabelManual {
@@ -293,18 +304,20 @@ $logoHeight: 48px;
     padding: 0 !important;
     margin: 0 !important;
     outline: 0 !important;
-    background-color: skyblue;
     position: fixed;
     width: 100%;
     z-index: -100;
+    background-color: skyblue;
 }
 
 #MoveHandle {
     -webkit-user-select: none;
     -webkit-app-region: drag;
-    background-color: darkmagenta;
     height: 30px;
     margin: 3px 3px 0;
+    .isDebugging & {
+        background-color: darkmagenta;
+    }
 }
 
 #FrameBar {
