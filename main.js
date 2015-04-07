@@ -37,7 +37,8 @@ app.on('ready', function () {
         let mdUrl = argv[argv.length - 1];
         if (mdUrl.indexOf("http://") === 0 ||
             mdUrl.indexOf("https://") === 0||
-            mdUrl.indexOf("file://") === 0) {
+            mdUrl.indexOf("file://") === 0 ||
+            mdUrl.indexOf("dman://") === 0) {
             // pass
         } else {
             mdUrl = "file://" + require("path").resolve(mdUrl);

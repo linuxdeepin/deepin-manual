@@ -48,7 +48,7 @@ angular.module("DManual")
                 $log.warn(`Cannot load synonyms ${error}`);
                 GSynonym.init([]);
             });
-            GInput.load(mdUrl).then(function(mdText) {
+            GInput.load(fileInfo.baseDir + "/index.md").then(function(mdText) {
                 $log.log("Markdown::load OK");
                 let result = processMarkdown(mdText);
                 let html = result.html;
