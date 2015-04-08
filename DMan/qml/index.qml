@@ -31,9 +31,6 @@ Rectangle {
                 }
             })
             rootFrame.addMessageHandler(jsMessageHandler)
-            rootFrame.sendMessage(oxideContext, usMsgId, {
-                detail: "maximized",
-            })
         }
     }
 
