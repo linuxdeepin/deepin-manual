@@ -19,3 +19,9 @@ debian/files
 debian/*.debhelper
 debian/*.debhelper.log
 debian/*.substvars
+
+# Qt creator
+/*.config
+/*.creator
+/*.files
+/*.includes
