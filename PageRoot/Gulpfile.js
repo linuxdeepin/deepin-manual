@@ -72,9 +72,7 @@ gulp.task('browserify', function() {
 });
 
 gulp.task('adapter', function() {
-    gulp.src([
-        adapterPath,
-    ]).pipe(gulp.dest('./www/scripts/'));
+    gulp.src(adapterPath).pipe(gulp.dest('./www/scripts/'));
 });
 
 gulp.task('dist', ['sass', 'browserify', 'adapter'], function() {
