@@ -18,7 +18,11 @@ gulp.task('sass', function () {
 });
 
 gulp.task('pot', function () {
-    return gulp.src(['www/partials/**/*.html', 'www/**/*.js'])
+    return gulp.src([
+            'www/index.html',
+            'www/partials/**/*.html',
+            'www/**/*.js',
+        ])
         .pipe(gettext.extract('template.pot', {
             // options to pass to angular-gettext-tools...
         }))
