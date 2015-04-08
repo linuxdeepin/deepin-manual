@@ -22,11 +22,17 @@ Rectangle {
             DManBridge.windowStateChanged.connect(function(winState) {
                 if (winState && Qt.WindowMaximized) {
                     rootFrame.sendMessage(oxideContext, usMsgId, {
-                        detail: "maximized",
+                        detail: {
+                            type: "FrameControl",
+                            msg: "maximized",
+                        },
                     })
                 } else {
                     rootFrame.sendMessage(oxideContext, usMsgId, {
-                        detail: "unmaximized",
+                        detail: {
+                            type: "FrameControl",
+                            msg: "unmaximized",
+                        },
                     })
                 }
             })
@@ -53,6 +59,16 @@ Rectangle {
                     DManBridge.signalClose()
                     break;
                 }
+                case "adapter_ready": {
+                    console.log("Adapter Ready");
+                    webView.rootFrame.sendMessage(oxideContext, usMsgId, {
+                        detail: {
+                            type: "SetMarkdown",
+                            msg: DManBridge.mdUrl,
+                        },
+                    })
+                    break;
+                }
                 default: {
                     console.warn("Unknown msg: " + msg)
                 }
@@ -71,10 +87,10 @@ Rectangle {
                 context: oxideContext
                 matchAllFrames: true
                 url: Qt.resolvedUrl("../../PageRoot/www/jssrc/adapter_oxide.js")
+                Component.onCompleted: {
+                    console.log("UserScript Ready");
+                }
             }
         ]
-    }
-    Component.onCompleted: {
-
     }
 }

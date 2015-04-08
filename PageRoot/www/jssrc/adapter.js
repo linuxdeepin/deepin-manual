@@ -122,21 +122,33 @@ angular.module("DManual")
                     oxideWrap.sendMessageNoReply("JSMESSAGE", "close");
                 };
                 document.addEventListener("OxideSignalMessage", function(event) {
-                    let msg = event.detail;
-                    switch (msg) {
-                        case "maximized": {
-                            angular.element(body).addClass("isMaximized");
+                    let payload = event.detail;
+                    switch (payload.type) {
+                        case "FrameControl": {
+                            switch (payload.msg) {
+                                case "maximized": {
+                                    angular.element(body).addClass("isMaximized");
+                                    break;
+                                }
+                                case "unmaximized": {
+                                    angular.element(body).removeClass("isMaximized");
+                                    break;
+                                }
+                            }
                             break;
                         }
-                        case "unmaximized": {
-                            angular.element(body).removeClass("isMaximized");
+                        case "SetMarkdown": {
+                            AdapterService.setMarkdown(payload.msg);
                             break;
                         }
                         default: {
-                            console.warn(`Unhandled msg from QML: ${msg}`);
+                            console.warn(`Unhandled msg from QML: ${payload}`);
                         }
                     }
                 });
+                setTimeout(function() {
+                    oxideWrap.sendMessageNoReply("JSMESSAGE", "adapter_ready");
+                }, 0);
                 break;
             }
             default: {

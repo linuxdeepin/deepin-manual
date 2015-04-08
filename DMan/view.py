@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from PyQt5.QtCore import QUrl, Qt, QRect, pyqtSlot, pyqtSignal
+from PyQt5.QtCore import QUrl, Qt, QRect, pyqtSlot, pyqtSignal, pyqtProperty
 from PyQt5.QtQuick import QQuickView
 
 
@@ -50,17 +50,22 @@ class MainView(StrictQuickView):
 
     signalMaximized = pyqtSignal(bool)
 
-    def __init__(self):
+    def __init__(self, mdUrl):
         super().__init__(None)
         self.rootContext().setContextProperty("DManBridge", self)
         self.setResizeMode(QQuickView.SizeRootObjectToView)
         self._isBeingDragged = False
         self._dragOffset = None
         self.setFlags(Qt.FramelessWindowHint)
+        self._mdUrl = mdUrl
         self.setSource(QUrl.fromLocalFile("./qml/index.qml"))
         self.signalMaximize.connect(self.slotMaximize)
         self.signalMinimize.connect(self.slotMinimize)
         self.signalClose.connect(self.slotClose)
+
+    @pyqtProperty(str)
+    def mdUrl(self):
+        return self._mdUrl
 
     def mousePressEvent(self, qMouseEvent):
         if qMouseEvent.button() == Qt.LeftButton:

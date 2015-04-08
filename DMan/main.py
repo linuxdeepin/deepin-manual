@@ -29,9 +29,17 @@ def QtMsgHandler(msgType: QtMsgType, context: QMessageLogContext, msg: str):
 
 
 class DManApp(QGuiApplication):
-    def __init__(self, *args):
-        super().__init__(*args)
-        self.mainView = MainView()
+    def __init__(self, args):
+        super().__init__(args)
+        mdUrl = args[-1]
+        if mdUrl.startswith("dman://") or \
+                mdUrl.startswith("https://") or \
+                mdUrl.startswith("http://") or \
+                mdUrl.startswith("file://"):
+            pass
+        else:
+            mdUrl = os.path.abspath(mdUrl)
+        self.mainView = MainView(mdUrl)
         self.mainView.show()
 
 
