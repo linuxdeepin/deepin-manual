@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from PyQt5.QtCore import QUrl
+from PyQt5.QtCore import QUrl, Qt, QRect, pyqtSlot, pyqtSignal
 from PyQt5.QtQuick import QQuickView
 
 
@@ -43,18 +43,54 @@ class StrictQuickView(QQuickView):
             raise QmlLoadingError(self.errors())
 
 
-# from PyQt5.QtQml import QQmlEngine
-#
-#
-# class QuickApplicationWindow(object):
-#     def __init__(self):
-#         self.engine = QQmlEngine()
+class MainView(StrictQuickView):
+    signalMaximize = pyqtSignal()
+    signalMinimize = pyqtSignal()
+    signalClose = pyqtSignal()
 
+    signalMaximized = pyqtSignal(bool)
 
-class MainView(QQuickView):
-#class MainView(StrictQuickView):
     def __init__(self):
         super().__init__(None)
-        self.q = QUrl.fromLocalFile("./qml/index.qml")
-        # self.q = QUrl.fromLocalFile("/home/xinkai/projects/deepin-user-manual/DMan/qml/index.qml")
-        self.setSource(self.q)
+        self.rootContext().setContextProperty("DManBridge", self)
+        self.setResizeMode(QQuickView.SizeRootObjectToView)
+        self._isBeingDragged = False
+        self._dragOffset = None
+        self.setFlags(Qt.FramelessWindowHint)
+        self.setSource(QUrl.fromLocalFile("./qml/index.qml"))
+        self.signalMaximize.connect(self.slotMaximize)
+        self.signalMinimize.connect(self.slotMinimize)
+        self.signalClose.connect(self.slotClose)
+
+    def mousePressEvent(self, qMouseEvent):
+        if qMouseEvent.button() == Qt.LeftButton:
+            self._isBeingDragged = True
+            self._dragOffset = qMouseEvent.pos()
+        super().mousePressEvent(qMouseEvent)
+
+    def mouseMoveEvent(self, qMouseEvent):
+        if self._isBeingDragged:
+            if QRect(0, 0, 9999, 50).contains(qMouseEvent.pos()):
+                self.setPosition(qMouseEvent.globalPos() - self._dragOffset)
+        super().mouseMoveEvent(qMouseEvent)
+
+    def mouseReleaseEvent(self, qMouseEvent):
+        if qMouseEvent.button() == Qt.LeftButton:
+            self._isBeingDragged = False
+            self._dragOffset = None
+        super().mouseReleaseEvent(qMouseEvent)
+
+    @pyqtSlot()
+    def slotMaximize(self):
+        if int(self.windowState()) & Qt.WindowMaximized:
+            self.showNormal()
+        else:
+            self.showMaximized()
+
+    @pyqtSlot()
+    def slotMinimize(self):
+        self.showMinimized()
+
+    @pyqtSlot()
+    def slotClose(self):
+        self.close()
