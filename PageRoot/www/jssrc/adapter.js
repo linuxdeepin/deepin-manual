@@ -13,6 +13,8 @@ angular.module("DManual")
                 return "Atom-Shell";
             } catch (e) {}
 
+            // assume oxide
+            return "Oxide";
             return null;
         };
         let result = {
@@ -22,23 +24,23 @@ angular.module("DManual")
         $window.adapter = result;
         return result;
     })
-    .run(function($log, $injector, AdapterService) {
+    .run(function($log, $injector, AdapterService, $window) {
         let shell = AdapterService.getShellType();
+        let body = document.getElementsByTagName("body")[0];
         switch (shell) {
             case "Atom-Shell": {
                 let AtomShell = require("remote");
                 let app = AtomShell.require("app");
-                let body = document.getElementsByTagName("body")[0];
                 let mainWin = AtomShell.require("browser-window").fromId(1);
 
-                window.maximize = function() {
+                $window.maximize = function() {
                     if (mainWin.isMaximized()) {
                         mainWin.restore();
                     } else {
                         mainWin.maximize();
                     }
                 };
-                window.minimize = mainWin.minimize;
+                $window.minimize = mainWin.minimize;
                 mainWin.on("maximize", function() {
                     angular.element(body).addClass("isMaximized");
                 });
@@ -70,11 +72,79 @@ angular.module("DManual")
                 ipc.send("AdapterReady", true);
                 break;
             }
+            case "Oxide": {
+                let sendMessage = function(id, args){
+                    let newEvent = new CustomEvent("OxideSendMessage", {
+                        detail: {
+                            "msgId": id,
+                            "args": args,
+                        }
+                    });
+                    $window.dispatchEvent(newEvent);
+                };
+
+                let sendMessageNoReply = function(id, args){
+                    let newEvent = new CustomEvent("OxideSendMessageNoReply", {
+                        detail: {
+                            "msgId": id,
+                            "args": args,
+                        }
+                    });
+                    $window.dispatchEvent(newEvent);
+                };
+                let connectMessage = function(signalName, handler){
+                    signalName = signalName.slice(0, 1).toUpperCase() +
+                                 signalName.slice(1);
+                    let oxideSignalName = "OxideSignal" + signalName;
+                    $window.addEventListener(oxideSignalName, function(e){
+                        handler(e.detail);
+                    });
+                };
+                let disconnectMessage = function(signalName){
+                    let oxideSignalName = "OxideSignal" + signalName;
+                    $window.removeEventListener(oxideSignalName);
+                };
+
+                let oxideWrap = {
+                    "sendMessage": sendMessage,
+                    "sendMessageNoReply": sendMessageNoReply,
+                    "connect": connectMessage,
+                    "disconnect": disconnectMessage,
+                };
+                $window.oxide = oxideWrap;
+                $window.maximize = function() {
+                    oxideWrap.sendMessageNoReply("JSMESSAGE", "maximize");
+                };
+                $window.minimize = function() {
+                    oxideWrap.sendMessageNoReply("JSMESSAGE", "minimize");
+                };
+                $window.close = function() {
+                    oxideWrap.sendMessageNoReply("JSMESSAGE", "close");
+                };
+                document.addEventListener("OxideSignalMessage", function(event) {
+                    let msg = event.detail;
+                    switch (msg) {
+                        case "maximized": {
+                            angular.element(body).addClass("isMaximized");
+                            alert("maximized");
+                            break;
+                        }
+                        case "unmaximized": {
+                            angular.element(body).removeClass("isMaximized");
+                            break;
+                        }
+                        default: {
+                            console.warn(`Unhandled msg from QML: ${msg}`);
+                        }
+                    }
+                });
+                break;
+            }
             default: {
                 let stub = function () {
                     console.log("You called a stub.");
                 };
-                window.maximize = window.minimize = window.close = stub;
+                $window.maximize = $window.minimize = $window.close = stub;
                 console.warn("No Shell Detected.");
                 break;
             }

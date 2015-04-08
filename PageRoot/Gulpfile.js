@@ -40,7 +40,10 @@ gulp.task('translations', function () {
 
 var entryPath = './www/jssrc/entry.js';
 var jsPath = './www/jssrc/**/*.js';
-var adapterPath = './www/jssrc/adapter.js';
+var adapterPath = [
+    './www/jssrc/adapter.js',
+    './www/jssrc/adapter_oxide.js',
+];
 
 gulp.task("watch", ['sass', 'browserify', 'adapter'], function() {
     gulp.watch('./www/scss/*.scss', ['sass']);

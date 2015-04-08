@@ -3,81 +3,81 @@ import QtQuick.Controls 1.2
 import com.canonical.Oxide 1.0
 
 Rectangle {
-    width: 1000
-    height: 300
+    width: 946
+    height: 600
+    property string oxideContext: "messaging://"
+    property string usMsgId: "JSMESSAGE"
 
     property var starturl: Qt.resolvedUrl("../../PageRoot/www/index.html")
 
-    function updateWebView() {
-        webView.url = locationField.text
+    WebView {
+        id: webView
+        anchors.fill: parent
+        url: starturl
+        focus: true
+        context: webContext
+        preferences.allowUniversalAccessFromFileUrls: true
+        preferences.allowFileAccessFromFileUrls: true
+        Component.onCompleted: {
+            DManBridge.windowStateChanged.connect(function(winState) {
+                if (winState && Qt.WindowMaximized) {
+                    rootFrame.sendMessage(oxideContext, usMsgId, {
+                        detail: "maximized",
+                    })
+                } else {
+                    rootFrame.sendMessage(oxideContext, usMsgId, {
+                        detail: "unmaximized",
+                    })
+                }
+            })
+            rootFrame.addMessageHandler(jsMessageHandler)
+            rootFrame.sendMessage(oxideContext, usMsgId, {
+                detail: "maximized",
+            })
+        }
     }
 
-    Column {
-        anchors.fill: parent
-        Row {
-            id: navRow
-            width: parent.width
-            height: locationField.height
-            Button  {
-                id: backButton
-                height: locationField.height
-                text: "后退"
-
-                onClicked: {
-                    webView.goBack()
+    ScriptMessageHandler {
+        id: jsMessageHandler
+        msgId: usMsgId
+        contexts: oxideContext
+        callback: function (content) {
+            var msg = content.args.detail
+            switch (msg) {
+                case "maximize": {
+                    DManBridge.signalMaximize()
+                    break;
                 }
-            }
-
-            Button  {
-                id: forwardButton
-                height: locationField.height
-                text: "前进"
-
-                onClicked: {
-                    webView.goForward()
+                case "minimize": {
+                    DManBridge.signalMinimize()
+                    break;
                 }
-            }
-
-            TextField {
-                id: locationField
-                width: parent.width - backButton.width - forwardButton.width
-                text: starturl
-
-                onAccepted: {
-                    updateWebView()
+                case "close": {
+                    DManBridge.signalClose()
+                    break;
+                }
+                default: {
+                    console.warn("Unknown msg: " + msg)
                 }
             }
         }
+    }
 
-        WebView {
-            id: webView
-            width: parent.width
-            height: parent.height - navRow.height - statusLabel.height
-            url: starturl
-            focus: true
-            context: webcontext
-            preferences.allowUniversalAccessFromFileUrls: true
-            preferences.allowFileAccessFromFileUrls: true
-            onUrlChanged: {
-                locationField.text = url
+    WebContext {
+        id: webContext
+        cachePath: "file:///tmp/"
+        dataPath: "file:///tmp/"
+        devtoolsEnabled: true
+        devtoolsPort: 18080
+        userScripts: [
+            UserScript {
+                context: oxideContext
+                matchAllFrames: true
+                url: Qt.resolvedUrl("../../PageRoot/www/jssrc/adapter_oxide.js")
             }
-        }
-
-        WebContext {
-            id: webcontext
-            cachePath: "file:///tmp/"
-            dataPath: "file:///tmp/"
-            devtoolsEnabled: true
-            devtoolsPort: 18080
-        }
-
-        Label {
-            id: statusLabel
-            text: webView.loading ?
-                    "Loading" + " (%1%)".arg(webView.loadProgress) :
-                    "Page loaded"
-            width: parent.width
-        }
+        ]
+    }
+    Component.onCompleted: {
 
     }
 }
