@@ -126,7 +126,6 @@ angular.module("DManual")
                     switch (msg) {
                         case "maximized": {
                             angular.element(body).addClass("isMaximized");
-                            alert("maximized");
                             break;
                         }
                         case "unmaximized": {
