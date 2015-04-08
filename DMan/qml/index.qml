@@ -67,6 +67,12 @@ Rectangle {
                             msg: DManBridge.mdUrl,
                         },
                     })
+                    webView.rootFrame.sendMessage(oxideContext, usMsgId, {
+                        detail: {
+                            type: "Debug",
+                            msg: DManBridge.debugMode,
+                        },
+                    })
                     break;
                 }
                 default: {

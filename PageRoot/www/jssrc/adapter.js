@@ -17,9 +17,21 @@ angular.module("DManual")
             return "Oxide";
             return null;
         };
+        let setDebugMode = function(on) {
+            on = !!on;
+            $log.log(`Debug mode ${on}`);
+            $rootScope.isDebugging = on;
+            let body = document.getElementsByTagName("body")[0];
+            if (on) {
+                body.classList.add("isDebugging");
+            } else {
+                body.classList.remove("isDebugging");
+            }
+        };
         let result = {
             setMarkdown: setMarkdown,
             getShellType: getShellType,
+            setDebugMode: setDebugMode,
         };
         $window.adapter = result;
         return result;
@@ -55,6 +67,9 @@ angular.module("DManual")
                 let ipc = require("ipc");
                 ipc.on("setMarkdown", function(path) {
                     adapter.setMarkdown(path);
+                });
+                ipc.on("Debug", function(on) {
+                    adapter.setDebugMode(on);
                 });
 
                 // Disallowing dropping
@@ -139,6 +154,10 @@ angular.module("DManual")
                         }
                         case "SetMarkdown": {
                             AdapterService.setMarkdown(payload.msg);
+                            break;
+                        }
+                        case "Debug": {
+                            AdapterService.setDebugMode(true);
                             break;
                         }
                         default: {

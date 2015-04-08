@@ -42,6 +42,9 @@ class StrictQuickView(QQuickView):
         if status == QQuickView.Error:
             raise QmlLoadingError(self.errors())
 
+def clickInDragRegion(pos):
+    return QRect(0, 0, 9999, 50).contains(pos)
+
 
 class MainView(StrictQuickView):
     signalMaximize = pyqtSignal()
@@ -50,7 +53,7 @@ class MainView(StrictQuickView):
 
     signalMaximized = pyqtSignal(bool)
 
-    def __init__(self, mdUrl):
+    def __init__(self, mdUrl, debugMode):
         super().__init__(None)
         self.rootContext().setContextProperty("DManBridge", self)
         self.setResizeMode(QQuickView.SizeRootObjectToView)
@@ -58,6 +61,7 @@ class MainView(StrictQuickView):
         self._dragOffset = None
         self.setFlags(Qt.FramelessWindowHint)
         self._mdUrl = mdUrl
+        self._debugMode = debugMode
         self.setSource(QUrl.fromLocalFile("./qml/index.qml"))
         self.signalMaximize.connect(self.slotMaximize)
         self.signalMinimize.connect(self.slotMinimize)
@@ -67,15 +71,20 @@ class MainView(StrictQuickView):
     def mdUrl(self):
         return self._mdUrl
 
+    @pyqtProperty(bool)
+    def debugMode(self):
+        return self._debugMode
+
     def mousePressEvent(self, qMouseEvent):
         if qMouseEvent.button() == Qt.LeftButton:
-            self._isBeingDragged = True
-            self._dragOffset = qMouseEvent.pos()
+            if clickInDragRegion(qMouseEvent.pos()):
+                self._isBeingDragged = True
+                self._dragOffset = qMouseEvent.pos()
         super().mousePressEvent(qMouseEvent)
 
     def mouseMoveEvent(self, qMouseEvent):
         if self._isBeingDragged:
-            if QRect(0, 0, 9999, 50).contains(qMouseEvent.pos()):
+            if clickInDragRegion(qMouseEvent.pos()):
                 self.setPosition(qMouseEvent.globalPos() - self._dragOffset)
         super().mouseMoveEvent(qMouseEvent)
 

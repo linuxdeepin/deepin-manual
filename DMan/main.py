@@ -39,7 +39,8 @@ class DManApp(QGuiApplication):
             pass
         else:
             mdUrl = os.path.abspath(mdUrl)
-        self.mainView = MainView(mdUrl)
+        self.mainView = MainView(mdUrl,
+                                 not not os.environ.get("DEBUG", None))
         self.mainView.show()
 
 
