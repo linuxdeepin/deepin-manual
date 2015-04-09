@@ -1,5 +1,6 @@
 .idea/
 PageRoot/node_modules
+PageRoot/bower_components
 PageRoot/www/style/**/*.css
 unused/
 dist/

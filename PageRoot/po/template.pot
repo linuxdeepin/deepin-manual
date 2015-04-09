@@ -4,6 +4,6 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: \n"
 
-#: NavigationBar.html:6
+#: NavigationBar.html:7
 msgid "Manual"
 msgstr ""

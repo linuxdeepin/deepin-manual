@@ -1,0 +1,19 @@
+{
+  "name": "DManual",
+  "version": "0.0.1",
+  "authors": [
+    "Xinkai Chen <chenxinkai@linuxdeepin.com>",
+    "Michael Tong <tongmingjian@linuxdeepin.com>"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "jquery": "~2.1.3"
+  }
+}

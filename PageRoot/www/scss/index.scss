@@ -40,7 +40,7 @@ $pvNavBarWidth: 200px;
 
 // over view
 $ovNavBarHeight: 84px;
-$navLogoBoxHeight: 84px;
+$navLogoBoxHeight: 64px;
 
 
 html, body {
@@ -58,13 +58,15 @@ body {
     position: fixed;
     padding: 0 !important;
     outline: 0 !important;
-    margin: $csdTH $csdRW $csdBH $csdLW !important;
-    height: calc(100% - #{$csdTH} - #{$csdBH});
-    width: calc(100% - #{$csdLW} - #{$csdRW});
+    height: 100%;
+    width: 100%;
     overflow: hidden;
     background-color: white;
     .isDebugging & {
         background-color: red !important;
+        margin: $csdTH $csdRW $csdBH $csdLW !important;
+        height: calc(100% - #{$csdTH} - #{$csdBH});
+        width: calc(100% - #{$csdLW} - #{$csdRW});
     }
 }
 
@@ -82,11 +84,9 @@ input[type='search'] {
         padding: 0;
 
         li {
-            display: table;
             counter-increment: item;
-            &:before {
+            a > span:before {
                 content: counters(item, ".") ". ";
-                display: table-cell;
             }
         }
     }
@@ -112,7 +112,6 @@ input[type='search'] {
     @include clearfix;
     width: 232px * 4;
     margin: 0 auto;
-
     padding: 34px 0 0;
 
     li {
@@ -122,6 +121,15 @@ input[type='search'] {
         height: 144px;
         @include clearfix;
         text-align: center;
+    }
+
+    a {
+        display: block;
+        color: #94989f;
+        cursor: pointer;
+        &:hover {
+            color: #616161;
+        }
     }
 
     img {
@@ -137,6 +145,7 @@ input[type='search'] {
 .isOverview {
     #NavigationBar {
         height: $ovNavBarHeight;
+        overflow: hidden;
     }
 
     #SideNavigationBar {
@@ -156,6 +165,10 @@ input[type='search'] {
         right: 50px;
     }
 
+    #AppLogo {
+        margin-right: 12px;
+    }
+
 }
 
 .isPageview {
@@ -171,25 +184,27 @@ input[type='search'] {
     #SideNavigationBar {
         display: block;
         overflow: hidden !important;
-        height: calc(100% - #{$navLogoBoxHeight});
+        height: 100%;
+        font-size: 14px;
     }
 
     #Content {
         width: calc(100% - #{$pvNavBarWidth} - 5px);
-        height: 100%;
+        height: calc(100% - 30px);
         overflow: scroll;
         float: right;
         display: block;
         border: 0;
         border-right: 5px white solid;
+        padding-top: 30px;
         .isDebugging & {
             background-color: green;
         }
     }
 
-    #SideNavigationBar {
-        height: 600px; //calc(100% - #{$navLogoBoxHeight} - 1300px);
-    }
+    // #SideNavigationBar {
+    //     height: 600px; //calc(100% - #{$navLogoBoxHeight} - 1300px);
+    // }
 
     #SideNavigationItems { // ol
         padding-left: 40px;
@@ -199,7 +214,7 @@ input[type='search'] {
         width: 136px;
 
         li {
-            line-height: 30px;
+            line-height: 2em;
         }
 
         .level2 { // li
@@ -213,6 +228,11 @@ input[type='search'] {
                     background-color: skyblue;
                 }
             }
+        }
+
+        .level3 {
+            text-indent: 0.5em;
+            line-height: 1.7em;
         }
 
     }
@@ -270,6 +290,15 @@ input[type='search'] {
     height: 24px;
 }
 
+#SearchBox {
+    .isOverview {
+        display: block;
+    }
+    .isPageview {
+        display: none;
+    }
+}
+
 
 // Logo related
 $logoHeight: 48px;
@@ -289,7 +318,6 @@ $logoHeight: 48px;
     width: 48px;
     height: $logoHeight;
     float: left;
-    margin-right: 15px;
     .isDebugging & {
         background-color: green;
     }
@@ -309,7 +337,9 @@ $logoHeight: 48px;
     position: fixed;
     width: 100%;
     z-index: -100;
-    background-color: skyblue;
+    .isDebugging & {
+        background-color: skyblue;
+    }
 }
 
 #MoveHandle {
@@ -327,50 +357,77 @@ $logoHeight: 48px;
     z-index: 10000;
     right: $csdRW;
     .Btn {
-        width: 30px;
-        height: 30px;
+        width: 15px;
+        height: 20px;
         margin: 5px;
         float: left;
         -webkit-app-region: no-drag;
     }
+    a:focus {
+        outline: none;
+    }
 }
 
 #MinimizeBtn {
+    background-position: -6px 0;
     background-image: url("../resources/frame/dark_minimise_normal.png");
+    background-repeat: no-repeat;
     &:hover {
         background-image: url("../resources/frame/dark_minimise_hover.png");
+        background-repeat: no-repeat;
     }
     &:active {
         background-image: url("../resources/frame/dark_minimise_press.png");
+        background-repeat: no-repeat;
     }
 }
 
 #MaximizeBtn {
+    background-position: -6px 0;
     background-image: url("../resources/frame/dark_maximize_normal.png");
+    background-repeat: no-repeat;
     &:hover {
         background-image: url("../resources/frame/dark_maximize_hover.png");
+        background-repeat: no-repeat;
     }
     &:active {
         background-image: url("../resources/frame/dark_maximize_press.png");
+        background-repeat: no-repeat;
     }
 }
 
 .isMaximized #MaximizeBtn {
+    background-position: -6px 0;
     background-image: url("../resources/frame/dark_unmaximize_normal.png");
+    background-repeat: no-repeat;
     &:hover {
         background-image: url("../resources/frame/dark_unmaximize_hover.png");
+        background-repeat: no-repeat;
     }
     &:active {
         background-image: url("../resources/frame/dark_unmaximize_press.png");
+        background-repeat: no-repeat;
     }
 }
 
 #CloseBtn {
+    background-position: -6px 0;
     background-image: url("../resources/frame/dark_close_normal.png");
+    background-repeat: no-repeat;
     &:hover {
         background-image: url("../resources/frame/dark_close_hover.png");
+        background-repeat: no-repeat;
     }
     &:active {
         background-image: url("../resources/frame/dark_close_press.png");
+        background-repeat: no-repeat;
     }
+}
+
+.zero-height {
+    opacity: 0;
+}
+
+.animate-height-ready {
+    transition: opacity 0.25s;
 }

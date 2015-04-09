@@ -12,13 +12,17 @@
         <ol id="SideNavigationItems">
             <nav ng-repeat="anchor in anchors">
                 <li class="level2">
-                    <img ng-src="{{appInfo.markdownDir}}/{{anchor.icon}}" />
-                    <a ng-click="jumpTo(anchor.id)">{{anchor.text}}</a>
+                    <a ng-click="jumpTo(anchor.id)">
+                        <img ng-src="{{appInfo.markdownDir}}/{{anchor.icon}}" />
+                        <span>{{anchor.text}}</span>
+                    </a>
                 </li>
                 <ol ng-if="anchor.children">
                     <nav ng-repeat="anchor2 in anchor.children">
                         <li class="level3">
-                            <a ng-click="jumpTo(anchor2.id)">{{anchor2.text}}</a>
+                            <a ng-click="jumpTo(anchor2.id)">
+                                <span>{{anchor2.text}}</span>
+                            </a>
                         </li>
                     </nav>
                 </ol>

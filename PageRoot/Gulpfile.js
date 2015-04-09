@@ -6,6 +6,7 @@ var gettext = require("gulp-angular-gettext");
 var mocha = require('gulp-mocha');
 var fs = require("fs");
 var babelify = require("babelify");
+var bower = require("main-bower-files")
 var browserify = require("browserify");
 
 
@@ -38,6 +39,11 @@ gulp.task('translations', function () {
         .pipe(gulp.dest('translations/'));
 });
 
+gulp.task('bower', function(){
+    return gulp.src(bower())
+            .pipe(gulp.dest('./www/scripts'));
+})
+
 var entryPath = './www/jssrc/entry.js';
 var jsPath = './www/jssrc/**/*.js';
 var adapterPath = [
@@ -45,7 +51,7 @@ var adapterPath = [
     './www/jssrc/adapter_oxide.js',
 ];
 
-gulp.task("watch", ['sass', 'browserify', 'adapter'], function() {
+gulp.task("watch", ['sass', 'bower', 'browserify', 'adapter'], function() {
     gulp.watch('./www/scss/*.scss', ['sass']);
     gulp.watch(jsPath, ['browserify']);
     gulp.watch(adapterPath, ['adapter']);

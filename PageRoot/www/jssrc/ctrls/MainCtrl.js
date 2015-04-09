@@ -31,6 +31,11 @@ angular.module("DManual")
             name: "Unnamed",
         };
 
+        $scope.$watch("isPageview", function(){
+            let ev = new Event("resize");
+            $window.dispatchEvent(ev);
+        });
+
         $scope.$on("setMarkdown", function(event, mdUrl) {
             let fileInfo = getDManFileInfo(mdUrl);
             GInput.load(`${fileInfo.dir}/synonym.txt`).then(function(text) {
