@@ -129,7 +129,7 @@ let parseNavigationItems = function(tokens) {
                 break;
             }
             case "code": {
-                console.warn(`TODO: code ${token.text}`);
+                _addText(token.text);
                 break;
             }
             case "list_start":
