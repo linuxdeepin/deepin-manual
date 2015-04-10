@@ -32,11 +32,11 @@ angular.module("DManual")
         };
 
         hotkeys.add({
-            combo: 'ctrl+f',
+            combo: ['ctrl+f', '/'],
             description: 'show search box',
             callback: function() {
-                if(!$scope.isPageview){
-                    $rootScope.$broadcast("showSearchBox", "true");
+                if($scope.isPageview){
+                    $rootScope.$broadcast("showSearchBox", true);
                 }
             }
         });
@@ -79,6 +79,7 @@ angular.module("DManual")
                 let markdownDir = fileInfo.dir;
                 $scope.appInfo.markdownDir = markdownDir;
                 let base = `<base href='${markdownDir}/'>
+                    <script src="${stylePath}/../scripts/mousetrap.js"></script>
                     <script>
                     'use strict';
                     let disallow = function(event) {
@@ -93,6 +94,10 @@ angular.module("DManual")
                         body.addEventListener("dragleave", disallow);
                         body.addEventListener("drop", disallow);
                     }
+                    Mousetrap.bind('ctrl+f', function() {
+                        let e2 = new CustomEvent("IFrameShowEventProxy");
+                        window.parent.dispatchEvent(e2);
+                    });
                     </script>
                     <link rel='stylesheet' href='${stylePath}/reset.css' />
                     <link rel='stylesheet' href='${stylePath}/content.css' />`;

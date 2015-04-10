@@ -15,6 +15,7 @@
     "babelify": "^5.0.4",
     "gulp-angular-gettext": "^2.1.0",
     "marked": "^0.3.3",
+    "mousetrap": "^1.5.2",
     "url-parse": "^1.0.0"
   },
   "devDependencies": {

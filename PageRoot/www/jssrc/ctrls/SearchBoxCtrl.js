@@ -1,7 +1,7 @@
 "use strict";
 
 angular.module("DManual")
-       .controller("SearchBoxCtrl", function($scope, $rootScope, $animate, $timeout, $log) {
+       .controller("SearchBoxCtrl", function($scope, $rootScope, $animate, $timeout, $log, $window) {
             $scope.headers = [];
             $scope.searchBoxVisible = false;
             let timer = null;
@@ -11,6 +11,7 @@ angular.module("DManual")
                     $scope.searchBoxVisible = false;
                 }, 3000);
             };
+
             $scope.doSearch = function($innerScope, $event){
                 if ($event.keyCode == 13) {
                     $rootScope.$broadcast("searchTermChanged", $scope.searchTerm);
@@ -21,8 +22,12 @@ angular.module("DManual")
             }
 
             $scope.$on("showSearchBox", function(){
-                $scope.showSearch();
+                $log.log("Search");
+                $scope.searchBoxVisible = true;
+                inactiveTimerStart();
+                document.querySelector("#SearchInput").focus();
             });
+
             $scope.showSearch = function(){
                 $timeout.cancel(timer);
                 timer = $timeout(function() {
@@ -36,6 +41,11 @@ angular.module("DManual")
                     $scope.searchBoxVisible = false;
                 }, 1500);
             }
+
+            $window.addEventListener("IFrameShowEventProxy", function() {
+                $log.log("proxy..");
+                $scope.$emit("showSearchBox");
+            });
             // $scope.$watch("searchTerm", function(newValue, oldValue){
             //     $rootScope.$broadcast("searchTermChanged", newValue);
             // });
