@@ -105,6 +105,7 @@ let parseNavigationItems = function(tokens) {
                 break;
             }
             case "text":
+            case "html":
             {
                 let payload = [token];
                 payload.links = tokens.links;
@@ -125,10 +126,6 @@ let parseNavigationItems = function(tokens) {
                 });
                 let text = parser.parse(payload);
                 _addText(text);
-                break;
-            }
-            case "html": {
-                console.warn("TODO: html detagging");
                 break;
             }
             case "code": {
@@ -239,7 +236,7 @@ let getPlainRenderer = function() {
         return code;
     };
     renderer.html = function(html) {
-        return html;
+        return html.replace(/<[^>]*>/g, ' ').replace(/\s{2,}/g, ' ').trim();
     };
     //renderer.hr;
     //renderer.br;

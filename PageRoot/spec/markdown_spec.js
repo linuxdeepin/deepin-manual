@@ -236,7 +236,38 @@ describe("Markdown Plain Renderer", function() {
     });
 
     it("outputs text only for tables", function() {
+        let result = pr.table("header", "body");
+        expect(result).to.equal("header body");
+    });
 
+    it("outputs text for table rows", function() {
+        let result = pr.tablerow("content");
+        expect(result).to.equal("content");
+    });
+
+    it("outputs text for table cells", function() {
+        let result = pr.tablecell("content");
+        expect(result).to.equal("content");
+    });
+
+    it("de-tag HTMLs", function() {
+        let html = `
+        <table>
+            <caption>A Detagging Test</caption>
+            <thead></thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>2</td>
+                    <td>5</td>
+                    <td>3</td>
+                    <td>8</td>
+                </tr>
+            </tbody>
+        </table>
+        <div>这一切都结束了</div>
+        `;
+        expect(pr.html(html)).to.equal("A Detagging Test 1 2 5 3 8 这一切都结束了");
     });
 });
 
