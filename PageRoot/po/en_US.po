@@ -2,25 +2,25 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: \n"
+"PO-Revision-Date: 2015-04-09 10:44+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
-"Language: zh_CN\n"
+"Language: en_US\n"
 "MIME-Version: 1.0\n"
 "Content-Type: text/plain; charset=UTF-8\n"
 "Content-Transfer-Encoding: 8bit\n"
 "X-Generator: Poedit 1.7.5\n"
-"Plural-Forms: nplurals=1; plural=0;\n"
+"X-Poedit-Basepath: .\n"
+"Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
 #: index.html:8
 msgid "TEXT_APP_TITLE"
-msgstr "深度帮助手册"
+msgstr "DManual"
 
 #: SearchBox.html:7
 msgid "TEXT_ENTER_KEYWORDS"
-msgstr "请输入搜索关键字"
+msgstr "Enter keywords"
 
 #: NavigationBar.html:7
 msgid "TEXT_MANUAL"
-msgstr "帮助手册"
-
+msgstr "Manual"

@@ -36,7 +36,7 @@ gulp.task('translations', function () {
             // options to pass to angular-gettext-tools...
             format: 'json',
         }))
-        .pipe(gulp.dest('translations/'));
+        .pipe(gulp.dest('./www/nls/'));
 });
 
 gulp.task('bower', function(){

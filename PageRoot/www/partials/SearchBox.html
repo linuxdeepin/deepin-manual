@@ -1,8 +1,8 @@
-<div id="SearchBox" ng-controller="SearchBoxCtrl">
+<div id="SearchBox" ng-controller="SearchBoxCtrl" ng-mouseenter="showSearch()" ng-mouseleave="hideSearch()">
     <datalist id="HeaderList">
         <option ng-repeat="header in headers" value="{{header}}">
     </datalist>
 
-    <input type="search" id="SearchInput"
-           placeholder="输入搜索关键词" ng-model="searchTerm" autocomplete list="HeaderList" />
+    <input type="search" id="SearchInput" class="search-input"
+           placeholder="{{ 'TEXT_ENTER_KEYWORDS'|translate }}" ng-keydown="doSearch($scope,$event)" ng-model="searchTerm" ng-class="{slidedown: searchBoxVisible}" />
 </div>

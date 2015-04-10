@@ -10,7 +10,7 @@ let {
 } = require("../utils");
 
 angular.module("DManual")
-    .controller("MainCtrl", function($scope, $log, $sce, $window, $timeout, GInput, GSynonym) {
+    .controller("MainCtrl", function($scope, $rootScope, $log, $sce, $window, $timeout, hotkeys, GInput, GSynonym) {
         $scope.isOverview = true;
         let _isSearchmode = false;
         Object.defineProperty($scope, "isSearchmode", {
@@ -31,8 +31,18 @@ angular.module("DManual")
             name: "Unnamed",
         };
 
-        $scope.$watch("isPageview", function(){
-            let ev = new Event("resize");
+        hotkeys.add({
+            combo: 'ctrl+f',
+            description: 'show search box',
+            callback: function() {
+                if(!$scope.isPageview){
+                    $rootScope.$broadcast("showSearchBox", "true");
+                }
+            }
+        });
+
+        $scope.$watch("isPageview", function(value){
+            let ev = new CustomEvent("resizeSidebar");
             $window.dispatchEvent(ev);
         });
 

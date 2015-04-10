@@ -4,6 +4,14 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: \n"
 
+#: index.html:8
+msgid "TEXT_APP_TITLE"
+msgstr ""
+
+#: SearchBox.html:7
+msgid "TEXT_ENTER_KEYWORDS"
+msgstr ""
+
 #: NavigationBar.html:7
-msgid "Manual"
+msgid "TEXT_MANUAL"
 msgstr ""

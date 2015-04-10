@@ -18,6 +18,9 @@ angular.module("DManual")
             };
         };
         updateSidebar();
+        angular.element($window).bind("resizeSidebar", function(event) {
+            updateSidebar();
+        });
         angular.element($window).bind("resize", function(event) {
             updateSidebar();
             $scope.$apply();

@@ -1,6 +1,9 @@
 "use strict";
 
 require("angular");
+require("angular-animate");
+require("angular-gettext");
+require("angular-hotkeys");
 require("marked");
 require("url-parse");
 require("./app");

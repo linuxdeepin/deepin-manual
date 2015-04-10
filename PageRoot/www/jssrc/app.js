@@ -4,7 +4,13 @@ let {
     searchHighlight,
 } = require("./utils");
 
-let app = angular.module("DManual", ["General"]);
+let app = angular.module("DManual", ["General", "gettext", "ngAnimate", "cfp.hotkeys"]);
+app.run(function($rootScope, gettextCatalog) {
+    // TODO: locale sense
+    var lang = 'zh_CN';
+    gettextCatalog.setCurrentLanguage(lang);
+    gettextCatalog.loadRemote("./nls/"+lang+".json");
+});
 app.filter("filterHighlight", function($log, $sce) {
     let _PLACEHOLDER_RESULT = [];
     let lastTerm = null;
