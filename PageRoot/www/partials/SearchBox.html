@@ -3,6 +3,11 @@
         <option ng-repeat="header in headers" value="{{header}}">
     </datalist>
 
-    <input type="search" id="SearchInput" class="search-input"
-           placeholder="{{ 'TEXT_ENTER_KEYWORDS'|translate }}" ng-keydown="doSearch($scope,$event)" ng-model="searchTerm" ng-class="{slidedown: searchBoxVisible}" />
+    <input type="search"
+           id="SearchInput"
+           class="search-input"
+           placeholder="{{ 'TEXT_ENTER_KEYWORDS'|translate }}"
+           ng-keydown="doSearch($scope,$event)"
+           ng-model="searchTerm"
+           ng-class="{slidedown: searchBoxVisible}" />
 </div>

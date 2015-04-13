@@ -114,16 +114,18 @@ angular.module("DManual")
             if (anchor) {
                 $scope.isOverview = false;
                 $scope.isPageview = true;
-                body.removeClass("isOverview");
-                body.addClass("isPageview");
+                // not using `ng-class` here, trigger reflow
+                body.removeClass('overview-mode');
+                body.addClass('pageview-mode');
                 $timeout(function() {
                     contentWin.location.hash = anchor;
                 }, 0);
             } else {
                 $scope.isOverview = true;
                 $scope.isPageview = false;
-                body.removeClass("isPageview");
-                body.addClass("isOverview");
+                // same as above
+                body.removeClass('pageview-mode');
+                body.addClass('overview-mode');
                 $timeout(function() {
                     contentWin.location.hash = "";
                 }, 0);

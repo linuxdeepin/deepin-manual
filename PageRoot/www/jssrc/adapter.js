@@ -23,9 +23,9 @@ angular.module("DManual")
             $rootScope.isDebugging = on;
             let body = document.getElementsByTagName("body")[0];
             if (on) {
-                body.classList.add("isDebugging");
+                body.classList.add("debug-mode");
             } else {
-                body.classList.remove("isDebugging");
+                body.classList.remove("debug-mode");
             }
         };
         let result = {

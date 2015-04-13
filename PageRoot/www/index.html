@@ -5,33 +5,47 @@
     <script src="./scripts/bundle.js"></script>
     <script src="./scripts/adapter.js"></script>
     <link rel="stylesheet" href="./style/index.css" />
-    <title>{{appInfo.name}} - {{ 'TEXT_APP_TITLE'|translate }}</title>
+    <title>{{ appInfo.name }} - {{ 'TEXT_APP_TITLE'|translate }}</title>
 </head>
-<body class="isOverview" ng-class="{'compact-mode': isCompactMode}">
-<div id="OuterFrame" ng-style="outerFrameStyle">
-    <div id="MoveHandle"></div>
-</div>
-<div id="FrameBar">
-    <a id="MinimizeBtn" class="Btn" href="javascript: minimize()"></a>
-    <a id="MaximizeBtn" class="Btn" href="javascript: maximize()"></a>
-    <a id="CloseBtn" class="Btn" href="javascript: close()"></a>
-</div>
-
-<div id="Container">
-    <div ng-include="'./partials/NavigationBar.html'"></div>
-    <div ng-include="'./partials/SearchBox.html'"></div>
-    <iframe id="Content" ng-show="isPageview && (!isSearchmode)" srcdoc="{{htmlOutput}}"
-        sandbox="allow-same-origin allow-scripts" seamless></iframe>
-    <section ng-show="isOverview && (!isSearchmode)" id="Overview" ng-include="'./partials/Overview.html'"></section>
-    <div id="Search" ng-show="isSearchmode" ng-controller="SearchCtrl">
-        <ul>
-            <li ng-repeat="match in indices | filterHighlight:searchTerm:keywords">
-                <h5><a class="anchor" ng-click="jumpTo(match.anchorId)">{{ match.anchorText }}</a></h5>
-                <p ng-repeat="text in match.texts" class="match-text" ng-bind-html="text"></p>
-            </li>
-        </ul>
+<body class="overview-mode" ng-class="{'compact-mode': isCompactMode}">
+    <div id="OuterFrame" ng-style="outerFrameStyle">
+        <div id="MoveHandle"></div>
     </div>
-</div>
+    <div id="FrameBar">
+        <a id="MinimizeBtn"
+           class="window-control-btn"
+           href="javascript: minimize()"
+           title="{{ 'TEXT_MINIMIZE'|translate }}">{{ 'TEXT_MINIMIZE'|translate }}</a>
+        <a id="MaximizeBtn"
+           class="window-control-btn"
+           href="javascript: maximize()"
+           title="{{ 'TEXT_MAXIMIZE'|translate }}">{{ 'TEXT_MAXIMIZE'|translate }}</a>
+        <a id="CloseBtn"
+           class="window-control-btn"
+           href="javascript: close()"
+           title="{{ 'TEXT_CLOSE'|translate }}">{{ 'TEXT_CLOSE'|translate }}</a>
+    </div>
+
+    <div id="Container">
+        <div ng-include="'./partials/NavigationBar.html'"></div>
+        <div ng-include="'./partials/SearchBox.html'"></div>
+        <iframe id="Content"
+                ng-show="isPageview && (!isSearchmode)"
+                srcdoc="{{ htmlOutput }}"
+                sandbox="allow-same-origin allow-scripts"
+                seamless></iframe>
+        <section ng-show="isOverview && (!isSearchmode)"
+                 id="Overview"
+                 ng-include="'./partials/Overview.html'"></section>
+        <div id="Search" ng-show="isSearchmode" ng-controller="SearchCtrl">
+            <ul>
+                <li ng-repeat="match in indices | filterHighlight:searchTerm:keywords">
+                    <h5><a class="anchor" ng-click="jumpTo(match.anchorId)">{{ match.anchorText }}</a></h5>
+                    <p ng-repeat="text in match.texts" class="match-text" ng-bind-html="text"></p>
+                </li>
+            </ul>
+        </div>
+    </div>
 
 </body>
 </html>

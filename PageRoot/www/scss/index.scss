@@ -1,31 +1,8 @@
 @charset "utf-8";
 
-// custom scrollbar
-::-webkit-scrollbar {
-    width: 8px;  /* for vertical scrollbars */
-    height: 14px; /* for horizontal scrollbars */
-}
-
-::-webkit-scrollbar-track {
-    background-color: transparent;
-}
-
-::-webkit-scrollbar-thumb {
-    background-color: rgba(0, 0, 0, 0.5);
-    border-radius: 4px;
-}
-
-::-webkit-input-placeholder {
-    line-height: 16px;
-}
-
-@mixin clearfix {
-    &:after {
-        content: "";
-        display: table;
-        clear: both;
-    }
-}
+/*-------------------------------------------*/
+/* Global variable                           */
+/*-------------------------------------------*/
 
 // client side decoration dimensions.
 $csdTH: 3px;  // Top height
@@ -50,6 +27,45 @@ $navLogoBoxHeight: 64px;
 $titleBarHeight: 30px;
 
 
+/*-------------------------------------------*/
+/* Global Style                              */
+/*-------------------------------------------*/
+
+// custom scrollbar
+::-webkit-scrollbar {
+    width: 8px;  /* for vertical scrollbars */
+    height: 14px; /* for horizontal scrollbars */
+}
+
+::-webkit-scrollbar-track {
+    background-color: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 4px;
+}
+
+::-webkit-input-placeholder {
+    line-height: 16px;
+}
+
+/*-------------------------------------------*/
+/* Mixins                                    */
+/*-------------------------------------------*/
+
+@mixin clearfix {
+    &:after {
+        content: "";
+        display: table;
+        clear: both;
+    }
+}
+
+/*-------------------------------------------*/
+/* index style                               */
+/*-------------------------------------------*/
+
 html, body {
     overflow: hidden !important;
     margin: 0 !important;
@@ -62,6 +78,10 @@ body {
     height: 100%;
 }
 
+input[type='search'] {
+    width: 50px;
+}
+
 #Container {
     position: fixed;
     padding: 0 !important;
@@ -70,16 +90,12 @@ body {
     width: 100%;
     overflow: hidden;
     background-color: white;
-    .isDebugging & {
-        background-color: red !important;
+    .debug-mode & {
+        background-color: firebrick !important;
         margin: $csdTH $csdRW $csdBH $csdLW !important;
         height: calc(100% - #{$csdTH} - #{$csdBH});
         width: calc(100% - #{$csdLW} - #{$csdRW});
     }
-}
-
-input[type='search'] {
-    width: 50px;
 }
 
 #NavigationBar {
@@ -145,13 +161,13 @@ input[type='search'] {
         width: 64px;
         height: 64px;
         margin: 0 auto 14px;
-        .isDebugging & {
+        .debug-mode & {
             background-color: darkgrey;
         }
     }
 }
 
-.isOverview {
+.overview-mode {
     #NavigationBar {
         height: $ovNavBarHeight;
         overflow: hidden;
@@ -164,7 +180,7 @@ input[type='search'] {
     #Overview {
         height: calc(100% - #{$ovNavBarHeight});
         margin-top: 0;
-        .isDebugging & {
+        .debug-mode & {
             background-color: pink;
         }
     }
@@ -180,7 +196,7 @@ input[type='search'] {
 
 }
 
-.isPageview {
+.pageview-mode {
     #NavigationBar {
         width: $pvNavBarWidth;
         float: left;
@@ -211,7 +227,7 @@ input[type='search'] {
         display: block;
         border: 0;
         padding-top: $titleBarHeight;
-        .isDebugging & {
+        .debug-mode & {
             background-color: green;
         }
     }
@@ -265,15 +281,15 @@ input[type='search'] {
 // search related.
 #Search {
     background-color: white;
-    .isDebugging & {
+    .debug-mode & {
         background-color: orange;
     }
-    .isOverview & {
+    .overview-mode & {
         height: calc(100% - #{$ovNavBarHeight});
         margin-top: 0;
         overflow-y: hidden;
     }
-    .isPageview & {
+    .pageview-mode & {
         width: calc(100% - #{$pvNavBarWidth});
         height: 100%;
         overflow: scroll;
@@ -307,10 +323,10 @@ input[type='search'] {
 }
 
 #SearchBox {
-    .isOverview & {
+    .overview-mode & {
         display: block;
     }
-    .isPageview & {
+    .pageview-mode & {
         // display: none;
         position: absolute;
         top: 28px;
@@ -323,7 +339,7 @@ input[type='search'] {
         margin-left: $pvNavBarCompactWidth;
     }
 
-    .isDebugging & {
+    .debug-mode & {
         background: lime;
     }
 }
@@ -347,7 +363,7 @@ $logoHeight: 48px;
     width: 48px;
     height: $logoHeight;
     float: left;
-    .isDebugging & {
+    .debug-mode & {
         background-color: green;
     }
 }
@@ -366,7 +382,7 @@ $logoHeight: 48px;
     position: fixed;
     width: 100%;
     z-index: -100;
-    .isDebugging & {
+    .debug-mode & {
         background-color: skyblue;
     }
 }
@@ -376,7 +392,7 @@ $logoHeight: 48px;
     -webkit-app-region: drag;
     height: 30px;
     margin: 3px 3px 0;
-    .isDebugging & {
+    .debug-mode & {
         background-color: darkmagenta;
     }
 }
@@ -384,8 +400,9 @@ $logoHeight: 48px;
 #FrameBar {
     position: fixed;
     z-index: 10000;
+    text-indent: -9999em;
     right: $csdRW;
-    .Btn {
+    .window-control-btn {
         width: 15px;
         height: 20px;
         margin: 5px;
@@ -461,7 +478,7 @@ $logoHeight: 48px;
     background-color: white;
     top: -55px;
 
-    .isPageview & {
+    .pageview-mode & {
         left: 50%;
     }
 
@@ -501,7 +518,7 @@ $logoHeight: 48px;
     background-image: url("../resources/controls/clear_press.png");
 }
 
-.isPageview {
+.pageview-mode {
     .collapsed#NavigationBar {
         width: 48px;
         #NavLogoBox span {
@@ -522,19 +539,24 @@ $logoHeight: 48px;
     top: 18px;
     width: 30px;
     height: 25px;
-    .isDebugging & {
+    a {
+        display: block;
+        width: 20px;
+        height: 100%;
+        &.collapsed{
+            width: 30px;
+        }
+    }
+    .debug-mode & {
         background: orange;
         a {
-            display: block;
-            width: 20px;
-            height: 100%;
             background: fuchsia;
         }
     }
 }
 
 
-.isDebugging {
+.debug-mode {
     #SideNavigationItems .level2 img {
         background-color: skyblue;
     }
