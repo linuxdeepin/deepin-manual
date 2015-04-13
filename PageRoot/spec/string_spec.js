@@ -2,6 +2,7 @@
 
 let expect = require("expect.js");
 let sh = require("../www/jssrc/utils").searchHighlight;
+let gai = require("../www/jssrc/utils").getAnchorItem;
 
 describe("Text searching and highlighting", function() {
     it("can do the simple one", function() {
@@ -60,4 +61,24 @@ describe("Text searching and highlighting", function() {
             '小<span class="highlight">地球</span>大宇宙'
         );
     });
+});
+
+describe("Search & Filter", function() {
+    describe("can find added header(filterHighlight)", function() {
+        it("returns null when not found", function() {
+            expect(gai([], "NONEXIST")).to.equal(null);
+        });
+        it("returns the item if found", function() {
+            let xs = [{
+                anchorId: "existed",
+            }];
+            expect(gai(xs, "existed")).to.equal(xs[0]);
+        });
+        it("returns null when id doesn't match", function() {
+            let xs = [{
+                anchorId: "existed",
+            }];
+            expect(gai(xs, "wrongname")).to.equal(null);
+        });
+    })
 });

@@ -27,7 +27,7 @@
         <ul>
             <li ng-repeat="match in indices | filterHighlight:searchTerm:keywords">
                 <h5><a class="anchor" ng-click="jumpTo(match.anchorId)">{{ match.anchorText }}</a></h5>
-                <p class="match-text" ng-bind-html="match.text"></p>
+                <p ng-repeat="text in match.texts" class="match-text" ng-bind-html="text"></p>
             </li>
         </ul>
     </div>

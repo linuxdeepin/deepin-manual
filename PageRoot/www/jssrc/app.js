@@ -2,6 +2,7 @@
 
 let {
     searchHighlight,
+    getAnchorItem,
 } = require("./utils");
 
 let app = angular.module("DManual", ["General", "gettext", "ngAnimate", "cfp.hotkeys"]);
@@ -29,11 +30,16 @@ app.filter("filterHighlight", function($log, $sce) {
             nextText: for (let text of texts) {
                 text = searchHighlight(text, keywords);
                 if (text) {
-                    result.push({
-                        anchorId: index.headerId,
-                        anchorText: index.headerText,
-                        text: $sce.trustAsHtml(text),
-                    });
+                    let anchorItem = getAnchorItem(result, index.headerId);
+                    if (!anchorItem) {
+                        result.push({
+                            anchorId: index.headerId,
+                            anchorText: index.headerText,
+                            texts: [],
+                        });
+                        anchorItem = result[result.length - 1];
+                    }
+                    anchorItem.texts.push($sce.trustAsHtml(text));
                     continue nextHeader;
                 }
             }
