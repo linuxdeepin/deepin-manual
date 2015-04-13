@@ -101,6 +101,20 @@ let parseNavigationItems = function(tokens) {
                 break;
             }
             case "paragraph": {
+                let firstThree = token.text.substr(0, 3);
+                let shouldBreak = false;
+                switch (firstThree) {
+                    case "!←←":
+                    case "←!→":
+                    case "→→!": {
+                        shouldBreak = true;
+                    }
+                    default: {}
+                }
+                if (shouldBreak) {
+                    // columns control characters
+                    break;
+                }
                 _addText(token.text);
                 break;
             }
@@ -247,6 +261,19 @@ let getPlainRenderer = function() {
         return text;
     };
     renderer.paragraph = function(text) {
+        let firstThree = text.substr(0, 3);
+        let shouldBreak = false;
+        switch (firstThree) {
+            case "!←←":
+            case "←!→":
+            case "→→!": {
+                shouldBreak = true;
+            }
+            default: {}
+        }
+        if (shouldBreak) {
+            return "";
+        }
         return text;
     };
 
@@ -311,6 +338,24 @@ let getHTMLRenderer = function() {
         }
         out += '>' + text + '</a>';
         return out;
+    };
+
+    renderer.paragraph = function(text) {
+        let firstThree = text.substr(0, 3);
+        switch (firstThree) {
+            case "!←←": {
+                return `<table class="columns"><tbody><tr><td>`;
+            }
+            case "←!→": {
+                return `</td><td>`;
+            }
+            case "→→!": {
+                return `</td></tr></tbody></table>\n`;
+            }
+            default: {
+                return `<p>${text}</p>\n`;
+            }
+        }
     };
     return renderer;
 };

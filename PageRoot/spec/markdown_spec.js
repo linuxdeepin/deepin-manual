@@ -155,6 +155,25 @@ describe("Markdown HTML Renderer", function() {
 
         });
     });
+
+    it("understands column control characters", function() {
+        let dict = {
+            "!←←": `<table class="columns"><tbody><tr><td>`,
+            "!←← ": `<table class="columns"><tbody><tr><td>`,
+            "←!→": `</td><td>`,
+            "←!→\t": `</td><td>`,
+            "→→!": `</td></tr></tbody></table>\n`,
+            "→→! Useless Tail": `</td></tr></tbody></table>\n`,
+        };
+        for (let k in dict) {
+            let v = dict[k];
+            expect(r.paragraph(k)).to.equal(v);
+        }
+    });
+
+    it("ignores non column control characters", function() {
+        expect(r.paragraph("BIG-NEWS!")).to.equal("<p>BIG-NEWS!</p>\n");
+    });
 });
 
 describe("Markdown Plain Renderer", function() {
@@ -269,6 +288,18 @@ describe("Markdown Plain Renderer", function() {
         `;
         expect(pr.html(html)).to.equal("A Detagging Test 1 2 5 3 8 这一切都结束了");
     });
+
+    it("ignores column control characters", function() {
+        for (let txt of ["!←←", "←!→", "→→!", "→→! TAIL"]) {
+            expect(pr.paragraph(txt)).to.equal("");
+        }
+    });
+
+    it("shouldn't ignore non-column control characters", function() {
+        let txt = "Hello world!";
+        expect(pr.paragraph(txt)).to.equal(txt);
+    })
+
 });
 
 describe("Navigation Parsing", function() {

@@ -80,5 +80,5 @@ describe("Search & Filter", function() {
             }];
             expect(gai(xs, "wrongname")).to.equal(null);
         });
-    })
+    });
 });
