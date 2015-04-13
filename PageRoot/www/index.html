@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="./style/index.css" />
     <title>{{appInfo.name}} - {{ 'TEXT_APP_TITLE'|translate }}</title>
 </head>
-<body class="isOverview">
+<body class="isOverview" ng-class="{'compact-mode': isCompactMode}">
 <div id="OuterFrame" ng-style="outerFrameStyle">
     <div id="MoveHandle"></div>
 </div>

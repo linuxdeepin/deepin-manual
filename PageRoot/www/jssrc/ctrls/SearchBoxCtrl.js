@@ -4,13 +4,6 @@ angular.module("DManual")
        .controller("SearchBoxCtrl", function($scope, $rootScope, $animate, $timeout, $log, $window) {
             $scope.headers = [];
             $scope.searchBoxVisible = false;
-            let timer = null;
-            let inactiveTimerStart = function() {
-                $timeout.cancel(timer);
-                timer = $timeout(function () {
-                    $scope.searchBoxVisible = false;
-                }, 3000);
-            };
 
             $scope.doSearch = function($innerScope, $event){
                 if ($event.keyCode == 13) {
@@ -29,17 +22,10 @@ angular.module("DManual")
             });
 
             $scope.showSearch = function(){
-                $timeout.cancel(timer);
-                timer = $timeout(function() {
-                    $scope.searchBoxVisible = true;
-                    inactiveTimerStart();
-                }, 1500);
+                $scope.searchBoxVisible = true;
             }
             $scope.hideSearch = function(){
-                $timeout.cancel(timer);
-                timer = $timeout(function() {
-                    $scope.searchBoxVisible = false;
-                }, 1500);
+                $scope.searchBoxVisible = false;
             }
 
             $window.addEventListener("IFrameShowEventProxy", function() {
