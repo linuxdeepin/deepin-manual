@@ -146,4 +146,8 @@ angular.module("DManual")
         $scope.$on("searchTermChanged", function(event, value) {
             $scope.isSearchmode = value && value.length > 0;
         });
+
+        $scope.$on("navigationBarToggled", function(event, value) {
+            $scope.isCompactMode = value;
+        });
     });

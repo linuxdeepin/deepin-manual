@@ -1,4 +1,4 @@
-<nav id="NavigationBar" ng-controller="NavigationBarCtrl">
+<nav id="NavigationBar" ng-controller="NavigationBarCtrl" ng-class="{collapsed: isCollapsed}">
     <div id="NavLogoBox">
         <a ng-click="jumpTo()">
             <img id="AppLogo" ng-src="{{appInfo.markdownDir}}/{{appInfo.icon}}" />
@@ -28,5 +28,8 @@
                 </ol>
             </nav>
         </ol>
+    </div>
+    <div id="NavigationSwitch" class="navigation-switch">
+        <a href="javascript:;" ng-click="switchNavigationMode();"></a>
     </div>
 </nav>

@@ -40,7 +40,7 @@ $navBgcolor: #252628;
 
 // page view
 $pvNavBarWidth: 200px;
-
+$pvNavBarCompactWidth: 48px;
 
 // over view
 $ovNavBarHeight: 84px;
@@ -85,6 +85,7 @@ input[type='search'] {
 #NavigationBar {
     background-color: $navBgcolor;
     color: #b5b5b6;
+    position: relative;
 
     ol {
         list-style-type: none;
@@ -220,7 +221,7 @@ input[type='search'] {
     // }
 
     #SideNavigationItems { // ol
-        padding-left: 45px;
+        padding-left: 40px;
         margin: 0 auto;
         overflow: hidden;
         height: 100%;
@@ -241,9 +242,6 @@ input[type='search'] {
                 width: 30px;
                 height: 30px;
                 left: -44px;
-                .isDebugging & {
-                    background-color: skyblue;
-                }
             }
         }
 
@@ -317,8 +315,12 @@ input[type='search'] {
         position: absolute;
         top: 28px;
         width: 100%;
+        left: 30px;
         height: 26px;
         margin-left: $pvNavBarWidth;
+    }
+    .compact-mode & {
+        margin-left: $pvNavBarCompactWidth;
     }
 
     .isDebugging & {
@@ -506,7 +508,40 @@ $logoHeight: 48px;
             display: none;
         }
         #SideNavigationItems {
-            padding-left: 54px;
+            padding-left: 52px;
         }
-    }   
+        nav nav {
+            display: none;
+        }
+    }
+}
+
+.navigation-switch {
+    position: absolute;
+    right: -30px;
+    top: 18px;
+    width: 30px;
+    height: 25px;
+    .isDebugging & {
+        background: orange;
+        a {
+            display: block;
+            width: 20px;
+            height: 100%;
+            background: fuchsia;
+        }
+    }
+}
+
+
+.isDebugging {
+    #SideNavigationItems .level2 img {
+        background-color: skyblue;
+    }
+}
+
+.compact-mode {
+    #Content {
+        width: calc(100% - #{$pvNavBarCompactWidth});
+    }
 }

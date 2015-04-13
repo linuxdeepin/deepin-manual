@@ -1,12 +1,11 @@
 "use strict";
 
 angular.module("DManual")
-    .controller("NavigationBarCtrl", function($scope, $log, $window) {
+    .controller("NavigationBarCtrl", function($scope, $rootScope, $log, $window) {
         let sideNavItems = document.getElementById("SideNavigationItems");
         angular.element(sideNavItems).on("wheel", function(event) {
             sideNavItems.scrollTop -= event.wheelDeltaY;
         });
-
         // auto-resize
         let container = document.getElementById("Container");
         let logoBox = document.getElementById("NavLogoBox");
@@ -25,4 +24,9 @@ angular.module("DManual")
             updateSidebar();
             $scope.$apply();
         });
+        $scope.isCollapsed = false;
+        $scope.switchNavigationMode = function() {
+            $scope.isCollapsed = !$scope.isCollapsed;
+            $rootScope.$broadcast("navigationBarToggled", $scope.isCollapsed);
+        }
     });
