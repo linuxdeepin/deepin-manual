@@ -541,17 +541,15 @@ $logoHeight: 48px;
     height: 25px;
     a {
         display: block;
-        width: 20px;
+        width: 15px;
         height: 100%;
+        background: url("../resources/controls/bookmark.png") right top;
         &.collapsed{
-            width: 30px;
+            width: 25px;
         }
     }
     .debug-mode & {
         background: orange;
-        a {
-            background: fuchsia;
-        }
     }
 }
 
