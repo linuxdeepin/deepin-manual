@@ -8,10 +8,22 @@ msgstr ""
 msgid "TEXT_APP_TITLE"
 msgstr ""
 
+#: index.html:26
+msgid "TEXT_CLOSE"
+msgstr ""
+
 #: SearchBox.html:7
 msgid "TEXT_ENTER_KEYWORDS"
 msgstr ""
 
 #: NavigationBar.html:7
 msgid "TEXT_MANUAL"
+msgstr ""
+
+#: index.html:22
+msgid "TEXT_MAXIMIZE"
+msgstr ""
+
+#: index.html:18
+msgid "TEXT_MINIMIZE"
 msgstr ""

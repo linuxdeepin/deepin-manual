@@ -16,6 +16,10 @@ msgstr ""
 msgid "TEXT_APP_TITLE"
 msgstr "深度帮助手册"
 
+#: index.html:26
+msgid "TEXT_CLOSE"
+msgstr "关闭"
+
 #: SearchBox.html:7
 msgid "TEXT_ENTER_KEYWORDS"
 msgstr "请输入搜索关键字"
@@ -24,3 +28,10 @@ msgstr "请输入搜索关键字"
 msgid "TEXT_MANUAL"
 msgstr "帮助手册"
 
+#: index.html:22
+msgid "TEXT_MAXIMIZE"
+msgstr "最大化"
+
+#: index.html:18
+msgid "TEXT_MINIMIZE"
+msgstr "最小化"
