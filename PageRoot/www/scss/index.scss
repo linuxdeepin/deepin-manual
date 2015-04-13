@@ -55,6 +55,7 @@ html, body {
     margin: 0 !important;
     padding: 0 !important;
     outline: 0 !important;
+    font-family: "Source Han Sans SC",Arial,sans-serif;
 }
 
 body {
@@ -186,13 +187,19 @@ input[type='search'] {
 
     #NavLogoBox {
         height: $navLogoBoxHeight;
+        > a {
+            margin-left: 0;
+        }
+        img {
+            margin-right: 6px;
+        }
     }
 
     #SideNavigationBar {
         display: block;
         overflow: hidden !important;
         height: 100%;
-        font-size: 14px;
+        font-size: 13px;
     }
 
     #Content {
@@ -213,11 +220,15 @@ input[type='search'] {
     // }
 
     #SideNavigationItems { // ol
-        padding-left: 40px;
+        padding-left: 45px;
         margin: 0 auto;
         overflow: hidden;
         height: 100%;
         width: 136px;
+
+        nav {
+            margin: 2px 0;
+        }
 
         li {
             line-height: 2em;
@@ -229,7 +240,7 @@ input[type='search'] {
                 position: absolute;
                 width: 30px;
                 height: 30px;
-                left: -32px;
+                left: -44px;
                 .isDebugging & {
                     background-color: skyblue;
                 }
@@ -486,4 +497,16 @@ $logoHeight: 48px;
 
 .search-input::-webkit-search-cancel-button:active {
     background-image: url("../resources/controls/clear_press.png");
+}
+
+.isPageview {
+    .collapsed#NavigationBar {
+        width: 48px;
+        #NavLogoBox span {
+            display: none;
+        }
+        #SideNavigationItems {
+            padding-left: 54px;
+        }
+    }   
 }
