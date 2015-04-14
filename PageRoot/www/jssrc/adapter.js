@@ -43,11 +43,28 @@ angular.module("DManual")
                 }
             }
         };
+        let setTitle = function(title) {
+            switch (getShellType()) {
+                case "Oxide": {
+                    if ($window.oxide) {
+                        $window.oxide.sendMessageNoReply("JSMESSAGE", title);
+                    } else {
+                        $log.warn("Oxide object doesn't exist, so setTitle will be noop");
+                    }
+                    break;
+                }
+                default: {
+                    $log.warn("No shell support for setTitle");
+                }
+
+            }
+        };
         let result = {
             setMarkdown: setMarkdown,
             getShellType: getShellType,
             setDebugMode: setDebugMode,
             showTooltip: showTooltip,
+            setTitle: setTitle,
         };
         $window.adapter = result;
         return result;
