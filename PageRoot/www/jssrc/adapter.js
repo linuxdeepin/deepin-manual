@@ -28,10 +28,26 @@ angular.module("DManual")
                 body.classList.remove("debug-mode");
             }
         };
+        let showTooltip = function(text) {
+            switch (getShellType()) {
+                case "Oxide": {
+                    if ($window.oxide) {
+                        $window.oxide.sendMessageNoReply("JSMESSAGE", text);
+                    } else {
+                        $log.warn("Oxide object doesn't exist, so showTooltip will be noop");
+                    }
+                    break;
+                }
+                default: {
+                    $log.warn("No shell support for showTooltip");
+                }
+            }
+        };
         let result = {
             setMarkdown: setMarkdown,
             getShellType: getShellType,
             setDebugMode: setDebugMode,
+            showTooltip: showTooltip,
         };
         $window.adapter = result;
         return result;
