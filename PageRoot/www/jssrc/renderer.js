@@ -284,26 +284,17 @@ let getHTMLRenderer = function() {
     let renderer = new marked.Renderer();
 
     renderer.heading = function(text, level, raw) {
+        if (level === 1) {
+            return '';
+        }
         if (level > MAX_NAV_HEADER_LEVEL) {
             // Do not give h4, h5, h6 anchors.
-            return '<h' + level + '>'
-                + text
-                + '</h' + level + '>\n';
+            return `<h${level}>${text}</h${level}>\n`;
         }
-
-        let result = "";
 
         let extracted = extractHeaderIcon(text, level);
 
-        result += '<h' + level + ' id="'
-        + normalizeAnchorName(extracted.text)
-        + '">';
-        if (extracted.icon) {
-            result += '<img class="HeaderIcon" src="' + extracted.icon + '" />';
-        }
-        result += extracted.text
-        + '</h' + level + '>\n';
-        return result;
+        return `<h${level} id="${normalizeAnchorName(extracted.text)}">${extracted.text}</h${level}>\n`;
     };
 
     renderer.image = function(href, title, text) {

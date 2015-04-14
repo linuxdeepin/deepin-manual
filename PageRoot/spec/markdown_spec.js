@@ -9,15 +9,19 @@ let p = Renderer.processMarkdown;
 
 describe("Markdown HTML Renderer", function() {
     describe("Headers", function() {
-        it("understands h1 - h3", function() {
+        it("understands h1", function() {
             let result = r.heading("This is a test", 1, "This is a test");
-            expect(result).to.equal('<h1 id="This-is-a-test">This is a test</h1>\n');
-
-            result = r.heading("This is header2", 2, "This is header2");
-            expect(result).to.equal('<h2 id="This-is-header2">This is header2</h2>\n');
-
-            result = r.heading("This is header3", 3, "This is header3");
-            expect(result).to.equal('<h3 id="This-is-header3">This is header3</h3>\n');
+            expect(result).to.equal('');
+        });
+        it("understands h2 - h3", function() {
+            {
+                let result = r.heading("This is header2", 2, "This is header2");
+                expect(result).to.equal('<h2 id="This-is-header2">This is header2</h2>\n');
+            }
+            {
+                let result = r.heading("This is header3", 3, "This is header3");
+                expect(result).to.equal('<h3 id="This-is-header3">This is header3</h3>\n');
+            }
         });
 
         it("understands h4 - h6", function() {
@@ -51,53 +55,6 @@ describe("Markdown HTML Renderer", function() {
     });
 
     describe("Images & Icons", function() {
-        describe("Icons in headers", function() {
-            it("gives h1 icons", function() {
-                let src = "# H1|1.png|\n";
-                let result = p(src).html;
-                expect(result).to.equal('<h1 id="H1"><img class="HeaderIcon" src="1.png" />H1</h1>\n');
-            });
-
-            it("gives h2 icons", function() {
-                let src = "# H1\n## H2|2.png|\n";
-                let result = p(src).html;
-                expect(result).to.equal('<h1 id="H1">H1</h1>\n<h2 id="H2"><img class="HeaderIcon" src="2.png" />H2</h2>\n');
-            });
-
-            it("doesn't give h3 - h6 icons", function() {
-                {
-                    let src = "# H1\n## H2\n### H3|3.png|\n";
-                    let result = p(src).html;
-                    expect(result).to.equal(
-                        '<h1 id="H1">H1</h1>\n' +
-                        '<h2 id="H2">H2</h2>\n' +
-                        '<h3 id="H3-3.png-">H3|3.png|</h3>\n'
-                    );
-                }
-                {
-                    let src = "#### H4|4.png|\n";
-                    let result = p(src).html;
-                    expect(result).to.equal(
-                        '<h4>H4|4.png|</h4>\n'
-                    );
-                }
-                {
-                    let src = "##### H5|5.png|\n";
-                    let result = p(src).html;
-                    expect(result).to.equal(
-                        '<h5>H5|5.png|</h5>\n'
-                    );
-                }
-                {
-                    let src = "###### H6|6.png|\n";
-                    let result = p(src).html;
-                    expect(result).to.equal(
-                        '<h6>H6|6.png|</h6>\n'
-                    );
-                }
-            });
-        });
-
         it("understands inline icons", function() {
             let src = "![Alt](alt.png)";
             let result = p(src).html;

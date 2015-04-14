@@ -68,6 +68,30 @@ li {
     color: rgb(80, 80, 80);
 }
 
+// Header counters
+body {
+    counter-reset: level2;
+}
+
+h2, h3 {
+    list-style: decimal;
+}
+
+h2 {
+    counter-reset: level3;
+}
+
+h2::before {
+    counter-increment: level2;               /* Increment the section counter*/
+    content: counters(level2, ".") ". "; /* Display the counter */
+}
+
+h3::before {
+    counter-increment: level3;               /* Increment the section counter*/
+    content: counters(level2, ".") "." counters(level3, ".") " "; /* Display the counter */
+}
+// end of Header counters
+
 h1 {
     // font-family: "Source Han Sans SC Normal";
     font-weight: bold;
