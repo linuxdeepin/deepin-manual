@@ -1,7 +1,7 @@
 "use strict";
 
 angular.module("DManual")
-    .controller("NavigationBarCtrl", function($scope, $rootScope, $log, $window) {
+    .controller("NavigationBarCtrl", function($scope, $rootScope, $log, $window, AdapterService) {
         let sideNavItems = document.getElementById("SideNavigationItems");
         angular.element(sideNavItems).on("wheel", function(event) {
             sideNavItems.scrollTop -= event.wheelDeltaY;
@@ -29,4 +29,5 @@ angular.module("DManual")
             $scope.isCollapsed = !$scope.isCollapsed;
             $rootScope.$broadcast("navigationBarToggled", $scope.isCollapsed);
         }
+        $scope.showTooltip = AdapterService.showTooltip;
     });
