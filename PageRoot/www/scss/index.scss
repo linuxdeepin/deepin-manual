@@ -344,6 +344,15 @@ input[type='search'] {
     }
 }
 
+#NoSearchResults {
+    display: flex;
+    height: 100%;
+    width: 100%;
+
+    #NoSearchResultsTextBox {
+        margin: auto;
+    }
+}
 
 // Logo related
 $logoHeight: 48px;
