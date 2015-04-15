@@ -3,6 +3,7 @@ import QtQuick.Controls 1.2
 import com.canonical.Oxide 1.0
 
 Rectangle {
+    id: rect
     width: 946
     height: 600
     property string oxideContext: "messaging://"
