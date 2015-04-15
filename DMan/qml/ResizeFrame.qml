@@ -1,4 +1,4 @@
-import QtQuick 2.1
+import QtQuick 2.2
 import QtQuick.Window 2.1
 import QtGraphicalEffects 1.0
 
@@ -13,9 +13,12 @@ Window {
     property string borderColor: "#AAAEC1D5"
 
     Rectangle {
-        anchors.fill: parent
         color: "transparent"
         border.color: borderColor
         border.width: 2
+        x: frameView.frameGeometry.x
+        y: frameView.frameGeometry.y
+        width: frameView.frameGeometry.width
+        height: frameView.frameGeometry.height
     }
 }

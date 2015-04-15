@@ -3,7 +3,7 @@
 from enum import IntEnum, unique
 from collections import namedtuple
 
-from PyQt5.Qt import QPoint, QRect, Qt, QUrl, pyqtSignal, pyqtSlot, QObject, QTimer
+from PyQt5.Qt import QPoint, QRect, Qt, QUrl, pyqtSignal, pyqtSlot, QObject, QTimer, pyqtProperty
 from PyQt5.QtCore import QEvent
 from PyQt5.QtGui import QGuiApplication
 from PyQt5.QtQuick import QQuickView
@@ -97,6 +97,8 @@ def resizeTo(*, resizeEdge: ResizingEdges, geo: QRect, pos: QPoint, gPos: QPoint
 
 
 class FakeFrame(QQmlApplicationEngine):
+    FrameGeometryUpdated = pyqtSignal()
+
     def __init__(self, parent):
         # Make Qt not aware of FakeFrame has a parent
         super().__init__(None)
@@ -104,6 +106,7 @@ class FakeFrame(QQmlApplicationEngine):
         self.__parent.ResizeStart.connect(self.onResizeStart)
         self.__parent.ResizeEnd.connect(self.onResizeEnd)
         self.__parent.ResizeSizeUpdated.connect(self.onResizeSizeUpdated)
+        self._frameGeometry = None
         self.objectCreated.connect(self.onCreated)
         self._maskWin = None
         self.load(QUrl.fromLocalFile("./qml/ResizeFrame.qml"))
@@ -125,11 +128,17 @@ class FakeFrame(QQmlApplicationEngine):
             geo.setWidth(geo.width() + 2)
             geo.setLeft(geo.left() - 1)
             geo.setTop(geo.top() - 1)
-            self._maskWin.setGeometry(geo)
+            self._frameGeometry = geo
+            self.FrameGeometryUpdated.emit()
 
     @pyqtSlot(QObject, QUrl)
     def onCreated(self, obj, url):
         self._maskWin = obj
+        self.rootContext().setContextProperty("frameView", self)
+
+    @pyqtProperty(QRect, notify = FrameGeometryUpdated)
+    def frameGeometry(self):
+        return self._frameGeometry
 
 
 class QmlResizable(QQuickView):
@@ -204,7 +213,8 @@ class QmlResizable(QQuickView):
         else:
             inDragZone = cursorInDragRegion(pos, self._dragHeight)
             if self._isBeingDragged:
-                self.setPosition(qMouseEvent.globalPos() - self._dragOffset)
+                newPos = qMouseEvent.globalPos() - self._dragOffset
+                self.setPosition(newPos)
             else:
                 if (not inDragZone) and (not resizeZone):
                     self.unsetCursor()
