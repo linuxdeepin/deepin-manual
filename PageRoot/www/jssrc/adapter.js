@@ -74,7 +74,7 @@ angular.module("DManual")
         $window.adapter = result;
         return result;
     })
-    .run(function($log, $injector, AdapterService, $window) {
+    .run(function($log, $injector, AdapterService, $window, $interval) {
         let shell = AdapterService.getShellType();
         let body = document.getElementsByTagName("body")[0];
         switch (shell) {
@@ -126,6 +126,7 @@ angular.module("DManual")
                 break;
             }
             case "Oxide": {
+                let userScriptSyncTimer = null;
                 let sendMessage = function(id, args){
                     let newEvent = new CustomEvent("OxideSendMessage", {
                         detail: {
@@ -207,17 +208,27 @@ angular.module("DManual")
                             AdapterService.setDebugMode(true);
                             break;
                         }
+                        case "AdapterStatus": {
+                            if (payload.msg === "pong") {
+                                oxideWrap.sendMessageNoReply("JSMESSAGE", {
+                                    type: "AdapterStatus",
+                                    body: "adapter_ready",
+                                });
+                                $interval.cancel(userScriptSyncTimer);
+                            }
+                            break;
+                        }
                         default: {
                             console.warn(`Unhandled msg from QML: ${payload}`);
                         }
                     }
                 });
-                setTimeout(function() {
+                userScriptSyncTimer = $interval(function() {
                     oxideWrap.sendMessageNoReply("JSMESSAGE", {
                         type: "AdapterStatus",
-                        body: "adapter_ready",
+                        body: "ping",
                     });
-                }, 0);
+                }, 20);
                 break;
             }
             default: {

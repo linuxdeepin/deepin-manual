@@ -63,23 +63,38 @@ Rectangle {
                             break;
                         }
                     }
+                    break;
                 }
                 case "AdapterStatus": {
-                    if (payload.body === "adapter_ready") {
-                        console.log("Adapter Ready");
-                        webView.rootFrame.sendMessage(oxideContext, usMsgId, {
-                            detail: {
-                                type: "SetMarkdown",
-                                msg: DManBridge.mdUrl,
-                            },
-                        })
-                        webView.rootFrame.sendMessage(oxideContext, usMsgId, {
-                            detail: {
-                                type: "Debug",
-                                msg: DManBridge.debugMode,
-                            },
-                        })
-                        break;
+                    switch (payload.body) {
+                        case "ping": {
+                            webView.rootFrame.sendMessage(oxideContext, usMsgId, {
+                                detail: {
+                                    type: "AdapterStatus",
+                                    msg: "pong",
+                                },
+                            })
+                            break
+                        }
+                        case "adapter_ready": {
+                             console.log("Adapter Ready");
+                             webView.rootFrame.sendMessage(oxideContext, usMsgId, {
+                                 detail: {
+                                     type: "SetMarkdown",
+                                     msg: DManBridge.mdUrl,
+                                 },
+                             })
+                             webView.rootFrame.sendMessage(oxideContext, usMsgId, {
+                                 detail: {
+                                     type: "Debug",
+                                     msg: DManBridge.debugMode,
+                                 },
+                             })
+                             break;
+                         }
+                         default: {
+                            console.warn("Didn't handle AdapterStatus, " + payload.body)
+                         }
                     }
                 }
                 case "SetTitle": {
