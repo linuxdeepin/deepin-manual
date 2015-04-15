@@ -94,3 +94,7 @@ class MainView(StrictQuickView):
     @pyqtSlot()
     def slotClose(self):
         self.close()
+
+    @pyqtSlot(str)
+    def showTooltip(self, tooltip: str):
+        print("TODO: showTooltip", tooltip)

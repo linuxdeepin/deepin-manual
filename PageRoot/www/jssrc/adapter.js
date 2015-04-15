@@ -33,7 +33,7 @@ angular.module("DManual")
                 case "Oxide": {
                     if ($window.oxide) {
                         $window.oxide.sendMessageNoReply("JSMESSAGE", {
-                            type: "showTooltip",
+                            type: "ShowTooltip",
                             body: text,
                         });
                     } else {

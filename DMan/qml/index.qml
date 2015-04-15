@@ -86,6 +86,10 @@ Rectangle {
                     DManBridge.setTitle(payload.body)
                     break
                 }
+                case "ShowTooltip": {
+                    DManBridge.showTooltip(payload.body)
+                    break
+                }
                 default: {
                     console.warn("Unknown msg: " + msg)
                 }
