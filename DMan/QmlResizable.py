@@ -102,11 +102,12 @@ class FakeFrame(QQmlApplicationEngine):
     def __init__(self, parent):
         # Make Qt not aware of FakeFrame has a parent
         super().__init__(None)
+        self.rootContext().setContextProperty("frameView", self)
         self.__parent = parent
         self.__parent.ResizeStart.connect(self.onResizeStart)
         self.__parent.ResizeEnd.connect(self.onResizeEnd)
         self.__parent.ResizeSizeUpdated.connect(self.onResizeSizeUpdated)
-        self._frameGeometry = None
+        self._frameGeometry = QRect(0, 0, 0, 0)
         self.objectCreated.connect(self.onCreated)
         self._maskWin = None
         self.load(QUrl.fromLocalFile("./qml/ResizeFrame.qml"))
@@ -134,7 +135,7 @@ class FakeFrame(QQmlApplicationEngine):
     @pyqtSlot(QObject, QUrl)
     def onCreated(self, obj, url):
         self._maskWin = obj
-        self.rootContext().setContextProperty("frameView", self)
+
 
     @pyqtProperty(QRect, notify = FrameGeometryUpdated)
     def frameGeometry(self):
