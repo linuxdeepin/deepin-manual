@@ -24,5 +24,6 @@ debian/*.substvars
 # Qt creator
 /*.config
 /*.creator
+/*.creator.user
 /*.files
 /*.includes
