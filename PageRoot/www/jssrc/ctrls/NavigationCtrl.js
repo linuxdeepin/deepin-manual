@@ -28,6 +28,12 @@ angular.module("DManual")
         $scope.switchNavigationMode = function() {
             $scope.isCollapsed = !$scope.isCollapsed;
             $rootScope.$broadcast("navigationBarToggled", $scope.isCollapsed);
+        };
+        $scope.showTooltip = function(tooltip, $event) {
+            let target = $event.target;
+
+            AdapterService.showTooltip(
+                tooltip,
+                target.getBoundingClientRect());
         }
-        $scope.showTooltip = AdapterService.showTooltip;
     });

@@ -28,13 +28,20 @@ angular.module("DManual")
                 body.classList.remove("debug-mode");
             }
         };
-        let showTooltip = function(text) {
+        let showTooltip = function(text, rect) {
+            let x = rect.left;
+            let y = rect.top + rect.height / 2;
+
             switch (getShellType()) {
                 case "Oxide": {
                     if ($window.oxide) {
                         $window.oxide.sendMessageNoReply("JSMESSAGE", {
                             type: "ShowTooltip",
-                            body: text,
+                            body: {
+                                text: text,
+                                x: x,
+                                y: y,
+                            },
                         });
                     } else {
                         $log.warn("Oxide object doesn't exist, so showTooltip will be noop");

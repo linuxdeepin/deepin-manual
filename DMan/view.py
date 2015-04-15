@@ -1,6 +1,6 @@
 # -*- coding: utf-8 -*-
 
-from PyQt5.QtCore import QUrl, Qt, pyqtSlot, pyqtSignal, pyqtProperty
+from PyQt5.QtCore import QUrl, Qt, pyqtSlot, pyqtSignal, pyqtProperty, QRect
 from PyQt5.QtQuick import QQuickView
 
 
@@ -95,6 +95,6 @@ class MainView(StrictQuickView):
     def slotClose(self):
         self.close()
 
-    @pyqtSlot(str)
-    def showTooltip(self, tooltip: str):
-        print("TODO: showTooltip", tooltip)
+    @pyqtSlot(result = QRect)
+    def currentGeometry(self):
+        return self.geometry()

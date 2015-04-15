@@ -11,6 +11,45 @@ Rectangle {
 
     property var starturl: Qt.resolvedUrl("../../PageRoot/www/index.html")
 
+    property var calculateTextComponent : Component {
+        Text {
+            visible: false
+        }
+    }
+    function getStringPixelSize(preText,fontPixelSize) {
+        var tmpText = calculateTextComponent.createObject(null, { "text": preText , "font.pixelSize": fontPixelSize})
+        var width = tmpText.width
+        return width
+    }
+
+    property var singleLineTipComponent: Qt.createComponent("SingleLineTip.qml");
+    property var singleLineTipPage;
+
+    function showTooltip(toolTip, x, y)
+    {
+        var width = getStringPixelSize(toolTip, 13) + 28
+        x -= width
+        y -= 12 // half the length of the height of the tooltip
+        if (!singleLineTipPage)
+        {
+            singleLineTipPage = singleLineTipComponent.createObject(undefined)
+            singleLineTipPage.x = x
+            singleLineTipPage.y = y
+            singleLineTipPage.toolTip = toolTip
+            singleLineTipPage.width = width
+            singleLineTipPage.destroyInterval = -1
+            singleLineTipPage.showTipAtRight()
+        }
+    }
+
+    function closeTooltip()
+    {
+        if (singleLineTipPage) {
+            singleLineTipPage.destroyTip()
+            singleLineTipPage = null
+        }
+    }
+
     WebView {
         id: webView
         anchors.fill: parent
@@ -102,7 +141,15 @@ Rectangle {
                     break
                 }
                 case "ShowTooltip": {
-                    DManBridge.showTooltip(payload.body)
+                    if (payload.body.text) {
+                        var tooltip = payload.body.text
+                        var geo = DManBridge.currentGeometry()
+                        var x = payload.body.x + geo.x
+                        var y = payload.body.y + geo.y
+                        showTooltip(tooltip, x, y)
+                    } else {
+                        closeTooltip()
+                    }
                     break
                 }
                 default: {

@@ -13,7 +13,7 @@
             <nav ng-repeat="anchor in anchors">
                 <li class="level2">
                     <a ng-click="jumpTo(anchor.id)">
-                        <img ng-src="{{appInfo.markdownDir}}/{{anchor.icon}}" ng-mouseenter="showTooltip(anchor.text);" ng-mouseleave="showTooltip('');" />
+                        <img ng-src="{{appInfo.markdownDir}}/{{anchor.icon}}" ng-mouseenter="showTooltip(anchor.text, $event);" ng-mouseleave="showTooltip('', $event);" />
                         <span>{{anchor.text}}</span>
                     </a>
                 </li>

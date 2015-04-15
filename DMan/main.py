@@ -4,7 +4,8 @@
 import os
 import sys
 
-from PyQt5.QtGui import QGuiApplication, QIcon
+from PyQt5.QtWidgets import QApplication
+from PyQt5.QtGui import QIcon
 from PyQt5.QtCore import QtMsgType, QMessageLogContext, QtDebugMsg, QtWarningMsg, QtCriticalMsg, \
     QtFatalMsg, qInstallMessageHandler
 
@@ -28,7 +29,7 @@ def QtMsgHandler(msgType: QtMsgType, context: QMessageLogContext, msg: str):
           file = sys.stdout if msgType in (QtDebugMsg, QtWarningMsg) else sys.stderr)
 
 
-class DManApp(QGuiApplication):
+class DManApp(QApplication):
     def __init__(self, args):
         super().__init__(args)
         self.setWindowIcon(QIcon.fromTheme("DManual"))
