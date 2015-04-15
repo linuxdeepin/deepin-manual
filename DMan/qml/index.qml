@@ -152,6 +152,10 @@ Rectangle {
                     }
                     break
                 }
+                case "OpenExternalBrowser": {
+                    console.log("TODO: OpenExternalBrowser")
+                    break
+                }
                 default: {
                     console.warn("Unknown msg: " + msg)
                 }

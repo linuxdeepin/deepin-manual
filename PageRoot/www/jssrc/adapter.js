@@ -71,12 +71,31 @@ angular.module("DManual")
                 }
             }
         };
+        let openExternalBrowser = function() {
+            switch (getShellType()) {
+                case "Oxide": {
+                    if ($window.oxide) {
+                        $window.oxide.sendMessageNoReply("JSMESSAGE", {
+                            type: "OpenExternalBrowser",
+                            body: "",
+                        });
+                    } else {
+                        $log.warn("Oxide object doesn't exist, so openExternalBrowser will be noop");
+                    }
+                    break;
+                }
+                default: {
+                    $log.warn("No shell support for openExternalBrowser");
+                }
+            }
+        };
         let result = {
             setMarkdown: setMarkdown,
             getShellType: getShellType,
             setDebugMode: setDebugMode,
             showTooltip: showTooltip,
             setTitle: setTitle,
+            openExternalBrowser: openExternalBrowser,
         };
         $window.adapter = result;
         return result;

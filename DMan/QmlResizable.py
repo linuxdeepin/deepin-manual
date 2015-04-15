@@ -216,10 +216,6 @@ class QmlResizable(QQuickView):
             if self._isBeingDragged:
                 newPos = qMouseEvent.globalPos() - self._dragOffset
                 self.setPosition(newPos)
-            else:
-                if (not inDragZone) and (not resizeZone):
-                    self.unsetCursor()
-
         super().mouseMoveEvent(qMouseEvent)
 
     @pyqtSlot()
@@ -241,10 +237,12 @@ class QmlResizable(QQuickView):
                 self._resizePrevGeo = None
 
                 self.ResizeEnd.emit()
+                self.unsetCursor()
             if self._isBeingDragged:
                 # drag-related
                 self._isBeingDragged = False
                 self._dragOffset = None
+                self.unsetCursor()
         super().mouseReleaseEvent(qMouseEvent)
 
     def show(self):
