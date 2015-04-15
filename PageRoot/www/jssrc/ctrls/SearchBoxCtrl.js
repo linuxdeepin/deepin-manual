@@ -10,23 +10,21 @@ angular.module("DManual")
                     $rootScope.$broadcast("searchTermChanged", $scope.searchTerm);
                     return true;
                 }
-                inactiveTimerStart();
                 return false;
-            }
+            };
 
             $scope.$on("showSearchBox", function(){
                 $log.log("Search");
                 $scope.searchBoxVisible = true;
-                inactiveTimerStart();
                 document.querySelector("#SearchInput").focus();
             });
 
             $scope.showSearch = function(){
                 $scope.searchBoxVisible = true;
-            }
+            };
             $scope.hideSearch = function(){
                 $scope.searchBoxVisible = false;
-            }
+            };
 
             $window.addEventListener("IFrameShowEventProxy", function() {
                 $log.log("proxy..");
