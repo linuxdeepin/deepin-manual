@@ -1,19 +1,18 @@
 "use strict";
 
-angular.module("DManual").controller("SearchCtrl", function($scope, GSynonym, $log) {
-    $scope.searchTerm = null;
-    $scope.indices = [];
-    $scope.keywords = null;
+angular.module("DManual").controller("SearchCtrl", function($scope, GSynonym, $log, $filter) {
+    let _indices = [];
+    $scope.searchResults = [];
 
     $scope.$on("indicesSet", function(event, value) {
-        $scope.indices = value;
+        _indices = value;
     });
     $scope.$on("searchTermChanged", function(event, value) {
         let keywords = [].concat(GSynonym.lookup(value));
         if (value) {
             keywords = keywords.concat(value.split(" "));
         }
-        $scope.keywords = keywords;
-        $scope.searchTerm = value;
+        $scope.searchResults = $filter("filterHighlight")
+                (_indices, value, keywords);
     });
 });

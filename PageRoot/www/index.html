@@ -38,12 +38,16 @@
                  id="Overview"
                  ng-include="'./partials/Overview.html'"></section>
         <div id="Search" ng-show="isSearchmode" ng-controller="SearchCtrl">
-            <ul>
-                <li ng-repeat="match in indices | filterHighlight:searchTerm:keywords">
+            <ul id="SearchResultsContainer" ng-if="searchResults.length">
+                <li ng-repeat="match in searchResults">
                     <h5><a class="anchor" ng-click="jumpTo(match.anchorId)">{{ match.anchorText }}</a></h5>
                     <p ng-repeat="text in match.texts" class="match-text" ng-bind-html="text"></p>
                 </li>
             </ul>
+            <div id="NoSearchResults" ng-if="!searchResults.length" translate>
+                <h5>Sorry, we cannot find any results from the manual.</h5>
+                <h6>Would you like to <a href="#">search the result online?</a></h6>
+            </div>
         </div>
     </div>
 
