@@ -6,6 +6,7 @@ let {
 
 let {
     getContentStylePath,
+    getScriptPath,
     getDManFileInfo,
 } = require("../utils");
 
@@ -76,10 +77,12 @@ angular.module("DManual")
                     $scope.$broadcast("headersSet", parsed.headers);
                 }, 100);
                 let stylePath = getContentStylePath(location.href);
+                let scriptPath = getScriptPath(location.href);
                 let markdownDir = fileInfo.dir;
                 $scope.appInfo.markdownDir = markdownDir;
                 let base = `<base href='${markdownDir}/'>
-                    <script src="${stylePath}/../scripts/mousetrap.js"></script>
+                    <script src="${scriptPath}/iscroll.js"></script>
+                    <script src="${scriptPath}/mousetrap.js"></script>
                     <script>
                     'use strict';
                     let disallow = function(event) {
@@ -150,6 +153,6 @@ angular.module("DManual")
         });
 
         $scope.$on("navigationBarToggled", function(event, value) {
-            $scope.isCompactMode = value;
+            $rootScope.isCompactMode = value;
         });
     });

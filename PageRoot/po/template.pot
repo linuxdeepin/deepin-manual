@@ -8,11 +8,11 @@ msgstr ""
 msgid "TEXT_APP_TITLE"
 msgstr ""
 
-#: index.html:26
+#: FrameBtn.html:13
 msgid "TEXT_CLOSE"
 msgstr ""
 
-#: SearchBox.html:7
+#: SearchBox.html:9
 msgid "TEXT_ENTER_KEYWORDS"
 msgstr ""
 
@@ -20,10 +20,22 @@ msgstr ""
 msgid "TEXT_MANUAL"
 msgstr ""
 
-#: index.html:22
+#: FrameBtn.html:9
 msgid "TEXT_MAXIMIZE"
 msgstr ""
 
-#: index.html:18
+#: FrameBtn.html:5
 msgid "TEXT_MINIMIZE"
+msgstr ""
+
+#: SearchResult.html:11
+msgid "TEXT_NO_RESULT_GUIDE_MESSAGE"
+msgstr ""
+
+#: SearchResult.html:10
+msgid "TEXT_SORRY_NO_RESULT"
+msgstr ""
+
+#: SearchResult.html:12
+msgid "TEXT_VISIT_FORUM"
 msgstr ""

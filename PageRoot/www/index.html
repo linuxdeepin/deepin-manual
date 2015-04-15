@@ -7,51 +7,15 @@
     <link rel="stylesheet" href="./style/index.css" />
     <title>{{ appInfo.name }} - {{ 'TEXT_APP_TITLE'|translate }}</title>
 </head>
-<body class="overview-mode" ng-class="{'compact-mode': isCompactMode}">
-    <div id="OuterFrame" ng-style="outerFrameStyle">
-        <div id="MoveHandle"></div>
-    </div>
-    <div id="FrameBar">
-        <a id="MinimizeBtn"
-           class="window-control-btn"
-           href="javascript: minimize()"
-           title="{{ 'TEXT_MINIMIZE'|translate }}">{{ 'TEXT_MINIMIZE'|translate }}</a>
-        <a id="MaximizeBtn"
-           class="window-control-btn"
-           href="javascript: maximize()"
-           title="{{ 'TEXT_MAXIMIZE'|translate }}">{{ 'TEXT_MAXIMIZE'|translate }}</a>
-        <a id="CloseBtn"
-           class="window-control-btn"
-           href="javascript: close()"
-           title="{{ 'TEXT_CLOSE'|translate }}">{{ 'TEXT_CLOSE'|translate }}</a>
-    </div>
-
+<body deepin-app-manual-body>
+    <deepin-ui-frame></deepin-ui-frame>
+    <deepin-ui-frame-btn></deepin-ui-frame-btn>
     <div id="Container">
-        <div ng-include="'./partials/NavigationBar.html'"></div>
-        <div ng-include="'./partials/SearchBox.html'"></div>
-        <iframe id="Content"
-                ng-show="isPageview && (!isSearchmode)"
-                srcdoc="{{ htmlOutput }}"
-                sandbox="allow-same-origin allow-scripts"
-                seamless></iframe>
-        <section ng-show="isOverview && (!isSearchmode)"
-                 id="Overview"
-                 ng-include="'./partials/Overview.html'"></section>
-        <div id="Search" ng-show="isSearchmode" ng-controller="SearchCtrl">
-            <ul id="SearchResultsContainer" ng-if="searchResults.length">
-                <li ng-repeat="match in searchResults">
-                    <h5><a class="anchor" ng-click="jumpTo(match.anchorId)">{{ match.anchorText }}</a></h5>
-                    <p ng-repeat="text in match.texts" class="match-text" ng-bind-html="text"></p>
-                </li>
-            </ul>
-            <div id="NoSearchResults" ng-if="!searchResults.length" translate>
-                <div id="NoSearchResultsTextBox">
-                    <h5>Sorry, we cannot find any results from the manual.</h5>
-                    <h6>Would you like to <a href="javascript: adapter.openExternalBrowser()">search the result online?</a></h6>
-                </div>
-            </div>
-        </div>
+        <deepin-ui-manual-nav></deepin-ui-manual-nav>
+        <deepin-ui-manual-overview></deepin-ui-manual-overview>
+        <deepin-ui-manual-content></deepin-ui-manual-content>
+        <deepin-ui-manual-search-input></deepin-ui-manual-search-input>
+        <deepin-ui-manual-search-result></deepin-ui-manual-search-result>
     </div>
-
 </body>
 </html>

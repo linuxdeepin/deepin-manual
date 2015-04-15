@@ -7,6 +7,7 @@ require("angular-hotkeys");
 require("marked");
 require("url-parse");
 require("./app");
+require("./directives");
 require("./renderer");
 require("./utils");
 require("./ctrls/MainCtrl");

@@ -71,16 +71,22 @@ let getDManFileInfo = function(url, lang) {
     return result;
 };
 
-let getContentStylePath = function(indexPath) {
-    let parsed = new URL(indexPath);
-    if (parsed.protocol === "http:" || parsed.protocol === "https:") {
-        return [parsed.protocol + "/", parsed.host + splitPathFileNames(parsed.pathname)[0], "style"].join("/");
-    } else if (parsed.protocol === "file:" || parsed.protocol === "") {
-        return ["file:/", splitPathFileNames(parsed.pathname)[0], "style"].join("/");
-    } else {
-        throw new Error("Unknown protocol.");
+let getPathCombinator = function(type) {
+    return function(indexPath){
+        let parsed = new URL(indexPath);
+        if (parsed.protocol === "http:" || parsed.protocol === "https:") {
+            return [parsed.protocol + "/", parsed.host + splitPathFileNames(parsed.pathname)[0], "style"].join("/");
+        } else if (parsed.protocol === "file:" || parsed.protocol === "") {
+            return ["file:/", splitPathFileNames(parsed.pathname)[0], type].join("/");
+        } else {
+            throw new Error("Unknown protocol.");
+        }
     }
 };
+
+let getContentStylePath = getPathCombinator("style");
+
+let getScriptPath = getPathCombinator("scripts");
 
 let searchHighlight = function(text, keywords) {
     if (keywords.length === 0) {
@@ -120,5 +126,6 @@ if (typeof exports !== "undefined") {
     exports.searchHighlight = searchHighlight;
     exports.getDManFileInfo = getDManFileInfo;
     exports.getContentStylePath = getContentStylePath;
+    exports.getScriptPath = getScriptPath;
     exports.getAnchorItem = getAnchorItem;
 }

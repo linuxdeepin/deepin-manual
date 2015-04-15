@@ -1,0 +1,15 @@
+<div id="Search" ng-show="isSearchmode" ng-controller="SearchCtrl">
+    <ul id="SearchResultsContainer" ng-if="searchResults.length" class="search-result">
+        <li ng-repeat="match in searchResults">
+            <h5><a class="anchor" ng-click="jumpTo(match.anchorId)">{{ match.anchorText }}</a></h5>
+            <p ng-repeat="text in match.texts" class="match-text" ng-bind-html="text"></p>
+        </li>
+    </ul>
+    <div id="NoSearchResults" ng-if="!searchResults.length" class="no-search-result">
+        <div id="NoSearchResultsTextBox">
+            <p class="title">{{ 'TEXT_SORRY_NO_RESULT'|translate }}</p>
+            <p>{{ 'TEXT_NO_RESULT_GUIDE_MESSAGE'|translate }}</p>
+            <a href="javascript: adapter.openExternalBrowser('http://bbs.deepin.org/');">{{ 'TEXT_VISIT_FORUM'|translate }}</a>
+        </div>
+    </div>
+</div>

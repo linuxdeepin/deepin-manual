@@ -105,22 +105,22 @@ input[type='search'] {
 
     ol {
         list-style-type: none;
-        counter-reset: item;
+        // counter-reset: item;
         padding: 0;
 
-        li {
-            counter-increment: item;
-            a > span:before {
-                content: counters(item, ".") ". ";
-            }
-        }
+        // li {
+        //     counter-increment: item;
+        //     a > span:before {
+        //         content: counters(item, ".") ". ";
+        //     }
+        // }
     }
 
     li ol li {
         margin-left: 5px !important;
-        &:before {
-            content: counters(item, ".") " ";
-        }
+        // &:before {
+        //     content: counters(item, ".") " ";
+        // }
     }
 
     a, a:link {
@@ -480,52 +480,82 @@ $logoHeight: 48px;
 }
 
 .search-input {
-    border-radius: 5px;
+    border-radius: 3px;
     height: 30px;
     outline: none;
-    border: 1px solid lightgrey;
-    background-color: white;
+    border: 1px solid #000;
+    color: #b4b4b4;
+    background: linear-gradient(to bottom, #171717, #212121);
+    box-shadow: 0px 1px 0px 0px rgba(255,255,255,0.05);
     top: -55px;
 
-    .pageview-mode & {
-        left: 50%;
+    &::-webkit-input-placeholder {
+        color: #b4b4b4;
     }
 
-    transition: top 0.53s;
+    &:focus {
+        border-color: #0086ff;
+    }
 
-    &.slidedown {
-        top: 0;
-        &.slidedown-add {
+    .pageview-mode & {
+        border: 1px solid lightgrey;
+        color: #000;
+        background: white;
+        left: 50%;
+
+        &:focus {
+            border-color: #0086ff;
+        }
+
+        &.slidedown {
             top: 0;
         }
+        &.slidedown-add,
         &.slidedown-remove {
+            transition: top 0.53s;
+        }
+        &.slidedown-add-active {
+            top: 0;
+        }
+        &.slidedown-remove-active {
             top: -55px;
         }
     }
+
+
+    &::-webkit-textfield-decoration-container {
+        background: url("../resources/controls/search-white.svg") no-repeat 5px 50%;
+        background-size: 16px;
+        padding-left: 22px;
+    }
+
+    &::-webkit-search-cancel-button {
+        -webkit-appearance: none;
+        height: 16px;
+        width: 16px;
+        background-image: url("../resources/controls/dark_clear_normal.png");
+        .pageview-mode & {
+            background-image: url("../resources/controls/clear_normal.png");
+        }
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    &::-webkit-search-cancel-button:hover {
+        background-image: url("../resources/controls/dark_clear_hover.png");
+        .pageview-mode & {
+            background-image: url("../resources/controls/clear_hover.png");
+        }
+    }
+
+    &::-webkit-search-cancel-button:active {
+        background-image: url("../resources/controls/dark_clear_press.png");
+        .pageview-mode & {
+            background-image: url("../resources/controls/clear_press.png");
+        }
+    }
 }
 
-.search-input::-webkit-textfield-decoration-container {
-    background: url("../resources/controls/search-white.svg") no-repeat 5px 50%;
-    background-size: 16px;
-    padding-left: 22px;
-}
-
-.search-input::-webkit-search-cancel-button {
-    -webkit-appearance: none;
-    height: 16px;
-    width: 16px;
-    background-image: url("../resources/controls/clear_normal.png");
-    background-repeat: no-repeat;
-    background-position: center;
-}
-
-.search-input::-webkit-search-cancel-button:hover {
-    background-image: url("../resources/controls/clear_hover.png");
-}
-
-.search-input::-webkit-search-cancel-button:active {
-    background-image: url("../resources/controls/clear_press.png");
-}
 
 .pageview-mode {
     .collapsed#NavigationBar {
@@ -559,6 +589,18 @@ $logoHeight: 48px;
     }
     .debug-mode & {
         background: orange;
+    }
+}
+
+.no-search-result {
+    p, a {
+        display: block;
+        font-size: 12px;
+        text-align: center;
+    }
+    p.title {
+        font-size: 16px;
+        margin: 0.2em 0;
     }
 }
 
