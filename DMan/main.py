@@ -4,7 +4,7 @@
 import os
 import sys
 
-from PyQt5.QtGui import QGuiApplication
+from PyQt5.QtGui import QGuiApplication, QIcon
 from PyQt5.QtCore import QtMsgType, QMessageLogContext, QtDebugMsg, QtWarningMsg, QtCriticalMsg, \
     QtFatalMsg, qInstallMessageHandler
 
@@ -31,6 +31,7 @@ def QtMsgHandler(msgType: QtMsgType, context: QMessageLogContext, msg: str):
 class DManApp(QGuiApplication):
     def __init__(self, args):
         super().__init__(args)
+        self.setWindowIcon(QIcon.fromTheme("DManual"))
         mdUrl = args[-1]
         if mdUrl.startswith("dman://") or \
                 mdUrl.startswith("https://") or \
