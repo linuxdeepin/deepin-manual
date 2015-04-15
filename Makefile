@@ -30,6 +30,8 @@ install:
 	install -d $(DESTDIR)/usr/bin
 	ln -s $(PREFIX)/main.js $(DESTDIR)/usr/bin/dman
 
+	cp DMan/DManual.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/deepin-manual.svg
+
 clean:
 	rm -rf symdir/
 	rm -rf debian/deepin-user-manual
