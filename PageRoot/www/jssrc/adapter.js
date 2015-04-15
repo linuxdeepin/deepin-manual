@@ -32,7 +32,10 @@ angular.module("DManual")
             switch (getShellType()) {
                 case "Oxide": {
                     if ($window.oxide) {
-                        $window.oxide.sendMessageNoReply("JSMESSAGE", text);
+                        $window.oxide.sendMessageNoReply("JSMESSAGE", {
+                            type: "showTooltip",
+                            body: text,
+                        });
                     } else {
                         $log.warn("Oxide object doesn't exist, so showTooltip will be noop");
                     }
@@ -47,7 +50,10 @@ angular.module("DManual")
             switch (getShellType()) {
                 case "Oxide": {
                     if ($window.oxide) {
-                        $window.oxide.sendMessageNoReply("JSMESSAGE", title);
+                        $window.oxide.sendMessageNoReply("JSMESSAGE", {
+                            type: "SetTitle",
+                            body: title,
+                        });
                     } else {
                         $log.warn("Oxide object doesn't exist, so setTitle will be noop");
                     }
@@ -56,7 +62,6 @@ angular.module("DManual")
                 default: {
                     $log.warn("No shell support for setTitle");
                 }
-
             }
         };
         let result = {
@@ -161,13 +166,22 @@ angular.module("DManual")
                 };
                 $window.oxide = oxideWrap;
                 $window.maximize = function() {
-                    oxideWrap.sendMessageNoReply("JSMESSAGE", "maximize");
+                    oxideWrap.sendMessageNoReply("JSMESSAGE", {
+                        type: "FrameControl",
+                        body: "maximize",
+                    });
                 };
                 $window.minimize = function() {
-                    oxideWrap.sendMessageNoReply("JSMESSAGE", "minimize");
+                    oxideWrap.sendMessageNoReply("JSMESSAGE", {
+                        type: "FrameControl",
+                        body: "minimize",
+                    });
                 };
                 $window.close = function() {
-                    oxideWrap.sendMessageNoReply("JSMESSAGE", "close");
+                    oxideWrap.sendMessageNoReply("JSMESSAGE", {
+                        type: "FrameControl",
+                        body: "close",
+                    });
                 };
                 document.addEventListener("OxideSignalMessage", function(event) {
                     let payload = event.detail;
@@ -199,7 +213,10 @@ angular.module("DManual")
                     }
                 });
                 setTimeout(function() {
-                    oxideWrap.sendMessageNoReply("JSMESSAGE", "adapter_ready");
+                    oxideWrap.sendMessageNoReply("JSMESSAGE", {
+                        type: "AdapterStatus",
+                        body: "adapter_ready",
+                    });
                 }, 0);
                 break;
             }

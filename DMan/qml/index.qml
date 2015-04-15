@@ -46,35 +46,45 @@ Rectangle {
         msgId: usMsgId
         contexts: oxideContext
         callback: function (content) {
-            var msg = content.args.detail
-            switch (msg) {
-                case "maximize": {
-                    DManBridge.signalMaximize()
-                    break;
+            var payload = content.args.detail
+            switch (payload.type) {
+                case "FrameControl": {
+                    switch (payload.body) {
+                        case "maximize": {
+                            DManBridge.signalMaximize()
+                            break;
+                        }
+                        case "minimize": {
+                            DManBridge.signalMinimize()
+                            break;
+                        }
+                        case "close": {
+                            DManBridge.signalClose()
+                            break;
+                        }
+                    }
                 }
-                case "minimize": {
-                    DManBridge.signalMinimize()
-                    break;
+                case "AdapterStatus": {
+                    if (payload.body === "adapter_ready") {
+                        console.log("Adapter Ready");
+                        webView.rootFrame.sendMessage(oxideContext, usMsgId, {
+                            detail: {
+                                type: "SetMarkdown",
+                                msg: DManBridge.mdUrl,
+                            },
+                        })
+                        webView.rootFrame.sendMessage(oxideContext, usMsgId, {
+                            detail: {
+                                type: "Debug",
+                                msg: DManBridge.debugMode,
+                            },
+                        })
+                        break;
+                    }
                 }
-                case "close": {
-                    DManBridge.signalClose()
-                    break;
-                }
-                case "adapter_ready": {
-                    console.log("Adapter Ready");
-                    webView.rootFrame.sendMessage(oxideContext, usMsgId, {
-                        detail: {
-                            type: "SetMarkdown",
-                            msg: DManBridge.mdUrl,
-                        },
-                    })
-                    webView.rootFrame.sendMessage(oxideContext, usMsgId, {
-                        detail: {
-                            type: "Debug",
-                            msg: DManBridge.debugMode,
-                        },
-                    })
-                    break;
+                case "SetTitle": {
+                    DManBridge.setTitle(payload.body)
+                    break
                 }
                 default: {
                     console.warn("Unknown msg: " + msg)
