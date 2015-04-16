@@ -8,6 +8,18 @@
     }
 }
 
+@mixin clearfixAll {
+    &:before,
+    &:after {
+        content: "";
+        display: table;
+    }
+    &:before,
+    &:after {
+        clear: both;
+    }
+}
+
 $pageWidth: 672px;
 
 body {
@@ -18,8 +30,8 @@ body {
 }
 
 img.inline {
-    width: 1.5em;
-    height: 1.5em;
+    width: 2em;
+    height: 2em;
     vertical-align: bottom;
     display: inline;
 }
@@ -53,7 +65,7 @@ img.HeaderIcon {
 
 p {
     // text-indent: 17px;
-    line-height: 1.5em;
+    line-height: 2em;
     margin: 1em 0;
     @include clearfix;
 }
@@ -69,27 +81,27 @@ li {
 }
 
 // Header counters
-body {
-    counter-reset: level2;
-}
-
-h2, h3 {
-    list-style: decimal;
-}
-
-h2 {
-    counter-reset: level3;
-}
-
-h2::before {
-    counter-increment: level2;               /* Increment the section counter*/
-    content: counters(level2, ".") ". "; /* Display the counter */
-}
-
-h3::before {
-    counter-increment: level3;               /* Increment the section counter*/
-    content: counters(level2, ".") "." counters(level3, ".") " "; /* Display the counter */
-}
+//body {
+//    counter-reset: level2;
+//}
+//
+//h2, h3 {
+//    list-style: decimal;
+//}
+//
+//h2 {
+//    counter-reset: level3;
+//}
+//
+//h2::before {
+//    counter-increment: level2;               /* Increment the section counter*/
+//    content: counters(level2, ".") ". "; /* Display the counter */
+//}
+//
+//h3::before {
+//    counter-increment: level3;               /* Increment the section counter*/
+//    content: counters(level2, ".") "." counters(level3, ".") " "; /* Display the counter */
+//}
 // end of Header counters
 
 h1 {
@@ -109,7 +121,7 @@ h2 {
     color: rgb(80, 80, 80);
     line-height: 2em;
     margin: 1em 0;
-    @include clearfix;
+    @include clearfixAll;
 }
 
 h3 {
@@ -119,7 +131,7 @@ h3 {
     color: rgb(0, 160, 233);
     line-height: 2em;
     margin: 1em 0;
-    @include clearfix;
+    @include clearfixAll;
 }
 
 h4 {
@@ -128,8 +140,8 @@ h4 {
     font-size: 16px;
     color: rgb(80, 80, 80);
     line-height: 2em;
-    margin: 1em;
-    @include clearfix;
+    margin: 1em 0;
+    @include clearfixAll;
 }
 
 code {
@@ -147,6 +159,7 @@ pre {
 
 table {
     caption {
+        margin-top: 15px;
         margin-bottom: 8px;
         text-align: left;
     }
@@ -202,18 +215,29 @@ blockquote {
     border: 1px lightgreen solid;
 }
 
-ul {
+// ordered > unordered
+ol {
+    padding-left: 0;
+    list-style-position: inside;
     li {
         ul {
-            list-style-type: none;
+            list-style-type: disc;
+            padding-left: 0;
+            list-style-position: inside;
             li {
-                &::before {
-                    content: ">>";
-                    font-size: 10px;
-                    color: rgb(0, 160, 233);
-                }
+
             }
         }
+    }
+}
+
+// unordered
+ul {
+    padding-left: 0;
+    list-style-position: inside;
+    list-style-type: circle;
+    li {
+
     }
 }
 
@@ -226,4 +250,8 @@ table.columns {
             padding: 0;
         }
     }
+}
+
+strong {
+    color: rgb(51, 51, 51);
 }
