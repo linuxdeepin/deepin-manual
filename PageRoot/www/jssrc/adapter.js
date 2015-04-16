@@ -100,7 +100,7 @@ angular.module("DManual")
         $window.adapter = result;
         return result;
     })
-    .run(function($log, $injector, AdapterService, $window, $interval) {
+    .run(function($log, $injector, AdapterService, $window, $interval, localeService) {
         let shell = AdapterService.getShellType();
         let body = document.getElementsByTagName("body")[0];
         switch (shell) {
@@ -129,8 +129,9 @@ angular.module("DManual")
                 // };
 
                 let ipc = require("ipc");
-                ipc.on("setMarkdown", function(path) {
-                    adapter.setMarkdown(path);
+                ipc.on("setMarkdown", function(msg) {
+                    adapter.setMarkdown(msg.dmanDir);
+                    localeService.setLocale(msg.uiLangs);
                 });
                 ipc.on("Debug", function(on) {
                     adapter.setDebugMode(on);
@@ -228,6 +229,7 @@ angular.module("DManual")
                         }
                         case "SetMarkdown": {
                             AdapterService.setMarkdown(payload.msg.dmanDir);
+                            localeService.setLocale(payload.msg.uiLangs);
                             break;
                         }
                         case "Debug": {
