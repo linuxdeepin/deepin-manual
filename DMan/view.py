@@ -52,7 +52,7 @@ class MainView(StrictQuickView):
 
     signalMaximized = pyqtSignal(bool)
 
-    def __init__(self, mdUrl, debugMode):
+    def __init__(self, dmanDir, dmanLang, uiLangs, debugMode):
         super().__init__(None)
         self.rootContext().setContextProperty("DManBridge", self)
         self.setResizeMode(QQuickView.SizeRootObjectToView)
@@ -60,8 +60,12 @@ class MainView(StrictQuickView):
         self._isResizing = False
         self._dragOffset = None
         self.setFlags(Qt.FramelessWindowHint | Qt.Window)
-        self._mdUrl = mdUrl
+
+        self._dmanDir = dmanDir
+        self._dmanLang = dmanLang
+        self._uiLangs = uiLangs
         self._debugMode = debugMode
+
         self.setSource(QUrl.fromLocalFile("./qml/index.qml"))
         self.signalMaximize.connect(self.slotMaximize)
         self.signalMinimize.connect(self.slotMinimize)
@@ -73,8 +77,16 @@ class MainView(StrictQuickView):
         self.setResizePaddings(8, 8, 8, 8)
 
     @pyqtProperty(str)
-    def mdUrl(self):
-        return self._mdUrl
+    def dmanDir(self):
+        return self._dmanDir
+
+    @pyqtProperty(str)
+    def dmanLang(self):
+        return self._dmanLang
+
+    @pyqtProperty("QStringList")
+    def uiLangs(self):
+        return self._uiLangs
 
     @pyqtProperty(bool)
     def debugMode(self):

@@ -120,7 +120,11 @@ Rectangle {
                              webView.rootFrame.sendMessage(oxideContext, usMsgId, {
                                  detail: {
                                      type: "SetMarkdown",
-                                     msg: DManBridge.mdUrl,
+                                     msg: {
+                                        dmanDir: DManBridge.dmanDir,
+                                        dmanLang: DManBridge.dmanLang,
+                                        uiLangs: DManBridge.uiLangs,
+                                     }
                                  },
                              })
                              webView.rootFrame.sendMessage(oxideContext, usMsgId, {

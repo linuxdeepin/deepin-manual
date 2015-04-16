@@ -227,7 +227,7 @@ angular.module("DManual")
                             break;
                         }
                         case "SetMarkdown": {
-                            AdapterService.setMarkdown(payload.msg);
+                            AdapterService.setMarkdown(payload.msg.dmanDir);
                             break;
                         }
                         case "Debug": {
