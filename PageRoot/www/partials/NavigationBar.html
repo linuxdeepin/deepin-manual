@@ -10,23 +10,20 @@
 
     <div id="SideNavigationBar" ng-style="sideNavBarStyle">
         <ol id="SideNavigationItems">
-            <nav ng-repeat="anchor in anchors">
-                <li class="level2">
-                    <a ng-click="jumpTo(anchor.id)">
-                        <img ng-src="{{appInfo.markdownDir}}/{{anchor.icon}}" ng-mouseenter="showTooltip(anchor.text, $event);" ng-mouseleave="showTooltip('', $event);" />
-                        <span>{{anchor.text}}</span>
-                    </a>
-                </li>
+            <li class="level2" ng-repeat="anchor in anchors">
+                <a ng-click="jumpTo(anchor.id)" class="anchor-icon">
+                    <img ng-src="{{appInfo.markdownDir}}/{{anchor.icon}}" ng-mouseenter="showTooltip(anchor.text, $event);" ng-mouseleave="showTooltip('', $event);" />
+                    <span>{{anchor.text}}</span>
+                </a>
+
                 <ol ng-if="anchor.children">
-                    <nav ng-repeat="anchor2 in anchor.children">
-                        <li class="level3">
-                            <a ng-click="jumpTo(anchor2.id)">
-                                <span>{{anchor2.text}}</span>
-                            </a>
-                        </li>
-                    </nav>
+                    <li class="level3" ng-repeat="anchor2 in anchor.children">
+                        <a ng-click="jumpTo(anchor2.id)">
+                            <span>{{anchor2.text}}</span>
+                        </a>
+                    </li>
                 </ol>
-            </nav>
+            </li>
         </ol>
     </div>
     <div id="NavigationSwitch" class="navigation-switch">

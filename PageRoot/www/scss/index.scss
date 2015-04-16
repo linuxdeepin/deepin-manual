@@ -62,6 +62,12 @@ $titleBarHeight: 30px;
     }
 }
 
+@mixin text-ellipsis {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
 /*-------------------------------------------*/
 /* index style                               */
 /*-------------------------------------------*/
@@ -100,7 +106,7 @@ input[type='search'] {
 
 #NavigationBar {
     background-color: $navBgcolor;
-    color: #b5b5b6;
+    color: #bdbdbd;
     position: relative;
 
     ol {
@@ -137,13 +143,13 @@ input[type='search'] {
     @include clearfix;
     width: 232px * 4;
     margin: 0 auto;
-    padding: 34px 0 0;
+    padding: 32px 0 0;
 
     li {
         float: left;
         display: block;
         width: 232px;
-        height: 144px;
+        height: 158px;
         @include clearfix;
         text-align: center;
     }
@@ -160,10 +166,18 @@ input[type='search'] {
     img {
         width: 64px;
         height: 64px;
-        margin: 0 auto 14px;
+        margin: 0 auto;
         .debug-mode & {
             background-color: darkgrey;
         }
+    }
+
+    p {
+        margin: 0;
+        margin-top: 14px;
+        height: 2.5em;
+        line-height: 1.25em;
+        @include text-ellipsis;
     }
 }
 
@@ -191,7 +205,7 @@ input[type='search'] {
     }
 
     #AppLogo {
-        margin-right: 12px;
+        margin-right: 16px;
     }
 
 }
@@ -203,12 +217,21 @@ input[type='search'] {
     }
 
     #NavLogoBox {
-        height: $navLogoBoxHeight;
+        height: $navLogoBoxHeight - 16px;
         > a {
-            margin-left: 0;
+            height: 32px;
+            margin: 14px 0 2px 10px;
         }
         img {
-            margin-right: 6px;
+            width: 32px;
+            height: 32px;
+            margin-right: 8px;
+        }
+        #AppName {
+            height: 32px;
+            line-height: 32px;
+            font-size: 16px;
+            color: #fff;
         }
     }
 
@@ -238,26 +261,23 @@ input[type='search'] {
 
     #SideNavigationItems { // ol
         padding-left: 40px;
-        margin: 0 auto;
+        margin: 0;
         overflow: hidden;
         height: 100%;
-        width: 136px;
-
-        nav {
-            margin: 2px 0;
-        }
 
         li {
             line-height: 2em;
         }
 
         .level2 { // li
+            margin-top: 16px;
             position: relative;
             img {
                 position: absolute;
-                width: 30px;
-                height: 30px;
-                left: -44px;
+                display: block;
+                width: 24px;
+                height: 24px;
+                left: -30px;
             }
         }
 
@@ -378,6 +398,7 @@ $logoHeight: 48px;
 }
 
 #AppName, #LabelDot, #LabelManual {
+    font-size: 20px;
     height: $logoHeight;
     line-height: $logoHeight;
     float: left;
@@ -564,10 +585,15 @@ $logoHeight: 48px;
             display: none;
         }
         #SideNavigationItems {
-            padding-left: 52px;
+            padding-left: 10px;
         }
-        nav nav {
-            display: none;
+        .level2 {
+            img {
+                position: static;
+            }
+            span {
+                display: none;
+            }
         }
     }
 }
