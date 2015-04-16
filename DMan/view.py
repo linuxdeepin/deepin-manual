@@ -2,6 +2,7 @@
 
 from PyQt5.QtCore import QUrl, Qt, pyqtSlot, pyqtSignal, pyqtProperty, QRect
 from PyQt5.QtQuick import QQuickView
+from PyQt5.QtGui import QDesktopServices
 
 
 class QmlError(Exception):
@@ -106,3 +107,8 @@ class MainView(StrictQuickView):
     @pyqtSlot(result = QRect)
     def currentGeometry(self):
         return self.geometry()
+
+    @pyqtSlot(str)
+    def openExternalBrowser(self, url):
+        # QDesktopServices.openUrl(QUrl(url))
+        QDesktopServices.openUrl(QUrl("http://bbs.deepin.org/"))

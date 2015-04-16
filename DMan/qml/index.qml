@@ -157,7 +157,7 @@ Rectangle {
                     break
                 }
                 case "OpenExternalBrowser": {
-                    console.log("TODO: OpenExternalBrowser")
+                    DManBridge.openExternalBrowser(payload.body)
                     break
                 }
                 default: {
