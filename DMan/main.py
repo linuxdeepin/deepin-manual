@@ -10,8 +10,7 @@ from PyQt5.QtCore import QtMsgType, QMessageLogContext, QtDebugMsg, QtWarningMsg
     QtFatalMsg, qInstallMessageHandler
 
 from view import MainView
-from gi.repository import GLib
-from utils import processMarkdownPath, getDocumentLanguageFor
+from utils import processMarkdownPath, getDocumentLanguageFor, getUILanguage
 
 
 def QtMsgHandler(msgType: QtMsgType, context: QMessageLogContext, msg: str):
@@ -39,7 +38,7 @@ class DManApp(QApplication):
         dmanInfo = processMarkdownPath(mdUrl, getDocumentLanguageFor)
         self.mainView = MainView(dmanInfo.dir,
                                  dmanInfo.lang,
-                                 GLib.get_language_names(),
+                                 [getUILanguage()],
                                  not not os.environ.get("DEBUG", None))
         self.mainView.show()
 

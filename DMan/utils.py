@@ -8,6 +8,7 @@ import os
 from urllib import parse
 
 _DMAN_HOME = "/usr/share/dman"
+_UI_NLS_DIR = os.path.normpath(os.path.dirname(__file__) + "/../PageRoot/www/nls")
 
 
 def _getAvailableLanguagesFor(appName: str):
@@ -29,6 +30,16 @@ def getDocumentLanguageFor(appName: str):
         GLib.get_language_names(),
         _getAvailableLanguagesFor(appName))
 
+
+def _getAvailableUILanguages():
+    matches = Path(_UI_NLS_DIR).glob("*.json")
+    return map(lambda match: match.name.split(".")[0], matches)
+
+
+def getUILanguage():
+    return _getBestMatch(
+        GLib.get_language_names(),
+        _getAvailableUILanguages())
 
 DManInfo = namedtuple("DManInfo", ["dir", "lang"])
 
