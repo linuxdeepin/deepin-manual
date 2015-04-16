@@ -38,7 +38,10 @@ app.on('ready', function () {
         } else {
             mdUrl = "file://" + require("path").resolve(mdUrl);
         }
-        mainWindow.send("setMarkdown", mdUrl);
+        mainWindow.send("setMarkdown", {
+            dmanDir: mdUrl,
+            uiLangs: ["zh_CN"],
+        });
         if (process.env["DEBUG"]) {
             mainWindow.openDevTools();
             mainWindow.send("Debug", true);
