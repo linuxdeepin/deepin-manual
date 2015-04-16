@@ -56,10 +56,6 @@ class MainView(StrictQuickView):
         super().__init__(None)
         self.rootContext().setContextProperty("DManBridge", self)
         self.setResizeMode(QQuickView.SizeRootObjectToView)
-        self._isBeingDragged = False
-        self._isResizing = False
-        self._dragOffset = None
-        self.setFlags(Qt.FramelessWindowHint | Qt.Window)
 
         self._dmanDir = dmanDir
         self._dmanLang = dmanLang
