@@ -2,9 +2,9 @@
 
 angular.module("DManual")
     .factory("AdapterService", function Adapter($log, $rootScope, $window) {
-        let setMarkdown = function(path) {
-            $log.log(`Markdown set to ${path}`);
-            $rootScope.$broadcast("setMarkdown", path);
+        let setMarkdown = function(markdownDir) {
+            $log.log(`Markdown set to ${markdownDir}`);
+            $rootScope.$broadcast("setMarkdown", markdownDir);
         };
         let getShellType = function() {
             // try atom-shell

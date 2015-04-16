@@ -7,7 +7,6 @@ let {
 let {
     getContentStylePath,
     getScriptPath,
-    getDManFileInfo,
 } = require("../utils");
 
 angular.module("DManual")
@@ -47,9 +46,8 @@ angular.module("DManual")
             $window.dispatchEvent(ev);
         });
 
-        $scope.$on("setMarkdown", function(event, mdUrl) {
-            let fileInfo = getDManFileInfo(mdUrl);
-            GInput.load(`${fileInfo.dir}/synonym.txt`).then(function(text) {
+        $scope.$on("setMarkdown", function(event, markdownDir) {
+            GInput.load(`${markdownDir}/synonym.txt`).then(function(text) {
                 let lines = text.split("\n");
                 let wordsList = [];
                 nextLine: for (let line of lines) {
@@ -64,7 +62,7 @@ angular.module("DManual")
                 $log.warn(`Cannot load synonyms ${error}`);
                 GSynonym.init([]);
             });
-            GInput.load(fileInfo.baseDir + "/index.md").then(function(mdText) {
+            GInput.load(`${markdownDir}/index.md`).then(function(mdText) {
                 $log.log("Markdown::load OK");
                 let result = processMarkdown(mdText);
                 let html = result.html;
@@ -78,7 +76,6 @@ angular.module("DManual")
                 }, 100);
                 let stylePath = getContentStylePath(location.href);
                 let scriptPath = getScriptPath(location.href);
-                let markdownDir = fileInfo.dir;
                 $scope.appInfo.markdownDir = markdownDir;
                 let base = `<base href='${markdownDir}/'>
                     <script src="${scriptPath}/iscroll.js"></script>
