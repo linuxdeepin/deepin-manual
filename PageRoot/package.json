@@ -13,6 +13,7 @@
     "angular-gettext": "^2.0.5",
     "angular-hotkeys": "^1.4.5",
     "babelify": "^5.0.4",
+    "bower": "^1.4.1",
     "gulp-angular-gettext": "^2.1.0",
     "marked": "^0.3.3",
     "mousetrap": "^1.5.2",
