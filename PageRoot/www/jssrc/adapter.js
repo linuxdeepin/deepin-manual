@@ -21,7 +21,7 @@ angular.module("DManual")
             on = !!on;
             $log.log(`Debug mode ${on}`);
             $rootScope.isDebugging = on;
-            let body = document.getElementsByTagName("body")[0];
+            let body = document.body;
             if (on) {
                 body.classList.add("debug-mode");
             } else {
@@ -233,7 +233,7 @@ angular.module("DManual")
                             break;
                         }
                         case "Debug": {
-                            AdapterService.setDebugMode(true);
+                            AdapterService.setDebugMode(payload.msg);
                             break;
                         }
                         case "AdapterStatus": {
