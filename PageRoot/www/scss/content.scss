@@ -22,6 +22,12 @@
 
 $pageWidth: 672px;
 
+* {
+    font-family: "Source Han Sans SC";
+    font-size: 14px;
+    color: #757575;
+}
+
 body {
     margin: 0 auto;
     width: $pageWidth;
@@ -71,38 +77,15 @@ p {
 }
 
 li {
-    // line-height: 25px;
+    p {
+        margin: 9px 0;
+        line-height: 12px;
+        img.inline {
+            height: 22px;
+            width: 22px;
+        }
+    }
 }
-
-* {
-    font-family: "Source Han Sans SC";
-    font-size: 14px;
-    color: rgb(80, 80, 80);
-}
-
-// Header counters
-//body {
-//    counter-reset: level2;
-//}
-//
-//h2, h3 {
-//    list-style: decimal;
-//}
-//
-//h2 {
-//    counter-reset: level3;
-//}
-//
-//h2::before {
-//    counter-increment: level2;               /* Increment the section counter*/
-//    content: counters(level2, ".") ". "; /* Display the counter */
-//}
-//
-//h3::before {
-//    counter-increment: level3;               /* Increment the section counter*/
-//    content: counters(level2, ".") "." counters(level3, ".") " "; /* Display the counter */
-//}
-// end of Header counters
 
 h1 {
     // font-family: "Source Han Sans SC Normal";
@@ -116,32 +99,33 @@ h1 {
 
 h2 {
     // font-family: "Source Han Sans SC Normal";
-    font-weight: bold;
-    font-size: 20px;
-    color: rgb(80, 80, 80);
+    font-weight: normal;
+    font-size: 22px;
+    color: #1f94ee;
     line-height: 2em;
-    margin: 1em 0;
-    @include clearfixAll;
+    margin: 1em 0 0;
+    border-bottom: 1px solid #d7d7d7;
+    clear: both;
 }
 
 h3 {
     // font-family: "Source Han Sans SC Normal";
-    font-weight: bold;
+    font-weight: normal;
     font-size: 18px;
-    color: rgb(0, 160, 233);
+    color: #464646;
     line-height: 2em;
     margin: 1em 0;
-    @include clearfixAll;
+    clear: both;
 }
 
 h4 {
     // font-family: "Source Han Sans SC Normal";
-    font-weight: bold;
+    font-weight: normal;
     font-size: 16px;
-    color: rgb(80, 80, 80);
+    color: #464646;
     line-height: 2em;
     margin: 1em 0;
-    @include clearfixAll;
+    clear: both;
 }
 
 code {
@@ -159,7 +143,6 @@ pre {
 
 table {
     caption {
-        margin-top: 15px;
         margin-bottom: 8px;
         text-align: left;
     }
@@ -168,18 +151,18 @@ table {
             th {
                 border: 1px rgb(0, 160, 233) solid;
                 padding: 5px 10px;
-                color: #b4b4b4 !important;
+                color: #888 !important;
             }
         }
     }
     tbody {
         tr {
             td {
-                border-color: #b4b4b4;
+                border-color: #e0e0e0;
                 border-style: solid;
                 border-width: 1px 0;
                 padding: 5px 10px;
-                color: #b4b4b4 !important;
+                color: #888 !important;
                 &.blank {
                     border-width: 0;
                 }
@@ -187,42 +170,59 @@ table {
             &:first-child {
                 td {
                     border-top-width: 2px;
+                    border-color: #cbcbcb;
                 }
-
             }
-
+            &:last-child {
+                td {
+                    border-bottom-width: 2px;
+                    border-color: #cbcbcb;
+                }
+            }
         }
     }
 }
 
 table.block1 {
     width: 100%;
+    margin-bottom: 29px;
 }
 
 table.block2 {
     width: 48%;
     float: left;
-    margin: 0 1%;
+    margin: 0 1% 29px;
 }
 
 table.block3 {
     width: 31%;
     float: left;
-    margin: 0 1%;
+    margin: 0 1% 29px;
 }
 
 blockquote {
-    border: 1px lightgreen solid;
+    border-left: 5px solid #EAEEF1;
+    margin-left: 20px;
+    padding-left: 20px;
+
+    p {
+        font-style: italic;
+        font-size: 13px;
+        color: #888;
+        strong {
+            color: #6d6d6d;
+        }
+    }
 }
 
 // ordered > unordered
 ol {
-    padding-left: 0;
+    padding-left: 12px;
     list-style-position: inside;
     li {
         ul {
             list-style-type: disc;
-            padding-left: 0;
+            padding-left: 12px;
             list-style-position: inside;
             li {
 
@@ -233,7 +233,7 @@ ol {
 
 // unordered
 ul {
-    padding-left: 0;
+    padding-left: 12px;
     list-style-position: inside;
     list-style-type: circle;
     li {
@@ -255,3 +255,44 @@ table.columns {
 strong {
     color: rgb(51, 51, 51);
 }
+
+a {
+    border-bottom: 1px solid #31a4fc;
+    padding-bottom: 2px;
+    text-decoration: none;
+}
+
+
+// Header counters
+body {
+    counter-reset: level2;
+}
+
+h2, h3, h4 {
+    list-style: decimal;
+}
+
+h2 {
+    counter-reset: level3;
+}
+
+h3 {
+    counter-reset: level4;
+}
+
+h2::before {
+    counter-increment: level2;               /* Increment the section counter*/
+    content: counters(level2, ".") ". "; /* Display the counter */
+}
+
+h3::before {
+    counter-increment: level3;               /* Increment the section counter*/
+    content: counters(level2, ".") "." counters(level3, ".") " "; /* Display the counter */
+}
+
+h4::before {
+    counter-increment: level4;
+    content: counters(level2, ".") "." counters(level3, ".") "." counters(level4, ".") " ";
+}
+
+// end of Header counters
