@@ -36,7 +36,16 @@ angular.module("DManual")
             description: 'show search box',
             callback: function() {
                 if($scope.isPageview){
-                    $rootScope.$broadcast("showSearchBox", true);
+                    $scope.$emit("showSearchBox", true);
+                }
+            }
+        });
+        hotkeys.add({
+            combo: 'esc',
+            description: 'hide search box',
+            callback: function() {
+                if($scope.isPageview){
+                    $scope.$emit("hideSearchBox", true);
                 }
             }
         });
@@ -64,9 +73,20 @@ angular.module("DManual")
             });
             GInput.load(`${markdownDir}/index.md`).then(function(mdText) {
                 $log.log("Markdown::load OK");
+                let contentIFrame = document.querySelector("#Content");
                 let result = processMarkdown(mdText);
                 let html = result.html;
                 let parsed = result.parsed;
+                angular.element(contentIFrame).bind('load', function(){
+                    let doc = contentIFrame.contentDocument;
+                    $scope.anchorsOffsetList = [].slice.call(doc.querySelectorAll('h2,h3'))
+                        .map(function(v){
+                            return v.offsetTop
+                    });
+                    $scope.navigations = [].slice.call(
+                            document.querySelector('#SideNavigationItems')
+                                    .querySelectorAll('.level2,.level3'));
+                });
                 $scope.anchors = parsed.anchors;
                 $scope.appInfo = parsed.appInfo;
                 $scope.$broadcast("indicesSet", parsed.indices);
@@ -86,8 +106,12 @@ angular.module("DManual")
                         event.preventDefault();
                         return false;
                     };
+                    let emitEvent = function(eventName, eventMsg) {
+                        let e = new CustomEvent(eventName, {detail: eventMsg});
+                        window.parent.dispatchEvent(e);
+                    }
                     window.onload = function() {
-                        let body = document.getElementsByTagName("body")[0];
+                        let body = document.body;
                         body.addEventListener("dragenter", disallow);
                         body.addEventListener("dragover", disallow);
                         body.addEventListener("dragend", disallow);
@@ -95,8 +119,18 @@ angular.module("DManual")
                         body.addEventListener("drop", disallow);
                     }
                     Mousetrap.bind('ctrl+f', function() {
-                        let e2 = new CustomEvent("IFrameShowEventProxy");
-                        window.parent.dispatchEvent(e2);
+                        emitEvent("IFrameShowEventProxy");
+                    });
+                    Mousetrap.bind('esc', function() {
+                        emitEvent("searchBoxHideEvent");
+                    });
+                    ['mousewheel', 'click'].map(function(eventName){
+                        document.addEventListener(eventName, function(){
+                            emitEvent("searchBoxHideEvent");
+                        });
+                    });
+                    document.addEventListener('mousewheel', function(e){
+                        emitEvent("navigationRelocateEvent", {offset: window.scrollY});
                     });
                     </script>
                     <link rel='stylesheet' href='${stylePath}/reset.css' />
@@ -108,8 +142,7 @@ angular.module("DManual")
         });
 
         $scope.jumpTo = function(anchor) {
-            let body = document.getElementsByTagName("body")[0];
-            body = angular.element(body);
+            let body = angular.element($window.document.body);
             let contentWin = document.getElementById("Content").contentWindow;
             if (anchor) {
                 $scope.isOverview = false;
@@ -119,6 +152,7 @@ angular.module("DManual")
                 body.addClass('pageview-mode');
                 $timeout(function() {
                     contentWin.location.hash = anchor;
+                    $scope.$emit("navigationRelocate", contentWin.scrollY);
                 }, 0);
             } else {
                 $scope.isOverview = true;
@@ -128,6 +162,7 @@ angular.module("DManual")
                 body.addClass('overview-mode');
                 $timeout(function() {
                     contentWin.location.hash = "";
+                    $scope.$emit("navigationRelocate", contentWin.scrollY);
                 }, 0);
             }
             $scope.isSearchmode = false;

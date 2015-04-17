@@ -68,6 +68,10 @@ $titleBarHeight: 30px;
     text-overflow: ellipsis;
 }
 
+@mixin disable-user-select {
+    -webkit-user-select: none;
+}
+
 /*-------------------------------------------*/
 /* index style                               */
 /*-------------------------------------------*/
@@ -108,6 +112,7 @@ input[type='search'] {
     background-color: $navBgcolor;
     color: #bdbdbd;
     position: relative;
+    @include disable-user-select;
 
     ol {
         list-style-type: none;
@@ -194,6 +199,7 @@ input[type='search'] {
     #Overview {
         height: calc(100% - #{$ovNavBarHeight});
         margin-top: 0;
+        @include disable-user-select;
         .debug-mode & {
             background-color: pink;
         }
@@ -266,7 +272,7 @@ input[type='search'] {
         height: 100%;
 
         li {
-            line-height: 2em;
+            line-height: 24px;
         }
 
         .level2 { // li
@@ -284,6 +290,12 @@ input[type='search'] {
         .level3 {
             text-indent: 0.5em;
             line-height: 1.7em;
+        }
+
+        .current-section {
+            &>a>span {
+                color: #0086ff;
+            }
         }
 
     }
@@ -432,6 +444,7 @@ $logoHeight: 48px;
     z-index: 10000;
     text-indent: -9999em;
     right: $csdRW;
+    @include disable-user-select;
     .window-control-btn {
         width: 15px;
         height: 20px;
@@ -638,7 +651,7 @@ $logoHeight: 48px;
 }
 
 .compact-mode {
-    #Content {
+    #Content,#Search {
         width: calc(100% - #{$pvNavBarCompactWidth});
     }
 }

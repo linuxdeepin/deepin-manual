@@ -14,9 +14,15 @@ angular.module("DManual")
             };
 
             $scope.$on("showSearchBox", function(){
-                $log.log("Search");
+                $log.log("Search show");
                 $scope.searchBoxVisible = true;
                 document.querySelector("#SearchInput").focus();
+            });
+
+            $scope.$on("hideSearchBox", function(){
+                $log.log("Search hide");
+                $scope.searchBoxVisible = false;
+                document.querySelector("#SearchInput").blur();
             });
 
             $scope.showSearch = function(){
@@ -27,8 +33,13 @@ angular.module("DManual")
             };
 
             $window.addEventListener("IFrameShowEventProxy", function() {
-                $log.log("proxy..");
                 $scope.$emit("showSearchBox");
+            });
+            $window.addEventListener("searchBoxHideEvent", function() {
+                if($scope.searchBoxVisible){
+                    $scope.$emit("hideSearchBox");
+                    $scope.$apply();
+                }
             });
             // $scope.$watch("searchTerm", function(newValue, oldValue){
             //     $rootScope.$broadcast("searchTermChanged", newValue);
