@@ -8,18 +8,6 @@
     }
 }
 
-@mixin clearfixAll {
-    &:before,
-    &:after {
-        content: "";
-        display: table;
-    }
-    &:before,
-    &:after {
-        clear: both;
-    }
-}
-
 $pageWidth: 672px;
 
 * {
