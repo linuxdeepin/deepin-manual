@@ -9,8 +9,10 @@ let {
     getScriptPath,
 } = require("../utils");
 
-angular.module("DManual")
-    .controller("MainCtrl", function($scope, $rootScope, $log, $sce, $window, $timeout, hotkeys, GInput, GSynonym) {
+let app = angular.module("DManual");
+
+app.controller("MainCtrl", function($scope, $rootScope, $log, $sce, $window, $timeout,
+                                    hotkeys, GInput, GSynonym, AdapterService) {
         $scope.isOverview = true;
         let _isSearchmode = false;
         Object.defineProperty($scope, "isSearchmode", {
@@ -55,7 +57,8 @@ angular.module("DManual")
             $window.dispatchEvent(ev);
         });
 
-        $scope.$on("setMarkdown", function(event, markdownDir) {
+        let loadMarkdown = function(event, markdownDir) {
+            $log.log("Start to load markdown");
             GInput.load(`${markdownDir}/synonym.txt`).then(function(text) {
                 let lines = text.split("\n");
                 let wordsList = [];
@@ -138,7 +141,11 @@ angular.module("DManual")
             }, function(error) {
                 $log.error(`Markdown::load failed: ${error}`);
             });
-        });
+        };
+        let markdownDir = AdapterService.markdownDir();
+        if (markdownDir) {
+            loadMarkdown(null, markdownDir);
+        }
 
         $scope.jumpTo = function(anchor) {
             let body = angular.element($window.document.body);
@@ -170,7 +177,7 @@ angular.module("DManual")
 
         let updateOuterFrame = function() {
             $scope.outerFrameStyle = {
-                height: $window.innerHeight + "px"
+                height: $window.innerHeight + "px",
             };
         };
         updateOuterFrame();

@@ -1,10 +1,16 @@
 "use strict";
 
-angular.module("DManual")
-    .factory("AdapterService", function Adapter($log, $rootScope, $window) {
+let app = angular.module("DManual");
+
+app.factory("AdapterService", function Adapter($log, $rootScope, $window) {
+        let _markdownDir = "";
+        let markdownDir = function() {
+            return _markdownDir;
+        };
         let setMarkdown = function(markdownDir) {
             $log.log(`Markdown set to ${markdownDir}`);
-            $rootScope.$broadcast("setMarkdown", markdownDir);
+            _markdownDir = markdownDir;
+            $rootScope.$broadcast("markdownDirChanged", true);
         };
         let getShellType = function() {
             // try DAE
@@ -96,6 +102,7 @@ angular.module("DManual")
             }
         };
         let result = {
+            markdownDir: markdownDir,
             setMarkdown: setMarkdown,
             getShellType: getShellType,
             setDebugMode: setDebugMode,
@@ -299,7 +306,9 @@ angular.module("DManual")
                 let mdDir = bridge_bridge.mdDir();
                 let debug = bridge_bridge.debug();
                 let uiLangs = bridge_bridge.uiLangs();
+                //setTimeout(function() {
                 $window.adapter.setMarkdown(mdDir);
+                //}, 1000);
                 $window.adapter.setDebugMode(debug);
                 localeService.setLocale(uiLangs);
                 break;
