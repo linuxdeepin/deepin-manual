@@ -1,6 +1,6 @@
 "use strict";
 
-let URL = require("url-parse");
+let urlparse = require("url-parse");
 
 let splitPathFileNames = function(pf) {
     let i = pf.lastIndexOf("/");
@@ -13,7 +13,7 @@ let splitPathFileNames = function(pf) {
 
 let getPathCombinator = function(type) {
     return function(indexPath){
-        let parsed = new URL(indexPath);
+        let parsed = urlparse(indexPath);
         if (parsed.protocol === "http:" || parsed.protocol === "https:") {
             return [parsed.protocol + "/", parsed.host + splitPathFileNames(parsed.pathname)[0], "style"].join("/");
         } else if (parsed.protocol === "file:" || parsed.protocol === "") {
