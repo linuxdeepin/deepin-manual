@@ -4,6 +4,7 @@
   "description": "有道词典Linux版",
   "path": "www/",
   "icon": "www/favicon.png",
+  "plugins": "plugins/",
   "width": 718,
   "height": 585,
   "visible": true,

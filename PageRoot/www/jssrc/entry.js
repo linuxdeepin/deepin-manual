@@ -19,3 +19,5 @@ require("./services/SynonymService");
 require("./services/InputService");
 require("./services/LocaleService");
 require("./adapter");
+require("babel-core/polyfill");
+

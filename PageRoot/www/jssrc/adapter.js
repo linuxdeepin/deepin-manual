@@ -296,6 +296,10 @@ angular.module("DManual")
                     app.setClosable(true);
                     app.close();
                 };
+                let mdDir = bridge_bridge.mdDir();
+                let debug = bridge_bridge.debug();
+                $window.adapter.setMarkdown(mdDir);
+                $window.adapter.setDebugMode(debug);
                 break;
             }
             default: {

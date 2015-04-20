@@ -108,7 +108,7 @@ angular.module("DManual")
                     let emitEvent = function(eventName, eventMsg) {
                         let e = new CustomEvent(eventName, {detail: eventMsg});
                         window.parent.dispatchEvent(e);
-                    }
+                    };
                     window.onload = function() {
                         let body = document.body;
                         body.addEventListener("dragenter", disallow);
@@ -116,7 +116,7 @@ angular.module("DManual")
                         body.addEventListener("dragend", disallow);
                         body.addEventListener("dragleave", disallow);
                         body.addEventListener("drop", disallow);
-                    }
+                    };
                     Mousetrap.bind('ctrl+f', function() {
                         emitEvent("IFrameShowEventProxy");
                     });

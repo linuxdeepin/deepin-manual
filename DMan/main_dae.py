@@ -5,5 +5,5 @@ from dae.daeclient import DAEClient
 import os, sys
 
 if __name__ == "__main__":
-    path = os.path.normpath(os.path.dirname(__file__) + "/../PageRoot/www")
+    path = os.path.normpath(os.path.dirname(__file__) + "/../PageRoot")
     DAEClient(path)
