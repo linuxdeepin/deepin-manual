@@ -10,7 +10,7 @@ app.factory("AdapterService", function Adapter($log, $rootScope, $window) {
         let setMarkdown = function(markdownDir) {
             $log.log(`Markdown set to ${markdownDir}`);
             _markdownDir = markdownDir;
-            $rootScope.$broadcast("markdownDirChanged", true);
+            $rootScope.$broadcast("markdownDirChanged", _markdownDir);
         };
         let getShellType = function() {
             // try DAE

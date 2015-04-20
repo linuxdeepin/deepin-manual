@@ -146,6 +146,7 @@ app.controller("MainCtrl", function($scope, $rootScope, $log, $sce, $window, $ti
     if (markdownDir) {
         loadMarkdown(null, markdownDir);
     }
+    $scope.$on("markdownDirChanged", loadMarkdown);
 
     $scope.jumpTo = function(anchor) {
         let body = angular.element($window.document.body);
