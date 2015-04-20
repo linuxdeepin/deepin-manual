@@ -16,7 +16,7 @@ class Bridge(QObject):
         mdUrl = sys.argv[-1]
         self._dmanInfo = processMarkdownPath(mdUrl, getDocumentLanguageFor)
 
-    @pyqtSlot(result = list)
+    @pyqtSlot(result = "QStringList")
     def uiLangs(self):
         return [getUILanguage()]
 

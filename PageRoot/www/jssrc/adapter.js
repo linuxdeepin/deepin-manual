@@ -298,8 +298,10 @@ angular.module("DManual")
                 };
                 let mdDir = bridge_bridge.mdDir();
                 let debug = bridge_bridge.debug();
+                let uiLangs = bridge_bridge.uiLangs();
                 $window.adapter.setMarkdown(mdDir);
                 $window.adapter.setDebugMode(debug);
+                localeService.setLocale(uiLangs);
                 break;
             }
             default: {
