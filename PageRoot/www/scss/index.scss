@@ -140,6 +140,7 @@ input[type='search'] {
 }
 
 #TopLevelItemsBox {
+    display: -webkit-flex;
     display: flex;
     height: 100%;
 }
@@ -377,6 +378,7 @@ input[type='search'] {
 }
 
 #NoSearchResults {
+    display: -webkit-flex;
     display: flex;
     height: 100%;
     width: 100%;
@@ -391,6 +393,7 @@ $logoHeight: 48px;
 
 #NavLogoBox {
     height: 100%;
+    display: -webkit-flex;
     display: flex;
     > a {
         display: block;
