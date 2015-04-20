@@ -108,7 +108,7 @@ angular.module("DManual")
     })
     .run(function($log, $injector, AdapterService, $window, $interval, localeService) {
         let shell = AdapterService.getShellType();
-        let body = document.getElementsByTagName("body")[0];
+        let body = document.body;
         switch (shell) {
             case "Atom-Shell": {
                 let req = $window.require;

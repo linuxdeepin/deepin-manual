@@ -19,13 +19,13 @@ angular.module("DManual")
                 headerNode.classList.remove('current-section');
             });
             for (var i = 0; i < offsetList.length; i++) {
-                if(offset < offsetList[i]) {
+                if(offset <= offsetList[i]) {
                     if($scope.navigations[i].classList.contains("level3")){
                         $scope.navigations[i].parentNode.parentNode.classList.add('current-section');
                     }
                     $scope.navigations[i].classList.add('current-section');
                     return;
-                } else if(offset >= offsetList[i] && offset <= offsetList[i+1]) {
+                } else if(offset > offsetList[i] && offset <= offsetList[i+1]) {
                     if($scope.navigations[i+1].classList.contains("level3")){
                         $scope.navigations[i+1].parentNode.parentNode.classList.add('current-section');
                     }

@@ -658,3 +658,66 @@ $logoHeight: 48px;
         width: calc(100% - #{$pvNavBarCompactWidth});
     }
 }
+
+#SuggestionsBox {
+    width: 258px;
+    border-radius: 5px;
+    margin-top: -1px;
+    position: absolute;
+    display: none;
+    z-index: 50000;
+    color: #bdbdbd;
+    background-color: #191919;
+    right: 50px;
+    top: 60px;
+    border: 1px solid rgba(0,0,0,0.1);
+    box-shadow: 0px 4px 9px rgba(0,0,0,0.15),
+                inset 0px 1px 0px rgba(255,255,255,0.1),
+                inset 0px 2px 0px rgba(255,255,255,0.05);
+    .pageview-mode & {
+        background-color: white;
+        left: calc(50% - 200px);
+        top: 24px;
+        border: 1px solid lightgrey;
+    }
+    a {
+        color: #bdbdbd;
+        text-decoration: none;
+    }
+    .search-input:hover + &,
+    .search-input:focus + &,
+    &:hover {
+        display: block;
+    }
+    #Suggestions {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        list-style-type: none;
+        -webkit-user-select: none;
+        user-select: none;
+        .pageview-mode & {
+            background-color: white;
+        }
+        & > li {
+            padding: 2px 14px;
+            margin: 5px 0;
+            font-size: 12px;
+            color: #747474;
+            &:hover,
+            &.active {
+                a {
+                    color: #fff;
+                }
+                background: rgba(0,0,0,0.4);
+            }
+        }
+        & > li .highlight {
+            color: #01bdff;
+        }
+        & > li > a {
+            display: block;
+            cursor: pointer;
+        }
+    }
+}

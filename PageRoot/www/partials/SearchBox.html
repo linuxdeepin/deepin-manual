@@ -1,7 +1,7 @@
 <div id="SearchBox" ng-controller="SearchBoxCtrl" ng-mouseenter="showSearch()">
-    <datalist id="HeaderList">
+    <!--<datalist id="HeaderList">
         <option ng-repeat="header in headers" value="{{header}}">
-    </datalist>
+    </datalist>-->
 
     <input type="search"
            id="SearchInput"
@@ -10,4 +10,8 @@
            ng-keydown="doSearch($scope,$event)"
            ng-model="searchTerm"
            ng-class="{slidedown: searchBoxVisible}" />
+
+    <div id="SuggestionsBox">
+        <ul id="Suggestions" ng-bind-html="suggestions"></ul>
+    </div>
 </div>

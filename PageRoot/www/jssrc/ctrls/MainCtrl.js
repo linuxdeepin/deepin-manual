@@ -98,7 +98,6 @@ angular.module("DManual")
                 let scriptPath = getScriptPath(location.href);
                 $scope.appInfo.markdownDir = markdownDir;
                 let base = `<base href='${markdownDir}/'>
-                    <script src="${scriptPath}/iscroll.js"></script>
                     <script src="${scriptPath}/mousetrap.js"></script>
                     <script>
                     'use strict';
@@ -169,14 +168,13 @@ angular.module("DManual")
         };
         $window.jumpTo = $scope.jumpTo;
 
-        let win = angular.element($window);
         let updateOuterFrame = function() {
             $scope.outerFrameStyle = {
                 height: $window.innerHeight + "px"
             };
         };
         updateOuterFrame();
-        win.bind("resize", function(event) {
+        angular.element($window).bind("resize", function(event) {
             updateOuterFrame();
         });
 
