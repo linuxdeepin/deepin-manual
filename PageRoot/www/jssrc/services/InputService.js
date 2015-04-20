@@ -1,9 +1,11 @@
 "use strict";
 
+let urlparse = require("url-parse");
+
 angular.module("General")
     .factory("GInput", function($log, $http, $q) {
         let _load = function(url) {
-            let parsed = new URL(url);
+            let parsed = urlparse(url);
             return $q(function(resolve, reject) {
                 switch (parsed.protocol) {
                     case "http:":
