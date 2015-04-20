@@ -7,9 +7,15 @@ angular.module("DManual")
             $rootScope.$broadcast("setMarkdown", markdownDir);
         };
         let getShellType = function() {
+            // try DAE
+            if ($window.DAE) {
+                return "DAE";
+            }
+
             // try atom-shell
             try {
-                require("remote");
+                let req = $window.require;
+                req("remote");
                 return "Atom-Shell";
             } catch (e) {}
 
@@ -105,7 +111,8 @@ angular.module("DManual")
         let body = document.getElementsByTagName("body")[0];
         switch (shell) {
             case "Atom-Shell": {
-                let AtomShell = require("remote");
+                let req = $window.require;
+                let AtomShell = req("remote");
                 let app = AtomShell.require("app");
                 let mainWin = AtomShell.require("browser-window").fromId(1);
 
@@ -128,7 +135,7 @@ angular.module("DManual")
                 //
                 // };
 
-                let ipc = require("ipc");
+                let ipc = req("ipc");
                 ipc.on("setMarkdown", function(msg) {
                     adapter.setMarkdown(msg.dmanDir);
                     localeService.setLocale(msg.uiLangs);
@@ -257,6 +264,38 @@ angular.module("DManual")
                         body: "ping",
                     });
                 }, 20);
+                break;
+            }
+            case "DAE": {
+                let app = $window.DAE.app;
+                app.setMinSize(946, 600);
+                app.setResizerSize(5);
+                app.setFrameless(true);
+                app.setTransBackground(true);
+                app.show();
+
+                app.addEvent({
+                    statechange: function() {
+                        let body = document.body;
+                        if (app.isMaximized()) {
+                            angular.element(body).addClass("isMaximized");
+                        } else {
+                            angular.element(body).removeClass("isMaximized");
+                        }
+                    }
+                });
+                $window.maximize = function() {
+                    if (app.isMaximized()) {
+                        app.normalize();
+                    } else {
+                        app.maximize();
+                    }
+                };
+                $window.minimize = app.minimize;
+                $window.close = function() {
+                    app.setClosable(true);
+                    app.close();
+                };
                 break;
             }
             default: {

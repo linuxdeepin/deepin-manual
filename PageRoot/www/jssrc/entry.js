@@ -17,3 +17,4 @@ require("./ctrls/SearchBoxCtrl");
 require("./services/GeneralEntry");
 require("./services/SynonymService");
 require("./services/InputService");
+require("./adapter");
