@@ -104,16 +104,16 @@ app.controller("MainCtrl", function($scope, $rootScope, $log, $sce, $window, $ti
                 <script src="${scriptPath}/mousetrap.js"></script>
                 <script>
                 'use strict';
-                let disallow = function(event) {
+                var disallow = function(event) {
                     event.preventDefault();
                     return false;
                 };
-                let emitEvent = function(eventName, eventMsg) {
-                    let e = new CustomEvent(eventName, {detail: eventMsg});
+                var emitEvent = function(eventName, eventMsg) {
+                    var e = new CustomEvent(eventName, {detail: eventMsg});
                     window.parent.dispatchEvent(e);
                 };
                 window.onload = function() {
-                    let body = document.body;
+                    var body = document.body;
                     body.addEventListener("dragenter", disallow);
                     body.addEventListener("dragover", disallow);
                     body.addEventListener("dragend", disallow);
@@ -158,7 +158,7 @@ app.controller("MainCtrl", function($scope, $rootScope, $log, $sce, $window, $ti
             body.removeClass('overview-mode');
             body.addClass('pageview-mode');
             $timeout(function() {
-                contentWin.location.hash = anchor;
+                contentWin.location.hash = encodeURIComponent(anchor);
                 $scope.$emit("navigationRelocate", contentWin.scrollY);
             }, 0);
         } else {
