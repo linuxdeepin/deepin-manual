@@ -306,9 +306,7 @@ app.factory("AdapterService", function Adapter($log, $rootScope, $window) {
                 let mdDir = bridge_bridge.mdDir();
                 let debug = bridge_bridge.debug();
                 let uiLangs = bridge_bridge.uiLangs();
-                //setTimeout(function() {
                 $window.adapter.setMarkdown(mdDir);
-                //}, 1000);
                 $window.adapter.setDebugMode(debug);
                 localeService.setLocale(uiLangs);
                 break;
