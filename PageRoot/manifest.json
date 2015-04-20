@@ -1,0 +1,13 @@
+{
+  "name": "Youdao Dict",
+  "version": "0.2.1",
+  "description": "有道词典Linux版",
+  "path": "www/",
+  "icon": "www/favicon.png",
+  "width": 718,
+  "height": 585,
+  "visible": true,
+  "transBackground": false,
+  "debug": true,
+  "frameless": false
+}
