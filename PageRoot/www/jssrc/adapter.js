@@ -60,6 +60,10 @@ app.factory("AdapterService", function Adapter($log, $rootScope, $window) {
                     }
                     break;
                 }
+                case "DAE": {
+                    bridge_bridge.sigShowTooltip(text, x, y);
+                    break;
+                }
                 default: {
                     $log.warn("No shell support for showTooltip");
                 }
