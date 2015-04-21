@@ -10,17 +10,55 @@ angular.module("DManual")
        .controller("SearchBoxCtrl", function($scope, $rootScope, $animate, $timeout, $log, $sce, $window) {
             $scope.headers = [];
             $scope.searchBoxVisible = false;
+            $scope.currentIndex = -1;
+
+            Object.defineProperty($scope, "completionList", {
+                get: () => [].slice.call(document.querySelector("#Suggestions").children)
+            });
+
+            $scope.completionUp = function(){
+                if($scope.currentIndex == -1) {
+                    $scope.currentIndex = $scope.completionList.length - 1;
+                } else {
+                    $scope.currentIndex--;
+                }
+            }
+
+            $scope.completionDown = function(){
+                if($scope.currentIndex == $scope.completionList.length - 1) {
+                    $scope.currentIndex = -1;
+                } else {
+                    $scope.currentIndex++;
+                }
+            }
 
             $scope.doSearch = function($innerScope, $event){
                 if ($event.keyCode === Keyboard.ENTER) {
-                    $rootScope.$broadcast("searchTermChanged", $scope.searchTerm);
-                    return true;
-                } else if ($event.keyCode === Keyboard.KEY_UP) {
-                    // TODO search cursor up
-                } else if ($event.keyCode === Keyboard.KEY_DOWN) {
-                    // TODO search cursor down
+                    $event.preventDefault();
+                    if($scope.currentIndex == -1){
+                        $rootScope.$broadcast("searchTermChanged", $scope.searchTerm);
+                    } else {
+                        window.jumpTo($scope.completionValue);
+                    }
+                    document.querySelector('#SearchInput').blur();
                 }
-                return false;
+                if ($event.keyCode === Keyboard.KEY_UP) {
+                    $event.preventDefault();
+                    $scope.completionUp();
+                    angular.element($scope.completionList).removeClass('active');
+                    angular.element($scope.completionList[$scope.currentIndex]).addClass('active')
+                    if($scope.currentIndex !== -1) {
+                        $scope.completionValue = $scope.completionList[$scope.currentIndex].children[0].title
+                    }
+                } else if ($event.keyCode === Keyboard.KEY_DOWN) {
+                    $event.preventDefault();
+                    $scope.completionDown();
+                    angular.element($scope.completionList).removeClass('active');
+                    angular.element($scope.completionList[$scope.currentIndex]).addClass('active')
+                    if($scope.currentIndex !== -1) {
+                        $scope.completionValue = $scope.completionList[$scope.currentIndex].children[0].title
+                    }
+                }
             };
 
             $scope.$on("showSearchBox", function(){
@@ -56,15 +94,14 @@ angular.module("DManual")
                     let pattern = new RegExp("(?:" +
                         value.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, '\\$1')
                     + ")", 'gi');
-                    let headersList = $scope.headers;
-                    let resultList = headersList.map(function(text) {
+                    let resultList = $scope.headers.map(function(text) {
                         let found = false;
                         let highlighted = text.replace(pattern, function(word) {
                             found = true;
                             return `<span class="highlight">${word}</span>`;
                         });
                         if (found) {
-                            return `<li><a href="javascript:jumpTo('${text}');">${highlighted}</a></li>`;
+                            return `<li><a href="javascript:jumpTo('${text}');" title="${text}">${highlighted}</a></li>`;
                         } else {
                             return false;
                         }
