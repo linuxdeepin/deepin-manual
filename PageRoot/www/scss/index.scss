@@ -291,6 +291,9 @@ input[type='search'] {
                 height: 24px;
                 left: -30px;
             }
+            ol {
+                display: none;
+            }
         }
 
         .level3 {
@@ -305,6 +308,9 @@ input[type='search'] {
             svg rect,
             svg path {
                 fill: #0086ff !important;
+            }
+            ol {
+                display: block;
             }
         }
 
@@ -619,7 +625,7 @@ $logoHeight: 48px;
             padding-left: 10px;
         }
         .level2 {
-            img {
+            img, figure {
                 position: static;
             }
             span {
