@@ -9,16 +9,14 @@ let templateUrlDirectiveConfigMap = {
     "deepinUiManualOverview"    : "Overview.html",
     "deepinUiManualSearchInput" : "SearchBox.html",
     "deepinUiManualSearchResult": "SearchResult.html"
-}
+};
 
 // Custom UI controls here
 app.directive("deepinUiFrame", function(){
     return {
         restrict: "E",
         replace: "true",
-        template: `<div id="OuterFrame" ng-style="outerFrameStyle">
-            <div id="MoveHandle"></div>
-        </div>`
+        template: `<div id="MoveHandle" ng-controller="FrameCtrl"><!-- div id="OuterFrame" ng-style="outerFrameStyle"></div--></div>`
     }
   }).directive("deepinUiContainer", function(){
     return {
@@ -41,7 +39,7 @@ app.directive("deepinUiFrame", function(){
             }
         });
     });
-})(app, templateUrlDirectiveConfigMap)
+})(app, templateUrlDirectiveConfigMap);
 
 // Custom Attributes here
 app.directive("deepinAppManualBody", function($rootScope){
@@ -59,4 +57,4 @@ app.directive("deepinAppManualBody", function($rootScope){
                 });
             }
         }
-    })
+    });

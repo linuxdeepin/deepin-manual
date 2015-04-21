@@ -106,6 +106,24 @@ app.factory("AdapterService", function Adapter($log, $rootScope, $window) {
                 }
             }
         };
+        let moveHandleDown = function(event) {
+            if (getShellType() === "DAE") {
+                if(event.which == 1 && event.target.tagName !== 'button') {
+                    DAE.app.dragStart();
+                }
+            }
+        };
+        let moveHandleUp = function(event) {
+            if (getShellType() === "DAE") {
+                DAE.app.dragStop();
+            }
+        };
+        let moveHandleDblclick = function(event) {
+            if (getShellType() === "DAE") {
+
+            }
+        };
+
         let result = {
             markdownDir: markdownDir,
             setMarkdown: setMarkdown,
@@ -114,6 +132,9 @@ app.factory("AdapterService", function Adapter($log, $rootScope, $window) {
             showTooltip: showTooltip,
             setTitle: setTitle,
             openExternalBrowser: openExternalBrowser,
+            moveHandleDown: moveHandleDown,
+            moveHandleUp: moveHandleUp,
+            moveHandleDblclick: moveHandleDblclick,
         };
         $window.adapter = result;
         return result;
@@ -297,8 +318,7 @@ app.factory("AdapterService", function Adapter($log, $rootScope, $window) {
                     }
                 });
                 $window.maximize = function() {
-                    if (app.isMaximized()) {
-                        app.normalize();
+                    if (app.isMaximized()) { app.normalize();
                     } else {
                         app.maximize();
                     }

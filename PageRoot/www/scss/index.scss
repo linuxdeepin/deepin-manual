@@ -435,8 +435,14 @@ $logoHeight: 48px;
 #MoveHandle {
     -webkit-user-select: none;
     -webkit-app-region: drag;
+    padding: 0 !important;
+    margin: 0 !important;
+    outline: 0 !important;
+    position: fixed;
+    width: calc(100% - 80px);
     height: 30px;
-    margin: 3px 3px 0;
+    z-index: 10001;
+    background-color: transparent;
     .debug-mode & {
         background-color: darkmagenta;
     }
