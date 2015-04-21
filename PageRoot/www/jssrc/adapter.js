@@ -61,7 +61,8 @@ app.factory("AdapterService", function Adapter($log, $rootScope, $window) {
                     break;
                 }
                 case "DAE": {
-                    bridge_bridge.sigShowTooltip(text, x, y);
+                    let win = $window.DAE.app;
+                    bridge_bridge.sigShowTooltip(text, win.x + x, win.y + y);
                     break;
                 }
                 default: {

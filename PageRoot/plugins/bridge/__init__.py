@@ -1,7 +1,7 @@
 # -*- coding: utf-8 -*-
 
 
-from PyQt5.QtCore import QObject, pyqtSlot, pyqtSignal, QUrl, Qt
+from PyQt5.QtCore import QObject, pyqtSlot, pyqtSignal, QUrl
 from PyQt5.QtQuick import QQuickView
 import sys, os
 
@@ -12,20 +12,17 @@ from utils import getUILanguage, getDocumentLanguageFor, processMarkdownPath
 
 
 class TooltipView(QQuickView):
+    sigShowTooltip = pyqtSignal(str, int, int)
+
     def __init__(self, parent):
         super().__init__(None)
         parent.sigShowTooltip.connect(self.showTooltip)
-        self.setFlags(Qt.FramelessWindowHint)
-        self.setSource(QUrl.fromLocalFile(os.path.dirname(__file__) + "/.TooltipView.qml"))
+        self.rootContext().setContextProperty("view", self)
+        self.setSource(QUrl.fromLocalFile(os.path.dirname(__file__) + "/TooltipView.qml"))
 
     @pyqtSlot(str, int, int, result = "void*")
     def showTooltip(self, text, x, y):
-        print("Show tooltip", text, "at", x, y)
-        if text:
-            self.show()
-        else:
-            self.hide()
-
+        self.sigShowTooltip.emit(text, x, y)
 
 
 class Bridge(QObject):
