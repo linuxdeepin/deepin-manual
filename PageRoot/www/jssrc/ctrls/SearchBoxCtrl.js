@@ -58,6 +58,8 @@ angular.module("DManual")
                     if($scope.currentIndex !== -1) {
                         $scope.completionValue = $scope.completionList[$scope.currentIndex].children[0].title
                     }
+                } else {
+                    $scope.currentIndex = -1;
                 }
             };
 
