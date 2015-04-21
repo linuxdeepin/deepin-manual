@@ -1,7 +1,7 @@
 "use strict";
 
 let marked = require("marked");
-let MAX_INDEX_HEADER_LEVEL = 2;
+let MAX_INDEX_HEADER_LEVEL = 4;
 let MAX_NAV_HEADER_LEVEL = 3;
 
 let normalizeAnchorName = function(raw) {
