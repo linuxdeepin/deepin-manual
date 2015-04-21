@@ -43,7 +43,6 @@ angular.module("DManual")
             $scope.$apply();
         });
         $scope.$on("navigationRelocate", function(event, value){
-            console.log(value);
             let offset = value;
             navigationRelocate(offset);
         });

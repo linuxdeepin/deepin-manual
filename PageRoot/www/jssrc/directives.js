@@ -60,3 +60,21 @@ app.directive("deepinAppManualBody", function($rootScope){
             }
         }
     })
+    .directive("deepinUiSvgImage", function($rootScope, $http){
+        return {
+            restrict: "A",
+            link: function(scope, elem, attrs) {
+                let src = attrs.ngSrc;
+                if(/\.svg$/.test(src)) {
+                    $http.get(src).then(function(res){
+                        let div = document.createElement('div');
+                        div.innerHTML = res.data;
+                        let svg = div.querySelector('svg');
+                        let figure = document.createElement('figure');
+                        figure.appendChild(svg);
+                        elem.replaceWith(figure);
+                    });
+                }
+            }
+        }
+    })
