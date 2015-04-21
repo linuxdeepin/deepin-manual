@@ -29,8 +29,9 @@ app.controller("MainCtrl", function($scope, $rootScope, $log, $sce, $window, $ti
             }
         }
     });
+
     $scope.appInfo = {
-        name: "Unnamed",
+        name: "Untitled",
     };
 
     hotkeys.add({
@@ -159,7 +160,7 @@ app.controller("MainCtrl", function($scope, $rootScope, $log, $sce, $window, $ti
             body.addClass('pageview-mode');
             $timeout(function() {
                 contentWin.location.hash = encodeURIComponent(anchor);
-                $scope.$emit("navigationRelocate", contentWin.scrollY);
+                $rootScope.$broadcast("navigationRelocate", contentWin.scrollY);
             }, 0);
         } else {
             $scope.isOverview = true;
@@ -169,7 +170,7 @@ app.controller("MainCtrl", function($scope, $rootScope, $log, $sce, $window, $ti
             body.addClass('overview-mode');
             $timeout(function() {
                 contentWin.location.hash = "";
-                $scope.$emit("navigationRelocate", contentWin.scrollY);
+                $rootScope.$broadcast("navigationRelocate", contentWin.scrollY);
             }, 0);
         }
         $scope.isSearchmode = false;
