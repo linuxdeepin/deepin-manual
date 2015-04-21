@@ -166,10 +166,14 @@ input[type='search'] {
         cursor: pointer;
         &:hover {
             color: #616161;
+            svg path,
+            svg rect {
+                fill: #616161 !important;
+            }
         }
     }
 
-    img {
+    img, figure {
         width: 64px;
         height: 64px;
         margin: 0 auto;
@@ -279,8 +283,9 @@ input[type='search'] {
         .level2 { // li
             margin-top: 16px;
             position: relative;
-            img {
+            img, figure {
                 position: absolute;
+                margin: 0;
                 display: block;
                 width: 24px;
                 height: 24px;
@@ -296,6 +301,10 @@ input[type='search'] {
         .current-section {
             &>a>span {
                 color: #0086ff;
+            }
+            svg rect,
+            svg path {
+                fill: #0086ff !important;
             }
         }
 
