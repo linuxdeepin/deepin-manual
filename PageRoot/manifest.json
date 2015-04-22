@@ -9,6 +9,6 @@
   "height": 585,
   "visible": true,
   "transBackground": false,
-  "debug": true,
+  "debug": false,
   "frameless": false
 }
