@@ -18,7 +18,7 @@ symdir/
 __pycache__
 .directory
 
-debian/deepin-user-manual/
+debian/deepin-manual/
 debian/files
 debian/*.debhelper
 debian/*.debhelper.log

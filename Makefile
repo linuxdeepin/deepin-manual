@@ -1,5 +1,5 @@
 SHELL   = /bin/bash
-PREFIX := /opt/deepin-user-manual
+PREFIX := /opt/deepin-manual
 
 all: nodejs
 	echo "Copying icon"
@@ -40,11 +40,12 @@ install:
 	ln -s $(PREFIX)/main.js $(DESTDIR)/usr/bin/dman
 
 	# Copy icons
+	mkdir -p $(DESTDIR)/usr/share/icons/hicolor/scalable/apps
 	cp DMan/DManual.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/deepin-manual.svg
 
 clean:
 	rm -rf symdir/
-	rm -rf debian/deepin-user-manual
+	rm -rf debian/deepin-manual
 	rm -rf debian/files
 	rm -rf debian/*.debhelper
 	rm -rf debian/*.debhelper.log

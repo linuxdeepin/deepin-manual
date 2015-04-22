@@ -1,15 +1,15 @@
-Source: deepin-user-manual
+Source: deepin-manual
 Maintainer: Xinkai Chen <chenxinkai@linuxdeepin.com>
-Section: net
+Section: python
 Priority: optional
 Build-Depends:
  debhelper,
  nodejs, npm
 Standards-Version: 3.9.5
-Homepage: https://example.com
-Vcs-Git: https://example.com
-Vcs-Browser: https://example.com
+Homepage: https://gitcafe.com/Deepin/deepin-user-manual/
+Vcs-Git: git://gitcafe.com/Deepin/deepin-user-manual.git
+Vcs-Browser: https://gitcafe.com/Deepin/deepin-user-manual/
 
-Package: deepin-user-manual
+Package: deepin-manual
 Architecture: i386 amd64
-Description: Deepin User Manual
+Description: Deepin Manual
