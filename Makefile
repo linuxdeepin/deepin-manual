@@ -5,7 +5,6 @@ all: nodejs
 	echo "Installing dependencies"
 	cd PageRoot && \
 	    PATH="$(shell pwd)/symdir/:$$PATH" npm install
-	cd PageRoot && bower install
 
 	mkdir -p PageRoot/www/scripts
 
