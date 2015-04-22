@@ -73,6 +73,6 @@ gulp.task('browserify', function() {
         .pipe(fs.createWriteStream("./www/scripts/bundle.js"));
 });
 
-gulp.task('dist', ['sass', 'copyMouseTrap', 'browserify'], function() {
+gulp.task('dist', ['sass', 'copyMouseTrap', 'browserify', 'translations'], function() {
     console.log("Gulp::dist done.");
 });

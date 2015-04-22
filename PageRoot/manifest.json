@@ -1,9 +1,9 @@
 {
-  "name": "Youdao Dict",
-  "version": "0.2.1",
-  "description": "有道词典Linux版",
+  "name": "DManual",
+  "version": "1.0",
+  "description": "Deepin Manual",
   "path": "www/",
-  "icon": "www/favicon.png",
+  "icon": "www/favicon.svg",
   "plugins": "plugins/",
   "width": 718,
   "height": 585,
