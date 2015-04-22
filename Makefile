@@ -1,5 +1,5 @@
 SHELL   = /bin/bash
-PREFIX := /opt/deepin-manual
+PREFIX := /usr/share/deepin-manual
 
 all: nodejs
 	echo "Copying icon"
@@ -16,6 +16,9 @@ dist:
 	cd PageRoot && \
 	    PATH="$(shell pwd)/symdir/:$$PATH" node --harmony ./node_modules/gulp/bin/gulp.js dist
 
+	# Remove unminified bundle.js
+	rm PageRoot/www/scripts/bundle.js
+
 nodejs:
 	# Debian-based distros use nonstandard node executable name
 	mkdir -p symdir
@@ -23,21 +26,30 @@ nodejs:
 
 install:
 	mkdir -p $(DESTDIR)$(PREFIX)/{PageRoot,DMan}
-	cp -r PageRoot/{po,www} $(DESTDIR)$(PREFIX)/PageRoot/
+	cp -r PageRoot/{www,plugins,manifest.json} $(DESTDIR)$(PREFIX)/PageRoot/
 	cp -r DMan/* $(DESTDIR)$(PREFIX)/DMan/
 	rm -r $(DESTDIR)$(PREFIX)/PageRoot/www/{jssrc,scss}
 	find $(DESTDIR)$(PREFIX) -name "__pycache__" -print0 | xargs -0 rm -rf
 
-	cp {main.js,package.json} $(DESTDIR)$(PREFIX)/
+	# remove unused files for dae
+	rm -rf $(DESTDIR)$(PREFIX)/DMan/qml
+	rm -rf $(DESTDIR)$(PREFIX)/DMan/tests
+	rm -rf $(DESTDIR)$(PREFIX)/DMan/{main.py,main2.py,QmlResizable.py,view.py,webview.py}
+	mv $(DESTDIR)$(PREFIX)/DMan/main_dae.py $(DESTDIR)$(PREFIX)/DMan/main.py
 	chmod +x $(DESTDIR)$(PREFIX)/DMan/main.py
 
 	# Atom-shell script
-	chmod +x $(DESTDIR)$(PREFIX)/main.js
-	# Remove Atom-shell things.
-	rm $(DESTDIR)$(PREFIX)/{main.js,package.json}
+	# cp {main.js,package.json} $(DESTDIR)$(PREFIX)/
+	# chmod +x $(DESTDIR)$(PREFIX)/main.js
 
+	# install dman in /usr/bin
 	install -d $(DESTDIR)/usr/bin
-	ln -s $(PREFIX)/main.js $(DESTDIR)/usr/bin/dman
+	ln -s $(PREFIX)/DMan/main.py $(DESTDIR)/usr/bin/dman
+	python3 -OO -m compileall -q $(DESTDIR)$(PREFIX)/DMan
+
+	# copy dman for dman
+	mkdir -p $(DESTDIR)/usr/share/dman
+	cp -r manual $(DESTDIR)/usr/share/dman/dman
 
 	# Copy icons
 	mkdir -p $(DESTDIR)/usr/share/icons/hicolor/scalable/apps

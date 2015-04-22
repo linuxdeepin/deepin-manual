@@ -4,12 +4,15 @@ Section: python
 Priority: optional
 Build-Depends:
  debhelper,
- nodejs, npm
+ nodejs, npm,
+ python3
 Standards-Version: 3.9.5
 Homepage: https://gitcafe.com/Deepin/deepin-user-manual/
 Vcs-Git: git://gitcafe.com/Deepin/deepin-user-manual.git
 Vcs-Browser: https://gitcafe.com/Deepin/deepin-user-manual/
 
 Package: deepin-manual
-Architecture: i386 amd64
+Architecture: all
 Description: Deepin Manual
+Depends:
+ python3-dae, python3-gi
