@@ -47,10 +47,6 @@ gulp.task('copyMouseTrap', function() {
 
 var entryPath = './www/jssrc/entry.js';
 var jsPath = './www/jssrc/**/*.js';
-var adapterPath = [
-    './www/jssrc/adapter.js',
-    './www/jssrc/adapter_oxide.js',
-];
 
 gulp.task("watch", ['sass', 'copyMouseTrap', 'browserify'], function() {
     gulp.watch('./www/scss/*.scss', ['sass']);
