@@ -1,12 +1,14 @@
 .idea/
 PageRoot/node_modules
 PageRoot/bower_components
+PageRoot/www/nls
 PageRoot/www/style/**/*.css
+PageRoot/www/scripts
+
 unused/
 dist/
 symdir/
 
-PageRoot/www/scripts
 *.nw
 *.log
 
