@@ -6,9 +6,8 @@ PageRoot/www/style/**/*.css
 PageRoot/www/scripts
 PageRoot/www/favicon.svg
 
-unused/
-dist/
-symdir/
+unused
+symdir
 
 *.nw
 *.log
