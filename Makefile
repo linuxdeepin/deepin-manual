@@ -42,6 +42,6 @@ clean:
 	rm -rf debian/*.substvars
 
 deepclean:
-	rm -rf PageRoot/www/{style,scripts}
+	rm -rf PageRoot/www/{style,scripts,nls}
 
 .PHONY: all nodejs install clean deepclean
