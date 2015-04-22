@@ -8,7 +8,8 @@ var mocha = require('gulp-mocha');
 var fs = require("fs");
 var babelify = require("babelify");
 var browserify = require("browserify");
-
+var ngannotate = require("gulp-ng-annotate");
+var uglify = require("gulp-uglify");
 
 gulp.task('sass', function () {
     gulp.src('./www/scss/*.scss')
@@ -47,6 +48,7 @@ gulp.task('copyMouseTrap', function() {
 
 var entryPath = './www/jssrc/entry.js';
 var jsPath = './www/jssrc/**/*.js';
+var bundlePath = './www/scripts/bundle.js';
 
 gulp.task("watch", ['sass', 'copyMouseTrap', 'browserify'], function() {
     gulp.watch('./www/scss/*.scss', ['sass']);
@@ -62,7 +64,25 @@ gulp.task('test', function () {
         }));
 });
 
+var browserifyDone = false;
 gulp.task('browserify', function() {
+    browserifyDone = false;
+    // transform(babelify) and then transform(browserify-ngannotate) loses sourcemap
+    // bind a finish event, to use gulp-ng-annotate instead.
+    var fsWriter = fs.createWriteStream(bundlePath);
+    fsWriter.on("finish", function() {
+        return gulp.src(bundlePath)
+            .pipe(ngannotate())
+            // Do not really minify it.
+            // uglifying is slow, and removes sourcemaps.
+            // minifying is really done in dist task.
+            //.pipe(uglify())
+            .pipe(rename('bundle.min.js'))
+            .pipe(gulp.dest("./www/scripts/"))
+            .on("finish", function() {
+                browserifyDone = true;
+            });
+    });
     browserify({ debug: true })
         .transform(babelify)
         .require(entryPath, { entry: true })
@@ -70,9 +90,22 @@ gulp.task('browserify', function() {
         .on("error", function (err) {
             console.error(err.message);
         })
-        .pipe(fs.createWriteStream("./www/scripts/bundle.js"));
+        .pipe(fsWriter);
 });
 
 gulp.task('dist', ['sass', 'copyMouseTrap', 'browserify', 'translations'], function() {
-    console.log("Gulp::dist done.");
+    var timer = setInterval(function() {
+        if (!browserifyDone) {
+            return;
+        }
+        clearTimeout(timer);
+        console.log("Minifying bundle.js");
+        gulp.src("./www/scripts/bundle.min.js")
+            .pipe(uglify())
+            .pipe(rename("bundle.min.js"))
+            .pipe(gulp.dest("./www/scripts/"))
+            .on("finish", function() {
+                console.log("Gulp::dist done.");
+            });
+    }, 200);
 });
