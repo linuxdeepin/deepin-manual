@@ -45,6 +45,30 @@ let parseNavigationItems = function(tokens) {
     };
     let indices = [];
     let headers = [];
+    let _inlineDeMarkdown = function(token) {
+        // called by parseNavigationItems,
+        // html, paragraph, and text needs inline parsing to strip markdown marks.
+        let payload = [token];
+        payload.links = tokens.links;
+        let parser = new marked.Parser({
+            gfm: true,
+            tables: true,
+            breaks: false,
+            pedantic: false,
+            sanitize: false,
+            smartLists: false,
+            silent: false,
+            highlight: null,
+            langPrefix: 'lang-',
+            smartypants: false,
+            headerPrefix: '',
+            renderer: getPlainRenderer(),
+            xhtml: false,
+        });
+        let text = parser.parse(payload);
+        return text;
+    };
+
     let _addText = function(what) {
         if ((indices.length === 0) ||
             (indices[indices.length - 1].header !== currentHeaderId)) {
@@ -115,35 +139,17 @@ let parseNavigationItems = function(tokens) {
                     // columns control characters
                     break;
                 }
-                _addText(token.text);
+                _addText(_inlineDeMarkdown(token));
                 break;
             }
             case "text":
             case "html":
             {
-                let payload = [token];
-                payload.links = tokens.links;
-                let parser = new marked.Parser({
-                    gfm: true,
-                    tables: true,
-                    breaks: false,
-                    pedantic: false,
-                    sanitize: false,
-                    smartLists: false,
-                    silent: false,
-                    highlight: null,
-                    langPrefix: 'lang-',
-                    smartypants: false,
-                    headerPrefix: '',
-                    renderer: getPlainRenderer(),
-                    xhtml: false,
-                });
-                let text = parser.parse(payload);
-                _addText(text);
+                _addText(_inlineDeMarkdown(token));
                 break;
             }
             case "code": {
-                _addText(token.text);
+                _addText(_inlineDeMarkdown(token));
                 break;
             }
             case "list_start":
