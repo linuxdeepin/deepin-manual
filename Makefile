@@ -2,6 +2,11 @@ SHELL   = /bin/bash
 PREFIX := /opt/deepin-user-manual
 
 all: nodejs
+	echo "Copying icon"
+	cp DMan/DManual.svg PageRoot/www/favicon.svg
+
+dist:
+	# Installing node modules and transpile scripts
 	echo "Installing dependencies"
 	cd PageRoot && \
 	    PATH="$(shell pwd)/symdir/:$$PATH" npm install
@@ -25,10 +30,16 @@ install:
 
 	cp {main.js,package.json} $(DESTDIR)$(PREFIX)/
 	chmod +x $(DESTDIR)$(PREFIX)/DMan/main.py
+
+	# Atom-shell script
 	chmod +x $(DESTDIR)$(PREFIX)/main.js
+	# Remove Atom-shell things.
+	rm $(DESTDIR)$(PREFIX)/{main.js,package.json}
+
 	install -d $(DESTDIR)/usr/bin
 	ln -s $(PREFIX)/main.js $(DESTDIR)/usr/bin/dman
 
+	# Copy icons
 	cp DMan/DManual.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/deepin-manual.svg
 
 clean:
@@ -40,6 +51,6 @@ clean:
 	rm -rf debian/*.substvars
 
 deepclean:
-	rm -rf PageRoot/www/{style,scripts,nls}
+	rm -rf PageRoot/www/{style,scripts,nls,favicon.svg}
 
-.PHONY: all nodejs install clean deepclean
+.PHONY: all dist nodejs install clean deepclean
