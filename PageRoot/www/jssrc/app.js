@@ -6,6 +6,10 @@ let {
 } = require("./utils");
 
 let app = angular.module("DManual", ["General", "gettext", "ngAnimate", "cfp.hotkeys"]);
+if (typeof window !== undefined) {
+    window.$ = require("jquery");
+}
+
 app.filter("filterHighlight", function($log, $sce) {
     let _PLACEHOLDER_RESULT = [];
     let lastTerm = null;

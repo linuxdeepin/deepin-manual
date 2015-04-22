@@ -1,12 +1,12 @@
 "use strict";
 
 var gulp = require('gulp');
+var rename = require('gulp-rename');
 var sass = require('gulp-sass');
 var gettext = require("gulp-angular-gettext");
 var mocha = require('gulp-mocha');
 var fs = require("fs");
 var babelify = require("babelify");
-var bower = require("main-bower-files")
 var browserify = require("browserify");
 
 
@@ -39,10 +39,11 @@ gulp.task('translations', function () {
         .pipe(gulp.dest('./www/nls/'));
 });
 
-gulp.task('bower', function(){
-    return gulp.src(bower())
-            .pipe(gulp.dest('./www/scripts'));
-})
+gulp.task('copyMouseTrap', function() {
+    return gulp.src("./node_modules/mousetrap/mousetrap.min.js")
+            .pipe(rename('mousetrap.js'))
+            .pipe(gulp.dest('./www/scripts/'));
+});
 
 var entryPath = './www/jssrc/entry.js';
 var jsPath = './www/jssrc/**/*.js';
@@ -51,10 +52,9 @@ var adapterPath = [
     './www/jssrc/adapter_oxide.js',
 ];
 
-gulp.task("watch", ['sass', 'bower', 'browserify', 'adapter'], function() {
+gulp.task("watch", ['sass', 'copyMouseTrap', 'browserify'], function() {
     gulp.watch('./www/scss/*.scss', ['sass']);
     gulp.watch(jsPath, ['browserify']);
-    gulp.watch(adapterPath, ['adapter']);
 });
 
 gulp.task('test', function () {
@@ -77,10 +77,6 @@ gulp.task('browserify', function() {
         .pipe(fs.createWriteStream("./www/scripts/bundle.js"));
 });
 
-gulp.task('adapter', function() {
-    gulp.src(adapterPath).pipe(gulp.dest('./www/scripts/'));
-});
-
-gulp.task('dist', ['sass', 'browserify', 'adapter'], function() {
+gulp.task('dist', ['sass', 'copyMouseTrap', 'browserify'], function() {
     console.log("Gulp::dist done.");
 });
