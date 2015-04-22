@@ -361,6 +361,8 @@ app.factory("AdapterService", function Adapter($log, $rootScope, $window) {
                 // First run
                 let isFirstRun = bridge_bridge.isFirstRun();
                 AdapterService.setFirstRun(isFirstRun);
+                let isCompactMode = bridge_bridge.isCompactMode();
+                AdapterService.setCompactMode(isCompactMode);
                 break;
             }
             default: {

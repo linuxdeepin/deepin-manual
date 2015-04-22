@@ -4,6 +4,8 @@
 from PyQt5.QtCore import QObject, pyqtSlot, pyqtSignal, QUrl
 from PyQt5.QtQuick import QQuickView
 import sys, os
+import configparser
+from pathlib import Path
 
 p = os.path.normpath(os.path.dirname(__file__) + "/../../../DMan")
 sys.path.append(p)
@@ -30,6 +32,14 @@ class Bridge(QObject):
 
     def __init__(self):
         super().__init__()
+        self._configPath = os.path.expanduser("~/.config/deepin-manual/config.ini")
+        self._config = configparser.ConfigParser()
+        self._config.read(self._configPath, encoding = "utf-8")
+        try:
+            (Path(os.path.expanduser("~/.config/deepin-manual"))).mkdir(parents = True)
+        except FileExistsError:
+            pass
+        Path(self._configPath).touch()
         mdUrl = sys.argv[-1]
         self._dmanInfo = processMarkdownPath(mdUrl, getDocumentLanguageFor)
         self._tooltipView = TooltipView(self)
@@ -49,6 +59,31 @@ class Bridge(QObject):
     @pyqtSlot(result = bool)
     def debug(self):
         return not not os.environ.get("DEBUG", None)
+
+    @pyqtSlot(bool)
+    def setCompactMode(self, on):
+        if not self._config.has_section("general"):
+            self._config.add_section("general")
+        self._config.set("general", "isCompactMode", "True" if on else "False")
+        self._writeConfig()
+
+    @pyqtSlot(result = bool)
+    def isCompactMode(self):
+        return self._config.getboolean("general", "isCompactMode",
+                                       fallback = False)
+
+    @pyqtSlot(result = bool)
+    def isFirstRun(self):
+        yes = self._config.getboolean("general", "isFirstRun",
+                                      fallback = True)
+        if yes:
+            self._config.set("general", "isFirstRun", "True")
+            self._writeConfig()
+        return yes
+
+    def _writeConfig(self):
+        with open(self._configPath, 'w', encoding = "utf-8") as f:
+            self._config.write(f)
 
 
 def export_objects():
