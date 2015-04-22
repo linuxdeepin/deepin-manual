@@ -1,25 +1,50 @@
-# 安装编译说明
+# Deepin Manual
 
-## 环境预备
-1. 安装node 0.12或更新。
-2. 安装依赖。
-```bash
-npm install
-```
-3.
-```bash
-gulp watch
-```
+## For packagers
 
-## I18N
-``` bash
-gulp pot
-gulp translations
-```
+### Packaging environment
 
-## 运行
-```bash
-./main.js Markdown_Path
-```
+Nodejs >= 0.10 is needed; iojs should work too.
 
-如果需要带调试运行，设置DEBUG环境变量为非空值。
+Note that because of the node/nodejs name conflict on debian-based distros,
+it's recommended to use run `make all` instead of to run `npm install` to install
+dependencies.
+
+### Dependency handling
+
+Since we need dependencies from npm and pulling those during packaging would be a problem when
+the internet situation is not ideal. Also, including those dependencies in the git tree would
+cost too much space.
+
+This is how we do it: the genereated javascripts and locale files
+are included in the git source tree. That means: in order to make a distro package, it's not
+necessary to go through "installing npm packages", "running gulp tasks" and such.
+
+If you want to re-generate those, run `make deepclean`; and run `gulp dist`.
+
+## For developers
+
+### Development environment
+
+In order to run full tests, iojs is required; even nodejs 0.12 with `--harmony`
+won't work!
+
+### Dependencies
+
+It is worth noting that we included a `npm-shrinkwrap.json` file. If you ever want to make a dependency
+adjustment, be sure to re-genereate that file too.
+
+### Gulp tasks
+
+Several gulp tasks are provided. You may want to use the following:
+
+* `gulp watch`. It watches file changes of the source code.
+* `gulp dist`. It produces files ready for deployment.
+* `gulp translation`. It produces UI language json files in the `www/nls` folder.
+
+For more tasks, please consult the source code of `Gulpfile.js`.
+
+### Debug mode
+
+When DManual starts with environment variable `DEBUG` being a non-empty value, the program will run in debug mode.
+It doesn't do much but it will color most of the HTML blocks and give you a some hints about layout problems.

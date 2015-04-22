@@ -6,14 +6,13 @@ all: nodejs
 	cd PageRoot && \
 	    PATH="$(shell pwd)/symdir/:$$PATH" npm install
 
-	mkdir -p PageRoot/www/scripts
-
 	echo "Transpiling"
 	mkdir -p PageRoot/www/scripts
 	cd PageRoot && \
 	    PATH="$(shell pwd)/symdir/:$$PATH" node --harmony ./node_modules/gulp/bin/gulp.js dist
 
 nodejs:
+	# Debian-based distros use nonstandard node executable name
 	mkdir -p symdir
 	ln -sf /usr/bin/nodejs ./symdir/node
 
