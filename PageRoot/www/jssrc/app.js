@@ -6,7 +6,7 @@ let {
 } = require("./utils");
 
 let app = angular.module("DManual", ["General", "gettext", "ngAnimate", "cfp.hotkeys"]);
-if (typeof window !== undefined) {
+if (typeof window !== "undefined") {
     window.$ = require("jquery");
 }
 
