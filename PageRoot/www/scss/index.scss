@@ -14,6 +14,8 @@ $csdLW: 0px;  // Left width
 $caW: 946px;
 
 $navBgcolor: #252628;
+$theBlue: #0086ff;
+$highlightColor: #01bdff;
 
 // page view
 $pvNavBarWidth: 200px;
@@ -303,11 +305,11 @@ input[type='search'] {
 
         .current-section {
             &>a>span {
-                color: #0086ff;
+                color: $theBlue;
             }
             svg rect,
             svg path {
-                fill: #0086ff !important;
+                fill: $theBlue !important;
             }
             ol {
                 display: block;
@@ -348,8 +350,7 @@ input[type='search'] {
         z-index: 50000;
     }
     span.highlight {
-        background-color: yellow;
-        color: blue;
+        color: $highlightColor;
     }
     a.anchor {
         color: #494949;
@@ -552,7 +553,7 @@ $logoHeight: 48px;
     }
 
     &:focus {
-        border-color: #0086ff;
+        border-color: $theBlue;
     }
 
     .pageview-mode & {
@@ -562,7 +563,7 @@ $logoHeight: 48px;
         left: 50%;
 
         &:focus {
-            border-color: #0086ff;
+            border-color: $theBlue;
         }
 
         &.slidedown {
@@ -737,7 +738,7 @@ $logoHeight: 48px;
             }
         }
         & > li .highlight {
-            color: #01bdff;
+            color: $highlightColor;
         }
         & > li > a {
             display: block;
