@@ -124,6 +124,23 @@ app.factory("AdapterService", function Adapter($log, $rootScope, $window) {
             }
         };
 
+        let _isFirstRun = false;
+        let isFirstRun = function() {
+            return _isFirstRun;
+        };
+        let setFirstRun = function(on) {
+            _isFirstRun = on;
+        };
+        let _isCompactMode = false;
+        let setCompactMode = function(on) {
+            if (getShellType() === "DAE") {
+                bridge_bridge.setCompactMode(on);
+            }
+            _isCompactMode = on;
+        };
+        let isCompactMode = function() {
+            return _isCompactMode;
+        };
         let result = {
             markdownDir: markdownDir,
             setMarkdown: setMarkdown,
@@ -135,6 +152,11 @@ app.factory("AdapterService", function Adapter($log, $rootScope, $window) {
             moveHandleDown: moveHandleDown,
             moveHandleUp: moveHandleUp,
             moveHandleDblclick: moveHandleDblclick,
+
+            isFirstRun: isFirstRun,
+            setFirstRun: setFirstRun,
+            isCompactMode: isCompactMode,
+            setCompactMode: setCompactMode,
         };
         $window.adapter = result;
         return result;
@@ -335,6 +357,10 @@ app.factory("AdapterService", function Adapter($log, $rootScope, $window) {
                 $window.adapter.setMarkdown(mdDir);
                 $window.adapter.setDebugMode(debug);
                 localeService.setLocale(uiLangs);
+
+                // First run
+                let isFirstRun = bridge_bridge.isFirstRun();
+                AdapterService.setFirstRun(isFirstRun);
                 break;
             }
             default: {
