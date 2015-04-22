@@ -301,7 +301,8 @@ app.factory("AdapterService", function Adapter($log, $rootScope, $window) {
             }
             case "DAE": {
                 let app = $window.DAE.app;
-                app.setMinSize(946, 600);
+                let extraBorder = 2;
+                app.setMinSize(946 + extraBorder, 600 + extraBorder);
                 app.setResizerSize(5);
                 app.setFrameless(true);
                 app.setTransBackground(true);
