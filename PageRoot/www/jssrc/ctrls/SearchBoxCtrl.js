@@ -37,6 +37,9 @@ angular.module("DManual")
                     $event.preventDefault();
                     if($scope.currentIndex == -1){
                         $rootScope.$broadcast("searchTermChanged", $scope.searchTerm);
+                        let body = angular.element(document.body);
+                        body.addClass('pageview-mode');
+                        body.removeClass('overview-mode');
                     } else {
                         window.jumpTo($scope.completionValue);
                     }

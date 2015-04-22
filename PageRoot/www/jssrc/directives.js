@@ -68,7 +68,8 @@ app.directive("deepinAppManualBody", function($rootScope){
                         let div = document.createElement('div');
                         div.innerHTML = res.data;
                         let svg = div.querySelector('svg');
-                        let figure = document.createElement('figure');
+                        let figure = document.createElement('div');
+                        figure.setAttribute('class', 'figure');
                         figure.appendChild(svg);
                         elem.replaceWith(figure);
                     });

@@ -164,18 +164,22 @@ input[type='search'] {
 
     a {
         display: block;
-        color: #94989f;
+        color: #818181;
         cursor: pointer;
+        svg path,
+        svg rect {
+            fill: #818181 !important;
+        }
         &:hover {
-            color: #616161;
+            color: #31a4fc;
             svg path,
             svg rect {
-                fill: #616161 !important;
+                fill: #31a4fc !important;
             }
         }
     }
 
-    img, figure {
+    img, .figure {
         width: 64px;
         height: 64px;
         margin: 0 auto;
@@ -285,7 +289,7 @@ input[type='search'] {
         .level2 { // li
             margin-top: 16px;
             position: relative;
-            img, figure {
+            img, .figure {
                 position: absolute;
                 margin: 0;
                 display: block;
@@ -626,7 +630,7 @@ $logoHeight: 48px;
             padding-left: 10px;
         }
         .level2 {
-            img, figure {
+            img, .figure {
                 position: static;
             }
             span {
