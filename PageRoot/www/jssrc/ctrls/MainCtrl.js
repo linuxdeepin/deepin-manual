@@ -154,6 +154,9 @@ app.controller("MainCtrl", function($scope, $rootScope, $log, $sce, $window, $ti
             body.removeClass('overview-mode');
             body.addClass('pageview-mode');
             $timeout(function() {
+                // set hash to empty first,
+                // Browser will not do anything if a same hash is set again
+                contentWin.location.hash = "";
                 contentWin.location.hash = encodeURIComponent(anchor);
                 $rootScope.$broadcast("navigationRelocate", contentWin.scrollY);
             }, 0);
