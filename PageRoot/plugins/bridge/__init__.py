@@ -3,6 +3,7 @@
 
 from PyQt5.QtCore import QObject, pyqtSlot, pyqtSignal, QUrl
 from PyQt5.QtQuick import QQuickView
+from PyQt5.QtGui import QDesktopServices
 import sys, os
 import configparser
 from pathlib import Path
@@ -95,6 +96,10 @@ class Bridge(QObject):
             return list(jieba.cut(text))
         else:
             return []
+
+    @pyqtSlot(str)
+    def openExternalBrowser(self, url: str):
+        QDesktopServices.openUrl(QUrl("http://bbs.deepin.org/"))
 
 
 def export_objects():

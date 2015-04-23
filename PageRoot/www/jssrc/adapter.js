@@ -101,6 +101,10 @@ app.factory("AdapterService", function Adapter($log, $rootScope, $window) {
                     }
                     break;
                 }
+                case "DAE": {
+                    bridge_bridge.openExternalBrowser("WHATEVER");
+                    break;
+                }
                 default: {
                     $log.warn("No shell support for openExternalBrowser");
                 }
