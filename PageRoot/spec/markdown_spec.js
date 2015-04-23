@@ -321,7 +321,3 @@ describe("Navigation Parsing", function() {
         expect(result.headers).to.eql(['H1', 'H2', 'H3', 'H2a', 'H2b', 'H3a', 'H4']);
     });
 });
-
-describe("Indexing", function() {
-
-});

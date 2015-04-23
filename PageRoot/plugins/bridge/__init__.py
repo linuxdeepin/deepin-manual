@@ -6,6 +6,10 @@ from PyQt5.QtQuick import QQuickView
 import sys, os
 import configparser
 from pathlib import Path
+try:
+    import jieba
+except ImportError:
+    jieba = None
 
 p = os.path.normpath(os.path.dirname(__file__) + "/../../../DMan")
 sys.path.append(p)
@@ -84,6 +88,13 @@ class Bridge(QObject):
     def _writeConfig(self):
         with open(self._configPath, 'w', encoding = "utf-8") as f:
             self._config.write(f)
+
+    @pyqtSlot(str, result = "QStringList")
+    def getWordCutting(self, text: str):
+        if self.lang == "zh_CN" and jieba:
+            return list(jieba.cut(text))
+        else:
+            return []
 
 
 def export_objects():

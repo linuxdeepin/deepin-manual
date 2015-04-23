@@ -141,6 +141,14 @@ app.factory("AdapterService", function Adapter($log, $rootScope, $window) {
         let isCompactMode = function() {
             return _isCompactMode;
         };
+        let getWordCutting = function(text) {
+            if (getShellType() === "DAE") {
+                return bridge_bridge.getWordCutting(text);
+            } else {
+                console.warn("Word cutting not implemented for this shell.");
+                return [];
+            }
+        };
         let result = {
             markdownDir: markdownDir,
             setMarkdown: setMarkdown,
@@ -157,6 +165,8 @@ app.factory("AdapterService", function Adapter($log, $rootScope, $window) {
             setFirstRun: setFirstRun,
             isCompactMode: isCompactMode,
             setCompactMode: setCompactMode,
+
+            getWordCutting: getWordCutting,
         };
         $window.adapter = result;
         return result;
