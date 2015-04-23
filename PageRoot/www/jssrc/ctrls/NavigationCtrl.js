@@ -2,16 +2,23 @@
 
 angular.module("DManual")
     .controller("NavigationBarCtrl", function($scope, $rootScope, $log, $window, AdapterService) {
-        // auto-resize
         let container = document.getElementById("Container");
         let logoBox = document.getElementById("NavLogoBox");
+        let sideNavigationBar = document.getElementById("SideNavigationBar");
+
+        // Auto-resize SideNavigationBar
+        let _prevSideNavBarHeight = 0;
         let updateSidebar = function() {
             let newHeight = container.clientHeight - logoBox.clientHeight;
-            $log.log("resizing to " + newHeight + "px");
-            $scope.sideNavBarStyle = {
-                height: newHeight + "px",
-            };
+            if (newHeight !== _prevSideNavBarHeight) {
+                $log.log(`SideNavigationBar height set to: ${newHeight}`);
+                sideNavigationBar.style.height = newHeight + "px";
+                _prevSideNavBarHeight = newHeight;
+            }
+            requestAnimationFrame(updateSidebar);
         };
+        requestAnimationFrame(updateSidebar);
+
         let navigationRelocate = function(offset) {
             let offsetList = $scope.anchorsOffsetList;
             let lastIndex = offsetList.length - 1;
@@ -33,15 +40,8 @@ angular.module("DManual")
                     return;
                 }
             }
-        }
-        updateSidebar();
-        angular.element($window).bind("resizeSidebar", function(event) {
-            updateSidebar();
-        });
-        angular.element($window).bind("resize", function(event) {
-            updateSidebar();
-            $scope.$apply();
-        });
+        };
+
         $scope.$on("navigationRelocate", function(event, value){
             let offset = value;
             navigationRelocate(offset);

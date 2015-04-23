@@ -53,11 +53,6 @@ app.controller("MainCtrl", function($scope, $rootScope, $log, $sce, $window, $ti
         }
     });
 
-    $scope.$watch("isPageview", function(value){
-        let ev = new CustomEvent("resizeSidebar");
-        $window.dispatchEvent(ev);
-    });
-
     let loadMarkdown = function(event, markdownDir) {
         $log.log("Start to load markdown");
         GInput.load(`${markdownDir}/synonym.txt`).then(function(text) {
