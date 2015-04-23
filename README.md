@@ -7,7 +7,7 @@
 Nodejs >= 0.10 is needed; iojs should work too.
 
 Note that because of the node/nodejs name conflict on debian-based distros,
-it's recommended to use run `make all` instead of to run `npm install` to install
+it's recommended to use run `make dist` instead of to run `npm install` to install
 dependencies.
 
 ### Dependency handling
@@ -40,11 +40,39 @@ Several gulp tasks are provided. You may want to use the following:
 
 * `gulp watch`. It watches file changes of the source code.
 * `gulp dist`. It produces files ready for deployment.
-* `gulp translation`. It produces UI language json files in the `www/nls` folder.
+* `gulp translations`. It produces UI language json files in the `www/nls` folder.
 
 For more tasks, please consult the source code of `Gulpfile.js`.
 
 ### Debug mode
 
 When DManual starts with environment variable `DEBUG` being a non-empty value, the program will run in debug mode.
-It doesn't do much but it will color most of the HTML blocks and give you a some hints about layout problems.
+It doesn't do much, except it will color most of the HTML blocks and give you some hints about layout problems.
+
+## For Application Writers
+
+### Manuals installation requirements
+
+Be sure to install the manual for your application to `/usr/share/dman/<Application-Name>/<Language-Code>/`.
+
+### Invocation
+
+To invoke the DMan for a specific application, run:
+
+```
+dman <Application-Name>
+```
+
+Then DMan will open with manual in the most applicable language available.
+To override this, set `LANGUAGE` environment variable.
+
+** Note **, you are responsible for making the invoker not hang. So for example in python, do:
+
+```
+import subprocess
+subprocess.Popen("dman myApp", stdin = None, stdout = None, stderr = None)
+```
+
+## For document writers
+
+Run the following in the terminal: `dman dman`
