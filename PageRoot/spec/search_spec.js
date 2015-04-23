@@ -4,6 +4,7 @@ let expect = require("expect.js");
 let Search = require("../www/jssrc/search");
 let dedupKeywords = Search.dedupKeywords;
 let splitSentences = Search.splitSentences;
+let sortKeywordsByLength = Search.sortKeywordsByLength;
 
 describe("Search & Highlight", function() {
     describe("Split sentences", function() {
@@ -38,6 +39,17 @@ describe("Search & Highlight", function() {
             expect(dedupKeywords(arr)).to.eql(
                 ["This", "is", "an", "example", "That", "ALSO"]
             );
+        });
+    });
+
+    describe("sort keywords by length", function() {
+        it("can do this", function() {
+            let arr = [
+                "I", "AM", "BIG", "FOOT",
+            ];
+            expect(sortKeywordsByLength(arr)).to.eql([
+                "FOOT", "BIG", "AM", "I",
+            ]);
         });
     });
 });

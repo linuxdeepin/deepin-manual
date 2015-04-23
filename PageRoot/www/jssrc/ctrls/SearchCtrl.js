@@ -2,6 +2,7 @@
 
 let {
     dedupKeywords,
+    sortKeywordsByLength,
 } = require("../search");
 
 angular.module("DManual")
@@ -23,6 +24,7 @@ angular.module("DManual")
                 keywords = keywords.concat(AdapterService.getWordCutting(value));
             }
             keywords = dedupKeywords(keywords);
+            keywords = sortKeywordsByLength(keywords);
             $scope.searchResults = $filter("filterHighlight")
                     (_indices, value, keywords);
         });
