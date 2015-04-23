@@ -79,9 +79,8 @@ app.controller("MainCtrl", function($scope, $rootScope, $log, $sce, $window, $ti
             angular.element(contentIFrame).bind('load', function(){
                 let doc = contentIFrame.contentDocument;
                 $scope.anchorsOffsetList = [].slice.call(doc.querySelectorAll('h2,h3'))
-                    .map(function(v){
-                        return v.offsetTop
-                });
+                    .map((v) => v.offsetTop);
+
                 $scope.navigations = [].slice.call(
                         document.querySelector('#SideNavigationItems')
                                 .querySelectorAll('.level2,.level3'));

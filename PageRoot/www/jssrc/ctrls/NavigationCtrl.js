@@ -1,5 +1,12 @@
 "use strict";
 
+let highlightNode = function(node) {
+    if (node.classList.contains("level3")) {
+        node.parentNode.parentNode.classList.add('current-section');
+    }
+    node.classList.add('current-section');
+};
+
 angular.module("DManual")
     .controller("NavigationBarCtrl", function($scope, $rootScope, $log, $window, AdapterService) {
         let container = document.getElementById("Container");
@@ -19,42 +26,42 @@ angular.module("DManual")
         };
         requestAnimationFrame(updateSidebar);
 
+        // Content Scroll
         let navigationRelocate = function(offset) {
             let offsetList = $scope.anchorsOffsetList;
             let lastIndex = offsetList.length - 1;
-            $scope.navigations.map(function(headerNode){
+            $scope.navigations.map(function(headerNode) {
                 headerNode.classList.remove('current-section');
             });
-            for (var i = 0; i < offsetList.length; i++) {
-                if(offset <= offsetList[i]) {
-                    if($scope.navigations[i].classList.contains("level3")){
-                        $scope.navigations[i].parentNode.parentNode.classList.add('current-section');
+            for (let i = 0; i < offsetList.length; i++) {
+                if (i !== lastIndex) {
+                    if (offsetList[i+1] > offset) {
+                        return highlightNode($scope.navigations[i]);
                     }
-                    $scope.navigations[i].classList.add('current-section');
-                    return;
-                } else if(offset > offsetList[i] && offset <= offsetList[i+1]) {
-                    if($scope.navigations[i+1].classList.contains("level3")){
-                        $scope.navigations[i+1].parentNode.parentNode.classList.add('current-section');
-                    }
-                    $scope.navigations[i+1].classList.add('current-section');
-                    return;
                 }
             }
+            return highlightNode($scope.navigations[lastIndex]);
         };
 
-        $scope.$on("navigationRelocate", function(event, value){
+        $scope.$on("navigationRelocate", function(event, value) {
+            // triggers when jumpTo
             let offset = value;
             navigationRelocate(offset);
         });
         $window.addEventListener("navigationRelocateEvent", function(e) {
+            // triggers when mousewheel on IFrame
             let offset = e.detail.offset;
             navigationRelocate(offset);
         });
+
+        // Sidebar Collapse/Expand
         $scope.isCollapsed = false;
         $scope.switchNavigationMode = function() {
             $scope.isCollapsed = !$scope.isCollapsed;
             $rootScope.$broadcast("navigationBarToggled", $scope.isCollapsed);
         };
+
+        // Tooltip
         $scope.showTooltip = function(tooltip, $event) {
             let target = $event.target;
 
