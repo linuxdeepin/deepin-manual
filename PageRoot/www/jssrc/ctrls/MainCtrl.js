@@ -172,16 +172,6 @@ app.controller("MainCtrl", function($scope, $rootScope, $log, $sce, $window, $ti
     };
     $window.jumpTo = $scope.jumpTo;
 
-    let updateOuterFrame = function() {
-        $scope.outerFrameStyle = {
-            height: $window.innerHeight + "px",
-        };
-    };
-    updateOuterFrame();
-    angular.element($window).bind("resize", function(event) {
-        updateOuterFrame();
-    });
-
     $scope.$on("searchTermChanged", function(event, value) {
         $scope.isSearchmode = value && value.length > 0;
     });

@@ -7,4 +7,14 @@ angular.module("DManual").controller("FrameCtrl", function($scope, AdapterServic
         moveHandle.addEventListener("mouseup", AdapterService.moveHandleUp);
         moveHandle.addEventListener("dblclick", AdapterService.moveHandleDblclick);
     }
+
+    //let updateOuterFrame = function() {
+    //    $scope.outerFrameStyle = {
+    //        height: $window.innerHeight + "px",
+    //    };
+    //};
+    //updateOuterFrame();
+    //angular.element($window).bind("resize", function(event) {
+    //    updateOuterFrame();
+    //});
 });

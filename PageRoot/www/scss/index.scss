@@ -440,17 +440,17 @@ $logoHeight: 48px;
 }
 
 // Frame, border, etc
-#OuterFrame {
-    padding: 0 !important;
-    margin: 0 !important;
-    outline: 0 !important;
-    position: fixed;
-    width: 100%;
-    z-index: -100;
-    .debug-mode & {
-        background-color: skyblue;
-    }
-}
+//#OuterFrame {
+//    padding: 0 !important;
+//    margin: 0 !important;
+//    outline: 0 !important;
+//    position: fixed;
+//    width: 100%;
+//    z-index: -100;
+//    .debug-mode & {
+//        background-color: skyblue;
+//    }
+//}
 
 #MoveHandle {
     -webkit-user-select: none;
