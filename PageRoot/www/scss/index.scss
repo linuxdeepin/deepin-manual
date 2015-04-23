@@ -48,10 +48,6 @@ $titleBarHeight: 30px;
     border-radius: 4px;
 }
 
-::-webkit-input-placeholder {
-    line-height: 16px;
-}
-
 /*-------------------------------------------*/
 /* Mixins                                    */
 /*-------------------------------------------*/
@@ -544,7 +540,9 @@ $logoHeight: 48px;
 
 .search-input {
     border-radius: 3px;
-    height: 30px;
+    font-size: 13px;
+    line-height: 24px;
+    height: 24px;
     outline: none;
     border: 1px solid #000;
     color: #b4b4b4;
@@ -553,6 +551,8 @@ $logoHeight: 48px;
     top: -55px;
 
     &::-webkit-input-placeholder {
+        font-size: 13px;
+        line-height: 24px;
         color: #b4b4b4;
     }
 
