@@ -20,7 +20,7 @@ angular.module("DManual")
                 keywords = keywords.concat(value.split(" "));
 
                 // use word-cutting provided by the shell
-                keywords = keywords.concat(AdapterService.getWordCutting(value))
+                keywords = keywords.concat(AdapterService.getWordCutting(value));
             }
             keywords = dedupKeywords(keywords);
             $scope.searchResults = $filter("filterHighlight")

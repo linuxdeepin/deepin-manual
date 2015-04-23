@@ -91,7 +91,7 @@ class Bridge(QObject):
 
     @pyqtSlot(str, result = "QStringList")
     def getWordCutting(self, text: str):
-        if self.lang == "zh_CN" and jieba:
+        if self.lang() == "zh_CN" and jieba:
             return list(jieba.cut(text))
         else:
             return []
