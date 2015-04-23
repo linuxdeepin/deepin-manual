@@ -150,7 +150,6 @@ app.controller("MainCtrl", function($scope, $rootScope, $log, $sce, $window, $ti
         if (anchor) {
             $scope.isOverview = false;
             $scope.isPageview = true;
-            // not using `ng-class` here, trigger reflow
             body.removeClass('overview-mode');
             body.addClass('pageview-mode');
             $timeout(function() {
