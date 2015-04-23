@@ -283,3 +283,10 @@ h4::before {
 }
 
 // end of Header counters
+
+footer.__spaceholder {
+    clear: both;
+    margin: 0 !important;
+    padding: 0 !important;
+    outline: 0 !important;
+}

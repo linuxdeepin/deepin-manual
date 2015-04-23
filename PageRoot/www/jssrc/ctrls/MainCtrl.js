@@ -132,7 +132,8 @@ app.controller("MainCtrl", function($scope, $rootScope, $log, $sce, $window, $ti
                 </script>
                 <link rel='stylesheet' href='${stylePath}/reset.css' />
                 <link rel='stylesheet' href='${stylePath}/content.css' />`;
-            $scope.htmlOutput = $sce.trustAsHtml(base + html);
+            let footer = `<footer class="__spaceholder"></footer>`;
+            $scope.htmlOutput = $sce.trustAsHtml(base + html + footer);
         }, function(error) {
             $log.error(`Markdown::load failed: ${error}`);
         });

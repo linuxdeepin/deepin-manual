@@ -15,6 +15,7 @@ require("./ctrls/NavigationCtrl");
 require("./ctrls/SearchCtrl");
 require("./ctrls/SearchBoxCtrl");
 require("./ctrls/FrameCtrl");
+require("./ctrls/ContentCtrl");
 require("./services/GeneralEntry");
 require("./services/SynonymService");
 require("./services/InputService");
