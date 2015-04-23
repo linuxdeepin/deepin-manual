@@ -272,6 +272,8 @@ describe("Navigation Parsing", function() {
             "### H3a",
             "#### H4",
             "H4 Text",
+            "##### H5",
+            "H5 Text",
         ].join("\n");
         let result = p(src).parsed;
         expect(result.appInfo.name).to.equal("H1");
@@ -314,8 +316,9 @@ describe("Navigation Parsing", function() {
             { headerId: 'H2', headerText: 'H2', texts: [ 'H2 Text' ] },
             { headerId: 'H3', headerText: 'H3', texts: [ 'H3 Text' ] },
             { headerId: 'H4', headerText: 'H4', texts: [ 'H4 Text' ] },
+            { headerId: "H5", headerText: "H5", texts: [ 'H5 Text' ] },
         ]);
-        expect(result.headers).to.eql([ 'H1', 'H2', 'H2a', 'H2b' ]);
+        expect(result.headers).to.eql(['H1', 'H2', 'H3', 'H2a', 'H2b', 'H3a', 'H4']);
     });
 });
 
