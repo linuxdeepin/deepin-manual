@@ -1,12 +1,12 @@
-<div id="SearchBox" ng-controller="SearchBoxCtrl" ng-mouseenter="showSearch()">
+<div id="SearchBox" ng-controller="SearchBoxCtrl" ng-mouseenter="searchInputVisible=true">
 
-    <div class="search-input-box" ng-class="{'shadow-visible': searchBoxVisible}">
+    <div class="search-input-box" ng-class="{'shadow-visible': searchInputVisible}">
         <input type="search"
                id="SearchInput"
                class="search-input"
                placeholder="{{ 'TEXT_ENTER_KEYWORDS'|translate }}"
                ng-keydown="doSearch($scope,$event)"
-               ng-class="{slidedown: searchBoxVisible}"
+               ng-class="{slidedown: searchInputVisible}"
                ng-model="searchTerm" />
     </div>
 

@@ -96,11 +96,15 @@ angular.module("DManual").controller("SearchBoxCtrl",
         });
 
         // show-hide logic
+        let _showHidePromise = null;
         let _searchInput = document.getElementById("SearchInput");
         let _searchInputVisible = false; // if searchInput is visible in page view
         Object.defineProperty($scope, "searchInputVisible", {
             get: () => _searchInputVisible,
             set: function(newValue) {
+                if (_showHidePromise) {
+                    $timeout.cancel(_showHidePromise);
+                }
                 if (newValue === _searchInputVisible) {
                     return;
                 }
@@ -109,7 +113,6 @@ angular.module("DManual").controller("SearchBoxCtrl",
                     $animate.addClass(_searchInput, "slidedown");
                     _searchInput.focus();
                     _searchInputVisible = true;
-
                 } else {
                     $log.log("Hide SearchBox");
                     $animate.removeClass(_searchInput, "slidedown");
@@ -142,4 +145,13 @@ angular.module("DManual").controller("SearchBoxCtrl",
             // activate from iframe#Content
             $scope.searchInputVisible = false;
         });
+
+        if ($scope.isPageview) {
+            if (AdapterService.isFirstRun()) {
+                _showHidePromise = $timeout(function() {
+                    $scope.searchInputVisible = false;
+                    _showHidePromise = null;
+                }, 3000);
+            }
+        }
 });
