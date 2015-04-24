@@ -98,7 +98,7 @@ angular.module("DManual").controller("SearchBoxCtrl",
         // show-hide logic
         let _showHidePromise = null;
         let _searchInput = document.getElementById("SearchInput");
-        let _searchInputVisible = false; // if searchInput is visible in page view
+        let _searchInputVisible = true; // if searchInput is visible in page view
         Object.defineProperty($scope, "searchInputVisible", {
             get: () => _searchInputVisible,
             set: function(newValue) {
@@ -148,7 +148,10 @@ angular.module("DManual").controller("SearchBoxCtrl",
         });
 
         $scope.$watch("isPageview", function(isPageview) {
-            if (isPageview) {
+            if (isPageview & (!$scope.isSearchMode)) {
+                // to avoid animation
+                _searchInput.classList.add("slidedown");
+
                 let hideTimeout;
                 if (AdapterService.isFirstRun()) {
                     hideTimeout = 3000;
