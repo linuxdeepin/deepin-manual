@@ -18,59 +18,76 @@ angular.module("DManual")
 
         // declare structure of sideBarStyle
         let sideBarStyle = Object.create(null);
-        sideBarStyle.barHeight = null;
-        sideBarStyle.itemsHeight = null;
+        sideBarStyle.bar = Object.create(null);
+        sideBarStyle.items = Object.create(null);
         sideBarStyle.upArrow = Object.create(null);
         sideBarStyle.downArrow = Object.create(null);
 
         // Auto-resize SideNavigationBar
-        let _prevSideNavBarHeight = 0;
         let updateSidebar = function() {
             // resize SideNavigationBar
             let newBarHeight = container.clientHeight - logoBox.clientHeight;
-            if (newBarHeight !== _prevSideNavBarHeight) {
-                sideBarStyle.barHeight = newBarHeight;
-                sideBarStyle.itemsHeight = newBarHeight - upArrow.clientHeight - downArrow.clientHeight;
-                _prevSideNavBarHeight = newBarHeight;
-            }
 
-            // up/down arrows
-            let atTheTopOfScroll = false;
-            let atTheEndOfScroll = false;
+            if ($scope.isCompactMode) {
+                let itemsScrollHeight = sideNavItems.scrollHeight;
 
-            if (sideNavItems.scrollTop === 0) {
-                atTheTopOfScroll = true;
-            }
-            if (sideNavItems.scrollHeight - sideNavItems.scrollTop === sideNavItems.clientHeight) {
-                // at the end of the scroll
-                atTheEndOfScroll = true;
-            }
+                // show/hide arrows
+                if (itemsScrollHeight <= newBarHeight) {
+                    // hide arrows
+                    sideBarStyle.upArrow.display = "none";
+                    sideBarStyle.downArrow.display = "none";
+                    sideBarStyle.items.height = newBarHeight;
+                } else {
+                    // show arrows
+                    sideBarStyle.upArrow.display = "block";
+                    sideBarStyle.downArrow.display = "block";
+                    sideBarStyle.items.height = newBarHeight - upArrow.clientHeight - downArrow.clientHeight;
 
-            if (atTheTopOfScroll && atTheEndOfScroll) {
-                // no need to show arrows at all
-                sideBarStyle.upArrow.invisibility = "hidden";
-                sideBarStyle.downArrow.invisibility = "hidden";
+                    // arrow style
+                    let atTheTopOfScroll = false;
+                    let atTheEndOfScroll = false;
+                    if (sideNavItems.scrollTop === 0) {
+                        atTheTopOfScroll = true;
+                    }
+                    if (sideNavItems.scrollHeight - sideNavItems.scrollTop === sideNavItems.clientHeight) {
+                        // at the end of the scroll
+                        atTheEndOfScroll = true;
+                    }
+
+                    if (atTheTopOfScroll) {
+                        sideBarStyle.upArrow.background = "red";
+                    } else {
+                        sideBarStyle.upArrow.background = "pink";
+                    }
+                    if (atTheEndOfScroll) {
+                        sideBarStyle.downArrow.background = "red";
+                    } else {
+                        sideBarStyle.downArrow.background = "pink";
+                    }
+                }
+
+                // hide scrollbar
+                sideBarStyle.items.overflowY = "hidden";
             } else {
-                sideBarStyle.upArrow.invisibility = "visible";
-                sideBarStyle.downArrow.invisibility = "visible";
+                // hide arrows
+                sideBarStyle.upArrow.display = "none";
+                sideBarStyle.downArrow.display = "none";
 
-                if (atTheTopOfScroll) {
-                    sideBarStyle.upArrow.background = "red";
-                } else {
-                    sideBarStyle.upArrow.background = "pink";
-                }
-                if (atTheEndOfScroll) {
-                    sideBarStyle.downArrow.background = "red";
-                } else {
-                    sideBarStyle.downArrow.background = "pink";
-                }
+                // set items height
+                sideBarStyle.items.height = newBarHeight;
+
+                // scrollbar -> auto
+                sideBarStyle.items.overflowY = "auto";
             }
-            sideNavigationBar.style.height = sideBarStyle.barHeight + "px";
-            sideNavItems.style.height = sideBarStyle.itemsHeight + "px";
-            upArrow.style.visibility = sideBarStyle.upArrow.invisibility;
+
+            // apply styles
+            sideNavigationBar.style.height = sideBarStyle.bar.height + "px";
+            sideNavItems.style.height = sideBarStyle.items.height + "px";
+            sideNavItems.style.overflowY = sideBarStyle.items.overflowY;
             upArrow.style.background = sideBarStyle.upArrow.background;
-            downArrow.style.visibility = sideBarStyle.downArrow.invisibility;
+            upArrow.style.display = sideBarStyle.upArrow.display;
             downArrow.style.background = sideBarStyle.downArrow.background;
+            downArrow.style.display = sideBarStyle.downArrow.display;
             requestAnimationFrame(updateSidebar);
         };
         requestAnimationFrame(updateSidebar);
