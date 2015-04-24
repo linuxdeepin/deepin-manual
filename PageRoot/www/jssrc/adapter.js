@@ -153,6 +153,10 @@ app.factory("AdapterService", function Adapter($log, $rootScope, $window) {
                 return [];
             }
         };
+        $rootScope.$on("navigationBarToggled", function(value) {
+            setCompactMode(value);
+        });
+
         let result = {
             markdownDir: markdownDir,
             setMarkdown: setMarkdown,

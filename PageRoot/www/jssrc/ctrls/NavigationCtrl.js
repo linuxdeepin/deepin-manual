@@ -55,11 +55,12 @@ angular.module("DManual")
         });
 
         // Sidebar Collapse/Expand
-        $scope.isCollapsed = false;
-        $scope.switchNavigationMode = function() {
+        $scope.isCollapsed = AdapterService.isCompactMode();
+        $scope.toggleNavigationCompactMode = function() {
             $scope.isCollapsed = !$scope.isCollapsed;
             $rootScope.$broadcast("navigationBarToggled", $scope.isCollapsed);
         };
+        $rootScope.$broadcast("navigationBarToggled", $scope.isCollapsed);
 
         // Tooltip
         $scope.showTooltip = function(tooltip, $event) {
