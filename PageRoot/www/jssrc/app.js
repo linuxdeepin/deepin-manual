@@ -33,15 +33,19 @@ app.filter("filterHighlight", function($log, $sce) {
                         result.push({
                             anchorId: index.headerId,
                             anchorText: index.headerText,
-                            texts: [],
+                            texts: "",
                         });
                         anchorItem = result[result.length - 1];
                     }
-                    anchorItem.texts.push($sce.trustAsHtml(text));
-                    continue nextHeader;
+                    anchorItem.texts += text;
                 }
+                continue nextHeader;
             }
         }
+        result.map(function(anchorItem) {
+            anchorItem.texts+= "<span class=\"ellipsis\">...</span>";
+            anchorItem.texts = $sce.trustAsHtml(anchorItem.texts);
+        });
         lastTerm = searchTerm;
         cached = result;
         return cached;

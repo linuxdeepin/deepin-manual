@@ -44,6 +44,7 @@ $titleBarHeight: 30px;
 }
 
 ::-webkit-scrollbar-thumb {
+    min-height: 100px;
     background-color: rgba(0, 0, 0, 0.5);
     border-radius: 4px;
 }
@@ -320,7 +321,7 @@ input[type='search'] {
 
     #SearchInput {
         // margin: 0 auto;
-        left: calc(50% - #{$pvNavBarWidth});
+        left: calc((100% - #{$pvNavBarWidth}) / 2);
     }
 
     #LabelDot, #LabelManual {
@@ -360,8 +361,17 @@ input[type='search'] {
         cursor: pointer;
     }
     p.match-text {
+        position: relative;
         color: #878787;
         font-size: 13px;
+        overflow: hidden;
+        .ellipsis {
+            position: absolute;
+            padding-right: 10px;
+            right: 0;
+            bottom: 0;
+            background: #fff;
+        }
     }
 }
 
@@ -378,14 +388,17 @@ input[type='search'] {
     .pageview-mode & {
         // display: none;
         position: absolute;
-        top: 28px;
-        width: 100%;
-        left: 30px;
-        height: 26px;
+        top: 18px;
+        width: calc(100% - 200px - 26px - 8px);
+        left: 26px;
+        height: 60px;
         margin-left: $pvNavBarWidth;
+        margin-top: 10px;
+        z-index: 50001;
     }
     .compact-mode & {
         margin-left: $pvNavBarCompactWidth;
+        width: calc(100% - 48px - 26px - 8px);
     }
 
     .debug-mode & {
@@ -466,7 +479,7 @@ $logoHeight: 48px;
 
 #FrameBar {
     position: fixed;
-    z-index: 10000;
+    z-index: 99999;
     text-indent: -9999em;
     right: $csdRW;
     @include disable-user-select;
@@ -538,9 +551,10 @@ $logoHeight: 48px;
     }
 }
 
+
 .search-input {
     border-radius: 3px;
-    font-size: 13px;
+    font-size: 14px;
     line-height: 24px;
     height: 24px;
     outline: none;
@@ -551,8 +565,7 @@ $logoHeight: 48px;
     top: -55px;
 
     &::-webkit-input-placeholder {
-        font-size: 13px;
-        line-height: 24px;
+        font-size: 14px;
         color: #b4b4b4;
     }
 
@@ -638,6 +651,32 @@ $logoHeight: 48px;
             }
         }
     }
+
+    .search-input-box {
+        margin-top: -10px;
+        height: 60px;
+        background: linear-gradient(to bottom, rgba(255,255,255,1) 65%,rgba(255,255,255,0) 100%);
+        opacity: 0;
+        &.shadow-visible {
+            opacity: 1;
+            margin-left: -26px;
+            .search-mode & {
+                height: 38px;
+                background: #fff;
+            }
+        }
+        &.shadow-visible-add,
+        &.shadow-visible-remove {
+            transition: opacity 0.53s;
+        }
+        &.shadow-visible-add-active {
+            opacity: 1;
+        }
+        &.shadow-visible-remove-active {
+            opacity: 0;
+        }
+    }
+
 }
 
 .navigation-switch {
@@ -660,6 +699,10 @@ $logoHeight: 48px;
     }
 }
 
+.search-result {
+    padding-bottom: 30px;
+}
+
 .no-search-result {
     p, a {
         display: block;
@@ -680,7 +723,7 @@ $logoHeight: 48px;
 }
 
 .compact-mode {
-    #Content,#Search {
+    #Content, #Search {
         width: calc(100% - #{$pvNavBarCompactWidth});
     }
 }

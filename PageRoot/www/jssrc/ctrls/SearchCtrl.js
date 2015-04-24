@@ -28,4 +28,16 @@ angular.module("DManual")
             $scope.searchResults = $filter("filterHighlight")
                     (_indices, value, keywords);
         });
+        $scope.$on("manualSearchFinished", function(value){
+            [].slice.call(document.querySelectorAll('.match-text')).map(function(parNode){
+                let height = parseInt(window.getComputedStyle(parNode).height),
+                    lineHeight = parseInt("20px"),
+                    limit = lineHeight * 2;
+                if(height > limit) {
+                    parNode.style.height = limit + "px";
+                } else {
+                    parNode.querySelector(".ellipsis").remove();
+                }
+            });
+        });
 });
