@@ -4,11 +4,16 @@ angular.module("DManual")
     .controller("ContentCtrl", function($scope, $log, $window) {
         // Resize the block at the end of the content
         let iframe = document.getElementById("Content");
+        let _prevIframeHeight = -1;
         let resizeSpaceHolder = function() {
             let iframeHeight = iframe.getBoundingClientRect().height;
             if (iframeHeight === 0) {
-                return;
+                return requestAnimationFrame(resizeSpaceHolder);
             }
+            if (iframeHeight === _prevIframeHeight) {
+                return requestAnimationFrame(resizeSpaceHolder);
+            }
+            _prevIframeHeight = iframeHeight;
             let offsets = $scope.anchorsOffsetList;
             let lastOffset = offsets[offsets.length - 1];
             let iframeDoc = iframe.contentDocument;
@@ -24,6 +29,7 @@ angular.module("DManual")
                 $log.log(`Set Content Footer to 0px`);
                 footer.style.height = `0px`;
             }
+            requestAnimationFrame(resizeSpaceHolder);
         };
-        $window.addEventListener("resize", resizeSpaceHolder);
+        requestAnimationFrame(resizeSpaceHolder);
     });
