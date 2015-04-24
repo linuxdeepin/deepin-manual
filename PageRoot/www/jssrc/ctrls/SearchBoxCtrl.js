@@ -38,6 +38,9 @@ angular.module("DManual").controller("SearchBoxCtrl",
         $scope.doSearch = function($innerScope, $event){
             if ($event.keyCode === Keyboard.ENTER) {
                 $event.preventDefault();
+                if (!$scope.searchTerm.trim()) {
+                    return;
+                }
                 if ($scope.currentIndex == -1) {
                     $rootScope.$broadcast("searchTermChanged", $scope.searchTerm);
                     let body = angular.element(document.body);
