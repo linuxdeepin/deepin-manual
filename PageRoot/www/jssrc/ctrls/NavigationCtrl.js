@@ -68,5 +68,5 @@ angular.module("DManual")
             AdapterService.showTooltip(
                 tooltip,
                 target.getBoundingClientRect());
-        }
+        };
     });
