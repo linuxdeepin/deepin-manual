@@ -224,6 +224,10 @@ input[type='search'] {
 
 }
 
+#SideNavUpArrow, #SideNavDownArrow {
+    display: none;
+}
+
 .pageview-mode {
     #NavigationBar {
         width: $pvNavBarWidth;
@@ -326,6 +330,11 @@ input[type='search'] {
 
     #LabelDot, #LabelManual {
         display: none;
+    }
+
+    #SideNavUpArrow, #SideNavDownArrow {
+        height: 15px;
+        width: 100%;
     }
 }
 

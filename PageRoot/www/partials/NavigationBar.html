@@ -9,6 +9,7 @@
     </div>
 
     <div id="SideNavigationBar">
+        <div id="SideNavUpArrow"></div>
         <ol id="SideNavigationItems">
             <li class="level2" ng-repeat="anchor in anchors">
                 <a ng-click="jumpTo(anchor.id)" class="anchor-icon">
@@ -25,6 +26,7 @@
                 </ol>
             </li>
         </ol>
+        <div id="SideNavDownArrow"></div>
     </div>
     <div id="NavigationSwitch" class="navigation-switch">
         <a href="javascript:;" ng-click="toggleNavigationCompactMode();" ng-class="{collapsed: isCollapsed}"></a>

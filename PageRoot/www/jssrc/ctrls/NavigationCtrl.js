@@ -12,19 +12,73 @@ angular.module("DManual")
         let container = document.getElementById("Container");
         let logoBox = document.getElementById("NavLogoBox");
         let sideNavigationBar = document.getElementById("SideNavigationBar");
+        let sideNavItems = document.querySelector("ol#SideNavigationItems");
+        let upArrow = document.getElementById("SideNavUpArrow");
+        let downArrow = document.getElementById("SideNavDownArrow");
+
+        // declare structure of sideBarStyle
+        let sideBarStyle = Object.create(null);
+        sideBarStyle.barHeight = null;
+        sideBarStyle.itemsHeight = null;
+        sideBarStyle.upArrow = Object.create(null);
+        sideBarStyle.downArrow = Object.create(null);
 
         // Auto-resize SideNavigationBar
         let _prevSideNavBarHeight = 0;
         let updateSidebar = function() {
-            let newHeight = container.clientHeight - logoBox.clientHeight;
-            if (newHeight !== _prevSideNavBarHeight) {
-                $log.log(`SideNavigationBar height set to: ${newHeight}`);
-                sideNavigationBar.style.height = newHeight + "px";
-                _prevSideNavBarHeight = newHeight;
+            // resize SideNavigationBar
+            let newBarHeight = container.clientHeight - logoBox.clientHeight;
+            if (newBarHeight !== _prevSideNavBarHeight) {
+                sideBarStyle.barHeight = newBarHeight;
+                sideBarStyle.itemsHeight = newBarHeight - upArrow.clientHeight - downArrow.clientHeight;
+                _prevSideNavBarHeight = newBarHeight;
             }
+
+            // up/down arrows
+            let atTheTopOfScroll = false;
+            let atTheEndOfScroll = false;
+
+            if (sideNavItems.scrollTop === 0) {
+                atTheTopOfScroll = true;
+            }
+            if (sideNavItems.scrollHeight - sideNavItems.scrollTop === sideNavItems.clientHeight) {
+                // at the end of the scroll
+                atTheEndOfScroll = true;
+            }
+
+            if (atTheTopOfScroll && atTheEndOfScroll) {
+                // no need to show arrows at all
+                sideBarStyle.upArrow.invisibility = "hidden";
+                sideBarStyle.downArrow.invisibility = "hidden";
+            } else {
+                sideBarStyle.upArrow.invisibility = "visible";
+                sideBarStyle.downArrow.invisibility = "visible";
+
+                if (atTheTopOfScroll) {
+                    sideBarStyle.upArrow.background = "red";
+                } else {
+                    sideBarStyle.upArrow.background = "pink";
+                }
+                if (atTheEndOfScroll) {
+                    sideBarStyle.downArrow.background = "red";
+                } else {
+                    sideBarStyle.downArrow.background = "pink";
+                }
+            }
+            sideNavigationBar.style.height = sideBarStyle.barHeight + "px";
+            sideNavItems.style.height = sideBarStyle.itemsHeight + "px";
+            upArrow.style.visibility = sideBarStyle.upArrow.invisibility;
+            upArrow.style.background = sideBarStyle.upArrow.background;
+            downArrow.style.visibility = sideBarStyle.downArrow.invisibility;
+            downArrow.style.background = sideBarStyle.downArrow.background;
             requestAnimationFrame(updateSidebar);
         };
         requestAnimationFrame(updateSidebar);
+
+        // mouse event
+        angular.element(sideNavItems).on("wheel", function(event) {
+            sideNavItems.scrollTop -= event.wheelDeltaY;
+        });
 
         // Content Scroll
         let navigationRelocate = function(offset) {
