@@ -8,9 +8,10 @@
                ng-keydown="doSearch($scope,$event)"
                ng-class="{slidedown: searchInputVisible}"
                ng-model="searchTerm" />
+
+        <div id="SuggestionsBox">
+          <ul id="Suggestions" ng-bind-html="suggestions"></ul>
+        </div>
     </div>
 
-    <div id="SuggestionsBox">
-        <ul id="Suggestions" ng-bind-html="suggestions"></ul>
-    </div>
 </div>
