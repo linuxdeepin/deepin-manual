@@ -207,6 +207,7 @@ input[type='search'] {
     #Overview {
         height: calc(100% - #{$ovNavBarHeight});
         margin-top: 0;
+        overflow-y: auto;
         @include disable-user-select;
         .debug-mode & {
             background-color: pink;
