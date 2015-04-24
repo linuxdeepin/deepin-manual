@@ -147,7 +147,7 @@ angular.module("DManual").controller("SearchBoxCtrl",
             $scope.searchInputVisible = false;
         });
 
-        $scope.$watch("isPageview", function(value) {
+        $scope.$watch("isPageview", function(isPageview) {
             if (isPageview) {
                 let hideTimeout;
                 if (AdapterService.isFirstRun()) {
