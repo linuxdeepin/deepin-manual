@@ -82,7 +82,7 @@ class Bridge(QObject):
         yes = self._config.getboolean("general", "isFirstRun",
                                       fallback = True)
         if yes:
-            self._config.set("general", "isFirstRun", "True")
+            self._config.set("general", "isFirstRun", "False")
             self._writeConfig()
         return yes
 

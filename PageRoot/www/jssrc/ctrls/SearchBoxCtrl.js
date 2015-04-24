@@ -104,6 +104,7 @@ angular.module("DManual").controller("SearchBoxCtrl",
             set: function(newValue) {
                 if (_showHidePromise) {
                     $timeout.cancel(_showHidePromise);
+                    _showHidePromise = null;
                 }
                 if (newValue === _searchInputVisible) {
                     return;
@@ -146,12 +147,18 @@ angular.module("DManual").controller("SearchBoxCtrl",
             $scope.searchInputVisible = false;
         });
 
-        if ($scope.isPageview) {
-            if (AdapterService.isFirstRun()) {
+        $scope.$watch("isPageview", function(value) {
+            if (isPageview) {
+                let hideTimeout;
+                if (AdapterService.isFirstRun()) {
+                    hideTimeout = 3000;
+                } else {
+                    hideTimeout = 1500;
+                }
                 _showHidePromise = $timeout(function() {
                     $scope.searchInputVisible = false;
                     _showHidePromise = null;
-                }, 3000);
+                }, hideTimeout);
             }
-        }
+        });
 });
