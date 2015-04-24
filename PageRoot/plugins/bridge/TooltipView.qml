@@ -19,7 +19,7 @@ Item {
 
     function showTooltip(toolTip, x, y) {
         var width = getStringPixelSize(toolTip, 13) + 28
-        x -= width
+        x -= width + 15
         if (!singleLineTipPage)
         {
             singleLineTipPage = singleLineTipComponent.createObject(undefined)
