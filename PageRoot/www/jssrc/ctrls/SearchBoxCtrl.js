@@ -111,7 +111,7 @@ angular.module("DManual").controller("SearchBoxCtrl",
                     _searchInputVisible = true;
 
                 } else {
-                    $log.log("Hide SearchBox", _searchInput);
+                    $log.log("Hide SearchBox");
                     $animate.removeClass(_searchInput, "slidedown");
                     _searchInput.blur();
                     _searchInputVisible = false;
