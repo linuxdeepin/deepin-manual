@@ -55,14 +55,18 @@ angular.module("DManual")
                     }
 
                     if (atTheTopOfScroll) {
-                        sideBarStyle.upArrow.background = "red";
+                        upArrow.classList.add("normal");
+                        upArrow.classList.remove("end");
                     } else {
-                        sideBarStyle.upArrow.background = "pink";
+                        upArrow.classList.add("end");
+                        upArrow.classList.remove("normal");
                     }
                     if (atTheEndOfScroll) {
-                        sideBarStyle.downArrow.background = "red";
+                        downArrow.classList.add("normal");
+                        downArrow.classList.remove("end");
                     } else {
-                        sideBarStyle.downArrow.background = "pink";
+                        downArrow.classList.add("end");
+                        downArrow.classList.remove("normal");
                     }
                 }
 
@@ -84,9 +88,7 @@ angular.module("DManual")
             sideNavigationBar.style.height = sideBarStyle.bar.height + "px";
             sideNavItems.style.height = sideBarStyle.items.height + "px";
             sideNavItems.style.overflowY = sideBarStyle.items.overflowY;
-            upArrow.style.background = sideBarStyle.upArrow.background;
             upArrow.style.display = sideBarStyle.upArrow.display;
-            downArrow.style.background = sideBarStyle.downArrow.background;
             downArrow.style.display = sideBarStyle.downArrow.display;
             requestAnimationFrame(updateSidebar);
         };

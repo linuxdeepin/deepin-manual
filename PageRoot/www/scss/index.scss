@@ -337,6 +337,23 @@ input[type='search'] {
     #SideNavUpArrow, #SideNavDownArrow {
         height: 15px;
         width: 100%;
+        background-repeat: no-repeat;
+    }
+    #SideNavUpArrow.normal {
+        background-image: url("../resources/controls/up_arrow.svg");
+        background-position: 50%;
+    }
+    #SideNavUpArrow.end {
+        background-image: url("../resources/controls/up_arrow.svg");
+        background-position: 50%;
+    }
+    #SideNavDownArrow.normal {
+        background-image: url("../resources/controls/down_arrow.svg");
+        background-position: 50%;
+    }
+    #SideNavDownArrow.end {
+        background-image: url("../resources/controls/down_arrow.svg");
+        background-position: 50%;
     }
 }
 

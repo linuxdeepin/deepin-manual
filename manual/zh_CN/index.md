@@ -489,6 +489,10 @@ CPU|处理器|Central Processing Unit
 
 为每个应用编写的同义词典，不应用于其它程序的帮助手册。
 
+## 其它|ITUNES.png|
+
+暂无。
+
 ## 安全性|OPERA.png|
 
 请注意目前的版本允许页面中执行脚本，在发布Markdown文档时请检查没有恶意代码在内。
