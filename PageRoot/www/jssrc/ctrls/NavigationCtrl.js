@@ -76,7 +76,7 @@ angular.module("DManual")
         requestAnimationFrame(updateSidebar);
 
         // mouse event
-        angular.element(sideNavItems).on("wheel", function(event) {
+        angular.element(sideNavItems).on("mousewheel", function(event) {
             sideNavItems.scrollTop -= event.wheelDeltaY;
         });
 
