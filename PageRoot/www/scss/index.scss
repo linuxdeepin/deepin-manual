@@ -269,6 +269,7 @@ input[type='search'] {
         float: right;
         display: block;
         border: 0;
+        position: relative;
         padding-top: $titleBarHeight;
         .debug-mode & {
             background-color: green;
@@ -327,7 +328,7 @@ input[type='search'] {
 
     #SearchInput {
         // margin: 0 auto;
-        left: calc((100% - #{$pvNavBarWidth}) / 2);
+        left: calc((100% - 260px) / 2);
     }
 
     #LabelDot, #LabelManual {
@@ -400,16 +401,15 @@ input[type='search'] {
         // display: none;
         position: absolute;
         top: 18px;
-        width: calc(100% - 200px - 26px - 8px);
+        width: 360px;
         left: 26px;
         height: 60px;
-        margin-left: $pvNavBarWidth;
+        margin: 0 calc((100% - 360px + 200px) / 2);
         margin-top: 10px;
         z-index: 50001;
     }
     .compact-mode & {
-        margin-left: $pvNavBarCompactWidth;
-        width: calc(100% - 48px - 26px - 8px);
+        margin: 0 calc((100% - 360px + 48px) / 2);
     }
 
     .debug-mode & {
@@ -670,7 +670,7 @@ $logoHeight: 48px;
         opacity: 0;
         &.shadow-visible {
             opacity: 1;
-            margin-left: -26px;
+            margin: 0 calc(-100% + 100px + 38px);
             .search-mode & {
                 height: 38px;
                 background: #fff;
@@ -688,6 +688,15 @@ $logoHeight: 48px;
         }
     }
 
+}
+
+.compact-mode {
+    .search-input-box {
+        &.shadow-visible {
+            margin: 0 calc(-100% + 50px + 50px - 38px);
+            margin-top: -10px;
+        }
+    }
 }
 
 .navigation-switch {
@@ -712,6 +721,7 @@ $logoHeight: 48px;
 
 .search-result {
     padding-bottom: 30px;
+    margin-top: 30px;
 }
 
 .no-search-result {
