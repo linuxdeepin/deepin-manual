@@ -489,18 +489,18 @@ CPU|处理器|Central Processing Unit
 
 为每个应用编写的同义词典，不应用于其它程序的帮助手册。
 
-## 安全性
+## 安全性|OPERA.png|
 
 请注意目前的版本允许页面中执行脚本，在发布Markdown文档时请检查没有恶意代码在内。
 
-## 打包者须知
+## 打包者须知|NOTEPAD++.png|
 
 见 git 根目录的README.md。
 
-## 帮助手册开发者须知
+## 帮助手册开发者须知|AutoCAD.png|
 
 见 git 根目录的README.md。
 
-## 其它应用开发者须知
+## 其它应用开发者须知|EMULE.png|
 
 见 git 根目录的README.md。
