@@ -1,8 +1,8 @@
-<div id="Search" ng-show="isSearchmode" ng-controller="SearchCtrl">
+<div id="Search" ng-show="isSearchMode" ng-controller="SearchCtrl">
     <ul id="SearchResultsContainer" ng-if="searchResults.length" class="search-result">
-        <li ng-repeat="match in searchResults">
+        <li ng-repeat="match in searchResults" deepin-ui-manual-search-finish>
             <h5><a class="anchor" ng-click="jumpTo(match.anchorId)">{{ match.anchorText }}</a></h5>
-            <p ng-repeat="text in match.texts" class="match-text" ng-bind-html="text"></p>
+            <p class="match-text" ng-bind-html="match.texts"></p>
         </li>
     </ul>
     <div id="NoSearchResults" ng-if="!searchResults.length" class="no-search-result">

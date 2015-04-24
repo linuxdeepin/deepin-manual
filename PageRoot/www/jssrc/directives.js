@@ -55,6 +55,13 @@ app.directive("deepinAppManualBody", function($rootScope){
                         elem.removeClass("compact-mode");
                     }
                 });
+                scope.$watch("isSearchMode", function(value){
+                    if(value) {
+                        elem.addClass("search-mode");
+                    } else {
+                        elem.removeClass("search-mode");
+                    }
+                });
             }
         }
     })
@@ -72,6 +79,18 @@ app.directive("deepinAppManualBody", function($rootScope){
                         figure.setAttribute('class', 'figure');
                         figure.appendChild(svg);
                         elem.replaceWith(figure);
+                    });
+                }
+            }
+        }
+    })
+    .directive("deepinUiManualSearchFinish", function($timeout){
+        return {
+            restrict: "A",
+            link: function (scope, element, attr) {
+                if (scope.$last === true) {
+                    $timeout(function () {
+                        scope.$emit('manualSearchFinished');
                     });
                 }
             }

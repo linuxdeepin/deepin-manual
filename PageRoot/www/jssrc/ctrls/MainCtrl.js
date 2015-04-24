@@ -14,17 +14,17 @@ let app = angular.module("DManual");
 app.controller("MainCtrl", function($scope, $rootScope, $log, $sce, $window, $timeout,
                                     hotkeys, GInput, GSynonym, AdapterService) {
     $scope.isOverview = true;
-    let _isSearchmode = false;
-    Object.defineProperty($scope, "isSearchmode", {
-        get: () => _isSearchmode,
+    let _isSearchMode = false;
+    Object.defineProperty($scope, "isSearchMode", {
+        get: () => _isSearchMode,
         set: (newValue) => {
-            if (newValue !== _isSearchmode) {
+            if (newValue !== _isSearchMode) {
                 if (newValue) {
                     $log.log("Enter search mode");
-                    _isSearchmode = true;
+                    _isSearchMode = true;
                 } else {
                     $log.log("Leave search mode");
-                    _isSearchmode = false;
+                    _isSearchMode = false;
                 }
             }
         }
@@ -170,12 +170,12 @@ app.controller("MainCtrl", function($scope, $rootScope, $log, $sce, $window, $ti
                 $rootScope.$broadcast("navigationRelocate", contentWin.scrollY);
             }, 0);
         }
-        $scope.isSearchmode = false;
+        $scope.isSearchMode = false;
     };
     $window.jumpTo = $scope.jumpTo;
 
     $scope.$on("searchTermChanged", function(event, value) {
-        $scope.isSearchmode = value && value.length > 0;
+        $scope.isSearchMode = value && value.length > 0;
     });
 
     $scope.$on("navigationBarToggled", function(event, value) {
