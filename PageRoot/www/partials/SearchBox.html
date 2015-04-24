@@ -1,4 +1,4 @@
-<div id="SearchBox" ng-controller="SearchBoxCtrl" ng-mouseenter="searchInputVisible=true">
+<div id="SearchBox" class="search-box-container" ng-controller="SearchBoxCtrl" ng-mouseenter="searchInputVisible=true">
 
     <div class="search-input-box" ng-class="{'shadow-visible': searchInputVisible}">
         <input type="search"
@@ -9,7 +9,7 @@
                ng-class="{slidedown: searchInputVisible}"
                ng-model="searchTerm" />
 
-        <div id="SuggestionsBox">
+        <div id="SuggestionsBox" class="search-suggestions-box">
           <ul id="Suggestions" ng-bind-html="suggestions"></ul>
         </div>
     </div>

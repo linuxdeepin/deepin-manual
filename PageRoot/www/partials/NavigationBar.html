@@ -1,15 +1,15 @@
-<nav id="NavigationBar" ng-controller="NavigationBarCtrl" ng-class="{collapsed: isCollapsed}">
-    <div id="NavLogoBox">
+<nav id="NavigationBar" ng-controller="NavigationBarCtrl" class="navigation-bar" ng-class="{collapsed: isCollapsed}">
+    <div id="NavLogoBox" class="app-icon-box">
         <a ng-click="jumpTo()">
-            <img id="AppLogo" ng-src="{{appInfo.markdownDir}}/{{appInfo.icon}}" />
-            <span id="AppName">{{appInfo.name}}</span>
-            <span id="LabelDot">.</span>
-            <span id="LabelManual">{{ 'TEXT_MANUAL'|translate }}</span>
+            <img id="AppLogo" class="app-icon" ng-src="{{appInfo.markdownDir}}/{{appInfo.icon}}" />
+            <span id="AppName" class="app-name">{{appInfo.name}}</span>
+            <span id="LabelDot" class="app-name-delim">.</span>
+            <span id="LabelManual" class="app-name-suffix-manual">{{ 'TEXT_MANUAL'|translate }}</span>
         </a>
     </div>
 
-    <div id="SideNavigationBar">
-        <div id="SideNavUpArrow"></div>
+    <div id="SideNavigationBar" class="navigation-bar-aside">
+        <div id="SideNavUpArrow" class="navigation-bar-aside-btn btn-arrow-up"></div>
         <ol id="SideNavigationItems">
             <li class="level2" ng-repeat="anchor in anchors">
                 <a ng-click="jumpTo(anchor.id)" class="anchor-icon">
@@ -26,7 +26,7 @@
                 </ol>
             </li>
         </ol>
-        <div id="SideNavDownArrow"></div>
+        <div id="SideNavDownArrow" class="navigation-bar-aside-btn btn-arrow-down"></div>
     </div>
     <div id="NavigationSwitch" class="navigation-switch">
         <a href="javascript:;" ng-click="toggleNavigationCompactMode();" ng-class="{collapsed: isCollapsed}"></a>

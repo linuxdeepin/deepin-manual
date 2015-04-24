@@ -16,7 +16,7 @@ app.directive("deepinUiFrame", function(){
     return {
         restrict: "E",
         replace: "true",
-        template: `<div id="MoveHandle" ng-controller="FrameCtrl"><!-- div id="OuterFrame" ng-style="outerFrameStyle"></div--></div>`,
+        template: `<div id="MoveHandle" class="move-handle" ng-controller="FrameCtrl"><!-- div id="OuterFrame" ng-style="outerFrameStyle"></div--></div>`,
     }
   }).directive("deepinUiContainer", function(){
     return {

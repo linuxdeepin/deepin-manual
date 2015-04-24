@@ -1,6 +1,7 @@
 <iframe id="Content"
-ng-show="isPageview && (!isSearchMode)"
+class="manual-content"
 srcdoc="{{ htmlOutput }}"
 sandbox="allow-same-origin allow-scripts"
-ng-controller="ContentCtrl"
-seamless></iframe>
+seamless
+ng-show="isPageview && (!isSearchMode)"
+ng-controller="ContentCtrl"></iframe>

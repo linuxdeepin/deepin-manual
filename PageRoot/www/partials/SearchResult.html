@@ -1,12 +1,11 @@
-<div id="Search" ng-show="isSearchMode" ng-controller="SearchCtrl">
+<div id="Search" class="search-result-container" ng-show="isSearchMode" ng-controller="SearchCtrl">
     <ul id="SearchResultsContainer" ng-if="searchResults.length" class="search-result">
         <li ng-repeat="match in searchResults" deepin-ui-manual-search-finish>
             <h5><a class="anchor" ng-click="jumpTo(match.anchorId)">{{ match.anchorText }}</a></h5>
-            <p class="match-text" ng-click="jumpTo(match.anchorId)" ng-bind-html="match.texts"></p>
         </li>
     </ul>
     <div id="NoSearchResults" ng-if="!searchResults.length" class="no-search-result">
-        <div id="NoSearchResultsTextBox">
+        <div id="NoSearchResultsTextBox" class="no-search-result-text">
             <p class="title">{{ 'TEXT_SORRY_NO_RESULT'|translate }}</p>
             <p>{{ 'TEXT_NO_RESULT_GUIDE_MESSAGE'|translate }}</p>
             <a href="javascript: adapter.openExternalBrowser('http://bbs.deepin.org/');">{{ 'TEXT_VISIT_FORUM'|translate }}</a>
