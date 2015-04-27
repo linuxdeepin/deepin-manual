@@ -121,7 +121,7 @@ app.controller("MainCtrl", function($scope, $rootScope, $log, $sce, $window, $ti
                 Mousetrap.bind('esc', function() {
                     emitEvent("searchBoxHideEvent");
                 });
-                ['mousewheel', 'click'].map(function(eventName){
+                ['scroll', 'click'].map(function(eventName){
                     document.addEventListener(eventName, function(){
                         emitEvent("searchBoxHideEvent");
                     });
