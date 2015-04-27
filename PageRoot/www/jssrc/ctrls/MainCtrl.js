@@ -126,7 +126,7 @@ app.controller("MainCtrl", function($scope, $rootScope, $log, $sce, $window, $ti
                         emitEvent("searchBoxHideEvent");
                     });
                 });
-                document.addEventListener('mousewheel', function(e){
+                document.addEventListener('scroll', function(e){
                     emitEvent("navigationRelocateEvent", {offset: window.scrollY});
                 });
                 </script>
