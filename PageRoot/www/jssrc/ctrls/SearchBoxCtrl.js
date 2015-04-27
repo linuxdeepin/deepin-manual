@@ -69,8 +69,9 @@ angular.module("DManual").controller("SearchBoxCtrl",
                     $scope.completionValue = $scope.completionList[$scope.currentIndex].children[0].title
                 }
             } else if ($event.keyCode === Keyboard.ESCAPE) {
-                $event.preventDefault();
-                $scope.$emit("hideSearchBox");
+                if (!$scope.searchTerm.trim()) {
+                    $scope.$emit("hideSearchBox");
+                }
             } else {
                 $scope.currentIndex = -1;
             }

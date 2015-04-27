@@ -109,7 +109,6 @@ body {
 .app-icon-box {
     height: 100%;
     position: relative;
-    z-index: 10050;
     display: -webkit-flex;
     display: flex;
     > a {
@@ -118,6 +117,10 @@ body {
         margin-left: 20px;
         height: $logoHeight;
     }
+}
+
+.app-icon, .app-name {
+    z-index: 10050;
 }
 
 .app-icon {
@@ -149,14 +152,27 @@ body {
 .move-handle {
     -webkit-user-select: none;
     -webkit-app-region: drag;
-    padding: 0 !important;
-    margin: 0 !important;
-    outline: 0 !important;
+    padding: 0;
+    margin: 0;
+    outline: 0;
     position: fixed;
-    width: calc(100% - 80px);
+    width: 100%;
     height: 30px;
-    z-index: 10001;
+    z-index: 10050;
     background-color: transparent;
+
+    .pageview-mode & {
+        width: calc(100% - 80px - 200px);
+        margin-left: 200px;
+    }
+    .pageview-mode.compact-mode & {
+        width: calc(100% - 80px - 48px);
+        margin-left: 48px;
+    }
+    .overview-mode & {
+        width: calc(100% - 80px - 68px);
+        margin-left: 68px;
+    }
 }
 
 .window-control-btn-container {
@@ -459,11 +475,13 @@ body {
                 margin-top: 16px;
                 position: relative;
                 img, .figure {
-                    position: absolute;
                     margin: 0;
                     display: block;
                     width: 24px;
                     height: 24px;
+                }
+                .figure {
+                    position: absolute;
                     left: -30px;
                 }
                 ol {
@@ -554,10 +572,10 @@ body {
     .search-box-container {
         // display: none;
         position: absolute;
-        top: 18px;
+        top: 30px;
         width: 360px;
         left: 26px;
-        height: 60px;
+        height: 35px;
         margin: 0 calc((100% - 360px + 200px) / 2);
         margin-top: 10px;
         z-index: 50001;
@@ -730,6 +748,7 @@ body {
     .search-input {
         top: 36px;
         right: 50px;
+        z-index: 10051;
     }
 
     .app-icon {
@@ -755,7 +774,7 @@ body {
     .search-input-box {
         &.shadow-visible {
             margin: 0 calc(-100% + 50px + 50px - 38px);
-            margin-top: -10px;
+            margin-top: -12px;
         }
     }
 
@@ -829,10 +848,13 @@ body {
 
 
 .search-mode {
-    .pageview-mode {
+    &.pageview-mode {
         .search-input-box {
             height: 38px;
             background: #fff;
+        }
+        .manual-content {
+            display: none;
         }
     }
 }
