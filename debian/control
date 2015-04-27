@@ -5,7 +5,7 @@ Priority: optional
 Build-Depends:
  debhelper,
  nodejs, npm,
- python3
+ python3, ruby-sass
 Standards-Version: 3.9.5
 Homepage: https://gitcafe.com/Deepin/deepin-user-manual/
 Vcs-Git: git://gitcafe.com/Deepin/deepin-user-manual.git

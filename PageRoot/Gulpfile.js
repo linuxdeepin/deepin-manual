@@ -2,7 +2,12 @@
 
 var gulp = require('gulp');
 var rename = require('gulp-rename');
-var sass = require('gulp-sass');
+var sass;
+try {
+    sass = require('gulp-sass');
+} catch(e) {
+    sass = null;
+}
 var gettext = require("gulp-angular-gettext");
 var mocha = require('gulp-mocha');
 var fs = require("fs");
@@ -12,6 +17,9 @@ var ngannotate = require("gulp-ng-annotate");
 var uglify = require("gulp-uglify");
 
 gulp.task('sass', function () {
+    if (!sass) {
+        console.error("You must install gulp-sass!");
+    }
     gulp.src('./www/scss/*.scss')
         .pipe(sass({
             errLogToConsole: true,
@@ -93,7 +101,7 @@ gulp.task('browserify', function() {
         .pipe(fsWriter);
 });
 
-gulp.task('dist', ['sass', 'copyMouseTrap', 'browserify', 'translations'], function() {
+gulp.task('dist', ['copyMouseTrap', 'browserify', 'translations'], function() {
     var timer = setInterval(function() {
         if (!browserifyDone) {
             return;

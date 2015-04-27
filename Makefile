@@ -8,9 +8,9 @@ dependencies: nodejs
 	# Installing node modules and transpile scripts
 	echo "Installing dependencies"
 	cd PageRoot && \
-	    PATH="$(shell pwd)/symdir/:$$PATH" npm --registry=https://registry.npm.taobao.org --disturl=https://npm.taobao.org/dist install
+	    PATH="$(shell pwd)/symdir/:$$PATH" npm --registry=https://registry.npm.taobao.org --disturl=https://npm.taobao.org/dist --production install
 
-dist: dependencies
+dist: dependencies sass
 	echo "Transpiling"
 	mkdir -p PageRoot/www/scripts
 	cd PageRoot && \
@@ -58,6 +58,12 @@ install:
 	mkdir -p $(DESTDIR)/usr/share/icons/hicolor/scalable/apps
 	cp DMan/DManual.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/deepin-manual.svg
 
+sass:
+	mkdir -p PageRoot/www/style
+	sass --style compressed --unix-newlines PageRoot/www/scss/index.scss PageRoot/www/style/index.css
+	sass --style compressed --unix-newlines PageRoot/www/scss/content.scss PageRoot/www/style/content.css
+	sass --style compressed --unix-newlines PageRoot/www/scss/reset.scss PageRoot/www/style/reset.css
+
 clean:
 	rm -rf symdir/
 	rm -rf debian/deepin-manual
@@ -70,4 +76,4 @@ deepclean: clean
 	rm -rf PageRoot/www/{style,scripts,nls,favicon.svg}
 	rm -rf PageRoot/node_modules
 
-.PHONY: all dist dependencies nodejs install clean deepclean
+.PHONY: all dist dependencies nodejs sass install clean deepclean
