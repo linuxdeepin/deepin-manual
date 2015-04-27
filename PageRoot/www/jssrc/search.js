@@ -40,11 +40,33 @@ let sortKeywordsByLength = function(arr) {
         return kw2.length - kw1.length;
     });
     return copy;
+};
 
+let sortSearchResults = function(keywords, results) {
+    // sort results to make headers to go first
+    let movedAheads = [];
+    let notMovedAheads = [];
+    for (let result of results) {
+        let moveAhead = false;
+        let anchorText = result.anchorText;
+        FindKeyword: for (let keyword of keywords) {
+            if (anchorText.toLocaleLowerCase().indexOf(keyword.toLocaleLowerCase()) >= 0) {
+                moveAhead = true;
+                break FindKeyword;
+            }
+        }
+        if (moveAhead) {
+            movedAheads.push(result);
+        } else {
+            notMovedAheads.push(result);
+        }
+    }
+    return [].concat(movedAheads).concat(notMovedAheads);
 };
 
 if (typeof exports !== "undefined") {
     exports.dedupKeywords = dedupKeywords;
     exports.splitSentences = splitSentences;
     exports.sortKeywordsByLength = sortKeywordsByLength;
+    exports.sortSearchResults = sortSearchResults;
 }

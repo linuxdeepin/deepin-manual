@@ -3,6 +3,7 @@
 let {
     dedupKeywords,
     sortKeywordsByLength,
+    sortSearchResults,
 } = require("../search");
 
 angular.module("DManual")
@@ -25,8 +26,14 @@ angular.module("DManual")
             }
             keywords = dedupKeywords(keywords);
             keywords = sortKeywordsByLength(keywords);
-            $scope.searchResults = $filter("filterHighlight")
-                    (_indices, value, keywords);
+
+            // apply filter
+            const highLighted = $filter("filterHighlight")(_indices, value, keywords)
+
+            // make header matches to go first
+            const results = sortSearchResults(keywords, highLighted);
+
+            $scope.searchResults = results;
         });
         $scope.$on("manualSearchFinished", function(value){
             [].slice.call(document.querySelectorAll('.match-text')).map(function(parNode){

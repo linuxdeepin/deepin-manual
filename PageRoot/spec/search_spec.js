@@ -5,6 +5,7 @@ let Search = require("../www/jssrc/search");
 let dedupKeywords = Search.dedupKeywords;
 let splitSentences = Search.splitSentences;
 let sortKeywordsByLength = Search.sortKeywordsByLength;
+let sortSearchResults = Search.sortSearchResults;
 
 describe("Search & Highlight", function() {
     describe("Split sentences", function() {
@@ -52,4 +53,31 @@ describe("Search & Highlight", function() {
             ]);
         });
     });
+
+    describe("sort results to make those in headers to first", function() {
+        it("can do this", function() {
+            let results = [{
+                anchorId: "World",
+                anchorText: "HelloWorld",
+            }, {
+                anchorId: "Kitty",
+                anchorText: "HelloKitty"
+            }, {
+                anchorId: "Kit",
+                anchorText: "HelloKit",
+            }];
+            let keywords = ["KIT"];
+            let sorted = sortSearchResults(keywords, results);
+            expect(sorted).to.eql([{
+                anchorId: "Kitty",
+                anchorText: "HelloKitty"
+            }, {
+                anchorId: "Kit",
+                anchorText: "HelloKit",
+            }, {
+                anchorId: "World",
+                anchorText: "HelloWorld",
+            }]);
+        });
+    })
 });
