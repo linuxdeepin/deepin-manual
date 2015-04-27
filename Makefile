@@ -63,7 +63,7 @@ clean:
 	rm -rf debian/*.debhelper.log
 	rm -rf debian/*.substvars
 
-deepclean:
+deepclean: clean
 	rm -rf PageRoot/www/{style,scripts,nls,favicon.svg}
 
 .PHONY: all dist nodejs install clean deepclean
