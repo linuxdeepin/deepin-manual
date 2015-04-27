@@ -65,23 +65,22 @@ app.directive("deepinAppManualBody", function($rootScope){
             }
         }
     })
-    .directive("deepinUiSvgImage", function($rootScope, $http){
+    .directive("deepinUiSvgImage", function($rootScope, $http, $parse){
         return {
             restrict: "A",
             link: function(scope, elem, attrs) {
-                let src = attrs.ngSrc;
-                if(/\.svg$/.test(src)) {
+                let src = attrs.deepinUiSvgImage;
+                // let src = attrs.ngSrc;
+                if(!/\.svg$/.test(src)) {
+                    let img = document.createElement('img');
+                    img.src = src;
+                    elem[0].appendChild(img);
+                } else {
                     $http.get(src).then(function(res){
                         let div = document.createElement('div');
                         div.innerHTML = res.data;
                         let svg = div.querySelector('svg');
-                        let figure = document.createElement('div');
-                        figure.setAttribute('class', 'figure');
-                        ['ngMouseenter','ngMouseleave'].map(function(attr){
-                            figure.setAttribute(attr, elem.attr(attr));
-                        })
-                        figure.appendChild(svg);
-                        elem.replaceWith(figure);
+                        elem[0].appendChild(svg);
                     });
                 }
             }
