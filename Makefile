@@ -1,16 +1,17 @@
 SHELL   = /bin/bash
 PREFIX := /usr/share/deepin-manual
 
-all: nodejs
+all:
 	echo "Copying icon"
 	cp DMan/DManual.svg PageRoot/www/favicon.svg
 
-dist:
+dependencies: nodejs
 	# Installing node modules and transpile scripts
 	echo "Installing dependencies"
 	cd PageRoot && \
-	    PATH="$(shell pwd)/symdir/:$$PATH" npm install
+	    PATH="$(shell pwd)/symdir/:$$PATH" npm --registry=https://registry.npm.taobao.org --disturl=https://npm.taobao.org/dist install
 
+dist: dependencies
 	echo "Transpiling"
 	mkdir -p PageRoot/www/scripts
 	cd PageRoot && \
@@ -65,5 +66,6 @@ clean:
 
 deepclean: clean
 	rm -rf PageRoot/www/{style,scripts,nls,favicon.svg}
+	rm -rf PageRoot/node_modules
 
-.PHONY: all dist nodejs install clean deepclean
+.PHONY: all dist dependencies nodejs install clean deepclean
