@@ -3,7 +3,8 @@
 let Keyboard = {
     ENTER: 13,
     KEY_UP: 38,
-    KEY_DOWN: 40
+    KEY_DOWN: 40,
+    ESCAPE: 27
 };
 
 angular.module("DManual").controller("SearchBoxCtrl",
@@ -67,6 +68,9 @@ angular.module("DManual").controller("SearchBoxCtrl",
                 if ($scope.currentIndex !== -1) {
                     $scope.completionValue = $scope.completionList[$scope.currentIndex].children[0].title
                 }
+            } else if ($event.keyCode === Keyboard.ESCAPE) {
+                $event.preventDefault();
+                $scope.$emit("hideSearchBox");
             } else {
                 $scope.currentIndex = -1;
             }
