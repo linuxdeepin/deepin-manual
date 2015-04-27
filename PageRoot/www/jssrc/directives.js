@@ -7,8 +7,7 @@ let templateUrlDirectiveConfigMap = {
     "deepinUiManualContent"     : "ContentBox.html",
     "deepinUiManualNav"         : "NavigationBar.html",
     "deepinUiManualOverview"    : "Overview.html",
-    "deepinUiManualSearchInput" : "SearchBox.html",
-    "deepinUiManualSearchResult": "SearchResult.html"
+    "deepinUiManualSearchInput" : "SearchBox.html"
 };
 
 // Custom UI controls here
@@ -48,19 +47,21 @@ app.directive("deepinAppManualBody", function(){
             replace: true,
             link: function(scope, elem, attrs) {
                 elem.addClass("overview-mode");
-                scope.$watch("isCompactMode", function(value){
-                    if(value) {
-                        elem.addClass("compact-mode");
-                    } else {
-                        elem.removeClass("compact-mode");
-                    }
-                });
-                scope.$watch("isSearchMode", function(value){
-                    if(value) {
-                        elem.addClass("search-mode");
-                    } else {
-                        elem.removeClass("search-mode");
-                    }
+                var modeMap = {
+                    'isCompactMode': 'compact-mode',
+                    'isSearchMode' : 'search-mode',
+                    'isOverview'   : 'overview-mode',
+                    'isPageview'   : 'pageview-mode'
+                }
+                Object.keys(modeMap).map(function(mode){
+                    var cssClass = modeMap[mode];
+                    scope.$watch(mode, function(value){
+                        if(value) {
+                            elem.addClass(cssClass);
+                        } else {
+                            elem.removeClass(cssClass);
+                        }
+                    });
                 });
             }
         }

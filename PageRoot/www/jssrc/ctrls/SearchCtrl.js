@@ -11,6 +11,9 @@ angular.module("DManual")
                                        $filter, AdapterService) {
         let _indices = [];
         $scope.searchResults = [];
+        $scope.returnPageview = function() {
+            $scope.isSearchMode = false;
+        }
 
         $scope.$on("indicesSet", function(event, value) {
             _indices = value;

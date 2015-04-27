@@ -299,7 +299,7 @@ body {
     margin-top: 2px;
     position: absolute;
     display: none;
-    z-index: 50000;
+    // z-index: 50000;
     right: 52px;
     top: 60px;
     a {
@@ -539,14 +539,29 @@ body {
         }
     }
 
-    .manual-content {
-        width: calc(100% - #{$pvNavBarWidth});
+    .manual-content-container {
+        float: right;
+        display: block;
+        width: 100%;
         height: calc(100% - #{$titleBarHeight});
+        margin-top: #{$titleBarHeight};
+        &:after {
+            content: "";
+            position: absolute;
+            bottom: 0;
+            height: 25px;
+            width: 100%;
+            background: linear-gradient(to top, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
+        }
+    }
+
+    .manual-content {
+        width: 100%;
+        height: 100%;
         float: right;
         display: block;
         border: 0;
         position: relative;
-        padding-top: $titleBarHeight;
         iframe {
             width: 100%;
             height: 100%;
@@ -559,14 +574,11 @@ body {
     // }
 
     .search-result-container {
-        width: calc(100% - #{$pvNavBarWidth});
+        width: 100%;
         height: 100%;
         overflow: scroll;
-        float: right;
         display: block;
-        margin-top: #{$titleBarHeight};
         border: 0;
-        z-index: 50000;
     }
 
     .search-box-container {
@@ -578,7 +590,7 @@ body {
         height: 35px;
         margin: 0 calc((100% - 360px + 200px) / 2);
         margin-top: 10px;
-        z-index: 50001;
+        z-index: 10050;
     }
 
     .search-input {
@@ -782,7 +794,7 @@ body {
         margin: 0 calc((100% - 360px + 48px) / 2);
     }
 
-    .manual-content, .search-result-container {
+    .manual-content-container {
         width: calc(100% - #{$pvNavBarCompactWidth});
     }
 }
@@ -793,9 +805,20 @@ body {
 /*-------------------------------------------*/
 
 .search-result-container {
+    position: relative;
     background-color: white;
     span.highlight {
         color: $highlightColor;
+    }
+    .btn-control-return {
+        position: absolute;
+        text-indent: -9999em;
+        background: url("../resources/controls/return.png") no-repeat;
+        width: 24px;
+        height: 24px;
+        left: 16px;
+        top: -4px;
+        z-index: 10099;
     }
     a.anchor {
         color: #494949;

@@ -145,13 +145,10 @@ app.controller("MainCtrl", function($scope, $rootScope, $log, $sce, $window, $ti
     $scope.$on("markdownDirChanged", loadMarkdown);
 
     $scope.jumpTo = function(anchor) {
-        let body = angular.element($window.document.body);
         let contentWin = document.getElementById("Content").contentWindow;
         if (anchor) {
             $scope.isOverview = false;
             $scope.isPageview = true;
-            body.removeClass('overview-mode');
-            body.addClass('pageview-mode');
             $timeout(function() {
                 // set hash to empty first,
                 // Browser will not do anything if a same hash is set again
@@ -162,9 +159,6 @@ app.controller("MainCtrl", function($scope, $rootScope, $log, $sce, $window, $ti
         } else {
             $scope.isOverview = true;
             $scope.isPageview = false;
-            // same as above
-            body.removeClass('pageview-mode');
-            body.addClass('overview-mode');
             $timeout(function() {
                 contentWin.location.hash = "";
                 $rootScope.$broadcast("navigationRelocate", contentWin.scrollY);
