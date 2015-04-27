@@ -28,6 +28,9 @@ $navLogoBoxHeight: 64px;
 
 $titleBarHeight: 30px;
 
+// Logo related
+$logoHeight: 48px;
+
 
 /*-------------------------------------------*/
 /* Global Style                              */
@@ -87,10 +90,6 @@ body {
     height: 100%;
 }
 
-input[type='search'] {
-    width: 50px;
-}
-
 #Container {
     position: fixed;
     padding: 0 !important;
@@ -99,15 +98,250 @@ input[type='search'] {
     width: 100%;
     overflow: hidden;
     background-color: white;
-    .debug-mode & {
-        background-color: firebrick !important;
-        margin: $csdTH $csdRW $csdBH $csdLW !important;
-        height: calc(100% - #{$csdTH} - #{$csdBH});
-        width: calc(100% - #{$csdLW} - #{$csdRW});
+}
+
+.search-input {
+    position: absolute;
+    width: 260px;
+    height: 24px;
+}
+
+.app-icon-box {
+    height: 100%;
+    position: relative;
+    z-index: 10050;
+    display: -webkit-flex;
+    display: flex;
+    > a {
+        display: block;
+        margin: auto 0;
+        margin-left: 20px;
+        height: $logoHeight;
     }
 }
 
-#NavigationBar {
+.app-icon {
+    width: 48px;
+    height: $logoHeight;
+    float: left;
+}
+
+.app-name, .app-name-delim, .app-name-suffix-manual {
+    font-size: 20px;
+    height: $logoHeight;
+    line-height: $logoHeight;
+    float: left;
+}
+
+// Frame, border, etc
+//#OuterFrame {
+//    padding: 0 !important;
+//    margin: 0 !important;
+//    outline: 0 !important;
+//    position: fixed;
+//    width: 100%;
+//    z-index: -100;
+//    .debug-mode & {
+//        background-color: skyblue;
+//    }
+//}
+
+.move-handle {
+    -webkit-user-select: none;
+    -webkit-app-region: drag;
+    padding: 0 !important;
+    margin: 0 !important;
+    outline: 0 !important;
+    position: fixed;
+    width: calc(100% - 80px);
+    height: 30px;
+    z-index: 10001;
+    background-color: transparent;
+}
+
+.window-control-btn-container {
+    position: fixed;
+    z-index: 99999;
+    text-indent: -9999em;
+    right: $csdRW;
+    @include disable-user-select;
+    .window-control-btn {
+        width: 15px;
+        height: 20px;
+        margin: 5px;
+        float: left;
+        -webkit-app-region: no-drag;
+    }
+    a:focus {
+        outline: none;
+    }
+}
+
+.btn-window-minimize {
+    background-position: -6px 0;
+    background-image: url("../resources/frame/dark_minimise_normal.png");
+    background-repeat: no-repeat;
+    &:hover {
+        background-image: url("../resources/frame/dark_minimise_hover.png");
+        background-repeat: no-repeat;
+    }
+    &:active {
+        background-image: url("../resources/frame/dark_minimise_press.png");
+        background-repeat: no-repeat;
+    }
+}
+
+.btn-window-maximize {
+    background-position: -6px 0;
+    background-image: url("../resources/frame/dark_maximize_normal.png");
+    background-repeat: no-repeat;
+    &:hover {
+        background-image: url("../resources/frame/dark_maximize_hover.png");
+        background-repeat: no-repeat;
+    }
+    &:active {
+        background-image: url("../resources/frame/dark_maximize_press.png");
+        background-repeat: no-repeat;
+    }
+}
+
+.isMaximized .btn-window-maximize {
+    background-position: -6px 0;
+    background-image: url("../resources/frame/dark_unmaximize_normal.png");
+    background-repeat: no-repeat;
+    &:hover {
+        background-image: url("../resources/frame/dark_unmaximize_hover.png");
+        background-repeat: no-repeat;
+    }
+    &:active {
+        background-image: url("../resources/frame/dark_unmaximize_press.png");
+        background-repeat: no-repeat;
+    }
+}
+
+.btn-window-close {
+    background-position: -6px 0;
+    background-image: url("../resources/frame/dark_close_normal.png");
+    background-repeat: no-repeat;
+    &:hover {
+        background-image: url("../resources/frame/dark_close_hover.png");
+        background-repeat: no-repeat;
+    }
+    &:active {
+        background-image: url("../resources/frame/dark_close_press.png");
+        background-repeat: no-repeat;
+    }
+}
+
+.search-input {
+    border-radius: 3px;
+    font-size: 14px;
+    line-height: 24px;
+    height: 24px;
+    outline: none;
+    border: 1px solid #000;
+    color: #b4b4b4;
+    background: linear-gradient(to bottom, #171717, #212121);
+    box-shadow: 0px 1px 0px 0px rgba(255,255,255,0.05);
+    top: -55px;
+
+    &::-webkit-input-placeholder {
+        font-size: 14px;
+        color: #b4b4b4;
+    }
+
+    &:focus {
+        border-color: $theBlue;
+    }
+
+    &::-webkit-textfield-decoration-container {
+        background: url("../resources/controls/search-white.svg") no-repeat 5px 50%;
+        background-size: 16px;
+        padding-left: 22px;
+    }
+
+    &::-webkit-search-cancel-button {
+        -webkit-appearance: none;
+        height: 16px;
+        width: 16px;
+        background-image: url("../resources/controls/dark_clear_normal.png");
+        background-repeat: no-repeat;
+        background-position: center;
+    }
+
+    &::-webkit-search-cancel-button:hover {
+        background-image: url("../resources/controls/dark_clear_hover.png");
+    }
+
+    &::-webkit-search-cancel-button:active {
+        background-image: url("../resources/controls/dark_clear_press.png");
+    }
+}
+
+.search-suggestions-box {
+    width: 258px;
+    margin-top: 2px;
+    position: absolute;
+    display: none;
+    z-index: 50000;
+    right: 52px;
+    top: 60px;
+    a {
+        color: #bdbdbd;
+        text-decoration: none;
+    }
+    // .search-input:hover + &,
+    .search-input:focus + &,
+    &:hover {
+        display: block;
+    }
+    & > ul {
+        width: 100%;
+        padding: 0;
+        margin: 0;
+        display: none;
+        list-style-type: none;
+        -webkit-user-select: none;
+        user-select: none;
+        border-radius: 5px;
+        color: #bdbdbd;
+        background-color: #191919;
+        border: 1px solid rgba(0,0,0,0.1);
+        box-shadow: 0px 4px 9px rgba(0,0,0,0.15),
+                inset 0px 1px 0px rgba(255,255,255,0.1),
+                inset 0px 2px 0px rgba(255,255,255,0.05);
+        &:not(:empty) {
+            display: block;
+        }
+        & > li {
+            padding: 2px 14px;
+            margin: 5px 0;
+            font-size: 12px;
+            color: #747474;
+            &:hover,
+            &.active {
+                a {
+                    color: #fff;
+                }
+                background: rgba(0,0,0,0.4);
+            }
+        }
+        & > li .highlight {
+            color: $highlightColor;
+        }
+        & > li > a {
+            display: block;
+            cursor: pointer;
+        }
+    }
+}
+
+
+/*-------------------------------------------*/
+/* pageview mode style                       */
+/*-------------------------------------------*/
+
+.navigation-bar {
     background-color: $navBgcolor;
     color: #bdbdbd;
     position: relative;
@@ -138,104 +372,51 @@ input[type='search'] {
     }
 }
 
-#TopLevelItemsBox {
-    display: -webkit-flex;
-    display: flex;
-    height: 100%;
-}
+// .navigation-bar {
+//     ol {
+//         counter-reset: item;
+//         li {
+//             counter-increment: item;
+//             a > span:before {
+//                 content: counters(item, ".") ". ";
+//             }
+//         }
+//     }
 
-#TopLevelItemsView {
-    @include clearfix;
-    width: 232px * 4;
-    margin: 0 auto;
-    padding: 32px 0 0;
+//     li ol li {
+//         &:before {
+//             content: counters(item, ".") " ";
+//         }
+//     }
+// }
 
-    li {
-        float: left;
-        display: block;
-        width: 232px;
-        height: 158px;
-        @include clearfix;
-        text-align: center;
-    }
 
+.navigation-switch {
+    position: absolute;
+    right: -30px;
+    top: 18px;
+    width: 30px;
+    height: 25px;
+    z-index: 10050;
     a {
         display: block;
-        color: #818181;
-        cursor: pointer;
-        svg path,
-        svg rect {
-            fill: #818181 !important;
+        width: 15px;
+        height: 100%;
+        background: url("../resources/controls/bookmark.png") right top;
+        &.collapsed{
+            width: 25px;
         }
-        &:hover {
-            color: #31a4fc;
-            svg path,
-            svg rect {
-                fill: #31a4fc !important;
-            }
-        }
-    }
-
-    img, .figure {
-        width: 64px;
-        height: 64px;
-        margin: 0 auto;
-        .debug-mode & {
-            background-color: darkgrey;
-        }
-    }
-
-    p {
-        margin: 0;
-        margin-top: 14px;
-        height: 2.5em;
-        line-height: 1.25em;
-        @include text-ellipsis;
     }
 }
 
-.overview-mode {
-    #NavigationBar {
-        height: $ovNavBarHeight;
-        overflow: hidden;
-    }
-
-    #SideNavigationBar {
-        display: none;
-    }
-
-    #Overview {
-        height: calc(100% - #{$ovNavBarHeight});
-        margin-top: 0;
-        overflow-y: auto;
-        @include disable-user-select;
-        .debug-mode & {
-            background-color: pink;
-        }
-    }
-
-    #SearchInput {
-        top: 36px;
-        right: 50px;
-    }
-
-    #AppLogo {
-        margin-right: 16px;
-    }
-
-}
-
-#SideNavUpArrow, #SideNavDownArrow {
-    display: none;
-}
 
 .pageview-mode {
-    #NavigationBar {
+    .navigation-bar {
         width: $pvNavBarWidth;
         float: left;
     }
 
-    #NavLogoBox {
+    .app-icon-box {
         height: $navLogoBoxHeight - 16px;
         > a {
             height: 32px;
@@ -246,7 +427,7 @@ input[type='search'] {
             height: 32px;
             margin-right: 8px;
         }
-        #AppName {
+        .app-name {
             height: 32px;
             line-height: 32px;
             font-size: 16px;
@@ -254,14 +435,89 @@ input[type='search'] {
         }
     }
 
-    #SideNavigationBar {
+    .app-name-delim, .app-name-suffix-manual {
+        display: none;
+    }
+
+    .navigation-bar-aside {
         display: block;
         overflow: hidden !important;
         height: 100%;
         font-size: 13px;
+
+        ol { // ol
+            padding-left: 40px;
+            margin: 0;
+            overflow: hidden;
+            height: 100%;
+
+            li {
+                line-height: 24px;
+            }
+
+            .level2 { // li
+                margin-top: 16px;
+                position: relative;
+                img, .figure {
+                    position: absolute;
+                    margin: 0;
+                    display: block;
+                    width: 24px;
+                    height: 24px;
+                    left: -30px;
+                }
+                ol {
+                    display: none;
+                }
+            }
+
+            .level3 {
+                text-indent: 0.5em;
+                line-height: 1.7em;
+            }
+
+            .current-section {
+                &>a>span {
+                    color: $theBlue;
+                }
+                svg rect,
+                svg path {
+                    fill: $theBlue !important;
+                }
+                ol {
+                    display: block;
+                    padding: 0;
+                }
+            }
+        }
+
+        .navigation-bar-aside-btn {
+            display: none;
+            .btn-arrow-up, .btn-arrow-down {
+                height: 15px;
+                width: 100%;
+                background-position: 50%;
+            }
+            .btn-arrow-up {
+                &.normal {
+                    background-image: url("../resources/controls/up_arrow.svg");
+                }
+                &.end {
+                    background-image: url("../resources/controls/up_arrow.svg");
+                }
+            }
+            .btn-arrow-down {
+                &.normal {
+                    background-image: url("../resources/controls/down_arrow.svg");
+                }
+                &.end {
+                    background-image: url("../resources/controls/down_arrow.svg");
+                }
+            }
+        }
     }
 
-    #Content {
+    .manual-content {
         width: calc(100% - #{$pvNavBarWidth});
         height: calc(100% - #{$titleBarHeight});
         overflow: scroll;
@@ -270,105 +526,13 @@ input[type='search'] {
         border: 0;
         position: relative;
         padding-top: $titleBarHeight;
-        .debug-mode & {
-            background-color: green;
-        }
     }
 
-    // #SideNavigationBar {
+    // .navigation-bar-aside {
     //     height: 600px; //calc(100% - #{$navLogoBoxHeight} - 1300px);
     // }
 
-    #SideNavigationItems { // ol
-        padding-left: 40px;
-        margin: 0;
-        overflow: hidden;
-        height: 100%;
-
-        li {
-            line-height: 24px;
-        }
-
-        .level2 { // li
-            margin-top: 16px;
-            position: relative;
-            img, .figure {
-                position: absolute;
-                margin: 0;
-                display: block;
-                width: 24px;
-                height: 24px;
-                left: -30px;
-            }
-            ol {
-                display: none;
-            }
-        }
-
-        .level3 {
-            text-indent: 0.5em;
-            line-height: 1.7em;
-        }
-
-        .current-section {
-            &>a>span {
-                color: $theBlue;
-            }
-            svg rect,
-            svg path {
-                fill: $theBlue !important;
-            }
-            ol {
-                display: block;
-            }
-        }
-
-    }
-
-    #SearchInput {
-        // margin: 0 auto;
-        left: calc((100% - 260px) / 2);
-    }
-
-    #LabelDot, #LabelManual {
-        display: none;
-    }
-
-    #SideNavUpArrow, #SideNavDownArrow {
-        height: 15px;
-        width: 100%;
-        background-repeat: no-repeat;
-    }
-    #SideNavUpArrow.normal {
-        background-image: url("../resources/controls/up_arrow.svg");
-        background-position: 50%;
-    }
-    #SideNavUpArrow.end {
-        background-image: url("../resources/controls/up_arrow.svg");
-        background-position: 50%;
-    }
-    #SideNavDownArrow.normal {
-        background-image: url("../resources/controls/down_arrow.svg");
-        background-position: 50%;
-    }
-    #SideNavDownArrow.end {
-        background-image: url("../resources/controls/down_arrow.svg");
-        background-position: 50%;
-    }
-}
-
-// search related.
-#Search {
-    background-color: white;
-    .debug-mode & {
-        background-color: orange;
-    }
-    .overview-mode & {
-        height: calc(100% - #{$ovNavBarHeight});
-        margin-top: 0;
-        overflow-y: hidden;
-    }
-    .pageview-mode & {
+    .search-result-container {
         width: calc(100% - #{$pvNavBarWidth});
         height: 100%;
         overflow: scroll;
@@ -378,43 +542,8 @@ input[type='search'] {
         border: 0;
         z-index: 50000;
     }
-    span.highlight {
-        color: $highlightColor;
-    }
-    a.anchor {
-        color: #494949;
-        font-size: 13px;
-        font-weight: bold;
-        text-decoration: none;
-        cursor: pointer;
-    }
-    p.match-text {
-        position: relative;
-        color: #878787;
-        font-size: 13px;
-        overflow: hidden;
-        cursor: pointer;
-        .ellipsis {
-            position: absolute;
-            padding-right: 10px;
-            right: 0;
-            bottom: 0;
-            background: #fff;
-        }
-    }
-}
 
-#SearchInput {
-    position: absolute;
-    width: 260px;
-    height: 24px;
-}
-
-#SearchBox {
-    .overview-mode & {
-        display: block;
-    }
-    .pageview-mode & {
+    .search-box-container {
         // display: none;
         position: absolute;
         top: 18px;
@@ -425,187 +554,12 @@ input[type='search'] {
         margin-top: 10px;
         z-index: 50001;
     }
-    .compact-mode & {
-        margin: 0 calc((100% - 360px + 48px) / 2);
-    }
 
-    .debug-mode & {
-        background: lime;
-    }
-}
-
-#NoSearchResults {
-    display: -webkit-flex;
-    display: flex;
-    height: 100%;
-    width: 100%;
-
-    #NoSearchResultsTextBox {
-        margin: auto;
-    }
-}
-
-// Logo related
-$logoHeight: 48px;
-
-#NavLogoBox {
-    height: 100%;
-    display: -webkit-flex;
-    display: flex;
-    > a {
-        display: block;
-        margin: auto 0;
-        margin-left: 20px;
-        height: $logoHeight;
-    }
-}
-
-#AppLogo {
-    width: 48px;
-    height: $logoHeight;
-    float: left;
-    .debug-mode & {
-        background-color: green;
-    }
-}
-
-#AppName, #LabelDot, #LabelManual {
-    font-size: 20px;
-    height: $logoHeight;
-    line-height: $logoHeight;
-    float: left;
-}
-
-// Frame, border, etc
-//#OuterFrame {
-//    padding: 0 !important;
-//    margin: 0 !important;
-//    outline: 0 !important;
-//    position: fixed;
-//    width: 100%;
-//    z-index: -100;
-//    .debug-mode & {
-//        background-color: skyblue;
-//    }
-//}
-
-#MoveHandle {
-    -webkit-user-select: none;
-    -webkit-app-region: drag;
-    padding: 0 !important;
-    margin: 0 !important;
-    outline: 0 !important;
-    position: fixed;
-    width: calc(100% - 80px);
-    height: 30px;
-    z-index: 10001;
-    background-color: transparent;
-    .debug-mode & {
-        background-color: darkmagenta;
-    }
-}
-
-#FrameBar {
-    position: fixed;
-    z-index: 99999;
-    text-indent: -9999em;
-    right: $csdRW;
-    @include disable-user-select;
-    .window-control-btn {
-        width: 15px;
-        height: 20px;
-        margin: 5px;
-        float: left;
-        -webkit-app-region: no-drag;
-    }
-    a:focus {
-        outline: none;
-    }
-}
-
-#MinimizeBtn {
-    background-position: -6px 0;
-    background-image: url("../resources/frame/dark_minimise_normal.png");
-    background-repeat: no-repeat;
-    &:hover {
-        background-image: url("../resources/frame/dark_minimise_hover.png");
-        background-repeat: no-repeat;
-    }
-    &:active {
-        background-image: url("../resources/frame/dark_minimise_press.png");
-        background-repeat: no-repeat;
-    }
-}
-
-#MaximizeBtn {
-    background-position: -6px 0;
-    background-image: url("../resources/frame/dark_maximize_normal.png");
-    background-repeat: no-repeat;
-    &:hover {
-        background-image: url("../resources/frame/dark_maximize_hover.png");
-        background-repeat: no-repeat;
-    }
-    &:active {
-        background-image: url("../resources/frame/dark_maximize_press.png");
-        background-repeat: no-repeat;
-    }
-}
-
-.isMaximized #MaximizeBtn {
-    background-position: -6px 0;
-    background-image: url("../resources/frame/dark_unmaximize_normal.png");
-    background-repeat: no-repeat;
-    &:hover {
-        background-image: url("../resources/frame/dark_unmaximize_hover.png");
-        background-repeat: no-repeat;
-    }
-    &:active {
-        background-image: url("../resources/frame/dark_unmaximize_press.png");
-        background-repeat: no-repeat;
-    }
-}
-
-#CloseBtn {
-    background-position: -6px 0;
-    background-image: url("../resources/frame/dark_close_normal.png");
-    background-repeat: no-repeat;
-    &:hover {
-        background-image: url("../resources/frame/dark_close_hover.png");
-        background-repeat: no-repeat;
-    }
-    &:active {
-        background-image: url("../resources/frame/dark_close_press.png");
-        background-repeat: no-repeat;
-    }
-}
-
-
-.search-input {
-    border-radius: 3px;
-    font-size: 14px;
-    line-height: 24px;
-    height: 24px;
-    outline: none;
-    border: 1px solid #000;
-    color: #b4b4b4;
-    background: linear-gradient(to bottom, #171717, #212121);
-    box-shadow: 0px 1px 0px 0px rgba(255,255,255,0.05);
-    top: -55px;
-
-    &::-webkit-input-placeholder {
-        font-size: 14px;
-        color: #b4b4b4;
-    }
-
-    &:focus {
-        border-color: $theBlue;
-    }
-
-    .pageview-mode & {
+    .search-input {
         border: 1px solid lightgrey;
         color: #000;
         background: white;
-        left: 50%;
+        left: calc((100% - 260px) / 2);
 
         &:focus {
             border-color: $theBlue;
@@ -626,48 +580,24 @@ $logoHeight: 48px;
         }
     }
 
-
-    &::-webkit-textfield-decoration-container {
-        background: url("../resources/controls/search-white.svg") no-repeat 5px 50%;
-        background-size: 16px;
-        padding-left: 22px;
-    }
-
     &::-webkit-search-cancel-button {
-        -webkit-appearance: none;
-        height: 16px;
-        width: 16px;
-        background-image: url("../resources/controls/dark_clear_normal.png");
-        .pageview-mode & {
-            background-image: url("../resources/controls/clear_normal.png");
-        }
-        background-repeat: no-repeat;
-        background-position: center;
+        background-image: url("../resources/controls/clear_normal.png");
     }
 
     &::-webkit-search-cancel-button:hover {
-        background-image: url("../resources/controls/dark_clear_hover.png");
-        .pageview-mode & {
-            background-image: url("../resources/controls/clear_hover.png");
-        }
+        background-image: url("../resources/controls/clear_hover.png");
     }
 
     &::-webkit-search-cancel-button:active {
-        background-image: url("../resources/controls/dark_clear_press.png");
-        .pageview-mode & {
-            background-image: url("../resources/controls/clear_press.png");
-        }
+        background-image: url("../resources/controls/clear_press.png");
     }
-}
 
-
-.pageview-mode {
-    .collapsed#NavigationBar {
+    .collapsed.navigation-bar {
         width: 48px;
-        #NavLogoBox span {
+        .app-icon-box span {
             display: none;
         }
-        #SideNavigationItems {
+        ol {
             padding-left: 10px;
         }
         .level2 {
@@ -705,7 +635,113 @@ $logoHeight: 48px;
         }
     }
 
+    .search-suggestions-box {
+        left: calc(50% - 200px + 70px);
+        top: 24px;
+        & > ul {
+            background-color: #fff;
+            border: 1px solid lightgrey;
+        }
+    }
 }
+
+/*-------------------------------------------*/
+/* overview mode style                       */
+/*-------------------------------------------*/
+
+.toplevel-items-box {
+    display: -webkit-flex;
+    display: flex;
+    height: 100%;
+}
+
+.toplevel-items-list {
+    @include clearfix;
+    width: 232px * 4;
+    margin: 0 auto;
+    padding: 32px 0 0;
+
+    li {
+        float: left;
+        display: block;
+        width: 232px;
+        height: 158px;
+        @include clearfix;
+        text-align: center;
+    }
+
+    a {
+        display: block;
+        color: #818181;
+        cursor: pointer;
+        svg path,
+        svg rect {
+            fill: #818181 !important;
+        }
+        &:hover {
+            color: #31a4fc;
+            svg path,
+            svg rect {
+                fill: #31a4fc !important;
+            }
+        }
+    }
+
+    img, .figure {
+        width: 64px;
+        height: 64px;
+        margin: 0 auto;
+    }
+
+    p {
+        margin: 0;
+        margin-top: 14px;
+        height: 2.5em;
+        line-height: 1.25em;
+        @include text-ellipsis;
+    }
+}
+
+.overview-mode {
+    .navigation-bar {
+        height: $ovNavBarHeight;
+        overflow: hidden;
+    }
+
+    .navigation-bar-aside {
+        display: none;
+    }
+
+    .overview-box {
+        height: calc(100% - #{$ovNavBarHeight});
+        margin-top: 0;
+        overflow-y: auto;
+        @include disable-user-select;
+    }
+
+    .search-input {
+        top: 36px;
+        right: 50px;
+    }
+
+    .app-icon {
+        margin-right: 16px;
+    }
+
+    .search-result-container {
+        height: calc(100% - #{$ovNavBarHeight});
+        margin-top: 0;
+        overflow-y: hidden;
+    }
+
+    .search-box-container {
+        display: block;
+    }
+}
+
+/*-------------------------------------------*/
+/* compact mode style                        */
+/*-------------------------------------------*/
 
 .compact-mode {
     .search-input-box {
@@ -714,34 +750,60 @@ $logoHeight: 48px;
             margin-top: -10px;
         }
     }
+
+    .search-box-container {
+        margin: 0 calc((100% - 360px + 48px) / 2);
+    }
+
+    .manual-content, .search-result-container {
+        width: calc(100% - #{$pvNavBarCompactWidth});
+    }
 }
 
-.navigation-switch {
-    position: absolute;
-    right: -30px;
-    top: 18px;
-    width: 30px;
-    height: 25px;
-    a {
-        display: block;
-        width: 15px;
-        height: 100%;
-        background: url("../resources/controls/bookmark.png") right top;
-        &.collapsed{
-            width: 25px;
-        }
+
+/*-------------------------------------------*/
+/* search mode style                         */
+/*-------------------------------------------*/
+
+.search-result-container {
+    background-color: white;
+    span.highlight {
+        color: $highlightColor;
     }
-    .debug-mode & {
-        background: orange;
+    a.anchor {
+        color: #494949;
+        font-size: 13px;
+        font-weight: bold;
+        text-decoration: none;
+        cursor: pointer;
+    }
+    p.match-text {
+        position: relative;
+        color: #878787;
+        font-size: 13px;
+        overflow: hidden;
+        cursor: pointer;
+        .ellipsis {
+            position: absolute;
+            padding-right: 10px;
+            right: 0;
+            bottom: 0;
+            background: #fff;
+        }
     }
 }
 
 .search-result {
     padding-bottom: 30px;
-    margin-top: 30px;
+    margin-top: 50px;
 }
 
 .no-search-result {
+    display: -webkit-flex;
+    display: flex;
+    height: 100%;
+    width: 100%;
+
     p, a {
         display: block;
         font-size: 12px;
@@ -751,83 +813,74 @@ $logoHeight: 48px;
         font-size: 16px;
         margin: 0.2em 0;
     }
+
+    .no-search-result-text {
+        margin: auto;
+    }
 }
 
+
+.search-mode {
+    .pageview-mode {
+        .search-input-box {
+            height: 38px;
+            background: #fff;
+        }
+    }
+}
+
+
+/*-------------------------------------------*/
+/* debug mode style                          */
+/*-------------------------------------------*/
 
 .debug-mode {
-    #SideNavigationItems .level2 img {
+    ol .level2 img {
         background-color: skyblue;
     }
-}
 
-.compact-mode {
-    #Content, #Search {
-        width: calc(100% - #{$pvNavBarCompactWidth});
+    #Container {
+        background-color: firebrick !important;
+        margin: $csdTH $csdRW $csdBH $csdLW !important;
+        height: calc(100% - #{$csdTH} - #{$csdBH});
+        width: calc(100% - #{$csdLW} - #{$csdRW});
     }
-}
 
-#SuggestionsBox {
-    width: 258px;
-    margin-top: 2px;
-    position: absolute;
-    display: none;
-    z-index: 50000;
-    right: 52px;
-    top: 60px;
-    a {
-        color: #bdbdbd;
-        text-decoration: none;
+    .toplevel-items-list {
+        img, .figure {
+            background-color: darkgrey;
+        }
     }
-    .pageview-mode & {
-        left: calc(50% - 200px);
-        top: 24px;
+
+    .search-result-container {
+        background-color: orange;
     }
-    // .search-input:hover + &,
-    .search-input:focus + &,
-    &:hover {
-        display: block;
+
+    .search-box-container {
+        background: lime;
     }
-    #Suggestions {
-        width: 100%;
-        padding: 0;
-        margin: 0;
-        display: none;
-        list-style-type: none;
-        -webkit-user-select: none;
-        user-select: none;
-        border-radius: 5px;
-        color: #bdbdbd;
-        background-color: #191919;
-        border: 1px solid rgba(0,0,0,0.1);
-        box-shadow: 0px 4px 9px rgba(0,0,0,0.15),
-                inset 0px 1px 0px rgba(255,255,255,0.1),
-                inset 0px 2px 0px rgba(255,255,255,0.05);
-        .pageview-mode & {
-            background-color: #fff;
-            border: 1px solid lightgrey;
+
+    .app-icon {
+        background-color: green;
+    }
+
+    .move-handle {
+        background-color: darkmagenta;
+    }
+
+    .navigation-switch {
+        background: orange;
+    }
+
+    .overview-mode {
+        .overview-box {
+            background-color: pink;
         }
-        &:not(:empty) {
-            display: block;
-        }
-        & > li {
-            padding: 2px 14px;
-            margin: 5px 0;
-            font-size: 12px;
-            color: #747474;
-            &:hover,
-            &.active {
-                a {
-                    color: #fff;
-                }
-                background: rgba(0,0,0,0.4);
-            }
-        }
-        & > li .highlight {
-            color: $highlightColor;
-        }
-        & > li > a {
-            display: block;
-            cursor: pointer;
+    }
+
+    .pageview-mode {
+        .manual-content {
+            background-color: green;
         }
     }
 }
