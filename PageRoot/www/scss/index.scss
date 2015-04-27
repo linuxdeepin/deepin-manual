@@ -521,12 +521,16 @@ body {
     .manual-content {
         width: calc(100% - #{$pvNavBarWidth});
         height: calc(100% - #{$titleBarHeight});
-        overflow: scroll;
         float: right;
         display: block;
         border: 0;
         position: relative;
         padding-top: $titleBarHeight;
+        iframe {
+            width: 100%;
+            height: 100%;
+            overflow: scroll;
+        }
     }
 
     // .navigation-bar-aside {
