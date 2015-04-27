@@ -78,7 +78,7 @@ app.directive("deepinAppManualBody", function($rootScope){
                         let figure = document.createElement('div');
                         figure.setAttribute('class', 'figure');
                         ['ngMouseenter','ngMouseleave'].map(function(attr){
-                            figure.setAttribute(attr, elem.getAttribute(attr));
+                            figure.setAttribute(attr, elem.attr(attr));
                         })
                         figure.appendChild(svg);
                         elem.replaceWith(figure);
