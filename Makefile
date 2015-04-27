@@ -1,9 +1,8 @@
 SHELL   = /bin/bash
 PREFIX := /usr/share/deepin-manual
 
-all:
-	echo "Copying icon"
-	cp DMan/DManual.svg PageRoot/www/favicon.svg
+all: dist
+
 
 dependencies: nodejs
 	# Installing node modules and transpile scripts
@@ -19,6 +18,9 @@ dist: dependencies
 
 	# Remove unminified bundle.js
 	rm PageRoot/www/scripts/bundle.js
+
+	echo "Copying icon"
+	cp DMan/DManual.svg PageRoot/www/favicon.svg
 
 nodejs:
 	# Debian-based distros use nonstandard node executable name
