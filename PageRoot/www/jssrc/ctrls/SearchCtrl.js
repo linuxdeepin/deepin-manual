@@ -28,7 +28,7 @@ angular.module("DManual")
             keywords = sortKeywordsByLength(keywords);
 
             // apply filter
-            const highLighted = $filter("filterHighlight")(_indices, value, keywords)
+            const highLighted = $filter("filterHighlight")(_indices, value, keywords);
 
             // make header matches to go first
             const results = sortSearchResults(keywords, highLighted);
