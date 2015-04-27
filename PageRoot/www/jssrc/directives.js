@@ -42,7 +42,7 @@ app.directive("deepinUiFrame", function(){
 })(app, templateUrlDirectiveConfigMap);
 
 // Custom Attributes here
-app.directive("deepinAppManualBody", function($rootScope){
+app.directive("deepinAppManualBody", function(){
         return {
             restrict: "A",
             replace: true,
@@ -65,7 +65,7 @@ app.directive("deepinAppManualBody", function($rootScope){
             }
         }
     })
-    .directive("deepinUiSvgImage", function($rootScope, $http, $parse){
+    .directive("deepinUiSvgImage", function($http, $parse){
         return {
             restrict: "A",
             link: function(scope, elem, attrs) {
