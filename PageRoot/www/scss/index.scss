@@ -469,6 +469,9 @@ body {
                 ol {
                     display: none;
                 }
+                &:last-child {
+                    margin-bottom: 16px;
+                }
             }
 
             .level3 {
