@@ -101,7 +101,7 @@ let parseNavigationItems = function(tokens) {
 
                 if (token.depth <= MAX_INDEX_HEADER_LEVEL) {
                     if (anchorIds.has(anchorId)) {
-                        throw new Error("Duplicate anchor names found:", anchorId);
+                        throw new Error(`Duplicate anchor names found: ${anchorId}`);
                     } else {
                         anchorIds.add(anchorId);
                         headers.push(anchorText);

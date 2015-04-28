@@ -7,7 +7,7 @@ let splitPathFileNames = function(pf) {
     if (i >= 0) {
         return [pf.substr(0, i), pf.substr(i)];
     } else {
-        throw new Error("Cannot split" + pf);
+        throw new Error(`Cannot split: ${pf}`);
     }
 };
 
