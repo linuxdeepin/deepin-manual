@@ -7,8 +7,11 @@ all: dist
 dependencies: nodejs
 	# Installing node modules and transpile scripts
 	echo "Installing dependencies"
-	cd PageRoot && \
-	    PATH="$(shell pwd)/symdir/:$$PATH" npm --registry=https://registry.npm.taobao.org --disturl=https://npm.taobao.org/dist --production install
+	if [ -d "/opt/libjs-dmanual-dev" ]; then \
+		ln -sf /opt/libjs-dmanual-dev/node_modules ./PageRoot/node_modules; \
+	else \
+		cd PageRoot && PATH="$(shell pwd)/symdir/:$$PATH" npm --production install; \
+	fi
 
 dist: dependencies sass
 	echo "Transpiling"
