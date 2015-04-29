@@ -4,12 +4,12 @@ Section: python
 Priority: optional
 Build-Depends:
  debhelper,
- nodejs, npm,
+ libjs-dmanual-dev,
  python3, ruby-sass
 Standards-Version: 3.9.5
-Homepage: https://gitcafe.com/Deepin/deepin-user-manual/
-Vcs-Git: git://gitcafe.com/Deepin/deepin-user-manual.git
-Vcs-Browser: https://gitcafe.com/Deepin/deepin-user-manual/
+Homepage: https://gitcafe.com/Deepin/deepin-manual/
+Vcs-Git: git://gitcafe.com/Deepin/deepin-manual.git
+Vcs-Browser: https://gitcafe.com/Deepin/deepin-manual/
 
 Package: deepin-manual
 Architecture: all
