@@ -542,7 +542,7 @@ body {
     .manual-content-container {
         float: right;
         display: block;
-        width: 100%;
+        width: calc(100% - #{$pvNavBarWidth});
         height: calc(100% - #{$titleBarHeight});
         margin-top: #{$titleBarHeight};
         &:after {
