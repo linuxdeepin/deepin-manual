@@ -5,6 +5,7 @@ let highlightNode = function(node) {
         node.parentNode.parentNode.classList.add('current-section');
     }
     node.classList.add('current-section');
+    node.scrollIntoView();
 };
 
 angular.module("DManual")
