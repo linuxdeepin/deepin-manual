@@ -12,6 +12,7 @@ $highlightColor: #01bdff;
 
 // page view
 $pvNavBarWidth: 200px;
+$pvNavBarWidthNonChinese: 250px;
 $pvNavBarCompactWidth: 48px;
 
 // over view
@@ -156,7 +157,7 @@ body {
 
     .pageview-mode & {
         width: calc(100% - 80px - #{$pvNavBarWidth});
-        margin-left: #{$pvNavBarWidth};
+        margin-left: $pvNavBarWidth;
     }
     .pageview-mode.compact-mode & {
         width: calc(100% - 80px - #{$pvNavBarCompactWidth});
@@ -927,6 +928,35 @@ body {
     .pageview-mode {
         .manual-content {
             background-color: green;
+        }
+    }
+}
+
+html:not([lang^="zh"]) {
+    .pageview-mode:not(.compact-mode) {
+        .move-handle {
+            width: calc(100% - 80px - #{$pvNavBarWidthNonChinese});
+            margin-left: $pvNavBarWidthNonChinese;
+        }
+
+        .navigation-bar {
+            width: $pvNavBarWidthNonChinese;
+        }
+
+        .manual-content-container {
+            width: calc(100% - #{$pvNavBarWidthNonChinese});
+        }
+
+        .search-box-container {
+            left: #{$pvNavBarWidthNonChinese};
+            margin: 0 calc((100% - 360px - #{$pvNavBarWidthNonChinese}) / 2);
+        }
+
+        .search-input-box {
+            &.shadow-visible {
+                margin: 0 calc(-100% + 189px);
+                margin-top: -12px;
+            }
         }
     }
 }

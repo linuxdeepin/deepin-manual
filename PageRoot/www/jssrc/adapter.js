@@ -12,6 +12,15 @@ app.factory("AdapterService", function Adapter($log, $rootScope, $window) {
             _markdownDir = markdownDir;
             $rootScope.$broadcast("markdownDirChanged", _markdownDir);
         };
+        let setMarkdownLang = function(markdownLang) {
+            let html = $window.document.querySelector("html");
+            if (markdownLang) {
+                $log.log(`Set Markdown Language to ${markdownLang}`);
+                html.setAttribute("lang", markdownLang);
+            } else {
+                $log.warn(`Invalid Markdown Language: ${markdownLang}`);
+            }
+        };
         let getShellType = function() {
             // try DAE
             if ($window.DAE) {
@@ -128,6 +137,7 @@ app.factory("AdapterService", function Adapter($log, $rootScope, $window) {
             }
         };
 
+        // First run
         let _isFirstRun = false;
         let isFirstRun = function() {
             return _isFirstRun;
@@ -135,6 +145,8 @@ app.factory("AdapterService", function Adapter($log, $rootScope, $window) {
         let setFirstRun = function(on) {
             _isFirstRun = on;
         };
+
+        // SideNavigationBar
         let _isCompactMode = false;
         let setCompactMode = function(on) {
             if (getShellType() === "DAE") {
@@ -145,6 +157,11 @@ app.factory("AdapterService", function Adapter($log, $rootScope, $window) {
         let isCompactMode = function() {
             return _isCompactMode;
         };
+        $rootScope.$on("navigationBarToggled", function(value) {
+            setCompactMode(value);
+        });
+
+        // Word Cutting
         let getWordCutting = function(text) {
             if (getShellType() === "DAE") {
                 return bridge_bridge.getWordCutting(text);
@@ -153,18 +170,17 @@ app.factory("AdapterService", function Adapter($log, $rootScope, $window) {
                 return [];
             }
         };
-        $rootScope.$on("navigationBarToggled", function(value) {
-            setCompactMode(value);
-        });
 
         let result = {
             markdownDir: markdownDir,
             setMarkdown: setMarkdown,
+            setMarkdownLang: setMarkdownLang,
             getShellType: getShellType,
             setDebugMode: setDebugMode,
             showTooltip: showTooltip,
             setTitle: setTitle,
             openExternalBrowser: openExternalBrowser,
+
             moveHandleDown: moveHandleDown,
             moveHandleUp: moveHandleUp,
             moveHandleDblclick: moveHandleDblclick,
@@ -211,6 +227,7 @@ app.factory("AdapterService", function Adapter($log, $rootScope, $window) {
                 let ipc = req("ipc");
                 ipc.on("setMarkdown", function(msg) {
                     adapter.setMarkdown(msg.dmanDir);
+                    adapter.setMarkdownLang(msg.dmanLang);
                     localeService.setLocale(msg.uiLangs);
                 });
                 ipc.on("Debug", function(on) {
@@ -370,9 +387,11 @@ app.factory("AdapterService", function Adapter($log, $rootScope, $window) {
                     app.close();
                 };
                 let mdDir = bridge_bridge.mdDir();
+                let lang = bridge_bridge.lang();
                 let debug = bridge_bridge.debug();
                 let uiLangs = bridge_bridge.uiLangs();
                 $window.adapter.setMarkdown(mdDir);
+                $window.adapter.setMarkdownLang(lang);
                 $window.adapter.setDebugMode(debug);
                 localeService.setLocale(uiLangs);
 

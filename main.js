@@ -40,6 +40,7 @@ app.on('ready', function () {
         }
         mainWindow.send("setMarkdown", {
             dmanDir: mdUrl,
+            dmanLang: "zh_CN",
             uiLangs: ["zh_CN"],
         });
         if (process.env["DEBUG"]) {
