@@ -589,7 +589,6 @@ body {
         left: 26px;
         height: 35px;
         margin: 0 calc((100% - 360px + 200px) / 2);
-        margin-top: 10px;
         z-index: 10050;
     }
 
@@ -649,13 +648,13 @@ body {
     }
 
     .search-input-box {
-        margin-top: -10px;
         height: 60px;
         background: linear-gradient(to bottom, rgba(255,255,255,1) 65%,rgba(255,255,255,0) 100%);
         opacity: 0;
         &.shadow-visible {
             opacity: 1;
             margin: 0 calc(-100% + 100px + 38px);
+            margin-top: -12px;
             .search-mode & {
                 height: 38px;
                 background: #fff;
