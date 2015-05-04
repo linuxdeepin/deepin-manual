@@ -3,13 +3,6 @@
 /*-------------------------------------------*/
 /* Global variable                           */
 /*-------------------------------------------*/
-
-// client side decoration dimensions.
-$csdTH: 0px;  // Top height
-$csdRW: 0px;  // Right width
-$csdBH: 0px;  // Bottom height
-$csdLW: 0px;  // Left width
-
 // client area width
 $caW: 946px;
 
@@ -179,7 +172,7 @@ body {
     position: fixed;
     z-index: 99999;
     text-indent: -9999em;
-    right: $csdRW;
+    right: 0;
     @include disable-user-select;
     .window-control-btn {
         width: 15px;
@@ -893,9 +886,9 @@ body {
 
     #Container {
         background-color: firebrick !important;
-        margin: $csdTH $csdRW $csdBH $csdLW !important;
-        height: calc(100% - #{$csdTH} - #{$csdBH});
-        width: calc(100% - #{$csdLW} - #{$csdRW});
+        margin: 0 !important;
+        height: 100%;
+        width: 100%;
     }
 
     .toplevel-items-list {
