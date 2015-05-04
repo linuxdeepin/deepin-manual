@@ -155,12 +155,12 @@ body {
     background-color: transparent;
 
     .pageview-mode & {
-        width: calc(100% - 80px - 200px);
-        margin-left: 200px;
+        width: calc(100% - 80px - #{$pvNavBarWidth});
+        margin-left: #{$pvNavBarWidth};
     }
     .pageview-mode.compact-mode & {
-        width: calc(100% - 80px - 48px);
-        margin-left: 48px;
+        width: calc(100% - 80px - #{$pvNavBarCompactWidth});
+        margin-left: #{$pvNavBarCompactWidth};
     }
     .overview-mode & {
         width: calc(100% - 80px - 68px);
@@ -579,9 +579,9 @@ body {
         position: absolute;
         top: 30px;
         width: 360px;
-        left: 26px;
+        left: #{$pvNavBarWidth};
         height: 35px;
-        margin: 0 calc((100% - 360px + 200px) / 2);
+        margin: 0 calc((100% - 360px - #{$pvNavBarWidth}) / 2);
         z-index: 10050;
     }
 
@@ -646,7 +646,7 @@ body {
         opacity: 0;
         &.shadow-visible {
             opacity: 1;
-            margin: 0 calc(-100% + 100px + 38px);
+            margin: 0 calc(-100% + 164px);
             margin-top: -12px;
             .search-mode & {
                 height: 38px;
@@ -666,7 +666,7 @@ body {
     }
 
     .search-suggestions-box {
-        left: calc(50% - 200px + 70px);
+        left: calc(50% - #{$pvNavBarWidth} + 70px);
         top: 24px;
         & > ul {
             background-color: #fff;
@@ -777,13 +777,14 @@ body {
 .compact-mode {
     .search-input-box {
         &.shadow-visible {
-            margin: 0 calc(-100% + 50px + 50px - 38px);
+            margin: 0 calc(-100% + 88px);
             margin-top: -12px;
         }
     }
 
     .search-box-container {
-        margin: 0 calc((100% - 360px + 48px) / 2);
+        margin: 0 calc((100% - 360px - #{$pvNavBarCompactWidth}) / 2);
+        left: #{$pvNavBarCompactWidth}
     }
 
     .manual-content-container {
