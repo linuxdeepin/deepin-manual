@@ -40,8 +40,7 @@ install:
 	# remove unused files for dae
 	rm -rf $(DESTDIR)$(PREFIX)/DMan/qml
 	rm -rf $(DESTDIR)$(PREFIX)/DMan/tests
-	rm -rf $(DESTDIR)$(PREFIX)/DMan/{main.py,main2.py,QmlResizable.py,view.py,webview.py}
-	mv $(DESTDIR)$(PREFIX)/DMan/main_dae.py $(DESTDIR)$(PREFIX)/DMan/main.py
+	rm -rf $(DESTDIR)$(PREFIX)/DMan/{main2.py,QmlResizable.py,view.py,webview.py}
 	chmod +x $(DESTDIR)$(PREFIX)/DMan/main.py
 
 	# Atom-shell script

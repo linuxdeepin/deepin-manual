@@ -68,3 +68,13 @@ def processMarkdownPath(url: str, langProvider) -> DManInfo:
     else:
         return DManInfo(dir = "file://" + os.path.normpath(parsed.path),
                         lang = "")
+
+
+def getLockPath(lastArgv: str) -> str:
+    appName = lastArgv.replace("/", "_")
+    return os.path.expanduser("~/.config/deepin-manual/{appName}.lock".format(appName = appName))
+
+
+def getSocketPath(lastArgv: str) -> str:
+    appName = lastArgv.replace("/", "_")
+    return os.path.expanduser("~/.config/deepin-manual/{appName}.lock.socket".format(appName = appName))

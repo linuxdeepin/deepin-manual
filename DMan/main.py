@@ -1,51 +1,28 @@
 #!/usr/bin/python3 -OO
 # -*- coding: utf-8 -*-
 
-import os
-import sys
+from dae.daeclient import DAEClient
+import os, sys
 
-from PyQt5.QtWidgets import QApplication
-from PyQt5.QtGui import QIcon
-from PyQt5.QtCore import QtMsgType, QMessageLogContext, QtDebugMsg, QtWarningMsg, QtCriticalMsg, \
-    QtFatalMsg, qInstallMessageHandler
-
-from view import MainView
-from utils import processMarkdownPath, getDocumentLanguageFor, getUILanguage
-
-
-def QtMsgHandler(msgType: QtMsgType, context: QMessageLogContext, msg: str):
-    strType = {
-        QtDebugMsg: "DEBUG",
-        QtWarningMsg: "WARN",
-        QtCriticalMsg: "CRITICAL",
-        QtFatalMsg: "FATAL"
-    }[msgType]
-    print("Qt[{strType}] {category} {function} in {file}, on line {line}\n"
-          " {msg}".format(strType = strType,
-                          category = context.category,
-                          function = context.function,
-                          file = context.file,
-                          line = context.line,
-                          msg = msg),
-          file = sys.stdout if msgType in (QtDebugMsg, QtWarningMsg) else sys.stderr)
-
-
-class DManApp(QApplication):
-    def __init__(self, args):
-        super().__init__(args)
-        self.setWindowIcon(QIcon.fromTheme("DManual"))
-        mdUrl = args[-1]
-        dmanInfo = processMarkdownPath(mdUrl, getDocumentLanguageFor)
-        self.mainView = MainView(dmanInfo.dir,
-                                 dmanInfo.lang,
-                                 [getUILanguage()],
-                                 not not os.environ.get("DEBUG", None))
-        self.mainView.show()
+import fcntl
+from utils import getLockPath, getSocketPath
 
 
 if __name__ == "__main__":
-    qInstallMessageHandler(QtMsgHandler)
-    path = os.path.dirname(__file__)
-    os.chdir(path)
-    app = DManApp(sys.argv)
-    sys.exit(app.exec())
+    lockPath = getLockPath(sys.argv[-1])
+    fd = os.open(lockPath, os.O_RDWR | os.O_CREAT)
+    alreadyRunning = False
+    try:
+        fcntl.flock(fd, fcntl.LOCK_EX | fcntl.LOCK_NB)
+    except BlockingIOError:
+        alreadyRunning = True
+
+    if alreadyRunning:
+        from multiprocessing.connection import Client
+
+        with Client(getSocketPath(sys.argv[-1]), "AF_UNIX") as conn:
+            conn.send(1)
+
+    else:
+        path = os.path.normpath(os.path.dirname(os.path.realpath(__file__)) + "/../PageRoot")
+        DAEClient(path)

@@ -4,6 +4,7 @@
 from PyQt5.QtCore import QObject, pyqtSlot, pyqtSignal, QUrl
 from PyQt5.QtQuick import QQuickView
 from PyQt5.QtGui import QDesktopServices
+from PyQt5.QtWidgets import QApplication
 import sys, os
 import configparser
 from pathlib import Path
@@ -11,11 +12,13 @@ try:
     import jieba
 except ImportError:
     jieba = None
+import threading
+from multiprocessing.connection import Listener
 
 p = os.path.normpath(os.path.dirname(__file__) + "/../../../DMan")
 sys.path.append(p)
 
-from utils import getUILanguage, getDocumentLanguageFor, processMarkdownPath
+from utils import getUILanguage, getDocumentLanguageFor, processMarkdownPath, getSocketPath
 
 
 class TooltipView(QQuickView):
@@ -30,6 +33,29 @@ class TooltipView(QQuickView):
     @pyqtSlot(str, int, int, result = "void*")
     def showTooltip(self, text, x, y):
         self.sigShowTooltip.emit(text, x, y)
+
+
+class CommandlineWatcher(QObject):
+    def __init__(self, parent):
+        super().__init__(parent)
+        self._listener = threading.Thread(target = self.listenerThread,
+                                          daemon = True,
+                                          name = "instance communication")
+        self._listener.start()
+
+    def listenerThread(self):
+        # clean if previous run crashes
+        socket = getSocketPath(sys.argv[-1])
+        try:
+            os.remove(socket)
+        except FileNotFoundError:
+            pass
+        with Listener(socket, "AF_UNIX") as listener:
+            while True:
+                with listener.accept() as conn:
+                    payload = conn.recv()
+                    win = QApplication.topLevelWindows()[1]
+                    win.raise_()
 
 
 class Bridge(QObject):
@@ -48,6 +74,7 @@ class Bridge(QObject):
         mdUrl = sys.argv[-1]
         self._dmanInfo = processMarkdownPath(mdUrl, getDocumentLanguageFor)
         self._tooltipView = TooltipView(self)
+        self._commandlineWatcher = CommandlineWatcher(self)
 
     @pyqtSlot(result = "QStringList")
     def uiLangs(self):
