@@ -104,6 +104,7 @@ angular.module("DManual")
         let navigationRelocate = function(offset) {
             let offsetList = $scope.anchorsOffsetList;
             let lastIndex = offsetList.length - 1;
+
             $scope.navigations.map(function(headerNode) {
                 headerNode.classList.remove('current-section');
             });
@@ -123,7 +124,7 @@ angular.module("DManual")
             navigationRelocate(offset);
         });
         $window.addEventListener("navigationRelocateEvent", function(e) {
-            // triggers when mousewheel on IFrame
+            // triggers when scroll on IFrame
             let offset = e.detail.offset;
             navigationRelocate(offset);
         });

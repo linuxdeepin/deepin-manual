@@ -11,9 +11,11 @@ let {
 
 let app = angular.module("DManual");
 
-app.controller("MainCtrl", function($scope, $rootScope, $log, $sce, $window, $timeout,
+app.controller("MainCtrl", function($scope, $rootScope, $log, $window, $timeout,
                                     hotkeys, GInput, GSynonym, AdapterService) {
+    // local states and flags
     $scope.isOverview = true;
+    $scope.isPageview = !$scope.isOverview;
     let _isSearchMode = false;
     Object.defineProperty($scope, "isSearchMode", {
         get: () => _isSearchMode,
@@ -29,11 +31,13 @@ app.controller("MainCtrl", function($scope, $rootScope, $log, $sce, $window, $ti
             }
         }
     });
-
     $scope.appInfo = {
         name: "Untitled",
     };
+    $scope.anchorsOffsetList = [];
+    $scope.navigations = [];
 
+    // add hot keys
     hotkeys.add({
         combo: ['ctrl+f', '/'],
         description: 'show search box',
@@ -53,6 +57,7 @@ app.controller("MainCtrl", function($scope, $rootScope, $log, $sce, $window, $ti
         }
     });
 
+    // load markdown
     let loadMarkdown = function(event, markdownDir) {
         $log.log("Start to load markdown");
         GInput.load(`${markdownDir}/synonym.txt`).then(function(text) {
@@ -70,109 +75,79 @@ app.controller("MainCtrl", function($scope, $rootScope, $log, $sce, $window, $ti
             $log.warn(`Cannot load synonyms ${error}`);
             GSynonym.init([]);
         });
+
+        let stylePath = getContentStylePath($window.location.href);
+        let scriptPath = getScriptPath($window.location.href);
         GInput.load(`${markdownDir}/index.md`).then(function(mdText) {
             $log.log("Markdown::load OK");
-            let contentIFrame = document.querySelector("#Content");
-            let result = processMarkdown(mdText);
-            let html = result.html;
-            let parsed = result.parsed;
-            angular.element(contentIFrame).bind('load', function(){
-                let doc = contentIFrame.contentDocument;
-                $scope.anchorsOffsetList = [].slice.call(doc.querySelectorAll('h2,h3'))
-                    .map((v) => v.offsetTop);
 
-                $scope.navigations = [].slice.call(
-                        document.querySelector('#SideNavigationItems')
-                                .querySelectorAll('.level2,.level3'));
-            });
+            let result = processMarkdown(mdText);
+
+            $timeout(function() {
+                // TODO: use a better method to wait for ContentCtrl
+                $scope.$broadcast("ContentHtmlReady", {
+                    html: result.html,
+                    stylePath: stylePath,
+                    scriptPath: scriptPath,
+                    markdownDir: markdownDir,
+                });
+            }, 100);
+
+            let parsed = result.parsed;
+
             $scope.anchors = parsed.anchors;
             $scope.appInfo = parsed.appInfo;
             $scope.$broadcast("indicesSet", parsed.indices);
             $timeout(function() {
-                // wait for SearchBoxCtrl to startup
+                // TODO: use a better method to wait for SearchBoxCtrl
                 $scope.$broadcast("headersSet", parsed.headers);
             }, 100);
-            let stylePath = getContentStylePath(location.href);
-            let scriptPath = getScriptPath(location.href);
+
             $scope.appInfo.markdownDir = markdownDir;
-            let base = `<base href='${markdownDir}/'>
-                <script src="${scriptPath}/mousetrap.js"></script>
-                <script>
-                'use strict';
-                var disallow = function(event) {
-                    event.preventDefault();
-                    return false;
-                };
-                var emitEvent = function(eventName, eventMsg) {
-                    var e = new CustomEvent(eventName, {detail: eventMsg});
-                    window.parent.dispatchEvent(e);
-                };
-                window.onload = function() {
-                    var body = document.body;
-                    body.addEventListener("dragenter", disallow);
-                    body.addEventListener("dragover", disallow);
-                    body.addEventListener("dragend", disallow);
-                    body.addEventListener("dragleave", disallow);
-                    body.addEventListener("drop", disallow);
-                };
-                Mousetrap.bind('ctrl+f', function() {
-                    emitEvent("IFrameShowEventProxy");
-                });
-                Mousetrap.bind('esc', function() {
-                    emitEvent("searchBoxHideEvent");
-                });
-                ['scroll', 'click'].map(function(eventName){
-                    document.addEventListener(eventName, function(){
-                        emitEvent("searchBoxHideEvent");
-                    });
-                });
-                document.addEventListener('scroll', function(e){
-                    emitEvent("navigationRelocateEvent", {offset: window.scrollY});
-                });
-                </script>
-                <link rel='stylesheet' href='${stylePath}/reset.css' />
-                <link rel='stylesheet' href='${stylePath}/content.css' />`;
-            let footer = `<footer class="__spaceholder"></footer>`;
-            $scope.htmlOutput = $sce.trustAsHtml(base + html + footer);
         }, function(error) {
             $log.error(`Markdown::load failed: ${error}`);
         });
     };
+
+    // Markdown reload
     let markdownDir = AdapterService.markdownDir();
     if (markdownDir) {
         loadMarkdown(null, markdownDir);
     }
     $scope.$on("markdownDirChanged", loadMarkdown);
 
+    // jumpTo
     $scope.jumpTo = function(anchor) {
-        let contentWin = document.getElementById("Content").contentWindow;
-        if (anchor) {
-            $scope.isOverview = false;
-            $scope.isPageview = true;
-            $timeout(function() {
-                // set hash to empty first,
-                // Browser will not do anything if a same hash is set again
-                contentWin.location.hash = "";
-                contentWin.location.hash = encodeURIComponent(anchor);
-                $rootScope.$broadcast("navigationRelocate", contentWin.scrollY);
-            }, 0);
-        } else {
-            $scope.isOverview = true;
-            $scope.isPageview = false;
-            $timeout(function() {
-                contentWin.location.hash = "";
-                $rootScope.$broadcast("navigationRelocate", contentWin.scrollY);
-            }, 0);
-        }
+        // Because
+        //   1) jumpTo needs to be accessed from all over the app;
+        //   2) jumpTo needs to modify isPageview and other global
+        // flags
+        // it needs to be in MainCtrl instead of ContentCtrl.
+        $scope.isPageview = !!anchor;
+        $scope.isOverview = !$scope.isPageview;
         $scope.isSearchMode = false;
+        // the real implementation is in ContentCtrl
+        $scope.$broadcast("jumpTo", anchor);
     };
     $window.jumpTo = $scope.jumpTo;
 
+
+    // Events from other parts of the program
     $scope.$on("searchTermChanged", function(event, value) {
         $scope.isSearchMode = value && value.length > 0;
     });
 
     $scope.$on("navigationBarToggled", function(event, value) {
         $rootScope.isCompactMode = value;
+    });
+    $scope.$on("ContentHtmlLoaded", function(event) {
+        let contentIFrame = document.querySelector("#Content");
+        let doc = contentIFrame.contentDocument;
+        $scope.anchorsOffsetList = [].slice.call(doc.querySelectorAll('h2,h3'))
+            .map((v) => v.offsetTop);
+
+        $scope.navigations = [].slice.call(
+            document.querySelector('#SideNavigationItems')
+                    .querySelectorAll('.level2,.level3'));
     });
 });
