@@ -12,6 +12,7 @@
         <ul id="SearchResultsContainer" ng-if="searchResults.length" class="search-result">
             <li ng-repeat="match in searchResults" deepin-ui-manual-search-finish>
                 <h5><a class="anchor" ng-click="jumpTo(match.anchorId)">{{ match.anchorText }}</a></h5>
+                <p class="match-text" ng-bind-html="match.texts"></p>
             </li>
         </ul>
         <div id="NoSearchResults" ng-if="!searchResults.length" class="no-search-result">
