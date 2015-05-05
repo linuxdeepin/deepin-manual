@@ -180,6 +180,8 @@ body {
         height: 20px;
         margin: 5px;
         float: left;
+        background-position: -6px 0;
+        background-repeat: no-repeat;
         -webkit-app-region: no-drag;
     }
     a:focus {
@@ -187,59 +189,87 @@ body {
     }
 }
 
+// default dark
 .btn-window-minimize {
-    background-position: -6px 0;
     background-image: url("../resources/frame/dark_minimise_normal.png");
-    background-repeat: no-repeat;
     &:hover {
         background-image: url("../resources/frame/dark_minimise_hover.png");
-        background-repeat: no-repeat;
     }
     &:active {
         background-image: url("../resources/frame/dark_minimise_press.png");
-        background-repeat: no-repeat;
     }
 }
 
 .btn-window-maximize {
-    background-position: -6px 0;
     background-image: url("../resources/frame/dark_maximize_normal.png");
-    background-repeat: no-repeat;
     &:hover {
         background-image: url("../resources/frame/dark_maximize_hover.png");
-        background-repeat: no-repeat;
     }
     &:active {
         background-image: url("../resources/frame/dark_maximize_press.png");
-        background-repeat: no-repeat;
     }
 }
 
 .isMaximized .btn-window-maximize {
-    background-position: -6px 0;
     background-image: url("../resources/frame/dark_unmaximize_normal.png");
-    background-repeat: no-repeat;
     &:hover {
         background-image: url("../resources/frame/dark_unmaximize_hover.png");
-        background-repeat: no-repeat;
     }
     &:active {
         background-image: url("../resources/frame/dark_unmaximize_press.png");
-        background-repeat: no-repeat;
     }
 }
 
 .btn-window-close {
-    background-position: -6px 0;
     background-image: url("../resources/frame/dark_close_normal.png");
-    background-repeat: no-repeat;
     &:hover {
         background-image: url("../resources/frame/dark_close_hover.png");
-        background-repeat: no-repeat;
     }
     &:active {
         background-image: url("../resources/frame/dark_close_press.png");
-        background-repeat: no-repeat;
+    }
+}
+
+// content white
+.pageview-mode {
+    .btn-window-minimize {
+        background-image: url("../resources/frame/minimise_normal.png");
+        &:hover {
+            background-image: url("../resources/frame/minimise_hover.png");
+        }
+        &:active {
+            background-image: url("../resources/frame/minimise_press.png");
+        }
+    }
+
+    .btn-window-maximize {
+        background-image: url("../resources/frame/maximize_normal.png");
+        &:hover {
+            background-image: url("../resources/frame/maximize_hover.png");
+        }
+        &:active {
+            background-image: url("../resources/frame/maximize_press.png");
+        }
+    }
+
+    .isMaximized .btn-window-maximize {
+        background-image: url("../resources/frame/unmaximize_normal.png");
+        &:hover {
+            background-image: url("../resources/frame/unmaximize_hover.png");
+        }
+        &:active {
+            background-image: url("../resources/frame/unmaximize_press.png");
+        }
+    }
+
+    .btn-window-close {
+        background-image: url("../resources/frame/close_normal.png");
+        &:hover {
+            background-image: url("../resources/frame/close_hover.png");
+        }
+        &:active {
+            background-image: url("../resources/frame/close_press.png");
+        }
     }
 }
 
