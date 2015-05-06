@@ -286,16 +286,19 @@ describe("Navigation Parsing", function() {
                         "id": "H3",
                         "children": [],
                         "icon": null,
+                        "smallIcon": null,
                         "text": "H3"
                     }
                 ],
                 "icon": "H2.png",
+                "smallIcon": "H2_small.png",
                 "text": "H2"
             },
             {
                 "id": "H2a",
                 "children": [],
                 "icon": "H2a.png",
+                "smallIcon": "H2a_small.png",
                 "text": "H2a",
             },
             {
@@ -305,10 +308,12 @@ describe("Navigation Parsing", function() {
                         "id": "H3a",
                         "children": [],
                         "icon": null,
+                        "smallIcon": null,
                         "text": "H3a"
                     }
                 ],
                 "icon": null,
+                "smallIcon": null,
                 "text": "H2b",
             }
         ]);

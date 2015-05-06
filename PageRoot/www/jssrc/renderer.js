@@ -18,6 +18,7 @@ let addAnchor = function(target, anchorText, anchorId, icon) {
     toAdd.text = anchorText;
     toAdd.id = anchorId;
     toAdd.icon = icon;
+    toAdd.smallIcon = getSmallSvg(icon);
     toAdd.children = [];
     target.push(toAdd);
 };
@@ -29,6 +30,14 @@ let findAnchor = function(target, anchorId) {
         }
     }
     throw new Error(`Cannot find anchor ${anchorId}.`);
+};
+
+let getSmallSvg = function(url) {
+    if (!url) {
+        return null;
+    }
+    let i = url.lastIndexOf(".");
+    return url.substr(0, i) + "_small" + url.substr(i);
 };
 
 let parseNavigationItems = function(tokens) {
@@ -386,4 +395,5 @@ if (typeof exports !== "undefined") {
     exports.getHTMLRenderer = getHTMLRenderer;
     exports.getPlainRenderer = getPlainRenderer;
     exports.processMarkdown = processMarkdown;
+    exports.getSmallSvg = getSmallSvg;
 }
