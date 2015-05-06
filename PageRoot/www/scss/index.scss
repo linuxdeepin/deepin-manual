@@ -275,7 +275,7 @@ body {
 
 .search-input {
     border-radius: 3px;
-    font-size: 14px;
+    font-size: 12px;
     line-height: 24px;
     height: 24px;
     outline: none;
@@ -295,7 +295,7 @@ body {
     }
 
     &::-webkit-textfield-decoration-container {
-        background: url("../resources/controls/search-white.svg") no-repeat 5px 50%;
+        background: url("../resources/controls/search-white.svg") no-repeat 2px 50%;
         background-size: 16px;
         padding-left: 22px;
     }
@@ -327,7 +327,7 @@ body {
     right: 52px;
     top: 60px;
     a {
-        color: #bdbdbd;
+        color: #a4a4a4;
         text-decoration: none;
     }
     // .search-input:hover + &,
@@ -363,7 +363,7 @@ body {
                 a {
                     color: #fff;
                 }
-                background: rgba(0,0,0,0.4);
+                background: rgba(0,0,0,0.2);
             }
         }
         & > li .highlight {
@@ -523,11 +523,11 @@ body {
 
             .current-section {
                 &>a>span {
-                    color: $theBlue;
+                    color: $highlightColor;
                 }
                 svg rect,
                 svg path {
-                    fill: $theBlue !important;
+                    fill: $highlightColor !important;
                 }
                 ol {
                     display: block;
@@ -720,7 +720,7 @@ body {
         float: left;
         display: block;
         width: 232px;
-        height: 158px;
+        height: 146px;
         @include clearfix;
         text-align: center;
     }
