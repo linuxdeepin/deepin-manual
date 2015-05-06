@@ -172,4 +172,25 @@ angular.module("DManual").controller("SearchBoxCtrl",
                 }, hideTimeout);
             }
         });
+
+        let _mouseInSearchBox = false;
+        $scope.onSearchBoxMouseEnter = function() {
+            _mouseInSearchBox = true;
+            $scope.searchInputVisible = true;
+        };
+        $scope.onSearchBoxMouseLeave = function() {
+            _mouseInSearchBox = false;
+        };
+        $scope.onSearchInputBlur = function() {
+            if (!$scope.isPageview) {
+                return;
+            }
+            if (_mouseInSearchBox) {
+                return;
+            }
+            if ($scope.isSearchMode) {
+                return;
+            }
+            $scope.searchInputVisible = false;
+        };
 });
