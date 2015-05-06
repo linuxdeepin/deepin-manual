@@ -1,7 +1,8 @@
 "use strict";
 
 angular.module("DManual")
-    .controller("ContentCtrl", function($scope, $log, $window, $rootScope) {
+    .controller("ContentCtrl", function($scope, $log, $window, $rootScope,
+                                        MarkdownService) {
         let iframe = document.getElementById("Content");
         iframe.addEventListener("load", function() {
             $scope.$emit("ContentHtmlLoaded");
@@ -37,51 +38,15 @@ angular.module("DManual")
         };
         requestAnimationFrame(resizeSpaceHolder);
 
-        // listen to the event from MainCtrl, and fill the html into the iframe.
-        $scope.$on("ContentHtmlReady", function(event, payload) {
-            let { html, stylePath, scriptPath, markdownDir } = payload;
-            let base = `<base href='${markdownDir}/'>
-                <script src="${scriptPath}/mousetrap.js"></script>
-                <script>
-                'use strict';
-                var disallow = function(event) {
-                    event.preventDefault();
-                    return false;
-                };
-                var emitEvent = function(eventName, eventMsg) {
-                    var e = new CustomEvent(eventName, {detail: eventMsg});
-                    window.parent.dispatchEvent(e);
-                };
-                window.onload = function() {
-                    var body = document.body;
-                    body.addEventListener("dragenter", disallow);
-                    body.addEventListener("dragover", disallow);
-                    body.addEventListener("dragend", disallow);
-                    body.addEventListener("dragleave", disallow);
-                    body.addEventListener("drop", disallow);
-                };
-                Mousetrap.bind('ctrl+f', function() {
-                    emitEvent("IFrameShowEventProxy");
-                });
-                Mousetrap.bind('esc', function() {
-                    emitEvent("searchBoxHideEvent");
-                });
-                ['scroll', 'click'].map(function(eventName){
-                    document.addEventListener(eventName, function(){
-                        emitEvent("searchBoxHideEvent");
-                    });
-                });
-                document.addEventListener('scroll', function(e){
-                    emitEvent("navigationRelocateEvent", {offset: window.scrollY});
-                });
-                </script>
-                <link rel='stylesheet' href='${stylePath}/reset.css' />
-                <link rel='stylesheet' href='${stylePath}/content.css' />`;
-            let footer = `<footer class="__spaceholder"></footer>`;
+        let onMarkdownProcessed = function() {
             iframe.contentDocument.open();
-            iframe.contentDocument.write(base + html + footer);
+            iframe.contentDocument.write(MarkdownService.getHtml());
             iframe.contentDocument.close();
-        });
+        };
+        $scope.$on("MarkdownProcessed", onMarkdownProcessed);
+        if (MarkdownService.isInitialized()) {
+            onMarkdownProcessed();
+        }
 
         // JumpTo
         let _realJumpTo = function(anchor) {

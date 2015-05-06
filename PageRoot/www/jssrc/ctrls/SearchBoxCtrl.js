@@ -8,15 +8,22 @@ let Keyboard = {
 };
 
 angular.module("DManual").controller("SearchBoxCtrl",
-    function($scope, $rootScope, $animate, $timeout, $log, $sce, $window, AdapterService) {
+    function($scope, $rootScope, $animate, $timeout,
+             $log, $sce, $window, AdapterService, MarkdownService) {
         // Auto-complete
         $scope.headers = [];
         $scope.currentIndex = -1;
 
-        $scope.$on("headersSet", function(event, value) {
-            $log.log("Headers changed to", value);
-            $scope.headers = value;
-        });
+        let onMarkdownProcessed = function(event) {
+            let headers = MarkdownService.getHeaders();
+            $log.log("Headers changed to", headers);
+            $scope.headers = headers;
+        };
+        $scope.$on("MarkdownProcessed", onMarkdownProcessed);
+        if (MarkdownService.isInitialized()) {
+            onMarkdownProcessed();
+        }
+
         Object.defineProperty($scope, "completionList", {
             get: () => [].slice.call(document.querySelector("#Suggestions").children)
         });
@@ -156,7 +163,7 @@ angular.module("DManual").controller("SearchBoxCtrl",
         });
 
         $scope.$watch("isPageview", function(isPageview) {
-            if (isPageview & (!$scope.isSearchMode)) {
+            if (isPageview && (!$scope.isSearchMode)) {
                 // to avoid animation
                 _searchInput.classList.add("slidedown");
 

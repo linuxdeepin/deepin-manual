@@ -10,4 +10,4 @@ angular.module("General")
             gettextCatalog.loadRemote("./nls/"+locale+".json");
         }
     }
-})
+});

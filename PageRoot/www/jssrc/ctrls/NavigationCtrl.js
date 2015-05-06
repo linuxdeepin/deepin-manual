@@ -105,6 +105,11 @@ angular.module("DManual")
             let offsetList = $scope.anchorsOffsetList;
             let lastIndex = offsetList.length - 1;
 
+            if (!offsetList || lastIndex === -1) {
+                $log.warn("navigationRelocate abort due to lack of anchors");
+                return;
+            }
+
             $scope.navigations.map(function(headerNode) {
                 headerNode.classList.remove('current-section');
             });

@@ -1,18 +1,9 @@
 "use strict";
 
-let {
-    processMarkdown,
-} = require("../renderer");
-
-let {
-    getContentStylePath,
-    getScriptPath,
-} = require("../utils");
-
 let app = angular.module("DManual");
 
-app.controller("MainCtrl", function($scope, $rootScope, $log, $window, $timeout,
-                                    hotkeys, GInput, GSynonym, AdapterService) {
+app.controller("MainCtrl", function($scope, $rootScope, $log, $window,
+                                    hotkeys, MarkdownService) {
     // local states and flags
     $scope.isOverview = true;
     $scope.isPageview = !$scope.isOverview;
@@ -31,11 +22,6 @@ app.controller("MainCtrl", function($scope, $rootScope, $log, $window, $timeout,
             }
         }
     });
-    $scope.appInfo = {
-        name: "Untitled",
-    };
-    $scope.anchorsOffsetList = [];
-    $scope.navigations = [];
 
     // add hot keys
     hotkeys.add({
@@ -57,64 +43,21 @@ app.controller("MainCtrl", function($scope, $rootScope, $log, $window, $timeout,
         }
     });
 
-    // load markdown
-    let loadMarkdown = function(event, markdownDir) {
-        $log.log("Start to load markdown");
-        GInput.load(`${markdownDir}/synonym.txt`).then(function(text) {
-            let lines = text.split("\n");
-            let wordsList = [];
-            nextLine: for (let line of lines) {
-                let words = line.split("|")
-                                .filter(word => word.trim());
-                if (words) {
-                    wordsList.push(words);
-                }
-            }
-            GSynonym.init(wordsList.filter(words => words.length > 0));
-        }, function(error) {
-            $log.warn(`Cannot load synonyms ${error}`);
-            GSynonym.init([]);
-        });
-
-        let stylePath = getContentStylePath($window.location.href);
-        let scriptPath = getScriptPath($window.location.href);
-        GInput.load(`${markdownDir}/index.md`).then(function(mdText) {
-            $log.log("Markdown::load OK");
-
-            let result = processMarkdown(mdText);
-
-            $timeout(function() {
-                // TODO: use a better method to wait for ContentCtrl
-                $scope.$broadcast("ContentHtmlReady", {
-                    html: result.html,
-                    stylePath: stylePath,
-                    scriptPath: scriptPath,
-                    markdownDir: markdownDir,
-                });
-            }, 100);
-
-            let parsed = result.parsed;
-
-            $scope.anchors = parsed.anchors;
-            $scope.appInfo = parsed.appInfo;
-            $scope.$broadcast("indicesSet", parsed.indices);
-            $timeout(function() {
-                // TODO: use a better method to wait for SearchBoxCtrl
-                $scope.$broadcast("headersSet", parsed.headers);
-            }, 100);
-
-            $scope.appInfo.markdownDir = markdownDir;
-        }, function(error) {
-            $log.error(`Markdown::load failed: ${error}`);
-        });
+    $scope.anchors = [];
+    $scope.appInfo = {
+        name: "Untitled",
     };
+    $scope.anchorsOffsetList = [];
+    $scope.navigations = [];
 
-    // Markdown reload
-    let markdownDir = AdapterService.markdownDir();
-    if (markdownDir) {
-        loadMarkdown(null, markdownDir);
+    let onMarkdownProcessed = function(event) {
+        $scope.anchors = MarkdownService.getAnchors();
+        $scope.appInfo = MarkdownService.getAppInfo();
+    };
+    $scope.$on("MarkdownProcessed", onMarkdownProcessed);
+    if (MarkdownService.isInitialized()) {
+        onMarkdownProcessed();
     }
-    $scope.$on("markdownDirChanged", loadMarkdown);
 
     // jumpTo
     $scope.jumpTo = function(anchor) {

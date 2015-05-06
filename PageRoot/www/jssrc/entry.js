@@ -20,6 +20,7 @@ require("./services/GeneralEntry");
 require("./services/SynonymService");
 require("./services/InputService");
 require("./services/LocaleService");
+require("./services/MarkdownService");
 require("./adapter");
 require("babel-core/polyfill");
 require("jquery");

@@ -8,16 +8,21 @@ let {
 
 angular.module("DManual")
     .controller("SearchCtrl", function($scope, GSynonym, $log,
-                                       $filter, AdapterService) {
+                                       $filter, AdapterService, MarkdownService) {
         let _indices = [];
         $scope.searchResults = [];
         $scope.returnPageview = function() {
             $scope.isSearchMode = false;
         };
 
-        $scope.$on("indicesSet", function(event, value) {
-            _indices = value;
-        });
+        let onMarkdownProcessed = function(event) {
+            _indices = MarkdownService.getIndices();
+        };
+        $scope.$on("MarkdownProcessed", onMarkdownProcessed);
+        if (MarkdownService.isInitialized()) {
+            onMarkdownProcessed();
+        }
+
         $scope.$on("searchTermChanged", function(event, value) {
             let keywords = [].concat(GSynonym.lookup(value));
             if (value) {

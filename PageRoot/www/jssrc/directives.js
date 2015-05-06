@@ -41,7 +41,7 @@ app.directive("deepinUiFrame", function(){
 })(app, templateUrlDirectiveConfigMap);
 
 // Custom Attributes here
-app.directive("deepinAppManualBody", function(){
+app.directive("deepinAppManualBody", function() {
         return {
             restrict: "A",
             replace: true,
@@ -52,7 +52,7 @@ app.directive("deepinAppManualBody", function(){
                     'isSearchMode' : 'search-mode',
                     'isOverview'   : 'overview-mode',
                     'isPageview'   : 'pageview-mode'
-                }
+                };
                 Object.keys(modeMap).map(function(mode){
                     var cssClass = modeMap[mode];
                     scope.$watch(mode, function(value){
