@@ -28,8 +28,8 @@ app.controller("MainCtrl", function($scope, $rootScope, $log, $window,
         combo: ['ctrl+f', '/'],
         description: 'show search box',
         callback: function() {
-            if($scope.isPageview){
-                $scope.$emit("showSearchBox", true);
+            if ($scope.isPageview) {
+                $scope.$broadcast("showSearchBox", "rootframe-shortcut");
             }
         }
     });
@@ -37,8 +37,8 @@ app.controller("MainCtrl", function($scope, $rootScope, $log, $window,
         combo: 'esc',
         description: 'hide search box',
         callback: function() {
-            if($scope.isPageview){
-                $scope.$emit("hideSearchBox", true);
+            if ($scope.isPageview) {
+                $scope.$broadcast("hideSearchBox", "rootframe-shortcut");
             }
         }
     });

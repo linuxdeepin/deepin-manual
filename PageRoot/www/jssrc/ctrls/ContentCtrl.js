@@ -1,8 +1,7 @@
 "use strict";
 
 angular.module("DManual")
-    .controller("ContentCtrl", function($scope, $log, $window, $rootScope,
-                                        MarkdownService) {
+    .controller("ContentCtrl", function($scope, $log, $window, MarkdownService) {
         let iframe = document.getElementById("Content");
         iframe.addEventListener("load", function() {
             $scope.$emit("ContentHtmlLoaded");
@@ -56,10 +55,8 @@ angular.module("DManual")
                 // Browser will not do anything if a same hash is set again
                 contentWin.location.hash = "";
                 contentWin.location.hash = encodeURIComponent(anchor);
-                $rootScope.$broadcast("navigationRelocate", contentWin.scrollY);
             } else {
                 contentWin.location.hash = "";
-                $rootScope.$broadcast("navigationRelocate", contentWin.scrollY);
             }
         };
         $scope.$on("jumpTo", function(event, anchor) {

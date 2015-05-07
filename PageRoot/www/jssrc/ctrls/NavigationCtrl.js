@@ -123,11 +123,6 @@ angular.module("DManual")
             return highlightNode($scope.navigations[lastIndex]);
         };
 
-        $scope.$on("navigationRelocate", function(event, value) {
-            // triggers when jumpTo
-            let offset = value;
-            navigationRelocate(offset);
-        });
         $window.addEventListener("navigationRelocateEvent", function(e) {
             // triggers when scroll on IFrame
             let offset = e.detail.offset;

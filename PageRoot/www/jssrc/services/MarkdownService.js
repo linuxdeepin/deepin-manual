@@ -37,18 +37,39 @@ angular.module("DManual")
                     body.addEventListener("drop", disallow);
                 };
                 Mousetrap.bind('ctrl+f', function() {
-                    emitEvent("IFrameShowEventProxy");
-                });
-                Mousetrap.bind('esc', function() {
-                    emitEvent("searchBoxHideEvent");
-                });
-                ['scroll', 'click'].map(function(eventName) {
-                    document.addEventListener(eventName, function(){
-                        emitEvent("searchBoxHideEvent");
+                    emitEvent("IFrameShowEventProxy", {
+                        reason: "contentframe-shortcut",
                     });
                 });
-                document.addEventListener('scroll', function(e){
+                Mousetrap.bind('esc', function() {
+                    emitEvent("searchBoxHideEvent", {
+                        reason: "contentframe-shortcut",
+                    });
+                });
+
+                // hashchange will trigger a scroll event
+                // This is not desired because it breaks the behavior
+                var _hashJustChanged = false;
+                window.addEventListener("hashchange", function(e) {
+                    _hashJustChanged = true;
+                });
+                document.addEventListener('scroll', function(e) {
+                    setTimeout(function() {
+                        // workaround: DAE hashchange triggers after scroll
+                        if (_hashJustChanged) {
+                            _hashJustChanged = false;
+                        } else {
+                            emitEvent("searchBoxHideEvent", {
+                                reason: "contentframe-scroll",
+                            });
+                        }
+                    }, 0);
                     emitEvent("navigationRelocateEvent", {offset: window.scrollY});
+                });
+                window.addEventListener("click", function() {
+                    emitEvent("searchBoxHideEvent", {
+                        reason: "contentframe-click",
+                    });
                 });
                 </script>
                 <link rel='stylesheet' href='${stylePath}/reset.css' />

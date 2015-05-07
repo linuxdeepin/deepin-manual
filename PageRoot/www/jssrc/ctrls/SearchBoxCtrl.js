@@ -4,7 +4,7 @@ let Keyboard = {
     ENTER: 13,
     KEY_UP: 38,
     KEY_DOWN: 40,
-    ESCAPE: 27
+    ESCAPE: 27,
 };
 
 angular.module("DManual").controller("SearchBoxCtrl",
@@ -13,6 +13,7 @@ angular.module("DManual").controller("SearchBoxCtrl",
         // Auto-complete
         $scope.headers = [];
         $scope.currentIndex = -1;
+        $scope.searchTerm = "";
 
         let onMarkdownProcessed = function(event) {
             let headers = MarkdownService.getHeaders();
@@ -77,7 +78,7 @@ angular.module("DManual").controller("SearchBoxCtrl",
                 }
             } else if ($event.keyCode === Keyboard.ESCAPE) {
                 if (!$scope.searchTerm.trim()) {
-                    $scope.$emit("hideSearchBox");
+                    $scope.$emit("hideSearchBox", "searchinput-shortcut");
                 }
             } else {
                 $scope.currentIndex = -1;
@@ -117,20 +118,27 @@ angular.module("DManual").controller("SearchBoxCtrl",
         Object.defineProperty($scope, "searchInputVisible", {
             get: () => _searchInputVisible,
             set: function(newValue) {
+                if (!$scope.isPageview || $scope.isSearchMode) {
+                    $log.warn("The attempt to change searchInputVisible is aborted: Wrong view.");
+                    return;
+                }
+                let [show, reason] = newValue;
                 if (_showHidePromise) {
                     $timeout.cancel(_showHidePromise);
                     _showHidePromise = null;
                 }
-                if (newValue === _searchInputVisible) {
+                if (show === _searchInputVisible) {
                     return;
                 }
-                if (newValue) {
-                    $log.log("Show SearchBox");
+                if (show) {
+                    $log.log(`Show SearchBox: ${reason}`);
                     $animate.addClass(_searchInput, "slidedown");
-                    _searchInput.focus();
+                    if (reason === "rootframe-shortcut" || reason === "contentframe-shortcut") {
+                        _searchInput.focus();
+                    }
                     _searchInputVisible = true;
                 } else {
-                    $log.log("Hide SearchBox");
+                    $log.log(`Hide SearchBox: ${reason}`);
                     $animate.removeClass(_searchInput, "slidedown");
                     _searchInput.blur();
                     _searchInputVisible = false;
@@ -142,30 +150,53 @@ angular.module("DManual").controller("SearchBoxCtrl",
             },
         });
 
-        $scope.$on("showSearchBox", function() {
+        $scope.$on("showSearchBox", function(event, reason) {
             // activate from everything other than iframe#Content
-            $scope.searchInputVisible = true;
+            $scope.searchInputVisible = [true, reason];
         });
 
-        $scope.$on("hideSearchBox", function() {
+        $scope.$on("hideSearchBox", function(event, reason) {
             // activate from everything other than iframe#Content
-            $scope.searchInputVisible = false;
+            $scope.searchInputVisible = [false, reason];
         });
 
-        $window.addEventListener("IFrameShowEventProxy", function() {
+        $window.addEventListener("IFrameShowEventProxy", function(event) {
             // activate from iframe#Content
-            $scope.searchInputVisible = true;
+            $scope.searchInputVisible = [true, event.detail.reason];
         });
 
-        $window.addEventListener("searchBoxHideEvent", function() {
+        $window.addEventListener("searchBoxHideEvent", function(event) {
             // activate from iframe#Content
-            $scope.searchInputVisible = false;
+            $scope.searchInputVisible = [false, event.detail.reason];
         });
+        $window.addEventListener("mousedown", function(event) {
+            // determine if the click-target is in the "search zone"
+            let target = event.target;
+            let inSearchBoxArea = false;
+            do {
+                if (target === null || target instanceof HTMLDocument) {
+                    break;
+                }
+                let unboundMatches = target.matches || target.webkitMatchesSelector || null;
+                if (!unboundMatches) {
+                    throw new Error("Cannot Match Selector");
+                }
+                if (unboundMatches.call(target, "#SearchBox")) {
+                    inSearchBoxArea = true;
+                    break;
+                }
+            } while (target = target.parentNode);
+
+            if (!inSearchBoxArea) {
+                $scope.searchInputVisible = [false, "rootframe-mousedown-elsewhere"];
+            }
+        }, true);
 
         $scope.$watch("isPageview", function(isPageview) {
             if (isPageview && (!$scope.isSearchMode)) {
                 // to avoid animation
                 _searchInput.classList.add("slidedown");
+                $log.log("Show SearchBox: initial");
 
                 let hideTimeout;
                 if (AdapterService.isFirstRun()) {
@@ -174,7 +205,7 @@ angular.module("DManual").controller("SearchBoxCtrl",
                     hideTimeout = 1500;
                 }
                 _showHidePromise = $timeout(function() {
-                    $scope.searchInputVisible = false;
+                    $scope.searchInputVisible = [false, `timeout after ${hideTimeout}ms`];
                     _showHidePromise = null;
                 }, hideTimeout);
             }
@@ -183,7 +214,7 @@ angular.module("DManual").controller("SearchBoxCtrl",
         let _mouseInSearchBox = false;
         $scope.onSearchBoxMouseEnter = function() {
             _mouseInSearchBox = true;
-            $scope.searchInputVisible = true;
+            $scope.searchInputVisible = [true, "searchbox-mouseenter"];
         };
         $scope.onSearchBoxMouseLeave = function() {
             _mouseInSearchBox = false;
@@ -198,6 +229,6 @@ angular.module("DManual").controller("SearchBoxCtrl",
             if ($scope.isSearchMode) {
                 return;
             }
-            $scope.searchInputVisible = false;
+            $scope.searchInputVisible = [false, "searchinput-blur"];
         };
 });
