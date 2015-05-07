@@ -5,10 +5,11 @@ from dae.daeclient import DAEClient
 import os, sys
 
 import fcntl
-from utils import getLockPath, getSocketPath
+from utils import getLockPath, getSocketPath, bootstrapDir
 
 
 if __name__ == "__main__":
+    bootstrapDir()
     lockPath = getLockPath(sys.argv[-1])
     fd = os.open(lockPath, os.O_RDWR | os.O_CREAT)
     alreadyRunning = False

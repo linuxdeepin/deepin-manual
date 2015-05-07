@@ -78,3 +78,15 @@ def getLockPath(lastArgv: str) -> str:
 def getSocketPath(lastArgv: str) -> str:
     appName = lastArgv.replace("/", "_")
     return os.path.expanduser("~/.config/deepin-manual/{appName}.lock.socket".format(appName = appName))
+
+
+def getConfigPath() -> str:
+    return os.path.expanduser("~/.config/deepin-manual/config.ini")
+
+
+def bootstrapDir():
+    try:
+        (Path(os.path.expanduser("~/.config/deepin-manual"))).mkdir(parents = True)
+    except FileExistsError:
+        pass
+    Path(getConfigPath()).touch()

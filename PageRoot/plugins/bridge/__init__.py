@@ -18,7 +18,8 @@ from multiprocessing.connection import Listener
 p = os.path.normpath(os.path.dirname(__file__) + "/../../../DMan")
 sys.path.append(p)
 
-from utils import getUILanguage, getDocumentLanguageFor, processMarkdownPath, getSocketPath
+from utils import getUILanguage, getDocumentLanguageFor, processMarkdownPath,\
+    getSocketPath, getConfigPath, getLockPath
 
 
 class TooltipView(QQuickView):
@@ -63,18 +64,15 @@ class Bridge(QObject):
 
     def __init__(self):
         super().__init__()
-        self._configPath = os.path.expanduser("~/.config/deepin-manual/config.ini")
+        self._configPath = getConfigPath()
         self._config = configparser.ConfigParser()
         self._config.read(self._configPath, encoding = "utf-8")
-        try:
-            (Path(os.path.expanduser("~/.config/deepin-manual"))).mkdir(parents = True)
-        except FileExistsError:
-            pass
-        Path(self._configPath).touch()
         mdUrl = sys.argv[-1]
         self._dmanInfo = processMarkdownPath(mdUrl, getDocumentLanguageFor)
+        self._lockPath = getLockPath(mdUrl)
         self._tooltipView = TooltipView(self)
         self._commandlineWatcher = CommandlineWatcher(self)
+        QApplication.instance().aboutToQuit.connect(self.cleanup)
 
     @pyqtSlot(result = "QStringList")
     def uiLangs(self):
@@ -129,6 +127,13 @@ class Bridge(QObject):
     @pyqtSlot(str)
     def openExternalBrowser(self, url: str):
         QDesktopServices.openUrl(QUrl("http://bbs.deepin.org/"))
+
+    @pyqtSlot()
+    def cleanup(self):
+        try:
+            os.remove(self._lockPath)
+        except OSError:
+            pass
 
 
 def export_objects():
