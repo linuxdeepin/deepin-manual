@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html ng-app="DManual" lang="en" ng-controller="MainCtrl" ng-strict-di>
+<head>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="./style/index.css" />
+    <script src="./scripts/bundle.min.js"></script>
+    <title>{{ appInfo.name }} - {{ 'TEXT_APP_TITLE'|translate }}</title>
+</head>
+<body deepin-app-manual-body>
+    <deepin-ui-frame></deepin-ui-frame>
+    <deepin-ui-frame-btn></deepin-ui-frame-btn>
+    <deepin-ui-container>
+        <deepin-ui-manual-nav></deepin-ui-manual-nav>
+        <deepin-ui-manual-overview></deepin-ui-manual-overview>
+        <deepin-ui-manual-search-input></deepin-ui-manual-search-input>
+        <deepin-ui-manual-content></deepin-ui-manual-content>
+    </deepin-ui-container>
+</body>
+</html>

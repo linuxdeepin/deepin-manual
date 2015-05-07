@@ -1,0 +1,20 @@
+<div id="SearchBox" class="search-box-container" ng-controller="SearchBoxCtrl"
+     ng-mouseenter="onSearchBoxMouseEnter()"
+     ng-mouseleave="onSearchBoxMouseLeave()">
+
+    <div class="search-input-box" ng-class="{'shadow-visible': searchInputVisible}">
+        <input type="search"
+               id="SearchInput"
+               class="search-input"
+               placeholder="{{ 'TEXT_ENTER_KEYWORDS'|translate }}"
+               ng-keydown="doSearch($scope,$event)"
+               ng-class="{slidedown: searchInputVisible}"
+               ng-blur="onSearchInputBlur()"
+               ng-model="searchTerm" />
+
+        <div id="SuggestionsBox" class="search-suggestions-box">
+            <ul id="Suggestions" ng-bind-html="suggestions"></ul>
+        </div>
+    </div>
+
+</div>
