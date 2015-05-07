@@ -1,5 +1,9 @@
 "use strict";
 
+let {
+    normalizeAnchorName,
+} = require("../renderer");
+
 let Keyboard = {
     ENTER: 13,
     KEY_UP: 38,
@@ -14,6 +18,7 @@ angular.module("DManual").controller("SearchBoxCtrl",
         $scope.headers = [];
         $scope.currentIndex = -1;
         $scope.searchTerm = "";
+        $scope.suggestions = [];
 
         let onMarkdownProcessed = function(event) {
             let headers = MarkdownService.getHeaders();
@@ -25,57 +30,40 @@ angular.module("DManual").controller("SearchBoxCtrl",
             onMarkdownProcessed();
         }
 
-        Object.defineProperty($scope, "completionList", {
-            get: () => [].slice.call(document.querySelector("#Suggestions").children)
-        });
-        $scope.completionUp = function(){
-            if($scope.currentIndex == -1) {
-                $scope.currentIndex = $scope.completionList.length - 1;
-            } else {
-                $scope.currentIndex--;
+        $scope.completionUp = function() {
+            $scope.currentIndex--;
+            if ($scope.currentIndex < 0) {
+                $scope.currentIndex = $scope.suggestions.length;
             }
         };
-        $scope.completionDown = function(){
-            if($scope.currentIndex == $scope.completionList.length - 1) {
-                $scope.currentIndex = -1;
-            } else {
-                $scope.currentIndex++;
+        $scope.completionDown = function() {
+            $scope.currentIndex++;
+            if ($scope.currentIndex > $scope.suggestions.length) {
+                $scope.currentIndex = 0;
             }
         };
 
-        // do search
-        $scope.doSearch = function($innerScope, $event){
+        $scope.onKeydown = function($innerScope, $event) {
             if ($event.keyCode === Keyboard.ENTER) {
                 $event.preventDefault();
                 if (!$scope.searchTerm.trim()) {
                     return;
                 }
-                if ($scope.currentIndex == -1) {
+                if ($scope.currentIndex === -1 || $scope.currentIndex === $scope.suggestions.length) {
                     $rootScope.$broadcast("searchTermChanged", $scope.searchTerm);
                     let body = angular.element(document.body);
                     body.addClass('pageview-mode');
                     body.removeClass('overview-mode');
                 } else {
-                    window.jumpTo($scope.completionValue);
+                    $scope.jumpTo($scope.suggestions[$scope.currentIndex].anchorId);
                 }
                 document.querySelector('#SearchInput').blur();
-            }
-            if ($event.keyCode === Keyboard.KEY_UP) {
+            } else if ($event.keyCode === Keyboard.KEY_UP) {
                 $event.preventDefault();
                 $scope.completionUp();
-                angular.element($scope.completionList).removeClass('active');
-                angular.element($scope.completionList[$scope.currentIndex]).addClass('active')
-                if ($scope.currentIndex !== -1) {
-                    $scope.completionValue = $scope.completionList[$scope.currentIndex].children[0].title
-                }
             } else if ($event.keyCode === Keyboard.KEY_DOWN) {
                 $event.preventDefault();
                 $scope.completionDown();
-                angular.element($scope.completionList).removeClass('active');
-                angular.element($scope.completionList[$scope.currentIndex]).addClass('active')
-                if ($scope.currentIndex !== -1) {
-                    $scope.completionValue = $scope.completionList[$scope.currentIndex].children[0].title
-                }
             } else if ($event.keyCode === Keyboard.ESCAPE) {
                 if (!$scope.searchTerm.trim()) {
                     $scope.$emit("hideSearchBox", "searchinput-shortcut");
@@ -86,29 +74,28 @@ angular.module("DManual").controller("SearchBoxCtrl",
         };
 
         // search suggestions
-        $scope.$watch("searchTerm", function(value){
+        $scope.$watch("searchTerm", function(value) {
+            let suggestions = [];
+
             if (value) {
                 let pattern = new RegExp("(?:" +
-                value.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, '\\$1')
-                + ")", 'gi');
-                let resultList = $scope.headers.map(function(text) {
+                    value.replace(/([.*+?^=!:${}()|\[\]\/\\])/g, '\\$1')
+                    + ")", 'gi');
+                $scope.headers.map(function(text) {
                     let found = false;
                     let highlighted = text.replace(pattern, function(word) {
                         found = true;
                         return `<span class="highlight">${word}</span>`;
                     });
                     if (found) {
-                        return `<li><a href="javascript:jumpTo('${text}');" title="${text}">${highlighted}</a></li>`;
-                    } else {
-                        return false;
+                        suggestions.push({
+                            anchorId: normalizeAnchorName(text),
+                            anchorHtmlText: $sce.trustAsHtml(highlighted),
+                        });
                     }
                 });
-                $scope.suggestions = $sce.trustAsHtml(resultList.filter(function(li) {
-                    return !!li;
-                }).join("\n"));
-            } else {
-                $scope.suggestions = "";
             }
+            $scope.suggestions = suggestions;
         });
 
         // show-hide logic
@@ -169,6 +156,13 @@ angular.module("DManual").controller("SearchBoxCtrl",
             // activate from iframe#Content
             $scope.searchInputVisible = [false, event.detail.reason];
         });
+
+        let unboundMatches = document.body.matches
+                          || document.body.webkitMatchesSelector
+                          || null;
+        if (!unboundMatches) {
+            throw new Error("Cannot Match Selector");
+        }
         $window.addEventListener("mousedown", function(event) {
             // determine if the click-target is in the "search zone"
             let target = event.target;
@@ -176,10 +170,6 @@ angular.module("DManual").controller("SearchBoxCtrl",
             do {
                 if (target === null || target instanceof HTMLDocument) {
                     break;
-                }
-                let unboundMatches = target.matches || target.webkitMatchesSelector || null;
-                if (!unboundMatches) {
-                    throw new Error("Cannot Match Selector");
                 }
                 if (unboundMatches.call(target, "#SearchBox")) {
                     inSearchBoxArea = true;

@@ -12,7 +12,15 @@ msgstr ""
 "X-Generator: Poedit 1.7.5\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: index.html:8
+#: SearchBox.html:25
+msgid "FULL_SEARCH_POST"
+msgstr "\""
+
+#: SearchBox.html:23
+msgid "FULL_SEARCH_PRE"
+msgstr "在全文中搜索\""
+
+#: index.html:7
 msgid "TEXT_APP_TITLE"
 msgstr "深度帮助手册"
 
@@ -36,14 +44,14 @@ msgstr "最大化"
 msgid "TEXT_MINIMIZE"
 msgstr "最小化"
 
-#: SearchResult.html:11
+#: SearchResult.html:14
 msgid "TEXT_NO_RESULT_GUIDE_MESSAGE"
 msgstr "你可以检查拼写后再试，或者到Deepin论坛寻求帮助"
 
-#: SearchResult.html:10
+#: SearchResult.html:13
 msgid "TEXT_SORRY_NO_RESULT"
 msgstr "没有您搜索的内容"
 
-#: SearchResult.html:12
+#: SearchResult.html:15
 msgid "TEXT_VISIT_FORUM"
 msgstr "进入论坛"

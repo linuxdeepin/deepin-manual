@@ -72,8 +72,10 @@ app.controller("MainCtrl", function($scope, $rootScope, $log, $window,
         // the real implementation is in ContentCtrl
         $scope.$broadcast("jumpTo", anchor);
     };
-    $window.jumpTo = $scope.jumpTo;
-
+    $window.jumpTo = function(anchor) {
+        $scope.jumpTo(anchor);
+        $scope.$digest();
+    };
 
     // Events from other parts of the program
     $scope.$on("searchTermChanged", function(event, value) {

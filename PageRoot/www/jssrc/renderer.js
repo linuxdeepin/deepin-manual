@@ -392,6 +392,7 @@ let processMarkdown = function(src) {
 };
 
 if (typeof exports !== "undefined") {
+    exports.normalizeAnchorName = normalizeAnchorName;
     exports.getHTMLRenderer = getHTMLRenderer;
     exports.getPlainRenderer = getPlainRenderer;
     exports.processMarkdown = processMarkdown;
