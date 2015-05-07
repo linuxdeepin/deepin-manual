@@ -64,6 +64,18 @@ $logoHeight: 48px;
     text-overflow: ellipsis;
 }
 
+@mixin max-lines($lineNo){
+    overflow: hidden;
+    text-overflow: ellipsis;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: $lineNo;
+
+    // for future
+    -webkit-max-lines: $lineNo;
+    max-lines: $lineNo;
+}
+
 @mixin disable-user-select {
     -webkit-user-select: none;
 }
@@ -846,18 +858,13 @@ body {
         cursor: pointer;
     }
     p.match-text {
-        position: relative;
-        color: #878787;
         font-size: 13px;
-        overflow: hidden;
         cursor: pointer;
-        .ellipsis {
-            position: absolute;
-            padding-right: 10px;
-            right: 0;
-            bottom: 0;
-            background: #fff;
-        }
+        display: inline;
+    }
+    div.match-texts {
+        color: #878787;
+        @include max-lines(3);
     }
 }
 
