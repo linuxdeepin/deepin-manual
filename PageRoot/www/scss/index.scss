@@ -731,8 +731,9 @@ body {
     li {
         float: left;
         display: block;
-        width: 232px;
+        width: 132px;
         height: 146px;
+        padding: 0 50px;
         @include clearfix;
         text-align: center;
     }
