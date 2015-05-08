@@ -61,6 +61,13 @@ describe("Text searching and highlighting", function() {
             '小<span class="highlight">地球</span>大宇宙'
         );
     });
+
+    it("can handle backslashes", function() {
+        let src = "Original Text";
+        expect(sh(src, ["\\", "text"])).to.equal(
+            'Original <span class="highlight">Text</span>'
+        );
+    });
 });
 
 describe("Search & Filter", function() {

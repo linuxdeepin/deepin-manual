@@ -34,6 +34,7 @@ let searchHighlight = function(text, keywords) {
     }
     let pattern = [];
     for (let keyword of keywords) {
+        keyword = keyword.replace(/\\/g, '\\\\');
         pattern.push(keyword.replace(/([[^$.|?*+(){}])/g, '\\$1'));
     }
     pattern = "(?:" + pattern.join(")|(?:") + ")";
