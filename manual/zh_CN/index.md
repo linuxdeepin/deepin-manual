@@ -1,8 +1,8 @@
-# 文档编写|WINAMP.png|
+# 文档编写|../common/accessories-calculator.svg|
 
 深度帮助手册所使用的是在Github的Markdown格式的基础上，扩展而来的一套格式。
 
-## 章节与段落|VENTRILO.png|
+## 章节与段落|../common/accessories-text-editor.svg|
 
 * 一级标题：一般作为一整篇文档的大标题，显示在帮助手册的界面里。格式为`# 文档名`。一份帮助手册里只能有一个一级标题。
 * 二级标题：会在首页出现的标题。格式为`## 二级标题`。二级标题可以有多个，且必须在一级标题之下。
@@ -12,14 +12,14 @@
 
 > 被引用的文字
 
-## 文字|SAFARI.png|
+## 文字|../common/chmsee-icon.svg|
 
 * 使用`*斜体字*`来标示*斜体字*。
 * 使用`**粗体字**`来标示**粗体字**。
 * 使用\`阴影字\` 标示`阴影字`。
 * 使用`~~删除文本~~`,来标示~~删除文本~~。
 
-## 分栏|CALCULATOR.png|
+## 分栏|../common/crossover.svg|
 
 ```
 !←←
@@ -52,7 +52,7 @@
 
 
 
-## 列表|PICASA.png|
+## 列表|../common/deepin-boot-maker.svg|
 
 ### 无次序列表
 
@@ -101,7 +101,7 @@
   - 英国
   - 意大利
 
-## 表格|NOTEPAD.png|
+## 表格|../common/deepin-emacs.svg|
 
 表格排版较为复杂，需要使用嵌入 HTML 的方法。
 
@@ -384,7 +384,7 @@
     </tbody>
 </table>
 
-## 图标与插图|ITUNES.png|
+## 图标与插图|../common/deepin-game-center.svg|
 
 推荐将所有图标、插图文件置于文档所在文件夹，或其子文件夹。
 
@@ -426,7 +426,7 @@
 
   ![3|一张壁纸](wallpaper.jpg) ![3|一张壁纸](wallpaper.jpg) ![3|一张壁纸](wallpaper.jpg)
 
-## 链接|COUNTERSTRIKE.png|
+## 链接|../common/deepin-installer.svg|
 
 帮助手册现在支持两种链接跳转：**在页内跳转**和**转向其它页**。
 
@@ -452,7 +452,7 @@
 
   暂未实现。
 
-## 文档组织结构|BITCOMET.png|
+## 文档组织结构|../common/deepin-movie.svg|
 
 深度帮助手册需要以特定的结构组织放置。要求如下：
 
@@ -461,7 +461,7 @@
 3. 应用程序安装文档时，必须安装到`/usr/share/dman/[应用程序名称]/[语言编码]`下。
 
 
-## 模糊匹配词典|SKYPE.png|
+## 模糊匹配词典|../common/deepin-music-player.svg|
 
 深度帮助手册提供一项功能，可以帮助文档编写者更好地服务用户，那就是自定义模糊词典。
 此功能适用于所有语言，包括已经提供了中文分词功能的简体中文。
@@ -489,22 +489,22 @@ CPU|处理器|Central Processing Unit
 
 为每个应用编写的同义词典，不应用于其它程序的帮助手册。
 
-## 其它|ITUNES.png|
+## 其它|../common/deepin-screenshot.svg|
 
 暂无。
 
-## 安全性|OPERA.png|
+## 安全性|../common/deepin-software-center.svg|
 
 请注意目前的版本允许页面中执行脚本，在发布Markdown文档时请检查没有恶意代码在内。
 
-## 打包者须知|NOTEPAD++.png|
+## 打包者须知|../common/deepin-terminal.svg|
 
 见 git 根目录的README.md。
 
-## 帮助手册开发者须知|AutoCAD.png|
+## 帮助手册开发者须知|../common/deepin-translator.svg|
 
 见 git 根目录的README.md。
 
-## 其它应用开发者须知|EMULE.png|
+## 其它应用开发者须知|../common/driver-manager.svg|
 
 见 git 根目录的README.md。
