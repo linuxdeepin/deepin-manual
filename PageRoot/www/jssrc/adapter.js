@@ -363,6 +363,7 @@ app.factory("AdapterService", function Adapter($log, $rootScope, $window) {
                 app.setResizerSize(5);
                 app.setFrameless(true);
                 app.setTransBackground(true);
+                app.setClosable(true);
                 app.show();
 
                 app.addEvent({
@@ -383,7 +384,6 @@ app.factory("AdapterService", function Adapter($log, $rootScope, $window) {
                 };
                 $window.minimize = app.minimize;
                 $window.close = function() {
-                    app.setClosable(true);
                     app.close();
                 };
                 let mdDir = bridge_bridge.mdDir();
