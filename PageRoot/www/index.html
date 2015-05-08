@@ -8,7 +8,7 @@
 </head>
 <body ng-class="{'overview-mode': isOverview,
                  'pageview-mode': isPageview,
-                 'compact-mode': isCompactMode,
+                 'compact-mode': isCompactMode || isSearchMode,
                  'search-mode': isSearchMode}">
     <deepin-ui-frame></deepin-ui-frame>
     <deepin-ui-frame-btn></deepin-ui-frame-btn>
