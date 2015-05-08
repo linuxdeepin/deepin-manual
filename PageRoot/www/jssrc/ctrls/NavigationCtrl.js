@@ -139,10 +139,12 @@ angular.module("DManual")
 
         // Tooltip
         $scope.showTooltip = function(tooltip, $event) {
-            let target = $event.target;
+            if ($scope.isCompactMode) {
+                let target = $event.target;
 
-            AdapterService.showTooltip(
-                tooltip,
-                target.getBoundingClientRect());
+                AdapterService.showTooltip(
+                    tooltip,
+                    target.getBoundingClientRect());
+            }
         };
     });
