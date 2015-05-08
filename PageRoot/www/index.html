@@ -6,7 +6,10 @@
     <script src="./scripts/bundle.min.js"></script>
     <title>{{ appInfo.name }} - {{ 'TEXT_APP_TITLE'|translate }}</title>
 </head>
-<body deepin-app-manual-body>
+<body ng-class="{'overview-mode': isOverview,
+                 'pageview-mode': isPageview,
+                 'compact-mode': isCompactMode,
+                 'search-mode': isSearchMode}">
     <deepin-ui-frame></deepin-ui-frame>
     <deepin-ui-frame-btn></deepin-ui-frame-btn>
     <deepin-ui-container>

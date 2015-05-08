@@ -51,9 +51,6 @@ angular.module("DManual").controller("SearchBoxCtrl",
                 }
                 if ($scope.currentIndex === -1 || $scope.currentIndex === $scope.suggestions.length) {
                     $rootScope.$broadcast("searchTermChanged", $scope.searchTerm);
-                    let body = angular.element(document.body);
-                    body.addClass('pageview-mode');
-                    body.removeClass('overview-mode');
                 } else {
                     $scope.jumpTo($scope.suggestions[$scope.currentIndex].anchorId);
                 }

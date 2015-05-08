@@ -41,49 +41,24 @@ app.directive("deepinUiFrame", function(){
 })(app, templateUrlDirectiveConfigMap);
 
 // Custom Attributes here
-app.directive("deepinAppManualBody", function() {
-        return {
-            restrict: "A",
-            replace: true,
-            link: function(scope, elem, attrs) {
-                elem.addClass("overview-mode");
-                var modeMap = {
-                    'isCompactMode': 'compact-mode',
-                    'isSearchMode' : 'search-mode',
-                    'isOverview'   : 'overview-mode',
-                    'isPageview'   : 'pageview-mode'
-                };
-                Object.keys(modeMap).map(function(mode){
-                    var cssClass = modeMap[mode];
-                    scope.$watch(mode, function(value){
-                        if(value) {
-                            elem.addClass(cssClass);
-                        } else {
-                            elem.removeClass(cssClass);
-                        }
-                    });
+app.directive("deepinUiSvgImage", function($http){
+    return {
+        restrict: "A",
+        link: function(scope, elem, attrs) {
+            let src = attrs.deepinUiSvgImage;
+            // let src = attrs.ngSrc;
+            if(!/\.svg$/.test(src)) {
+                let img = document.createElement('img');
+                img.src = src;
+                elem[0].appendChild(img);
+            } else {
+                $http.get(src).then(function(res){
+                    let div = document.createElement('div');
+                    div.innerHTML = res.data;
+                    let svg = div.querySelector('svg');
+                    elem[0].appendChild(svg);
                 });
             }
         }
-    })
-    .directive("deepinUiSvgImage", function($http, $parse){
-        return {
-            restrict: "A",
-            link: function(scope, elem, attrs) {
-                let src = attrs.deepinUiSvgImage;
-                // let src = attrs.ngSrc;
-                if(!/\.svg$/.test(src)) {
-                    let img = document.createElement('img');
-                    img.src = src;
-                    elem[0].appendChild(img);
-                } else {
-                    $http.get(src).then(function(res){
-                        let div = document.createElement('div');
-                        div.innerHTML = res.data;
-                        let svg = div.querySelector('svg');
-                        elem[0].appendChild(svg);
-                    });
-                }
-            }
-        }
-    });
+    }
+});

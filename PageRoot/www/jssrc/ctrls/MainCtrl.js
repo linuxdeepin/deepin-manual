@@ -5,8 +5,30 @@ let app = angular.module("DManual");
 app.controller("MainCtrl", function($scope, $rootScope, $log, $window,
                                     hotkeys, MarkdownService) {
     // local states and flags
-    $scope.isOverview = true;
-    $scope.isPageview = !$scope.isOverview;
+    let _isOverview = true;
+    Object.defineProperties($scope, {
+        "isOverview": {
+            get: () => _isOverview,
+            set: (newValue) => {
+                if (newValue === _isOverview) {
+                    return;
+                }
+                if (newValue) {
+                    $log.log("Leave pageview for overview");
+                } else {
+                    $log.log("Leave overview for pageview");
+                }
+                _isOverview = newValue;
+            },
+        },
+        "isPageview": {
+            get: () => !_isOverview,
+            set: (newValue) => {
+                throw new Error("isPageview is a read-only property, set 'isOverview' instead");
+            },
+        },
+    });
+
     let _isSearchMode = false;
     Object.defineProperty($scope, "isSearchMode", {
         get: () => _isSearchMode,
@@ -20,7 +42,7 @@ app.controller("MainCtrl", function($scope, $rootScope, $log, $window,
                     _isSearchMode = false;
                 }
             }
-        }
+        },
     });
 
     // add hot keys
@@ -66,8 +88,7 @@ app.controller("MainCtrl", function($scope, $rootScope, $log, $window,
         //   2) jumpTo needs to modify isPageview and other global
         // flags
         // it needs to be in MainCtrl instead of ContentCtrl.
-        $scope.isPageview = !!anchor;
-        $scope.isOverview = !$scope.isPageview;
+        $scope.isOverview = !(!!anchor);
         $scope.isSearchMode = false;
         // the real implementation is in ContentCtrl
         $scope.$broadcast("jumpTo", anchor);
@@ -80,6 +101,7 @@ app.controller("MainCtrl", function($scope, $rootScope, $log, $window,
     // Events from other parts of the program
     $scope.$on("searchTermChanged", function(event, value) {
         $scope.isSearchMode = value && value.length > 0;
+        $scope.isOverview = !$scope.isSearchMode;
     });
 
     $scope.$on("navigationBarToggled", function(event, value) {
