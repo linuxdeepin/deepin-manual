@@ -3,7 +3,7 @@
     <ul id="SearchResultsContainer" ng-if="searchResults.length" class="search-result">
         <li ng-repeat="match in searchResults">
             <h5><a class="anchor" ng-click="jumpTo(match.anchorId)">{{ match.anchorText }}</a></h5>
-            <div class="match-texts">
+            <div class="match-texts" ng-click="jumpTo(match.anchorId)">
                 <p class="match-text" ng-repeat="text in match.texts" ng-bind-html="text"></p>
             </div>
         </li>
