@@ -48,15 +48,12 @@ app.directive("deepinUiSvgImage", function($http){
             let src = attrs.deepinUiSvgImage;
             // let src = attrs.ngSrc;
             if(!/\.svg$/.test(src)) {
-                let img = document.createElement('img');
-                img.src = src;
-                elem[0].appendChild(img);
+                let img = angular.element(`<img src="${src}"/>`);
+                elem.append(img);
             } else {
                 $http.get(src).then(function(res){
-                    let div = document.createElement('div');
-                    div.innerHTML = res.data;
-                    let svg = div.querySelector('svg');
-                    elem[0].appendChild(svg);
+                    let svg = angular.element(`<div>${res.data}</div>`).find('svg');
+                    elem.append(svg);
                 });
             }
         }
