@@ -17,18 +17,9 @@ app.directive("deepinUiFrame", function(){
         replace: "true",
         template: `<div id="MoveHandle" class="move-handle" ng-controller="FrameCtrl"><!-- div id="OuterFrame" ng-style="outerFrameStyle"></div--></div>`,
     }
-  }).directive("deepinUiContainer", function(){
-    return {
-        restrict: "E",
-        replace: "true",
-        transclude: "true",
-        template: `<div id="Container">
-            <ng-transclude></ng-transclude>
-        </div>`
-    }
-  })
+});
 
-;(function(app, directives){
+(function(app, directives){
     Object.keys(directives).map(function(directive){
         app.directive(directive, function(){
             return {

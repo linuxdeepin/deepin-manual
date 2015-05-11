@@ -104,9 +104,11 @@ app.controller("MainCtrl", function($scope, $rootScope, $log, $window,
         $scope.isOverview = !$scope.isSearchMode;
     });
 
-    $scope.$on("navigationBarToggled", function(event, value) {
-        $rootScope.isCompactMode = value;
+    $scope.isCompactMode = null;
+    $scope.$on("SideNavCompactModeSet", function(event, value) {
+        $scope.isCompactMode = value;
     });
+
     $scope.$on("ContentHtmlLoaded", function(event) {
         let contentIFrame = document.querySelector("#Content");
         let doc = contentIFrame.contentDocument;
@@ -115,6 +117,6 @@ app.controller("MainCtrl", function($scope, $rootScope, $log, $window,
 
         $scope.navigations = [].slice.call(
             document.querySelector('#SideNavigationItems')
-                    .querySelectorAll('.level2,.level3'));
+                    .querySelectorAll('li.level2, li.level3'));
     });
 });

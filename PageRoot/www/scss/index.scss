@@ -89,7 +89,7 @@ html, body {
     margin: 0 !important;
     padding: 0 !important;
     outline: 0 !important;
-    font-family: "Source Han Sans SC", Arial, sans-serif;
+    font-family: Arial, sans-serif, "Source Han Sans SC";
 }
 
 body {
@@ -142,22 +142,11 @@ body {
     float: left;
 }
 
-// Frame, border, etc
-//#OuterFrame {
-//    padding: 0 !important;
-//    margin: 0 !important;
-//    outline: 0 !important;
-//    position: fixed;
-//    width: 100%;
-//    z-index: -100;
-//    .debug-mode & {
-//        background-color: skyblue;
-//    }
-//}
-
 .move-handle {
-    -webkit-user-select: none;
+    // TODO: move Atom-shell-specific css to FrameCtrl
     -webkit-app-region: drag;
+
+    -webkit-user-select: none;
     padding: 0;
     margin: 0;
     outline: 0;
@@ -173,7 +162,7 @@ body {
     }
     .pageview-mode.compact-mode & {
         width: calc(100% - 80px - #{$pvNavBarCompactWidth});
-        margin-left: #{$pvNavBarCompactWidth};
+        margin-left: $pvNavBarCompactWidth;
     }
     .overview-mode & {
         width: calc(100% - 80px - 68px);
@@ -194,6 +183,8 @@ body {
         float: left;
         background-position: -6px 0;
         background-repeat: no-repeat;
+
+        // TODO: move Atom-shell-specific css to FrameCtrl
         -webkit-app-region: no-drag;
     }
     a:focus {
@@ -399,34 +390,21 @@ body {
     position: relative;
     @include disable-user-select;
 
-    ol {
+    ol.level2,
+    ol.level3 {
         list-style-type: none;
         padding: 0;
     }
 
-    li ol li {
+    li.level3 {
         margin-left: 5px !important;
     }
 
     a, a:link {
         cursor: pointer;
+        display: block;
     }
 }
-
-
-// chapter sequence number
-.navigation-bar {
-    ol {
-        counter-reset: item;
-        li {
-            counter-increment: item;
-            a > span:before {
-                content: counters(item, ".") ". ";
-            }
-        }
-    }
-}
-
 
 .navigation-switch {
     position: absolute;
@@ -441,17 +419,70 @@ body {
         height: 100%;
         background: url("../resources/controls/bookmark.png") right top;
         outline: none;
-        &.collapsed{
+        .compact-mode & {
             width: 25px;
         }
     }
+    .search-mode & {
+        display: none;
+    }
 }
 
+
+.navigation-bar-aside {
+    // common styles for all views and modes
+    display: block;
+    overflow: hidden !important;
+    height: calc(100% - #{$logoHeight});
+    font-size: 13px;
+
+    ol.level2 {
+        margin: 0;
+        overflow: hidden;
+        height: 100%;
+
+        .current-section {
+            & > a > span {
+                color: $highlightColor;
+            }
+            svg {
+                rect,
+                path,
+                polygon,
+                circle
+                {
+                    fill: $highlightColor !important;
+                }
+            }
+        }
+    }
+
+    li.level2 {
+        margin-top: 16px;
+        img, .figure {
+            margin: 0;
+            display: block;
+            width: 24px;
+            height: 24px;
+        }
+    }
+}
 
 .pageview-mode {
     .navigation-bar {
         width: $pvNavBarWidth;
         float: left;
+
+        // chapter numbers
+        &:not(.compact-mode) ol {
+            counter-reset: item;
+            li {
+                counter-increment: item;
+                a > span:before {
+                    content: counters(item, ".") ". ";
+                }
+            }
+        }
     }
 
     .app-icon-box {
@@ -477,92 +508,43 @@ body {
         display: none;
     }
 
-    .navigation-bar-aside {
-        display: block;
-        overflow: hidden !important;
-        height: 100%;
-        font-size: 13px;
-
-        ol { // ol
+    &:not(.compact-mode) .navigation-bar-aside {
+        ol.level2 {
             padding-left: 40px;
-            margin: 0;
-            overflow: hidden;
-            height: 100%;
 
             li {
                 line-height: 24px;
             }
 
-            .level2 { // li
-                margin-top: 16px;
+            li.level2 {
                 position: relative;
-                img, .figure {
-                    margin: 0;
-                    display: block;
-                    width: 24px;
-                    height: 24px;
-                }
                 .figure {
                     position: absolute;
                     left: -30px;
                 }
-                ol {
+
+                &.current-section ol.level3 {
+                    display: block;
+                    padding: 0;
+                }
+
+                &:not(.current-section) ol.level3 {
                     display: none;
                 }
+
                 &:last-child {
                     margin-bottom: 16px;
                 }
             }
 
-            .level3 {
+            li.level3 {
                 text-indent: 0.5em;
                 line-height: 1.7em;
-            }
-
-            .current-section {
-                &>a>span {
-                    color: $highlightColor;
-                }
-                svg {
-                    rect,
-                    path,
-                    polygon,
-                    circle
-                    {
-                        fill: $highlightColor !important;
-                    }
-                }
-                ol {
-                    display: block;
-                    padding: 0;
-                }
             }
         }
 
         .navigation-bar-aside-btn {
             display: none;
-            &.btn-arrow-up, &.btn-arrow-down {
-                height: 15px;
-                width: 100%;
-                background-position: 50%;
-                background-repeat: no-repeat;
-            }
-            &.btn-arrow-up {
-                &.normal {
-                    background-image: url("../resources/controls/up_arrow.svg");
-                }
-                &.end {
-                    background-image: url("../resources/controls/up_arrow.svg");
-                }
-            }
-            &.btn-arrow-down {
-                &.normal {
-                    background-image: url("../resources/controls/down_arrow.svg");
-                }
-                &.end {
-                    background-image: url("../resources/controls/down_arrow.svg");
-                }
-            }
         }
     }
 
@@ -571,7 +553,7 @@ body {
         display: block;
         width: calc(100% - #{$pvNavBarWidth});
         height: calc(100% - #{$titleBarHeight});
-        margin-top: #{$titleBarHeight};
+        margin-top: $titleBarHeight;
         &:after {
             content: "";
             position: absolute;
@@ -590,10 +572,6 @@ body {
         overflow: auto;
     }
 
-    // .navigation-bar-aside {
-    //     height: 600px; //calc(100% - #{$navLogoBoxHeight} - 1300px);
-    // }
-
     .search-result-container {
         width: 100%;
         height: 100%;
@@ -607,7 +585,7 @@ body {
         position: absolute;
         top: 30px;
         width: 360px;
-        left: #{$pvNavBarWidth};
+        left: $pvNavBarWidth;
         height: 35px;
         margin: 0 calc((100% - 360px - #{$pvNavBarWidth}) / 2);
         z-index: 10050;
@@ -648,24 +626,6 @@ body {
 
     &::-webkit-search-cancel-button:active {
         background-image: url("../resources/controls/clear_press.png");
-    }
-
-    .collapsed.navigation-bar {
-        width: 48px;
-        .app-icon-box span {
-            display: none;
-        }
-        ol {
-            padding-left: 10px;
-        }
-        .level2 {
-            img, .figure {
-                position: static;
-            }
-            span {
-                display: none;
-            }
-        }
     }
 
     .search-input-box {
@@ -813,7 +773,57 @@ body {
 /* compact mode style                        */
 /*-------------------------------------------*/
 
-.compact-mode {
+.compact-mode:not(.overview-mode) {
+    .navigation-bar {
+        width: 48px;
+        .app-icon-box span {
+            display: none;
+        }
+    }
+
+    .navigation-bar-aside {
+        ol.level2 {
+            padding-left: 10px;
+        }
+        li.level2 {
+            img, .figure {
+                position: static;
+            }
+            span {
+                display: none;
+            }
+        }
+        ol.level3 {
+            display: none;
+        }
+    }
+
+    .navigation-bar-aside-btn {
+        display: none;
+        &.btn-arrow-up, &.btn-arrow-down {
+            height: 15px;
+            width: 100%;
+            background-position: 50%;
+            background-repeat: no-repeat;
+        }
+        &.btn-arrow-up {
+            &.normal {
+                background-image: url("../resources/controls/up_arrow.svg");
+            }
+            &.end {
+                background-image: url("../resources/controls/up_arrow.svg");
+            }
+        }
+        &.btn-arrow-down {
+            &.normal {
+                background-image: url("../resources/controls/down_arrow.svg");
+            }
+            &.end {
+                background-image: url("../resources/controls/down_arrow.svg");
+            }
+        }
+    }
+
     .search-input-box {
         &.shadow-visible {
             margin: 0 calc(-100% + 88px);
@@ -823,7 +833,7 @@ body {
 
     .search-box-container {
         margin: 0 calc((100% - 360px - #{$pvNavBarCompactWidth}) / 2);
-        left: #{$pvNavBarCompactWidth}
+        left: $pvNavBarCompactWidth;
     }
 
     .manual-content-container {
@@ -915,7 +925,7 @@ body {
 /*-------------------------------------------*/
 
 .debug-mode {
-    ol .level2 img {
+    ol li.level2 img {
         background-color: skyblue;
     }
 
@@ -981,7 +991,7 @@ html:not([lang^="zh"]) {
         }
 
         .search-box-container {
-            left: #{$pvNavBarWidthNonChinese};
+            left: $pvNavBarWidthNonChinese;
             margin: 0 calc((100% - 360px - #{$pvNavBarWidthNonChinese}) / 2);
         }
 

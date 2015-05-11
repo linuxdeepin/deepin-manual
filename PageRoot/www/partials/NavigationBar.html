@@ -1,4 +1,4 @@
-<nav id="NavigationBar" ng-controller="NavigationBarCtrl" class="navigation-bar" ng-class="{collapsed: isCollapsed}">
+<nav id="NavigationBar" ng-controller="NavigationBarCtrl" class="navigation-bar">
     <div id="NavLogoBox" class="app-icon-box">
         <a ng-click="jumpTo()">
             <img id="AppLogo" class="app-icon" ng-src="{{appInfo.markdownDir}}/{{appInfo.icon}}" />
@@ -10,14 +10,14 @@
 
     <div id="SideNavigationBar" class="navigation-bar-aside">
         <div id="SideNavUpArrow" class="navigation-bar-aside-btn btn-arrow-up"></div>
-        <ol id="SideNavigationItems">
+        <ol id="SideNavigationItems" class="level2">
             <li class="level2" ng-repeat="anchor in anchors">
                 <a ng-click="jumpTo(anchor.id)" class="anchor-icon">
                     <div class="figure" deepin-ui-svg-image="{{appInfo.markdownDir}}/{{anchor.smallIcon}}" ng-mouseenter="showTooltip(anchor.text, $event);" ng-mouseleave="showTooltip('', $event);"></div>
                     <span>{{anchor.text}}</span>
                 </a>
 
-                <ol ng-if="anchor.children">
+                <ol ng-if="anchor.children" class="level3">
                     <li class="level3" ng-repeat="anchor2 in anchor.children">
                         <a ng-click="jumpTo(anchor2.id)">
                             <span>{{anchor2.text}}</span>
@@ -29,6 +29,6 @@
         <div id="SideNavDownArrow" class="navigation-bar-aside-btn btn-arrow-down"></div>
     </div>
     <div id="NavigationSwitch" class="navigation-switch">
-        <a href="javascript:;" ng-click="toggleNavigationCompactMode();" ng-class="{collapsed: isCollapsed}"></a>
+        <a href="javascript:;" ng-click="toggleNavigationCompactMode();"></a>
     </div>
 </nav>

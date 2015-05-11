@@ -29,7 +29,8 @@ angular.module("DManual")
             // resize SideNavigationBar
             let newBarHeight = container.clientHeight - logoBox.clientHeight;
 
-            if ($scope.isCompactMode) {
+            // TODO: make isCompactMode a property, that takes isSearchMode into consideration.
+            if ($scope.isCompactMode || $scope.isSearchMode) {
                 let itemsScrollHeight = sideNavItems.scrollHeight;
 
                 // show/hide arrows
@@ -129,13 +130,15 @@ angular.module("DManual")
             navigationRelocate(offset);
         });
 
-        // Sidebar Collapse/Expand
-        $scope.isCollapsed = AdapterService.isCompactMode();
+        // Sidebar CompactMode
         $scope.toggleNavigationCompactMode = function() {
-            $scope.isCollapsed = !$scope.isCollapsed;
-            $rootScope.$broadcast("navigationBarToggled", $scope.isCollapsed);
+            let newValue = !$scope.isCompactMode;
+            // MainCtrl needs to know about this
+            $scope.$emit("SideNavCompactModeSet", newValue);
+            AdapterService.setCompactMode(newValue);
         };
-        $rootScope.$broadcast("navigationBarToggled", $scope.isCollapsed);
+        // MainCtrl needs to know about this
+        $scope.$emit("SideNavCompactModeSet", AdapterService.isCompactMode());
 
         // Tooltip
         $scope.showTooltip = function(tooltip, $event) {

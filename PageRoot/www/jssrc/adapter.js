@@ -157,9 +157,6 @@ app.factory("AdapterService", function Adapter($log, $rootScope, $window) {
         let isCompactMode = function() {
             return _isCompactMode;
         };
-        $rootScope.$on("navigationBarToggled", function(event, value) {
-            setCompactMode(value);
-        });
 
         // Word Cutting
         let getWordCutting = function(text) {
