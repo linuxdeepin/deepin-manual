@@ -425,12 +425,6 @@ body {
             }
         }
     }
-
-    li ol li {
-        &:before {
-            content: counters(item, ".") " ";
-        }
-    }
 }
 
 
