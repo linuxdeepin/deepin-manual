@@ -413,6 +413,8 @@ body {
     }
 }
 
+
+// chapter sequence number
 .navigation-bar {
     ol {
         counter-reset: item;
@@ -421,6 +423,12 @@ body {
             a > span:before {
                 content: counters(item, ".") ". ";
             }
+        }
+    }
+
+    li ol li {
+        &:before {
+            content: counters(item, ".") " ";
         }
     }
 }
