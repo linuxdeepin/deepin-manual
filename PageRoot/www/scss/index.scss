@@ -401,22 +401,11 @@ body {
 
     ol {
         list-style-type: none;
-        // counter-reset: item;
         padding: 0;
-
-        // li {
-        //     counter-increment: item;
-        //     a > span:before {
-        //         content: counters(item, ".") ". ";
-        //     }
-        // }
     }
 
     li ol li {
         margin-left: 5px !important;
-        // &:before {
-        //     content: counters(item, ".") " ";
-        // }
     }
 
     a, a:link {
@@ -424,23 +413,17 @@ body {
     }
 }
 
-// .navigation-bar {
-//     ol {
-//         counter-reset: item;
-//         li {
-//             counter-increment: item;
-//             a > span:before {
-//                 content: counters(item, ".") ". ";
-//             }
-//         }
-//     }
-
-//     li ol li {
-//         &:before {
-//             content: counters(item, ".") " ";
-//         }
-//     }
-// }
+.navigation-bar {
+    ol {
+        counter-reset: item;
+        li {
+            counter-increment: item;
+            a > span:before {
+                content: counters(item, ".") ". ";
+            }
+        }
+    }
+}
 
 
 .navigation-switch {
@@ -455,6 +438,7 @@ body {
         width: 15px;
         height: 100%;
         background: url("../resources/controls/bookmark.png") right top;
+        outline: none;
         &.collapsed{
             width: 25px;
         }
