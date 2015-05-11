@@ -521,9 +521,14 @@ body {
                 &>a>span {
                     color: $highlightColor;
                 }
-                svg rect,
-                svg path {
-                    fill: $highlightColor !important;
+                svg {
+                    rect,
+                    path,
+                    polygon,
+                    circle
+                    {
+                        fill: $highlightColor !important;
+                    }
                 }
                 ol {
                     display: block;
@@ -726,15 +731,25 @@ body {
         display: block;
         color: #818181;
         cursor: pointer;
-        svg path,
-        svg rect {
-            fill: #818181 !important;
+        svg {
+            rect,
+            path,
+            polygon,
+            circle
+            {
+                fill: #818181 !important;
+            }
         }
         &:hover {
             color: #31a4fc;
-            svg path,
-            svg rect {
-                fill: #31a4fc !important;
+            svg {
+                rect,
+                path,
+                polygon,
+                circle
+                {
+                    fill: #31a4fc !important;
+                }
             }
         }
     }
