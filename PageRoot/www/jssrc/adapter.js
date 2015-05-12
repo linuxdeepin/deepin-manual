@@ -355,8 +355,11 @@ app.factory("AdapterService", function Adapter($log, $rootScope, $window) {
             }
             case "DAE": {
                 let app = $window.DAE.app;
-                let extraBorder = 2;
-                app.setMinSize(970 + extraBorder, 600 + extraBorder);
+                let languageExtraWidth = () => {
+                    return (bridge_bridge.lang().indexOf("zh") === 0) ? 0 : 50;
+                };
+                app.setMinSize(970 + app.getShadowWidth() * 2 + languageExtraWidth(),
+                               600 + app.getShadowWidth() * 2);
                 app.setResizerSize(5);
                 app.setFrameless(true);
                 app.setTransBackground(true);
