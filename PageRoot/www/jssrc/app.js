@@ -3,6 +3,7 @@
 let {
     searchHighlight,
     getAnchorItem,
+    highlight,
 } = require("./utils");
 
 let app = angular.module("DManual", ["General", "gettext", "ngAnimate", "cfp.hotkeys"]);
@@ -46,4 +47,11 @@ app.filter("filterHighlight", function($log, $sce) {
         cached = result;
         return cached;
     }
+});
+
+app.filter("highlight", function($log, $sce) {
+    return function(text, keyword) {
+        let highlighted = highlight(text, [keyword]);
+        return $sce.trustAsHtml(highlighted);
+    };
 });

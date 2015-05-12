@@ -48,6 +48,23 @@ let searchHighlight = function(text, keywords) {
     return foundFlag ? result : "";
 };
 
+let highlight = function(text, keywords) {
+    if (keywords.length === 0) {
+        return text;
+    }
+    let pattern = [];
+    for (let keyword of keywords) {
+        keyword = keyword.replace(/\\/g, '\\\\');
+        pattern.push(keyword.replace(/([[^$.|?*+(){}])/g, '\\$1'));
+    }
+    pattern = "(?:" + pattern.join(")|(?:") + ")";
+    pattern = new RegExp(pattern, "gi");
+    let result = text.replace(pattern, function(match){
+        return `<span class="highlight">${match}</span>`;
+    });
+    return result;
+};
+
 /**
  * (Used in angular filter: filterHighlight)
  * @param filtered an array of AnchorItem's.
@@ -65,6 +82,7 @@ let getAnchorItem = function(filtered, anchorId) {
 
 if (typeof exports !== "undefined") {
     exports.searchHighlight = searchHighlight;
+    exports.highlight = highlight;
     exports.getContentStylePath = getContentStylePath;
     exports.getScriptPath = getScriptPath;
     exports.getAnchorItem = getAnchorItem;

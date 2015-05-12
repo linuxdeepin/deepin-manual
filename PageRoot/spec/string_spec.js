@@ -3,6 +3,7 @@
 let expect = require("expect.js");
 let sh = require("../www/jssrc/utils").searchHighlight;
 let gai = require("../www/jssrc/utils").getAnchorItem;
+let hl = require("../www/jssrc/utils").highlight;
 
 describe("Text searching and highlighting", function() {
     it("can do the simple one", function() {
@@ -87,5 +88,17 @@ describe("Search & Filter", function() {
             }];
             expect(gai(xs, "wrongname")).to.equal(null);
         });
+    });
+});
+
+describe("Highlight", function() {
+    it("can highlight a simple string", function() {
+        let text = "This is a simple string";
+        expect(hl(text, ["simple"])).to.equal(`This is a <span class="highlight">simple</span> string`);
+    });
+
+    it("can handle 0 keywords", function() {
+        let text = "This is a string";
+        expect(hl(text, [])).to.equal(text);
     });
 });
