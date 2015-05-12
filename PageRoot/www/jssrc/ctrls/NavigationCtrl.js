@@ -5,7 +5,7 @@ let highlightNode = function(node) {
         node.parentNode.parentNode.classList.add('current-section');
     }
     node.classList.add('current-section');
-    node.scrollIntoView();
+    node.scrollIntoViewIfNeeded();
 };
 
 angular.module("DManual")
@@ -28,22 +28,25 @@ angular.module("DManual")
         let updateSidebar = function() {
             // resize SideNavigationBar
             let newBarHeight = container.clientHeight - logoBox.clientHeight;
-
+            let itemsMarginVertical = parseInt($window.getComputedStyle(sideNavItems)["margin-top"]);
             // TODO: make isCompactMode a property, that takes isSearchMode into consideration.
             if ($scope.isCompactMode || $scope.isSearchMode) {
                 let itemsScrollHeight = sideNavItems.scrollHeight;
 
                 // show/hide arrows
-                if (itemsScrollHeight <= newBarHeight) {
+                if (itemsScrollHeight <= newBarHeight - itemsMarginVertical) {
                     // hide arrows
                     sideBarStyle.upArrow.display = "none";
                     sideBarStyle.downArrow.display = "none";
-                    sideBarStyle.items.height = newBarHeight;
+                    sideBarStyle.items.height = newBarHeight - itemsMarginVertical;
                 } else {
                     // show arrows
                     sideBarStyle.upArrow.display = "block";
                     sideBarStyle.downArrow.display = "block";
-                    sideBarStyle.items.height = newBarHeight - upArrow.clientHeight - downArrow.clientHeight;
+                    sideBarStyle.items.height = newBarHeight
+                                                - upArrow.clientHeight
+                                                - downArrow.clientHeight
+                                                - itemsMarginVertical;
 
                     // arrow style
                     let atTheTopOfScroll = false;
@@ -80,7 +83,7 @@ angular.module("DManual")
                 sideBarStyle.downArrow.display = "none";
 
                 // set items height
-                sideBarStyle.items.height = newBarHeight;
+                sideBarStyle.items.height = newBarHeight - itemsMarginVertical;
 
                 // scrollbar -> auto
                 sideBarStyle.items.overflowY = "auto";
@@ -149,5 +152,12 @@ angular.module("DManual")
                     tooltip,
                     target.getBoundingClientRect());
             }
+        };
+
+        $scope.scrollUp = function() {
+            sideNavItems.scrollTop -= 10;
+        };
+        $scope.scrollDown = function() {
+            sideNavItems.scrollTop += 10;
         };
     });

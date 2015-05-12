@@ -9,7 +9,11 @@
     </div>
 
     <div id="SideNavigationBar" class="navigation-bar-aside">
-        <div id="SideNavUpArrow" class="navigation-bar-aside-btn btn-arrow-up"></div>
+        <div id="SideNavUpArrow"
+             class="navigation-bar-aside-btn"
+             deepin-ui-svg-image="./resources/controls/up_arrow.svg"
+             ng-mousedown="scrollUp()"
+        ></div>
         <ol id="SideNavigationItems" class="level2">
             <li class="level2" ng-repeat="anchor in anchors">
                 <a ng-click="jumpTo(anchor.id)" class="anchor-icon">
@@ -32,7 +36,11 @@
                 </ol>
             </li>
         </ol>
-        <div id="SideNavDownArrow" class="navigation-bar-aside-btn btn-arrow-down"></div>
+        <div id="SideNavDownArrow"
+             class="navigation-bar-aside-btn"
+             deepin-ui-svg-image="./resources/controls/down_arrow.svg"
+             ng-mousedown="scrollDown()"
+        ></div>
     </div>
     <div id="NavigationSwitch" class="navigation-switch">
         <a href="javascript:;" ng-click="toggleNavigationCompactMode();"></a>
