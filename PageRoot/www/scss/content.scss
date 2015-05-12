@@ -202,15 +202,16 @@ blockquote {
     }
 }
 
+$listPaddingLeft: 24px;
 // ordered > unordered
 ol {
-    padding-left: 12px;
-    list-style-position: inside;
+    padding-left: $listPaddingLeft;
+    list-style-position: outside;
     li {
         ul {
             list-style-type: disc;
-            padding-left: 12px;
-            list-style-position: inside;
+            padding-left: $listPaddingLeft;
+            list-style-position: outside;
             li {
 
             }
@@ -220,9 +221,9 @@ ol {
 
 // unordered
 ul {
-    padding-left: 12px;
-    list-style-position: inside;
-    list-style-type: circle;
+    padding-left: $listPaddingLeft;
+    list-style-position: outside;
+    list-style-type: square;
     li {
 
     }
