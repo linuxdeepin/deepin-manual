@@ -48,6 +48,10 @@ msgstr "最小化"
 msgid "TEXT_NO_RESULT_GUIDE_MESSAGE"
 msgstr "你可以检查拼写后再试，或者到Deepin论坛寻求帮助"
 
+#: SearchResult.html:2
+msgid "TEXT_RETURN"
+msgstr "返回"
+
 #: SearchResult.html:13
 msgid "TEXT_SORRY_NO_RESULT"
 msgstr "没有您搜索的内容"

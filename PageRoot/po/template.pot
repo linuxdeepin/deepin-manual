@@ -40,6 +40,10 @@ msgstr ""
 msgid "TEXT_NO_RESULT_GUIDE_MESSAGE"
 msgstr ""
 
+#: SearchResult.html:2
+msgid "TEXT_RETURN"
+msgstr ""
+
 #: SearchResult.html:13
 msgid "TEXT_SORRY_NO_RESULT"
 msgstr ""
