@@ -8,6 +8,13 @@ try {
 } catch(e) {
     sass = null;
 }
+var sourcemaps;
+try {
+    sourcemaps = require("gulp-sourcemaps");
+} catch(e) {
+    sourcemaps = null;
+}
+
 var gettext = require("gulp-angular-gettext");
 var mocha = require('gulp-mocha');
 var fs = require("fs");
@@ -20,10 +27,16 @@ gulp.task('sass', function () {
     if (!sass) {
         console.error("You must install gulp-sass!");
     }
+    if (!sourcemaps) {
+        console.error("You must install gulp-sourcemaps!");
+    }
     gulp.src('./www/scss/*.scss')
+        .pipe(sourcemaps.init())
         .pipe(sass({
             errLogToConsole: true,
+            sourcemaps: true,
         }))
+        .pipe(sourcemaps.write())
         .pipe(gulp.dest('./www/style'));
 });
 
