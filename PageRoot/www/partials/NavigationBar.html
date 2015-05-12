@@ -14,13 +14,19 @@
             <li class="level2" ng-repeat="anchor in anchors">
                 <a ng-click="jumpTo(anchor.id)" class="anchor-icon">
                     <div class="figure" deepin-ui-svg-image="{{appInfo.markdownDir}}/{{anchor.smallIcon}}" ng-mouseenter="showTooltip(anchor.text, $event);" ng-mouseleave="showTooltip('', $event);"></div>
-                    <span>{{anchor.text}}</span>
+                    <div class="header-box level2">
+                        <span class="header-chapter"></span>
+                        <span class="header-text">{{anchor.text}}</span>
+                    </div>
                 </a>
 
                 <ol ng-if="anchor.children" class="level3">
                     <li class="level3" ng-repeat="anchor2 in anchor.children">
                         <a ng-click="jumpTo(anchor2.id)">
-                            <span>{{anchor2.text}}</span>
+                            <div class="header-box level3">
+                                <span class="header-chapter"></span>
+                                <span class="header-text">{{anchor2.text}}</span>
+                            </div>
                         </a>
                     </li>
                 </ol>
