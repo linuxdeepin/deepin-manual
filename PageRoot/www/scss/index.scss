@@ -442,7 +442,7 @@ body {
         height: 100%;
 
         .current-section {
-            & > a > span {
+            & > a span {
                 color: $highlightColor;
             }
             svg {
@@ -478,8 +478,40 @@ body {
             counter-reset: item;
             li {
                 counter-increment: item;
-                a > span:before {
-                    content: counters(item, ".") ". ";
+                a {
+                    $chapterLv2Width: 24px;
+                    $chapterLv3Width: 28px;
+                    div.header-box {
+                        @include clearfix;
+                    }
+                    span.header-chapter:before {
+                        content: counters(item, ".") ". ";
+                    }
+
+                    // set .header-chapter
+                    span.header-chapter {
+                        float: left;
+                        display: block;
+                        text-align: center;
+                    }
+                    .header-box.level2 span.header-chapter {
+                        width: $chapterLv2Width;
+                    }
+                    .header-box.level3 span.header-chapter {
+                        width: $chapterLv3Width;
+                    }
+
+                    // set header-text
+                    span.header-text {
+                        display: block;
+                        float: left;
+                    }
+                    .header-box.level2 span.header-text {
+                        width: calc(100% - #{$chapterLv2Width});
+                    }
+                    .header-box.level3 span.header-text {
+                        width: calc(100% - #{$chapterLv3Width});
+                    }
                 }
             }
         }
@@ -789,7 +821,7 @@ body {
             img, .figure {
                 position: static;
             }
-            span {
+            .header-box {
                 display: none;
             }
         }
