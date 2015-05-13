@@ -39,12 +39,14 @@ $searchBoxMarginHorizontal: 50px;
 $navSwitchWidth: 15px;
 $navSwitchCompactWidth: 25px;
 
+$scrollbarVWidth: 8px;
+
 /*-------------------------------------------*/
 /* Global Style                              */
 /*-------------------------------------------*/
 // custom scrollbar
 ::-webkit-scrollbar {
-    width: 8px;  /* for vertical scrollbars */
+    width: $scrollbarVWidth;  /* for vertical scrollbars */
     height: 14px; /* for horizontal scrollbars */
 }
 
@@ -175,10 +177,10 @@ body {
     }
     .pageview-mode.compact-mode & {
         width: calc(100% - #{$windowBtnControlWidth} - #{$pvNavBarCompactWidth} - #{$navSwitchCompactWidth});
-        margin-left: $pvNavBarCompactWidth + #{$navSwitchCompactWidth};
+        margin-left: $pvNavBarCompactWidth + $navSwitchCompactWidth;
     }
     .overview-mode & {
-        width: calc(100% - #{$windowBtnControlWidth} - #{$logoWidthAndHeight});
+        width: calc(100% - #{$windowBtnControlWidth} - #{$logoWidthAndHeight} - #{$appIconMarginLeft});
         margin-left: $appIconMarginLeft + $logoWidthAndHeight;
     }
 }
@@ -608,7 +610,6 @@ body {
             }
 
             li.level3 {
-                text-indent: 0.5em;
                 line-height: 1.7em;
             }
         }
@@ -624,12 +625,13 @@ body {
         width: calc(100% - #{$pvNavBarWidth});
         height: calc(100% - #{$titleBarHeight});
         margin-top: $titleBarHeight;
+        overflow-y: auto;
         &:after {
             content: "";
             position: absolute;
             bottom: 0;
             height: 25px;
-            width: 100%;
+            width: calc(100% - #{$pvNavBarWidth} - #{$scrollbarVWidth});
             background: linear-gradient(to top, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
         }
     }
@@ -654,10 +656,10 @@ body {
         // display: none;
         position: absolute;
         top: $titleBarHeight;
-        width: $searchInputWidth + ($searchBoxMarginHorizontal * 2);
+        width: $searchInputWidth + $searchBoxMarginHorizontal * 2;
         left: $pvNavBarWidth;
         height: 35px;
-        margin: 0 calc((100% - #{$searchInputWidth} - ($searchBoxMarginHorizontal * 2) - #{$pvNavBarWidth}) / 2);
+        margin: 0 calc((100% - #{$searchInputWidth} - (#{$searchBoxMarginHorizontal} * 2) - #{$pvNavBarWidth}) / 2);
         z-index: 10050;
     }
 
@@ -704,8 +706,9 @@ body {
         opacity: 0;
         &.shadow-visible {
             opacity: 1;
-            margin: 0 calc(-100% + 164px);
             margin-top: -12px;
+            margin-left: -230px;
+            margin-right: -230px + $scrollbarVWidth;
             .search-mode & {
                 height: 38px;
                 background: #fff;
@@ -896,18 +899,21 @@ body {
 
     .search-input-box {
         &.shadow-visible {
-            margin: 0 calc(-100% + 88px);
-            margin-top: -12px;
+            margin-left: -306px;
+            margin-right: -306px + $scrollbarVWidth;
         }
     }
 
     .search-box-container {
-        margin: 0 calc((100% - #{$searchInputWidth} - ($searchBoxMarginHorizontal * 2) - #{$pvNavBarCompactWidth}) / 2);
+        margin: 0 calc((100% - #{$searchInputWidth} - (#{$searchBoxMarginHorizontal} * 2) - #{$pvNavBarCompactWidth}) / 2);
         left: $pvNavBarCompactWidth;
     }
 
     .manual-content-container {
         width: calc(100% - #{$pvNavBarCompactWidth});
+        &:after {
+            width: calc(100% - #{$pvNavBarCompactWidth} - #{$scrollbarVWidth});
+        }
     }
 }
 
@@ -1028,10 +1034,6 @@ body {
         background-color: darkmagenta;
     }
 
-    .move-handle-extra {
-        background-color: darkmagenta;
-    }
-
     .navigation-switch {
         background: orange;
     }
@@ -1052,8 +1054,8 @@ body {
 html:not([lang^="zh"]) {
     .pageview-mode:not(.compact-mode) {
         .move-handle {
-            width: calc(100% - $windowBtnControlWidth - #{$pvNavBarWidthNonChinese});
-            margin-left: $pvNavBarWidthNonChinese;
+            width: calc(100% - #{$windowBtnControlWidth} - #{$pvNavBarWidthNonChinese} - #{$navSwitchWidth});
+            margin-left: $pvNavBarWidthNonChinese + $navSwitchWidth;
         }
 
         .navigation-bar {
@@ -1062,17 +1064,20 @@ html:not([lang^="zh"]) {
 
         .manual-content-container {
             width: calc(100% - #{$pvNavBarWidthNonChinese});
+            &:after {
+                width: calc(100% - #{$pvNavBarWidthNonChinese} - #{$scrollbarVWidth});
+            }
         }
 
         .search-box-container {
             left: $pvNavBarWidthNonChinese;
-            margin: 0 calc((100% - #{$searchInputWidth} - ($searchBoxMarginHorizontal * 2) - #{$pvNavBarWidthNonChinese}) / 2);
+            margin: 0 calc((100% - #{$searchInputWidth} - (#{$searchBoxMarginHorizontal} * 2) - #{$pvNavBarWidthNonChinese}) / 2);
         }
 
         .search-input-box {
             &.shadow-visible {
-                margin: 0 calc(-100% + 189px);
-                margin-top: -12px;
+                margin-left: -230px + 25px;
+                margin-right: -222px + 25px;
             }
         }
     }
