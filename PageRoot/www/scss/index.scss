@@ -710,8 +710,8 @@ body {
         &.shadow-visible {
             opacity: 1;
             margin-top: -12px;
-            margin-left: -230px;
-            margin-right: -230px + $scrollbarVWidth;
+            margin-left: -205px;
+            margin-right: -205px + $scrollbarVWidth;
             .search-mode & {
                 height: 38px;
                 background: #fff;
@@ -897,8 +897,8 @@ body {
 
     .search-input-box {
         &.shadow-visible {
-            margin-left: -306px;
-            margin-right: -306px + $scrollbarVWidth;
+            margin-left: -281px;
+            margin-right: -281px + $scrollbarVWidth;
         }
     }
 
@@ -1071,12 +1071,11 @@ html:not([lang^="zh"]) {
             left: $pvNavBarWidthNonChinese;
             margin: 0 calc((100% - #{$searchInputWidth} - (#{$searchBoxMarginHorizontal} * 2) - #{$pvNavBarWidthNonChinese}) / 2);
         }
-
-        .search-input-box {
-            &.shadow-visible {
-                margin-left: -230px + 25px;
-                margin-right: -222px + 25px;
-            }
+    }
+    .compact-mode:not(.overview-mode) {
+        .search-input-box.shadow-visible {
+            margin-left: -306px;
+            margin-right: -306px + $scrollbarVWidth;
         }
     }
 }
