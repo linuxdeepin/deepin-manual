@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2015-05-12 10:21+0800\n"
+"PO-Revision-Date: 2015-05-14 14:22+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -24,6 +24,10 @@ msgstr "Search \""
 #: index.html:7
 msgid "TEXT_APP_TITLE"
 msgstr "DManual"
+
+#: SearchResult.html:15
+msgid "TEXT_ASK_FOR_HELP"
+msgstr "Deepin Wiki"
 
 #: FrameBtn.html:13
 msgid "TEXT_CLOSE"
@@ -47,7 +51,7 @@ msgstr "Minimize"
 
 #: SearchResult.html:14
 msgid "TEXT_NO_RESULT_GUIDE_MESSAGE"
-msgstr "Check your spelling and try again, or you can ask for help at Deepin Forum"
+msgstr "Change your keywords and try again, or you can check at"
 
 #: SearchResult.html:2
 msgid "TEXT_RETURN"
@@ -55,8 +59,4 @@ msgstr "Return"
 
 #: SearchResult.html:13
 msgid "TEXT_SORRY_NO_RESULT"
-msgstr "Sorry, we cannot find any results from the manual."
-
-#: SearchResult.html:15
-msgid "TEXT_VISIT_FORUM"
-msgstr "Visit Forum"
+msgstr "Sorry, we cannot find any results"

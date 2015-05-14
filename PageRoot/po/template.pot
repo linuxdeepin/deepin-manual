@@ -16,6 +16,10 @@ msgstr ""
 msgid "TEXT_APP_TITLE"
 msgstr ""
 
+#: SearchResult.html:15
+msgid "TEXT_ASK_FOR_HELP"
+msgstr ""
+
 #: FrameBtn.html:13
 msgid "TEXT_CLOSE"
 msgstr ""
@@ -46,8 +50,4 @@ msgstr ""
 
 #: SearchResult.html:13
 msgid "TEXT_SORRY_NO_RESULT"
-msgstr ""
-
-#: SearchResult.html:15
-msgid "TEXT_VISIT_FORUM"
 msgstr ""

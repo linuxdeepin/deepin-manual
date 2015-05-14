@@ -24,6 +24,10 @@ msgstr "在全文中搜索\""
 msgid "TEXT_APP_TITLE"
 msgstr "深度帮助手册"
 
+#: SearchResult.html:15
+msgid "TEXT_ASK_FOR_HELP"
+msgstr "访问百科"
+
 #: FrameBtn.html:13
 msgid "TEXT_CLOSE"
 msgstr "关闭"
@@ -46,7 +50,7 @@ msgstr "最小化"
 
 #: SearchResult.html:14
 msgid "TEXT_NO_RESULT_GUIDE_MESSAGE"
-msgstr "你可以检查拼写后再试，或者到Deepin论坛寻求帮助"
+msgstr "您可以调整关键字后再试或前往百科查找相关内容"
 
 #: SearchResult.html:2
 msgid "TEXT_RETURN"
@@ -54,8 +58,4 @@ msgstr "返回"
 
 #: SearchResult.html:13
 msgid "TEXT_SORRY_NO_RESULT"
-msgstr "没有您搜索的内容"
-
-#: SearchResult.html:15
-msgid "TEXT_VISIT_FORUM"
-msgstr "进入论坛"
+msgstr "很抱歉，没有您搜索的内容"

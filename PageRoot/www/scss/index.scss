@@ -420,6 +420,10 @@ body {
     }
 }
 
+.search-result-box {
+    height: 100%;
+}
+
 
 /*-------------------------------------------*/
 /* pageview mode style                       */
@@ -969,17 +973,56 @@ body {
     width: 100%;
 
     p, a {
+        font-size: 12px;
+    }
+
+    p {
+        color: #959595;
         display: block;
         font-size: 12px;
         text-align: center;
+        margin-top: 18px;
+        margin-bottom: 18px;
     }
+
     p.title {
+        color: #717171;
         font-size: 16px;
-        margin: 0.2em 0;
+        margin: 0;
+    }
+
+    .ask-for-help {
+        text-align: center;
+    }
+
+    a {
+        text-align: center;
+        outline: none;
+        padding: 3px 6px;
+        background: linear-gradient(to bottom, #fff 0%, #fafafa 100%);
+        border: 1px solid rgba(0,0,0,0.15);
+        border-radius: 3px;
+        cursor: pointer;
+        text-decoration: none;
+        color: #6d6d6d;
+        &:hover {
+            background: linear-gradient(to bottom, #d4efff 0%, #9ad7ff 100%);
+            border-color: #2ca7f8;
+            box-shadow: 0px 1px 0px 0px rgba(0,0,0,0.02),
+                  inset 0px 2px 0px 0px rgba(255,255,255,0.15),
+                  inset 0px 0px 0px 2px rgba(255,255,255,0.2)
+        }
+        &:active {
+            background: #68c3ff;
+            border-color: #4a9fff;
+            box-shadow: 0px 1px 0px 0px rgba(0,0,0,0.02),
+                  inset 0px 0px 0px 2px rgba(255,255,255,0.2)
+        }
     }
 
     .no-search-result-text {
         margin: auto;
+        margin-top: 208px;
     }
 }
 
