@@ -827,6 +827,8 @@ body {
         height: calc(100% - #{$ovNavBarHeight});
         margin-top: 0;
         overflow-y: auto;
+        -webkit-mask: linear-gradient(to bottom, rgba(0,0,0, 1) 95%, rgba(0,0,0, 0) 100%);
+
         @include disable-user-select;
     }
 
