@@ -635,7 +635,6 @@ body {
         height: calc(100% - #{$titleBarHeight});
         margin-top: $titleBarHeight;
         margin-right: $containerMarginRight;
-        overflow-y: auto;
         &:after {
             content: "";
             position: absolute;
@@ -1035,6 +1034,9 @@ body {
         }
         .manual-content {
             display: none;
+        }
+        .manual-content-container {
+            overflow-y: auto;
         }
     }
 }
