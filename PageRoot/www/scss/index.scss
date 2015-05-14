@@ -524,11 +524,12 @@ body {
                 counter-increment: item;
                 a {
                     $chapterLv2Width: 24px;
-                    $chapterLv3Width: 28px;
+                    $chapterLv3Width: 34px;
                     div.header-box {
                         @include clearfix;
                     }
                     span.header-chapter:before {
+                        padding-right: 4px;
                         content: counters(item, ".") ". ";
                     }
 
@@ -536,7 +537,7 @@ body {
                     span.header-chapter {
                         float: left;
                         display: block;
-                        text-align: center;
+                        text-align: right;
                     }
                     .header-box.level2 span.header-chapter {
                         width: $chapterLv2Width;
