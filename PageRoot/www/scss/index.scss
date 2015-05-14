@@ -39,7 +39,9 @@ $searchBoxMarginHorizontal: 50px;
 $navSwitchWidth: 15px;
 $navSwitchCompactWidth: 25px;
 
-$scrollbarVWidth: 8px;
+$scrollbarVWidth: 6px;
+
+$containerMarginRight: 2px;
 
 /*-------------------------------------------*/
 /* Global Style                              */
@@ -624,16 +626,17 @@ body {
     .manual-content-container {
         float: right;
         display: block;
-        width: calc(100% - #{$pvNavBarWidth});
+        width: calc(100% - #{$pvNavBarWidth} - #{$containerMarginRight});
         height: calc(100% - #{$titleBarHeight});
         margin-top: $titleBarHeight;
+        margin-right: $containerMarginRight;
         overflow-y: auto;
         &:after {
             content: "";
             position: absolute;
             bottom: 0;
             height: 25px;
-            width: calc(100% - #{$pvNavBarWidth} - #{$scrollbarVWidth});
+            width: calc(100% - #{$pvNavBarWidth} - #{$scrollbarVWidth} - #{$containerMarginRight});
             background: linear-gradient(to top, #ffffff 0%, rgba(255, 255, 255, 0) 100%);
         }
     }
@@ -710,7 +713,7 @@ body {
             opacity: 1;
             margin-top: -12px;
             margin-left: -205px;
-            margin-right: -205px + $scrollbarVWidth;
+            margin-right: -205px + $scrollbarVWidth + $containerMarginRight;
             .search-mode & {
                 height: 38px;
                 background: #fff;
@@ -897,7 +900,7 @@ body {
     .search-input-box {
         &.shadow-visible {
             margin-left: -281px;
-            margin-right: -281px + $scrollbarVWidth;
+            margin-right: -281px + $scrollbarVWidth - $containerMarginRight;
         }
     }
 
@@ -907,9 +910,9 @@ body {
     }
 
     .manual-content-container {
-        width: calc(100% - #{$pvNavBarCompactWidth});
+        width: calc(100% - #{$pvNavBarCompactWidth} - #{$containerMarginRight});
         &:after {
-            width: calc(100% - #{$pvNavBarCompactWidth} - #{$scrollbarVWidth});
+            width: calc(100% - #{$pvNavBarCompactWidth} - #{$scrollbarVWidth} - #{$containerMarginRight});
         }
     }
 }
@@ -1060,9 +1063,9 @@ html:not([lang^="zh"]) {
         }
 
         .manual-content-container {
-            width: calc(100% - #{$pvNavBarWidthNonChinese});
+            width: calc(100% - #{$pvNavBarWidthNonChinese} - #{$containerMarginRight});
             &:after {
-                width: calc(100% - #{$pvNavBarWidthNonChinese} - #{$scrollbarVWidth});
+                width: calc(100% - #{$pvNavBarWidthNonChinese} - #{$scrollbarVWidth} - #{$containerMarginRight});
             }
         }
 
@@ -1074,7 +1077,7 @@ html:not([lang^="zh"]) {
     .compact-mode:not(.overview-mode) {
         .search-input-box.shadow-visible {
             margin-left: -306px;
-            margin-right: -306px + $scrollbarVWidth;
+            margin-right: -306px + $scrollbarVWidth - $containerMarginRight;
         }
     }
 }
