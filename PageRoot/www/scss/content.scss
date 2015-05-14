@@ -241,13 +241,17 @@ table.columns {
 }
 
 strong {
-    color: rgb(51, 51, 51);
+    color: #6d6d6d;
 }
 
 a {
     border-bottom: 1px solid #31a4fc;
     padding-bottom: 2px;
     text-decoration: none;
+}
+
+a:hover {
+    color: #2798ee;
 }
 
 
