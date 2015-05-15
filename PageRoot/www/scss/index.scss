@@ -58,8 +58,11 @@ $containerMarginRight: 2px;
 
 ::-webkit-scrollbar-thumb {
     min-height: 100px;
-    background-color: rgba(0, 0, 0, 0.5);
+    background-color: rgba(0, 0, 0, 0.4);
     border-radius: 4px;
+    &:hover {
+        background-color: rgba(0, 0, 0, 0.6);
+    }
 }
 
 /*-------------------------------------------*/
