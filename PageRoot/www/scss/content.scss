@@ -248,12 +248,24 @@ a {
     border-bottom: 1px solid #31a4fc;
     padding-bottom: 2px;
     text-decoration: none;
+    &.external {
+        span.icon {
+            content: "";
+            display: inline-block;
+            width: 20px;
+            height: 20px;
+            vertical-align: middle;
+            background-image: url("../resources/icons/external-link.svg");
+            &.active {
+                background-image: url("../resources/icons/external-link-active.svg");
+            }
+        }
+    }
 }
 
 a:hover {
     color: #2798ee;
 }
-
 
 // Header counters
 body {

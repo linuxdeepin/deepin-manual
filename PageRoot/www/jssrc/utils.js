@@ -80,10 +80,24 @@ let getAnchorItem = function(filtered, anchorId) {
     return null;
 };
 
+let bound = function(min, value, max) {
+    if ((min <= value) && (value <= max)) {
+        return value;
+    }
+    if (value < min) {
+        return min;
+    }
+    if (value > max) {
+        return max;
+    }
+    throw new Error("Cannot bound");
+};
+
 if (typeof exports !== "undefined") {
     exports.searchHighlight = searchHighlight;
     exports.highlight = highlight;
     exports.getContentStylePath = getContentStylePath;
     exports.getScriptPath = getScriptPath;
     exports.getAnchorItem = getAnchorItem;
+    exports.bound = bound;
 }

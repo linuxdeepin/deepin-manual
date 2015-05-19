@@ -65,6 +65,7 @@ angular.module("DManual")
                         }
                     }, 0);
                     emitEvent("navigationRelocateEvent", {offset: window.scrollY});
+                    emitEvent("contentScrollEvent");
                 });
                 window.addEventListener("click", function() {
                     emitEvent("searchBoxHideEvent", {

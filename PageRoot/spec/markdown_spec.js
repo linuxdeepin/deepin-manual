@@ -6,6 +6,8 @@ let expect = require("expect.js");
 let r = Renderer.getHTMLRenderer();
 let pr = Renderer.getPlainRenderer();
 let p = Renderer.processMarkdown;
+let etr = Renderer.extractTokenRange;
+let pel = Renderer.parseExternalLink;
 
 describe("Markdown HTML Renderer", function() {
     describe("Headers", function() {
@@ -101,7 +103,11 @@ describe("Markdown HTML Renderer", function() {
         });
 
         it("understands external dman pages", function() {
-
+            let src = "[Link Description](dman:///ReferenceApp#[Header 1|Header 8})";
+            let result = p(src).html;
+            expect(result).to.equal(
+                '<p><a href="javascript: window.parent.externalRead(\'dman:///ReferenceApp#[Header 1|Header 8}\');">Link Description</a></p>\n'
+            );
         });
 
         it("emits dbus signal", function() {
@@ -324,5 +330,62 @@ describe("Navigation Parsing", function() {
             { headerId: "H5", headerText: "H5", texts: [ 'H5 Text' ] },
         ]);
         expect(result.headers).to.eql(['H1', 'H2', 'H3', 'H2a', 'H2b', 'H3a', 'H4']);
+    });
+});
+
+describe("External Reader", function() {
+    describe("Extract Tokens Range", function() {
+        let tokens = [{
+            type: "heading",
+            text: "Header1|what.png|",
+            depth: 2,
+        }, {
+            type: "paragraph",
+            text: "Some text here.",
+        }, {
+            type: "other token",
+        }, {
+            type: "heading",
+            text: "Header2",
+            depth: 3,
+        }];
+
+        it("can do this", function() {
+            expect(etr(tokens, "Header1", "Header2")).to.eql([{
+                type: "heading",
+                text: "Header1|what.png|",
+                depth: 2,
+            }, {
+                type: "paragraph",
+                text: "Some text here.",
+            }, {
+                type: "other token",
+            }]);
+        });
+
+        it("can range till the end", function() {
+            expect(etr(tokens, "Header1", null)).to.eql(tokens);
+        });
+    });
+
+    describe("Parse External Link", function() {
+        it("can do this example", function() {
+            let link = "dman:///ReferenceApp#[Header 1|标题八}";
+            let baseDManDir = "file:///usr/share/dman/FirstApp/zh_CN";
+            expect(pel(link, baseDManDir)).to.eql({
+                markdownDir: "file:///usr/share/dman/ReferenceApp/zh_CN",
+                fromHeaderId: "Header-1",
+                toHeaderId: "标题八",
+            });
+        });
+        it("can range till the end", function() {
+            let link = "dman:///ReferenceApp#[Header 1|}";
+            let baseDManDir = "file:///usr/share/dman/FirstApp/zh_CN";
+            expect(pel(link, baseDManDir)).to.eql({
+                markdownDir: "file:///usr/share/dman/ReferenceApp/zh_CN",
+                fromHeaderId: "Header-1",
+                toHeaderId: null,
+            })
+        });
     });
 });

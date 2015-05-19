@@ -1,0 +1,11 @@
+@charset "utf-8";
+
+body {
+    width: 490px;
+}
+
+img {
+    &.block1, &.block2, &.block3 {
+        display: none !important;
+    }
+}

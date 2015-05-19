@@ -1,6 +1,7 @@
 "use strict";
 
 let marked = require("marked");
+let urlparse = require("url-parse");
 let MAX_INDEX_HEADER_LEVEL = 4;
 let MAX_NAV_HEADER_LEVEL = 3;
 
@@ -335,14 +336,20 @@ let getHTMLRenderer = function() {
     };
 
     renderer.link = function(href, title, text) {
+        let klass = "";
+        title = title || "";
+        let inLinkExtra = "";
+        let onclick = "";
+
         if (href.indexOf("#") === 0) {
-            href = "javascript: window.parent.jumpTo('" + href.substring(1) + "');";
+            href = `javascript: window.parent.jumpTo('${href.substring(1)}');`;
+        } else if (href.indexOf("dman:///") === 0) {
+            onclick = `window.parent.externalRead('${href}', this)`;
+            href = `javascript: void(0)`;
+            klass = "external";
+            inLinkExtra = `<span class="icon"></span>`;
         }
-        let out = '<a href="' + href + '"';
-        if (title) {
-            out += ' title="' + title + '"';
-        }
-        out += '>' + text + '</a>';
+        let out = `<a href="${href}" title="${title}" class="${klass}" onclick="${onclick}">${text}${inLinkExtra}</a>`;
         return out;
     };
 
@@ -388,7 +395,92 @@ let processMarkdown = function(src) {
         html: html,
         parsed: parsed,
     }
+};
 
+// External Reader
+let extractTokenRange = function(tokens, fromHeaderId, toHeaderId) {
+    // returns a list of tokens
+    let result = [];
+    let inRange = false;
+    tokenLoop: for (let token of tokens) {
+        if (token.type === "heading") {
+            let headerText = extractHeaderIcon(token.text, token.depth).text;
+            let headerId = normalizeAnchorName(headerText);
+            if (headerId === fromHeaderId) {
+                inRange = true;
+            }
+            if (headerId === toHeaderId) {
+                inRange = false;
+                break tokenLoop;
+            }
+        }
+        if (inRange) {
+            result.push(token);
+        }
+    }
+    // preserve the original links property
+    result.links = tokens.links;
+    return result;
+};
+
+let extractExternalHtml = function(src, fromHeaderId, toHeaderId) {
+    let lexer = new marked.Lexer();
+    let tokens;
+    try {
+        tokens = lexer.lex(src);
+    } catch (err) {
+        throw new Error(`Lexer Error ${err}`);
+    }
+    tokens = extractTokenRange(tokens, fromHeaderId, toHeaderId);
+
+    // render
+    let renderer = getHTMLRenderer();
+    let parser = new marked.Parser({
+        gfm: true,
+        tables: true,
+        breaks: false,
+        pedantic: false,
+        sanitize: false,
+        smartLists: false,
+        silent: false,
+        highlight: null,
+        langPrefix: 'lang-',
+        smartypants: false,
+        headerPrefix: '',
+        renderer: renderer,
+        xhtml: false,
+    });
+    return parser.parse(tokens);
+};
+
+let parseExternalLink = function(link, baseDManDir) {
+    // parse a link in the format of "dman://<AppName>#fromAnchorText|toAnchorText"
+    let parsed = urlparse(link);
+
+    // process the url of the external manual
+    let refName = parsed.pathname.substr(1);
+    let parts = baseDManDir.split("/");
+    parts[parts.length - 2] = refName;
+    let markdownDir = parts.join("/");
+
+    // process the anchors of the external manual
+    let hash = parsed.hash.substr(1);  // get rid of #
+    if (hash[0] !== "[" || hash[hash.length - 1] !== "}") {
+        throw new SyntaxError(`Only Inclusive...Exclusive range is supported.`);
+    }
+
+    let rangeParts = hash.split("|");
+    if (rangeParts.length !== 2) {
+        throw new Error(`Multiple delimiters(|) found in the external link: ${link}`);
+    }
+    let fromHeaderId = normalizeAnchorName(rangeParts[0].substr(1));
+    let toHeaderId = normalizeAnchorName(rangeParts[1].substr(0, rangeParts[1].length - 1)) || null;
+
+    return {
+        markdownDir: markdownDir,
+        fromHeaderId: fromHeaderId,
+        toHeaderId: toHeaderId,
+    };
 };
 
 if (typeof exports !== "undefined") {
@@ -397,4 +489,7 @@ if (typeof exports !== "undefined") {
     exports.getPlainRenderer = getPlainRenderer;
     exports.processMarkdown = processMarkdown;
     exports.getSmallSvg = getSmallSvg;
+    exports.extractTokenRange = extractTokenRange;
+    exports.parseExternalLink = parseExternalLink;
+    exports.extractExternalHtml = extractExternalHtml;
 }

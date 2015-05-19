@@ -1,0 +1,13 @@
+<div id="ExternalReader"
+     ng-controller="ExternalReaderCtrl"
+     ng-show="shouldShowReader"
+     ng-style="{top: readerTop, height: readerHeight}"
+     class="{{readerClasses}}"
+    >
+    <iframe id="ExternalReaderContent"
+            srcdoc="{{html}}"
+            seamless
+            sandbox="allow-same-origin allow-scripts"
+            ng-style="{height: readerContentHeight}"
+            ></iframe>
+</div>
