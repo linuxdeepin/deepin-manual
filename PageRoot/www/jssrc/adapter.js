@@ -364,7 +364,7 @@ app.factory("AdapterService", function Adapter($log, $rootScope, $window) {
                 app.setFrameless(true);
                 app.setTransBackground(true);
                 app.setClosable(true);
-                app.showCenter();
+                app.showCurrentScreenCenter();
 
                 app.addEvent({
                     statechange: function() {
