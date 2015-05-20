@@ -537,9 +537,13 @@ body {
                     div.header-box {
                         @include clearfix;
                     }
-                    span.header-chapter:before {
+                    .level2 > span.header-chapter:before {
                         padding-right: 4px;
                         content: counters(item, ".") ". ";
+                    }
+                    .level3 span.header-chapter:before {
+                        padding-right: 7px;
+                        content: counters(item, ".") "  ";
                     }
 
                     // set .header-chapter
