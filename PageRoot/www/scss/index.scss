@@ -965,9 +965,11 @@ body {
         font-size: 13px;
         cursor: pointer;
         display: inline;
+        font-family: Arial, sans-serif, "Source Han Sans SC";
     }
     div.match-texts {
         color: #878787;
+        font-family: monospace;
         @include max-lines(3);
     }
 }
