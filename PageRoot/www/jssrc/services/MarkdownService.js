@@ -80,7 +80,7 @@ angular.module("DManual")
 
 
         // hold processed html code
-        let _initalized = false;
+        let _initialized = false;
         let _html = "";
         let _anchors = [];
         let _appInfo = Object.create(null);
@@ -116,7 +116,7 @@ angular.module("DManual")
                 _indices = parsed.indices;
                 _headers = parsed.headers;
                 _appInfo.markdownDir = markdownDir;
-                _initalized = true;
+                _initialized = true;
                 $rootScope.$broadcast("MarkdownProcessed");
             }, function(error) {
                 $log.error(`Markdown::load failed: ${error}`);
@@ -145,6 +145,6 @@ angular.module("DManual")
             getIndices: () => _indices,
             getAnchors: () => _anchors,
             getAppInfo: () => _appInfo,
-            isInitialized: () => _initalized,
+            isInitialized: () => _initialized,
         }
     });
