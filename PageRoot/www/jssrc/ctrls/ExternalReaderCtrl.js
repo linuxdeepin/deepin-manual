@@ -47,6 +47,9 @@ angular.module("DManual").controller("ExternalReaderCtrl",
     });
     $scope.$on("ExternalReaderClose", function(event, reason) {
         $log.log(`ExternalReaderClose, reason: ${reason}`);
+        if (iconEle) {
+            iconEle.classList.remove("active");
+        }
         $scope.html = "";
         $scope.$apply();
     });
@@ -57,15 +60,21 @@ angular.module("DManual").controller("ExternalReaderCtrl",
             fromHeaderId,
             toHeaderId,
         } = ExternalReaderService.parseExternalLink(link);
+        if (iconEle) {
+            // if previous anchor icon is still active
+            iconEle.classList.remove("active");
+        }
+        iconEle = linkEle.querySelector("span.icon");
         ExternalReaderService.loadExternalDManual(markdownDir, fromHeaderId, toHeaderId)
             .then(function(html) {
                 $rootScope.$broadcast("ExternalReaderContentReady", html);
+                iconEle.classList.add("active");
             }, function(error) {
                 let FAILED_TO_OPEN_EXTERNAL_TEXT = gettext("FAILED_TO_OPEN_EXTERNAL_TEXT");
                 $rootScope.$broadcast("ExternalReaderContentReady",
                     `<div style='color: red'>${FAILED_TO_OPEN_EXTERNAL_TEXT}</div>`);
+                iconEle.classList.add("active");
             });
-        iconEle = linkEle.querySelector("span.icon");
         let spaceholder = content.contentDocument.querySelector("footer.__spaceholder");
         let iconOffsetLeftToPage = iconEle.offsetLeft - spaceholder.offsetLeft;
         let pageWidth = parseInt(content.contentWindow.getComputedStyle(spaceholder).width);

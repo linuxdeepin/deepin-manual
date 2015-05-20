@@ -463,7 +463,7 @@
 
   <div style="text-align:left">[查看其它页面](dman:///deepin-movie#[概述|基本操作})</div>
   <div style="text-align:center">[查看其它页面](dman:///deepin-movie#[概述|移动播放窗口})</div>
-  <div style="text-align:right">[查看其它页面](dman:///deepin-movie#[概述|基本操作})</div>
+  <div style="text-align:right">[无效的外链](dman:///nonexistent#[概述|基本操作})</div>
 
 - 实现其它功能的特殊链接
 
