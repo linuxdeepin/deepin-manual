@@ -945,7 +945,7 @@ body {
     .search-input-box {
         &.shadow-visible {
             margin-left: -281px;
-            margin-right: -281px + $scrollbarVWidth - $containerMarginRight;
+            margin-right: -281px + $scrollbarVWidth + $containerMarginRight;
         }
     }
 
@@ -1163,7 +1163,7 @@ html:not([lang^="zh"]) {
     .compact-mode:not(.overview-mode) {
         .search-input-box.shadow-visible {
             margin-left: -306px;
-            margin-right: -306px + $scrollbarVWidth - $containerMarginRight;
+            margin-right: -306px + $scrollbarVWidth + $containerMarginRight;
         }
     }
 }
