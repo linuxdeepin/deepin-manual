@@ -4,19 +4,11 @@ msgstr ""
 "Content-Transfer-Encoding: 8bit\n"
 "Project-Id-Version: \n"
 
-#: SearchBox.html:25
-msgid "FULL_SEARCH_POST"
-msgstr ""
-
-#: SearchBox.html:23
-msgid "FULL_SEARCH_PRE"
-msgstr ""
-
 #: index.html:7
 msgid "TEXT_APP_TITLE"
 msgstr ""
 
-#: SearchResult.html:15
+#: SearchResult.html:16
 msgid "TEXT_ASK_FOR_HELP"
 msgstr ""
 
@@ -26,6 +18,18 @@ msgstr ""
 
 #: SearchBox.html:9
 msgid "TEXT_ENTER_KEYWORDS"
+msgstr ""
+
+#: scripts/bundle.js:44972
+msgid "TEXT_FAILED_TO_OPEN_EXTERNAL"
+msgstr ""
+
+#: SearchBox.html:25
+msgid "TEXT_FULL_SEARCH_POST"
+msgstr ""
+
+#: SearchBox.html:23
+msgid "TEXT_FULL_SEARCH_PRE"
 msgstr ""
 
 #: NavigationBar.html:7

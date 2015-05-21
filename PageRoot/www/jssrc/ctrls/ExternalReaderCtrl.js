@@ -70,9 +70,9 @@ angular.module("DManual").controller("ExternalReaderCtrl",
                 $rootScope.$broadcast("ExternalReaderContentReady", html);
                 iconEle.classList.add("active");
             }, function(error) {
-                let FAILED_TO_OPEN_EXTERNAL_TEXT = gettext("FAILED_TO_OPEN_EXTERNAL_TEXT");
+                let TEXT_FAILED_TO_OPEN_EXTERNAL = gettext("TEXT_FAILED_TO_OPEN_EXTERNAL");
                 $rootScope.$broadcast("ExternalReaderContentReady",
-                    `<div style='color: red'>${FAILED_TO_OPEN_EXTERNAL_TEXT}</div>`);
+                    `<div style='color: red'>${TEXT_FAILED_TO_OPEN_EXTERNAL}</div>`);
                 iconEle.classList.add("active");
             });
         let spaceholder = content.contentDocument.querySelector("footer.__spaceholder");

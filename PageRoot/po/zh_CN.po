@@ -12,19 +12,11 @@ msgstr ""
 "X-Generator: Poedit 1.7.5\n"
 "Plural-Forms: nplurals=1; plural=0;\n"
 
-#: SearchBox.html:25
-msgid "FULL_SEARCH_POST"
-msgstr "\""
-
-#: SearchBox.html:23
-msgid "FULL_SEARCH_PRE"
-msgstr "在全文中搜索\""
-
 #: index.html:7
 msgid "TEXT_APP_TITLE"
 msgstr "深度帮助手册"
 
-#: SearchResult.html:15
+#: SearchResult.html:16
 msgid "TEXT_ASK_FOR_HELP"
 msgstr "访问百科"
 
@@ -35,6 +27,18 @@ msgstr "关闭"
 #: SearchBox.html:9
 msgid "TEXT_ENTER_KEYWORDS"
 msgstr "请输入搜索关键字"
+
+#: scripts/bundle.js:44972
+msgid "TEXT_FAILED_TO_OPEN_EXTERNAL"
+msgstr "外部内容不可用"
+
+#: SearchBox.html:25
+msgid "TEXT_FULL_SEARCH_POST"
+msgstr "\""
+
+#: SearchBox.html:23
+msgid "TEXT_FULL_SEARCH_PRE"
+msgstr "在全文中搜索\""
 
 #: NavigationBar.html:7
 msgid "TEXT_MANUAL"

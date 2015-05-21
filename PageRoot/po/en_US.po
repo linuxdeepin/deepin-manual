@@ -2,7 +2,7 @@ msgid ""
 msgstr ""
 "Project-Id-Version: \n"
 "POT-Creation-Date: \n"
-"PO-Revision-Date: 2015-05-14 14:22+0800\n"
+"PO-Revision-Date: 2015-05-21 16:23+0800\n"
 "Last-Translator: \n"
 "Language-Team: \n"
 "Language: en_US\n"
@@ -13,19 +13,11 @@ msgstr ""
 "X-Poedit-Basepath: .\n"
 "Plural-Forms: nplurals=2; plural=(n != 1);\n"
 
-#: SearchBox.html:25
-msgid "FULL_SEARCH_POST"
-msgstr "\" in full text"
-
-#: SearchBox.html:23
-msgid "FULL_SEARCH_PRE"
-msgstr "Search \""
-
 #: index.html:7
 msgid "TEXT_APP_TITLE"
 msgstr "DManual"
 
-#: SearchResult.html:15
+#: SearchResult.html:16
 msgid "TEXT_ASK_FOR_HELP"
 msgstr "Deepin Wiki"
 
@@ -36,6 +28,18 @@ msgstr "Close"
 #: SearchBox.html:9
 msgid "TEXT_ENTER_KEYWORDS"
 msgstr "Enter keywords"
+
+#: scripts/bundle.js:44972
+msgid "TEXT_FAILED_TO_OPEN_EXTERNAL"
+msgstr "External contents are currently unavailable now."
+
+#: SearchBox.html:25
+msgid "TEXT_FULL_SEARCH_POST"
+msgstr "\" in full text"
+
+#: SearchBox.html:23
+msgid "TEXT_FULL_SEARCH_PRE"
+msgstr "Search \""
 
 #: NavigationBar.html:7
 msgid "TEXT_MANUAL"
