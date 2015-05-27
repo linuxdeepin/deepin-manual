@@ -181,20 +181,18 @@ angular.module("DManual").controller("SearchBoxCtrl",
 
         $scope.$watch("isPageview", function(isPageview) {
             if (isPageview && (!$scope.isSearchMode)) {
-                // to avoid animation
-                _searchInput.classList.add("slidedown");
-                $log.log("Show SearchBox: initial");
-
-                let hideTimeout;
                 if (AdapterService.isFirstRun()) {
-                    hideTimeout = 3000;
+                    // to avoid animation
+                    _searchInput.classList.add("slidedown");
+                    $log.log("Show SearchBox: initial");
+                    let hideTimeout = 3000;
+                    _showHidePromise = $timeout(function () {
+                        $scope.searchInputVisible = [false, `timeout after ${hideTimeout}ms`];
+                        _showHidePromise = null;
+                    }, hideTimeout);
                 } else {
-                    hideTimeout = 1500;
+                    _searchInputVisible = false;
                 }
-                _showHidePromise = $timeout(function() {
-                    $scope.searchInputVisible = [false, `timeout after ${hideTimeout}ms`];
-                    _showHidePromise = null;
-                }, hideTimeout);
             }
         });
 
@@ -205,6 +203,9 @@ angular.module("DManual").controller("SearchBoxCtrl",
         };
         $scope.onSearchBoxMouseLeave = function() {
             _mouseInSearchBox = false;
+            if ($window.document.activeElement !== _searchInput) {
+                $scope.searchInputVisible = [false, "searchbox-mouseleave"];
+            }
         };
         $scope.onSearchInputBlur = function() {
             if (!$scope.isPageview) {
