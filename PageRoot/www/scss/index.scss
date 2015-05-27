@@ -353,32 +353,43 @@ body {
         -webkit-appearance: none;
         height: 16px;
         width: 16px;
-        background-image: url("../resources/controls/dark_clear_normal.png");
+        background-image: url("../resources/controls/clear_normal.png");
         background-repeat: no-repeat;
         background-position: center;
+        margin-right: 2px;
+        .overview-mode & {
+            background-image: url("../resources/controls/dark_clear_normal.png");
+        }
     }
 
     &::-webkit-search-cancel-button:hover {
-        background-image: url("../resources/controls/dark_clear_hover.png");
+        background-image: url("../resources/controls/clear_hover.png");
+        .overview-mode & {
+            background-image: url("../resources/controls/dark_clear_hover.png");
+        }
     }
 
     &::-webkit-search-cancel-button:active {
-        background-image: url("../resources/controls/dark_clear_press.png");
+        background-image: url("../resources/controls/clear_press.png");
+        .overview-mode & {
+            background-image: url("../resources/controls/dark_clear_press.png");
+        }
     }
 }
 
 .search-suggestions-box {
     width: $searchInputWidth - 2px;
-    margin-top: 2px;
+    margin-top: 12px;
     position: absolute;
     display: none;
     // z-index: 50000;
     right: 52px;
     top: 60px;
     a {
-        color: #a4a4a4;
+        color: #474747;
         text-decoration: none;
     }
+
     // .search-input:hover + &,
     .search-input:focus + &,
     &:hover {
@@ -392,27 +403,28 @@ body {
         list-style-type: none;
         -webkit-user-select: none;
         user-select: none;
-        border-radius: 5px;
+        border-radius: 3px;
         color: #bdbdbd;
-        background-color: #191919;
+        background-color: #fff;
         border: 1px solid rgba(0,0,0,0.1);
         box-shadow: 0px 4px 9px rgba(0,0,0,0.15),
-                inset 0px 1px 0px rgba(255,255,255,0.1),
-                inset 0px 2px 0px rgba(255,255,255,0.05);
-        &:not(:empty) {
+                inset 0px 2px 0px rgba(255,255,255,0.1);
+        &:not(:empty),
+        &:not(:empty) .triangle {
             display: block;
         }
         & > li {
             padding: 2px 14px;
             margin: 5px 0;
             font-size: 12px;
-            color: #747474;
+            color: #474747;
             &:hover,
             &.active {
-                a {
+                a,
+                .highlight {
                     color: #fff;
                 }
-                background: rgba(0,0,0,0.2);
+                background: #49a6f7;
             }
         }
         & > li .highlight {
@@ -421,6 +433,34 @@ body {
         & > li > a {
             display: block;
             cursor: pointer;
+        }
+        .search-list-delim {
+            border-top: 1px solid #e3e3e3;
+            margin-left: 12px;
+            margin-right: 12px;
+        }
+    }
+    .triangle {
+        display: none;
+        position: absolute;
+        top: -16px;
+        left: 22px;
+        &:before,
+        &:after {
+            content: '';
+            width: 0;
+            height: 0;
+            top: 0;
+            left: 0;
+            position: absolute;
+            border: 10px solid transparent;
+        }
+        &:before {
+            border-bottom: 7px solid #d3d3d3;
+        }
+        &:after {
+            top: 1px;
+            border-bottom: 7px solid #fff;
         }
     }
 }
@@ -691,7 +731,7 @@ body {
         left: calc((100% - #{$searchInputWidth}) / 2);
 
         &:focus {
-            border-color: $theBlue;
+            border-color: #a4cef8;
         }
 
         &.slidedown {
@@ -908,7 +948,11 @@ body {
     .search-input {
         top: $titleBarHeight + $searchInputMarginTop;
         right: $searchInputMarginRight;
+        color: #8f8f8f;
         z-index: 10051;
+        &:focus {
+            border-color: #01bdff;
+        }
     }
 
     .app-icon {
@@ -923,6 +967,53 @@ body {
 
     .search-box-container {
         display: block;
+    }
+
+    .search-suggestions-box {
+        a {
+            color: #8f8f8f;
+        }
+        & > ul {
+            background-color: #191919;
+            border: 1px solid rgba(0,0,0,0.4);
+            box-shadow: 0px 4px 9px rgba(0,0,0,0.15),
+                    inset 0px 1px 0px rgba(0,0,0,0.1),
+                    inset 0px 2px 0px rgba(255,255,255,0.05);
+            & > li {
+                &:hover,
+                &.active {
+                    a,
+                    .highlight {
+                        color: #01bdff;
+                    }
+                    background: rgba(0,0,0,0.4);
+                }
+            }
+            .search-list-delim {
+                border-top-color: #282828;
+            }
+        }
+        .triangle {
+            position: absolute;
+            width: 0;
+            height: 0;
+            top: -16px;
+            border: 10px solid transparent;
+            border-bottom: 7px solid #000;
+            &:before,
+            &:after {
+                left: -10px;
+                border: 10px solid transparent;
+            }
+            &:before {
+                top: -9px;
+                border-bottom: 7px solid #242424;
+            }
+            &:after {
+                top: -7px;
+                border-bottom: 7px solid #191919;
+            }
+        }
     }
 }
 

@@ -14,10 +14,12 @@
 
         <div id="SuggestionsBox" class="search-suggestions-box">
             <ul id="Suggestions" ng-if="suggestions.length">
+                <div class="triangle"></div>
                 <li ng-repeat="suggestion in suggestions" ng-class="{active: $index === currentIndex}">
                     <a ng-click="jumpTo(suggestion.anchorId)"
                        ng-bind-html="suggestion.anchorHtmlText"></a>
                 </li>
+                <div class="search-list-delim"></div>
                 <li ng-class="{active: suggestions.length === currentIndex}">
                     <a>
                         {{ 'TEXT_FULL_SEARCH_PRE'|translate }}
