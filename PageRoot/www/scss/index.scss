@@ -781,6 +781,10 @@ body {
 
     span.triangles {
         position: absolute;
+        display: none;
+        &.active {
+            display: block;
+        }
 
         > span {
             width: 0;

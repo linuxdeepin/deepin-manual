@@ -5,7 +5,7 @@ let {
 } = require("../utils");
 
 angular.module("DManual").controller("ExternalReaderCtrl",
-    function($scope, $log, $sce, $window, $rootScope, gettext,
+    function($scope, $log, $sce, $window, $rootScope, gettextCatalog,
              ExternalReaderService) {
     let iframe = $window.document.getElementById("ExternalReaderContent");
     let iconEle = null;
@@ -52,6 +52,9 @@ angular.module("DManual").controller("ExternalReaderCtrl",
         if (iconEle) {
             iconEle.classList.remove("active");
         }
+        if (trianglesEle) {
+            trianglesEle.classList.remove("active");
+        }
         $scope.html = "";
         $scope.$apply();
     });
@@ -71,11 +74,13 @@ angular.module("DManual").controller("ExternalReaderCtrl",
             .then(function(html) {
                 $rootScope.$broadcast("ExternalReaderContentReady", html);
                 iconEle.classList.add("active");
+                trianglesEle.classList.add("active");
             }, function(error) {
-                let TEXT_FAILED_TO_OPEN_EXTERNAL = gettext("TEXT_FAILED_TO_OPEN_EXTERNAL");
+                let TEXT_FAILED_TO_OPEN_EXTERNAL = gettextCatalog.getString("TEXT_FAILED_TO_OPEN_EXTERNAL");
                 $rootScope.$broadcast("ExternalReaderContentReady",
                     `<div style='color: red'>${TEXT_FAILED_TO_OPEN_EXTERNAL}</div>`);
                 iconEle.classList.add("active");
+                trianglesEle.classList.add("active");
             });
         let spaceholder = content.contentDocument.querySelector("footer.__spaceholder");
         let iconOffsetLeftToPage = iconEle.offsetLeft - spaceholder.offsetLeft;

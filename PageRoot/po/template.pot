@@ -20,7 +20,9 @@ msgstr ""
 msgid "TEXT_ENTER_KEYWORDS"
 msgstr ""
 
-#: scripts/bundle.js:44972
+#: jssrc/ctrls/ExternalReaderCtrl.js:75
+#: scripts/bundle.js:45353
+#: scripts/bundle.min.js:45353
 msgid "TEXT_FAILED_TO_OPEN_EXTERNAL"
 msgstr ""
 
