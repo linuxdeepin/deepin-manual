@@ -766,6 +766,7 @@ body {
         max-height: 310px;
         width: $externalReaderWidth;
         line-height: 0;
+        border: 1px solid #bbb;
         border-radius: 5px;
         &.onLeft {
             left: calc(50% - #{$externalReaderWidth} / 2 - #{$externalReaderWidth} / 2 / 3);
@@ -775,6 +776,32 @@ body {
         }
         &.onRight {
             left: calc(50% - #{$externalReaderWidth} / 2 + #{$externalReaderWidth} / 2 / 3);
+        }
+    }
+
+    span.triangles {
+        position: absolute;
+
+        > span {
+            width: 0;
+            height: 0;
+            top: 0;
+            left: 0;
+            border-left: 6px solid transparent;
+            border-right: 6px solid transparent;
+            position: absolute;
+            &.white {
+                border-bottom: 6px solid white;
+            }
+            &.grey {
+                top: -1px;
+                border-bottom: 6px solid #bbb;
+            }
+        }
+
+        &.onTop {
+            -webkit-transform: rotate(0.5turn);
+            transform: rotate(0.5turn);
         }
     }
 

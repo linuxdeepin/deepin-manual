@@ -11,6 +11,7 @@ angular.module("DManual").controller("ExternalReaderCtrl",
     let iconEle = null;
     let content = $window.document.getElementById("Content");
     let contentBody = null;
+    let trianglesEle = $window.document.querySelector("span.triangles");
 
     $scope.readerTop = "0";
     $scope.readerClasses = "";
@@ -28,7 +29,8 @@ angular.module("DManual").controller("ExternalReaderCtrl",
                 310 - 48 /* marginTop + marginBottom */);
             $scope.readerHeight = readerContentHeight + "px";
             if ($scope.readerClasses.includes("onTop")) {
-                $scope.readerTop = `${iconEle.offsetTop - contentBody.scrollTop - parseInt($scope.readerHeight) - 58}px`;
+                $scope.readerTop = `${iconEle.offsetTop - contentBody.scrollTop
+                            - bound(100, parseInt($scope.readerHeight), 310) - 58}px`;
             } else {
                 $scope.readerTop = `${iconEle.offsetTop - contentBody.scrollTop + 30}px`;
             }
@@ -77,6 +79,7 @@ angular.module("DManual").controller("ExternalReaderCtrl",
             });
         let spaceholder = content.contentDocument.querySelector("footer.__spaceholder");
         let iconOffsetLeftToPage = iconEle.offsetLeft - spaceholder.offsetLeft;
+        trianglesEle.style.left = iconEle.offsetLeft + 3 + "px";
         let pageWidth = parseInt(content.contentWindow.getComputedStyle(spaceholder).width);
         let klass;
 
@@ -96,9 +99,18 @@ angular.module("DManual").controller("ExternalReaderCtrl",
         let iconOffsetTopToPage = iconEle.offsetTop - contentBody.scrollTop;
         let pageHeight = parseInt($window.getComputedStyle(content)["height"]);
         let onTop = iconOffsetTopToPage >= (pageHeight / 2);
+        trianglesEle.classList.remove("onTop");
+        trianglesEle.classList.remove("onBottom");
         if (onTop) {
+            // compensate for rotate
+            trianglesEle.style.left = parseInt(trianglesEle.style.left) + 11 + "px";
+            trianglesEle.style.top = iconOffsetTopToPage - 37 + 12 + 22 + "px";
+            trianglesEle.classList.add("onTop");
             klass += " onTop";
         } else {
+            // compensate for transform rotate
+            trianglesEle.style.top = iconOffsetTopToPage + 37 - 12 + "px";
+            trianglesEle.classList.add("onBottom");
             klass += " onBottom";
         }
 
