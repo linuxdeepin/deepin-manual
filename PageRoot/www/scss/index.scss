@@ -49,7 +49,7 @@ $containerMarginRight: 2px;
 // custom scrollbar
 ::-webkit-scrollbar {
     width: $scrollbarVWidth;  /* for vertical scrollbars */
-    height: 14px; /* for horizontal scrollbars */
+    height: $scrollbarVWidth; /* for horizontal scrollbars */
 }
 
 ::-webkit-scrollbar-track {
@@ -756,14 +756,16 @@ body {
         }
     }
     $externalReaderWidth: 524px;
+    $externalReaderPaddingVertical: 24px;
+    $externalReaderBorderWidthVertical: 1px;
 
     #ExternalReader {
         position: absolute;
         background-color: white;
-        padding: 24px 2px 24px 0;
-        box-shadow: 0 0 10px grey;
-        min-height: 100px;
-        max-height: 310px;
+        padding: $externalReaderPaddingVertical 2px $externalReaderPaddingVertical 0;
+        box-shadow: 0 0 10px #ddd;
+        min-height: 100px - $externalReaderPaddingVertical * 2 - $externalReaderBorderWidthVertical * 2;
+        max-height: 310px - $externalReaderPaddingVertical * 2 - $externalReaderBorderWidthVertical * 2;
         width: $externalReaderWidth;
         line-height: 0;
         border: 1px solid #bbb;

@@ -4,6 +4,16 @@ let {
     bound,
 } = require("../utils");
 
+const READER_MAX_HEIGHT = 310;
+const READER_MIN_HEIGHT = 100;
+const READER_BORDER_VERTICAL = 1;
+const READER_PADDING_VERTICAL = 24;
+const ICON_HEIGHT = 20;
+const ICON_WIDTH = 20;
+const ICON_VERTICAL_DISTANCE = 10;
+const TRIANGLE_HEIGHT = 7;
+const TRIANGLE_WIDTH = 12;
+
 angular.module("DManual").controller("ExternalReaderCtrl",
     function($scope, $log, $sce, $window, $rootScope, gettextCatalog,
              ExternalReaderService) {
@@ -12,31 +22,10 @@ angular.module("DManual").controller("ExternalReaderCtrl",
     let content = $window.document.getElementById("Content");
     let contentBody = null;
     let trianglesEle = $window.document.querySelector("span.triangles");
+    let spaceholder = null;
 
     $scope.readerTop = "0";
     $scope.readerClasses = "";
-
-    angular.element(content).bind("load", function() {
-        contentBody = content.contentDocument.body;
-
-        angular.element(iframe).bind("load", function() {
-            angular.element(iframe.contentWindow).bind("blur", function() {
-                $rootScope.$broadcast("ExternalReaderClose", "reader-blur");
-            });
-            let readerContentHeight = iframe.contentDocument.body.clientHeight;
-            readerContentHeight = bound(100 - 48 /* marginTop + marginBottom */,
-                readerContentHeight,
-                310 - 48 /* marginTop + marginBottom */);
-            $scope.readerHeight = readerContentHeight + "px";
-            if ($scope.readerClasses.includes("onTop")) {
-                $scope.readerTop = `${iconEle.offsetTop - contentBody.scrollTop
-                            - bound(100, parseInt($scope.readerHeight), 310) - 58}px`;
-            } else {
-                $scope.readerTop = `${iconEle.offsetTop - contentBody.scrollTop + 30}px`;
-            }
-            $scope.$apply();
-        });
-    });
 
     $scope.html = "";
     Object.defineProperty($scope, "shouldShowReader", {
@@ -44,17 +33,26 @@ angular.module("DManual").controller("ExternalReaderCtrl",
     });
 
     $scope.$on("ExternalReaderContentReady", function(event, html) {
+        iconEle.classList.add("active");
+        trianglesEle.classList.add("active");
         $scope.html = $sce.trustAsHtml(html);
         iframe.contentWindow.focus();
     });
-    $scope.$on("ExternalReaderClose", function(event, reason) {
-        $log.log(`ExternalReaderClose, reason: ${reason}`);
+
+    let resetReaderVisually = function() {
         if (iconEle) {
             iconEle.classList.remove("active");
         }
         if (trianglesEle) {
             trianglesEle.classList.remove("active");
+            trianglesEle.classList.remove("onTop");
+            trianglesEle.classList.remove("onBottom");
         }
+    };
+
+    $scope.$on("ExternalReaderClose", function(event, reason) {
+        $log.log(`ExternalReaderClose, reason: ${reason}`);
+        resetReaderVisually();
         $scope.html = "";
         $scope.$apply();
     });
@@ -65,36 +63,21 @@ angular.module("DManual").controller("ExternalReaderCtrl",
             fromHeaderId,
             toHeaderId,
         } = ExternalReaderService.parseExternalLink(link);
-        if (iconEle) {
-            // if previous anchor icon is still active
-            iconEle.classList.remove("active");
-        }
+
+        resetReaderVisually();
+
+        // find the new icon
         iconEle = linkEle.querySelector("span.icon");
-        ExternalReaderService.loadExternalDManual(markdownDir, fromHeaderId, toHeaderId)
-            .then(function(html) {
-                $rootScope.$broadcast("ExternalReaderContentReady", html);
-                iconEle.classList.add("active");
-                trianglesEle.classList.add("active");
-            }, function(error) {
-                let TEXT_FAILED_TO_OPEN_EXTERNAL = gettextCatalog.getString("TEXT_FAILED_TO_OPEN_EXTERNAL");
-                $rootScope.$broadcast("ExternalReaderContentReady",
-                    `<div style='color: red'>${TEXT_FAILED_TO_OPEN_EXTERNAL}</div>`);
-                iconEle.classList.add("active");
-                trianglesEle.classList.add("active");
-            });
-        let spaceholder = content.contentDocument.querySelector("footer.__spaceholder");
+
         let iconOffsetLeftToPage = iconEle.offsetLeft - spaceholder.offsetLeft;
-        trianglesEle.style.left = iconEle.offsetLeft + 3 + "px";
+
+        // determine reader on left/center/right
         let pageWidth = parseInt(content.contentWindow.getComputedStyle(spaceholder).width);
         let klass;
 
-        // make sure this is valid
-        // determine reader on left/center/right
         if ((0 <= iconOffsetLeftToPage) && (iconOffsetLeftToPage < pageWidth / 3)) {
-            // left
             klass = "onLeft";
         } else if ((pageWidth / 3 < iconOffsetLeftToPage) && (iconOffsetLeftToPage < pageWidth / 3 * 2)) {
-            // center
             klass = "onCenter";
         } else {
             klass = "onRight";
@@ -103,25 +86,67 @@ angular.module("DManual").controller("ExternalReaderCtrl",
         // determine reader on top/bottom
         let iconOffsetTopToPage = iconEle.offsetTop - contentBody.scrollTop;
         let pageHeight = parseInt($window.getComputedStyle(content)["height"]);
-        let onTop = iconOffsetTopToPage >= (pageHeight / 2);
-        trianglesEle.classList.remove("onTop");
-        trianglesEle.classList.remove("onBottom");
+        let onTop = (iconOffsetTopToPage + ICON_HEIGHT / 2) >= (pageHeight / 2);
+
         if (onTop) {
-            // compensate for rotate
-            trianglesEle.style.left = parseInt(trianglesEle.style.left) + 11 + "px";
-            trianglesEle.style.top = iconOffsetTopToPage - 37 + 12 + 22 + "px";
-            trianglesEle.classList.add("onTop");
             klass += " onTop";
+            trianglesEle.classList.add("onTop");
+            trianglesEle.style.left = (iconEle.offsetLeft + ICON_WIDTH / 2) - TRIANGLE_WIDTH / 2 + TRIANGLE_WIDTH + "px";
+            trianglesEle.style.top = iconOffsetTopToPage
+                - (ICON_VERTICAL_DISTANCE - TRIANGLE_HEIGHT)
+                - READER_BORDER_VERTICAL * 2 + "px";
         } else {
-            // compensate for transform rotate
-            trianglesEle.style.top = iconOffsetTopToPage + 37 - 12 + "px";
-            trianglesEle.classList.add("onBottom");
             klass += " onBottom";
+            trianglesEle.classList.add("onBottom");
+            trianglesEle.style.left = (iconEle.offsetLeft + ICON_WIDTH / 2) - TRIANGLE_WIDTH / 2 + "px";
+            trianglesEle.style.top = iconOffsetTopToPage
+                + (ICON_HEIGHT + ICON_VERTICAL_DISTANCE - TRIANGLE_HEIGHT)
+                + READER_BORDER_VERTICAL * 2 + "px";
         }
+
+        ExternalReaderService.loadExternalDManual(markdownDir, fromHeaderId, toHeaderId)
+            .then(function(html) {
+                $rootScope.$broadcast("ExternalReaderContentReady", html);
+            }, function(error) {
+                let TEXT_FAILED_TO_OPEN_EXTERNAL = gettextCatalog.getString("TEXT_FAILED_TO_OPEN_EXTERNAL");
+                $rootScope.$broadcast("ExternalReaderContentReady",
+                    `<div style='color: red'>${TEXT_FAILED_TO_OPEN_EXTERNAL}</div>`);
+            });
 
         $scope.readerClasses = klass;
     };
     $window.externalRead = $scope.externalRead;
+
+    angular.element(content).bind("load", function() {
+        contentBody = content.contentDocument.body;
+        spaceholder = content.contentDocument.querySelector("footer.__spaceholder");
+
+        angular.element(iframe).bind("load", function() {
+            // When the contentWindow loses focus, hide the external reader.
+            angular.element(iframe.contentWindow).bind("blur", function() {
+                $rootScope.$broadcast("ExternalReaderClose", "reader-blur");
+            });
+
+            let readerContentHeight = iframe.contentDocument.body.clientHeight;
+            readerContentHeight = bound(
+                READER_MIN_HEIGHT - (READER_PADDING_VERTICAL * 2 + READER_BORDER_VERTICAL * 2),
+                readerContentHeight,
+                READER_MAX_HEIGHT - (READER_PADDING_VERTICAL * 2 + READER_BORDER_VERTICAL * 2));
+
+            let readerBoxHeight = readerContentHeight + (READER_PADDING_VERTICAL * 2 + READER_BORDER_VERTICAL * 2);
+
+            let iconOffsetTopToPage = iconEle.offsetTop - contentBody.scrollTop;
+            let readerTop;
+            if ($scope.readerClasses.includes("onTop")) {
+                readerTop = iconOffsetTopToPage - readerBoxHeight - ICON_VERTICAL_DISTANCE;
+            } else {
+                readerTop = iconOffsetTopToPage + ICON_HEIGHT + ICON_VERTICAL_DISTANCE;
+            }
+            $scope.readerHeight = readerContentHeight + "px";
+            $scope.readerTop = `${readerTop}px`;
+            $scope.$apply();
+        });
+    });
 
     angular.element($window).bind("contentScrollEvent", (event) => {
         $scope.$emit("ExternalReaderClose", "content-scrolled");
