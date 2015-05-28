@@ -21,7 +21,7 @@
                 </li>
                 <div class="search-list-delim"></div>
                 <li ng-class="{active: suggestions.length === currentIndex}">
-                    <a>
+                    <a ng-click="doFullTextSearch(searchTerm)">
                         {{ 'TEXT_FULL_SEARCH_PRE'|translate }}
                         {{ searchTerm }}
                         {{ 'TEXT_FULL_SEARCH_POST'|translate }}

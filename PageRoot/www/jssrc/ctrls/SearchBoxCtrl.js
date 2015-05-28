@@ -43,6 +43,12 @@ angular.module("DManual").controller("SearchBoxCtrl",
             }
         };
 
+        $scope.doFullTextSearch = function(searchTerm) {
+            if (searchTerm.trim()) {
+                $rootScope.$broadcast("searchTermChanged", searchTerm);
+            }
+        };
+
         $scope.onKeydown = function($innerScope, $event) {
             if ($event.keyCode === Keyboard.ENTER) {
                 $event.preventDefault();
@@ -50,7 +56,7 @@ angular.module("DManual").controller("SearchBoxCtrl",
                     return;
                 }
                 if ($scope.currentIndex === -1 || $scope.currentIndex === $scope.suggestions.length) {
-                    $rootScope.$broadcast("searchTermChanged", $scope.searchTerm);
+                    $scope.doFullTextSearch($scope.searchTerm);
                 } else {
                     $scope.jumpTo($scope.suggestions[$scope.currentIndex].anchorId);
                 }
