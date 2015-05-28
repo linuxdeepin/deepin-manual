@@ -126,7 +126,7 @@ class Bridge(QObject):
 
     @pyqtSlot(str)
     def openExternalBrowser(self, url: str):
-        QDesktopServices.openUrl(QUrl("http://bbs.deepin.org/"))
+        QDesktopServices.openUrl(QUrl(url))
 
     @pyqtSlot()
     def cleanup(self):

@@ -97,7 +97,7 @@ app.factory("AdapterService", function Adapter($log, $rootScope, $window) {
                 }
             }
         };
-        let openExternalBrowser = function() {
+        let openExternalBrowser = function(url) {
             switch (getShellType()) {
                 case "Oxide": {
                     if ($window.oxide) {
@@ -111,7 +111,7 @@ app.factory("AdapterService", function Adapter($log, $rootScope, $window) {
                     break;
                 }
                 case "DAE": {
-                    bridge_bridge.openExternalBrowser("WHATEVER");
+                    bridge_bridge.openExternalBrowser(url);
                     break;
                 }
                 default: {
