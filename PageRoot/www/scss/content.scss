@@ -8,6 +8,7 @@
     }
 }
 
+$linkHoverColor: #3C8BF2;
 $pageWidth: 672px;
 
 * {
@@ -245,16 +246,16 @@ strong {
 }
 
 a {
-    border-bottom: 1px solid #31a4fc;
+    border-bottom: 1px solid $linkHoverColor;
     padding-bottom: 2px;
     text-decoration: none;
     &.external {
         span.icon {
             display: inline-block;
-            background-color: white;
-            width: 20px;
-            height: 20px;
-            vertical-align: middle;
+            width: 12px;
+            height: 12px;
+            vertical-align: sub;
+            margin-left: 2px;
             background-image: url("../resources/icons/external-link.svg");
         }
         &:hover {
@@ -266,7 +267,7 @@ a {
 }
 
 a:hover {
-    color: #2798ee;
+    color: $linkHoverColor;
 }
 
 // Header counters
