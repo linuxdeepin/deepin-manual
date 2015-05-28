@@ -349,7 +349,7 @@ let getHTMLRenderer = function() {
             klass = "external";
             inLinkExtra = `<span class="icon"></span>`;
         }
-        let out = `<a href="${href}" title="${title}" class="${klass}" onclick="${onclick}">${text}${inLinkExtra}</a>`;
+        let out = `<a href="${href}" title="${title}" class="${klass}" onclick="${onclick}"><span class="text">${text}</span>${inLinkExtra}</a>`;
         return out;
     };
 

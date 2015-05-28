@@ -246,9 +246,12 @@ strong {
 }
 
 a {
-    border-bottom: 1px solid $linkHoverColor;
-    padding-bottom: 2px;
     text-decoration: none;
+
+    .text {
+        padding-bottom: 2px;
+        border-bottom: 1px solid $linkHoverColor;
+    }
     &.external {
         span.icon {
             display: inline-block;
@@ -258,16 +261,16 @@ a {
             margin-left: 2px;
             background-image: url("../resources/icons/external-link.svg");
         }
-        &:hover {
-            span.icon {
-                background-image: url("../resources/icons/external-link-active.svg");
-            }
-        }
     }
 }
 
 a:hover {
-    color: $linkHoverColor;
+    .text {
+        color: $linkHoverColor;
+    }
+    &.external span.icon {
+        background-image: url("../resources/icons/external-link-active.svg");
+    }
 }
 
 // Header counters

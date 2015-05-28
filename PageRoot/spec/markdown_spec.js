@@ -98,7 +98,7 @@ describe("Markdown HTML Renderer", function() {
             let src = "[Link Description](#Test)";
             let result = p(src).html;
             expect(result).to.equal(
-                '<p><a href="javascript: window.parent.jumpTo(\'Test\');">Link Description</a></p>\n'
+                '<p><a href="javascript: window.parent.jumpTo(\'Test\');" title="" class="" onclick=""><span class="text">Link Description</span></a></p>\n'
             );
         });
 
@@ -106,7 +106,7 @@ describe("Markdown HTML Renderer", function() {
             let src = "[Link Description](dman:///ReferenceApp#[Header 1|Header 8})";
             let result = p(src).html;
             expect(result).to.equal(
-                '<p><a href="javascript: window.parent.externalRead(\'dman:///ReferenceApp#[Header 1|Header 8}\');">Link Description</a></p>\n'
+                '<p><a href="javascript: void(0)" title="" class="external" onclick="window.parent.externalRead(\'dman:///ReferenceApp#[Header 1|Header 8}\', this)"><span class="text">Link Description</span><span class="icon"></span></a></p>\n'
             );
         });
 
@@ -349,9 +349,10 @@ describe("External Reader", function() {
             text: "Header2",
             depth: 3,
         }];
+        tokens.links = [];
 
         it("can do this", function() {
-            expect(etr(tokens, "Header1", "Header2")).to.eql([{
+            let expected = [{
                 type: "heading",
                 text: "Header1|what.png|",
                 depth: 2,
@@ -360,7 +361,9 @@ describe("External Reader", function() {
                 text: "Some text here.",
             }, {
                 type: "other token",
-            }]);
+            }];
+            expected.links = [];
+            expect(etr(tokens, "Header1", "Header2")).to.eql(expected);
         });
 
         it("can range till the end", function() {
