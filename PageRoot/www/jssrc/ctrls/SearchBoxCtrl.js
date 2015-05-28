@@ -209,9 +209,12 @@ angular.module("DManual").controller("SearchBoxCtrl",
         };
         $scope.onSearchBoxMouseLeave = function() {
             _mouseInSearchBox = false;
-            if ($window.document.activeElement !== _searchInput) {
-                $scope.searchInputVisible = [false, "searchbox-mouseleave"];
-            }
+            // It would become very hard to use the SearchInput hides when mouse moves away,
+            // so comment the following out.
+
+            //if ($window.document.activeElement !== _searchInput) {
+            //    $scope.searchInputVisible = [false, "searchbox-mouseleave"];
+            //}
         };
         $scope.onSearchInputBlur = function() {
             if (!$scope.isPageview) {
