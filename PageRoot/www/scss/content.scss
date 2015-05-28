@@ -251,11 +251,14 @@ a {
     &.external {
         span.icon {
             display: inline-block;
+            background-color: white;
             width: 20px;
             height: 20px;
             vertical-align: middle;
             background-image: url("../resources/icons/external-link.svg");
-            &.active {
+        }
+        &:hover {
+            span.icon {
                 background-image: url("../resources/icons/external-link-active.svg");
             }
         }

@@ -13,6 +13,7 @@ const ICON_WIDTH = 20;
 const ICON_VERTICAL_DISTANCE = 10;
 const TRIANGLE_HEIGHT = 7;
 const TRIANGLE_WIDTH = 12;
+const READER_PADDING_TO_PAGE_VERTICAL = 20;
 
 angular.module("DManual").controller("ExternalReaderCtrl",
     function($scope, $log, $sce, $window, $rootScope, gettextCatalog,
@@ -23,8 +24,10 @@ angular.module("DManual").controller("ExternalReaderCtrl",
     let contentBody = null;
     let trianglesEle = $window.document.querySelector("span.triangles");
     let spaceholder = null;
+    let readerBoxMaxHeight; // The max height, in px, that won't cut off the external reader
 
-    $scope.readerTop = "0";
+    $scope.readerTop = "auto";
+    $scope.readerBottom = "auto";
     $scope.readerClasses = "";
 
     $scope.html = "";
@@ -95,6 +98,12 @@ angular.module("DManual").controller("ExternalReaderCtrl",
             trianglesEle.style.top = iconOffsetTopToPage
                 - (ICON_VERTICAL_DISTANCE - TRIANGLE_HEIGHT)
                 - READER_BORDER_VERTICAL * 2 + "px";
+
+            let readerBottom = pageHeight - (iconOffsetTopToPage - ICON_VERTICAL_DISTANCE);
+            readerBoxMaxHeight = (pageHeight - readerBottom) - READER_PADDING_TO_PAGE_VERTICAL;
+            $scope.readerTop = "auto";
+            $scope.readerBottom = `${readerBottom}px`;
+
         } else {
             klass += " onBottom";
             trianglesEle.classList.add("onBottom");
@@ -102,6 +111,11 @@ angular.module("DManual").controller("ExternalReaderCtrl",
             trianglesEle.style.top = iconOffsetTopToPage
                 + (ICON_HEIGHT + ICON_VERTICAL_DISTANCE - TRIANGLE_HEIGHT)
                 + READER_BORDER_VERTICAL * 2 + "px";
+
+            let readerTop = iconOffsetTopToPage + ICON_HEIGHT + ICON_VERTICAL_DISTANCE;
+            readerBoxMaxHeight = pageHeight - READER_PADDING_TO_PAGE_VERTICAL - readerTop;
+            $scope.readerTop = `${readerTop}px`;
+            $scope.readerBottom = "auto";
         }
 
         ExternalReaderService.loadExternalDManual(markdownDir, fromHeaderId, toHeaderId)
@@ -128,22 +142,17 @@ angular.module("DManual").controller("ExternalReaderCtrl",
             });
 
             let readerContentHeight = iframe.contentDocument.body.clientHeight;
+
+            let maxReaderContentHeight = Math.min(
+                readerBoxMaxHeight - (READER_PADDING_VERTICAL * 2 + READER_BORDER_VERTICAL * 2),
+                READER_MAX_HEIGHT - (READER_PADDING_VERTICAL * 2 + READER_BORDER_VERTICAL * 2)
+            );
             readerContentHeight = bound(
                 READER_MIN_HEIGHT - (READER_PADDING_VERTICAL * 2 + READER_BORDER_VERTICAL * 2),
                 readerContentHeight,
-                READER_MAX_HEIGHT - (READER_PADDING_VERTICAL * 2 + READER_BORDER_VERTICAL * 2));
+                maxReaderContentHeight);
 
-            let readerBoxHeight = readerContentHeight + (READER_PADDING_VERTICAL * 2 + READER_BORDER_VERTICAL * 2);
-
-            let iconOffsetTopToPage = iconEle.offsetTop - contentBody.scrollTop;
-            let readerTop;
-            if ($scope.readerClasses.includes("onTop")) {
-                readerTop = iconOffsetTopToPage - readerBoxHeight - ICON_VERTICAL_DISTANCE;
-            } else {
-                readerTop = iconOffsetTopToPage + ICON_HEIGHT + ICON_VERTICAL_DISTANCE;
-            }
             $scope.readerHeight = readerContentHeight + "px";
-            $scope.readerTop = `${readerTop}px`;
             $scope.$apply();
         });
     });
