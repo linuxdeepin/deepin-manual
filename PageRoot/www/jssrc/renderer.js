@@ -423,6 +423,12 @@ let extractTokenRange = function(tokens, fromHeaderId, toHeaderId) {
     return result;
 };
 
+let getHTMLRendererForExternal = function() {
+    let renderer = getHTMLRenderer();
+    renderer.link = (href, title, text) => text;
+    return renderer;
+};
+
 let extractExternalHtml = function(src, fromHeaderId, toHeaderId) {
     let lexer = new marked.Lexer();
     let tokens;
@@ -434,7 +440,7 @@ let extractExternalHtml = function(src, fromHeaderId, toHeaderId) {
     tokens = extractTokenRange(tokens, fromHeaderId, toHeaderId);
 
     // render
-    let renderer = getHTMLRenderer();
+    let renderer = getHTMLRendererForExternal();
     let parser = new marked.Parser({
         gfm: true,
         tables: true,
@@ -490,6 +496,7 @@ if (typeof exports !== "undefined") {
     exports.processMarkdown = processMarkdown;
     exports.getSmallSvg = getSmallSvg;
     exports.extractTokenRange = extractTokenRange;
+    exports.getHTMLRendererForExternal = getHTMLRendererForExternal;
     exports.parseExternalLink = parseExternalLink;
     exports.extractExternalHtml = extractExternalHtml;
 }

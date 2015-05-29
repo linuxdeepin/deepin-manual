@@ -2,6 +2,7 @@
 
 body {
     width: 490px;
+    color: #898989;
 }
 
 img {
@@ -11,4 +12,29 @@ img {
     &:not(.inline) {
         display: none !important;
     }
+}
+
+h2, h3, h4 {
+    list-style: none;
+    counter-reset: none;
+    color: #535353;
+    &::before {
+        counter-increment: none;
+        content: "";
+    }
+    &:first-child {
+        margin-top: 0;
+    }
+}
+
+footer.__spaceholder {
+    display: none;
+}
+
+table {
+    display: none !important;
+}
+
+img.HeaderIcon {
+    display: none !important;
 }

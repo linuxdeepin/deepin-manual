@@ -5,6 +5,7 @@ let expect = require("expect.js");
 
 let r = Renderer.getHTMLRenderer();
 let pr = Renderer.getPlainRenderer();
+let er = Renderer.getHTMLRendererForExternal();
 let p = Renderer.processMarkdown;
 let etr = Renderer.extractTokenRange;
 let pel = Renderer.parseExternalLink;
@@ -389,6 +390,12 @@ describe("External Reader", function() {
                 fromHeaderId: "Header-1",
                 toHeaderId: null,
             })
+        });
+    });
+
+    describe("Renderer", function() {
+        it("does not output clickable links", function() {
+            expect(er.link("href", "title", "text")).to.equal("text");
         });
     });
 });
