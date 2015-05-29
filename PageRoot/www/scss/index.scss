@@ -1099,13 +1099,13 @@ body {
         color: $highlightColor;
     }
     .btn-control-return {
-        position: absolute;
+        position: fixed;
         text-indent: -9999em;
         background: url("../resources/controls/return.png") no-repeat;
         width: 24px;
         height: 24px;
-        left: 16px;
-        top: -4px;
+        left: 16px + $pvNavBarCompactWidth;
+        top: $titleBarHeight - 4px;
         z-index: 10099;
     }
     a.anchor {
