@@ -360,7 +360,7 @@ app.factory("AdapterService", function Adapter($log, $rootScope, $window) {
                 };
                 app.setMinSize(970 + app.getShadowWidth() * 2 + languageExtraWidth(),
                                600 + app.getShadowWidth() * 2);
-                app.setResizerSize(5);
+                app.setResizerSize(2);
                 app.setFrameless(true);
                 app.setTransBackground(true);
                 app.setClosable(true);
