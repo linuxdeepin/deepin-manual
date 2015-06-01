@@ -12,11 +12,8 @@ let {
 } = require("../utils");
 
 angular.module("DManual").factory("ExternalReaderService", function(AdapterService, $log, GInput, $q, $window) {
-    let _loadExternalDManual = function(refManualUrl, fromHeaderText, toHeaderText) {
+    let _loadExternalDManual = function(refManualUrl, fromHeaderId, toHeaderId) {
         return $q(function(resolve, reject) {
-            let fromHeaderId = fromHeaderText ? normalizeAnchorName(fromHeaderText) : null;
-            let toHeaderId = toHeaderText ? normalizeAnchorName(toHeaderText) : null;
-
             GInput.load(`${refManualUrl}/index.md`).then(function(mdText) {
                 let stylePath = getContentStylePath($window.location.href);
                 let html = extractExternalHtml(mdText, fromHeaderId, toHeaderId);
