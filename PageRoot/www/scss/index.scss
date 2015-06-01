@@ -138,6 +138,7 @@ body {
     display: -webkit-flex;
     display: flex;
     > a {
+        z-index: 10051;
         display: block;
         margin: auto 0;
         margin-left: $appIconMarginLeft;
@@ -207,6 +208,11 @@ body {
     background-color: transparent;
 
     .pageview-mode & {
+        left: 0;
+        height: $logoWidthAndHeight;
+        width: $pvNavBarWidth;
+    }
+    .compact-mode & {
         display: none;
     }
     .overview-mode & {
@@ -1269,6 +1275,10 @@ html:not([lang^="zh"]) {
         .move-handle {
             width: calc(100% - #{$windowBtnControlWidth} - #{$pvNavBarWidthNonChinese} - #{$navSwitchWidth});
             margin-left: $pvNavBarWidthNonChinese + $navSwitchWidth;
+        }
+
+        .move-handle-extra {
+            width: $pvNavBarWidthNonChinese;
         }
 
         .navigation-bar {
