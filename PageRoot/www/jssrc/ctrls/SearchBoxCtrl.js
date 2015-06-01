@@ -19,6 +19,7 @@ angular.module("DManual").controller("SearchBoxCtrl",
         $scope.currentIndex = -1;
         $scope.searchTerm = "";
         $scope.suggestions = [];
+        $scope.disableSuggestions = false;
 
         let onMarkdownProcessed = function(event) {
             let headers = MarkdownService.getHeaders();
@@ -47,6 +48,7 @@ angular.module("DManual").controller("SearchBoxCtrl",
             if (searchTerm.trim()) {
                 $rootScope.$broadcast("searchTermChanged", searchTerm);
             }
+            $scope.disableSuggestions = true;
         };
 
         $scope.onKeydown = function($innerScope, $event) {
@@ -58,7 +60,7 @@ angular.module("DManual").controller("SearchBoxCtrl",
                 if ($scope.currentIndex === -1 || $scope.currentIndex === $scope.suggestions.length) {
                     $scope.doFullTextSearch($scope.searchTerm);
                 } else {
-                    $scope.jumpTo($scope.suggestions[$scope.currentIndex].anchorId);
+                    $scope.doJumpToSuggestion($scope.suggestions[$scope.currentIndex].anchorId);
                 }
                 document.querySelector('#SearchInput').blur();
             } else if ($event.keyCode === Keyboard.KEY_UP) {
@@ -74,6 +76,12 @@ angular.module("DManual").controller("SearchBoxCtrl",
             } else {
                 $scope.currentIndex = -1;
             }
+        };
+
+        $scope.doJumpToSuggestion = function(anchorId) {
+            $scope.jumpTo(anchorId);
+            $scope.disableSuggestions = true;
+            $scope.searchInputVisible = [false, "jumpto-suggestion"];
         };
 
         // search suggestions
@@ -133,10 +141,6 @@ angular.module("DManual").controller("SearchBoxCtrl",
                     _searchInput.blur();
                     _searchInputVisible = false;
                 }
-                try {
-                    // sometimes multiple applies will occur
-                    $scope.$digest();
-                } catch (e) {};
             },
         });
 
@@ -153,11 +157,13 @@ angular.module("DManual").controller("SearchBoxCtrl",
         $window.addEventListener("IFrameShowEventProxy", function(event) {
             // activate from iframe#Content
             $scope.searchInputVisible = [true, event.detail.reason];
+            $scope.$apply();
         });
 
         $window.addEventListener("searchBoxHideEvent", function(event) {
             // activate from iframe#Content
             $scope.searchInputVisible = [false, event.detail.reason];
+            $scope.$apply();
         });
 
         let unboundMatches = document.body.matches
@@ -183,6 +189,7 @@ angular.module("DManual").controller("SearchBoxCtrl",
             if (!inSearchBoxArea) {
                 $scope.searchInputVisible = [false, "rootframe-mousedown-elsewhere"];
             }
+            $scope.$apply();
         }, true);
 
         $scope.$watch("isPageview", function(isPageview) {
@@ -215,6 +222,9 @@ angular.module("DManual").controller("SearchBoxCtrl",
             //if ($window.document.activeElement !== _searchInput) {
             //    $scope.searchInputVisible = [false, "searchbox-mouseleave"];
             //}
+        };
+        $scope.onSearchInputFocus = function() {
+            $scope.disableSuggestions = false;
         };
         $scope.onSearchInputBlur = function() {
             if (!$scope.isPageview) {

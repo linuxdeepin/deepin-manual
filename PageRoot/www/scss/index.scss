@@ -1250,10 +1250,6 @@ body {
         background-color: orange;
     }
 
-    .search-box-container {
-        background: rgba(0,255,0, 0.75);
-    }
-
     .app-icon {
         background-color: green;
     }
@@ -1276,6 +1272,18 @@ body {
         .manual-content {
             background-color: green;
         }
+    }
+
+    .search-box-container {
+        background-color: rgba(100, 200, 128, 0.5);
+    }
+
+    .search-input-box {
+        background-color: rgba(200, 150, 58, 0.5);
+    }
+
+    #SuggestionsBox {
+        outline: blue 1px solid;
     }
 }
 

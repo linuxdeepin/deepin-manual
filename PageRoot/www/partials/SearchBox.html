@@ -9,14 +9,15 @@
                placeholder="{{ 'TEXT_ENTER_KEYWORDS'|translate }}"
                ng-keydown="onKeydown($scope,$event)"
                ng-class="{slidedown: searchInputVisible}"
+               ng-focus="onSearchInputFocus()"
                ng-blur="onSearchInputBlur()"
                ng-model="searchTerm" />
 
-        <div id="SuggestionsBox" class="search-suggestions-box">
-            <ul id="Suggestions" ng-if="suggestions.length">
+        <div id="SuggestionsBox" ng-if="suggestions.length && !disableSuggestions" class="search-suggestions-box">
+            <ul id="Suggestions">
                 <div class="triangle"></div>
                 <li ng-repeat="suggestion in suggestions" ng-class="{active: $index === currentIndex}">
-                    <a ng-click="jumpTo(suggestion.anchorId)"
+                    <a ng-click="doJumpToSuggestion(suggestion.anchorId)"
                        ng-bind-html="suggestion.anchorHtmlText"></a>
                 </li>
                 <div class="search-list-delim"></div>
