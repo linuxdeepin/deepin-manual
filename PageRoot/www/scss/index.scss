@@ -802,7 +802,7 @@ body {
         }
     }
     $externalReaderWidth: 524px;
-    $externalReaderPaddingVertical: 24px;
+    $externalReaderPaddingVertical: 14px;
     $externalReaderBorderWidthVertical: 1px;
 
     #ExternalReader {
@@ -824,6 +824,34 @@ body {
         }
         &.onRight {
             left: calc(50% - #{$externalReaderWidth} / 2 + #{$externalReaderWidth} / 2 / 3);
+        }
+        &::before {
+            background-image: linear-gradient(to bottom,
+                                            rgba(255,255,255,1) 0%,
+                                            rgba(255,255,255,0.9921568627450981) 25%,
+                                            rgba(255,255,255,0.7764705882352941) 50%,
+                                            rgba(255,255,255,0.4666666666666667) 75%,
+                                            rgba(255,255,255,0.16862745098039217) 100%);
+            top: 14px;
+            height: 10px;
+            width: calc(100% - #{$scrollbarVWidth} - #{$containerMarginRight});
+            content: "";
+            display: block;
+            position: absolute;
+        }
+        &::after {
+            background-image: linear-gradient(to top,
+                                            rgba(255,255,255,1) 0%,
+                                            rgba(255,255,255,0.9921568627450981) 25%,
+                                            rgba(255,255,255,0.7764705882352941) 50%,
+                                            rgba(255,255,255,0.4666666666666667) 75%,
+                                            rgba(255,255,255,0.16862745098039217) 100%);
+            bottom: 14px;
+            height: 10px;
+            width: calc(100% - #{$scrollbarVWidth} - #{$containerMarginRight});
+            content: "";
+            display: block;
+            position: absolute;
         }
     }
 
