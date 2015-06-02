@@ -1,8 +1,25 @@
 @charset "utf-8";
 
+$headerColor: #535353;
+$contentNormalColor: #898989;
+
+* {
+    font-size: 12px;
+    color: $contentNormalColor;
+}
+
 body {
     width: 490px;
-    color: #898989;
+    font-size: 12px;
+    color: $contentNormalColor;
+}
+
+h2, h3, h4, header {
+    font-size: 14px;
+    color: $headerColor;
+    line-height: 1.5em;
+    margin: 0.6em 0;
+    clear: both;
 }
 
 img {
@@ -14,17 +31,36 @@ img {
     }
 }
 
-h2, h3, h4 {
+h2 {
+    counter-reset: h4;
     list-style: none;
-    counter-reset: none;
-    color: #535353;
     &::before {
         counter-increment: none;
+        content: "";
+    }
+}
+
+h3 {
+    counter-reset: h4;
+    list-style: none;
+    color: #535353;
+    counter-increment: none;
+    &::before {
         content: "";
     }
     &:first-child {
         margin-top: 0;
     }
+}
+
+h4 {
+    counter-increment: h4;
+    &::before {
+        content: counters(h4, ".") ". ";
+    }
+
+    line-height: 1.5em;
+    margin: 0.6em 0;
 }
 
 footer.__spaceholder {
@@ -37,4 +73,14 @@ table {
 
 img.HeaderIcon {
     display: none !important;
+}
+
+// Paragraphs
+p {
+    margin: 0.6em 0;
+    line-height: 1.6em;
+}
+
+ul, ol {
+    margin: 0.2em 0;
 }

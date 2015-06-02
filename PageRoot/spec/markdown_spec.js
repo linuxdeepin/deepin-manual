@@ -5,9 +5,11 @@ let expect = require("expect.js");
 
 let r = Renderer.getHTMLRenderer();
 let pr = Renderer.getPlainRenderer();
-let er = Renderer.getHTMLRendererForExternal();
+let err = Renderer.getHTMLRendererForExternalRange();
+let ern = Renderer.getHTMLRendererForExternalNode();
 let p = Renderer.processMarkdown;
 let etr = Renderer.extractTokenRange;
+let extractExternalHtml = Renderer.extractExternalHtml;
 let pel = Renderer.parseExternalLink;
 
 describe("Markdown HTML Renderer", function() {
@@ -262,7 +264,7 @@ describe("Markdown Plain Renderer", function() {
     it("shouldn't ignore non-column control characters", function() {
         let txt = "Hello world!";
         expect(pr.paragraph(txt)).to.equal(txt);
-    })
+    });
 
 });
 
@@ -370,6 +372,56 @@ describe("External Reader", function() {
         it("can range till the end", function() {
             expect(etr(tokens, "Header1", null)).to.eql(tokens);
         });
+
+        it("can take only one node", function() {
+            let tokens = [{
+                type: "heading",
+                text: "Header1|what.png|",
+                depth: 2,
+            }, {
+                type: "paragraph",
+                text: "Some text here.",
+            }, {
+                type: "other token",
+            }, {
+                type: "heading",
+                text: "Header2",
+                depth: 2,
+            }];
+            tokens.links = [];
+
+            let expected = [{
+                type: "heading",
+                text: "Header1|what.png|",
+                depth: 2,
+            }, {
+                type: "paragraph",
+                text: "Some text here.",
+            }, {
+                type: "other token",
+            }];
+            expected.links = [];
+            expect(etr(tokens, "Header1", " NODE ")).to.eql(expected);
+        });
+
+        it("can take only one node (till the end)", function() {
+            let expected = [{
+                type: "heading",
+                text: "Header1|what.png|",
+                depth: 2,
+            }, {
+                type: "paragraph",
+                text: "Some text here.",
+            }, {
+                type: "other token",
+            }, {
+                type: "heading",
+                text: "Header2",
+                depth: 3,
+            }];
+            expected.links = [];
+            expect(etr(tokens, "Header1", " NODE ")).to.eql(expected);
+        });
     });
 
     describe("Parse External Link", function() {
@@ -382,6 +434,16 @@ describe("External Reader", function() {
                 toHeaderId: "标题八",
             });
         });
+        it("can specify a single node", function() {
+            let link = "dman:///ReferenceApp#Header 1";
+            let baseDManDir = "file:///usr/share/dman/FirstApp/zh_CN";
+            expect(pel(link, baseDManDir)).to.eql({
+                markdownDir: "file:///usr/share/dman/ReferenceApp/zh_CN",
+                fromHeaderId: "Header-1",
+                toHeaderId: " NODE ",
+            });
+        });
+
         it("can range till the end", function() {
             let link = "dman:///ReferenceApp#[Header 1|}";
             let baseDManDir = "file:///usr/share/dman/FirstApp/zh_CN";
@@ -395,7 +457,27 @@ describe("External Reader", function() {
 
     describe("Renderer", function() {
         it("does not output clickable links", function() {
-            expect(er.link("href", "title", "text")).to.equal("text");
+            expect(err.link("href", "title", "text")).to.equal("text");
+        });
+
+        it("does not output paragraphs that contains non inline images (node mode)", function() {
+            let output = extractExternalHtml(`## HEADER
+
+![2|WALLPAPER](wallpaper.jpg)
+
+Normal paragraph.
+`, "HEADER", " NODE ");
+            expect(output).to.equal(`<header id="HEADER">HEADER</header>\n<p>Normal paragraph.</p>\n`);
+        });
+
+        it("does not output paragraphs that contains non inline images (range mode)", function() {
+            let output = extractExternalHtml(`## HEADER
+
+![2|WALLPAPER](wallpaper.jpg)
+
+Normal paragraph.
+`, "HEADER", null);
+            expect(output).to.equal(`<h2 id="HEADER">HEADER</h2>\n<p>Normal paragraph.</p>\n`);
         });
     });
 });

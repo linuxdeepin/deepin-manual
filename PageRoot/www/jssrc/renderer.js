@@ -4,6 +4,7 @@ let marked = require("marked");
 let urlparse = require("url-parse");
 let MAX_INDEX_HEADER_LEVEL = 4;
 let MAX_NAV_HEADER_LEVEL = 3;
+const EXTERNAL_READER_NODE_MODE_SPECIAL_ID = " NODE ";
 
 let normalizeAnchorName = function(raw) {
     return raw
@@ -226,10 +227,10 @@ let extractImageLayout = function(text) {
     }
 };
 
+let noop = () => "";
+
 let getPlainRenderer = function() {
     let renderer = new marked.Renderer();
-    let noop = function() { return ""; };
-
     renderer.heading = noop;
     renderer.image = function(href, title, text) {
         let tmp = extractImageLayout(text);
@@ -401,13 +402,19 @@ let processMarkdown = function(src) {
 let extractTokenRange = function(tokens, fromHeaderId, toHeaderId) {
     // returns a list of tokens
     let result = [];
+    let rangeStartLevel = 0;
     let inRange = false;
     tokenLoop: for (let token of tokens) {
         if (token.type === "heading") {
             let headerText = extractHeaderIcon(token.text, token.depth).text;
             let headerId = normalizeAnchorName(headerText);
+            if ((toHeaderId === EXTERNAL_READER_NODE_MODE_SPECIAL_ID) && (token.depth <= rangeStartLevel)) {
+                inRange = false;
+                break tokenLoop;
+            }
             if (headerId === fromHeaderId) {
                 inRange = true;
+                rangeStartLevel = token.depth;
             }
             if (headerId === toHeaderId) {
                 inRange = false;
@@ -423,9 +430,35 @@ let extractTokenRange = function(tokens, fromHeaderId, toHeaderId) {
     return result;
 };
 
-let getHTMLRendererForExternal = function() {
+let getHTMLRendererForExternalBase = function() {
     let renderer = getHTMLRenderer();
+    renderer.image = function(href, title, text) {
+        let tmp = extractImageLayout(text);
+        let layout = tmp.layout;
+        text = tmp.text;
+
+        if (!layout) {
+            if (layout !== 0) {
+                return `<img src="${href}" alt="${text}" title="${title}" class="inline" />`;
+            }
+        }
+        throw new Error("Non-inline images");
+    };
     renderer.link = (href, title, text) => text;
+    return renderer;
+};
+
+let getHTMLRendererForExternalRange = function() {
+    let renderer = getHTMLRendererForExternalBase();
+    return renderer;
+};
+
+let getHTMLRendererForExternalNode = function() {
+    let renderer = getHTMLRendererForExternalRange();
+    renderer.heading = (text, level, raw) => {
+        let extracted = extractHeaderIcon(text, level);
+        return `<header id="${normalizeAnchorName(extracted.text)}">${extracted.text}</header>\n`;
+    };
     return renderer;
 };
 
@@ -440,7 +473,12 @@ let extractExternalHtml = function(src, fromHeaderId, toHeaderId) {
     tokens = extractTokenRange(tokens, fromHeaderId, toHeaderId);
 
     // render
-    let renderer = getHTMLRendererForExternal();
+    let renderer;
+    if (toHeaderId === EXTERNAL_READER_NODE_MODE_SPECIAL_ID) {
+        renderer = getHTMLRendererForExternalNode();
+    } else {
+        renderer = getHTMLRendererForExternalRange();
+    }
     let parser = new marked.Parser({
         gfm: true,
         tables: true,
@@ -456,6 +494,26 @@ let extractExternalHtml = function(src, fromHeaderId, toHeaderId) {
         renderer: renderer,
         xhtml: false,
     });
+    let oldTok = parser.tok;
+    parser.tok = function() {
+        if (this.token.type === "paragraph") {
+            let inlineOutput;
+            try {
+                inlineOutput = this.inline.output(this.token.text);
+            } catch (err) {
+                // set a special value
+                inlineOutput = null;
+            }
+
+            if (inlineOutput === null) {
+                return "";
+            } else {
+                return this.renderer.paragraph(inlineOutput);
+            }
+        } else {
+            return oldTok.call(this);
+        }
+    };
     return parser.parse(tokens);
 };
 
@@ -469,18 +527,23 @@ let parseExternalLink = function(link, baseDManDir) {
     parts[parts.length - 2] = refName;
     let markdownDir = parts.join("/");
 
+    let fromHeaderId = null;
+    let toHeaderId = null;
+
     // process the anchors of the external manual
     let hash = parsed.hash.substr(1);  // get rid of #
-    if (hash[0] !== "[" || hash[hash.length - 1] !== "}") {
-        throw new SyntaxError(`Only Inclusive...Exclusive range is supported.`);
+    if (hash[0] === "[" && hash[hash.length - 1] === "}") {
+        let rangeParts = hash.split("|");
+        if (rangeParts.length !== 2) {
+            throw new Error(`Multiple delimiters(|) found in the external link: ${link}`);
+        }
+        fromHeaderId = normalizeAnchorName(rangeParts[0].substr(1));
+        toHeaderId = normalizeAnchorName(rangeParts[1].substr(0, rangeParts[1].length - 1)) || null;
+    } else {
+        // Node mode
+        fromHeaderId = normalizeAnchorName(hash);
+        toHeaderId = EXTERNAL_READER_NODE_MODE_SPECIAL_ID;
     }
-
-    let rangeParts = hash.split("|");
-    if (rangeParts.length !== 2) {
-        throw new Error(`Multiple delimiters(|) found in the external link: ${link}`);
-    }
-    let fromHeaderId = normalizeAnchorName(rangeParts[0].substr(1));
-    let toHeaderId = normalizeAnchorName(rangeParts[1].substr(0, rangeParts[1].length - 1)) || null;
 
     return {
         markdownDir: markdownDir,
@@ -496,7 +559,9 @@ if (typeof exports !== "undefined") {
     exports.processMarkdown = processMarkdown;
     exports.getSmallSvg = getSmallSvg;
     exports.extractTokenRange = extractTokenRange;
-    exports.getHTMLRendererForExternal = getHTMLRendererForExternal;
+    exports.getHTMLRendererForExternalBase = getHTMLRendererForExternalBase;
+    exports.getHTMLRendererForExternalRange = getHTMLRendererForExternalRange;
+    exports.getHTMLRendererForExternalNode = getHTMLRendererForExternalNode;
     exports.parseExternalLink = parseExternalLink;
     exports.extractExternalHtml = extractExternalHtml;
 }
