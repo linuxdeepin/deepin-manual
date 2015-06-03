@@ -29,15 +29,20 @@ describe("Markdown HTML Renderer", function() {
             }
         });
 
-        it("understands h4 - h6", function() {
+        it("understands h4", function() {
             let result = r.heading("Header4", 4, "Header4");
-            expect(result).to.equal('<h4>Header4</h4>\n');
+            expect(result).to.equal(`<h4 id="Header4">Header4</h4>\n`);
+        });
 
-            result = r.heading("Header5", 5, "Header5");
-            expect(result).to.equal('<h5>Header5</h5>\n');
-
-            result = r.heading("Header6", 6, "Header6");
-            expect(result).to.equal('<h6>Header6</h6>\n');
+        it("understands h5 - h6", function() {
+            {
+                let result = r.heading("Header5", 5, "Header5");
+                expect(result).to.equal('<h5>Header5</h5>\n');
+            }
+            {
+                let result = r.heading("Header6", 6, "Header6");
+                expect(result).to.equal('<h6>Header6</h6>\n');
+            }
         });
 
         it("warns about duplicate anchors", function() {

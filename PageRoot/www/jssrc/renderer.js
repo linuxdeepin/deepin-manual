@@ -304,8 +304,8 @@ let getHTMLRenderer = function() {
         if (level === 1) {
             return '';
         }
-        if (level > MAX_NAV_HEADER_LEVEL) {
-            // Do not give h4, h5, h6 anchors.
+        if (level > MAX_INDEX_HEADER_LEVEL) {
+            // Do not give h5, h6 anchors.
             return `<h${level}>${text}</h${level}>\n`;
         }
 
