@@ -22,7 +22,7 @@ $navLogoBoxHeight: 64px;
 $ovNavIconWidthAndHeight: 64px;
 $sideNavIconWidthAndHeight: 24px;
 
-$titleBarHeight: 30px;
+$titleBarHeight: 20px;
 
 // Logo related
 $logoWidthAndHeight: 48px;
@@ -731,7 +731,7 @@ body {
         top: $titleBarHeight;
         width: $searchInputWidth + $searchBoxMarginHorizontal * 2;
         left: $pvNavBarWidth;
-        height: 35px;
+        height: 60px;
         margin: 0 calc((100% - #{$searchInputWidth} - (#{$searchBoxMarginHorizontal} * 2) - #{$pvNavBarWidth}) / 2);
         z-index: 10050;
     }
@@ -774,10 +774,12 @@ body {
     }
 
     .search-input-box {
-        height: 60px;
-        background: linear-gradient(to bottom, rgba(255,255,255,1) 65%,rgba(255,255,255,0) 100%);
+        height: calc(100% + 12px);
+        background: rgba(0, 0, 0, 0);
+        transition: background 0.7s ease-out 0.1s, opacity 0.7s ease-out 0.1s;
         opacity: 0;
         &.shadow-visible {
+            background-image: linear-gradient(to bottom, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 80%);
             opacity: 1;
             margin-top: -12px;
             margin-left: -205px;
@@ -787,15 +789,14 @@ body {
                 background: #fff;
             }
         }
-        &.shadow-visible-add,
-        &.shadow-visible-remove {
-            transition: opacity 0.53s;
-        }
         &.shadow-visible-add-active {
-            opacity: 1;
+
         }
         &.shadow-visible-remove-active {
-            opacity: 0;
+            background-image: linear-gradient(to bottom, rgba(255,255,255,1) 50%, rgba(255,255,255,0) 80%);
+            margin-top: -12px;
+            margin-left: -205px;
+            margin-right: -205px + $scrollbarVWidth + $containerMarginRight;
         }
     }
 
@@ -1248,7 +1249,7 @@ body {
 .search-mode {
     &.pageview-mode {
         .search-input-box {
-            height: 38px;
+            //height: 38px;
             background: #fff;
         }
         .manual-content {
