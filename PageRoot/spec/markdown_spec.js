@@ -110,6 +110,14 @@ describe("Markdown HTML Renderer", function() {
             );
         });
 
+        it("understands in-page links which have space in them", function() {
+            let src = "[Link Description](#Test Node)";
+            let result = p(src).html;
+            expect(result).to.equal(
+                '<p><a href="javascript: window.parent.jumpTo(\'Test-Node\');" title="" class="" onclick=""><span class="text">Link Description</span></a></p>\n'
+            );
+        });
+
         it("understands external dman pages", function() {
             let src = "[Link Description](dman:///ReferenceApp#[Header 1|Header 8})";
             let result = p(src).html;

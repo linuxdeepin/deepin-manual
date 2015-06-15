@@ -343,7 +343,7 @@ let getHTMLRenderer = function() {
         let onclick = "";
 
         if (href.indexOf("#") === 0) {
-            href = `javascript: window.parent.jumpTo('${href.substring(1)}');`;
+            href = `javascript: window.parent.jumpTo('${normalizeAnchorName(href.substring(1))}');`;
         } else if (href.indexOf("dman:///") === 0) {
             onclick = `window.parent.externalRead('${href}', this)`;
             href = `javascript: void(0)`;
