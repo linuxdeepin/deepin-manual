@@ -319,17 +319,24 @@ let getHTMLRenderer = function() {
         let layout = tmp.layout;
         text = tmp.text;
 
-        let out = '<img src="' + href + '" alt="' + text + '"';
+        let out = `<img src="${href}" alt="${text}"`;
         if (title) {
-            out += ' title="' + title + '"';
+            out += ` title="${title}"`;
         }
-        if (layout) {
-            out += ' class="block' + layout + '"';
-        } else {
-            if (layout === 0) {
 
-            } else {
-                out += ' class="inline"';
+        if (typeof layout === "number") {
+            if (layout > 0) {
+                out += ` class="block${layout}"`;
+            }
+        } else {
+            out += ' class="inline"';
+            let heightExtractor = /\S+\-([0-9]+).svg/;
+            let result = heightExtractor.exec(href);
+            if (result) {
+                let height = parseInt(result[1]);
+                if (height) {
+                    out += ` style="height:${height}px;"`;
+                }
             }
         }
         out += this.options.xhtml ? '/>' : '>';

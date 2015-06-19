@@ -72,6 +72,30 @@ describe("Markdown HTML Renderer", function() {
                 '<p><img src="alt.png" alt="Alt" class="inline"></p>\n')
         });
 
+        it("adds height to the inline svg icons", function() {
+            let src = "![Alt](alt-32.svg)";
+            let result = p(src).html;
+            expect(result).to.equal(
+                '<p><img src="alt-32.svg" alt="Alt" class="inline" style="height:32px;"></p>\n'
+            )
+        });
+
+        it("won't add height to the inline svg icons if not specified", function() {
+            let src = "![Alt](alt.svg)";
+            let result = p(src).html;
+            expect(result).to.equal(
+                '<p><img src="alt.svg" alt="Alt" class="inline"></p>\n'
+            )
+        });
+
+        it("won't add height to the inline svg icons if not specified", function() {
+            let src = "![Alt](alt32.svg)";
+            let result = p(src).html;
+            expect(result).to.equal(
+                '<p><img src="alt32.svg" alt="Alt" class="inline"></p>\n'
+            )
+        });
+
         it("understands images", function() {
             {
                 let src = "![1|Alt](alt.png)";
