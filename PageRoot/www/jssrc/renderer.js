@@ -304,8 +304,8 @@ let getHTMLRenderer = function() {
         if (level === 1) {
             return '';
         }
-        if (level > MAX_NAV_HEADER_LEVEL) {
-            // Do not give h4, h5, h6 anchors.
+        if (level > MAX_INDEX_HEADER_LEVEL) {
+            // Do not give h5, h6 anchors.
             return `<h${level}>${text}</h${level}>\n`;
         }
 
@@ -319,17 +319,24 @@ let getHTMLRenderer = function() {
         let layout = tmp.layout;
         text = tmp.text;
 
-        let out = '<img src="' + href + '" alt="' + text + '"';
+        let out = `<img src="${href}" alt="${text}"`;
         if (title) {
-            out += ' title="' + title + '"';
+            out += ` title="${title}"`;
         }
-        if (layout) {
-            out += ' class="block' + layout + '"';
-        } else {
-            if (layout === 0) {
 
-            } else {
-                out += ' class="inline"';
+        if (typeof layout === "number") {
+            if (layout > 0) {
+                out += ` class="block${layout}"`;
+            }
+        } else {
+            out += ' class="inline"';
+            let heightExtractor = /\S+\-([0-9]+).svg/;
+            let result = heightExtractor.exec(href);
+            if (result) {
+                let height = parseInt(result[1]);
+                if (height) {
+                    out += ` style="height:${height}px;"`;
+                }
             }
         }
         out += this.options.xhtml ? '/>' : '>';
@@ -343,7 +350,7 @@ let getHTMLRenderer = function() {
         let onclick = "";
 
         if (href.indexOf("#") === 0) {
-            href = `javascript: window.parent.jumpTo('${href.substring(1)}');`;
+            href = `javascript: window.parent.jumpTo('${normalizeAnchorName(href.substring(1))}');`;
         } else if (href.indexOf("dman:///") === 0) {
             onclick = `window.parent.externalRead('${href}', this)`;
             href = `javascript: void(0)`;

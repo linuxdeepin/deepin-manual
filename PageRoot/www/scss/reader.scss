@@ -84,3 +84,14 @@ p {
 ul, ol {
     margin: 0.2em 0;
 }
+
+body {
+    > *:first-child {
+        margin-top: 0 !important;
+    }
+    > *:last-child {
+        margin-bottom: 0 !important;
+    }
+    padding-top: 10px;
+    padding-bottom: 10px;
+}

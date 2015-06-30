@@ -11,7 +11,8 @@
                ng-class="{slidedown: searchInputVisible}"
                ng-focus="onSearchInputFocus()"
                ng-blur="onSearchInputBlur()"
-               ng-model="searchTerm" />
+               ng-model="searchTerm"
+               oncontextmenu="javascript: return false;" />
 
         <div id="SuggestionsBox" ng-if="suggestions.length && !disableSuggestions" class="search-suggestions-box">
             <ul id="Suggestions">

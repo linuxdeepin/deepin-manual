@@ -29,15 +29,20 @@ describe("Markdown HTML Renderer", function() {
             }
         });
 
-        it("understands h4 - h6", function() {
+        it("understands h4", function() {
             let result = r.heading("Header4", 4, "Header4");
-            expect(result).to.equal('<h4>Header4</h4>\n');
+            expect(result).to.equal(`<h4 id="Header4">Header4</h4>\n`);
+        });
 
-            result = r.heading("Header5", 5, "Header5");
-            expect(result).to.equal('<h5>Header5</h5>\n');
-
-            result = r.heading("Header6", 6, "Header6");
-            expect(result).to.equal('<h6>Header6</h6>\n');
+        it("understands h5 - h6", function() {
+            {
+                let result = r.heading("Header5", 5, "Header5");
+                expect(result).to.equal('<h5>Header5</h5>\n');
+            }
+            {
+                let result = r.heading("Header6", 6, "Header6");
+                expect(result).to.equal('<h6>Header6</h6>\n');
+            }
         });
 
         it("warns about duplicate anchors", function() {
@@ -65,6 +70,30 @@ describe("Markdown HTML Renderer", function() {
             let result = p(src).html;
             expect(result).to.equal(
                 '<p><img src="alt.png" alt="Alt" class="inline"></p>\n')
+        });
+
+        it("adds height to the inline svg icons", function() {
+            let src = "![Alt](alt-32.svg)";
+            let result = p(src).html;
+            expect(result).to.equal(
+                '<p><img src="alt-32.svg" alt="Alt" class="inline" style="height:32px;"></p>\n'
+            )
+        });
+
+        it("won't add height to the inline svg icons if not specified", function() {
+            let src = "![Alt](alt.svg)";
+            let result = p(src).html;
+            expect(result).to.equal(
+                '<p><img src="alt.svg" alt="Alt" class="inline"></p>\n'
+            )
+        });
+
+        it("won't add height to the inline svg icons if not specified", function() {
+            let src = "![Alt](alt32.svg)";
+            let result = p(src).html;
+            expect(result).to.equal(
+                '<p><img src="alt32.svg" alt="Alt" class="inline"></p>\n'
+            )
         });
 
         it("understands images", function() {
@@ -102,6 +131,14 @@ describe("Markdown HTML Renderer", function() {
             let result = p(src).html;
             expect(result).to.equal(
                 '<p><a href="javascript: window.parent.jumpTo(\'Test\');" title="" class="" onclick=""><span class="text">Link Description</span></a></p>\n'
+            );
+        });
+
+        it("understands in-page links which have space in them", function() {
+            let src = "[Link Description](#Test Node)";
+            let result = p(src).html;
+            expect(result).to.equal(
+                '<p><a href="javascript: window.parent.jumpTo(\'Test-Node\');" title="" class="" onclick=""><span class="text">Link Description</span></a></p>\n'
             );
         });
 

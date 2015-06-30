@@ -24,9 +24,9 @@ body {
 }
 
 img.inline {
-    width: 2em;
-    height: 2em;
-    vertical-align: bottom;
+    //width: 2em;
+    height: 20px;
+    vertical-align: middle;
     display: inline;
 }
 
@@ -70,8 +70,8 @@ li {
         line-height: 12px;
     }
     img.inline {
-        width: 22px;
-        height: 22px;
+        vertical-align: middle;
+        height: 20px;
     }
 }
 
