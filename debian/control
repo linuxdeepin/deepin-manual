@@ -5,7 +5,8 @@ Priority: optional
 Build-Depends:
  debhelper,
  libjs-dmanual-dev,
- python3, ruby-sass
+ python3, ruby-sass,
+ npm
 Standards-Version: 3.9.5
 Homepage: https://gitcafe.com/Deepin/deepin-manual/
 Vcs-Git: git://gitcafe.com/Deepin/deepin-manual.git
@@ -15,4 +16,4 @@ Package: deepin-manual
 Architecture: all
 Description: Deepin Manual
 Depends:
- python3-dae, python3-gi, python3-jieba, deepin-qml-widgets
+ python3-dae, python3-gi, python3-jieba, deepin-qml-widgets, xvfb

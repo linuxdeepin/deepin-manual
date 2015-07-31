@@ -60,6 +60,11 @@ install:
 	mkdir -p $(DESTDIR)/usr/share/icons/hicolor/scalable/apps
 	cp DMan/DManual.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/deepin-manual.svg
 
+	# Copy dman-daemon
+	cp DManDaemon/dman-daemon.py $(DESTDIR)/usr/share/dman/dman-daemon
+	mkdir -p $(DESTDIR)/etc/xdg/autostart
+	cp DManDaemon/dman-daemon.desktop $(DESTDIR)/etc/xdg/autostart/dman-daemon.desktop
+
 sass:
 	mkdir -p PageRoot/www/style
 	sass --style compressed --unix-newlines PageRoot/www/scss/index.scss PageRoot/www/style/index.css
