@@ -12,11 +12,14 @@ let Keyboard = {
 };
 
 angular.module("DManual").controller("SearchBoxCtrl",
-    function($scope, $rootScope, $animate, $timeout,
+    function($scope, $rootScope, $animate, $timeout, $element,
              $log, $sce, $window, AdapterService, MarkdownService) {
         // Auto-complete
         $scope.headers = [];
         $scope.currentIndex = -1;
+        const resetIndex = () => {
+            $scope.currentIndex = -1;
+        };
         $scope.searchTerm = "";
         $scope.suggestions = [];
         $scope.disableSuggestions = false;
@@ -74,7 +77,7 @@ angular.module("DManual").controller("SearchBoxCtrl",
                     $scope.$emit("hideSearchBox", "searchinput-shortcut");
                 }
             } else {
-                $scope.currentIndex = -1;
+                resetIndex();
             }
         };
 
@@ -123,6 +126,10 @@ angular.module("DManual").controller("SearchBoxCtrl",
 
             $scope.suggestions = suggestions;
         });
+
+        // CJK IMEs won't trigger keydown event.
+        // Instead it triggers composition{start,end} events.
+        angular.element($element[0]).on("compositionstart", resetIndex);
 
         // show-hide logic
         let _showHidePromise = null;
