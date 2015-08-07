@@ -1,10 +1,11 @@
 # -*- coding: utf-8 -*-
 
 
-from PyQt5.QtCore import QObject, pyqtSlot, pyqtSignal, QUrl
+from PyQt5.QtCore import QObject, pyqtSlot, pyqtSignal, QUrl, QMetaType
 from PyQt5.QtQuick import QQuickView
 from PyQt5.QtGui import QDesktopServices
 from PyQt5.QtWidgets import QApplication
+from PyQt5.QtDBus import QDBusAbstractAdaptor, QDBusInterface, QDBusArgument
 import sys, os
 import configparser
 from pathlib import Path
@@ -59,6 +60,37 @@ class CommandlineWatcher(QObject):
                     win.raise_()
 
 
+class PinyinSearch(QDBusAbstractAdaptor):
+    def __init__(self, parent = None):
+        super().__init__(parent)
+        self._interface = QDBusInterface(
+            "com.deepin.daemon.Search",
+            "/com/deepin/daemon/Search",
+            "com.deepin.daemon.Search",
+        )
+        self.pinyinId = None
+
+    def registerPinyin(self, list):
+        msg = self._interface.call(
+            "NewSearchWithStrList",
+            QDBusArgument(list, QMetaType.QStringList),
+        )
+        self.pinyinId = msg.arguments()[0]
+
+    def lookup(self, pinyin: str) -> list:
+        if not self.pinyinId:
+            return []
+        msg = self._interface.call(
+            "SearchString",
+            QDBusArgument(pinyin, QMetaType.QString),
+            QDBusArgument(self.pinyinId, QMetaType.QString),
+        )
+        if msg.errorName():
+            return []
+        else:
+            args = msg.arguments()
+            return args[0]
+
 class Bridge(QObject):
     sigShowTooltip = pyqtSignal(str, int, int)
 
@@ -73,6 +105,8 @@ class Bridge(QObject):
         self._tooltipView = TooltipView(self)
         self._commandlineWatcher = CommandlineWatcher(self)
         QApplication.instance().aboutToQuit.connect(self.cleanup)
+
+        self._pinyinProvider = PinyinSearch(self)
 
     @pyqtSlot(result = "QStringList")
     def uiLangs(self):
@@ -135,6 +169,13 @@ class Bridge(QObject):
         except OSError:
             pass
 
+    @pyqtSlot("QStringList", result = "void*")
+    def registerPinyin(self, textList) -> str:
+        self._pinyinProvider.registerPinyin(textList)
+
+    @pyqtSlot("QString", result = "QStringList")
+    def lookupPinyin(self, str: str) -> list:
+        return self._pinyinProvider.lookup(str)
 
 def export_objects():
     bridge = Bridge()

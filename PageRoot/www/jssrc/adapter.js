@@ -168,6 +168,18 @@ app.factory("AdapterService", function Adapter($log, $rootScope, $window) {
             }
         };
 
+        let registerPinyin = function(list) {
+            if (getShellType() === "DAE") {
+                return bridge_bridge.registerPinyin(list);
+            } else {
+                return;
+            }
+        };
+
+        let lookupPinyin = function(pinyin) {
+            return bridge_bridge.lookupPinyin(pinyin);
+        };
+
         let result = {
             markdownDir: markdownDir,
             setMarkdown: setMarkdown,
@@ -188,6 +200,8 @@ app.factory("AdapterService", function Adapter($log, $rootScope, $window) {
             setCompactMode: setCompactMode,
 
             getWordCutting: getWordCutting,
+            registerPinyin: registerPinyin,
+            lookupPinyin: lookupPinyin,
         };
         $window.adapter = result;
         return result;
