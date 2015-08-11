@@ -106,6 +106,21 @@ angular.module("DManual").controller("SearchBoxCtrl",
                     }
                 });
             }
+
+            // Pinyin initials support
+            const pinyinMatches = AdapterService.lookupPinyin(value);
+            const pinyinSuggestions = [];
+            for (let pinyinMatch of pinyinMatches) {
+                if (!suggestions.some(one => one.anchorId === pinyinMatch)) {
+                    pinyinSuggestions.push({
+                        anchorId: normalizeAnchorName(pinyinMatch),
+                        anchorHtmlText: $sce.trustAsHtml(pinyinMatch),
+                    });
+                }
+            }
+            suggestions = [].concat(suggestions).concat(pinyinSuggestions);
+            // Pinyin initials support ends
+
             $scope.suggestions = suggestions;
         });
 

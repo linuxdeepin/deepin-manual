@@ -116,6 +116,8 @@ angular.module("DManual")
                 _appInfo = parsed.appInfo;
                 _indices = parsed.indices;
                 _headers = parsed.headers;
+
+                AdapterService.registerPinyin(_headers);
                 _appInfo.markdownDir = markdownDir;
                 _initialized = true;
                 $rootScope.$broadcast("MarkdownProcessed");
