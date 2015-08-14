@@ -8,7 +8,7 @@ let {
 
 angular.module("DManual")
     .controller("SearchCtrl", function($scope, GSynonym, $log,
-                                       $filter, AdapterService, MarkdownService) {
+                                       $filter, AdapterService, MarkdownService, localeService) {
         let _indices = [];
         $scope.searchResults = [];
         $scope.returnPageview = function() {
@@ -43,4 +43,17 @@ angular.module("DManual")
 
             $scope.searchResults = results;
         });
+
+        $scope.openWiki = () => {
+            let currentUiLang = localeService.getLocale();
+            // wiki supports ?language=en, but not en_us
+            // so make the language code short
+            if (currentUiLang.includes("-")) {
+                currentUiLang = currentUiLang.substr(0, currentUiLang.indexOf("-"));
+            }
+            if (currentUiLang.includes("_")) {
+                currentUiLang = currentUiLang.substr(0, currentUiLang.indexOf("_"));
+            }
+            AdapterService.openExternalBrowser(`http://wiki.deepin.org/?language=${currentUiLang}`);
+        }
 });
