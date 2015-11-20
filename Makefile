@@ -67,6 +67,7 @@ install:
 
 sass:
 	mkdir -p PageRoot/www/style
+	sass --style compressed --unix-newlines PageRoot/www/scss/reader.scss PageRoot/www/style/reader.css
 	sass --style compressed --unix-newlines PageRoot/www/scss/index.scss PageRoot/www/style/index.css
 	sass --style compressed --unix-newlines PageRoot/www/scss/content.scss PageRoot/www/style/content.css
 	sass --style compressed --unix-newlines PageRoot/www/scss/reset.scss PageRoot/www/style/reset.css
