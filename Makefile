@@ -50,20 +50,13 @@ install:
 	# install dman in /usr/bin
 	install -d $(DESTDIR)/usr/bin
 	ln -s $(PREFIX)/DMan/main.py $(DESTDIR)/usr/bin/dman
-	python3 -OO -m compileall -q $(DESTDIR)$(PREFIX)/DMan
 
-	# copy dman for dman
-	mkdir -p $(DESTDIR)/usr/share/dman
-	cp -r manual $(DESTDIR)/usr/share/dman/dman
+	# Install icons
+	install -Dm644 DMan/DManual.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/deepin-manual.svg
 
-	# Copy icons
-	mkdir -p $(DESTDIR)/usr/share/icons/hicolor/scalable/apps
-	cp DMan/DManual.svg $(DESTDIR)/usr/share/icons/hicolor/scalable/apps/deepin-manual.svg
-
-	# Copy dman-daemon
-	cp DManDaemon/dman-daemon.py $(DESTDIR)/usr/share/dman/dman-daemon
-	mkdir -p $(DESTDIR)/etc/xdg/autostart
-	cp DManDaemon/dman-daemon.desktop $(DESTDIR)/etc/xdg/autostart/dman-daemon.desktop
+	# Install dman-daemon
+	install -Dm755 DManDaemon/dman-daemon.py $(DESTDIR)/usr/share/dman/dman-daemon/dman-daemon.py
+	install -Dm644 DManDaemon/dman-daemon.desktop $(DESTDIR)/etc/xdg/autostart/dman-daemon.desktop
 
 sass:
 	mkdir -p PageRoot/www/style
