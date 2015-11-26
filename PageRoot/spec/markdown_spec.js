@@ -46,7 +46,7 @@ describe("Markdown HTML Renderer", function() {
         });
 
         it("warns about duplicate anchors", function() {
-            let src = "# Hello World\n##Hello  World\n";
+            let src = "## Hello World\n###Hello World\n";
             expect(p).withArgs(src).to.throwError();
         });
 
@@ -507,6 +507,16 @@ Normal paragraph.
             expect(output).to.equal(`<header id="HEADER">HEADER</header>\n<p>Normal paragraph.</p>\n`);
         });
 
+        it("does not output paragraphs that contains non inline (unscaled) images (node mode)", function() {
+            let output = extractExternalHtml(`## HEADER
+
+![0|WALLPAPER](wallpaper.jpg)
+
+Normal paragraph.
+`, "HEADER", " NODE ");
+            expect(output).to.equal(`<header id="HEADER">HEADER</header>\n<p>Normal paragraph.</p>\n`);
+        });
+
         it("does not output paragraphs that contains non inline images (range mode)", function() {
             let output = extractExternalHtml(`## HEADER
 
@@ -516,5 +526,17 @@ Normal paragraph.
 `, "HEADER", null);
             expect(output).to.equal(`<h2 id="HEADER">HEADER</h2>\n<p>Normal paragraph.</p>\n`);
         });
+
+        it("does not output paragraphs that contains non inline (unscaled) images (range mode)", function() {
+            let output = extractExternalHtml(`## HEADER
+
+![0|WALLPAPER](wallpaper.jpg)
+
+Normal paragraph.
+`, "HEADER", null);
+            expect(output).to.equal(`<h2 id="HEADER">HEADER</h2>\n<p>Normal paragraph.</p>\n`);
+        });
     });
+
+
 });
