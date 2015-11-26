@@ -448,8 +448,9 @@ let getHTMLRendererForExternalBase = function() {
             if (layout !== 0) {
                 return `<img src="${href}" alt="${text}" title="${title}" class="inline" />`;
             }
+            throw new Error("No output: unscaled images");
         }
-        throw new Error("Non-inline images");
+        throw new Error("No output: Non-inline images");
     };
     renderer.link = (href, title, text) => text;
     return renderer;
@@ -503,22 +504,10 @@ let extractExternalHtml = function(src, fromHeaderId, toHeaderId) {
     });
     let oldTok = parser.tok;
     parser.tok = function() {
-        if (this.token.type === "paragraph") {
-            let inlineOutput;
-            try {
-                inlineOutput = this.inline.output(this.token.text);
-            } catch (err) {
-                // set a special value
-                inlineOutput = null;
-            }
-
-            if (inlineOutput === null) {
-                return "";
-            } else {
-                return this.renderer.paragraph(inlineOutput);
-            }
-        } else {
+        try {
             return oldTok.call(this);
+        } catch (err) {
+            return "";
         }
     };
     return parser.parse(tokens);
