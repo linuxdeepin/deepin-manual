@@ -1,0 +1,47 @@
+deepin-manual (1.0.5-1) stable; urgency=low
+
+  * Autobuild Tag 1.0.5 
+
+ -- TagBuilder <tagbuilder@linuxdeepin.com>  Tue, 29 Dec 2015 14:30:31 +0000
+
+deepin-manual (1.0.3-2) stable; urgency=low
+
+  * Rebuild Version 1.0.3 
+
+ -- TagBuilder <tagbuilder@linuxdeepin.com>  Mon, 28 Dec 2015 21:28:20 +0000
+
+deepin-manual (1.0.3-1) stable; urgency=low
+
+  * Autobuild Tag 1.0.3 
+
+ -- TagBuilder <tabbuilder@linuxdeepin.com>  Sat, 19 Dec 2015 13:04:17 +0000
+
+deepin-manual (1.0.2-1) stable; urgency=low
+
+  * Autobuild Tag 1.0.2 
+
+ -- TagBuilder <tabbuilder@linuxdeepin.com>  Mon, 23 Nov 2015 09:00:29 +0000
+
+deepin-manual (1.0.1-1) stable; urgency=low
+
+  * Autobuild Tag 1.0.1 
+
+ -- TagBuilder <tabbuilder@linuxdeepin.com>  Fri, 20 Nov 2015 09:50:19 +0000
+
+deepin-manual (1.0.0-1) stable; urgency=low
+
+  * Autobuild Tag 1.0.0 
+
+ -- TagBuilder <tabbuilder@linuxdeepin.com>  Wed, 01 Jul 2015 16:03:59 +0000
+
+deepin-manual (0.1) trusty; urgency=medium
+
+  * build from git. 
+
+ -- pkg-builder <pkg-builder@packages.linuxdeepin.com>  Thu, 07 May 2015 13:05:04 +0800
+
+deepin-manual (1:0.1) trusty; urgency=low
+
+  * Please see the repository's changelog.
+
+ -- Xinkai Chen <chenxinkai@linuxdeepin.com>  Mon, 23 March 2015 00:00:00 -0800
