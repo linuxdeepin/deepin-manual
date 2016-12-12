@@ -10,21 +10,21 @@ angular.module("General")
                 switch (parsed.protocol) {
                     case "http:":
                     case "https:": {
-                        return $http.get(url)
-                            .success(function(data) {
-                                resolve(data);
-                            })
-                            .error(function(_, status) {
-                                reject(`Failed to load with status ${status}`);
+                        return $http.get(url).then(
+                            function(response) {
+                                resolve(response.data);
+                            },
+                            function(response) {
+                                reject(`Failed to load with status ${response.status}`);
                             });
                     }
                     case "file:": {
                         if (typeof XMLHttpRequest !== "undefined") {
-                            return $http.get(url)
-                                .success(function(data) {
-                                    resolve(data);
-                                })
-                                .error(function() {
+                            return $http.get(url).then(
+                                function(response) {
+                                    resolve(response.data);
+                                },
+                                function(response) {
                                     reject("Failed to load local file.");
                                 });
                         } else {
