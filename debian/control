@@ -4,9 +4,9 @@ Section: python
 Priority: optional
 Build-Depends: libjs-dmanual-dev, python3, ruby-sass
 Standards-Version: 3.9.5
-Homepage: https://gitcafe.com/Deepin/deepin-manual/
-Vcs-Git: git://gitcafe.com/Deepin/deepin-manual.git
-Vcs-Browser: https://gitcafe.com/Deepin/deepin-manual/
+Homepage: https://github.com/linuxdeepin/deepin-manual/
+Vcs-Git: git://github.com/linuxdeepin/deepin-manual.git
+Vcs-Browser: https://github.com/linuxdeepin/deepin-manual/
 
 Package: deepin-manual
 Architecture: all

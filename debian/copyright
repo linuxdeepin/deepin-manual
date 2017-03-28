@@ -1,6 +1,6 @@
 Format: http://dep.debian.net/deps/dep5
 Upstream-Name: deepin-manual
-Source: https://gitcafe.com/Deepin/deepin-manual.git
+Source: https://github.com/linuxdeepin/deepin-manual
 
 Files: *
 Copyright: Deepin Technology Co., Ltd.
