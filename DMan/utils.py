@@ -5,6 +5,7 @@ from gi.repository import GLib
 from collections import namedtuple
 
 import os
+import hashlib
 from urllib import parse
 
 _DMAN_HOME = "/usr/share/dman"
@@ -77,7 +78,8 @@ def getLockPath(lastArgv: str) -> str:
 
 def getSocketPath(lastArgv: str) -> str:
     appName = lastArgv.replace("/", "_")
-    return os.path.expanduser("~/.config/deepin-manual/{appName}.lock.socket".format(appName = appName))
+    scoketName = hashlib.md5(appName.encode('utf-8')).hexdigest()
+    return os.path.expanduser("~/.config/deepin-manual/{scoketName}.lock.socket".format(scoketName = scoketName))
 
 
 def getConfigPath() -> str:
