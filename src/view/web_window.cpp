@@ -20,6 +20,9 @@
 #include <DTitlebar>
 #include <qcef_web_view.h>
 
+#include "resources/images/images.h"
+#include "view/widget/title_bar.h"
+
 namespace dman {
 
 WebWindow::WebWindow(QWidget* parent) : Dtk::Widget::DMainWindow(parent),
@@ -40,9 +43,8 @@ void WebWindow::setAppName(const QString& app_name) {
 }
 
 void WebWindow::initUI() {
-  Dtk::Widget::DTitlebar* titlebar = this->titlebar();
-  titlebar->setDisableFlags(Qt::Widget);
-
+  title_bar_ = new TitleBar();
+  this->titlebar()->setCustomWidget(title_bar_, Qt::AlignLeft, false);
 
   web_view_ = new QCefWebView();
   this->setCentralWidget(web_view_);

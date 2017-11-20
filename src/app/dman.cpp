@@ -16,7 +16,6 @@
  */
 
 #include <DApplication>
-#include <QDebug>
 #include <QIcon>
 #include <qcef_context.h>
 
@@ -67,7 +66,7 @@ int main(int argc, char** argv) {
   // FIXME(Shaohua): Translation not work.
   app.setApplicationDisplayName(QObject::tr(dman::kAppDisplayName));
   app.setWindowIcon(QIcon(dman::kImageDeepinManual));
-  qDebug() << dman::kImageDeepinManual;
+  app.setApplicationDescription(QObject::tr(dman::kAppDesc));
 
   dman::WindowManager window_manager;
   const QStringList args = app.arguments();

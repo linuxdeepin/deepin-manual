@@ -84,6 +84,11 @@ set(RESOURCES_FILES
 set(VIEW_FILES
     view/web_window.cpp
     view/web_window.h
+
+    view/widget/search_edit.cpp
+    view/widget/search_edit.h
+    view/widget/title_bar.cpp
+    view/widget/title_bar.h
     )
 
 add_executable(dman

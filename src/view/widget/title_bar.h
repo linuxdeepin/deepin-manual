@@ -15,41 +15,32 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef DEEPIN_MANUAL_VIEW_WEB_WINDOW_H
-#define DEEPIN_MANUAL_VIEW_WEB_WINDOW_H
+#ifndef DEEPIN_MANUAL_VIEW_WIDGET_TITLE_BAR_H
+#define DEEPIN_MANUAL_VIEW_WIDGET_TITLE_BAR_H
 
-#include <DMainWindow>
-
-class QCefWebView;
+#include <QFrame>
+#include <QLabel>
+#include <QPushButton>
 
 namespace dman {
 
-class TitleBar;
+class SearchEdit;
 
-class WebWindow : public Dtk::Widget::DMainWindow {
+// Customize widget in TitleBar.
+class TitleBar : public QFrame {
   Q_OBJECT
-  Q_PROPERTY(QString appName READ appName WRITE setAppName)
-
  public:
-  explicit WebWindow(QWidget* parent = nullptr);
-  ~WebWindow() override;
-
-  // Get app name of manual currently presented.
-  const QString& appName() const {
-    return app_name_;
-  }
-
- public slots:
-  void setAppName(const QString& app_name);
+  explicit TitleBar(QWidget* parent = nullptr);
+  ~TitleBar() override;
 
  private:
   void initUI();
 
-  QString app_name_;
-  TitleBar* title_bar_ = nullptr;
-  QCefWebView* web_view_ = nullptr;
+  QLabel* app_icon_ = nullptr;
+  QPushButton* back_btn_ = nullptr;
+  SearchEdit* search_edit_ = nullptr;
 };
 
 }  // namespace dman
 
-#endif  // DEEPIN_MANUAL_VIEW_WEB_WINDOW_H
+#endif  // DEEPIN_MANUAL_VIEW_WIDGET_TITLE_BAR_H

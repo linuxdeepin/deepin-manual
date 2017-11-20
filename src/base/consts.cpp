@@ -22,5 +22,6 @@ namespace dman {
 const char kAppName[] = "deepin-manual";
 const char kAppDisplayName[] = "Deepin Manual";
 const char kAppVersion[] = "2.0.0";
+const char kAppDesc[] = "Deepin user manual";
 
 }  // namespace dman
