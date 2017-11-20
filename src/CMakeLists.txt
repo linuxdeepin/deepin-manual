@@ -69,11 +69,15 @@ set(LINK_LIBS
 
 set(BASE_FILES
     base/consts.cpp
-    base/consts.h)
+    base/consts.h
+    base/file_util.cpp
+    base/file_util.h
+    )
 
 set(CONTROLLER_FILES
     controller/window_manager.cpp
-    controller/window_manager.h)
+    controller/window_manager.h
+    )
 
 set(RESOURCES_FILES
     resources/images/images.qrc
