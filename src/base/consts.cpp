@@ -24,4 +24,7 @@ const char kAppDisplayName[] = "Deepin Manual";
 const char kAppVersion[] = "2.0.0";
 const char kAppDesc[] = "Deepin user manual";
 
+const char kIndexPage[] =
+    "file:///usr/share/deepin-manual/PageRoot/www/index.html";
+
 }  // namespace dman

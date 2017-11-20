@@ -25,6 +25,8 @@ extern const char kAppDisplayName[];
 extern const char kAppVersion[];
 extern const char kAppDesc[];
 
+extern const char kIndexPage[];
+
 }  // namespace dman
 
 #endif  // DEEPIN_MANUAL_BASE_CONSTS_H

@@ -18,8 +18,11 @@
 #include "view/web_window.h"
 
 #include <DTitlebar>
+#include <qcef_web_page.h>
+#include <qcef_web_settings.h>
 #include <qcef_web_view.h>
 
+#include "base/consts.h"
 #include "resources/themes/images.h"
 #include "view/widget/title_bar.h"
 
@@ -39,7 +42,7 @@ void WebWindow::setAppName(const QString& app_name) {
     return;
   }
   app_name_ = app_name;
-  web_view_->load(QUrl("https://www.bing.com"));
+  web_view_->load(QUrl(kIndexPage));
 }
 
 void WebWindow::initUI() {
@@ -48,6 +51,9 @@ void WebWindow::initUI() {
 
   web_view_ = new QCefWebView();
   this->setCentralWidget(web_view_);
+
+  // Disable web security to allow cross-origin accessing.
+  web_view_->page()->settings()->setWebSecurity(QCefWebSettings::StateDisabled);
 }
 
 }  // namespace dman
