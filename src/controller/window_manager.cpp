@@ -40,6 +40,7 @@ void WindowManager::openManual(const QString& app_name) {
   WebWindow* window = new WebWindow();
   window->setAppName(app_name);
   window->show();
+  window->resize(718, 585);
   // TODO(Shaohua): Handle window close event.
   windows_.append(window);
 }

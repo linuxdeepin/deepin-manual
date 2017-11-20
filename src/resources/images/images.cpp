@@ -15,38 +15,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef DEEPIN_MANUAL_VIEW_WEB_WINDOW_H
-#define DEEPIN_MANUAL_VIEW_WEB_WINDOW_H
-
-#include <DMainWindow>
-
-class QCefWebView;
+#include "resources/images/images.h"
 
 namespace dman {
 
-class WebWindow : public Dtk::Widget::DMainWindow {
-  Q_OBJECT
-  Q_PROPERTY(QString appName READ appName WRITE setAppName)
-
- public:
-  explicit WebWindow(QWidget* parent = nullptr);
-  ~WebWindow() override;
-
-  // Get app name of manual currently presented.
-  const QString& appName() const {
-    return app_name_;
-  }
-
- public slots:
-  void setAppName(const QString& app_name);
-
- private:
-  void initUI();
-
-  QString app_name_;
-  QCefWebView* web_view_ = nullptr;
-};
+const char kImageDeepinManual[] = ":/images/deepin-manual.svg";
 
 }  // namespace dman
-
-#endif  // DEEPIN_MANUAL_VIEW_WEB_WINDOW_H

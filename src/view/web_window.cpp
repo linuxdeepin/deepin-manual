@@ -17,12 +17,12 @@
 
 #include "view/web_window.h"
 
-#include <QStackedLayout>
+#include <DTitlebar>
 #include <qcef_web_view.h>
 
 namespace dman {
 
-WebWindow::WebWindow(QWidget* parent) : QFrame(parent),
+WebWindow::WebWindow(QWidget* parent) : Dtk::Widget::DMainWindow(parent),
                                         app_name_() {
   this->initUI();
 }
@@ -40,10 +40,12 @@ void WebWindow::setAppName(const QString& app_name) {
 }
 
 void WebWindow::initUI() {
+  Dtk::Widget::DTitlebar* titlebar = this->titlebar();
+  titlebar->setDisableFlags(Qt::Widget);
+
+
   web_view_ = new QCefWebView();
-  QStackedLayout* layout = new QStackedLayout();
-  layout->addWidget(web_view_);
-  this->setLayout(layout);
+  this->setCentralWidget(web_view_);
 }
 
 }  // namespace dman

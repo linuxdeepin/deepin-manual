@@ -15,11 +15,14 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QApplication>
+#include <DApplication>
+#include <QDebug>
+#include <QIcon>
 #include <qcef_context.h>
 
 #include "base/consts.h"
 #include "controller/window_manager.h"
+#include "resources/images/images.h"
 
 int main(int argc, char** argv) {
   if (argc == 1) {
@@ -49,12 +52,22 @@ int main(int argc, char** argv) {
     return exit_code;
   }
 
-  QApplication app(argc, argv);
+  Dtk::Widget::DApplication::loadDXcbPlugin();
+
+  Dtk::Widget::DApplication app(argc, argv);
   QCefBindApp(&app);
+
+  // TODO(Shaohua): Load theme type from settings.
+  app.setTheme("light");
+
+  // FIXME(Shaohua): libqcef does not support HiDPI currently.
+  app.setAttribute(Qt::AA_EnableHighDpiScaling, true);
   app.setApplicationVersion(dman::kAppVersion);
   app.setApplicationName(dman::kAppName);
   // FIXME(Shaohua): Translation not work.
   app.setApplicationDisplayName(QObject::tr(dman::kAppDisplayName));
+  app.setWindowIcon(QIcon(dman::kImageDeepinManual));
+  qDebug() << dman::kImageDeepinManual;
 
   dman::WindowManager window_manager;
   const QStringList args = app.arguments();

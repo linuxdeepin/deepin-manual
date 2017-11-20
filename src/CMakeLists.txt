@@ -75,14 +75,22 @@ set(CONTROLLER_FILES
     controller/window_manager.cpp
     controller/window_manager.h)
 
+set(RESOURCES_FILES
+    resources/images/images.qrc
+    resources/images/images.cpp
+    resources/images/images.h
+    )
+
 set(VIEW_FILES
     view/web_window.cpp
-    view/web_window.h)
+    view/web_window.h
+    )
 
 add_executable(dman
                app/dman.cpp
                ${BASE_FILES}
                ${CONTROLLER_FILES}
+               ${RESOURCES_FILES}
                ${VIEW_FILES}
                )
 target_link_libraries(dman ${LINK_LIBS})
