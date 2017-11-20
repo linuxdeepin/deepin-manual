@@ -82,6 +82,8 @@ set(RESOURCES_FILES
     )
 
 set(VIEW_FILES
+    view/theme_manager.cpp
+    view/theme_manager.h
     view/web_window.cpp
     view/web_window.h
 

@@ -18,14 +18,14 @@
 #include "view/widget/title_bar.h"
 
 #include <QHBoxLayout>
-#include <QLabel>
-#include <QPushButton>
 
+#include "base/consts.h"
 #include "view/widget/search_edit.h"
 
 namespace dman {
 
 TitleBar::TitleBar(QWidget* parent) : QFrame(parent) {
+  this->setObjectName("TitleBar");
   this->initUI();
 }
 
@@ -33,22 +33,32 @@ TitleBar::~TitleBar() {
 
 }
 
+void TitleBar::setBackButtonVisible(bool visible) {
+  left_layout_->setCurrentIndex(visible ? 1 : 0);
+}
+
 void TitleBar::initUI() {
-  app_icon_ = new QLabel();
-  app_icon_->setFixedSize(24, 24);
+  QLabel* app_icon = new QLabel();
+  app_icon->setObjectName("AppIcon");
+  app_icon->setFixedSize(24, 24);
+  QLabel* app_name = new QLabel(tr(kAppDisplayName));
+  QHBoxLayout* app_icon_layout = new QHBoxLayout();
+  app_icon_layout->addWidget(app_icon);
+  app_icon_layout->addWidget(app_name);
+  QFrame* app_icon_wrapper = new QFrame();
+  app_icon_wrapper->setLayout(app_icon_layout);
 
   back_btn_ = new QPushButton();
+  back_btn_->setObjectName("BackButton");
   back_btn_->setFixedSize(24, 24);
   back_btn_->hide();
 
-  QHBoxLayout* left_layout = new QHBoxLayout();
-  left_layout->setMargin(0);
-  left_layout->setSpacing(10);
-  left_layout->addWidget(app_icon_, 0, Qt::AlignCenter);
-  left_layout->addWidget(back_btn_, 0, Qt::AlignCenter);
-  left_layout->addStretch();
+  left_layout_ = new QStackedLayout();
+  left_layout_->addWidget(app_icon_wrapper);
+  left_layout_->addWidget(back_btn_);
+
   QFrame* left_widget = new QFrame();
-  left_widget->setLayout(left_layout);
+  left_widget->setLayout(left_layout_);
   left_widget->setFixedWidth(148);
 
   search_edit_ = new SearchEdit();

@@ -21,6 +21,7 @@
 #include <QFrame>
 #include <QLabel>
 #include <QPushButton>
+#include <QStackedLayout>
 
 namespace dman {
 
@@ -33,10 +34,15 @@ class TitleBar : public QFrame {
   explicit TitleBar(QWidget* parent = nullptr);
   ~TitleBar() override;
 
+ public slots:
+  // Show goBack button if |visible| is true.
+  // Else show app icon.
+  void setBackButtonVisible(bool visible);
+
  private:
   void initUI();
 
-  QLabel* app_icon_ = nullptr;
+  QStackedLayout* left_layout_ = nullptr;
   QPushButton* back_btn_ = nullptr;
   SearchEdit* search_edit_ = nullptr;
 };
