@@ -22,6 +22,8 @@
 #include <QStyle>
 #include <QWidget>
 
+#include "base/file_util.h"
+
 namespace dman {
 
 namespace {
@@ -29,9 +31,9 @@ namespace {
 ThemeManager* g_theme_manager = nullptr;
 
 QString GetQssContent(const QString& theme, const QString& qss_filename) {
-  Q_UNUSED(theme);
-  Q_UNUSED(qss_filename);
   QString qss;
+  const QString filepath = QString(":/%1/%2.css").arg(theme).arg(qss_filename);
+  qss = ReadFile(filepath);
   return qss;
 }
 
@@ -74,6 +76,14 @@ void ThemeManager::registerWidget(QWidget* widget) {
 
   // TODO(Shaohua): Save base stylesheet.
   widget->setStyleSheet(GetQssContent(theme_, qss_filename));
+  connect(this, &ThemeManager::themeUpdated, [=](const QString& theme) {
+    Q_ASSERT(widget != nullptr);
+    if (widget != nullptr) {
+      widget->setStyleSheet(GetQssContent(theme, qss_filename));
+      widget->style()->unpolish(widget);
+      widget->style()->polish(widget);
+    }
+  });
 }
 
 void ThemeManager::setTheme(const QString& theme) {

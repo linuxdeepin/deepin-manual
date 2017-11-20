@@ -21,7 +21,7 @@
 
 #include "base/consts.h"
 #include "controller/window_manager.h"
-#include "resources/images/images.h"
+#include "resources/themes/images.h"
 
 int main(int argc, char** argv) {
   if (argc == 1) {

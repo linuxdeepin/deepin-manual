@@ -20,7 +20,7 @@
 #include <DTitlebar>
 #include <qcef_web_view.h>
 
-#include "resources/images/images.h"
+#include "resources/themes/images.h"
 #include "view/widget/title_bar.h"
 
 namespace dman {

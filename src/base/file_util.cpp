@@ -18,12 +18,8 @@
 #include "base/file_util.h"
 
 #include <sys/stat.h>
-#include <sys/types.h>
-#include <unistd.h>
 #include <QDebug>
-#include <QDir>
 #include <QDirIterator>
-#include <QFileInfo>
 #include <QTextCodec>
 
 namespace dman {

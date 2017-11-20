@@ -20,6 +20,7 @@
 #include <QHBoxLayout>
 
 #include "base/consts.h"
+#include "view/theme_manager.h"
 #include "view/widget/search_edit.h"
 
 namespace dman {
@@ -59,11 +60,14 @@ void TitleBar::initUI() {
 
   QFrame* left_widget = new QFrame();
   left_widget->setLayout(left_layout_);
-  left_widget->setFixedWidth(148);
+  left_widget->setFixedWidth(168);
 
   search_edit_ = new SearchEdit();
-  search_edit_->setFixedWidth(278);
+  search_edit_->setFixedWidth(228);
   search_edit_->setPlaceHolder(tr("Search"));
+
+  QFrame* right_widget = new QFrame();
+  right_widget->setFixedWidth(1);
 
   QHBoxLayout* main_layout = new QHBoxLayout();
   main_layout->setContentsMargins(5, 5, 5, 5);
@@ -71,7 +75,10 @@ void TitleBar::initUI() {
   main_layout->addStretch();
   main_layout->addWidget(search_edit_);
   main_layout->addStretch();
+  main_layout->addWidget(right_widget);
   this->setLayout(main_layout);
+
+  ThemeManager::instance()->registerWidget(this);
 }
 
 }  // namespace dman

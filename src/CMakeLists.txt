@@ -80,9 +80,9 @@ set(CONTROLLER_FILES
     )
 
 set(RESOURCES_FILES
-    resources/images/images.qrc
-    resources/images/images.cpp
-    resources/images/images.h
+    resources/themes/images.cpp
+    resources/themes/images.h
+    resources/themes/themes.qrc
     )
 
 set(VIEW_FILES

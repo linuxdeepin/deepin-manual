@@ -15,10 +15,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "resources/images/images.h"
+#include "resources/themes/images.h"
 
 namespace dman {
 
-const char kImageDeepinManual[] = ":/images/deepin-manual.svg";
+const char kImageDeepinManual[] = ":/common/images/deepin-manual.svg";
 
 }  // namespace dman
