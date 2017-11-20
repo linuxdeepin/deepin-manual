@@ -1,6 +1,0 @@
-[Desktop Entry]
-Type=Application
-Name=Deepin Manual Daemon
-Exec=/usr/share/dman/dman-daemon
-NoDisplay=true
-X-GNOME-Autostart-Delay=60
