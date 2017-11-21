@@ -14,14 +14,12 @@ export class ManualContentComponent implements OnInit {
 
   ngOnInit() {
     this.service.getManual('dde-file-manager', 'en_US')
-      .subscribe(text => {
-        console.log(text);
-        this.manualContent = text;
+      .subscribe(html => {
+        console.log('html:', html);
+        this.manualContent = html;
         const iframe = document.querySelector('iframe');
-        const html = this.service.markdownToHtml(text);
-        console.log(iframe);
         iframe.srcdoc = html;
-        iframe.setAttribute('srcdoc', iframe.srcdoc);
+        // iframe.setAttribute('srcdoc', iframe.srcdoc);
       });
   }
 

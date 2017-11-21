@@ -4,9 +4,9 @@ import {BadInputError} from '../common/bad-input-error';
 import {NotFoundError} from '../common/not-found-error';
 import {AppError} from '../common/app-error';
 import 'rxjs/add/operator/catch';
+import 'rxjs/add/operator/map';
 import * as marked from 'marked';
 import {HttpClient} from '@angular/common/http';
-import {Subscription} from 'rxjs/Subscription';
 
 @Injectable()
 export class ManualService {
@@ -17,11 +17,12 @@ export class ManualService {
     const url = this.getManualUrl(manual, lang);
     console.log(url);
     return this.http.get(url, {responseType: 'text'})
-      .catch(error => this.handleError(error));
+      .map(res => this.markdownToHtml(res))
+      .catch(this.handleError);
   }
 
   // Render markdown content to HTML.
-  markdownToHtml(tpl: string): string {
+  private markdownToHtml(tpl: string): string {
     return marked(tpl);
   }
 
