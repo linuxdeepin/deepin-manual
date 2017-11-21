@@ -220,7 +220,7 @@ const extractImageLayout = function(text) {
   if (matches && matches.length > 0) {
     const match = matches[0];
     text = text.substr(match.length);
-    layout = parseInt(match);
+    layout = parseInt(match, 10);
   }
   return {
     layout: layout,
@@ -286,8 +286,10 @@ const getPlainRenderer = function() {
       case '←!→':
       case '→→!': {
         shouldBreak = true;
+        break;
       }
-      default: {}
+      default: {
+      }
     }
     if (shouldBreak) {
       return '';
@@ -334,7 +336,7 @@ const getHTMLRenderer = function() {
       const heightExtractor = /\S+\-([0-9]+).svg/;
       const result = heightExtractor.exec(href);
       if (result) {
-        const height = parseInt(result[1]);
+        const height = parseInt(result[1], 10);
         if (height) {
           out += ` style="height:${height}px;"`;
         }
@@ -358,7 +360,8 @@ const getHTMLRenderer = function() {
       klass = 'external';
       inLinkExtra = `<span class="icon"></span>`;
     }
-    const out = `<a href="${href}" title="${title}" class="${klass}" onclick="${onclick}"><span class="text">${text}</span>${inLinkExtra}</a>`;
+    const out = `<a href="${href}" title="${title}" class="${klass}"
+                 onclick="${onclick}"><span class="text">${text}</span>${inLinkExtra}</a>`;
     return out;
   };
 
@@ -394,6 +397,7 @@ const processMarkdown = function(src) {
 
   // Extract Headers
   const parsed = parseNavigationItems(tokens);
+  console.log('parsed: ', parsed);
 
   // Pass tokens to HTML renderer
   const html = marked(src, {
@@ -434,7 +438,8 @@ const extractTokenRange = function(tokens, fromHeaderId, toHeaderId) {
     }
   }
   // preserve the original links property
-  result.links = tokens.links;
+  // FIXME(Shaohua): Check result type.
+  result['links'] = tokens.links;
   return result;
 };
 
@@ -458,8 +463,7 @@ const getHTMLRendererForExternalBase = function() {
 };
 
 const getHTMLRendererForExternalRange = function() {
-  const renderer = getHTMLRendererForExternalBase();
-  return renderer;
+  return getHTMLRendererForExternalBase();
 };
 
 const getHTMLRendererForExternalNode = function() {

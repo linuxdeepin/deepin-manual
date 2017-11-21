@@ -5,27 +5,22 @@ import {NotFoundError} from '../common/not-found-error';
 import {AppError} from '../common/app-error';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-// import * as marked from 'marked';
 import {HttpClient} from '@angular/common/http';
+import {Manual} from './manual';
 
-import * as renderer from './manual-renderer';
+import * as renderer from '../services/manual-renderer';
 
 @Injectable()
 export class ManualService {
 
   constructor(private http: HttpClient) { }
 
-  getManual(manual: string, lang: string): Observable<string> {
+  getManual(manual: string, lang: string): Observable<Manual> {
     const url = this.getManualUrl(manual, lang);
     console.log(url);
     return this.http.get(url, {responseType: 'text'})
-      .map(res => this.markdownToHtml(res))
+      .map(resp => Manual.parseMarkdown(resp))
       .catch(this.handleError);
-  }
-
-  // Render markdown content to HTML.
-  private markdownToHtml(tpl: string): string {
-    return renderer.processMarkdown(tpl).html;
   }
 
   private getManualUrl(manual: string, lang: string): string {
