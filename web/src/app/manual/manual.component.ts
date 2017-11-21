@@ -18,9 +18,8 @@ export class ManualComponent implements OnInit {
     this.service.getManual('dde-file-manager', 'en_US')
       .subscribe((manual: Manual) => {
         this.manual = manual;
-        const iframe = document.querySelector('iframe');
-        // iframe.srcdoc = parseResult.html;
-        // iframe.setAttribute('srcdoc', iframe.srcdoc);
+        const iframe = document.querySelector('.manualContent');
+        iframe.innerHTML = manual.html;
       });
   }
 

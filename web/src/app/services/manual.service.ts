@@ -8,23 +8,22 @@ import 'rxjs/add/operator/map';
 import {HttpClient} from '@angular/common/http';
 import {Manual} from './manual';
 
-import * as renderer from '../services/manual-renderer';
-
 @Injectable()
 export class ManualService {
 
   constructor(private http: HttpClient) { }
 
   getManual(manual: string, lang: string): Observable<Manual> {
-    const url = this.getManualUrl(manual, lang);
-    console.log(url);
-    return this.http.get(url, {responseType: 'text'})
-      .map(resp => Manual.parseMarkdown(resp))
+    const [baseUrl, indexUrl] = this.getManualUrl(manual, lang);
+    console.log(indexUrl);
+    return this.http.get(indexUrl, {responseType: 'text'})
+      .map(resp => Manual.parseMarkdown(resp, baseUrl))
       .catch(this.handleError);
   }
 
-  private getManualUrl(manual: string, lang: string): string {
-    return `http://localhost:4300/usr/share/dman/${manual}/${lang}/index.md`;
+  private getManualUrl(manual: string, lang: string): [string, string] {
+    const base = `http://localhost:4300/usr/share/dman/${manual}/${lang}/`;
+    return [base, base + 'index.md'];
   }
 
   private handleError(error: Response) {
