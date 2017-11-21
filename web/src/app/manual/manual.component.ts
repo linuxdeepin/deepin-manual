@@ -19,7 +19,10 @@ export class ManualComponent implements OnInit {
       .subscribe((manual: Manual) => {
         this.manual = manual;
         const iframe = document.querySelector('.manualContent');
-        iframe.innerHTML = manual.html;
+        // iframe.innerHTML = manual.html;
+        const div = document.createElement('div');
+        div.innerHTML = manual.html;
+        iframe.appendChild(div);
       });
   }
 
