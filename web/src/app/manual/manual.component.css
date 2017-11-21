@@ -7,10 +7,48 @@
   position: absolute;
 }
 
+.manualNav {
+  position: absolute;
+  top: 0px;
+  left: 0px;
+  width: 260px;
+}
+
+.manualNavApp h1 {
+  display: inline-block;
+  font-size: 16px;
+}
+
+.manualNavApp img {
+  width: 24px;
+}
+
+.manualNavHead img {
+  width: 22px;
+}
+
+.manualNavHead h2 {
+  display: inline-block;
+  font-size: 14px;
+}
+
+.manualNavHead h2:hover, .manualNavHead h3:hover, .manualNavHead h4:hover {
+  cursor: pointer;
+}
+
+.manualNavHead h3 {
+  display: inline-block;
+  font-size: 13px;
+}
+
+/** Manual content style **/
+.manualContentWrapper {
+  margin-left: 260px;
+}
 .manualContent {
   width: 672px;
-  height: 100%;
   margin: 0 auto;
+  height: 100%;
   background-color: white;
 }
 
@@ -21,13 +59,13 @@
  * https://stackoverflow.com/questions/36265026/angular-2-innerhtml-styling
  */
 
-::ng-deep * {
+::ng-deep .manualContent * {
   font-family: "Source Han Sans SC", Arial, sans-serif;
   font-size: 14px;
   color: #757575;
 }
 
-::ng-deep h1 {
+::ng-deep .manualContent h1 {
   font-weight: bold;
   font-size: 24px;
   color: black;
@@ -35,7 +73,7 @@
   margin: 1em 0;
 }
 
-::ng-deep h2 {
+::ng-deep .manualContent h2 {
   font-weight: normal;
   font-size: 22px;
   color: #1f94ee;
@@ -44,7 +82,7 @@
   border-bottom: 1px solid #d7d7d7;
 }
 
-::ng-deep h3 {
+::ng-deep .manualContent h3 {
   font-weight: normal;
   font-size: 18px;
   color: #464646;
@@ -52,7 +90,7 @@
   margin: 1em 0;
 }
 
-::ng-deep h4 {
+::ng-deep .manualContent h4 {
   font-weight: normal;
   font-size: 16px;
   color: #464646;
@@ -61,134 +99,134 @@
   clear: both;
 }
 
-::ng-deep img.inline {
+::ng-deep .manualContent img.inline {
   vertical-align: middle;
   height: 20px;
 }
 
-::ng-deep img.block1 {
+::ng-deep .manualContent img.block1 {
   width: 100%;
 }
 
-::ng-deep img.block2 {
+::ng-deep .manualContent img.block2 {
   width: 48%;
   float: left;
 }
 
-::ng-deep img.block3 {
+::ng-deep .manualContent img.block3 {
   width: 32%;
   float: left;
 }
 
-::ng-deep img.HeaderIcon {
+::ng-deep .manualContent img.HeaderIcon {
   width: 50px;
   height: 50px;
   display: inline-block;
   vertical-align: text-bottom;
 }
 
-::ng-deep code {
+::ng-deep .manualContent code {
   background-color: lightgrey !important;
 }
 
-::ng-deep pre {
+::ng-deep .manualContent pre {
   padding: 10px;
   background-color: lightgrey !important;
 }
 
-::ng-deep pre code {
+::ng-deep .manualContent pre code {
   background-color: inherit !important;
 }
 
-::ng-deep blockquote {
+::ng-deep .manualContent blockquote {
   border-left: 5px solid #EAEEF1;
   margin-left: 20px;
   padding-left: 20px;
 }
 
-::ng-deep p {
+::ng-deep .manualContent p {
   line-height: 2em;
   margin: 1em 0;
 }
 
-::ng-deep blockquote p {
+::ng-deep .manualContent blockquote p {
   font-style: italic;
   font-size: 13px;
   color: #888;
 }
 
-::ng-deep strong {
+::ng-deep .manualContent strong {
   color: #6d6d6d;
 }
 
 /* Header counters */
-::ng-deep body {
+::ng-deep .manualContent body {
   counter-reset: level2;
 }
 
-::ng-deep h2, ::ng-deep h3, ::ng-deep h4 {
+::ng-deep .manualContent h2, ::ng-deep .manualContent h3, ::ng-deep .manualContent h4 {
   list-style: decimal;
 }
 
-::ng-deep h2 {
+::ng-deep .manualContent h2 {
   counter-reset: level3;
 }
 
-::ng-deep h3 {
+::ng-deep .manualContent h3 {
   counter-reset: level4;
 }
 
-::ng-deep h2::before {
+::ng-deep .manualContent h2::before {
   counter-increment: level2; /* Increment the section counter*/
   content: counters(level2, ".") ". "; /* Display the counter */
 }
 
-::ng-deep h3::before {
+::ng-deep .manualContent h3::before {
   counter-increment: level3; /* Increment the section counter*/
   content: counters(level2, ".") "." counters(level3, ".") " "; /* Display the counter */
 }
 
-::ng-deep h4::before {
+::ng-deep .manualContent h4::before {
   counter-increment: level4;
   content: counters(level2, ".") "." counters(level3, ".") "." counters(level4, ".") " ";
 }
 
-::ng-deep ol {
+::ng-deep .manualContent ol {
   padding-left: 24px;
   list-style-position: outside;
   line-height: 1.5;
 }
 
-::ng-deep ol li ul {
+::ng-deep .manualContent ol li ul {
   list-style-type: disc;
   padding-left: 24px;
   list-style-position: outside;
   line-height: 1.5;
 }
 
-::ng-deep ul {
+::ng-deep .manualContent ul {
   list-style-type: square;
   list-style-position: outside;
   padding-left: 24px;
   line-height: 1.5;
 }
 
-::ng-deep table {
+::ng-deep .manualContent table {
   border-spacing: 0px;
 }
 
-::ng-deep table caption {
+::ng-deep .manualContent table caption {
   margin-bottom: 8px;
   text-align: left;
 }
 
-::ng-deep thead th {
+::ng-deep .manualContent thead th {
   border: 1px rgb(0, 160, 233) solid;
   padding: 5px 10px;
   color: #888 !important;
 }
 
-::ng-deep td {
+::ng-deep .manualContent td {
   border-color: #e0e0e0;
   border-style: solid;
   border-width: 1px 0 0 0;
@@ -200,38 +238,38 @@
  /*}*/
 }
 
-::ng-deep tbody tr:first-child td{
+::ng-deep .manualContent tbody tr:first-child td{
   border-width: 2px 0 0 0;
   border-color: #cbcbcb;
 }
 
-::ng-deep tbody tr:last-child td{
+::ng-deep .manualContent tbody tr:last-child td{
   border-width: 1px 0 2px 0;
   border-color: #cbcbcb;
 }
 
-::ng-deep table.columns {
+::ng-deep .manualContent table.columns {
   width: 100%;
 }
 
-::ng-deep table.columns td {
+::ng-deep .manualContent table.columns td {
   width: 50%;
   border: none;
   padding: 0;
 }
 
-::ng-deep table.block1 {
+::ng-deep .manualContent table.block1 {
   width: 100%;
   margin-bottom: 29px;
 }
 
-::ng-deep table.block2 {
+::ng-deep .manualContent table.block2 {
   width: 48%;
   float: left;
   margin: 0 1% 29px;
 }
 
-::ng-deep table.block3 {
+::ng-deep .manualContent table.block3 {
   width: 31%;
   float: left;
   margin: 0 1% 29px;

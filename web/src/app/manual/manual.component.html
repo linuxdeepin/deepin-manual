@@ -2,8 +2,25 @@
 <div class="manualContainer">
 
   <base href="/usr/share/dman/dde-file-manager/en_US"/>
-  <div class="manualNav"></div>
+  <div class="manualNav">
+    <div class="manualNavApp">
+      <img src="{{ manual.appIcon }}" title="{{ manual.appName }}" />
+      <h1>{{manual.appName}}</h1>
+    </div>
+    <div
+      class="manualNavHead"
+      *ngFor="let head2 of manual.anchors">
+      <img *ngIf="head2.icon" src="{{ head2.icon }}" title="{{ head2.text }}"/>
+      <h2>{{ head2.text }}</h2>
+      <div
+        *ngFor="let head3 of head2.children">
+        <h3>{{ head3.text }}</h3>
+      </div>
+    </div>
+  </div>
 
-  <div class="manualContent"></div>
+  <div class="manualContentWrapper">
+    <div class="manualContent"></div>
+  </div>
 
 </div>
