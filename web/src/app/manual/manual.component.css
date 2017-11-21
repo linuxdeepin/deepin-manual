@@ -173,6 +173,10 @@
   line-height: 1.5;
 }
 
+::ng-deep table {
+  border-spacing: 0px;
+}
+
 ::ng-deep table caption {
   margin-bottom: 8px;
   text-align: left;
@@ -184,24 +188,25 @@
   color: #888 !important;
 }
 
-::ng-deep tbody td {
+::ng-deep td {
   border-color: #e0e0e0;
   border-style: solid;
-  border-width: 1px 0;
+  border-width: 1px 0 0 0;
   padding: 5px 10px;
   color: #888 !important;
+  margin: 0;
 /*&.blank {*/
    /*border-width: 0;*/
  /*}*/
 }
 
 ::ng-deep tbody tr:first-child td{
-  border-top-width: 2px;
+  border-width: 2px 0 0 0;
   border-color: #cbcbcb;
 }
 
 ::ng-deep tbody tr:last-child td{
-  border-bottom-width: 2px;
+  border-width: 1px 0 2px 0;
   border-color: #cbcbcb;
 }
 
