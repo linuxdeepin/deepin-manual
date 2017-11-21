@@ -8,11 +8,223 @@
 }
 
 .manualContent {
-  width: 100%;
+  width: 672px;
   height: 100%;
+  margin: 0 auto;
+  background-color: white;
 }
 
-img {
-  width: 24px;
-  height: 24px;
+/*
+ * Styling markdown content elements.
+ * By pass innerHTML styling in angular. See:
+ * https://github.com/angular/angular/issues/7845
+ * https://stackoverflow.com/questions/36265026/angular-2-innerhtml-styling
+ */
+
+::ng-deep * {
+  font-family: "Source Han Sans SC", Arial, sans-serif;
+  font-size: 14px;
+  color: #757575;
+}
+
+::ng-deep h1 {
+  font-weight: bold;
+  font-size: 24px;
+  color: black;
+  line-height: 2em;
+  margin: 1em 0;
+}
+
+::ng-deep h2 {
+  font-weight: normal;
+  font-size: 22px;
+  color: #1f94ee;
+  line-height: 2em;
+  margin: 1em 0 0;
+  border-bottom: 1px solid #d7d7d7;
+}
+
+::ng-deep h3 {
+  font-weight: normal;
+  font-size: 18px;
+  color: #464646;
+  line-height: 2em;
+  margin: 1em 0;
+}
+
+::ng-deep h4 {
+  font-weight: normal;
+  font-size: 16px;
+  color: #464646;
+  line-height: 2em;
+  margin: 1em 0;
+  clear: both;
+}
+
+::ng-deep img.inline {
+  vertical-align: middle;
+  height: 20px;
+}
+
+::ng-deep img.block1 {
+  width: 100%;
+}
+
+::ng-deep img.block2 {
+  width: 48%;
+  float: left;
+}
+
+::ng-deep img.block3 {
+  width: 32%;
+  float: left;
+}
+
+::ng-deep img.HeaderIcon {
+  width: 50px;
+  height: 50px;
+  display: inline-block;
+  vertical-align: text-bottom;
+}
+
+::ng-deep code {
+  background-color: lightgrey !important;
+}
+
+::ng-deep pre {
+  padding: 10px;
+  background-color: lightgrey !important;
+}
+
+::ng-deep pre code {
+  background-color: inherit !important;
+}
+
+::ng-deep blockquote {
+  border-left: 5px solid #EAEEF1;
+  margin-left: 20px;
+  padding-left: 20px;
+}
+
+::ng-deep p {
+  line-height: 2em;
+  margin: 1em 0;
+}
+
+::ng-deep blockquote p {
+  font-style: italic;
+  font-size: 13px;
+  color: #888;
+}
+
+::ng-deep strong {
+  color: #6d6d6d;
+}
+
+/* Header counters */
+::ng-deep body {
+  counter-reset: level2;
+}
+
+::ng-deep h2, ::ng-deep h3, ::ng-deep h4 {
+  list-style: decimal;
+}
+
+::ng-deep h2 {
+  counter-reset: level3;
+}
+
+::ng-deep h3 {
+  counter-reset: level4;
+}
+
+::ng-deep h2::before {
+  counter-increment: level2; /* Increment the section counter*/
+  content: counters(level2, ".") ". "; /* Display the counter */
+}
+
+::ng-deep h3::before {
+  counter-increment: level3; /* Increment the section counter*/
+  content: counters(level2, ".") "." counters(level3, ".") " "; /* Display the counter */
+}
+
+::ng-deep h4::before {
+  counter-increment: level4;
+  content: counters(level2, ".") "." counters(level3, ".") "." counters(level4, ".") " ";
+}
+
+::ng-deep ol {
+  padding-left: 24px;
+  list-style-position: outside;
+}
+
+::ng-deep ol li ul {
+  list-style-type: disc;
+  padding-left: 24px;
+  list-style-position: outside;
+}
+
+::ng-deep ul {
+  padding-left: 24px;
+  list-style-position: outside;
+  list-style-type: square;
+}
+
+::ng-deep table caption {
+  margin-bottom: 8px;
+  text-align: left;
+}
+
+::ng-deep thead th {
+  border: 1px rgb(0, 160, 233) solid;
+  padding: 5px 10px;
+  color: #888 !important;
+}
+
+::ng-deep tbody td {
+  border-color: #e0e0e0;
+  border-style: solid;
+  border-width: 1px 0;
+  padding: 5px 10px;
+  color: #888 !important;
+/*&.blank {*/
+   /*border-width: 0;*/
+ /*}*/
+}
+
+::ng-deep tbody tr:first-child td{
+  border-top-width: 2px;
+  border-color: #cbcbcb;
+}
+
+::ng-deep tbody tr:last-child td{
+  border-bottom-width: 2px;
+  border-color: #cbcbcb;
+}
+
+::ng-deep table.columns {
+  width: 100%;
+}
+
+::ng-deep table.columns td {
+  width: 50%;
+  border: none;
+  padding: 0;
+}
+
+::ng-deep table.block1 {
+  width: 100%;
+  margin-bottom: 29px;
+}
+
+::ng-deep table.block2 {
+  width: 48%;
+  float: left;
+  margin: 0 1% 29px;
+}
+
+::ng-deep table.block3 {
+  width: 31%;
+  float: left;
+  margin: 0 1% 29px;
 }
