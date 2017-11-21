@@ -63,7 +63,10 @@ const parseNavigationItems = function(tokens, m: Manual) {
     // called by parseNavigationItems,
     // html, paragraph, and text needs inline parsing to strip markdown marks.
     const payload = [token];
-    payload.links = tokens.links;
+    // FIXME(Shaohua): Invalid type.
+    payload['links'] = tokens.links;
+    // noinspection TypeScriptUnresolvedFunction
+    // NOTE(Shaohua): @types/marked is out dated.
     const parser = new marked.Parser({
       gfm: true,
       tables: true,
