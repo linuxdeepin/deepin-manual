@@ -5,8 +5,10 @@ import {NotFoundError} from '../common/not-found-error';
 import {AppError} from '../common/app-error';
 import 'rxjs/add/operator/catch';
 import 'rxjs/add/operator/map';
-import * as marked from 'marked';
+// import * as marked from 'marked';
 import {HttpClient} from '@angular/common/http';
+
+import * as renderer from './manual-renderer';
 
 @Injectable()
 export class ManualService {
@@ -23,7 +25,7 @@ export class ManualService {
 
   // Render markdown content to HTML.
   private markdownToHtml(tpl: string): string {
-    return marked(tpl);
+    return renderer.processMarkdown(tpl).html;
   }
 
   private getManualUrl(manual: string, lang: string): string {
