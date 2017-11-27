@@ -160,7 +160,7 @@
 }
 
 /* Header counters */
-::ng-deep .manualContent body {
+::ng-deep .manualContent {
   counter-reset: level2;
 }
 

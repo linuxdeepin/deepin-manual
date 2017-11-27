@@ -65,8 +65,9 @@ const parseNavigationItems = function(tokens, m: Manual) {
     const payload = [token];
     // FIXME(Shaohua): Invalid type.
     payload['links'] = tokens.links;
-    // noinspection TypeScriptUnresolvedFunction
     // NOTE(Shaohua): @types/marked is out dated.
+    // noinspection TypeScriptUnresolvedFunction
+    // noinspection
     const parser = new marked.Parser({
       gfm: true,
       tables: true,

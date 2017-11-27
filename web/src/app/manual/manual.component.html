@@ -2,7 +2,9 @@
 <div class="manualContainer">
 
   <base href="/usr/share/dman/dde-file-manager/en_US"/>
-  <div class="manualNav">
+  <div
+    class="manualNav"
+    *ngIf="manual">
     <div class="manualNavApp">
       <img src="{{ manual.appIcon }}" title="{{ manual.appName }}" />
       <h1>{{manual.appName}}</h1>
