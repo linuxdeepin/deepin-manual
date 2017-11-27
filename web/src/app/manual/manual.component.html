@@ -9,14 +9,16 @@
       <img src="{{ manual.appIcon }}" title="{{ manual.appName }}" />
       <h1>{{manual.appName}}</h1>
     </div>
-    <div
-      class="manualNavHead"
-      *ngFor="let head2 of manual.anchors">
-      <img *ngIf="head2.icon" src="{{ head2.icon }}" title="{{ head2.text }}"/>
-      <h2>{{ head2.text }}</h2>
+    <div class="manualNavWrap">
       <div
-        *ngFor="let head3 of head2.children">
-        <h3>{{ head3.text }}</h3>
+        class="manualNavItem"
+        *ngFor="let head2 of manual.anchors">
+        <!--<img *ngIf="head2.icon" src="{{ head2.icon }}" title="{{ head2.text }}"/>-->
+        <h2>{{ head2.text }}</h2>
+        <div
+          *ngFor="let head3 of head2.children">
+          <h3>{{ head3.text }}</h3>
+        </div>
       </div>
     </div>
   </div>

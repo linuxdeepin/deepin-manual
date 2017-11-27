@@ -23,22 +23,51 @@
   width: 24px;
 }
 
-.manualNavHead img {
+.manualNavItem img {
   width: 22px;
 }
 
-.manualNavHead h2 {
-  display: inline-block;
-  font-size: 14px;
+.manualNavWrap {
+  counter-reset: level2;
 }
 
-.manualNavHead h2:hover, .manualNavHead h3:hover, .manualNavHead h4:hover {
+.manualNavWrap h2 {
+  display: inline-block;
+  font-size: 14px;
+  counter-reset: level3;
+}
+
+.manualNavWrap h2:hover, .manualNavWrap h3:hover, .manualNavWrap h4:hover {
   cursor: pointer;
 }
 
-.manualNavHead h3 {
+.manualNavWrap h3 {
   display: inline-block;
   font-size: 13px;
+  counter-reset: level4;
+  margin-left: 15px;
+}
+
+.manualNavWrap h4 {
+  display: inline-block;
+  font-size: 12px;
+  counter-reset: level5;
+  margin-left: 25px;
+}
+
+.manualNavWrap h2::before {
+  counter-increment: level2; /* Increment the section counter*/
+  content: counters(level2, ".") ". "; /* Display the counter */
+}
+
+.manualNavWrap h3::before {
+  counter-increment: level3; /* Increment the section counter*/
+  content: counters(level2, ".") "." counters(level3, ".") " "; /* Display the counter */
+}
+
+.manualNavWrap h4::before {
+  counter-increment: level4;
+  content: counters(level2, ".") "." counters(level3, ".") "." counters(level4, ".") " ";
 }
 
 /** Manual content style **/
