@@ -1,0 +1,57 @@
+@charset "UTF-8";
+.read {
+  margin: auto;
+  width: 660px;
+  font-size: 14px;
+  color: #757575;
+  outline: 0px; }
+  .read h2 {
+    font-size: 20px; }
+  .read h3 {
+    font-size: 16px; }
+  .read h4 {
+    font-size: 12px; }
+  .read h2 {
+    font-weight: normal;
+    font-size: 22px;
+    color: #1f94ee;
+    line-height: 2em;
+    margin: 1em 0 0;
+    border-bottom: 1px solid #d7d7d7; }
+  .read img {
+    max-width: 100%; }
+    .read img[src$="svg"] {
+      height: 20px;
+      vertical-align: middle; }
+    .read img[src$="png"] {
+      cursor: pointer; }
+  .read p {
+    line-height: 2em;
+    margin: 1em 0; }
+  .read table {
+    color: #888;
+    border-collapse: collapse;
+    border-top: 2px solid #CBCBCB;
+    border-bottom: 2px solid #CBCBCB; }
+    .read table.block1 {
+      width: 100%; }
+    .read table.block2 {
+      width: 50%; }
+    .read table.block3 {
+      width: 33.33333%; }
+    .read table.block4 {
+      width: 25%; }
+    .read table tr {
+      border-bottom: 1px solid #CBCBCB; }
+      .read table tr td {
+        padding: 5px; }
+  .read a {
+    text-decoration: none;
+    font-weight: bold;
+    color: #757575; }
+    .read a[href^="http"]:after {
+      content: "🔗"; }
+    .read a[href^="#"]:after {
+      content: "🏴"; }
+  .read .searchWK {
+    background-color: yellow; }

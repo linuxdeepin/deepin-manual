@@ -46,6 +46,10 @@ int main(int argc, char** argv) {
   // Disable GPU process.
   settings.addCommandLineSwitch("--disable-gpu", "");
 
+  // Follow system locale
+  QString sysLocale( QLocale::system().name() );
+  settings.addCommandLineSwitch("--lang", sysLocale.replace("_", "-"));
+
   // TODO(Shaohua): Set web cache folder.
 
   const int exit_code = QCefInit(argc, argv, settings);

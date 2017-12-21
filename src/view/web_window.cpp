@@ -17,6 +17,8 @@
 
 #include "view/web_window.h"
 
+#include <QFileInfo>
+
 #include <DTitlebar>
 #include <qcef_web_page.h>
 #include <qcef_web_settings.h>
@@ -42,7 +44,9 @@ void WebWindow::setAppName(const QString& app_name) {
     return;
   }
   app_name_ = app_name;
-  web_view_->load(QUrl(kIndexPage));
+
+  QFileInfo fInfo(kIndexPage);
+  web_view_->load("file://"+fInfo.absoluteFilePath()+"?app="+app_name);
 }
 
 void WebWindow::initUI() {

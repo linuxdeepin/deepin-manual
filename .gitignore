@@ -8,6 +8,8 @@ PageRoot/www/favicon.svg
 
 unused
 symdir
+build/
+.vscode/
 
 *.nw
 *.log

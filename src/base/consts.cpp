@@ -25,6 +25,7 @@ const char kAppVersion[] = "2.0.0";
 const char kAppDesc[] = "Deepin user manual";
 
 const char kIndexPage[] =
-    "file:///usr/share/deepin-manual/PageRoot/www/index.html";
+    "../PageRoot/www/index.html";
+    // "/home/myml/Src/web/manual/index.html";
 
 }  // namespace dman
