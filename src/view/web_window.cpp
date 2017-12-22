@@ -46,7 +46,7 @@ void WebWindow::setAppName(const QString& app_name) {
   app_name_ = app_name;
 
   QFileInfo fInfo(kIndexPage);
-  web_view_->load("file://"+fInfo.absoluteFilePath()+"?app="+app_name);
+  web_view_->load(QUrl::fromLocalFile(fInfo.absoluteFilePath()));
 }
 
 void WebWindow::initUI() {

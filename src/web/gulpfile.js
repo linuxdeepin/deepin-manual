@@ -18,6 +18,9 @@ gulp.task('scss',()=>{
         .pipe(sass())
         .pipe(gulp.dest("css"))
 })
+//编译全部
+gulp.task('build',['js','scss'])
+
 gulp.task('js-watch', ['js'], ()=>browserSync.reload())
 gulp.task('scss-watch', ['scss'], ()=>browserSync.reload())
 

@@ -26,6 +26,5 @@ const char kAppDesc[] = "Deepin user manual";
 
 const char kIndexPage[] =
     "../PageRoot/www/index.html";
-    // "/home/myml/Src/web/manual/index.html";
-
+    
 }  // namespace dman
