@@ -1,20 +1,30 @@
 const React = require("react"),
     ReactDOM = require("react-dom"),
     Marked = require("marked"),
-    FileApi = require("./file"),
+    Request = require("browser-request"),
     Nav = require("./nav.jsx"),
     Content = require("./content.jsx")
 class App extends React.Component{
     constructor(props){
         super(props)
-
-        let vdiv=this.props.vdiv
-        ;[...vdiv.querySelectorAll("h1,h2")].map(el=>el.innerText=el.innerText.split("|")[0])
-
+        this.state={
+            search:this.props.search,
+        }
+    }
+    componentWillReceiveProps(nextProps) {
+        this.setState({search: nextProps.search});
+    }
+    hashChange(hash){
+        this.setState({hash,search:""})
+    }
+    render(){
+        let vdiv=document.createElement("div")
+        vdiv.innerHTML=this.props.html
         //设置标题删除h1
         let title=vdiv.querySelector("h1").innerText
         vdiv.removeChild(vdiv.querySelector("h1"))
-
+        //去除标题图标
+        ;[...vdiv.querySelectorAll("h2")].map(el=>el.innerText=el.innerText.split("|")[0])
         //设置唯一ID
         let hList=[...vdiv.querySelectorAll("h2,h3,h4")]
         let ids={}
@@ -27,23 +37,15 @@ class App extends React.Component{
                 el.id = `${text}-${ids[text]++}`
             }
         })
-        this.state={
-            vdiv,hList,title,
-            hash:hList[0].id,
-            search:this.props.queryArge.search,
-        }
-    }
-    hashChange(hash){
-        this.setState({hash,search:""})
-    }
-    render(){
+
         return <div>
-            <title>{this.state.title}</title>
-            <Nav hList={this.state.hList}
+            <title>{title}</title>
+            <Nav hList={hList}
                  hash={this.state.hash}
                  onSearchCancel={()=>this.setState({search:""})}
             ></Nav>
-            <Content vdiv={this.state.vdiv}
+            <Content app={this.props.app}
+                     vdiv={vdiv}
                      search={this.state.search}
                      hash={this.state.hash}
                      onHashChange={this.hashChange.bind(this)}
@@ -53,24 +55,38 @@ class App extends React.Component{
     }
 }
 
-let queryArge={"app":"dde",search:""}
-location.search.substr(1).split("&").map(s=>{
-    let arge=s.split("=")
-    queryArge[arge[0]]=arge[1]
-})
-console.log(queryArge)
+function parseArge(query) {
+    let queryArge={}
+    query.split("&").map(s=>{
+        let arge=s.split("=")
+        queryArge[arge[0]]=arge[1]
+    })
+    return queryArge
+}
 
-let appName=queryArge.app
-let language=navigator.language.replace(/-/,"_")
+function renderApp() {
+    ReactDOM.render(<App html={arge.html} app={arge.app} search={arge.search}></App>,document.getElementById("app"))
+}
 
-FileApi.read(`${appName}/${language}/index.md`).then(data=>{
-    let html=Marked(data)
-    //图片资源代理
-    html=html.replace(/src="/g,`$&file:///usr/share/dman/${appName}/${language}/`)
+let arge=parseArge(location.search.substr(1))
+arge.search=arge.search?decodeURI(arge.search):""
+arge.lang = navigator.language.replace(/-/,'_')
+arge.origin = location.protocol=="http:"?
+    `http://${location.hostname}:8000`
+    :`file:///usr/share/dman`
 
-    //去除标题图标
-    let vdiv=document.createElement("div")
-    vdiv.innerHTML=html
-
-    ReactDOM.render(<App vdiv={vdiv} queryArge={queryArge}></App>,document.getElementById("app"))
-})
+//搜索
+global.search=function(kw) {
+    arge.search=kw
+    renderApp()
+}
+//打开应用帮助
+global.open=function (app) {
+    arge.app=app
+    Request.get(`${arge.origin}/${arge.app}/${arge.lang}/index.md`,(error, response,body)=>{
+        //图片资源重定向
+        arge.html=Marked(body).replace(/src="/g,`$&${arge.origin}/${arge.app}/${arge.lang}/`)
+        renderApp()
+    })
+}
+//open(arge.app)

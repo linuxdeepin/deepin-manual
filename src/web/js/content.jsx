@@ -6,18 +6,23 @@ module.exports=class Content extends React.Component{
         super(props)
         this.state={
             seeImage:"",
-            hList:null,
         }
     }
     componentDidMount(){
-        let read=ReactDOM.findDOMNode(this).querySelector("#read")
+        this.setState({app:this.props.app})
+        let content=ReactDOM.findDOMNode(this)
+        let read=content.querySelector("#read")
         read.focus()
-        let hList=[...read.querySelectorAll("h2,h3,h4")].reverse()
-        this.setState({hList})
+        this.hList=[...read.querySelectorAll("h2,h3,h4")].reverse()
+        location.hash=`#${this.hList[this.hList.length-1].id}`
+    }
+    componentDidUpdate(){
+        if(this.state.app!=this.props.app){
+            this.componentDidMount()
+        }
     }
     readScroll(){
-        let hList=this.state.hList
-        console.log("scroll",hList)
+        let hList=this.hList
         for(let i=0;i<hList.length;i++){
             if(hList[i].getBoundingClientRect().bottom<hList[i].clientHeight*2){
                 if(hList[i].id!=this.props.hash) {
