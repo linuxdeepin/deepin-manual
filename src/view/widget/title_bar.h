@@ -34,6 +34,9 @@ class TitleBar : public QFrame {
   explicit TitleBar(QWidget* parent = nullptr);
   ~TitleBar() override;
 
+ signals:
+  void searchTextChanged(const QString &text);
+
  public slots:
   // Show goBack button if |visible| is true.
   // Else show app icon.

@@ -33,6 +33,10 @@ namespace dman {
 WebWindow::WebWindow(QWidget* parent) : Dtk::Widget::DMainWindow(parent),
                                         app_name_() {
   this->initUI();
+
+  connect(title_bar_, &TitleBar::searchTextChanged, [this](const QString &text) {
+    web_view_->page()->runJavaScript("search(\"" + text + "\")", "custom_search.js");
+  });
 }
 
 WebWindow::~WebWindow() {
@@ -47,6 +51,15 @@ void WebWindow::setAppName(const QString& app_name) {
 
   QFileInfo fInfo(kIndexPage);
   web_view_->load(QUrl::fromLocalFile(fInfo.absoluteFilePath()));
+
+  if (!app_name.isEmpty()) {
+    QCefWebPage *page = web_view_->page();
+    connect(page, &QCefWebPage::loadFinished, [this, page](bool ok){
+      if (ok) {
+        page->runJavaScript("open(\"" + app_name_ + "\")");
+      }
+  });
+  }
 }
 
 void WebWindow::initUI() {

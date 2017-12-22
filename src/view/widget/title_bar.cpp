@@ -28,6 +28,10 @@ namespace dman {
 TitleBar::TitleBar(QWidget* parent) : QFrame(parent) {
   this->setObjectName("TitleBar");
   this->initUI();
+
+  connect(search_edit_, &SearchEdit::textChanged, [this] {
+    emit searchTextChanged(search_edit_->text());
+  });
 }
 
 TitleBar::~TitleBar() {
