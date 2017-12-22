@@ -3,6 +3,8 @@ project(deepin-manual C CXX)
 #set(CMAKE_C_COMPILER  /usr/bin/clang)
 #set(CMAKE_CXX_COMPILER  /usr/bin/clang++)
 
+add_subdirectory(web)
+
 # Only generate Debug and Release configuration types.
 set(CMAKE_CONFIGURATION_TYPES Debug Release)
 if (NOT CMAKE_BUILD_TYPE)
