@@ -1,60 +1,27 @@
 const React = require("react"),
     ReactDOM = require("react-dom"),
-    Marked = require("marked"),
     Request = require("browser-request"),
-    Nav = require("./nav.jsx"),
-    Content = require("./content.jsx")
-class App extends React.Component{
-    constructor(props){
-        super(props)
-        this.state={
-            search:this.props.search,
-        }
-    }
-    componentWillReceiveProps(nextProps) {
-        this.setState({search: nextProps.search});
-    }
-    hashChange(hash){
-        this.setState({hash,search:""})
-    }
-    render(){
-        let vdiv=document.createElement("div")
-        vdiv.innerHTML=this.props.html
-        //设置标题删除h1
-        let title=vdiv.querySelector("h1").innerText
-        vdiv.removeChild(vdiv.querySelector("h1"))
-        //去除标题图标
-        ;[...vdiv.querySelectorAll("h2")].map(el=>el.innerText=el.innerText.split("|")[0])
-        //设置唯一ID
-        let hList=[...vdiv.querySelectorAll("h2,h3,h4")]
-        let ids={}
-        hList.map(el=>{
-            let text=el.innerText
-            if(ids[text]==undefined) {
-                el.id = text
-                ids[text]=0
-            }else {
-                el.id = `${text}-${ids[text]++}`
-            }
-        })
+    Marked = require("marked"),
+    Main = require("./main.jsx")
 
-        return <div>
-            <title>{title}</title>
-            <Nav hList={hList}
-                 hash={this.state.hash}
-                 onSearchCancel={()=>this.setState({search:""})}
-            ></Nav>
-            <Content app={this.props.app}
-                     vdiv={vdiv}
-                     search={this.state.search}
-                     hash={this.state.hash}
-                     onHashChange={this.hashChange.bind(this)}
-                     onSearchDone={()=>this.setState({search:""})}
-            ></Content>
+function Index(props) {
+    return <div id="index">
+            {props.appLists.map(list=>
+                <div key={list.name}>
+                    <h2>{list.name}</h2>
+                    {list.child.map(app=>
+                        <div key={app.name} className="app">
+                            <img src={`${arge.origin}/${app.name}/common/${app.icon}`}/>
+                            <br/>
+                            {app.title}
+                        </div>
+                    )}
+                </div>
+            )}
         </div>
-    }
 }
 
+//从URL query初始化参数
 function parseArge(query) {
     let queryArge={}
     query.split("&").map(s=>{
@@ -63,11 +30,11 @@ function parseArge(query) {
     })
     return queryArge
 }
-
+//渲染App组件
 function renderApp() {
-    ReactDOM.render(<App html={arge.html} app={arge.app} search={arge.search}></App>,document.getElementById("app"))
+    ReactDOM.render(<Main html={arge.html} app={arge.app} search={arge.search}></Main>,document.getElementById("app"))
 }
-
+//初始化参数
 let arge=parseArge(location.search.substr(1))
 arge.search=arge.search?decodeURI(arge.search):""
 arge.lang = navigator.language.replace(/-/,'_')
@@ -89,4 +56,37 @@ global.open=function (app) {
         renderApp()
     })
 }
+//首页
+global.index=function (appLists) {
+    ReactDOM.render(<Index appLists={appLists}></Index>,document.getElementById("app"))
+}
+global.testIndex=function () {
+//首页JSON例子
+global.index([
+    {
+        name: "系统",
+        child:[
+            {name: "dde", title: "深度桌面DDE", icon: "deepin-system.svg"},
+            {name: "dde-file-manager", title: "深度文件管理器", icon: "deepin-file-manager.svg"}
+        ]
+    },
+    {
+        name: "应用",
+        child: [
+            {name: "deepin-system-monitor", title: "深度系统监视器", icon: "monitor.svg"},
+            {name: "deepin-terminal", title: "深度终端", icon: "deepin-terminal.svg"},
+            {name: "youdao-dict", title: "有道词典", icon: "deepin-youdaodict.svg"},
+            {name: "deepin-appstore", title: "深度应用商店", icon: "deepin-appstore.svg"},
+            {name: "deepin-system-monitor", title: "深度系统监视器", icon: "monitor.svg"},
+            {name: "deepin-terminal", title: "深度终端", icon: "deepin-terminal.svg"},
+            {name: "deepin-terminal", title: "深度终端", icon: "deepin-terminal.svg"},
+            {name: "youdao-dict", title: "有道词典", icon: "deepin-youdaodict.svg"},
+            {name: "deepin-appstore", title: "深度应用商店", icon: "deepin-appstore.svg"},
+            {name: "deepin-system-monitor", title: "深度系统监视器", icon: "monitor.svg"},
+            {name: "deepin-terminal", title: "深度终端", icon: "deepin-terminal.svg"},
+            {name: "youdao-dict", title: "有道词典", icon: "deepin-youdaodict.svg"}
+        ]
+    }])
+}
+// global.testIndex()
 //open(arge.app)
