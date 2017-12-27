@@ -1,74 +1,74 @@
 .read {
-  margin: auto;
-  width:660px;
-  font-size: 14px;
-  color: #757575;
-  outline: 0px;
-  //标题字体大小
-  @for $i from 0 to 3 {
-    h#{$i+2}{
-      font-size: 20px-4px*$i;
-    }
-  }
-  h2{
-    font-weight: normal;
-    font-size: 22px;
-    color: #1f94ee;
-    line-height: 2em;
-    margin: 1em 0 0;
-    border-bottom: 1px solid #d7d7d7;
-  }
-  img {
-    max-width: 100%;
-    //svg图片内嵌同行
-    &[src$="svg"]{
-      height: 20px;
-      vertical-align: middle;
-    }
-    //png图片点击放大
-    &[src$="png"]{
-      cursor: pointer;
-    }
-  }
-  p {
-    line-height: 2em;
-    margin: 1em 0;
-  }
-  table {
-    $borderStyle:solid #CBCBCB;
-    color: #888;
-    border-collapse:collapse;
-    border-top: 2px $borderStyle;
-    border-bottom: 2px $borderStyle;
-    //表格block等级
-    @for $i from 1 to 5{
-      &.block#{$i}{
-        width: 100%/$i;
-      }
-    }
-    tr {
-      border-bottom: 1px $borderStyle;
-      td {
-        padding: 5px;
-      }
-    }
-  }
-  a{
-    text-decoration: none;
-    font-weight: bold;
-    color: #757575;
-    &[href^="http"]{
-      &:after{
-        content: "🔗";
-      }
-    }
-    &[href^="#"]{
-      &:after{
-        content: "🏴";
-      }
-    }
-  }
-  .searchWK{
-    background-color: yellow;
-  }
+	margin: auto;
+	width:660px;
+	font-size: 14px;
+	color: #757575;
+	outline: 0px;
+	//标题字体大小
+	@for $i from 0 to 3 {
+		h#{$i+2}{
+			font-size: 20px-4px*$i;
+		}
+	}
+	h2{
+		font-weight: normal;
+		font-size: 22px;
+		color: #1f94ee;
+		line-height: 2em;
+		margin: 1em 0 0;
+		border-bottom: 1px solid #d7d7d7;
+	}
+	img {
+		max-width: 100%;
+		//svg图片内嵌同行
+		&[src$="svg"]{
+			height: 20px;
+			vertical-align: middle;
+		}
+		//png图片点击放大
+		&[src$="png"]{
+			cursor: pointer;
+		}
+	}
+	p {
+		line-height: 2em;
+		margin: 1em 0;
+	}
+	table {
+		$borderStyle:solid #CBCBCB;
+		color: #888;
+		border-collapse:collapse;
+		border-top: 2px $borderStyle;
+		border-bottom: 2px $borderStyle;
+		//表格block等级
+		@for $i from 1 to 5{
+			&.block#{$i}{
+				width: 100%/$i;
+			}
+		}
+		tr {
+			border-bottom: 1px $borderStyle;
+			td {
+				padding: 5px;
+			}
+		}
+	}
+	a{
+		text-decoration: none;
+		font-weight: bold;
+		color: #757575;
+		&[href^="http"]{
+			&:after{
+				content: "🔗";
+			}
+		}
+		&[href^="#"]{
+			&:after{
+				content: "🏴";
+			}
+		}
+	}
+	.searchWK{
+		background-color: yellow;
+	}
 }
