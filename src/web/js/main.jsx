@@ -6,32 +6,29 @@ module.exports=class Main extends React.Component{
 	constructor(props){
 		super(props)
 		this.state={
-			search:this.props.search,
+			hash:""
 		}
 	}
-	componentWillReceiveProps(nextProps) {
-		this.setState({search: nextProps.search});
-	}
+	// componentWillReceiveProps(nextProps) {
+	// 	this.setState({search: nextProps.search});
+	// }
 	hashChange(hash){
-		this.setState({hash,search:""})
+		console.log(hash)
+		this.setState({hash})
 	}
 	render(){
 		let vdiv=document.createElement("div")
 		vdiv.innerHTML=this.props.html
-		let hList=[...vdiv.querySelectorAll("h2,h3,h4")]
 		return <div>
 			<title>{this.props.title} - 帮助手册</title>
-			<Nav hList={hList}
-				 hash={this.state.hash}
-				 onSearchCancel={()=>this.setState({search:""})}
-			></Nav>
-			<Content app={this.props.app}
-					 vdiv={vdiv}
-					 search={this.state.search}
-					 hash={this.state.hash}
-					 onHashChange={this.hashChange.bind(this)}
-					 onSearchDone={()=>this.setState({search:""})}
-			></Content>
+			<Nav hList={[...vdiv.querySelectorAll("h2,h3,h4")]}
+			hash={this.state.hash}
+			hashChange={hash=>this.hashChange(hash)}></Nav>
+			<Content title={this.props.title}
+			vdiv={vdiv} 
+			hash={this.state.hash}
+			search={this.props.search}
+			hashChange={hash=>this.hashChange(hash)}></Content>
 		</div>
 	}
 }

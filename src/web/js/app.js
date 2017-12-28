@@ -4,21 +4,25 @@ const React = require("react"),
 	md5 = require('md5'),
 	Main = require("./main.jsx")
 
+import { Scrollbars } from 'react-custom-scrollbars'
+
 function Index(props) {
-	return <div id="index">
-			{props.appLists.map(list=>
-				<div key={list.name}>
-					<h2>{list.name}</h2>
-					{list.child.map(app=>
-						<div key={app.name} className="app" onClick={e=>renderApp(app.name)}>
-							<img src={`${arge.origin}/${app.name}/common/${app.logo}`}/>
-							<br/>
-							{app.title}
-						</div>
-					)}
-				</div>
-			)}
-		</div>
+	return <Scrollbars>
+			<div id="index">
+				{props.appLists.map(list=>
+					<div key={list.name}>
+						<h2>{list.name}</h2>
+						{list.child.map(app=>
+							<div key={app.name} className="app" onClick={e=>renderApp(app.name)}>
+								<img src={`${arge.origin}/${app.name}/common/${app.logo}`}/>
+								<br/>
+								{app.title}
+							</div>
+						)}
+					</div>
+				)}
+			</div>
+		</Scrollbars>
 }
 //渲染App组件
 function renderApp(appName,search) {
