@@ -10,8 +10,11 @@
 		top: 0;
 		left: 0;
 		overflow: auto;
-		text-align:center;
-		background-color: #D5EDFE;
+		background-color: rgba(0.835294, 0.929412, 0.996078, 0.6);
+		transform: 0.3;
+		display: -webkit-box;
+		-webkit-box-align: center;
+		-webkit-box-pack: center;
 		img{
 			cursor:pointer;
 		}

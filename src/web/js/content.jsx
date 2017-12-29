@@ -96,11 +96,8 @@ module.exports=class Content extends React.Component{
 		return <div id="content">
 				{
 					this.state.seeImage &&
-						<div id="seeImage">
-							<Scrollbars>
-								<img src={this.state.seeImage}
-									 onClick={()=>this.setState({seeImage:""})}/>
-							</Scrollbars>
+						<div id="seeImage" onClick={()=>this.setState({seeImage:""})}>
+								<img src={this.state.seeImage}/>
 						</div>
 				}
 				{
