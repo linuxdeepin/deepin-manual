@@ -6,6 +6,7 @@ Build-Depends:
  cmake,
  libqcef-dev,
  libqt5webchannel5-dev,
+ debhelper (>= 9)
 Standards-Version: 3.9.5
 Homepage: https://github.com/linuxdeepin/deepin-manual/
 Vcs-Git: git://github.com/linuxdeepin/deepin-manual.git
