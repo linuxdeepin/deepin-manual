@@ -127,10 +127,9 @@ function cacheAll() {
 		appList.map(appName=>cache(appName,()=>index()))
 	})
 }
-if(location.protocol == "http:"){
-	if(location.search){
-		open(location.search.slice(1))
-	}else{
-		index()
-	}
+
+if(location.search){
+	open(location.search.slice(1))
+}else{
+	index()
 }
