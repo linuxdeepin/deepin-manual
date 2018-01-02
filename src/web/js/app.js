@@ -26,7 +26,10 @@ function Index(props) {
 }
 //渲染App组件
 function renderApp(appName,search) {
-	arge.appName=appName
+	if(arge.appName!=appName){
+		arge.appName=appName
+		cache(appName,()=>renderApp(appName,search))
+	}
 	let appInfo=JSON.parse(localStorage[appName+"_info"])
 	ReactDOM.render(<Main html={localStorage[appName+"_vdiv"]} app={appName} search={search?search:""} title={appInfo.title}></Main>,
 		document.getElementById("app"))
@@ -37,7 +40,7 @@ let arge= {
 	origin : location.protocol == "http:" ?`http://${location.hostname}:8000`: `file:///usr/share/dman`
 }
 //首页
-global.index=function (fromCacheAll) {
+global.index=function () {
 	if(!localStorage.appList) {
 		cacheAll()
 		return
@@ -56,9 +59,6 @@ global.index=function (fromCacheAll) {
 		}
 	]
 	ReactDOM.render(<Index appLists={appLists}></Index>,document.getElementById("app"))
-	if(!fromCacheAll){
-		cacheAll()
-	}
 }
 //打开App帮助
 global.open=function (appName) {
@@ -124,12 +124,13 @@ function cacheAll() {
 				return r.match(/"([^"]+)"/)[1]
 			})
 		localStorage["appList"]=JSON.stringify(appList)
-		appList.map(appName=>cache(appName,()=>index(true)))
+		appList.map(appName=>cache(appName,()=>index()))
 	})
 }
-
-if(location.search){
-	open(location.search.slice(1))
-}else{
-	index()
+if(location.protocol == "http:"){
+	if(location.search){
+		open(location.search.slice(1))
+	}else{
+		index()
+	}
 }
