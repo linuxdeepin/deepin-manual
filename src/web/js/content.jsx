@@ -44,8 +44,6 @@ module.exports=class Content extends React.Component{
 	}
 	onClick(event){
 		event.preventDefault()
-
-		console.log(event.target)
 		switch(event.target.nodeName){
 			case "IMG":
 				let src=event.target.getAttribute("src")
@@ -54,7 +52,13 @@ module.exports=class Content extends React.Component{
 				}
 				break
 			case "A":
-				window.open(event.target.href)
+				let href=event.target.getAttribute("href")
+				if(href.indexOf("#")==0){
+					let hash=href.slice(1)
+					this.props.hashChange(hash)
+				}else{
+					window.open("http://127.0.0.1:3000/","_blank")
+				}
 				break
 		}
 	}

@@ -17,8 +17,11 @@ const RootDir="../../PageRoot/www/"
 
 //编译js到index.js
 gulp.task('js', ()=>{
+	if(Release){
+		process.env.NODE_ENV = 'production'
+	}
 	return browserify("js/app.js")
-		.transform("babelify", {plugins: ["transform-runtime"],presets: ["env", "react","babel-polyfill"]})
+		.transform("babelify", {presets: ["env","react"]})
 		.bundle()
 		.pipe(source('bundle.js'))
 		.pipe(buffer())
