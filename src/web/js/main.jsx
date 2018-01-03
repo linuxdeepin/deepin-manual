@@ -1,35 +1,82 @@
-const React = require("react"),
-	Nav = require("./nav.jsx"),
-	Content = require("./content.jsx")
+import React, { Component } from 'react'
+import marked from 'marked'
+import md5 from 'md5'
 
-module.exports=class Main extends React.Component{
+import Nav from './nav.jsx'
+import Article from './article.jsx'
+
+export default class Main extends Component {
 	constructor(props){
 		super(props)
 		this.state={
-			hash:""
+			hList:[],
+			html:"",
+			hash:"",
 		}
 	}
-	// componentWillReceiveProps(nextProps) {
-	// 	this.setState({search: nextProps.search});
-	// }
-	hashChange(hash){
-		console.log(hash)
+	init(appName){
+		if(localStorage[appName+"_md5"]){
+			let newState={
+				hList:JSON.parse(localStorage[appName+"_hlist"]),
+				html:localStorage[appName+"_div"]
+			}
+			newState.hash=newState.hList[0].id
+			this.setState(newState)
+		}
+
+		let path=`${localStorage.path}/${appName}/${localStorage.lang}/`
+		let xhr=new XMLHttpRequest()
+		xhr.open("GET",path+"index.md")
+		xhr.onload=()=>{
+			let md5Hash=md5(xhr.responseText)
+			if(xhr.responseText && localStorage[appName+"_div"] && 
+				localStorage[appName+"_md5"]==md5Hash
+			){
+				console.log(appName,"cache")
+				return
+			}
+			console.log(appName,"update")
+			localStorage[appName+"_md5"]=md5Hash
+
+			let div=document.createElement("div")
+			div.innerHTML=marked(xhr.responseText).replace(/src="/g, `$&${path}`)
+			let [title,logo]=div.querySelector("h1").innerText.split("|")
+			logo=`${path}${logo}`
+			localStorage[appName+"_info"]=JSON.stringify({title,logo,name:appName})
+			div.removeChild(div.querySelector("h1"))
+			;[...div.querySelectorAll("h2")].map(el => el.innerText = el.innerText.split("|")[0])
+			let ids = {}
+			let hList=[...div.querySelectorAll("h2,h3,h4")].map(el => {
+				let text = el.innerText
+				if (ids[text] == undefined) {
+					el.id = text
+					ids[text] = 0
+				} else {
+					el.id = `${text}-${ids[text]++}`
+				}
+				return {id:el.id,text,type:el.nodeName.toLocaleLowerCase()}
+			})
+			localStorage[appName+"_div"]=div.innerHTML
+			localStorage[appName+"_hlist"]=JSON.stringify(hList)
+			this.setState({hList,html:div.innerHTML})
+		}
+		xhr.send()
+	}
+	componentWillMount(){
+		this.init(this.props.appName)
+	}
+	componentWillReceiveProps(nextProps){
+		if(nextProps.appName!=this.props.appName){
+			this.init(nextProps.appName)
+		}
+	}
+	setHash(hash){
 		this.setState({hash})
 	}
-	render(){
-		let vdiv=document.createElement("div")
-		vdiv.innerHTML=this.props.html
-		return <div>
-			<title>{this.props.title} - 帮助手册</title>
-			<Nav hList={[...vdiv.querySelectorAll("h2,h3,h4")]}
-			hash={this.state.hash}
-			hashChange={hash=>this.hashChange(hash)}></Nav>
-			<Content title={this.props.title}
-			vdiv={vdiv} 
-			hash={this.state.hash}
-			search={this.props.search}
-			hashChange={hash=>this.hashChange(hash)}></Content>
-		</div>
+	render() {
+		return <div id="main">
+				<Nav hList={this.state.hList} hash={this.state.hash} setHash={this.setHash.bind(this)}/>
+				<Article html={this.state.html} hash={this.state.hash} setHash={this.setHash.bind(this)}/>
+			</div>
 	}
 }
-

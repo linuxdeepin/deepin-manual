@@ -1,27 +1,43 @@
-const React = require("react")
+import React, { Component } from 'react'
+import ReactDOM from 'react-dom'
 import { Scrollbars } from 'react-custom-scrollbars'
-module.exports=class Nav extends React.Component{
+
+
+class Nav extends Component {
 	componentDidUpdate(){
-		let nav=document.getElementById("nav")
-		let hashDOM=document.querySelector(`[hid="${this.props.hash}"`)
-		let rect=hashDOM.getBoundingClientRect()
-		if(rect.top<0){
-			this.scroll.scrollTop(this.scroll.getScrollTop()+rect.top)
-		}else if(rect.bottom>nav.offsetHeight){
-			this.scroll.scrollTop(this.scroll.getScrollTop()+(rect.bottom-nav.offsetHeight))
+		let hashDOM=ReactDOM.findDOMNode(this).querySelector(".hash")
+		if(hashDOM){
+			let {top,bottom}=hashDOM.getBoundingClientRect()
+			if(top<0){
+				this.scrollbars.scrollTop(this.scrollbars.getScrollTop()+top)
+			}else if(bottom>this.scrollbars.getClientHeight()){
+				let h=bottom-this.scrollbars.getClientHeight()
+				this.scrollbars.scrollTop(this.scrollbars.getScrollTop()+h)
+			}
 		}
 	}
-	render(){
-		let hList=this.props.hList
-		hList=hList.map(el=>{
-			let Name=el.nodeName.toLocaleLowerCase()
-			return <Name key={el.id} hid={el.id}
-			onClick={()=>this.props.hashChange(el.id)}
-			className={el.id==this.props.hash?"hash":undefined}>{el.innerText}</Name>
-		})
-		return <div id="nav">
-			<Scrollbars ref={(scroll)=>this.scroll=scroll}
-			autoHide autoHideTimeout={500}>{hList}</Scrollbars>
+	click(e){
+		let cid=e.target.getAttribute("cid")
+		if(cid){
+			this.props.setHash(cid)
+		}
+	}
+	render() {
+		return <div id="nav" onClick={e=>this.click(e)}>
+			<Scrollbars autoHide autoHideTimeout={1000} ref={s => { this.scrollbars = s }}>
+			<div id="hlist">
+			{
+				this.props.hList.map(h=>{
+					let NodeName=h.type
+					return <NodeName key={h.id} cid={h.id} className={this.props.hash==h.id?'hash':undefined}>
+						{h.text}
+					</NodeName>
+				})
+			}
+			</div>
+			</Scrollbars>
 		</div>
 	}
 }
+
+export default Nav;
