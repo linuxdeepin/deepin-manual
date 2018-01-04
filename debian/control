@@ -4,10 +4,11 @@ Section: python
 Priority: optional
 Build-Depends:
  cmake,
- libqcef-dev,
- libqt5webchannel5-dev,
  debhelper (>= 9),
  libdtkwidget-dev,
+ libqcef-dev,
+ libqt5webchannel5-dev,
+ qttools5-dev-tools,
 Standards-Version: 3.9.5
 Homepage: https://github.com/linuxdeepin/deepin-manual/
 Vcs-Git: git://github.com/linuxdeepin/deepin-manual.git

@@ -46,6 +46,7 @@ find_package(Qt5Core REQUIRED)
 find_package(Qt5Gui REQUIRED)
 find_package(Qt5LinguistTools)
 find_package(Qt5Widgets REQUIRED)
+find_package(Qt5LinguistTools REQUIRED)
 
 pkg_search_module(Dtk REQUIRED dtkwidget)
 pkg_search_module(QCef REQUIRED libqcef)
@@ -91,6 +92,15 @@ set(VIEW_FILES
     view/widget/title_bar.h
     )
 
+# Main executable
+# Generate .qm files from .ts files.
+file(GLOB DMAN_TRANSLATION_TS
+     ${CMAKE_SOURCE_DIR}/i18n/dman-*.ts)
+set_source_files_properties(${DMAN_TRANSLATION_TS}
+                            PROPERTIES OUTPUT_LOCATION ${CMAKE_BINARY_DIR}/i18n)
+qt5_add_translation(DMAN_TRANSLATION_QM ${DMAN_TRANSLATION_TS})
+add_custom_target(update-qm DEPENDS ${DMAN_TRANSLATION_QM})
+
 add_executable(dman
                app/dman.cpp
                ${BASE_FILES}
@@ -99,6 +109,7 @@ add_executable(dman
                ${VIEW_FILES}
                )
 target_link_libraries(dman ${LINK_LIBS})
+add_dependencies(dman update-qm)
 
 install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/dman
         DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
