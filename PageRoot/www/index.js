@@ -35,8 +35,11 @@ global.index = function () {
 	console.log("index");
 	_reactDom2.default.render(_react2.default.createElement(_index2.default, { openApp: global.open }), document.getElementById("app"));
 };
+global.updateSearchIndex = function (appName, searchIndex) {
+	localStorage[appName + "_searchIndex"] = searchIndex;
+};
 // global.index()
-// global.open("dde")
+global.open("dde");
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./index.jsx":3,"./main.jsx":4,"./mdToHtml":5,"react":55,"react-dom":51}],2:[function(require,module,exports){
@@ -96,7 +99,7 @@ var Article = function (_Component) {
 	}, {
 		key: 'scroll',
 		value: function scroll(e) {
-			var hList = _reactDom2.default.findDOMNode(this).querySelectorAll("h2,h3,h4");
+			var hList = _reactDom2.default.findDOMNode(this).querySelectorAll("h2,h3");
 			var hash = hList[0].id;
 			for (var i = 0; i < hList.length; i++) {
 				if (hList[i].getBoundingClientRect().top > 1) {
@@ -214,10 +217,11 @@ var Item = function (_Component) {
 				if (xhr.responseText == "") {
 					return;
 				}
+				var m = new _mdToHtml2.default(_this2.props.appName, xhr.responseText);
 
-				var _info = new _mdToHtml2.default(_this2.props.appName, xhr.responseText).info(),
-				    title = _info.title,
-				    logo = _info.logo;
+				var _m$info = m.info(),
+				    title = _m$info.title,
+				    logo = _m$info.logo;
 
 				_this2.setState({ title: title, logo: logo, show: true });
 			};
@@ -463,7 +467,7 @@ var M2H = function () {
 			return;
 		}
 		console.log(appName, "update");
-		localStorage[appName + "_hash"] = hash;
+		// localStorage[appName+"_hash"]=hash
 
 		var path = localStorage.path + '/' + appName + '/' + localStorage.lang + '/';
 		var div = document.createElement("div");
@@ -480,7 +484,7 @@ var M2H = function () {
 			return el.innerText = el.innerText.split("|")[0];
 		});
 		var ids = {};
-		var hList = [].concat(_toConsumableArray(div.querySelectorAll("h2,h3,h4"))).map(function (el) {
+		var hList = [].concat(_toConsumableArray(div.querySelectorAll("h2,h3"))).map(function (el) {
 			var text = el.innerText;
 			if (ids[text] == undefined) {
 				el.id = text;
@@ -492,6 +496,18 @@ var M2H = function () {
 		});
 		localStorage[appName + "_hlist"] = JSON.stringify(hList);
 		localStorage[appName + "_html"] = div.innerHTML;
+
+		var searchIndex = {};
+		var key = "";[].concat(_toConsumableArray(div.children)).map(function (el) {
+			if (el.localName.match(/^h[23]$/) != null) {
+				key = appName + '#' + el.id;
+				searchIndex[key] = "";
+			} else {
+				searchIndex[key] += el.innerText;
+				searchIndex[key] += "\n";
+			}
+		});
+		updateSearchIndex(appName, JSON.stringify(searchIndex));
 	}
 
 	_createClass(M2H, [{
@@ -592,18 +608,14 @@ var Nav = function (_Component) {
 					{ autoHide: true, autoHideTimeout: 1000, ref: function ref(s) {
 							_this2.scrollbars = s;
 						} },
-					_react2.default.createElement(
-						'div',
-						{ id: 'hlist' },
-						this.props.hList.map(function (h) {
-							var NodeName = h.type;
-							return _react2.default.createElement(
-								NodeName,
-								{ key: h.id, cid: h.id, className: _this2.props.hash == h.id ? 'hash' : undefined },
-								h.text
-							);
-						})
-					)
+					this.props.hList.map(function (h) {
+						var NodeName = h.type;
+						return _react2.default.createElement(
+							NodeName,
+							{ key: h.id, cid: h.id, className: _this2.props.hash == h.id ? 'hash' : undefined },
+							h.text
+						);
+					})
 				)
 			);
 		}

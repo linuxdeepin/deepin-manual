@@ -1,7 +1,7 @@
 html, body {
   width: 100%;
-  min-width: 900px;
-  font-family: "Source Han Sans SC", Arial, sans-serif;
+  min-width: 1024px;
+  font-family: SourceHanSansSC;
   overflow: hidden;
   margin: 0px; }
 
@@ -15,7 +15,7 @@ html, body {
 @charset "UTF-8";
 #article {
   float: left;
-  width: 85%; }
+  width: 84%; }
   #article #read {
     margin: auto;
     width: 700px;
@@ -23,18 +23,9 @@ html, body {
     color: #757575;
     outline: 0px; }
     #article #read h2 {
-      font-size: 20px; }
-    #article #read h3 {
-      font-size: 16px; }
-    #article #read h4 {
-      font-size: 12px; }
-    #article #read h2 {
       font-weight: normal;
-      font-size: 22px;
-      color: #1f94ee;
-      line-height: 2em;
-      margin: 1em 0 0;
-      border-bottom: 1px solid #d7d7d7; }
+      font-size: 20px;
+      color: #1f94ee; }
     #article #read img {
       max-width: 100%; }
       #article #read img[src$="svg"] {
@@ -84,7 +75,7 @@ html, body {
     height: 100%;
     top: 0;
     left: 0;
-    background-color: #888;
+    background-color: rgba(136, 136, 136, 0.8);
     overflow: auto;
     display: -webkit-box;
     -webkit-box-align: center;
@@ -119,34 +110,31 @@ html, body {
 #nav {
   float: left;
   width: 15%;
+  min-width: 160px;
   overflow-y: auto;
-  background-color: #F9F9FA; }
-  #nav a {
-    text-decoration: none; }
+  font-style: normal;
+  font-stretch: normal;
+  line-height: normal;
+  letter-spacing: normal;
+  border-right: #F3F3F3 solid 2px; }
   #nav h2 {
-    color: #464646;
     cursor: pointer;
-    text-indent: 5px;
-    font-size: 15px;
-    margin: 0;
-    padding: 5px;
-    font-weight: 500; }
+    font-size: 16px;
+    font-weight: 500;
+    color: #00162c;
+    padding: 3px 0px;
+    margin: 0px;
+    margin-bottom: 9px;
+    text-indent: 34px; }
   #nav h3 {
-    color: #464646;
     cursor: pointer;
-    text-indent: 15px;
-    font-size: 11px;
-    margin: 0;
-    padding: 4px;
-    font-weight: 500; }
-  #nav h4 {
-    color: #464646;
-    cursor: pointer;
-    text-indent: 25px;
-    font-size: 7px;
-    margin: 0;
-    padding: 3px;
-    font-weight: 500; }
+    font-weight: normal;
+    font-size: 12px;
+    color: #000000;
+    padding: 6px 0px;
+    margin: 0px;
+    margin-bottom: 9px;
+    text-indent: 44px; }
   #nav .hash {
-    border-left: #2CA7F8 3px solid;
+    border-right: #30A5F9 5px solid;
     background-color: #D5EDFE; }

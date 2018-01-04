@@ -21,7 +21,7 @@ export default class Article extends Component {
 		}
 	}
 	scroll(e){
-		let hList=ReactDOM.findDOMNode(this).querySelectorAll("h2,h3,h4")
+		let hList=ReactDOM.findDOMNode(this).querySelectorAll("h2,h3")
 		let hash=hList[0].id
 		for(let i=0;i<hList.length;i++){
 			if(hList[i].getBoundingClientRect().top>1){

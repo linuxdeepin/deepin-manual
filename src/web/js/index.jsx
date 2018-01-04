@@ -21,7 +21,8 @@ class Item extends Component {
 			if(xhr.responseText==""){
 				return
 			}
-			let {title,logo}=new m2h(this.props.appName,xhr.responseText).info()
+			let m=new m2h(this.props.appName,xhr.responseText)
+			let {title,logo}=m.info()
 			this.setState({title,logo,show:true})
 		}
 		xhr.send()

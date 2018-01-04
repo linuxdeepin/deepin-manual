@@ -1,25 +1,16 @@
 #article{
 	float: left;
-	width: 85%;
+	width: 84%;
 	#read {
 		margin: auto;
 		width:700px;
 		font-size: 14px;
 		color: #757575;
 		outline: 0px;
-		//标题字体大小
-		@for $i from 0 to 3 {
-			h#{$i+2}{
-				font-size: 20px-4px*$i;
-			}
-		}
 		h2{
 			font-weight: normal;
-			font-size: 22px;
+			font-size: 20px;
 			color: #1f94ee;
-			line-height: 2em;
-			margin: 1em 0 0;
-			border-bottom: 1px solid #d7d7d7;
 		}
 		img {
 			max-width: 100%;
@@ -88,7 +79,7 @@
 		height: 100%;
 		top:0;
 		left:0;
-		background-color: #888;
+		background-color: rgba(136, 136, 136, 0.8);
 		overflow: auto;
 		display:-webkit-box;
 		-webkit-box-align:center;

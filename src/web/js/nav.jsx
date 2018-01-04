@@ -25,7 +25,6 @@ class Nav extends Component {
 	render() {
 		return <div id="nav" onClick={e=>this.click(e)}>
 			<Scrollbars autoHide autoHideTimeout={1000} ref={s => { this.scrollbars = s }}>
-			<div id="hlist">
 			{
 				this.props.hList.map(h=>{
 					let NodeName=h.type
@@ -34,7 +33,6 @@ class Nav extends Component {
 					</NodeName>
 				})
 			}
-			</div>
 			</Scrollbars>
 		</div>
 	}

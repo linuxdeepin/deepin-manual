@@ -17,5 +17,8 @@ global.index=()=>{
 	console.log("index")
 	ReactDOM.render(<Index openApp={global.open}/>,document.getElementById("app"))
 }
+global.updateSearchIndex=(appName,searchIndex)=>{
+	localStorage[appName+"_searchIndex"]=searchIndex
+}
 // global.index()
-// global.open("dde")
+global.open("dde")
