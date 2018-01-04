@@ -1,0 +1,2 @@
+2018-01-04 2.0.0 Xu Shaohua <xushaohua@deepin.com>
+	* Rewrite to Qt5
