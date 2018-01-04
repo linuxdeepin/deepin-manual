@@ -8,14 +8,13 @@ Build-Depends:
  libqt5webchannel5-dev,
  debhelper (>= 9),
  libdtkwidget-dev,
- npm
 Standards-Version: 3.9.5
 Homepage: https://github.com/linuxdeepin/deepin-manual/
 Vcs-Git: git://github.com/linuxdeepin/deepin-manual.git
 Vcs-Browser: https://github.com/linuxdeepin/deepin-manual/
 
 Package: deepin-manual
-Architecture: all
+Architecture: any
 Depends: ${misc:Depends},
  ${shlibs:Depends},
 Recommends: dde-help

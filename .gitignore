@@ -25,3 +25,5 @@ debian/*.substvars
 /*.files
 /*.includes
 .sass-cache
+debian/debhelper-build-stamp
+obj-*
