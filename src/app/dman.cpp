@@ -66,9 +66,9 @@ int main(int argc, char** argv) {
   app.setApplicationVersion(dman::kAppVersion);
   app.setApplicationName(dman::kAppName);
   // FIXME(Shaohua): Translation not work.
-  app.setApplicationDisplayName(QObject::tr(dman::kAppDisplayName));
+  app.setApplicationDisplayName(QObject::tr("Deepin Manual"));
   app.setWindowIcon(QIcon(dman::kImageDeepinManual));
-  app.setApplicationDescription(QObject::tr(dman::kAppDesc));
+  app.setApplicationDescription(QObject::tr("Manual page for deepin apps"));
 
   dman::WindowManager window_manager;
   const QStringList args = app.arguments();
