@@ -44,9 +44,6 @@ WebWindow::~WebWindow() {
 }
 
 void WebWindow::setAppName(const QString& app_name) {
-  if (app_name_ == app_name) {
-    return;
-  }
   app_name_ = app_name;
 
   QFileInfo fInfo(kIndexPage);

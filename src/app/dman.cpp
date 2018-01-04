@@ -17,6 +17,7 @@
 
 #include <DApplication>
 #include <QIcon>
+#include <QtCore/QDir>
 #include <qcef_context.h>
 
 #include "base/consts.h"
@@ -24,11 +25,6 @@
 #include "resources/themes/images.h"
 
 int main(int argc, char** argv) {
-  if (argc == 1) {
-    fprintf(stderr, "Usage: %s app-name\n", argv[0]);
-    return 0;
-  }
-
   QCefGlobalSettings settings;
 
   // Do not use sandbox.
@@ -46,7 +42,11 @@ int main(int argc, char** argv) {
   // Disable GPU process.
   settings.addCommandLineSwitch("--disable-gpu", "");
 
-  // TODO(Shaohua): Set web cache folder.
+  // Set web cache folder.
+  QDir cache_dir(QDir::home().filePath(dman::kAppCacheDir));
+  cache_dir.mkpath(".");
+  settings.setCachePath(cache_dir.filePath("cache"));
+  settings.setUserDataPath(cache_dir.filePath("data"));
 
   const int exit_code = QCefInit(argc, argv, settings);
   if (exit_code >= 0) {
@@ -72,8 +72,13 @@ int main(int argc, char** argv) {
 
   dman::WindowManager window_manager;
   const QStringList args = app.arguments();
-  for (int i = 1; i < args.length(); ++i) {
-    window_manager.openManual(args.at(i));
+  if (args.size() == 1) {
+    // Open index page.
+    window_manager.openManual("");
+  } else {
+    for (int i = 1; i < args.length(); ++i) {
+      window_manager.openManual(args.at(i));
+    }
   }
 
   return app.exec();
