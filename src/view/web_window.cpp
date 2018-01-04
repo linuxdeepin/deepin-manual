@@ -18,14 +18,13 @@
 #include "view/web_window.h"
 
 #include <QFileInfo>
-
+#include <QResizeEvent>
 #include <DTitlebar>
 #include <qcef_web_page.h>
 #include <qcef_web_settings.h>
 #include <qcef_web_view.h>
 
 #include "base/consts.h"
-#include "resources/themes/images.h"
 #include "view/widget/title_bar.h"
 
 namespace dman {
@@ -63,13 +62,18 @@ void WebWindow::setAppName(const QString& app_name) {
 
 void WebWindow::initUI() {
   title_bar_ = new TitleBar();
-  this->titlebar()->setCustomWidget(title_bar_, Qt::AlignLeft, false);
+  this->titlebar()->setCustomWidget(title_bar_, Qt::AlignCenter, false);
 
   web_view_ = new QCefWebView();
   this->setCentralWidget(web_view_);
 
   // Disable web security to allow cross-origin accessing.
   web_view_->page()->settings()->setWebSecurity(QCefWebSettings::StateDisabled);
+}
+
+void WebWindow::resizeEvent(QResizeEvent* event) {
+  QWidget::resizeEvent(event);
+  title_bar_->setFixedWidth(event->size().width());
 }
 
 }  // namespace dman

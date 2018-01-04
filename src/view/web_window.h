@@ -42,6 +42,10 @@ class WebWindow : public Dtk::Widget::DMainWindow {
  public slots:
   void setAppName(const QString& app_name);
 
+ protected:
+  // Update width of title bar when main window is resized.
+  void resizeEvent(QResizeEvent* event) override;
+
  private:
   void initUI();
 

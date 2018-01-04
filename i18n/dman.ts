@@ -10,7 +10,7 @@
     </message>
     <message>
         <location filename="../src/app/dman.cpp" line="71"/>
-        <source>Manual page for deepin apps</source>
+        <source>Deepin Manual is designed to help users learn deepin and Deepin applications, providing specific instructions and function descriptions.</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

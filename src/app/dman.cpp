@@ -68,7 +68,10 @@ int main(int argc, char** argv) {
   // FIXME(Shaohua): Translation not work.
   app.setApplicationDisplayName(QObject::tr("Deepin Manual"));
   app.setWindowIcon(QIcon(dman::kImageDeepinManual));
-  app.setApplicationDescription(QObject::tr("Manual page for deepin apps"));
+  app.setApplicationDescription(QObject::tr(
+      "Deepin Manual is designed to help users learn deepin and "
+      "Deepin applications, providing specific instructions and "
+      "function descriptions."));
 
   dman::WindowManager window_manager;
   const QStringList args = app.arguments();

@@ -17,10 +17,6 @@
 
 #include "view/widget/title_bar.h"
 
-#include <QHBoxLayout>
-
-#include "base/consts.h"
-#include "view/theme_manager.h"
 #include "view/widget/search_edit.h"
 
 namespace dman {
@@ -35,7 +31,6 @@ TitleBar::TitleBar(QWidget* parent) : QFrame(parent) {
 }
 
 TitleBar::~TitleBar() {
-
 }
 
 void TitleBar::setBackButtonVisible(bool visible) {
@@ -45,9 +40,12 @@ void TitleBar::setBackButtonVisible(bool visible) {
 void TitleBar::initUI() {
   QLabel* app_icon = new QLabel();
   app_icon->setObjectName("AppIcon");
+  app_icon->setPixmap(QIcon(":/common/images/deepin-manual.svg").pixmap(24, 24));
   app_icon->setFixedSize(24, 24);
-  QLabel* app_name = new QLabel(tr(kAppDisplayName));
+  QLabel* app_name = new QLabel("");
   QHBoxLayout* app_icon_layout = new QHBoxLayout();
+  app_icon_layout->setContentsMargins(0, 0, 0, 0);
+  app_icon_layout->setSpacing(0);
   app_icon_layout->addWidget(app_icon);
   app_icon_layout->addWidget(app_name);
   QFrame* app_icon_wrapper = new QFrame();
@@ -64,25 +62,19 @@ void TitleBar::initUI() {
 
   QFrame* left_widget = new QFrame();
   left_widget->setLayout(left_layout_);
-  left_widget->setFixedWidth(168);
 
   search_edit_ = new SearchEdit();
+  search_edit_->setObjectName("SearchEdit");
   search_edit_->setFixedWidth(228);
   search_edit_->setPlaceHolder(tr("Search"));
 
-  QFrame* right_widget = new QFrame();
-  right_widget->setFixedWidth(1);
-
   QHBoxLayout* main_layout = new QHBoxLayout();
-  main_layout->setContentsMargins(5, 5, 5, 5);
+  main_layout->setSpacing(0);
+  main_layout->setContentsMargins(0, 0, 0, 0);
   main_layout->addWidget(left_widget);
-  main_layout->addStretch();
-  main_layout->addWidget(search_edit_);
-  main_layout->addStretch();
-  main_layout->addWidget(right_widget);
+  main_layout->addWidget(search_edit_, 1, Qt::AlignCenter);
+  main_layout->addSpacing(48);
   this->setLayout(main_layout);
-
-  ThemeManager::instance()->registerWidget(this);
 }
 
 }  // namespace dman
