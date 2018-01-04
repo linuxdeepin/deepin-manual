@@ -27,19 +27,48 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 localStorage.lang = navigator.language.replace(/-/, '_');
 localStorage.path = location.protocol == "http:" ? 'http://' + location.hostname + ':8000' : 'file:///usr/share/dman';
 
+global.webChannel = null;
+var delay = null;
+
 global.open = function (appName) {
+	if (window.QWebChannel && !global.webChannel) {
+		delay = function delay() {
+			return global.open(appName);
+		};
+		return;
+	}
 	console.log("open", appName);
 	_reactDom2.default.render(_react2.default.createElement(_main2.default, { appName: appName }), document.getElementById("app"));
 };
+
 global.index = function () {
+	if (window.QWebChannel && !global.webChannel) {
+		delay = function delay() {
+			return global.index();
+		};
+		return;
+	}
+	console.log(global.webChannel);
 	console.log("index");
 	_reactDom2.default.render(_react2.default.createElement(_index2.default, { openApp: global.open }), document.getElementById("app"));
 };
+
+if (window.QWebChannel) {
+	new QWebChannel(qt.webChannelTransport, function (channel) {
+		global.webChannel = channel;
+		if (delay) {
+			delay();
+		}
+	});
+}
+
+if (location.protocol == "http:") {
+	global.index();
+}
+
 global.updateSearchIndex = function (appName, searchIndex) {
 	localStorage[appName + "_searchIndex"] = searchIndex;
 };
-// global.index()
-global.open("dde");
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./index.jsx":3,"./main.jsx":4,"./mdToHtml":5,"react":55,"react-dom":51}],2:[function(require,module,exports){
