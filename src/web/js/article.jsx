@@ -36,17 +36,9 @@ export default class Article extends Component {
 		}
 	}
 	click(e){
-		e.preventDefault()
-		console.log(e.target)
 		switch(e.target.nodeName){
-			case "A":
-				let href=e.target.getAttribute("href")
-				if(href.indexOf("#")==0){
-					console.log("内部链接")
-					this.props.setHash(href.slice(1))
-				}
-			break
 			case "IMG":
+				e.preventDefault()
 				let src=e.target.getAttribute("src")
 				if(src.indexOf("svg")==-1){
 					console.log("图片全屏查看")

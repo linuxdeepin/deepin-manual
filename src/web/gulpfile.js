@@ -2,10 +2,7 @@ const
 	gulp = require("gulp"),
 	sass = require('gulp-sass'),
 	concat = require('gulp-concat'),
-	uglify = require('gulp-uglify'),
 	rename = require('gulp-rename'),
-	cleanCSS = require('gulp-clean-css'),
-	gulpIf = require('gulp-if'),
 	source = require('vinyl-source-stream'),
 	buffer = require('vinyl-buffer'),
 	browserify = require('browserify'),
@@ -17,7 +14,7 @@ const RootDir="../../PageRoot/www/"
 
 //编译js到index.js
 gulp.task('js', ()=>{
-	if(Release){
+	if(process.argv[2]=="build"){
 		process.env.NODE_ENV = 'production'
 	}
 	return browserify("js/app.js")
@@ -25,7 +22,6 @@ gulp.task('js', ()=>{
 		.bundle()
 		.pipe(source('bundle.js'))
 		.pipe(buffer())
-		.pipe(gulpIf(Release,uglify()))
 		.pipe(rename("index.js"))
 		.pipe(gulp.dest(RootDir))
 })
@@ -34,7 +30,6 @@ gulp.task('sass',()=>{
 	return gulp.src("sass/*.scss")
 		.pipe(sass())
 		.pipe(concat("index.css"))
-		.pipe(gulpIf(Release,cleanCSS()))
 		.pipe(gulp.dest(RootDir))
 })
 //移动html文件
@@ -45,7 +40,6 @@ gulp.task('html',()=>{
 const tasks=['js','sass','html']
 
 //编译全部
-const Release=process.argv[2]=="build"
 gulp.task('build',tasks)
 
 //监视任务

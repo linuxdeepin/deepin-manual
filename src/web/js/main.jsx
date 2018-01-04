@@ -1,9 +1,8 @@
 import React, { Component } from 'react'
-import marked from 'marked'
-import md5 from 'md5'
 
-import Nav from './nav.jsx'
-import Article from './article.jsx'
+import Nav from "./nav.jsx"
+import Article from "./article.jsx"
+import m2h from "./mdToHtml.js"
 
 export default class Main extends Component {
 	constructor(props){
@@ -15,50 +14,15 @@ export default class Main extends Component {
 		}
 	}
 	init(appName){
-		if(localStorage[appName+"_md5"]){
-			let newState={
-				hList:JSON.parse(localStorage[appName+"_hlist"]),
-				html:localStorage[appName+"_div"]
-			}
-			newState.hash=newState.hList[0].id
-			this.setState(newState)
-		}
-
 		let path=`${localStorage.path}/${appName}/${localStorage.lang}/`
 		let xhr=new XMLHttpRequest()
 		xhr.open("GET",path+"index.md")
 		xhr.onload=()=>{
-			let md5Hash=md5(xhr.responseText)
-			if(xhr.responseText && localStorage[appName+"_div"] && 
-				localStorage[appName+"_md5"]==md5Hash
-			){
-				console.log(appName,"cache")
+			if(xhr.responseText==""){
 				return
 			}
-			console.log(appName,"update")
-			localStorage[appName+"_md5"]=md5Hash
-
-			let div=document.createElement("div")
-			div.innerHTML=marked(xhr.responseText).replace(/src="/g, `$&${path}`)
-			let [title,logo]=div.querySelector("h1").innerText.split("|")
-			logo=`${path}${logo}`
-			localStorage[appName+"_info"]=JSON.stringify({title,logo,name:appName})
-			div.removeChild(div.querySelector("h1"))
-			;[...div.querySelectorAll("h2")].map(el => el.innerText = el.innerText.split("|")[0])
-			let ids = {}
-			let hList=[...div.querySelectorAll("h2,h3,h4")].map(el => {
-				let text = el.innerText
-				if (ids[text] == undefined) {
-					el.id = text
-					ids[text] = 0
-				} else {
-					el.id = `${text}-${ids[text]++}`
-				}
-				return {id:el.id,text,type:el.nodeName.toLocaleLowerCase()}
-			})
-			localStorage[appName+"_div"]=div.innerHTML
-			localStorage[appName+"_hlist"]=JSON.stringify(hList)
-			this.setState({hList,html:div.innerHTML})
+			let m=new m2h(appName,xhr.responseText)
+			this.setState({hList:m.hlist(),html:m.html()})
 		}
 		xhr.send()
 	}

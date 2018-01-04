@@ -1,6 +1,8 @@
 import React, { Component } from 'react'
 import { Scrollbars } from 'react-custom-scrollbars'
 
+import m2h from './mdToHtml.js'
+
 class Item extends Component {
 	constructor(props){
 		super(props)
@@ -12,27 +14,17 @@ class Item extends Component {
 		}
 	}
 	componentWillMount(){
-		const storageKey=this.props.appName+"_info"
-		if(localStorage[storageKey]){
-			let appInfo=JSON.parse(localStorage[storageKey])
-			appInfo.show=true
-			this.setState(appInfo)
-		}else{
-			let xhr=new XMLHttpRequest()
-			let path=`${localStorage.path}/${this.props.appName}/${localStorage.lang}/`
-			xhr.open("GET",path+"index.md")
-			xhr.onload=()=>{
-				if(xhr.responseText==""){
-					return
-				}
-				let infoString=xhr.responseText.slice(0,xhr.responseText.indexOf("\n"))
-				let [title,logo]=infoString.slice(2).split("|")
-				logo=`${path}${logo}`
-				localStorage[storageKey]=JSON.stringify({title,logo,name:this.props.appName})
-				this.setState({title,logo,show:true})
+		let xhr=new XMLHttpRequest()
+		let path=`${localStorage.path}/${this.props.appName}/${localStorage.lang}/`
+		xhr.open("GET",path+"index.md")
+		xhr.onload=()=>{
+			if(xhr.responseText==""){
+				return
 			}
-			xhr.send()
+			let {title,logo}=new m2h(this.props.appName,xhr.responseText).info()
+			this.setState({title,logo,show:true})
 		}
+		xhr.send()
 	}
 	render() {
 		return ( this.state.show && 
@@ -53,18 +45,13 @@ export default class Index extends Component {
 		}
 	}
 	componentWillMount(){
-		if(localStorage.appList){
-			let appList=JSON.parse(localStorage.appList)
-			this.setState(appList)
-		}
 		let xhr=new XMLHttpRequest()
 		xhr.onload=()=>{
 			let appList=xhr.responseText.match(/addRow\("([^.][^"]+)"/g)
 							.map(r => {
 								return r.match(/"([^"]+)"/)[1]
 							})
-			localStorage.appList=JSON.stringify(appList)
-			this.setState({appList:JSON.parse(localStorage.appList)})
+			this.setState({appList:appList})
 		}
 		xhr.open("GET",localStorage.path)
 		xhr.send()
