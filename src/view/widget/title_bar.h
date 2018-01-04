@@ -41,8 +41,9 @@ class TitleBar : public QFrame {
   bool backButtonVisible() const;
 
  signals:
-  void searchTextChanged(const QString& text);
+  void backButtonClicked();
   void backButtonVisibleChanged(bool visible);
+  void searchTextChanged(const QString& text);
 
  public slots:
   // Show goBack button if |visible| is true.

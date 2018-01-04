@@ -36,6 +36,8 @@ TitleBar::TitleBar(QWidget* parent) : QFrame(parent) {
           this, &TitleBar::onSearchTextChanged);
   connect(left_layout_, &QStackedLayout::currentChanged,
           this, &TitleBar::onStackedLayoutCurrentChanged);
+  connect(back_btn_, &QPushButton::clicked,
+          this, &TitleBar::backButtonClicked);
 }
 
 TitleBar::~TitleBar() {

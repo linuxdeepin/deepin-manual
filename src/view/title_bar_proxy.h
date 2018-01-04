@@ -38,6 +38,7 @@ class TitleBarProxy : public QObject {
   bool backButtonVisible() const;
 
  signals:
+  void backButtonClicked();
   void backButtonVisibleChanged(bool visible);
 
  public slots:

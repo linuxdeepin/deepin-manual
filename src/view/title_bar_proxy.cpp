@@ -26,6 +26,8 @@ TitleBarProxy::TitleBarProxy(TitleBar* title_bar, QObject* parent)
       title_bar_(title_bar) {
   Q_ASSERT(title_bar_ != nullptr);
 
+  connect(title_bar_, &TitleBar::backButtonClicked,
+          this, &TitleBarProxy::backButtonClicked);
   connect(title_bar_, &TitleBar::backButtonVisibleChanged,
           this, &TitleBarProxy::backButtonVisibleChanged);
 }
