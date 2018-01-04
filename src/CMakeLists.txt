@@ -6,6 +6,8 @@ project(deepin-manual C CXX)
 add_definitions(-DDMAN_RESOURCE_DIR="${DMAN_RESOURCE_DIR}")
 message("DMAN_RESOURCE_DIR: ${DMAN_RESOURCE_DIR}")
 
+add_subdirectory(resources)
+
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
