@@ -45,6 +45,7 @@ find_package(PkgConfig REQUIRED)
 find_package(Qt5Core REQUIRED)
 find_package(Qt5Gui REQUIRED)
 find_package(Qt5LinguistTools)
+find_package(Qt5WebChannel REQUIRED)
 find_package(Qt5Widgets REQUIRED)
 find_package(Qt5LinguistTools REQUIRED)
 
@@ -57,6 +58,7 @@ include_directories(${QCef_INCLUDE_DIRS})
 set(LINK_LIBS
     Qt5::Core
     Qt5::Widgets
+    Qt5::WebChannel
 
     ${Dtk_LDFLAGS}
     ${QCef_LDFLAGS}
@@ -83,6 +85,8 @@ set(RESOURCES_FILES
 set(VIEW_FILES
     view/theme_manager.cpp
     view/theme_manager.h
+    view/title_bar_proxy.cpp
+    view/title_bar_proxy.h
     view/web_window.cpp
     view/web_window.h
 

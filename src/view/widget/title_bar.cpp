@@ -21,20 +21,32 @@
 
 namespace dman {
 
+namespace {
+
+const int kAppIconIdx = 0;
+const int kSearchBtnIdx = 1;
+
+}  // namespace
+
 TitleBar::TitleBar(QWidget* parent) : QFrame(parent) {
   this->setObjectName("TitleBar");
   this->initUI();
 
-  connect(search_edit_, &SearchEdit::textChanged, [this] {
-    emit searchTextChanged(search_edit_->text());
-  });
+  connect(search_edit_, &SearchEdit::textChanged,
+          this, &TitleBar::onSearchTextChanged);
+  connect(left_layout_, &QStackedLayout::currentChanged,
+          this, &TitleBar::onStackedLayoutCurrentChanged);
 }
 
 TitleBar::~TitleBar() {
 }
 
+bool TitleBar::backButtonVisible() const {
+  return left_layout_->currentIndex() == kSearchBtnIdx;
+}
+
 void TitleBar::setBackButtonVisible(bool visible) {
-  left_layout_->setCurrentIndex(visible ? 1 : 0);
+  left_layout_->setCurrentIndex(visible ? kSearchBtnIdx : kAppIconIdx);
 }
 
 void TitleBar::initUI() {
@@ -67,6 +79,15 @@ void TitleBar::initUI() {
   main_layout->addWidget(search_edit_, 1, Qt::AlignCenter);
   main_layout->addSpacing(48);
   this->setLayout(main_layout);
+}
+
+void TitleBar::onSearchTextChanged() {
+  emit this->searchTextChanged(search_edit_->text());
+}
+
+void TitleBar::onStackedLayoutCurrentChanged(int index) {
+  const bool visible = (index == kSearchBtnIdx);
+  emit this->backButtonVisibleChanged(visible);
 }
 
 }  // namespace dman

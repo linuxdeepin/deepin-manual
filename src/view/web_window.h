@@ -25,6 +25,7 @@ class QCefWebView;
 namespace dman {
 
 class TitleBar;
+class TitleBarProxy;
 
 class WebWindow : public Dtk::Widget::DMainWindow {
   Q_OBJECT
@@ -51,7 +52,12 @@ class WebWindow : public Dtk::Widget::DMainWindow {
 
   QString app_name_;
   TitleBar* title_bar_ = nullptr;
+  TitleBarProxy* title_bar_proxy_ = nullptr;
   QCefWebView* web_view_ = nullptr;
+
+ private slots:
+  void onSearchTextChanged(const QString& text);
+  void onWebPageLoadFinished(bool ok);
 };
 
 }  // namespace dman

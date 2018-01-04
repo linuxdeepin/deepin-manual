@@ -15,33 +15,29 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef DEEPIN_MANUAL_VIEW_WIDGET_TITLE_BAR_H
-#define DEEPIN_MANUAL_VIEW_WIDGET_TITLE_BAR_H
+#ifndef DEEPIN_MANUAL_VIEWS_TITLE_BAR_PROXY_H
+#define DEEPIN_MANUAL_VIEWS_TITLE_BAR_PROXY_H
 
-#include <QFrame>
-#include <QLabel>
-#include <QPushButton>
-#include <QStackedLayout>
+#include <QObject>
 
 namespace dman {
 
-class SearchEdit;
+class TitleBar;
 
-// Customize widget in TitleBar.
-class TitleBar : public QFrame {
+class TitleBarProxy : public QObject {
   Q_OBJECT
   Q_PROPERTY(bool backButtonVisible
                  READ backButtonVisible
                  WRITE setBackButtonVisible
                  NOTIFY backButtonVisibleChanged)
+
  public:
-  explicit TitleBar(QWidget* parent = nullptr);
-  ~TitleBar() override;
+  TitleBarProxy(TitleBar* title_bar, QObject* parent = nullptr);
+  ~TitleBarProxy() override;
 
   bool backButtonVisible() const;
 
  signals:
-  void searchTextChanged(const QString& text);
   void backButtonVisibleChanged(bool visible);
 
  public slots:
@@ -50,17 +46,9 @@ class TitleBar : public QFrame {
   void setBackButtonVisible(bool visible);
 
  private:
-  void initUI();
-
-  QStackedLayout* left_layout_ = nullptr;
-  QPushButton* back_btn_ = nullptr;
-  SearchEdit* search_edit_ = nullptr;
-
- private slots:
-  void onSearchTextChanged();
-  void onStackedLayoutCurrentChanged(int index);
+  TitleBar* title_bar_ = nullptr;
 };
 
 }  // namespace dman
 
-#endif  // DEEPIN_MANUAL_VIEW_WIDGET_TITLE_BAR_H
+#endif  // DEEPIN_MANUAL_VIEWS_TITLE_BAR_PROXY_H

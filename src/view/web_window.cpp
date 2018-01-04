@@ -17,51 +17,45 @@
 
 #include "view/web_window.h"
 
+#include <DTitlebar>
 #include <QFileInfo>
 #include <QResizeEvent>
-#include <DTitlebar>
+#include <QWebChannel>
 #include <qcef_web_page.h>
 #include <qcef_web_settings.h>
 #include <qcef_web_view.h>
 
 #include "base/consts.h"
+#include "view/title_bar_proxy.h"
 #include "view/widget/title_bar.h"
 
 namespace dman {
 
-WebWindow::WebWindow(QWidget* parent) : Dtk::Widget::DMainWindow(parent),
-                                        app_name_() {
+WebWindow::WebWindow(QWidget* parent)
+    : Dtk::Widget::DMainWindow(parent),
+      app_name_() {
+
   this->initUI();
 
-  connect(title_bar_, &TitleBar::searchTextChanged, [this](const QString &text) {
-    web_view_->page()->runJavaScript("search(\"" + text + "\")", "custom_search.js");
-  });
+  connect(title_bar_, &TitleBar::searchTextChanged,
+          this, &WebWindow::onSearchTextChanged);
+  connect(web_view_->page(), &QCefWebPage::loadFinished,
+          this, &WebWindow::onWebPageLoadFinished);
 }
 
 WebWindow::~WebWindow() {
-
 }
 
 void WebWindow::setAppName(const QString& app_name) {
   app_name_ = app_name;
 
-  QFileInfo fInfo(kIndexPage);
-  web_view_->load(QUrl::fromLocalFile(fInfo.absoluteFilePath()));
-
-  QCefWebPage *page = web_view_->page();
-  connect(page, &QCefWebPage::loadFinished, [this, page](bool ok){
-    if (ok) {
-      if (app_name_.isEmpty()) {
-        page->runJavaScript("index()");
-      } else {
-        page->runJavaScript("open(\"" + app_name_ + "\")");
-      }
-    }
-  });
+  const QFileInfo info(kIndexPage);
+  web_view_->load(QUrl::fromLocalFile(info.absoluteFilePath()));
 }
 
 void WebWindow::initUI() {
   title_bar_ = new TitleBar();
+  title_bar_proxy_ = new TitleBarProxy(title_bar_, this);
   this->titlebar()->setCustomWidget(title_bar_, Qt::AlignCenter, false);
 
   web_view_ = new QCefWebView();
@@ -69,11 +63,30 @@ void WebWindow::initUI() {
 
   // Disable web security to allow cross-origin accessing.
   web_view_->page()->settings()->setWebSecurity(QCefWebSettings::StateDisabled);
+
+  QWebChannel* channel = web_view_->page()->webChannel();
+  // Use TitleBarProxy instead.
+  channel->registerObject("titleBar", title_bar_proxy_);
 }
 
 void WebWindow::resizeEvent(QResizeEvent* event) {
   QWidget::resizeEvent(event);
   title_bar_->setFixedWidth(event->size().width());
+}
+
+void WebWindow::onSearchTextChanged(const QString& text) {
+  web_view_->page()->runJavaScript(QString("search(%1))").arg(text),
+                                   "custom_search.js");
+}
+
+void WebWindow::onWebPageLoadFinished(bool ok) {
+  if (ok) {
+    if (app_name_.isEmpty()) {
+      web_view_->page()->runJavaScript("index()");
+    } else {
+      web_view_->page()->runJavaScript(QString("open(%1)").arg(app_name_));
+    }
+  }
 }
 
 }  // namespace dman
