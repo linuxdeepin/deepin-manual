@@ -42,14 +42,6 @@ void TitleBar::initUI() {
   app_icon->setObjectName("AppIcon");
   app_icon->setPixmap(QIcon(":/common/images/deepin-manual.svg").pixmap(24, 24));
   app_icon->setFixedSize(24, 24);
-  QLabel* app_name = new QLabel("");
-  QHBoxLayout* app_icon_layout = new QHBoxLayout();
-  app_icon_layout->setContentsMargins(0, 0, 0, 0);
-  app_icon_layout->setSpacing(0);
-  app_icon_layout->addWidget(app_icon);
-  app_icon_layout->addWidget(app_name);
-  QFrame* app_icon_wrapper = new QFrame();
-  app_icon_wrapper->setLayout(app_icon_layout);
 
   back_btn_ = new QPushButton();
   back_btn_->setObjectName("BackButton");
@@ -57,7 +49,7 @@ void TitleBar::initUI() {
   back_btn_->hide();
 
   left_layout_ = new QStackedLayout();
-  left_layout_->addWidget(app_icon_wrapper);
+  left_layout_->addWidget(app_icon);
   left_layout_->addWidget(back_btn_);
 
   QFrame* left_widget = new QFrame();
