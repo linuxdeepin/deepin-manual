@@ -3,25 +3,8 @@ project(deepin-manual C CXX)
 #set(CMAKE_C_COMPILER  /usr/bin/clang)
 #set(CMAKE_CXX_COMPILER  /usr/bin/clang++)
 
-add_subdirectory(web)
-
-# Only generate Debug and Release configuration types.
-set(CMAKE_CONFIGURATION_TYPES Debug Release)
-if (NOT CMAKE_BUILD_TYPE)
-  set(CMAKE_BUILD_TYPE Release)
-endif()
-
-if (NOT DEFINED DMAN_MANUAL_DIR)
-  set(DMAN_MANUAL_DIR ${CMAKE_CURRENT_BINARY_DIR}/dman)
-endif ()
-message("DMAN_MANUAL_DIR: ${DMAN_MANUAL_DIR}")
-
-if (NOT DEFINED DMAN_RESOURCE_DIR)
-  set(DMAN_RESOURCE_DIR ${CMAKE_SOURCE_DIR})
-endif ()
+add_definitions(-DDMAN_RESOURCE_DIR="${DMAN_RESOURCE_DIR}")
 message("DMAN_RESOURCE_DIR: ${DMAN_RESOURCE_DIR}")
-
-configure_file(base/consts.cpp.in base/consts.cpp)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_C_STANDARD 11)
@@ -77,7 +60,7 @@ set(LINK_LIBS
     )
 
 set(BASE_FILES
-    ${CMAKE_CURRENT_BINARY_DIR}/base/consts.cpp
+    base/consts.cpp
     base/consts.h
     base/file_util.cpp
     base/file_util.h

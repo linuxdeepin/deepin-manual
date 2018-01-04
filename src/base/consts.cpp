@@ -17,8 +17,6 @@
 
 #include "base/consts.h"
 
-#define DMAN_RESOURCE_DIR "@DMAN_RESOURCE_DIR@"
-
 namespace dman {
 
 const char kAppName[] = "deepin-manual";
@@ -26,6 +24,6 @@ const char kAppDisplayName[] = "Deepin Manual";
 const char kAppVersion[] = "2.0.0";
 const char kAppDesc[] = "Deepin user manual";
 
-const char kIndexPage[] = DMAN_RESOURCE_DIR"/PageRoot/www/index.html";
+const char kIndexPage[] = DMAN_RESOURCE_DIR "/PageRoot/www/index.html";
 
 }  // namespace dman

@@ -1,16 +1,8 @@
 .idea/
-PageRoot/node_modules
-PageRoot/bower_components
-PageRoot/www/nls
-PageRoot/www/style/**/*.css
-PageRoot/www/scripts
-PageRoot/www/favicon.svg
-
 unused
 symdir
 build/
 .vscode/
-PageRoot/
 
 *.nw
 *.log
