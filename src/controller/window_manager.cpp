@@ -17,6 +17,7 @@
 
 #include "controller/window_manager.h"
 
+#include <DWidgetUtil>
 #include "view/web_window.h"
 
 namespace dman {
@@ -40,8 +41,13 @@ void WindowManager::openManual(const QString& app_name) {
   }
   WebWindow* window = new WebWindow();
   window->setAppName(app_name);
-  window->show();
   window->resize(998, 662);
+  window->show();
+
+  // Move to center of screen. No need to reposition current window with
+  // existing web windows.
+  Dtk::Widget::moveToCenter(window);
+
   // TODO(Shaohua): Handle window close event.
   windows_.append(window);
 }
