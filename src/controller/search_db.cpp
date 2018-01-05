@@ -33,10 +33,15 @@ const char kTableSchema[] = "CREATE TABLE IF NOT EXISTS search "
     "appName TEXT,"
     "anchor TEXT,"
     "content TEXT)";
+
 const char kIndexSchema[] = "CREATE INDEX IF NOT EXISTS search_idx "
     "ON search "
     "(id,"
     "appName)";
+
+const char kDeleteEntryByApp[] = "DELETE FROM search WHERE appName = ?";
+const char kInsertEntry[] = "INSERT INTO search(appName, anchor, content) "
+    "VALUES (?, ?, ?)";
 
 QString GetDbName() {
   QDir cache_dir(GetCacheDir());
@@ -89,7 +94,41 @@ void SearchDb::handleInitDb() {
 void SearchDb::handleAddSearchEntry(const QString& app_name,
                                     const QStringList& anchors,
                                     const QStringList& contents) {
+  Q_ASSERT(db_.isOpen());
+  Q_ASSERT(anchors.length() == contents.length());
   qDebug() << Q_FUNC_INFO << app_name << anchors << contents;
+
+  if (anchors.length() != contents.length()) {
+    qCritical() << "anchor list and contents mismatch:"
+                << anchors.length() << contents.length();
+    return;
+  }
+
+  QSqlQuery query(db_);
+  query.prepare(kDeleteEntryByApp);
+  query.bindValue(0, app_name);
+  if (!query.exec()) {
+    qCritical() << "Failed to delete search entry:"
+                << query.lastError().text();
+    return;
+  }
+
+  query.prepare(kInsertEntry);
+  bool ok = true;
+  for (int i = 0; ok && (i < anchors.length()); ++i) {
+    query.bindValue(0, app_name);
+    query.bindValue(1, anchors.at(i));
+    query.bindValue(2, contents.at(i));
+    ok = query.exec();
+  }
+
+  if (!ok) {
+    db_.rollback();
+    qCritical() << "Failed to insert search entry:"
+                << query.lastError().text();
+  } else {
+    db_.commit();
+  }
 }
 
 }  // namespace dman
