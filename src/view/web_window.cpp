@@ -51,6 +51,11 @@ WebWindow::~WebWindow() {
 void WebWindow::setAppName(const QString& app_name) {
   app_name_ = app_name;
 
+#ifndef N_DEBUG
+  // Clear local storage in debug mode.
+  web_view_->page()->runJavaScript("localStorage.clear()");
+#endif
+
   const QFileInfo info(kIndexPage);
   web_view_->load(QUrl::fromLocalFile(info.absoluteFilePath()));
 }
