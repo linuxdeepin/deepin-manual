@@ -1,5 +1,5 @@
 #article{
-	float: left;
+	float: right;
 	width: 84%;
 	#read {
 		margin: auto;
@@ -15,8 +15,6 @@
 			padding-top: 23px;
 		}
 		img {
-			margin-top: 26px;
-			max-width: 99%;
 			//svg图片内嵌同行
 			&[src$="svg"]{
 				height: 20px;
@@ -24,6 +22,8 @@
 			}
 			//png图片点击放大
 			&[src$="png"]{
+				margin-top: 26px;
+				max-width: 99%;
 				cursor: pointer;
 			}
 		}

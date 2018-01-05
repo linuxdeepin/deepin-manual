@@ -14,7 +14,7 @@ html, body {
 
 @charset "UTF-8";
 #article {
-  float: left;
+  float: right;
   width: 84%; }
   #article #read {
     margin: auto;
@@ -28,14 +28,13 @@ html, body {
       color: #1f94ee;
       margin: 0px;
       padding-top: 23px; }
-    #article #read img {
+    #article #read img[src$="svg"] {
+      height: 20px;
+      vertical-align: middle; }
+    #article #read img[src$="png"] {
       margin-top: 26px;
-      max-width: 99%; }
-      #article #read img[src$="svg"] {
-        height: 20px;
-        vertical-align: middle; }
-      #article #read img[src$="png"] {
-        cursor: pointer; }
+      max-width: 99%;
+      cursor: pointer; }
     #article #read p {
       line-height: 2em;
       margin: 0; }
