@@ -1,33 +1,38 @@
 @charset "utf-8";
 
 #index{
-	width: 80%;
+	width: 805px;
 	margin: auto;
 	h2{
-		font-weight: normal;
-		font-size: 22px;
+		font-weight: 300;
+		font-size: 30px;
 		line-height: 2em;
 		margin: 1em 0 0;
 		border-bottom: 1px solid #d7d7d7;
 	}
 	.item{
-		width: 25%;
-		height: 30%;
+		padding-right: 50px;
+		margin-top: 30px;
+		&:nth-child(4n){
+			padding-right: 0;
+		}
+		width: 160px;
+		height: 160px;
 		display:inline-block;
-		margin-top: 2%;
 		text-align: center;
 		cursor: pointer;
 		img{
-			width: 45%;
-			padding-bottom: 5%;
+			width: 96px;
+			margin-bottom: 20px;
 		}
 		img:hover{
-			width: 50%;
-			padding: 0;
+			width: 100px;
+			margin-bottom: 16px;
 		}
-		h3{
+		span{
 			white-space:nowrap;
-			font-size: 15px;
+			font-size: 16px;
+			font-weight: normal;
 		}
 	}
 }

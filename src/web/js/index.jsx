@@ -31,7 +31,8 @@ class Item extends Component {
 		return ( this.state.show && 
 			<div className="item" onClick={()=>this.props.openApp(this.props.appName)}>
 				<img src={this.state.logo} alt={this.props.appName}/>
-				<h3>{this.state.title}</h3>
+				<br/>
+				<span>{this.state.title}</span>
 			</div>
 		)
 	}

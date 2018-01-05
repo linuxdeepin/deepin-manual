@@ -290,8 +290,9 @@ var Item = function (_Component) {
 						return _this3.props.openApp(_this3.props.appName);
 					} },
 				_react2.default.createElement('img', { src: this.state.logo, alt: this.props.appName }),
+				_react2.default.createElement('br', null),
 				_react2.default.createElement(
-					'h3',
+					'span',
 					null,
 					this.state.title
 				)
