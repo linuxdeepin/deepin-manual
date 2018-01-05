@@ -26,6 +26,7 @@
 #include <qcef_web_view.h>
 
 #include "base/consts.h"
+#include "view/search_proxy.h"
 #include "view/title_bar_proxy.h"
 #include "view/widget/title_bar.h"
 
@@ -54,6 +55,8 @@ void WebWindow::setAppName(const QString& app_name) {
 }
 
 void WebWindow::initUI() {
+  search_proxy_ = new SearchProxy(this);
+
   title_bar_ = new TitleBar();
   title_bar_proxy_ = new TitleBarProxy(title_bar_, this);
   this->titlebar()->setCustomWidget(title_bar_, Qt::AlignCenter, false);
@@ -65,7 +68,9 @@ void WebWindow::initUI() {
   web_view_->page()->settings()->setWebSecurity(QCefWebSettings::StateDisabled);
 
   QWebChannel* channel = web_view_->page()->webChannel();
+
   // Use TitleBarProxy instead.
+  channel->registerObject("search", search_proxy_);
   channel->registerObject("titleBar", title_bar_proxy_);
 }
 

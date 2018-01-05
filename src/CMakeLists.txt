@@ -72,6 +72,8 @@ set(BASE_FILES
     )
 
 set(CONTROLLER_FILES
+    controller/search_manager.cpp
+    controller/search_manager.h
     controller/window_manager.cpp
     controller/window_manager.h
     )
@@ -83,6 +85,8 @@ set(RESOURCES_FILES
     )
 
 set(VIEW_FILES
+    view/search_proxy.cpp
+    view/search_proxy.h
     view/theme_manager.cpp
     view/theme_manager.h
     view/title_bar_proxy.cpp

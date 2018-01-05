@@ -24,6 +24,7 @@ class QCefWebView;
 
 namespace dman {
 
+class SearchProxy;
 class TitleBar;
 class TitleBarProxy;
 
@@ -51,6 +52,7 @@ class WebWindow : public Dtk::Widget::DMainWindow {
   void initUI();
 
   QString app_name_;
+  SearchProxy* search_proxy_ = nullptr;
   TitleBar* title_bar_ = nullptr;
   TitleBarProxy* title_bar_proxy_ = nullptr;
   QCefWebView* web_view_ = nullptr;
