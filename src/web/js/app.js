@@ -5,7 +5,6 @@ import Index from "./index.jsx"
 import Main from "./main.jsx"
 import m2h from "./mdToHtml"
 
-
 localStorage.lang = navigator.language.replace(/-/, '_')
 localStorage.path = location.protocol == "http:" ?`http://${location.hostname}:8000`: `file:///usr/share/dman`
 
@@ -39,6 +38,7 @@ global.open=(appName)=>{
 	}
 	webChannel.objects.titleBar.setBackButtonVisible(true)
 	state.appName=appName
+	webChannel.objects.search.setCurrentApp(appName)
 	ReactDOM.render(<Main appName={appName}/>,document.getElementById("app"))
 }
 
@@ -56,6 +56,8 @@ global.index=()=>{
 if(window.QWebChannel){
 	new QWebChannel(qt.webChannelTransport,channel=>{
 		webChannel=channel
+		global.webChannel=webChannel
+
 		webChannel.objects.titleBar.backButtonClicked.connect(()=>{
 			if(state.searchWord){
 				state.searchWord=""

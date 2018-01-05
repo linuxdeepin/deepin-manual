@@ -37,17 +37,21 @@ export default class M2H{
 		localStorage[appName+"_hlist"]=JSON.stringify(hList)
 		localStorage[appName+"_html"]=div.innerHTML
 
-		let searchIndex={}
-		let key=""
-		;[...div.children].map(el=>{
-			if(el.localName.match(/^h\d$/)!=null){
-				key=`${appName}#${el.id}`
-				searchIndex[key]=""
-			}else{
-				searchIndex[key]+=el.innerText
-				searchIndex[key]+="\n"
-			}
-		})
+		if(webChannel){
+			let searchIndex={}
+			let key=""
+			;[...div.children].map(el=>{
+				if(el.localName.match(/^h\d$/)!=null){
+					key=el.id
+					searchIndex[key]=""
+				}else{
+					searchIndex[key]+=el.innerText
+					searchIndex[key]+="\n"
+				}
+			})
+			// console.log(appName,searchIndex.keys(),searchIndex.values())
+			webChannel.objects.search.addSearchEntry(appName,Object.keys(searchIndex),Object.values(searchIndex))
+		}
 		// updateSearchIndex(appName,JSON.stringify(searchIndex))
 	}
 	info(){
