@@ -8,7 +8,7 @@ export default class Main extends Component {
 	constructor(props){
 		super(props)
 		this.state={
-			hList:[],
+			hlist:[],
 			html:"",
 			hash:"",
 		}
@@ -22,7 +22,12 @@ export default class Main extends Component {
 				return
 			}
 			let m=new m2h(appName,xhr.responseText)
-			this.setState({hList:m.hlist(),html:m.html()})
+			let hlist=m.hlist()
+			this.setState({
+				hlist,
+				html:m.html(),
+				hash:hlist[0].id,
+			})
 		}
 		xhr.send()
 	}
@@ -39,7 +44,7 @@ export default class Main extends Component {
 	}
 	render() {
 		return <div id="main">
-				<Nav hList={this.state.hList} hash={this.state.hash} setHash={this.setHash.bind(this)}/>
+				<Nav hlist={this.state.hlist} hash={this.state.hash} setHash={this.setHash.bind(this)}/>
 				<Article html={this.state.html} hash={this.state.hash} setHash={this.setHash.bind(this)}/>
 			</div>
 	}

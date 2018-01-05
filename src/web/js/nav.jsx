@@ -26,7 +26,7 @@ class Nav extends Component {
 		return <div id="nav" onClick={e=>this.click(e)}>
 			<Scrollbars autoHide autoHideTimeout={1000} ref={s => { this.scrollbars = s }}>
 			{
-				this.props.hList.map(h=>{
+				this.props.hlist.map(h=>{
 					let NodeName=h.type
 					return <NodeName key={h.id} cid={h.id} className={this.props.hash==h.id?'hash':undefined}>
 						{h.text}

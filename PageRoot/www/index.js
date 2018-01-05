@@ -150,7 +150,7 @@ var Article = function (_Component) {
 		}
 	}, {
 		key: 'scroll',
-		value: function scroll(e) {
+		value: function scroll() {
 			var hList = _reactDom2.default.findDOMNode(this).querySelectorAll("h2,h3");
 			var hash = hList[0].id;
 			for (var i = 0; i < hList.length; i++) {
@@ -425,7 +425,7 @@ var Main = function (_Component) {
 		var _this = _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this, props));
 
 		_this.state = {
-			hList: [],
+			hlist: [],
 			html: "",
 			hash: ""
 		};
@@ -445,7 +445,12 @@ var Main = function (_Component) {
 					return;
 				}
 				var m = new _mdToHtml2.default(appName, xhr.responseText);
-				_this2.setState({ hList: m.hlist(), html: m.html() });
+				var hlist = m.hlist();
+				_this2.setState({
+					hlist: hlist,
+					html: m.html(),
+					hash: hlist[0].id
+				});
 			};
 			xhr.send();
 		}
@@ -472,7 +477,7 @@ var Main = function (_Component) {
 			return _react2.default.createElement(
 				"div",
 				{ id: "main" },
-				_react2.default.createElement(_nav2.default, { hList: this.state.hList, hash: this.state.hash, setHash: this.setHash.bind(this) }),
+				_react2.default.createElement(_nav2.default, { hlist: this.state.hlist, hash: this.state.hash, setHash: this.setHash.bind(this) }),
 				_react2.default.createElement(_article2.default, { html: this.state.html, hash: this.state.hash, setHash: this.setHash.bind(this) })
 			);
 		}
@@ -661,7 +666,7 @@ var Nav = function (_Component) {
 					{ autoHide: true, autoHideTimeout: 1000, ref: function ref(s) {
 							_this2.scrollbars = s;
 						} },
-					this.props.hList.map(function (h) {
+					this.props.hlist.map(function (h) {
 						var NodeName = h.type;
 						return _react2.default.createElement(
 							NodeName,
