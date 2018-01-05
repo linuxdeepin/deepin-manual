@@ -37,7 +37,7 @@ export default class M2H{
 		localStorage[appName+"_hlist"]=JSON.stringify(hList)
 		localStorage[appName+"_html"]=div.innerHTML
 
-		if(webChannel){
+		if(global.webChannel){
 			let searchIndex={}
 			let key=""
 			;[...div.children].map(el=>{
@@ -49,10 +49,8 @@ export default class M2H{
 					searchIndex[key]+="\n"
 				}
 			})
-			// console.log(appName,searchIndex.keys(),searchIndex.values())
-			webChannel.objects.search.addSearchEntry(appName,Object.keys(searchIndex),Object.values(searchIndex))
+			global.webChannel.objects.search.addSearchEntry(`${appName}#${localStorage.lang}`,Object.keys(searchIndex),Object.values(searchIndex))
 		}
-		// updateSearchIndex(appName,JSON.stringify(searchIndex))
 	}
 	info(){
 		return JSON.parse(localStorage[this.appName+"_info"])

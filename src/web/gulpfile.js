@@ -14,9 +14,7 @@ const RootDir="../../PageRoot/www/"
 
 //编译js到index.js
 gulp.task('js', ()=>{
-	if(process.argv[2]=="build"){
-		process.env.NODE_ENV = 'production'
-	}
+	process.env.NODE_ENV = 'production'
 	return browserify("js/app.js")
 		.transform("babelify", {presets: ["env","react"]})
 		.bundle()
