@@ -11,7 +11,7 @@ export default class M2H{
 			return
 		}
 		console.log(appName,"update")
-		// localStorage[appName+"_hash"]=hash
+		localStorage[appName+"_hash"]=hash
 
 		let path=`${localStorage.path}/${appName}/${localStorage.lang}/`
 		let div=document.createElement("div")
@@ -40,7 +40,7 @@ export default class M2H{
 		let searchIndex={}
 		let key=""
 		;[...div.children].map(el=>{
-			if(el.localName.match(/^h[23]$/)!=null){
+			if(el.localName.match(/^h\d$/)!=null){
 				key=`${appName}#${el.id}`
 				searchIndex[key]=""
 			}else{
@@ -48,7 +48,7 @@ export default class M2H{
 				searchIndex[key]+="\n"
 			}
 		})
-		updateSearchIndex(appName,JSON.stringify(searchIndex))
+		// updateSearchIndex(appName,JSON.stringify(searchIndex))
 	}
 	info(){
 		return JSON.parse(localStorage[this.appName+"_info"])

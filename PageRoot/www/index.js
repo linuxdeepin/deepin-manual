@@ -27,48 +27,71 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 localStorage.lang = navigator.language.replace(/-/, '_');
 localStorage.path = location.protocol == "http:" ? 'http://' + location.hostname + ':8000' : 'file:///usr/share/dman';
 
-global.webChannel = null;
+var open = function open(appName) {
+	console.log("open", appName);
+	_reactDom2.default.render(_react2.default.createElement(_main2.default, { appName: appName }), document.getElementById("app"));
+};
+var index = function index() {
+	console.log("index");
+	_reactDom2.default.render(_react2.default.createElement(_index2.default, { openApp: open }), document.getElementById("app"));
+};
+//浏览器端自动打开浏览器
+if (location.protocol == "http:") {
+	index();
+}
+
+//Qt
+var webChannel = null;
 var delay = null;
 
+var state = {
+	appName: "",
+	searchWord: ""
+};
+
 global.open = function (appName) {
-	if (window.QWebChannel && !global.webChannel) {
+	if (window.QWebChannel && !webChannel) {
 		delay = function delay() {
 			return global.open(appName);
 		};
+		console.log("延迟执行");
 		return;
 	}
-	console.log("open", appName);
+	webChannel.objects.titleBar.setBackButtonVisible(true);
+	state.appName = appName;
 	_reactDom2.default.render(_react2.default.createElement(_main2.default, { appName: appName }), document.getElementById("app"));
 };
 
 global.index = function () {
-	if (window.QWebChannel && !global.webChannel) {
+	if (window.QWebChannel && !webChannel) {
 		delay = function delay() {
 			return global.index();
 		};
+		console.log("延迟执行");
 		return;
 	}
-	console.log(global.webChannel);
-	console.log("index");
+	webChannel.objects.titleBar.setBackButtonVisible(false);
 	_reactDom2.default.render(_react2.default.createElement(_index2.default, { openApp: global.open }), document.getElementById("app"));
 };
 
 if (window.QWebChannel) {
 	new QWebChannel(qt.webChannelTransport, function (channel) {
-		global.webChannel = channel;
+		webChannel = channel;
+		webChannel.objects.titleBar.backButtonClicked.connect(function () {
+			if (state.searchWord) {
+				state.searchWord = "";
+				return;
+			}
+			if (state.appName) {
+				state.appName = "";
+				global.index();
+			}
+		});
 		if (delay) {
 			delay();
 		}
 	});
 }
-
-if (location.protocol == "http:") {
-	global.index();
-}
-
-global.updateSearchIndex = function (appName, searchIndex) {
-	localStorage[appName + "_searchIndex"] = searchIndex;
-};
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./index.jsx":3,"./main.jsx":4,"./mdToHtml":5,"react":55,"react-dom":51}],2:[function(require,module,exports){
@@ -496,7 +519,7 @@ var M2H = function () {
 			return;
 		}
 		console.log(appName, "update");
-		// localStorage[appName+"_hash"]=hash
+		localStorage[appName + "_hash"] = hash;
 
 		var path = localStorage.path + '/' + appName + '/' + localStorage.lang + '/';
 		var div = document.createElement("div");
@@ -528,7 +551,7 @@ var M2H = function () {
 
 		var searchIndex = {};
 		var key = "";[].concat(_toConsumableArray(div.children)).map(function (el) {
-			if (el.localName.match(/^h[23]$/) != null) {
+			if (el.localName.match(/^h\d$/) != null) {
 				key = appName + '#' + el.id;
 				searchIndex[key] = "";
 			} else {
@@ -536,7 +559,7 @@ var M2H = function () {
 				searchIndex[key] += "\n";
 			}
 		});
-		updateSearchIndex(appName, JSON.stringify(searchIndex));
+		// updateSearchIndex(appName,JSON.stringify(searchIndex))
 	}
 
 	_createClass(M2H, [{
