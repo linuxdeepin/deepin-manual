@@ -18,13 +18,16 @@
 #include "controller/window_manager.h"
 
 #include <DWidgetUtil>
+
+#include "controller/search_manager.h"
 #include "view/web_window.h"
 
 namespace dman {
 
 WindowManager::WindowManager(QObject* parent)
     : QObject(parent),
-      windows_() {
+      windows_(),
+      search_manager_(new SearchManager(this)) {
 }
 
 WindowManager::~WindowManager() {
@@ -39,7 +42,7 @@ void WindowManager::openManual(const QString& app_name) {
       return;
     }
   }
-  WebWindow* window = new WebWindow();
+  WebWindow* window = new WebWindow(search_manager_);
   window->setAppName(app_name);
   window->resize(998, 662);
   window->show();

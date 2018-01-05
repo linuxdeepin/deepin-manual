@@ -43,7 +43,7 @@ int main(int argc, char** argv) {
   settings.addCommandLineSwitch("--disable-gpu", "");
 
   // Set web cache folder.
-  QDir cache_dir(QDir::home().filePath(dman::kAppCacheDir));
+  QDir cache_dir(dman::GetCacheDir());
   cache_dir.mkpath(".");
   settings.setCachePath(cache_dir.filePath("cache"));
   settings.setUserDataPath(cache_dir.filePath("data"));

@@ -24,6 +24,7 @@ class QCefWebView;
 
 namespace dman {
 
+class SearchManager;
 class SearchProxy;
 class TitleBar;
 class TitleBarProxy;
@@ -33,7 +34,7 @@ class WebWindow : public Dtk::Widget::DMainWindow {
   Q_PROPERTY(QString appName READ appName WRITE setAppName)
 
  public:
-  explicit WebWindow(QWidget* parent = nullptr);
+  explicit WebWindow(SearchManager* search_manager, QWidget* parent = nullptr);
   ~WebWindow() override;
 
   // Get app name of manual currently presented.

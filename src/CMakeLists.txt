@@ -45,6 +45,7 @@ find_package(PkgConfig REQUIRED)
 find_package(Qt5Core REQUIRED)
 find_package(Qt5Gui REQUIRED)
 find_package(Qt5LinguistTools)
+find_package(Qt5Sql REQUIRED)
 find_package(Qt5WebChannel REQUIRED)
 find_package(Qt5Widgets REQUIRED)
 find_package(Qt5LinguistTools REQUIRED)
@@ -61,6 +62,7 @@ include_directories(third_party/cppjieba/include)
 
 set(LINK_LIBS
     Qt5::Core
+    Qt5::Sql
     Qt5::Widgets
     Qt5::WebChannel
 
@@ -76,6 +78,8 @@ set(BASE_FILES
     )
 
 set(CONTROLLER_FILES
+    controller/search_db.cpp
+    controller/search_db.h
     controller/search_manager.cpp
     controller/search_manager.h
     controller/window_manager.cpp
@@ -123,8 +127,16 @@ add_executable(dman
 target_link_libraries(dman ${LINK_LIBS})
 add_dependencies(dman update-qm)
 
-add_executable(search-demo
-               app/search_demo.cpp)
+set(SEARCH_DEMO_FILES
+    app/search_demo.cpp
+    base/consts.cpp
+    base/consts.h
+    controller/search_db.cpp
+    controller/search_db.h
+    controller/search_manager.cpp
+    controller/search_manager.h
+    )
+add_executable(search-demo ${SEARCH_DEMO_FILES})
 target_link_libraries(search-demo ${LINK_LIBS})
 
 install(TARGETS dman

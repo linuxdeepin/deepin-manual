@@ -23,6 +23,7 @@
 
 namespace dman {
 
+class SearchManager;
 class WebWindow;
 
 // Manages visibility and lifecycle of web windows.
@@ -39,6 +40,7 @@ class WindowManager : public QObject {
 
  private:
   QVector<WebWindow*> windows_;
+  SearchManager* search_manager_ = nullptr;
 };
 
 }  // namespace dman

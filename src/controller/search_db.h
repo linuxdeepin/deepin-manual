@@ -15,52 +15,38 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef DEEPIN_MANUAL_CONTROLLER_SEARCH_MANAGER_H
-#define DEEPIN_MANUAL_CONTROLLER_SEARCH_MANAGER_H
+#ifndef DEEPIN_MANUAL_CONTROLLER_SEARCH_DB_H
+#define DEEPIN_MANUAL_CONTROLLER_SEARCH_DB_H
 
 #include <QObject>
-#include <QList>
-
-class QThread;
+#include <QSqlDatabase>
 
 namespace dman {
 
-class SearchDb;
-
-class SearchManager : public QObject {
- Q_OBJECT
-
+class SearchDb : public QObject {
+  Q_OBJECT
  public:
-  explicit SearchManager(QObject* parent = nullptr);
-
-  ~SearchManager() override;
-
-  struct Entry {
-    QString app_name;
-    QString index;
-  };
-  typedef QList<Entry> EntryList;
+  explicit SearchDb(QObject* parent = nullptr);
+  ~SearchDb() override;
 
  signals:
-  void onSearchResult(const EntryList& list);
-  void mismatch(const QString& keyword);
-  void match(const QString& anchor);
-  void globalMatch(const QString& app_name, const QString& anchor);
-
- public slots:
-  void search(const QString& keyword);
-
-  void setCurrentApp(const QString& app_name);
-
+  void initDb();
   void addSearchEntry(const QString& app_name,
                       const QStringList& anchors,
                       const QStringList& contents);
 
  private:
-  SearchDb* db_ = nullptr;
-  QThread* db_thread_ = nullptr;
+  void initConnections();
+
+  QSqlDatabase db_;
+
+ private slots:
+  void handleInitDb();
+  void handleAddSearchEntry(const QString& app_name,
+                            const QStringList& anchors,
+                            const QStringList& contents);
 };
 
 }  // namespace dman
 
-#endif  // DEEPIN_MANUAL_CONTROLLER_SEARCH_MANAGER_H
+#endif  // DEEPIN_MANUAL_CONTROLLER_SEARCH_DB_H

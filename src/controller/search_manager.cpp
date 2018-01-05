@@ -17,27 +17,43 @@
 
 #include "controller/search_manager.h"
 
+#include <QDebug>
+#include <QThread>
+
+#include "controller/search_db.h"
+
 namespace dman {
 
+SearchManager::SearchManager(QObject* parent)
+    : QObject(parent),
+      db_(new SearchDb()),
+      db_thread_(new QThread(this)) {
+  db_thread_->start();
+  db_->moveToThread(db_thread_);
 
-SearchManager::SearchManager(QObject* parent) : QObject(parent) {
-
+  connect(db_thread_, &QThread::destroyed,
+          db_, &QObject::deleteLater);
+  emit db_->initDb();
 }
 
 SearchManager::~SearchManager() {
-
-}
-
-void SearchManager::addSearchEntry(const QString& app_name,
-                                   const QString& index,
-                                   const QString& content) {
-  Q_UNUSED(app_name);
-  Q_UNUSED(index);
-  Q_UNUSED(content);
+  db_thread_->quit();
+  delete db_thread_;
+  db_thread_ = nullptr;
 }
 
 void SearchManager::search(const QString& keyword) {
-  Q_UNUSED(keyword);
+  qDebug() << Q_FUNC_INFO << keyword;
+}
+
+void SearchManager::setCurrentApp(const QString& app_name) {
+  qDebug() << Q_FUNC_INFO << app_name;
+}
+
+void SearchManager::addSearchEntry(const QString& app_name,
+                                   const QStringList& anchors,
+                                   const QStringList& contents) {
+  emit db_->addSearchEntry(app_name, anchors, contents);
 }
 
 }  // namespace dman

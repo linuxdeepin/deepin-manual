@@ -32,9 +32,10 @@
 
 namespace dman {
 
-WebWindow::WebWindow(QWidget* parent)
+WebWindow::WebWindow(SearchManager* search_manager, QWidget* parent)
     : Dtk::Widget::DMainWindow(parent),
-      app_name_() {
+      app_name_(),
+      search_proxy_(new SearchProxy(search_manager, this)) {
 
   this->initUI();
 
@@ -55,8 +56,6 @@ void WebWindow::setAppName(const QString& app_name) {
 }
 
 void WebWindow::initUI() {
-  search_proxy_ = new SearchProxy(this);
-
   title_bar_ = new TitleBar();
   title_bar_proxy_ = new TitleBarProxy(title_bar_, this);
   this->titlebar()->setCustomWidget(title_bar_, Qt::AlignCenter, false);

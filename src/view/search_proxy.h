@@ -22,21 +22,28 @@
 
 namespace dman {
 
+class SearchManager;
+
 class SearchProxy : public QObject {
   Q_OBJECT
  public:
-  explicit SearchProxy(QObject* parent = nullptr);
+  explicit SearchProxy(SearchManager* manager, QObject* parent = nullptr);
   ~SearchProxy() override;
 
  signals:
   void mismatch(const QString& keyword);
-  void match(const QString& index);
-  void globalMatch(const QString& app_name, const QString& index);
+  void match(const QString& anchor);
+  void globalMatch(const QString& app_name, const QString& anchor);
 
  public slots:
-  void setCurrentAppName(const QString& app_name);
-  void addSearchEntry(const QString& app_name, const QString& index,
-                      const QString& content);
+  void setCurrentApp(const QString& app_name);
+
+  void addSearchEntry(const QString& app_name,
+                      const QStringList& anchors,
+                      const QStringList& contents);
+
+ private:
+  SearchManager* manager_ = nullptr;
 };
 
 }  // namespace dman

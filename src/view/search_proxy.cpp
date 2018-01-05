@@ -17,22 +17,31 @@
 
 #include "view/search_proxy.h"
 
-dman::SearchProxy::SearchProxy(QObject* parent) : QObject(parent) {
+#include "controller/search_manager.h"
 
+dman::SearchProxy::SearchProxy(SearchManager* manager, QObject* parent)
+    : QObject(parent),
+      manager_(manager) {
+  Q_ASSERT(manager_ != nullptr);
+
+  connect(manager_, &SearchManager::mismatch,
+          this, &SearchProxy::mismatch);
+  connect(manager_, &SearchManager::match,
+          this, &SearchProxy::match);
+  connect(manager_, &SearchManager::globalMatch,
+          this, &SearchProxy::globalMatch);
 }
 
 dman::SearchProxy::~SearchProxy() {
 
 }
 
-void dman::SearchProxy::addSearchEntry(const QString& app_name,
-                                       const QString& index,
-                                       const QString& content) {
-  Q_UNUSED(app_name);
-  Q_UNUSED(index);
-  Q_UNUSED(content);
+void dman::SearchProxy::setCurrentApp(const QString& app_name) {
+  manager_->setCurrentApp(app_name);
 }
 
-void dman::SearchProxy::setCurrentAppName(const QString& app_name) {
-  Q_UNUSED(app_name);
+void dman::SearchProxy::addSearchEntry(const QString& app_name,
+                                       const QStringList& anchors,
+                                       const QStringList& contents) {
+  manager_->addSearchEntry(app_name, anchors, contents);
 }
