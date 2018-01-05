@@ -13,7 +13,8 @@ override_dh_auto_configure:
 	dh_auto_configure -- \
 	  -DCMAKE_BUILD_TYPE=Release \
 	  -DDMAN_MANUAL_DIR=/usr/share/dman \
-	  -DDMAN_RESOURCE_DIR=/usr/share/dman \
+	  -DDMAN_RESOURCE_DIR=/usr/share/deepin-manual \
+	  -DJIEBA_DICT=/usr/share/deepin-manual \
 	  -DCMAKE_INSTALL_PREFIX=/usr
 
 override_dh_auto_build:

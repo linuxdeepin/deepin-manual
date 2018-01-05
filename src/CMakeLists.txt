@@ -52,8 +52,12 @@ find_package(Qt5LinguistTools REQUIRED)
 pkg_search_module(Dtk REQUIRED dtkwidget)
 pkg_search_module(QCef REQUIRED libqcef)
 
+add_subdirectory(third_party/cppjieba)
+
 include_directories(${Dtk_INCLUDE_DIRS})
 include_directories(${QCef_INCLUDE_DIRS})
+include_directories(third_party/cppjieba/deps)
+include_directories(third_party/cppjieba/include)
 
 set(LINK_LIBS
     Qt5::Core
@@ -119,5 +123,19 @@ add_executable(dman
 target_link_libraries(dman ${LINK_LIBS})
 add_dependencies(dman update-qm)
 
-install(PROGRAMS ${CMAKE_CURRENT_BINARY_DIR}/dman
+add_executable(search-demo
+               app/search_demo.cpp)
+target_link_libraries(search-demo ${LINK_LIBS})
+
+install(TARGETS dman
         DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+
+# Jieba Dictionary
+set(JIEBA_DICT_SRC ${CMAKE_CURRENT_SOURCE_DIR}/third_party/cppjieba/dict)
+if (NOT DEFINED JIEBA_DICT)
+  set(JIEBA_DICT ${JIEBA_DICT_SRC})
+endif ()
+add_definitions(-DJIEBA_DICT="${JIEBA_DICT}")
+
+install(DIRECTORY ${JIEBA_DICT_SRC}
+        DESTINATION ${JIEBA_DICT})

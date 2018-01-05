@@ -5,9 +5,9 @@ CMAKE_MINIMUM_REQUIRED (VERSION 2.6)
 INCLUDE_DIRECTORIES(${PROJECT_SOURCE_DIR}/deps
   ${PROJECT_SOURCE_DIR}/include)
 
-if (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
-    set (CMAKE_INSTALL_PREFIX "/usr/local/cppjieba" CACHE PATH "default install path" FORCE )
-endif()
+#if (CMAKE_INSTALL_PREFIX_INITIALIZED_TO_DEFAULT)
+#    set (CMAKE_INSTALL_PREFIX "/usr/local/cppjieba" CACHE PATH "default install path" FORCE )
+#endif()
 
 ADD_DEFINITIONS(-O3 -Wall -g)
 IF(APPLE) # mac os

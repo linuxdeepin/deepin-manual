@@ -23,6 +23,6 @@ const char kAppName[] = "deepin-manual";
 const char kAppVersion[] = "2.0.0";
 const char kAppCacheDir[] = ".cache/deepin/deepin-manual";
 
-const char kIndexPage[] = DMAN_RESOURCE_DIR "/PageRoot/www/index.html";
+const char kIndexPage[] = DMAN_RESOURCE_DIR "/www/index.html";
 
 }  // namespace dman

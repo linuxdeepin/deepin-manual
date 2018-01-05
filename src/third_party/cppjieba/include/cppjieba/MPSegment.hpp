@@ -110,6 +110,7 @@ class MPSegment: public SegmentTagged {
         RuneStrArray::const_iterator end, 
         const vector<Dag>& dags, 
         vector<WordRange>& words) const {
+    (void) end;
     size_t i = 0;
     while (i < dags.size()) {
       const DictUnit* p = dags[i].pInfo;
