@@ -128,7 +128,18 @@ void WebWindow::onWebPageLoadFinished(bool ok) {
     if (app_name_.isEmpty()) {
       web_view_->page()->runJavaScript("index()");
     } else {
-      web_view_->page()->runJavaScript(QString("open(\"%1\")").arg(app_name_));
+      QString real_path(app_name_);
+      if (real_path.contains('/')) {
+        // Open markdown file with absolute path.
+        QFileInfo info(real_path);
+        real_path = info.canonicalFilePath();
+        web_view_->page()->runJavaScript(
+            QString("openFile(\"%1\")").arg(real_path));
+      } else {
+        // Open system manual.
+        web_view_->page()->runJavaScript(
+            QString("open(\"%1\")").arg(app_name_));
+      }
     }
   }
 }
