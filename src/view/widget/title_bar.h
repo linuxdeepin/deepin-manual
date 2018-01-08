@@ -26,6 +26,7 @@
 
 namespace dman {
 
+class SearchCompletionWindow;
 class SearchEdit;
 
 // Customize widget in TitleBar.
@@ -51,9 +52,11 @@ class TitleBar : public QFrame {
 
  private:
   void initUI();
+  void initConnections();
 
   Dtk::Widget::DImageButton* back_btn_ = nullptr;
   SearchEdit* search_edit_ = nullptr;
+  SearchCompletionWindow* completion_window_ = nullptr;
 
  private slots:
   void onSearchTextChanged();

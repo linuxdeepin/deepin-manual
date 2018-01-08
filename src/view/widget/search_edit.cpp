@@ -17,6 +17,8 @@
 
 #include "view/widget/search_edit.h"
 
+#include <QKeyEvent>
+
 namespace dman {
 
 SearchEdit::SearchEdit(QWidget* parent) : DSearchEdit(parent) {
@@ -25,6 +27,16 @@ SearchEdit::SearchEdit(QWidget* parent) : DSearchEdit(parent) {
 
 SearchEdit::~SearchEdit() {
 
+}
+
+void SearchEdit::keyPressEvent(QKeyEvent* event) {
+  if (event->key() == Qt::Key_Up) {
+    emit this->upKeyPressed();
+  } else if (event->key() == Qt::Key_Down) {
+    emit this->downKeyPressed();
+  }
+
+  DSearchEdit::keyPressEvent(event);
 }
 
 }  // namespace dman

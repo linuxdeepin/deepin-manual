@@ -103,6 +103,8 @@ set(VIEW_FILES
     view/web_window.cpp
     view/web_window.h
 
+    view/widget/search_completion_window.cpp
+    view/widget/search_completion_window.h
     view/widget/search_edit.cpp
     view/widget/search_edit.h
     view/widget/title_bar.cpp

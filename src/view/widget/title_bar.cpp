@@ -18,6 +18,7 @@
 #include "view/widget/title_bar.h"
 
 #include "view/theme_manager.h"
+#include "view/widget/search_completion_window.h"
 #include "view/widget/search_edit.h"
 
 namespace dman {
@@ -25,14 +26,14 @@ namespace dman {
 TitleBar::TitleBar(QWidget* parent) : QFrame(parent) {
   this->setObjectName("TitleBar");
   this->initUI();
-
-  connect(search_edit_, &SearchEdit::textChanged,
-          this, &TitleBar::onSearchTextChanged);
-  connect(back_btn_, &Dtk::Widget::DImageButton::clicked,
-          this, &TitleBar::backButtonClicked);
+  this->initConnections();
 }
 
 TitleBar::~TitleBar() {
+  if (completion_window_ != nullptr) {
+    completion_window_->deleteLater();
+    completion_window_ = nullptr;
+  }
 }
 
 bool TitleBar::backButtonVisible() const {
@@ -41,6 +42,17 @@ bool TitleBar::backButtonVisible() const {
 
 void TitleBar::setBackButtonVisible(bool visible) {
   back_btn_->setVisible(visible);
+}
+
+void TitleBar::initConnections() {
+  connect(search_edit_, &SearchEdit::textChanged,
+          this, &TitleBar::onSearchTextChanged);
+  connect(back_btn_, &Dtk::Widget::DImageButton::clicked,
+          this, &TitleBar::backButtonClicked);
+  connect(search_edit_, &SearchEdit::upKeyPressed,
+          completion_window_, &SearchCompletionWindow::goUp);
+  connect(search_edit_, &SearchEdit::downKeyPressed,
+          completion_window_, &SearchCompletionWindow::goDown);
 }
 
 void TitleBar::initUI() {
@@ -68,6 +80,8 @@ void TitleBar::initUI() {
   search_edit_->setObjectName("SearchEdit");
   search_edit_->setFixedSize(242, 26);
   search_edit_->setPlaceHolder(tr("Search"));
+
+  completion_window_ = new SearchCompletionWindow();
 
   QHBoxLayout* main_layout = new QHBoxLayout();
   main_layout->setSpacing(0);

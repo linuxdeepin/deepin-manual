@@ -15,28 +15,32 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef DEEPIN_MANUAL_VIEW_WIDGET_SEARCH_EDIT_H
-#define DEEPIN_MANUAL_VIEW_WIDGET_SEARCH_EDIT_H
+#ifndef DEEPIN_MANUAL_VIEW_SEARCH_COMPLETION_WINDOW_H
+#define DEEPIN_MANUAL_VIEW_SEARCH_COMPLETION_WINDOW_H
 
-#include <DSearchEdit>
+#include <QFrame>
+#include <QListView>
+#include <QPushButton>
 
 namespace dman {
 
-// Provides an edit box in TitleBar.
-class SearchEdit : public Dtk::Widget::DSearchEdit {
+class SearchCompletionWindow : public QFrame {
   Q_OBJECT
  public:
-  explicit SearchEdit(QWidget* parent = nullptr);
-  ~SearchEdit() override;
+  explicit SearchCompletionWindow(QWidget* parent = nullptr);
+  ~SearchCompletionWindow() override;
 
- signals:
-  void upKeyPressed();
-  void downKeyPressed();
+ public slots:
+  void goUp();
+  void goDown();
 
- protected:
-  void keyPressEvent(QKeyEvent* event) override;
+ private:
+  void initUI();
+
+  QListView* result_list_ = nullptr;
+  QPushButton* search_button_ = nullptr;
 };
 
 }  // namespace dman
 
-#endif  // DEEPIN_MANUAL_VIEW_WIDGET_SEARCH_EDIT_H
+#endif  // DEEPIN_MANUAL_VIEW_SEARCH_COMPLETION_WINDOW_H
