@@ -18,11 +18,12 @@ class Item extends Component {
 		let path=`${localStorage.path}/${this.props.appName}/${localStorage.lang}/`
 		xhr.open("GET",path+"index.md")
 		xhr.onload=()=>{
-			if(xhr.responseText==""){
+			let data=xhr.responseText
+			if(!data){
 				return
 			}
-			let m=new m2h(this.props.appName,xhr.responseText)
-			let {title,logo}=m.info()
+			let [title,logo]=data.substr("# ".length,data.indexOf("\n")).split("|")
+			logo=`${path}${logo}`
 			this.setState({title,logo,show:true})
 		}
 		xhr.send()
@@ -42,7 +43,28 @@ class Item extends Component {
 export default class Index extends Component {
 	constructor(props){
 		super(props)
+		let sequence=[
+			"dde-file-manager",
+			"deepin-appstore",
+			"deepin-system-monitor",
+			"deepin-terminal",
+			"deepin-movie",
+			"deepin-music",
+			"deepin-image-viewer",
+			"deepin-screenshot",
+			"deepin-screen-recorder",
+			"deepin-voice-recorder",
+			"deepin-cloud-print",
+			"deepin-cloud-scan",
+			'deepin-calculator',
+			"deepin-clone",
+			"deepin-graphics-driver-manager",
+			"deepin-package-manager",
+			"deepin-presentation-assistant",
+			"deepin-boot-maker"
+			]
 		this.state={
+			sequence,
 			appList:[]
 		}
 	}
@@ -65,14 +87,16 @@ export default class Index extends Component {
 		return true
 	}
 	render() {
-		let sysSoft=this.state.appList.filter(appName=>appName.indexOf('dde')!=-1)
-		let appSoft=this.state.appList.filter(appName=>appName.indexOf('dde')==-1)
+		let sysSoft=['dde']
+		let appSoft=this.state.sequence.filter(appName=>this.state.appList.includes(appName))
+		let otherSoft=this.state.appList.filter(appName=>!this.state.sequence.includes(appName))
 		return <Scrollbars>
 			<div id="index">
 				<h2>系统</h2>
 					{ sysSoft.map(appName=><Item key={appName} appName={appName} openApp={this.props.openApp}/>) }
 				<h2>应用</h2>
 					{ appSoft.map(appName=><Item key={appName} appName={appName} openApp={this.props.openApp}/>) }
+					{ otherSoft.map(appName=><Item key={appName} appName={appName} openApp={this.props.openApp}/>) }
 			</div>
 		</Scrollbars>
 	}

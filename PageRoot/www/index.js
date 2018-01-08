@@ -223,6 +223,8 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = require('react');
@@ -269,15 +271,17 @@ var Item = function (_Component) {
 			var path = localStorage.path + '/' + this.props.appName + '/' + localStorage.lang + '/';
 			xhr.open("GET", path + "index.md");
 			xhr.onload = function () {
-				if (xhr.responseText == "") {
+				var data = xhr.responseText;
+				if (!data) {
 					return;
 				}
-				var m = new _mdToHtml2.default(_this2.props.appName, xhr.responseText);
 
-				var _m$info = m.info(),
-				    title = _m$info.title,
-				    logo = _m$info.logo;
+				var _data$substr$split = data.substr("# ".length, data.indexOf("\n")).split("|"),
+				    _data$substr$split2 = _slicedToArray(_data$substr$split, 2),
+				    title = _data$substr$split2[0],
+				    logo = _data$substr$split2[1];
 
+				logo = '' + path + logo;
 				_this2.setState({ title: title, logo: logo, show: true });
 			};
 			xhr.send();
@@ -314,7 +318,9 @@ var Index = function (_Component2) {
 
 		var _this4 = _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).call(this, props));
 
+		var sequence = ["dde-file-manager", "deepin-appstore", "deepin-system-monitor", "deepin-terminal", "deepin-movie", "deepin-music", "deepin-image-viewer", "deepin-screenshot", "deepin-screen-recorder", "deepin-voice-recorder", "deepin-cloud-print", "deepin-cloud-scan", 'deepin-calculator', "deepin-clone", "deepin-graphics-driver-manager", "deepin-package-manager", "deepin-presentation-assistant", "deepin-boot-maker"];
 		_this4.state = {
+			sequence: sequence,
 			appList: []
 		};
 		return _this4;
@@ -348,11 +354,12 @@ var Index = function (_Component2) {
 		value: function render() {
 			var _this6 = this;
 
-			var sysSoft = this.state.appList.filter(function (appName) {
-				return appName.indexOf('dde') != -1;
+			var sysSoft = ['dde'];
+			var appSoft = this.state.sequence.filter(function (appName) {
+				return _this6.state.appList.includes(appName);
 			});
-			var appSoft = this.state.appList.filter(function (appName) {
-				return appName.indexOf('dde') == -1;
+			var otherSoft = this.state.appList.filter(function (appName) {
+				return !_this6.state.sequence.includes(appName);
 			});
 			return _react2.default.createElement(
 				_reactCustomScrollbars.Scrollbars,
@@ -374,6 +381,9 @@ var Index = function (_Component2) {
 						'\u5E94\u7528'
 					),
 					appSoft.map(function (appName) {
+						return _react2.default.createElement(Item, { key: appName, appName: appName, openApp: _this6.props.openApp });
+					}),
+					otherSoft.map(function (appName) {
 						return _react2.default.createElement(Item, { key: appName, appName: appName, openApp: _this6.props.openApp });
 					})
 				)
