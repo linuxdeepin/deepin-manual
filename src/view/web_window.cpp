@@ -20,12 +20,14 @@
 #include <DTitlebar>
 #include <QFileInfo>
 #include <QResizeEvent>
+#include <QTimer>
 #include <QWebChannel>
 #include <qcef_web_page.h>
 #include <qcef_web_settings.h>
 #include <qcef_web_view.h>
 
 #include "base/consts.h"
+#include "view/widget/search_completion_window.h"
 #include "view/search_proxy.h"
 #include "view/title_bar_proxy.h"
 #include "view/widget/title_bar.h"
@@ -61,7 +63,9 @@ void WebWindow::setAppName(const QString& app_name) {
 }
 
 void WebWindow::initUI() {
+  completion_window_ = new SearchCompletionWindow();
   title_bar_ = new TitleBar();
+  title_bar_->setCompletionWindow(completion_window_);
   title_bar_proxy_ = new TitleBarProxy(title_bar_, this);
   this->titlebar()->setCustomWidget(title_bar_, Qt::AlignCenter, false);
   this->titlebar()->setSeparatorVisible(true);

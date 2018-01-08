@@ -38,6 +38,7 @@ class TitleBar : public QFrame {
  public:
   explicit TitleBar(QWidget* parent = nullptr);
   ~TitleBar() override;
+  void setCompletionWindow(SearchCompletionWindow* completion_window);
 
   bool backButtonVisible() const;
 
@@ -59,6 +60,7 @@ class TitleBar : public QFrame {
   SearchCompletionWindow* completion_window_ = nullptr;
 
  private slots:
+  void onSearchEditFocusOut();
   void onSearchTextChanged();
 };
 

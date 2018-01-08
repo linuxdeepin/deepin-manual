@@ -30,6 +30,8 @@ class SearchCompletionWindow : public QFrame {
   explicit SearchCompletionWindow(QWidget* parent = nullptr);
   ~SearchCompletionWindow() override;
 
+  void autoResize();
+
  public slots:
   void goUp();
   void goDown();

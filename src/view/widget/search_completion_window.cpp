@@ -34,6 +34,10 @@ SearchCompletionWindow::SearchCompletionWindow(QWidget* parent)
 SearchCompletionWindow::~SearchCompletionWindow() {
 }
 
+void SearchCompletionWindow::autoResize() {
+
+}
+
 void SearchCompletionWindow::goUp() {
   qDebug() << Q_FUNC_INFO;
 }

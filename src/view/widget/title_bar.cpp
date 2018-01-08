@@ -17,6 +17,9 @@
 
 #include "view/widget/title_bar.h"
 
+#include <QDebug>
+#include <QTimer>
+
 #include "view/theme_manager.h"
 #include "view/widget/search_completion_window.h"
 #include "view/widget/search_edit.h"
@@ -30,10 +33,14 @@ TitleBar::TitleBar(QWidget* parent) : QFrame(parent) {
 }
 
 TitleBar::~TitleBar() {
-  if (completion_window_ != nullptr) {
-    completion_window_->deleteLater();
-    completion_window_ = nullptr;
-  }
+}
+
+void TitleBar::setCompletionWindow(SearchCompletionWindow* completion_window) {
+  completion_window_ = completion_window;
+  connect(search_edit_, &SearchEdit::upKeyPressed,
+          completion_window_, &SearchCompletionWindow::goUp);
+  connect(search_edit_, &SearchEdit::downKeyPressed,
+          completion_window_, &SearchCompletionWindow::goDown);
 }
 
 bool TitleBar::backButtonVisible() const {
@@ -49,10 +56,9 @@ void TitleBar::initConnections() {
           this, &TitleBar::onSearchTextChanged);
   connect(back_btn_, &Dtk::Widget::DImageButton::clicked,
           this, &TitleBar::backButtonClicked);
-  connect(search_edit_, &SearchEdit::upKeyPressed,
-          completion_window_, &SearchCompletionWindow::goUp);
-  connect(search_edit_, &SearchEdit::downKeyPressed,
-          completion_window_, &SearchCompletionWindow::goDown);
+
+  connect(search_edit_, &SearchEdit::focusOut,
+          this, &TitleBar::onSearchEditFocusOut);
 }
 
 void TitleBar::initUI() {
@@ -81,8 +87,6 @@ void TitleBar::initUI() {
   search_edit_->setFixedSize(242, 26);
   search_edit_->setPlaceHolder(tr("Search"));
 
-  completion_window_ = new SearchCompletionWindow();
-
   QHBoxLayout* main_layout = new QHBoxLayout();
   main_layout->setSpacing(0);
   main_layout->setContentsMargins(0, 0, 0, 0);
@@ -94,8 +98,27 @@ void TitleBar::initUI() {
   ThemeManager::instance()->registerWidget(this);
 }
 
+void TitleBar::onSearchEditFocusOut() {
+  QTimer::singleShot(50, [=]() {
+    this->completion_window_->hide();
+  });
+}
+
 void TitleBar::onSearchTextChanged() {
-  emit this->searchTextChanged(search_edit_->text());
+  const QString text = search_edit_->text();
+  emit this->searchTextChanged(text);
+
+  if (text.size() > 1 && completion_window_ != nullptr) {
+    // Do real search.
+
+    completion_window_->show();
+    // Move to bottom of search edit.
+    completion_window_->move(this->parentWidget()->rect().width() / 2 - 80,
+                             40 - 4);
+    completion_window_->setFocusPolicy(Qt::StrongFocus);
+    completion_window_->raise();
+    qDebug() << "size:" << completion_window_->geometry();
+  }
 }
 
 }  // namespace dman
