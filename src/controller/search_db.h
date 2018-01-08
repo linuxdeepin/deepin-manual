@@ -21,6 +21,8 @@
 #include <QObject>
 #include <QSqlDatabase>
 
+#include "controller/search_result.h"
+
 namespace dman {
 
 class SearchDb : public QObject {
@@ -34,6 +36,10 @@ class SearchDb : public QObject {
   void addSearchEntry(const QString& app_name,
                       const QStringList& anchors,
                       const QStringList& contents);
+  void search(const QString& app_name, const QString& keyword);
+  void searchResult(const QString& app_name,
+                    const QString& keyword,
+                    const SearchResultList& result);
 
  private:
   void initConnections();
@@ -45,6 +51,7 @@ class SearchDb : public QObject {
   void handleAddSearchEntry(const QString& app_name,
                             const QStringList& anchors,
                             const QStringList& contents);
+  void handleSearch(const QString& app_name, const QString& keyword);
 };
 
 }  // namespace dman

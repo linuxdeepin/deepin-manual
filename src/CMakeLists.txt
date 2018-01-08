@@ -83,6 +83,7 @@ set(CONTROLLER_FILES
     controller/search_db.h
     controller/search_manager.cpp
     controller/search_manager.h
+    controller/search_result.h
     controller/window_manager.cpp
     controller/window_manager.h
     )

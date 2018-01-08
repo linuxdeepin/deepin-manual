@@ -21,6 +21,8 @@
 #include <QObject>
 #include <QList>
 
+#include "controller/search_result.h"
+
 class QThread;
 
 namespace dman {
@@ -35,31 +37,18 @@ class SearchManager : public QObject {
 
   ~SearchManager() override;
 
-  struct Entry {
-    QString app_name;
-    QString anchor;
-  };
-  typedef QList<Entry> EntryList;
-
  signals:
-  void mismatch(const QString& keyword);
-  void globalMismatch(const QString& keyword);
-//  void match(const QString& anchor);
-//  void globalMatch(const QString& app_name, const QString& anchor);
-
- public slots:
-  void search(const QString& keyword);
-
-  void setCurrentApp(const QString& app_name);
-
   void addSearchEntry(const QString& app_name,
                       const QStringList& anchors,
                       const QStringList& contents);
+  void search(const QString& app_name, const QString& keyword);
+  void searchResult(const QString& app_name,
+                    const QString& keyword,
+                    const SearchResultList& result);
 
  private:
   SearchDb* db_ = nullptr;
   QThread* db_thread_ = nullptr;
-  QString current_app_;
 };
 
 }  // namespace dman

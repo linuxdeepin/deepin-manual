@@ -118,6 +118,8 @@ void WebWindow::onSearchTextChanged(const QString& text) {
     completion_window_->setFocusPolicy(Qt::StrongFocus);
     completion_window_->raise();
     qDebug() << "size:" << completion_window_->geometry();
+
+    search_manager_->search(search_proxy_->currentApp(), text);
   }
 }
 

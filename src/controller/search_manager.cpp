@@ -31,6 +31,13 @@ SearchManager::SearchManager(QObject* parent)
   db_thread_->start();
   db_->moveToThread(db_thread_);
 
+  connect(this, &SearchManager::addSearchEntry,
+          db_, &SearchDb::addSearchEntry);
+  connect(this, &SearchManager::search,
+          db_, &SearchDb::search);
+  connect(db_, &SearchDb::searchResult,
+          this, &SearchManager::searchResult);
+
   connect(db_thread_, &QThread::destroyed,
           db_, &QObject::deleteLater);
   emit db_->initDb();
@@ -40,32 +47,6 @@ SearchManager::~SearchManager() {
   db_thread_->quit();
   delete db_thread_;
   db_thread_ = nullptr;
-}
-
-void SearchManager::search(const QString& keyword) {
-  qDebug() << Q_FUNC_INFO << keyword;
-  if (current_app_.isEmpty()) {
-    // Global search
-    if (true) {
-      emit this->globalMismatch(keyword);
-    }
-  } else {
-    // Search in app_name.
-    if (true) {
-      emit this->mismatch(keyword);
-    }
-  }
-}
-
-void SearchManager::setCurrentApp(const QString& app_name) {
-  qDebug() << Q_FUNC_INFO << app_name;
-  current_app_ = app_name;
-}
-
-void SearchManager::addSearchEntry(const QString& app_name,
-                                   const QStringList& anchors,
-                                   const QStringList& contents) {
-  emit db_->addSearchEntry(app_name, anchors, contents);
 }
 
 }  // namespace dman

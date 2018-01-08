@@ -68,6 +68,8 @@ void SearchDb::initConnections() {
           this, &SearchDb::handleInitDb);
   connect(this, &SearchDb::addSearchEntry,
           this, &SearchDb::handleAddSearchEntry);
+  connect(this, &SearchDb::search,
+          this, &SearchDb::handleSearch);
 }
 
 void SearchDb::handleInitDb() {
@@ -128,6 +130,23 @@ void SearchDb::handleAddSearchEntry(const QString& app_name,
                 << query.lastError().text();
   } else {
     db_.commit();
+  }
+}
+
+void SearchDb::handleSearch(const QString& app_name, const QString& keyword) {
+  qDebug() << Q_FUNC_INFO << keyword;
+  SearchResultList result;
+  if (app_name.isEmpty()) {
+    // Global search
+
+    if (true) {
+      emit this->searchResult(app_name, keyword, result);
+    }
+  } else {
+    // Search in app_name.
+    if (true) {
+      emit this->searchResult(app_name, keyword, result);
+    }
   }
 }
 

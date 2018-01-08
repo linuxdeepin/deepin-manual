@@ -15,22 +15,20 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "view/search_proxy.h"
+#ifndef DEEPIN_MANUAL_CONTROLLER_SEARCH_ENTRY_H
+#define DEEPIN_MANUAL_CONTROLLER_SEARCH_ENTRY_H
 
-#include "controller/search_manager.h"
+#include <QString>
+#include <QList>
 
-dman::SearchProxy::SearchProxy(SearchManager* manager, QObject* parent)
-    : QObject(parent),
-      manager_(manager) {
-  Q_ASSERT(manager_ != nullptr);
-}
+namespace dman {
 
-dman::SearchProxy::~SearchProxy() {
+struct SearchResult {
+  QString app_name;
+  QString anchor;
+};
+typedef QList<SearchResult> SearchResultList;
 
-}
+}  // namespace dman
 
-void dman::SearchProxy::addSearchEntry(const QString& app_name,
-                                       const QStringList& anchors,
-                                       const QStringList& contents) {
-  emit manager_->addSearchEntry(app_name, anchors, contents);
-}
+#endif  // DEEPIN_MANUAL_CONTROLLER_SEARCH_ENTRY_H
