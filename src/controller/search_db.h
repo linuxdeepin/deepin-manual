@@ -44,6 +44,7 @@ class SearchDb : public QObject {
 
  private:
   void initConnections();
+  bool IsKeywordMatch(const QString& content, const QString& keyword);
 
   SearchDbPrivate* p_ = nullptr;
 

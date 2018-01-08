@@ -56,28 +56,10 @@ const char kUserDict[] = JIEBA_DICT "/user.dict.utf8";
 const char kIdfFile[] = JIEBA_DICT "/idf.utf8";
 const char kStopWords[] = JIEBA_DICT "/stop_words.utf8";
 
-
 QString GetDbName() {
   QDir cache_dir(GetCacheDir());
   cache_dir.mkpath(".");
   return cache_dir.absoluteFilePath("search_entry.db");
-}
-
-bool MatchKeyword(cppjieba::Jieba* jieba,
-                  const QString& content,
-                  const QString& keyword) {
-//  qDebug() << Q_FUNC_INFO << content << keyword;
-  const std::string content_std(content.toLower().toStdString());
-  const std::string keyword_std(keyword.toLower().toStdString());
-  std::vector<std::string> words;
-  jieba->CutForSearch(content_std, words);
-  for (const std::string& word : words) {
-    if (word == keyword_std) {
-      return true;
-    }
-  }
-
-  return false;
 }
 
 }  // namespace
@@ -85,6 +67,7 @@ bool MatchKeyword(cppjieba::Jieba* jieba,
 struct SearchDbPrivate {
   QSqlDatabase db;
   cppjieba::Jieba* jieba = nullptr;
+  QHash<QString, std::vector<std::string>> cache;
 };
 
 SearchDb::SearchDb(QObject* parent)
@@ -121,6 +104,25 @@ void SearchDb::initConnections() {
           this, &SearchDb::handleAddSearchEntry);
   connect(this, &SearchDb::search,
           this, &SearchDb::handleSearch);
+}
+
+bool SearchDb::IsKeywordMatch(const QString& content, const QString& keyword) {
+  const std::string keyword_std(keyword.toLower().toStdString());
+  if (!p_->cache.contains(content)) {
+    const std::string content_std(content.toLower().toStdString());
+    std::vector<std::string> words;
+    p_->jieba->CutForSearch(content_std, words);
+    p_->cache.insert(content, words);
+  }
+
+  const std::vector<std::string> words = p_->cache.value(content);
+  for (const std::string& word : words) {
+    if (word == keyword_std) {
+      return true;
+    }
+  }
+
+  return false;
 }
 
 void SearchDb::handleInitDb() {
@@ -202,7 +204,7 @@ void SearchDb::handleSearch(const QString& app_name, const QString& keyword) {
   if (query.exec()) {
     while (query.next() && (result.size() < kResultLimitation)) {
       const QString content = query.value(3).toString();
-      if (MatchKeyword(p_->jieba, content, keyword)) {
+      if (this->IsKeywordMatch(content, keyword)) {
         result.append({
                           query.value(1).toString(),
                           query.value(2).toString(),
