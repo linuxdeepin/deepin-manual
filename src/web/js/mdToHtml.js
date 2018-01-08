@@ -4,16 +4,12 @@ import md5 from 'md5'
 export default class M2H{
 	constructor(appName,md){
 		this.appName=appName
-		
-		let hash=md5(md)
-		if(localStorage[appName+"_hash"]==hash){
-			console.log(appName,"cache")
-			return
-		}
-		console.log(appName,"update")
-		localStorage[appName+"_hash"]=hash
 
-		let path=`${localStorage.path}/${appName}/${localStorage.lang}/`
+		let path=`${global.path}/${appName}/${global.lang}/`
+		if(appName.indexOf("/")!=-1){
+			path=appName.slice(0,appName.lastIndexOf("/")+1)
+			console.log(appName,path)
+		}
 		let div=document.createElement("div")
 		div.innerHTML=marked(md).replace(/src="/g, `$&${path}`)
 

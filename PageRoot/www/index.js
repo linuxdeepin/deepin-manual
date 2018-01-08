@@ -24,12 +24,34 @@ var _mdToHtml2 = _interopRequireDefault(_mdToHtml);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-localStorage.lang = navigator.language.replace(/-/, '_');
-localStorage.path = location.protocol == "http:" ? 'http://' + location.hostname + ':8000' : 'file:///usr/share/dman';
+global.lang = navigator.language.replace(/-/, '_');
+global.path = location.protocol == "http:" ? 'http://' + location.hostname + ':8000' : 'file:///usr/share/dman';
 
+var openFile = function openFile(file) {
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", file);
+	xhr.onload = function () {
+		if (xhr.responseText == "") {
+			return;
+		}
+		var m = new _mdToHtml2.default(appName, xhr.responseText);
+		_reactDom2.default.render(_react2.default.createElement(_main2.default, { appName: appName, hlist: m.hlist(), html: m.html() }), document.getElementById("app"));
+	};
+	xhr.send();
+};
 var open = function open(appName) {
 	console.log("open", appName);
-	_reactDom2.default.render(_react2.default.createElement(_main2.default, { appName: appName }), document.getElementById("app"));
+	var path = global.path + '/' + appName + '/' + global.lang + '/';
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", path + "index.md");
+	xhr.onload = function () {
+		if (xhr.responseText == "") {
+			return;
+		}
+		var m = new _mdToHtml2.default(appName, xhr.responseText);
+		_reactDom2.default.render(_react2.default.createElement(_main2.default, { appName: appName, hlist: m.hlist(), html: m.html() }), document.getElementById("app"));
+	};
+	xhr.send();
 };
 var index = function index() {
 	console.log("index");
@@ -48,7 +70,29 @@ var state = {
 	appName: "",
 	searchWord: ""
 };
+global.openFile = function (file) {
+	if (window.QWebChannel && !webChannel) {
+		delay = function delay() {
+			return global.openFile(file);
+		};
+		console.log("延迟执行");
+		return;
+	}
+	webChannel.objects.titleBar.setBackButtonVisible(true);
+	state.appName = file;
+	webChannel.objects.search.setCurrentApp(file);
 
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", file);
+	xhr.onload = function () {
+		if (xhr.responseText == "") {
+			return;
+		}
+		var m = new _mdToHtml2.default(file, xhr.responseText);
+		_reactDom2.default.render(_react2.default.createElement(_main2.default, { appName: file, hlist: m.hlist(), html: m.html() }), document.getElementById("app"));
+	};
+	xhr.send();
+};
 global.open = function (appName) {
 	if (window.QWebChannel && !webChannel) {
 		delay = function delay() {
@@ -60,7 +104,18 @@ global.open = function (appName) {
 	webChannel.objects.titleBar.setBackButtonVisible(true);
 	state.appName = appName;
 	webChannel.objects.search.setCurrentApp(appName);
-	_reactDom2.default.render(_react2.default.createElement(_main2.default, { appName: appName }), document.getElementById("app"));
+
+	var path = global.path + '/' + appName + '/' + global.lang + '/';
+	var xhr = new XMLHttpRequest();
+	xhr.open("GET", path + "index.md");
+	xhr.onload = function () {
+		if (xhr.responseText == "") {
+			return;
+		}
+		var m = new _mdToHtml2.default(appName, xhr.responseText);
+		_reactDom2.default.render(_react2.default.createElement(_main2.default, { appName: appName, hlist: m.hlist(), html: m.html() }), document.getElementById("app"));
+	};
+	xhr.send();
 };
 
 global.index = function () {
@@ -437,49 +492,14 @@ var Main = function (_Component) {
 
 		var _this = _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this, props));
 
+		console.log(props);
 		_this.state = {
-			hlist: [],
-			html: "",
-			hash: ""
+			hash: props.hlist[0].id
 		};
 		return _this;
 	}
 
 	_createClass(Main, [{
-		key: "init",
-		value: function init(appName) {
-			var _this2 = this;
-
-			var path = localStorage.path + "/" + appName + "/" + localStorage.lang + "/";
-			var xhr = new XMLHttpRequest();
-			xhr.open("GET", path + "index.md");
-			xhr.onload = function () {
-				if (xhr.responseText == "") {
-					return;
-				}
-				var m = new _mdToHtml2.default(appName, xhr.responseText);
-				var hlist = m.hlist();
-				_this2.setState({
-					hlist: hlist,
-					html: m.html(),
-					hash: hlist[0].id
-				});
-			};
-			xhr.send();
-		}
-	}, {
-		key: "componentWillMount",
-		value: function componentWillMount() {
-			this.init(this.props.appName);
-		}
-	}, {
-		key: "componentWillReceiveProps",
-		value: function componentWillReceiveProps(nextProps) {
-			if (nextProps.appName != this.props.appName) {
-				this.init(nextProps.appName);
-			}
-		}
-	}, {
 		key: "setHash",
 		value: function setHash(hash) {
 			this.setState({ hash: hash });
@@ -490,8 +510,8 @@ var Main = function (_Component) {
 			return _react2.default.createElement(
 				"div",
 				{ id: "main" },
-				_react2.default.createElement(_nav2.default, { hlist: this.state.hlist, hash: this.state.hash, setHash: this.setHash.bind(this) }),
-				_react2.default.createElement(_article2.default, { html: this.state.html, hash: this.state.hash, setHash: this.setHash.bind(this) })
+				_react2.default.createElement(_nav2.default, { hlist: this.props.hlist, hash: this.state.hash, setHash: this.setHash.bind(this) }),
+				_react2.default.createElement(_article2.default, { html: this.props.html, hash: this.state.hash, setHash: this.setHash.bind(this) })
 			);
 		}
 	}]);
@@ -533,15 +553,11 @@ var M2H = function () {
 
 		this.appName = appName;
 
-		var hash = (0, _md2.default)(md);
-		if (localStorage[appName + "_hash"] == hash) {
-			console.log(appName, "cache");
-			return;
+		var path = global.path + '/' + appName + '/' + global.lang + '/';
+		if (appName.indexOf("/") != -1) {
+			path = appName.slice(0, appName.lastIndexOf("/") + 1);
+			console.log(appName, path);
 		}
-		console.log(appName, "update");
-		localStorage[appName + "_hash"] = hash;
-
-		var path = localStorage.path + '/' + appName + '/' + localStorage.lang + '/';
 		var div = document.createElement("div");
 		div.innerHTML = (0, _marked2.default)(md).replace(/src="/g, '$&' + path);
 
