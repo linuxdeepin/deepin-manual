@@ -63,14 +63,19 @@ int main(int argc, char** argv) {
 
   // FIXME(Shaohua): libqcef does not support HiDPI currently.
   app.setAttribute(Qt::AA_EnableHighDpiScaling, true);
+  app.setOrganizationName("deepin");
+  app.setOrganizationDomain("deepin.org");
   app.setApplicationVersion(dman::kAppVersion);
   app.setApplicationName(dman::kAppName);
   app.setApplicationDisplayName(QObject::tr(dman::kAppDisplayName));
-  app.setWindowIcon(QIcon(dman::kImageDeepinManual));
+  app.setApplicationLicense("GPL-3.0");
   app.setApplicationDescription(QObject::tr(
       "Deepin Manual is designed to help users learn deepin and "
-      "Deepin applications, providing specific instructions and "
-      "function descriptions."));
+          "Deepin applications, providing specific instructions and "
+          "function descriptions."));
+  app.loadTranslator();
+  app.setWindowIcon(QIcon(dman::kImageDeepinManual));
+  app.setProductIcon(QIcon(dman::kImageDeepinManual));
 
   dman::WindowManager window_manager;
   const QStringList args = app.arguments();
