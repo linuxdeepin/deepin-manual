@@ -18,6 +18,7 @@
 #include <base/file_util.h>
 #include "view/widget/title_bar.h"
 
+#include "resources/themes/images.h"
 #include "view/theme_manager.h"
 #include "view/widget/search_edit.h"
 
@@ -47,7 +48,7 @@ void TitleBar::setBackButtonVisible(bool visible) {
 void TitleBar::initUI() {
   QLabel* app_icon = new QLabel();
   app_icon->setObjectName("AppIcon");
-  app_icon->setPixmap(QIcon(":/common/images/deepin-manual.svg").pixmap(24, 24));
+  app_icon->setPixmap(QIcon(kImageDeepinManual).pixmap(24, 24));
   app_icon->setFixedSize(24, 24);
 
   back_btn_ = new QPushButton();
@@ -59,6 +60,7 @@ void TitleBar::initUI() {
   left_layout->setSpacing(0);
   left_layout->setContentsMargins(0, 0, 0, 0);
   left_layout->addWidget(app_icon);
+  left_layout->addSpacing(10);
   left_layout->addWidget(back_btn_);
   QFrame* left_buttons = new QFrame();
   left_buttons->setContentsMargins(0, 0, 0, 0);

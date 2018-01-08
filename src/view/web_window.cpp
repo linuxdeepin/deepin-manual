@@ -64,6 +64,7 @@ void WebWindow::initUI() {
   title_bar_ = new TitleBar();
   title_bar_proxy_ = new TitleBarProxy(title_bar_, this);
   this->titlebar()->setCustomWidget(title_bar_, Qt::AlignCenter, false);
+  this->titlebar()->setSeparatorVisible(true);
 
   web_view_ = new QCefWebView();
   this->setCentralWidget(web_view_);
@@ -71,11 +72,12 @@ void WebWindow::initUI() {
   // Disable web security to allow cross-origin accessing.
   web_view_->page()->settings()->setWebSecurity(QCefWebSettings::StateDisabled);
 
-  QWebChannel* channel = web_view_->page()->webChannel();
-
   // Use TitleBarProxy instead.
+  QWebChannel* channel = web_view_->page()->webChannel();
   channel->registerObject("search", search_proxy_);
   channel->registerObject("titleBar", title_bar_proxy_);
+
+  this->setFocusPolicy(Qt::ClickFocus);
 }
 
 void WebWindow::resizeEvent(QResizeEvent* event) {

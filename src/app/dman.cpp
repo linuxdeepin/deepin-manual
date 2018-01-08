@@ -65,7 +65,6 @@ int main(int argc, char** argv) {
   app.setAttribute(Qt::AA_EnableHighDpiScaling, true);
   app.setApplicationVersion(dman::kAppVersion);
   app.setApplicationName(dman::kAppName);
-  // FIXME(Shaohua): Translation not work.
   app.setApplicationDisplayName(QObject::tr(dman::kAppDisplayName));
   app.setWindowIcon(QIcon(dman::kImageDeepinManual));
   app.setApplicationDescription(QObject::tr(
