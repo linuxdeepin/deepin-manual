@@ -2,5 +2,13 @@
 <RCC version="1.0">
     <qresource prefix="/">
         <file>common/images/deepin-manual.svg</file>
+        <file>dark/images/back_hover.svg</file>
+        <file>dark/images/back_normal.svg</file>
+        <file>dark/images/back_press.svg</file>
+        <file>dark/TitleBar.css</file>
+        <file>light/images/back_hover.svg</file>
+        <file>light/images/back_normal.svg</file>
+        <file>light/images/back_press.svg</file>
+        <file>light/TitleBar.css</file>
     </qresource>
 </RCC>

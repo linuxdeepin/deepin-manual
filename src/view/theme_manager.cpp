@@ -31,10 +31,8 @@ namespace {
 ThemeManager* g_theme_manager = nullptr;
 
 QString GetQssContent(const QString& theme, const QString& qss_filename) {
-  QString qss;
   const QString filepath = QString(":/%1/%2.css").arg(theme).arg(qss_filename);
-  qss = ReadFile(filepath);
-  return qss;
+  return ReadFile(filepath);
 }
 
 }  // namespace
@@ -69,7 +67,7 @@ void ThemeManager::registerWidget(QWidget* widget) {
   if (qss_filename.isEmpty()) {
     qss_filename = widget->metaObject()->className();
   }
-  qDebug() << "qss_filename:" << qss_filename;
+  qDebug() << "qss_filename:" << qss_filename << ", theme:" << theme_;
 
   widget->style()->unpolish(widget);
   widget->style()->polish(widget);

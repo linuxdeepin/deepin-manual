@@ -96,7 +96,7 @@ void SearchDb::handleAddSearchEntry(const QString& app_name,
                                     const QStringList& contents) {
   Q_ASSERT(db_.isOpen());
   Q_ASSERT(anchors.length() == contents.length());
-  qDebug() << Q_FUNC_INFO << app_name << anchors << contents;
+  qDebug() << Q_FUNC_INFO << app_name;
 
   if (anchors.length() != contents.length()) {
     qCritical() << "anchor list and contents mismatch:"

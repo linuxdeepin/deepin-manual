@@ -1,0 +1,17 @@
+
+#AppIcon {
+  background-color: blue;
+}
+
+#BackButton {
+  /*border-image: url(":/light/images/back_normal.svg");*/
+  background-color: red;
+}
+
+#BackButton:hover {
+  image: url(":/light/images/back_hover.svg");
+}
+
+#BackButton:press {
+  image: url(":/light/images/back_press.svg");
+}

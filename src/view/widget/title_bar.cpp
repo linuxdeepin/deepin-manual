@@ -15,8 +15,10 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <base/file_util.h>
 #include "view/widget/title_bar.h"
 
+#include "view/theme_manager.h"
 #include "view/widget/search_edit.h"
 
 namespace dman {
@@ -54,7 +56,7 @@ void TitleBar::setBackButtonVisible(bool visible) {
 void TitleBar::initUI() {
   QLabel* app_icon = new QLabel();
   app_icon->setObjectName("AppIcon");
-  app_icon->setPixmap(QIcon(":/common/images/deepin-manual.svg").pixmap(24, 24));
+//  app_icon->setPixmap(QIcon(":/common/images/deepin-manual.svg").pixmap(24, 24));
   app_icon->setFixedSize(24, 24);
 
   back_btn_ = new QPushButton();
@@ -66,9 +68,6 @@ void TitleBar::initUI() {
   left_layout_->addWidget(app_icon);
   left_layout_->addWidget(back_btn_);
 
-  QFrame* left_widget = new QFrame();
-  left_widget->setLayout(left_layout_);
-
   search_edit_ = new SearchEdit();
   search_edit_->setObjectName("SearchEdit");
   search_edit_->setFixedWidth(228);
@@ -77,10 +76,12 @@ void TitleBar::initUI() {
   QHBoxLayout* main_layout = new QHBoxLayout();
   main_layout->setSpacing(0);
   main_layout->setContentsMargins(0, 0, 0, 0);
-  main_layout->addWidget(left_widget);
+  main_layout->addLayout(left_layout_);
   main_layout->addWidget(search_edit_, 1, Qt::AlignCenter);
   main_layout->addSpacing(48);
   this->setLayout(main_layout);
+
+  ThemeManager::instance()->registerWidget(this);
 }
 
 void TitleBar::onSearchTextChanged() {
