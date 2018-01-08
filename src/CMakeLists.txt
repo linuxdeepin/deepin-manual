@@ -4,6 +4,7 @@ project(deepin-manual C CXX)
 #set(CMAKE_CXX_COMPILER  /usr/bin/clang++)
 
 add_definitions(-DDMAN_RESOURCE_DIR="${DMAN_RESOURCE_DIR}")
+add_definitions(-DDMAN_MANUAL_DIR="${DMAN_MANUAL_DIR}")
 message("DMAN_RESOURCE_DIR: ${DMAN_RESOURCE_DIR}")
 
 add_subdirectory(resources)
