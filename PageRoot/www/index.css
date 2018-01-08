@@ -105,9 +105,6 @@ html, body {
     #index .item img {
       width: 96px;
       margin-bottom: 20px; }
-    #index .item img:hover {
-      width: 100px;
-      margin-bottom: 16px; }
     #index .item span {
       white-space: nowrap;
       font-size: 16px;
