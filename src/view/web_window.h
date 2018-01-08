@@ -51,9 +51,11 @@ class WebWindow : public Dtk::Widget::DMainWindow {
   void resizeEvent(QResizeEvent* event) override;
 
  private:
+  void initConnections();
   void initUI();
 
   QString app_name_;
+  SearchManager* search_manager_ = nullptr;
   SearchProxy* search_proxy_ = nullptr;
   SearchCompletionWindow* completion_window_ = nullptr;
   TitleBar* title_bar_ = nullptr;
@@ -61,6 +63,7 @@ class WebWindow : public Dtk::Widget::DMainWindow {
   QCefWebView* web_view_ = nullptr;
 
  private slots:
+  void onSearchEditFocusOut();
   void onSearchTextChanged(const QString& text);
   void onWebPageLoadFinished(bool ok);
 };

@@ -21,7 +21,6 @@
 #include <QTimer>
 
 #include "view/theme_manager.h"
-#include "view/widget/search_completion_window.h"
 #include "view/widget/search_edit.h"
 
 namespace dman {
@@ -35,30 +34,21 @@ TitleBar::TitleBar(QWidget* parent) : QFrame(parent) {
 TitleBar::~TitleBar() {
 }
 
-void TitleBar::setCompletionWindow(SearchCompletionWindow* completion_window) {
-  completion_window_ = completion_window;
-  connect(search_edit_, &SearchEdit::upKeyPressed,
-          completion_window_, &SearchCompletionWindow::goUp);
-  connect(search_edit_, &SearchEdit::downKeyPressed,
-          completion_window_, &SearchCompletionWindow::goDown);
-}
-
 bool TitleBar::backButtonVisible() const {
-  return back_btn_->isVisible();
+  return back_button_->isVisible();
 }
 
 void TitleBar::setBackButtonVisible(bool visible) {
-  back_btn_->setVisible(visible);
+  back_button_->setVisible(visible);
 }
 
 void TitleBar::initConnections() {
   connect(search_edit_, &SearchEdit::textChanged,
           this, &TitleBar::onSearchTextChanged);
-  connect(back_btn_, &Dtk::Widget::DImageButton::clicked,
+  connect(back_button_, &Dtk::Widget::DImageButton::clicked,
           this, &TitleBar::backButtonClicked);
-
   connect(search_edit_, &SearchEdit::focusOut,
-          this, &TitleBar::onSearchEditFocusOut);
+          this, &TitleBar::focusOut);
 }
 
 void TitleBar::initUI() {
@@ -67,17 +57,17 @@ void TitleBar::initUI() {
 //  app_icon->setPixmap(QIcon(kImageDeepinManual).pixmap(24, 24));
   app_icon->setFixedSize(24, 24);
 
-  back_btn_ = new Dtk::Widget::DImageButton();
-  back_btn_->setObjectName("BackButton");
-  back_btn_->setFixedSize(24, 24);
-  back_btn_->hide();
+  back_button_ = new Dtk::Widget::DImageButton();
+  back_button_->setObjectName("BackButton");
+  back_button_->setFixedSize(24, 24);
+  back_button_->hide();
 
   QHBoxLayout* left_layout = new QHBoxLayout();
   left_layout->setSpacing(0);
   left_layout->setContentsMargins(0, 0, 0, 0);
   left_layout->addWidget(app_icon);
   left_layout->addSpacing(10);
-  left_layout->addWidget(back_btn_);
+  left_layout->addWidget(back_button_);
   QFrame* left_buttons = new QFrame();
   left_buttons->setContentsMargins(0, 0, 0, 0);
   left_buttons->setLayout(left_layout);
@@ -98,27 +88,9 @@ void TitleBar::initUI() {
   ThemeManager::instance()->registerWidget(this);
 }
 
-void TitleBar::onSearchEditFocusOut() {
-  QTimer::singleShot(50, [=]() {
-    this->completion_window_->hide();
-  });
-}
 
 void TitleBar::onSearchTextChanged() {
-  const QString text = search_edit_->text();
-  emit this->searchTextChanged(text);
-
-  if (text.size() > 1 && completion_window_ != nullptr) {
-    // Do real search.
-
-    completion_window_->show();
-    // Move to bottom of search edit.
-    completion_window_->move(this->parentWidget()->rect().width() / 2 - 80,
-                             40 - 4);
-    completion_window_->setFocusPolicy(Qt::StrongFocus);
-    completion_window_->raise();
-    qDebug() << "size:" << completion_window_->geometry();
-  }
+  emit this->searchTextChanged(search_edit_->text());
 }
 
 }  // namespace dman

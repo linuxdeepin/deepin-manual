@@ -18,6 +18,7 @@
 #include "view/web_window.h"
 
 #include <DTitlebar>
+#include <QDebug>
 #include <QFileInfo>
 #include <QResizeEvent>
 #include <QTimer>
@@ -27,6 +28,7 @@
 #include <qcef_web_view.h>
 
 #include "base/consts.h"
+#include "controller/search_manager.h"
 #include "view/widget/search_completion_window.h"
 #include "view/search_proxy.h"
 #include "view/title_bar_proxy.h"
@@ -37,14 +39,11 @@ namespace dman {
 WebWindow::WebWindow(SearchManager* search_manager, QWidget* parent)
     : Dtk::Widget::DMainWindow(parent),
       app_name_(),
+      search_manager_(search_manager),
       search_proxy_(new SearchProxy(search_manager, this)) {
 
   this->initUI();
-
-  connect(title_bar_, &TitleBar::searchTextChanged,
-          this, &WebWindow::onSearchTextChanged);
-  connect(web_view_->page(), &QCefWebPage::loadFinished,
-          this, &WebWindow::onWebPageLoadFinished);
+  this->initConnections();
 }
 
 WebWindow::~WebWindow() {
@@ -62,10 +61,23 @@ void WebWindow::setAppName(const QString& app_name) {
   web_view_->load(QUrl::fromLocalFile(info.absoluteFilePath()));
 }
 
+void WebWindow::initConnections() {
+  connect(title_bar_, &TitleBar::searchTextChanged,
+          this, &WebWindow::onSearchTextChanged);
+  connect(web_view_->page(), &QCefWebPage::loadFinished,
+          this, &WebWindow::onWebPageLoadFinished);
+  connect(title_bar_, &TitleBar::upKeyPressed,
+          completion_window_, &SearchCompletionWindow::goUp);
+  connect(title_bar_, &TitleBar::downKeyPressed,
+          completion_window_, &SearchCompletionWindow::goDown);
+  connect(title_bar_, &TitleBar::focusOut,
+          this, &WebWindow::onSearchEditFocusOut);
+}
+
 void WebWindow::initUI() {
-  completion_window_ = new SearchCompletionWindow();
+  completion_window_ = new SearchCompletionWindow(this);
+
   title_bar_ = new TitleBar();
-  title_bar_->setCompletionWindow(completion_window_);
   title_bar_proxy_ = new TitleBarProxy(title_bar_, this);
   this->titlebar()->setCustomWidget(title_bar_, Qt::AlignCenter, false);
   this->titlebar()->setSeparatorVisible(true);
@@ -89,9 +101,24 @@ void WebWindow::resizeEvent(QResizeEvent* event) {
   title_bar_->setFixedWidth(event->size().width());
 }
 
+void WebWindow::onSearchEditFocusOut() {
+  QTimer::singleShot(50, [=]() {
+    this->completion_window_->hide();
+  });
+}
+
 void WebWindow::onSearchTextChanged(const QString& text) {
-  web_view_->page()->runJavaScript(QString("search(%1))").arg(text),
-                                   "custom_search.js");
+  if (text.size() > 1 && completion_window_ != nullptr) {
+    // Do real search.
+
+    completion_window_->show();
+    // Move to bottom of search edit.
+    completion_window_->move(this->rect().width() / 2 - 80,
+                             40 - 4);
+    completion_window_->setFocusPolicy(Qt::StrongFocus);
+    completion_window_->raise();
+    qDebug() << "size:" << completion_window_->geometry();
+  }
 }
 
 void WebWindow::onWebPageLoadFinished(bool ok) {

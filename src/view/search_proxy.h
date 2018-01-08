@@ -32,6 +32,7 @@ class SearchProxy : public QObject {
 
  signals:
   void mismatch(const QString& keyword);
+  void globalMismatch(const QString& keyword);
   void match(const QString& anchor);
   void globalMatch(const QString& app_name, const QString& anchor);
 

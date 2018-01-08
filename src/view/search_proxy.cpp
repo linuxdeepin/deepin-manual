@@ -26,10 +26,8 @@ dman::SearchProxy::SearchProxy(SearchManager* manager, QObject* parent)
 
   connect(manager_, &SearchManager::mismatch,
           this, &SearchProxy::mismatch);
-  connect(manager_, &SearchManager::match,
-          this, &SearchProxy::match);
-  connect(manager_, &SearchManager::globalMatch,
-          this, &SearchProxy::globalMatch);
+  connect(manager_, &SearchManager::globalMismatch,
+          this, &SearchProxy::globalMismatch);
 }
 
 dman::SearchProxy::~SearchProxy() {

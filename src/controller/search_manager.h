@@ -37,15 +37,15 @@ class SearchManager : public QObject {
 
   struct Entry {
     QString app_name;
-    QString index;
+    QString anchor;
   };
   typedef QList<Entry> EntryList;
 
  signals:
-  void onSearchResult(const EntryList& list);
   void mismatch(const QString& keyword);
-  void match(const QString& anchor);
-  void globalMatch(const QString& app_name, const QString& anchor);
+  void globalMismatch(const QString& keyword);
+//  void match(const QString& anchor);
+//  void globalMatch(const QString& app_name, const QString& anchor);
 
  public slots:
   void search(const QString& keyword);
@@ -59,6 +59,7 @@ class SearchManager : public QObject {
  private:
   SearchDb* db_ = nullptr;
   QThread* db_thread_ = nullptr;
+  QString current_app_;
 };
 
 }  // namespace dman

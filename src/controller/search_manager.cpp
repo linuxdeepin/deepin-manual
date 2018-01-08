@@ -44,10 +44,22 @@ SearchManager::~SearchManager() {
 
 void SearchManager::search(const QString& keyword) {
   qDebug() << Q_FUNC_INFO << keyword;
+  if (current_app_.isEmpty()) {
+    // Global search
+    if (true) {
+      emit this->globalMismatch(keyword);
+    }
+  } else {
+    // Search in app_name.
+    if (true) {
+      emit this->mismatch(keyword);
+    }
+  }
 }
 
 void SearchManager::setCurrentApp(const QString& app_name) {
   qDebug() << Q_FUNC_INFO << app_name;
+  current_app_ = app_name;
 }
 
 void SearchManager::addSearchEntry(const QString& app_name,

@@ -26,7 +26,6 @@
 
 namespace dman {
 
-class SearchCompletionWindow;
 class SearchEdit;
 
 // Customize widget in TitleBar.
@@ -38,13 +37,15 @@ class TitleBar : public QFrame {
  public:
   explicit TitleBar(QWidget* parent = nullptr);
   ~TitleBar() override;
-  void setCompletionWindow(SearchCompletionWindow* completion_window);
 
   bool backButtonVisible() const;
 
  signals:
   void backButtonClicked();
   void searchTextChanged(const QString& text);
+  void upKeyPressed();
+  void downKeyPressed();
+  void focusOut();
 
  public slots:
   // Show goBack button if |visible| is true.
@@ -55,12 +56,10 @@ class TitleBar : public QFrame {
   void initUI();
   void initConnections();
 
-  Dtk::Widget::DImageButton* back_btn_ = nullptr;
+  Dtk::Widget::DImageButton* back_button_ = nullptr;
   SearchEdit* search_edit_ = nullptr;
-  SearchCompletionWindow* completion_window_ = nullptr;
 
  private slots:
-  void onSearchEditFocusOut();
   void onSearchTextChanged();
 };
 
