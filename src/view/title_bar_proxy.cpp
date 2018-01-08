@@ -28,8 +28,6 @@ TitleBarProxy::TitleBarProxy(TitleBar* title_bar, QObject* parent)
 
   connect(title_bar_, &TitleBar::backButtonClicked,
           this, &TitleBarProxy::backButtonClicked);
-  connect(title_bar_, &TitleBar::backButtonVisibleChanged,
-          this, &TitleBarProxy::backButtonVisibleChanged);
 }
 
 TitleBarProxy::~TitleBarProxy() {

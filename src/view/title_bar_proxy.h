@@ -28,8 +28,7 @@ class TitleBarProxy : public QObject {
   Q_OBJECT
   Q_PROPERTY(bool backButtonVisible
                  READ backButtonVisible
-                 WRITE setBackButtonVisible
-                 NOTIFY backButtonVisibleChanged)
+                 WRITE setBackButtonVisible)
 
  public:
   TitleBarProxy(TitleBar* title_bar, QObject* parent = nullptr);
@@ -39,7 +38,6 @@ class TitleBarProxy : public QObject {
 
  signals:
   void backButtonClicked();
-  void backButtonVisibleChanged(bool visible);
 
  public slots:
   // Show goBack button if |visible| is true.

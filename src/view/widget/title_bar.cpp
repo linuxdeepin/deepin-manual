@@ -23,21 +23,12 @@
 
 namespace dman {
 
-namespace {
-
-const int kAppIconIdx = 0;
-const int kSearchBtnIdx = 1;
-
-}  // namespace
-
 TitleBar::TitleBar(QWidget* parent) : QFrame(parent) {
   this->setObjectName("TitleBar");
   this->initUI();
 
   connect(search_edit_, &SearchEdit::textChanged,
           this, &TitleBar::onSearchTextChanged);
-  connect(left_layout_, &QStackedLayout::currentChanged,
-          this, &TitleBar::onStackedLayoutCurrentChanged);
   connect(back_btn_, &QPushButton::clicked,
           this, &TitleBar::backButtonClicked);
 }
@@ -46,17 +37,17 @@ TitleBar::~TitleBar() {
 }
 
 bool TitleBar::backButtonVisible() const {
-  return left_layout_->currentIndex() == kSearchBtnIdx;
+  return back_btn_->isVisible();
 }
 
 void TitleBar::setBackButtonVisible(bool visible) {
-  left_layout_->setCurrentIndex(visible ? kSearchBtnIdx : kAppIconIdx);
+  back_btn_->setVisible(visible);
 }
 
 void TitleBar::initUI() {
   QLabel* app_icon = new QLabel();
   app_icon->setObjectName("AppIcon");
-//  app_icon->setPixmap(QIcon(":/common/images/deepin-manual.svg").pixmap(24, 24));
+  app_icon->setPixmap(QIcon(":/common/images/deepin-manual.svg").pixmap(24, 24));
   app_icon->setFixedSize(24, 24);
 
   back_btn_ = new QPushButton();
@@ -64,9 +55,14 @@ void TitleBar::initUI() {
   back_btn_->setFixedSize(24, 24);
   back_btn_->hide();
 
-  left_layout_ = new QStackedLayout();
-  left_layout_->addWidget(app_icon);
-  left_layout_->addWidget(back_btn_);
+  QHBoxLayout* left_layout = new QHBoxLayout();
+  left_layout->setSpacing(0);
+  left_layout->setContentsMargins(0, 0, 0, 0);
+  left_layout->addWidget(app_icon);
+  left_layout->addWidget(back_btn_);
+  QFrame* left_buttons = new QFrame();
+  left_buttons->setContentsMargins(0, 0, 0, 0);
+  left_buttons->setLayout(left_layout);
 
   search_edit_ = new SearchEdit();
   search_edit_->setObjectName("SearchEdit");
@@ -76,7 +72,7 @@ void TitleBar::initUI() {
   QHBoxLayout* main_layout = new QHBoxLayout();
   main_layout->setSpacing(0);
   main_layout->setContentsMargins(0, 0, 0, 0);
-  main_layout->addLayout(left_layout_);
+  main_layout->addWidget(left_buttons);
   main_layout->addWidget(search_edit_, 1, Qt::AlignCenter);
   main_layout->addSpacing(48);
   this->setLayout(main_layout);
@@ -86,11 +82,6 @@ void TitleBar::initUI() {
 
 void TitleBar::onSearchTextChanged() {
   emit this->searchTextChanged(search_edit_->text());
-}
-
-void TitleBar::onStackedLayoutCurrentChanged(int index) {
-  const bool visible = (index == kSearchBtnIdx);
-  emit this->backButtonVisibleChanged(visible);
 }
 
 }  // namespace dman

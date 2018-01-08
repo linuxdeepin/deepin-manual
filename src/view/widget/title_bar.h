@@ -32,8 +32,7 @@ class TitleBar : public QFrame {
   Q_OBJECT
   Q_PROPERTY(bool backButtonVisible
                  READ backButtonVisible
-                 WRITE setBackButtonVisible
-                 NOTIFY backButtonVisibleChanged)
+                 WRITE setBackButtonVisible)
  public:
   explicit TitleBar(QWidget* parent = nullptr);
   ~TitleBar() override;
@@ -42,7 +41,6 @@ class TitleBar : public QFrame {
 
  signals:
   void backButtonClicked();
-  void backButtonVisibleChanged(bool visible);
   void searchTextChanged(const QString& text);
 
  public slots:
@@ -53,13 +51,11 @@ class TitleBar : public QFrame {
  private:
   void initUI();
 
-  QStackedLayout* left_layout_ = nullptr;
   QPushButton* back_btn_ = nullptr;
   SearchEdit* search_edit_ = nullptr;
 
  private slots:
   void onSearchTextChanged();
-  void onStackedLayoutCurrentChanged(int index);
 };
 
 }  // namespace dman
