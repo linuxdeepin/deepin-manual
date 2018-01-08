@@ -19,10 +19,12 @@
 
 #include <QDebug>
 #include <QDir>
+#include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
 
 #include "base/consts.h"
+#include "cppjieba/Jieba.hpp"
 
 namespace dman {
 
@@ -43,23 +45,72 @@ const char kDeleteEntryByApp[] = "DELETE FROM search WHERE appName = ?";
 const char kInsertEntry[] = "INSERT INTO search(appName, anchor, content) "
     "VALUES (?, ?, ?)";
 
+const char kSelectAll[] = "SELECT * FROM search";
+const char kSelectApp[] = "SELECT * FROm search WHERE appName = ?";
+
+const int kResultLimitation = 10;
+
+const char kJiebaDict[] = JIEBA_DICT "/jieba.dict.utf8";
+const char kHmmDict[] = JIEBA_DICT "/hmm_model.utf8";
+const char kUserDict[] = JIEBA_DICT "/user.dict.utf8";
+const char kIdfFile[] = JIEBA_DICT "/idf.utf8";
+const char kStopWords[] = JIEBA_DICT "/stop_words.utf8";
+
+
 QString GetDbName() {
   QDir cache_dir(GetCacheDir());
   cache_dir.mkpath(".");
   return cache_dir.absoluteFilePath("search_entry.db");
 }
 
+bool MatchKeyword(cppjieba::Jieba* jieba,
+                  const QString& content,
+                  const QString& keyword) {
+//  qDebug() << Q_FUNC_INFO << content << keyword;
+  const std::string content_std(content.toLower().toStdString());
+  const std::string keyword_std(keyword.toLower().toStdString());
+  std::vector<std::string> words;
+  jieba->CutForSearch(content_std, words);
+  for (const std::string& word : words) {
+    if (word == keyword_std) {
+      return true;
+    }
+  }
+
+  return false;
+}
+
 }  // namespace
+
+struct SearchDbPrivate {
+  QSqlDatabase db;
+  cppjieba::Jieba* jieba = nullptr;
+};
 
 SearchDb::SearchDb(QObject* parent)
     : QObject(parent),
-      db_() {
+      p_(new SearchDbPrivate()) {
+  qRegisterMetaType<SearchResult>("SearchResult");
+  qRegisterMetaType<SearchResultList>("SearchResultList");
   this->initConnections();
+  p_->jieba = new cppjieba::Jieba(kJiebaDict,
+                                  kHmmDict,
+                                  kUserDict,
+                                  kIdfFile,
+                                  kStopWords);
 }
 
 SearchDb::~SearchDb() {
-  if (db_.isOpen()) {
-    db_.close();
+  if (p_ != nullptr) {
+    if (p_->db.isOpen()) {
+      p_->db.close();
+    }
+    if (p_->jieba != nullptr) {
+      delete p_->jieba;
+      p_->jieba = nullptr;
+    }
+    delete p_;
+    p_ = nullptr;
   }
 }
 
@@ -73,15 +124,15 @@ void SearchDb::initConnections() {
 }
 
 void SearchDb::handleInitDb() {
-  db_ = QSqlDatabase::addDatabase("QSQLITE");
+  p_->db = QSqlDatabase::addDatabase("QSQLITE");
   const QString db_path = GetDbName();
-  db_.setDatabaseName(db_path);
-  if (!db_.open()) {
+  p_->db.setDatabaseName(db_path);
+  if (!p_->db.open()) {
     qCritical() << "Failed to open search db:" << db_path;
     return;
   }
 
-  QSqlQuery query(db_);
+  QSqlQuery query(p_->db);
   if (!query.exec(kTableSchema)) {
     qCritical() << "Failed to initialize search table:"
                 << query.lastError().text();
@@ -96,7 +147,7 @@ void SearchDb::handleInitDb() {
 void SearchDb::handleAddSearchEntry(const QString& app_name,
                                     const QStringList& anchors,
                                     const QStringList& contents) {
-  Q_ASSERT(db_.isOpen());
+  Q_ASSERT(p_->db.isOpen());
   Q_ASSERT(anchors.length() == contents.length());
   qDebug() << Q_FUNC_INFO << app_name;
 
@@ -106,7 +157,7 @@ void SearchDb::handleAddSearchEntry(const QString& app_name,
     return;
   }
 
-  QSqlQuery query(db_);
+  QSqlQuery query(p_->db);
   query.prepare(kDeleteEntryByApp);
   query.bindValue(0, app_name);
   if (!query.exec()) {
@@ -125,29 +176,45 @@ void SearchDb::handleAddSearchEntry(const QString& app_name,
   }
 
   if (!ok) {
-    db_.rollback();
+    p_->db.rollback();
     qCritical() << "Failed to insert search entry:"
                 << query.lastError().text();
   } else {
-    db_.commit();
+    p_->db.commit();
   }
 }
 
 void SearchDb::handleSearch(const QString& app_name, const QString& keyword) {
   qDebug() << Q_FUNC_INFO << keyword;
+  Q_ASSERT(p_->db.isOpen());
+
   SearchResultList result;
+  QSqlQuery query(p_->db);
+
   if (app_name.isEmpty()) {
     // Global search
-
-    if (true) {
-      emit this->searchResult(app_name, keyword, result);
-    }
+    query.prepare(kSelectAll);
   } else {
     // Search in app_name.
-    if (true) {
-      emit this->searchResult(app_name, keyword, result);
-    }
+    query.prepare(kSelectApp);
+    query.bindValue(0, app_name);
   }
+  if (query.exec()) {
+    while (query.next() && (result.size() < kResultLimitation)) {
+      const QString content = query.value(3).toString();
+      if (MatchKeyword(p_->jieba, content, keyword)) {
+        result.append({
+                          query.value(1).toString(),
+                          query.value(2).toString(),
+                      });
+      }
+    }
+  } else {
+    qCritical() << "Failed to select app content:"
+                << query.lastError().text();
+  }
+
+  emit this->searchResult(app_name, keyword, result);
 }
 
 }  // namespace dman

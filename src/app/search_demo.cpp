@@ -16,6 +16,7 @@
  */
 
 #include <QCoreApplication>
+#include <QDebug>
 
 #include "controller/search_manager.h"
 
@@ -23,6 +24,16 @@ int main(int argc, char** argv) {
   QCoreApplication app(argc, argv);
 
   dman::SearchManager manager;
+  QObject::connect(&manager, &dman::SearchManager::searchResult,
+                   [](const QString& app_name,
+                      const QString& keyword,
+                      const dman::SearchResultList& result) {
+     qDebug() << app_name << keyword << result.size();
+     for (const dman::SearchResult& item : result) {
+       qDebug() << item.anchor << item.app_name;
+     }
+  });
+  manager.search("dde-file-manager", "文件");
 
   return app.exec();
 }

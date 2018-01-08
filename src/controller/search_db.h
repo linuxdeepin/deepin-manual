@@ -19,11 +19,12 @@
 #define DEEPIN_MANUAL_CONTROLLER_SEARCH_DB_H
 
 #include <QObject>
-#include <QSqlDatabase>
 
 #include "controller/search_result.h"
 
 namespace dman {
+
+struct SearchDbPrivate;
 
 class SearchDb : public QObject {
   Q_OBJECT
@@ -44,7 +45,7 @@ class SearchDb : public QObject {
  private:
   void initConnections();
 
-  QSqlDatabase db_;
+  SearchDbPrivate* p_ = nullptr;
 
  private slots:
   void handleInitDb();
