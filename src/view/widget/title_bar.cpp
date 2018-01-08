@@ -15,10 +15,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <base/file_util.h>
 #include "view/widget/title_bar.h"
 
-#include "resources/themes/images.h"
 #include "view/theme_manager.h"
 #include "view/widget/search_edit.h"
 
@@ -30,7 +28,7 @@ TitleBar::TitleBar(QWidget* parent) : QFrame(parent) {
 
   connect(search_edit_, &SearchEdit::textChanged,
           this, &TitleBar::onSearchTextChanged);
-  connect(back_btn_, &QPushButton::clicked,
+  connect(back_btn_, &Dtk::Widget::DImageButton::clicked,
           this, &TitleBar::backButtonClicked);
 }
 
@@ -48,10 +46,10 @@ void TitleBar::setBackButtonVisible(bool visible) {
 void TitleBar::initUI() {
   QLabel* app_icon = new QLabel();
   app_icon->setObjectName("AppIcon");
-  app_icon->setPixmap(QIcon(kImageDeepinManual).pixmap(24, 24));
+//  app_icon->setPixmap(QIcon(kImageDeepinManual).pixmap(24, 24));
   app_icon->setFixedSize(24, 24);
 
-  back_btn_ = new QPushButton();
+  back_btn_ = new Dtk::Widget::DImageButton();
   back_btn_->setObjectName("BackButton");
   back_btn_->setFixedSize(24, 24);
   back_btn_->hide();

@@ -1,7 +1,10 @@
 
+#AppIcon {
+  image: url(:/common/images/deepin-manual.svg);
+}
+
 #BackButton {
-  /*qproperty-normalPic: url(:/dark/images/back_normal.svg);*/
-  /*qproperty-hoverPic: url(:/dark/images/back_hover.svg);*/
-  /*qproperty-pressPic: url(:/dark/images/back_press.svg);*/
-  background-color: red;
+  qproperty-normalPic: url(:/dark/images/back_normal.svg);
+  qproperty-hoverPic: url(:/dark/images/back_hover.svg);
+  qproperty-pressPic: url(:/dark/images/back_press.svg);
 }

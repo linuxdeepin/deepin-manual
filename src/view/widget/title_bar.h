@@ -22,6 +22,7 @@
 #include <QLabel>
 #include <QPushButton>
 #include <QStackedLayout>
+#include <dimagebutton.h>
 
 namespace dman {
 
@@ -51,7 +52,7 @@ class TitleBar : public QFrame {
  private:
   void initUI();
 
-  QPushButton* back_btn_ = nullptr;
+  Dtk::Widget::DImageButton* back_btn_ = nullptr;
   SearchEdit* search_edit_ = nullptr;
 
  private slots:
