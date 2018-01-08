@@ -66,7 +66,7 @@ void TitleBar::initUI() {
 
   search_edit_ = new SearchEdit();
   search_edit_->setObjectName("SearchEdit");
-  search_edit_->setFixedWidth(228);
+  search_edit_->setFixedSize(242, 26);
   search_edit_->setPlaceHolder(tr("Search"));
 
   QHBoxLayout* main_layout = new QHBoxLayout();
