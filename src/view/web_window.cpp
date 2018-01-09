@@ -144,7 +144,7 @@ void WebWindow::onWebPageLoadFinished(bool ok) {
       } else {
         // Open system manual.
         web_view_->page()->runJavaScript(
-            QString("open(\"%1\")").arg(app_name_));
+            QString("openApp(\"%1\")").arg(app_name_));
       }
     }
   }
