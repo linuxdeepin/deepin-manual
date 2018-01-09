@@ -12,7 +12,8 @@ import Index from "./index.jsx"
 import Main from "./main.jsx"
 import m2h from "./mdToHtml"
 
-global.lang = navigator.language.replace(/-/, '_')
+global.lang = {zh:"zh_CN",en:"en_US"}[navigator.language]
+console.log(navigator)
 global.path = "/usr/share/dman"
 global.readFile = (fileName, callback) => {
 	let xhr = new XMLHttpRequest()
@@ -24,10 +25,9 @@ global.readFile = (fileName, callback) => {
 	}
 	xhr.send()
 }
-
-let state = {
-	appName: "",
-	searchWord: "",
+let state={
+	searchWord:"",
+	appName:"",
 }
 function stateBack() {
 	console.log("stateBack", state)

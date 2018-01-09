@@ -1,6 +1,4 @@
 import marked from 'marked'
-import md5 from 'md5'
-
 
 export default function (mdFile, mdData) {
 	let hlist = []
