@@ -156,6 +156,8 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = require('react');
@@ -167,6 +169,10 @@ var _reactDom = require('react-dom');
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
 var _reactCustomScrollbars = require('react-custom-scrollbars');
+
+var _mdToHtml = require('./mdToHtml');
+
+var _mdToHtml2 = _interopRequireDefault(_mdToHtml);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -184,10 +190,10 @@ var Article = function (_Component) {
 
 		var _this = _possibleConstructorReturn(this, (Article.__proto__ || Object.getPrototypeOf(Article)).call(this, props));
 
-		_this.state = {
-			seeImg: ""
-		};
 		_this.hash = _this.props.hash;
+		_this.state = {
+			preview: null
+		};
 		return _this;
 	}
 
@@ -206,6 +212,9 @@ var Article = function (_Component) {
 	}, {
 		key: 'scroll',
 		value: function scroll() {
+			if (this.state.preview != null) {
+				this.setState({ preview: null });
+			}
 			var hList = _reactDom2.default.findDOMNode(this).querySelectorAll("h2,h3");
 			var hash = hList[0].id;
 			for (var i = 0; i < hList.length; i++) {
@@ -223,6 +232,8 @@ var Article = function (_Component) {
 	}, {
 		key: 'click',
 		value: function click(e) {
+			var _this2 = this;
+
 			switch (e.target.nodeName) {
 				case "IMG":
 					e.preventDefault();
@@ -230,12 +241,63 @@ var Article = function (_Component) {
 					console.log("imageViewer", src);
 					global.qtObjects.imageViewer.open(src);
 					break;
+				case "A":
+					var dmanProtocol = "dman://";
+					var rect = e.target.getBoundingClientRect();
+					var href = e.target.getAttribute("href");
+					if (href.indexOf(dmanProtocol) != 0) {
+						return;
+					}
+					e.preventDefault();
+
+					var _href$slice$split = href.slice(dmanProtocol.length + 1).split("#"),
+					    _href$slice$split2 = _slicedToArray(_href$slice$split, 2),
+					    appName = _href$slice$split2[0],
+					    hash = _href$slice$split2[1];
+
+					console.log(href, appName, hash);
+					var file = global.path + '/' + appName + '/' + global.lang + '/index.md';
+					global.readFile(file, function (data) {
+						var _m2h = (0, _mdToHtml2.default)(file, data),
+						    html = _m2h.html;
+
+						var d = document.createElement("div");
+						d.innerHTML = html;
+						var hashDom = d.querySelector("#" + hash);
+						var DomList = [hashDom];
+						var nextDom = hashDom.nextElementSibling;
+						while (nextDom) {
+							if (nextDom.nodeName == hashDom.nodeName) {
+								break;
+							}
+							DomList.push(nextDom);
+							nextDom = nextDom.nextElementSibling;
+						}
+						d.innerHTML = "";
+						DomList.map(function (el) {
+							return d.appendChild(el);
+						});
+						html = d.innerHTML;
+						var top = rect.top,
+						    left = rect.left;
+
+						var style = {
+							top: top, left: left
+						};
+						style.left -= 400;
+						if (top > document.body.clientHeight / 2) {
+							style.top -= 200;
+						} else {
+							style.top += rect.bottom - rect.top;
+						}
+						_this2.setState({ preview: { html: html, style: style } });
+					});
 			}
 		}
 	}, {
 		key: 'render',
 		value: function render() {
-			var _this2 = this;
+			var _this3 = this;
 
 			return _react2.default.createElement(
 				'div',
@@ -243,19 +305,21 @@ var Article = function (_Component) {
 				_react2.default.createElement(
 					_reactCustomScrollbars.Scrollbars,
 					{ autoHide: true, autoHideTimeout: 1000, onScroll: function onScroll(e) {
-							return _this2.scroll(e);
+							return _this3.scroll(e);
 						}, ref: function ref(s) {
-							_this2.scrollbars = s;
+							_this3.scrollbars = s;
 						} },
-					_react2.default.createElement('div', { id: 'read', onClick: this.click.bind(this), dangerouslySetInnerHTML: { __html: this.props.html } }),
+					_react2.default.createElement('div', { className: 'read', onClick: this.click.bind(this), dangerouslySetInnerHTML: { __html: this.props.html } }),
 					_react2.default.createElement('div', { id: 'fillblank' })
 				),
-				this.state.seeImg != "" && _react2.default.createElement(
+				this.state.preview != null && _react2.default.createElement(
 					'div',
-					{ id: 'seeImg', onClick: function onClick() {
-							return _this2.setState({ seeImg: "" });
-						} },
-					_react2.default.createElement('img', { src: this.state.seeImg })
+					{ style: this.state.preview.style, id: 'preview' },
+					_react2.default.createElement(
+						_reactCustomScrollbars.Scrollbars,
+						null,
+						_react2.default.createElement('div', { className: 'read', dangerouslySetInnerHTML: { __html: this.state.preview.html } })
+					)
 				)
 			);
 		}
@@ -267,7 +331,7 @@ var Article = function (_Component) {
 exports.default = Article;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"react":81,"react-custom-scrollbars":66,"react-dom":74}],3:[function(require,module,exports){
+},{"./mdToHtml":6,"react":81,"react-custom-scrollbars":66,"react-dom":74}],3:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
