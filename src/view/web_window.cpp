@@ -110,7 +110,7 @@ void WebWindow::onSearchEditFocusOut() {
 }
 
 void WebWindow::onSearchTextChanged(const QString& text) {
-  if (text.size() > 1 && completion_window_ != nullptr) {
+  if (text.size() > 1) {
     // Do real search.
     completion_window_->setKeyword(text);
     completion_window_->show();
@@ -120,6 +120,8 @@ void WebWindow::onSearchTextChanged(const QString& text) {
     completion_window_->setFocusPolicy(Qt::StrongFocus);
     completion_window_->raise();
     search_manager_->search(search_proxy_->currentApp(), text);
+  } else {
+    this->onSearchEditFocusOut();
   }
 }
 
