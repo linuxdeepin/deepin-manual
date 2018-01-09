@@ -388,20 +388,28 @@ var Index = function (_Component2) {
 						null,
 						'\u7CFB\u7EDF'
 					),
-					sysSoft.map(function (appName) {
-						return _react2.default.createElement(Item, { key: appName, appName: appName });
-					}),
+					_react2.default.createElement(
+						'div',
+						{ className: 'items' },
+						sysSoft.map(function (appName) {
+							return _react2.default.createElement(Item, { key: appName, appName: appName });
+						})
+					),
 					_react2.default.createElement(
 						'h2',
 						null,
 						'\u5E94\u7528'
 					),
-					appSoft.map(function (appName) {
-						return _react2.default.createElement(Item, { key: appName, appName: appName });
-					}),
-					otherSoft.map(function (appName) {
-						return _react2.default.createElement(Item, { key: appName, appName: appName });
-					})
+					_react2.default.createElement(
+						'div',
+						{ className: 'items' },
+						appSoft.map(function (appName) {
+							return _react2.default.createElement(Item, { key: appName, appName: appName });
+						}),
+						otherSoft.map(function (appName) {
+							return _react2.default.createElement(Item, { key: appName, appName: appName });
+						})
+					)
 				)
 			);
 		}

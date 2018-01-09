@@ -93,10 +93,14 @@ export default class Index extends Component {
 		return <Scrollbars>
 			<div id="index">
 				<h2>系统</h2>
-				{sysSoft.map(appName => <Item key={appName} appName={appName} />)}
+				<div className="items">
+					{sysSoft.map(appName => <Item key={appName} appName={appName} />)}
+				</div>
 				<h2>应用</h2>
-				{appSoft.map(appName => <Item key={appName} appName={appName} />)}
-				{otherSoft.map(appName => <Item key={appName} appName={appName} />)}
+				<div className="items">
+					{appSoft.map(appName => <Item key={appName} appName={appName} />)}
+					{otherSoft.map(appName => <Item key={appName} appName={appName} />)}
+				</div>
 			</div>
 		</Scrollbars>
 	}
