@@ -95,6 +95,8 @@ set(RESOURCES_FILES
     )
 
 set(VIEW_FILES
+    view/image_viewer_proxy.cpp
+    view/image_viewer_proxy.h
     view/search_proxy.cpp
     view/search_proxy.h
     view/theme_manager.cpp
@@ -104,6 +106,8 @@ set(VIEW_FILES
     view/web_window.cpp
     view/web_window.h
 
+    view/widget/image_viewer.cpp
+    view/widget/image_viewer.h
     view/widget/search_completion_window.cpp
     view/widget/search_completion_window.h
     view/widget/search_edit.cpp

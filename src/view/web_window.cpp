@@ -29,6 +29,8 @@
 
 #include "base/consts.h"
 #include "controller/search_manager.h"
+#include "view/image_viewer_proxy.h"
+#include "view/widget/image_viewer.h"
 #include "view/widget/search_completion_window.h"
 #include "view/search_proxy.h"
 #include "view/title_bar_proxy.h"
@@ -75,12 +77,15 @@ void WebWindow::initConnections() {
 }
 
 void WebWindow::initUI() {
-  completion_window_ = new SearchCompletionWindow(this);
+  completion_window_ = new SearchCompletionWindow();
 
   title_bar_ = new TitleBar();
   title_bar_proxy_ = new TitleBarProxy(title_bar_, this);
   this->titlebar()->setCustomWidget(title_bar_, Qt::AlignCenter, false);
   this->titlebar()->setSeparatorVisible(true);
+
+  image_viewer_ = new ImageViewer(this);
+  image_viewer_proxy_ = new ImageViewerProxy(image_viewer_, this);
 
   web_view_ = new QCefWebView();
   this->setCentralWidget(web_view_);
@@ -90,6 +95,7 @@ void WebWindow::initUI() {
 
   // Use TitleBarProxy instead.
   QWebChannel* channel = web_view_->page()->webChannel();
+  channel->registerObject("imageViewer", image_viewer_proxy_);
   channel->registerObject("search", search_proxy_);
   channel->registerObject("titleBar", title_bar_proxy_);
 
