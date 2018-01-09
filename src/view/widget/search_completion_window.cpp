@@ -57,8 +57,6 @@ void SearchCompletionWindow::setResult(const SearchResultList& result) {
   for (const SearchResult& entry : result) {
     names.append(entry.anchor);
   }
-  names.clear();
-  names << "1" << "2" << "3" << "4" << "5";
   model_->setStringList(names);
 }
 

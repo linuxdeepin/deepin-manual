@@ -50,9 +50,6 @@ ImageViewer::~ImageViewer() {
 }
 
 void ImageViewer::open(const QString& filepath) {
-  this->show();
-  this->raise();
-
   // Escape uri.
   QString abspath(filepath);
   if (abspath.contains("://")) {
@@ -83,6 +80,7 @@ void ImageViewer::open(const QString& filepath) {
   close_button_->raise();
 
   Dtk::Widget::moveToCenter(this);
+  this->show();
 }
 
 void ImageViewer::initUI() {
