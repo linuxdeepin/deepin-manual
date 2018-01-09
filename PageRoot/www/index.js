@@ -42,10 +42,12 @@ var state = {
 	searchWord: ""
 };
 function stateBack() {
+	console.log("stateBack", state);
 	switch (true) {
 		case state.searchWord != "":
 			break;
 		case state.appName != "":
+			index();
 			break;
 	}
 }
@@ -278,42 +280,28 @@ var Item = function (_Component) {
 			logo: "",
 			show: false
 		};
+		var path = global.path + '/' + _this.props.appName + '/' + global.lang + '/';
+		global.readFile(path + "index.md", function (data) {
+			var _data$substr$split = data.substr("# ".length, data.indexOf("\n")).split("|"),
+			    _data$substr$split2 = _slicedToArray(_data$substr$split, 2),
+			    title = _data$substr$split2[0],
+			    logo = _data$substr$split2[1];
+
+			logo = '' + path + logo;
+			_this.setState({ title: title, logo: logo, show: true });
+		});
 		return _this;
 	}
 
 	_createClass(Item, [{
-		key: 'componentWillMount',
-		value: function componentWillMount() {
-			var _this2 = this;
-
-			var xhr = new XMLHttpRequest();
-			var path = localStorage.path + '/' + this.props.appName + '/' + localStorage.lang + '/';
-			xhr.open("GET", path + "index.md");
-			xhr.onload = function () {
-				var data = xhr.responseText;
-				if (!data) {
-					return;
-				}
-
-				var _data$substr$split = data.substr("# ".length, data.indexOf("\n")).split("|"),
-				    _data$substr$split2 = _slicedToArray(_data$substr$split, 2),
-				    title = _data$substr$split2[0],
-				    logo = _data$substr$split2[1];
-
-				logo = '' + path + logo;
-				_this2.setState({ title: title, logo: logo, show: true });
-			};
-			xhr.send();
-		}
-	}, {
 		key: 'render',
 		value: function render() {
-			var _this3 = this;
+			var _this2 = this;
 
 			return this.state.show && _react2.default.createElement(
 				'div',
 				{ className: 'item', onClick: function onClick() {
-						return global.openApp(_this3.props.appName);
+						return global.openApp(_this2.props.appName);
 					} },
 				_react2.default.createElement('img', { src: this.state.logo, alt: this.props.appName }),
 				_react2.default.createElement('br', null),
@@ -335,32 +323,24 @@ var Index = function (_Component2) {
 	function Index(props) {
 		_classCallCheck(this, Index);
 
-		var _this4 = _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).call(this, props));
+		var _this3 = _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).call(this, props));
 
 		var sequence = ["dde-file-manager", "deepin-appstore", "deepin-system-monitor", "deepin-terminal", "deepin-movie", "deepin-music", "deepin-image-viewer", "deepin-screenshot", "deepin-screen-recorder", "deepin-voice-recorder", "deepin-cloud-print", "deepin-cloud-scan", 'deepin-calculator', "deepin-clone", "deepin-graphics-driver-manager", "deepin-package-manager", "deepin-presentation-assistant", "deepin-boot-maker"];
-		_this4.state = {
+		_this3.state = {
 			sequence: sequence,
 			appList: []
 		};
-		return _this4;
+
+		global.readFile(global.path, function (data) {
+			var appList = data.match(/addRow\("([^.][^"]+)"/g).map(function (r) {
+				return r.match(/"([^"]+)"/)[1];
+			});
+			_this3.setState({ appList: appList });
+		});
+		return _this3;
 	}
 
 	_createClass(Index, [{
-		key: 'componentWillMount',
-		value: function componentWillMount() {
-			var _this5 = this;
-
-			var xhr = new XMLHttpRequest();
-			xhr.onload = function () {
-				var appList = xhr.responseText.match(/addRow\("([^.][^"]+)"/g).map(function (r) {
-					return r.match(/"([^"]+)"/)[1];
-				});
-				_this5.setState({ appList: appList });
-			};
-			xhr.open("GET", localStorage.path);
-			xhr.send();
-		}
-	}, {
 		key: 'shouldComponentUpdate',
 		value: function shouldComponentUpdate(nextProps, nextState) {
 			if (nextState.appList.toString() == this.state.appList.toString()) {
@@ -371,14 +351,14 @@ var Index = function (_Component2) {
 	}, {
 		key: 'render',
 		value: function render() {
-			var _this6 = this;
+			var _this4 = this;
 
 			var sysSoft = ['dde'];
 			var appSoft = this.state.sequence.filter(function (appName) {
-				return _this6.state.appList.includes(appName);
+				return _this4.state.appList.includes(appName);
 			});
 			var otherSoft = this.state.appList.filter(function (appName) {
-				return !_this6.state.sequence.includes(appName) && !sysSoft.includes(appName);
+				return !_this4.state.sequence.includes(appName) && !sysSoft.includes(appName);
 			});
 			return _react2.default.createElement(
 				_reactCustomScrollbars.Scrollbars,
@@ -501,63 +481,6 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-// class M2H {
-// 	constructor(appName, md) {
-// 		this.appName = appName
-
-// 		let path = `${global.path}/${appName}/${global.lang}/`
-// 		if (appName.indexOf("/") != -1) {
-// 			path = appName.slice(0, appName.lastIndexOf("/") + 1)
-// 			console.log(appName, path)
-// 		}
-// 		let div = document.createElement("div")
-// 		div.innerHTML = marked(md).replace(/src="/g, `$&${path}`)
-
-// 		let [title, logo] = div.querySelector("h1").innerText.split("|")
-// 		logo = `${path}${logo}`
-// 		div.removeChild(div.querySelector("h1"))
-// 		localStorage[appName + "_info"] = JSON.stringify({ title, logo })
-
-// 			;[...div.querySelectorAll("h2")].map(el => el.innerText = el.innerText.split("|")[0])
-// 		let ids = {}
-// 		let hList = [...div.querySelectorAll("h2,h3")].map(el => {
-// 			let text = el.innerText
-// 			if (ids[text] == undefined) {
-// 				el.id = text
-// 				ids[text] = 0
-// 			} else {
-// 				el.id = `${text}-${ids[text]++}`
-// 			}
-// 			return { id: el.id, text, type: el.nodeName.toLocaleLowerCase() }
-// 		})
-// 		localStorage[appName + "_hlist"] = JSON.stringify(hList)
-// 		localStorage[appName + "_html"] = div.innerHTML
-
-// 		if (global.qtObject) {
-// 			let searchIndex = {}
-// 			let key = ""
-// 				;[...div.children].map(el => {
-// 					if (el.localName.match(/^h\d$/) != null) {
-// 						key = el.id
-// 						searchIndex[key] = ""
-// 					} else {
-// 						searchIndex[key] += el.innerText
-// 						searchIndex[key] += "\n"
-// 					}
-// 				})
-// 			global.webChannel.objects.search.addSearchEntry(`${appName}#${localStorage.lang}`, Object.keys(searchIndex), Object.values(searchIndex))
-// 		}
-// 	}
-// 	info() {
-// 		return JSON.parse(localStorage[this.appName + "_info"])
-// 	}
-// 	hlist() {
-// 		return JSON.parse(localStorage[this.appName + "_hlist"])
-// 	}
-// 	html() {
-// 		return localStorage[this.appName + "_html"]
-// 	}
-// }
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 exports.default = function (mdFile, mdData) {
@@ -575,6 +498,8 @@ exports.default = function (mdFile, mdData) {
 			    title = _text$split2[0],
 			    logo = _text$split2[1];
 
+			logo = path + logo;
+			console.log(logo);
 			info = { title: title, logo: logo };
 			return '';
 		}

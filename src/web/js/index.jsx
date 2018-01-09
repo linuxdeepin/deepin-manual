@@ -12,21 +12,12 @@ class Item extends Component {
 			logo: "",
 			show: false
 		}
-	}
-	componentWillMount() {
-		let xhr = new XMLHttpRequest()
-		let path = `${localStorage.path}/${this.props.appName}/${localStorage.lang}/`
-		xhr.open("GET", path + "index.md")
-		xhr.onload = () => {
-			let data = xhr.responseText
-			if (!data) {
-				return
-			}
+		let path = `${global.path}/${this.props.appName}/${global.lang}/`
+		global.readFile(path + "index.md", data => {
 			let [title, logo] = data.substr("# ".length, data.indexOf("\n")).split("|")
 			logo = `${path}${logo}`
 			this.setState({ title, logo, show: true })
-		}
-		xhr.send()
+		})
 	}
 	render() {
 		return (this.state.show &&
@@ -67,18 +58,14 @@ export default class Index extends Component {
 			sequence,
 			appList: []
 		}
-	}
-	componentWillMount() {
-		let xhr = new XMLHttpRequest()
-		xhr.onload = () => {
-			let appList = xhr.responseText.match(/addRow\("([^.][^"]+)"/g)
+
+		global.readFile(global.path, data => {
+			let appList = data.match(/addRow\("([^.][^"]+)"/g)
 				.map(r => {
 					return r.match(/"([^"]+)"/)[1]
 				})
 			this.setState({ appList: appList })
-		}
-		xhr.open("GET", localStorage.path)
-		xhr.send()
+		})
 	}
 	shouldComponentUpdate(nextProps, nextState) {
 		if (nextState.appList.toString() == this.state.appList.toString()) {

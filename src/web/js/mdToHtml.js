@@ -13,6 +13,8 @@ export default function (mdFile, mdData) {
 	renderer.heading = (text, level) => {
 		if (level == 1) {
 			let [title, logo] = text.split("|")
+			logo = path + logo
+			console.log(logo)
 			info = { title, logo }
 			return ''
 		}
