@@ -216,6 +216,8 @@ void SearchDb::handleSearch(const QString& app_name, const QString& keyword) {
                 << query.lastError().text();
   }
 
+  qDebug() << "result size:" << result.size() << keyword << app_name;
+
   emit this->searchResult(app_name, keyword, result);
 }
 

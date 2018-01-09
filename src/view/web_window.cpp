@@ -74,6 +74,9 @@ void WebWindow::initConnections() {
           completion_window_, &SearchCompletionWindow::goDown);
   connect(title_bar_, &TitleBar::focusOut,
           this, &WebWindow::onSearchEditFocusOut);
+
+  connect(search_manager_, &SearchManager::searchResult,
+          this, &WebWindow::onSearchResult);
 }
 
 void WebWindow::initUI() {
@@ -109,7 +112,7 @@ void WebWindow::resizeEvent(QResizeEvent* event) {
 
 void WebWindow::onSearchEditFocusOut() {
   QTimer::singleShot(50, [=]() {
-    this->completion_window_->hide();
+//    this->completion_window_->hide();
   });
 }
 
@@ -117,14 +120,14 @@ void WebWindow::onSearchTextChanged(const QString& text) {
   if (text.size() > 1 && completion_window_ != nullptr) {
     // Do real search.
 
+    completion_window_->setKeyword(text);
     completion_window_->show();
     // Move to bottom of search edit.
     completion_window_->move(this->rect().width() / 2 - 80,
                              40 - 4);
     completion_window_->setFocusPolicy(Qt::StrongFocus);
+    completion_window_->resize(300, 400);
     completion_window_->raise();
-    qDebug() << "size:" << completion_window_->geometry();
-
     search_manager_->search(search_proxy_->currentApp(), text);
   }
 }
@@ -147,6 +150,19 @@ void WebWindow::onWebPageLoadFinished(bool ok) {
             QString("openApp(\"%1\")").arg(app_name_));
       }
     }
+  }
+}
+
+void WebWindow::onSearchResult(const QString& app_name,
+                               const QString& keyword,
+                               const SearchResultList& result) {
+  Q_UNUSED(app_name);
+  Q_UNUSED(keyword);
+  Q_UNUSED(result);
+  if (result.isEmpty()) {
+    // Show empty search result in web.
+  } else {
+    completion_window_->setResult(result);
   }
 }
 

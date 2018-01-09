@@ -46,14 +46,32 @@ void SearchCompletionWindow::goDown() {
   qDebug() << Q_FUNC_INFO;
 }
 
+void SearchCompletionWindow::setKeyword(const QString& keyword) {
+  search_button_->setText(tr("Search \"%1\" in Deepin Manual").arg(keyword));
+}
+
+void SearchCompletionWindow::setResult(const SearchResultList& result) {
+  result_ = result;
+  QStringList names;
+  for (const SearchResult& entry : result) {
+    names.append(entry.anchor);
+  }
+  names.clear();
+  names << "1" << "2" << "3" << "4" << "5";
+  model_->setStringList(names);
+}
+
 void SearchCompletionWindow::initUI() {
-  result_list_ = new QListView();
-  result_list_->setObjectName("ResultList");
-  result_list_->setMouseTracking(true);
-  result_list_->setSelectionMode(QListView::SingleSelection);
-  result_list_->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-  result_list_->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
-  result_list_->setFocusPolicy(Qt::NoFocus);
+  model_ = new QStringListModel(this);
+
+  result_view_ = new QListView();
+  result_view_->setObjectName("ResultList");
+  result_view_->setModel(model_);
+  result_view_->setMouseTracking(true);
+  result_view_->setSelectionMode(QListView::SingleSelection);
+  result_view_->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+  result_view_->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
+  result_view_->setFocusPolicy(Qt::NoFocus);
 
   search_button_ = new QPushButton();
   search_button_->setObjectName("SearchButton");
@@ -64,7 +82,7 @@ void SearchCompletionWindow::initUI() {
   QVBoxLayout* main_layout = new QVBoxLayout();
   main_layout->setContentsMargins(0, 0, 0, 0);
   main_layout->setSpacing(0);
-  main_layout->addWidget(result_list_, 0, Qt::AlignHCenter | Qt::AlignTop);
+  main_layout->addWidget(result_view_, 0, Qt::AlignHCenter | Qt::AlignTop);
   main_layout->addSpacing(1);
   main_layout->addWidget(search_button_, 0, Qt::AlignCenter);
   main_layout->addSpacing(1);

@@ -21,6 +21,9 @@
 #include <QFrame>
 #include <QListView>
 #include <QPushButton>
+#include <QStringListModel>
+
+#include "controller/search_result.h"
 
 namespace dman {
 
@@ -36,11 +39,16 @@ class SearchCompletionWindow : public QFrame {
   void goUp();
   void goDown();
 
+  void setKeyword(const QString& keyword);
+  void setResult(const SearchResultList& result);
+
  private:
   void initUI();
 
-  QListView* result_list_ = nullptr;
+  QListView* result_view_ = nullptr;
+  QStringListModel* model_ = nullptr;
   QPushButton* search_button_ = nullptr;
+  SearchResultList result_;
 };
 
 }  // namespace dman
