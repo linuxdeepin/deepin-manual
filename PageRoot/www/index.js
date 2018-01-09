@@ -25,131 +25,91 @@ var _mdToHtml2 = _interopRequireDefault(_mdToHtml);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 global.lang = navigator.language.replace(/-/, '_');
-global.path = location.protocol == "http:" ? 'http://' + location.hostname + ':8000' : 'file:///usr/share/dman';
-
-var openFile = function openFile(file) {
+global.path = getSystemManualDir("");
+global.readFile = function (fileName, callback) {
 	var xhr = new XMLHttpRequest();
-	xhr.open("GET", file);
+	xhr.open("GET", fileName);
 	xhr.onload = function () {
-		if (xhr.responseText == "") {
-			return;
+		if (xhr.responseText != "") {
+			callback(xhr.responseText);
 		}
-		var m = new _mdToHtml2.default(appName, xhr.responseText);
-		_reactDom2.default.render(_react2.default.createElement(_main2.default, { appName: appName, hlist: m.hlist(), html: m.html() }), document.getElementById("app"));
 	};
 	xhr.send();
 };
-var open = function open(appName) {
-	console.log("open", appName);
-	var path = global.path + '/' + appName + '/' + global.lang + '/';
-	var xhr = new XMLHttpRequest();
-	xhr.open("GET", path + "index.md");
-	xhr.onload = function () {
-		if (xhr.responseText == "") {
-			return;
-		}
-		var m = new _mdToHtml2.default(appName, xhr.responseText);
-		_reactDom2.default.render(_react2.default.createElement(_main2.default, { appName: appName, hlist: m.hlist(), html: m.html() }), document.getElementById("app"));
-	};
-	xhr.send();
-};
-var index = function index() {
-	console.log("index");
-	_reactDom2.default.render(_react2.default.createElement(_index2.default, { openApp: open }), document.getElementById("app"));
-};
-//浏览器端自动打开浏览器
-if (location.protocol == "http:") {
-	index();
-}
-
-//Qt
-var webChannel = null;
-var delay = null;
 
 var state = {
 	appName: "",
 	searchWord: ""
 };
+function stateBack() {
+	switch (true) {
+		case state.searchWord != "":
+			break;
+		case state.appName != "":
+			break;
+	}
+}
+
+global.qtObjects = null;
+var delay = null;
 global.openFile = function (file) {
-	if (window.QWebChannel && !webChannel) {
+	if (global.qtObjects == null) {
 		delay = function delay() {
 			return global.openFile(file);
 		};
-		console.log("延迟执行");
 		return;
 	}
-	webChannel.objects.titleBar.setBackButtonVisible(true);
+	global.qtObjects.titleBar.setBackButtonVisible(true);
+	global.qtObjects.search.setCurrentApp(file);
 	state.appName = file;
-	webChannel.objects.search.setCurrentApp(file);
 
-	var xhr = new XMLHttpRequest();
-	xhr.open("GET", file);
-	xhr.onload = function () {
-		if (xhr.responseText == "") {
-			return;
-		}
-		var m = new _mdToHtml2.default(file, xhr.responseText);
+	global.readFile(file, function (data) {
+		var m = new _mdToHtml2.default(file, data);
 		_reactDom2.default.render(_react2.default.createElement(_main2.default, { appName: file, hlist: m.hlist(), html: m.html() }), document.getElementById("app"));
-	};
-	xhr.send();
+	});
 };
-global.open = function (appName) {
-	if (window.QWebChannel && !webChannel) {
+global.openFolder = function (folder) {
+	if (global.qtObjects == null) {
+		delay = function delay() {
+			return global.openFolder(folder);
+		};
+		return;
+	}
+	var file = folder + '/' + global.lang + '/index.md';
+	global.openFile(file);
+};
+global.openApp = function (appName) {
+	if (global.qtObjects == null) {
 		delay = function delay() {
 			return global.open(appName);
 		};
-		console.log("延迟执行");
 		return;
 	}
-	webChannel.objects.titleBar.setBackButtonVisible(true);
-	state.appName = appName;
-	webChannel.objects.search.setCurrentApp(appName);
-
-	var path = global.path + '/' + appName + '/' + global.lang + '/';
-	var xhr = new XMLHttpRequest();
-	xhr.open("GET", path + "index.md");
-	xhr.onload = function () {
-		if (xhr.responseText == "") {
-			return;
-		}
-		var m = new _mdToHtml2.default(appName, xhr.responseText);
-		_reactDom2.default.render(_react2.default.createElement(_main2.default, { appName: appName, hlist: m.hlist(), html: m.html() }), document.getElementById("app"));
-	};
-	xhr.send();
+	var file = global.path + '/' + appName + '/' + global.lang + '/index.md';
+	global.openFile(file);
 };
 
 global.index = function () {
-	if (window.QWebChannel && !webChannel) {
+	if (global.qtObjects == null) {
 		delay = function delay() {
 			return global.index();
 		};
-		console.log("延迟执行");
 		return;
 	}
-	webChannel.objects.titleBar.setBackButtonVisible(false);
-	_reactDom2.default.render(_react2.default.createElement(_index2.default, { openApp: global.open }), document.getElementById("app"));
+	global.qtObjects.titleBar.setBackButtonVisible(false);
+	state.appName = "";
+	global.qtObjects.search.setCurrentApp("");
+	_reactDom2.default.render(_react2.default.createElement(_index2.default, null), document.getElementById("app"));
 };
 
-if (window.QWebChannel) {
-	new QWebChannel(qt.webChannelTransport, function (channel) {
-		webChannel = channel;
-		global.webChannel = webChannel;
-
-		webChannel.objects.titleBar.backButtonClicked.connect(function () {
-			if (state.searchWord) {
-				state.searchWord = "";
-				return;
-			}
-			if (state.appName) {
-				state.appName = "";
-				global.index();
-			}
-		});
-		if (delay) {
-			delay();
-		}
-	});
+function qtInit(channel) {
+	global.qtObjects = channel.objects;
+	global.qtObjects.titleBar.backButtonClicked.connect(stateBack);
+	if (delay != null) {
+		delay();
+	}
 }
+new QWebChannel(qt.webChannelTransport, qtInit);
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./index.jsx":3,"./main.jsx":4,"./mdToHtml":5,"react":55,"react-dom":51}],2:[function(require,module,exports){
@@ -272,6 +232,7 @@ var Article = function (_Component) {
 exports.default = Article;
 
 },{"react":55,"react-custom-scrollbars":43,"react-dom":51}],3:[function(require,module,exports){
+(function (global){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -349,7 +310,7 @@ var Item = function (_Component) {
 			return this.state.show && _react2.default.createElement(
 				'div',
 				{ className: 'item', onClick: function onClick() {
-						return _this3.props.openApp(_this3.props.appName);
+						return global.openApp(_this3.props.appName);
 					} },
 				_react2.default.createElement('img', { src: this.state.logo, alt: this.props.appName }),
 				_react2.default.createElement('br', null),
@@ -414,7 +375,7 @@ var Index = function (_Component2) {
 				return _this6.state.appList.includes(appName);
 			});
 			var otherSoft = this.state.appList.filter(function (appName) {
-				return !_this6.state.sequence.includes(appName);
+				return !_this6.state.sequence.includes(appName) && !sysSoft.includes(appName);
 			});
 			return _react2.default.createElement(
 				_reactCustomScrollbars.Scrollbars,
@@ -428,7 +389,7 @@ var Index = function (_Component2) {
 						'\u7CFB\u7EDF'
 					),
 					sysSoft.map(function (appName) {
-						return _react2.default.createElement(Item, { key: appName, appName: appName, openApp: _this6.props.openApp });
+						return _react2.default.createElement(Item, { key: appName, appName: appName });
 					}),
 					_react2.default.createElement(
 						'h2',
@@ -436,10 +397,10 @@ var Index = function (_Component2) {
 						'\u5E94\u7528'
 					),
 					appSoft.map(function (appName) {
-						return _react2.default.createElement(Item, { key: appName, appName: appName, openApp: _this6.props.openApp });
+						return _react2.default.createElement(Item, { key: appName, appName: appName });
 					}),
 					otherSoft.map(function (appName) {
-						return _react2.default.createElement(Item, { key: appName, appName: appName, openApp: _this6.props.openApp });
+						return _react2.default.createElement(Item, { key: appName, appName: appName });
 					})
 				)
 			);
@@ -451,6 +412,7 @@ var Index = function (_Component2) {
 
 exports.default = Index;
 
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./mdToHtml.js":5,"react":55,"react-custom-scrollbars":43}],4:[function(require,module,exports){
 "use strict";
 
