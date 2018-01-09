@@ -122,10 +122,7 @@ html, body {
   width: 15%;
   min-width: 160px;
   overflow-y: auto;
-  font-style: normal;
-  font-stretch: normal;
-  line-height: normal;
-  letter-spacing: normal;
+  white-space: nowrap;
   border-right: 1px solid rgba(0, 0, 0, 0.1); }
   #nav h2 {
     cursor: pointer;
