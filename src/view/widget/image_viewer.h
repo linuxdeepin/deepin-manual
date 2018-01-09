@@ -18,14 +18,14 @@
 #ifndef DEEPIN_MANUAL_VIEW_WIDGETS_IMAGE_VIEWER_H
 #define DEEPIN_MANUAL_VIEW_WIDGETS_IMAGE_VIEWER_H
 
-#include <dabstractdialog.h>
+#include <QDialog>
 #include <dimagebutton.h>
 
 class QLabel;
 
 namespace dman {
 
-class ImageViewer : public Dtk::Widget::DAbstractDialog {
+class ImageViewer : public QDialog {
   Q_OBJECT
  public:
   explicit ImageViewer(QWidget* parent = nullptr);
@@ -34,8 +34,18 @@ class ImageViewer : public Dtk::Widget::DAbstractDialog {
  public slots:
   void open(const QString& filepath);
 
+ protected:
+  void mousePressEvent(QMouseEvent* event) override;
+
+  void mouseReleaseEvent(QMouseEvent* event) override;
+
+  void mouseMoveEvent(QMouseEvent* event) override;
+
  private:
   void initUI();
+
+  bool mouse_pressed_ = false;
+  QPoint drag_pos_;
   QLabel* img_label_ = nullptr;
   Dtk::Widget::DImageButton* close_button_ = nullptr;
 };

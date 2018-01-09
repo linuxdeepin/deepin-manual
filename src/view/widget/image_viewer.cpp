@@ -17,8 +17,8 @@
 
 #include "view/widget/image_viewer.h"
 
+#include <DWidgetUtil>
 #include <QApplication>
-#include <QDebug>
 #include <QResizeEvent>
 #include <QStackedLayout>
 #include <QtCore/QTimer>
@@ -36,7 +36,8 @@ const int kCloseBtnSize = 24;
 }  // namespace
 
 ImageViewer::ImageViewer(QWidget* parent)
-    : Dtk::Widget::DAbstractDialog(parent) {
+    : QDialog(parent),
+      drag_pos_() {
   this->setObjectName("ImageViewer");
   this->initUI();
 
@@ -50,6 +51,7 @@ ImageViewer::~ImageViewer() {
 
 void ImageViewer::open(const QString& filepath) {
   this->show();
+  this->raise();
 
   // Escape uri.
   QString abspath(filepath);
@@ -79,6 +81,8 @@ void ImageViewer::open(const QString& filepath) {
   close_button_->move(pixmap.width() - kCloseBtnSize / 2, 0);
   close_button_->show();
   close_button_->raise();
+
+  Dtk::Widget::moveToCenter(this);
 }
 
 void ImageViewer::initUI() {
@@ -97,8 +101,28 @@ void ImageViewer::initUI() {
 
   this->setLayout(main_layout);
   this->setContentsMargins(kBorderSize, kBorderSize, kBorderSize, kBorderSize);
+  this->setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
+  this->setAttribute(Qt::WA_TranslucentBackground, true);
 
   ThemeManager::instance()->registerWidget(this);
+}
+
+void ImageViewer::mousePressEvent(QMouseEvent* event) {
+  mouse_pressed_ = true;
+  drag_pos_ = event->globalPos() - frameGeometry().topLeft();
+  QWidget::mousePressEvent(event);
+}
+
+void ImageViewer::mouseReleaseEvent(QMouseEvent* event) {
+  mouse_pressed_ = false;
+  QWidget::mouseReleaseEvent(event);
+}
+
+void ImageViewer::mouseMoveEvent(QMouseEvent* event) {
+  if (mouse_pressed_) {
+    this->move(event->globalPos() - drag_pos_);
+  }
+  QWidget::mouseMoveEvent(event);
 }
 
 }  // namespace dman
