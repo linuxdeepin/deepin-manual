@@ -54,7 +54,6 @@ void TitleBar::initConnections() {
 void TitleBar::initUI() {
   QLabel* app_icon = new QLabel();
   app_icon->setObjectName("AppIcon");
-//  app_icon->setPixmap(QIcon(kImageDeepinManual).pixmap(24, 24));
   app_icon->setFixedSize(24, 24);
 
   back_button_ = new Dtk::Widget::DImageButton();
@@ -68,7 +67,9 @@ void TitleBar::initUI() {
   left_layout->addWidget(app_icon);
   left_layout->addSpacing(10);
   left_layout->addWidget(back_button_);
+  left_layout->addStretch();
   QFrame* left_buttons = new QFrame();
+  left_buttons->setFixedWidth(58);
   left_buttons->setContentsMargins(0, 0, 0, 0);
   left_buttons->setLayout(left_layout);
 
