@@ -115,7 +115,7 @@ void SearchDb::searchByAppName(const QString& app_name,
                                SearchResultList& result) {
   const QHash<QString, QString>& app_dict = p_->cache[app_name];
   for (const QString& words : app_dict.keys()) {
-    if (result.size() > kResultLimitation) {
+    if (result.size() >= kResultLimitation) {
       break;
     }
 
@@ -228,7 +228,7 @@ void SearchDb::handleSearch(const QString& app_name, const QString& keyword) {
   if (app_name.isEmpty()) {
     // Global search
     for (const QString& name : p_->cache.keys()) {
-      if (result.size() > kResultLimitation) {
+      if (result.size() >= kResultLimitation) {
         break;
       }
       this->searchByAppName(name, keyword, result);
