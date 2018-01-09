@@ -27,6 +27,13 @@
 
 namespace dman {
 
+namespace {
+
+const int kBorderSize = 12;
+const int kCloseBtnSize = 24;
+
+}  // namespace
+
 ImageViewer::ImageViewer(QWidget* parent)
     : Dtk::Widget::DAbstractDialog(parent) {
   this->setObjectName("ImageViewer");
@@ -52,8 +59,14 @@ void ImageViewer::open(const QString& filepath) {
 
   const QPixmap pixmap(abspath);
   qDebug() << "pixmap size:" << pixmap.size();
+  const int win_width = pixmap.width() + kBorderSize;
+  const int win_height = pixmap.height() + kBorderSize;
+  this->setFixedSize(win_width, win_height);
+  // TODO(Shaohua): Resize image to fix screen.
   img_label_->setPixmap(pixmap);
-  qDebug() << img_label_->size();
+
+  // Move close button to top-right corner of window.
+  close_button_->move(pixmap.width() - kCloseBtnSize / 2, 0);
   close_button_->show();
   close_button_->raise();
 }
@@ -70,10 +83,10 @@ void ImageViewer::initUI() {
   close_button_ = new Dtk::Widget::DImageButton(this);
   close_button_->setObjectName("CloseButton");
   close_button_->raise();
-  close_button_->setFixedSize(24, 24);
+  close_button_->setFixedSize(kCloseBtnSize, kCloseBtnSize);
 
   this->setLayout(main_layout);
-  this->setContentsMargins(12, 12, 12, 12);
+  this->setContentsMargins(kBorderSize, kBorderSize, kBorderSize, kBorderSize);
 
   ThemeManager::instance()->registerWidget(this);
 }
