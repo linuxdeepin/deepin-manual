@@ -28,7 +28,8 @@ class TitleBarProxy : public QObject {
   Q_OBJECT
   Q_PROPERTY(bool backButtonVisible
                  READ backButtonVisible
-                 WRITE setBackButtonVisible)
+                 WRITE setBackButtonVisible
+                 NOTIFY backButtonVisibleChanged)
 
  public:
   TitleBarProxy(TitleBar* title_bar, QObject* parent = nullptr);
@@ -37,6 +38,7 @@ class TitleBarProxy : public QObject {
   bool backButtonVisible() const;
 
  signals:
+  void backButtonVisibleChanged(bool visible);
   void backButtonClicked();
 
  public slots:

@@ -26,7 +26,10 @@ class SearchManager;
 
 class SearchProxy : public QObject {
   Q_OBJECT
-  Q_PROPERTY(QString currentApp READ currentApp WRITE setCurrentApp)
+  Q_PROPERTY(QString currentApp
+                 READ currentApp
+                 WRITE setCurrentApp
+                 NOTIFY currentAppChanged)
  public:
   explicit SearchProxy(SearchManager* manager, QObject* parent = nullptr);
   ~SearchProxy() override;
@@ -36,15 +39,15 @@ class SearchProxy : public QObject {
   }
 
  signals:
+  void currentAppChanged(const QString& app_name);
+
   void mismatch(const QString& keyword);
   void globalMismatch(const QString& keyword);
   void match(const QString& anchor);
   void globalMatch(const QString& app_name, const QString& anchor);
 
  public slots:
-  void setCurrentApp(const QString& app_name) {
-    current_app_ = app_name;
-  };
+  void setCurrentApp(const QString& app_name);
 
   void addSearchEntry(const QString& app_name,
                       const QStringList& anchors,

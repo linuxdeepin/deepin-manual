@@ -40,6 +40,7 @@ bool TitleBarProxy::backButtonVisible() const {
 
 void TitleBarProxy::setBackButtonVisible(bool visible) {
   title_bar_->setBackButtonVisible(visible);
+  emit this->backButtonVisibleChanged(visible);
 }
 
 }  // namespace dman
