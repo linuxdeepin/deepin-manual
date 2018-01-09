@@ -39,6 +39,5 @@ void dman::SearchProxy::setCurrentApp(const QString& app_name) {
 void dman::SearchProxy::addSearchEntry(const QString& app_name,
                                        const QStringList& anchors,
                                        const QStringList& contents) {
-  qDebug() << Q_FUNC_INFO << anchors;
   emit manager_->addSearchEntry(app_name, anchors, contents);
 }

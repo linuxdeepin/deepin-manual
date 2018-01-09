@@ -70,8 +70,8 @@ struct SearchDbPrivate {
   QSqlDatabase db;
   cppjieba::Jieba* jieba = nullptr;
 
-  // Key => contents_words pair
-  QHash<QString, QString> cache;
+  // { "appName": { "words": "anchors",,,, } }
+  QHash<QString, QHash<QString, QString>> cache;
 };
 
 SearchDb::SearchDb(QObject* parent)
@@ -110,14 +110,22 @@ void SearchDb::initConnections() {
           this, &SearchDb::handleSearch);
 }
 
-bool SearchDb::IsKeywordMatch(const QString& key,
-                              const QString& words,
-                              const QString& keyword) {
-  if (!p_->cache.contains(key)) {
-    p_->cache.insert(key, words);
-  }
+void SearchDb::searchByAppName(const QString& app_name,
+                               const QString& keyword,
+                               SearchResultList& result) {
+  const QHash<QString, QString>& app_dict = p_->cache[app_name];
+  for (const QString& words : app_dict.keys()) {
+    if (result.size() > kResultLimitation) {
+      break;
+    }
 
-  return p_->cache.value(key).indexOf(keyword) > -1;
+    if (words.indexOf(keyword) > -1) {
+      result.append({
+                        app_name,
+                        app_dict.value(words)
+                    });
+    }
+  }
 }
 
 void SearchDb::handleInitDb() {
@@ -138,6 +146,22 @@ void SearchDb::handleInitDb() {
   if (!query.exec(kIndexSchema)) {
     qCritical() << "Failed to create index for search table"
                 << query.lastError().text();
+  }
+
+  // Prepare search cache
+  if (!query.exec(kSelectAll)) {
+    qCritical() << "Failed to select search items"
+                << query.lastError().text();
+    return;
+  }
+
+  while (query.next()) {
+    const QString app_name = query.value(1).toString();
+    if (!p_->cache.contains(app_name)) {
+      p_->cache.insert(app_name, QHash<QString, QString>());
+    }
+    p_->cache[app_name].insert(query.value(4).toString(),
+                               query.value(2).toString());
   }
 }
 
@@ -165,6 +189,7 @@ void SearchDb::handleAddSearchEntry(const QString& app_name,
 
   query.prepare(kInsertEntry);
   bool ok = true;
+  QHash<QString, QString> anchor_dict;
   for (int i = 0; ok && (i < anchors.length()); ++i) {
     const std::string content_std(contents.at(i).toLower().toStdString());
     std::vector<std::string> word_list;
@@ -173,9 +198,8 @@ void SearchDb::handleAddSearchEntry(const QString& app_name,
                                                word_list.end(),
                                                "/");
     const QString words = QString::fromStdString(words_std);
-    const QString key = app_name + anchors.at(i);
     // Add to memory cache.
-    p_->cache.insert(key, words);
+    anchor_dict.insert(words, anchors.at(i));
 
     // Save to database.
     query.bindValue(0, app_name);
@@ -184,6 +208,7 @@ void SearchDb::handleAddSearchEntry(const QString& app_name,
     query.bindValue(3, words);
     ok = query.exec();
   }
+  p_->cache.insert(app_name, anchor_dict);
 
   if (!ok) {
     p_->db.rollback();
@@ -199,30 +224,18 @@ void SearchDb::handleSearch(const QString& app_name, const QString& keyword) {
   Q_ASSERT(p_->db.isOpen());
 
   SearchResultList result;
-  QSqlQuery query(p_->db);
 
   if (app_name.isEmpty()) {
     // Global search
-    query.prepare(kSelectAll);
-  } else {
-    // Search in app_name.
-    query.prepare(kSelectApp);
-    query.bindValue(0, app_name);
-  }
-  if (query.exec()) {
-    while (query.next() && (result.size() < kResultLimitation)) {
-      const QString words = query.value(4).toString();
-      const QString key = query.value(1).toString() + query.value(2).toString();
-      if (this->IsKeywordMatch(key, words, keyword)) {
-        result.append({
-                          query.value(1).toString(),
-                          query.value(2).toString(),
-                      });
+    for (const QString& name : p_->cache.keys()) {
+      if (result.size() > kResultLimitation) {
+        break;
       }
+      this->searchByAppName(name, keyword, result);
     }
-  } else {
-    qCritical() << "Failed to select app content:"
-                << query.lastError().text();
+  } else if (p_->cache.contains(app_name)) {
+    // Search in app_name.
+    this->searchByAppName(app_name, keyword, result);
   }
 
   qDebug() << "result size:" << result.size() << keyword << app_name;
