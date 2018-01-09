@@ -11,6 +11,7 @@ import en_US from './en_US.js'
 import Index from "./index.jsx"
 import Main from "./main.jsx"
 import m2h from "./mdToHtml"
+import sIndex from "./searchIndex"
 
 global.lang = {zh:"zh_CN",en:"en_US"}[navigator.language]
 console.log(navigator)
@@ -53,6 +54,7 @@ global.openFile = file => {
 
 	global.readFile(file, data => {
 		let {html, hlist} = m2h(file, data)
+		sIndex(file,html)
 		ReactDOM.render(<Main appName={file} hlist={hlist} html={html} />, document.body)
 	})
 }
