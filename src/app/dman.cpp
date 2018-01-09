@@ -16,8 +16,8 @@
  */
 
 #include <DApplication>
+#include <QCommandLineParser>
 #include <QIcon>
-#include <QtCore/QDir>
 
 #include "base/consts.h"
 #include "controller/window_manager.h"
@@ -57,16 +57,17 @@ int main(int argc, char** argv) {
   app.setProductIcon(QIcon(dman::kImageDeepinManual));
 
   dman::WindowManager window_manager;
-  const QStringList args = app.arguments();
-  if (args.size() == 1) {
+
+  QCommandLineParser parser;
+  parser.parse(app.arguments());
+  const QStringList position_args = parser.positionalArguments();
+  if (position_args.isEmpty()) {
     // Open index page.
     window_manager.openManual("");
   } else {
     // Only parse positional arguments.
-    for (int i = 1; i < args.size(); i++) {
-      if (!args.at(i).startsWith('-')) {
-        window_manager.openManual(args.at(i));
-      }
+    for (const QString& arg : position_args) {
+      window_manager.openManual(arg);
     }
   }
 

@@ -67,7 +67,6 @@ void ThemeManager::registerWidget(QWidget* widget) {
   if (qss_filename.isEmpty()) {
     qss_filename = widget->metaObject()->className();
   }
-  qDebug() << "qss_filename:" << qss_filename << ", theme:" << theme_;
 
   widget->style()->unpolish(widget);
   widget->style()->polish(widget);
