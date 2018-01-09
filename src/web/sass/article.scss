@@ -1,3 +1,12 @@
+.Triangle{
+	content: '';
+	position: absolute;
+	width: 0;
+	height: 0;
+	right: 58px;
+	border: 8px dashed transparent;
+}
+
 #article{
 	float: right;
 	width: 84%;
@@ -67,6 +76,11 @@
 			&[href^="#"]{
 				color: #0082fa;
 			}
+			&[href^="dman://"]{
+				&:after{
+					content: " 📃 ";
+				}
+			}
 		}
 		.searchWK{
 			background-color: yellow;
@@ -79,19 +93,47 @@
 	#preview{
 		position: absolute;
 		width: 500px;
-		height: 200px;
+		height: 250px;
 		left: 0;
 		top: 0;
 		z-index: 99;
-		overflow-y: auto;
 		background-color: white;
 		border: 1px solid #757575;
 		border-radius: 4px;
 		margin: auto;
+		box-shadow:0px 0px 8px #000;
 		.read{
 			width: 80%;
 			margin: auto;
 			font-size: 12px;
+		}
+	}
+	.t_right_down {
+		&::after{
+			@extend .Triangle;
+			bottom: -16px;
+			z-index: 100;
+			border-top: 8px solid #757575;
+		}
+		&::before{
+			@extend .Triangle;
+			bottom: -15px;
+			z-index: 101;
+			border-top: 8px solid white;
+		}
+	}
+	.t_right_up {
+		&::after{
+			@extend .Triangle;
+			top: -16px;
+			z-index: 100;
+			border-bottom: 8px solid #757575;
+		}
+		&::before{
+			@extend .Triangle;
+			top: -15px;
+			z-index: 101;
+			border-bottom: 8px solid white;
 		}
 	}
 }

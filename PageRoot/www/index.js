@@ -234,6 +234,9 @@ var Article = function (_Component) {
 		value: function click(e) {
 			var _this2 = this;
 
+			if (this.state.preview != null) {
+				this.setState({ preview: null });
+			}
 			switch (e.target.nodeName) {
 				case "IMG":
 					e.preventDefault();
@@ -284,13 +287,16 @@ var Article = function (_Component) {
 						var style = {
 							top: top, left: left
 						};
-						style.left -= 400;
+						style.left -= 350;
+						var tClass = "t_right_";
 						if (top > document.body.clientHeight / 2) {
-							style.top -= 200;
+							tClass += "down";
+							style.top -= 250 + 10;
 						} else {
-							style.top += rect.bottom - rect.top;
+							tClass += "up";
+							style.top += rect.height + 10;
 						}
-						_this2.setState({ preview: { html: html, style: style } });
+						_this2.setState({ preview: { html: html, style: style, tClass: tClass } });
 					});
 			}
 		}
@@ -314,7 +320,7 @@ var Article = function (_Component) {
 				),
 				this.state.preview != null && _react2.default.createElement(
 					'div',
-					{ style: this.state.preview.style, id: 'preview' },
+					{ style: this.state.preview.style, className: this.state.preview.tClass, id: 'preview' },
 					_react2.default.createElement(
 						_reactCustomScrollbars.Scrollbars,
 						null,

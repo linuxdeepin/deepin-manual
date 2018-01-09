@@ -41,6 +41,9 @@ export default class Article extends Component {
 		}
 	}
 	click(e) {
+		if (this.state.preview != null) {
+			this.setState({ preview: null })
+		}
 		switch (e.target.nodeName) {
 			case "IMG":
 				e.preventDefault()
@@ -80,17 +83,21 @@ export default class Article extends Component {
 					let style = {
 						top, left
 					}
-					style.left -= 400
+					style.left -= 350
+					let tClass="t_right_"
 					if (top > document.body.clientHeight / 2) {
-						style.top -= 200
+						tClass+="down"
+						style.top -= 250 + 10
 					} else {
-						style.top += rect.bottom - rect.top
+						tClass+="up"
+						style.top += rect.height + 10
 					}
-					this.setState({ preview: { html, style } })
+					this.setState({ preview: { html, style ,tClass} })
 				})
 		}
 	}
 	render() {
+
 		return <div id="article">
 			<Scrollbars autoHide autoHideTimeout={1000} onScroll={e => this.scroll(e)} ref={s => { this.scrollbars = s } }>
 				<div className="read" onClick={this.click.bind(this)} dangerouslySetInnerHTML={{ __html: this.props.html }}></div>
@@ -98,7 +105,7 @@ export default class Article extends Component {
 			</Scrollbars>
 			{
 				this.state.preview != null &&
-				<div style={this.state.preview.style} id="preview" >
+				<div style={this.state.preview.style} className={this.state.preview.tClass} id="preview" >
 					<Scrollbars>
 						<div className="read" dangerouslySetInnerHTML={{ __html: this.state.preview.html }}></div>
 					</Scrollbars>
