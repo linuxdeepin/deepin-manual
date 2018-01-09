@@ -678,12 +678,13 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 exports.default = function (file, html) {
-	var hashName = file + "_searchIndex_hash";
-	var hash = (0, _md2.default)(html);
-	if (localStorage[hashName] == hash) {
-		return;
-	}
-	localStorage[hashName] = hash;
+	// let hashName = file + "_searchIndex_hash"
+	// let hash = md5(html)
+	// console.log(hash)
+	// if (localStorage[hashName] == hash) {
+	// 	return
+	// }
+	// localStorage[hashName] = hash
 	var div = document.createElement("div");
 	div.innerHTML = html;
 	var searchIndex = {};
