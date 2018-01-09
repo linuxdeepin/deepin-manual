@@ -1,4 +1,5 @@
 import React, { Component } from 'react'
+import { FormattedMessage } from 'react-intl'
 import { Scrollbars } from 'react-custom-scrollbars'
 
 import m2h from './mdToHtml.js'
@@ -79,11 +80,11 @@ export default class Index extends Component {
 		let otherSoft = this.state.appList.filter(appName => !this.state.sequence.includes(appName) && !sysSoft.includes(appName))
 		return <Scrollbars>
 			<div id="index">
-				<h2>系统</h2>
+				<h2><FormattedMessage id="sys" /></h2>
 				<div className="items">
 					{sysSoft.map(appName => <Item key={appName} appName={appName} />)}
 				</div>
-				<h2>应用</h2>
+				<h2><FormattedMessage id="appg" /></h2>
 				<div className="items">
 					{appSoft.map(appName => <Item key={appName} appName={appName} />)}
 					{otherSoft.map(appName => <Item key={appName} appName={appName} />)}

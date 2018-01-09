@@ -1,5 +1,12 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
+import { addLocaleData, IntlProvider } from 'react-intl'
+import zh from 'react-intl/locale-data/zh'
+import en from 'react-intl/locale-data/en'
+addLocaleData([...zh, ...en])
+
+import zh_CN from './zh_CN.js'
+import en_US from './en_US.js'
 
 import Index from "./index.jsx"
 import Main from "./main.jsx"
@@ -46,7 +53,7 @@ global.openFile = file => {
 
 	global.readFile(file, data => {
 		let {html, hlist} = m2h(file, data)
-		ReactDOM.render(<Main appName={file} hlist={hlist} html={html} />, document.getElementById("app"))
+		ReactDOM.render(<Main appName={file} hlist={hlist} html={html} />, document.body)
 	})
 }
 global.openFolder = folder => {
@@ -74,7 +81,7 @@ global.index = () => {
 	global.qtObjects.titleBar.setBackButtonVisible(false)
 	state.appName = ""
 	global.qtObjects.search.setCurrentApp("")
-	ReactDOM.render(<Index />, document.getElementById("app"))
+	ReactDOM.render(<IntlProvider locale={navigator.language} messages={{ zh_CN, en_US }[global.lang]}><Index /></IntlProvider>, document.body)
 }
 
 function qtInit(channel) {
