@@ -23,10 +23,12 @@ let state = {
 	searchWord: "",
 }
 function stateBack() {
+	console.log("stateBack", state)
 	switch (true) {
 		case state.searchWord != "":
 			break
 		case state.appName != "":
+			index()
 			break
 	}
 }
@@ -43,8 +45,8 @@ global.openFile = file => {
 	state.appName = file
 
 	global.readFile(file, data => {
-		let m = new m2h(file, data)
-		ReactDOM.render(<Main appName={file} hlist={m.hlist()} html={m.html()} />, document.getElementById("app"))
+		let {html, hlist} = m2h(file, data)
+		ReactDOM.render(<Main appName={file} hlist={hlist} html={html} />, document.getElementById("app"))
 	})
 }
 global.openFolder = folder => {

@@ -64,8 +64,11 @@ global.openFile = function (file) {
 	state.appName = file;
 
 	global.readFile(file, function (data) {
-		var m = new _mdToHtml2.default(file, data);
-		_reactDom2.default.render(_react2.default.createElement(_main2.default, { appName: file, hlist: m.hlist(), html: m.html() }), document.getElementById("app"));
+		var _m2h = (0, _mdToHtml2.default)(file, data),
+		    html = _m2h.html,
+		    hlist = _m2h.hlist;
+
+		_reactDom2.default.render(_react2.default.createElement(_main2.default, { appName: file, hlist: hlist, html: html }), document.getElementById("app"));
 	});
 };
 global.openFolder = function (folder) {
@@ -492,16 +495,109 @@ var Main = function (_Component) {
 exports.default = Main;
 
 },{"./article.jsx":2,"./mdToHtml.js":5,"./nav.jsx":6,"react":55}],5:[function(require,module,exports){
-(function (global){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+// class M2H {
+// 	constructor(appName, md) {
+// 		this.appName = appName
+
+// 		let path = `${global.path}/${appName}/${global.lang}/`
+// 		if (appName.indexOf("/") != -1) {
+// 			path = appName.slice(0, appName.lastIndexOf("/") + 1)
+// 			console.log(appName, path)
+// 		}
+// 		let div = document.createElement("div")
+// 		div.innerHTML = marked(md).replace(/src="/g, `$&${path}`)
+
+// 		let [title, logo] = div.querySelector("h1").innerText.split("|")
+// 		logo = `${path}${logo}`
+// 		div.removeChild(div.querySelector("h1"))
+// 		localStorage[appName + "_info"] = JSON.stringify({ title, logo })
+
+// 			;[...div.querySelectorAll("h2")].map(el => el.innerText = el.innerText.split("|")[0])
+// 		let ids = {}
+// 		let hList = [...div.querySelectorAll("h2,h3")].map(el => {
+// 			let text = el.innerText
+// 			if (ids[text] == undefined) {
+// 				el.id = text
+// 				ids[text] = 0
+// 			} else {
+// 				el.id = `${text}-${ids[text]++}`
+// 			}
+// 			return { id: el.id, text, type: el.nodeName.toLocaleLowerCase() }
+// 		})
+// 		localStorage[appName + "_hlist"] = JSON.stringify(hList)
+// 		localStorage[appName + "_html"] = div.innerHTML
+
+// 		if (global.qtObject) {
+// 			let searchIndex = {}
+// 			let key = ""
+// 				;[...div.children].map(el => {
+// 					if (el.localName.match(/^h\d$/) != null) {
+// 						key = el.id
+// 						searchIndex[key] = ""
+// 					} else {
+// 						searchIndex[key] += el.innerText
+// 						searchIndex[key] += "\n"
+// 					}
+// 				})
+// 			global.webChannel.objects.search.addSearchEntry(`${appName}#${localStorage.lang}`, Object.keys(searchIndex), Object.values(searchIndex))
+// 		}
+// 	}
+// 	info() {
+// 		return JSON.parse(localStorage[this.appName + "_info"])
+// 	}
+// 	hlist() {
+// 		return JSON.parse(localStorage[this.appName + "_hlist"])
+// 	}
+// 	html() {
+// 		return localStorage[this.appName + "_html"]
+// 	}
+// }
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+exports.default = function (mdFile, mdData) {
+	var hlist = [];
+	var info = {};
+	var html = "";
+
+	var path = mdFile.slice(0, mdFile.lastIndexOf("/") + 1);
+	var renderer = new _marked2.default.Renderer();
+	var count = {};
+	renderer.heading = function (text, level) {
+		if (level == 1) {
+			var _text$split = text.split("|"),
+			    _text$split2 = _slicedToArray(_text$split, 2),
+			    title = _text$split2[0],
+			    logo = _text$split2[1];
+
+			info = { title: title, logo: logo };
+			return '';
+		}
+		if (level == 2) {
+			text = text.split("|")[0];
+		}
+		var id = void 0;
+		if (count[text] == null) {
+			id = text;
+			count[text] = 1;
+		} else {
+			id = text + '-' + count[text];
+			count[text]++;
+		}
+		var type = 'h' + level;
+		if (level == 2 || level == 3) {
+			hlist.push({ id: id, text: text, type: type });
+		}
+		return '<' + type + ' id="' + id + '">' + text + '</' + type + '>\n';
+	};
+	html = (0, _marked2.default)(mdData, { renderer: renderer }).replace(/src="/g, '$&' + path);
+	return { html: html, hlist: hlist, info: info };
+};
 
 var _marked = require('marked');
 
@@ -513,86 +609,6 @@ var _md2 = _interopRequireDefault(_md);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-var M2H = function () {
-	function M2H(appName, md) {
-		_classCallCheck(this, M2H);
-
-		this.appName = appName;
-
-		var path = global.path + '/' + appName + '/' + global.lang + '/';
-		if (appName.indexOf("/") != -1) {
-			path = appName.slice(0, appName.lastIndexOf("/") + 1);
-			console.log(appName, path);
-		}
-		var div = document.createElement("div");
-		div.innerHTML = (0, _marked2.default)(md).replace(/src="/g, '$&' + path);
-
-		var _div$querySelector$in = div.querySelector("h1").innerText.split("|"),
-		    _div$querySelector$in2 = _slicedToArray(_div$querySelector$in, 2),
-		    title = _div$querySelector$in2[0],
-		    logo = _div$querySelector$in2[1];
-
-		logo = '' + path + logo;
-		div.removeChild(div.querySelector("h1"));
-		localStorage[appName + "_info"] = JSON.stringify({ title: title, logo: logo });[].concat(_toConsumableArray(div.querySelectorAll("h2"))).map(function (el) {
-			return el.innerText = el.innerText.split("|")[0];
-		});
-		var ids = {};
-		var hList = [].concat(_toConsumableArray(div.querySelectorAll("h2,h3"))).map(function (el) {
-			var text = el.innerText;
-			if (ids[text] == undefined) {
-				el.id = text;
-				ids[text] = 0;
-			} else {
-				el.id = text + '-' + ids[text]++;
-			}
-			return { id: el.id, text: text, type: el.nodeName.toLocaleLowerCase() };
-		});
-		localStorage[appName + "_hlist"] = JSON.stringify(hList);
-		localStorage[appName + "_html"] = div.innerHTML;
-
-		if (global.webChannel) {
-			var searchIndex = {};
-			var key = "";[].concat(_toConsumableArray(div.children)).map(function (el) {
-				if (el.localName.match(/^h\d$/) != null) {
-					key = el.id;
-					searchIndex[key] = "";
-				} else {
-					searchIndex[key] += el.innerText;
-					searchIndex[key] += "\n";
-				}
-			});
-			global.webChannel.objects.search.addSearchEntry(appName + '#' + localStorage.lang, Object.keys(searchIndex), Object.values(searchIndex));
-		}
-	}
-
-	_createClass(M2H, [{
-		key: 'info',
-		value: function info() {
-			return JSON.parse(localStorage[this.appName + "_info"]);
-		}
-	}, {
-		key: 'hlist',
-		value: function hlist() {
-			return JSON.parse(localStorage[this.appName + "_hlist"]);
-		}
-	}, {
-		key: 'html',
-		value: function html() {
-			return localStorage[this.appName + "_html"];
-		}
-	}]);
-
-	return M2H;
-}();
-
-exports.default = M2H;
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"marked":28,"md5":29}],6:[function(require,module,exports){
 'use strict';
 
