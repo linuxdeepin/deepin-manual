@@ -19,10 +19,17 @@
 
 #include <QDebug>
 #include <QVBoxLayout>
+#include <QtWidgets/QGraphicsDropShadowEffect>
 
 #include "view/theme_manager.h"
 
 namespace dman {
+
+namespace {
+
+const int kItemHeight = 25;
+
+}  // namespace
 
 SearchCompletionWindow::SearchCompletionWindow(QWidget* parent)
     : QFrame(parent) {
@@ -35,16 +42,56 @@ SearchCompletionWindow::~SearchCompletionWindow() {
 }
 
 void SearchCompletionWindow::autoResize() {
-  // TODO(Shaohua):
-  this->resize(320, 440);
+  result_view_->setFixedHeight(model_->rowCount() * kItemHeight + 2);
+  result_view_->setFixedWidth(this->width() - 2);
+  search_button_->setFixedWidth(this->width() - 2);
+  this->setFixedHeight(result_view_->height() + kItemHeight + 8 + 3);
+  result_view_->setVisible(model_->rowCount() > 0);
+  this->adjustSize();
+  result_view_->raise();
 }
 
 void SearchCompletionWindow::goUp() {
-  qDebug() << Q_FUNC_INFO;
+  if (model_->rowCount() == 0) {
+    search_button_->setChecked(true);
+  } else {
+    if (search_button_->isChecked()) {
+      search_button_->setChecked(false);
+      // Select last item.
+      const QModelIndex idx = model_->index(model_->rowCount() - 1, 0);
+      result_view_->setCurrentIndex(idx);
+    } else {
+      const int up_row = result_view_->currentIndex().row() - 1;
+      if (up_row < 0) {
+        result_view_->setCurrentIndex(QModelIndex());
+        search_button_->setChecked(true);
+      } else {
+        const QModelIndex up_idx = model_->index(up_row, 0);
+        result_view_->setCurrentIndex(up_idx);
+      }
+    }
+  }
 }
 
 void SearchCompletionWindow::goDown() {
-  qDebug() << Q_FUNC_INFO;
+  if (model_->rowCount() == 0) {
+    search_button_->setChecked(true);
+  } else {
+    if (search_button_->isChecked()) {
+      search_button_->setChecked(false);
+      const QModelIndex first_idx = model_->index(0, 0);
+      result_view_->setCurrentIndex(first_idx);
+    } else {
+      const int down_row = result_view_->currentIndex().row() + 1;
+      if (down_row >= model_->rowCount()) {
+        search_button_->setChecked(true);
+        result_view_->setCurrentIndex(QModelIndex());
+      } else {
+        const QModelIndex down_idx = model_->index(down_row, 0);
+        result_view_->setCurrentIndex(down_idx);
+      }
+    }
+  }
 }
 
 void SearchCompletionWindow::setKeyword(const QString& keyword) {
@@ -58,6 +105,7 @@ void SearchCompletionWindow::setResult(const SearchResultList& result) {
     names.append(entry.anchor);
   }
   model_->setStringList(names);
+  this->adjustSize();
 }
 
 void SearchCompletionWindow::initUI() {
@@ -79,7 +127,7 @@ void SearchCompletionWindow::initUI() {
   search_button_->setText(tr("Search \"%1\" in Deepin Manual"));
 
   QVBoxLayout* main_layout = new QVBoxLayout();
-  main_layout->setContentsMargins(0, 0, 0, 0);
+  main_layout->setContentsMargins(0, 4, 0, 3);
   main_layout->setSpacing(0);
   main_layout->addWidget(result_view_, 0, Qt::AlignHCenter | Qt::AlignTop);
   main_layout->addSpacing(1);
@@ -88,6 +136,9 @@ void SearchCompletionWindow::initUI() {
 
   this->setLayout(main_layout);
   this->setContentsMargins(0, 0, 0, 0);
+  this->setMinimumHeight(kItemHeight);
+  result_view_->setMinimumHeight(kItemHeight);
+  result_view_->adjustSize();
 
   ThemeManager::instance()->registerWidget(this);
 }

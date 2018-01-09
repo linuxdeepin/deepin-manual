@@ -43,12 +43,16 @@ void TitleBar::setBackButtonVisible(bool visible) {
 }
 
 void TitleBar::initConnections() {
-  connect(search_edit_, &SearchEdit::textChanged,
-          this, &TitleBar::onSearchTextChanged);
   connect(back_button_, &Dtk::Widget::DImageButton::clicked,
           this, &TitleBar::backButtonClicked);
+  connect(search_edit_, &SearchEdit::textChanged,
+          this, &TitleBar::onSearchTextChanged);
   connect(search_edit_, &SearchEdit::focusOut,
           this, &TitleBar::focusOut);
+  connect(search_edit_, &SearchEdit::upKeyPressed,
+          this, &TitleBar::upKeyPressed);
+  connect(search_edit_, &SearchEdit::downKeyPressed,
+          this, &TitleBar::downKeyPressed);
 }
 
 void TitleBar::initUI() {
