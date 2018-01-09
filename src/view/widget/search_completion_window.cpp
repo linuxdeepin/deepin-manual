@@ -96,6 +96,7 @@ void SearchCompletionWindow::goDown() {
 
 void SearchCompletionWindow::setKeyword(const QString& keyword) {
   search_button_->setText(tr("Search \"%1\" in Deepin Manual").arg(keyword));
+  model_->setStringList(QStringList());
 }
 
 void SearchCompletionWindow::setResult(const SearchResultList& result) {
@@ -105,7 +106,7 @@ void SearchCompletionWindow::setResult(const SearchResultList& result) {
     names.append(entry.anchor);
   }
   model_->setStringList(names);
-  this->adjustSize();
+  this->autoResize();
 }
 
 void SearchCompletionWindow::initUI() {
@@ -115,6 +116,7 @@ void SearchCompletionWindow::initUI() {
   result_view_->setObjectName("ResultList");
   result_view_->setModel(model_);
   result_view_->setMouseTracking(true);
+  result_view_->setEditTriggers(QListView::NoEditTriggers);
   result_view_->setSelectionMode(QListView::SingleSelection);
   result_view_->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
   result_view_->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
@@ -137,6 +139,7 @@ void SearchCompletionWindow::initUI() {
   this->setLayout(main_layout);
   this->setContentsMargins(0, 0, 0, 0);
   this->setMinimumHeight(kItemHeight);
+  this->setFixedWidth(262);
   result_view_->setMinimumHeight(kItemHeight);
   result_view_->adjustSize();
 

@@ -114,8 +114,8 @@ void WebWindow::onSearchTextChanged(const QString& text) {
     // Do real search.
     completion_window_->setKeyword(text);
     completion_window_->show();
-    // Move to below of search edit.
     completion_window_->autoResize();
+    // Move to below of search edit.
     completion_window_->move(this->rect().width() / 2 - 120, 36);
     completion_window_->setFocusPolicy(Qt::StrongFocus);
     completion_window_->raise();
@@ -149,7 +149,6 @@ void WebWindow::onSearchResult(const QString& app_name,
                                const SearchResultList& result) {
   Q_UNUSED(app_name);
   Q_UNUSED(keyword);
-  Q_UNUSED(result);
   if (result.isEmpty()) {
     // Show empty search result in web.
   } else {
