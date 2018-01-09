@@ -84,7 +84,7 @@ export default class Index extends Component {
 				<div className="items">
 					{sysSoft.map(appName => <Item key={appName} appName={appName} />)}
 				</div>
-				<h2><FormattedMessage id="appg" /></h2>
+				<h2><FormattedMessage id="app" /></h2>
 				<div className="items">
 					{appSoft.map(appName => <Item key={appName} appName={appName} />)}
 					{otherSoft.map(appName => <Item key={appName} appName={appName} />)}
