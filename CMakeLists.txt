@@ -12,6 +12,3 @@ add_subdirectory(src)
 
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/PageRoot/www
         DESTINATION ${DMAN_RESOURCE_DIR})
-
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/dman
-        DESTINATION ${DMAN_MANUAL_DIR})
