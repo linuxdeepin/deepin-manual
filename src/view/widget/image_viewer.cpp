@@ -41,9 +41,18 @@ ImageViewer::~ImageViewer() {
 }
 
 void ImageViewer::open(const QString& filepath) {
-  qDebug() << Q_FUNC_INFO << filepath;
   this->show();
-  img_label_->setPixmap(QPixmap(filepath));
+
+  // Escape uri.
+  QString abspath(filepath);
+  if (abspath.contains("://")) {
+    QUrl url(abspath);
+    abspath = url.path();
+  }
+
+  const QPixmap pixmap(abspath);
+  qDebug() << "pixmap size:" << pixmap.size();
+  img_label_->setPixmap(pixmap);
   qDebug() << img_label_->size();
   close_button_->show();
   close_button_->raise();
