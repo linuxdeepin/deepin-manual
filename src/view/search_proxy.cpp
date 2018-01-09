@@ -17,6 +17,8 @@
 
 #include "view/search_proxy.h"
 
+#include <QDebug>
+
 #include "controller/search_manager.h"
 
 dman::SearchProxy::SearchProxy(SearchManager* manager, QObject* parent)
@@ -32,5 +34,6 @@ dman::SearchProxy::~SearchProxy() {
 void dman::SearchProxy::addSearchEntry(const QString& app_name,
                                        const QStringList& anchors,
                                        const QStringList& contents) {
+  qDebug() << Q_FUNC_INFO << anchors;
   emit manager_->addSearchEntry(app_name, anchors, contents);
 }

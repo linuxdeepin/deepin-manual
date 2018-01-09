@@ -18,7 +18,9 @@
 #include "controller/window_manager.h"
 
 #include <DWidgetUtil>
+#include <QWebEngineProfile>
 
+#include "base/consts.h"
 #include "controller/search_manager.h"
 #include "view/web_window.h"
 
@@ -28,6 +30,14 @@ WindowManager::WindowManager(QObject* parent)
     : QObject(parent),
       windows_(),
       search_manager_(new SearchManager(this)) {
+
+  QWebEngineProfile* profile = QWebEngineProfile::defaultProfile();
+  Q_ASSERT(profile != nullptr);
+  // Set web cache folder.
+  QDir cache_dir(GetCacheDir());
+  cache_dir.mkpath(".");
+  profile->setPersistentStoragePath(cache_dir.filePath("data"));
+  profile->setCachePath(cache_dir.filePath("cache"));
 }
 
 WindowManager::~WindowManager() {

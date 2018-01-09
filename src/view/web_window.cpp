@@ -23,9 +23,8 @@
 #include <QResizeEvent>
 #include <QTimer>
 #include <QWebChannel>
-#include <qcef_web_page.h>
-#include <qcef_web_settings.h>
-#include <qcef_web_view.h>
+#include <QWebEnginePage>
+#include <QWebEngineView>
 
 #include "base/consts.h"
 #include "controller/search_manager.h"
@@ -66,7 +65,7 @@ void WebWindow::setAppName(const QString& app_name) {
 void WebWindow::initConnections() {
   connect(title_bar_, &TitleBar::searchTextChanged,
           this, &WebWindow::onSearchTextChanged);
-  connect(web_view_->page(), &QCefWebPage::loadFinished,
+  connect(web_view_->page(), &QWebEnginePage::loadFinished,
           this, &WebWindow::onWebPageLoadFinished);
   connect(title_bar_, &TitleBar::upKeyPressed,
           completion_window_, &SearchCompletionWindow::goUp);
@@ -90,14 +89,12 @@ void WebWindow::initUI() {
   image_viewer_ = new ImageViewer(this);
   image_viewer_proxy_ = new ImageViewerProxy(image_viewer_, this);
 
-  web_view_ = new QCefWebView();
+  web_view_ = new QWebEngineView();
   this->setCentralWidget(web_view_);
 
-  // Disable web security to allow cross-origin accessing.
-  web_view_->page()->settings()->setWebSecurity(QCefWebSettings::StateDisabled);
-
   // Use TitleBarProxy instead.
-  QWebChannel* channel = web_view_->page()->webChannel();
+  QWebChannel* channel = new QWebChannel(this);
+  web_view_->page()->setWebChannel(channel);
   channel->registerObject("imageViewer", image_viewer_proxy_);
   channel->registerObject("search", search_proxy_);
   channel->registerObject("titleBar", title_bar_proxy_);
@@ -111,22 +108,22 @@ void WebWindow::resizeEvent(QResizeEvent* event) {
 }
 
 void WebWindow::onSearchEditFocusOut() {
+  qDebug() << "Focus out";
   QTimer::singleShot(50, [=]() {
-//    this->completion_window_->hide();
+    this->completion_window_->hide();
   });
 }
 
 void WebWindow::onSearchTextChanged(const QString& text) {
   if (text.size() > 1 && completion_window_ != nullptr) {
     // Do real search.
-
     completion_window_->setKeyword(text);
     completion_window_->show();
     // Move to bottom of search edit.
-    completion_window_->move(this->rect().width() / 2 - 80,
-                             40 - 4);
+    const QRect geom = this->geometry();
+    completion_window_->move(geom.x() + this->width() / 2, geom.y());
     completion_window_->setFocusPolicy(Qt::StrongFocus);
-    completion_window_->resize(300, 400);
+    completion_window_->resize(200, 400);
     completion_window_->raise();
     search_manager_->search(search_proxy_->currentApp(), text);
   }
@@ -134,6 +131,8 @@ void WebWindow::onSearchTextChanged(const QString& text) {
 
 void WebWindow::onWebPageLoadFinished(bool ok) {
   if (ok) {
+//    web_view_->page()->runJavaScript(
+//        "function getSystemManualDir() { return '/usr/share/dman'; }");
     if (app_name_.isEmpty()) {
       web_view_->page()->runJavaScript("index()");
     } else {

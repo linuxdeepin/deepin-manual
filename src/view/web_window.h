@@ -22,7 +22,7 @@
 
 #include "controller/search_result.h"
 
-class QCefWebView;
+class QWebEngineView;
 
 namespace dman {
 
@@ -66,7 +66,7 @@ class WebWindow : public Dtk::Widget::DMainWindow {
   ImageViewerProxy* image_viewer_proxy_ = nullptr;
   TitleBar* title_bar_ = nullptr;
   TitleBarProxy* title_bar_proxy_ = nullptr;
-  QCefWebView* web_view_ = nullptr;
+  QWebEngineView* web_view_ = nullptr;
 
  private slots:
   void onSearchEditFocusOut();

@@ -6,8 +6,8 @@ Build-Depends:
  cmake,
  debhelper (>= 9),
  libdtkwidget-dev,
- libqcef-dev,
  libqt5webchannel5-dev,
+ libqt5webengine5-dev,
  qttools5-dev-tools,
 Standards-Version: 3.9.5
 Homepage: https://github.com/linuxdeepin/deepin-manual/
@@ -19,6 +19,7 @@ Architecture: any
 Depends: ${misc:Depends},
  ${shlibs:Depends},
  libqt5sql5-sqlite,
+ libqt5webengine5-icudtl,
 Recommends: dde-help
 Description: Deepin Manual
  Deepin User Manual
