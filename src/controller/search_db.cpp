@@ -34,7 +34,8 @@ const char kTableSchema[] = "CREATE TABLE IF NOT EXISTS search "
     "(id INTEGER PRIMARY KEY AUTOINCREMENT,"
     "appName TEXT,"
     "anchor TEXT,"
-    "content TEXT)";
+    "content TEXT,"
+    "words TEXT)";
 
 const char kIndexSchema[] = "CREATE INDEX IF NOT EXISTS search_idx "
     "ON search "
@@ -42,11 +43,12 @@ const char kIndexSchema[] = "CREATE INDEX IF NOT EXISTS search_idx "
     "appName)";
 
 const char kDeleteEntryByApp[] = "DELETE FROM search WHERE appName = ?";
-const char kInsertEntry[] = "INSERT INTO search(appName, anchor, content) "
-    "VALUES (?, ?, ?)";
+const char kInsertEntry[] = "INSERT INTO search "
+    "(appName, anchor, content, words) "
+    "VALUES (?, ?, ?, ?)";
 
 const char kSelectAll[] = "SELECT * FROM search";
-const char kSelectApp[] = "SELECT * FROm search WHERE appName = ?";
+const char kSelectApp[] = "SELECT * FROM search WHERE appName = ?";
 
 const int kResultLimitation = 10;
 
@@ -67,7 +69,9 @@ QString GetDbName() {
 struct SearchDbPrivate {
   QSqlDatabase db;
   cppjieba::Jieba* jieba = nullptr;
-  QHash<QString, std::vector<std::string>> cache;
+
+  // Key => contents_words pair
+  QHash<QString, QString> cache;
 };
 
 SearchDb::SearchDb(QObject* parent)
@@ -106,23 +110,14 @@ void SearchDb::initConnections() {
           this, &SearchDb::handleSearch);
 }
 
-bool SearchDb::IsKeywordMatch(const QString& content, const QString& keyword) {
-  const std::string keyword_std(keyword.toLower().toStdString());
-  if (!p_->cache.contains(content)) {
-    const std::string content_std(content.toLower().toStdString());
-    std::vector<std::string> words;
-    p_->jieba->CutForSearch(content_std, words);
-    p_->cache.insert(content, words);
+bool SearchDb::IsKeywordMatch(const QString& key,
+                              const QString& words,
+                              const QString& keyword) {
+  if (!p_->cache.contains(key)) {
+    p_->cache.insert(key, words);
   }
 
-  const std::vector<std::string> words = p_->cache.value(content);
-  for (const std::string& word : words) {
-    if (word == keyword_std) {
-      return true;
-    }
-  }
-
-  return false;
+  return p_->cache.value(key).indexOf(keyword) > -1;
 }
 
 void SearchDb::handleInitDb() {
@@ -171,9 +166,22 @@ void SearchDb::handleAddSearchEntry(const QString& app_name,
   query.prepare(kInsertEntry);
   bool ok = true;
   for (int i = 0; ok && (i < anchors.length()); ++i) {
+    const std::string content_std(contents.at(i).toLower().toStdString());
+    std::vector<std::string> word_list;
+    p_->jieba->CutForSearch(content_std, word_list);
+    const std::string words_std = limonp::Join(word_list.begin(),
+                                               word_list.end(),
+                                               "/");
+    const QString words = QString::fromStdString(words_std);
+    const QString key = app_name + anchors.at(i);
+    // Add to memory cache.
+    p_->cache.insert(key, words);
+
+    // Save to database.
     query.bindValue(0, app_name);
     query.bindValue(1, anchors.at(i));
     query.bindValue(2, contents.at(i));
+    query.bindValue(3, words);
     ok = query.exec();
   }
 
@@ -203,8 +211,9 @@ void SearchDb::handleSearch(const QString& app_name, const QString& keyword) {
   }
   if (query.exec()) {
     while (query.next() && (result.size() < kResultLimitation)) {
-      const QString content = query.value(3).toString();
-      if (this->IsKeywordMatch(content, keyword)) {
+      const QString words = query.value(4).toString();
+      const QString key = query.value(1).toString() + query.value(2).toString();
+      if (this->IsKeywordMatch(key, words, keyword)) {
         result.append({
                           query.value(1).toString(),
                           query.value(2).toString(),
