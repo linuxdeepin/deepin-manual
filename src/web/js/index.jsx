@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { Scrollbars } from 'react-custom-scrollbars'
 
-import m2h from './mdToHtml.js'
+import m2h from './mdToHtml'
+import sIndex from "./searchIndex"
 
 class Item extends Component {
 	constructor(props) {
@@ -13,10 +14,11 @@ class Item extends Component {
 			logo: "",
 			show: false
 		}
-		let path = `${global.path}/${this.props.appName}/${global.lang}/`
-		global.readFile(path + "index.md", data => {
-			let [title, logo] = data.substr("# ".length, data.indexOf("\n")).split("|")
-			logo = `${path}${logo}`
+		let file = `${global.path}/${this.props.appName}/${global.lang}/index.md`
+		global.readFile(file, data => {
+			let {html, info} = m2h(file, data)
+			sIndex(file, html)
+			let {title, logo} = info
 			this.setState({ title, logo, show: true })
 		})
 	}
@@ -76,8 +78,8 @@ export default class Index extends Component {
 	}
 	render() {
 		let sysSoft = ['dde']
-		let appSoft = this.state.sequence.filter(appName => this.state.appList.indexOf(appName)!=-1)
-		let otherSoft = this.state.appList.filter(appName => this.state.sequence.indexOf(appName)==-1 && sysSoft.indexOf(appName)==-1)
+		let appSoft = this.state.sequence.filter(appName => this.state.appList.indexOf(appName) != -1)
+		let otherSoft = this.state.appList.filter(appName => this.state.sequence.indexOf(appName) == -1 && sysSoft.indexOf(appName) == -1)
 		return <Scrollbars>
 			<div id="index">
 				<h2><FormattedMessage id="sys" /></h2>
