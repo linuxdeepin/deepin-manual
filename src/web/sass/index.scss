@@ -8,11 +8,12 @@
 		font-size: 30px;
 		line-height: 2em;
 		margin: 1em 0 0;
+		// margin-bottom: 30px;
 		border-bottom: 1px solid #d7d7d7;
 	}
 	.items{
 		.item{
-			padding-right: 50px;
+			// margin-right: 50px;
 			margin-top: 30px;
 			width: 160px;
 			height: 160px;
@@ -21,15 +22,20 @@
 			cursor: pointer;
 			img{
 				width: 96px;
-				margin-bottom: 20px;
+				padding-top: 20px;
+				margin-bottom: 10px;
 			}
 			span{
 				white-space:nowrap;
 				font-size: 16px;
 				font-weight: normal;
 			}
+			margin-right: 50px;
 			&:nth-child(4n){
-				padding-right: 0;
+				margin-right: 0;
+			}
+			&:hover{
+				background-color: rgba(0,0,0,0.05)
 			}
 		}
 	}
