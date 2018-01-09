@@ -47,7 +47,7 @@ export default class Article extends Component {
 	}
 	render() {
 		return <div id="article">
-			<Scrollbars onScroll={e => this.scroll(e)} ref={s => { this.scrollbars = s } }>
+			<Scrollbars autoHide autoHideTimeout={1000} onScroll={e => this.scroll(e)} ref={s => { this.scrollbars = s } }>
 				<div id="read" onClick={this.click.bind(this)} dangerouslySetInnerHTML={{ __html: this.props.html }}></div>
 				<div id="fillblank" />
 			</Scrollbars>

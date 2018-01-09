@@ -237,7 +237,7 @@ var Article = function (_Component) {
 				{ id: 'article' },
 				_react2.default.createElement(
 					_reactCustomScrollbars.Scrollbars,
-					{ onScroll: function onScroll(e) {
+					{ autoHide: true, autoHideTimeout: 1000, onScroll: function onScroll(e) {
 							return _this2.scroll(e);
 						}, ref: function ref(s) {
 							_this2.scrollbars = s;

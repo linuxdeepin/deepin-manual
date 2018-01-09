@@ -1,7 +1,6 @@
 html, body {
   width: 100%;
   min-width: 1024px;
-  font-family: SourceHanSansSC;
   overflow: hidden;
   margin: 0px; }
 
@@ -19,8 +18,8 @@ html, body {
   #article #read {
     margin: auto;
     width: 700px;
-    font-size: 14px;
-    color: #757575;
+    font-size: 13px;
+    color: #000;
     outline: 0px; }
     #article #read h2 {
       font-weight: normal;
@@ -28,6 +27,8 @@ html, body {
       color: #1f94ee;
       margin: 0px;
       padding-top: 23px; }
+    #article #read li {
+      line-height: 24px; }
     #article #read img[src$="svg"] {
       height: 20px;
       vertical-align: middle; }
@@ -39,11 +40,11 @@ html, body {
       line-height: 2em;
       margin: 0; }
     #article #read table {
-      font-size: 14px;
-      color: #888;
+      font-size: 12px;
+      color: #606060;
       border-collapse: collapse;
-      border-top: 2px solid #CBCBCB;
-      border-bottom: 2px solid #CBCBCB;
+      border-top: 2px solid rgba(0, 0, 0, 0.1);
+      border-bottom: 2px solid rgba(0, 0, 0, 0.1);
       white-space: nowrap; }
       #article #read table.block1 {
         width: 100%; }
@@ -54,7 +55,7 @@ html, body {
       #article #read table.block4 {
         width: 25%; }
       #article #read table tr {
-        border-bottom: 1px solid #CBCBCB; }
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
         #article #read table tr td {
           padding: 5px; }
     #article #read a {
@@ -64,8 +65,8 @@ html, body {
       cursor: pointer; }
       #article #read a[href^="http"]:after {
         content: "🔗"; }
-      #article #read a[href^="#"]:after {
-        content: "🏴"; }
+      #article #read a[href^="#"] {
+        color: #0082fa; }
     #article #read .searchWK {
       background-color: yellow; }
   #article #fillblank {
@@ -84,8 +85,10 @@ html, body {
     -webkit-box-pack: center; }
 
 #index {
+  user-select: none;
   width: 805px;
-  margin: auto; }
+  margin: auto;
+  margin-bottom: 100px; }
   #index h2 {
     font-weight: 300;
     font-size: 30px;
@@ -94,12 +97,12 @@ html, body {
     border-bottom: 1px solid #d7d7d7; }
   #index .items .item {
     margin-top: 30px;
+    margin-right: 50px;
     width: 160px;
     height: 160px;
     display: inline-block;
     text-align: center;
-    cursor: pointer;
-    margin-right: 50px; }
+    cursor: pointer; }
     #index .items .item img {
       width: 96px;
       padding-top: 20px;
@@ -111,6 +114,7 @@ html, body {
     #index .items .item:nth-child(4n) {
       margin-right: 0; }
     #index .items .item:hover {
+      border-radius: 4px;
       background-color: rgba(0, 0, 0, 0.05); }
 
 #nav {
@@ -122,7 +126,7 @@ html, body {
   font-stretch: normal;
   line-height: normal;
   letter-spacing: normal;
-  border-right: #F3F3F3 solid 2px; }
+  border-right: 1px solid rgba(0, 0, 0, 0.1); }
   #nav h2 {
     cursor: pointer;
     font-size: 16px;
@@ -143,4 +147,6 @@ html, body {
     text-indent: 44px; }
   #nav .hash {
     border-right: #30A5F9 5px solid;
-    background-color: #D5EDFE; }
+    background-color: #D5EDFE;
+    color: #2ca7f8;
+    font-weight: 500; }

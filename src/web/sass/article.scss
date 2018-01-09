@@ -4,8 +4,8 @@
 	#read {
 		margin: auto;
 		width:700px;
-		font-size: 14px;
-		color: #757575;
+		font-size: 13px;
+		color: #000;
 		outline: 0px;
 		h2{
 			font-weight: normal;
@@ -13,6 +13,9 @@
 			color: #1f94ee;
 			margin: 0px;
 			padding-top: 23px;
+		}
+		li{
+			line-height: 24px
 		}
 		img {
 			//svg图片内嵌同行
@@ -32,12 +35,11 @@
 			margin: 0;
 		}
 		table {
-			font-size: 14px;
-			$borderStyle:solid #CBCBCB;
-			color: #888;
+			font-size: 12px;
+			color: #606060;
 			border-collapse:collapse;
-			border-top: 2px $borderStyle;
-			border-bottom: 2px $borderStyle;
+			border-top: 2px solid rgba(0,0,0,0.1);
+			border-bottom: 2px solid rgba(0,0,0,0.1);
 			white-space: nowrap;
 			//表格block等级
 			@for $i from 1 to 5{
@@ -46,7 +48,7 @@
 				}
 			}
 			tr {
-				border-bottom: 1px $borderStyle;
+				border-bottom: 1px solid rgba(0,0,0,0.05);
 				td {
 					padding: 5px;
 				}
@@ -63,9 +65,7 @@
 				}
 			}
 			&[href^="#"]{
-				&:after{
-					content: "🏴";
-				}
+				color: #0082fa;
 			}
 		}
 		.searchWK{

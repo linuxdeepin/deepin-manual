@@ -9,7 +9,7 @@
 	font-stretch: normal;
 	line-height: normal;
 	letter-spacing: normal;
-	border-right: #F3F3F3 solid 2px;
+	border-right: 1px solid rgba(0,0,0,0.1);
 	h2{
 		cursor: pointer;
 		font-size: 16px;
@@ -33,5 +33,7 @@
 	.hash{
 		border-right: #30A5F9 5px solid;
 		background-color: #D5EDFE;
+		color: #2ca7f8;
+		font-weight: 500;
 	}
 }
