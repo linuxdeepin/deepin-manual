@@ -395,10 +395,10 @@ var Index = function (_Component2) {
 
 			var sysSoft = ['dde'];
 			var appSoft = this.state.sequence.filter(function (appName) {
-				return _this4.state.appList.includes(appName);
+				return _this4.state.appList.indexOf(appName) != -1;
 			});
 			var otherSoft = this.state.appList.filter(function (appName) {
-				return !_this4.state.sequence.includes(appName) && !sysSoft.includes(appName);
+				return _this4.state.sequence.indexOf(appName) == -1 && sysSoft.indexOf(appName) == -1;
 			});
 			return _react2.default.createElement(
 				_reactCustomScrollbars.Scrollbars,
