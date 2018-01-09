@@ -74,7 +74,8 @@ void WebWindow::initConnections() {
 }
 
 void WebWindow::initUI() {
-  completion_window_ = new SearchCompletionWindow();
+  completion_window_ = new SearchCompletionWindow(this);
+  completion_window_->hide();
 
   title_bar_ = new TitleBar();
   title_bar_proxy_ = new TitleBarProxy(title_bar_, this);
@@ -103,7 +104,6 @@ void WebWindow::resizeEvent(QResizeEvent* event) {
 }
 
 void WebWindow::onSearchEditFocusOut() {
-  qDebug() << "Focus out";
   QTimer::singleShot(50, [=]() {
     this->completion_window_->hide();
   });
@@ -114,11 +114,10 @@ void WebWindow::onSearchTextChanged(const QString& text) {
     // Do real search.
     completion_window_->setKeyword(text);
     completion_window_->show();
-    // Move to bottom of search edit.
-    const QRect geom = this->geometry();
-    completion_window_->move(geom.x() + this->width() / 2, geom.y());
+    // Move to below of search edit.
+    completion_window_->autoResize();
+    completion_window_->move(this->rect().width() / 2 - 120, 36);
     completion_window_->setFocusPolicy(Qt::StrongFocus);
-    completion_window_->resize(200, 400);
     completion_window_->raise();
     search_manager_->search(search_proxy_->currentApp(), text);
   }
@@ -126,8 +125,6 @@ void WebWindow::onSearchTextChanged(const QString& text) {
 
 void WebWindow::onWebPageLoadFinished(bool ok) {
   if (ok) {
-//    web_view_->page()->runJavaScript(
-//        "function getSystemManualDir() { return '/usr/share/dman'; }");
     if (app_name_.isEmpty()) {
       web_view_->page()->runJavaScript("index()");
     } else {

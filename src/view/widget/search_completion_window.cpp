@@ -35,7 +35,8 @@ SearchCompletionWindow::~SearchCompletionWindow() {
 }
 
 void SearchCompletionWindow::autoResize() {
-
+  // TODO(Shaohua):
+  this->resize(320, 440);
 }
 
 void SearchCompletionWindow::goUp() {
