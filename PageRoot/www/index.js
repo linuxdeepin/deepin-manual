@@ -113,6 +113,7 @@ new QWebChannel(qt.webChannelTransport, qtInit);
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./index.jsx":3,"./main.jsx":4,"./mdToHtml":5,"react":55,"react-dom":51}],2:[function(require,module,exports){
+(function (global){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -189,11 +190,9 @@ var Article = function (_Component) {
 			switch (e.target.nodeName) {
 				case "IMG":
 					e.preventDefault();
-					var src = e.target.getAttribute("src");
-					if (src.indexOf("svg") == -1) {
-						console.log("图片全屏查看");
-						this.setState({ seeImg: src });
-					}
+					var src = e.target.src;
+					console.log("imageViewer", src);
+					global.qtObjects.imageViewer.open(src);
 					break;
 			}
 		}
@@ -231,6 +230,7 @@ var Article = function (_Component) {
 
 exports.default = Article;
 
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"react":55,"react-custom-scrollbars":43,"react-dom":51}],3:[function(require,module,exports){
 (function (global){
 'use strict';
