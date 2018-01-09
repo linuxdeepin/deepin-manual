@@ -9,6 +9,10 @@
         <file>light/images/back_hover.svg</file>
         <file>light/images/back_normal.svg</file>
         <file>light/images/back_press.svg</file>
+        <file>light/images/close_hover.svg</file>
+        <file>light/images/close_normal.svg</file>
+        <file>light/images/close_press.svg</file>
+        <file>light/ImageViewer.css</file>
         <file>light/SearchCompletionWindow.css</file>
         <file>light/TitleBar.css</file>
     </qresource>

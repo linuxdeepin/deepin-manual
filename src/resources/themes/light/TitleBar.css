@@ -4,7 +4,7 @@
 }
 
 #BackButton {
-  qproperty-normalPic: url(:/dark/images/back_normal.svg);
-  qproperty-hoverPic: url(:/dark/images/back_hover.svg);
-  qproperty-pressPic: url(:/dark/images/back_press.svg);
+  qproperty-normalPic: url(:/light/images/back_normal.svg);
+  qproperty-hoverPic: url(:/light/images/back_hover.svg);
+  qproperty-pressPic: url(:/light/images/back_press.svg);
 }

@@ -147,6 +147,21 @@ set(SEARCH_DEMO_FILES
 add_executable(search-demo ${SEARCH_DEMO_FILES})
 target_link_libraries(search-demo ${LINK_LIBS})
 
+set(IMAGE_VIEWER_DEMO_FILES
+    app/image_viewer_demo.cpp
+    base/file_util.cpp
+    base/file_util.h
+    view/theme_manager.cpp
+    view/theme_manager.h
+    view/widget/image_viewer.cpp
+    view/widget/image_viewer.h
+    )
+add_executable(image-viewer-demo
+               ${IMAGE_VIEWER_DEMO_FILES}
+               ${RESOURCES_FILES}
+               )
+target_link_libraries(image-viewer-demo ${LINK_LIBS})
+
 install(TARGETS dman
         DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 

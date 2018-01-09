@@ -15,31 +15,15 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef DEEPIN_MANUAL_VIEW_WIDGETS_IMAGE_VIEWER_H
-#define DEEPIN_MANUAL_VIEW_WIDGETS_IMAGE_VIEWER_H
+#include <QApplication>
 
-#include <dabstractdialog.h>
-#include <dimagebutton.h>
+#include "view/widget/image_viewer.h"
 
-class QLabel;
+int main(int argc, char** argv) {
+  QApplication app(argc, argv);
 
-namespace dman {
+  dman::ImageViewer viewer;
+  viewer.open("/tmp/a.jpg");
 
-class ImageViewer : public Dtk::Widget::DAbstractDialog {
-  Q_OBJECT
- public:
-  explicit ImageViewer(QWidget* parent = nullptr);
-  ~ImageViewer() override;
-
- public slots:
-  void open(const QString& filepath);
-
- private:
-  void initUI();
-  QLabel* img_label_ = nullptr;
-  Dtk::Widget::DImageButton* close_button_ = nullptr;
-};
-
-}  // namespace dman
-
-#endif  // DEEPIN_MANUAL_VIEW_WIDGETS_IMAGE_VIEWER_H
+  return app.exec();
+}

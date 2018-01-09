@@ -1,0 +1,10 @@
+
+#CloseButton {
+  qproperty-normalPic: url(:/light/images/close_normal.svg);
+  qproperty-hoverPic: url(:/light/images/close_hover.svg);
+  qproperty-pressPic: url(:/light/images/close_press.svg);
+}
+
+#ImageViewer {
+  qproperty-backgroundColor: transparent;
+}

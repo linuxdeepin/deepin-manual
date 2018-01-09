@@ -17,10 +17,23 @@
 
 #include "view/widget/image_viewer.h"
 
+#include <QDebug>
+#include <QLabel>
+#include <QResizeEvent>
+#include <QStackedLayout>
+#include <QtCore/QTimer>
+
+#include "view/theme_manager.h"
+
 namespace dman {
 
-ImageViewer::ImageViewer(QWidget* parent) : QDialog(parent) {
+ImageViewer::ImageViewer(QWidget* parent)
+    : Dtk::Widget::DAbstractDialog(parent) {
+  this->setObjectName("ImageViewer");
+  this->initUI();
 
+  connect(close_button_, &Dtk::Widget::DImageButton::clicked,
+          this, &ImageViewer::close);
 }
 
 ImageViewer::~ImageViewer() {
@@ -28,7 +41,32 @@ ImageViewer::~ImageViewer() {
 }
 
 void ImageViewer::open(const QString& filepath) {
-  Q_UNUSED(filepath);
+  qDebug() << Q_FUNC_INFO << filepath;
+  this->show();
+  img_label_->setPixmap(QPixmap(filepath));
+  qDebug() << img_label_->size();
+  close_button_->show();
+  close_button_->raise();
+}
+
+void ImageViewer::initUI() {
+  img_label_ = new QLabel();
+  img_label_->setObjectName("ImageLabel");
+
+  QStackedLayout* main_layout = new QStackedLayout();
+  main_layout->setContentsMargins(0, 0, 0, 0);
+  main_layout->setSpacing(0);
+  main_layout->addWidget(img_label_);
+
+  close_button_ = new Dtk::Widget::DImageButton(this);
+  close_button_->setObjectName("CloseButton");
+  close_button_->raise();
+  close_button_->setFixedSize(24, 24);
+
+  this->setLayout(main_layout);
+  this->setContentsMargins(12, 12, 12, 12);
+
+  ThemeManager::instance()->registerWidget(this);
 }
 
 }  // namespace dman
