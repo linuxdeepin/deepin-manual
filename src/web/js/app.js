@@ -13,7 +13,7 @@ import Main from "./main.jsx"
 import m2h from "./mdToHtml"
 
 global.lang = navigator.language.replace(/-/, '_')
-global.path = getSystemManualDir("")
+global.path = "/usr/share/dman"
 global.readFile = (fileName, callback) => {
 	let xhr = new XMLHttpRequest()
 	xhr.open("GET", fileName)

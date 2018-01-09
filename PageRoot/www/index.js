@@ -47,7 +47,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 (0, _reactIntl.addLocaleData)([].concat(_toConsumableArray(_zh2.default), _toConsumableArray(_en2.default)));
 
 global.lang = navigator.language.replace(/-/, '_');
-global.path = getSystemManualDir("");
+global.path = "/usr/share/dman";
 global.readFile = function (fileName, callback) {
 	var xhr = new XMLHttpRequest();
 	xhr.open("GET", fileName);
