@@ -157,5 +157,8 @@ if (NOT DEFINED JIEBA_DICT)
 endif ()
 add_definitions(-DJIEBA_DICT="${JIEBA_DICT}")
 
-install(DIRECTORY ${JIEBA_DICT_SRC}
-        DESTINATION ${JIEBA_DICT})
+install(DIRECTORY ${JIEBA_DICT_SRC}/
+        DESTINATION ${JIEBA_DICT}
+        PATTERN "pos_dict" EXCLUDE
+        PATTERN "README.md" EXCLUDE
+        )
