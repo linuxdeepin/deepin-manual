@@ -17,11 +17,12 @@
 
 #include "view/widget/image_viewer.h"
 
+#include <QApplication>
 #include <QDebug>
-#include <QLabel>
 #include <QResizeEvent>
 #include <QStackedLayout>
 #include <QtCore/QTimer>
+#include <QDesktopWidget>
 
 #include "view/theme_manager.h"
 
@@ -57,12 +58,21 @@ void ImageViewer::open(const QString& filepath) {
     abspath = url.path();
   }
 
-  const QPixmap pixmap(abspath);
-  qDebug() << "pixmap size:" << pixmap.size();
+  Q_ASSERT(this->parentWidget() != nullptr);
+
+  QPixmap pixmap(abspath);
+  const QRect rect = qApp->desktop()->screenGeometry(this->parentWidget());
+  // Resize image to fix screen.
+  const int pixmap_max_width = static_cast<int>(rect.width() * 0.8);
+  const int pixmap_max_height = static_cast<int>(rect.height() * 0.8);
+  if ((pixmap.width() > pixmap_max_width) ||
+      (pixmap.height() > pixmap_max_height)) {
+    pixmap = pixmap.scaled(pixmap_max_width, pixmap_max_height);
+  }
+
   const int win_width = pixmap.width() + kBorderSize;
   const int win_height = pixmap.height() + kBorderSize;
   this->setFixedSize(win_width, win_height);
-  // TODO(Shaohua): Resize image to fix screen.
   img_label_->setPixmap(pixmap);
 
   // Move close button to top-right corner of window.
