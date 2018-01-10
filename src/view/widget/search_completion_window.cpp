@@ -107,7 +107,8 @@ void SearchCompletionWindow::onEnterPressed() {
 }
 
 void SearchCompletionWindow::setKeyword(const QString& keyword) {
-  search_button_->setText(tr("Search \"%1\" in Deepin Manual").arg(keyword));
+  search_button_->setText(
+      QObject::tr("Search \"%1\" in the full text").arg(keyword));
   model_->setStringList(QStringList());
 }
 
@@ -150,7 +151,7 @@ void SearchCompletionWindow::initUI() {
   search_button_->setObjectName("SearchButton");
   search_button_->setCheckable(true);
   search_button_->setFixedHeight(25);
-  search_button_->setText(tr("Search \"%1\" in Deepin Manual"));
+  search_button_->setText(QObject::tr("Search \"%1\" in the full text"));
 
   QVBoxLayout* main_layout = new QVBoxLayout();
   main_layout->setContentsMargins(0, 4, 0, 3);
