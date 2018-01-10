@@ -80,7 +80,7 @@ global.openFile = function (file, hash) {
 global.openApp = function (appName) {
 	if (global.qtObjects == null) {
 		delay = function delay() {
-			return global.open(appName);
+			return global.openApp(appName);
 		};
 		return;
 	}

@@ -52,7 +52,7 @@ global.openFile = (file, hash) => {
 }
 global.openApp = (appName) => {
 	if (global.qtObjects == null) {
-		delay = () => global.open(appName)
+		delay = () => global.openApp(appName)
 		return
 	}
 	let file = `${global.path}/${appName}/${global.lang}/index.md`
