@@ -59,11 +59,8 @@ void ImageViewer::open(const QString& filepath) {
     abspath = url.path();
   }
 
-  Q_ASSERT(this->parentWidget() != nullptr);
-
   QPixmap pixmap(abspath);
-  const QRect screen_rect =
-      qApp->desktop()->screenGeometry(this->parentWidget());
+  const QRect screen_rect = qApp->desktop()->screenGeometry(QCursor::pos());
   // Resize image to fix screen.
   const int pixmap_max_width = static_cast<int>(screen_rect.width() * 0.8);
   const int pixmap_max_height = static_cast<int>(screen_rect.height() * 0.8);
