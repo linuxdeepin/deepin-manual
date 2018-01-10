@@ -35,6 +35,7 @@ class SearchDb : public QObject {
  signals:
   void initDb();
   void addSearchEntry(const QString& app_name,
+                      const QString& lang,
                       const QStringList& anchors,
                       const QStringList& contents);
 
@@ -56,6 +57,7 @@ class SearchDb : public QObject {
  private slots:
   void handleInitDb();
   void handleAddSearchEntry(const QString& app_name,
+                            const QString& lang,
                             const QStringList& anchors,
                             const QStringList& contents);
   void handleSearch(const QString& keyword);

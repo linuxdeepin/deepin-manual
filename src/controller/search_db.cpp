@@ -33,22 +33,20 @@ namespace {
 const char kTableSchema[] = "CREATE TABLE IF NOT EXISTS search "
     "(id INTEGER PRIMARY KEY AUTOINCREMENT,"
     "appName TEXT,"
+    "lang TEXT,"
     "anchor TEXT,"
     "content TEXT,"
     "words TEXT)";
 
 const char kIndexSchema[] = "CREATE INDEX IF NOT EXISTS search_idx "
-    "ON search "
-    "(id,"
-    "appName)";
+    "ON search (id, appName, lang)";
 
 const char kDeleteEntryByApp[] = "DELETE FROM search WHERE appName = ?";
 const char kInsertEntry[] = "INSERT INTO search "
-    "(appName, anchor, content, words) "
-    "VALUES (?, ?, ?, ?)";
+    "(appName, lang, anchor, content, words) "
+    "VALUES (?, ?, ?, ?, ?)";
 
 const char kSelectAll[] = "SELECT * FROM search";
-const char kSelectApp[] = "SELECT * FROM search WHERE appName = ?";
 
 const int kResultLimitation = 10;
 
@@ -63,6 +61,12 @@ QString GetDbName() {
   cache_dir.mkpath(".");
   return cache_dir.absoluteFilePath("search_entry.db");
 }
+
+struct SearchEntryCache {
+  QString app_name;
+  QString lang;
+  QString words;
+};
 
 }  // namespace
 
@@ -166,6 +170,7 @@ void SearchDb::handleInitDb() {
 }
 
 void SearchDb::handleAddSearchEntry(const QString& app_name,
+                                    const QString& lang,
                                     const QStringList& anchors,
                                     const QStringList& contents) {
   Q_ASSERT(p_->db.isOpen());
@@ -203,9 +208,10 @@ void SearchDb::handleAddSearchEntry(const QString& app_name,
 
     // Save to database.
     query.bindValue(0, app_name);
-    query.bindValue(1, anchors.at(i));
-    query.bindValue(2, contents.at(i));
-    query.bindValue(3, words);
+    query.bindValue(1, lang);
+    query.bindValue(2, anchors.at(i));
+    query.bindValue(3, contents.at(i));
+    query.bindValue(4, words);
     ok = query.exec();
   }
   p_->cache.insert(app_name, anchor_dict);

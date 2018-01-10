@@ -39,6 +39,7 @@ class SearchManager : public QObject {
 
  signals:
   void addSearchEntry(const QString& app_name,
+                      const QString& lang,
                       const QStringList& anchors,
                       const QStringList& contents);
   void search(const QString& keyword);

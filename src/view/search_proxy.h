@@ -50,6 +50,7 @@ class SearchProxy : public QObject {
   void setCurrentApp(const QString& app_name);
 
   void addSearchEntry(const QString& app_name,
+                      const QString& lang,
                       const QStringList& anchors,
                       const QStringList& contents);
 
