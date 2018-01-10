@@ -71,7 +71,6 @@ void ImageViewer::open(const QString& filepath) {
                            Qt::KeepAspectRatio,
                            Qt::SmoothTransformation);
   }
-  qDebug() << "pixmap size:" << pixmap.size();
 
   img_label_->setPixmap(pixmap);
   img_label_->setFixedSize(pixmap.width(), pixmap.height());
@@ -128,7 +127,7 @@ void ImageViewer::mouseMoveEvent(QMouseEvent* event) {
 void ImageViewer::paintEvent(QPaintEvent* event) {
   Q_UNUSED(event);
   QPainter painter(this);
-  painter.fillRect(this->geometry(), QColor(128, 128, 128, 100));
+  painter.fillRect(this->geometry(), QColor(0, 0, 0, 77));
 }
 
 }  // namespace dman
