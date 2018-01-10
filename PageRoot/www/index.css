@@ -115,6 +115,27 @@ html, body {
     left: 60px;
     top: -4px;
     box-shadow: 0 -1px rgba(0, 0, 0, 0.1), -1px 0 rgba(0, 0, 0, 0.1); }
+  #article #contextMenu {
+    user-select: none;
+    font-size: 13px;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 60px;
+    border-radius: 3px;
+    box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.1), inset 0 2px 0 0 rgba(255, 255, 255, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.9);
+    margin: auto;
+    text-align: center;
+    z-index: 999; }
+    #article #contextMenu h4 {
+      font-weight: unset;
+      margin: 4px 0;
+      padding: 2px 0;
+      width: 100%;
+      cursor: pointer; }
+    #article #contextMenu h4:hover {
+      background-color: #0082fa; }
 
 #index {
   user-select: none;

@@ -192,7 +192,8 @@ var Article = function (_Component) {
 
 		_this.hash = _this.props.hash;
 		_this.state = {
-			preview: null
+			preview: null,
+			contentMenuStyle: null
 		};
 		global.qtObjects.search.match.connect(function (hash) {
 			console.log("搜索跳转", hash);
@@ -216,8 +217,8 @@ var Article = function (_Component) {
 	}, {
 		key: 'scroll',
 		value: function scroll() {
-			if (this.state.preview != null) {
-				this.setState({ preview: null });
+			if (this.state.preview != null || this.state.contentMenuStyle != null) {
+				this.setState({ preview: null, contentMenuStyle: null });
 			}
 			var hList = _reactDom2.default.findDOMNode(this).querySelectorAll("h2,h3");
 			var hash = hList[0].id;
@@ -287,16 +288,16 @@ var Article = function (_Component) {
 	}, {
 		key: 'click',
 		value: function click(e) {
-			if (this.state.preview != null) {
-				this.setState({ preview: null });
-			}
 			switch (e.target.nodeName) {
 				case "IMG":
 					e.preventDefault();
 					var src = e.target.src;
+					if (src.indexOf(".svg") != -1) {
+						return;
+					}
 					console.log("imageViewer", src);
 					global.qtObjects.imageViewer.open(src);
-					break;
+					return;
 				case "A":
 					var dmanProtocol = "dman://";
 					var hashProtocol = "#";
@@ -305,7 +306,7 @@ var Article = function (_Component) {
 						case href.indexOf(hashProtocol):
 							e.preventDefault();
 							this.props.setHash(href.slice(1));
-							break;
+							return;
 						case href.indexOf(dmanProtocol):
 							e.preventDefault();
 
@@ -316,8 +317,30 @@ var Article = function (_Component) {
 
 							var rect = e.target.getBoundingClientRect();
 							this.showPreview(appName, hash, rect);
-							break;
+							return;
 					}
+			}
+			if (window.getSelection().toString() != "") {
+				if (this.state.contentMenuStyle != null) {
+					this.setState({ contentMenuStyle: null });
+				}
+				return;
+			}
+			if (this.state.preview != null || this.state.contentMenuStyle != null) {
+				this.setState({ preview: null, contentMenuStyle: null });
+			}
+		}
+	}, {
+		key: 'contextMenu',
+		value: function contextMenu(e) {
+			e.preventDefault();
+			if (window.getSelection().toString() != "") {
+				this.setState({
+					contentMenuStyle: {
+						top: e.clientY,
+						left: e.clientX
+					}
+				});
 			}
 		}
 	}, {
@@ -327,7 +350,9 @@ var Article = function (_Component) {
 
 			return _react2.default.createElement(
 				'div',
-				{ id: 'article' },
+				{ id: 'article', onContextMenu: function onContextMenu(e) {
+						return _this3.contextMenu(e);
+					}, onClick: this.click.bind(this) },
 				_react2.default.createElement(
 					_reactCustomScrollbars.Scrollbars,
 					{ autoHide: true, autoHideTimeout: 1000, onScroll: function onScroll(e) {
@@ -335,7 +360,7 @@ var Article = function (_Component) {
 						}, ref: function ref(s) {
 							_this3.scrollbars = s;
 						} },
-					_react2.default.createElement('div', { className: 'read', onClick: this.click.bind(this), dangerouslySetInnerHTML: { __html: this.props.html } }),
+					_react2.default.createElement('div', { className: 'read', dangerouslySetInnerHTML: { __html: this.props.html } }),
 					_react2.default.createElement('div', { id: 'fillblank' })
 				),
 				this.state.preview != null && _react2.default.createElement(
@@ -345,6 +370,17 @@ var Article = function (_Component) {
 						_reactCustomScrollbars.Scrollbars,
 						null,
 						_react2.default.createElement('div', { className: 'read', dangerouslySetInnerHTML: { __html: this.state.preview.html } })
+					)
+				),
+				this.state.contentMenuStyle != null && _react2.default.createElement(
+					'div',
+					{ id: 'contextMenu', style: this.state.contentMenuStyle },
+					_react2.default.createElement(
+						'h4',
+						{ onClick: function onClick() {
+								return document.execCommand('Copy');
+							} },
+						'\u590D\u5236'
 					)
 				)
 			);

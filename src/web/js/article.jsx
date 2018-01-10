@@ -9,7 +9,8 @@ export default class Article extends Component {
 		super(props)
 		this.hash = this.props.hash
 		this.state = {
-			preview: null
+			preview: null,
+			contentMenuStyle: null,
 		}
 		global.qtObjects.search.match.connect(hash => {
 			console.log("搜索跳转", hash)
@@ -27,8 +28,8 @@ export default class Article extends Component {
 		}
 	}
 	scroll() {
-		if (this.state.preview != null) {
-			this.setState({ preview: null })
+		if (this.state.preview != null || this.state.contentMenuStyle != null) {
+			this.setState({ preview: null, contentMenuStyle: null })
 		}
 		let hList = ReactDOM.findDOMNode(this).querySelectorAll("h2,h3")
 		let hash = hList[0].id
@@ -86,16 +87,16 @@ export default class Article extends Component {
 		})
 	}
 	click(e) {
-		if (this.state.preview != null) {
-			this.setState({ preview: null })
-		}
 		switch (e.target.nodeName) {
 			case "IMG":
 				e.preventDefault()
 				let src = e.target.src
+				if (src.indexOf(".svg") != -1) {
+					return
+				}
 				console.log("imageViewer", src)
 				global.qtObjects.imageViewer.open(src)
-				break
+				return
 			case "A":
 				const dmanProtocol = "dman://"
 				const hashProtocol = "#"
@@ -104,20 +105,40 @@ export default class Article extends Component {
 					case href.indexOf(hashProtocol):
 						e.preventDefault()
 						this.props.setHash(href.slice(1))
-						break
+						return
 					case href.indexOf(dmanProtocol):
 						e.preventDefault()
 						const [appName, hash] = href.slice(dmanProtocol.length + 1).split("#")
 						const rect = e.target.getBoundingClientRect()
 						this.showPreview(appName, hash, rect)
-						break
+						return
 				}
+		}
+		if (window.getSelection().toString() != "") {
+			if (this.state.contentMenuStyle != null) {
+				this.setState({ contentMenuStyle: null })
+			}
+			return
+		}
+		if (this.state.preview != null || this.state.contentMenuStyle != null) {
+			this.setState({ preview: null, contentMenuStyle: null })
+		}
+	}
+	contextMenu(e) {
+		e.preventDefault()
+		if (window.getSelection().toString() != "") {
+			this.setState({
+				contentMenuStyle: {
+					top: e.clientY,
+					left: e.clientX
+				}
+			})
 		}
 	}
 	render() {
-		return <div id="article">
+		return <div id="article" onContextMenu={e => this.contextMenu(e)} onClick={this.click.bind(this)} >
 			<Scrollbars autoHide autoHideTimeout={1000} onScroll={e => this.scroll(e)} ref={s => { this.scrollbars = s } }>
-				<div className="read" onClick={this.click.bind(this)} dangerouslySetInnerHTML={{ __html: this.props.html }}></div>
+				<div className="read" dangerouslySetInnerHTML={{ __html: this.props.html }}></div>
 				<div id="fillblank" />
 			</Scrollbars>
 			{
@@ -126,6 +147,12 @@ export default class Article extends Component {
 					<Scrollbars>
 						<div className="read" dangerouslySetInnerHTML={{ __html: this.state.preview.html }}></div>
 					</Scrollbars>
+				</div>
+			}
+			{
+				this.state.contentMenuStyle != null &&
+				<div id="contextMenu" style={this.state.contentMenuStyle}>
+					<h4 onClick={() => document.execCommand('Copy')}>复制</h4>
 				</div>
 			}
 		</div>
