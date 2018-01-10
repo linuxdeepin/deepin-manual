@@ -77,7 +77,7 @@ export default class Index extends Component {
 		let sysSoft = ['dde']
 		let appSoft = this.state.sequence.filter(appName => this.state.appList.indexOf(appName) != -1)
 		let otherSoft = this.state.appList.filter(appName => this.state.sequence.indexOf(appName) == -1 && sysSoft.indexOf(appName) == -1)
-		return <Scrollbars>
+		return <Scrollbars >
 			<div id="index">
 				<h2><FormattedMessage id="sys" /></h2>
 				<div className="items">

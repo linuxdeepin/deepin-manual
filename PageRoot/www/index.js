@@ -99,16 +99,7 @@ global.openFile = function (file) {
 		(0, _searchIndex2.default)(file, null, html);
 	});
 };
-global.openFolder = function (folder) {
-	if (global.qtObjects == null) {
-		delay = function delay() {
-			return global.openFolder(folder);
-		};
-		return;
-	}
-	var file = folder + '/' + global.lang + '/index.md';
-	global.openFile(file);
-};
+
 global.openApp = function (appName) {
 	if (global.qtObjects == null) {
 		delay = function delay() {
@@ -137,14 +128,12 @@ global.index = function () {
 	), document.body);
 };
 function searchIndexCheck() {
-	var _this = this;
-
 	global.readFile(global.path, function (data) {
 		var appList = data.match(/addRow\("([^.][^"]+)"/g).map(function (r) {
 			return r.match(/"([^"]+)"/)[1];
 		});
 		appList.map(function (appName) {
-			var file = global.path + '/' + _this.props.appName + '/' + global.lang + '/index.md';
+			var file = global.path + '/' + appName + '/' + global.lang + '/index.md';
 			global.readFile(file, function (data) {
 				return (0, _searchIndex2.default)(file, data);
 			});
@@ -210,10 +199,6 @@ var Article = function (_Component) {
 			preview: null,
 			contentMenuStyle: null
 		};
-		global.qtObjects.search.match.connect(function (hash) {
-			console.log("搜索跳转", hash);
-			props.setHash(hash);
-		});
 		return _this;
 	}
 
@@ -845,7 +830,7 @@ exports.default = function (file, data, html) {
 		searchIndex[key] += el.innerText;
 		searchIndex[key] += "\n";
 	}
-	global.qtObjects.search.addSearchEntry(file, Object.keys(searchIndex), Object.values(searchIndex));
+	global.qtObjects.search.addSearchEntry(file, global.lang, Object.keys(searchIndex), Object.values(searchIndex));
 };
 
 var _md = require('md5');

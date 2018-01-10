@@ -31,5 +31,5 @@ export default function (file, data, html) {
 		searchIndex[key] += el.innerText
 		searchIndex[key] += "\n"
 	}
-	global.qtObjects.search.addSearchEntry(file, Object.keys(searchIndex), Object.values(searchIndex))
+	global.qtObjects.search.addSearchEntry(file, global.lang, Object.keys(searchIndex), Object.values(searchIndex))
 }

@@ -57,14 +57,7 @@ global.openFile = file => {
 		sIndex(file, null, html)
 	})
 }
-global.openFolder = folder => {
-	if (global.qtObjects == null) {
-		delay = () => global.openFolder(folder)
-		return
-	}
-	let file = `${folder}/${global.lang}/index.md`
-	global.openFile(file)
-}
+
 global.openApp = (appName) => {
 	if (global.qtObjects == null) {
 		delay = () => global.open(appName)
@@ -91,7 +84,7 @@ function searchIndexCheck() {
 				return r.match(/"([^"]+)"/)[1]
 			})
 		appList.map(appName => {
-			const file = `${global.path}/${this.props.appName}/${global.lang}/index.md`
+			const file = `${global.path}/${appName}/${global.lang}/index.md`
 			global.readFile(file, data => sIndex(file, data))
 		})
 	})
