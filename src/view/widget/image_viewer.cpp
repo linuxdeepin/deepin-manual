@@ -66,7 +66,10 @@ void ImageViewer::open(const QString& filepath) {
   const int pixmap_max_height = static_cast<int>(rect.height() * 0.8);
   if ((pixmap.width() > pixmap_max_width) ||
       (pixmap.height() > pixmap_max_height)) {
-    pixmap = pixmap.scaled(pixmap_max_width, pixmap_max_height);
+    pixmap = pixmap.scaled(pixmap_max_width,
+                           pixmap_max_height,
+                           Qt::KeepAspectRatio,
+                           Qt::SmoothTransformation);
   }
 
   const int win_width = pixmap.width() + kBorderSize;
