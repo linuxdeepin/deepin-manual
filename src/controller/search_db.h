@@ -37,10 +37,13 @@ class SearchDb : public QObject {
   void addSearchEntry(const QString& app_name,
                       const QStringList& anchors,
                       const QStringList& contents);
-  void search(const QString& app_name, const QString& keyword);
-  void searchResult(const QString& app_name,
-                    const QString& keyword,
+
+  // Only search in anchor.
+  void search(const QString& keyword);
+  void searchResult(const QString& keyword,
                     const SearchResultList& result);
+
+  void globalSearch(const QString& keyword);
 
  private:
   void initConnections();
@@ -55,7 +58,7 @@ class SearchDb : public QObject {
   void handleAddSearchEntry(const QString& app_name,
                             const QStringList& anchors,
                             const QStringList& contents);
-  void handleSearch(const QString& app_name, const QString& keyword);
+  void handleSearch(const QString& keyword);
 };
 
 }  // namespace dman

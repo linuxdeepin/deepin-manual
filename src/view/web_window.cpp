@@ -132,7 +132,7 @@ void WebWindow::onSearchTextChanged(const QString& text) {
     completion_window_->move(global_point);
     completion_window_->setFocusPolicy(Qt::StrongFocus);
     completion_window_->raise();
-    search_manager_->search(search_proxy_->currentApp(), text);
+    search_manager_->search(text);
   } else {
     this->onSearchEditFocusOut();
   }
@@ -159,10 +159,8 @@ void WebWindow::onWebPageLoadFinished(bool ok) {
   }
 }
 
-void WebWindow::onSearchResult(const QString& app_name,
-                               const QString& keyword,
+void WebWindow::onSearchResult(const QString& keyword,
                                const SearchResultList& result) {
-  Q_UNUSED(app_name);
   Q_UNUSED(keyword);
   completion_window_->setResult(result);
 }

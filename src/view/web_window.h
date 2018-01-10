@@ -70,8 +70,7 @@ class WebWindow : public Dtk::Widget::DMainWindow {
 
  private slots:
   void onSearchEditFocusOut();
-  void onSearchResult(const QString& app_name,
-                      const QString& keyword,
+  void onSearchResult(const QString& keyword,
                       const SearchResultList& result);
   void onSearchTextChanged(const QString& text);
   void onWebPageLoadFinished(bool ok);

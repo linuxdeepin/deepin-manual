@@ -219,28 +219,22 @@ void SearchDb::handleAddSearchEntry(const QString& app_name,
   }
 }
 
-void SearchDb::handleSearch(const QString& app_name, const QString& keyword) {
+void SearchDb::handleSearch(const QString& keyword) {
   qDebug() << Q_FUNC_INFO << keyword;
   Q_ASSERT(p_->db.isOpen());
 
   SearchResultList result;
 
-  if (app_name.isEmpty()) {
-    // Global search
-    for (const QString& name : p_->cache.keys()) {
-      if (result.size() >= kResultLimitation) {
-        break;
-      }
-      this->searchByAppName(name, keyword, result);
+  // Global search
+  for (const QString& name : p_->cache.keys()) {
+    if (result.size() >= kResultLimitation) {
+      break;
     }
-  } else if (p_->cache.contains(app_name)) {
-    // Search in app_name.
-    this->searchByAppName(app_name, keyword, result);
+    this->searchByAppName(name, keyword, result);
   }
+  qDebug() << "result size:" << result.size() << keyword;
 
-  qDebug() << "result size:" << result.size() << keyword << app_name;
-
-  emit this->searchResult(app_name, keyword, result);
+  emit this->searchResult(keyword, result);
 }
 
 }  // namespace dman
