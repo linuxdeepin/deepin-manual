@@ -26,6 +26,7 @@ class QCefWebView;
 
 namespace dman {
 
+class I18nProxy;
 class ImageViewer;
 class ImageViewerProxy;
 class SearchCompletionWindow;
@@ -63,6 +64,7 @@ class WebWindow : public Dtk::Widget::DMainWindow {
   SearchManager* search_manager_ = nullptr;
   SearchProxy* search_proxy_ = nullptr;
   SearchCompletionWindow* completion_window_ = nullptr;
+  I18nProxy* i18n_ = nullptr;
   ImageViewer* image_viewer_ = nullptr;
   ImageViewerProxy* image_viewer_proxy_ = nullptr;
   TitleBar* title_bar_ = nullptr;

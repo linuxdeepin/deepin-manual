@@ -29,6 +29,7 @@
 
 #include "base/consts.h"
 #include "controller/search_manager.h"
+#include "view/i18n_proxy.h"
 #include "view/image_viewer_proxy.h"
 #include "view/search_proxy.h"
 #include "view/title_bar_proxy.h"
@@ -86,6 +87,8 @@ void WebWindow::initConnections() {
 }
 
 void WebWindow::initUI() {
+  i18n_ = new I18nProxy(this);
+
   completion_window_ = new SearchCompletionWindow();
   completion_window_->hide();
 
@@ -107,6 +110,7 @@ void WebWindow::initUI() {
 
   // Use TitleBarProxy instead.
   QWebChannel* channel = web_view_->page()->webChannel();
+  channel->registerObject("i18n", i18n_);
   channel->registerObject("imageViewer", image_viewer_proxy_);
   channel->registerObject("search", search_proxy_);
   channel->registerObject("titleBar", title_bar_proxy_);

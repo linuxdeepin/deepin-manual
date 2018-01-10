@@ -95,6 +95,8 @@ set(RESOURCES_FILES
     )
 
 set(VIEW_FILES
+    view/i18n_proxy.cpp
+    view/i18n_proxy.h
     view/image_viewer_proxy.cpp
     view/image_viewer_proxy.h
     view/search_proxy.cpp
