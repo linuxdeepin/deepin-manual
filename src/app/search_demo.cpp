@@ -27,9 +27,9 @@ int main(int argc, char** argv) {
   QObject::connect(&manager, &dman::SearchManager::searchResult,
                    [](const QString& app_name,
                       const QString& keyword,
-                      const dman::SearchResultList& result) {
+                      const dman::SearchAnchorResultList& result) {
      qDebug() << app_name << keyword << result.size();
-     for (const dman::SearchResult& item : result) {
+     for (const dman::SearchAnchorResult& item : result) {
        qDebug() << item.anchor << item.app_name;
      }
   });

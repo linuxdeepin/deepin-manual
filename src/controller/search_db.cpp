@@ -62,27 +62,24 @@ QString GetDbName() {
   return cache_dir.absoluteFilePath("search_entry.db");
 }
 
-struct SearchEntryCache {
-  QString app_name;
-  QString lang;
-  QString words;
-};
+//struct SearchEntryCache {
+//  QString app_name;
+//  QString lang;
+//  QString words;
+//};
 
 }  // namespace
 
 struct SearchDbPrivate {
   QSqlDatabase db;
   cppjieba::Jieba* jieba = nullptr;
-
-  // { "appName": { "words": "anchors",,,, } }
-  QHash<QString, QHash<QString, QString>> cache;
 };
 
 SearchDb::SearchDb(QObject* parent)
     : QObject(parent),
       p_(new SearchDbPrivate()) {
-  qRegisterMetaType<SearchResult>("SearchResult");
-  qRegisterMetaType<SearchResultList>("SearchResultList");
+  qRegisterMetaType<SearchAnchorResult>("SearchAnchorResult");
+  qRegisterMetaType<SearchAnchorResultList>("SearchResultList");
   this->initConnections();
   p_->jieba = new cppjieba::Jieba(kJiebaDict,
                                   kHmmDict,
@@ -110,26 +107,29 @@ void SearchDb::initConnections() {
           this, &SearchDb::handleInitDb);
   connect(this, &SearchDb::addSearchEntry,
           this, &SearchDb::handleAddSearchEntry);
-  connect(this, &SearchDb::search,
+  connect(this, &SearchDb::searchAnchor,
           this, &SearchDb::handleSearch);
 }
 
 void SearchDb::searchByAppName(const QString& app_name,
                                const QString& keyword,
-                               SearchResultList& result) {
-  const QHash<QString, QString>& app_dict = p_->cache[app_name];
-  for (const QString& words : app_dict.keys()) {
-    if (result.size() >= kResultLimitation) {
-      break;
-    }
-
-    if (words.indexOf(keyword) > -1) {
-      result.append({
-                        app_name,
-                        app_dict.value(words)
-                    });
-    }
-  }
+                               SearchAnchorResultList& result) {
+  Q_UNUSED(app_name);
+  Q_UNUSED(keyword);
+  Q_UNUSED(result);
+//  const QHash<QString, QString>& app_dict = p_->cache[app_name];
+//  for (const QString& words : app_dict.keys()) {
+//    if (result.size() >= kResultLimitation) {
+//      break;
+//    }
+//
+//    if (words.indexOf(keyword) > -1) {
+//      result.append({
+//                        app_name,
+//                        app_dict.value(words)
+//                    });
+//    }
+//  }
 }
 
 void SearchDb::handleInitDb() {
@@ -159,14 +159,14 @@ void SearchDb::handleInitDb() {
     return;
   }
 
-  while (query.next()) {
-    const QString app_name = query.value(1).toString();
-    if (!p_->cache.contains(app_name)) {
-      p_->cache.insert(app_name, QHash<QString, QString>());
-    }
-    p_->cache[app_name].insert(query.value(4).toString(),
-                               query.value(2).toString());
-  }
+//  while (query.next()) {
+//    const QString app_name = query.value(1).toString();
+//    if (!p_->cache.contains(app_name)) {
+//      p_->cache.insert(app_name, QHash<QString, QString>());
+//    }
+//    p_->cache[app_name].insert(query.value(4).toString(),
+//                               query.value(2).toString());
+//  }
 }
 
 void SearchDb::handleAddSearchEntry(const QString& app_name,
@@ -194,7 +194,7 @@ void SearchDb::handleAddSearchEntry(const QString& app_name,
 
   query.prepare(kInsertEntry);
   bool ok = true;
-  QHash<QString, QString> anchor_dict;
+//  QHash<QString, QString> anchor_dict;
   for (int i = 0; ok && (i < anchors.length()); ++i) {
     const std::string content_std(contents.at(i).toLower().toStdString());
     std::vector<std::string> word_list;
@@ -204,7 +204,7 @@ void SearchDb::handleAddSearchEntry(const QString& app_name,
                                                "/");
     const QString words = QString::fromStdString(words_std);
     // Add to memory cache.
-    anchor_dict.insert(words, anchors.at(i));
+//    anchor_dict.insert(words, anchors.at(i));
 
     // Save to database.
     query.bindValue(0, app_name);
@@ -214,7 +214,7 @@ void SearchDb::handleAddSearchEntry(const QString& app_name,
     query.bindValue(4, words);
     ok = query.exec();
   }
-  p_->cache.insert(app_name, anchor_dict);
+//  p_->cache.insert(app_name, anchor_dict);
 
   if (!ok) {
     p_->db.rollback();
@@ -229,18 +229,18 @@ void SearchDb::handleSearch(const QString& keyword) {
   qDebug() << Q_FUNC_INFO << keyword;
   Q_ASSERT(p_->db.isOpen());
 
-  SearchResultList result;
+  SearchAnchorResultList result;
 
   // Global search
-  for (const QString& name : p_->cache.keys()) {
-    if (result.size() >= kResultLimitation) {
-      break;
-    }
-    this->searchByAppName(name, keyword, result);
-  }
+//  for (const QString& name : p_->cache.keys()) {
+//    if (result.size() >= kResultLimitation) {
+//      break;
+//    }
+//    this->searchByAppName(name, keyword, result);
+//  }
   qDebug() << "result size:" << result.size() << keyword;
 
-  emit this->searchResult(keyword, result);
+  emit this->searchAnchorResult(keyword, result);
 }
 
 }  // namespace dman

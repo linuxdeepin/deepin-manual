@@ -45,7 +45,7 @@ class SearchCompletionWindow : public QFrame {
   void onEnterPressed();
 
   void setKeyword(const QString& keyword);
-  void setResult(const SearchResultList& result);
+  void setSearchAnchorResult(const SearchAnchorResultList& result);
 
  private:
   void initConnections();
@@ -54,7 +54,7 @@ class SearchCompletionWindow : public QFrame {
   QListView* result_view_ = nullptr;
   QStringListModel* model_ = nullptr;
   QPushButton* search_button_ = nullptr;
-  SearchResultList result_;
+  SearchAnchorResultList result_;
 
  private slots:
   void onResultListClicked(const QModelIndex& index);

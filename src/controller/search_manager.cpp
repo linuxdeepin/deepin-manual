@@ -33,10 +33,10 @@ SearchManager::SearchManager(QObject* parent)
 
   connect(this, &SearchManager::addSearchEntry,
           db_, &SearchDb::addSearchEntry);
-  connect(this, &SearchManager::search,
-          db_, &SearchDb::search);
-  connect(db_, &SearchDb::searchResult,
-          this, &SearchManager::searchResult);
+  connect(this, &SearchManager::searchAnchor,
+          db_, &SearchDb::searchAnchor);
+  connect(db_, &SearchDb::searchAnchorResult,
+          this, &SearchManager::searchAnchorResult);
 
   connect(db_thread_, &QThread::destroyed,
           db_, &QObject::deleteLater);

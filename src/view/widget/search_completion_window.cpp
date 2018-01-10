@@ -111,10 +111,11 @@ void SearchCompletionWindow::setKeyword(const QString& keyword) {
   model_->setStringList(QStringList());
 }
 
-void SearchCompletionWindow::setResult(const SearchResultList& result) {
+void SearchCompletionWindow::setSearchAnchorResult(
+    const SearchAnchorResultList& result) {
   result_ = result;
   QStringList names;
-  for (const SearchResult& entry : result) {
+  for (const SearchAnchorResult& entry : result) {
     names.append(entry.anchor);
   }
   model_->setStringList(names);

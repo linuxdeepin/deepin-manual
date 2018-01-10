@@ -40,17 +40,19 @@ class SearchDb : public QObject {
                       const QStringList& contents);
 
   // Only search in anchor.
-  void search(const QString& keyword);
-  void searchResult(const QString& keyword,
-                    const SearchResultList& result);
+  void searchAnchor(const QString& keyword);
+  void searchAnchorResult(const QString& keyword,
+                          const SearchAnchorResultList& result);
 
-  void globalSearch(const QString& keyword);
+  void searchContent(const QString& keyword);
+  void searchContentResult(const QString& keyword,
+                           const SearchContentResultList& result);
 
  private:
   void initConnections();
   void searchByAppName(const QString& app_name,
                        const QString& keyword,
-                       SearchResultList& result);
+                       SearchAnchorResultList& result);
 
   SearchDbPrivate* p_ = nullptr;
 

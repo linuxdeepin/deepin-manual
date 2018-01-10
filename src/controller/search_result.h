@@ -23,11 +23,19 @@
 
 namespace dman {
 
-struct SearchResult {
+struct SearchAnchorResult {
   QString app_name;
   QString anchor;
 };
-typedef QList<SearchResult> SearchResultList;
+typedef QList<SearchAnchorResult> SearchAnchorResultList;
+
+struct SearchContentResult {
+  QString app_name;
+  QString anchor;
+  QList<QPair<int, int>> offsets;
+};
+
+typedef QList<SearchContentResult> SearchContentResultList;
 
 }  // namespace dman
 

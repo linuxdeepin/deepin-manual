@@ -77,8 +77,8 @@ void WebWindow::initConnections() {
   connect(title_bar_, &TitleBar::focusOut,
           this, &WebWindow::onSearchEditFocusOut);
 
-  connect(search_manager_, &SearchManager::searchResult,
-          this, &WebWindow::onSearchResult);
+  connect(search_manager_, &SearchManager::searchAnchorResult,
+          this, &WebWindow::onSearchAnchorResult);
   connect(completion_window_, &SearchCompletionWindow::resultClicked,
           search_proxy_, &SearchProxy::onSearchResultClicked);
 }
@@ -135,7 +135,7 @@ void WebWindow::onSearchTextChanged(const QString& text) {
     completion_window_->move(global_point);
     completion_window_->setFocusPolicy(Qt::StrongFocus);
     completion_window_->raise();
-    search_manager_->search(text);
+    search_manager_->searchAnchor(text);
   } else {
     this->onSearchEditFocusOut();
   }
@@ -162,10 +162,10 @@ void WebWindow::onWebPageLoadFinished(bool ok) {
   }
 }
 
-void WebWindow::onSearchResult(const QString& keyword,
-                               const SearchResultList& result) {
+void WebWindow::onSearchAnchorResult(const QString& keyword,
+                                     const SearchAnchorResultList& result) {
   Q_UNUSED(keyword);
-  completion_window_->setResult(result);
+  completion_window_->setSearchAnchorResult(result);
 }
 
 }  // namespace dman
