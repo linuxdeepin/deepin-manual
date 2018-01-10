@@ -40,6 +40,41 @@ export default class Article extends Component {
 			this.props.setHash(hash)
 		}
 	}
+	showPreview(appName, hash, rect) {
+		let file = `${global.path}/${appName}/${global.lang}/index.md`
+		global.readFile(file, data => {
+			let {html} = m2h(file, data)
+			let d = document.createElement("div")
+			d.innerHTML = html
+			let hashDom = d.querySelector("#" + hash)
+			let DomList = [hashDom]
+			let nextDom = hashDom.nextElementSibling
+			while (nextDom) {
+				if (nextDom.nodeName == hashDom.nodeName) {
+					break
+				}
+				DomList.push(nextDom)
+				nextDom = nextDom.nextElementSibling
+			}
+			d.innerHTML = ""
+			DomList.map(el => d.appendChild(el))
+			html = d.innerHTML
+			let {top, left} = rect
+			let style = {
+				top, left
+			}
+			style.left -= 350
+			let tClass = "t_right_"
+			if (top > document.body.clientHeight / 2) {
+				tClass += "down"
+				style.top -= 250 + 10
+			} else {
+				tClass += "up"
+				style.top += rect.height + 10
+			}
+			this.setState({ preview: { html, style, tClass } })
+		})
+	}
 	click(e) {
 		if (this.state.preview != null) {
 			this.setState({ preview: null })
@@ -52,52 +87,24 @@ export default class Article extends Component {
 				global.qtObjects.imageViewer.open(src)
 				break
 			case "A":
-				let dmanProtocol = "dman://"
-				let rect = e.target.getBoundingClientRect()
-				let href = e.target.getAttribute("href")
-				if (href.indexOf(dmanProtocol) != 0) {
-					return
+				const dmanProtocol = "dman://"
+				const hashProtocol = "#"
+				const href = e.target.getAttribute("href")
+				switch (0) {
+					case href.indexOf(hashProtocol):
+						e.preventDefault()
+						this.props.setHash(href.slice(1))
+						break
+					case href.indexOf(dmanProtocol):
+						e.preventDefault()
+						const [appName, hash] = href.slice(dmanProtocol.length + 1).split("#")
+						const rect = e.target.getBoundingClientRect()
+						this.showPreview(appName, hash, rect)
+						break
 				}
-				e.preventDefault()
-				let [appName, hash] = href.slice(dmanProtocol.length + 1).split("#")
-				console.log(href, appName, hash)
-				let file = `${global.path}/${appName}/${global.lang}/index.md`
-				global.readFile(file, data => {
-					let {html} = m2h(file, data)
-					let d = document.createElement("div")
-					d.innerHTML = html
-					let hashDom = d.querySelector("#" + hash)
-					let DomList = [hashDom]
-					let nextDom = hashDom.nextElementSibling
-					while (nextDom) {
-						if (nextDom.nodeName == hashDom.nodeName) {
-							break
-						}
-						DomList.push(nextDom)
-						nextDom = nextDom.nextElementSibling
-					}
-					d.innerHTML = ""
-					DomList.map(el => d.appendChild(el))
-					html = d.innerHTML
-					let {top, left} = rect
-					let style = {
-						top, left
-					}
-					style.left -= 350
-					let tClass="t_right_"
-					if (top > document.body.clientHeight / 2) {
-						tClass+="down"
-						style.top -= 250 + 10
-					} else {
-						tClass+="up"
-						style.top += rect.height + 10
-					}
-					this.setState({ preview: { html, style ,tClass} })
-				})
 		}
 	}
 	render() {
-
 		return <div id="article">
 			<Scrollbars autoHide autoHideTimeout={1000} onScroll={e => this.scroll(e)} ref={s => { this.scrollbars = s } }>
 				<div className="read" onClick={this.click.bind(this)} dangerouslySetInnerHTML={{ __html: this.props.html }}></div>

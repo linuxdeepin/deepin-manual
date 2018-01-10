@@ -6,13 +6,13 @@ const
 	source = require('vinyl-source-stream'),
 	buffer = require('vinyl-buffer'),
 	browserify = require('browserify')
-	
+
 const RootDir = "../../PageRoot/www/"
 
 //编译js到index.js
 gulp.task('js', () => {
 	process.env.NODE_ENV = 'production'
-	return browserify("js/app.js")
+	return browserify("js/App.js")
 		.transform("babelify", { presets: ["env", "react"] })
 		.bundle()
 		.pipe(source('bundle.js'))
@@ -37,7 +37,7 @@ gulp.task('qtwebchannel', () => {
 	return gulp.src("qtwebchannel.js")
 		.pipe(gulp.dest(RootDir))
 })
-const tasks = ['js', 'sass', 'html','qtwebchannel']
+const tasks = ['js', 'sass', 'html', 'qtwebchannel']
 
 //编译全部
 gulp.task('build', tasks)

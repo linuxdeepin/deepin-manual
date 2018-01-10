@@ -230,10 +230,53 @@ var Article = function (_Component) {
 			}
 		}
 	}, {
-		key: 'click',
-		value: function click(e) {
+		key: 'showPreview',
+		value: function showPreview(appName, hash, rect) {
 			var _this2 = this;
 
+			var file = global.path + '/' + appName + '/' + global.lang + '/index.md';
+			global.readFile(file, function (data) {
+				var _m2h = (0, _mdToHtml2.default)(file, data),
+				    html = _m2h.html;
+
+				var d = document.createElement("div");
+				d.innerHTML = html;
+				var hashDom = d.querySelector("#" + hash);
+				var DomList = [hashDom];
+				var nextDom = hashDom.nextElementSibling;
+				while (nextDom) {
+					if (nextDom.nodeName == hashDom.nodeName) {
+						break;
+					}
+					DomList.push(nextDom);
+					nextDom = nextDom.nextElementSibling;
+				}
+				d.innerHTML = "";
+				DomList.map(function (el) {
+					return d.appendChild(el);
+				});
+				html = d.innerHTML;
+				var top = rect.top,
+				    left = rect.left;
+
+				var style = {
+					top: top, left: left
+				};
+				style.left -= 350;
+				var tClass = "t_right_";
+				if (top > document.body.clientHeight / 2) {
+					tClass += "down";
+					style.top -= 250 + 10;
+				} else {
+					tClass += "up";
+					style.top += rect.height + 10;
+				}
+				_this2.setState({ preview: { html: html, style: style, tClass: tClass } });
+			});
+		}
+	}, {
+		key: 'click',
+		value: function click(e) {
 			if (this.state.preview != null) {
 				this.setState({ preview: null });
 			}
@@ -246,58 +289,25 @@ var Article = function (_Component) {
 					break;
 				case "A":
 					var dmanProtocol = "dman://";
-					var rect = e.target.getBoundingClientRect();
+					var hashProtocol = "#";
 					var href = e.target.getAttribute("href");
-					if (href.indexOf(dmanProtocol) != 0) {
-						return;
+					switch (0) {
+						case href.indexOf(hashProtocol):
+							e.preventDefault();
+							this.props.setHash(href.slice(1));
+							break;
+						case href.indexOf(dmanProtocol):
+							e.preventDefault();
+
+							var _href$slice$split = href.slice(dmanProtocol.length + 1).split("#"),
+							    _href$slice$split2 = _slicedToArray(_href$slice$split, 2),
+							    appName = _href$slice$split2[0],
+							    hash = _href$slice$split2[1];
+
+							var rect = e.target.getBoundingClientRect();
+							this.showPreview(appName, hash, rect);
+							break;
 					}
-					e.preventDefault();
-
-					var _href$slice$split = href.slice(dmanProtocol.length + 1).split("#"),
-					    _href$slice$split2 = _slicedToArray(_href$slice$split, 2),
-					    appName = _href$slice$split2[0],
-					    hash = _href$slice$split2[1];
-
-					console.log(href, appName, hash);
-					var file = global.path + '/' + appName + '/' + global.lang + '/index.md';
-					global.readFile(file, function (data) {
-						var _m2h = (0, _mdToHtml2.default)(file, data),
-						    html = _m2h.html;
-
-						var d = document.createElement("div");
-						d.innerHTML = html;
-						var hashDom = d.querySelector("#" + hash);
-						var DomList = [hashDom];
-						var nextDom = hashDom.nextElementSibling;
-						while (nextDom) {
-							if (nextDom.nodeName == hashDom.nodeName) {
-								break;
-							}
-							DomList.push(nextDom);
-							nextDom = nextDom.nextElementSibling;
-						}
-						d.innerHTML = "";
-						DomList.map(function (el) {
-							return d.appendChild(el);
-						});
-						html = d.innerHTML;
-						var top = rect.top,
-						    left = rect.left;
-
-						var style = {
-							top: top, left: left
-						};
-						style.left -= 350;
-						var tClass = "t_right_";
-						if (top > document.body.clientHeight / 2) {
-							tClass += "down";
-							style.top -= 250 + 10;
-						} else {
-							tClass += "up";
-							style.top += rect.height + 10;
-						}
-						_this2.setState({ preview: { html: html, style: style, tClass: tClass } });
-					});
 			}
 		}
 	}, {
