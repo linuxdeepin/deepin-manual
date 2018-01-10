@@ -20,6 +20,7 @@
 
 #include <QObject>
 #include <QHash>
+#include <QVariant>
 
 namespace dman {
 
@@ -29,7 +30,8 @@ class I18nProxy : public QObject {
   explicit I18nProxy(QObject* parent = nullptr);
   ~I18nProxy() override;
 
-  QHash<QString, QString> getSentences() const;
+ public slots:
+  QVariantHash getSentences() const;
 };
 
 }  // namespace dman

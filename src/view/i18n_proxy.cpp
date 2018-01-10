@@ -25,8 +25,8 @@ I18nProxy::I18nProxy(QObject* parent) : QObject(parent) {
 I18nProxy::~I18nProxy() {
 }
 
-QHash<QString, QString> I18nProxy::getSentences() const {
-  QHash<QString, QString> result{
+QVariantHash I18nProxy::getSentences() const {
+  QVariantHash result{
       { "Copy", tr("Copy") },
       { "System", tr("System") },
       { "Application", tr("Application") },
