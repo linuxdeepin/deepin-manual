@@ -515,7 +515,7 @@ var Index = function (_Component2) {
 					_react2.default.createElement(
 						'h2',
 						null,
-						global.i18n["Application"]
+						global.i18n["Applications"]
 					),
 					_react2.default.createElement(
 						'div',

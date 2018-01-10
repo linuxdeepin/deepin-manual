@@ -82,7 +82,7 @@ export default class Index extends Component {
 				<div className="items">
 					{sysSoft.map(appName => <Item key={appName} appName={appName} />)}
 				</div>
-				<h2>{global.i18n["Application"]}</h2>
+				<h2>{global.i18n["Applications"]}</h2>
 				<div className="items">
 					{appSoft.map(appName => <Item key={appName} appName={appName} />)}
 					{otherSoft.map(appName => <Item key={appName} appName={appName} />)}
