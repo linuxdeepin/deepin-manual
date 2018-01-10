@@ -40,6 +40,8 @@ class TitleBar : public QFrame {
 
   bool backButtonVisible() const;
 
+  QString getSearchText() const;
+
  signals:
   void backButtonClicked();
   void searchTextChanged(const QString& text);

@@ -79,7 +79,10 @@ SearchDb::SearchDb(QObject* parent)
     : QObject(parent),
       p_(new SearchDbPrivate()) {
   qRegisterMetaType<SearchAnchorResult>("SearchAnchorResult");
-  qRegisterMetaType<SearchAnchorResultList>("SearchResultList");
+  qRegisterMetaType<SearchAnchorResultList>("SearchAnchorResultList");
+  qRegisterMetaType<SearchContentResult>("SearchContentResult");
+  qRegisterMetaType<SearchContentResultList>("SearchContentResultList");
+
   this->initConnections();
   p_->jieba = new cppjieba::Jieba(kJiebaDict,
                                   kHmmDict,
@@ -108,7 +111,9 @@ void SearchDb::initConnections() {
   connect(this, &SearchDb::addSearchEntry,
           this, &SearchDb::handleAddSearchEntry);
   connect(this, &SearchDb::searchAnchor,
-          this, &SearchDb::handleSearch);
+          this, &SearchDb::handleSearchAnchor);
+  connect(this, &SearchDb::searchContent,
+          this, &SearchDb::handleSearchContent);
 }
 
 void SearchDb::searchByAppName(const QString& app_name,
@@ -225,7 +230,7 @@ void SearchDb::handleAddSearchEntry(const QString& app_name,
   }
 }
 
-void SearchDb::handleSearch(const QString& keyword) {
+void SearchDb::handleSearchAnchor(const QString& keyword) {
   qDebug() << Q_FUNC_INFO << keyword;
   Q_ASSERT(p_->db.isOpen());
 
@@ -241,6 +246,10 @@ void SearchDb::handleSearch(const QString& keyword) {
   qDebug() << "result size:" << result.size() << keyword;
 
   emit this->searchAnchorResult(keyword, result);
+}
+
+void SearchDb::handleSearchContent(const QString& keyword) {
+  qDebug() << Q_FUNC_INFO << keyword;
 }
 
 }  // namespace dman

@@ -81,6 +81,8 @@ void WebWindow::initConnections() {
           this, &WebWindow::onSearchAnchorResult);
   connect(completion_window_, &SearchCompletionWindow::resultClicked,
           search_proxy_, &SearchProxy::onSearchResultClicked);
+  connect(completion_window_, &SearchCompletionWindow::searchButtonClicked,
+          this, &WebWindow::onSearchButtonClicked);
 }
 
 void WebWindow::initUI() {
@@ -121,6 +123,12 @@ void WebWindow::onSearchEditFocusOut() {
   QTimer::singleShot(50, [=]() {
     this->completion_window_->hide();
   });
+}
+
+void WebWindow::onSearchButtonClicked() {
+  search_manager_->searchContent(title_bar_->getSearchText());
+
+  // TODO(Shaohua): Show search page.
 }
 
 void WebWindow::onSearchTextChanged(const QString& text) {

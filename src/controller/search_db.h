@@ -62,7 +62,8 @@ class SearchDb : public QObject {
                             const QString& lang,
                             const QStringList& anchors,
                             const QStringList& contents);
-  void handleSearch(const QString& keyword);
+  void handleSearchAnchor(const QString& keyword);
+  void handleSearchContent(const QString& keyword);
 };
 
 }  // namespace dman

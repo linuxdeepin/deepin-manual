@@ -38,6 +38,10 @@ bool TitleBar::backButtonVisible() const {
   return back_button_->isVisible();
 }
 
+QString TitleBar::getSearchText() const {
+  return search_edit_->text();
+}
+
 void TitleBar::setBackButtonVisible(bool visible) {
   back_button_->setVisible(visible);
 }
