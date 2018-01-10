@@ -19,6 +19,7 @@
 
 #include <DWidgetUtil>
 #include <QApplication>
+#include <QDebug>
 #include <QResizeEvent>
 #include <QStackedLayout>
 #include <QtCore/QTimer>
@@ -60,10 +61,11 @@ void ImageViewer::open(const QString& filepath) {
   Q_ASSERT(this->parentWidget() != nullptr);
 
   QPixmap pixmap(abspath);
-  const QRect rect = qApp->desktop()->screenGeometry(this->parentWidget());
+  const QRect screen_rect =
+      qApp->desktop()->screenGeometry(this->parentWidget());
   // Resize image to fix screen.
-  const int pixmap_max_width = static_cast<int>(rect.width() * 0.8);
-  const int pixmap_max_height = static_cast<int>(rect.height() * 0.8);
+  const int pixmap_max_width = static_cast<int>(screen_rect.width() * 0.8);
+  const int pixmap_max_height = static_cast<int>(screen_rect.height() * 0.8);
   if ((pixmap.width() > pixmap_max_width) ||
       (pixmap.height() > pixmap_max_height)) {
     pixmap = pixmap.scaled(pixmap_max_width,
@@ -71,38 +73,36 @@ void ImageViewer::open(const QString& filepath) {
                            Qt::KeepAspectRatio,
                            Qt::SmoothTransformation);
   }
+  qDebug() << "pixmap size:" << pixmap.size();
 
-  const int win_width = pixmap.width() + kBorderSize;
-  const int win_height = pixmap.height() + kBorderSize;
-  this->setFixedSize(win_width, win_height);
   img_label_->setPixmap(pixmap);
+  img_label_->setFixedSize(pixmap.width(), pixmap.height());
+  QRect img_rect = img_label_->rect();
+  img_rect.moveCenter(screen_rect.center());
+  img_label_->move(img_rect.topLeft());
 
-  // Move close button to top-right corner of window.
-  close_button_->move(pixmap.width() - kCloseBtnSize / 2, 0);
+  // Move close button to top-right corner of image.
+  const QPoint top_right_point = img_rect.topRight();
+  close_button_->move(top_right_point.x() - kCloseBtnSize / 2,
+                      top_right_point.y() - kCloseBtnSize / 2);
   close_button_->show();
   close_button_->raise();
-
-  Dtk::Widget::moveToCenter(this);
-  this->show();
+  this->showFullScreen();
 }
 
 void ImageViewer::initUI() {
-  img_label_ = new QLabel();
+  img_label_ = new QLabel(this);
   img_label_->setObjectName("ImageLabel");
-
-  QStackedLayout* main_layout = new QStackedLayout();
-  main_layout->setContentsMargins(0, 0, 0, 0);
-  main_layout->setSpacing(0);
-  main_layout->addWidget(img_label_);
 
   close_button_ = new Dtk::Widget::DImageButton(this);
   close_button_->setObjectName("CloseButton");
   close_button_->raise();
   close_button_->setFixedSize(kCloseBtnSize, kCloseBtnSize);
 
-  this->setLayout(main_layout);
   this->setContentsMargins(kBorderSize, kBorderSize, kBorderSize, kBorderSize);
-  this->setWindowFlags(Qt::FramelessWindowHint | Qt::Dialog);
+  this->setWindowFlags(Qt::FramelessWindowHint |
+                           Qt::Dialog |
+                           Qt::WindowStaysOnTopHint);
   this->setAttribute(Qt::WA_TranslucentBackground, true);
   this->setModal(true);
 
