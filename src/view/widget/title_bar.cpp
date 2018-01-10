@@ -49,10 +49,12 @@ void TitleBar::initConnections() {
           this, &TitleBar::onSearchTextChanged);
   connect(search_edit_, &SearchEdit::focusOut,
           this, &TitleBar::focusOut);
-  connect(search_edit_, &SearchEdit::upKeyPressed,
-          this, &TitleBar::upKeyPressed);
   connect(search_edit_, &SearchEdit::downKeyPressed,
           this, &TitleBar::downKeyPressed);
+  connect(search_edit_, &SearchEdit::enterPressed,
+          this, &TitleBar::enterPressed);
+  connect(search_edit_, &SearchEdit::upKeyPressed,
+          this, &TitleBar::upKeyPressed);
 }
 
 void TitleBar::initUI() {

@@ -53,6 +53,8 @@ class SearchProxy : public QObject {
                       const QStringList& anchors,
                       const QStringList& contents);
 
+  void onSearchResultClicked(const QString& app_name, const QString& anchor);
+
  private:
   SearchManager* manager_ = nullptr;
   QString current_app_;

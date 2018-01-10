@@ -43,8 +43,9 @@ class TitleBar : public QFrame {
  signals:
   void backButtonClicked();
   void searchTextChanged(const QString& text);
-  void upKeyPressed();
   void downKeyPressed();
+  void enterPressed();
+  void upKeyPressed();
   void focusOut();
 
  public slots:

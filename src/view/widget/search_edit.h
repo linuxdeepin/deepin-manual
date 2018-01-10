@@ -30,8 +30,9 @@ class SearchEdit : public Dtk::Widget::DSearchEdit {
   ~SearchEdit() override;
 
  signals:
-  void upKeyPressed();
   void downKeyPressed();
+  void enterPressed();
+  void upKeyPressed();
 
  protected:
   void keyPressEvent(QKeyEvent* event) override;

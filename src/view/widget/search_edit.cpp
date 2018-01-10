@@ -30,10 +30,22 @@ SearchEdit::~SearchEdit() {
 }
 
 void SearchEdit::keyPressEvent(QKeyEvent* event) {
-  if (event->key() == Qt::Key_Up) {
-    emit this->upKeyPressed();
-  } else if (event->key() == Qt::Key_Down) {
-    emit this->downKeyPressed();
+  switch (event->key()) {
+    case Qt::Key_Up: {
+      emit this->upKeyPressed();
+      break;
+    }
+    case Qt::Key_Down: {
+      emit this->downKeyPressed();
+      break;
+    }
+    case Qt::Key_Enter:  // Fall through
+    case Qt::Key_Return: {
+      emit this->enterPressed();
+      break;
+    }
+    default: {
+    }
   }
 
   DSearchEdit::keyPressEvent(event);

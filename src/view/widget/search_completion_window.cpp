@@ -36,6 +36,7 @@ SearchCompletionWindow::SearchCompletionWindow(QWidget* parent)
   this->setObjectName("SearchCompletionWindow");
 
   this->initUI();
+  this->initConnections();
 }
 
 SearchCompletionWindow::~SearchCompletionWindow() {
@@ -49,6 +50,27 @@ void SearchCompletionWindow::autoResize() {
   result_view_->setVisible(model_->rowCount() > 0);
   this->adjustSize();
   result_view_->raise();
+}
+
+void SearchCompletionWindow::goDown() {
+  if (model_->rowCount() == 0) {
+    search_button_->setChecked(true);
+  } else {
+    if (search_button_->isChecked()) {
+      search_button_->setChecked(false);
+      const QModelIndex first_idx = model_->index(0, 0);
+      result_view_->setCurrentIndex(first_idx);
+    } else {
+      const int down_row = result_view_->currentIndex().row() + 1;
+      if (down_row >= model_->rowCount()) {
+        search_button_->setChecked(true);
+        result_view_->setCurrentIndex(QModelIndex());
+      } else {
+        const QModelIndex down_idx = model_->index(down_row, 0);
+        result_view_->setCurrentIndex(down_idx);
+      }
+    }
+  }
 }
 
 void SearchCompletionWindow::goUp() {
@@ -73,25 +95,15 @@ void SearchCompletionWindow::goUp() {
   }
 }
 
-void SearchCompletionWindow::goDown() {
-  if (model_->rowCount() == 0) {
-    search_button_->setChecked(true);
+void SearchCompletionWindow::onEnterPressed() {
+  if (search_button_->isChecked()) {
+    emit this->searchButtonClicked();
   } else {
-    if (search_button_->isChecked()) {
-      search_button_->setChecked(false);
-      const QModelIndex first_idx = model_->index(0, 0);
-      result_view_->setCurrentIndex(first_idx);
-    } else {
-      const int down_row = result_view_->currentIndex().row() + 1;
-      if (down_row >= model_->rowCount()) {
-        search_button_->setChecked(true);
-        result_view_->setCurrentIndex(QModelIndex());
-      } else {
-        const QModelIndex down_idx = model_->index(down_row, 0);
-        result_view_->setCurrentIndex(down_idx);
-      }
-    }
+    const QModelIndex idx = result_view_->currentIndex();
+    this->onResultListClicked(idx);
   }
+  // Hide completion window whenever any items was activated.
+  this->hide();
 }
 
 void SearchCompletionWindow::setKeyword(const QString& keyword) {
@@ -107,6 +119,15 @@ void SearchCompletionWindow::setResult(const SearchResultList& result) {
   }
   model_->setStringList(names);
   this->autoResize();
+}
+
+void SearchCompletionWindow::initConnections() {
+  connect(result_view_, &QListView::activated,
+          this, &SearchCompletionWindow::onResultListClicked);
+  connect(result_view_, &QListView::clicked,
+          this, &SearchCompletionWindow::onResultListClicked);
+  connect(search_button_, &QPushButton::clicked,
+          this, &SearchCompletionWindow::searchButtonClicked);
 }
 
 void SearchCompletionWindow::initUI() {
@@ -144,6 +165,13 @@ void SearchCompletionWindow::initUI() {
   result_view_->adjustSize();
 
   ThemeManager::instance()->registerWidget(this);
+}
+
+void SearchCompletionWindow::onResultListClicked(const QModelIndex& index) {
+  if (index.isValid()) {
+    const int row = index.row();
+    emit this->resultClicked(result_.at(row).app_name, result_.at(row).anchor);
+  }
 }
 
 }  // namespace dman

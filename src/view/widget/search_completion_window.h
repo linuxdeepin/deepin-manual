@@ -35,20 +35,29 @@ class SearchCompletionWindow : public QFrame {
 
   void autoResize();
 
+ signals:
+  void resultClicked(const QString& app_name, const QString& anchor);
+  void searchButtonClicked();
+
  public slots:
-  void goUp();
   void goDown();
+  void goUp();
+  void onEnterPressed();
 
   void setKeyword(const QString& keyword);
   void setResult(const SearchResultList& result);
 
  private:
+  void initConnections();
   void initUI();
 
   QListView* result_view_ = nullptr;
   QStringListModel* model_ = nullptr;
   QPushButton* search_button_ = nullptr;
   SearchResultList result_;
+
+ private slots:
+  void onResultListClicked(const QModelIndex& index);
 };
 
 }  // namespace dman

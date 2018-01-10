@@ -62,15 +62,19 @@ void WebWindow::initConnections() {
           this, &WebWindow::onSearchTextChanged);
   connect(web_view_->page(), &QWebEnginePage::loadFinished,
           this, &WebWindow::onWebPageLoadFinished);
-  connect(title_bar_, &TitleBar::upKeyPressed,
-          completion_window_, &SearchCompletionWindow::goUp);
   connect(title_bar_, &TitleBar::downKeyPressed,
           completion_window_, &SearchCompletionWindow::goDown);
+  connect(title_bar_, &TitleBar::enterPressed,
+          completion_window_, &SearchCompletionWindow::onEnterPressed);
+  connect(title_bar_, &TitleBar::upKeyPressed,
+          completion_window_, &SearchCompletionWindow::goUp);
   connect(title_bar_, &TitleBar::focusOut,
           this, &WebWindow::onSearchEditFocusOut);
 
   connect(search_manager_, &SearchManager::searchResult,
           this, &WebWindow::onSearchResult);
+  connect(completion_window_, &SearchCompletionWindow::resultClicked,
+          search_proxy_, &SearchProxy::onSearchResultClicked);
 }
 
 void WebWindow::initUI() {
