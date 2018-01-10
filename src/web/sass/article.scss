@@ -1,12 +1,12 @@
 .Triangle{
 	content: '';
 	position: absolute;
-	width: 0;
-	height: 0;
-	right: 58px;
-	border: 8px dashed transparent;
+	width:8px;
+	height:8px;
+	transform:rotate(45deg);
+	background-color:white;
+	z-index:99;
 }
-
 #article{
 	float: right;
 	width: 84%;
@@ -96,44 +96,49 @@
 		height: 250px;
 		left: 0;
 		top: 0;
-		z-index: 99;
-		background-color: white;
-		border: 1px solid #757575;
-		border-radius: 4px;
+		z-index: 100;
+		background: white;
+		// border: 1px solid rgba(0,0,0,0.10);
+		border-radius: 3px;
+		box-shadow: 0 4px 9px 0 rgba(0,0,0,0.10), inset 0 2px 0 0 rgba(255,255,255,0.10),0 0 0 1px rgba(0,0,0,0.1);
 		margin: auto;
-		box-shadow:0px 0px 8px #000;
 		.read{
 			width: 80%;
 			margin: auto;
 			font-size: 12px;
 		}
+		padding: 8px 0px;
 	}
 	.t_right_down {
 		&::after{
 			@extend .Triangle;
-			bottom: -16px;
-			z-index: 100;
-			border-top: 8px solid #757575;
-		}
-		&::before{
-			@extend .Triangle;
-			bottom: -15px;
-			z-index: 101;
-			border-top: 8px solid white;
+			right:60px;
+			bottom:-4px;
+			box-shadow:0 1px rgba(0,0,0,0.1),1px 0 rgba(0,0,0,0.1);
 		}
 	}
 	.t_right_up {
 		&::after{
 			@extend .Triangle;
-			top: -16px;
-			z-index: 100;
-			border-bottom: 8px solid #757575;
+			right:60px;
+			top:-4px;
+			box-shadow:0 -1px rgba(0,0,0,0.1),-1px 0 rgba(0,0,0,0.1);
 		}
-		&::before{
+	}
+	.t_left_down {
+		&::after{
 			@extend .Triangle;
-			top: -15px;
-			z-index: 101;
-			border-bottom: 8px solid white;
+			left:60px;
+			bottom:-4px;
+			box-shadow:0 1px rgba(0,0,0,0.1),1px 0 rgba(0,0,0,0.1);
+		}
+	}
+	.t_left_up {
+		&::after{
+			@extend .Triangle;
+			left:60px;
+			top:-4px;
+			box-shadow:0 -1px rgba(0,0,0,0.1),-1px 0 rgba(0,0,0,0.1);
 		}
 	}
 }

@@ -267,11 +267,17 @@ var Article = function (_Component) {
 				var style = {
 					top: top, left: left
 				};
-				style.left -= 350;
-				var tClass = "t_right_";
+				var tClass = "t_";
+				if (left > document.body.clientWidth / 2) {
+					style.left -= 350;
+					tClass += "right_";
+				} else {
+					tClass += "left_";
+					style.left += rect.width - 60 - 15;
+				}
 				if (top > document.body.clientHeight / 2) {
 					tClass += "down";
-					style.top -= 250 + 10;
+					style.top -= 250 + 20;
 				} else {
 					tClass += "up";
 					style.top += rect.height + 10;

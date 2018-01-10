@@ -67,11 +67,17 @@ export default class Article extends Component {
 			let style = {
 				top, left
 			}
-			style.left -= 350
-			let tClass = "t_right_"
+			let tClass = "t_"
+			if (left > document.body.clientWidth / 2) {
+				style.left -= 350
+				tClass += "right_"
+			} else {
+				tClass += "left_"
+				style.left += rect.width - 60 - 15
+			}
 			if (top > document.body.clientHeight / 2) {
 				tClass += "down"
-				style.top -= 250 + 10
+				style.top -= 250 + 20
 			} else {
 				tClass += "up"
 				style.top += rect.height + 10
