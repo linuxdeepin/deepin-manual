@@ -11,6 +11,10 @@ export default class Article extends Component {
 		this.state = {
 			preview: null
 		}
+		global.qtObjects.search.match.connect(hash => {
+			console.log("搜索跳转", hash)
+			props.setHash(hash)
+		})
 	}
 	componentDidUpdate() {
 		if (this.hash != this.props.hash) {

@@ -144,6 +144,7 @@ function qtInit(channel) {
 	if (delay != null) {
 		delay();
 	}
+	console.log(global.qtObjects);
 }
 new QWebChannel(qt.webChannelTransport, qtInit);
 
@@ -194,6 +195,10 @@ var Article = function (_Component) {
 		_this.state = {
 			preview: null
 		};
+		global.qtObjects.search.match.connect(function (hash) {
+			console.log("搜索跳转", hash);
+			props.setHash(hash);
+		});
 		return _this;
 	}
 
