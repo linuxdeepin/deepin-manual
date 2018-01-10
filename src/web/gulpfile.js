@@ -32,12 +32,8 @@ gulp.task('html', () => {
 	return gulp.src("*.html")
 		.pipe(gulp.dest(RootDir))
 })
-//移动qtwebchannel文件
-gulp.task('qtwebchannel', () => {
-	return gulp.src("qtwebchannel.js")
-		.pipe(gulp.dest(RootDir))
-})
-const tasks = ['js', 'sass', 'html', 'qtwebchannel']
+
+const tasks = ['js', 'sass', 'html']
 
 //编译全部
 gulp.task('build', tasks)

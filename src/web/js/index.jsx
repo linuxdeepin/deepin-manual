@@ -14,12 +14,13 @@ class Item extends Component {
 			logo: "",
 			show: false
 		}
-		let file = `${global.path}/${this.props.appName}/${global.lang}/index.md`
+		const path = `${global.path}/${this.props.appName}/${global.lang}/`
+		const file = path + `index.md`
 		global.readFile(file, data => {
-			let {html, info} = m2h(file, data)
-			sIndex(file, html)
-			let {title, logo} = info
+			let [title, logo] = data.substr("# ".length, data.indexOf("\n")).split("|")
+			logo = `${path}${logo}`
 			this.setState({ title, logo, show: true })
+			sIndex(file, html)
 		})
 	}
 	render() {

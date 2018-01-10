@@ -378,6 +378,8 @@ Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
 var _react = require('react');
@@ -418,17 +420,17 @@ var Item = function (_Component) {
 			logo: "",
 			show: false
 		};
-		var file = global.path + '/' + _this.props.appName + '/' + global.lang + '/index.md';
+		var path = global.path + '/' + _this.props.appName + '/' + global.lang + '/';
+		var file = path + 'index.md';
 		global.readFile(file, function (data) {
-			var _m2h = (0, _mdToHtml2.default)(file, data),
-			    html = _m2h.html,
-			    info = _m2h.info;
+			var _data$substr$split = data.substr("# ".length, data.indexOf("\n")).split("|"),
+			    _data$substr$split2 = _slicedToArray(_data$substr$split, 2),
+			    title = _data$substr$split2[0],
+			    logo = _data$substr$split2[1];
 
-			(0, _searchIndex2.default)(file, html);
-			var title = info.title,
-			    logo = info.logo;
-
+			logo = '' + path + logo;
 			_this.setState({ title: title, logo: logo, show: true });
+			(0, _searchIndex2.default)(file, html);
 		});
 		return _this;
 	}
@@ -780,6 +782,7 @@ exports.default = function (file, html) {
 		console.log(file, "cacha");
 		return;
 	}
+	console.log(file, "updata");
 	localStorage[hashName] = hash;
 	var div = document.createElement("div");
 	div.innerHTML = html;
