@@ -38,8 +38,7 @@ const int kCloseBtnSize = 24;
 }  // namespace
 
 ImageViewer::ImageViewer(QWidget* parent)
-    : QDialog(parent),
-      drag_pos_() {
+    : QDialog(parent) {
   this->setObjectName("ImageViewer");
   this->initUI();
 
@@ -107,21 +106,8 @@ void ImageViewer::initUI() {
 }
 
 void ImageViewer::mousePressEvent(QMouseEvent* event) {
-  mouse_pressed_ = true;
-  drag_pos_ = event->globalPos() - frameGeometry().topLeft();
   QWidget::mousePressEvent(event);
-}
-
-void ImageViewer::mouseReleaseEvent(QMouseEvent* event) {
-  mouse_pressed_ = false;
-  QWidget::mouseReleaseEvent(event);
-}
-
-void ImageViewer::mouseMoveEvent(QMouseEvent* event) {
-  if (mouse_pressed_) {
-    this->move(event->globalPos() - drag_pos_);
-  }
-  QWidget::mouseMoveEvent(event);
+  this->hide();
 }
 
 void ImageViewer::paintEvent(QPaintEvent* event) {

@@ -37,17 +37,11 @@ class ImageViewer : public QDialog {
  protected:
   void mousePressEvent(QMouseEvent* event) override;
 
-  void mouseReleaseEvent(QMouseEvent* event) override;
-
-  void mouseMoveEvent(QMouseEvent* event) override;
-
   void paintEvent(QPaintEvent* event) override;
 
  private:
   void initUI();
 
-  bool mouse_pressed_ = false;
-  QPoint drag_pos_;
   QLabel* img_label_ = nullptr;
   Dtk::Widget::DImageButton* close_button_ = nullptr;
 };
