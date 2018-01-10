@@ -51,7 +51,6 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 (0, _reactIntl.addLocaleData)([].concat(_toConsumableArray(_zh2.default), _toConsumableArray(_en2.default)));
 
 global.lang = navigator.language.replace("-", "_");
-console.log(navigator);
 global.path = "/usr/share/dman";
 global.readFile = function (fileName, callback) {
 	var xhr = new XMLHttpRequest();
@@ -96,8 +95,8 @@ global.openFile = function (file) {
 		    html = _m2h.html,
 		    hlist = _m2h.hlist;
 
-		(0, _searchIndex2.default)(file, html);
 		_reactDom2.default.render(_react2.default.createElement(_main2.default, { appName: file, hlist: hlist, html: html }), document.body);
+		(0, _searchIndex2.default)(file, null, html);
 	});
 };
 global.openFolder = function (folder) {
@@ -390,10 +389,6 @@ var _reactIntl = require('react-intl');
 
 var _reactCustomScrollbars = require('react-custom-scrollbars');
 
-var _mdToHtml = require('./mdToHtml');
-
-var _mdToHtml2 = _interopRequireDefault(_mdToHtml);
-
 var _searchIndex = require('./searchIndex');
 
 var _searchIndex2 = _interopRequireDefault(_searchIndex);
@@ -430,7 +425,7 @@ var Item = function (_Component) {
 
 			logo = '' + path + logo;
 			_this.setState({ title: title, logo: logo, show: true });
-			(0, _searchIndex2.default)(file, html);
+			(0, _searchIndex2.default)(file, data);
 		});
 		return _this;
 	}
@@ -546,7 +541,7 @@ var Index = function (_Component2) {
 exports.default = Index;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./mdToHtml":6,"./searchIndex":8,"react":81,"react-custom-scrollbars":66,"react-intl":76}],5:[function(require,module,exports){
+},{"./searchIndex":8,"react":81,"react-custom-scrollbars":66,"react-intl":76}],5:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -768,22 +763,29 @@ exports.default = Nav;
 
 },{"react":81,"react-custom-scrollbars":66,"react-dom":74}],8:[function(require,module,exports){
 (function (global){
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
 });
 
-exports.default = function (file, html) {
-	var hashName = file + "_searchIndex_hash";
-	var hash = (0, _md2.default)(html);
-	console.log(hash);
-	if (localStorage[hashName] == hash) {
-		console.log(file, "cacha");
+exports.default = function (file, data, html) {
+	if (data != null) {
+		var hash = (0, _md2.default)(data);
+		if (localStorage[file + "_data_hash"] == hash) {
+			return;
+		}
+		localStorage[file + "_data_hash"] = hash;
+		html = (0, _mdToHtml2.default)(file, data).html;
+	} else if (html != null) {
+		var _hash = (0, _md2.default)(html);
+		if (localStorage[file + "_html_hash"] == _hash) {
+			return;
+		}
+		localStorage[file + "_html_hash"] = _hash;
+	} else {
 		return;
 	}
-	console.log(file, "updata");
-	localStorage[hashName] = hash;
 	var div = document.createElement("div");
 	div.innerHTML = html;
 	var searchIndex = {};
@@ -797,22 +799,21 @@ exports.default = function (file, html) {
 		searchIndex[key] += el.innerText;
 		searchIndex[key] += "\n";
 	}
-	var keys = Object.keys(searchIndex);
-	var values = keys.map(function (key) {
-		return searchIndex[key];
-	});
-	console.log(file, keys, values);
-	global.qtObjects.search.addSearchEntry(file, keys, values);
+	global.qtObjects.search.addSearchEntry(file, Object.keys(searchIndex), Object.values(searchIndex));
 };
 
-var _md = require("md5");
+var _md = require('md5');
 
 var _md2 = _interopRequireDefault(_md);
+
+var _mdToHtml = require('./mdToHtml');
+
+var _mdToHtml2 = _interopRequireDefault(_mdToHtml);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"md5":52}],9:[function(require,module,exports){
+},{"./mdToHtml":6,"md5":52}],9:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

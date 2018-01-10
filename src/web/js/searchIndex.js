@@ -1,15 +1,23 @@
 import md5 from 'md5'
+import m2h from './mdToHtml'
 
-export default function (file, html) {
-	let hashName = file + "_searchIndex_hash"
-	let hash = md5(html)
-	console.log(hash)
-	if (localStorage[hashName] == hash) {
-		console.log(file, "cacha")
+export default function (file, data, html) {
+	if (data != null) {
+		const hash = md5(data)
+		if (localStorage[file + "_data_hash"] == hash) {
+			return
+		}
+		localStorage[file + "_data_hash"] = hash
+		html = m2h(file, data).html
+	} else if (html != null) {
+		const hash = md5(html)
+		if (localStorage[file + "_html_hash"] == hash) {
+			return
+		}
+		localStorage[file + "_html_hash"] = hash
+	} else {
 		return
 	}
-	console.log(file, "updata")
-	localStorage[hashName] = hash
 	let div = document.createElement("div")
 	div.innerHTML = html
 	let searchIndex = {}
@@ -23,8 +31,5 @@ export default function (file, html) {
 		searchIndex[key] += el.innerText
 		searchIndex[key] += "\n"
 	}
-	let keys = Object.keys(searchIndex)
-	let values = keys.map(key => searchIndex[key])
-	console.log(file, keys, values)
-	global.qtObjects.search.addSearchEntry(file, keys, values)
+	global.qtObjects.search.addSearchEntry(file, Object.keys(searchIndex), Object.values(searchIndex))
 }

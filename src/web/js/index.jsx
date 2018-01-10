@@ -2,7 +2,6 @@ import React, { Component } from 'react'
 import { FormattedMessage } from 'react-intl'
 import { Scrollbars } from 'react-custom-scrollbars'
 
-import m2h from './mdToHtml'
 import sIndex from "./searchIndex"
 
 class Item extends Component {
@@ -20,7 +19,7 @@ class Item extends Component {
 			let [title, logo] = data.substr("# ".length, data.indexOf("\n")).split("|")
 			logo = `${path}${logo}`
 			this.setState({ title, logo, show: true })
-			sIndex(file, html)
+			sIndex(file, data)
 		})
 	}
 	render() {

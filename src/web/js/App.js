@@ -14,7 +14,6 @@ import m2h from "./mdToHtml"
 import sIndex from "./searchIndex"
 
 global.lang = navigator.language.replace("-", "_")
-console.log(navigator)
 global.path = "/usr/share/dman"
 global.readFile = (fileName, callback) => {
 	let xhr = new XMLHttpRequest()
@@ -54,8 +53,8 @@ global.openFile = file => {
 
 	global.readFile(file, data => {
 		let {html, hlist} = m2h(file, data)
-		sIndex(file, html)
 		ReactDOM.render(<Main appName={file} hlist={hlist} html={html} />, document.body)
+		sIndex(file, null, html)
 	})
 }
 global.openFolder = folder => {
