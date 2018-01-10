@@ -23,8 +23,9 @@
 #include <QResizeEvent>
 #include <QTimer>
 #include <QWebChannel>
-#include <QWebEnginePage>
-#include <QWebEngineView>
+#include <qcef_web_page.h>
+#include <qcef_web_settings.h>
+#include <qcef_web_view.h>
 
 #include "base/consts.h"
 #include "controller/search_manager.h"
@@ -60,7 +61,7 @@ void WebWindow::setAppName(const QString& app_name) {
 void WebWindow::initConnections() {
   connect(title_bar_, &TitleBar::searchTextChanged,
           this, &WebWindow::onSearchTextChanged);
-  connect(web_view_->page(), &QWebEnginePage::loadFinished,
+  connect(web_view_->page(), &QCefWebPage::loadFinished,
           this, &WebWindow::onWebPageLoadFinished);
   connect(title_bar_, &TitleBar::downKeyPressed,
           completion_window_, &SearchCompletionWindow::goDown);
@@ -89,12 +90,14 @@ void WebWindow::initUI() {
   image_viewer_ = new ImageViewer(this);
   image_viewer_proxy_ = new ImageViewerProxy(image_viewer_, this);
 
-  web_view_ = new QWebEngineView();
+  web_view_ = new QCefWebView();
   this->setCentralWidget(web_view_);
 
+  // Disable web security.
+  web_view_->page()->settings()->setWebSecurity(QCefWebSettings::StateDisabled);
+
   // Use TitleBarProxy instead.
-  QWebChannel* channel = new QWebChannel(this);
-  web_view_->page()->setWebChannel(channel);
+  QWebChannel* channel = web_view_->page()->webChannel();
   channel->registerObject("imageViewer", image_viewer_proxy_);
   channel->registerObject("search", search_proxy_);
   channel->registerObject("titleBar", title_bar_proxy_);

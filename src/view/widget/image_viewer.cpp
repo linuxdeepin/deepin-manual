@@ -20,6 +20,7 @@
 #include <DWidgetUtil>
 #include <QApplication>
 #include <QDebug>
+#include <QPainter>
 #include <QResizeEvent>
 #include <QStackedLayout>
 #include <QtCore/QTimer>
@@ -125,6 +126,12 @@ void ImageViewer::mouseMoveEvent(QMouseEvent* event) {
     this->move(event->globalPos() - drag_pos_);
   }
   QWidget::mouseMoveEvent(event);
+}
+
+void ImageViewer::paintEvent(QPaintEvent* event) {
+  Q_UNUSED(event);
+  QPainter painter(this);
+  painter.fillRect(this->geometry(), QColor(128, 128, 128, 100));
 }
 
 }  // namespace dman

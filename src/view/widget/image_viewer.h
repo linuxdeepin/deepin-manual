@@ -41,6 +41,8 @@ class ImageViewer : public QDialog {
 
   void mouseMoveEvent(QMouseEvent* event) override;
 
+  void paintEvent(QPaintEvent* event) override;
+
  private:
   void initUI();
 

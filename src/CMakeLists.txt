@@ -48,12 +48,11 @@ find_package(Qt5Gui REQUIRED)
 find_package(Qt5LinguistTools)
 find_package(Qt5Sql REQUIRED)
 find_package(Qt5WebChannel REQUIRED)
-find_package(Qt5WebEngine REQUIRED)
-find_package(Qt5WebEngineWidgets REQUIRED)
 find_package(Qt5Widgets REQUIRED)
 find_package(Qt5LinguistTools REQUIRED)
 
 pkg_search_module(Dtk REQUIRED dtkwidget)
+pkg_search_module(QCef REQUIRED libqcef)
 
 add_subdirectory(third_party/cppjieba)
 
@@ -67,10 +66,9 @@ set(LINK_LIBS
     Qt5::Sql
     Qt5::Widgets
     Qt5::WebChannel
-    Qt5::WebEngine
-    Qt5::WebEngineWidgets
 
     ${Dtk_LDFLAGS}
+    ${QCef_LDFLAGS}
     )
 
 set(BASE_FILES
