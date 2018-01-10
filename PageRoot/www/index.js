@@ -50,7 +50,7 @@ function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr
 
 (0, _reactIntl.addLocaleData)([].concat(_toConsumableArray(_zh2.default), _toConsumableArray(_en2.default)));
 
-global.lang = { zh: "zh_CN", en: "en_US" }[navigator.language];
+global.lang = navigator.language.replace("-", "_");
 console.log(navigator);
 global.path = "/usr/share/dman";
 global.readFile = function (fileName, callback) {
@@ -773,13 +773,14 @@ Object.defineProperty(exports, "__esModule", {
 });
 
 exports.default = function (file, html) {
-	// let hashName = file + "_searchIndex_hash"
-	// let hash = md5(html)
-	// console.log(hash)
-	// if (localStorage[hashName] == hash) {
-	// 	return
-	// }
-	// localStorage[hashName] = hash
+	var hashName = file + "_searchIndex_hash";
+	var hash = (0, _md2.default)(html);
+	console.log(hash);
+	if (localStorage[hashName] == hash) {
+		console.log(file, "cacha");
+		return;
+	}
+	localStorage[hashName] = hash;
 	var div = document.createElement("div");
 	div.innerHTML = html;
 	var searchIndex = {};

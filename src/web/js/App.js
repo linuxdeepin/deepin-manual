@@ -13,7 +13,7 @@ import Main from "./main.jsx"
 import m2h from "./mdToHtml"
 import sIndex from "./searchIndex"
 
-global.lang = { zh: "zh_CN", en: "en_US" }[navigator.language]
+global.lang = navigator.language.replace("-", "_")
 console.log(navigator)
 global.path = "/usr/share/dman"
 global.readFile = (fileName, callback) => {
