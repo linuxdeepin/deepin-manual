@@ -142,6 +142,8 @@ void SearchCompletionWindow::initUI() {
   result_view_->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
   result_view_->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
   result_view_->setFocusPolicy(Qt::NoFocus);
+  result_view_->setMinimumHeight(kItemHeight);
+  result_view_->adjustSize();
 
   search_button_ = new QPushButton();
   search_button_->setObjectName("SearchButton");
@@ -161,8 +163,7 @@ void SearchCompletionWindow::initUI() {
   this->setContentsMargins(0, 0, 0, 0);
   this->setMinimumHeight(kItemHeight);
   this->setFixedWidth(262);
-  result_view_->setMinimumHeight(kItemHeight);
-  result_view_->adjustSize();
+  this->setWindowFlags(Qt::CustomizeWindowHint | Qt::BypassWindowManagerHint);
 
   ThemeManager::instance()->registerWidget(this);
 }
