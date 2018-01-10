@@ -440,7 +440,7 @@ var Item = function (_Component) {
 				{ className: 'item', onClick: function onClick() {
 						return global.openApp(_this2.props.appName);
 					} },
-				_react2.default.createElement('img', { src: this.state.logo, alt: this.props.appName }),
+				_react2.default.createElement('img', { draggable: 'false', src: this.state.logo, alt: this.props.appName }),
 				_react2.default.createElement('br', null),
 				_react2.default.createElement(
 					'span',

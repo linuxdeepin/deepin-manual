@@ -25,7 +25,7 @@ class Item extends Component {
 	render() {
 		return (this.state.show &&
 			<div className="item" onClick={() => global.openApp(this.props.appName)}>
-				<img src={this.state.logo} alt={this.props.appName} />
+				<img draggable="false" src={this.state.logo} alt={this.props.appName} />
 				<br />
 				<span>{this.state.title}</span>
 			</div>
