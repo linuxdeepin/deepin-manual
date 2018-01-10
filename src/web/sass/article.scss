@@ -76,6 +76,7 @@
                 color: #0082fa;
             }
             &[href^="dman://"] {
+                color: #4E64F6;
                 &:after {
                     content: " 📃 ";
                 }
