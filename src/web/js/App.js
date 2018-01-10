@@ -35,7 +35,7 @@ function stateBack() {
 
 global.qtObjects = null
 let delay = null
-global.openFile = file => {
+global.openFile = (file, hash) => {
 	if (global.qtObjects == null) {
 		delay = () => global.openFile(file)
 		return
@@ -46,11 +46,10 @@ global.openFile = file => {
 
 	global.readFile(file, data => {
 		let {html, hlist} = m2h(file, data)
-		ReactDOM.render(<Main appName={file} hlist={hlist} html={html} />, document.body)
+		ReactDOM.render(<Main appName={file} hlist={hlist} html={html} hash={hash} />, document.body)
 		sIndex(file, null, html)
 	})
 }
-
 global.openApp = (appName) => {
 	if (global.qtObjects == null) {
 		delay = () => global.open(appName)

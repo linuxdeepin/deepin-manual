@@ -7,7 +7,6 @@ import m2h from './mdToHtml'
 export default class Article extends Component {
 	constructor(props) {
 		super(props)
-		this.hash = this.props.hash
 		this.state = {
 			preview: null,
 			contentMenuStyle: null,
@@ -22,6 +21,9 @@ export default class Article extends Component {
 				this.scrollbars.scrollTop(this.scrollbars.getScrollTop() + hashDOM.getBoundingClientRect().top)
 			}
 		}
+	}
+	componentDidMount() {
+		this.componentDidUpdate()
 	}
 	scroll() {
 		if (this.state.preview != null || this.state.contentMenuStyle != null) {

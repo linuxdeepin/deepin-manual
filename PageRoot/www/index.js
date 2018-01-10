@@ -57,7 +57,7 @@ function stateBack() {
 
 global.qtObjects = null;
 var delay = null;
-global.openFile = function (file) {
+global.openFile = function (file, hash) {
 	if (global.qtObjects == null) {
 		delay = function delay() {
 			return global.openFile(file);
@@ -73,11 +73,10 @@ global.openFile = function (file) {
 		    html = _m2h.html,
 		    hlist = _m2h.hlist;
 
-		_reactDom2.default.render(_react2.default.createElement(_main2.default, { appName: file, hlist: hlist, html: html }), document.body);
+		_reactDom2.default.render(_react2.default.createElement(_main2.default, { appName: file, hlist: hlist, html: html, hash: hash }), document.body);
 		(0, _searchIndex2.default)(file, null, html);
 	});
 };
-
 global.openApp = function (appName) {
 	if (global.qtObjects == null) {
 		delay = function delay() {
@@ -171,7 +170,6 @@ var Article = function (_Component) {
 
 		var _this = _possibleConstructorReturn(this, (Article.__proto__ || Object.getPrototypeOf(Article)).call(this, props));
 
-		_this.hash = _this.props.hash;
 		_this.state = {
 			preview: null,
 			contentMenuStyle: null
@@ -190,6 +188,11 @@ var Article = function (_Component) {
 					this.scrollbars.scrollTop(this.scrollbars.getScrollTop() + hashDOM.getBoundingClientRect().top);
 				}
 			}
+		}
+	}, {
+		key: 'componentDidMount',
+		value: function componentDidMount() {
+			this.componentDidUpdate();
 		}
 	}, {
 		key: 'scroll',
@@ -578,7 +581,7 @@ var Main = function (_Component) {
 
 		console.log(props);
 		_this.state = {
-			hash: props.hlist[0].id
+			hash: props.hash != null ? props.hash : props.hlist[0].id
 		};
 		return _this;
 	}
@@ -587,6 +590,13 @@ var Main = function (_Component) {
 		key: "setHash",
 		value: function setHash(hash) {
 			this.setState({ hash: hash });
+		}
+	}, {
+		key: "componentWillReceiveProps",
+		value: function componentWillReceiveProps(nextProps) {
+			if (nextProps.hash != null && nextProps.hash != this.state.hash) {
+				this.setState({ hash: nextProps.hash });
+			}
 		}
 	}, {
 		key: "render",
