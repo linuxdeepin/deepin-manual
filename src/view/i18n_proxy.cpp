@@ -29,7 +29,10 @@ QVariantHash I18nProxy::getSentences() const {
   QVariantHash result{
       { "Copy", QObject::tr("Copy") },
       { "System", QObject::tr("System") },
-      { "Application", QObject::tr("Application") },
+      { "Applications", QObject::tr("Applications") },
+      { "NoResult", QObject::tr("Sorry, we couldn't find any results") },
+      { "WikiSearch", QObject::tr(
+          "Change your keywords and try again, or search it in Deepin Wiki") },
   };
   return result;
 }

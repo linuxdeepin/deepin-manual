@@ -20,7 +20,17 @@
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="32"/>
-        <source>Application</source>
+        <source>Applications</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="33"/>
+        <source>Sorry, we couldn&apos;t find any results</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="34"/>
+        <source>Change your keywords and try again, or search it in Deepin Wiki</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
