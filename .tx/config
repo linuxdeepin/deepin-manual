@@ -3,9 +3,9 @@ host = https://www.transifex.com
 minimum_perc = 80
 mode = developer
 
-[deepin-manual.dman]
-file_filter = i18n/dman-<lang>.ts
-source_file = i18n/dman.ts
+[deepin-manual.deepin-manual]
+file_filter = i18n/deepin-manual-<lang>.ts
+source_file = i18n/deepin-manual.ts
 source_lang = en
 type = QT
 

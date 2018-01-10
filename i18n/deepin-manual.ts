@@ -34,14 +34,14 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/widget/title_bar.cpp" line="89"/>
-        <source>Search</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
         <location filename="../src/view/widget/search_completion_window.cpp" line="111"/>
         <location filename="../src/view/widget/search_completion_window.cpp" line="154"/>
         <source>Search &quot;%1&quot; in the full text</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/widget/title_bar.cpp" line="89"/>
+        <source>Search</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

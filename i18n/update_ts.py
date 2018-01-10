@@ -30,9 +30,6 @@ def generate_ts(ts_path, is_installer):
             "src/app",
             "src/view",
         )
-    else:
-        # Only include oem folder.
-        paths = ["oem"]
 
     # Add -I. option to solve namespace error
     cmd = " ".join((
@@ -48,7 +45,7 @@ def main():
         print("Run script in parent folder of `i18n`")
         sys.exit(1)
     
-    default_ts = "i18n/dman.ts"
+    default_ts = "i18n/deepin-manual.ts"
     generate_ts(default_ts, True)
 
 if __name__ == "__main__":
