@@ -84,13 +84,25 @@ global.index = () => {
 	global.qtObjects.search.setCurrentApp("")
 	ReactDOM.render(<IntlProvider locale={navigator.language} messages={{ zh_CN, en_US }[global.lang]}><Index /></IntlProvider>, document.body)
 }
-
+function searchIndexCheck() {
+	global.readFile(global.path, data => {
+		let appList = data.match(/addRow\("([^.][^"]+)"/g)
+			.map(r => {
+				return r.match(/"([^"]+)"/)[1]
+			})
+		appList.map(appName => {
+			const file = `${global.path}/${this.props.appName}/${global.lang}/index.md`
+			global.readFile(file, data => sIndex(file, data))
+		})
+	})
+}
 function qtInit(channel) {
 	global.qtObjects = channel.objects
 	global.qtObjects.titleBar.backButtonClicked.connect(stateBack)
 	if (delay != null) {
 		delay()
 	}
+	searchIndexCheck()
 	console.log(global.qtObjects)
 }
 new QWebChannel(qt.webChannelTransport, qtInit)

@@ -136,13 +136,28 @@ global.index = function () {
 		_react2.default.createElement(_index2.default, null)
 	), document.body);
 };
+function searchIndexCheck() {
+	var _this = this;
 
+	global.readFile(global.path, function (data) {
+		var appList = data.match(/addRow\("([^.][^"]+)"/g).map(function (r) {
+			return r.match(/"([^"]+)"/)[1];
+		});
+		appList.map(function (appName) {
+			var file = global.path + '/' + _this.props.appName + '/' + global.lang + '/index.md';
+			global.readFile(file, function (data) {
+				return (0, _searchIndex2.default)(file, data);
+			});
+		});
+	});
+}
 function qtInit(channel) {
 	global.qtObjects = channel.objects;
 	global.qtObjects.titleBar.backButtonClicked.connect(stateBack);
 	if (delay != null) {
 		delay();
 	}
+	searchIndexCheck();
 	console.log(global.qtObjects);
 }
 new QWebChannel(qt.webChannelTransport, qtInit);
@@ -425,10 +440,6 @@ var _reactIntl = require('react-intl');
 
 var _reactCustomScrollbars = require('react-custom-scrollbars');
 
-var _searchIndex = require('./searchIndex');
-
-var _searchIndex2 = _interopRequireDefault(_searchIndex);
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -461,7 +472,6 @@ var Item = function (_Component) {
 
 			logo = '' + path + logo;
 			_this.setState({ title: title, logo: logo, show: true });
-			(0, _searchIndex2.default)(file, data);
 		});
 		return _this;
 	}
@@ -577,7 +587,7 @@ var Index = function (_Component2) {
 exports.default = Index;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./searchIndex":8,"react":81,"react-custom-scrollbars":66,"react-intl":76}],5:[function(require,module,exports){
+},{"react":81,"react-custom-scrollbars":66,"react-intl":76}],5:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
