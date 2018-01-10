@@ -148,7 +148,9 @@ export default class Article extends Component {
 			{
 				this.state.contentMenuStyle != null &&
 				<div id="contextMenu" style={this.state.contentMenuStyle}>
-					<h4 onClick={() => document.execCommand('Copy')}>复制</h4>
+					<h4 onClick={() => document.execCommand('Copy')}>
+						{global.i18n["Copy"]}
+					</h4>
 				</div>
 			}
 		</div>

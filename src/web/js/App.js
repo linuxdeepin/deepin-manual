@@ -1,12 +1,5 @@
 import React from 'react'
 import ReactDOM from 'react-dom'
-import { addLocaleData, IntlProvider } from 'react-intl'
-import zh from 'react-intl/locale-data/zh'
-import en from 'react-intl/locale-data/en'
-addLocaleData([...zh, ...en])
-
-import zh_CN from './zh_CN.js'
-import en_US from './en_US.js'
 
 import Index from "./index.jsx"
 import Main from "./main.jsx"
@@ -75,7 +68,7 @@ global.index = () => {
 	global.qtObjects.titleBar.setBackButtonVisible(false)
 	state.appName = ""
 	global.qtObjects.search.setCurrentApp("")
-	ReactDOM.render(<IntlProvider locale={navigator.language} messages={{ zh_CN, en_US }[global.lang]}><Index /></IntlProvider>, document.body)
+	ReactDOM.render(<Index />, document.body)
 }
 function searchIndexCheck() {
 	global.readFile(global.path, data => {
@@ -90,11 +83,14 @@ function searchIndexCheck() {
 	})
 }
 function qtInit(channel) {
-	global.qtObjects = channel.objects
-	global.qtObjects.titleBar.backButtonClicked.connect(stateBack)
-	if (delay != null) {
-		delay()
-	}
+	channel.objects.titleBar.backButtonClicked.connect(stateBack)
+	channel.objects.i18n.getSentences(i18n => {
+		global.i18n = i18n
+		global.qtObjects = channel.objects
+		if (delay != null) {
+			delay()
+		}
+	})
 	searchIndexCheck()
 	console.log(global.qtObjects)
 }

@@ -1,5 +1,4 @@
 import React, { Component } from 'react'
-import { FormattedMessage } from 'react-intl'
 import { Scrollbars } from 'react-custom-scrollbars'
 
 class Item extends Component {
@@ -79,11 +78,11 @@ export default class Index extends Component {
 		let otherSoft = this.state.appList.filter(appName => this.state.sequence.indexOf(appName) == -1 && sysSoft.indexOf(appName) == -1)
 		return <Scrollbars >
 			<div id="index">
-				<h2><FormattedMessage id="sys" /></h2>
+				<h2>{global.i18n["System"]}</h2>
 				<div className="items">
 					{sysSoft.map(appName => <Item key={appName} appName={appName} />)}
 				</div>
-				<h2><FormattedMessage id="app" /></h2>
+				<h2>{global.i18n["Application"]}</h2>
 				<div className="items">
 					{appSoft.map(appName => <Item key={appName} appName={appName} />)}
 					{otherSoft.map(appName => <Item key={appName} appName={appName} />)}
