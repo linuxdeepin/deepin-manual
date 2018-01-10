@@ -30,7 +30,8 @@ QVariantHash I18nProxy::getSentences() const {
       { "Copy", QObject::tr("Copy") },
       { "System", QObject::tr("System") },
       { "Applications", QObject::tr("Applications") },
-      { "NoResult", QObject::tr("Sorry, we couldn't find any results") },
+      { "NoResult",
+          QObject::tr("Sorry, there are no search results of \"%1\"") },
       { "WikiSearch", QObject::tr(
           "Change your keywords and try again, or search it in Deepin Wiki") },
   };
