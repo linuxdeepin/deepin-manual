@@ -1,5 +1,5 @@
-import React, { Component } from 'react'
-import { Scrollbars } from 'react-custom-scrollbars'
+import React, { Component } from "react"
+import { Scrollbars } from "react-custom-scrollbars"
 
 class Item extends Component {
 	constructor(props) {
@@ -13,22 +13,32 @@ class Item extends Component {
 		const path = `${global.path}/${this.props.appName}/${global.lang}/`
 		const file = path + `index.md`
 		global.readFile(file, data => {
-			let [title, logo] = data.substr("# ".length, data.indexOf("\n")).split("|")
+			let [title, logo] = data
+				.substr("# ".length, data.indexOf("\n"))
+				.split("|")
 			logo = `${path}${logo}`
 			this.setState({ title, logo, show: true })
 		})
 	}
 	render() {
-		return (this.state.show &&
-			<div className="item" onClick={() => global.openApp(this.props.appName)}>
-				<img draggable="false" src={this.state.logo} alt={this.props.appName} />
-				<br />
-				<span>{this.state.title}</span>
-			</div>
+		return (
+			this.state.show && (
+				<div
+					className="item"
+					onClick={() => global.openApp(this.props.appName)}
+				>
+					<img
+						draggable="false"
+						src={this.state.logo}
+						alt={this.props.appName}
+					/>
+					<br />
+					<span>{this.state.title}</span>
+				</div>
+			)
 		)
 	}
 }
-
 
 export default class Index extends Component {
 	constructor(props) {
@@ -46,7 +56,7 @@ export default class Index extends Component {
 			"deepin-voice-recorder",
 			"deepin-cloud-print",
 			"deepin-cloud-scan",
-			'deepin-calculator',
+			"deepin-calculator",
 			"deepin-clone",
 			"deepin-graphics-driver-manager",
 			"deepin-package-manager",
@@ -59,10 +69,9 @@ export default class Index extends Component {
 		}
 
 		global.readFile(global.path, data => {
-			let appList = data.match(/addRow\("([^.][^"]+)"/g)
-				.map(r => {
-					return r.match(/"([^"]+)"/)[1]
-				})
+			let appList = data.match(/addRow\("([^.][^"]+)"/g).map(r => {
+				return r.match(/"([^"]+)"/)[1]
+			})
 			this.setState({ appList: appList })
 		})
 	}
@@ -73,21 +82,33 @@ export default class Index extends Component {
 		return true
 	}
 	render() {
-		let sysSoft = ['dde']
-		let appSoft = this.state.sequence.filter(appName => this.state.appList.indexOf(appName) != -1)
-		let otherSoft = this.state.appList.filter(appName => this.state.sequence.indexOf(appName) == -1 && sysSoft.indexOf(appName) == -1)
-		return <Scrollbars >
-			<div id="index">
-				<h2>{global.i18n["System"]}</h2>
-				<div className="items">
-					{sysSoft.map(appName => <Item key={appName} appName={appName} />)}
+		let sysSoft = ["dde"].filter(
+			appName => this.state.appList.indexOf(appName) != -1
+		)
+		let appSoft = this.state.sequence.filter(
+			appName => this.state.appList.indexOf(appName) != -1
+		)
+		let otherSoft = this.state.appList.filter(
+			appName =>
+				this.state.sequence.indexOf(appName) == -1 &&
+				sysSoft.indexOf(appName) == -1
+		)
+		return (
+			<Scrollbars>
+				<div id="index">
+					{sysSoft.length > 0 && (
+						<div className="items">
+							<h2>{global.i18n["System"]}</h2>
+							{sysSoft.map(appName => <Item key={appName} appName={appName} />)}
+						</div>
+					)}
+					<div className="items">
+						<h2>{global.i18n["Applications"]}</h2>
+						{appSoft.map(appName => <Item key={appName} appName={appName} />)}
+						{otherSoft.map(appName => <Item key={appName} appName={appName} />)}
+					</div>
 				</div>
-				<h2>{global.i18n["Applications"]}</h2>
-				<div className="items">
-					{appSoft.map(appName => <Item key={appName} appName={appName} />)}
-					{otherSoft.map(appName => <Item key={appName} appName={appName} />)}
-				</div>
-			</div>
-		</Scrollbars>
+			</Scrollbars>
+		)
 	}
 }

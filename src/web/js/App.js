@@ -1,5 +1,5 @@
-import React from 'react'
-import ReactDOM from 'react-dom'
+import React from "react"
+import ReactDOM from "react-dom"
 
 import Index from "./index.jsx"
 import Main from "./main.jsx"
@@ -7,7 +7,7 @@ import m2h from "./mdToHtml"
 import sIndex from "./searchIndex"
 
 global.lang = navigator.language.replace("-", "_")
-global.path = "/usr/share/dman"
+global.path = getSystemManualDir("")
 global.readFile = (fileName, callback) => {
 	let xhr = new XMLHttpRequest()
 	xhr.open("GET", fileName)
@@ -20,7 +20,7 @@ global.readFile = (fileName, callback) => {
 }
 let state = {
 	searchWord: "",
-	appName: "",
+	appName: ""
 }
 function stateBack() {
 	console.log("stateBack", state)
@@ -45,12 +45,15 @@ global.openFile = (file, hash) => {
 	state.appName = file
 
 	global.readFile(file, data => {
-		let {html, hlist} = m2h(file, data)
-		ReactDOM.render(<Main appName={file} hlist={hlist} html={html} hash={hash} />, document.body)
+		let { html, hlist } = m2h(file, data)
+		ReactDOM.render(
+			<Main appName={file} hlist={hlist} html={html} hash={hash} />,
+			document.body
+		)
 		sIndex(file, null, html)
 	})
 }
-global.openApp = (appName) => {
+global.openApp = appName => {
 	if (global.qtObjects == null) {
 		delay = () => global.openApp(appName)
 		return
@@ -71,10 +74,9 @@ global.index = () => {
 }
 function searchIndexCheck() {
 	global.readFile(global.path, data => {
-		let appList = data.match(/addRow\("([^.][^"]+)"/g)
-			.map(r => {
-				return r.match(/"([^"]+)"/)[1]
-			})
+		let appList = data.match(/addRow\("([^.][^"]+)"/g).map(r => {
+			return r.match(/"([^"]+)"/)[1]
+		})
 		appList.map(appName => {
 			const file = `${global.path}/${appName}/${global.lang}/index.md`
 			global.readFile(file, data => sIndex(file, data))

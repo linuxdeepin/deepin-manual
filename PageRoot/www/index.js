@@ -1,35 +1,35 @@
 (function e(t,n,r){function s(o,u){if(!n[o]){if(!t[o]){var a=typeof require=="function"&&require;if(!u&&a)return a(o,!0);if(i)return i(o,!0);var f=new Error("Cannot find module '"+o+"'");throw f.code="MODULE_NOT_FOUND",f}var l=n[o]={exports:{}};t[o][0].call(l.exports,function(e){var n=t[o][1][e];return s(n?n:e)},l,l.exports,e,t,n,r)}return n[o].exports}var i=typeof require=="function"&&require;for(var o=0;o<r.length;o++)s(r[o]);return s})({1:[function(require,module,exports){
 (function (global){
-'use strict';
+"use strict";
 
-var _react = require('react');
+var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = require('react-dom');
+var _reactDom = require("react-dom");
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _index = require('./index.jsx');
+var _index = require("./index.jsx");
 
 var _index2 = _interopRequireDefault(_index);
 
-var _main = require('./main.jsx');
+var _main = require("./main.jsx");
 
 var _main2 = _interopRequireDefault(_main);
 
-var _mdToHtml = require('./mdToHtml');
+var _mdToHtml = require("./mdToHtml");
 
 var _mdToHtml2 = _interopRequireDefault(_mdToHtml);
 
-var _searchIndex = require('./searchIndex');
+var _searchIndex = require("./searchIndex");
 
 var _searchIndex2 = _interopRequireDefault(_searchIndex);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 global.lang = navigator.language.replace("-", "_");
-global.path = "/usr/share/dman";
+global.path = getSystemManualDir("");
 global.readFile = function (fileName, callback) {
 	var xhr = new XMLHttpRequest();
 	xhr.open("GET", fileName);
@@ -84,7 +84,7 @@ global.openApp = function (appName) {
 		};
 		return;
 	}
-	var file = global.path + '/' + appName + '/' + global.lang + '/index.md';
+	var file = global.path + "/" + appName + "/" + global.lang + "/index.md";
 	global.openFile(file);
 };
 
@@ -106,7 +106,7 @@ function searchIndexCheck() {
 			return r.match(/"([^"]+)"/)[1];
 		});
 		appList.map(function (appName) {
-			var file = global.path + '/' + appName + '/' + global.lang + '/index.md';
+			var file = global.path + "/" + appName + "/" + global.lang + "/index.md";
 			global.readFile(file, function (data) {
 				return (0, _searchIndex2.default)(file, data);
 			});
@@ -375,7 +375,7 @@ exports.default = Article;
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./mdToHtml":5,"react":56,"react-custom-scrollbars":44,"react-dom":52}],3:[function(require,module,exports){
 (function (global){
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
@@ -385,11 +385,11 @@ var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = [
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = require('react');
+var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactCustomScrollbars = require('react-custom-scrollbars');
+var _reactCustomScrollbars = require("react-custom-scrollbars");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -413,34 +413,41 @@ var Item = function (_Component) {
 			logo: "",
 			show: false
 		};
-		var path = global.path + '/' + _this.props.appName + '/' + global.lang + '/';
-		var file = path + 'index.md';
+		var path = global.path + "/" + _this.props.appName + "/" + global.lang + "/";
+		var file = path + "index.md";
 		global.readFile(file, function (data) {
 			var _data$substr$split = data.substr("# ".length, data.indexOf("\n")).split("|"),
 			    _data$substr$split2 = _slicedToArray(_data$substr$split, 2),
 			    title = _data$substr$split2[0],
 			    logo = _data$substr$split2[1];
 
-			logo = '' + path + logo;
+			logo = "" + path + logo;
 			_this.setState({ title: title, logo: logo, show: true });
 		});
 		return _this;
 	}
 
 	_createClass(Item, [{
-		key: 'render',
+		key: "render",
 		value: function render() {
 			var _this2 = this;
 
 			return this.state.show && _react2.default.createElement(
-				'div',
-				{ className: 'item', onClick: function onClick() {
+				"div",
+				{
+					className: "item",
+					onClick: function onClick() {
 						return global.openApp(_this2.props.appName);
-					} },
-				_react2.default.createElement('img', { draggable: 'false', src: this.state.logo, alt: this.props.appName }),
-				_react2.default.createElement('br', null),
+					}
+				},
+				_react2.default.createElement("img", {
+					draggable: "false",
+					src: this.state.logo,
+					alt: this.props.appName
+				}),
+				_react2.default.createElement("br", null),
 				_react2.default.createElement(
-					'span',
+					"span",
 					null,
 					this.state.title
 				)
@@ -459,7 +466,7 @@ var Index = function (_Component2) {
 
 		var _this3 = _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).call(this, props));
 
-		var sequence = ["dde-file-manager", "deepin-appstore", "deepin-system-monitor", "deepin-terminal", "deepin-movie", "deepin-music", "deepin-image-viewer", "deepin-screenshot", "deepin-screen-recorder", "deepin-voice-recorder", "deepin-cloud-print", "deepin-cloud-scan", 'deepin-calculator', "deepin-clone", "deepin-graphics-driver-manager", "deepin-package-manager", "deepin-presentation-assistant", "deepin-boot-maker"];
+		var sequence = ["dde-file-manager", "deepin-appstore", "deepin-system-monitor", "deepin-terminal", "deepin-movie", "deepin-music", "deepin-image-viewer", "deepin-screenshot", "deepin-screen-recorder", "deepin-voice-recorder", "deepin-cloud-print", "deepin-cloud-scan", "deepin-calculator", "deepin-clone", "deepin-graphics-driver-manager", "deepin-package-manager", "deepin-presentation-assistant", "deepin-boot-maker"];
 		_this3.state = {
 			sequence: sequence,
 			appList: []
@@ -475,7 +482,7 @@ var Index = function (_Component2) {
 	}
 
 	_createClass(Index, [{
-		key: 'shouldComponentUpdate',
+		key: "shouldComponentUpdate",
 		value: function shouldComponentUpdate(nextProps, nextState) {
 			if (nextState.appList.toString() == this.state.appList.toString()) {
 				return false;
@@ -483,11 +490,13 @@ var Index = function (_Component2) {
 			return true;
 		}
 	}, {
-		key: 'render',
+		key: "render",
 		value: function render() {
 			var _this4 = this;
 
-			var sysSoft = ['dde'];
+			var sysSoft = ["dde"].filter(function (appName) {
+				return _this4.state.appList.indexOf(appName) != -1;
+			});
 			var appSoft = this.state.sequence.filter(function (appName) {
 				return _this4.state.appList.indexOf(appName) != -1;
 			});
@@ -498,28 +507,28 @@ var Index = function (_Component2) {
 				_reactCustomScrollbars.Scrollbars,
 				null,
 				_react2.default.createElement(
-					'div',
-					{ id: 'index' },
-					_react2.default.createElement(
-						'h2',
-						null,
-						global.i18n["System"]
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'items' },
+					"div",
+					{ id: "index" },
+					sysSoft.length > 0 && _react2.default.createElement(
+						"div",
+						{ className: "items" },
+						_react2.default.createElement(
+							"h2",
+							null,
+							global.i18n["System"]
+						),
 						sysSoft.map(function (appName) {
 							return _react2.default.createElement(Item, { key: appName, appName: appName });
 						})
 					),
 					_react2.default.createElement(
-						'h2',
-						null,
-						global.i18n["Applications"]
-					),
-					_react2.default.createElement(
-						'div',
-						{ className: 'items' },
+						"div",
+						{ className: "items" },
+						_react2.default.createElement(
+							"h2",
+							null,
+							global.i18n["Applications"]
+						),
 						appSoft.map(function (appName) {
 							return _react2.default.createElement(Item, { key: appName, appName: appName });
 						}),
