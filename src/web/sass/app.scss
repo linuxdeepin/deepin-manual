@@ -1,15 +1,15 @@
 @charset "utf-8";
 
-html,body{
+html,
+body {
 	width: 100%;
 	min-width: 1024px;
 	overflow: hidden;
 	margin: 0px;
 }
 
-#app{
+#app {
 	width: 100%;
-	outline: 0px;
 	color: #464646;
 	height: 100%;
 	overflow: auto;

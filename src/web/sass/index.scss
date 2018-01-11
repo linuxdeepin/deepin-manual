@@ -1,11 +1,11 @@
 @charset "utf-8";
 
-#index{
+#index {
 	user-select: none;
-	width: 805px;
+	width: 830px;
 	margin: auto;
 	margin-bottom: 100px;
-	h2{
+	h2 {
 		font-weight: 300;
 		font-size: 30px;
 		line-height: 2em;
@@ -13,33 +13,36 @@
 		// margin-bottom: 30px;
 		border-bottom: 1px solid #d7d7d7;
 	}
-	.items{
-		.item{
+	.items {
+		.item {
 			// margin-right: 50px;
 			margin-top: 30px;
-			margin-right: 50px;
+			margin-right: 60px;
 			width: 160px;
 			height: 160px;
-			display:inline-block;
+			display: inline-block;
 			text-align: center;
 			cursor: pointer;
-			img{
+			img {
 				width: 96px;
 				padding-top: 20px;
 				margin-bottom: 10px;
 			}
-			span{
-				white-space:nowrap;
+			span {
+				white-space: nowrap;
 				font-size: 16px;
 				font-weight: normal;
 			}
-			&:nth-child(4n){
+			span:lang(en_US) {
+				font-size: 14px;
+			}
+			&:nth-child(4n + 1) {
 				margin-right: 0;
 			}
-			&:hover{
+			&:hover {
 				border-radius: 4px;
 				// border: 1px solid transparent;
-				background-color: rgba(0,0,0,0.05)
+				background-color: rgba(0, 0, 0, 0.05);
 			}
 		}
 	}

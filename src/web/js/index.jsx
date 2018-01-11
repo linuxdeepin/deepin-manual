@@ -34,7 +34,7 @@ class Item extends Component {
 						alt={this.props.appName}
 					/>
 					<br />
-					<span>{this.state.title}</span>
+					<span lang={global.lang}>{this.state.title}</span>
 				</div>
 			)
 		)

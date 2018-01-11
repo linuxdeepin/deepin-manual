@@ -555,7 +555,7 @@ var Item = function (_Component) {
 				_react2.default.createElement("br", null),
 				_react2.default.createElement(
 					"span",
-					null,
+					{ lang: global.lang },
 					this.state.title
 				)
 			);
@@ -788,7 +788,8 @@ var _marked2 = _interopRequireDefault(_marked);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 },{"marked":30}],6:[function(require,module,exports){
-'use strict';
+(function (global){
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
@@ -796,15 +797,15 @@ Object.defineProperty(exports, "__esModule", {
 
 var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
 
-var _react = require('react');
+var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = require('react-dom');
+var _reactDom = require("react-dom");
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactCustomScrollbars = require('react-custom-scrollbars');
+var _reactCustomScrollbars = require("react-custom-scrollbars");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -824,7 +825,7 @@ var Nav = function (_Component) {
 	}
 
 	_createClass(Nav, [{
-		key: 'componentDidUpdate',
+		key: "componentDidUpdate",
 		value: function componentDidUpdate() {
 			var hashDOM = _reactDom2.default.findDOMNode(this).querySelector(".hash");
 			if (hashDOM) {
@@ -841,7 +842,7 @@ var Nav = function (_Component) {
 			}
 		}
 	}, {
-		key: 'click',
+		key: "click",
 		value: function click(e) {
 			var cid = e.target.getAttribute("cid");
 			if (cid) {
@@ -849,25 +850,34 @@ var Nav = function (_Component) {
 			}
 		}
 	}, {
-		key: 'render',
+		key: "render",
 		value: function render() {
 			var _this2 = this;
 
 			return _react2.default.createElement(
-				'div',
-				{ id: 'nav', onClick: function onClick(e) {
+				"div",
+				{ id: "nav", onClick: function onClick(e) {
 						return _this2.click(e);
 					} },
 				_react2.default.createElement(
 					_reactCustomScrollbars.Scrollbars,
-					{ autoHide: true, autoHideTimeout: 1000, ref: function ref(s) {
+					{
+						autoHide: true,
+						autoHideTimeout: 1000,
+						ref: function ref(s) {
 							_this2.scrollbars = s;
-						} },
+						}
+					},
 					this.props.hlist.map(function (h) {
 						var NodeName = h.type;
 						return _react2.default.createElement(
 							NodeName,
-							{ key: h.id, cid: h.id, className: _this2.props.hash == h.id ? 'hash' : undefined },
+							{
+								key: h.id,
+								cid: h.id,
+								className: _this2.props.hash == h.id ? "hash" : undefined,
+								lang: global.lang
+							},
 							h.text
 						);
 					})
@@ -881,6 +891,7 @@ var Nav = function (_Component) {
 
 exports.default = Nav;
 
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"react":57,"react-custom-scrollbars":45,"react-dom":53}],7:[function(require,module,exports){
 (function (global){
 "use strict";

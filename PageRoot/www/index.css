@@ -1,4 +1,5 @@
-html, body {
+html,
+body {
   width: 100%;
   min-width: 1024px;
   overflow: hidden;
@@ -6,7 +7,6 @@ html, body {
 
 #app {
   width: 100%;
-  outline: 0px;
   color: #464646;
   height: 100%;
   overflow: auto; }
@@ -141,7 +141,7 @@ html, body {
 
 #index {
   user-select: none;
-  width: 805px;
+  width: 830px;
   margin: auto;
   margin-bottom: 100px; }
   #index h2 {
@@ -152,7 +152,7 @@ html, body {
     border-bottom: 1px solid #d7d7d7; }
   #index .items .item {
     margin-top: 30px;
-    margin-right: 50px;
+    margin-right: 60px;
     width: 160px;
     height: 160px;
     display: inline-block;
@@ -166,7 +166,9 @@ html, body {
       white-space: nowrap;
       font-size: 16px;
       font-weight: normal; }
-    #index .items .item:nth-child(4n) {
+    #index .items .item span:lang(en_US) {
+      font-size: 14px; }
+    #index .items .item:nth-child(4n + 1) {
       margin-right: 0; }
     #index .items .item:hover {
       border-radius: 4px;
@@ -175,7 +177,7 @@ html, body {
 #nav {
   float: left;
   width: 15%;
-  min-width: 160px;
+  min-width: 150px;
   overflow-y: auto;
   white-space: nowrap;
   border-right: 1px solid rgba(0, 0, 0, 0.1); }
@@ -188,6 +190,9 @@ html, body {
     margin: 0px;
     margin-bottom: 9px;
     text-indent: 34px; }
+  #nav h2:lang(en_US) {
+    font-size: 14px;
+    text-indent: 14px; }
   #nav h3 {
     cursor: pointer;
     font-weight: normal;
@@ -197,9 +202,12 @@ html, body {
     margin: 0px;
     margin-bottom: 9px;
     text-indent: 44px; }
+  #nav h3:lang(en_US) {
+    font-size: 12px;
+    text-indent: 20px; }
   #nav .hash {
-    border-right: #30A5F9 3px solid;
-    background-color: #D5EDFE;
+    border-right: #30a5f9 3px solid;
+    background-color: #d5edfe;
     color: #2ca7f8;
     font-weight: 500; }
 
