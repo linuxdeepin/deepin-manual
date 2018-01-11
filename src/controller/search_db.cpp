@@ -242,11 +242,13 @@ void SearchDb::handleSearchContent(const QString& keyword) {
       const QString app_name = query.value(0).toString();
       const QString anchor = query.value(1).toString();
       const QString content = query.value(2).toString();
-      if (app_name == last_app_name) {
+      if ((app_name == last_app_name) || last_app_name.isEmpty()) {
         anchors.append(anchor);
         contents.append(content);
       } else {
-        emit this->searchContentResult(last_app_name, anchors, contents);
+        if (!anchors.isEmpty()) {
+          emit this->searchContentResult(last_app_name, anchors, contents);
+        }
 
         anchors.clear();
         contents.clear();
