@@ -34,8 +34,6 @@ var _searchIndex2 = _interopRequireDefault(_searchIndex);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -55,29 +53,9 @@ var App = function (_Component) {
 		    _props$appName = props.appName,
 		    appName = _props$appName === undefined ? "" : _props$appName;
 
-		_this.state = { searchWord: searchWord, appName: appName, searchResult: []
+		_this.state = { searchWord: searchWord, appName: appName, searchResult: [] };
 
-			// this.state.searchWord = "test"
-			// this.state.searchResult = [
-			// 	{
-			// 		file: "file:///usr/share/dman/dde-file-manager/zh_CN/index.md",
-			// 		keys: ["概述", "压缩文件(夹)"],
-			// 		values: [
-			// 			"以及一系列深度特色应用。它既能让您体验到丰富多彩的娱乐生活，也可以满足您的日常工作需要。相信随着功能的不断升级和完善，深度操作系统将会被越来越多的用户所喜爱和使用。",
-			// 			"您可以通过快速进入控制中心设置显示器的分辨率、亮度。"
-			// 		]
-			// 	},
-			// 	{
-			// 		file: "file:///tmp/dde/en_US/index.md",
-			// 		keys: ["Dock", "设置显示器"],
-			// 		values: [
-			// 			"avsdfsdfsdfsdfsdfsdf avsdfsdfsdfsdfsdfsdf avsdfsdfsdfsdfsdfsdf",
-			// 			"您可以通过快速进入控制中心设置显示器的分辨率、亮度。"
-			// 		]
-			// 	}
-			// ]
-
-		};global.qtObjects.titleBar.backButtonClicked.connect(_this.backButtonClicked.bind(_this));
+		global.qtObjects.titleBar.backButtonClicked.connect(_this.backButtonClicked.bind(_this));
 		global.qtObjects.search.mismatch.connect(function () {
 			return _this.setState({ searchResult: null });
 		});
@@ -111,10 +89,11 @@ var App = function (_Component) {
 		}
 	}, {
 		key: "onContentResult",
-		value: function onContentResult(appName, keys, values) {
-			this.setState({
-				searchResult: [].concat(_toConsumableArray(this.state.searchResult), [{ appName: appName, keys: keys, values: values }])
-			});
+		value: function onContentResult(file, keys, values) {
+			console.log("searchResult", this.state, file, keys, values);
+			var searchResult = this.state.searchResult;
+			searchResult.push({ file: file, keys: keys, values: values });
+			this.setState({ searchResult: searchResult });
 		}
 	}, {
 		key: "render",

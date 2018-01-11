@@ -14,26 +14,6 @@ class App extends Component {
 		let { searchWord = "", appName = "" } = props
 		this.state = { searchWord, appName, searchResult: [] }
 
-		// this.state.searchWord = "test"
-		// this.state.searchResult = [
-		// 	{
-		// 		file: "file:///usr/share/dman/dde-file-manager/zh_CN/index.md",
-		// 		keys: ["概述", "压缩文件(夹)"],
-		// 		values: [
-		// 			"以及一系列深度特色应用。它既能让您体验到丰富多彩的娱乐生活，也可以满足您的日常工作需要。相信随着功能的不断升级和完善，深度操作系统将会被越来越多的用户所喜爱和使用。",
-		// 			"您可以通过快速进入控制中心设置显示器的分辨率、亮度。"
-		// 		]
-		// 	},
-		// 	{
-		// 		file: "file:///tmp/dde/en_US/index.md",
-		// 		keys: ["Dock", "设置显示器"],
-		// 		values: [
-		// 			"avsdfsdfsdfsdfsdfsdf avsdfsdfsdfsdfsdfsdf avsdfsdfsdfsdfsdfsdf",
-		// 			"您可以通过快速进入控制中心设置显示器的分辨率、亮度。"
-		// 		]
-		// 	}
-		// ]
-
 		global.qtObjects.titleBar.backButtonClicked.connect(
 			this.backButtonClicked.bind(this)
 		)
@@ -57,10 +37,11 @@ class App extends Component {
 		}
 		this.setState({ searchWord, appName })
 	}
-	onContentResult(appName, keys, values) {
-		this.setState({
-			searchResult: [...this.state.searchResult, { appName, keys, values }]
-		})
+	onContentResult(file, keys, values) {
+		console.log("searchResult", this.state, file, keys, values)
+		let searchResult = this.state.searchResult
+		searchResult.push({ file, keys, values })
+		this.setState({ searchResult })
 	}
 	render() {
 		console.log(this.state)
