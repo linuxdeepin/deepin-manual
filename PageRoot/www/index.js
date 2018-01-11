@@ -106,17 +106,22 @@ var App = function (_Component) {
 						kw: this.state.searchWord,
 						searchResult: this.state.searchResult
 					});
+					global.qtObjects.titleBar.setBackButtonVisible(true);
 					break;
 				case this.state.appName != "":
 					c = _react2.default.createElement(_main2.default, {
-						file: this.state.file,
+						file: this.state.appName,
 						hlist: this.props.appData.hlist,
 						hash: this.props.appData.hash,
 						html: this.props.appData.html
 					});
+					global.qtObjects.titleBar.setBackButtonVisible(true);
+					global.qtObjects.search.setCurrentApp(this.state.file);
 					break;
 				default:
 					c = _react2.default.createElement(_index2.default, null);
+					global.qtObjects.titleBar.setBackButtonVisible(false);
+					global.qtObjects.search.setCurrentApp("");
 			}
 			console.log(c);
 			return c;
@@ -152,8 +157,6 @@ global.openFile = function (file, hash) {
 		};
 		return;
 	}
-	global.qtObjects.titleBar.setBackButtonVisible(true);
-	global.qtObjects.search.setCurrentApp(file);
 	global.readFile(file, function (data) {
 		var _m2h = (0, _mdToHtml2.default)(file, data),
 		    html = _m2h.html,
@@ -181,8 +184,6 @@ global.index = function () {
 		};
 		return;
 	}
-	global.qtObjects.titleBar.setBackButtonVisible(false);
-	global.qtObjects.search.setCurrentApp("");
 	_reactDom2.default.render(_react2.default.createElement(App, null), document.body);
 };
 
@@ -887,6 +888,8 @@ var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _reactCustomScrollbars = require("react-custom-scrollbars");
+
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -990,16 +993,20 @@ var SearchPage = function (_Component2) {
 		key: "render",
 		value: function render() {
 			return _react2.default.createElement(
-				"div",
-				{ id: "search" },
-				this.props.searchResult.map(function (result) {
-					return _react2.default.createElement(Items, {
-						key: result.file,
-						file: result.file,
-						keys: result.keys,
-						values: result.values
-					});
-				})
+				_reactCustomScrollbars.Scrollbars,
+				null,
+				_react2.default.createElement(
+					"div",
+					{ id: "search" },
+					this.props.searchResult.map(function (result) {
+						return _react2.default.createElement(Items, {
+							key: result.file,
+							file: result.file,
+							keys: result.keys,
+							values: result.values
+						});
+					})
+				)
 			);
 		}
 	}]);
@@ -1010,7 +1017,7 @@ var SearchPage = function (_Component2) {
 exports.default = SearchPage;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"react":57}],8:[function(require,module,exports){
+},{"react":57,"react-custom-scrollbars":45}],8:[function(require,module,exports){
 (function (global){
 'use strict';
 

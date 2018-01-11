@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import { Scrollbars } from "react-custom-scrollbars"
 
 class Items extends Component {
 	constructor(props) {
@@ -51,16 +52,18 @@ class Items extends Component {
 export default class SearchPage extends Component {
 	render() {
 		return (
-			<div id="search">
-				{this.props.searchResult.map(result => (
-					<Items
-						key={result.file}
-						file={result.file}
-						keys={result.keys}
-						values={result.values}
-					/>
-				))}
-			</div>
+			<Scrollbars>
+				<div id="search">
+					{this.props.searchResult.map(result => (
+						<Items
+							key={result.file}
+							file={result.file}
+							keys={result.keys}
+							values={result.values}
+						/>
+					))}
+				</div>
+			</Scrollbars>
 		)
 	}
 }

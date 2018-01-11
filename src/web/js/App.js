@@ -54,19 +54,24 @@ class App extends Component {
 						searchResult={this.state.searchResult}
 					/>
 				)
+				global.qtObjects.titleBar.setBackButtonVisible(true)
 				break
 			case this.state.appName != "":
 				c = (
 					<Main
-						file={this.state.file}
+						file={this.state.appName}
 						hlist={this.props.appData.hlist}
 						hash={this.props.appData.hash}
 						html={this.props.appData.html}
 					/>
 				)
+				global.qtObjects.titleBar.setBackButtonVisible(true)
+				global.qtObjects.search.setCurrentApp(this.state.file)
 				break
 			default:
 				c = <Index />
+				global.qtObjects.titleBar.setBackButtonVisible(false)
+				global.qtObjects.search.setCurrentApp("")
 		}
 		console.log(c)
 		return c
@@ -97,8 +102,6 @@ global.openFile = (file, hash) => {
 		delay = () => global.openFile(file)
 		return
 	}
-	global.qtObjects.titleBar.setBackButtonVisible(true)
-	global.qtObjects.search.setCurrentApp(file)
 	global.readFile(file, data => {
 		let { html, hlist } = m2h(file, data)
 		ReactDOM.render(
@@ -122,8 +125,6 @@ global.index = () => {
 		delay = () => global.index()
 		return
 	}
-	global.qtObjects.titleBar.setBackButtonVisible(false)
-	global.qtObjects.search.setCurrentApp("")
 	ReactDOM.render(<App />, document.body)
 }
 
