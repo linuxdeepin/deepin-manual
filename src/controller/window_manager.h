@@ -38,6 +38,8 @@ class WindowManager : public QObject {
   // If manual of that app has already been presented, just raise to front.
   void openManual(const QString& app_name);
 
+  bool parseArguments();
+
  private:
   QVector<WebWindow*> windows_;
   SearchManager* search_manager_ = nullptr;

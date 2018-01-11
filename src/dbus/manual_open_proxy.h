@@ -26,6 +26,9 @@ class ManualOpenProxy : public QObject {
   explicit ManualOpenProxy(QObject* parent = nullptr);
   ~ManualOpenProxy() override;
 
+ signals:
+  void openManualRequested(const QString& app_name);
+
  public slots:
   void Open(const QString& app_name);
   void ShowManual(const QString& app_name);

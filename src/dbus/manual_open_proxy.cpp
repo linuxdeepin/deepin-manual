@@ -26,9 +26,9 @@ ManualOpenProxy::~ManualOpenProxy() {
 }
 
 void ManualOpenProxy::Open(const QString& app_name) {
-
+  emit this->openManualRequested(app_name);
 }
 
 void ManualOpenProxy::ShowManual(const QString& app_name) {
-
+  emit this->openManualRequested(app_name);
 }

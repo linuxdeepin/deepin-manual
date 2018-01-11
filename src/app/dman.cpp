@@ -17,6 +17,7 @@
 
 #include <DApplication>
 #include <QCommandLineParser>
+#include <QDBusConnection>
 #include <QIcon>
 #include <qcef_context.h>
 
@@ -86,19 +87,7 @@ int main(int argc, char** argv) {
   app.setProductIcon(QIcon(dman::kImageDeepinManual));
 
   dman::WindowManager window_manager;
-
-  QCommandLineParser parser;
-  parser.parse(app.arguments());
-  const QStringList position_args = parser.positionalArguments();
-  if (position_args.isEmpty()) {
-    // Open index page.
-    window_manager.openManual("");
-  } else {
-    // Only parse positional arguments.
-    for (const QString& arg : position_args) {
-      window_manager.openManual(arg);
-    }
-  }
+  window_manager.parseArguments();
 
   return app.exec();
 }
