@@ -47,6 +47,9 @@ const char kInsertEntry[] = "INSERT INTO search "
     "VALUES (?, ?, ?, ?, ?)";
 
 const char kSelectAll[] = "SELECT * FROM search";
+const char kSelectAnchor[] = "SELECT appName, anchor FROM search "
+    "WHERE lang = ':lang' AND "
+    "anchor LIKE '%:anchor%' --case insensitive";
 
 const int kResultLimitation = 10;
 
@@ -61,12 +64,6 @@ QString GetDbName() {
   cache_dir.mkpath(".");
   return cache_dir.absoluteFilePath("search_entry.db");
 }
-
-//struct SearchEntryCache {
-//  QString app_name;
-//  QString lang;
-//  QString words;
-//};
 
 }  // namespace
 
@@ -116,27 +113,6 @@ void SearchDb::initConnections() {
           this, &SearchDb::handleSearchContent);
 }
 
-void SearchDb::searchByAppName(const QString& app_name,
-                               const QString& keyword,
-                               SearchAnchorResultList& result) {
-  Q_UNUSED(app_name);
-  Q_UNUSED(keyword);
-  Q_UNUSED(result);
-//  const QHash<QString, QString>& app_dict = p_->cache[app_name];
-//  for (const QString& words : app_dict.keys()) {
-//    if (result.size() >= kResultLimitation) {
-//      break;
-//    }
-//
-//    if (words.indexOf(keyword) > -1) {
-//      result.append({
-//                        app_name,
-//                        app_dict.value(words)
-//                    });
-//    }
-//  }
-}
-
 void SearchDb::handleInitDb() {
   p_->db = QSqlDatabase::addDatabase("QSQLITE");
   const QString db_path = GetDbName();
@@ -163,15 +139,6 @@ void SearchDb::handleInitDb() {
                 << query.lastError().text();
     return;
   }
-
-//  while (query.next()) {
-//    const QString app_name = query.value(1).toString();
-//    if (!p_->cache.contains(app_name)) {
-//      p_->cache.insert(app_name, QHash<QString, QString>());
-//    }
-//    p_->cache[app_name].insert(query.value(4).toString(),
-//                               query.value(2).toString());
-//  }
 }
 
 void SearchDb::handleAddSearchEntry(const QString& app_name,
@@ -199,7 +166,6 @@ void SearchDb::handleAddSearchEntry(const QString& app_name,
 
   query.prepare(kInsertEntry);
   bool ok = true;
-//  QHash<QString, QString> anchor_dict;
   for (int i = 0; ok && (i < anchors.length()); ++i) {
     const std::string content_std(contents.at(i).toLower().toStdString());
     std::vector<std::string> word_list;
@@ -208,8 +174,6 @@ void SearchDb::handleAddSearchEntry(const QString& app_name,
                                                word_list.end(),
                                                "/");
     const QString words = QString::fromStdString(words_std);
-    // Add to memory cache.
-//    anchor_dict.insert(words, anchors.at(i));
 
     // Save to database.
     query.bindValue(0, app_name);
@@ -219,7 +183,6 @@ void SearchDb::handleAddSearchEntry(const QString& app_name,
     query.bindValue(4, words);
     ok = query.exec();
   }
-//  p_->cache.insert(app_name, anchor_dict);
 
   if (!ok) {
     p_->db.rollback();
@@ -236,13 +199,23 @@ void SearchDb::handleSearchAnchor(const QString& keyword) {
 
   SearchAnchorResultList result;
 
-  // Global search
-//  for (const QString& name : p_->cache.keys()) {
-//    if (result.size() >= kResultLimitation) {
-//      break;
-//    }
-//    this->searchByAppName(name, keyword, result);
-//  }
+  QSqlQuery query(p_->db);
+  const QString lang = QLocale().name();
+  const QString sql = QString(kSelectAnchor)
+      .replace(":anchor", keyword)
+      .replace(":lang", lang);
+  if (query.exec(sql)) {
+    while (query.next() && (result.size() < kResultLimitation)) {
+      result.append(SearchAnchorResult{
+          query.value(0).toString(),
+          query.value(1).toString()
+      });
+    }
+  } else {
+    qCritical() << "Failed to select anchor:"
+                << query.lastError().text();
+  }
+
   qDebug() << "result size:" << result.size() << keyword;
 
   emit this->searchAnchorResult(keyword, result);

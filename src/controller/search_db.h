@@ -51,9 +51,6 @@ class SearchDb : public QObject {
 
  private:
   void initConnections();
-  void searchByAppName(const QString& app_name,
-                       const QString& keyword,
-                       SearchAnchorResultList& result);
 
   SearchDbPrivate* p_ = nullptr;
 

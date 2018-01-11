@@ -24,16 +24,15 @@ int main(int argc, char** argv) {
   QCoreApplication app(argc, argv);
 
   dman::SearchManager manager;
-  QObject::connect(&manager, &dman::SearchManager::searchResult,
-                   [](const QString& app_name,
-                      const QString& keyword,
+  QObject::connect(&manager, &dman::SearchManager::searchAnchorResult,
+                   [](const QString& keyword,
                       const dman::SearchAnchorResultList& result) {
-     qDebug() << app_name << keyword << result.size();
+     qDebug() << keyword << result.size();
      for (const dman::SearchAnchorResult& item : result) {
        qDebug() << item.anchor << item.app_name;
      }
   });
-  manager.search("dde-file-manager", "文件");
+  manager.searchAnchor("application");
 
   return app.exec();
 }

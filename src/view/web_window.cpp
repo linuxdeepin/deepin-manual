@@ -143,7 +143,7 @@ void WebWindow::onSearchButtonClicked() {
 void WebWindow::onSearchResultClicked(const QString& app_name,
                                       const QString& anchor) {
   web_view_->page()->runJavaScript(
-      QString("openApp('%1', '%2')").arg(app_name).arg(anchor));
+      QString("openFile('%1', '%2')").arg(app_name).arg(anchor));
 }
 
 void WebWindow::onSearchTextChanged(const QString& text) {
