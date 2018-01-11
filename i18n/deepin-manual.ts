@@ -24,12 +24,12 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="33"/>
-        <source>Sorry, we couldn&apos;t find any results</source>
+        <location filename="../src/view/i18n_proxy.cpp" line="34"/>
+        <source>Sorry, there are no search results of &quot;%1&quot;</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="34"/>
+        <location filename="../src/view/i18n_proxy.cpp" line="35"/>
         <source>Change your keywords and try again, or search it in Deepin Wiki</source>
         <translation type="unfinished"></translation>
     </message>
