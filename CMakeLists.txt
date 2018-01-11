@@ -2,7 +2,7 @@ cmake_minimum_required(VERSION 3.0)
 project(deepin-manual)
 
 if (NOT DEFINED DMAN_MANUAL_DIR)
-  set(DMAN_MANUAL_DIR ${CMAKE_SOURCE_DIR}/dman)
+  set(DMAN_MANUAL_DIR ${CMAKE_CURRENT_SOURCE_DIR}/manual)
 endif ()
 if (NOT DEFINED DMAN_RESOURCE_DIR)
   set(DMAN_RESOURCE_DIR ${CMAKE_SOURCE_DIR}/PageRoot)
