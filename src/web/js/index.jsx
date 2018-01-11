@@ -1,5 +1,4 @@
 import React, { Component } from "react"
-import { Scrollbars } from "react-custom-scrollbars"
 
 class Item extends Component {
 	constructor(props) {
@@ -95,21 +94,19 @@ export default class Index extends Component {
 				sysSoft.indexOf(appName) == -1
 		)
 		return (
-			<Scrollbars>
-				<div id="index">
-					{sysSoft.length > 0 && (
-						<div className="items">
-							<h2>{global.i18n["System"]}</h2>
-							{sysSoft.map(appName => <Item key={appName} appName={appName} />)}
-						</div>
-					)}
+			<div id="index">
+				{sysSoft.length > 0 && (
 					<div className="items">
-						<h2>{global.i18n["Applications"]}</h2>
-						{appSoft.map(appName => <Item key={appName} appName={appName} />)}
-						{otherSoft.map(appName => <Item key={appName} appName={appName} />)}
+						<h2>{global.i18n["System"]}</h2>
+						{sysSoft.map(appName => <Item key={appName} appName={appName} />)}
 					</div>
+				)}
+				<div className="items">
+					<h2>{global.i18n["Applications"]}</h2>
+					{appSoft.map(appName => <Item key={appName} appName={appName} />)}
+					{otherSoft.map(appName => <Item key={appName} appName={appName} />)}
 				</div>
-			</Scrollbars>
+			</div>
 		)
 	}
 }

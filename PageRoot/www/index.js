@@ -475,8 +475,6 @@ var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactCustomScrollbars = require("react-custom-scrollbars");
-
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -591,38 +589,34 @@ var Index = function (_Component2) {
 				return _this4.state.sequence.indexOf(appName) == -1 && sysSoft.indexOf(appName) == -1;
 			});
 			return _react2.default.createElement(
-				_reactCustomScrollbars.Scrollbars,
-				null,
+				"div",
+				{ id: "index" },
+				sysSoft.length > 0 && _react2.default.createElement(
+					"div",
+					{ className: "items" },
+					_react2.default.createElement(
+						"h2",
+						null,
+						global.i18n["System"]
+					),
+					sysSoft.map(function (appName) {
+						return _react2.default.createElement(Item, { key: appName, appName: appName });
+					})
+				),
 				_react2.default.createElement(
 					"div",
-					{ id: "index" },
-					sysSoft.length > 0 && _react2.default.createElement(
-						"div",
-						{ className: "items" },
-						_react2.default.createElement(
-							"h2",
-							null,
-							global.i18n["System"]
-						),
-						sysSoft.map(function (appName) {
-							return _react2.default.createElement(Item, { key: appName, appName: appName });
-						})
-					),
+					{ className: "items" },
 					_react2.default.createElement(
-						"div",
-						{ className: "items" },
-						_react2.default.createElement(
-							"h2",
-							null,
-							global.i18n["Applications"]
-						),
-						appSoft.map(function (appName) {
-							return _react2.default.createElement(Item, { key: appName, appName: appName });
-						}),
-						otherSoft.map(function (appName) {
-							return _react2.default.createElement(Item, { key: appName, appName: appName });
-						})
-					)
+						"h2",
+						null,
+						global.i18n["Applications"]
+					),
+					appSoft.map(function (appName) {
+						return _react2.default.createElement(Item, { key: appName, appName: appName });
+					}),
+					otherSoft.map(function (appName) {
+						return _react2.default.createElement(Item, { key: appName, appName: appName });
+					})
 				)
 			);
 		}
@@ -634,7 +628,7 @@ var Index = function (_Component2) {
 exports.default = Index;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"react":57,"react-custom-scrollbars":45}],4:[function(require,module,exports){
+},{"react":57}],4:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {

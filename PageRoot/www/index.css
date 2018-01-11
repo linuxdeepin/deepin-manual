@@ -142,8 +142,17 @@ body {
 #index {
   user-select: none;
   width: 830px;
+  height: 100%;
+  overflow-y: auto;
   margin: auto;
   margin-bottom: 100px; }
+  #index::-webkit-scrollbar {
+    display: none; }
+  #index:after {
+    content: "";
+    display: block;
+    width: 100%;
+    height: 100px; }
   #index h2 {
     font-weight: 300;
     font-size: 30px;

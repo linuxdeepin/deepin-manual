@@ -3,6 +3,17 @@
 #index {
 	user-select: none;
 	width: 830px;
+	height: 100%;
+	overflow-y: auto;
+	&::-webkit-scrollbar {
+		display: none;
+	}
+	&:after {
+		content: "";
+		display: block;
+		width: 100%;
+		height: 100px;
+	}
 	margin: auto;
 	margin-bottom: 100px;
 	h2 {
@@ -10,12 +21,10 @@
 		font-size: 30px;
 		line-height: 2em;
 		margin: 1em 0 0;
-		// margin-bottom: 30px;
 		border-bottom: 1px solid #d7d7d7;
 	}
 	.items {
 		.item {
-			// margin-right: 50px;
 			margin-top: 30px;
 			margin-right: 60px;
 			width: 160px;
