@@ -1,0 +1,33 @@
+#search {
+	width: 830px;
+	margin: auto;
+	.items {
+		.title {
+			margin-top: 30px;
+			height: 32px;
+			font-weight: bold;
+			img {
+				height: 100%;
+				vertical-align: middle;
+				margin-right: 10px;
+			}
+			span {
+				vertical-align: middle;
+			}
+		}
+		.item {
+			.title {
+				margin: 7px 0px 10px 0px;
+				font-size: 14px;
+				height: 20px;
+			}
+			padding: 7px 18px;
+			margin-top: 10px;
+			font-size: 13px;
+			line-height: 28px;
+			border-radius: 3px;
+			box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.1),
+				inset 0 2px 0 0 rgba(255, 255, 255, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.1);
+		}
+	}
+}

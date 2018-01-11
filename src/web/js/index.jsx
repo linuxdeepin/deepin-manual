@@ -18,6 +18,7 @@ class Item extends Component {
 				.split("|")
 			logo = `${path}${logo}`
 			this.setState({ title, logo, show: true })
+			console.log(this.state)
 		})
 	}
 	render() {
