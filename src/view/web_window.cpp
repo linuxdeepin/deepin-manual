@@ -80,8 +80,10 @@ void WebWindow::initConnections() {
 
   connect(search_manager_, &SearchManager::searchAnchorResult,
           this, &WebWindow::onSearchAnchorResult);
+  connect(search_manager_, &SearchManager::searchContentResult,
+          search_proxy_, &SearchProxy::onContentResult);
   connect(completion_window_, &SearchCompletionWindow::resultClicked,
-          search_proxy_, &SearchProxy::onSearchResultClicked);
+          this, &WebWindow::onSearchResultClicked);
   connect(completion_window_, &SearchCompletionWindow::searchButtonClicked,
           this, &WebWindow::onSearchButtonClicked);
 }
@@ -130,9 +132,18 @@ void WebWindow::onSearchEditFocusOut() {
 }
 
 void WebWindow::onSearchButtonClicked() {
-  search_manager_->searchContent(title_bar_->getSearchText());
+  const QString keyword = title_bar_->getSearchText();
+  search_manager_->searchContent(keyword);
 
-  // TODO(Shaohua): Show search page.
+  // Show search page.
+  web_view_->page()->runJavaScript(
+      QString("openSearchPage('%1')").arg(keyword));
+}
+
+void WebWindow::onSearchResultClicked(const QString& app_name,
+                                      const QString& anchor) {
+  web_view_->page()->runJavaScript(
+      QString("openApp('%1', '%2')").arg(app_name).arg(anchor));
 }
 
 void WebWindow::onSearchTextChanged(const QString& text) {

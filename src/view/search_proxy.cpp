@@ -42,12 +42,3 @@ void dman::SearchProxy::addSearchEntry(const QString& app_name,
                                        const QStringList& contents) {
   emit manager_->addSearchEntry(app_name, lang, anchors, contents);
 }
-
-void dman::SearchProxy::onSearchResultClicked(const QString& app_name,
-                                              const QString& anchor) {
-  if (current_app_.isEmpty()) {
-    emit this->globalMatch(app_name, anchor);
-  } else {
-    emit this->match(anchor);
-  }
-}

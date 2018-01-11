@@ -42,9 +42,9 @@ class SearchProxy : public QObject {
   void currentAppChanged(const QString& app_name);
 
   void mismatch(const QString& keyword);
-  void globalMismatch(const QString& keyword);
-  void match(const QString& anchor);
-  void globalMatch(const QString& app_name, const QString& anchor);
+  void onContentResult(const QString& app_name,
+                       const QStringList& anchors,
+                       const QStringList& contents);
 
  public slots:
   void setCurrentApp(const QString& app_name);
@@ -53,8 +53,6 @@ class SearchProxy : public QObject {
                       const QString& lang,
                       const QStringList& anchors,
                       const QStringList& contents);
-
-  void onSearchResultClicked(const QString& app_name, const QString& anchor);
 
  private:
   SearchManager* manager_ = nullptr;

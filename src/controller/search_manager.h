@@ -47,8 +47,9 @@ class SearchManager : public QObject {
                           const SearchAnchorResultList& result);
 
   void searchContent(const QString& keyword);
-  void searchContentResult(const QString& keyword,
-                           const SearchContentResultList& result);
+  void searchContentResult(const QString& app_name,
+                           const QStringList& anchors,
+                           const QStringList& contents);
 
  private:
   SearchDb* db_ = nullptr;
