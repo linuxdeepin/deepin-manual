@@ -15,27 +15,19 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QCoreApplication>
-#include <QDBusConnection>
-#include <QDebug>
-
-#include "dbus/manual_search_adapter.h"
 #include "dbus/manual_search_proxy.h"
 
-int main(int argc, char** argv) {
-  QCoreApplication app(argc, argv);
+#include <QDir>
 
-  ManualSearchProxy search_obj;
-  ManualSearchAdapter adapter(&search_obj);
+ManualSearchProxy::ManualSearchProxy(QObject* parent) : QObject(parent) {
+  this->setObjectName("ManualSearchProxy");
+}
 
-  QDBusConnection conn = QDBusConnection::sessionBus();
-  if (!conn.registerService("com.deepin.Manual.Search") ||
-      !conn.registerObject("/com/deepin/Manual/Search",
-                           "com.deepin.Manual.Search",
-                           &search_obj)) {
-    qCritical() << "Failed to register dbus service";
-    return 1;
-  }
+ManualSearchProxy::~ManualSearchProxy() {
 
-  return app.exec();
+}
+
+bool ManualSearchProxy::ManualExists(const QString& app_name) {
+  QDir manual_dir(DMAN_MANUAL_DIR);
+  return manual_dir.exists(app_name);
 }

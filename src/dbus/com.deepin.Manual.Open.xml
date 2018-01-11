@@ -2,4 +2,7 @@
     <method name="Open">
         <arg direction="in" type="s"/>
     </method>
+    <method name="ShowManual">
+        <arg direction="in" type="s"/>
+    </method>
 </interface>

@@ -15,27 +15,20 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QCoreApplication>
-#include <QDBusConnection>
-#include <QDebug>
+#ifndef DEEPIN_MANUAL_DBUS_MANUAL_OPEN_PROXY_H
+#define DEEPIN_MANUAL_DBUS_MANUAL_OPEN_PROXY_H
 
-#include "dbus/manual_search_adapter.h"
-#include "dbus/manual_search_proxy.h"
+#include <QObject>
 
-int main(int argc, char** argv) {
-  QCoreApplication app(argc, argv);
+class ManualOpenProxy : public QObject {
+  Q_OBJECT
+ public:
+  explicit ManualOpenProxy(QObject* parent = nullptr);
+  ~ManualOpenProxy() override;
 
-  ManualSearchProxy search_obj;
-  ManualSearchAdapter adapter(&search_obj);
+ public slots:
+  void Open(const QString& app_name);
+  void ShowManual(const QString& app_name);
+};
 
-  QDBusConnection conn = QDBusConnection::sessionBus();
-  if (!conn.registerService("com.deepin.Manual.Search") ||
-      !conn.registerObject("/com/deepin/Manual/Search",
-                           "com.deepin.Manual.Search",
-                           &search_obj)) {
-    qCritical() << "Failed to register dbus service";
-    return 1;
-  }
-
-  return app.exec();
-}
+#endif  // DEEPIN_MANUAL_DBUS_MANUAL_OPEN_PROXY_H

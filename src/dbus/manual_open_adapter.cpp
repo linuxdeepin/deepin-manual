@@ -39,3 +39,9 @@ void ManualOpenAdapter::Open(const QString &in0)
     QMetaObject::invokeMethod(parent(), "Open", Q_ARG(QString, in0));
 }
 
+void ManualOpenAdapter::ShowManual(const QString &in0)
+{
+    // handle method call com.deepin.Manual.Open.ShowManual
+    QMetaObject::invokeMethod(parent(), "ShowManual", Q_ARG(QString, in0));
+}
+

@@ -35,6 +35,9 @@ class ManualOpenAdapter: public QDBusAbstractAdaptor
 "    <method name=\"Open\">\n"
 "      <arg direction=\"in\" type=\"s\"/>\n"
 "    </method>\n"
+"    <method name=\"ShowManual\">\n"
+"      <arg direction=\"in\" type=\"s\"/>\n"
+"    </method>\n"
 "  </interface>\n"
         "")
 public:
@@ -44,6 +47,7 @@ public:
 public: // PROPERTIES
 public Q_SLOTS: // METHODS
     void Open(const QString &in0);
+    void ShowManual(const QString &in0);
 Q_SIGNALS: // SIGNALS
 };
 

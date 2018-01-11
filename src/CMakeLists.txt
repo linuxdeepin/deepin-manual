@@ -94,10 +94,12 @@ set(CONTROLLER_FILES
 set(DBUS_FILES
     dbus/manual_open_adapter.cpp
     dbus/manual_open_adapter.h
+    dbus/manual_open_proxy.cpp
+    dbus/manual_open_proxy.h
     dbus/manual_search_adapter.cpp
     dbus/manual_search_adapter.h
-    dbus/manual_search_object.cpp
-    dbus/manual_search_object.h
+    dbus/manual_search_proxy.cpp
+    dbus/manual_search_proxy.h
     )
 
 set(RESOURCES_FILES

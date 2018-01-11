@@ -15,23 +15,20 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef DEEPIN_MANUAL_DBUS_MANUAL_SEARCH_OBJECT_H
-#define DEEPIN_MANUAL_DBUS_MANUAL_SEARCH_OBJECT_H
+#include "dbus/manual_open_proxy.h"
 
-#include <QObject>
+ManualOpenProxy::ManualOpenProxy(QObject* parent) : QObject(parent) {
+  this->setObjectName("ManualOpenProxy");
+}
 
-namespace dman {
+ManualOpenProxy::~ManualOpenProxy() {
 
-class ManualSearchObject : public QObject {
-  Q_OBJECT
- public:
-  explicit ManualSearchObject(QObject* parent = nullptr);
-  ~ManualSearchObject() override;
+}
 
- public slots:
-  bool ManualExists(const QString& app_name) const;
-};
+void ManualOpenProxy::Open(const QString& app_name) {
 
-}  // namespace dman
+}
 
-#endif  // DEEPIN_MANUAL_DBUS_MANUAL_SEARCH_OBJECT_H
+void ManualOpenProxy::ShowManual(const QString& app_name) {
+
+}
