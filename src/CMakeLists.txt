@@ -7,6 +7,7 @@ add_definitions(-DDMAN_RESOURCE_DIR="${DMAN_RESOURCE_DIR}")
 add_definitions(-DDMAN_MANUAL_DIR="${DMAN_MANUAL_DIR}")
 message("DMAN_RESOURCE_DIR: ${DMAN_RESOURCE_DIR}")
 
+add_subdirectory(dbus)
 add_subdirectory(resources)
 
 set(CMAKE_CXX_STANDARD 11)
@@ -44,6 +45,7 @@ endif()
 
 find_package(PkgConfig REQUIRED)
 find_package(Qt5Core REQUIRED)
+find_package(Qt5DBus REQUIRED)
 find_package(Qt5Gui REQUIRED)
 find_package(Qt5LinguistTools)
 find_package(Qt5Sql REQUIRED)
@@ -63,6 +65,7 @@ include_directories(third_party/cppjieba/include)
 
 set(LINK_LIBS
     Qt5::Core
+    Qt5::DBus
     Qt5::Sql
     Qt5::Widgets
     Qt5::WebChannel
@@ -86,6 +89,15 @@ set(CONTROLLER_FILES
     controller/search_result.h
     controller/window_manager.cpp
     controller/window_manager.h
+    )
+
+set(DBUS_FILES
+    dbus/manual_open_adapter.cpp
+    dbus/manual_open_adapter.h
+    dbus/manual_search_adapter.cpp
+    dbus/manual_search_adapter.h
+    dbus/manual_search_object.cpp
+    dbus/manual_search_object.h
     )
 
 set(RESOURCES_FILES
@@ -133,11 +145,19 @@ add_executable(dman
                app/dman.cpp
                ${BASE_FILES}
                ${CONTROLLER_FILES}
+               ${DBUS_FILES}
                ${RESOURCES_FILES}
                ${VIEW_FILES}
                )
 target_link_libraries(dman ${LINK_LIBS})
 add_dependencies(dman update-qm)
+
+
+add_executable(dman-search
+               app/dman_search.cpp
+               ${DBUS_FILES}
+               )
+target_link_libraries(dman-search ${LINK_LIBS})
 
 if (CMAKE_BUILD_TYPE MATCHES Debug)
   set(SEARCH_DEMO_FILES 
@@ -171,6 +191,8 @@ endif ()
 
 ## Installation
 install(TARGETS dman
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+install(TARGETS dman-search
         DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 
 # Jieba Dictionary

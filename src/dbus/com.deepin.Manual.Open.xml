@@ -1,0 +1,5 @@
+<interface name="com.deepin.Manual.Open">
+    <method name="Open">
+        <arg direction="in" type="s"/>
+    </method>
+</interface>

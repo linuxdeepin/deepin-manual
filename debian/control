@@ -18,6 +18,7 @@ Package: deepin-manual
 Architecture: any
 Depends: ${misc:Depends},
  ${shlibs:Depends},
+ libqt5dbus5,
  libqt5sql5-sqlite,
 Recommends: dde-help
 Description: Deepin Manual

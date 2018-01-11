@@ -1,0 +1,6 @@
+<interface name="com.deepin.Manual.Search">
+    <method name="ManualExists">
+        <arg direction="in" type="s"/>
+        <arg direction="out" type="b"/>
+    </method>
+</interface>
