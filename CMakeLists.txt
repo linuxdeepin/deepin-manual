@@ -10,8 +10,8 @@ endif ()
 
 add_subdirectory(src)
 
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/dman
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/share)
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/manual
+        DESTINATION ${DMAN_MANUAL_DIR})
 
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/PageRoot/www
         DESTINATION ${DMAN_RESOURCE_DIR})
