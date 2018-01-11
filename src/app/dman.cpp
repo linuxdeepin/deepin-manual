@@ -87,7 +87,9 @@ int main(int argc, char** argv) {
   app.setProductIcon(QIcon(dman::kImageDeepinManual));
 
   dman::WindowManager window_manager;
-  window_manager.parseArguments();
+  if (!window_manager.parseArguments()) {
+    return 1;
+  }
 
   return app.exec();
 }
