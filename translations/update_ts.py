@@ -41,11 +41,11 @@ def generate_ts(ts_path, is_installer):
 
 def main():
     # Make sure that PWD is root of source repo.
-    if not os.path.isdir("i18n"):
-        print("Run script in parent folder of `i18n`")
+    if not os.path.isdir("translations"):
+        print("Run script in parent folder of `translations`")
         sys.exit(1)
     
-    default_ts = "i18n/deepin-manual.ts"
+    default_ts = "translations/deepin-manual.ts"
     generate_ts(default_ts, True)
 
 if __name__ == "__main__":

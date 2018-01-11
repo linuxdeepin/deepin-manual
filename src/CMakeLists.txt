@@ -137,9 +137,9 @@ set(VIEW_FILES
 # Main executable
 # Generate .qm files from .ts files.
 file(GLOB DMAN_TRANSLATION_TS
-     ${CMAKE_SOURCE_DIR}/i18n/deepin-manual-*.ts)
+     ${CMAKE_SOURCE_DIR}/translations/deepin-manual*.ts)
 set_source_files_properties(${DMAN_TRANSLATION_TS}
-                            PROPERTIES OUTPUT_LOCATION ${CMAKE_BINARY_DIR}/i18n)
+                            PROPERTIES OUTPUT_LOCATION ${CMAKE_BINARY_DIR}/translations)
 qt5_add_translation(DMAN_TRANSLATION_QM ${DMAN_TRANSLATION_TS})
 add_custom_target(update-qm DEPENDS ${DMAN_TRANSLATION_QM})
 
@@ -196,6 +196,9 @@ install(TARGETS dman
         DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 install(TARGETS dman-search
         DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+
+install(DIRECTORY ${CMAKE_BINARY_DIR}/translations
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
 
 # Jieba Dictionary
 set(JIEBA_DICT_SRC ${CMAKE_CURRENT_SOURCE_DIR}/third_party/cppjieba/dict)
