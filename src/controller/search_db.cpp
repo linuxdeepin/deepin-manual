@@ -50,6 +50,9 @@ const char kSelectAll[] = "SELECT * FROM search";
 const char kSelectAnchor[] = "SELECT appName, anchor FROM search "
     "WHERE lang = ':lang' AND "
     "anchor LIKE '%:anchor%' --case insensitive";
+const char kSelectContent[] = "SELECT appName, anchor, content FROM search "
+    "WHERE lang = ':lang' AND "
+    "content LIKE '%:content%' --case insensitive";
 
 const int kResultLimitation = 10;
 
@@ -223,6 +226,39 @@ void SearchDb::handleSearchAnchor(const QString& keyword) {
 
 void SearchDb::handleSearchContent(const QString& keyword) {
   qDebug() << Q_FUNC_INFO << keyword;
+
+  Q_ASSERT(p_->db.isOpen());
+
+  QSqlQuery query(p_->db);
+  const QString lang = QLocale().name();
+  const QString sql = QString(kSelectContent)
+      .replace(":lang", lang)
+      .replace(":content", keyword);
+  if (query.exec(sql)) {
+    QString last_app_name;
+    QStringList anchors;
+    QStringList contents;
+    while (query.next()) {
+      const QString app_name = query.value(0).toString();
+      const QString anchor = query.value(1).toString();
+      const QString content = query.value(2).toString();
+      if (app_name == last_app_name) {
+        anchors.append(anchor);
+        contents.append(content);
+      } else {
+        emit this->searchContentResult(last_app_name, anchors, contents);
+
+        anchors.clear();
+        contents.clear();
+        last_app_name = app_name;
+        anchors.append(anchor);
+        contents.append(content);
+      }
+    }
+  } else {
+    qCritical() << "Failed to select contents:"
+                << query.lastError().text();
+  }
 }
 
 }  // namespace dman

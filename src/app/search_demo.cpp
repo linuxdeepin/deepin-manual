@@ -32,7 +32,18 @@ int main(int argc, char** argv) {
        qDebug() << item.anchor << item.app_name;
      }
   });
+
+  QObject::connect(&manager, &dman::SearchManager::searchContentResult,
+  [](const QString& app_name,
+     const QStringList& anchors,
+     const QStringList& contents) {
+    qDebug() << app_name;
+    for (int i = 0; i < anchors.size(); ++i) {
+      qDebug() << anchors.at(i) << contents.at(i);
+    }
+  });
   manager.searchAnchor("application");
+  manager.searchContent("application");
 
   return app.exec();
 }
