@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import { Link } from "react-router-dom"
 
 class Item extends Component {
 	constructor(props) {
@@ -16,25 +17,23 @@ class Item extends Component {
 				.substr("# ".length, data.indexOf("\n"))
 				.split("|")
 			logo = `${path}${logo}`
-			this.setState({ title, logo, show: true })
-			console.log(this.state)
+			this.setState({ title, logo, file, show: true })
 		})
 	}
 	render() {
 		return (
 			this.state.show && (
-				<div
-					className="item"
-					onClick={() => global.openApp(this.props.appName)}
-				>
-					<img
-						draggable="false"
-						src={this.state.logo}
-						alt={this.props.appName}
-					/>
-					<br />
-					<span lang={global.lang}>{this.state.title}</span>
-				</div>
+				<Link to={"/open/" + encodeURIComponent(this.state.file)}>
+					<div className="item">
+						<img
+							draggable="false"
+							src={this.state.logo}
+							alt={this.props.appName}
+						/>
+						<br />
+						<span lang={global.lang}>{this.state.title}</span>
+					</div>
+				</Link>
 			)
 		)
 	}
