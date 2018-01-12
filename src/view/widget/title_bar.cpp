@@ -66,15 +66,15 @@ void TitleBar::initConnections() {
 void TitleBar::initUI() {
   QLabel* app_icon = new QLabel();
   app_icon->setObjectName("AppIcon");
-  app_icon->setFixedSize(24, 24);
+  app_icon->setFixedSize(26, 26);
 
   back_button_ = new Dtk::Widget::DImageButton();
   back_button_->setObjectName("BackButton");
-  back_button_->setFixedSize(24, 24);
+  back_button_->setFixedSize(26, 26);
 
   forward_button_ = new Dtk::Widget::DImageButton();
   forward_button_->setObjectName("ForwardButton");
-  forward_button_->setFixedSize(24, 24);
+  forward_button_->setFixedSize(26, 26);
 
   QHBoxLayout* left_layout = new QHBoxLayout();
   left_layout->setSpacing(0);
@@ -82,9 +82,10 @@ void TitleBar::initUI() {
   left_layout->addWidget(app_icon);
   left_layout->addSpacing(10);
   left_layout->addWidget(back_button_);
+  left_layout->addWidget(forward_button_);
   left_layout->addStretch();
   QFrame* left_buttons = new QFrame();
-  left_buttons->setFixedWidth(58);
+  left_buttons->setFixedWidth(26 + 10 + 26 + 26);
   left_buttons->setContentsMargins(0, 0, 0, 0);
   left_buttons->setLayout(left_layout);
 
