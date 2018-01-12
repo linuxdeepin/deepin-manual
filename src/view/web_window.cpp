@@ -209,7 +209,12 @@ void WebWindow::onWebPageLoadFinished(bool ok) {
 void WebWindow::onSearchAnchorResult(const QString& keyword,
                                      const SearchAnchorResultList& result) {
   Q_UNUSED(keyword);
-  completion_window_->setSearchAnchorResult(result);
+  if (result.isEmpty()) {
+    // Hide completion window if no anchor entry matches.
+    completion_window_->hide();
+  } else {
+    completion_window_->setSearchAnchorResult(result);
+  }
 }
 
 }  // namespace dman
