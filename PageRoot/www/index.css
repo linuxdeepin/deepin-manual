@@ -13,7 +13,7 @@ body {
 
 @charset "UTF-8";
 .Triangle, #article .t_right_down::after, #article .t_right_up::after, #article .t_left_down::after, #article .t_left_up::after {
-  content: '';
+  content: "";
   position: absolute;
   width: 8px;
   height: 8px;
@@ -45,6 +45,13 @@ body {
       margin-top: 26px;
       max-width: 99%;
       cursor: pointer; }
+    #article .read img[src$="jpg"] {
+      margin-top: 26px;
+      max-width: 99%;
+      cursor: pointer;
+      border-radius: 4px;
+      border: 1px solid rgba(0, 0, 0, 0.18);
+      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3); }
     #article .read p {
       line-height: 2em;
       margin: 0; }
@@ -77,7 +84,7 @@ body {
       #article .read a[href^="#"] {
         color: #0082fa; }
       #article .read a[href^="dman://"] {
-        color: #4E64F6; }
+        color: #4e64f6; }
         #article .read a[href^="dman://"]:after {
           content: " 📃 "; }
     #article .read .searchWK {
