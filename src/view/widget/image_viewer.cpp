@@ -96,8 +96,9 @@ void ImageViewer::initUI() {
 
   this->setContentsMargins(kBorderSize, kBorderSize, kBorderSize, kBorderSize);
   this->setWindowFlags(Qt::FramelessWindowHint |
-                           Qt::Dialog |
-                           Qt::WindowStaysOnTopHint);
+                       Qt::BypassWindowManagerHint |
+                       Qt::Dialog |
+                       Qt::WindowStaysOnTopHint);
   this->setAttribute(Qt::WA_TranslucentBackground, true);
   this->setModal(true);
 
