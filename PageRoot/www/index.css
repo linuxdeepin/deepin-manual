@@ -175,17 +175,18 @@ body {
       height: 160px;
       display: inline-block;
       text-align: center;
+      vertical-align: bottom;
       cursor: pointer; }
       #index .items a .item img {
         width: 96px;
-        padding-top: 20px;
+        padding-top: 10px;
         margin-bottom: 10px; }
       #index .items a .item span {
-        white-space: nowrap;
         font-size: 16px;
         font-weight: normal;
         color: black; }
       #index .items a .item span:lang(en_US) {
+        word-wrap: break-word;
         font-size: 14px; }
       #index .items a .item:hover {
         border-radius: 4px;

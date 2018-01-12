@@ -34,19 +34,20 @@
 				height: 160px;
 				display: inline-block;
 				text-align: center;
+				vertical-align: bottom;
 				cursor: pointer;
 				img {
 					width: 96px;
-					padding-top: 20px;
+					padding-top: 10px;
 					margin-bottom: 10px;
 				}
 				span {
-					white-space: nowrap;
 					font-size: 16px;
 					font-weight: normal;
 					color: black;
 				}
 				span:lang(en_US) {
+					word-wrap: break-word;
 					font-size: 14px;
 				}
 				&:hover {
