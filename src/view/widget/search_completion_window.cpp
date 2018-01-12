@@ -126,9 +126,9 @@ void SearchCompletionWindow::setSearchAnchorResult(
 void SearchCompletionWindow::initConnections() {
   connect(result_view_, &QListView::activated,
           this, &SearchCompletionWindow::onResultListClicked);
-  connect(result_view_, &QListView::clicked,
+  connect(result_view_, &QListView::pressed,
           this, &SearchCompletionWindow::onResultListClicked);
-  connect(search_button_, &QPushButton::clicked,
+  connect(search_button_, &QPushButton::pressed,
           this, &SearchCompletionWindow::searchButtonClicked);
 }
 
@@ -165,7 +165,6 @@ void SearchCompletionWindow::initUI() {
   this->setContentsMargins(0, 0, 0, 0);
   this->setMinimumHeight(kItemHeight);
   this->setFixedWidth(262);
-  this->setWindowFlags(Qt::CustomizeWindowHint | Qt::BypassWindowManagerHint);
 
   ThemeManager::instance()->registerWidget(this);
 }
