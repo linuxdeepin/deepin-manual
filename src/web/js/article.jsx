@@ -15,12 +15,11 @@ export default class Article extends Component {
 	componentDidUpdate() {
 		if (this.hash != this.props.hash) {
 			this.hash = this.props.hash
-			console.log(this.hash, ReactDOM.findDOMNode(this))
 			let hashDOM = document.getElementById(this.hash)
 			if (hashDOM) {
-				this.scrollbars.scrollTop(
-					this.scrollbars.getScrollTop() + hashDOM.getBoundingClientRect().top
-				)
+				ReactDOM.findDOMNode(
+					this
+				).scrollTop += hashDOM.getBoundingClientRect().top
 			}
 		}
 	}
@@ -144,33 +143,22 @@ export default class Article extends Component {
 				id="article"
 				onContextMenu={e => this.contextMenu(e)}
 				onClick={this.click.bind(this)}
+				onScroll={this.scroll.bind(this)}
 			>
-				<Scrollbars
-					autoHide
-					autoHideTimeout={1000}
-					onScroll={e => this.scroll(e)}
-					ref={s => {
-						this.scrollbars = s
-					}}
-				>
-					<div
-						className="read"
-						dangerouslySetInnerHTML={{ __html: this.props.html }}
-					/>
-					<div id="fillblank" />
-				</Scrollbars>
+				<div
+					className="read"
+					dangerouslySetInnerHTML={{ __html: this.props.html }}
+				/>
 				{this.state.preview != null && (
 					<div
 						style={this.state.preview.style}
 						className={this.state.preview.tClass}
 						id="preview"
 					>
-						<Scrollbars>
-							<div
-								className="read"
-								dangerouslySetInnerHTML={{ __html: this.state.preview.html }}
-							/>
-						</Scrollbars>
+						<div
+							className="read"
+							dangerouslySetInnerHTML={{ __html: this.state.preview.html }}
+						/>
 					</div>
 				)}
 				{this.state.contentMenuStyle != null && (

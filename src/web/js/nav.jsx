@@ -1,17 +1,20 @@
 import React, { Component } from "react"
 import ReactDOM from "react-dom"
-import { Scrollbars } from "react-custom-scrollbars"
+import { Link } from "react-router-dom"
 
 class Nav extends Component {
 	componentDidUpdate() {
-		let hashDOM = ReactDOM.findDOMNode(this).querySelector(".hash")
+		let nav = ReactDOM.findDOMNode(this)
+		let hashDOM = nav.querySelector(".hash")
+		if (this.props.hash == this.props.hlist[0].id) {
+			nav.scrollTop = 0
+		}
 		if (hashDOM) {
 			let { top, bottom } = hashDOM.getBoundingClientRect()
 			if (top < 0) {
-				this.scrollbars.scrollTop(this.scrollbars.getScrollTop() + top)
-			} else if (bottom > this.scrollbars.getClientHeight()) {
-				let h = bottom - this.scrollbars.getClientHeight()
-				this.scrollbars.scrollTop(this.scrollbars.getScrollTop() + h)
+				nav.scrollTop += top
+			} else if (bottom > nav.clientHeight) {
+				nav.scrollTop += bottom - nav.clientHeight
 			}
 		}
 	}
@@ -23,14 +26,11 @@ class Nav extends Component {
 	}
 	render() {
 		return (
-			<div id="nav" onClick={e => this.click(e)}>
-				<Scrollbars
-					autoHide
-					autoHideTimeout={1000}
-					ref={s => {
-						this.scrollbars = s
-					}}
-				>
+			<div id="nav" lang={global.lang} onClick={e => this.click(e)}>
+				<div id="hlist">
+					<h2 id="back">
+						<Link to="/index">{global.i18n["ToIndexPage"]}</Link>
+					</h2>
 					{this.props.hlist.map(h => {
 						let NodeName = h.type
 						return (
@@ -38,13 +38,12 @@ class Nav extends Component {
 								key={h.id}
 								cid={h.id}
 								className={this.props.hash == h.id ? "hash" : undefined}
-								lang={global.lang}
 							>
 								{h.text}
 							</NodeName>
 						)
 					})}
-				</Scrollbars>
+				</div>
 			</div>
 		)
 	}

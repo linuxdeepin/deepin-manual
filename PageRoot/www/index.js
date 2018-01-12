@@ -415,10 +415,9 @@ var Article = function (_Component) {
 		value: function componentDidUpdate() {
 			if (this.hash != this.props.hash) {
 				this.hash = this.props.hash;
-				console.log(this.hash, _reactDom2.default.findDOMNode(this));
 				var hashDOM = document.getElementById(this.hash);
 				if (hashDOM) {
-					this.scrollbars.scrollTop(this.scrollbars.getScrollTop() + hashDOM.getBoundingClientRect().top);
+					_reactDom2.default.findDOMNode(this).scrollTop += hashDOM.getBoundingClientRect().top;
 				}
 			}
 		}
@@ -569,26 +568,13 @@ var Article = function (_Component) {
 					onContextMenu: function onContextMenu(e) {
 						return _this3.contextMenu(e);
 					},
-					onClick: this.click.bind(this)
+					onClick: this.click.bind(this),
+					onScroll: this.scroll.bind(this)
 				},
-				_react2.default.createElement(
-					_reactCustomScrollbars.Scrollbars,
-					{
-						autoHide: true,
-						autoHideTimeout: 1000,
-						onScroll: function onScroll(e) {
-							return _this3.scroll(e);
-						},
-						ref: function ref(s) {
-							_this3.scrollbars = s;
-						}
-					},
-					_react2.default.createElement("div", {
-						className: "read",
-						dangerouslySetInnerHTML: { __html: this.props.html }
-					}),
-					_react2.default.createElement("div", { id: "fillblank" })
-				),
+				_react2.default.createElement("div", {
+					className: "read",
+					dangerouslySetInnerHTML: { __html: this.props.html }
+				}),
 				this.state.preview != null && _react2.default.createElement(
 					"div",
 					{
@@ -596,14 +582,10 @@ var Article = function (_Component) {
 						className: this.state.preview.tClass,
 						id: "preview"
 					},
-					_react2.default.createElement(
-						_reactCustomScrollbars.Scrollbars,
-						null,
-						_react2.default.createElement("div", {
-							className: "read",
-							dangerouslySetInnerHTML: { __html: this.state.preview.html }
-						})
-					)
+					_react2.default.createElement("div", {
+						className: "read",
+						dangerouslySetInnerHTML: { __html: this.state.preview.html }
+					})
 				),
 				this.state.contentMenuStyle != null && _react2.default.createElement(
 					"div",
@@ -981,7 +963,7 @@ var _reactDom = require("react-dom");
 
 var _reactDom2 = _interopRequireDefault(_reactDom);
 
-var _reactCustomScrollbars = require("react-custom-scrollbars");
+var _reactRouterDom = require("react-router-dom");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -1003,17 +985,20 @@ var Nav = function (_Component) {
 	_createClass(Nav, [{
 		key: "componentDidUpdate",
 		value: function componentDidUpdate() {
-			var hashDOM = _reactDom2.default.findDOMNode(this).querySelector(".hash");
+			var nav = _reactDom2.default.findDOMNode(this);
+			var hashDOM = nav.querySelector(".hash");
+			if (this.props.hash == this.props.hlist[0].id) {
+				nav.scrollTop = 0;
+			}
 			if (hashDOM) {
 				var _hashDOM$getBoundingC = hashDOM.getBoundingClientRect(),
 				    top = _hashDOM$getBoundingC.top,
 				    bottom = _hashDOM$getBoundingC.bottom;
 
 				if (top < 0) {
-					this.scrollbars.scrollTop(this.scrollbars.getScrollTop() + top);
-				} else if (bottom > this.scrollbars.getClientHeight()) {
-					var h = bottom - this.scrollbars.getClientHeight();
-					this.scrollbars.scrollTop(this.scrollbars.getScrollTop() + h);
+					nav.scrollTop += top;
+				} else if (bottom > nav.clientHeight) {
+					nav.scrollTop += bottom - nav.clientHeight;
 				}
 			}
 		}
@@ -1032,18 +1017,21 @@ var Nav = function (_Component) {
 
 			return _react2.default.createElement(
 				"div",
-				{ id: "nav", onClick: function onClick(e) {
+				{ id: "nav", lang: global.lang, onClick: function onClick(e) {
 						return _this2.click(e);
 					} },
 				_react2.default.createElement(
-					_reactCustomScrollbars.Scrollbars,
-					{
-						autoHide: true,
-						autoHideTimeout: 1000,
-						ref: function ref(s) {
-							_this2.scrollbars = s;
-						}
-					},
+					"div",
+					{ id: "hlist" },
+					_react2.default.createElement(
+						"h2",
+						{ id: "back" },
+						_react2.default.createElement(
+							_reactRouterDom.Link,
+							{ to: "/index" },
+							global.i18n["ToIndexPage"]
+						)
+					),
 					this.props.hlist.map(function (h) {
 						var NodeName = h.type;
 						return _react2.default.createElement(
@@ -1051,8 +1039,7 @@ var Nav = function (_Component) {
 							{
 								key: h.id,
 								cid: h.id,
-								className: _this2.props.hash == h.id ? "hash" : undefined,
-								lang: global.lang
+								className: _this2.props.hash == h.id ? "hash" : undefined
 							},
 							h.text
 						);
@@ -1068,7 +1055,7 @@ var Nav = function (_Component) {
 exports.default = Nav;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"react":92,"react-custom-scrollbars":57,"react-dom":65}],7:[function(require,module,exports){
+},{"react":92,"react-dom":65,"react-router-dom":78}],7:[function(require,module,exports){
 (function (global){
 "use strict";
 

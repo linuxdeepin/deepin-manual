@@ -23,7 +23,19 @@ body {
 
 #article {
   float: right;
-  width: 84%; }
+  width: calc(100% - 250px);
+  height: 100%;
+  overflow-y: auto; }
+  #article::-webkit-scrollbar {
+    width: 6px; }
+  #article::-webkit-scrollbar-thumb {
+    background-color: #888888;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    background-clip: content-box; }
+  #article::-webkit-scrollbar-thumb:hover {
+    border: 1px solid #414141;
+    background-color: #414141; }
   #article .read {
     margin: auto;
     width: 700px;
@@ -194,40 +206,51 @@ body {
 
 #nav {
   float: left;
-  width: 15%;
-  min-width: 150px;
+  height: 100%;
+  max-width: 250px;
   overflow-y: auto;
-  white-space: nowrap;
-  border-right: 1px solid rgba(0, 0, 0, 0.1); }
-  #nav h2 {
-    cursor: pointer;
-    font-size: 16px;
-    font-weight: 500;
-    color: #00162c;
-    padding: 3px 0px;
-    margin: 0px;
-    margin-bottom: 9px;
-    text-indent: 34px; }
-  #nav h2:lang(en_US) {
-    font-size: 14px;
-    text-indent: 14px; }
-  #nav h3 {
-    cursor: pointer;
-    font-weight: normal;
-    font-size: 12px;
-    color: #000000;
-    padding: 6px 0px;
-    margin: 0px;
-    margin-bottom: 9px;
-    text-indent: 44px; }
-  #nav h3:lang(en_US) {
-    font-size: 12px;
-    text-indent: 20px; }
-  #nav .hash {
-    border-right: #30a5f9 3px solid;
-    background-color: #d5edfe;
-    color: #2ca7f8;
-    font-weight: 500; }
+  white-space: nowrap; }
+  #nav::-webkit-scrollbar {
+    width: 6px; }
+  #nav::-webkit-scrollbar-thumb {
+    background-color: #888888;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    background-clip: content-box; }
+  #nav::-webkit-scrollbar-thumb:hover {
+    border: 1px solid #414141;
+    background-color: #414141; }
+  #nav #hlist {
+    border-right: 1px solid rgba(0, 0, 0, 0.1); }
+    #nav #hlist h2 {
+      cursor: pointer;
+      font-size: 16px;
+      font-weight: 500;
+      color: #00162c;
+      padding: 3px 0px;
+      margin: 0px;
+      margin-bottom: 9px;
+      text-indent: 34px;
+      padding-right: 10px; }
+    #nav #hlist h3 {
+      cursor: pointer;
+      font-weight: normal;
+      font-size: 12px;
+      color: #000000;
+      padding: 6px 0px;
+      margin: 0px;
+      margin-bottom: 9px;
+      text-indent: 44px;
+      padding-right: 10px;
+      border-right: 3px solid transparent; }
+    #nav #hlist .hash {
+      border-right: #30a5f9 3px solid;
+      background-color: #d5edfe;
+      color: #2ca7f8;
+      font-weight: bold; }
+    #nav #hlist #back a {
+      text-decoration: none;
+      color: #00162c; }
 
 #search {
   width: 830px;
