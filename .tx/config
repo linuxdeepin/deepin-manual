@@ -4,8 +4,8 @@ minimum_perc = 80
 mode = developer
 
 [deepin-manual.deepin-manual]
-file_filter = i18n/deepin-manual_<lang>.ts
-source_file = i18n/deepin-manual.ts
+file_filter = translations/deepin-manual_<lang>.ts
+source_file = translations/deepin-manual.ts
 source_lang = en
 type = QT
 
