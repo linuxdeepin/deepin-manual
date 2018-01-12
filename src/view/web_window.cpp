@@ -21,7 +21,6 @@
 #include <QDebug>
 #include <QFileInfo>
 #include <QResizeEvent>
-#include <QTimer>
 #include <QWebChannel>
 #include <qcef_web_page.h>
 #include <qcef_web_settings.h>
@@ -41,12 +40,20 @@
 
 namespace dman {
 
+namespace {
+
+const int kSearchDelay = 200;
+
+}  // namespace
+
 WebWindow::WebWindow(SearchManager* search_manager, QWidget* parent)
     : Dtk::Widget::DMainWindow(parent),
       app_name_(),
       search_manager_(search_manager),
-      search_proxy_(new SearchProxy(search_manager, this)) {
+      search_proxy_(new SearchProxy(search_manager, this)),
+      search_timer_() {
 
+  search_timer_.setSingleShot(true);
   this->initUI();
   this->initConnections();
 }
@@ -89,6 +96,8 @@ void WebWindow::initConnections() {
           this, &WebWindow::onSearchResultClicked);
   connect(completion_window_, &SearchCompletionWindow::searchButtonClicked,
           this, &WebWindow::onSearchButtonClicked);
+  connect(&search_timer_, &QTimer::timeout,
+          this, &WebWindow::onSearchTextChangedDelay);
 }
 
 void WebWindow::initUI() {
@@ -154,20 +163,26 @@ void WebWindow::onSearchResultClicked(const QString& app_name,
 
 void WebWindow::onSearchTextChanged(const QString& text) {
   if (text.size() > 1) {
-    // Do real search.
-    completion_window_->setKeyword(text);
-    completion_window_->show();
-    completion_window_->autoResize();
-    // Move to below of search edit.
-    const QPoint local_point(this->rect().width() / 2 - 120, 36);
-    const QPoint global_point(this->mapToGlobal(local_point));
-    completion_window_->move(global_point);
-    completion_window_->setFocusPolicy(Qt::StrongFocus);
-    completion_window_->raise();
-    search_manager_->searchAnchor(text);
+    search_timer_.stop();
+    search_timer_.start(kSearchDelay);
   } else {
     this->onSearchEditFocusOut();
   }
+}
+
+void WebWindow::onSearchTextChangedDelay() {
+  const QString text = title_bar_->getSearchText();
+  // Do real search.
+  completion_window_->setKeyword(text);
+  completion_window_->show();
+  completion_window_->autoResize();
+  // Move to below of search edit.
+  const QPoint local_point(this->rect().width() / 2 - 120, 36);
+  const QPoint global_point(this->mapToGlobal(local_point));
+  completion_window_->move(global_point);
+  completion_window_->setFocusPolicy(Qt::StrongFocus);
+  completion_window_->raise();
+  search_manager_->searchAnchor(text);
 }
 
 void WebWindow::onWebPageLoadFinished(bool ok) {

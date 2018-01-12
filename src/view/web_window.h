@@ -19,6 +19,7 @@
 #define DEEPIN_MANUAL_VIEW_WEB_WINDOW_H
 
 #include <DMainWindow>
+#include <QTimer>
 
 #include "controller/search_result.h"
 
@@ -73,6 +74,7 @@ class WebWindow : public Dtk::Widget::DMainWindow {
   TitleBarProxy* title_bar_proxy_ = nullptr;
   QCefWebView* web_view_ = nullptr;
   WebEventDelegate* web_event_delegate_ = nullptr;
+  QTimer search_timer_;
 
  private slots:
   void onSearchEditFocusOut();
@@ -81,6 +83,7 @@ class WebWindow : public Dtk::Widget::DMainWindow {
   void onSearchAnchorResult(const QString& keyword,
                             const SearchAnchorResultList& result);
   void onSearchTextChanged(const QString& text);
+  void onSearchTextChangedDelay();
   void onWebPageLoadFinished(bool ok);
 };
 
