@@ -72,11 +72,6 @@ class App extends React.Component {
 				global.qtObjects.titleBar.backButtonClicked.connect(() =>
 					this.context.router.history.goBack()
 				)
-				global.qtObjects.search.onContentResult.connect((file, ks, vs) => {
-					console.log("onContentResult", file, ks, vs)
-				})
-				global.qtObjects.search.mismatch.connect(() => console.log("mismatch"))
-
 				global.readFile(global.path, data => {
 					let appList = data.match(/addRow\("([^.][^"]+)"/g).map(r => {
 						return r.match(/"([^"]+)"/)[1]

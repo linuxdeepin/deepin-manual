@@ -125,13 +125,6 @@ var App = function (_React$Component2) {
 				global.qtObjects.titleBar.backButtonClicked.connect(function () {
 					return _this2.context.router.history.goBack();
 				});
-				global.qtObjects.search.onContentResult.connect(function (file, ks, vs) {
-					console.log("onContentResult", file, ks, vs);
-				});
-				global.qtObjects.search.mismatch.connect(function () {
-					return console.log("mismatch");
-				});
-
 				global.readFile(global.path, function (data) {
 					var appList = data.match(/addRow\("([^.][^"]+)"/g).map(function (r) {
 						return r.match(/"([^"]+)"/)[1];
@@ -1214,7 +1207,10 @@ var SearchPage = function (_Component2) {
 	}, {
 		key: "onContentResult",
 		value: function onContentResult(file, keys, values) {
-			console.log(file, keys, values);
+			var searchResult = this.state.searchResult;
+
+			searchResult.push({ file: file, keys: keys, values: values });
+			this.setState({ searchResult: searchResult });
 		}
 	}, {
 		key: "render",

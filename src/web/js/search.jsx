@@ -83,7 +83,9 @@ export default class SearchPage extends Component {
 		})
 	}
 	onContentResult(file, keys, values) {
-		console.log(file, keys, values)
+		let { searchResult } = this.state
+		searchResult.push({ file, keys, values })
+		this.setState({ searchResult })
 	}
 	render() {
 		let c = null
