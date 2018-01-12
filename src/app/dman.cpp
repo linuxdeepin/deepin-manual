@@ -25,15 +25,6 @@
 #include "controller/window_manager.h"
 #include "resources/themes/images.h"
 
-namespace {
-
-QString GetSystemManualDir(const QString& args) {
-  Q_UNUSED(args);
-  return DMAN_MANUAL_DIR;
-}
-
-}  // namespace
-
 int main(int argc, char** argv) {
   QCefGlobalSettings settings;
 
@@ -50,7 +41,6 @@ int main(int argc, char** argv) {
 
   // Disable GPU process.
   settings.addCommandLineSwitch("--disable-gpu", "");
-  settings.registerSyncMethod("getSystemManualDir", GetSystemManualDir);
   // Set web cache folder.
   QDir cache_dir(dman::GetCacheDir());
   cache_dir.mkpath(".");
