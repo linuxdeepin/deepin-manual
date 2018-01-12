@@ -66,13 +66,9 @@ export default class Index extends Component {
 			sequence,
 			appList: []
 		}
-
-		global.readFile(global.path, data => {
-			let appList = data.match(/addRow\("([^.][^"]+)"/g).map(r => {
-				return r.match(/"([^"]+)"/)[1]
-			})
-			this.setState({ appList: appList })
-		})
+		global.qtObjects.manual.getSystemManualList(appList =>
+			this.setState({ appList })
+		)
 	}
 	shouldComponentUpdate(nextProps, nextState) {
 		if (nextState.appList.toString() == this.state.appList.toString()) {

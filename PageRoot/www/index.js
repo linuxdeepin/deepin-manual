@@ -41,7 +41,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 global.lang = navigator.language.replace("-", "_");
-global.path = getSystemManualDir("");
 
 global.readFile = function (fileName, callback) {
 	var xhr = new XMLHttpRequest();
@@ -98,17 +97,17 @@ var App = function (_React$Component2) {
 		global.index = function () {
 			_this2.context.router.history.push("/index");
 		};
-		global.openApp = function (appName, hash) {
-			var file = global.path + "/" + appName + "/" + global.lang + "/index.md";
-			global.openFile(file, hash);
-		};
-		global.openFile = function (file, hash) {
-			var url = "/open/" + encodeURIComponent(file);
-			if (hash != null) {
-				url += "/" + encodeURIComponent(hash);
-			}
+		global.open = function (file) {
+			var hash = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+
+			file = encodeURIComponent(file);
+			hash = encodeURIComponent(hash);
+			var url = "/open/" + file + "/" + hash;
+			console.log(url);
 			_this2.context.router.history.push(url);
 		};
+		global.openApp = global.open;
+		global.openFile = global.open;
 		global.openSearchPage = function (keyword) {
 			_this2.context.router.history.push("/search/" + encodeURIComponent(keyword));
 		};
@@ -119,23 +118,32 @@ var App = function (_React$Component2) {
 			channel.objects.i18n.getSentences(function (i18n) {
 				global.i18n = i18n;
 				global.qtObjects = channel.objects;
-				_this2.setState({ init: true });
+				channel.objects.manual.getSystemManualDir(function (path) {
+					global.path = path;
+					_this2.setState({ init: true });
+					global.qtObjects.manual.getSystemManualList(function (appList) {
+						return appList.map(function (appName) {
+							var file = global.path + "/" + appName + "/" + global.lang + "/index.md";
+							global.readFile(file, function (data) {
+								return (0, _searchIndex2.default)(file, data);
+							});
+						});
+					});
+				});
 
 				global.qtObjects.titleBar.setBackButtonVisible(true);
 				global.qtObjects.titleBar.backButtonClicked.connect(function () {
 					return _this2.context.router.history.goBack();
 				});
-				global.readFile(global.path, function (data) {
-					var appList = data.match(/addRow\("([^.][^"]+)"/g).map(function (r) {
-						return r.match(/"([^"]+)"/)[1];
-					});
-					appList.map(function (appName) {
-						var file = global.path + "/" + appName + "/" + global.lang + "/index.md";
-						global.readFile(file, function (data) {
-							return (0, _searchIndex2.default)(file, data);
-						});
-					});
-				});
+				// global.readFile(global.path, data => {
+				// 	let appList = data.match(/addRow\("([^.][^"]+)"/g).map(r => {
+				// 		return r.match(/"([^"]+)"/)[1]
+				// 	})
+				// 	appList.map(appName => {
+				// 		const file = `${global.path}/${appName}/${global.lang}/index.md`
+				// 		global.readFile(file, data => sIndex(file, data))
+				// 	})
+				// })
 			});
 		});
 		_this2.state = {
@@ -695,12 +703,8 @@ var Index = function (_Component2) {
 			sequence: sequence,
 			appList: []
 		};
-
-		global.readFile(global.path, function (data) {
-			var appList = data.match(/addRow\("([^.][^"]+)"/g).map(function (r) {
-				return r.match(/"([^"]+)"/)[1];
-			});
-			_this2.setState({ appList: appList });
+		global.qtObjects.manual.getSystemManualList(function (appList) {
+			return _this2.setState({ appList: appList });
 		});
 		return _this2;
 	}
@@ -825,6 +829,9 @@ var Main = function (_Component) {
 		value: function init(file, hash) {
 			var _this2 = this;
 
+			if (file.indexOf("/") == -1) {
+				file = global.path + "/" + file + "/" + global.lang + "/index.md";
+			}
 			global.readFile(file, function (data) {
 				var _m2h = (0, _mdToHtml2.default)(file, data),
 				    html = _m2h.html,

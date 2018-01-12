@@ -14,6 +14,9 @@ export default class Main extends Component {
 		this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null)
 	}
 	init(file, hash) {
+		if (file.indexOf("/") == -1) {
+			file = `${global.path}/${file}/${global.lang}/index.md`
+		}
 		global.readFile(file, data => {
 			let { html, hlist } = m2h(file, data)
 			this.setState({

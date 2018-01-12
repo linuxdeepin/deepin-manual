@@ -9,7 +9,6 @@ import Search from "./search.jsx"
 import sIndex from "./searchIndex"
 
 global.lang = navigator.language.replace("-", "_")
-global.path = getSystemManualDir("")
 
 global.readFile = (fileName, callback) => {
 	let xhr = new XMLHttpRequest()
@@ -45,17 +44,15 @@ class App extends React.Component {
 		global.index = () => {
 			this.context.router.history.push("/index")
 		}
-		global.openApp = (appName, hash) => {
-			let file = `${global.path}/${appName}/${global.lang}/index.md`
-			global.openFile(file, hash)
-		}
-		global.openFile = (file, hash) => {
-			let url = `/open/${encodeURIComponent(file)}`
-			if (hash != null) {
-				url += `/${encodeURIComponent(hash)}`
-			}
+		global.open = (file, hash = "") => {
+			file = encodeURIComponent(file)
+			hash = encodeURIComponent(hash)
+			let url = `/open/${file}/${hash}`
+			console.log(url)
 			this.context.router.history.push(url)
 		}
+		global.openApp = global.open
+		global.openFile = global.open
 		global.openSearchPage = keyword => {
 			this.context.router.history.push("/search/" + encodeURIComponent(keyword))
 		}
@@ -66,21 +63,30 @@ class App extends React.Component {
 			channel.objects.i18n.getSentences(i18n => {
 				global.i18n = i18n
 				global.qtObjects = channel.objects
-				this.setState({ init: true })
+				channel.objects.manual.getSystemManualDir(path => {
+					global.path = path
+					this.setState({ init: true })
+					global.qtObjects.manual.getSystemManualList(appList =>
+						appList.map(appName => {
+							const file = `${global.path}/${appName}/${global.lang}/index.md`
+							global.readFile(file, data => sIndex(file, data))
+						})
+					)
+				})
 
 				global.qtObjects.titleBar.setBackButtonVisible(true)
 				global.qtObjects.titleBar.backButtonClicked.connect(() =>
 					this.context.router.history.goBack()
 				)
-				global.readFile(global.path, data => {
-					let appList = data.match(/addRow\("([^.][^"]+)"/g).map(r => {
-						return r.match(/"([^"]+)"/)[1]
-					})
-					appList.map(appName => {
-						const file = `${global.path}/${appName}/${global.lang}/index.md`
-						global.readFile(file, data => sIndex(file, data))
-					})
-				})
+				// global.readFile(global.path, data => {
+				// 	let appList = data.match(/addRow\("([^.][^"]+)"/g).map(r => {
+				// 		return r.match(/"([^"]+)"/)[1]
+				// 	})
+				// 	appList.map(appName => {
+				// 		const file = `${global.path}/${appName}/${global.lang}/index.md`
+				// 		global.readFile(file, data => sIndex(file, data))
+				// 	})
+				// })
 			})
 		})
 		this.state = {
