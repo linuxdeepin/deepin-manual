@@ -174,6 +174,9 @@ void SearchCompletionWindow::onResultListClicked(const QModelIndex& index) {
   if (index.isValid()) {
     const int row = index.row();
     emit this->resultClicked(result_.at(row).app_name, result_.at(row).anchor);
+  } else {
+    // Simulate button click event.
+    emit this->searchButtonClicked();
   }
 }
 
