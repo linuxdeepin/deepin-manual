@@ -109,6 +109,7 @@ var App = function (_React$Component2) {
 		global.openApp = global.open;
 		global.openFile = global.open;
 		global.openSearchPage = function (keyword) {
+			_this2.setState({ searchResult: [] });
 			_this2.context.router.history.push("/search/" + encodeURIComponent(keyword));
 		};
 		global.back = function () {
@@ -131,31 +132,44 @@ var App = function (_React$Component2) {
 					});
 				});
 
-				global.qtObjects.titleBar.setBackButtonVisible(true);
-				global.qtObjects.titleBar.backButtonClicked.connect(function () {
+				global.qtObjects.titleBar.setBackwardButtonActive(true);
+				global.qtObjects.titleBar.setForwardButtonActive(true);
+				global.qtObjects.titleBar.backwardButtonClicked.connect(function () {
 					return _this2.context.router.history.goBack();
 				});
-				// global.readFile(global.path, data => {
-				// 	let appList = data.match(/addRow\("([^.][^"]+)"/g).map(r => {
-				// 		return r.match(/"([^"]+)"/)[1]
-				// 	})
-				// 	appList.map(appName => {
-				// 		const file = `${global.path}/${appName}/${global.lang}/index.md`
-				// 		global.readFile(file, data => sIndex(file, data))
-				// 	})
-				// })
+				global.qtObjects.titleBar.forwardButtonClicked.connect(function () {
+					return _this2.context.router.history.goForward();
+				});
+				global.qtObjects.search.mismatch.connect(function () {
+					return _this2.setState({ mismatch: true });
+				});
+				global.qtObjects.search.onContentResult.connect(_this2.onContentResult.bind(_this2));
 			});
 		});
 		_this2.state = {
-			init: false
+			init: false,
+			searchResult: [],
+			mismatch: false
 		};
 		return _this2;
 	}
 
 	_createClass(App, [{
-		key: "componentWillReceiveProps",
-		value: function componentWillReceiveProps(props) {
-			console.log(props);
+		key: "onContentResult",
+		value: function onContentResult(file, keys, values) {
+			var searchResult = this.state.searchResult;
+
+			searchResult.push({ file: file, keys: keys, values: values });
+			this.setState({ searchResult: searchResult, mismatch: false });
+		}
+	}, {
+		key: "getChildContext",
+		value: function getChildContext() {
+			var _state = this.state,
+			    searchResult = _state.searchResult,
+			    mismatch = _state.mismatch;
+
+			return { searchResult: searchResult, mismatch: mismatch };
 		}
 	}, {
 		key: "render",
@@ -180,6 +194,10 @@ var App = function (_React$Component2) {
 
 App.contextTypes = {
 	router: _propTypes2.default.object
+};
+App.childContextTypes = {
+	searchResult: _propTypes2.default.array,
+	mismatch: _propTypes2.default.bool
 };
 
 (0, _reactDom.render)(_react2.default.createElement(
@@ -1066,6 +1084,10 @@ var _react = require("react");
 
 var _react2 = _interopRequireDefault(_react);
 
+var _propTypes = require("prop-types");
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
 var _reactCustomScrollbars = require("react-custom-scrollbars");
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
@@ -1131,7 +1153,6 @@ var Items = function (_Component) {
 			for (var i = 0; i < this.props.keys.length; i++) {
 				_loop(i);
 			}
-			console.log(resultList);
 			return this.state.show && _react2.default.createElement(
 				"div",
 				{ className: "items" },
@@ -1187,46 +1208,20 @@ function Mismatch(props) {
 var SearchPage = function (_Component2) {
 	_inherits(SearchPage, _Component2);
 
-	function SearchPage(props) {
+	function SearchPage(props, context) {
 		_classCallCheck(this, SearchPage);
 
-		var _this3 = _possibleConstructorReturn(this, (SearchPage.__proto__ || Object.getPrototypeOf(SearchPage)).call(this, props));
-
-		_this3.state = {
-			searchResult: [],
-			mismatch: false
-		};
-		global.qtObjects.search.mismatch.connect(function () {
-			return _this3.setState({ mismatch: true });
-		});
-		global.qtObjects.search.onContentResult.connect(_this3.onContentResult.bind(_this3));
-		return _this3;
+		return _possibleConstructorReturn(this, (SearchPage.__proto__ || Object.getPrototypeOf(SearchPage)).call(this, props, context));
 	}
 
 	_createClass(SearchPage, [{
-		key: "componentWillReceiveProps",
-		value: function componentWillReceiveProps(nextProps) {
-			this.setState({
-				searchResult: [],
-				mismatch: false
-			});
-		}
-	}, {
-		key: "onContentResult",
-		value: function onContentResult(file, keys, values) {
-			var searchResult = this.state.searchResult;
-
-			searchResult.push({ file: file, keys: keys, values: values });
-			this.setState({ searchResult: searchResult });
-		}
-	}, {
 		key: "render",
 		value: function render() {
 			var c = null;
-			if (this.state.mismatch) {
+			if (this.context.mismatch) {
 				c = _react2.default.createElement(Mismatch, { keyword: this.props.match.params.keyword });
 			} else {
-				c = this.state.searchResult.map(function (result) {
+				c = this.context.searchResult.map(function (result) {
 					return _react2.default.createElement(Items, {
 						key: result.file,
 						file: result.file,
@@ -1252,8 +1247,14 @@ var SearchPage = function (_Component2) {
 
 exports.default = SearchPage;
 
+
+SearchPage.contextTypes = {
+	searchResult: _propTypes2.default.array,
+	mismatch: _propTypes2.default.bool
+};
+
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"react":92,"react-custom-scrollbars":57}],8:[function(require,module,exports){
+},{"prop-types":49,"react":92,"react-custom-scrollbars":57}],8:[function(require,module,exports){
 (function (global){
 'use strict';
 

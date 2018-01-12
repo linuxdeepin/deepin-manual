@@ -1,4 +1,5 @@
 import React, { Component } from "react"
+import PropTypes from "prop-types"
 import { Scrollbars } from "react-custom-scrollbars"
 
 class Items extends Component {
@@ -32,7 +33,6 @@ class Items extends Component {
 				</div>
 			)
 		}
-		console.log(resultList)
 		return (
 			this.state.show && (
 				<div className="items">
@@ -63,36 +63,15 @@ function Mismatch(props) {
 	)
 }
 export default class SearchPage extends Component {
-	constructor(props) {
-		super(props)
-		this.state = {
-			searchResult: [],
-			mismatch: false
-		}
-		global.qtObjects.search.mismatch.connect(() =>
-			this.setState({ mismatch: true })
-		)
-		global.qtObjects.search.onContentResult.connect(
-			this.onContentResult.bind(this)
-		)
-	}
-	componentWillReceiveProps(nextProps) {
-		this.setState({
-			searchResult: [],
-			mismatch: false
-		})
-	}
-	onContentResult(file, keys, values) {
-		let { searchResult } = this.state
-		searchResult.push({ file, keys, values })
-		this.setState({ searchResult })
+	constructor(props, context) {
+		super(props, context)
 	}
 	render() {
 		let c = null
-		if (this.state.mismatch) {
+		if (this.context.mismatch) {
 			c = <Mismatch keyword={this.props.match.params.keyword} />
 		} else {
-			c = this.state.searchResult.map(result => (
+			c = this.context.searchResult.map(result => (
 				<Items
 					key={result.file}
 					file={result.file}
@@ -107,4 +86,9 @@ export default class SearchPage extends Component {
 			</Scrollbars>
 		)
 	}
+}
+
+SearchPage.contextTypes = {
+	searchResult: PropTypes.array,
+	mismatch: PropTypes.bool
 }

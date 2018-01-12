@@ -54,6 +54,7 @@ class App extends React.Component {
 		global.openApp = global.open
 		global.openFile = global.open
 		global.openSearchPage = keyword => {
+			this.setState({ searchResult: [] })
 			this.context.router.history.push("/search/" + encodeURIComponent(keyword))
 		}
 		global.back = () => {
@@ -74,27 +75,37 @@ class App extends React.Component {
 					)
 				})
 
-				global.qtObjects.titleBar.setBackButtonVisible(true)
-				global.qtObjects.titleBar.backButtonClicked.connect(() =>
+				global.qtObjects.titleBar.setBackwardButtonActive(true)
+				global.qtObjects.titleBar.setForwardButtonActive(true)
+				global.qtObjects.titleBar.backwardButtonClicked.connect(() =>
 					this.context.router.history.goBack()
 				)
-				// global.readFile(global.path, data => {
-				// 	let appList = data.match(/addRow\("([^.][^"]+)"/g).map(r => {
-				// 		return r.match(/"([^"]+)"/)[1]
-				// 	})
-				// 	appList.map(appName => {
-				// 		const file = `${global.path}/${appName}/${global.lang}/index.md`
-				// 		global.readFile(file, data => sIndex(file, data))
-				// 	})
-				// })
+				global.qtObjects.titleBar.forwardButtonClicked.connect(() =>
+					this.context.router.history.goForward()
+				)
+				global.qtObjects.search.mismatch.connect(() =>
+					this.setState({ mismatch: true })
+				)
+				global.qtObjects.search.onContentResult.connect(
+					this.onContentResult.bind(this)
+				)
 			})
 		})
 		this.state = {
-			init: false
+			init: false,
+			searchResult: [],
+			mismatch: false
 		}
 	}
-	componentWillReceiveProps(props) {
-		console.log(props)
+
+	onContentResult(file, keys, values) {
+		let { searchResult } = this.state
+		searchResult.push({ file, keys, values })
+		this.setState({ searchResult, mismatch: false })
+	}
+	getChildContext() {
+		let { searchResult, mismatch } = this.state
+		return { searchResult, mismatch }
 	}
 	render() {
 		console.log(this.state)
@@ -113,6 +124,10 @@ class App extends React.Component {
 }
 App.contextTypes = {
 	router: PropTypes.object
+}
+App.childContextTypes = {
+	searchResult: PropTypes.array,
+	mismatch: PropTypes.bool
 }
 
 render(
