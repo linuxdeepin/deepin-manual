@@ -46,6 +46,9 @@ QStringList ManualProxy::getSystemManualList() {
         app_list_.append(info.key);
       }
     }
+
+    // Add "dde" by hand, as it has no desktop file.
+    app_list_.append("dde");
   }
   return app_list_;
 }
