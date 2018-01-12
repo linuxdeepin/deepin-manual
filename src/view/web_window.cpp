@@ -82,6 +82,8 @@ void WebWindow::initConnections() {
           this, &WebWindow::onSearchAnchorResult);
   connect(search_manager_, &SearchManager::searchContentResult,
           search_proxy_, &SearchProxy::onContentResult);
+  connect(search_manager_, &SearchManager::searchContentMismatch,
+          search_proxy_, &SearchProxy::mismatch);
   connect(completion_window_, &SearchCompletionWindow::resultClicked,
           this, &WebWindow::onSearchResultClicked);
   connect(completion_window_, &SearchCompletionWindow::searchButtonClicked,

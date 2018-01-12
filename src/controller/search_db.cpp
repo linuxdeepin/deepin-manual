@@ -234,6 +234,7 @@ void SearchDb::handleSearchContent(const QString& keyword) {
   const QString sql = QString(kSelectContent)
       .replace(":lang", lang)
       .replace(":content", keyword);
+  bool result_empty = true;
   if (query.exec(sql)) {
     QString last_app_name;
     QStringList anchors;
@@ -247,6 +248,7 @@ void SearchDb::handleSearchContent(const QString& keyword) {
         contents.append(content);
       } else {
         if (!anchors.isEmpty()) {
+          result_empty = false;
           emit this->searchContentResult(last_app_name, anchors, contents);
         }
 
@@ -260,6 +262,10 @@ void SearchDb::handleSearchContent(const QString& keyword) {
   } else {
     qCritical() << "Failed to select contents:"
                 << query.lastError().text();
+  }
+
+  if (result_empty) {
+    emit this->searchContentMismatch(keyword);
   }
 }
 

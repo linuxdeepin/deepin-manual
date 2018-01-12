@@ -50,6 +50,7 @@ class SearchManager : public QObject {
   void searchContentResult(const QString& app_name,
                            const QStringList& anchors,
                            const QStringList& contents);
+  void searchContentMismatch(const QString& keyword);
 
  private:
   SearchDb* db_ = nullptr;
