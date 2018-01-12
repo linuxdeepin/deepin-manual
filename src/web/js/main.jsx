@@ -11,7 +11,7 @@ export default class Main extends Component {
 			init: false
 		}
 		let { file, hash } = this.props.match.params
-		this.init(decodeURIComponent(file), decodeURIComponent(hash))
+		this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null)
 	}
 	init(file, hash) {
 		global.readFile(file, data => {
@@ -29,7 +29,7 @@ export default class Main extends Component {
 	}
 	componentWillReceiveProps(nextProps) {
 		let { file, hash } = nextProps.match.params
-		this.init(decodeURIComponent(file), decodeURIComponent(hash))
+		this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null)
 	}
 	render() {
 		return (

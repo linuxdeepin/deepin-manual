@@ -6,6 +6,7 @@ import { HashRouter as Router, Switch, Route, Link } from "react-router-dom"
 import Index from "./index.jsx"
 import Main from "./main.jsx"
 import Search from "./search.jsx"
+import sIndex from "./searchIndex"
 
 global.lang = navigator.language.replace("-", "_")
 global.path = getSystemManualDir("")
@@ -46,17 +47,17 @@ class App extends React.Component {
 		}
 		global.openApp = (appName, hash) => {
 			let file = `${global.path}/${appName}/${global.lang}/index.md`
+			global.openFile(file, hash)
+		}
+		global.openFile = (file, hash) => {
 			let url = `/open/${encodeURIComponent(file)}`
 			if (hash != null) {
 				url += `/${encodeURIComponent(hash)}`
 			}
 			this.context.router.history.push(url)
 		}
-		global.openFile = file => {
-			this.context.router.history.push("/open/" + decodeURIComponent(file))
-		}
 		global.openSearchPage = keyword => {
-			this.context.router.history.push("/search/" + decodeURIComponent(keyword))
+			this.context.router.history.push("/search/" + encodeURIComponent(keyword))
 		}
 		global.back = () => {
 			this.context.router.history.goBack()
@@ -66,15 +67,33 @@ class App extends React.Component {
 				global.i18n = i18n
 				global.qtObjects = channel.objects
 				this.setState({ init: true })
+
+				global.qtObjects.titleBar.setBackButtonVisible(true)
+				global.qtObjects.titleBar.backButtonClicked.connect(() =>
+					this.context.router.history.goBack()
+				)
 				global.qtObjects.search.onContentResult.connect((file, ks, vs) => {
 					console.log("onContentResult", file, ks, vs)
 				})
 				global.qtObjects.search.mismatch.connect(() => console.log("mismatch"))
+
+				global.readFile(global.path, data => {
+					let appList = data.match(/addRow\("([^.][^"]+)"/g).map(r => {
+						return r.match(/"([^"]+)"/)[1]
+					})
+					appList.map(appName => {
+						const file = `${global.path}/${appName}/${global.lang}/index.md`
+						global.readFile(file, data => sIndex(file, data))
+					})
+				})
 			})
 		})
 		this.state = {
 			init: false
 		}
+	}
+	componentWillReceiveProps(props) {
+		console.log(props)
 	}
 	render() {
 		console.log(this.state)
