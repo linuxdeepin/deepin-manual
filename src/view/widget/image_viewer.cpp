@@ -33,7 +33,7 @@ namespace dman {
 namespace {
 
 const int kBorderSize = 12;
-const int kCloseBtnSize = 24;
+const int kCloseBtnSize = 48;
 
 }  // namespace
 
@@ -93,7 +93,6 @@ void ImageViewer::initUI() {
   close_button_ = new Dtk::Widget::DImageButton(this);
   close_button_->setObjectName("CloseButton");
   close_button_->raise();
-  close_button_->setFixedSize(kCloseBtnSize, kCloseBtnSize);
 
   this->setContentsMargins(kBorderSize, kBorderSize, kBorderSize, kBorderSize);
   this->setWindowFlags(Qt::FramelessWindowHint |
