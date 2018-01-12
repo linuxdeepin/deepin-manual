@@ -34,21 +34,23 @@ TitleBar::TitleBar(QWidget* parent) : QFrame(parent) {
 TitleBar::~TitleBar() {
 }
 
-bool TitleBar::backButtonVisible() const {
-  return back_button_->isVisible();
-}
-
 QString TitleBar::getSearchText() const {
   return search_edit_->text();
 }
 
-void TitleBar::setBackButtonVisible(bool visible) {
-  back_button_->setVisible(visible);
+void TitleBar::setBackwardButtonActive(bool active) {
+  back_button_->setEnabled(active);
+}
+
+void TitleBar::setForwardButtonActive(bool active) {
+  forward_button_->setEnabled(active);
 }
 
 void TitleBar::initConnections() {
   connect(back_button_, &Dtk::Widget::DImageButton::clicked,
-          this, &TitleBar::backButtonClicked);
+          this, &TitleBar::backwardButtonClicked);
+  connect(forward_button_, &Dtk::Widget::DImageButton::clicked,
+          this, &TitleBar::forwardButtonClicked);
   connect(search_edit_, &SearchEdit::textChanged,
           this, &TitleBar::onSearchTextChanged);
   connect(search_edit_, &SearchEdit::focusOut,
@@ -69,7 +71,10 @@ void TitleBar::initUI() {
   back_button_ = new Dtk::Widget::DImageButton();
   back_button_->setObjectName("BackButton");
   back_button_->setFixedSize(24, 24);
-  back_button_->hide();
+
+  forward_button_ = new Dtk::Widget::DImageButton();
+  forward_button_->setObjectName("ForwardButton");
+  forward_button_->setFixedSize(24, 24);
 
   QHBoxLayout* left_layout = new QHBoxLayout();
   left_layout->setSpacing(0);

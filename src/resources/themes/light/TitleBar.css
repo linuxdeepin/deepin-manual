@@ -8,3 +8,9 @@
   qproperty-hoverPic: url(:/light/images/back_hover.svg);
   qproperty-pressPic: url(:/light/images/back_press.svg);
 }
+
+#ForwardButton {
+  qproperty-normalPic: url(:/light/images/forward_normal.svg);
+  qproperty-hoverPic: url(:/light/images/forward_hover.svg);
+  qproperty-pressPic: url(:/light/images/forward_press.svg);
+}

@@ -26,25 +26,18 @@ class TitleBar;
 
 class TitleBarProxy : public QObject {
   Q_OBJECT
-  Q_PROPERTY(bool backButtonVisible
-                 READ backButtonVisible
-                 WRITE setBackButtonVisible
-                 NOTIFY backButtonVisibleChanged)
 
  public:
   TitleBarProxy(TitleBar* title_bar, QObject* parent = nullptr);
   ~TitleBarProxy() override;
 
-  bool backButtonVisible() const;
-
  signals:
-  void backButtonVisibleChanged(bool visible);
-  void backButtonClicked();
+  void backwardButtonClicked();
+  void forwardButtonClicked();
 
  public slots:
-  // Show goBack button if |visible| is true.
-  // Else show app icon.
-  void setBackButtonVisible(bool visible);
+  void setBackwardButtonActive(bool active);
+  void setForwardButtonActive(bool active);
 
  private:
   TitleBar* title_bar_ = nullptr;

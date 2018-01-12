@@ -31,19 +31,19 @@ class SearchEdit;
 // Customize widget in TitleBar.
 class TitleBar : public QFrame {
   Q_OBJECT
-  Q_PROPERTY(bool backButtonVisible
-                 READ backButtonVisible
-                 WRITE setBackButtonVisible)
+
  public:
   explicit TitleBar(QWidget* parent = nullptr);
   ~TitleBar() override;
 
-  bool backButtonVisible() const;
-
   QString getSearchText() const;
 
  signals:
-  void backButtonClicked();
+  void backwordButtonActiveChanged(bool active);
+  void forwordButtonActiveChanged(bool active);
+  void backwardButtonClicked();
+  void forwardButtonClicked();
+
   void searchTextChanged(const QString& text);
   void downKeyPressed();
   void enterPressed();
@@ -51,15 +51,15 @@ class TitleBar : public QFrame {
   void focusOut();
 
  public slots:
-  // Show goBack button if |visible| is true.
-  // Else show app icon.
-  void setBackButtonVisible(bool visible);
+  void setBackwardButtonActive(bool active);
+  void setForwardButtonActive(bool active);
 
  private:
   void initUI();
   void initConnections();
 
   Dtk::Widget::DImageButton* back_button_ = nullptr;
+  Dtk::Widget::DImageButton* forward_button_ = nullptr;
   SearchEdit* search_edit_ = nullptr;
 
  private slots:

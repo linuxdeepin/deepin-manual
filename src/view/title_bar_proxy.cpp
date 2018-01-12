@@ -26,21 +26,21 @@ TitleBarProxy::TitleBarProxy(TitleBar* title_bar, QObject* parent)
       title_bar_(title_bar) {
   Q_ASSERT(title_bar_ != nullptr);
 
-  connect(title_bar_, &TitleBar::backButtonClicked,
-          this, &TitleBarProxy::backButtonClicked);
+  connect(title_bar, &TitleBar::backwardButtonClicked,
+          this, &TitleBarProxy::backwardButtonClicked);
+  connect(title_bar, &TitleBar::forwardButtonClicked,
+          this, &TitleBarProxy::forwardButtonClicked);
 }
 
 TitleBarProxy::~TitleBarProxy() {
-
 }
 
-bool TitleBarProxy::backButtonVisible() const {
-  return title_bar_->backButtonVisible();
+void TitleBarProxy::setBackwardButtonActive(bool active) {
+  title_bar_->setBackwardButtonActive(active);
 }
 
-void TitleBarProxy::setBackButtonVisible(bool visible) {
-  title_bar_->setBackButtonVisible(visible);
-  emit this->backButtonVisibleChanged(visible);
+void TitleBarProxy::setForwardButtonActive(bool active) {
+  title_bar_->setForwardButtonActive(active);
 }
 
 }  // namespace dman
