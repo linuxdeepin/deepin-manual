@@ -92,6 +92,10 @@ set(CONTROLLER_FILES
     )
 
 set(DBUS_FILES
+    dbus/dbusvariant/app_info.cpp
+    dbus/dbusvariant/app_info.h
+    dbus/launcher_interface.cpp
+    dbus/launcher_interface.h
     dbus/manual_open_adapter.cpp
     dbus/manual_open_adapter.h
     dbus/manual_open_proxy.cpp
@@ -113,6 +117,8 @@ set(VIEW_FILES
     view/i18n_proxy.h
     view/image_viewer_proxy.cpp
     view/image_viewer_proxy.h
+    view/manual_proxy.cpp
+    view/manual_proxy.h
     view/search_proxy.cpp
     view/search_proxy.h
     view/theme_manager.cpp

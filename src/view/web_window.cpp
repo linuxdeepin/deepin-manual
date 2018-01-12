@@ -31,6 +31,7 @@
 #include "controller/search_manager.h"
 #include "view/i18n_proxy.h"
 #include "view/image_viewer_proxy.h"
+#include "view/manual_proxy.h"
 #include "view/search_proxy.h"
 #include "view/title_bar_proxy.h"
 #include "view/widget/image_viewer.h"
@@ -104,6 +105,8 @@ void WebWindow::initUI() {
   image_viewer_ = new ImageViewer(this);
   image_viewer_proxy_ = new ImageViewerProxy(image_viewer_, this);
 
+  manual_proxy_ = new ManualProxy(this);
+
   web_view_ = new QCefWebView();
   web_event_delegate_ = new WebEventDelegate(this);
   web_view_->page()->setEventDelegate(web_event_delegate_);
@@ -116,6 +119,7 @@ void WebWindow::initUI() {
   QWebChannel* channel = web_view_->page()->webChannel();
   channel->registerObject("i18n", i18n_);
   channel->registerObject("imageViewer", image_viewer_proxy_);
+  channel->registerObject("manual", manual_proxy_);
   channel->registerObject("search", search_proxy_);
   channel->registerObject("titleBar", title_bar_proxy_);
 

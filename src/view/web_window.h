@@ -29,6 +29,7 @@ namespace dman {
 class I18nProxy;
 class ImageViewer;
 class ImageViewerProxy;
+class ManualProxy;
 class SearchCompletionWindow;
 class SearchManager;
 class SearchProxy;
@@ -67,6 +68,7 @@ class WebWindow : public Dtk::Widget::DMainWindow {
   I18nProxy* i18n_ = nullptr;
   ImageViewer* image_viewer_ = nullptr;
   ImageViewerProxy* image_viewer_proxy_ = nullptr;
+  ManualProxy* manual_proxy_ = nullptr;
   TitleBar* title_bar_ = nullptr;
   TitleBarProxy* title_bar_proxy_ = nullptr;
   QCefWebView* web_view_ = nullptr;
