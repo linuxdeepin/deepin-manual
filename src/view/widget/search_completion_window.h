@@ -58,6 +58,7 @@ class SearchCompletionWindow : public QFrame {
 
  private slots:
   void onResultListClicked(const QModelIndex& index);
+  void onResultListEntered(const QModelIndex& index);
 };
 
 }  // namespace dman

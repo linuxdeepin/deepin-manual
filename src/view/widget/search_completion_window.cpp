@@ -126,6 +126,8 @@ void SearchCompletionWindow::setSearchAnchorResult(
 void SearchCompletionWindow::initConnections() {
   connect(result_view_, &QListView::activated,
           this, &SearchCompletionWindow::onResultListClicked);
+  connect(result_view_, &QListView::entered,
+          this, &SearchCompletionWindow::onResultListEntered);
   connect(result_view_, &QListView::pressed,
           this, &SearchCompletionWindow::onResultListClicked);
   connect(search_button_, &QPushButton::pressed,
@@ -177,6 +179,11 @@ void SearchCompletionWindow::onResultListClicked(const QModelIndex& index) {
     // Simulate button click event.
     emit this->searchButtonClicked();
   }
+}
+
+void SearchCompletionWindow::onResultListEntered(const QModelIndex& index) {
+  result_view_->setCurrentIndex(index);
+  search_button_->setChecked(false);
 }
 
 }  // namespace dman
