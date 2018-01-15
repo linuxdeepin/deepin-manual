@@ -76,9 +76,7 @@ int main(int argc, char** argv) {
       "https://www.deepin.org/acknowledgments/deepin-manual/");
 
   dman::WindowManager window_manager;
-  if (!window_manager.parseArguments()) {
-    return 1;
-  }
+  window_manager.parseArguments();
 
   return app.exec();
 }

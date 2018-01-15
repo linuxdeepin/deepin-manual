@@ -15,26 +15,18 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QCoreApplication>
-#include <QDBusConnection>
-#include <QDebug>
+#ifndef DEEPIN_MANUAL_DBUS_DBUS_CONSTS_H
+#define DEEPIN_MANUAL_DBUS_DBUS_CONSTS_H
 
-#include "dbus/dbus_consts.h"
-#include "dbus/manual_search_adapter.h"
-#include "dbus/manual_search_proxy.h"
+namespace dman {
 
-int main(int argc, char** argv) {
-  QCoreApplication app(argc, argv);
+extern const char kManualOpenService[];
+extern const char kManualOpenIface[];
+extern const char kManualSearchService[];
+extern const char kManualSearchIface[];
+extern const char kLauncherService[];
+extern const char kLauncherIface[];
 
-  ManualSearchProxy search_obj;
-  ManualSearchAdapter adapter(&search_obj);
+}  // namespace dman
 
-  QDBusConnection conn = QDBusConnection::sessionBus();
-  if (!conn.registerService(dman::kManualSearchService) ||
-      !conn.registerObject(dman::kManualSearchIface, &search_obj)) {
-    qCritical() << "Failed to register dbus service";
-    return 1;
-  }
-
-  return app.exec();
-}
+#endif  // DEEPIN_MANUAL_DBUS_DBUS_CONSTS_H

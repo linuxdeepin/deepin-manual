@@ -19,6 +19,7 @@
 
 #include <QDBusConnection>
 
+#include "dbus/dbus_consts.h"
 #include "dbus/launcher_interface.h"
 
 namespace dman {
@@ -26,8 +27,8 @@ namespace dman {
 ManualProxy::ManualProxy(QObject* parent)
     : QObject(parent),
       launcher_interface_(new LauncherInterface(
-          "com.deepin.dde.daemon.Launcher",
-          "/com/deepin/dde/daemon/Launcher",
+          kLauncherService,
+          kLauncherIface,
           QDBusConnection::sessionBus(),
           this)) {
   AppInfo::registerMetaType();

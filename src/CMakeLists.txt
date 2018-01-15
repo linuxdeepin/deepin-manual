@@ -92,12 +92,16 @@ set(CONTROLLER_FILES
     )
 
 set(DBUS_FILES
+    dbus/dbus_consts.cpp
+    dbus/dbus_consts.h
     dbus/dbusvariant/app_info.cpp
     dbus/dbusvariant/app_info.h
     dbus/launcher_interface.cpp
     dbus/launcher_interface.h
     dbus/manual_open_adapter.cpp
     dbus/manual_open_adapter.h
+    dbus/manual_open_interface.cpp
+    dbus/manual_open_interface.h
     dbus/manual_open_proxy.cpp
     dbus/manual_open_proxy.h
     dbus/manual_search_adapter.cpp
