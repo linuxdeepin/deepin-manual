@@ -32,6 +32,7 @@
 	}
 	.items {
 		.title {
+			cursor: pointer;
 			margin-top: 30px;
 			height: 32px;
 			font-weight: bold;
@@ -50,6 +51,7 @@
 				font-size: 14px;
 				height: 20px;
 			}
+			cursor: pointer;
 			padding: 7px 18px;
 			margin-top: 10px;
 			font-size: 13px;
@@ -57,6 +59,11 @@
 			border-radius: 3px;
 			box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.1),
 				inset 0 2px 0 0 rgba(255, 255, 255, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.1);
+
+			overflow: hidden;
+			display: -webkit-box;
+			-webkit-line-clamp: 3;
+			-webkit-box-orient: vertical;
 		}
 	}
 }
