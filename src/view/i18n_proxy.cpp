@@ -33,8 +33,9 @@ QVariantHash I18nProxy::getSentences() const {
       { "NoResult",
           QObject::tr("Sorry, there are no search results of \"%1\"") },
       { "WikiSearch", QObject::tr(
-          "Change \"%1\" and try again, or search it in \"%2\"Deepin Wiki\"%3\"") },
-      { "ToIndexPage", QObject::tr("Back to homepage") },
+          "Change your keywords and try again, or search it in Deepin Wiki") },
+      { "ToIndexPage", QObject::tr("Home") },
+      { "SearchInWiki", QObject::tr("Deepin Wiki") }
   };
   return result;
 }
