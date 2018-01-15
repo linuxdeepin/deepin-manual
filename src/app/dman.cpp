@@ -57,15 +57,15 @@ int main(int argc, char** argv) {
   Dtk::Widget::DApplication app(argc, argv);
   QCefBindApp(&app);
 
-  // TODO(Shaohua): Load theme type from settings.
   app.setTheme("light");
-
-  // FIXME(Shaohua): libqcef does not support HiDPI currently.
   app.setAttribute(Qt::AA_EnableHighDpiScaling, true);
+  app.setWindowIcon(QIcon(dman::kImageDeepinManual));
+  app.setProductIcon(QIcon(dman::kImageDeepinManual));
   app.setOrganizationName("deepin");
   app.setOrganizationDomain("deepin.org");
   app.setApplicationVersion(dman::kAppVersion);
   app.setApplicationName(dman::kAppName);
+  app.loadTranslator();
   app.setApplicationDisplayName(QObject::tr(dman::kAppDisplayName));
   app.setApplicationLicense("GPL-3.0");
   app.setApplicationDescription(QObject::tr(
@@ -74,9 +74,6 @@ int main(int argc, char** argv) {
           "function descriptions."));
   app.setApplicationAcknowledgementPage(
       "https://www.deepin.org/acknowledgments/deepin-manual/");
-  app.loadTranslator();
-  app.setWindowIcon(QIcon(dman::kImageDeepinManual));
-  app.setProductIcon(QIcon(dman::kImageDeepinManual));
 
   dman::WindowManager window_manager;
   if (!window_manager.parseArguments()) {
