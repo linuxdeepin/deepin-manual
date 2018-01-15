@@ -53,7 +53,12 @@ body {
       color: #1f94ee;
       margin: 0px;
       padding-top: 23px; }
+    #article .read ul,
+    #article .read ol {
+      margin: 0;
+      padding: 0; }
     #article .read li {
+      margin-left: 2em;
       line-height: 24px; }
     #article .read img[src$="svg"] {
       height: 20px;
@@ -73,11 +78,11 @@ body {
       line-height: 2em;
       margin: 0; }
     #article .read table {
-      font-size: 12px;
       color: #606060;
       border-collapse: collapse;
       border-top: 2px solid rgba(0, 0, 0, 0.1);
       border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
       white-space: nowrap; }
       #article .read table.block1 {
         width: 100%; }
@@ -88,9 +93,12 @@ body {
       #article .read table.block4 {
         width: 25%; }
       #article .read table tr {
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        font-size: 12px; }
         #article .read table tr td {
           padding: 5px; }
+      #article .read table caption {
+        text-align: left; }
     #article .read a {
       text-decoration: none;
       font-weight: bold;
@@ -104,6 +112,9 @@ body {
         color: #4e64f6; }
         #article .read a[href^="dman://"]:after {
           content: " 📃 "; }
+    #article .read blockquote {
+      margin: 0;
+      font-style: italic; }
     #article .read .searchWK {
       background-color: yellow; }
   #article #fillblank {
