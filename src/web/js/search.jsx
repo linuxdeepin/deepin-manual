@@ -57,7 +57,17 @@ function Mismatch(props) {
 					{global.i18n["NoResult"].replace("%1", props.keyword)}
 				</div>
 				<div id="WikiSearch">{global.i18n["WikiSearch"]}</div>
-				<span id="button">百科搜索</span>
+				<span id="button">
+					<a
+						target="_blank"
+						href={
+							"https://wiki.deepin.org/index.php?title&search=" +
+							encodeURIComponent(props.keyword)
+						}
+					>
+						{global.i18n["SearchInWiki"]}
+					</a>
+				</span>
 			</div>
 		</div>
 	)

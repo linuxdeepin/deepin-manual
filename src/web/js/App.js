@@ -99,7 +99,7 @@ class App extends React.Component {
 	}
 	componentDidMount() {
 		global.index = () => {
-			this.context.router.history.push("/index")
+			this.context.router.history.push("/")
 		}
 		global.open = (file, hash = "") => {
 			file = encodeURIComponent(file)

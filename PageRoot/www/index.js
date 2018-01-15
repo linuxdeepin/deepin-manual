@@ -166,7 +166,7 @@ var App = function (_React$Component2) {
 			var _this3 = this;
 
 			global.index = function () {
-				_this3.context.router.history.push("/index");
+				_this3.context.router.history.push("/");
 			};
 			global.open = function (file) {
 				var hash = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
@@ -1061,7 +1061,14 @@ function Mismatch(props) {
 			_react2.default.createElement(
 				"span",
 				{ id: "button" },
-				"\u767E\u79D1\u641C\u7D22"
+				_react2.default.createElement(
+					"a",
+					{
+						target: "_blank",
+						href: "https://wiki.deepin.org/index.php?title&search=" + encodeURIComponent(props.keyword)
+					},
+					global.i18n["SearchInWiki"]
+				)
 			)
 		)
 	);

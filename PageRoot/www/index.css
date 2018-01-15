@@ -10,6 +10,9 @@ body {
   color: #464646;
   height: 100%;
   overflow: auto; }
+  #app a {
+    text-decoration: none;
+    color: #00162c; }
 
 @charset "UTF-8";
 .Triangle, #article .t_right_down::after, #article .t_right_up::after, #article .t_left_down::after, #article .t_left_up::after {
@@ -264,9 +267,6 @@ body {
       background-color: #d5edfe;
       color: #2ca7f8;
       font-weight: bold; }
-    #nav #hlist #backHome a {
-      text-decoration: none;
-      color: #00162c; }
 
 #search {
   width: 830px;
