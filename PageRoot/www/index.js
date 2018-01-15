@@ -992,6 +992,8 @@ var Items = function (_Component) {
 			var _this2 = this;
 
 			var resultList = [];
+			var re = new RegExp(this.props.keyword, "g");
+			var highlight = "<span class=\"highlight\">" + this.props.keyword + "</span>";
 
 			var _loop = function _loop(i) {
 				resultList.push(_react2.default.createElement(
@@ -1008,7 +1010,12 @@ var Items = function (_Component) {
 						{ className: "title" },
 						_this2.props.keys[i]
 					),
-					_this2.props.values[i]
+					_react2.default.createElement("div", {
+						className: "context",
+						dangerouslySetInnerHTML: {
+							__html: _this2.props.values[i].replace(re, "<span class='highlight'>$&</span>")
+						}
+					})
 				));
 			};
 
@@ -1086,6 +1093,8 @@ var SearchPage = function (_Component2) {
 	_createClass(SearchPage, [{
 		key: "render",
 		value: function render() {
+			var _this4 = this;
+
 			var c = null;
 			if (this.context.mismatch) {
 				c = _react2.default.createElement(Mismatch, { keyword: this.props.match.params.keyword });
@@ -1095,7 +1104,8 @@ var SearchPage = function (_Component2) {
 						key: result.file,
 						file: result.file,
 						keys: result.keys,
-						values: result.values
+						values: result.values,
+						keyword: _this4.props.match.params.keyword
 					});
 				});
 			}

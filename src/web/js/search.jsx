@@ -21,6 +21,7 @@ class Items extends Component {
 	}
 	render() {
 		let resultList = []
+		let re = new RegExp(this.props.keyword, "g")
 		for (let i = 0; i < this.props.keys.length; i++) {
 			resultList.push(
 				<div
@@ -29,7 +30,15 @@ class Items extends Component {
 					onClick={() => global.openFile(this.props.file, this.props.keys[i])}
 				>
 					<div className="title">{this.props.keys[i]}</div>
-					{this.props.values[i]}
+					<div
+						className="context"
+						dangerouslySetInnerHTML={{
+							__html: this.props.values[i].replace(
+								re,
+								"<span class='highlight'>$&</span>"
+							)
+						}}
+					/>
 				</div>
 			)
 		}
@@ -87,6 +96,7 @@ export default class SearchPage extends Component {
 					file={result.file}
 					keys={result.keys}
 					values={result.values}
+					keyword={this.props.match.params.keyword}
 				/>
 			))
 		}
