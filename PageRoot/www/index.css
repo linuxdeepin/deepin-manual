@@ -10,6 +10,8 @@ body {
   color: #464646;
   height: 100%;
   overflow: auto; }
+  #app::-webkit-scrollbar {
+    display: none; }
   #app a {
     text-decoration: none;
     color: #00162c; }
@@ -181,10 +183,7 @@ body {
   user-select: none;
   width: 830px;
   height: 100%;
-  overflow-y: auto;
   margin: auto; }
-  #index::-webkit-scrollbar {
-    display: none; }
   #index:after {
     content: "";
     display: block;

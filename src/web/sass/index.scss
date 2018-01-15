@@ -4,11 +4,7 @@
 	user-select: none;
 	width: 830px;
 	height: 100%;
-	overflow-y: auto;
 	margin: auto;
-	&::-webkit-scrollbar {
-		display: none;
-	}
 	&:after {
 		content: "";
 		display: block;

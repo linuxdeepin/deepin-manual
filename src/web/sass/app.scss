@@ -13,6 +13,9 @@ body {
 	color: #464646;
 	height: 100%;
 	overflow: auto;
+	&::-webkit-scrollbar {
+		display: none;
+	}
 	a {
 		text-decoration: none;
 		color: #00162c;
