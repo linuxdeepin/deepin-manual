@@ -1,5 +1,6 @@
 @charset "utf-8";
 #nav {
+	user-select: none;
 	float: left;
 	height: 100%;
 	max-width: 300px;
@@ -19,29 +20,29 @@
 		background-color: #414141;
 	}
 	#hlist {
+		overflow: hidden;
 		border-right: 1px solid rgba(0, 0, 0, 0.1);
-		h2 {
+		div {
+			margin: 10px 0;
 			cursor: pointer;
-			font-size: 16px;
-			font-weight: 500;
-			color: #00162c;
-			padding: 3px 0px;
-			margin: 0px;
-			margin-bottom: 9px;
-			text-indent: 34px;
-			padding-right: 10px;
-		}
-		h3 {
-			cursor: pointer;
-			font-weight: normal;
-			font-size: 12px;
-			color: #000000;
-			padding: 6px 0px;
-			margin: 0px;
-			margin-bottom: 9px;
-			text-indent: 44px;
-			padding-right: 10px;
 			border-right: 3px solid transparent;
+			&[type="h2"] {
+				font-size: 16px;
+				font-weight: 500;
+				color: #00162c;
+				padding: 3px 0px;
+				text-indent: 34px;
+				overflow-x: hidden;
+				text-overflow: ellipsis;
+			}
+			&[type="h3"] {
+				font-size: 12px;
+				color: #000000;
+				padding: 6px 0px;
+				text-indent: 44px;
+				overflow-x: hidden;
+				text-overflow: ellipsis;
+			}
 		}
 		.hash {
 			border-right: #30a5f9 3px solid;
@@ -49,7 +50,7 @@
 			color: #2ca7f8;
 			font-weight: bold;
 		}
-		#back {
+		#backHome {
 			a {
 				text-decoration: none;
 				color: #00162c;

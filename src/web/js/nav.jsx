@@ -28,19 +28,20 @@ class Nav extends Component {
 		return (
 			<div id="nav" lang={global.lang} onClick={e => this.click(e)}>
 				<div id="hlist">
-					<h2 id="back">
+					<div type="h2" id="backHome">
 						<Link to="/index">{global.i18n["ToIndexPage"]}</Link>
-					</h2>
+					</div>
 					{this.props.hlist.map(h => {
-						let NodeName = h.type
 						return (
-							<NodeName
+							<div
 								key={h.id}
 								cid={h.id}
+								type={h.type}
 								className={this.props.hash == h.id ? "hash" : undefined}
 							>
 								{h.text}
-							</NodeName>
+								<br />
+							</div>
 						)
 					})}
 				</div>

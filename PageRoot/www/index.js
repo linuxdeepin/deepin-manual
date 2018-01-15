@@ -898,8 +898,8 @@ var Nav = function (_Component) {
 					"div",
 					{ id: "hlist" },
 					_react2.default.createElement(
-						"h2",
-						{ id: "back" },
+						"div",
+						{ type: "h2", id: "backHome" },
 						_react2.default.createElement(
 							_reactRouterDom.Link,
 							{ to: "/index" },
@@ -907,15 +907,16 @@ var Nav = function (_Component) {
 						)
 					),
 					this.props.hlist.map(function (h) {
-						var NodeName = h.type;
 						return _react2.default.createElement(
-							NodeName,
+							"div",
 							{
 								key: h.id,
 								cid: h.id,
+								type: h.type,
 								className: _this2.props.hash == h.id ? "hash" : undefined
 							},
-							h.text
+							h.text,
+							_react2.default.createElement("br", null)
 						);
 					})
 				)
