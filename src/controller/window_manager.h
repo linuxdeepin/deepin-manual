@@ -19,6 +19,7 @@
 #define DEEPIN_MANUAL_CONTROLLER_WINDOW_MANAGER_H
 
 #include <QObject>
+#include <QPoint>
 #include <QVector>
 
 namespace dman {
@@ -41,8 +42,11 @@ class WindowManager : public QObject {
   bool parseArguments();
 
  private:
+  QPoint newWindowPosition();
+
   QVector<WebWindow*> windows_;
   SearchManager* search_manager_ = nullptr;
+  QPoint last_new_window_pos_;
 };
 
 }  // namespace dman
