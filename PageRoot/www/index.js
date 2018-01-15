@@ -531,7 +531,10 @@ var Item = function (_Component) {
 		value: function render() {
 			return this.state.show && _react2.default.createElement(
 				_reactRouterDom.Link,
-				{ to: "/open/" + encodeURIComponent(this.state.file) },
+				{
+					draggable: "false",
+					to: "/open/" + encodeURIComponent(this.state.file)
+				},
 				_react2.default.createElement(
 					"div",
 					{ className: "item" },

@@ -23,7 +23,10 @@ class Item extends Component {
 	render() {
 		return (
 			this.state.show && (
-				<Link to={"/open/" + encodeURIComponent(this.state.file)}>
+				<Link
+					draggable="false"
+					to={"/open/" + encodeURIComponent(this.state.file)}
+				>
 					<div className="item">
 						<img
 							draggable="false"
