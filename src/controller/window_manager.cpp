@@ -50,7 +50,7 @@ void WindowManager::openManual(const QString& app_name) {
   }
   WebWindow* window = new WebWindow(search_manager_);
   window->setAppName(app_name);
-  window->resize(998, 662);
+  window->resize(998, 712);
   window->show();
 
   // Move to center of screen. No need to reposition current window with
