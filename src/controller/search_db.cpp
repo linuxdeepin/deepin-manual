@@ -247,8 +247,9 @@ void SearchDb::handleSearchContent(const QString& keyword) {
         anchors.append(anchor);
         contents.append(content);
       } else {
-        result_empty = false;
         if (!last_app_name.isEmpty()) {
+          result_empty = false;
+          qDebug() << Q_FUNC_INFO << "emit searchContentResult()";
           emit this->searchContentResult(last_app_name, anchors, contents);
         }
 
