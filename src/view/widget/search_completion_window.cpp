@@ -19,9 +19,9 @@
 
 #include <QDebug>
 #include <QVBoxLayout>
-#include <QtWidgets/QGraphicsDropShadowEffect>
 
 #include "view/theme_manager.h"
+#include "view/widget/search_button.h"
 
 namespace dman {
 
@@ -130,6 +130,8 @@ void SearchCompletionWindow::initConnections() {
           this, &SearchCompletionWindow::onResultListEntered);
   connect(result_view_, &QListView::pressed,
           this, &SearchCompletionWindow::onResultListClicked);
+  connect(search_button_, &SearchButton::entered,
+          this, &SearchCompletionWindow::onSearchButtonEntered);
   connect(search_button_, &QPushButton::pressed,
           this, &SearchCompletionWindow::searchButtonClicked);
 }
@@ -149,7 +151,7 @@ void SearchCompletionWindow::initUI() {
   result_view_->setMinimumHeight(kItemHeight);
   result_view_->adjustSize();
 
-  search_button_ = new QPushButton();
+  search_button_ = new SearchButton();
   search_button_->setObjectName("SearchButton");
   search_button_->setCheckable(true);
   search_button_->setFixedHeight(25);
@@ -179,6 +181,11 @@ void SearchCompletionWindow::onResultListClicked(const QModelIndex& index) {
     // Simulate button click event.
     emit this->searchButtonClicked();
   }
+}
+
+void SearchCompletionWindow::onSearchButtonEntered() {
+  search_button_->setChecked(true);
+  result_view_->setCurrentIndex(QModelIndex());
 }
 
 void SearchCompletionWindow::onResultListEntered(const QModelIndex& index) {

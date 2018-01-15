@@ -132,6 +132,8 @@ set(VIEW_FILES
 
     view/widget/image_viewer.cpp
     view/widget/image_viewer.h
+    view/widget/search_button.cpp
+    view/widget/search_button.h
     view/widget/search_completion_window.cpp
     view/widget/search_completion_window.h
     view/widget/search_edit.cpp

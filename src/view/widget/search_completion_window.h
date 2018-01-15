@@ -27,6 +27,8 @@
 
 namespace dman {
 
+class SearchButton;
+
 class SearchCompletionWindow : public QFrame {
   Q_OBJECT
  public:
@@ -53,10 +55,11 @@ class SearchCompletionWindow : public QFrame {
 
   QListView* result_view_ = nullptr;
   QStringListModel* model_ = nullptr;
-  QPushButton* search_button_ = nullptr;
+  SearchButton* search_button_ = nullptr;
   SearchAnchorResultList result_;
 
  private slots:
+  void onSearchButtonEntered();
   void onResultListClicked(const QModelIndex& index);
   void onResultListEntered(const QModelIndex& index);
 };
