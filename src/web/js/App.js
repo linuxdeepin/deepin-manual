@@ -41,25 +41,7 @@ class Test extends React.Component {
 class App extends React.Component {
 	constructor(props, context) {
 		super(props, context)
-		global.index = () => {
-			this.context.router.history.push("/index")
-		}
-		global.open = (file, hash = "") => {
-			file = encodeURIComponent(file)
-			hash = encodeURIComponent(hash)
-			let url = `/open/${file}/${hash}`
-			console.log(url)
-			this.context.router.history.push(url)
-		}
-		global.openApp = global.open
-		global.openFile = global.open
-		global.openSearchPage = keyword => {
-			this.setState({ searchResult: [] })
-			this.context.router.history.push("/search/" + encodeURIComponent(keyword))
-		}
-		global.back = () => {
-			this.context.router.history.goBack()
-		}
+
 		new QWebChannel(qt.webChannelTransport, channel => {
 			channel.objects.i18n.getSentences(i18n => {
 				global.i18n = i18n
@@ -92,7 +74,6 @@ class App extends React.Component {
 				)
 			})
 		})
-		console.log("app init")
 		this.state = {
 			init: false,
 			searchResult: [],
@@ -111,10 +92,32 @@ class App extends React.Component {
 		return { searchResult, mismatch }
 	}
 	componentWillReceiveProps(nextProps) {
+		console.log(this.context)
 		if (this.context.router.history.action == "PUSH") {
-			console.log("增加")
 			this.setState({ historyGO: this.context.router.history.length - 1 })
 		}
+	}
+	componentDidMount() {
+		global.index = () => {
+			this.context.router.history.push("/index")
+		}
+		global.open = (file, hash = "") => {
+			file = encodeURIComponent(file)
+			hash = encodeURIComponent(hash)
+			let url = `/open/${file}/${hash}`
+			console.log(url)
+			this.context.router.history.push(url)
+		}
+		global.openApp = global.open
+		global.openFile = global.open
+		global.openSearchPage = keyword => {
+			this.setState({ searchResult: [] })
+			this.context.router.history.push("/search/" + encodeURIComponent(keyword))
+		}
+		global.back = () => {
+			this.context.router.history.goBack()
+		}
+		this.componentDidUpdate()
 	}
 	componentDidUpdate() {
 		if (global.qtObjects) {
@@ -122,7 +125,7 @@ class App extends React.Component {
 				this.context.router.history.length - this.state.historyGO > 1
 			)
 			global.qtObjects.titleBar.setBackwardButtonActive(
-				this.state.historyGO > 1
+				this.state.historyGO > 0
 			)
 		}
 	}
@@ -131,6 +134,7 @@ class App extends React.Component {
 			<div>
 				{this.state.init && (
 					<Switch>
+						<Route exact path="/" component={Index} />
 						<Route path="/index" component={Index} />
 						<Route path="/open/:file/:hash?" component={Main} />
 						<Route path="/search/:keyword" component={Search} />

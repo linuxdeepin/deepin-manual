@@ -94,27 +94,6 @@ var App = function (_React$Component2) {
 
 		var _this2 = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props, context));
 
-		global.index = function () {
-			_this2.context.router.history.push("/index");
-		};
-		global.open = function (file) {
-			var hash = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
-
-			file = encodeURIComponent(file);
-			hash = encodeURIComponent(hash);
-			var url = "/open/" + file + "/" + hash;
-			console.log(url);
-			_this2.context.router.history.push(url);
-		};
-		global.openApp = global.open;
-		global.openFile = global.open;
-		global.openSearchPage = function (keyword) {
-			_this2.setState({ searchResult: [] });
-			_this2.context.router.history.push("/search/" + encodeURIComponent(keyword));
-		};
-		global.back = function () {
-			_this2.context.router.history.goBack();
-		};
 		new QWebChannel(qt.webChannelTransport, function (channel) {
 			channel.objects.i18n.getSentences(function (i18n) {
 				global.i18n = i18n;
@@ -147,7 +126,6 @@ var App = function (_React$Component2) {
 				global.qtObjects.search.onContentResult.connect(_this2.onContentResult.bind(_this2));
 			});
 		});
-		console.log("app init");
 		_this2.state = {
 			init: false,
 			searchResult: [],
@@ -177,17 +155,45 @@ var App = function (_React$Component2) {
 	}, {
 		key: "componentWillReceiveProps",
 		value: function componentWillReceiveProps(nextProps) {
+			console.log(this.context);
 			if (this.context.router.history.action == "PUSH") {
-				console.log("增加");
 				this.setState({ historyGO: this.context.router.history.length - 1 });
 			}
+		}
+	}, {
+		key: "componentDidMount",
+		value: function componentDidMount() {
+			var _this3 = this;
+
+			global.index = function () {
+				_this3.context.router.history.push("/index");
+			};
+			global.open = function (file) {
+				var hash = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : "";
+
+				file = encodeURIComponent(file);
+				hash = encodeURIComponent(hash);
+				var url = "/open/" + file + "/" + hash;
+				console.log(url);
+				_this3.context.router.history.push(url);
+			};
+			global.openApp = global.open;
+			global.openFile = global.open;
+			global.openSearchPage = function (keyword) {
+				_this3.setState({ searchResult: [] });
+				_this3.context.router.history.push("/search/" + encodeURIComponent(keyword));
+			};
+			global.back = function () {
+				_this3.context.router.history.goBack();
+			};
+			this.componentDidUpdate();
 		}
 	}, {
 		key: "componentDidUpdate",
 		value: function componentDidUpdate() {
 			if (global.qtObjects) {
 				global.qtObjects.titleBar.setForwardButtonActive(this.context.router.history.length - this.state.historyGO > 1);
-				global.qtObjects.titleBar.setBackwardButtonActive(this.state.historyGO > 1);
+				global.qtObjects.titleBar.setBackwardButtonActive(this.state.historyGO > 0);
 			}
 		}
 	}, {
@@ -199,6 +205,7 @@ var App = function (_React$Component2) {
 				this.state.init && _react2.default.createElement(
 					_reactRouterDom.Switch,
 					null,
+					_react2.default.createElement(_reactRouterDom.Route, { exact: true, path: "/", component: _index2.default }),
 					_react2.default.createElement(_reactRouterDom.Route, { path: "/index", component: _index2.default }),
 					_react2.default.createElement(_reactRouterDom.Route, { path: "/open/:file/:hash?", component: _main2.default }),
 					_react2.default.createElement(_reactRouterDom.Route, { path: "/search/:keyword", component: _search2.default })
