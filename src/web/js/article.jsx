@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 import ReactDOM from "react-dom"
-import { Scrollbars } from "react-custom-scrollbars"
 
 import m2h from "./mdToHtml"
 
@@ -11,20 +10,22 @@ export default class Article extends Component {
 			preview: null,
 			contentMenuStyle: null
 		}
+		document.body.onscroll = this.scroll.bind(this)
 	}
 	componentDidUpdate() {
 		if (this.hash != this.props.hash) {
 			this.hash = this.props.hash
 			let hashDOM = document.getElementById(this.hash)
 			if (hashDOM) {
-				ReactDOM.findDOMNode(
-					this
-				).scrollTop += hashDOM.getBoundingClientRect().top
+				document.body.scrollTop += hashDOM.getBoundingClientRect().top
 			}
 		}
 	}
 	componentDidMount() {
 		this.componentDidUpdate()
+	}
+	componentWillUnmount() {
+		document.body.onscroll = null
 	}
 	scroll() {
 		if (this.state.preview != null || this.state.contentMenuStyle != null) {
@@ -143,7 +144,6 @@ export default class Article extends Component {
 				id="article"
 				onContextMenu={e => this.contextMenu(e)}
 				onClick={this.click.bind(this)}
-				onScroll={this.scroll.bind(this)}
 			>
 				<div
 					className="read"

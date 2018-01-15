@@ -3,6 +3,11 @@ import ReactDOM from "react-dom"
 import { Link } from "react-router-dom"
 
 class Nav extends Component {
+	componentDidMount() {
+		document.getElementById("article").style.marginLeft = ReactDOM.findDOMNode(
+			this
+		).clientWidth
+	}
 	componentDidUpdate() {
 		let nav = ReactDOM.findDOMNode(this)
 		let hashDOM = nav.querySelector(".hash")

@@ -1,6 +1,5 @@
 import React, { Component } from "react"
 import PropTypes from "prop-types"
-import { Scrollbars } from "react-custom-scrollbars"
 
 class Items extends Component {
 	constructor(props) {
@@ -100,11 +99,7 @@ export default class SearchPage extends Component {
 				/>
 			))
 		}
-		return (
-			<Scrollbars>
-				<div id="search">{c}</div>
-			</Scrollbars>
-		)
+		return <div id="search">{c}</div>
 	}
 }
 
