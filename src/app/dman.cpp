@@ -30,14 +30,14 @@ int main(int argc, char** argv) {
 
   // Do not use sandbox.
   settings.setNoSandbox(true);
-#ifndef N_DEBUG
+//#ifndef N_DEBUG
   // Open http://localhost:9222 in chromium browser to see dev tools.
   settings.setRemoteDebug(true);
   settings.setLogSeverity(QCefGlobalSettings::LogSeverity::Info);
-#else
-  settings.setRemoteDebug(false);
-  settings.setLogSeverity(QCefGlobalSettings::LogSeverity::Error);
-#endif
+//#else
+//  settings.setRemoteDebug(false);
+//  settings.setLogSeverity(QCefGlobalSettings::LogSeverity::Error);
+//#endif
 
   // Disable GPU process.
   settings.addCommandLineSwitch("--disable-gpu", "");
