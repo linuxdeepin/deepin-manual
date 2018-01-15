@@ -107,8 +107,12 @@ void SearchCompletionWindow::onEnterPressed() {
 }
 
 void SearchCompletionWindow::setKeyword(const QString& keyword) {
+  QFontMetrics metrics = search_button_->fontMetrics();
   search_button_->setText(
-      QObject::tr("Search \"%1\" in the full text").arg(keyword));
+      metrics.elidedText(
+          QObject::tr("Search \"%1\" in the full text").arg(keyword),
+          Qt::ElideRight,
+          search_button_->width() - 14));
   model_->setStringList(QStringList());
 }
 
