@@ -72,6 +72,8 @@ int main(int argc, char** argv) {
       "Deepin Manual is designed to help users learn deepin and "
           "Deepin applications, providing specific instructions and "
           "function descriptions."));
+  app.setApplicationAcknowledgementPage(
+      "https://www.deepin.org/acknowledgments/deepin-manual/");
   app.loadTranslator();
   app.setWindowIcon(QIcon(dman::kImageDeepinManual));
   app.setProductIcon(QIcon(dman::kImageDeepinManual));
