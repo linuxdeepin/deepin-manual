@@ -172,6 +172,9 @@ void WebWindow::onSearchTextChanged(const QString& text) {
 
 void WebWindow::onSearchTextChangedDelay() {
   const QString text = title_bar_->getSearchText();
+  if (text.size() <= 1) {
+    return;
+  }
   // Do real search.
   completion_window_->setKeyword(text);
   completion_window_->autoResize();
