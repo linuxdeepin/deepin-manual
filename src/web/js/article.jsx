@@ -11,13 +11,28 @@ export default class Article extends Component {
 			contentMenuStyle: null
 		}
 		document.body.onscroll = this.scroll.bind(this)
+		this.interval = setInterval(this.checkHight.bind(this), 100)
+		console.log(this.interval)
+	}
+	setScrollTop(top) {
+		console.log("setTop")
+		this.ignoreScrollEvents = true
+		document.body.scrollTop = top
+	}
+	checkHight() {
+		let doc = document.getElementById("article")
+		if (doc && doc.offsetHeight != this.height) {
+			console.log(this.hash)
+			this.height = doc.offsetHeight
+			this.setScrollTop(document.getElementById(this.hash).offsetTop)
+		}
 	}
 	componentDidUpdate() {
 		if (this.hash != this.props.hash) {
 			this.hash = this.props.hash
 			let hashDOM = document.getElementById(this.hash)
 			if (hashDOM) {
-				document.body.scrollTop += hashDOM.getBoundingClientRect().top
+				this.setScrollTop(hashDOM.offsetTop)
 			}
 		}
 	}
@@ -26,8 +41,23 @@ export default class Article extends Component {
 	}
 	componentWillUnmount() {
 		document.body.onscroll = null
+		clearInterval(this.interval)
+	}
+	componentWillReceiveProps(nextProps) {
+		if (nextProps.file != this.props.file) {
+			this.hash = ""
+		}
 	}
 	scroll() {
+		if (this.ignoreScrollEvents == true) {
+			if (
+				document.body.scrollTop == document.getElementById(this.hash).offsetTop
+			) {
+				this.ignoreScrollEvents = false
+			}
+
+			return
+		}
 		if (this.state.preview != null || this.state.contentMenuStyle != null) {
 			this.setState({ preview: null, contentMenuStyle: null })
 		}

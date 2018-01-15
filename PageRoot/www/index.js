@@ -277,17 +277,36 @@ var Article = function (_Component) {
 			contentMenuStyle: null
 		};
 		document.body.onscroll = _this.scroll.bind(_this);
+		_this.interval = setInterval(_this.checkHight.bind(_this), 100);
+		console.log(_this.interval);
 		return _this;
 	}
 
 	_createClass(Article, [{
+		key: "setScrollTop",
+		value: function setScrollTop(top) {
+			console.log("setTop");
+			this.ignoreScrollEvents = true;
+			document.body.scrollTop = top;
+		}
+	}, {
+		key: "checkHight",
+		value: function checkHight() {
+			var doc = document.getElementById("article");
+			if (doc && doc.offsetHeight != this.height) {
+				console.log(this.hash);
+				this.height = doc.offsetHeight;
+				this.setScrollTop(document.getElementById(this.hash).offsetTop);
+			}
+		}
+	}, {
 		key: "componentDidUpdate",
 		value: function componentDidUpdate() {
 			if (this.hash != this.props.hash) {
 				this.hash = this.props.hash;
 				var hashDOM = document.getElementById(this.hash);
 				if (hashDOM) {
-					document.body.scrollTop += hashDOM.getBoundingClientRect().top;
+					this.setScrollTop(hashDOM.offsetTop);
 				}
 			}
 		}
@@ -300,10 +319,25 @@ var Article = function (_Component) {
 		key: "componentWillUnmount",
 		value: function componentWillUnmount() {
 			document.body.onscroll = null;
+			clearInterval(this.interval);
+		}
+	}, {
+		key: "componentWillReceiveProps",
+		value: function componentWillReceiveProps(nextProps) {
+			if (nextProps.file != this.props.file) {
+				this.hash = "";
+			}
 		}
 	}, {
 		key: "scroll",
 		value: function scroll() {
+			if (this.ignoreScrollEvents == true) {
+				if (document.body.scrollTop == document.getElementById(this.hash).offsetTop) {
+					this.ignoreScrollEvents = false;
+				}
+
+				return;
+			}
 			if (this.state.preview != null || this.state.contentMenuStyle != null) {
 				this.setState({ preview: null, contentMenuStyle: null });
 			}
@@ -751,6 +785,7 @@ var Main = function (_Component) {
 						setHash: this.setHash.bind(this)
 					}),
 					_react2.default.createElement(_article2.default, {
+						file: this.props.match.params.file,
 						html: this.state.html,
 						hash: this.state.hash,
 						setHash: this.setHash.bind(this)
