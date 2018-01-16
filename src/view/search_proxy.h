@@ -44,6 +44,7 @@ class SearchProxy : public QObject {
   void mismatch(const QString& keyword);
   void onContentResult(const QString& app_name,
                        const QStringList& anchors,
+                       const QStringList& anchorIdList,
                        const QStringList& contents);
 
  public slots:
@@ -52,6 +53,7 @@ class SearchProxy : public QObject {
   void addSearchEntry(const QString& app_name,
                       const QString& lang,
                       const QStringList& anchors,
+                      const QStringList& anchorIdList,
                       const QStringList& contents);
 
  private:

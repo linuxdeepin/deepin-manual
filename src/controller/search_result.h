@@ -26,13 +26,14 @@ namespace dman {
 struct SearchAnchorResult {
   QString app_name;
   QString anchor;
+  QString anchorId;
 };
 typedef QList<SearchAnchorResult> SearchAnchorResultList;
 
 struct SearchContentResult {
   QString app_name;
   QString anchor;
-  QList<QPair<int, int>> offsets;
+  QString anchorId;
 };
 
 typedef QList<SearchContentResult> SearchContentResultList;

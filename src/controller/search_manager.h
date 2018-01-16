@@ -41,6 +41,7 @@ class SearchManager : public QObject {
   void addSearchEntry(const QString& app_name,
                       const QString& lang,
                       const QStringList& anchors,
+                      const QStringList& anchorIdList,
                       const QStringList& contents);
   void searchAnchor(const QString& keyword);
   void searchAnchorResult(const QString& keyword,
@@ -49,6 +50,7 @@ class SearchManager : public QObject {
   void searchContent(const QString& keyword);
   void searchContentResult(const QString& app_name,
                            const QStringList& anchors,
+                           const QStringList& anchorIdList,
                            const QStringList& contents);
   void searchContentMismatch(const QString& keyword);
 

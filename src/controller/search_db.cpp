@@ -35,6 +35,7 @@ const char kTableSchema[] = "CREATE TABLE IF NOT EXISTS search "
     "appName TEXT,"
     "lang TEXT,"
     "anchor TEXT,"
+    "anchorId TEXT,"
     "content TEXT,"
     "words TEXT)";
 
@@ -43,14 +44,15 @@ const char kIndexSchema[] = "CREATE INDEX IF NOT EXISTS search_idx "
 
 const char kDeleteEntryByApp[] = "DELETE FROM search WHERE appName = ?";
 const char kInsertEntry[] = "INSERT INTO search "
-    "(appName, lang, anchor, content, words) "
-    "VALUES (?, ?, ?, ?, ?)";
+    "(appName, lang, anchor, anchorId, content, words) "
+    "VALUES (?, ?, ?, ?, ?, ?)";
 
 const char kSelectAll[] = "SELECT * FROM search";
-const char kSelectAnchor[] = "SELECT appName, anchor FROM search "
+const char kSelectAnchor[] = "SELECT appName, anchor, anchorId FROM search "
     "WHERE lang = ':lang' AND "
     "anchor LIKE '%:anchor%' --case insensitive";
-const char kSelectContent[] = "SELECT appName, anchor, content FROM search "
+const char kSelectContent[] = "SELECT appName, anchor, anchorId, content "
+    "FROM search "
     "WHERE lang = ':lang' AND "
     "content LIKE '%:content%' --case insensitive";
 
@@ -147,12 +149,14 @@ void SearchDb::handleInitDb() {
 void SearchDb::handleAddSearchEntry(const QString& app_name,
                                     const QString& lang,
                                     const QStringList& anchors,
+                                    const QStringList& anchorIdList,
                                     const QStringList& contents) {
   Q_ASSERT(p_->db.isOpen());
   Q_ASSERT(anchors.length() == contents.length());
   qDebug() << Q_FUNC_INFO << app_name;
 
-  if (anchors.length() != contents.length()) {
+  if (anchors.length() != contents.length() ||
+      anchors.length() != anchorIdList.length()) {
     qCritical() << "anchor list and contents mismatch:"
                 << anchors.length() << contents.length();
     return;
@@ -170,20 +174,23 @@ void SearchDb::handleAddSearchEntry(const QString& app_name,
   query.prepare(kInsertEntry);
   bool ok = true;
   for (int i = 0; ok && (i < anchors.length()); ++i) {
-    const std::string content_std(contents.at(i).toLower().toStdString());
-    std::vector<std::string> word_list;
-    p_->jieba->CutForSearch(content_std, word_list);
-    const std::string words_std = limonp::Join(word_list.begin(),
-                                               word_list.end(),
-                                               "/");
-    const QString words = QString::fromStdString(words_std);
+    // NOTE(Shaohua): Disable jieba
+//    const std::string content_std(contents.at(i).toLower().toStdString());
+//    std::vector<std::string> word_list;
+//    p_->jieba->CutForSearch(content_std, word_list);
+//    const std::string words_std = limonp::Join(word_list.begin(),
+//                                               word_list.end(),
+//                                               "/");
+//    const QString words = QString::fromStdString(words_std);
+    const QString words;
 
     // Save to database.
     query.bindValue(0, app_name);
     query.bindValue(1, lang);
     query.bindValue(2, anchors.at(i));
-    query.bindValue(3, contents.at(i));
-    query.bindValue(4, words);
+    query.bindValue(3, anchorIdList.at(i));
+    query.bindValue(4, contents.at(i));
+    query.bindValue(5, words);
     ok = query.exec();
   }
 
@@ -211,7 +218,8 @@ void SearchDb::handleSearchAnchor(const QString& keyword) {
     while (query.next() && (result.size() < kResultLimitation)) {
       result.append(SearchAnchorResult{
           query.value(0).toString(),
-          query.value(1).toString()
+          query.value(1).toString(),
+          query.value(2).toString(),
       });
     }
   } else {
@@ -238,25 +246,31 @@ void SearchDb::handleSearchContent(const QString& keyword) {
   if (query.exec(sql)) {
     QString last_app_name;
     QStringList anchors;
+    QStringList anchorIds;
     QStringList contents;
     while (query.next()) {
       const QString app_name = query.value(0).toString();
       const QString anchor = query.value(1).toString();
-      const QString content = query.value(2).toString();
+      const QString anchorId = query.value(2).toString();
+      const QString content = query.value(3).toString();
       if (app_name == last_app_name) {
         anchors.append(anchor);
+        anchorIds.append(anchorId);
         contents.append(content);
       } else {
         if (!last_app_name.isEmpty()) {
           result_empty = false;
           qDebug() << Q_FUNC_INFO << "emit searchContentResult()";
-          emit this->searchContentResult(last_app_name, anchors, contents);
+          emit this->searchContentResult(last_app_name, anchors,
+                                         anchorIds, contents);
         }
 
         anchors.clear();
+        anchorIds.clear();
         contents.clear();
         last_app_name = app_name;
         anchors.append(anchor);
+        anchorIds.append(anchorId);
         contents.append(content);
       }
     }

@@ -155,10 +155,12 @@ void WebWindow::onSearchButtonClicked() {
       QString("openSearchPage('%1')").arg(keyword));
 }
 
-void WebWindow::onSearchResultClicked(const QString& app_name,
-                                      const QString& anchor) {
+void WebWindow::onSearchResultClicked(const SearchAnchorResult& result) {
   web_view_->page()->runJavaScript(
-      QString("openFile('%1', '%2')").arg(app_name).arg(anchor));
+      QString("open('%1', '%2', '%3')")
+          .arg(result.app_name)
+          .arg(result.anchorId)
+          .arg(result.anchor));
 }
 
 void WebWindow::onSearchTextChanged(const QString& text) {
@@ -208,11 +210,11 @@ void WebWindow::onWebPageLoadFinished(bool ok) {
         QFileInfo info(real_path);
         real_path = info.canonicalFilePath();
         web_view_->page()->runJavaScript(
-            QString("openFile(\"%1\")").arg(real_path));
+            QString("open('%1')").arg(real_path));
       } else {
         // Open system manual.
         web_view_->page()->runJavaScript(
-            QString("openApp(\"%1\")").arg(app_name_));
+            QString("open('%1')").arg(app_name_));
       }
     }
   }

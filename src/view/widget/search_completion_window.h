@@ -38,7 +38,7 @@ class SearchCompletionWindow : public QFrame {
   void autoResize();
 
  signals:
-  void resultClicked(const QString& app_name, const QString& anchor);
+  void resultClicked(const SearchAnchorResult& result);
   void searchButtonClicked();
 
  public slots:

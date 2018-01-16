@@ -37,6 +37,7 @@ class SearchDb : public QObject {
   void addSearchEntry(const QString& app_name,
                       const QString& lang,
                       const QStringList& anchors,
+                      const QStringList& anchorIdList,
                       const QStringList& contents);
 
   // Only search in anchor.
@@ -47,6 +48,7 @@ class SearchDb : public QObject {
   void searchContent(const QString& keyword);
   void searchContentResult(const QString& app_name,
                            const QStringList& anchors,
+                           const QStringList& anchorIdList,
                            const QStringList& contents);
   void searchContentMismatch(const QString& keyword);
 
@@ -60,6 +62,7 @@ class SearchDb : public QObject {
   void handleAddSearchEntry(const QString& app_name,
                             const QString& lang,
                             const QStringList& anchors,
+                            const QStringList& anchorIdList,
                             const QStringList& contents);
   void handleSearchAnchor(const QString& keyword);
   void handleSearchContent(const QString& keyword);
