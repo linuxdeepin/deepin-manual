@@ -1221,22 +1221,31 @@ exports.default = function (file, data, html) {
 	}
 	var div = document.createElement("div");
 	div.innerHTML = html;
-	var searchIndex = {};
+	var searchIndex = [];
 	var key = "";
-	var texts = [];
 	for (var i = 0; i < div.children.length; i++) {
 		var el = div.children.item(i);
 		if (el.nodeName.match(/^H\d$/) != null) {
 			key = el.id;
-			texts.push(el.innerText);
-			searchIndex[key] = "";
+			searchIndex.push({
+				id: key,
+				title: el.innerText,
+				content: ""
+			});
 			continue;
 		}
-		searchIndex[key] += el.innerText;
-		searchIndex[key] += "\n";
+		if (key == "") {
+			continue;
+		}
+		searchIndex[searchIndex.length - 1].content += el.innerText;
 	}
-
-	global.qtObjects.search.addSearchEntry(file, global.lang, texts, Object.keys(searchIndex), Object.values(searchIndex));
+	global.qtObjects.search.addSearchEntry(file, global.lang, searchIndex.map(function (s) {
+		return s.title;
+	}), searchIndex.map(function (s) {
+		return s.id;
+	}), searchIndex.map(function (s) {
+		return s.content;
+	}));
 };
 
 var _md = require("md5");

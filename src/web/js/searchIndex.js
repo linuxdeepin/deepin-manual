@@ -20,26 +20,29 @@ export default function(file, data, html) {
 	}
 	let div = document.createElement("div")
 	div.innerHTML = html
-	let searchIndex = {}
+	let searchIndex = []
 	let key = ""
-	let texts = []
 	for (let i = 0; i < div.children.length; i++) {
 		let el = div.children.item(i)
 		if (el.nodeName.match(/^H\d$/) != null) {
 			key = el.id
-			texts.push(el.innerText)
-			searchIndex[key] = ""
+			searchIndex.push({
+				id: key,
+				title: el.innerText,
+				content: ""
+			})
 			continue
 		}
-		searchIndex[key] += el.innerText
-		searchIndex[key] += "\n"
+		if (key == "") {
+			continue
+		}
+		searchIndex[searchIndex.length - 1].content += el.innerText
 	}
-
 	global.qtObjects.search.addSearchEntry(
 		file,
 		global.lang,
-		texts,
-		Object.keys(searchIndex),
-		Object.values(searchIndex)
+		searchIndex.map(s => s.title),
+		searchIndex.map(s => s.id),
+		searchIndex.map(s => s.content)
 	)
 }

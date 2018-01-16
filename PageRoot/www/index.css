@@ -1,6 +1,5 @@
 body {
   width: 100%;
-  min-width: 1024px;
   margin: 0px;
   overflow-x: hidden;
   overflow-y: auto; }
@@ -186,8 +185,7 @@ body {
 
 #index {
   user-select: none;
-  width: 830px;
-  margin: auto; }
+  margin: 0 16%; }
   #index:after {
     content: "";
     display: block;
@@ -200,9 +198,7 @@ body {
     margin: 1em 0 0;
     border-bottom: 1px solid #d7d7d7; }
   #index .items a {
-    margin-right: 60px; }
-    #index .items a:nth-child(4n + 1) {
-      margin-right: 0; }
+    margin-left: 6%; }
     #index .items a .item {
       margin-top: 30px;
       width: 160px;
