@@ -46,6 +46,7 @@ export default class Main extends Component {
 						/>
 						<Article
 							file={this.props.match.params.file}
+							hlist={this.state.hlist}
 							html={this.state.html}
 							hash={this.state.hash}
 							setHash={this.setHash.bind(this)}

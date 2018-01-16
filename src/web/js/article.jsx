@@ -48,6 +48,16 @@ export default class Article extends Component {
 			this.load = false
 		}
 	}
+	gethID(htext) {
+		let id = this.props.hlist[0].id
+		console.log(this.props.hlist[0])
+		let hlist = this.props.hlist.filter(h => h.text == htext)
+		if (hlist.length > 0) {
+			id = hlist[0].id
+		}
+		console.log(htext, id)
+		return id
+	}
 	//滚动事件
 	scroll() {
 		if (!this.load) {
@@ -77,7 +87,7 @@ export default class Article extends Component {
 			let { html } = m2h(file, data)
 			let d = document.createElement("div")
 			d.innerHTML = html
-			let hashDom = d.querySelector("#" + hash)
+			let hashDom = d.querySelector(`[text="${hash}"]`)
 			let DomList = [hashDom]
 			let nextDom = hashDom.nextElementSibling
 			while (nextDom) {
@@ -129,7 +139,9 @@ export default class Article extends Component {
 				switch (0) {
 					case href.indexOf(hashProtocol):
 						e.preventDefault()
-						this.props.setHash(href.slice(1))
+						this.props.setHash(
+							document.querySelector(`[text="${href.slice(1)}"]`).id
+						)
 						return
 					case href.indexOf(dmanProtocol):
 						e.preventDefault()
@@ -169,8 +181,6 @@ export default class Article extends Component {
 				id="article"
 				onContextMenu={e => this.contextMenu(e)}
 				onClick={this.click.bind(this)}
-				// onMouseOver={() => (document.body.style.overflowY = "auto")}
-				// onMouseOut={() => (document.body.style.overflow = "hidden")}
 			>
 				<div
 					className="read"

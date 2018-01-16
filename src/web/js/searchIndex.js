@@ -1,7 +1,7 @@
-import md5 from 'md5'
-import m2h from './mdToHtml'
+import md5 from "md5"
+import m2h from "./mdToHtml"
 
-export default function (file, data, html) {
+export default function(file, data, html) {
 	if (data != null) {
 		const hash = md5(data)
 		if (localStorage[file + "_data_hash"] == hash) {
@@ -22,14 +22,25 @@ export default function (file, data, html) {
 	div.innerHTML = html
 	let searchIndex = {}
 	let key = ""
+	let texts = []
 	for (let i = 0; i < div.children.length; i++) {
 		let el = div.children.item(i)
 		if (el.nodeName.match(/^H\d$/) != null) {
 			key = el.id
+			texts.push(el.innerText)
 			searchIndex[key] = ""
+			continue
 		}
 		searchIndex[key] += el.innerText
 		searchIndex[key] += "\n"
 	}
-	global.qtObjects.search.addSearchEntry(file, global.lang, Object.keys(searchIndex), Object.values(searchIndex))
+	console.log(Object.keys(searchIndex), texts, Object.values(searchIndex))
+
+	global.qtObjects.search.addSearchEntry(
+		file,
+		global.lang,
+		Object.keys(searchIndex),
+		texts,
+		Object.values(searchIndex)
+	)
 }

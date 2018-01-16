@@ -165,7 +165,7 @@ body {
   #article #contextMenu {
     user-select: none;
     font-size: 12px;
-    position: absolute;
+    position: fixed;
     top: 0;
     left: 0;
     width: 60px;

@@ -331,6 +331,20 @@ var Article = function (_Component) {
 				this.load = false;
 			}
 		}
+	}, {
+		key: "gethID",
+		value: function gethID(htext) {
+			var id = this.props.hlist[0].id;
+			console.log(this.props.hlist[0]);
+			var hlist = this.props.hlist.filter(function (h) {
+				return h.text == htext;
+			});
+			if (hlist.length > 0) {
+				id = hlist[0].id;
+			}
+			console.log(htext, id);
+			return id;
+		}
 		//滚动事件
 
 	}, {
@@ -370,7 +384,7 @@ var Article = function (_Component) {
 
 				var d = document.createElement("div");
 				d.innerHTML = html;
-				var hashDom = d.querySelector("#" + hash);
+				var hashDom = d.querySelector("[text=\"" + hash + "\"]");
 				var DomList = [hashDom];
 				var nextDom = hashDom.nextElementSibling;
 				while (nextDom) {
@@ -429,7 +443,7 @@ var Article = function (_Component) {
 					switch (0) {
 						case href.indexOf(hashProtocol):
 							e.preventDefault();
-							this.props.setHash(href.slice(1));
+							this.props.setHash(document.querySelector("[text=\"" + href.slice(1) + "\"]").id);
 							return;
 						case href.indexOf(dmanProtocol):
 							e.preventDefault();
@@ -482,8 +496,6 @@ var Article = function (_Component) {
 						return _this4.contextMenu(e);
 					},
 					onClick: this.click.bind(this)
-					// onMouseOver={() => (document.body.style.overflowY = "auto")}
-					// onMouseOut={() => (document.body.style.overflow = "hidden")}
 				},
 				_react2.default.createElement("div", {
 					className: "read",
@@ -796,6 +808,7 @@ var Main = function (_Component) {
 					}),
 					_react2.default.createElement(_article2.default, {
 						file: this.props.match.params.file,
+						hlist: this.state.hlist,
 						html: this.state.html,
 						hash: this.state.hash,
 						setHash: this.setHash.bind(this)
@@ -827,7 +840,7 @@ exports.default = function (mdFile, mdData) {
 
 	var path = mdFile.slice(0, mdFile.lastIndexOf("/") + 1);
 	var renderer = new _marked2.default.Renderer();
-	var count = {};
+	var count = 0;
 	renderer.heading = function (text, level) {
 		if (level == 1) {
 			var _text$split = text.split("|"),
@@ -838,24 +851,18 @@ exports.default = function (mdFile, mdData) {
 			logo = path + logo;
 			console.log(logo);
 			info = { title: title, logo: logo };
-			return '';
+			return "";
 		}
 		if (level == 2) {
 			text = text.split("|")[0];
 		}
-		var id = void 0;
-		if (count[text] == null) {
-			id = text;
-			count[text] = 1;
-		} else {
-			id = text + "-" + count[text];
-			count[text]++;
-		}
-		var type = 'h' + level;
+		var id = "h" + count;
+		count++;
+		var type = "h" + level;
 		if (level == 2 || level == 3) {
 			hlist.push({ id: id, text: text, type: type });
 		}
-		return "<" + type + " id=\"" + id + "\">" + text + "</" + type + ">\n";
+		return "<" + type + " id=\"" + id + "\" text=\"" + text + "\">" + text + "</" + type + ">\n";
 	};
 	html = (0, _marked2.default)(mdData, { renderer: renderer }).replace(/src="/g, "$&" + path);
 	return { html: html, hlist: hlist, info: info };
@@ -1189,7 +1196,7 @@ SearchPage.contextTypes = {
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"prop-types":46,"react":78}],8:[function(require,module,exports){
 (function (global){
-'use strict';
+"use strict";
 
 Object.defineProperty(exports, "__esModule", {
 	value: true
@@ -1216,23 +1223,28 @@ exports.default = function (file, data, html) {
 	div.innerHTML = html;
 	var searchIndex = {};
 	var key = "";
+	var texts = [];
 	for (var i = 0; i < div.children.length; i++) {
 		var el = div.children.item(i);
 		if (el.nodeName.match(/^H\d$/) != null) {
 			key = el.id;
+			texts.push(el.innerText);
 			searchIndex[key] = "";
+			continue;
 		}
 		searchIndex[key] += el.innerText;
 		searchIndex[key] += "\n";
 	}
-	global.qtObjects.search.addSearchEntry(file, global.lang, Object.keys(searchIndex), Object.values(searchIndex));
+	console.log(Object.keys(searchIndex), texts, Object.values(searchIndex));
+
+	global.qtObjects.search.addSearchEntry(file, global.lang, Object.keys(searchIndex), texts, Object.values(searchIndex));
 };
 
-var _md = require('md5');
+var _md = require("md5");
 
 var _md2 = _interopRequireDefault(_md);
 
-var _mdToHtml = require('./mdToHtml');
+var _mdToHtml = require("./mdToHtml");
 
 var _mdToHtml2 = _interopRequireDefault(_mdToHtml);
 
