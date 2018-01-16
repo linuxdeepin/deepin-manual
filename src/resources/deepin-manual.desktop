@@ -1,10 +1,30 @@
 [Desktop Entry]
-Name=Deepin Manual
-Keywords=documentation;information;manual;help;
+Categories=Documentation;Utility;
 Exec=dman %u
 Icon=deepin-manual
+Keywords=documentation;information;manual;help;
+MimeType=x-scheme-handler/dman;
+Name=Deepin Manual
 StartupNotify=true
 Terminal=false
 Type=Application
-Categories=Documentation;Utility;
-MimeType=x-scheme-handler/dman;
+
+# Translations:
+# Do not manually modify!
+Name[am_ET]=የ ዲፕኢን መምርሪያ
+Name[ar]=دليل ديبين
+Name[ast]=Deepin Manual
+Name[ca]=Manual del Deepin
+Name[da]=Deepin manual
+Name[de]=Deepin Benutzerhandbuch
+Name[es]=Manual Deepin
+Name[fr]=Manuel Deepin
+Name[it]=Deepin Manual
+Name[pt]=Manual Deepin
+Name[pt_BR]=Manual Deepin
+Name[ru]=Руководство Пользователя Deepin
+Name[sk]=Deepin Manuál
+Name[sl]=Priročnik Deepin
+Name[tr]=Deepin Klavuz
+Name[uk]=Підручник Deepin
+

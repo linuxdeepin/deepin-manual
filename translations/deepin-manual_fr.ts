@@ -24,7 +24,7 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="34"/>
         <source>Sorry, there are no search results of &quot;%1&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Désolé, nous n&apos;avons pas trouvé de résultats pour &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="35"/>
