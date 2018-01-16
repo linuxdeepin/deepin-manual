@@ -1235,9 +1235,8 @@ exports.default = function (file, data, html) {
 		searchIndex[key] += el.innerText;
 		searchIndex[key] += "\n";
 	}
-	console.log(Object.keys(searchIndex), texts, Object.values(searchIndex));
 
-	global.qtObjects.search.addSearchEntry(file, global.lang, Object.keys(searchIndex), texts, Object.values(searchIndex));
+	global.qtObjects.search.addSearchEntry(file, global.lang, texts, Object.keys(searchIndex), Object.values(searchIndex));
 };
 
 var _md = require("md5");

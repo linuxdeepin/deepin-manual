@@ -2,8 +2,7 @@
 
 #index {
 	user-select: none;
-	width: 830px;
-	margin: auto;
+	margin: 0 16%;
 	&:after {
 		content: "";
 		display: block;
@@ -19,10 +18,7 @@
 	}
 	.items {
 		a {
-			margin-right: 60px;
-			&:nth-child(4n + 1) {
-				margin-right: 0;
-			}
+			margin-left: 6%;
 			.item {
 				margin-top: 30px;
 				width: 160px;
