@@ -80,7 +80,7 @@ void WebWindow::initConnections() {
   connect(title_bar_, &TitleBar::downKeyPressed,
           completion_window_, &SearchCompletionWindow::goDown);
   connect(title_bar_, &TitleBar::enterPressed,
-          completion_window_, &SearchCompletionWindow::onEnterPressed);
+          this, &WebWindow::onTitleBarEntered);
   connect(title_bar_, &TitleBar::upKeyPressed,
           completion_window_, &SearchCompletionWindow::goUp);
   connect(title_bar_, &TitleBar::focusOut,
@@ -188,6 +188,13 @@ void WebWindow::onSearchTextChangedDelay() {
 //  completion_window_->setFocusPolicy(Qt::StrongFocus);
 
   search_manager_->searchAnchor(text);
+}
+
+void WebWindow::onTitleBarEntered() {
+  const QString text = title_bar_->getSearchText();
+  if (text.size() > 1) {
+    completion_window_->onEnterPressed();
+  }
 }
 
 void WebWindow::onWebPageLoadFinished(bool ok) {

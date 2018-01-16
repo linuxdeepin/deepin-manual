@@ -84,6 +84,7 @@ class WebWindow : public Dtk::Widget::DMainWindow {
                             const SearchAnchorResultList& result);
   void onSearchTextChanged(const QString& text);
   void onSearchTextChangedDelay();
+  void onTitleBarEntered();
   void onWebPageLoadFinished(bool ok);
 };
 
