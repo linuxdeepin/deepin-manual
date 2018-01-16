@@ -91,24 +91,21 @@ export default class Article extends Component {
 			DomList.map(el => d.appendChild(el))
 			html = d.innerHTML
 			let { top, left } = rect
-			let style = {
-				top,
-				left
-			}
+			let style = {}
 			let tClass = "t_"
 			if (left > document.body.clientWidth / 2) {
-				style.left -= 350
 				tClass += "right_"
+				style.left = left - 500 + 60 + rect.width - 5
 			} else {
 				tClass += "left_"
-				style.left += rect.width - 60 - 15
+				style.left = left + rect.width - 60 - 15
 			}
 			if (top > document.body.clientHeight / 2) {
 				tClass += "down"
-				style.top -= 250 + 20
+				style.top = top - 250 - 20
 			} else {
 				tClass += "up"
-				style.top += rect.height + 10
+				style.top = top + rect.height + 10
 			}
 			this.setState({ preview: { html, style, tClass } })
 		})

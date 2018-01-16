@@ -123,8 +123,6 @@ body {
     position: fixed;
     width: 500px;
     height: 250px;
-    left: 0;
-    top: 0;
     z-index: 100;
     background: white;
     border-radius: 3px;
@@ -149,11 +147,11 @@ body {
         margin: auto;
         font-size: 12px; }
   #article .t_right_down::after {
-    right: 50px;
+    right: 60px;
     bottom: -4px;
     box-shadow: 0 1px rgba(0, 0, 0, 0.1), 1px 0 rgba(0, 0, 0, 0.1); }
   #article .t_right_up::after {
-    right: 50px;
+    right: 60px;
     top: -4px;
     box-shadow: 0 -1px rgba(0, 0, 0, 0.1), -1px 0 rgba(0, 0, 0, 0.1); }
   #article .t_left_down::after {

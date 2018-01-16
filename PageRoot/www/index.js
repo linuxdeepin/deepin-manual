@@ -388,24 +388,21 @@ var Article = function (_Component) {
 				var top = rect.top,
 				    left = rect.left;
 
-				var style = {
-					top: top,
-					left: left
-				};
+				var style = {};
 				var tClass = "t_";
 				if (left > document.body.clientWidth / 2) {
-					style.left -= 350;
 					tClass += "right_";
+					style.left = left - 500 + 60 + rect.width - 5;
 				} else {
 					tClass += "left_";
-					style.left += rect.width - 60 - 15;
+					style.left = left + rect.width - 60 - 15;
 				}
 				if (top > document.body.clientHeight / 2) {
 					tClass += "down";
-					style.top -= 250 + 20;
+					style.top = top - 250 - 20;
 				} else {
 					tClass += "up";
-					style.top += rect.height + 10;
+					style.top = top + rect.height + 10;
 				}
 				_this3.setState({ preview: { html: html, style: style, tClass: tClass } });
 			});
