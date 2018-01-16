@@ -39,12 +39,23 @@ ManualProxy::~ManualProxy() {
 }
 
 QStringList ManualProxy::getSystemManualList() {
+  const QHash<QString, QString> kAppNameMap = {
+      { "com.deepin.Calendar", "deepin-calendar" },
+      { "com.deepin.ImageViewer", "deepin-image-viewer" },
+      { "com.deepin.ScreenRecorder", "deepin-screen-recorder" },
+      { "com.deepin.Screenshot", "deepin-screenshot" },
+      { "com.deepin.VoiceRecorder", "deepin-voice-recorder" },
+      { "deepin-cloud-scan-configurator", "deepin-cloud-scan" },
+      { "deepin-cloud-print-configurator", "deepin-cloud-print" },
+  };
+
   if (app_list_.isEmpty()) {
     const QStringList dir_entry = QDir(this->getSystemManualDir()).entryList();
     const AppInfoList list = launcher_interface_->GetAllItemInfos();
     for (const AppInfo& info : list) {
-      if (dir_entry.indexOf(info.key) != -1) {
-        app_list_.append(info.key);
+      const QString app_name = kAppNameMap.value(info.key, info.key);
+      if (dir_entry.indexOf(app_name) != -1) {
+        app_list_.append(app_name);
       }
     }
 
