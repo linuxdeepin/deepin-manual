@@ -20,7 +20,7 @@ class Items extends Component {
 	}
 	render() {
 		let resultList = []
-		let re = new RegExp(this.props.keyword, "g")
+		let re = new RegExp(this.props.keyword, "gi")
 		for (let i = 0; i < this.props.keys.length; i++) {
 			resultList.push(
 				<div
@@ -28,7 +28,15 @@ class Items extends Component {
 					key={i}
 					onClick={() => global.openFile(this.props.file, this.props.keys[i])}
 				>
-					<div className="title">{this.props.keys[i]}</div>
+					<div
+						className="itemTitle"
+						dangerouslySetInnerHTML={{
+							__html: this.props.keys[i].replace(
+								re,
+								"<span class='highlight'>$&</span>"
+							)
+						}}
+					/>
 					<div
 						className="context"
 						dangerouslySetInnerHTML={{
@@ -45,7 +53,7 @@ class Items extends Component {
 			this.state.show && (
 				<div className="items">
 					<div
-						className="title"
+						className="itemsTitle"
 						onClick={() => global.openFile(this.props.file)}
 					>
 						<img src={this.state.logo} />

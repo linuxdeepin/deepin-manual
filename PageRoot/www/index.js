@@ -929,9 +929,11 @@ var Nav = function (_Component) {
 	}, {
 		key: "wheel",
 		value: function wheel(e) {
+			var nav = _reactDom2.default.findDOMNode(this);
 			if (e.deltaY > 0) {
-				var nav = _reactDom2.default.findDOMNode(this);
-				if (nav.scrollHeight == nav.clientHeight + nav.scrollTop) {
+				if (e.deltaY > 0 && nav.scrollHeight == nav.clientHeight + nav.scrollTop) {
+					e.preventDefault();
+				} else if (e.deltaY < 0 && nav.scrollTop == 0) {
 					e.preventDefault();
 				}
 			}
@@ -1047,7 +1049,7 @@ var Items = function (_Component) {
 			var _this2 = this;
 
 			var resultList = [];
-			var re = new RegExp(this.props.keyword, "g");
+			var re = new RegExp(this.props.keyword, "gi");
 
 			var _loop = function _loop(i) {
 				resultList.push(_react2.default.createElement(
@@ -1059,11 +1061,12 @@ var Items = function (_Component) {
 							return global.openFile(_this2.props.file, _this2.props.keys[i]);
 						}
 					},
-					_react2.default.createElement(
-						"div",
-						{ className: "title" },
-						_this2.props.keys[i]
-					),
+					_react2.default.createElement("div", {
+						className: "itemTitle",
+						dangerouslySetInnerHTML: {
+							__html: _this2.props.keys[i].replace(re, "<span class='highlight'>$&</span>")
+						}
+					}),
 					_react2.default.createElement("div", {
 						className: "context",
 						dangerouslySetInnerHTML: {
@@ -1082,7 +1085,7 @@ var Items = function (_Component) {
 				_react2.default.createElement(
 					"div",
 					{
-						className: "title",
+						className: "itemsTitle",
 						onClick: function onClick() {
 							return global.openFile(_this2.props.file);
 						}

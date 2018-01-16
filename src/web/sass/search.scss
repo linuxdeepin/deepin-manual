@@ -39,7 +39,7 @@
 		}
 	}
 	.items {
-		.title {
+		.itemsTitle {
 			cursor: pointer;
 			margin-top: 30px;
 			height: 32px;
@@ -54,10 +54,11 @@
 			}
 		}
 		.item {
-			.title {
+			.itemTitle {
 				margin: 7px 0px 10px 0px;
 				font-size: 14px;
 				height: 20px;
+				font-weight: bold;
 			}
 			cursor: pointer;
 			padding: 7px 18px;
@@ -74,7 +75,7 @@
 			-webkit-box-orient: vertical;
 		}
 		.highlight {
-			background-color: yellow;
+			color: #2bba57;
 		}
 	}
 }

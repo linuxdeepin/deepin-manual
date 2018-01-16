@@ -23,9 +23,14 @@ class Nav extends Component {
 		}
 	}
 	wheel(e) {
+		let nav = ReactDOM.findDOMNode(this)
 		if (e.deltaY > 0) {
-			let nav = ReactDOM.findDOMNode(this)
-			if (nav.scrollHeight == nav.clientHeight + nav.scrollTop) {
+			if (
+				e.deltaY > 0 &&
+				nav.scrollHeight == nav.clientHeight + nav.scrollTop
+			) {
+				e.preventDefault()
+			} else if (e.deltaY < 0 && nav.scrollTop == 0) {
 				e.preventDefault()
 			}
 		}
