@@ -40,7 +40,7 @@ ManualProxy::~ManualProxy() {
 
 QStringList ManualProxy::getSystemManualList() {
   const QHash<QString, QString> kAppNameMap = {
-      { "com.deepin.Calendar", "deepin-calendar" },
+      { "com.deepin.Calendar", "dde-calendar" },
       { "com.deepin.Music", "deepin-music" },
       { "com.deepin.Screenshot", "deepin-screenshot" },
       { "com.deepin.VoiceRecorder", "deepin-voice-recorder" },
