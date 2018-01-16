@@ -2,7 +2,9 @@
 
 #index {
 	user-select: none;
-	margin: 0 16%;
+	display: flex;
+	flex-flow: column;
+	margin: 0 100px;
 	&:after {
 		content: "";
 		display: block;
@@ -17,8 +19,18 @@
 		border-bottom: 1px solid #d7d7d7;
 	}
 	.items {
+		display: flex;
+		flex-flow: row;
+		flex-wrap: wrap;
+		justify-content: space-between;
+		&:after {
+			content: "";
+			flex: auto;
+		}
+		.empty {
+			width: 160px;
+		}
 		a {
-			margin-left: 6%;
 			.item {
 				margin-top: 30px;
 				width: 160px;

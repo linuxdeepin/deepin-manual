@@ -93,16 +93,19 @@ export default class Index extends Component {
 		)
 		return (
 			<div id="index">
+				<h2>{global.i18n["System"]}</h2>
 				{sysSoft.length > 0 && (
 					<div className="items">
-						<h2>{global.i18n["System"]}</h2>
 						{sysSoft.map(appName => <Item key={appName} appName={appName} />)}
 					</div>
 				)}
+				<h2>{global.i18n["Applications"]}</h2>
 				<div className="items">
-					<h2>{global.i18n["Applications"]}</h2>
 					{appSoft.map(appName => <Item key={appName} appName={appName} />)}
 					{otherSoft.map(appName => <Item key={appName} appName={appName} />)}
+					{Array.from(new Array(10), (val, index) => index).map(i => (
+						<a key={i} className="empty" />
+					))}
 				</div>
 			</div>
 		)

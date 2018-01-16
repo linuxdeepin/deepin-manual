@@ -667,31 +667,36 @@ var Index = function (_Component2) {
 			return _react2.default.createElement(
 				"div",
 				{ id: "index" },
+				_react2.default.createElement(
+					"h2",
+					null,
+					global.i18n["System"]
+				),
 				sysSoft.length > 0 && _react2.default.createElement(
 					"div",
 					{ className: "items" },
-					_react2.default.createElement(
-						"h2",
-						null,
-						global.i18n["System"]
-					),
 					sysSoft.map(function (appName) {
 						return _react2.default.createElement(Item, { key: appName, appName: appName });
 					})
 				),
 				_react2.default.createElement(
+					"h2",
+					null,
+					global.i18n["Applications"]
+				),
+				_react2.default.createElement(
 					"div",
 					{ className: "items" },
-					_react2.default.createElement(
-						"h2",
-						null,
-						global.i18n["Applications"]
-					),
 					appSoft.map(function (appName) {
 						return _react2.default.createElement(Item, { key: appName, appName: appName });
 					}),
 					otherSoft.map(function (appName) {
 						return _react2.default.createElement(Item, { key: appName, appName: appName });
+					}),
+					Array.from(new Array(10), function (val, index) {
+						return index;
+					}).map(function (i) {
+						return _react2.default.createElement("a", { key: i, className: "empty" });
 					})
 				)
 			);
