@@ -41,12 +41,14 @@ ManualProxy::~ManualProxy() {
 QStringList ManualProxy::getSystemManualList() {
   const QHash<QString, QString> kAppNameMap = {
       { "com.deepin.Calendar", "deepin-calendar" },
-      { "com.deepin.ImageViewer", "deepin-image-viewer" },
-      { "com.deepin.ScreenRecorder", "deepin-screen-recorder" },
+      { "com.deepin.Music", "deepin-music" },
       { "com.deepin.Screenshot", "deepin-screenshot" },
       { "com.deepin.VoiceRecorder", "deepin-voice-recorder" },
-      { "deepin-cloud-scan-configurator", "deepin-cloud-scan" },
       { "deepin-cloud-print-configurator", "deepin-cloud-print" },
+      { "com.deepin.ImageViewer", "deepin-image-viewer" },
+      { "deepin-cloud-scan-configurator", "deepin-cloud-scan" },
+      { "com.deepin.Movie", "deepin-movie" },
+      { "com.deepin.ScreenRecorder", "deepin-screen-recorder" },
   };
 
   if (app_list_.isEmpty()) {
@@ -54,14 +56,21 @@ QStringList ManualProxy::getSystemManualList() {
     const AppInfoList list = launcher_interface_->GetAllItemInfos();
     for (const AppInfo& info : list) {
       const QString app_name = kAppNameMap.value(info.key, info.key);
-      if (dir_entry.indexOf(app_name) != -1) {
+      if ((dir_entry.indexOf(app_name) != -1) &&
+          app_list_.indexOf(app_name) == -1) {
         app_list_.append(app_name);
       }
     }
 
     // Add "dde" by hand, as it has no desktop file.
     app_list_.append("dde");
+
+    // Remove youdao-dict if current locale is not Simplified Chinese.
+    if (!QLocale().name().startsWith("zh")) {
+      app_list_.removeAll("youdao-dict");
+    }
   }
+  qDebug() << "app list:" << app_list_;
   return app_list_;
 }
 
