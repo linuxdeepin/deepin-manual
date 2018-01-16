@@ -67,7 +67,6 @@ int main(int argc, char** argv) {
   app.setApplicationName(dman::kAppName);
   app.loadTranslator();
   app.setApplicationDisplayName(QObject::tr(dman::kAppDisplayName));
-  app.setApplicationLicense("GPL-3.0");
   app.setApplicationDescription(QObject::tr(
       "Deepin Manual is designed to help users learn deepin and "
           "Deepin applications, providing specific instructions and "
