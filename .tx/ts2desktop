@@ -1,0 +1,4 @@
+DESKTOP_TEMP_FILE=deepin-manual.desktop.tmp
+DESKTOP_SOURCE_FILE=src/resources/deepin-manual.desktop
+DESKTOP_DEST_FILE=src/resources/deepin-manual.desktop
+DESKTOP_TS_DIR=translations/desktop

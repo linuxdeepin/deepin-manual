@@ -10,6 +10,7 @@ source_lang = en
 type = QT
 
 [deepin-manual.desktop]
-source_file = src/resources/deepin-manual.desktop
+file_filter = translations/desktop/desktop_<lang>.ts
+source_file = translations/desktop/desktop.ts
 source_lang = en
-type = DESKTOP
+type = QT
