@@ -185,10 +185,12 @@ export default class Article extends Component {
 						className={this.state.preview.tClass}
 						id="preview"
 					>
-						<div
-							className="read"
-							dangerouslySetInnerHTML={{ __html: this.state.preview.html }}
-						/>
+						<div id="view">
+							<div
+								className="read"
+								dangerouslySetInnerHTML={{ __html: this.state.preview.html }}
+							/>
+						</div>
 					</div>
 				)}
 				{this.state.contentMenuStyle != null && (

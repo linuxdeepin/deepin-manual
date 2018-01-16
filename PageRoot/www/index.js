@@ -499,10 +499,14 @@ var Article = function (_Component) {
 						className: this.state.preview.tClass,
 						id: "preview"
 					},
-					_react2.default.createElement("div", {
-						className: "read",
-						dangerouslySetInnerHTML: { __html: this.state.preview.html }
-					})
+					_react2.default.createElement(
+						"div",
+						{ id: "view" },
+						_react2.default.createElement("div", {
+							className: "read",
+							dangerouslySetInnerHTML: { __html: this.state.preview.html }
+						})
+					)
 				),
 				this.state.contentMenuStyle != null && _react2.default.createElement(
 					"div",
