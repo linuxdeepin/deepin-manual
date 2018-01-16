@@ -9,19 +9,12 @@ class Nav extends Component {
 		).clientWidth
 	}
 	componentDidUpdate() {
-		let nav = ReactDOM.findDOMNode(this)
-		let hashDOM = nav.querySelector(".hash")
-		if (this.props.hash == this.props.hlist[0].id) {
-			nav.scrollTop = 0
+		let hashDOM = ReactDOM.findDOMNode(this).querySelector(".hash")
+		if (hashDOM.getAttribute("cid") == this.props.hlist[0].id) {
+			ReactDOM.findDOMNode(this).scrollTop = 0
+			return
 		}
-		if (hashDOM) {
-			let { top, bottom } = hashDOM.getBoundingClientRect()
-			if (top < 0) {
-				nav.scrollTop += top
-			} else if (bottom > nav.clientHeight) {
-				nav.scrollTop += bottom - nav.clientHeight
-			}
-		}
+		hashDOM.scrollIntoViewIfNeeded(false)
 	}
 	click(e) {
 		let cid = e.target.getAttribute("cid")
@@ -29,13 +22,28 @@ class Nav extends Component {
 			this.props.setHash(cid)
 		}
 	}
+	wheel(e) {
+		if (e.deltaY > 0) {
+			let nav = ReactDOM.findDOMNode(this)
+			if (nav.scrollHeight == nav.clientHeight + nav.scrollTop) {
+				e.preventDefault()
+			}
+		}
+	}
 	render() {
 		return (
-			<div id="nav" lang={global.lang} onClick={e => this.click(e)}>
+			<div
+				id="nav"
+				lang={global.lang}
+				onClick={e => this.click(e)}
+				onWheel={this.wheel.bind(this)}
+			>
 				<div id="hlist">
-					<div type="h2" id="backHome">
-						<Link to="/index">{global.i18n["ToIndexPage"]}</Link>
-					</div>
+					<Link to="/index">
+						<div type="h2" id="backHome">
+							{global.i18n["ToIndexPage"]}
+						</div>
+					</Link>
 					{this.props.hlist.map(h => {
 						return (
 							<div

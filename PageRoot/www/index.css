@@ -1,17 +1,17 @@
-html {
+body {
   width: 100%;
   min-width: 1024px;
   margin: 0px;
   overflow-x: hidden;
   overflow-y: auto; }
-  html::-webkit-scrollbar {
+  body::-webkit-scrollbar {
     width: 6px; }
-  html::-webkit-scrollbar-thumb {
+  body::-webkit-scrollbar-thumb {
     background-color: #888888;
     border-radius: 4px;
     border: 1px solid transparent;
     background-clip: content-box; }
-  html::-webkit-scrollbar-thumb:hover {
+  body::-webkit-scrollbar-thumb:hover {
     border: 1px solid #414141;
     background-color: #414141; }
 

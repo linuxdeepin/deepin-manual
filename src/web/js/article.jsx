@@ -11,29 +11,29 @@ export default class Article extends Component {
 			contentMenuStyle: null
 		}
 		document.body.onscroll = this.scroll.bind(this)
-		this.interval = setInterval(this.checkHight.bind(this), 100)
-		console.log(this.interval)
 	}
-	setScrollTop(top) {
-		console.log("setTop")
-		this.ignoreScrollEvents = true
-		document.body.scrollTop = top
-	}
-	checkHight() {
-		let doc = document.getElementById("article")
-		if (doc && doc.offsetHeight != this.height) {
-			console.log(this.hash)
-			this.height = doc.offsetHeight
-			this.setScrollTop(document.getElementById(this.hash).offsetTop)
-		}
+	//滚动到锚点
+	scrollToHash() {
+		document.getElementById(this.hash).scrollIntoView()
 	}
 	componentDidUpdate() {
 		if (this.hash != this.props.hash) {
 			this.hash = this.props.hash
-			let hashDOM = document.getElementById(this.hash)
-			if (hashDOM) {
-				this.setScrollTop(hashDOM.offsetTop)
-			}
+			this.scrollToHash()
+		}
+		if (!this.load) {
+			let imgList = [...ReactDOM.findDOMNode(this).querySelectorAll("img")]
+			let loadCount = 0
+			imgList.map(el => {
+				el.onload = () => {
+					loadCount++
+					if (loadCount == imgList.length) {
+						this.load = true
+						this.scrollToHash()
+					}
+				}
+				el.onerror = el.onload
+			})
 		}
 	}
 	componentDidMount() {
@@ -41,21 +41,16 @@ export default class Article extends Component {
 	}
 	componentWillUnmount() {
 		document.body.onscroll = null
-		clearInterval(this.interval)
 	}
 	componentWillReceiveProps(nextProps) {
 		if (nextProps.file != this.props.file) {
 			this.hash = ""
+			this.load = false
 		}
 	}
+	//滚动事件
 	scroll() {
-		if (this.ignoreScrollEvents == true) {
-			if (
-				document.body.scrollTop == document.getElementById(this.hash).offsetTop
-			) {
-				this.ignoreScrollEvents = false
-			}
-
+		if (!this.load) {
 			return
 		}
 		if (this.state.preview != null || this.state.contentMenuStyle != null) {
@@ -75,6 +70,7 @@ export default class Article extends Component {
 			this.props.setHash(hash)
 		}
 	}
+	//图片全屏预览
 	showPreview(appName, hash, rect) {
 		let file = `${global.path}/${appName}/${global.lang}/index.md`
 		global.readFile(file, data => {
@@ -117,6 +113,7 @@ export default class Article extends Component {
 			this.setState({ preview: { html, style, tClass } })
 		})
 	}
+	//链接处理
 	click(e) {
 		switch (e.target.nodeName) {
 			case "IMG":
@@ -157,6 +154,7 @@ export default class Article extends Component {
 			this.setState({ preview: null, contentMenuStyle: null })
 		}
 	}
+	//右键菜单
 	contextMenu(e) {
 		e.preventDefault()
 		if (window.getSelection().toString() != "") {
@@ -174,6 +172,8 @@ export default class Article extends Component {
 				id="article"
 				onContextMenu={e => this.contextMenu(e)}
 				onClick={this.click.bind(this)}
+				// onMouseOver={() => (document.body.style.overflowY = "auto")}
+				// onMouseOut={() => (document.body.style.overflow = "hidden")}
 			>
 				<div
 					className="read"

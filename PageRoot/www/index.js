@@ -258,6 +258,8 @@ var _mdToHtml2 = _interopRequireDefault(_mdToHtml);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
 function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
 
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
@@ -277,37 +279,38 @@ var Article = function (_Component) {
 			contentMenuStyle: null
 		};
 		document.body.onscroll = _this.scroll.bind(_this);
-		_this.interval = setInterval(_this.checkHight.bind(_this), 100);
-		console.log(_this.interval);
 		return _this;
 	}
+	//滚动到锚点
+
 
 	_createClass(Article, [{
-		key: "setScrollTop",
-		value: function setScrollTop(top) {
-			console.log("setTop");
-			this.ignoreScrollEvents = true;
-			document.body.scrollTop = top;
-		}
-	}, {
-		key: "checkHight",
-		value: function checkHight() {
-			var doc = document.getElementById("article");
-			if (doc && doc.offsetHeight != this.height) {
-				console.log(this.hash);
-				this.height = doc.offsetHeight;
-				this.setScrollTop(document.getElementById(this.hash).offsetTop);
-			}
+		key: "scrollToHash",
+		value: function scrollToHash() {
+			document.getElementById(this.hash).scrollIntoView();
 		}
 	}, {
 		key: "componentDidUpdate",
 		value: function componentDidUpdate() {
+			var _this2 = this;
+
 			if (this.hash != this.props.hash) {
 				this.hash = this.props.hash;
-				var hashDOM = document.getElementById(this.hash);
-				if (hashDOM) {
-					this.setScrollTop(hashDOM.offsetTop);
-				}
+				this.scrollToHash();
+			}
+			if (!this.load) {
+				var imgList = [].concat(_toConsumableArray(_reactDom2.default.findDOMNode(this).querySelectorAll("img")));
+				var loadCount = 0;
+				imgList.map(function (el) {
+					el.onload = function () {
+						loadCount++;
+						if (loadCount == imgList.length) {
+							_this2.load = true;
+							_this2.scrollToHash();
+						}
+					};
+					el.onerror = el.onload;
+				});
 			}
 		}
 	}, {
@@ -319,23 +322,21 @@ var Article = function (_Component) {
 		key: "componentWillUnmount",
 		value: function componentWillUnmount() {
 			document.body.onscroll = null;
-			clearInterval(this.interval);
 		}
 	}, {
 		key: "componentWillReceiveProps",
 		value: function componentWillReceiveProps(nextProps) {
 			if (nextProps.file != this.props.file) {
 				this.hash = "";
+				this.load = false;
 			}
 		}
+		//滚动事件
+
 	}, {
 		key: "scroll",
 		value: function scroll() {
-			if (this.ignoreScrollEvents == true) {
-				if (document.body.scrollTop == document.getElementById(this.hash).offsetTop) {
-					this.ignoreScrollEvents = false;
-				}
-
+			if (!this.load) {
 				return;
 			}
 			if (this.state.preview != null || this.state.contentMenuStyle != null) {
@@ -355,10 +356,12 @@ var Article = function (_Component) {
 				this.props.setHash(hash);
 			}
 		}
+		//图片全屏预览
+
 	}, {
 		key: "showPreview",
 		value: function showPreview(appName, hash, rect) {
-			var _this2 = this;
+			var _this3 = this;
 
 			var file = global.path + "/" + appName + "/" + global.lang + "/index.md";
 			global.readFile(file, function (data) {
@@ -404,9 +407,11 @@ var Article = function (_Component) {
 					tClass += "up";
 					style.top += rect.height + 10;
 				}
-				_this2.setState({ preview: { html: html, style: style, tClass: tClass } });
+				_this3.setState({ preview: { html: html, style: style, tClass: tClass } });
 			});
 		}
+		//链接处理
+
 	}, {
 		key: "click",
 		value: function click(e) {
@@ -452,6 +457,8 @@ var Article = function (_Component) {
 				this.setState({ preview: null, contentMenuStyle: null });
 			}
 		}
+		//右键菜单
+
 	}, {
 		key: "contextMenu",
 		value: function contextMenu(e) {
@@ -468,16 +475,18 @@ var Article = function (_Component) {
 	}, {
 		key: "render",
 		value: function render() {
-			var _this3 = this;
+			var _this4 = this;
 
 			return _react2.default.createElement(
 				"div",
 				{
 					id: "article",
 					onContextMenu: function onContextMenu(e) {
-						return _this3.contextMenu(e);
+						return _this4.contextMenu(e);
 					},
 					onClick: this.click.bind(this)
+					// onMouseOver={() => (document.body.style.overflowY = "auto")}
+					// onMouseOut={() => (document.body.style.overflow = "hidden")}
 				},
 				_react2.default.createElement("div", {
 					className: "read",
@@ -902,22 +911,12 @@ var Nav = function (_Component) {
 	}, {
 		key: "componentDidUpdate",
 		value: function componentDidUpdate() {
-			var nav = _reactDom2.default.findDOMNode(this);
-			var hashDOM = nav.querySelector(".hash");
-			if (this.props.hash == this.props.hlist[0].id) {
-				nav.scrollTop = 0;
+			var hashDOM = _reactDom2.default.findDOMNode(this).querySelector(".hash");
+			if (hashDOM.getAttribute("cid") == this.props.hlist[0].id) {
+				_reactDom2.default.findDOMNode(this).scrollTop = 0;
+				return;
 			}
-			if (hashDOM) {
-				var _hashDOM$getBoundingC = hashDOM.getBoundingClientRect(),
-				    top = _hashDOM$getBoundingC.top,
-				    bottom = _hashDOM$getBoundingC.bottom;
-
-				if (top < 0) {
-					nav.scrollTop += top;
-				} else if (bottom > nav.clientHeight) {
-					nav.scrollTop += bottom - nav.clientHeight;
-				}
-			}
+			hashDOM.scrollIntoViewIfNeeded(false);
 		}
 	}, {
 		key: "click",
@@ -928,24 +927,39 @@ var Nav = function (_Component) {
 			}
 		}
 	}, {
+		key: "wheel",
+		value: function wheel(e) {
+			if (e.deltaY > 0) {
+				var nav = _reactDom2.default.findDOMNode(this);
+				if (nav.scrollHeight == nav.clientHeight + nav.scrollTop) {
+					e.preventDefault();
+				}
+			}
+		}
+	}, {
 		key: "render",
 		value: function render() {
 			var _this2 = this;
 
 			return _react2.default.createElement(
 				"div",
-				{ id: "nav", lang: global.lang, onClick: function onClick(e) {
+				{
+					id: "nav",
+					lang: global.lang,
+					onClick: function onClick(e) {
 						return _this2.click(e);
-					} },
+					},
+					onWheel: this.wheel.bind(this)
+				},
 				_react2.default.createElement(
 					"div",
 					{ id: "hlist" },
 					_react2.default.createElement(
-						"div",
-						{ type: "h2", id: "backHome" },
+						_reactRouterDom.Link,
+						{ to: "/index" },
 						_react2.default.createElement(
-							_reactRouterDom.Link,
-							{ to: "/index" },
+							"div",
+							{ type: "h2", id: "backHome" },
 							global.i18n["ToIndexPage"]
 						)
 					),
