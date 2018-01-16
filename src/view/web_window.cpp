@@ -103,7 +103,7 @@ void WebWindow::initConnections() {
 void WebWindow::initUI() {
   i18n_ = new I18nProxy(this);
 
-  completion_window_ = new SearchCompletionWindow(this);
+  completion_window_ = new SearchCompletionWindow();
   completion_window_->hide();
 
   title_bar_ = new TitleBar();
@@ -177,13 +177,15 @@ void WebWindow::onSearchTextChangedDelay() {
   }
   // Do real search.
   completion_window_->setKeyword(text);
-  completion_window_->autoResize();
   completion_window_->show();
+  completion_window_->raise();
+  completion_window_->autoResize();
   // Move to below of search edit.
   const QPoint local_point(this->rect().width() / 2 - 108, 36);
-  completion_window_->move(local_point);
-  completion_window_->setFocusPolicy(Qt::StrongFocus);
-  completion_window_->raise();
+  const QPoint global_point(this->mapToGlobal(local_point));
+  completion_window_->move(global_point);
+  completion_window_->setFocusPolicy(Qt::NoFocus);
+//  completion_window_->setFocusPolicy(Qt::StrongFocus);
 
   search_manager_->searchAnchor(text);
 }
