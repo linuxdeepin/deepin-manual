@@ -102,6 +102,11 @@ void WindowManager::parseArguments() {
       for (const QString& arg : position_args) {
         iface->Open(arg);
       }
+
+      // Exit process after 1000ms.
+      QTimer::singleShot(1000, []() {
+        qApp->quit();
+      });
     }
 
   } else {
