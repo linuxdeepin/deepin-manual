@@ -53,12 +53,12 @@ find_package(Qt5WebChannel REQUIRED)
 find_package(Qt5Widgets REQUIRED)
 find_package(Qt5LinguistTools REQUIRED)
 
-pkg_search_module(Dtk REQUIRED dtkwidget)
+pkg_search_module(DtkWidget REQUIRED dtkwidget)
 pkg_search_module(QCef REQUIRED libqcef)
 
 add_subdirectory(third_party/cppjieba)
 
-include_directories(${Dtk_INCLUDE_DIRS})
+include_directories(${DtkWidget_INCLUDE_DIRS})
 include_directories(${QCef_INCLUDE_DIRS})
 include_directories(third_party/cppjieba/deps)
 include_directories(third_party/cppjieba/include)
@@ -70,7 +70,7 @@ set(LINK_LIBS
     Qt5::Widgets
     Qt5::WebChannel
 
-    ${Dtk_LDFLAGS}
+    ${DtkWidget_LDFLAGS}
     ${QCef_LDFLAGS}
     )
 
