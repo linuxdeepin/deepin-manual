@@ -921,6 +921,9 @@ var Nav = function (_Component) {
 		key: "componentDidUpdate",
 		value: function componentDidUpdate() {
 			var hashDOM = _reactDom2.default.findDOMNode(this).querySelector(".hash");
+			if (hashDOM == null) {
+				return;
+			}
 			if (hashDOM.getAttribute("cid") == this.props.hlist[0].id) {
 				_reactDom2.default.findDOMNode(this).scrollTop = 0;
 				return;

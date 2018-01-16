@@ -11,6 +11,9 @@ class Nav extends Component {
 	}
 	componentDidUpdate() {
 		let hashDOM = ReactDOM.findDOMNode(this).querySelector(".hash")
+		if (hashDOM == null) {
+			return
+		}
 		if (hashDOM.getAttribute("cid") == this.props.hlist[0].id) {
 			ReactDOM.findDOMNode(this).scrollTop = 0
 			return
