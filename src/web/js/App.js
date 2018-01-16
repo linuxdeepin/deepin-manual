@@ -82,9 +82,9 @@ class App extends React.Component {
 		}
 	}
 
-	onContentResult(file, keys, values) {
+	onContentResult(file, titleList, idList, contentList) {
 		let { searchResult } = this.state
-		searchResult.push({ file, keys, values })
+		searchResult.push({ file, idList, titleList, contentList })
 		this.setState({ searchResult, mismatch: false })
 	}
 	getChildContext() {

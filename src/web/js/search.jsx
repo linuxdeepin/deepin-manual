@@ -21,17 +21,17 @@ class Items extends Component {
 	render() {
 		let resultList = []
 		let re = new RegExp(this.props.keyword, "gi")
-		for (let i = 0; i < this.props.keys.length; i++) {
+		for (let i = 0; i < this.props.idList.length; i++) {
 			resultList.push(
 				<div
 					className="item"
 					key={i}
-					onClick={() => global.openFile(this.props.file, this.props.keys[i])}
+					onClick={() => global.openFile(this.props.file, this.props.idList[i])}
 				>
 					<div
 						className="itemTitle"
 						dangerouslySetInnerHTML={{
-							__html: this.props.keys[i].replace(
+							__html: this.props.titleList[i].replace(
 								re,
 								"<span class='highlight'>$&</span>"
 							)
@@ -40,7 +40,7 @@ class Items extends Component {
 					<div
 						className="context"
 						dangerouslySetInnerHTML={{
-							__html: this.props.values[i].replace(
+							__html: this.props.contentList[i].replace(
 								re,
 								"<span class='highlight'>$&</span>"
 							)
@@ -101,8 +101,9 @@ export default class SearchPage extends Component {
 				<Items
 					key={result.file}
 					file={result.file}
-					keys={result.keys}
-					values={result.values}
+					idList={result.idList}
+					titleList={result.titleList}
+					contentList={result.contentList}
 					keyword={this.props.match.params.keyword}
 				/>
 			))

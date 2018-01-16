@@ -137,10 +137,10 @@ var App = function (_React$Component2) {
 
 	_createClass(App, [{
 		key: "onContentResult",
-		value: function onContentResult(file, keys, values) {
+		value: function onContentResult(file, titleList, idList, contentList) {
 			var searchResult = this.state.searchResult;
 
-			searchResult.push({ file: file, keys: keys, values: values });
+			searchResult.push({ file: file, idList: idList, titleList: titleList, contentList: contentList });
 			this.setState({ searchResult: searchResult, mismatch: false });
 		}
 	}, {
@@ -915,6 +915,7 @@ var Nav = function (_Component) {
 		key: "componentDidMount",
 		value: function componentDidMount() {
 			document.getElementById("article").style.marginLeft = _reactDom2.default.findDOMNode(this).clientWidth;
+			this.componentDidUpdate();
 		}
 	}, {
 		key: "componentDidUpdate",
@@ -1066,25 +1067,25 @@ var Items = function (_Component) {
 						className: "item",
 						key: i,
 						onClick: function onClick() {
-							return global.openFile(_this2.props.file, _this2.props.keys[i]);
+							return global.openFile(_this2.props.file, _this2.props.idList[i]);
 						}
 					},
 					_react2.default.createElement("div", {
 						className: "itemTitle",
 						dangerouslySetInnerHTML: {
-							__html: _this2.props.keys[i].replace(re, "<span class='highlight'>$&</span>")
+							__html: _this2.props.titleList[i].replace(re, "<span class='highlight'>$&</span>")
 						}
 					}),
 					_react2.default.createElement("div", {
 						className: "context",
 						dangerouslySetInnerHTML: {
-							__html: _this2.props.values[i].replace(re, "<span class='highlight'>$&</span>")
+							__html: _this2.props.contentList[i].replace(re, "<span class='highlight'>$&</span>")
 						}
 					})
 				));
 			};
 
-			for (var i = 0; i < this.props.keys.length; i++) {
+			for (var i = 0; i < this.props.idList.length; i++) {
 				_loop(i);
 			}
 			return this.state.show && _react2.default.createElement(
@@ -1168,8 +1169,9 @@ var SearchPage = function (_Component2) {
 					return _react2.default.createElement(Items, {
 						key: result.file,
 						file: result.file,
-						keys: result.keys,
-						values: result.values,
+						idList: result.idList,
+						titleList: result.titleList,
+						contentList: result.contentList,
 						keyword: _this4.props.match.params.keyword
 					});
 				});

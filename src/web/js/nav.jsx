@@ -7,6 +7,7 @@ class Nav extends Component {
 		document.getElementById("article").style.marginLeft = ReactDOM.findDOMNode(
 			this
 		).clientWidth
+		this.componentDidUpdate()
 	}
 	componentDidUpdate() {
 		let hashDOM = ReactDOM.findDOMNode(this).querySelector(".hash")
