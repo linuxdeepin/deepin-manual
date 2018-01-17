@@ -1,17 +1,6 @@
 cmake_minimum_required(VERSION 3.0)
 project(deepin-manual)
 
-if (NOT DEFINED DMAN_MANUAL_DIR)
-  set(DMAN_MANUAL_DIR ${CMAKE_CURRENT_SOURCE_DIR}/manual)
-endif ()
-if (NOT DEFINED DMAN_RESOURCE_DIR)
-  set(DMAN_RESOURCE_DIR ${CMAKE_SOURCE_DIR}/PageRoot/www)
-endif ()
+option(DMAN_RELEAE OFF "Install dman resources to system or not")
 
 add_subdirectory(src)
-
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/manual/
-        DESTINATION ${DMAN_MANUAL_DIR})
-
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/PageRoot/www/
-        DESTINATION ${DMAN_RESOURCE_DIR})

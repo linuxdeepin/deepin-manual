@@ -22,7 +22,7 @@ namespace dman {
 const char kAppName[] = "deepin-manual";
 const char* kAppDisplayName = "Deepin Manual";
 const char kAppVersion[] = "2.0.0";
-const char kIndexPage[] = DMAN_RESOURCE_DIR "/index.html";
+const char kIndexPage[] = DMAN_WEB_DIR "/index.html";
 
 QString GetCacheDir() {
   const char kAppCacheDir[] = ".cache/deepin/deepin-manual";

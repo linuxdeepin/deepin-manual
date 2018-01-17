@@ -8,6 +8,8 @@ Build-Depends:
  libdtkwidget-dev,
  libqcef-dev,
  libqt5webchannel5-dev,
+ libsass0,
+ nodejs,
  qttools5-dev-tools,
 Standards-Version: 3.9.5
 Homepage: https://github.com/linuxdeepin/deepin-manual/

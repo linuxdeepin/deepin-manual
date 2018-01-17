@@ -2,6 +2,7 @@
 unused
 symdir
 build/
+PageRoot/
 .vscode/
 
 *.nw

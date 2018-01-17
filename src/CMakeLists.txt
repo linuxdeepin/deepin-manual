@@ -3,9 +3,15 @@ project(deepin-manual C CXX)
 #set(CMAKE_C_COMPILER  /usr/bin/clang)
 #set(CMAKE_CXX_COMPILER  /usr/bin/clang++)
 
-add_definitions(-DDMAN_RESOURCE_DIR="${DMAN_RESOURCE_DIR}")
-add_definitions(-DDMAN_MANUAL_DIR="${DMAN_MANUAL_DIR}")
-message("DMAN_RESOURCE_DIR: ${DMAN_RESOURCE_DIR}")
+if (DMAN_RELEASE)
+  add_definitions(-DDMAN_WEB_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/web")
+  add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual")
+  add_definitions(-DJIEBA_DICT="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/dict")
+else()
+  add_definitions(-DDMAN_WEB_DIR="${CMAKE_CURRENT_BINARY_DIR}/web")
+  add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_SOURCE_DIR}/manual")
+  add_definitions(-DJIEBA_DICT="${CMAKE_CURRENT_SOURCE_DIR}/third_party/cppjieba/dict")
+endif ()
 
 add_subdirectory(dbus)
 add_subdirectory(resources)
@@ -155,6 +161,14 @@ set_source_files_properties(${DMAN_TRANSLATION_TS}
 qt5_add_translation(DMAN_TRANSLATION_QM ${DMAN_TRANSLATION_TS})
 add_custom_target(update-qm DEPENDS ${DMAN_TRANSLATION_QM})
 
+# Build web project and generate js files.
+add_custom_command(OUTPUT rebuild-web
+                   COMMAND pwd
+                   COMMAND ./node_modules/.bin/gulp build -d ${CMAKE_CURRENT_BINARY_DIR}/web
+                   WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/web/
+                   )
+add_custom_target(update-web DEPENDS rebuild-web)
+
 add_executable(dman
                app/dman.cpp
                ${BASE_FILES}
@@ -164,8 +178,9 @@ add_executable(dman
                ${VIEW_FILES}
                )
 target_link_libraries(dman ${LINK_LIBS})
-add_dependencies(dman update-qm)
-
+add_dependencies(dman
+                 update-qm
+                 update-web)
 
 add_executable(dman-search
                app/dman_search.cpp
@@ -213,14 +228,14 @@ install(DIRECTORY ${CMAKE_BINARY_DIR}/translations
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
 
 # Jieba Dictionary
-set(JIEBA_DICT_SRC ${CMAKE_CURRENT_SOURCE_DIR}/third_party/cppjieba/dict)
-if (NOT DEFINED JIEBA_DICT)
-  set(JIEBA_DICT ${JIEBA_DICT_SRC})
-endif ()
-add_definitions(-DJIEBA_DICT="${JIEBA_DICT}")
-
-install(DIRECTORY ${JIEBA_DICT_SRC}/
-        DESTINATION ${JIEBA_DICT}
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/third_party/cppjieba/dict
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual
         PATTERN "pos_dict" EXCLUDE
         PATTERN "README.md" EXCLUDE
         )
+
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/manual
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
+
+install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/web
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
