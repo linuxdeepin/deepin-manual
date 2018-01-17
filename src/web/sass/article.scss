@@ -72,7 +72,8 @@
 			border-top: 2px solid rgba(0, 0, 0, 0.1);
 			border-bottom: 2px solid rgba(0, 0, 0, 0.1);
 			margin-top: 20px;
-			white-space: nowrap; //表格block等级
+			// white-space: nowrap; 
+			//表格block等级
 			@for $i from 1 to 5 {
 				&.block#{$i} {
 					width: 100%/$i;

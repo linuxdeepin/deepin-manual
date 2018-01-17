@@ -82,8 +82,7 @@ body {
       border-collapse: collapse;
       border-top: 2px solid rgba(0, 0, 0, 0.1);
       border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-      margin-top: 20px;
-      white-space: nowrap; }
+      margin-top: 20px; }
       #article .read table.block1 {
         width: 100%; }
       #article .read table.block2 {
