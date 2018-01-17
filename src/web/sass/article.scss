@@ -1,216 +1,206 @@
 .Triangle {
-	content: "";
-	position: absolute;
-	width: 8px;
-	height: 8px;
-	transform: rotate(45deg);
-	background-color: white;
-	z-index: 99;
+  content: '';
+  position: absolute;
+  width: 8px;
+  height: 8px;
+  transform: rotate(45deg);
+  background-color: white;
+  z-index: 99;
 }
 
 #article {
-	margin: auto;
-	&:after {
-		content: "";
-		display: block;
-		width: 100%;
-		height: 100%;
-	}
-	.read {
-		margin: auto;
-		padding: 0 10%;
-		width: 80%;
-		max-width: 700px;
-		font-size: 13px;
-		color: #000;
-		outline: 0px;
-		h2 {
-			font-weight: normal;
-			font-size: 20px;
-			color: #1f94ee;
-			margin: 0px;
-			padding-top: 23px;
-		}
-		ul,
-		ol {
-			margin: 0;
-			padding: 0;
-		}
-		li {
-			margin-left: 2em;
-			line-height: 24px;
-		}
-		img {
-			//svg图片内嵌同行
-			&[src$="svg"] {
-				height: 20px;
-				vertical-align: middle;
-			}
-			//png图片
-			&[src$="png"] {
-				margin-top: 26px;
-				max-width: 99%;
-				cursor: pointer;
-			}
-			//jpg图片
-			&[src$="jpg"] {
-				margin-top: 26px;
-				max-width: 99%;
-				cursor: pointer;
-				border-radius: 4px;
-				border: 1px solid rgba(0, 0, 0, 0.18);
-				box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
-			}
-		}
-		p {
-			line-height: 2em;
-			margin: 0;
-		}
-		table {
-			color: #606060;
-			border-collapse: collapse;
-			border-top: 2px solid rgba(0, 0, 0, 0.1);
-			border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-			margin-top: 20px;
-			// white-space: nowrap; 
-			//表格block等级
-			@for $i from 1 to 5 {
-				&.block#{$i} {
-					width: 100%/$i;
-				}
-			}
-			tr {
-				border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-				font-size: 12px;
-				td {
-					padding: 5px;
-				}
-			}
-			caption {
-				text-align: left;
-			}
-		}
-		a {
-			text-decoration: none;
-			font-weight: bold;
-			color: #757575;
-			cursor: pointer;
-			&[href^="http"] {
-				&:after {
-					content: "🔗";
-				}
-			}
-			&[href^="#"] {
-				color: #0082fa;
-			}
-			&[href^="dman://"] {
-				color: #4e64f6;
-				&:after {
-					content: " 📃 ";
-				}
-			}
-		}
-		blockquote {
-			margin: 0;
-			font-style: italic;
-		}
-		.searchWK {
-			background-color: yellow;
-		}
-	}
-	#fillblank {
-		width: 100%;
-		height: 100%;
-	}
-	#preview {
-		position: fixed;
-		width: 500px;
-		height: 250px;
-		z-index: 100;
-		background: white; // border: 1px solid rgba(0,0,0,0.10);
-		border-radius: 3px;
-		box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.1),
-			inset 0 2px 0 0 rgba(255, 255, 255, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.1);
-		margin: auto;
-		#view {
-			height: 100%;
-			overflow-y: auto;
-			&::-webkit-scrollbar {
-				width: 6px;
-			}
-			&::-webkit-scrollbar-thumb {
-				background-color: #888888;
-				border-radius: 4px;
-				border: 1px solid transparent;
-				background-clip: content-box;
-			}
-			&::-webkit-scrollbar-thumb:hover {
-				border: 1px solid #414141;
-				background-color: #414141;
-			}
-			.read {
-				width: 80%;
-				margin: auto;
-				font-size: 12px;
-			}
-		}
-		padding: 8px 0px;
-	}
-	.t_right_down {
-		&::after {
-			@extend .Triangle;
-			right: 60px;
-			bottom: -4px;
-			box-shadow: 0 1px rgba(0, 0, 0, 0.1), 1px 0 rgba(0, 0, 0, 0.1);
-		}
-	}
-	.t_right_up {
-		&::after {
-			@extend .Triangle;
-			right: 60px;
-			top: -4px;
-			box-shadow: 0 -1px rgba(0, 0, 0, 0.1), -1px 0 rgba(0, 0, 0, 0.1);
-		}
-	}
-	.t_left_down {
-		&::after {
-			@extend .Triangle;
-			left: 60px;
-			bottom: -4px;
-			box-shadow: 0 1px rgba(0, 0, 0, 0.1), 1px 0 rgba(0, 0, 0, 0.1);
-		}
-	}
-	.t_left_up {
-		&::after {
-			@extend .Triangle;
-			left: 60px;
-			top: -4px;
-			box-shadow: 0 -1px rgba(0, 0, 0, 0.1), -1px 0 rgba(0, 0, 0, 0.1);
-		}
-	}
-	#contextMenu {
-		user-select: none;
-		font-size: 12px;
-		position: fixed;
-		top: 0;
-		left: 0;
-		width: 60px;
-		border-radius: 3px;
-		box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.1),
-			inset 0 2px 0 0 rgba(255, 255, 255, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.1);
-		background-color: rgba(255, 255, 255, 0.9);
-		margin: auto;
-		text-align: center;
-		z-index: 999;
-		h4 {
-			font-weight: unset;
-			margin: 4px 0;
-			padding: 2px 0;
-			width: 100%;
-			cursor: pointer;
-		}
-		h4:hover {
-			background-color: #0082fa;
-		}
-	}
+  margin: auto;
+  .read {
+    margin: auto;
+    padding: 0 10%;
+    width: 80%;
+    max-width: 700px;
+    font-size: 13px;
+    color: #000;
+    outline: 0px;
+    h2 {
+      font-weight: normal;
+      font-size: 20px;
+      color: #1f94ee;
+      margin: 0px;
+      padding-top: 23px;
+    }
+    ul,
+    ol {
+      margin: 0;
+      padding: 0;
+    }
+    li {
+      margin-left: 2em;
+      line-height: 24px;
+    }
+    img {
+      //svg图片内嵌同行
+      &[src$='svg'] {
+        height: 20px;
+        vertical-align: middle;
+      }
+      //png图片
+      &[src$='png'] {
+        margin-top: 26px;
+        max-width: 99%;
+        cursor: pointer;
+      }
+      //jpg图片
+      &[src$='jpg'] {
+        margin-top: 26px;
+        max-width: 99%;
+        cursor: pointer;
+        border-radius: 4px;
+        border: 1px solid rgba(0, 0, 0, 0.18);
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+      }
+    }
+    p {
+      line-height: 2em;
+      margin: 0;
+    }
+    table {
+      color: #606060;
+      border-collapse: collapse;
+      border-top: 2px solid rgba(0, 0, 0, 0.1);
+      border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+      margin-top: 20px;
+      // white-space: nowrap;
+      //表格block等级
+      @for $i from 1 to 5 {
+        &.block#{$i} {
+          width: 100%/$i;
+        }
+      }
+      tr {
+        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+        font-size: 12px;
+        td {
+          padding: 5px;
+        }
+      }
+      caption {
+        text-align: left;
+      }
+    }
+    a {
+      text-decoration: none;
+      font-weight: bold;
+      color: #757575;
+      cursor: pointer;
+      &[href^='http'] {
+        &:after {
+          content: '🔗';
+        }
+      }
+      &[href^='#'] {
+        color: #0082fa;
+      }
+      &[href^='dman://'] {
+        color: #4e64f6;
+        &:after {
+          content: ' 📃 ';
+        }
+      }
+    }
+    blockquote {
+      margin: 0;
+      font-style: italic;
+    }
+    .searchWK {
+      background-color: yellow;
+    }
+  }
+  #preview {
+    position: fixed;
+    width: 500px;
+    height: 250px;
+    z-index: 100;
+    background: white; // border: 1px solid rgba(0,0,0,0.10);
+    border-radius: 3px;
+    box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.1),
+      inset 0 2px 0 0 rgba(255, 255, 255, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.1);
+    margin: auto;
+    #view {
+      height: 100%;
+      overflow-y: auto;
+      &::-webkit-scrollbar {
+        width: 6px;
+      }
+      &::-webkit-scrollbar-thumb {
+        background-color: #888888;
+        border-radius: 4px;
+        border: 1px solid transparent;
+        background-clip: content-box;
+      }
+      &::-webkit-scrollbar-thumb:hover {
+        border: 1px solid #414141;
+        background-color: #414141;
+      }
+      .read {
+        width: 80%;
+        margin: auto;
+        font-size: 12px;
+      }
+    }
+    padding: 8px 0px;
+  }
+  .t_right_down {
+    &::after {
+      @extend .Triangle;
+      right: 60px;
+      bottom: -4px;
+      box-shadow: 0 1px rgba(0, 0, 0, 0.1), 1px 0 rgba(0, 0, 0, 0.1);
+    }
+  }
+  .t_right_up {
+    &::after {
+      @extend .Triangle;
+      right: 60px;
+      top: -4px;
+      box-shadow: 0 -1px rgba(0, 0, 0, 0.1), -1px 0 rgba(0, 0, 0, 0.1);
+    }
+  }
+  .t_left_down {
+    &::after {
+      @extend .Triangle;
+      left: 60px;
+      bottom: -4px;
+      box-shadow: 0 1px rgba(0, 0, 0, 0.1), 1px 0 rgba(0, 0, 0, 0.1);
+    }
+  }
+  .t_left_up {
+    &::after {
+      @extend .Triangle;
+      left: 60px;
+      top: -4px;
+      box-shadow: 0 -1px rgba(0, 0, 0, 0.1), -1px 0 rgba(0, 0, 0, 0.1);
+    }
+  }
+  #contextMenu {
+    user-select: none;
+    font-size: 12px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 60px;
+    border-radius: 3px;
+    box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.1),
+      inset 0 2px 0 0 rgba(255, 255, 255, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.1);
+    background-color: rgba(255, 255, 255, 0.9);
+    margin: auto;
+    text-align: center;
+    z-index: 999;
+    h4 {
+      font-weight: unset;
+      margin: 4px 0;
+      padding: 2px 0;
+      width: 100%;
+      cursor: pointer;
+    }
+    h4:hover {
+      background-color: #0082fa;
+    }
+  }
 }
