@@ -26,20 +26,12 @@ class SearchManager;
 
 class SearchProxy : public QObject {
   Q_OBJECT
-  Q_PROPERTY(QString currentApp
-                 READ currentApp
-                 WRITE setCurrentApp
-                 NOTIFY currentAppChanged)
  public:
   explicit SearchProxy(SearchManager* manager, QObject* parent = nullptr);
   ~SearchProxy() override;
 
-  QString currentApp() const {
-    return current_app_;
-  }
-
  signals:
-  void currentAppChanged(const QString& app_name);
+  void requestSearchEntry(const QString& app_name, const QString& lang);
 
   void mismatch(const QString& keyword);
   void onContentResult(const QString& app_name,
@@ -48,8 +40,6 @@ class SearchProxy : public QObject {
                        const QStringList& contents);
 
  public slots:
-  void setCurrentApp(const QString& app_name);
-
   void addSearchEntry(const QString& app_name,
                       const QString& lang,
                       const QStringList& anchors,
@@ -58,7 +48,6 @@ class SearchProxy : public QObject {
 
  private:
   SearchManager* manager_ = nullptr;
-  QString current_app_;
 };
 
 }  // namespace dman

@@ -31,6 +31,8 @@ SearchManager::SearchManager(QObject* parent)
   db_thread_->start();
   db_->moveToThread(db_thread_);
 
+  connect(this, &SearchManager::updateSearchCache,
+          db_, &SearchDb::updateSearchCache);
   connect(this, &SearchManager::addSearchEntry,
           db_, &SearchDb::addSearchEntry);
   connect(this, &SearchManager::searchAnchor,
@@ -39,6 +41,8 @@ SearchManager::SearchManager(QObject* parent)
           this, &SearchManager::searchAnchorResult);
   connect(this, &SearchManager::searchContent,
           db_, &SearchDb::searchContent);
+  connect(db_, &SearchDb::requestSearchEntry,
+          this, &SearchManager::requestSearchEntry);
   connect(db_, &SearchDb::searchContentResult,
           this, &SearchManager::searchContentResult);
   connect(db_, &SearchDb::searchContentMismatch,
