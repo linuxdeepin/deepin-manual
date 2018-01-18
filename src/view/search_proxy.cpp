@@ -21,21 +21,8 @@
 
 #include "controller/search_manager.h"
 
-dman::SearchProxy::SearchProxy(SearchManager* manager, QObject* parent)
-    : QObject(parent),
-      manager_(manager) {
-  Q_ASSERT(manager_ != nullptr);
+dman::SearchProxy::SearchProxy(QObject* parent) : QObject(parent) {
 }
 
 dman::SearchProxy::~SearchProxy() {
-
-}
-
-void dman::SearchProxy::addSearchEntry(const QString& app_name,
-                                       const QString& lang,
-                                       const QStringList& anchors,
-                                       const QStringList& anchorIdList,
-                                       const QStringList& contents) {
-  emit manager_->addSearchEntry(app_name, lang, anchors,
-                                anchorIdList, contents);
 }

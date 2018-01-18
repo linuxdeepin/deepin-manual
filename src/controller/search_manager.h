@@ -38,15 +38,6 @@ class SearchManager : public QObject {
   ~SearchManager() override;
 
  signals:
-  void updateSearchCache(const QString& manual_dir, const QStringList& manuals);
-
-  void requestSearchEntry(const QString& app_name, const QString& lang);
-
-  void addSearchEntry(const QString& app_name,
-                      const QString& lang,
-                      const QStringList& anchors,
-                      const QStringList& anchorIdList,
-                      const QStringList& contents);
   void searchAnchor(const QString& keyword);
   void searchAnchorResult(const QString& keyword,
                           const SearchAnchorResultList& result);

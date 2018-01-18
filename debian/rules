@@ -3,6 +3,7 @@
 export QT_SELECT=qt5
 export DH_VERBOSE=1
 
+DEB_TARGET_MULTIARCH ?= $(shell dpkg-architecture -qDEB_TARGET_MULTIARCH)
 DH_AUTO_ARGS = --parallel --buildsystem=cmake
 
 %:
@@ -15,6 +16,13 @@ override_dh_auto_configure:
 	  -DCMAKE_INSTALL_PREFIX=/usr
 
 override_dh_auto_build:
+ifneq (,$(wildcard .git/config))
 	git submodule update --init --recursive
 	git submodule update --remote
-	dh_auto_build -- dman
+else
+	rm -rf src/web/node_modules
+	git clone https://cr.deepin.io/vendor-deps src/web/node_modules
+	cd src/web/node_modules && git checkout deepin-manual
+endif
+	dh_auto_build -- dman update-search-db
+	./obj-${DEB_TARGET_MULTIARCH}/src/update-search-db

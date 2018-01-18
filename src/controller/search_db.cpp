@@ -24,33 +24,11 @@
 #include <QSqlError>
 #include <QSqlQuery>
 
-#include "base/consts.h"
-#include "cppjieba/Jieba.hpp"
-
 namespace dman {
 
 namespace {
 
-const char kAppTableSchema[] = "CREATE TABLE IF NOT EXISTS app "
-    "(id INTEGER PRIMARY KEY AUTOINCREMENT,"
-    "appName TEXT,"
-    "lang TEXT,"
-    "updated INTEGER,"
-    "timestamp DATETIME)";
-
-const char kAppIndexSchema[] = "CREATE INDEX IF NOT EXISTS app_idx "
-    "ON search (id, appName, lang)";
-
-const char kAppSelect[] = "SELECT * FROM app WHERE appName = ? and lang = ?";
-
-const char kAppInsert[] = "INSERT INTO app "
-    "(appName, lang, updated, timestamp) VALUES (?, ?, ?, ?)";
-
-const char kAppUpdateTimestamp[] = "UPDATE app "
-    "SET updated = 1, timestamp = :timestamp "
-    "WHERE appName = :appName "
-    "AND lang = :lang "
-    "AND timestamp != :timestamp";
+const char kSearchDropTable[] = "DROP TABLE IF EXISTS search";
 
 const char kSearchTableSchema[] = "CREATE TABLE IF NOT EXISTS search "
     "(id INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -81,24 +59,10 @@ const char kSearchSelectContent[] = "SELECT appName, anchor, anchorId, content "
 
 const int kResultLimitation = 10;
 
-const char kJiebaDict[] = JIEBA_DICT "/jieba.dict.utf8";
-const char kHmmDict[] = JIEBA_DICT "/hmm_model.utf8";
-const char kUserDict[] = JIEBA_DICT "/user.dict.utf8";
-const char kIdfFile[] = JIEBA_DICT "/idf.utf8";
-const char kStopWords[] = JIEBA_DICT "/stop_words.utf8";
-
-QString GetDbName() {
-  QDir cache_dir(GetCacheDir());
-  cache_dir.mkpath(".");
-  return cache_dir.absoluteFilePath("search_entry.db");
-}
-
 }  // namespace
 
 struct SearchDbPrivate {
   QSqlDatabase db;
-  bool is_update_cache_emitted = false;
-  cppjieba::Jieba* jieba = nullptr;
 };
 
 SearchDb::SearchDb(QObject* parent)
@@ -110,11 +74,6 @@ SearchDb::SearchDb(QObject* parent)
   qRegisterMetaType<SearchContentResultList>("SearchContentResultList");
 
   this->initConnections();
-  p_->jieba = new cppjieba::Jieba(kJiebaDict,
-                                  kHmmDict,
-                                  kUserDict,
-                                  kIdfFile,
-                                  kStopWords);
 }
 
 SearchDb::~SearchDb() {
@@ -122,46 +81,33 @@ SearchDb::~SearchDb() {
     if (p_->db.isOpen()) {
       p_->db.close();
     }
-    if (p_->jieba != nullptr) {
-      delete p_->jieba;
-      p_->jieba = nullptr;
-    }
     delete p_;
     p_ = nullptr;
   }
 }
 
 void SearchDb::initConnections() {
-  connect(this, &SearchDb::initDb,
-          this, &SearchDb::handleInitDb);
-  connect(this, &SearchDb::updateSearchCache,
-          this, &SearchDb::handleUpdateSearchCache);
-  connect(this, &SearchDb::addSearchEntry,
-          this, &SearchDb::handleAddSearchEntry);
+  connect(this, &SearchDb::initDbAsync,
+          this, &SearchDb::initDb);
   connect(this, &SearchDb::searchAnchor,
           this, &SearchDb::handleSearchAnchor);
   connect(this, &SearchDb::searchContent,
           this, &SearchDb::handleSearchContent);
 }
 
-void SearchDb::handleInitDb() {
+void SearchDb::initDb(const QString& db_path) {
   p_->db = QSqlDatabase::addDatabase("QSQLITE");
-  const QString db_path = GetDbName();
   p_->db.setDatabaseName(db_path);
   if (!p_->db.open()) {
     qCritical() << "Failed to open search db:" << db_path;
     return;
   }
+}
 
+void SearchDb::initSearchTable() {
   QSqlQuery query(p_->db);
-  if (!query.exec(kAppTableSchema)) {
-    qCritical() << "Failed to initialize app table:"
-                << query.lastError().text();
-    return;
-  }
-  if (!query.exec(kAppIndexSchema)) {
-    qCritical() << "Failed to create index for app table"
-                << query.lastError().text();
+  if (!query.exec(kSearchDropTable)) {
+    qCritical() << "Failed to drop search table";
     return;
   }
 
@@ -177,86 +123,14 @@ void SearchDb::handleInitDb() {
   }
 }
 
-void SearchDb::handleUpdateSearchCache(const QString& manual_dir,
-                                       const QStringList& manuals) {
-  qDebug() << Q_FUNC_INFO << manual_dir << manuals;
-  // 1. Get app list which are available to update.
-  // 2. Request update search entry.
-  // 2.1. Discard other responses.
-  // 3. Write search entry to db.
-
-  // This slot can only be triggered once in current process.
-  if (p_->is_update_cache_emitted) {
-    return;
-  }
-  p_->is_update_cache_emitted = true;
-
-  const QString locale = QLocale().name();
-  QDir dir(manual_dir);
-  QSqlQuery query(p_->db);
-
-  for (const QString& app_name : manuals) {
-    QDateTime mtime;
-    const QString filepath = QStringList{
-        manual_dir,
-        app_name,
-        locale,
-        "index.md",
-    }.join(QDir::separator());
-    QFileInfo file_info(filepath);
-    if (!file_info.isFile()) {
-      qWarning() << "manual not found:" << filepath;
-      continue;
-    }
-
-    mtime = file_info.lastModified();
-    query.prepare(kAppSelect);
-    query.bindValue(0, app_name);
-    query.bindValue(1, locale);
-    if (!query.exec()) {
-      qWarning() << Q_FUNC_INFO << query.lastError().text();
-      continue;
-    }
-
-    // 1. not found, insert
-    // 2. exists, updated
-    // 3. exists, need to update
-    if (query.next()) {
-      // Update record.
-      qDebug() << "update:" << filepath;
-      query.prepare(kAppUpdateTimestamp);
-      query.bindValue(":timestamp", mtime.toMSecsSinceEpoch());
-      query.bindValue(":appName", app_name);
-      query.bindValue(":lang", locale);
-    } else {
-      // Insert record.
-      query.prepare(kAppInsert);
-      query.bindValue(0, app_name);
-      query.bindValue(1, locale);
-      query.bindValue(2, 1);
-      query.bindValue(3, mtime.toMSecsSinceEpoch());
-    }
-    if (!query.exec()) {
-      qCritical() << Q_FUNC_INFO << query.lastError().text();
-    }
-  }
-
-  p_->db.commit();
-
-
-}
-
-void SearchDb::handleAddSearchEntry(const QString& app_name,
-                                    const QString& lang,
-                                    const QStringList& anchors,
-                                    const QStringList& anchorIdList,
-                                    const QStringList& contents) {
+void SearchDb::addSearchEntry(const QString& app_name,
+                              const QString& lang,
+                              const QStringList& anchors,
+                              const QStringList& anchorIdList,
+                              const QStringList& contents) {
   Q_ASSERT(p_->db.isOpen());
   Q_ASSERT(anchors.length() == contents.length());
-  qDebug() << Q_FUNC_INFO << app_name;
-
-  // Do not insert into db if this search entry no need to update.
-  return;
+  qDebug() << "addSearchEntry()" << app_name << lang;
 
   if (anchors.length() != contents.length() ||
       anchors.length() != anchorIdList.length()) {
@@ -277,14 +151,6 @@ void SearchDb::handleAddSearchEntry(const QString& app_name,
   query.prepare(kSearchInsertEntry);
   bool ok = true;
   for (int i = 0; ok && (i < anchors.length()); ++i) {
-    // NOTE(Shaohua): Disable jieba
-//    const std::string content_std(contents.at(i).toLower().toStdString());
-//    std::vector<std::string> word_list;
-//    p_->jieba->CutForSearch(content_std, word_list);
-//    const std::string words_std = limonp::Join(word_list.begin(),
-//                                               word_list.end(),
-//                                               "/");
-//    const QString words = QString::fromStdString(words_std);
     const QString words;
 
     // Save to database.

@@ -50,7 +50,7 @@ WebWindow::WebWindow(SearchManager* search_manager, QWidget* parent)
     : Dtk::Widget::DMainWindow(parent),
       app_name_(),
       search_manager_(search_manager),
-      search_proxy_(new SearchProxy(search_manager, this)),
+      search_proxy_(new SearchProxy(this)),
       search_timer_() {
 
   search_timer_.setSingleShot(true);
@@ -88,8 +88,6 @@ void WebWindow::initConnections() {
 
   connect(search_manager_, &SearchManager::searchAnchorResult,
           this, &WebWindow::onSearchAnchorResult);
-  connect(search_manager_, &SearchManager::requestSearchEntry,
-          search_proxy_, &SearchProxy::requestSearchEntry);
   connect(search_manager_, &SearchManager::searchContentResult,
           search_proxy_, &SearchProxy::onContentResult);
   connect(search_manager_, &SearchManager::searchContentMismatch,
@@ -219,11 +217,6 @@ void WebWindow::onWebPageLoadFinished(bool ok) {
             QString("open('%1')").arg(app_name_));
       }
     }
-
-    // Notify search manager to update search entry.
-    // This signal is reentrant.
-    search_manager_->updateSearchCache(manual_proxy_->getSystemManualDir(),
-                                       manual_proxy_->getSystemManualList());
   }
 }
 

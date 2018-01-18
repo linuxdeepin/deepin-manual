@@ -4,14 +4,16 @@ project(deepin-manual C CXX)
 #set(CMAKE_CXX_COMPILER  /usr/bin/clang++)
 
 if (DMAN_RELEASE)
+  add_definitions(-DDMAN_SEARCH_DB="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/search.db")
   add_definitions(-DDMAN_WEB_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/web")
   add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual")
-  add_definitions(-DJIEBA_DICT="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/dict")
 else()
+  add_definitions(-DDMAN_SEARCH_DB="${CMAKE_CURRENT_BINARY_DIR}/search.db")
   add_definitions(-DDMAN_WEB_DIR="${CMAKE_CURRENT_BINARY_DIR}/web")
   add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_SOURCE_DIR}/manual")
-  add_definitions(-DJIEBA_DICT="${CMAKE_CURRENT_SOURCE_DIR}/third_party/cppjieba/dict")
 endif ()
+add_definitions(-DDMAN_SEARCH_ORIG_DB="${CMAKE_CURRENT_BINARY_DIR}/search.db")
+add_definitions(-DDMAN_SEARCH_WORK_DIR="${CMAKE_CURRENT_SOURCE_DIR}/web")
 
 add_subdirectory(dbus)
 add_subdirectory(resources)
@@ -62,12 +64,8 @@ find_package(Qt5LinguistTools REQUIRED)
 pkg_search_module(DtkWidget REQUIRED dtkwidget)
 pkg_search_module(QCef REQUIRED libqcef)
 
-add_subdirectory(third_party/cppjieba)
-
 include_directories(${DtkWidget_INCLUDE_DIRS})
 include_directories(${QCef_INCLUDE_DIRS})
-include_directories(third_party/cppjieba/deps)
-include_directories(third_party/cppjieba/include)
 
 set(LINK_LIBS
     Qt5::Core
@@ -81,6 +79,8 @@ set(LINK_LIBS
     )
 
 set(BASE_FILES
+    base/command.cpp
+    base/command.h
     base/consts.cpp
     base/consts.h
     base/file_util.cpp
@@ -153,6 +153,17 @@ set(VIEW_FILES
     )
 
 # Main executable
+set(SEARCH_FILES
+    app/update_search_db.cpp
+    base/command.cpp
+    base/command.h
+    controller/search_db.cpp
+    controller/search_db.h
+    )
+add_executable(update-search-db
+               ${SEARCH_FILES})
+target_link_libraries(update-search-db ${LINK_LIBS})
+
 # Generate .qm files from .ts files.
 file(GLOB DMAN_TRANSLATION_TS
      ${CMAKE_SOURCE_DIR}/translations/deepin-manual*.ts)
@@ -227,15 +238,11 @@ install(TARGETS dman-search
 install(DIRECTORY ${CMAKE_BINARY_DIR}/translations
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
 
-# Jieba Dictionary
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/third_party/cppjieba/dict
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual
-        PATTERN "pos_dict" EXCLUDE
-        PATTERN "README.md" EXCLUDE
-        )
-
 install(DIRECTORY ${CMAKE_SOURCE_DIR}/manual
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
 
 install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/web
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
+
+install(FILES ${CMAKE_CURRENT_BINARY_DIR}/search.db
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)

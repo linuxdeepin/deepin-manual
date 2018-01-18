@@ -33,15 +33,7 @@ class SearchDb : public QObject {
   ~SearchDb() override;
 
  signals:
-  void initDb();
-
-  void updateSearchCache(const QString& manual_dir, const QStringList& manuals);
-  void requestSearchEntry(const QString& app_name, const QString& lang);
-  void addSearchEntry(const QString& app_name,
-                      const QString& lang,
-                      const QStringList& anchors,
-                      const QStringList& anchorIdList,
-                      const QStringList& contents);
+  void initDbAsync(const QString& db_path);
 
   // Only search in anchor.
   void searchAnchor(const QString& keyword);
@@ -55,20 +47,21 @@ class SearchDb : public QObject {
                            const QStringList& contents);
   void searchContentMismatch(const QString& keyword);
 
+ public slots:
+  void initDb(const QString& db_path);
+  void initSearchTable();
+  void addSearchEntry(const QString& app_name,
+                      const QString& lang,
+                      const QStringList& anchors,
+                      const QStringList& anchorIdList,
+                      const QStringList& contents);
+
  private:
   void initConnections();
 
   SearchDbPrivate* p_ = nullptr;
 
  private slots:
-  void handleInitDb();
-  void handleUpdateSearchCache(const QString& manual_dir,
-                               const QStringList& manuals);
-  void handleAddSearchEntry(const QString& app_name,
-                            const QString& lang,
-                            const QStringList& anchors,
-                            const QStringList& anchorIdList,
-                            const QStringList& contents);
   void handleSearchAnchor(const QString& keyword);
   void handleSearchContent(const QString& keyword);
 };
