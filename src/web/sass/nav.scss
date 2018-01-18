@@ -1,56 +1,59 @@
 @charset "utf-8";
 #nav {
-	user-select: none;
-	position: fixed;
-	top: 0;
-	left: 0;
-	max-width: 300px;
-	height: 100%;
-	overflow-y: auto;
-	white-space: nowrap;
-	&::-webkit-scrollbar {
-		width: 6px;
-	}
-	&::-webkit-scrollbar-thumb {
-		background-color: #888888;
-		border-radius: 4px;
-		border: 1px solid transparent;
-		background-clip: content-box;
-	}
-	&::-webkit-scrollbar-thumb:hover {
-		border: 1px solid #414141;
-		background-color: #414141;
-	}
-	#hlist {
-		overflow: hidden;
-		border-right: 1px solid rgba(0, 0, 0, 0.1);
-		div {
-			margin: 10px 0;
-			cursor: pointer;
-			border-right: 3px solid transparent;
-			&[type="h2"] {
-				font-size: 16px;
-				font-weight: 500;
-				color: #00162c;
-				padding: 3px 0px;
-				text-indent: 34px;
-				overflow-x: hidden;
-				text-overflow: ellipsis;
-			}
-			&[type="h3"] {
-				font-size: 12px;
-				color: #000000;
-				padding: 6px;
-				text-indent: 44px;
-				overflow-x: hidden;
-				text-overflow: ellipsis;
-			}
-		}
-		.hash {
-			border-right: #30a5f9 3px solid;
-			background-color: #d5edfe;
-			color: #2ca7f8;
-			font-weight: bold;
-		}
-	}
+  user-select: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  max-width: 300px;
+  height: 100%;
+  overflow-y: auto;
+  white-space: nowrap;
+  &::-webkit-scrollbar {
+    width: 6px;
+  }
+  &::-webkit-scrollbar-thumb {
+    background-color: #888888;
+    border-radius: 4px;
+    border: 1px solid transparent;
+    background-clip: content-box;
+  }
+  &::-webkit-scrollbar-thumb:hover {
+    border: 1px solid #414141;
+    background-color: #414141;
+  }
+  direction: rtl;
+  #hlist {
+    direction: ltr;
+    overflow: hidden;
+    border-right: 1px solid rgba(0, 0, 0, 0.1);
+    div {
+      margin: 10px 0;
+      cursor: pointer;
+      border-right: 3px solid transparent;
+      &[type='h2'] {
+        font-size: 16px;
+        font-weight: 500;
+        color: #00162c;
+        padding: 3px 0px;
+        text-indent: 34px;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+      }
+      &[type='h3'] {
+        font-size: 12px;
+        color: #000000;
+        padding: 6px;
+        padding-right: 20px;
+        text-indent: 44px;
+        overflow-x: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+    .hash {
+      border-right: #30a5f9 3px solid;
+      background-color: #d5edfe;
+      color: #2ca7f8;
+      font-weight: bold;
+    }
+  }
 }
