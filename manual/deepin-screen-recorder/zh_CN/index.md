@@ -38,7 +38,7 @@
 4. 录制完成后点击dock栏上的图标结束录制。
 5. 结束后视频将自动保存到桌面。
 
-![1|recoder](png/recoder.png)
+![1|recoder](jpg/recoder.jpg)
 
 ### 选择录制区域
 
@@ -48,16 +48,16 @@
 
 -自定义窗口：在选择录制区域时，可以使用鼠标圈选任意区域，被圈选的区域上显示矩形选择框，此时您还可以拖动选择框内部和边缘来调整选择框的位置和大小，然后再单击鼠标选择当前窗口录制。
 
-![1|select](png/select.png)
+![1|select](jpg/select.jpg)
 
 ### 选择录制格式
 
 深度录屏可以录制GIF和MP4格式的视频，在选择好录制区域后，开始录制按钮下方还有GIF和MP4两个选择按钮，如果默认选择的录制格式不是您想要的，请更改录制格式之后再开始录制。
 
-![1|select](png/select.png)
+![1|select](jpg/select.jpg)
 
 ### 查看帮助手册
 
 启动深度录屏后按下键盘上的 ![F1](icon/F1.svg) 键即可打开帮助手册。
 
-![1|help](png/help.png)
+![1|help](jpg/help.jpg)

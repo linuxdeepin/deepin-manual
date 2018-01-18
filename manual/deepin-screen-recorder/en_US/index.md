@@ -39,7 +39,7 @@ You can customize the recording area and select the recording format before reco
 > ![notes](icon/notes.svg)：The video will be saved automatically on desktop after ending.
 
 
-![1|recorder](png/recorder.png)
+![1|recorder](jpg/recorder.jpg)
 
 ### Select Recording Area
 
@@ -49,16 +49,16 @@ After running Deepin Screen Recorder, you can select the recording area, namely 
 
 -Customizing window: When selecting a recording area, you can use the mouse to select any area and then adjust the rectangle box location and size, finally click to select the current window for recording.
 
-![1|select](png/select.png)
+![1|select](jpg/select.jpg)
 
 ### Select Recording Format
 
 Videos in GIF and MP4 can be recorded by Deepin Screen Recorder. After selecting the recording area, you can select GIF or MP4 to record.
 
-![1|select](png/select.png)
+![1|select](jpg/select.jpg)
 
 ### View Help
 
 Pres ![F1](icon/F1.svg) to view the manual after starting Deepin Screen Recorder.
 
-![1|help](png/help.png)
+![1|help](jpg/help.jpg)

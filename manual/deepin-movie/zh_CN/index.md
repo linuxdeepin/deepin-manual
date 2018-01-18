@@ -6,7 +6,7 @@
 
 深度影院提供了直观易用的操作界面和丰富齐全的快捷键，依靠键盘您就能完成所有的播放操作，让您彻底摆脱鼠标点击的束缚。您可以使用深度影院播放多种格式的视频文件，利用流媒体功能轻松欣赏到网络视频资源。
 
-![1|主界面](png/homeinterface.png)
+![1|主界面](jpg/homeinterface.jpg)
 
 ## 使用入门|../common/icon_guide.svg|
 
@@ -31,7 +31,7 @@
 1. 在深度影院界面，按下键盘上的 ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![QM](icon/QM.svg) 组合键，打开快捷键预览界面。
 2. 在快捷键预览界面，您可以查看到所有的快捷键。
 
-  ![1|快捷键界面](png/shortcut.png)
+  ![1|快捷键界面](jpg/shortcut.jpg)
 
 > ![attention](icon/attention.svg) ：在视频播放的过程中，您也可以随时调出快捷键预览界面。
 
@@ -39,7 +39,7 @@
 
 执行常用的播放操作，享受视频带给您的快乐！
 
-  ![1|播放视频界面](png/playmovie.png)
+  ![1|播放视频界面](jpg/playmovie.jpg)
 
 <table class="block1">
     <tbody>
@@ -128,7 +128,7 @@
 
 > ![attention](icon/attention.svg) ：使用深度影院在线播放视频时，请确保您的电脑是连入网络的。
 
-![0|open](png/open.png)
+![0|open](jpg/open.jpg)
 
 ### 快进/快退
 
@@ -156,7 +156,7 @@
 
 >![notes](icon/notes.svg) ：您可以在播放窗口上双击鼠标，播放窗口将在 **全屏/正常窗口** 之间切换。
 
-![0|windows](png/windows.png)
+![0|windows](jpg/windows.jpg)
 
 ### 调整播放模式
 
@@ -168,7 +168,7 @@
  - 选择 **单个循环**，深度影院将循环播放当前影片。
  - 选择 **列表循环**，深度影院将按照播放列表顺序依次播放影片，播放列表中最后一个文件播放结束后重新播放第一个文件。
 
-![0|mode](png/mode.png)
+![0|mode](jpg/mode.jpg)
 
 ### 调整画面
 1. 在深度影院界面上，单击鼠标右键。
@@ -176,7 +176,7 @@
  - 选择一种画面比例，将播放画面调整成相应的比例。
  - 选择一种选择旋转方式，将播放画面相应旋转。
 
-![0|move](png/move.png)
+![0|move](jpg/move.jpg)
 
 ### 调整声音
 1. 在深度影院界面上，单击鼠标右键。
@@ -184,7 +184,7 @@
  - 选择 **声道**，选择影片的播放声道。
  - 选择 **音轨**，选择影片的播放音轨。
 
-![0|sound](png/sound.png)
+![0|sound](jpg/sound.jpg)
 
 ### 调整字幕
 1. 在深度影院界面上，单击鼠标右键。
@@ -195,7 +195,7 @@
  - 选择 **隐藏字幕**，取消当前的字幕显示。
  - 选择 **编码**，切换字幕的编码方式，来解决某些情况下字幕显示乱码的问题。
 
-![0|subtitle](png/subtitle.png)
+![0|subtitle](jpg/subtitle.jpg)
 
 ### 截图
 1. 在深度影院界面上，单击鼠标右键。
@@ -203,13 +203,13 @@
  - 选择 **截图**，可以对当前画面进行截图。
  - 选择 **截图**，可以分别截取影片不同时段的图片，最后组成一张剧情连拍预览图。
 
-![0|picture](png/picture.png)
+![0|picture](jpg/picture.jpg)
 
 ### 查看影片信息
 1. 在深度影院界面上，单击鼠标右键。
 2. 选择 **信息**，可以查看影片的文件类型、分辨率、大小、时长、路径。
 
-![1|info](png/info.png)
+![1|info](jpg/info.jpg)
 
 ## 列表管理|../common/icon_playlistsetting.svg|
 
@@ -227,21 +227,21 @@
 2. 点击![关闭图标](icon/icon_close.svg)。
 
 
-![1|delete](png/delete.png)
+![1|delete](jpg/delete.jpg)
 
 ### 清空播放列表
 
 1. 在播放列表界面，点击鼠标右键。
 2. 点击 **清空播放列表**。
 
-![1|clear](png/clear.png)
+![1|clear](jpg/clear.jpg)
 
 ### 在文件管理器中显示
 
 1. 在播放列表界面，右键单击您想查看的影片。
 2. 点击 **打开所在位置**，将自动跳转到文件管理器界面并显示到当前文件位置。
 
-![1|file](png/file.png)
+![1|file](jpg/file.jpg)
 
 ## 主菜单|../common/icon_optionsetting.svg|
 
@@ -258,7 +258,7 @@
   - 勾选 **最小化时暂停** 复选框，在深度影院最小化时自动暂停视频文件的播放。
 4. 在 **截图** 选项，您可以自定义截图的保存路径。
 
-![1|setting](png/setting1.png)
+![1|setting](jpg/setting1.jpg)
 
 ### 快捷键设置
 
@@ -267,7 +267,7 @@
 3. 在 **快捷键** 选项查看当前当前快捷键。
 4. 您可以选择并重新输入快捷键，来自定义快捷键。
 
-![1|setting](png/setting2.png)
+![1|setting](jpg/setting2.jpg)
 
 ### 字幕设置
 
@@ -279,7 +279,7 @@
 
 >  ![attention](icon/attention.svg)：点击设置界面上的 **恢复默认**,会将所有设置恢复到默认状态。
 
-![1|setting](png/setting3.png)
+![1|setting](jpg/setting3.jpg)
 
 ### 帮助
 
@@ -289,7 +289,7 @@
 2. 点击 **帮助**。
 3. 查看关于深度影院的帮助手册。
 
-![1|help](png/help.png)
+![1|help](jpg/help.jpg)
 
 
 ### 关于
@@ -300,7 +300,7 @@
 2. 点击 **关于**。
 3. 查看关于深度影院的版本和介绍。
 
-![0|about](png/about.png)
+![0|about](jpg/about.jpg)
 
 
 ### 退出

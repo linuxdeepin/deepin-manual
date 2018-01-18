@@ -1,4 +1,4 @@
-# 深度启动盘制作工具|../common/deepin-boot-maker.png|
+# 深度启动盘制作工具|../common/deepin-boot-maker.svg|
 
 ## 概述|../common/icon_overview.svg|
 
@@ -27,7 +27,7 @@
 
 ![notes](icon/notes.svg):请提前校验镜像文件的MD5值，确认和官网的MD5值一致后使用。非官方下载的镜像文件或者文件下载不完成可能会导致制作失败。
 
-![0|recoder](png/deepin-boot-maker-1-cn.png)
+![0|recoder](jpg/deepin-boot-maker-1-cn.jpg)
 
 ### 选择制作U盘
 
@@ -35,15 +35,15 @@
 
 ![tips](icon/tips.svg):建议勾选 **格式化磁盘可以提高制作成功率**。
 
-![0|recoder](png/deepin-boot-maker-2-cn.png)
+![0|recoder](jpg/deepin-boot-maker-2-cn.jpg)
 
 ### 制作完成
 
 制作过程需要一定的时间，请耐心等待，制作时请不要移除磁盘或关机。待进度条满格，出现 **制作成功** 的提示，表明启动盘已经制作完成。
 
-![3|recoder](png/deepin-boot-maker-3-cn.png)
-![3|recoder](png/deepin-boot-maker-4-cn.png)
-![3|recoder](png/deepin-boot-maker-5-cn.png)
+![3|recoder](jpg/deepin-boot-maker-3-cn.jpg)
+![3|recoder](jpg/deepin-boot-maker-4-cn.jpg)
+![3|recoder](jpg/deepin-boot-maker-5-cn.jpg)
 
 ## 主菜单|../common/icon_optionsetting.svg|
 
@@ -56,7 +56,7 @@
 2. 点击 **帮助**。
 3. 查看关于深度启动盘制作工具的帮助手册。
 
-![1|recoder](png/help.png)
+![1|recoder](jpg/help.jpg)
 
 ### 关于
 
@@ -66,7 +66,7 @@
 2. 点击 **关于**。
 3. 查看关于深度启动盘制作工具的版本和介绍。
 
-![0|recoder](png/about.png)
+![0|recoder](jpg/about.jpg)
 
 ### 退出
 

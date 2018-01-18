@@ -5,7 +5,7 @@ Deepin Movie is a video player with various features built in deepin. It offers 
 
 Deepin Movie, shares extreme play experience with you. Use it, you will love it!
 
-![1|main_interface](png/main_interface.png)
+![1|main_interface](jpg/main_interface.jpg)
 
 ## Guide |../common/icon_guide.svg|
 
@@ -25,7 +25,7 @@ Deepin Movie, shares extreme play experience with you. Use it, you will love it!
 - Right click on ![movie-24](icon/movie-24.png) on Dock, select **Close All** to exit.
 - Click on ![main_memu](icon/main_menu.svg) and select **Exit** to exit.
 
-![1|close_all](png/close_all.png)
+![1|close_all](jpg/close_all.jpg)
 
 ### View Shortcuts
 
@@ -104,11 +104,11 @@ Deepin Movie, shares extreme play experience with you. Use it, you will love it!
 </table>
 </p>
 
-![1|shortcuts](png/shortcuts.png)
+![1|shortcuts](jpg/shortcuts.jpg)
 
 ## Main Interface|../common/icon_maininterface.svg|
 
-![1|interface](png/interface.png)
+![1|interface](jpg/interface.jpg)
 <p>
 <table>
   <tr>
@@ -224,7 +224,7 @@ On Deepin Movie interface, you can do many operations according to needs.
 
 > ![notes](icon/notes.svg): You can also drag and drop the window in equal proportion by needs.
 
-![0|window](png/window.png)
+![0|window](jpg/window.jpg)
 
 ### Select Play Mode
 
@@ -236,7 +236,7 @@ On Deepin Movie interface, you can do many operations according to needs.
   - Check **Single Loop**, the film will be played over and over.
   - Check ** List Loop**, the whole playlist will be played over and over.
 
-![0|play_mode](png/play_mode.png)
+![0|play_mode](jpg/play_mode.jpg)
 
 ### Adjust Frame
 
@@ -245,7 +245,7 @@ On Deepin Movie interface, you can do many operations according to needs.
   - Adjust the flim aspect ratio between 4:3, 16:9, 16:10, 1.85:1 and 2.35:1.
   - Rotate the flim frame clockwise or counterclockwise.
 
-![0|frame](png/frame.png)
+![0|frame](jpg/frame.jpg)
 
 ### Set Sound
 
@@ -254,21 +254,21 @@ On Deepin Movie interface, you can do many operations according to needs.
   - Check **Stereo**, the film will be played in stereo.
   - Check **Left channel**, the film will be played in left channel.
   - Check **Right channel**, the film will be played in right channel.
-3. Select **Sound** > **track**, you can select to play the film in a track.
+3. Select **Sound** > **Track**, you can select to play the film in a track.
 
-![0|sound](png/sound.png)
+![0|sound](jpg/sound.jpg)
 
 ### Set Subtitle
 
 1. Right click on Deepin Movie interface.
 2. Select **Subtitle**, you can:
   - Check **Load**, to manually load subtitles.
-  - Check **Online Search**, to search subtiles online for the film and auto load the subtitles.
+  - Check **Online Search**, to search subtitles online for the film and auto load the subtitles.
   - Check **Select**, to select a subtitle for the film.
   - Check **Hide**, to hide the current film subtitle.
   - Check **Encodings**, to select an encoding for the film.
 
-![0|subtitle](png/subtitle.png)
+![0|subtitle](jpg/subtitle.jpg)
 
 ### Take a Screenshot
 
@@ -277,7 +277,7 @@ On Deepin Movie interface, you can do many operations according to needs.
   - Check **Film Screenshot**, to take a screenshot of the film in current frame.
   - Check **Burst Shooting**, to take 15 pictures of the film in different times.
 
-![0|screenshot](png/screenshot.png)
+![0|screenshot](jpg/screenshot.jpg)
 
 ### View Film Info
 
@@ -286,7 +286,7 @@ On Deepin Movie interface, you can do many operations according to needs.
 
 > ![notes](icon/notes.svg): You can also right click on playlist to select **Film Info** to view.
 
-![1|info](png/info.png)
+![1|info](jpg/info.jpg)
 
 ## Playlist Management|../common/icon_playlistsetting.svg|
 
@@ -297,7 +297,7 @@ On Deepin Movie interface, you can do many operations according to needs.
 
 > ![notes](icon/notes.svg): You can also click on ![playlist](icon/playlist.svg) on the main interface to show/hide playlist.
 
-![1|playlist](png/playlist.png)
+![1|playlist](jpg/playlist.jpg)
 
 ### Add Film to Playlist
 
@@ -311,14 +311,14 @@ You can add film to playlist by the following ways:
 1. On the playlist of Deepin Movie, hover on a film.
 2. Click on the delete button on top right corner to delete file from playlist.
 
-![1|delete](png/delete.png)
+![1|delete](jpg/delete.jpg)
 
 ### Clear Playlist
 
 1. Right click on the playlist.
 2. Select **Clear playlist** to clear films from the playlist.
 
-![1|clear](png/clear.png)
+![1|clear](jpg/clear.jpg)
 
 
 ### Display in File Manager
@@ -326,7 +326,7 @@ You can add film to playlist by the following ways:
 1. Right click on the playlist.
 2. Select **Display in file manager** to show the film file in file manager.
 
-![1|display](png/display.png)
+![1|display](jpg/display.jpg)
 
 ## Main Menu|../common/icon_optionsetting.svg|
 ### Basic Settings
@@ -342,7 +342,7 @@ You can add film to playlist by the following ways:
  - Check the box of **Pause when minimized**, the film will be paused when minimizing Deepin Movie window.
 4. In the option of **Screenshot**, you can select the path to save screenshot.
 
-![1|basic](png/basic.png)
+![1|basic](jpg/basic.jpg)
 
 ### Shortcuts Settings
 
@@ -350,7 +350,7 @@ You can add film to playlist by the following ways:
 2. Select **Settings** > **Shortcuts**.
 3. You can set the shortcuts for playback, frame/sound, file, subtitle and screenshot.
 
-![1|settings](png/settings.png)
+![1|settings](jpg/settings.jpg)
 
 ### Subtitle Settings
 
@@ -360,17 +360,17 @@ You can add film to playlist by the following ways:
 
 > ![notes](icon/notes.svg): You can also click on **Restore Defaults** to restore all settings.
 
-![1|subtitle_settings](png/subtitle_settings.png)
+![1|subtitle_settings](jpg/subtitle_settings.jpg)
 
 ### Switch Theme
 
-The theme of Deepin Movie is dark by default, you can click on **Light Theme** to swith.
+The theme of Deepin Movie is dark by default, you can click on **Light Theme** to switch.
 
 1. On Deepin Movie interface, click on ![main_menu](icon/main_menu.svg).
 2. Select **Light Theme**.
 3. The interface will switch to light theme.
 
-![1|theme](png/theme.png)
+![1|theme](jpg/theme.jpg)
 
 ### Help
 
@@ -378,7 +378,7 @@ The theme of Deepin Movie is dark by default, you can click on **Light Theme** t
 2. Select **Help**.
 3. View the manual.
 
-![1|help](png/help.png)
+![1|help](jpg/help.jpg)
 
 ### About
 
@@ -386,7 +386,7 @@ The theme of Deepin Movie is dark by default, you can click on **Light Theme** t
 2. Select **About**.
 3. View the version description.
 
-![0|about](png/about.png)
+![0|about](jpg/about.jpg)
 
 ### Exit
 

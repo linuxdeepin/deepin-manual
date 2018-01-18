@@ -25,11 +25,11 @@ Open the server from the start menu in Windows, then you can see the the interfa
 ![notes](icon/notes.svg): IP address and authorization code are automatically displayed in the interface. If you want to update the authorization code, please set by the following steps:
 
 1. Input a new authorization code.
-2. Click on ![icon_update](icon/icon_update.png), the button will be grey after updated successuflly.
+2. Click on ![icon_update](icon/icon_update.png), the button will be grey after updated successfully.
 
 ![tips](icon/tips.svg): There is a context menu of server in the lower right corner of Windows. You can click here to configure, view "About" info or exit.
 
-![0|server-settings](png/server-settings.png)
+![0|server-settings](jpg/server-settings.jpg)
 
 ## Client Configuration|../common/icon_clientconfig.svg|
 
@@ -50,7 +50,7 @@ The client of Deepin Cloud Scan is preinstalled in deepin ISO.
 - Please close the firewall before enter the IP address, or IP address may be invalid.
 - If you need to delete the scanner, selected the scanner and click on ![icon_delete](icon/icon_delete.png) to delete.
 
- ![1|client-settings](png/client-settings.png)
+ ![1|client-settings](jpg/client-settings.jpg)
 
 ## Settings|../common/icon_optionsettings.svg| 
 
@@ -85,10 +85,10 @@ on "Add scanner" interface to exit.
 You can use Deepin Cloud Scan to scan files in deepin, the steps are as below.
 
 1. Click on ![icon_scan](icon/icon_scan.png) to enter the interface of scan settings.
-2. Click the top left corner to select **Preferences** to set the scanning paramters.
+2. Click the top left corner to select **Preferences** to set the scanning parameters.
 3. Click **Scan** to scan.
 
 ![attention](icon/attention.svg): If authorization code has been updated in Windows, when you are scanning a file, there will be a prompt of "The authorization code of cloud scan sever has been updated, please input a new authorization code". Please contact the administrator to get a new one to scan. If errors occurred during scanning, please reset according to the errors.
 
- ![0|scan-settings](png/scan-settings.png)
+ ![0|scan-settings](jpg/scan-settings.jpg)
 

@@ -4,7 +4,7 @@
 
 Deepin Terminal is a terminal emulator with simple interface, rich and powerful functions created by Deepin Technology. You can instantly start and close Deepin Terminal smoothly like normal file window, allowing you to input commands with facility and no distractions. Let's try the Quake mode, browse webs while inputting commands. When there are multiple tasks, you can add tabs in terminal to create more workspaces like in the browser or split the workspace into multiple windows. It's a piece of cake to upload and download files with remote management. More powerful functions are waiting for you to explore!
 
- ![1|interface](png/interface.png)
+ ![1|interface](jpg/interface.jpg)
 
 
 ## Guide|../common/icon_guide.svg|
@@ -37,14 +37,14 @@ You can run, exit or create shortcuts for Deepin Terminal.
 
 You can press ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![QM](icon/QM.svg) on keyboard to open shortcuts preview interface.
 
- ![1|shortcuts](png/shortcuts.png)
+ ![1|shortcuts](jpg/shortcuts.jpg)
 
 
 ## Basic Operations|../common/icon_basicoperation.svg|
 
 You can right click on Deepin Terminal interface to do daily operations.
 
- ![1|rightclick](png/rightclick.png)
+ ![1|rightclick](jpg/rightclick.jpg)
 
 
 ### Search ###
@@ -106,7 +106,7 @@ On Deepin Terminal interface, select the file in current directory and right-cli
 
 4. Click on **Open**.
 
- ![1|openfile](png/openfile.png)
+ ![1|openfile](jpg/openfile.jpg)
 
 
 ### Switch Encoding ###
@@ -119,7 +119,7 @@ You can quickly switch the encoding according to your needs.
 
 3. Select the encoding to switch in the encoding list.
 
- ![1|unicode](png/unicode.png)
+ ![1|unicode](jpg/unicode.jpg)
 
 
 ## Window Operations|../common/icon_windowoperation.svg|
@@ -137,7 +137,7 @@ You can create a new window in the following ways:
 
 3. Press ![Ctrl](icon/Ctrl.svg)+![Alt](icon/Alt.svg)+ 1~9 Number key to open new windows in different colors.
 
- ![0|new_window](png/new_window.png)
+ ![0|new_window](jpg/new_window.jpg)
 
 ### Rename Window ###
 
@@ -150,7 +150,7 @@ You can create a new window in the following ways:
 
 > ![tips](icon/tips.svg): You can also press ![F2](icon/F2.svg)  to rename the window title.
 
- ![1|rename](png/rename.png)
+ ![1|rename](jpg/rename.jpg)
 
 
 ### Split Window ###
@@ -165,7 +165,7 @@ You can create a new window in the following ways:
 
 > ![tips](icon/tips.svg): You can also press ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![J](icon/J.svg) on keyboard to split vertically, and press ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![H](icon/H.svg) to split horizontally.
 
- ![1|splitscreen](png/splitscreen.png)
+ ![1|splitscreen](jpg/splitscreen.jpg)
 
 
 ### Display Window in Fullscreen ###
@@ -177,7 +177,7 @@ You can create a new window in the following ways:
 3. If you want to restore the normal display, please press ![F11](icon/F11.svg).
 
 > ![notes](icon/notes.svg): You can also right click to select **Fullscreen** or **Exit fullscreen** on Deepin Terminal interface.
-For developers, can use command **-m --window-mode ** to adjust the window mode.
+> For developers, can use command **-m --window-mode ** to adjust the window mode.
 
 ### Close Window ###
 
@@ -191,14 +191,14 @@ For multiple splitting windows, you can execute the following operations to clos
 
   - Select **Close other windows** to close other splitting windows except the current window.
 
- ![1|closewindow](png/closewindow.png)
+ ![1|closewindow](jpg/closewindow.jpg)
 
 
 ## Workspace Operations|../common/icon_workspaceoperation.svg|
 
 The current workspace status will be displayed in different colors of workspace tabs.
 
- ![1|workspace](png/workspace.png)
+ ![1|workspace](jpg/workspace.jpg)
 
 
 ### New Workspace ###
@@ -248,7 +248,7 @@ You can right click or click the main menu to open remote management panel to ad
 
 5. If you need more parameters, please click on **Advanced options** to set, the default certificate file located in ~/.ssh/id_rsa.
 
- ![1|addssh](png/addssh-all.png)
+ ![1|addssh](jpg/addssh-all.jpg)
 
 > ![notes](icon/notes.svg): You can also press ![Ctrl](icon/Ctrl.svg)+![Slash](icon/Slash.png) to open the remote management panel.
 
@@ -260,7 +260,7 @@ You can right click or click the main menu to open remote management panel to ad
 
 3. Click on **Save** to save the editing.
 
- ![0|editssh](png/editssh.png)
+ ![0|editssh](jpg/editssh.jpg)
 
 
 ### Group Servers ###
@@ -275,7 +275,7 @@ When we set a group for a server, it will be added in the group and displayed in
 
 4. Then this server will be grouped.
 
- ![0|groupssh](png/groupssh.png)
+ ![0|groupssh](jpg/groupssh.jpg)
 
 
 ### Search Server ###
@@ -286,7 +286,7 @@ When there are many servers, the search box will be displayed on the top of remo
 
 2. The search results will be displayed at the panel.
 
-![0|searchssh](png/searchssh.png)
+![0|searchssh](jpg/searchssh.jpg)
 
 > ![notes](icon/notes.svg): You can customize the searched server name according to needs.
 
@@ -303,7 +303,7 @@ You can upload and download files after logged in a server.
 
 3. Select file to upload.
 
-![1|upload](png/upload.png)
+![1|upload](jpg/upload.jpg)
 
 
 #### Download File ####
@@ -314,7 +314,7 @@ You can upload and download files after logged in a server.
 
 3. Select file to download.
 
-![1|download](png/download.png)
+![1|download](jpg/download.jpg)
 
 
 ### Delete Server ###
@@ -325,7 +325,7 @@ You can upload and download files after logged in a server.
 
 3. Select **Delete server** at the bottom to delete.
 
-![0|groupssh](png/groupssh.png)
+![0|groupssh](jpg/groupssh.jpg)
 
 ## Main Menu|../common/icon_settings.svg|
 
@@ -337,7 +337,7 @@ You can upload and download files after logged in a server.
 
 3. The themes will be displayed on the right list, then you can select one to take effect right now.
 
- ![1|change](png/change.png)
+ ![1|change](jpg/change.jpg)
 
 ### Custom Commands ###
 
@@ -351,7 +351,7 @@ You can upload and download files after logged in a server.
 
 5. Click on **Add**.
 
- ![1|command](png/command.png)
+ ![1|command](jpg/command.jpg)
 
 > ![notes](icon/notes.svg): You can also right click on the Deepin Terminal interface and select **Custom commands** to add.
 
@@ -367,7 +367,7 @@ You can upload and download files after logged in a server.
 
   - Set the font and font size.
 
- ![0|generalset](png/generalset.png)
+ ![0|generalset](jpg/generalset.jpg)
 
 ### Shortcuts Settings ###
 
@@ -381,7 +381,7 @@ You can upload and download files after logged in a server.
 
   - Press ![Backspace](icon/Backspace.svg) if you want to disable the shortcut.
 
- ![0|hotkeyset](png/hotkeyset.png)
+ ![0|hotkeyset](jpg/hotkeyset.jpg)
 
 
 ### Advanced Settings ###
@@ -406,7 +406,7 @@ You can upload and download files after logged in a server.
 
   - Enable or disable **Hide quake window after lost focus**.
 
- ![0|advanced](png/advanced.png)
+ ![0|advanced](jpg/advanced.jpg)
 
 > ![notes](icon/notes.svg): If you need to restore all default settings, please click on **Restore Defaults**.
 
@@ -419,7 +419,7 @@ You can click on **Help** to view the manual.
 
 2. Click on **Help** to view the manual of Deepin Terminal.
 
- ![1|help](png/help.png)
+ ![1|help](jpg/help.jpg)
 
 
 ### About ###
@@ -430,7 +430,7 @@ You can click on **About** to view the introduction of Deepin Terminal.
 
 2. Click on **About** to view the introduction of Deepin Terminal.
 
- ![0|about](png/about.png)
+ ![0|about](jpg/about.jpg)
 
 
 ### Exit ###

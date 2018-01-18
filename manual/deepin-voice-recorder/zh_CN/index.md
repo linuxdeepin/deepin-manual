@@ -39,7 +39,7 @@
 
 > ![tips](icon/tips.svg)：录音过程中您可以点击 ![pause](icon/pause.svg) 按钮暂停录音，想继续录音时再点一下就可以了。
 
-![0|recoder](png/recoder.png)
+![0|recoder](jpg/recoder.jpg)
 
 ### 录音回放
 
@@ -47,7 +47,7 @@
 
 > ![tips](icon/tips.svg)：收听录音回放时可以点击按钮暂停或停止播放录音。
 
-![0|replay](png/replay.png)
+![0|replay](jpg/replay.jpg)
 
 ### 录音重命名
 
@@ -58,7 +58,7 @@
 3. 输入文件名称。
 4. 鼠标点击界面空白处或者按下键盘上的 ![Enter](icon/Enter.svg) 键。
 
-![0|rename](png/rename.png)
+![0|rename](jpg/rename.jpg)
 
 ### 查看保存目录
 
@@ -66,14 +66,14 @@
 - 在深度录音界面上，右键单击一个录音文件，选择 **在文件管理器中显示**。
 - 在深度录音界面上，选择 ![icon_menu](icon/icon_menu.svg) > **打开保存目录**。
 
-![0|file](png/file.png)
+![0|file](jpg/file.jpg)
 
 ### 删除录音
 
 1. 在深度录音界面上，右键单击一个录音文件。
 2. 选择 **移动到回收站**。
 
-![0|delete](png/delete.png)
+![0|delete](jpg/delete.jpg)
 
 ## 主菜单|../common/icon_optionsetting.svg|
 
@@ -83,7 +83,7 @@
 2. 点击 **新录音**。
 3. 立即开始录制一个新录音，如果之前您正在录音，录音会自动保存并开始新录音。
 
-![0|new](png/new.png)
+![0|new](jpg/new.jpg)
 
 ### 帮助
 
@@ -93,7 +93,7 @@
 2. 点击 **帮助**。
 3. 查看关于深度录音的帮助手册。
 
-![1|heip](png/help.png)
+![1|heip](jpg/help.jpg)
 
 
 ### 关于
@@ -104,4 +104,4 @@
 2. 点击 **关于**。
 3. 查看关于深度录音的版本和介绍。
 
-![0|about](png/about.png)
+![0|about](jpg/about.jpg)

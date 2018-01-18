@@ -1,4 +1,4 @@
-# Deepin Package Manager |../common/deepin-deb-installer-48px.svg|
+# Deepin Package Manager |../common/deepin-deb-installer.svg|
 
 ## Overview|../common/icon_overview.svg|
 
@@ -12,7 +12,7 @@ Deepin Package Manager is an application used to help users install and remove l
 - Double click on a .deb package to run.
 - Click on the icon of Deepin Package Manager to run.
 
-![1|add](png/add.png)
+![1|add](jpg/add.jpg)
 
 
 ### Single Install
@@ -20,15 +20,15 @@ Deepin Package Manager is an application used to help users install and remove l
 1. On Deepin Package Manager interface, click on **Select File** to add a .deb package.
 2. The application will detect the package status:
    - Newly installed, select **Install** to continue.
-   - Other version installed, select **Renstall** to continue or **Remove** to uninstall.
-3. Password required to continue when clicking on **Install** or **Renstall**.
+   - Other version installed, select **Reinstall** to continue or **Remove** to uninstall.
+3. Password required to continue when clicking on **Install** or **Reinstall**.
 4. Click on ![arrow_up](icon/arrow_up.svg) or ![arrow_down](icon/arrow_down.svg) to display or collapse the installing process.
 5. Click on **Back** to newly add or click on **OK** to exit.
 
 
 > ![notes](icon/notes.svg): You can also drag and drop file to Deepin Package Manager to add.
 
-![1|single-install](png/single-install.png)
+![1|single-install](jpg/single-install.jpg)
 
 
 ### Bulk Install
@@ -43,7 +43,7 @@ Deepin Package Manager is an application used to help users install and remove l
 
 > ![notes](icon/notes.svg): No more file can be added after you successfully added multiple files in one time.
 
-![1|bulk-install](png/bulk-install.png)
+![1|bulk-install](jpg/bulk-install.jpg)
 
 
 
@@ -53,7 +53,7 @@ Deepin Package Manager is an application used to help users install and remove l
 2. View the reason unable to install: broken dependencies or unmatched package architecture.
 3. Click on **Back** to newly add or click on **OK** to exit.
 
-![1|unable](png/unable.png)
+![1|unable](jpg/unable.jpg)
 
 
 ### Uninstall
@@ -61,12 +61,12 @@ Deepin Package Manager is an application used to help users install and remove l
 1. On Deepin Package Manager interface, click on **Select File** to add a .deb package.
 2. The application will detect the package status:
    - Newly installed, select **Install** to continue.
-   - Other version installed, select **Renstall** to continue or **Remove** to uninstall.
-3. Click on **Remove**, then there will be a prompt and click on **Confirm** to unistall.
+   - Other version installed, select **Reinstall** to continue or **Remove** to uninstall.
+3. Click on **Remove**, then there will be a prompt and click on **Confirm** to uninstall.
 4. Click on ![arrow_up](icon/arrow_up.svg) or ![arrow_down](icon/arrow_down.svg) to display or collapse the uninstall process.
 5. Click on **Back** to newly add or click on **OK** to exit.
 
-![1|remove](png/remove.png)
+![1|remove](jpg/remove.jpg)
 
 
 ## Main Menu|../common/icon_optionsetting.svg|
@@ -79,7 +79,7 @@ You can click to view the manual, which will help you further know and use Deepi
 2. Click on **Help**.
 3. View the manual.
 
-![1|heip](png/help.png)
+![1|heip](jpg/help.jpg)
 
 
 ### About
@@ -90,7 +90,7 @@ You can click to view the version description.
 2. Click on **About**.
 3. View the version description.
 
-![0|about](png/about.png)
+![0|about](jpg/about.jpg)
 
 
 ### Exit

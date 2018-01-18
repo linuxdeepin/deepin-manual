@@ -5,7 +5,7 @@
 深度文件管理器是深度科技开发的一款功能强大、简单易用的文件管理工具。
 它沿用了经典文件管理器的功能和布局，并在此基础上简化了用户操作，增加了很多特色功能。一目了然的导航栏、智能识别的搜索框、多样化的视图及排序让您管理起来得心应手，经典和超越，只为给您更好的体验！
 
-![1|mainpage](png/mainpage.png)
+![1|mainpage](jpg/mainpage.jpg)
 
 ## 使用入门|../common/icon_guide.svg|
 
@@ -32,7 +32,7 @@
 
 深度文件管理器的主界面简单易用、功能全面，熟练的使用界面功能将使文件管理更加简单高效。
 
-![1|mainpage-note](png/mainpage-note.png)
+![1|mainpage-note](jpg/mainpage-note.jpg)
 
 <table class="block1">
     <caption></caption>
@@ -78,7 +78,7 @@
 3. 选择新建文件的类型。
 4. 输入新建文件的名称。
 
-![0|new-file](png/new-file.png)
+![0|new-file](jpg/new-file.jpg)
 
 #### 新建文件夹
 
@@ -86,7 +86,7 @@
 2. 点击 **新建文件夹**。
 3. 输入新建文件夹的名称。
 
-![0|new-fold](png/new-fold.png)
+![0|new-fold](jpg/new-fold.jpg)
 
 ### 重命名文件(夹)
 
@@ -94,7 +94,7 @@
 2. 选择 **重命名**。
 3. 输入文件(夹)名称，按 ![enter](icon/Enter.svg) 键或者鼠标点击界面空白区域。
 
-![0|rename](png/rename.png)
+![0|rename](jpg/rename.jpg)
 
 ### 批量重命名
 
@@ -106,7 +106,7 @@
    - **自定义文本** 输入文件名，并输入序列的递进数字，文件名将统一改成新文件名+递进数字。
 4. 点击 **重命名** 来完成操作。
 
-![1|prename](png/prename.png)
+![1|prename](jpg/prename.jpg)
 
 ### 复制文件(夹)
 
@@ -115,7 +115,7 @@
 3. 选择一个目标存储位置。
 4. 点击鼠标右键，然后选择 **粘贴**。
 
-![0|copy](png/copy.png) ![0|stick](png/stick.png)
+![0|copy](jpg/copy.jpg) ![0|stick](jpg/stick.jpg)
 
 
 ### 压缩文件(夹)
@@ -125,7 +125,7 @@
 3. 输入压缩包名称，选择压缩包类型和目标存储位置。
 4. 点击 **创建**。
 
-![0|compress](png/compress.png)
+![0|compress](jpg/compress.jpg)
 
 > ![notes](icon/notes.svg)：在压缩文件弹窗中您也可以点击 **其他选项** 设置解压密码和设置分卷大小，解压密码和分卷压缩仅支持部分压缩格式。
 
@@ -134,7 +134,7 @@
 1. 在文件管理器界面上,右键单击文件(夹)。
 2. 选择 **删除** 。
 
-![0|delete](png/delete.png)
+![0|delete](jpg/delete.jpg)
 
 - 被删除的文件(夹)可以在回收站中找到，右键单击文件(夹)可以进行 **还原** 或 **彻底删除** 操作。
 - 被删除的文件(夹)的快捷方式将会失效。
@@ -147,9 +147,9 @@
 2. 选择 **打开方式** > **选择默认程序**。
 3. 在程序列表中选择应用程序。
 
-> ![notes](icon/notes.svg)：直接双击文件会使用默认程序打开文件，您可以右键单击文件，在 **属性>打开方式** 中选择一个默认程序，也可以到控制中心[默认启动设置](dman:///dde-control-center#默认程序设置)中去设置此类文件的全局默认程序。
+> ![notes](icon/notes.svg)：直接双击文件会使用默认程序打开文件，您可以右键单击文件，在 **属性>打开方式** 中选择一个默认程序，也可以到控制中心[默认启动设置](dman:///dde#默认程序设置)中去设置此类文件的全局默认程序。
 
-![0|openway](png/openway.png)
+![0|openway](jpg/openway.jpg)
 
 ### 显示方式
 
@@ -157,11 +157,11 @@
 
 - 图标视图：平铺显示文件的图标、名称、缩略图。
 
-![1|mainpage](png/mainpage.png)
+![1|mainpage](jpg/mainpage.jpg)
 
 - 列表视图：列表显示文件图标、名称、修改时间、大小、类型等信息。
 
-![1|list-view](png/list-view.png)
+![1|list-view](jpg/list-view.jpg)
 
 ### 排序方式
 
@@ -169,7 +169,7 @@
 2. 选择 **排序方式**。
 3. 在子菜单中选择一种排序方式。
 
-![0|sort](png/sort.png)
+![0|sort](jpg/sort.jpg)
 
 > ![tips](icon/tips.svg)：列表视图中可以点击表头栏的列标签来切换排序。
 
@@ -181,7 +181,7 @@
 
 > ![notes](icon/notes.svg)：查看多个文件属性会显示文件总大小和数量，查看快捷方式将会额外显示源文件地址属性。
 
-![0|info](png/info.png)
+![0|info](jpg/info.jpg)
 
 ## 常用操作|../common/icon_commoncoperat.svg|
 
@@ -191,7 +191,7 @@
 
 地址栏由历史导航、面包屑、输入框共同组成，通常情况下地址栏会显示面包屑，当用户点击输入框区域或者搜索图标时，地址栏会切换为输入框状态，失去焦点地址栏会恢复到面包屑状态。
 
-![0|addressbar](png/addressbar.png)
+![0|addressbar](jpg/addressbar.jpg)
 
 - 通过点击历史导航图标，您可以快速在历史浏览记录间切换，查看前一个地址或者后一个地址。
 - 文件所在位置的每一个层级都会形成一个面包屑，通过来回点击面包屑可以快速在不同文件层级间切换。
@@ -217,7 +217,7 @@
 
 > ![tips](icon/tips.svg)：文件管理器窗口只有一个标签时，标签栏是隐藏的，您还可以使用快捷键![Ctrl](icon/Ctrl.svg) + ![T](icon/T.svg) 来新建标签。
 
-![1|newtag](png/newtag.png)
+![1|newtag](jpg/newtag.jpg)
 
 ### 管理书签
 
@@ -244,7 +244,7 @@
 
 > ![tips](icon/tips.svg)：取消勾选 **共享此文件夹** 可以取消文件共享，也可以右键单击文件，选择 **取消共享**。
 
-![0|share](png/share.png)
+![0|share](jpg/share.jpg)
 
 #### 访问共享文件
 
@@ -255,7 +255,7 @@
  - 未加密的网络文件可以匿名访问，不需要输入用户名和密码。
  - 加密的网络文件会弹出登陆框，输入账号和密码之后才能访问。如果在用户名密码提示框中勾选 **记住密码** ，再次访问不再需要密码。
 3. 点击 **连接**。
-  ![1|visitshareshare](png/visitshare.png)
+  ![1|visitshareshare](jpg/visitshare.jpg)
 
 ### 网络邻居
 
@@ -266,14 +266,14 @@
  - 加密的网络文件会弹出登陆框，输入账号和密码之后才能访问。如果在用户名密码提示框中勾选 **记住密码** ，再次访问不再需要密码。
 4. 点击 **连接**。
 
-![0|lan](png/lan.png)
+![0|lan](jpg/lan.jpg)
 
 ### 从终端中打开
 
 1. 在文件管理器界面空白处单击鼠标右键。
 2. 选择 **从终端中打开**，会启动深度终端并前置，终端的路径为当前目录。
 
-![0|open-in-terminal](png/open-in-terminal.png)
+![0|open-in-terminal](jpg/open-in-terminal.jpg)
 
 ### 创建链接
 
@@ -282,7 +282,7 @@
 3. 在弹窗中选择创建位置、链接名称。
 4. 点击 **保存**，在目标位置会生成该文件(夹)的快捷方式。
 
-![0|creat-link](png/creat-link.png)
+![0|creat-link](jpg/creat-link.jpg)
 
 > ![tips](icon/tips.svg)：选择 **发送到桌面**可以直接在桌面上生成该文件(夹)的快捷方式。
 
@@ -294,7 +294,7 @@
 2. 选择 **发送到** > **外接磁盘**。
 3. 文件(夹)将会被发送到移动外接磁盘。
 
-![0|sendto](png/sendto.png)
+![0|sendto](jpg/sendto.jpg)
 
 ## 磁盘管理|../common/icon_diskmanagement.svg|
 
@@ -334,7 +334,7 @@
 - 在文件管理导航栏右键单击磁盘图标，选择 **弹出** 来弹出磁盘，磁盘将从磁盘列表中删除，并且可以从计算机上安全删除。
 - 如果您选择的是移动硬盘或者光驱，还可以选择 **安全移除** 来移除设备，设备将会断开数据连接，然后切断设备电源。
 
-![0|disk](png/disk.png)![0|disk](png/disk2.png)
+![0|disk](jpg/disk.jpg)![0|disk](jpg/disk2.jpg)
 
 ### 格式化磁盘
 
@@ -345,7 +345,7 @@
 
 > ![notes](icon/notes.svg):快速格式化速度快，但是数据仍然可能通过工具被恢复，如果想要格式化后的数据无法被恢复，可以不勾选快速格式化然后执行格式化操作。
 
-![0|format](png/format.png)
+![0|format](jpg/format.jpg)
 
 ## 选项设置|../common/icon_optionsetting.svg|
 
@@ -371,7 +371,7 @@
  - 设置  **挂载**，自定义自动挂载功能。
  - 设置  **对话框**，自定义是否使用深度文件管理器的文件选择对话框。
 
-![1|setting](png/setting.png)
+![1|setting](jpg/setting.jpg)
 
 ### 帮助
 
@@ -381,7 +381,7 @@
 2. 点击 **帮助**。
 3. 查看关于深度文件管理器的帮助手册。
 
-![1|heip](png/help.png)
+![1|heip](jpg/help.jpg)
 
 
 ### 关于
@@ -392,7 +392,7 @@
 2. 点击 **关于**。
 3. 查看关于深度文件管理器的版本和介绍。
 
-![0|about](png/about.png)
+![0|about](jpg/about.jpg)
 
 
 ### 退出

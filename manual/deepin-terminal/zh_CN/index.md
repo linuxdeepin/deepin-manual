@@ -4,7 +4,7 @@
 
 深度终端是深度科技精心打造的一款终端模拟器。它拥有简单的界面，丰富而强大的功能。您可以瞬间启动和关闭，使用起来像普通文件窗口一样流畅，让您在输入命令时心无旁骛，得心应手。试试雷神模式，一边看页面一边输入命令；当有多任务进行时，您可以像在浏览器中增加页签一样建立多个工作区或者将工作区分割成多个窗口；远程管理，上传下载文件再也不是问题。更多强大功能，静待您的发掘！
 
- ![1|interface](png/interface.png)
+![1|interface](jpg/interface.jpg)
 
 ## 使用入门|../common/icon_guide.svg|
 您可以通过以下方式运行或关闭深度终端，或者创建深度终端的快捷方式。
@@ -32,13 +32,13 @@
 
 在深度终端界面上，按下键盘上的 ![Ctrl](icon/Ctrl.svg) + ![Shift](icon/Shift.svg) + ![QM](icon/QM.svg) 组合键来查看快捷键，熟练的使用快捷键，将大大提升您的操作效率。
 
- ![1|hotkey](png/hotkey.png)
+ ![1|hotkey](jpg/hotkey.jpg)
 
 ## 基本操作|../common/icon_basicoperation.svg|
 
 您可以在深度终端界面点击鼠标右键来进行常规操作。
 
- ![1|rightclick](png/rightclick.png)
+![1|rightclick](jpg/rightclick.jpg)
 
 ### 搜索 ###
 您可以使用搜索功能来快速查找终端屏幕前面显示的内容。
@@ -95,7 +95,7 @@
 3. 单击鼠标右键。
 4. 点击  **打开**。
 
- ![1|openfile](png/openfile.png)
+![1|openfile](jpg/openfile.jpg)
 
 ## 窗口操作|../common/icon_windowoperation.svg|
 
@@ -103,7 +103,7 @@
 
 ### 新建窗口 ###
 
- ![0|newwindows](png/newwindows.png)
+![0|newwindows](jpg/newwindows.jpg)
 
 在启动器界面打开深度终端，您可以通过一下方法新建窗口：
  - 选择 ![menu](icon/icon_menu.svg) > **新建窗口**，将会在桌面打开一个新的终端。
@@ -120,7 +120,7 @@
 
 > ![tips](icon/tips.svg) ：您也可以按下键盘上的 ![ctrl](icon/Ctrl.svg)+![shift](icon/Shift.svg)+![J](icon/J.svg) 组合键来纵向分屏，按下键盘上的 ![ctrl](icon/Ctrl.svg)+![shift](icon/Shift.svg)+![H](icon/H.svg) 组合键来横向分屏。
 
- ![1|splitscreen](png/splitscreen.png)
+![1|splitscreen](jpg/splitscreen.jpg)
 
 ### 重命名窗口 ###
 
@@ -130,7 +130,7 @@
 4. 在弹窗中输入新名称并点击 **重命名**。
 > ![tips](icon/tips.svg) ：您也可以按下键盘上的 ![F2](icon/F2.svg) 来重命名窗口。
 
-![1|rename](png/rename.png)
+![1|rename](jpg/rename.jpg)
 
 ### 全屏显示窗口 ###
 
@@ -148,13 +148,13 @@
  - 选择 **关闭窗口**，来关闭此终端窗口。
  - 选择 **关闭其他窗口**，来关闭除此窗口以外的其他终端窗口。
 
- ![1|closesplitscreen](png/closesplitscreen.png)
+![1|closesplitscreen](jpg/closesplitscreen.jpg)
 
 ## 工作区操作|../common/icon_workspaceoperation.svg|
 
 工作区标签以不同的颜色来显示当前工作区的状态。
 
- ![1|interface](png/interface.png)
+![1|interface](jpg/interface.jpg)
 
 ### 新建工作区 ###
 
@@ -188,7 +188,7 @@
 3. 输入 **服务器名**、**地址**、**用户名**、**密码**。
 4. 点击 **添加**。
 
- ![1|addssh](png/addssh-all.png)
+![1|addssh](jpg/addssh-all.jpg)
 
 ![notes](icon/notes.svg)在添加服务器时，你可以点击 **高级选项** 来设置更多参数，也可以保持默认值，以后需要时再编辑服务器参数。
 
@@ -197,7 +197,7 @@
 2.  修改服务器信息。
 3.  点击 **保存**。
 
- ![0|editssh](png/editssh.png)
+![0|editssh](jpg/editssh.jpg)
 
 ![notes](icon/notes.svg)您也可以自定义服务器名称，方便您区分和使用。
 
@@ -210,7 +210,7 @@
 3. 输入 **分组** 信息。
 4. 点击 **保存**。
 
-![0|groupssh](png/groupssh.png)
+![0|groupssh](jpg/groupssh.jpg)
 
 ### 搜索服务器
 当存在多个服务器或服务器分组时， 会在顶部显示搜索输入框， 以快速搜索所有服务器；
@@ -220,7 +220,7 @@
 3. 在搜索框中输入关键词。
 4. 按下键盘上的 ![Enter](icon/Enter.svg) 键，显示搜索结果。
 
-![0|searchssh](png/searchssh.png)
+![0|searchssh](jpg/searchssh.jpg)
 
 ### 上传和下载文件
 登陆远程服务器之后，可以直接通过终端上传和下载文件。
@@ -233,7 +233,7 @@
 4. 在弹出的界面中选择要上传的文件。
 5. 点击 **上传**，文件将被上传到远程服务器。
 
-![0|export](png/export.png)
+![0|export](jpg/export.jpg)
 
 #### 下载文件
 
@@ -243,7 +243,7 @@
 4. 选择下载文件存放位置。
 5. 输入要下载的文件路径，文件将下载到指定位置。
 
-![0|download](png/download.png)
+![0|download](jpg/download.jpg)
 
 ### 删除服务器
 
@@ -252,7 +252,7 @@
 3. 点击 **删除服务器**。
 4. 在删除服务器弹窗上，点击 **删除** 来确认删除服务器。
 
-![0|groupssh](png/groupssh.png)
+![0|groupssh](jpg/groupssh.jpg)
 
 ## 选项设置|../common/icon_settings.svg|
 
@@ -262,7 +262,7 @@
 2. 点击 **切换主题**。
 3. 选择一个主题。
 
- ![0|change](png/change.png)
+![0|change](jpg/change.jpg)
 
 ### 自定义命令 ###
 
@@ -272,7 +272,7 @@
 4. 输入命令的 **名称**、**命令**、**快捷键**。
 5. 点击 **添加**。
 
- ![0|customer](png/customer.png)
+![0|customer](jpg/customer.jpg)
 
 ### 基础设置 ###
 
@@ -282,7 +282,7 @@
  - 设置深度终端的字体及其大小。
  - 设置深度终端的背景透明度。
 
- ![0|generalset](png/generalset.png)
+![0|generalset](jpg/generalset.jpg)
 
 ### 热键设置 ###
 
@@ -293,7 +293,7 @@
  - 如果要禁用该快捷键，请按下键盘上的 ![Backspace](icon/Backspace.svg) 键。
 
 
- ![0|hotkeyset](png/hotkeyset.png)
+![0|hotkeyset](jpg/hotkeyset.jpg)
 
 ### 高级设置 ###
 
@@ -308,7 +308,7 @@
  - 开启或关闭失去焦点自动隐藏雷神窗口。
 
 
- ![0|advancedset](png/advancedset.png)
+![0|advancedset](jpg/advancedset.jpg)
 
 ![notes](icon/notes.svg)点击 **设置** 页面底部的 **恢复默认设置** 可以将所有设置项恢复到默认状态。
 
@@ -321,7 +321,7 @@
 2. 点击 **帮助**。
 3. 查看关于深度终端的帮助手册。
 
-![1|help](png/help.png)
+![1|help](jpg/help.jpg)
 
 
 ### 关于
@@ -332,7 +332,7 @@
 2. 点击 **关于**。
 3. 查看关于深度终端的版本和介绍。
 
-![0|about](png/about.png)
+![0|about](jpg/about.jpg)
 
 
 ### 退出

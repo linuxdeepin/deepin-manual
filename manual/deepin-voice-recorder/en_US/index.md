@@ -2,15 +2,15 @@
 
 ## Overview|../common/icon_overview.svg|
 
-Deepin Voice Recorder is a beautiful and easy to use voice recording application with simple design. It supports visual recording, recording playback, recording list management and other functions. Whatever to record singing, talking on a call or conference, Deepin Voice Recorder can do it for you, it will make your vocie to be seen and saved.
+Deepin Voice Recorder is a beautiful and easy to use voice recording application with simple design. It supports visual recording, recording playback, recording list management and other functions. Whatever to record singing, talking on a call or conference, Deepin Voice Recorder can do it for you, it will make your voice to be seen and saved.
 
 ## Guide|../common/icon_guide.svg|
 
-You can run and colse Deepin Voice Recorder by one of the following operations, and can also create shortcut for it.
+You can run and close Deepin Voice Recorder by one of the following operations, and can also create shortcut for it.
 
 ### Run Deepin Voice Recorder
 
-1. Click on ![deepin-launcher](icon/deepin-launcher.svg) on Dock or move the mouse pointer to the top left corner of screen to enter launcher interface.
+1. Click on ![deepin-launcher](icon/deepin-launcher.svg) on Dock or move the mouse pointer to the top left corner of screen to enter Launcher interface.
 2. Find ![deepin-voice-recorder](icon/deepin-voice-recorder.svg) to click on, you can:
 
  - Click on **Send to desktop** to create a desktop shortcut.
@@ -36,7 +36,7 @@ Two steps to finish a recording:
 
 > ![tips](icon/tips.svg): During recording, you can click on ![pause](icon/pause.svg) to pause and click it again to continue.
 
-![0|recoder](png/recoder.png)
+![0|recoder](jpg/recorder.jpg)
 
 ### Playback Recording
 
@@ -44,7 +44,7 @@ After recording finished, it will list vertically, then you can hover on it and 
 
 > ![tips](icon/tips.svg): During playback, you can click the pause or stop button to do some operations.
 
-![0|replay](png/replay.png)
+![0|replay](jpg/replay.jpg)
 
 ### Rename Recording
 
@@ -52,19 +52,19 @@ After recording finished, it will be saved and named after "New recording (time)
 
 1. On Deepin Voice Recorder interface, right click on a recording file.
 2. Select **Rename**.
-3. Imput a file name.
+3. Input a file name.
 4. Click the blank space on interface or press ![Enter](icon/Enter.svg).
 
-![0|rename](png/rename.png)
+![0|rename](jpg/rename.jpg)
 
 ### View Saved Directory
 
 After recording finished, it will automatically saved in wav, you can view the file saved location by following ways:
 
-- On Deepin Voice Recorder interface, righr click on a recording file to select **Display in file manager**.
+- On Deepin Voice Recorder interface, right click on a recording file to select **Display in file manager**.
 - On Deepin Voice Recorder interface, click on ![icon_menu](icon/icon_menu.svg) to select **Open saved directory**.
 
-![0|file](png/file.png)
+![0|file](jpg/file.jpg)
 
 ### Move to Trash
 
@@ -73,7 +73,7 @@ After recording finished, it will list vertically, then you can move any one to 
 1. On Deepin Voice Recorder interface, right click on a recording file.
 2. Select **Move to trash** to delete.
 
-![0|delete](png/delete.png)
+![0|delete](jpg/delete.jpg)
 
 ## Main Menu|../common/icon_optionsetting.svg|
 
@@ -83,7 +83,7 @@ After recording finished, it will list vertically, then you can move any one to 
 2. Click on **New recording**.
 3. Start a new recording and the current recording will be saved if there is.
 
-![0|new](png/new.png)
+![0|new](jpg/new.jpg)
 
 ### Help
 
@@ -93,7 +93,7 @@ You can click to view the manual, which will help you further know and use Deepi
 2. Click on **Help**.
 3. View the manual.
 
-![1|heip](png/help.png)
+![1|heip](jpg/help.jpg)
 
 
 ### About
@@ -104,7 +104,7 @@ You can click to view the version description.
 2. Click on **About**.
 3. View the version description.
 
-![0|about](png/about.png)
+![0|about](jpg/about.jpg)
 
 ### Exit
 

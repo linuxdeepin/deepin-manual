@@ -15,7 +15,7 @@ Deepin Link and Deepin Presentation Assistant should be in the same network. Wi-
 
 > ![notes](icon/notes.svg): Your computer should support wireless network if use phone or computer hotspot to connect Deepin Presentation Assistant. You also need to set hotspot connection manually if select **No**, then continue the next operations.
 
-![0|guide](png/guide.png)
+![0|guide](jpg/guide.jpg)
 
 ## Basic Operations|../common/icon_commoncoperat.svg|
 
@@ -27,7 +27,7 @@ Deepin Link and Deepin Presentation Assistant should be in the same network. Wi-
 4. After connected, you can see the main interface.
 5. Click on **Disconnect** to stop the connection.
 
-![1|link](png/link.png)
+![1|link](jpg/link.jpg)
 
 > ![notes](icon/notes.svg):Deepin Presentation Assistant will be preinstalled in editions after deepin 15.4. Please make sure your phone and computer are in the same LAN before connecting, or there will be a failure prompt and you can follow the steps to connect.
 
@@ -41,13 +41,13 @@ You can share a photo from your phone albums or take a photo to share in compute
 3. Click on ![ok](icon/ok.svg) to select the photo to share in computer.
 4. Then you can do some operations on it.
 
-![2|select](png/select.png)
+![2|select](jpg/select.jpg)
 
 #### Rotating Tool
 
 Click on ![tool_rotate](icon/tool_rotate.svg) to rotate the photo, and every clicking will rotate 90° clockwise.
 
-![2|rotate](png/rotate.png)
+![2|rotate](jpg/rotate.jpg)
 
 
 #### Annotating Tool
@@ -56,7 +56,7 @@ Click on ![tool_rotate](icon/tool_rotate.svg) to rotate the photo, and every cli
 2. Swipe finger on the phone screen to make annotations on the photo.
 3. You can also select a color for the pen.
 
-![2|annotate](png/annotate.png)
+![2|annotate](jpg/annotate.jpg)
 
 
 #### Focusing Tool
@@ -65,7 +65,7 @@ Click on ![tool_rotate](icon/tool_rotate.svg) to rotate the photo, and every cli
 2. Then swipe single finger to move the spotlight and pinch to zoom.
 3. Click on ![tool_focus](icon/tool_focus.svg) again to exit spotlight.
 
-![1|focus](png/focus.png)
+![1|focus](jpg/focus.jpg)
 
 
 #### Tracking Tool
@@ -74,7 +74,7 @@ Click on ![tool_rotate](icon/tool_rotate.svg) to rotate the photo, and every cli
 2. Swipe single finger to move the track.
 3. Your swiping track will be displayed in a short time.
 
-![1|track](png/track.png)
+![1|track](jpg/track.jpg)
 
 
 ### PPT Presentation
@@ -83,21 +83,21 @@ Click on ![tool_rotate](icon/tool_rotate.svg) to rotate the photo, and every cli
 3. The PPT will be demonstrated on the computer in fullscreen, you can click on ![previous](icon/previous.svg) or ![next](icon/next.svg) to page up or down.
 4. Click the last page of the PPT to exit.
 
-![notes](icon/notes.svg): You should firstly open the PPT in computer before enabling PPT Presentatiom function.
+![notes](icon/notes.svg): You should firstly open the PPT in computer before enabling PPT Presentation function.
 
-![2|ppt](png/ppt.png)
+![2|ppt](jpg/ppt.jpg)
 
 
 ### Wireless Projection
 
-1. Select **Wireless Projection** on Deepin Presntation Assistant.
+1. Select **Wireless Projection** on Deepin Presentation Assistant.
 2. Click on **Start Projection**.
 3. When ![success](icon/success.png) is displayed, your phone screen has been projected to the computer.
 4. You can start to show the phone contents.
 5. Click on **Stop Projection** to end the projection.
 
-![2|start](png/start.png)
-![2|stop](png/stop.png)
+![2|start](jpg/start.jpg)
+![2|stop](jpg/stop.jpg)
 
 
 ## Main Menu|../common/icon_optionsetting.svg|
@@ -110,7 +110,7 @@ You can click to view the version description.
 2. Click on **About**.
 3. View the version description.
 
-![0|about](png/about.png)
+![0|about](jpg/about.jpg)
 
 
 ### Help
@@ -122,7 +122,7 @@ You can click to view the manual, which will help you further know and use Deepi
 3. View the manual.
 
 
-![1|heip](png/help.png)
+![1|heip](jpg/help.jpg)
 
 
 ### Exit

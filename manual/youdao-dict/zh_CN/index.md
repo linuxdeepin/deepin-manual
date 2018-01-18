@@ -4,8 +4,8 @@
 
 有道词典是网易有道和武汉深之度科技有限公司联合开发的基于Linux平台的翻译软件，不仅支持常规的英汉、法汉、日汉、韩汉互译以及全文翻译，还收录了各类词汇的网络释义、例句和百科知识。除此之外，有道词典还提供新闻、影视资讯、人物等丰富的在线网络资源，为您开辟了一条学习更多语言的新途径。
 
-  ![0|youdao](png/homepage.png)  
-  
+  ![0|youdao](jpg/homepage.jpg)  
+
 ## 使用入门|../common/icon_guide.svg|
 
 ### 运行有道词典
@@ -36,7 +36,7 @@
 - 点击 **满意度** 来加入有道词典的满意度调查。
 - 点击 ![favour_icon](icon/favour_icon.svg)，可以为喜爱的内容点赞。
 
-  ![1|homepageexplain](png/homepageexplain.png)
+  ![1|homepageexplain](jpg/homepageexplain.jpg)
 
 ### 最大/最小化有道词典
 
@@ -67,13 +67,13 @@
 2. 点击 **字体大小**。
 3. 选择一种字体大小。
 
-  ![0|fontset](png/fontset.png)
+  ![0|fontset](jpg/fontset.jpg)
 
 ### 取词划词
 
 有道词典默认为开启划词取词功能，当开启屏幕取词功能后，如果将鼠标指针置于词语上，该词语的查询结果将显示在下方；当开启屏幕划词功能后，如果选中词语，该词语的查询结果将显示在下方。
 
-  ![1|getword](png/getword.png)
+  ![1|getword](jpg/getword.jpg)
 
 #### 开启/关闭取词划词
 
@@ -82,7 +82,7 @@
 - 如果取词划词功能已经开启，**取词** 和 **划词** 的前面会显示 ![on_icon](icon/on_icon.svg)。
 - 如果取词划词功能已经关闭，**取词** 和 **划词** 的前面会显示 ![off_icon](icon/off_icon.svg)。
 
- ![1|getwordon](png/getwordon.png)
+ ![1|getwordon](jpg/getwordon.jpg)
 
 > ![tips](icon/tips.svg)：开启/关闭取词功能，也可以使用快捷键来操作，按下键盘上的 ![F8](icon/F8.svg)  键即可以在开启/关闭之间来回切换。
 
@@ -143,7 +143,7 @@
 1. 在有道词典的 **词典** 或 **例句** 页签下，点击 ![language_icon](icon/language_icon.svg)。
 2. 选择一种互译语言。
 
-  ![1|languageset](png/languageset.png)
+  ![1|languageset](jpg/languageset.jpg)
 
 ### 词典查询
 
@@ -160,7 +160,7 @@
 
 > ![attention](icon/attention.svg)：如果您的电脑已经连入了网络，点击 ![netsearch_icon](icon/netsearch_icon.svg) 可以跳转到网页来搜索输入词语的相关信息。
 
-  ![1|dictinterface](png/dictinterface.png)
+  ![1|dictinterface](jpg/dictinterface.jpg)
 
 #### 更换单词图片
 
@@ -170,7 +170,7 @@
 2. 选择一张图片进行更换。
 3. 点击 **去图解词典**，您可以打开图解词典。
 
-  ![1|changepic](png/changepic.png)
+  ![1|changepic](jpg/changepic.jpg)
 
 #### 报错
 
@@ -191,27 +191,27 @@
    - 将鼠标指针置于例句旁边的 ![voice_icon](icon/voice_icon.svg) 上，可以收听朗读语音。
    - 将鼠标指针置于例句旁边的 ![record_icon](icon/record_icon.svg) 上，可以跟读例句。
 
-  ![1|dictexample](png/dictexample.png)
+  ![1|dictexample](jpg/dictexample.jpg)
 
 ### 百科查询
 
 百度百科详细介绍了单词信息，帮助您全面的掌握词语。
-  
+
 1. 在有道词典界面，点击 **百科**。
 2. 在输入框中，输入单词。
 3. 点击 ![search_icon](icon/search_icon.svg) 或按下键盘上的 ![Enter](icon/Enter.svg) 键。
 4. 在 **百科** 页签下，您可以查看该词语的百科信息。
 
-  ![1|baike](png/baike.png)
+  ![1|baike](jpg/baike.jpg)
 
 ### 全文翻译
 
 有道词典支持中、英、日、韩、法五国语言的全文翻译，其中语言默认为汉英互译。
 
-  ![1|fulltexttranslate](png/fulltexttranslate.png)
+  ![1|fulltexttranslate](jpg/fulltexttranslate.jpg)
 
 #### 选择源语言和目标语言
-  
+
 1. 在有道词典界面，点击 **翻译**。
 2. 点击 **自动检测**。
 3. 选择源语言和目标语言。
@@ -249,7 +249,7 @@
 2. 点击 ![right_icon](icon/right_icon.svg)，可以查看下一个输入词语的查询结果。
 3. 点击输入框中的 ![menu_icon](icon/menu_icon.svg)，在下方将出现查询历史窗口。
 
-![1|dicthistory](png/dicthistory.png)
+![1|dicthistory](jpg/dicthistory.jpg)
 
 #### 删除查询历史
 
@@ -266,7 +266,7 @@
 
 在有道词典界面，点击右上角的 ![mini_icon](icon/mini_icon.svg)，切换到迷你模式。
 
-  ![0|dictmini](png/dictmini.png)
+  ![0|dictmini](jpg/dictmini.jpg)
 
 <table>
     <caption>迷你图标说明</caption>
@@ -305,7 +305,7 @@
 * 点击 **软件设置**，将打开有道词典的设置界面。
 * 点击 **关闭迷你窗口**，将关闭有道词典的迷你窗口。
 
-  ![0|miniset](png/miniset.png)
+  ![0|miniset](jpg/miniset.jpg)
 
 ## 图解词典|../common/icon_picturedict.svg|
 
@@ -315,7 +315,7 @@
 
 在有道词典界面，点击左下角的 ![picture_icon](icon/picture_icon.svg) 可以打开图解词典。
 
- ![1|pictureexplain](png/pictureexplain.png)
+ ![1|pictureexplain](jpg/pictureexplain.jpg)
 
 ### 查看图解词典
 
@@ -327,12 +327,12 @@
    - 点击 **相关单词**，可以查看更多关联词语。
    - 点击 **上一页** 或 **下一页**，可以翻页查看更多单词。
 
- ![1|picinterface](png/picinterface.png)
+ ![1|picinterface](jpg/picinterface.jpg)
 
 ## 选项设置|../common/icon_optionsettings.svg|
 
 ### 启动设置
- 
+
 1. 在有道词典界面，点击左下角的 ![youdao_icon](icon/youdao_icon.svg)。
 2. 点击 **软件设置**。
 3. 点击 **基本设置** > **启动**，您可以：
@@ -346,7 +346,7 @@
 3. 点击 **基本设置** > **主窗口**，您可以：
    - 勾选 **窗口关闭时最小化到托盘** 复选框，当点击有道词典界面右上角的 ![close_icon](icon/close_icon.svg) 时，有道词典将最小化到任务栏。
    - 勾选 **主窗口总在最上面** 复选框，有道词典将一直置顶显示在桌面。
- 
+
 ## 有道应用|../common/icon_youdaoapps.svg|
 
 更多扩展应用，等待您的体验。
@@ -366,6 +366,6 @@
    - 点击 **在线帮助**，将跳转到 FAQ 页面查看常见问题的解答。
    - 点击 **意见反馈**，将跳转到意见反馈页面提交您的意见和建议。
    - 点击 **关于**，查看有道词典的软件介绍。
- 
- ![0|onlinehelp](png/onlinehelp.png)
- 
+
+ ![0|onlinehelp](jpg/onlinehelp.jpg)
+

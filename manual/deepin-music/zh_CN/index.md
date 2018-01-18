@@ -45,7 +45,7 @@
 
 通过界面按钮可以进行常规的播放操作，查看播放列表和歌曲歌词信息。
 
-![1|main](png/main.png)
+![1|main](jpg/main.jpg)
 
 <table class="block1">
     <caption></caption>
@@ -121,14 +121,14 @@
 - 如果深度音乐中还没有音乐，您也可以通过界面中间的 **添加文件夹** 或者 **扫描** 按钮来添加音乐到播放列表。
 
 
-![0|addmusic](png/addmusic.png)
+![0|addmusic](jpg/addmusic.jpg)
 
 ### 搜索音乐
 
 1. 在深度音乐界面顶部栏，点击 **搜索**。
 2. 在搜索框中，输入关键字后自动匹配，快速定位到该音乐。
 
-![1|searchmusic](png/searchmusic.png)
+![1|searchmusic](jpg/searchmusic.jpg)
 
 ### 收藏音乐
 
@@ -144,14 +144,14 @@
 2. 点击 **从播放列表中删除**，将该音乐文件从歌曲列表中删除，该音乐文件仍会保留在在本地文件夹中。
 3. 点击 **从本地文件删除**，将该音乐文件从歌曲列表和本地文件夹中一并删除。
 
-![0|delete](png/delete.png)
+![0|delete](jpg/delete.jpg)
 
 ### 查看音乐信息
 
 1. 在深度音乐界面播放列表中，右键单击音乐文件。
 2. 点击 **属性**，您可以查看歌曲的歌手、所属专辑、文件类型、大小、时长、存储路径等信息。
 
-![0|info](png/info.png)
+![0|info](jpg/info.jpg)
 
 ### 调整编码方式
 当某些音乐文件信息显示乱码或者错误时，可以通过调整编码方式来解决问题。
@@ -160,14 +160,14 @@
 2. 选择 **编码方式** > **一种编码方式**。
 3. 查看音乐信息是否已显示正确，如果仍然有问题请重复第2步选择其他编码方式。
 
-![0|code](png/code.png)
+![0|code](jpg/code.jpg)
 
 ### 在文件管理器中显示
 
 1. 在深度音乐界面，右键单击音乐文件。
 2. 点击 **在文件管理器中显示**，打开并定位该音乐的存放文件夹位置。
 
-![0|infile](png/infile.png)
+![0|infile](jpg/infile.jpg)
 
 ## 播放列表管理|../common/icon_playlist.svg|
 
@@ -182,7 +182,7 @@
 3. 输入列表的名称。
 4. 按下键盘上的 ![Enter](icon/Enter.svg) 键。
 
-![0|addlist](png/addlist.png)
+![0|addlist](jpg/addlist.jpg)
 
 ### 删除列表
 
@@ -191,7 +191,7 @@
 3. 点击鼠标右键。
 4. 点击 **删除列表**。
 
-![0|deletelist](png/deletelist.png)
+![0|deletelist](jpg/deletelist.jpg)
 
 ### 添加音乐到列表
 
@@ -199,7 +199,7 @@
 2. 点击鼠标右键。
 3. 选择 **添加到歌单** > **歌单名称**。
 
-![0|addtolist](png/addtolist.png)
+![0|addtolist](jpg/addtolist.jpg)
 
 ### 移除列表的音乐
 
@@ -208,7 +208,7 @@
 3. 选择 **从列表中删除**。
 
 
-![0|remove](png/remove.png)
+![0|remove](jpg/remove.jpg)
 
 ### 重命名列表
 
@@ -217,7 +217,7 @@
 3. 选择 **重命名**。
 4. 按下键盘上的 **![Enter](icon/Enter.svg)** 键。
 
-![0|renamelist](png/renamelist.png)
+![0|renamelist](jpg/renamelist.jpg)
 
 ## 主菜单|../common/icon_optionsetting.svg|
 
@@ -228,7 +228,7 @@
 1. 在深度看图界面，点击 ![icon_menu](icon/icon_menu.svg) 。
 2. 点击 **浅色主题/深色主题**，来切换主题颜色。
 
-![0|mode](png/mode.png)
+![0|mode](jpg/mode.jpg)
 
 ### 常用设置
 
@@ -241,7 +241,7 @@
 4. 在 **关闭主窗口** 列表中，选择 **最小化到系统托盘** 或者 **退出深度音乐** 来设置关闭主窗口的默认操作。
 5. 点击 **恢复默认设置**，可以将深度音乐的设置恢复到默认状态。
 
-![1|contorl](png/contorl.png)
+![1|contorl](jpg/contorl.jpg)
 
 ### 热键设置
 
@@ -258,7 +258,7 @@
 2. 点击 **帮助**。
 3. 查看关于深度音乐的帮助手册。
 
-![1|heip](png/help.png)
+![1|heip](jpg/help.jpg)
 
 
 ### 关于
@@ -269,7 +269,7 @@
 2. 点击 **关于**。
 3. 查看关于深度音乐的版本和介绍。
 
-![0|about](png/about.png)
+![0|about](jpg/about.jpg)
 
 
 ### 退出

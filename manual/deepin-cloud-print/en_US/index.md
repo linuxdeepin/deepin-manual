@@ -29,15 +29,15 @@ The server IP address will be acquired in Windows automatically after finished t
 
 1. Click the start menu to open the program of Deepin Cloud Print Server in Windows.
 2. Acquire the IP address automatically.
-3. Input the authorization code in the settings interface of Deepin Cloun Print Server.
+3. Input the authorization code in the settings interface of Deepin Cloud Print Server.
 4. Click on **Update**, then ![spinner](icon/icon_spinner.png) will be displayed.
 5. After updated the authorization code, ![success](icon/icon_success.svg) will be displayed.
 
- ![0|windowssetting](png/windowssetting.png)
+ ![0|windowssetting](jpg/windowssetting.jpg)
 
 ## Configurations of Client|../common/icon_clientconfig.svg|
 
-You can open Deepin Cloud Print Cient in deepin to add one or more cloud printers.
+You can open Deepin Cloud Print Client in deepin to add one or more cloud printers.
 
 ### Open Deepin Cloud Print
 
@@ -52,7 +52,7 @@ You can open Deepin Cloud Print Cient in deepin to add one or more cloud printer
 4. Click on ![icon_setting](icon/icon_setting.svg) to enter the interface of print settings.
 5. You can view whether the printer is added successfully.
 
- ![1|deepinssetting](png/deepinssetting.png)
+ ![1|deepinssetting](jpg/deepinssetting.jpg)
 
 > ![notes](icon/notes.svg): If you need to delete the printer, please enter "Print Settings" to select the printer, then select **Delete** in the context menu.
 
@@ -68,4 +68,4 @@ You can use cloud print to print files in deepin, taking .doc files as the examp
 4. Select the printer in the pull-down option of **Name**, and set other print parameters.
 5. Click on **OK**.
 
- ![0|printsetting](png/printsetting.png)
+ ![0|printsetting](jpg/printsetting.jpg)

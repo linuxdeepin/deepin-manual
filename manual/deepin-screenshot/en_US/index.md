@@ -6,7 +6,7 @@
 Deepin Screenshot is an exquisite screen capturing tool developed by Wuhan Deepin Technology Co., Ltd. It's featured with intelligent window identification, delay screenshot, color selection, blurring and mosaic. Whether in daily work or entertainment, you can take a screenshot of every wonderful moment in your life by Deepin Screenshot.
 
 
-![1|screenshot](png/screenshot.png)
+![1|screenshot](jpg/screenshot.jpg)
 
 
 ## Guide|../common/icon_guide.svg|
@@ -66,7 +66,7 @@ It will save you both time and efforts to operate with shortcuts.
 2. In the shortcuts preview interface, you can view all the shortcuts.
 
 
-![1|shortcuts](png/shortcuts.png)
+![1|shortcuts](jpg/shortcuts.jpg)
 
 
 <table class="block2">
@@ -350,7 +350,7 @@ Currently there are three kinds of areas commonly captured: the full screen, pro
 Fullscreen selection is to recognize the whole screen of current display.
 
 
-![1|fullscreen](png/fullscreen.png)
+![1|fullscreen](jpg/fullscreen.jpg)
 
 You can select fullscreen by the following steps:
 
@@ -366,7 +366,7 @@ You can select fullscreen by the following steps:
 
 Program window selection is to automatically recognize the current application window.
 
-![1|window](png/window.png)
+![1|window](jpg/window.jpg)
 
 You can select program window by the following steps:
 
@@ -381,7 +381,7 @@ You can select program window by the following steps:
 Area customization is to freely select the area to be captured by dragging the mouse.
 
 
-![1|screenshot](png/screenshot.png)
+![1|screenshot](jpg/screenshot.jpg)
 
 You can customize area by the following steps:
 
@@ -436,7 +436,7 @@ While capturing screenshots, you can click on the icons on toolbar to complete v
 
 > ![notes](icon/notes.svg): If you have already set line width, font size and so on in the extended panel of toolbar, Deepin Screenshot will remember them. When you start Deepin Screenshot again, the settings will be used by default and you can also reset.
 
-![0|toolbar](png/toolbar.png)
+![0|toolbar](jpg/toolbar.jpg)
 
 
 <table class="block1">
@@ -515,12 +515,12 @@ While capturing screenshots, you can click on the icons on toolbar to complete v
 You can draw some simple graphics in the captured images, such as rectangle, ellipse, and so on.
 
 
- ![0|drawing](png/drawing.png)
+ ![0|drawing](jpg/drawing.jpg)
 
 
 #### Rectangle
 
-![1|rectangle](png/rectangle.png)
+![1|rectangle](jpg/rectangle.jpg)
 
 1. Click on ![rect](icon/rect.svg) in the toolbar.
 2. In the extended panel of the toolbar, choose width of the rectangle border line.
@@ -529,15 +529,15 @@ You can draw some simple graphics in the captured images, such as rectangle, ell
 5. If the screenshot includes personal private information, please click on ![blur](icon/blur.svg) or ![mosaic](icon/mosaic.svg) in the extended panel of the toolbar to blur.
 
 
-![1|blur](png/blur.png)
+![1|blur](jpg/blur.jpg)
 
-![1|mosaic](png/mosaic.png)
+![1|mosaic](jpg/mosaic.jpg)
 
 > ![notes](icon/notes.svg): Press and hold the ![shift](icon/Shift.svg) on keyboard, and then select ![rect](icon/rect.svg) to draw a square.
 
 #### Ellipse
 
-![1|ellipse](png/ellipse.png)
+![1|ellipse](jpg/ellipse.jpg)
 
 
 1. Click on ![ellipse](icon/ellipse.svg) in the toolbar.
@@ -552,7 +552,7 @@ You can draw some simple graphics in the captured images, such as rectangle, ell
 
 #### Arrow
 
-![1|arrow](png/arrow.png)
+![1|arrow](jpg/arrow.jpg)
 
 1. Click on ![arrow](icon/arrow.svg) in the toolbar.
 2. In the extended panel of the toolbar, choose width of the arrow border line.
@@ -564,7 +564,7 @@ You can draw some simple graphics in the captured images, such as rectangle, ell
 
 #### Pencil
 
-![1|pencil](png/pencil.png)
+![1|pencil](jpg/pencil.jpg)
 
 1. Click on ![pencil](icon/pencil.png) in the toolbar.
 2. In the extended panel of the toolbar, choose width of the pencil.
@@ -577,7 +577,7 @@ You can draw some simple graphics in the captured images, such as rectangle, ell
 If you have drawn other graphics in the screenshots, you can modify and move them.
 
 
-![1|modify](png/modify.png)
+![1|modify](jpg/modify.jpg)
 
 
 
@@ -611,7 +611,7 @@ If you have drawn other graphics in the screenshots, you can modify and move the
 
 Supplement and add descriptions to the captured images, thus to help others understand them more clearly.
 
-![1|text](png/text.png)
+![1|text](jpg/text.jpg)
 
 
 1. Click on ![text](icon/text.svg) in the toolbar below the screenshot area,.
@@ -653,7 +653,7 @@ If you have added a text annotation, you can modify and move the text annotation
 Deepin Screenshot totally provides 16 colors for you. You can choose different colors to mark.
 
 
-![0|color](png/color.png)
+![0|color](jpg/color.jpg)
 
 
 1. In the toolbar below the screenshot area, click on ![color](icon/color.png).
@@ -683,7 +683,7 @@ You can save captured images by the following ways:
 You can click the drop-down options of ![save](icon/save.png) in the toolbar below the screenshot area:
 
 
-![0|save](png/save.png)
+![0|save](jpg/save.jpg)
 
 
 * Select ![savetodesktop](icon/save_to_desktop.png) to save picture to desktop.

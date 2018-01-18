@@ -2,7 +2,7 @@
 
 远程协助主要是帮助用户、技术人员解决各种问题，同时遇到问题可以发起寻求别人的帮助，通过远程协助可以轻松的实现远程工作、培训、交互式教学等。
 
-![0|remoteinterface](png/remoteinterface.png)
+![0|remoteinterface](jpg/remoteinterface.jpg)
 
 ## 我要求助|../common/icon_ineedhelp.svg|
 
@@ -16,8 +16,8 @@
 
 > ![notes](icon/notes.svg)：界面将提示“正在连接，请耐心等待...”，如果连接成功后，求助界面将自动隐藏到任务栏上。
 
-![2|verificationcode](png/verificationcode1.png)
-![2|verificationcode](png/verificationcode2.png)
+![2|verificationcode](jpg/verificationcode1.jpg)
+![2|verificationcode](jpg/verificationcode2.jpg)
 
 ## 帮助别人|../common/icon_ihelpful.svg|
 
@@ -30,8 +30,8 @@
 
 > ![attention](icon/attention.svg)：如果您长时间未使用该验证码或使用该验证码不能正常连接，请重新获取新的验证码。
 
-![2|accessinterface](png/accessinterface1.png)
-![2|accessinterface](png/accessinterface2.png)
+![2|accessinterface](jpg/accessinterface1.jpg)
+![2|accessinterface](jpg/accessinterface2.jpg)
 
 ## 建立连接|../common/icon_remoteassistance.svg|
 
@@ -39,7 +39,7 @@
 
 当您输入验证码成功后，系统会自动进入对方的远程桌面中，您可以对桌面进行控制操作，还可以设置远程桌面显示的效果。
 
-![1|remoteassdesktop](png/remoteassdesktop.png)
+![1|remoteassdesktop](jpg/remoteassdesktop.jpg)
 
 当您连接远程桌面成功后，点击 **选项** 下拉菜单，您可以：
 - 设置 **画质优先**，保证远程协助桌面的画面达到最佳显示。
@@ -57,7 +57,7 @@
 
 > ![notes](icon/notes.svg)：您还可以点击“我在求助”界面上 **断开** 按钮来结束操作。
 
-![1|exitremoteassdesktop](png/exitremoteassdesktop.png)
+![1|exitremoteassdesktop](jpg/exitremoteassdesktop.jpg)
 
 ## 选项设置|../common/icon_optionsettings.svg|
 

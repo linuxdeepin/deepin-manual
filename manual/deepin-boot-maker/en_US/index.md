@@ -1,4 +1,4 @@
-# Deepin Boot Maker|../common/deepin-boot-maker.png|
+# Deepin Boot Maker|../common/deepin-boot-maker.svg|
 
 ## Overview|../common/icon_overview.svg|
 
@@ -14,7 +14,7 @@ Deepin Boot Maker is a tool to make deepin boot disk developed by Deepin Technol
 3. Run Deepin Boot Maker.
  - Deepin Boot Maker is built in deepin.
  - You can download its newest version from official website.
- - You can also extract deepin-boot-maker.exe from the image file in Windows
+ - You can also extract deepin-boot-maker.exe from the image file in Windows.
 
 ### Select Image File
 
@@ -25,9 +25,9 @@ There are two ways to select the image file:
 2.Drag an ISO image file and drop it to the interface, then click on **Next**.
 
 
-> ![notes](icon/notes.svg): Please check the MD5 checksum of image file fristly, or will be failed to make.
+> ![notes](icon/notes.svg): Please check the MD5 checksum of image file firstly, or will be failed to make.
 
-![0|file](png/file.png)
+![0|file](jpg/file.jpg)
 
 
 ### Select Making Disk
@@ -35,9 +35,9 @@ There are two ways to select the image file:
 Select the making disk and click on **Start making** to complete.
 
 
-> ![tips](icon/tips.svg): Please tick the box of **Formating disk can increase the making success rate**.
+> ![tips](icon/tips.svg): Please tick the box of **Formatting disk can increase the making success rate**.
 
-![0|drive](png/drive.png)
+![0|drive](jpg/drive.jpg)
 
 
 ### Start Making
@@ -47,9 +47,9 @@ There will be a prompt of **Make Successfully** when completed. During the time 
 
 > ![notes](icon/notes.svg): There will be a prompt when failed to make, you can click on **Feedback** to auto upload the error log.
 
-![3|making](png/making.png)
-![3|done](png/done.png)
-![3|failed](png/failed.png)
+![3|making](jpg/making.jpg)
+![3|done](jpg/done.jpg)
+![3|failed](jpg/failed.jpg)
 
 ## Main Menu|../common/icon_optionsetting.svg|
 
@@ -62,7 +62,7 @@ You can click to view the manual, which will help you further know and use Deepi
 3. View the manual.
 
 
-![1|heip](png/help.png)
+![1|heip](jpg/help.jpg)
 
 
 ### About
@@ -73,7 +73,7 @@ You can click to view the version description.
 2. Click on **About**.
 3. View the version description.
 
-![0|about](png/about.png)
+![0|about](jpg/about.jpg)
 
 
 ### Exit

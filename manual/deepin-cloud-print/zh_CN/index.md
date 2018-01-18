@@ -30,10 +30,10 @@
 1. 在Windows操作系统中，点击开始菜单，打开云打印机程序。
 2. 自动获取系统中IP地址。
 3. 在云打印机设置界面，输入授权码。
-4. 点击 **更新**，在界面上显示 ![spinner](icon/icon_spinner.png) 状态 。
+4. 点击 **更新**，在界面上显示 ![spinner](icon/icon_spinner.jpg) 状态 。
 5. 当授权码更新成功后，在界面上显示 ![success](icon/icon_success.svg) 状态。
 
- ![0|windowssetting](png/windowssetting.png)
+ ![0|windowssetting](jpg/windowssetting.jpg)
 
 ## 客户端配置|../common/icon_clientconfig.svg|
 
@@ -52,8 +52,8 @@
 4. 点击 ![icon_setting](icon/icon_setting.svg)，进入打印设置界面。
 5. 查看已添加的打印机是否添加成功。
 
- ![1|deepinssetting](png/deepinssetting.png)
- 
+ ![1|deepinssetting](jpg/deepinssetting.jpg)
+
 > ![notes](icon/notes.svg)：如果您需要删除打印机，进入"打印设置"界面中选择打印机，点击鼠标右键 > **删除**。
 
 ## 云打印测试|../common/icon_cloudprinttest.svg|
@@ -68,4 +68,4 @@
 4. 在 **名称** 下拉选项中，选择打印机并设置其他打印参数。
 5. 点击 **确定**。
 
- ![0|printsetting](png/printsetting.png)
+ ![0|printsetting](jpg/printsetting.jpg)

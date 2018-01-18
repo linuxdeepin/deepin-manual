@@ -3,7 +3,7 @@
 ## 概述|../common/icon_overview.svg|
 深度商店V4.0是武汉深之度科技有限公司重新打造的一款集应用展示、下载、安装、评论、评分于一体的应用程序。深度商店为您精心筛选和收录了不同类别的应用，同时每款应用都经过人工安装并验证，您可以进入商店搜索热门应用，一键下载并自动安装。
 
- ![1|maininterface](png/maininterface.png)
+![1|maininterface](jpg/maininterface.jpg)
 
 ## 基本操作|../common/icon_basicoperation.svg|
 
@@ -13,7 +13,7 @@
 1. 点击任务栏上的 ![launcher-24](icon/launcher-24.svg) 进入启动器界面。
 2. 通过浏览找到 ![store-24](icon/store-24.svg) 点击。
 
->  ![notes](icon/notes.svg) ：深度商店已经默认固定在任务栏上，您也可以点击任务栏上的 ![store-24](icon/store-24.svg) 来运行。
+> ![notes](icon/notes.svg) ：深度商店已经默认固定在任务栏上，您也可以点击任务栏上的 ![store-24](icon/store-24.svg) 来运行。
 
 ### 最大/最小化深度商店
 
@@ -26,14 +26,14 @@
 - 右键单击任务栏上的 ![store-24](icon/store-24.svg) 商店图标，选择 **关闭所有** 来退出深度商店。
 - 在深度商店界面，点击菜单栏中 [退出](#退出)。
 
-![1|closestore](png/closestore.png)
+![1|closestore](jpg/closestore.jpg)
 
 ## 主界面|../common/icon_maininterface.svg|
 深度商店主界面由导航栏、搜索框、首页轮播、首页栏目、专题应用、任务管理、菜单栏组成。
 
 > ![tips](icon/tips.svg)：向右或向左拖动导航栏边线，可以切换成图标或图标和名称显示。仅图标显示时，悬停在图标上就可以显示应用分类名称。
 
-![1|maininterfacedetail](png/maininterfacedetail.png)
+![1|maininterfacedetail](jpg/maininterfacedetail.jpg)
 
 <table class="block1">
     <caption>主界面</caption>
@@ -88,7 +88,7 @@
 2. 输入关键字。
 3. 在搜索框中将自动匹配补全并显示应用名称。
 
-![1|automatch](png/automatch.png)
+![1|automatch](jpg/automatch.jpg)
 
 #### 全局搜索
 
@@ -96,7 +96,7 @@
 2. 输入关键字。
 3. 按下键盘上的 ![Enter](icon/Enter.svg) 键，将自动搜索并显示包含该关键字的所有应用。
 
-![1|searchresult](png/searchresult.png)
+![1|searchresult](jpg/searchresult.jpg)
 
 #### 清空记录
 
@@ -114,55 +114,49 @@
 
 > ![tips](icon/tips.svg)：您还可以直接将鼠标悬停在应用的图片上，点击 ![installforpic](icon/installforpic.svg)。
 
-![1|installprocess](png/installprocess.png)
+![1|installprocess](jpg/installprocess.jpg)
 
 ### 更新/升级应用
 
-如果您需要更新和升级应用，可以通过控制中心来设置更新和升级应用，具体操作请参阅 [更新和升级](dman:///dde-control-center#更新和升级)。
+如果您需要更新和升级应用，可以通过控制中心来设置更新和升级应用，具体操作请参阅 [更新设置](dman:///dde#更新设置)。
 
 > ![notes](icon/notes.svg)：除了更新和升级应用，如果系统版本存在更新，您还可以通过控制中心更新和升级系统。
 
 ### 卸载应用
 
-如果您需要卸载应用，可以通过进入启动器界面来卸载应用，具体操作请参阅 [卸载应用程序](dman:///dde#卸载应用程序)。
+如果您需要卸载应用，可以通过进入启动器界面来卸载应用，具体操作请参阅 [卸载应用](dman:///dde#卸载应用)。
 
 ## 应用界面|../common/icon_appinterface.svg|
 
 ### 应用详情
 您可以通过进入应用详情界面，了解应用的介绍、大小、版本、下载量、评分等信息。
 
-![1|softwareinterface](png/softwareinterface.png)
+![1|softwareinterface](jpg/softwareinterface.jpg)
 
 <table class="block1">
     <caption>应用界面</caption>
     <tbody>
         <tr>
-            <td width="20px">1</td>
-            <td width="80px">应用状态</td>
-            <td>您可以查看应用的状态，显示 **安装** 表示该应用未安装；显示 **打开** 表示该应用已安装；显示 **更新** 表示该应用可更新至最新版本。</td>
+            <td width="20px">应用状态</td>
+            <td width="60px">您可以查看应用的状态，显示 **安装** 表示该应用未安装；显示 **打开** 表示该应用已安装；显示 **更新** 表示该应用可更新至最新版本。</td>
         </tr>
         <tr>
-            <td>2</td>
             <td>评分/下载量</td>
             <td>您可以查看应用的综合评分以及下载量。</td>
         </tr>
          <tr>
-            <td>3</td>
             <td>应用版本</td>
             <td>您可以查看应用的版本号。</td>
         </tr>
         <tr>
-            <td>4</td>
             <td>下载大小</td>
             <td>您可以查看应用的下载大小。</td>
         </tr>
         <tr>
-            <td>5</td>
             <td>应用介绍</td>
             <td>您可以查看应用的详细介绍。</td>
         </tr>
         <tr>
-            <td>6</td>
             <td>应用预览</td>
             <td>您可以查看应用的图片预览。</td>
         </tr>
@@ -174,7 +168,7 @@
 
 > ![attention](icon/attention.svg)：如果您需要了解注册和登录的信息，具体操作请参阅 [登录](#登录)。
 
-![1|commentandrate](png/commentandrate.png)
+![1|commentandrate](jpg/commentandrate.jpg)
 
 <table class="block1">
     <caption>评论和评分界面</caption>
@@ -204,7 +198,7 @@
             <td>历史版本</td>
             <td>您可以查看应用历史版本的评论和评分。</td>
         </tr>
-
+    
     </tbody>
  </table>
 
@@ -221,7 +215,7 @@
 
 > ![attention](icon/attention.svg)：如果您未注册帐号，通过点击弹出框中的 **注册** 按钮跳转到页面中进行注册。
 
-![0|loginpage](png/loginpage.png)
+![0|loginpage](jpg/loginpage.jpg)
 
 ### 帮助
 您可以点击帮助获取深度商店的帮助手册，通过帮助进一步让您了解和使用深度商店。
@@ -230,7 +224,7 @@
 2. 点击 **帮助**。
 3. 查看关于深度商店的帮助手册。
 
-![1|help](png/help.png)
+![1|help](jpg/help.jpg)
 
 ### 关于
 您可以点击关于查看深度商店的版本介绍。
@@ -239,7 +233,7 @@
 2. 点击 **关于**。
 3. 查看关于深度商店的版本和介绍。
 
-![0|about](png/about.png)
+![0|about](jpg/about.jpg)
 
 ### 退出
 您可以进入菜单栏点击退出深度商店。

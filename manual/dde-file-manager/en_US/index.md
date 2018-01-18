@@ -2,9 +2,9 @@
 
 ## Overview|../common/icon_overview.svg|
 
-Deepin File Manager is developped by Deepin Technology Team. As the core component to manage files in deepin, it is a powerful, easy-to-use file manager with an elegant and simple interface. Full-featured, well-designed, effecient-improved, Deepin File Manager will be a good help in your daily life and work.
+Deepin File Manager is developed by Deepin Technology Team. As the core component to manage files in deepin, it is a powerful, easy-to-use file manager with an elegant and simple interface. Full-featured, well-designed, efficient-improved, Deepin File Manager will be a good help in your daily life and work.
 
-![1|overview](png/overview.png)
+![1|overview](jpg/overview.jpg)
 
 ## Guide|../common/icon_guide.svg|
 
@@ -19,7 +19,7 @@ You can run, close and create a shortcut for Deepin File Manager by the followin
  - Click on **Send to dock** to fix the application on dock.
  - Click on **Add to startup** to add the application to startup, it will automatically run when the system starts up.
 
-> ![tips](icon/tips.svg): In Control Center, you can set Deepin File Manger as the default file manager. Specific operations refer to [Default Application Settings](dman:///dde-control-center#Default Application Settings).
+> ![tips](icon/tips.svg): In Control Center, you can set Deepin File Manger as the default file manager. Specific operations refer to [Default Application Settings](dman:///dde#Default Application Settings).
 
 ### Exit Deepin File Manager
 
@@ -31,7 +31,7 @@ You can run, close and create a shortcut for Deepin File Manager by the followin
 
 On Deepin File Manager interface, users can execute many operations with the functional bars. It is designed to be easy-to-use, user-friendly and efficient improving.
 
-![1|maininterface](png/main-interface.png)
+![1|maininterface](jpg/main-interface.jpg)
 
 <table class="block1">
     <caption></caption>
@@ -75,7 +75,7 @@ Deepin File Manager is featured with the basic functions as a file manager, user
 1. On Deepin File Manager interface, right click and select **New folder**.
 2. Input a name for the new folder, and press ![enter](icon/Enter.svg), or click on blank area.
 
-![0|newfolder](png/newfolder.png)
+![0|newfolder](jpg/newfolder.jpg)
 
 #### New Document
 
@@ -83,14 +83,14 @@ Deepin File Manager is featured with the basic functions as a file manager, user
 2. In the popup menu, select the document format you want to create.
 3. Input a name for the new document, and press ![enter](icon/Enter.svg), or click on blank area.
 
-![0|newdoc](png/newdoc.png)
+![0|newdoc](jpg/newdoc.jpg)
 
 ### Rename File/Folder
 
 1. Selected the file/folder, right click to select **Rename**.
 2. Input a new name for the file/folder, and press ![enter](icon/Enter.svg), or click on blank area.
 
-![0|rename](png/rename.png)
+![0|rename](jpg/rename.jpg)
 
 ### Batch Rename
 
@@ -112,14 +112,14 @@ Deepin File Manager is featured with the basic functions as a file manager, user
 2. Input the file name and SN.
 3. Press ![enter](icon/Enter.svg), or click on blank area.
 
-![1|batch_rename](png/batch_rename.png)
+![1|batch_rename](jpg/batch_rename.jpg)
 
 ### Copy File/Folder
 
 1. Select the files/folders to be copied, right click and select **Copy**.
 2. Enter the directory to which the files/folders will be pasted, right click and select **Paste**.
 
-![0|copy](png/copy.png) ![0|paste](png/paste.png)
+![0|copy](jpg/copy.jpg) ![0|paste](jpg/paste.jpg)
 
 > ![notes](icon/notes.svg)：A window will popup to show the progress as it starts copying. By clicking on ![close](icon/close_icon.svg) you can cancel the copying process. By hovering the mouse pointer to the round progress bar, it will switch to a pause button, you can pause the copying process by clicking on it.
 
@@ -130,7 +130,7 @@ Deepin File Manager is featured with the basic functions as a file manager, user
 3. Select a location to store the to be compressed file.
 4. Select **Create** to generate the compressed file.
 
-![0|compress](png/compress.png)
+![0|compress](jpg/compress.jpg)
 
 > ![tips](icon/tips.svg): In **Other Options**, user can choose to encrypt the compressed file and the file list, and also to split the to be compressed file into several parts to reduce individual file sizes of the compressed file.
 
@@ -141,7 +141,7 @@ Deepin File Manager is featured with the basic functions as a file manager, user
   - To permanently delete, open Trash and right click on the file/folder to select **Delete** or right click on Trash to select **Empty**.
   - To restore deleted files/folders, open Trash and right click on the file/folder to select **Restore**, the files/folders will be moved to their original directory.
 
-![0|delete](png/delete.png)
+![0|delete](jpg/delete.jpg)
 
 > ![notes](icon/notes.svg): File/folder in external device will be permanently deleted and can not be restored when you select **Delete**.
 
@@ -160,25 +160,25 @@ If the application you want to open the file is not in the list, you can:
 
 1. Click on **Select other programs**.
 2. Select an application you want to open.
-3. Click on **Open** to open the file by this applicaiton.
+3. Click on **Open** to open the file by this application.
 
-> ![notes](icon/notes.svg)：It will use the default application to open the file when you double clicked on it. Users can right click on the file, select **Properties** and choose a default application in **Open with ** list. Users can also set the options in the [Default Applcation Settings](dman:///dde-control-center#Default Applcation Settings) of the Control Center to change the global default applications of the specified file types.
+> ![notes](icon/notes.svg)：It will use the default application to open the file when you double clicked on it. Users can right click on the file, select **Properties** and choose a default application in **Open with ** list. Users can also set the options in the [Default Application Settings](dman:///dde#Default Application Settings) of the Control Center to change the global default applications of the specified file types.
 
-![0|open_with](png/open_with.png)
+![0|open_with](jpg/open_with.jpg)
 
 ### Display Modes
 
 Click on ![icon](icon/icon_view_normal.svg) or ![list](icon/list_view_normal.svg) on Deepin File Manager interface to switch between icon display and list display.
 
-![0|display](png/display.png)
+![0|display](jpg/display.jpg)
 
 - Icon display: It will show the icon, name and thumbnail of the files.
 
-![1|normal-view](png/normal-view.png)
+![1|normal-view](jpg/normal-view.jpg)
 
 - List display：It will show the icon, name, modified time, size and type of the files.
 
-![1|list-view](png/list-view.png)
+![1|list-view](jpg/list-view.jpg)
 
 > ![tips](icon/tips.svg): Users can right click in blank area on Deepin File Manager interface, select **Display as** in the context menu, then choose between **Icon** and **List**.
 
@@ -187,7 +187,7 @@ Click on ![icon](icon/icon_view_normal.svg) or ![list](icon/list_view_normal.svg
 1. Right click in the blank area on Deepin File Manager, select **Sort by**.
 2. Choose among the sorting options, which include **Name**, **Time modified**, **Size** and **Type**.
 
-![0|sort](png/sort.png)
+![0|sort](jpg/sort.jpg)
 
 > ![tips](icon/tips.svg)：Uses can click on the head of the columns in the list view to change the sort order.
 
@@ -201,7 +201,7 @@ Users can view the file/folder properties.
   - File/ folder is more than 16, there will be a general window of properties for all files/folders.
 3. In the popup window, you can view the file/folder information.
 
-![0|properties](png/properties.png)
+![0|properties](jpg/properties.jpg)
 
 
 > ![notes](icon/notes.svg)： Link path will be added in the properties of link file/folder.
@@ -218,7 +218,7 @@ By default, breadcrumb bar is displayed in the address bar. By clicking on the b
 
 By inputting a directory/keywords in the directory/search bar and pressing ![enter](icon/Enter.svg), user can access the target directory/search for target items.
 
-![0|addressbar1](png/addressbar1.png)
+![0|addressbar1](jpg/addressbar1.jpg)
 
 > ![tips](icon/tips.svg): When user accesses a sub directory, all the parent directories of the sub directory will become a breadcrumb in the address bar. By clicking on the breadcrumbs, user can easily switch among the sub directories and their parent directories.
 
@@ -232,9 +232,9 @@ Users can search or open target item in the address bar.
 2. Switch to search and input keywords in the search bar.
 3. Press ![enter](icon/Enter.svg), the search results will be shown in the window.
 
-![1|search](png/search.png)
+![1|search](jpg/search.jpg)
 
-> ![tips](icon/tips.svg): You can also open a file in the address bar by its absolute path, such as /home/desktop/deepin-clone/a.png.
+> ![tips](icon/tips.svg): You can also open a file in the address bar by its absolute path, such as /home/desktop/deepin-clone/a.jpg.
 
 ### Manage Tabs
 
@@ -248,7 +248,7 @@ Deepin File Manager supports multi-tab view.
 
  > ![tips](icon/tips.svg): When the Deepin File Manager has only one tab, the tab bar is hidden, you can press ![Ctrl](icon/Ctrl.svg) + ![T](icon/T.svg) to add a new tab.
 
-![1|new_tab](png/new_tab.png)
+![1|new_tab](jpg/new_tab.jpg)
 
 ### Manage Bookmarks
 
@@ -259,7 +259,7 @@ Users can add folders to bookmarks in Deepin File Manager.
 1. On Deepin File Manager, right click on the folder to add as bookmark.
 2. In the popup context menu, select **Add to bookmark**.
 
-![0|add_bookmark](png/add_bookmark.png)
+![0|add_bookmark](jpg/add_bookmark.jpg)
 
 #### Move Bookmarks
 
@@ -278,7 +278,7 @@ Users can visit computers in LAN to access files and folders.
 3. Select to connect as **Anonymous ** or **Registered user**. For **Registered user**, user needs to input username and password to connect.
 4. Click on **Connect** to establish connection.
 
-![0|network](png/network.png)
+![0|network](jpg/network.jpg)
 
 ### My shares
 
@@ -292,7 +292,7 @@ Users can share folders in Deepin File Manager, if there are some folders shared
 4. To change share options, input **Share name**, and select to choose **Permission** and **Anonymity **.
 5. To set share password, click ![menu](icon/icon_menu.svg) and select **Set share password**.
 
-![0|share](png/share.png)
+![0|share](jpg/share.jpg)
 
 #### Manage share
 
@@ -302,14 +302,14 @@ Users can manage shared folders if it has shared some folders in Deepin File Man
 2. All shared folders will show on the interface.
 3. Users can cancel sharing by right click the folder and select **Cancel sharing**.
 
-![1|viewshare](png/viewshare.png)
+![1|viewshare](jpg/viewshare.jpg)
 
 ### Open in Terminal
 
 1. On Deepin File Manager interface, enter the folder.
 2. Click on blank area in the folder, and select **Open in terminal**.
 
-![0|openinterminal](png/openinterminal.png)
+![0|openinterminal](jpg/openinterminal.jpg)
 
 ### Create Link
 
@@ -320,7 +320,7 @@ Users can create links for items, and put the links in easy-to-reach folders (su
 3. In the popup window, select a folder to store the link.
 4. Click on **Save** to finish creating the link.
 
-![0|create_link](png/create_link.png)
+![0|create_link](jpg/create_link.jpg)
 
 ### Send To
 
@@ -331,7 +331,7 @@ When there is an external device inserted, you can directly send file/folder to 
 3. Select the device you want to send to.
 4. file/folder will be copied to the device.
 
-![0|send_to](png/send_to.png)
+![0|send_to](jpg/send_to.jpg)
 
 >![tips](icon/tips.svg): By selecting **Send to desktop** for an item, user can create a link on desktop with one click.
 
@@ -353,8 +353,8 @@ Mounted disks are displayed in the left navigation bar of Deepin File Manager. I
 3. Select **Unmount** to unmount the disk. The disk will be still in the disk list.
 4. Select **Safely Remove** to power off and remove the external device.
 
-![3|eject](png/eject.png)
-![3|safely_remove](png/safely_remove.png)
+![3|eject](jpg/eject.jpg)
+![3|safely_remove](jpg/safely_remove.jpg)
 
 > ![tips](icon/tips.svg): Users can click on ![unmount](icon/unmount_normal.svg) in the navigation bar to eject the disks.
 
@@ -367,7 +367,7 @@ Mounted disks are displayed in the left navigation bar of Deepin File Manager. I
 
 > ![notes](icon/notes.svg): Fast format can be finished in a few seconds, but the data could be restored by file recovery tools. If you don't want these data to be restored, you can uncheck this option box and format the disk.
 
-![0|format](png/format.png)
+![0|format](jpg/format.jpg)
 
 ## Main Menu|../common/icon_optionsetting.svg|
 
@@ -394,7 +394,7 @@ Users can create new window, set share password, view manual and about informati
  - In **Dialog**, users can set whether to use the file chooser dialog of the Deepin File Manager or not.
  - Users can click on **Restore Defaults** to restore all settings.
 
-![1|settings](png/settings.png)
+![1|settings](jpg/settings.jpg)
 
 ### Help
 
@@ -402,7 +402,7 @@ Users can create new window, set share password, view manual and about informati
 2. Select **Help**.
 3. View the manual.
 
-![1|help](png/help.png)
+![1|help](jpg/help.jpg)
 
 ### About
 
@@ -410,7 +410,7 @@ Users can create new window, set share password, view manual and about informati
 2. Select **About**.
 3. View the version description.
 
-![0|about](png/about.png)
+![0|about](jpg/about.jpg)
 
 ### Exit
 

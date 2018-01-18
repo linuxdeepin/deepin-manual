@@ -2,7 +2,7 @@
 
 Remote Assistance is used to help users and technicians to solve all kinds of issues, and seek for help when issues are encountered. With Remote Assistance, remote work, training and interactive teaching can be easily done.
 
-![0|remoteinterface](png/remoteinterface.png)
+![0|remoteinterface](jpg/remoteinterface.jpg)
 
 ## Assist Me|../common/icon_remoteassistance.svg|
 
@@ -16,12 +16,12 @@ If you encountered an issue and need online help, by starting Remote Assistance,
 
 > ![notes](icon/notes.svg): "Connecting, please wait..." will be shown on the interface, it will automatically hide to dock after successfully connected.
 
-![2|verificationcode](png/verificationcode1.png)
-![2|verificationcode](png/verificationcode2.png)
+![2|verificationcode](jpg/verificationcode1.jpg)
+![2|verificationcode](jpg/verificationcode2.jpg)
 
 ## Assist Others|../common/icon_remoteassistance.svg|
 
-If another user requests for your assistance, you can access the other user's desktop by inputing the verification code obtained from the user.
+If another user requests for your assistance, you can access the other user's desktop by inputting the verification code obtained from the user.
 
 1. Obtain verification code from the other user.
 2. Enter Launcher interface, click on **Remote Assistance**.
@@ -30,8 +30,8 @@ If another user requests for your assistance, you can access the other user's de
 
 > ![attention](icon/attention.svg): If you did not use the verification code timely, or it can not connect by the verification code, please obtain a new one.
 
-![2|accessinterface](png/accessinterface1.png)
-![2|accessinterface](png/accessinterface2.png)
+![2|accessinterface](jpg/accessinterface1.jpg)
+![2|accessinterface](jpg/accessinterface2.jpg)
 
 ## Establish Connection|../common/icon_remoteassistance.svg|
 
@@ -39,7 +39,7 @@ If another user requests for your assistance, you can access the other user's de
 
 After inputting the verification code, the system will access the remote desktop, you can execute control operations to the desktop. Meanwhile, you can set the display effect of the remote desktop.
 
-![1|remoteassdesktop](png/remoteassdesktop.png)
+![1|remoteassdesktop](jpg/remoteassdesktop.jpg)
 
 After successfully connected to remote desktop, click on **Preferences** collapse menu, you can:
 - Select **Optimize quality** to optimize the screen display quality of the remote desktop.
@@ -57,7 +57,7 @@ When remote control operations are completed, you can disconnect with a button i
 
 > ![notes](icon/notes.svg): You also can click on **Disconnect** in "Assist me" interface to end the operation.
 
-![1|exitremoteassdesktop](png/exitremoteassdesktop.png)
+![1|exitremoteassdesktop](jpg/exitremoteassdesktop.jpg)
 
 ## Settings|../common/icon_remoteassistance.svg|
 

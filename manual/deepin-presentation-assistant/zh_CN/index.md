@@ -17,7 +17,7 @@
 
 ![notes](icon/notes.svg)：使用手机或者电脑热点连接演示助手，需要电脑支持无线网络，选择 **否** 之后请自行完成热点连接操作再点击 **确定**。
 
-![2|guide](png/guide.png)![2|hotsopt](png/hotsopt.png)
+![2|guide](jpg/guide.jpg)![2|hotsopt](jpg/hotsopt.jpg)
 
 ## 操作介绍|../common/icon_commoncoperat.svg|
 
@@ -31,7 +31,7 @@
 5. 在电脑上点击 **返回** ，使用手机端扫描电脑端的二维码。
 6. 电脑端出现连接成功后，手机会跳转到深度演示助手功能界面。
 
-![1|link](png/link.png)
+![1|link](jpg/link.jpg)
 
 ### 照片分享
 您可以使用手机拍摄照片或从手机相册中选择图片分享到电脑屏幕上。
@@ -41,12 +41,12 @@
 3. 点击左上角的  ![ok](icon/ok.svg) 来确认分享，将照片分享到电脑屏幕上。
 4. 您可以在手机上缩放或切换照片，也可以选择下方的工具来帮助您展示照片。
 
-![2|photoshare](png/photoshare.png)
+![2|photoshare](jpg/photoshare.jpg)
 
 #### 旋转工具
 在照片分享时，点击工具栏上的 ![tool_rotate](icon/tool_rotate.svg) 来旋转当前照片，每点击一次照片会顺时针旋转90°。
 
-![2|rotate](png/rotate.png)
+![2|rotate](jpg/rotate.jpg)
 
 #### 标记工具
 1. 在照片分享时，点击工具栏上的 ![pen](icon/pen.svg) 来标注图片。
@@ -54,20 +54,20 @@
 3. 您也可以选择记号笔的颜色，来切换标记颜色。
 
 
-![2|mark](png/mark.png)
+![2|mark](jpg/mark.jpg)
 
 #### 聚焦工具
 1. 在照片分享时，点击工具栏上的 ![tool_focus](icon/tool_focus.svg) 照片上会出现聚光灯效果。
 2. 您可以滑动调节聚焦位置或者缩放聚焦区域大小。
 3. 再次点击 ![tool_focus](icon/tool_focus.svg) 来退出聚焦模式。
 
-![1|mark](png/foucs.png)
+![1|mark](jpg/foucs.jpg)
 
 #### 轨迹工具
 
 在照片分享时，点击工具栏上的 ![tool_track](icon/tool_track.svg) ，照片上会短暂停留您的滑动轨迹。
 
-![1|tracke](png/tracke.png)
+![1|tracke](jpg/tracke.jpg)
 
 ### 幻灯片演示
 您可以使用手机来远程控制电脑上的幻灯片。
@@ -77,7 +77,7 @@
 3. 此时电脑上的幻灯片会进入演示状态，您可以点击手机上的 ![previous](icon/previous.svg) 、 ![next](icon/next.svg) 来切换到上一页、下一页。
 4. 幻灯片切换到最后一页后再次点击可以退出演示状态。
 
-![2|ppt](png/ppt.png)
+![2|ppt](jpg/ppt.jpg)
 
 ![notes](icon/notes.svg)：需要先在电脑上打开幻灯片才能启动手机上的幻灯片演示功能。
 
@@ -86,16 +86,16 @@
 您可以将手机屏幕投射到电脑上。
 
 
-1. 在深度演示助手功能界面，选择 **无线投屏**。
+1. 在深度演示助手功能界面，选择 **无限投屏**。
 2. 点击 **开始投屏**。
-3. 当手机界面出现 ![success](icon/success.png) 提示时，您的手机屏幕已经投射到电脑上了。
+3. 当手机界面出现 ![success](icon/success.jpg) 提示时，您的手机屏幕已经投射到电脑上了。
 4. 您可以返回手机主界面来展示手机内容。
 5. 展示完成后回到深度演示助手，点击 **停止投屏** 来结束无线投屏。
 
 
 
 
-![2|screenshare](png/screenshare1.png)![2|screenshare](png/screenshare2.png)
+![2|screenshare](jpg/screenshare1.jpg)![2|screenshare](jpg/screenshare2.jpg)
 
 
 
@@ -110,7 +110,7 @@
 2. 点击 **帮助**。
 3. 查看关于深度演示助手的帮助手册。
 
-![1|recoder](png/help.png)
+![1|recoder](jpg/help.jpg)
 
 ### 关于
 
@@ -120,7 +120,7 @@
 2. 点击 **关于**。
 3. 查看关于深度演示助手的版本和介绍。
 
-![0|recoder](png/about.png)
+![0|recoder](jpg/about.jpg)
 
 ### 退出
 

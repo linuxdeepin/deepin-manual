@@ -3,12 +3,12 @@
 ## 概述|../common/icon_overview.svg|
 深度操作系统是深度科技发行的美观易用、安全可靠的国产桌面操作系统。深度系统预装了 WPS Office、搜狗输入法、有道词典以及一系列深度特色应用。它既能让您体验到丰富多彩的娱乐生活，也可以满足您的日常工作需要。相信随着功能的不断升级和完善，深度操作系统将会被越来越多的用户所喜爱和使用。
 
-![1|desk](png/desk.png)
+![1|desk](jpg/desk.jpg)
 
 ## 桌面|../common/desk.svg|
 在桌面上可以新建文件/文件夹、排列文件、设置热区、设置壁纸等进行相关操作。
 
-![0|rightbuttonmenu](png/rightbuttonmenu.png)
+![0|rightbuttonmenu](jpg/rightbuttonmenu.jpg)
 
 ### 新建文件夹/文档
 您可以在桌面上新建文件夹以及常用文档，也可以对文件进行常规操作，和在文件管理器中一样。
@@ -71,6 +71,7 @@
 1. 在桌面上，点击鼠标右键。
 2. 点击 **图标大小**。
 3. 选择一个合适的图标大小。
+
 > ![tips](icon/tips.svg)：您也可以用 ![Ctrl](icon/Ctrl.svg) + ![=](icon/=.svg)/![-](icon/-.svg)来调整图标大小，另外快捷键还可以在启动器中调整启动器图标大小。
 
 ### 设置显示器
@@ -91,7 +92,7 @@
 4. 将鼠标指针置于桌面的某个角落，在选项中重新选择一项。
 5. 在桌面的空白处点击一下鼠标，退出热区设置。
 
- ![1|hotspace](png/hotspace.png)
+ ![1|hotspace](jpg/hotspace.jpg)
 
 > ![tips](icon/tips.svg)：请留意热区设置界面的动画学习热区使用方法，将鼠标移动到屏幕一角并继续向外拖动就可以唤醒对应的热区功能。
 
@@ -105,7 +106,7 @@
 3. 选择其中的壁纸后，壁纸就会在桌面和锁屏中生效。
 4. 可以选择壁纸上出现的 **仅设置桌面** 和 **仅设置锁屏** 来控制壁纸生效范围。
 
-![1|wallpapers](png/wallpapers.png)
+![1|wallpapers](jpg/wallpapers.jpg)
 
 
 ## 任务栏|../common/dock.svg|
@@ -114,7 +115,7 @@
 ### 任务栏图标
 您可以在启动器中将应用图标创建快捷方式到任务栏上，同时对任务栏上的应用程序进行相关操作。
 
-![1|taskbar](png/taskbar.png)
+![1|taskbar](jpg/taskbar.jpg)
 
 <table class="block1">
     <caption>图标说明</caption>
@@ -174,9 +175,9 @@
 - **高效模式**：任务栏的显示风格类似于Windows 7，以小长条的形式显示在屏幕下方。固定在任务栏上的应用图标默认为小图标显示，而且相同类型的图标会合并在一起以腾出更多的空间给其他图标使用。
 
 
- ![1|fasion](png/fasion.png)
+ ![1|fasion](jpg/fasion.jpg)
 
- ![1|efficient](png/efficient.png)
+ ![1|efficient](jpg/efficient.jpg)
 
 
 您可以通过以下操作来切换显示模式：
@@ -185,7 +186,7 @@
 2. 点击鼠标右键。
 3. 在 **模式** 子菜单中选择一种显示模式。
 
- ![1|showmode](png/showmode.png)
+ ![1|showmode](jpg/showmode.jpg)
 
 ### 设置任务栏位置
 您可以将任务栏放置在桌面的任意方向。
@@ -193,7 +194,7 @@
 1. 在桌面上，右键单击任务栏。
 2. 在 **位置** 子菜单中选择一个方向。
 
- ![1|showside](png/showside.png)
+ ![1|showside](jpg/showside.jpg)
 
 ### 调整任务栏大小
 您可根据个人习惯调整任务栏的大小。
@@ -201,7 +202,7 @@
 1. 在桌面上，右键单击任务栏。
 2. 在 **大小** 子菜单中选择一个大小。
 
- ![1|showbig](png/showbig.png)
+ ![1|showbig](jpg/showbig.jpg)
 
 ### 显示/隐藏任务栏
 您可以将任务栏隐藏起来，最大程度的扩展桌面的可操作区域。
@@ -212,13 +213,13 @@
   - 选择 **一直隐藏**，任务栏将会隐藏起来，只有在鼠标移至任务栏区域时才会显示。
   - 选择 **智能隐藏**，当需要占用任务栏区域时任务栏将会自动隐藏。
 
- ![1|showhidetaskbar](png/showhidetaskbar.png)
+ ![1|showhidetaskbar](jpg/showhidetaskbar.jpg)
 
 ### 设置插件显示
 1. 在桌面上，右键单击任务栏。
 2. 在 **插件** 子菜单中勾选或取消勾选 **电源、网络、声音、时间** ，可以设置电源、网络、声音、时间等插件在任务栏上的显示和隐藏效果。
 
- ![1|showplugin](png/showplugin.png)
+ ![1|showplugin](jpg/showplugin.jpg)
 
 ### 关机界面
 您可以通过任务栏中的电源图标进入关机界面进行相关操作，也可以在启动器的小窗口模式中点击电源图标。
@@ -289,7 +290,7 @@
 - 两种模式均支持排列应用、搜索应用、设置快捷方式等操作。
 - 小窗口模式还额外支持快速打开文件管理器和快速进入关机界面等功能。
 
-![1|launch](png/launchb.png)![1|launch](png/launchs.png)
+![1|launch](jpg/launchb.jpg)![1|launch](jpg/launchs.jpg)
 
 
 
@@ -306,7 +307,7 @@
 3. 按照分类排列方式显示应用程序图标。
 4. 将鼠标悬停在分类图标上，将显示图标以及文字分类。
 
- ![1|sortapp](png/sortapp.png)
+ ![1|sortapp](jpg/sortapp.jpg)
 
 ### 查找应用
 
@@ -317,7 +318,7 @@
 1. 在启动器中，通过顶部的搜索框中输入关键字，例如“deepin”。
 2. 系统会自动搜索包含关键字“deepin”的所有应用，并且将搜索的结果显示在启动器界面中。
 
- ![1|searchapp](png/searchapp.png)
+ ![1|searchapp](jpg/searchapp.jpg)
 
 ### 设置快捷方式
 快捷方式提供了一种简单快捷地启动应用的方法。
@@ -331,7 +332,7 @@
    - 点击 **发送到任务栏**，将应用固定到任务栏。
    - 点击 **开机自动启动**，将应用添加到开机启动项，在电脑开机时自动运行该应用。
 
- ![0|sendto](png/sendto.png)
+ ![0|sendto](jpg/sendto.jpg)
 
 >![notes](icon/notes.svg)：您可以通过鼠标将应用的图标从启动器拖拽到任务栏上放置。但是当应用处于运行状态时您将无法拖拽固定，此时您可以右键单击任务栏上的应用图标，选择 **驻留** 将应用固定到任务栏，以便在下次使用时能够从任务栏上快速打开。
 
@@ -344,7 +345,7 @@
    - 点击 **从任务栏上移除**，将固定到任务栏上的应用移除。
    - 点击 **取消开机自动启动**，从开机启动项中移除该应用。
 
- ![0|deleteto](png/deleteto.png)
+ ![0|deleteto](jpg/deleteto.jpg)
 
 > ![notes](icon/notes.svg)：按住鼠标左键不放，将应用图标拖拽到任务栏以外的区域进行移除，当应用处于运行状态时您将无法拖拽移除，此时可以右键单击任务栏上的应用图标，选择 **移除驻留** 将应用从任务栏上移除。
 
@@ -365,7 +366,7 @@
 1. 在启动器中，右键单击应用图标。
 2. 点击 **卸载**。
 
- ![0|uninstallapp](png/uninstallapp.png)
+ ![0|uninstallapp](jpg/uninstallapp.jpg)
 
 > ![tips](icon/tips.svg)：在 **时尚模式** 下，您还可以在启动器界面，按住鼠标左键不放，将应用图标拖拽到 ![trash](icon/trash_icon.svg) 中卸载应用。
 
@@ -376,7 +377,7 @@
 ### 首页介绍
 控制中心首页主要是为了展示用户最常用的信息，方便用户日常查看和快速使用。
 
-![0|dcchomepage](png/dcchomepage.png)
+![0|dcchomepage](jpg/dcchomepage.jpg)
 
 <table class="block1">
     <tbody>
@@ -406,7 +407,7 @@
 ### 账户设置
 通过设置帐户为您的计算机提供安全保障，保护您的个人隐私和数据。
 
-![0|account](png/account.png)
+![0|account](jpg/account.jpg)
 
 #### 创建新帐户
 
@@ -475,7 +476,7 @@
 ### 显示设置
 通过设置显示器的分辨率、屏幕方向以及扩展屏幕，让您的电脑显示到达最佳状态。
 
-![0|video](png/video.png)
+![0|video](jpg/video.jpg)
 
 #### 单屏设置
 您可以通过设置显示器的分辨率、亮度等来调节屏幕的视觉观感。
@@ -539,7 +540,7 @@
 ### 默认程序设置
 当系统中同一类型的应用程序安装多个时，您可以通过选择其中的一个程序来作为默认启动的应用程序。
 
-![0|default](png/default.png)
+![0|default](jpg/default.jpg)
 
 #### 选择默认程序
 
@@ -575,7 +576,7 @@
 ### 个性化设置
 您可以通过使用不同的桌面图标、窗口样式、字体等来改变桌面的外观，设置成您喜欢的显示风格。
 
-![0|personalise](png/personalise.png)
+![0|personalise](jpg/personalise.jpg)
 
 #### 设置主题
 您可以分别设置系统的窗口主题、图标主题、光标主题。
@@ -600,7 +601,7 @@
 ### 蓝牙设置
 蓝牙能够实现短距离的无线通信，您可以通过蓝牙与附近的其它蓝牙设备连接，常见的蓝牙设备包括：蓝牙键盘、蓝牙鼠标、蓝牙耳机、蓝牙音响等。
 
-![0|bluetooth](png/bluetooth.png)
+![0|bluetooth](jpg/bluetooth.jpg)
 
 
 > ![notes](icon/notes.svg)：大多数笔记本电脑都配备有蓝牙模块，您只要开启蓝牙功能开关，而大部分台式电脑都没有配备蓝牙，您可以购买相关蓝牙适配器插入到电脑的USB端口中使用。
@@ -636,7 +637,7 @@
 ### 网络设置
 体验网上冲浪带来的乐趣！您可以在网络上浏览新闻、在线视频播放，也可以下载文件、聊天、网上购物等操作。
 
-![0|internet](png/internet.png)
+![0|internet](jpg/internet.jpg)
 
 
 #### 有线网络
@@ -730,7 +731,7 @@
 ### 声音设置
 设置您的扬声器和麦克风，让您听的更舒适，唱的更动听。
 
-![0|sound](png/sound.png)
+![0|sound](jpg/sound.jpg)
 
 #### 设置扬声器
 
@@ -759,7 +760,7 @@
 
 ### 日期和时间
 
-![0|time](png/time.png)
+![0|time](jpg/time.jpg)
 
 #### 自动同步
 
@@ -791,7 +792,7 @@
 
 ### 电源管理
 
-![2|power](png/power.png)
+![2|power](jpg/power.jpg)
 
 #### 设置显示器休眠时间
 
@@ -812,7 +813,7 @@
 
 ### 鼠标和触控板
 
-![0|mouse](png/mouse.png)
+![0|mouse](jpg/mouse.jpg)
 
 1. 在控制中心面板首页，点击 ![mouse_touchpad_normal](icon/mouse_touchpad_normal.svg)。
 2. 点击 **左手**/**自然滚动**/**输入时禁用触摸板**/**插入鼠标时禁用触摸板** 开关按钮，开启相关功能。
@@ -823,7 +824,7 @@
 ### 键盘和语言
 您可以根据国家和地区，选择您的键盘输入习惯和布局以及查看、搜索、修改和自定义快捷键。
 
-![0|keyboarde](png/keyboarde.png)
+![0|keyboarde](jpg/keyboarde.jpg)
 
 #### 设置键盘属性
 
@@ -896,7 +897,7 @@
 ### 系统信息
 您可以查看系统版本和电脑硬件等信息，以及设置启动菜单。
 
-![0|info](png/info.png)
+![0|info](jpg/info.jpg)
 
 #### 查看系统信息
 
@@ -934,7 +935,7 @@
 ### 更新设置
 当系统存在更新时会在控制中心首页提示，您可以手动更新也可以设置成自动更新，同时还可以修改镜像源、升级系统和应用。
 
-![0|update](png/update.png)
+![0|update](jpg/update.jpg)
 
 #### 开启自动更新
 
@@ -967,7 +968,7 @@
 ## 窗口管理器|../common/window.svg|
 窗口管理器可以在不同的工作区内展示不同的窗口内容，通过窗口管理器您可以对桌面窗口进行分组管理。
 
- ![1|openworkspace](png/openworkspace.png)
+ ![1|openworkspace](jpg/openworkspace.jpg)
 
 ### 打开工作区
 工作区是将您的桌面窗口进行分组管理，通过划分工作区可以增大您的工作区域。

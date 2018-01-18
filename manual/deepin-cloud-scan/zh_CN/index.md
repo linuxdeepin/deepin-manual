@@ -29,7 +29,7 @@
 
 > ![notes](icon/notes.svg)：如果您需要更改授权码，直接在 **授权码** 文本框中输入新的授权码，点击 **更新** 后即可生效。
 
- ![0|windowssetting](png/windowssetting.png)
+ ![0|windowssetting](jpg/windowssetting.jpg)
 
 ## 客户端配置|../common/icon_clientconfig.svg|
 
@@ -48,13 +48,13 @@
 4. 在对应的扫描仪列表后点击 ![icon_plus](icon/icon_plus.svg)，该扫描仪名称后显示为“已添加”状态。
 5. 点击 **扫描**，进入扫描易界面进行设置。
 
- ![1|deepinssetting](png/deepinssetting.png)
+ ![1|deepinssetting](jpg/deepinssetting.jpg)
 
 > ![attention](icon/attention.svg) ：如果输入服务器端IP地址和授权码后，界面上提示“无效的IP地址”，进入服务器端关闭Windows防火墙。
 
 
 - 如果已经添加过扫描仪，可以进入深度云扫描列表界面，点击窗口左上角 ![icon_plus](icon/icon_plus.svg) 添加多个扫描仪设备。
-- 如果需要删除深度云扫描列表中的扫描仪，点击窗口左上角 ![icon_minus](icon/icon_minus.png) 可以删除扫描仪设备。
+- 如果需要删除深度云扫描列表中的扫描仪，点击窗口左上角 ![icon_min](icon/icon_min.svg) 可以删除扫描仪设备。
 
 ## 选项设置|../common/icon_optionsettings.svg|
 
@@ -88,13 +88,13 @@
 
 您可以在客户端（深度操作系统）打开图片或PDF文件，打开启动器界面中扫描易进行扫描。
 
-1. 进入启动器界面，浏览找到 ![scanner-24](icon/scanner-24.png) 点击，进入扫描易界面。
+1. 进入启动器界面，浏览找到 ![scanner-24](icon/scanner-24.svg) 点击，进入扫描易界面。
 2. 点击左上角的图标。
 3. 选择 **首选项**，进入扫描易设置界面。
 4. 在 **扫描来源** 下拉选项中，选择扫描仪并设置其他扫描参数。
 5. 点击 **确定**。
 6. 在扫描易界面上，点击 **扫描** 即可。
 
- ![0|sannersetting](png/sannersetting.png)
+ ![0|sannersetting](jpg/sannersetting.jpg)
 
 > ![attention](icon/attention.svg) ：如果Windows操作系统更新了深度云扫描的授权码，当您在扫描文件时，提示授权码已更新，请联系管理员获取新的授权码后输入继续扫描。扫描过程中如果出现错误，请根据错误提示，重新进行设置。

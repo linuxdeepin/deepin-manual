@@ -5,7 +5,7 @@
 
 深度截图拥有模糊和马赛克的图片编辑功能，在传播图片的过程中帮助您保护隐私信息不外泄。
 
-![1|区域截图](png/partarea.png)
+![1|区域截图](jpg/partarea.jpg)
 
 您可以通过多种方式来实现快速截图：
 
@@ -55,7 +55,7 @@
 
 2. 在快捷键预览界面，您可以查看到所有的快捷键。
 
-![1|快捷键](png/shortcutkey.png)
+![1|快捷键](jpg/shortcutkey.jpg)
 
 <table class="block2">
     <caption>启动/截图</caption>
@@ -200,7 +200,7 @@
 
 选择全屏是识别当前显示器的整个屏幕。
 
-![1|全屏截图](png/fullscreen.png)
+![1|全屏截图](jpg/fullscreen.jpg)
 
 您可以通过操作以下步骤来选择全屏：
 
@@ -221,7 +221,7 @@
 ### 选择程序窗口
 选择程序窗口是自动识别当前的应用窗口。
 
-![1|窗口截图](png/window.png)
+![1|窗口截图](jpg/window.jpg)
 
 1. 按下键盘上的 ![ctrl](icon/Ctrl.svg)+![alt](icon/Alt.svg)+![A](icon/A.svg) 组合键，进入截图模式。
 
@@ -234,7 +234,7 @@
 ### 选择自选区域
 选择自选区域是通过拖动鼠标，自由选择截取的范围。
 
-![1|区域截图](png/partarea.png)
+![1|区域截图](jpg/partarea.jpg)
 
 1. 按下键盘上的 ![ctrl](icon/Ctrl.svg)+![alt](icon/Alt.svg)+![A](icon/A.svg) 组合键，进入截图模式。
 
@@ -279,7 +279,7 @@
 
 > ![attention](icon/attention.svg)：如果您已经对工具栏展开面板，如线条粗细、字体大小等进行了设置，深度截图会记住您的选择。当您下次启动深度截图后，将默认使用该设置，您也可以重新进行选择。
 
-![0|工具栏](png/toolbar.png)
+![0|工具栏](jpg/toolbar.jpg)
 
 <table class="block1">
     <caption>图标说明</caption>
@@ -320,11 +320,11 @@
 ### 绘制图形
 您可以在截取的图片中绘制一些简单的图形，如矩形、椭圆等。
 
- ![0|深度截图](png/drawing.png)
+ ![0|深度截图](jpg/drawing.jpg)
 
 #### 矩形工具
 
-![1|矩形工具](png/recttool.png)
+![1|矩形工具](jpg/recttool.jpg)
 
 1. 在截图区域下方的工具栏中，点击 ![矩形](icon/rect.svg)。
 
@@ -336,12 +336,12 @@
 
 5. 如果截图中包含了个人隐私信息，请点击工具栏展开面板中的 ![模糊](icon/blur.svg) 或 ![马赛克](icon/mosaic.svg) 来涂抹。
 
-![2|模糊工具](png/blurtool.png)
-![2|马赛克工具](png/mosaictool.png)
+![2|模糊工具](jpg/blurtool.jpg)
+![2|马赛克工具](jpg/mosaictool.jpg)
 
 #### 椭圆工具
 
-![1|椭圆工具](png/ellipsetool.png)
+![1|椭圆工具](jpg/ellipsetool.jpg)
 
 1. 在截图区域下方的工具栏中，点击 ![椭圆](icon/ellipse.svg)。
 
@@ -355,7 +355,7 @@
 
 #### 直线和箭头工具
 
-![1|箭头工具](png/arrowtool.png)
+![1|箭头工具](jpg/arrowtool.jpg)
 
 1. 在截图区域下方的工具栏中，点击 ![箭头](icon/arrow.svg)。
 2. 在工具栏展开面板中，选择箭头的粗细。
@@ -365,7 +365,7 @@
 
 #### 画笔工具
 
-![1|画笔工具](png/pencil.png)
+![1|画笔工具](jpg/pencil.jpg)
 
 1. 在截图区域下方的工具栏中，点击 ![画笔](icon/pencil_normal.png)。
 2. 在工具栏展开面板中，选择画笔的粗细。
@@ -382,7 +382,7 @@
 ### 修改图形
 如果您在截图中绘制了其他的图形，您可以对绘制的图形进行修改和移动。
 
-![1|修改图形](png/changetool.png)
+![1|修改图形](jpg/changetool.jpg)
 
 #### 移动图形
 1. 将鼠标指针置于图形的边线上，此时鼠标指针变为 ![手指](icon/finger.svg)。
@@ -411,7 +411,7 @@
 ### 添加文字批注
 对截取的图片进行文字补充和说明，帮助他人更清楚的了解截取的图片。
 
-![0|文本框](png/texttool.png)
+![0|文本框](jpg/texttool.jpg)
 
 1. 在截图区域下方的工具栏中，点击 ![文字](icon/text.svg)。
 
@@ -447,7 +447,7 @@
 ### 设置标记颜色
 深度截图总共提供了16种颜色供您选择，您可以选择不同的颜色来进行不同的图形标记。
 
-![0|颜色工具](png/colortool.png)
+![0|颜色工具](jpg/colortool.jpg)
 
 1. 在截图区域下方的工具栏中，点击 ![颜色](icon/color.png)。
 
@@ -468,7 +468,7 @@
 
 您还可以在截图区域下方的工具栏中，点击 ![保存](icon/save.png) 的下拉选项：
 
-![0|保存](png/savetool.png)
+![0|保存](jpg/savetool.jpg)
 
 * 选择 ![自动保存](icon/save_to_pic.png)，将图片保存到上次截图的保存目录（默认为桌面）。
 * 选择 ![保存到桌面](icon/save_to_desktop.png)，将图片保存到桌面。

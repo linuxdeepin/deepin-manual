@@ -5,7 +5,7 @@
 
 深度看图是深度科技精心打造的一款图片查看和管理应用。外观时尚、性能流畅，支持多种图片格式，任何图片想看就看。深度看图的照片管理功能，让您可以将图片按日期排列在时间线上，还可以将图片添加到收藏夹或归类到不同的相册中，将图片管理得井井有条。
 
-![1|mian](png/main.png)
+![1|mian](jpg/main.jpg)
 
 ## 使用入门|../common/icon_guide.svg|
 
@@ -20,7 +20,7 @@
  - 点击 **发送到任务栏**，将应用程序固定到任务栏。
  - 点击 **开机自动启动**，将应用程序添加到开机启动项，在电脑开机时自动运行该应用程序。
 
-![tips](icon/tips.svg)：您可以在控制中心中将深度看图设置为默认的图片查看程序，具体操作请参考 [默认启动设置](dman:///dde-control-center#默认程序设置)。
+![tips](icon/tips.svg)：您可以在控制中心中将深度看图设置为默认的图片查看程序，具体操作请参考 [默认启动设置](dman:///dde#默认程序设置)。
 
 ### 关闭深度看图
 
@@ -34,7 +34,7 @@
 
 ### 界面介绍
 
-![1|main](png/main.png)
+![1|main](jpg/main.jpg)
 
 
 <table class="block1">
@@ -45,37 +45,37 @@
             <td>图片管理</td>
             <td>进入图片管理界面。包括时间线、相册功能。</td>
         </tr>
-		<tr>
+    	<tr>
             <td> ![adapt-image](icon/adapt-image.svg) </td>
             <td>1:1显示</td>
             <td>图片按照实际尺寸显示。当图片超出界面范围时，界面上会出现导航窗口。</td>
         </tr>
-		<tr>
+    	<tr>
             <td> ![adapt-screen](icon/adapt-screen.svg) </td>
             <td>自适应</td>
             <td>图片适应界面尺寸显示。</td>
         </tr>
-		<tr>
+    	<tr>
             <td> ![clockwise-rotation](icon/clockwise-rotation.svg) </td>
             <td>顺时针</td>
             <td>图片顺时针旋转90度。</td>
         </tr>
-		<tr>
+    	<tr>
             <td> ![contrarotate](icon/contrarotate.svg) </td>
             <td>逆时针</td>
             <td>图片逆时针旋转90度。</td>
         </tr>
-		<tr>
+    	<tr>
             <td> ![delete](icon/delete.svg) </td>
             <td>删除</td>
             <td>删除当前图片。</td>
         </tr>
-	    <tr>
+        <tr>
             <td> ![previous](icon/previous.svg) </td>
             <td>上一张</td>
             <td>显示上一张图片。</td>
         </tr>
-		<tr>
+    	<tr>
             <td> ![next](icon/next.svg) </td>
             <td>下一张</td>
             <td>显示下一张图片。</td>
@@ -91,7 +91,7 @@
 2. 选择 **幻灯片放映**，图片将以幻灯片形式全屏播放。
 3. 按下键盘上的 ![Esc](icon/Esc.svg) 键可以退出播放。
 
-![0|slideshow](png/slideshow.png)
+![0|slideshow](jpg/slideshow.jpg)
 
 ### 复制图片
 
@@ -102,7 +102,7 @@
 
 > ![tips](icon/tips.svg)：**复制到剪贴板** 是复制功能的补充，当您想将图片作为内容插入到文档中或者发送给好友时，就可以将图片复制到剪贴板，然后粘贴了。
 
-![0|copy](png/copy.png)
+![0|copy](jpg/copy.jpg)
 
 ### 打印图片
 
@@ -110,11 +110,11 @@
 2. 选择 **打印**。
 3. 选择一个打印机。
 4. 根据需要设置打印属性。
-4. 选择 **打印**，将图片发送到打印机进行打印。
+5. 选择 **打印**，将图片发送到打印机进行打印。
 
 > ![notess](icon/notes.svg)：如果选择的是pdf打印机还需要选择打印位置，将在指定位置输出pdf文件。
 
-![0|print](png/print.png)
+![0|print](jpg/print.jpg)
 
 ### 删除图片
 
@@ -124,7 +124,7 @@
 - 右键单击图片，选择 **丢到回收站**。
 - 在深度看图界面上，按下键盘的 ![Delete](icon/Delete.svg)  键。
 
-![0|delete](png/delete.png)
+![0|delete](jpg/delete.jpg)
 
 ### 旋转图片
 
@@ -132,14 +132,14 @@
 2. 选择 **顺时针旋转/逆时针旋转**。
 3. 图片将会顺时针转旋转90°/逆时针旋转90°。
 
-![0|rotate](png/rotate.png)
+![0|rotate](jpg/rotate.jpg)
 
 ### 设置为壁纸
 
 1. 在深度看图界面上，单击鼠标右键。
 2. 选择 **设为壁纸** 即可将当前图片设置为壁纸。
 
-![0|wallpaper](png/wallpaper.png)
+![0|wallpaper](jpg/wallpaper.jpg)
 
 
 ### 查看图片信息
@@ -147,7 +147,7 @@
 1. 在深度看图界面上，单击鼠标右键。
 2. 选择 **图片信息** 可以显示图片信息。
 
-![1|info](png/info.png)
+![1|info](jpg/info.jpg)
 
 ## 图片管理|../common/icon_picturemanagement.svg|
 
@@ -158,7 +158,7 @@
 
 时间线中的图片按照日期划分，将同一天的图片显示在一起，不同日期的图片分栏排列，最新的日期在最上方。
 
-![1|timeline](png/timeline.png)
+![1|timeline](jpg/timeline.jpg)
 
 
 #### 预览图缩放
@@ -175,7 +175,7 @@
 3. 选择图片所在文件夹位置。
 4. 点击 **打开**，将文件夹中的图片同步到时间线上。
 
-![0|timeline](png/timeline.png)
+![0|timeline](jpg/timeline.jpg)
 
 > ![tips](icon/tips.svg)：在同步目录管理界面上，点击同步目录行上的 × 可以取消同步。
 
@@ -189,7 +189,7 @@
 
 > ![tips](icon/tips.svg)：在预览或查看时间线上的图片时，选择右键菜单中的 **收藏** 或 **取消收藏** 也可以完成对应的操作。
 
-![1|favorites](png/favorites.png)
+![1|favorites](jpg/favorites.jpg)
 
 #### 添加到相册
 
@@ -198,7 +198,7 @@
 3. 选择一个相册，将图片添加到相册中。
 
 
-![0|add-to-album](png/add-to-album.png)
+![0|add-to-album](jpg/add-to-album.jpg)
 
 
 #### 在文件管理器显示
@@ -206,14 +206,14 @@
 1. 在深度看图时间线界面上，右键单击图片。
 2. 选择 **在文件管理器中显示**，就可以在文件管理器中打开图片所在的文件夹。
 
-![0|display](png/display.png)
+![0|display](jpg/display.jpg)
 
 ### 相册管理
 
 
 相册界面会显示相册缩略图，相册名称，相册中图片的起止时间。
 
-![1|album](png/album.png)
+![1|album](jpg/album.jpg)
 
 > ![notes](icon/notes.svg)：**我的收藏** 是系统根据实际情况自动生成的，这个相册不可删除、重命名。
 
@@ -228,7 +228,7 @@
 2. 输入相册名称。
 3. 按下键盘上的 ![enter](icon/Enter.svg) 键。
 
-![0|album](png/album.png)
+![0|album](jpg/album.jpg)
 
 > ![tips](icon/tips.svg)：通过主菜单 ![icon_menu](icon/icon_menu.svg) 的 **新建相册** 选项也可以新建相册。
 
@@ -244,7 +244,7 @@
 1. 在深度看图相册界面上，右键单击相册中的图片。
 2. 选择 **从相册中移除**，可以将图片从该相册中移除。
 
-![0|remove](png/remove.png)
+![0|remove](jpg/remove.jpg)
 
 #### 复制相册
 
@@ -257,7 +257,7 @@
 2. 选择 **重命名**。
 3. 输入相册名称，按下![enter](icon/Enter.svg) 键或者鼠标单击界面空白区域。
 
-![0|rename-album](png/rename.png)
+![0|rename-album](jpg/rename.jpg)
 
 
 
@@ -280,7 +280,7 @@
  - 查看默认快捷键或设置自定义快捷键。
  - 恢复默认设置。
 
-![1|setting](png/setting.png)
+![1|setting](jpg/setting.jpg)
 
 ### 帮助
 
@@ -290,7 +290,7 @@
 2. 点击 **帮助**。
 3. 查看关于深度看图的帮助手册。
 
-![1|heip](png/help.png)
+![1|heip](jpg/help.jpg)
 
 
 ### 关于
@@ -301,7 +301,7 @@
 2. 点击 **关于**。
 3. 查看关于深度看图的版本和介绍。
 
-![0|about](png/about.png)
+![0|about](jpg/about.jpg)
 
 
 ### 退出

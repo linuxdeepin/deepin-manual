@@ -3,12 +3,12 @@
 ## Overview|../common/icon_overview.svg|
 deepin is an elegant, easy to use and reliable Linux desktop operating system developed by Deepin Technology Co., Ltd. WPS Office, Skype, Spotify and other deepin featured applications have been preinstalled. It allows you to experience a variety of recreational activities, but also to meet your daily needs. With continually improved and perfected functions, we believe deepin will be loved and used by more and more users.
 
-![1|desk](png/desk.png)
+![1|desk](jpg/desk.jpg)
 
 ## Desktop|../common/desk.svg|
 You can create new file/folder, sort files, set hot corners and wallpapers, etc. on desktop.
 
-![0|contextmenu](png/contextmenu.png)
+![0|contextmenu](jpg/contextmenu.jpg)
 
 ### Create New File/Folder
 You can create new folder, common documents, or doing general operations for files on desktop, just like in file manager.
@@ -95,7 +95,7 @@ Hot Corner is to simplify your operations and helps you quickly enter the main i
 3. Move the mouse pointer to a corner and select another one.
 4. Click on the desktop blank area to exit.
 
- ![1|hotspace](png/hotspace.png)
+ ![1|hotspace](jpg/hotspace.jpg)
 
 > ![tips](icon/tips.svg): Please pay attention to the animation of corner settings.
 
@@ -108,7 +108,7 @@ You can select some elegant and fashionable wallpapers to beautify desktop and m
 3. Select one and it will apply in desktop and lock screen.
 4. You can also choose **Only desktop** or **Only lock screen**.
 
-![1|wallpapers](png/wallpapers.png)
+![1|wallpapers](jpg/wallpapers.jpg)
 
 
 ### Drag and Drop Icon
@@ -117,7 +117,7 @@ You can drag and drop icon to the location you want on desktop:
 - Drag and drop an icon between two icons, the icon will be displayed between the two;
 - Drag and drop icon to a program is to open the file by that program;
 - Drag and drop icon to Trash is to move the file to Trash;
-- Drag and drap icon to folder is to move file to folder;
+- Drag and drop icon to folder is to move file to folder.
 
 ## Dock|../common/dock.svg|
 Dock is usually displayed at the bottom of the desktop to help you fix frequently used applications, it is mainly made of Launcher, application icons, tray, shutdown button and system datetime, etc.
@@ -125,7 +125,7 @@ Dock is usually displayed at the bottom of the desktop to help you fix frequentl
 ### Dock Icons
 You can create application shortcuts on Dock in Launcher and do related operations on it.
 
-![1|taskbar](png/taskbar.png)
+![1|taskbar](jpg/taskbar.jpg)
 
 <table class="block1">
     <caption>Icon Description</caption>
@@ -192,9 +192,9 @@ There are two display modes of Dock, which are fashion mode and efficient mode.
 - **Efficient Mode**: The display mode is similar to Windows 7 and displayed by a small strip at the bottom of screen. Application icons fixed on Dock by default will be displayed in small ones, and icons of same types will be merged together to save more space for others.
 
 
- ![1|fasion](png/fasion.png)
+ ![1|fasion](jpg/fasion.jpg)
 
- ![1|efficient](png/efficient.png)
+ ![1|efficient](jpg/efficient.jpg)
 
 
 You can switch the display mode by the following operations:
@@ -203,7 +203,7 @@ You can switch the display mode by the following operations:
 2. Right click to select **Mode**.
 3. Select a display mode.
 
- ![1|mode](png/mode.png)
+ ![1|mode](jpg/mode.jpg)
 
 ### Set Dock Location
 You can place the Dock on any direction of your desktop.
@@ -212,7 +212,7 @@ You can place the Dock on any direction of your desktop.
 2. Right click to select **Location**.
 3. Select a location.
 
- ![1|location](png/location.png)
+ ![1|location](jpg/location.jpg)
 
 ### Adjust Dock Size
 
@@ -220,7 +220,7 @@ You can place the Dock on any direction of your desktop.
 2. Right click to select **Size**.
 3. Select a size.
 
- ![1|size](png/size.png)
+ ![1|size](jpg/size.jpg)
 
 ### Show/Hide Dock
 
@@ -231,7 +231,7 @@ You can place the Dock on any direction of your desktop.
 - Select **Keep Hidden**, Dock will be hidden and only displayed when mouse hovering on Dock.
 - Select **Smart Hide**, Dock will be automatically hidden when Dock area needs to be used.
 
- ![1|status](png/status.png)
+ ![1|status](jpg/status.jpg)
 
 
 ### Show/Hide Plugins
@@ -244,9 +244,9 @@ You can place the Dock on any direction of your desktop.
 - Check **Sound**, the sound icon will be displayed on Dock.
 - Check **Datetime**, the Datetime icon will be displayed on Dock.
 
-> ![notes](icon/notes.svg): Unchek the plugin icon, it will be hidden on Dock.
+> ![notes](icon/notes.svg): Uncheck the plugin icon, it will be hidden on Dock.
 
- ![1|plugins](png/plugins.png)
+ ![1|plugins](jpg/plugins.jpg)
 
 ### Shutdown Interface
 There are two ways to shut down:
@@ -319,8 +319,8 @@ Launcher can help you to manage all installed applications, you can quickly find
 
 Users can switch between fullscreen mode and mini mode manually. The location of mini mode will go with that of Dock.
 
- ![1|fullscreen](png/fullscreen.png)
- ![1|mini](png/mini.png)
+ ![1|fullscreen](jpg/fullscreen.jpg)
+ ![1|mini](jpg/mini.jpg)
 
 ### Sort Applications
 
@@ -335,7 +335,7 @@ All applications in Launcher will be displayed by name by default.
 3. Launcher will show the application icons by categories.
 4. Move the mouse pointer over the category icon to show the icon and text category.
 
- ![1|sortapp](png/sortapp.png)
+ ![1|sortapp](jpg/sortapp.jpg)
 
 ### Search Applications
 
@@ -346,7 +346,7 @@ If you already know the application name, you can locate it even faster by enter
 1. In Launcher, type in a word such as "deepin" with keyboard.
 2. System will automatically search for all applications which contain the keyword "deepin", and then display the searched result in Launcher.
 
- ![1|searchapp](png/searchapp.png)
+ ![1|searchapp](jpg/searchapp.jpg)
 
 ### Set Shortcut
 Shortcut is an easy and convenient way to launch applications.
@@ -360,7 +360,7 @@ You can select to send the application to desktop or Dock to facilitate follow-u
    * Click on **Send to dock** to fix the application on Dock.
    * Click on **Add to startup** to add the application to startup, it will automatically run when the computer boots.
 
- ![0|sendto](png/sendto.png)
+ ![0|sendto](jpg/sendto.jpg)
 
 > ![notes](icon/notes.svg): You can drag the application icon from Launcher to Dock. But, you can not drag and drop the application while it is running. At this time you can right click the application icon on Dock and select **Dock** to fix. So that you can quickly open it next time.
 
@@ -373,7 +373,7 @@ You can delete the application shortcut from desktop, Dock and so on.
    * Click on **Remove from dock** to remove the application fixed on Dock.
    * Click on **Remove from startup** to remove the application from startup.
 
- ![0|deleteto](png/deleteto.png)
+ ![0|deleteto](jpg/deleteto.jpg)
 
 > ![notes](icon/notes.svg): Application fixed on Dock can be removed by pressing and holding left mouse button to drag the application icon away from Dock. You can not drag and remove the application while it is running. At this time you can right click on the application icon on Dock and select **Undock** to remove.
 
@@ -394,7 +394,7 @@ You can choose to uninstall applications you no longer use to save disk space.
 1. In Launcher, right click the application icon.
 2. Click on **Uninstall**.
 
- ![0|uninstallapp](png/uninstallapp.png)
+ ![0|uninstallapp](jpg/uninstallapp.jpg)
 
 > ![tips](icon/tips.svg): In **Fashion mode**, press and hold the left mouse button in Launcher and drag the application icon to ![trash](icon/trash_icon.svg) to remove.
 
@@ -403,9 +403,9 @@ You can choose to uninstall applications you no longer use to save disk space.
 You can manage the basic settings of deepin by Control Center. It includes widget, common settings, account management, network settings, date and time, personalization, display settings, system and application update, etc. When you enter Deepin Desktop Environment, you can open the Control Center by moving the mouse pointer to the right bottom corner on desktop.
 
 ### Homepage Introduction
-The homepage of Contorl Center is for displaying the common information for users to daily check and quickly use.
+The homepage of Control Center is for displaying the common information for users to daily check and quickly use.
 
-![0|dcchomepage](png/dcchomepage.png)
+![0|dcchomepage](jpg/dcchomepage.jpg)
 
 <table class="block1">
     <tbody>
@@ -435,7 +435,7 @@ The homepage of Contorl Center is for displaying the common information for user
 ### Account Settings
 You can protect your privacy and data and get security protection by setting accounts.
 
-![0|account](png/account.png)
+![0|account](jpg/account.jpg)
 
 #### Create New Account
 
@@ -450,7 +450,7 @@ You can protect your privacy and data and get security protection by setting acc
 
 1. On the homepage of Control Center, click on ![account_normal](icon/account_normal.svg).
 2. Click on an existed account in the list.
-3. Click on **Modify Avatar** to enter the interface for modifing avatar.
+3. Click on **Modify Avatar** to enter the interface for modifying avatar.
 4. Select a default avatar or local avatar to finish.
 
 
@@ -461,7 +461,7 @@ You can protect your privacy and data and get security protection by setting acc
 
 1. On the homepage of Control Center, click on ![account_normal](icon/account_normal.svg).
 2. Click on an existed account in the list.
-3. Click on **Modify Password** enter the interface for modifing password.
+3. Click on **Modify Password** enter the interface for modifying password.
 4. Input new password twice and confirm.
 
 #### Auto Login
@@ -486,7 +486,7 @@ You can protect your privacy and data and get security protection by setting acc
 4. Click on **Add Fingerprint** to enter the adding interface.
 5. Put the finger in fingerprint reader, and then click on **Done** after added successfully.
 
-![0|fingerprint1](png/fingerprint1.png)
+![0|fingerprint1](jpg/fingerprint1.jpg)
 
 
 
@@ -503,7 +503,7 @@ You can protect your privacy and data and get security protection by setting acc
 ### Display Settings
 You can let your computer reach the best performance by setting the resolution, direction and extend screens of the monitor(s).
 
-![0|display](png/display.png)
+![0|display](jpg/display.jpg)
 
 
 #### Single Screen Settings
@@ -521,7 +521,7 @@ You can adjust the visual perception by setting the screen resolution, brightnes
 2. Click on **Resolution** to enter the interface for resolution settings.
 3. Select the proper resolution in the list.
 
-##### Set Brighness
+##### Set Brightness
 
 1. On the homepage of Control Center, click on ![display_normal](icon/display_normal.svg).
 2. Click on **Brightness** to enter the interface for brightness settings.
@@ -557,21 +557,21 @@ Widen your horizon by multiple screens! You can use VGA cable to connect your co
 
 1. On the homepage of Control Center, click on ![display_normal](icon/display_normal.svg) to open the display settings.
 2. Move the mouse pointer to ![active](icon/active.svg).
-2. Select the device to project.
-3. There will be a √ icon followed the device name, click again to cancel projection.
+3. Select the device to project.
+4. There will be a √ icon followed the device name, click again to cancel projection.
 
 >![notes](icon/notes.svg): Screen projection needs the support from NIC, so WIFI will be disconnected when enable screen projection.
 
 
-### Default Applcation Settings
+### Default Application Settings
 When installed multiple applications in the same type, you can choose one of them to be the default application to run.
 
-![0|default](png/default.png)
+![0|default](jpg/default.jpg)
 
 #### Select Default Applications
 
 1. On the homepage of Control Center, click on ![default_applications_normal](icon/default_applications_normal.svg).
-2. Click on **Default Applcations** to enter the settings interface for modifing default applications.
+2. Click on **Default Applications** to enter the settings interface for modifying default applications.
 3. Select the applications in the list.
 
 
@@ -579,7 +579,7 @@ When installed multiple applications in the same type, you can choose one of the
 #### Add Default Applications
 
 1. On the homepage of Control Center, click on ![default_applications_normal](icon/default_applications_normal.svg).
-2. Click on **Default Applcations** to enter the settings interface for modifing default applications.
+2. Click on **Default Applications** to enter the settings interface for modifying default applications.
 3. Click on **Add** in different types:
 - When you selected a *.desktop file for default application, the icon and name will be added to the list automatically.
 - When you selected a specified binary file, the icon, name and path will be added to the list automatically.
@@ -593,7 +593,7 @@ When installed multiple applications in the same type, you can choose one of the
 System default applications cannot be deleted, if you wanted to delete an installed application from the list, you can only uninstall this application.
 
 1. On the homepage of Control Center, click on ![default_applications_normal](icon/default_applications_normal.svg).
-2. Click on **Default Applications** to enter the settings interface for modifing default applications.
+2. Click on **Default Applications** to enter the settings interface for modifying default applications.
 3. Click on **Edit** to delete the added default applications.
 4. Click on **Delete**.
 
@@ -602,7 +602,7 @@ System default applications cannot be deleted, if you wanted to delete an instal
 ### Personalization Settings
 You can change the appearance of desktop by using different desktop icons, window style and font, etc. and set it to fit your needs.
 
-![0|personalise](png/personalise.png)
+![0|personalise](jpg/personalise.jpg)
 
 #### Set Theme
 You can set the window theme, icon theme and cursor theme of the system respectively.
@@ -631,7 +631,7 @@ You can set the window theme, icon theme and cursor theme of the system respecti
 ### Bluetooth Settings
 You can do short distance wireless communication by Bluetooth by connecting to other Bluetooth devices. Common Bluetooth devices are Bluetooth keyboard, Bluetooth mouse, Bluetooth earphones and Bluetooth speakers, etc.
 
-![0|bluetooth](png/bluetooth.png)
+![0|bluetooth](jpg/bluetooth.jpg)
 
 
 > ![notes](icon/notes.svg): Most laptops have Bluetooth module, you just need to enable it, but most desktop computers do not have it, you can purchase one adapter and plug it into USB port to get the function.
@@ -664,7 +664,7 @@ You can do short distance wireless communication by Bluetooth by connecting to o
 ### Network Settings
 Experience the enjoyment of surfing the Internet! You can browse news, play video online or do file download, chat and shopping, etc.
 
-![0|internet](png/internet.png)
+![0|internet](jpg/internet.jpg)
 
 
 #### Wired Network
@@ -706,7 +706,7 @@ Experience the enjoyment of surfing the Internet! You can browse news, play vide
 
 #### Mobile Network
 
-1. Plug the mobile netowrk card to the USB port.
+1. Plug the mobile network card to the USB port.
 2. On the homepage of Control Center, click on ![network_normal](icon/network_normal.svg).
 3. The system will auto connect to the network based on the mobile network card and operator info.
 4. Click on **Mobile Network** to view the detailed settings info.
@@ -723,7 +723,7 @@ Experience the enjoyment of surfing the Internet! You can browse news, play vide
 ##### Set DSL/PPPoE Connection
 
 1. On the homepage of Control Center, click on ![network_normal](icon/network_normal.svg).
-2. Click on **PPPoE Connection**to enter the interface for setting DSL/PPPoE connections.
+2. Click on **PPPoE Connection** to enter the interface for setting DSL/PPPoE connections.
 3. Modify name, account, password, open automatically connect, set IP address or open other auth services.
 
 #### VPN
@@ -753,7 +753,7 @@ Experience the enjoyment of surfing the Internet! You can browse news, play vide
 2. Click on **System Proxy** to enter the interface for setting system proxy.
 - Click on **None** to disable the proxy function.
 - Click on **Manually** and enter the address and port for proxy servers.
-- Click on **Auto** and enter URL to let the system config the proxy info automatically.
+- Click on **Auto** and enter URL to let the system configure the proxy info automatically.
 
 
 #### Network Info
@@ -766,7 +766,7 @@ Experience the enjoyment of surfing the Internet! You can browse news, play vide
 ### Sound Settings
 Set your speaker and microphone to let you sound comfortable and sing better.
 
-![0|sound](png/sound.png)
+![0|sound](jpg/sound.jpg)
 
 #### Set Speaker
 
@@ -795,7 +795,7 @@ Set your speaker and microphone to let you sound comfortable and sing better.
 
 ### Date and Time
 
-![0|time](png/time.png)
+![0|time](jpg/time.jpg)
 
 #### Auto Sync
 
@@ -814,7 +814,7 @@ Set the date and time manually to disable the auto sync function.
 #### Add Timezome
 
 1. On the homepage of Control Center, click on ![date_time_normal](icon/date_time_normal.svg).
-2. Click on **Add Timezone**。
+2. Click on **Add Timezone**.
 3. Select a timezone by searching or clicking on the map.
 4. Click on **Confirm**.
 
@@ -826,7 +826,7 @@ Set the date and time manually to disable the auto sync function.
 
 ### Power Management
 
-![0|power](png/power.png)
+![0|power](jpg/power.jpg)
 
 #### Set Monitor Suspend Time
 
@@ -847,7 +847,7 @@ Set the date and time manually to disable the auto sync function.
 
 ### Mouse and Touchpad
 
-![0|mouse](png/mouse.png)
+![0|mouse](jpg/mouse.jpg)
 
 1. On the homepage of Control Center, click on ![mouse_touchpad_normal](icon/mouse_touchpad_normal.svg).
 2. Click on **Left Hand**/**Natural Scrolling**/**Disable the touchpad while typing**/**Disable the touchpad when inserting the mouse** switch to enable functions.
@@ -858,12 +858,11 @@ Set the date and time manually to disable the auto sync function.
 ### Keyboard and Language
 You can choose your keyboard and its layout for different countries and regions or view, search, modify and custom shortcuts.
 
-![0|keyboard](png/keyboard.png)
-s
+![0|keyboard](jpg/keyboard.jpg)
 #### Set Keyboard Properties
 
 1. On the homepage of Control Center, click on ![keyboard_normal](icon/keyboard_normal.svg).
-2. Adjust **Repeat Delay**/**Repeat Speed**。
+2. Adjust **Repeat Delay**/**Repeat Speed**.
 3. Click on **Please Test Here** to test the effect.
 4. Click on **Caps Lock Prompt** switch to enable the function.
 
@@ -932,7 +931,7 @@ The system default keyboard layout is US keyboard, but you can add other layouts
 ### Update Settings
 You can check the updates for system and applications, and also can modify mirror, upgrade the system and applications.
 
-![0|update](png/update.png)
+![0|update](jpg/update.jpg)
 
 #### Open Auto Update
 
@@ -971,7 +970,7 @@ You can check the updates for system and applications, and also can modify mirro
 ### System Info
 You can view system version, hardware info or set boot menu.
 
-![0|info](png/info.png)
+![0|info](jpg/info.jpg)
 
 #### View System Info
 
@@ -1010,7 +1009,7 @@ You can view system version, hardware info or set boot menu.
 ## Window Manager|../common/window.svg|
 The Window Manager can show different windows on different workspaces, you can manage the windows by it.
 
- ![1|openworkspace](png/openworkspace.png)
+ ![1|openworkspace](jpg/openworkspace.jpg)
 
 ### Open Workspace
 Workspace can divide your desktop windows as groups to enlarge your working areas.

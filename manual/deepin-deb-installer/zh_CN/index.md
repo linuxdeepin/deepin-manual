@@ -1,4 +1,4 @@
-# 深度软件包管理器|../common/deepin-deb-installer-48px.svg|
+# 深度软件包管理器|../common/deepin-deb-installer.svg|
 
 ## 概述|../common/icon_overview.svg|
 
@@ -19,7 +19,7 @@
 - 使用鼠标双击deb包，深度软件包管理器会自动启动并准备安装该软件包。
 - 从启动器中点击应用图标，深度软件包管理器启动后可以选择文件或者直接将deb包拖拽到界面上。
 
-![0|run](png/run.png)
+![0|run](jpg/run.jpg)
 
 ### 安装
 
@@ -33,7 +33,8 @@
 4.  如果弹出授权窗口，请输入密码授权。
 5.  安装过程中可以点击 ![arrowdown_icon](icon/arrowdown_icon.svg)或![arrowup_icon](icon/arrowup_icon.svg)展开或收起安装进程信息。
 6.  安装成功之后，点击 **完成** 退出，或者点击 **返回** 继续安装其他应用。
-  ![0|single](png/single.png)
+
+![0|single](jpg/single.jpg)
 
 >![notes](icon/notes.svg):深度软件包管理器会自动检测您的安装包，如果本地已经安装过该应用，会显示已安装和准备安装的版本信息，此时可以选择 **卸载** 或 **重新安装** 操作。
 
@@ -50,7 +51,7 @@
 - 批量安装时将鼠标移动到一个应用栏上，可以点击应用行右侧的×将该安装包从安装列表移除。
 
 
-![0|mult](png/mult.png)
+![0|mult](jpg/mult.jpg)
 
 
 #### 无法安装
@@ -63,7 +64,7 @@
 - 依赖关系不满足。
 
 
-![0|cant](png/cant.png)
+![0|cant](jpg/cant.jpg)
 
 
 ### 卸载
@@ -77,7 +78,7 @@
 5. 请注意界面上的卸载提示，然后点击 **确认卸载**。
 6. 卸载成功后点击 **确定**。
 
-![0|uninstall](png/uninstall.png)
+![0|uninstall](jpg/uninstall.jpg)
 
 > ![attention](icon/attention.svg):卸载某些应用可能会对系统或其他软件产生影响，请谨慎操作。
 
@@ -94,7 +95,7 @@
 2. 点击 **帮助**。
 3. 查看关于深度软件包管理器的帮助手册。
 
-![1|help](png/help.png)
+![1|help](jpg/help.jpg)
 
 ### 关于
 
@@ -104,7 +105,7 @@
 2. 点击 **关于**。
 3. 查看关于深度软件包管理器的版本和介绍。
 
-![0|about](png/about.png)
+![0|about](jpg/about.jpg)
 
 ### 退出
 

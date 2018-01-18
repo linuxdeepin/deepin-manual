@@ -1,9 +1,9 @@
-# Deepin Clone |../common/clone-24.svg|
+# Deepin Clone |../common/deepin-clone.svg|
 
 ## Overview |../common/icon_overview.svg|
-Deepin Clone is a powerful backup and restore tool in deepin. You can freely clone, backup and restore between disks or partitions. With Deepin Clone, don't worry about data lost any more!
+Deepin Clone is a powerful backup and restore tool in deepin. You can freely clone, backup and restore between disks or partitions. With Deepin Clone, don't worry about data loss any more!
 
-![1|main_interface](png/main_interface.png)
+![1|main_interface](jpg/main_interface.jpg)
 
 
 ## Common Operations |../common/icon_commoncoperat.svg|
@@ -17,7 +17,7 @@ Deepin Clone is a powerful backup and restore tool in deepin. You can freely clo
 
 > ![notes](icon/notes.svg): ![fail](icon/fail.svg) will be shown, if clone failed, click on **Retry** to try again.
 
-![1|clone_disk](png/clone_disk.png)
+![1|clone_disk](jpg/clone_disk.jpg)
 
 
 ### Clone Partition
@@ -29,7 +29,7 @@ Deepin Clone is a powerful backup and restore tool in deepin. You can freely clo
 
 > ![notes](icon/notes.svg): ![fail](icon/fail.svg) will be shown, if clone failed, click on **Retry** to try again.
 
-![1|clone_partition](png/clone_partition.png)
+![1|clone_partition](jpg/clone_partition.jpg)
 
 
 ### Backup Disk to Image
@@ -41,7 +41,7 @@ Deepin Clone is a powerful backup and restore tool in deepin. You can freely clo
 
 > ![notes](icon/notes.svg): ![fail](icon/fail.svg) will be shown, if backup failed, click on **Retry** to try again.
 
-![1|backup_disk](png/backup_disk.png)
+![1|backup_disk](jpg/backup_disk.jpg)
 
 
 ### Backup Partition to Image
@@ -53,7 +53,7 @@ Deepin Clone is a powerful backup and restore tool in deepin. You can freely clo
 
 > ![notes](icon/notes.svg): ![fail](icon/fail.svg) will be shown, if backup failed, click on **Retry** to try again.
 
-![1|backup_partition](png/backup_partition.png)
+![1|backup_partition](jpg/backup_partition.jpg)
 
 ### Restore Image to Disk
 1. On Deepin Clone interface, click on ![disk](icon/disk.svg) and ![restore_to_disk](icon/restore_to_disk.svg).
@@ -64,7 +64,7 @@ Deepin Clone is a powerful backup and restore tool in deepin. You can freely clo
 
 > ![notes](icon/notes.svg): ![fail](icon/fail.svg) will be shown, if Restore failed, click on **Retry** to try again.
 
-![1|restore_disk](png/restore_disk.png)
+![1|restore_disk](jpg/restore_disk.jpg)
 
 ### Restore Image to Partition
 1. On Deepin Clone interface, click on ![disk](icon/disk.svg) and ![restore_to_partition](icon/restore_to_partition.svg).
@@ -75,18 +75,18 @@ Deepin Clone is a powerful backup and restore tool in deepin. You can freely clo
 
 > ![notes](icon/notes.svg): ![fail](icon/fail.svg) will be shown, if Restore failed, click on **Retry** to try again.
 
-![1|restore_partition](png/restore_partition.png)
+![1|restore_partition](jpg/restore_partition.jpg)
 
 ### Deepin Recovery
-You need to restart and enter "Deepin Recovery" to continue next operatiions, if:
+You need to restart and enter "Deepin Recovery" to continue next operations, if:
 - The source disk or partition and target disk or partition is where the system installed in.
 - The image file is stored in the disk or partition where system installed in.
-- The storge location is disk or partition where system installed in.
+- The storage location is disk or partition where system installed in.
 - The disk or partition to restore is where the system installed in.
 
-The system will restart and enter Deepin Recovery after clicking on **Restart to Continue**, then you can conitue to do next operations on Deepin Clone.
+The system will restart and enter Deepin Recovery after clicking on **Restart to Continue**, then you can continue to do next operations on Deepin Clone.
 
-![1|deepin_recovery](png/deepin_recovery.png)
+![1|deepin_recovery](jpg/deepin_recovery.jpg)
 
 ## Main Menu |../common/icon_optionsetting.svg|
 
@@ -97,7 +97,7 @@ You can click on **Help** to view the manual.
 
 2. Click on **Help** to view the manual.
 
-![1|heip](png/help.png)
+![1|heip](jpg/help.jpg)
 
 ### About
 You can click on **About** to view the introduction of Deepin Clone.
@@ -106,7 +106,7 @@ You can click on **About** to view the introduction of Deepin Clone.
 
 2. Click on **About** to view the introduction.
 
-![0|about](png/about.png)
+![0|about](jpg/about.jpg)
 
 ### Exit
 
