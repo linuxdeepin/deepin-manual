@@ -9,11 +9,7 @@ if (require.main === module) {
     let searchIndex = hlist
       .map(i => {
         let el = $(hlist[i]);
-        return {
-          id: el.attr('id'),
-          title: el.text(),
-          content: el.nextUntil(hlist[i + 1]).text()
-        };
+        return [el.attr('id'), el.text(), el.nextUntil(hlist[i + 1]).text()];
       })
       .get();
     console.log(JSON.stringify(searchIndex));
