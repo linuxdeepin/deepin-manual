@@ -6,7 +6,8 @@ const gulp = require('gulp'),
   buffer = require('vinyl-buffer'),
   browserify = require('browserify');
 
-let RootDir = '../../PageRoot/www/';
+let argv = require('yargs').argv;
+let RootDir = '../../build/src/web/';
 
 //编译js到index.js
 gulp.task('js', () => {
@@ -35,15 +36,14 @@ const tasks = ['js', 'sass', 'html'];
 
 //编译全部
 gulp.task('build', () => {
-  if (process.argv[4]) {
-    RootDir = process.argv[4];
+  if (argv.d) {
+    RootDir = argv.d;
     gulp.start(tasks);
   } else {
     console.error('gulp build -d DIR');
   }
 });
-
-//调试模式，自动刷新浏览器
+//调试模式，自动编译
 gulp.task('serve', tasks, () => {
   gulp.watch('js/*.js*', ['js']);
   gulp.watch('sass/*.scss', ['sass']);
