@@ -59,6 +59,7 @@ export default class Index extends Component {
 			"deepin-cloud-print",
 			"deepin-cloud-scan",
 			"deepin-calculator",
+      "deepin-repair",
 			"deepin-clone",
 			"deepin-graphics-driver-manager",
 			"deepin-package-manager",
