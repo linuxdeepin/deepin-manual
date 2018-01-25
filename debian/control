@@ -12,6 +12,7 @@ Build-Depends:
  libsass0,
  nodejs,
  qttools5-dev-tools,
+ ca-certificates
 Standards-Version: 3.9.5
 Homepage: https://github.com/linuxdeepin/deepin-manual/
 Vcs-Git: git://github.com/linuxdeepin/deepin-manual.git
