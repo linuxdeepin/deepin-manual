@@ -2,7 +2,7 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/app/dman.cpp" line="80"/>
+        <location filename="../src/app/dman.cpp" line="70"/>
         <source>Deepin Manual is designed to help users learn deepin and Deepin applications, providing specific instructions and function descriptions.</source>
         <translation>Deepin Manuál je navržen tak, aby pomáhal uživatelům učit se pracovat s Deepin a na něm založenými aplikacemi, a také poskytovat specifické pokyny a popisy funkcí.</translation>
     </message>
@@ -24,7 +24,7 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="34"/>
         <source>Sorry, there are no search results of &quot;%1&quot;</source>
-        <translation type="unfinished"/>
+        <translation>Omlouváme se, nejsou žádné výsledky vyhledávání pro &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="35"/>
@@ -32,13 +32,23 @@
         <translation>Změňte klíčová slova a zkuste to znovu, nebo je vyhledejte v Deepin Wiki</translation>
     </message>
     <message>
-        <location filename="../src/view/widget/search_completion_window.cpp" line="111"/>
-        <location filename="../src/view/widget/search_completion_window.cpp" line="154"/>
+        <location filename="../src/view/i18n_proxy.cpp" line="37"/>
+        <source>Home</source>
+        <translation>Domů</translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="38"/>
+        <source>Deepin Wiki</source>
+        <translation>Deepin Wiki</translation>
+    </message>
+    <message>
+        <location filename="../src/view/widget/search_completion_window.cpp" line="113"/>
+        <location filename="../src/view/widget/search_completion_window.cpp" line="162"/>
         <source>Search &quot;%1&quot; in the full text</source>
         <translation>Vyhledat &quot;%1&quot; v celém textu</translation>
     </message>
     <message>
-        <location filename="../src/view/widget/title_bar.cpp" line="89"/>
+        <location filename="../src/view/widget/title_bar.cpp" line="95"/>
         <source>Search</source>
         <translation>Vyhledat</translation>
     </message>

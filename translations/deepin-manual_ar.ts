@@ -2,7 +2,7 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/app/dman.cpp" line="80"/>
+        <location filename="../src/app/dman.cpp" line="70"/>
         <source>Deepin Manual is designed to help users learn deepin and Deepin applications, providing specific instructions and function descriptions.</source>
         <translation>تم تصميم ديبين دليل لمساعدة المستخدمين على تعلم ديبين وتطبيقات ديبين، وتوفير تعليمات معينة ووصف المهام.</translation>
     </message>
@@ -32,13 +32,23 @@
         <translation>قم بتغيير كلماتك المفتاحية وحاول مرة أخرى، أو قم  بالبحث في ويكي ديبين </translation>
     </message>
     <message>
-        <location filename="../src/view/widget/search_completion_window.cpp" line="111"/>
-        <location filename="../src/view/widget/search_completion_window.cpp" line="154"/>
+        <location filename="../src/view/i18n_proxy.cpp" line="37"/>
+        <source>Home</source>
+        <translation>البداية</translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="38"/>
+        <source>Deepin Wiki</source>
+        <translation>ويكي ديبين</translation>
+    </message>
+    <message>
+        <location filename="../src/view/widget/search_completion_window.cpp" line="113"/>
+        <location filename="../src/view/widget/search_completion_window.cpp" line="162"/>
         <source>Search &quot;%1&quot; in the full text</source>
         <translation>البحث عن &quot;%1&quot; في كامل النص</translation>
     </message>
     <message>
-        <location filename="../src/view/widget/title_bar.cpp" line="89"/>
+        <location filename="../src/view/widget/title_bar.cpp" line="95"/>
         <source>Search</source>
         <translation>بحث</translation>
     </message>

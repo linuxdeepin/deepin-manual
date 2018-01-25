@@ -2,7 +2,7 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/app/dman.cpp" line="80"/>
+        <location filename="../src/app/dman.cpp" line="70"/>
         <source>Deepin Manual is designed to help users learn deepin and Deepin applications, providing specific instructions and function descriptions.</source>
         <translation>O Deepin Manual foi desenhado para ajudar os utilizadores a aprender mais sobre o deepin e sobre as aplicações Deepin, fornecendo instruções precisas e descrição de funções.</translation>
     </message>
@@ -32,13 +32,23 @@
         <translation>Mude as suas palavras-chave e tente novamente, ou pesquise na Deepin Wiki </translation>
     </message>
     <message>
-        <location filename="../src/view/widget/search_completion_window.cpp" line="111"/>
-        <location filename="../src/view/widget/search_completion_window.cpp" line="154"/>
+        <location filename="../src/view/i18n_proxy.cpp" line="37"/>
+        <source>Home</source>
+        <translation>Início</translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="38"/>
+        <source>Deepin Wiki</source>
+        <translation>Deepin Wiki</translation>
+    </message>
+    <message>
+        <location filename="../src/view/widget/search_completion_window.cpp" line="113"/>
+        <location filename="../src/view/widget/search_completion_window.cpp" line="162"/>
         <source>Search &quot;%1&quot; in the full text</source>
         <translation>Pesquisar &quot;%1&quot; no texto completo</translation>
     </message>
     <message>
-        <location filename="../src/view/widget/title_bar.cpp" line="89"/>
+        <location filename="../src/view/widget/title_bar.cpp" line="95"/>
         <source>Search</source>
         <translation>Pesquisar</translation>
     </message>

@@ -2,7 +2,7 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/app/dman.cpp" line="80"/>
+        <location filename="../src/app/dman.cpp" line="70"/>
         <source>Deepin Manual is designed to help users learn deepin and Deepin applications, providing specific instructions and function descriptions.</source>
         <translation>Приручник за Дипин је састављен тако да помогне корисницима да науче Дипин и Дипин апликације, нудећи одређене инструкције и описе функција.</translation>
     </message>
@@ -32,13 +32,23 @@
         <translation>Промените кључне речи и покушајте поново, или потражите у Дипин Вики</translation>
     </message>
     <message>
-        <location filename="../src/view/widget/search_completion_window.cpp" line="111"/>
-        <location filename="../src/view/widget/search_completion_window.cpp" line="154"/>
+        <location filename="../src/view/i18n_proxy.cpp" line="37"/>
+        <source>Home</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="38"/>
+        <source>Deepin Wiki</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/view/widget/search_completion_window.cpp" line="113"/>
+        <location filename="../src/view/widget/search_completion_window.cpp" line="162"/>
         <source>Search &quot;%1&quot; in the full text</source>
         <translation>Тражи &quot;%1&quot; у целом тексту</translation>
     </message>
     <message>
-        <location filename="../src/view/widget/title_bar.cpp" line="89"/>
+        <location filename="../src/view/widget/title_bar.cpp" line="95"/>
         <source>Search</source>
         <translation>Претрага</translation>
     </message>

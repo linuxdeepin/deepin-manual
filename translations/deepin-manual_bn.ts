@@ -1,56 +1,56 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="da" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="bn" version="2.1">
 <context>
     <name>QObject</name>
     <message>
         <location filename="../src/app/dman.cpp" line="70"/>
         <source>Deepin Manual is designed to help users learn deepin and Deepin applications, providing specific instructions and function descriptions.</source>
-        <translation>Deepin manual er designet til at hjælpe brugere med at lære deepin og Deepin-programmer, ved at levere bestemte instruktioner og beskrivelser af funktioner.</translation>
+        <translation>ডিপিন ম্যানুয়াল তৈরী করা হয়েছে ব্যাবহারকারীদের ডিপিন এবং ডিপিন এপ্লিকেশন সম্পর্কে সুনির্দিষ্ট নির্দেশনা এবং কার্যবলীর বর্ণনা দিয়ে সাহায্য করতে।</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="30"/>
         <source>Copy</source>
-        <translation>Kopiér</translation>
+        <translation>কপি</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="31"/>
         <source>System</source>
-        <translation>System</translation>
+        <translation>সিস্টেম</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="32"/>
         <source>Applications</source>
-        <translation>Programmer</translation>
+        <translation>এপ্লিকেশন</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="34"/>
         <source>Sorry, there are no search results of &quot;%1&quot;</source>
-        <translation>Beklager. Der var ikke nogen søgeresultater for &quot;%1&quot;</translation>
+        <translation>দুঃখিত, এখানে &quot;%1&quot; এর কোনো ফলাফল নেই</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="35"/>
         <source>Change your keywords and try again, or search it in Deepin Wiki</source>
-        <translation>Skift dine nøgleord og prøv igen eller søg i Deepin wiki</translation>
+        <translation>আপনার আপনার কীওয়ার্ড পরিবর্তন করুন এবং আবার চেষ্টা করুন, বা Deepin Wiki তে এটি অনুসন্ধান করুন</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="37"/>
         <source>Home</source>
-        <translation>Hjem</translation>
+        <translation>হোম</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="38"/>
         <source>Deepin Wiki</source>
-        <translation>Deepin wiki</translation>
+        <translation>ডিপিন উইকি</translation>
     </message>
     <message>
         <location filename="../src/view/widget/search_completion_window.cpp" line="113"/>
         <location filename="../src/view/widget/search_completion_window.cpp" line="162"/>
         <source>Search &quot;%1&quot; in the full text</source>
-        <translation>Søg efter &quot;%1&quot; i den fulde tekst</translation>
+        <translation>সম্পূর্ণ টেক্সটে &quot;%1&quot; অনুসন্ধান করুন</translation>
     </message>
     <message>
         <location filename="../src/view/widget/title_bar.cpp" line="95"/>
         <source>Search</source>
-        <translation>Søg</translation>
+        <translation>অনুসন্ধান করুন</translation>
     </message>
 </context>
 </TS>
