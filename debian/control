@@ -10,7 +10,6 @@ Build-Depends:
  libqcef-dev,
  libqt5webchannel5-dev,
  libsass0,
- nodejs-legacy,
  pkg-config,
  libqt5sql5-sqlite,
  qttools5-dev-tools,

@@ -175,7 +175,7 @@ add_custom_target(update-qm DEPENDS ${DMAN_TRANSLATION_QM})
 # Build web project and generate js files.
 add_custom_command(OUTPUT rebuild-web
                    COMMAND pwd
-                   COMMAND ./node_modules/.bin/gulp build -d ${CMAKE_CURRENT_BINARY_DIR}/web
+                   COMMAND ./node_modules/.bin/node ./node_modules/.bin/gulp build -d ${CMAKE_CURRENT_BINARY_DIR}/web
                    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/web/
                    )
 add_custom_target(update-web DEPENDS rebuild-web)
