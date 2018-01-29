@@ -19,7 +19,6 @@
 #define DEEPIN_MANUAL_VIEW__WEB_EVENT_DELEGATE_H
 
 #include <QObject>
-#include <qcef_browser_event_delegate.h>
 
 namespace dman {
 

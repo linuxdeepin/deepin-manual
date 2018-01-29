@@ -22,9 +22,8 @@
 #include <QFileInfo>
 #include <QResizeEvent>
 #include <QWebChannel>
-#include <qcef_web_page.h>
-#include <qcef_web_settings.h>
-#include <qcef_web_view.h>
+#include <QWebEnginePage>
+#include <QWebEngineSettings>
 
 #include "base/consts.h"
 #include "controller/search_manager.h"
@@ -36,7 +35,6 @@
 #include "view/widget/image_viewer.h"
 #include "view/widget/search_completion_window.h"
 #include "view/widget/title_bar.h"
-#include "view/web_event_delegate.h"
 
 namespace dman {
 
@@ -70,12 +68,13 @@ void WebWindow::setAppName(const QString& app_name) {
 
   const QFileInfo info(kIndexPage);
   web_view_->load(QUrl::fromLocalFile(info.absoluteFilePath()));
+//  web_view_->load(QUrl("http://www.baidu.com"));
 }
 
 void WebWindow::initConnections() {
   connect(title_bar_, &TitleBar::searchTextChanged,
           this, &WebWindow::onSearchTextChanged);
-  connect(web_view_->page(), &QCefWebPage::loadFinished,
+  connect(web_view_->page(), &QWebEnginePage::loadFinished,
           this, &WebWindow::onWebPageLoadFinished);
   connect(title_bar_, &TitleBar::downKeyPressed,
           completion_window_, &SearchCompletionWindow::goDown);
@@ -116,16 +115,20 @@ void WebWindow::initUI() {
 
   manual_proxy_ = new ManualProxy(this);
 
-  web_view_ = new QCefWebView();
-  web_event_delegate_ = new WebEventDelegate(this);
-  web_view_->page()->setEventDelegate(web_event_delegate_);
+  web_view_ = new QWebEngineView();
   this->setCentralWidget(web_view_);
 
   // Disable web security.
-  web_view_->page()->settings()->setWebSecurity(QCefWebSettings::StateDisabled);
+  auto settings = web_view_->page()->settings();
+  settings->setAttribute(QWebEngineSettings::LocalStorageEnabled, true);
+  settings->setAttribute(QWebEngineSettings::LocalContentCanAccessRemoteUrls, true);
+  settings->setAttribute(QWebEngineSettings::LocalContentCanAccessFileUrls, true);
+  settings->setAttribute(QWebEngineSettings::JavascriptEnabled, true);
+  settings->setAttribute(QWebEngineSettings::JavascriptCanAccessClipboard, true);
 
   // Use TitleBarProxy instead.
-  QWebChannel* channel = web_view_->page()->webChannel();
+  QWebChannel* channel = new QWebChannel(web_view_);
+  web_view_->page()->setWebChannel(channel);
   channel->registerObject("i18n", i18n_);
   channel->registerObject("imageViewer", image_viewer_proxy_);
   channel->registerObject("manual", manual_proxy_);

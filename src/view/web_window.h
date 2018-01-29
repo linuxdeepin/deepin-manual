@@ -20,10 +20,9 @@
 
 #include <DMainWindow>
 #include <QTimer>
+#include <QWebEngineView>
 
 #include "controller/search_result.h"
-
-class QCefWebView;
 
 namespace dman {
 
@@ -36,7 +35,6 @@ class SearchManager;
 class SearchProxy;
 class TitleBar;
 class TitleBarProxy;
-class WebEventDelegate;
 
 class WebWindow : public Dtk::Widget::DMainWindow {
   Q_OBJECT
@@ -72,8 +70,7 @@ class WebWindow : public Dtk::Widget::DMainWindow {
   ManualProxy* manual_proxy_ = nullptr;
   TitleBar* title_bar_ = nullptr;
   TitleBarProxy* title_bar_proxy_ = nullptr;
-  QCefWebView* web_view_ = nullptr;
-  WebEventDelegate* web_event_delegate_ = nullptr;
+  QWebEngineView* web_view_ = nullptr;
   QTimer search_timer_;
 
  private slots:

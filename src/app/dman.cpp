@@ -19,43 +19,16 @@
 #include <QCommandLineParser>
 #include <QDBusConnection>
 #include <QIcon>
-#include <qcef_context.h>
+#include <QWebEngineProfile>
 
 #include "base/consts.h"
 #include "controller/window_manager.h"
 #include "resources/themes/images.h"
 
 int main(int argc, char** argv) {
-  QCefGlobalSettings settings;
-
-  // Do not use sandbox.
-  settings.setNoSandbox(true);
-//#ifndef N_DEBUG
-  // Open http://localhost:9222 in chromium browser to see dev tools.
-  settings.setRemoteDebug(true);
-  settings.setLogSeverity(QCefGlobalSettings::LogSeverity::Error);
-//#else
-//  settings.setRemoteDebug(false);
-//  settings.setLogSeverity(QCefGlobalSettings::LogSeverity::Error);
-//#endif
-
-  // Disable GPU process.
-  settings.addCommandLineSwitch("--disable-gpu", "");
-  // Set web cache folder.
-  QDir cache_dir(dman::GetCacheDir());
-  cache_dir.mkpath(".");
-  settings.setCachePath(cache_dir.filePath("cache"));
-  settings.setUserDataPath(cache_dir.filePath("data"));
-
-  const int exit_code = QCefInit(argc, argv, settings);
-  if (exit_code >= 0) {
-    return exit_code;
-  }
-
   Dtk::Widget::DApplication::loadDXcbPlugin();
 
   Dtk::Widget::DApplication app(argc, argv);
-  QCefBindApp(&app);
 
   app.setTheme("light");
   app.setAttribute(Qt::AA_EnableHighDpiScaling, true);
@@ -73,6 +46,10 @@ int main(int argc, char** argv) {
           "function descriptions."));
   app.setApplicationAcknowledgementPage(
       "https://www.deepin.org/acknowledgments/deepin-manual/");
+
+  QWebEngineProfile* profile = QWebEngineProfile::defaultProfile();
+  profile->setCachePath("/tmp/manual-cache");
+  profile->setPersistentStoragePath("/tmp/manual-pers");
 
   dman::WindowManager window_manager;
   window_manager.parseArguments();

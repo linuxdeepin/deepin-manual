@@ -29,7 +29,7 @@ gulp.task('sass', () => {
 });
 //移动html文件
 gulp.task('html', () => {
-  return gulp.src('*.html').pipe(gulp.dest(RootDir));
+  return gulp.src(['*.html', 'qwebchannel.js']).pipe(gulp.dest(RootDir));
 });
 
 const tasks = ['js', 'sass', 'html'];

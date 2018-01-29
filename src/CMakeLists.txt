@@ -58,14 +58,13 @@ find_package(Qt5Gui REQUIRED)
 find_package(Qt5LinguistTools)
 find_package(Qt5Sql REQUIRED)
 find_package(Qt5WebChannel REQUIRED)
+find_package(Qt5DeepinWebEngineWidgets REQUIRED)
 find_package(Qt5Widgets REQUIRED)
 find_package(Qt5LinguistTools REQUIRED)
 
 pkg_search_module(DtkWidget REQUIRED dtkwidget)
-pkg_search_module(QCef REQUIRED libqcef)
 
 include_directories(${DtkWidget_INCLUDE_DIRS})
-include_directories(${QCef_INCLUDE_DIRS})
 
 set(LINK_LIBS
     Qt5::Core
@@ -73,9 +72,9 @@ set(LINK_LIBS
     Qt5::Sql
     Qt5::Widgets
     Qt5::WebChannel
+    Qt5::DeepinWebEngineWidgets
 
     ${DtkWidget_LDFLAGS}
-    ${QCef_LDFLAGS}
     )
 
 set(BASE_FILES
@@ -135,8 +134,6 @@ set(VIEW_FILES
     view/theme_manager.h
     view/title_bar_proxy.cpp
     view/title_bar_proxy.h
-    view/web_event_delegate.cpp
-    view/web_event_delegate.h
     view/web_window.cpp
     view/web_window.h
 
