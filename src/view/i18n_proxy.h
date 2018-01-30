@@ -32,6 +32,8 @@ class I18nProxy : public QObject {
 
  public slots:
   QVariantHash getSentences() const;
+
+  QString getLocale() const;
 };
 
 }  // namespace dman

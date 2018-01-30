@@ -8,8 +8,6 @@ import Main from './main.jsx';
 import Search from './search.jsx';
 import sIndex from './searchIndex';
 
-global.lang = navigator.language.replace('-', '_');
-
 global.readFile = (fileName, callback) => {
   let xhr = new XMLHttpRequest();
   xhr.open('GET', fileName);
@@ -35,6 +33,7 @@ class App extends React.Component {
   }
   initQt(channel) {
     channel.objects.i18n.getSentences(i18n => {
+      channel.objects.i18n.getLocale(lang => global.lang = lang);
       global.i18n = i18n;
       global.qtObjects = channel.objects;
       channel.objects.manual.getSystemManualDir(path => {
@@ -57,10 +56,6 @@ class App extends React.Component {
       global.qtObjects.search.onContentResult.connect(
         this.onContentResult.bind(this)
       );
-      global.qtObjects.search.requestSearchEntry((appName, lang) => {
-        const file = `${global.path}/${appName}/${lang}/index.md`;
-        global.readFile(file, data => sIndex(file, data));
-      });
     });
   }
   onContentResult(file, titleList, idList, contentList) {

@@ -17,6 +17,8 @@
 
 #include "view/i18n_proxy.h"
 
+#include <QLocale>
+
 namespace dman {
 
 I18nProxy::I18nProxy(QObject* parent) : QObject(parent) {
@@ -38,6 +40,10 @@ QVariantHash I18nProxy::getSentences() const {
       { "SearchInWiki", QObject::tr("Deepin Wiki") }
   };
   return result;
+}
+
+QString I18nProxy::getLocale() const {
+  return QLocale().name();
 }
 
 }  // namespace dman
