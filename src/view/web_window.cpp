@@ -38,6 +38,7 @@
 #include "view/widget/image_viewer.h"
 #include "view/widget/search_completion_window.h"
 #include "view/widget/title_bar.h"
+#include "view/widget/web_view.h"
 
 namespace dman {
 
@@ -119,7 +120,7 @@ void WebWindow::initUI() {
 
   manual_proxy_ = new ManualProxy(this);
 
-  web_view_ = new QWebEngineView();
+  web_view_ = new WebView();
   this->setCentralWidget(web_view_);
 
   // Disable web security.
