@@ -56,7 +56,7 @@ int main(int argc, char** argv) {
 
       QString out, err;
       const QStringList cmd = {"./toSearchIndex.js", "-f", md_file};
-      const bool ok = dman::SpawnCmd("node", cmd, out, err);
+      const bool ok = dman::SpawnCmd("./node_modules/.bin/node", cmd, out, err);
       if (!ok) {
         qWarning() << err << ok << md_file;
         continue;
@@ -74,17 +74,17 @@ int main(int argc, char** argv) {
       QStringList anchorIdList;
       QStringList contents;
       for (const QJsonValue& value : array) {
-        if (!value.isObject()) {
-          qWarning() << md_file << "is not an object:" << value;
+        if (!value.isArray()) {
+          qWarning() << md_file << "is not an array:" << value;
           break;
         }
 
-        const QJsonObject obj = value.toObject();
-        const QString title = obj.value("title").toString();
-        anchors.append(title);
-        const QString id = obj.value("id").toString();
+        const QJsonArray anchor = value.toArray();
+        const QString id = anchor.at(0).toString();
         anchorIdList.append(id);
-        const QString content = obj.value("content").toString();
+        const QString title = anchor.at(1).toString();
+        anchors.append(title);
+        const QString content = anchor.at(2).toString();
         contents.append(content);
 
       }
