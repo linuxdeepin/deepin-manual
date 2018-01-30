@@ -48,8 +48,9 @@ int main(int argc, char** argv) {
       "https://www.deepin.org/acknowledgments/deepin-manual/");
 
   QWebEngineProfile* profile = QWebEngineProfile::defaultProfile();
-  profile->setCachePath("/tmp/manual-cache");
-  profile->setPersistentStoragePath("/tmp/manual-pers");
+  QDir cache_dir = dman::GetCacheDir();
+  profile->setCachePath(cache_dir.filePath("cache"));
+  profile->setPersistentStoragePath(cache_dir.filePath("storage"));
 
   dman::WindowManager window_manager;
   window_manager.parseArguments();
