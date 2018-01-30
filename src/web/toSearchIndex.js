@@ -6,12 +6,15 @@ if (require.main === module) {
   if (argv.f) {
     const $ = cheerio.load(toHtml('', argv.f));
     let hlist = $(':header');
-    let searchIndex = hlist
-      .map(i => {
-        let el = $(hlist[i]);
-        return [el.attr('id'), el.text(), el.nextUntil(hlist[i + 1]).text()];
-      })
-      .get();
+    let searchIndex = [];
+    hlist.map(i => {
+      let el = $(hlist[i]);
+      searchIndex.push([
+        el.attr('id'),
+        el.text(),
+        el.nextUntil(hlist[i + 1]).text()
+      ]);
+    });
     console.log(JSON.stringify(searchIndex));
   } else {
     console.error('node toSearchIndex.js -f mdFile');
