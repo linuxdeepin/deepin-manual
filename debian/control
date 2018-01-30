@@ -3,6 +3,7 @@ Maintainer: Deepin Sysdev <sysdev@deepin.com>
 Section: python
 Priority: optional
 Build-Depends:
+ ca-certificates,
  cmake,
  debhelper (>= 9),
  git,
@@ -10,10 +11,10 @@ Build-Depends:
  libdtkwidget-dev,
  libqt5webchannel5-dev,
  libsass0,
- pkg-config,
  libqt5sql5-sqlite,
+ pkg-config,
+ qtpositioning5-dev,
  qttools5-dev-tools,
- ca-certificates
 Standards-Version: 3.9.5
 Homepage: https://github.com/linuxdeepin/deepin-manual/
 Vcs-Git: git://github.com/linuxdeepin/deepin-manual.git

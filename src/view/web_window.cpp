@@ -18,12 +18,15 @@
 #include "view/web_window.h"
 
 #include <DTitlebar>
+#include <QApplication>
 #include <QDebug>
 #include <QFileInfo>
+#include <QMouseEvent>
 #include <QResizeEvent>
 #include <QWebChannel>
 #include <QWebEnginePage>
 #include <QWebEngineSettings>
+#include <QWebEngineView>
 
 #include "base/consts.h"
 #include "controller/search_manager.h"
@@ -54,6 +57,8 @@ WebWindow::WebWindow(SearchManager* search_manager, QWidget* parent)
   search_timer_.setSingleShot(true);
   this->initUI();
   this->initConnections();
+
+  qApp->installEventFilter(this);
 }
 
 WebWindow::~WebWindow() {
@@ -68,7 +73,6 @@ void WebWindow::setAppName(const QString& app_name) {
 
   const QFileInfo info(kIndexPage);
   web_view_->load(QUrl::fromLocalFile(info.absoluteFilePath()));
-//  web_view_->load(QUrl("http://www.baidu.com"));
 }
 
 void WebWindow::initConnections() {
@@ -232,6 +236,27 @@ void WebWindow::onSearchAnchorResult(const QString& keyword,
   } else {
     completion_window_->setSearchAnchorResult(result);
   }
+}
+
+bool WebWindow::eventFilter(QObject* watched, QEvent* event) {
+  // Filters mouse press event only.
+  if (event->type() == QEvent::MouseButtonPress &&
+      qApp->activeWindow() == this &&
+      watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
+    QMouseEvent* mouseEvent = static_cast<QMouseEvent*>(event);
+    switch (mouseEvent->button()) {
+      case Qt::BackButton: {
+        title_bar_proxy_->backwardButtonClicked();
+        break;
+      }
+      case Qt::ForwardButton: {
+        title_bar_proxy_->forwardButtonClicked();
+        break;
+      }
+      default: {}
+    }
+  }
+  return QObject::eventFilter(watched, event);
 }
 
 }  // namespace dman

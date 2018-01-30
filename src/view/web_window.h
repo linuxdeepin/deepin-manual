@@ -20,7 +20,7 @@
 
 #include <DMainWindow>
 #include <QTimer>
-#include <QWebEngineView>
+class QWebEngineView;
 
 #include "controller/search_result.h"
 
@@ -48,6 +48,8 @@ class WebWindow : public Dtk::Widget::DMainWindow {
   const QString& appName() const {
     return app_name_;
   }
+
+  bool eventFilter(QObject* watched, QEvent* event) override;
 
  public slots:
   void setAppName(const QString& app_name);
