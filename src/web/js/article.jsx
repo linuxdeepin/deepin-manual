@@ -8,7 +8,6 @@ export default class Article extends Component {
     super(props);
     this.state = {
       preview: null,
-      contentMenuStyle: null,
       fillblank: null
     };
     document.body.onscroll = this.scroll.bind(this);
@@ -77,8 +76,8 @@ export default class Article extends Component {
     if (!this.load) {
       return;
     }
-    if (this.state.preview != null || this.state.contentMenuStyle != null) {
-      this.setState({ preview: null, contentMenuStyle: null });
+    if (this.state.preview != null) {
+      this.setState({ preview: null });
     }
     let hList = ReactDOM.findDOMNode(this).querySelectorAll('h2,h3');
     let hash = hList[0].id;
@@ -167,35 +166,10 @@ export default class Article extends Component {
             return;
         }
     }
-    if (window.getSelection().toString() != '') {
-      if (this.state.contentMenuStyle != null) {
-        this.setState({ contentMenuStyle: null });
-      }
-      return;
-    }
-    if (this.state.preview != null || this.state.contentMenuStyle != null) {
-      this.setState({ preview: null, contentMenuStyle: null });
-    }
-  }
-  //右键菜单
-  contextMenu(e) {
-    e.preventDefault();
-    if (window.getSelection().toString() != '') {
-      this.setState({
-        contentMenuStyle: {
-          top: e.clientY,
-          left: e.clientX
-        }
-      });
-    }
   }
   render() {
     return (
-      <div
-        id="article"
-        onContextMenu={e => this.contextMenu(e)}
-        onClick={this.click.bind(this)}
-      >
+      <div id="article" onClick={this.click.bind(this)}>
         <div
           className="read"
           dangerouslySetInnerHTML={{ __html: this.props.html }}
@@ -213,13 +187,6 @@ export default class Article extends Component {
                 dangerouslySetInnerHTML={{ __html: this.state.preview.html }}
               />
             </div>
-          </div>
-        )}
-        {this.state.contentMenuStyle != null && (
-          <div id="contextMenu" style={this.state.contentMenuStyle}>
-            <h4 onClick={() => document.execCommand('Copy')}>
-              {global.i18n['Copy']}
-            </h4>
           </div>
         )}
       </div>
