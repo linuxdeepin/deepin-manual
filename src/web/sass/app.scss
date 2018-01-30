@@ -1,31 +1,36 @@
 @charset "utf-8";
 
 body {
-	width: 100%;
-	margin: 0px;
-	overflow-x: hidden;
-	overflow-y: auto;
-	&::-webkit-scrollbar {
-		width: 6px;
-	}
-	&::-webkit-scrollbar-thumb {
-		background-color: #888888;
-		border-radius: 4px;
-		border: 1px solid transparent;
-		background-clip: content-box;
-	}
-	&::-webkit-scrollbar-thumb:hover {
-		border: 1px solid #414141;
-		background-color: #414141;
-	}
+  width: 100%;
+  margin: 0px;
+  overflow-x: hidden;
+  overflow-y: auto;
 }
 
 #app {
-	width: 100%;
-	color: #464646;
-	height: 100%;
-	a {
-		text-decoration: none;
-		color: #00162c;
-	}
+  width: 100%;
+  color: #464646;
+  height: 100%;
+  a {
+    text-decoration: none;
+    color: #00162c;
+  }
+}
+
+.scrollbar > div:last-child {
+  width: 4px !important;
+  &:hover {
+    width: 6px !important;
+    div {
+      background-color: grey !important;
+    }
+  }
+}
+body[style*='user-select: none'] {
+  .scrollbar > div:last-child {
+    width: 6px !important;
+    div {
+      background-color: grey !important;
+    }
+  }
 }

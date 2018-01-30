@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 
 import m2h from './mdToHtml';
+import Scrollbar from './scrollbar.jsx';
 
 export default class Article extends Component {
   constructor(props) {
@@ -10,7 +11,7 @@ export default class Article extends Component {
       preview: null,
       fillblank: null
     };
-    document.body.onscroll = this.scroll.bind(this);
+    // document.body.onscroll = this.scroll.bind(this);
   }
   //滚动到锚点
   scrollToHash() {
@@ -23,6 +24,7 @@ export default class Article extends Component {
     }
     if (!this.load) {
       let article = ReactDOM.findDOMNode(this);
+      let read = article.querySelector('#read');
       let imgList = [...article.querySelectorAll('img')];
       let loadCount = 0;
       imgList.map(el => {
@@ -31,13 +33,13 @@ export default class Article extends Component {
           if (loadCount == imgList.length) {
             this.load = true;
             this.scrollToHash();
-
             let last = article.querySelector(
               '#' + this.props.hlist[this.props.hlist.length - 1].id
             );
+            // console.log(article, article.clientHeight - last.offsetTop);
             let fillblank = {
               marginBottom:
-                window.innerHeight - (article.clientHeight - last.offsetTop)
+                article.clientHeight - (read.clientHeight - last.offsetTop)
             };
             console.log(fillblank);
             this.setState({
@@ -170,25 +172,32 @@ export default class Article extends Component {
   render() {
     return (
       <div id="article" onClick={this.click.bind(this)}>
-        <div
-          className="read"
-          dangerouslySetInnerHTML={{ __html: this.props.html }}
-          style={this.state.fillblank}
-        />
-        {this.state.preview != null && (
+        <Scrollbar onScroll={this.scroll.bind(this)}>
           <div
-            style={this.state.preview.style}
-            className={this.state.preview.tClass}
-            id="preview"
-          >
-            <div id="view">
-              <div
-                className="read"
-                dangerouslySetInnerHTML={{ __html: this.state.preview.html }}
-              />
+            id="read"
+            className="read"
+            dangerouslySetInnerHTML={{ __html: this.props.html }}
+            style={this.state.fillblank}
+          />
+          {this.state.preview != null && (
+            <div
+              style={this.state.preview.style}
+              className={this.state.preview.tClass}
+              id="preview"
+            >
+              <Scrollbar>
+                <div id="view">
+                  <div
+                    className="read"
+                    dangerouslySetInnerHTML={{
+                      __html: this.state.preview.html
+                    }}
+                  />
+                </div>
+              </Scrollbar>
             </div>
-          </div>
-        )}
+          )}
+        </Scrollbar>
       </div>
     );
   }

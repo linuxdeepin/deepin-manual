@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
+import Scrollbar from './scrollbar.jsx';
 
 class Nav extends Component {
   componentDidMount() {
@@ -15,7 +16,7 @@ class Nav extends Component {
       return;
     }
     if (hashDOM.getAttribute('cid') == this.props.hlist[0].id) {
-      ReactDOM.findDOMNode(this).scrollTop = 0;
+      document.getElementById('backHome').scrollIntoViewIfNeeded(false);
       return;
     }
     hashDOM.scrollIntoViewIfNeeded(false);
@@ -40,31 +41,44 @@ class Nav extends Component {
     }
   }
   render() {
+    let max = this.props.hlist[0];
+    this.props.hlist.map(h => {
+      if (max.text.length < h.text.length) {
+        max = h;
+      }
+    });
+    console.log(max);
+    let maxWidth =
+      global.lang === 'zh_CN' ? max.text.length : max.text.length / 2;
+    maxWidth += 1;
+    console.log(maxWidth);
     return (
       <div
         id="nav"
         lang={global.lang}
         onClick={e => this.click(e)}
-        onWheel={this.wheel.bind(this)}
+        style={{ width: maxWidth + 'rem' }}
       >
-        <Link to="/index">
-          <div type="h2" id="backHome">
-            {global.i18n['ToIndexPage']}
-          </div>
-        </Link>
-        {this.props.hlist.map(h => {
-          return (
-            <div
-              key={h.id}
-              cid={h.id}
-              type={h.type}
-              className={this.props.hash == h.id ? 'hash' : undefined}
-            >
-              {h.text}
-              <br />
+        <Scrollbar>
+          <Link to="/index">
+            <div type="h2" id="backHome" className="h">
+              {global.i18n['ToIndexPage']}
             </div>
-          );
-        })}
+          </Link>
+          {this.props.hlist.map(h => {
+            return (
+              <div
+                key={h.id}
+                cid={h.id}
+                type={h.type}
+                className={this.props.hash == h.id ? 'h hash' : 'h'}
+              >
+                {h.text}
+                <br />
+              </div>
+            );
+          })}
+        </Scrollbar>
       </div>
     );
   }
