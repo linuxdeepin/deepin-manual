@@ -198,10 +198,13 @@ add_executable(dman
                )
 target_link_libraries(dman ${LINK_LIBS})
 add_dependencies(dman
-                 update-search-db
-                 update-qm
                  update-web
                  )
+if (CMAKE_BUILD_TYPE MATCHES Release)
+  add_dependencies(dman
+                   update-search-db
+                   update-qm)
+endif ()
 
 add_executable(dman-search
                app/dman_search.cpp
