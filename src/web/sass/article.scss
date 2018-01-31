@@ -42,18 +42,25 @@
       }
       //png图片
       &[src$='png'] {
+        @media screen and (min-resolution: 300dpi) {
+          zoom: 50%;
+        }
         margin-top: 26px;
         max-width: 99%;
         cursor: pointer;
       }
       //jpg图片
       &[src$='jpg'] {
+        @media screen and (min-resolution: 300dpi) {
+          zoom: 50%;
+        }
         margin-top: 26px;
         max-width: 99%;
         cursor: pointer;
         border-radius: 4px;
-        border: 1px solid rgba(0, 0, 0, 0.18);
-        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.3);
+        // border: 1px solid rgba(0, 0, 0, 0.18);
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2),
+          0 0 0 1px rgba(0, 0, 0, 0.1);
       }
     }
     p {
@@ -125,19 +132,19 @@
     #view {
       height: 100%;
       overflow-y: auto;
-      &::-webkit-scrollbar {
-        width: 6px;
-      }
-      &::-webkit-scrollbar-thumb {
-        background-color: #888888;
-        border-radius: 4px;
-        border: 1px solid transparent;
-        background-clip: content-box;
-      }
-      &::-webkit-scrollbar-thumb:hover {
-        border: 1px solid #414141;
-        background-color: #414141;
-      }
+      // &::-webkit-scrollbar {
+      //   width: 6px;
+      // }
+      // &::-webkit-scrollbar-thumb {
+      //   background-color: #888888;
+      //   border-radius: 4px;
+      //   border: 1px solid transparent;
+      //   background-clip: content-box;
+      // }
+      // &::-webkit-scrollbar-thumb:hover {
+      //   border: 1px solid #414141;
+      //   background-color: #414141;
+      // }
       .read {
         width: 80%;
         margin: auto;

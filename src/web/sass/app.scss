@@ -19,18 +19,18 @@ body {
 
 .scrollbar > div:last-child {
   width: 4px !important;
+  div {
+    background-color: rgba(16, 16, 16, 0.5) !important;
+  }
   &:hover {
-    width: 6px !important;
-    div {
-      background-color: grey !important;
-    }
+    width: 8px !important;
   }
 }
 body[style*='user-select: none'] {
   .scrollbar > div:last-child {
-    width: 6px !important;
+    width: 8px !important;
     div {
-      background-color: grey !important;
+      background-color: rgba(16, 16, 16, 0.7) !important;
     }
   }
 }

@@ -47,17 +47,36 @@ class Nav extends Component {
         max = h;
       }
     });
-    console.log(max);
-    let maxWidth =
-      global.lang === 'zh_CN' ? max.text.length : max.text.length / 2;
-    maxWidth += 1;
-    console.log(maxWidth);
+    console.log(max, max.text.length);
+    // let maxWidth = 0;
+    // if (global.lang == 'zh_CN') {
+    //   maxWidth = max.text.length * 16;
+    // } else {
+    //   maxWidth = max.text.length / 1.8;
+    // }
+    let maxWidth = max.text.length;
+    let c = 0;
+    if (global.lang === 'zh_CN') {
+      if (maxWidth <= 6) {
+        c = 3;
+      } else {
+        c = 1;
+      }
+      maxWidth *= 18;
+    } else {
+      if (maxWidth <= 20) {
+        c = 2;
+      }
+      maxWidth *= 9;
+    }
     return (
       <div
         id="nav"
         lang={global.lang}
         onClick={e => this.click(e)}
-        style={{ width: maxWidth + 'rem' }}
+        style={{
+          width: `calc(${maxWidth}px + ${c}rem`
+        }}
       >
         <Scrollbar>
           <Link to="/index">
@@ -74,7 +93,6 @@ class Nav extends Component {
                 className={this.props.hash == h.id ? 'h hash' : 'h'}
               >
                 {h.text}
-                <br />
               </div>
             );
           })}

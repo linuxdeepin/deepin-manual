@@ -1,11 +1,10 @@
 @charset "utf-8";
 #nav {
   user-select: none;
+  width: 15rem;
   position: fixed;
   top: 0;
   left: 0;
-  min-width: 150px;
-  max-width: 300px;
   white-space: nowrap;
   overflow-y: auto;
   overflow-x: hidden;
@@ -15,6 +14,7 @@
     margin: 10px 0;
     cursor: pointer;
     border-right: 3px solid transparent;
+    padding-right: 1rem !important;
     &[type='h2'] {
       font-size: 16px;
       font-weight: 500;
@@ -26,14 +26,16 @@
       font-size: 12px;
       color: #000000;
       padding: 6px;
-      padding-right: 20px;
       text-indent: 2rem;
     }
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
   }
   .hash {
     border-right: #30a5f9 3px solid;
     background-color: #d5edfe;
-    color: #2ca7f8;
+    color: #2ca7f8 !important;
     font-weight: bold;
   }
 }
