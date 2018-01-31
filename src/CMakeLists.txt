@@ -153,15 +153,24 @@ set(VIEW_FILES
 
 # Main executable
 set(SEARCH_FILES
-    app/update_search_db.cpp
+    app/generate_search_db.cpp
     base/command.cpp
     base/command.h
     controller/search_db.cpp
     controller/search_db.h
     )
-add_executable(update-search-db
+add_executable(generate-search-db
                ${SEARCH_FILES})
-target_link_libraries(update-search-db ${LINK_LIBS})
+target_link_libraries(generate-search-db ${LINK_LIBS})
+
+add_custom_command(OUTPUT _update-search-db
+                   COMMAND pwd
+                   COMMAND ${CMAKE_CURRENT_BINARY_DIR}/generate-search-db
+                   WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/
+                   )
+add_custom_target(update-search-db DEPENDS _update-search-db)
+add_dependencies(update-search-db
+                 generate-search-db)
 
 # Generate .qm files from .ts files.
 file(GLOB DMAN_TRANSLATION_TS
@@ -189,8 +198,10 @@ add_executable(dman
                )
 target_link_libraries(dman ${LINK_LIBS})
 add_dependencies(dman
+                 update-search-db
                  update-qm
-                 update-web)
+                 update-web
+                 )
 
 add_executable(dman-search
                app/dman_search.cpp

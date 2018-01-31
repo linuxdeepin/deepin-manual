@@ -24,5 +24,4 @@ else
 	git clone https://cr.deepin.io/vendor-deps src/web/node_modules
 	cd src/web/node_modules && git checkout deepin-manual
 endif
-	dh_auto_build -- dman update-search-db
-	./obj-${DEB_TARGET_MULTIARCH}/src/update-search-db
+	dh_auto_build -- dman
