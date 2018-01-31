@@ -51,10 +51,15 @@ class WebWindow : public Dtk::Widget::DMainWindow {
 
   bool eventFilter(QObject* watched, QEvent* event) override;
 
+ signals:
+  void closed(const QString& app_name);
+
  public slots:
   void setAppName(const QString& app_name);
 
  protected:
+  void closeEvent(QCloseEvent* event) override;
+
   // Update width of title bar when main window is resized.
   void resizeEvent(QResizeEvent* event) override;
 

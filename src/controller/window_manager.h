@@ -41,18 +41,19 @@ class WindowManager : public QObject {
    */
   void openManual(const QString& app_name);
 
-  /**
-   * Parse command line arguments.
-   * @return true if an existing daemon exists.
-   */
-  bool parseArguments();
-
  private:
   QPoint newWindowPosition();
 
   QVector<WebWindow*> windows_;
   SearchManager* search_manager_ = nullptr;
   QPoint last_new_window_pos_;
+
+ private slots:
+  /**
+   * Remove window from window list.
+   * @param app_name
+   */
+  void onWindowClosed(const QString& app_name);
 };
 
 }  // namespace dman

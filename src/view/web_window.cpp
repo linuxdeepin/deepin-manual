@@ -256,4 +256,9 @@ bool WebWindow::eventFilter(QObject* watched, QEvent* event) {
   return QObject::eventFilter(watched, event);
 }
 
+void WebWindow::closeEvent(QCloseEvent* event) {
+  QWidget::closeEvent(event);
+  emit this->closed(app_name_);
+}
+
 }  // namespace dman

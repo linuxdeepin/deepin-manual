@@ -41,7 +41,6 @@ WindowManager::WindowManager(QObject* parent)
 }
 
 WindowManager::~WindowManager() {
-  // TODO(Shaohua): Close all of web windows.
 }
 
 void WindowManager::openManual(const QString& app_name) {
@@ -61,7 +60,8 @@ void WindowManager::openManual(const QString& app_name) {
   const QPoint pos = this->newWindowPosition();
   window->move(pos);
 
-  // TODO(Shaohua): Handle window close event.
+  connect(window, &WebWindow::closed,
+          this, &WindowManager::onWindowClosed);
   windows_.append(window);
 }
 
@@ -86,6 +86,15 @@ QPoint WindowManager::newWindowPosition() {
       last_new_window_pos_.setY(0);
     }
     return last_new_window_pos_;
+  }
+}
+
+void WindowManager::onWindowClosed(const QString& app_name) {
+  for (int i = 0; i < windows_.size(); ++i) {
+    if (windows_.at(i)->appName() == app_name) {
+      windows_.remove(i);
+      break;
+    }
   }
 }
 
