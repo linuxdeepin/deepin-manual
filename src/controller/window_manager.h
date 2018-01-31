@@ -35,11 +35,17 @@ class WindowManager : public QObject {
   explicit WindowManager(QObject* parent = nullptr);
   ~WindowManager() override;
 
-  // Open manual page of application with name |app_name|.
-  // If manual of that app has already been presented, just raise to front.
+  /**
+   * Open manual page of application with name |app_name|.
+   * If manual of that app has already been presented, just raise to front.
+   */
   void openManual(const QString& app_name);
 
-  void parseArguments();
+  /**
+   * Parse command line arguments.
+   * @return true if an existing daemon exists.
+   */
+  bool parseArguments();
 
  private:
   QPoint newWindowPosition();

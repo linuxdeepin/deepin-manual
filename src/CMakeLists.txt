@@ -96,7 +96,7 @@ set(CONTROLLER_FILES
     controller/search_result.h
     controller/window_manager.cpp
     controller/window_manager.h
-    )
+    controller/argument_parser.cpp controller/argument_parser.h)
 
 set(DBUS_FILES
     dbus/dbus_consts.cpp

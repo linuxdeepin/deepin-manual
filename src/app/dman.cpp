@@ -19,13 +19,16 @@
 #include <QCommandLineParser>
 #include <QDBusConnection>
 #include <QIcon>
+#include <QTimer>
 #include <QWebEngineProfile>
 
 #include "base/consts.h"
+#include "controller/argument_parser.h"
 #include "controller/window_manager.h"
 #include "resources/themes/images.h"
 
 int main(int argc, char** argv) {
+  qputenv("DXCB_FAKE_PLATFORM_NAME_XCB", "TRUE");
   Dtk::Widget::DApplication::loadDXcbPlugin();
 
   Dtk::Widget::DApplication app(argc, argv);
@@ -52,8 +55,21 @@ int main(int argc, char** argv) {
   profile->setCachePath(cache_dir.filePath("cache"));
   profile->setPersistentStoragePath(cache_dir.filePath("storage"));
 
-  dman::WindowManager window_manager;
-  window_manager.parseArguments();
+  dman::ArgumentParser argument_parser;
 
-  return app.exec();
+  if (argument_parser.parseArguments()) {
+    // Exit process after 1000ms.
+    QTimer::singleShot(1000, [&]() {
+      app.quit();
+    });
+    return app.exec();
+  } else {
+    dman::WindowManager window_manager;
+    QObject::connect(&argument_parser,
+                     &dman::ArgumentParser::openManualRequested,
+                     &window_manager, &dman::WindowManager::openManual);
+    // Send openManualRequested() signals after slots connected.
+    argument_parser.openManualsDelay();
+    return app.exec();
+  }
 }

@@ -18,15 +18,10 @@
 #include "controller/window_manager.h"
 
 #include <QApplication>
-#include <QtCore/QCommandLineParser>
-#include <QtDBus/QDBusConnection>
+#include <QDebug>
 #include <QDesktopWidget>
 
 #include "controller/search_manager.h"
-#include "dbus/dbus_consts.h"
-#include "dbus/manual_open_adapter.h"
-#include "dbus/manual_open_interface.h"
-#include "dbus/manual_open_proxy.h"
 #include "view/web_window.h"
 
 namespace dman {
@@ -50,6 +45,7 @@ WindowManager::~WindowManager() {
 }
 
 void WindowManager::openManual(const QString& app_name) {
+  qDebug() << Q_FUNC_INFO << app_name;
   for (WebWindow* window : windows_) {
     if (window->appName() == app_name) {
       window->show();
@@ -58,71 +54,15 @@ void WindowManager::openManual(const QString& app_name) {
     }
   }
   WebWindow* window = new WebWindow(search_manager_);
-  window->setAppName(app_name);
-  window->resize(kWinWidth, kWinHeight);
   window->show();
+  window->resize(kWinWidth, kWinHeight);
+  window->setAppName(app_name);
 
   const QPoint pos = this->newWindowPosition();
   window->move(pos);
 
   // TODO(Shaohua): Handle window close event.
   windows_.append(window);
-}
-
-void WindowManager::parseArguments() {
-  QCommandLineParser parser;
-  parser.addHelpOption();
-  parser.addVersionOption();
-  parser.addOption(QCommandLineOption(
-      "dbus", "enable daemon mode"
-  ));
-  parser.parse(qApp->arguments());
-
-  // Register dbus service.
-  QDBusConnection conn = QDBusConnection::sessionBus();
-  ManualOpenProxy* proxy = new ManualOpenProxy(this);
-  connect(proxy, &ManualOpenProxy::openManualRequested,
-          this, &WindowManager::openManual);
-
-  ManualOpenAdapter* adapter = new ManualOpenAdapter(proxy);
-  Q_UNUSED(adapter);
-
-  if (!conn.registerService(kManualOpenService) ||
-      !conn.registerObject(kManualOpenIface, proxy)) {
-    // Failed to register dbus service.
-    // Open appName list with dbus interface.
-    const QStringList position_args = parser.positionalArguments();
-    if (!position_args.isEmpty()) {
-      ManualOpenInterface* iface = new ManualOpenInterface(
-          kManualOpenService,
-          kManualOpenIface,
-          QDBusConnection::sessionBus(),
-          this);
-      // Only parse positional arguments.
-      for (const QString& arg : position_args) {
-        iface->Open(arg);
-      }
-
-      // Exit process after 1000ms.
-      QTimer::singleShot(1000, []() {
-        qApp->quit();
-      });
-    }
-
-  } else {
-    const QStringList position_args = parser.positionalArguments();
-    if (position_args.isEmpty()) {
-      // Open index page if not in dbus daemon mode.
-      if (!parser.isSet("dbus")) {
-        this->openManual("");
-      }
-    } else {
-      // Only parse positional arguments.
-      for (const QString& arg : position_args) {
-        this->openManual(arg);
-      }
-    }
-  }
 }
 
 QPoint WindowManager::newWindowPosition() {
