@@ -130,7 +130,7 @@ void SearchDb::addSearchEntry(const QString& app_name,
                               const QStringList& contents) {
   Q_ASSERT(p_->db.isOpen());
   Q_ASSERT(anchors.length() == contents.length());
-  qDebug() << "addSearchEntry()" << app_name << lang;
+  qDebug() << "addSearchEntry()" << app_name << lang << anchors;
 
   if (anchors.length() != contents.length() ||
       anchors.length() != anchorIdList.length()) {
