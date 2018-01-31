@@ -41,9 +41,9 @@ int main(int argc, char** argv) {
 
   for (const QString& locale : { "zh_CN", "en_US" }) {
     for (const QString& app_name :
-        QDir(DMAN_MANUAL_DIR).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+        QDir(DMAN_ORIG_MANUAL_DIR).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
       const QString md_file = QStringList{
-          DMAN_MANUAL_DIR,
+          DMAN_ORIG_MANUAL_DIR,
           app_name,
           locale,
           "index.md"

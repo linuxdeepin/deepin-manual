@@ -12,7 +12,9 @@ else()
   add_definitions(-DDMAN_WEB_DIR="${CMAKE_CURRENT_BINARY_DIR}/web")
   add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_SOURCE_DIR}/manual")
 endif ()
+# These macros ared used at compile time only.
 add_definitions(-DDMAN_SEARCH_ORIG_DB="${CMAKE_CURRENT_BINARY_DIR}/search.db")
+add_definitions(-DDMAN_ORIG_MANUAL_DIR="${CMAKE_SOURCE_DIR}/manual")
 add_definitions(-DDMAN_SEARCH_WORK_DIR="${CMAKE_CURRENT_SOURCE_DIR}/web")
 
 add_subdirectory(dbus)
