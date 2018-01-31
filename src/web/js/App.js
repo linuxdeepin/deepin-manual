@@ -58,9 +58,15 @@ class App extends React.Component {
       );
     });
   }
-  onContentResult(file, titleList, idList, contentList) {
+  onContentResult(appName, titleList, idList, contentList) {
+    console.log('搜索结果', appName, titleList, idList, contentList);
     let { searchResult } = this.state;
-    searchResult.push({ file, idList, titleList, contentList });
+    searchResult.push({
+      file: `${global.path}/${appName}/${global.lang}/index.md`,
+      idList,
+      titleList,
+      contentList
+    });
     this.setState({ searchResult, mismatch: false });
   }
   getChildContext() {
