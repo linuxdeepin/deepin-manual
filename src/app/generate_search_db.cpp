@@ -31,6 +31,9 @@
 #include "controller/search_db.h"
 
 int main(int argc, char** argv) {
+  qputenv("LANG", "en_US.UTF8");
+  qputenv("LANGUAGE", "en_US");
+
   QCoreApplication app(argc, argv);
 
   QDir::setCurrent(DMAN_SEARCH_WORK_DIR);
