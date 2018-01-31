@@ -83,6 +83,7 @@ bool SpawnCmd(const QString& cmd, const QStringList& args,
   QProcess process;
   process.setProgram(cmd);
   process.setArguments(args);
+  process.setEnvironment({ "LANG=en_US.UTF-8", "LANGUAGE=en_US" });
   process.start();
   // Wait for process to finish without timeout.
   process.waitForFinished(-1);

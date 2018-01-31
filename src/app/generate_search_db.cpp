@@ -32,6 +32,7 @@
 
 int main(int argc, char** argv) {
   qputenv("LANG", "en_US.UTF8");
+  qputenv("LC_ALL", "en_US.UTF8");
   qputenv("LANGUAGE", "en_US");
 
   QCoreApplication app(argc, argv);
