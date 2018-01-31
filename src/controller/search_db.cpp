@@ -36,16 +36,16 @@ const char kSearchTableSchema[] = "CREATE TABLE IF NOT EXISTS search "
     "lang TEXT,"
     "anchor TEXT,"
     "anchorId TEXT,"
-    "content TEXT,"
-    "words TEXT)";
+    "content TEXT)";
 
 const char kSearchIndexSchema[] = "CREATE INDEX IF NOT EXISTS search_idx "
     "ON search (id, appName, lang)";
 
-const char kSearchDeleteEntryByApp[] = "DELETE FROM search WHERE appName = ?";
+const char kSearchDeleteEntryByApp[] = "DELETE FROM search "
+    "WHERE appName = ? AND lang = ?";
 const char kSearchInsertEntry[] = "INSERT INTO search "
-    "(appName, lang, anchor, anchorId, content, words) "
-    "VALUES (?, ?, ?, ?, ?, ?)";
+    "(appName, lang, anchor, anchorId, content) "
+    "VALUES (?, ?, ?, ?, ?)";
 
 const char kSearchSelectAll[] = "SELECT * FROM search";
 const char kSearchSelectAnchor[] = "SELECT appName, anchor, anchorId "
@@ -142,26 +142,30 @@ void SearchDb::addSearchEntry(const QString& app_name,
   QSqlQuery query(p_->db);
   query.prepare(kSearchDeleteEntryByApp);
   query.bindValue(0, app_name);
+  query.bindValue(1, lang);
   if (!query.exec()) {
     qCritical() << "Failed to delete search entry:"
                 << query.lastError().text();
     return;
   }
 
-  query.prepare(kSearchInsertEntry);
-  bool ok = true;
-  for (int i = 0; ok && (i < anchors.length()); ++i) {
-    const QString words;
-
-    // Save to database.
-    query.bindValue(0, app_name);
-    query.bindValue(1, lang);
-    query.bindValue(2, anchors.at(i));
-    query.bindValue(3, anchorIdList.at(i));
-    query.bindValue(4, contents.at(i));
-    query.bindValue(5, words);
-    ok = query.exec();
+  if (!p_->db.transaction()) {
+    qWarning() << "Failed to start db transaction!";
+    return;
   }
+  query.prepare(kSearchInsertEntry);
+  QStringList app_names;
+  QStringList lang_list;
+  for (int i = 0; i < anchors.length(); ++i) {
+    app_names.append(app_name);
+    lang_list.append(lang);
+  }
+  query.bindValue(0, app_names);
+  query.bindValue(1, lang_list);
+  query.bindValue(2, anchors);
+  query.bindValue(3, anchorIdList);
+  query.bindValue(4, contents);
+  bool ok = query.execBatch();
 
   if (!ok) {
     p_->db.rollback();

@@ -26,7 +26,6 @@
 #include <QJsonArray>
 #include <QJsonDocument>
 #include <QJsonObject>
-#include <QLocale>
 
 #include "base/command.h"
 #include "controller/search_db.h"
@@ -73,8 +72,10 @@ int main(int argc, char** argv) {
       QStringList anchors;
       QStringList anchorIdList;
       QStringList contents;
+      bool invalid_entry = false;
       for (const QJsonValue& value : array) {
         if (!value.isArray()) {
+          invalid_entry = true;
           qWarning() << md_file << "is not an array:" << value;
           break;
         }
@@ -86,9 +87,11 @@ int main(int argc, char** argv) {
         anchors.append(title);
         const QString content = anchor.at(2).toString();
         contents.append(content);
-
       }
-      db.addSearchEntry(app_name, locale, anchors, anchorIdList, contents);
+
+      if (!invalid_entry) {
+        db.addSearchEntry(app_name, locale, anchors, anchorIdList, contents);
+      }
     }
   }
 }
