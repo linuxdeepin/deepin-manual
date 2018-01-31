@@ -63,10 +63,6 @@ WebWindow::WebWindow(SearchManager* search_manager, QWidget* parent)
 }
 
 WebWindow::~WebWindow() {
-  if (completion_window_ != nullptr) {
-    completion_window_->deleteLater();
-    completion_window_ = nullptr;
-  }
 }
 
 void WebWindow::setAppName(const QString& app_name) {

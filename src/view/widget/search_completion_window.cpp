@@ -176,7 +176,7 @@ void SearchCompletionWindow::initUI() {
 //  this->setWindowFlags(Qt::FramelessWindowHint |
 //                       Qt::CustomizeWindowHint |
 //                       Qt::BypassWindowManagerHint);
-  this->setAttribute(Qt::WA_NativeWindow, true);
+//  this->setAttribute(Qt::WA_NativeWindow, true);
 
   ThemeManager::instance()->registerWidget(this);
 }
