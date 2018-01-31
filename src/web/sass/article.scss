@@ -42,7 +42,7 @@
       }
       //png图片
       &[src$='png'] {
-        @media screen and (min-resolution: 300dpi) {
+        @media screen and (-webkit-min-device-pixel-ratio: 2) {
           zoom: 50%;
         }
         margin-top: 26px;
@@ -51,7 +51,7 @@
       }
       //jpg图片
       &[src$='jpg'] {
-        @media screen and (min-resolution: 300dpi) {
+        @media screen and (-webkit-min-device-pixel-ratio: 2) {
           zoom: 50%;
         }
         margin-top: 26px;
