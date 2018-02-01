@@ -171,7 +171,7 @@ export default class Article extends Component {
   }
   render() {
     return (
-      <div id="article" onClick={this.click.bind(this)}>
+      <div id="article">
         <Scrollbar onScroll={this.scroll.bind(this)}>
           <div
             id="read"
@@ -180,6 +180,7 @@ export default class Article extends Component {
             dangerouslySetInnerHTML={{ __html: this.props.html }}
             style={this.state.fillblank}
             onMouseOver={e => document.getElementById('read').focus()}
+            onClick={this.click.bind(this)}
           />
           {this.state.preview != null && (
             <div

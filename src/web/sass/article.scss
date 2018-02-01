@@ -85,7 +85,9 @@
       //表格block等级
       @for $i from 1 to 5 {
         &.block#{$i} {
-          width: 100%/$i;
+          width: 100%/$i - 1%;
+          float: left;
+          margin-right: 1%;
         }
       }
       tr {
