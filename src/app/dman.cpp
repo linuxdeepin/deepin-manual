@@ -29,7 +29,17 @@
 
 int main(int argc, char** argv) {
   qputenv("DXCB_FAKE_PLATFORM_NAME_XCB", "TRUE");
-  Dtk::Widget::DApplication::loadDXcbPlugin();
+
+  const char* kScaleFactorName = "QT_SCALE_FACTOR";
+  const QString curr_scale_factor = qgetenv(kScaleFactorName);
+  if (!curr_scale_factor.isEmpty()) {
+    const double factor = curr_scale_factor.toDouble();
+    QByteArray factor_bytes;
+    factor_bytes.setNum(qRound(factor));
+    qputenv(kScaleFactorName, factor_bytes);
+  }
+
+   Dtk::Widget::DApplication::loadDXcbPlugin();
 
   Dtk::Widget::DApplication app(argc, argv);
 

@@ -51,6 +51,8 @@ ImageViewer::~ImageViewer() {
 }
 
 void ImageViewer::open(const QString& filepath) {
+  qDebug() << Q_FUNC_INFO << filepath;
+
   // Escape uri.
   QString abspath(filepath);
   if (abspath.contains("://")) {
