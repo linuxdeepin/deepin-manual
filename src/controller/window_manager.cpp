@@ -53,9 +53,9 @@ void WindowManager::openManual(const QString& app_name) {
     }
   }
   WebWindow* window = new WebWindow(search_manager_);
-  window->show();
-  window->resize(kWinWidth, kWinHeight);
   window->setAppName(app_name);
+  window->resize(kWinWidth, kWinHeight);
+  window->show();
 
   const QPoint pos = this->newWindowPosition();
   window->move(pos);
