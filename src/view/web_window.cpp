@@ -181,18 +181,10 @@ void WebWindow::onSearchTextChangedDelay() {
   if (text.size() <= 1) {
     return;
   }
-  // Do real search.
-  completion_window_->setKeyword(text);
-  completion_window_->show();
-  completion_window_->raise();
-  completion_window_->autoResize();
-  // Move to below of search edit.
-  const QPoint local_point(this->rect().width() / 2 - 108, 36);
-//  const QPoint global_point(this->mapToGlobal(local_point));
-  completion_window_->move(local_point);
-//  completion_window_->setFocusPolicy(Qt::NoFocus);
-  completion_window_->setFocusPolicy(Qt::StrongFocus);
 
+  completion_window_->setKeyword(text);
+
+  // Do real search.
   search_manager_->searchAnchor(text);
 }
 
@@ -231,6 +223,15 @@ void WebWindow::onSearchAnchorResult(const QString& keyword,
     // Hide completion window if no anchor entry matches.
     completion_window_->hide();
   } else {
+    completion_window_->show();
+    completion_window_->raise();
+    completion_window_->autoResize();
+    // Move to below of search edit.
+    const QPoint local_point(this->rect().width() / 2 - 108, 36);
+//  const QPoint global_point(this->mapToGlobal(local_point));
+    completion_window_->move(local_point);
+//  completion_window_->setFocusPolicy(Qt::NoFocus);
+    completion_window_->setFocusPolicy(Qt::StrongFocus);
     completion_window_->setSearchAnchorResult(result);
   }
 }

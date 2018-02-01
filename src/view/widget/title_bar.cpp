@@ -25,12 +25,6 @@
 
 namespace dman {
 
-namespace {
-
-const int kSearchTextMaxSize = 10;
-
-}  // namespace dman
-
 TitleBar::TitleBar(QWidget* parent) : QFrame(parent) {
   this->setObjectName("TitleBar");
   this->initUI();
@@ -42,7 +36,7 @@ TitleBar::~TitleBar() {
 
 QString TitleBar::getSearchText() const {
   QString text = search_edit_->text();
-  return text.remove('\n').remove('\r').remove("\r\n").left(kSearchTextMaxSize);
+  return text.remove('\n').remove('\r').remove("\r\n");
 }
 
 void TitleBar::setBackwardButtonActive(bool active) {
