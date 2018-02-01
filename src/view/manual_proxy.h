@@ -38,6 +38,12 @@ class ManualProxy : public QObject {
 
   QStringList getSystemManualList();
 
+  /**
+   * Open link with xdg-open.
+   * @param url
+   */
+  void openExternalLink(const QString& url);
+
  private:
   LauncherInterface* launcher_interface_ = nullptr;
   QStringList app_list_;

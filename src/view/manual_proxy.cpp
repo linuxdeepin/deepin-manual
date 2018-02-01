@@ -18,6 +18,7 @@
 #include "view/manual_proxy.h"
 
 #include <QDBusConnection>
+#include <QDesktopServices>
 
 #include "dbus/dbus_consts.h"
 #include "dbus/launcher_interface.h"
@@ -72,6 +73,10 @@ QStringList ManualProxy::getSystemManualList() {
   }
   qDebug() << "app list:" << app_list_;
   return app_list_;
+}
+
+void ManualProxy::openExternalLink(const QString& url) {
+  QDesktopServices::openUrl(url);
 }
 
 }  // namespace dman
