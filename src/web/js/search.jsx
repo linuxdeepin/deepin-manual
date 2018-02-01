@@ -55,7 +55,7 @@ class Items extends Component {
         <div className="items">
           <div
             className="itemsTitle"
-            onClick={() => global.openFile(this.props.file)}
+            onClick={() => global.open(this.props.file)}
           >
             <img src={this.state.logo} />
             <span>{this.state.title}</span>
