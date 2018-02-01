@@ -42,7 +42,7 @@ int main(int argc, char** argv) {
   app.setApplicationVersion(dman::kAppVersion);
   app.setApplicationName(dman::kAppName);
   app.loadTranslator();
-  app.setApplicationDisplayName(QObject::tr(dman::kAppDisplayName));
+  app.setApplicationDisplayName(QObject::tr("Deepin Manual"));
   app.setApplicationDescription(QObject::tr(
       "Deepin Manual is designed to help users learn deepin and "
           "Deepin applications, providing specific instructions and "
