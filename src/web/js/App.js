@@ -40,6 +40,7 @@ class App extends React.Component {
         global.path = path;
         this.setState({ init: true });
       });
+      global.openWindow = global.qtObjects.manual.openExternalLink;
       global.qtObjects.titleBar.setBackwardButtonActive(true);
       global.qtObjects.titleBar.setForwardButtonActive(false);
       global.qtObjects.titleBar.backwardButtonClicked.connect(() => {
