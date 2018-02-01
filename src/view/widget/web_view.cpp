@@ -36,7 +36,9 @@ void WebView::contextMenuEvent(QContextMenuEvent* event) {
   const QString selected = page()->contextMenuData().selectedText();
   if (!selected.isEmpty()) {
     menu = new QMenu(this);
-    menu->addAction(page()->action(QWebEnginePage::WebAction::Copy));
+    auto copy = page()->action(QWebEnginePage::Copy);
+    copy->setText(QObject::tr("Copy"));
+    menu->addAction(copy);
     menu->popup(event->globalPos());
   }
 }

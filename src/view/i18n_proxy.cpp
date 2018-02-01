@@ -29,7 +29,6 @@ I18nProxy::~I18nProxy() {
 
 QVariantHash I18nProxy::getSentences() const {
   QVariantHash result{
-      { "Copy", QObject::tr("Copy") },
       { "System", QObject::tr("System") },
       { "Applications", QObject::tr("Applications") },
       { "NoResult",
