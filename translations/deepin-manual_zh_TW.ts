@@ -2,42 +2,47 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/app/dman.cpp" line="70"/>
+        <location filename="../src/app/dman.cpp" line="45"/>
+        <source>Deepin Manual</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/app/dman.cpp" line="46"/>
         <source>Deepin Manual is designed to help users learn deepin and Deepin applications, providing specific instructions and function descriptions.</source>
         <translation>Deepin 說明書提供詳細的使用步驟與功能解釋，能幫助使用者了解 deepin 與 Deepin 應用程式的使用。</translation>
     </message>
     <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="30"/>
+        <location filename="../src/view/widget/web_view.cpp" line="40"/>
         <source>Copy</source>
         <translation>複製</translation>
     </message>
     <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="31"/>
+        <location filename="../src/view/i18n_proxy.cpp" line="32"/>
         <source>System</source>
         <translation>系統</translation>
     </message>
     <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="32"/>
+        <location filename="../src/view/i18n_proxy.cpp" line="33"/>
         <source>Applications</source>
         <translation>應用程式</translation>
     </message>
     <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="34"/>
+        <location filename="../src/view/i18n_proxy.cpp" line="35"/>
         <source>Sorry, there are no search results of &quot;%1&quot;</source>
         <translation>抱歉，找不到「%1」的搜尋結果</translation>
     </message>
     <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="35"/>
+        <location filename="../src/view/i18n_proxy.cpp" line="36"/>
         <source>Change your keywords and try again, or search it in Deepin Wiki</source>
         <translation>試著改變關鍵字或在 Deepin Wiki 上搜尋</translation>
     </message>
     <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="37"/>
+        <location filename="../src/view/i18n_proxy.cpp" line="38"/>
         <source>Home</source>
         <translation>首頁</translation>
     </message>
     <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="38"/>
+        <location filename="../src/view/i18n_proxy.cpp" line="39"/>
         <source>Deepin Wiki</source>
         <translation>Deepin Wiki</translation>
     </message>
@@ -48,7 +53,7 @@
         <translation>「%1」的搜尋結果</translation>
     </message>
     <message>
-        <location filename="../src/view/widget/title_bar.cpp" line="95"/>
+        <location filename="../src/view/widget/title_bar.cpp" line="102"/>
         <source>Search</source>
         <translation>搜尋</translation>
     </message>
