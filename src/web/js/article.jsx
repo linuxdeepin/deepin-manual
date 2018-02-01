@@ -137,6 +137,9 @@ export default class Article extends Component {
   }
   //链接处理
   click(e) {
+    if (this.state.preview != null) {
+      this.setState({ preview: null });
+    }
     switch (e.target.nodeName) {
       case 'IMG':
         e.preventDefault();
@@ -185,16 +188,16 @@ export default class Article extends Component {
               className={this.state.preview.tClass}
               id="preview"
             >
-              <Scrollbar>
-                <div id="view">
+              <div id="view">
+                <Scrollbar>
                   <div
                     className="read"
                     dangerouslySetInnerHTML={{
                       __html: this.state.preview.html
                     }}
                   />
-                </div>
-              </Scrollbar>
+                </Scrollbar>
+              </div>
             </div>
           )}
         </Scrollbar>
