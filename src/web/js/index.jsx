@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
+import ReactDOM from 'react-dom';
 
 import Scrollbar from './scrollbar.jsx';
 
@@ -82,6 +83,11 @@ export default class Index extends Component {
     }
     return true;
   }
+  componentDidUpdate() {
+    ReactDOM.findDOMNode(this)
+      .querySelector('#index')
+      .focus();
+  }
   render() {
     let sysSoft = ['dde'].filter(
       appName => this.state.appList.indexOf(appName) != -1
@@ -96,7 +102,11 @@ export default class Index extends Component {
     );
     return (
       <Scrollbar>
-        <div id="index">
+        <div
+          id="index"
+          tabIndex="1"
+          onMouseOver={e => document.getElementById('index').focus()}
+        >
           <h2>{global.i18n['System']}</h2>
           {sysSoft.length > 0 && (
             <div className="items">

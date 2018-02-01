@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import Scrollbar from './scrollbar.jsx';
+import { Link } from 'react-router-dom';
 
 class Items extends Component {
   constructor(props) {
@@ -23,43 +25,45 @@ class Items extends Component {
     let resultList = [];
     let re = new RegExp(this.props.keyword, 'gi');
     for (let i = 0; i < this.props.idList.length; i++) {
-      resultList.push(
-        <div
-          className="item"
-          key={i}
-          onClick={() => global.open(this.props.file, this.props.idList[i])}
-        >
-          <div
-            className="itemTitle"
-            dangerouslySetInnerHTML={{
-              __html: this.props.titleList[i].replace(
-                re,
-                "<span class='highlight'>$&</span>"
-              )
-            }}
-          />
-          <div
-            className="context"
-            dangerouslySetInnerHTML={{
-              __html: this.props.contentList[i].replace(
-                re,
-                "<span class='highlight'>$&</span>"
-              )
-            }}
-          />
+      let link = `/open/${encodeURIComponent(
+        this.props.file
+      )}/${encodeURIComponent(this.props.idList[i])}`;
+
+      let c = (
+        <div className="item" key={i}>
+          <Link to={link}>
+            <div
+              className="itemTitle"
+              dangerouslySetInnerHTML={{
+                __html: this.props.titleList[i].replace(
+                  re,
+                  "<span class='highlight'>$&</span>"
+                )
+              }}
+            />
+            <div
+              className="context"
+              dangerouslySetInnerHTML={{
+                __html: this.props.contentList[i].replace(
+                  re,
+                  "<span class='highlight'>$&</span>"
+                )
+              }}
+            />
+          </Link>
         </div>
       );
+      resultList.push(c);
     }
     return (
       this.state.show && (
         <div className="items">
-          <div
-            className="itemsTitle"
-            onClick={() => global.open(this.props.file)}
-          >
-            <img src={this.state.logo} />
-            <span>{this.state.title}</span>
-          </div>
+          <Link to={`/open/${encodeURIComponent(this.props.file)}`}>
+            <div className="itemsTitle">
+              <img src={this.state.logo} />
+              <span>{this.state.title}</span>
+            </div>
+          </Link>
           {resultList}
         </div>
       )
@@ -93,6 +97,11 @@ export default class SearchPage extends Component {
   constructor(props, context) {
     super(props, context);
   }
+  componentDidUpdate() {
+    ReactDOM.findDOMNode(this)
+      .querySelector('#search')
+      .focus();
+  }
   render() {
     let c = null;
     if (this.context.mismatch) {
@@ -111,7 +120,13 @@ export default class SearchPage extends Component {
     }
     return (
       <Scrollbar>
-        <div id="search">{c}</div>
+        <div
+          id="search"
+          tabIndex="-1"
+          onMouseOver={e => document.getElementById('search').focus()}
+        >
+          {c}
+        </div>
       </Scrollbar>
     );
   }

@@ -60,7 +60,7 @@ class App extends React.Component {
     });
   }
   onContentResult(appName, titleList, idList, contentList) {
-    console.log('搜索结果', appName, titleList, idList, contentList);
+    // console.log('搜索结果', appName, titleList, idList, contentList);
     let { searchResult } = this.state;
     searchResult.push({
       file: `${global.path}/${appName}/${global.lang}/index.md`,

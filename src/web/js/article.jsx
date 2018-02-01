@@ -11,7 +11,6 @@ export default class Article extends Component {
       preview: null,
       fillblank: null
     };
-    // document.body.onscroll = this.scroll.bind(this);
   }
   //滚动到锚点
   scrollToHash() {
@@ -25,6 +24,7 @@ export default class Article extends Component {
     if (!this.load) {
       let article = ReactDOM.findDOMNode(this);
       let read = article.querySelector('#read');
+      read.focus();
       let imgList = [...article.querySelectorAll('img')];
       let loadCount = 0;
       imgList.map(el => {
@@ -53,9 +53,6 @@ export default class Article extends Component {
   }
   componentDidMount() {
     this.componentDidUpdate();
-  }
-  componentWillUnmount() {
-    document.body.onscroll = null;
   }
   componentWillReceiveProps(nextProps) {
     if (nextProps.file != this.props.file) {
@@ -179,8 +176,10 @@ export default class Article extends Component {
           <div
             id="read"
             className="read"
+            tabIndex="-1"
             dangerouslySetInnerHTML={{ __html: this.props.html }}
             style={this.state.fillblank}
+            onMouseOver={e => document.getElementById('read').focus()}
           />
           {this.state.preview != null && (
             <div
