@@ -25,32 +25,27 @@ class Items extends Component {
     let resultList = [];
     let re = new RegExp(this.props.keyword, 'gi');
     for (let i = 0; i < this.props.idList.length; i++) {
-      let link = `/open/${encodeURIComponent(
-        this.props.file
-      )}/${encodeURIComponent(this.props.idList[i])}`;
-
       let c = (
         <div className="item" key={i}>
-          <Link to={link}>
-            <div
-              className="itemTitle"
-              dangerouslySetInnerHTML={{
-                __html: this.props.titleList[i].replace(
-                  re,
-                  "<span class='highlight'>$&</span>"
-                )
-              }}
-            />
-            <div
-              className="context"
-              dangerouslySetInnerHTML={{
-                __html: this.props.contentList[i].replace(
-                  re,
-                  "<span class='highlight'>$&</span>"
-                )
-              }}
-            />
-          </Link>
+          <div
+            className="itemTitle"
+            dangerouslySetInnerHTML={{
+              __html: this.props.titleList[i].replace(
+                re,
+                "<span class='highlight'>$&</span>"
+              )
+            }}
+            onClick={() => global.open(this.props.file, this.props.idList[i])}
+          />
+          <div
+            className="context"
+            dangerouslySetInnerHTML={{
+              __html: this.props.contentList[i].replace(
+                re,
+                "<span class='highlight'>$&</span>"
+              )
+            }}
+          />
         </div>
       );
       resultList.push(c);
@@ -58,12 +53,13 @@ class Items extends Component {
     return (
       this.state.show && (
         <div className="items">
-          <Link to={`/open/${encodeURIComponent(this.props.file)}`}>
-            <div className="itemsTitle">
-              <img src={this.state.logo} />
-              <span>{this.state.title}</span>
-            </div>
-          </Link>
+          <div
+            className="itemsTitle"
+            onClick={() => global.open(this.props.file)}
+          >
+            <img src={this.state.logo} />
+            <span>{this.state.title}</span>
+          </div>
           {resultList}
         </div>
       )

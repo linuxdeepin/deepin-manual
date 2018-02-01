@@ -26,20 +26,19 @@ class Item extends Component {
   render() {
     return (
       this.state.show && (
-        <Link
+        <div
           draggable="false"
-          to={'/open/' + encodeURIComponent(this.state.file)}
+          className="item"
+          onClick={() => global.open(this.state.file)}
         >
-          <div className="item">
-            <img
-              draggable="false"
-              src={this.state.logo}
-              alt={this.props.appName}
-            />
-            <br />
-            <span lang={global.lang}>{this.state.title}</span>
-          </div>
-        </Link>
+          <img
+            draggable="false"
+            src={this.state.logo}
+            alt={this.props.appName}
+          />
+          <br />
+          <span lang={global.lang}>{this.state.title}</span>
+        </div>
       )
     );
   }

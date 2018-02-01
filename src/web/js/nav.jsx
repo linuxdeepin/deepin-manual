@@ -79,11 +79,14 @@ class Nav extends Component {
         }}
       >
         <Scrollbar>
-          <Link to="/index">
-            <div type="h2" id="backHome" className="h">
-              {global.i18n['ToIndexPage']}
-            </div>
-          </Link>
+          <div
+            type="h2"
+            id="backHome"
+            className="h"
+            onClick={() => global.index()}
+          >
+            {global.i18n['ToIndexPage']}
+          </div>
           {this.props.hlist.map(h => {
             return (
               <div
