@@ -4,7 +4,7 @@
     <message>
         <location filename="../src/app/dman.cpp" line="45"/>
         <source>Deepin Manual</source>
-        <translation type="unfinished"/>
+        <translation>Deepin Manual</translation>
     </message>
     <message>
         <location filename="../src/app/dman.cpp" line="46"/>
