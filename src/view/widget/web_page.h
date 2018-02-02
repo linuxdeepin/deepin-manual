@@ -15,34 +15,33 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "view/widget/web_view.h"
+#ifndef DEEPIN_MANUAL_VIEW_WIDGET_WEB_PAGE_H
+#define DEEPIN_MANUAL_VIEW_WIDGET_WEB_PAGE_H
 
-#include <QContextMenuEvent>
-#include <QMenu>
-#include <QWebEngineContextMenuData>
-
-#include "view/widget/web_page.h"
+#include <QWebEnginePage>
 
 namespace dman {
 
-WebView::WebView(QWidget* parent) : QWebEngineView(parent) {
-  this->setPage(new WebPage(this));
-}
+/**
+ * Re-implement QWebEnginePage to handle url request opened in new tab.
+ */
+class WebPage : public QWebEnginePage {
+  Q_OBJECT
+ public:
+  explicit WebPage(QObject* parent = nullptr);
+  ~WebPage() override;
 
-WebView::~WebView() {
+ protected:
+  bool acceptNavigationRequest(const QUrl& url, NavigationType type,
+                               bool isMainFrame) override;
 
-}
+ protected:
+  QWebEnginePage* createWindow(WebWindowType type) override;
 
-void WebView::contextMenuEvent(QContextMenuEvent* event) {
-  QMenu* menu;
-  const QString selected = page()->contextMenuData().selectedText();
-  if (!selected.isEmpty()) {
-    menu = new QMenu(this);
-    auto copy = page()->action(QWebEnginePage::Copy);
-    copy->setText(QObject::tr("Copy"));
-    menu->addAction(copy);
-    menu->popup(event->globalPos());
-  }
-}
+ private:
+  QWebEnginePage::WebWindowType window_type_;
+};
 
 }  // namespace dman
+
+#endif  // DEEPIN_MANUAL_VIEW_WIDGET_WEB_PAGE_H

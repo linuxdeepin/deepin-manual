@@ -39,7 +39,7 @@ int main(int argc, char** argv) {
     qputenv(kScaleFactorName, factor_bytes);
   }
 
-   Dtk::Widget::DApplication::loadDXcbPlugin();
+  Dtk::Widget::DApplication::loadDXcbPlugin();
 
   Dtk::Widget::DApplication app(argc, argv);
 

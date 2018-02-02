@@ -89,6 +89,8 @@ set(BASE_FILES
     )
 
 set(CONTROLLER_FILES
+    controller/argument_parser.cpp
+    controller/argument_parser.h
     controller/search_db.cpp
     controller/search_db.h
     controller/search_manager.cpp
@@ -96,7 +98,7 @@ set(CONTROLLER_FILES
     controller/search_result.h
     controller/window_manager.cpp
     controller/window_manager.h
-    controller/argument_parser.cpp controller/argument_parser.h)
+    )
 
 set(DBUS_FILES
     dbus/dbus_consts.cpp
@@ -149,6 +151,8 @@ set(VIEW_FILES
     view/widget/search_edit.h
     view/widget/title_bar.cpp
     view/widget/title_bar.h
+    view/widget/web_page.cpp
+    view/widget/web_page.h
     view/widget/web_view.cpp
     view/widget/web_view.h
     )
