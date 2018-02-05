@@ -216,7 +216,9 @@ add_executable(dman-search
                app/dman_search.cpp
                ${DBUS_FILES}
                )
-target_link_libraries(dman-search ${LINK_LIBS})
+target_link_libraries(dman-search
+                      Qt5::Core
+                      Qt5::DBus)
 
 if (CMAKE_BUILD_TYPE MATCHES Debug)
   set(SEARCH_DEMO_FILES 
