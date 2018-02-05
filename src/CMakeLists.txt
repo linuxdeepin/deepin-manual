@@ -3,14 +3,14 @@ project(deepin-manual C CXX)
 #set(CMAKE_C_COMPILER  /usr/bin/clang)
 #set(CMAKE_CXX_COMPILER  /usr/bin/clang++)
 
-if (DMAN_RELEASE)
-  add_definitions(-DDMAN_SEARCH_DB="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/search.db")
-  add_definitions(-DDMAN_WEB_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/web")
-  add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual")
-else()
+if (CMAKE_BUILD_TYPE MATCHES Debug)
   add_definitions(-DDMAN_SEARCH_DB="${CMAKE_CURRENT_BINARY_DIR}/search.db")
-  add_definitions(-DDMAN_WEB_DIR="${CMAKE_CURRENT_BINARY_DIR}/web")
+  add_definitions(-DDMAN_WEB_DIR="${CMAKE_CURRENT_SOURCE_DIR}/web_dist")
   add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_SOURCE_DIR}/manual")
+else()
+  add_definitions(-DDMAN_SEARCH_DB="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/search.db")
+  add_definitions(-DDMAN_WEB_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/web_dist")
+  add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual")
 endif ()
 # These macros ared used at compile time only.
 add_definitions(-DDMAN_SEARCH_ORIG_DB="${CMAKE_CURRENT_BINARY_DIR}/search.db")
@@ -189,7 +189,7 @@ add_custom_target(update-qm DEPENDS ${DMAN_TRANSLATION_QM})
 # Build web project and generate js files.
 add_custom_command(OUTPUT rebuild-web
                    COMMAND pwd
-                   COMMAND ./node_modules/.bin/node ./node_modules/.bin/gulp build -d ${CMAKE_CURRENT_BINARY_DIR}/web
+                   COMMAND ./node_modules/.bin/node ./node_modules/.bin/gulp build -d ${CMAKE_CURRENT_SOURCE_DIR}/web_dist
                    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/web/
                    )
 add_custom_target(update-web DEPENDS rebuild-web)
@@ -203,9 +203,7 @@ add_executable(dman
                ${VIEW_FILES}
                )
 target_link_libraries(dman ${LINK_LIBS})
-add_dependencies(dman
-                 update-web
-                 )
+# Auto generate qm files and search.db in release mode.
 if (CMAKE_BUILD_TYPE MATCHES Release)
   add_dependencies(dman
                    update-search-db
@@ -262,7 +260,7 @@ install(DIRECTORY ${CMAKE_BINARY_DIR}/translations
 install(DIRECTORY ${CMAKE_SOURCE_DIR}/manual
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
 
-install(DIRECTORY ${CMAKE_CURRENT_BINARY_DIR}/web
+install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/web_dist
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
 
 install(FILES ${CMAKE_CURRENT_BINARY_DIR}/search.db
