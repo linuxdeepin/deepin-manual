@@ -45,6 +45,7 @@ int main(int argc, char** argv) {
 
   app.setTheme("light");
   app.setAttribute(Qt::AA_EnableHighDpiScaling, true);
+  app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
   app.setWindowIcon(QIcon(dman::kImageDeepinManual));
   app.setProductIcon(QIcon(dman::kImageDeepinManual));
   app.setOrganizationName("deepin");
