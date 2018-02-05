@@ -28,7 +28,8 @@
 #include "resources/themes/images.h"
 
 int main(int argc, char** argv) {
-  qputenv("DXCB_FAKE_PLATFORM_NAME_XCB", "TRUE");
+  qputenv("DXCB_FAKE_PLATFORM_NAME_XCB", "true");
+  qputenv("DXCB_REDIRECT_CONTENT", "true");
 
   const char* kScaleFactorName = "QT_SCALE_FACTOR";
   const QString curr_scale_factor = qgetenv(kScaleFactorName);
