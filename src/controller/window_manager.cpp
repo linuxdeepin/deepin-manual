@@ -30,6 +30,8 @@ namespace {
 
 const int kWinWidth = 1000;
 const int kWinHeight = 715;
+const int kWinMinWidth = 800;
+const int kWinMinHeight = 600;
 const int kWinOffset = 30;
 
 }  // namespace
@@ -55,6 +57,7 @@ void WindowManager::openManual(const QString& app_name) {
   WebWindow* window = new WebWindow(search_manager_);
   window->setAppName(app_name);
   window->resize(kWinWidth, kWinHeight);
+  window->setMinimumSize(kWinMinWidth, kWinMinHeight);
   window->show();
 
   const QPoint pos = this->newWindowPosition();
