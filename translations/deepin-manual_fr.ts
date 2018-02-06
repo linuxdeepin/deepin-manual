@@ -4,7 +4,7 @@
     <message>
         <location filename="../src/app/dman.cpp" line="45"/>
         <source>Deepin Manual</source>
-        <translation type="unfinished"/>
+        <translation>Manuel Deepin</translation>
     </message>
     <message>
         <location filename="../src/app/dman.cpp" line="46"/>
@@ -39,12 +39,12 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="38"/>
         <source>Home</source>
-        <translation type="unfinished"/>
+        <translation>Accueil</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="39"/>
         <source>Deepin Wiki</source>
-        <translation type="unfinished"/>
+        <translation>Deepin Wiki</translation>
     </message>
     <message>
         <location filename="../src/view/widget/search_completion_window.cpp" line="113"/>
