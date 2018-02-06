@@ -1,2 +1,7 @@
+2018-02-06 2.0.1 Xu Shaohua <xushaohua@deepin.com>
+  	* Tuning dman-search memory usage
+  	* Enable HiDPI pixmap
+  	* Tuning global search
+
 2018-01-04 2.0.0 Xu Shaohua <xushaohua@deepin.com>
 	* Rewrite to Qt5
