@@ -26,7 +26,7 @@ Depends: ${misc:Depends},
  ${shlibs:Depends},
  libqt5dbus5,
  libqt5sql5-sqlite,
- qt5dxcb-plugin,
+ qt5dxcb-plugin (>= 1.1.7),
 Conflicts: dde-help
 Provides: dde-help
 Description: Deepin Manual

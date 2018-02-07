@@ -1,3 +1,9 @@
+deepin-manual (2.0.2) unstable; urgency=medium
+
+  * Depends on new version of dxcb plugin
+
+ -- Xu Shaohua <liulang@liulang-PC>  Wed, 07 Feb 2018 16:13:13 +0800
+
 deepin-manual (2.0.1) stable; urgency=medium
 
   * Tuning dman-search memory usage
