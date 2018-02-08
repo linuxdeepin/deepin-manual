@@ -18,6 +18,7 @@
 #include <DApplication>
 #include <QCommandLineParser>
 #include <QDBusConnection>
+#include <QDebug>
 #include <QIcon>
 #include <QTimer>
 #include <QWebEngineProfile>
@@ -38,6 +39,13 @@ int main(int argc, char** argv) {
     QByteArray factor_bytes;
     factor_bytes.setNum(qRound(factor));
     qputenv(kScaleFactorName, factor_bytes);
+  }
+
+  // Load custom version of dxcb plugin.
+  const char* kDxcbPath = "/usr/share/deepin-manual/libdxcb";
+  if (QFile(kDxcbPath).exists()){
+    qDebug() << "load dxcb from local path: " << kDxcbPath;
+    qputenv("QT_QPA_PLATFORM_PLUGIN_PATH", kDxcbPath);
   }
 
   Dtk::Widget::DApplication::loadDXcbPlugin();
