@@ -1144,15 +1144,12 @@ var Items = function (_Component) {
       }
       return this.state.show && _react2.default.createElement(
         'div',
-        { className: 'items' },
+        { className: 'items', onClick: function onClick() {
+            return global.open(_this2.props.file);
+          } },
         _react2.default.createElement(
           'div',
-          {
-            className: 'itemsTitle',
-            onClick: function onClick() {
-              return global.open(_this2.props.file);
-            }
-          },
+          { className: 'itemsTitle' },
           _react2.default.createElement('img', { src: this.state.logo }),
           _react2.default.createElement(
             'span',

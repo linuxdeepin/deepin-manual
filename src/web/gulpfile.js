@@ -7,7 +7,7 @@ const gulp = require('gulp'),
   browserify = require('browserify');
 
 let argv = require('yargs').argv;
-let RootDir = '../../build/src/web/';
+let RootDir = '../web_dist/';
 
 //编译js到index.js
 gulp.task('js', () => {
