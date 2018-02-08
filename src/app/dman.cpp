@@ -16,6 +16,7 @@
  */
 
 #include <DApplication>
+#include <LogManager.h>
 #include <QCommandLineParser>
 #include <QDBusConnection>
 #include <QDebug>
@@ -69,6 +70,9 @@ int main(int argc, char** argv) {
           "function descriptions."));
   app.setApplicationAcknowledgementPage(
       "https://www.deepin.org/acknowledgments/deepin-manual/");
+
+  Dtk::Core::DLogManager::registerFileAppender();
+  Dtk::Core::DLogManager::registerConsoleAppender();
 
   QWebEngineProfile* profile = QWebEngineProfile::defaultProfile();
   QDir cache_dir = dman::GetCacheDir();
