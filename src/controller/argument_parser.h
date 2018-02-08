@@ -37,6 +37,9 @@ class ArgumentParser : public QObject {
 
  private:
   QStringList manuals_;
+
+ private slots:
+  void onOpenAppRequested(const QString& app_name);
 };
 
 }  // namespace dman

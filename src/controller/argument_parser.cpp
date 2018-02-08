@@ -28,6 +28,20 @@
 
 namespace dman {
 
+
+namespace {
+
+QString ConvertOldDmanPath(const QString& app_name) {
+  const QStringList parts = app_name.split('/');
+  const int dman_index = parts.indexOf("dman");
+  if (dman_index > 0 && dman_index < parts.length() - 1) {
+    return parts.at(dman_index + 1);
+  }
+  return app_name;
+}
+
+}  // namespace
+
 ArgumentParser::ArgumentParser(QObject* parent) : QObject(parent) {
 
 }
@@ -49,7 +63,7 @@ bool ArgumentParser::parseArguments() {
   QDBusConnection conn = QDBusConnection::sessionBus();
   ManualOpenProxy* proxy = new ManualOpenProxy(this);
   connect(proxy, &ManualOpenProxy::openManualRequested,
-          this, &ArgumentParser::openManualRequested);
+          this, &ArgumentParser::onOpenAppRequested);
 
   ManualOpenAdapter* adapter = new ManualOpenAdapter(proxy);
   Q_UNUSED(adapter);
@@ -95,8 +109,14 @@ bool ArgumentParser::parseArguments() {
 void ArgumentParser::openManualsDelay() {
   for (const QString& manual : manuals_) {
     qDebug() << Q_FUNC_INFO << manual;
-    emit this->openManualRequested(manual);
+    this->onOpenAppRequested(manual);
   }
+}
+
+void ArgumentParser::onOpenAppRequested(const QString& app_name) {
+  const QString compact_app_name = ConvertOldDmanPath(app_name);
+  qDebug() << Q_FUNC_INFO << compact_app_name << app_name;
+  emit this->openManualRequested(compact_app_name);
 }
 
 }  // namespace dman
