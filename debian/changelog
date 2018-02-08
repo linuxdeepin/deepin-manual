@@ -1,3 +1,12 @@
+deepin-manual (2.0.3) unstable; urgency=medium
+
+  * Include libdxcb plugin
+  * Be compactable with old version of dman
+  * Add log manager
+  * Fix global search navigation
+
+ -- Xu Shaohua <liulang@liulang-PC>  Thu, 08 Feb 2018 16:15:43 +0800
+
 deepin-manual (2.0.2) unstable; urgency=medium
 
   * Depends on new version of dxcb plugin
