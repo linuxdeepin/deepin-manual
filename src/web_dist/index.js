@@ -807,50 +807,50 @@ exports.default = Main;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./article.jsx":2,"./mdToHtml.js":5,"./nav.jsx":6,"react":93}],5:[function(require,module,exports){
-"use strict";
+'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-	value: true
+  value: true
 });
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 exports.default = function (mdFile, mdData) {
-	var hlist = [];
-	var info = {};
-	var html = "";
+  var hlist = [];
+  var info = {};
+  var html = '';
 
-	var path = mdFile.slice(0, mdFile.lastIndexOf("/") + 1);
-	var renderer = new _marked2.default.Renderer();
-	var count = 0;
-	renderer.heading = function (text, level) {
-		if (level == 1) {
-			var _text$split = text.split("|"),
-			    _text$split2 = _slicedToArray(_text$split, 2),
-			    title = _text$split2[0],
-			    logo = _text$split2[1];
+  var path = mdFile.slice(0, mdFile.lastIndexOf('/') + 1);
+  var renderer = new _marked2.default.Renderer();
+  var count = 0;
+  renderer.heading = function (text, level) {
+    var id = 'h' + count;
+    count++;
+    if (level == 1) {
+      var _text$split = text.split('|'),
+          _text$split2 = _slicedToArray(_text$split, 2),
+          title = _text$split2[0],
+          logo = _text$split2[1];
 
-			logo = path + logo;
-			console.log(logo);
-			info = { title: title, logo: logo };
-			return "";
-		}
-		if (level == 2) {
-			text = text.split("|")[0];
-		}
-		var id = "h" + count;
-		count++;
-		var type = "h" + level;
-		if (level == 2 || level == 3) {
-			hlist.push({ id: id, text: text, type: type });
-		}
-		return "<" + type + " id=\"" + id + "\" text=\"" + text + "\">" + text + "</" + type + ">\n";
-	};
-	html = (0, _marked2.default)(mdData, { renderer: renderer }).replace(/src="/g, "$&" + path);
-	return { html: html, hlist: hlist, info: info };
+      logo = path + logo;
+      console.log(logo);
+      info = { title: title, logo: logo };
+      return '';
+    }
+    if (level == 2) {
+      text = text.split('|')[0];
+    }
+    var type = 'h' + level;
+    if (level == 2 || level == 3) {
+      hlist.push({ id: id, text: text, type: type });
+    }
+    return '<' + type + ' id="' + id + '" text="' + text + '">' + text + '</' + type + '>\n';
+  };
+  html = (0, _marked2.default)(mdData, { renderer: renderer }).replace(/src="/g, '$&' + path);
+  return { html: html, hlist: hlist, info: info };
 };
 
-var _marked = require("marked");
+var _marked = require('marked');
 
 var _marked2 = _interopRequireDefault(_marked);
 
