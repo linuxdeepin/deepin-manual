@@ -47,6 +47,7 @@ WindowManager::~WindowManager() {
 
 void WindowManager::openManual(const QString& app_name) {
   qDebug() << Q_FUNC_INFO << app_name;
+
   for (WebWindow* window : windows_) {
     if (window->appName() == app_name) {
       window->show();
