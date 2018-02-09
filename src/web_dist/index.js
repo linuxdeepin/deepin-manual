@@ -260,7 +260,12 @@ var Article = function (_Component) {
   _createClass(Article, [{
     key: 'scrollToHash',
     value: function scrollToHash() {
-      document.getElementById(this.hash).scrollIntoView();
+      var hashNode = document.getElementById(this.hash);
+      if (hashNode) {
+        hashNode.scrollIntoView();
+      } else {
+        this.props.setHash(this.props.hlist[0].id);
+      }
     }
   }, {
     key: 'componentDidUpdate',

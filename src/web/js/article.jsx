@@ -14,7 +14,12 @@ export default class Article extends Component {
   }
   //滚动到锚点
   scrollToHash() {
-    document.getElementById(this.hash).scrollIntoView();
+    const hashNode = document.getElementById(this.hash);
+    if (hashNode) {
+      hashNode.scrollIntoView();
+    } else {
+      this.props.setHash(this.props.hlist[0].id);
+    }
   }
   componentDidUpdate() {
     if (this.hash != this.props.hash) {
