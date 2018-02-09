@@ -18,4 +18,4 @@ override_dh_auto_build:
 	dh_auto_build -- dman
 
 override_dh_shlibdeps:
-	dh_shlibdeps -- --ignore-missing-info
+	dh_shlibdeps -Xusr/share/deepin-manual/plugins/libdxcb.so -- --ignore-missing-info
