@@ -43,10 +43,10 @@ int main(int argc, char** argv) {
   }
 
   // Load custom version of dxcb plugin.
-  const char* kDxcbPath = "/usr/share/deepin-manual/libdxcb";
-  if (QFile(kDxcbPath).exists()){
-    qDebug() << "load dxcb from local path: " << kDxcbPath;
-    qputenv("QT_QPA_PLATFORM_PLUGIN_PATH", kDxcbPath);
+  // TODO(Shaohua): Remove this when qt5dxcb-plugin updated to 1.1.7
+  if (QFile("/usr/share/deepin-manual/plugins/libdxcb.so").exists()){
+    qDebug() << "load dxcb from local path";
+    qputenv("QT_QPA_PLATFORM_PLUGIN_PATH", "/usr/share/deepin-manual/plugins");
   }
 
   Dtk::Widget::DApplication::loadDXcbPlugin();
