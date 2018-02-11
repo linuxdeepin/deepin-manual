@@ -76,7 +76,11 @@ var App = function (_React$Component) {
 
       channel.objects.i18n.getSentences(function (i18n) {
         channel.objects.i18n.getLocale(function (lang) {
-          return global.lang = lang;
+          if (lang === 'en_US' || lang === 'zh_CN') {
+            global.lang = lang;
+          } else {
+            global.lang = 'en_US';
+          }
         });
         global.i18n = i18n;
         global.qtObjects = channel.objects;
