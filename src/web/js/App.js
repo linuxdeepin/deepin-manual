@@ -33,7 +33,13 @@ class App extends React.Component {
   }
   initQt(channel) {
     channel.objects.i18n.getSentences(i18n => {
-      channel.objects.i18n.getLocale(lang => (global.lang = lang));
+      channel.objects.i18n.getLocale(lang => {
+        if (lang === 'en_US' || lang === 'zh_CN') {
+          global.lang = lang;
+        } else {
+          global.lang = 'en_US';
+        }
+      });
       global.i18n = i18n;
       global.qtObjects = channel.objects;
       channel.objects.manual.getSystemManualDir(path => {
