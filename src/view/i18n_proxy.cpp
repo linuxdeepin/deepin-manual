@@ -42,7 +42,13 @@ QVariantHash I18nProxy::getSentences() const {
 }
 
 QString I18nProxy::getLocale() const {
-  return QLocale().name();
+  const QString locale =  QLocale().name();
+  // Fallback to default locale.
+  if (locale != "en_US" && locale != "zh_CN") {
+    return "en_US";
+  } else {
+    return locale;
+  }
 }
 
 }  // namespace dman
