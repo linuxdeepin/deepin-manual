@@ -26,7 +26,7 @@ class Items extends Component {
     let re = new RegExp(this.props.keyword, 'gi');
     for (let i = 0; i < this.props.idList.length; i++) {
       let c = (
-        <div className="item" key={i}>
+        <div className="item" key={i} onClick={() => global.open(this.props.file, this.props.idList[i])}>
           <div
             className="itemTitle"
             dangerouslySetInnerHTML={{
@@ -35,7 +35,6 @@ class Items extends Component {
                 "<span class='highlight'>$&</span>"
               )
             }}
-            onClick={() => global.open(this.props.file, this.props.idList[i])}
           />
           <div
             className="context"
@@ -52,8 +51,8 @@ class Items extends Component {
     }
     return (
       this.state.show && (
-        <div className="items" onClick={() => global.open(this.props.file)}>
-          <div className="itemsTitle">
+        <div className="items">
+          <div className="itemsTitle" onClick={() => global.open(this.props.file)}>
             <img src={this.state.logo} />
             <span>{this.state.title}</span>
           </div>

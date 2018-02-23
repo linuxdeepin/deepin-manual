@@ -1128,14 +1128,13 @@ var Items = function (_Component) {
       var _loop = function _loop(i) {
         var c = _react2.default.createElement(
           'div',
-          { className: 'item', key: i },
+          { className: 'item', key: i, onClick: function onClick() {
+              return global.open(_this2.props.file, _this2.props.idList[i]);
+            } },
           _react2.default.createElement('div', {
             className: 'itemTitle',
             dangerouslySetInnerHTML: {
               __html: _this2.props.titleList[i].replace(re, "<span class='highlight'>$&</span>")
-            },
-            onClick: function onClick() {
-              return global.open(_this2.props.file, _this2.props.idList[i]);
             }
           }),
           _react2.default.createElement('div', {
@@ -1153,12 +1152,12 @@ var Items = function (_Component) {
       }
       return this.state.show && _react2.default.createElement(
         'div',
-        { className: 'items', onClick: function onClick() {
-            return global.open(_this2.props.file);
-          } },
+        { className: 'items' },
         _react2.default.createElement(
           'div',
-          { className: 'itemsTitle' },
+          { className: 'itemsTitle', onClick: function onClick() {
+              return global.open(_this2.props.file);
+            } },
           _react2.default.createElement('img', { src: this.state.logo }),
           _react2.default.createElement(
             'span',
