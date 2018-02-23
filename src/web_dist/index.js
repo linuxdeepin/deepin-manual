@@ -290,20 +290,25 @@ var Article = function (_Component) {
           el.onload = function () {
             loadCount++;
             if (loadCount == imgList.length) {
+              // console.log('image loaded');
               _this2.load = true;
               _this2.scrollToHash();
               var last = article.querySelector('#' + _this2.props.hlist[_this2.props.hlist.length - 1].id);
-              // console.log(article, article.clientHeight - last.offsetTop);
               var fillblank = {
                 marginBottom: article.clientHeight - (read.clientHeight - last.offsetTop)
               };
-              console.log(fillblank);
               _this2.setState({
                 fillblank: fillblank
               });
             }
           };
-          el.onerror = el.onload;
+          el.onerror = function () {
+            if (el.src == el.dataset.src) {
+              el.onload();
+            } else {
+              el.src = el.dataset.src;
+            }
+          };
         });
       }
     }
@@ -466,9 +471,6 @@ var Article = function (_Component) {
             tabIndex: '-1',
             dangerouslySetInnerHTML: { __html: this.props.html },
             style: this.state.fillblank,
-            onMouseOver: function onMouseOver(e) {
-              return document.getElementById('read').focus();
-            },
             onClick: this.click.bind(this)
           }),
           this.state.preview != null && _react2.default.createElement(
@@ -575,6 +577,7 @@ var Item = function (_Component) {
         'div',
         {
           draggable: 'false',
+          tabIndex: '1',
           className: 'item',
           onClick: function onClick() {
             return global.open(_this2.state.file);
@@ -649,13 +652,7 @@ var Index = function (_Component2) {
         null,
         _react2.default.createElement(
           'div',
-          {
-            id: 'index',
-            tabIndex: '1',
-            onMouseOver: function onMouseOver(e) {
-              return document.getElementById('index').focus();
-            }
-          },
+          { id: 'index', tabIndex: '-1' },
           _react2.default.createElement(
             'h2',
             null,
@@ -854,6 +851,16 @@ exports.default = function (mdFile, mdData) {
       hlist.push({ id: id, text: text, type: type });
     }
     return '<' + type + ' id="' + id + '" text="' + text + '">' + text + '</' + type + '>\n';
+  };
+  console.log(path);
+  renderer.image = function (href, title, text) {
+    var hrefX2 = href;
+    if (devicePixelRatio >= 1.5) {
+      var _path = href.split('.');
+      var ext = _path.pop();
+      hrefX2 = _path.join('.') + 'x2.' + ext;
+    }
+    return '<img src="' + hrefX2 + '" data-src="' + href + '" alt="' + text + '" />';
   };
   html = (0, _marked2.default)(mdData, { renderer: renderer }).replace(/src="/g, '$&' + path);
   return { html: html, hlist: hlist, info: info };

@@ -27,6 +27,16 @@ export default function(mdFile, mdData) {
     }
     return `<${type} id="${id}" text="${text}">${text}</${type}>\n`;
   };
+  console.log(path);
+  renderer.image = (href, title, text) => {
+    let hrefX2 = href;
+    if (devicePixelRatio >= 1.5) {
+      let path = href.split('.');
+      let ext = path.pop();
+      hrefX2 = `${path.join('.')}x2.${ext}`;
+    }
+    return `<img src="${hrefX2}" data-src="${href}" alt="${text}" />`;
+  };
   html = marked(mdData, { renderer }).replace(/src="/g, `$&${path}`);
   return { html, hlist, info };
 }

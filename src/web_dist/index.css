@@ -244,10 +244,7 @@ div {
         font-size: 16px;
         font-weight: normal;
         color: black; }
-      #index .items .item span:lang(en_US) {
-        word-wrap: break-word;
-        font-size: 14px; }
-      #index .items .item:hover {
+      #index .items .item:focus, #index .items .item:hover {
         border-radius: 4px;
         background-color: rgba(0, 0, 0, 0.05); }
 

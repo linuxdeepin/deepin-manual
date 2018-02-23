@@ -48,10 +48,7 @@
         font-weight: normal;
         color: black;
       }
-      span:lang(en_US) {
-        word-wrap: break-word;
-        font-size: 14px;
-      }
+      &:focus,
       &:hover {
         border-radius: 4px;
         // border: 1px solid transparent;

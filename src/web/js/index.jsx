@@ -28,6 +28,7 @@ class Item extends Component {
       this.state.show && (
         <div
           draggable="false"
+          tabIndex="1"
           className="item"
           onClick={() => global.open(this.state.file)}
         >
@@ -101,11 +102,7 @@ export default class Index extends Component {
     );
     return (
       <Scrollbar>
-        <div
-          id="index"
-          tabIndex="1"
-          onMouseOver={e => document.getElementById('index').focus()}
-        >
+        <div id="index" tabIndex="-1">
           <h2>{global.i18n['System']}</h2>
           {sysSoft.length > 0 && (
             <div className="items">

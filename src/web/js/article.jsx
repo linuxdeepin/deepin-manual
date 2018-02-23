@@ -36,23 +36,28 @@ export default class Article extends Component {
         el.onload = () => {
           loadCount++;
           if (loadCount == imgList.length) {
+            // console.log('image loaded');
             this.load = true;
             this.scrollToHash();
             let last = article.querySelector(
               '#' + this.props.hlist[this.props.hlist.length - 1].id
             );
-            // console.log(article, article.clientHeight - last.offsetTop);
             let fillblank = {
               marginBottom:
                 article.clientHeight - (read.clientHeight - last.offsetTop)
             };
-            console.log(fillblank);
             this.setState({
               fillblank
             });
           }
         };
-        el.onerror = el.onload;
+        el.onerror = () => {
+          if (el.src == el.dataset.src) {
+            el.onload();
+          } else {
+            el.src = el.dataset.src;
+          }
+        };
       });
     }
   }
@@ -184,7 +189,6 @@ export default class Article extends Component {
             tabIndex="-1"
             dangerouslySetInnerHTML={{ __html: this.props.html }}
             style={this.state.fillblank}
-            onMouseOver={e => document.getElementById('read').focus()}
             onClick={this.click.bind(this)}
           />
           {this.state.preview != null && (
