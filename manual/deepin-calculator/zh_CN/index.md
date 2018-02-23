@@ -1,12 +1,12 @@
 # 深度计算器|../common/deepin-calculator.svg|
 
-## 概述|../common/icon_overview.svg|
+## 概述
 
 深度计算器是一款简单易用的桌面计算器，支持加减乘除运算。完美支持键盘输入，在键盘输入时还支持符号容错，最多可以显示三行计算结果。
 
 ![0|main](jpg/main.jpg)
 
-## 操作介绍|../common/icon_commoncoperat.svg|
+## 操作介绍
 
 ### 界面符号介绍
 
@@ -76,7 +76,7 @@
 
 
 
-## 主菜单|../common/icon_optionsetting.svg|
+## 主菜单
 
 ### 切换主题
 
@@ -93,7 +93,6 @@
 2. 点击 **帮助**。
 3. 查看关于深度计算器的帮助手册。
 
-![1|help](jpg/help.jpg)
 
 ### 关于
 
@@ -103,7 +102,6 @@
 2. 点击 **关于**。
 3. 查看关于深度计算器的版本和介绍。
 
-![0|about](jpg/about.jpg)
 
 ### 退出
 

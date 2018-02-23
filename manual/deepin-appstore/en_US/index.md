@@ -1,11 +1,11 @@
 # Deepin Store|../common/deepin-appstore.svg|
 
-## Overview|../common/icon_overview.svg|
-Deepin Store V4.0 is an application recreated by Deepin Technology Co., Ltd. with the integration of display, download, installation, commenting and rating. Deepin Store elaborately screens and collects different types of applications for you. Each application has been artificially installed and verified, you can enter the store to search popular applications with one-click download and automatic installation.
+## Overview
+Deepin Store is an application recreated by Deepin Technology Co., Ltd. with the integration of display, download, installation, commenting and rating. Deepin Store elaborately screens and collects different types of applications for you. Each application has been artificially installed and verified, you can enter the store to search popular applications with one-click download and automatic installation.
 
  ![1|maininterface](jpg/maininterface.jpg)
 
-## Basic Operations|../common/icon_basicoperation.svg|
+## Basic Operations
 
 ### Run Deepin Store
 You can run Deepin Store by executing one of the following operations:
@@ -28,12 +28,12 @@ On Deepin Store interface, click on ![Close](icon/icon_close.svg) to exit.
 
 ![1|Close Deepin Store](jpg/closestore.jpg)
 
-## Main Interface|../common/icon_maininterface.svg|
+## Main Interface
 The main interface of Deepin Store consists of navigation bar, search box, flashview, home column, hot topic, task management and menu bar.
 
 > ![tips](icon/tips.svg): Navigation bar can be displayed in icon or name & icon by dragging the edge rightward/leftward. When displayed in icon, hover over the icon to display the category name of applications.
 
-![1|maininterfacedetail](jpg/maininterfacedetail.jpg)
+![1|maininterfacedetail](jpg/maininterfacedetail.png)
 
 <table class="block1">
     <caption>Main Interface</caption>
@@ -76,7 +76,7 @@ The main interface of Deepin Store consists of navigation bar, search box, flash
     </tbody>
  </table>
 
-## Application Management|../common/icon_manageinterface.svg|
+## Application Management
 You can search, download and install different categories of applications by Deepin Store. Meanwhile, more wonderful applications will be explored through popular recommendation, rankings, hot apps, hot topic, user comment and other ways.
 
 ### Search Applications
@@ -88,7 +88,7 @@ Search function is built in Deepin Store. Contents will be automatically complet
 2. Input a keyword.
 3. The application name will be automatically matched and completed to display.
 
-![1|automatch](jpg/automatch.jpg)
+![1|automatch](jpg/automatch.png)
 
 #### Universal Search
 
@@ -126,7 +126,7 @@ If you need to update and upgrade applications, you can set in Control Center, s
 
 If you need to uninstall applications, you can enter Launcher to uninstall, specific operations refer to [Uninstall Applications](dman:///dde#Uninstall Applications).
 
-## Application Interface|../common/icon_appinterface.svg|
+## Application Interface
 
 ### Application Details
 You can enter the interface of application details to know the introduction, size, version, downloads, ratings and so on.
@@ -168,7 +168,7 @@ You can comment on and rate applications only after signed in Deepin Store, or o
 
 > ![attention](icon/attention.svg): If you need to know the information of signing up and signing in, please refer to [Sign In](#Sign In).
 
-![1|commentandrate](jpg/commentandrate.jpg)
+![1|commentandrate](jpg/commentandrate.png)
 
 <table class="block1">
     <caption>Interface of Comments and Ratings</caption>
@@ -202,7 +202,7 @@ You can comment on and rate applications only after signed in Deepin Store, or o
     </tbody>
  </table>
 
-## Option Settings|../common/icon_optionsetting.svg|
+## Option Settings
 
 ### Sign In
 You can sign in Deepin Store with your account in Deepin Technology Forum.
@@ -215,7 +215,7 @@ You can sign in Deepin Store with your account in Deepin Technology Forum.
 
 > ![attention](icon/attention.svg): If you don't have an account, you can click on **Sign Up** of the pop-up box to sign up.
 
-![0|loginpage](jpg/loginpage.jpg)
+![0|loginpage](jpg/loginpage.png)
 
 ### Help
 You can click "Help" to get the manual, which will help you further know and use Deepin Store.
@@ -224,7 +224,7 @@ You can click "Help" to get the manual, which will help you further know and use
 2. Click on **Help**.
 3. View the manual of Deepin Store.
 
-![1|help](jpg/help.jpg)
+
 
 ### About
 You can click "About" to view the introduction of Deepin Store.
@@ -233,7 +233,7 @@ You can click "About" to view the introduction of Deepin Store.
 2. Click on **About**.
 3. View the version and introduction of Deepin Store.
 
-![0|about](jpg/about.jpg)
+
 
 ### Exit
 You can click menu bar to exit Deepin Store.

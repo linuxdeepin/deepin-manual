@@ -1,10 +1,10 @@
 # Deepin Screen Recorder|../common/deepin-screen-recorder.svg|
 
-## Overview|../common/icon_overview.svg|
+## Overview
 
 Deepin Screen Recorder is a screen recording tool. It supports to save the recorded screen in GIF and mp4. Recording window can be automatically selected, and you can also manually select the area to record. To save files on desktop, just control the starting and ending.
 
-## Guide|../common/icon_guide.svg|
+## Guide
 
 You can run and colse Deepin Screen Recorder by one of the following operations, and can also create shortcut for it.
 
@@ -25,7 +25,7 @@ Deepin Screen Recorder will quit after the recording ended.
 
 
 
-## Basic Operations|../common/icon_commoncoperat.svg|
+## Basic Operations
 
 ### Record Video
 
@@ -59,6 +59,5 @@ Videos in GIF and MP4 can be recorded by Deepin Screen Recorder. After selecting
 
 ### View Help
 
-Pres ![F1](icon/F1.svg) to view the manual after starting Deepin Screen Recorder.
+Press ![F1](icon/F1.svg) to view the manual after starting Deepin Screen Recorder.
 
-![1|help](jpg/help.jpg)

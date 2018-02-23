@@ -1,12 +1,12 @@
 # Deepin File Manager|../common/deepin-file-manager.svg|
 
-## Overview|../common/icon_overview.svg|
+## Overview
 
 Deepin File Manager is developed by Deepin Technology Team. As the core component to manage files in deepin, it is a powerful, easy-to-use file manager with an elegant and simple interface. Full-featured, well-designed, efficient-improved, Deepin File Manager will be a good help in your daily life and work.
 
 ![1|overview](jpg/overview.jpg)
 
-## Guide|../common/icon_guide.svg|
+## Guide
 
 You can run, close and create a shortcut for Deepin File Manager by the following ways.
 
@@ -27,11 +27,11 @@ You can run, close and create a shortcut for Deepin File Manager by the followin
 - Right click on ![File Manager](icon/deepin-file-manager.svg) on Dock, select **Close All** to exit Deepin File Manager.
 - Click on ![Settings](icon/icon_menu.svg) and select **Exit** to exit Deepin File Manager.
 
-## Main Interface|../common/icon_maininterface.svg|
+## Main Interface
 
 On Deepin File Manager interface, users can execute many operations with the functional bars. It is designed to be easy-to-use, user-friendly and efficient improving.
 
-![1|maininterface](jpg/main-interface.jpg)
+![1|maininterface](jpg/main-interface.png)
 
 <table class="block1">
     <caption></caption>
@@ -64,7 +64,7 @@ On Deepin File Manager interface, users can execute many operations with the fun
     </tbody>
 </table>
 
-## Basic Functions|../common/icon_basicfuncton.svg|
+## Basic Functions
 
 Deepin File Manager is featured with the basic functions as a file manager, user can easily create, copy, rename or delete files/folders with it.
 
@@ -83,7 +83,7 @@ Deepin File Manager is featured with the basic functions as a file manager, user
 2. In the popup menu, select the document format you want to create.
 3. Input a name for the new document, and press ![enter](icon/Enter.svg), or click on blank area.
 
-![0|newdoc](jpg/newdoc.jpg)
+![0|newdoc](jpg/newdoc.png)
 
 ### Rename File/Folder
 
@@ -164,13 +164,13 @@ If the application you want to open the file is not in the list, you can:
 
 > ![notes](icon/notes.svg)：It will use the default application to open the file when you double clicked on it. Users can right click on the file, select **Properties** and choose a default application in **Open with ** list. Users can also set the options in the [Default Application Settings](dman:///dde#Default Application Settings) of the Control Center to change the global default applications of the specified file types.
 
-![0|open_with](jpg/open_with.jpg)
+![0|open_with](jpg/open_with.png)
 
 ### Display Modes
 
 Click on ![icon](icon/icon_view_normal.svg) or ![list](icon/list_view_normal.svg) on Deepin File Manager interface to switch between icon display and list display.
 
-![0|display](jpg/display.jpg)
+![0|display](jpg/display.png)
 
 - Icon display: It will show the icon, name and thumbnail of the files.
 
@@ -187,7 +187,7 @@ Click on ![icon](icon/icon_view_normal.svg) or ![list](icon/list_view_normal.svg
 1. Right click in the blank area on Deepin File Manager, select **Sort by**.
 2. Choose among the sorting options, which include **Name**, **Time modified**, **Size** and **Type**.
 
-![0|sort](jpg/sort.jpg)
+![0|sort](jpg/sort.png)
 
 > ![tips](icon/tips.svg)：Uses can click on the head of the columns in the list view to change the sort order.
 
@@ -206,7 +206,7 @@ Users can view the file/folder properties.
 
 > ![notes](icon/notes.svg)： Link path will be added in the properties of link file/folder.
 
-## Common Operations|../common/icon_commoncoperat.svg|
+## Common Operations
 
 Deepin File Manager is featured with many useful functions, such as breadcrumb bar, tabs, bookmarks, file sharing, accessing computers in LAN, opening file/folder in Terminal and so on. They are all designed to ease the commonly used operations.
 
@@ -218,7 +218,7 @@ By default, breadcrumb bar is displayed in the address bar. By clicking on the b
 
 By inputting a directory/keywords in the directory/search bar and pressing ![enter](icon/Enter.svg), user can access the target directory/search for target items.
 
-![0|addressbar1](jpg/addressbar1.jpg)
+![0|addressbar1](jpg/addressbar1.png)
 
 > ![tips](icon/tips.svg): When user accesses a sub directory, all the parent directories of the sub directory will become a breadcrumb in the address bar. By clicking on the breadcrumbs, user can easily switch among the sub directories and their parent directories.
 
@@ -287,9 +287,9 @@ Users can visit computers in LAN to access files and folders.
 Users can share folders in Deepin File Manager, if there are some folders shared, the share icon will show on the navigation bar, if not, the share icon will be hidden.
 
 1. On Deepin File Manager interface, right click on a folder, select **Properties**.
-2. In the popup window, click **Share manager**.
+2. In the popup window, click **Share Management**.
 3. To share this folder, click **Share this folder **.
-4. To change share options, input **Share name**, and select to choose **Permission** and **Anonymity **.
+4. To change share options, input **Share name**, and select to choose **Permission** and **Anonymous **.
 5. To set share password, click ![menu](icon/icon_menu.svg) and select **Set share password**.
 
 ![0|share](jpg/share.jpg)
@@ -331,11 +331,11 @@ When there is an external device inserted, you can directly send file/folder to 
 3. Select the device you want to send to.
 4. file/folder will be copied to the device.
 
-![0|send_to](jpg/send_to.jpg)
+![0|send_to](jpg/send_to.png)
 
 >![tips](icon/tips.svg): By selecting **Send to desktop** for an item, user can create a link on desktop with one click.
 
-## Disk Management|../common/icon_diskmanagement.svg|
+## Disk Management
 
 On Deepin File Manager interface, you can mount/unmount, remove, format and decrypt disks.
 
@@ -369,7 +369,7 @@ Mounted disks are displayed in the left navigation bar of Deepin File Manager. I
 
 ![0|format](jpg/format.jpg)
 
-## Main Menu|../common/icon_optionsetting.svg|
+## Main Menu
 
 Users can create new window, set share password, view manual and about information, exit the application.
 
@@ -402,7 +402,7 @@ Users can create new window, set share password, view manual and about informati
 2. Select **Help**.
 3. View the manual.
 
-![1|help](jpg/help.jpg)
+
 
 ### About
 
@@ -410,7 +410,7 @@ Users can create new window, set share password, view manual and about informati
 2. Select **About**.
 3. View the version description.
 
-![0|about](jpg/about.jpg)
+
 
 ### Exit
 

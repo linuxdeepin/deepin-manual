@@ -1,6 +1,6 @@
 # Graphics Driver Manager|../common/deepin-graphics-driver-manager.svg|
 
-## Overview|../common/icon_overview.svg|
+## Overview
 
 Deepin Graphics Driver Manager is a compact and easy  to use graphics driver managing tool. It includes graphics card hardware detection, graphics driver installation, graphics driver solution switching,  graphics driver automatic recovery and other functions.
 
@@ -8,7 +8,7 @@ Deepin Graphics Driver Manager is a compact and easy  to use graphics driver man
 ![3|process2](jpg/process2.jpg)
 ![3|process3](jpg/process3.jpg)
 
-## Common Operations|../common/icon_commoncoperat.svg|
+## Common Operations
 
 Don't worry about your system, Deepin Graphics Driver Manager supports to restore your operations! The original driver solution will be restored after the new solution failed or by rebooting if new solution resulted blank screen.
 
@@ -25,7 +25,7 @@ If your computer only has one NVIDA graphics card, closed source driver is recom
 5. Click on **Apply** to use the new driver solution and click on **Cancel** to restore to original driver.
 6. Reboot again to make your operation take effect.
 
- ![0|NVIDA](jpg/NVIDA.jpg)
+ ![0|NVIDIA](jpg/NVIDIA.jpg)
 
 #### NVIDA+ Intel Graphics Driver (For desktop computer)
 If your computer has NVIDA and intel  graphics card, NVIDA independent graphics card is recommended, just like single NVIDA graphics driver, closed source driver and open source driver are supported. If both are not available, you can try the default driver of Intel integrated graphics card.
@@ -71,7 +71,7 @@ If the system detected AMD graphics card used, no other solutions available,  ju
 
 ![0|amd](jpg/amd.jpg)
 
-## Main Menu|../common/icon_optionsetting.svg|
+## Main Menu
 
 ### Help
 
@@ -79,7 +79,7 @@ If the system detected AMD graphics card used, no other solutions available,  ju
 2. Select **Help**.
 3. View the manual.
 
-![1|help](jpg/help.jpg)
+
 
 ### About
 
@@ -87,7 +87,7 @@ If the system detected AMD graphics card used, no other solutions available,  ju
 2. Select **About**.
 3. View the version description.
 
-![0|about](jpg/about.jpg)
+
 
 ### Exit
 

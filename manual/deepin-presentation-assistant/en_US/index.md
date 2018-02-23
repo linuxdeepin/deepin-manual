@@ -1,10 +1,10 @@
 # Presentation Assistant|../common/presentation-assistant.svg|
 
-## Overview|../common/icon_overview.svg|
+## Overview
 
 Deepin Presentation Assistant is an application to share phone contents. It supports photo sharing annotation, phone screen sharing, PPT remote control and so on.
 
-## Guide |../common/icon_guide.svg|
+## Guide
 
 Deepin Link and Deepin Presentation Assistant should be in the same network. Wi-Fi is recommended, you can also connect to hotspot on computer or phone.
 
@@ -17,7 +17,7 @@ Deepin Link and Deepin Presentation Assistant should be in the same network. Wi-
 
 ![0|guide](jpg/guide.jpg)
 
-## Basic Operations|../common/icon_commoncoperat.svg|
+## Basic Operations
 
 ### Installation and Connection 
 
@@ -100,7 +100,7 @@ Click on ![tool_rotate](icon/tool_rotate.svg) to rotate the photo, and every cli
 ![2|stop](jpg/stop.jpg)
 
 
-## Main Menu|../common/icon_optionsetting.svg|
+## Main Menu
 
 ### About
 
@@ -110,7 +110,7 @@ You can click to view the version description.
 2. Click on **About**.
 3. View the version description.
 
-![0|about](jpg/about.jpg)
+
 
 
 ### Help
@@ -122,7 +122,7 @@ You can click to view the manual, which will help you further know and use Deepi
 3. View the manual.
 
 
-![1|heip](jpg/help.jpg)
+
 
 
 ### Exit

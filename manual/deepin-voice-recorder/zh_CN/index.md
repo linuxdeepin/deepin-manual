@@ -1,10 +1,10 @@
 # 深度录音|../common/deepin-voice-recorder.svg|
 
-## 概述|../common/icon_overview.svg|
+## 概述
 
 深度录音是一款设计简洁、美观易用的录音软件。无论您是想记录自己的歌声还是通话和会议录音，都可以使用深度录音来完成；它还支持可视化录音、录音回放、录音列表管理等功能，让您的声音看得见、被保存。
 
-## 使用入门|../common/icon_guide.svg|
+## 使用入门
 
 您可以通过以下方式运行、关闭深度录音，同时还可以创建快捷方式。
 
@@ -28,7 +28,7 @@
 
 
 
-## 操作介绍|../common/icon_commoncoperat.svg|
+## 操作介绍
 
 ### 录制音频
 
@@ -75,7 +75,7 @@
 
 ![0|delete](jpg/delete.jpg)
 
-## 主菜单|../common/icon_optionsetting.svg|
+## 主菜单
 
 ### 新录音
 
@@ -93,9 +93,6 @@
 2. 点击 **帮助**。
 3. 查看关于深度录音的帮助手册。
 
-![1|heip](jpg/help.jpg)
-
-
 ### 关于
 
 您可以点击关于查看深度录音的版本介绍。
@@ -103,5 +100,3 @@
 1. 在深度录音界面，点击  ![icon_menu](icon/icon_menu.svg) 。
 2. 点击 **关于**。
 3. 查看关于深度录音的版本和介绍。
-
-![0|about](jpg/about.jpg)

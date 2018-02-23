@@ -1,11 +1,11 @@
 # Desktop Environment|../common/deepin-system.svg|
 
-## Overview|../common/icon_overview.svg|
+## Overview
 deepin is an elegant, easy to use and reliable Linux desktop operating system developed by Deepin Technology Co., Ltd. WPS Office, Skype, Spotify and other deepin featured applications have been preinstalled. It allows you to experience a variety of recreational activities, but also to meet your daily needs. With continually improved and perfected functions, we believe deepin will be loved and used by more and more users.
 
 ![1|desk](jpg/desk.jpg)
 
-## Desktop|../common/desk.svg|
+## Desktop
 You can create new file/folder, sort files, set hot corners and wallpapers, etc. on desktop.
 
 ![0|contextmenu](jpg/contextmenu.jpg)
@@ -119,7 +119,7 @@ You can drag and drop icon to the location you want on desktop:
 - Drag and drop icon to Trash is to move the file to Trash;
 - Drag and drop icon to folder is to move file to folder.
 
-## Dock|../common/dock.svg|
+## Dock
 Dock is usually displayed at the bottom of the desktop to help you fix frequently used applications, it is mainly made of Launcher, application icons, tray, shutdown button and system datetime, etc.
 
 ### Dock Icons
@@ -192,7 +192,7 @@ There are two display modes of Dock, which are fashion mode and efficient mode.
 - **Efficient Mode**: The display mode is similar to Windows 7 and displayed by a small strip at the bottom of screen. Application icons fixed on Dock by default will be displayed in small ones, and icons of same types will be merged together to save more space for others.
 
 
- ![1|fasion](jpg/fasion.jpg)
+ ![1|fasion](jpg/fashion.jpg)
 
  ![1|efficient](jpg/efficient.jpg)
 
@@ -309,7 +309,7 @@ Empty trash to release more usable space in your disk.
 1. In Trash, right click on the blank area.
 2. Select **Empty Trash** to completely delete all the files in Trash.
 
-## Launcher|../common/launcher.svg|
+## Launcher
 Launcher can help you to manage all installed applications, you can quickly find the needed application by the categorized navigation or searching function.
 
 > ![tips](icon/tips.svg): You can view the newly installed applications in Launcher, it will show a blue point for these applications.
@@ -399,7 +399,7 @@ You can choose to uninstall applications you no longer use to save disk space.
 > ![tips](icon/tips.svg): In **Fashion mode**, press and hold the left mouse button in Launcher and drag the application icon to ![trash](icon/trash_icon.svg) to remove.
 
 
-## Control Center|../common/control_center.svg|
+## Control Center
 You can manage the basic settings of deepin by Control Center. It includes widget, common settings, account management, network settings, date and time, personalization, display settings, system and application update, etc. When you enter Deepin Desktop Environment, you can open the Control Center by moving the mouse pointer to the right bottom corner on desktop.
 
 ### Homepage Introduction
@@ -1006,7 +1006,7 @@ You can view system version, hardware info or set boot menu.
 3. Press and hold the left mouse button to drag the background image and drop it over the preview image to change the background.
 
 
-## Window Manager|../common/window.svg|
+## Window Manager
 The Window Manager can show different windows on different workspaces, you can manage the windows by it.
 
  ![1|openworkspace](jpg/openworkspace.jpg)

@@ -1,13 +1,13 @@
 # 深度看图|../common/deepin-image-viewer.svg|
 
-## 概述|../common/icon_overview.svg|
+## 概述
 
 
 深度看图是深度科技精心打造的一款图片查看和管理应用。外观时尚、性能流畅，支持多种图片格式，任何图片想看就看。深度看图的照片管理功能，让您可以将图片按日期排列在时间线上，还可以将图片添加到收藏夹或归类到不同的相册中，将图片管理得井井有条。
 
 ![1|mian](jpg/main.jpg)
 
-## 使用入门|../common/icon_guide.svg|
+## 使用入门
 
 您可以通过以下方式运行或关闭深度看图，或者创建深度看图的快捷方式。
 
@@ -28,7 +28,7 @@
 - 在任务栏右键单击 ![viewer](icon/deepin-image-viewer.svg) ，选择 **关闭所有** 来退出深度看图。
 - 在深度看图界面点击 ![icon_menu](icon/icon_menu.svg) ，选择 **退出** 来退出深度看图。
 
-## 图片查看|../common/icon_pictureview.svg|
+## 图片查看
 
 使用深度看图直接打开图片文件可以进入基本的看图界面。
 
@@ -149,7 +149,7 @@
 
 ![1|info](jpg/info.jpg)
 
-## 图片管理|../common/icon_picturemanagement.svg|
+## 图片管理
 
 在图片管理界面，您可以通过时间线和相册来管理您的图片。
 
@@ -198,7 +198,7 @@
 3. 选择一个相册，将图片添加到相册中。
 
 
-![0|add-to-album](jpg/add-to-album.jpg)
+![0|add-to-album](jpg/add-to-album.png)
 
 
 #### 在文件管理器显示
@@ -262,7 +262,7 @@
 
 
 
-## 选项设置|../common/icon_optionsetting.svg|
+## 选项设置
 
 通过主菜单了解更多有用信息。
 

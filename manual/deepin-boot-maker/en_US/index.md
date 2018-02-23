@@ -1,11 +1,11 @@
 # Deepin Boot Maker|../common/deepin-boot-maker.svg|
 
-## Overview|../common/icon_overview.svg|
+## Overview
 
 Deepin Boot Maker is a tool to make deepin boot disk developed by Deepin Technology Team. It's easy to operate with simple interface.
 
 
-## Basic Operations|../common/icon_commoncoperat.svg|
+## Basic Operations
 
 ### Preparation
 
@@ -51,7 +51,7 @@ There will be a prompt of **Make Successfully** when completed. During the time 
 ![3|done](jpg/done.jpg)
 ![3|failed](jpg/failed.jpg)
 
-## Main Menu|../common/icon_optionsetting.svg|
+## Main Menu
 
 ### Help
 
@@ -62,7 +62,7 @@ You can click to view the manual, which will help you further know and use Deepi
 3. View the manual.
 
 
-![1|heip](jpg/help.jpg)
+
 
 
 ### About
@@ -73,7 +73,7 @@ You can click to view the version description.
 2. Click on **About**.
 3. View the version description.
 
-![0|about](jpg/about.jpg)
+
 
 
 ### Exit

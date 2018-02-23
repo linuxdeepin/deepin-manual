@@ -1,10 +1,10 @@
 # Deepin Music|../common/deepin-music.svg|
 
-## Overview|../common/icon_overview.svg|
+## Overview
 
 Deepin Music is a local music playing application with brand new UI design and extreme playing experience developed by Deepin Technology. It's featured with local music scanning and lyric sync functions, etc.
 
-## Guide|../common/icon_guide.svg|
+## Guide
 
 You can run, close and create a shortcut for Deepin Music by the following ways.
 
@@ -40,7 +40,7 @@ You can run, close and create a shortcut for Deepin Music by the following ways.
 - Click on ![Settings](icon/icon_menu.svg) and select **Exit** to exit Deepin Music.
 
 
-## Main Interface|../common/icon_localmusic.svg|
+## Main Interface
 
 On the main interface, you can do common playing operations, view playlist and song info.
 
@@ -107,7 +107,7 @@ On the main interface, you can do common playing operations, view playlist and s
     </tbody>
 </table>
 
-## Common Operations|../common/icon_commoncoperat.svg|
+## Common Operations
 
 You can add, delete and view info of the local music in Deepin Music.
 
@@ -119,7 +119,7 @@ On Deepin Music interface, you can:
 - Click on ![menu](icon/icon_menu.svg) > **Add folder** to add a music folder.
 - Click on ![menu](icon/icon_menu.svg) > **Add file** to add a music file.
 
-![0|add](jpg/add.jpg)
+![0|add](jpg/add.png)
 
 > ![notes](icon/notes.svg): You can also drag and drop music file to Deepin Music interface to add.
 
@@ -169,7 +169,7 @@ On Deepin Music interface, right click on the music, you can:
 ![0|info](jpg/info.jpg)
 
 
-## Playlist Management|../common/icon_playlist.svg|
+## Playlist Management
 
 On Deepin Music interface, you can create, delete, rename playlist and add music to the playlist.
 
@@ -200,7 +200,7 @@ On Deepin Music interface, you can create, delete, rename playlist and add music
 2. Right click to select **Add to playlist** > **Playlist name**.
 
 
-> ![notes](icon/notes.svg): You can also select ** New Playlist ** to add the music to a new playlist.
+> ![notes](icon/notes.svg): You can also select **New Playlist** to add the music to a new playlist.
 
 ![0|addtolist](jpg/addtolist.jpg)
 
@@ -221,7 +221,7 @@ On Deepin Music interface, you can create, delete, rename playlist and add music
 ![0|deletelist](jpg/deletelist.jpg)
 
 
-## Main Menu|../common/icon_optionsetting.svg|
+## Main Menu
 
 You can add new playlists/songs, set the options, view or exit Deepin Music.
 
@@ -259,7 +259,7 @@ The theme of Deepin Music is light, you can click on **Dark theme** to switch.
 
 2. Click on **Dark theme** to switch the theme of Deepin Music.
 
-![0|theme](jpg/theme.jpg)
+![0|theme](jpg/theme.png)
 
 
 ### About
@@ -270,7 +270,7 @@ You can click on **About** to view the introduction of Deepin Music.
 
 2. Click on **About** to view the introduction of Deepin Music.
 
-![0|about](jpg/about.jpg)
+
 
 
 ### Help
@@ -281,7 +281,7 @@ You can click on **Help** to view the manual.
 
 2. Click on **Help** to view the manual of Deepin Music.
 
-![1|heip](jpg/help.jpg)
+
 
 
 ### Exit

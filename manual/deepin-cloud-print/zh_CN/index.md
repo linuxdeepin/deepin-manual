@@ -1,12 +1,12 @@
 # 深度云打印|../common/deepin-cloud-print.svg|
 
-## 概述|../common/icon_overview.svg|
+## 概述
 
 深度云打印是由武汉深之度科技有限公司开发的一种新型打印解决方案，它可以将您的打印机连接到网络，借助深度云打印，您可以通过日常使用的应用程序进行网络打印。同时深度云打印适用于台式机、笔记本电脑、部分平板电脑以及其他所有您已授权打印的联网设备。
 
 深度云打印由服务器端（Windows操作系统）和客户端（深度操作系统）组成，服务器端和客户端需要分别进行配置。
 
-## 服务器端配置|../common/icon_serverconfig.svg|
+## 服务器端配置
 
 您可以在Windows操作系统中安装深度云打印的服务器应用程序以及配置授权码。
 
@@ -30,7 +30,7 @@
 1. 在Windows操作系统中，点击开始菜单，打开云打印机程序。
 2. 自动获取系统中IP地址。
 3. 在云打印机设置界面，输入授权码。
-4. 点击 **更新**，在界面上显示 ![spinner](icon/icon_spinner.jpg) 状态 。
+4. 点击 **更新**。
 5. 当授权码更新成功后，在界面上显示 ![success](icon/icon_success.svg) 状态。
 
  ![0|windowssetting](jpg/windowssetting.jpg)
@@ -52,7 +52,7 @@
 4. 点击 ![icon_setting](icon/icon_setting.svg)，进入打印设置界面。
 5. 查看已添加的打印机是否添加成功。
 
- ![1|deepinssetting](jpg/deepinssetting.jpg)
+ ![1|deepinssetting](jpg/deepinssetting.png)
 
 > ![notes](icon/notes.svg)：如果您需要删除打印机，进入"打印设置"界面中选择打印机，点击鼠标右键 > **删除**。
 

@@ -1,12 +1,12 @@
 # 有道词典|../common/deepin-youdaodict.svg|
 
-## 概述|../common/icon_overview.svg|
+## 概述
 
 有道词典是网易有道和武汉深之度科技有限公司联合开发的基于Linux平台的翻译软件，不仅支持常规的英汉、法汉、日汉、韩汉互译以及全文翻译，还收录了各类词汇的网络释义、例句和百科知识。除此之外，有道词典还提供新闻、影视资讯、人物等丰富的在线网络资源，为您开辟了一条学习更多语言的新途径。
 
   ![0|youdao](jpg/homepage.jpg)  
 
-## 使用入门|../common/icon_guide.svg|
+## 使用入门
 
 ### 运行有道词典
 
@@ -36,7 +36,7 @@
 - 点击 **满意度** 来加入有道词典的满意度调查。
 - 点击 ![favour_icon](icon/favour_icon.svg)，可以为喜爱的内容点赞。
 
-  ![1|homepageexplain](jpg/homepageexplain.jpg)
+  ![1|homepageexplain](jpg/homepageexplain.png)
 
 ### 最大/最小化有道词典
 
@@ -57,7 +57,7 @@
 - 右键单击任务栏上的 ![youdao_icon-24](icon/youdao_icon-24.svg)，然后选择 **关闭所有**。
 - 在有道词典界面，点击 ![close_icon](icon/close_icon.svg) 或点击左下角的 ![youdao_icon](icon/youdao_icon.svg) > **退出**。
 
-## 基本操作|../common/icon_basicoperation.svg|
+## 基本操作
 
 ### 字体设置
 
@@ -134,7 +134,7 @@
 
 > ![notes](icon/notes.svg)：如果希望窗口置顶显示，您也可以进入选项设置中去设置，具体操作请参阅 [主窗口设置](#主窗口设置)。
 
-## 查询/翻译|../common/icon_querytranslation.svg|
+## 查询/翻译
 
 ### 语言设置
 
@@ -160,7 +160,7 @@
 
 > ![attention](icon/attention.svg)：如果您的电脑已经连入了网络，点击 ![netsearch_icon](icon/netsearch_icon.svg) 可以跳转到网页来搜索输入词语的相关信息。
 
-  ![1|dictinterface](jpg/dictinterface.jpg)
+  ![1|dictinterface](jpg/dictinterface.png)
 
 #### 更换单词图片
 
@@ -191,7 +191,7 @@
    - 将鼠标指针置于例句旁边的 ![voice_icon](icon/voice_icon.svg) 上，可以收听朗读语音。
    - 将鼠标指针置于例句旁边的 ![record_icon](icon/record_icon.svg) 上，可以跟读例句。
 
-  ![1|dictexample](jpg/dictexample.jpg)
+  ![1|dictexample](jpg/dictexample.png)
 
 ### 百科查询
 
@@ -208,7 +208,7 @@
 
 有道词典支持中、英、日、韩、法五国语言的全文翻译，其中语言默认为汉英互译。
 
-  ![1|fulltexttranslate](jpg/fulltexttranslate.jpg)
+  ![1|fulltexttranslate](jpg/fulltexttranslate.png)
 
 #### 选择源语言和目标语言
 
@@ -249,7 +249,7 @@
 2. 点击 ![right_icon](icon/right_icon.svg)，可以查看下一个输入词语的查询结果。
 3. 点击输入框中的 ![menu_icon](icon/menu_icon.svg)，在下方将出现查询历史窗口。
 
-![1|dicthistory](jpg/dicthistory.jpg)
+![1|dicthistory](jpg/dicthistory.png)
 
 #### 删除查询历史
 
@@ -266,7 +266,7 @@
 
 在有道词典界面，点击右上角的 ![mini_icon](icon/mini_icon.svg)，切换到迷你模式。
 
-  ![0|dictmini](jpg/dictmini.jpg)
+  ![0|dictmini](jpg/dictmini.png)
 
 <table>
     <caption>迷你图标说明</caption>
@@ -307,29 +307,7 @@
 
   ![0|miniset](jpg/miniset.jpg)
 
-## 图解词典|../common/icon_picturedict.svg|
-
-### 打开图解词典
-
-图解词典细化为多个不同的主题，通过图片您可以直观的了解日常生活中的高频词汇，以加深对单词的记忆。
-
-在有道词典界面，点击左下角的 ![picture_icon](icon/picture_icon.svg) 可以打开图解词典。
-
- ![1|pictureexplain](jpg/pictureexplain.jpg)
-
-### 查看图解词典
-
-1. 在图解词典界面，点击左侧的分类导航。
-2. 选择要查看的主题，图解词典将自动切换到该主题界面。
-3. 您可以看到该主题所包含的单词表和对应的图片：
-   - 点击 **单词表** 中的词语，在图片的对应位置将显示该单词。
-   - 将鼠标指针置于图片中的标注点上，单词表中的对应词语将高亮显示。
-   - 点击 **相关单词**，可以查看更多关联词语。
-   - 点击 **上一页** 或 **下一页**，可以翻页查看更多单词。
-
- ![1|picinterface](jpg/picinterface.jpg)
-
-## 选项设置|../common/icon_optionsettings.svg|
+## 选项设置
 
 ### 启动设置
 
@@ -347,7 +325,7 @@
    - 勾选 **窗口关闭时最小化到托盘** 复选框，当点击有道词典界面右上角的 ![close_icon](icon/close_icon.svg) 时，有道词典将最小化到任务栏。
    - 勾选 **主窗口总在最上面** 复选框，有道词典将一直置顶显示在桌面。
 
-## 有道应用|../common/icon_youdaoapps.svg|
+## 有道应用
 
 更多扩展应用，等待您的体验。
 
@@ -357,7 +335,7 @@
 * 点击 ![translate_icon](icon/translate_icon.svg)，将跳转到有道人工翻译页面提交订单。
 * 点击 ![group_icon](icon/group_icon.svg)，将跳转到有道词典小组页面互相交流学习。
 
-## 获取帮助|../common/icon_gethelp.svg|
+## 获取帮助
 
 如果您在使用有道词典的过程中遇到了问题，您可以在线寻求帮助，或者把您的问题和建议反馈给我们。
 
@@ -367,5 +345,4 @@
    - 点击 **意见反馈**，将跳转到意见反馈页面提交您的意见和建议。
    - 点击 **关于**，查看有道词典的软件介绍。
 
- ![0|onlinehelp](jpg/onlinehelp.jpg)
 

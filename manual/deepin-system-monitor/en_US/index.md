@@ -1,11 +1,11 @@
 # Deepin System Monitor |../common/monitor.svg|
 
-## Overview|../common/icon_overview.svg|
+## Overview
 
 Deepin System Monitor is an intuitive and powerful system monitor. It can monitor the process CPU, memory, network, disk and other status. You can also search, suspend, resume and end your processes by it.
 
 
-## Basic Operations|../common/icon_basicfuncton.svg|
+## Basic Operations
 
 ### Status Monitoring
 
@@ -95,7 +95,7 @@ Type the process name in the top search box on Deepin System Monitor interface t
 ![2|properties](jpg/properties.jpg)
 
 
-## Main Menu|../common/icon_optionsetting.svg|
+## Main Menu
 
 ### Switch Theme
 
@@ -118,7 +118,7 @@ You can click to view the manual, which will help you further know and use Deepi
 3. View the manual.
 
 
-![1|help](jpg/help.jpg)
+
 
 
 ### About
@@ -129,7 +129,7 @@ You can click to view the version description.
 2. Click on **About**.
 3. View the version description.
 
-![0|about](jpg/about.jpg)
+
 
 
 ### Exit

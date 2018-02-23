@@ -1,12 +1,12 @@
 # Deepin Clone |../common/deepin-clone.svg|
 
-## Overview |../common/icon_overview.svg|
+## Overview
 Deepin Clone is a powerful backup and restore tool in deepin. You can freely clone, backup and restore between disks or partitions. With Deepin Clone, don't worry about data loss any more!
 
 ![1|main_interface](jpg/main_interface.jpg)
 
 
-## Common Operations |../common/icon_commoncoperat.svg|
+## Common Operations
 
 ### Clone Disk
 1. On Deepin Clone interface, click on ![disk](icon/disk.svg) and ![clone_disk](icon/clone_disk.svg).
@@ -86,9 +86,9 @@ You need to restart and enter "Deepin Recovery" to continue next operations, if:
 
 The system will restart and enter Deepin Recovery after clicking on **Restart to Continue**, then you can continue to do next operations on Deepin Clone.
 
-![1|deepin_recovery](jpg/deepin_recovery.jpg)
 
-## Main Menu |../common/icon_optionsetting.svg|
+
+## Main Menu
 
 ### Help
 You can click on **Help** to view the manual.
@@ -97,7 +97,7 @@ You can click on **Help** to view the manual.
 
 2. Click on **Help** to view the manual.
 
-![1|heip](jpg/help.jpg)
+
 
 ### About
 You can click on **About** to view the introduction of Deepin Clone.
@@ -106,7 +106,7 @@ You can click on **About** to view the introduction of Deepin Clone.
 
 2. Click on **About** to view the introduction.
 
-![0|about](jpg/about.jpg)
+
 
 ### Exit
 

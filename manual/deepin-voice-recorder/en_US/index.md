@@ -1,10 +1,10 @@
 # Deepin Voice Recorder|../common/deepin-voice-recorder.svg|
 
-## Overview|../common/icon_overview.svg|
+## Overview
 
 Deepin Voice Recorder is a beautiful and easy to use voice recording application with simple design. It supports visual recording, recording playback, recording list management and other functions. Whatever to record singing, talking on a call or conference, Deepin Voice Recorder can do it for you, it will make your voice to be seen and saved.
 
-## Guide|../common/icon_guide.svg|
+## Guide
 
 You can run and close Deepin Voice Recorder by one of the following operations, and can also create shortcut for it.
 
@@ -25,7 +25,7 @@ You can run and close Deepin Voice Recorder by one of the following operations, 
 - Right click on ![deepin-voice-recorder](icon/deepin-voice-recorder.svg) on Dock, select **Close all** to exit Deepin Voice Recorder.
 - Click on ![icon_menu](icon/icon_menu.svg) and select **Exit** to exit Deepin Voice Recorder.
 
-## Basic Operations|../common/icon_commoncoperat.svg|
+## Basic Operations
 
 ### Record Voice
 
@@ -75,7 +75,7 @@ After recording finished, it will list vertically, then you can move any one to 
 
 ![0|delete](jpg/delete.jpg)
 
-## Main Menu|../common/icon_optionsetting.svg|
+## Main Menu
 
 ### New Recording
 
@@ -83,7 +83,7 @@ After recording finished, it will list vertically, then you can move any one to 
 2. Click on **New recording**.
 3. Start a new recording and the current recording will be saved if there is.
 
-![0|new](jpg/new.jpg)
+![0|new](jpg/new.png)
 
 ### Help
 
@@ -93,7 +93,7 @@ You can click to view the manual, which will help you further know and use Deepi
 2. Click on **Help**.
 3. View the manual.
 
-![1|heip](jpg/help.jpg)
+
 
 
 ### About
@@ -104,7 +104,7 @@ You can click to view the version description.
 2. Click on **About**.
 3. View the version description.
 
-![0|about](jpg/about.jpg)
+
 
 ### Exit
 

@@ -1,11 +1,11 @@
 # Deepin Package Manager |../common/deepin-deb-installer.svg|
 
-## Overview|../common/icon_overview.svg|
+## Overview
 
 Deepin Package Manager is an application used to help users install and remove local software, supports bulk install.
 
 
-## Basic Operations|../common/icon_commoncoperat.svg|
+## Basic Operations
 
 ### Run Deepin Package Manager
 
@@ -69,7 +69,7 @@ Deepin Package Manager is an application used to help users install and remove l
 ![1|remove](jpg/remove.jpg)
 
 
-## Main Menu|../common/icon_optionsetting.svg|
+## Main Menu
 
 ### Help
 
@@ -79,7 +79,7 @@ You can click to view the manual, which will help you further know and use Deepi
 2. Click on **Help**.
 3. View the manual.
 
-![1|heip](jpg/help.jpg)
+
 
 
 ### About
@@ -90,7 +90,7 @@ You can click to view the version description.
 2. Click on **About**.
 3. View the version description.
 
-![0|about](jpg/about.jpg)
+
 
 
 ### Exit

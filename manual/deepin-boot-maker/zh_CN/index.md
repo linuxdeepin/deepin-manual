@@ -1,13 +1,13 @@
 # 深度启动盘制作工具|../common/deepin-boot-maker.svg|
 
-## 概述|../common/icon_overview.svg|
+## 概述
 
 深度启动盘制作工具是深度科技团队开发的一款系统启动盘制作工具，具有界面简洁、操作简单的特点，它可以帮助用户简单便捷地制作深度启动U盘。
 
 
 
 
-## 操作介绍|../common/icon_commoncoperat.svg|
+## 操作介绍
 
 
 ### 准备工作
@@ -45,7 +45,7 @@
 ![3|recoder](jpg/deepin-boot-maker-4-cn.jpg)
 ![3|recoder](jpg/deepin-boot-maker-5-cn.jpg)
 
-## 主菜单|../common/icon_optionsetting.svg|
+## 主菜单
 
 
 ### 帮助
@@ -56,7 +56,6 @@
 2. 点击 **帮助**。
 3. 查看关于深度启动盘制作工具的帮助手册。
 
-![1|recoder](jpg/help.jpg)
 
 ### 关于
 
@@ -66,7 +65,6 @@
 2. 点击 **关于**。
 3. 查看关于深度启动盘制作工具的版本和介绍。
 
-![0|recoder](jpg/about.jpg)
 
 ### 退出
 

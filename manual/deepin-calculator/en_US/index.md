@@ -1,12 +1,12 @@
 # Deepin Calculator|../common/deepin-calculator.svg|
 
-## Overview|../common/icon_overview.svg|
+## Overview
 
 Deepin Calculator is a simple and easy to use desktop calculator. It supports addition, subtraction, multiplication and division with keyboard input perfectly matched, as well as symbolic fault-tolerant computing.
 
 ![0|calculator](jpg/calculator.jpg)
 
-## Common Operations|../common/icon_commoncoperat.svg|
+## Common Operations
 
 ### Symbol Introduction
 
@@ -70,7 +70,7 @@ Deepin Calculator supports keyboard operation and fault-tolerant computing of sp
 - Fault-tolerance processing of delete symbol: Press Backspace  to trigger deleting;
 
 
-## Main Menu|../common/icon_optionsetting.svg|
+## Main Menu
 
 ### Switch Theme
 
@@ -86,15 +86,11 @@ The theme of Deepin Calculator is light by default, you can click on **Dark Them
 2. Select **Help**.
 3. View the manual.
 
-![1|help](jpg/help.jpg)
-
 ### About
 
 1. On Deepin Calculator interface, click on ![main_menu](icon/main_menu.svg).
 2. Select **About**.
 3. View the version description.
-
-![0|about](jpg/about.jpg)
 
 ### Exit
 

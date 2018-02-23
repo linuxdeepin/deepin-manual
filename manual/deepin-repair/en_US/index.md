@@ -8,7 +8,7 @@ Deepin Repair is a tool to help users quickly fix some issues in deepin, includi
 
 ## Basic Operations
 
-When you cannot find boot menu, have privilege error or forgot login password, you may not be able to enter deepin desktop, then you need to go into Live system or another system (if multiple systems installed) to run Deepin Repair.
+When you cannot find boot menu, have privilege error or forgot login password, you may not be able to enter deepin desktop, then you need to go into Live system to run Deepin Repair.
 
 ### Detect and repair disk
 
@@ -45,7 +45,7 @@ If you cannot install or upgrade application, your DPKG may be damaged, then you
 
 ### Repair boot menu
 
-If you cannot find boot menu to enter system, you can go into Live system or another system (if multiple systems installed) and run **Boot Repair** to repair boot menu.
+If you cannot find boot menu to enter system, you can go into Live system and run **Boot Repair** to repair boot menu.
 
 1. Click **Boot Repair** on the interface.
 2. Click **Repair** to start, click **Show details** to view the repairing process.
@@ -55,7 +55,7 @@ If you cannot find boot menu to enter system, you can go into Live system or ano
 
 ### Repair privilege
 
-If you cannot enter desktop due to privilege error, you can go into Live system or another system (if multiple systems installed) and run **Boot Repair** to repair privilege.
+If you cannot enter desktop due to privilege error, you can go into Live system and run **Boot Repair** to repair privilege.
 
 1. Click **Privilege Repair** on the interface.
 2. Click **Repair** to start.
@@ -66,7 +66,7 @@ If you cannot enter desktop due to privilege error, you can go into Live system 
 
 ### Reset login password
 
-If you forgot account password and cannot login, you can go into Live system or another system (if multiple systems installed) and run **Boot Repair** to reset login password.
+If you forgot account password and cannot login, you can go into Live system and run **Boot Repair** to reset login password.
 
 1. Click **Password Reset** on the interface.
 2. Click **Reset password**, enter a new password and retype it.
@@ -84,14 +84,14 @@ In **Main Menu**, user can view manual, get application information, and exit. O
 
 In **Main Menu**, select **Help** to view the manual of Deepin Repair. 
 
-![1|help](jpg/help.jpg)
+
 
 
 ### About
 
 In **Main Menu**, select **About** to check the version and introduction of Deepin Repair.
 
-![0|about](jpg/about.jpg)
+
 
 
 ### Exit

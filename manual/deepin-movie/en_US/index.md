@@ -1,5 +1,5 @@
 # Deepin Movie |../common/deepin-movie.svg|
-## Overview |../common/icon_overview.svg|
+## Overview
 
 Deepin Movie is a video player with various features built in deepin. It offers simple interface and rich shortcuts, supports various video formats. You can also play online video resources, freely set the sound, frame and subtitle.
 
@@ -7,12 +7,12 @@ Deepin Movie, shares extreme play experience with you. Use it, you will love it!
 
 ![1|main_interface](jpg/main_interface.jpg)
 
-## Guide |../common/icon_guide.svg|
+## Guide
 
 ### Run Deepin Movie
 
 1. On Dock, click on ![launcher-24](icon/launcher-24.svg) to enter Launcher.
-2. Right click on ![movie-24](icon/movie-24.png), you can:
+2. Right click on ![movie-24](icon/movie-24.svg), you can:
   - Click on **Send to desktop** to create a desktop shortcut.
   - Click on **Send to dock** to fix its icon on Dock.
   - Click on **Add to startup** to add it to startup, it will auto run when system boots.
@@ -22,7 +22,7 @@ Deepin Movie, shares extreme play experience with you. Use it, you will love it!
 ### Exit Deepin Movie
 
 - On Deepin Movie interface, click on ![close](icon/close.svg) to exit.
-- Right click on ![movie-24](icon/movie-24.png) on Dock, select **Close All** to exit.
+- Right click on ![movie-24](icon/movie-24.svg) on Dock, select **Close All** to exit.
 - Click on ![main_memu](icon/main_menu.svg) and select **Exit** to exit.
 
 ![1|close_all](jpg/close_all.jpg)
@@ -106,9 +106,9 @@ Deepin Movie, shares extreme play experience with you. Use it, you will love it!
 
 ![1|shortcuts](jpg/shortcuts.jpg)
 
-## Main Interface|../common/icon_maininterface.svg|
+## Main Interface
 
-![1|interface](jpg/interface.jpg)
+![1|interface](jpg/interface.png)
 <p>
 <table>
   <tr>
@@ -212,7 +212,7 @@ You can play film by the following ways:
 
 >![notes](icon/notes.svg): Speed up/down is relative to the original play speed. Eevery pressing is 0.1 times. Maximum speed is 2 times of the original play speed and the minimum is 0.1 times.
 
-## Basic operations|../common/icon_basicfuncton.svg|
+## Basic operations
 On Deepin Movie interface, you can do many operations according to needs.
 
 ### Adjust Window
@@ -236,7 +236,7 @@ On Deepin Movie interface, you can do many operations according to needs.
   - Check **Single Loop**, the film will be played over and over.
   - Check ** List Loop**, the whole playlist will be played over and over.
 
-![0|play_mode](jpg/play_mode.jpg)
+![0|play_mode](jpg/play_mode.png)
 
 ### Adjust Frame
 
@@ -245,7 +245,7 @@ On Deepin Movie interface, you can do many operations according to needs.
   - Adjust the flim aspect ratio between 4:3, 16:9, 16:10, 1.85:1 and 2.35:1.
   - Rotate the flim frame clockwise or counterclockwise.
 
-![0|frame](jpg/frame.jpg)
+![0|frame](jpg/frame.png)
 
 ### Set Sound
 
@@ -256,7 +256,7 @@ On Deepin Movie interface, you can do many operations according to needs.
   - Check **Right channel**, the film will be played in right channel.
 3. Select **Sound** > **Track**, you can select to play the film in a track.
 
-![0|sound](jpg/sound.jpg)
+![0|sound](jpg/sound.png)
 
 ### Set Subtitle
 
@@ -268,7 +268,7 @@ On Deepin Movie interface, you can do many operations according to needs.
   - Check **Hide**, to hide the current film subtitle.
   - Check **Encodings**, to select an encoding for the film.
 
-![0|subtitle](jpg/subtitle.jpg)
+![0|subtitle](jpg/subtitle.png)
 
 ### Take a Screenshot
 
@@ -277,7 +277,7 @@ On Deepin Movie interface, you can do many operations according to needs.
   - Check **Film Screenshot**, to take a screenshot of the film in current frame.
   - Check **Burst Shooting**, to take 15 pictures of the film in different times.
 
-![0|screenshot](jpg/screenshot.jpg)
+![0|screenshot](jpg/screenshot.png)
 
 ### View Film Info
 
@@ -288,7 +288,7 @@ On Deepin Movie interface, you can do many operations according to needs.
 
 ![1|info](jpg/info.jpg)
 
-## Playlist Management|../common/icon_playlistsetting.svg|
+## Playlist Management
 
 ### Show/Hide Playlist
 
@@ -328,7 +328,7 @@ You can add film to playlist by the following ways:
 
 ![1|display](jpg/display.jpg)
 
-## Main Menu|../common/icon_optionsetting.svg|
+## Main Menu
 ### Basic Settings
 
 1. On Deepin Movie interface, click on ![main_menu](icon/main_menu.svg).
@@ -378,7 +378,7 @@ The theme of Deepin Movie is dark by default, you can click on **Light Theme** t
 2. Select **Help**.
 3. View the manual.
 
-![1|help](jpg/help.jpg)
+
 
 ### About
 
@@ -386,7 +386,7 @@ The theme of Deepin Movie is dark by default, you can click on **Light Theme** t
 2. Select **About**.
 3. View the version description.
 
-![0|about](jpg/about.jpg)
+
 
 ### Exit
 

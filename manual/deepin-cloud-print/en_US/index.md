@@ -1,12 +1,12 @@
 # Deepin Cloud Print|../common/deepin-cloud-print.svg|
 
-## Overview|../common/icon_overview.svg|
+## Overview
 
 Deepin Cloud Print is a new printing solution developed by Wuhan Deepin Technology Co., Ltd.. It will connect your printer to the network, and is enabled for network printing via daily used applications. Deepin Cloud Print is suitable for desktops, laptops, some tablets and other networking devices that you have authorized to print.
 
 Deepin Cloud Print consists of Server (in Windows) and Client (in deepin), which will be configured respectively.
 
-## Configurations of Server|../common/icon_serverconfig.svg|
+## Configurations of Server
 
 You can install the application program of Deepin Cloud Print Server and configure the authorization code in Windows.
 
@@ -35,7 +35,7 @@ The server IP address will be acquired in Windows automatically after finished t
 
  ![0|windowssetting](jpg/windowssetting.jpg)
 
-## Configurations of Client|../common/icon_clientconfig.svg|
+## Configurations of Client
 
 You can open Deepin Cloud Print Client in deepin to add one or more cloud printers.
 
@@ -52,11 +52,11 @@ You can open Deepin Cloud Print Client in deepin to add one or more cloud printe
 4. Click on ![icon_setting](icon/icon_setting.svg) to enter the interface of print settings.
 5. You can view whether the printer is added successfully.
 
- ![1|deepinssetting](jpg/deepinssetting.jpg)
+ ![1|deepinssetting](jpg/deepinssetting.png)
 
 > ![notes](icon/notes.svg): If you need to delete the printer, please enter "Print Settings" to select the printer, then select **Delete** in the context menu.
 
-## Test of Cloud Print|../common/icon_cloudprinttest.svg|
+## Test of Cloud Print
 
 You can use cloud print to print files in deepin, taking .doc files as the example.
 

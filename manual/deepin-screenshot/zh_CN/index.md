@@ -1,6 +1,6 @@
 # 深度截图|../common/deepin-screenshot.svg|
 
-## 概述|../common/icon_overview.svg|
+## 概述
 深度截图是武汉深之度科技有限公司开发的深度操作系统下自带的截图工具。在日常工作和娱乐中，为了展示特定状态下的程序界面，应用场景等，需要截取可以显示在屏幕或其他显示设备上的可视图像，您可以通过运行深度截图软件来实现。
 
 深度截图拥有模糊和马赛克的图片编辑功能，在传播图片的过程中帮助您保护隐私信息不外泄。
@@ -15,7 +15,7 @@
 
 * 使用专业的截图软件来截取屏幕，如深度操作系统自带的深度截图软件。
 
-## 使用入门|../common/icon_guide.svg|
+## 使用入门
 
 ### 运行深度截图
 您可以通过执行以下操作之一来运行深度截图，进入截图模式后，整个电脑屏幕将会变暗。
@@ -47,7 +47,7 @@
 
 * 点击鼠标右键，选择 **退出**。
 
-## 快捷键|../common/icon_shortcutkey.svg|
+## 快捷键
 
 通过快捷键来进行相关操作，省时又省力。
 
@@ -190,7 +190,7 @@
     </tbody>
 </table>
 
-## 选择截图区域|../common/icon_screenshotarea.svg|
+## 选择截图区域
 
 目前比较常用的有三种截图区域：全屏、程序窗口和自选区域。在截图时选中对应的区域，在区域四周会出现一个蓝色边框，并且该区域会亮度显示。
 
@@ -244,7 +244,7 @@
 
 4. 如果要退出截图，请点击工具栏上的 ![关闭](icon/cancel.svg) 或点击鼠标右键选择 **退出**。
 
-## 调整截图区域|../common/icon_adjustscreenshot.svg|
+## 调整截图区域
 
 您可以对截图区域进行微调，例如放大或缩小截取范围，移动截图等。
 
@@ -262,7 +262,7 @@
 
 * 按下键盘上的 ![向上](icon/Up.svg) 或 ![向下](icon/Down.svg) 来上下移动截图区域，按下键盘上的 ![向左](icon/Left.svg) 或 ![向右](icon/Right.svg) 来左右移动截图区域。
 
-## 编辑截图|../common/icon_editscreenshot.svg|
+## 编辑截图
 
 深度截图自带的图片编辑功能，包括图形标记、文字批注等，完全可以满足您的日常图片处理需求。您还可以给图片打上马赛克，保护您的隐私。
 
@@ -305,10 +305,10 @@
             <td>退出截图</td>
         </tr>
         <tr>
-            <td><img src="icon/pencil_normal.png" alt="画笔工具" class="inline" /></td>
+            <td><img src="icon/pencil_normal.svg" alt="画笔工具" class="inline" /></td>
             <td>画笔工具</td>
             <td class="blank"></td>
-            <td><img src="icon/color.png" alt="颜色工具" class="inline" /></td>
+            <td><img src="icon/color.svg" alt="颜色工具" class="inline" /></td>
             <td>颜色工具</td>
             <td class="blank"></td>
             <td>&nbsp;</td>
@@ -359,7 +359,7 @@
 
 1. 在截图区域下方的工具栏中，点击 ![箭头](icon/arrow.svg)。
 2. 在工具栏展开面板中，选择箭头的粗细。
-3. 点击 ![画笔选择](icon/straightline.svg) 和 ![箭头](icon/arrow_normal.png)，在箭头和直线之间切换。
+3. 点击 ![画笔选择](icon/straightline.svg) 和 ![箭头](icon/arrow_normal.svg)，在箭头和直线之间切换。
 4. 将鼠标指针置于截图区域上，鼠标指针变为 ![箭头指针](icon/arrow_mouse.svg)。
 5. 按住鼠标左键不放，拖动鼠标以完成图形区域的绘制。
 
@@ -367,9 +367,9 @@
 
 ![1|画笔工具](jpg/pencil.jpg)
 
-1. 在截图区域下方的工具栏中，点击 ![画笔](icon/pencil_normal.png)。
+1. 在截图区域下方的工具栏中，点击 ![画笔](icon/pencil_normal.svg)。
 2. 在工具栏展开面板中，选择画笔的粗细。
-3. 将鼠标指针置于截图区域上，鼠标指针变为 ![画笔指针](icon/pink_red.png)。
+3. 将鼠标指针置于截图区域上，鼠标指针变为 ![画笔指针](icon/pink_red.svg)。
 4. 按住鼠标左键不放，拖动鼠标以完成图形区域的绘制。
 
 
@@ -449,11 +449,11 @@
 
 ![0|颜色工具](jpg/colortool.jpg)
 
-1. 在截图区域下方的工具栏中，点击 ![颜色](icon/color.png)。
+1. 在截图区域下方的工具栏中，点击 ![颜色](icon/color.svg)。
 
 2. 在工具栏展开面板中，选择一种颜色。
 
-## 保存截图|../common/icon_savescreenshot.svg|
+## 保存截图
 将截取的图片保存下来，为后续的使用储存素材！
 
 当截图保存成功之后，您可以在桌面右上角看到提示信息，点击 **查看**，可打开截图所在的文件夹。
@@ -466,15 +466,15 @@
 
 > ![notes](icon/notes.svg)：在以上操作中，截取的图片默认存放到系统的图片文件夹下。
 
-您还可以在截图区域下方的工具栏中，点击 ![保存](icon/save.png) 的下拉选项：
+您还可以在截图区域下方的工具栏中，点击 ![保存](icon/save.svg) 的下拉选项：
 
 ![0|保存](jpg/savetool.jpg)
 
-* 选择 ![自动保存](icon/save_to_pic.png)，将图片保存到上次截图的保存目录（默认为桌面）。
-* 选择 ![保存到桌面](icon/save_to_desktop.png)，将图片保存到桌面。
-* 选择 ![保存](icon/save_to_dir.png)，将图片保存到您指定的存储路径下。
-* 选择 ![复制到剪切板](icon/save_to_clipboard.png)，将图片复制到剪切板。
-* 选择 ![自动复制并剪切](icon/save_to_pic_clipboard.png)，将图片保存到上次截图的保存目录（默认为桌面），并复制到剪切板。
+* 选择 ![自动保存](icon/save_to_pic.svg)，将图片保存到上次截图的保存目录（默认为桌面）。
+* 选择 ![保存到桌面](icon/save_to_desktop.svg)，将图片保存到桌面。
+* 选择 ![保存](icon/save_to_dir.svg)，将图片保存到您指定的存储路径下。
+* 选择 ![复制到剪切板](icon/save_to_clipboard.svg)，将图片复制到剪切板。
+* 选择 ![自动复制并剪切](icon/save_to_pic_clipboard.svg)，将图片保存到上次截图的保存目录（默认为桌面），并复制到剪切板。
 * 通过左右拖动滑条来调节保存图片的质量。
 
 

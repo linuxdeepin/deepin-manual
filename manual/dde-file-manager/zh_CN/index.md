@@ -1,13 +1,13 @@
 # 深度文件管理器|../common/deepin-file-manager.svg|
 
-## 概述|../common/icon_overview.svg|
+## 概述
 
 深度文件管理器是深度科技开发的一款功能强大、简单易用的文件管理工具。
 它沿用了经典文件管理器的功能和布局，并在此基础上简化了用户操作，增加了很多特色功能。一目了然的导航栏、智能识别的搜索框、多样化的视图及排序让您管理起来得心应手，经典和超越，只为给您更好的体验！
 
 ![1|mainpage](jpg/mainpage.jpg)
 
-## 使用入门|../common/icon_guide.svg|
+## 使用入门
 
 您可以通过以下方式运行或关闭深度文件管理器，或者创建深度文件管理器的快捷方式。
 
@@ -32,7 +32,7 @@
 
 深度文件管理器的主界面简单易用、功能全面，熟练的使用界面功能将使文件管理更加简单高效。
 
-![1|mainpage-note](jpg/mainpage-note.jpg)
+![1|mainpage-note](jpg/mainpage-note.png)
 
 <table class="block1">
     <caption></caption>
@@ -78,7 +78,7 @@
 3. 选择新建文件的类型。
 4. 输入新建文件的名称。
 
-![0|new-file](jpg/new-file.jpg)
+![0|new-file](jpg/new-file.png)
 
 #### 新建文件夹
 
@@ -149,7 +149,7 @@
 
 > ![notes](icon/notes.svg)：直接双击文件会使用默认程序打开文件，您可以右键单击文件，在 **属性>打开方式** 中选择一个默认程序，也可以到控制中心[默认启动设置](dman:///dde#默认程序设置)中去设置此类文件的全局默认程序。
 
-![0|openway](jpg/openway.jpg)
+![0|openway](jpg/openway.png)
 
 ### 显示方式
 
@@ -169,7 +169,7 @@
 2. 选择 **排序方式**。
 3. 在子菜单中选择一种排序方式。
 
-![0|sort](jpg/sort.jpg)
+![0|sort](jpg/sort.png)
 
 > ![tips](icon/tips.svg)：列表视图中可以点击表头栏的列标签来切换排序。
 
@@ -191,7 +191,7 @@
 
 地址栏由历史导航、面包屑、输入框共同组成，通常情况下地址栏会显示面包屑，当用户点击输入框区域或者搜索图标时，地址栏会切换为输入框状态，失去焦点地址栏会恢复到面包屑状态。
 
-![0|addressbar](jpg/addressbar.jpg)
+![0|addressbar](jpg/addressbar.png)
 
 - 通过点击历史导航图标，您可以快速在历史浏览记录间切换，查看前一个地址或者后一个地址。
 - 文件所在位置的每一个层级都会形成一个面包屑，通过来回点击面包屑可以快速在不同文件层级间切换。
@@ -294,9 +294,9 @@
 2. 选择 **发送到** > **外接磁盘**。
 3. 文件(夹)将会被发送到移动外接磁盘。
 
-![0|sendto](jpg/sendto.jpg)
+![0|sendto](jpg/sendto.png)
 
-## 磁盘管理|../common/icon_diskmanagement.svg|
+## 磁盘管理
 
 深度文件管理器还可以管理本地和外接磁盘。
 
@@ -347,7 +347,7 @@
 
 ![0|format](jpg/format.jpg)
 
-## 选项设置|../common/icon_optionsetting.svg|
+## 选项设置
 
 通过主菜单来新建窗口和了解有用信息。
 
@@ -381,8 +381,6 @@
 2. 点击 **帮助**。
 3. 查看关于深度文件管理器的帮助手册。
 
-![1|heip](jpg/help.jpg)
-
 
 ### 关于
 
@@ -391,8 +389,6 @@
 1. 在深度文件管理器界面，点击  ![icon_menu](icon/icon_menu.svg) 。
 2. 点击 **关于**。
 3. 查看关于深度文件管理器的版本和介绍。
-
-![0|about](jpg/about.jpg)
 
 
 ### 退出

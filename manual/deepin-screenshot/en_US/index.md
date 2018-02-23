@@ -1,7 +1,7 @@
 # Deepin Screenshot|../common/deepin-screenshot.svg|
 
 
-## Overview|../common/icon_overview.svg|
+## Overview
 
 Deepin Screenshot is an exquisite screen capturing tool developed by Wuhan Deepin Technology Co., Ltd. It's featured with intelligent window identification, delay screenshot, color selection, blurring and mosaic. Whether in daily work or entertainment, you can take a screenshot of every wonderful moment in your life by Deepin Screenshot.
 
@@ -9,7 +9,7 @@ Deepin Screenshot is an exquisite screen capturing tool developed by Wuhan Deepi
 ![1|screenshot](jpg/screenshot.jpg)
 
 
-## Guide|../common/icon_guide.svg|
+## Guide
 
 You can run or exit Deepin Screenshot by the following operations. A shortcut also can be created.
 
@@ -56,7 +56,7 @@ In screenshot mode, you can exit Deepin Screenshot by the following ways:
 > ![notes](icon/notes.svg): There will be a prompt to conform if you press ![esc](icon/Esc.svg) after edited.
 
 
-## Shortcuts|../common/icon_shortcutkey.svg|
+## Shortcuts
 
 
 It will save you both time and efforts to operate with shortcuts.
@@ -335,7 +335,7 @@ It will save you both time and efforts to operate with shortcuts.
 
 
 
-## Select Screenshot Area|../common/icon_screenshotarea.svg|
+## Select Screenshot Area
 
 
 Currently there are three kinds of areas commonly captured: the full screen, program-window and customized area. When you select the relevant area to be captured, there will be a blue border around the screenshot area and highlight displayed.
@@ -391,7 +391,7 @@ You can customize area by the following steps:
 4. If you want to exit screenshot, please click on ![exit](icon/exit.svg) on the toolbar or right click to select **Exit**.
 
 
-## Adjust Screenshot Area|../common/icon_adjustscreenshot.svg|
+## Adjust Screenshot Area
 
 You can do fine adjustments to the screenshot area, for example, enlarging or reducing the captured scope, moving the screenshot and so on.
 
@@ -415,7 +415,7 @@ Position the mouse pointer over the screenshot area, and then the mouse pointer 
 * Press ![Up](icon/Up.svg) or ![Down](icon/Down.svg) on keyboard to move the screenshot area up or down, and press ![Left](icon/Left.svg) or ![Right](icon/Right.svg) on keyboard to move the screenshot area left or right.
 
 
-## Edit Screenshot|../common/icon_editscreenshot.svg|
+## Edit Screenshot
 
 The image editing features that come with Deepin Screenshot include graphics marking and text annotation, etc, which can fully meet your daily needs of processing images. You can also use mosaic on images to protect your privacy.
 
@@ -467,7 +467,8 @@ While capturing screenshots, you can click on the icons on toolbar to complete v
 
           <tr>
 
-            <td><img src="icon/pencil.png" alt="pencil" class="inline" /></td>
+            <td><img src="icon/pencil.svg" alt="pencil" class="inline" /></td>
+​    
 
             <td>Pencil</td>
 
@@ -479,7 +480,8 @@ While capturing screenshots, you can click on the icons on toolbar to complete v
 
             <td class="blank"></td>
 
-            <td><img src="icon/color.png" alt="color" class="inline" /></td>
+            <td><img src="icon/color.svg" alt="color" class="inline" /></td>
+​    
 
             <td>Color</td>
 
@@ -566,9 +568,9 @@ You can draw some simple graphics in the captured images, such as rectangle, ell
 
 ![1|pencil](jpg/pencil.jpg)
 
-1. Click on ![pencil](icon/pencil.png) in the toolbar.
+1. Click on ![pencil](icon/pencil.svg) in the toolbar.
 2. In the extended panel of the toolbar, choose width of the pencil.
-3. Place the mouse pointer on the screenshot area, and then the mouse pointer will become ![straightmouse](icon/pink_red.png).
+3. Place the mouse pointer on the screenshot area, and then the mouse pointer will become ![straightmouse](icon/pink_red.svg).
 4. Press and hold down the left mouse button, drag the mouse to finish drawing.
 
 
@@ -614,7 +616,7 @@ Supplement and add descriptions to the captured images, thus to help others unde
 ![1|text](jpg/text.jpg)
 
 
-1. Click on ![text](icon/text.svg) in the toolbar below the screenshot area,.
+1. Click on ![text](icon/text.svg) in the toolbar below the screenshot area.
 2. In the extended panel of the toolbar, select a needed font size.
 3. Place the mouse pointer on the captured images, and then the mouse pointer becomes ![textmouse](icon/text_mouse.svg).
 4. Click where you want to add an annotation, and a text box to be input will appear.
@@ -656,13 +658,13 @@ Deepin Screenshot totally provides 16 colors for you. You can choose different c
 ![0|color](jpg/color.jpg)
 
 
-1. In the toolbar below the screenshot area, click on ![color](icon/color.png).
+1. In the toolbar below the screenshot area, click on ![color](icon/color.svg).
 2. Select a color in the extended panel of the toolbar.
 
 > ![notes](icon/notes.svg): The default color is red. When you select a new color, it will be shown in a circle, the color icon in toolbar will be changed in real time and so does the color of other tools.
 
 
-## Save Screenshot|../common/icon_savescreenshot.svg|
+## Save Screenshot
 
 Save captured images as material for future use!
 
@@ -680,21 +682,21 @@ You can save captured images by the following ways:
 
 ### Saving Path
 
-You can click the drop-down options of ![save](icon/save.png) in the toolbar below the screenshot area:
+You can click the drop-down options of ![save](icon/save.svg) in the toolbar below the screenshot area:
 
 
 ![0|save](jpg/save.jpg)
 
 
-* Select ![savetodesktop](icon/save_to_desktop.png) to save picture to desktop.
+* Select ![savetodesktop](icon/save_to_desktop.svg) to save picture to desktop.
 
-* Select ![autosave](icon/auto_save.png) to auto save picture to the folder selected last time, the default directory is desktop at the first time.
+* Select ![autosave](icon/auto_save.svg) to auto save picture to the folder selected last time, the default directory is desktop at the first time.
 
-* Select ![savetofolder](icon/save_to_folder.png) to save picture to specified folder.
+* Select ![savetofolder](icon/save_to_folder.svg) to save picture to specified folder.
 
-* Select ![saveClipBoard](icon/save_ClipBoard.png) to copy picture to clipboard.
+* Select ![saveClipBoard](icon/save_ClipBoard.svg) to copy picture to clipboard.
 
-* Select ![autosaveClipBoard](icon/auto_save_ClipBoard.png) to save picture to system default folder and copy to clipboard.
+* Select ![autosaveClipBoard](icon/auto_save_ClipBoard.svg) to save picture to system default folder and copy to clipboard.
 
 > ![notes](icon/notes.svg): You can adjust the quality of the saved pictures by dragging the slider left or right.
 

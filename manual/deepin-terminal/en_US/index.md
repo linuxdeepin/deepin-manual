@@ -1,13 +1,13 @@
 # Deepin Terminal|../common/deepin-terminal.svg|
 
-## Overview|../common/icon_overview.svg|
+## Overview
 
 Deepin Terminal is a terminal emulator with simple interface, rich and powerful functions created by Deepin Technology. You can instantly start and close Deepin Terminal smoothly like normal file window, allowing you to input commands with facility and no distractions. Let's try the Quake mode, browse webs while inputting commands. When there are multiple tasks, you can add tabs in terminal to create more workspaces like in the browser or split the workspace into multiple windows. It's a piece of cake to upload and download files with remote management. More powerful functions are waiting for you to explore!
 
  ![1|interface](jpg/interface.jpg)
 
 
-## Guide|../common/icon_guide.svg|
+## Guide
 
 You can run, exit or create shortcuts for Deepin Terminal.
 
@@ -40,7 +40,7 @@ You can press ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![QM](icon/QM.svg)
  ![1|shortcuts](jpg/shortcuts.jpg)
 
 
-## Basic Operations|../common/icon_basicoperation.svg|
+## Basic Operations
 
 You can right click on Deepin Terminal interface to do daily operations.
 
@@ -122,7 +122,7 @@ You can quickly switch the encoding according to your needs.
  ![1|unicode](jpg/unicode.jpg)
 
 
-## Window Operations|../common/icon_windowoperation.svg|
+## Window Operations
 
 Window is the base for you to do other operations in terminal. You can create many workspaces and split more windows.
 
@@ -194,11 +194,11 @@ For multiple splitting windows, you can execute the following operations to clos
  ![1|closewindow](jpg/closewindow.jpg)
 
 
-## Workspace Operations|../common/icon_workspaceoperation.svg|
+## Workspace Operations
 
 The current workspace status will be displayed in different colors of workspace tabs.
 
- ![1|workspace](jpg/workspace.jpg)
+ ![1|workspace](jpg/workspace.png)
 
 
 ### New Workspace ###
@@ -226,7 +226,7 @@ You can freely switch between multiple workspaces by one of the following operat
 > ![tips](icon/tips.svg): When there is only one window in workspace, you can also right click to select **Close window** to close.
 
 
-## Remote Server Management|../common/icon_sshconnection.svg|
+## Remote Server Management
 
 You can right click or click the main menu to open remote management panel to add remote servers. The remote management panel will be automatically hidden when you adjust the window size.
 
@@ -250,7 +250,7 @@ You can right click or click the main menu to open remote management panel to ad
 
  ![1|addssh](jpg/addssh-all.jpg)
 
-> ![notes](icon/notes.svg): You can also press ![Ctrl](icon/Ctrl.svg)+![Slash](icon/Slash.png) to open the remote management panel.
+> ![notes](icon/notes.svg): You can also press ![Ctrl](icon/Ctrl.svg)+![Slash](icon/Slash.svg) to open the remote management panel.
 
 ### Edit Server ###
 
@@ -327,7 +327,7 @@ You can upload and download files after logged in a server.
 
 ![0|groupssh](jpg/groupssh.jpg)
 
-## Main Menu|../common/icon_settings.svg|
+## Main Menu
 
 ### Switch Theme ###
 
@@ -419,7 +419,7 @@ You can click on **Help** to view the manual.
 
 2. Click on **Help** to view the manual of Deepin Terminal.
 
- ![1|help](jpg/help.jpg)
+
 
 
 ### About ###
@@ -430,7 +430,7 @@ You can click on **About** to view the introduction of Deepin Terminal.
 
 2. Click on **About** to view the introduction of Deepin Terminal.
 
- ![0|about](jpg/about.jpg)
+
 
 
 ### Exit ###
