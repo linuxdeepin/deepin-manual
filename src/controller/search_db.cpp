@@ -247,6 +247,12 @@ void SearchDb::handleSearchContent(const QString& keyword) {
         contents.append(content);
       }
     }
+
+    // Last record.
+    if (!result_empty) {
+      emit this->searchContentResult(last_app_name, anchors,
+                                     anchorIds, contents);
+    }
   } else {
     qCritical() << "Failed to select contents:"
                 << query.lastError().text();
