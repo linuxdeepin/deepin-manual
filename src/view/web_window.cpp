@@ -179,7 +179,8 @@ void WebWindow::onSearchTextChanged(const QString& text) {
 
 void WebWindow::onSearchTextChangedDelay() {
   const QString text = title_bar_->getSearchText();
-  if (text.size() <= 1) {
+  // Filters special chars.
+  if (text.size() <= 1 || text.contains(QRegExp("[+-_$!@#%^&\\(\\)]"))) {
     return;
   }
 
