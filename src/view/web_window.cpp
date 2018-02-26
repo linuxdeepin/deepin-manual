@@ -130,6 +130,7 @@ void WebWindow::initUI() {
   // Use TitleBarProxy instead.
   QWebChannel* channel = new QWebChannel(web_view_);
   web_view_->page()->setWebChannel(channel);
+  web_view_->setAcceptDrops(false);
   channel->registerObject("i18n", i18n_);
   channel->registerObject("imageViewer", image_viewer_proxy_);
   channel->registerObject("manual", manual_proxy_);

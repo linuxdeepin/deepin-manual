@@ -169,6 +169,7 @@ add_executable(generate-search-db
                ${SEARCH_FILES})
 target_link_libraries(generate-search-db ${LINK_LIBS})
 
+# TODO(Shaohua): Generate search db by hand.
 add_custom_command(OUTPUT _update-search-db
                    COMMAND pwd
                    COMMAND ${CMAKE_CURRENT_BINARY_DIR}/generate-search-db
