@@ -52,7 +52,7 @@ export default class Article extends Component {
           }
         };
         el.onerror = () => {
-          if (el.src == el.dataset.src) {
+          if (el.t.getAttribute('src') == el.dataset.src) {
             el.onload();
           } else {
             el.src = el.dataset.src;
