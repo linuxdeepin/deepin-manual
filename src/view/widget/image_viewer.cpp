@@ -63,8 +63,9 @@ void ImageViewer::open(const QString& filepath) {
   QPixmap pixmap(abspath);
   const QRect screen_rect = qApp->desktop()->screenGeometry(QCursor::pos());
   // Resize image to fix screen.
-  const int pixmap_max_width = static_cast<int>(screen_rect.width() * 0.8);
-  const int pixmap_max_height = static_cast<int>(screen_rect.height() * 0.8);
+  const double ratio = this->devicePixelRatioF() * 0.8;
+  const int pixmap_max_width = static_cast<int>(screen_rect.width() * ratio);
+  const int pixmap_max_height = static_cast<int>(screen_rect.height() * ratio);
   if ((pixmap.width() > pixmap_max_width) ||
       (pixmap.height() > pixmap_max_height)) {
     pixmap = pixmap.scaled(pixmap_max_width,
@@ -80,8 +81,9 @@ void ImageViewer::open(const QString& filepath) {
   img_label_->setPixmap(pixmap);
   img_label_->setFixedSize(pixmap.width(), pixmap.height());
   QRect img_rect = img_label_->rect();
-  img_rect.moveTo((screen_rect.width() - pixmap.width()) / 2.0,
-		(screen_rect.height() - pixmap.height()) / 2.0);
+  img_rect.moveTo(
+      static_cast<int>((screen_rect.width() - pixmap.width()) / 2.0),
+      static_cast<int>((screen_rect.height() - pixmap.height()) / 2.0));
   img_label_->move(img_rect.topLeft());
 
   // Move close button to top-right corner of image.
