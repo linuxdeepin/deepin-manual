@@ -172,7 +172,7 @@ void SearchCompletionWindow::initUI() {
   this->setLayout(main_layout);
   this->setContentsMargins(0, 0, 0, 0);
   this->setMinimumHeight(kItemHeight);
-  this->setFixedWidth(262);
+  this->setFixedWidth(242);
 //  this->setWindowFlags(Qt::FramelessWindowHint |
 //                       Qt::CustomizeWindowHint |
 //                       Qt::BypassWindowManagerHint);

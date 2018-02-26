@@ -227,7 +227,7 @@ void WebWindow::onSearchAnchorResult(const QString& keyword,
     completion_window_->raise();
     completion_window_->autoResize();
     // Move to below of search edit.
-    const QPoint local_point(this->rect().width() / 2 - 108, 36);
+    const QPoint local_point(this->rect().width() / 2 - 94, 36);
 //  const QPoint global_point(this->mapToGlobal(local_point));
     completion_window_->move(local_point);
 //  completion_window_->setFocusPolicy(Qt::NoFocus);
