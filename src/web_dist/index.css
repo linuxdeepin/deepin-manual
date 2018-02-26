@@ -238,10 +238,10 @@ div {
       cursor: pointer; }
       #index .items .item img {
         width: 64px;
-        padding-top: 10px;
+        padding-top: 30px;
         margin-bottom: 10px; }
       #index .items .item span {
-        font-size: 16px;
+        font-size: 14px;
         font-weight: normal;
         color: black; }
       #index .items .item:focus, #index .items .item:hover {
