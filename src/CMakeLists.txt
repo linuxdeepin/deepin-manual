@@ -251,7 +251,14 @@ endif ()
 
 ## Installation
 install(TARGETS dman
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
+# NOTE(Shaohua): Add this script to by pass platform plugin issue in Qt.
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/app/dman.sh
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
+        PERMISSIONS OWNER_READ OWNER_EXECUTE
+        GROUP_READ GROUP_EXECUTE
+        WORLD_READ WORLD_EXECUTE
+        RENAME dman)
 install(TARGETS dman-search
         DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 
