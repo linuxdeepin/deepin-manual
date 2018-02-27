@@ -1,3 +1,9 @@
+2018-02-27 2.0.4 Xu Shaohua <xushaohua@deepin.com>
+    * Update manual images
+    * Fix search issue
+    * Fix qt platform plugin issue
+    * Fix icon alignment in index page
+
 2018-02-08 2.0.3 Xu Shaohua <xushaohua@deepin.com>
     * Include libdxcb plugin
     * Be compactable with old version of dman
@@ -5,14 +11,15 @@
     * Fix global search navigation
 
 2018-02-07 2.0.2 Xu Shaohua <xushaohua@deepin.com>
-  	* Depends on new version of dxcb plugin
+    * Depends on new version of dxcb plugin
+
 2018-02-07 2.0.2 Xu Shaohua <xushaohua@deepin.com>
-  	* Depends on new version of dxcb plugin
+    * Depends on new version of dxcb plugin
 
 2018-02-06 2.0.1 Xu Shaohua <xushaohua@deepin.com>
-  	* Tuning dman-search memory usage
-  	* Enable HiDPI pixmap
-  	* Tuning global search
+    * Tuning dman-search memory usage
+    * Enable HiDPI pixmap
+    * Tuning global search
 
 2018-01-04 2.0.0 Xu Shaohua <xushaohua@deepin.com>
-	* Rewrite to Qt5
+    * Rewrite to Qt5

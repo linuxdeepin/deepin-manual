@@ -1,3 +1,12 @@
+deepin-manual (2.0.4) unstable; urgency=medium
+
+  * Update manual images
+  * Fix search issue
+  * Fix qt platform plugin issue
+  * Fix icon alignment in index page
+
+ -- Xu Shaohua <liulang@liulang-PC>  Tue, 27 Feb 2018 11:15:34 +0800
+
 deepin-manual (2.0.3) unstable; urgency=medium
 
   * Include libdxcb plugin
