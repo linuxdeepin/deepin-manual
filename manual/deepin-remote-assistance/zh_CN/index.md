@@ -1,5 +1,6 @@
 # 远程协助|../common/deepin-remote-assistance.svg|
 
+## 概述
 远程协助主要是帮助用户、技术人员解决各种问题，同时遇到问题可以发起寻求别人的帮助，通过远程协助可以轻松的实现远程工作、培训、交互式教学等。
 
 ![0|remoteinterface](jpg/remoteinterface.jpg)
