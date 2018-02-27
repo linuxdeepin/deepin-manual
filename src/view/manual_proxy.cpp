@@ -25,6 +25,25 @@
 
 namespace dman {
 
+namespace {
+
+/**
+ * Read manual id from app desktop file.
+ * @param desktop_file Absolute path to app desktop file.
+ * @return Returns manual id if exists or else returns empty string.
+ */
+QString GetDeepinManualId(const QString& desktop_file) {
+  QSettings settings(desktop_file, QSettings::IniFormat);
+  settings.beginGroup("Desktop Entry");
+  const QVariant value = settings.value("X-Deepin-ManualID");
+  if (value.isValid()) {
+    return value.toString();
+  }
+  return "";
+}
+
+}  // namespace
+
 ManualProxy::ManualProxy(QObject* parent)
     : QObject(parent),
       launcher_interface_(new LauncherInterface(
@@ -50,6 +69,7 @@ QStringList ManualProxy::getSystemManualList() {
       { "deepin-cloud-scan-configurator", "deepin-cloud-scan" },
       { "com.deepin.Movie", "deepin-movie" },
       { "com.deepin.ScreenRecorder", "deepin-screen-recorder" },
+      { "org.deepin.flatdeb.deepin-screen-recorder", "deepin-screen-recorder" },
   };
 
   if (app_list_.isEmpty()) {
@@ -58,6 +78,12 @@ QStringList ManualProxy::getSystemManualList() {
     for (const AppInfo& info : list) {
       const QString app_name = kAppNameMap.value(info.key, info.key);
       if ((dir_entry.indexOf(app_name) != -1) &&
+          app_list_.indexOf(app_name) == -1) {
+        app_list_.append(app_name);
+      }
+
+      const QString deepin_app_id = GetDeepinManualId(info.desktop);
+      if (deepin_app_id == app_name &&
           app_list_.indexOf(app_name) == -1) {
         app_list_.append(app_name);
       }
