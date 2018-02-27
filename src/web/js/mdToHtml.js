@@ -30,7 +30,7 @@ export default function(mdFile, mdData) {
   console.log(path);
   renderer.image = (href, title, text) => {
     let hrefX2 = href;
-    if (devicePixelRatio >= 1.5) {
+    if (devicePixelRatio >= 1.5 && href.indexOf('.svg') == -1) {
       let path = href.split('.');
       let ext = path.pop();
       hrefX2 = `${path.join('.')}x2.${ext}`;

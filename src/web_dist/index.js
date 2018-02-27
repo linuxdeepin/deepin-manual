@@ -855,7 +855,7 @@ exports.default = function (mdFile, mdData) {
   console.log(path);
   renderer.image = function (href, title, text) {
     var hrefX2 = href;
-    if (devicePixelRatio >= 1.5) {
+    if (devicePixelRatio >= 1.5 && href.indexOf('.svg') == -1) {
       var _path = href.split('.');
       var ext = _path.pop();
       hrefX2 = _path.join('.') + 'x2.' + ext;

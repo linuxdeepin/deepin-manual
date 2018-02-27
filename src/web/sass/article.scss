@@ -46,7 +46,7 @@
         @while $i<1 {
           $i: $i+0.25;
           @media screen and (-webkit-min-device-pixel-ratio: 1+$i) {
-            zoom: 1/$i;
+            zoom: 0.5/$i;
           }
         }
         margin-top: 26px;
@@ -59,7 +59,7 @@
         @while $i<1 {
           $i: $i+0.25;
           @media screen and (-webkit-min-device-pixel-ratio: 1+$i) {
-            zoom: 1/$i;
+            zoom: 0.5/$i;
           }
         }
         margin-top: 26px;
