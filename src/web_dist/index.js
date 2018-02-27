@@ -609,7 +609,7 @@ var Index = function (_Component2) {
 
     var _this3 = _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).call(this, props));
 
-    var sequence = ['dde-file-manager', 'deepin-appstore', 'deepin-system-monitor', 'deepin-terminal', 'deepin-movie', 'deepin-music', 'deepin-image-viewer', 'deepin-screenshot', 'deepin-screen-recorder', 'deepin-voice-recorder', 'deepin-cloud-print', 'deepin-cloud-scan', 'deepin-calculator', 'deepin-repair', 'deepin-clone', 'deepin-graphics-driver-manager', 'deepin-package-manager', 'deepin-presentation-assistant', 'deepin-boot-maker'];
+    var sequence = ['dde-file-manager', 'deepin-appstore', 'deepin-system-monitor', 'deepin-terminal', 'deepin-movie', 'deepin-music', 'deepin-image-viewer', 'deepin-screenshot', 'deepin-screen-recorder', 'deepin-voice-recorder', 'deepin-cloud-print', 'deepin-cloud-scan', 'deepin-calculator', 'deepin-repair-tools', 'deepin-clone', 'deepin-graphics-driver-manager', 'deepin-package-manager', 'deepin-presentation-assistant', 'deepin-boot-maker', 'deepin-remote-assistance', 'youdao-dict'];
     _this3.state = {
       sequence: sequence,
       appList: []

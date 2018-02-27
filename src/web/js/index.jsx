@@ -62,12 +62,14 @@ export default class Index extends Component {
       'deepin-cloud-print',
       'deepin-cloud-scan',
       'deepin-calculator',
-      'deepin-repair',
+      'deepin-repair-tools',
       'deepin-clone',
       'deepin-graphics-driver-manager',
       'deepin-package-manager',
       'deepin-presentation-assistant',
-      'deepin-boot-maker'
+      'deepin-boot-maker',
+      'deepin-remote-assistance',
+      'youdao-dict'
     ];
     this.state = {
       sequence,
