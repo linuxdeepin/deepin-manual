@@ -303,7 +303,7 @@ var Article = function (_Component) {
             }
           };
           el.onerror = function () {
-            if (el.t.getAttribute('src') == el.dataset.src) {
+            if (el.getAttribute('src') == el.dataset.src) {
               el.onload();
             } else {
               el.src = el.dataset.src;
