@@ -581,6 +581,14 @@ var Item = function (_Component) {
           className: 'item',
           onClick: function onClick() {
             return global.open(_this2.state.file);
+          },
+          onMouseEnter: function onMouseEnter(e) {
+            return e.target.focus();
+          },
+          onKeyPress: function onKeyPress(e) {
+            if (e.key === 'Enter') {
+              global.open(_this2.state.file);
+            }
           }
         },
         _react2.default.createElement('img', {
