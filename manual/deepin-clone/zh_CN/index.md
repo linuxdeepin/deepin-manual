@@ -6,7 +6,7 @@
 
 ## 操作介绍
 
-深度备份还原工具支持的文件系统类型包括：btffs, ext2, ext3, ext4, f2fs, fat12, fat16, fat32, hfsplus, minix, nilfs2, ntfs, reiser4, vfat，对于不支持的文件系统会对数据进行全量备份。支持的磁盘分区表格式包括：msdos(mbr), gpt。
+深度备份还原工具支持的文件系统类型包括：btrfs, ext2, ext3, ext4, f2fs, fat12, fat16, fat32, hfsplus, minix, nilfs2, ntfs, reiser4, vfat，对于不支持的文件系统会对数据进行全量备份。支持的磁盘分区表格式包括：msdos(mbr), gpt。
 
 >![attention](icon/attention.svg):使用深度备份还原工具执行克隆和还原操作，可能会删除目标磁盘或分区的所有数据，请注意界面的警示提醒，确认后再进行操作。
 
