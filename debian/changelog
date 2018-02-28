@@ -1,3 +1,14 @@
+deepin-manual (2.0.5) unstable; urgency=medium
+
+  * Update manual
+  * Read manual id from desktop file
+  * Do not scale svg files
+  * Reorder manual list
+  * Fix atttribute error of image element
+  * Fix image viewer issue in hiDPI mode
+
+ -- Xu Shaohua <liulang@liulang-PC>  Wed, 28 Feb 2018 09:45:24 +0800
+
 deepin-manual (2.0.4) unstable; urgency=medium
 
   * Update manual images

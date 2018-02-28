@@ -1,3 +1,11 @@
+2018-02-27 2.0.5 Xu Shaohua <xushaohua@deepin.com>
+	* Update manual
+	* Read manual id from desktop file
+	* Do not scale svg files
+	* Reorder manual list
+	* Fix atttribute error of image element
+	* Fix image viewer issue in hiDPI mode
+
 2018-02-27 2.0.4 Xu Shaohua <xushaohua@deepin.com>
     * Update manual images
     * Fix search issue
