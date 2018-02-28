@@ -47,16 +47,21 @@ WindowManager::~WindowManager() {
 
 void WindowManager::openManual(const QString& app_name) {
   qDebug() << Q_FUNC_INFO << app_name;
-
-  for (WebWindow* window : windows_) {
-    if (window->appName() == app_name) {
+  if (windows_.contains(app_name)) {
+    WebWindow* window = windows_.value(app_name);
+    if (window != nullptr) {
       window->show();
       window->raise();
-      return;
     }
+    return;
   }
+
+  // Add a placeholder record.
+  windows_.insert(app_name, nullptr);
+
   WebWindow* window = new WebWindow(search_manager_);
   window->setAppName(app_name);
+  windows_.insert(app_name, window);
   window->resize(kWinWidth, kWinHeight);
   window->setMinimumSize(kWinMinWidth, kWinMinHeight);
   window->show();
@@ -66,7 +71,6 @@ void WindowManager::openManual(const QString& app_name) {
 
   connect(window, &WebWindow::closed,
           this, &WindowManager::onWindowClosed);
-  windows_.append(window);
 }
 
 QPoint WindowManager::newWindowPosition() {
@@ -94,12 +98,7 @@ QPoint WindowManager::newWindowPosition() {
 }
 
 void WindowManager::onWindowClosed(const QString& app_name) {
-  for (int i = 0; i < windows_.size(); ++i) {
-    if (windows_.at(i)->appName() == app_name) {
-      windows_.remove(i);
-      break;
-    }
-  }
+  windows_.remove(app_name);
 }
 
 }  // namespace dman
