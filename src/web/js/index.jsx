@@ -71,7 +71,7 @@ export default class Index extends Component {
       'deepin-repair-tools',
       'deepin-clone',
       'deepin-graphics-driver-manager',
-      'deepin-package-manager',
+      'deepin-deb-installer',
       'deepin-font-installer',
       'deepin-presentation-assistant',
       'deepin-boot-maker',
