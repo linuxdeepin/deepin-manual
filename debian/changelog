@@ -1,3 +1,12 @@
+deepin-manual (2.0.6) stable; urgency=medium
+
+  * Update i18n
+  * Update manuals
+  * Update icon padddings
+  * Fix WindowManager::openManual() reentrent issue
+
+ -- Xu Shaohua <xushaohua@deepin.com>  Wed, 07 Mar 2018 15:50:18 +0800
+
 deepin-manual (2.0.5) unstable; urgency=medium
 
   * Update manual
@@ -7,7 +16,7 @@ deepin-manual (2.0.5) unstable; urgency=medium
   * Fix atttribute error of image element
   * Fix image viewer issue in hiDPI mode
 
- -- Xu Shaohua <liulang@liulang-PC>  Wed, 28 Feb 2018 09:45:24 +0800
+ -- Xu Shaohua <xushaohua@deepin.com>  Wed, 28 Feb 2018 09:45:24 +0800
 
 deepin-manual (2.0.4) unstable; urgency=medium
 
@@ -16,7 +25,7 @@ deepin-manual (2.0.4) unstable; urgency=medium
   * Fix qt platform plugin issue
   * Fix icon alignment in index page
 
- -- Xu Shaohua <liulang@liulang-PC>  Tue, 27 Feb 2018 11:15:34 +0800
+ -- Xu Shaohua <xushaohua@deepin.com>  Tue, 27 Feb 2018 11:15:34 +0800
 
 deepin-manual (2.0.3) unstable; urgency=medium
 
@@ -25,13 +34,13 @@ deepin-manual (2.0.3) unstable; urgency=medium
   * Add log manager
   * Fix global search navigation
 
- -- Xu Shaohua <liulang@liulang-PC>  Thu, 08 Feb 2018 16:15:43 +0800
+ -- Xu Shaohua <xushaohua@deepin.com>  Thu, 08 Feb 2018 16:15:43 +0800
 
 deepin-manual (2.0.2) unstable; urgency=medium
 
   * Depends on new version of dxcb plugin
 
- -- Xu Shaohua <liulang@liulang-PC>  Wed, 07 Feb 2018 16:13:13 +0800
+ -- Xu Shaohua <xushaohua@deepin.com>  Wed, 07 Feb 2018 16:13:13 +0800
 
 deepin-manual (2.0.1) stable; urgency=medium
 
