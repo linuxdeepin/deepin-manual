@@ -4,17 +4,17 @@
     <message>
         <location filename="../src/app/dman.cpp" line="45"/>
         <source>Deepin Manual</source>
-        <translation>Deepin Manuál</translation>
+        <translation>Příručka pro Deepin</translation>
     </message>
     <message>
         <location filename="../src/app/dman.cpp" line="46"/>
         <source>Deepin Manual is designed to help users learn deepin and Deepin applications, providing specific instructions and function descriptions.</source>
-        <translation>Deepin Manuál je navržen tak, aby pomáhal uživatelům učit se pracovat s Deepin a na něm založenými aplikacemi, a také poskytovat specifické pokyny a popisy funkcí.</translation>
+        <translation>Příručka je navržena tak, aby pomáhala uživatelům učit se pracovat s Deepinem a na něm založenými aplikacemi, a také poskytovat zvláštní pokyny a popisy funkcí.</translation>
     </message>
     <message>
         <location filename="../src/view/widget/web_view.cpp" line="40"/>
         <source>Copy</source>
-        <translation>kopírovat</translation>
+        <translation>Kopírovat</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="32"/>
@@ -24,12 +24,12 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="33"/>
         <source>Applications</source>
-        <translation>Aplikace</translation>
+        <translation>Programy</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="35"/>
         <source>Sorry, there are no search results of &quot;%1&quot;</source>
-        <translation>Omlouváme se, nejsou žádné výsledky vyhledávání pro &quot;%1&quot;</translation>
+        <translation>Promiňte, nejsou žádné výsledky vyhledávání pro &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="36"/>
@@ -44,7 +44,7 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="39"/>
         <source>Deepin Wiki</source>
-        <translation>Deepin Wiki</translation>
+        <translation>Wikipedie Deepin</translation>
     </message>
     <message>
         <location filename="../src/view/widget/search_completion_window.cpp" line="113"/>
@@ -55,7 +55,7 @@
     <message>
         <location filename="../src/view/widget/title_bar.cpp" line="102"/>
         <source>Search</source>
-        <translation>Vyhledat</translation>
+        <translation>Hledat</translation>
     </message>
 </context>
 </TS>
