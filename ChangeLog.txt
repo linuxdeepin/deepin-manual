@@ -1,3 +1,6 @@
+2018-03-15 2.0.7 Xu Shaohua <xushaohua@deepin.com>
+    * Replace deepin-webengine with libqcef1
+
 2018-03-07 2.0.6 Xu Shaohua <xushaohua@deepin.com>
     * Update i18n
     * Update manuals

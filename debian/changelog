@@ -1,3 +1,9 @@
+deepin-manual (2.0.7) stable; urgency=medium
+
+  * Replace deepin-webengine with libqcef
+
+ -- Xu Shaohua <xushaohua@deepin.com>  Thu, 15 Mar 2018 16:35:03 +0800
+
 deepin-manual (2.0.6) stable; urgency=medium
 
   * Update i18n
