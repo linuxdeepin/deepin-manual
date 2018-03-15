@@ -18,14 +18,14 @@
 #ifndef DEEPIN_MANUAL_WEB_VIEW_H
 #define DEEPIN_MANUAL_WEB_VIEW_H
 
-#include <QWebEngineView>
+#include <qcef_web_view.h>
 
 namespace dman {
 
 /**
  * Override QWebEngineView to reimplement context menu.
  */
-class WebView : public QWebEngineView {
+class WebView : public QCefWebView {
   Q_OBJECT
  public:
   explicit WebView(QWidget* parent = nullptr);

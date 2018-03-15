@@ -17,12 +17,9 @@
 
 #include <DApplication>
 #include <LogManager.h>
-#include <QCommandLineParser>
 #include <QDBusConnection>
-#include <QDebug>
 #include <QIcon>
-#include <QTimer>
-#include <QWebEngineProfile>
+#include <qcef_context.h>
 
 #include "base/consts.h"
 #include "controller/argument_parser.h"
@@ -30,26 +27,41 @@
 #include "resources/themes/images.h"
 
 int main(int argc, char** argv) {
-  qputenv("DXCB_FAKE_PLATFORM_NAME_XCB", "true");
-  qputenv("DXCB_REDIRECT_CONTENT", "true");
-
-  const char* kScaleFactorName = "QT_SCALE_FACTOR";
-  const QString curr_scale_factor = qgetenv(kScaleFactorName);
-  if (!curr_scale_factor.isEmpty()) {
-    const double factor = curr_scale_factor.toDouble();
-    QByteArray factor_bytes;
-    factor_bytes.setNum(qRound(factor));
-    qputenv(kScaleFactorName, factor_bytes);
-  }
+//  qputenv("DXCB_FAKE_PLATFORM_NAME_XCB", "true");
+//  qputenv("DXCB_REDIRECT_CONTENT", "true");
 
   // Load custom version of dxcb plugin.
   // TODO(Shaohua): Remove this when qt5dxcb-plugin updated to 1.1.7
-  if (QFile("/usr/share/deepin-manual/plugins/libdxcb.so").exists()){
-    qDebug() << "load dxcb from local path";
-    qputenv("QT_QPA_PLATFORM_PLUGIN_PATH", "/usr/share/deepin-manual/plugins");
+//  if (QFile("/usr/share/deepin-manual/plugins/libdxcb.so").exists()){
+//    qDebug() << "load dxcb from local path";
+//    qputenv("QT_QPA_PLATFORM_PLUGIN_PATH", "/usr/share/deepin-manual/plugins");
+//  }
+
+  QCefGlobalSettings settings;
+  // Do not use sandbox.
+  settings.setNoSandbox(true);
+#ifndef NDEBUG
+  // Open http://localhost:9222 in chromium browser to see dev tools.
+  settings.setRemoteDebug(true);
+  settings.setLogSeverity(QCefGlobalSettings::LogSeverity::Warning);
+#else
+  settings.setRemoteDebug(false);
+  settings.setLogSeverity(QCefGlobalSettings::LogSeverity::Error);
+#endif
+  // Disable GPU process.
+  settings.addCommandLineSwitch("--disable-gpu", "");
+  // Set web cache folder.
+  QDir cache_dir(dman::GetCacheDir());
+  cache_dir.mkpath(".");
+  settings.setCachePath(cache_dir.filePath("cache"));
+  settings.setUserDataPath(cache_dir.filePath("cef-storage"));
+
+  const int exit_code = QCefInit(argc, argv, settings);
+  if (exit_code >= 0) {
+     return exit_code;
   }
 
-  Dtk::Widget::DApplication::loadDXcbPlugin();
+//  Dtk::Widget::DApplication::loadDXcbPlugin();
 
   Dtk::Widget::DApplication app(argc, argv);
 
@@ -74,11 +86,6 @@ int main(int argc, char** argv) {
   Dtk::Core::DLogManager::registerFileAppender();
   Dtk::Core::DLogManager::registerConsoleAppender();
 
-  QWebEngineProfile* profile = QWebEngineProfile::defaultProfile();
-  QDir cache_dir = dman::GetCacheDir();
-  profile->setCachePath(cache_dir.filePath("cache"));
-  profile->setPersistentStoragePath(cache_dir.filePath("storage"));
-
   dman::ArgumentParser argument_parser;
 
   if (argument_parser.parseArguments()) {
@@ -94,6 +101,10 @@ int main(int argc, char** argv) {
                      &window_manager, &dman::WindowManager::openManual);
     // Send openManualRequested() signals after slots connected.
     argument_parser.openManualsDelay();
+
+    QCefBindApp(&app);
     return app.exec();
+//    QCefRunMessageLoop(&app);
+//    return 0;
   }
 }

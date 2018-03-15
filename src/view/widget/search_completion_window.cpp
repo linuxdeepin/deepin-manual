@@ -173,10 +173,10 @@ void SearchCompletionWindow::initUI() {
   this->setContentsMargins(0, 0, 0, 0);
   this->setMinimumHeight(kItemHeight);
   this->setFixedWidth(242);
-//  this->setWindowFlags(Qt::FramelessWindowHint |
-//                       Qt::CustomizeWindowHint |
-//                       Qt::BypassWindowManagerHint);
-//  this->setAttribute(Qt::WA_NativeWindow, true);
+  this->setWindowFlags(Qt::FramelessWindowHint |
+                       Qt::CustomizeWindowHint |
+                       Qt::BypassWindowManagerHint);
+  this->setAttribute(Qt::WA_NativeWindow, true);
 
   ThemeManager::instance()->registerWidget(this);
 }

@@ -24,9 +24,9 @@
 #include <QMouseEvent>
 #include <QResizeEvent>
 #include <QWebChannel>
-#include <QWebEnginePage>
-#include <QWebEngineSettings>
-#include <QWebEngineView>
+#include <qcef_web_page.h>
+#include <qcef_web_settings.h>
+#include <qcef_web_view.h>
 
 #include "base/consts.h"
 #include "controller/search_manager.h"
@@ -38,7 +38,6 @@
 #include "view/widget/image_viewer.h"
 #include "view/widget/search_completion_window.h"
 #include "view/widget/title_bar.h"
-#include "view/widget/web_view.h"
 
 namespace dman {
 
@@ -63,6 +62,10 @@ WebWindow::WebWindow(SearchManager* search_manager, QWidget* parent)
 }
 
 WebWindow::~WebWindow() {
+  if (completion_window_ != nullptr) {
+    delete completion_window_;
+    completion_window_ = nullptr;
+  }
 }
 
 void WebWindow::setAppName(const QString& app_name) {
@@ -75,7 +78,7 @@ void WebWindow::setAppName(const QString& app_name) {
 void WebWindow::initConnections() {
   connect(title_bar_, &TitleBar::searchTextChanged,
           this, &WebWindow::onSearchTextChanged);
-  connect(web_view_->page(), &QWebEnginePage::loadFinished,
+  connect(web_view_->page(), &QCefWebPage::loadFinished,
           this, &WebWindow::onWebPageLoadFinished);
   connect(title_bar_, &TitleBar::downKeyPressed,
           completion_window_, &SearchCompletionWindow::goDown);
@@ -103,7 +106,7 @@ void WebWindow::initConnections() {
 void WebWindow::initUI() {
   i18n_ = new I18nProxy(this);
 
-  completion_window_ = new SearchCompletionWindow(this);
+  completion_window_ = new SearchCompletionWindow();
   completion_window_->hide();
 
   title_bar_ = new TitleBar();
@@ -116,20 +119,14 @@ void WebWindow::initUI() {
 
   manual_proxy_ = new ManualProxy(this);
 
-  web_view_ = new WebView();
+  web_view_ = new QCefWebView();
   this->setCentralWidget(web_view_);
 
   // Disable web security.
-  auto settings = web_view_->page()->settings();
-  settings->setAttribute(QWebEngineSettings::LocalStorageEnabled, true);
-  settings->setAttribute(QWebEngineSettings::LocalContentCanAccessRemoteUrls, true);
-  settings->setAttribute(QWebEngineSettings::LocalContentCanAccessFileUrls, true);
-  settings->setAttribute(QWebEngineSettings::JavascriptEnabled, true);
-  settings->setAttribute(QWebEngineSettings::JavascriptCanAccessClipboard, true);
+  web_view_->page()->settings()->setWebSecurity(QCefWebSettings::StateDisabled);
 
   // Use TitleBarProxy instead.
-  QWebChannel* channel = new QWebChannel(web_view_);
-  web_view_->page()->setWebChannel(channel);
+  QWebChannel* channel = web_view_->page()->webChannel();
   web_view_->setAcceptDrops(false);
   channel->registerObject("i18n", i18n_);
   channel->registerObject("imageViewer", image_viewer_proxy_);
@@ -230,9 +227,9 @@ void WebWindow::onSearchAnchorResult(const QString& keyword,
     completion_window_->autoResize();
     // Move to below of search edit.
     const QPoint local_point(this->rect().width() / 2 - 94, 36);
-//  const QPoint global_point(this->mapToGlobal(local_point));
-    completion_window_->move(local_point);
-//  completion_window_->setFocusPolicy(Qt::NoFocus);
+    const QPoint global_point(this->mapToGlobal(local_point));
+    completion_window_->move(global_point);
+    completion_window_->setFocusPolicy(Qt::NoFocus);
     completion_window_->setFocusPolicy(Qt::StrongFocus);
     completion_window_->setSearchAnchorResult(result);
   }
@@ -253,7 +250,8 @@ bool WebWindow::eventFilter(QObject* watched, QEvent* event) {
         title_bar_proxy_->forwardButtonClicked();
         break;
       }
-      default: {}
+      default: {
+      }
     }
   }
   return QObject::eventFilter(watched, event);

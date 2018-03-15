@@ -20,7 +20,7 @@
 
 #include <DMainWindow>
 #include <QTimer>
-class QWebEngineView;
+class QCefWebView;
 
 #include "controller/search_result.h"
 
@@ -77,7 +77,7 @@ class WebWindow : public Dtk::Widget::DMainWindow {
   ManualProxy* manual_proxy_ = nullptr;
   TitleBar* title_bar_ = nullptr;
   TitleBarProxy* title_bar_proxy_ = nullptr;
-  QWebEngineView* web_view_ = nullptr;
+  QCefWebView* web_view_ = nullptr;
   QTimer search_timer_;
 
  private slots:

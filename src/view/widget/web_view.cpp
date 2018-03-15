@@ -19,14 +19,12 @@
 
 #include <QContextMenuEvent>
 #include <QMenu>
-#include <QWebEngineContextMenuData>
 
 #include "view/widget/web_page.h"
 
 namespace dman {
 
-WebView::WebView(QWidget* parent) : QWebEngineView(parent) {
-  this->setPage(new WebPage(this));
+WebView::WebView(QWidget* parent) : QCefWebView(parent) {
 }
 
 WebView::~WebView() {
@@ -34,15 +32,15 @@ WebView::~WebView() {
 }
 
 void WebView::contextMenuEvent(QContextMenuEvent* event) {
-  QMenu* menu;
-  const QString selected = page()->contextMenuData().selectedText();
-  if (!selected.isEmpty()) {
-    menu = new QMenu(this);
-    auto copy = page()->action(QWebEnginePage::Copy);
-    copy->setText(QObject::tr("Copy"));
-    menu->addAction(copy);
-    menu->popup(event->globalPos());
-  }
+//  QMenu* menu;
+//  const QString selected = page()->contextMenuData().selectedText();
+//  if (!selected.isEmpty()) {
+//    menu = new QMenu(this);
+//    auto copy = page()->action(QWebEnginePage::Copy);
+//    copy->setText(QObject::tr("Copy"));
+//    menu->addAction(copy);
+//    menu->popup(event->globalPos());
+//  }
 }
 
 }  // namespace dman

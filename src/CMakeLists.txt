@@ -60,13 +60,14 @@ find_package(Qt5Gui REQUIRED)
 find_package(Qt5LinguistTools)
 find_package(Qt5Sql REQUIRED)
 find_package(Qt5WebChannel REQUIRED)
-find_package(Qt5DeepinWebEngineWidgets REQUIRED)
 find_package(Qt5Widgets REQUIRED)
 find_package(Qt5LinguistTools REQUIRED)
 
 pkg_search_module(DtkWidget REQUIRED dtkwidget)
+pkg_search_module(QCef REQUIRED libqcef)
 
 include_directories(${DtkWidget_INCLUDE_DIRS})
+include_directories(${QCef_INCLUDE_DIRS})
 
 set(LINK_LIBS
     Qt5::Core
@@ -74,9 +75,9 @@ set(LINK_LIBS
     Qt5::Sql
     Qt5::Widgets
     Qt5::WebChannel
-    Qt5::DeepinWebEngineWidgets
 
     ${DtkWidget_LDFLAGS}
+    ${QCef_LDFLAGS}
     )
 
 set(BASE_FILES
@@ -151,10 +152,10 @@ set(VIEW_FILES
     view/widget/search_edit.h
     view/widget/title_bar.cpp
     view/widget/title_bar.h
-    view/widget/web_page.cpp
-    view/widget/web_page.h
-    view/widget/web_view.cpp
-    view/widget/web_view.h
+#    view/widget/web_page.cpp
+#    view/widget/web_page.h
+#    view/widget/web_view.cpp
+#    view/widget/web_view.h
     )
 
 # Main executable
