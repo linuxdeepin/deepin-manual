@@ -61,7 +61,7 @@ int main(int argc, char** argv) {
      return exit_code;
   }
 
-//  Dtk::Widget::DApplication::loadDXcbPlugin();
+  Dtk::Widget::DApplication::loadDXcbPlugin();
 
   Dtk::Widget::DApplication app(argc, argv);
 
@@ -104,7 +104,5 @@ int main(int argc, char** argv) {
 
     QCefBindApp(&app);
     return app.exec();
-//    QCefRunMessageLoop(&app);
-//    return 0;
   }
 }
