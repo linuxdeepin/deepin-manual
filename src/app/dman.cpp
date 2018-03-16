@@ -64,6 +64,9 @@ int main(int argc, char** argv) {
   Dtk::Widget::DApplication::loadDXcbPlugin();
 
   Dtk::Widget::DApplication app(argc, argv);
+//  if (!DPlatformWindowHandle::pluginVersion().isEmpty()) {
+//    app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings, true);
+//  }
 
   app.setTheme("light");
   app.setAttribute(Qt::AA_EnableHighDpiScaling, true);

@@ -81,14 +81,24 @@ bool ArgumentParser::parseArguments() {
           kManualOpenIface,
           QDBusConnection::sessionBus(),
           this);
-      // Only parse positional arguments.
-      for (const QString& arg : position_args) {
-        iface->Open(arg);
+
+      if (iface->isValid()) {
+        // Call dbus interface.
+        // Only parse positional arguments.
+        for (const QString& arg : position_args) {
+          iface->Open(arg);
+        }
+      } else {
+        // It may fail to register dbus service in root session.
+        // Create new instance.
+        for (const QString& manual : position_args) {
+          manuals_.append(manual);
+        }
+        return false;
       }
     }
     return true;
   } else {
-
     qDebug() << "Register dbus service successfully";
     const QStringList position_args = parser.positionalArguments();
     if (position_args.isEmpty()) {
