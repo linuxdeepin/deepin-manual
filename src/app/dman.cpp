@@ -16,6 +16,7 @@
  */
 
 #include <DApplication>
+#include <DPlatformWindowHandle>
 #include <LogManager.h>
 #include <QDBusConnection>
 #include <QIcon>
@@ -64,9 +65,9 @@ int main(int argc, char** argv) {
   Dtk::Widget::DApplication::loadDXcbPlugin();
 
   Dtk::Widget::DApplication app(argc, argv);
-//  if (!DPlatformWindowHandle::pluginVersion().isEmpty()) {
-//    app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings, true);
-//  }
+  if (!Dtk::Widget::DPlatformWindowHandle::pluginVersion().isEmpty()) {
+    app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings, true);
+  }
 
   app.setTheme("light");
   app.setAttribute(Qt::AA_EnableHighDpiScaling, true);
