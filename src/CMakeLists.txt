@@ -139,6 +139,8 @@ set(VIEW_FILES
     view/theme_manager.h
     view/title_bar_proxy.cpp
     view/title_bar_proxy.h
+    view/web_event_delegate.cpp
+    view/web_event_delegate.h
     view/web_window.cpp
     view/web_window.h
 

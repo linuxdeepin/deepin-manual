@@ -35,6 +35,7 @@
 #include "view/manual_proxy.h"
 #include "view/search_proxy.h"
 #include "view/title_bar_proxy.h"
+#include "view/web_event_delegate.h"
 #include "view/widget/image_viewer.h"
 #include "view/widget/search_completion_window.h"
 #include "view/widget/title_bar.h"
@@ -120,6 +121,7 @@ void WebWindow::initUI() {
   manual_proxy_ = new ManualProxy(this);
 
   web_view_ = new QCefWebView();
+  web_view_->page()->setEventDelegate(new WebEventDelegate(this));
   this->setCentralWidget(web_view_);
 
   // Disable web security.
