@@ -60,7 +60,7 @@ void dman::WebEventDelegate::onBeforeContextMenu(
   auto flags = params.getTypeFlags();
   if (flags & QCEF_CM_FLAG_SELECTION) {
     menu->addItem(MenuIds::MenuCopy,
-                  "Copy",
+                  QObject::tr("Copy"),
                   true,
                   [](QCefWebPage* page) {
                     page->copy();
