@@ -2,17 +2,17 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/app/dman.cpp" line="45"/>
+        <location filename="../src/app/dman.cpp" line="82"/>
         <source>Deepin Manual</source>
         <translation>Deepin Klavuz</translation>
     </message>
     <message>
-        <location filename="../src/app/dman.cpp" line="46"/>
+        <location filename="../src/app/dman.cpp" line="83"/>
         <source>Deepin Manual is designed to help users learn deepin and Deepin applications, providing specific instructions and function descriptions.</source>
         <translation>Deepin Klavuz, kullanıcılara Deepin ve Deepin uygulamalarını öğrenmelerine yardımcı olmak için özel talimatlar ve işlev açıklamaları sağlayacak şekilde tasarlanmıştır.</translation>
     </message>
     <message>
-        <location filename="../src/view/widget/web_view.cpp" line="40"/>
+        <location filename="../src/view/web_event_delegate.cpp" line="63"/>
         <source>Copy</source>
         <translation>Kopyala</translation>
     </message>
@@ -53,7 +53,7 @@
         <translation>Tüm metinde &quot;%1&quot; ara</translation>
     </message>
     <message>
-        <location filename="../src/view/widget/title_bar.cpp" line="102"/>
+        <location filename="../src/view/widget/title_bar.cpp" line="96"/>
         <source>Search</source>
         <translation>Ara</translation>
     </message>

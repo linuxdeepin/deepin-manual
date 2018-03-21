@@ -2,17 +2,17 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/app/dman.cpp" line="45"/>
+        <location filename="../src/app/dman.cpp" line="82"/>
         <source>Deepin Manual</source>
         <translation>Deepin Manual</translation>
     </message>
     <message>
-        <location filename="../src/app/dman.cpp" line="46"/>
+        <location filename="../src/app/dman.cpp" line="83"/>
         <source>Deepin Manual is designed to help users learn deepin and Deepin applications, providing specific instructions and function descriptions.</source>
         <translation>Deepin Manual ta diseñáu p&apos;ayudar a los usuarios a deprender el sistema y les aplicaciones de Deepin forniendo instrucciones y descripciones de funciones específiques.</translation>
     </message>
     <message>
-        <location filename="../src/view/widget/web_view.cpp" line="40"/>
+        <location filename="../src/view/web_event_delegate.cpp" line="63"/>
         <source>Copy</source>
         <translation>Copiar</translation>
     </message>
@@ -53,7 +53,7 @@
         <translation>Guetar «%1» en testu completu</translation>
     </message>
     <message>
-        <location filename="../src/view/widget/title_bar.cpp" line="102"/>
+        <location filename="../src/view/widget/title_bar.cpp" line="96"/>
         <source>Search</source>
         <translation>Guetar</translation>
     </message>

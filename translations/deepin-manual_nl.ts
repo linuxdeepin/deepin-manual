@@ -2,17 +2,17 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/app/dman.cpp" line="45"/>
+        <location filename="../src/app/dman.cpp" line="82"/>
         <source>Deepin Manual</source>
         <translation>Deepin Handboek</translation>
     </message>
     <message>
-        <location filename="../src/app/dman.cpp" line="46"/>
+        <location filename="../src/app/dman.cpp" line="83"/>
         <source>Deepin Manual is designed to help users learn deepin and Deepin applications, providing specific instructions and function descriptions.</source>
         <translation>Deepin Handboek is ontworpen om gebruikers te helpen met het deepin besturingssysteem en deepin-applicaties. Het bevat daarom specifieke instructies en functiebeschrijvingen, zodat de gebruiker hiervan kennis op kan doen.</translation>
     </message>
     <message>
-        <location filename="../src/view/widget/web_view.cpp" line="40"/>
+        <location filename="../src/view/web_event_delegate.cpp" line="63"/>
         <source>Copy</source>
         <translation>Kopiëren</translation>
     </message>
@@ -53,7 +53,7 @@
         <translation>Zoek &quot;%1&quot; in de volledige tekst</translation>
     </message>
     <message>
-        <location filename="../src/view/widget/title_bar.cpp" line="102"/>
+        <location filename="../src/view/widget/title_bar.cpp" line="96"/>
         <source>Search</source>
         <translation>Zoeken</translation>
     </message>

@@ -2,17 +2,17 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/app/dman.cpp" line="45"/>
+        <location filename="../src/app/dman.cpp" line="82"/>
         <source>Deepin Manual</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/app/dman.cpp" line="46"/>
+        <location filename="../src/app/dman.cpp" line="83"/>
         <source>Deepin Manual is designed to help users learn deepin and Deepin applications, providing specific instructions and function descriptions.</source>
         <translation>ডিপিন ম্যানুয়াল তৈরী করা হয়েছে ব্যাবহারকারীদের ডিপিন এবং ডিপিন এপ্লিকেশন সম্পর্কে সুনির্দিষ্ট নির্দেশনা এবং কার্যবলীর বর্ণনা দিয়ে সাহায্য করতে।</translation>
     </message>
     <message>
-        <location filename="../src/view/widget/web_view.cpp" line="40"/>
+        <location filename="../src/view/web_event_delegate.cpp" line="63"/>
         <source>Copy</source>
         <translation>কপি</translation>
     </message>
@@ -53,7 +53,7 @@
         <translation>সম্পূর্ণ টেক্সটে &quot;%1&quot; অনুসন্ধান করুন</translation>
     </message>
     <message>
-        <location filename="../src/view/widget/title_bar.cpp" line="102"/>
+        <location filename="../src/view/widget/title_bar.cpp" line="96"/>
         <source>Search</source>
         <translation>অনুসন্ধান করুন</translation>
     </message>
