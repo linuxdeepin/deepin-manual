@@ -1,3 +1,9 @@
+deepin-manual (2.0.7.5) stable; urgency=medium
+
+  * Add WebEventDelegate to override default context menu
+
+ -- Xu Shaohua <xushaohua@deepin.com>  Wed, 21 Mar 2018 15:14:16 +0800
+
 deepin-manual (2.0.7.4) stable; urgency=medium
 
   * Add DontCreateNativeWidgetSibings flag
