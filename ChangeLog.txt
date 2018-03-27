@@ -1,3 +1,6 @@
+2018-03-27 pro-2.0.7.6 Xu Shaohua <xushaohua@deepin.com>
+	* Update dde manual content
+
 2018-03-21 2.0.7.6 Xu Shaohua <xushaohua@deepin.com>
     * Update i18n
 
