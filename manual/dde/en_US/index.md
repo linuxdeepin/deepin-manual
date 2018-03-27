@@ -1,14 +1,31 @@
 # Desktop Environment|../common/deepin-system.svg|
 
 ## Overview
-deepin is an elegant, easy to use and reliable Linux desktop operating system developed by Deepin Technology Co., Ltd. WPS Office, Skype, Spotify and other deepin featured applications have been preinstalled. It allows you to experience a variety of recreational activities, but also to meet your daily needs. With continually improved and perfected functions, we believe deepin will be loved and used by more and more users.
+deepin is an elegant, easy to use and reliable Linux desktop operating system developed by Deepin Technology Co., Ltd.  Google Chrome, QQ, Netease Cloud Music, Foxit Reader, Sogou Pinyin and other deepin featured applications have been preinstalled. It not only meets your office needs, but also allows you to experience a variety of recreational activities. With continually improved and perfected functions, we believe deepin will be loved and used by more and more users.
 
 ![1|desk](jpg/desk.jpg)
 
+## Activation
+
+After deepin Professional installation, restart the computer, a prompt will pop up asking for activation. You can use it normally without activation, but to upgrade or get technical support, activation is required.
+
+1. Click on **Activate** in the prompt or ![activate](icon/red_deepin.svg) in the dock to enter deepin activation interface.
+
+![0|activate](jpg/activate.jpg)
+
+2. Click on **Input the serial number**.
+
+3. Input your serial number, click **Authorize**.
+
+4. After successful activation, ![activate](icon/green_deepin.svg) will be shown on the dock.
+
+> ![notes](icon/notes.svg): You can also **Import the authorization file** obtained from service providers or agents to activate deepin.
+
 ## Desktop
+
 You can create new file/folder, sort files, set hot corners and wallpapers, etc. on desktop.
 
-![0|contextmenu](jpg/contextmenu.jpg)
+![0|contextmenthe update, and you can choosu](jpg/contextmenu.jpg)
 
 ### Create New File/Folder
 You can create new folder, common documents, or doing general operations for files on desktop, just like in file manager.
@@ -23,24 +40,24 @@ You can create new folder, common documents, or doing general operations for fil
             <td width="100px">Select the default one or choose another software to open the file.</td>
         </tr>
         <tr>
-            <td>Copy</td>
-            <td>Select one or more files/folders and copy to another location.</td>
-        </tr>
-        <tr>
             <td>Cut</td>
             <td>Select one or more files/folders and move to another location.</td>
+        </tr>
+        <tr>
+            <td>Copy</td>
+            <td>Select one or more files/folders and copy to another location.</td>
         </tr>
         <tr>
             <td>Rename</td>
             <td>Select one file/folder to rename.</td>
         </tr>
         <tr>
-            <td>Throw to Trash</td>
+            <td>Delete</td>
             <td>Select one or more files/folders to delete.</td>
         </tr>
         <tr>
-            <td>Compress/Uncompress</td>
-            <td>Select one or more files/folders to compress, or to uncompress a compressed file.</td>
+            <td>Compress/Extract</td>
+            <td>Select one or more files/folders to compress, or extract a compressed file.</td>
         </tr>
         <tr>
             <td>Create link</td>
@@ -92,7 +109,7 @@ Hot Corner is to simplify your operations and helps you quickly enter the main i
 
 1. Right click on desktop.
 2. Click on **Corner Settings**, then the whole screen will get dark and the corresponding hot corner function will be displayed on the four corners.
-3. Move the mouse pointer to a corner and select another one.
+3. Move the mouse pointer to a corner and select one option to set the corner.
 4. Click on the desktop blank area to exit.
 
  ![1|hotspace](jpg/hotspace.jpg)
@@ -120,7 +137,7 @@ You can drag and drop icon to the location you want on desktop:
 - Drag and drop icon to folder is to move file to folder.
 
 ## Dock
-Dock is usually displayed at the bottom of the desktop to help you fix frequently used applications, it is mainly made of Launcher, application icons, tray, shutdown button and system datetime, etc.
+Dock is usually displayed at the bottom of the desktop to help you quickly open frequently used applications, which includes Launcher, application icons, tray, shutdown button and system datetime, etc.
 
 ### Dock Icons
 You can create application shortcuts on Dock in Launcher and do related operations on it.
@@ -317,10 +334,12 @@ Launcher can help you to manage all installed applications, you can quickly find
 
 ### Switch Mode
 
-Users can switch between fullscreen mode and mini mode manually. The location of mini mode will go with that of Dock.
+Users can switch Launcher between mini mode and fullscreen mode manually. The location of mini mode will go with that of Dock.
 
- ![1|fullscreen](jpg/fullscreen.jpg)
- ![1|mini](jpg/mini.jpg)
+![1|mini](jpg/mini.jpg) 
+
+![1|fullscreen](jpg/fullscreen.jpg)
+
 
 ### Sort Applications
 
@@ -417,7 +436,7 @@ The homepage of Control Center is for displaying the common information for user
         <tr>
             <td>2</td>
             <td>Application Widget Bar</td>
-            <td>Display the setting navigation of Control Center and weather info.</td>
+            <td>Display the setting navigation of Control Center.</td>
         </tr>
         <tr>
             <td>3</td>
@@ -478,17 +497,19 @@ You can protect your privacy and data and get security protection by setting acc
 3. Click on **Login without password**, you can enter into the system without password.
 
 
-#### Set Fingerprint Password
+![0|setaccount](jpg/setaccount.jpg)
+
+#### Join domain####
 
 1. On the homepage of Control Center, click on ![account_normal](icon/account_normal.svg).
-2. Click on an existed account in the list.
-3. Click on **Fingerprint Password** to open auto login function.
-4. Click on **Add Fingerprint** to enter the adding interface.
-5. Put the finger in fingerprint reader, and then click on **Done** after added successfully.
 
-![0|fingerprint1](jpg/fingerprint1.jpg)
+2. Click **Join domain**.
 
+3. Input domain server address, admin account and password.
 
+4. Click **Join Domain**.
+
+![notes](icon/notes.svg):  Then you can log in as a domain user by the account and password provided by domain admin.
 
 #### Delete Account
 
@@ -497,11 +518,11 @@ You can protect your privacy and data and get security protection by setting acc
 3. Click on **Delete Account** .
 4. In the confirm interface, click on **Delete**.
 
->![notes](icon/notes.svg): The current login user can not be deleted.
-
+> ![notes](icon/notes.svg): The current login user can not be deleted.
 
 ### Display Settings
-You can let your computer reach the best performance by setting the resolution, direction and extend screens of the monitor(s).
+
+Your computer can reach the best performance by setting its resolution, direction and extend screens of the monitor(s).
 
 ![0|display](jpg/display.jpg)
 
@@ -525,8 +546,6 @@ You can adjust the visual perception by setting the screen resolution, brightnes
 
 1. On the homepage of Control Center, click on ![display_normal](icon/display_normal.svg).
 2. Click on **Brightness** to enter the interface for brightness settings.
-  - Enable **Auto-brightness**, the brightness will be auto adjusted by computer camera.
-  - Enable **Night Shift**, the screen tone will be auto adjusted by help of figuring out your location.
 
 ##### Set Screen Direction
 
@@ -680,8 +699,8 @@ Experience the enjoyment of surfing the Internet! You can browse news, play vide
 ##### Connect to Wi-Fi Network
 
 1. On the homepage of Control Center, click on ![network_normal](icon/network_normal.svg).
-2. Click on **Wi-Fi** to enter wireless network interface.
-3. Click on **Wireless Network** switch to enable wireless network.
+2. Click on **Wireless Network Card** switch to enable wireless network.
+3. Click on **Wireless Network** to enter wireless network list.
 4. The computer will auto search the nearby available wireless network.
 5. Select the wireless network to connect.
 - If the network is opened, it will auto connect to the network.
@@ -690,9 +709,10 @@ Experience the enjoyment of surfing the Internet! You can browse news, play vide
 ##### Connect to Hidden Network
 
 1. On the homepage of Control Center, click on ![network_normal](icon/network_normal.svg).
-2. Click on **Wi-Fi** to enter wireless network interface.
-3. Click on **Connect to Hidden Network** to enter the interface for connecting to the hidden network.
-4. Enter the name of the network and choose the encrypt method, then enter the password.
+2. Click on **Wireless Network Card** switch to enable wireless network.
+3. Click on **Wireless Network** to enter wireless network list.
+4. Click on **Connect to Hidden Network** to enter the interface for connecting to the hidden network.
+5. Enter the name of the network and choose the encrypt method, then enter the password.
 
 
 
@@ -716,15 +736,17 @@ Experience the enjoyment of surfing the Internet! You can browse news, play vide
 ##### Create New DSL/PPPoE Connection
 
 1. On the homepage of Control Center, click on ![network_normal](icon/network_normal.svg).
-2. Click on **Create PPPoE Connection** to enter the interface for creating DSL/PPPoE connections.
-3. Enter the name, account and password.
-4. Click on **Save** and the system will create the connection and try to connect to it.
+2. Click on **DSL**.
+3. Click on **Create PPPoE Connection**.
+4. Enter the name, account and password.
+5. Click on **Save** and the system will create the connection and try to connect to it.
 
 ##### Set DSL/PPPoE Connection
 
 1. On the homepage of Control Center, click on ![network_normal](icon/network_normal.svg).
-2. Click on **PPPoE Connection** to enter the interface for setting DSL/PPPoE connections.
-3. Modify name, account, password, open automatically connect, set IP address or open other auth services.
+2. Click on **DSL**.
+3. Click on **PPPoE Connection** to enter the interface for setting DSL/PPPoE connections.
+4. Modify name, account, password, open automatically connect, set IP address or open other auth services.
 
 #### VPN
 
@@ -734,17 +756,6 @@ Experience the enjoyment of surfing the Internet! You can browse news, play vide
 4. Then click on **Import VPN** to import the existed VPN file.
 
 > ![notes](icon/notes.svg): If you don't want to use the VPN as the default routing, click on **Only applied in corresponding resources**.
-
-
-#### Application Proxy
-
-1. On the homepage of Control Center, click on ![network_normal](icon/network_normal.svg).
-2. Click on **Application Proxy** to enter the interface for setting application proxy.
-- Click on **Proxy Type** to select the proxy type.
-- Fill in IP address, port, username, Password
-3. Click on **OK** to save and click on **Cancel** to return previous interface.
-
-> ![notes](icon/notes.svg): After configured, right click on an application in Launcher to check **Open by proxy**, then the application proxy will be opened.
 
 
 #### System Proxy
@@ -871,7 +882,7 @@ The system default keyboard layout is US keyboard, but you can add other layouts
 
 ##### Add Keyboard Layout
 
-1. On the homepage of Control Center, click on !keyboard_normal](icon/keyboard_normal.svg).
+1. On the homepage of Control Center, click on ![keyboard_normal](icon/keyboard_normal.svg).
 2. Click on **Keyboard Layout** to enter the interface for setting layouts.
 3. Click on **Add Keyboard Layout**.
 4. Search the keyboard layout you want to add.
@@ -929,7 +940,7 @@ The system default keyboard layout is US keyboard, but you can add other layouts
 5. When successfully added a shortcut, you can click on **Edit** > **Delete** on the custom shortcut to delete it.
 
 ### Update Settings
-You can check the updates for system and applications, and also can modify mirror, upgrade the system and applications.
+You can check the updates for system and applications manually, or auto-download updates.
 
 ![0|update](jpg/update.jpg)
 
@@ -944,16 +955,9 @@ You can check the updates for system and applications, and also can modify mirro
 #### Auto Clear Package Cache
 
 1. On the homepage of Control Center, click on ![update](icon/update.svg).
-2. Click on **Auto clear package cache**.
-3. The system cache will be auto cleared.
-
-#### Switch Mirror
-
-1. On the homepage of Control Center, click on ![update](icon/update.svg).
 2. Click on **Update Settings** to enter the detailed interface.
-3. Click on **Switch Mirror** to enter the switching mirror interface.
-4. The system will detect the connecting speed.
-5. Switch to a new mirror to refresh the package list.
+3. Click on **Auto clear package cache**.
+4. The system cache will be auto cleared.
 
 #### Update and Upgrade
 
@@ -996,13 +1000,13 @@ You can view system version, hardware info or set boot menu.
 ##### Default Boot System
 
 1. On the homepage of Control Center, click on ![system_info_normal](icon/system_info_normal.svg).
-2. Click on **Startup Menu** to enter the startup menu interface.
+2. Click on **Boot Menu** to enter the boot menu interface.
 3. Click to select boot entry and drag and drop to adjust boot order.
 
 ##### Boot Splash Background
 
 1. On the homepage of Control Center, click on ![system_info_normal](icon/system_info_normal.svg).
-2. Click on **Startup Menu** to enter the startup menu interface.
+2. Click on **Boot Menu** to enter the boot menu interface.
 3. Press and hold the left mouse button to drag the background image and drop it over the preview image to change the background.
 
 
