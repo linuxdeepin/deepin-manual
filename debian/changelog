@@ -1,3 +1,9 @@
+deepin-manual (2.0.7.7) stable; urgency=medium
+
+  * Update dde manual content
+
+ -- Xu Shaohua <xushaohua@deepin.com>  Tue, 27 Mar 2018 17:07:50 +0800
+
 deepin-manual (2.0.7.6) stable; urgency=medium
 
   * Update i18n
