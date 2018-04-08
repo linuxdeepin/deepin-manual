@@ -102,7 +102,7 @@ export default class Article extends Component {
       this.props.setHash(hash);
     }
   }
-  //图片全屏预览
+  //内部链接预览
   showPreview(appName, hash, rect) {
     let file = `${global.path}/${appName}/${global.lang}/index.md`;
     global.readFile(file, data => {
@@ -122,10 +122,10 @@ export default class Article extends Component {
       d.innerHTML = '';
       DomList.map(el => d.appendChild(el));
       html = d.innerHTML;
-      let { top, left } = rect;
+      let { top, left, right } = rect;
       let style = {};
       let tClass = 't_';
-      if (left > document.body.clientWidth / 2) {
+      if (right > document.body.clientWidth / 2) {
         tClass += 'right_';
         style.left = left - 500 + 60 + rect.width - 5;
       } else {

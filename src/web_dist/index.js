@@ -364,7 +364,7 @@ var Article = function (_Component) {
         this.props.setHash(hash);
       }
     }
-    //图片全屏预览
+    //内部链接预览
 
   }, {
     key: 'showPreview',
@@ -394,11 +394,12 @@ var Article = function (_Component) {
         });
         html = d.innerHTML;
         var top = rect.top,
-            left = rect.left;
+            left = rect.left,
+            right = rect.right;
 
         var style = {};
         var tClass = 't_';
-        if (left > document.body.clientWidth / 2) {
+        if (right > document.body.clientWidth / 2) {
           tClass += 'right_';
           style.left = left - 500 + 60 + rect.width - 5;
         } else {
