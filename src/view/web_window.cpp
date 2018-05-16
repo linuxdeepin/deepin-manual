@@ -219,6 +219,11 @@ void WebWindow::onWebPageLoadFinished(bool ok) {
 
 void WebWindow::onSearchAnchorResult(const QString& keyword,
                                      const SearchAnchorResultList& result) {
+  // Ignore this signal if current manual window is not present.
+  if (keyword != completion_window_->keyword()) {
+    return;
+  }
+
   Q_UNUSED(keyword);
   if (result.isEmpty()) {
     // Hide completion window if no anchor entry matches.

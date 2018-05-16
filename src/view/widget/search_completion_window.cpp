@@ -107,6 +107,8 @@ void SearchCompletionWindow::onEnterPressed() {
 }
 
 void SearchCompletionWindow::setKeyword(const QString& keyword) {
+  keyword_ = keyword;
+
   QFontMetrics metrics = search_button_->fontMetrics();
   search_button_->setText(
       metrics.elidedText(

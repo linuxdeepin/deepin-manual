@@ -36,6 +36,9 @@ class SearchCompletionWindow : public QFrame {
   ~SearchCompletionWindow() override;
 
   void autoResize();
+  const QString& keyword() const {
+    return keyword_;
+  }
 
  signals:
   void resultClicked(const SearchAnchorResult& result);
@@ -57,6 +60,7 @@ class SearchCompletionWindow : public QFrame {
   QStringListModel* model_ = nullptr;
   SearchButton* search_button_ = nullptr;
   SearchAnchorResultList result_;
+  QString keyword_;
 
  private slots:
   void onSearchButtonEntered();
