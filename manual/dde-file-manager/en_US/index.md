@@ -145,6 +145,15 @@ Deepin File Manager is featured with the basic functions as a file manager, user
 
 > ![notes](icon/notes.svg): File/folder in external device will be permanently deleted and can not be restored when you select **Delete**.
 
+### Undo operation
+In file manager,  use ![Ctrl](icon/Ctrl.svg) + ![Z](icon/Z.svg) to undo the previous steps, including:
+- Delete the newly created file/folder.
+- Resume the renamed file/folder to the previous name.
+- Restore the deleted file/folder from trash.
+- Restore the moved (via drag or cut) file/folder to the previous location.
+- Delete the copied and pasted file/folder.
+> ![attention](icon/attention.svg): If the above operations are continuous, you can undo all of them; if there is file overwriting or permanently file deleting, then you can only return to that step.
+
 ### Options to Open a File
 
 Users can select to open a file with different applications.
@@ -269,6 +278,64 @@ Users can move bookmarks within the bookmark area. In Deepin File Manager, drag 
 
 Users can remove bookmarks by right clicking on the bookmark and select **Remove**, or drag and drop the bookmark out of the navigation bar to remove it.
 
+### Manage Tags
+
+By adding tags on file/folder, you can classify and manage your files better.
+
+#### Add Tags
+
+##### By Tag information
+
+1. Right click on a file/folder, select **Tag information**.
+2. Input tag info, and use comma to separate tags.
+3. Press  ![enter](icon/Enter.svg) to finish adding tag.
+>![notes](icon/notes.svg)：The tag color is  randomly assigned from eight default colors.
+
+
+![1|tag info](jpg/tag info.jpg)
+
+
+
+![1|input tag](jpg/input tag.jpg)
+
+##### By Color Tag
+
+Right click on a file/folder, select a "color button" to create a color tag.
+
+![1|color tag](jpg/color tag.jpg)
+
+> ![notes](icon/notes.svg): You can add tag to multiple files/folders at once, or add multiple tags to a single file/folder; the tag appears in the left navigation bar.
+
+> ![attention](icon/attention.svg): If a file has a tag, copy or cut and then paste it, the new file still has the same tag.
+
+#### Rename Tag
+
+Right click on a tag in  the left navigation bar,  select **Rename** to rename the tag.
+
+![1|rename tag](jpg/rename tag.jpg)
+
+#### Change Tag Color
+
+Right click on a tag in  the left navigation bar,  select a "Color button" to change the tag color.
+
+#### Delete Tag
+Right click on a tag in  the left navigation bar,  select **Delete** to delete the tag.
+
+### Preview Files
+
+Deepin File Manager supports file preview. Select a file and press the space bar on the keyboard to quickly preview the file info, including image resolution, document size, text content, audio and video playback, etc.
+
+#### Preview Video
+
+1. Select a video and press  the space bar to start video preview.
+2. Click in the preview window to pause video playback.
+3. Drag the progress bar to play forward or backward.
+4. Click **Open** at the bottom to open the video by default program.
+
+![1|video preview](jpg/video preview.jpg)
+
+![notes](icon/notes.svg): When selecting multiple files to  preview, use ![previous](icon/previous.png) or ![next](icon/next.png) to jump to the previous or next file.
+
 ### Computers in LAN
 
 Users can visit computers in LAN to access files and folders.
@@ -343,7 +410,7 @@ On Deepin File Manager interface, you can mount/unmount, remove, format and decr
 
 Mounted disks are displayed in the left navigation bar of Deepin File Manager. Including:
 - Local disk, which includes all the partitions in local disk.
-- External disk, which includes mobile hard disk, light disk and USB flash disk
+- External disk, which includes mobile hard disk, CD/DVD and USB flash disk.
 - Mobile device, which includes mobile phone storage, storage card, SD card and so on.
 
 ### Unmount/Eject/Safely Remove Disks
@@ -379,6 +446,11 @@ Users can create new window, set share password, view manual and about informati
 1. On Deepin File Manager interface, click on ![menu](icon/icon_menu.svg).
 2. Select **New window** to open a new window.
 
+### Switch Theme
+
+1. On Deepin File Manager interface, click on ![main_menu](icon/icon_menu.svg).
+2. Select **Dark Theme**.
+3. The interface will switch to dark theme.
 
 ### Settings
 
