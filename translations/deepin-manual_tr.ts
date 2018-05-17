@@ -4,12 +4,12 @@
     <message>
         <location filename="../src/app/dman.cpp" line="82"/>
         <source>Deepin Manual</source>
-        <translation>Deepin Klavuz</translation>
+        <translation>Deepin Kılavuzu</translation>
     </message>
     <message>
         <location filename="../src/app/dman.cpp" line="83"/>
         <source>Deepin Manual is designed to help users learn deepin and Deepin applications, providing specific instructions and function descriptions.</source>
-        <translation>Deepin Klavuz, kullanıcılara Deepin ve Deepin uygulamalarını öğrenmelerine yardımcı olmak için özel talimatlar ve işlev açıklamaları sağlayacak şekilde tasarlanmıştır.</translation>
+        <translation>Deepin Kılavuzu, kullanıcıların Deepin ve Deepin uygulamalarını öğrenmelerine yardımcı olmak için bilgiler ve özellik açıklamalarını sağlamak üzere hazırlanmıştır.</translation>
     </message>
     <message>
         <location filename="../src/view/web_event_delegate.cpp" line="63"/>
@@ -29,17 +29,17 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="35"/>
         <source>Sorry, there are no search results of &quot;%1&quot;</source>
-        <translation>Üzgünüz, &quot;%1&quot; ile ilgili arama sonucu yok</translation>
+        <translation>Maalesef, &quot;%1&quot; ifadesi için bir sonuç bulunamadı</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="36"/>
         <source>Change your keywords and try again, or search it in Deepin Wiki</source>
-        <translation>Anahtar kelimelerinizi değiştirerek tekrar deneyin veya Deepin Wiki&apos;de arayın</translation>
+        <translation>Aradığınız sözcükleri değiştirerek yaniden deneyin ya da Deepin Wiki üzerinde arayın</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="38"/>
         <source>Home</source>
-        <translation>Giriş</translation>
+        <translation>Ana Sayfa</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="39"/>
@@ -50,12 +50,12 @@
         <location filename="../src/view/widget/search_completion_window.cpp" line="113"/>
         <location filename="../src/view/widget/search_completion_window.cpp" line="162"/>
         <source>Search &quot;%1&quot; in the full text</source>
-        <translation>Tüm metinde &quot;%1&quot; ara</translation>
+        <translation>&quot;%1&quot; ifadesi tüm metinlerde aransın</translation>
     </message>
     <message>
         <location filename="../src/view/widget/title_bar.cpp" line="96"/>
         <source>Search</source>
-        <translation>Ara</translation>
+        <translation>Arama</translation>
     </message>
 </context>
 </TS>
