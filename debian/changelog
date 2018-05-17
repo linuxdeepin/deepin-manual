@@ -1,3 +1,10 @@
+deepin-manual (2.0.8) stable; urgency=medium
+
+  * Show completion window on active window
+  * Upgrade manual of dde-file-manager to 1.7
+
+ -- Xu Shaohua <xushaohua2016@outlook.com>  Thu, 17 May 2018 09:35:45 +0800
+
 deepin-manual (2.0.7.6) stable; urgency=medium
 
   * Update i18n
