@@ -52,6 +52,7 @@ void WindowManager::openManual(const QString& app_name) {
     if (window != nullptr) {
       window->show();
       window->raise();
+      window->activateWindow();
     }
     return;
   }
@@ -65,6 +66,7 @@ void WindowManager::openManual(const QString& app_name) {
   window->resize(kWinWidth, kWinHeight);
   window->setMinimumSize(kWinMinWidth, kWinMinHeight);
   window->show();
+  window->activateWindow();
 
   const QPoint pos = this->newWindowPosition();
   window->move(pos);
