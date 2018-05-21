@@ -3,7 +3,3 @@ install(FILES deepin-manual.desktop
 
 install(FILES themes/common/images/deepin-manual.svg
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/scalable/apps/)
-
-install(FILES libdxcb
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual/plugins/
-        RENAME libdxcb.so)

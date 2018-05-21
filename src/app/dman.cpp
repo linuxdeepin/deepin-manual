@@ -31,13 +31,6 @@ int main(int argc, char** argv) {
   qputenv("DXCB_FAKE_PLATFORM_NAME_XCB", "true");
   qputenv("DXCB_REDIRECT_CONTENT", "true");
 
-  // Load custom version of dxcb plugin.
-  // TODO(Shaohua): Remove this when qt5dxcb-plugin updated to 1.1.7
-  if (QFile("/usr/share/deepin-manual/plugins/libdxcb.so").exists()){
-    qDebug() << "load dxcb from local path";
-    qputenv("QT_QPA_PLATFORM_PLUGIN_PATH", "/usr/share/deepin-manual/plugins");
-  }
-
   QCefGlobalSettings settings;
   // Do not use sandbox.
   settings.setNoSandbox(true);
