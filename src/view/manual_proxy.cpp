@@ -60,16 +60,16 @@ ManualProxy::~ManualProxy() {
 
 QStringList ManualProxy::getSystemManualList() {
   const QHash<QString, QString> kAppNameMap = {
-      { "com.deepin.Calendar", "dde-calendar" },
-      { "com.deepin.Music", "deepin-music" },
-      { "com.deepin.Screenshot", "deepin-screenshot" },
-      { "com.deepin.VoiceRecorder", "deepin-voice-recorder" },
+      { "org.deepin.flatdeb.deepin-calendar", "dde-calendar" },
+      { "org.deepin.flatdeb.deepin-music", "deepin-music" },
+      { "org.deepin.flatdeb.deepin-screenshot", "deepin-screenshot" },
+      { "org.deepin.flatdeb.deepin-voice-recorder", "deepin-voice-recorder" },
       { "deepin-cloud-print-configurator", "deepin-cloud-print" },
-      { "com.deepin.ImageViewer", "deepin-image-viewer" },
+      { "org.deepin.flatdeb.deepin-image-viewer", "deepin-image-viewer" },
       { "deepin-cloud-scan-configurator", "deepin-cloud-scan" },
-      { "com.deepin.Movie", "deepin-movie" },
-      { "com.deepin.ScreenRecorder", "deepin-screen-recorder" },
+      { "org.deepin.flatdeb.deepin-movie", "deepin-movie" },
       { "org.deepin.flatdeb.deepin-screen-recorder", "deepin-screen-recorder" },
+      { "org.deepin.flatdeb.deepin-calculator", "deepin-calculator"},
   };
 
   if (app_list_.isEmpty()) {
