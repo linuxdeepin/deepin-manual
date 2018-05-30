@@ -1,3 +1,11 @@
+deepin-manual (2.0.9) stable; urgency=medium
+
+  * Fix index layout
+  * Delete unused libdxcb plugin
+  * Update flatpak package name mapper
+
+ -- Xu Shaohua <xushaohua2016@outlook.com>  Wed, 30 May 2018 14:50:28 +0800
+
 deepin-manual (2.0.8) stable; urgency=medium
 
   * Show completion window on active window

@@ -1,6 +1,10 @@
+2018-05-30 2.0.9 Xu Shaohua <xushaohua2016@outlook.com>
+    * Fix index layout
+
 2018-05-30 2.0.8.1 deepinzhangshuang <zhangshuang@deepin.com>
     * fix:flatpak mapping error
     * Delete embeded libqdxcb.so
+
 2018-05-17 2.0.8 Xu Shaohua <xushaohua2016@outlook.com>
     * Show completion window on active window
     * Upgrade manual of dde-file-manager to 1.7
