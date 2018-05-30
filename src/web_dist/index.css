@@ -227,7 +227,8 @@ div {
       content: '';
       flex: auto; }
     #index .items .empty {
-      width: 160px; }
+      width: 160px;
+      padding: 0 10px; }
     #index .items .item {
       margin-top: 30px;
       width: 160px;
