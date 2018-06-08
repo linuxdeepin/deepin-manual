@@ -1,98 +1,13 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<?xml version="1.0" encoding="iso-8859-1"?>
 <!-- Generator: Adobe Illustrator 18.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-
-<svg
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   version="1.1"
-   id="图层_1"
-   x="0px"
-   y="0px"
-   viewBox="0 0 36 36"
-   xml:space="preserve"
-   sodipodi:docname="login_icon.svg"
-   width="36"
-   height="36"
-   inkscape:version="0.92.1 r15371"><metadata
-     id="metadata31"><rdf:RDF><cc:Work
-         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><defs
-     id="defs29" /><sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="836"
-     inkscape:window-height="480"
-     id="namedview27"
-     showgrid="false"
-     fit-margin-top="0"
-     fit-margin-left="0"
-     fit-margin-right="0"
-     fit-margin-bottom="0"
-     inkscape:zoom="6.5555556"
-     inkscape:cx="18"
-     inkscape:cy="18"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="图层_1" /><path
-     style="opacity:0.1;fill:none;stroke:#000000;stroke-miterlimit:10"
-     d="m 35.5,30.618 c 0,2.696 -2.186,4.882 -4.882,4.882 H 5.382 C 2.686,35.5 0.5,33.314 0.5,30.618 V 5.382 C 0.5,2.686 2.686,0.5 5.382,0.5 h 25.235 c 2.696,0 4.882,2.186 4.882,4.882 v 25.236 z"
-     id="path2"
-     inkscape:connector-curvature="0" /><path
-     style="opacity:0.6;fill:none;stroke:#000000;stroke-miterlimit:10"
-     d="m 34.5,30.618 c 0,2.144 -1.738,3.882 -3.882,3.882 H 5.382 C 3.238,34.5 1.5,32.762 1.5,30.618 V 5.382 C 1.5,3.238 3.238,1.5 5.382,1.5 h 25.235 c 2.144,0 3.882,1.738 3.882,3.882 v 25.236 z"
-     id="path4"
-     inkscape:connector-curvature="0" /><linearGradient
-     id="SVGID_1_"
-     gradientUnits="userSpaceOnUse"
-     x1="18"
-     y1="34"
-     x2="18"
-     y2="2"><stop
-       offset="0"
-       style="stop-color:#E8862A"
-       id="stop6" /><stop
-       offset="1"
-       style="stop-color:#F4AF53"
-       id="stop8" /></linearGradient><path
-     style="fill:url(#SVGID_1_)"
-     d="M 34,30.618 C 34,32.486 32.486,34 30.618,34 H 5.382 C 3.514,34 2,32.486 2,30.618 V 5.382 C 2,3.514 3.514,2 5.382,2 H 30.617 C 32.486,2 34,3.514 34,5.382 Z"
-     id="path11"
-     inkscape:connector-curvature="0" /><linearGradient
-     id="SVGID_2_"
-     gradientUnits="userSpaceOnUse"
-     x1="18"
-     y1="34"
-     x2="18"
-     y2="2"><stop
-       offset="0"
-       style="stop-color:#FFFFFF;stop-opacity:0.3"
-       id="stop13" /><stop
-       offset="1"
-       style="stop-color:#FFFFFF;stop-opacity:0.5"
-       id="stop15" /></linearGradient><path
-     style="fill:none;stroke:url(#SVGID_2_);stroke-miterlimit:10"
-     d="m 33.5,30.618 c 0,1.592 -1.29,2.882 -2.882,2.882 H 5.382 C 3.79,33.5 2.5,32.21 2.5,30.618 V 5.382 C 2.5,3.79 3.79,2.5 5.382,2.5 h 25.235 c 1.592,0 2.882,1.29 2.882,2.882 v 25.236 z"
-     id="path18"
-     inkscape:connector-curvature="0" /><g
-     id="g24"><polyline
-       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
-       points="   20.326,11.431 26.895,18 20.326,24.569  "
-       id="polyline20" /><line
-       style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10"
-       x1="25"
-       y1="18"
-       x2="9"
-       y2="18"
-       id="line22" /></g></svg>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="&#x56FE;&#x5C42;_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" viewBox="0 0 20 20" enable-background="new 0 0 20 20" xml:space="preserve">
+<g>
+	<path opacity="0.1" fill="#FFFFFF" d="M15.7,19.5H4.3c-2.09,0-3.8-1.71-3.8-3.8V4.3c0-2.09,1.71-3.8,3.8-3.8h11.4
+		c2.09,0,3.8,1.71,3.8,3.8v11.4C19.5,17.79,17.79,19.5,15.7,19.5z"/>
+	<path fill="none" stroke="#CBCBCB" stroke-miterlimit="10" d="M15.5,19.5h-11c-2.209,0-4-1.791-4-4v-11c0-2.209,1.791-4,4-4h11
+		c2.209,0,4,1.791,4,4v11C19.5,17.709,17.709,19.5,15.5,19.5z"/>
+	<polygon points="11.619,13.34 16,9.544 11.623,5.66 10.973,6.4 13.9,9 5,9 5,10 13.875,10 10.977,12.553 	"/>
+</g>
+</svg>
