@@ -1,3 +1,9 @@
+deepin-manual (2.0.9.1) stable; urgency=medium
+
+  * Update manual
+
+ -- Xu Shaohua <xushaohua2016@outlook.com>  Fri, 08 Jun 2018 10:44:46 +0800
+
 deepin-manual (2.0.9) stable; urgency=medium
 
   * Fix index layout
