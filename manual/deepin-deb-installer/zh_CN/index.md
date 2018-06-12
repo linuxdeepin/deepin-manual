@@ -1,6 +1,6 @@
 # 深度软件包管理器|../common/deepin-deb-installer.svg|
 
-## 概述|../common/icon_overview.svg|
+## 概述
 
 深度软件包管理器是一款deb包管理工具，方便用户安装商店以外的自定义应用。界面简单易用，支持批量安装、版本信息识别和依赖自动补全等功能，只要您获取正确的deb包就能快速地安装在深度操作系统上。
 
@@ -9,7 +9,7 @@
 
 
 
-## 操作介绍|../common/icon_commoncoperat.svg|
+## 操作介绍
 
 
 ### 打开方式
@@ -85,7 +85,7 @@
 
 
 
-## 主菜单|../common/icon_optionsetting.svg|
+## 主菜单
 
 ### 帮助
 
