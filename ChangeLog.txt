@@ -1,3 +1,7 @@
+2018-06-12 pro-2.0.9.3 Xu Shaohua <xushaohua2016@outlook.com>
+    * Update dde
+    * Update deepin-screen-record
+
 2018-06-12 2.0.9.3 Xu Shaohua <xushaohua2016@outlook.com>
     * Update manual
 
