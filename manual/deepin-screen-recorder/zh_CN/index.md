@@ -38,7 +38,7 @@
 4. 录制完成后点击dock栏上的图标结束录制。
 5. 结束后视频将自动保存到桌面。
 
-![1|recoder](jpg/recoder.jpg)
+![1|recorder](jpg/recorder.jpg)
 
 ### 选择录制区域
 

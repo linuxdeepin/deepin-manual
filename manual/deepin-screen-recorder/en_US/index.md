@@ -43,11 +43,10 @@ You can customize the recording area and select the recording format before reco
 
 ### Select Recording Area
 
-After running Deepin Screen Recorder, you can select the recording area, namely fullscreenm, automatically identifying window and customizing window.
+After running Deepin Screen Recorder, you can select the recording area, namely fullscreen, automatically identifying window and customizing window.
 
--Fullscreenm and automatically identifying window: When selecting a recording area,window on desktop can be automatically identified following the movement of your mouse, then click to select the cunrrent window for recording. Since, desktop is also a window, when the mouse pointer is on the desktop, it will be identified as fullscreen recording.
-
--Customizing window: When selecting a recording area, you can use the mouse to select any area and then adjust the rectangle box location and size, finally click to select the current window for recording.
+- Fullscreen and automatically identifying window: When selecting a recording area,window on desktop can be automatically identified following the movement of your mouse, then click to select the cunrrent window for recording. Since, desktop is also a window, when the mouse pointer is on the desktop, it will be identified as fullscreen recording.
+- Customizing window: When selecting a recording area, you can use the mouse to select any area and then adjust the rectangle box location and size, finally click to select the current window for recording.
 
 ![1|select](jpg/select.jpg)
 
