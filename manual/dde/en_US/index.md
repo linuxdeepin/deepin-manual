@@ -1,7 +1,7 @@
 # Desktop Environment|../common/deepin-system.svg|
 
 ## Overview
-deepin is an elegant, easy to use and reliable Linux desktop operating system developed by Deepin Technology Co., Ltd. WPS Office, Skype, Spotify and other deepin featured applications have been preinstalled. It allows you to experience a variety of recreational activities, but also to meet your daily needs. With continually improved and perfected functions, we believe deepin will be loved and used by more and more users.
+deepin is an elegant, easy to use and reliable Linux desktop operating system developed by Deepin Technology Co., Ltd.  Google Chrome, Skype, Foxit Reader and other deepin featured applications have been preinstalled. It not only meets your office needs, but also allows you to experience a variety of recreational activities. With continually improved and perfected functions, we believe deepin will be loved and used by more and more users.
 
 ![1|desk](jpg/desk.jpg)
 
@@ -10,6 +10,22 @@ deepin is an elegant, easy to use and reliable Linux desktop operating system de
 When login deepin after a successful deepin installation, a welcome program will automatically start. You can watch the introduction video to get deepin new features, select desktop mode and icon theme, enable window effect, and know more about deepin.
 
 ![0|welcome](jpg/welcome.jpg)
+
+## Activation
+
+After deepin Professional installation, restart the computer, a prompt will pop up asking for activation. You can use it normally without activation, but to upgrade or get technical support, activation is required.
+
+1. Click on **Activate** in the prompt or ![activate](icon/red_deepin.svg) in the dock to enter deepin activation interface.
+
+![0|activate](jpg/activate.jpg)
+
+2. Click on **Input the serial number**.
+
+3. Input your serial number, click **Authorize**.
+
+4. After successful activation, ![activate](icon/green_deepin.svg) will be shown on the dock.
+
+> ![notes](icon/notes.svg): You can also **Import the authorization file** obtained from service providers or agents to activate deepin.
 
 ## Desktop
 
@@ -24,47 +40,41 @@ You can create new folder, common documents, or doing general operations for fil
 - Right click on desktop and click on **New document**, select the type and enter its name.
 
 <table class="block1">
-<tbody>
-    <tr>
-        <td width="20px">Open with</td>
-        <td width="100px">Select the default one or choose another software to open the file.</td>
-    </tr>
-    <tr>
-        <td>Cut</td>
-        <td>Select one or more files/folders and move to another location.</td>
-    </tr>
-    <tr>
-        <td>Copy</td>
-        <td>Select one or more files/folders and copy to another location.</td>
-    </tr>
-    <tr>
-        <td>Rename</td>
-        <td>Select one file/folder to rename.</td>
-    </tr>
-    <tr>
-        <td>Delete</td>
-        <td>Select one or more files/folders to delete.</td>
-    </tr>
-    <tr>
-        <td>Compress/Extract</td>
-        <td>Select one or more files/folders to compress, or extract a compressed file.</td>
-    </tr>
-    <tr>
-        <td>Create link</td>
-        <td>Select one file/folder to create a link.</td>
-    </tr>
-    	<tr>
-        <td>Tag information</td>
-        <td>Select one file/folder to add a tag.</td>
-    </tr>
-    <tr>
-        <td>Properties</td>
-        <td>View the basic info of a file/folder, or to change the permission and open with options.</td>
-    </tr>
-</tbody>
-
+    <tbody>
+        <tr>
+            <td width="20px">Open with</td>
+            <td width="100px">Select the default one or choose another software to open the file.</td>
+        </tr>
+        <tr>
+            <td>Cut</td>
+            <td>Select one or more files/folders and move to another location.</td>
+        </tr>
+        <tr>
+            <td>Copy</td>
+            <td>Select one or more files/folders and copy to another location.</td>
+        </tr>
+        <tr>
+            <td>Rename</td>
+            <td>Select one file/folder to rename.</td>
+        </tr>
+        <tr>
+            <td>Delete</td>
+            <td>Select one or more files/folders to delete.</td>
+        </tr>
+        <tr>
+            <td>Compress/Extract</td>
+            <td>Select one or more files/folders to compress, or extract a compressed file.</td>
+        </tr>
+        <tr>
+            <td>Create link</td>
+            <td>Select one file/folder to create a link.</td>
+        </tr>
+        <tr>
+            <td>Properties</td>
+            <td>View the basic info of a file/folder, or to change the permission and open with options.</td>
+        </tr>
+    </tbody>
  </table>
-
 
 ### Sort Files
 You can sort the files on desktop to fit your needs.
@@ -86,17 +96,11 @@ You can sort the files on desktop to fit your needs.
 2. Click on **Icon size**, you can:
 
  - Click on **Tiny** to display icons in tiny size.
-
  - Click on **Small** to display icons in small size.
-
  - Click on **Medium** to display icons in medium size. 
-
  - Click on **Large** to display icons in large size. 
-
  - Click on **Super large** to display icons in super large size.
-
-> ![tips](icon/tips.svg)：Press ![Ctrl](icon/Ctrl.svg) + ![=](icon/=.svg)/![-](icon/-.svg)to adjust icon size on desktop and that in launcher.
-
+> ![tips](icon/tips.svg)：Press ![Ctrl](icon/Ctrl.svg) + ![=](icon/=.svg)/![-](icon/-.svg) to adjust icon size on desktop and that in launcher.
 
 ### Set Display
 You can set the screen resolution, brightness and so on.
@@ -114,7 +118,7 @@ Hot Corner is to simplify your operations and helps you quickly enter the main i
 3. Move the mouse pointer to a corner and select one option to set the corner.
 4. Click on the desktop blank area to exit.
 
-![1|hotspace](jpg/hotspace.jpg)
+ ![1|hotspace](jpg/hotspace.jpg)
 
 > ![tips](icon/tips.svg): Please pay attention to the animation of corner settings.
 
@@ -211,18 +215,18 @@ There are two display modes of Dock, which are fashion mode and efficient mode.
 - **Efficient Mode**: The display mode is similar to Windows 7 and displayed by a small strip at the bottom of screen. Application icons fixed on Dock by default will be displayed in small ones, and icons of same types will be merged together to save more space for others.
 
 
-![1|fashion](jpg/fashion.jpg)
+ ![1|fashion](jpg/fashion.jpg)
 
-![1|efficient](jpg/efficient.jpg)
+ ![1|efficient](jpg/efficient.jpg)
 
 
-You can switch the display modes by the following operations:
+You can switch the display mode by the following operations:
 
 1. On desktop, move the mouse pointer over Dock.
 2. Right click to select **Mode**.
 3. Select a display mode.
 
-![1|mode](jpg/mode.jpg)
+ ![1|mode](jpg/mode.jpg)
 
 ### Set Dock Location
 You can place the Dock on any direction of your desktop.
@@ -231,7 +235,7 @@ You can place the Dock on any direction of your desktop.
 2. Right click to select **Location**.
 3. Select a location.
 
-![1|location](jpg/location.jpg)
+ ![1|location](jpg/location.jpg)
 
 ### Adjust Dock Size
 
@@ -239,7 +243,7 @@ You can place the Dock on any direction of your desktop.
 2. Right click to select **Size**.
 3. Select a size.
 
-![1|size](jpg/size.jpg)
+ ![1|size](jpg/size.jpg)
 
 ### Show/Hide Dock
 
@@ -250,7 +254,7 @@ You can place the Dock on any direction of your desktop.
 - Select **Keep Hidden**, Dock will be hidden and only displayed when mouse hovering on Dock.
 - Select **Smart Hide**, Dock will be automatically hidden when Dock area needs to be used.
 
-![1|status](jpg/status.jpg)
+ ![1|status](jpg/status.jpg)
 
 
 ### Show/Hide Plugins
@@ -265,7 +269,7 @@ You can place the Dock on any direction of your desktop.
 
 > ![notes](icon/notes.svg): Uncheck the plugin icon, it will be hidden on Dock.
 
-![1|plugins](jpg/plugins.jpg)
+ ![1|plugins](jpg/plugins.jpg)
 
 ### Shutdown Interface
 There are two ways to shut down:
@@ -319,12 +323,8 @@ You can find all deleted files in trash which can be resumed or emptied.
 You can restore files deleted by executing the following operations:
 
 1. Select the file to restore in trash.
-
 2. Right click on the file and select **Restore**.
-
 3. The file will be in its original path.
-
-> ![tips](icon/tips.svg): To restore file/folder just deleted, press ![Ctrl](icon/Ctrl.svg) +  ![Z](icon/Z.svg) to undo it.
 
 > ![attention](icon/attention.svg): If the original path does not exist anymore, it will automatically create the folders.
 
@@ -342,12 +342,14 @@ Launcher can help you to manage all installed applications, you can quickly find
 
 ### Switch Modes
 
-* Users can switch between fullscreen mode and mini mode manually. Click icon at the upper right corner to switch modes.
-* Both the modes support searching applications and sending it to desktop or dock.
-* Mini mode also supports open File Manager, Control Center and shutdown interface directly.
+- Users can switch between fullscreen mode and mini mode manually. Click icon at the upper right corner to switch modes.
+- Both the modes support searching applications and sending it to desktop or dock.
+- Mini mode also supports open File Manager, Control Center and shutdown interface directly.
+
+![1|mini](jpg/mini.jpg) 
 
 ![1|fullscreen](jpg/fullscreen.jpg)
-![1|mini](jpg/mini.jpg)
+
 
 ### Sort Applications
 
@@ -356,10 +358,9 @@ In fullscreen mode, all applications in Launcher are displayed by name by defaul
 - Move the mouse pointer over the application icon, press and hold the mouse left button, then drag and drop to arrange the application icon freely.
 - Click on the category icon ![category](icon/category_icon.svg) on the upper left in Launcher to arrange the icons by categories.
 
+ ![1|sortapp](jpg/sortapp.jpg)
 
 In mini mode,  applications are displayed by use frequency by default.
-
-![1|sortapp](jpg/sortapp.jpg)
 
 ### Search Applications
 
@@ -370,7 +371,7 @@ If you already know the application name, you can locate it even faster by enter
 1. In Launcher, type in a word such as "deepin" with keyboard.
 2. System will automatically search for all applications which contain the keyword "deepin", and then display the searched result in Launcher.
 
-![1|searchapp](jpg/searchapp.jpg)
+ ![1|searchapp](jpg/searchapp.jpg)
 
 ### Set Shortcut
 Shortcut is an easy and convenient way to launch applications.
@@ -384,7 +385,7 @@ You can select to send the application to desktop or Dock to facilitate follow-u
    * Click on **Send to dock** to fix the application on Dock.
    * Click on **Add to startup** to add the application to startup, it will automatically run when the computer boots.
 
-![0|sendto](jpg/sendto.jpg)
+ ![0|sendto](jpg/sendto.jpg)
 
 > ![notes](icon/notes.svg): You can drag the application icon from Launcher to Dock. But, you can not drag and drop the application while it is running. At this time you can right click the application icon on Dock and select **Dock** to fix. So that you can quickly open it next time.
 
@@ -397,7 +398,7 @@ You can delete the application shortcut from desktop, Dock and so on.
    * Click on **Remove from dock** to remove the application fixed on Dock.
    * Click on **Remove from startup** to remove the application from startup.
 
-![0|deleteto](jpg/deleteto.jpg)
+ ![0|deleteto](jpg/deleteto.jpg)
 
 > ![notes](icon/notes.svg): Application fixed on Dock can be removed by pressing and holding left mouse button to drag the application icon away from Dock. You can not drag and remove the application while it is running. At this time you can right click on the application icon on Dock and select **Undock** to remove.
 
@@ -418,7 +419,7 @@ You can choose to uninstall applications you no longer use to save disk space.
 1. In Launcher, right click the application icon.
 2. Click on **Uninstall**.
 
-![0|uninstallapp](jpg/uninstallapp.jpg)
+ ![0|uninstallapp](jpg/uninstallapp.jpg)
 
 > ![tips](icon/tips.svg): In **Fashion mode**, drag the application icon in Launcher fullscreen mode to ![trash](icon/trash_icon.svg) on dock to uninstall applications.
 
@@ -441,7 +442,7 @@ The homepage of Control Center displays the common information for users to dail
         <tr>
             <td>2</td>
             <td>Application Widget Area</td>
-            <td>Display the setting navigation of Control Center, weather info and notification list.</td>
+            <td>Display the setting navigation of Control Center.</td>
         </tr>
         <tr>
             <td>3</td>
@@ -481,7 +482,8 @@ You can protect your privacy and data and get security protection by setting acc
 3. Click on **Modify Avatar** to enter the interface for modifying avatar.
 4. Select a default avatar or local avatar to finish.
 
-> ![notes](icon/notes.svg): You can click on the user avatar to directly enter the **Accounts** interface.
+
+>![notes](icon/notes.svg): You can click on the user avatar to directly enter the **Accounts** interface.
 
 
 #### Modify Account Password
@@ -505,17 +507,19 @@ You can protect your privacy and data and get security protection by setting acc
 3. Click on **Login without password**, you can enter into the system without password.
 
 
-#### Set Fingerprint Password
+![0|setaccount](jpg/setaccount.jpg)
+
+#### Join domain####
 
 1. On the homepage of Control Center, click on ![account_normal](icon/account_normal.svg).
-2. Click on an existed account in the list.
-3. Click on **Fingerprint Password** to open auto login function.
-4. Click on **Add Fingerprint** to enter the adding interface.
-5. Put the finger in fingerprint reader, and then click on **Done** after added successfully.
 
-![0|fingerprint1](jpg/fingerprint1.jpg)
+2. Click **Join domain**.
 
+3. Input domain server address, admin account and password.
 
+4. Click **Join Domain**.
+
+![notes](icon/notes.svg):  Then you can log in as a domain user by the account and password provided by domain admin.
 
 #### Delete Account
 
@@ -526,8 +530,8 @@ You can protect your privacy and data and get security protection by setting acc
 
 > ![notes](icon/notes.svg): The current login user can not be deleted.
 
-
 ### Display Settings
+
 Your computer can reach the best performance by setting its resolution, direction and extend screens of the monitor(s).
 
 ![0|display](jpg/display.jpg)
@@ -554,7 +558,6 @@ You can adjust the visual perception by setting the screen resolution, brightnes
 
 1. On the homepage of Control Center, click on ![display_normal](icon/display_normal.svg).
 2. Click on **Brightness** to enter the interface for brightness settings.
-   - Enable **Night Shift**, the screen tone will be auto adjusted by help of figuring out your location.
 
 ##### Set Screen Direction
 
@@ -569,10 +572,10 @@ Widen your horizon by multiple screens! You can use VGA cable to connect your co
 
 1. On the homepage of Control Center, click on ![display_normal](icon/display_normal.svg).
 2. Select an multiple screen mode:
-   - **Copy** to copy the setting of main screen to others.
-   - **Extend** to extend the display area of main screen.
-   - **Only Displayed on xxx** to display screen content only on xxx screen.
-   - **Custom Settings** to add custom settings in Control Center.
+- **Copy** to copy the setting of main screen to others.
+- **Extend** to extend the display area of main screen.
+- **Only Displayed on xxx** to display screen content only on xxx screen.
+- **Custom Settings** to add custom settings in Control Center.
 
 ##### Custom Settings
 
@@ -588,7 +591,7 @@ Widen your horizon by multiple screens! You can use VGA cable to connect your co
 3. Select the device to project.
 4. There will be a icon followed the device name, click again to cancel projection.
 
-> ![notes](icon/notes.svg): Screen projection needs the support from NIC, so WIFI will be disconnected when screen projection is enabled.
+>![notes](icon/notes.svg): Screen projection needs the support from NIC, so WIFI will be disconnected when enable screen projection.
 
 
 ### Default Application Settings
@@ -609,8 +612,8 @@ When installed multiple applications in the same type, you can choose one of the
 1. On the homepage of Control Center, click on ![default_applications_normal](icon/default_applications_normal.svg).
 2. Click on **Default Applications** to enter the settings interface for modifying default applications.
 3. Click on **Add** in different types:
-   - When you selected a *.desktop file for default application, the icon and name will be added to the list automatically.
-   - When you selected a specified binary file, the icon, name and path will be added to the list automatically.
+- When you selected a *.desktop file for default application, the icon and name will be added to the list automatically.
+- When you selected a specified binary file, the icon, name and path will be added to the list automatically.
 
 > ![notes](icon/notes.svg): The type lists will show an **Edit** button at right when user has added default applications.
 
@@ -767,17 +770,6 @@ Experience the enjoyment of surfing the Internet! You can browse news, play vide
 > ![notes](icon/notes.svg): If you don't want to use the VPN as the default routing, click on **Only applied in corresponding resources**.
 
 
-#### Application Proxy
-
-1. On the homepage of Control Center, click on ![network_normal](icon/network_normal.svg).
-2. Click on **Application Proxy** to enter the interface for setting application proxy.
-- Click on **Proxy Type** to select the proxy type.
-- Fill in IP address, port, username, and password.
-3. Click on **Confirm** to save and click on **Cancel** to return to previous interface.
-
-> ![notes](icon/notes.svg): After configured, right click on an application in Launcher to check **Open by proxy**, then the application will be opened by proxy.
-
-
 #### System Proxy
 
 1. On the homepage of Control Center, click on ![network_normal](icon/network_normal.svg).
@@ -804,6 +796,8 @@ Set your speaker and microphone to let you hear more comfortable and sing better
 1. On the homepage of Control Center, click on ![sound_normal](icon/sound_normal.svg).
 2. Click on **Speaker** switch to enable the speaker.
 3. Adjust the output volume and left right balance.
+
+
 
 #### Set Microphone
 
@@ -875,17 +869,14 @@ Set the date and time manually to disable the auto sync function.
 > ![notes](icon/notes.svg): There is an option for laptop, named **Suspend on lid close**, you can set it by your needs.
 
 ### Mouse and Touchpad
+
 ![0|mouse](jpg/mouse.jpg)
+
 1. On the homepage of Control Center, click on ![mouse_touchpad_normal](icon/mouse_touchpad_normal.svg).
 2. Click on **Left Hand**/**Natural Scrolling**/**Disable the touchpad while typing**/**Disable the touchpad when inserting the mouse** switch to enable functions.
 3. Adjust **Scroll Speed**, **Double-click Speed** and **Pointer Speed**.
 
-
-You can enable ** Palm Detect**, and set **Minimun contact surface** and **Minimum pressure value** to avoid misopreation on touchpad.
-
-![0|touchpad](jpg/touchpad.jpg)
-
-> ![notes](icon/notes.svg): **Left Hand** switches the left and right mouse button, and Natural Scrolling is the scrolling function behaved as in Mac OS.
+> ![notes](icon/notes.svg): **Left Hand** switches the left and right mouse button and Natural Scrolling is the scrolling function behaved like in Mac OS.
 
 ### Keyboard and Language
 You can choose your keyboard and its layout for different countries and regions or view, search, modify and custom shortcuts.
@@ -961,13 +952,9 @@ The system default keyboard layout is US keyboard, but you can add other layouts
 5. When successfully added a shortcut, you can click on **Edit** > **Delete** on the custom shortcut to delete it.
 
 ### Update Settings
-You can check the updates for system and applications, and also can modify mirror, upgrade the system and applications.
+You can check the updates for system and applications manually, or auto-download updates.
 
 ![0|update](jpg/update.jpg)
-
-#### Detect System Source
-
-Enable **System source detection**, once you switch the mirror, you will get the prompt notifying that "Your system source has been modified".
 
 #### Auto Download Updates
 
@@ -976,20 +963,13 @@ Enable **System source detection**, once you switch the mirror, you will get the
 3. Click on **Auto-download Updates** to enable the function.
 4. When there are system updates, it will prompt a message.
 
+
 #### Auto Clear Package Cache
 
 1. On the homepage of Control Center, click on ![update](icon/update.svg).
 2. Click on **Update Settings** to enter the detailed interface.
 3. Click on **Auto clear package cache**.
 4. The system cache will be auto cleared.
-
-#### Switch Mirror
-
-1. On the homepage of Control Center, click on ![update](icon/update.svg).
-2. Click on **Update Settings** to enter the detailed interface.
-3. Click on **Switch Mirror** to enter the switching mirror interface.
-4. The system will detect the connecting speed.
-5. Switch to a new mirror to refresh the package list.
 
 #### Update and Upgrade
 
@@ -1045,7 +1025,7 @@ You can view system version, hardware info or set boot menu.
 ## Window Manager
 The Window Manager can show different windows on different workspaces, you can manage the windows by it.
 
-![1|openworkspace](jpg/openworkspace.jpg)
+ ![1|openworkspace](jpg/openworkspace.jpg)
 
 ### Open Workspace
 Workspace can divide your desktop windows as groups to enlarge your working areas.
@@ -1079,7 +1059,7 @@ On the workspace management interface, you can add workspace by the following wa
 
 When the workspace has reached its limit, ![plus_icon](icon/plus_icon.svg) at the right of the preview window will hide automatically, and you cannot add more workspaces. After deleted one workspace, ![plus_icon](icon/plus_icon.svg) will show automatically.
 
-> ![notes](icon/notes.svg): The window manager supports 7 workspaces at most.
+>![notes](icon/notes.svg): The window manager supports 7 workspaces at most.
 
 ### Switch Workspace
 On the workspace management interface and desktop, you can switch workspace by the following ways:
