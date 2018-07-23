@@ -1,211 +1,156 @@
 # Deepin Store|../common/deepin-appstore.svg|
 
 ## Overview
-Deepin Store is an application recreated by Deepin Technology Co., Ltd. with the integration of display, download, installation, commenting and rating. Deepin Store elaborately screens and collects different types of applications for you. Each application has been artificially installed and verified, you can enter the store to search popular applications with one-click download and automatic installation.
+Deepin Store V5.0 is an application recreated by Deepin Technology Co., Ltd. with the integration of application display, downloading, installation, uninstallation, commenting, rating, and recommendation. Deepin Store collects different types of applications for you, each one has been installed and verified manually. You can search the popular applications with one-click download and automatic installation.
 
  ![1|maininterface](jpg/maininterface.jpg)
 
 ## Basic Operations
 
 ### Run Deepin Store
-You can run Deepin Store by executing one of the following operations:
+You can run Deepin Store by the following operations:
 
 1. Click on ![Launcher-24](icon/launcher-24.svg) on dock to enter launcher interface. 
-2. Then find ![Deepin Store](icon/store-24.svg) to click on by skimming.
+2. Then click ![Deepin Store](icon/store-24.svg).
 
-> ![notes](icon/notes.svg): Deepin Store has been fixed on Dock by default, you can click on ![Deepin Store](icon/store-24.svg) on Dock to run.
+> ![notes](icon/notes.svg): Deepin Store has been fixed on Dock by default, you can click on ![Deepin Store](icon/store-24.svg) on Dock to run it.
 
 ### Maximize/Minimize Deepin Store
 
-- On Deepin Store interface, click on ![Maximize](icon/icon_max.svg) to maximize Deepin Store. If you want to restore the normal display, click on ![Restore](icon/icon_unmax.svg).
-- On Deepin Store interface, click on  ![Minimize](icon/icon_min.svg) to minimize Deepin Store to Dock. If you want to restore the display, click on ![Deepin Store](icon/store-24.svg) on Dock.
+- On Deepin Store interface, click on ![Maximize](icon/icon_max.svg) to maximize Deepin Store. To restore to the normal size, click on ![Restore](icon/icon_unmax.svg).
+- On Deepin Store interface, click on  ![Minimize](icon/icon_min.svg) to minimize Deepin Store to Dock. To restore the display, click on ![Deepin Store](icon/store-24.svg) on Dock.
 
 ### Close Deepin Store
 
-On Deepin Store interface, click on ![Close](icon/icon_close.svg) to exit.
+- On Deepin Store interface, click on ![Close](icon/icon_close.svg) to exit.
 - Right-click on ![Deepin Store](icon/store-24.svg) on Dock to select **Close All** to exit.
-- On Deepin Store interface, select [Exit](#Exit) in the menu bar.
+- On Deepin Store interface, select [Exit](#Exit) in the main menu.
 
-![1|Close Deepin Store](jpg/closestore.jpg)
+
 
 ## Main Interface
-The main interface of Deepin Store consists of navigation bar, search box, flashview, home column, hot topic, task management and menu bar.
+The main interface consists of navigation bar, search box, main menu, flashview, columns, hot topics, download and uninstall management.
 
-> ![tips](icon/tips.svg): Navigation bar can be displayed in icon or name & icon by dragging the edge rightward/leftward. When displayed in icon, hover over the icon to display the category name of applications.
+![1|maininterfacedetail01](jpg/maininterfacedetail01.png)
 
-![1|maininterfacedetail](jpg/maininterfacedetail.png)
+![1|maininterfacedetail02](jpg/maininterfacedetail02.png)
 
 <table class="block1">
     <caption>Main Interface</caption>
     <tbody>
         <tr>
-            <td width="20px">1</td>
-            <td width="100px">Navigation Bar</td>
-            <td>Navigation bar is mainly to display the home page, rankings and application categories of Deepin Store. </td>
+            <td width="25px">1</td>
+            <td width="95px">Navigation Bar</td>
+            <td>Navigation bar mainly displays the home page, rankings and application categories of Deepin Store. </td>
         </tr>
         <tr>
             <td>2</td>
             <td>Search Box</td>
             <td>Users can quickly search applications in Deepin Store by search box. </td>
         </tr>
-        <tr>
+            <tr>
             <td>3</td>
+            <td>Main Menu</td>
+            <td>You can sign in, recommend app, select China or International region, clear cache, view the manual and version info, and exit Deepin Store in it. </td>
+        </tr>
+        <tr>
+            <td>4</td>
             <td>Flashview</td>
-            <td> Images of recommended applications will be circularly played in flashview. </td>
+            <td>Images of recommended applications will be circularly played in flashview. </td>
         </tr>
          <tr>
-            <td>4</td>
-            <td>Home Column</td>
-            <td>Home column is mainly to display popular recommendation, weekly hot, monthly hot, hot apps and other applications. </td>
-        </tr>
-        <tr>
             <td>5</td>
-            <td>Home Topic</td>
-            <td>Home topic is mainly to display applications integrated from hot topic. </td>
+            <td>Columns</td>
+            <td>Home columns are mainly to display new updates, essential apps, popular apps, recommendations, rankings. </td>
         </tr>
         <tr>
             <td>6</td>
-            <td>Task Management</td>
-            <td>Task management is mainly to display the progress and speed of downloading application as well as the progress of installing applications. You also can suspend and delete the download tasks. </td>
+            <td>Hot Topics</td>
+            <td>Hot topics are mainly to display applications with the same topics. </td>
         </tr>
         <tr>
             <td>7</td>
-            <td>Menu Bar</td>
-            <td> You can sign in, exit, view the Manual and description of Deepin Store by menu bar. </td>
+            <td>Download Management</td>
+            <td>Download management is mainly to display the current downloading tasks, downloading and installing progress. You can pause and delete the tasks. </td>
+        </tr>
+        <tr>
+            <td>8</td>
+            <td>Uninstallation</td>
+            <td>You can view all installed apps in it, and remove any app you do not need. </td>
         </tr>
     </tbody>
  </table>
 
 ## Application Management
-You can search, download and install different categories of applications by Deepin Store. Meanwhile, more wonderful applications will be explored through popular recommendation, rankings, hot apps, hot topic, user comment and other ways.
+You can search, download and install different categories of applications by Deepin Store. Meanwhile, more wonderful applications will be explored through flashview, new updates, essential apps, popular apps, recommendations, hot topics, rankings,  user comments and other ways.
 
 ### Search Applications
-Search function is built in Deepin Store. Contents will be automatically completed after you input a keyword. Press ![Enter](icon/Enter.svg) on keyboard to automatically search and display all applications contained that keyword.
+Search function is built in Deepin Store. Search result will be automatically shown below after you input a keyword. Press ![Enter](icon/Enter.svg) on keyboard to display all applications containing that keyword.
 
-#### Automatch
-
-1. On Deepin Store interface, click top search box.
-2. Input a keyword.
-3. The application name will be automatically matched and completed to display.
-
-![1|automatch](jpg/automatch.png)
-
-#### Universal Search
-
-1. On Deepin Store interface, click top search box.
-2. Input a keyword.
-3. Press ![Enter](icon/Enter.svg) on keyboard to automatically search and display all applications contained that keyword.
-
-![1|searchresult](jpg/searchresult.jpg)
-
-#### Clear Records
-
-1. On Deepin Store interface, click top search box.
-2. Click on ![Clear](icon/icon_clear.svg).
-3. Clear all records in the search box.
+![1|Search](jpg/search.jpg)
 
 ### Download/Install Applications
-Deepin Store offers one-click download and installation of applications. During the downloading and installing process, you can pause and delete, as well as view the current progress and speed.
+Deepin Store offers one-click download and installation of applications. During the downloading and installing process, you can pause and delete, as well as view the current progress.
 
-1. On Deepin Store interface, click the image of application needed to download.
-2. Enter the interface of detailed introduction.
-3. Click on ![Install](icon/installfordetail.svg) to automatically download in task management, and then install.
-4. You can view the download speed, progress and installing speed of the application.
+1. On Deepin Store interface, click the application image to enter app page.
+2. Click on ![Install](icon/installfordetail.svg) to automatically download and then install in **Download**.
 
-> ![tips](icon/tips.svg): You can directly hover mouse over the application icon, then click on ![Install](icon/installforpic.svg).
+> ![tips](icon/tips.svg): You can directly hover mouse over the application image or name, then click ![installhover](icon/installhover.svg).
+
+> ![notes](icon/notes.svg): The installed app will be shown in **Uninstall**.
 
 ![1|installprocess](jpg/installprocess.jpg)
 
 ### Update/Upgrade Application
 
-If you need to update and upgrade applications, you can set in Control Center, specific operations refer to [Update and Upgrade](dman:///dde#Update and Upgrade).
+If you need to update and upgrade applications, you can set in Control Center, specific operations refer to [Update Settings](dman:///dde#Update Settings).
 
-> ![notes](icon/notes.svg): Besides update and upgrade applications, you also can update and upgrade the system in Control Center as needed.
+> ![notes](icon/notes.svg): Besides update and upgrade applications, you also can update and upgrade the system in Control Center.
 
 ### Uninstall Applications
 
-If you need to uninstall applications, you can enter Launcher to uninstall, specific operations refer to [Uninstall Applications](dman:///dde#Uninstall Applications).
+Besides uninstalling applications in Launcher (specific operations refer to [Uninstall Applications](dman:///dde#Uninstall Applications), you can directly uninstall apps in Deepin Store.
+- In **Uninstall** page, find the application to remove, click ![uninstall](icon/uninstall.svg).
 
-## Application Interface
+![1|Uninstall](jpg/uninstall.jpg)
+
+
+## Application Page
 
 ### Application Details
-You can enter the interface of application details to know the introduction, size, version, downloads, ratings and so on.
+The application page displays the downloads, rating,  comments, category, version, package size, updated date, description, screenshots and so on. You can get a full understanding of the application in it.
+
+> ![tips](icon/tips.svg)：Click the screenshots to view in large ones.
 
 ![1|softwareinterface](jpg/softwareinterface.jpg)
 
-<table class="block1">
-    <caption>Application Interface</caption>
-    <tbody>
-        <tr>
-            <td width="20px">Installation Status</td>
-            <td width="60px">You can view the status of applications. **Install** means the application has not been installed; **Open** means the application has been installed; **Update** means the application can be updated to the latest version. </td>
-        </tr>
-        <tr>
-            <td>Rating/downloads</td>
-            <td>You can view the comprehensive rating and downloads of applications. </td>
-        </tr>
-         <tr>
-            <td>Version of Applications</td>
-            <td>You can view the version number of applications. </td>
-        </tr>
-        <tr>
-            <td>Size of Applications</td>
-            <td>You can view the size of applications. </td>
-        </tr>
-        <tr>
-            <td>Description of Applications</td>
-            <td>You can view the detailed description of applications. </td>
-        </tr>
-        <tr>
-            <td>Preview of Applications</td>
-            <td>You can view the image preview of applications. </td>
-        </tr>
-    </tbody>
- </table>
+### Ask for Update
+
+Click **Ask for update** to submit your request for a new version, so that the application update will be scheduled more quickly.
+
+### Donate
+
+1. Click **Donate**, input the amount or click "Random" to generate an amount.
+2. Choose a paying method, and click **Pay Now** to donate.
+
+![1|donate](jpg/donate.jpg)
+
+> ![tips](icon/tips.svg)：This function is developed for application developers and packagers, who can get the donation from users according to donation rules.
 
 ### Comment and Rate
-You can comment on and rate applications only after signed in Deepin Store, or only can view comments and ratings. The comments and ratings will be displayed successfully after both submitted at the same time. Meanwhile, you only can comment one time on the current version.
+Please comment on and rate applications after signed in Deepin Store, otherwise you can only view comments and ratings. Your comments and ratings will be displayed after submitted successfully. And, you only can comment once on the current version.
 
 > ![attention](icon/attention.svg): If you need to know the information of signing up and signing in, please refer to [Sign In](#Sign In).
 
-![1|commentandrate](jpg/commentandrate.png)
+> ![tips](icon/tips.svg): You can click the icon at the right to like the comment.
 
-<table class="block1">
-    <caption>Interface of Comments and Ratings</caption>
-    <tbody>
-        <tr>
-            <td>1</td>
-            <td>Sign In</td>
-            <td>You can sign in Deepin Store with your account already signed up. </td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Comment</td>
-            <td>You can input contents in the comment box after signed in. </td>
-        </tr>
-         <tr>
-            <td>3</td>
-            <td>Rating</td>
-            <td>Hover the mouse over star icons to rate after signed in. </td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>Current Version</td>
-            <td>You can view comments and ratings of application's current version. </td>
-        </tr>
-        <tr>
-            <td>5</td>
-            <td>History Versions</td>
-            <td>You can view comments and ratings of application's history versions. </td>
-        </tr>
-    
-    </tbody>
- </table>
+![1|commentandrate](jpg/commentandrate.jpg)
 
-## Option Settings
+
+## Main Menu
 
 ### Sign In
-You can sign in Deepin Store with your account in Deepin Technology Forum.
+You can sign in Deepin Store with your account in deepin forum.
 
 1. On Deepin Store interface, click on ![icon_menu](icon/icon_menu.svg).
 2. Click on **Sign In**.
@@ -213,31 +158,43 @@ You can sign in Deepin Store with your account in Deepin Technology Forum.
 4. If you want to enable auto-Sign-in, please click on **Remember me**.
 5. Click on **Sign In**.
 
-> ![attention](icon/attention.svg): If you don't have an account, you can click on **Sign Up** of the pop-up box to sign up.
+> ![attention](icon/attention.svg): If you don't have an account, you can click on **Sign Up** in the pop-up box to sign up.
 
 ![0|loginpage](jpg/loginpage.png)
 
+### Recommend App
+If you want a new app in Deepin Store, please click "Recommend App" in main menu to submit your request.
+1. On Deepin Store interface, click on ![icon_menu](icon/icon_menu.svg).
+2. Click on **Recommend App**.
+3. Input app name, type, license, homepage, download site and other info.
+4. Click on **Submit**.
+
+![1|recommendapp](jpg/recommendapp.jpg)
+
+### Select Region
+Deepin Store has two regions: China and international, which has different applications based on user preferences.
+1. On Deepin Store interface, click on ![icon_menu](icon/icon_menu.svg).
+2. Click on **Select Region**.
+3. Choose **China** or **International**.
+
+### Clear Cache
+1. On Deepin Store interface, click on ![icon_menu](icon/icon_menu.svg).
+2. Click on **Clear Cache** to clear the package caches.
+
 ### Help
-You can click "Help" to get the manual, which will help you further know and use Deepin Store.
+Click "Help" to get the manual, which will help you further know and use Deepin Store.
 
 1. On Deepin Store interface, click on ![icon_menu](icon/icon_menu.svg).
-2. Click on **Help**.
-3. View the manual of Deepin Store.
-
-
+2. Click on **Help** to view the manual of Deepin Store.
 
 ### About
-You can click "About" to view the introduction of Deepin Store.
 
 1. On Deepin Store interface, click on ![icon_menu](icon/icon_menu.svg).
-2. Click on **About**.
-3. View the version and introduction of Deepin Store.
-
+2. Click on **About** to view the version and introduction of Deepin Store.
 
 
 ### Exit
-You can click menu bar to exit Deepin Store.
 
 1. On Deepin Store interface, click on ![icon_menu](icon/icon_menu.svg).
-2. Click on **Exit**.
+2. Click on **Exit** to exit Deepin Store.
 

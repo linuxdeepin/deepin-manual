@@ -13,6 +13,7 @@ Build-Depends:
  libsass0,
  libqt5sql5-sqlite,
  pkg-config,
+ qttools5-dev,
  qttools5-dev-tools,
 Standards-Version: 3.9.5
 Homepage: https://github.com/linuxdeepin/deepin-manual/
@@ -23,6 +24,7 @@ Package: deepin-manual
 Architecture: any
 Depends: ${misc:Depends},
  ${shlibs:Depends},
+ libqt5core5a,
  libqt5dbus5,
  libqt5sql5-sqlite,
 Recommends: qt5dxcb-plugin,
