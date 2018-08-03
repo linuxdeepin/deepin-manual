@@ -1,3 +1,6 @@
+2018-08-3 2.0.11 Wu Rongjie <wurongjie@deepin.com>
+    * Update manual
+
 2018-07-24 2.0.10 Xu Shaohua <xushaohua2016@outlook.com>
     * Update manual
 

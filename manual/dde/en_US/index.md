@@ -1,7 +1,9 @@
+
+
 # Desktop Environment|../common/deepin-system.svg|
 
 ## Overview
-deepin is an elegant, easy to use and reliable Linux desktop operating system developed by Deepin Technology Co., Ltd. WPS Office, Skype, Spotify and other deepin featured applications have been preinstalled. It allows you to experience a variety of recreational activities, but also to meet your daily needs. With continually improved and perfected functions, we believe deepin will be loved and used by more and more users.
+deepin is an elegant, easy to use and reliable Linux desktop operating system developed by Deepin Technology Co., Ltd. WPS Office, Text Editor, Google Chrome and other deepin featured applications have been preinstalled. It allows you to experience a variety of recreational activities, but also to meet your daily needs. With continually improved and perfected functions, we believe deepin will be loved and used by more and more users.
 
 ![1|desk](jpg/desk.jpg)
 
@@ -95,14 +97,14 @@ You can sort the files on desktop to fit your needs.
 
  - Click on **Super large** to display icons in super large size.
 
-> ![tips](icon/tips.svg)：Press ![Ctrl](icon/Ctrl.svg) + ![=](icon/=.svg)/![-](icon/-.svg)to adjust icon size on desktop and that in launcher.
+> ![tips](icon/tips.svg): Press ![Ctrl](icon/Ctrl.svg) + ![=](icon/=.svg)/![-](icon/-.svg) to adjust icon size on desktop and that in launcher.
 
 
 ### Set Display
 You can set the screen resolution, brightness and so on.
 
 1. Right click on desktop.
-2. Click on **Display settings** to open the interface of display settings in Control Center.
+2. Click on **Display Settings** to open the interface of display settings in Control Center.
 
 > ![notes](icon/notes.svg): Specific operations refers to [Display Settings](#Display Settings).
 
@@ -123,7 +125,7 @@ You can select some elegant and fashionable wallpapers to beautify desktop and m
 
 
 1. Right click on desktop.
-2. Click on **Set wallpaper** to preview all the wallpapers at the bottom of the desktop.
+2. Click on **Set Wallpaper** to preview all the wallpapers at the bottom of the desktop.
 3. Select one and it will apply in desktop and lock screen.
 4. You can also choose **Only desktop** or **Only lock screen**.
 
@@ -337,7 +339,7 @@ Empty trash to release more usable space in your disk.
 ## Launcher
 Launcher can help you to manage all installed applications, you can quickly find the needed application by the categorized navigation or searching function.
 
-> ![tips](icon/tips.svg): You can view the newly installed applications in Launcher, it will show a blue point for these applications.
+> ![tips](icon/tips.svg): You can view the newly installed applications in Launcher with a blue point shows after them.
 
 
 ### Switch Modes
@@ -356,10 +358,9 @@ In fullscreen mode, all applications in Launcher are displayed by name by defaul
 - Move the mouse pointer over the application icon, press and hold the mouse left button, then drag and drop to arrange the application icon freely.
 - Click on the category icon ![category](icon/category_icon.svg) on the upper left in Launcher to arrange the icons by categories.
 
+![1|sortapp](jpg/sortapp.jpg)
 
 In mini mode,  applications are displayed by use frequency by default.
-
-![1|sortapp](jpg/sortapp.jpg)
 
 ### Search Applications
 
@@ -542,6 +543,8 @@ You can adjust the visual perception by setting the screen resolution, brightnes
 2. Click on the scaleplate to adjust the display scaling (1, 1.25, 1.5, 1.75, 2.0).
 3. It will take effect after reboot.
 
+> ![notes](icon/notes.svg): When HiDPI screen is detected, the display scaling will be automatically switched.
+
 > ![notes](icon/notes.svg): Some applications do not support display scaling, you can right click it in Launcher and select **Disable display scaling** to get better display effect.
 
 ##### Set Resolution
@@ -668,7 +671,7 @@ You can do short distance wireless communication by Bluetooth by connecting to o
 
 1. On the homepage of Control Center, click on ![bluetooth_normal](icon/bluetooth_normal.svg).
 2. Click on **Bluetooth** to enter the interface for setting Bluetooth.
-3. Click on the Bluetooth switch to enable the Bluetooth adapter.
+3. Turn on the Bluetooth switch to enable the Bluetooth adapter.
 
 
 #### Bluetooth Name
@@ -700,7 +703,7 @@ Experience the enjoyment of surfing the Internet! You can browse news, play vide
 1. Plug the cable into the network slot on computer.
 2. Plug another end of the cable into the router or network port.
 3. On the homepage of Control Center, click on ![network_normal](icon/network_normal.svg).
-4. Click on **Wired Network Card** switch to enable wired network.
+4. Turn on **Wired Network Card** switch to enable wired network.
 5. After successfully connected to the network, it will prompts "Wired Connection Connected".
 
 #### Wireless Network
@@ -708,7 +711,7 @@ Experience the enjoyment of surfing the Internet! You can browse news, play vide
 ##### Connect to Wi-Fi Network
 
 1. On the homepage of Control Center, click on ![network_normal](icon/network_normal.svg).
-2. Click on **Wireless Network Card** switch to enable wireless network.
+2. Turn on **Wireless Network Card** switch to enable wireless network.
 3. Click on **Wireless Network** to enter wireless network list.
 4. The computer will auto search the nearby available wireless network.
 5. Select the wireless network to connect.
@@ -718,7 +721,7 @@ Experience the enjoyment of surfing the Internet! You can browse news, play vide
 ##### Connect to Hidden Network
 
 1. On the homepage of Control Center, click on ![network_normal](icon/network_normal.svg).
-2. Click on **Wireless Network Card** switch to enable wireless network.
+2. Turn on **Wireless Network Card** switch to enable wireless network.
 3. Click on **Wireless Network** to enter wireless network list.
 4. Click on **Connect to Hidden Network** to enter the interface for connecting to the hidden network.
 5. Enter the name of the network and choose the encrypt method, then enter the password.
@@ -802,19 +805,19 @@ Set your speaker and microphone to let you hear more comfortable and sing better
 #### Set Speaker
 
 1. On the homepage of Control Center, click on ![sound_normal](icon/sound_normal.svg).
-2. Click on **Speaker** switch to enable the speaker.
+2. Turn on **Speaker** switch to enable the speaker.
 3. Adjust the output volume and left right balance.
 
 #### Set Microphone
 
 1. On the homepage of Control Center, click on ![sound_normal](icon/sound_normal.svg).
-2. Click on **Microphone** switch to enable the microphone.
+2. Turn on **Microphone** switch to enable the microphone.
 3. Adjust the input volume.
 
 #### Set System Sound Effect
 
 1. On the homepage of Control Center, click on ![sound_normal](icon/sound_normal.svg).
-2. Click on **Sound Effects** switch to enable sound effects.
+2. Turn on **Sound Effects** switch to enable sound effects.
 
 #### Advanced Settings
 
@@ -829,7 +832,7 @@ Set your speaker and microphone to let you hear more comfortable and sing better
 #### Auto Sync
 
 1. On the homepage of Control Center, click on ![date_time_normal](icon/date_time_normal.svg).
-2. Click on **Auto-Sync** switch to enable time sync function.
+2. Turn on **Auto-Sync** switch to enable time sync function.
 3. The system will auto sync the time and date based on local timezone and remote time.
 
 #### Set Date and Time
@@ -857,6 +860,14 @@ Set the date and time manually to disable the auto sync function.
 
 ![0|power](jpg/power.jpg)
 
+#### Set Power Saving Mode
+To reduce the power consumption of laptop, you can turn on power saving mode.
+1. On the homepage of Control Center, click on ![power_normal](icon/power_normal.svg).
+2. Turn on **Power Saving Mode** switch to enter power saving mode.
+3. Click on **Auto Mode Switch**, your laptop will enter power saving mode automatically when unplug, and recover to normal mode when plug in.
+
+> ![notes](icon/notes.svg): Power saving mode is only for laptop.
+
 #### Set Monitor Suspend Time
 
 1. On the homepage of Control Center, click on ![power_normal](icon/power_normal.svg).
@@ -875,22 +886,26 @@ Set the date and time manually to disable the auto sync function.
 > ![notes](icon/notes.svg): There is an option for laptop, named **Suspend on lid close**, you can set it by your needs.
 
 ### Mouse and Touchpad
+
 ![0|mouse](jpg/mouse.jpg)
+
 1. On the homepage of Control Center, click on ![mouse_touchpad_normal](icon/mouse_touchpad_normal.svg).
-2. Click on **Left Hand**/**Natural Scrolling**/**Disable the touchpad while typing**/**Disable the touchpad when inserting the mouse** switch to enable functions.
+2. Click on **Left Hand** / **Mouse Acceleration** / **Natural Scrolling** switch to enable functions.
 3. Adjust **Scroll Speed**, **Double-click Speed** and **Pointer Speed**.
 
+> ![notes](icon/notes.svg): **Left Hand** switches the left and right mouse button, and Natural Scrolling is the scrolling function behaved as in Mac OS.
 
-You can enable ** Palm Detect**, and set **Minimun contact surface** and **Minimum pressure value** to avoid misopreation on touchpad.
+> ![notes](icon/notes.svg): **Mouse Acceleration** is a form of pointer acceleration that determines how fast the pointer moves in response to movements of the mouse or finger on a touchpad. It can make your pointer more precise in some situations, but it can make the pointer less precise in many others. 
+
+You can enable **Disable the touchpad while typing**, **Disable the touchpad when inserting the mouse**, **Palm Detect** on laptop, and set **Minimun contact surface** and **Minimum pressure value** to avoid misopreation on touchpad.
 
 ![0|touchpad](jpg/touchpad.jpg)
-
-> ![notes](icon/notes.svg): **Left Hand** switches the left and right mouse button, and Natural Scrolling is the scrolling function behaved as in Mac OS.
 
 ### Keyboard and Language
 You can choose your keyboard and its layout for different countries and regions or view, search, modify and custom shortcuts.
 
 ![0|keyboard](jpg/keyboard.jpg)
+
 #### Set Keyboard Properties
 
 1. On the homepage of Control Center, click on ![keyboard_normal](icon/keyboard_normal.svg).
@@ -998,7 +1013,7 @@ Enable **System source detection**, once you switch the mirror, you will get the
 - It will prompt "Your system is up to date " when there is no update.
 - It will show **Download and install updates** button, size and detailed information if there's an update.
 4. Click the button to download and install updates.
-5. After updated successfully, shut down or reboot your computer to make the updates come into effect.
+5. After updated successfully, shutdown or reboot your computer to make the updates come into effect.
 
 > ![attention](icon/attention.svg): There will be a progress bar during the update, and you can choose to download in background or pause.
 
@@ -1055,7 +1070,7 @@ On Desktop, press ![Super](icon/Super.svg) + ![S](icon/S.svg) to open the worksp
 #### Switch Windows among Workspaces
 On the workspace management interface, all the opened windows in the current workspace will tiled to display.
 
-- Press ![Tab](icon/Tab.svg) to switch to next window of the current window.
+- Press ![Tab](icon/Tab.svg) to switch to next window.
 - Press ![Shift](icon/Shift.svg) + ![Tab](icon/Tab.svg) to switch to the previous window.
 
 #### Move Windows among Workspaces
