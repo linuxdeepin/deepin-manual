@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
+import scrollIntoView from 'smooth-scroll-into-view-if-needed';
 
 import m2h from './mdToHtml';
 import Scrollbar from './scrollbar.jsx';
@@ -9,14 +10,18 @@ export default class Article extends Component {
     super(props);
     this.state = {
       preview: null,
-      fillblank: null
+      smoothScroll: false,
+      fillblank: null,
     };
   }
   //滚动到锚点
   scrollToHash() {
     const hashNode = document.getElementById(this.hash);
     if (hashNode) {
-      hashNode.scrollIntoView();
+      this.setState({ smoothScroll: true });
+      scrollIntoView(hashNode, { behavior: 'smooth', block: 'start' }).then(() => {
+        this.setState({ smoothScroll: false });
+      });
     } else {
       this.props.setHash(this.props.hlist[0].id);
     }
@@ -40,14 +45,13 @@ export default class Article extends Component {
             this.load = true;
             this.scrollToHash();
             let last = article.querySelector(
-              '#' + this.props.hlist[this.props.hlist.length - 1].id
+              '#' + this.props.hlist[this.props.hlist.length - 1].id,
             );
             let fillblank = {
-              marginBottom:
-                article.clientHeight - (read.clientHeight - last.offsetTop)
+              marginBottom: article.clientHeight - (read.clientHeight - last.offsetTop),
             };
             this.setState({
-              fillblank
+              fillblank,
             });
           }
         };
@@ -83,6 +87,9 @@ export default class Article extends Component {
   //滚动事件
   scroll() {
     if (!this.load) {
+      return;
+    }
+    if (this.state.smoothScroll) {
       return;
     }
     if (this.state.preview != null) {
@@ -164,15 +171,11 @@ export default class Article extends Component {
         switch (0) {
           case href.indexOf(hashProtocol):
             e.preventDefault();
-            this.props.setHash(
-              document.querySelector(`[text="${href.slice(1)}"]`).id
-            );
+            this.props.setHash(document.querySelector(`[text="${href.slice(1)}"]`).id);
             return;
           case href.indexOf(dmanProtocol):
             e.preventDefault();
-            const [appName, hash] = href
-              .slice(dmanProtocol.length + 1)
-              .split('#');
+            const [appName, hash] = href.slice(dmanProtocol.length + 1).split('#');
             const rect = e.target.getBoundingClientRect();
             this.showPreview(appName, hash, rect);
             return;
@@ -202,7 +205,7 @@ export default class Article extends Component {
                   <div
                     className="read"
                     dangerouslySetInnerHTML={{
-                      __html: this.state.preview.html
+                      __html: this.state.preview.html,
                     }}
                   />
                 </Scrollbar>

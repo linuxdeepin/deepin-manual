@@ -8,10 +8,11 @@
     "cheerio": "^1.0.0-rc.2",
     "gulp": "^3.9.1",
     "gulp-concat": "^2.6.1",
-    "gulp-rename": "^1.2.2",
-    "gulp-sass": "^3.1.0",
+    "gulp-rename": "^1.4.0",
+    "gulp-sass": "^3.2.1",
     "marked": "^0.3.7",
     "md5": "^2.2.1",
+    "node": "^8.11.3",
     "react": "^16.2.0",
     "react-custom-scrollbars": "^4.2.1",
     "react-dom": "^16.2.0",
@@ -21,7 +22,6 @@
     "yargs": "^10.1.1"
   },
   "dependencies": {
-    "gulp": "^3.9.1",
-    "node": "^9.4.0"
+    "smooth-scroll-into-view-if-needed": "^1.1.19"
   }
 }

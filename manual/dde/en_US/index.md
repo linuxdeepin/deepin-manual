@@ -1,5 +1,3 @@
-
-
 # Desktop Environment|../common/deepin-system.svg|
 
 ## Overview
