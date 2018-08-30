@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 44.1 (41455) - http://www.bohemiancoding.com/sketch -->
+    <title>PPT</title>
+    <desc>Created with Sketch.</desc>
+    <defs></defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="ic_live_tv">
+            <g id="Icon-24px">
+                <polygon id="Shape" points="0 0 24 0 24 24 0 24"></polygon>
+                <path d="M21,6 L13.41,6 L16.7,2.71 L16,2 L12,6 L8,2 L7.29,2.71 L10.59,6 L3,6 C1.9,6 1,6.89 1,8 L1,20 C1,21.1 1.9,22 3,22 L21,22 C22.1,22 23,21.1 23,20 L23,8 C23,6.89 22.1,6 21,6 L21,6 Z M21,20 L3,20 L3,8 L21,8 L21,20 L21,20 Z M9,10 L9,18 L16,14 L9,10 Z" id="Shape" fill="#000000"></path>
+            </g>
+        </g>
+    </g>
+</svg>

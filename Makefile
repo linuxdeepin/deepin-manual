@@ -31,9 +31,10 @@ nodejs:
 	ln -sf /usr/bin/nodejs ./symdir/node
 
 install:
-	mkdir -p $(DESTDIR)$(PREFIX)/{PageRoot,DMan}
+	mkdir -p $(DESTDIR)$(PREFIX)/{PageRoot,DMan,dman-old}
 	cp -r PageRoot/{www,plugins,manifest.json} $(DESTDIR)$(PREFIX)/PageRoot/
 	cp -r DMan/* $(DESTDIR)$(PREFIX)/DMan/
+	cp -r manual/* $(DESTDIR)$(PREFIX)/dman-old/
 	rm -r $(DESTDIR)$(PREFIX)/PageRoot/www/{jssrc,scss}
 	find $(DESTDIR)$(PREFIX) -name "__pycache__" -print0 | xargs -0 rm -rf
 

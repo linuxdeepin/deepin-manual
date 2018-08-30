@@ -8,7 +8,7 @@ import os
 import hashlib
 from urllib import parse
 
-_DMAN_HOME = "/usr/share/dman"
+_DMAN_HOME = "/usr/share/deepin-manual/dman-old"
 _UI_NLS_DIR = os.path.normpath(os.path.dirname(__file__) + "/../PageRoot/www/nls")
 
 
