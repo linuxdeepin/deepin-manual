@@ -75,6 +75,7 @@ app.controller("MainCtrl", function($scope, $rootScope, $log, $window,
     let onMarkdownProcessed = function(event) {
         $scope.anchors = MarkdownService.getAnchors();
         $scope.appInfo = MarkdownService.getAppInfo();
+        $scope.jumpTo($scope.anchors[0]);
     };
     $scope.$on("MarkdownProcessed", onMarkdownProcessed);
     if (MarkdownService.isInitialized()) {

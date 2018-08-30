@@ -1,6 +1,6 @@
 <nav id="NavigationBar" ng-controller="NavigationBarCtrl" class="navigation-bar">
     <div id="NavLogoBox" class="app-icon-box">
-        <a ng-click="jumpTo()">
+        <a>
             <img id="AppLogo" class="app-icon" ng-src="{{appInfo.markdownDir}}/{{appInfo.icon}}" />
             <span id="AppName" class="app-name">{{appInfo.name}}</span>
             <span id="LabelDot" class="app-name-delim">.</span>
@@ -17,7 +17,7 @@
         <ol id="SideNavigationItems" class="level2">
             <li class="level2" ng-repeat="anchor in anchors">
                 <a ng-click="jumpTo(anchor.id)" class="anchor-icon">
-                    <div class="figure" deepin-ui-svg-image="{{appInfo.markdownDir}}/{{anchor.smallIcon}}" ng-mouseenter="showTooltip(anchor.text, $event);" ng-mouseleave="showTooltip('', $event);"></div>
+                    <!-- <div class="figure" deepin-ui-svg-image="{{appInfo.markdownDir}}/{{anchor.smallIcon}}" ng-mouseenter="showTooltip(anchor.text, $event);" ng-mouseleave="showTooltip('', $event);"></div> -->
                     <div class="header-box level2">
                         <span class="header-chapter"></span>
                         <span class="header-text">{{anchor.text}}</span>
