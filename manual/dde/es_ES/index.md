@@ -31,11 +31,11 @@ Puedes crear nueva carpeta, archivar documentos, o hacer operaciones en general 
     </tr>
     <tr>
         <td>Cortar</td>
-        <td>Selecciona uno o más archivos/carpetas y muévelas a otra ubicación.</td>
+        <td>Selecciona uno o varios archivos/carpetas y muévelas a otra ubicación.</td>
     </tr>
     <tr>
         <td>Copiar</td>
-        <td>Selecciona uno o más archivos/carpeta y cópialas a otra ubicación.</td>
+        <td>Selecciona uno o varios archivos/carpetas y cópialas a otra ubicación.</td>
     </tr>
     <tr>
         <td>Renombrar</td>
@@ -46,70 +46,70 @@ Puedes crear nueva carpeta, archivar documentos, o hacer operaciones en general 
         <td>Selecciona un archivo/carpeta para eliminar.</td>
     </tr>
     <tr>
-        <td>Compress/Extract</td>
-        <td>Select one or more files/folders to compress, or extract a compressed file.</td>
+        <td>Comprimir/Extraer</td>
+        <td>Selecciona un archivo/carpeta para comprimir, o extrae un archivo ya comprimido.</td>
     </tr>
     <tr>
-        <td>Create link</td>
-        <td>Select one file/folder to create a link.</td>
+        <td>Crear enlace</td>
+        <td>Selecciona un archivo/carpeta para crear un enlace.</td>
     </tr>
     	<tr>
-        <td>Tag information</td>
-        <td>Select one file/folder to add a tag.</td>
+        <td>Etiqueta informativa</td>
+        <td>Selecciona un archivo/carpeta para añadir una etiqueta.</td>
     </tr>
     <tr>
-        <td>Properties</td>
-        <td>View the basic info of a file/folder, or to change the permission and open with options.</td>
+        <td>Propiedades</td>
+        <td>Revisa la información básica de un archivo/carpeta, cambia los permisos y sus opciones para abrirlos.</td>
     </tr>
 </tbody>
 
  </table>
 
 
-### Sort Files
-You can sort the files on desktop to fit your needs.
+### Ordenar archivos
+Puedes ordenar los archivos en el escritorio acorde a sus necesidades.
 
-1. Right click on desktop.
-2. Click on **Sort by**, you can:
+1. Clic derecho al escritorio.
+2. Clic en **Ordenar por**, puedes escoger:
 
- - Click on **Name** to display files in the order of name.
- - Click on **Time modified** to display files in the order of last modified date.
- - Click on **Size** to display files in the order of size.
- - Click on **Type** to display files in the order of type.
-
-
-> ![tips](icon/tips.svg): You can also check **Auto arrange**, the desktop icons will be arranged automatically, and when some of the icons are removed, others will fill in the blanks.
-
-### Adjust Icon Size
-
-1. Right click on desktop.
-2. Click on **Icon size**, you can:
-
- - Click on **Tiny** to display icons in tiny size.
-
- - Click on **Small** to display icons in small size.
-
- - Click on **Medium** to display icons in medium size.
-
- - Click on **Large** to display icons in large size.
-
- - Click on **Super large** to display icons in super large size.
-
-> ![tips](icon/tips.svg): Press ![Ctrl](icon/Ctrl.svg) + ![=](icon/=.svg)/![-](icon/-.svg) to adjust icon size on desktop and that in launcher.
+ - Clic en  **Nombre** para mostrar archivos en orden alfabético.
+ - Clic en **Fecha de modificación** para mostrar archivos en orden de la fecha de modificación.
+ - Clic en **Tamaño** para mostrar archivos en orden de tamaño.
+ - Clic en **Tipo** para mostrar archivos ordenados por su tipo.
 
 
-### Set Display
-You can set the screen resolution, brightness and so on.
+> ![tips](icon/tips.svg): También, puedes usar la opción **Organizar automáticamente**, los iconos del escritorio serán ordenados automáticamente, y cuando algunos de los iconos son retirados, otros serán reubicados en el espacio faltante.
 
-1. Right click on desktop.
-2. Click on **Display Settings** to open the interface of display settings in Control Center.
+### Ajustar tamaño del icono
+
+1. Clic derecho al escritorio.
+2. Clic en **Tamaño de icono**, puedes escoger:
+
+ - Clic en **Minúsculo** para mostrar iconos en un tamaño minúsculo.
+
+ - Clic en **Pequeño** para mostrar iconos en un tamaño pequeño o reducido.
+
+ - Clic en **Mediano**  para mostrar iconos en un tamaño mediano o normal.
+
+ - Clic en **Grande**  para mostrar iconos en un tamaño grande.
+
+ - Clic en **Enorme**  para mostrar iconos en un tamaño enorme o gigantesco.
+
+> ![tips](icon/tips.svg): Presiona ![Ctrl](icon/Ctrl.svg) + ![=](icon/=.svg)/![-](icon/-.svg) para ajustar el tamaño del icono del escritorio y su lanzador.
+
+
+### Ajustes de pantalla
+Puedes establecer la resolución de pantalla, brillo y otros.
+
+1. Clic derecho en el escritorio.
+2. Clic en **Configuración de pantalla** para abrir la interfaz de configuración de pantalla desde el Centro de control.
 
 > ![notes](icon/notes.svg): Specific operations refers to [Display Settings](#Display Settings).
 
-### Set Hot Corners
-Hot Corner is to simplify your operations and helps you quickly enter the main interface.
+### Estabelce esquinas de acceso rápido (hot corners)
+Una esquina de acceso rápido simplifica las actividades y le ayuda a acceder la interfaz principal rápidamente.
 
-1. Right click on desktop.
+1. Clic derecho en el escritorio.
 2. Click on **Corner Settings**, then the whole screen will get dark and the corresponding hot corner function will be displayed on the four corners.
 3. Move the mouse pointer to a corner and select one option to set the corner.
 4. Click on the desktop blank area to exit.
