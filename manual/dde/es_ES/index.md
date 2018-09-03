@@ -106,37 +106,37 @@ Puedes establecer la resolución de pantalla, brillo y otros.
 
 > ![notes](icon/notes.svg): Specific operations refers to [Display Settings](#Display Settings).
 
-### Estabelce esquinas de acceso rápido (hot corners)
-Una esquina de acceso rápido simplifica las actividades y le ayuda a acceder la interfaz principal rápidamente.
+### Estabelce esquinas de acceso rápido
+Una esquina de acceso rápido (***hot corner***) simplifica las actividades y le ayuda a acceder la interfaz principal rápidamente.
 
 1. Clic derecho en el escritorio.
-2. Click on **Corner Settings**, then the whole screen will get dark and the corresponding hot corner function will be displayed on the four corners.
-3. Move the mouse pointer to a corner and select one option to set the corner.
-4. Click on the desktop blank area to exit.
+2. Clic en **Configuración de esquinas**, entonces toda la pantalla se oscurecerá y las funciones de acceso rápido serán mostradas entre las cuadro esquinas.
+3. Mueve el puntero del raton a la esquina y selecciona una opción para configurar la esquina.
+4. Clic en zona vacía del escritorio para salir.
 
 ![1|hotspace](jpg/hotspace.jpg)
 
-> ![tips](icon/tips.svg): Please pay attention to the animation of corner settings.
+> ![tips](icon/tips.svg): Por favor, presta atención a la animación al configurar las esquinas.
 
-### Set Wallpaper
-You can select some elegant and fashionable wallpapers to beautify desktop and make it distinctive.
+### Establecer fondo de pantalla
+Puedes seleccionar algunos elegantes y atractivos fondos de pantalla (***wallpapers***) para embellecer el escritorio y hacer más distintivo.
 
 
-1. Right click on desktop.
-2. Click on **Set Wallpaper** to preview all the wallpapers at the bottom of the desktop.
-3. Select one and it will apply in desktop and lock screen.
-4. You can also choose **Only desktop** or **Only lock screen**.
+1. Clic derecho al escritorio.
+2. Clic en **Establecer fondo de pantalla** para previsualizar todos los fondos de pantalla debajo del escritorio.
+3. Selecciona uno y aplícalo en el escritorio y la pantalla de bloqueo.
+4. Puedes escoger **Solo escritorio** o **Solo pantalla de bloqueo**.
 
 ![1|wallpapers](jpg/wallpapers.jpg)
 
 
-### Drag and Drop Icon
+### Arrastrar y soltar en iconos
 
-You can drag and drop icon to the location you want on desktop:
-- Drag and drop an icon between two icons, the icon will be displayed between the two;
-- Drag and drop icon to a program is to open the file by that program;
-- Drag and drop icon to Trash is to move the file to Trash;
-- Drag and drop icon to folder is to move file to folder.
+Puedes arrastrar y soltar iconos a la ubicación que prefieres en el escritorio:
+- Arrastra y suelta el icono entre dos iconos, el icono será mostrado entre ambos;
+- Arrastra y suelta al programa para abrir el archivo con el programa;
+- Arrastra y suelta a la Papelera para mover a la Papelera;
+- Arrastra y suelta a la carpeta para mover el archivo a la carpeta.
 
 ## Dock
 Dock is usually displayed at the bottom of the desktop to help you quickly open frequently used applications, which includes Launcher, application icons, tray, shutdown button and system datetime, etc.
