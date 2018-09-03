@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Generator: Adobe Illustrator 18.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="&#x56FE;&#x5C42;_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px"
+	 y="0px" viewBox="0 0 36 36" style="enable-background:new 0 0 36 36;" xml:space="preserve">
+<path style="opacity:0.1;fill:none;stroke:#000000;stroke-miterlimit:10;" d="M35.5,30.618c0,2.696-2.186,4.882-4.882,4.882H5.382
+	c-2.696,0-4.882-2.186-4.882-4.882V5.382C0.5,2.686,2.686,0.5,5.382,0.5h25.235c2.696,0,4.882,2.186,4.882,4.882V30.618z"/>
+<path style="opacity:0.6;fill:none;stroke:#000000;stroke-miterlimit:10;" d="M34.5,30.618c0,2.144-1.738,3.882-3.882,3.882H5.382
+	c-2.144,0-3.882-1.738-3.882-3.882V5.382C1.5,3.238,3.238,1.5,5.382,1.5h25.235c2.144,0,3.882,1.738,3.882,3.882V30.618z"/>
+<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="18" y1="34" x2="18" y2="2">
+	<stop  offset="0" style="stop-color:#E8862A"/>
+	<stop  offset="1" style="stop-color:#F4AF53"/>
+</linearGradient>
+<path style="fill:url(#SVGID_1_);" d="M34,30.618C34,32.486,32.486,34,30.618,34H5.382C3.514,34,2,32.486,2,30.618V5.382
+	C2,3.514,3.514,2,5.382,2h25.235C32.486,2,34,3.514,34,5.382V30.618z"/>
+<linearGradient id="SVGID_2_" gradientUnits="userSpaceOnUse" x1="18" y1="34" x2="18" y2="2">
+	<stop  offset="0" style="stop-color:#FFFFFF;stop-opacity:0.3"/>
+	<stop  offset="1" style="stop-color:#FFFFFF;stop-opacity:0.5"/>
+</linearGradient>
+<path style="fill:none;stroke:url(#SVGID_2_);stroke-miterlimit:10;" d="M33.5,30.618c0,1.592-1.29,2.882-2.882,2.882H5.382
+	C3.79,33.5,2.5,32.21,2.5,30.618V5.382C2.5,3.79,3.79,2.5,5.382,2.5h25.235c1.592,0,2.882,1.29,2.882,2.882V30.618z"/>
+<path style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" d="M13,17
+	v-3.25C13,11.109,15.123,9,17.897,9h0.136C20.807,9,23,11.109,23,13.75V17"/>
+<path style="fill:none;stroke:#000000;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;stroke-miterlimit:10;" d="
+	M26,25.581C26,26.365,25.365,27,24.581,27H11.419C10.635,27,10,26.365,10,25.581v-7.162C10,17.635,10.635,17,11.419,17h13.162
+	C25.365,17,26,17.635,26,18.419V25.581z"/>
+</svg>
