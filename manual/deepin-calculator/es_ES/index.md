@@ -1,27 +1,27 @@
 # Deepin Calculator|../common/deepin-calculator.svg|
 
-## Vistazo
+## Overview
 
-Deepin Calculator es una simple y fácil manera de usar la calculadora del escritorio. Admite suma, resta, multiplicación y división con entrada de teclado perfectamente encajado como computación simbólica tolerante a fallos.
+Deepin Calculator is a simple and easy to use desktop calculator. It supports addition, subtraction, multiplication and division with keyboard input perfectly matched, as well as symbolic fault-tolerant computing.
 
 ![0|calculator](jpg/calculator.jpg)
 
-## Operaciones comunes
+## Common Operations
 
-### Introducción a símbolos
+### Symbol Introduction
 
 <table class="block1">
     <caption></caption>
     <tbody>
         <tr>
             <td>0~9</td>
-            <td>Teclado numérico Key</td>
-            <td>Números arábigos básicos</td>
+            <td>Number Key</td>
+            <td>Basic arabic numerals</td>
         </tr>
         <tr>
             <td>c</td>
-            <td>Clear/Borrar</td>
-            <td>Un blic para limpiar contenido actual, doble clic para borrar todo.</td>
+            <td>Clear</td>
+            <td>One click to clear current contents, double click to clear all.</td>
         </tr>
     	<tr>
             <td>%</td>

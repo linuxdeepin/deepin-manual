@@ -142,7 +142,7 @@ Puede arrastrar y soltar iconos a la ubicación que prefieras en el escritorio:
 El muelle es mostrado comúnmente debajo del escritorio para ayudarle a abrir aplicaciones de uso frecuente, que incluye el lanzador, iconos de aplicaciones, bandeja, botón de apagado, fecha y hora del sistema, etc.
 
 ### Iconos de muelle
-Puede crear atajos de la aplicación en el muelle del lanzador y realizar operaciones de las aplicaciones.
+Puede crear accesos directos de la aplicación en el muelle del lanzador y realizar operaciones de las aplicaciones.
 
 ![1|taskbar](jpg/taskbar.jpg)
 
@@ -219,7 +219,7 @@ Hay dos modos para mostrar el muelle, las cuales son el modo elegante y el modo 
 
 Puede cambiar los modos de escritorio mediante las siguientes operaciones:
 
-1. En el escritorio, mueve el puntero del ratón sobre el Muelle.
+1. En el escritorio, mueva el puntero del ratón sobre el Muelle.
 2. Clic derecho y seleccione el **Modo**.
 3. Elige el modo de escritorio.
 
@@ -228,7 +228,7 @@ Puede cambiar los modos de escritorio mediante las siguientes operaciones:
 ### Establecer la ubicación del Muelle
 You can place the Dock on any direction of your desktop.
 
-1. En el escritorio, mueve el puntero del ratón sober el Muelle.
+1. En el escritorio, mueva el puntero del ratón sober el Muelle.
 2. Clic derecho y seleccione la **Ubicación**.
 3. Elige la ubicación.
 
@@ -236,7 +236,7 @@ You can place the Dock on any direction of your desktop.
 
 ### Ajustar el tamaño del Muelle
 
-1. En el escritorio, mueve el puntero sobre el Muelle.
+1. En el escritorio, mueva el puntero sobre el Muelle.
 2. Clic derecho y seleccione el **Tamaño**.
 3. Elige el tamaño.
 
@@ -244,7 +244,7 @@ You can place the Dock on any direction of your desktop.
 
 ### Mostrar/Ocultar el Muelle
 
-1. En el escritorio, mueve el puntero sobre el Muelle.
+1. En el escritorio, mueva el puntero sobre el Muelle.
 2. Clic derecho y seleccione **Estado**.
 3. En el submenú, puede:
 - Seleccionar **Mantener visible**, el Muelle será mostrado debajo del escritorio todo el tiempo.
@@ -256,7 +256,7 @@ You can place the Dock on any direction of your desktop.
 
 ### Mostrar/Ocultar Complementos
 
-1. En el escritorio, mueve el puntero sobre el Muelle.
+1. En el escritorio, mueva el puntero sobre el Muelle.
 2. Clic derecho y seleccione **Complementos**.
 3. En el submenú puede:
 - Marcar **Redes**, el icono de conexión será mostrado en el Muelle.
@@ -272,7 +272,7 @@ You can place the Dock on any direction of your desktop.
 Hay dos formas de apagar el equipo:
 
 1. Clic en el icono de la batería del Muelle.
-2. Clic en el icono de batería en la parte inferior derecha del modo eficiente.
+2. Clic en el icono de batería en la parte inferior derecha en el modo mini del lanzador.
 
 En el escritorio, haga clic en el icono ![power_icon](icon/power_icon.svg) del Muelle.
 
@@ -314,7 +314,7 @@ En el escritorio, haga clic en el icono ![power_icon](icon/power_icon.svg) del M
 ### Papelera
 Puede encontrar todos los archivos eliminados que serían recuperados o descartados.
 
-> ![notes](icon/notes.svg): Usando el modo elegante, la Papelera será mostrada en el Muelle, su cambias al modo eficiente, puedes abrirla desde el Lanzador o creando un atajo en el escritorio.
+> ![notes](icon/notes.svg): Usando el modo elegante, la Papelera será mostrada en el Muelle, su cambias al modo eficiente, puedes abrirla desde el Lanzador o creando un acceso directo en el escritorio.
 
 #### Restaurar archivos
 Puede recuperar archivos eliminados realizando las siguientes acciones:
@@ -350,48 +350,50 @@ El Lanzador puede ayudarle a gestionar todas las aplicaciones instaladas, puede 
 ![1|fullscreen](jpg/fullscreen.jpg)
 ![1|mini](jpg/mini.jpg)
 
-### Sort Applications
+### Ordenar aplicaciones
 
-In fullscreen mode, all applications in Launcher are displayed by name by default.
+En modo a pantalla completa, todas las aplicaciones del Lanzador son mostrados alfabéticamente de forma predeterminada.
 
-- Move the mouse pointer over the application icon, press and hold the mouse left button, then drag and drop to arrange the application icon freely.
-- Click on the category icon ![category](icon/category_icon.svg) on the upper left in Launcher to arrange the icons by categories.
+- Mueva el puntero del ratón sobre el icono de la aplicación, manten y suelta con el botón izquierdo del ratón, después arrastre y suelte para organizar el icono de la aplicación libremente.
+- Haga clic en el ícono de categoría ![category](icon/category_icon.svg)  en la esquina superior izquierda en el Lanzador para organizar los iconos por categorías.
 
 ![1|sortapp](jpg/sortapp.jpg)
 
-In mini mode,  applications are displayed by use frequency by default.
+En el modo mini, las aplicaciones por orden de uso son mostradas de forma predeterminada.
 
-### Search Applications
+### Buscar aplicaciones
 
-In Launcher, scroll up and down the mouse wheel to find the application. You may also locate the application faster with the category navigation.
+En el Lanzaor, deslice arriba y abajo de la rueda del ratón para encontrar la aplicación. Incluso, puede encontrar la aplicación rápidamente con la navegación por categorías.
 
-If you already know the application name, you can locate it even faster by entering the keywords!
+Si ya conoce el nombre de la aplicación, ¡puede localizarlo aún más rápido ingresando palabras clave!
 
-1. In Launcher, type in a word such as "deepin" with keyboard.
-2. System will automatically search for all applications which contain the keyword "deepin", and then display the searched result in Launcher.
+1. En el Lanzador, escriba una palabra como "deepin" con el teclado.
+2. El sistema buscará al instante todas las aplicaciones que contengan la palabra clave "deepin", y luego muestra el resultado de la búsqueda en Lanzador.
 
 ![1|searchapp](jpg/searchapp.jpg)
 
-### Set Shortcut
-Shortcut is an easy and convenient way to launch applications.
+### Establecer accesos directos
+El acceso directo (atajo) es una forma fácil y conveniente de lanzar aplicaciones.
 
-#### Create Shortcut
-You can select to send the application to desktop or Dock to facilitate follow-up operations.
+#### Crear acceso directo
+Puede seleccionar qué aplicaciones enviar al escritorio o al Muelle para facilitar el seguimiento de las operaciones.
 
-1. In Launcher, move the mouse pointer over the application icon.
-2. Right click the icon, you can:
-   * Click on **Send to desktop** to create a shortcut on desktop.
-   * Click on **Send to dock** to fix the application on Dock.
-   * Click on **Add to startup** to add the application to startup, it will automatically run when the computer boots.
+1. En el Lanzador, mueva el puntero del raton sobre el icono del ratón.
+2. Haga clic derecho en el icono, puede:
+   * Clic en **Envíar al escritorio** para crear un acceso directo al escritorio.
+   * Clic en **Enviar al muelle** to fix the application on Dock.
+   * Clic en **Añadir al arranque** para añadir la aplicación en el arranque, esta se iniciará automáticamente cuando la computadora inicie.
 
 ![0|sendto](jpg/sendto.jpg)
 
 > ![notes](icon/notes.svg): You can drag the application icon from Launcher to Dock. But, you can not drag and drop the application while it is running. At this time you can right click the application icon on Dock and select **Dock** to fix. So that you can quickly open it next time.
+>
+Puede arrastrar el icono de la aplicación desde el Lanzador al Muelle. Pero no puede arrastrar ni soltar la aplicación mientras se está ejecutando. En este instante puede hacer clic con el botón derecho en el ícono de la aplicación en el Muelle y seleccionar **Muelle** para repararlo. Para que pueda abrirlo rápidamente la próxima vez.
 
-#### Delete Shortcut
-You can delete the application shortcut from desktop, Dock and so on.
+#### Quitar acceso directo
+Puede quitar el acceso directo de la aplicación desde el escritorio, el Muelle, etc.
 
-1. In Launcher, move the mouse pointer over the application icon.
+1. En el Lanzador, mueva el puntero del ratón sobre el icono de la aplicación.
 2. Right click the icon, you can:
    * Click on **Remove from desktop** to delete the shortcut on desktop.
    * Click on **Remove from dock** to remove the application fixed on Dock.
