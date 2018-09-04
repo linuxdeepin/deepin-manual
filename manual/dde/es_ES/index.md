@@ -7,18 +7,18 @@ deepin es un elegante, fácil de usar y productivo sistema operativo Linux para 
 
 ### Bienvenida
 
-Cuando inicias sesión en Deepin después de una instalación correcta, se iniciará automáticamente un programa de bienvenida. Puedes ver el vídeo de introducción para profundizar en las nuevas funciones, seleccionar el modo de escritorio y el tema de iconos, habilitar los efectos de ventana y obtener más información sobre deepin.
+Cuando inicie sesión en Deepin después de una instalación correcta, se iniciará automáticamente un programa de bienvenida. Puede ver el vídeo de introducción para profundizar en las nuevas funciones, seleccionar el modo de escritorio y el tema de iconos, habilitar los efectos de ventana y obtener más información sobre deepin.
 
 ![0|welcome](jpg/welcome.jpg)
 
 ## Escritorio
 
-Puedes crear nuevo archivo y nueva carpeta, ordenar archivos, establecer esquinas de acceso rápido (hot corners) y fondos de pantalla, etc. en el escritorio.
+Puede crear nuevo archivo y nueva carpeta, ordenar archivos, establecer esquinas de acceso rápido (hot corners) y fondos de pantalla, etc. en el escritorio.
 
 ![0|contextmenu](jpg/contextmenu.jpg)
 
 ### Crear nuevo archivo/nueva carpeta
-Puedes crear nueva carpeta, archivar documentos, o hacer operaciones en general para el escritorio, como lo haría en el gestor de archivos.
+Puede crear nueva carpeta, archivar documentos, o hacer operaciones en general para el escritorio, como lo haría en el gestor de archivos.
 
 - Clic derecho en el escritorio y seleccionar **Nueva carpeta**, y nómbrala.
 - Clic derecho en el escritorio y seleccionar **Nuevo documento**, selecciona cual tipo e ingrese su nombre.
@@ -67,10 +67,10 @@ Puedes crear nueva carpeta, archivar documentos, o hacer operaciones en general 
 
 
 ### Ordenar archivos
-Puedes ordenar los archivos en el escritorio acorde a sus necesidades.
+Puede ordenar los archivos en el escritorio acorde a sus necesidades.
 
 1. Clic derecho al escritorio.
-2. Clic en **Ordenar por**, puedes escoger:
+2. Clic en **Ordenar por**, puede escoger:
 
  - Clic en  **Nombre** para mostrar archivos en orden alfabético.
  - Clic en **Fecha de modificación** para mostrar archivos en orden de la fecha de modificación.
@@ -78,12 +78,12 @@ Puedes ordenar los archivos en el escritorio acorde a sus necesidades.
  - Clic en **Tipo** para mostrar archivos ordenados por su tipo.
 
 
-> ![tips](icon/tips.svg): También, puedes usar la opción **Organizar automáticamente**, los iconos del escritorio serán ordenados automáticamente, y cuando algunos de los iconos son retirados, otros serán reubicados en el espacio faltante.
+> ![tips](icon/tips.svg): También, puede usar la opción **Organizar automáticamente**, los iconos del escritorio serán ordenados automáticamente, y cuando algunos de los iconos son retirados, otros serán reubicados en el espacio faltante.
 
 ### Ajustar tamaño del icono
 
 1. Clic derecho al escritorio.
-2. Clic en **Tamaño de icono**, puedes escoger:
+2. Clic en **Tamaño de icono**, puede escoger:
 
  - Clic en **Minúsculo** para mostrar iconos en un tamaño minúsculo.
 
@@ -99,12 +99,12 @@ Puedes ordenar los archivos en el escritorio acorde a sus necesidades.
 
 
 ### Ajustes de pantalla
-Puedes establecer la resolución de pantalla, brillo y otros.
+Puede establecer la resolución de pantalla, brillo y otros.
 
 1. Clic derecho en el escritorio.
 2. Clic en **Configuración de pantalla** para abrir la interfaz de configuración de pantalla desde el Centro de control.
 
-> ![notes](icon/notes.svg): Specific operations refers to [Display Settings](#Display Settings).
+> ![notes](icon/notes.svg): Para operaciones específicas véase [Configuración de pagada](#Configuración de pantalla).
 
 ### Estabelce esquinas de acceso rápido
 Una esquina de acceso rápido (***hot corner***) simplifica las actividades y le ayuda a acceder la interfaz principal rápidamente.
@@ -119,96 +119,97 @@ Una esquina de acceso rápido (***hot corner***) simplifica las actividades y le
 > ![tips](icon/tips.svg): Por favor, presta atención a la animación al configurar las esquinas.
 
 ### Establecer fondo de pantalla
-Puedes seleccionar algunos elegantes y atractivos fondos de pantalla (***wallpapers***) para embellecer el escritorio y hacer más distintivo.
+Puede seleccionar algunos elegantes y atractivos fondos de pantalla (***wallpapers***) para embellecer el escritorio y hacer más distintivo.
 
 
 1. Clic derecho al escritorio.
 2. Clic en **Establecer fondo de pantalla** para previsualizar todos los fondos de pantalla debajo del escritorio.
 3. Selecciona uno y aplícalo en el escritorio y la pantalla de bloqueo.
-4. Puedes escoger **Solo escritorio** o **Solo pantalla de bloqueo**.
+4. Puede escoger **Solo escritorio** o **Solo pantalla de bloqueo**.
 
 ![1|wallpapers](jpg/wallpapers.jpg)
 
 
 ### Arrastrar y soltar en iconos
 
-Puedes arrastrar y soltar iconos a la ubicación que prefieres en el escritorio:
+Puede arrastrar y soltar iconos a la ubicación que prefieras en el escritorio:
 - Arrastra y suelta el icono entre dos iconos, el icono será mostrado entre ambos;
 - Arrastra y suelta al programa para abrir el archivo con el programa;
 - Arrastra y suelta a la Papelera para mover a la Papelera;
 - Arrastra y suelta a la carpeta para mover el archivo a la carpeta.
 
-## Dock
-Dock is usually displayed at the bottom of the desktop to help you quickly open frequently used applications, which includes Launcher, application icons, tray, shutdown button and system datetime, etc.
+## Muelle
+El muelle es mostrado comúnmente debajo del escritorio para ayudarle a abrir aplicaciones de uso frecuente, que incluye el lanzador, iconos de aplicaciones, bandeja, botón de apagado, fecha y hora del sistema, etc.
 
-### Dock Icons
-You can create application shortcuts on Dock in Launcher and do related operations on it.
+### Iconos de muelle
+Puede crear atajos de la aplicación en el muelle del lanzador y realizar operaciones de las aplicaciones.
 
 ![1|taskbar](jpg/taskbar.jpg)
 
 <table class="block1">
-    <caption>Icon Description</caption>
+    <caption>Descripción de los iconos</caption>
     <tbody>
         <tr>
-            <td><img src="icon/launcher_icon.svg" alt="Launcher" class="inline" /></td>
-            <td>Click to enter into Launcher interface</td>
+            <td><img src="icon/launcher_icon.svg" alt="Lanzador" class="inline" /></td>
+            <td>Clic para entrar a la interfaz del Lanzador</td>
             <td class="blank"></td>
             <td><img src="icon/deepinsoftware_icon.svg" alt="Deepin Store" class="inline" /></td>
-            <td>Click to open Deepin Store</td>
+            <td>Clic para abrir la Deepin Store (tienda Deepin)</td>
         </tr>
         <tr>
             <td><img src="icon/deepinmovie_icon.svg" alt="Deepin Movie" class="inline" /></td>
-            <td>Click to open Deepin Movie</td>
+            <td>Clic para abrir Deepin Movie</td>
             <td class="blank"></td>
-            <td><img src="icon/viewer.svg" alt="Deepin Image Viewer" class="inline" /></td>
-            <td>Click to open Deepin Image Viewer</td>
+            <td><img src="icon/viewer.svg" alt="Visor de imágenes Deepin" class="inline" /></td>
+            <td>Clic para abrir el visor de imágenes Deepin</td>
         </tr>
         <tr>
             <td><img src="icon/chrome_icon.svg" alt="Browser" class="inline" /></td>
-            <td>Click to open webpages</td>
+            <td>Clic para abrir el navegador web</td>
             <td class="blank"></td>
             <td><img src="icon/controlcenter_icon.svg" alt="Control Center" class="inline" /></td>
-            <td>Click to open Control Center</td>
+            <td>Clic para abrir el Centro de Control</td>
         </tr>
         <tr>
-            <td><img src="icon/deepin-file-manager.svg" alt="Deepin File Manager" class="inline" /></td>
-            <td>Click to open Deepin File Manager</td>
+            <td><img src="icon/deepin-file-manager.svg" alt="Gestor de archivos Deepin" class="inline" /></td>
+            <td>Clic para abrir el gestor de archivos Deepin</td>
             <td class="blank"></td>
-            <td><img src="icon/network_icon.svg" alt="Network" class="inline" /></td>
-            <td>Click to open network settings</td>
+            <td><img src="icon/network_icon.svg" alt="Redes" class="inline" /></td>
+            <td>Clic para la abrir los ajustes de red</td>
         </tr>
         <tr>
-            <td><img src="icon/sound_icon.svg" alt="Sound Settings" class="inline" /></td>
-            <td>Click to open sound settings</td>
+            <td><img src="icon/sound_icon.svg" alt="Ajustes de sonido" class="inline" /></td>
+            <td>Clic para abrir los ajustes de sonido</td>
             <td class="blank"></td>
-            <td><img src="icon/deepin-terminal.svg" alt="Deepin Terminal" class="inline" /></td>
-            <td>Click to open Deepin Terminal</td>
+            <td><img src="icon/deepin-terminal.svg" alt="Terminal Deepin" class="inline" /></td>
+            <td>Click to open la Terminal Deepin</td>
         </tr>
         <tr>
-            <td><img src="icon/battery.svg" alt="Shutdown and Battery" class="inline" /></td>
-            <td>Show battery info, click to enter shutdown interface quickly</td>
+            <td><img src="icon/battery.svg" alt="Apagado y batería" class="inline" /></td>
+            <td>Muestra la información de la batería, haz clic para apagar el equipo rápidamente</td>
             <td class="blank"></td>
-            <td><img src="icon/datetime_icon.svg" alt="Date and Time" class="inline" /></td>
-            <td>Click to open Deepin Calendar</td>
+            <td><img src="icon/datetime_icon.svg" alt="Fecha y hora" class="inline" /></td>
+            <td>Clic para abrir el Calendario Deepin</td>
         </tr>
         <tr>
-            <td><img src="icon/wireless.svg" alt="Wireless Network" class="inline" /></td>
-            <td>Click to quickly set wireless network</td>
+            <td><img src="icon/wireless.svg" alt="Conexión inalámbrica" class="inline" /></td>
+            <td>Clic para ajustar rápidamente la conexión inalámbrica</td>
             <td class="blank"></td>
-            <td><img src="icon/trash_icon.svg" alt="Trash" class="inline" /></td>
-            <td>Click to open the trash</td>
+            <td><img src="icon/trash_icon.svg" alt="Papelera" class="inline" /></td>
+            <td>Clic para abrir la Papelera</td>
         </tr>
     </tbody>
 </table>
 
-> ![tips](icon/tips.svg): When you're using a desktop computer, it will only display ![power_icon](icon/power_icon.svg), and when using a laptop, ![battery](icon/battery.svg) icon will show battery info. You can see the battery capacity percentage by moving the mouse pointer over the icon, and enter the shutdown interface quickly by clicking on it.
+> ![tips](icon/tips.svg): Cuado estás usando la computadora de escritorio, el icono solo se mostrará como ![power_icon](icon/power_icon.svg); si estás usando una laptop, el icono mostrará el estado de batería como ![battery](icon/battery.svg). Puede mirar el porcentaje de batería moviendo el puntero del ratón sobre el icono, y podrás ingresar a las opciones de apagado haciendo clic en ello.
 
 
-### Switch Display Mode
-There are two display modes of Dock, which are fashion mode and efficient mode.
+### Mostrando modos de escritorio
+Hay dos modos para mostrar el muelle, las cuales son el modo elegante y el modo eficiente.
 
-- **Fashion Mode**: The display mode is similar to Mac OS and displayed by a tray at the bottom of screen. All fixed application icons will be displayed on Dock.
-- **Efficient Mode**: The display mode is similar to Windows 7 and displayed by a small strip at the bottom of screen. Application icons fixed on Dock by default will be displayed in small ones, and icons of same types will be merged together to save more space for others.
+- **Modo elegante**: Este modo de escritorio es similar al reconocido Mac OS y se muestra en una bandeja en la parte inferior de la pantalla. Todos los íconos de aplicaciones fijas se mostrarán en el Muelle.
+
+- **Modo eficiente**: Este modo de escritorio es similar a la de Windows 7 y se muestra con una pequeña franja en la parte inferior de la pantalla. Los iconos de aplicaciones fijados en Muelle de forma predeterminada se mostrarán en un tamaño reducido, y los íconos del mismo tipo se fusionarán para ganar más espacio a otras aplicaciones.
 
 
 ![1|fashion](jpg/fashion.jpg)
@@ -216,94 +217,94 @@ There are two display modes of Dock, which are fashion mode and efficient mode.
 ![1|efficient](jpg/efficient.jpg)
 
 
-You can switch the display modes by the following operations:
+Puede cambiar los modos de escritorio mediante las siguientes operaciones:
 
-1. On desktop, move the mouse pointer over Dock.
-2. Right click to select **Mode**.
-3. Select a display mode.
+1. En el escritorio, mueve el puntero del ratón sobre el Muelle.
+2. Clic derecho y selecciona el **Modo**.
+3. Elige el modo de escritorio.
 
 ![1|mode](jpg/mode.jpg)
 
-### Set Dock Location
+### Establecer la ubicación del Muelle
 You can place the Dock on any direction of your desktop.
 
-1. On desktop, move the mouse pointer over Dock.
-2. Right click to select **Location**.
-3. Select a location.
+1. En el escritorio, mueve el puntero del ratón sober el Muelle.
+2. Clic derecho y selecciona la **Ubicación**.
+3. Elige la ubicación.
 
 ![1|location](jpg/location.jpg)
 
-### Adjust Dock Size
+### Ajustar el tamaño del Muelle
 
-1. On desktop, move the mouse pointer over Dock.
-2. Right click to select **Size**.
-3. Select a size.
+1. En el escritorio, mueve el puntero sobre el Muelle.
+2. Clic derecho y selecciona el **Tamaño**.
+3. Elige el tamaño.
 
 ![1|size](jpg/size.jpg)
 
-### Show/Hide Dock
+### Mostrar/Ocultar el Muelle
 
-1. On desktop, move the mouse pointer over Dock.
-2. Right click to select **Status**.
-3. On submenu, you can:
-- Select **Keep Shown**, Dock will be displayed at the bottom of desktop all the time.
-- Select **Keep Hidden**, Dock will be hidden and only displayed when mouse hovering on Dock.
-- Select **Smart Hide**, Dock will be automatically hidden when Dock area needs to be used.
+1. En el escritorio, mueve el puntero sobre el Muelle.
+2. Clic derecho y selecciona **Estado**.
+3. En el submenú, puede:
+- Seleccionar **Mantener visible**, el Muelle será mostrado debajo del escritorio todo el tiempo.
+- Seleccionar **Mantener oculto**, el Muelle será ocultado y solo se muestra cuando el ratón pasa al Muelle.
+- Seleccionar **Ocultado inteligente**, el Muelle se ocultará automáticamente cuando el área del Muelle está ocupado.
 
 ![1|status](jpg/status.jpg)
 
 
-### Show/Hide Plugins
+### Mostrar/Ocultar Complementos
 
-1. On desktop, move the mouse pointer over Dock.
-2. Right click to select **Plugins**.
-3. On submenu, you can:
-- Check **Network**, the network icon will be displayed on Dock.
-- Check **Power**, the power icon will be displayed on Dock.
-- Check **Sound**, the sound icon will be displayed on Dock.
-- Check **Datetime**, the Datetime icon will be displayed on Dock.
+1. En el escritorio, mueve el puntero sobre el Muelle.
+2. Clic derecho y selecciona **Complementos**.
+3. En el submenú puede:
+- Marcar **Redes**, el icono de conexión será mostrado en el Muelle.
+- Marcar **Energía**, el icono de energía será mostrado en el Muelle.
+- Marcar **Sonido**, el icono de sonido será mostrado en el Muelle.
+- Marcar **Fecha y hora**, el icono de fecha y hora será mostrado en el Muelle.
 
 > ![notes](icon/notes.svg): Uncheck the plugin icon, it will be hidden on Dock.
 
 ![1|plugins](jpg/plugins.jpg)
 
-### Shutdown Interface
-There are two ways to shut down:
+### Interfaz de apagado
+Hay dos formas de apagar el equipo:
 
-1. Click on the battery icon on Dock.
-2. Click on the battery icon in the bottom right corner of Launcher mini mode.
+1. Clic en el icono de la batería del Muelle.
+2. Clic en el icono de batería en la parte inferior derecha del modo eficiente.
 
-On desktop, click on ![power](icon/power_icon.svg) on Dock.
+En el escritorio, haz clic en el icono ![power_icon](icon/power_icon.svg) del Muelle.
 
 <table class="block1">
 
     <tbody>
         <tr>
-            <td width="30px">Shut down</td>
-            <td width="100px">Click on ![poweroff_normal](icon/poweroff_normal.svg) on the Shutdown Interface or press ![Enter](icon/Enter.svg) on keyboard.</td>
+            <td width="30px">Apagar</td>
+            <td width="100px">Clic en ![poweroff_normal](icon/poweroff_normal.svg) en la Interfaz de apagado o presiona ![Enter](icon/Enter.svg) en el teclado.</td>
         </tr>
         <tr>
-            <td>Restart</td>
-            <td>Click on ![reboot_normal](icon/reboot_normal.svg) on the Shutdown Interface, to run you computer again after shutdown</td>
+            <td>Reiniciar</td>
+            <td>Clic en ![reboot_normal](icon/reboot_normal.svg) en la Interfaz de apagado, volverá a iniciar su computadora después de apagarse</td>
         </tr>
         <tr>
-            <td>Suspend</td>
-            <td>Click on ![suspend_normal](icon/suspend_normal.svg) on the Shutdown Interface, the entire system will be running with low consumption.</td>
+            <td>Suspender</td>
+            <td>Clic en ![suspend_normal](icon/suspend_normal.svg) en la Interfaz de apagado, todo el sistema se ejecutará con bajo consumo.</td>
         </tr>
         <tr>
-            <td>Lock Screen</td>
-            <td>Click on ![lock_normal](icon/lock_normal.svg) on the Shutdown Interface or press ![Super](icon/Super.svg)+![L](icon/L.svg) combination key on keyboard.</td>
+            <td>Bloquear</td>
+            <td>Clic en ![lock_normal](icon/lock_normal.svg) en la Interfaz de apagado o presione la combinación de teclas ![Super](icon/Super.svg)+![L](icon/L.svg) en el teclado.</td>
         </tr>
         <tr>
-            <td>Switch User</td>
-            <td>Click on ![userswitch_normal](icon/userswitch_normal.svg) on the Shutdown Interface, to use another account to log in.</td>
+            <td>Cambiar usuario</td>
+            <td>Click on ![userswitch_normal](icon/userswitch_normal.svg) en la Interfaz de apagado, utilice otra cuenta de usuario para ingresar.</td>
         </tr>
         <tr>
-            <td>Log Out</td>
-            <td>Click on ![logout_normal](icon/logout_normal.svg) on the Shutdown Interface, to clear the current account information by logging out.</td>
+            <td>Cerrar sesión</td>
+            <td>Clic en ![logout_normal](icon/logout_normal.svg) en la Interfaz de apagado, finaliza la cuenta actual al cerrar sesión.</td>
         </tr>
         <tr>
-            <td>Start system monitor</td>
+            <td>Iniciar monitor del sistema system monitor</td>
             <td>Click on ![monitor](icon/monitor.svg) on the Shutdown Interface, to start system monitor.</td>
     </tbody>
  </table>
@@ -526,7 +527,7 @@ You can protect your privacy and data and get security protection by setting acc
 > ![notes](icon/notes.svg): The current login user can not be deleted.
 
 
-### Display Settings
+### Configuración de pantalla
 Your computer can reach the best performance by setting its resolution, direction and extend screens of the monitor(s).
 
 ![0|display](jpg/display.jpg)
