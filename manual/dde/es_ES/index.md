@@ -20,8 +20,8 @@ Puede crear nuevo archivo y nueva carpeta, ordenar archivos, establecer esquinas
 ### Crear nuevo archivo/nueva carpeta
 Puede crear nueva carpeta, archivar documentos, o hacer operaciones en general para el escritorio, como lo haría en el gestor de archivos.
 
-- Clic derecho en el escritorio y seleccionar **Nueva carpeta**, y nómbrala.
-- Clic derecho en el escritorio y seleccionar **Nuevo documento**, selecciona cual tipo e ingrese su nombre.
+- Clic derecho en el escritorio y seleccione **Nueva carpeta**; luego, nómbrala.
+- Clic derecho en el escritorio y seleccione **Nuevo documento**, seleccione cual tipo e ingrese su nombre.
 
 <table class="block1">
 <tbody>
@@ -111,7 +111,7 @@ Una esquina de acceso rápido (***hot corner***) simplifica las actividades y le
 
 1. Clic derecho en el escritorio.
 2. Clic en **Configuración de esquinas**, entonces toda la pantalla se oscurecerá y las funciones de acceso rápido serán mostradas entre las cuadro esquinas.
-3. Mueve el puntero del raton a la esquina y selecciona una opción para configurar la esquina.
+3. Mueve el puntero del raton a la esquina y seleccione una opción para configurar la esquina.
 4. Clic en zona vacía del escritorio para salir.
 
 ![1|hotspace](jpg/hotspace.jpg)
@@ -186,7 +186,7 @@ Puede crear atajos de la aplicación en el muelle del lanzador y realizar operac
         </tr>
         <tr>
             <td><img src="icon/battery.svg" alt="Apagado y batería" class="inline" /></td>
-            <td>Muestra la información de la batería, haz clic para apagar el equipo rápidamente</td>
+            <td>Muestra la información de la batería, haga clic para apagar el equipo rápidamente</td>
             <td class="blank"></td>
             <td><img src="icon/datetime_icon.svg" alt="Fecha y hora" class="inline" /></td>
             <td>Clic para abrir el Calendario Deepin</td>
@@ -220,7 +220,7 @@ Hay dos modos para mostrar el muelle, las cuales son el modo elegante y el modo 
 Puede cambiar los modos de escritorio mediante las siguientes operaciones:
 
 1. En el escritorio, mueve el puntero del ratón sobre el Muelle.
-2. Clic derecho y selecciona el **Modo**.
+2. Clic derecho y seleccione el **Modo**.
 3. Elige el modo de escritorio.
 
 ![1|mode](jpg/mode.jpg)
@@ -229,7 +229,7 @@ Puede cambiar los modos de escritorio mediante las siguientes operaciones:
 You can place the Dock on any direction of your desktop.
 
 1. En el escritorio, mueve el puntero del ratón sober el Muelle.
-2. Clic derecho y selecciona la **Ubicación**.
+2. Clic derecho y seleccione la **Ubicación**.
 3. Elige la ubicación.
 
 ![1|location](jpg/location.jpg)
@@ -237,7 +237,7 @@ You can place the Dock on any direction of your desktop.
 ### Ajustar el tamaño del Muelle
 
 1. En el escritorio, mueve el puntero sobre el Muelle.
-2. Clic derecho y selecciona el **Tamaño**.
+2. Clic derecho y seleccione el **Tamaño**.
 3. Elige el tamaño.
 
 ![1|size](jpg/size.jpg)
@@ -245,7 +245,7 @@ You can place the Dock on any direction of your desktop.
 ### Mostrar/Ocultar el Muelle
 
 1. En el escritorio, mueve el puntero sobre el Muelle.
-2. Clic derecho y selecciona **Estado**.
+2. Clic derecho y seleccione **Estado**.
 3. En el submenú, puede:
 - Seleccionar **Mantener visible**, el Muelle será mostrado debajo del escritorio todo el tiempo.
 - Seleccionar **Mantener oculto**, el Muelle será ocultado y solo se muestra cuando el ratón pasa al Muelle.
@@ -257,7 +257,7 @@ You can place the Dock on any direction of your desktop.
 ### Mostrar/Ocultar Complementos
 
 1. En el escritorio, mueve el puntero sobre el Muelle.
-2. Clic derecho y selecciona **Complementos**.
+2. Clic derecho y seleccione **Complementos**.
 3. En el submenú puede:
 - Marcar **Redes**, el icono de conexión será mostrado en el Muelle.
 - Marcar **Energía**, el icono de energía será mostrado en el Muelle.
@@ -274,7 +274,7 @@ Hay dos formas de apagar el equipo:
 1. Clic en el icono de la batería del Muelle.
 2. Clic en el icono de batería en la parte inferior derecha del modo eficiente.
 
-En el escritorio, haz clic en el icono ![power_icon](icon/power_icon.svg) del Muelle.
+En el escritorio, haga clic en el icono ![power_icon](icon/power_icon.svg) del Muelle.
 
 <table class="block1">
 
@@ -297,55 +297,55 @@ En el escritorio, haz clic en el icono ![power_icon](icon/power_icon.svg) del Mu
         </tr>
         <tr>
             <td>Cambiar usuario</td>
-            <td>Click on ![userswitch_normal](icon/userswitch_normal.svg) en la Interfaz de apagado, utilice otra cuenta de usuario para ingresar.</td>
+            <td>Click on ![userswitch_normal](icon/userswitch_normal.svg) en la Interfaz de apagado, para usar otra cuenta de usuario con que ingresar.</td>
         </tr>
         <tr>
             <td>Cerrar sesión</td>
-            <td>Clic en ![logout_normal](icon/logout_normal.svg) en la Interfaz de apagado, finaliza la cuenta actual al cerrar sesión.</td>
+            <td>Clic en ![logout_normal](icon/logout_normal.svg) en la Interfaz de apagado, para finalizar la cuenta actual al cerrar sesión.</td>
         </tr>
         <tr>
             <td>Iniciar monitor del sistema system monitor</td>
-            <td>Click on ![monitor](icon/monitor.svg) on the Shutdown Interface, to start system monitor.</td>
+            <td>Clic en ![monitor](icon/monitor.svg) en la Interfaz de apagado, para iniciarto start system monitor.</td>
     </tbody>
  </table>
 
-> ![notes](icon/notes.svg): ![userswitch_normal](icon/userswitch_normal.svg) will be shown when there are multiple accounts in the system. After these operations, you should enter the corresponding account password on login screen and press ![Enter](icon/Enter.svg) or click on ![login](icon/login_icon.svg) to enter the system.
+> ![notes](icon/notes.svg): el icono ![userswitch_normal](icon/userswitch_normal.svg) será mostrado cuando hay varias cuentas de usuario en el sistema. Después de estas operaciones, debe ingresar la contraseña de la cuenta correspondiente en la pantalla de inicio de sesión y presionar ![Enter](icon/Enter.svg) o hacer clic en ![login](icon/login_icon.svg) para ingresar al sistema.
 
-### Trash
-You can find all deleted files in trash which can be resumed or emptied.
+### Papelera
+Puede encontrar todos los archivos eliminados que serían recuperados o descartados.
 
-> ![notes](icon/notes.svg): Using fashion mode, Trash will be displayed on Dock, if you switch to efficient mode, you can open it in Launcher or create shortcut on desktop.
+> ![notes](icon/notes.svg): Usando el modo elegante, la Papelera será mostrada en el Muelle, su cambias al modo eficiente, puedes abrirla desde el Lanzador o creando un atajo en el escritorio.
 
-#### Restore Files
-You can restore files deleted by executing the following operations:
+#### Restaurar archivos
+Puede recuperar archivos eliminados realizando las siguientes acciones:
 
-1. Select the file to restore in trash.
+1. Seleccione el archivo a restaurar en la papelera.
 
-2. Right click on the file and select **Restore**.
+2. Clic derecho en el archivo y seleccione **Restaurar**.
 
-3. The file will be in its original path.
+3. El archivo estará en su ruta original.
 
-> ![tips](icon/tips.svg): To restore file/folder just deleted, press ![Ctrl](icon/Ctrl.svg) +  ![Z](icon/Z.svg) to undo it.
+> ![tips](icon/tips.svg): Para restaurar el archivo/carpeta ya eliminado, pulse ![Ctrl](icon/Ctrl.svg) +  ![Z](icon/Z.svg) para deshacer.
 
-> ![attention](icon/attention.svg): If the original path does not exist anymore, it will automatically create the folders.
+> ![attention](icon/attention.svg): Si la ruta original ya no existe, creará automáticamente las carpetas.
 
-#### Empty Trash
-Empty trash to release more usable space in your disk.
+#### Vaciar la Papelera
+Vaciar la papelera liberará más espacio útil al disco duro.
 
-1. In Trash, right click on the blank area.
-2. Select **Empty Trash** to completely delete all the files in Trash.
+1. En la Papelera, haga clic derecho en el área en blanco.
+2. Seleccione **Vaciar papelera** para eliminar por completo todos los archivos de la Papelera.
 
-## Launcher
-Launcher can help you to manage all installed applications, you can quickly find the needed application by the categorized navigation or searching function.
+## Lanzador
+El Lanzador puede ayudarle a gestionar todas las aplicaciones instaladas, puede acceder rápidamente las aplicaciones que necesita mediante la navegación por categorías o la función de búsqueda.
 
-> ![tips](icon/tips.svg): You can view the newly installed applications in Launcher with a blue point shows after them.
+> ![tips](icon/tips.svg): Puede ver las aplicaciones recién instaladas en el lanzador con un punto azul después de nombrarlas.
 
 
-### Switch Modes
+### Cambio de modalidad
 
-* Users can switch between fullscreen mode and mini mode manually. Click icon at the upper right corner to switch modes.
-* Both the modes support searching applications and sending it to desktop or dock.
-* Mini mode also supports open File Manager, Control Center and shutdown interface directly.
+* Los usuarios pueden cambiar entre modo de pantalla completa y el modo mini de forma manual. Haga clic en el icono en la esquina superior derecha para cambiar de modo.
+* Ambos modos son compatibles con la búsqueda de aplicaciones y el envío al escritorio o al Muelle.
+* El modo Mini también admite abrir el Gestor de archivos, el Centro de control y la interfaz de apagado directamente.
 
 ![1|fullscreen](jpg/fullscreen.jpg)
 ![1|mini](jpg/mini.jpg)
