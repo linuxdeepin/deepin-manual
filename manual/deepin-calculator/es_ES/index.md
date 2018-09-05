@@ -80,19 +80,19 @@ El tema de la Calculadora Deepin es luminosa (clara) por defecto, puede hacer cl
 2. Seleccione **Tema oscuro**.
 3. La interfaz cambiará al tema oscuro.
 
-### Help
+### Ayuda
 
-1. On Deepin Calculator interface, click on ![main_menu](icon/main_menu.svg).
-2. Select **Help**.
-3. View the manual.
+1. En la interfaz de la Calculadora Deepin, clic en ![main_menu](icon/main_menu.svg).
+2. Seleccione **Ayuda**.
+3. Observe el manual.
 
-### About
+### Acerca de
 
-1. On Deepin Calculator interface, click on ![main_menu](icon/main_menu.svg).
-2. Select **About**.
-3. View the version description.
+1. En la interfaz de la Calculadora Deepin, clic en ![main_menu](icon/main_menu.svg).
+2. Seleccione **Acerca de**.
+3. Observe la descripción de la versión.
 
-### Exit
+### Salida
 
-1. On Deepin Calculator interface, click on ![main_menu](icon/main_menu.svg).
-2. Click on **Exit** to exit.
+1. En la interfaz de la Calculadora Deepin, clic en ![main_menu](icon/main_menu.svg).
+2. Clic en **Salir** para cerrar.
