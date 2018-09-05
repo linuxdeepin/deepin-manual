@@ -1,84 +1,84 @@
-# Deepin Calculator|../common/deepin-calculator.svg|
+# Calculadora Deepin|../common/deepin-calculator.svg|
 
-## Overview
+## Vistazo
 
-Deepin Calculator is a simple and easy to use desktop calculator. It supports addition, subtraction, multiplication and division with keyboard input perfectly matched, as well as symbolic fault-tolerant computing.
+Calculadora Deepin es una simple y fácil manera de usar la calculadora del escritorio. Admite suma, resta, multiplicación y división con entrada de teclado perfectamente encajado como computación simbólica tolerante a fallos.
 
 ![0|calculator](jpg/calculator.jpg)
 
-## Common Operations
+## Operaciones comunes
 
-### Symbol Introduction
+### Introducción a símbolos
 
 <table class="block1">
     <caption></caption>
     <tbody>
         <tr>
             <td>0~9</td>
-            <td>Number Key</td>
-            <td>Basic arabic numerals</td>
+            <td>Teclado numérico Key</td>
+            <td>Números arábigos básicos</td>
         </tr>
         <tr>
             <td>c</td>
-            <td>Clear</td>
-            <td>One click to clear current contents, double click to clear all.</td>
+            <td>Clear/Limpiar</td>
+            <td>Un blic para limpiar contenido actual, doble clic para borrar todo.</td>
         </tr>
     	<tr>
             <td>%</td>
-            <td>Percent sign</td>
+            <td>Signo de porcntaje</td>
             <td>To input percent sign</td>
         </tr>
     	<tr>
             <td>![delete](icon/delete.svg)</td>
-            <td>Delete</td>
+            <td>Borrar</td>
             <td>One click to delete a character</td>
         </tr>
     	<tr>
             <td>+-×÷</td>
-            <td>Addition, subtraction, multiplication, and division</td>
-            <td>Basic math operator.</td>
+            <td>Suma, resta, multiplicación y división</td>
+            <td>Operadores matemáticos básicos.</td>
         </tr>
         <tr>
             <td>.</td>
-            <td>Decimal Point</td>
-            <td>To input decimal point.</td>
+            <td>Punto decimal</td>
+            <td>Para introducir un punto decimal.</td>
         </tr>
         <tr>
             <td>()</td>
-            <td>Bracket</td>
-            <td>To input bracket and auto complete left and right bracket.</td>
+            <td>Paréntesis</td>
+            <td>Para introducir paréntesis y completar automáticamente los paréntesis de inicio y final.</td>
         </tr>
         <tr>
             <td>=</td>
-            <td>Equal Sign</td>
-            <td>To get result</td>
+            <td>Signo final</td>
+            <td>Para obtener el resultado</td>
         </tr>
     </tbody>
 </table>
 
 > ![tips](icon/tips.svg): You can select the current line by mouse to edit and copy.
 
-### Symbolic Fault-tolerant Computing
+### Computación simbólica tolerante a fallos
 
-Deepin Calculator supports keyboard operation and fault-tolerant computing of special symbols besides normal numbers and operation symbols.
+Calculadora Deepin soporta operaciones en teclado y computación de simbólica tolerante a fallos, además de los números normales y símbolos de operación.
 
-- Fault-tolerance processing of multiplication: Input asterisk (*) and letter x to trigger multiplication;
-- Fault-tolerance processing of subtraction: Input minus (-) and underline (_) to trigger subtraction;
-- Fault-tolerance processing of bracket symbol: Input open and close brackets to trigger bracket;
-- Fault-tolerance processing of equal sign: Input = in English and Chinese to trigger equal sign;
-- Fault-tolerance processing of clear symbol: Press Esc to trigger clearing;
-- Fault-tolerance processing of delete symbol: Press Backspace  to trigger deleting;
+- Procedimiento de multiplicación tolerante a fallos: Al ingresar aterisco (\*) y la letra x para activar la multiplicación;
+- Procedimiento de sustración tolerante a fallos: Al ingresar menos (-) y la línea de subrayado (\_) para activar la sustracción;
+- Procedimiento de paréntesis tolerante a fallos: IngresaInput open and close brackets to trigger bracket;
+- Procedimiento de igualdad tolerante a fallos: Al ingresar = en Inglés y Chino para activar el signo de igual;
+- Procedimiento de símbolo de limpieza tolerante a fallos: Al presionar Esc para activar la limpieza;
+- Procedimiento de símbolo de borrado tolerante a fallos: Al presionar la tecla de retroceso para activar el borrado;
 
 
-## Main Menu
+## Menú principal
 
-### Switch Theme
+### Cambiar tema
 
-The theme of Deepin Calculator is light by default, you can click on **Dark Theme** to switch.
+El tema de la Calculadora Deepin es luminosa (clara) por defecto, puede hacer clic en **Tema oscuro** para cambiar.
 
-1. On Deepin Calculator interface, click on ![main_menu](icon/main_menu.svg).
-2. Select **Dark Theme**.
-3. The interface will switch to dark theme.
+1. En la interfaz de la Calculadora Deepin, clic en ![main_menu](icon/main_menu.svg).
+2. Seleccione **Tema oscuro**.
+3. La interfaz cambiará al tema oscuro.
 
 ### Help
 
