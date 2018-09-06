@@ -297,7 +297,7 @@ En el escritorio, haga clic en el icono ![power_icon](icon/power_icon.svg) del M
         </tr>
         <tr>
             <td>Cambiar usuario</td>
-            <td>Click on ![userswitch_normal](icon/userswitch_normal.svg) en la Interfaz de apagado, para usar otra cuenta de usuario con que ingresar.</td>
+            <td>Clic en ![userswitch_normal](icon/userswitch_normal.svg) en la Interfaz de apagado, para usar otra cuenta de usuario con que ingresar.</td>
         </tr>
         <tr>
             <td>Cerrar sesión</td>
@@ -426,8 +426,8 @@ Puede optar por desinstalar las aplicaciones que ya no usa para ahorrar espacio 
 ## Centro de control
 Puede administrar las configuraciones básicas de deepin en el Centro de control. Incluye widget, modificaciones frecuentes, administración de cuentas, ajustes de red, fecha y hora, personalización, configuración de pantalla, actualización de sistema y aplicación, etc. Cuando ingrese al Deepin Desktop Environment, puede abrir el Centro de control moviendo el puntero del mouse hacia la esquina inferior derecha en el escritorio.
 
-### Homepage Introduction
-The homepage of Control Center displays the common information for users to daily check and quickly set.
+### Introuducción a la sección de inicio
+La sección de inicio del Centro de control muestra la información general para los usuarios para consultar diariamente y ajustarlo en segundos.
 
 ![0|dcchomepage](jpg/dcchomepage.jpg)
 
@@ -435,393 +435,392 @@ The homepage of Control Center displays the common information for users to dail
     <tbody>
         <tr>
             <td>1</td>
-            <td width="80px">Top Info Bar</td>
-            <td>Display the account avatar, current date and time.</td>
+            <td width="80px">Barra superior informativa</td>
+            <td>Muestra el avatar de la cuenta, la hora y fecha actual.</td>
         </tr>
         <tr>
             <td>2</td>
-            <td>Application Widget Area</td>
-            <td>Display the setting navigation of Control Center, weather info and notification list.</td>
+            <td>Área de widgets aplicativos</td>
+            <td>Muestra la navegación de la configuración del Centro de control, información del clima y lista de notificaciones.</td>
         </tr>
         <tr>
             <td>3</td>
-            <td>System Widget Area</td>
-            <td>Display the widgets of music player, volume and brightness, etc.</td>
+            <td>Área de widgets del sistema</td>
+            <td>Muestra los widgets del reproductor de música, volumen y brillo, etc.</td>
         </tr>
         <tr>
             <td>4</td>
-            <td>Bottom Tool Bar</td>
-            <td>Display Bluetooth, VPN, wireless network,screen projection and multiple screen settings, etc.</td>
+            <td>Barra inferior de herramientas</td>
+            <td>Muestra el estado del Bluetooth, VPN, conexión inalámbrica, proyección y distribución de la pantalla, etc.</td>
         </tr>
     </tbody>
  </table>
 
-Once you open a setting module in Control Center, the navigation bar appears on the left. Click the icon to quickly switch to other settings.
+Una vez que abre un módulo de configuración en el Centro de control, la barra de navegación aparece a la izquierda. Haga clic en el icono para cambiar rápidamente a otras configuraciones.
 
 ![0|cc-navigation](jpg/cc-navigation.jpg)
 
-### Account Settings
-You can protect your privacy and data and get security protection by setting accounts.
+### Configuración de la cuenta
+Puede proteger su datos privados y obtener protección adicional mediante los ajustes de la cuenta.
 
 ![0|account](jpg/account.jpg)
 
-#### Create New Account
+#### Crear nueva cuenta
 
-1. On the homepage of Control Center, click on ![account_normal](icon/account_normal.svg).
-2. Click on **Create Account**.
-3. Input the new user's name, type password twice.
-4. Click on **Create**.
-5. Input password on the auth page and the new account will be added to the account list.
-
-
-#### Modify Account Avatar
-
-1. On the homepage of Control Center, click on ![account_normal](icon/account_normal.svg).
-2. Click on an existed account in the list.
-3. Click on **Modify Avatar** to enter the interface for modifying avatar.
-4. Select a default avatar or local avatar to finish.
-
-> ![notes](icon/notes.svg): You can click on the user avatar to directly enter the **Accounts** interface.
+1. En la sección de inicio del Centro de control, clic en ![account_normal](icon/account_normal.svg).
+2. Clic en **Crear cuenta**.
+3. Introduzca el nombre del nuevo usuario, ingrese la contraseña dos veces.
+4. Clic en **Crear**.
+5. Introuzca la contraseña en la página de autenticación y la nueva cuenta será creada en la lista de usuarios.
 
 
-#### Modify Account Password
+#### Modificar avatar de la cuenta
 
-1. On the homepage of Control Center, click on ![account_normal](icon/account_normal.svg).
-2. Click on an existed account in the list.
-3. Click on **Modify Password** enter the interface for modifying password.
-4. Input new password twice and confirm.
+1. En la sección de inicio del Centro de control, clic en ![account_normal](icon/account_normal.svg).
+2. Clic en una cuenta existente de la lista.
+3. Clic en **Modificar avatar** para ingresar a la interfaz para modificar el avatar.
+4. Seleccione un avatar predeterminado o uno local para terminar.
 
-#### Auto Login
-
-1. On the homepage of Control Center, click on ![account_normal](icon/account_normal.svg).
-2. Click on an existed account in the list.
-3. Click on **Auto Login** to open auto login function.
+> ![notes](icon/notes.svg): Puede hacer clic al avatar del usuario para ingresar a la interfaz de la **Cuenta**.
 
 
-#### Login without Password
+#### Modificar contraseña de la cuenta
 
-1. On the homepage of Control Center, click on ![account_normal](icon/account_normal.svg).
-2. Click on an existed account in the list.
-3. Click on **Login without password**, you can enter into the system without password.
+1. En la sección de inicio del Centro de control, clic en ![account_normal](icon/account_normal.svg).
+2. Clic en una cuenta existente de la lista.
+3. Clic en **Cambiar contraseña** enter the interface for modifying password.
+4. Introduzca la nueva contraseña dos veces y confirme.
+
+#### Inicio de sesión automático
+
+1. En la sección de inicio del Centro de control, clic en ![account_normal](icon/account_normal.svg).
+2. Clic en una cuenta existente de la lista.
+3. Clic en **Inicio de sesión automático** para activar la función de inicio de sesión de forma automática.
 
 
-#### Set Fingerprint Password
+#### Iniciar sesión sin contraseña
 
-1. On the homepage of Control Center, click on ![account_normal](icon/account_normal.svg).
-2. Click on an existed account in the list.
-3. Click on **Fingerprint Password** to open auto login function.
-4. Click on **Add Fingerprint** to enter the adding interface.
-5. Put the finger in fingerprint reader, and then click on **Done** after added successfully.
+1. En la sección de inicio del Centro de control, clic en ![account_normal](icon/account_normal.svg).
+2. Clic en una cuenta existente de la lista.
+3. Clic on **Iniciar sesión sin contraseña**, para ingresar al sistema sin contraseña.
+
+
+#### Establecer contraseña de huella dactilar
+
+1. En la sección de inicio del Centro de control, clic en ![account_normal](icon/account_normal.svg).
+2. Clic en una cuenta existente de la lista.
+3. Clic en **Contraseña de huella dactilar** to open auto login function.
+4. Clic en **Añadir huella dactilar** para ingresar a la interfaz complementaria.
+5. Coloque su dedo a un lector de huella dactilar, y luego haga clic en **Hecho** después de añadir la huella correctamente.
 
 ![0|fingerprint1](jpg/fingerprint1.jpg)
 
 
+#### Borrar cuenta
 
-#### Delete Account
+1. En la sección de inicio del Centro de control, clic en ![account_normal](icon/account_normal.svg).
+2. Clic en una cuenta existente de la lista.
+3. Clic en **Borrar cuenta** .
+4. En la interfaz de confirmación, clic en **Borrar**.
 
-1. On the homepage of Control Center, click on ![account_normal](icon/account_normal.svg).
-2. Click on an existed account in the list.
-3. Click on **Delete Account** .
-4. In the confirm interface, click on **Delete**.
-
-> ![notes](icon/notes.svg): The current login user can not be deleted.
+> ![notes](icon/notes.svg): No puede eliminar el usuario que ya inició sesión.
 
 
 ### Configuración de pantalla
-Your computer can reach the best performance by setting its resolution, direction and extend screens of the monitor(s).
+Su computadora puede alcanzar el mejor rendimiento al establecer su resolución, orientación y extensión de las pantallas de los monitores.
 
 ![0|display](jpg/display.jpg)
 
 
-#### Single Screen Settings
-You can adjust the visual perception by setting the screen resolution, brightness and so on.
+#### Configuración sencillo de pantalla
+Puede ajustar la percepción visual ajustando la resolución de pantalla, el brillo, entre otros.
 
-##### Set Display Scaling
+##### Ajustar escalado de pantalla
 
-1. On the homepage of Control Center, click on ![display_normal](icon/display_normal.svg).
-2. Click on the scaleplate to adjust the display scaling (1, 1.25, 1.5, 1.75, 2.0).
-3. It will take effect after reboot.
+1. En la sección de inicio del Centro de control, clic en ![display_normal](icon/display_normal.svg).
+2. Clic en los números del deslizador para ajustar el escalado de pantalla (1, 1.25, 1.5, 1.75, 2.0).
+3. Tendrá efecto después del reinicio.
 
-> ![notes](icon/notes.svg): When HiDPI screen is detected, the display scaling will be automatically switched.
+> ![notes](icon/notes.svg): Cuando se detecta la pantalla HiDPI, la escala de pantalla cambiará automáticamente.
 
-> ![notes](icon/notes.svg): Some applications do not support display scaling, you can right click it in Launcher and select **Disable display scaling** to get better display effect.
+> ![notes](icon/notes.svg): Algunas aplicaciones no son compatibles con la escala de visualización, puede hacer clic con el botón derecho en el Lanzador y seleccionar **Desactivar escalado de panalla** para obtener un mejor efecto de visualización.
 
-##### Set Resolution
+##### Ajustar resolución
 
-1. On the homepage of Control Center, click on ![display_normal](icon/display_normal.svg).
-2. Click on **Resolution** to enter the interface for resolution settings.
-3. Select the proper resolution in the list.
+1. En la sección de inicio del Centro de control, clic en ![display_normal](icon/display_normal.svg).
+2. Clic en **Resolución** para entrar la interfaz de configuración de pantalla.
+3. Seleccione la resolución adecuada en la lista.
 
-##### Set Brightness
+##### Ajustar brillo
 
-1. On the homepage of Control Center, click on ![display_normal](icon/display_normal.svg).
-2. Click on **Brightness** to enter the interface for brightness settings.
-   - Enable **Night Shift**, the screen tone will be auto adjusted by help of figuring out your location.
+1. En la sección de inicio del Centro de control, clic en ![display_normal](icon/display_normal.svg).
+2. Clic en **Brillo** para entrar a la interfaz de configuración del brillo.
+   - Active el **Modo nocturno**, el tono de la pantalla se ajustará automáticamente con la ayuda de conocer su ubicación.
 
-##### Set Screen Direction
+##### Ajustar orientación de pantalla
 
-1. On the homepage of Control Center, click on ![display_normal](icon/display_normal.svg).
-2. Click on **Rotate** to rotate the screen.
-3. Everytime you click the mouse, the screen will rotate 90 degrees clockwise.
-4. Click on the right mouse button to exit the rotate screen interface.
+1. En la sección de inicio del Centro de control, clic en ![display_normal](icon/display_normal.svg).
+2. Clic en **Rotar** para girar la pantalla.
+3. Cada vez que haga clic con el ratón, la pantalla girará 90 grados en el sentido de las agujas del reloj.
+4. Clic con el botón derecho del ratón para salir la interfaz de rotado de pantalla.
 
 
-#### Multiple Screen Settings
-Widen your horizon by multiple screens! You can use VGA cable to connect your computer to other display devices.
+#### Ajustes de múltiples pantallas
+¡Amplíe su horizonte con múltiples pantallas! Puede usar un cable VGA para conectar su computadora a otros dispositivos de visualización.
 
-1. On the homepage of Control Center, click on ![display_normal](icon/display_normal.svg).
-2. Select an multiple screen mode:
-   - **Copy** to copy the setting of main screen to others.
-   - **Extend** to extend the display area of main screen.
-   - **Only Displayed on xxx** to display screen content only on xxx screen.
-   - **Custom Settings** to add custom settings in Control Center.
+1. En la sección de inicio del Centro de control, clic en ![display_normal](icon/display_normal.svg).
+2. Seleccione un modo de pantalla múltiple:
+   - **Duplicar** para duplicar la pantalla principal a otras.
+   - **Extender** para expandir el área de pantalla de la principal.
+   - **Solo mostrada en xxx** para mostrar el contenido de la pantalla solo en la pantalla que prefiera.
+   - **Ajustes personalizados** para agregar ajustes personalizados en el Centro de control.
 
-##### Custom Settings
+##### Ajustes personalizados
 
-1. On the homepage of Control Center, click on ![display_normal](icon/display_normal.svg).
-2. Click on **Custom Settings**.
-3. Set custom settings on the popup menu.
-4. Click on **Apply**.
+1. En la sección de inicio del Centro de control, clic en ![display_normal](icon/display_normal.svg).
+2. Clic  **Ajustes personalizados**.
+3. Establecer configuraciones personalizadas en el menú emergente.
+4. Clic en **Aplicar**.
 
-#### Screen Projection
+#### Proyección de pantalla
 
-1. On the homepage of Control Center, click on ![display_normal](icon/display_normal.svg) to open the display settings.
+1. En la sección de inicio del Centro de control, clic en ![display_normal](icon/display_normal.svg) para abrir la configuración de pantalla.
 2. Move the mouse pointer to ![active](icon/active.svg).
-3. Select the device to project.
-4. There will be a icon followed the device name, click again to cancel projection.
+3. Seleccione el dispositivo para proyectar.
+4. Habrá un icono seguido del nombre del dispositivo, haga clic nuevamente para cancelar la proyección.
 
-> ![notes](icon/notes.svg): Screen projection needs the support from NIC, so WIFI will be disconnected when screen projection is enabled.
+> ![notes](icon/notes.svg): La proyección de pantalla necesita el soporte de NIC, por lo que se desconectará el WiFi cuando la proyección de pantalla esté habilitada.
 
 
-### Default Application Settings
-When installed multiple applications in the same type, you can choose one of them to be the default application to run.
+### Ajustar aplicaciones predeterminadas
+Cuando instale varias aplicaciones del mismo tipo, puede elegir una de ellas para ser la aplicación predeterminada para ejecutar.
 
 ![0|default](jpg/default.jpg)
 
-#### Select Default Applications
+#### Seleccionar aplicaciones predeterminadas
 
-1. On the homepage of Control Center, click on ![default_applications_normal](icon/default_applications_normal.svg).
-2. Click on **Default Applications** to enter the settings interface for modifying default applications.
-3. Select the applications in the list.
-
-
-
-#### Add Default Applications
-
-1. On the homepage of Control Center, click on ![default_applications_normal](icon/default_applications_normal.svg).
-2. Click on **Default Applications** to enter the settings interface for modifying default applications.
-3. Click on **Add** in different types:
-   - When you selected a *.desktop file for default application, the icon and name will be added to the list automatically.
-   - When you selected a specified binary file, the icon, name and path will be added to the list automatically.
-
-> ![notes](icon/notes.svg): The type lists will show an **Edit** button at right when user has added default applications.
+1. En la sección de inicio del Centro de control, clic en ![default_applications_normal](icon/default_applications_normal.svg).
+2. Clic en **Aplicaciones predeterminadas** para entrar la interfaz de configuración y modificar las aplicaciones predeterminadas.
+3. Seleccione las aplicaciones de la lista.
 
 
 
-#### Delete Default Applications
+#### Agregar aplicaciones predeterminadas
+
+1. En la sección de inicio del Centro de control, clic en ![default_applications_normal](icon/default_applications_normal.svg).
+2. Clic en **Aplicaciones predeterminadas** para entrar la interfaz de configuración y modificar las aplicaciones predeterminadas.
+3. Clic en **Añadir** en diferentes formas:
+   - Cuando seleccionó un archivo * .desktop para la aplicación predeterminada, el icono y el nombre se agregarán a la lista automáticamente.
+   - Cuando seleccionó un archivo binario específico, el icono, el nombre y la ruta se agregarán a la lista automáticamente.
+
+> ![notes](icon/notes.svg): Las listas de tipo mostrará a la derecha el botón **Editar** cuando el usuario agregó aplicaciones predeterminadas.
+
+
+
+#### Borrar aplicaciones predeterminadas
 
 System default applications cannot be deleted, if you wanted to delete an installed application from the list, you can only uninstall this application.
 
-1. On the homepage of Control Center, click on ![default_applications_normal](icon/default_applications_normal.svg).
-2. Click on **Default Applications** to enter the settings interface for modifying default applications.
-3. Click on **Edit** to delete the added default applications.
-4. Click on **Delete**.
+1. En la sección de inicio del Centro de control, clic en ![default_applications_normal](icon/default_applications_normal.svg).
+2. Clic en **Aplicaciones predeterminadas** para entrar la interfaz de configuración y modificar las aplicaciones predeterminadas.
+3. Clic en **Editar** para eliminar la aplicación predeterminada añadida.
+4. Clic en **Borrar**.
 
 
 
-### Personalization Settings
-You can change the appearance of desktop by using different desktop icons, window style and font, etc. and set it to fit your needs.
+### Configuración de Personalización
+Puede cambiar la apariencia del escritorio utilizando diferentes iconos de escritorio, estilo de ventana y fuente, etcétera; y configurarlo para que se acople a sus necesidades.
 
 ![0|personalise](jpg/personalise.jpg)
 
-#### Set Theme
-You can set the window theme, icon theme and cursor theme of the system respectively.
+#### Ajustar tema
+Puede configurar el tema de la ventana, el tema del icono y cursor del sistema, respectivamente.
 
-1. On the homepage of Control Center, click on ![personalization_normal](icon/personalization_normal.svg).
-2. Click on **Theme** to enter the interface for setting themes.
-- In window theme list, select a window style to switch.
-- In icon theme list, select a icon style to switch.
-- In cursor theme list, select a set of cursor to switch.
-
-
-#### Set Font
-
-1. On the homepage of Control Center, click on ![personalization_normal](icon/personalization_normal.svg).
-2. Click on **Font** to enter the interface for setting fonts.
-3. Set the font type and size for the system.
+1. En la sección de inicio del Centro de control, clic en ![personalization_normal](icon/personalization_normal.svg).
+2. Clic en **Tema** para entrar a la interfaz de configuración de temas.
+- En la lista de temas de la ventana, seleccione un estilo de ventana para cambiarlo.
+- En la lista de temas de los iconos, seleccione un estilo de icono para cambiarlo.
+- En la lista de temas de los cursores, seleccione un estilo de cursor para cambiarlo.
 
 
-#### Enable Window Effect
+#### Ajustar fuente
 
-1. On the homepage of Control Center, click on ![personalization_normal](icon/personalization_normal.svg).
-2. Click on **Enable window effect** to enable the window effect.
-3. Click again to disable.
+1. En la sección de inicio del Centro de control, clic en ![personalization_normal](icon/personalization_normal.svg).
+2. Clic en **Font** para entrar a la interfaz de configuración de fuentes.
+3. Selecciona el tipo y tamaño de fuente para el sistema.
 
 
-### Bluetooth Settings
-You can do short distance wireless communication by Bluetooth by connecting to other Bluetooth devices. Common Bluetooth devices are Bluetooth keyboard, Bluetooth mouse, Bluetooth earphones and Bluetooth speakers, etc.
+#### Activar efectos de ventana
+
+1. En la sección de inicio del Centro de control, clic en ![personalization_normal](icon/personalization_normal.svg).
+2. Clic en **Activar efectos de ventanas** para activar las animaciones y mejoras visuales a las ventanas.
+3. Clic de nuevo para desactivar.
+
+
+### Ajustes de Bluetooth
+Puede comunicar los datos a poca distancia de forma inalámbrica con Bluetooth conectando a dispositivos compatibles. Los dispositivos de Bluetooth más usados son el teclado Bluetooth, ratón Bluetooth, auriculares Bluetooth, altavoces Bluetooth, etc.
 
 ![0|bluetooth](jpg/bluetooth.jpg)
 
 
-> ![notes](icon/notes.svg): Most laptops have Bluetooth module, you just need to enable it, but most desktop computers do not have it, you can purchase one adapter and plug it into USB port to get the function.
+> ![notes](icon/notes.svg): La mayoría de las computadoras portátiles tienen un módulo Bluetooth, solo tiene que habilitarlo, pero la mayoría de las computadoras de escritorio no lo tienen, puede comprar un adaptador y conectarlo al puerto USB para obtener la función.
 
-#### Enable Bluetooth
+#### Activar Bluetooth
 
-1. On the homepage of Control Center, click on ![bluetooth_normal](icon/bluetooth_normal.svg).
-2. Click on **Bluetooth** to enter the interface for setting Bluetooth.
-3. Turn on the Bluetooth switch to enable the Bluetooth adapter.
-
-
-#### Bluetooth Name
-
-1. On the homepage of Control Center, click on ![bluetooth_normal](icon/bluetooth_normal.svg).
-2. Click on **Bluetooth** to enter the interface for setting Bluetooth.
-3. Click on the edit icon near the Bluetooth name, enter the new name.
+1. En la sección de inicio del Centro de control, clic en ![bluetooth_normal](icon/bluetooth_normal.svg).
+2. Clic en **Bluetooth** para entrar a la interfaz de configuración de Bluetooth.
+3. Active el interruptor de Bluetooth para activar el dispositivo Bluetooth.
 
 
-> ![notes](icon/notes.svg): After successfully modified the name, the Bluetooth adapter will broadcast its new name, other devices need to search for the new name.
+#### Nombrar dispositivo Bluetooth
 
-#### Bluetooth Device
-
-1. On the homepage of Control Center, click on ![bluetooth_normal](icon/bluetooth_normal.svg).
-2. Click on **Bluetooth** to enter the interface for setting Bluetooth.
-3. In **Other Devices** list, the system will scan the nearby devices and auto connect them.
-4. The device will be added to the **My Device** list after successfully connected.
-5. In **My Device** list, you can **Disconnect** and **Ignore this Device**.
+1. En la sección de inicio del Centro de control, clic en ![bluetooth_normal](icon/bluetooth_normal.svg).
+2. Clic en **Bluetooth** para entrar a la interfaz de configuración de Bluetooth.
+3. Clic en el icono de edición cerca del nombre del dispositivo Bluetooth, ingrese el nuevo nombre.
 
 
-### Network Settings
-Experience the enjoyment of surfing the Internet! You can browse news, play video online or do file download, chat and shopping, etc.
+> ![notes](icon/notes.svg): Después de modificar con éxito el nombre, el adaptador Bluetooth emitirá su nuevo nombre, otros dispositivos necesitarán buscar el nuevo nombre.
+
+#### Dispositivo Bluetooth
+
+1. En la sección de inicio del Centro de control, clic en ![bluetooth_normal](icon/bluetooth_normal.svg).
+2. Clic en **Bluetooth** para entrar a la interfaz de configuración de Bluetooth.
+3. En la lista de  **Otros dispositivos**, el sistema localizará los dipositivos más cercas y se conectará automáticamente a ellos.
+4. El dispositivo será añadido a **Mi dispositivos** después de conectarse con éxito.
+5. En **Mis dispositivos**, puede **Desconectar** e **Ignorar este dispositivo**.
+
+
+### Ajustes de red
+¡Disfruta el gusto de navegar en Internet! Puede buscar noticias, reproducir videos en línea o descargar archivos, chatear y comprar, etc.
 
 ![0|internet](jpg/internet.jpg)
 
 
-#### Wired Network
+#### Conexión cableada Network
 
-1. Plug the cable into the network slot on computer.
-2. Plug another end of the cable into the router or network port.
-3. On the homepage of Control Center, click on ![network_normal](icon/network_normal.svg).
-4. Turn on **Wired Network Card** switch to enable wired network.
-5. After successfully connected to the network, it will prompts "Wired Connection Connected".
+1. Conecte el cable en la ranura de red de la computadora.
+2. Conecte otro extremo del cable al enrutador o puerto de red.
+3. En la sección de inicio del Centro de control, clic en ![network_normal](icon/network_normal.svg).
+4. Active el interruptor **Tarjeta de red cableada** para usar la red cableada.
+5. Después de conectarse con éxito a la red, indicará como "Conexión cableada conectada".
 
-#### Wireless Network
+#### Conexión inalámbrica
 
-##### Connect to Wi-Fi Network
+##### Conectar a una red Wi-Fi
 
-1. On the homepage of Control Center, click on ![network_normal](icon/network_normal.svg).
-2. Turn on **Wireless Network Card** switch to enable wireless network.
-3. Click on **Wireless Network** to enter wireless network list.
-4. The computer will auto search the nearby available wireless network.
-5. Select the wireless network to connect.
-- If the network is opened, it will auto connect to the network.
-- If the network is encrypted, please enter the password and click on **Connect** to finish the work.
+1. En la sección de inicio del Centro de control, clic en ![network_normal](icon/network_normal.svg).
+2. Active el interruptor **Tarjeta de conexión inalámbrica** para usar la red inalámbrica.
+3. Clic en **Conexión inalámbrica** ingresar la lista de redes inalámbricas.
+4. La computadora localizará automáticamente la red inalámbrica disponible más cercana.
+5. Seleccione la red inalámbrica para conectarse.
+- Si la red está abierta, se conectará automáticamente a la red.
+- Si la red está cifrada, ingrese la contraseña y haga clic en **Conectar** para finalizar el trabajo.
 
-##### Connect to Hidden Network
+##### Conectar a la red oculta
 
-1. On the homepage of Control Center, click on ![network_normal](icon/network_normal.svg).
-2. Turn on **Wireless Network Card** switch to enable wireless network.
-3. Click on **Wireless Network** to enter wireless network list.
-4. Click on **Connect to Hidden Network** to enter the interface for connecting to the hidden network.
-5. Enter the name of the network and choose the encrypt method, then enter the password.
-
-
-
-#### Hotspot
-
-1. On the homepage of Control Center, click on ![network_normal](icon/network_normal.svg).
-2. Click on **Hotspot** to enter hotspot interface.
-3. Click on the switch to enable or disable hotspot.
-4. Click on **Hotspot Settings** to view the details or custom name and password.
+1. En la sección de inicio del Centro de control, clic en ![network_normal](icon/network_normal.svg).
+2. Active el interruptor **Tarjeta de conexión inalámbrica** para usar la red inalámbrica.
+3. Clic en **Conexión inalámbrica** ingresar la lista de redes inalámbricas.
+4. Clic en **Conectar a red oculta** para entrar a la interfaz para conectar redes invisibles.
+5. Ingrese el nombre de la red y elija el método de cifrado, luego ingrese la contraseña.
 
 
-#### Mobile Network
 
-1. Plug the mobile network card to the USB port.
-2. On the homepage of Control Center, click on ![network_normal](icon/network_normal.svg).
-3. The system will auto connect to the network based on the mobile network card and operator info.
-4. Click on **Mobile Network** to view the detailed settings info.
+#### Conexión compartida
 
-#### DSL/PPPoE Connections
+1. En la sección de inicio del Centro de control, clic en ![network_normal](icon/network_normal.svg).
+2. Clic en **Conexión compartida** para ingresar a la interfaz de hotpost (nombre en inglés de conexión compartida).
+3. Clic en el interruptor para activar o desactivar la conexión compartida.
+4. Clic en **Ajustes de conexión compartida** para ver los detalles o el nombre personalizado y contraseña.
 
-##### Create New DSL/PPPoE Connection
 
-1. On the homepage of Control Center, click on ![network_normal](icon/network_normal.svg).
-2. Click on **DSL**.
-3. Click on **Create PPPoE Connection**.
-4. Enter the name, account and password.
-5. Click on **Save** and the system will create the connection and try to connect to it.
+#### Redes móviles
 
-##### Set DSL/PPPoE Connection
+1. Conecte la tarjeta de red móvil al puerto USB.
+2. En la sección de inicio del Centro de control, clic en ![network_normal](icon/network_normal.svg).
+3. El sistema se conectará automáticamente a la red según la tarjeta de red móvil y la información del operador.
+4. Clic en **Conexión móvil** para ver la información de configuración detallada.
 
-1. On the homepage of Control Center, click on ![network_normal](icon/network_normal.svg).
-2. Click on **DSL**.
-3. Click on **PPPoE Connection** to enter the interface for setting DSL/PPPoE connections.
-4. Modify name, account, password, open automatically connect, set IP address or open other auth services.
+#### Conexión DSL/PPPoE
+
+##### Crear nueva conexión DSL/PPPoE
+
+1. En la sección de inicio del Centro de control, clic en ![network_normal](icon/network_normal.svg).
+2. Clic en **DSL**.
+3. Clic en **Crear conexión PPPoE**.
+4. Ingrese el nombre, cuenta y contraseña.
+5. Clic en **Guardar** y el sistema creará la conexión e intentará conectar.
+
+##### Modificar conexión DSL/PPPoE
+
+1. En la sección de inicio del Centro de control, clic en ![network_normal](icon/network_normal.svg).
+2. Clic en **DSL**.
+3. Clic en **Conexión PPPoE** para entrar a la interfaz de configuración de las conexiones DSL/PPPoE.
+4. Modifique el name, cuenta, contraseña, la conexión automática, la dirección IP o si desea abrir servicios de autenticación.
 
 #### VPN
 
-1. On the homepage of Control Center, click on ![network_normal](icon/network_normal.svg).
-2. Click on **VPN** and **Create VPN** to enter the interface for creating VPN connections.
-3. After created a VPN, you can click on **Export** to export the configured file.
-  You can also click on **Import VPN** to import the existed VPN file.
+1. En la sección de inicio del Centro de control, clic en ![network_normal](icon/network_normal.svg).
+2. Clic en **VPN** y **Create VPN** para entrar la interfaz para crera conexiones VPN.
+3. Después de crear la VPN, puede hacer clic en **Exportar** para exportar el archivo de configuración.
+  También puede hacer clic en **Importar VPN** para importar el archivo VPN existente.
 
-> ![notes](icon/notes.svg): If you don't want to use the VPN as the default routing, click on **Only applied in corresponding resources**.
+> ![notes](icon/notes.svg): Si no desea utilizar la VPN como enrutamiento predeterminado, haga clic en **Solo aplicable en los recursos correspondientes**.
 
 
-#### Application Proxy
+#### Proxy para la aplicación
 
-1. On the homepage of Control Center, click on ![network_normal](icon/network_normal.svg).
-2. Click on **Application Proxy** to enter the interface for setting application proxy.
-- Click on **Proxy Type** to select the proxy type.
-- Fill in IP address, port, username, and password.
-3. Click on **Confirm** to save and click on **Cancel** to return to previous interface.
+1. En la sección de inicio del Centro de control, clic en ![network_normal](icon/network_normal.svg).
+2. Clic en **Proxy para la aplicación** para entrar a la interfaz de configuración de application proxy.
+- Clic en **Tipo de Proxy** para seleccionar el tipo de proxy.
+- Complete la dirección IP, puerto, nombre de usuario y contraseña.
+3. Clic en **Confirmar** para guardar o clic en **Cancelar** para regresar a la anterior interfaz.
 
-> ![notes](icon/notes.svg): After configured, right click on an application in Launcher to check **Open by proxy**, then the application will be opened by proxy.
+> ![notes](icon/notes.svg): Una vez configurado, haga clic con el botón derecho en una aplicación en el Lanzador para marcar **Abrir por proxy**, luego la aplicación se abrirá por proxy.
 
 
 #### System Proxy
 
-1. On the homepage of Control Center, click on ![network_normal](icon/network_normal.svg).
-2. Click on **System Proxy** to enter the interface for setting system proxy.
-- Click on **None** to disable the proxy function.
-- Click on **Manual** and enter the address and port for proxy servers.
-- Click on **Auto** and enter URL to let the system configure the proxy info automatically.
+1. En la sección de inicio del Centro de control, clic en ![network_normal](icon/network_normal.svg).
+2. Clic en **Proxy del sistema** para entrar a la interfaz de configuración del proxy del sistema.
+- Clic en **Ninguno** para desactivar la función proxy.
+- Clic en **Manual** e ingrese la dirección y el puerto para los servidores proxy.
+- Clic en **Automático** e ingrese la URL para la configuración del sistema cargue la información del proxy automáticamente.
 
 
-#### Network Info
+#### Información de red
 
-1. On the homepage of Control Center, click on ![network_normal](icon/network_normal.svg).
-2. Click on **Network Details** to enter the network info interface.
+1. En la sección de inicio del Centro de control, clic en ![network_normal](icon/network_normal.svg).
+2. Clic en **Network Details** to enter the network info interface.
 3. View the network info for current wired or wireless network.
 
 
-### Sound Settings
+### Configuración de sonido
 Set your speaker and microphone to let you hear more comfortable and sing better.
 
 ![0|sound](jpg/sound.jpg)
 
 #### Set Speaker
 
-1. On the homepage of Control Center, click on ![sound_normal](icon/sound_normal.svg).
+1. En la sección de inicio del Centro de control, clic en ![sound_normal](icon/sound_normal.svg).
 2. Turn on **Speaker** switch to enable the speaker.
 3. Adjust the output volume and left right balance.
 
 #### Set Microphone
 
-1. On the homepage of Control Center, click on ![sound_normal](icon/sound_normal.svg).
+1. En la sección de inicio del Centro de control, clic en ![sound_normal](icon/sound_normal.svg).
 2. Turn on **Microphone** switch to enable the microphone.
 3. Adjust the input volume.
 
 #### Set System Sound Effect
 
-1. On the homepage of Control Center, click on ![sound_normal](icon/sound_normal.svg).
+1. En la sección de inicio del Centro de control, clic en ![sound_normal](icon/sound_normal.svg).
 2. Turn on **Sound Effects** switch to enable sound effects.
 
 #### Advanced Settings
 
-1. On the homepage of Control Center, click on ![sound_normal](icon/sound_normal.svg).
-2. Click on **Advanced**.
+1. En la sección de inicio del Centro de control, clic en ![sound_normal](icon/sound_normal.svg).
+2. Clic en **Advanced**.
 3. Select input and output mode.
 
 ### Date and Time
@@ -830,30 +829,30 @@ Set your speaker and microphone to let you hear more comfortable and sing better
 
 #### Auto Sync
 
-1. On the homepage of Control Center, click on ![date_time_normal](icon/date_time_normal.svg).
+1. En la sección de inicio del Centro de control, clic en ![date_time_normal](icon/date_time_normal.svg).
 2. Turn on **Auto-Sync** switch to enable time sync function.
 3. The system will auto sync the time and date based on local timezone and remote time.
 
 #### Set Date and Time
 Set the date and time manually to disable the auto sync function.
 
-1. On the homepage of Control Center, click on ![date_time_normal](icon/date_time_normal.svg).
-2. Click on **Time Settings** button to set the time manually.
+1. En la sección de inicio del Centro de control, clic en ![date_time_normal](icon/date_time_normal.svg).
+2. Clic en **Time Settings** button to set the time manually.
 3. Enter the correct date and time.
-4. Click on **Confirm**.
+4. Clic en **Confirm**.
 
 #### Add Timezone
 
-1. On the homepage of Control Center, click on ![date_time_normal](icon/date_time_normal.svg).
-2. Click on **Add Timezone**.
+1. En la sección de inicio del Centro de control, clic en ![date_time_normal](icon/date_time_normal.svg).
+2. Clic en **Add Timezone**.
 3. Select a timezone by searching or clicking on the map.
-4. Click on **Confirm**.
+4. Clic en **Confirm**.
 
 #### Edit Timezone List
 
-1. On the homepage of Control Center, click on ![date_time_normal](icon/date_time_normal.svg).
-2. Click on the **Edit** in the end of the timezone list.
-3. Click on the delete button to remove an added timezone.
+1. En la sección de inicio del Centro de control, clic en ![date_time_normal](icon/date_time_normal.svg).
+2. Clic en the **Edit** in the end of the timezone list.
+3. Clic en the delete button to remove an added timezone.
 
 ### Power Management
 
@@ -861,26 +860,26 @@ Set the date and time manually to disable the auto sync function.
 
 #### Set Power Saving Mode
 To reduce the power consumption of laptop, you can turn on power saving mode.
-1. On the homepage of Control Center, click on ![power_normal](icon/power_normal.svg).
+1. En la sección de inicio del Centro de control, clic en ![power_normal](icon/power_normal.svg).
 2. Turn on **Power Saving Mode** switch to enter power saving mode.
-3. Click on **Auto Mode Switch**, your laptop will enter power saving mode automatically when unplug, and recover to normal mode when plug in.
+3. Clic en **Auto Mode Switch**, your laptop will enter power saving mode automatically when unplug, and recover to normal mode when plug in.
 
 > ![notes](icon/notes.svg): Power saving mode is only for laptop.
 
 #### Set Monitor Suspend Time
 
-1. On the homepage of Control Center, click on ![power_normal](icon/power_normal.svg).
+1. En la sección de inicio del Centro de control, clic en ![power_normal](icon/power_normal.svg).
 2. Set the monitor suspend time.
 
 #### Set Lock Time After Suspend
 
-1. On the homepage of Control Center, click on ![power_normal](icon/power_normal.svg).
+1. En la sección de inicio del Centro de control, clic en ![power_normal](icon/power_normal.svg).
 2. Set the computer suspend time.
 
 #### Security Settings
 
-1. On the homepage of Control Center, click on ![power_normal](icon/power_normal.svg).
-2. Click on **Password required to wake up the monitor**/**Password required to wake up the computer** switch to enable security settings.
+1. En la sección de inicio del Centro de control, clic en ![power_normal](icon/power_normal.svg).
+2. Clic en **Password required to wake up the monitor**/**Password required to wake up the computer** switch to enable security settings.
 
 > ![notes](icon/notes.svg): There is an option for laptop, named **Suspend on lid close**, you can set it by your needs.
 
@@ -888,8 +887,8 @@ To reduce the power consumption of laptop, you can turn on power saving mode.
 
 ![0|mouse](jpg/mouse.jpg)
 
-1. On the homepage of Control Center, click on ![mouse_touchpad_normal](icon/mouse_touchpad_normal.svg).
-2. Click on **Left Hand** / **Mouse Acceleration** / **Natural Scrolling** switch to enable functions.
+1. En la sección de inicio del Centro de control, clic en ![mouse_touchpad_normal](icon/mouse_touchpad_normal.svg).
+2. Clic en **Left Hand** / **Mouse Acceleration** / **Natural Scrolling** switch to enable functions.
 3. Adjust **Scroll Speed**, **Double-click Speed** and **Pointer Speed**.
 
 > ![notes](icon/notes.svg): **Left Hand** switches the left and right mouse button, and Natural Scrolling is the scrolling function behaved as in Mac OS.
@@ -907,38 +906,38 @@ You can choose your keyboard and its layout for different countries and regions 
 
 #### Set Keyboard Properties
 
-1. On the homepage of Control Center, click on ![keyboard_normal](icon/keyboard_normal.svg).
+1. En la sección de inicio del Centro de control, clic en ![keyboard_normal](icon/keyboard_normal.svg).
 2. Adjust **Repeat Delay**/**Repeat Speed**.
-3. Click on **Please Test Here** to test the effect.
-4. Click on **Caps Lock Prompt** switch to enable the function.
+3. Clic en **Please Test Here** to test the effect.
+4. Clic en **Caps Lock Prompt** switch to enable the function.
 
 #### Set Keyboard Layout
 The system default keyboard layout is US keyboard, but you can add other layouts.
 
 ##### Add Keyboard Layout
 
-1. On the homepage of Control Center, click on ![keyboard_normal](icon/keyboard_normal.svg).
-2. Click on **Keyboard Layout** to enter the interface for setting layouts.
-3. Click on **Add Keyboard Layout**.
+1. En la sección de inicio del Centro de control, clic en ![keyboard_normal](icon/keyboard_normal.svg).
+2. Clic en **Keyboard Layout** para entrar a la interfaz de configuración de layouts.
+3. Clic en **Add Keyboard Layout**.
 4. Search the keyboard layout you want to add.
 
 ##### Delete Keyboard Layout
 
-1. On the homepage of Control Center, click on ![keyboard_normal](icon/keyboard_normal.svg).
-2. Click on **Keyboard Layout** to enter the interface for setting layouts.
-3. Click on **Edit** > **Delete** on the keyboard layout to delete it.
+1. En la sección de inicio del Centro de control, clic en ![keyboard_normal](icon/keyboard_normal.svg).
+2. Clic en **Keyboard Layout** para entrar a la interfaz de configuración de layouts.
+3. Clic en **Edit** > **Delete** on the keyboard layout to delete it.
 
 ##### Switch Keyboard Layout
 
-1. On the homepage of Control Center, click on ![keyboard_normal](icon/keyboard_normal.svg).
-2. Click on **Keyboard Layout** to enter the interface for setting layouts.
+1. En la sección de inicio del Centro de control, clic en ![keyboard_normal](icon/keyboard_normal.svg).
+2. Clic en **Keyboard Layout** para entrar a la interfaz de configuración de layouts.
 3. Select a Layout to switch.
 4. When successfully switched a layout, it will display the selected layout.
 
 #### Set System Language
 
-1. On the homepage of Control Center, click on ![keyboard_normal](icon/keyboard_normal.svg).
-2. Click on ** System Language** to enter the interface for choosing system language.
+1. En la sección de inicio del Centro de control, clic en ![keyboard_normal](icon/keyboard_normal.svg).
+2. Clic en ** System Language** to enter the interface for choosing system language.
 3. Select or search the language to switch and the system will install the language package automatically.
 4. The selected language will be displayed after successfully installed.
 
@@ -947,30 +946,30 @@ The system default keyboard layout is US keyboard, but you can add other layouts
 #### Set Shortcuts
 ##### View Shortcuts
 
-1. On the homepage of Control Center, click on ![keyboard_normal](icon/keyboard_normal.svg).
-2. Click on **Shortcut** to enter the interface for setting the shortcuts.
+1. En la sección de inicio del Centro de control, clic en ![keyboard_normal](icon/keyboard_normal.svg).
+2. Clic en **Shortcut** para entrar a la interfaz de configuración de the shortcuts.
 3. You can view the default shortcuts for system, window and workspace.
 
 ##### Search Shortcuts
 
-1. On the homepage of Control Center, click on ![keyboard_normal](icon/keyboard_normal.svg).
-2. Click on **Shortcut** to enter the interface for setting the shortcuts.
+1. En la sección de inicio del Centro de control, clic en ![keyboard_normal](icon/keyboard_normal.svg).
+2. Clic en **Shortcut** para entrar a la interfaz de configuración de the shortcuts.
 3. Enter keywords on the top search box and it will show all the found shortcuts.
 
 ##### Modify Shortcuts
 
-1. On the homepage of Control Center, click on ![keyboard_normal](icon/keyboard_normal.svg).
-2. Click on **Shortcut** to enter the interface for setting the shortcuts.
-3. Click on the shortcut you want to modify.
+1. En la sección de inicio del Centro de control, clic en ![keyboard_normal](icon/keyboard_normal.svg).
+2. Clic en **Shortcut** para entrar a la interfaz de configuración de the shortcuts.
+3. Clic en the shortcut you want to modify.
 4. Enter new shortcuts by keyboard.
 
 > ![notes](icon/notes.svg): If you want to disable a shortcut, please press ![Backspace](icon/Backspace.svg) on keyboard.
 
 ##### Custom Shortcuts
 
-1. On the homepage of Control Center, click on ![keyboard_normal](icon/keyboard_normal.svg).
-2. Click on **Shortcut** to enter the interface for setting the shortcuts.
-3. Click on **Add Custom Shortcut** to enter the interface for adding shortcuts.
+1. En la sección de inicio del Centro de control, clic en ![keyboard_normal](icon/keyboard_normal.svg).
+2. Clic en **Shortcut** para entrar a la interfaz de configuración de the shortcuts.
+3. Clic en **Add Custom Shortcut** to enter the interface for adding shortcuts.
 4. Enter the name, related command and shortcut.
 5. When successfully added a shortcut, you can click on **Edit** > **Delete** on the custom shortcut to delete it.
 
@@ -985,30 +984,30 @@ Enable **System source detection**, once you switch the mirror, you will get the
 
 #### Auto Download Updates
 
-1. On the homepage of Control Center, click on ![update](icon/update.svg).
-2. Click on **Update Settings** to enter the detailed interface.
-3. Click on **Auto-download Updates** to enable the function.
+1. En la sección de inicio del Centro de control, clic en ![update](icon/update.svg).
+2. Clic en **Update Settings** to enter the detailed interface.
+3. Clic en **Auto-download Updates** to enable the function.
 4. When there are system updates, it will prompt a message.
 
 #### Auto Clear Package Cache
 
-1. On the homepage of Control Center, click on ![update](icon/update.svg).
-2. Click on **Update Settings** to enter the detailed interface.
-3. Click on **Auto clear package cache**.
+1. En la sección de inicio del Centro de control, clic en ![update](icon/update.svg).
+2. Clic en **Update Settings** to enter the detailed interface.
+3. Clic en **Auto clear package cache**.
 4. The system cache will be auto cleared.
 
 #### Switch Mirror
 
-1. On the homepage of Control Center, click on ![update](icon/update.svg).
-2. Click on **Update Settings** to enter the detailed interface.
-3. Click on **Switch Mirror** to enter the switching mirror interface.
+1. En la sección de inicio del Centro de control, clic en ![update](icon/update.svg).
+2. Clic en **Update Settings** to enter the detailed interface.
+3. Clic en **Switch Mirror** to enter the switching mirror interface.
 4. The system will detect the connecting speed.
 5. Switch to a new mirror to refresh the package list.
 
 #### Update and Upgrade
 
-1. On the homepage of Control Center, click on ![update](icon/update.svg).
-2. Click on **Update** to check the current system status.
+1. En la sección de inicio del Centro de control, clic en ![update](icon/update.svg).
+2. Clic en **Update** to check the current system status.
 - It will prompt "Your system is up to date " when there is no update.
 - It will show **Download and install updates** button, size and detailed information if there's an update.
 4. Click the button to download and install updates.
@@ -1024,7 +1023,7 @@ You can view system version, hardware info or set boot menu.
 
 #### View System Info
 
-1. On the homepage of Control Center, click on ![system_info_normal](icon/system_info_normal.svg).
+1. En la sección de inicio del Centro de control, clic en ![system_info_normal](icon/system_info_normal.svg).
 2. Under **System Information**, you can:
 - View current system version.
 - View current system type, 64Bit/32Bit.
@@ -1034,8 +1033,8 @@ You can view system version, hardware info or set boot menu.
 
 #### View Copyright License
 
-1. On the homepage of Control Center, click on ![system_info_normal](icon/system_info_normal.svg).
-2. Click on **License** to enter the License interface.
+1. En la sección de inicio del Centro de control, clic en ![system_info_normal](icon/system_info_normal.svg).
+2. Clic en **License** to enter the License interface.
 3. View detailed information of GNU License.
 
 #### Set Boot Menu
@@ -1045,14 +1044,14 @@ You can view system version, hardware info or set boot menu.
 
 ##### Default Boot System
 
-1. On the homepage of Control Center, click on ![system_info_normal](icon/system_info_normal.svg).
-2. Click on **Boot Menu** to enter the boot menu interface.
+1. En la sección de inicio del Centro de control, clic en ![system_info_normal](icon/system_info_normal.svg).
+2. Clic en **Boot Menu** to enter the boot menu interface.
 3. Click to select boot entry and drag and drop to adjust boot order.
 
 ##### Boot Splash Background
 
-1. On the homepage of Control Center, click on ![system_info_normal](icon/system_info_normal.svg).
-2. Click on **Boot Menu** to enter the boot menu interface.
+1. En la sección de inicio del Centro de control, clic en ![system_info_normal](icon/system_info_normal.svg).
+2. Clic en **Boot Menu** to enter the boot menu interface.
 3. Press and hold the left mouse button to drag the background image and drop it over the preview image to change the background.
 
 
@@ -1083,12 +1082,12 @@ On the workspace management interface, you can move one window in current worksp
 On the workspace management interface, you can close the opened windows on desktop very quickly.
 
 1. Move the mouse pointer to the window and the selected window will show ![close_icon](icon/close_icon.svg) on the right top corner.
-2. Click on ![close_icon](icon/close_icon.svg) to close the specified window.
+2. Clic en ![close_icon](icon/close_icon.svg) to close the specified window.
 
 ### Add Workspace
 On the workspace management interface, you can add workspace by the following ways:
 
-- Click on ![plus_icon](icon/plus_icon.svg) at the right of the preview window, and press  ![Enter](icon/Enter.svg).
+- Clic en ![plus_icon](icon/plus_icon.svg) at the right of the preview window, and press  ![Enter](icon/Enter.svg).
 - Press ![Alt](icon/Alt.svg) + ![=](icon/=.svg) and press ![Enter](icon/Enter.svg).
 
 When the workspace has reached its limit, ![plus_icon](icon/plus_icon.svg) at the right of the preview window will hide automatically, and you cannot add more workspaces. After deleted one workspace, ![plus_icon](icon/plus_icon.svg) will show automatically.
@@ -1115,7 +1114,7 @@ After you delete a workspace, all windows in the workspace will be shown in a ne
 After you finished the operations on the workspace management interface, you can quit it by the following ways:
 
 - Press ![Esc](icon/Esc.svg).
-- Click on the blank area on the workspace management interface.
+- Clic en the blank area on the workspace management interface.
 - Press ![Super](icon/Super.svg) + ![S](icon/S.svg) again.
 
 ### Show Desktop Windows
