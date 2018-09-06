@@ -386,47 +386,45 @@ Puede seleccionar qué aplicaciones enviar al escritorio o al Muelle para facili
 
 ![0|sendto](jpg/sendto.jpg)
 
-> ![notes](icon/notes.svg): You can drag the application icon from Launcher to Dock. But, you can not drag and drop the application while it is running. At this time you can right click the application icon on Dock and select **Dock** to fix. So that you can quickly open it next time.
->
-Puede arrastrar el icono de la aplicación desde el Lanzador al Muelle. Pero no puede arrastrar ni soltar la aplicación mientras se está ejecutando. En este instante puede hacer clic con el botón derecho en el ícono de la aplicación en el Muelle y seleccionar **Muelle** para repararlo. Para que pueda abrirlo rápidamente la próxima vez.
+> ![notes](icon/notes.svg): Puede arrastrar el icono de la aplicación desde el Lanzador al Muelle. Pero no puede arrastrar ni soltar la aplicación mientras se está ejecutando. En este instante puede hacer clic con el botón derecho en el ícono de la aplicación en el Muelle y seleccionar **Anclar** para fijarlo. Para que pueda abrirlo rápidamente la próxima vez.
 
 #### Quitar acceso directo
 Puede quitar el acceso directo de la aplicación desde el escritorio, el Muelle, etc.
 
 1. En el Lanzador, mueva el puntero del ratón sobre el icono de la aplicación.
-2. Right click the icon, you can:
-   * Click on **Remove from desktop** to delete the shortcut on desktop.
-   * Click on **Remove from dock** to remove the application fixed on Dock.
-   * Click on **Remove from startup** to remove the application from startup.
+2. Clic derecho en el icono, puede:
+   * Clic en **Quitar del escritorio** para retirar el acceso directo en el escritorio.
+   * Clic en **Quitar del muelle** para retirar la aplicación anclada al muelle.
+   * Clic en **Quitar del arranque** para retirar la aplicación del arranque.
 
 ![0|deleteto](jpg/deleteto.jpg)
 
-> ![notes](icon/notes.svg): Application fixed on Dock can be removed by pressing and holding left mouse button to drag the application icon away from Dock. You can not drag and remove the application while it is running. At this time you can right click on the application icon on Dock and select **Undock** to remove.
+> ![notes](icon/notes.svg): La aplicación anclada al Muelle puede ser removida  seleccionando y presionado con el botón izquierdo del mouse para arrastrar el ícono de la aplicación fuera de Muelle. No puede arrastrar y retirar la aplicación mientras se está ejecutando. En este instante puede hacer clic con el botón derecho en el ícono de la aplicación del Muelle y seleccionar **Desanclar** para quitarlo.
 
-### Run Applications
-For those whose desktop shortcuts have been created or fixed on Dock, you can open them by the following ways:
+### Ejecutar aplicaciones
+Para aquellos cuyos accesos directos de escritorio se han creado o anclado al Muelle, puede abrirlos de las siguientes maneras:
 
-- Double click the desktop icon or right click the desktop icon to select **Open**.
-- Click the application icon on Dock or right click to select **Open** .
+- Doble clic al icono de escritorio o clic derecho al icono de la aplicación para seleccionar **Abrir**.
+- Clic al icono de la aplicación en el Muelle o clic derecho para seleccionar **Abrir**.
 
-And for those who still is in Launcher, you can open them by:
+Y para aquel que todavía está en el Lanzador, puede abrirlos de la siguiente manera:
 
-1. Move the mouse pointer over the application icon.
-2. Click the application icon or right click to select **Open**.
+1. Mueva el puntero del ratón sobre el icono de la aplicación.
+2. Clic en el icono de la aplicación o clic derecho para seleccionar **Abrir**.
 
-### Uninstall Applications
-You can choose to uninstall applications you no longer use to save disk space.
+### Desinstalar aplicaciones
+Puede optar por desinstalar las aplicaciones que ya no usa para ahorrar espacio en el disco.
 
-1. In Launcher, right click the application icon.
-2. Click on **Uninstall**.
+1. En el Lanzador, clic derecho en el icono de la aplicación.
+2. Clic en **Desinstalar**.
 
 ![0|uninstallapp](jpg/uninstallapp.jpg)
 
-> ![tips](icon/tips.svg): In **Fashion mode**, drag the application icon in Launcher fullscreen mode to ![trash](icon/trash_icon.svg) on dock to uninstall applications.
+> ![tips](icon/tips.svg): En el **Modo elegante**, arrastre el icono de la aplicación en el modo a pantalla completa del lanzador a ![trash](icon/trash_icon.svg) en el Muelle para desinstalar aplicaciones.
 
 
-## Control Center
-You can manage the basic settings of deepin by Control Center. It includes widget, common settings, account management, network settings, date and time, personalization, display settings, system and application update, etc. When you enter Deepin Desktop Environment, you can open the Control Center by moving the mouse pointer to the right bottom corner on desktop.
+## Centro de control
+Puede administrar las configuraciones básicas de deepin en el Centro de control. Incluye widget, modificaciones frecuentes, administración de cuentas, ajustes de red, fecha y hora, personalización, configuración de pantalla, actualización de sistema y aplicación, etc. Cuando ingrese al Deepin Desktop Environment, puede abrir el Centro de control moviendo el puntero del mouse hacia la esquina inferior derecha en el escritorio.
 
 ### Homepage Introduction
 The homepage of Control Center displays the common information for users to daily check and quickly set.
