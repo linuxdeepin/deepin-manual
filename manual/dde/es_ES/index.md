@@ -102,7 +102,7 @@ Puede ordenar los archivos en el escritorio acorde a sus necesidades.
 Puede establecer la resolución de pantalla, brillo y otros.
 
 1. Clic derecho en el escritorio.
-2. Clic en **Configuración de pantalla** para abrir la interfaz de configuración de pantalla desde el Centro de control.
+2. Clic en **Configuración de pantalla** para abrir la apartado de configuración de pantalla desde el Centro de control.
 
 > ![notes](icon/notes.svg): Para operaciones específicas véase [Configuración de pagada](#Configuración de pantalla).
 
@@ -478,10 +478,10 @@ Puede proteger su datos privados y obtener protección adicional mediante los aj
 
 1. En la sección de inicio del Centro de control, clic en ![account_normal](icon/account_normal.svg).
 2. Clic en una cuenta existente de la lista.
-3. Clic en **Modificar avatar** para ingresar a la interfaz para modificar el avatar.
+3. Clic en **Modificar avatar** para ingresar al apartado para modificar el avatar.
 4. Seleccione un avatar predeterminado o uno local para terminar.
 
-> ![notes](icon/notes.svg): Puede hacer clic al avatar del usuario para ingresar a la interfaz de la **Cuenta**.
+> ![notes](icon/notes.svg): Puede hacer clic al avatar del usuario para ingresar al apartado de la **Cuenta**.
 
 
 #### Modificar contraseña de la cuenta
@@ -510,7 +510,7 @@ Puede proteger su datos privados y obtener protección adicional mediante los aj
 1. En la sección de inicio del Centro de control, clic en ![account_normal](icon/account_normal.svg).
 2. Clic en una cuenta existente de la lista.
 3. Clic en **Contraseña de huella dactilar** to open auto login function.
-4. Clic en **Añadir huella dactilar** para ingresar a la interfaz complementaria.
+4. Clic en **Añadir huella dactilar** para ingresar al apartado complementario.
 5. Coloque su dedo a un lector de huella dactilar, y luego haga clic en **Hecho** después de añadir la huella correctamente.
 
 ![0|fingerprint1](jpg/fingerprint1.jpg)
@@ -548,13 +548,13 @@ Puede ajustar la percepción visual ajustando la resolución de pantalla, el bri
 ##### Ajustar resolución
 
 1. En la sección de inicio del Centro de control, clic en ![display_normal](icon/display_normal.svg).
-2. Clic en **Resolución** para entrar la interfaz de configuración de pantalla.
+2. Clic en **Resolución** para entrar al apartado de configuración de pantalla.
 3. Seleccione la resolución adecuada en la lista.
 
 ##### Ajustar brillo
 
 1. En la sección de inicio del Centro de control, clic en ![display_normal](icon/display_normal.svg).
-2. Clic en **Brillo** para entrar a la interfaz de configuración del brillo.
+2. Clic en **Brillo** para entrar al apartado de configuración del brillo.
    - Active el **Modo nocturno**, el tono de la pantalla se ajustará automáticamente con la ayuda de conocer su ubicación.
 
 ##### Ajustar orientación de pantalla
@@ -600,7 +600,7 @@ Cuando instale varias aplicaciones del mismo tipo, puede elegir una de ellas par
 #### Seleccionar aplicaciones predeterminadas
 
 1. En la sección de inicio del Centro de control, clic en ![default_applications_normal](icon/default_applications_normal.svg).
-2. Clic en **Aplicaciones predeterminadas** para entrar la interfaz de configuración y modificar las aplicaciones predeterminadas.
+2. Clic en **Aplicaciones predeterminadas** para entrar al apartado de configuración y modificar las aplicaciones predeterminadas.
 3. Seleccione las aplicaciones de la lista.
 
 
@@ -608,7 +608,7 @@ Cuando instale varias aplicaciones del mismo tipo, puede elegir una de ellas par
 #### Agregar aplicaciones predeterminadas
 
 1. En la sección de inicio del Centro de control, clic en ![default_applications_normal](icon/default_applications_normal.svg).
-2. Clic en **Aplicaciones predeterminadas** para entrar la interfaz de configuración y modificar las aplicaciones predeterminadas.
+2. Clic en **Aplicaciones predeterminadas** para entrar al apartado de configuración y modificar las aplicaciones predeterminadas.
 3. Clic en **Añadir** en diferentes formas:
    - Cuando seleccionó un archivo * .desktop para la aplicación predeterminada, el icono y el nombre se agregarán a la lista automáticamente.
    - Cuando seleccionó un archivo binario específico, el icono, el nombre y la ruta se agregarán a la lista automáticamente.
@@ -622,7 +622,7 @@ Cuando instale varias aplicaciones del mismo tipo, puede elegir una de ellas par
 System default applications cannot be deleted, if you wanted to delete an installed application from the list, you can only uninstall this application.
 
 1. En la sección de inicio del Centro de control, clic en ![default_applications_normal](icon/default_applications_normal.svg).
-2. Clic en **Aplicaciones predeterminadas** para entrar la interfaz de configuración y modificar las aplicaciones predeterminadas.
+2. Clic en **Aplicaciones predeterminadas** para entrar al apartado de configuración y modificar las aplicaciones predeterminadas.
 3. Clic en **Editar** para eliminar la aplicación predeterminada añadida.
 4. Clic en **Borrar**.
 
@@ -637,7 +637,7 @@ Puede cambiar la apariencia del escritorio utilizando diferentes iconos de escri
 Puede configurar el tema de la ventana, el tema del icono y cursor del sistema, respectivamente.
 
 1. En la sección de inicio del Centro de control, clic en ![personalization_normal](icon/personalization_normal.svg).
-2. Clic en **Tema** para entrar a la interfaz de configuración de temas.
+2. Clic en **Tema** para entrar al apartado de configuración de temas.
 - En la lista de temas de la ventana, seleccione un estilo de ventana para cambiarlo.
 - En la lista de temas de los iconos, seleccione un estilo de icono para cambiarlo.
 - En la lista de temas de los cursores, seleccione un estilo de cursor para cambiarlo.
@@ -668,14 +668,14 @@ Puede comunicar los datos a poca distancia de forma inalámbrica con Bluetooth c
 #### Activar Bluetooth
 
 1. En la sección de inicio del Centro de control, clic en ![bluetooth_normal](icon/bluetooth_normal.svg).
-2. Clic en **Bluetooth** para entrar a la interfaz de configuración de Bluetooth.
+2. Clic en **Bluetooth** para entrar al apartado de configuración de Bluetooth.
 3. Active el interruptor de Bluetooth para activar el dispositivo Bluetooth.
 
 
 #### Nombrar dispositivo Bluetooth
 
 1. En la sección de inicio del Centro de control, clic en ![bluetooth_normal](icon/bluetooth_normal.svg).
-2. Clic en **Bluetooth** para entrar a la interfaz de configuración de Bluetooth.
+2. Clic en **Bluetooth** para entrar al apartado de configuración de Bluetooth.
 3. Clic en el icono de edición cerca del nombre del dispositivo Bluetooth, ingrese el nuevo nombre.
 
 
@@ -684,7 +684,7 @@ Puede comunicar los datos a poca distancia de forma inalámbrica con Bluetooth c
 #### Dispositivo Bluetooth
 
 1. En la sección de inicio del Centro de control, clic en ![bluetooth_normal](icon/bluetooth_normal.svg).
-2. Clic en **Bluetooth** para entrar a la interfaz de configuración de Bluetooth.
+2. Clic en **Bluetooth** para entrar al apartado de configuración de Bluetooth.
 3. En la lista de  **Otros dispositivos**, el sistema localizará los dipositivos más cercas y se conectará automáticamente a ellos.
 4. El dispositivo será añadido a **Mi dispositivos** después de conectarse con éxito.
 5. En **Mis dispositivos**, puede **Desconectar** e **Ignorar este dispositivo**.
@@ -721,7 +721,7 @@ Puede comunicar los datos a poca distancia de forma inalámbrica con Bluetooth c
 1. En la sección de inicio del Centro de control, clic en ![network_normal](icon/network_normal.svg).
 2. Active el interruptor **Tarjeta de conexión inalámbrica** para usar la red inalámbrica.
 3. Clic en **Conexión inalámbrica** ingresar la lista de redes inalámbricas.
-4. Clic en **Conectar a red oculta** para entrar a la interfaz para conectar redes invisibles.
+4. Clic en **Conectar a red oculta** para entrar al apartado para conectar redes invisibles.
 5. Ingrese el nombre de la red y elija el método de cifrado, luego ingrese la contraseña.
 
 
@@ -729,7 +729,7 @@ Puede comunicar los datos a poca distancia de forma inalámbrica con Bluetooth c
 #### Conexión compartida
 
 1. En la sección de inicio del Centro de control, clic en ![network_normal](icon/network_normal.svg).
-2. Clic en **Conexión compartida** para ingresar a la interfaz de hotpost (nombre en inglés de conexión compartida).
+2. Clic en **Conexión compartida** para ingresar al apartado de hotpost (nombre en inglés de conexión compartida).
 3. Clic en el interruptor para activar o desactivar la conexión compartida.
 4. Clic en **Ajustes de conexión compartida** para ver los detalles o el nombre personalizado y contraseña.
 
@@ -755,7 +755,7 @@ Puede comunicar los datos a poca distancia de forma inalámbrica con Bluetooth c
 
 1. En la sección de inicio del Centro de control, clic en ![network_normal](icon/network_normal.svg).
 2. Clic en **DSL**.
-3. Clic en **Conexión PPPoE** para entrar a la interfaz de configuración de las conexiones DSL/PPPoE.
+3. Clic en **Conexión PPPoE** para entrar al apartado de configuración de las conexiones DSL/PPPoE.
 4. Modifique el name, cuenta, contraseña, la conexión automática, la dirección IP o si desea abrir servicios de autenticación.
 
 #### VPN
@@ -771,7 +771,7 @@ Puede comunicar los datos a poca distancia de forma inalámbrica con Bluetooth c
 #### Proxy para la aplicación
 
 1. En la sección de inicio del Centro de control, clic en ![network_normal](icon/network_normal.svg).
-2. Clic en **Proxy para la aplicación** para entrar a la interfaz de configuración de application proxy.
+2. Clic en **Proxy para la aplicación** para entrar al apartado de configuración de application proxy.
 - Clic en **Tipo de Proxy** para seleccionar el tipo de proxy.
 - Complete la dirección IP, puerto, nombre de usuario y contraseña.
 3. Clic en **Confirmar** para guardar o clic en **Cancelar** para regresar a la anterior interfaz.
@@ -782,7 +782,7 @@ Puede comunicar los datos a poca distancia de forma inalámbrica con Bluetooth c
 #### Proxy del sistema
 
 1. En la sección de inicio del Centro de control, clic en ![network_normal](icon/network_normal.svg).
-2. Clic en **Proxy del sistema** para entrar a la interfaz de configuración del proxy del sistema.
+2. Clic en **Proxy del sistema** para entrar al apartado de configuración del proxy del sistema.
 - Clic en **Ninguno** para desactivar la función proxy.
 - Clic en **Manual** e ingrese la dirección y el puerto para los servidores proxy.
 - Clic en **Automático** e ingrese la URL para la configuración del sistema cargue la información del proxy automáticamente.
@@ -917,27 +917,27 @@ La distribución de teclado predeterminado para el sistema es el teclado de EE. 
 ##### Añadir distribución del teclado
 
 1. En la sección de inicio del Centro de control, clic en ![keyboard_normal](icon/keyboard_normal.svg).
-2. Clic en **Distribución del Teclado** para entrar a la interfaz de configuración de distribuciones.
+2. Clic en **Distribución del Teclado** para entrar al apartado de configuración de distribuciones.
 3. Clic en **Añadir distribución del teclado**.
 4. Busque la distribución del teclado para añadir lo que desee.
 
 ##### Quitar distribución del teclado
 
 1. En la sección de inicio del Centro de control, clic en ![keyboard_normal](icon/keyboard_normal.svg).
-2. Clic en **Distribución del Teclado** para entrar a la interfaz de configuración de distribuciones.
+2. Clic en **Distribución del Teclado** para entrar al apartado de configuración de distribuciones.
 3. Clic en **Editar** > **Borrar** en la distribución del teclado para quitarlo.
 
 ##### Cambiar distribución del teclado
 
 1. En la sección de inicio del Centro de control, clic en ![keyboard_normal](icon/keyboard_normal.svg).
-2. Clic en **Distribución del Teclado** para entrar a la interfaz de configuración de distribuciones.
+2. Clic en **Distribución del Teclado** para entrar al apartado de configuración de distribuciones.
 3. Seleccione una distribución a cambiar.
 4. Cuando cambie correctamente a una distribución, se mostrará la distribución seleccionada.
 
 #### Establecer idioma del sistema
 
 1. En la sección de inicio del Centro de control, clic en ![keyboard_normal](icon/keyboard_normal.svg).
-2. Clic en **Idioma del sistema** para entrar a la interfaz para escoger el idioma del sistema.
+2. Clic en **Idioma del sistema** para entrar al apartado para escoger el idioma del sistema.
 3. Seleccione o busque el idioma para cambiar y el sistema instalará el paquete de idioma automáticamente.
 4. El idioma seleccionado se mostrará después de instalarlo con éxito.
 
@@ -947,190 +947,189 @@ La distribución de teclado predeterminado para el sistema es el teclado de EE. 
 ##### Ver atajos de teclado
 
 1. En la sección de inicio del Centro de control, clic en ![keyboard_normal](icon/keyboard_normal.svg).
-2. Clic en **Atajo de teclado** para entrar a la interfaz de configuración de los atajos de teclado.
+2. Clic en **Atajo de teclado** para entrar al apartado de configuración de los atajos de teclado.
 3. Puede revisar los atajos predeterminados para el sistema, la ventana y el espacio de trabajo.
 
 ##### Buscar atajos de teclado
 
 1. En la sección de inicio del Centro de control, clic en ![keyboard_normal](icon/keyboard_normal.svg).
-2. Clic en **Shortcut** para entrar a la interfaz de configuración de the shortcuts.
-3. Enter keywords on the top search box and it will show all the found shortcuts.
+2. Clic en **Atajo de teclado** para entrar al apartado de configuración de los atajos de teclado.
+3. Ingrese palabras clave en la búsqueda superior y mostrará los atajos encontrados.
 
 ##### Modificar atajos de teclado
 
 1. En la sección de inicio del Centro de control, clic en ![keyboard_normal](icon/keyboard_normal.svg).
-2. Clic en **Shortcut** para entrar a la interfaz de configuración de the shortcuts.
-3. Clic en the shortcut you want to modify.
-4. Enter new shortcuts by keyboard.
+2. Clic en **Atajo de teclado** para entrar al apartado de configuración de los atajos de teclado.
+3. Clic en el atajo de teclado que desea modificar.
+4. Ingrese las nuevas teclas que corresponde a ese atajo.
 
-> ![notes](icon/notes.svg): If you want to disable a shortcut, please press ![Backspace](icon/Backspace.svg) on keyboard.
+> ![notes](icon/notes.svg): Si quiere desactivar un atajo, por favor presione ![Backspace](icon/Backspace.svg) en el teclado.
 
 ##### Atajos de teclado personalizados
 
 1. En la sección de inicio del Centro de control, clic en ![keyboard_normal](icon/keyboard_normal.svg).
-2. Clic en **Shortcut** para entrar a la interfaz de configuración de the shortcuts.
-3. Clic en **Add Custom Shortcut** to enter the interface for adding shortcuts.
-4. Enter the name, related command and shortcut.
-5. When successfully added a shortcut, you can click on **Edit** > **Delete** on the custom shortcut to delete it.
+2. Clic en **Atajo de teclado** para entrar al apartado de configuración de los atajos de teclado.
+3. Clic en **Añadir atajo de teclado personalizado** para entrar al apartado para añadir atajos.
+4. Ingrese el nombre, el comando relacionado y el atajo.
+5. Cuando añade un atajo correctamente, puede hacer clic en **Editar** > **Borrar** al atajo personalizado por quitarlo.
 
 ### Configuración para actualizaciones
-You can check the updates for system and applications, and also can modify mirror, upgrade the system and applications.
-
+Puede verificar las actualizaciones para el sistema y las aplicaciones, y también puede modificar el repositorio espejo, actualizar el sistema y las aplicaciones.
 ![0|update](jpg/update.jpg)
 
-#### Detect System Source
+#### Detectar cambios en los repositorios
 
-Enable **System source detection**, once you switch the mirror, you will get the prompt notifying that "Your system source has been modified".
+Active **Detección de repositorios**. Cuando cambie el espejo, recibirás un avisto notificando que "" you switch the mirror, you will get the prompt notifying that "El repositorio ha sido modificado".
 
-#### Auto Download Updates
-
-1. En la sección de inicio del Centro de control, clic en ![update](icon/update.svg).
-2. Clic en **Update Settings** to enter the detailed interface.
-3. Clic en **Auto-download Updates** to enable the function.
-4. When there are system updates, it will prompt a message.
-
-#### Auto Clear Package Cache
+#### Descargar actualizaciones automáticas
 
 1. En la sección de inicio del Centro de control, clic en ![update](icon/update.svg).
-2. Clic en **Update Settings** to enter the detailed interface.
-3. Clic en **Auto clear package cache**.
-4. The system cache will be auto cleared.
+2. Clic en **Ajustes de actualización** para ingresar al apartado correspondiente.
+3. Clic en **Auto-descargar actualizaciones** para activar esa función.
+4. Cuando hay actualizaciones del sistema, aparecerá un mensaje.
 
-#### Switch Mirror
-
-1. En la sección de inicio del Centro de control, clic en ![update](icon/update.svg).
-2. Clic en **Update Settings** to enter the detailed interface.
-3. Clic en **Switch Mirror** to enter the switching mirror interface.
-4. The system will detect the connecting speed.
-5. Switch to a new mirror to refresh the package list.
-
-#### Update and Upgrade
+#### Auto borrar la caché de paquetes
 
 1. En la sección de inicio del Centro de control, clic en ![update](icon/update.svg).
-2. Clic en **Update** to check the current system status.
-- It will prompt "Your system is up to date " when there is no update.
-- It will show **Download and install updates** button, size and detailed information if there's an update.
-4. Click the button to download and install updates.
-5. After updated successfully, shutdown or reboot your computer to make the updates come into effect.
+2. Clic en **Ajustes de actualización** para ingresar al apartado correspondiente.
+3. Clic en **Auto borrar la caché de paquetes**.
+4. La caché del sistema se limpiará automáticamente.
 
-> ![attention](icon/attention.svg): There will be a progress bar during the update, and you can choose to download in background or pause.
+#### Cambiar espejo
+
+1. En la sección de inicio del Centro de control, clic en ![update](icon/update.svg).
+2. Clic en **Ajustes de actualización** para ingresar al apartado correspondiente.
+3. Clic en **Cambiar espejo** para ingresar al apartado para cambiar repositorios espejos.
+4. El sistema detectará la velocidad de conexión.
+5. Cambie a un nuevo espejo para actualizar la lista de paquetes.
+
+#### Comprobar y actualizar
+
+1. En la sección de inicio del Centro de control, clic en ![update](icon/update.svg).
+2. Clic en **Actualizar** para revisar el estado del sistema actual.
+- Si no necesita actualizar, avisará que "Su sistema está actualizado".
+- Si necesita de una actualización, aparecerá el botón de **Descargar e instalar actualizaciones**, el tamaño y la información de descarga.
+4. Clic en el botón para descargar e instalar las actualizaciones.
+5. Después de actualizarlo con éxito, apague o reinicie su computadora para que las actualizaciones tomen efecto.
+
+> ![attention](icon/attention.svg): Habrá una barra de progreso durante la actualización, y puede elegir descargar en segundo plano o pausar.
 
 
-### System Info
-You can view system version, hardware info or set boot menu.
+### Información del sistema
+Puede ver la versión del sistema, la información del hardware o establecer el menú de inicio.
 
 ![0|info](jpg/info.jpg)
 
-#### View System Info
+#### Ver Información del sistema
 
 1. En la sección de inicio del Centro de control, clic en ![system_info_normal](icon/system_info_normal.svg).
-2. Under **System Information**, you can:
-- View current system version.
-- View current system type, 64Bit/32Bit.
-- View CPU brand.
-- View memory size.
-- View hard disk capacity.
+2. Bajo **Información del sistema**, podrá:
+- Ver la versión actual del sistema.
+- Ver la arquitectura del equipo, 64Bit/32Bit.
+- Ver la marca de la CPU.
+- Ver el tamaño de memoria RAM.
+- Ver la capacidad del disco duro.
 
-#### View Copyright License
-
-1. En la sección de inicio del Centro de control, clic en ![system_info_normal](icon/system_info_normal.svg).
-2. Clic en **License** to enter the License interface.
-3. View detailed information of GNU License.
-
-#### Set Boot Menu
-
-- When there are multiple systems in computer, the startup delay switch will open automatically, the boot menu will show 5 seconds to let users adjust boot order.
-- When there is only one system in computer, the startup delay switch will close by default, the boot menu will show 1 second, and it is no need to adjust boot order.
-
-##### Default Boot System
+#### Ver Licencia de distribución
 
 1. En la sección de inicio del Centro de control, clic en ![system_info_normal](icon/system_info_normal.svg).
-2. Clic en **Boot Menu** to enter the boot menu interface.
-3. Click to select boot entry and drag and drop to adjust boot order.
+2. Clic en **Licencia** para ingresar al apartado de Licencia.
+3. Tendrá el texto detallado de la licencia pública de GNU.
+
+#### Ajustar menú de arranque
+
+- Cuando hay varios sistemas en la computadora, el menú de arranque se abrirá automáticamente, la pantalla de inicio mostrará durante 5 segundos para permitir a los usuarios establecer la orden de arranque.
+- Cuando solo hay un sistema en la computadora, el menú de arranque se saltará de manera predeterminada, la pantalla de inicio mostrará durante 1 segundo y no será necesario establecer la orden de arranque.
+
+##### Cambiar arranque del sistem
+
+1. En la sección de inicio del Centro de control, clic en ![system_info_normal](icon/system_info_normal.svg).
+2. Clic en **Menú de arranque** para entrar al apartado del menú de arranque.
+3. Clic para seleccionar la pantalla de inicio, luego arrastre y suelte para cambiar la orden de arranque.
 
 ##### Boot Splash Background
 
 1. En la sección de inicio del Centro de control, clic en ![system_info_normal](icon/system_info_normal.svg).
-2. Clic en **Boot Menu** to enter the boot menu interface.
-3. Press and hold the left mouse button to drag the background image and drop it over the preview image to change the background.
+2. Clic en **Menú de arranque** para entrar al apartado del menú de arranque.
+3. Mantenga presionado con botón izquierdo del ratón para arrastrar el fondo de pantalla y suéltelo para previsualizar la imagen y cambiar el fondo.
 
 
-## Window Manager
-The Window Manager can show different windows on different workspaces, you can manage the windows by it.
+## Administración de ventanas
+El administrador permite mostrar diferentes ventanas en distintos espacios de trabajo, puede gestionar las ventanas en cuestión.
 
 ![1|openworkspace](jpg/openworkspace.jpg)
 
-### Open Workspace
-Workspace can divide your desktop windows as groups to enlarge your working areas.
+### Abrir Espacio de trabajo
+El espacio de trabajo permite asignar ventanas de escritorio como grupos para expandir las áreas de productividad.
 
-On Desktop, press ![Super](icon/Super.svg) + ![S](icon/S.svg) to open the workspace management interface.
+En escritorio, pulse ![Super](icon/Super.svg) + ![S](icon/S.svg) para abrir la interfaz para gestionar espacios de trabajo.
 
-#### Switch Windows among Workspaces
-On the workspace management interface, all the opened windows in the current workspace will tiled to display.
+#### Cambiar ventanas entre los espacios de trabajo
+En la interfaz de gestión del espacio de trabajo, todas las ventanas abiertas en el espacio de trabajo actual se mostrarán en mosaico.
 
-- Press ![Tab](icon/Tab.svg) to switch to next window.
-- Press ![Shift](icon/Shift.svg) + ![Tab](icon/Tab.svg) to switch to the previous window.
+- Pulse ![Tab](icon/Tab.svg) para cambiar a la siguiente ventana.
+- Pulse ![Shift](icon/Shift.svg) + ![Tab](icon/Tab.svg) para cambiar a la anterior ventana.
 
-#### Move Windows among Workspaces
-On the workspace management interface, you can move one window in current workspace to another.
+#### Mover ventanas entre los espacios de trabajo
+En la interfaz de administración del espacio de trabajo, puede mover una ventana en el espacio de trabajo actual a otra.
 
-1. Move the mouse pointer to the window and the selected window will show ![close_icon](icon/close_icon.svg) on the right top corner.
-2. Press and hold the left mouse button to drag and drop the window on the specified preview window.
-3. Release the left mouse button to finish the moving operation.
+1. Mueva el puntero del ratón hacia la ventana y la ventana seleccionada mostrará ![close_icon](icon/close_icon.svg) en la esquina superior derecha.
+2. Mantenga presionado el botón izquierdo del ratón para arrastrar y soltar la ventana en la vista de ventanas especificadas.
+3. Suelte el botón derecho del ratón para finalizar la operación.
 
-#### Close Windows in Workspaces
-On the workspace management interface, you can close the opened windows on desktop very quickly.
+#### Cerrar ventanas en los espacios de trabajo
+En la interfaz de gestión del espacio de trabajo, puede cerrar las ventanas abiertas en el escritorio muy rápidamente.
 
-1. Move the mouse pointer to the window and the selected window will show ![close_icon](icon/close_icon.svg) on the right top corner.
-2. Clic en ![close_icon](icon/close_icon.svg) to close the specified window.
+1. Mueva el puntero del ratón hacia la ventana y la ventana seleccionada mostrará ![close_icon](icon/close_icon.svg) en la esquina superior derecha.
+2. Clic en ![close_icon](icon/close_icon.svg) para cerrar la ventana especificada.
 
-### Add Workspace
-On the workspace management interface, you can add workspace by the following ways:
+### Crear espacio de trabajo
+En la interfaz de administración del espacio de trabajo, puede agregar espacio de trabajo de las siguientes maneras:
 
-- Clic en ![plus_icon](icon/plus_icon.svg) at the right of the preview window, and press  ![Enter](icon/Enter.svg).
-- Press ![Alt](icon/Alt.svg) + ![=](icon/=.svg) and press ![Enter](icon/Enter.svg).
+- Clic en ![plus_icon](icon/plus_icon.svg) a la derecha de la previsualización de ventanas, y presione ![Enter](icon/Enter.svg).
+- Pulse ![Alt](icon/Alt.svg) + ![=](icon/=.svg) y presione ![Enter](icon/Enter.svg).
 
-When the workspace has reached its limit, ![plus_icon](icon/plus_icon.svg) at the right of the preview window will hide automatically, and you cannot add more workspaces. After deleted one workspace, ![plus_icon](icon/plus_icon.svg) will show automatically.
+Cuando el límte de espacios de trabajo haya superado, el icono ![plus_icon](icon/plus_icon.svg) a la derecha de la previsualización de ventanas desaparecerá automáticamente, y no podrá añadir más espacios de trabajo. Después de eliminar uno de ellos, ![plus_icon](icon/plus_icon.svg) regresará al instante.
 
-> ![notes](icon/notes.svg): The window manager supports 7 workspaces at most.
+> ![notes](icon/notes.svg): El administrador de ventanas admite 7 espacios de trabajo como máximo.
 
 ### Switch Workspace
-On the workspace management interface and desktop, you can switch workspace by the following ways:
+En la interfaz de gestión del espacio de trabajo y el escritorio, puede cambiar el espacio de trabajo de las siguientes maneras:
 
-- On Desktop, press ![Super](icon/Super.svg) + ![Left](icon/Left.svg) / ![Right](icon/Right.svg) to switch to Previous/Next workspace.
-- On the workspace management interface, scroll up/ down to switch to Previous/Next workspace.
-- On the workspace management interface, click on the preview window or press ![Alt](icon/Alt.svg) + **Numeric Keys** to switch to a specified workspace.
-- On the workspace management interface, press ![Left](icon/Left.svg) / ![Right](icon/Right.svg) to switch to Previous/Next workspace directly.
+- En el Escritorio, presione ![Super](icon/Super.svg) + ![Left](icon/Left.svg) / ![Right](icon/Right.svg) para cambiar al anterior/posterior espacio de trabajo.
+- En la interfaz de gestión del espacio de trabajo, desplácese con el ratón hacia arriba/abajo para cambiar anterior/siguiente al espacio de trabajo.
+- En la interfaz de gestión del espacio de trabajo, click on the preview window or press ![Alt](icon/Alt.svg) + **Numeric Keys** to switch to a specified workspace.
+- En la interfaz de gestión del espacio de trabajo, press ![Left](icon/Left.svg) / ![Right](icon/Right.svg) to switch to Previous/Next workspace directly.
 
 
-### Delete Workspace
-After you delete a workspace, all windows in the workspace will be shown in a nearby workspace. You cannot delete the workspace when there is only one.
+### Eliminar Espacio de trabajo
+Después de eliminar un área de trabajo, todas las ventanas en el área de trabajo se mostrarán en un espacio de trabajo cercano. No puede eliminar el espacio de trabajo cuando solo hay uno.
 
-- On the workspace management interface, click on ![close_icon](icon/close_icon.svg) at the right top corner to delete a workspace.
-- On the workspace management interface, select a preview window, press and hold the left mouse button and drag it up to delete a workspace.
-- On the workspace management interface, everytime you press ![Alt](icon/Alt.svg) + ![-](icon/-.svg), it will delete the left or right workspace one by one.
+- En la interfaz de gestión del espacio de trabajo, clic en ![close_icon](icon/close_icon.svg) en la esquina superior derecha para eliminar un espacio de trabajo.
+- En la interfaz de gestión del espacio de trabajo, seleccione la previsualización de ventanas, presione y mantenga con el botón izquierdo del ratón y suéltelo para eliminar un espacio de trabajo.
+- En la interfaz de gestión del espacio de trabajo, en cualquier momento presione ![Alt](icon/Alt.svg) + ![-](icon/-.svg), eliminará el espacio de trabajo uno por uno.
 
-### Quit Workspace
-After you finished the operations on the workspace management interface, you can quit it by the following ways:
+### Salir del Espacio de trabajo
+Para salir de la interfaz de gestión del espacio de trabajo, puede realizar de varias formas:
 
-- Press ![Esc](icon/Esc.svg).
-- Clic en the blank area on the workspace management interface.
-- Press ![Super](icon/Super.svg) + ![S](icon/S.svg) again.
+- Pulse ![Esc](icon/Esc.svg).
+- Clic en el área en blanco de la interfaz de gestión del espacio de trabajo.
+- Pulse ![Super](icon/Super.svg) + ![S](icon/S.svg) de nuevo.
 
-### Show Desktop Windows
-You can show the desktop windows by the following ways:
+### Mostrar ventanas del escritorio
+Puede visualizar las ventanas de escritorio, en varias formas:
 
-- Press ![Super](icon/Super.svg) + ![A](icon/A.svg) to show the windows of all the workspaces.
-- Press ![Super](icon/Super.svg) + ![W](icon/W.svg) to show the windows of the current workspace.
+- Pulse ![Super](icon/Super.svg) + ![A](icon/A.svg) para mostrar las ventanas de todos los espacios de trabajo.
+- Pulse ![Super](icon/Super.svg) + ![W](icon/W.svg) para mostrar las ventanas del actual espacio de trabajo.
 
-### Switch Desktop Windows
-You can switch the desktop windows by the following ways:
+### Cambiar ventanas del escritorio
+Puede cambiar las ventanas de escritorio, en varias formas:
 
-- On Desktop, press and hold ![Alt](icon/Alt.svg) and press ![Tab](icon/Tab.svg) continually, it will show the right windows one by one; press and hold ![Alt](icon/Alt.svg) + ![Shift](icon/Shift.svg) and press ![Tab](icon/Tab.svg) continually, it will show the left windows one by one.
-- On Desktop, press and hold ![Alt](icon/Alt.svg) and press ![~](icon/~.svg) continually, it will show the same type of the right windows one by one; press and hold ![Alt](icon/Alt.svg) + ![Shift](icon/Shift.svg) and press ![~](icon/~.svg) continually, it will show the same type of the left windows one by one.
+- En el Escritorio, mantenga presionado ![Alt](icon/Alt.svg) y pulse ![Tab](icon/Tab.svg) continuamente, esto mostrará qué ventanas siguen uno a uno; mantenga presionado ![Alt](icon/Alt.svg) + ![Shift](icon/Shift.svg) y pulse ![Tab](icon/Tab.svg) continuamente, esto mostrará qué ventanas anteceden uno a uno.
+- En el Escritorio, mantenga presionado ![Alt](icon/Alt.svg) y pulse ![~](icon/~.svg) continuamente, esto mostrará qué ventanas siguen uno a uno; mantenga presionado ![Alt](icon/Alt.svg) + ![Shift](icon/Shift.svg) y pulse ![~](icon/~.svg) continuamente, esto mostrará qué ventanas anteceden uno a uno.
+-
+### Mover ventanas del escritorio
+Puede move las ventanas de escritorio a otros espacios de trabajo, en varias formas:
 
-### Move Desktop Windows
-You can move the desktop windows to other workspaces by the following ways:
-
-- On Desktop, press ![Super](icon/Super.svg) + ![Shift](icon/Shift.svg) + ![Left](icon/Left.svg) / ![Right](icon/Right.svg) to move current window to the Previous/Next workspace.
-- On Desktop, press ![Super](icon/Super.svg) + ![Shift](icon/Shift.svg) + **Numeric Keys** to move current window to the specified workspace.
+- En el Escritorio, pulse ![Super](icon/Super.svg) + ![Shift](icon/Shift.svg) + ![Left](icon/Left.svg) / ![Right](icon/Right.svg) para cambiar la actual ventana al anterior/siguiente espacio de trabajo.
+- En el Escritorio, pulse ![Super](icon/Super.svg) + ![Shift](icon/Shift.svg) + **Teclado numérico** para mover la actual ventana a su correspondiente espacio de trabajo.
