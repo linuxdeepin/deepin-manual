@@ -779,7 +779,7 @@ Puede comunicar los datos a poca distancia de forma inalámbrica con Bluetooth c
 > ![notes](icon/notes.svg): Una vez configurado, haga clic con el botón derecho en una aplicación en el Lanzador para marcar **Abrir por proxy**, luego la aplicación se abrirá por proxy.
 
 
-#### System Proxy
+#### Proxy del sistema
 
 1. En la sección de inicio del Centro de control, clic en ![network_normal](icon/network_normal.svg).
 2. Clic en **Proxy del sistema** para entrar a la interfaz de configuración del proxy del sistema.
@@ -791,172 +791,172 @@ Puede comunicar los datos a poca distancia de forma inalámbrica con Bluetooth c
 #### Información de red
 
 1. En la sección de inicio del Centro de control, clic en ![network_normal](icon/network_normal.svg).
-2. Clic en **Network Details** to enter the network info interface.
-3. View the network info for current wired or wireless network.
+2. Clic en **Detalles de redes** para entrar la intefaz de información de la red.
+3. Revisa la información de red para la red actual cableada o inalámbrica
 
 
 ### Configuración de sonido
-Set your speaker and microphone to let you hear more comfortable and sing better.
+Configure su altavoz y micrófono para que pueda escuchar más cómodamente y cantar mejor.
 
 ![0|sound](jpg/sound.jpg)
 
-#### Set Speaker
+#### Ajustar altavoz
 
 1. En la sección de inicio del Centro de control, clic en ![sound_normal](icon/sound_normal.svg).
-2. Turn on **Speaker** switch to enable the speaker.
-3. Adjust the output volume and left right balance.
+2. Marque el interruptor **Altavoz** para activar el parlante o altavoz.
+3. Ajuste el volumen de salida el banlance de izquierda a derecha.
 
-#### Set Microphone
-
-1. En la sección de inicio del Centro de control, clic en ![sound_normal](icon/sound_normal.svg).
-2. Turn on **Microphone** switch to enable the microphone.
-3. Adjust the input volume.
-
-#### Set System Sound Effect
+#### Ajustar micrófono
 
 1. En la sección de inicio del Centro de control, clic en ![sound_normal](icon/sound_normal.svg).
-2. Turn on **Sound Effects** switch to enable sound effects.
+2. Marque el interruptor **Micrófono** para activar el micrófono.
+3. Ajuste el volumen de entrada.
 
-#### Advanced Settings
+#### Ajustar efectos de sonido del sistema
 
 1. En la sección de inicio del Centro de control, clic en ![sound_normal](icon/sound_normal.svg).
-2. Clic en **Advanced**.
-3. Select input and output mode.
+2. Marque el interruptor **Efectos de sonido** para activar efectos sonoros.
 
-### Date and Time
+#### Ajustes avanzados
+
+1. En la sección de inicio del Centro de control, clic en ![sound_normal](icon/sound_normal.svg).
+2. Clic en **Avanzado**.
+3. Seleccione el modo de entrada y salida.
+
+### Fecha y hora
 
 ![0|time](jpg/time.jpg)
 
-#### Auto Sync
+#### Sincronizar automáticamente
 
 1. En la sección de inicio del Centro de control, clic en ![date_time_normal](icon/date_time_normal.svg).
-2. Turn on **Auto-Sync** switch to enable time sync function.
-3. The system will auto sync the time and date based on local timezone and remote time.
+2. Marque el interruptor **Sincronizar automáticamente** para activar la función de sincronización horaria.
+3. El sistema sincronizará automáticamente la hora y la fecha según la zona horaria local y la hora remota.
 
-#### Set Date and Time
-Set the date and time manually to disable the auto sync function.
+#### Establecer fecha y hora
+Configure la fecha y la hora manualmente para deshabilitar la función de sincronización automática.
 
-1. En la sección de inicio del Centro de control, clic en ![date_time_normal](icon/date_time_normal.svg).
-2. Clic en **Time Settings** button to set the time manually.
-3. Enter the correct date and time.
-4. Clic en **Confirm**.
+1. En la sección de inicio del Centro de control, haga clic en ![date_time_normal](icon/date_time_normal.svg).
+2. Clic en el botón **Ajustes de hora** para modificar la hora manualmente.
+3. Ingrese la fecha y hora correcta.
+4. Clic en **Confirmar**.
 
-#### Add Timezone
+#### Añadir zona horaria
 
 1. En la sección de inicio del Centro de control, clic en ![date_time_normal](icon/date_time_normal.svg).
 2. Clic en **Add Timezone**.
 3. Select a timezone by searching or clicking on the map.
 4. Clic en **Confirm**.
 
-#### Edit Timezone List
+#### Editar lista de zona horaria
 
 1. En la sección de inicio del Centro de control, clic en ![date_time_normal](icon/date_time_normal.svg).
-2. Clic en the **Edit** in the end of the timezone list.
-3. Clic en the delete button to remove an added timezone.
+2. Clic en **Editar** al final de la lista de zonas horarias.
+3. Clic en el botón de borrar para quitar la zona horaria añadida.
 
-### Power Management
+### Administración de energía
 
 ![0|power](jpg/power.jpg)
 
-#### Set Power Saving Mode
-To reduce the power consumption of laptop, you can turn on power saving mode.
+#### Establecer modo de ahorro de energía
+Para reducir el consumo de energía de la computadora portátil, puede activar el modo de ahorro de energía.
 1. En la sección de inicio del Centro de control, clic en ![power_normal](icon/power_normal.svg).
-2. Turn on **Power Saving Mode** switch to enter power saving mode.
-3. Clic en **Auto Mode Switch**, your laptop will enter power saving mode automatically when unplug, and recover to normal mode when plug in.
+2. Marque el interruptor **Modo ahorro de energía** para ingresar el modo de ahorro de energía.
+3. Clic en **Cambio de modo automático**, su computador portátil entrará al modo de ahorro de energía automáticamente cuando esté desconectado, recuperará a su estado original cuando lo conecte.
 
 > ![notes](icon/notes.svg): Power saving mode is only for laptop.
 
-#### Set Monitor Suspend Time
+#### Parámetros de suspensión del monitor
 
 1. En la sección de inicio del Centro de control, clic en ![power_normal](icon/power_normal.svg).
-2. Set the monitor suspend time.
+2. Ajuste el tiempo que monitor se suspenderá.
 
-#### Set Lock Time After Suspend
-
-1. En la sección de inicio del Centro de control, clic en ![power_normal](icon/power_normal.svg).
-2. Set the computer suspend time.
-
-#### Security Settings
+#### Parámetros de bloqueo después de suspender
 
 1. En la sección de inicio del Centro de control, clic en ![power_normal](icon/power_normal.svg).
-2. Clic en **Password required to wake up the monitor**/**Password required to wake up the computer** switch to enable security settings.
+2. Ajuste el tiempo que la computadorá se suspenderá.
 
-> ![notes](icon/notes.svg): There is an option for laptop, named **Suspend on lid close**, you can set it by your needs.
+#### Ajustes de seguridad
 
-### Mouse and Touchpad
+1. En la sección de inicio del Centro de control, clic en ![power_normal](icon/power_normal.svg).
+2. Clic en el interruptor **Contraseña requerida para encender el monitor**/**Contraseña requerida para encender el equipo** para activar los ajustes de seguridad.
+
+> ![notes](icon/notes.svg): Hay otra opción para la laptop, nombrado **Suspender al cerrar la tapa**, puede establecerlo según sus necesidades.
+
+### Ratón y Panel táctil
 
 ![0|mouse](jpg/mouse.jpg)
 
 1. En la sección de inicio del Centro de control, clic en ![mouse_touchpad_normal](icon/mouse_touchpad_normal.svg).
-2. Clic en **Left Hand** / **Mouse Acceleration** / **Natural Scrolling** switch to enable functions.
-3. Adjust **Scroll Speed**, **Double-click Speed** and **Pointer Speed**.
+2. Clic en los interruptores **Mano zurda**, **Acceleración del ratón** y **Deslizamiento natural** para activar dichas funcionalidades.
+3. Ajuste la **Velocidad de desplazamiento**, **Velocidad de doble clic** y **Velocidad del puntero**.
 
-> ![notes](icon/notes.svg): **Left Hand** switches the left and right mouse button, and Natural Scrolling is the scrolling function behaved as in Mac OS.
+> ![notes](icon/notes.svg): **Mano zurda** alterna el botón izquierdo y dercho del ratón, y el **Deslizamiento natural** para usar la función de deslizamiento ofrecida en Mac OS.
 
-> ![notes](icon/notes.svg): **Mouse Acceleration** is a form of pointer acceleration that determines how fast the pointer moves in response to movements of the mouse or finger on a touchpad. It can make your pointer more precise in some situations, but it can make the pointer less precise in many others.
+> ![notes](icon/notes.svg): **Acceleración del ratón** es una forma de aceleración del puntero que determina qué tan rápido se mueve el puntero en respuesta a los movimientos del mouse o del dedo en un panel táctil. Puede hacer que su puntero sea más preciso en algunas situaciones, pero puede hacer que el puntero sea menos preciso en muchos otros.
 
-You can enable **Disable the touchpad while typing**, **Disable the touchpad when inserting the mouse**, **Palm Detect** on laptop, and set **Minimun contact surface** and **Minimum pressure value** to avoid misopreation on touchpad.
+Usted puede activar **Desactivar el panel táctil mientras escribe**, **Desactivar el panel táctil al conectar el ratón**, **Detección de Palma** en la laptop, y calibrar la **Superficie de contacto mínima** y el **Valor de presión mínima** para evitar malas impresiones en el panel táctil (touchpad).
 
 ![0|touchpad](jpg/touchpad.jpg)
 
-### Keyboard and Language
-You can choose your keyboard and its layout for different countries and regions or view, search, modify and custom shortcuts.
+### Idioma y teclado
+Puede elegir el teclado y su diseño para diferentes países y regiones o ver, buscar, modificar y personalizar atajos de teclado.
 
 ![0|keyboard](jpg/keyboard.jpg)
 
-#### Set Keyboard Properties
+#### Ajustar propiedades del teclado
 
 1. En la sección de inicio del Centro de control, clic en ![keyboard_normal](icon/keyboard_normal.svg).
-2. Adjust **Repeat Delay**/**Repeat Speed**.
-3. Clic en **Please Test Here** to test the effect.
-4. Clic en **Caps Lock Prompt** switch to enable the function.
+2. Adjust **Intervalo de repetición**/**Velocidad de repetición**.
+3. Clic en **Por favor, pruebe aquí** para probar los resultados.
+4. Clic en el interruptor **Indicador para Bloquear Mayúsculas** para activar la función de bloqueo de mayúsculas.
 
-#### Set Keyboard Layout
-The system default keyboard layout is US keyboard, but you can add other layouts.
+#### Establecer distribución del teclado
+La distribución de teclado predeterminado para el sistema es el teclado de EE. UU. Pero puede agregar otras distribuciones.
 
-##### Add Keyboard Layout
-
-1. En la sección de inicio del Centro de control, clic en ![keyboard_normal](icon/keyboard_normal.svg).
-2. Clic en **Keyboard Layout** para entrar a la interfaz de configuración de layouts.
-3. Clic en **Add Keyboard Layout**.
-4. Search the keyboard layout you want to add.
-
-##### Delete Keyboard Layout
+##### Añadir distribución del teclado
 
 1. En la sección de inicio del Centro de control, clic en ![keyboard_normal](icon/keyboard_normal.svg).
-2. Clic en **Keyboard Layout** para entrar a la interfaz de configuración de layouts.
-3. Clic en **Edit** > **Delete** on the keyboard layout to delete it.
+2. Clic en **Distribución del Teclado** para entrar a la interfaz de configuración de distribuciones.
+3. Clic en **Añadir distribución del teclado**.
+4. Busque la distribución del teclado para añadir lo que desee.
 
-##### Switch Keyboard Layout
-
-1. En la sección de inicio del Centro de control, clic en ![keyboard_normal](icon/keyboard_normal.svg).
-2. Clic en **Keyboard Layout** para entrar a la interfaz de configuración de layouts.
-3. Select a Layout to switch.
-4. When successfully switched a layout, it will display the selected layout.
-
-#### Set System Language
+##### Quitar distribución del teclado
 
 1. En la sección de inicio del Centro de control, clic en ![keyboard_normal](icon/keyboard_normal.svg).
-2. Clic en ** System Language** to enter the interface for choosing system language.
-3. Select or search the language to switch and the system will install the language package automatically.
-4. The selected language will be displayed after successfully installed.
+2. Clic en **Distribución del Teclado** para entrar a la interfaz de configuración de distribuciones.
+3. Clic en **Editar** > **Borrar** en la distribución del teclado para quitarlo.
 
-> ![attention](icon/attention.svg): The keyboard layout could also be changed by switching the system language. Please make sure that you used a correct layout to enter the password when restarted the system.
-
-#### Set Shortcuts
-##### View Shortcuts
+##### Cambiar distribución del teclado
 
 1. En la sección de inicio del Centro de control, clic en ![keyboard_normal](icon/keyboard_normal.svg).
-2. Clic en **Shortcut** para entrar a la interfaz de configuración de the shortcuts.
-3. You can view the default shortcuts for system, window and workspace.
+2. Clic en **Distribución del Teclado** para entrar a la interfaz de configuración de distribuciones.
+3. Seleccione una distribución a cambiar.
+4. Cuando cambie correctamente a una distribución, se mostrará la distribución seleccionada.
 
-##### Search Shortcuts
+#### Establecer idioma del sistema
+
+1. En la sección de inicio del Centro de control, clic en ![keyboard_normal](icon/keyboard_normal.svg).
+2. Clic en **Idioma del sistema** para entrar a la interfaz para escoger el idioma del sistema.
+3. Seleccione o busque el idioma para cambiar y el sistema instalará el paquete de idioma automáticamente.
+4. El idioma seleccionado se mostrará después de instalarlo con éxito.
+
+> ![attention](icon/attention.svg): La distribución del teclado podría, incluso, cambiarse por el idioma del sistema. Asegúrese de haber utilizado una distribución correcta para ingresar la contraseña cuando reinicie el sistema.
+
+#### Ajustes de atajos de teclado
+##### Ver atajos de teclado
+
+1. En la sección de inicio del Centro de control, clic en ![keyboard_normal](icon/keyboard_normal.svg).
+2. Clic en **Atajo de teclado** para entrar a la interfaz de configuración de los atajos de teclado.
+3. Puede revisar los atajos predeterminados para el sistema, la ventana y el espacio de trabajo.
+
+##### Buscar atajos de teclado
 
 1. En la sección de inicio del Centro de control, clic en ![keyboard_normal](icon/keyboard_normal.svg).
 2. Clic en **Shortcut** para entrar a la interfaz de configuración de the shortcuts.
 3. Enter keywords on the top search box and it will show all the found shortcuts.
 
-##### Modify Shortcuts
+##### Modificar atajos de teclado
 
 1. En la sección de inicio del Centro de control, clic en ![keyboard_normal](icon/keyboard_normal.svg).
 2. Clic en **Shortcut** para entrar a la interfaz de configuración de the shortcuts.
@@ -965,7 +965,7 @@ The system default keyboard layout is US keyboard, but you can add other layouts
 
 > ![notes](icon/notes.svg): If you want to disable a shortcut, please press ![Backspace](icon/Backspace.svg) on keyboard.
 
-##### Custom Shortcuts
+##### Atajos de teclado personalizados
 
 1. En la sección de inicio del Centro de control, clic en ![keyboard_normal](icon/keyboard_normal.svg).
 2. Clic en **Shortcut** para entrar a la interfaz de configuración de the shortcuts.
@@ -973,7 +973,7 @@ The system default keyboard layout is US keyboard, but you can add other layouts
 4. Enter the name, related command and shortcut.
 5. When successfully added a shortcut, you can click on **Edit** > **Delete** on the custom shortcut to delete it.
 
-### Update Settings
+### Configuración para actualizaciones
 You can check the updates for system and applications, and also can modify mirror, upgrade the system and applications.
 
 ![0|update](jpg/update.jpg)
