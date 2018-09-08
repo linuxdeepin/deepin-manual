@@ -381,7 +381,7 @@ Puede seleccionar qué aplicaciones enviar al escritorio o al Muelle para facili
 1. En el Lanzador, mueva el puntero del raton sobre el icono del ratón.
 2. Haga clic derecho en el icono, puede:
    * Clic en **Envíar al escritorio** para crear un acceso directo al escritorio.
-   * Clic en **Enviar al muelle** to fix the application on Dock.
+   * Clic en **Enviar al muelle** para fijar la aplicación al Muelle.
    * Clic en **Añadir al arranque** para añadir la aplicación en el arranque, esta se iniciará automáticamente cuando la computadora inicie.
 
 ![0|sendto](jpg/sendto.jpg)
