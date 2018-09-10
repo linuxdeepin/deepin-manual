@@ -99,7 +99,7 @@ class Bridge(QObject):
         self._configPath = getConfigPath()
         self._config = configparser.ConfigParser()
         self._config.read(self._configPath, encoding = "utf-8")
-        mdUrl = sys.argv[-1]
+        mdUrl = sys.argv[-1] if len(sys.argv) == 2 else "dde"
         self._dmanInfo = processMarkdownPath(mdUrl, getDocumentLanguageFor)
         self._lockPath = getLockPath(mdUrl)
         self._tooltipView = TooltipView(self)
