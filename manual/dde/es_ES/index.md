@@ -973,7 +973,7 @@ La distribución de teclado predeterminado para el sistema es el teclado de EE. 
 4. Ingrese el nombre, el comando relacionado y el atajo.
 5. Cuando añade un atajo correctamente, puede hacer clic en **Editar** > **Borrar** al atajo personalizado por quitarlo.
 
-### Configuración para actualizaciones
+### Ajustes de actualización
 Puede verificar las actualizaciones para el sistema y las aplicaciones, y también puede modificar el repositorio espejo, actualizar el sistema y las aplicaciones.
 ![0|update](jpg/update.jpg)
 

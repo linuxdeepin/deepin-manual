@@ -1,200 +1,198 @@
 # Deepin Store|../common/deepin-appstore.svg|
 
-## Overview
-Deepin Store V5.0 is an application recreated by Deepin Technology Co., Ltd. with the integration of application display, downloading, installation, uninstallation, commenting, rating, and recommendation. Deepin Store collects different types of applications for you, each one has been installed and verified manually. You can search the popular applications with one-click download and automatic installation.
+## Vistazo
+Deepin Store V5.0 (tienda de Deepin) es una aplicación creada por Deepin Technology Co., Ltd. para interactuar la visualización, descarga, instalación, retroalimentación, puntuación y recomendación de aplicaciones. Deepin Store recopila diferentes tipos de aplicaciones para usted, cada una instalada y comprobada manualmente. Puede buscar las aplicaciones populares e instalar automáticamente en un clic.
 
  ![1|maininterface](jpg/maininterface.jpg)
 
-## Basic Operations
+## Operaciones Básicas
 
-### Run Deepin Store
-You can run Deepin Store by the following operations:
+### Iniciar Deepin Store
+Puede iniciar Deepin Store siguiendo estos pasos:
 
-1. Click on ![Launcher-24](icon/launcher-24.svg) on dock to enter launcher interface. 
-2. Then click ![Deepin Store](icon/store-24.svg).
+1. Clic en ![Launcher-24](icon/launcher-24.svg) en el muelle para entrar a la interfaz del lanzador.
+2. Después haga clic ![Deepin Store](icon/store-24.svg).
 
-> ![notes](icon/notes.svg): Deepin Store has been fixed on Dock by default, you can click on ![Deepin Store](icon/store-24.svg) on Dock to run it.
+> ![notes](icon/notes.svg): Deepin Store está anclada al Muelle por defecto, puede hacer clic en ![Deepin Store](icon/store-24.svg) en el Muelle para iniciar.
 
-### Maximize/Minimize Deepin Store
+### Maximizar/Minimizar Deepin Store
 
-- On Deepin Store interface, click on ![Maximize](icon/icon_max.svg) to maximize Deepin Store. To restore to the normal size, click on ![Restore](icon/icon_unmax.svg).
-- On Deepin Store interface, click on  ![Minimize](icon/icon_min.svg) to minimize Deepin Store to Dock. To restore the display, click on ![Deepin Store](icon/store-24.svg) on Dock.
+- En la interfaz de Deepin Store, clic en ![Maximize](icon/icon_max.svg) to para expandir la ventana de Deepin Store. Para restaurar al tamaño normal, haga clic en ![Restore](icon/icon_unmax.svg).
+- En la interfaz de Deepin Store, clic en ![Minimize](icon/icon_min.svg) para minimizar Deepin Store al Muelle. Para recuperar la ventana, clic en ![Deepin Store](icon/store-24.svg) del Muelle.
 
-### Close Deepin Store
+### Cerrar Deepin Store
 
-- On Deepin Store interface, click on ![Close](icon/icon_close.svg) to exit.
-- Right-click on ![Deepin Store](icon/store-24.svg) on Dock to select **Close All** to exit.
-- On Deepin Store interface, select [Exit](#Exit) in the main menu.
+- En la interfaz de Deepin Store, clic en ![Close](icon/icon_close.svg) para salir.
+- Clic derecho en ![Deepin Store](icon/store-24.svg) del Muelle y seleccione **Cerrar todo** para salir.
+- En la interfaz de Deepin Store, seleccione [Exit](#Exit) en el menú principal.
 
 
 
-## Main Interface
-The main interface consists of navigation bar, search box, main menu, flashview, columns, hot topics, download and uninstall management.
+## Interfaz principal
+La interfaz principal consta de barra de navegación, cuadro de búsqueda, menú principal, vista de flash, columnas, temas candentes, administración de descarga y desinstalación.
 
 ![1|maininterfacedetail01](jpg/maininterfacedetail01.png)
 
 ![1|maininterfacedetail02](jpg/maininterfacedetail02.png)
 
 <table class="block1">
-    <caption>Main Interface</caption>
+    <caption>Interfaz principal</caption>
     <tbody>
         <tr>
             <td width="25px">1</td>
-            <td width="95px">Navigation Bar</td>
-            <td>Navigation bar mainly displays the home page, rankings and application categories of Deepin Store. </td>
+            <td width="95px">Barra de navegación</td>
+            <td>La barra de navegación muestra principalmente la página de inicio, los rankings y las categorías de aplicaciones de Deepin Store. </td>
         </tr>
         <tr>
             <td>2</td>
-            <td>Search Box</td>
-            <td>Users can quickly search applications in Deepin Store by search box. </td>
+            <td>Barra de búsqueda</td>
+            <td>Los usuarios pueden buscar rápidamente aplicaciones en Deepin Store por cuadro de búsqueda. </td>
         </tr>
             <tr>
             <td>3</td>
-            <td>Main Menu</td>
-            <td>You can sign in, recommend app, select China or International region, clear cache, view the manual and version info, and exit Deepin Store in it. </td>
+            <td>Menú principal</td>
+            <td>Puede iniciar sesión, recomendar una aplicación, seleccionar la región China o Internacional, borrar la caché, ver el manual y la información de la versión, y salir de Deepin Store en ella. </td>
         </tr>
         <tr>
             <td>4</td>
-            <td>Flashview</td>
-            <td>Images of recommended applications will be circularly played in flashview. </td>
+            <td>Vista rápida</td>
+            <td>Muestra imágenes de aplicaciones cíclicamente en la vista rápidamente.</td>
         </tr>
          <tr>
             <td>5</td>
-            <td>Columns</td>
-            <td>Home columns are mainly to display new updates, essential apps, popular apps, recommendations, rankings. </td>
+            <td>Columnas</td>
+            <td>Las columnas de inicio son principalmente indicadores de nuevas actualizaciones, programas escenciales, populares, recomendadas y puntuadas.</td>
         </tr>
         <tr>
             <td>6</td>
-            <td>Hot Topics</td>
-            <td>Hot topics are mainly to display applications with the same topics. </td>
+            <td>Populares</td>
+            <td>La lista popular es principalmente para mostrar aplicaciones con los mismos temas. </td>
         </tr>
         <tr>
             <td>7</td>
-            <td>Download Management</td>
-            <td>Download management is mainly to display the current downloading tasks, downloading and installing progress. You can pause and delete the tasks. </td>
+            <td>Administración de descargas</td>
+            <td>La gestión de descarga se debe principalmente a mostrar las tareas de descarga actuales, descargar e instalar el progreso. Puede pausar y eliminar las tareas.</td>
         </tr>
         <tr>
             <td>8</td>
-            <td>Uninstallation</td>
-            <td>You can view all installed apps in it, and remove any app you do not need. </td>
+            <td>Desinstalación</td>
+            <td>Puede ver todas las aplicaciones instaladas en él y eliminar cualquier aplicación que no necesite.</td>
         </tr>
     </tbody>
  </table>
 
 ## Application Management
-You can search, download and install different categories of applications by Deepin Store. Meanwhile, more wonderful applications will be explored through flashview, new updates, essential apps, popular apps, recommendations, hot topics, rankings,  user comments and other ways.
+Puede buscar, descargar e instalar diferentes categorías de aplicaciones en Deepin Store. Mientras tanto, se explorarán aplicaciones más maravillosas a través de vista rápida, nuevas actualizaciones, aplicaciones esenciales, aplicaciones populares, recomendaciones, lista popular, clasificaciones, comentarios de los usuarios y otras formas.
 
-### Search Applications
-Search function is built in Deepin Store. Search result will be automatically shown below after you input a keyword. Press ![Enter](icon/Enter.svg) on keyboard to display all applications containing that keyword.
+### BUscar aplicaciones
+La función de búsqueda está integrada en Deepin Store. Los resultados de búsquedas serán mostradas automáticamente en la parte inferior después de ingresar una palabra clave. Pulse ![Enter](icon/Enter.svg) en el teclado para mostrar todas aplicaciones que llevan la palabra clave.
 
 ![1|Search](jpg/search.jpg)
 
 ### Download/Install Applications
-Deepin Store offers one-click download and installation of applications. During the downloading and installing process, you can pause and delete, as well as view the current progress.
+Deepin Store ofrece descarga e instalación de aplicaciones con un solo clic. Durante el proceso de descarga e instalación, puede pausar y eliminar, así como mirar el progreso actual.
 
-1. On Deepin Store interface, click the application image to enter app page.
-2. Click on ![Install](icon/installfordetail.svg) to automatically download and then install in **Download**.
+1. En la interfaz de Deepin Store, clic the application image to enter app page.
+2. Clic en ![Install](icon/installfordetail.svg) para descargar automáticamente y después instala en **Descargar**.
 
-> ![tips](icon/tips.svg): You can directly hover mouse over the application image or name, then click ![installhover](icon/installhover.svg).
+> ![tips](icon/tips.svg): Puede pasar el mouse directamente sobre la imagen o el nombre de la aplicación, luego hacer clic en ![installhover](icon/installhover.svg).
 
-> ![notes](icon/notes.svg): The installed app will be shown in **Uninstall**.
+> ![notes](icon/notes.svg): La aplicación instalada será mostrada en la sección **Desinstalar**.
 
 ![1|installprocess](jpg/installprocess.jpg)
 
 ### Update/Upgrade Application
 
-If you need to update and upgrade applications, you can set in Control Center, specific operations refer to [Update Settings](dman:///dde#Update Settings).
+Si necesita descargar e instalar actualizaciones de aplicaciones, puede ajustar en el Centro de control, el procedimiento detallado lo encuentra en [Ajustes de actualización](dman:///dde#Ajustes de actualización).
 
-> ![notes](icon/notes.svg): Besides update and upgrade applications, you also can update and upgrade the system in Control Center.
+> ![notes](icon/notes.svg): Además de las aplicaciones de actualización y actualización, también puede actualizar y actualizar el sistema en el Centro de control.
 
 ### Uninstall Applications
 
-Besides uninstalling applications in Launcher (specific operations refer to [Uninstall Applications](dman:///dde#Uninstall Applications), you can directly uninstall apps in Deepin Store.
-- In **Uninstall** page, find the application to remove, click ![uninstall](icon/uninstall.svg).
+Además de desinstalar aplicaciones en el Lanzador (pasos detallados lo encuentra en [Desinstalar aplicaciones](dman:///dde#Desinstalar aplicaciones), puede desinstalar aplicaciones desde la Deepin Store.
+- En la sección **Desinstalar**, localice la aplicación para remover y haga clic en ![uninstall](icon/uninstall.svg).
 
 ![1|Uninstall](jpg/uninstall.jpg)
 
 
-## Application Page
+## Página de la aplicación
 
 ### Application Details
-The application page displays the downloads, rating,  comments, category, version, package size, updated date, description, screenshots and so on. You can get a full understanding of the application in it.
+La página de la aplicación muestra las descargas, la calificación, los comentarios, la categoría, la versión, el tamaño del paquete, la fecha de actualización, la descripción, las capturas de pantalla, etc. Puede obtener una comprensión completa de la aplicación en él.
 
-> ![tips](icon/tips.svg)：Click the screenshots to view in large ones.
+> ![tips](icon/tips.svg)：Clic en las capturas de pantalla para ver de forma extendida.
 
 ![1|softwareinterface](jpg/softwareinterface.jpg)
 
-### Ask for Update
+### Solicitar actualización
 
-Click **Ask for update** to submit your request for a new version, so that the application update will be scheduled more quickly.
+Clic **Solicitar actualización** para enviar su solicitud de una versión actualizada, para que la actualización de la aplicación sea programa lo más pronto.
 
 ### Donate
 
-1. Click **Donate**, input the amount or click "Random" to generate an amount.
-2. Choose a paying method, and click **Pay Now** to donate.
+1. Clic en **Donar**, ingrese en el monto o clic en input the amount or clic en "Aleatorio" para generar el monto.
+2. Seleccione un método de pago, y haga clic en **Pagar Ahora** para donar.
 
 ![1|donate](jpg/donate.jpg)
 
-> ![tips](icon/tips.svg)：This function is developed for application developers and packagers, who can get the donation from users according to donation rules.
+> ![tips](icon/tips.svg)：Esta función está enfocada a desarrolladores de aplicaciones y empaquetadores, quienes pueden obtener la contribución de los usuarios de acuerdo con las reglas de donación.
 
-### Comment and Rate
-Please comment on and rate applications after signed in Deepin Store, otherwise you can only view comments and ratings. Your comments and ratings will be displayed after submitted successfully. And, you only can comment once on the current version.
+### Comentar y Valorar
+Por favor comente o califique las aplicaciones después de ingresar en la Deepin Store, de lo contrario, solo puede ver comentarios y calificaciones. Sus comentarios y calificaciones se mostrarán luego de ser enviados exitosamente. Y, solo puedes comentar una vez en la versión actual.
 
 > ![attention](icon/attention.svg): If you need to know the information of signing up and signing in, please refer to [Sign In](#Sign In).
 
-> ![tips](icon/tips.svg): You can click the icon at the right to like the comment.
+> ![tips](icon/tips.svg): You can clic the icon at the right to like the comment.
 
 ![1|commentandrate](jpg/commentandrate.jpg)
 
 
-## Main Menu
+## Menú principal
 
-### Sign In
-You can sign in Deepin Store with your account in deepin forum.
+### Inciar sesión
+Puede ingresar a la Deepin Store con su cuenta del foro de deepin.
 
-1. On Deepin Store interface, click on ![icon_menu](icon/icon_menu.svg).
-2. Click on **Sign In**.
-3. Input username and password.
-4. If you want to enable auto-Sign-in, please click on **Remember me**.
-5. Click on **Sign In**.
+1. En la interfaz de Deepin Store, clic en ![icon_menu](icon/icon_menu.svg).
+2. Clic en **Iniciar sesión**.
+3. Ingrese el nombre de usuario y contraseña.
+4. Si desea iniciar sesión permanentemente, clic en **Remember me**.
+5. Clic en **Sign In**.
 
-> ![attention](icon/attention.svg): If you don't have an account, you can click on **Sign Up** in the pop-up box to sign up.
+> ![attention](icon/attention.svg): Si no tiene una cuenta, puede hacer clic en **Sign Up** a la ventana emergente para registrarse.
 
 ![0|loginpage](jpg/loginpage.png)
 
-### Recommend App
-If you want a new app in Deepin Store, please click "Recommend App" in main menu to submit your request.
-1. On Deepin Store interface, click on ![icon_menu](icon/icon_menu.svg).
-2. Click on **Recommend App**.
-3. Input app name, type, license, homepage, download site and other info.
-4. Click on **Submit**.
+### Recomendar aplicación
+Si desea una nueva aplicación en Deepin Store, por favor, haga clic en "Recommend App" in main menu to submit your request.
+1. En la interfaz de Deepin Store, clic en ![icon_menu](icon/icon_menu.svg).
+2. Clic en **Recomendar aplicación**.
+3. Ingrese el nombre de la aplicación, tipo, licencia, sitio web, lugar para descarga y otra información.
+4. Clic en **Enviar**.
 
 ![1|recommendapp](jpg/recommendapp.jpg)
 
-### Select Region
-Deepin Store has two regions: China and international, which has different applications based on user preferences.
-1. On Deepin Store interface, click on ![icon_menu](icon/icon_menu.svg).
-2. Click on **Select Region**.
-3. Choose **China** or **International**.
+### Seleccionar Región
+Deepin Store tiene dos regiones: China e internacional, que tiene diferentes aplicaciones basadas en las preferencias del usuario.
+1. En la interfaz de Deepin Store, clic en ![icon_menu](icon/icon_menu.svg).
+2. Clic en **Seleccionar Región**.
+3. Escoga **China** o **Internacional**.
 
-### Clear Cache
-1. On Deepin Store interface, click on ![icon_menu](icon/icon_menu.svg).
-2. Click on **Clear Cache** to clear the package caches.
+### Limpiar caché
+1. En la interfaz de Deepin Store, clic en ![icon_menu](icon/icon_menu.svg).
+2. Clic en **Limpiar caché** para eliminar la caché de paquetes.
 
-### Help
-Click "Help" to get the manual, which will help you further know and use Deepin Store.
+### Ayuda
+Clic en "Ayuda" para obtener el manual, que le ayudará a conocer y utilizar Deepin Store.
 
-1. On Deepin Store interface, click on ![icon_menu](icon/icon_menu.svg).
-2. Click on **Help** to view the manual of Deepin Store.
+1. En la interfaz de Deepin Store, clic en ![icon_menu](icon/icon_menu.svg).
+2. Clic en **Ayuda** para ver el manual de la Deepin Store.
 
-### About
+### Acerca de
 
-1. On Deepin Store interface, click on ![icon_menu](icon/icon_menu.svg).
-2. Click on **About** to view the version and introduction of Deepin Store.
+1. En la interfaz de Deepin Store, clic en ![icon_menu](icon/icon_menu.svg).
+2. Clic en **Acerca de** para ver la versión y presentación de la Deepin Store.
 
+### Salida
 
-### Exit
-
-1. On Deepin Store interface, click on ![icon_menu](icon/icon_menu.svg).
-2. Click on **Exit** to exit Deepin Store.
-
+1. En la interfaz de Deepin Store, clic en ![icon_menu](icon/icon_menu.svg).
+2. Clic en **Salir** para cerrar Deepin Store.
