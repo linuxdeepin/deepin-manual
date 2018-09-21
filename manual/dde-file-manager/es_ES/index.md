@@ -230,7 +230,7 @@ gestor de archvios de Deepin is featured with many useful functions, such as bre
 
 There are three sections in address bar, namely the breadcrumb bar, search bar and directory bar.
 
-By default, breadcrumb bar is displayed in the address bar. By clicking on the blank area in the address bar or clic en ![search](icon/search-noamal.svg), it will switch to directory/search bar, which can be used to access directory and search for target items.
+By default, breadcrumb bar is displayed in the address bar. By clicing on the blank area in the address bar or clic en ![search](icon/search-noamal.svg), it will switch to directory/search bar, which can be used to access directory and search for target items.
 
 Al ingresar un directorio o palabras clave sea en el directorio o la barra de búsqueda y presionar ![Enter](icon/Enter.svg), el usuario consigue acceder al directorio de destino o buscar los elementos que necesita.
 
@@ -335,115 +335,115 @@ Arrastre y suelte la etiqueta hacia arriba o hacia abajo para cambiar su orden.
 #### Eliminar etiqueta
 Clic derecho en a tag in left navigation bar,  select **Remove** to delete the tag.
 
-### Preview Files
+### Previsualizar archivos
 
-gestor de archvios de Deepin supports file preview. Select a file and press the space bar on the keyboard to quickly preview the file info, including image resolution, document size, text content, audio and video playback, etc.
+El gestor de archvios de Deepin admite previsualización de archivos. Seleccione un archivo y pulse la barra espaciadora del teclado para mostrar información breve del archivo, incluyendo resolución gráfica, tipo de documento, contenido del texto, reproducción de audio y vídeo, etcétera.
 
-#### Preview Video
+#### Previsualizar vídeo
 
-1. Select a video and press  the space bar to start video preview.
-2. Click in the preview window to pause video playback.
-3. Drag the progress bar to play forward or backward.
-4. Click **Open** at the bottom to open the video by default program.
+1. Seleccione un vídeo y pulse la barra espaciadora para mostrar la previsualización del vídeo.
+2. Clic en la ventana previsualizada para pausar la reproducción del vídeo.
+3. Arrastre la barra de progreso para avanzar o retroceder la reproducción.
+4. Clic en **Abrir** en la parte inferior para abrir el vídeo por el programa predeterminado.
 
 ![1|video preview](jpg/video preview.jpg)
 
-![notes](icon/notes.svg): When selecting multiple files to  preview, use ![previous](icon/previous.png) or ![next](icon/next.png) to jump to the previous or next file.
+![notes](icon/notes.svg): Cuando seleccione varios archivos para previsualizar, utilice ![previous](icon/previous.png) o ![next](icon/next.png) para pasar al anterior o próximo archivo.
 
-### Permission Management
-In archivo/carpeta properties, click **Permission Management** to set permission for different roles.
+### Gestión de permisos
+En las propiedades del archivo/carpeta, clic en **Gestión de permisos** para establecer los permisos a diferentes roles.
 
 ![0|permission](jpg/permission.jpg)
 
-### Computers in LAN
+### Computadoras en LAN
 
-Users can visit computers in LAN to access files and folders.
+Los usuarios pueden visitar computadoras dentro de la Conexión de Área Local para acceder archivos o carpetas.
 
-1. On la interfaz del gestor de archivos de Deepin, clic en ![network](icon/network_server.svg).
-2. Double clic en the computer icon to access.
-3. Select to connect as **Anonymous ** or **Registered user**. For **Registered user**, user needs to input username and password to connect.
-4. Clic en **Connect** to establish connection.
+1. En la interfaz del gestor de archivos de Deepin, clic en ![network](icon/network_server.svg).
+2. Doble clic en el icono de la computadora para acceder.
+3. Seleccione si quiere conectar comos **Anónimo** o **Usuario registrado**. Para **Usuario registrado**, el usuario necesita introducir la cuenta de usuario y la contraseña para conectar.
+4. Clic en **Conectar** para establecer la conexión.
 
 ![0|network](jpg/network.jpg)
 
-### My Shares
+### Mi uso compartido
 
-#### Share Folders
+#### Compartir carpetas
 
-Users can share folders in gestor de archvios de Deepin, if there are some folders shared, the share icon will show on the navigation bar, if not, the share icon will be hidden.
+Los usuarios pueden compartir carpetas en el gestor de archvios de Deepin, si hay algunas carpetas compartidas, el ícono para compartir se mostrará en la barra de navegación, de lo contrario, el ícono para compartir se ocultará.
 
-1. On la interfaz del gestor de archivos de Deepin, clic derecho en a folder, select **Properties**.
-2. In the popup window, click **Share Management**.
-3. To share this folder, click **Share this folder **.
-4. To change share options, input **Share name**, y seleccionar to choose **Permission** and **Anonymous **.
-5. To set share password, click ![menu](icon/icon_menu.svg) y seleccionar **Set share password**.
+1. En la interfaz del gestor de archivos de Deepin, clic derecho en una carpeta, seleccione **Propiedades**.
+2. En la ventana emergente, clic **Gestión de compartición**.
+3. Para compartir esta carpeta, haga clic en **Compartir esta carpeta**.
+4. Para cambiar los ajustes de compartición, ingrese el **Nombre compartido**, y seleccione si está permitido su visionado en los usuarios (**Permiso**) e invitados (**Anónimo**).
+5. Para establecer la contraseña compartida, clic en ![menu](icon/icon_menu.svg) y seleccione **Establecer contraseña compartida**.
 
 ![0|share](jpg/share.jpg)
 
-#### Manage Share
+#### Gestión de compartición
 
-Users can manage shared folders if it has shared some folders in gestor de archvios de Deepin.
+Los usuarios pueden gestioanr carpetas compartidos si ha compartido algunas carpetas en el gestor de archvios de Deepin.
 
-1. On la interfaz del gestor de archivos de Deepin, click ![share](icon/icon_share.svg) on the navigation bar.
-2. All shared folders will show on the interface.
-3. Users can cancel sharing by clic derechok the folder y seleccionar **Cancel sharing**.
+1. En la interfaz del gestor de archivos de Deepin, clic en ![share](icon/icon_share.svg) en la barra de navegación.
+2. Todas las carpetas compartidas serán mostradas en el apartado.
+3. Los usuarios pueden dejar de compartir haciendo clic derecho a la carpeta y seleccionar **Dejar de compartir**.
 
 ![1|viewshare](jpg/viewshare.jpg)
 
-### Open in Terminal
+### Abrir en la terminal
 
-1. On la interfaz del gestor de archivos de Deepin, enter the folder.
-2. Clic en blank area in the folder, y seleccionar **Open in terminal**.
+1. En la interfaz del gestor de archivos de Deepin, acceda a la carpeta.
+2. Clic en la zona en blanco en el folder, y seleccione **Abrir en la terminal**.
 
 ![0|openinterminal](jpg/openinterminal.jpg)
 
-### Create Link
+### Crear enlace
 
-Users can create links for items, and put the links in easy-to-reach folders (such as Desktop) to access the items faster.
+Los usuarios pueden compartir enlace para elementos, y colocar los enlaces para acceder fácilmente desde las carpetas (como el Escritorio) y acceder los elementos al instante.
 
-1. On la interfaz del gestor de archivos de Deepin, select the item to create a link for.
-2. Clic derechok y seleccionar **Create link**.
-3. In the popup window, select a folder to store the link.
-4. Clic en **Save** to finish creating the link.
+1. En la interfaz del gestor de archivos de Deepin, seleccione el elemento que desea crear el enlace.
+2. Clic derecho y seleccione **Crear enlace**.
+3. En la ventana emergente, seleccione la carpeta para guardar el enlace.
+4. Clic en **Guardar** para finalizar la creación del enlace.
 
 ![0|create_link](jpg/create_link.jpg)
 
-> ![tips](icon/tips.svg): By selecting **Send to desktop** for an item, user can create a link on desktop with one click.
+> ![tips](icon/tips.svg): Al seleccionar **Enviar al escritorio** para el elemento, el usuario creará un acceso directo al escritorio en un clic.
 
 ### Send To Other Device
 
-When there is an external device inserted, you can directly send archivo/carpeta to it.
+Cuando hay una unidad de almacenamiento externo insertada, puede directamente enviar archivo/carpeta a ella.
 
-1. Selected a archivo/carpeta.
-2. Clic derechok y seleccionar **Send to**.
-3. Select the device you want to send to.
-4. El archivo/carpeta will be copied to the device.
+1. Seleccione un archivo/carpeta.
+2. Clic derecho y seleccione **Enviar a**.
+3. Seleccione el dispositivo que desea enviar.
+4. El archivo/carpeta será copiado(a) al dispositivo.
 
 ![0|send_to](jpg/send_to.png)
 
-## Disk Management
+## Administración de discos
 
-On la interfaz del gestor de archivos de Deepin, you can mount/unmount, remove, format and decrypt disks.
+En la interfaz del gestor de archivos de Deepin, puede montar/desmontar, remover, formatear y descifrar discos duros.
 
-### Display Disks
+### Mostrar discos
 
-Mounted disks are displayed in the left navigation bar of gestor de archvios de Deepin. Including:
-- Local disk, which includes all the partitions in local disk.
-- External disk, which includes mobile hard disk, CD/DVD and USB flash disk.
-- Mobile device, which includes mobile phone storage, storage card, SD card and so on.
+Los discos montados son mostrados en la barra de navegación izquierda del gestor de archvios de Deepin. Incluyendo:
+- Discos locales, dónde extende todas las particiones del disco local.
+- Discos externos, incluído discos duros portátiles, unidades CD/DVD y lápiz USB.
+- Dispositivos móviles, que incluye almacenamiento del celular, tarjeta de almacenamiento, tarjeta SD y otros.
 
-### Unmount/Eject/Safely Remove Disks
+### Desmontar/Expulsar/Remover discos con seguridad
 
-1. In the navigation bar of gestor de archvios de Deepin, clic derecho en the disk.s
-2. Select **Eject** to eject the removable disk/device, the disk will be removed from the disk list.
-3. Select **Unmount** to unmount the disk. The disk will be still in the disk list.
-4. Select **Safely Remove** to power off and remove the external device.
+1. En la barra de navegación del gestor de archvios de Deepin, clic derecho en el disco.
+2. Seleccione **Explusar** para expulsar la unidad o disco removible, el disco será retirado de la lista de unidades.
+3. Seleccione **Desmontar** para dejar de montar el disco. Éste será retirado de la lista de unidades.
+4. Select **Quitar de la PC** para apagar y remover la unidad externa.
 
 ![0|eject](jpg/eject.jpg) ![0|safely_remove](jpg/safely_remove.jpg)
 
 > ![tips](icon/tips.svg): Users can clic en ![unmount](icon/unmount_normal.svg) in the navigation bar to eject the disks.
 
-### Renombrar Disk
+### Renombrar Disco
 Desmonte el disco, haga clic derecho y seleccione **Renombrar** para cambiar la etiqueta del disco.
 
 ### Formatear Discos
