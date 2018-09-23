@@ -56,7 +56,7 @@ Habrá un aviso de **Elaborado con éxito** cuando esté completo. Durante el ti
 
 Puede hacer un clic para ver el manual, que le ayudará a conocer y usar Creador de arranque de Deepin.
 
-1. En la interfaz del Creador de arranque de Deepin, clic on ![icon_menu](icon/icon_menu.svg) .
+1. En la interfaz del Creador de arranque de Deepin, clic en ![icon_menu](icon/icon_menu.svg) .
 2. Clic en **Ayuda**.
 3. Observe el manual.
 
@@ -72,6 +72,6 @@ Puede hacer clic para ver la descripción de la versión.
 
 Puede hacer clic para salir del Creador de arranque de Deepin.
 
-1. En la interfaz del Creador de arranque de Deepin, clic on ![icon_menu](icon/icon_menu.svg).
+1. En la interfaz del Creador de arranque de Deepin, clic en ![icon_menu](icon/icon_menu.svg).
 
 2. Clic en **Salir** para cerrar.
