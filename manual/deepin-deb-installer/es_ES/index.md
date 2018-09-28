@@ -70,13 +70,11 @@ Deepin Package Manager (gestor de paquetes de Deepin) es una aplicación usado p
 ![1|remove](jpg/remove.jpg)
 
 
-## Main Menu
-
-### Help
+## Menú principal
 
 ### Ayuda
 
-Puede hacer un clic para ver el manual, que le ayudará a conocer y usar Creador de arranque de Deepin.
+Puede hacer un clic para ver el manual, que le ayudará a conocer y usar el administrador de paquetes de Deepin.
 
 1. En la la interfaz de Deepin Package Manager, clic en ![icon_menu](icon/icon_menu.svg) .
 2. Clic en **Ayuda**.

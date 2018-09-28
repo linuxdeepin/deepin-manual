@@ -52,7 +52,7 @@ El cliente de Deepin Cloud Scan está preinstalado en la ISO de deepin.
 
  ![1|client-settings](jpg/client-settings.jpg)
 
-## Settings
+## Ajustes
 
 ### Ayuda
 
