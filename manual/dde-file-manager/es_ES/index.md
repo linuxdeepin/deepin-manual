@@ -468,13 +468,13 @@ Los usuarios pueden crear una nueva ventana, cambiar a un tema oscuro, realizar 
 
 ### Cambiar tema
 
-El tema de la Calculadora Deepin es luminosa (clara) por defecto, puede hacer clic en **Tema oscuro** para cambiar.
+El tema del Gestor de archivos Deepin es luminosa (clara) por defecto, puede hacer clic en **Tema oscuro** para cambiar.
 
 1. En la interfaz del gestor de archivos Deepin, clic en ![main_menu](icon/main_menu.svg).
 2. Seleccione **Tema oscuro**.
 3. La interfaz cambiará al tema oscuro.
 
-### Settings
+### Ajustes
 
 1. En la interfaz del gestor de archivos Deepin, clic en ![main_menu](icon/main_menu.svg).
 2. Seleccione **Ajustes** para entrar al apartado detallado de ajustes.
