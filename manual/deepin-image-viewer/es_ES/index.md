@@ -257,7 +257,7 @@ En el apartado del álbum, clic derecho en el álbum icon y seleccione **Copiar*
 
 ![0|rename-album](jpg/album-rename.jpg)
 
-## Main Menu
+## Menú principal
 
 En el **Menú principal**, el usuario puede crear un nuevo álbum, establecer las opciones, ver la información en el Visor de imágenes Deepin y cerrar la aplicación.
 En la interfaz del Visor de imágenes Deepin, clic en ![menu](icon/icon_menu.svg) para entrar al **Menú principal**.
@@ -266,7 +266,7 @@ En la interfaz del Visor de imágenes Deepin, clic en ![menu](icon/icon_menu.svg
 
 En el **Menú principal**, seleccione o desmarque **Tema oscuro** para cambiar el tema visual.
 
-### Settings
+### Ajustes
 
 1. En el **Menú principal**, clic en **Ajustes**.
 2. El usuario puede ajustes los siguientes parámetros que necesite:
@@ -276,18 +276,18 @@ En el **Menú principal**, seleccione o desmarque **Tema oscuro** para cambiar e
 
 ![1|setting](jpg/setting.jpg)
 
-### Help
+### Ayuda
 
-En el **Menú principal**, seleccione **Help** para ver el manual del Visor de imágenes Deepin.
-
-
-
-### About
-
-En el **Menú principal**, seleccione **About** para verificar la versión y presentación del Visor de imágenes Deepin.
+En el **Menú principal**, seleccione **Ayuda** para ver el manual del Visor de imágenes Deepin.
 
 
 
-### Exit
+### Acerca de
+
+En el **Menú principal**, seleccione **Acerca de** para verificar la versión y presentación del Visor de imágenes Deepin.
+
+
+
+### Salir
 
 En el **Menú principal**, seleccione **Salir** para salir del Visor de imágenes Deepin.
