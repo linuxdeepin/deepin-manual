@@ -192,7 +192,7 @@ Clic en "Ayuda" para obtener el manual, que le ayudará a conocer y utilizar Dee
 1. En la interfaz de Deepin Store, clic en ![icon_menu](icon/icon_menu.svg).
 2. Clic en **Acerca de** para ver la versión y presentación de la Deepin Store.
 
-### Salida
+### Salir
 
 1. En la interfaz de Deepin Store, clic en ![icon_menu](icon/icon_menu.svg).
 2. Clic en **Salir** para cerrar Deepin Store.

@@ -19,7 +19,7 @@ Deepin Link and Deepin Presentation Assistant should be in the same network. Wi-
 
 ## Basic Operations
 
-### Installation and Connection 
+### Installation and Connection
 
 
 2. Select your version and scan QR code to download and install.
@@ -29,7 +29,7 @@ Deepin Link and Deepin Presentation Assistant should be in the same network. Wi-
 
 ![1|link](jpg/link.jpg)
 
-> ![notes](icon/notes.svg):Deepin Presentation Assistant will be preinstalled in editions after deepin 15.4. Please make sure your phone and computer are in the same LAN before connecting, or there will be a failure prompt and you can follow the steps to connect.
+> ![notes](icon/notes.svg): Deepin Presentation Assistant will be preinstalled in editions after deepin 15.4. Please make sure your phone and computer are in the same LAN before connecting, or there will be a failure prompt and you can follow the steps to connect.
 
 
 ### Photo Sharing

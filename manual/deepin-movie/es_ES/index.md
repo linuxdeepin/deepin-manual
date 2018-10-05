@@ -355,7 +355,7 @@ Puede añadir una película a la lista con los siguientes pasos:
 ### Ajustes de subtitulado
 
 1. En la interfaz de Películas Deepin, clic en ![main_menu](icon/main_menu.svg).
-2. Seleccionar **Ajustes** > **Subtitle**.
+2. Seleccionar **Ajustes** > **Subtítulo**.
 3. Puede ajustar la fuente y tamaño de los subtítulos.
 
 > ![notes](icon/notes.svg): También puede clic en **Restablecer a los ajustes predeterminados** para restaurar todos los ajustes.
