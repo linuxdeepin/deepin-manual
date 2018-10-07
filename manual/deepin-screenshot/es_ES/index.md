@@ -519,7 +519,7 @@ Puede dibujar algunos gráficos simples en las imágenes capturadas, como rectá
 
 1. Clic en ![rect](icon/rect.svg) en la barra de herramientas.
 2. En el panel extendido de la barra de herramientas, escoga el grosor del rectángulo.
-3. Coloque el puntero del ratón en el área de la captura de pantalla, y luego el puntero del ratón será como ![rectmouse](icon/rect_mouse.svg).
+3. Coloque el puntero del ratón dentro del área de la captura de pantalla, y luego el puntero del ratón será como ![rectmouse](icon/rect_mouse.svg).
 4. Presione y mantenga presionado el botón principal del ratón, suelte el ratón para finalizar el dibujado.
 5. Si la captura de pantalla incluye información confidencial, haga clic en ![blur](icon/blur.svg) o ![mosaic](icon/mosaic.svg) en el panel extendido de la barra de herramientas para ocultar.
 
@@ -536,7 +536,7 @@ Puede dibujar algunos gráficos simples en las imágenes capturadas, como rectá
 
 1. Clic en ![ellipse](icon/ellipse.svg) en la barra de herramientas.
 2. En el panel extendido de la barra de herramientas, escoga el grosor del elipse.
-3. Coloque el puntero del ratón en el área de la captura de pantalla, y luego el puntero del ratón será como ![ellipsemouse](icon/ellipse_mouse.svg).
+3. Coloque el puntero del ratón dentro del área de la captura de pantalla, y luego el puntero del ratón será como ![ellipsemouse](icon/ellipse_mouse.svg).
 4. Presione y mantenga presionado el botón principal del ratón, suelte el ratón para finalizar el dibujado.
 5. Si la captura de pantalla incluye información confidencial, haga clic en ![blur](icon/blur.svg) o ![mosaic](icon/mosaic.svg) en el panel extendido de la barra de herramientas para ocultar.
 
@@ -551,7 +551,7 @@ Puede dibujar algunos gráficos simples en las imágenes capturadas, como rectá
 1. Clic en ![arrow](icon/arrow.svg) en la barra de herramientas.
 2. En el panel extendido de la barra de herramientas, escoga el grosor de la flecha.
 3. Clic en ![straight](icon/straightline.svg) o ![arrow](icon/arrow.svg) to switch between straight line and arrow.
-4. Coloque el puntero del ratón en el área de la captura de pantalla, y luego el puntero del ratón será como ![arrowmouse](icon/arrow_mouse.svg).
+4. Coloque el puntero del ratón dentro del área de la captura de pantalla, y luego el puntero del ratón será como ![arrowmouse](icon/arrow_mouse.svg).
 5. Presione y mantenga presionado el botón principal del ratón, suelte el ratón para finalizar el dibujado.
 
 > ![notes](icon/notes.svg): Presione y mantenga presionado ![shift](icon/Shift.svg) en el teclado, y luego seleccione ![straight](icon/straightline.svg) o ![arrow](icon/arrow.svg) para dibujar una línea recta o flecha en dirección horizontal o vertical.
@@ -562,7 +562,7 @@ Puede dibujar algunos gráficos simples en las imágenes capturadas, como rectá
 
 1. Clic en ![pencil](icon/pencil.svg) en la barra de herramientas.
 2. En el panel extendido de la barra de herramientas, escoga el tamaño del lápiz.
-3. Coloque el puntero del ratón en el área de la captura de pantalla, y luego el puntero del ratón será como ![straightmouse](icon/pink_red.svg).
+3. Coloque el puntero del ratón dentro del área de la captura de pantalla, y luego el puntero del ratón será como ![straightmouse](icon/pink_red.svg).
 4. Presione y mantenga presionado el botón principal del ratón, suelte el ratón para finalizar el dibujado.
 
 
@@ -577,130 +577,130 @@ Si ha dibujado otros gráficos en la captura puede modificar la ubicación y su 
 
 #### Mover gráficos
 
-1. Posicione el puntero del ratón sobre the sideline of the graphics, y luego el puntero del ratón become ![finger](icon/finger.svg).
-2. Presione y mantenga presionado el botón principal del ratón, y puede move the graphics to any place in el área de la captura de pantalla.
-3. Presione ![Up](icon/Up.svg) o ![Down](icon/Down.svg) en el teclado to move the graphics up and down, y press ![Left](icon/Left.svg) o ![Right](icon/Right.svg) en el teclado to move the graphics left and right.
+1. Posicione el puntero del ratón sobre el contorno de los gráficos, y luego el puntero del ratón become ![finger](icon/finger.svg).
+2. Presione y mantenga presionado el botón principal del ratón, y puede mover los gráficos a cualquier lugar dentro del área capturado.
+3. Presione ![Up](icon/Up.svg) o ![Down](icon/Down.svg) en el teclado para mover los gráficos hacia arriba y abajo, y press ![Left](icon/Left.svg) o ![Right](icon/Right.svg) en el teclado para moverlo hacia los costados.
 
 
 
 #### Ediar gráficos
 
-1. Posicione el puntero del ratón sobre the sideline of graphics.
-2. Click para entrar the editing mode of graphics. Puede:
+1. Posicione el puntero del ratón sobre el contorno de los gráficos.
+2. Haga clic para entrar the editing mode of graphics. Puede:
 
-   - Presione ![delete](icon/Delete.svg) en el teclado to delete graphics.
+   - Presione ![delete](icon/Delete.svg) en el teclado para borrar los gráficos.
 
-   - Presione ![ctrl](icon/Ctrl.svg)+![Z](icon/Z.svg) en el teclado to return to the previous step.
+   - Presione ![ctrl](icon/Ctrl.svg)+![Z](icon/Z.svg) en el teclado para deshacer al paso anterior.
 
-   - Position the mouse pointer on the editing box, y luego el puntero del ratón becomes ![doublearrow](icon/Mouse_Flecha.svg). Puede enlarge o reduce the graphic area by dragging the mouse pointer.
+   - Posicione el puntero del ratón en la caja de edición, y después el puntero del ratón se convertirá en ![doublearrow](icon/Mouse_Flecha.svg). Puede expandir o reducir su tamaño arrastrando el puntero.
 
-   - Presione ![ctrl](icon/Ctrl.svg)+![Up](icon/Up.svg) o ![Down](icon/Down.svg) en el teclado to extend the graphic area up o down, y press ![ctrl](icon/Ctrl.svg)+![Left](icon/Left.svg) o ![Right](icon/Right.svg) en el teclado to extend the graphic area left o right.
+   - Presione ![ctrl](icon/Ctrl.svg)+![Up](icon/Up.svg) o ![Down](icon/Down.svg) en el teclado para expandir el área hacia arriba o abajo, y presione ![ctrl](icon/Ctrl.svg)+![Left](icon/Left.svg) o ![Right](icon/Right.svg) en el teclado para expandirlo hacia los costados.
 
-   - Position the mouse pointer on ![rotate](icon/rotate.svg) of the editing box, y luego el puntero del ratón becomes ![rotatemouse](icon/rotate_mouse.svg). Puede rotate graphics by dragging the mouse pointer .
+   - Posicione el puntero del ratón en ![rotate](icon/rotate.svg) en la caja de edición, y luego el puntero del ratón se convertirá en ![rotatemouse](icon/rotate_mouse.svg). Puede girar los gráficos arrastrando el puntero.
 
-3. Click outside the editing box salir the editing mode.
+3. Haga clic fuera de la caja para salir de la edición.
 
 
-### Add Texto Annotations
+### Añadir anotaciones en texto
 
-Supplement and add descriptions to the captured images, thus to help others understand them more clearly.
+Complemente y agregue descripciones a las imágenes capturadas, para ayudar a otros a entenderlas más claramente.
 
 ![1|text](jpg/text.jpg)
 
 
-1. Clic en ![text](icon/text.svg) en la barra de herramientas below el área de la captura de pantalla.
-2. En el panel extendido de la barra de herramientas, select a needed font size.
-3. Coloque el puntero del ratón on the captured images, y luego el puntero del ratón becomes ![textmouse](icon/text_mouse.svg).
-4. Click where you want to add an annotation, y a text box to be input will appear.
-5. Enter text in the text box.
+1. Clic en ![text](icon/text.svg) en la barra de herramientas debajo del área de captura.
+2. En el panel extendido de la barra de herramientas, seleccione el tamaño de la fuente.
+3. Coloque el puntero del ratón on the captured images, y luego el puntero del ratón se convertirá en ![textmouse](icon/text_mouse.svg).
+4. Haga clic en el lugar que prefieras para añadir una anotación, y aparecerá una caja en texto.
+5. Enter text in el texto box.
 
-> ![notes](icon/notes.svg): En the text editing mode, it will not auto wrap, you need to press Enter.
-
-
-### Modify Texto Annotations
-
-If you have added a text annotation, puede modify and move the text annotation.
+> ![notes](icon/notes.svg): En la caja de edición, si no se cambia automáticamente, presione Enter/Intro.
 
 
-#### Move Texto Annotations
+### Modificar anotaciones en texto
 
-1. Posicione el puntero del ratón sobre the text, y luego el puntero del ratón becomes ![finger](icon/finger.svg).
-2. Presione y mantenga presionado el botón principal del ratón, y puede move the text to any place in el área de la captura de pantalla.
+Si ha agregado una anotación de texto, puede modificar y mover la anotación de texto.
 
 
-#### Edit Texto Annotations
+#### Mover anotaciones en texto
 
-1. Posicione el puntero del ratón sobre the text.
-2. Click para entrar text-editing mode. Puede:
+1. Posicione el puntero del ratón sobre el texto, y luego el puntero del ratón se convertirá en ![finger](icon/finger.svg).
+2. Presione y mantenga presionado el botón principal del ratón, y mueva el texto al lugar que prefieras dentro del área de la captura.
 
-   - Presione ![delete](icon/Delete.svg) en el teclado to delete the text annotations.
 
-   - Presione ![ctrl](icon/Ctrl.svg)+![Z](icon/Z.svg) en el teclado to return to the previous step.
+#### Editar anotaciones en texto
 
-   - Modify the text in the text box.
+1. Posicione el puntero del ratón sobre el texto.
+2. Haga clic para entrar el modo de edición de texto. Puede:
 
-3. Click outside the text box salir editing mode.
+   - Presionar ![delete](icon/Delete.svg) en el teclado para borrar las anotaciones en texto.
+
+   - Presionar ![ctrl](icon/Ctrl.svg)+![Z](icon/Z.svg) en el teclado para deshacer al paso anterior.
+
+   - Modificar el texto dentro del cuadro.
+
+3. Haga clic fuera de la caja para salir.
 
 
 ### Set Colors
 
-Captura de pantalla Deepin totally provides 16 colors for you. Puede choose different colors to mark.
+La Captura de pantalla Deepin le ofrece 16 de colores. Puede escoger diferentes colores a elección.
 
 
 ![0|color](jpg/color.jpg)
 
 
-1. En la barra de herramientas below el área de la captura de pantalla, clic en ![color](icon/color.svg).
-2. Select a color en el panel extendido de la barra de herramientas.
+1. En la barra de herramientas debajo del área de la captura de pantalla, clic en ![color](icon/color.svg).
+2. Seleccione un color en el panel extendido de la barra de herramientas.
 
-> ![notes](icon/notes.svg): The default color is red. When you select a new color, it será mostrada in a circle, the color icon in toolbar will be changed en tiempo real and so does the color of other tools.
+> ![notes](icon/notes.svg): El color predeterminado es rojo. Cuando seleccione un nuevo color, se mostrará en un círculo; el icono de color cambiará tanto en el este apartado como en otras herramientas de la barra.
 
 
-## Guardar Screenshot
+## Guardar captura de pantalla
 
-Guardar captured images as material for future use!
+¡Guarde las imágenes capturas para un uso futuro!
 
 ### Saving Method
 
-Puede save captured images de la siguiente manera:
+Puede guardar imágenes tomadas de la siguiente manera:
 
-* Presione ![ctrl](icon/Ctrl.svg)+![S](icon/S.svg) en el teclado to save.
+* Presione ![ctrl](icon/Ctrl.svg)+![S](icon/S.svg) en el teclado para guardar.
 
-* En the captured images, clic derecho y seleccione **Guardar** o double-click the mouse to save.
-
-
-> ![notes](icon/notes.svg): After successfully saving a screenshot, puede see a prompt en la esquina superior derecha of el escritorio. Clic en **View** para abrir the storing folder.
+* En la imagen capturada, clic derecho y seleccione **Guardar** o haga doble clic del ratón para guardar.
 
 
-### Saving Path
+> ![notes](icon/notes.svg): Después de completar la captura con éxito, observará un aviso en forma de notificación (por defecto, en la esquina superior izquierda de la pantalla). Clic en **Ver** para abrir la carpeta donde guardó.
 
-Puede click the drop-down options of ![save](icon/save.svg) en la barra de herramientas below el área de la captura de pantalla:
+
+### Ruta de guardado
+
+Haga clic en las opciones desglosables del botón ![save](icon/save.svg) en la barra de herramientas, por debajo del área de la captura:
 
 
 ![0|save](jpg/save.jpg)
 
 
-* Select ![savetodesktop](icon/save_to_desktop.svg) to save picture to desktop.
+* Seleccione ![savetodesktop](icon/save_to_desktop.svg) para guardar la imagen al escritorio.
 
-* Select ![autosave](icon/auto_save.svg) to auto save picture to the folder selected last time, the default directory is desktop at the first time.
+* Seleccione ![autosave](icon/auto_save.svg) para guardar automáticamente la carpeta donde guardó la última vez; si es la primera vez, la captura se guardará en el escritorio.
 
-* Select ![savetofolder](icon/save_to_folder.svg) to save picture to specified folder.
+* Seleccione ![savetofolder](icon/save_to_folder.svg) para guardar la imagen a un carpeta específica.
 
-* Select ![saveClipBoard](icon/save_ClipBoard.svg) to copy picture to clipboard.
+* Seleccione ![saveClipBoard](icon/save_ClipBoard.svg) para copiar la imagen al portapapeles.
 
-* Select ![autosaveClipBoard](icon/auto_save_ClipBoard.svg) to save picture to system default folder and copy to clipboard.
+* Seleccione ![autosaveClipBoard](icon/auto_save_ClipBoard.svg) para guardar la imagen a la carpeta elegida por el sistema y al portapapeles.
 
-> ![notes](icon/notes.svg): Puede adjust the quality of the saved pictures by dragging the slider left o right.
+> ![notes](icon/notes.svg): Puede ajustar la calidad de las imágenes arrastrando el deslizado hacia los costados.
 
 
-### Saving Format
+### Formato de guardado
 
-The captured images will be named after "DeepinScreenshot+image name+date and time".
+El archivo de la captura se nombrará como "DeepinScreenshot+\[nombre de la imagen\]+\[fecha y hora\]".
 
-The detailed kinds are in the following:
+Los detalles sobre la denominación se muestran a continuación:
 
-* When taking una captura de pantalla of la ventana, the saving format is "DeepinScreenshot+ window name+date and time".
+* Al tomar una captura de pantalla de la ventana, el formato de guardado es "DeepinScreenshot + \[nombre de la ventana\] + \[fecha y hora\]".
 
-* When taking una captura de pantalla of desktop components (such as Dock, Launcher and Control Center), the saving format is "DeepinScreenshot+desktop component name+date and time".
+* Al tomar una captura de pantalla con los componentes del escritorio (como Muelle, Lanzador y Centro de Control), el formato de guardado es "DeepinScreenshot + \[nombre del componente de escritorio\] + \[fecha y hora\]".
 
-* When taking una captura de pantalla of free area, the saving format is "DeepinScreenshot+areaname+date and time".
+* Al tomar una captura en una área personalizada, el formato de guardado es "DeepinScreenshot + \[nombre del área\] + \[fecha y hora\]".
