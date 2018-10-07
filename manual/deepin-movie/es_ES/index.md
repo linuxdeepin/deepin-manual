@@ -119,7 +119,7 @@ Películas Deepin, comparte la completa experiencia cinematográfica con usted. 
         <tr>
             <td>2</td>
             <td>Barra de progreso</td>
-            <td>Es para mostrar el progreso de la reproducción de la película y puede cambiar el estado arrastrando y soltando la barra de progreso. Mueva el puntero del mouse sobre la barra de progreso, y la barra de progreso se mostrará en negrita de manera inteligente y se mostrará la ventana de vista previa de la película. </td>
+            <td>Es para mostrar el progreso de la reproducción de la película y puede cambiar el estado arrastrando y soltando la barra de progreso. Mueva el puntero del mouse sobre la barra de progreso, y la barra de progreso se mostrará en negrita de manera inteligente y se mostrará la ventana de vista previa de la filmación. </td>
         </tr>
          <tr>
             <td>3</td>
@@ -175,7 +175,7 @@ Películas Deepin, comparte la completa experiencia cinematográfica con usted. 
 </p>
 ### Abrir película
 
-Puede reproducir películas con cualquiera de los siguientes pasos:
+Puede reproducir filmaciones con cualquiera de los siguientes pasos:
 
 1. En la interfaz de Películas Deepin, haga clic una o dos veces en ![main_menu](icon/main_menu.svg) to select **Abrir archivo**.
 2. En la interfaz de Películas Deepin, haga clic una o dos veces en ![main_menu](icon/main_menu.svg) to select **Abrir carpeta**.
@@ -254,7 +254,7 @@ En la interfaz de Películas Deepin, puede hacer varias operaciones acorde a sus
   - Marcar **Estéreo**, el vídeo será reproducido en dos canales.
   - Marcar **Canal izquierdo**, la película será reproducida en el canal izquierdo.
   - Marcar **Canal derecho**, la película será reproducida en canal derecho.
-3. Seleccione **Sonido** > **Pista**, puede establecer qué pista emitirá en la película.
+3. Seleccione **Sonido** > **Pista**, puede establecer qué pista emitirá en la filmación.
 
 ![0|sound](jpg/sound.png)
 

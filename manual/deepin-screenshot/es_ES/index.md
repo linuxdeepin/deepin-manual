@@ -3,67 +3,63 @@
 
 ## Vistazo
 
-Deepin Screenshot es una refinada capturadora de pantalla desarrollada por Wuhan Deepin Technology Co., Ltd. Esta se destaca por identificar inteligentemente las ventanas, prolongar la delay screenshot, color selection, blurring and mosaic. Whether in daily work or entertainment, you can take a screenshot of every wonderful moment in your life by Deepin Screenshot.
+Captura de pantalla Deepin es una refinada capturadora de pantalla desarrollada por Wuhan Deepin Technology Co., Ltd. Esta se destaca por identificar inteligentemente las ventanas, temporizar capturas, seleccionar de color y añadir efectos de ofuscado y mosaico. Ya sea para trabajar o divertirse, puede tomar una captura de pantalla en cada momento maravilloso de su vida con Captura de pantalla Deepin.
 
 
 ![1|screenshot](jpg/screenshot.jpg)
 
 
-## Guide
+## Guía
 
-You can run or exit Deepin Screenshot by the following operations. A shortcut also can be created.
-
-
-### Run Deepin Screenshot
-
-1. Click on ![launcher-24](icon/launcher-24.svg) on dock to enter launcher interface.
-2. Find ![screenshot-24](icon/screenshot-24.svg) to click on, you can:
-
- - Click on **Send to desktop** to create a desktop shortcut.
- - Click on **Send to dock** to fix it on dock.
- - Click on **Add to startup** to add it to startup, it will automatically run when the system starts up.
+Puede iniciar o salir de Captura de pantalla Deepin mediante los siguientes pasos. Se puede crear un acceso directo.
 
 
-> ![notes](icon/notes.svg): Press ![ctrl](icon/Ctrl.svg)+![alt](icon/Alt.svg)+![A](icon/A.svg) on keyboard to quickly run Deepin Screenshot, and you can take a screenshot of submenu.
+### Eniciar Captura de pantalla Deepin
+1. Haga clic en ![launcher-24](icon/launcher-24.svg) e el muelle para entrar al lanzador.
+2. Encuentre ![screenshot-24](icon/screenshot-24.svg) para hacer clic, puede:
+  - Clic en **Envíar al escritorio** para crear un acceso directo al escritorio.
+  - Clic en **Enviar al muelle** para fijar la aplicación al Muelle.
+  - Clic en **Añadir al arranque** para añadir la aplicación en el arranque, esta se iniciará automáticamente cuando la computadora inicie.
+
+> ![notes](icon/notes.svg): Presione ![ctrl](icon/Ctrl.svg)+![alt](icon/Alt.svg)+![A](icon/A.svg) en el teclado para rápidamente iniciar Captura de pantalla Deepin, y puede tomar una captura de pantalla desde el submenú.
+
+### Captura temporizada
 
 
-### Delay Screenshot
+Las capturas temporizadas reservan 5 segundos para prepararse, lo que le ayuda a capturar los momentos más precisos.
 
 
-Delay screenshot reserves 5 seconds for you to prepare, which helps you to capture the most precise moments.
+Puede realizar capturas temporizadas de las siguientes formas:
+
+1. Presione ![ctrl](icon/Ctrl.svg)+![print](icon/Print.svg) en el teclado.
+2. En la esquina superior derecha de la pantalla, verá el mensaje "Captura de pantalla Deepin comenzará después de 5 segundos".
+3. Automáticamente entrará al modo de captura de pantalla 5 segundos después, y luego toda la pantalla se oscurecerá.
+
+> ![notes](icon/notes.svg): Si tiene anclada la Captura de pantalla Deepin en el Muelle, clic derecho en ![screenshot](icon/screenshot-24.svg) en el Muelle, y luego seleccione **Captura temporizada** para prolongar la duración de la captura.
 
 
-You can do the following steps to delay screenshot:
+### Salir de Captura de pantalla Deepin
 
-1. Press ![ctrl](icon/Ctrl.svg)+![print](icon/Print.svg) on keyboard.
-2. In the upper right corner of the screen, you will see the prompt "Deepin Screenshot will start after 5 seconds".
-3. It will automatically enter the screenshot mode after 5 seconds, and then the entire screen will go dark.
-
-> ![notes](icon/notes.svg): If you have fixed Deepin Screenshot on Dock, right click on ![screenshot](icon/screenshot-24.svg) on Dock, and then select ** Delay Screenshot** to delay the capturing.
+En el modo de captura de pantalla, puede salir de la Captura de pantalla Deepin de la siguiente manera:
 
 
-### Exit Deepin Screenshot
+* Presione ![esc](icon/Esc.svg) en el teclado.
 
-In screenshot mode, you can exit Deepin Screenshot by the following ways:
+* Clic derecho y seleccione **Salir**.
 
+* Clic en ![exit](icon/exit.svg) para salir directamente.
 
-* Press ![esc](icon/Esc.svg) on keyboard.
-
-* Right click and select **Exit**.
-
-* Click on ![exit](icon/exit.svg) to directly exit.
-
-> ![notes](icon/notes.svg): There will be a prompt to conform if you press ![esc](icon/Esc.svg) after edited.
+> ![notes](icon/notes.svg): Aparecerá un aviso de confirmación si presiona ![esc](icon/Esc.svg) después de editar.
 
 
-## Shortcuts
+## Atajos de teclado
 
 
-It will save you both time and efforts to operate with shortcuts.
+Le ahorrará tiempo y esmero para operar con accesos directos.
 
 
-1. In the screenshot mode, pressing the ![ctrl](icon/Ctrl.svg)+![shift](icon/Shift.svg)+![QM](icon/QM.svg) to open shortcuts preview interface.
-2. In the shortcuts preview interface, you can view all the shortcuts.
+1. En el modo de captura de pantalla, presione la combinación ![ctrl](icon/Ctrl.svg)+![shift](icon/Shift.svg)+![QM](icon/QM.svg) para abrir la interfaz para previsualizar atajos de teclado.
+2. En la interfaz para previsualizar atajos de teclado, puede ver todas las teclas de acceso rápido.
 
 
 ![1|shortcuts](jpg/shortcuts.jpg)
@@ -71,13 +67,13 @@ It will save you both time and efforts to operate with shortcuts.
 
 <table class="block2">
 
-    <caption>Start/Screenshot</caption>
+    <caption>Iniciar/Capturar</caption>
 
     <tbody>
 
         <tr>
 
-            <td>Quick start</td>
+            <td>Inicio rápido</td>
 
             <td>Ctrl+Alt+A</td>
 
@@ -85,7 +81,7 @@ It will save you both time and efforts to operate with shortcuts.
 
         <tr>
 
-            <td>Full screenshot</td>
+            <td>Captura completa</td>
 
             <td>Print</td>
 
@@ -93,7 +89,7 @@ It will save you both time and efforts to operate with shortcuts.
 
         <tr>
 
-            <td>Delay screenshot</td>
+            <td>Captura temporizada</td>
 
             <td>Ctrl+Print</td>
 
@@ -101,7 +97,7 @@ It will save you both time and efforts to operate with shortcuts.
 
         <tr>
 
-            <td>Undo</td>
+            <td>Deshacer</td>
 
             <td>Ctrl+Z</td>
 
@@ -109,7 +105,7 @@ It will save you both time and efforts to operate with shortcuts.
 
         <tr>
 
-            <td>Exit</td>
+            <td>Salir</td>
 
             <td>Esc</td>
 
@@ -129,13 +125,13 @@ It will save you both time and efforts to operate with shortcuts.
 
 <table class="block2">
 
-    <caption>Painting</caption>
+    <caption>Dibujado</caption>
 
     <tbody>
 
         <tr>
 
-            <td>Rectangle</td>
+            <td>Rectángulo</td>
 
             <td>Alt+1</td>
 
@@ -143,7 +139,7 @@ It will save you both time and efforts to operate with shortcuts.
 
         <tr>
 
-            <td>Ellipse</td>
+            <td>Eclipse</td>
 
             <td>Alt+2</td>
 
@@ -151,7 +147,7 @@ It will save you both time and efforts to operate with shortcuts.
 
         <tr>
 
-            <td>Arrow</td>
+            <td>Flecha</td>
 
             <td>Alt+3</td>
 
@@ -159,7 +155,7 @@ It will save you both time and efforts to operate with shortcuts.
 
         <tr>
 
-            <td>Pencil</td>
+            <td>Lápiz</td>
 
             <td>Alt+4</td>
 
@@ -167,7 +163,7 @@ It will save you both time and efforts to operate with shortcuts.
 
         <tr>
 
-            <td>Text</td>
+            <td>Texto</td>
 
             <td>Alt+5</td>
 
@@ -187,13 +183,13 @@ It will save you both time and efforts to operate with shortcuts.
 
 <table class="block2">
 
-    <caption>Size Adjustment</caption>
+    <caption>Ajustar tamaño</caption>
 
     <tbody>
 
         <tr>
 
-            <td>Increase height up</td>
+            <td>Incrementar lado superior</td>
 
             <td>Ctrl+Up</td>
 
@@ -201,7 +197,7 @@ It will save you both time and efforts to operate with shortcuts.
 
         <tr>
 
-            <td>Increase height down</td>
+            <td>Incrementar lado inferior</td>
 
             <td>Ctrl+Down</td>
 
@@ -209,7 +205,7 @@ It will save you both time and efforts to operate with shortcuts.
 
         <tr>
 
-            <td>Increase width left</td>
+            <td>Incrementar lado izquierdo</td>
 
             <td>Ctrl+Left</td>
 
@@ -217,7 +213,7 @@ It will save you both time and efforts to operate with shortcuts.
 
         <tr>
 
-            <td>Increase width right</td>
+            <td>Incrementar lado derecho</td>
 
             <td>Ctrl+Right</td>
 
@@ -225,7 +221,7 @@ It will save you both time and efforts to operate with shortcuts.
 
         <tr>
 
-            <td>Decrease height up</td>
+            <td>Reducir lado superior</td>
 
             <td>Ctrl+Shift+Up</td>
 
@@ -233,7 +229,7 @@ It will save you both time and efforts to operate with shortcuts.
 
         <tr>
 
-          <td>Decrease height down</td>
+          <td>Reducir lado inferior</td>
 
           <td>Ctrl+Shift+Down</td>
 
@@ -241,7 +237,7 @@ It will save you both time and efforts to operate with shortcuts.
 
         <tr>
 
-            <td>Decrease width left</td>
+            <td>Reducir lado izquierdo</td>
 
             <td>Ctrl+Shift+Left</td>
 
@@ -249,7 +245,7 @@ It will save you both time and efforts to operate with shortcuts.
 
         <tr>
 
-          <td>Decrease width right</td>
+          <td>Reducir lado derecho</td>
 
           <td>Ctrl+Shift+Right</td>
 
@@ -261,13 +257,13 @@ It will save you both time and efforts to operate with shortcuts.
 
 <table class="block2">
 
-    <caption>Save</caption>
+    <caption>Guardado</caption>
 
     <tbody>
 
         <tr>
 
-            <td>Save</td>
+            <td>Guardar</td>
 
             <td>Ctrl+S</td>
 
@@ -275,7 +271,7 @@ It will save you both time and efforts to operate with shortcuts.
 
         <tr>
 
-            <td>Copy to Clipboard</td>
+            <td>Copiar al portapapeles</td>
 
             <td>Ctrl+C</td>
 
@@ -335,113 +331,110 @@ It will save you both time and efforts to operate with shortcuts.
 
 
 
-## Select Screenshot Area
+## Seleccionar área de captura
 
 
-Currently there are three kinds of areas commonly captured: the full screen, program-window and customized area. When you select the relevant area to be captured, there will be a blue border around the screenshot area and highlight displayed.
+Actualmente hay tres tipos de áreas que se capturan comúnmente: la pantalla completa, la ventana del programa y el área personalizada. Cuando seleccione el área relevante a tomar, aparecerá un borde azul alrededor del área de captura de pantalla y se mostrará el resaltado.
 
 
-> ![notes](icon/notes.svg): When the computer is in multi-screen display mode, you can use Deepin Screenshot to capture areas on different screens.
+> ![notes](icon/notes.svg): Cuando la computadora está mostrando en varios monitores, multipantalla, puede usar la Captura de pantalla Deepin para tomar varias áreas en diferentes pantallas.
 
 
 
-### Fullscreen Selection
+### Selección en pantalla completa
 
-Fullscreen selection is to recognize the whole screen of current display.
-
+La selección de pantalla completa indica reconocer toda la parte visible en la pantalla.
 
 ![1|fullscreen](jpg/fullscreen.jpg)
 
-You can select fullscreen by the following steps:
+Puede seleccionar pantalla completa por los siguientes pasos:
 
-1. Press ![ctrl](icon/Ctrl.svg)+![alt](icon/Alt.svg)+![A](icon/A.svg) on keyboard to enter the screenshot mode.
-2. Move the mouse pointer onto the desktop and Deepin Screenshot will select the entire screen automatically. The size of the current screenshot area will be shown in upper left corner.
-3. Click on the desktop and the toolbar will pop up in the upper right corner.
-4. If you want to exit screenshot, please click on ![exit](icon/exit.svg) on the toolbar or right click to select **Exit**.
+1. Presione ![ctrl](icon/Ctrl.svg)+![alt](icon/Alt.svg)+![A](icon/A.svg) en el teclado para entrar el modo de captura de pantalla.
+2. Mueva el puntero del ratón en el escritorio y la Captura de pantalla Deepin seleccionará la pantalla completa automáticamente. El tamaño de el área actual de la captura de pantalla será mostrada en la esquina superior izquierda.
+3. Clic en el escritorio y la barra de herramientas aparecerá en la esquina superior derecha.
+4. Si desea salir de la captura, haga clic en ![exit](icon/exit.svg) en la barra de herramientas o clic derecho y seleccione **Salir**.
 
-> ![notes](icon/notes.svg): You also can right click on ![screenshot](icon/screenshot-24.svg) on Dock to select **Full Screenshot** or Press ![print](icon/Print.svg) on keyboard.
+> ![notes](icon/notes.svg): Puede también hacer clic derecho en ![screenshot](icon/screenshot-24.svg) en el Muelle para seleccionar **Captura completa** o presione ![print](icon/Print.svg) en el teclado.
 
 
-### Program Window Selection
+### Selección de ventanas de aplicaciones
 
-Program window selection is to automatically recognize the current application window.
+Selección de ventanas de programas hace reconocer la ventana de la aplicación actual automáticamente.
 
 ![1|window](jpg/window.jpg)
 
-You can select program window by the following steps:
+Puede seleccionar la ventana de la aplicación siguiendo estos pasos:
 
-1. Press ![ctrl](icon/Ctrl.svg)+![alt](icon/Alt.svg)+![A](icon/A.svg) on keyboard to enter the screenshot mode.
-2. Move the mouse pointer over the running application window. Deepin Screenshot will select the window automatically and shows the size of the current screenshot area in upper left corner.
-3. Click on the window and the toolbar will pop up in the lower right corner.
-4. If you want to exit screenshot, please click on ![exit](icon/exit.svg) on the toolbar or right click to select **Exit**.
+1. Presione ![ctrl](icon/Ctrl.svg)+![alt](icon/Alt.svg)+![A](icon/A.svg) en el teclado para entrar el modo de captura de pantalla.
+2. Mueva el puntero del ratón sobre la ventana de la aplicación en ejecución. La Captura de pantalla Deepin seleccionará la ventana automáticamente y muestra el tamaño de la actual area capturada en la esquina superior izquierda.
+3. Clic en la ventana y la barra de herramientas aparecerá en la esquina inferior derecha.
+4. Si desea salir de la captura, haga clic en ![exit](icon/exit.svg) en la barra de herramientas o clic derecho para seleccionar **Salir**.
 
 
-### Area Customization
+### Área personalizada
 
-Area customization is to freely select the area to be captured by dragging the mouse.
-
+El área personalizada hace seleccionar libremente la zona donde será capturada con arrastrar el ratón.
 
 ![1|screenshot](jpg/screenshot.jpg)
 
-You can customize area by the following steps:
+Puede personalizar el área siguiendo estos pasos:
 
-1. Press ![ctrl](icon/Ctrl.svg)+![alt](icon/Alt.svg)+![A](icon/A.svg) on keyboard to enter the screenshot mode.
-2. Press and hold down the left mouse button, and drag the mouse to select the screenshot area. The size of the current screenshot area will be displayed in real time in upper left corner.
-3. Release the left mouse button to finish capturing screenshot, and then the toolbar will pop up in the lower right corner of the screenshot area.
-4. If you want to exit screenshot, please click on ![exit](icon/exit.svg) on the toolbar or right click to select **Exit**.
-
-
-## Adjust Screenshot Area
-
-You can do fine adjustments to the screenshot area, for example, enlarging or reducing the captured scope, moving the screenshot and so on.
+1. Presione ![ctrl](icon/Ctrl.svg)+![alt](icon/Alt.svg)+![A](icon/A.svg) en el teclado para entrar el modo de captura de pantalla.
+2. Presione y mantenga presionado el botón principal del ratón, y suéltelo para seleccionar el área de la captura de pantalla. El tamaño de el área actual de la captura de pantalla será mostrada al instante en la esquina superior izquierda.
+3. Suelta el botón principal del ratón para finalizar la toma de la pantalla, y entonces la barra de herramientas aparecerá en la esquina inferior derecha de el área de la captura de pantalla.
+4. Si desea salir de la captura, haga clic en ![exit](icon/exit.svg) en la barra de herramientas o clic derecho y seleccione **Salir**.
 
 
-### Enlarge/Reduce Screenshot Area
+## Ajustar el área de captura de pantalla
 
-Position the mouse pointer over the blue border of the screenshot area, then the mouse pointer will become ![doublearrow](icon/Mouse_Arrow.svg). You can:
-
-* Press and hold down the left mouse button, and drag the mouse to enlarge or reduce the screenshot area.
-
-* Press ![ctrl](icon/Ctrl.svg)+![Up](icon/Up.svg) or ![Down](icon/Down.svg) on keyboard to extend the screenshot area up or down, and press ![ctrl](icon/Ctrl.svg)+![Left](icon/Left.svg) or ![Right](icon/Right.svg) on keyboard to extend the screenshot area left or right.
+Puede refinar los ajustes al área de la captura de pantalla, por ejemplo, expandir o reducir el enfoque, mover la ubicación y otros más.
 
 
-### Move Screenshot
+### Expandir o reducir el área de captura de pantalla
 
-Position the mouse pointer over the screenshot area, and then the mouse pointer will become ![icon/finger](icon/finger.svg). You can:
+Posicione el puntero del ratón sobre the blue border de el área de la captura de pantalla, luego el puntero del ratón será como ![doublearrow](icon/Mouse_Flecha.svg). Puede:
 
+* Presionar y mantener presionado el botón principal del ratón, y soltarlo para expandir o reducir el área de la captura de pantalla.
 
-* Press and hold down the left mouse button, and drag the mouse to move the screenshot area.
-
-* Press ![Up](icon/Up.svg) or ![Down](icon/Down.svg) on keyboard to move the screenshot area up or down, and press ![Left](icon/Left.svg) or ![Right](icon/Right.svg) on keyboard to move the screenshot area left or right.
-
-
-## Edit Screenshot
-
-The image editing features that come with Deepin Screenshot include graphics marking and text annotation, etc, which can fully meet your daily needs of processing images. You can also use mosaic on images to protect your privacy.
+* Presione ![ctrl](icon/Ctrl.svg)+![Up](icon/Up.svg) o ![Down](icon/Down.svg) en el teclado para cambiar la extensión del área de captura hacia los lados superiores e inferiores, y ![ctrl](icon/Ctrl.svg)+![Left](icon/Left.svg) o ![Right](icon/Right.svg) en el teclado para expandirlo hacia los costados.
 
 
-You can do one of the following operations to edit screenshots:
+### Mover captura de pantalla
 
-* Click on the tool icons on toolbar to edit.
+Coloque el puntero del mouse sobre el área de la captura de pantalla, luego el puntero del mouse se convertirá en ![icon/finger](icon/finger.svg). Puede:
 
-* Quickly switch between various editing tools through shortcuts.
+* Presionar y mantener presionado el botón principal del ratón, y soltarlo para mover el área de la captura de pantalla.
 
-* Right click to choose the editing tools after selecting the screenshot area.
-
-
-### Toolbar Description
-
-While capturing screenshots, you can click on the icons on toolbar to complete various operations. Run Deepin Screenshot and the toolbar will automatically appear below the screenshot area after selected the screenshot area. And you also can right click to select tools.
+* Presione ![Up](icon/Up.svg) o ![Down](icon/Down.svg) en el teclado para mover el área de la captura hacia arriba y abajo, y pulse ![Left](icon/Left.svg) o ![Right](icon/Right.svg) en el teclado para mover el área hacia los costados.
 
 
-> ![notes](icon/notes.svg): If you have already set line width, font size and so on in the extended panel of toolbar, Deepin Screenshot will remember them. When you start Deepin Screenshot again, the settings will be used by default and you can also reset.
+## Editar captura de pantalla
+
+La edición de imágenes se destaca en Captura de pantalla Deepin con marcado de gráficos, anotación en texto, etc; que puede cumplir sus necesidades diarias para elborar imágenes. También puede proteger su datos privados usando efectos en mosaico.
+
+
+Puede hacer uno de los siguientes pasos para editar capturas:
+
+* Aplicar la edición con los iconos de la barra de herramientas.
+
+* Cambiar rápidamente entre herramientas edición con los atajos.
+
+* Usar el botón derecho para seleccionar el tipo de herramienta después de seleccionar el área de captura.
+
+
+### Descripción de la barra de herramientas
+
+Cuando realiza una captura, puede hacer clic en los iconos en la barra para completar varias operaciones. Al iniciar y tomar desde la Captura de pantalla Deepin, la barra de herramientas aparecerá automáticamente debajo del área de la imagen capturada. También puede hacer con el clic derecho para seleccionar las herramientas.
+
+
+> ![notes](icon/notes.svg): Si ya ha configurado el ancho de línea, el tamaño de fuente o cualquier acción desde el panel extendido de la barra de herramientas, la Captura de pantalla Deepin los recordará. Cuando vuelva a iniciar la aplicación, se aplicará la configuración predeterminada que también se puede restablecer.
 
 ![0|toolbar](jpg/toolbar.jpg)
 
 
 <table class="block1">
 
-    <caption>Icon Description</caption>
+    <caption>Íconos descriptivos</caption>
 
     <tbody>
 
@@ -449,19 +442,19 @@ While capturing screenshots, you can click on the icons on toolbar to complete v
 
             <td><img src="icon/rect.svg" alt="recttool" class="inline" /></td>
 
-            <td>Rectangle</td>
+            <td>Rectángulo</td>
 
             <td class="blank"></td>
 
             <td><img src="icon/ellipse.svg" alt="ellipsetool" class="inline" /></td>
 
-            <td>Ellipse</td>
+            <td>Eclipse</td>
 
 	    <td class="blank"></td>
 
             <td><img src="icon/arrow.svg" alt="arrow" class="inline" /></td>
 
-            <td>Arrow</td>
+            <td>Flecha</td>
 
         </tr>
 
@@ -470,13 +463,13 @@ While capturing screenshots, you can click on the icons on toolbar to complete v
             <td><img src="icon/pencil.svg" alt="pencil" class="inline" /></td>
 ​
 
-            <td>Pencil</td>
+            <td>Lápiz</td>
 
             <td class="blank"></td>
 
             <td><img src="icon/text.svg" alt="text" class="inline" /></td>
 
-            <td>Text</td>
+            <td>Texto</td>
 
             <td class="blank"></td>
 
@@ -491,13 +484,13 @@ While capturing screenshots, you can click on the icons on toolbar to complete v
 
             <td><img src="icon/save.svg" alt="save" class="inline" /></td>
 
-            <td>Save</td>
+            <td>Guardar</td>
 
             <td class="blank"></td>
 
             <td><img src="icon/exit.svg" alt="exit" class="inline" /></td>
 
-            <td>Exit</td>
+            <td>Salir</td>
 
              <td class="blank"></td>
 
@@ -512,177 +505,176 @@ While capturing screenshots, you can click on the icons on toolbar to complete v
 </table>
 
 
-### Drawing
+### Dibujado
 
-You can draw some simple graphics in the captured images, such as rectangle, ellipse, and so on.
+Puede dibujar algunos gráficos simples en las imágenes capturadas, como rectángulo, elipse y varios más.
 
 
  ![0|drawing](jpg/drawing.jpg)
 
 
-#### Rectangle
+#### Rectángulo
 
 ![1|rectangle](jpg/rectangle.jpg)
 
-1. Click on ![rect](icon/rect.svg) in the toolbar.
-2. In the extended panel of the toolbar, choose width of the rectangle border line.
-3. Place the mouse pointer on the screenshot area, and then the mouse pointer will become ![rectmouse](icon/rect_mouse.svg).
-4. Press and hold down the left mouse button, drag the mouse to finish drawing.
-5. If the screenshot includes personal private information, please click on ![blur](icon/blur.svg) or ![mosaic](icon/mosaic.svg) in the extended panel of the toolbar to blur.
+1. Clic en ![rect](icon/rect.svg) en la barra de herramientas.
+2. En el panel extendido de la barra de herramientas, escoga el grosor del rectángulo.
+3. Coloque el puntero del ratón en el área de la captura de pantalla, y luego el puntero del ratón será como ![rectmouse](icon/rect_mouse.svg).
+4. Presione y mantenga presionado el botón principal del ratón, suelte el ratón para finalizar el dibujado.
+5. Si la captura de pantalla incluye información confidencial, haga clic en ![blur](icon/blur.svg) o ![mosaic](icon/mosaic.svg) en el panel extendido de la barra de herramientas para ocultar.
 
 
 ![1|blur](jpg/blur.jpg)
 
 ![1|mosaic](jpg/mosaic.jpg)
 
-> ![notes](icon/notes.svg): Press and hold the ![shift](icon/Shift.svg) on keyboard, and then select ![rect](icon/rect.svg) to draw a square.
+> ![notes](icon/notes.svg): Presione y mantenga la tecla ![shift](icon/Shift.svg) en el teclado, y luego seleccione ![rect](icon/rect.svg) para dibujar un rectángulo.
 
-#### Ellipse
+#### Eclipse
 
 ![1|ellipse](jpg/ellipse.jpg)
 
-
-1. Click on ![ellipse](icon/ellipse.svg) in the toolbar.
-2. In the extended panel of the toolbar, choose width of the ellipse border line.
-3. Place the mouse pointer on the screenshot area, and then the mouse pointer will become ![ellipsemouse](icon/ellipse_mouse.svg).
-4. Press and hold down the left mouse button, drag the mouse to finish drawing.
-5. If the screenshot includes personal private information, please click on ![blur](icon/blur.svg) or ![mosaic](icon/mosaic.svg) in the extended panel of the toolbar to blur.
-
-
-> ![notes](icon/notes.svg): Press and hold the ![shift](icon/Shift.svg) on keyboard, and then select ![ellipse](icon/ellipse.svg) to draw a circle.
+1. Clic en ![ellipse](icon/ellipse.svg) en la barra de herramientas.
+2. En el panel extendido de la barra de herramientas, escoga el grosor del elipse.
+3. Coloque el puntero del ratón en el área de la captura de pantalla, y luego el puntero del ratón será como ![ellipsemouse](icon/ellipse_mouse.svg).
+4. Presione y mantenga presionado el botón principal del ratón, suelte el ratón para finalizar el dibujado.
+5. Si la captura de pantalla incluye información confidencial, haga clic en ![blur](icon/blur.svg) o ![mosaic](icon/mosaic.svg) en el panel extendido de la barra de herramientas para ocultar.
 
 
-#### Arrow
+> ![notes](icon/notes.svg): Presione y mantenga la tecla ![shift](icon/Shift.svg) en el teclado, y luego seleccione ![ellipse](icon/ellipse.svg) para dibujar un círculo.
+
+
+#### Flecha
 
 ![1|arrow](jpg/arrow.jpg)
 
-1. Click on ![arrow](icon/arrow.svg) in the toolbar.
-2. In the extended panel of the toolbar, choose width of the arrow border line.
-3. Click on ![straight](icon/straightline.svg) or ![arrow](icon/arrow.svg) to switch between straight line and arrow.
-4. Place the mouse pointer on the screenshot area, and then the mouse pointer will become ![arrowmouse](icon/arrow_mouse.svg).
-5. Press and hold down the left mouse button, drag the mouse to finish drawing.
+1. Clic en ![arrow](icon/arrow.svg) en la barra de herramientas.
+2. En el panel extendido de la barra de herramientas, escoga el grosor de la flecha.
+3. Clic en ![straight](icon/straightline.svg) o ![arrow](icon/arrow.svg) to switch between straight line and arrow.
+4. Coloque el puntero del ratón en el área de la captura de pantalla, y luego el puntero del ratón será como ![arrowmouse](icon/arrow_mouse.svg).
+5. Presione y mantenga presionado el botón principal del ratón, suelte el ratón para finalizar el dibujado.
 
-> ![notes](icon/notes.svg): Press and hold ![shift](icon/Shift.svg) on keyboard, and then select ![straight](icon/straightline.svg) or ![arrow](icon/arrow.svg) to draw a straight line or arrow in the horizontal or vertical direction.
+> ![notes](icon/notes.svg): Presione y mantenga presionado ![shift](icon/Shift.svg) en el teclado, y luego seleccione ![straight](icon/straightline.svg) o ![arrow](icon/arrow.svg) para dibujar una línea recta o flecha en dirección horizontal o vertical.
 
-#### Pencil
+#### Lápiz
 
 ![1|pencil](jpg/pencil.jpg)
 
-1. Click on ![pencil](icon/pencil.svg) in the toolbar.
-2. In the extended panel of the toolbar, choose width of the pencil.
-3. Place the mouse pointer on the screenshot area, and then the mouse pointer will become ![straightmouse](icon/pink_red.svg).
-4. Press and hold down the left mouse button, drag the mouse to finish drawing.
+1. Clic en ![pencil](icon/pencil.svg) en la barra de herramientas.
+2. En el panel extendido de la barra de herramientas, escoga el tamaño del lápiz.
+3. Coloque el puntero del ratón en el área de la captura de pantalla, y luego el puntero del ratón será como ![straightmouse](icon/pink_red.svg).
+4. Presione y mantenga presionado el botón principal del ratón, suelte el ratón para finalizar el dibujado.
 
 
-### Modify Graphics
+### Modificar gráficos
 
-If you have drawn other graphics in the screenshots, you can modify and move them.
+Si ha dibujado otros gráficos en la captura puede modificar la ubicación y su tamaño.
 
 
 ![1|modify](jpg/modify.jpg)
 
 
 
-#### Move Graphics
+#### Mover gráficos
 
-1. Position the mouse pointer over the sideline of the graphics, and then the mouse pointer become ![finger](icon/finger.svg).
-2. Press and hold down the left mouse button, and you can move the graphics to any place in the screenshot area.
-3. Press ![Up](icon/Up.svg) or ![Down](icon/Down.svg) on keyboard to move the graphics up and down, and press ![Left](icon/Left.svg) or ![Right](icon/Right.svg) on keyboard to move the graphics left and right.
-
-
-
-#### Edit Graphics
-
-1. Position the mouse pointer over the sideline of graphics.
-2. Click to enter the editing mode of graphics. You can:
-
-   - Press ![delete](icon/Delete.svg) on keyboard to delete graphics.
-
-   - Press ![ctrl](icon/Ctrl.svg)+![Z](icon/Z.svg) on keyboard to return to the previous step.
-
-   - Position the mouse pointer on the editing box, and then the mouse pointer becomes ![doublearrow](icon/Mouse_Arrow.svg). You can enlarge or reduce the graphic area by dragging the mouse pointer.
-
-   - Press ![ctrl](icon/Ctrl.svg)+![Up](icon/Up.svg) or ![Down](icon/Down.svg) on keyboard to extend the graphic area up or down, and press ![ctrl](icon/Ctrl.svg)+![Left](icon/Left.svg) or ![Right](icon/Right.svg) on keyboard to extend the graphic area left or right.
-
-   - Position the mouse pointer on ![rotate](icon/rotate.svg) of the editing box, and then the mouse pointer becomes ![rotatemouse](icon/rotate_mouse.svg). You can rotate graphics by dragging the mouse pointer .
-
-3. Click outside the editing box to exit the editing mode.
+1. Posicione el puntero del ratón sobre the sideline of the graphics, y luego el puntero del ratón become ![finger](icon/finger.svg).
+2. Presione y mantenga presionado el botón principal del ratón, y puede move the graphics to any place in el área de la captura de pantalla.
+3. Presione ![Up](icon/Up.svg) o ![Down](icon/Down.svg) en el teclado to move the graphics up and down, y press ![Left](icon/Left.svg) o ![Right](icon/Right.svg) en el teclado to move the graphics left and right.
 
 
-### Add Text Annotations
+
+#### Ediar gráficos
+
+1. Posicione el puntero del ratón sobre the sideline of graphics.
+2. Click para entrar the editing mode of graphics. Puede:
+
+   - Presione ![delete](icon/Delete.svg) en el teclado to delete graphics.
+
+   - Presione ![ctrl](icon/Ctrl.svg)+![Z](icon/Z.svg) en el teclado to return to the previous step.
+
+   - Position the mouse pointer on the editing box, y luego el puntero del ratón becomes ![doublearrow](icon/Mouse_Flecha.svg). Puede enlarge o reduce the graphic area by dragging the mouse pointer.
+
+   - Presione ![ctrl](icon/Ctrl.svg)+![Up](icon/Up.svg) o ![Down](icon/Down.svg) en el teclado to extend the graphic area up o down, y press ![ctrl](icon/Ctrl.svg)+![Left](icon/Left.svg) o ![Right](icon/Right.svg) en el teclado to extend the graphic area left o right.
+
+   - Position the mouse pointer on ![rotate](icon/rotate.svg) of the editing box, y luego el puntero del ratón becomes ![rotatemouse](icon/rotate_mouse.svg). Puede rotate graphics by dragging the mouse pointer .
+
+3. Click outside the editing box salir the editing mode.
+
+
+### Add Texto Annotations
 
 Supplement and add descriptions to the captured images, thus to help others understand them more clearly.
 
 ![1|text](jpg/text.jpg)
 
 
-1. Click on ![text](icon/text.svg) in the toolbar below the screenshot area.
-2. In the extended panel of the toolbar, select a needed font size.
-3. Place the mouse pointer on the captured images, and then the mouse pointer becomes ![textmouse](icon/text_mouse.svg).
-4. Click where you want to add an annotation, and a text box to be input will appear.
+1. Clic en ![text](icon/text.svg) en la barra de herramientas below el área de la captura de pantalla.
+2. En el panel extendido de la barra de herramientas, select a needed font size.
+3. Coloque el puntero del ratón on the captured images, y luego el puntero del ratón becomes ![textmouse](icon/text_mouse.svg).
+4. Click where you want to add an annotation, y a text box to be input will appear.
 5. Enter text in the text box.
 
-> ![notes](icon/notes.svg): In the text editing mode, it will not auto wrap, you need to press Enter.
+> ![notes](icon/notes.svg): En the text editing mode, it will not auto wrap, you need to press Enter.
 
 
-### Modify Text Annotations
+### Modify Texto Annotations
 
-If you have added a text annotation, you can modify and move the text annotation.
-
-
-#### Move Text Annotations
-
-1. Position the mouse pointer over the text, and then the mouse pointer becomes ![finger](icon/finger.svg).
-2. Press and hold down the left mouse button, and you can move the text to any place in the screenshot area.
+If you have added a text annotation, puede modify and move the text annotation.
 
 
-#### Edit Text Annotations
+#### Move Texto Annotations
 
-1. Position the mouse pointer over the text.
-2. Click to enter text-editing mode. You can:
+1. Posicione el puntero del ratón sobre the text, y luego el puntero del ratón becomes ![finger](icon/finger.svg).
+2. Presione y mantenga presionado el botón principal del ratón, y puede move the text to any place in el área de la captura de pantalla.
 
-   - Press ![delete](icon/Delete.svg) on keyboard to delete the text annotations.
 
-   - Press ![ctrl](icon/Ctrl.svg)+![Z](icon/Z.svg) on keyboard to return to the previous step.
+#### Edit Texto Annotations
+
+1. Posicione el puntero del ratón sobre the text.
+2. Click para entrar text-editing mode. Puede:
+
+   - Presione ![delete](icon/Delete.svg) en el teclado to delete the text annotations.
+
+   - Presione ![ctrl](icon/Ctrl.svg)+![Z](icon/Z.svg) en el teclado to return to the previous step.
 
    - Modify the text in the text box.
 
-3. Click outside the text box to exit editing mode.
+3. Click outside the text box salir editing mode.
 
 
 ### Set Colors
 
-Deepin Screenshot totally provides 16 colors for you. You can choose different colors to mark.
+Captura de pantalla Deepin totally provides 16 colors for you. Puede choose different colors to mark.
 
 
 ![0|color](jpg/color.jpg)
 
 
-1. In the toolbar below the screenshot area, click on ![color](icon/color.svg).
-2. Select a color in the extended panel of the toolbar.
+1. En la barra de herramientas below el área de la captura de pantalla, clic en ![color](icon/color.svg).
+2. Select a color en el panel extendido de la barra de herramientas.
 
-> ![notes](icon/notes.svg): The default color is red. When you select a new color, it will be shown in a circle, the color icon in toolbar will be changed in real time and so does the color of other tools.
+> ![notes](icon/notes.svg): The default color is red. When you select a new color, it será mostrada in a circle, the color icon in toolbar will be changed en tiempo real and so does the color of other tools.
 
 
-## Save Screenshot
+## Guardar Screenshot
 
-Save captured images as material for future use!
+Guardar captured images as material for future use!
 
 ### Saving Method
 
-You can save captured images by the following ways:
+Puede save captured images de la siguiente manera:
 
-* Press ![ctrl](icon/Ctrl.svg)+![S](icon/S.svg) on keyboard to save.
+* Presione ![ctrl](icon/Ctrl.svg)+![S](icon/S.svg) en el teclado to save.
 
-* In the captured images, right click and select **Save** or double-click the mouse to save.
+* En the captured images, clic derecho y seleccione **Guardar** o double-click the mouse to save.
 
 
-> ![notes](icon/notes.svg): After successfully saving a screenshot, you can see a prompt in the upper right corner of the desktop. Click on **View** to open the storing folder.
+> ![notes](icon/notes.svg): After successfully saving a screenshot, puede see a prompt en la esquina superior derecha of el escritorio. Clic en **View** para abrir the storing folder.
 
 
 ### Saving Path
 
-You can click the drop-down options of ![save](icon/save.svg) in the toolbar below the screenshot area:
+Puede click the drop-down options of ![save](icon/save.svg) en la barra de herramientas below el área de la captura de pantalla:
 
 
 ![0|save](jpg/save.jpg)
@@ -698,7 +690,7 @@ You can click the drop-down options of ![save](icon/save.svg) in the toolbar bel
 
 * Select ![autosaveClipBoard](icon/auto_save_ClipBoard.svg) to save picture to system default folder and copy to clipboard.
 
-> ![notes](icon/notes.svg): You can adjust the quality of the saved pictures by dragging the slider left or right.
+> ![notes](icon/notes.svg): Puede adjust the quality of the saved pictures by dragging the slider left o right.
 
 
 ### Saving Format
@@ -707,8 +699,8 @@ The captured images will be named after "DeepinScreenshot+image name+date and ti
 
 The detailed kinds are in the following:
 
-* When taking a screenshot of the window, the saving format is "DeepinScreenshot+ window name+date and time".
+* When taking una captura de pantalla of la ventana, the saving format is "DeepinScreenshot+ window name+date and time".
 
-* When taking a screenshot of desktop components (such as Dock, Launcher and Control Center), the saving format is "DeepinScreenshot+desktop component name+date and time".
+* When taking una captura de pantalla of desktop components (such as Dock, Launcher and Control Center), the saving format is "DeepinScreenshot+desktop component name+date and time".
 
-* When taking a screenshot of free area, the saving format is "DeepinScreenshot+areaname+date and time".
+* When taking una captura de pantalla of free area, the saving format is "DeepinScreenshot+areaname+date and time".

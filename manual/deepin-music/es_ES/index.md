@@ -25,8 +25,8 @@ Puede iniciar, cerrar y crear un acceso directo para Reproductor Deepin de la si
 2. El Reproductor Deepin se mimizará a la bandeja;
 3. Clic derecho icono de aplicación del Reproductor Deepin en la bandeja, puede:
  - Clic en **Reproducir/Pausar** para reproducir/pausar la canción;
- - Clic en **Anterior** para reproducir la anterior canción;
- - Clic en **Siguiente** para reproducir la siguiente canción.
+ - Clic en **Anterior** para reproducir la anterior pista;
+ - Clic en **Siguiente** para reproducir la siguiente pista.
  - Clic en **Salir** para salir de Reproductor Deepin.
 
 
@@ -199,8 +199,7 @@ En la interfaz del Reproductor Deepin, puede crear, borrar, renombrar lista de r
 1. En la interfaz del Reproductor Deepin, seleccione a music you want para añadir.
 2. Clic derecho para seleccionar **Añadir a lista de reproducción** > **Nombre de la lista**.
 
-
-> ![notes](icon/notes.svg): También puede seleccionar **Nueva lista de reproducción** para añadir la canción al nuevo listado.
+> ![notes](icon/notes.svg): También puede seleccionar **Nueva lista de reproducción** para añadir la pista al nuevo listado.
 
 ![0|addtolist](jpg/addtolist.jpg)
 
@@ -232,8 +231,8 @@ Puede añadir nuevas listas de reproducción o canciones, ajustar, ver informaci
 2. Seleccione **Ajustes** > **Ajustes básicos**.
 3. En la opción **Reproducir**, puede:
  - Marcar el casillero de **Autoreproducir**, la canción se reproducirá automáticamente cuando el reproductor de música inicie.
- - Marcar el casillero de **Remember playback position**, la canción will be played automatically from last position played when Reproductor Deepin runs.
- - Marcar el casillero de **Enable fade**, la canción will fade in and out when Reproductor Deepin runs.
+ - Marcar el casillero de **Recordar posición de la reproducción**, la canción will be played automatically from last position played when Reproductor Deepin runs.
+ - Marcar el casillero de **Habilitar desvanecimiento**, la pista cambiará el volumen gradualmente cuando se ejecuta el Reproductor Deepin.
 4. En la opción de **Cerrar ventana principal**, puede:
  - Seleccionar **Minimizar a la bandeja de entrada** para trasladar el icono a la bandeja.
  - Seleccionar **Salir Reproductor Deepin** para cerrar la aplicación.

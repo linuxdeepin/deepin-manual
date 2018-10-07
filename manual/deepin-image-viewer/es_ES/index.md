@@ -46,22 +46,22 @@ Visor de imágenes Deepin se cracteriza en la información, rotado, visualizaci�
         <tr>
             <td>![1:1 size](icon/adapt-image-active.svg)</td>
             <td>Tamaño 1:1</td>
-            <td>La imagen se mostrará en proporción 1:1 sin cambiar el tamaño de la ventana. Si la imagen supera a la ventana, aparecerá una ventana de navegación en la esquina inferior derecha, que ayuda al usuario a localizar rápidamente las áreas de la imagen.</td>
+            <td>La imagen se mostrará en proporción 1:1 sin cambiar el tamaño de la ventana. Si la figura supera a la ventana, aparecerá una ventana de navegación en la esquina inferior derecha, que ayuda al usuario a localizar rápidamente las áreas de la imagen.</td>
         </tr>
     	<tr>
             <td>![fit to window](icon/adapt-screen-active.svg)</td>
             <td>Ajustar a ventana</td>
-            <td>The imagen será redimencionada para adaptar a la ventana correspondiente.</td>
+            <td>La imagen será redimencionada para adaptar a la ventana correspondiente.</td>
         </tr>
         <tr>
             <td>![rotatecl](icon/clockwise-rotation.svg)</td>
             <td>Girar hacia la derecha</td>
-            <td>Rota la imagen a 90 grados en sentido horario.</td>
+            <td>Rota la figura a 90 grados en sentido horario.</td>
         </tr>
         <tr>
             <td>![rotateccl](icon/contrarotate.svg)</td>
             <td>Girar hacia la izquierda</td>
-            <td>Rota la imagen a 90 grados en sentido antihorario.</td>
+            <td>Rota la figura a 90 grados en sentido antihorario.</td>
         </tr>
         <tr>
             <td>![Trash](icon/delete.svg)</td>
@@ -103,11 +103,11 @@ El usuario puede copiar imágenes en el Visor de imágenes Deepin.
 1. Clic derecho en la imagen en la interfaz del Visor de imágenes Deepin y seleccione **Copiar**.
 2. En el lugar de destino, haga clic derecho en el área en blanco y seleccione **Pegar** para duplicar la imagen en el lugar.
 
-> ![tips](icon/tips.svg)：**Copiar al portapapeles** es una mejora de la función de copiado, en esta opción se puede usar para copiar la imagen como el contenido del documento, o compartir la imagen a amigos.
+> ![tips](icon/tips.svg)：**Copiar al portapapeles** es una mejora de la función de copiado, en esta opción se puede usar para copiar la figura a los documentos, o compartir la imagen a amigos.
 
 ### Imprimir imagen
 
-El usuario puede print imagen en Visor de imágenes Deepin.
+El usuario puede imprimir la ilustración o fotografía en el Visor de imágenes Deepin.
 
 1. Clic derecho en la imagen en la interfaz del Visor de imágenes Deepin y seleccione **Imprimir**.
 2. Seleccione una impresora ajuste las opciones de impresión.
@@ -123,15 +123,15 @@ El usuario puede eliminar imágenes del Visor de imágenes Deepin de las siguien
 
 - Clic en el icono de ![delete_press](icon/delete.svg) icon en la interfaz del Visor de imágenes Deepin.
 - Clic derecho en la imagen para borrar y seleccione **Mover a la papelera**.
-- Clic en la imagen to delete and press ![Delete](icon/Delete.svg) key.
+- Clic en la figura para borrar y presione la tecla ![Delete](icon/Delete.svg).
 
 ![0|trash](jpg/delete.jpg)
 
->![notes](icon/notes.svg): The deleted imagen will also be deleted from disk.
+>![notes](icon/notes.svg): La imagen borrada también será eliminada del disco duro.
 
 ### Girar imagen
 
-El usuario puede girar la imagen en el apartado para ver dicha imagen.
+El usuario puede girar la imagen en el apartado para ver los resultados.
 1. Clic derecho en la imagen en la interfaz del Visor de imágenes Deepin y seleccione **Girar a la derecha** or **Girar a la izquierda**.
 2. La imágen rotará 90 grados en sentido horario o antihorario.
 
@@ -145,15 +145,15 @@ El usuario puede establecer una imagen como fondo de pantalla para escritorio. C
 
 ### View Imagen Information
 
-El usuario puede ver the detailed information of la imagen.
-1. Clic derecho en la imagen en la interfaz del Visor de imágenes Deepin y seleccione **Información de imagen**.
+El usuario puede ver la información detallada de la imagen.
+1. Clic derecho en la figura en la interfaz del Visor de imágenes Deepin y seleccione **Información de imagen**.
 2. Aparecerá una ventana de información en el lado izquierdo de la interfaz del Visor de imágenes Deepin.
 
 ![1|view info](jpg/info.jpg)
 
 ## Gestionar imagen
 
-In imagen management interface, el usuario puede hacer cambios a la cronología y los álbumnes, y filtrar o usar el buscador para encontrar la imagen que necesite. Al presionar en ![timeline](icon/timeline-active.svg) y ![album](icon/album-active.svg) se cambiará entre la cronología y el álbum.
+En la interfaz del gestor de imágenes, el usuario puede hacer cambios a la cronología y los álbumnes, y filtrar o usar el buscador para encontrar la imagen que necesite. Al presionar en ![timeline](icon/timeline-active.svg) y ![album](icon/album-active.svg) se cambiará entre la cronología y el álbum.
 
 ### Cronología
 
@@ -164,7 +164,7 @@ Las imágenes en Cronología se clasifican y agruparán de acuerdo con la fecha 
 
 #### Amplificación de imagen
 
-Las miniaturas of imágenes en la Cronología Cronología pueden ser ampliadas.
+Las miniaturas de las imágenes en la Cronología pueden ser ampliadas.
 1. En la esquina inferior derecha de la interfaz del Visor de imágenes Deepin, clic en el deslizador de la barra de deslizado.
 2. Arrastre el deslizado hacia la izquierda o derecha para amplificarlo o reducirlo.
 
@@ -184,8 +184,8 @@ Visor de imágenes Deepin sincronizará las carpetas gestionadas en el arranque.
 
 El usuario puede descatar carpetas a Mis favoritos.
 1. En la Cronología de la interfaz del Visor de imágenes Deepin, abra una imagen.
-2. Clic derecho en la imagen y seleccione **Destacar**, o haga clic en ![favorite](icon/collect.svg) para añadirlo a Mis favoritos.
-3. Clic derecho en la imagen y seleccione **No destacar**, o haga clic en ![favorite](icon/collect-active.svg) para quitarlo de Mis favoritos.
+2. Clic derecho en la figura y seleccione **Destacar**, o haga clic en ![favorite](icon/collect.svg) para añadirlo a Mis favoritos.
+3. Clic derecho en la misma y seleccione **No destacar**, o haga clic en ![favorite](icon/collect-active.svg) para quitarlo de Mis favoritos.
 
 ![1|favorites](jpg/favorites.jpg)
 
@@ -193,8 +193,8 @@ El usuario puede descatar carpetas a Mis favoritos.
 
 El usuario puede añadir imágenes a un álbum.
 1. En la Cronología de la interfaz del Visor de imágenes Deepin, abra una imagen.
-2. Clic derecho en la imagen y seleccione **Añadir al álbum**.
-3. Seleccione un álbum para añadir la imagen a uno de ellos.
+2. Clic derecho en la figura y seleccione **Añadir al álbum**.
+3. Seleccione un álbum para añadirla a uno de ellos.
 
 ![0|add-to-album](jpg/add-to-album.png)
 
@@ -202,7 +202,7 @@ El usuario puede añadir imágenes a un álbum.
 
 El usuario puede encontrar el directorio donde la imagen es guardada.
 1. Clic derecho en la imagen en la interfaz del Visor de imágenes Deepin y seleccione **Mostrar en el gestor de archivos**.
-2. The folder where la imagen is stored will pop up.
+2. Aparecerá la carpeta dónde está guardado el archivo.
 
 ![0|display en file manager](jpg/display.jpg)
 
@@ -238,7 +238,7 @@ El usuario puede añadir imágenes al álbum de las siguientes formas:
 
 #### Quitar imagen del álbum
 
-En el álbum, clic derecho en la imagen y seleccione **Quitar del álbum** para retirar la imagen del álbum.
+En el álbum, clic derecho en la imagen y seleccione **Quitar del álbum** para retirar la figura del álbum.
 
 ![0|remove-from-album](jpg/remove-from-album.jpg)
 
