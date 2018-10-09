@@ -70,6 +70,7 @@ QStringList ManualProxy::getSystemManualList() {
       { "org.deepin.flatdeb.deepin-movie", "deepin-movie" },
       { "org.deepin.flatdeb.deepin-screen-recorder", "deepin-screen-recorder" },
       { "org.deepin.flatdeb.deepin-calculator", "deepin-calculator"},
+      { "com.deepin.editor", "deepin-editor"},
   };
 
   if (app_list_.isEmpty()) {
