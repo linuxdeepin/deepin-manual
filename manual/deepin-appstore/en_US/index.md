@@ -1,7 +1,7 @@
 # Deepin Store|../common/deepin-appstore.svg|
 
 ## Overview
-Deepin Store V5.0 is an application recreated by Deepin Technology Co., Ltd. with the integration of application display, downloading, installation, uninstallation, commenting, rating, and recommendation. Deepin Store collects different types of applications for you, each one has been installed and verified manually. You can search the popular applications with one-click download and automatic installation.
+Deepin Store is an application recreated by Deepin Technology Co., Ltd. with the integration of application display, downloading, installation, uninstallation, commenting, rating, and recommendation. Deepin Store collects different types of applications for you, each one has been installed and verified manually. You can search the popular applications with one-click download and automatic installation.
 
  ![1|maininterface](jpg/maininterface.jpg)
 
@@ -103,9 +103,9 @@ Deepin Store offers one-click download and installation of applications. During 
 
 ### Update/Upgrade Application
 
-If you need to update and upgrade applications, you can set in Control Center, specific operations refer to [Update Settings](dman:///dde#Update Settings).
+To update the applications, you can set in Control Center, specific operations refer to [Update Settings](dman:///dde#Update Settings).
 
-> ![notes](icon/notes.svg): Besides update and upgrade applications, you also can update and upgrade the system in Control Center.
+> ![notes](icon/notes.svg): Besides update the applications, you also can update and upgrade the system in Control Center.
 
 ### Uninstall Applications
 
@@ -180,6 +180,12 @@ Deepin Store has two regions: China and international, which has different appli
 ### Clear Cache
 1. On Deepin Store interface, click on ![icon_menu](icon/icon_menu.svg).
 2. Click on **Clear Cache** to clear the package caches.
+
+### Dark Theme
+
+1. On Deepin Store interface, click on ![main_menu](icon/icon_menu.svg).
+2. Select **Dark Theme**.
+3. The interface will switch to dark theme.
 
 ### Help
 Click "Help" to get the manual, which will help you further know and use Deepin Store.
