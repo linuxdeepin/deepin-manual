@@ -224,13 +224,13 @@ Los usuarios pueden ver las propiedades de archivo/carpeta.
 
 ## Operaciones frecuentes
 
-gestor de archvios de Deepin is featured with many useful functions, such as breadcrumb bar, tabs, marcadores, file sharing, accessing computers in LAN, opening archivo/carpeta in Terminal and so on. They are all designed to ease the commonly used operations.
+Gestor de archvios de Deepin es caracterizada con muchas funciones, como la barra de direcciones (miga de pan), pestañas, marcadores, compartición de archivos, acceso entre computadoras en LAN, abrir archivo/carpeta en Terminal y mucho más. Todos están diseñados para facilitar las operaciones de uso común.
 
-### Switch Address Bar
+### Cambiar barra de dirección
 
-There are three sections in address bar, namely the breadcrumb bar, search bar and directory bar.
+Hay tres secciones en la barra de direcciones, a saber, la barra de navegación, la barra de búsqueda y la barra de directorios.
 
-By default, breadcrumb bar is displayed in the address bar. By clicing on the blank area in the address bar or clic en ![search](icon/search-noamal.svg), it will switch to directory/search bar, which can be used to access directory and search for target items.
+Por defecto, la barra de miga de pan es mostrada en la barra de dirección. Al hacer clic en un área en blanco en la barra clic o pulsar en ![search](icon/search-noamal.svg), alternará entre las barras de directorio y búsqueda, que se puede usar para acceder al directorio y buscar elementos.
 
 Al ingresar un directorio o palabras clave sea en el directorio o la barra de búsqueda y presionar ![Enter](icon/Enter.svg), el usuario consigue acceder al directorio de destino o buscar los elementos que necesita.
 
