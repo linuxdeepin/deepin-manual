@@ -9,7 +9,7 @@
     <message>
         <location filename="../src/app/dman.cpp" line="83"/>
         <source>Deepin Manual is designed to help users learn deepin and Deepin applications, providing specific instructions and function descriptions.</source>
-        <translation>Приручник за Дипин је састављен тако да помогне корисницима да науче Дипин и Дипин апликације, нудећи одређене инструкције и описе функција.</translation>
+        <translation>Приручник за Дипин је састављен тако да помогне корисницима да науче Дипин и Дипин програме, нудећи усмерена упутства и описе функција.</translation>
     </message>
     <message>
         <location filename="../src/view/web_event_delegate.cpp" line="63"/>
@@ -24,17 +24,17 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="33"/>
         <source>Applications</source>
-        <translation>Апликације</translation>
+        <translation>Програми</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="35"/>
         <source>Sorry, there are no search results of &quot;%1&quot;</source>
-        <translation>Жао нам је, нема резултата по претрази &quot;%1&quot;</translation>
+        <translation>Жао нам је, нема резултата претраге за &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="36"/>
         <source>Change your keywords and try again, or search it in Deepin Wiki</source>
-        <translation>Промените кључне речи и покушајте поново, или потражите у Дипин Вики</translation>
+        <translation>Промените кључне речи и покушајте поново или претражите Дипин Вики</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="38"/>
@@ -55,7 +55,7 @@
     <message>
         <location filename="../src/view/widget/title_bar.cpp" line="96"/>
         <source>Search</source>
-        <translation>Претрага</translation>
+        <translation>Претражи</translation>
     </message>
 </context>
 </TS>

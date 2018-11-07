@@ -4,7 +4,7 @@
     <message>
         <location filename="../src/app/dman.cpp" line="82"/>
         <source>Deepin Manual</source>
-        <translation>Manual Deepin</translation>
+        <translation>Manual de Deepin</translation>
     </message>
     <message>
         <location filename="../src/app/dman.cpp" line="83"/>
@@ -29,12 +29,12 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="35"/>
         <source>Sorry, there are no search results of &quot;%1&quot;</source>
-        <translation>Lo sentimos, no hay resultados de búsqueda de &quot;%1&quot;</translation>
+        <translation>Lo sentimos, sin resultados para &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="36"/>
         <source>Change your keywords and try again, or search it in Deepin Wiki</source>
-        <translation>Cambie sus palabras clave y vuelva a intentarlo, o búsquelo en Deepin Wiki</translation>
+        <translation>Cambie sus palabras clave y vuelva a intentarlo, o búsquelo en la Wiki de Deepin</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="38"/>

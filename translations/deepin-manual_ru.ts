@@ -29,7 +29,7 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="35"/>
         <source>Sorry, there are no search results of &quot;%1&quot;</source>
-        <translation>Извините, нет результатов поиска &quot;%1&quot;</translation>
+        <translation>Извините, нет результатов поиска для &quot;%1&quot;</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="36"/>
@@ -50,7 +50,7 @@
         <location filename="../src/view/widget/search_completion_window.cpp" line="113"/>
         <location filename="../src/view/widget/search_completion_window.cpp" line="162"/>
         <source>Search &quot;%1&quot; in the full text</source>
-        <translation>Искать «%1» в полном тексте</translation>
+        <translation>Искать «%1» во всём тексте</translation>
     </message>
     <message>
         <location filename="../src/view/widget/title_bar.cpp" line="96"/>

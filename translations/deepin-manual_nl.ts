@@ -9,7 +9,7 @@
     <message>
         <location filename="../src/app/dman.cpp" line="83"/>
         <source>Deepin Manual is designed to help users learn deepin and Deepin applications, providing specific instructions and function descriptions.</source>
-        <translation>Deepin Handboek is ontworpen om gebruikers te helpen met het deepin besturingssysteem en deepin-applicaties. Het bevat daarom specifieke instructies en functiebeschrijvingen, zodat de gebruiker hiervan kennis op kan doen.</translation>
+        <translation>Deepin Handboek is ontworpen om gebruikers te helpen met het besturingssysteem en zijn applicaties. Het bevat specifieke instructies en functie-omschrijvingen, zodat gebruikers het systeem kunnen leren gebruiken.</translation>
     </message>
     <message>
         <location filename="../src/view/web_event_delegate.cpp" line="63"/>
@@ -24,7 +24,7 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="33"/>
         <source>Applications</source>
-        <translation>Toepassingen</translation>
+        <translation>Applicaties</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="35"/>
@@ -34,12 +34,12 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="36"/>
         <source>Change your keywords and try again, or search it in Deepin Wiki</source>
-        <translation>Wijzig uw zoektermen en probeer het opnieuw, of zoek het op in de Deepin Wiki</translation>
+        <translation>Wijzig je zoektermen en probeer het opnieuw, of zoek het op op de Deepin Wiki</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="38"/>
         <source>Home</source>
-        <translation>Home</translation>
+        <translation>Start</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="39"/>

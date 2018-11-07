@@ -4,7 +4,7 @@
     <message>
         <location filename="../src/app/dman.cpp" line="82"/>
         <source>Deepin Manual</source>
-        <translation>Deepin Manual</translation>
+        <translation>Manual do Deepin </translation>
     </message>
     <message>
         <location filename="../src/app/dman.cpp" line="83"/>
@@ -24,7 +24,7 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="33"/>
         <source>Applications</source>
-        <translation>Aplicações</translation>
+        <translation>Aplicativos</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="35"/>

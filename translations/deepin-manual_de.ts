@@ -9,7 +9,7 @@
     <message>
         <location filename="../src/app/dman.cpp" line="83"/>
         <source>Deepin Manual is designed to help users learn deepin and Deepin applications, providing specific instructions and function descriptions.</source>
-        <translation>Das Deepin Benutzerhandbuch wurde entwickelt, um Anwender dabei zu unterstützen, Deepin und die Deppin-Anwenungen mithilfe zugeschnittener Anleitungen und Funktionsbeschreibungen zu erlernen und kennen zu lernen.</translation>
+        <translation>Das Deepin-Benutzerhandbuch wurde entwickelt, um Anwender dabei zu unterstützen, Deepin und die Deepin-Anwendungen mithilfe zugeschnittener Anleitungen und Funktionsbeschreibungen zu erlernen und kennen zu lernen.</translation>
     </message>
     <message>
         <location filename="../src/view/web_event_delegate.cpp" line="63"/>
@@ -39,7 +39,7 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="38"/>
         <source>Home</source>
-        <translation>Startbereich</translation>
+        <translation>Startseite</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="39"/>

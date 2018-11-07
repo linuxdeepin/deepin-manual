@@ -9,7 +9,7 @@
     <message>
         <location filename="../src/app/dman.cpp" line="83"/>
         <source>Deepin Manual is designed to help users learn deepin and Deepin applications, providing specific instructions and function descriptions.</source>
-        <translation>Le manuel de Deepin est conçu pour aider les utilisateurs à apprendre les applications Deepin et Deepin, en fournissant des instructions spécifiques et des descriptions de fonctions.</translation>
+        <translation>Le manuel de Deepin est conçu pour aider les utilisateurs à utiliser Deepin et ses applications, en fournissant des instructions spécifiques et des descriptions de fonctions.</translation>
     </message>
     <message>
         <location filename="../src/view/web_event_delegate.cpp" line="63"/>
