@@ -7,7 +7,7 @@ deepin is an elegant, easy to use and reliable Linux desktop operating system de
 
 ### Welcome
 
-When login deepin after a successful deepin installation, a welcome program will automatically start. You can watch the introduction video to get deepin new features, select desktop mode and icon theme, enable window effect, and know more about deepin.
+When login deepin for the first time, a welcome program will automatically start. You can watch the introduction video to get deepin new features, select desktop mode and icon theme, enable window effect, and know more about deepin.
 
 ![0|welcome](jpg/welcome.jpg)
 
@@ -174,41 +174,30 @@ You can create application shortcuts on Dock in Launcher and do related operatio
             <td><img src="icon/deepin-file-manager.svg" alt="Deepin File Manager" class="inline" /></td>
             <td>Click to open Deepin File Manager</td>
             <td class="blank"></td>
-            <td><img src="icon/network_icon.svg" alt="Network" class="inline" /></td>
-            <td>Click to open network settings</td>
-        </tr>
-        <tr>
-            <td><img src="icon/sound_icon.svg" alt="Sound Settings" class="inline" /></td>
-            <td>Click to open sound settings</td>
-            <td class="blank"></td>
             <td><img src="icon/deepin-terminal.svg" alt="Deepin Terminal" class="inline" /></td>
             <td>Click to open Deepin Terminal</td>
         </tr>
         <tr>
-            <td><img src="icon/battery.svg" alt="Shutdown and Battery" class="inline" /></td>
-            <td>Show battery info, click to enter shutdown interface quickly</td>
+            <td><img src="icon/power_icon.svg" alt="Shutdown" class="inline" /></td>
+            <td>Click to enter shutdown interface quickly</td>
             <td class="blank"></td>
             <td><img src="icon/datetime_icon.svg" alt="Date and Time" class="inline" /></td>
             <td>Click to open Deepin Calendar</td>
         </tr>
         <tr>
-            <td><img src="icon/wireless.svg" alt="Wireless Network" class="inline" /></td>
-            <td>Click to quickly set wireless network</td>
-            <td class="blank"></td>
             <td><img src="icon/trash_icon.svg" alt="Trash" class="inline" /></td>
             <td>Click to open the trash</td>
         </tr>
     </tbody>
 </table>
 
-> ![tips](icon/tips.svg): When you're using a desktop computer, it will only display ![power_icon](icon/power_icon.svg), and when using a laptop, ![battery](icon/battery.svg) icon will show battery info. You can see the battery capacity percentage by moving the mouse pointer over the icon, and enter the shutdown interface quickly by clicking on it.
-
+> ![tips](icon/tips.svg): In fashion mode, when you're using a desktop computer, it will show ![power_icon](icon/power_icon.svg),  if you're using a laptop, ![shutdown](icon/shutdown_icon.svg)  will display.  Click it on to enter the shutdown interface quickly.
 
 ### Switch Display Mode
 There are two display modes of Dock, which are fashion mode and efficient mode.
 
-- **Fashion Mode**: The display mode is similar to Mac OS and displayed by a tray at the bottom of screen. All fixed application icons will be displayed on Dock.
-- **Efficient Mode**: The display mode is similar to Windows 7 and displayed by a small strip at the bottom of screen. Application icons fixed on Dock by default will be displayed in small ones, and icons of same types will be merged together to save more space for others.
+- **Fashion Mode**: This mode is similar to Mac OS and displayed as a tray at the bottom of screen. All fixed application icons will be on Dock. The tray area can be folded or expanded.
+- **Efficient Mode**: This mode is similar to Windows 7 and displayed by a small strip at the bottom of screen. Application icons on Dock will be displayed in smaller ones. Click the right corner to show desktop.
 
 
 ![1|fashion](jpg/fashion.jpg)
@@ -423,36 +412,24 @@ You can choose to uninstall applications you no longer use to save disk space.
 
 
 ## Control Center
-You can manage the basic settings of deepin by Control Center. It includes widget, common settings, account management, network settings, date and time, personalization, display settings, system and application update, etc. When you enter Deepin Desktop Environment, you can open the Control Center by moving the mouse pointer to the right bottom corner on desktop.
+You can manage the basic settings of deepin in Control Center. It includes account management, network settings, date and time, personalization, display settings, system and application update, etc. When you enter Deepin Desktop Environment, click ![controlcenter](icon/controlcenter_icon.svg) to open Control Center.
 
 ### Homepage Introduction
-The homepage of Control Center displays the common information for users to daily check and quickly set. 
+The homepage of Control Center displays the datetime and provides several modules for users to quickly set. You can also view all messages in notification list.
 
-![0|dcchomepage](jpg/dcchomepage.jpg)
+![0|dcchomepage](jpg/dcc.jpg)
 
 <table class="block1">
     <tbody>
         <tr>
-            <td>1</td>
-            <td width="80px">Top Info Bar</td>
-            <td>Display the account avatar, current date and time.</td>
+            <td width="120px">Top Info Bar</td>
+            <td>Display the account avatar, current date and time. Click the button behind to switch to notification list.</td>
         </tr>
         <tr>
-            <td>2</td>
             <td>Application Widget Area</td>
-            <td>Display the setting navigation of Control Center, weather info and notification list.</td>
+            <td>Display the setting navigation. Click to jump to related settings.</td>
         </tr>
-        <tr>
-            <td>3</td>
-            <td>System Widget Area</td>
-            <td>Display the widgets of music player, volume and brightness, etc.</td>
-        </tr>
-        <tr>
-            <td>4</td>
-            <td>Bottom Tool Bar</td>
-            <td>Display Bluetooth, VPN, wireless network,screen projection and multiple screen settings, etc.</td>
-        </tr>
-    </tbody>
+         </tbody>
  </table>
 
 Once you open a setting module in Control Center, the navigation bar appears on the left. Click the icon to quickly switch to other settings.
@@ -527,7 +504,7 @@ You can protect your privacy and data and get security protection by setting acc
 
 
 ### Display Settings
-Your computer can reach the best performance by setting its resolution, direction and extend screens of the monitor(s).
+You can set screen resolution, direction and display scaling to make your screen reach the best performance.
 
 ![0|display](jpg/display.jpg)
 
@@ -556,6 +533,8 @@ You can adjust the visual perception by setting the screen resolution, brightnes
 1. On the homepage of Control Center, click on ![display_normal](icon/display_normal.svg).
 2. Click on **Brightness** to enter the interface for brightness settings.
    - Enable **Night Shift**, the screen tone will be auto adjusted by help of figuring out your location.
+   - Enable **Auto Brightness**, the monitor will change the brightness automatically (support PC with light sensor).
+   - Drag the slider to set screen brightness.
 
 ##### Set Screen Direction
 
@@ -572,15 +551,17 @@ Widen your horizon by multiple screens! You can use VGA cable to connect your co
 2. Select an multiple screen mode:
    - **Copy** to copy the setting of main screen to others.
    - **Extend** to extend the display area of main screen.
-   - **Only Displayed on xxx** to display screen content only on xxx screen.
-   - **Custom Settings** to add custom settings in Control Center.
+   - **Only Displayed on xxx** to display screen content only on one screen.
+   - **Custom Settings** to set screen and its resolutions.
 
 ##### Custom Settings
 
 1. On the homepage of Control Center, click on ![display_normal](icon/display_normal.svg).
 2. Click on **Custom Settings**.
 3. Set custom settings on the popup menu.
-4. Click on **Apply**.
+4. Click on **Save**.
+
+> ![notes](icon/notes.svg): Click **Apply** to use the settings temporarily, it do not save the settings.
 
 #### Screen Projection
 
@@ -629,9 +610,14 @@ System default applications cannot be deleted, if you wanted to delete an instal
 
 
 ### Personalization Settings
-You can change the appearance of desktop by using different desktop icons, window style and font, etc. and set it to fit your needs.
+You can change the appearance of desktop by adjusting the transparency of Launcher (in mini mode), Dock and Control Center, and using different desktop icons, window style and font, etc. 
 
 ![0|personalise](jpg/personalise.jpg)
+
+#### Set Transparency
+Adjust the value to set the transparency of Launcher (in mini mode), Dock and Control Center. When the value is 1, it is opaque.
+1. On the homepage of Control Center, click on ![personalization_normal](icon/personalization_normal.svg).
+2. Click the value on the bar to adjust transparency and view it in real time.
 
 #### Set Theme
 You can set the window theme, icon theme and cursor theme of the system respectively.
@@ -1042,17 +1028,17 @@ You can view system version, hardware info or set boot menu.
 - When there are multiple systems in computer, the startup delay switch will open automatically, the boot menu will show 5 seconds to let users adjust boot order.
 - When there is only one system in computer, the startup delay switch will close by default, the boot menu will show 1 second, and it is no need to adjust boot order.
 
-##### Default Boot System
+##### Default Boot Option
 
 1. On the homepage of Control Center, click on ![system_info_normal](icon/system_info_normal.svg).
 2. Click on **Boot Menu** to enter the boot menu interface.
-3. Click to select boot entry and drag and drop to adjust boot order.
+3. Click the option in boot menu to set it as the first boot.
 
-##### Boot Splash Background
+##### Boot Menu Background
 
 1. On the homepage of Control Center, click on ![system_info_normal](icon/system_info_normal.svg).
 2. Click on **Boot Menu** to enter the boot menu interface.
-3. Press and hold the left mouse button to drag the background image and drop it over the preview image to change the background.
+3. Switch theme on to use it as the background of boot menu.
 
 
 ## Window Manager

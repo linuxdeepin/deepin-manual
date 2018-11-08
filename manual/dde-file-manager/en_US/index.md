@@ -195,7 +195,7 @@ Click on ![icon](icon/icon_view_normal.svg) or ![list](icon/list_view_normal.svg
 
 ![1|list-view](jpg/list-view.jpg)
 
-> ![tips](icon/tips.svg): User can drag the line between two columns to change the column width.
+> ![tips](icon/tips.svg): User can drag the line between two columns to change the column width, or double click on the line to auto fit the content width.
 
 > ![tips](icon/tips.svg): Press ![ctrl](icon/Ctrl.svg) +1 and ![ctrl](icon/Ctrl.svg) +2 to switch between icon view and list view.
 
@@ -206,7 +206,7 @@ Click on ![icon](icon/icon_view_normal.svg) or ![list](icon/list_view_normal.svg
 
 ![0|sort](jpg/sort.png)
 
-> ![tips](icon/tips.svg): Uses can click on the head of the columns in the list view to change the sort order.
+> ![tips](icon/tips.svg): Users can click on the head of the columns in the list view to change the sort order.
 
 ### File/Folder Properties
 
@@ -254,6 +254,13 @@ Users can search or open target item in the address bar.
 > ![tips](icon/tips.svg): You can also open a file in the address bar by its absolute path, such as /home/desktop/deepin-clone/a.jpg.
 
 > ![tips](icon/tips.svg): In **Settings**, check "Auto index internal disk" and "Index external storage device after connected to computer" to quicken the searching speed.
+
+### Recent Files
+By default, there is a **Recent** entry on left panel. Click it to view the recently used files. Files are sorted by default in reverse order of access time.
+
+![recent](jpg/recent.jpg)
+
+> ![notes](icon/notes.svg): You can hide it on left panel by unchecking "Display recent file entry in left panel" under "Hidden files" in Settings. To hide the access record of a specific file, right click on the file and select **Remove** which will not delete the file.
 
 ### Manage Tabs
 
@@ -468,7 +475,7 @@ Users can create new window, switch to dark theme, make settings, view manual an
 1. On Deepin File Manager interface, click on ![menu](icon/icon_menu.svg).
 2. Select **New window** to open a new window.
 
-### Switch Theme
+### Dark Theme
 
 1. On Deepin File Manager interface, click on ![main_menu](icon/icon_menu.svg).
 2. Select **Dark Theme**.
@@ -504,7 +511,7 @@ Users can create new window, switch to dark theme, make settings, view manual an
 
 1. On Deepin File Manager interface, click on ![menu](icon/icon_menu.svg).
 2. Select **About**.
-3. View the version description.
+3. View the version and description.
 
 
 
