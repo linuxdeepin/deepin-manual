@@ -1,3 +1,6 @@
+2018-08-12 2.0.13 zccrs <zhangjide@deepin.com>
+    * Update 15.8 manual
+
 2018-08-12 2.0.12 Wu Rongjie <wurongjie@deepin.com>
     * Update deepin-file-manager manual
 
