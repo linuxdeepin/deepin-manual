@@ -4,7 +4,7 @@
     <message>
         <location filename="../src/app/dman.cpp" line="82"/>
         <source>Deepin Manual</source>
-        <translation type="unfinished"/>
+        <translation>Manual Deepin</translation>
     </message>
     <message>
         <location filename="../src/app/dman.cpp" line="83"/>
@@ -34,7 +34,7 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="36"/>
         <source>Change your keywords and try again, or search it in Deepin Wiki</source>
-        <translation>Ganti kata kunci anda dan coba lagi, atau cari itu di Deepin Wiki</translation>
+        <translation>Ganti kata kunci anda dan coba lagi, atau cari di Deepin Wiki</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="38"/>

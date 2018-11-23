@@ -1,6 +1,7 @@
 [Desktop Entry]
 Categories=Documentation;Utility;
 Exec=dman %u
+GenericName=Manual
 Icon=deepin-manual
 Keywords=documentation;information;manual;help;
 MimeType=x-scheme-handler/dman;
@@ -8,11 +9,24 @@ Name=Deepin Manual
 StartupNotify=true
 Terminal=false
 Type=Application
-GenericName=Manual
 X-Deepin-Vendor=deepin
 
 # Translations:
 # Do not manually modify!
+GenericName[de]=Handbuch
+GenericName[it]=Manual
+GenericName[lt]=Žinynas
+GenericName[ru]=Руководство
+GenericName[sr]=Приручник
+GenericName[tr]=Kılavuz
+GenericName[zh_CN]=帮助手册
+Keywords[de]=documentation;information;manual;help;handbuch;hilfe;info;
+Keywords[it]=documentation;information;manual;help;
+Keywords[lt]=dokumentacija;informacija;vadovas;žinynas;
+Keywords[ru]=documentation;information;manual;help;
+Keywords[sr]=документација;информације;приручник;помоћ;
+Keywords[tr]=dokümantasyon;bilgi;klavuz;yardım;
+Keywords[zh_CN]=文档;信息;manual;帮助;
 Name[am_ET]=የ ዲፕኢን መምርሪያ
 Name[ar]=دليل ديبين
 Name[ast]=Deepin Manual

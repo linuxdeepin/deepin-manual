@@ -1,10 +1,1 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="sr" version="2.1">
-    <context>
-        <name>desktop</name>
-        <message>
-            <location filename="Desktop Entry]Name" line="0"/>
-            <source>Deepin Manual</source>
-            <translation>Приручник за Дипин</translation>
-        </message>
-    </context>
-</TS>
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="sr" version="2.1"><context><name>desktop</name><message><location filename="Desktop Entry]Name" line="0"/><source>Deepin Manual</source><translation>Приручник за Дипин</translation></message><message><location filename="Desktop Entry]GenericName" line="0"/><source>Manual</source><translation>Приручник</translation></message><message><location filename="Desktop Entry]Keywords" line="0"/><source>documentation;information;manual;help;</source><translation>документација;информације;приручник;помоћ;</translation></message></context></TS>
