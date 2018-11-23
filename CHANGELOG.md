@@ -1,3 +1,12 @@
+<a name="2.0.14"></a>
+### 2.0.14 (2018-11-23)
+
+
+#### Features
+
+*   add genericName ([43246991](https://github.com/linuxdeepin/deepin-manual/commit/43246991b44854f922a2c9317a8ec3f8c3488bac))
+
+
 2018-08-12 2.0.13 zccrs <zhangjide@deepin.com>
     * Update 15.8 manual
 
