@@ -8,6 +8,8 @@ Name=Deepin Manual
 StartupNotify=true
 Terminal=false
 Type=Application
+GenericName=Manual
+X-Deepin-Vendor=deepin
 
 # Translations:
 # Do not manually modify!
