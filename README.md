@@ -53,7 +53,7 @@ It doesn't do much, except it will color most of the HTML blocks and give you so
 
 ### Manuals installation requirements
 
-Be sure to install the manual for your application to `/usr/share/dman/<Application-Name>/<Language-Code>/`.
+Be sure to install the manual for your application to `/usr/share/deepin-manual/manual/<Application-Name>/<Language-Code>/`.
 
 ### Invocation
 
