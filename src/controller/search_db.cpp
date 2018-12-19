@@ -222,6 +222,7 @@ void SearchDb::handleSearchContent(const QString& keyword) {
     QStringList anchorIds;
     QStringList contents;
     while (query.next()) {
+      result_empty = false;
       const QString app_name = query.value(0).toString();
       const QString anchor = query.value(1).toString();
       const QString anchorId = query.value(2).toString();
@@ -232,7 +233,6 @@ void SearchDb::handleSearchContent(const QString& keyword) {
         contents.append(content);
       } else {
         if (!last_app_name.isEmpty()) {
-          result_empty = false;
           qDebug() << Q_FUNC_INFO << "emit searchContentResult()";
           emit this->searchContentResult(last_app_name, anchors,
                                          anchorIds, contents);
