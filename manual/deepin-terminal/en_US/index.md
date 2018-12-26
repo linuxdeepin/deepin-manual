@@ -13,7 +13,7 @@ You can run, exit or create shortcuts for Deepin Terminal.
 
 ### Run Deepin Terminal ###
 
-1. Click on ![launcher-24](icon/launcher-24.svg) on dock to enter launcher interface.
+1. Click ![launcher-24](icon/launcher-24.svg) on dock to enter launcher interface.
 2. Find ![terminal-24](icon/terminal-24.svg) to click on, you can:
  - Click on **Send to desktop** to create a desktop shortcut.
  - Click on **Send to dock** to fix it on dock.

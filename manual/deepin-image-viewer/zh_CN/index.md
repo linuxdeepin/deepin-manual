@@ -13,7 +13,7 @@
 
 ### 运行深度看图
 
-1. 点击桌面底部的启动器 ![launcher_icon](icon/launcher_icon.svg) 或将鼠标指针移到屏幕左上角，进入启动器界面。
+1. 点击桌面底部的启动器 ![launcher_icon](icon/launcher_icon.svg) ，进入启动器界面。
 2. 上下滚动鼠标滚轮浏览或通过搜索，找到应用 ![viewer](icon/deepin-image-viewer.svg)点击运行。
 3. 将鼠标指针置于深度看图应用程序的图标上，右键点击 ![viewer](icon/deepin-image-viewer.svg)，您可以：
  - 点击 **发送到桌面**，在桌面创建快捷方式。

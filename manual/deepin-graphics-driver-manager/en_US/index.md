@@ -77,13 +77,17 @@ If the system detected AMD graphics card, no other solutions available,  just cl
 
 ## Main Menu
 
+### Dark Theme
+
+1. On Deepin Graphics Driver Manager interface, click on ![main_menu](icon/main_menu.svg).
+2. Select **Dark Theme**.
+3. The interface will switch to dark theme.
+
 ### Help
 
 1. On Deepin Graphics Driver Manager interface, click on ![main_menu](icon/main_menu.svg).
 2. Select **Help**.
 3. View the manual.
-
-
 
 ### About
 

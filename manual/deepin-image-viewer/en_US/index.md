@@ -13,7 +13,7 @@ User can run, close and create shortcut for Deepin Image Viewer by the following
 
 ### Run Deepin Image Viewer
 
-1. Click on ![Launcher](icon/launcher-24.svg) or move the mouse pointer to the upper left corner of the screen to enter Launcher interface.
+1. Click ![Launcher](icon/launcher-24.svg) on dock to enter Launcher interface.
 2. Locate ![deepin-image-viewer](icon/viewer.svg) by scrolling mouse wheel or searching by "Deepin Image Viewer" in Launcher interface.
 3. Right click on ![deepin-image-viewer](icon/viewer.svg), user can
  - Click on **Send to desktop** to create a desktop shortcut.

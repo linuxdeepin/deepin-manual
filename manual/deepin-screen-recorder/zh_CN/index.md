@@ -10,13 +10,13 @@
 
 ### 运行深度录屏
 
-1. 点击桌面底部的 启动器 ![deepin-launcher](icon/deepin-launcher.svg) 或将鼠标指针移到屏幕左上角，进入启动器界面。
+1. 点击桌面底部的启动器 ![deepin-launcher](icon/deepin-launcher.svg) ，进入启动器界面。
 2. 上下滚动鼠标滚轮，通过浏览找到 ![deepin-screen-recorder](icon/deepin-screen-recorder.svg) 进行点击运行。
 3. 将鼠标指针置于深度录屏应用程序的图标上，右键点击图标，您可以：
 
-- 点击 发送到桌面，在桌面创建快捷方式。
-- 点击 发送到任务栏，将应用程序固定到任务栏。
-- 点击 开机自动启动，将应用程序添加到开机启动项，在电脑开机时自动运行该应用程序。
+ - 点击 **发送到桌面**，在桌面创建快捷方式。
+ - 点击 **发送到任务栏**，将应用程序固定到任务栏。
+ - 点击 **开机自动启动**，将应用程序添加到开机启动项，在电脑开机时自动运行该应用程序。
 
 > ![notes](icon/notes.svg)：如果深度录屏已经默认固定在任务栏上，您也可以点击任务栏上的 ![deepin-screen-recorder](icon/deepin-screen-recorder.svg)来运行。
 

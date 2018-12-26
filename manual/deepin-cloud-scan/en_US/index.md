@@ -8,7 +8,7 @@ Deepin Cloud Scan consists of server and client. Server is installed in Windows 
 
 ## Server Configuration
 
-You can install the server in Windows and configure the authorization code for client in deepin.
+You can install the server in Windows and configure the authorization code for client.
 
 ### Install Server
 
@@ -88,7 +88,6 @@ You can use Deepin Cloud Scan to scan files in deepin, the steps are as below.
 2. Click the top left corner to select **Preferences** to set the scanning parameters.
 3. Click **Scan** to scan.
 
-![attention](icon/attention.svg): If authorization code has been updated in Windows, when you are scanning a file, there will be a prompt of "The authorization code of cloud scan sever has been updated, please input a new authorization code". Please contact the administrator to get a new one to scan. If errors occurred during scanning, please reset according to the errors.
-
  ![0|scan-settings](jpg/scan-settings.jpg)
 
+![attention](icon/attention.svg): If authorization code has been updated in Windows, when you are scanning a file, there will be a prompt of "The authorization code of cloud scan sever has been updated, please input a new authorization code". Please contact the administrator to get a new one to scan. If errors occurred during scanning, please reset according to the errors.

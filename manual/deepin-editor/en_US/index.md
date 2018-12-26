@@ -2,7 +2,7 @@
 
 ## Overview
 
-Deepin editor is a simple text editing tool. You can use it to write a simple text document, or use its advanced features as a code editing tool that supports code syntax highlighting.
+Deepin Editor is a simple text editing tool. You can use it to write a simple text document, or use its advanced features as a code editing tool that supports code syntax highlighting.
 
 ![overview](jpg/overview.jpg)
 
@@ -126,9 +126,9 @@ You can also use ![Alt](icon/Alt.svg) + ![U](icon/U.svg) / ![L](icon/L.svg) / ![
 ### Highlight Text
 Deepin Editor supports highlighting different kinds of texts.
 
-Right click and select **Highlight**, choose the type of text you want to highlight.
+Click the triangle symbol at the right corner of status bar at bottom, and select the type of text you want to highlight.
 
-![highlight](jpg/highlight.jpg)
+![highlight](jpg/highlight.png)
 
 ### Delete Text
 
