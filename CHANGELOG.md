@@ -1,3 +1,6 @@
+2018-12-28 2.0.16 myml <wurongjie@deepin.com>
+    * Fix deepin-cloud-print app icon
+
 <a name="2.0.15"></a>
 ### 2.0.15 (2018-12-26)
 
