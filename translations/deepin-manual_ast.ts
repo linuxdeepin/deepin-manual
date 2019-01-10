@@ -9,7 +9,7 @@
     <message>
         <location filename="../src/app/dman.cpp" line="83"/>
         <source>Deepin Manual is designed to help users learn deepin and Deepin applications, providing specific instructions and function descriptions.</source>
-        <translation>Deepin Manual ta diseñáu p&apos;ayudar a los usuarios a deprender el sistema y les aplicaciones de Deepin forniendo instrucciones y descripciones de funciones específiques.</translation>
+        <translation>Deepin Manual ta diseñáu p&apos;ayudar a los usuarios a saber cómo s&apos;usen les aplicaiciones de Deepin forniendo instrucciones y descripciones pa funciones específiques.</translation>
     </message>
     <message>
         <location filename="../src/view/web_event_delegate.cpp" line="63"/>
@@ -29,7 +29,7 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="35"/>
         <source>Sorry, there are no search results of &quot;%1&quot;</source>
-        <translation>Perdón, nun hay resultaos de gueta pa «%1»</translation>
+        <translation>Perdona pero nun hai resultaos de gueta pa «%1»</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="36"/>
