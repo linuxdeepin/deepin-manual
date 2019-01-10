@@ -1,3 +1,13 @@
+<a name="2.0.15"></a>
+## 2.0.15 (2019-01-10)
+
+
+#### Features
+
+*   Release 15.9 ([9bad7846](https://github.com/linuxdeepin/deepin-manual/commit/9bad7846093e66c91c910567cea1509bdebcf5b2))
+
+
+
 <a name="2.0.14"></a>
 ### 2.0.14 (2018-11-23)
 
