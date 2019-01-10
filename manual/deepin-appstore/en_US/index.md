@@ -92,6 +92,10 @@ Search function is built in Deepin Store. Search result will be automatically sh
 ### Download/Install Applications
 Deepin Store offers one-click download and installation of applications. During the downloading and installing process, you can pause and delete, as well as view the current progress.
 
+Deepin Store supports application sync. After sign in, you can sync the apps installed on other devices with that account,  and install the remote app at one click.
+
+#### Install Local App
+
 1. On Deepin Store interface, click the application image to enter app page.
 2. Click on ![Install](icon/installfordetail.svg) to automatically download and then install in **Download**.
 
@@ -100,6 +104,17 @@ Deepin Store offers one-click download and installation of applications. During 
 > ![notes](icon/notes.svg): The installed app will be shown in **Uninstall**.
 
 ![1|installprocess](jpg/installprocess.jpg)
+
+#### Install Remote App
+1. Sign in with Deepin ID, click the avatar at the title bar, select **My apps** to view your app list.
+2. Click **Remote App** to view all the apps installed under that account.
+3. Click **Install All** to select the apps to install.
+
+![1|remoteapp](jpg/remoteapp.jpg)
+
+> ![notes](icon/notes.svg) : Switch on **Auto install new app**. When installing apps on your device with Deepin ID, the new applications will be installed automatically on another device with that account logged in. But, the remote app will not automatically be removed when it is uninstalled from another device.
+
+> ![attention](icon/attention.svg): After sign in with Deepin ID, the remote app list in China region only shows the apps installed in China region,  and that in International region only shows the apps installed in International region.  
 
 ### Update/Upgrade Application
 
@@ -118,9 +133,9 @@ Besides uninstalling applications in Launcher (specific operations refer to [Uni
 ## Application Page
 
 ### Application Details
-The application page displays the downloads, rating,  comments, category, version, package size, updated date, description, screenshots and so on. You can get a full understanding of the application in it.
+The application page displays the rating,  download times, category, version, package size, updated date, app tag, source, description, screenshots, comments and so on. 
 
-> ![tips](icon/tips.svg)：Click the screenshots to view in large ones.
+> ![tips](icon/tips.svg)：Click the tag to search the apps with that tag. Click the screenshots to view them in large ones.
 
 ![1|softwareinterface](jpg/softwareinterface.jpg)
 
@@ -132,35 +147,36 @@ Click **Ask for update** to submit your request for a new version, so that the a
 
 1. Click **Donate**, input the amount or click "Random" to generate an amount.
 2. Choose a paying method, and click **Pay Now** to donate.
+3. After sign in, click the avatar on the title bar and select **My donations** to view the donation details.
 
 ![1|donate](jpg/donate.jpg)
+
 
 > ![tips](icon/tips.svg)：This function is developed for application developers and packagers, who can get the donation from users according to donation rules.
 
 ### Comment and Rate
-Please comment on and rate applications after signed in Deepin Store, otherwise you can only view comments and ratings. Your comments and ratings will be displayed after submitted successfully. And, you only can comment once on the current version.
-
-> ![attention](icon/attention.svg): If you need to know the information of signing up and signing in, please refer to [Sign In](#Sign In).
-
-> ![tips](icon/tips.svg): You can click the icon at the right to like the comment.
+- After sign in, you can comment on and rate the applications. Your comments and ratings will be displayed after submitted successfully. 
+- Click the avatar on the title bar and select **My comments** to view and edit all your ratings and comments.
+- If not sign in, you can only view comments and ratings. 
 
 ![1|commentandrate](jpg/commentandrate.jpg)
+![1|editcomment](jpg/editcomment.jpg)
+
+> ![tips](icon/tips.svg): You can click the icon at the right of the comment to like it.
 
 
 ## Main Menu
 
 ### Sign In
-You can sign in Deepin Store with your account in deepin forum.
+You can sign in Deepin Store with your Deepin ID account.
 
-1. On Deepin Store interface, click on ![icon_menu](icon/icon_menu.svg).
-2. Click on **Sign In**.
-3. Input username and password.
-4. If you want to enable auto-Sign-in, please click on **Remember me**.
-5. Click on **Sign In**.
+1. On Deepin Store interface, click the avatar on the title bar.
+2. Input username and password.
+3. Click on **Sign In**.
 
 > ![attention](icon/attention.svg): If you don't have an account, you can click on **Sign Up** in the pop-up box to sign up.
 
-![0|loginpage](jpg/loginpage.png)
+
 
 ### Recommend App
 If you want a new app in Deepin Store, please click "Recommend App" in main menu to submit your request.

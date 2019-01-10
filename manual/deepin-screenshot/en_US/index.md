@@ -16,7 +16,7 @@ You can run or exit Deepin Screenshot by the following operations. A shortcut al
 
 ### Run Deepin Screenshot
 
-1. Click on ![launcher-24](icon/launcher-24.svg) on dock to enter launcher interface.
+1. Click ![launcher-24](icon/launcher-24.svg) on dock to enter launcher interface.
 2. Find ![screenshot-24](icon/screenshot-24.svg) to click on, you can:
 
  - Click on **Send to desktop** to create a desktop shortcut.
@@ -72,57 +72,57 @@ It will save you both time and efforts to operate with shortcuts.
 <table class="block2">
 
     <caption>Start/Screenshot</caption>
-
+    
     <tbody>
-
+    
         <tr>
-
+    
             <td>Quick start</td>
-
+    
             <td>Ctrl+Alt+A</td>
-
+    
         </tr>
-
+    
         <tr>
-
+    
             <td>Full screenshot</td>
-
+    
             <td>Print</td>
-
+    
         </tr>
-
+    
         <tr>
-
+    
             <td>Delay screenshot</td>
-
+    
             <td>Ctrl+Print</td>
-
+    
         </tr>
-
+    
         <tr>
-
+    
             <td>Undo</td>
-
+    
             <td>Ctrl+Z</td>
-
+    
         </tr>
-
+    
         <tr>
-
+    
             <td>Exit</td>
-
+    
             <td>Esc</td>
-
+    
         </tr>
-
+    
         <tr>
-
+    
             <td>&nbsp;</td>
-
+    
             <td>&nbsp;</td>
-
+    
         </tr>
-
+    
     </tbody>
 
 </table>
@@ -130,57 +130,57 @@ It will save you both time and efforts to operate with shortcuts.
 <table class="block2">
 
     <caption>Painting</caption>
-
+    
     <tbody>
-
+    
         <tr>
-
+    
             <td>Rectangle</td>
-
+    
             <td>Alt+1</td>
-
+    
         </tr>
-
+    
         <tr>
-
+    
             <td>Ellipse</td>
-
+    
             <td>Alt+2</td>
-
+    
         </tr>
-
+    
         <tr>
-
+    
             <td>Arrow</td>
-
+    
             <td>Alt+3</td>
-
+    
         </tr>
-
+    
         <tr>
-
+    
             <td>Pencil</td>
-
+    
             <td>Alt+4</td>
-
+    
         </tr>
-
+    
         <tr>
-
+    
             <td>Text</td>
-
+    
             <td>Alt+5</td>
-
+    
         </tr>
-
+    
         <tr>
-
+    
             <td>Color</td>
-
+    
             <td>Alt+6</td>
-
+    
         </tr>
-
+    
     </tbody>
 
 </table>
@@ -188,73 +188,73 @@ It will save you both time and efforts to operate with shortcuts.
 <table class="block2">
 
     <caption>Size Adjustment</caption>
-
+    
     <tbody>
-
+    
         <tr>
-
+    
             <td>Increase height up</td>
-
+    
             <td>Ctrl+Up</td>
-
+    
         </tr>
-
+    
         <tr>
-
+    
             <td>Increase height down</td>
-
+    
             <td>Ctrl+Down</td>
-
+    
         </tr>
-
+    
         <tr>
-
+    
             <td>Increase width left</td>
-
+    
             <td>Ctrl+Left</td>
-
+    
         </tr>
-
+    
         <tr>
-
+    
             <td>Increase width right</td>
-
+    
             <td>Ctrl+Right</td>
-
+    
         </tr>
-
+    
         <tr>
-
+    
             <td>Decrease height up</td>
-
+    
             <td>Ctrl+Shift+Up</td>
-
+    
         </tr>
-
+    
         <tr>
-
+    
           <td>Decrease height down</td>
-
+    
           <td>Ctrl+Shift+Down</td>
-
+    
         </tr>
-
+    
         <tr>
-
+    
             <td>Decrease width left</td>
-
+    
             <td>Ctrl+Shift+Left</td>
-
+    
         </tr>
-
+    
         <tr>
-
+    
           <td>Decrease width right</td>
-
+    
           <td>Ctrl+Shift+Right</td>
-
+    
         </tr>
-
+    
     </tbody>
 
 </table>
@@ -262,73 +262,73 @@ It will save you both time and efforts to operate with shortcuts.
 <table class="block2">
 
     <caption>Save</caption>
-
+    
     <tbody>
-
+    
         <tr>
-
+    
             <td>Save</td>
-
+    
             <td>Ctrl+S</td>
-
+    
         </tr>
-
+    
         <tr>
-
+    
             <td>Copy to Clipboard</td>
-
+    
             <td>Ctrl+C</td>
-
+    
         </tr>
-
+    
         <tr>
-
+    
             <td>&nbsp;</td>
-
+    
             <td>&nbsp;</td>
-
+    
         </tr>
-
+    
         <tr>
-
+    
           <td>&nbsp;</td>
-
+    
           <td>&nbsp;</td>
-
+    
         </tr>
-
+    
         <tr>
-
+    
             <td>&nbsp;</td>
-
+    
             <td>&nbsp;</td>
-
+    
         </tr>
-
+    
         <tr>
-
+    
           <td>&nbsp;</td>
-
+    
           <td>&nbsp;</td>
-
+    
         </tr>
-
+    
         <tr>
-
+    
             <td>&nbsp;</td>
-
+    
             <td>&nbsp;</td>
-
+    
         </tr>
-
+    
         <tr>
-
+    
           <td>&nbsp;</td>
-
+    
           <td>&nbsp;</td>
-
+    
         </tr>
-
+    
     </tbody>
 
 </table>
@@ -442,71 +442,67 @@ While capturing screenshots, you can click on the icons on toolbar to complete v
 <table class="block1">
 
     <caption>Icon Description</caption>
-
+    
     <tbody>
-
+    
         <tr>
-
+    
             <td><img src="icon/rect.svg" alt="recttool" class="inline" /></td>
-
+    
             <td>Rectangle</td>
-
+    
             <td class="blank"></td>
-
+    
             <td><img src="icon/ellipse.svg" alt="ellipsetool" class="inline" /></td>
-
+    
             <td>Ellipse</td>
-
-	    <td class="blank"></td>
-
+    
+           <td class="blank"></td>
+    
             <td><img src="icon/arrow.svg" alt="arrow" class="inline" /></td>
-
+    
             <td>Arrow</td>
-
+    
         </tr>
-
+    
           <tr>
-
+    
             <td><img src="icon/pencil.svg" alt="pencil" class="inline" /></td>
-​    
-
             <td>Pencil</td>
-
+    
             <td class="blank"></td>
-
+    
             <td><img src="icon/text.svg" alt="text" class="inline" /></td>
-
+    
             <td>Text</td>
-
+    
             <td class="blank"></td>
-
+    
             <td><img src="icon/color.svg" alt="color" class="inline" /></td>
-​    
-
             <td>Color</td>
-
+    
         </tr>
-
+    
           <tr>
-
+    
             <td><img src="icon/save.svg" alt="save" class="inline" /></td>
-
+    
             <td>Save</td>
-
+    
             <td class="blank"></td>
-
+    
             <td><img src="icon/exit.svg" alt="exit" class="inline" /></td>
-
+    
             <td>Exit</td>
-
+    
              <td class="blank"></td>
-
+    
             <td>&nbsp;</td>
-
+    
             <td>&nbsp;</td>
-
+    
         </tr>
-
+    
     </tbody>
 
 </table>

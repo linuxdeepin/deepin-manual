@@ -10,7 +10,7 @@ You can run and colse Deepin Screen Recorder by one of the following operations,
 
 ### Run Deepin Screen Recorder
 
-1. Click on ![deepin-launcher](icon/deepin-launcher.svg) on Dock or move the mouse pointer to the top left corner of screen to enter launcher interface.
+1. Click  ![deepin-launcher](icon/deepin-launcher.svg) on Dock to enter launcher interface.
 2. Find ![deepin-screen-recorder](icon/deepin-screen-recorder.svg) to click on, you can:
 
  - Click on **Send to desktop** to create a desktop shortcut.

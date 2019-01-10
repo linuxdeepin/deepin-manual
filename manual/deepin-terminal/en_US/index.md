@@ -13,7 +13,7 @@ You can run, exit or create shortcuts for Deepin Terminal.
 
 ### Run Deepin Terminal ###
 
-1. Click on ![launcher-24](icon/launcher-24.svg) on dock to enter launcher interface.
+1. Click ![launcher-24](icon/launcher-24.svg) on dock to enter launcher interface.
 2. Find ![terminal-24](icon/terminal-24.svg) to click on, you can:
  - Click on **Send to desktop** to create a desktop shortcut.
  - Click on **Send to dock** to fix it on dock.
@@ -47,13 +47,13 @@ You can right click on Deepin Terminal interface to do daily operations.
  ![1|rightclick](jpg/rightclick.jpg)
 
 
-### Search ###
+### Find ###
 
-You can use the search function to quickly search contents in terminal.
+You can use the "Find" function to quickly search contents in terminal.
 
 1. Right click on Deepin Terminal interface.
 
-2. Click on **Search**.
+2. Click on **Find**.
 
 3. Type the word in search box and click on ![Enter](icon/Enter.svg).
 
@@ -64,67 +64,64 @@ You can use the search function to quickly search contents in terminal.
 > ![tips](icon/tips.svg): Press ![Enter](icon/Enter.svg) to search down from current location. You can also click on ![up](icon/up.svg) and ![down](icon/down.svg) to search.
 
 
-### Google ###
+### Web Search ###
 
-You can search the keyword through Google in terminal.
+You can search the keyword through web browser in terminal.
 
-1. Type some words in terminal.
+1. Select the words in terminal.
 
-2. Selected the words and right click to select **Google**.
+2. Right click to **Search** and select Google or other search engines.
 
-3. The words will be searched and the results will be displayed in Google.
+3. The words will be searched and the results will be displayed in web browser.
 
 
 ### Copy/Paste ###
 
 You can freely copy and paste the contents or commands among terminal and anywhere else.
 
-1. Select the commands or contents to be copied.
+1. Select the commands or contents.
 
-2. Right click to select **Copy** to copy elsewhere.
+2. Right click to select **Copy**.
 
-3. If you want to paste on terminal, right click to select **Paste**.
+3. Right click to **Paste** the contents at anywhere.
 
-> ![tips](icon/tips.svg): If the content is a link, you can also right click to copy by hovering on it even no contents selected.
-
+> ![tips](icon/tips.svg): If it is a link, just right click on it to copy without selection.
+> ![tips](icon/tips.svg): Check **Copy on select** in settings window, to copy the selected text to clipboard automatically.
 
 ### Quake Mode ###
 
-Press ![Alt](icon/Alt.svg) + ![F2](icon/F2.svg) to open a quake window, and then hide after lost focus.
+Press ![Alt](icon/Alt.svg) + ![F2](icon/F2.svg) to open a quake window, and press again to hide it.
 
 > ![tips](icon/tips.svg): You can also click on ![terminal-24](icon/terminal-24.svg) on Dock to select **Quake Terminal** to open a quake window.
 
-### Open File and Application Program ###
+### Open File and Application ###
 
-On Deepin Terminal interface, select the file in current directory and right-click to select **Open** to call the system application to open the selected file.
+On Deepin Terminal interface, select the file in current directory and right click to **Open** it by the application.
 
 1. On Deepin Terminal interface, input **ls -al** to display files in current directory.
-
-2. Double-click the left mouse button to select the file name.
-
-3. Right-click.
-
-4. Click on **Open**.
+2. Double click to select the file.
+3. Right click and select **Open**.
+4. The file will open with the proper application.
 
  ![1|openfile](jpg/openfile.jpg)
 
 
 ### Switch Encoding ###
 
-You can quickly switch the encoding according to your needs.
+When there is messy code or display error, you may switch the encoding to solve it.
 
 1. Right click on Deepin Terminal interface.
 
 2. Select **Encoding**.
 
-3. Select the encoding to switch in the encoding list.
+3. Select one encoding in the list to switch.
 
  ![1|unicode](jpg/unicode.jpg)
 
 
 ## Window Operations
 
-Window is the base for you to do other operations in terminal. You can create many workspaces and split more windows.
+Window is the base for you to do any operations in terminal. You can create many workspaces and split one into more windows.
 
 
 ### New Window ###
@@ -161,7 +158,7 @@ You can create a new window in the following ways:
 
   - Click on **Horizontal split** to split the interface into top and bottom parts.
 
-2. You can input commands in each terminal window, and can also view the results of command executed.
+2. You can input commands in each terminal window, and view both the results of the executed command.
 
 > ![tips](icon/tips.svg): You can also press ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![J](icon/J.svg) on keyboard to split vertically, and press ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![H](icon/H.svg) to split horizontally.
 
@@ -177,7 +174,6 @@ You can create a new window in the following ways:
 3. If you want to restore the normal display, please press ![F11](icon/F11.svg).
 
 > ![notes](icon/notes.svg): You can also right click to select **Fullscreen** or **Exit fullscreen** on Deepin Terminal interface.
-> For developers, can use command **-m --window-mode ** to adjust the window mode.
 
 ### Close Window ###
 
@@ -214,16 +210,16 @@ You can freely switch between multiple workspaces by one of the following operat
 
 - Directly click the workspace tab to select a workspace.
 - Press ![Ctrl](icon/Ctrl.svg)+![Tab](icon/Tab.svg) to switch in sequence.
-- Press ![Alt](icon/Alt.svg)+ 1~9 Number key to select the workspace; when workspaces are more than 9, the last workspace will be selected rather the ninth one.
+- Press ![Alt](icon/Alt.svg)+ 1~9 Number key to select the workspace; when there are more than 9 workspaces, the last workspace will be selected rather the ninth one.
 
 
 ### Close Workspace ###
 
 - Move the mouse pointer over the preview window of workspace, click on ![close_icon](icon/close_icon.svg) to close the workspace.
 
-- Press ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![W](icon/W.svg)
+- Press ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![w](icon/W.svg).
 
-> ![tips](icon/tips.svg): When there is only one window in workspace, you can also right click to select **Close window** to close.
+> ![tips](icon/tips.svg): When there is only one window in workspace, you can also right click and select **Close window** to close the workspace.
 
 
 ## Remote Server Management
@@ -335,7 +331,7 @@ You can upload and download files after logged in a server.
 
 2. Click on **Switch theme**.
 
-3. The themes will be displayed on the right list, then you can select one to take effect right now.
+3. Select one from the theme list and it takes effect right now.
 
  ![1|change](jpg/change.jpg)
 
@@ -393,18 +389,14 @@ You can upload and download files after logged in a server.
 3. In the interface of **Advanced**, you can:
 
   - Set cursor style.
-
   - Enable or disable **Cursor blink**.
-
   - Enable or disable **Cursor autohide**.
-
+  - Enable or disable **Copy on select**.
   - Enable or disable **Scroll on keystroke**.
-
   - Enable or disable **Scroll on output**.
-
   - Set window startup mode.
-
   - Enable or disable **Hide quake window after lost focus**.
+  - Enable or disable **Blur background**.
 
  ![0|advanced](jpg/advanced.jpg)
 

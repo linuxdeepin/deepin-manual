@@ -2,7 +2,7 @@
 
 ## Overview
 
-Deepin editor is a simple text editing tool. You can use it to write a simple text document, or use its advanced features as a code editing tool that supports code syntax highlighting.
+Deepin Editor is a simple text editing tool. You can use it to write a simple text document, or use its advanced features as a code editing tool that supports code syntax highlighting.
 
 ![overview](jpg/overview.jpg)
 
@@ -126,9 +126,9 @@ You can also use ![Alt](icon/Alt.svg) + ![U](icon/U.svg) / ![L](icon/L.svg) / ![
 ### Highlight Text
 Deepin Editor supports highlighting different kinds of texts.
 
-Right click and select **Highlight**, choose the type of text you want to highlight.
+Click the triangle symbol at the right corner of status bar at bottom, and select the type of text you want to highlight.
 
-![highlight](jpg/highlight.jpg)
+![highlight](jpg/highlight.png)
 
 ### Delete Text
 
@@ -147,7 +147,7 @@ If you make a misoperation, press ![Ctrl](icon/Ctrl.svg) + ![Z](icon/Z.svg) to u
 
 ### Find Text
 
-1. Press ![Ctrl](icon/Ctrl.svg) + ![F](icon/F.svg) to open "Find" box below.
+1. Click on ![menu](icon/icon_menu.svg), and select **Find**, or press ![Ctrl](icon/Ctrl.svg) + ![F](icon/F.svg) to open "Find" box below.
 2. Input the text you want to find. Once input, all the matches will be highlighted.
 3. Click **Next**, **Previous** to find each match, or press ![Enter](icon/Enter.svg) to find next match.
 4. Press ![Esc](icon/Esc.svg) or click close button to close the dialog box.
@@ -155,7 +155,7 @@ If you make a misoperation, press ![Ctrl](icon/Ctrl.svg) + ![Z](icon/Z.svg) to u
 > ![tips](icon/tips.svg): Select the text and then press ![Ctrl](icon/Ctrl.svg) + ![F](icon/F.svg), the text will be automatically in the "Find" box.
 
 ### Replace Text
-1. Press ![Ctrl](icon/Ctrl.svg) + ![H](icon/H.svg) to open "Replace" box below.
+1. Click on ![menu](icon/icon_menu.svg), and select **Replace**, or press ![Ctrl](icon/Ctrl.svg) + ![H](icon/H.svg) to open "Replace" box below.
 2. Input the text to be replaced and the new text.
 3. Click **Replace** to replace the matches one by one, click **Replace Rest**、**Replace All** to replace the rest or all the matches. Click **Skip** to skip the current matching text.
 4. Press ![Esc](icon/Esc.svg) or click close button to close the dialog box.

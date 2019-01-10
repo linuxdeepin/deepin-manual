@@ -10,7 +10,7 @@
 
 ### 运行深度录屏
 
-1. 点击桌面底部的 启动器 ![deepin-launcher](icon/deepin-launcher.svg) 或将鼠标指针移到屏幕左上角，进入启动器界面。
+1. 点击桌面底部的启动器 ![deepin-launcher](icon/deepin-launcher.svg) ，进入启动器界面。
 2. 上下滚动鼠标滚轮，通过浏览找到 ![deepin-screen-recorder](icon/deepin-screen-recorder.svg) 进行点击运行。
 3. 将鼠标指针置于深度录屏应用程序的图标上，右键点击图标，您可以：
 

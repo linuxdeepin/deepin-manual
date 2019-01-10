@@ -12,7 +12,7 @@ You can run, close and create a shortcut for Deepin File Manager by the followin
 
 ### Run Deepin File Manager
 
-1. Click on ![Launcher](icon/launcher-24.svg) or move the mouse pointer to the upper left corner of the screen to enter Launcher interface.
+1. Click ![Launcher](icon/launcher-24.svg) on dock to enter Launcher interface.
 2. Locate ![File Manager](icon/deepin-file-manager.svg) by scrolling mouse wheel or searching by "deepin file manager" in Launcher interface.
 3. Right click on ![File Manager](icon/deepin-file-manager.svg), you can
  - Click on **Send to desktop** to create a desktop shortcut.
@@ -181,17 +181,19 @@ If the application you want to open the file is not in the list, you can:
 
 ![0|open_with](jpg/open_with.png)
 
+> ![tips](icon/tips.svg): You can right click multiple files with the same type, and select **Open with** to open them just once.
+
 ### Display Modes
 
 Click on ![icon](icon/icon_view_normal.svg) or ![list](icon/list_view_normal.svg) on Deepin File Manager interface to switch between icon view and list view.
 
 ![0|display](jpg/display.png)
 
-- Icon display: It will show the icon, name and thumbnail of the files.
+- Icon view: It will show the icon, name and thumbnail of the files.
 
-![1|normal-view](jpg/normal-view.jpg)
+![1|icon-view](jpg/icon-view.jpg)
 
-- List display: It will show the icon, name, modified time, size and type of the files.
+- List view: It will show the icon, name, modified time, size and type of the files.
 
 ![1|list-view](jpg/list-view.jpg)
 
@@ -218,7 +220,7 @@ Users can view the file/folder properties.
   - File/ folder is more than 16, there will be a general window of properties for all files/folders.
 3. In the popup window, you can view the file/folder information.
 
-![0|properties](jpg/properties.jpg)
+![0|info](jpg/info.jpg)
 
 
 > ![notes](icon/notes.svg): Link path will be added in the properties of linked file/folder.
@@ -345,7 +347,7 @@ Right click on a tag in left navigation bar,  select **Remove** to delete the ta
 
 ### Preview Files
 
-Deepin File Manager supports file preview. Select a file and press the space bar on the keyboard to quickly preview the file info, including image resolution, document size, text content, audio and video playback, etc.
+Deepin File Manager supports file preview. Select a file and press the space bar on the keyboard to quickly preview the file info, including image resolution, document size, text content, gif, audio and video playback, etc.
 
 #### Preview Video
 
@@ -436,23 +438,26 @@ On Deepin File Manager interface, you can mount/unmount, remove, format and decr
 ### Display Disks
 
 Mounted disks are displayed in the left navigation bar of Deepin File Manager. Including:
-- Local disk, which includes all the partitions in local disk.
+- Local disk, which includes all the partitions of local disk.
 - External disk, which includes mobile hard disk, CD/DVD and USB flash disk.
 - Mobile device, which includes mobile phone storage, storage card, SD card and so on.
 
 ### Unmount/Eject/Safely Remove Disks
 
-1. In the navigation bar of Deepin File Manager, right click on the disk.s
-2. Select **Eject** to eject the removable disk/device, the disk will be removed from the disk list.
-3. Select **Unmount** to unmount the disk. The disk will be still in the disk list.
+1. In the navigation bar of Deepin File Manager, right click on the disk.
+
+2. For local disk, select **Unmount** to unmount the disk. The disk will be still in the disk list.
+
+3. For external disk, select **Unmount** to unmount and eject the removable disk/device, the disk will be removed from the disk list.
+
 4. Select **Safely Remove** to power off and remove the external device.
 
-![0|eject](jpg/eject.jpg) ![0|safely_remove](jpg/safely_remove.jpg)
+![0|disk](jpg/disk.jpg)
 
-> ![tips](icon/tips.svg): Users can click on ![unmount](icon/unmount_normal.svg) in the navigation bar to eject the disks.
+> ![tips](icon/tips.svg): Users can click on ![unmount](icon/unmount_normal.svg) in the navigation bar to unmount the disk.
 
 ### Rename Disk
-Unmount the disk, right click it and select **Rename** to change the disk label.
+Unmount the disk, right click on it and select **Rename** to change the disk label.
 
 ### Format Disks
 
@@ -463,7 +468,6 @@ Unmount the disk, right click it and select **Rename** to change the disk label.
 
 > ![notes](icon/notes.svg): Fast format can be finished in a few seconds, but the data could be restored by file recovery tools. If you don't want these data to be restored, you can uncheck this option box and format the disk.
 
-![0|format](jpg/format.jpg)
 
 ## Main Menu
 

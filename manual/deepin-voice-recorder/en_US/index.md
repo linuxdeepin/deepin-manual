@@ -10,7 +10,7 @@ You can run and close Deepin Voice Recorder by one of the following operations, 
 
 ### Run Deepin Voice Recorder
 
-1. Click on ![deepin-launcher](icon/deepin-launcher.svg) on Dock or move the mouse pointer to the top left corner of screen to enter Launcher interface.
+1. Click ![deepin-launcher](icon/deepin-launcher.svg) on Dock to enter Launcher interface.
 2. Find ![deepin-voice-recorder](icon/deepin-voice-recorder.svg) to click on, you can:
 
  - Click on **Send to desktop** to create a desktop shortcut.
