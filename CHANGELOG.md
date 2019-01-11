@@ -1,3 +1,13 @@
+<a name="2.0.18"></a>
+## 2.0.18 (2019-01-11)
+
+
+#### Bug Fixes
+
+*   rpath for loongson ([ef3d1a8c](https://github.com/linuxdeepin/deepin-manual/commit/ef3d1a8c1beb2aa7f107d6fde1277c4f12750009))
+
+
+
 2018-12-28 2.0.16 myml <wurongjie@deepin.com>
     * Fix deepin-cloud-print app icon
 
