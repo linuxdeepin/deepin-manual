@@ -202,7 +202,15 @@ add_executable(dman
                ${RESOURCES_FILES}
                ${VIEW_FILES}
                )
-target_link_libraries(dman ${LINK_LIBS})
+set(CMAKE_SKIP_BUILD_RPATH FALSE)
+set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
+set(CMAKE_INSTALL_RPATH "${QCef_LIBDIR}/qcef")
+set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+set_target_properties(dman
+                      PROPERTIES INSTALL_RPATH "${QCef_LIBDIR}/qcef")
+target_link_libraries(dman ${QCef_LIBDIR}/qcef/libcef.so
+                      ${LINK_LIBS})
+
 # Auto generate qm files and search.db in release mode.
 if (CMAKE_BUILD_TYPE MATCHES Release)
   add_dependencies(dman
