@@ -11,7 +11,7 @@ Deepin Movie, shares extreme play experience with you. Use it, you will love it!
 
 ### Run Deepin Movie
 
-1. On Dock, click on ![launcher-24](icon/launcher-24.svg) to enter Launcher.
+1. On Dock, click on ![launcher_icon](icon/launcher_icon.svg) to enter Launcher.
 2. Right click on ![movie-24](icon/movie-24.svg), you can:
   - Click on **Send to desktop** to create a desktop shortcut.
   - Click on **Send to dock** to fix its icon on Dock.
@@ -25,86 +25,12 @@ Deepin Movie, shares extreme play experience with you. Use it, you will love it!
 - Right click on ![movie-24](icon/movie-24.svg) on Dock, select **Close All** to exit.
 - Click on ![main_memu](icon/main_menu.svg) and select **Exit** to exit.
 
-![1|close_all](jpg/close_all.jpg)
-
 ### View Shortcuts
 
 1. On Deepin Movie Interface, press ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![QM](icon/QM.svg).
 2. You can view all the shortcuts on the preview interface.
 
-<p>
-<table>
-     <tr>
-        <td colspan="2">PLAYBACK</td>
-        <td colspan="2">FRAME/SOUND</td>
-        <td colspan="2">SUBTITLE</td>
-     </tr>
-     <tr>
-        <td>Pause/Play</td>
-        <td>Space</td>
-        <td>Mini mode</td>
-        <td>F2</td>
-        <td>0.5s forward</td>
-        <td>Shift+Right</td>
-     </tr>
-     <tr>
-        <td>Forward</td>
-        <td>Right</td>
-        <td>Volume up</td>
-        <td>Up</td>
-        <td>0.5s backward</td>
-        <td>Shift+Left</td>
-     </tr>
-     <tr>
-        <td>Rewind</td>
-        <td>Left</td>
-        <td>Volume down</td>
-        <td>Down</td>
-        <td>-</td>
-        <td>-</td>
-     </tr>
-     <tr>
-        <td>Fullscreen</td>
-        <td>Return</td>
-        <td>Mute</td>
-        <td>M</td>
-        <td>-</td>
-        <td>-</td>
-     </tr>
-     <tr>
-        <td>Playlist</td>
-        <td>F3</td>
-        <td colspan="2">FILE</td>
-        <td colspan="2">SCREENSHOT</td>
-     </tr>
-     <tr>
-        <td>Speed up</td>
-        <td>Ctrl+right</td>
-        <td>Open file</td>
-        <td>Ctrl+O</td>
-        <td>Film screenshot</td>
-        <td>Alt+A</td>
-     </tr>
-     <tr>
-        <td>Speed down</td>
-        <td>Ctrl+left</td>
-        <td>Open previous</td>
-        <td>PgUp</td>
-        <td>Burst screenshot</td>
-        <td>Alt+S</td>
-     </tr>
-     <tr>
-        <td>Reset speed</td>
-        <td>R</td>
-        <td>Open next</td>
-        <td>PgDown</td>
-        <td>-</td>
-        <td>-</td>
-     </tr>
-</table>
-</p>
-
-![1|shortcuts](jpg/shortcuts.jpg)
+![1|shortcut](jpg/shortcut.jpg)
 
 ## Main Interface
 
@@ -210,7 +136,7 @@ You can play film by the following ways:
 2. Press ![Ctrl](icon/Ctrl.svg)+![Left](icon/Left.svg) to speed down the film
 3. If you want to restore the original play speed, press ![R](icon/R.svg) on keyboard.
 
->![notes](icon/notes.svg): Speed up/down is relative to the original play speed. Eevery pressing is 0.1 times. Maximum speed is 2 times of the original play speed and the minimum is 0.1 times.
+>![notes](icon/notes.svg): Speed up/down is relative to the original play speed. Every pressing is 0.1 times. Maximum speed is 2 times of the original play speed and the minimum is 0.1 times.
 
 ## Basic operations
 On Deepin Movie interface, you can do many operations according to needs.
@@ -218,7 +144,7 @@ On Deepin Movie interface, you can do many operations according to needs.
 ### Adjust Window
 
 1. Right click on Deepin Movie interface.
-2. Select **Fullscreen** to paly in fullscreen.
+2. Select **Fullscreen** to play in fullscreen.
 3. Select **Mini Mode** to play in mini mode.
 4. Select **Always on Top** to put the window on top layer.
 
@@ -242,8 +168,9 @@ On Deepin Movie interface, you can do many operations according to needs.
 
 1. Right click on Deepin Movie interface.
 2. Select **Frame**, you can:
-  - Adjust the flim aspect ratio between 4:3, 16:9, 16:10, 1.85:1 and 2.35:1.
-  - Rotate the flim frame clockwise or counterclockwise.
+  - Adjust the film aspect ratio between 4:3, 16:9, 16:10, 1.85:1 and 2.35:1.
+  - Rotate the film frame clockwise or counterclockwise.
+  - Jump to previous frame/next frame.
 
 ![0|frame](jpg/frame.png)
 
@@ -335,7 +262,7 @@ You can add film to playlist by the following ways:
 2. Select **Settings** > **Basic settings**.
 3. In the option **Play**, you can:
  - Check the box of **Clear playlist when exit**, the playlist will be cleared when you exit Deepin Movie.
- - Check the box of **Remember playback position**, the film will be played automatically from last positon played when Deepin Movie runs.
+ - Check the box of **Remember playback position**, the film will be played automatically from last position played when Deepin Movie runs.
  - Check the box of **Auto add similar files to play**,the related film files will be played one by one after the current film played.
  - Check the box of **Show video preview on mouseover**, the film preview will be shown when hovering on the progress bar.
  - Check the box of **Open a new player for each file played**, a new player will be opened when playing a film file.

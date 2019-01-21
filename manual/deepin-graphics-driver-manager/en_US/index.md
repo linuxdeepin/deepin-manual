@@ -4,7 +4,7 @@
 
 Deepin Graphics Driver Manager is a compact and easy to use graphics driver managing tool. It includes graphics card hardware detection, graphics driver installation, graphics driver solution switching,  graphics driver automatic recovery and other functions.
 
- ![0|process1](jpg/process1.jpg)
+ ![0|intel](jpg/intel.jpg)
 
  ![0|process2](jpg/process2.jpg)
 
@@ -77,13 +77,17 @@ If the system detected AMD graphics card, no other solutions available,  just cl
 
 ## Main Menu
 
+### Dark Theme
+
+1. On Deepin Graphics Driver Manager interface, click on ![main_menu](icon/main_menu.svg).
+2. Select **Dark Theme**.
+3. The interface will switch to dark theme.
+
 ### Help
 
 1. On Deepin Graphics Driver Manager interface, click on ![main_menu](icon/main_menu.svg).
 2. Select **Help**.
 3. View the manual.
-
-
 
 ### About
 

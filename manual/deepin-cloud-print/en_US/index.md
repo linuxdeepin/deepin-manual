@@ -6,20 +6,15 @@ Deepin Cloud Print is a new printing solution developed by Wuhan Deepin Technolo
 
 Deepin Cloud Print consists of Server (in Windows) and Client (in deepin), which will be configured respectively.
 
-## Configurations of Server
+## Server Configurations
 
-You can install the application program of Deepin Cloud Print Server and configure the authorization code in Windows.
+You can install the application program for Deepin Cloud Print Server and configure the authorization code in Windows.
 
 ### Install Deepin Cloud Print
 
-The installation program of Deepin Cloud Print Server is integrated in deepin ISO. You only need to extract to install it.
-
-> ![notes](icon/notes.svg): DeepinCloudPrintServerInstaller_*.exe is the installation program of Deepin Cloud Print Server in deepin ISO.
-
-1. Get deepin 15 ISO.
-2. Extract the installation program of Deepin Cloud Print Server.
-3. Install in Windows.
-4. Finish the installation according to its guide.
+1. Download the installation program for Deepin Cloud Print Server.
+2. Install in Windows.
+3. Finish the installation by wizard.
 
 ### Set The Authorization Code
 
@@ -35,7 +30,7 @@ The server IP address will be acquired in Windows automatically after finished t
 
  ![0|windowssetting](jpg/windowssetting.jpg)
 
-## Configurations of Client
+## Client Configurations
 
 You can open Deepin Cloud Print Client in deepin to add one or more cloud printers.
 
@@ -56,11 +51,9 @@ You can open Deepin Cloud Print Client in deepin to add one or more cloud printe
 
 > ![notes](icon/notes.svg): If you need to delete the printer, please enter "Print Settings" to select the printer, then select **Delete** in the context menu.
 
-## Test of Cloud Print
+## Print Test 
 
 You can use cloud print to print files in deepin, taking .doc files as the example.
-
-> ![attention](icon/attention.svg): If authorization code has been updated in Windows, when you are printing a file, there will be a prompt of "The authorization code of cloud print server has been updated, please input a new authorization code". Please contact the administrator to get the new one to print. If errors occurred during printing, please reset according to the errors.
 
 1. Open .doc files by WPS.
 2. Click on **Writer** on the top left corner.
@@ -69,3 +62,5 @@ You can use cloud print to print files in deepin, taking .doc files as the examp
 5. Click on **OK**.
 
  ![0|printsetting](jpg/printsetting.jpg)
+
+> ![attention](icon/attention.svg): If authorization code has been updated in Windows, when you are printing a file, there will be a prompt of "The authorization code of cloud print server has been updated, please input a new authorization code". Please contact the administrator to get the new one to print. If errors occurred during printing, please reset according to the errors.

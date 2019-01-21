@@ -10,7 +10,7 @@ You can run, close and create a shortcut for Deepin Music by the following ways.
 
 ### Run Deepin Music
 
-1. Click on ![launcher_icon](icon/launcher_icon.svg) or move the mouse pointer to the upper left corner of the screen to enter Launcher interface.
+1. Click ![launcher_icon](icon/launcher_icon.svg) on dock to enter Launcher interface.
 2. Locate ![music_icon-24](icon/music_icon-24.svg) by scrolling mouse wheel or searching by "deepin music" in Launcher interface.
 3. Right click on the Deepin Music application icon, you can
  - Click on **Send to desktop** to create a desktop shortcut.
@@ -226,6 +226,16 @@ On Deepin Music interface, you can create, delete, rename playlist and add music
 You can add new playlists/songs, set the options, view or exit Deepin Music.
 
 
+### Dark Theme
+
+The theme of Deepin Music is light, you can click on **Dark theme** to switch.
+
+1. On Deepin Music interface, click on ![menu](icon/icon_menu.svg) in the top right corner.
+
+2. Click on **Dark theme** to switch the theme of Deepin Music.
+
+![0|theme](jpg/theme.png)
+
 ### Basic Settings
 
 1. On Deepin Music interface, click on ![menu](icon/icon_menu.svg).
@@ -250,29 +260,6 @@ You can add new playlists/songs, set the options, view or exit Deepin Music.
 
 > ![notes](icon/notes.svg): You can also click on **Restore Defaults** to restore all settings.
 
-
-### Switch Theme
-
-The theme of Deepin Music is light, you can click on **Dark theme** to switch.
-
-1. On Deepin Music interface, click on ![menu](icon/icon_menu.svg) in the top right corner.
-
-2. Click on **Dark theme** to switch the theme of Deepin Music.
-
-![0|theme](jpg/theme.png)
-
-
-### About
-
-You can click on **About** to view the introduction of Deepin Music.
-
-1. On Deepin Music interface, click on ![menu](icon/icon_menu.svg) in the top right corner.
-
-2. Click on **About** to view the introduction of Deepin Music.
-
-
-
-
 ### Help
 
 You can click on **Help** to view the manual.
@@ -281,7 +268,13 @@ You can click on **Help** to view the manual.
 
 2. Click on **Help** to view the manual of Deepin Music.
 
+### About
 
+You can click on **About** to view the introduction of Deepin Music.
+
+1. On Deepin Music interface, click on ![menu](icon/icon_menu.svg) in the top right corner.
+
+2. Click on **About** to view the introduction of Deepin Music.
 
 
 ### Exit
