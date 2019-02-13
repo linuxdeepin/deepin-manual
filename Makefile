@@ -7,11 +7,7 @@ all: dist
 dependencies: nodejs
 	# Installing node modules and transpile scripts
 	echo "Installing dependencies"
-	if [ -d "/opt/libjs-dmanual-dev" ]; then \
-		ln -sf /opt/libjs-dmanual-dev/node_modules ./PageRoot/node_modules; \
-	else \
-		cd PageRoot && PATH="$(shell pwd)/symdir/:$$PATH" npm --production install; \
-	fi
+	cd PageRoot && PATH="$(shell pwd)/symdir/:$$PATH" npm --production install;
 
 dist: dependencies sass
 	echo "Transpiling"
