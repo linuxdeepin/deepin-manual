@@ -2,9 +2,10 @@
 PageRoot/node_modules
 PageRoot/bower_components
 PageRoot/www/nls
-PageRoot/www/style/**/*.css
+PageRoot/www/style/*
 PageRoot/www/scripts
 PageRoot/www/favicon.svg
+PageRoot/package-lock.json
 
 unused
 symdir

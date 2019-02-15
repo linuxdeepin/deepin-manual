@@ -27,10 +27,10 @@ nodejs:
 	ln -sf /usr/bin/nodejs ./symdir/node
 
 install:
-	mkdir -p $(DESTDIR)$(PREFIX)/{PageRoot,DMan,dman-old}
+	mkdir -p $(DESTDIR)$(PREFIX)/{PageRoot,DMan,manual}
 	cp -r PageRoot/{www,plugins,manifest.json} $(DESTDIR)$(PREFIX)/PageRoot/
 	cp -r DMan/* $(DESTDIR)$(PREFIX)/DMan/
-	cp -r manual/* $(DESTDIR)$(PREFIX)/dman-old/
+	cp -r manual/* $(DESTDIR)$(PREFIX)/manual/
 	rm -r $(DESTDIR)$(PREFIX)/PageRoot/www/{jssrc,scss}
 	find $(DESTDIR)$(PREFIX) -name "__pycache__" -print0 | xargs -0 rm -rf
 
@@ -39,6 +39,12 @@ install:
 	rm -rf $(DESTDIR)$(PREFIX)/DMan/tests
 	rm -rf $(DESTDIR)$(PREFIX)/DMan/{main2.py,QmlResizable.py,view.py,webview.py}
 	chmod +x $(DESTDIR)$(PREFIX)/DMan/main.py
+
+	# dbus portal
+	mkdir -p $(DESTDIR)/usr/share/dbus-1/services/
+	install -Dm755 dbus/portal.py $(DESTDIR)$(PREFIX)/DMan/
+	install -Dm644 dbus/com.deepin.Manual.Open.service $(DESTDIR)/usr/share/dbus-1/services/
+	install -Dm644 dbus/com.deepin.Manual.Search.service $(DESTDIR)/usr/share/dbus-1/services/
 
 	# Atom-shell script
 	# cp {main.js,package.json} $(DESTDIR)$(PREFIX)/
