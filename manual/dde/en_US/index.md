@@ -1,13 +1,13 @@
 # Desktop Environment|../common/deepin-system.svg|
 
 ## Overview
-deepin is an elegant, easy to use and reliable Linux desktop operating system developed by Deepin Technology Co., Ltd.  Google Chrome, QQ, Netease Cloud Music and many deepin applications have been preinstalled. It not only meets your office needs, but also allows you to experience a variety of recreational activities. With continually improved and perfected functions, we believe deepin will be loved and used by more and more users.
+deepin is an elegant, easy to use and reliable Linux desktop operating system developed by Deepin Technology Co., Ltd.  Many polpular software and deepin applications have been preinstalled. It not only meets your office needs, but also allows you to experience a variety of recreational activities. With continually improved and perfected functions, we believe deepin will be loved and used by more and more users.
 
 ![1|desk](jpg/desk.jpg)
 
 ### Welcome
 
-After login deepin for the first time, a welcome program will automatically start. You can watch the introduction video to get deepin new features, select desktop mode and icon theme, enable window effect, and know more about deepin.
+After login deepin for the first time, a welcome program will automatically start. View the introduction to get deepin new features, select desktop mode and icon theme, enable window effect, and know more about deepin.
 
 ![0|welcome](jpg/welcome.jpg)
 
@@ -69,8 +69,15 @@ You can create new folder, common documents, or doing general operations for fil
             <td>Create link</td>
             <td>Select one file/folder to create a link.</td>
         </tr>
-        <tr>
-            <td>Properties</td>
+
+​    	<tr>
+        <td>Tag information</td>
+        <td>Select one file/folder to add a tag.</td>
+    </tr>
+
+​       <tr>
+
+​            <td>Properties</td>
             <td>View the basic info of a file/folder, or to change the permission and open with options.</td>
         </tr>
     </tbody>
@@ -157,34 +164,23 @@ You can add application shortcuts to Dock from Launcher and do related operation
             <td><img src="icon/deepinmusic_icon.svg" alt="Deepin Music" class="inline" /></td>
             <td>Click to open Deepin Music</td>
             <td class="blank"></td>
-            <td><img src="icon/deepinmovie_icon.svg" alt="Deepin Movie" class="inline" /></td>
-            <td>Click to open Deepin Movie</td>
-        </tr>
-        <tr>
-            <td><img src="icon/chrome_icon.svg" alt="Browser" class="inline" /></td>
+ <td><img src="icon/firefox.svg" alt="Browser" class="inline" /></td>
             <td>Click to open webpages</td>
-            <td class="blank"></td>
-            <td><img src="icon/controlcenter_icon.svg" alt="Control Center" class="inline" /></td>
-            <td>Click to open Control Center</td>
         </tr>
         <tr>
-            <td><img src="icon/shutdown_icon.svg" alt="Shutdown" class="inline" /></td>
-            <td>Click to enter shutdown interface</td>
+           <td><img src="icon/controlcenter_icon.svg" alt="Control Center" class="inline" /></td>
+            <td>Click to open Control Center</td>
             <td class="blank"></td>
+             <td><img src="icon/shutdown_icon.svg" alt="Shutdown" class="inline" /></td>
+            <td>Click to enter shutdown interface</td>
+        </tr>
+        <tr>
             <td><img src="icon/datetime_icon.svg" alt="Date and Time" class="inline" /></td>
             <td>Click to open Deepin Calendar</td>
-        </tr>
-
-<tr>
-                       <td><img src="icon/trash_icon.svg" alt="Trash" class="inline" /></td>
-            <td>Click to open the trash</td>
             <td class="blank"></td>
-
-<td></td>
-
-<td></td>
-
-</tr>
+            <td><img src="icon/trash_icon.svg" alt="Trash" class="inline" /></td>
+            <td>Click to open the trash</td>
+        </tr>
 
 </tbody>
 </table>
@@ -207,7 +203,6 @@ You can switch the display mode by the following operations:
 2. Right click to select **Mode**.
 3. Select a display mode.
 
- ![1|mode](jpg/mode.jpg)
 
 ### Set Dock Location
 You can place the Dock on any direction of your desktop.
@@ -216,15 +211,12 @@ You can place the Dock on any direction of your desktop.
 2. Right click to select **Location**.
 3. Select a location.
 
- ![1|location](jpg/location.jpg)
 
 ### Adjust Dock Size
 
 1. On desktop, move the mouse pointer over Dock.
 2. Right click to select **Size**.
 3. Select a size.
-
- ![1|size](jpg/size.jpg)
 
 ### Show/Hide Dock
 
@@ -234,9 +226,6 @@ You can place the Dock on any direction of your desktop.
    - Select **Keep Shown**, Dock will be displayed at the bottom of desktop all the time.
    - Select **Keep Hidden**, Dock will be hidden and only displayed when mouse hovering on Dock.
    - Select **Smart Hide**, Dock will be automatically hidden when Dock area needs to be used.
-
- ![1|status](jpg/status.jpg)
-
 
 ### Show/Hide Plugins
 
@@ -248,7 +237,6 @@ You can place the Dock on any direction of your desktop.
 
 > ![notes](icon/notes.svg): Uncheck the plugin icon, it will be hidden on Dock.
 
- ![1|plugins](jpg/plugins.jpg)
 
 ### Shutdown Interface
 There are two ways to shut down:
@@ -396,9 +384,7 @@ You can choose to uninstall applications you no longer use to save disk space.
 1. In Launcher, right click the application icon.
 2. Click on **Uninstall**.
 
- ![0|uninstallapp](jpg/uninstallapp.jpg)
-
-> ![tips](icon/tips.svg): In **Fashion mode**, drag the application icon in Launcher fullscreen mode to ![trash](icon/trash_icon.svg) on dock to uninstall applications.
+> ![tips](icon/tips.svg): In **Fashion mode**, drag the application icon in Launcher fullscreen mode to ![trash](icon/trash_icon.svg) on dock to uninstall the application.
 
 
 ## Control Center
@@ -482,18 +468,6 @@ You can protect your privacy and data and get security protection by setting acc
 4. Click on **Add Fingerprint** to enter the adding interface.
 5. Put the finger in fingerprint reader, and then click on **Done** after added successfully.
 
-#### Join domain
-
-1. On the homepage of Control Center, click on ![account_normal](icon/account_normal.svg).
-
-2. Click **Join domain**.
-
-3. Input domain server address, admin account and password.
-
-4. Click **Join Domain**.
-
-![notes](icon/notes.svg):  Then you can log in as a domain user by the account and password provided by domain admin.
-
 #### Delete Account
 
 1. On the homepage of Control Center, click on ![account_normal](icon/account_normal.svg).
@@ -563,15 +537,6 @@ Widen your horizon by multiple screens! You can use VGA cable to connect your co
 4. Click on **Save**.
 
 > ![notes](icon/notes.svg): Click **Apply** to use the settings temporarily, it does not save the settings.
-
-#### Screen Projection
-
-1. On the homepage of Control Center, click on ![display_normal](icon/display_normal.svg) to open the display settings.
-2. Select **Wireless Screen Projection**.
-3. Select the device to project.
-4. There will be a icon followed the device name, click again to cancel projection.
-
->![notes](icon/notes.svg): Screen projection needs the support from NIC, so WIFI will be disconnected when screen projection is enabled.
 
 ### Default Application Settings
 If several applications in the same type are installed, you can choose one of them to be the default application to open files.
@@ -677,7 +642,7 @@ You can do short distance wireless communication by Bluetooth by connecting to o
 
 
 ### Network Settings
-Experience the enjoyment of surfing the Internet! You can browse news, play video online or do file download, chat and shopping, etc.
+Experience the enjoyment of surfing the Internet! You can browse news, play online video, download files, chat and shopping, etc.
 
 ![0|internet](jpg/internet.jpg)
 
@@ -790,24 +755,22 @@ Set your speaker and microphone to let you hear more comfortable and sing better
 2. Click on **Speaker** switch to enable the speaker.
 3. Adjust the output volume and left right balance.
 
-
-
 #### Set Microphone
 
 1. On the homepage of Control Center, click on ![sound_normal](icon/sound_normal.svg).
 2. Click on **Microphone** switch to enable the microphone.
 3. Adjust the input volume.
 
-#### Set System Sound Effect
-
-1. On the homepage of Control Center, click on ![sound_normal](icon/sound_normal.svg).
-2. Click on **Sound Effects** switch to enable sound effects.
-
 #### Advanced Settings
 
 1. On the homepage of Control Center, click on ![sound_normal](icon/sound_normal.svg).
 2. Click on **Advanced**.
 3. Select input and output mode.
+
+#### Set System Sound Effect
+
+1. On the homepage of Control Center, click on ![sound_normal](icon/sound_normal.svg).
+2. Click on **Sound Effects** to enter the setting page, switch on or off the sound effect as you like.
 
 ### Date and Time
 
@@ -988,7 +951,7 @@ You can check the updates for system and applications manually, or auto-download
 1. On the homepage of Control Center, click on ![update](icon/update.svg).
 2. Click on **Update Settings** to enter the detailed interface.
 3. Click on **Auto-download Updates** to enable the function.
-4. When there are system updates, it will prompt a message.
+4. When there are system updates, it will automatically download the updates.
 
 #### Auto Clear Package Cache
 
@@ -998,7 +961,7 @@ You can check the updates for system and applications manually, or auto-download
 4. The system cache will be auto cleared.
 
 ### System Info
-You can view system version, hardware info or set boot menu.
+You can view system version, hardware info and system license agreement.
 
 ![0|info](jpg/info.jpg)
 
@@ -1017,25 +980,6 @@ You can view system version, hardware info or set boot menu.
 1. On the homepage of Control Center, click on ![system_info_normal](icon/system_info_normal.svg).
 2. Click on **End User License Agreement**.
 3. View the detailed information of EULA.
-
-#### Set Boot Menu
-
-- When there are multiple systems in computer, the startup delay switch will open automatically, the boot menu will show 5 seconds to let users adjust boot order.
-- When there is only one system in computer, the startup delay switch will close by default, the boot menu will show 1 second, and it is no need to adjust boot order.
-
-##### Default Boot Option
-
-1. On the homepage of Control Center, click on ![system_info_normal](icon/system_info_normal.svg).
-2. Click on **Boot Menu** to enter the boot menu interface.
-3. Click the option in boot menu to set it as the first boot.
-
-##### Boot Menu Background
-
-1. On the homepage of Control Center, click on ![system_info_normal](icon/system_info_normal.svg).
-2. Click on **Boot Menu** to enter the boot menu interface.
-3. Switch **Theme** on to use it as the background of boot menu.
-
-> ![notes](icon/notes.svg): You can drag and drop an image to the preview window to change the background.
 
 
 ## Window Manager
