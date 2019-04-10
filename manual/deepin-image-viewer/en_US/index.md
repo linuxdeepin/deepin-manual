@@ -106,8 +106,7 @@ User can copy images in Deepin Image Viewer.
 1. Right click on the image in Deepin Image Viewer interface and select **Copy**.
 2. On the target place, right click on the blank area and select **Paste** to copy image to the place.
 
-> ![tips](icon/tips.svg)：**Copy to Clipboard** is an enhancement of the copy function, use it to paste the image as the content of the document, or send the image to friends.
-
+> ![tips](icon/tips.svg)：It copies both the path and the content of picture.
 
 ### Delete Image
 

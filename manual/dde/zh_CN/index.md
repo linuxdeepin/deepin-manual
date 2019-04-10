@@ -20,47 +20,19 @@
 
 - 在桌面上，点击鼠标右键，点击 **新建文件夹**，输入新建文件夹的名称。
 - 在桌面上，点击鼠标右键，点击 **新建文档**，选择新建文档的类型，输入新建文档的名称。
+- 在桌面文件或文件夹上，点击鼠标右键，您可以使用深度文件管理器的相关功能：
 
-<table class="block1">
-    <tbody>
-        <tr>
-            <td width="20px">打开方式</td>
-            <td width="100px">选定系统默认打开方式，也可以通过选择其他已有的关联应用程序来打开。</td>
-        </tr>
-        <tr>
-            <td>复制</td>
-            <td>选定文件或文件夹后，粘贴到指定的目标存储位置。</td>
-        </tr>
-        <tr>
-            <td>剪切</td>
-            <td>选定文件或文件夹后，移动到指定的目标存储位置。</td>
-        </tr>
-    	<tr>
-            <td>重命名</td>
-            <td>选定文件或文件夹后进行重命名操作。</td>
-        </tr>
-    	<tr>
-            <td>删除</td>
-            <td>选定文件或文件夹后进行删除操作。</td>
-        </tr>
-    	<tr>
-            <td>压缩/解压缩</td>
-            <td>选定文件或文件夹后进行压缩操作，压缩文件也可以进行解压操作。</td>
-        </tr>
-    	<tr>
-            <td>创建链接</td>
-            <td>选定文件或文件夹，创建一个快捷方式。</td>
-        </tr>
-       	<tr>
-            <td>标记信息</td>
-            <td>选定文件或文件夹，添加标记信息。</td>
-        </tr> 
-    	<tr>
-            <td>属性</td>
-            <td>查看文件或文件夹基本信息，以及更改权限和打开方式。</td>
-        </tr>
-    </tbody>
- </table>
+|| | |
+| ----------- | ------------|------------------------------------------ |
+| 打开方式    |&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;| 选定系统默认打开方式，也可以选择其他关联应用程序来打开。 |
+| 复制        | |复制文件到指定的目标存储位置。           |
+| 剪切        | |移动文件到指定的目标存储位置。             |
+| 重命名      | |重命名文件或文件夹。                          |
+| 删除        | |删除文件或文件夹。                             |
+| 压缩/解压缩 | |对文件或文件夹进行压缩操作，压缩文件也可以进行解压操作。 |
+| 创建链接    | |创建一个快捷方式。                         |
+| 标记信息    | |添加标记信息。                             |
+| 属性        | |查看文件或文件夹的基本信息，打开方式以及更改权限。      |
 
 ### 设置排列方式
 您可以对桌面上的文件按照需要进行排序。
@@ -92,7 +64,7 @@
 > ![notes](icon/notes.svg)：关于显示的设置，具体操作请参阅 [显示设置](#显示设置)。
 
 ### 设置热区
-热区是为了简化您的操作，方便您快速进入系统的主要界面。桌面的四个角落默认没有热区，设置热区后您可以快速打开启动器和控制中心。
+热区可以简化您的操作，方便您快速进入系统的主要界面。桌面的四个角落默认没有热区，设置热区后您可以快速打开启动器和控制中心。
 
 
 1. 在桌面上，点击鼠标右键。
@@ -106,7 +78,7 @@
 > ![tips](icon/tips.svg)：请留意热区设置界面的动画学习热区使用方法，将鼠标移动到屏幕一角并继续向外拖动就可以唤醒对应的热区功能。
 
 
-### 设置壁纸
+ ### 设置壁纸
 您可以选择一些精美、时尚的壁纸来美化桌面，让您的电脑显示与众不同。
 
 
@@ -116,6 +88,8 @@
 4. 可以选择壁纸上出现的 **仅设置桌面** 和 **仅设置锁屏** 来控制壁纸生效范围。
 
 ![1|wallpapers](jpg/wallpapers.jpg)
+
+> ![tips](icon/tips.svg)：勾选 **自动更换壁纸**，设置自动更换壁纸的时间间隔。您还可以设置在“登录时”和“唤醒时”自动更换壁纸。
 
 ### 设置屏保
 屏幕保护程序原本是为了保护显像管，现在一般用来防范他人偷窥您电脑上的一些隐私。
@@ -137,47 +111,13 @@
 
 ![1|fashion](jpg/fashion.jpg)
 
-<table class="block1">
-    <caption>图标说明</caption>
-    <tbody>
-        <tr>
-            <td><img src="icon/launcher_icon.svg" alt="启动器" class="inline" /></td>
-            <td>点击可进入启动器界面</td>
-            <td class="blank"></td>
-            <td><img src="icon/chrome_icon.svg" alt="浏览器" class="inline" /></td>
-            <td>点击可打开网页</td>
-        </tr>
-        <tr>
-            <td><img src="icon/deepinsoftware_icon.svg" alt="深度商店" class="inline" /></td>
-            <td>点击可打开深度商店</td>
-            <td class="blank"></td>
-            <td><img src="icon/deepin-file-manager.svg" alt="文件管理器" class="inline" /></td>
-            <td>点击可打开文件管理器</td>
-        </tr>
-        <tr>
-            <td><img src="icon/viewer.svg" alt="深度看图" class="inline" /></td>
-            <td>点击可打开深度看图</td>
-            <td class="blank"></td>
-            <td><img src="icon/deepinmovie_icon.svg" alt="深度影院" class="inline" /></td>
-            <td>点击可打开深度影院</td>
-        </tr>
-       <tr>
-            <td><img src="icon/controlcenter_icon.svg" alt="控制中心" class="inline" /></td>
-            <td>点击可打开控制中心面板</td>
-            <td class="blank"></td>
-            <td><img src="icon/trash_icon.svg" alt="回收站" class="inline" /></td>
-            <td>点击可打开回收站</td>
-        </tr>
-    	<tr>
-            <td><img src="icon/shutdown_icon.svg" alt="关机和电源" class="inline" /></td>
-            <td>点击可快速进入关机界面</td>
-            <td class="blank"></td>
-            <td><img src="icon/datetime_icon.svg" alt="时间和日期" class="inline" /></td>
-            <td>点击可打开深度日历</td>
-        </tr>
-    </tbody>
-</table>
-
+|  |  |  | | |
+| :---- | :---- | :---- | :---- | :---- |
+|    ![launcher](icon/launcher_icon.svg)  | 点击可进入启动器界面 | &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |![chrome](icon/chrome_icon.svg)  | 点击可打开网页|
+|![store](icon/deepinsoftware_icon.svg)  |   点击可打开深度商店   ||![file](icon/deepin-file-manager.svg)|点击可打开文件管理器|
+| ![image](icon/viewer.svg)  |  点击可打开深度看图 ||![movie](icon/deepinmovie_icon.svg)|点击可打开深度影院|
+| ![control](icon/controlcenter_icon.svg) |点击可打开控制中心 ||![trash](icon/trash_icon.svg)|点击可打开回收站|
+| ![shutdown](icon/shutdown_icon.svg) | 点击可快速进入关机界面 ||![datetime](icon/datetime_icon.svg)|点击可查看时间日期|
 
 ### 切换显示模式
 任务栏提供两种显示模式：时尚模式和高效模式。
@@ -219,46 +159,23 @@
   - 选择 **智能隐藏**，当需要占用任务栏区域时任务栏将会自动隐藏。
 
 ### 显示/隐藏插件
-1. 在桌面上，右键单击任务栏。
-2. 在 **插件** 子菜单中勾选或取消勾选 **关机、屏幕键盘、时间** ，可以设置关机、屏幕键盘、时间等插件在任务栏上的显示和隐藏效果。
+1.  在桌面上，右键单击任务栏。
+2. 在 **插件** 子菜单中勾选或取消勾选 **回收站、电源、屏幕键盘、时间** ，可以设置回收站、电源、屏幕键盘、时间等插件在任务栏上的显示和隐藏效果。
 
 ### 关机界面
 您可以通过任务栏中的电源图标进入关机界面进行相关操作，也可以在启动器的小窗口模式中点击电源图标。
 
 在桌面上，点击任务栏上的 ![power](icon/poweroff_normal.svg) 图标。
 
-<table class="block1">
-    <tbody>
-        <tr>
-            <td width="30px">关机</td>
-            <td width="100px">在关机界面中点击 ![poweroff_normal](icon/poweroff_normal.svg) 或按下键盘上的 ![Enter](icon/Enter.svg) 键。</td>
-        </tr>
-        <tr>
-            <td>重启</td>
-            <td>在关机界面中点击 ![reboot_normal](icon/reboot_normal.svg)，关机后再次重新运行您的电脑。</td>
-        </tr>
-        <tr>
-            <td>待机</td>
-            <td>在关机界面中点击 ![suspend_normal](icon/suspend_normal.svg)，整个系统将处于低能耗运转的状态。</td>
-        </tr>
-    	<tr>
-            <td>锁定</td>
-            <td>在关机界面中点击 ![lock_normal](icon/lock_normal.svg)或按下键盘上的 ![Super](icon/Super.svg)+![L](icon/L.svg) 组合键。</td>
-        </tr>
-    	<tr>
-            <td>切换用户</td>
-            <td>在关机界面中点击 ![userswitch_normal](icon/userswitch_normal.svg)，选择一个用户帐户进行登录。</td>
-        </tr>
-    	<tr>
-            <td>注销</td>
-            <td>在关机界面中点击 ![logout_normal](icon/logout_normal.svg)，清除当前登录用户的信息。</td>
-        </tr>
-        <tr>
-            <td>启动系统监视器</td>
-            <td>在关机界面中点击 ![deepin-system-monitor](icon/deepin-system-monitor.svg)，可以快速启动系统监视器。</td>
-        </tr>
-    </tbody>
- </table>
+||||
+|--|--|---|
+|关机|&nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |在关机界面中点击 ![poweroff_normal](icon/poweroff_normal.svg) 或按下键盘上的 ![Enter](icon/Enter.svg) 键。|
+|重启||在关机界面中点击 ![reboot_normal](icon/reboot_normal.svg)，关机后再次重新运行您的电脑。|
+|待机||在关机界面中点击 ![suspend_normal](icon/suspend_normal.svg)，整个系统将处于低能耗运转的状态。|
+|锁定||在关机界面中点击 ![lock_normal](icon/lock_normal.svg)或按下键盘上的 ![Super](icon/Super.svg)+![L](icon/L.svg) 组合键。|
+|切换用户||在关机界面中点击 ![userswitch_normal](icon/userswitch_normal.svg)，选择一个用户帐户进行登录。|
+|注销||在关机界面中点击 ![logout_normal](icon/logout_normal.svg)，清除当前登录用户的信息。|
+|启动系统监视器||在关机界面中点击 ![deepin-system-monitor](icon/deepin-system-monitor.svg)，可以快速启动系统监视器。|
 
 > ![notes](icon/notes.svg)：当系统用户存在多个账户时才显示 ![userswitch_normal](icon/userswitch_normal.svg)。当系统有swap分区会显示 “休眠”。
 
@@ -349,13 +266,10 @@
 ### 运行应用
 对于已经创建了桌面快捷方式或固定到任务栏上的应用，您可以通过以下途径来打开应用。
 
-- 双击桌面图标或右键单击桌面图标选择 **打开**。
-- 直接点击任务栏上的应用图标或右键单击任务栏上的应用图标选择 **打开**。
+- 双击桌面图标，或右键单击桌面图标选择 **打开**。
+- 直接点击任务栏上的应用图标，或右键单击任务栏上的应用图标选择 **打开**。
 
-如果该应用在启动器界面中，可以通过以下步骤来打开应用。
-
-1. 在启动器中，将鼠标指针置于应用图标上。
-2. 直接点击应用图标或右键单击应用图标选择 **打开**。
+如果该应用在启动器界面中，直接点击应用图标打开，或右键单击应用图标选择 **打开**。
 
 ### 卸载应用
 对于不再使用的应用，您可以选择将其卸载，以节省硬盘空间。
@@ -376,18 +290,10 @@
 
 ![2|dcchomepage](jpg/dcc.jpg)
 
-<table class="block1">
-    <tbody>
-        <tr>
-            <td width="80px">顶部信息栏</td>
-            <td>显示用户头像、当前系统时间和日期。您可以点击后面的按钮，切换到通知列表查看消息。</td>
-        </tr>
-        <tr>
-             <td>应用控件区</td>
-            <td>显示控制中心设置导航，可以点击鼠标快速跳转到对应的设置模块。</td>
-        </tr>
-    </tbody>
- </table>
+|||
+|--|--|
+|顶部信息栏|显示用户头像、当前系统时间和日期。您可以点击后面的按钮，切换到通知列表查看消息。|
+|应用控件区|显示控制中心设置导航，可以点击鼠标快速跳转到对应的设置模块。|
 
 打开控制中心的某一设置模块后，可以通过左侧导航栏快速切换到另一设置模块。
 
@@ -492,9 +398,8 @@
 ##### 设置屏幕方向
 
 1. 在控制中心面板首页，点击 ![display_normal](icon/display_normal.svg)。
-2. 点击 **旋转**，开始旋转屏幕。
-3. 每点击一下鼠标左键屏幕顺时针旋转90°。
-4. 旋转完成后点击鼠标右键退出旋转界面。
+2. 点击 **旋转**，每点击一下鼠标左键，屏幕逆时针旋转90°。
+3. 要还原为之前的屏幕方向，点击鼠标右键退出；要使用当前屏幕方向，请按下组合键![Ctrl](icon/Ctrl.svg)+![S](icon/S.svg)保存。
 
 
 #### 多屏设置
@@ -515,7 +420,7 @@
 3. 在弹出的菜单中设置自定义参数。
 4. 点击 **保存**。
 
-> ![notes](icon/notes.svg)：点击 **应用**为临时应用，该设置不会被保存。
+> ![notes](icon/notes.svg)：点击 **应用** 为临时应用，该设置不会被保存。
 
 #### 无线投屏
 
@@ -536,8 +441,6 @@
 1. 在控制中心面板首页，点击 ![default_applications_normal](icon/default_applications_normal.svg)。
 2. 点击 **默认程序**，进入修改默认程序设置界面。
 3. 在列表中选择默认应用程序，以打开各种文件。
-
-
 
 #### 添加默认程序
 
@@ -594,7 +497,7 @@
 
 #### 设置窗口特效
 
-您可以点击 **开启窗口特效** 开关，来开启或关闭窗口特效。
+您可以点击 **窗口特效** 开关，来开启或关闭窗口特效。
 
 ### 蓝牙设置
 蓝牙能够实现短距离的无线通信，您可以通过蓝牙与附近的其它蓝牙设备连接，常见的蓝牙设备包括：蓝牙键盘、蓝牙鼠标、蓝牙耳机、蓝牙音响等。
@@ -609,8 +512,6 @@
 1. 在控制中心面板首页，点击 ![bluetooth_normal](icon/bluetooth_normal.svg)。
 2. 点击 **蓝牙**，进入设置蓝牙界面。
 3. 点击蓝牙开关按钮，开启蓝牙功能。
-
-
 
 #### 蓝牙名称
 
@@ -738,24 +639,22 @@
 2. 点击 **扬声器 **开关按钮，打开扬声器。
 3. 调节输出音量，和左右声道平衡。
 
-
-
 #### 设置麦克风
 
 1. 在控制中心面板首页，点击 ![sound_normal](icon/sound_normal.svg)。
 2. 点击 **麦克风 **开关按钮，打开麦克风。
 3. 调节输入音量。
 
-#### 设置系统音效
-
-1. 在控制中心面板首页，点击 ![sound_normal](icon/sound_normal.svg)。
-2. 点击 **音效** 开关按钮，开启系统音效。
-
 #### 高级设置
 
 1. 在控制中心面板首页，点击 ![sound_normal](icon/sound_normal.svg)。
 2. 点击 **高级设置**。
 3. 选择输入和输出模式。
+
+#### 设置系统音效
+
+1. 在控制中心面板首页，点击 ![sound_normal](icon/sound_normal.svg)。
+2. 点击 **音效**，进入系统音效设置，开启或关闭某一系统音效。
 
 ### 日期和时间
 

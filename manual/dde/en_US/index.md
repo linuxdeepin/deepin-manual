@@ -7,7 +7,7 @@ deepin is an elegant, easy to use and reliable Linux desktop operating system de
 
 ### Welcome
 
-When login deepin for the first time, a welcome program will automatically start. You can watch the introduction video to get deepin new features, select desktop mode and icon theme, enable window effect, and know more about deepin.
+When you login deepin for the first time, a welcome program will automatically start. You can watch the introduction video to get deepin new features, select desktop mode and icon theme, enable window effect, and know more about deepin.
 
 ![0|welcome](jpg/welcome.jpg)
 
@@ -128,6 +128,8 @@ You can select some elegant and fashionable wallpapers to beautify desktop and m
 
 ![1|wallpapers](jpg/wallpapers.jpg)
 
+> ![tips](icon/tips.svg): Check **Wallpaper Slideshow**, and set the time interval to change wallpaper automatically, or set to change wallpaper when login or wakeup. 
+
 ### Set Screensaver
 Screensaver was used to protect the monitor before, now is mainly for protecting personal privacy from peeing.
 
@@ -140,7 +142,7 @@ Screensaver was used to protect the monitor before, now is mainly for protecting
 ![1|screensaver](jpg/screensaver.jpg)
 
 ## Dock
-Dock is usually displayed at the bottom of the desktop to help you quickly open frequently used applications, which includes Launcher, application icons, tray, shutdown button and system datetime, etc.
+Dock is usually displayed at the bottom of the desktop to help you quickly open frequently used applications, which includes Launcher, application icons, tray, power button and system datetime, etc.
 
 ### Dock Icons
 You can add application shortcuts to Dock from Launcher and do related operations on it.
@@ -237,10 +239,7 @@ You can place the Dock on any direction of your desktop.
 
 1. On desktop, move the mouse pointer over Dock.
 2. Right click to select **Plugins**.
-3. On submenu, you can:
-- Check **Shutdown**, the shutdown icon will be displayed on Dock.
-- Check **Datetime**, the Datetime icon will be displayed on Dock.
-
+3. On submenu, you can check or uncheck **Trash, Power, Onboard, Datetime** to show or hide the corresponding icon on Dock.
 > ![notes](icon/notes.svg): Uncheck the plugin icon, it will be hidden on Dock.
 
 ### Shutdown Interface
@@ -249,7 +248,7 @@ There are two ways to shut down:
 1. Click on the power icon on Dock.
 2. Click on the power icon at the bottom right corner of Launcher mini mode.
 
-On desktop, click on ![power](icon/poweroff_normal.svg) on Dock.
+Click on ![power](icon/poweroff_normal.svg) on Dock.
 
 <table class="block1">
 
@@ -260,7 +259,7 @@ On desktop, click on ![power](icon/poweroff_normal.svg) on Dock.
         </tr>
         <tr>
             <td>Restart</td>
-            <td>Click on ![reboot_normal](icon/reboot_normal.svg) on the Shutdown Interface, to run you computer again after shutdown</td>
+            <td>Click on ![reboot_normal](icon/reboot_normal.svg) on the Shutdown Interface, to run you computer again after shut down</td>
         </tr>
         <tr>
             <td>Suspend</td>
@@ -462,7 +461,7 @@ You can protect your privacy and data and get security protection by setting acc
 
 1. On the homepage of Control Center, click on ![account_normal](icon/account_normal.svg).
 2. Click on an existed account in the list.
-3. Click on **Login without password**, you can enter into the system without password.
+3. Click on **Login Without Password**, you can enter into the system without password.
 
 
 #### Set Fingerprint Password
@@ -524,9 +523,8 @@ You can adjust the visual perception by setting the screen resolution, brightnes
 
 1. On the homepage of Control Center, click on ![display_normal](icon/display_normal.svg).
 2. Click on **Rotate** to rotate the screen.
-3. Everytime you click the mouse, the screen will rotate 90 degrees clockwise.
-4. Click on the right mouse button to exit the rotate screen interface.
-
+3. Every time you click the mouse, the screen will rotate 90 degrees counterclockwise.
+4. To restore to the previous direction, click on the right button to exit; to use the current direction,  press ![Ctrl](icon/Ctrl.svg)+![S](icon/S.svg) to save it.
 
 #### Multiple Screen Settings
 Widen your horizon by multiple screens! You can use VGA cable to connect your computer to other display devices.
@@ -623,8 +621,8 @@ You can set the window theme, icon theme and cursor theme of the system respecti
 #### Enable Window Effect
 
 1. On the homepage of Control Center, click on ![personalization_normal](icon/personalization_normal.svg).
-2. Click on **Enable window effect** to enable the window effect.
-3. Click again to disable.
+2. Click on **Window effect** switch to enable the window effect.
+3. Click again to disable it.
 
 
 ### Bluetooth Settings
@@ -661,7 +659,7 @@ You can do short distance wireless communication by Bluetooth by connecting to o
 
 
 ### Network Settings
-Experience the enjoyment of surfing the Internet! You can browse news, play video online or do file download, chat and shopping, etc.
+Experience the enjoyment of surfing the Internet! You can browse news, play online video, download files, chat and shopping, etc.
 
 > ![tips](icon/tips.svg): You can check the network status by hovering over the network icon on dock.
 
@@ -784,16 +782,16 @@ Set your speaker and microphone to let you hear more comfortable and sing better
 2. Turn on **Microphone** switch to enable the microphone.
 3. Adjust the input volume.
 
-#### Set System Sound Effect
-
-1. On the homepage of Control Center, click on ![sound_normal](icon/sound_normal.svg).
-2. Turn on **Sound Effects** switch to enable sound effects.
-
 #### Advanced Settings
 
 1. On the homepage of Control Center, click on ![sound_normal](icon/sound_normal.svg).
 2. Click on **Advanced**.
 3. Select input and output mode.
+
+#### System Sound Effect
+
+1. On the homepage of Control Center, click on ![sound_normal](icon/sound_normal.svg).
+2. Click on **Sound Effects** to enter the setting page, switch on or off the sound effect as you like.
 
 ### Date and Time
 
@@ -962,13 +960,13 @@ When there is system updates, it will be notificated on the home page of Control
  - It will prompt "Your system is up to date " when there is no update.
  - It will show **Download and install updates** button, size and detailed information if there's an update.
 4. Click the button to download and install updates.
-5. After updated successfully, shutdown or reboot your computer to make the updates come into effect.
+5. After updated successfully, shut down or reboot your computer to make the updates come into effect.
 
 > ![attention](icon/attention.svg): There will be a progress bar during the update, and you can choose to download in background or pause.
 
 #### Detect System Source
 
-Enable **System source detection**, once you switch the mirror, you will get the prompt notifying that "Your system source has been modified".
+Enable **System Source Detection**, once you switch the mirror, you will get the prompt notifying that "Your system source has been modified".
 
 #### Auto Download Updates
 
@@ -981,7 +979,7 @@ Enable **System source detection**, once you switch the mirror, you will get the
 
 1. On the homepage of Control Center, click on ![update](icon/update.svg).
 2. Click on **Update Settings** to enter the detailed interface.
-3. Click on **Auto clear package cache**.
+3. Click on **Auto Clear Package Cache**.
 4. The system cache will be auto cleared.
 
 #### Smart Switch Mirror
@@ -1086,7 +1084,7 @@ After you delete a workspace, all windows in the workspace will be shown in a ne
 
 - On the workspace management interface, click on ![close_icon](icon/close_icon.svg) at the right top corner to delete a workspace.
 - On the workspace management interface, select a preview window, press and hold the left mouse button and drag it up to delete a workspace.
-- On the workspace management interface, everytime you press ![Alt](icon/Alt.svg) + ![-](icon/-.svg), it will delete the left or right workspace one by one.
+- On the workspace management interface, every time you press ![Alt](icon/Alt.svg) + ![-](icon/-.svg), it will delete the left or right workspace one by one.
 
 ### Quit Workspace
 After you finished the operations on the workspace management interface, you can quit it by the following ways:
