@@ -1,3 +1,14 @@
+<a name="2.0.19"></a>
+## 2.0.19 (2019-04-10)
+
+
+#### Features
+
+*   Update manual to Deepin 15.10 ([6382be2f](https://github.com/linuxdeepin/deepin-manual/commit/6382be2fc840807d6ca2fe7bd35eb3bde81e6b64))
+*   Release 15.9 ([9bad7846](https://github.com/linuxdeepin/deepin-manual/commit/9bad7846093e66c91c910567cea1509bdebcf5b2))
+
+
+
 <a name="2.0.17"></a>
 ## 2.0.17 (2019-01-10)
 
