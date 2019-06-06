@@ -1,12 +1,12 @@
 # Deepin File Manager|../common/deepin-file-manager.svg|
 
-## Overview
+## Overview|../common/icon_overview.svg|
 
 Deepin File Manager is developed by Deepin Technology team. As the core component to manage files in deepin, it is a powerful, easy-to-use file manager with an elegant and simple interface. Full-featured, well-designed, efficient-improved, Deepin File Manager will be a good help in your daily life and work.
 
 ![1|overview](jpg/overview.jpg)
 
-## Guide
+## Guide|../common/icon_guide.svg|
 
 You can run, close and create a shortcut for Deepin File Manager by the following ways.
 
@@ -27,7 +27,7 @@ You can run, close and create a shortcut for Deepin File Manager by the followin
 - Right click on ![File Manager](icon/deepin-file-manager.svg) on Dock, select **Close All** to exit Deepin File Manager.
 - Click on ![Settings](icon/icon_menu.svg) and select **Exit** to exit Deepin File Manager.
 
-## Main Interface
+## Main Interface|../common/icon_maininterface.svg|
 
 On Deepin File Manager interface, users can execute many operations with the functional bars. It is designed to be easy-to-use, user-friendly and efficient improving.
 
@@ -67,7 +67,7 @@ On Deepin File Manager interface, users can execute many operations with the fun
 > ![tips](icon/tips.svg): User can drag the separation line on the right of navigation bar to change its width.
 
 
-## Basic Functions
+## Basic Functions|../common/icon_basicfuncton.svg|
 
 Deepin File Manager is featured with the basic functions as a file manager, user can easily create, copy, rename or delete files/folders with it.
 
@@ -223,27 +223,25 @@ Users can view the file/folder properties.
 ![0|info](jpg/info.jpg)
 
 
-> ![notes](icon/notes.svg): Link path will be added in the properties of linked file/folder.
+> ![notes](icon/notes.svg): You can use shortcuts![Ctrl](icon/Ctrl.svg) + ![I](icon/I.svg) to view the properties as well.
 
-## Common Operations
+## Common Operations|../common/icon_commoncoperat.svg|
 
 Deepin File Manager is featured with many useful functions, such as breadcrumb bar, tabs, bookmarks, file sharing, accessing computers in LAN, opening file/folder in Terminal and so on. They are all designed to ease the commonly used operations.
 
 ### Switch Address Bar
 
-There are three sections in address bar, namely the breadcrumb bar, search bar and directory bar.
+There are three sections in address bar, namely back/forward buttons, breadcrumb bar, and directory/search bar.
 
-By default, breadcrumb bar is displayed in the address bar. By clicking on the blank area in the address bar or click on ![search](icon/search-noamal.svg), it will switch to directory/search bar, which can be used to access directory and search for target items.
+By default, breadcrumb bar is displayed in the address bar. By right clicking the path to edit address or clicking on ![search](icon/search-normal.svg), it will switch to directory/search bar.
 
-By inputting a directory/keywords in the directory/search bar and pressing ![enter](icon/Enter.svg), user can access the target directory/search for target items.
+By inputting a path or keyword in the bar and pressing ![enter](icon/Enter.svg), user can access the target directory or search for target items.
 
 ![0|addressbar1](jpg/addressbar1.png)
 
 > ![tips](icon/tips.svg): When user accesses a sub directory, all the parent directories of the sub directory will become a breadcrumb in the address bar. By clicking on the breadcrumbs, user can easily switch among the sub directories and their parent directories.
 
 ### Search Items
-
-Users can search the target file by inputting the keywords directly in the address bar. Or do as below:
 
 1. Click the search button or press ![Ctrl](icon/Ctrl.svg) + ![F](icon/F.svg)  to switch to the search bar.
   - To search in a specific directory, please enter the directory and then search.
@@ -276,7 +274,7 @@ Deepin File Manager supports multi-tab view.
 
 > ![tips](icon/tips.svg): When the Deepin File Manager has only one tab, the tab bar is hidden, you can press ![Ctrl](icon/Ctrl.svg) + ![T](icon/T.svg) to add a new tab.
 
-![1|new_tab](jpg/new_tab.jpg)
+![1|newtab](jpg/newtab.jpg)
 
 ### Manage Bookmarks
 
@@ -396,7 +394,7 @@ Users can manage shared folders if it has shared some folders in Deepin File Man
 
 1. On Deepin File Manager interface, click ![share](icon/icon_share.svg) on the navigation bar.
 2. All shared folders will show on the interface.
-3. Users can cancel sharing by right click the folder and select **Cancel sharing**.
+3. Users can cancel sharing by right clicking the folder and select **Cancel sharing**.
 
 ![1|viewshare](jpg/viewshare.jpg)
 
@@ -431,7 +429,7 @@ When there is an external device inserted, you can directly send file/folder to 
 
 ![0|send_to](jpg/send_to.png)
 
-## Disk Management
+## Disk Management|../common/icon_diskmanagement.svg|
 
 On Deepin File Manager interface, you can mount/unmount, remove, format and decrypt disks.
 
@@ -469,7 +467,7 @@ Unmount the disk, right click on it and select **Rename** to change the disk lab
 > ![notes](icon/notes.svg): Fast format can be finished in a few seconds, but the data could be restored by file recovery tools. If you don't want these data to be restored, you can uncheck this option box and format the disk.
 
 
-## Main Menu
+## Main Menu|../common/icon_optionsetting.svg|
 
 Users can create new window, switch to dark theme, make settings, view manual and about information, exit the application.
 

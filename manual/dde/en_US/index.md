@@ -1,17 +1,17 @@
 # Desktop Environment|../common/deepin-system.svg|
 
-## Overview
+## Overview|../common/icon_overview.svg|
 deepin is an elegant, easy to use and reliable Linux desktop operating system developed by Deepin Technology Co., Ltd.  Many polpular software and deepin applications have been preinstalled. It not only meets your office needs, but also allows you to experience a variety of recreational activities. With continually improved and perfected functions, we believe deepin will be loved and used by more and more users.
 
 ![1|desk](jpg/desk.jpg)
 
 ### Welcome
 
-After login deepin for the first time, a welcome program will automatically start. View the introduction to get deepin new features, select desktop mode and icon theme, enable window effect, and know more about deepin.
+When you login deepin for the first time, a welcome program will automatically start. View the introduction to get deepin new features, select desktop mode and icon theme, enable window effect, and know more about deepin.
 
 ![0|welcome](jpg/welcome.jpg)
 
-## Activation
+### Activation
 
 After deepin installation, restart the computer, a prompt will pop up asking for activation. You can use it normally without activation, but to upgrade or to get technical support, activation is required.
 
@@ -27,14 +27,14 @@ After deepin installation, restart the computer, a prompt will pop up asking for
 
 > ![notes](icon/notes.svg): You can also **Import the authorization file** obtained from service providers or agents to activate deepin.
 
-## Desktop
+## Desktop|../common/desk.svg|
 
-You can create new file/folder, sort files, set hot corners and wallpapers, etc. on desktop.
+You can create a new file/folder, sort files, set hot corners and wallpapers, etc. on desktop.
 
 ![0|contextmenu](jpg/contextmenu.jpg)
 
 ### Create New File/Folder
-You can create new folder, common documents, or doing general operations for files on desktop, just like in file manager.
+You can create a new folder, common documents, or doing general operations for files on the desktop, just like in file manager.
 
 - Right click on desktop and click on **New folder**, enter the name for it.
 - Right click on desktop and click on **New document**, select the type and enter its name.
@@ -116,7 +116,7 @@ You can set the screen resolution, brightness and so on.
 1. Right click on desktop.
 2. Click on **Display settings** to open the interface of display settings in Control Center.
 
-> ![notes](icon/notes.svg): Specific operations refers to [Display Settings](#Display Settings).
+> ![notes](icon/notes.svg): Specific operations refer to [Display Settings](#Display Settings).
 
 ### Set Hot Corners
 Hot Corner is to simplify your operations and helps you quickly enter the main interface.
@@ -135,14 +135,26 @@ You can select some elegant and fashionable wallpapers to beautify desktop and m
 
 
 1. Right click on desktop.
-2. Click on **Set wallpaper** to preview all the wallpapers at the bottom of the desktop.
-3. Select one and it will apply in desktop and lock screen.
+2. Click on **Wallpaper and Screensaver** to preview all the wallpapers at the bottom of the desktop.
+3. Click your favorite one and it will apply in desktop and lock screen.
 4. You can also choose **Only desktop** or **Only lock screen**.
 
-![1|wallpapers](jpg/wallpapers.jpg)
+![1|wallpapers](jpg/wallpaper.jpg)
 
+> ![tips](icon/tips.svg): Check **Wallpaper Slideshow**, and set the time interval to change wallpaper automatically, or set to change the wallpaper when login or wakeup. 
 
-## Dock
+### Set Screensaver
+The screensaver was used to protect the monitor before, now it is mainly for protecting personal privacy from peeing.
+
+1. Right click on desktop.
+2. Click on **Wallpaper and Screensaver**, and select **Screensaver** to preview all the screensavers at the bottom of the desktop.
+3. Select one and click **Apply**, and set the waiting time for the screensaver to start.
+4. You can also tick the box of **Require a password on wakeup** for better privacy protection.
+5. After that idle time, the screensaver will start.
+
+![1|screensaver](jpg/screensaver.jpg)
+
+## Dock|../common/dock.svg|
 Dock is usually displayed at the bottom of the desktop to help you quickly open frequently used applications, which includes Launcher, application icons, tray, shutdown button and system datetime, etc.
 
 ### Dock Icons
@@ -188,8 +200,8 @@ You can add application shortcuts to Dock from Launcher and do related operation
 ### Switch Display Mode
 There are two display modes of Dock, which are fashion mode and efficient mode.
 
-- **Fashion Mode**: The display mode is similar to Mac OS and shown as a dock at the bottom of screen. All fixed application icons will be on Dock, and the tray area can be folded or expanded.
-- **Efficient Mode**: The display mode is similar to Windows 7 and shown as a small strip at the bottom of screen. Application icons on Dock will be displayed in smaller ones. Click the right corner to show desktop.
+- **Fashion Mode**: The display mode is similar to Mac OS and shown as a dock at the bottom of the screen. All fixed application icons will be on Dock, and the tray area can be folded or expanded.
+- **Efficient Mode**: The display mode is similar to Windows 7 and shown as a small strip at the bottom of the screen. Application icons on Dock will be displayed in smaller ones. Click the right corner to show desktop.
 
 
  ![1|fashion](jpg/fashion.jpg)
@@ -199,7 +211,7 @@ There are two display modes of Dock, which are fashion mode and efficient mode.
 
 You can switch the display mode by the following operations:
 
-1. On desktop, move the mouse pointer over Dock.
+1. On the desktop, move the mouse pointer over Dock.
 2. Right click to select **Mode**.
 3. Select a display mode.
 
@@ -207,33 +219,31 @@ You can switch the display mode by the following operations:
 ### Set Dock Location
 You can place the Dock on any direction of your desktop.
 
-1. On desktop, move the mouse pointer over Dock.
+1. On the desktop, move the mouse pointer over Dock.
 2. Right click to select **Location**.
 3. Select a location.
 
 
 ### Adjust Dock Size
 
-1. On desktop, move the mouse pointer over Dock.
+1. On the desktop, move the mouse pointer over Dock.
 2. Right click to select **Size**.
 3. Select a size.
 
 ### Show/Hide Dock
 
-1. On desktop, move the mouse pointer over Dock.
+1. On the desktop, move the mouse pointer over Dock.
 2. Right click to select **Status**.
-3. On submenu, you can:
-   - Select **Keep Shown**, Dock will be displayed at the bottom of desktop all the time.
+3. On the submenu, you can:
+   - Select **Keep Shown**, Dock will be displayed at the bottom of the desktop all the time.
    - Select **Keep Hidden**, Dock will be hidden and only displayed when mouse hovering on Dock.
-   - Select **Smart Hide**, Dock will be automatically hidden when Dock area needs to be used.
+   - Select **Smart Hide**, Dock will be automatically hidden when the Dock area needs to be used.
 
 ### Show/Hide Plugins
 
-1. On desktop, move the mouse pointer over Dock.
+1. On the desktop, move the mouse pointer over Dock.
 2. Right click to select **Plugins**.
-3. On submenu, you can:
-   - Check **Shutdown**, the shutdown icon will be displayed on Dock.
-   - Check **Datetime**, the Datetime icon will be displayed on Dock.
+3. On the submenu, you check or uncheck **Power, Onboard, Datetime** to show or hide the corresponding icon on Dock.
 
 > ![notes](icon/notes.svg): Uncheck the plugin icon, it will be hidden on Dock.
 
@@ -244,7 +254,7 @@ There are two ways to shut down:
 1. Click on the power icon on Dock.
 2. Click on the power icon at the bottom right corner of Launcher mini mode.
 
-On desktop, click on ![power](icon/poweroff_normal.svg) on Dock.
+On desktop, click ![power](icon/poweroff_normal.svg) on Dock.
 
 <table class="block1">
 
@@ -279,12 +289,12 @@ On desktop, click on ![power](icon/poweroff_normal.svg) on Dock.
     </tbody>
  </table>
 
-> ![notes](icon/notes.svg): ![userswitch_normal](icon/userswitch_normal.svg) will be shown when there are multiple accounts in the system. 
+> ![notes](icon/notes.svg): ![userswitch_normal](icon/userswitch_normal.svg) will be shown when there are multiple accounts on the system. 
 
 ### Trash
 You can find all deleted files in trash which can be resumed or emptied.
 
-> ![notes](icon/notes.svg): Using fashion mode, Trash will be displayed on Dock, if you switch to efficient mode, you can open it in Launcher or create shortcut on desktop.
+> ![notes](icon/notes.svg): Using fashion mode, Trash will be displayed on Dock, if you switch to efficient mode, you can open it in Launcher or create a shortcut on desktop.
 
 #### Restore Files
 You can restore files deleted by executing the following operations:
@@ -303,15 +313,15 @@ Empty trash to release more usable space in your disk.
 1. In Trash, right click on the blank area.
 2. Select **Empty Trash** to completely delete all the files in Trash.
 
-## Launcher
+## Launcher|../common/launcher.svg|
 Launcher can help you to manage all installed applications, you can quickly find the needed application by the categorized navigation or searching function.
 
-> ![tips](icon/tips.svg): Newly installed application in Launcher is followed with a blue point.
+> ![tips](icon/tips.svg): A newly installed application in Launcher is followed with a blue point.
 
 
 ### Switch Modes
 
-- Users can switch between fullscreen mode and mini mode manually. Click icon at the upper right corner to switch modes.
+- Users can switch between fullscreen mode and mini mode manually. Click the icon at the upper right corner to switch modes.
 - Both the modes support searching applications and sending it to desktop or dock.
 - Mini mode also supports opening File Manager, Control Center and shutdown interface directly.
 
@@ -324,7 +334,7 @@ Launcher can help you to manage all installed applications, you can quickly find
 In fullscreen mode, all applications in Launcher are ordered by installation time by default.
 
 - Move the mouse pointer over the application icon, press and hold the mouse left button, then drag and drop to arrange the application icon freely.
-- Click on the category icon ![category](icon/category_icon.svg) on the upper left in Launcher to arrange the icons by categories.
+- Click on the category icon ![category](icon/category_icon.svg) on the upper left in Launcher to arrange the icons by category.
 
  ![1|sortapp](jpg/sortapp.jpg)
 
@@ -336,33 +346,33 @@ In Launcher, scroll up and down the mouse wheel to find the application. You may
 
 If you already know the application name, you can locate it even faster by entering the keywords!
 
-1. In Launcher, type in a word such as "deepin" with keyboard.
-2. System will automatically search for all applications which contain the keyword "deepin", and then display the searched result in Launcher.
+1. In Launcher, type in a word such as "deepin".
+2. The system will automatically search for all applications which contain the keyword "deepin", and then display the searched result in Launcher.
 
  ![1|searchapp](jpg/searchapp.jpg)
 
 ### Set Shortcut
-Shortcut is an easy and convenient way to launch applications.
+The shortcut is an easy and convenient way to launch applications.
 
 #### Create Shortcut
-You can select to send the application to desktop or Dock to facilitate follow-up operations.
+You can select to send the application to desktop or dock to facilitate follow-up operations.
 
 1. In Launcher, move the mouse pointer over the application icon.
 2. Right click the icon, you can:
-   * Click on **Send to desktop** to create a shortcut on desktop.
+   * Click on **Send to desktop** to create a shortcut on the desktop.
    * Click on **Send to dock** to fix the application on Dock.
-   * Click on **Add to startup** to add the application to startup, it will automatically run when the computer boots.
+   * Click on **Add to startup** to add the application to the startup, it will automatically run when the computer boots.
 
  ![0|sendto](jpg/sendto.jpg)
 
 > ![notes](icon/notes.svg): You can drag the application icon from Launcher to Dock. But, you can not drag and drop the application while it is running. At this time you can right click the application icon on Dock and select **Dock** to fix. So that you can quickly open it next time.
 
 #### Delete Shortcut
-You can delete the application shortcut from desktop, Dock and so on.
+You can delete the application shortcut from the desktop, Dock and so on.
 
 1. In Launcher, move the mouse pointer over the application icon.
 2. Right click the icon, you can:
-   * Click on **Remove from desktop** to delete the shortcut on desktop.
+   * Click on **Remove from desktop** to delete the shortcut on the desktop.
    * Click on **Remove from dock** to remove the application fixed on Dock.
    * Click on **Remove from startup** to remove the application from startup.
 
@@ -371,10 +381,10 @@ You can delete the application shortcut from desktop, Dock and so on.
 > ![notes](icon/notes.svg): Application fixed on Dock can be removed by dragging and dropping the icon away from Dock. You can not drag and remove the application while it is running. Then you can right click on the application icon on Dock and select **Undock** to remove it.
 
 ### Run Applications
-For those whose desktop shortcuts have been created or fixed on Dock, you can open them by the following ways:
+For those whose desktop shortcuts have been created or fixed on Dock, you can open them in the following ways:
 
 - Double click the desktop icon or right click the desktop icon to select **Open**.
-- Click the application icon on Dock or right click to select **Open** .
+- Click the application icon on Dock or right click to select **Open**.
 
 To open the application only shown in Launcher, click the icon or right click to select **Open**.
 
@@ -387,11 +397,11 @@ You can choose to uninstall applications you no longer use to save disk space.
 > ![tips](icon/tips.svg): In **Fashion mode**, drag the application icon in Launcher fullscreen mode to ![trash](icon/trash_icon.svg) on dock to uninstall the application.
 
 
-## Control Center
+## Control Center|../common/control_center.svg|
 You can manage the basic settings of deepin in Control Center. It includes account management, network settings, date and time, personalization, display settings, system and application update, etc. When you enter Deepin Desktop Environment, click ![controlcenter](icon/controlcenter_icon.svg) to open Control Center.
 
 ### Homepage Introduction
-The homepage of Control Center displays the datetime and provides several modules for users to quickly set. You can also view all messages in notification list.
+The homepage of Control Center displays the datetime and provides several modules for users to quickly set. You can also view all messages in the notification list.
 
 ![0|dcchomepage](jpg/dcc.jpg)
 
@@ -448,14 +458,14 @@ You can protect your privacy and data and get security protection by setting acc
 
 1. On the homepage of Control Center, click on ![account_normal](icon/account_normal.svg).
 2. Click on an existed account in the list.
-3. Click on **Auto Login** to open auto login function.
+3. Click on **Auto Login** to switch it on.
 
 
 #### Login without Password
 
 1. On the homepage of Control Center, click on ![account_normal](icon/account_normal.svg).
 2. Click on an existed account in the list.
-3. Click on **Login without password**, you can enter into the system without password.
+3. Click on **Login without password**, you can enter into the system without a password.
 
 
 ![0|setaccount](jpg/setaccount.jpg)
@@ -472,7 +482,7 @@ You can protect your privacy and data and get security protection by setting acc
 
 1. On the homepage of Control Center, click on ![account_normal](icon/account_normal.svg).
 2. Click on an existed account in the list.
-3. Click on **Delete Account** .
+3. Click on **Delete Account**.
 4. In the confirm interface, click on **Delete**.
 
 > ![notes](icon/notes.svg): The current login user can not be deleted.
@@ -493,7 +503,7 @@ You can adjust the visual perception by setting the screen resolution, brightnes
 2. Click on the scaleplate to adjust the display scaling.
 3. It will take effect after reboot.
 
-> ![notes](icon/notes.svg): When HiDPI screen is detected, the display scaling will be automatically switched.
+> ![notes](icon/notes.svg): When a HiDPI screen is detected, the display scaling will be automatically switched.
 
 > ![notes](icon/notes.svg): Some applications do not support display scaling, you can right click it in Launcher and select **Disable display scaling** to get better display effect.
 
@@ -507,7 +517,7 @@ You can adjust the visual perception by setting the screen resolution, brightnes
 
 1. On the homepage of Control Center, click on ![display_normal](icon/display_normal.svg).
 2. Click on **Brightness** to enter the interface for brightness settings.
-   - Enable **Night Shift**, the color temperature of screen will be auto adjusted by figuring out your location.
+   - Enable **Night Shift**, the color temperature of the screen will be auto-adjusted by figuring out your location.
    - Enable **Auto Brightness**, the monitor will change the brightness automatically (support PC with light sensor).
    - Drag the slider to set screen brightness.
 
@@ -523,11 +533,11 @@ You can adjust the visual perception by setting the screen resolution, brightnes
 Widen your horizon by multiple screens! You can use VGA cable to connect your computer to other display devices.
 
 1. On the homepage of Control Center, click on ![display_normal](icon/display_normal.svg).
-2. Select an multiple screen mode:
+2. Select a multiple screen mode:
     - **Copy** to copy the setting of main screen to others.
     - **Extend** to extend the display area of main screen.
     - **Only Displayed on xxx** to display screen content only on one screen.
-    - **Custom Settings** to add custom settings in Control Center.
+    - **Custom Settings** to set the screen and its resolutions.
 
 ##### Custom Settings
 
@@ -559,7 +569,7 @@ If several applications in the same type are installed, you can choose one of th
    - When you selected a *.desktop file for default application, the icon and name will be added to the list automatically.
    - When you selected a specified binary file, the icon, name and path will be added to the list automatically.
 
-> ![notes](icon/notes.svg): The type lists will show an **Edit** button at right when user has added default applications.
+> ![notes](icon/notes.svg): The type lists will show an **Edit** button at right when the user has added default applications.
 
 
 
@@ -590,8 +600,8 @@ You can set the window theme, icon theme and cursor theme of the system respecti
 1. On the homepage of Control Center, click on ![personalization_normal](icon/personalization_normal.svg).
 2. Click on **Theme** to enter the interface for setting themes.
  - In window theme list, select a window style to switch.
- - In icon theme list, select a icon style to switch.
- - In cursor theme list, select a set of cursor to switch.
+ - In icon theme list, select an icon style to switch.
+ - In cursor theme list, select a set of cursors to switch.
 
 
 #### Set Font
@@ -609,12 +619,12 @@ You can set the window theme, icon theme and cursor theme of the system respecti
 
 
 ### Bluetooth Settings
-You can do short distance wireless communication by Bluetooth by connecting to other Bluetooth devices. Common Bluetooth devices are Bluetooth keyboard, Bluetooth mouse, Bluetooth earphones and Bluetooth speakers, etc.
+You can do short-distance wireless communication by Bluetooth by connecting to other Bluetooth devices. Common Bluetooth devices are Bluetooth keyboard, Bluetooth mouse, Bluetooth earphones and Bluetooth speakers, etc.
 
 ![0|bluetooth](jpg/bluetooth.jpg)
 
 
-> ![notes](icon/notes.svg): Most laptops have Bluetooth module, you just need to enable it, but most desktop computers do not have it, you can purchase one adapter and plug it into USB port to get the function.
+> ![notes](icon/notes.svg): Most laptops have Bluetooth module, you just need to enable it, but most desktop computers do not have it, you can purchase one adapter and plug it into a USB port to get the function.
 
 #### Enable Bluetooth
 
@@ -642,7 +652,7 @@ You can do short distance wireless communication by Bluetooth by connecting to o
 
 
 ### Network Settings
-Experience the enjoyment of surfing the Internet! You can browse news, play online video, download files, chat and shopping, etc.
+Experience the enjoyment of surfing the Internet! You can browse news, play online videos, download files, chat and shopping, etc.
 
 ![0|internet](jpg/internet.jpg)
 
@@ -653,15 +663,15 @@ Experience the enjoyment of surfing the Internet! You can browse news, play onli
 2. Plug another end of the cable into the router or network port.
 3. On the homepage of Control Center, click on ![network_normal](icon/network_normal.svg).
 4. Click on **Wired Network Card** switch to enable wired network.
-5. After successfully connected to the network, it will prompts "Wired Connection Connected".
+5. After successfully connected to the network, it will prompt "Wired Connection Connected".
 
 #### Wireless Network
 
 ##### Connect to Wi-Fi Network
 
 1. On the homepage of Control Center, click on ![network_normal](icon/network_normal.svg).
-2. Click on **Wireless Network Card** switch to enable wireless network.
-3. Click on **Wireless Network** to enter wireless network list.
+2. Click on **Wireless Network Card** switch to enable the wireless network.
+3. Click on **Wireless Network** to enter the wireless network list.
 4. The computer will auto search the nearby available wireless network.
 5. Select the wireless network to connect.
    - If the network is opened, it will auto connect to the network.
@@ -670,7 +680,7 @@ Experience the enjoyment of surfing the Internet! You can browse news, play onli
 ##### Connect to Hidden Network
 
 1. On the homepage of Control Center, click on ![network_normal](icon/network_normal.svg).
-2. Click on **Wireless Network Card** switch to enable wireless network.
+2. Click on **Wireless Network Card** switch to enable the wireless network.
 3. Click on **Wireless Network** to enter wireless network list.
 4. Click on **Connect to Hidden Network** to enter the interface for connecting to the hidden network.
 5. Enter the name of the network and choose the encrypt method, then enter the password.
@@ -680,7 +690,7 @@ Experience the enjoyment of surfing the Internet! You can browse news, play onli
 #### Hotspot
 
 1. On the homepage of Control Center, click on ![network_normal](icon/network_normal.svg).
-2. Click on **Hotspot** to enter hotspot interface.
+2. Click on **Hotspot** to enter the hotspot interface.
 3. Click on the switch to enable or disable hotspot.
 4. Click on **Hotspot Settings** to view the details or custom name and password.
 
@@ -713,7 +723,7 @@ Experience the enjoyment of surfing the Internet! You can browse news, play onli
 
 1. On the homepage of Control Center, click on ![network_normal](icon/network_normal.svg).
 2. Click on **VPN** and **Create VPN** to enter the interface for creating VPN connections.
-3. After created a VPN, you can click on **Export** to export the configured file.
+3. After creating a VPN, you can click on **Export** to export the configured file.
   You can also click on **Import VPN** to import the existed VPN file.
 
 > ![notes](icon/notes.svg): If you don't want to use the VPN as the default routing, click on **Only applied in corresponding resources**.
@@ -724,9 +734,9 @@ Experience the enjoyment of surfing the Internet! You can browse news, play onli
 2. Click on **Application Proxy** to enter the interface for setting application proxy.
  - Click on **Proxy Type** to select the proxy type.
  - Fill in IP address, port, username, and password.
-3. Click on **Confirm** to save and click on **Cancel** to return to previous interface.
+3. Click on **Confirm** to save and click on **Cancel** to return to the previous interface.
 
-> ![notes](icon/notes.svg): After configured, right click on an application in Launcher to check **Open by proxy**, then the application will be opened by proxy.
+> ![notes](icon/notes.svg): After configured, right click on an application in Launcher to check **Use a proxy**, then the application will be opened by proxy.
 
 #### System Proxy
 
@@ -741,7 +751,7 @@ Experience the enjoyment of surfing the Internet! You can browse news, play onli
 
 1. On the homepage of Control Center, click on ![network_normal](icon/network_normal.svg).
 2. Click on **Network Details** to enter the network info interface.
-3. View the network info for current wired or wireless network.
+3. View the network info for the current wired or wireless network.
 
 
 ### Sound Settings
@@ -753,7 +763,7 @@ Set your speaker and microphone to let you hear more comfortable and sing better
 
 1. On the homepage of Control Center, click on ![sound_normal](icon/sound_normal.svg).
 2. Click on **Speaker** switch to enable the speaker.
-3. Adjust the output volume and left right balance.
+3. Adjust the output volume and left/right balance.
 
 #### Set Microphone
 
@@ -800,7 +810,7 @@ Set the date and time manually to disable the auto sync function.
 #### Edit Timezone List
 
 1. On the homepage of Control Center, click on ![date_time_normal](icon/date_time_normal.svg).
-2. Click on the **Edit** in the end of the timezone list.
+2. Click on the **Edit** at the end of the timezone list.
 3. Click on the delete button to remove an added timezone.
 
 ### Power Management
@@ -808,12 +818,12 @@ Set the date and time manually to disable the auto sync function.
 ![0|power](jpg/power.jpg)
 
 #### Set Power Saving Mode
-To reduce the power consumption of laptop, you can turn on power saving mode.
+To reduce the power consumption of laptops, you can turn on power saving mode.
 1. On the homepage of Control Center, click on ![power_normal](icon/power_normal.svg).
 2. Turn on **Power Saving Mode** switch to enter power saving mode.
 3. Click on **Auto Mode Switch**, your laptop will enter power saving mode automatically when unplug, and recover to normal mode when plug in.
 
-> ![notes](icon/notes.svg): Power saving mode is only for laptop.
+> ![notes](icon/notes.svg): Power saving mode is only for laptops.
 
 #### Set Monitor Suspend Time
 
@@ -825,7 +835,7 @@ To reduce the power consumption of laptop, you can turn on power saving mode.
 1. On the homepage of Control Center, click on ![power_normal](icon/power_normal.svg).
 2. Set the computer suspend time.
 
-> ![notes](icon/notes.svg): There is an option for laptop, named **Suspend on lid close**, you can set it by your needs.
+> ![notes](icon/notes.svg): There is an option for laptops, named **Suspend on lid close**, you can set it by your needs.
 
 #### Security Settings
 
@@ -850,7 +860,7 @@ To reduce the power consumption of laptop, you can turn on power saving mode.
 
 ![0|touchpad](jpg/touchpad.jpg)
 
-If you are using laptop, switch on **Disable the touchpad while typing**/**Disable the touchpad when inserting the mouse**/**Palm Detection**, and set **Minimum contact surface ** and **Minimum pressure value**, to avoid mis-operation on touchpad.
+If you are using a laptop, switch on **Disable the touchpad while typing**/**Disable the touchpad when inserting the mouse**/**Palm Detection**, and set **Minimum contact surface ** and **Minimum pressure value**, to avoid misoperation on your touchpad.
 
 ### Keyboard and Language
 You can choose your keyboard and its layout for different countries and regions or view, search, modify and custom shortcuts.
@@ -914,9 +924,9 @@ The system default keyboard layout is US keyboard, but you can add other layouts
 1. On the homepage of Control Center, click on ![keyboard_normal](icon/keyboard_normal.svg).
 2. Click on **Shortcut** to enter the interface for setting the shortcuts.
 3. Click on the shortcut you want to modify.
-4. Enter new shortcuts by keyboard.
+4. Enter new shortcuts by the keyboard.
 
-> ![notes](icon/notes.svg): If you want to disable a shortcut, please press ![Backspace](icon/Backspace.svg) on keyboard.
+> ![notes](icon/notes.svg): If you want to disable a shortcut, please press ![Backspace](icon/Backspace.svg) on the keyboard.
 
 ##### Custom Shortcuts
 
@@ -968,12 +978,12 @@ You can view system version, hardware info and system license agreement.
 #### View System Info
 
 1. On the homepage of Control Center, click on ![system_info_normal](icon/system_info_normal.svg).
-2. Under **System Information**, you can:
- - View current system version.
- - View current system type, 64Bit/32Bit.
- - View CPU brand.
- - View memory size.
- - View hard disk capacity.
+2. Under **System Information**, you can view:
+ - System version.
+ - System type, 64Bit/32Bit.
+ - CPU brand.
+ - Memory size.
+ - Hard disk capacity.
 
 #### View Copyright License
 
@@ -982,7 +992,7 @@ You can view system version, hardware info and system license agreement.
 3. View the detailed information of EULA.
 
 
-## Window Manager
+## Window Manager|../common/window.svg|
 The Window Manager can show different windows on different workspaces, you can manage the windows by it.
 
  ![1|openworkspace](jpg/openworkspace.jpg)
@@ -992,72 +1002,56 @@ Workspace can divide your desktop windows as groups to enlarge your working area
 
 On Desktop, press ![Super](icon/Super.svg) + ![S](icon/S.svg) to open the workspace management interface.
 
-#### Switch Windows among Workspaces
-On the workspace management interface, all the opened windows in the current workspace will tiled to display.
-
-- Press ![Tab](icon/Tab.svg) to switch to next window of the current window.
-- Press ![Shift](icon/Shift.svg) + ![Tab](icon/Tab.svg) to switch to the previous window.
-
 #### Move Windows among Workspaces
-On the workspace management interface, you can move one window in current workspace to another.
+On the workspace management interface, you can move one window in the current workspace to another.
 
-1. Move the mouse pointer to the window and the selected window will show ![close_icon](icon/close_icon.svg) on the right top corner.
-2. Press and hold the left mouse button to drag and drop the window on the specified preview window.
+1. Move the mouse pointer to the window.
+2. Press and hold the left mouse button to drag and drop the window on the workspace.
 3. Release the left mouse button to finish the moving operation.
 
-#### Close Windows in Workspaces
-On the workspace management interface, you can close the opened windows on desktop very quickly.
-
-1. Move the mouse pointer to the window and the selected window will show ![close_icon](icon/close_icon.svg) on the right top corner.
-2. Click on ![close_icon](icon/close_icon.svg) to close the specified window.
-
 ### Add Workspace
-On the workspace management interface, you can add workspace by the following ways:
+On the workspace management interface, you can add workspace in the following ways:
 
-- Click on ![plus_icon](icon/plus_icon.svg) at the right of the preview window, and press  ![Enter](icon/Enter.svg).
-- Press ![Alt](icon/Alt.svg) + ![=](icon/=.svg) and press ![Enter](icon/Enter.svg).
+- Click on ![plus_icon](icon/plus_icon.svg) below.
+- Press ![plus_icon](icon/plus_icon.svg) on the keyboard.
 
-When the workspace has reached its limit, ![plus_icon](icon/plus_icon.svg) at the right of the preview window will hide automatically, and you cannot add more workspaces. After deleted one workspace, ![plus_icon](icon/plus_icon.svg) will show automatically.
-
->![notes](icon/notes.svg): The window manager supports 7 workspaces at most.
+> ![notes](icon/notes.svg): When the workspace has reached its limit, you cannot add more workspaces. 
 
 ### Switch Workspace
-On the workspace management interface and desktop, you can switch workspace by the following ways:
+On the workspace management interface and desktop, you can switch workspace in the following ways:
 
 - On Desktop, press ![Super](icon/Super.svg) + ![Left](icon/Left.svg) / ![Right](icon/Right.svg) to switch to Previous/Next workspace.
-- On the workspace management interface, scroll up/ down to switch to Previous/Next workspace.
-- On the workspace management interface, click on the preview window or press ![Alt](icon/Alt.svg) + **Numeric Keys** to switch to a specified workspace.
+- On the workspace management interface, click on the preview window to switch to a specified workspace.
 - On the workspace management interface, press ![Left](icon/Left.svg) / ![Right](icon/Right.svg) to switch to Previous/Next workspace directly.
 
 
 ### Delete Workspace
 After you delete a workspace, all windows in the workspace will be shown in a nearby workspace. You cannot delete the workspace when there is only one.
 
-- On the workspace management interface, click on ![close_icon](icon/close_icon.svg) at the right top corner to delete a workspace.
-- On the workspace management interface, select a preview window, press and hold the left mouse button and drag it up to delete a workspace.
-- On the workspace management interface, everytime you press ![Alt](icon/Alt.svg) + ![-](icon/-.svg), it will delete the left or right workspace one by one.
+- On the workspace management interface, click on ![-](icon/-.svg)below to delete a workspace.
+- On the workspace management interface, every time you press ![-](icon/-.svg), it will delete the right workspace one by one.
 
 ### Quit Workspace
-After you finished the operations on the workspace management interface, you can quit it by the following ways:
+After you finished the operations on the workspace management interface, you can quit it in the following ways:
 
 - Press ![Esc](icon/Esc.svg).
 - Click on the blank area on the workspace management interface.
 - Press ![Super](icon/Super.svg) + ![S](icon/S.svg) again.
 
 ### Show Desktop Windows
-You can show the desktop windows by the following ways:
+You can show the desktop windows in the following ways:
 
 - Press ![Super](icon/Super.svg) + ![A](icon/A.svg) to show the windows of all the workspaces.
 - Press ![Super](icon/Super.svg) + ![W](icon/W.svg) to show the windows of the current workspace.
 
 ### Switch Desktop Windows
-You can switch the desktop windows by the following ways:
+You can switch the desktop windows in the following ways:
 
 - On Desktop, press and hold ![Alt](icon/Alt.svg) and press ![Tab](icon/Tab.svg) continually, it will show the right windows one by one; press and hold ![Alt](icon/Alt.svg) + ![Shift](icon/Shift.svg) and press ![Tab](icon/Tab.svg) continually, it will show the left windows one by one.
-- On Desktop, press and hold ![Alt](icon/Alt.svg) and press ![~](icon/~.svg) continually, it will show the same type of the right windows one by one; press and hold ![Alt](icon/Alt.svg) + ![Shift](icon/Shift.svg) and press ![~](icon/~.svg) continually, it will show the same type of the left windows one by one.
+- On Desktop, press and hold ![Alt](icon/Alt.svg) and press ![~](icon/~.svg) continually, it will show the same type of windows one by one.
 
 ### Move Desktop Windows
-You can move the desktop windows to other workspaces by the following ways:
+You can move the desktop windows to other workspaces in the following ways:
 
-- On Desktop, press ![Super](icon/Super.svg) + ![Shift](icon/Shift.svg) + ![Left](icon/Left.svg) / ![Right](icon/Right.svg) to move current window to the Previous/Next workspace.
-- On Desktop, press ![Super](icon/Super.svg) + ![Shift](icon/Shift.svg) + **Numeric Keys** to move current window to the specified workspace.
+- On Desktop, press ![Super](icon/Super.svg) + ![Shift](icon/Shift.svg) + ![Left](icon/Left.svg) / ![Right](icon/Right.svg) to move the current window to the Previous/Next workspace.
+
