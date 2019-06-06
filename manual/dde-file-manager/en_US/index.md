@@ -19,7 +19,7 @@ You can run, close and create a shortcut for Deepin File Manager by the followin
  - Click on **Send to dock** to fix the application on dock.
  - Click on **Add to startup** to add the application to startup, it will automatically run when the system starts up.
 
-> ![tips](icon/tips.svg): In Control Center, you can set Deepin File Manger as the default file manager. Specific operations refer to [Default Application Settings](dman:///dde#Default Application Settings).
+> ![tips](icon/tips.svg): In Control Center, you can set Deepin File Manager as the default file manager. Specific operations refer to [Default Application Settings](dman:///dde#Default Application Settings).
 
 ### Exit Deepin File Manager
 
@@ -223,7 +223,7 @@ Users can view the file/folder properties.
 ![0|info](jpg/info.jpg)
 
 
-> ![notes](icon/notes.svg): Link path will be added in the properties of linked file/folder.
+> ![notes](icon/notes.svg): You can use shortcuts![Ctrl](icon/Ctrl.svg) + ![I](icon/I.svg) to view the properties as well.
 
 ## Common Operations
 
@@ -231,11 +231,11 @@ Deepin File Manager is featured with many useful functions, such as breadcrumb b
 
 ### Switch Address Bar
 
-There are three sections in address bar, namely the breadcrumb bar, search bar and directory bar.
+There are three sections in address bar, namely back/forward buttons, breadcrumb bar, and directory/search bar.
 
-By default, breadcrumb bar is displayed in the address bar. By clicking on the blank area in the address bar or click on ![search](icon/search-noamal.svg), it will switch to directory/search bar, which can be used to access directory and search for target items.
+By default, breadcrumb bar is displayed in the address bar. By right clicking the path to edit address or clicking on ![search](icon/search-normal.svg), it will switch to directory/search bar.
 
-By inputting a directory/keywords in the directory/search bar and pressing ![enter](icon/Enter.svg), user can access the target directory/search for target items.
+By inputting a path or keyword in the bar and pressing ![enter](icon/Enter.svg), user can access the target directory or search for target items.
 
 ![0|addressbar1](jpg/addressbar1.png)
 
@@ -243,19 +243,17 @@ By inputting a directory/keywords in the directory/search bar and pressing ![ent
 
 ### Search Items
 
-Users can search or open target item in the address bar.
-
-1. In the address bar of Deepin File Manager, select the location to search.
-  - To search in a target directory, input the directory path and enter it.
-  - To search all directories, input ![slash](icon/Slash.svg) and press ![enter](icon/Enter.svg) to enter root directory.
-2. Switch to search and input keywords in the search bar.
-3. Press ![enter](icon/Enter.svg), the search results will be shown in the window.
-
-![1|search](jpg/search.jpg)
-
-> ![tips](icon/tips.svg): You can also open a file in the address bar by its absolute path, such as /home/desktop/deepin-clone/a.jpg.
+1. Click the search button or press ![Ctrl](icon/Ctrl.svg) + ![F](icon/F.svg)  to switch to the search bar.
+  - To search in a specific directory, please enter the directory and then search.
+2. Input the keywords and press ![enter](icon/Enter.svg), the search results will be shown in the window.
 
 > ![tips](icon/tips.svg): In **Settings**, check "Auto index internal disk" and "Index external storage device after connected to computer" to quicken the searching speed.
+
+#### Advanced Search
+1. In search bar, input the keywords and press enter, click ![filter](icon/filter.svg) to show advanced search.
+2. Select the searching range, file type and size, and modified time to narrow the search results.
+
+![0|filter](jpg/filter.jpg)
 
 ### Recent Files
 By default, there is a **Recent** entry on left panel. Click it to view the recently used files. Files are sorted by default in reverse order of access time.
@@ -276,7 +274,7 @@ Deepin File Manager supports multi-tab view.
 
 > ![tips](icon/tips.svg): When the Deepin File Manager has only one tab, the tab bar is hidden, you can press ![Ctrl](icon/Ctrl.svg) + ![T](icon/T.svg) to add a new tab.
 
-![1|new_tab](jpg/new_tab.jpg)
+![1|newtab](jpg/newtab.jpg)
 
 ### Manage Bookmarks
 
@@ -396,7 +394,7 @@ Users can manage shared folders if it has shared some folders in Deepin File Man
 
 1. On Deepin File Manager interface, click ![share](icon/icon_share.svg) on the navigation bar.
 2. All shared folders will show on the interface.
-3. Users can cancel sharing by right click the folder and select **Cancel sharing**.
+3. Users can cancel sharing by right clicking the folder and select **Cancel sharing**.
 
 ![1|viewshare](jpg/viewshare.jpg)
 
