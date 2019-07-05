@@ -9,7 +9,7 @@
     <message>
         <location filename="../src/app/dman.cpp" line="83"/>
         <source>Deepin Manual is designed to help users learn deepin and Deepin applications, providing specific instructions and function descriptions.</source>
-        <translation>Приручник за Дипин је састављен тако да помогне корисницима да науче Дипин и Дипин програме, нудећи усмерена упутства и описе функција.</translation>
+        <translation>Приручник за Дипин је састављен тако да помогне корисницима да науче Дипин и Дипинове програме, нудећи усмерена упутства и описе функција.</translation>
     </message>
     <message>
         <location filename="../src/view/web_event_delegate.cpp" line="63"/>

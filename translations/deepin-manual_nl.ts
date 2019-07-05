@@ -4,12 +4,12 @@
     <message>
         <location filename="../src/app/dman.cpp" line="82"/>
         <source>Deepin Manual</source>
-        <translation>Deepin Handboek</translation>
+        <translation>Deepin Handleiding</translation>
     </message>
     <message>
         <location filename="../src/app/dman.cpp" line="83"/>
         <source>Deepin Manual is designed to help users learn deepin and Deepin applications, providing specific instructions and function descriptions.</source>
-        <translation>Deepin Handboek is ontworpen om gebruikers te helpen met het besturingssysteem en zijn applicaties. Het bevat specifieke instructies en functie-omschrijvingen, zodat gebruikers het systeem kunnen leren gebruiken.</translation>
+        <translation>Deepin Handleiding is ontworpen om gebruikers te helpen met het besturingssysteem en zijn toepassingen. Het bevat specifieke instructies en functie-omschrijvingen, zodat gebruikers het systeem kunnen leren gebruiken.</translation>
     </message>
     <message>
         <location filename="../src/view/web_event_delegate.cpp" line="63"/>
@@ -24,7 +24,7 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="33"/>
         <source>Applications</source>
-        <translation>Applicaties</translation>
+        <translation>Toepassingen</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="35"/>

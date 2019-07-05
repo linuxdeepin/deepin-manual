@@ -50,12 +50,12 @@
         <location filename="../src/view/widget/search_completion_window.cpp" line="113"/>
         <location filename="../src/view/widget/search_completion_window.cpp" line="162"/>
         <source>Search &quot;%1&quot; in the full text</source>
-        <translation>&quot;%1&quot; ifadesi tüm metinlerde aransın</translation>
+        <translation>&quot;%1&quot; ifadesi tüm metinlerde ara</translation>
     </message>
     <message>
         <location filename="../src/view/widget/title_bar.cpp" line="96"/>
         <source>Search</source>
-        <translation>Arama</translation>
+        <translation>Ara</translation>
     </message>
 </context>
 </TS>
