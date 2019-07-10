@@ -1,7 +1,7 @@
 # Deepin Store|../common/deepin-appstore.svg|
 
 ## Overview
-Deepin Store is an application recreated by Deepin Technology Co., Ltd. with the integration of application display, downloading, installation, uninstallation, commenting, rating, and recommendation. Deepin Store collects different types of applications for you, each one has been installed and verified manually. You can search the popular applications with one-click download and automatic installation.
+Deepin Store is an app store with the integration of application display, downloading, installation, uninstallation, commenting, rating, and recommendation. Deepin Store collects different types of applications for you, each one has been installed and verified manually. You can search the popular applications with one-click download and automatic installation.
 
  ![1|maininterface](jpg/maininterface.jpg)
 
@@ -29,7 +29,7 @@ You can run Deepin Store by the following operations:
 
 
 ## Main Interface
-The main interface consists of navigation bar, search box, main menu, flashview, columns, hot topics, download and uninstall management.
+The main interface consists of navigation bar, search box, main menu, slide show, columns, hot topics, download and uninstall management.
 
 ![1|maininterfacedetail01](jpg/maininterfacedetail01.png)
 
@@ -41,7 +41,7 @@ The main interface consists of navigation bar, search box, main menu, flashview,
         <tr>
             <td width="25px">1</td>
             <td width="95px">Navigation Bar</td>
-            <td>Navigation bar mainly displays the home page, rankings and application categories of Deepin Store. </td>
+            <td>Navigation bar mainly displays the home page, rankings and application categories. </td>
         </tr>
         <tr>
             <td>2</td>
@@ -51,27 +51,27 @@ The main interface consists of navigation bar, search box, main menu, flashview,
             <tr>
             <td>3</td>
             <td>Main Menu</td>
-            <td>You can sign in, recommend app, select China or International region, clear cache, view the manual and version info, and exit Deepin Store in it. </td>
+            <td>You can recommend app, clear cache, switch theme, view the manual and version info, and exit Deepin Store. </td>
         </tr>
         <tr>
             <td>4</td>
-            <td>Flashview</td>
-            <td>Images of recommended applications will be circularly played in flashview. </td>
+            <td>Slide Show</td>
+            <td>Images of recommended applications are played in a slide show. </td>
         </tr>
          <tr>
             <td>5</td>
             <td>Columns</td>
-            <td>Home columns are mainly to display new updates, essential apps, popular apps, recommendations, rankings. </td>
+            <td>Home columns display new updates, essential apps, popular apps, recommendations, and rankings. </td>
         </tr>
         <tr>
             <td>6</td>
             <td>Hot Topics</td>
-            <td>Hot topics are mainly to display applications with the same topics. </td>
+            <td>Hot topics display applications with the same topics. </td>
         </tr>
         <tr>
             <td>7</td>
             <td>Download Management</td>
-            <td>Download management is mainly to display the current downloading tasks, downloading and installing progress. You can pause and delete the tasks. </td>
+            <td>Download management displays the current downloading tasks, downloading and installing progress. You can pause and delete the tasks. </td>
         </tr>
         <tr>
             <td>8</td>
@@ -82,10 +82,10 @@ The main interface consists of navigation bar, search box, main menu, flashview,
  </table>
 
 ## Application Management
-You can search, download and install different categories of applications by Deepin Store. Meanwhile, more wonderful applications will be explored through flashview, new updates, essential apps, popular apps, recommendations, hot topics, rankings,  user comments and other ways.
+You can search, download and install different categories of applications by Deepin Store. Meanwhile, more wonderful applications can be explored through slide show, new updates, essential apps, popular apps, recommendations, hot topics, rankings,  user comments and other ways.
 
 ### Search Applications
-Search function is built in Deepin Store. Search result will be automatically shown below after you input a keyword. Press ![Enter](icon/Enter.svg) on keyboard to display all applications containing that keyword.
+Search function is built in Deepin Store. Search result will be automatically shown when you input a keyword. Press ![Enter](icon/Enter.svg) on keyboard to display all applications containing that keyword.
 
 ![1|Search](jpg/search.jpg)
 
@@ -106,7 +106,7 @@ Deepin Store supports application sync. After sign in, you can sync the apps ins
 ![1|installprocess](jpg/installprocess.jpg)
 
 #### Install Remote App
-1. Sign in with Deepin ID, click the avatar at the title bar, select **My apps** to view your app list.
+1. Sign in with Deepin ID, click the avatar at the title bar, and select **My apps** to view your app list.
 2. Click **Remote App** to view all the apps installed under that account.
 3. Click **Install All** to select the apps to install.
 
@@ -114,7 +114,6 @@ Deepin Store supports application sync. After sign in, you can sync the apps ins
 
 > ![notes](icon/notes.svg) : Switch on **Auto install new app**. When installing apps on your device with Deepin ID, the new applications will be installed automatically on another device with that account logged in. But, the remote app will not automatically be removed when it is uninstalled from another device.
 
-> ![attention](icon/attention.svg): After sign in with Deepin ID, the remote app list in China region only shows the apps installed in China region,  and that in International region only shows the apps installed in International region.  
 
 ### Update/Upgrade Application
 
@@ -187,11 +186,6 @@ If you want a new app in Deepin Store, please click "Recommend App" in main menu
 
 ![1|recommendapp](jpg/recommendapp.jpg)
 
-### Select Region
-Deepin Store has two regions: China and international, which has different applications based on user preferences.
-1. On Deepin Store interface, click on ![icon_menu](icon/icon_menu.svg).
-2. Click on **Select Region**.
-3. Choose **China** or **International**.
 
 ### Clear Cache
 1. On Deepin Store interface, click on ![icon_menu](icon/icon_menu.svg).
@@ -202,6 +196,12 @@ Deepin Store has two regions: China and international, which has different appli
 1. On Deepin Store interface, click on ![main_menu](icon/icon_menu.svg).
 2. Select **Dark Theme**.
 3. The interface will switch to dark theme.
+
+### Privacy Policy
+
+1. On Deepin Store interface, click on ![main_menu](icon/icon_menu.svg).
+2. Select **Privacy Policy**.
+3. Read the terms of Privacy Policy.
 
 ### Help
 Click "Help" to get the manual, which will help you further know and use Deepin Store.
