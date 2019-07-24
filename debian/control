@@ -10,7 +10,7 @@ Build-Depends:
  libqcef-dev,
  libdtkwidget-dev,
  libqt5webchannel5-dev,
- libsass0,
+ libsass-dev,
  libqt5sql5-sqlite,
  pkg-config,
  qttools5-dev,
