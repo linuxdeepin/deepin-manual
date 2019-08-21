@@ -2,11 +2,12 @@ body {
   width: 100%;
   margin: 0px;
   overflow-x: hidden;
+  background-color: #f8f8f8;
   overflow-y: auto; }
 
 #app {
   width: 100%;
-  color: #464646;
+  color: #414D68;
   height: 100%; }
   #app a {
     text-decoration: none;
@@ -206,18 +207,18 @@ div {
   user-select: none;
   display: flex;
   flex-flow: column;
-  margin: 0 100px; }
+  margin: 0 107px; }
   #index:after {
     content: '';
     display: block;
     width: 100%;
     height: 100px; }
   #index h2 {
-    font-weight: 300;
-    font-size: 30px;
-    line-height: 2em;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 59px;
     margin: 1em 0 0;
-    border-bottom: 1px solid #d7d7d7; }
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1) }
   #index .items {
     display: flex;
     flex-flow: row;
@@ -239,13 +240,16 @@ div {
       vertical-align: bottom;
       cursor: pointer; }
       #index .items .item img {
-        width: 64px;
-        margin-top: 30px;
-        margin-bottom: 10px; }
+        width: 96px;
+        margin-top: 16px;
+        margin-bottom: 10px; }   
+
       #index .items .item span {
-        font-size: 14px;
-        font-weight: normal;
-        color: black; }
+        margin-top: 8px;
+        font-size: 17px;
+        font-weight: bold;
+        line-height:25px;
+        color: #001A2E; }
       #index .items .item:focus, #index .items .item:hover {
         border-radius: 4px;
         background-color: rgba(0, 0, 0, 0.05); }
@@ -272,18 +276,22 @@ div {
     #nav .h[type='h2'] {
       font-size: 16px;
       font-weight: 500;
-      color: #00162c;
+      color: #001A2E;
       padding: 3px 0px;
-      text-indent: 1.5rem; }
+      margin-left: 10px;
+      margin-right: 11px;
+      text-indent: 0.88rem; }
     #nav .h[type='h3'] {
-      font-size: 12px;
-      color: #000000;
-      padding: 6px;
-      text-indent: 2rem; }
+      font-size: 13px;
+      color: #414D68;
+      padding: 6px 0;
+      margin-left: 10px;
+      margin-right: 11px;
+      text-indent: 1.5rem; }
   #nav .hash {
-    border-right: #30a5f9 3px solid;
-    background-color: #d5edfe;
-    color: #2ca7f8 !important;
+    background-color: #0081ff;
+    color: #ffffff !important;
+    border-radius: 8px;
     font-weight: bold; }
 
 #search {
@@ -308,16 +316,18 @@ div {
       color: #303030;
       margin-bottom: 13px; }
     #search #mismatch #WikiSearch {
-      font-size: 18px;
-      color: #7a7a7a;
+      font-size: 12px;
+      color: #7A7A7A;
       margin-bottom: 20px; }
     #search #mismatch #button {
-      font-size: 12px;
-      padding: 5px 20px;
-      color: #2c2c2c;
+      font-size: 14px;
+      padding: 8px 42px;
+      background:linear-gradient(#E6E6E6,#E3E3E3);
+      color: #414D68;
       width: 80px;
-      box-shadow: 0 1px 0 0 rgba(0, 0, 0, 0.02), inset 0 1px 0 0 rgba(255, 255, 255, 0.6);
-      border: solid 1px rgba(0, 0, 0, 0.08);
+      box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05);
+      border: solid 1px rgba(0, 0, 0, 0.03);
+      border-radius:8px;
       text-align: center;
       cursor: pointer; }
   #search .items {
