@@ -54,7 +54,8 @@ class SearchDb : public QObject {
                       const QString& lang,
                       const QStringList& anchors,
                       const QStringList& anchorIdList,
-                      const QStringList& contents);
+                      const QStringList& contents
+);
 
  private:
   void initConnections();

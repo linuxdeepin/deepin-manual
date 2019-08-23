@@ -36,8 +36,9 @@ QVariantHash I18nProxy::getSentences() const {
       { "WikiSearch", QObject::tr(
           "Change your keywords and try again, or search it in Deepin Wiki") },
       { "ToIndexPage", QObject::tr("Home") },
-      { "SearchInWiki", QObject::tr("Deepin Wiki") }
-  };
+      { "SearchInWiki", QObject::tr("Deepin Wiki") },
+      { "ResultNumSuffix", QObject::tr("result") },//单数结果后缀
+      { "ResultNumSuffixs", QObject::tr("results") }};
   return result;
 }
 

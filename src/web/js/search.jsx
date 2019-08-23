@@ -49,12 +49,18 @@ class Items extends Component {
       );
       resultList.push(c);
     }
+    var sresultnum;
+      if(resultList.length>1)
+      sresultnum=resultList.length+global.i18n['ResultNumSuffixs'];
+      else
+      sresultnum=resultList.length+global.i18n['ResultNumSuffix'];
     return (
       this.state.show && (
         <div className="items">
           <div className="itemsTitle" onClick={() => global.open(this.props.file)}>
             <img src={this.state.logo} />
-            <span>{this.state.title}</span>
+            <span className="resulttitle">{this.state.title}</span>
+            <span className="resultnum">{sresultnum}</span>
           </div>
           {resultList}
         </div>

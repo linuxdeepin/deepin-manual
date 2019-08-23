@@ -1,73 +1,61 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="pt_BR" version="2.1">
 <context>
     <name>QObject</name>
     <message>
         <location filename="../src/app/dman.cpp" line="82"/>
         <source>Deepin Manual</source>
-        <translation type="unfinished"></translation>
+        <translation>Manual do Deepin </translation>
     </message>
     <message>
         <location filename="../src/app/dman.cpp" line="83"/>
         <source>Deepin Manual is designed to help users learn deepin and Deepin applications, providing specific instructions and function descriptions.</source>
-        <translation type="unfinished"></translation>
+        <translation>O manual do Deepin foi projetado para ajudar os usuários a aprender a usar o Deepin e suas aplicações, fornecendo instruções específicas e descrição das funções.</translation>
     </message>
     <message>
         <location filename="../src/view/web_event_delegate.cpp" line="63"/>
         <source>Copy</source>
-        <translation type="unfinished"></translation>
+        <translation>Copiar</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="32"/>
         <source>System</source>
-        <translation type="unfinished"></translation>
+        <translation>Sistema</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="33"/>
         <source>Applications</source>
-        <translation type="unfinished"></translation>
+        <translation>Aplicativos</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="35"/>
         <source>Sorry, there are no search results of &quot;%1&quot;</source>
-        <translation type="unfinished"></translation>
+        <translation>Desculpe, não há resultados de pesquisa para &quot;% 1&quot;</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="36"/>
         <source>Change your keywords and try again, or search it in Deepin Wiki</source>
-        <translation type="unfinished"></translation>
+        <translation>Altere os termos da pesquisa e tente novamente. Você também pode pesquisar na Deepin Wiki</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="38"/>
         <source>Home</source>
-        <translation type="unfinished"></translation>
+        <translation>Início</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="39"/>
         <source>Deepin Wiki</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="40"/>
-        <source>result</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="41"/>
-        <source>results</source>
-        <translation type="unfinished"></translation>
+        <translation>Deepin Wiki</translation>
     </message>
     <message>
         <location filename="../src/view/widget/search_completion_window.cpp" line="113"/>
         <location filename="../src/view/widget/search_completion_window.cpp" line="162"/>
         <source>Search &quot;%1&quot; in the full text</source>
-        <translation type="unfinished"></translation>
+        <translation>Pesquise &quot;%1&quot; em todo o texto</translation>
     </message>
     <message>
         <location filename="../src/view/widget/title_bar.cpp" line="96"/>
         <source>Search</source>
-        <translation type="unfinished"></translation>
+        <translation>Pesquisar</translation>
     </message>
 </context>
 </TS>

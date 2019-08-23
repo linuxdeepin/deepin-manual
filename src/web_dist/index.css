@@ -13,17 +13,59 @@ body {
     text-decoration: none;
     color: #00162c; }
 
+.scrollbar {
+  --mouse-y: 0px; }
+
 .scrollbar > div:last-child {
-  width: 4px !important; }
+  width: 24px !important; }
   .scrollbar > div:last-child div {
-    background-color: rgba(16, 16, 16, 0.5) !important; }
-  .scrollbar > div:last-child:hover {
-    width: 8px !important; }
+    background-color: rgba(16, 16, 16, 0.5) !important;
+    width: 4px !important;
+    border: 10px solid transparent !important;
+    background-clip: padding-box;
+    position: absolute !important; }
+  .scrollbar > div:last-child div:hover {
+    width: 8px !important;
+    border: 8px solid transparent !important;
+    background-clip: padding-box;
+    position: absolute !important; }
+  .scrollbar > div:last-child div:hover:after {
+    content: "";
+    display: block;
+    background-color: #0081FF;
+    position: absolute;
+    top: var(--mouse-y);
+    width: 24px;
+    height: 36px;
+    border-radius: 12px;
+    left: -8px; }
 
 body[style*='user-select: none'] .scrollbar > div:last-child {
-  width: 8px !important; }
+  width: 24px !important; }
   body[style*='user-select: none'] .scrollbar > div:last-child div {
-    background-color: rgba(16, 16, 16, 0.7) !important; }
+    background-color: rgba(255, 255, 255, 0.7) !important;
+    width: 4px !important;
+    border: 10px solid transparent !important;
+    background-clip: padding-box;
+    position: absolute !important; }
+  body[style*='user-select: none'] .scrollbar > div:last-child div:hover {
+    width: 8px !important;
+    border: 8px solid transparent !important;
+    background-clip: padding-box;
+    position: absolute !important; }
+  body[style*='user-select: none'] .scrollbar > div:last-child div:after {
+    content: "";
+    display: block;
+    background-color: #0081FF;
+    position: absolute;
+    top: var(--mouse-y);
+    left: -10px;
+    width: 24px;
+    height: 36px;
+    border-radius: 12px; }
+  body[style*='user-select: none'] .scrollbar > div:last-child div:hover:after {
+    position: absolute;
+    left: -8px; }
 
 div {
   outline: none; }
@@ -331,33 +373,42 @@ div {
       text-align: center;
       cursor: pointer; }
   #search .items {
-    margin: 15px 0; }
+    margin: 30px 0; }
     #search .items .itemsTitle {
       cursor: pointer;
       height: 32px;
-      font-weight: bold; }
+      font-size: 17px; }
       #search .items .itemsTitle img {
         height: 100%;
         vertical-align: middle;
         margin-right: 10px; }
-      #search .items .itemsTitle span {
-        vertical-align: middle; }
+      #search .items .itemsTitle .resulttitle {
+        vertical-align: middle;
+        font-weight: bold; }
+      #search .items .itemsTitle .resultnum {
+        font-size: 12px;
+        line-height: 32px;
+        float: right;
+        vertical-align: text-bottom; }
     #search .items .item {
       cursor: pointer;
       padding: 7px 18px;
       margin-top: 10px;
-      font-size: 13px;
-      line-height: 28px;
-      border-radius: 3px;
-      box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.1), inset 0 2px 0 0 rgba(255, 255, 255, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.1);
+      font-size: 12px;
+      line-height: 18px;
+      border-radius: 8px;
+      background-color: white;
       overflow: hidden;
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical; }
       #search .items .item .itemTitle {
-        margin: 7px 0px 10px 0px;
         font-size: 14px;
+        line-height: 20px;
         height: 20px;
         font-weight: bold; }
+      #search .items .item .context {
+        margin-top: 10px;
+        overflow: hidden; }
     #search .items .highlight {
       color: #2bba57; }
