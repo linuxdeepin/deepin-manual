@@ -54,7 +54,7 @@ void TitleBar::initConnections() {
           this, &TitleBar::forwardButtonClicked);
   connect(search_edit_, &SearchEdit::textChanged,
           this, &TitleBar::onSearchTextChanged);
-  connect(search_edit_, &SearchEdit::focusOut,
+  connect(search_edit_, &SearchEdit::focusChanged,
           this, &TitleBar::focusOut);
   connect(search_edit_, &SearchEdit::downKeyPressed,
           this, &TitleBar::downKeyPressed);

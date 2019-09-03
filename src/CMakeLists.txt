@@ -64,9 +64,11 @@ find_package(Qt5Widgets REQUIRED)
 find_package(Qt5LinguistTools REQUIRED)
 
 pkg_search_module(DtkWidget REQUIRED dtkwidget)
+pkg_search_module(DtkGui REQUIRED dtkgui)
 pkg_search_module(QCef REQUIRED libqcef)
 
 include_directories(${DtkWidget_INCLUDE_DIRS})
+include_directories(${DtkGui_INCLUDE_DIRS})
 include_directories(${QCef_INCLUDE_DIRS})
 
 set(LINK_LIBS
@@ -77,6 +79,7 @@ set(LINK_LIBS
     Qt5::WebChannel
 
     ${DtkWidget_LDFLAGS}
+    ${DtkGui_LDFLAGS}
     ${QCef_LDFLAGS}
     )
 
