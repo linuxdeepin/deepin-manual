@@ -23,47 +23,48 @@
 #include <QPushButton>
 #include <QStackedLayout>
 #include <dimagebutton.h>
-
+#include <DIconButton>
 namespace dman {
 
 class SearchEdit;
 
 // Customize widget in TitleBar.
-class TitleBar : public QFrame {
-  Q_OBJECT
+class TitleBar : public QFrame
+{
+    Q_OBJECT
 
- public:
-  explicit TitleBar(QWidget* parent = nullptr);
-  ~TitleBar() override;
+public:
+    explicit TitleBar(QWidget *parent = nullptr);
+    ~TitleBar() override;
 
-  QString getSearchText() const;
+    QString getSearchText() const;
 
- signals:
-  void backwordButtonActiveChanged(bool active);
-  void forwordButtonActiveChanged(bool active);
-  void backwardButtonClicked();
-  void forwardButtonClicked();
+signals:
+    void backwordButtonActiveChanged(bool active);
+    void forwordButtonActiveChanged(bool active);
+    void backwardButtonClicked();
+    void forwardButtonClicked();
 
-  void searchTextChanged(const QString& text);
-  void downKeyPressed();
-  void enterPressed();
-  void upKeyPressed();
-  void focusOut();
+    void searchTextChanged(const QString &text);
+    void downKeyPressed();
+    void enterPressed();
+    void upKeyPressed();
+    void focusOut();
 
- public slots:
-  void setBackwardButtonActive(bool active);
-  void setForwardButtonActive(bool active);
+public slots:
+    void setBackwardButtonActive(bool active);
+    void setForwardButtonActive(bool active);
 
- private:
-  void initUI();
-  void initConnections();
+private:
+    void initUI();
+    void initConnections();
 
-  Dtk::Widget::DImageButton* back_button_ = nullptr;
-  Dtk::Widget::DImageButton* forward_button_ = nullptr;
-  SearchEdit* search_edit_ = nullptr;
+    Dtk::Widget::DIconButton *back_button_ = nullptr;
+    Dtk::Widget::DIconButton *forward_button_ = nullptr;
+    SearchEdit *search_edit_ = nullptr;
 
- private slots:
-  void onSearchTextChanged();
+private slots:
+    void onSearchTextChanged();
 };
 
 }  // namespace dman
