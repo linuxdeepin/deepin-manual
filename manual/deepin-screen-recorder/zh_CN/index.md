@@ -1,4 +1,4 @@
-# 深度录屏|../common/deepin-screen-recorder.svg|
+# 录屏|../common/deepin-screen-recorder.svg|
 
 ## 概述
 

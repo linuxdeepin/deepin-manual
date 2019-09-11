@@ -1,4 +1,4 @@
-# 深度备份还原工具|../common/deepin-clone.svg|
+# 备份还原工具|../common/deepin-clone.svg|
 
 ## 概述
 

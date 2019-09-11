@@ -1,4 +1,4 @@
-# 深度云扫描|../common/deepin-cloud-scanner.svg|
+# 云扫描|../common/deepin-cloud-scanner.svg|
 
 ## 概述
 

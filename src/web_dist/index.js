@@ -577,6 +577,7 @@ var Item = function (_Component) {
           logo = _data$substr$split2[1];
 
       logo = '' + path + logo;
+
       _this.setState({ title: title, logo: logo, file: file, show: true });
     });
     return _this;
@@ -1066,104 +1067,23 @@ Object.defineProperty(exports, "__esModule", {
 
 var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
 
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+exports.default = function (props) {
+  return _react2.default.createElement(
+    _reactCustomScrollbars.Scrollbars,
+    _extends({}, props, { className: 'scrollbar', autoHide: true, autoHideTimeout: 800 }),
+    props.children
+  );
+};
 
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
-var _reactDom = require('react-dom');
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
 var _reactCustomScrollbars = require('react-custom-scrollbars');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var meventy = 0;
-
-var _class = function (_React$Component) {
-  _inherits(_class, _React$Component);
-
-  function _class() {
-    _classCallCheck(this, _class);
-
-    return _possibleConstructorReturn(this, (_class.__proto__ || Object.getPrototypeOf(_class)).apply(this, arguments));
-  }
-
-  _createClass(_class, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      var myself = _reactDom2.default.findDOMNode(this.refs.myselfref);
-      //console.log("myself:",myself);
-      var getObj = myself.querySelector(":scope >div:last-child div");
-      getObj.addEventListener("mouseenter", function (event) {
-        console.log("mouseenter");
-        getObj.setAttribute("user-using", "none;");
-        var vtransform = getObj.style.transform;
-        var vtranslateY = vtransform.replace("translateY(", "").replace("px)", "");
-        console.log("enter vtranslateY:" + vtranslateY);
-        console.log("enter y:" + event.clientY);
-        var vY = event.clientY - vtranslateY - 18;
-        meventy = event.clientY;
-        console.log("enter vY:" + vY);
-        var result = document.getElementsByClassName('scrollbar')[0];
-        result.style.setProperty('--mouse-y', vY + 'px');
-      });
-      getObj.addEventListener("mouseleave", function (event) {
-        console.log("mouseleave");
-        getObj.removeAttribute('user-using');
-      });
-      getObj.addEventListener("mousemove", function (event) {
-        console.log("mousemove");
-        if (event.clientY - meventy > 3 || event.clientY - meventy < -3) meventy = event.clientY;
-        console.log("meventy", meventy);
-      });
-    }
-  }, {
-    key: 'scrollbarsscrollstart',
-    value: function scrollbarsscrollstart() {
-      console.log("ScrollStart");
-      // console.log("event",event);
-      var myself = _reactDom2.default.findDOMNode(this.refs.myselfref);
-      console.log("myself:", myself);
-      var getObj = myself.querySelector(":scope >div:last-child div");
-      console.log("getObj:", getObj);
-      var vtransform = getObj.style.transform;
-      var vtranslateY = vtransform.replace("translateY(", "").replace("px)", "");
-      console.log("vtranslateY:" + vtranslateY);
-      var vY = meventy - vtranslateY - 18;
-      console.log("vY:" + vY);
-      var result = document.getElementsByClassName('scrollbar')[0];
-      result.style.setProperty('--mouse-y', vY + 'px');
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this2 = this;
-
-      return _react2.default.createElement(
-        _reactCustomScrollbars.Scrollbars,
-        _extends({}, this.props, { className: 'scrollbar', ref: 'myselfref', onScrollStart: function onScrollStart() {
-            return _this2.scrollbarsscrollstart();
-          }, autoHide: true, autoHideTimeout: 800 }),
-        this.props.children
-      );
-    }
-  }]);
-
-  return _class;
-}(_react2.default.Component);
-
-exports.default = _class;
-
-},{"react":77,"react-custom-scrollbars":38,"react-dom":46}],8:[function(require,module,exports){
+},{"react":77,"react-custom-scrollbars":38}],8:[function(require,module,exports){
 (function (global){
 'use strict';
 
@@ -1300,7 +1220,7 @@ function Mismatch(props) {
       _react2.default.createElement(
         'div',
         { id: 'NoResult' },
-        global.i18n['NoResult'].replace('%1', props.keyword)
+        global.i18n['NoResult'].replace('%1', decodeURIComponent(props.keyword))
       ),
       _react2.default.createElement(
         'div',

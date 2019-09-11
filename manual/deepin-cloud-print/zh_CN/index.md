@@ -1,4 +1,4 @@
-# 深度云打印|../common/deepin-cloud-print.svg|
+# 云打印|../common/deepin-cloud-print.svg|
 
 ## 概述
 

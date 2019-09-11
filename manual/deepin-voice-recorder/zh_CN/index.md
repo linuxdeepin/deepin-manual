@@ -1,4 +1,4 @@
-# 深度录音|../common/deepin-voice-recorder.svg|
+# 录音|../common/deepin-voice-recorder.svg|
 
 ## 概述
 

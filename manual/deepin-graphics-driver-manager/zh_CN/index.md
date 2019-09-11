@@ -1,4 +1,4 @@
-# 深度显卡驱动管理器|../common/deepin-graphics-driver-manager.svg|
+# 显卡驱动管理器|../common/deepin-graphics-driver-manager.svg|
 
 ## 概述
 

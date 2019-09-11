@@ -1,4 +1,4 @@
-# 深度计算器|../common/deepin-calculator.svg|
+# 计算器|../common/deepin-calculator.svg|
 
 ## 概述
 

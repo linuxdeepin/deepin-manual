@@ -1,4 +1,4 @@
-# 深度启动盘制作工具|../common/deepin-boot-maker.svg|
+# 启动盘制作工具|../common/deepin-boot-maker.svg|
 
 ## 概述
 

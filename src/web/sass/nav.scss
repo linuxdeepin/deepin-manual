@@ -18,24 +18,28 @@
     &[type='h2'] {
       font-size: 16px;
       font-weight: 500;
-      color: #00162c;
+      color: #001A2E;
       padding: 3px 0px;
-      text-indent: 1.5rem;
+      margin-left: 10px;
+      margin-right: 11px;
+      text-indent: 0.88rem;
     }
     &[type='h3'] {
-      font-size: 12px;
-      color: #000000;
-      padding: 6px;
-      text-indent: 2rem;
+      font-size: 13px;
+      color: #414D68;
+      padding: 6px 0;
+      margin-left: 10px;
+      margin-right: 11px;
+      text-indent: 1.5rem;
     }
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
   }
   .hash {
-    border-right: #30a5f9 3px solid;
-    background-color: #d5edfe;
-    color: #2ca7f8 !important;
+    background-color: #0081ff;
+    color: #ffffff !important;
+    border-radius: 8px;
     font-weight: bold;
   }
 }

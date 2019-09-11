@@ -66,7 +66,6 @@ void WindowManager::openManual(const QString &app_name)
     windows_.insert(app_name, window);
     window->resize(kWinWidth, kWinHeight);
     window->setMinimumSize(kWinMinWidth, kWinMinHeight);
-    window->setWindowRadius(18);
     window->show();
     window->activateWindow();
 

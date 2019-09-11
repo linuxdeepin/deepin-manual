@@ -1,4 +1,4 @@
-# 深度文件管理器|../common/deepin-file-manager.svg|
+# 文件管理器|../common/deepin-file-manager.svg|
 
 ## 概述
 

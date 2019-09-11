@@ -1,4 +1,4 @@
-# 深度终端|../common/deepin-terminal.svg|
+# 终端|../common/deepin-terminal.svg|
 
 ## 概述
 

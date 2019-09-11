@@ -24,6 +24,7 @@
 #include <QStackedLayout>
 #include <dimagebutton.h>
 #include <DIconButton>
+
 namespace dman {
 
 class SearchEdit;

@@ -20,6 +20,7 @@ class Item extends Component {
         .substr('# '.length, data.indexOf('\n'))
         .split('|');
       logo = `${path}${logo}`;
+
       this.setState({ title, logo, file, show: true });
     });
   }

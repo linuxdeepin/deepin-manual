@@ -1,4 +1,4 @@
-# 深度音乐|../common/deepin-music.svg|
+# 音乐|../common/deepin-music.svg|
 
 ## 概述
 

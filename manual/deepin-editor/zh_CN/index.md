@@ -1,4 +1,4 @@
-# 深度编辑器|../common/deepin-editor.svg|
+# 编辑器|../common/deepin-editor.svg|
 
 ## 概述
 

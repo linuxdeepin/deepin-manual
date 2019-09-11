@@ -1,4 +1,4 @@
-# 深度字体安装器|../common/deepin-font-installer.svg|
+# 字体安装器|../common/deepin-font-installer.svg|
 
 ## 概述
 

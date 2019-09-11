@@ -1,4 +1,4 @@
-# 深度看图|../common/deepin-image-viewer.svg|
+# 看图|../common/deepin-image-viewer.svg|
 
 ## 概述
 

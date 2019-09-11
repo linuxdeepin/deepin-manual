@@ -1,4 +1,4 @@
-# 深度系统修复工具|../common/deepin-repair.svg|
+# 系统修复工具|../common/deepin-repair.svg|
 
 ## 概述
 

@@ -1,4 +1,4 @@
-# 深度系统监视器|../common/monitor.svg|
+# 系统监视器|../common/monitor.svg|
 
 ## 概述
 

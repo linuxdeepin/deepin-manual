@@ -1,4 +1,4 @@
-# 深度软件包管理器|../common/deepin-deb-installer.svg|
+# 软件包安装器|../common/deepin-deb-installer.svg|
 
 ## 概述
 

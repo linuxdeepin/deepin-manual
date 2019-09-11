@@ -1,4 +1,4 @@
-# 深度演示助手|../common/presentation-assistant.svg|
+# 演示助手|../common/presentation-assistant.svg|
 
 ## 概述
 

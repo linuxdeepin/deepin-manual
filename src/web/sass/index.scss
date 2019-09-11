@@ -4,7 +4,7 @@
   user-select: none;
   display: flex;
   flex-flow: column;
-  margin: 0 100px;
+  margin: 0 107px;
   &:after {
     content: '';
     display: block;
@@ -12,11 +12,11 @@
     height: 100px;
   }
   h2 {
-    font-weight: 300;
-    font-size: 30px;
-    line-height: 2em;
+    font-weight: normal;
+    font-size: 40px;
+    line-height: 59px;
     margin: 1em 0 0;
-    border-bottom: 1px solid #d7d7d7;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1)
   }
   .items {
     display: flex;
@@ -41,14 +41,16 @@
       vertical-align: bottom;
       cursor: pointer;
       img {
-        width: 64px;
-        margin-top: 30px;
+        width: 96px;
+        margin-top: 16px;
         margin-bottom: 10px;
       }
       span {
-        font-size: 14px;
-        font-weight: normal;
-        color: black;
+        margin-top: 8px;
+        font-size: 17px;
+        font-weight: bold;
+        line-height:25px;
+        color: #001A2E;
       }
       &:focus,
       &:hover {
