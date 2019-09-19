@@ -21,6 +21,7 @@
 #include <QDBusConnection>
 #include <QIcon>
 #include <qcef_context.h>
+#include <DApplicationSettings>
 
 #include "base/consts.h"
 #include "controller/argument_parser.h"
@@ -82,6 +83,8 @@ int main(int argc, char **argv)
                                       "function descriptions."));
     app.setApplicationAcknowledgementPage(
         "https://www.deepin.org/acknowledgments/deepin-manual/");
+    //save theme
+    DApplicationSettings dApplicationSettings;
 
     Dtk::Core::DLogManager::registerFileAppender();
     Dtk::Core::DLogManager::registerConsoleAppender();

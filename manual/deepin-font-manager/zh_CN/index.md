@@ -1,4 +1,4 @@
-# 字体安装器|../common/deepin-font-installer.svg|
+# 字体管理器|../common/deepin-font-installer.svg|
 
 ## 概述
 
