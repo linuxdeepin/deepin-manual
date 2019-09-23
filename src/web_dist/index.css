@@ -208,18 +208,20 @@ div {
   user-select: none;
   display: flex;
   flex-flow: column;
-  margin: 0 107px; }
+  margin: -19 107px; }
   #index:after {
     content: '';
     display: block;
     width: 100%;
     height: 100px; }
   #index h2 {
+    font-family: SourceHanSansSC-Normal;
     font-weight: normal;
     font-size: 40px;
     line-height: 59px;
-    margin: 1em 0 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1); }
+    margin: 0.5em 0 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 12px; }
   #index .items {
     display: flex;
     flex-flow: row;
@@ -243,9 +245,9 @@ div {
       #index .items .item img {
         width: 96px;
         margin-top: 16px;
-        margin-bottom: 10px; }
+        margin-bottom: 8px; }
       #index .items .item span {
-        margin-top: 8px;
+        font-family: SourceHanSansSC-Bold;
         font-size: 17px;
         font-weight: bold;
         line-height: 25px;
@@ -309,6 +311,8 @@ div {
     -webkit-box-align: center;
     text-align: center; }
     #search #mismatch #NoResult {
+      font-family: SourceHanSansSC-Normal;
+      margin-top: -70px;
       overflow-x: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
@@ -316,10 +320,13 @@ div {
       color: #303030;
       margin-bottom: 13px; }
     #search #mismatch #WikiSearch {
+      font-family: SourceHanSansSC-Normal;
       font-size: 12px;
       color: #7a7a7a;
       margin-bottom: 20px; }
     #search #mismatch #button {
+      font-family: SourceHanSansSC-Medium;
+      font-weight: 550;
       font-size: 14px;
       padding: 8px 42px;
       background: linear-gradient(#E6E6E6, #E3E3E3);

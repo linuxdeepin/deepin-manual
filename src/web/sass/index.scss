@@ -4,7 +4,7 @@
   user-select: none;
   display: flex;
   flex-flow: column;
-  margin: 0 107px;
+  margin: -19 107px;
   &:after {
     content: '';
     display: block;
@@ -12,11 +12,13 @@
     height: 100px;
   }
   h2 {
+    font-family: SourceHanSansSC-Normal;
     font-weight: normal;
     font-size: 40px;
     line-height: 59px;
-    margin: 1em 0 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1)
+    margin: 0.5em 0 0;
+    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    padding-bottom: 12px;
   }
   .items {
     display: flex;
@@ -43,10 +45,10 @@
       img {
         width: 96px;
         margin-top: 16px;
-        margin-bottom: 10px;
+        margin-bottom: 8px;
       }
       span {
-        margin-top: 8px;
+        font-family: SourceHanSansSC-Bold;
         font-size: 17px;
         font-weight: bold;
         line-height:25px;
@@ -54,7 +56,6 @@
       }
       &:focus,
       &:hover {
-        background-clip: content-box;
         border-radius: 4px;
         // border: 1px solid transparent;
         background-color: rgba(0, 0, 0, 0.05);

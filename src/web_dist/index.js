@@ -366,11 +366,13 @@ var Article = function (_Component) {
       var hList = _reactDom2.default.findDOMNode(this).querySelectorAll('h2,h3');
       var hash = hList[0].id;
       for (var i = 0; i < hList.length; i++) {
+        console.log("hlist:" + hList[i]);
         if (hList[i].getBoundingClientRect().top > 1) {
           break;
         }
         hash = hList[i].id;
       }
+      console.log("this.hash:" + this.hash + "   hash:" + hash);
       if (this.hash != hash) {
         console.log('hash update');
         this.hash = hash;
@@ -661,7 +663,7 @@ var Index = function (_Component2) {
     value: function render() {
       var _this4 = this;
 
-      var sysSoft = ['dde'].filter(function (appName) {
+      var sysSoft = ['dde', 'dde-control-center'].filter(function (appName) {
         return _this4.state.appList.indexOf(appName) != -1;
       });
       var appSoft = this.state.sequence.filter(function (appName) {
@@ -796,6 +798,7 @@ var Main = function (_Component) {
   }, {
     key: 'setHash',
     value: function setHash(hash) {
+      console.log("hash:" + hash);
       this.setState({ hash: hash });
     }
   }, {

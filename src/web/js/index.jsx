@@ -99,7 +99,7 @@ export default class Index extends Component {
       .focus();
   }
   render() {
-    let sysSoft = ['dde'].filter(
+    let sysSoft = ['dde','dde-control-center'].filter(
       appName => this.state.appList.indexOf(appName) != -1
     );
     let appSoft = this.state.sequence.filter(
