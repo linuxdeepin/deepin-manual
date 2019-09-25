@@ -9,21 +9,28 @@
 }
 
 #article {
-  margin: auto;
+  background-color: #fff;
+  border-radius: 8px;
+  margin: auto; 
+  margin-top: -11px;
   .read {
+    font-family: SourceHanSansSC-Normal;
     margin: auto;
     padding: 0 10%;
     width: 80%;
     max-width: 700px;
-    font-size: 13px;
+    font-size: 12px;
     color: #000;
     outline: 0px;
     h2 {
       font-weight: normal;
       font-size: 20px;
-      color: #1f94ee;
+      color: #2CA7F8;
       margin: 0px;
       padding-top: 23px;
+        +p{
+            margin-top: 7px;        
+        }
     }
     ul,
     ol {
@@ -72,7 +79,7 @@
       }
     }
     p {
-      line-height: 2em;
+      line-height: 1.5em;
       margin: 0;
     }
     table {
