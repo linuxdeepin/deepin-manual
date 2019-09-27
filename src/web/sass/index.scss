@@ -4,7 +4,7 @@
   user-select: none;
   display: flex;
   flex-flow: column;
-  margin: -19 107px;
+  margin: -19px 70px -19px 107px;
   &:after {
     content: '';
     display: block;
@@ -24,20 +24,15 @@
     display: flex;
     flex-flow: row;
     flex-wrap: wrap;
-    justify-content: space-between;
-    &:after {
-      content: '';
-      flex: auto;
-    }
+    justify-content: flex-start;
     .empty {
       width: 160px;
       padding: 0 10px;
     }
     .item {
-      margin-top: 30px;
       width: 160px;
       height: 160px;
-      padding: 0 10px;
+      margin: 30px 40px 0 10px;
       display: inline-block;
       text-align: center;
       vertical-align: bottom;
