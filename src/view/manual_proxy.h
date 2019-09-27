@@ -31,6 +31,8 @@ class ManualProxy : public QObject {
   explicit ManualProxy(QObject* parent = nullptr);
   ~ManualProxy() override;
 
+signals:
+   void WidgetLower();
  public slots:
   QString getSystemManualDir() const {
     return DMAN_MANUAL_DIR;
@@ -43,6 +45,7 @@ class ManualProxy : public QObject {
    * @param url
    */
   void openExternalLink(const QString& url);
+
 
  private:
   LauncherInterface* launcher_interface_ = nullptr;

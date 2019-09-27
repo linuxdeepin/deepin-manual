@@ -50,6 +50,7 @@ SearchManager::SearchManager(QObject* parent)
 
 SearchManager::~SearchManager() {
   db_thread_->quit();
+  db_thread_->wait();
   delete db_thread_;
   db_thread_ = nullptr;
 }

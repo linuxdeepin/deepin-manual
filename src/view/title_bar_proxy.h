@@ -22,13 +22,13 @@
 
 namespace dman {
 
-class TitleBar;
+//class TitleBar;
 
 class TitleBarProxy : public QObject {
   Q_OBJECT
 
  public:
-  TitleBarProxy(TitleBar* title_bar, QObject* parent = nullptr);
+  TitleBarProxy(/*TitleBar* title_bar,*/ QObject* parent = nullptr);
   ~TitleBarProxy() override;
 
  signals:
@@ -39,8 +39,8 @@ class TitleBarProxy : public QObject {
   void setBackwardButtonActive(bool active);
   void setForwardButtonActive(bool active);
 
- private:
-  TitleBar* title_bar_ = nullptr;
+// private:
+//  TitleBar* title_bar_ = nullptr;
 };
 
 }  // namespace dman

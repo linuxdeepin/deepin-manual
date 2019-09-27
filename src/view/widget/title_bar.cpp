@@ -75,40 +75,32 @@ void TitleBar::initConnections()
 
 void TitleBar::initUI()
 {
-    QLabel *app_icon = new QLabel();
-    app_icon->setObjectName("AppIcon");
-    app_icon->setFixedSize(26, 26);
-
+//    QHBoxLayout *buttonLayout = new QHBoxLayout;
+//    buttonLayout->setMargin(0);
+//    buttonLayout->setSpacing(0);
     forward_button_ = new DIconButton(DStyle::SP_ArrowNext);
     forward_button_->setFlat(false);
     back_button_ = new DIconButton(DStyle::SP_ArrowPrev);
     back_button_->setFlat(false);
-
-    QHBoxLayout *left_layout = new QHBoxLayout();
-    left_layout->setSpacing(0);
-    left_layout->setContentsMargins(0, 0, 0, 0);
-    left_layout->addWidget(app_icon);
-    left_layout->addSpacing(10);
-    left_layout->addWidget(back_button_);
-    left_layout->addWidget(forward_button_);
-    left_layout->addStretch();
-    QFrame *left_buttons = new QFrame();
-    left_buttons->setFixedWidth(26 + 10 + 26 + 26 + 50);
-    left_buttons->setContentsMargins(0, 0, 0, 0);
-    left_buttons->setLayout(left_layout);
+//    buttonLayout->addWidget(forward_button_);
+//    buttonLayout->addWidget(back_button_);
+//    buttonLayout->addStretch();
+//    QFrame *buttonFrame = new QFrame(this);
+//    buttonFrame->setLayout(buttonLayout);
+//    buttonFrame->setFixedSize(250, 50);
 
 
-    search_edit_ = new SearchEdit();
+    search_edit_ = new SearchEdit(this);
     search_edit_->setObjectName("SearchEdit");
-    search_edit_->setFixedSize(242, 26);
+    search_edit_->setFixedSize(350, 44);
     search_edit_->setPlaceHolder(QObject::tr("Search"));
 
     QHBoxLayout *main_layout = new QHBoxLayout();
     main_layout->setSpacing(0);
     main_layout->setContentsMargins(0, 0, 0, 0);
-    main_layout->addWidget(left_buttons);
-    main_layout->addWidget(search_edit_, 1, Qt::AlignCenter);
-    main_layout->addSpacing(48);
+
+    main_layout->addStretch();
+    main_layout->addWidget(search_edit_);
     this->setLayout(main_layout);
 
     this->setAttribute(Qt::WA_TranslucentBackground, true);

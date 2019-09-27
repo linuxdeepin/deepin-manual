@@ -35,6 +35,7 @@ class SearchManager;
 class SearchProxy;
 class TitleBar;
 class TitleBarProxy;
+class SearchEdit;
 
 class WebWindow : public Dtk::Widget::DMainWindow {
   Q_OBJECT
@@ -79,6 +80,10 @@ class WebWindow : public Dtk::Widget::DMainWindow {
   TitleBarProxy* title_bar_proxy_ = nullptr;
   QCefWebView* web_view_ = nullptr;
   QTimer search_timer_;
+
+  Dtk::Widget::DIconButton *back_button_;
+  Dtk::Widget::DIconButton *forward_button_;
+  SearchEdit *search_edit_;
 
  private slots:
   void onSearchEditFocusOut();

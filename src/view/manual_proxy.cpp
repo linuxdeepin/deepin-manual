@@ -103,7 +103,7 @@ QStringList ManualProxy::getSystemManualList() {
 }
 
 void ManualProxy::openExternalLink(const QString& url) {
-  QDesktopServices::openUrl(url);
-}
-
+    QDesktopServices::openUrl(url);
 }  // namespace dman
+
+}

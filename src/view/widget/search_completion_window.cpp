@@ -27,7 +27,7 @@ namespace dman {
 
 namespace {
 
-const int kItemHeight = 25;
+const int kItemHeight = 30;
 
 }  // namespace
 
@@ -160,11 +160,11 @@ void SearchCompletionWindow::initUI() {
   search_button_ = new SearchButton();
   search_button_->setObjectName("SearchButton");
   search_button_->setCheckable(true);
-  search_button_->setFixedHeight(25);
+  search_button_->setFixedHeight(35);
   search_button_->setText(QObject::tr("Search \"%1\" in the full text"));
 
   QVBoxLayout* main_layout = new QVBoxLayout();
-  main_layout->setContentsMargins(0, 4, 0, 3);
+  main_layout->setContentsMargins(0, 0, 0, 0);
   main_layout->setSpacing(0);
   main_layout->addWidget(result_view_, 0, Qt::AlignHCenter | Qt::AlignTop);
   main_layout->addSpacing(1);
@@ -174,7 +174,7 @@ void SearchCompletionWindow::initUI() {
   this->setLayout(main_layout);
   this->setContentsMargins(0, 0, 0, 0);
   this->setMinimumHeight(kItemHeight);
-  this->setFixedWidth(242);
+  this->setFixedWidth(350);
   this->setWindowFlags(Qt::FramelessWindowHint |
                        Qt::CustomizeWindowHint |
                        Qt::BypassWindowManagerHint);

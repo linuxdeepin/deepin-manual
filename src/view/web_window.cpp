@@ -40,6 +40,9 @@
 #include "view/widget/image_viewer.h"
 #include "view/widget/search_completion_window.h"
 #include "view/widget/title_bar.h"
+#include "view/widget/search_edit.h"
+
+DWIDGET_USE_NAMESPACE
 
 namespace dman {
 
@@ -82,17 +85,17 @@ void WebWindow::setAppName(const QString &app_name)
 
 void WebWindow::initConnections()
 {
-    connect(title_bar_, &TitleBar::searchTextChanged,
+    connect(search_edit_, &SearchEdit::textChanged,
             this, &WebWindow::onSearchTextChanged);
     connect(web_view_->page(), &QCefWebPage::loadFinished,
             this, &WebWindow::onWebPageLoadFinished);
-    connect(title_bar_, &TitleBar::downKeyPressed,
+    connect(search_edit_, &SearchEdit::downKeyPressed,
             completion_window_, &SearchCompletionWindow::goDown);
-    connect(title_bar_, &TitleBar::enterPressed,
+    connect(search_edit_, &SearchEdit::enterPressed,
             this, &WebWindow::onTitleBarEntered);
-    connect(title_bar_, &TitleBar::upKeyPressed,
+    connect(search_edit_, &SearchEdit::upKeyPressed,
             completion_window_, &SearchCompletionWindow::goUp);
-    connect(title_bar_, &TitleBar::focusOut,
+    connect(search_edit_, &SearchEdit::focusChanged,
             this, &WebWindow::onSearchEditFocusOut);
 
     connect(search_manager_, &SearchManager::searchAnchorResult,
@@ -116,9 +119,37 @@ void WebWindow::initUI()
     completion_window_ = new SearchCompletionWindow();
     completion_window_->hide();
 
-    title_bar_ = new TitleBar();
-    title_bar_proxy_ = new TitleBarProxy(title_bar_, this);
-    this->titlebar()->addWidget(title_bar_);
+    //init custom title
+    QHBoxLayout *buttonLayout = new QHBoxLayout;
+    buttonLayout->setMargin(0);
+    buttonLayout->setSpacing(0);
+
+    forward_button_ = new DIconButton(DStyle::SP_ArrowNext);
+    forward_button_->setFlat(false);
+    back_button_ = new DIconButton(DStyle::SP_ArrowPrev);
+    back_button_->setFlat(false);
+
+    buttonLayout->addSpacing(50);
+    buttonLayout->addWidget(back_button_);
+    buttonLayout->addWidget(forward_button_);
+    QFrame *buttonFrame = new QFrame(this);
+    buttonFrame->setLayout(buttonLayout);
+
+    search_edit_ = new SearchEdit(this);
+    search_edit_->setObjectName("SearchEdit");
+    search_edit_->setFixedSize(350, 44);
+    search_edit_->setPlaceHolder(QObject::tr("Search"));
+
+    this->titlebar()->addWidget(buttonFrame, Qt::AlignLeft);
+    this->titlebar()->addWidget(search_edit_, Qt::AlignCenter);
+
+    //
+    title_bar_proxy_ = new TitleBarProxy(this);
+    connect(back_button_, &DIconButton::clicked,
+            title_bar_proxy_, &TitleBarProxy::backwardButtonClicked);
+    connect(forward_button_, &DIconButton::clicked,
+            title_bar_proxy_, &TitleBarProxy::forwardButtonClicked);
+
     this->titlebar()->setSeparatorVisible(true);
     this->titlebar()->setIcon(QIcon(":/common/images/deepin-manual.svg"));
 
@@ -126,6 +157,7 @@ void WebWindow::initUI()
     image_viewer_proxy_ = new ImageViewerProxy(image_viewer_, this);
 
     manual_proxy_ = new ManualProxy(this);
+    connect(manual_proxy_, &ManualProxy::WidgetLower, this, &WebWindow::lower);
 
     web_view_ = new QCefWebView();
     web_view_->page()->setEventDelegate(new WebEventDelegate(this));
@@ -149,7 +181,6 @@ void WebWindow::initUI()
 void WebWindow::resizeEvent(QResizeEvent *event)
 {
     QWidget::resizeEvent(event);
-    title_bar_->setFixedWidth(event->size().width());
 }
 
 void WebWindow::onSearchEditFocusOut()
@@ -161,7 +192,8 @@ void WebWindow::onSearchEditFocusOut()
 
 void WebWindow::onSearchButtonClicked()
 {
-    const QString keyword = title_bar_->getSearchText();
+    QString text = search_edit_->text();
+    const QString keyword = text.remove('\n').remove('\r').remove("\r\n");
     search_manager_->searchContent(keyword);
 
     // Show search page.
@@ -190,7 +222,8 @@ void WebWindow::onSearchTextChanged(const QString &text)
 
 void WebWindow::onSearchTextChangedDelay()
 {
-    const QString text = title_bar_->getSearchText();
+    QString textTemp = search_edit_->text();
+    const QString text = textTemp.remove('\n').remove('\r').remove("\r\n");
     // Filters special chars.
     if (text.size() <= 1 || text.contains(QRegExp("[+-_$!@#%^&\\(\\)]"))) {
         return;
@@ -204,7 +237,8 @@ void WebWindow::onSearchTextChangedDelay()
 
 void WebWindow::onTitleBarEntered()
 {
-    const QString text = title_bar_->getSearchText();
+    QString textTemp = search_edit_->text();
+    const QString text = textTemp.remove('\n').remove('\r').remove("\r\n");
     if (text.size() > 1) {
         completion_window_->onEnterPressed();
     }
@@ -249,7 +283,7 @@ void WebWindow::onSearchAnchorResult(const QString &keyword,
         completion_window_->raise();
         completion_window_->autoResize();
         // Move to below of search edit.
-        const QPoint local_point(this->rect().width() / 2 + 84, 36);
+        const QPoint local_point(this->rect().width() / 2 - search_edit_->width() / 2, 50);
         const QPoint global_point(this->mapToGlobal(local_point));
         completion_window_->move(global_point);
         completion_window_->setFocusPolicy(Qt::NoFocus);
@@ -267,11 +301,11 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
         QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
         switch (mouseEvent->button()) {
         case Qt::BackButton: {
-            title_bar_proxy_->backwardButtonClicked();
+             title_bar_proxy_->backwardButtonClicked();
             break;
         }
         case Qt::ForwardButton: {
-            title_bar_proxy_->forwardButtonClicked();
+             title_bar_proxy_->forwardButtonClicked();
             break;
         }
         default: {

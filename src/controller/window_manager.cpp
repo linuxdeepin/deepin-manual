@@ -20,7 +20,7 @@
 #include <QApplication>
 #include <QDebug>
 #include <QDesktopWidget>
-
+#include <QFile>
 #include "controller/search_manager.h"
 #include "view/web_window.h"
 

@@ -27,7 +27,7 @@ ManualSearchProxy::~ManualSearchProxy() {
 
 }
 
-bool ManualSearchProxy::ManualExists(const QString& app_name) {
+bool ManualSearchProxy::ManualExists(const QString& app_name)  {
   QDir manual_dir(DMAN_MANUAL_DIR);
   return manual_dir.exists(app_name);
 }
