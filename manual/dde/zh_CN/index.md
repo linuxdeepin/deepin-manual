@@ -120,7 +120,7 @@
 
 |  |  |  | | |
 | :---- | :---- | :---- | :---- | :---- |
-|    ![launcher](icon/launcher_icon.svg)  | 点击可进入启动器界面 | &nbsp; &nbsp; &nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; |![chrome](icon/chrome_icon.svg)  | 点击可打开网页|
+| ![launcher](icon/launcher_icon.svg)  | 点击可进入启动器界面 ||![chrome](icon/chrome_icon.svg)|点击可打开网页|
 |![store](icon/deepinsoftware_icon.svg)  |   点击可打开深度商店   ||![file](icon/deepin-file-manager.svg)|点击可打开文件管理器|
 | ![image](icon/viewer.svg)  |  点击可打开深度看图 ||![movie](icon/deepinmovie_icon.svg)|点击可打开深度影院|
 | ![control](icon/controlcenter_icon.svg) |点击可打开控制中心 ||![trash](icon/trash_icon.svg)|点击可打开回收站|

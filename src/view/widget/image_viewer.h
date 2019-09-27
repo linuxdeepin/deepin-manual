@@ -19,31 +19,32 @@
 #define DEEPIN_MANUAL_VIEW_WIDGETS_IMAGE_VIEWER_H
 
 #include <QDialog>
-#include <dimagebutton.h>
+#include <DIconButton>
 
 class QLabel;
 
 namespace dman {
 
-class ImageViewer : public QDialog {
-  Q_OBJECT
- public:
-  explicit ImageViewer(QWidget* parent = nullptr);
-  ~ImageViewer() override;
+class ImageViewer : public QDialog
+{
+    Q_OBJECT
+public:
+    explicit ImageViewer(QWidget *parent = nullptr);
+    ~ImageViewer() override;
 
- public slots:
-  void open(const QString& filepath);
+public slots:
+    void open(const QString &filepath);
 
- protected:
-  void mousePressEvent(QMouseEvent* event) override;
+protected:
+    void mousePressEvent(QMouseEvent *event) override;
 
-  void paintEvent(QPaintEvent* event) override;
+    void paintEvent(QPaintEvent *event) override;
 
- private:
-  void initUI();
+private:
+    void initUI();
 
-  QLabel* img_label_ = nullptr;
-  Dtk::Widget::DImageButton* close_button_ = nullptr;
+    QLabel *img_label_ = nullptr;
+    Dtk::Widget::DIconButton *close_button_;
 };
 
 }  // namespace dman

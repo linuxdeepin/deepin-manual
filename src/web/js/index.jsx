@@ -56,6 +56,14 @@ export default class Index extends Component {
   constructor(props) {
     super(props);
     let sequence = [
+      'deepin-voice-note',
+      'deepin-compressor',
+      'deepin-album',
+      'deepin-reader',
+      'deepin-editor',
+      'dde-calendar',
+      'dde-introduction',
+      'deepin-draw',
       'dde-file-manager',
       'deepin-appstore',
       'deepin-system-monitor',
@@ -73,7 +81,7 @@ export default class Index extends Component {
       'deepin-clone',
       'deepin-graphics-driver-manager',
       'deepin-deb-installer',
-      'deepin-font-installer',
+      'deepin-font-manager',
       'deepin-presentation-assistant',
       'deepin-boot-maker',
       'deepin-remote-assistance',
