@@ -23,5 +23,14 @@
   },
   "dependencies": {
     "smooth-scroll-into-view-if-needed": "^1.1.19"
-  }
+  },
+  "name": "web",
+  "version": "1.0.0",
+  "main": "gulpfile.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "",
+  "license": "ISC",
+  "description": ""
 }

@@ -98,11 +98,13 @@ export default class Article extends Component {
     let hList = ReactDOM.findDOMNode(this).querySelectorAll('h2,h3');
     let hash = hList[0].id;
     for (let i = 0; i < hList.length; i++) {
+console.log("hlist:" + hList[i]);
       if (hList[i].getBoundingClientRect().top > 1) {
         break;
       }
       hash = hList[i].id;
     }
+console.log("this.hash:"  + this.hash  + "   hash:" + hash);
     if (this.hash != hash) {
       console.log('hash update');
       this.hash = hash;

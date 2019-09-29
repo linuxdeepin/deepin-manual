@@ -28,6 +28,7 @@ export default class Main extends Component {
     });
   }
   setHash(hash) {
+	console.log("hash:" + hash);
     this.setState({ hash });
   }
   componentWillReceiveProps(nextProps) {
