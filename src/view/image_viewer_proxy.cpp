@@ -35,6 +35,7 @@ ImageViewerProxy::~ImageViewerProxy() {
 
 void ImageViewerProxy::open(const QString& filepath) {
   Q_ASSERT(viewer_ != nullptr);
+  Q_UNUSED(filepath);
   viewer_->open(filepath);
 }
 

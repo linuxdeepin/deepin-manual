@@ -26,8 +26,9 @@
 #include <QtCore/QTimer>
 #include <QDesktopWidget>
 #include <QLabel>
+#include <DStyle>
 #include "view/theme_manager.h"
-
+DWIDGET_USE_NAMESPACE
 namespace dman {
 
 namespace {
@@ -100,9 +101,12 @@ void ImageViewer::initUI()
     img_label_ = new QLabel(this);
     img_label_->setObjectName("ImageLabel");
 
-    close_button_ = new Dtk::Widget::DIconButton(this);
+    //close_button_ = new Dtk::Widget::DIconButton(this);
+    close_button_ = new DIconButton(DStyle::StandardPixmap::SP_CloseButton, this);
     close_button_->setObjectName("CloseButton");
     close_button_->raise();
+    close_button_->setFocusPolicy(Qt::FocusPolicy::NoFocus);
+
 
     this->setContentsMargins(kBorderSize, kBorderSize, kBorderSize, kBorderSize);
     this->setWindowFlags(Qt::FramelessWindowHint |
