@@ -1,2 +1,2 @@
-# 文本查看器|../common/dde-control-center.svg|
+# 文本查看器|../common/deepin-reader.svg|
 

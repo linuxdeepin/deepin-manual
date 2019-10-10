@@ -170,7 +170,7 @@ void WebWindow::initUI()
             title_bar_proxy_, &TitleBarProxy::forwardButtonClicked);
 
     this->titlebar()->setSeparatorVisible(true);
-    this->titlebar()->setIcon(QIcon(":/common/images/deepin-manual.svg"));
+    this->titlebar()->setIcon(QIcon::fromTheme("deepin-manual"));
 
     image_viewer_ = new ImageViewer(this);
     image_viewer_proxy_ = new ImageViewerProxy(image_viewer_, this);
