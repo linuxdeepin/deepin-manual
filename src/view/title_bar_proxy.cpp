@@ -21,28 +21,24 @@
 
 namespace dman {
 
-TitleBarProxy::TitleBarProxy(/*TitleBar* title_bar, */QObject* parent)
-    : QObject(parent)/*,
-      title_bar_(title_bar)*/ {
-//  Q_ASSERT(title_bar_ != nullptr);
-
-//  connect(title_bar, &TitleBar::backwardButtonClicked,
-//          this, &TitleBarProxy::backwardButtonClicked);
-//  connect(title_bar, &TitleBar::forwardButtonClicked,
-//          this, &TitleBarProxy::forwardButtonClicked);
+TitleBarProxy::TitleBarProxy(QObject *parent)
+    : QObject(parent)
+{
+    m_webWindow = static_cast<WebWindow *>(parent);
 }
 
-TitleBarProxy::~TitleBarProxy() {
+TitleBarProxy::~TitleBarProxy()
+{
 }
 
-void TitleBarProxy::setBackwardButtonActive(bool active) {
-  active = !active;
-    //title_bar_->setBackwardButtonActive(active);
+void TitleBarProxy::setBackwardButtonActive(bool active)
+{
+    m_webWindow->m_backButton->setEnabled(active);
 }
 
-void TitleBarProxy::setForwardButtonActive(bool active) {
-  active = !active;
-    //title_bar_->setForwardButtonActive(active);
+void TitleBarProxy::setForwardButtonActive(bool active)
+{
+    m_webWindow->m_forwardButton->setEnabled(active);
 }
 
 }  // namespace dman

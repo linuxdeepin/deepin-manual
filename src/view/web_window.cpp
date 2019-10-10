@@ -27,7 +27,7 @@
 #include <qcef_web_page.h>
 #include <qcef_web_settings.h>
 #include <qcef_web_view.h>
-#include <DIconButton>
+#include <DButtonBox>
 
 #include "base/consts.h"
 #include "controller/search_manager.h"
@@ -124,14 +124,33 @@ void WebWindow::initUI()
     buttonLayout->setMargin(0);
     buttonLayout->setSpacing(0);
 
-    forward_button_ = new DIconButton(DStyle::SP_ArrowNext);
-    forward_button_->setFlat(false);
-    back_button_ = new DIconButton(DStyle::SP_ArrowPrev);
-    back_button_->setFlat(false);
+//    forward_button_ = new DIconButton(DStyle::SP_ArrowNext);
+//    forward_button_->setFlat(false);
+//    back_button_ = new DIconButton(DStyle::SP_ArrowPrev);
+//    back_button_->setFlat(false);
 
-    buttonLayout->addSpacing(50);
-    buttonLayout->addWidget(back_button_);
-    buttonLayout->addWidget(forward_button_);
+    m_backButton = new DButtonBoxButton(DStyle::standardIcon(this->style(), DStyle::SP_ArrowLeave));
+    m_backButton->setDisabled(true);
+    m_backButton->setFixedSize(36, 36);
+
+    m_forwardButton = new DButtonBoxButton(DStyle::standardIcon(this->style(), DStyle::SP_ArrowEnter));
+    m_forwardButton->setDisabled(true);
+    m_forwardButton->setFixedSize(36, 36);
+
+    QList<DButtonBoxButton *> buttonList;
+    buttonList << m_backButton << m_forwardButton;
+
+    DButtonBox *buttonBox = new DButtonBox(this);
+    buttonBox->setButtonList(buttonList, true);
+    buttonBox->setFocusPolicy(Qt::NoFocus);
+
+//    buttonLayout->addSpacing(50);
+//    buttonLayout->addWidget(back_button_);
+//    buttonLayout->addWidget(forward_button_);
+    buttonLayout->addWidget(buttonBox);
+    buttonLayout->setSpacing(0);
+    buttonLayout->setContentsMargins(13, 0, 0, 0);
+
     QFrame *buttonFrame = new QFrame(this);
     buttonFrame->setLayout(buttonLayout);
 
@@ -145,9 +164,9 @@ void WebWindow::initUI()
 
     //
     title_bar_proxy_ = new TitleBarProxy(this);
-    connect(back_button_, &DIconButton::clicked,
+    connect(m_backButton, &DButtonBoxButton::clicked,
             title_bar_proxy_, &TitleBarProxy::backwardButtonClicked);
-    connect(forward_button_, &DIconButton::clicked,
+    connect(m_forwardButton, &DButtonBoxButton::clicked,
             title_bar_proxy_, &TitleBarProxy::forwardButtonClicked);
 
     this->titlebar()->setSeparatorVisible(true);
@@ -301,11 +320,11 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
         QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
         switch (mouseEvent->button()) {
         case Qt::BackButton: {
-             title_bar_proxy_->backwardButtonClicked();
+            title_bar_proxy_->backwardButtonClicked();
             break;
         }
         case Qt::ForwardButton: {
-             title_bar_proxy_->forwardButtonClicked();
+            title_bar_proxy_->forwardButtonClicked();
             break;
         }
         default: {

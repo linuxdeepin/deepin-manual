@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="96px" height="96px" viewBox="0 0 96 96" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>语音记事本</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-5.1%" y="-4.8%" width="110.3%" height="109.5%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <rect id="path-2" x="0" y="0" width="78" height="84" rx="4"></rect>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-4">
+            <stop stop-color="#FD5E5E" offset="0%"></stop>
+            <stop stop-color="#ED5656" offset="100%"></stop>
+        </linearGradient>
+        <path d="M38.9500032,54.3103448 C36.5166528,54.3103448 34.4500096,53.4310444 32.75,51.6724171 C31.0499917,49.9137832 30.2,47.7758764 30.2,45.258624 L30.2,42 L47.8,42 L47.8,45.258624 C47.8,47.7758764 46.933344,49.9137832 45.2,51.6724171 C43.466656,53.4310444 41.3833472,54.3103448 38.9500032,54.3103448 Z M48,63 L48,66 L30,66 L30,63 L48,63 Z M27,45 C27,51.627417 32.372583,57 39,57 C45.627417,57 51,51.627417 51,45 L54,45 C54,52.2568737 48.846721,58.3101347 42,59.6999457 L42,63 L36,63 L36,59.6999457 C29.153279,58.3101347 24,52.2568737 24,45 L27,45 Z M38.9500032,18 C41.3833472,18 43.466656,18.8879206 45.2,20.6637948 C46.933344,22.4396623 47.8,24.5689556 47.8,27.0517274 L47.8,39 L30.2,39 L30.2,27.0517274 C30.2,24.5689556 31.0499917,22.4396623 32.75,20.6637948 C34.4500096,18.8879206 36.5166528,18 38.9500032,18 Z" id="path-5"></path>
+        <filter x="-18.3%" y="-7.3%" width="136.7%" height="122.9%" filterUnits="objectBoundingBox" id="filter-6">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0.97254902   0 0 0 0 0.17254902   0 0 0 0 0.277440324  0 0 0 0.4 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="语音记事本-96px-2">
+            <g id="voice-note-32px">
+                <g id="Group" filter="url(#filter-1)" transform="translate(9.000000, 6.000000)">
+                    <mask id="mask-3" fill="white">
+                        <use xlink:href="#path-2"></use>
+                    </mask>
+                    <use id="Mask" fill="#FFFFFF" xlink:href="#path-2"></use>
+                    <path d="M15,0 L15,9 L69,9 L69,12 L15,12 L15,24 L69,24 L69,27 L15,27 L15,39 L69,39 L69,42 L15,42 L15,54 L69,54 L69,57 L15,57 L15,69 L69,69 L69,72 L15,72 L15,82.5 L12,82.5 L12,72 L7.5,72 L7.5,69 L12,69 L12,57 L7.5,57 L7.5,54 L12,54 L12,42 L7.5,42 L7.5,39 L12,39 L12,27 L7.5,27 L7.5,24 L12,24 L12,12 L7.5,12 L7.5,9 L12,9 L12,0 L15,0 Z" id="Combined-Shape" fill-opacity="0.1" fill="#000000" mask="url(#mask-3)"></path>
+                    <g id="Combined-Shape" mask="url(#mask-3)">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-6)" xlink:href="#path-5"></use>
+                        <use fill="url(#linearGradient-4)" fill-rule="evenodd" xlink:href="#path-5"></use>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

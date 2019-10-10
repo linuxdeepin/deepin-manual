@@ -20,6 +20,7 @@
 
 #include <DMainWindow>
 #include <QTimer>
+#include <DButtonBox>
 class QCefWebView;
 
 #include "controller/search_result.h"
@@ -37,64 +38,67 @@ class TitleBar;
 class TitleBarProxy;
 class SearchEdit;
 
-class WebWindow : public Dtk::Widget::DMainWindow {
-  Q_OBJECT
-  Q_PROPERTY(QString appName READ appName WRITE setAppName)
+class WebWindow : public Dtk::Widget::DMainWindow
+{
+    Q_OBJECT
+    Q_PROPERTY(QString appName READ appName WRITE setAppName)
 
- public:
-  explicit WebWindow(SearchManager* search_manager, QWidget* parent = nullptr);
-  ~WebWindow() override;
+public:
+    explicit WebWindow(SearchManager *search_manager, QWidget *parent = nullptr);
+    ~WebWindow() override;
 
-  // Get app name of manual currently presented.
-  const QString& appName() const {
-    return app_name_;
-  }
+    // Get app name of manual currently presented.
+    const QString &appName() const
+    {
+        return app_name_;
+    }
 
-  bool eventFilter(QObject* watched, QEvent* event) override;
+    bool eventFilter(QObject *watched, QEvent *event) override;
 
- signals:
-  void closed(const QString& app_name);
+    Dtk::Widget::DButtonBoxButton *m_backButton;
+    Dtk::Widget::DButtonBoxButton *m_forwardButton;
 
- public slots:
-  void setAppName(const QString& app_name);
+signals:
+    void closed(const QString &app_name);
 
- protected:
-  void closeEvent(QCloseEvent* event) override;
+public slots:
+    void setAppName(const QString &app_name);
 
-  // Update width of title bar when main window is resized.
-  void resizeEvent(QResizeEvent* event) override;
+protected:
+    void closeEvent(QCloseEvent *event) override;
 
- private:
-  void initConnections();
-  void initUI();
+    // Update width of title bar when main window is resized.
+    void resizeEvent(QResizeEvent *event) override;
 
-  QString app_name_;
-  SearchManager* search_manager_ = nullptr;
-  SearchProxy* search_proxy_ = nullptr;
-  SearchCompletionWindow* completion_window_ = nullptr;
-  I18nProxy* i18n_ = nullptr;
-  ImageViewer* image_viewer_ = nullptr;
-  ImageViewerProxy* image_viewer_proxy_ = nullptr;
-  ManualProxy* manual_proxy_ = nullptr;
-  TitleBar* title_bar_ = nullptr;
-  TitleBarProxy* title_bar_proxy_ = nullptr;
-  QCefWebView* web_view_ = nullptr;
-  QTimer search_timer_;
+private:
+    void initConnections();
+    void initUI();
 
-  Dtk::Widget::DIconButton *back_button_;
-  Dtk::Widget::DIconButton *forward_button_;
-  SearchEdit *search_edit_;
+    QString app_name_;
+    SearchManager *search_manager_ = nullptr;
+    SearchProxy *search_proxy_ = nullptr;
+    SearchCompletionWindow *completion_window_ = nullptr;
+    I18nProxy *i18n_ = nullptr;
+    ImageViewer *image_viewer_ = nullptr;
+    ImageViewerProxy *image_viewer_proxy_ = nullptr;
+    ManualProxy *manual_proxy_ = nullptr;
+    TitleBar *title_bar_ = nullptr;
+    TitleBarProxy *title_bar_proxy_ = nullptr;
+    QCefWebView *web_view_ = nullptr;
+    QTimer search_timer_;
 
- private slots:
-  void onSearchEditFocusOut();
-  void onSearchButtonClicked();
-  void onSearchResultClicked(const SearchAnchorResult& result);
-  void onSearchAnchorResult(const QString& keyword,
-                            const SearchAnchorResultList& result);
-  void onSearchTextChanged(const QString& text);
-  void onSearchTextChangedDelay();
-  void onTitleBarEntered();
-  void onWebPageLoadFinished(bool ok);
+    SearchEdit *search_edit_;
+
+private slots:
+    void onSearchEditFocusOut();
+    void onSearchButtonClicked();
+    void onSearchResultClicked(const SearchAnchorResult &result);
+    void onSearchAnchorResult(const QString &keyword,
+                              const SearchAnchorResultList &result);
+    void onSearchTextChanged(const QString &text);
+    void onSearchTextChangedDelay();
+    void onTitleBarEntered();
+    void onWebPageLoadFinished(bool ok);
 };
 
 }  // namespace dman

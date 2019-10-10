@@ -19,28 +19,30 @@
 #define DEEPIN_MANUAL_VIEWS_TITLE_BAR_PROXY_H
 
 #include <QObject>
+#include "web_window.h"
 
 namespace dman {
 
 //class TitleBar;
 
-class TitleBarProxy : public QObject {
-  Q_OBJECT
+class TitleBarProxy : public QObject
+{
+    Q_OBJECT
 
- public:
-  TitleBarProxy(/*TitleBar* title_bar,*/ QObject* parent = nullptr);
-  ~TitleBarProxy() override;
+public:
+    TitleBarProxy(/*TitleBar* title_bar,*/ QObject *parent = nullptr);
+    ~TitleBarProxy() override;
 
- signals:
-  void backwardButtonClicked();
-  void forwardButtonClicked();
+signals:
+    void backwardButtonClicked();
+    void forwardButtonClicked();
 
- public slots:
-  void setBackwardButtonActive(bool active);
-  void setForwardButtonActive(bool active);
+public slots:
+    void setBackwardButtonActive(bool active);
+    void setForwardButtonActive(bool active);
 
-// private:
-//  TitleBar* title_bar_ = nullptr;
+private:
+    WebWindow *m_webWindow;
 };
 
 }  // namespace dman
