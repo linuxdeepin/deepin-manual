@@ -1,2 +1,2 @@
-# 文本查看器|../common/deepin-reader.svg|
+# 文档查看器|../common/deepin-reader.svg|
 

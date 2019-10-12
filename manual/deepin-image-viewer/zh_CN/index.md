@@ -1,4 +1,4 @@
-# 看图|../common/deepin-image-viewer.svg|
+# 深度看图|../common/deepin-image-viewer.svg|
 
 ## 概述
 
@@ -41,7 +41,7 @@
 
 ### 界面介绍
 
-![1|interface](jpg/interface.jpg)
+![1|main](jpg/main.jpg)
 
 
 <table class="block1">

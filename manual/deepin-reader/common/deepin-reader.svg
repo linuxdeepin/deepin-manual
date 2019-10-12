@@ -1,0 +1,46 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="96px" height="96px" viewBox="0 0 96 96" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>文本查看器</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-4.2%" y="-4.2%" width="108.3%" height="108.3%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+    </defs>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="文本查看器-96px-2">
+            <g id="logo">
+                <g filter="url(#filter-1)">
+                    <rect id="Rectangle" fill-opacity="0" fill="#D8D8D8" x="0" y="0" width="96" height="96"></rect>
+                    <g id="Group" transform="translate(4.000000, 12.000000)">
+                        <path d="M85.4857143,70.4 L2.51428571,70.4 C1.1264,70.4 0,69.2736 0,67.8857143 L0,2.51428571 C0,1.1264 1.1264,0 2.51428571,0 L85.4857143,0 C86.8736,0 88,1.1264 88,2.51428571 L88,67.8857143 C88,69.2736 86.8736,70.4 85.4857143,70.4 L85.4857143,70.4 Z" id="Shape" fill="#7C40A4"></path>
+                        <rect id="Rectangle-path" fill="#CDCDCD" x="2.51428571" y="2.51428571" width="82.9714286" height="65.3714286"></rect>
+                        <g transform="translate(7.542857, 2.514286)" fill="#F7F8F8" id="Rectangle-path">
+                            <rect x="0" y="0" width="35.2" height="65.3714286"></rect>
+                            <rect x="37.7142857" y="0" width="35.2" height="65.3714286"></rect>
+                        </g>
+                        <g transform="translate(12.571429, 15.085714)" fill="#DEDEDE" id="Rectangle-path">
+                            <rect x="0" y="0" width="15.0857143" height="2.51428571"></rect>
+                            <rect x="0" y="10.0571429" width="27.6571429" height="2.51428571"></rect>
+                            <rect x="35.2" y="0" width="27.6571429" height="2.51428571"></rect>
+                            <rect x="35.2" y="10.0571429" width="27.6571429" height="2.51428571"></rect>
+                            <rect x="35.2" y="20.1142857" width="27.6571429" height="2.51428571"></rect>
+                            <rect x="35.2" y="30.1714286" width="27.6571429" height="2.51428571"></rect>
+                            <rect x="0" y="20.1142857" width="27.6571429" height="2.51428571"></rect>
+                            <rect x="0" y="30.1714286" width="27.6571429" height="2.51428571"></rect>
+                            <rect x="0" y="40.2285714" width="27.6571429" height="2.51428571"></rect>
+                            <rect x="50.2857143" y="40.2285714" width="12.5714286" height="2.51428571"></rect>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
