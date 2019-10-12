@@ -300,6 +300,7 @@ div {
       margin-right: 11px;
       text-indent: 1.5rem; }
   #nav .hash {
+    box-shadow: 0 4px 6px 0 rgba(44, 167, 248, 0.4);
     background-color: #0081ff;
     color: #ffffff !important;
     border-radius: 8px;
