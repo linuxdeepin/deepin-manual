@@ -73,7 +73,7 @@ int main(int argc, char **argv)
     app.setProductIcon(QIcon(dman::kImageDeepinManual));
     app.setOrganizationName("deepin");
     app.setOrganizationDomain("deepin.org");
-    app.setApplicationVersion(DApplication::buildVersion("2019-10-11"));
+    app.setApplicationVersion(DApplication::buildVersion("2019-10-15"));
     app.setApplicationName(dman::kAppName);
     app.loadTranslator();
     app.setApplicationDisplayName(QObject::tr("Deepin Manual"));

@@ -477,37 +477,41 @@ var Article = function (_Component) {
     value: function render() {
       return _react2.default.createElement(
         'div',
-        { id: 'article' },
+        { id: 'peripheral' },
         _react2.default.createElement(
-          _scrollbar2.default,
-          { onScroll: this.scroll.bind(this) },
-          _react2.default.createElement('div', {
-            id: 'read',
-            className: 'read',
-            tabIndex: '-1',
-            dangerouslySetInnerHTML: { __html: this.props.html },
-            style: this.state.fillblank,
-            onClick: this.click.bind(this)
-          }),
-          this.state.preview != null && _react2.default.createElement(
-            'div',
-            {
-              style: this.state.preview.style,
-              className: this.state.preview.tClass,
-              id: 'preview'
-            },
-            _react2.default.createElement(
+          'div',
+          { id: 'article' },
+          _react2.default.createElement(
+            _scrollbar2.default,
+            { onScroll: this.scroll.bind(this) },
+            _react2.default.createElement('div', {
+              id: 'read',
+              className: 'read',
+              tabIndex: '-1',
+              dangerouslySetInnerHTML: { __html: this.props.html },
+              style: this.state.fillblank,
+              onClick: this.click.bind(this)
+            }),
+            this.state.preview != null && _react2.default.createElement(
               'div',
-              { id: 'view' },
+              {
+                style: this.state.preview.style,
+                className: this.state.preview.tClass,
+                id: 'preview'
+              },
               _react2.default.createElement(
-                _scrollbar2.default,
-                null,
-                _react2.default.createElement('div', {
-                  className: 'read',
-                  dangerouslySetInnerHTML: {
-                    __html: this.state.preview.html
-                  }
-                })
+                'div',
+                { id: 'view' },
+                _react2.default.createElement(
+                  _scrollbar2.default,
+                  null,
+                  _react2.default.createElement('div', {
+                    className: 'read',
+                    dangerouslySetInnerHTML: {
+                      __html: this.state.preview.html
+                    }
+                  })
+                )
               )
             )
           )
@@ -963,6 +967,7 @@ var Nav = function (_Component) {
     value: function click(e) {
       var cid = e.target.getAttribute('cid');
       if (cid) {
+        console.log('搜索结果', cid);
         this.props.setHash(cid);
       }
     }

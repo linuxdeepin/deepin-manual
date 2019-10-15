@@ -23,7 +23,7 @@ class Nav extends Component {
   }
   click(e) {
     let cid = e.target.getAttribute('cid');
-    if (cid) {
+    if (cid) { console.log('搜索结果', cid);
       this.props.setHash(cid);
     }
   }

@@ -40,15 +40,17 @@ div {
   background-color: white;
   z-index: 99; }
 
+#peripheral {
+  margin: 0px 0px 0px 0px; }
+
 #article {
-  background-color: #fff;
   border-radius: 8px;
-  margin: auto;
-  margin-top: -11px; }
+  margin: 0px 0 -10px 10px; }
   #article .read {
+    background-color: #fff;
     font-family: SourceHanSansSC-Normal;
-    margin: auto;
-    padding: 0 10%;
+    margin: 10px auto 10px auto;
+    padding: 0 8.8%;
     width: 80%;
     max-width: 700px;
     font-size: 12px;
@@ -263,13 +265,14 @@ div {
         background-color: rgba(0, 0, 0, 0.05); }
 
 #nav {
-  margin: -12px 0 0;
+  margin: 0px 0 0;
   font-family: SourceHanSansSC-Medium;
   user-select: none;
   width: 164px !important;
   position: fixed;
   top: 0;
   left: 0;
+  background-color: #fff;
   white-space: nowrap;
   overflow-y: auto;
   overflow-x: hidden;

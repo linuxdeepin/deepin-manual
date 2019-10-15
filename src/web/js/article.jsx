@@ -186,35 +186,37 @@ console.log("this.hash:"  + this.hash  + "   hash:" + hash);
   }
   render() {
     return (
-      <div id="article">
-        <Scrollbar onScroll={this.scroll.bind(this)}>
-          <div
-            id="read"
-            className="read"
-            tabIndex="-1"
-            dangerouslySetInnerHTML={{ __html: this.props.html }}
-            style={this.state.fillblank}
-            onClick={this.click.bind(this)}
-          />
-          {this.state.preview != null && (
-            <div
-              style={this.state.preview.style}
-              className={this.state.preview.tClass}
-              id="preview"
-            >
-              <div id="view">
-                <Scrollbar>
-                  <div
-                    className="read"
-                    dangerouslySetInnerHTML={{
-                      __html: this.state.preview.html,
-                    }}
-                  />
-                </Scrollbar>
-              </div>
-            </div>
-          )}
-        </Scrollbar>
+      <div id="peripheral">
+          <div id="article">
+            <Scrollbar onScroll={this.scroll.bind(this)}>
+              <div
+                id="read"
+                className="read"
+                tabIndex="-1"
+                dangerouslySetInnerHTML={{ __html: this.props.html }}
+                style={this.state.fillblank}
+                onClick={this.click.bind(this)}
+              />
+              {this.state.preview != null && (
+                <div
+                  style={this.state.preview.style}
+                  className={this.state.preview.tClass}
+                  id="preview"
+                >
+                  <div id="view">
+                    <Scrollbar>
+                      <div
+                        className="read"
+                        dangerouslySetInnerHTML={{
+                          __html: this.state.preview.html,
+                        }}
+                      />
+                    </Scrollbar>
+                  </div>
+                </div>
+              )}
+            </Scrollbar>
+          </div>
       </div>
     );
   }
