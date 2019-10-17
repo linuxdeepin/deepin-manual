@@ -41,15 +41,16 @@ div {
   z-index: 99; }
 
 #peripheral {
-  margin: 0px 0px 0px 0px; }
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px; }
 
 #article {
   border-radius: 8px;
-  margin: 0px 0 -10px 10px; }
+  margin: 0px 0px 0px 0px; }
   #article .read {
     background-color: #fff;
     font-family: SourceHanSansSC-Normal;
-    margin: 10px auto 10px auto;
+    margin: auto;
     padding: 0 8.8%;
     width: 80%;
     max-width: 700px;
