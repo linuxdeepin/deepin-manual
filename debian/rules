@@ -2,9 +2,7 @@
 
 export QT_SELECT=qt5
 export DH_VERBOSE=1
-
 include /usr/share/dpkg/default.mk
-
 DEB_TARGET_MULTIARCH ?= $(shell dpkg-architecture -qDEB_TARGET_MULTIARCH)
 DH_AUTO_ARGS = --parallel --buildsystem=cmake
 
@@ -15,7 +13,18 @@ override_dh_auto_configure:
 	dh_auto_configure -- \
 	  -DCMAKE_BUILD_TYPE=Release \
 	  -DCMAKE_INSTALL_PREFIX=/usr \
-DAPP_VERSION=$(DEB_VERSION_UPSTREAM) DEFINES+="VERSION=$(DEB_VERSION_UPSTREAM)" LIB_INSTALL_DIR=/usr/lib/$(DEB_HOST_MULTIARCH)
+      -DAPP_VERSION=$(DEB_VERSION_UPSTREAM) -DVERSION=$(DEB_VERSION_UPSTREAM) LIB_INSTALL_DIR=/usr/lib/$(DEB_HOST_MULTIARCH)
+
+override_dh_auto_build:
+ifneq (,$(wildcard .git/config))
+	git submodule update --init --recursive
+	git submodule update --remote
+else
+	rm -rf src/web/node_modules
+	git clone https://cr.deepin.io/vendor-deps src/web/node_modules
+	cd src/web/node_modules && git checkout deepin-manual
+endif
+	dh_auto_build -- dman
 
 override_dh_auto_build:
 	dh_auto_build -- dman
