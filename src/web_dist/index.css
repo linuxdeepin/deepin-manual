@@ -46,7 +46,8 @@ div {
 
 #article {
   border-radius: 8px;
-  margin: 0px 0px 0px 0px; }
+  margin: 0px 0px 0px 0px;
+  padding: 0px 0px 0px 0px; }
   #article .read {
     background-color: #fff;
     font-family: SourceHanSansSC-Normal;
