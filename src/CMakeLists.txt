@@ -5,6 +5,8 @@ project(deepin-manual C CXX)
 
 configure_file(environments.h.in environments.h @ONLY)
 
+set(CMAKE_INSTALL_PREFIX /usr)
+
 if (CMAKE_BUILD_TYPE MATCHES Debug)
   add_definitions(-DDMAN_SEARCH_DB="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/search.db")
   #add_definitions(-DDMAN_SEARCH_DB="${CMAKE_CURRENT_BINARY_DIR}/search.db")
