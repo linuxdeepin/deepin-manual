@@ -29,22 +29,25 @@ body {
 #app {
   width: 100%;
   color: var(--app-word-color);
-  height: 96.8%; }
+  height: calc(100% - 21px); }
   #app a {
     text-decoration: none;
     color: #00162c; }
 
 .scrollbar > div:last-child {
-  width: 6px !important; }
+  width: 6px !important;
+  border-radius: 3px !important; }
   .scrollbar > div:last-child div {
     background-color: var(--scrollbar-div-background-color) !important; }
     .scrollbar > div:last-child div:hover {
       background-color: var(--scrollbar-div-hover-background-color) !important; }
   .scrollbar > div:last-child:hover {
-    width: 8px !important; }
+    width: 8px !important;
+    border-radius: 4px !important; }
 
 body[style*='user-select: none'] .scrollbar > div:last-child {
-  width: 8px !important; }
+  width: 8px !important;
+  border-radius: 4px !important; }
   body[style*='user-select: none'] .scrollbar > div:last-child div {
     background-color: var(--scrollbar-div-select-background-color) !important; }
 

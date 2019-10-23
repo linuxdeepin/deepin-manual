@@ -31,7 +31,7 @@ body {
 #app {
   width: 100%;
   color: var(--app-word-color);
-  height: 96.8%;
+  height: calc(100% - 21px);
   a {
     text-decoration: none;
     color: #00162c;
@@ -40,6 +40,7 @@ body {
 
 .scrollbar > div:last-child {
   width: 6px !important;
+  border-radius:3px !important;
   div {
     background-color: var(--scrollbar-div-background-color) !important;
     
@@ -49,11 +50,13 @@ body {
   }
   &:hover {
     width: 8px !important;
+    border-radius:4px !important;
   }
 }
 body[style*='user-select: none'] {
   .scrollbar > div:last-child {
     width: 8px !important;
+    border-radius:4px !important;
     div {
       background-color: var(--scrollbar-div-select-background-color) !important;
     }

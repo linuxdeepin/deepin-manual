@@ -180,7 +180,7 @@ void SearchCompletionWindow::initUI() {
                        Qt::BypassWindowManagerHint);
   this->setAttribute(Qt::WA_NativeWindow, true);
 
-  ThemeManager::instance()->registerWidget(this);
+  //ThemeManager::instance()->registerWidget(this);
 }
 
 void SearchCompletionWindow::onResultListClicked(const QModelIndex& index) {

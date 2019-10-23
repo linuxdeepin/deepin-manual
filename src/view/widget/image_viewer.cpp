@@ -116,7 +116,7 @@ void ImageViewer::initUI()
     this->setAttribute(Qt::WA_TranslucentBackground, true);
     this->setModal(true);
 
-    ThemeManager::instance()->registerWidget(this);
+    //ThemeManager::instance()->registerWidget(this);
 }
 
 void ImageViewer::mousePressEvent(QMouseEvent *event)

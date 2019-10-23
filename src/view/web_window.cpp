@@ -238,7 +238,7 @@ void WebWindow::onSearchResultClicked(const SearchAnchorResult &result)
 
 void WebWindow::onSearchTextChanged(const QString &text)
 {
-    if (text.size() > 1) {
+    if (text.size() >= 1) {
         search_timer_.stop();
         search_timer_.start(kSearchDelay);
     } else {
@@ -251,7 +251,7 @@ void WebWindow::onSearchTextChangedDelay()
     QString textTemp = search_edit_->text();
     const QString text = textTemp.remove('\n').remove('\r').remove("\r\n");
     // Filters special chars.
-    if (text.size() <= 1 || text.contains(QRegExp("[+-_$!@#%^&\\(\\)]"))) {
+    if (text.size() < 1 || text.contains(QRegExp("[+-_$!@#%^&\\(\\)]"))) {
         return;
     }
 
