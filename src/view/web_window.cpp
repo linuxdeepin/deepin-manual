@@ -28,6 +28,7 @@
 #include <qcef_web_settings.h>
 #include <qcef_web_view.h>
 #include <DButtonBox>
+#include <DApplicationHelper>
 
 #include "base/consts.h"
 #include "controller/search_manager.h"
@@ -35,6 +36,7 @@
 #include "view/image_viewer_proxy.h"
 #include "view/manual_proxy.h"
 #include "view/search_proxy.h"
+#include "view/theme_proxy.h"
 #include "view/title_bar_proxy.h"
 #include "view/web_event_delegate.h"
 #include "view/widget/image_viewer.h"
@@ -57,6 +59,7 @@ WebWindow::WebWindow(SearchManager *search_manager, QWidget *parent)
       app_name_(),
       search_manager_(search_manager),
       search_proxy_(new SearchProxy(this)),
+      theme_proxy_(new ThemeProxy(this)),
       search_timer_()
 {
 
@@ -65,6 +68,7 @@ WebWindow::WebWindow(SearchManager *search_manager, QWidget *parent)
     this->initConnections();
 
     qApp->installEventFilter(this);
+
 }
 
 WebWindow::~WebWindow()
@@ -110,6 +114,8 @@ void WebWindow::initConnections()
             this, &WebWindow::onSearchButtonClicked);
     connect(&search_timer_, &QTimer::timeout,
             this, &WebWindow::onSearchTextChangedDelay);
+    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
+            theme_proxy_, &ThemeProxy::slot_ThemeChange);
 }
 
 void WebWindow::initUI()
@@ -192,6 +198,7 @@ void WebWindow::initUI()
     channel->registerObject("imageViewer", image_viewer_proxy_);
     channel->registerObject("manual", manual_proxy_);
     channel->registerObject("search", search_proxy_);
+    channel->registerObject("theme", theme_proxy_);
     channel->registerObject("titleBar", title_bar_proxy_);
 
     this->setFocusPolicy(Qt::ClickFocus);
@@ -341,3 +348,4 @@ void WebWindow::closeEvent(QCloseEvent *event)
 }
 
 }  // namespace dman
+

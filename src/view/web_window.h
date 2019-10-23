@@ -34,6 +34,7 @@ class ManualProxy;
 class SearchCompletionWindow;
 class SearchManager;
 class SearchProxy;
+class ThemeProxy;
 class TitleBar;
 class TitleBarProxy;
 class SearchEdit;
@@ -77,6 +78,7 @@ private:
     QString app_name_;
     SearchManager *search_manager_ = nullptr;
     SearchProxy *search_proxy_ = nullptr;
+    ThemeProxy *theme_proxy_ = nullptr;
     SearchCompletionWindow *completion_window_ = nullptr;
     I18nProxy *i18n_ = nullptr;
     ImageViewer *image_viewer_ = nullptr;

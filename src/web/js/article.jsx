@@ -186,7 +186,6 @@ console.log("this.hash:"  + this.hash  + "   hash:" + hash);
   }
   render() {
     return (
-      <div id="peripheral">
           <div id="article">
             <Scrollbar onScroll={this.scroll.bind(this)}>
               <div
@@ -217,7 +216,6 @@ console.log("this.hash:"  + this.hash  + "   hash:" + hash);
               )}
             </Scrollbar>
           </div>
-      </div>
     );
   }
 }

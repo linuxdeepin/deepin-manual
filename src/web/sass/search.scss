@@ -20,7 +20,7 @@
       white-space: nowrap;
       text-overflow: ellipsis;
       font-size: 20px;
-      color: #303030;
+      color: var(--search-noresult-word-color);
       margin-bottom: 11px;
     }
     #WikiSearch {
@@ -35,7 +35,7 @@
       font-size: 14px;
       padding: 6px 42px 8px;
       background:linear-gradient(#E6E6E6,#E3E3E3);
-      color: #414D68;
+      color: var(--search-button-word-color);
       width: 80px;
       box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05);
       border: solid 1px rgba(0, 0, 0, 0.03);
@@ -45,7 +45,7 @@
     }
   }
   .items {
-    color: #000;
+    color: var(--search-items-word-color);
     font-family: SourceHanSansSC-Bold;
     margin: 20px 0;
     .itemsTitle {
@@ -58,7 +58,7 @@
         margin-right: 10px;
       }
       .resulttitle {
-        color: #001A2E;
+        color: var(--search-noresult-word-color);
         vertical-align: middle;
         font-weight: bold;
       }
@@ -67,7 +67,7 @@
         font-size: 12px;
         line-height: 18px;
         float: right;
-        color: #303030;
+        color: var(--search-items-resultnum-word-color);
         margin-top: 10px;
         margin-right: 6px;
         vertical-align: text-bottom;
@@ -91,8 +91,7 @@
       font-size: 12px;
       line-height: 18px;
       border-radius: 8px;
-      background-color: white;
-
+      background-color: var(--search-item-background-color);
       overflow: hidden;
       display: -webkit-box;
       -webkit-line-clamp: 3;

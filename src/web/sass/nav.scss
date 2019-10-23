@@ -7,7 +7,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #fff;
+  background-color: var(--nav-background-color);
   white-space: nowrap;
   overflow-y: auto;
   overflow-x: hidden;
@@ -20,7 +20,7 @@
     &[type='h2'] {
       font-size: 15px;
       font-weight: 600;
-      color: #001A2E;
+      color: var(--nav-h2-word-color);
       padding: 4px 0px;
       margin-top: 10px;
       margin-left: 10px;
@@ -29,7 +29,7 @@
     }
     &[type='h3'] {
       font-size: 13px;
-      color: #414D68;
+      color: var(--nav-h3-word-color);
       margin-top: 2px;
       padding: 4px 0 5px;
       margin-left: 10px;
@@ -42,8 +42,8 @@
   }
   .hash {
     box-shadow: 0 4px 6px 0 rgba(44,167,248,0.40);
-    background-color: #0081ff;
-    color: #ffffff !important;
+    background-color: var(--nav-hash-word-color);
+    color: #FFFFFF !important;
     border-radius: 8px;
     font-weight: bold;
   }

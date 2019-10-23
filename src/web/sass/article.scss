@@ -4,13 +4,8 @@
    width: 8px;
    height: 8px;
    transform: rotate(45deg);
-   background-color: white;
+   background-color: #FFFFFF;
    z-index: 99;
- }
- #peripheral{
-   // margin:0.9% 0 0.9% 0; 
-   // padding: 0px 0px 0px 0px;
- 
  }
  #article {
   // background-color: #fff;
@@ -18,19 +13,19 @@
    margin: 10px 0px 10px 0px;
    //padding: 0px 0px 0px 0px;
    .read {
-     background-color: #fff;
+     background-color: var(--nav-background-color);
      font-family: SourceHanSansSC-Normal;
      margin: auto;
      padding: 0 8.8%;
      width: 80%;
      max-width: 700px;
      font-size: 12px;
-     color: #000;
+     color: var(--article-read-word-color);
      outline: 0px;
      h2 {
        font-weight: normal;
        font-size: 20px;
-       color: #2CA7F8;
+       color: var(--article-read-h2-word-color);
        margin: 0px;
        padding-top: 23px;
          +p{
@@ -146,7 +141,7 @@
      width: 500px;
      height: 250px;
      z-index: 100;
-     background: white; // border: 1px solid rgba(0,0,0,0.10);
+     background: var(--body-color-white2black); // border: 1px solid rgba(0,0,0,0.10);
      border-radius: 3px;
      box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.1),
        inset 0 2px 0 0 rgba(255, 255, 255, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.1);

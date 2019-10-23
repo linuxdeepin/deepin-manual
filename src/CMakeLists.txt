@@ -143,6 +143,8 @@ set(VIEW_FILES
     view/manual_proxy.h
     view/search_proxy.cpp
     view/search_proxy.h
+    view/theme_proxy.cpp
+    view/theme_proxy.h
     view/theme_manager.cpp
     view/theme_manager.h
     view/title_bar_proxy.cpp

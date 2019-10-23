@@ -1,5 +1,26 @@
+:root {
+  --body-background-color: #F8F8F8;
+  --body-color-white2black: #FFFFFF;
+  --app-word-color:#414D68;
+  --nav-background-color: #FFFFFF;
+  --nav-h2-word-color:#001A2E;
+  --nav-h3-word-color:#414D68;
+  --nav-hash-word-color:#0081FF;
+  --article-read-word-color:#000000;
+  --article-read-h2-word-color:#2CA7F8;
+  --index-item-background-color: #FFFFFF;
+  --index-item-span-word-color: #001A2E;
+  --search-noresult-word-color: #000000;
+  --search-button-word-color: #414D68;
+  --search-items-word-color: #000000;
+  --search-items-resultnum-word-color: #303030;
+  --search-item-background-color: #FFFFFF;
+  --scrollbar-div-background-color: rgba(83,96,118,0.4);
+  --scrollbar-div-hover-background-color: rgba(83,96,118,0.5);
+  --scrollbar-div-select-background-color: rgba(83,96,118,0.6); }
+
 body {
-  background-color: #F8F8F8;
+  background-color: var(--body-background-color);
   width: 100%;
   margin: 0px;
   overflow-x: hidden;
@@ -7,7 +28,7 @@ body {
 
 #app {
   width: 100%;
-  color: #414D68;
+  color: var(--app-word-color);
   height: 96.8%; }
   #app a {
     text-decoration: none;
@@ -16,16 +37,16 @@ body {
 .scrollbar > div:last-child {
   width: 6px !important; }
   .scrollbar > div:last-child div {
-    background-color: rgba(83, 96, 118, 0.4) !important; }
+    background-color: var(--scrollbar-div-background-color) !important; }
     .scrollbar > div:last-child div:hover {
-      background-color: rgba(83, 96, 118, 0.5) !important; }
+      background-color: var(--scrollbar-div-hover-background-color) !important; }
   .scrollbar > div:last-child:hover {
     width: 8px !important; }
 
 body[style*='user-select: none'] .scrollbar > div:last-child {
   width: 8px !important; }
   body[style*='user-select: none'] .scrollbar > div:last-child div {
-    background-color: rgba(83, 96, 118, 0.6) !important; }
+    background-color: var(--scrollbar-div-select-background-color) !important; }
 
 div {
   outline: none; }
@@ -37,26 +58,26 @@ div {
   width: 8px;
   height: 8px;
   transform: rotate(45deg);
-  background-color: white;
+  background-color: #FFFFFF;
   z-index: 99; }
 
 #article {
   border-radius: 8px;
   margin: 10px 0px 10px 0px; }
   #article .read {
-    background-color: #fff;
+    background-color: var(--nav-background-color);
     font-family: SourceHanSansSC-Normal;
     margin: auto;
     padding: 0 8.8%;
     width: 80%;
     max-width: 700px;
     font-size: 12px;
-    color: #000;
+    color: var(--article-read-word-color);
     outline: 0px; }
     #article .read h2 {
       font-weight: normal;
       font-size: 20px;
-      color: #2CA7F8;
+      color: var(--article-read-h2-word-color);
       margin: 0px;
       padding-top: 23px; }
       #article .read h2 + p {
@@ -160,7 +181,7 @@ div {
     width: 500px;
     height: 250px;
     z-index: 100;
-    background: white;
+    background: var(--body-color-white2black);
     border-radius: 3px;
     box-shadow: 0 4px 9px 0 rgba(0, 0, 0, 0.1), inset 0 2px 0 0 rgba(255, 255, 255, 0.1), 0 0 0 1px rgba(0, 0, 0, 0.1);
     margin: auto;
@@ -237,7 +258,7 @@ div {
       width: 160px;
       padding: 0 10px; }
     #index .items .item {
-      background-color: #FFFFFF;
+      background-color: var(--index-item-background-color);
       border-radius: 18px;
       width: 160px;
       height: 160px;
@@ -255,7 +276,7 @@ div {
         font-size: 17px;
         font-weight: bold;
         line-height: 25px;
-        color: #001A2E; }
+        color: var(--index-item-span-word-color); }
       #index .items .item:focus, #index .items .item:hover {
         background-clip: content-box;
         border-radius: 18px;
@@ -269,7 +290,7 @@ div {
   position: fixed;
   top: 0;
   left: 0;
-  background-color: #fff;
+  background-color: var(--nav-background-color);
   white-space: nowrap;
   overflow-y: auto;
   overflow-x: hidden;
@@ -285,7 +306,7 @@ div {
     #nav .h[type='h2'] {
       font-size: 15px;
       font-weight: 600;
-      color: #001A2E;
+      color: var(--nav-h2-word-color);
       padding: 4px 0px;
       margin-top: 10px;
       margin-left: 10px;
@@ -293,7 +314,7 @@ div {
       text-indent: 0.88rem; }
     #nav .h[type='h3'] {
       font-size: 13px;
-      color: #414D68;
+      color: var(--nav-h3-word-color);
       margin-top: 2px;
       padding: 4px 0 5px;
       margin-left: 10px;
@@ -301,8 +322,8 @@ div {
       text-indent: 1.5rem; }
   #nav .hash {
     box-shadow: 0 4px 6px 0 rgba(44, 167, 248, 0.4);
-    background-color: #0081ff;
-    color: #ffffff !important;
+    background-color: var(--nav-hash-word-color);
+    color: #FFFFFF !important;
     border-radius: 8px;
     font-weight: bold; }
 
@@ -327,7 +348,7 @@ div {
       white-space: nowrap;
       text-overflow: ellipsis;
       font-size: 20px;
-      color: #303030;
+      color: var(--search-noresult-word-color);
       margin-bottom: 11px; }
     #search #mismatch #WikiSearch {
       font-family: SourceHanSansSC-Normal;
@@ -340,7 +361,7 @@ div {
       font-size: 14px;
       padding: 6px 42px 8px;
       background: linear-gradient(#E6E6E6, #E3E3E3);
-      color: #414D68;
+      color: var(--search-button-word-color);
       width: 80px;
       box-shadow: 0 2px 4px 0 rgba(0, 0, 0, 0.05);
       border: solid 1px rgba(0, 0, 0, 0.03);
@@ -348,7 +369,7 @@ div {
       text-align: center;
       cursor: pointer; }
   #search .items {
-    color: #000;
+    color: var(--search-items-word-color);
     font-family: SourceHanSansSC-Bold;
     margin: 20px 0; }
     #search .items .itemsTitle {
@@ -360,7 +381,7 @@ div {
         vertical-align: middle;
         margin-right: 10px; }
       #search .items .itemsTitle .resulttitle {
-        color: #001A2E;
+        color: var(--search-noresult-word-color);
         vertical-align: middle;
         font-weight: bold; }
       #search .items .itemsTitle .resultnum {
@@ -368,7 +389,7 @@ div {
         font-size: 12px;
         line-height: 18px;
         float: right;
-        color: #303030;
+        color: var(--search-items-resultnum-word-color);
         margin-top: 10px;
         margin-right: 6px;
         vertical-align: text-bottom; }
@@ -379,7 +400,7 @@ div {
       font-size: 12px;
       line-height: 18px;
       border-radius: 8px;
-      background-color: white;
+      background-color: var(--search-item-background-color);
       overflow: hidden;
       display: -webkit-box;
       -webkit-line-clamp: 3;

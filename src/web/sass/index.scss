@@ -30,8 +30,8 @@
       padding: 0 10px;
     }
     .item {
-     background-color: #FFFFFF;
-     border-radius: 18px;
+      background-color: var(--index-item-background-color);
+      border-radius: 18px;
       width: 160px;
       height: 160px;
       margin: 30px 40px 0 10px;
@@ -49,7 +49,7 @@
         font-size: 17px;
         font-weight: bold;
         line-height:25px;
-        color: #001A2E;
+        color: var(--index-item-span-word-color);
       }
       &:focus,
       &:hover {
