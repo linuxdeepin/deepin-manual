@@ -20,7 +20,7 @@
 
 #include <QDialog>
 #include <DIconButton>
-
+#include <DFloatingButton>
 class QLabel;
 
 namespace dman {
@@ -45,6 +45,7 @@ private:
 
     QLabel *img_label_ = nullptr;
     Dtk::Widget::DIconButton *close_button_;
+
 };
 
 }  // namespace dman

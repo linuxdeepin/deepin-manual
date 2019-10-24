@@ -29,7 +29,7 @@ body {
 #app {
   width: 100%;
   color: var(--app-word-color);
-  height: calc(100% - 21px); }
+  height: calc(100% - 21px);
   #app a {
     text-decoration: none;
     color: #00162c; }
@@ -73,7 +73,7 @@ div {
     margin: auto;
     padding: 0 8.8%;
     width: 80%;
-    max-width: 700px;
+    max-width: 1000px;
     font-size: 12px;
     color: var(--article-read-word-color);
     outline: 0px; }
@@ -238,7 +238,7 @@ div {
   user-select: none;
   display: flex;
   flex-flow: column;
-  margin: -19px 70px -19px 107px; }
+  margin: -19px 117px -19px 117px; }
   #index:after {
     content: '';
     display: block;
@@ -254,6 +254,10 @@ div {
     padding-bottom: 12px; }
   #index .items {
     display: flex;
+    position: relative;
+    left: -50px;
+    width: calc(100% + 50px);
+    right: 0px;
     flex-flow: row;
     flex-wrap: wrap;
     justify-content: flex-start; }
@@ -263,9 +267,10 @@ div {
     #index .items .item {
       background-color: var(--index-item-background-color);
       border-radius: 18px;
+      padding: 0px;
       width: 160px;
       height: 160px;
-      margin: 30px 40px 0 10px;
+      margin: 30px 0px 0px 50px;
       display: inline-block;
       text-align: center;
       vertical-align: bottom;

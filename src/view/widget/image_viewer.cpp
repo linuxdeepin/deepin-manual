@@ -27,6 +27,7 @@
 #include <QDesktopWidget>
 #include <QLabel>
 #include <DStyle>
+#include <QStyle>
 #include "view/theme_manager.h"
 DWIDGET_USE_NAMESPACE
 namespace dman {
@@ -106,7 +107,7 @@ void ImageViewer::initUI()
     close_button_->setObjectName("CloseButton");
     close_button_->raise();
     close_button_->setFocusPolicy(Qt::FocusPolicy::NoFocus);
-
+    close_button_->setFixedSize(30,30);
 
     this->setContentsMargins(kBorderSize, kBorderSize, kBorderSize, kBorderSize);
     this->setWindowFlags(Qt::FramelessWindowHint |
@@ -116,7 +117,7 @@ void ImageViewer::initUI()
     this->setAttribute(Qt::WA_TranslucentBackground, true);
     this->setModal(true);
 
-    //ThemeManager::instance()->registerWidget(this);
+    ThemeManager::instance()->registerWidget(this);
 }
 
 void ImageViewer::mousePressEvent(QMouseEvent *event)

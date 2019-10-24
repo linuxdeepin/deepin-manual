@@ -4,7 +4,7 @@
   user-select: none;
   display: flex;
   flex-flow: column;
-  margin: -19px 70px -19px 107px;
+  margin: -19px 117px -19px 117px;
   &:after {
     content: '';
     display: block;
@@ -20,8 +20,17 @@
     border-bottom: 1px solid rgba(0, 0, 0, 0.1);
     padding-bottom: 12px;
   }
+  #forMargin
+  {
+   // margin:0px -50px 0px 0px;
+  
+  }
   .items {
     display: flex;
+    position:relative;
+    left:-50px;
+    width:calc(100% + 50px);
+    right:0px;
     flex-flow: row;
     flex-wrap: wrap;
     justify-content: flex-start;
@@ -32,9 +41,10 @@
     .item {
       background-color: var(--index-item-background-color);
       border-radius: 18px;
+      padding:0px;
       width: 160px;
       height: 160px;
-      margin: 30px 40px 0 10px;
+      margin: 30px 0px 0px 50px;
       display: inline-block;
       text-align: center;
       vertical-align: bottom;

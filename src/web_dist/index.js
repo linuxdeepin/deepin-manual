@@ -739,10 +739,14 @@ var Index = function (_Component2) {
           ),
           sysSoft.length > 0 && _react2.default.createElement(
             'div',
-            { className: 'items' },
-            sysSoft.map(function (appName) {
-              return _react2.default.createElement(Item, { key: appName, appName: appName });
-            })
+            { id: 'forMargin' },
+            _react2.default.createElement(
+              'div',
+              { className: 'items' },
+              sysSoft.map(function (appName) {
+                return _react2.default.createElement(Item, { key: appName, appName: appName });
+              })
+            )
           ),
           _react2.default.createElement(
             'h2',
@@ -751,18 +755,22 @@ var Index = function (_Component2) {
           ),
           _react2.default.createElement(
             'div',
-            { className: 'items' },
-            appSoft.map(function (appName) {
-              return _react2.default.createElement(Item, { key: appName, appName: appName });
-            }),
-            otherSoft.map(function (appName) {
-              return _react2.default.createElement(Item, { key: appName, appName: appName });
-            }),
-            Array.from(new Array(10), function (val, index) {
-              return index;
-            }).map(function (i) {
-              return _react2.default.createElement('a', { key: i, className: 'empty' });
-            })
+            { id: 'forMargin' },
+            _react2.default.createElement(
+              'div',
+              { className: 'items' },
+              appSoft.map(function (appName) {
+                return _react2.default.createElement(Item, { key: appName, appName: appName });
+              }),
+              otherSoft.map(function (appName) {
+                return _react2.default.createElement(Item, { key: appName, appName: appName });
+              }),
+              Array.from(new Array(10), function (val, index) {
+                return index;
+              }).map(function (i) {
+                return _react2.default.createElement('a', { key: i, className: 'empty' });
+              })
+            )
           )
         )
       );
@@ -1278,7 +1286,7 @@ function Mismatch(props) {
       _react2.default.createElement(
         'div',
         { id: 'NoResult' },
-        global.i18n['NoResult'].replace('%1', decodeURIComponent(props.keyword))
+        global.i18n['NoResult']
       ),
       _react2.default.createElement(
         'div',

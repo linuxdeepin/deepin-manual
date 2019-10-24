@@ -73,7 +73,7 @@ function Mismatch(props) {
     <div id="mismatch">
       <div>
         <div id="NoResult">
-          {global.i18n['NoResult'].replace('%1', decodeURIComponent(props.keyword))}
+          {global.i18n['NoResult']}
         </div>
         <div id="WikiSearch">{global.i18n['WikiSearch']}</div>
         <span

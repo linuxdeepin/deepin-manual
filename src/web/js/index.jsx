@@ -123,18 +123,22 @@ export default class Index extends Component {
         <div id="index" tabIndex="-1">
           <h2>{global.i18n['System']}</h2>
           {sysSoft.length > 0 && (
-            <div className="items">
-              {sysSoft.map(appName => <Item key={appName} appName={appName} />)}
+            <div id="forMargin">
+                <div className="items">
+                  {sysSoft.map(appName => <Item key={appName} appName={appName} />)}
+                </div>
             </div>
           )}
           <h2>{global.i18n['Applications']}</h2>
-          <div className="items">
-            {appSoft.map(appName => <Item key={appName} appName={appName} />)}
-            {otherSoft.map(appName => <Item key={appName} appName={appName} />)}
-            {Array.from(new Array(10), (val, index) => index).map(i => (
-              <a key={i} className="empty" />
-            ))}
-          </div>
+          <div id="forMargin">
+              <div className="items">
+                {appSoft.map(appName => <Item key={appName} appName={appName} />)}
+                {otherSoft.map(appName => <Item key={appName} appName={appName} />)}
+                {Array.from(new Array(10), (val, index) => index).map(i => (
+                  <a key={i} className="empty" />
+                ))}
+              </div>
+           </div>
         </div>
       </Scrollbar>
     );

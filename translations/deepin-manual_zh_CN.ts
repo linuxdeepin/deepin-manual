@@ -30,8 +30,8 @@
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="35"/>
-        <source>Sorry, there are no search results of &quot;%1&quot;</source>
-        <translation>抱歉，没有关于“%1”的搜索结果</translation>
+        <source>Sorry,there are no search results of your search</source>
+        <translation>抱歉，没有您搜索的内容</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="36"/>
