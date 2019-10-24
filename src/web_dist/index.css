@@ -28,8 +28,8 @@ body {
 
 #app {
   width: 100%;
-  color: var(--app-word-color);
   height: calc(100% - 21px);
+  color: var(--app-word-color); }
   #app a {
     text-decoration: none;
     color: #00162c; }
