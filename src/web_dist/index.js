@@ -124,16 +124,23 @@ var App = function (_React$Component) {
         document.documentElement.style.setProperty('--nav-hash-word-color', '#0059D2');
         document.documentElement.style.setProperty('--article-read-word-color', '#C0C6D4');
         document.documentElement.style.setProperty('--article-read-h2-word-color', '#0082FA');
-        document.documentElement.style.setProperty('--index-item-background-color', 'rgba(255,255,255,0.1)');
+        document.documentElement.style.setProperty('--index-item-background-color', 'rgba(255,255,255,0.05)');
+        document.documentElement.style.setProperty('--index-item-hover-color', 'rgba(255,255,255,0.2)');
         document.documentElement.style.setProperty('--index-item-span-word-color', '#C0C6D4');
         document.documentElement.style.setProperty('--search-noresult-word-color', '#C0C6D4');
-        document.documentElement.style.setProperty('--search-button-word-color', 'rgba(0,0,0,0.1)');
+        document.documentElement.style.setProperty('--search-button-word-color', '#C0C6D4');
         document.documentElement.style.setProperty('--search-items-word-color', '#6D7C88');
         document.documentElement.style.setProperty('--search-items-resultnum-word-color', '#6D7C88');
-        document.documentElement.style.setProperty('--search-item-background-color', 'rgba(255,255,255,0.1)');
+        document.documentElement.style.setProperty('--search-item-background-color', 'rgba(255,255,255,0.05)');
         document.documentElement.style.setProperty('--scrollbar-div-background-color', '#1A1A1A');
         document.documentElement.style.setProperty('--scrollbar-div-hover-background-color', '#1A1A1A');
         document.documentElement.style.setProperty('--scrollbar-div-select-background-color', '#121212');
+        document.documentElement.style.setProperty('--index-h2-color', 'rgba(255,255,255,0.05)');
+        document.documentElement.style.setProperty('--search-button-background-color-start', '#484848');
+        document.documentElement.style.setProperty('--search-button-background-color-end', '#414141');
+        document.documentElement.style.setProperty('--search-WikiSearch-color', '#6D7C88');
+        document.documentElement.style.setProperty('--search-itemTitle-word-color', '#C0C6D4');
+        document.documentElement.style.setProperty('--search-context-word-color', '#6D7C88');
       } else if ("LightType" == themeType) {
         // console.log('LightType');
         document.documentElement.style.setProperty('--body-background-color', '#F8F8F8');
@@ -146,15 +153,22 @@ var App = function (_React$Component) {
         document.documentElement.style.setProperty('--article-read-word-color', '#000000');
         document.documentElement.style.setProperty('--article-read-h2-word-color', '#2CA7F8');
         document.documentElement.style.setProperty('--index-item-background-color', '#FFFFFF');
+        document.documentElement.style.setProperty('--index-item-hover-color', 'rgba(0,0,0,0.05)');
         document.documentElement.style.setProperty('--index-item-span-word-color', '#001A2E');
         document.documentElement.style.setProperty('--search-noresult-word-color', '#000000');
         document.documentElement.style.setProperty('--search-button-word-color', '#414D68');
         document.documentElement.style.setProperty('--search-items-word-color', '#000000');
         document.documentElement.style.setProperty('--search-items-resultnum-word-color', '#303030');
-        document.documentElement.style.setProperty('--search-item-background-color', '#FFFFFF');
+        document.documentElement.style.setProperty('--search-item-background-color', 'rgba(255,255,255,1)');
         document.documentElement.style.setProperty('--scrollbar-div-background-color', 'rgba(83,96,118,0.4)');
         document.documentElement.style.setProperty('--scrollbar-div-hover-background-color', 'rgba(83,96,118,0.5)');
         document.documentElement.style.setProperty('--scrollbar-div-select-background-color', 'rgba(83,96,118,0.6)');
+        document.documentElement.style.setProperty('--index-h2-color', 'rgba(0, 0, 0, 0.1)');
+        document.documentElement.style.setProperty('--search-button-background-color-start', '#E6E6E6');
+        document.documentElement.style.setProperty('--search-button-background-color-end', '#E3E3E3');
+        document.documentElement.style.setProperty('--search-WikiSearch-color', '#7a7a7a');
+        document.documentElement.style.setProperty('--search-itemTitle-word-color', '#000000');
+        document.documentElement.style.setProperty('--search-context-word-color', '#000000');
       } else {
         console.log('Null');
       }

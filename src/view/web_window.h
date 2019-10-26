@@ -38,6 +38,7 @@ class ThemeProxy;
 class TitleBar;
 class TitleBarProxy;
 class SearchEdit;
+class DButtonBox;
 
 class WebWindow : public Dtk::Widget::DMainWindow
 {
@@ -64,7 +65,7 @@ signals:
 
 public slots:
     void setAppName(const QString &app_name);
-
+    void slot_ButtonShow();
 protected:
     void closeEvent(QCloseEvent *event) override;
 
@@ -88,7 +89,7 @@ private:
     TitleBarProxy *title_bar_proxy_ = nullptr;
     QCefWebView *web_view_ = nullptr;
     QTimer search_timer_;
-
+    Dtk::Widget::DButtonBox *buttonBox;
     SearchEdit *search_edit_;
 
 private slots:

@@ -31,12 +31,12 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="35"/>
         <source>Sorry,there are no search results of your search</source>
-        <translation>抱歉，没有您搜索的内容</translation>
+        <translation type="unfinished">抱歉,没有您搜索的内容</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="36"/>
         <source>Change your keywords and try again, or search it in Deepin Wiki</source>
-        <translation>您可以调整关键字或在百科中搜索</translation>
+        <translation>您可以调整关键字或前往百科查找相关内容</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="38"/>
@@ -46,7 +46,7 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="39"/>
         <source>Deepin Wiki</source>
-        <translation>百科搜索</translation>
+        <translation>查找百科</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="40"/>

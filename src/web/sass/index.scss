@@ -17,14 +17,10 @@
     font-size: 40px;
     line-height: 59px;
     margin: 0.5em 0 0;
-    border-bottom: 1px solid rgba(0, 0, 0, 0.1);
+    border-bottom: 1px solid var(--index-h2-color);
     padding-bottom: 12px;
   }
-  #forMargin
-  {
-   // margin:0px -50px 0px 0px;
   
-  }
   .items {
     display: flex;
     position:relative;
@@ -61,12 +57,12 @@
         line-height:25px;
         color: var(--index-item-span-word-color);
       }
-      &:focus,
+      //&:focus,
       &:hover {
         background-clip: content-box;
         border-radius: 18px;
         // border: 1px solid transparent;
-        background-color: rgba(0, 0, 0, 0.05);
+        background-color: var(--index-item-hover-color);
       }
     }
   }

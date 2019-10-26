@@ -25,6 +25,7 @@ TitleBarProxy::TitleBarProxy(QObject *parent)
     : QObject(parent)
 {
     m_webWindow = static_cast<WebWindow *>(parent);
+    m_first = 0;
 }
 
 TitleBarProxy::~TitleBarProxy()
@@ -33,6 +34,10 @@ TitleBarProxy::~TitleBarProxy()
 
 void TitleBarProxy::setBackwardButtonActive(bool active)
 {
+    m_first++;
+    if(m_first == 3)
+        emit buttonShowSignal();
+
     m_webWindow->m_backButton->setEnabled(active);
 }
 

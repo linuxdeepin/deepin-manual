@@ -36,13 +36,14 @@ public:
 signals:
     void backwardButtonClicked();
     void forwardButtonClicked();
-
+    void buttonShowSignal();
 public slots:
     void setBackwardButtonActive(bool active);
     void setForwardButtonActive(bool active);
 
 private:
     WebWindow *m_webWindow;
+    int m_first;
 };
 
 }  // namespace dman

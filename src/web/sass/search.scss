@@ -1,6 +1,7 @@
 #search {
   width: 80%;
-  margin: auto;
+  //margin:auto auto auto 95px;
+  margin:auto;
   div {
     width: 100%;
   }
@@ -26,7 +27,7 @@
     #WikiSearch {
       font-family: SourceHanSansSC-Normal;
       font-size: 12px;
-      color: #7a7a7a;
+      color: var(--search-WikiSearch-color);
       margin-bottom: 26px;
     }
     #button {
@@ -34,7 +35,7 @@
       font-weight: 500;
       font-size: 14px;
       padding: 6px 42px 8px;
-      background:linear-gradient(#E6E6E6,#E3E3E3);
+      background:linear-gradient(var(--search-button-background-color-start),var(--search-button-background-color-end));
       color: var(--search-button-word-color);
       width: 80px;
       box-shadow: 0 2px 4px 0 rgba(0,0,0,0.05);
@@ -79,11 +80,13 @@
         line-height: 20px;
         height: 20px;
         font-weight: bold;
+        color: var(--search-itemTitle-word-color);
       }
       .context {
         font-family: SourceHanSansSC-Normal;
         margin-top: 10px;
-        overflow: hidden;       
+        overflow: hidden;    
+        color: var(--search-context-word-color);   
       }
       cursor: pointer;
       padding: 7px 18px;

@@ -116,6 +116,8 @@ void WebWindow::initConnections()
             this, &WebWindow::onSearchTextChangedDelay);
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
             theme_proxy_, &ThemeProxy::slot_ThemeChange);
+    connect(title_bar_proxy_, &TitleBarProxy::buttonShowSignal,
+            this, &WebWindow::slot_ButtonShow);
 }
 
 void WebWindow::initUI()
@@ -146,9 +148,10 @@ void WebWindow::initUI()
     QList<DButtonBoxButton *> buttonList;
     buttonList << m_backButton << m_forwardButton;
 
-    DButtonBox *buttonBox = new DButtonBox(this);
+    buttonBox = new Dtk::Widget::DButtonBox(this);
     buttonBox->setButtonList(buttonList, true);
     buttonBox->setFocusPolicy(Qt::NoFocus);
+    buttonBox->hide();
 
 //    buttonLayout->addSpacing(50);
 //    buttonLayout->addWidget(back_button_);
@@ -345,6 +348,10 @@ void WebWindow::closeEvent(QCloseEvent *event)
 {
     QWidget::closeEvent(event);
     emit this->closed(app_name_);
+}
+void WebWindow::slot_ButtonShow()
+{
+    buttonBox->show();
 }
 
 }  // namespace dman
