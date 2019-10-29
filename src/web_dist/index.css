@@ -69,6 +69,7 @@ div {
   margin: 10px 0px 10px 0px;
   border-radius: 18px; }
   #article .read {
+    border-radius: 8px;
     background-color: var(--nav-background-color);
     font-family: SourceHanSansSC-Normal;
     margin: 0px 10px 0px 10px;
