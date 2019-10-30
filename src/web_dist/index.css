@@ -67,118 +67,121 @@ div {
 #article {
   width: calc(100% - 164px);
   margin: 10px 0px 10px 0px;
-  border-radius: 18px; }
-  #article .read {
-    border-radius: 8px;
-    background-color: var(--nav-background-color);
-    font-family: SourceHanSansSC-Normal;
+  border-radius: 8px; }
+  #article #article_bg {
     margin: 0px 10px 0px 10px;
-    padding: 0 8.8%;
-    font-size: 12px;
-    color: var(--article-read-word-color);
-    outline: 0px; }
-    #article .read h2 {
-      font-weight: normal;
-      font-size: 20px;
-      color: var(--article-read-h2-word-color);
+    background-color: var(--nav-background-color);
+    border-radius: 8px; }
+    #article #article_bg .read {
+      background-color: transparent;
+      font-family: SourceHanSansSC-Normal;
       margin: 0px;
-      padding-top: 23px; }
-      #article .read h2 + p {
-        margin-top: 7px; }
-    #article .read ul,
-    #article .read ol {
-      margin: 0;
-      padding: 0; }
-    #article .read li {
-      margin-left: 2em;
-      line-height: 24px; }
-    #article .read img[src$='svg'] {
-      height: 20px;
-      vertical-align: middle; }
-    #article .read img[src$='png'] {
-      margin-top: 26px;
-      max-width: 99%;
-      cursor: pointer; }
-      @media screen and (-webkit-min-device-pixel-ratio: 1.25) {
-        #article .read img[src$='png'] {
-          zoom: 2; } }
-      @media screen and (-webkit-min-device-pixel-ratio: 1.5) {
-        #article .read img[src$='png'] {
-          zoom: 1; } }
-      @media screen and (-webkit-min-device-pixel-ratio: 1.75) {
-        #article .read img[src$='png'] {
-          zoom: 0.66667; } }
-      @media screen and (-webkit-min-device-pixel-ratio: 2) {
-        #article .read img[src$='png'] {
-          zoom: 0.5; } }
-    #article .read img[src$='jpg'] {
-      margin-top: 26px;
-      max-width: 99%;
-      cursor: pointer;
-      border-radius: 4px;
-      box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.1); }
-      @media screen and (-webkit-min-device-pixel-ratio: 1.25) {
-        #article .read img[src$='jpg'] {
-          zoom: 2; } }
-      @media screen and (-webkit-min-device-pixel-ratio: 1.5) {
-        #article .read img[src$='jpg'] {
-          zoom: 1; } }
-      @media screen and (-webkit-min-device-pixel-ratio: 1.75) {
-        #article .read img[src$='jpg'] {
-          zoom: 0.66667; } }
-      @media screen and (-webkit-min-device-pixel-ratio: 2) {
-        #article .read img[src$='jpg'] {
-          zoom: 0.5; } }
-    #article .read p {
-      line-height: 1.5em;
-      margin: 0; }
-    #article .read table {
-      color: #606060;
-      border-collapse: collapse;
-      border-top: 2px solid rgba(0, 0, 0, 0.1);
-      border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-      margin-top: 20px; }
-      #article .read table.block1 {
-        width: 99%;
-        float: left;
-        margin-right: 1%; }
-      #article .read table.block2 {
-        width: 49%;
-        float: left;
-        margin-right: 1%; }
-      #article .read table.block3 {
-        width: 32.33333%;
-        float: left;
-        margin-right: 1%; }
-      #article .read table.block4 {
-        width: 24%;
-        float: left;
-        margin-right: 1%; }
-      #article .read table tr {
-        border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-        font-size: 12px; }
-        #article .read table tr td {
-          padding: 5px; }
-      #article .read table caption {
-        text-align: left; }
-    #article .read a {
-      text-decoration: none;
-      font-weight: bold;
-      color: #757575;
-      cursor: pointer; }
-      #article .read a[href^='http']:after {
-        content: '🔗'; }
-      #article .read a[href^='#'] {
-        color: #0082fa; }
-      #article .read a[href^='dman://'] {
-        color: #4e64f6; }
-        #article .read a[href^='dman://']:after {
-          content: ' 📃 '; }
-    #article .read blockquote {
-      margin: 0;
-      font-style: italic; }
-    #article .read .searchWK {
-      background-color: yellow; }
+      padding: 0 8.8%;
+      font-size: 12px;
+      color: var(--article-read-word-color);
+      outline: 0px; }
+      #article #article_bg .read h2 {
+        font-weight: normal;
+        font-size: 20px;
+        color: var(--article-read-h2-word-color);
+        margin: 0px;
+        padding-top: 23px; }
+        #article #article_bg .read h2 + p {
+          margin-top: 7px; }
+      #article #article_bg .read ul,
+      #article #article_bg .read ol {
+        margin: 0;
+        padding: 0; }
+      #article #article_bg .read li {
+        margin-left: 2em;
+        line-height: 24px; }
+      #article #article_bg .read img[src$='svg'] {
+        height: 20px;
+        vertical-align: middle; }
+      #article #article_bg .read img[src$='png'] {
+        margin-top: 26px;
+        max-width: 99%;
+        cursor: pointer; }
+        @media screen and (-webkit-min-device-pixel-ratio: 1.25) {
+          #article #article_bg .read img[src$='png'] {
+            zoom: 2; } }
+        @media screen and (-webkit-min-device-pixel-ratio: 1.5) {
+          #article #article_bg .read img[src$='png'] {
+            zoom: 1; } }
+        @media screen and (-webkit-min-device-pixel-ratio: 1.75) {
+          #article #article_bg .read img[src$='png'] {
+            zoom: 0.66667; } }
+        @media screen and (-webkit-min-device-pixel-ratio: 2) {
+          #article #article_bg .read img[src$='png'] {
+            zoom: 0.5; } }
+      #article #article_bg .read img[src$='jpg'] {
+        margin-top: 26px;
+        max-width: 99%;
+        cursor: pointer;
+        border-radius: 4px;
+        box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2), 0 0 0 1px rgba(0, 0, 0, 0.1); }
+        @media screen and (-webkit-min-device-pixel-ratio: 1.25) {
+          #article #article_bg .read img[src$='jpg'] {
+            zoom: 2; } }
+        @media screen and (-webkit-min-device-pixel-ratio: 1.5) {
+          #article #article_bg .read img[src$='jpg'] {
+            zoom: 1; } }
+        @media screen and (-webkit-min-device-pixel-ratio: 1.75) {
+          #article #article_bg .read img[src$='jpg'] {
+            zoom: 0.66667; } }
+        @media screen and (-webkit-min-device-pixel-ratio: 2) {
+          #article #article_bg .read img[src$='jpg'] {
+            zoom: 0.5; } }
+      #article #article_bg .read p {
+        line-height: 1.5em;
+        margin: 0; }
+      #article #article_bg .read table {
+        color: #606060;
+        border-collapse: collapse;
+        border-top: 2px solid rgba(0, 0, 0, 0.1);
+        border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+        margin-top: 20px; }
+        #article #article_bg .read table.block1 {
+          width: 99%;
+          float: left;
+          margin-right: 1%; }
+        #article #article_bg .read table.block2 {
+          width: 49%;
+          float: left;
+          margin-right: 1%; }
+        #article #article_bg .read table.block3 {
+          width: 32.33333%;
+          float: left;
+          margin-right: 1%; }
+        #article #article_bg .read table.block4 {
+          width: 24%;
+          float: left;
+          margin-right: 1%; }
+        #article #article_bg .read table tr {
+          border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+          font-size: 12px; }
+          #article #article_bg .read table tr td {
+            padding: 5px; }
+        #article #article_bg .read table caption {
+          text-align: left; }
+      #article #article_bg .read a {
+        text-decoration: none;
+        font-weight: bold;
+        color: #757575;
+        cursor: pointer; }
+        #article #article_bg .read a[href^='http']:after {
+          content: '🔗'; }
+        #article #article_bg .read a[href^='#'] {
+          color: #0082fa; }
+        #article #article_bg .read a[href^='dman://'] {
+          color: #4e64f6; }
+          #article #article_bg .read a[href^='dman://']:after {
+            content: ' 📃 '; }
+      #article #article_bg .read blockquote {
+        margin: 0;
+        font-style: italic; }
+      #article #article_bg .read .searchWK {
+        background-color: yellow; }
   #article #preview {
     position: fixed;
     width: 500px;

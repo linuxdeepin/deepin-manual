@@ -11,131 +11,136 @@
   // background-color: #fff;
    width: calc(100% - 164px);
    margin: 10px 0px 10px 0px;
-   border-radius: 18px;
-    
-   .read {
-     border-radius: 8px;
-     background-color: var(--nav-background-color);
-     font-family: SourceHanSansSC-Normal;
-     margin: 0px 10px 0px 10px;
-     padding: 0 8.8%;
-     font-size: 12px;
-     
-     color: var(--article-read-word-color);
-     outline: 0px;
-     h2 {
-       font-weight: normal;
-       font-size: 20px;
-       color: var(--article-read-h2-word-color);
-       margin: 0px;
-       padding-top: 23px;
-         +p{
-             margin-top: 7px;        
-         }
-     }
-     ul,
-     ol {
-       margin: 0;
-       padding: 0;
-     }
-     li {
-       margin-left: 2em;
-       line-height: 24px;
-     }
-     img {
-       //svg图片内嵌同行
-       &[src$='svg'] {
-         height: 20px;
-         vertical-align: middle;
-       }
-       //png图片
-       &[src$='png'] {
-         $i: 0;
-         @while $i<1 {
-           $i: $i+0.25;
-           @media screen and (-webkit-min-device-pixel-ratio: 1+$i) {
-             zoom: 0.5/$i;
-           }
-         }
-         margin-top: 26px;
-         max-width: 99%;
-         cursor: pointer;
-       }
-       //jpg图片
-       &[src$='jpg'] {
-         $i: 0;
-         @while $i<1 {
-           $i: $i+0.25;
-           @media screen and (-webkit-min-device-pixel-ratio: 1+$i) {
-             zoom: 0.5/$i;
-           }
-         }
-         margin-top: 26px;
-         max-width: 99%;
-         cursor: pointer;
-         border-radius: 4px;
-         // border: 1px solid rgba(0, 0, 0, 0.18);
-         box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2),
-           0 0 0 1px rgba(0, 0, 0, 0.1);
-       }
-     }
-     p {
-       line-height: 1.5em;
-       margin: 0;
-     }
-     table {
-       color: #606060;
-       border-collapse: collapse;
-       border-top: 2px solid rgba(0, 0, 0, 0.1);
-       border-bottom: 2px solid rgba(0, 0, 0, 0.1);
-       margin-top: 20px;
-       // white-space: nowrap;
-       //表格block等级
-       @for $i from 1 to 5 {
-         &.block#{$i} {
-           width: 100%/$i - 1%;
-           float: left;
-           margin-right: 1%;
-         }
-       }
-       tr {
-         border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-         font-size: 12px;
-         td {
-           padding: 5px;
-         }
-       }
-       caption {
-         text-align: left;
-       }
-     }
-     a {
-       text-decoration: none;
-       font-weight: bold;
-       color: #757575;
-       cursor: pointer;
-       &[href^='http'] {
-         &:after {
-           content: '🔗';
-         }
-       }
-       &[href^='#'] {
-         color: #0082fa;
-       }
-       &[href^='dman://'] {
-         color: #4e64f6;
-         &:after {
-           content: ' 📃 ';
-         }
-       }
-     }
-     blockquote {
-       margin: 0;
-       font-style: italic;
-     }
-     .searchWK {
-       background-color: yellow;
-     }
+   border-radius: 8px;
+   
+   #article_bg {
+    margin: 0px 10px 0px 10px;
+    background-color: var(--nav-background-color);
+    border-radius: 8px;
+
+    .read {
+      background-color: transparent;
+      font-family: SourceHanSansSC-Normal;
+      margin: 0px;
+      padding: 0 8.8%;
+      font-size: 12px;
+      
+      color: var(--article-read-word-color);
+      outline: 0px;
+      h2 {
+        font-weight: normal;
+        font-size: 20px;
+        color: var(--article-read-h2-word-color);
+        margin: 0px;
+        padding-top: 23px;
+          +p{
+              margin-top: 7px;        
+          }
+      }
+      ul,
+      ol {
+        margin: 0;
+        padding: 0;
+      }
+      li {
+        margin-left: 2em;
+        line-height: 24px;
+      }
+      img {
+        //svg图片内嵌同行
+        &[src$='svg'] {
+          height: 20px;
+          vertical-align: middle;
+        }
+        //png图片
+        &[src$='png'] {
+          $i: 0;
+          @while $i<1 {
+            $i: $i+0.25;
+            @media screen and (-webkit-min-device-pixel-ratio: 1+$i) {
+              zoom: 0.5/$i;
+            }
+          }
+          margin-top: 26px;
+          max-width: 99%;
+          cursor: pointer;
+        }
+        //jpg图片
+        &[src$='jpg'] {
+          $i: 0;
+          @while $i<1 {
+            $i: $i+0.25;
+            @media screen and (-webkit-min-device-pixel-ratio: 1+$i) {
+              zoom: 0.5/$i;
+            }
+          }
+          margin-top: 26px;
+          max-width: 99%;
+          cursor: pointer;
+          border-radius: 4px;
+          // border: 1px solid rgba(0, 0, 0, 0.18);
+          box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2),
+            0 0 0 1px rgba(0, 0, 0, 0.1);
+        }
+      }
+      p {
+        line-height: 1.5em;
+        margin: 0;
+      }
+      table {
+        color: #606060;
+        border-collapse: collapse;
+        border-top: 2px solid rgba(0, 0, 0, 0.1);
+        border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+        margin-top: 20px;
+        // white-space: nowrap;
+        //表格block等级
+        @for $i from 1 to 5 {
+          &.block#{$i} {
+            width: 100%/$i - 1%;
+            float: left;
+            margin-right: 1%;
+          }
+        }
+        tr {
+          border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+          font-size: 12px;
+          td {
+            padding: 5px;
+          }
+        }
+        caption {
+          text-align: left;
+        }
+      }
+      a {
+        text-decoration: none;
+        font-weight: bold;
+        color: #757575;
+        cursor: pointer;
+        &[href^='http'] {
+          &:after {
+            content: '🔗';
+          }
+        }
+        &[href^='#'] {
+          color: #0082fa;
+        }
+        &[href^='dman://'] {
+          color: #4e64f6;
+          &:after {
+            content: ' 📃 ';
+          }
+        }
+      }
+      blockquote {
+        margin: 0;
+        font-style: italic;
+      }
+      .searchWK {
+        background-color: yellow;
+      }
+    }
    }
    #preview {
      position: fixed;
