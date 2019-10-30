@@ -379,17 +379,23 @@ div {
       text-align: center;
       cursor: pointer; }
   #search .items {
+    padding: 0px 20px 0px 40px;
     color: var(--search-items-word-color);
     font-family: SourceHanSansSC-Bold;
-    margin: 20px 0; }
+    margin: 20px 0px 0px -20px; }
     #search .items .itemsTitle {
+      padding: 7px 10px 0px 0px;
+      margin: 10px auto auto -20px;
       cursor: pointer;
       height: 32px;
-      font-size: 17px; }
+      font-size: 17px;
+      display: -webkit-box;
+      -webkit-line-clamp: 1;
+      -webkit-box-orient: vertical; }
       #search .items .itemsTitle img {
         height: 100%;
         vertical-align: middle;
-        margin-right: 10px; }
+        margin: auto 10px auto 5px; }
       #search .items .itemsTitle .resulttitle {
         color: var(--search-noresult-word-color);
         vertical-align: middle;
@@ -401,30 +407,35 @@ div {
         float: right;
         color: var(--search-items-resultnum-word-color);
         margin-top: 10px;
-        margin-right: 6px;
+        margin-right: 0px;
         vertical-align: text-bottom; }
     #search .items .item {
       cursor: pointer;
-      padding: 7px 18px;
-      margin-top: 10px;
+      padding: 7px 10px 0px 0px;
+      margin: 10px auto auto -20px;
       font-size: 12px;
       line-height: 18px;
       border-radius: 8px;
       background-color: var(--search-item-background-color);
-      overflow: hidden;
       display: -webkit-box;
       -webkit-line-clamp: 3;
       -webkit-box-orient: vertical; }
       #search .items .item .itemTitle {
+        width: 99%;
+        margin: 0px 0px 7px 15px;
         font-size: 14px;
         line-height: 20px;
         height: 20px;
         font-weight: bold;
         color: var(--search-itemTitle-word-color); }
       #search .items .item .context {
+        width: 98%;
+        margin: 7px 0px 10px 15px;
         font-family: SourceHanSansSC-Normal;
-        margin-top: 10px;
+        color: var(--search-context-word-color);
         overflow: hidden;
-        color: var(--search-context-word-color); }
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical; }
     #search .items .highlight {
       color: #2bba57; }
