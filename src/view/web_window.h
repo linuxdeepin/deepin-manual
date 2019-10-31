@@ -65,6 +65,7 @@ signals:
 
 public slots:
     void setAppName(const QString &app_name);
+    void slot_ButtonHide();
     void slot_ButtonShow();
 protected:
     void closeEvent(QCloseEvent *event) override;

@@ -132,11 +132,6 @@ void WebWindow::initUI()
     buttonLayout->setMargin(0);
     buttonLayout->setSpacing(0);
 
-//    forward_button_ = new DIconButton(DStyle::SP_ArrowNext);
-//    forward_button_->setFlat(false);
-//    back_button_ = new DIconButton(DStyle::SP_ArrowPrev);
-//    back_button_->setFlat(false);
-
     m_backButton = new DButtonBoxButton(DStyle::standardIcon(this->style(), DStyle::SP_ArrowLeave));
     m_backButton->setDisabled(true);
     m_backButton->setFixedSize(36, 36);
@@ -151,11 +146,7 @@ void WebWindow::initUI()
     buttonBox = new Dtk::Widget::DButtonBox(this);
     buttonBox->setButtonList(buttonList, true);
     buttonBox->setFocusPolicy(Qt::NoFocus);
-    buttonBox->hide();
 
-//    buttonLayout->addSpacing(50);
-//    buttonLayout->addWidget(back_button_);
-//    buttonLayout->addWidget(forward_button_);
     buttonLayout->addWidget(buttonBox);
     buttonLayout->setSpacing(0);
     buttonLayout->setContentsMargins(13, 0, 0, 0);
@@ -352,8 +343,16 @@ void WebWindow::closeEvent(QCloseEvent *event)
     QWidget::closeEvent(event);
     emit this->closed(app_name_);
 }
+
+void WebWindow::slot_ButtonHide()
+{
+    qDebug() << "slot_ButtonHide";
+    buttonBox->hide();
+}
+
 void WebWindow::slot_ButtonShow()
 {
+    qDebug() << "slot_ButtonShow";
     buttonBox->show();
 }
 

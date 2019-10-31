@@ -57,7 +57,7 @@ const char kSearchSelectContent[] = "SELECT appName, anchor, anchorId, content "
     "WHERE lang = ':lang' AND "
     "content LIKE '%:content%' --case insensitive";
 
-const int kResultLimitation = 10;
+const int kResultLimitation = 13;
 
 }  // namespace
 
