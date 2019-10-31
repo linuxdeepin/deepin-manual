@@ -332,6 +332,7 @@ div {
       margin-right: 11px;
       text-indent: 1.5rem; }
   #nav .hash {
+    box-shadow: 0 4px 6px 0 rgba(0, 42, 175, 0.4);
     background-color: var(--nav-hash-word-color);
     color: #FFFFFF !important;
     border-radius: 8px;

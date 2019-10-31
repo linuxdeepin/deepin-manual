@@ -25,6 +25,7 @@ debian/*.substvars
 /*.creator.user
 /*.files
 /*.includes
+CMakeLists.txt.user
 .sass-cache
 debian/debhelper-build-stamp
 obj-*
