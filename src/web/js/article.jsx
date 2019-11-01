@@ -16,11 +16,15 @@ export default class Article extends Component {
   }
   //滚动到锚点
   scrollToHash() {
+    // console.log('scrollToHash');
     const hashNode = document.getElementById(this.hash);
     if (hashNode) {
       this.setState({ smoothScroll: true });
       scrollIntoView(hashNode, { behavior: 'smooth', block: 'start' }).then(() => {
-        this.setState({ smoothScroll: false });
+        setTimeout(() => {
+          this.setState({ smoothScroll: false });
+        },500);
+        // this.setState({ smoothScroll: false });
       });
     } else {
       this.props.setHash(this.props.hlist[0].id);
@@ -98,13 +102,13 @@ export default class Article extends Component {
     let hList = ReactDOM.findDOMNode(this).querySelectorAll('h2,h3');
     let hash = hList[0].id;
     for (let i = 0; i < hList.length; i++) {
-console.log("hlist:" + hList[i]);
+      console.log("hlist:" + hList[i]);
       if (hList[i].getBoundingClientRect().top > 1) {
         break;
       }
       hash = hList[i].id;
     }
-console.log("this.hash:"  + this.hash  + "   hash:" + hash);
+      console.log("this.hash:"  + this.hash  + "   hash:" + hash);
     if (this.hash != hash) {
       console.log('hash update');
       this.hash = hash;

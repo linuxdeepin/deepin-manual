@@ -339,11 +339,15 @@ var Article = function (_Component) {
     value: function scrollToHash() {
       var _this2 = this;
 
+      // console.log('scrollToHash');
       var hashNode = document.getElementById(this.hash);
       if (hashNode) {
         this.setState({ smoothScroll: true });
         (0, _smoothScrollIntoViewIfNeeded2.default)(hashNode, { behavior: 'smooth', block: 'start' }).then(function () {
-          _this2.setState({ smoothScroll: false });
+          setTimeout(function () {
+            _this2.setState({ smoothScroll: false });
+          }, 500);
+          // this.setState({ smoothScroll: false });
         });
       } else {
         this.props.setHash(this.props.hlist[0].id);
