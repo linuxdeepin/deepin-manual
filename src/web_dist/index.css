@@ -305,8 +305,7 @@ div {
   white-space: nowrap;
   overflow-y: auto;
   overflow-x: hidden;
-  height: 100%;
-  border-right: 1px solid rgba(0, 0, 0, 0.1); }
+  height: 100%; }
   #nav .h {
     cursor: pointer;
     border-right: 3px solid transparent;
