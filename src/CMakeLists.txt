@@ -70,7 +70,7 @@ find_package(Qt5LinguistTools REQUIRED)
 
 pkg_search_module(DtkWidget REQUIRED dtkwidget)
 pkg_search_module(DtkGui REQUIRED dtkgui)
-pkg_search_module(QCef REQUIRED libqcef)
+pkg_search_module(LibQCef REQUIRED libqcef)
 
 include_directories(${DtkWidget_INCLUDE_DIRS})
 include_directories(${DtkGui_INCLUDE_DIRS})
@@ -212,7 +212,16 @@ add_executable(dman
                ${RESOURCES_FILES}
                ${VIEW_FILES}
                )
-target_link_libraries(dman ${LINK_LIBS})
+
+set(CMAKE_SKIP_BUILD_RPATH FALSE)
+set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
+set(CMAKE_INSTALL_RPATH "${LibQCef_LIBDIR}/qcef")
+set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
+set_target_properties(dman
+                      PROPERTIES INSTALL_RPATH "${LibQCef_LIBDIR}/qcef")
+target_link_libraries(dman ${LibQCef_LIBDIR}/qcef/libcef.so
+                      ${LINK_LIBS})
+
 # Auto generate qm files and search.db in release mode.
 if (CMAKE_BUILD_TYPE MATCHES Release)
   add_dependencies(dman
