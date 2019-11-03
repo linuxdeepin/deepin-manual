@@ -74,7 +74,7 @@ pkg_search_module(LibQCef REQUIRED libqcef)
 
 include_directories(${DtkWidget_INCLUDE_DIRS})
 include_directories(${DtkGui_INCLUDE_DIRS})
-include_directories(${QCef_INCLUDE_DIRS})
+include_directories(${LibQCef_INCLUDE_DIRS})
 
 set(LINK_LIBS
     Qt5::Core
@@ -85,7 +85,7 @@ set(LINK_LIBS
 
     ${DtkWidget_LDFLAGS}
     ${DtkGui_LDFLAGS}
-    ${QCef_LDFLAGS}
+    ${LibQCef_LDFLAGS}
     )
 
 set(BASE_FILES
