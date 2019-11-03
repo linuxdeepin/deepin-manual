@@ -53,6 +53,30 @@ body[style*='user-select: none'] .scrollbar > div:last-child {
 
 div {
   outline: none; }
+  @media screen and (-webkit-min-device-pixel-ratio: 1.25) {
+    div {
+      border-right: 0.01px solid var(--body-background-color); } }
+  @media screen and (-webkit-min-device-pixel-ratio: 1.5) {
+    div {
+      border-right: 0.01px solid var(--body-background-color); } }
+  @media screen and (-webkit-min-device-pixel-ratio: 1.75) {
+    div {
+      border-right: 0.01px solid var(--body-background-color); } }
+  @media screen and (-webkit-min-device-pixel-ratio: 2) {
+    div {
+      border-right: 0.01px solid var(--body-background-color); } }
+  @media screen and (-webkit-min-device-pixel-ratio: 2.25) {
+    div {
+      border-right: 1px solid var(--body-background-color); } }
+  @media screen and (-webkit-min-device-pixel-ratio: 2.5) {
+    div {
+      border-right: 1px solid var(--body-background-color); } }
+  @media screen and (-webkit-min-device-pixel-ratio: 2.75) {
+    div {
+      border-right: 1px solid var(--body-background-color); } }
+  @media screen and (-webkit-min-device-pixel-ratio: 3) {
+    div {
+      border-right: 1px solid var(--body-background-color); } }
 
 @charset "UTF-8";
 .Triangle, #article .t_right_down::after, #article .t_right_up::after, #article .t_left_down::after, #article .t_left_up::after {
