@@ -66,6 +66,7 @@ export default class Index extends Component {
       'deepin-draw',
       'dde-file-manager',
       'dde-log-viewer',
+      'dde-devicemanager',
       'deepin-appstore',
       'deepin-system-monitor',
       'deepin-terminal',
