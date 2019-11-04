@@ -24,35 +24,37 @@
 
 namespace dman {
 
-SearchManager::SearchManager(QObject* parent)
+SearchManager::SearchManager(QObject *parent)
     : QObject(parent),
       db_(new SearchDb()),
-      db_thread_(new QThread(this)) {
-  db_thread_->start();
-  db_->moveToThread(db_thread_);
+      db_thread_(new QThread(this))
+{
+    db_thread_->start();
+    db_->moveToThread(db_thread_);
 
-  connect(this, &SearchManager::searchAnchor,
-          db_, &SearchDb::searchAnchor);
-  connect(db_, &SearchDb::searchAnchorResult,
-          this, &SearchManager::searchAnchorResult);
-  connect(this, &SearchManager::searchContent,
-          db_, &SearchDb::searchContent);
-  connect(db_, &SearchDb::searchContentResult,
-          this, &SearchManager::searchContentResult);
-  connect(db_, &SearchDb::searchContentMismatch,
-          this, &SearchManager::searchContentMismatch);
+    connect(this, &SearchManager::searchAnchor,
+            db_, &SearchDb::searchAnchor);
+    connect(db_, &SearchDb::searchAnchorResult,
+            this, &SearchManager::searchAnchorResult);
+    connect(this, &SearchManager::searchContent,
+            db_, &SearchDb::searchContent);
+    connect(db_, &SearchDb::searchContentResult,
+            this, &SearchManager::searchContentResult);
+    connect(db_, &SearchDb::searchContentMismatch,
+            this, &SearchManager::searchContentMismatch);
 
-  connect(db_thread_, &QThread::destroyed,
-          db_, &QObject::deleteLater);
+    connect(db_thread_, &QThread::destroyed,
+            db_, &QObject::deleteLater);
 
-  emit db_->initDbAsync(DMAN_SEARCH_DB);
+    emit db_->initDbAsync(DMAN_SEARCH_DB);
 }
 
-SearchManager::~SearchManager() {
-  db_thread_->quit();
-  db_thread_->wait();
-  delete db_thread_;
-  db_thread_ = nullptr;
+SearchManager::~SearchManager()
+{
+    db_thread_->quit();
+    db_thread_->wait();
+    delete db_thread_;
+    db_thread_ = nullptr;
 }
 
 }  // namespace dman

@@ -29,29 +29,30 @@ namespace dman {
 
 class SearchDb;
 
-class SearchManager : public QObject {
- Q_OBJECT
+class SearchManager : public QObject
+{
+    Q_OBJECT
 
- public:
-  explicit SearchManager(QObject* parent = nullptr);
+public:
+    explicit SearchManager(QObject *parent = nullptr);
 
-  ~SearchManager() override;
+    ~SearchManager() override;
 
- signals:
-  void searchAnchor(const QString& keyword);
-  void searchAnchorResult(const QString& keyword,
-                          const SearchAnchorResultList& result);
+signals:
+    void searchAnchor(const QString &keyword);
+    void searchAnchorResult(const QString &keyword,
+                            const SearchAnchorResultList &result);
 
-  void searchContent(const QString& keyword);
-  void searchContentResult(const QString& app_name,
-                           const QStringList& anchors,
-                           const QStringList& anchorIdList,
-                           const QStringList& contents);
-  void searchContentMismatch(const QString& keyword);
+    void searchContent(const QString &keyword);
+    void searchContentResult(const QString &app_name,
+                             const QStringList &anchors,
+                             const QStringList &anchorIdList,
+                             const QStringList &contents);
+    void searchContentMismatch(const QString &keyword);
 
- private:
-  SearchDb* db_ = nullptr;
-  QThread* db_thread_ = nullptr;
+private:
+    SearchDb *db_ = nullptr;
+    QThread *db_thread_ = nullptr;
 };
 
 }  // namespace dman

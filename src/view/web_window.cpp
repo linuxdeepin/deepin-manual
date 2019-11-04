@@ -227,10 +227,11 @@ void WebWindow::onSearchButtonClicked()
 void WebWindow::onSearchResultClicked(const SearchAnchorResult &result)
 {
     web_view_->page()->runJavaScript(
-        QString("open('%1', '%2', '%3')")
+        QString("open('%1', '%2', '%3', '%4')")
         .arg(result.app_name)
         .arg(result.anchorId)
-        .arg(result.anchor));
+        .arg(result.anchor)
+        .arg(result.app_display_name));
 }
 
 void WebWindow::onSearchTextChanged(const QString &text)

@@ -26,45 +26,46 @@ namespace dman {
 
 struct SearchDbPrivate;
 
-class SearchDb : public QObject {
-  Q_OBJECT
- public:
-  explicit SearchDb(QObject* parent = nullptr);
-  ~SearchDb() override;
+class SearchDb : public QObject
+{
+    Q_OBJECT
+public:
+    explicit SearchDb(QObject *parent = nullptr);
+    ~SearchDb() override;
 
- signals:
-  void initDbAsync(const QString& db_path);
+signals:
+    void initDbAsync(const QString &db_path);
 
-  // Only search in anchor.
-  void searchAnchor(const QString& keyword);
-  void searchAnchorResult(const QString& keyword,
-                          const SearchAnchorResultList& result);
+    // Only search in anchor.
+    void searchAnchor(const QString &keyword);
+    void searchAnchorResult(const QString &keyword,
+                            const SearchAnchorResultList &result);
 
-  void searchContent(const QString& keyword);
-  void searchContentResult(const QString& app_name,
-                           const QStringList& anchors,
-                           const QStringList& anchorIdList,
-                           const QStringList& contents);
-  void searchContentMismatch(const QString& keyword);
+    void searchContent(const QString &keyword);
+    void searchContentResult(const QString &app_name,
+                             const QStringList &anchors,
+                             const QStringList &anchorIdList,
+                             const QStringList &contents);
+    void searchContentMismatch(const QString &keyword);
 
- public slots:
-  void initDb(const QString& db_path);
-  void initSearchTable();
-  void addSearchEntry(const QString& app_name,
-                      const QString& lang,
-                      const QStringList& anchors,
-                      const QStringList& anchorIdList,
-                      const QStringList& contents
-);
+public slots:
+    void initDb(const QString &db_path);
+    void initSearchTable();
+    void addSearchEntry(const QString &app_name,
+                        const QString &lang,
+                        const QStringList &anchors,
+                        const QStringList &anchorIdList,
+                        const QStringList &contents
+                       );
 
- private:
-  void initConnections();
+private:
+    void initConnections();
 
-  SearchDbPrivate* p_ = nullptr;
+    SearchDbPrivate *p_ = nullptr;
 
- private slots:
-  void handleSearchAnchor(const QString& keyword);
-  void handleSearchContent(const QString& keyword);
+private slots:
+    void handleSearchAnchor(const QString &keyword);
+    void handleSearchContent(const QString &keyword);
 };
 
 }  // namespace dman
