@@ -7,16 +7,16 @@
 > ![1|interface](jpg/interface.jpg)
 
 ## 使用入门
-您可以通过以下方式运行或关闭终端，或者创建终端的快捷方式。
+通过以下方式运行或关闭终端，或者创建终端的快捷方式。
 
 ### 运行终端
 
-1. 点击桌面底部的 ![launcher_icon ](icon/launcher_icon.svg)，进入启动器界面。
-2. 上下滚动鼠标滚轮，通过浏览找到终端 ![deepin-terminal](icon/deepin-terminal.svg) 进行点击。
-3. 将鼠标指针置于终端应用程序的图标上，右键单击 ![deepin-terminal](icon/deepin-terminal.svg)  图标，您可以：
+1. 点击桌面底部的 ![deepin-launcher](icon/deepin-launcher.svg)，进入启动器界面。
+2. 上下滚动鼠标滚轮浏览或通过搜索，找到终端 ![deepin-terminal](icon/deepin-terminal.svg) 点击运行。
+3. 右键单击 ![deepin-terminal](icon/deepin-terminal.svg)  ，您可以：
  - 点击 **发送到桌面**，在桌面创建快捷方式。
  - 点击 **发送到任务栏**，将应用程序固定到任务栏。
- - 点击 **开机自动启动**，将应用程序添加到开机启动项，在电脑开机时自动运行该应用程序。
+ - 点击 **开机自动启动**，将应用程序添加到开机启动项，在电脑开机时自动运行该应用。
 
 > ![notes](icon/notes.svg)：按下键盘上的 ![Ctrl](icon/Ctrl.svg) + ![Alt](icon/Alt.svg) + ![T](icon/T.svg) 组合键也可以启动终端。
 
@@ -258,13 +258,14 @@
 
 ![0|groupssh](jpg/groupssh.jpg)
 
-## 选项设置
+## 主菜单
 
-### 切换主题 ###
+### 主题
+
+在主菜单中，您可以[新建窗口](#新建窗口)、自定义命令、切换窗口主题、查看帮助手册，了解终端的更多信息。
 
 1. 在终端界面，点击  ![icon_menu](icon/icon_menu.svg) 。
-2. 点击 **切换主题**。
-3. 选择一个主题。
+2. 点击 **切换主题**，选择一个主题。
 
 ![0|change](jpg/change.jpg)
 
@@ -316,12 +317,12 @@
 
 ![0|advancedset](jpg/advancedset.jpg)
 
-![notes](icon/notes.svg)：点击 **设置** 页面底部的 **恢复默认设置** 可以将所有设置项恢复到默认状态。
+![notes](icon/notes.svg)：点击 **设置** 页面底部的 **恢复默认** 可以将所有设置项恢复到默认状态。
 
 
 ### 帮助
 
-您可以点击帮助获取终端的帮助手册，通过帮助进一步让您了解和使用终端。
+查看帮助手册，通过帮助进一步让您了解和使用终端。
 
 1. 在终端界面，点击  ![icon_menu](icon/icon_menu.svg) 。
 2. 点击 **帮助**。
@@ -331,8 +332,6 @@
 
 ### 关于
 
-您可以点击关于查看终端的版本介绍。
-
 1. 在终端界面，点击  ![icon_menu](icon/icon_menu.svg) 。
 2. 点击 **关于**。
 3. 查看关于终端的版本和介绍。
@@ -340,8 +339,6 @@
 
 
 ### 退出
-
-您可以从菜单栏退出终端。
 
 1. 在终端界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **退出**。

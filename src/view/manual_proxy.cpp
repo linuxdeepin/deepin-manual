@@ -32,77 +32,82 @@ namespace {
  * @param desktop_file Absolute path to app desktop file.
  * @return Returns manual id if exists or else returns empty string.
  */
-QString GetDeepinManualId(const QString& desktop_file) {
-  QSettings settings(desktop_file, QSettings::IniFormat);
-  settings.beginGroup("Desktop Entry");
-  const QVariant value = settings.value("X-Deepin-ManualID");
-  if (value.isValid()) {
-    return value.toString();
-  }
-  return "";
+QString GetDeepinManualId(const QString &desktop_file)
+{
+    QSettings settings(desktop_file, QSettings::IniFormat);
+    settings.beginGroup("Desktop Entry");
+    const QVariant value = settings.value("X-Deepin-ManualID");
+    if (value.isValid()) {
+        return value.toString();
+    }
+    return "";
 }
 
 }  // namespace
 
-ManualProxy::ManualProxy(QObject* parent)
+ManualProxy::ManualProxy(QObject *parent)
     : QObject(parent),
       launcher_interface_(new LauncherInterface(
-          kLauncherService,
-          kLauncherIface,
-          QDBusConnection::sessionBus(),
-          this)) {
-  AppInfo::registerMetaType();
+                              kLauncherService,
+                              kLauncherIface,
+                              QDBusConnection::sessionBus(),
+                              this))
+{
+    AppInfo::registerMetaType();
 }
 
-ManualProxy::~ManualProxy() {
+ManualProxy::~ManualProxy()
+{
 
 }
 
-QStringList ManualProxy::getSystemManualList() {
-  const QHash<QString, QString> kAppNameMap = {
-      { "org.deepin.flatdeb.deepin-calendar", "dde-calendar" },
-      { "org.deepin.flatdeb.deepin-music", "deepin-music" },
-      { "org.deepin.flatdeb.deepin-screenshot", "deepin-screenshot" },
-      { "org.deepin.flatdeb.deepin-voice-recorder", "deepin-voice-recorder" },
-      { "deepin-cloud-print-configurator", "deepin-cloud-print" },
-      { "org.deepin.flatdeb.deepin-image-viewer", "deepin-image-viewer" },
-      { "deepin-cloud-scan-configurator", "deepin-cloud-scan" },
-      { "org.deepin.flatdeb.deepin-movie", "deepin-movie" },
-      { "org.deepin.flatdeb.deepin-screen-recorder", "deepin-screen-recorder" },
-      { "org.deepin.flatdeb.deepin-calculator", "deepin-calculator"},
-      { "com.deepin.editor", "deepin-editor"},
-  };
+QStringList ManualProxy::getSystemManualList()
+{
+    const QHash<QString, QString> kAppNameMap = {
+        { "org.deepin.flatdeb.deepin-calendar", "dde-calendar" },
+        { "org.deepin.flatdeb.deepin-music", "deepin-music" },
+        { "org.deepin.flatdeb.deepin-screenshot", "deepin-screenshot" },
+        { "org.deepin.flatdeb.deepin-voice-recorder", "deepin-voice-recorder" },
+        { "deepin-cloud-print-configurator", "deepin-cloud-print" },
+        { "org.deepin.flatdeb.deepin-image-viewer", "deepin-image-viewer" },
+        { "deepin-cloud-scan-configurator", "deepin-cloud-scan" },
+        { "org.deepin.flatdeb.deepin-movie", "deepin-movie" },
+        { "org.deepin.flatdeb.deepin-screen-recorder", "deepin-screen-recorder" },
+        { "org.deepin.flatdeb.deepin-calculator", "deepin-calculator"},
+        { "com.deepin.editor", "deepin-editor"},
+    };
 
-  if (app_list_.isEmpty()) {
-    const QStringList dir_entry = QDir(this->getSystemManualDir()).entryList();
-    const AppInfoList list = launcher_interface_->GetAllItemInfos();
-    for (const AppInfo& info : list) {
-      const QString app_name = kAppNameMap.value(info.key, info.key);
-      if ((dir_entry.indexOf(app_name) != -1) &&
-          app_list_.indexOf(app_name) == -1) {
-        app_list_.append(app_name);
-      }
+    if (app_list_.isEmpty()) {
+        const QStringList dir_entry = QDir(this->getSystemManualDir()).entryList();
+        const AppInfoList list = launcher_interface_->GetAllItemInfos();
+        for (const AppInfo &info : list) {
+            const QString app_name = kAppNameMap.value(info.key, info.key);
+            if ((dir_entry.indexOf(app_name) != -1) &&
+                    app_list_.indexOf(app_name) == -1) {
+                app_list_.append(app_name);
+            }
 
-      const QString deepin_app_id = GetDeepinManualId(info.desktop);
-      if (deepin_app_id == app_name &&
-          app_list_.indexOf(app_name) == -1) {
-        app_list_.append(app_name);
-      }
+            const QString deepin_app_id = GetDeepinManualId(info.desktop);
+            if (deepin_app_id == app_name &&
+                    app_list_.indexOf(app_name) == -1) {
+                app_list_.append(app_name);
+            }
+        }
+
+        // Add "dde" by hand, as it has no desktop file.
+        app_list_.append("dde");
+
+        // Remove youdao-dict if current locale is not Simplified Chinese.
+        if (!QLocale().name().startsWith("zh")) {
+            app_list_.removeAll("youdao-dict");
+        }
     }
-
-    // Add "dde" by hand, as it has no desktop file.
-    app_list_.append("dde");
-
-    // Remove youdao-dict if current locale is not Simplified Chinese.
-    if (!QLocale().name().startsWith("zh")) {
-      app_list_.removeAll("youdao-dict");
-    }
-  }
-  qDebug() << "app list:" << app_list_;
-  return app_list_;
+    qDebug() << "app list:" << app_list_ << ", count:" << app_list_.size();
+    return app_list_;
 }
 
-void ManualProxy::openExternalLink(const QString& url) {
+void ManualProxy::openExternalLink(const QString &url)
+{
     QDesktopServices::openUrl(url);
 }  // namespace dman
 

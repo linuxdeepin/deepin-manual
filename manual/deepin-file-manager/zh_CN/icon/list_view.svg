@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="10" height="10" viewBox="0 0 10 10">
+  <g fill="none" fill-rule="evenodd">
+    <path fill="#626E88" fill-rule="nonzero" d="M10,9 L10,10 L2,10 L2,9 L10,9 Z M10,6 L10,7 L2,7 L2,6 L10,6 Z M10,3 L10,4 L2,4 L2,3 L10,3 Z M10,0 L10,1 L2,1 L2,0 L10,0 Z"/>
+    <circle cx=".5" cy=".5" r="1" fill="#626E88" fill-rule="nonzero"/>
+    <circle cx=".5" cy="3.5" r="1" fill="#626E88" fill-rule="nonzero"/>
+    <circle cx=".5" cy="6.5" r="1" fill="#626E88" fill-rule="nonzero"/>
+    <circle cx=".5" cy="9.5" r="1" fill="#626E88" fill-rule="nonzero"/>
+  </g>
+</svg>

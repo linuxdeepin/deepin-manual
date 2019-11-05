@@ -5,27 +5,27 @@
 
 ![1|maininterface](jpg/maininterface.jpg)
 
-## 基本操作
+## 使用入门
+
+通过以下方式运行或关闭应用商店，或者创建应用商店的快捷方式。
 
 ### 运行应用商店
-您可以通过执行以下操作来运行应用商店：
 
-1. 点击任务栏上的 ![launcher-24](icon/launcher-24.svg) 进入启动器界面。
-2. 通过浏览找到 ![store-24](icon/store-24.svg) 点击。
+1. 点击桌面底部的 ![deepin-launcher](icon/deepin-launcher.svg)，进入启动器界面。
+2. 上下滚动鼠标滚轮浏览或通过搜索，找到应用商店![store-24](icon/store-24.svg) 点击运行。
+3. 右键单击 ![store-24](icon/store-24.svg) ，您可以：
+ - 点击 **发送到桌面**，在桌面创建快捷方式。
+ - 点击 **发送到任务栏**，将应用程序固定到任务栏。
+ - 点击 **开机自动启动**，将应用程序添加到开机启动项，在电脑开机时自动运行该应用。
 
-> ![notes](icon/notes.svg) ：应用商店已经默认固定在任务栏上，您也可以点击任务栏上的 ![store-24](icon/store-24.svg) 。
+> ![notes](icon/notes.svg) ：应用商店默认固定在任务栏上。您也可以点击任务栏上的 ![store-24](icon/store-24.svg) 打开应用商店。
 
-### 最大/最小化应用商店
-
-- 在应用商店界面，点击 ![icon_max](icon/icon_max.svg) 最大化图标，应用商店将窗口最大化显示。如果要恢复正常显示，请点击 ![icon_unmax](icon/icon_unmax.svg) 恢复原始窗口。
-- 在应用商店界面，点击 ![icon_min](icon/icon_min.svg) 最小化图标，应用商店将最小化到任务栏。如果要恢复显示，请点击任务栏上的 ![store-24](icon/store-24.svg) 商店图标。
 
 ### 关闭应用商店
 
-- 在应用商店界面，点击 ![icon_close](icon/icon_close.svg) 关闭图标，退出应用商店。
-- 右键单击任务栏上的 ![store-24](icon/store-24.svg) 商店图标，选择 **关闭所有** 来退出应用商店。
-- 在应用商店界面，点击主菜单，选择 [退出](#退出)。
-
+- 在应用商店界面，点击 ![icon_close](icon/icon_close.svg)，退出应用商店。
+- 在任务栏右键单击 ![store-24](icon/store-24.svg)，选择 **关闭所有** 来退出应用商店。
+- 在应用商店界面，点击 ![icon_menu](icon/icon_menu.svg) ，选择 **退出** 来退出应用商店。
 
 ## 主界面
 应用商店主界面由导航栏、搜索框、主菜单、首页轮播、首页栏目、热门专题、下载管理、和卸载应用组成。
