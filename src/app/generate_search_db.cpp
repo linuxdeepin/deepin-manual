@@ -60,7 +60,7 @@ int main(int argc, char **argv)
 
             QString out, err;
             const QStringList cmd = {"./toSearchIndex.js", "-f", md_file};
-            const bool ok = dman::SpawnCmd("./node_modules/.bin/node", cmd, out, err);
+            const bool ok = dman::SpawnCmd("/usr/bin/node", cmd, out, err);
             if (!ok) {
                 qWarning() << err << ok << md_file;
                 continue;
