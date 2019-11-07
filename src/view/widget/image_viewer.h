@@ -46,6 +46,7 @@ private:
     QLabel *img_label_ = nullptr;
     Dtk::Widget::DIconButton *close_button_;
 
+    using QDialog::open;
 };
 
 }  // namespace dman

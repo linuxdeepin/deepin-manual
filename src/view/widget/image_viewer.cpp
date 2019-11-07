@@ -17,18 +17,17 @@
 
 #include "view/widget/image_viewer.h"
 
-#include <DWidgetUtil>
 #include <QApplication>
 #include <QDebug>
 #include <QPainter>
+#include <QMouseEvent>
 #include <QResizeEvent>
 #include <QStackedLayout>
 #include <QtCore/QTimer>
 #include <QDesktopWidget>
 #include <QLabel>
-#include <DStyle>
-#include <QStyle>
-#include "view/theme_manager.h"
+#include <QShortcut>
+
 DWIDGET_USE_NAMESPACE
 namespace dman {
 
@@ -117,7 +116,14 @@ void ImageViewer::initUI()
     this->setAttribute(Qt::WA_TranslucentBackground, true);
     this->setModal(true);
 
-    ThemeManager::instance()->registerWidget(this);
+    QShortcut *scHideDialog = new QShortcut(QKeySequence(Qt::Key_Escape), this);
+    scHideDialog->setContext(Qt::ApplicationShortcut);
+    scHideDialog->setAutoRepeat(false);
+
+    connect(scHideDialog, &QShortcut::activated, this, [this]{
+        qDebug() << "pressed esc!" << endl;
+        this->hide();
+    });
 }
 
 void ImageViewer::mousePressEvent(QMouseEvent *event)

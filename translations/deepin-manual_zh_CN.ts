@@ -6,7 +6,7 @@
     <message>
         <location filename="../src/app/dman.cpp" line="82"/>
         <source>Deepin Manual</source>
-        <translation>深度帮助手册</translation>
+        <translation>帮助手册</translation>
     </message>
     <message>
         <location filename="../src/app/dman.cpp" line="83"/>
