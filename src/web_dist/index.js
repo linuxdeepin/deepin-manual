@@ -710,7 +710,7 @@ var Index = function (_Component2) {
 
     var _this3 = _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).call(this, props));
 
-    var sequence = ['deepin-voice-note', 'deepin-compressor', 'deepin-album', 'deepin-reader', 'deepin-editor', 'dde-calendar', 'dde-introduction', 'deepin-draw', 'dde-file-manager', 'dde-log-viewer', 'dde-devicemanager', 'deepin-appstore', 'deepin-system-monitor', 'deepin-terminal', 'deepin-movie', 'deepin-music', 'deepin-image-viewer', 'deepin-screenshot', 'deepin-screen-recorder', 'deepin-voice-recorder', 'deepin-cloud-print', 'deepin-cloud-scan', 'deepin-calculator', 'deepin-repair-tools', 'deepin-clone', 'deepin-graphics-driver-manager', 'deepin-deb-installer', 'deepin-font-manager', 'deepin-presentation-assistant', 'deepin-boot-maker', 'deepin-remote-assistance', 'youdao-dict'];
+    var sequence = ['deepin-voice-note', 'deepin-compressor', 'deepin-album', 'deepin-reader', 'deepin-editor', 'dde-calendar', 'deepin-draw', 'dde-file-manager', 'dde-log-viewer', 'dde-devicemanager', 'deepin-appstore', 'deepin-system-monitor', 'deepin-terminal', 'deepin-movie', 'deepin-music', 'deepin-image-viewer', 'deepin-screenshot', 'deepin-screen-recorder', 'deepin-voice-recorder', 'deepin-cloud-print', 'deepin-cloud-scan', 'deepin-calculator', 'deepin-repair-tools', 'deepin-clone', 'deepin-graphics-driver-manager', 'deepin-deb-installer', 'deepin-font-manager', 'deepin-presentation-assistant', 'deepin-boot-maker', 'deepin-remote-assistance', 'youdao-dict'];
     _this3.state = {
       sequence: sequence,
       appList: []
@@ -1158,7 +1158,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 exports.default = function (props) {
   return _react2.default.createElement(
     _reactCustomScrollbars.Scrollbars,
-    _extends({}, props, { className: 'scrollbar', autoHide: true, autoHideTimeout: 800 }),
+    _extends({}, props, { className: 'scrollbar', autoHide: true, renderTrackHorizontal: renderScrollBarTrackHorizontal, autoHideTimeout: 800 }),
     props.children
   );
 };
@@ -1170,6 +1170,10 @@ var _react2 = _interopRequireDefault(_react);
 var _reactCustomScrollbars = require('react-custom-scrollbars');
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function renderScrollBarTrackHorizontal(props) {
+  return _react2.default.createElement('div', null);
+}
 
 },{"react":77,"react-custom-scrollbars":38}],8:[function(require,module,exports){
 (function (global){
