@@ -19,9 +19,12 @@
 #define DEEPIN_MANUAL_VIEW_WIDGETS_IMAGE_VIEWER_H
 
 #include <QDialog>
-#include <DIconButton>
+
+#include <DLabel>
+#include <DDialogCloseButton>
 #include <DFloatingButton>
-class QLabel;
+
+DWIDGET_USE_NAMESPACE
 
 namespace dman {
 
@@ -43,8 +46,8 @@ protected:
 private:
     void initUI();
 
-    QLabel *img_label_ = nullptr;
-    Dtk::Widget::DIconButton *close_button_;
+    DLabel *img_label_ = nullptr;
+    DDialogCloseButton *close_button_;
 
     using QDialog::open;
 };

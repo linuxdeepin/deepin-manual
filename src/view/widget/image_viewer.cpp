@@ -101,12 +101,13 @@ void ImageViewer::initUI()
     img_label_ = new QLabel(this);
     img_label_->setObjectName("ImageLabel");
 
-    //close_button_ = new Dtk::Widget::DIconButton(this);
-    close_button_ = new DIconButton(DStyle::StandardPixmap::SP_CloseButton, this);
+    close_button_ = new DDialogCloseButton(this);
+    close_button_->setFlat(true);
     close_button_->setObjectName("CloseButton");
     close_button_->raise();
     close_button_->setFocusPolicy(Qt::FocusPolicy::NoFocus);
-    close_button_->setFixedSize(30,30);
+    close_button_->setIconSize(QSize(20, 20));
+    close_button_->setFixedSize(45, 45);
 
     this->setContentsMargins(kBorderSize, kBorderSize, kBorderSize, kBorderSize);
     this->setWindowFlags(Qt::FramelessWindowHint |
