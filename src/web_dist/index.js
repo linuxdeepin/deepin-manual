@@ -1172,7 +1172,7 @@ var _reactCustomScrollbars = require('react-custom-scrollbars');
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 function renderScrollBarTrackHorizontal(props) {
-  return _react2.default.createElement('div', null);
+  return _react2.default.createElement('span', null);
 }
 
 },{"react":77,"react-custom-scrollbars":38}],8:[function(require,module,exports){

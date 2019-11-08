@@ -3,7 +3,7 @@ import { Scrollbars } from 'react-custom-scrollbars';
 
 function renderScrollBarTrackHorizontal(props) {
   return (
-    <div/>
+    <span/>
   );
 }
 
