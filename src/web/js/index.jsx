@@ -59,12 +59,12 @@ export default class Index extends Component {
       'deepin-voice-note',
       'deepin-compressor',
       'deepin-album',
-      'deepin-reader',
+      // 'deepin-reader',
       'deepin-editor',
       'dde-calendar',
       'deepin-draw',
       'dde-file-manager',
-      'dde-log-viewer',
+      // 'dde-log-viewer',
       'dde-devicemanager',
       'deepin-appstore',
       'deepin-system-monitor',
@@ -72,7 +72,6 @@ export default class Index extends Component {
       'deepin-movie',
       'deepin-music',
       'deepin-image-viewer',
-      'deepin-screenshot',
       'deepin-screen-recorder',
       'deepin-voice-recorder',
       'deepin-cloud-print',
@@ -86,7 +85,7 @@ export default class Index extends Component {
       'deepin-presentation-assistant',
       'deepin-boot-maker',
       'deepin-remote-assistance',
-      'youdao-dict'
+      // 'youdao-dict'
     ];
     this.state = {
       sequence,
