@@ -84,8 +84,7 @@ export default class Index extends Component {
       'deepin-font-manager',
       'deepin-presentation-assistant',
       'deepin-boot-maker',
-      'deepin-remote-assistance',
-      // 'youdao-dict'
+      'deepin-remote-assistance'
     ];
     this.state = {
       sequence,

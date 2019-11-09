@@ -8,6 +8,9 @@ import Main from './main.jsx';
 import Search from './search.jsx';
 import sIndex from './searchIndex';
 
+global.hash = ' ';
+global.oldHash = ' ';
+
 global.readFile = (fileName, callback) => {
   let xhr = new XMLHttpRequest();
   xhr.open('GET', fileName);
@@ -160,6 +163,8 @@ document.documentElement.style.setProperty(`--search-context-word-color`, '#6D7C
     global.open = (file, hash = '') => {
       file = encodeURIComponent(file);
       hash = encodeURIComponent(hash);
+      global.hash = hash;
+      global.oldHash = hash;
       let url = `/open/${file}/${hash}`;
       console.log(url);
       this.context.router.history.push(url);

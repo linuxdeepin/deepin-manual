@@ -10,6 +10,30 @@ class Nav extends Component {
     ).clientWidth;
     this.componentDidUpdate();
   }
+  shouldComponentUpdate(newProps, newState) {
+    console.log("global.hash" + global.hash);
+    console.log("shouldComponentUpdate newProps:" + newProps.hash + ", old hash:" + global.oldHash);
+
+    if (' ' == global.hash) {
+      return true;
+    }
+
+    if (' ' == global.oldHash) {
+      return true;
+    }
+
+    if (global.hash != global.oldHash) {
+      return false;
+    }
+    if (newProps.hash != global.oldHash) {
+      return false;
+    }
+    return true;
+  }
+
+  componentWillUpdate() {
+    console.log("componentWillUpdate");
+  }
   componentDidUpdate() {
     let hashDOM = ReactDOM.findDOMNode(this).querySelector('.hash');
     if (hashDOM == null) {
@@ -23,7 +47,10 @@ class Nav extends Component {
   }
   click(e) {
     let cid = e.target.getAttribute('cid');
-    if (cid) { console.log('搜索结果', cid);
+    if (cid) {
+      console.log('搜索结果', cid);
+      global.hash = cid;
+      global.oldHash = cid;
       this.props.setHash(cid);
     }
   }

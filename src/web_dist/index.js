@@ -40,6 +40,9 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+global.hash = ' ';
+global.oldHash = ' ';
+
 global.readFile = function (fileName, callback) {
   var xhr = new XMLHttpRequest();
   xhr.open('GET', fileName);
@@ -217,6 +220,8 @@ var App = function (_React$Component) {
 
         file = encodeURIComponent(file);
         hash = encodeURIComponent(hash);
+        global.hash = hash;
+        global.oldHash = hash;
         var url = '/open/' + file + '/' + hash;
         console.log(url);
         _this3.context.router.history.push(url);
@@ -714,7 +719,7 @@ var Index = function (_Component2) {
     // 'deepin-reader',
     'deepin-editor', 'dde-calendar', 'deepin-draw', 'dde-file-manager',
     // 'dde-log-viewer',
-    'dde-devicemanager', 'deepin-appstore', 'deepin-system-monitor', 'deepin-terminal', 'deepin-movie', 'deepin-music', 'deepin-image-viewer', 'deepin-screenshot', 'deepin-screen-recorder', 'deepin-voice-recorder', 'deepin-cloud-print', 'deepin-cloud-scan', 'deepin-calculator', 'deepin-repair-tools', 'deepin-clone', 'deepin-graphics-driver-manager', 'deepin-deb-installer', 'deepin-font-manager', 'deepin-presentation-assistant', 'deepin-boot-maker', 'deepin-remote-assistance'];
+    'dde-devicemanager', 'deepin-appstore', 'deepin-system-monitor', 'deepin-terminal', 'deepin-movie', 'deepin-music', 'deepin-image-viewer', 'deepin-screen-recorder', 'deepin-voice-recorder', 'deepin-cloud-print', 'deepin-cloud-scan', 'deepin-calculator', 'deepin-repair-tools', 'deepin-clone', 'deepin-graphics-driver-manager', 'deepin-deb-installer', 'deepin-font-manager', 'deepin-presentation-assistant', 'deepin-boot-maker', 'deepin-remote-assistance'];
     _this3.state = {
       sequence: sequence,
       appList: []
@@ -1034,6 +1039,33 @@ var Nav = function (_Component) {
       this.componentDidUpdate();
     }
   }, {
+    key: 'shouldComponentUpdate',
+    value: function shouldComponentUpdate(newProps, newState) {
+      console.log("global.hash" + global.hash);
+      console.log("shouldComponentUpdate newProps:" + newProps.hash + ", old hash:" + global.oldHash);
+
+      if (' ' == global.hash) {
+        return true;
+      }
+
+      if (' ' == global.oldHash) {
+        return true;
+      }
+
+      if (global.hash != global.oldHash) {
+        return false;
+      }
+      if (newProps.hash != global.oldHash) {
+        return false;
+      }
+      return true;
+    }
+  }, {
+    key: 'componentWillUpdate',
+    value: function componentWillUpdate() {
+      console.log("componentWillUpdate");
+    }
+  }, {
     key: 'componentDidUpdate',
     value: function componentDidUpdate() {
       var hashDOM = _reactDom2.default.findDOMNode(this).querySelector('.hash');
@@ -1052,6 +1084,8 @@ var Nav = function (_Component) {
       var cid = e.target.getAttribute('cid');
       if (cid) {
         console.log('搜索结果', cid);
+        global.hash = cid;
+        global.oldHash = cid;
         this.props.setHash(cid);
       }
     }
