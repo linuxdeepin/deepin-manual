@@ -18,24 +18,45 @@
 #ifndef DEEPIN_MANUAL_VIEW_WIDGETS_SEARCH_BUTTON_H
 #define DEEPIN_MANUAL_VIEW_WIDGETS_SEARCH_BUTTON_H
 
-#include <QPushButton>
+#include <DLabel>
+#include <DBlurEffectWidget>
+#include <DApplicationHelper>
+
+DWIDGET_USE_NAMESPACE
 
 namespace dman {
 
 /**
  * Overloading of push button which emits entered() signal on mouse hover.
  */
-class SearchButton : public QPushButton {
-  Q_OBJECT
- public:
-  explicit SearchButton(QWidget* parent = nullptr);
-  ~SearchButton() override;
+class SearchButton : public DBlurEffectWidget {
+    Q_OBJECT
+public:
+    explicit SearchButton(QWidget* parent = nullptr);
+    ~SearchButton() override;
 
- signals:
-  void entered();
+    void setText(QString title);
+    void setChecked(bool bChecked);
+    bool isChecked();
 
- protected:
-  void enterEvent(QEvent* event) override;
+signals:
+    void pressed();
+    void entered();
+
+private slots:
+    void onThemeChange(DGuiApplicationHelper::ColorType themeType);
+
+protected:
+    void enterEvent(QEvent* event) override;
+    void leaveEvent(QEvent *event) override;
+    void paintEvent(QPaintEvent *event) override;
+    void mousePressEvent(QMouseEvent *event) override;
+    void mouseReleaseEvent(QMouseEvent *event) override;
+
+private:
+    DLabel *m_textLabel;
+
+    bool m_bHover;
 };
 
 }  // namespace dman

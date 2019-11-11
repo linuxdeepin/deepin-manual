@@ -18,18 +18,21 @@
 #ifndef DEEPIN_MANUAL_VIEW_SEARCH_COMPLETION_WINDOW_H
 #define DEEPIN_MANUAL_VIEW_SEARCH_COMPLETION_WINDOW_H
 
-#include <QFrame>
-#include <QListView>
+#include "controller/search_result.h"
+#include "search_completion_listview.h"
+
 #include <QPushButton>
 #include <QStringListModel>
 
-#include "controller/search_result.h"
+#include <DBlurEffectWidget>
+
+DWIDGET_USE_NAMESPACE
 
 namespace dman {
 
 class SearchButton;
 
-class SearchCompletionWindow : public QFrame {
+class SearchCompletionWindow : public DBlurEffectWidget {
   Q_OBJECT
  public:
   explicit SearchCompletionWindow(QWidget* parent = nullptr);
@@ -54,11 +57,12 @@ class SearchCompletionWindow : public QFrame {
 
  private:
   void initConnections();
+  void initSearchCompletionListData(QList<SearchCompletionItemModel> dataList);
   void initUI();
 
-  QListView* result_view_ = nullptr;
-  QStringListModel* model_ = nullptr;
-  SearchButton* search_button_ = nullptr;
+  SearchCompletionListView* result_view_ {nullptr};
+  QStandardItemModel* search_compeletion_model_ {nullptr};
+  SearchButton* search_button_ {nullptr};
   SearchAnchorResultList result_;
   QString keyword_;
 

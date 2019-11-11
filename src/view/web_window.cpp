@@ -303,6 +303,7 @@ void WebWindow::onSearchAnchorResult(const QString &keyword,
         // Hide completion window if no anchor entry matches.
         completion_window_->hide();
     } else {
+        completion_window_->setSearchAnchorResult(result);
         completion_window_->show();
         completion_window_->raise();
         completion_window_->autoResize();
@@ -312,7 +313,6 @@ void WebWindow::onSearchAnchorResult(const QString &keyword,
         completion_window_->move(global_point);
         completion_window_->setFocusPolicy(Qt::NoFocus);
         completion_window_->setFocusPolicy(Qt::StrongFocus);
-        completion_window_->setSearchAnchorResult(result);
     }
 }
 

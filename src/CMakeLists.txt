@@ -95,6 +95,8 @@ set(BASE_FILES
     base/consts.h
     base/file_util.cpp
     base/file_util.h
+    base/utils.cpp
+    base/utils.h
     )
 
 set(CONTROLLER_FILES
@@ -160,6 +162,10 @@ set(VIEW_FILES
     view/widget/search_button.h
     view/widget/search_completion_window.cpp
     view/widget/search_completion_window.h
+    view/widget/search_completion_listview.cpp
+    view/widget/search_completion_listview.h
+    view/widget/search_completion_delegate.cpp
+    view/widget/search_completion_delegate.h
     view/widget/search_edit.cpp
     view/widget/search_edit.h
     view/widget/title_bar.cpp
