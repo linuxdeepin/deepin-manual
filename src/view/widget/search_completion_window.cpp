@@ -18,8 +18,10 @@
 #include "view/widget/search_completion_window.h"
 #include "view/theme_manager.h"
 #include "view/widget/search_button.h"
+#include "base/utils.h"
 
 #include <QDebug>
+#include <QStylePainter>
 #include <QVBoxLayout>
 
 #include <DPlatformWindowHandle>
@@ -206,18 +208,20 @@ void SearchCompletionWindow::initUI()
     result_view_->setMinimumHeight(kItemHeight);
 //    result_view_->adjustSize();
 
-    search_button_ = new SearchButton();
+    search_button_ = new SearchButton(this);
     search_button_->setObjectName("SearchButton");
     search_button_->setFixedHeight(35+7);
     search_button_->setText(QObject::tr("Search \"%1\" in the full text"));
+    search_button_->setGeometry(0, 7 * kItemHeight + 7, result_view_->width(), 34+7);
 
-    QVBoxLayout *main_layout = new QVBoxLayout();
-    main_layout->setContentsMargins(0, 0, 0, 0);
-    main_layout->setSpacing(0);
-    main_layout->addWidget(result_view_);
-    main_layout->addWidget(search_button_);
+//    QVBoxLayout *main_layout = new QVBoxLayout();
+//    main_layout->setContentsMargins(0, 0, 0, 0);
+//    main_layout->setSpacing(0);
+//    main_layout->setMargin(0);
+//    main_layout->addWidget(result_view_);
+//    main_layout->addWidget(search_button_);
 
-    this->setLayout(main_layout);
+//    this->setLayout(main_layout);
     this->setContentsMargins(0, 0, 0, 0);
     this->setMinimumHeight(kItemHeight);
     this->setFixedWidth(350);

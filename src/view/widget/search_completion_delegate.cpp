@@ -65,6 +65,18 @@ void SearchCompletionDelegate::paint(QPainter *painter, const QStyleOptionViewIt
             painter->fillPath(path, QBrush(fillColor));
         }
 
+        QRect lineRect;
+        lineRect.setX(option.rect.x());
+        lineRect.setY(option.rect.y()+option.rect.height()-1);
+        lineRect.setWidth(option.rect.width());
+        lineRect.setHeight(1);
+
+        //绘制分割线
+        DPalette pa = ExApplicationHelper::instance()->palette(m_parentView);
+        DStyleHelper styleHelper;
+        QColor fillColor = styleHelper.getColor(static_cast<const QStyleOption *>(&option), pa, DPalette::DarkLively);
+        painter->fillRect(lineRect, fillColor);
+
         painter->setPen(QPen(option.palette.color(DPalette::ToolTipText)));
         painter->drawText(searchTextRect, Qt::AlignLeft | Qt::AlignVCenter, searchText);
 
