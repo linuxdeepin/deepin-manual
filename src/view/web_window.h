@@ -18,12 +18,14 @@
 #ifndef DEEPIN_MANUAL_VIEW_WEB_WINDOW_H
 #define DEEPIN_MANUAL_VIEW_WEB_WINDOW_H
 
-#include <DMainWindow>
-#include <QTimer>
-#include <DButtonBox>
-class QCefWebView;
-
 #include "controller/search_result.h"
+
+#include <QTimer>
+
+#include <DMainWindow>
+#include <DButtonBox>
+
+class QCefWebView;
 
 namespace dman {
 
@@ -76,6 +78,7 @@ protected:
 private:
     void initConnections();
     void initUI();
+    void initShortcuts();
 
     QString app_name_;
     SearchManager *search_manager_ = nullptr;

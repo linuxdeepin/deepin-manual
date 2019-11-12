@@ -16,20 +16,6 @@
  */
 
 #include "view/web_window.h"
-
-#include <DTitlebar>
-#include <QApplication>
-#include <QDebug>
-#include <QFileInfo>
-#include <QMouseEvent>
-#include <QResizeEvent>
-#include <QWebChannel>
-#include <qcef_web_page.h>
-#include <qcef_web_settings.h>
-#include <qcef_web_view.h>
-#include <DButtonBox>
-#include <DApplicationHelper>
-
 #include "base/consts.h"
 #include "controller/search_manager.h"
 #include "view/i18n_proxy.h"
@@ -43,6 +29,22 @@
 #include "view/widget/search_completion_window.h"
 #include "view/widget/title_bar.h"
 #include "view/widget/search_edit.h"
+
+#include <qcef_web_page.h>
+#include <qcef_web_settings.h>
+#include <qcef_web_view.h>
+
+#include <QShortcut>
+#include <QApplication>
+#include <QDebug>
+#include <QFileInfo>
+#include <QMouseEvent>
+#include <QResizeEvent>
+#include <QWebChannel>
+
+#include <DTitlebar>
+#include <DButtonBox>
+#include <DApplicationHelper>
 
 DWIDGET_USE_NAMESPACE
 
@@ -66,6 +68,7 @@ WebWindow::WebWindow(SearchManager *search_manager, QWidget *parent)
     search_timer_.setSingleShot(true);
     this->initUI();
     this->initConnections();
+    this->initShortcuts();
 
     qApp->installEventFilter(this);
 
@@ -199,6 +202,28 @@ void WebWindow::initUI()
     channel->registerObject("titleBar", title_bar_proxy_);
 
     this->setFocusPolicy(Qt::ClickFocus);
+}
+
+void WebWindow::initShortcuts()
+{
+    qDebug() << "init Short cuts" << endl;
+    //设置前进快捷键
+    QShortcut *m_scBack = new QShortcut(QKeySequence(Qt::Key_Left), this);
+    m_scBack->setContext(Qt::ApplicationShortcut);
+    m_scBack->setAutoRepeat(false);
+    connect(m_scBack, &QShortcut::activated, this, [this]{
+        qDebug() << "back" << endl;
+        title_bar_proxy_->backwardButtonClicked();
+    });
+
+    //设置后退快捷键
+    QShortcut *m_scForward = new QShortcut(QKeySequence(Qt::Key_Right), this);
+    m_scForward->setContext(Qt::ApplicationShortcut);
+    m_scForward->setAutoRepeat(false);
+    connect(m_scForward, &QShortcut::activated, this, [this]{
+        qDebug() << "forward" << endl;
+        title_bar_proxy_->forwardButtonClicked();
+    });
 }
 
 void WebWindow::resizeEvent(QResizeEvent *event)
@@ -355,6 +380,10 @@ void WebWindow::slot_ButtonShow()
 {
     qDebug() << "slot_ButtonShow";
     buttonBox->show();
+
+    //这里这样做是为了让快捷键（左右键）能够生效
+    titlebar()->grabKeyboard();
+    titlebar()->releaseKeyboard();
 }
 
 }  // namespace dman
