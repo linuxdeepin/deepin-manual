@@ -20,5 +20,7 @@
 namespace dman {
 
 const char kImageDeepinManual[] = ":/common/images/deepin-manual.svg";
+const char kImageLightSearchIcon[] = ":/common/images/search_indicator_light.svg";
+const char kImageDarkSearchIcon[] = ":/common/images/search_indicator_dark.svg";
 
 }  // namespace dman

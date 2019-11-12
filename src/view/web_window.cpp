@@ -308,7 +308,7 @@ void WebWindow::onSearchAnchorResult(const QString &keyword,
         completion_window_->raise();
         completion_window_->autoResize();
         // Move to below of search edit.
-        const QPoint local_point(this->rect().width() / 2 - search_edit_->width() / 2, 50);
+        const QPoint local_point(this->rect().width() / 2 - search_edit_->width() / 2, titlebar()->height()-3);
         const QPoint global_point(this->mapToGlobal(local_point));
         completion_window_->move(global_point);
         completion_window_->setFocusPolicy(Qt::NoFocus);

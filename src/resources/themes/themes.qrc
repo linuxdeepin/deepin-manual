@@ -1,5 +1,4 @@
-<!DOCTYPE RCC>
-<RCC version="1.0">
+<RCC>
     <qresource prefix="/">
         <file>common/images/deepin-manual.svg</file>
         <file>dark/images/back_hover.svg</file>
@@ -20,5 +19,7 @@
         <file>light/ImageViewer.css</file>
         <file>light/SearchCompletionWindow.css</file>
         <file>light/TitleBar.css</file>
+        <file>common/images/search_indicator_dark.svg</file>
+        <file>common/images/search_indicator_light.svg</file>
     </qresource>
 </RCC>

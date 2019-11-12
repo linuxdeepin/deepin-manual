@@ -19,6 +19,7 @@
 #define DEEPIN_MANUAL_VIEW_WIDGETS_SEARCH_BUTTON_H
 
 #include <DLabel>
+#include <DIconButton>
 #include <DBlurEffectWidget>
 #include <DApplicationHelper>
 
@@ -55,6 +56,7 @@ protected:
 
 private:
     DLabel *m_textLabel;
+    DIconButton *iconBtn;
 
     bool m_bHover;
 };

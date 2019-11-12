@@ -17,6 +17,7 @@
 
 #include "view/widget/search_button.h"
 #include "base/utils.h"
+#include "resources/themes/images.h"
 
 #include <QHBoxLayout>
 #include <QStylePainter>
@@ -25,7 +26,6 @@
 #include <DStyleHelper>
 #include <DApplicationHelper>
 
-#include <DIconButton>
 #include <DLog>
 
 DWIDGET_USE_NAMESPACE
@@ -50,14 +50,22 @@ SearchButton::SearchButton(QWidget* parent)
     m_textLabel->setAutoFillBackground(false);
     m_textLabel->setAttribute(Qt::WA_TransparentForMouseEvents);
 
-    DIconButton *iconBtn = new DIconButton(DStyle::SP_IndicatorSearch);
-    iconBtn->setBackgroundRole(QPalette::Background);
-    iconBtn->setAutoFillBackground(false);
+    iconBtn = new DIconButton(this);
+    iconBtn->setIcon(DStyle::SP_IndicatorSearch);
     iconBtn->setFlat(true);
     iconBtn->setFocusPolicy(Qt::NoFocus);
     iconBtn->setAttribute(Qt::WA_TransparentForMouseEvents);
 
     iconBtn->setIconSize(QSize(20, 20));
+
+    if (DGuiApplicationHelper::DarkType == DGuiApplicationHelper::instance()->themeType()) {
+        QPixmap iconPm = Utils::renderSVG(QString(kImageDarkSearchIcon), QSize(20, 20));
+        iconBtn->setIcon(iconPm);
+    }
+    else {
+        QPixmap iconPm = Utils::renderSVG(QString(kImageLightSearchIcon), QSize(20, 20));
+        iconBtn->setIcon(iconPm);
+    }
 
     QFont textFont("Source HanSans SC");
     textFont.setPixelSize(14);
@@ -104,10 +112,17 @@ void SearchButton::onThemeChange(DGuiApplicationHelper::ColorType themeType) {
     if (DGuiApplicationHelper::DarkType == themeType) {
         setBackgroundRole(QPalette::Background);
         setAutoFillBackground(false);
+
+        QPixmap iconPm = Utils::renderSVG(QString(kImageDarkSearchIcon), QSize(20, 20));
+        iconBtn->setIcon(iconPm);
+
     }
     else {
         setBackgroundRole(QPalette::Dark);
         setAutoFillBackground(true);
+
+        QPixmap iconPm = Utils::renderSVG(QString(kImageLightSearchIcon), QSize(20, 20));
+        iconBtn->setIcon(iconPm);
     }
 }
 
