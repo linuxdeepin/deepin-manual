@@ -131,8 +131,7 @@ void SearchCompletionWindow::setKeyword(const QString &keyword)
         metrics.elidedText(
             QObject::tr("Search \"%1\" in the full text").arg(keyword),
             Qt::ElideRight,
-            search_button_->width() - 14));
-//    search_compeletion_model_->setStringList(QStringList());
+            350-39));
 }
 
 void SearchCompletionWindow::setSearchAnchorResult(const SearchAnchorResultList &result)
@@ -189,12 +188,10 @@ void SearchCompletionWindow::initUI()
     setBackgroundRole(QPalette::Background);
     setAutoFillBackground(false);
 
-//    setMaskAlpha(static_cast<int>(0.6 * 255));
-
     DPlatformWindowHandle handle(this);
     int radius = 18;
     handle.setWindowRadius(radius);
-    setContentsMargins(radius / 2, 0, radius / 2, 0);
+    setContentsMargins(radius/2, 0, radius/2, 0);
 
     result_view_ = new SearchCompletionListView(this);
 
@@ -206,7 +203,6 @@ void SearchCompletionWindow::initUI()
     result_view_->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOff);
     result_view_->setFocusPolicy(Qt::NoFocus);
     result_view_->setMinimumHeight(kItemHeight);
-//    result_view_->adjustSize();
 
     search_button_ = new SearchButton(this);
     search_button_->setObjectName("SearchButton");
@@ -214,14 +210,6 @@ void SearchCompletionWindow::initUI()
     search_button_->setText(QObject::tr("Search \"%1\" in the full text"));
     search_button_->setGeometry(0, 7 * kItemHeight + 7, result_view_->width(), 34+7);
 
-//    QVBoxLayout *main_layout = new QVBoxLayout();
-//    main_layout->setContentsMargins(0, 0, 0, 0);
-//    main_layout->setSpacing(0);
-//    main_layout->setMargin(0);
-//    main_layout->addWidget(result_view_);
-//    main_layout->addWidget(search_button_);
-
-//    this->setLayout(main_layout);
     this->setContentsMargins(0, 0, 0, 0);
     this->setMinimumHeight(kItemHeight);
     this->setFixedWidth(350);

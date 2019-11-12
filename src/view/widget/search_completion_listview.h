@@ -26,6 +26,9 @@ public:
 
     QStandardItemModel* getErrorListSourceModel();
 
+protected:
+    void paintEvent(QPaintEvent *event) override;
+
 private:
 
     SearchCompletionDelegate *m_searchCompletionDelegate;

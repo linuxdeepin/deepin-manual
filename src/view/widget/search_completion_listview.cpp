@@ -1,6 +1,8 @@
 #include "search_completion_listview.h"
+#include "base/utils.h"
 
 #include <QMouseEvent>
+#include <QPainter>
 
 SearchCompletionListView::SearchCompletionListView(QWidget *parent)
     : DListView(parent)
@@ -40,21 +42,19 @@ void SearchCompletionListView::mousePressEvent(QMouseEvent *event)
 void SearchCompletionListView::setSelection(const QRect &rect, QItemSelectionModel::SelectionFlags command)
 {
     DListView::setSelection(rect, command);
+}
 
-    QPoint selectionPoint(rect.x(), rect.y());
-//    QModelIndex modelIndex = indexAt(selectionPoint);
+void SearchCompletionListView::paintEvent(QPaintEvent *event)
+{
+    Q_UNUSED(event)
 
-    if (m_bLeftMouse) {
+    QPainter painter(this->viewport());
+    painter.setRenderHint(QPainter::Antialiasing, true);
+    DPalette pa = ExApplicationHelper::instance()->palette(this);
+    QPainterPath painterPath;
 
-//        DFInstallErrorItemModel itemModel =
-//            qvariant_cast<DFInstallErrorItemModel>(m_errorListSourceModel->data(modelIndex));
-//        if (!itemModel.bSelectable) {
-//            return;
-//        }
+    painterPath.addRect(this->rect());
+    painter.fillPath(painterPath, QBrush(pa.color(DPalette::FrameBorder)));
 
-//        if (selectionPoint.x() < FTM_ERROR_ITEM_FONTNAME_LEFT) {
-
-//            emit onClickErrorListItem(modelIndex);
-//        }
-    }
+    DListView::paintEvent(event);
 }

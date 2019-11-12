@@ -247,7 +247,7 @@ static QColor light_dpalette[DPalette::NColorTypes] {
 
 static QColor dark_dpalette[DPalette::NColorTypes] {
     QColor(),                                       //NoType
-    QColor(25, 25, 25, CAST_INT(0.5 * 255)),        //ItemBackground
+    QColor(25, 25, 25, CAST_INT(0 * 255)),        //ItemBackground
     QColor("#C0C6D4"),                              //TextTitle
     QColor("#6D7C88"),                              //TextTips
     QColor("#FF5736"),                              //TextWarning
