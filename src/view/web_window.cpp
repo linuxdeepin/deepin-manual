@@ -247,6 +247,8 @@ void WebWindow::onSearchButtonClicked()
     // Show search page.
     web_view_->page()->runJavaScript(
         QString("openSearchPage('%1')").arg(keyword));
+
+    completion_window_->hide();
 }
 
 void WebWindow::onSearchResultClicked(const SearchAnchorResult &result)

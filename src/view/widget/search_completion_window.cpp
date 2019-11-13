@@ -155,7 +155,7 @@ void SearchCompletionWindow::setSearchAnchorResult(const SearchAnchorResultList 
 
 void SearchCompletionWindow::initConnections()
 {
-    connect(result_view_, &DListView::activated,
+    connect(result_view_, &SearchCompletionListView::onClickSearchCompletionItem,
             this, &SearchCompletionWindow::onResultListClicked);
     connect(result_view_, &DListView::entered,
             this, &SearchCompletionWindow::onResultListEntered);
@@ -228,6 +228,8 @@ void SearchCompletionWindow::onResultListClicked(const QModelIndex &index)
         // Simulate button click event.
         emit this->searchButtonClicked();
     }
+
+    this->hide();
 }
 
 void SearchCompletionWindow::onSearchButtonEntered()

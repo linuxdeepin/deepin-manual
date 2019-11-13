@@ -42,6 +42,13 @@ void SearchCompletionListView::mousePressEvent(QMouseEvent *event)
 void SearchCompletionListView::setSelection(const QRect &rect, QItemSelectionModel::SelectionFlags command)
 {
     DListView::setSelection(rect, command);
+
+    QPoint clickPoint(rect.x(), rect.y());
+    QModelIndex modelIndex = indexAt(clickPoint);
+
+    if (m_bLeftMouse) {
+        emit onClickSearchCompletionItem(modelIndex);
+    }
 }
 
 void SearchCompletionListView::paintEvent(QPaintEvent *event)
