@@ -41,81 +41,30 @@
 
 ![1|播放视频界面](jpg/playmovie.png)
 
-<table class="block1">
-    <tbody>
-        <tr>
-            <td>1</td>
-            <td width="60px">播放窗口</td>
-            <td>显示视频内容，当鼠标指针移入播放窗口后将显示视频信息和功能图标，当鼠标移出播放窗口或无操作时将隐藏视频信息和功能图标。播放窗口为无框模式，您可以任意拖拽播放窗口，手动调节播放窗口的大小。</td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>进度条</td>
-            <td>显示视频播放进度，拖拽进度条可以改变视频播放进度。将鼠标指针置于进度条上，进度条将智能加粗并显示视频预览窗口。</td>
-        </tr>
-         <tr>
-            <td>3</td>
-            <td>时间显示</td>
-            <td>显示当前播放视频的时间总长和已经播放的时间信息。</td>
-        </tr>
-         <tr>
-            <td>4</td>
-            <td>预览窗口</td>
-            <td>显示视频内容，您可以通过预览窗口查看某一时间点的视频内容。</td>
-        </tr>
-         <tr>
-            <td>5</td>
-            <td>视频标题</td>
-            <td>显示正在播放的视频名称。</td>
-        </tr>
-    </tbody>
+|      |          |                                                              |
+| ---- | -------- | ------------------------------------------------------------ |
+| 1    | 播放窗口 | 显示视频内容，当鼠标指针移入播放窗口后将显示视频信息和功能图标，当鼠标移出播放窗口或无操作时将隐藏视频信息和功能图标。播放窗口为无框模式，您可以任意拖拽播放窗口，手动调节播放窗口的大小。 |
+| 2    | 时间显示 | 显示当前播放视频的时间总长和已经播放的时间信息。             |
+| 3    | 进度条   | 显示视频播放进度，拖拽进度条可以改变视频播放进度。将鼠标指针置于进度条上，进度条将智能加粗并显示视频预览窗口。 |
+| 4    | 缩略图   | 显示视频内容，您可以通过缩略图查看某一时间点的视频内容。     |
+| 5    | 视频标题 | 显示正在播放的视频名称。                                     |
 
-</table>
+
 
 > ![notes](icon/notes.svg) ：当鼠标置于进度条上时，默认显示预览窗口，如果您不需要预览显示，您可以进入设置中去更改，具体操作请参阅 [基础设置](#基础设置)。
 
 ### 图标介绍
 
-<table class="block1">
-     <tbody>
-     <tr>
-            <td><img src="icon/last_normal.svg" class="inline" /></td>
-            <td>播放上一个影片</td>
-            <td><img src="icon/next_normal.svg" class="inline" /></td>
-            <td>播放下一个影片</td>
-         </tr>
-         <tr>
-            <td><img src="icon/play_normal.svg" class="inline" /></td>
-            <td>开始播放影片</td>
-            <td><img src="icon/suspend_normal.svg" class="inline" /></td>
-            <td>暂停播放影片</td>
-        </tr>
-        <tr>
-            <td><img src="icon/volume_normal.svg" class="inline" /></td>
-            <td>调节音量</td>
-            <td><img src="icon/zoom in_normal.svg" class="inline" /></td>
-            <td>全屏播放</td>
-        </tr>
-        <tr>
-            <td><img src="icon/episodes_normal.svg" class="inline" /></td>
-            <td>呼出/隐藏播放列表</td>
-            <td><img src="icon/menu.svg" class="inline" /></td>
-            <td>主菜单</td>
-        </tr>
-        <tr>
-            <td><img src="icon/mix.svg" class="inline" /></td>
-            <td>最小化按钮</td>
-            <td><img src="icon/max.svg" class="inline" /></td>
-            <td>最大化按钮</td>
-        </tr>
-        <tr>
-            <td><img src="icon/close.svg" class="inline" /></td>
-            <td>关闭按钮</td>
-            <td></td>
-            <td></td>
-        </tr>
-    </tbody>
-</table>
+|                                                       |                   |                                                      |                |
+| ----------------------------------------------------- | ----------------- | ---------------------------------------------------- | -------------- |
+| <img src="icon/last_normal.svg" class="inline" />     | 播放上一个影片    | <img src="icon/next_normal.svg" class="inline" />    | 播放下一个影片 |
+| <img src="icon/play_normal.svg" class="inline" />     | 开始播放影片      | <img src="icon/suspend_normal.svg" class="inline" /> | 暂停播放影片   |
+| <img src="icon/zoom in_normal.svg" class="inline" />  | 全屏播放          | <img src="icon/volume_normal.svg" class="inline" />  | 调节音量       |
+| <img src="icon/episodes_normal.svg" class="inline" /> | 呼出/隐藏播放列表 | <img src="icon/menu.svg" class="inline" />           | 主菜单         |
+| <img src="icon/mix.svg" class="inline" />             | 最小化按钮        | <img src="icon/max.svg" class="inline" />            | 最大化按钮     |
+| <img src="icon/close.svg" class="inline" />           | 关闭按钮          |                                                      |                |
+
+
 
 ### 播放影片
 
@@ -152,7 +101,7 @@
 在影院界面上，单击鼠标右键：
 - 选择 **全屏**，将播放窗口调整成全屏。
 - 选择 **迷你模式**，将播放窗口调整成迷你模式。
-- 选择 **置顶**，将播放窗口置顶到桌面上方。
+- 选择 **置顶窗口**，将播放窗口置顶到桌面上方。
 - 您也可以使用鼠标拖拽窗口边缘，自由调整窗口大小。
 
 >![notes](icon/notes.svg) ：您可以在播放窗口上双击鼠标，播放窗口将在 **全屏/正常窗口** 之间切换。
@@ -211,8 +160,7 @@
 1. 在影院界面上，单击鼠标右键。
 2. 选择 **电影信息**，可以查看影片的文件类型、分辨率、文件大小、媒体时长、文件路径。
 
-![1|info](jpg/info.jpg)
-
+![1|info](jpg/info.png)
 
 
 ## 列表管理
@@ -222,31 +170,34 @@
 ### 添加影片
 
 您可以向播放列表中添加影片：
-- 单击鼠标右键或打开![menu](icon/icon_menu.svg)，选择 **打开文件/打开文件夹/打开URL/播放光盘** 来添加影片到播放列表。
+- 单击鼠标右键，选择 **打开文件/打开文件夹/打开URL/播放光盘**  或打开![menu](icon/icon_menu.svg) > **打开文件/打开文件夹**，来添加影片到播放列表。
 - 您也可以直接拖拽文件/文件夹到播放列表。
 
 ### 删除视频文件
 
-1. 在播放列表界面，将鼠标指针置于视频文件上。
-2. 点击![关闭图标](icon/icon_close.svg)。
+1. 在影院界面，点击 ![movie](icon/episodes_normal.svg )。
+2. 进入播放列表窗口，将鼠标指针置于视频文件上。
+3. 右键单击 **从列表中删除**。
 
-![1|delete](jpg/delete.jpg)
+![1|delete](jpg/run.png)
 
-
+![tips](icon/tips.svg)： 在播放列表界面，将鼠标指针置于视频文件上，点击![关闭图标](icon/close.svg) 删除视频文件。
 
 ### 清空播放列表
 
-1. 在播放列表界面，点击鼠标右键。
-2. 点击 **清空播放列表**。
+1. 在影院界面，点击 ![movie](icon/episodes_normal.svg )。
+2. 进入播放列表窗口，将鼠标指针置于视频文件上。
+3. 右键单击 **清空播放列表**。
 
-![1|clear](jpg/clear.jpg)
+![1|clear](jpg/run.png)
 
 ### 在文件管理器中显示
 
-1. 在播放列表界面，右键单击您想查看的影片。
-2. 点击 **打开所在位置**，将自动跳转到文件管理器界面并显示到当前文件位置。
+1. 在影院界面，点击 ![movie](icon/episodes_normal.svg )。
+2. 进入播放列表窗口，将鼠标指针置于视频文件上。
+3. 右键单击 **在文件管理器中显示**，将自动跳转到文件管理器界面并显示到当前文件位置。
 
-![1|file](jpg/file.jpg)
+![1|file](jpg/run.png)
 
 ## 主菜单
 

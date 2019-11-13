@@ -26,8 +26,8 @@
 
 ### 关闭录屏
 
-- 录屏会在录制结束后自动退出。
 - 录屏会在截图结束后自动退出。
+- 录屏会在录制结束后自动退出。
 
 
 
@@ -39,7 +39,7 @@
 
 - 使用键盘上的 ![print](icon/Print.svg) 键来截取整个显示器的屏幕。
 - 使用各个应用软件如腾讯 QQ、Chrome 浏览器等软件的截图功能。
-- 使用专业的截图软件来截取屏幕，如UOS操作系统自带的录屏截图软件。
+- 使用专业的截图软件来截取屏幕，如UOS自带的录屏截图软件。
 
 #### 快捷键
 
@@ -50,138 +50,56 @@
 
 ![1|快捷键](jpg/shortcutkey.jpg)
 
-<table class="block2">
-    <caption>启动/截图</caption>
-    <tbody>
-        <tr>
-            <td>快速启动</td>
-            <td>Ctrl+Alt+A</td>
-        </tr>
-        <tr>
-            <td>全屏截图</td>
-            <td>Print</td>
-        </tr>
-        <tr>
-            <td>延时截图</td>
-            <td>Ctrl+Print</td>
-        </tr>
-        <tr>
-            <td>撤销</td>
-            <td>Ctrl+Z</td>
-        </tr>
-        <tr>
-            <td>退出</td>
-            <td>Esc</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-    </tbody>
-</table>
-<table class="block2">
-    <caption>绘制</caption>
-    <tbody>
-        <tr>
-            <td>矩形工具</td>
-            <td>Alt+1</td>
-        </tr>
-        <tr>
-            <td>椭圆工具</td>
-            <td>Alt+2</td>
-        </tr>
-        <tr>
-            <td>箭头工具</td>
-            <td>Alt+3</td>
-        </tr>
-        <tr>
-            <td>画笔工具</td>
-            <td>Alt+4</td>
-        </tr>
-        <tr>
-            <td>文本工具</td>
-            <td>Alt+5</td>
-        </tr>
-        <tr>
-            <td>颜色工具</td>
-            <td>Alt+6</td>
-        </tr>
-    </tbody>
-</table>
-<table class="block2">
-    <caption>调整大小</caption>
-    <tbody>
-        <tr>
-            <td>向上调大选区高度</td>
-            <td>Ctrl+Up</td>
-        </tr>
-        <tr>
-            <td>向下调大选区高度</td>
-            <td>Ctrl+Down</td>
-        </tr>
-        <tr>
-            <td>向左调大选区宽度</td>
-            <td>Ctrl+Left</td>
-        </tr>
-        <tr>
-            <td>向右调大选区宽度</td>
-            <td>Ctrl+Right</td>
-        </tr>
-        <tr>
-            <td>向上调小选区高度</td>
-            <td>Ctrl+Shift+Up</td>
-        </tr>
-        <tr>
-          <td>向下调小选区高度</td>
-          <td>Ctrl+Shift+Down</td>
-        </tr>
-        <tr>
-            <td>向左调小选区宽度</td>
-            <td>Ctrl+Shift+Left</td>
-        </tr>
-        <tr>
-          <td>向右调小选区宽度</td>
-          <td>Ctrl+Shift+Right</td>
-        </tr>
-    </tbody>
-</table>
-<table class="block2">
-    <caption>保存</caption>
-    <tbody>
-        <tr>
-            <td>保存</td>
-            <td>Ctrl+S</td>
-        </tr>
-        <tr>
-            <td>复制到剪贴板</td>
-            <td>Ctrl+C</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
-        <tr>
-            <td>&nbsp;</td>
-            <td>&nbsp;</td>
-        </tr>
-        <tr>
-          <td>&nbsp;</td>
-          <td>&nbsp;</td>
-        </tr>
-    </tbody>
-</table>
+
+
+启动/截图
+
+|          |            |
+| -------- | ---------- |
+| 快速启动 | Ctrl+Alt+A |
+| 全屏截图 | Print      |
+| 延时截图 | Ctrl+Print |
+| 撤销     | Ctrl+Z     |
+| 退出     | Esc        |
+
+
+
+绘制
+
+|          |       |
+| -------- | ----- |
+| 矩形工具 | Alt+1 |
+| 椭圆工具 | Alt+2 |
+| 箭头工具 | Alt+3 |
+| 画笔工具 | Alt+4 |
+| 文本工具 | Alt+5 |
+| 颜色工具 | Alt+6 |
+
+
+
+调整大小
+
+|                  |                  |
+| ---------------- | ---------------- |
+| 向上调大选区高度 | Ctrl+Up          |
+| 向下调大选区高度 | Ctrl+Down        |
+| 向左调大选区宽度 | Ctrl+Left        |
+| 向右调大选区宽度 | Ctrl+Right       |
+| 向上调小选区高度 | Ctrl+Shift+Up    |
+| 向下调小选区高度 | Ctrl+Shift+Down  |
+| 向左调小选区宽度 | Ctrl+Shift+Left  |
+| 向右调小选区宽度 | Ctrl+Shift+Right |
+
+
+
+保存
+
+|              |        |
+| ------------ | ------ |
+| 保存         | Ctrl+S |
+| 复制到剪贴板 | Ctrl+C |
+
+
 
 #### 选择截图区域
 
@@ -404,8 +322,8 @@
 
 录屏截图总共提供了4种颜色供您选择，您可以选择不同的颜色来进行不同的图形标记。
 
-1. 在截图区域下方的工具栏中，点击![颜色](icon/red.svg)或![颜色](icon/yellow.svg)或![颜色](icon/blue.svg)或![颜色](icon/green.svg)。
-2. 在工具栏展开面板中，选择一种颜色。
+1. 在截图区域出现的工具栏中，选择一种工具。
+2. 在工具栏展开的属性面板中，点击![颜色](icon/red.svg)或![颜色](icon/yellow.svg)或![颜色](icon/blue.svg)或![颜色](icon/green.svg)，选择一种颜色。
 
 #### 保存截图
 

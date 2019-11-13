@@ -53,53 +53,18 @@
 
 双击照片，或右键单击照片选择 **查看** ，进入看图界面。
 
-<table class="block1">
-    <caption>看图界面</caption>
-    <tbody>
-       <tr>
-            <td> ![previous](icon/previous.svg) </td>
-            <td>上一张</td>
-            <td>显示上一张照片。</td>
-        </tr>
-    	<tr>
-            <td> ![next](icon/next.svg) </td>
-            <td>下一张</td>
-            <td>显示下一张照片。</td>
-        </tr>
-    	<tr>
-            <td> ![adapt-image](icon/adapt-image.svg) </td>
-            <td>1:1显示</td>
-            <td>照片按照实际尺寸显示。</td>
-        </tr>
-    	<tr>
-            <td> ![adapt-screen](icon/adapt-screen.svg) </td>
-            <td>自适应</td>
-            <td>照片适应窗口尺寸显示。</td>
-        </tr>
+| 图标                                               | 名称    | 说明                         |
+| -------------------------------------------------- | ------- | ---------------------------- |
+| ![previous](icon/previous.svg)                     | 上一张  | 显示上一张照片。             |
+| ![next](icon/next.svg)                             | 下一张  | 显示下一张照片。             |
+| ![adapt-image](icon/adapt-image.svg)               | 1:1显示 | 照片按照实际尺寸显示。       |
+| ![adapt-screen](icon/adapt-screen.svg)             | 自适应  | 照片适应窗口尺寸显示。       |
+| ![collect](icon/collect.svg)                       | 收藏    | 将喜欢的照片添加到个人收藏。 |
+| ![clockwise-rotation](icon/clockwise-rotation.svg) | 顺时针  | 照片顺时针旋转90度。         |
+| ![contrarotate](icon/contrarotate.svg)             | 逆时针  | 照片逆时针旋转90度。         |
+| ![delete](icon/delete.svg)                         | 删除    | 删除当前照片。               |
 
-​    	<tr>
-            <td> ![collect](icon/collect.svg) </td>
-            <td>收藏</td>
-            <td>将喜欢的照片添加到个人收藏。</td>
-        </tr>
 
-​    	<tr>
-            <td> ![clockwise-rotation](icon/clockwise-rotation.svg) </td>
-            <td>顺时针</td>
-            <td>照片顺时针旋转90度。</td>
-        </tr>
-    	<tr>
-            <td> ![contrarotate](icon/contrarotate.svg) </td>
-            <td>逆时针</td>
-            <td>照片逆时针旋转90度。</td>
-        </tr>
-    	<tr>
-            <td> ![delete](icon/delete.svg) </td>
-            <td>删除</td>
-            <td>删除当前照片。</td>
-        </tr>
-    </tbody>
-</table>
 
 > ![tips](icon/tips.svg)：在1:1视图下，当照片大小超出窗口范围时，会出现导航窗口。拖动导航窗口中的方框，查看该区域的图片。点击右上角的 ![close_icon](icon/close_icon.svg) 关闭导航窗口，也可以右键单击照片，选择“隐藏导航窗口”。
 

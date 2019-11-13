@@ -27,6 +27,12 @@
 - 在任务栏右键单击 ![viewer](icon/deepin-image-viewer.svg) ，选择 **关闭所有** 来退出看图。
 - 在看图界面点击 ![icon_menu](icon/icon_menu.svg) ，选择 **退出** 来退出看图。
 
+### 查看快捷键
+
+在看图界面上，按下键盘上的按下键盘上的 ![Ctrl](icon/Ctrl.svg) + ![Shift](icon/Shift.svg) + ![QM](icon/QM.svg) 组合键来查看快捷键。
+
+![1|hotkey](jpg/hotkey.jpg)
+
 ## 图片查看
 
 ### 打开图片
@@ -39,51 +45,21 @@
 
 ![tips](icon/tips.svg)：您可以在控制中心中将看图设置为默认的图片查看程序，具体操作请参阅 [默认程序设置](dman:///dde#默认程序设置)。
 
+图片支持的格式BMP、ICO、JPG/JPE/JPEG、JNG、PCD、PCX、PNG、TGA、TIF/TIFF、PSD、XPM、DDS、GIF、SGI、J2K、JP2、PCT、RAW、WEBP、WDP、CR2、PEF、ARW、NEF、DNG、RAF、ORFSVG、MEF、MRW。
+
 ### 界面介绍
 
 ![1|main](jpg/main.jpg)
 
-
-<table class="block1">
-    <caption>主界面</caption>
-    <tbody>
-        <tr>
-            <td> ![previous](icon/previous.svg) </td>
-            <td>上一张</td>
-            <td>显示上一张图片。</td>
-        </tr>
-    	<tr>
-            <td> ![next](icon/next.svg) </td>
-            <td>下一张</td>
-            <td>显示下一张图片。</td>
-        </tr>
-    	<tr>
-            <td> ![adapt-image](icon/adapt-image.svg) </td>
-            <td>1:1视图</td>
-            <td>图片按照实际尺寸显示。</td>
-        </tr>
-    	<tr>
-            <td> ![adapt-screen](icon/adapt-screen.svg) </td>
-            <td>适应窗口</td>
-            <td>图片适应窗口尺寸显示。</td>
-        </tr>
-    	<tr>
-            <td> ![contrarotate](icon/contrarotate.svg) </td>
-            <td>逆时针</td>
-            <td>图片逆时针旋转90度。</td>
-        </tr>
-        <tr>
-            <td> ![clockwise-rotation](icon/clockwise-rotation.svg) </td>
-            <td>顺时针</td>
-            <td>图片顺时针旋转90度。</td>
-        </tr>
-    	<tr>
-            <td> ![delete](icon/delete.svg) </td>
-            <td>删除</td>
-            <td>删除当前图片。</td>
-        </tr>        
-    </tbody>
-</table>
+|                                                    |         |                        |
+| -------------------------------------------------- | ------- | ---------------------- |
+| ![previous](icon/previous.svg)                     | 上一张  | 显示上一张图片。       |
+| ![next](icon/next.svg)                             | 下一张  | 显示下一张图片。       |
+| ![adapt-image](icon/adapt-image.svg)               | 1:1显示 | 图片按照实际尺寸显示。 |
+| ![adapt-screen](icon/adapt-screen.svg)             | 自适应  | 图片适应窗口尺寸显示。 |
+| ![clockwise-rotation](icon/clockwise-rotation.svg) | 顺时针  | 图片顺时针旋转90度。   |
+| ![contrarotate](icon/contrarotate.svg)             | 逆时针  | 图片逆时针旋转90度。   |
+| ![delete](icon/delete.svg)                         | 删除    | 删除当前图片。         |
 
 > ![tips](icon/tips.svg)：在1:1视图下，当图片超出界面范围时，界面上会出现导航窗口。点击导航窗口的右上角关闭导航窗口，也可以在看看图界面上单击鼠标右键选择 **隐藏导航窗口/显示导航窗口**。
 

@@ -38,9 +38,13 @@
 
 1. 在语音记事本界面上点击 ![add](icon/circlebutton_add2.svg) 图标，创建新的记事本。
 
-  默认名称为 新记事（n），创建新的记事本后，您可以添加文字记事项或录音。
+
+  默认名称为 新记事（n），创建新的记事本后，可以开始记录语言及文字。
+
+> ![tips](icon/tips.svg)：当语音记事本中尚无记事本时，点击 **新建记事本**，创建一个新记事。
 
 ![0|new](jpg/note.jpg)
+
 
 ### 录制音频
 
@@ -49,7 +53,7 @@
 1. 在语音记事本界面上点击 ![record_normal](icon/record_normal.svg) 图标，开始录音。
 2. 点击 ![finish](icon/finish_normal.svg) 按钮完成录音。
 
-> ![tips](icon/tips.svg)：录音过程中您可以点击 ![pause](icon/pause_red_normal.svg) 按钮暂停录音，想继续录音时再点一下![record_normal](icon/record_normal.svg) 就可以了。
+> ![tips](icon/tips.svg)：录音过程中您可以点击 ![pause](icon/pause_red_normal.svg) 按钮暂停录音，想继续录音时再点一下 ![record_normal](icon/record_normal.svg) 就可以了。
 
 ![notes](icon/notes.svg)：录音的限制时长为10分钟。
 
@@ -63,10 +67,18 @@
 
 
 
-### 保存为PM3格式
+### 搜索
+
+1. 在语音记事本界面上，点击顶部的搜索框。
+
+2. 输入关键字，将实时显示搜索结果。
+
+   如果没有发现匹配的信息时，在列表中间显示 “无搜索结果“。
+
+### 保存为MP3格式
 
 1. 在语音记事本界面上，选择一个录音文件。
-2. 点击 ![0|three_dots](icon/more_normal.svg)图标，选择 **保存为PM3**。
+2. 点击 ![0|three_dots](icon/more_normal.svg)图标，选择 **保存为MP3**。
 
 ![0|save](jpg/toMP3.jpg)
 
@@ -77,6 +89,8 @@
 
 1. 在语音记事本界面上，选择一个录音文件。
 2. 点击 ![0|three_dots](icon/more_normal.svg)图标，选择 **语言转文字**。
+
+
 
 ### 添加文字记事项
 

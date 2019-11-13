@@ -2,7 +2,7 @@
 
 ## 概述
 
-备份还原工具是深度操作系统中的备份还原小工具，包括了磁盘克隆、磁盘备份、磁盘还原、分区克隆、分区备份、分区还原等功能。
+备份还原工具是一款具有磁盘克隆、磁盘备份、磁盘还原、分区克隆、分区备份、分区还原等功能的备份还原小工具。
 
 ## 操作介绍
 
@@ -13,7 +13,7 @@
 ### 克隆磁盘
 
 1.  在备份还原工具界面，选择 ![disk](icon/disk.svg) 为操作介质。
-2.  选择 ![clone_disk](icon/clone_disk.svg)。
+2.  选择 ![clone_disk](icon/clone_disk.svg) **克隆磁盘**。
 3.  点击 **下一步**。
 4.  分别选择要克隆的原始磁盘和被克隆的目标磁盘。
 5.  点击 **开始克隆**。
@@ -25,7 +25,7 @@
 ### 克隆分区
 
 1.  在备份还原工具界面，选择 ![partition](icon/partition.svg) 为操作介质。
-2.  选择 ![clone_partition](icon/clone_partition.svg)。
+2.  选择 ![clone_partition](icon/clone_partition.svg) **克隆分区**。
 3.  点击 **下一步**。
 4.  分别选择要克隆的原始分区和被克隆的目标分区。
 5.  点击 **开始克隆**。
@@ -37,7 +37,7 @@
 ### 备份磁盘
 
 1.  在备份还原工具界面，选择 ![disk](icon/disk.svg) 为操作介质。
-2.  选择 ![backup_disk](icon/backup_disk.svg)。
+2.  选择 ![backup_disk](icon/backup_disk.svg) **备份磁盘到镜像**。
 3.  点击 **下一步**。
 4.  点击 **请选择存储位置**。
 5.  选择好存储位置之后，点击 **保存** 回到备份界面。
@@ -49,7 +49,7 @@
 ### 备份分区
 
 1.  在备份还原工具界面，选择 ![partition](icon/partition.svg) 为操作介质。
-2.  选择 ![backup_partition](icon/backup_partition.svg)。
+2.  选择 ![backup_partition](icon/backup_partition.svg) **备份分区到镜像**。
 3.  点击 **下一步**。
 4.  点击 **请选择存储位置**。
 5.  选择好存储位置之后，点击 **保存** 回到备份界面。
@@ -61,7 +61,7 @@
 ### 还原磁盘
 
 1.  在备份还原工具界面，选择 ![disk](icon/disk.svg) 为操作介质。
-2.  选择 ![restore_to_disk](icon/restore_to_disk.svg)。
+2.  选择 ![restore_to_disk](icon/restore_to_disk.svg) **从镜像恢复到磁盘**。
 3.  点击 **下一步**。
 4.  点击 **选择镜像文件**。
 5.  选择好存储位置之后，点击 **打开** 回到还原界面。
@@ -73,7 +73,7 @@
 ### 还原分区
 
 1.  在备份还原工具界面，选择 ![partition](icon/partition.svg) 为操作介质。
-2.  选择 ![restore_to_partition](icon/restore_to_partition.svg)。
+2.  选择 ![restore_to_partition](icon/restore_to_partition.svg) **从镜像恢复到分区**。
 3.  点击 **下一步**。
 4.  点击 **选择镜像文件**。
 5.  选择好存储位置之后，点击 **打开** 回到还原界面。
@@ -89,9 +89,11 @@ Live系统所有的代码和数据都运行在内存中，所有磁盘和分区�
 
 ## 主菜单
 
+在主菜单中，您可以查看帮助手册，了解备份还原工具的更多信息。
+
 ### 帮助
 
-您可以点击帮助获取备份还原工具的帮助手册，通过帮助进一步让您了解和使用备份还原工具。
+查看帮助手册，通过帮助进一步让您了解和使用备份还原工具。
 
 1. 在备份还原工具界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **帮助**。
@@ -99,16 +101,12 @@ Live系统所有的代码和数据都运行在内存中，所有磁盘和分区�
 
 ### 关于
 
-您可以点击关于查看备份还原工具的版本介绍。
-
 1. 在备份还原工具界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **关于**。
 3. 查看关于备份还原工具的版本和介绍。
 
 
 ### 退出
-
-您可以进入菜单栏点击退出备份还原工具。
 
 1. 在备份还原工具界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **退出**。

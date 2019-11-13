@@ -139,7 +139,7 @@
 ![1|softwareinterface](jpg/softwareinterface.jpg)
 
 ### 催更
-点击 **催促更新** 以反馈该应用有新版本，以便深度团队尽快更新应用。
+点击 **催促更新** 以反馈该应用有新版本，以便尽快更新商店的应用。
 
 > ![notes](icon/notes.svg)：需登录后，点击生效。
 
