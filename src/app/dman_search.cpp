@@ -32,8 +32,11 @@ int main(int argc, char** argv) {
   QDBusConnection conn = QDBusConnection::sessionBus();
   if (!conn.registerService(dman::kManualSearchService) ||
       !conn.registerObject(dman::kManualSearchIface, &search_obj)) {
-    qCritical() << "Failed to register dbus service";
-    return 1;
+        qCritical() << "dman-search failed to register dbus service";
+        return 1;
+  }
+  else {
+      qDebug() << "dman-search register dbus service success!";
   }
 
   return app.exec();

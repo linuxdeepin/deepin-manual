@@ -24,37 +24,24 @@
 namespace dman {
 
 // Auto-update styles of registered widgets when theme name is reset.
-class ThemeManager : public QObject {
-  Q_OBJECT
-  Q_PROPERTY(QString theme READ theme WRITE setTheme)
+class ThemeManager : public QObject
+{
+    Q_OBJECT
 
- public:
-  // Get global instance of theme manager.
-  // NOTE: Only call this method in UI thread.
-  static ThemeManager* instance();
+public:
+    const QString &theme() const
+    {
+        return theme_;
+    }
 
-  const QString& theme() const {
-    return theme_;
-  }
+private:
+    explicit ThemeManager(QObject *parent = nullptr);
+    ~ThemeManager() override;
 
-  // Let theme manager manages stylesheet of |widget|.
-  void registerWidget(QWidget* widget);
+    QVector<QWidget *> widgets_;
 
- signals:
-  // Emitted when setTheme() is called and current theme updated.
-  void themeUpdated(const QString& theme);
-
- public slots:
-  void setTheme(const QString& theme);
-
- private:
-  explicit ThemeManager(QObject* parent = nullptr);
-  ~ThemeManager() override;
-
-  QVector<QWidget*> widgets_;
-
-  // Current theme name.
-  QString theme_;
+    // Current theme name.
+    QString theme_;
 };
 
 }  // namespace dman

@@ -104,8 +104,6 @@ void TitleBar::initUI()
     this->setLayout(main_layout);
 
     this->setAttribute(Qt::WA_TranslucentBackground, true);
-
-    ThemeManager::instance()->registerWidget(this);
 }
 
 

@@ -32,7 +32,7 @@ public:
     { return "com.deepin.dde.daemon.Launcher"; }
 
 public:
-    LauncherInterface(const QString &service, const QString &path, const QDBusConnection &connection, QObject *parent = 0);
+    LauncherInterface(const QString &service, const QString &path, const QDBusConnection &connection, QObject *parent = nullptr);
 
     ~LauncherInterface();
 

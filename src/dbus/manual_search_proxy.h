@@ -19,15 +19,24 @@
 #define DEEPIN_MANUAL_DBUS_MANUAL_SEARCH_PROXY_H
 
 #include <QObject>
+#include <QDBusConnection>
 
-class ManualSearchProxy : public QObject {
-  Q_OBJECT
- public:
-  explicit ManualSearchProxy(QObject* parent = nullptr);
-  ~ManualSearchProxy() override;
+class ManualSearchProxy : public QObject
+{
+    Q_OBJECT
+public:
+    explicit ManualSearchProxy(QObject *parent = nullptr);
+    ~ManualSearchProxy() override;
 
- public slots:
-  bool ManualExists(const QString& app_name);
+signals:
+    void Signal_ManualSearchByKeyword(const QString &keyword);
+
+public slots:
+    bool ManualExists(const QString &app_name);
+    void Slot_ManualSearchByKeyword(const QString &keyword);
+
+private:
+    QDBusConnection m_conn;
 };
 
 #endif  // DEEPIN_MANUAL_DBUS_MANUAL_SEARCH_PROXY_H

@@ -28,69 +28,18 @@ namespace dman {
 
 namespace {
 
-ThemeManager* g_theme_manager = nullptr;
-
-QString GetQssContent(const QString& theme, const QString& qss_filename) {
-  const QString filepath = QString(":/%1/%2.css").arg(theme).arg(qss_filename);
-  return ReadFile(filepath);
-}
 
 }  // namespace
 
-ThemeManager::ThemeManager(QObject* parent)
+ThemeManager::ThemeManager(QObject *parent)
     : QObject(parent),
-      widgets_(),
-      theme_( Dtk::Widget::DThemeManager::instance()->theme()) {
+      widgets_()
+{
 }
 
-ThemeManager::~ThemeManager() {
+ThemeManager::~ThemeManager()
+{
 
-}
-
-ThemeManager* ThemeManager::instance() {
-  if (g_theme_manager == nullptr) {
-    g_theme_manager = new ThemeManager();
-  }
-  Q_ASSERT(g_theme_manager != nullptr);
-  return g_theme_manager;
-}
-
-void ThemeManager::registerWidget(QWidget* widget) {
-  Q_ASSERT(widget != nullptr);
-  Q_ASSERT(!widgets_.contains(widget));
-
-  widgets_.append(widget);
-  QString qss_filename = widget->property("_d_QSSFilename").toString();
-  if (qss_filename.isEmpty()) {
-    qss_filename = widget->objectName();
-  }
-  if (qss_filename.isEmpty()) {
-    qss_filename = widget->metaObject()->className();
-  }
-
-  widget->style()->unpolish(widget);
-  widget->style()->polish(widget);
-
-  // TODO(Shaohua): Save base stylesheet.
-  widget->setStyleSheet(GetQssContent(theme_, qss_filename));
-  connect(this, &ThemeManager::themeUpdated, [=](const QString& theme) {
-    Q_ASSERT(widget != nullptr);
-    if (widget != nullptr) {
-      widget->setStyleSheet(GetQssContent(theme, qss_filename));
-      widget->style()->unpolish(widget);
-      widget->style()->polish(widget);
-    }
-  });
-}
-
-void ThemeManager::setTheme(const QString& theme) {
-  if (theme == theme_) {
-    return;
-  }
-
-  theme_ = theme;
-  Dtk::Widget::DThemeManager::instance()->setTheme(theme_);
-  emit this->themeUpdated(theme_);
 }
 
 }  // namespace dman

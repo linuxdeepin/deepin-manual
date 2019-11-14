@@ -21,6 +21,7 @@
 #include "controller/search_result.h"
 
 #include <QTimer>
+#include <QtDBus/QtDBus>
 
 #include <DMainWindow>
 #include <DButtonBox>
@@ -79,6 +80,7 @@ private:
     void initConnections();
     void initUI();
     void initShortcuts();
+    void initDBus();
 
     QString app_name_;
     SearchManager *search_manager_ = nullptr;
@@ -99,6 +101,7 @@ private:
 private slots:
     void onSearchEditFocusOut();
     void onSearchButtonClicked();
+    void onSearchContentByKeyword(const QString &keyword);
     void onSearchResultClicked(const SearchAnchorResult &result);
     void onSearchAnchorResult(const QString &keyword,
                               const SearchAnchorResultList &result);
@@ -106,6 +109,8 @@ private slots:
     void onSearchTextChangedDelay();
     void onTitleBarEntered();
     void onWebPageLoadFinished(bool ok);
+
+    void Slot_ManualSearchByKeyword(const QString &data);
 };
 
 }  // namespace dman

@@ -66,7 +66,6 @@ int main(int argc, char **argv)
         app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings, true);
     }
 
-//  app.setTheme("light");
     app.setAttribute(Qt::AA_EnableHighDpiScaling, true);
     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
     app.setWindowIcon(QIcon::fromTheme("deepin-manual"));

@@ -36,7 +36,7 @@ signals:
  public slots:
   QString getSystemManualDir() const {
     return DMAN_MANUAL_DIR;
-  };
+  }
 
   QStringList getSystemManualList();
 

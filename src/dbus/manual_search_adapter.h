@@ -36,8 +36,14 @@ class ManualSearchAdapter: public QDBusAbstractAdaptor
 "      <arg direction=\"in\" type=\"s\"/>\n"
 "      <arg direction=\"out\" type=\"b\"/>\n"
 "    </method>\n"
+"    <signal name=\"Signal_ManualSearchByKeyword\">\n"
+"      <arg direction=\"out\" type=\"s\" name=\"data\"/>\n"
+"    </signal>\n"
+"    <method name=\"Slot_ManualSearchByKeyword\">\n"
+"      <arg direction=\"in\" type=\"s\" name=\"data\"/>\n"
+"    </method>\n"
 "  </interface>\n"
-        "")
+"")
 public:
     ManualSearchAdapter(QObject *parent);
     virtual ~ManualSearchAdapter();
@@ -45,7 +51,10 @@ public:
 public: // PROPERTIES
 public Q_SLOTS: // METHODS
     bool ManualExists(const QString &in0);
+    void Slot_ManualSearchByKeyword(const QString &data);
+
 Q_SIGNALS: // SIGNALS
+    void Signal_ManualSearchByKeyword(const QString &data);
 };
 
 #endif

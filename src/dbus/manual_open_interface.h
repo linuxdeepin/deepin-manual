@@ -31,7 +31,7 @@ public:
     { return "com.deepin.Manual.Open"; }
 
 public:
-    ManualOpenInterface(const QString &service, const QString &path, const QDBusConnection &connection, QObject *parent = 0);
+    ManualOpenInterface(const QString &service, const QString &path, const QDBusConnection &connection, QObject *parent = nullptr);
 
     ~ManualOpenInterface();
 
