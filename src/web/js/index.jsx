@@ -59,13 +59,13 @@ export default class Index extends Component {
       'deepin-voice-note',
       'deepin-compressor',
       'deepin-album',
-      // 'deepin-reader',
+      'deepin-reader',
       'deepin-editor',
       'dde-calendar',
       'deepin-draw',
       'dde-file-manager',
-      // 'dde-log-viewer',
       'dde-devicemanager',
+      // 'dde-log-viewer',
       'deepin-appstore',
       'deepin-system-monitor',
       'deepin-terminal',
@@ -74,17 +74,14 @@ export default class Index extends Component {
       'deepin-image-viewer',
       'deepin-screen-recorder',
       'deepin-voice-recorder',
-      'deepin-cloud-print',
-      'deepin-cloud-scan',
       'deepin-calculator',
-      'deepin-repair-tools',
       'deepin-clone',
+      'deepin-repair-tools',
+      'deepin-picker',
       'deepin-graphics-driver-manager',
       'deepin-deb-installer',
       'deepin-font-manager',
-      'deepin-presentation-assistant',
-      'deepin-boot-maker',
-      'deepin-remote-assistance'
+      'deepin-boot-maker'
     ];
     this.state = {
       sequence,
@@ -106,7 +103,7 @@ export default class Index extends Component {
       .focus();
   }
   render() {
-    let sysSoft = ['dde','dde-control-center'].filter(
+    let sysSoft = ['dde'].filter(
       appName => this.state.appList.indexOf(appName) != -1
     );
     let appSoft = this.state.sequence.filter(
