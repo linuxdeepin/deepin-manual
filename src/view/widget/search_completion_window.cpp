@@ -50,10 +50,24 @@ SearchCompletionWindow::~SearchCompletionWindow()
 
 void SearchCompletionWindow::autoResize()
 {
-    result_view_->setFixedHeight(7 * kItemHeight + 7);
+    int rowCount = result_view_->model()->rowCount();
+
+    int resultViewHeight = kItemHeight;
+    if (rowCount > 0 && rowCount < 7) {
+        resultViewHeight = rowCount * kItemHeight + 7;
+        result_view_->setFixedHeight(resultViewHeight);
+        this->setFixedHeight(resultViewHeight + kItemHeight + 7);
+        search_button_->setGeometry(0, resultViewHeight, result_view_->width(), kItemHeight+7);
+    }
+    else {
+        resultViewHeight = 7 * kItemHeight + 7;
+        result_view_->setFixedHeight(7 * kItemHeight + 7);
+        this->setFixedHeight(resultViewHeight + kItemHeight + 7);
+        search_button_->setGeometry(0, resultViewHeight, result_view_->width(), kItemHeight+7);
+    }
+
     result_view_->setFixedWidth(this->width());
     search_button_->setFixedWidth(this->width());
-    this->setFixedHeight(result_view_->height() + kItemHeight + 7);
     result_view_->setVisible(search_compeletion_model_->rowCount() > 0);
 }
 
