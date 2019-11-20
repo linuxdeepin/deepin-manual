@@ -46,6 +46,7 @@
 #include <DTitlebar>
 #include <DButtonBox>
 #include <DApplicationHelper>
+#include <DPlatformWindowHandle>
 
 DWIDGET_USE_NAMESPACE
 
@@ -248,6 +249,9 @@ void WebWindow::initUI()
     channel->registerObject("titleBar", title_bar_proxy_);
 
     this->setFocusPolicy(Qt::ClickFocus);
+
+    DPlatformWindowHandle handle(this);
+    handle.setBorderWidth(0);
 }
 
 void WebWindow::initShortcuts()
