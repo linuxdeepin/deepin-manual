@@ -1,4 +1,4 @@
-# Monitor del sistema de Deepin |../common/monitor.svg|
+# Monitor del sistema de Deepin |../common/deepin-system-monitor.svg|
 
 ## Vistazo
 

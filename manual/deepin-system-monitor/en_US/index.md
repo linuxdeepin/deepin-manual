@@ -1,4 +1,4 @@
-# Deepin System Monitor |../common/monitor.svg|
+# Deepin System Monitor |../common/deepin-system-monitor.svg|
 
 ## Overview
 

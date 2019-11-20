@@ -20,13 +20,15 @@
 
 #include "controller/search_result.h"
 
+#include <qcef_web_page.h>
+#include <qcef_web_settings.h>
+#include <qcef_web_view.h>
+
 #include <QTimer>
 #include <QtDBus/QtDBus>
 
 #include <DMainWindow>
 #include <DButtonBox>
-
-class QCefWebView;
 
 namespace dman {
 
@@ -70,17 +72,22 @@ public slots:
     void setAppName(const QString &app_name);
     void slot_ButtonHide();
     void slot_ButtonShow();
+
 protected:
     void closeEvent(QCloseEvent *event) override;
 
     // Update width of title bar when main window is resized.
     void resizeEvent(QResizeEvent *event) override;
 
+//    void focusInEvent(QFocusEvent *event) override;
+//    void focusOutEvent(QFocusEvent *event) override;
+
 private:
     void initConnections();
     void initUI();
     void initShortcuts();
     void initDBus();
+    void showAllShortcut();
 
     QString app_name_;
     SearchManager *search_manager_ = nullptr;
@@ -97,6 +104,10 @@ private:
     QTimer search_timer_;
     Dtk::Widget::DButtonBox *buttonBox;
     SearchEdit *search_edit_;
+    QPoint start_point_;
+    int start_drag_x;
+    int titlebar_active_count;
+    int max_active_count;
 
 private slots:
     void onSearchEditFocusOut();
@@ -111,6 +122,8 @@ private slots:
     void onWebPageLoadFinished(bool ok);
 
     void Slot_ManualSearchByKeyword(const QString &data);
+    void slot_onPressWindow(Qt::MouseButton button);
+    void slot_onMoveWindow(Qt::MouseButton button);
 };
 
 }  // namespace dman

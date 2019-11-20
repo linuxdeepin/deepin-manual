@@ -53,8 +53,6 @@ void SearchCompletionListView::setSelection(const QRect &rect, QItemSelectionMod
 
 void SearchCompletionListView::paintEvent(QPaintEvent *event)
 {
-    Q_UNUSED(event)
-
     QPainter painter(this->viewport());
     painter.setRenderHint(QPainter::Antialiasing, true);
     DPalette pa = ExApplicationHelper::instance()->palette(this);

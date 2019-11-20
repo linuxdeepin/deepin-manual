@@ -32,10 +32,9 @@
 #include "view/widget/search_edit.h"
 
 #include <qcef_web_page.h>
-#include <qcef_web_settings.h>
-#include <qcef_web_view.h>
 
 #include <QShortcut>
+#include <QWindow>
 #include <QApplication>
 #include <QDebug>
 #include <QFileInfo>
@@ -60,12 +59,14 @@ const int kSearchDelay = 200;
 }  // namespace
 
 WebWindow::WebWindow(SearchManager *search_manager, QWidget *parent)
-    : Dtk::Widget::DMainWindow(parent),
-      app_name_(),
-      search_manager_(search_manager),
-      search_proxy_(new SearchProxy(this)),
-      theme_proxy_(new ThemeProxy(this)),
-      search_timer_()
+    : Dtk::Widget::DMainWindow(parent)
+    , app_name_()
+    , search_manager_(search_manager)
+    , search_proxy_(new SearchProxy(this))
+    , theme_proxy_(new ThemeProxy(this))
+    , search_timer_()
+    , titlebar_active_count(0)
+    , max_active_count(120)
 {
 
     search_timer_.setSingleShot(true);
@@ -75,7 +76,6 @@ WebWindow::WebWindow(SearchManager *search_manager, QWidget *parent)
     this->initDBus();
 
     qApp->installEventFilter(this);
-
 }
 
 WebWindow::~WebWindow()
@@ -253,23 +253,89 @@ void WebWindow::initUI()
 void WebWindow::initShortcuts()
 {
     qDebug() << "init Short cuts" << endl;
-    //设置前进快捷键
-    QShortcut *m_scBack = new QShortcut(QKeySequence(Qt::Key_Left), this);
-    m_scBack->setContext(Qt::ApplicationShortcut);
-    m_scBack->setAutoRepeat(false);
-    connect(m_scBack, &QShortcut::activated, this, [this]{
-        qDebug() << "back" << endl;
-        title_bar_proxy_->backwardButtonClicked();
+
+    //设置窗口大小切换快捷键
+    QShortcut *scWndReize = new QShortcut(this);
+    scWndReize->setKey(tr("Ctrl+Alt+F"));
+    scWndReize->setContext(Qt::ApplicationShortcut);
+    scWndReize->setAutoRepeat(false);
+    connect(scWndReize, &QShortcut::activated, this, [this]{
+        if (this->windowState() & Qt::WindowMaximized) {
+            this->showNormal();
+        } else if (this->windowState() == Qt::WindowNoState){
+            this->showMaximized();
+        }
     });
 
-    //设置后退快捷键
-    QShortcut *m_scForward = new QShortcut(QKeySequence(Qt::Key_Right), this);
-    m_scForward->setContext(Qt::ApplicationShortcut);
-    m_scForward->setAutoRepeat(false);
-    connect(m_scForward, &QShortcut::activated, this, [this]{
-        qDebug() << "forward" << endl;
-        title_bar_proxy_->forwardButtonClicked();
+    //设置搜索快捷键
+    QShortcut *scSearch = new QShortcut(this);
+    scSearch->setKey(tr("Ctrl+F"));
+    scSearch->setContext(Qt::ApplicationShortcut);
+    scSearch->setAutoRepeat(false);
+    connect(scSearch, &QShortcut::activated, this, [this]{
+        qDebug() << "search" << endl;
+        search_edit_->lineEdit()->setFocus(Qt::MouseFocusReason);
     });
+
+    //显示快捷键预览
+    QShortcut *scShowShortcuts = new QShortcut(this);
+    scShowShortcuts->setKey(QString("Ctrl+/"));
+    scShowShortcuts->setContext(Qt::ApplicationShortcut);
+    scShowShortcuts->setAutoRepeat(false);
+    connect(scShowShortcuts, &QShortcut::activated, this, [this]{
+        qDebug() << "show short cuts" << endl;
+        this->showAllShortcut();
+    });
+}
+
+void WebWindow::showAllShortcut()
+{
+    QRect rect = window()->geometry();
+    QPoint pos(rect.x() + rect.width() / 2,
+               rect.y() + rect.height() / 2);
+
+    QJsonObject shortcutObj;
+    QJsonArray jsonGroups;
+
+    QMap<QString,QString> shortcutKeymap = {
+        {"Resize window:",     "Ctrl+Alt+F"},
+        {"Close window:",      "Alt+F4"},
+        {"Show shortcut:",     "Ctrl+Shift+/"},
+        {"Search:",            "Ctrl+F"},
+        {"Select all:",        "Ctrl+A"},
+        {"Copy:",              "Ctrl+C"},
+        {"Paste:",             "Ctrl+V"},
+        {"Cut:",               "Ctrl+X"},
+        {"Backward character:",  "Backspace"}
+    };
+
+    QJsonObject fontMgrJsonGroup;
+    fontMgrJsonGroup.insert("groupName", tr("Manual"));
+    QJsonArray fontJsonItems;
+
+    for (QMap<QString,QString>::iterator it=shortcutKeymap.begin();
+         it != shortcutKeymap.end(); it++) {
+        QJsonObject jsonItem;
+        jsonItem.insert("name", QObject::tr(it.key().toUtf8().data()));
+        jsonItem.insert("value", it.value().replace("Meta", "Super"));
+        fontJsonItems.append(jsonItem);
+    }
+    fontMgrJsonGroup.insert("groupItems", fontJsonItems);
+    jsonGroups.append(fontMgrJsonGroup);
+
+    shortcutObj.insert("shortcut", jsonGroups);
+
+    QJsonDocument doc(shortcutObj);
+
+    QStringList shortcutString;
+    QString param1 = "-j=" + QString(doc.toJson().data());
+    QString param2 = "-p=" + QString::number(pos.x()) + "," + QString::number(pos.y());
+    shortcutString << param1 << param2;
+
+    QProcess* shortcutViewProcess = new QProcess();
+    shortcutViewProcess->startDetached("deepin-shortcut-viewer", shortcutString);
+
+    connect(shortcutViewProcess, SIGNAL(finished(int)), shortcutViewProcess, SLOT(deleteLater()));
 }
 
 void WebWindow::resizeEvent(QResizeEvent *event)
@@ -398,6 +464,34 @@ void WebWindow::onSearchAnchorResult(const QString &keyword,
 
 bool WebWindow::eventFilter(QObject *watched, QEvent *event)
 {
+    if (event->type() == QEvent::MouseButtonPress) {
+        QWindow *window = qobject_cast<QWindow*>(watched);
+        if (window && window->winId() == titlebar()->winId()) {
+            QPoint mousePos = QCursor::pos();
+            QPoint currWinPos = this->pos();
+            start_drag_x = currWinPos.x()-mousePos.x();
+        }
+    }
+
+    if (event->type() == QEvent::FocusOut && titlebar_active_count < max_active_count)
+    {
+        QWidget* child = titlebar();
+
+        child->grabKeyboard();
+        child->releaseKeyboard();
+
+        QWindow *window = qobject_cast<QWindow*>(watched);
+        if (window && window->winId() == titlebar()->winId()) {
+            window->requestActivate();
+        }
+        event->ignore();
+
+        ++titlebar_active_count;
+
+        return true;
+    }
+
+
     // Filters mouse press event only.
     if (event->type() == QEvent::MouseButtonPress &&
             qApp->activeWindow() == this &&
@@ -429,12 +523,56 @@ void WebWindow::slot_ButtonHide()
 {
     qDebug() << "slot_ButtonHide";
     buttonBox->hide();
+
+    start_drag_x = 0;
+    connect(titlebar(), SIGNAL(mouseMoving(Qt::MouseButton)), this, SLOT(slot_onMoveWindow(Qt::MouseButton)));
+}
+
+void WebWindow::slot_onPressWindow(Qt::MouseButton button)
+{
+    Q_UNUSED(button)
+}
+
+void WebWindow::slot_onMoveWindow(Qt::MouseButton button)
+{
+    Q_UNUSED(button)
+
+    QPoint mousePos = QCursor::pos();
+
+    QPoint currWinPos = this->pos();
+
+    if (0 == start_drag_x)
+    {
+        start_drag_x = currWinPos.x()-mousePos.x();
+    }
+    QPoint relativePos = mousePos;
+
+    relativePos = QPoint(relativePos.x()+(start_drag_x), relativePos.y()-30);
+    this->move(relativePos);
 }
 
 void WebWindow::slot_ButtonShow()
 {
     qDebug() << "slot_ButtonShow";
     buttonBox->show();
+
+    //设置前进快捷键
+    QShortcut *m_scBack = new QShortcut(QKeySequence(Qt::Key_Left), this);
+    m_scBack->setContext(Qt::ApplicationShortcut);
+    m_scBack->setAutoRepeat(false);
+    connect(m_scBack, &QShortcut::activated, this, [this]{
+        qDebug() << "back" << endl;
+        title_bar_proxy_->backwardButtonClicked();
+    });
+
+    //设置后退快捷键
+    QShortcut *m_scForward = new QShortcut(QKeySequence(Qt::Key_Right), this);
+    m_scForward->setContext(Qt::ApplicationShortcut);
+    m_scForward->setAutoRepeat(false);
+    connect(m_scForward, &QShortcut::activated, this, [this]{
+        qDebug() << "forward" << endl;
+        title_bar_proxy_->forwardButtonClicked();
+    });
 
     //这里这样做是为了让快捷键（左右键）能够生效
     titlebar()->grabKeyboard();

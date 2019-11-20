@@ -69,5 +69,50 @@
         <source>Search</source>
         <translation>搜索</translation>
     </message>
+    <message>
+        <location filename="../src/view/web_window.cpp" line="304"/>
+        <source>Resize window:</source>
+        <translation>窗口大小切换:</translation>
+    </message>
+    <message>
+        <location filename="../src/view/web_window.cpp" line="304"/>
+        <source>Close window:</source>
+        <translation>关闭应用:</translation>
+    </message>
+    <message>
+        <location filename="../src/view/web_window.cpp" line="304"/>
+        <source>Search:</source>
+        <translation>搜索:</translation>
+    </message>
+    <message>
+        <location filename="../src/view/web_window.cpp" line="304"/>
+        <source>Show shortcut:</source>
+        <translation>显示快捷键预览:</translation>
+    </message>
+    <message>
+        <location filename="../src/view/web_window.cpp" line="304"/>
+        <source>Select all:</source>
+        <translation>全选:</translation>
+    </message>
+    <message>
+        <location filename="../src/view/web_window.cpp" line="304"/>
+        <source>Copy:</source>
+        <translation>复制:</translation>
+    </message>
+    <message>
+        <location filename="../src/view/web_window.cpp" line="304"/>
+        <source>Paste:</source>
+        <translation>粘贴:</translation>
+    </message>
+    <message>
+        <location filename="../src/view/web_window.cpp" line="304"/>
+        <source>Cut:</source>
+        <translation>剪切:</translation>
+    </message>
+    <message>
+        <location filename="../src/view/web_window.cpp" line="304"/>
+        <source>Backward character:</source>
+        <translation>向前删除一个字符:</translation>
+    </message>
 </context>
 </TS>
