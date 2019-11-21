@@ -45,6 +45,30 @@ class TitleBarProxy;
 class SearchEdit;
 class DButtonBox;
 
+class MyCefWebView : public QCefWebView {
+
+    Q_OBJECT
+    Q_PROPERTY(QUrl url READ url WRITE setUrl)
+    Q_PROPERTY(bool autoZoom READ autoZoom WRITE setAutoZoom)
+
+public:
+    explicit MyCefWebView(QWidget* parent = nullptr);
+    ~MyCefWebView() override;
+    void saveTitleBar(QWidget *titlebar);
+    void handleRefresh(QWidget *titlebar);
+
+protected:
+    void showEvent(QShowEvent* event) override;
+
+    void resizeEvent(QResizeEvent* event) override;
+    void focusInEvent(QFocusEvent *event) override;
+    bool event(QEvent *event) override;
+    bool eventFilter(QObject *obj, QEvent *event) override;
+
+private:
+    QWidget *m_titlebar;
+};
+
 class WebWindow : public Dtk::Widget::DMainWindow
 {
     Q_OBJECT
@@ -61,6 +85,8 @@ public:
     }
 
     bool eventFilter(QObject *watched, QEvent *event) override;
+
+    static void showAllShortcut();
 
     Dtk::Widget::DButtonBoxButton *m_backButton;
     Dtk::Widget::DButtonBoxButton *m_forwardButton;
@@ -79,15 +105,11 @@ protected:
     // Update width of title bar when main window is resized.
     void resizeEvent(QResizeEvent *event) override;
 
-//    void focusInEvent(QFocusEvent *event) override;
-//    void focusOutEvent(QFocusEvent *event) override;
-
 private:
     void initConnections();
     void initUI();
     void initShortcuts();
     void initDBus();
-    void showAllShortcut();
 
     QString app_name_;
     SearchManager *search_manager_ = nullptr;
@@ -100,7 +122,7 @@ private:
     ManualProxy *manual_proxy_ = nullptr;
     TitleBar *title_bar_ = nullptr;
     TitleBarProxy *title_bar_proxy_ = nullptr;
-    QCefWebView *web_view_ = nullptr;
+    MyCefWebView *web_view_ = nullptr;
     QTimer search_timer_;
     Dtk::Widget::DButtonBox *buttonBox;
     SearchEdit *search_edit_;

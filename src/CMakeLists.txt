@@ -37,7 +37,7 @@ if (CMAKE_BUILD_TYPE MATCHES Debug)
   # -fno-rtti, Disable real-time type information
   # -fno-exceptions Disable exceptions
   # -fsanitize=address Enable memory sanitize plugin
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -Werror -Wextra -fno-exceptions")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -Werror -Wextra -fno-rtti -fno-exceptions")
   # -fsanitize=address, Enable memory address sanitizer.
   # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
   # -fsanitize=leak, Enable memory leak sanitizer.

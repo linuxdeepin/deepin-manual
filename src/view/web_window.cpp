@@ -58,6 +58,93 @@ const int kSearchDelay = 200;
 
 }  // namespace
 
+
+
+MyCefWebView::MyCefWebView(QWidget* parent)
+    : QCefWebView(parent)
+    , m_titlebar(nullptr)
+{
+    qApp->installEventFilter(this);
+
+    //显示快捷键预览
+    QShortcut *scShowShortcuts = new QShortcut(this);
+    scShowShortcuts->setKey(tr("Ctrl+/"));
+    scShowShortcuts->setContext(Qt::ApplicationShortcut);
+    scShowShortcuts->setAutoRepeat(false);
+    connect(scShowShortcuts, &QShortcut::activated, this, []{
+        WebWindow::showAllShortcut();
+    });
+}
+
+MyCefWebView::~MyCefWebView()
+{
+}
+
+void MyCefWebView::saveTitleBar(QWidget *titlebar)
+{
+    m_titlebar = titlebar;
+}
+
+void MyCefWebView::handleRefresh(QWidget *titlebar)
+{
+    if (titlebar && QString(titlebar->metaObject()->className()).contains("DTitlebar", Qt::CaseInsensitive))
+    {
+        QPoint mousePos = QCursor::pos();
+        if (!this->rect().contains(mousePos))
+        {
+            QWidget* child = m_titlebar;
+
+            child->grabKeyboard();
+            child->releaseKeyboard();
+        }
+
+        QWindow *window = qobject_cast<QWindow*>(titlebar);
+        if (window && window->winId() == m_titlebar->winId())
+        {
+            window->requestActivate();
+        }
+    }
+}
+
+void MyCefWebView::showEvent(QShowEvent* event)
+{
+    QCefWebView::showEvent(event);
+}
+
+void MyCefWebView::resizeEvent(QResizeEvent* event)
+{
+    QCefWebView::resizeEvent(event);
+}
+
+void MyCefWebView::focusInEvent(QFocusEvent *event)
+{
+    QCefWebView::focusInEvent(event);
+}
+
+bool MyCefWebView::event(QEvent *event)
+{
+    return QCefWebView::event(event);
+}
+
+bool MyCefWebView::eventFilter(QObject *watched, QEvent *event)
+{
+    static bool is_searchedit_focusin = false;
+    if (event->type() == QEvent::FocusIn && !is_searchedit_focusin)
+    {
+        handleRefresh(m_titlebar);
+    }
+
+    if (event->type() == QEvent::FocusIn)
+    {
+        if(QString(watched->metaObject()->className()).contains("QLineEdit"))
+        {
+            is_searchedit_focusin = true;
+        }
+    }
+
+    return QObject::eventFilter(watched, event);
+}
+
 WebWindow::WebWindow(SearchManager *search_manager, QWidget *parent)
     : Dtk::Widget::DMainWindow(parent)
     , app_name_()
@@ -228,7 +315,8 @@ void WebWindow::initUI()
     manual_proxy_ = new ManualProxy(this);
     connect(manual_proxy_, &ManualProxy::WidgetLower, this, &WebWindow::lower);
 
-    web_view_ = new QCefWebView();
+    web_view_ = new MyCefWebView();
+    web_view_->saveTitleBar(titlebar());
     web_view_->page()->setEventDelegate(new WebEventDelegate(this));
     this->setCentralWidget(web_view_);
 
@@ -280,15 +368,15 @@ void WebWindow::initShortcuts()
     scShowShortcuts->setKey(tr("Ctrl+Shift+/"));
     scShowShortcuts->setContext(Qt::ApplicationShortcut);
     scShowShortcuts->setAutoRepeat(false);
-    connect(scShowShortcuts, &QShortcut::activated, this, [this]{
+    connect(scShowShortcuts, &QShortcut::activated, this, []{
         qDebug() << "show short cuts" << endl;
-        this->showAllShortcut();
+        WebWindow::showAllShortcut();
     });
 }
 
 void WebWindow::showAllShortcut()
 {
-    QRect rect = window()->geometry();
+    QRect rect = qApp->activeWindow()->geometry();
     QPoint pos(rect.x() + rect.width() / 2,
                rect.y() + rect.height() / 2);
 
@@ -308,7 +396,7 @@ void WebWindow::showAllShortcut()
     };
 
     QJsonObject fontMgrJsonGroup;
-    fontMgrJsonGroup.insert("groupName", tr("Manual"));
+    fontMgrJsonGroup.insert("groupName", QObject::tr("Deepin Manual"));
     QJsonArray fontJsonItems;
 
     for (QMap<QString,QString>::iterator it=shortcutKeymap.begin();
