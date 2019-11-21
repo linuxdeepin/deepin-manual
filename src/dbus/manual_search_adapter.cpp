@@ -41,8 +41,8 @@ bool ManualSearchAdapter::ManualExists(const QString &in0)
     return out0;
 }
 
-void ManualSearchAdapter::Slot_ManualSearchByKeyword(const QString &data)
+void ManualSearchAdapter::Search(const QString &data)
 {
-    QMetaObject::invokeMethod(parent(), "Slot_ManualSearchByKeyword", Q_ARG(QString, data));
+    QMetaObject::invokeMethod(parent(), "Search", Q_ARG(QString, data));
 }
 

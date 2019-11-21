@@ -106,8 +106,6 @@ private:
     SearchEdit *search_edit_;
     QPoint start_point_;
     int start_drag_x;
-    int titlebar_active_count;
-    int max_active_count;
 
 private slots:
     void onSearchEditFocusOut();
@@ -122,7 +120,6 @@ private slots:
     void onWebPageLoadFinished(bool ok);
 
     void Slot_ManualSearchByKeyword(const QString &data);
-    void slot_onPressWindow(Qt::MouseButton button);
     void slot_onMoveWindow(Qt::MouseButton button);
 };
 

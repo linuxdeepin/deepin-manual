@@ -202,10 +202,10 @@ void SearchCompletionWindow::initUI()
     setBackgroundRole(QPalette::Background);
     setAutoFillBackground(false);
 
-    DPlatformWindowHandle handle(this);
-    int radius = 18;
-    handle.setWindowRadius(radius);
-    setContentsMargins(radius/2, 0, radius/2, 0);
+//    DPlatformWindowHandle handle(this);
+//    int radius = 18;
+//    handle.setWindowRadius(radius);
+//    setContentsMargins(radius/2, 0, radius/2, 0);
 
     result_view_ = new SearchCompletionListView(this);
 

@@ -29,11 +29,11 @@ public:
     ~ManualSearchProxy() override;
 
 signals:
-    void Signal_ManualSearchByKeyword(const QString &keyword);
+    void Signal_Search(const QString &keyword);
 
 public slots:
     bool ManualExists(const QString &app_name);
-    void Slot_ManualSearchByKeyword(const QString &keyword);
+    void Search(const QString &keyword);
 
 private:
     QDBusConnection m_conn;

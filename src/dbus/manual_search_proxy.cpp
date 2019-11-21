@@ -54,13 +54,13 @@ bool ManualSearchProxy::ManualExists(const QString &app_name)
     return manual_dir.exists(app_name);
 }
 
-void ManualSearchProxy::Slot_ManualSearchByKeyword(const QString &keyword)
+void ManualSearchProxy::Search(const QString &keyword)
 {
     qDebug() << "start send keyword:" << keyword;
     QDBusMessage msg = QDBusMessage::createSignal(
                             dman::kManualSearchIface + QString("Sender"),
                             dman::kManualSearchService + QString("Sender"),
-                            "Signal_ManualSearchByKeyword");
+                            "Signal_Search");
 
     msg << keyword;
 

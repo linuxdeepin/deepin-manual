@@ -58,8 +58,13 @@ int main(int argc, char **argv)
                 continue;
             }
 
+            QDir manualDir = QDir(DMAN_ORIG_MANUAL_DIR);
+            manualDir.cdUp();
+            qDebug() << manualDir.path();
+            QString searchIndexFilePath = QString("%1/%2/%3/%4").arg(manualDir.path()).arg("src").arg("web").arg("toSearchIndex.js");
+            qDebug() << searchIndexFilePath;
             QString out, err;
-            const QStringList cmd = {"./toSearchIndex.js", "-f", md_file};
+            const QStringList cmd = {searchIndexFilePath, "-f", md_file};
             const bool ok = dman::SpawnCmd("/usr/bin/node", cmd, out, err);
             if (!ok) {
                 qWarning() << err << ok << md_file;
