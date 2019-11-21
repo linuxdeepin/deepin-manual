@@ -98,7 +98,7 @@ void ImageViewer::open(const QString &filepath)
 
 void ImageViewer::initUI()
 {
-    img_label_ = new QLabel(this);
+    img_label_ = new DLabel(this);
     img_label_->setObjectName("ImageLabel");
 
     close_button_ = new DDialogCloseButton(this);

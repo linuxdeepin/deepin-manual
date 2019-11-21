@@ -159,7 +159,7 @@ void SearchButton::mousePressEvent(QMouseEvent *event)
 
 void SearchButton::mouseReleaseEvent(QMouseEvent *event)
 {
-    DWidget::mouseReleaseEvent(event);
+    QWidget::mouseReleaseEvent(event);
 
     emit pressed();
 }
