@@ -19,7 +19,7 @@
 #define DEEPIN_MANUAL_DBUS_DBUS_VARIANT_APP_INFO_H
 
 #include <QtDBus>
-#include <QDebug>
+#include <DLog>
 #include <QList>
 
 struct AppInfo {

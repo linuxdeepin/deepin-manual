@@ -17,7 +17,7 @@
 
 #include "view/image_viewer_proxy.h"
 
-#include <QDebug>
+#include <DLog>
 
 #include "view/widget/image_viewer.h"
 

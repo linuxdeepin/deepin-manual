@@ -17,7 +17,7 @@
 
 #include "controller/search_manager.h"
 
-#include <QDebug>
+#include <DLog>
 #include <QThread>
 
 #include "controller/search_db.h"

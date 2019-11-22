@@ -16,7 +16,7 @@
  */
 
 #include <QCoreApplication>
-#include <QDebug>
+#include <DLog>
 
 #include "controller/search_manager.h"
 

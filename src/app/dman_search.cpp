@@ -17,7 +17,7 @@
 
 #include <QCoreApplication>
 #include <QDBusConnection>
-#include <QDebug>
+#include <DLog>
 
 #include "dbus/dbus_consts.h"
 #include "dbus/manual_search_adapter.h"

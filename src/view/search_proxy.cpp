@@ -17,7 +17,7 @@
 
 #include "view/search_proxy.h"
 
-#include <QDebug>
+#include <DLog>
 
 #include "controller/search_manager.h"
 

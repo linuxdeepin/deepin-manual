@@ -21,7 +21,7 @@
  */
 
 #include <QCoreApplication>
-#include <QDebug>
+#include <DLog>
 #include <QDir>
 #include <QJsonArray>
 #include <QJsonDocument>

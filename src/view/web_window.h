@@ -55,6 +55,7 @@ public:
     explicit MyCefWebView(QWidget* parent = nullptr);
     ~MyCefWebView() override;
     void saveTitleBar(QWidget *titlebar);
+    void saveAppName(QString appName);
     void handleRefresh(QWidget *titlebar);
 
 protected:
@@ -67,6 +68,7 @@ protected:
 
 private:
     QWidget *m_titlebar;
+    QString m_appName;
 };
 
 class WebWindow : public Dtk::Widget::DMainWindow

@@ -18,7 +18,7 @@
 #include "view/theme_manager.h"
 
 #include <DThemeManager>
-#include <QDebug>
+#include <DLog>
 #include <QStyle>
 #include <QWidget>
 

@@ -17,7 +17,7 @@
 
 #include "base/command.h"
 
-#include <QDebug>
+#include <DLog>
 #include <QDir>
 #include <QProcess>
 

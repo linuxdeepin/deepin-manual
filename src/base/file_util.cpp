@@ -18,7 +18,7 @@
 #include "base/file_util.h"
 
 #include <sys/stat.h>
-#include <QDebug>
+#include <DLog>
 #include <QDirIterator>
 #include <QTextCodec>
 

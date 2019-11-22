@@ -18,7 +18,7 @@
 #include "controller/window_manager.h"
 
 #include <QApplication>
-#include <QDebug>
+#include <DLog>
 #include <QDesktopWidget>
 #include <QFile>
 #include "controller/search_manager.h"

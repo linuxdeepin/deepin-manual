@@ -23,7 +23,7 @@
 #include <QUrl>
 #include <QDir>
 #include <QFile>
-#include <QDebug>
+#include <DLog>
 #include <QFileInfo>
 #include <QFontInfo>
 #include <QMimeType>

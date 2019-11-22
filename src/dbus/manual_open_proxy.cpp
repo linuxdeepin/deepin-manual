@@ -17,7 +17,7 @@
 
 #include "dbus/manual_open_proxy.h"
 
-#include <QDebug>
+#include <DLog>
 
 ManualOpenProxy::ManualOpenProxy(QObject* parent) : QObject(parent) {
   this->setObjectName("ManualOpenProxy");

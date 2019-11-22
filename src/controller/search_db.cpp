@@ -18,7 +18,7 @@
 #include "controller/search_db.h"
 
 #include <QDateTime>
-#include <QDebug>
+#include <DLog>
 #include <QDir>
 #include <QSqlDatabase>
 #include <QSqlError>

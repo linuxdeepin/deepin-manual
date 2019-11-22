@@ -18,7 +18,7 @@
 #include "controller/argument_parser.h"
 
 #include <QCommandLineParser>
-#include <QDebug>
+#include <DLog>
 #include <QDBusConnection>
 
 #include "dbus/dbus_consts.h"

@@ -20,7 +20,7 @@
 #include "view/widget/search_button.h"
 #include "base/utils.h"
 
-#include <QDebug>
+#include <DLog>
 #include <QStylePainter>
 #include <QVBoxLayout>
 

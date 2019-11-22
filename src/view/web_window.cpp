@@ -36,7 +36,7 @@
 #include <QShortcut>
 #include <QWindow>
 #include <QApplication>
-#include <QDebug>
+#include <DLog>
 #include <QFileInfo>
 #include <QMouseEvent>
 #include <QResizeEvent>
@@ -63,13 +63,14 @@ const int kSearchDelay = 200;
 MyCefWebView::MyCefWebView(QWidget* parent)
     : QCefWebView(parent)
     , m_titlebar(nullptr)
+    , m_appName("")
 {
     qApp->installEventFilter(this);
 
     //显示快捷键预览
     QShortcut *scShowShortcuts = new QShortcut(this);
     scShowShortcuts->setKey(tr("Ctrl+/"));
-    scShowShortcuts->setContext(Qt::ApplicationShortcut);
+    scShowShortcuts->setContext(Qt::WindowShortcut);
     scShowShortcuts->setAutoRepeat(false);
     connect(scShowShortcuts, &QShortcut::activated, this, []{
         WebWindow::showAllShortcut();
@@ -83,6 +84,11 @@ MyCefWebView::~MyCefWebView()
 void MyCefWebView::saveTitleBar(QWidget *titlebar)
 {
     m_titlebar = titlebar;
+}
+
+void MyCefWebView::saveAppName(QString appName)
+{
+    m_appName = appName;
 }
 
 void MyCefWebView::handleRefresh(QWidget *titlebar)
@@ -128,17 +134,20 @@ bool MyCefWebView::event(QEvent *event)
 
 bool MyCefWebView::eventFilter(QObject *watched, QEvent *event)
 {
-    static bool is_searchedit_focusin = false;
-    if (event->type() == QEvent::FocusIn && !is_searchedit_focusin)
+    if (m_appName.isEmpty())
     {
-        handleRefresh(m_titlebar);
-    }
-
-    if (event->type() == QEvent::FocusIn)
-    {
-        if(QString(watched->metaObject()->className()).contains("QLineEdit"))
+        static bool is_searchedit_focusin = false;
+        if (event->type() == QEvent::FocusIn && !is_searchedit_focusin)
         {
-            is_searchedit_focusin = true;
+            handleRefresh(m_titlebar);
+        }
+
+        if (event->type() == QEvent::FocusIn)
+        {
+            if(QString(watched->metaObject()->className()).contains("QLineEdit"))
+            {
+                is_searchedit_focusin = true;
+            }
         }
     }
 
@@ -153,7 +162,6 @@ WebWindow::WebWindow(SearchManager *search_manager, QWidget *parent)
     , theme_proxy_(new ThemeProxy(this))
     , search_timer_()
 {
-
     search_timer_.setSingleShot(true);
     this->initUI();
     this->initConnections();
@@ -174,6 +182,7 @@ WebWindow::~WebWindow()
 void WebWindow::setAppName(const QString &app_name)
 {
     app_name_ = app_name;
+    web_view_->saveAppName(app_name);
 
     const QFileInfo info(kIndexPage);
     web_view_->load(QUrl::fromLocalFile(info.absoluteFilePath()));
@@ -210,6 +219,8 @@ void WebWindow::initConnections()
             theme_proxy_, &ThemeProxy::slot_ThemeChange);
     connect(title_bar_proxy_, &TitleBarProxy::buttonShowSignal,
             this, &WebWindow::slot_ButtonShow);
+
+    connect(titlebar(), SIGNAL(mouseMoving(Qt::MouseButton)), this, SLOT(slot_onMoveWindow(Qt::MouseButton)));
 }
 
 void WebWindow::initDBus()
@@ -236,7 +247,7 @@ void WebWindow::initDBus()
             dman::kManualSearchService+QString("Sender"),               //sender's service name
             dman::kManualSearchIface+QString("Sender"),                 //sender's path name
             dman::kManualSearchService+QString("Sender"),               //interface
-            "Signal_Search",                             //sender's signal name
+            "Signal_Search",                                            //sender's signal name
             this,                                                       //receiver
             SLOT(Slot_ManualSearchByKeyword(const QString &)))) {       //slot
 
@@ -343,7 +354,7 @@ void WebWindow::initShortcuts()
     //设置窗口大小切换快捷键
     QShortcut *scWndReize = new QShortcut(this);
     scWndReize->setKey(tr("Ctrl+Alt+F"));
-    scWndReize->setContext(Qt::ApplicationShortcut);
+    scWndReize->setContext(Qt::WindowShortcut);
     scWndReize->setAutoRepeat(false);
     connect(scWndReize, &QShortcut::activated, this, [this]{
         if (this->windowState() & Qt::WindowMaximized) {
@@ -356,7 +367,7 @@ void WebWindow::initShortcuts()
     //设置搜索快捷键
     QShortcut *scSearch = new QShortcut(this);
     scSearch->setKey(tr("Ctrl+F"));
-    scSearch->setContext(Qt::ApplicationShortcut);
+    scSearch->setContext(Qt::WindowShortcut);
     scSearch->setAutoRepeat(false);
     connect(scSearch, &QShortcut::activated, this, [this]{
         qDebug() << "search" << endl;
@@ -366,7 +377,7 @@ void WebWindow::initShortcuts()
     //显示快捷键预览
     QShortcut *scShowShortcuts = new QShortcut(this);
     scShowShortcuts->setKey(tr("Ctrl+Shift+/"));
-    scShowShortcuts->setContext(Qt::ApplicationShortcut);
+    scShowShortcuts->setContext(Qt::WindowShortcut);
     scShowShortcuts->setAutoRepeat(false);
     connect(scShowShortcuts, &QShortcut::activated, this, []{
         qDebug() << "show short cuts" << endl;
@@ -550,35 +561,18 @@ void WebWindow::onSearchAnchorResult(const QString &keyword,
 
 bool WebWindow::eventFilter(QObject *watched, QEvent *event)
 {
-    static bool is_searchedit_focusin = false;
-    static bool is_clickoutside = false;
-
-    if (event->type() == QEvent::MouseButtonPress) {
+    if (event->type() == QEvent::MouseButtonPress)
+    {
         QWindow *window = qobject_cast<QWindow*>(watched);
-        if (window && window->winId() == titlebar()->winId()) {
+        if (window && window->winId() == titlebar()->winId())
+        {
             QPoint mousePos = QCursor::pos();
             QPoint currWinPos = this->pos();
             start_drag_x = currWinPos.x()-mousePos.x();
         }
     }
 
-    if (event->type() == QEvent::MouseMove && !is_searchedit_focusin)
-    {
-        QPoint mousePos = QCursor::pos();
-        if (!this->rect().contains(mousePos))
-        {
-            QWidget* child = titlebar();
-
-            child->grabKeyboard();
-            child->releaseKeyboard();
-
-            QWindow *window = qobject_cast<QWindow*>(watched);
-            if (window && window->winId() == titlebar()->winId()) {
-                window->requestActivate();
-            }
-        }
-    }
-
+    static bool is_searchedit_focusin = false;
     if (event->type() == QEvent::FocusIn)
     {
         if(QString(watched->metaObject()->className()).contains("QLineEdit"))
@@ -587,49 +581,88 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
         }
     }
 
-    if (buttonBox->isHidden() && !is_searchedit_focusin && !is_clickoutside)
+    if (app_name_.isEmpty())
     {
-        if (event->type() == QEvent::FocusAboutToChange)
+        static bool is_clickoutside = false;
+        if (event->type() == QEvent::MouseMove && !is_searchedit_focusin)
         {
             QPoint mousePos = QCursor::pos();
             if (!this->rect().contains(mousePos))
             {
-                is_clickoutside = true;
+                QWidget* child = titlebar();
+
+                child->grabKeyboard();
+                child->releaseKeyboard();
+
+                QWindow *window = qobject_cast<QWindow*>(watched);
+                if (window && window->winId() == titlebar()->winId()) {
+                    window->requestActivate();
+                }
             }
+        }
 
-            QWidget* child = titlebar();
+        if (buttonBox->isHidden() && !is_searchedit_focusin && !is_clickoutside)
+        {
+            if (event->type() == QEvent::FocusAboutToChange)
+            {
+                QPoint mousePos = QCursor::pos();
+                if (!this->rect().contains(mousePos))
+                {
+                    is_clickoutside = true;
+                }
 
-            child->grabKeyboard();
-            child->releaseKeyboard();
+                QWidget* child = titlebar();
 
-            QWindow *window = qobject_cast<QWindow*>(watched);
-            if (window && window->winId() == titlebar()->winId()) {
-                window->requestActivate();
-                event->ignore();
+                child->grabKeyboard();
+                child->releaseKeyboard();
 
-                return true;
+                QWindow *window = qobject_cast<QWindow*>(watched);
+                if (window && window->winId() == titlebar()->winId())
+                {
+                    window->requestActivate();
+                    event->ignore();
+
+                    return true;
+                }
             }
+        }
+    }
+    else
+    {
+        static bool isBtnBoxHidden = buttonBox->isHidden();
+        if (!isBtnBoxHidden)
+        {
+            qDebug() << "appName: " << app_name_ << endl;
+            qApp->removeEventFilter(this);
+            disconnect(titlebar(), SIGNAL(mouseMoving(Qt::MouseButton)), this, SLOT(slot_onMoveWindow(Qt::MouseButton)));
+            isBtnBoxHidden = true;
         }
     }
 
     // Filters mouse press event only.
     if (event->type() == QEvent::MouseButtonPress &&
             qApp->activeWindow() == this &&
-            watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
+            watched->objectName() == QLatin1String("QMainWindowClassWindow"))
+    {
         QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
-        switch (mouseEvent->button()) {
-        case Qt::BackButton: {
+        switch (mouseEvent->button())
+        {
+        case Qt::BackButton:
+        {
             title_bar_proxy_->backwardButtonClicked();
             break;
         }
-        case Qt::ForwardButton: {
+        case Qt::ForwardButton:
+        {
             title_bar_proxy_->forwardButtonClicked();
             break;
         }
-        default: {
+        default:
+        {
         }
         }
     }
+
     return QObject::eventFilter(watched, event);
 }
 
@@ -643,8 +676,6 @@ void WebWindow::slot_ButtonHide()
 {
     qDebug() << "slot_ButtonHide";
     buttonBox->hide();
-
-    connect(titlebar(), SIGNAL(mouseMoving(Qt::MouseButton)), this, SLOT(slot_onMoveWindow(Qt::MouseButton)));
 }
 
 void WebWindow::slot_onMoveWindow(Qt::MouseButton button)
@@ -664,7 +695,7 @@ void WebWindow::slot_ButtonShow()
 
     //设置前进快捷键
     QShortcut *m_scBack = new QShortcut(QKeySequence(Qt::Key_Left), this);
-    m_scBack->setContext(Qt::ApplicationShortcut);
+    m_scBack->setContext(Qt::WindowShortcut);
     m_scBack->setAutoRepeat(false);
     connect(m_scBack, &QShortcut::activated, this, [this]{
         qDebug() << "back" << endl;
@@ -673,7 +704,7 @@ void WebWindow::slot_ButtonShow()
 
     //设置后退快捷键
     QShortcut *m_scForward = new QShortcut(QKeySequence(Qt::Key_Right), this);
-    m_scForward->setContext(Qt::ApplicationShortcut);
+    m_scForward->setContext(Qt::WindowShortcut);
     m_scForward->setAutoRepeat(false);
     connect(m_scForward, &QShortcut::activated, this, [this]{
         qDebug() << "forward" << endl;

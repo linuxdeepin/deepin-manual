@@ -17,7 +17,7 @@
 
 #include "view/widget/title_bar.h"
 
-#include <QDebug>
+#include <DLog>
 #include <QTimer>
 #include <DIconButton>
 

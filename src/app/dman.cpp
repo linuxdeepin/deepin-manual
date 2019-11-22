@@ -91,12 +91,14 @@ int main(int argc, char **argv)
     dman::ArgumentParser argument_parser;
 
     if (argument_parser.parseArguments()) {
+        qDebug() << "argument_parser.parseArguments()";
         // Exit process after 1000ms.
         QTimer::singleShot(1000, [&]() {
             app.quit();
         });
         return app.exec();
     } else {
+        qDebug() << "argument_parser.openManualsDelay()";
         dman::WindowManager window_manager;
         QObject::connect(&argument_parser,
                          &dman::ArgumentParser::openManualRequested,

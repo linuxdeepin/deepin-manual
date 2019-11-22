@@ -18,7 +18,7 @@
 #include "view/widget/image_viewer.h"
 
 #include <QApplication>
-#include <QDebug>
+#include <DLog>
 #include <QPainter>
 #include <QMouseEvent>
 #include <QResizeEvent>

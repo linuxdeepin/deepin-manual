@@ -20,7 +20,7 @@
 #include <qcef_web_page.h>
 #include <qcef_web_view.h>
 
-#include <QDebug>
+#include <DLog>
 
 namespace {
 
