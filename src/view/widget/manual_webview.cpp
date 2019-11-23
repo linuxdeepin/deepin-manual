@@ -1,13 +1,23 @@
 #include "manual_webview.h"
+#include "view/web_window.h"
 
 #include <cmath>
 
 #include <QTimer>
+#include <QShortcut>
 
 ManualWebView::ManualWebView(QWidget* parent)
     : QCefWebView(parent)
     , m_window_mapped(false)
 {
+    //显示快捷键预览
+    QShortcut *scShowShortcuts = new QShortcut(this);
+    scShowShortcuts->setKey(tr("Ctrl+/"));
+    scShowShortcuts->setContext(Qt::WindowShortcut);
+    scShowShortcuts->setAutoRepeat(false);
+    connect(scShowShortcuts, &QShortcut::activated, this, []{
+        dman::WebWindow::showAllShortcut();
+    });
 }
 
 ManualWebView::~ManualWebView()
