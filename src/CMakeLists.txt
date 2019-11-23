@@ -9,7 +9,6 @@ set(CMAKE_INSTALL_PREFIX /usr)
 
 if (CMAKE_BUILD_TYPE MATCHES Debug)
   add_definitions(-DDMAN_SEARCH_DB="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/search.db")
-  #add_definitions(-DDMAN_SEARCH_DB="${CMAKE_CURRENT_BINARY_DIR}/search.db")
   add_definitions(-DDMAN_WEB_DIR="${CMAKE_CURRENT_SOURCE_DIR}/web_dist")
   add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_SOURCE_DIR}/manual")
 else()
@@ -208,7 +207,7 @@ add_custom_target(update-qm DEPENDS ${DMAN_TRANSLATION_QM})
 # Build web project and generate js files.
 add_custom_command(OUTPUT rebuild-web
                    COMMAND pwd
-                   COMMAND ./node_modules/.bin/node ./node_modules/.bin/gulp build -d ${CMAKE_CURRENT_SOURCE_DIR}/web_dist
+                   COMMAND /usr/bin/node /usr/bin/gulp build -d ${CMAKE_CURRENT_SOURCE_DIR}/web_dist
                    WORKING_DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/web/
                    )
 add_custom_target(update-web DEPENDS rebuild-web)
@@ -298,5 +297,19 @@ install(DIRECTORY ${CMAKE_SOURCE_DIR}/manual
 install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/web_dist
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
 
-install(FILES ${CMAKE_CURRENT_BINARY_DIR}/search.db
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
+string(TOLOWER ${CMAKE_SYSTEM_PROCESSOR} LOWERCASE_CMAKE_SYSTEM_PROCESSOR)
+
+if (LOWERCASE_CMAKE_SYSTEM_PROCESSOR MATCHES "(^mips64|^mips)")
+    install(FILES ${CMAKE_SOURCE_DIR}/search.db
+            DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
+elseif (LOWERCASE_CMAKE_SYSTEM_PROCESSOR MATCHES "(x64|x86_64|amd64)")
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/search.db
+            DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
+elseif (LOWERCASE_CMAKE_SYSTEM_PROCESSOR MATCHES "^arm")
+    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/search.db
+            DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
+else ()
+    install(FILES ${CMAKE_SOURCE_DIR}/search.db
+            DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
+endif ()
+
