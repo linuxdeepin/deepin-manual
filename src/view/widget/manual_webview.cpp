@@ -6,6 +6,7 @@
 
 ManualWebView::ManualWebView(QWidget* parent)
     : QCefWebView(parent)
+    , m_window_mapped(false)
 {
 }
 
@@ -21,6 +22,7 @@ void ManualWebView::setParentWindow(DMainWindow *window)
 void ManualWebView::showEvent(QShowEvent* event)
 {
     QWidget::showEvent(event);
+
     if (!m_window_mapped)
     {
         m_window_mapped = true;
