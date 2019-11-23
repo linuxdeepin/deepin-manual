@@ -59,101 +59,6 @@ const int kSearchDelay = 200;
 }  // namespace
 
 
-
-MyCefWebView::MyCefWebView(QWidget* parent)
-    : QCefWebView(parent)
-    , m_titlebar(nullptr)
-    , m_appName("")
-{
-    qApp->installEventFilter(this);
-
-    //显示快捷键预览
-    QShortcut *scShowShortcuts = new QShortcut(this);
-    scShowShortcuts->setKey(tr("Ctrl+/"));
-    scShowShortcuts->setContext(Qt::WindowShortcut);
-    scShowShortcuts->setAutoRepeat(false);
-    connect(scShowShortcuts, &QShortcut::activated, this, []{
-        WebWindow::showAllShortcut();
-    });
-}
-
-MyCefWebView::~MyCefWebView()
-{
-}
-
-void MyCefWebView::saveTitleBar(QWidget *titlebar)
-{
-    m_titlebar = titlebar;
-}
-
-void MyCefWebView::saveAppName(QString appName)
-{
-    m_appName = appName;
-}
-
-void MyCefWebView::handleRefresh(QWidget *titlebar)
-{
-    if (titlebar && QString(titlebar->metaObject()->className()).contains("DTitlebar", Qt::CaseInsensitive))
-    {
-        QPoint mousePos = QCursor::pos();
-        if (!this->rect().contains(mousePos))
-        {
-            QWidget* child = m_titlebar;
-
-            child->grabKeyboard();
-            child->releaseKeyboard();
-        }
-
-        QWindow *window = qobject_cast<QWindow*>(titlebar);
-        if (window && window->winId() == m_titlebar->winId())
-        {
-            window->requestActivate();
-        }
-    }
-}
-
-void MyCefWebView::showEvent(QShowEvent* event)
-{
-    QCefWebView::showEvent(event);
-}
-
-void MyCefWebView::resizeEvent(QResizeEvent* event)
-{
-    QCefWebView::resizeEvent(event);
-}
-
-void MyCefWebView::focusInEvent(QFocusEvent *event)
-{
-    QCefWebView::focusInEvent(event);
-}
-
-bool MyCefWebView::event(QEvent *event)
-{
-    return QCefWebView::event(event);
-}
-
-bool MyCefWebView::eventFilter(QObject *watched, QEvent *event)
-{
-    if (m_appName.isEmpty())
-    {
-        static bool is_searchedit_focusin = false;
-        if (event->type() == QEvent::FocusIn && !is_searchedit_focusin)
-        {
-            handleRefresh(m_titlebar);
-        }
-
-        if (event->type() == QEvent::FocusIn)
-        {
-            if(QString(watched->metaObject()->className()).contains("QLineEdit"))
-            {
-                is_searchedit_focusin = true;
-            }
-        }
-    }
-
-    return QObject::eventFilter(watched, event);
-}
-
 WebWindow::WebWindow(SearchManager *search_manager, QWidget *parent)
     : Dtk::Widget::DMainWindow(parent)
     , app_name_()
@@ -182,7 +87,10 @@ WebWindow::~WebWindow()
 void WebWindow::setAppName(const QString &app_name)
 {
     app_name_ = app_name;
-    web_view_->saveAppName(app_name);
+    qDebug() << "appName:" << app_name << endl;
+    if (0 == app_name.length()) {
+        this->slot_ButtonHide();
+    }
 
     const QFileInfo info(kIndexPage);
     web_view_->load(QUrl::fromLocalFile(info.absoluteFilePath()));
@@ -219,8 +127,6 @@ void WebWindow::initConnections()
             theme_proxy_, &ThemeProxy::slot_ThemeChange);
     connect(title_bar_proxy_, &TitleBarProxy::buttonShowSignal,
             this, &WebWindow::slot_ButtonShow);
-
-    connect(titlebar(), SIGNAL(mouseMoving(Qt::MouseButton)), this, SLOT(slot_onMoveWindow(Qt::MouseButton)));
 }
 
 void WebWindow::initDBus()
@@ -326,8 +232,8 @@ void WebWindow::initUI()
     manual_proxy_ = new ManualProxy(this);
     connect(manual_proxy_, &ManualProxy::WidgetLower, this, &WebWindow::lower);
 
-    web_view_ = new MyCefWebView();
-    web_view_->saveTitleBar(titlebar());
+    web_view_ = new ManualWebView();
+    web_view_->setParentWindow(this);
     web_view_->page()->setEventDelegate(new WebEventDelegate(this));
     this->setCentralWidget(web_view_);
 
@@ -561,84 +467,6 @@ void WebWindow::onSearchAnchorResult(const QString &keyword,
 
 bool WebWindow::eventFilter(QObject *watched, QEvent *event)
 {
-    if (event->type() == QEvent::MouseButtonPress)
-    {
-        QWindow *window = qobject_cast<QWindow*>(watched);
-        if (window && window->winId() == titlebar()->winId())
-        {
-            QPoint mousePos = QCursor::pos();
-            QPoint currWinPos = this->pos();
-            start_drag_x = currWinPos.x()-mousePos.x();
-        }
-    }
-
-    static bool is_searchedit_focusin = false;
-    if (event->type() == QEvent::FocusIn)
-    {
-        if(QString(watched->metaObject()->className()).contains("QLineEdit"))
-        {
-            is_searchedit_focusin = true;
-        }
-    }
-
-    if (app_name_.isEmpty())
-    {
-        static bool is_clickoutside = false;
-        if (event->type() == QEvent::MouseMove && !is_searchedit_focusin)
-        {
-            QPoint mousePos = QCursor::pos();
-            if (!this->rect().contains(mousePos))
-            {
-                QWidget* child = titlebar();
-
-                child->grabKeyboard();
-                child->releaseKeyboard();
-
-                QWindow *window = qobject_cast<QWindow*>(watched);
-                if (window && window->winId() == titlebar()->winId()) {
-                    window->requestActivate();
-                }
-            }
-        }
-
-        if (buttonBox->isHidden() && !is_searchedit_focusin && !is_clickoutside)
-        {
-            if (event->type() == QEvent::FocusAboutToChange)
-            {
-                QPoint mousePos = QCursor::pos();
-                if (!this->rect().contains(mousePos))
-                {
-                    is_clickoutside = true;
-                }
-
-                QWidget* child = titlebar();
-
-                child->grabKeyboard();
-                child->releaseKeyboard();
-
-                QWindow *window = qobject_cast<QWindow*>(watched);
-                if (window && window->winId() == titlebar()->winId())
-                {
-                    window->requestActivate();
-                    event->ignore();
-
-                    return true;
-                }
-            }
-        }
-    }
-    else
-    {
-        static bool isBtnBoxHidden = buttonBox->isHidden();
-        if (!isBtnBoxHidden)
-        {
-            qDebug() << "appName: " << app_name_ << endl;
-            qApp->removeEventFilter(this);
-            disconnect(titlebar(), SIGNAL(mouseMoving(Qt::MouseButton)), this, SLOT(slot_onMoveWindow(Qt::MouseButton)));
-            isBtnBoxHidden = true;
-        }
-    }
-
     // Filters mouse press event only.
     if (event->type() == QEvent::MouseButtonPress &&
             qApp->activeWindow() == this &&
@@ -676,16 +504,6 @@ void WebWindow::slot_ButtonHide()
 {
     qDebug() << "slot_ButtonHide";
     buttonBox->hide();
-}
-
-void WebWindow::slot_onMoveWindow(Qt::MouseButton button)
-{
-    Q_UNUSED(button)
-
-    QPoint relativePos = QCursor::pos();
-
-    relativePos = QPoint(relativePos.x()+start_drag_x, relativePos.y()-30);
-    this->move(relativePos);
 }
 
 void WebWindow::slot_ButtonShow()

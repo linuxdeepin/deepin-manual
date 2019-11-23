@@ -28,31 +28,56 @@
 #include "controller/window_manager.h"
 #include "resources/themes/images.h"
 #include "environments.h"
+
 DWIDGET_USE_NAMESPACE
+
+// namespace
+namespace dman
+{
+    const char kEnableDomStorageFlush[] = "--enable-aggressive-domstorage-flushing";
+    const char kDisableGpu[] = "--disable-gpu";
+    const char kEnableLogging[] = "--enable-logging";
+    const char kLogLevel[] = "--log-level";
+}
 
 int main(int argc, char **argv)
 {
     qputenv("DXCB_FAKE_PLATFORM_NAME_XCB", "true");
     qputenv("DXCB_REDIRECT_CONTENT", "true");
 
+    qputenv("DXCB_FAKE_PLATFORM_NAME_XCB", "true");
+
     QCefGlobalSettings settings;
     // Do not use sandbox.
     settings.setNoSandbox(true);
-#ifndef NDEBUG
-    // Open http://localhost:9222 in chromium browser to see dev tools.
-    settings.setRemoteDebug(true);
-    settings.setLogSeverity(QCefGlobalSettings::LogSeverity::Error);
-#else
-    settings.setRemoteDebug(false);
-    settings.setLogSeverity(QCefGlobalSettings::LogSeverity::Error);
-#endif
+
+    if (qEnvironmentVariableIntValue("QCEF_DEBUG") == 1) {
+        // Open http://localhost:9222 in chromium browser to see dev tools.
+        settings.setRemoteDebug(true);
+        settings.setLogSeverity(QCefGlobalSettings::LogSeverity::Verbose);
+    } else {
+        settings.setRemoteDebug(false);
+        settings.setLogSeverity(QCefGlobalSettings::LogSeverity::Error);
+    }
+
     // Disable GPU process.
-    settings.addCommandLineSwitch("--disable-gpu", "");
+    settings.addCommandLineSwitch(dman::kDisableGpu, "");
+
+    // Enable aggressive storage commit to minimize data loss.
+    // See public/common/content_switches.cc.
+    settings.addCommandLineSwitch(dman::kEnableDomStorageFlush, "");
+
     // Set web cache folder.
     QDir cache_dir(dman::GetCacheDir());
     cache_dir.mkpath(".");
     settings.setCachePath(cache_dir.filePath("cache"));
     settings.setUserDataPath(cache_dir.filePath("cef-storage"));
+
+    // TODO: Rotate console log.
+    settings.setLogFile(cache_dir.filePath("web-console.log"));
+    settings.addCommandLineSwitch(dman::kEnableLogging, "");
+    settings.addCommandLineSwitch(dman::kLogLevel, "0");
+    settings.addCommandLineSwitch("--use-views", "");
 
     const int exit_code = QCefInit(argc, argv, settings);
     if (exit_code >= 0) {

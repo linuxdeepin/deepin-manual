@@ -72,6 +72,9 @@ bool SpawnCmd(const QString &cmd, const QStringList &args)
     process.start();
     // Wait for process to finish without timeout.
     process.waitForFinished(-1);
+
+    qDebug() << process.readAllStandardOutput();
+
     return (process.exitStatus() == QProcess::NormalExit &&
             process.exitCode() == 0);
 }
@@ -94,6 +97,10 @@ bool SpawnCmd(const QString &cmd, const QStringList &args,
     process.waitForFinished(-1);
     output = process.readAllStandardOutput();
     err = process.readAllStandardError();
+    if (!process.errorString().contains("Unknown"))
+    {
+        qDebug() << "run cmd error, caused by:" << process.errorString();
+    }
     return (process.exitStatus() == QProcess::NormalExit &&
             process.exitCode() == 0);
 }

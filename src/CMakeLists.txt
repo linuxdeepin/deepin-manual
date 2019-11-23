@@ -171,6 +171,8 @@ set(VIEW_FILES
     view/widget/search_edit.h
     view/widget/title_bar.cpp
     view/widget/title_bar.h
+    view/widget/manual_webview.cpp
+    view/widget/manual_webview.h
     )
 
 # Main executable

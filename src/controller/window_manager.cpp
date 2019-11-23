@@ -62,9 +62,6 @@ void WindowManager::openManual(const QString &app_name)
     windows_.insert(app_name, nullptr);
 
     WebWindow *window = new WebWindow(search_manager_);
-    if (0 == app_name.length()) {
-        window->slot_ButtonHide();
-    }
     window->setAppName(app_name);
     windows_.insert(app_name, window);
     window->resize(kWinWidth, kWinHeight);

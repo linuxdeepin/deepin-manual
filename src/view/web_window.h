@@ -19,10 +19,7 @@
 #define DEEPIN_MANUAL_VIEW_WEB_WINDOW_H
 
 #include "controller/search_result.h"
-
-#include <qcef_web_page.h>
-#include <qcef_web_settings.h>
-#include <qcef_web_view.h>
+#include "widget/manual_webview.h"
 
 #include <QTimer>
 #include <QtDBus/QtDBus>
@@ -44,32 +41,6 @@ class TitleBar;
 class TitleBarProxy;
 class SearchEdit;
 class DButtonBox;
-
-class MyCefWebView : public QCefWebView {
-
-    Q_OBJECT
-    Q_PROPERTY(QUrl url READ url WRITE setUrl)
-    Q_PROPERTY(bool autoZoom READ autoZoom WRITE setAutoZoom)
-
-public:
-    explicit MyCefWebView(QWidget* parent = nullptr);
-    ~MyCefWebView() override;
-    void saveTitleBar(QWidget *titlebar);
-    void saveAppName(QString appName);
-    void handleRefresh(QWidget *titlebar);
-
-protected:
-    void showEvent(QShowEvent* event) override;
-
-    void resizeEvent(QResizeEvent* event) override;
-    void focusInEvent(QFocusEvent *event) override;
-    bool event(QEvent *event) override;
-    bool eventFilter(QObject *obj, QEvent *event) override;
-
-private:
-    QWidget *m_titlebar;
-    QString m_appName;
-};
 
 class WebWindow : public Dtk::Widget::DMainWindow
 {
@@ -124,7 +95,7 @@ private:
     ManualProxy *manual_proxy_ = nullptr;
     TitleBar *title_bar_ = nullptr;
     TitleBarProxy *title_bar_proxy_ = nullptr;
-    MyCefWebView *web_view_ = nullptr;
+    ManualWebView *web_view_ = nullptr;
     QTimer search_timer_;
     Dtk::Widget::DButtonBox *buttonBox;
     SearchEdit *search_edit_;
@@ -144,7 +115,6 @@ private slots:
     void onWebPageLoadFinished(bool ok);
 
     void Slot_ManualSearchByKeyword(const QString &data);
-    void slot_onMoveWindow(Qt::MouseButton button);
 };
 
 }  // namespace dman

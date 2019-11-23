@@ -64,10 +64,16 @@ int main(int argc, char **argv)
             QString searchIndexFilePath = QString("%1/%2/%3/%4").arg(manualDir.path()).arg("src").arg("web").arg("toSearchIndex.js");
             qDebug() << searchIndexFilePath;
             QString out, err;
+            QStringList cmdList = {"node"};
+            const bool queryNode = dman::SpawnCmd("which", cmdList);
+            if (!queryNode) {
+                qWarning() << err << queryNode << md_file;
+            }
+
             const QStringList cmd = {searchIndexFilePath, "-f", md_file};
             const bool ok = dman::SpawnCmd("/usr/bin/node", cmd, out, err);
             if (!ok) {
-                qWarning() << err << ok << md_file;
+                qWarning()  << err << ok << md_file;
                 continue;
             }
 
