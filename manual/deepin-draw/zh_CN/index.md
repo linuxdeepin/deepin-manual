@@ -4,7 +4,7 @@
 
 画板是一款简单的绘图工具，支持旋转、裁剪、翻转、添加文字、形状等功能。用户可以对本地图片进行简单编辑，也可以绘制一张简单图片。
 
-![1|mian](jpg/main.jpg)
+![1|mian](jpg/main.png)
 
 ## 使用入门
 
@@ -29,21 +29,9 @@
 
 ### 查看快捷键
 
-使用快捷键，将大大提升您的操作效率。
+在画板界面上，按下键盘上的 ![Ctrl](icon/Ctrl.svg) + ![Shift](icon/Shift.svg) + ![QM](icon/QM.svg) 组合键来查看快捷键，熟练的使用快捷键，将大大提升您的操作效率。
 
-| 功能               | 快捷键       |
-| ------------------ | ------------ |
-| 全屏               | F11          |
-| 退出全屏           | ESC          |
-| 复制               | Ctrl+C       |
-| 删除               | Delete       |
-| 顺时针旋转         | Ctrl+R       |
-| 逆时针旋转         | Ctrl+Shift+R |
-| 设为壁纸           | Ctrl+F8      |
-| 在文件管理器中显示 | Ctrl+D       |
-| 图片信息           | Alt+Enter    |
-| 帮助               | F1           |
-
+![1|hotkey](jpg/hotkeys.png)
 
 
 ## 常用功能
@@ -58,6 +46,8 @@
 > ![tips](icon/tips.svg)：您可以一次导入多张图片，您也可以通过 ![menu](icon/icon_menu.svg) > **打开** 导入图片。
 
 目前仅支持导入30张图片，且支持的图片格式为JPG、PNG、TIF和BMP。
+
+![1|mian](jpg/open.png)
 
 ### 导出图片
 
@@ -90,7 +80,7 @@
 
 ### 选择工具
 
-通过点击 选择工具可以进行以下操作：
+通过点击选择工具 ![choose](icon/choose-tools_normal.svg) 可以进行以下操作：
 
 - 对已绘制图形、文字、模糊区域进行选择。
 - 支持框选，框选范围内的所有图形置为选择状态。
@@ -115,12 +105,18 @@
 
 > ![tips](icon/tips.svg)：在使用 ![rectangle](icon/rectangle_normal.svg) 或  ![oval](icon/oval_normal.svg) 或![triangle](icon/triangle_tool_normal.svg)或![hexagon](icon/hexagon_tool_normal.svg)或![star](icon/draw-star.svg)绘制性质时，配合键盘上的![Shift](icon/Shift.svg) 或![Shift](icon/Shift.svg)+ ![Alt](icon/Alt.svg) 键可以画出正方形、正圆、正三角、正五角星、正多边形。
 
+![1|shape](jpg/shape1.png)
+
+![1|shape](jpg/shape2.png)
+
+![1|shape](jpg/shape3.png)
+
 
 
 ### 画笔工具
 
 
-1. 在画板界面上，点击 ![line](icon/pencil_normal.svg)。
+1. 在画板界面上，点击![line](icon/line_normal.svg)或 ![line](icon/pencil_normal.svg)。
 2. 您可以设置画笔参数：
 
  - 点击 **类型** 中的选项来选择一种画笔样式，可以绘制直线、自由曲线和带箭头的直线。
@@ -131,6 +127,8 @@
 
 3. 在画板区域拖动鼠标来绘制线条。
 
+![1|pencil](jpg/line_pencil.png)
+
 ### 文本工具
 
 1. 在画板界面上，点击 ![text](icon/text_normal.svg)。
@@ -140,7 +138,7 @@
  - **字号** 可以手动输入数字或通过左右拖拽滑动块来调节。
 3. 在画板区域单击鼠标后在文本框中输入文字。
 
-
+![1|text](jpg/text.png)
 
 
 ### 模糊工具
@@ -150,7 +148,9 @@
 3. 通过左右拖动设置条上的滑块设置涂抹区域的粗细。
 4. 在画板区域拖动鼠标来涂抹需要模糊的区域。
 
+![1|blur](jpg/blur.png)
 
+![1|mosaic](jpg/mosaic.png)
 
 ## 编辑功能
 
@@ -159,6 +159,8 @@
 1. 在画板界面上，选中需要复制的图形。
 2. 单击鼠标右键选择 **复制** 或 使用快捷键![Ctrl](icon/Ctrl.svg) + ![C](icon/C.svg) 将图形复制到剪贴板。
 3. 单击鼠标右键选择 **粘贴** 或 使用快捷键![Ctrl](icon/Ctrl.svg) + ![V](icon/V.svg) 将图形粘贴到画板上。
+
+![1|copy](jpg/copy.png)
 
 ### 裁剪
 
@@ -170,6 +172,7 @@
 3. 选择裁剪模式，选定需要裁剪的区域。
 4. 按 **Enter** 键将区域外的图形裁剪掉。
 
+![1|cut](jpg/cut.png)
 
 
 ### 翻转
@@ -177,6 +180,7 @@
 1. 在画板界面上，选择已导入的图片。
 2. 点击 ![flip](icon/filp_Vertical_normal.svg) 或 ![flip](icon/flip_Horizontal_normal.svg) 将图片垂直翻转或水平翻转。
 
+![1|roll-over](jpg/roll-over.png)
 
 
 ### 旋转
@@ -186,6 +190,7 @@
 
 > ![tips](icon/tips.svg)：您也可以通过鼠标拖动图片或图形的原点来自由旋转操作。
 
+![1|rotate](jpg/rotate.png)
 
 
 ### 删除
@@ -193,14 +198,22 @@
 1. 在画板界面上，选择一个图形。
 2. 单击鼠标右键选择 **删除** 或 使用快捷键![Delete](icon/Delete.svg)将选中的图形删除。
 
-
+![1|delete](jpg/delete.png)
 
 ### 调整图层
 
 1. 在画板界面上，选择一个图形。
 2. 单击鼠标右键选择 **向上一层**、**向下一层**、**置于顶层**、**至于底层** 来调整图层顺序。
 
-![1|layer](jpg/layer.png)
+![1|layer](jpg/layer1.png)
+
+### 对齐文本
+
+1. 在画板界面上，点击 ![text](icon/text_normal.svg)。
+2. 单击鼠标右键选择 **左对齐**、**顶对齐**、**右对齐**、**居中对齐** 来对齐文本。
+
+![1|layer](jpg/align.png)
+
 
 ## 主菜单
 

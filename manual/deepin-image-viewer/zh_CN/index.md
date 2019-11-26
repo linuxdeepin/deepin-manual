@@ -5,7 +5,7 @@
 
 看图是一款小巧的图片查看应用软件。外观时尚、性能流畅，支持多种图片格式，随时想看就看，实用又快捷。
 
-![1|main](jpg/main.jpg)
+![1|main](jpg/main.png)
 
 ## 使用入门
 
@@ -45,13 +45,13 @@
 
 ![tips](icon/tips.svg)：您可以在控制中心中将看图设置为默认的图片查看程序，具体操作请参阅 [默认程序设置](dman:///dde#默认程序设置)。
 
-图片支持的格式BMP、ICO、JPG/JPE/JPEG、JNG、PCD、PCX、PNG、TGA、TIF/TIFF、PSD、XPM、DDS、GIF、SGI、J2K、JP2、PCT、RAW、WEBP、WDP、CR2、PEF、ARW、NEF、DNG、RAF、ORFSVG、MEF、MRW。
+图片支持的格式BMP、ICO、JPG/JPE/JPEG、PNG、TGA、TIF/TIFF、XPM、DDS、GIF、SGI、RAW、WEBP、CR2、NEF、DNG、RAF、MEF、MRW、XBM、SVG、ORF、MNG。
 
 ### 界面介绍
 
-![1|main](jpg/main.jpg)
+![1|main](jpg/main.png)
 
-|                                                    |         |                        |
+| 图标                                               | 名称    | 说明                   |
 | -------------------------------------------------- | ------- | ---------------------- |
 | ![previous](icon/previous.svg)                     | 上一张  | 显示上一张图片。       |
 | ![next](icon/next.svg)                             | 下一张  | 显示下一张图片。       |
@@ -61,8 +61,9 @@
 | ![contrarotate](icon/contrarotate.svg)             | 逆时针  | 图片逆时针旋转90度。   |
 | ![delete](icon/delete.svg)                         | 删除    | 删除当前图片。         |
 
-> ![tips](icon/tips.svg)：在1:1视图下，当图片超出界面范围时，界面上会出现导航窗口。点击导航窗口的右上角关闭导航窗口，也可以在看看图界面上单击鼠标右键选择 **隐藏导航窗口/显示导航窗口**。
+> ![tips](icon/tips.svg)：在1:1视图下，当图片超出界面范围时，界面上会出现导航窗口。点击导航窗口的右上角关闭导航窗口，也可以在看图界面上单击鼠标右键选择 **隐藏导航窗口/显示导航窗口**。
 
+> ![notess](icon/notes.svg)：如果打开的是系统图片，旋转功能、删除图标处于置灰状态，即不能使用该操作。
 
 ### 打印图片
 
@@ -74,7 +75,7 @@
 
 > ![notess](icon/notes.svg)：如果选择的是pdf打印机还需要选择打印位置，将在指定位置输出pdf文件。
 
-![0|menu](jpg/menu.jpg)
+![0|print](jpg/print.png)
 
 ### 复制图片
 
@@ -84,6 +85,8 @@
 4. 选择 **粘贴**，将图片文件复制到该位置。
 
 > ![tips](icon/tips.svg)：点击**复制** 会同时复制图片路径和内容。
+
+![0|copy](jpg/copy.png)
 
 ### 删除图片
 
@@ -99,10 +102,15 @@
 2. 选择 **顺时针旋转/逆时针旋转**。
 3. 图片将会顺时针转旋转90°/逆时针旋转90°。
 
+![0|rotate](jpg/rotate.png)
+
+
 ### 设置为壁纸
 
 1. 在看图界面上，单击鼠标右键。
 2. 选择 **设为壁纸** 即可将当前图片设置为壁纸。
+
+![0|wallpaper](jpg/wallpaper.png)
 
 
 ### 查看图片信息
@@ -142,4 +150,4 @@
 ### 退出
 
 1. 在看图界面，点击 ![icon_menu](icon/icon_menu.svg)。
-2. 点击 **退出**。
+2. 点击 **退出**。   

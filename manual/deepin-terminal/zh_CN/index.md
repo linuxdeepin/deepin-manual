@@ -32,13 +32,13 @@
 
 在终端界面上，按下键盘上的 ![Ctrl](icon/Ctrl.svg) + ![Shift](icon/Shift.svg) + ![QM](icon/QM.svg) 组合键来查看快捷键，熟练的使用快捷键，将大大提升您的操作效率。
 
- ![1|hotkey](jpg/hotkey.jpg)
+ ![1|hotkey](jpg/hotkeys.png)
 
 ## 基本操作
 
 您可以在终端界面点击鼠标右键来进行常规操作。
 
-![1|rightclick](jpg/rightclick.jpg)
+![1|rightclick](jpg/rightclick.png)
 
 ### 查找 ###
 您可以使用“查找”功能来快速查找终端显示的内容。
@@ -87,7 +87,7 @@
 3. 单击鼠标右键。
 4. 点击  **打开**。
 
-![1|openfile](jpg/openfile.jpg)
+![1|openfile](jpg/openfile.png)
 
 
 ### 调整编码方式  ###
@@ -106,7 +106,7 @@
 
 ### 新建窗口 ###
 
-![0|newwindows](jpg/newwindows.jpg)
+![0|newwindows](jpg/newwindows.png)
 
 在启动器界面打开终端，您可以通过一下方法新建窗口：
  - 选择 ![menu](icon/icon_menu.svg) > **新建窗口**，将会在桌面打开一个新的终端。
@@ -123,7 +123,7 @@
 
 > ![tips](icon/tips.svg) ：您也可以按下键盘上的 ![ctrl](icon/Ctrl.svg)+![shift](icon/Shift.svg)+![J](icon/J.svg) 组合键来纵向分屏，按下键盘上的 ![ctrl](icon/Ctrl.svg)+![shift](icon/Shift.svg)+![H](icon/H.svg) 组合键来横向分屏。
 
-![1|splitscreen](jpg/splitscreen.jpg)
+![1|splitscreen](jpg/splitscreen.png)
 
 ### 重命名窗口 ###
 
@@ -134,7 +134,7 @@
 
 > ![tips](icon/tips.svg) ：您也可以按下键盘上的 ![F2](icon/F2.svg) 来重命名窗口。
 
-![1|rename](jpg/rename.jpg)
+![1|rename](jpg/rename.png)
 
 ### 全屏显示窗口 ###
 
@@ -152,13 +152,13 @@
  - 选择 **关闭窗口**，来关闭此终端窗口。
  - 选择 **关闭其他窗口**，来关闭除此窗口以外的其他终端窗口。
 
-![1|closesplitscreen](jpg/closesplitscreen.jpg)
+![1|closesplitscreen](jpg/closesplitscreen.png)
 
 ## 工作区操作
 
 工作区标签以不同的颜色来显示当前工作区的状态。
 
-![1|interface](jpg/interface.jpg)
+![1|interface](jpg/interface.png)
 
 ### 新建工作区 ###
 

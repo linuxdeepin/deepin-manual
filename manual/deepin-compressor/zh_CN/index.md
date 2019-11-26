@@ -44,7 +44,7 @@
 
    > ![tips](icon/tips.svg)：也可以点击  ![icon_menu](icon/icon_menu.svg) > **打开**，添加压缩文件。
 
-![1|compressor](jpg/compress-add.png)
+   ![1|compressor](jpg/compress-add.png)
 
 3. 点击 **下一步**。
 
@@ -54,7 +54,7 @@
 
    ![1|compressor](jpg/compress-file.png)
 
-![notes](icon/notes.svg)：压缩包的默认文件格式是zip，可以设置加密文件的格式有7z、cbz、exe、zip。
+   ![notes](icon/notes.svg)：压缩包的默认文件格式是zip，可以设置加密文件的格式有7z、cbz、exe、zip。
 
 6. 点击 **压缩**。
 
@@ -62,7 +62,7 @@
 
    ![tips](icon/tips.svg)：您还可以右键点击 **压缩**，对文件执行压缩操作。
 
-![1|compressor](jpg/compress-success.png)
+   ![1|compressor](jpg/compress-success.png)
 
 
 ### 解压缩
@@ -72,13 +72,13 @@
 3. 点击 **解压到：/home/deep/Desktop**，可以重新设置解压缩路径。
 4. 点击 **解压**。
 
-> ![notes](icon/notes.svg)：当解压文件中有加密文件时，需要输入密码解压缩。
+   > ![notes](icon/notes.svg)：当解压文件中有加密文件时，需要输入密码解压缩。
 
 5. 解压缩成功之后，点击 **显示文件**，可以查看解压缩文件的具体存放位置。
 
    ![tips](icon/tips.svg)：您还可以右键点击 **解压缩**，对文件执行解压缩操作。
 
-![1|decompression](jpg/decompression.png)
+   ![1|decompression](jpg/decompression.png)
 
 ### 提取文件
 

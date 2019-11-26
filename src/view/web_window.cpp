@@ -299,25 +299,26 @@ void WebWindow::showAllShortcut()
     QJsonArray jsonGroups;
 
     QMap<QString,QString> shortcutKeymap = {
-        {"Resize window:",     "Ctrl+Alt+F"},
-        {"Close window:",      "Alt+F4"},
-        {"Show shortcut:",     "Ctrl+Shift+/"},
-        {"Search:",            "Ctrl+F"},
-        {"Select all:",        "Ctrl+A"},
-        {"Copy:",              "Ctrl+C"},
-        {"Paste:",             "Ctrl+V"},
-        {"Cut:",               "Ctrl+X"},
-        {"Backward character:",  "Backspace"}
+        {"Resize Window",     "Ctrl+Alt+F"},
+        {"Close Window",      "Alt+F4"},
+        {"Show Shortcut",     "Ctrl+Shift+/"},
+        {"Search",            "Ctrl+F"},
+        {"Select",        "Ctrl+A"},
+        {"Copy",              "Ctrl+C"},
+        {"Paste",             "Ctrl+V"},
+        {"Cut",               "Ctrl+X"},
+        {"Backward Character",  "Backspace"}
     };
 
     QJsonObject fontMgrJsonGroup;
-    fontMgrJsonGroup.insert("groupName", QObject::tr("Deepin Manual"));
+    fontMgrJsonGroup.insert("groupName", QObject::tr("Manual"));
     QJsonArray fontJsonItems;
 
     for (QMap<QString,QString>::iterator it=shortcutKeymap.begin();
          it != shortcutKeymap.end(); it++) {
         QJsonObject jsonItem;
-        jsonItem.insert("name", QObject::tr(it.key().toUtf8().data()));
+        QString strName = QObject::tr(it.key().toUtf8().data());
+        jsonItem.insert("name", QString("%1%2").arg(strName).arg(":"));
         jsonItem.insert("value", it.value().replace("Meta", "Super"));
         fontJsonItems.append(jsonItem);
     }

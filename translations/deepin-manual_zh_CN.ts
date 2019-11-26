@@ -5,18 +5,13 @@
     <name>QObject</name>
     <message>
         <location filename="../src/app/dman.cpp" line="82"/>
-        <source>Deepin Manual</source>
+        <source>Manual</source>
         <translation>帮助手册</translation>
     </message>
     <message>
         <location filename="../src/app/dman.cpp" line="83"/>
-        <source>Deepin Manual is designed to help users learn deepin and Deepin applications, providing specific instructions and function descriptions.</source>
-        <translation>帮助手册为帮助用户了解深度操作系统和深度系列应用，提供具体的使用方法和功能说明。</translation>
-    </message>
-    <message>
-        <location filename="../src/view/web_event_delegate.cpp" line="63"/>
-        <source>Copy</source>
-        <translation>复制</translation>
+        <source>Manual is designed to help users learn UOS and its applications, providing specific instructions and function descriptions.</source>
+        <translation>帮助手册为帮助用户了解UOS及其系列应用，提供具体的使用方法和功能说明。</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="32"/>
@@ -35,8 +30,8 @@
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="36"/>
-        <source>Change your keywords and try again, or search it in Deepin Wiki</source>
-        <translation>您可以调整关键字或前往百科查找相关内容</translation>
+        <source>Change your keywords and try again, or search for it in Deepin Wiki</source>
+        <translation>您可以调整关键字或在百科中搜索</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="38"/>
@@ -61,58 +56,53 @@
     <message>
         <location filename="../src/view/widget/search_completion_window.cpp" line="113"/>
         <location filename="../src/view/widget/search_completion_window.cpp" line="162"/>
-        <source>Search &quot;%1&quot; in the full text</source>
+        <source>Search for &quot;%1&quot; in the full text</source>
         <translation>在全文中搜索“%1”</translation>
     </message>
     <message>
-        <location filename="../src/view/widget/title_bar.cpp" line="96"/>
+        <location filename="../src/view/web_window.cpp" line="304"/>
+        <source>Resize Window</source>
+        <translation>窗口大小切换</translation>
+    </message>
+    <message>
+        <location filename="../src/view/web_window.cpp" line="304"/>
+        <source>Close Window</source>
+        <translation>关闭应用</translation>
+    </message>
+    <message>
+        <location filename="../src/view/web_window.cpp" line="304"/>
         <source>Search</source>
         <translation>搜索</translation>
     </message>
     <message>
         <location filename="../src/view/web_window.cpp" line="304"/>
-        <source>Resize window:</source>
-        <translation>窗口大小切换:</translation>
+        <source>Show Shortcut</source>
+        <translation>显示快捷键预览</translation>
     </message>
     <message>
         <location filename="../src/view/web_window.cpp" line="304"/>
-        <source>Close window:</source>
-        <translation>关闭应用:</translation>
+        <source>Select</source>
+        <translation>全选</translation>
     </message>
     <message>
         <location filename="../src/view/web_window.cpp" line="304"/>
-        <source>Search:</source>
-        <translation>搜索:</translation>
+        <source>Copy</source>
+        <translation>复制</translation>
     </message>
     <message>
         <location filename="../src/view/web_window.cpp" line="304"/>
-        <source>Show shortcut:</source>
-        <translation>显示快捷键预览:</translation>
+        <source>Paste</source>
+        <translation>粘贴</translation>
     </message>
     <message>
         <location filename="../src/view/web_window.cpp" line="304"/>
-        <source>Select all:</source>
-        <translation>全选:</translation>
+        <source>Cut</source>
+        <translation>剪切</translation>
     </message>
     <message>
         <location filename="../src/view/web_window.cpp" line="304"/>
-        <source>Copy:</source>
-        <translation>复制:</translation>
-    </message>
-    <message>
-        <location filename="../src/view/web_window.cpp" line="304"/>
-        <source>Paste:</source>
-        <translation>粘贴:</translation>
-    </message>
-    <message>
-        <location filename="../src/view/web_window.cpp" line="304"/>
-        <source>Cut:</source>
-        <translation>剪切:</translation>
-    </message>
-    <message>
-        <location filename="../src/view/web_window.cpp" line="304"/>
-        <source>Backward character:</source>
-        <translation>向前删除一个字符:</translation>
+        <source>Backward Character</source>
+        <translation>向前删除一个字符</translation>
     </message>
 </context>
 </TS>

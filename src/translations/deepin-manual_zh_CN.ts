@@ -10,8 +10,8 @@
     </message>
     <message>
         <location filename="../src/app/dman.cpp" line="83"/>
-        <source>Deepin Manual is designed to help users learn deepin and Deepin applications, providing specific instructions and function descriptions.</source>
-        <translation>帮助手册为帮助用户了解深度操作系统和深度系列应用，提供具体的使用方法和功能说明。</translation>
+        <source>Manual is designed to help users learn UOS and its applications, providing specific instructions and function descriptions.</source>
+        <translation>帮助手册为帮助用户了解UOS及其系列应用，提供具体的使用方法和功能说明。</translation>
     </message>
     <message>
         <location filename="../src/view/web_event_delegate.cpp" line="63"/>

@@ -61,7 +61,9 @@
 - 依赖关系不满足。
 
 
-![0|cant](jpg/cant.jpg)
+![0|cant](jpg/cant1.png)
+
+![0|cant](jpg/cant2.png)
 
 
 ### 卸载

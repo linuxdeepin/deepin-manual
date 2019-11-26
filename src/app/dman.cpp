@@ -100,11 +100,9 @@ int main(int argc, char **argv)
     app.setApplicationVersion(DApplication::buildVersion(VERSION));
     app.setApplicationName(dman::kAppName);
     app.loadTranslator();
-    app.setApplicationDisplayName(QObject::tr("Deepin Manual"));
-    app.setApplicationDescription(QObject::tr(
-                                      "Deepin Manual is designed to help users learn deepin and "
-                                      "Deepin applications, providing specific instructions and "
-                                      "function descriptions."));
+    app.setApplicationDisplayName(QObject::tr("Manual"));
+    app.setApplicationDescription(QObject::tr("Manual is designed to help users learn UOS and its applications,"
+                                              " providing specific instructions and function descriptions."));
     app.setApplicationAcknowledgementPage(
         "https://www.deepin.org/acknowledgments/deepin-manual/");
     //save theme

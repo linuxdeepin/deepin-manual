@@ -715,7 +715,7 @@ var Index = function (_Component2) {
 
     var _this3 = _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).call(this, props));
 
-    var sequence = ['deepin-voice-note', 'deepin-compressor', 'deepin-album', 'deepin-reader', 'deepin-editor', 'dde-calendar', 'deepin-draw', 'dde-file-manager', 'dde-devicemanager',
+    var sequence = ['deepin-contacts', 'deepin-voice-note', 'deepin-compressor', 'deepin-album', 'deepin-reader', 'deepin-editor', 'dde-calendar', 'deepin-draw', 'dde-file-manager', 'dde-devicemanager', 'dde-printer',
     // 'dde-log-viewer',
     'deepin-appstore', 'deepin-system-monitor', 'deepin-terminal', 'deepin-movie', 'deepin-music', 'deepin-image-viewer', 'deepin-screen-recorder', 'deepin-voice-recorder', 'deepin-calculator', 'deepin-clone', 'deepin-repair-tools', 'deepin-picker', 'deepin-graphics-driver-manager', 'deepin-deb-installer', 'deepin-font-manager', 'deepin-boot-maker'];
     _this3.state = {
@@ -746,7 +746,7 @@ var Index = function (_Component2) {
     value: function render() {
       var _this4 = this;
 
-      var sysSoft = ['dde', 'dde-control-center'].filter(function (appName) {
+      var sysSoft = ['dde'].filter(function (appName) {
         return _this4.state.appList.indexOf(appName) != -1;
       });
       var appSoft = this.state.sequence.filter(function (appName) {
