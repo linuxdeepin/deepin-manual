@@ -32,9 +32,9 @@ QVariantHash I18nProxy::getSentences() const {
       { "System", QObject::tr("System") },
       { "Applications", QObject::tr("Applications") },
       { "NoResult",QObject::tr(
-                      "Sorry,there are no search results of your search") },
+                      "Sorry, there are no search results for \"%1\"") },
       { "WikiSearch", QObject::tr(
-          "Change your keywords and try again, or search it in Deepin Wiki") },
+          "Change your keywords and try again, or search for it in Deepin Wiki") },
       { "ToIndexPage", QObject::tr("Home") },
       { "SearchInWiki", QObject::tr("Deepin Wiki") },
       { "ResultNumSuffix", QObject::tr("result") },//单数结果后缀

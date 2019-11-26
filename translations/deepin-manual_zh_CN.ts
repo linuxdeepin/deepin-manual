@@ -25,8 +25,8 @@
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="35"/>
-        <source>Sorry,there are no search results of your search</source>
-        <translation type="unfinished">抱歉,没有您搜索的内容</translation>
+        <source>Sorry, there are no search results for "%1"</source>
+        <translation>抱歉，没有关于“%1”的搜索结果</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="36"/>
@@ -56,7 +56,7 @@
     <message>
         <location filename="../src/view/widget/search_completion_window.cpp" line="113"/>
         <location filename="../src/view/widget/search_completion_window.cpp" line="162"/>
-        <source>Search for &quot;%1&quot; in the full text</source>
+        <source>Search for "%1" in the full text</source>
         <translation>在全文中搜索“%1”</translation>
     </message>
     <message>
