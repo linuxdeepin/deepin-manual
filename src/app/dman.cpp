@@ -91,7 +91,7 @@ int main(int argc, char **argv)
         app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings, true);
     }
 
-    app.setAttribute(Qt::AA_EnableHighDpiScaling, true);
+//    app.setAttribute(Qt::AA_EnableHighDpiScaling, true);
     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
     app.setWindowIcon(QIcon::fromTheme("deepin-manual"));
     app.setProductIcon(QIcon::fromTheme("deepin-manual"));

@@ -9,6 +9,7 @@
  */
 
 #include "manual_search_adapter.h"
+
 #include <QtCore/QMetaObject>
 #include <QtCore/QByteArray>
 #include <QtCore/QList>
@@ -41,8 +42,29 @@ bool ManualSearchAdapter::ManualExists(const QString &in0)
     return out0;
 }
 
-void ManualSearchAdapter::Search(const QString &data)
+void ManualSearchAdapter::handleOpenHelpAction(const QString &keyword)
 {
-    QMetaObject::invokeMethod(parent(), "Search", Q_ARG(QString, data));
+    qWarning() << "handleOpenHelpAction";
+
+    // new interface use applicationName as id
+    QDBusInterface manual("com.deepin.Manual.Open",
+                          "/com/deepin/Manual/Open",
+                          "com.deepin.Manual.Open");
+    qWarning() << "QDBusInterface";
+    QDBusReply<void> reply = manual.asyncCall("ShowManual", "");
+    qWarning() << "call dbus ShowManual";
+    if (reply.isValid())  {
+        qDebug() << "call com.deepin.Manual.Open success";
+    }
+
+    QTimer::singleShot(1000, this, [=]() {
+        QMetaObject::invokeMethod(parent(), "Search", Q_ARG(QString, keyword));
+    });
+}
+
+
+void ManualSearchAdapter::Search(const QString &keyword)
+{
+    handleOpenHelpAction(keyword);
 }
 

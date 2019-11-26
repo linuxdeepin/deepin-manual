@@ -206,9 +206,7 @@ void WebWindow::initUI()
     buttonFrame->setLayout(buttonLayout);
 
     search_edit_ = new SearchEdit(this);
-    QFont searchFont;
-    searchFont.setPixelSize(14);
-    search_edit_->setFont(searchFont);
+    DFontSizeManager::instance()->bind(search_edit_, DFontSizeManager::T6, QFont::Normal);
     search_edit_->setObjectName("SearchEdit");
     search_edit_->setFixedSize(350, 44);
     search_edit_->setPlaceHolder(QObject::tr("Search"));

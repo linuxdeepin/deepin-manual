@@ -53,8 +53,11 @@ public Q_SLOTS: // METHODS
     bool ManualExists(const QString &in0);
     void Search(const QString &data);
 
+private:
+    void handleOpenHelpAction(const QString &keyword);
+
 Q_SIGNALS: // SIGNALS
-    void Signal_Search(const QString &data);
+    void Signal_Search(const QString &keyword);
 };
 
 #endif

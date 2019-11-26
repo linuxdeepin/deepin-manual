@@ -44,9 +44,9 @@ void SearchCompletionDelegate::paint(QPainter *painter, const QStyleOptionViewIt
 
         QRect searchTextRect = QRect(rect.left()+32, rect.top()+7, rect.width()-64, rect.height()-14);
 
-        QFont nameFont("Source HanSans SC");
-        nameFont.setPixelSize(14);
-        nameFont.setWeight(QFont::Medium);
+        QFont nameFont;
+        nameFont.setPixelSize(DFontSizeManager::instance()->fontPixelSize(DFontSizeManager::T6));
+	nameFont.setWeight(QFont::Medium);
         painter->setFont(nameFont);
 
         QPainterPath path;
@@ -78,7 +78,10 @@ void SearchCompletionDelegate::paint(QPainter *painter, const QStyleOptionViewIt
         painter->fillRect(lineRect, fillColor);
 
         painter->setPen(QPen(option.palette.color(DPalette::ToolTipText)));
-        painter->drawText(searchTextRect, Qt::AlignLeft | Qt::AlignVCenter, searchText);
+
+        QFontMetrics fontMetric(nameFont);
+        const QString elidedSearchText = fontMetric.elidedText(searchText, Qt::ElideRight, rect.width()-64);
+        painter->drawText(searchTextRect, Qt::AlignLeft | Qt::AlignVCenter, elidedSearchText);
 
         painter->restore();
     } else {

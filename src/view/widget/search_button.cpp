@@ -25,6 +25,7 @@
 
 #include <DStyleHelper>
 #include <DApplicationHelper>
+#include <DFontSizeManager>
 
 #include <DLog>
 
@@ -67,14 +68,11 @@ SearchButton::SearchButton(QWidget* parent)
         iconBtn->setIcon(iconPm);
     }
 
-    QFont textFont("Source HanSans SC");
-    textFont.setPixelSize(14);
-    textFont.setWeight(QFont::Medium);
-
     DPalette paLabel = DApplicationHelper::instance()->palette(m_textLabel);
     paLabel.setColor(DPalette::WindowText, paLabel.color(DPalette::WindowText));
     m_textLabel->setPalette(paLabel);
-    m_textLabel->setFont(textFont);
+
+    DFontSizeManager::instance()->bind(m_textLabel, DFontSizeManager::T6, QFont::Medium);
 
     QHBoxLayout *centerLayout = new QHBoxLayout(this);
     centerLayout->setMargin(0);
