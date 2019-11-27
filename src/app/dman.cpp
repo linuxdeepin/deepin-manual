@@ -27,6 +27,7 @@
 #include "controller/argument_parser.h"
 #include "controller/window_manager.h"
 #include "resources/themes/images.h"
+#include "environments.h"
 
 #include <DLog>
 #include <DApplication>
@@ -100,7 +101,7 @@ int main(int argc, char **argv)
     app.setProductIcon(QIcon::fromTheme("deepin-manual"));
     app.setOrganizationName("deepin");
     app.setOrganizationDomain("deepin.org");
-    app.setApplicationVersion(DApplication::buildVersion("1.0"));
+    app.setApplicationVersion(VERSION);
     app.setApplicationName(dman::kAppName);
     app.loadTranslator();
     app.setApplicationDisplayName(QObject::tr("Manual"));
