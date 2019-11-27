@@ -91,6 +91,13 @@ WebWindow::~WebWindow()
 void WebWindow::setSearchManager(SearchManager *search_manager)
 {
     search_manager_ = search_manager;
+
+    connect(search_manager_, &SearchManager::searchAnchorResult,
+            this, &WebWindow::onSearchAnchorResult);
+    connect(search_manager_, &SearchManager::searchContentResult,
+            search_proxy_, &SearchProxy::onContentResult);
+    connect(search_manager_, &SearchManager::searchContentMismatch,
+            search_proxy_, &SearchProxy::mismatch);
 }
 
 void WebWindow::setAppName(const QString &app_name)
@@ -120,12 +127,6 @@ void WebWindow::initConnections()
     connect(search_edit_, &SearchEdit::focusChanged,
             this, &WebWindow::onSearchEditFocusOut);
 
-    connect(search_manager_, &SearchManager::searchAnchorResult,
-            this, &WebWindow::onSearchAnchorResult);
-    connect(search_manager_, &SearchManager::searchContentResult,
-            search_proxy_, &SearchProxy::onContentResult);
-    connect(search_manager_, &SearchManager::searchContentMismatch,
-            search_proxy_, &SearchProxy::mismatch);
     connect(completion_window_, &SearchCompletionWindow::resultClicked,
             this, &WebWindow::onSearchResultClicked);
     connect(completion_window_, &SearchCompletionWindow::searchButtonClicked,

@@ -55,6 +55,7 @@ void WindowManager::openManual(const QString &app_name)
             window->show();
             window->raise();
             window->activateWindow();
+            window->setSearchManager(currSearchManager());
         }
         return;
     }
@@ -71,12 +72,14 @@ void WindowManager::openManual(const QString &app_name)
     windows_.insert(app_name, window);
 
     search_manager_ = currSearchManager();
+    window->setSearchManager(search_manager_);
     connect(window, &WebWindow::closed, this, &WindowManager::onWindowClosed);
 }
 
 SearchManager* WindowManager::currSearchManager()
 {
     if (nullptr == search_manager_) {
+        qDebug() << "init SearchManager" << endl;
         search_manager_ = new SearchManager(this);
     }
 
