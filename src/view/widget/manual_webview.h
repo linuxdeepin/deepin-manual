@@ -1,12 +1,14 @@
 #ifndef MANUALWEBVIEW_H
 #define MANUALWEBVIEW_H
 
-#include <DTitlebar>
-#include <DMainWindow>
-
 #include <qcef_web_page.h>
 #include <qcef_web_settings.h>
 #include <qcef_web_view.h>
+
+#include <QShortcut>
+
+#include <DTitlebar>
+#include <DMainWindow>
 
 DWIDGET_USE_NAMESPACE
 
@@ -29,7 +31,7 @@ private:
     void updateWebZoom();
 
     bool m_window_mapped;
-
+    QShortcut *m_scShowShortcuts;
     DMainWindow *m_parentWin;
 };
 

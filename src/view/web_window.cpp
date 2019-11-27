@@ -298,9 +298,9 @@ void WebWindow::initShortcuts()
     scShowShortcuts->setKey(tr("Ctrl+Shift+/"));
     scShowShortcuts->setContext(Qt::WindowShortcut);
     scShowShortcuts->setAutoRepeat(false);
-    connect(scShowShortcuts, &QShortcut::activated, this, []{
+    connect(scShowShortcuts, &QShortcut::activated, this, [this]{
         qDebug() << "show short cuts" << endl;
-        WebWindow::showAllShortcut();
+        this->showAllShortcut();
     });
 }
 
@@ -349,10 +349,11 @@ void WebWindow::showAllShortcut()
     QString param2 = "-p=" + QString::number(pos.x()) + "," + QString::number(pos.y());
     shortcutString << param1 << param2;
 
-    QProcess* shortcutViewProcess = new QProcess();
-    shortcutViewProcess->startDetached("deepin-shortcut-viewer", shortcutString);
-
-    connect(shortcutViewProcess, SIGNAL(finished(int)), shortcutViewProcess, SLOT(deleteLater()));
+    if (nullptr == shortcut_process)
+    {
+        shortcut_process = new QProcess();
+    }
+    shortcut_process->startDetached("deepin-shortcut-viewer", shortcutString);
 }
 
 void WebWindow::resizeEvent(QResizeEvent *event)
@@ -529,22 +530,28 @@ void WebWindow::slot_ButtonShow()
     });
 
     //设置前进快捷键
-    QShortcut *m_scBack = new QShortcut(QKeySequence(Qt::Key_Left), this);
-    m_scBack->setContext(Qt::WindowShortcut);
-    m_scBack->setAutoRepeat(false);
-    connect(m_scBack, &QShortcut::activated, this, [this]{
-        qDebug() << "back" << endl;
-        title_bar_proxy_->backwardButtonClicked();
-    });
+    if (nullptr == m_scBack)
+    {
+        m_scBack = new QShortcut(QKeySequence(Qt::Key_Left), this);
+        m_scBack->setContext(Qt::WindowShortcut);
+        m_scBack->setAutoRepeat(false);
+        connect(m_scBack, &QShortcut::activated, this, [this]{
+            qDebug() << "back" << endl;
+            title_bar_proxy_->backwardButtonClicked();
+        });
+    }
 
     //设置后退快捷键
-    QShortcut *m_scForward = new QShortcut(QKeySequence(Qt::Key_Right), this);
-    m_scForward->setContext(Qt::WindowShortcut);
-    m_scForward->setAutoRepeat(false);
-    connect(m_scForward, &QShortcut::activated, this, [this]{
-        qDebug() << "forward" << endl;
-        title_bar_proxy_->forwardButtonClicked();
-    });
+    if (nullptr == m_scForward)
+    {
+        m_scForward = new QShortcut(QKeySequence(Qt::Key_Right), this);
+        m_scForward->setContext(Qt::WindowShortcut);
+        m_scForward->setAutoRepeat(false);
+        connect(m_scForward, &QShortcut::activated, this, [this]{
+            qDebug() << "forward" << endl;
+            title_bar_proxy_->forwardButtonClicked();
+        });
+    }
 }
 
 }  // namespace dman

@@ -59,7 +59,7 @@ public:
 
     bool eventFilter(QObject *watched, QEvent *event) override;
 
-    static void showAllShortcut();
+    void showAllShortcut();
     void setSearchManager(SearchManager *searchManager);
 
     Dtk::Widget::DButtonBoxButton *m_backButton;
@@ -86,22 +86,26 @@ private:
     void initDBus();
 
     QString app_name_;
-    SearchManager *search_manager_ = nullptr;
-    SearchProxy *search_proxy_ = nullptr;
-    ThemeProxy *theme_proxy_ = nullptr;
-    SearchCompletionWindow *completion_window_ = nullptr;
-    I18nProxy *i18n_ = nullptr;
-    ImageViewer *image_viewer_ = nullptr;
-    ImageViewerProxy *image_viewer_proxy_ = nullptr;
-    ManualProxy *manual_proxy_ = nullptr;
-    TitleBar *title_bar_ = nullptr;
-    TitleBarProxy *title_bar_proxy_ = nullptr;
-    ManualWebView *web_view_ = nullptr;
+    SearchManager *search_manager_ { nullptr };
+    SearchProxy *search_proxy_ { nullptr };
+    ThemeProxy *theme_proxy_ { nullptr };
+    SearchCompletionWindow *completion_window_ { nullptr };
+    I18nProxy *i18n_ { nullptr };
+    ImageViewer *image_viewer_ { nullptr };
+    ImageViewerProxy *image_viewer_proxy_ { nullptr };
+    ManualProxy *manual_proxy_ { nullptr };
+    TitleBar *title_bar_ { nullptr };
+    TitleBarProxy *title_bar_proxy_ { nullptr };
+    ManualWebView *web_view_ { nullptr};
     QTimer search_timer_;
-    Dtk::Widget::DButtonBox *buttonBox;
-    SearchEdit *search_edit_;
+    Dtk::Widget::DButtonBox *buttonBox { nullptr};
+    SearchEdit *search_edit_ { nullptr};
     QPoint start_point_;
     int start_drag_x;
+    QProcess* shortcut_process { nullptr};
+
+    QShortcut *m_scBack { nullptr};
+    QShortcut *m_scForward { nullptr};
 
 private slots:
     void onSearchEditFocusOut();
