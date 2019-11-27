@@ -1,4 +1,4 @@
-# Device Manager|../common/dde-devicemanager.svg|
+# Device Manager|../common/deepin-devicemanager.svg|
 
 ## Overview
 
