@@ -46,6 +46,7 @@
 #include <DTitlebar>
 #include <DButtonBox>
 #include <DApplicationHelper>
+#include <DPlatformWindowHandle>
 
 DWIDGET_USE_NAMESPACE
 
@@ -59,15 +60,18 @@ const int kSearchDelay = 200;
 }  // namespace
 
 
-WebWindow::WebWindow(SearchManager *search_manager, QWidget *parent)
+WebWindow::WebWindow(QWidget *parent)
     : Dtk::Widget::DMainWindow(parent)
     , app_name_()
-    , search_manager_(search_manager)
     , search_proxy_(new SearchProxy(this))
     , theme_proxy_(new ThemeProxy(this))
     , search_timer_()
 {
+    // 使用 redirectContent 模式，用于内嵌 x11 窗口时能有正确的圆角效果
+    Dtk::Widget::DPlatformWindowHandle::enableDXcbForWindow(this, true);
+
     search_timer_.setSingleShot(true);
+
     this->initUI();
     this->initConnections();
     this->initShortcuts();
@@ -82,6 +86,11 @@ WebWindow::~WebWindow()
         delete completion_window_;
         completion_window_ = nullptr;
     }
+}
+
+void WebWindow::setSearchManager(SearchManager *search_manager)
+{
+    search_manager_ = search_manager;
 }
 
 void WebWindow::setAppName(const QString &app_name)
@@ -236,7 +245,12 @@ void WebWindow::initUI()
     this->setCentralWidget(web_view_);
 
     // Disable web security.
-    web_view_->page()->settings()->setWebSecurity(QCefWebSettings::StateDisabled);
+    auto settings = web_view_->page()->settings();
+    settings->setMinimumFontSize(8);
+    settings->setWebSecurity(QCefWebSettings::StateDisabled);
+
+    // init default font size
+    settings->setDefaultFontSize(this->fontInfo().pixelSize());
 
     // Use TitleBarProxy instead.
     QWebChannel *channel = web_view_->page()->webChannel();
@@ -358,7 +372,7 @@ void WebWindow::onSearchContentByKeyword(const QString &keyword)
 
 void WebWindow::onSearchEditFocusOut()
 {
-    QTimer::singleShot(20, [ = ]() {
+    QTimer::singleShot(20, [=]() {
         this->completion_window_->hide();
     });
 }
@@ -468,25 +482,20 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
 {
     // Filters mouse press event only.
     if (event->type() == QEvent::MouseButtonPress &&
-            qApp->activeWindow() == this &&
-            watched->objectName() == QLatin1String("QMainWindowClassWindow"))
-    {
+        qApp->activeWindow() == this &&
+        watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
         QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
-        switch (mouseEvent->button())
-        {
-        case Qt::BackButton:
-        {
-            title_bar_proxy_->backwardButtonClicked();
-            break;
-        }
-        case Qt::ForwardButton:
-        {
-            title_bar_proxy_->forwardButtonClicked();
-            break;
-        }
-        default:
-        {
-        }
+        switch (mouseEvent->button()) {
+            case Qt::BackButton: {
+                title_bar_proxy_->backwardButtonClicked();
+                break;
+            }
+            case Qt::ForwardButton: {
+                title_bar_proxy_->forwardButtonClicked();
+                break;
+            }
+            default: {
+            }
         }
     }
 
@@ -501,14 +510,22 @@ void WebWindow::closeEvent(QCloseEvent *event)
 
 void WebWindow::slot_ButtonHide()
 {
-    qDebug() << "slot_ButtonHide";
-    buttonBox->hide();
+    QTimer::singleShot(20, [=]() {
+        qDebug() << "slot_ButtonHide";
+        buttonBox->hide();
+    });
 }
 
 void WebWindow::slot_ButtonShow()
 {
-    qDebug() << "slot_ButtonShow";
-    buttonBox->show();
+    QTimer::singleShot(20, [=]() {
+        qDebug() << "slot_ButtonShow";
+        buttonBox->show();
+
+        //这里这样做是为了让快捷键（左右键）能够生效
+        titlebar()->grabKeyboard();
+        titlebar()->releaseKeyboard();
+    });
 
     //设置前进快捷键
     QShortcut *m_scBack = new QShortcut(QKeySequence(Qt::Key_Left), this);
@@ -527,10 +544,6 @@ void WebWindow::slot_ButtonShow()
         qDebug() << "forward" << endl;
         title_bar_proxy_->forwardButtonClicked();
     });
-
-    //这里这样做是为了让快捷键（左右键）能够生效
-    titlebar()->grabKeyboard();
-    titlebar()->releaseKeyboard();
 }
 
 }  // namespace dman

@@ -97,6 +97,8 @@ set(BASE_FILES
     base/file_util.h
     base/utils.cpp
     base/utils.h
+    base/sysinfo.cpp
+    base/sysinfo.h
     )
 
 set(CONTROLLER_FILES

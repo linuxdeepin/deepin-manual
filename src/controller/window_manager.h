@@ -24,36 +24,41 @@
 
 namespace dman {
 
+class QCefGlobalSettings;
 class SearchManager;
 class WebWindow;
 
 // Manages visibility and lifecycle of web windows.
 // Current process will exit only if all of these windows are closed.
 class WindowManager : public QObject {
-  Q_OBJECT
- public:
-  explicit WindowManager(QObject* parent = nullptr);
-  ~WindowManager() override;
+    Q_OBJECT
+public:
+    explicit WindowManager(QObject* parent = nullptr);
+    ~WindowManager() override;
 
-  /**
-   * Open manual page of application with name |app_name|.
-   * If manual of that app has already been presented, just raise to front.
-   */
-  void openManual(const QString& app_name);
+    /**
+    * Open manual page of application with name |app_name|.
+    * If manual of that app has already been presented, just raise to front.
+    */
+    void openManual(const QString& app_name);
 
- private:
-  QPoint newWindowPosition();
+    void moveWindow(WebWindow *window);
+    SearchManager* currSearchManager();
 
-  QHash<QString, WebWindow*> windows_;
-  SearchManager* search_manager_ = nullptr;
-  QPoint last_new_window_pos_;
+private:
+    QPoint newWindowPosition();
 
- private slots:
-  /**
-   * Remove window from window list.
-   * @param app_name
-   */
-  void onWindowClosed(const QString& app_name);
+    QHash<QString, WebWindow*> windows_;
+    WebWindow *m_window;
+    SearchManager* search_manager_ = nullptr;
+    QPoint last_new_window_pos_;
+
+private slots:
+    /**
+    * Remove window from window list.
+    * @param app_name
+    */
+    void onWindowClosed(const QString& app_name);
 };
 
 }  // namespace dman

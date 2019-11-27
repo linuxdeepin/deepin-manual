@@ -16,13 +16,13 @@
  */
 
 #include "controller/window_manager.h"
+#include "controller/search_manager.h"
+#include "view/web_window.h"
 
 #include <QApplication>
 #include <DLog>
 #include <QDesktopWidget>
 #include <QFile>
-#include "controller/search_manager.h"
-#include "view/web_window.h"
 
 namespace dman {
 
@@ -39,7 +39,7 @@ const int kWinOffset = 30;
 WindowManager::WindowManager(QObject *parent)
     : QObject(parent)
     , windows_()
-    , search_manager_(new SearchManager(this))
+    , search_manager_(nullptr)
 {
 }
 
@@ -49,6 +49,7 @@ void WindowManager::openManual(const QString &app_name)
 {
     qDebug() << Q_FUNC_INFO << app_name;
     if (windows_.contains(app_name)) {
+        qDebug() << "openManual contains:" << app_name;
         WebWindow *window = windows_.value(app_name);
         if (window != nullptr) {
             window->show();
@@ -61,18 +62,33 @@ void WindowManager::openManual(const QString &app_name)
     // Add a placeholder record.
     windows_.insert(app_name, nullptr);
 
-    WebWindow *window = new WebWindow(search_manager_);
+    WebWindow *window = new WebWindow;
     window->setAppName(app_name);
-    windows_.insert(app_name, window);
-    window->resize(kWinWidth, kWinHeight);
-    window->setMinimumSize(kWinMinWidth, kWinMinHeight);
     window->show();
     window->activateWindow();
 
+    moveWindow(window);
+    windows_.insert(app_name, window);
+
+    search_manager_ = currSearchManager();
+    connect(window, &WebWindow::closed, this, &WindowManager::onWindowClosed);
+}
+
+SearchManager* WindowManager::currSearchManager()
+{
+    if (nullptr == search_manager_) {
+        search_manager_ = new SearchManager(this);
+    }
+
+    return search_manager_;
+}
+
+void WindowManager::moveWindow(WebWindow *window)
+{
+    window->resize(kWinWidth, kWinHeight);
+    window->setMinimumSize(kWinMinWidth, kWinMinHeight);
     const QPoint pos = this->newWindowPosition();
     window->move(pos);
-
-    connect(window, &WebWindow::closed, this, &WindowManager::onWindowClosed);
 }
 
 QPoint WindowManager::newWindowPosition()

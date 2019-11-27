@@ -48,7 +48,7 @@ class WebWindow : public Dtk::Widget::DMainWindow
     Q_PROPERTY(QString appName READ appName WRITE setAppName)
 
 public:
-    explicit WebWindow(SearchManager *search_manager, QWidget *parent = nullptr);
+    explicit WebWindow(QWidget *parent = nullptr);
     ~WebWindow() override;
 
     // Get app name of manual currently presented.
@@ -60,6 +60,7 @@ public:
     bool eventFilter(QObject *watched, QEvent *event) override;
 
     static void showAllShortcut();
+    void setSearchManager(SearchManager *searchManager);
 
     Dtk::Widget::DButtonBoxButton *m_backButton;
     Dtk::Widget::DButtonBoxButton *m_forwardButton;
