@@ -27,7 +27,6 @@
 #include "controller/argument_parser.h"
 #include "controller/window_manager.h"
 #include "resources/themes/images.h"
-#include "environments.h"
 
 #include <DLog>
 #include <DApplication>
@@ -55,9 +54,11 @@ int main(int argc, char **argv)
 
     if (qEnvironmentVariableIntValue("QCEF_DEBUG") == 1) {
         // Open http://localhost:9222 in chromium browser to see dev tools.
+        qDebug() << "enable QCEF_DEBUG " << endl;
         settings.setRemoteDebug(true);
         settings.setLogSeverity(QCefGlobalSettings::LogSeverity::Verbose);
     } else {
+        qDebug() << "disable QCEF_DEBUG " << endl;
         settings.setRemoteDebug(false);
         settings.setLogSeverity(QCefGlobalSettings::LogSeverity::Error);
     }
@@ -99,7 +100,7 @@ int main(int argc, char **argv)
     app.setProductIcon(QIcon::fromTheme("deepin-manual"));
     app.setOrganizationName("deepin");
     app.setOrganizationDomain("deepin.org");
-    app.setApplicationVersion(DApplication::buildVersion(VERSION));
+    app.setApplicationVersion(DApplication::buildVersion("1.0"));
     app.setApplicationName(dman::kAppName);
     app.loadTranslator();
     app.setApplicationDisplayName(QObject::tr("Manual"));
@@ -107,6 +108,7 @@ int main(int argc, char **argv)
                                               " providing specific instructions and function descriptions."));
     app.setApplicationAcknowledgementPage(
         "https://www.deepin.org/acknowledgments/deepin-manual/");
+
     //save theme
     DApplicationSettings dApplicationSettings;
 
@@ -137,9 +139,8 @@ int main(int argc, char **argv)
         dman::WindowManager window_manager;
         QObject::connect(&argument_parser,
                          &dman::ArgumentParser::openManualRequested,
-                         &window_manager, &dman::WindowManager::openManual);
-//        // Send openManualRequested() signals after slots connected.
-//        argument_parser.openManualsDelay();
+                         &window_manager,
+                         &dman::WindowManager::openManual);
 
         dman::WebWindow window;
 
