@@ -289,7 +289,8 @@ void WebWindow::initShortcuts()
     scSearch->setAutoRepeat(false);
     connect(scSearch, &QShortcut::activated, this, [this]{
         qDebug() << "search" << endl;
-        search_edit_->lineEdit()->setFocus(Qt::MouseFocusReason);
+        search_edit_->lineEdit()->setFocus(Qt::ShortcutFocusReason);
+        web_view_->page()->remapBrowserWindow(web_view_->winId(), this->winId());
     });
 
     //显示快捷键预览
@@ -488,10 +489,12 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
         QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
         switch (mouseEvent->button()) {
             case Qt::BackButton: {
+                qDebug() << "eventFilter back";
                 title_bar_proxy_->backwardButtonClicked();
                 break;
             }
             case Qt::ForwardButton: {
+                qDebug() << "eventFilter forward";
                 title_bar_proxy_->forwardButtonClicked();
                 break;
             }
@@ -505,12 +508,15 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
 
 void WebWindow::closeEvent(QCloseEvent *event)
 {
-    delete shortcut_process;
+    if (shortcut_process != nullptr) {
 
-    QStringList cmdList = {"deepin-shortcut-viewer"};
-    const bool exitProcess = dman::SpawnCmd("killall", cmdList);
-    if (!exitProcess) {
-        qWarning() << "exit deepin-shortcut-viewer process error!";
+        delete shortcut_process;
+
+        QStringList cmdList = {"deepin-shortcut-viewer"};
+        const bool exitProcess = dman::SpawnCmd("killall", cmdList);
+        if (!exitProcess) {
+            qWarning() << "exit deepin-shortcut-viewer process error!";
+        }
     }
 
     emit this->closed(app_name_);
