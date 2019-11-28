@@ -283,7 +283,7 @@ div {
     display: flex;
     position: relative;
     left: -50px;
-    width: calc(100% + 50px);
+    width: calc(100% + 100px);
     right: 0px;
     flex-flow: row;
     flex-wrap: wrap;
@@ -311,9 +311,9 @@ div {
         word-break: normal;
         display: inline-block;
         font-family: SourceHanSansSC-Bold;
-        font-weight: bold;
-        line-height: var(--span-line-height);
         font-size: var(--span-font-size);
+        line-height: var(--span-line-height);
+        font-weight: bold;
         color: var(--index-item-span-word-color); }
       #index .items .item:hover {
         background-clip: content-box;
