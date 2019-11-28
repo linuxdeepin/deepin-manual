@@ -30,6 +30,7 @@
 #include "view/widget/search_completion_window.h"
 #include "view/widget/title_bar.h"
 #include "view/widget/search_edit.h"
+#include "base/command.h"
 
 #include <qcef_web_page.h>
 
@@ -76,8 +77,6 @@ WebWindow::WebWindow(QWidget *parent)
     this->initConnections();
     this->initShortcuts();
     this->initDBus();
-
-    qApp->installEventFilter(this);
 }
 
 WebWindow::~WebWindow()
@@ -506,8 +505,17 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
 
 void WebWindow::closeEvent(QCloseEvent *event)
 {
-    QWidget::closeEvent(event);
+    delete shortcut_process;
+
+    QStringList cmdList = {"deepin-shortcut-viewer"};
+    const bool exitProcess = dman::SpawnCmd("killall", cmdList);
+    if (!exitProcess) {
+        qWarning() << "exit deepin-shortcut-viewer process error!";
+    }
+
     emit this->closed(app_name_);
+
+    QWidget::closeEvent(event);
 }
 
 void WebWindow::slot_ButtonHide()
