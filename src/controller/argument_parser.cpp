@@ -54,6 +54,9 @@ bool ArgumentParser::parseArguments() {
   QCommandLineParser parser;
   parser.addHelpOption();
   parser.addVersionOption();
+  parser.addOption(QCommandLineOption(
+      "dbus", "enable daemon mode"
+  ));
   parser.parse(qApp->arguments());
 
   // Register dbus service.
@@ -88,27 +91,27 @@ bool ArgumentParser::parseArguments() {
       } else {
         // It may fail to register dbus service in root session.
         // Create new instance.
-//        for (const QString& manual : position_args) {
-//          manuals_.append(manual);
-//        }
+        for (const QString& manual : position_args) {
+          manuals_.append(manual);
+        }
         return false;
       }
     }
     return true;
   } else {
     qDebug() << "Register dbus service successfully";
-//    const QStringList position_args = parser.positionalArguments();
-//    if (position_args.isEmpty()) {
-//      // Open index page if not in dbus daemon mode.
-//      if (!parser.isSet("dbus")) {
-//        manuals_.append("");
-//      }
-//    } else {
-//      // Only parse positional arguments.
-//      for (const QString& manual : position_args) {
-//        manuals_.append(manual);
-//      }
-//    }
+    const QStringList position_args = parser.positionalArguments();
+    if (position_args.isEmpty()) {
+      // Open index page if not in dbus daemon mode.
+      if (!parser.isSet("dbus")) {
+        manuals_.append("");
+      }
+    } else {
+      // Only parse positional arguments.
+      for (const QString& manual : position_args) {
+        manuals_.append(manual);
+      }
+    }
     return false;
   }
 }

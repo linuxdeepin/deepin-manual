@@ -142,16 +142,8 @@ int main(int argc, char **argv)
                          &dman::ArgumentParser::openManualRequested,
                          &window_manager,
                          &dman::WindowManager::openManual);
-
-        dman::WebWindow window;
-
-        app.installEventFilter(&window);
-
-        window.setAppName("");
-        window_manager.moveWindow(&window);
-        window.show();
-
-        window.setSearchManager(window_manager.currSearchManager());
+        // Send openManualRequested() signals after slots connected.
+        argument_parser.openManualsDelay();
 
         return app.exec();
     }

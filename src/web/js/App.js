@@ -75,6 +75,14 @@ class App extends React.Component {
   }
   themeChange(themeType) {
     console.log('主题切换', themeType);
+    if(navigator.language.toString().indexOf('en_') != -1) {
+      document.documentElement.style.setProperty(`--span-line-height`, '13px');
+      document.documentElement.style.setProperty(`--span-font-size`, '12px');
+    }
+    else{
+      document.documentElement.style.setProperty(`--span-line-height`, '18px');
+      document.documentElement.style.setProperty(`--span-font-size`, '17px');
+    }
     if("DarkType"==themeType){
     // console.log('DarkType');
     document.documentElement.style.setProperty(`--body-background-color`, '#252525');

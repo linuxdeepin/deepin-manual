@@ -307,10 +307,13 @@ div {
         margin-top: 16px;
         margin-bottom: 8px; }
       #index .items .item span {
+        width: 160px;
+        word-break: normal;
+        display: inline-block;
         font-family: SourceHanSansSC-Bold;
-        font-size: 17px;
         font-weight: bold;
-        line-height: 25px;
+        line-height: var(--span-line-height);
+        font-size: var(--span-font-size);
         color: var(--index-item-span-word-color); }
       #index .items .item:hover {
         background-clip: content-box;
