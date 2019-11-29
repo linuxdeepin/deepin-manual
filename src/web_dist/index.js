@@ -450,15 +450,15 @@ var Article = function (_Component) {
       var hList = _reactDom2.default.findDOMNode(this).querySelectorAll('h2,h3');
       var hash = hList[0].id;
       for (var i = 0; i < hList.length; i++) {
-        console.log("hlist:" + hList[i]);
+        console.log("article: scroll hlist:" + hList[i]);
         if (hList[i].getBoundingClientRect().top > 1) {
           break;
         }
         hash = hList[i].id;
       }
-      console.log("this.hash:" + this.hash + "   hash:" + hash);
+      console.log("article: scroll this.hash:" + this.hash + "   hash:" + hash);
       if (this.hash != hash) {
-        console.log('hash update');
+        console.log('article: scroll hash update');
         this.hash = hash;
         this.props.setHash(hash);
       }
@@ -722,9 +722,17 @@ var Index = function (_Component2) {
 
     var _this3 = _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).call(this, props));
 
-    var sequence = ['deepin-contacts', 'deepin-voice-note', 'deepin-compressor', 'deepin-album', 'deepin-reader', 'deepin-editor', 'dde-calendar', 'deepin-draw', 'dde-file-manager', 'deepin-devicemanager',
+    var sequence = [
+    // '浏览器',
+    'dde-file-manager', 'deepin-app-store',
+    // '输入法',
+    // '邮件',
+    'deepin-contacts', 'deepin-screen-recorder', 'deepin-image-viewer', 'deepin-album', 'deepin-music', 'deepin-movie', 'deepin-draw', 'dde-calendar', 'deepin-voice-note', 'deepin-reader', 'deepin-editor', 'deepin-compressor', 'dde-printer', 'deepin-terminal',
+    // '安全中心',
+    // '下载器',
+    'deepin-deb-installer', 'deepin-font-manager', 'deepin-calculator', 'deepin-graphics-driver-manager', 'deepin-devicemanager', 'deepin-system-monitor', 'deepin-boot-maker',
     // 'deepin-log-viewer',
-    'dde-printer', 'deepin-app-store', 'deepin-system-monitor', 'deepin-terminal', 'deepin-movie', 'deepin-music', 'deepin-image-viewer', 'deepin-screen-recorder', 'deepin-voice-recorder', 'deepin-calculator', 'deepin-clone', 'deepin-repair-tools', 'deepin-picker', 'deepin-graphics-driver-manager', 'deepin-deb-installer', 'deepin-font-manager', 'deepin-boot-maker'];
+    'deepin-repair-tools', 'deepin-clone', 'deepin-cloud-print', 'deepin-cloud-scan', 'deepin-picker', 'deepin-remote-assistance', 'deepin-presentation-assistant'];
     _this3.state = {
       sequence: sequence,
       appList: []
