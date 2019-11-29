@@ -103,9 +103,6 @@ private:
     QPoint start_point_;
     int start_drag_x;
 
-    QShortcut *m_scBack { nullptr};
-    QShortcut *m_scForward { nullptr};
-
 private slots:
     void onSearchEditFocusOut();
     void onSearchButtonClicked();

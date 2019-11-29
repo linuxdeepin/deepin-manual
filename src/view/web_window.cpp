@@ -28,7 +28,6 @@
 #include "view/web_event_delegate.h"
 #include "view/widget/image_viewer.h"
 #include "view/widget/search_completion_window.h"
-#include "view/widget/title_bar.h"
 #include "view/widget/search_edit.h"
 #include "base/command.h"
 
@@ -199,6 +198,9 @@ void WebWindow::initUI()
     m_forwardButton = new DButtonBoxButton(DStyle::SP_ArrowEnter);
     m_forwardButton->setDisabled(true);
     m_forwardButton->setFixedSize(36, 36);
+
+    m_backButton->setShortcut(Qt::Key_Left);
+    m_forwardButton->setShortcut(Qt::Key_Right);
 
     QList<DButtonBoxButton *> buttonList;
     buttonList << m_backButton << m_forwardButton;
@@ -469,30 +471,6 @@ void WebWindow::slot_ButtonShow()
         titlebar()->grabKeyboard();
         titlebar()->releaseKeyboard();
     });
-
-    //设置前进快捷键
-    if (nullptr == m_scBack)
-    {
-        m_scBack = new QShortcut(QKeySequence(Qt::Key_Left), this);
-        m_scBack->setContext(Qt::WindowShortcut);
-        m_scBack->setAutoRepeat(false);
-        connect(m_scBack, &QShortcut::activated, this, [this]{
-            qDebug() << "back" << endl;
-            title_bar_proxy_->backwardButtonClicked();
-        });
-    }
-
-    //设置后退快捷键
-    if (nullptr == m_scForward)
-    {
-        m_scForward = new QShortcut(QKeySequence(Qt::Key_Right), this);
-        m_scForward->setContext(Qt::WindowShortcut);
-        m_scForward->setAutoRepeat(false);
-        connect(m_scForward, &QShortcut::activated, this, [this]{
-            qDebug() << "forward" << endl;
-            title_bar_proxy_->forwardButtonClicked();
-        });
-    }
 }
 
 }  // namespace dman

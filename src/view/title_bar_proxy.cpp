@@ -17,8 +17,6 @@
 
 #include "view/title_bar_proxy.h"
 
-#include "view/widget/title_bar.h"
-
 namespace dman {
 
 TitleBarProxy::TitleBarProxy(QObject *parent)
