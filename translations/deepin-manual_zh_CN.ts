@@ -54,20 +54,9 @@
         <translation>个结果</translation>
     </message>
     <message>
-        <location filename="../src/view/widget/search_completion_window.cpp" line="113"/>
-        <location filename="../src/view/widget/search_completion_window.cpp" line="162"/>
+        <location filename="../src/view/widget/search_completion_window.cpp" line="146"/>
         <source>Search for "%1" in the full text</source>
         <translation>在全文中搜索“%1”</translation>
-    </message>
-    <message>
-        <location filename="../src/view/web_window.cpp" line="304"/>
-        <source>Resize Window</source>
-        <translation>窗口大小切换</translation>
-    </message>
-    <message>
-        <location filename="../src/view/web_window.cpp" line="304"/>
-        <source>Close Window</source>
-        <translation>关闭应用</translation>
     </message>
     <message>
         <location filename="../src/view/web_window.cpp" line="304"/>
@@ -76,33 +65,8 @@
     </message>
     <message>
         <location filename="../src/view/web_window.cpp" line="304"/>
-        <source>Show Shortcut</source>
-        <translation>显示快捷键预览</translation>
-    </message>
-    <message>
-        <location filename="../src/view/web_window.cpp" line="304"/>
-        <source>Select</source>
-        <translation>全选</translation>
-    </message>
-    <message>
-        <location filename="../src/view/web_window.cpp" line="304"/>
         <source>Copy</source>
         <translation>复制</translation>
-    </message>
-    <message>
-        <location filename="../src/view/web_window.cpp" line="304"/>
-        <source>Paste</source>
-        <translation>粘贴</translation>
-    </message>
-    <message>
-        <location filename="../src/view/web_window.cpp" line="304"/>
-        <source>Cut</source>
-        <translation>剪切</translation>
-    </message>
-    <message>
-        <location filename="../src/view/web_window.cpp" line="304"/>
-        <source>Backward Character</source>
-        <translation>向前删除一个字符</translation>
     </message>
 </context>
 </TS>

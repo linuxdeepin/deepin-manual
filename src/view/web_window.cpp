@@ -292,68 +292,6 @@ void WebWindow::initShortcuts()
         search_edit_->lineEdit()->setFocus(Qt::ShortcutFocusReason);
         web_view_->page()->remapBrowserWindow(web_view_->winId(), this->winId());
     });
-
-    //显示快捷键预览
-    QShortcut *scShowShortcuts = new QShortcut(this);
-    scShowShortcuts->setKey(tr("Ctrl+Shift+/"));
-    scShowShortcuts->setContext(Qt::WindowShortcut);
-    scShowShortcuts->setAutoRepeat(false);
-    connect(scShowShortcuts, &QShortcut::activated, this, [this]{
-        qDebug() << "show short cuts" << endl;
-        this->showAllShortcut();
-    });
-}
-
-void WebWindow::showAllShortcut()
-{
-    QRect rect = qApp->activeWindow()->geometry();
-    QPoint pos(rect.x() + rect.width() / 2,
-               rect.y() + rect.height() / 2);
-
-    QJsonObject shortcutObj;
-    QJsonArray jsonGroups;
-
-    QMap<QString,QString> shortcutKeymap = {
-        {"Resize Window",     "Ctrl+Alt+F"},
-        {"Close Window",      "Alt+F4"},
-        {"Show Shortcut",     "Ctrl+Shift+/"},
-        {"Search",            "Ctrl+F"},
-        {"Select",        "Ctrl+A"},
-        {"Copy",              "Ctrl+C"},
-        {"Paste",             "Ctrl+V"},
-        {"Cut",               "Ctrl+X"},
-        {"Backward Character",  "Backspace"}
-    };
-
-    QJsonObject fontMgrJsonGroup;
-    fontMgrJsonGroup.insert("groupName", QObject::tr("Manual"));
-    QJsonArray fontJsonItems;
-
-    for (QMap<QString,QString>::iterator it=shortcutKeymap.begin();
-         it != shortcutKeymap.end(); it++) {
-        QJsonObject jsonItem;
-        QString strName = QObject::tr(it.key().toUtf8().data());
-        jsonItem.insert("name", QString("%1%2").arg(strName).arg(":"));
-        jsonItem.insert("value", it.value().replace("Meta", "Super"));
-        fontJsonItems.append(jsonItem);
-    }
-    fontMgrJsonGroup.insert("groupItems", fontJsonItems);
-    jsonGroups.append(fontMgrJsonGroup);
-
-    shortcutObj.insert("shortcut", jsonGroups);
-
-    QJsonDocument doc(shortcutObj);
-
-    QStringList shortcutString;
-    QString param1 = "-j=" + QString(doc.toJson().data());
-    QString param2 = "-p=" + QString::number(pos.x()) + "," + QString::number(pos.y());
-    shortcutString << param1 << param2;
-
-    if (nullptr == shortcut_process)
-    {
-        shortcut_process = new QProcess();
-    }
-    shortcut_process->startDetached("deepin-shortcut-viewer", shortcutString);
 }
 
 void WebWindow::resizeEvent(QResizeEvent *event)
@@ -508,17 +446,6 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
 
 void WebWindow::closeEvent(QCloseEvent *event)
 {
-    if (shortcut_process != nullptr) {
-
-        delete shortcut_process;
-
-        QStringList cmdList = {"deepin-shortcut-viewer"};
-        const bool exitProcess = dman::SpawnCmd("killall", cmdList);
-        if (!exitProcess) {
-            qWarning() << "exit deepin-shortcut-viewer process error!";
-        }
-    }
-
     emit this->closed(app_name_);
 
     QWidget::closeEvent(event);

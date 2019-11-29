@@ -221,7 +221,7 @@ void SearchCompletionWindow::initUI()
     search_button_ = new SearchButton(this);
     search_button_->setObjectName("SearchButton");
     search_button_->setFixedHeight(35+7);
-    search_button_->setText(QObject::tr("Search \"%1\" in the full text"));
+    search_button_->setText(QObject::tr("Search for \"%1\" in the full text"));
     search_button_->setGeometry(0, 7 * kItemHeight + 7, result_view_->width(), 34+7);
 
     this->setContentsMargins(0, 0, 0, 0);

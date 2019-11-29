@@ -31,7 +31,6 @@ private:
     void updateWebZoom();
 
     bool m_window_mapped;
-    QShortcut *m_scShowShortcuts;
     DMainWindow *m_parentWin;
 };
 

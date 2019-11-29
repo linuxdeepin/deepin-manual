@@ -102,7 +102,6 @@ private:
     SearchEdit *search_edit_ { nullptr};
     QPoint start_point_;
     int start_drag_x;
-    QProcess* shortcut_process { nullptr};
 
     QShortcut *m_scBack { nullptr};
     QShortcut *m_scForward { nullptr};

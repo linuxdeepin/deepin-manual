@@ -8,14 +8,8 @@
 ManualWebView::ManualWebView(QWidget* parent)
     : QCefWebView(parent)
     , m_window_mapped(false)
-    , m_scShowShortcuts(nullptr)
     , m_parentWin(nullptr)
 {
-    //显示快捷键预览
-    m_scShowShortcuts = new QShortcut(this);
-    m_scShowShortcuts->setKey(tr("Ctrl+/"));
-    m_scShowShortcuts->setContext(Qt::WindowShortcut);
-    m_scShowShortcuts->setAutoRepeat(false);
 }
 
 ManualWebView::~ManualWebView()
@@ -25,10 +19,6 @@ ManualWebView::~ManualWebView()
 void ManualWebView::setParentWindow(DMainWindow *window)
 {
     m_parentWin = window;
-    dman::WebWindow *webWin = qobject_cast<dman::WebWindow*>(m_parentWin);
-    connect(m_scShowShortcuts, &QShortcut::activated, this, [webWin]{
-        webWin->showAllShortcut();
-    });
 }
 
 void ManualWebView::showEvent(QShowEvent* event)
