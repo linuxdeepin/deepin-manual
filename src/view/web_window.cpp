@@ -192,11 +192,11 @@ void WebWindow::initUI()
     buttonLayout->setMargin(0);
     buttonLayout->setSpacing(0);
 
-    m_backButton = new DButtonBoxButton(DStyle::standardIcon(this->style(), DStyle::SP_ArrowLeave));
+    m_backButton = new DButtonBoxButton(DStyle::SP_ArrowLeave);
     m_backButton->setDisabled(true);
     m_backButton->setFixedSize(36, 36);
 
-    m_forwardButton = new DButtonBoxButton(DStyle::standardIcon(this->style(), DStyle::SP_ArrowEnter));
+    m_forwardButton = new DButtonBoxButton(DStyle::SP_ArrowEnter);
     m_forwardButton->setDisabled(true);
     m_forwardButton->setFixedSize(36, 36);
 
@@ -204,7 +204,7 @@ void WebWindow::initUI()
     buttonList << m_backButton << m_forwardButton;
 
     buttonBox = new Dtk::Widget::DButtonBox(this);
-    buttonBox->setButtonList(buttonList, true);
+    buttonBox->setButtonList(buttonList, false);
     buttonBox->setFocusPolicy(Qt::NoFocus);
 
     buttonLayout->addWidget(buttonBox);
