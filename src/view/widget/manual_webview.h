@@ -12,6 +12,8 @@
 
 DWIDGET_USE_NAMESPACE
 
+struct QCefWebViewPrivate;
+
 class ManualWebView : public QCefWebView {
 
     Q_OBJECT
@@ -24,14 +26,25 @@ public:
 
     void setParentWindow(DMainWindow *window);
 
+    QCefWebPage* page() const;
+    bool autoZoom() const;
+
+public Q_SLOTS:
+    void setAutoZoom(bool autoZoom);
+
 protected:
     void showEvent(QShowEvent* event) override;
+
+    void resizeEvent(QResizeEvent* event) override;
+    void focusInEvent(QFocusEvent *event) override;
+    bool event(QEvent *event) override;
 
 private:
     void updateWebZoom();
 
-    bool m_window_mapped;
+    Q_SLOT void onScreenScaleChanged(QScreen *screen);
     DMainWindow *m_parentWin;
+    QCefWebViewPrivate* p_ = nullptr;
 };
 
 #endif // MANUALWEBVIEW_H
