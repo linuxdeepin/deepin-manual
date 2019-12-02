@@ -89,6 +89,7 @@ export default class Index extends Component {
       'deepin-clone',
       'deepin-cloud-print',
       'deepin-cloud-scan',
+      'deepin-voice-recorder',
       'deepin-picker',
       'deepin-remote-assistance',
       'deepin-presentation-assistant'

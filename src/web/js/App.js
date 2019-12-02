@@ -10,6 +10,8 @@ import sIndex from './searchIndex';
 
 global.hash = ' ';
 global.oldHash = ' ';
+global.isMouseClickNav = false;
+global.isMouseScrollArticle = false;
 
 global.readFile = (fileName, callback) => {
   let xhr = new XMLHttpRequest();

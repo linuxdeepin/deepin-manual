@@ -51,6 +51,8 @@ class Nav extends Component {
       console.log('搜索结果', cid);
       global.hash = cid;
       global.oldHash = cid;
+      global.isMouseClickNav = true;
+      global.isMouseScrollArticle = false;
       this.props.setHash(cid);
     }
   }

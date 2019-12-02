@@ -88,6 +88,11 @@ export default class Article extends Component {
     console.log(htext, id);
     return id;
   }
+
+  handleWheelScroll(e){
+    console.log("mouse scroll");
+    global.isMouseScrollArticle = true;
+  }
   //滚动事件
   scroll() {
     if (!this.load) {
@@ -113,6 +118,10 @@ export default class Article extends Component {
       console.log('article: scroll hash update');
       this.hash = hash;
       this.props.setHash(hash);
+      if (global.isMouseScrollArticle)
+      {
+        this.props.setScroll(hash);
+      }
     }
   }
   //内部链接预览
@@ -192,7 +201,7 @@ export default class Article extends Component {
     return (
           <div id="article">
             <div id="article_bg">
-              <Scrollbar onScroll={this.scroll.bind(this)}>
+              <Scrollbar onScroll={this.scroll.bind(this)} onWheel={(e) => this.handleWheelScroll(e)}>
                 <div
                   id="read"
                   className="read"

@@ -28,7 +28,13 @@ export default class Main extends Component {
     });
   }
   setHash(hash) {
-	console.log("hash:" + hash);
+    console.log("main setHash:" + hash);
+    this.setState({ hash });
+  }
+  setScroll(hash) {
+    console.log("main setScroll:" + hash);
+    global.hash = hash;
+    global.oldHash = hash;
     this.setState({ hash });
   }
   componentWillReceiveProps(nextProps) {
@@ -50,6 +56,7 @@ export default class Main extends Component {
             html={this.state.html}
             hash={this.state.hash}
             setHash={this.setHash.bind(this)}
+            setScroll={this.setScroll.bind(this)}
           />
         </div>
       )

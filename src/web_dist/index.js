@@ -42,6 +42,8 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 global.hash = ' ';
 global.oldHash = ' ';
+global.isMouseClickNav = false;
+global.isMouseScrollArticle = false;
 
 global.readFile = function (fileName, callback) {
   var xhr = new XMLHttpRequest();
@@ -433,6 +435,12 @@ var Article = function (_Component) {
       console.log(htext, id);
       return id;
     }
+  }, {
+    key: 'handleWheelScroll',
+    value: function handleWheelScroll(e) {
+      console.log("mouse scroll");
+      global.isMouseScrollArticle = true;
+    }
     //滚动事件
 
   }, {
@@ -461,6 +469,9 @@ var Article = function (_Component) {
         console.log('article: scroll hash update');
         this.hash = hash;
         this.props.setHash(hash);
+        if (global.isMouseScrollArticle) {
+          this.props.setScroll(hash);
+        }
       }
     }
     //内部链接预览
@@ -559,6 +570,8 @@ var Article = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
+      var _this5 = this;
+
       return _react2.default.createElement(
         'div',
         { id: 'article' },
@@ -567,7 +580,9 @@ var Article = function (_Component) {
           { id: 'article_bg' },
           _react2.default.createElement(
             _scrollbar2.default,
-            { onScroll: this.scroll.bind(this) },
+            { onScroll: this.scroll.bind(this), onWheel: function onWheel(e) {
+                return _this5.handleWheelScroll(e);
+              } },
             _react2.default.createElement('div', {
               id: 'read',
               className: 'read',
@@ -732,7 +747,7 @@ var Index = function (_Component2) {
     // '下载器',
     'deepin-deb-installer', 'deepin-font-manager', 'deepin-calculator', 'deepin-graphics-driver-manager', 'deepin-devicemanager', 'deepin-system-monitor', 'deepin-boot-maker',
     // 'deepin-log-viewer',
-    'deepin-repair-tools', 'deepin-clone', 'deepin-cloud-print', 'deepin-cloud-scan', 'deepin-picker', 'deepin-remote-assistance', 'deepin-presentation-assistant'];
+    'deepin-repair-tools', 'deepin-clone', 'deepin-cloud-print', 'deepin-cloud-scan', 'deepin-voice-recorder', 'deepin-picker', 'deepin-remote-assistance', 'deepin-presentation-assistant'];
     _this3.state = {
       sequence: sequence,
       appList: []
@@ -904,7 +919,15 @@ var Main = function (_Component) {
   }, {
     key: 'setHash',
     value: function setHash(hash) {
-      console.log("hash:" + hash);
+      console.log("main setHash:" + hash);
+      this.setState({ hash: hash });
+    }
+  }, {
+    key: 'setScroll',
+    value: function setScroll(hash) {
+      console.log("main setScroll:" + hash);
+      global.hash = hash;
+      global.oldHash = hash;
       this.setState({ hash: hash });
     }
   }, {
@@ -932,7 +955,8 @@ var Main = function (_Component) {
           hlist: this.state.hlist,
           html: this.state.html,
           hash: this.state.hash,
-          setHash: this.setHash.bind(this)
+          setHash: this.setHash.bind(this),
+          setScroll: this.setScroll.bind(this)
         })
       );
     }
@@ -1099,6 +1123,8 @@ var Nav = function (_Component) {
         console.log('搜索结果', cid);
         global.hash = cid;
         global.oldHash = cid;
+        global.isMouseClickNav = true;
+        global.isMouseScrollArticle = false;
         this.props.setHash(cid);
       }
     }
