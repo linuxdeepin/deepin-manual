@@ -112,6 +112,15 @@ var App = function (_React$Component) {
           return _this2.themeChange(themeType);
         });
         global.qtObjects.theme.themeChange.connect(_this2.themeChange.bind(_this2));
+        // 参考DTK将字体的大小枚举 SizeType 和控件 widget 进行绑定, 其控件的字体大小(随绑定的枚举的)对应值的改变而改变;
+        // 系统自定义的绑定枚举值 T6, 若 T6 = 14px,  则其他枚举 T1 - T10 的数值,依次为:40, 30, 24, 20, 17, 14(T6), 13, 12, 11, 10;
+        // 系统自定义的绑定枚举值 T6 改为 T6 = 20px, 则其他枚举 T1 - T10 的数值,依次为:46, 36, 30, 26, 23, 20(T6), 19, 18, 17, 16;
+        global.qtObjects.settings.fontChangeRequested.connect(function (fontFamily, fontSize) {
+          console.log("fontChangeRequested: fontFamily:" + fontFamily + ",fontSize:" + fontSize);
+          var HTMLGlobal = document.querySelector('html');
+          HTMLGlobal.style.fontFamily = fontFamily;
+          HTMLGlobal.style.fontSize = fontSize + 'px';
+        });
       });
     }
   }, {
@@ -119,11 +128,11 @@ var App = function (_React$Component) {
     value: function themeChange(themeType) {
       console.log('主题切换', themeType);
       if (navigator.language.toString().indexOf('en_') != -1) {
-        document.documentElement.style.setProperty('--span-line-height', '13px');
-        document.documentElement.style.setProperty('--span-font-size', '12px');
+        document.documentElement.style.setProperty('--span-line-height', '1.0rem');
+        document.documentElement.style.setProperty('--span-font-size', '0.9rem');
       } else {
-        document.documentElement.style.setProperty('--span-line-height', '18px');
-        document.documentElement.style.setProperty('--span-font-size', '17px');
+        document.documentElement.style.setProperty('--span-line-height', '1.4rem');
+        document.documentElement.style.setProperty('--span-font-size', '1.3rem');
       }
       if ("DarkType" == themeType) {
         // console.log('DarkType');

@@ -73,17 +73,23 @@ class App extends React.Component {
       global.qtObjects.theme.themeChange.connect(
         this.themeChange.bind(this)
       );
+      global.qtObjects.settings.fontChangeRequested.connect((fontFamily, fontSize) => {
+        console.log("fontChangeRequested: fontFamily:"+fontFamily+",fontSize:"+fontSize);
+        const HTMLGlobal = document.querySelector('html');
+        HTMLGlobal.style.fontFamily = fontFamily;
+        HTMLGlobal.style.fontSize = fontSize + 'px';
+      });
     });
   }
   themeChange(themeType) {
     console.log('主题切换', themeType);
     if(navigator.language.toString().indexOf('en_') != -1) {
-      document.documentElement.style.setProperty(`--span-line-height`, '13px');
-      document.documentElement.style.setProperty(`--span-font-size`, '12px');
+      document.documentElement.style.setProperty(`--span-line-height`, '1.0rem');
+      document.documentElement.style.setProperty(`--span-font-size`, '0.9rem');
     }
     else{
-      document.documentElement.style.setProperty(`--span-line-height`, '18px');
-      document.documentElement.style.setProperty(`--span-font-size`, '17px');
+      document.documentElement.style.setProperty(`--span-line-height`, '1.4rem');
+      document.documentElement.style.setProperty(`--span-font-size`, '1.3rem');
     }
     if("DarkType"==themeType){
     // console.log('DarkType');
@@ -140,7 +146,7 @@ document.documentElement.style.setProperty(`--search-context-word-color`, '#6D7C
     document.documentElement.style.setProperty(`--search-button-background-color-end`, '#E3E3E3');
     document.documentElement.style.setProperty(`--search-WikiSearch-color`, '#7a7a7a');
     document.documentElement.style.setProperty(`--search-itemTitle-word-color`, '#000000');
-	document.documentElement.style.setProperty(`--search-context-word-color`, '#000000');
+	  document.documentElement.style.setProperty(`--search-context-word-color`, '#000000');
     }else{
       console.log('Null');
     }

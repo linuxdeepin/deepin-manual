@@ -18,7 +18,7 @@
     border-right: 3px solid transparent;
     padding-right: 1rem !important;
     &[type='h2'] {
-      font-size: 15px;
+      font-size: 1.2rem;
       font-weight: 600;
       color: var(--nav-h2-word-color);
       padding: 4px 0px;
@@ -28,7 +28,7 @@
       text-indent: 0.88rem;
     }
     &[type='h3'] {
-      font-size: 13px;
+      font-size: 1rem; //1rem -> 13px
       color: var(--nav-h3-word-color);
       margin-top: 2px;
       padding: 4px 0 5px;

@@ -24,13 +24,13 @@
       font-family: SourceHanSansSC-Normal;
       margin: 0px;
       padding: 0 8.8%;
-      font-size: 12px;
+      font-size: 0.9rem;
       
       color: var(--article-read-word-color);
       outline: 0px;
       h2 {
         font-weight: normal;
-        font-size: 20px;
+        font-size: 1.5rem;
         color: var(--article-read-h2-word-color);
         margin: 0px;
         padding-top: 23px;
@@ -45,7 +45,7 @@
       }
       li {
         margin-left: 2em;
-        line-height: 24px;
+        line-height: 1.8rem;
       }
       img {
         //svg图片内嵌同行
@@ -105,7 +105,7 @@
         }
         tr {
           border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-          font-size: 12px;
+          font-size: 0.9rem;
           td {
             padding: 5px;
           }
@@ -172,7 +172,7 @@
        .read {
          width: 80%;
          margin: auto;
-         font-size: 12px;
+         font-size: 0.9rem;
        }
      }
      padding: 8px 0px;
@@ -211,7 +211,7 @@
    }
    #contextMenu {
      user-select: none;
-     font-size: 12px;
+     font-size: 0.9rem;
      position: fixed;
      top: 0;
      left: 0;

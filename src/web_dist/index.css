@@ -101,12 +101,12 @@ div {
       font-family: SourceHanSansSC-Normal;
       margin: 0px;
       padding: 0 8.8%;
-      font-size: 12px;
+      font-size: 0.9rem;
       color: var(--article-read-word-color);
       outline: 0px; }
       #article #article_bg .read h2 {
         font-weight: normal;
-        font-size: 20px;
+        font-size: 1.5rem;
         color: var(--article-read-h2-word-color);
         margin: 0px;
         padding-top: 23px; }
@@ -118,7 +118,7 @@ div {
         padding: 0; }
       #article #article_bg .read li {
         margin-left: 2em;
-        line-height: 24px; }
+        line-height: 1.8rem; }
       #article #article_bg .read img[src$='svg'] {
         height: 20px;
         vertical-align: middle; }
@@ -183,7 +183,7 @@ div {
           margin-right: 1%; }
         #article #article_bg .read table tr {
           border-bottom: 1px solid rgba(0, 0, 0, 0.05);
-          font-size: 12px; }
+          font-size: 0.9rem; }
           #article #article_bg .read table tr td {
             padding: 5px; }
         #article #article_bg .read table caption {
@@ -222,7 +222,7 @@ div {
       #article #preview #view .read {
         width: 80%;
         margin: auto;
-        font-size: 12px; }
+        font-size: 0.9rem; }
   #article .t_right_down::after {
     right: 60px;
     bottom: -4px;
@@ -241,7 +241,7 @@ div {
     box-shadow: 0 -1px rgba(0, 0, 0, 0.1), -1px 0 rgba(0, 0, 0, 0.1); }
   #article #contextMenu {
     user-select: none;
-    font-size: 12px;
+    font-size: 0.9rem;
     position: fixed;
     top: 0;
     left: 0;
@@ -274,8 +274,8 @@ div {
   #index h2 {
     font-family: SourceHanSansSC-Normal;
     font-weight: normal;
-    font-size: 40px;
-    line-height: 59px;
+    font-size: 3.1rem;
+    line-height: 4.5rem;
     margin: 0.5em 0 0;
     border-bottom: 1px solid var(--index-h2-color);
     padding-bottom: 12px; }
@@ -341,7 +341,7 @@ div {
     text-overflow: ellipsis;
     white-space: nowrap; }
     #nav .h[type='h2'] {
-      font-size: 15px;
+      font-size: 1.2rem;
       font-weight: 600;
       color: var(--nav-h2-word-color);
       padding: 4px 0px;
@@ -350,7 +350,7 @@ div {
       margin-right: 11px;
       text-indent: 0.88rem; }
     #nav .h[type='h3'] {
-      font-size: 13px;
+      font-size: 1rem;
       color: var(--nav-h3-word-color);
       margin-top: 2px;
       padding: 4px 0 5px;
@@ -384,18 +384,18 @@ div {
       overflow-x: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
-      font-size: 20px;
+      font-size: 1.5rem;
       color: var(--search-noresult-word-color);
       margin-bottom: 11px; }
     #search #mismatch #WikiSearch {
       font-family: SourceHanSansSC-Normal;
-      font-size: 12px;
+      font-size: 0.9rem;
       color: var(--search-WikiSearch-color);
       margin-bottom: 26px; }
     #search #mismatch #button {
       font-family: SourceHanSansSC-Medium;
       font-weight: 500;
-      font-size: 14px;
+      font-size: 1.1rem;
       padding: 6px 42px 8px;
       background: linear-gradient(var(--search-button-background-color-start), var(--search-button-background-color-end));
       color: var(--search-button-word-color);
@@ -415,7 +415,7 @@ div {
       margin: 10px auto auto -20px;
       cursor: pointer;
       height: 32px;
-      font-size: 17px;
+      font-size: 1.3rem;
       display: -webkit-box;
       -webkit-line-clamp: 1;
       -webkit-box-orient: vertical; }
@@ -429,8 +429,8 @@ div {
         font-weight: bold; }
       #search .items .itemsTitle .resultnum {
         font-family: SourceHanSansSC-Normal;
-        font-size: 12px;
-        line-height: 18px;
+        font-size: 0.9rem;
+        line-height: 1.4rem;
         float: right;
         color: var(--search-items-resultnum-word-color);
         margin-top: 10px;
@@ -440,8 +440,8 @@ div {
       cursor: pointer;
       padding: 7px 10px 0px 0px;
       margin: 10px auto auto -20px;
-      font-size: 12px;
-      line-height: 18px;
+      font-size: 0.9rem;
+      line-height: 1.4rem;
       border-radius: 8px;
       background-color: var(--search-item-background-color);
       display: -webkit-box;
@@ -450,9 +450,9 @@ div {
       #search .items .item .itemTitle {
         width: 99%;
         margin: 0px 0px 7px 15px;
-        font-size: 14px;
-        line-height: 20px;
-        height: 20px;
+        font-size: 1.1rem;
+        line-height: 1.5rem;
+        height: 1.5rem;
         font-weight: bold;
         color: var(--search-itemTitle-word-color); }
       #search .items .item .context {

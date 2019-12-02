@@ -20,6 +20,7 @@
 
 #include "controller/search_result.h"
 #include "widget/manual_webview.h"
+#include "view/settings_proxy.h"
 
 #include <QTimer>
 #include <QtDBus/QtDBus>
@@ -39,6 +40,7 @@ class SearchProxy;
 class ThemeProxy;
 class TitleBar;
 class TitleBarProxy;
+class SettingsProxy;
 class SearchEdit;
 class DButtonBox;
 
@@ -96,6 +98,7 @@ private:
     ManualProxy *manual_proxy_ { nullptr };
     TitleBar *title_bar_ { nullptr };
     TitleBarProxy *title_bar_proxy_ { nullptr };
+    SettingsProxy *settings_proxy_ { nullptr };
     ManualWebView *web_view_ { nullptr};
     QTimer search_timer_;
     Dtk::Widget::DButtonBox *buttonBox { nullptr};

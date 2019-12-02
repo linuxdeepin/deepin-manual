@@ -25,6 +25,7 @@
 #include "view/search_proxy.h"
 #include "view/theme_proxy.h"
 #include "view/title_bar_proxy.h"
+#include "view/settings_proxy.h"
 #include "view/web_event_delegate.h"
 #include "view/widget/image_viewer.h"
 #include "view/widget/search_completion_window.h"
@@ -65,6 +66,7 @@ WebWindow::WebWindow(QWidget *parent)
     , app_name_()
     , search_proxy_(new SearchProxy(this))
     , theme_proxy_(new ThemeProxy(this))
+    , settings_proxy_(new SettingsProxy(this))
     , search_timer_()
 {
     // 使用 redirectContent 模式，用于内嵌 x11 窗口时能有正确的圆角效果
@@ -76,6 +78,8 @@ WebWindow::WebWindow(QWidget *parent)
     this->initConnections();
     this->initShortcuts();
     this->initDBus();
+
+    qApp->installEventFilter(this);
 }
 
 WebWindow::~WebWindow()
@@ -263,6 +267,7 @@ void WebWindow::initUI()
     channel->registerObject("search", search_proxy_);
     channel->registerObject("theme", theme_proxy_);
     channel->registerObject("titleBar", title_bar_proxy_);
+    channel->registerObject("settings", settings_proxy_);
 
     this->setFocusPolicy(Qt::ClickFocus);
 }
@@ -440,6 +445,14 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
             }
             default: {
             }
+        }
+    }
+
+    if (event->type() == QEvent::FontChange && watched == this) {
+        if (this->settings_proxy_) {
+            qDebug() << "eventFilter QEvent::FontChange";
+            auto fontInfo = this->fontInfo();
+            Q_EMIT this->settings_proxy_->fontChangeRequested(fontInfo.family(), fontInfo.pixelSize());
         }
     }
 

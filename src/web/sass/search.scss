@@ -20,20 +20,20 @@
       overflow-x: hidden;
       white-space: nowrap;
       text-overflow: ellipsis;
-      font-size: 20px;
+      font-size: 1.5rem;
       color: var(--search-noresult-word-color);
       margin-bottom: 11px;
     }
     #WikiSearch {
       font-family: SourceHanSansSC-Normal;
-      font-size: 12px;
+      font-size: 0.9rem;
       color: var(--search-WikiSearch-color);
       margin-bottom: 26px;
     }
     #button {
       font-family: SourceHanSansSC-Medium;
       font-weight: 500;
-      font-size: 14px;
+      font-size: 1.1rem;
       padding: 6px 42px 8px;
       background:linear-gradient(var(--search-button-background-color-start),var(--search-button-background-color-end));
       color: var(--search-button-word-color);
@@ -63,8 +63,8 @@
       }
       .resultnum {
         font-family: SourceHanSansSC-Normal;
-        font-size: 12px;
-        line-height: 18px;
+        font-size: 0.9rem;
+        line-height: 1.4rem;
         float: right;
         color: var(--search-items-resultnum-word-color);
         margin-top: 10px;
@@ -75,7 +75,7 @@
       margin: 10px auto auto -20px;
       cursor: pointer;
       height: 32px;
-      font-size: 17px;
+      font-size: 1.3rem;
       display: -webkit-box;
       -webkit-line-clamp: 1;
       -webkit-box-orient: vertical;
@@ -84,9 +84,9 @@
       .itemTitle {
         width: 99%;
         margin: 0px 0px 7px 15px;
-        font-size: 14px;
-        line-height: 20px;
-        height: 20px;
+        font-size: 1.1rem;
+        line-height: 1.5rem;
+        height: 1.5rem;
         font-weight: bold;
         color: var(--search-itemTitle-word-color);
       }
@@ -103,8 +103,8 @@
       cursor: pointer;
       padding: 7px 10px 0px 0px;
       margin: 10px auto auto -20px;
-      font-size: 12px;
-      line-height: 18px;
+      font-size: 0.9rem;
+      line-height: 1.4rem;
       border-radius: 8px;
       background-color: var(--search-item-background-color);
       display: -webkit-box;
