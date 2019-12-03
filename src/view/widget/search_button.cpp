@@ -37,14 +37,7 @@ SearchButton::SearchButton(QWidget* parent)
     : DBlurEffectWidget(parent)
     , m_bHover(false)
 {
-    if (DGuiApplicationHelper::DarkType == DGuiApplicationHelper::instance()->themeType()) {
-        setBackgroundRole(QPalette::Background);
-        setAutoFillBackground(false);
-    }
-    else {
-        setBackgroundRole(QPalette::Dark);
-        setAutoFillBackground(true);
-    }
+    setAutoFillBackground(false);
 
     m_textLabel = new DLabel(this);
     m_textLabel->setBackgroundRole(QPalette::Background);
@@ -107,17 +100,13 @@ void SearchButton::setChecked(bool bChecked) {
 }
 
 void SearchButton::onThemeChange(DGuiApplicationHelper::ColorType themeType) {
+
     if (DGuiApplicationHelper::DarkType == themeType) {
-        setBackgroundRole(QPalette::Background);
-        setAutoFillBackground(false);
 
         QPixmap iconPm = Utils::renderSVG(QString(kImageDarkSearchIcon), QSize(20, 20));
         iconBtn->setIcon(iconPm);
-
     }
     else {
-        setBackgroundRole(QPalette::Dark);
-        setAutoFillBackground(true);
 
         QPixmap iconPm = Utils::renderSVG(QString(kImageLightSearchIcon), QSize(20, 20));
         iconBtn->setIcon(iconPm);
@@ -172,6 +161,10 @@ void SearchButton::enterEvent(QEvent *event)
 
     emit entered();
     m_bHover = true;
+
+    QPixmap iconPm = Utils::renderSVG(QString(kImageDarkSearchIcon), QSize(20, 20));
+    iconBtn->setIcon(iconPm);
+
     update();
 }
 
@@ -180,6 +173,21 @@ void SearchButton::leaveEvent(QEvent *event)
     Q_UNUSED(event);
 
     m_bHover = false;
+
+//    QPixmap iconPm = Utils::renderSVG(QString(kImageLightSearchIcon), QSize(20, 20));
+//    iconBtn->setIcon(iconPm);
+
+    if (DGuiApplicationHelper::DarkType == DGuiApplicationHelper::instance()->themeType()) {
+
+        QPixmap iconPm = Utils::renderSVG(QString(kImageDarkSearchIcon), QSize(20, 20));
+        iconBtn->setIcon(iconPm);
+    }
+    else {
+
+        QPixmap iconPm = Utils::renderSVG(QString(kImageLightSearchIcon), QSize(20, 20));
+        iconBtn->setIcon(iconPm);
+    }
+
     update();
 }
 
