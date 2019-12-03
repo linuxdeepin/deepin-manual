@@ -392,7 +392,7 @@ div {
       font-size: 0.9rem;
       color: var(--search-WikiSearch-color);
       margin-bottom: 26px; }
-    #search #mismatch #button {
+    #search #mismatch .button {
       font-family: SourceHanSansSC-Medium;
       font-weight: 500;
       font-size: 1.1rem;
@@ -405,6 +405,14 @@ div {
       border-radius: 8px;
       text-align: center;
       cursor: pointer; }
+    #search #mismatch .button:hover {
+      opacity: 0.9;
+      color: var(--search-button-hover-word-color);
+      background: linear-gradient(var(--search-button-hover-color-start), var(--search-button-hover-color-end)); }
+    #search #mismatch .button:hover:after {
+      opacity: 1;
+      color: var(--search-button-word-color);
+      background: linear-gradient(var(--search-button-background-color-start), var(--search-button-background-color-end)); }
   #search .items {
     padding: 0px 20px 0px 40px;
     color: var(--search-items-word-color);

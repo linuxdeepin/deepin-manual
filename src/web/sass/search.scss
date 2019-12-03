@@ -30,7 +30,7 @@
       color: var(--search-WikiSearch-color);
       margin-bottom: 26px;
     }
-    #button {
+    .button {
       font-family: SourceHanSansSC-Medium;
       font-weight: 500;
       font-size: 1.1rem;
@@ -43,6 +43,16 @@
       border-radius:8px;
       text-align: center;
       cursor: pointer;
+    }
+    .button:hover{
+      opacity: 0.9;
+      color: var(--search-button-hover-word-color);
+      background:linear-gradient(var(--search-button-hover-color-start),var(--search-button-hover-color-end));
+    }
+    .button:hover:after{
+      opacity: 1;
+      color: var(--search-button-word-color);
+      background:linear-gradient(var(--search-button-background-color-start),var(--search-button-background-color-end));
     }
   }
   .items {

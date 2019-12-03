@@ -77,7 +77,7 @@ function Mismatch(props) {
         </div>
         <div id="WikiSearch">{global.i18n['WikiSearch']}</div>
         <span
-          id="button"
+          class="button"
           onClick={() =>
             global.openWindow(
               `https://wiki.deepin.org/index.php?title&search=${encodeURIComponent(
