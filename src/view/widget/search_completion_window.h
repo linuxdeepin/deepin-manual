@@ -33,43 +33,46 @@ namespace dman {
 class SearchButton;
 
 class SearchCompletionWindow : public DBlurEffectWidget {
-  Q_OBJECT
- public:
-  explicit SearchCompletionWindow(QWidget* parent = nullptr);
-  ~SearchCompletionWindow() override;
+    Q_OBJECT
+public:
+    explicit SearchCompletionWindow(QWidget* parent = nullptr);
+    ~SearchCompletionWindow() override;
 
-  void autoResize();
-  const QString& keyword() const {
+    void autoResize();
+    const QString& keyword() const {
     return keyword_;
-  }
+    }
 
- signals:
-  void resultClicked(const SearchAnchorResult& result);
-  void searchButtonClicked();
+protected:
+    void paintEvent(QPaintEvent *event) override;
 
- public slots:
-  void goDown();
-  void goUp();
-  void onEnterPressed();
+signals:
+    void resultClicked(const SearchAnchorResult& result);
+    void searchButtonClicked();
 
-  void setKeyword(const QString& keyword);
-  void setSearchAnchorResult(const SearchAnchorResultList& result);
+public slots:
+    void goDown();
+    void goUp();
+    void onEnterPressed();
 
- private:
-  void initConnections();
-  void initSearchCompletionListData(QList<SearchCompletionItemModel> dataList);
-  void initUI();
+    void setKeyword(const QString& keyword);
+    void setSearchAnchorResult(const SearchAnchorResultList& result);
 
-  SearchCompletionListView* result_view_ {nullptr};
-  QStandardItemModel* search_compeletion_model_ {nullptr};
-  SearchButton* search_button_ {nullptr};
-  SearchAnchorResultList result_;
-  QString keyword_;
+private:
+    void initConnections();
+    void initSearchCompletionListData(QList<SearchCompletionItemModel> dataList);
+    void initUI();
 
- private slots:
-  void onSearchButtonEntered();
-  void onResultListClicked(const QModelIndex& index);
-  void onResultListEntered(const QModelIndex& index);
+    SearchCompletionListView* result_view_ {nullptr};
+    QStandardItemModel* search_compeletion_model_ {nullptr};
+    SearchButton* search_button_ {nullptr};
+    SearchAnchorResultList result_;
+    QString keyword_;
+
+private slots:
+    void onSearchButtonEntered();
+    void onResultListClicked(const QModelIndex& index);
+    void onResultListEntered(const QModelIndex& index);
 };
 
 }  // namespace dman

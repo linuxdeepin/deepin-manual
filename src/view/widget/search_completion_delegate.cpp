@@ -36,52 +36,52 @@ void SearchCompletionDelegate::paint(QPainter *painter, const QStyleOptionViewIt
             cg = DPalette::Inactive;
         }
 
-        QRect rect;
-        rect.setX(option.rect.x());
-        rect.setY(option.rect.y());
-        rect.setWidth(option.rect.width());
-        rect.setHeight(option.rect.height());
-
-        QRect searchTextRect = QRect(rect.left()+32, rect.top()+7, rect.width()-64, rect.height()-14);
-
         QFont nameFont;
         nameFont.setPixelSize(DFontSizeManager::instance()->fontPixelSize(DFontSizeManager::T6));
-	nameFont.setWeight(QFont::Medium);
+        nameFont.setWeight(QFont::Medium);
         painter->setFont(nameFont);
 
-        QPainterPath path;
-        path.addRect(rect);
         QString searchText = QString("%1(%2)").arg(strSearchKeyword).arg(strSearchAppDisplayName);
         if (option.state & QStyle::State_Selected) {
+            QPainterPath path;
+            QRect rect;
+            rect.setX(option.rect.x());
+            rect.setY(option.rect.y());
+            rect.setWidth(option.rect.width());
+            rect.setHeight(option.rect.height());
+            path.addRect(rect);
             DPalette pa = DApplicationHelper::instance()->palette(m_parentView);
             DStyleHelper styleHelper;
             QColor fillColor = option.palette.color(cg, DPalette::Highlight);
             painter->fillPath(path, QBrush(fillColor));
+
+            painter->setPen(QPen(option.palette.color(DPalette::HighlightedText)));
+
+            QRect searchTextRect = QRect(rect.left()+32, rect.top()+7, rect.width()-64, rect.height()-14);
+            QFontMetrics fontMetric(nameFont);
+            const QString elidedSearchText = fontMetric.elidedText(searchText, Qt::ElideRight, rect.width()-64);
+            painter->drawText(searchTextRect, Qt::AlignLeft | Qt::AlignVCenter, elidedSearchText);
         }
         else {
+            QPainterPath path;
+            QRect rect;
+            rect.setX(option.rect.x());
+            rect.setY(option.rect.y()+1);
+            rect.setWidth(option.rect.width());
+            rect.setHeight(option.rect.height()-1);
+            path.addRect(rect);
             DPalette pa = ExApplicationHelper::instance()->palette(m_parentView);
             DStyleHelper styleHelper;
             QColor fillColor = styleHelper.getColor(static_cast<const QStyleOption *>(&option), pa, DPalette::ItemBackground);
             painter->fillPath(path, QBrush(fillColor));
+
+            painter->setPen(QPen(option.palette.color(DPalette::ToolTipText)));
+
+            QRect searchTextRect = QRect(rect.left()+32, rect.top()+6, rect.width()-64, rect.height()-13);
+            QFontMetrics fontMetric(nameFont);
+            const QString elidedSearchText = fontMetric.elidedText(searchText, Qt::ElideRight, rect.width()-64);
+            painter->drawText(searchTextRect, Qt::AlignLeft | Qt::AlignVCenter, elidedSearchText);
         }
-
-        QRect lineRect;
-        lineRect.setX(option.rect.x());
-        lineRect.setY(option.rect.y()+option.rect.height()-1);
-        lineRect.setWidth(option.rect.width());
-        lineRect.setHeight(1);
-
-        //绘制分割线
-        DPalette pa = ExApplicationHelper::instance()->palette(m_parentView);
-        DStyleHelper styleHelper;
-        QColor fillColor = styleHelper.getColor(static_cast<const QStyleOption *>(&option), pa, DPalette::DarkLively);
-        painter->fillRect(lineRect, fillColor);
-
-        painter->setPen(QPen(option.palette.color(DPalette::ToolTipText)));
-
-        QFontMetrics fontMetric(nameFont);
-        const QString elidedSearchText = fontMetric.elidedText(searchText, Qt::ElideRight, rect.width()-64);
-        painter->drawText(searchTextRect, Qt::AlignLeft | Qt::AlignVCenter, elidedSearchText);
 
         painter->restore();
     } else {

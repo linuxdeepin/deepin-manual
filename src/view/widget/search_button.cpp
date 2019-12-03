@@ -137,17 +137,21 @@ void SearchButton::paintEvent(QPaintEvent *event) {
         DStyleHelper styleHelper;
         QColor fillColor = pa.color(DPalette::Highlight);
         painter.fillPath(path, QBrush(fillColor));
+
+        DPalette paLabel = ExApplicationHelper::instance()->palette(this);
+        paLabel.setColor(DPalette::WindowText, paLabel.color(DPalette::HighlightedText));
+        m_textLabel->setPalette(paLabel);
     }
     else {
         DPalette pa = ExApplicationHelper::instance()->palette(this);
         DStyleHelper styleHelper;
-        QColor fillColor = pa.color(DPalette::FrameBorder);
+        QColor fillColor = pa.color(DPalette::DarkLively);
         painter.fillPath(path, QBrush(fillColor));
-    }
 
-    DPalette paLabel = ExApplicationHelper::instance()->palette(this);
-    paLabel.setColor(DPalette::WindowText, paLabel.color(DPalette::Text));
-    m_textLabel->setPalette(paLabel);
+        DPalette paLabel = ExApplicationHelper::instance()->palette(this);
+        paLabel.setColor(DPalette::WindowText, paLabel.color(DPalette::Text));
+        m_textLabel->setPalette(paLabel);
+    }
 }
 
 void SearchButton::mousePressEvent(QMouseEvent *event)

@@ -235,19 +235,19 @@ static QColor dark_qpalette[QPalette::NColorRoles] {
 
 static QColor light_dpalette[DPalette::NColorTypes] {
     QColor(),                                   //NoType
-    QColor(255, 255, 255, CAST_INT(0 * 255)),   //ItemBackground
+    QColor(255, 255, 255, CAST_INT(0.2 * 255)), //ItemBackground
     QColor("#001A2E"),                          //TextTitle
     QColor("#8AA1B4"),                          //TextTips
     QColor("#FF5736"),                          //TextWarning
     QColor("#0082FA"),                          //TextLively
     QColor("#25b7ff"),                          //LightLively
-    QColor(235, 235, 235, CAST_INT(0.3 * 255)), //DarkLively
+    QColor(235, 235, 235, CAST_INT(0 * 255)),   //DarkLively
     QColor(235, 235, 235, CAST_INT(0 * 255))    //FrameBorder
 };
 
 static QColor dark_dpalette[DPalette::NColorTypes] {
     QColor(),                                       //NoType
-    QColor(25, 25, 25, CAST_INT(0 * 255)),        //ItemBackground
+    QColor(25, 25, 25, CAST_INT(0 * 255)),          //ItemBackground
     QColor("#C0C6D4"),                              //TextTitle
     QColor("#6D7C88"),                              //TextTips
     QColor("#FF5736"),                              //TextWarning

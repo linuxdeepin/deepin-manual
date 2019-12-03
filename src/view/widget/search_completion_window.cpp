@@ -199,13 +199,7 @@ void SearchCompletionWindow::initSearchCompletionListData(QList<SearchCompletion
 
 void SearchCompletionWindow::initUI()
 {
-    setBackgroundRole(QPalette::Background);
     setAutoFillBackground(false);
-
-//    DPlatformWindowHandle handle(this);
-//    int radius = 18;
-//    handle.setWindowRadius(radius);
-//    setContentsMargins(radius/2, 0, radius/2, 0);
 
     result_view_ = new SearchCompletionListView(this);
 
@@ -231,6 +225,20 @@ void SearchCompletionWindow::initUI()
                          Qt::CustomizeWindowHint |
                          Qt::BypassWindowManagerHint);
     this->setAttribute(Qt::WA_NativeWindow, true);
+}
+
+void SearchCompletionWindow::paintEvent(QPaintEvent *event)
+{
+    Q_UNUSED(event)
+
+    QStylePainter painter(this);
+    QPainterPath path;
+    path.addRect(this->rect());
+
+    DPalette pa = ExApplicationHelper::instance()->palette(this);
+    DStyleHelper styleHelper;
+    QColor fillColor = pa.color(DPalette::FrameBorder);
+    painter.fillPath(path, QBrush(fillColor));
 }
 
 void SearchCompletionWindow::onResultListClicked(const QModelIndex &index)

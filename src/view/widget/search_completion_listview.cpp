@@ -7,7 +7,6 @@
 SearchCompletionListView::SearchCompletionListView(QWidget *parent)
     : DListView(parent)
 {
-    setBackgroundRole(QPalette::Background);
     setAutoFillBackground(false);
 
     initDelegate();
@@ -53,13 +52,5 @@ void SearchCompletionListView::setSelection(const QRect &rect, QItemSelectionMod
 
 void SearchCompletionListView::paintEvent(QPaintEvent *event)
 {
-    QPainter painter(this->viewport());
-    painter.setRenderHint(QPainter::Antialiasing, true);
-    DPalette pa = ExApplicationHelper::instance()->palette(this);
-    QPainterPath painterPath;
-
-    painterPath.addRect(this->rect());
-    painter.fillPath(painterPath, QBrush(pa.color(DPalette::FrameBorder)));
-
     DListView::paintEvent(event);
 }
