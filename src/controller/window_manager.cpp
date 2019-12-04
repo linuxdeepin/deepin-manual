@@ -52,7 +52,6 @@ void WindowManager::openManual(const QString &app_name)
         qDebug() << "openManual contains:" << app_name;
         WebWindow *window = windows_.value(app_name);
         if (window != nullptr) {
-            m_window = window;
             window->show();
             window->raise();
             window->activateWindow();
@@ -65,7 +64,6 @@ void WindowManager::openManual(const QString &app_name)
     windows_.insert(app_name, nullptr);
 
     WebWindow *window = new WebWindow;
-    m_window = window;
     window->setAppName(app_name);
     window->show();
     window->activateWindow();
@@ -81,14 +79,37 @@ void WindowManager::openManual(const QString &app_name)
 void WindowManager::openManualWithSearch(const QString &app_name, const QString &keyword)
 {
     qDebug() << "openManualWithSearch: " << keyword << endl;
-    this->openManual(app_name);
 
-    QTimer::singleShot(500, [=]{
-        if (keyword.length() > 0)
-        {
-            emit m_window->manualSearchByKeyword(keyword);
+    qDebug() << Q_FUNC_INFO << app_name;
+    if (windows_.contains(app_name)) {
+        qDebug() << "openManual contains:" << app_name;
+        WebWindow *window = windows_.value(app_name);
+        if (window != nullptr) {
+            window->show();
+            window->raise();
+            window->activateWindow();
+            window->setSearchManager(currSearchManager());
+
+            emit window->manualSearchByKeyword(keyword);
         }
-    });
+        return;
+    }
+
+    // Add a placeholder record.
+    windows_.insert(app_name, nullptr);
+
+    WebWindow *window = new WebWindow;
+    window->setSearchKeyword(keyword);
+    window->setAppName(app_name);
+    window->show();
+    window->activateWindow();
+
+    moveWindow(window);
+    windows_.insert(app_name, window);
+
+    search_manager_ = currSearchManager();
+    window->setSearchManager(search_manager_);
+    connect(window, &WebWindow::closed, this, &WindowManager::onWindowClosed);
 }
 
 SearchManager* WindowManager::currSearchManager()

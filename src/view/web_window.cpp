@@ -68,6 +68,8 @@ WebWindow::WebWindow(QWidget *parent)
     , theme_proxy_(new ThemeProxy(this))
     , settings_proxy_(new SettingsProxy(this))
     , search_timer_()
+    , keyword_("")
+    , first_webpage_loaded_(true)
 {
     // 使用 redirectContent 模式，用于内嵌 x11 窗口时能有正确的圆角效果
     Dtk::Widget::DPlatformWindowHandle::enableDXcbForWindow(this, true);
@@ -111,6 +113,11 @@ void WebWindow::setAppName(const QString &app_name)
 
     const QFileInfo info(kIndexPage);
     web_view_->load(QUrl::fromLocalFile(info.absoluteFilePath()));
+}
+
+void WebWindow::setSearchKeyword(const QString &keyword)
+{
+    keyword_ = keyword;
 }
 
 void WebWindow::initConnections()
@@ -362,6 +369,15 @@ void WebWindow::onWebPageLoadFinished(bool ok)
                 web_view_->page()->runJavaScript(
                     QString("open('%1')").arg(app_name_));
             }
+        }
+    }
+
+    if (first_webpage_loaded_) {
+        first_webpage_loaded_ = false;
+        if (keyword_.length() > 0) {
+            QTimer::singleShot(10, [=]{
+                emit this->manualSearchByKeyword(keyword_);
+            });
         }
     }
 }

@@ -43,7 +43,6 @@ private:
     QPoint newWindowPosition();
 
     QHash<QString, WebWindow*> windows_;
-    WebWindow *m_window { nullptr };
     SearchManager* search_manager_ { nullptr };
     QPoint last_new_window_pos_;
 

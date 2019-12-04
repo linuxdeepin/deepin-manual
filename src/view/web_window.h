@@ -70,9 +70,12 @@ public:
 signals:
     void closed(const QString &app_name);
     void manualSearchByKeyword(const QString &keyword);
+    void webWindowShown();
+    void webWindowLoaded();
 
 public slots:
     void setAppName(const QString &app_name);
+    void setSearchKeyword(const QString &keyword);
     void slot_ButtonHide();
     void slot_ButtonShow();
 
@@ -106,6 +109,8 @@ private:
     SearchEdit *search_edit_ { nullptr};
     QPoint start_point_;
     int start_drag_x;
+    QString keyword_;
+    bool first_webpage_loaded_;
 
 private slots:
     void onSearchEditFocusOut();
