@@ -77,7 +77,6 @@ WebWindow::WebWindow(QWidget *parent)
     this->initUI();
     this->initConnections();
     this->initShortcuts();
-    this->initDBus();
 
     qApp->installEventFilter(this);
 }
@@ -139,48 +138,16 @@ void WebWindow::initConnections()
             theme_proxy_, &ThemeProxy::slot_ThemeChange);
     connect(title_bar_proxy_, &TitleBarProxy::buttonShowSignal,
             this, &WebWindow::slot_ButtonShow);
+
+    connect(this, &WebWindow::manualSearchByKeyword,
+            this, &WebWindow::onManualSearchByKeyword);
 }
 
-void WebWindow::initDBus()
+void WebWindow::onManualSearchByKeyword(const QString &keyword)
 {
-    QDBusConnection receiverConn = QDBusConnection::connectToBus(QDBusConnection::SessionBus, "Receiver");
+    qDebug() << "WebWindow: onManualSearchByKeyword keyword:" << keyword;
 
-    if (!receiverConn.isConnected()) {
-        qDebug() << "Search Receiver" << "connectToBus() failed";
-        return;
-    }
-
-    if (!receiverConn.registerService(dman::kManualSearchService+QString("Receiver")) ||
-        !receiverConn.registerObject(dman::kManualSearchIface+QString("Receiver"), this)) {
-        qCritical() << "Search Receiver failed to register dbus service!";
-        return;
-    }
-    else {
-        qDebug() << "Search Receiver register dbus service success!";
-    }
-
-    QDBusConnection senderConn = QDBusConnection::connectToBus(QDBusConnection::SessionBus, "Sender");
-
-    if (!senderConn.connect(
-            dman::kManualSearchService+QString("Sender"),               //sender's service name
-            dman::kManualSearchIface+QString("Sender"),                 //sender's path name
-            dman::kManualSearchService+QString("Sender"),               //interface
-            "Signal_Search",                                            //sender's signal name
-            this,                                                       //receiver
-            SLOT(Slot_ManualSearchByKeyword(const QString &)))) {       //slot
-
-        qDebug() << "connectToBus()::connect() Search Sender Signal_Search failed";
-    }
-    else {
-        qDebug() << "connectToBus()::connect() Search Sender Signal_Search success";
-    }
-}
-
-void WebWindow::Slot_ManualSearchByKeyword(const QString &data)
-{
-    qDebug() << "WebWindow: Slot_ManualSearchByKeyword data:" << data;
-
-    this->onSearchContentByKeyword(data);
+    this->onSearchContentByKeyword(keyword);
 }
 
 void WebWindow::initUI()

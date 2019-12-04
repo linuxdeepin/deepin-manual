@@ -52,6 +52,7 @@ void WindowManager::openManual(const QString &app_name)
         qDebug() << "openManual contains:" << app_name;
         WebWindow *window = windows_.value(app_name);
         if (window != nullptr) {
+            m_window = window;
             window->show();
             window->raise();
             window->activateWindow();
@@ -64,6 +65,7 @@ void WindowManager::openManual(const QString &app_name)
     windows_.insert(app_name, nullptr);
 
     WebWindow *window = new WebWindow;
+    m_window = window;
     window->setAppName(app_name);
     window->show();
     window->activateWindow();
@@ -74,6 +76,19 @@ void WindowManager::openManual(const QString &app_name)
     search_manager_ = currSearchManager();
     window->setSearchManager(search_manager_);
     connect(window, &WebWindow::closed, this, &WindowManager::onWindowClosed);
+}
+
+void WindowManager::openManualWithSearch(const QString &app_name, const QString &keyword)
+{
+    qDebug() << "openManualWithSearch: " << keyword << endl;
+    this->openManual(app_name);
+
+    QTimer::singleShot(500, [=]{
+        if (keyword.length() > 0)
+        {
+            emit m_window->manualSearchByKeyword(keyword);
+        }
+    });
 }
 
 SearchManager* WindowManager::currSearchManager()

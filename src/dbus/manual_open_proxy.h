@@ -19,19 +19,22 @@
 #define DEEPIN_MANUAL_DBUS_MANUAL_OPEN_PROXY_H
 
 #include <QObject>
+#include <QDBusConnection>
 
 class ManualOpenProxy : public QObject {
   Q_OBJECT
- public:
-  explicit ManualOpenProxy(QObject* parent = nullptr);
-  ~ManualOpenProxy() override;
+public:
+    explicit ManualOpenProxy(QObject* parent = nullptr);
+    ~ManualOpenProxy() override;
 
- signals:
-  void openManualRequested(const QString& app_name);
+signals:
+    void openManualRequested(const QString& app_name);
+    void searchRequested(const QString& keyword);
 
- public slots:
-  void Open(const QString& app_name);
-  void ShowManual(const QString& app_name);
+public slots:
+    void Open(const QString& app_name);
+    void ShowManual(const QString& app_name);
+    void Search(const QString& keyword);
 };
 
 #endif  // DEEPIN_MANUAL_DBUS_MANUAL_OPEN_PROXY_H

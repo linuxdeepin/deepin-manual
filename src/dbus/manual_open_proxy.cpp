@@ -16,11 +16,16 @@
  */
 
 #include "dbus/manual_open_proxy.h"
+#include "dbus_consts.h"
+
+#include <QtDBus/QtDBus>
 
 #include <DLog>
 
-ManualOpenProxy::ManualOpenProxy(QObject* parent) : QObject(parent) {
-  this->setObjectName("ManualOpenProxy");
+ManualOpenProxy::ManualOpenProxy(QObject* parent)
+    : QObject(parent)
+{
+    this->setObjectName("ManualOpenProxy");
 }
 
 ManualOpenProxy::~ManualOpenProxy() {
@@ -28,10 +33,16 @@ ManualOpenProxy::~ManualOpenProxy() {
 }
 
 void ManualOpenProxy::Open(const QString& app_name) {
-  qDebug() << Q_FUNC_INFO << app_name;
-  emit this->openManualRequested(app_name);
+    qDebug() << Q_FUNC_INFO << app_name;
+    emit this->openManualRequested(app_name);
 }
 
 void ManualOpenProxy::ShowManual(const QString& app_name) {
-  this->Open(app_name);
+    this->Open(app_name);
+}
+
+void ManualOpenProxy::Search(const QString& keyword) {
+
+    qDebug() << Q_FUNC_INFO << keyword;
+    emit this->searchRequested(keyword);
 }

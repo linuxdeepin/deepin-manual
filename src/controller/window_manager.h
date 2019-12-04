@@ -36,12 +36,6 @@ public:
     explicit WindowManager(QObject* parent = nullptr);
     ~WindowManager() override;
 
-    /**
-    * Open manual page of application with name |app_name|.
-    * If manual of that app has already been presented, just raise to front.
-    */
-    void openManual(const QString& app_name);
-
     void moveWindow(WebWindow *window);
     SearchManager* currSearchManager();
 
@@ -49,8 +43,8 @@ private:
     QPoint newWindowPosition();
 
     QHash<QString, WebWindow*> windows_;
-    WebWindow *m_window;
-    SearchManager* search_manager_ = nullptr;
+    WebWindow *m_window { nullptr };
+    SearchManager* search_manager_ { nullptr };
     QPoint last_new_window_pos_;
 
 private slots:
@@ -59,6 +53,13 @@ private slots:
     * @param app_name
     */
     void onWindowClosed(const QString& app_name);
+public slots:
+    /**
+    * Open manual page of application with name |app_name|.
+    * If manual of that app has already been presented, just raise to front.
+    */
+    void openManual(const QString& app_name);
+    void openManualWithSearch(const QString& app_name, const QString& keyword);
 };
 
 }  // namespace dman

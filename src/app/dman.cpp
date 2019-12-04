@@ -142,6 +142,10 @@ int main(int argc, char **argv)
                          &dman::ArgumentParser::openManualRequested,
                          &window_manager,
                          &dman::WindowManager::openManual);
+        QObject::connect(&argument_parser,
+                         &dman::ArgumentParser::openManualWithSearchRequested,
+                         &window_manager,
+                         &dman::WindowManager::openManualWithSearch);
         // Send openManualRequested() signals after slots connected.
         argument_parser.openManualsDelay();
 

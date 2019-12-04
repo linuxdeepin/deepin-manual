@@ -5,4 +5,7 @@
     <method name="ShowManual">
         <arg direction="in" type="s"/>
     </method>
+    <method name="Search">
+        <arg direction="in" type="s" name="keyword"/>
+    </method>
 </interface>

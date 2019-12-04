@@ -32,12 +32,12 @@ namespace dman {
 namespace {
 
 QString ConvertOldDmanPath(const QString& app_name) {
-  const QStringList parts = app_name.split('/');
-  const int dman_index = parts.indexOf("dman");
-  if (dman_index > 0 && dman_index < parts.length() - 1) {
-    return parts.at(dman_index + 1);
-  }
-  return app_name;
+    const QStringList parts = app_name.split('/');
+    const int dman_index = parts.indexOf("dman");
+    if (dman_index > 0 && dman_index < parts.length() - 1) {
+        return parts.at(dman_index + 1);
+    }
+    return app_name;
 }
 
 }  // namespace
@@ -51,82 +51,92 @@ ArgumentParser::~ArgumentParser() {
 }
 
 bool ArgumentParser::parseArguments() {
-  QCommandLineParser parser;
-  parser.addHelpOption();
-  parser.addVersionOption();
-  parser.addOption(QCommandLineOption(
-      "dbus", "enable daemon mode"
-  ));
-  parser.parse(qApp->arguments());
+    QCommandLineParser parser;
+    parser.addHelpOption();
+    parser.addVersionOption();
+    parser.addOption(QCommandLineOption(
+        "dbus", "enable daemon mode"
+    ));
+    parser.parse(qApp->arguments());
 
-  // Register dbus service.
-  QDBusConnection conn = QDBusConnection::sessionBus();
-  ManualOpenProxy* proxy = new ManualOpenProxy(this);
-  connect(proxy, &ManualOpenProxy::openManualRequested,
-          this, &ArgumentParser::onOpenAppRequested);
+    // Register dbus service.
+    QDBusConnection conn = QDBusConnection::sessionBus();
+    ManualOpenProxy* proxy = new ManualOpenProxy(this);
+    connect(proxy, &ManualOpenProxy::openManualRequested,
+            this, &ArgumentParser::onOpenAppRequested);
+    connect(proxy, &ManualOpenProxy::searchRequested,
+            this, &ArgumentParser::onSearchRequested);
 
-  ManualOpenAdapter* adapter = new ManualOpenAdapter(proxy);
-  Q_UNUSED(adapter);
+    ManualOpenAdapter* adapter = new ManualOpenAdapter(proxy);
+    Q_UNUSED(adapter);
 
-  if (!conn.registerService(kManualOpenService) ||
-      !conn.registerObject(kManualOpenIface, proxy)) {
-    qDebug() << "Failed to register dbus";
+    if (!conn.registerService(kManualOpenService) ||
+        !conn.registerObject(kManualOpenIface, proxy)) {
+        qDebug() << "Failed to register dbus";
 
-    // Failed to register dbus service.
-    // Open appName list with dbus interface.
-    const QStringList position_args = parser.positionalArguments();
-    if (!position_args.isEmpty()) {
-      ManualOpenInterface* iface = new ManualOpenInterface(
-          kManualOpenService,
-          kManualOpenIface,
-          QDBusConnection::sessionBus(),
-          this);
+        // Failed to register dbus service.
+        // Open appName list with dbus interface.
+        const QStringList position_args = parser.positionalArguments();
+        if (!position_args.isEmpty()) {
+            ManualOpenInterface* iface = new ManualOpenInterface(
+                kManualOpenService,
+                kManualOpenIface,
+                QDBusConnection::sessionBus(),
+                this);
 
-      if (iface->isValid()) {
-        // Call dbus interface.
-        // Only parse positional arguments.
-        for (const QString& arg : position_args) {
-          iface->Open(arg);
+            if (iface->isValid()) {
+                // Call dbus interface.
+                // Only parse positional arguments.
+                for (const QString& arg : position_args) {
+                    iface->Open(arg);
+                }
+            } else {
+                // It may fail to register dbus service in root session.
+                // Create new instance.
+                for (const QString& manual : position_args) {
+                    manuals_.append(manual);
+                }
+                return false;
+            }
         }
-      } else {
-        // It may fail to register dbus service in root session.
-        // Create new instance.
-        for (const QString& manual : position_args) {
-          manuals_.append(manual);
-        }
-        return false;
-      }
-    }
-    return true;
-  } else {
-    qDebug() << "Register dbus service successfully";
-    const QStringList position_args = parser.positionalArguments();
-    if (position_args.isEmpty()) {
-      // Open index page if not in dbus daemon mode.
-      if (!parser.isSet("dbus")) {
-        manuals_.append("");
-      }
+        return true;
     } else {
-      // Only parse positional arguments.
-      for (const QString& manual : position_args) {
-        manuals_.append(manual);
-      }
+        qDebug() << "Register dbus service successfully";
+        const QStringList position_args = parser.positionalArguments();
+        if (position_args.isEmpty()) {
+            // Open index page if not in dbus daemon mode.
+            if (!parser.isSet("dbus")) {
+                manuals_.append("");
+            }
+        } else {
+            // Only parse positional arguments.
+            for (const QString& manual : position_args) {
+                manuals_.append(manual);
+            }
+        }
+
+        return false;
     }
-    return false;
-  }
 }
 
 void ArgumentParser::openManualsDelay() {
-  for (const QString& manual : manuals_) {
-    qDebug() << Q_FUNC_INFO << manual;
-    this->onOpenAppRequested(manual);
-  }
+    qDebug() << "call openManualsDelay";
+    for (const QString& manual : manuals_) {
+        qDebug() << Q_FUNC_INFO << manual;
+        this->onOpenAppRequested(manual);
+    }
 }
 
 void ArgumentParser::onOpenAppRequested(const QString& app_name) {
-  const QString compact_app_name = ConvertOldDmanPath(app_name);
-  qDebug() << Q_FUNC_INFO << compact_app_name << app_name;
-  emit this->openManualRequested(compact_app_name);
+    const QString compact_app_name = ConvertOldDmanPath(app_name);
+    qDebug() << Q_FUNC_INFO << compact_app_name << app_name;
+    emit this->openManualRequested(compact_app_name);
+}
+
+void ArgumentParser::onSearchRequested(const QString& keyword) {
+
+    qDebug() << Q_FUNC_INFO << keyword;
+    emit this->openManualWithSearchRequested("", keyword);
 }
 
 }  // namespace dman

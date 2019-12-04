@@ -25,23 +25,8 @@
 
 ManualSearchProxy::ManualSearchProxy(QObject* parent)
     : QObject(parent)
-    , m_conn(QDBusConnection::connectToBus(QDBusConnection::SessionBus, "Sender"))
 {
     this->setObjectName("ManualSearchProxy");
-
-    if (!m_conn.isConnected()) {
-        qDebug() << "SearchSender" << "connectToBus() failed";
-        return;
-    }
-
-    if (!m_conn.registerService(dman::kManualSearchService+QString("Sender")) ||
-        !m_conn.registerObject(dman::kManualSearchIface+QString("Sender"), this)) {
-        qCritical() << "SearchSender failed to register dbus service";
-        return;
-    }
-    else {
-        qDebug() << "SearchSender register dbus service success!";
-    }
 }
 
 ManualSearchProxy::~ManualSearchProxy() {
@@ -52,18 +37,4 @@ bool ManualSearchProxy::ManualExists(const QString &app_name)
 {
     QDir manual_dir(DMAN_MANUAL_DIR);
     return manual_dir.exists(app_name);
-}
-
-void ManualSearchProxy::Search(const QString &keyword)
-{
-    qDebug() << "start send keyword:" << keyword;
-    QDBusMessage msg = QDBusMessage::createSignal(
-                            dman::kManualSearchIface + QString("Sender"),
-                            dman::kManualSearchService + QString("Sender"),
-                            "Signal_Search");
-
-    msg << keyword;
-
-    //发射信号
-    m_conn.send(msg);
 }

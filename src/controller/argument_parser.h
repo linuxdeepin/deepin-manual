@@ -23,23 +23,26 @@
 namespace dman {
 
 class ArgumentParser : public QObject {
-  Q_OBJECT
- public:
-  explicit ArgumentParser(QObject* parent = nullptr);
-  ~ArgumentParser() override;
+    Q_OBJECT
+public:
+    explicit ArgumentParser(QObject* parent = nullptr);
+    ~ArgumentParser() override;
 
-  bool parseArguments();
+    bool parseArguments();
 
-  void openManualsDelay();
+    void openManualsDelay();
 
- signals:
-  void openManualRequested(const QString& app_name);
+signals:
+    void openManualRequested(const QString& app_name);
+    void openManualWithSearchRequested(const QString& app_name, const QString& keyword);
+    void searchRequested(const QString& keyword);
 
- private:
-  QStringList manuals_;
+private:
+    QStringList manuals_;
 
- private slots:
-  void onOpenAppRequested(const QString& app_name);
+private slots:
+    void onOpenAppRequested(const QString& app_name);
+    void onSearchRequested(const QString& keyword);
 };
 
 }  // namespace dman

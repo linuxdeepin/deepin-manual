@@ -69,6 +69,7 @@ public:
 
 signals:
     void closed(const QString &app_name);
+    void manualSearchByKeyword(const QString &keyword);
 
 public slots:
     void setAppName(const QString &app_name);
@@ -118,7 +119,7 @@ private slots:
     void onTitleBarEntered();
     void onWebPageLoadFinished(bool ok);
 
-    void Slot_ManualSearchByKeyword(const QString &data);
+    void onManualSearchByKeyword(const QString &keyword);
 };
 
 }  // namespace dman
