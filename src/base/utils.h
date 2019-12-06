@@ -39,8 +39,6 @@ public:
     Utils(QObject *parent = nullptr);
     ~Utils();
 
-    static Utils* instance();
-
     enum FontType {
         SourceHanSansMedium,
         SourceHanSansNormal,
@@ -49,8 +47,6 @@ public:
 
     static QHash<QString, QPixmap> m_imgCacheHash;
     static QHash<QString, QString> m_fontNameCache;
-
-    QHash<WId, unsigned long> m_activeTimestampHash;
 
     static QString getQssContent(const QString &filePath);
     static QString getConfigPath();

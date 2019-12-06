@@ -129,7 +129,6 @@ int main(int argc, char **argv)
         qWarning() << "another deepin-manual is running";
         return 0;
     }
-    app.setAutoActivateWindows(true);
 
     dman::ArgumentParser argument_parser;
 

@@ -412,21 +412,6 @@ void WebWindow::onSearchAnchorResult(const QString &keyword,
 
 bool WebWindow::eventFilter(QObject *watched, QEvent *event)
 {
-    if (watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
-//        qDebug() << "eventFilter" << watched << "," << event << endl;
-
-        if (QEvent::FocusIn == event->type())
-        {
-//            Utils::instance()->m_activeTimestampHash.insert(this->winId(), QX11Info::getTimestamp());
-//            qDebug() << "FocusIn" << this->winId() << QX11Info::getTimestamp();
-        }
-
-        if (QEvent::FocusOut == event->type())
-        {
-//            qDebug() << "FocusOut" << this->winId() << QX11Info::getTimestamp();
-        }
-    }
-
     // Filters mouse press event only.
     if (event->type() == QEvent::MouseButtonPress &&
         qApp->activeWindow() == this &&
