@@ -143,8 +143,7 @@ void SearchCompletionWindow::setKeyword(const QString &keyword)
     QFontMetrics metrics = search_button_->fontMetrics();
     search_button_->setText(
         metrics.elidedText(
-//            QObject::tr("Search for \"%1\" in the full text").arg(keyword), //ak问题 4292
-            QString("在全文中搜索“%1”").arg(keyword),
+            QObject::tr("Search for \"%1\" in the full text").arg(keyword),
             Qt::ElideRight,
             350-39));
 }

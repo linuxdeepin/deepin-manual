@@ -28,30 +28,20 @@ I18nProxy::~I18nProxy() {
 }
 
 QVariantHash I18nProxy::getSentences() const {
-//  QVariantHash result{
-//      { "System", QObject::tr("System") },
-//      { "Applications", QObject::tr("Applications") },
-//      { "NoResult",QObject::tr(
-//                      "Sorry, there are no search results for \"%1\"") },
-//      { "WikiSearch", QObject::tr(
-//          "Change your keywords and try again, or search for it in Deepin Wiki") },
-//      { "ToIndexPage", QObject::tr("Home") },
-//      { "SearchInWiki", QObject::tr("Deepin Wiki") },
-//      { "ResultNumSuffix", QObject::tr("result") },//单数结果后缀
-//      { "ResultNumSuffixs", QObject::tr("results") }};
-//ak问题 4292
-
-  QVariantHash result{
-      { "System", QObject::tr("系统") },
-      { "Applications", QObject::tr("应用") },
+  QVariantHash result
+  {
+      { "System", QObject::tr("System") },
+      { "Applications", QObject::tr("Applications") },
       { "NoResult",QObject::tr(
-                      "抱歉，没有关于“%1”的搜索结果") },
+                      "Sorry, there are no search results for \"%1\"") },
       { "WikiSearch", QObject::tr(
-          "您可以调整关键字或在百科中搜索") },
-      { "ToIndexPage", QObject::tr("返回主页") },
-      { "SearchInWiki", QObject::tr("查找百科") },
-      { "ResultNumSuffix", QObject::tr("个结果") },//单数结果后缀
-      { "ResultNumSuffixs", QObject::tr("个结果") }};
+          "Change your keywords and try again, or search for it in Deepin Wiki") },
+      { "ToIndexPage", QObject::tr("Home") },
+      { "SearchInWiki", QObject::tr("Deepin Wiki") },
+      { "ResultNumSuffix", QObject::tr("result") },//单数结果后缀
+      { "ResultNumSuffixs", QObject::tr("results") }
+  };
+
   return result;
 }
 

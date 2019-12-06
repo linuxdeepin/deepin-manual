@@ -194,8 +194,7 @@ void SearchDb::handleSearchAnchor(const QString &keyword)
     SearchAnchorResultList result;
 
     QSqlQuery query(p_->db);
-//    const QString lang = QLocale().name(); // ak问题4292
-    const QString lang = QString("zh_CN");
+    const QString lang = QLocale().name();
     const QString sql = QString(kSearchSelectAnchor)
                         .replace(":anchor", keyword)
                         .replace(":lang", lang);
@@ -226,8 +225,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
     Q_ASSERT(p_->db.isOpen());
 
     QSqlQuery query(p_->db);
-//    const QString lang = QLocale().name(); // ak问题4292
-    const QString lang = QString("zh_CN");
+    const QString lang = QLocale().name();
     const QString sql = QString(kSearchSelectContent)
                         .replace(":lang", lang)
                         .replace(":content", keyword);

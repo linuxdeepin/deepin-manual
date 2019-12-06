@@ -81,12 +81,11 @@ var App = function (_React$Component) {
 
       channel.objects.i18n.getSentences(function (i18n) {
         channel.objects.i18n.getLocale(function (lang) {
-          global.lang = 'zh_CN';
-          // if (lang === 'en_US' || lang === 'zh_CN') {
-          //   global.lang = lang;
-          // } else {
-          //   global.lang = 'en_US';
-          // } //ak问题 4292
+          if (lang === 'en_US' || lang === 'zh_CN') {
+            global.lang = lang;
+          } else {
+            global.lang = 'en_US';
+          }
         });
         global.i18n = i18n;
         global.qtObjects = channel.objects;
@@ -473,7 +472,7 @@ var Article = function (_Component) {
 
   }, {
     key: 'scroll',
-    value: function scroll(e) {
+    value: function scroll() {
       if (!this.load) {
         return;
       }
@@ -488,10 +487,10 @@ var Article = function (_Component) {
 
       var hash = hList[0].id;
       for (var i = 0; i < hList.length; i++) {
-        // console.log("article: scroll hlist:" + hList[i]);
-        // console.log("article: scroll hlist offset top:" + hList[i].getBoundingClientRect().top);
+        //console.log("article: scroll hlist:" + hList[i]);
+        //console.log("article: scroll hlist offset top:" + hList[i].getBoundingClientRect().top);
         var articleTop = Math.abs(aritleView.getBoundingClientRect().top);
-        console.log(hList[i].id + "," + hList[i].nodeName + ", hList[" + i + "].offsetTop" + hList[i].offsetTop + ", articleTop" + articleTop);
+        //console.log(hList[i].id + "," + hList[i].nodeName + ", hList[" + i + "].offsetTop" + hList[i].offsetTop + ", articleTop" + articleTop);
         var offsetY = 10;
         if (hList[i].nodeName == 'H2') {
           offsetY = 10;
@@ -499,7 +498,7 @@ var Article = function (_Component) {
           offsetY = 30;
         }
         if (hList[i].offsetTop - offsetY >= articleTop) {
-          // console.log("article: scroll hlist offset top:" + hList[i].offsetTop);
+          //console.log("article: scroll hlist offset top:" + hList[i].offsetTop);
           break;
         }
         hash = hList[i].id;
