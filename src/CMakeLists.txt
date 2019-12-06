@@ -63,6 +63,7 @@ find_package(PkgConfig REQUIRED)
 find_package(Qt5Core REQUIRED)
 find_package(Qt5DBus REQUIRED)
 find_package(Qt5Gui REQUIRED)
+find_package(Qt5X11Extras REQUIRED)
 find_package(Qt5LinguistTools)
 find_package(Qt5Sql REQUIRED)
 find_package(Qt5WebChannel REQUIRED)
@@ -82,11 +83,14 @@ set(LINK_LIBS
     Qt5::DBus
     Qt5::Sql
     Qt5::Widgets
+    Qt5::X11Extras
     Qt5::WebChannel
 
     ${DtkWidget_LDFLAGS}
     ${DtkGui_LDFLAGS}
     ${LibQCef_LDFLAGS}
+
+    -lX11
     )
 
 set(BASE_FILES

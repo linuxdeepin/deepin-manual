@@ -52,6 +52,7 @@ private slots:
     * @param app_name
     */
     void onWindowClosed(const QString& app_name);
+    void onNewAppOpen();
 public slots:
     /**
     * Open manual page of application with name |app_name|.

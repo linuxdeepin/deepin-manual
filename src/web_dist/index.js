@@ -81,11 +81,12 @@ var App = function (_React$Component) {
 
       channel.objects.i18n.getSentences(function (i18n) {
         channel.objects.i18n.getLocale(function (lang) {
-          if (lang === 'en_US' || lang === 'zh_CN') {
-            global.lang = lang;
-          } else {
-            global.lang = 'en_US';
-          }
+          global.lang = 'zh_CN';
+          // if (lang === 'en_US' || lang === 'zh_CN') {
+          //   global.lang = lang;
+          // } else {
+          //   global.lang = 'en_US';
+          // }
         });
         global.i18n = i18n;
         global.qtObjects = channel.objects;
@@ -803,7 +804,7 @@ var Index = function (_Component2) {
         null,
         _react2.default.createElement(
           'div',
-          { id: 'index', tabIndex: '-1' },
+          { id: 'index', lang: global.lang, tabIndex: '-1' },
           _react2.default.createElement(
             'h2',
             null,
@@ -1207,6 +1208,7 @@ var Nav = function (_Component) {
               type: 'h2',
               id: 'backHome',
               className: 'h',
+              lang: global.lang,
               onClick: function onClick() {
                 return global.index();
               }

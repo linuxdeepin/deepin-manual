@@ -31,6 +31,7 @@
 #include "view/widget/search_completion_window.h"
 #include "view/widget/search_edit.h"
 #include "base/command.h"
+#include "base/utils.h"
 
 #include <qcef_web_page.h>
 
@@ -43,6 +44,7 @@
 #include <QResizeEvent>
 #include <QWebChannel>
 #include <QDBusConnection>
+#include <QX11Info>
 
 #include <DTitlebar>
 #include <DButtonBox>
@@ -410,6 +412,21 @@ void WebWindow::onSearchAnchorResult(const QString &keyword,
 
 bool WebWindow::eventFilter(QObject *watched, QEvent *event)
 {
+    if (watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
+//        qDebug() << "eventFilter" << watched << "," << event << endl;
+
+        if (QEvent::FocusIn == event->type())
+        {
+//            Utils::instance()->m_activeTimestampHash.insert(this->winId(), QX11Info::getTimestamp());
+//            qDebug() << "FocusIn" << this->winId() << QX11Info::getTimestamp();
+        }
+
+        if (QEvent::FocusOut == event->type())
+        {
+//            qDebug() << "FocusOut" << this->winId() << QX11Info::getTimestamp();
+        }
+    }
+
     // Filters mouse press event only.
     if (event->type() == QEvent::MouseButtonPress &&
         qApp->activeWindow() == this &&

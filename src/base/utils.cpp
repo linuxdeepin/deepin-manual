@@ -39,6 +39,17 @@
 QHash<QString, QPixmap> Utils::m_imgCacheHash;
 QHash<QString, QString> Utils::m_fontNameCache;
 
+static Utils *INSTANCE = nullptr;
+
+Utils *Utils::instance()
+{
+    if (!INSTANCE) {
+        INSTANCE = new Utils;
+    }
+
+    return INSTANCE;
+}
+
 Utils::Utils(QObject *parent)
     : QObject(parent)
 {

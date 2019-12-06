@@ -124,6 +124,13 @@ int main(int argc, char **argv)
     customLoggerInstance.logToGlobalInstance(category, true);
     customLoggerInstance.registerAppender(fileAppender);
 
+    qputenv("DTK_USE_SEMAPHORE_SINGLEINSTANCE", "1");
+    if (!DGuiApplicationHelper::setSingleInstance("dman")) {
+        qWarning() << "another deepin-manual is running";
+        return 0;
+    }
+    app.setAutoActivateWindows(true);
+
     dman::ArgumentParser argument_parser;
 
     if (argument_parser.parseArguments()) {
@@ -133,22 +140,22 @@ int main(int argc, char **argv)
             app.quit();
         });
         return app.exec();
-    } else {
-        QCefBindApp(&app);
-
-        qDebug() << "argument_parser.openManualsDelay()";
-        dman::WindowManager window_manager;
-        QObject::connect(&argument_parser,
-                         &dman::ArgumentParser::openManualRequested,
-                         &window_manager,
-                         &dman::WindowManager::openManual);
-        QObject::connect(&argument_parser,
-                         &dman::ArgumentParser::openManualWithSearchRequested,
-                         &window_manager,
-                         &dman::WindowManager::openManualWithSearch);
-        // Send openManualRequested() signals after slots connected.
-        argument_parser.openManualsDelay();
-
-        return app.exec();
     }
+
+    QCefBindApp(&app);
+
+    qDebug() << "argument_parser.openManualsDelay()";
+    dman::WindowManager window_manager;
+    QObject::connect(&argument_parser,
+                     &dman::ArgumentParser::openManualRequested,
+                     &window_manager,
+                     &dman::WindowManager::openManual);
+    QObject::connect(&argument_parser,
+                     &dman::ArgumentParser::openManualWithSearchRequested,
+                     &window_manager,
+                     &dman::WindowManager::openManualWithSearch);
+    // Send openManualRequested() signals after slots connected.
+    argument_parser.openManualsDelay();
+
+    return app.exec();
 }

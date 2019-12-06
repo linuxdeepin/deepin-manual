@@ -18,6 +18,7 @@
 #include "controller/window_manager.h"
 #include "controller/search_manager.h"
 #include "view/web_window.h"
+#include "base/utils.h"
 
 #include <QApplication>
 #include <DLog>
@@ -41,9 +42,43 @@ WindowManager::WindowManager(QObject *parent)
     , windows_()
     , search_manager_(nullptr)
 {
+//    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::newProcessInstance, this, &WindowManager::onNewAppOpen);
 }
 
 WindowManager::~WindowManager() {}
+
+void WindowManager::onNewAppOpen()
+{
+    WebWindow *lastWindow = nullptr;
+
+    QString firstKey = windows_.keys().first();
+    WebWindow *firstWindow = windows_.value(firstKey);
+    unsigned long firstTimeStamp = Utils::instance()->m_activeTimestampHash.value(firstWindow->winId());
+
+    unsigned long maxTimeStamp = firstTimeStamp;
+    WId activeWinId = firstWindow->winId();
+    QString activeWindowKey = firstKey;
+    for(int i=0; i<windows_.keys().size(); i++) {
+        QString key = windows_.keys().at(i);
+        lastWindow = windows_.value(key);
+
+        unsigned long currTimeStamp = Utils::instance()->m_activeTimestampHash.value(lastWindow->winId());
+        qDebug() << key << "winId:" << lastWindow->winId() << Utils::instance()->m_activeTimestampHash << endl;
+        if (currTimeStamp > maxTimeStamp) {
+            maxTimeStamp = currTimeStamp;
+            activeWinId = lastWindow->winId();
+            activeWindowKey = key;
+        }
+    }
+
+    qDebug() << "maxTimeStamp:" << maxTimeStamp;
+    qDebug() << "activeWinId:" << activeWinId;
+    qDebug() << "activeWindowKey:" << activeWindowKey;
+    WebWindow *activeWindow = windows_.value(activeWindowKey);
+    activeWindow->show();
+    activeWindow->raise();
+    activeWindow->activateWindow();
+}
 
 void WindowManager::openManual(const QString &app_name)
 {

@@ -17,14 +17,16 @@
 
 #include "controller/argument_parser.h"
 
-#include <QCommandLineParser>
-#include <DLog>
-#include <QDBusConnection>
-
 #include "dbus/dbus_consts.h"
 #include "dbus/manual_open_adapter.h"
 #include "dbus/manual_open_interface.h"
 #include "dbus/manual_open_proxy.h"
+
+#include <QCommandLineParser>
+#include <DLog>
+#include <QDBusConnection>
+
+#include <DApplicationHelper>
 
 namespace dman {
 
@@ -58,6 +60,9 @@ bool ArgumentParser::parseArguments() {
         "dbus", "enable daemon mode"
     ));
     parser.parse(qApp->arguments());
+
+    //const QStringList args = parser.positionalArguments();
+    //auto showAppName = args.value(0);
 
     // Register dbus service.
     QDBusConnection conn = QDBusConnection::sessionBus();
