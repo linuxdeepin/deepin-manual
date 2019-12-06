@@ -90,9 +90,23 @@ export default class Article extends Component {
   }
 
   handleWheelScroll(e){
-    console.log("mouse scroll");
     global.isMouseScrollArticle = true;
   }
+
+  handleKeyDown(e) {
+    if (38 == e.keyCode || 40 == e.keyCode)
+    {
+      global.isMouseScrollArticle = true;
+    }
+  }
+
+  handleKeyUp(e) {
+    if (38 == e.keyCode || 40 == e.keyCode)
+    {
+      global.isMouseScrollArticle = true;
+    }
+  }
+
   //滚动事件
   scroll() {
     if (!this.load) {
@@ -105,15 +119,28 @@ export default class Article extends Component {
       this.setState({ preview: null });
     }
     let hList = ReactDOM.findDOMNode(this).querySelectorAll('h2,h3');
+    let aritleView = this.refs.articleView;
+
     let hash = hList[0].id;
     for (let i = 0; i < hList.length; i++) {
-      console.log("article: scroll hlist:" + hList[i]);
-      if (hList[i].getBoundingClientRect().top > 1) {
+      //console.log("article: scroll hlist:" + hList[i]);
+      //console.log("article: scroll hlist offset top:" + hList[i].getBoundingClientRect().top);
+      let articleTop = Math.abs(aritleView.getBoundingClientRect().top);
+      //console.log(hList[i].id + "," + hList[i].nodeName + ", hList[" + i + "].offsetTop" + hList[i].offsetTop + ", articleTop" + articleTop);
+      let offsetY = 10;
+      if (hList[i].nodeName == 'H2') {
+        offsetY = 10;
+      }
+      else if (hList[i].nodeName == 'H3') {
+        offsetY = 30;
+      }
+      if (hList[i].offsetTop - offsetY >= articleTop) {
+        //console.log("article: scroll hlist offset top:" + hList[i].offsetTop);
         break;
       }
       hash = hList[i].id;
     }
-      console.log("article: scroll this.hash:"  + this.hash  + "   hash:" + hash);
+    console.log("article: scroll this.hash:"  + this.hash  + "   hash:" + hash);
     if (this.hash != hash) {
       console.log('article: scroll hash update');
       this.hash = hash;
@@ -201,9 +228,13 @@ export default class Article extends Component {
     return (
           <div id="article">
             <div id="article_bg">
-              <Scrollbar onScroll={this.scroll.bind(this)} onWheel={(e) => this.handleWheelScroll(e)}>
+              <Scrollbar onScroll={this.scroll.bind(this)}
+                         onWheel={(e) => this.handleWheelScroll(e)}
+                         onKeyUp={(e) => this.handleKeyUp(e)}
+                         onKeyDown={(e) => this.handleKeyDown(e)}>
                 <div
                   id="read"
+                  ref='articleView'
                   className="read"
                   tabIndex="-1"
                   dangerouslySetInnerHTML={{ __html: this.props.html }}

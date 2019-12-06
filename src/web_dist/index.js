@@ -86,7 +86,7 @@ var App = function (_React$Component) {
           //   global.lang = lang;
           // } else {
           //   global.lang = 'en_US';
-          // }
+          // } //ak问题 4292
         });
         global.i18n = i18n;
         global.qtObjects = channel.objects;
@@ -452,14 +452,28 @@ var Article = function (_Component) {
   }, {
     key: 'handleWheelScroll',
     value: function handleWheelScroll(e) {
-      console.log("mouse scroll");
       global.isMouseScrollArticle = true;
     }
+  }, {
+    key: 'handleKeyDown',
+    value: function handleKeyDown(e) {
+      if (38 == e.keyCode || 40 == e.keyCode) {
+        global.isMouseScrollArticle = true;
+      }
+    }
+  }, {
+    key: 'handleKeyUp',
+    value: function handleKeyUp(e) {
+      if (38 == e.keyCode || 40 == e.keyCode) {
+        global.isMouseScrollArticle = true;
+      }
+    }
+
     //滚动事件
 
   }, {
     key: 'scroll',
-    value: function scroll() {
+    value: function scroll(e) {
       if (!this.load) {
         return;
       }
@@ -470,10 +484,22 @@ var Article = function (_Component) {
         this.setState({ preview: null });
       }
       var hList = _reactDom2.default.findDOMNode(this).querySelectorAll('h2,h3');
+      var aritleView = this.refs.articleView;
+
       var hash = hList[0].id;
       for (var i = 0; i < hList.length; i++) {
-        console.log("article: scroll hlist:" + hList[i]);
-        if (hList[i].getBoundingClientRect().top > 1) {
+        // console.log("article: scroll hlist:" + hList[i]);
+        // console.log("article: scroll hlist offset top:" + hList[i].getBoundingClientRect().top);
+        var articleTop = Math.abs(aritleView.getBoundingClientRect().top);
+        console.log(hList[i].id + "," + hList[i].nodeName + ", hList[" + i + "].offsetTop" + hList[i].offsetTop + ", articleTop" + articleTop);
+        var offsetY = 10;
+        if (hList[i].nodeName == 'H2') {
+          offsetY = 10;
+        } else if (hList[i].nodeName == 'H3') {
+          offsetY = 30;
+        }
+        if (hList[i].offsetTop - offsetY >= articleTop) {
+          // console.log("article: scroll hlist offset top:" + hList[i].offsetTop);
           break;
         }
         hash = hList[i].id;
@@ -594,11 +620,19 @@ var Article = function (_Component) {
           { id: 'article_bg' },
           _react2.default.createElement(
             _scrollbar2.default,
-            { onScroll: this.scroll.bind(this), onWheel: function onWheel(e) {
+            { onScroll: this.scroll.bind(this),
+              onWheel: function onWheel(e) {
                 return _this5.handleWheelScroll(e);
+              },
+              onKeyUp: function onKeyUp(e) {
+                return _this5.handleKeyUp(e);
+              },
+              onKeyDown: function onKeyDown(e) {
+                return _this5.handleKeyDown(e);
               } },
             _react2.default.createElement('div', {
               id: 'read',
+              ref: 'articleView',
               className: 'read',
               tabIndex: '-1',
               dangerouslySetInnerHTML: { __html: this.props.html },
@@ -804,7 +838,7 @@ var Index = function (_Component2) {
         null,
         _react2.default.createElement(
           'div',
-          { id: 'index', lang: global.lang, tabIndex: '-1' },
+          { id: 'index', tabIndex: '-1' },
           _react2.default.createElement(
             'h2',
             null,
@@ -1208,7 +1242,6 @@ var Nav = function (_Component) {
               type: 'h2',
               id: 'backHome',
               className: 'h',
-              lang: global.lang,
               onClick: function onClick() {
                 return global.index();
               }
