@@ -140,12 +140,19 @@ void SearchDb::addSearchEntry(const QString &app_name,
 {
     Q_ASSERT(p_->db.isOpen());
     Q_ASSERT(anchors.length() == contents.length());
-    qDebug() << "addSearchEntry()" << app_name << lang << anchors;
+    qDebug() << "addSearchEntry()" << app_name << lang << anchors << contents;
 
-    if (anchors.length() != contents.length() ||
+    QStringList newContents = contents;
+    for(int i=0; i<contents.size(); i++) {
+        QString content = contents.at(i);
+        content = content.replace("icon/", "/usr/share/deepin-manual/manual/" + app_name + "/" + lang + "/icon/");
+        newContents.replace(i, content);
+    }
+
+    if (anchors.length() != newContents.length() ||
             anchors.length() != anchorIdList.length()) {
         qCritical() << "anchor list and contents mismatch:"
-                    << anchors.length() << contents.length();
+                    << anchors.length() << newContents.length();
         return;
     }
 
@@ -174,7 +181,7 @@ void SearchDb::addSearchEntry(const QString &app_name,
     query.bindValue(1, lang_list);
     query.bindValue(2, anchors);
     query.bindValue(3, anchorIdList);
-    query.bindValue(4, contents);
+    query.bindValue(4, newContents);
     bool ok = query.execBatch();
 
     if (!ok) {

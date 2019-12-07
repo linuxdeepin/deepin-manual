@@ -208,7 +208,7 @@ var App = function (_React$Component) {
   }, {
     key: 'onContentResult',
     value: function onContentResult(appName, titleList, idList, contentList) {
-      // console.log('搜索结果', appName, titleList, idList, contentList);
+      console.log('搜索结果', appName, titleList, idList, contentList);
       var searchResult = this.state.searchResult;
 
       searchResult.push({
@@ -1109,6 +1109,7 @@ exports.default = function (mdFile, mdData) {
     if (level == 2 || level == 3) {
       hlist.push({ id: id, text: text, type: type });
     }
+    console.log("renderer.image type:" + type + ",text:" + text);
     return '<' + type + ' id="' + id + '" text="' + text + '">' + text + '</' + type + '>\n';
   };
   console.log(path);
@@ -1119,6 +1120,7 @@ exports.default = function (mdFile, mdData) {
       var ext = _path.pop();
       hrefX2 = _path.join('.') + 'x2.' + ext;
     }
+    console.log("renderer.image href:" + href + ",text:" + text);
     return '<img src="' + hrefX2 + '" data-src="' + href + '" alt="' + text + '" />';
   };
   html = (0, _marked2.default)(mdData, { renderer: renderer }).replace(/src="/g, '$&' + path);
@@ -1446,6 +1448,7 @@ var Items = function (_Component) {
             }
           })
         );
+        console.log(_this2.props.contentList[i]);
         resultList.push(c);
       };
 

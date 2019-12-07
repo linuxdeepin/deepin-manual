@@ -91,6 +91,43 @@
       -webkit-box-orient: vertical;
     }
     .item {
+      img {
+        //svg图片内嵌同行
+        &[src$='svg'] {
+          height: 20px;
+          vertical-align: middle;
+        }
+        //png图片
+        &[src$='png'] {
+          $i: 0;
+          @while $i<1 {
+            $i: $i+0.25;
+            @media screen and (-webkit-min-device-pixel-ratio: 1+$i) {
+              zoom: 0.5/$i;
+            }
+          }
+          margin-top: 26px;
+          max-width: 99%;
+          cursor: pointer;
+        }
+        //jpg图片
+        &[src$='jpg'] {
+          $i: 0;
+          @while $i<1 {
+            $i: $i+0.25;
+            @media screen and (-webkit-min-device-pixel-ratio: 1+$i) {
+              zoom: 0.5/$i;
+            }
+          }
+          margin-top: 26px;
+          max-width: 99%;
+          cursor: pointer;
+          border-radius: 4px;
+          // border: 1px solid rgba(0, 0, 0, 0.18);
+          box-shadow: 0px 2px 10px rgba(0, 0, 0, 0.2),
+            0 0 0 1px rgba(0, 0, 0, 0.1);
+        }
+      }
       .itemTitle {
         width: 99%;
         margin: 0px 0px 7px 15px;
