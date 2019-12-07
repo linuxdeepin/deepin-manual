@@ -16,6 +16,8 @@ var _reactDom = require('react-dom');
 
 var _reactRouterDom = require('react-router-dom');
 
+var _history = require('history');
+
 var _index = require('./index.jsx');
 
 var _index2 = _interopRequireDefault(_index);
@@ -44,6 +46,10 @@ global.hash = ' ';
 global.oldHash = ' ';
 global.isMouseClickNav = false;
 global.isMouseScrollArticle = false;
+
+global.lastUrlBeforeSearch = '/';
+global.lastHistoryIndex = 0;
+global.lastAction = 'PUSH';
 
 global.readFile = function (fileName, callback) {
   var xhr = new XMLHttpRequest();
@@ -97,6 +103,7 @@ var App = function (_React$Component) {
         global.qtObjects.titleBar.setBackwardButtonActive(true);
         global.qtObjects.titleBar.setForwardButtonActive(false);
         global.qtObjects.titleBar.backwardButtonClicked.connect(function () {
+          console.log("backwardButtonClicked history.goBack()", _this2.context.router.history);
           _this2.setState({ historyGO: _this2.state.historyGO - 1 });
           _this2.context.router.history.goBack();
         });
@@ -224,9 +231,19 @@ var App = function (_React$Component) {
   }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
-      console.log(this.context);
+      console.log("componentWillReceiveProps", this.context.router.history);
       if (this.context.router.history.action == 'PUSH') {
-        this.setState({ historyGO: this.context.router.history.length - 1 });
+        var entriesLen = this.context.router.history.entries.length;
+        console.log("entriesLen" + entriesLen);
+        if (entriesLen > 1) {
+          var entry = this.context.router.history.entries[entriesLen - 1];
+          if (entry.pathname.toString().indexOf("/search/") != -1) {
+            console.log(entry.pathname);
+            this.setState({ historyGO: entriesLen - 1 });
+            return;
+          }
+        }
+        this.setState({ historyGO: entriesLen - 1 });
       }
     }
   }, {
@@ -235,7 +252,7 @@ var App = function (_React$Component) {
       var _this3 = this;
 
       global.index = function () {
-        _this3.context.router.history.push('/');
+        // this.context.router.history.push('/');
       };
       global.open = function (file) {
         var hash = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
@@ -249,10 +266,49 @@ var App = function (_React$Component) {
         _this3.context.router.history.push(url);
       };
       global.openSearchPage = function (keyword) {
+        console.log("openSearchPage", _this3.context.router.history);
+        console.log('lastUrl:' + global.lastUrlBeforeSearch + ', lastHistoryIndex: ' + global.lastHistoryIndex);
+
+        var entriesLen = _this3.context.router.history.entries.length;
+        if ('POP' == global.lastAction && lastHistoryIndex < entriesLen - 1) {
+          var diffLen = entriesLen - 1 - lastHistoryIndex;
+          _this3.context.router.history.entries.length = entriesLen - diffLen;
+          _this3.context.router.history.length = entriesLen - diffLen;
+          _this3.context.router.history.index = lastHistoryIndex;
+          console.log('diffLen:' + diffLen + ', entries.length: ' + _this3.context.router.history.entries.length);
+          console.log('history.length:' + _this3.context.router.history.length + ', history.index: ' + _this3.context.router.history.index);
+
+          _this3.setState({ searchResult: [] });
+          _this3.context.router.history.push('/search/' + encodeURIComponent(keyword));
+
+          return;
+        }
+
+        entriesLen = _this3.context.router.history.entries.length;
+        if (entriesLen > 1) {
+          var entry = _this3.context.router.history.entries[entriesLen - 1];
+          if (entry.pathname.toString().indexOf("/search/") != -1) {
+            _this3.context.router.history.entries.length = entriesLen - 1;
+            _this3.context.router.history.length = entriesLen - 1;
+            _this3.context.router.history.index = _this3.context.router.history.entries.length - 1;
+          }
+        }
+
         _this3.setState({ searchResult: [] });
         _this3.context.router.history.push('/search/' + encodeURIComponent(keyword));
       };
+
+      this.context.router.history.listen(function (location, action) {
+        console.log('The current URL is ' + location.pathname + location.search + location.hash);
+        console.log('The last navigation action was ' + action);
+        console.log("index:" + _this3.context.router.history.index);
+        global.lastUrlBeforeSearch = location.pathname;
+        global.lastHistoryIndex = _this3.context.router.history.index;
+        global.lastAction = action;
+      });
+
       global.back = function () {
+        console.log("global.back()");
         _this3.context.router.history.goBack();
       };
       this.componentDidUpdate();
@@ -295,13 +351,13 @@ App.childContextTypes = {
 };
 
 (0, _reactDom.render)(_react2.default.createElement(
-  _reactRouterDom.HashRouter,
-  null,
+  _reactRouterDom.Router,
+  { history: (0, _history.createMemoryHistory)('/') },
   _react2.default.createElement(App, null)
 ), document.getElementById('app'));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./index.jsx":3,"./main.jsx":4,"./search.jsx":8,"./searchIndex":9,"prop-types":32,"react":77,"react-dom":46,"react-router-dom":62}],2:[function(require,module,exports){
+},{"./index.jsx":3,"./main.jsx":4,"./search.jsx":8,"./searchIndex":9,"history":17,"prop-types":32,"react":77,"react-dom":46,"react-router-dom":62}],2:[function(require,module,exports){
 (function (global){
 'use strict';
 

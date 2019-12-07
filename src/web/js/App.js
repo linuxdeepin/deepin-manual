@@ -1,7 +1,8 @@
 import React from 'react';
 import PropTypes from 'prop-types';
 import { render } from 'react-dom';
-import { HashRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { Router as Router, Switch, Route, Link } from 'react-router-dom';
+import { createMemoryHistory } from 'history'
 
 import Index from './index.jsx';
 import Main from './main.jsx';
@@ -12,6 +13,10 @@ global.hash = ' ';
 global.oldHash = ' ';
 global.isMouseClickNav = false;
 global.isMouseScrollArticle = false;
+
+global.lastUrlBeforeSearch = '/';
+global.lastHistoryIndex = 0;
+global.lastAction = 'PUSH';
 
 global.readFile = (fileName, callback) => {
   let xhr = new XMLHttpRequest();
@@ -55,6 +60,7 @@ class App extends React.Component {
       global.qtObjects.titleBar.setBackwardButtonActive(true);
       global.qtObjects.titleBar.setForwardButtonActive(false);
       global.qtObjects.titleBar.backwardButtonClicked.connect(() => {
+        // console.log("backwardButtonClicked history.goBack()", this.context.router.history);
         this.setState({ historyGO: this.state.historyGO - 1 });
         this.context.router.history.goBack();
       });
@@ -174,14 +180,24 @@ document.documentElement.style.setProperty(`--search-context-word-color`, '#6D7C
     return { searchResult, mismatch };
   }
   componentWillReceiveProps(nextProps) {
-    console.log(this.context);
+    console.log("componentWillReceiveProps", this.context.router.history);
     if (this.context.router.history.action == 'PUSH') {
-      this.setState({ historyGO: this.context.router.history.length - 1 });
+      let entriesLen = this.context.router.history.entries.length;
+      //console.log("entriesLen" + entriesLen);
+      if (entriesLen > 1) {
+        let entry = this.context.router.history.entries[entriesLen-1];
+        if (entry.pathname.toString().indexOf("/search/") != -1) {
+          //console.log(entry.pathname);
+          this.setState({ historyGO: entriesLen - 1 });
+          return;
+        }
+      }
+      this.setState({ historyGO: entriesLen - 1 });
     }
   }
   componentDidMount() {
     global.index = () => {
-      this.context.router.history.push('/');
+      //this.context.router.history.push('/');
     };
     global.open = (file, hash = '') => {
       file = encodeURIComponent(file);
@@ -193,12 +209,53 @@ document.documentElement.style.setProperty(`--search-context-word-color`, '#6D7C
       this.context.router.history.push(url);
     };
     global.openSearchPage = keyword => {
+      console.log("openSearchPage", this.context.router.history);
+      console.log(`lastUrl:${global.lastUrlBeforeSearch}, lastHistoryIndex: ${global.lastHistoryIndex}`);
+
+      let entriesLen = this.context.router.history.entries.length;
+      if ('POP' == global.lastAction && lastHistoryIndex < entriesLen-1) {
+        let diffLen = entriesLen-1 - lastHistoryIndex;
+        this.context.router.history.entries.length = entriesLen-diffLen;
+        this.context.router.history.length = entriesLen-diffLen;
+        this.context.router.history.index = lastHistoryIndex;
+        console.log(`diffLen:${diffLen}, entries.length: ${this.context.router.history.entries.length}`);
+        console.log(`history.length:${this.context.router.history.length}, history.index: ${this.context.router.history.index}`);
+
+        this.setState({ searchResult: [] });
+        this.context.router.history.push(
+          '/search/' + encodeURIComponent(keyword)
+        );
+
+        return;
+      }
+
+      entriesLen = this.context.router.history.entries.length;
+      if (entriesLen > 1) {
+        let entry = this.context.router.history.entries[entriesLen-1];
+        if (entry.pathname.toString().indexOf("/search/") != -1) {
+          this.context.router.history.entries.length = entriesLen-1;
+          this.context.router.history.length = entriesLen-1;
+          this.context.router.history.index = this.context.router.history.entries.length-1;
+        }
+      }
+
       this.setState({ searchResult: [] });
       this.context.router.history.push(
         '/search/' + encodeURIComponent(keyword)
       );
     };
+
+    this.context.router.history.listen((location, action) => {
+      //console.log(`The current URL is ${location.pathname}${location.search}${location.hash}` );
+      //console.log(`The last navigation action was ${action}`);
+      //console.log("index:" + this.context.router.history.index);
+      global.lastUrlBeforeSearch = location.pathname;
+      global.lastHistoryIndex = this.context.router.history.index;
+      global.lastAction = action;
+    });
+
     global.back = () => {
+      console.log("global.back()");
       this.context.router.history.goBack();
     };
     this.componentDidUpdate();
@@ -237,7 +294,7 @@ App.childContextTypes = {
 };
 
 render(
-  <Router>
+  <Router history={createMemoryHistory('/')}>
     <App />
   </Router>,
   document.getElementById('app')
