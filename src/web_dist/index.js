@@ -103,7 +103,7 @@ var App = function (_React$Component) {
         global.qtObjects.titleBar.setBackwardButtonActive(true);
         global.qtObjects.titleBar.setForwardButtonActive(false);
         global.qtObjects.titleBar.backwardButtonClicked.connect(function () {
-          console.log("backwardButtonClicked history.goBack()", _this2.context.router.history);
+          // console.log("backwardButtonClicked history.goBack()", this.context.router.history);
           _this2.setState({ historyGO: _this2.state.historyGO - 1 });
           _this2.context.router.history.goBack();
         });
@@ -234,11 +234,11 @@ var App = function (_React$Component) {
       console.log("componentWillReceiveProps", this.context.router.history);
       if (this.context.router.history.action == 'PUSH') {
         var entriesLen = this.context.router.history.entries.length;
-        console.log("entriesLen" + entriesLen);
+        //console.log("entriesLen" + entriesLen);
         if (entriesLen > 1) {
           var entry = this.context.router.history.entries[entriesLen - 1];
           if (entry.pathname.toString().indexOf("/search/") != -1) {
-            console.log(entry.pathname);
+            //console.log(entry.pathname);
             this.setState({ historyGO: entriesLen - 1 });
             return;
           }
@@ -252,7 +252,7 @@ var App = function (_React$Component) {
       var _this3 = this;
 
       global.index = function () {
-        // this.context.router.history.push('/');
+        //this.context.router.history.push('/');
       };
       global.open = function (file) {
         var hash = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
@@ -299,9 +299,9 @@ var App = function (_React$Component) {
       };
 
       this.context.router.history.listen(function (location, action) {
-        console.log('The current URL is ' + location.pathname + location.search + location.hash);
-        console.log('The last navigation action was ' + action);
-        console.log("index:" + _this3.context.router.history.index);
+        //console.log(`The current URL is ${location.pathname}${location.search}${location.hash}` );
+        //console.log(`The last navigation action was ${action}`);
+        //console.log("index:" + this.context.router.history.index);
         global.lastUrlBeforeSearch = location.pathname;
         global.lastHistoryIndex = _this3.context.router.history.index;
         global.lastAction = action;
