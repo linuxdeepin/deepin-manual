@@ -36,7 +36,7 @@ public slots:
 
 private slots:
     void RecvMsg(const QString &data);
-    void OnNewWindowOpen(QString data);
+    void OnNewWindowOpen(const QString &data);
 
 private:
     void initDBus();

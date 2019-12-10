@@ -134,7 +134,7 @@ void ManualSearchProxy::RecvMsg(const QString &data)
     }
 }
 
-void ManualSearchProxy::OnNewWindowOpen(QString data)
+void ManualSearchProxy::OnNewWindowOpen(const QString &data)
 {
     qDebug() << "Search data is: " << data;
 
