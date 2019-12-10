@@ -118,7 +118,7 @@ bool ArgumentParser::parseArguments() {
             QString argName = qApp->arguments().value(0);
             qDebug() << "argName:" << argName;
 
-            if (argName == QString(kAppProcessName)) {
+            if (argName == QString(kAppProcessName) || argName.endsWith("/" + QString(kAppProcessName)) ) {
                 qDebug() << "emit onNewAppOpen";
                 emit onNewAppOpen();
             }
