@@ -29,6 +29,8 @@ ManualSearchProxy::ManualSearchProxy(QObject* parent)
 {
     this->setObjectName("ManualSearchProxy");
 
+    winInfoList.clear();
+
     initDBus();
     connectToSender();
 }
@@ -102,29 +104,31 @@ void ManualSearchProxy::RecvMsg(const QString &data)
         }
     }
 
-    if (dataList.size() <= 2) {
+    if (dataList.size() == 2) {
         QHash<QString, QString> winInfo;
         winInfo.insert(dataList.first(), dataList.last());
         winInfoList.append(winInfo);
+
+        return;
     }
-    else {
-        QString flag = dataList.last();
 
-        if ("close" == flag) {
-            int removeWinIndex = -1;
-            if (winInfoList.size() > 0) {
-                for(int i=0; i<winInfoList.size(); i++) {
-                    QHash<QString, QString> winInfo = winInfoList.at(i);
-                    if (dataList.at(1) == winInfo.value(winInfo.keys().first())) {
-                        removeWinIndex = i;
-                        qDebug() << "remove window" << removeWinIndex;
-                        break;
-                    }
-                }
 
-                if (removeWinIndex != -1) {
-                    winInfoList.removeAt(removeWinIndex);
+    QString flag = dataList.last();
+
+    if ("close" == flag) {
+        int removeWinIndex = -1;
+        if (winInfoList.size() > 0) {
+            for(int i=0; i<winInfoList.size(); i++) {
+                QHash<QString, QString> winInfo = winInfoList.at(i);
+                if (dataList.at(1) == winInfo.value(winInfo.keys().first())) {
+                    removeWinIndex = i;
+                    qDebug() << "remove window" << removeWinIndex;
+                    break;
                 }
+            }
+
+            if (removeWinIndex != -1) {
+                winInfoList.removeAt(removeWinIndex);
             }
         }
     }
@@ -133,6 +137,12 @@ void ManualSearchProxy::RecvMsg(const QString &data)
 void ManualSearchProxy::Search(QString data)
 {
     qDebug() << "Search data is: " << data;
+
+    if (winInfoList.size() == 0) {
+        qDebug() << "winInfoList is: " << winInfoList;
+        return;
+    }
+
     bool hasProcess = false;
     for(int i=0; i<winInfoList.size(); i++)
     {

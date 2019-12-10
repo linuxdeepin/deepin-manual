@@ -99,11 +99,6 @@ void WindowManager::RecvMsg(const QString &data)
 void WindowManager::onNewAppOpen()
 {
     qDebug() << "slot onNewAppOpen";
-//    qDebug() << windows_ << endl;
-//    WebWindow *activeWindow = windows_.value("");
-//    activeWindow->setWindowState(Qt::WindowActive);
-//    activeWindow->activateWindow();
-
     qDebug() << qApp->applicationPid(); // 进程id
 
     // 传参数
@@ -116,14 +111,9 @@ void WindowManager::onNewAppOpen()
     msg << QString::number(qApp->applicationPid());
     QDBusMessage response = QDBusConnection::sessionBus().call(msg);
 
-    // 判断 Method 是否被正确返回
     if(response.type() == QDBusMessage::ReplyMessage)
     {
-        // QDBusMessage的arguments不仅可以用来存储发送的参数，也用来存储返回值
-        // 这里取得 checkIn 的返回值
-        QString name = response.arguments().takeFirst().toString();
-
-        qDebug() << "ReplyMessage" << name;
+        qDebug() << "ReplyMessage";
     }
 
     if (QDBusMessage::ErrorMessage == response.type())
