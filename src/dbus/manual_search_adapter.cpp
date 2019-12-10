@@ -42,8 +42,8 @@ bool ManualSearchAdapter::ManualExists(const QString &in0)
     return out0;
 }
 
-void ManualSearchAdapter::Search(const QString &keyword)
+void ManualSearchAdapter::OnNewWindowOpen(const QString &data)
 {
-    QMetaObject::invokeMethod(parent(), "Search", Q_ARG(QString, keyword));
+    QMetaObject::invokeMethod(parent(), "OnNewWindowOpen", Q_ARG(QString, data));
 }
 

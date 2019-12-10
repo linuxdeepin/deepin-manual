@@ -77,11 +77,11 @@ void WindowManager::SendMsg(const QString &msg)
     QDBusMessage dbusMsg = QDBusMessage::createSignal(
                                 dman::kManualSearchIface + QString(WM_SENDER_NAME),
                                 dman::kManualSearchService + QString(WM_SENDER_NAME),
-                                "Signal_Search");
+                                "SendWinInfo");
 
     dbusMsg << QString::number(qApp->applicationPid()) + "|" + msg;
 
-    //发射信号
+    //将进程号+窗口WinId拼接后发给dman-search后台进程
     bool isSuccess = m_dbusConn.send(dbusMsg);
     if (isSuccess) {
         qDebug() << "send success";
@@ -99,14 +99,13 @@ void WindowManager::RecvMsg(const QString &data)
 void WindowManager::onNewAppOpen()
 {
     qDebug() << "slot onNewAppOpen";
-    qDebug() << qApp->applicationPid(); // 进程id
+    qDebug() << qApp->applicationPid();
 
-    // 传参数
     QDBusMessage msg = QDBusMessage::createMethodCall(
                 dman::kManualSearchService+QString("Receiver"),
                 dman::kManualSearchIface+QString("Receiver"),
                 dman::kManualSearchService,
-                "Search");
+                "OnNewWindowOpen");
 
     msg << QString::number(qApp->applicationPid());
     QDBusMessage response = QDBusConnection::sessionBus().call(msg);

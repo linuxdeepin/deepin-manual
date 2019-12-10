@@ -36,10 +36,10 @@ class ManualSearchAdapter: public QDBusAbstractAdaptor
 "      <arg direction=\"in\" type=\"s\"/>\n"
 "      <arg direction=\"out\" type=\"b\"/>\n"
 "    </method>\n"
-"    <signal name=\"Signal_Search\">\n"
+"    <signal name=\"SendWinInfo\">\n"
 "      <arg direction=\"out\" type=\"s\" name=\"data\"/>\n"
 "    </signal>\n"
-"    <method name=\"Search\">\n"
+"    <method name=\"OnNewWindowOpen\">\n"
 "      <arg direction=\"in\" type=\"s\" name=\"data\"/>\n"
 "    </method>\n"
 "  </interface>\n"
@@ -51,10 +51,10 @@ public:
 public: // PROPERTIES
 public Q_SLOTS: // METHODS
     bool ManualExists(const QString &in0);
-    void Search(const QString &data);
+    void OnNewWindowOpen(const QString &data);
 
 Q_SIGNALS: // SIGNALS
-    void Signal_Search(const QString &keyword);
+    void SendWinInfo(const QString &data);
 };
 
 #endif

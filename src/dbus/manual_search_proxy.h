@@ -29,14 +29,14 @@ public:
     ~ManualSearchProxy() override;
 
 signals:
-    void Signal_Search(const QString &keyword);
+    void SendWinInfo(const QString &data);
 
 public slots:
     bool ManualExists(const QString &app_name);
 
 private slots:
     void RecvMsg(const QString &data);
-    void Search(QString data);
+    void OnNewWindowOpen(QString data);
 
 private:
     void initDBus();

@@ -64,14 +64,14 @@ void ManualSearchProxy::connectToSender()
             dman::kManualSearchService+QString("Sender"),               //sender's service name
             dman::kManualSearchIface+QString("Sender"),                 //sender's path name
             dman::kManualSearchService+QString("Sender"),               //interface
-            "Signal_Search",                                            //sender's signal name
+            "SendWinInfo",                                              //sender's signal name
             this,                                                       //receiver
             SLOT(RecvMsg(const QString &)))) {                          //slot
 
-        qDebug() << "connectToBus()::connect() Search Sender Signal_Search failed";
+        qDebug() << "connectToBus()::connect() Sender SendWinInfo failed";
     }
     else {
-        qDebug() << "connectToBus()::connect() Search Sender Signal_Search success";
+        qDebug() << "connectToBus()::connect() Sender SendWinInfo success";
     }
 }
 
@@ -134,7 +134,7 @@ void ManualSearchProxy::RecvMsg(const QString &data)
     }
 }
 
-void ManualSearchProxy::Search(QString data)
+void ManualSearchProxy::OnNewWindowOpen(QString data)
 {
     qDebug() << "Search data is: " << data;
 
