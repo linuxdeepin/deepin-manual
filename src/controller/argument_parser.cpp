@@ -17,10 +17,13 @@
 
 #include "controller/argument_parser.h"
 
+#include "base/consts.h"
 #include "dbus/dbus_consts.h"
 #include "dbus/manual_open_adapter.h"
 #include "dbus/manual_open_interface.h"
 #include "dbus/manual_open_proxy.h"
+#include "window_manager.h"
+#include "view/web_window.h"
 
 #include <QCommandLineParser>
 #include <DLog>
@@ -61,9 +64,6 @@ bool ArgumentParser::parseArguments() {
     ));
     parser.parse(qApp->arguments());
 
-    //const QStringList args = parser.positionalArguments();
-    //auto showAppName = args.value(0);
-
     // Register dbus service.
     QDBusConnection conn = QDBusConnection::sessionBus();
     ManualOpenProxy* proxy = new ManualOpenProxy(this);
@@ -82,7 +82,15 @@ bool ArgumentParser::parseArguments() {
         // Failed to register dbus service.
         // Open appName list with dbus interface.
         const QStringList position_args = parser.positionalArguments();
+        qDebug() << "position_args:" << position_args;
+
         if (!position_args.isEmpty()) {
+            qDebug() << "position_args is not empty";
+
+            if (position_args.size() > 1) {
+                qDebug() << "position_args.size() > 1:" << position_args.size();
+            }
+
             ManualOpenInterface* iface = new ManualOpenInterface(
                 kManualOpenService,
                 kManualOpenIface,
@@ -104,6 +112,18 @@ bool ArgumentParser::parseArguments() {
                 return false;
             }
         }
+        else {
+            qDebug() << "position_args is empty";
+
+            QString argName = qApp->arguments().value(0);
+            qDebug() << "argName:" << argName;
+
+            if (argName == QString(kAppProcessName)) {
+                qDebug() << "emit onNewAppOpen";
+                emit onNewAppOpen();
+            }
+        }
+
         return true;
     } else {
         qDebug() << "Register dbus service successfully";

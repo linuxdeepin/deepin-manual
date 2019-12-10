@@ -21,6 +21,7 @@
 #include <QHash>
 #include <QObject>
 #include <QPoint>
+#include <QDBusConnection>
 
 namespace dman {
 
@@ -39,12 +40,17 @@ public:
     void moveWindow(WebWindow *window);
     SearchManager* currSearchManager();
 
+    void SendMsg(const QString &msg);
+
 private:
     QPoint newWindowPosition();
+    void initDBus();
+
 
     QHash<QString, WebWindow*> windows_;
     SearchManager* search_manager_ { nullptr };
     QPoint last_new_window_pos_;
+    QDBusConnection m_dbusConn;
 
 private slots:
     /**
@@ -52,7 +58,8 @@ private slots:
     * @param app_name
     */
     void onWindowClosed(const QString& app_name);
-    void onNewAppOpen();
+    void RecvMsg(const QString &data);
+
 public slots:
     /**
     * Open manual page of application with name |app_name|.
@@ -60,6 +67,8 @@ public slots:
     */
     void openManual(const QString& app_name);
     void openManualWithSearch(const QString& app_name, const QString& keyword);
+
+    void onNewAppOpen();
 };
 
 }  // namespace dman

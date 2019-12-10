@@ -36,6 +36,7 @@ signals:
     void openManualRequested(const QString& app_name);
     void openManualWithSearchRequested(const QString& app_name, const QString& keyword);
     void searchRequested(const QString& keyword);
+    void onNewAppOpen();
 
 private:
     QStringList manuals_;

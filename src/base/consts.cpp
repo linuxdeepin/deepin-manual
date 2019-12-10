@@ -20,6 +20,7 @@
 namespace dman {
 
 const char kAppName[] = "deepin-manual";
+const char kAppProcessName[] = "dman";
 const char kAppVersion[] = "2.0.10";
 const char kIndexPage[] = DMAN_WEB_DIR "/index.html";
 

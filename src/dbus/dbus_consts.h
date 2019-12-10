@@ -27,6 +27,9 @@ extern const char kManualSearchIface[];
 extern const char kLauncherService[];
 extern const char kLauncherIface[];
 
+extern const char kManualWinManagerService[];
+extern const char kManualWinManagerIface[];
+
 }  // namespace dman
 
 #endif  // DEEPIN_MANUAL_DBUS_DBUS_CONSTS_H

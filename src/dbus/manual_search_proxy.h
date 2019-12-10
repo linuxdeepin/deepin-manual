@@ -28,8 +28,22 @@ public:
     explicit ManualSearchProxy(QObject *parent = nullptr);
     ~ManualSearchProxy() override;
 
+signals:
+    void Signal_Search(const QString &keyword);
+
 public slots:
     bool ManualExists(const QString &app_name);
+
+private slots:
+    void RecvMsg(const QString &data);
+    void Search(QString data);
+
+private:
+    void initDBus();
+    void connectToSender();
+
+    QDBusConnection m_dbusConn;
+    QList<QHash<QString, QString>> winInfoList;
 };
 
 #endif  // DEEPIN_MANUAL_DBUS_MANUAL_SEARCH_PROXY_H

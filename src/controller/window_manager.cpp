@@ -19,6 +19,9 @@
 #include "controller/search_manager.h"
 #include "view/web_window.h"
 #include "base/utils.h"
+#include "dbus/dbus_consts.h"
+
+#include <unistd.h>
 
 #include <QApplication>
 #include <DLog>
@@ -37,22 +40,96 @@ const int kWinOffset = 30;
 
 }  // namespace
 
+#define WM_SENDER_NAME "Sender"
+
 WindowManager::WindowManager(QObject *parent)
     : QObject(parent)
     , windows_()
     , search_manager_(nullptr)
+    , m_dbusConn(QDBusConnection::connectToBus(QDBusConnection::SessionBus, WM_SENDER_NAME))
 {
-    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::newProcessInstance, this, &WindowManager::onNewAppOpen);
+    initDBus();
 }
 
 WindowManager::~WindowManager() {}
 
+void WindowManager::initDBus()
+{
+    if (!m_dbusConn.isConnected()) {
+        qDebug() << WM_SENDER_NAME << "connectToBus() failed";
+        return;
+    }
+
+    if (!m_dbusConn.registerService(dman::kManualSearchService+QString(WM_SENDER_NAME)) ||
+        !m_dbusConn.registerObject(dman::kManualSearchIface+QString(WM_SENDER_NAME), this)) {
+        qCritical() << WM_SENDER_NAME << " failed to register dbus service!";
+
+        return;
+    }
+    else {
+        qDebug() << WM_SENDER_NAME << " register dbus service success!";
+    }
+}
+
+void WindowManager::SendMsg(const QString &msg)
+{
+    qDebug() << "start send keyword:" << QString::number(qApp->applicationPid());
+    QDBusMessage dbusMsg = QDBusMessage::createSignal(
+                                dman::kManualSearchIface + QString(WM_SENDER_NAME),
+                                dman::kManualSearchService + QString(WM_SENDER_NAME),
+                                "Signal_Search");
+
+    dbusMsg << QString::number(qApp->applicationPid()) + "|" + msg;
+
+    //发射信号
+    bool isSuccess = m_dbusConn.send(dbusMsg);
+    if (isSuccess) {
+        qDebug() << "send success";
+    }
+    else {
+        qDebug() << "send failed";
+    }
+}
+
+void WindowManager::RecvMsg(const QString &data)
+{
+    qDebug() << "sync:" << data;
+}
+
 void WindowManager::onNewAppOpen()
 {
-    qDebug() << "onNewAppOpen";
-    WebWindow *activeWindow = windows_.value("");
-    activeWindow->setWindowState(Qt::WindowActive);
-    activeWindow->activateWindow();
+    qDebug() << "slot onNewAppOpen";
+//    qDebug() << windows_ << endl;
+//    WebWindow *activeWindow = windows_.value("");
+//    activeWindow->setWindowState(Qt::WindowActive);
+//    activeWindow->activateWindow();
+
+    qDebug() << qApp->applicationPid(); // 进程id
+
+    // 传参数
+    QDBusMessage msg = QDBusMessage::createMethodCall(
+                dman::kManualSearchService+QString("Receiver"),
+                dman::kManualSearchIface+QString("Receiver"),
+                dman::kManualSearchService,
+                "Search");
+
+    msg << QString::number(qApp->applicationPid());
+    QDBusMessage response = QDBusConnection::sessionBus().call(msg);
+
+    // 判断 Method 是否被正确返回
+    if(response.type() == QDBusMessage::ReplyMessage)
+    {
+        // QDBusMessage的arguments不仅可以用来存储发送的参数，也用来存储返回值
+        // 这里取得 checkIn 的返回值
+        QString name = response.arguments().takeFirst().toString();
+
+        qDebug() << "ReplyMessage" << name;
+    }
+
+    if (QDBusMessage::ErrorMessage == response.type())
+    {
+        qDebug() << "ErrorMessage";
+    }
 }
 
 void WindowManager::openManual(const QString &app_name)
@@ -66,6 +143,8 @@ void WindowManager::openManual(const QString &app_name)
             window->raise();
             window->activateWindow();
             window->setSearchManager(currSearchManager());
+
+            SendMsg(QString::number(window->winId()));
         }
         return;
     }
@@ -84,6 +163,8 @@ void WindowManager::openManual(const QString &app_name)
     search_manager_ = currSearchManager();
     window->setSearchManager(search_manager_);
     connect(window, &WebWindow::closed, this, &WindowManager::onWindowClosed);
+
+    SendMsg(QString::number(window->winId()));
 }
 
 void WindowManager::openManualWithSearch(const QString &app_name, const QString &keyword)
@@ -100,6 +181,7 @@ void WindowManager::openManualWithSearch(const QString &app_name, const QString 
             window->activateWindow();
             window->setSearchManager(currSearchManager());
 
+            SendMsg(QString::number(window->winId()));
             emit window->manualSearchByKeyword(keyword);
         }
         return;
@@ -120,6 +202,8 @@ void WindowManager::openManualWithSearch(const QString &app_name, const QString 
     search_manager_ = currSearchManager();
     window->setSearchManager(search_manager_);
     connect(window, &WebWindow::closed, this, &WindowManager::onWindowClosed);
+
+    SendMsg(QString::number(window->winId()));
 }
 
 SearchManager* WindowManager::currSearchManager()
@@ -164,6 +248,8 @@ QPoint WindowManager::newWindowPosition()
 
 void WindowManager::onWindowClosed(const QString &app_name)
 {
+    WebWindow *window = windows_.value(app_name);
+    SendMsg(QString::number(window->winId()) + "|close");
     windows_.remove(app_name);
 }
 

@@ -124,13 +124,12 @@ int main(int argc, char **argv)
     customLoggerInstance.logToGlobalInstance(category, true);
     customLoggerInstance.registerAppender(fileAppender);
 
-    qputenv("DTK_USE_SEMAPHORE_SINGLEINSTANCE", "1");
-    if (!DGuiApplicationHelper::setSingleInstance("dman")) {
-        qWarning() << "another deepin-manual is running";
-        return 0;
-    }
-
     dman::ArgumentParser argument_parser;
+    dman::WindowManager window_manager;
+    QObject::connect(&argument_parser,
+                     &dman::ArgumentParser::onNewAppOpen,
+                     &window_manager,
+                     &dman::WindowManager::onNewAppOpen);
 
     if (argument_parser.parseArguments()) {
         qDebug() << "argument_parser.parseArguments()";
@@ -144,7 +143,6 @@ int main(int argc, char **argv)
     QCefBindApp(&app);
 
     qDebug() << "argument_parser.openManualsDelay()";
-    dman::WindowManager window_manager;
     QObject::connect(&argument_parser,
                      &dman::ArgumentParser::openManualRequested,
                      &window_manager,

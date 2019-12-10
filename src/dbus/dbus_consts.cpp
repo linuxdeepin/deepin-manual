@@ -26,4 +26,7 @@ const char kManualSearchIface[] = "/com/deepin/Manual/Search";
 const char kLauncherService[] = "com.deepin.dde.daemon.Launcher";
 const char kLauncherIface[] = "/com/deepin/dde/daemon/Launcher";
 
+const char kManualWinManagerService[] = "com.deepin.Manual.WinManager";
+const char kManualWinManagerIface[] = "/com/deepin/Manual/WinManager";
+
 }  // namespace dman
