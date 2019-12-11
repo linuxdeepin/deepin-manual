@@ -70,7 +70,9 @@
 4. 点击 **打印** 即可将文件发送到打印机打印。
 
 ![preview](jpg/preview.jpg)
+
 ![pagesetup](jpg/pagesetup.jpg)
+
 ![printer](jpg/printer.jpg)
 
 ### 管理标签页
