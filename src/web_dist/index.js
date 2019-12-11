@@ -258,7 +258,18 @@ var App = function (_React$Component) {
       var _this3 = this;
 
       global.index = function () {
-        //this.context.router.history.push('/');
+        // this.context.router.history.push('/');
+      };
+      global.backHome = function () {
+        console.log("global.backHome()" + _this3.context.router.history.entries.length);
+        console.log("global.backHome()" + _this3.state.historyGO);
+        var goNum = _this3.state.historyGO;
+        _this3.setState({ historyGO: 0 });
+        console.log("global.backHome()" + goNum);
+
+        if (_this3.context.router.history.canGo(-1 * goNum)) {
+          _this3.context.router.history.go(-1 * goNum);
+        }
       };
       global.open = function (file) {
         var hash = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
@@ -846,17 +857,12 @@ var Index = function (_Component2) {
 
     var _this3 = _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).call(this, props));
 
-    var sequence = [
-    // '浏览器',
-    'dde-file-manager', 'deepin-app-store',
-    // '输入法',
+    var sequence = ['deepin-browser', 'dde-file-manager', 'deepin-app-store', 'sogouimebs',
     // '邮件',
     'deepin-contacts', 'deepin-screen-recorder', 'deepin-image-viewer', 'deepin-album', 'deepin-music', 'deepin-movie', 'deepin-draw', 'dde-calendar', 'deepin-voice-note', 'deepin-reader', 'deepin-editor', 'deepin-compressor', 'dde-printer', 'deepin-terminal',
     // '安全中心',
     // '下载器',
-    'deepin-deb-installer', 'deepin-font-manager', 'deepin-calculator', 'deepin-graphics-driver-manager', 'deepin-devicemanager', 'deepin-system-monitor', 'deepin-boot-maker',
-    // 'deepin-log-viewer',
-    'deepin-repair-tools', 'deepin-clone', 'deepin-cloud-print', 'deepin-cloud-scan', 'deepin-voice-recorder', 'deepin-picker', 'deepin-remote-assistance', 'deepin-presentation-assistant'];
+    'deepin-deb-installer', 'deepin-font-manager', 'deepin-calculator', 'deepin-graphics-driver-manager', 'deepin-devicemanager', 'deepin-system-monitor', 'deepin-boot-maker', 'deepin-log-viewer', 'deepin-repair-tools', 'deepin-clone', 'deepin-cloud-print', 'deepin-cloud-scan', 'deepin-voice-recorder', 'deepin-picker', 'deepin-remote-assistance', 'deepin-presentation-assistant'];
     _this3.state = {
       sequence: sequence,
       appList: []
@@ -1304,7 +1310,7 @@ var Nav = function (_Component) {
               id: 'backHome',
               className: 'h',
               onClick: function onClick() {
-                return global.index();
+                return global.backHome();
               }
             },
             global.i18n['ToIndexPage']

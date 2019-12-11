@@ -112,7 +112,7 @@ class Nav extends Component {
             type="h2"
             id="backHome"
             className="h"
-            onClick={() => global.index()}
+            onClick={() => global.backHome()}
           >
             {global.i18n['ToIndexPage']}
           </div>

@@ -203,7 +203,18 @@ class App extends React.Component {
   }
   componentDidMount() {
     global.index = () => {
-      //this.context.router.history.push('/');
+      // this.context.router.history.push('/');
+    };
+    global.backHome = () => {
+      console.log("global.backHome()" + this.context.router.history.entries.length);
+      console.log("global.backHome()" + this.state.historyGO);
+      let goNum = this.state.historyGO;
+      this.setState({ historyGO: 0 });
+      console.log("global.backHome()" + goNum);
+
+      if (this.context.router.history.canGo(-1 * goNum)) {
+        this.context.router.history.go(-1 * goNum);
+      }
     };
     global.open = (file, hash = '') => {
       file = encodeURIComponent(file);
