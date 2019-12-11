@@ -120,7 +120,8 @@
 1. 在语音记事本界面上，选择一个文字笔记。
 2. 点击 ![0|three_dots](icon/more_normal.svg)图标，选择 **保存为TXT**。
 3. 将文字笔记保存至储存设备中。
-    ![0|save](jpg/toTxT.png)
+
+![0|save](jpg/toTxT.png)
 
 ### 重命名新记事本
 
