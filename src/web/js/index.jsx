@@ -32,7 +32,7 @@ class Item extends Component {
           tabIndex="1"
           className="item"
           onClick={() => global.open(this.state.file)}
-          onMouseEnter={e => e.target.focus()}
+          // onMouseEnter={e => e.target.focus()}
           onKeyPress={e => {
             if (e.key === 'Enter') {
               global.open(this.state.file);

@@ -121,7 +121,7 @@ export default class SearchPage extends Component {
         <div
           id="search"
           tabIndex="-1"
-          onMouseOver={e => document.getElementById('search').focus()}
+          // onMouseOver={e => document.getElementById('search').focus()}
         >
           {c}
         </div>
