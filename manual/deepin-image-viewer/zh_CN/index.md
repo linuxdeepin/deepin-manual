@@ -31,7 +31,7 @@
 
 在看图界面上，按下键盘上的按下键盘上的 ![Ctrl](icon/Ctrl.svg) + ![Shift](icon/Shift.svg) + ![QM](icon/QM.svg) 组合键来查看快捷键。
 
-![1|hotkey](jpg/hotkey.jpg)
+![1|hotkey](jpg/hotkey.png)
 
 ## 图片查看
 
@@ -43,7 +43,7 @@
 - 运行看图后，拖动图片到看图界面，打开图片。
 - 直接拖动图片到看图在桌面或任务栏的图标，打开图片。
 
-![tips](icon/tips.svg)：您可以在控制中心中将看图设置为默认的图片查看程序，具体操作请参阅 [默认程序设置](dman:///dde#默认程序设置)。
+> ![tips](icon/tips.svg)：您可以在控制中心中将看图设置为默认的图片查看程序，具体操作请参阅 [默认程序设置](dman:///dde#默认程序设置)。
 
 图片支持的格式BMP、ICO、JPG/JPE/JPEG、PNG、TGA、TIF/TIFF、XPM、DDS、GIF、SGI、RAW、WEBP、CR2、NEF、DNG、RAF、MEF、MRW、XBM、SVG、ORF、MNG。
 
@@ -61,6 +61,7 @@
 | ![contrarotate](icon/contrarotate.svg)             | 逆时针  | 图片逆时针旋转90度。   |
 | ![delete](icon/delete.svg)                         | 删除    | 删除当前图片。         |
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 > ![tips](icon/tips.svg)：在1:1视图下，当图片超出界面范围时，界面上会出现导航窗口。点击导航窗口的右上角关闭导航窗口，也可以在看图界面上单击鼠标右键选择 **隐藏导航窗口/显示导航窗口**。
 
 > ![notess](icon/notes.svg)：如果打开的是系统图片，旋转功能、删除图标处于置灰状态，即不能使用该操作。

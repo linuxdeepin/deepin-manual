@@ -31,9 +31,10 @@
 1. 在影院界面，按下键盘上的 ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![QM](icon/QM.svg) 组合键，打开快捷键预览界面。
 2. 在快捷键预览界面，您可以查看到所有的快捷键。
 
-  ![1|快捷键界面](jpg/shortcut.jpg)
-
 > ![attention](icon/attention.svg) ：在视频播放的过程中，您也可以随时调出快捷键预览界面。
+
+ ![1|快捷键界面](jpg/hotkey.png)
+
 
 ## 主界面
 
@@ -49,7 +50,7 @@
 | 4    | 缩略图   | 显示视频内容，您可以通过缩略图查看某一时间点的视频内容。     |
 | 5    | 视频标题 | 显示正在播放的视频名称。                                     |
 
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 > ![notes](icon/notes.svg) ：当鼠标置于进度条上时，默认显示预览窗口，如果您不需要预览显示，您可以进入设置中去更改，具体操作请参阅 [基础设置](#基础设置)。
 
@@ -179,9 +180,10 @@
 2. 进入播放列表窗口，将鼠标指针置于视频文件上。
 3. 右键单击 **从列表中删除**。
 
+> ![tips](icon/tips.svg)： 在播放列表界面，将鼠标指针置于视频文件上，点击![关闭图标](icon/close.svg) 删除视频文件。
+
 ![1|delete](jpg/delete-list.png)
 
-![tips](icon/tips.svg)： 在播放列表界面，将鼠标指针置于视频文件上，点击![关闭图标](icon/close.svg) 删除视频文件。
 
 ### 清空播放列表
 

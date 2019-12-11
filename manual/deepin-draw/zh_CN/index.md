@@ -19,7 +19,7 @@
  - 点击 **发送到任务栏**，将应用程序固定到任务栏。
  - 点击 **开机自动启动**，将应用程序添加到开机启动项，在电脑开机时自动运行该应用。
 
-![tips](icon/tips.svg)：您可以在控制中心中将画板设置为默认的图片查看程序，具体操作请参考 [默认程序设置](dman:///dde#默认程序设置)。
+![tips](icon/tips.svg)：您可以在控制中心中将画板设置为默认的图片查看程序，具体操作请参考 [默认程序设置](dman:///dde-control-center#默认程序设置)。
 
 ### 关闭画板
 
@@ -31,7 +31,7 @@
 
 在画板界面上，按下键盘上的 ![Ctrl](icon/Ctrl.svg) + ![Shift](icon/Shift.svg) + ![QM](icon/QM.svg) 组合键来查看快捷键，熟练的使用快捷键，将大大提升您的操作效率。
 
-![1|hotkey](jpg/hotkeys.png)
+![1|hotkey](jpg/hotkey.png)
 
 
 ## 常用功能
@@ -52,12 +52,12 @@
 ### 导出图片
 
 1. 在画板界面上，点击 ![menu](icon/icon_menu.svg) > **导出**。
-2. 设置保存文件名、路径、格式、质量等参数。
+2. 设置保存文件名、路径、文件格式、图片质量等参数。
 3. 点击 **保存**。
 
 ### 保存图片
 
-1. 在画板界面上，点击 ![menu](icon/icon_menu.svg) > **保存**。
+1. 在画板界面上，点击 ![menu](icon/icon_menu.svg) > **保存** 或  ![menu](icon/icon_menu.svg) > **另存为**。
 2. 设置保存的文件名、格式。
 3. 点击 **保存**。
 
@@ -91,51 +91,51 @@
 
 ### 形状工具
 
-1. 在画板界面上，点击 ![rectangle](icon/rectangle_normal.svg) 或  ![oval](icon/oval_normal.svg)或![triangle](icon/triangle_tool_normal.svg)或![hexagon](icon/hexagon_tool_normal.svg)或![star](icon/draw-star.svg)。
+1. 在画板界面上，点击 ![rectangle](icon/rectangle_normal.svg) 或  ![oval](icon/oval_normal.svg)或![triangle](icon/triangle_tool_normal.svg)或![star](icon/draw-star.svg)或![hexagon](icon/hexagon_tool_normal.svg)。
 2. 您可以设置图形的参数：
  - 点击 **填充** 设置图形的填充颜色和透明度。
  - 点击 **描边** 设置图形笔的描边颜色和透明度。
  - 点击 **描边粗细** 设置图形的粗细。
  - 点击 **锚点数** 和 **半径** 设置图形锚点数及半径的大小，仅适用于星型。
-   - 锚点数取值范围为3-50，数值既可以通过拖拽滑动块进行调节，也可以⼿动输⼊。
+   - 锚点数取值范围为3-50个，数值既可以通过拖拽滑动块进行调节，也可以⼿动输⼊。
    - 半径取值范围为0%-100%，数值既可以通过拖拽滑动块进行调节，也可以⼿动输⼊。
  - 点击 **侧边数** 设置图形边数，仅适用于多边形。
-   - 侧边数取值范围为4-10，数值既可以通过拖拽滑动块进行调节，也可以⼿动输⼊。
+   - 侧边数取值范围为4-10条，数值既可以通过拖拽滑动块进行调节，也可以⼿动输⼊。
 3. 在画板区域拖动鼠标来绘制形状。
 
-> ![tips](icon/tips.svg)：在使用 ![rectangle](icon/rectangle_normal.svg) 或  ![oval](icon/oval_normal.svg) 或![triangle](icon/triangle_tool_normal.svg)或![hexagon](icon/hexagon_tool_normal.svg)或![star](icon/draw-star.svg)绘制性质时，配合键盘上的![Shift](icon/Shift.svg) 或![Shift](icon/Shift.svg)+ ![Alt](icon/Alt.svg) 键可以画出正方形、正圆、正三角、正五角星、正多边形。
+> ![tips](icon/tips.svg)：在使用 ![rectangle](icon/rectangle_normal.svg) 或  ![oval](icon/oval_normal.svg)或![triangle](icon/triangle_tool_normal.svg)或![star](icon/draw-star.svg)或![hexagon](icon/hexagon_tool_normal.svg)绘制性质时，配合键盘上的![Shift](icon/Shift.svg) 或![Shift](icon/Shift.svg)+ ![Alt](icon/Alt.svg) 键可以画出正方形、正圆、正三角、正五角星、正多边形。
 
 ![1|shape](jpg/shape1.png)
 
-![1|shape](jpg/shape2.png)
+![1|shape](jpg/star.png)
 
 ![1|shape](jpg/shape3.png)
 
 
 
-### 画笔工具
+### 画线/画笔工具
 
 
 1. 在画板界面上，点击![line](icon/line_normal.svg)或 ![line](icon/pencil_normal.svg)。
 2. 您可以设置画笔参数：
 
- - 点击 **类型** 中的选项来选择一种画笔样式，可以绘制直线、自由曲线和带箭头的直线。
+   - 点击 **类型** 中的选项来选择一种画笔样式，可以绘制直线、自由曲线和带箭头的直线。
 
- - 点击 **描边** 设置画笔的颜色和透明度。
+   - 点击 **描边** 设置画笔的颜色和透明度。
 
- - 点击 **描边粗细** 中的选项来设置画笔的粗细。
+   - 点击 **描边粗细** 中的选项来设置画笔的粗细。
 
 3. 在画板区域拖动鼠标来绘制线条。
 
-![1|pencil](jpg/line_pencil.png)
+![1|pencil](jpg/line-pencil.png)
 
 ### 文本工具
 
 1. 在画板界面上，点击 ![text](icon/text_normal.svg)。
 2. 您可以设置文本样式：
- - 点击 **填充** 设置文本的填充颜色和透明度。
- - 在 **字体** 下拉框中选择字体样式。
- - **字号** 可以手动输入数字或通过左右拖拽滑动块来调节。
+   - 点击 **填充** 设置文本的填充颜色和透明度。
+   - 在 **字体** 下拉框中选择字体样式。
+   - **字号** 可以手动输入数字或通过左右拖拽滑动块来调节。
 3. 在画板区域单击鼠标后在文本框中输入文字。
 
 ![1|text](jpg/text.png)
@@ -205,12 +205,12 @@
 1. 在画板界面上，选择一个图形。
 2. 单击鼠标右键选择 **向上一层**、**向下一层**、**置于顶层**、**至于底层** 来调整图层顺序。
 
-![1|layer](jpg/layer1.png)
+![1|layer](jpg/layer.png)
 
 ### 对齐文本
 
 1. 在画板界面上，点击 ![text](icon/text_normal.svg)。
-2. 单击鼠标右键选择 **左对齐**、**顶对齐**、**右对齐**、**居中对齐** 来对齐文本。
+2. 单击鼠标右键选择 **左对齐**、**右对齐**、**居中对齐** 来对齐文本。
 
 ![1|layer](jpg/align.png)
 

@@ -28,7 +28,7 @@
 
 在编辑器界面上，按下键盘上的 ![Ctrl](icon/Ctrl.svg) + ![Shift](icon/Shift.svg) + ![QM](icon/QM.svg) 组合键来查看快捷键。您也可以在设置界面查看快捷键。熟练地使用快捷键，将大大提升您的操作效率。
 
-![1|hotkey](jpg/hotkey.jpg)
+![1|hotkey](jpg/hotkey.png)
 
 ## 基本操作
 
@@ -215,10 +215,10 @@
 1. 点击![icon_menu](icon/icon_menu.svg) > **设置**，在 **快捷键** 选项查看当前快捷键。
 2. 选择一种快捷键映射。
 3. 您可以点击并重新输入快捷键，来自定义快捷键。
-
+> ![notes](icon/notes.svg): 快捷键映射允许您选择某一种键盘快捷键。您可以使用标准快捷键，Emacs快捷键，或自定义快捷键，以符合您的使用习惯。
 ![setting](jpg/setting2.png)
 
-> ![notes](icon/notes.svg): 快捷键映射允许您选择某一种键盘快捷键。您可以使用标准快捷键，Emacs快捷键，或自定义快捷键，以符合您的使用习惯。
+
 
 #### 高级设置
 
@@ -227,7 +227,7 @@
    - 窗口默认大小为：正常窗口，最大化或全屏。
    - Tab字符宽度：Tab缩进所占用的空间大小。
 
-> ![attention](icon/attention.svg)：点击设置界面上的 **恢复默认设置**，会将所有设置恢复到默认状态。
+> ![attention](icon/attention.svg)：点击设置界面上的 **恢复默认**，会将所有设置恢复到默认状态。
 
 ![setting](jpg/setting3.png)
 

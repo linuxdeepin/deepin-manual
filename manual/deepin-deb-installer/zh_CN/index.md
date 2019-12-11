@@ -7,8 +7,6 @@
 ![0|run](jpg/run.png)
 
 
-
-
 ## 操作介绍
 
 
@@ -33,6 +31,7 @@
 6.  安装成功之后，点击 **完成** 退出，或者点击 **返回** 继续安装其他应用。
 
 ![0|single](jpg/single.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 >![notes](icon/notes.svg):软件包安装器会自动检测您的安装包，如果本地已经安装过该应用，会显示“已安装相同版本”或“已安装其他版本”提示信息，此时可以选择 **卸载** 或 **重新安装** 操作。
 
@@ -77,6 +76,7 @@
 5. 卸载成功后点击 **完成**。
 
 ![0|uninstall](jpg/uninstall.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 > ![attention](icon/attention.svg):卸载某些应用可能会对系统或其他软件产生影响，请谨慎操作。
 

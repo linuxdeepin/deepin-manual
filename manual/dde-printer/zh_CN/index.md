@@ -39,7 +39,7 @@
 
 2. 选好打印机后，会加载出驱动列表，默认选择推荐打印机驱动。若选择手动驱动方案，则会跳转到手动选择打印机驱动界面。
 
-![0|2automatic search](jpg/2automatic search.png)
+   ![0|2automatic search](jpg/2automatic search.png)
 
 3. 点击 **开始安装**，进入安装界面。
 
@@ -48,8 +48,7 @@
 
 1. 点击 **手动查找** 按钮，输入主机名或IP查找打印机，系统通过各种协议扫描打印机。
 
-
-> ![notes](icon/notes.svg)：如果使用SAMBA协议时，在查找打印机时，会弹出用户名、密码、群组输入框。其中群组默认当前用户域，如果没有，则默认为workgroup。
+   > ![notes](icon/notes.svg)：如果使用SAMBA协议时，在查找打印机时，会弹出用户名、密码、群组输入框。其中群组默认当前用户域，如果没有，则默认为workgroup。
 
 ![0|3Manual search](jpg/3Manual search.png)
 
@@ -64,8 +63,7 @@
 
 2. 点击 **URI查找** 按钮，输入打印机的URI。
 
-
-![0|4URI search](jpg/4URI search.png)
+   ![0|4URI search](jpg/4URI search.png)
 
 3. 系统默认选择手动驱动方案安装，用户选择对应的驱动。
 
@@ -87,15 +85,13 @@
 
    * 本地PPD文件：将本地文件PPD文件拖放到对应地方，或点击 **选择一个PPD文件** 在本地文件夹查找，比如在/usr/share/ppd目录下选择ppd文件。
 
-     
+   > ![notes](icon/notes.svg)：使用前提是用户必须在本地安装了驱动，才可以使用PPD文件安装。否则，会提示驱动安装失败。
 
-     > ![notes](icon/notes.svg)：使用前提是用户必须在本地安装了驱动，才可以使用PPD文件安装。否则，会提示驱动安装失败。
-
-     ![0|6ppd document](jpg/6ppd document.png)
+   ![0|6ppd document](jpg/6ppd document.png)
 
    * 搜索打印机驱动：输入精确的厂商和型号，系统会在后台驱动库中探测搜索，搜索结果会显示在下拉框中。
 
-     ![0|7search driver](jpg/7search driver.png)
+   ![0|7search driver](jpg/7search driver.png)
 
 ### 安装打印机
 
@@ -113,16 +109,15 @@
 
 ### 打印管理界面
 
-若已经成功添加了打印机，打开应用，进入打印管理界面。选中打印机，可选择打印设置、打印队列、打印测试页及故障排查。
+若已经成功添加了打印机，打开应用，进入打印管理界面。选中打印机，可选择属性设置、打印队列、打印测试页及故障排查。
 
 ![0|9printer management](jpg/9printer management.png)
 
-#### 设置 
+#### 属性 
 
-1. 点击 **设置**，跳转到打印设置列表界面。
+1. 点击 **属性**，跳转到打印设置列表界面。
 
 2. 不可设置仅可查看项为：打印机驱动、URI、位置、描述、颜色及分辨率。
-
 
 ![0|10printer settings1](jpg/10printer settings1.png)
 
@@ -199,7 +194,7 @@
 
 ### 删除打印机
 
-在打印管理界面，点击![mini_icon](icon/mini_icon.svg)，可删除选中的打印机。
+在打印管理器界面，点击![mini_icon](icon/mini_icon.svg)，可删除选中的打印机。
 
 ![0|14delete](jpg/14delete.png)
 
@@ -208,16 +203,9 @@
 
 在主菜单中，您可以进行基本服务器设置，切换窗口主题，查看帮助手册等操作。
 
-### 主题
-
-窗口主题包含浅色主题、深色主题和系统主题，其中系统主题为默认设置。
-
-1. 在打印管理界面，点击![icon_menu](icon/icon_menu.svg)。
-2. 点击 **主题**，选择一个主题颜色。
-
 ### 设置
 
-1. 在打印管理界面，点击 ![icon_menu](icon/icon_menu.svg)。
+1. 在打印管理器界面，点击 ![icon_menu](icon/icon_menu.svg)。
 
 2. 点击 **设置**。
 
@@ -229,23 +217,30 @@
 
    ![0|13right click setting main menu  ](jpg/13right click setting main menu .png)
 
+### 主题
+
+窗口主题包含浅色主题、深色主题和系统主题，其中系统主题为默认设置。
+
+1. 在打印管理器界面，点击 ![icon_menu](icon/icon_menu.svg)。
+2. 点击 **主题**，选择一个主题颜色。
 
 ### 帮助
 
 查看帮助手册，通过帮助进一步让您了解和使用打印管理器。
 
-1. 在打印管理界面，点击 ![icon_menu](icon/icon_menu.svg)。
+1. 在打印管理器界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **帮助**。
 3. 查看关于打印管理器的帮助手册。
 
 
 ### 关于
 
-1. 在打印管理界面，点击 ![icon_menu](icon/icon_menu.svg)。
+1. 在打印管理器界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **关于**。
 3. 查看关于打印管理器的版本和介绍。
 
 ### 退出
 
-1. 在打印管理界面，点击 ![icon_menu](icon/icon_menu.svg)。
+1. 在打印管理器界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **退出**。
+

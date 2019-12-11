@@ -15,9 +15,9 @@
 1. 点击桌面底部的 ![launcher_icon](icon/deepin-launcher.svg) ，进入启动器界面。
 2. 上下滚动鼠标滚轮浏览或通过搜索，找到音乐 ![music_icon-24](icon/music_icon-24.svg) 点击运行。
 3. 右键单击 ![music_icon-24](icon/music_icon-24.svg) ，您可以：
-  - 点击 **发送到桌面**，在桌面创建快捷方式。
-  - 点击 **发送到任务栏**，将应用程序固定到任务栏。
-  - 点击 **开机自动启动**，将应用程序添加到开机启动项，在电脑开机时自动运行该应用。
+   - 点击 **发送到桌面**，在桌面创建快捷方式。
+   - 点击 **发送到任务栏**，将应用程序固定到任务栏。
+   - 点击 **开机自动启动**，将应用程序添加到开机启动项，在电脑开机时自动运行该应用。
 
 > ![notes](icon/notes.svg)：如果音乐已经默认固定在任务栏上，您也可以点击任务栏上的 ![music_icon-24](icon/music_icon-24.svg) 来运行。
 
@@ -27,7 +27,7 @@
 
 在音乐界面点击 ![close_icon](icon/close.svg) 关闭主窗口，在弹窗中选择 **最小化到系统托盘**，然后点击 **确定**。
 
-![notes](icon/notes.svg):在弹窗中勾选 **不再提示**，可以不再显示该弹窗。
+> ![notes](icon/notes.svg):在弹窗中勾选 **不再提示**，可以不再显示该弹窗。
 
 将音乐隐藏到系统托盘之后，您可以右键单击托盘中的图标选择：
 
@@ -41,6 +41,12 @@
 - 在音乐界面，如果您设置关闭主窗口的操作是退出，可以点击 ![close_icon](icon/close.svg)，退出音乐。
 - 右键单击系统托盘中的 ![music_icon-24](icon/music_icon-24.svg)，选择 **退出**，退出音乐。
 - 右键单击任务栏上的 ![music_icon-24](icon/music_icon-24.svg)，选择 **关闭所有**，退出音乐。
+
+### 查看快捷键
+
+在音乐界面上，按下 ![Ctrl](icon/Ctrl.svg) + ![Shift](icon/Shift.svg) + ![QM](icon/QM.svg) 组合键来查看快捷键，熟练的使用快捷键，将大大提升您的操作效率。
+
+![0|view](jpg/hotkey.png)
 
 ## 界面介绍
 
@@ -79,13 +85,15 @@
 
 ### 搜索音乐
 
-1. 在音乐界面顶部搜索框中，点击 **搜索**。
+1. 在音乐界面顶部搜索框中，您可以：
+   - 点击![search](icon/search.svg)，输入关键字。
+   - 点击![button_voice](icon/button_voice.svg)，输入语音，语音会转化为文字显示在搜索框中。
 
 2. 输入关键字后按 **Enter** 键，将实时显示搜索结果。
 
-  - 当搜索到匹配的信息时，在搜索结果列表点击播放全部，可以播放搜索结果列表中音乐。
+   - 当搜索到匹配的信息时，在搜索结果列表点击播放全部，可以播放搜索结果列表中音乐。
 
-  - 当没有搜索到匹配的信息时，在列表中间显示 “无结果“。
+   - 当没有搜索到匹配的信息时，在列表中间显示 “无搜索结果“。
 
 3. 在搜索框中点击![0|close](icon/close.svg)或删除输入的信息，即可清除当前输入的关键字或取消搜索。
 
@@ -98,7 +106,7 @@
 - 在左侧导航栏播放列表下选择某歌单，右键单击 **播放**，可以按照当前设置的播放顺序播放当前歌单中所有歌曲。
 - 在音乐列表，点击 **播放所有**，可以按照当前设置的播放顺序播放当前列表中所有歌曲。
 
-![tips](icon/tips.svg)：在音乐界面，点击 ![play_normal](icon/play_normal.svg)播放选中的歌曲；点击 ![suspend_normal](icon/suspend_normal.svg)暂停正在播放的歌曲；点击![last_normal](icon/last_normal.svg) 或 ![next_normal](icon/next_normal.svg) ，按照当前播放模式切换到上一首或下一首歌曲。
+> ![tips](icon/tips.svg)：在音乐界面，点击 ![play_normal](icon/play_normal.svg)播放选中的歌曲；点击 ![suspend_normal](icon/suspend_normal.svg)暂停正在播放的歌曲；点击![last_normal](icon/last_normal.svg) 或 ![next_normal](icon/next_normal.svg) ，按照当前播放模式切换到上一首或下一首歌曲。
 
 
 ### 收藏音乐

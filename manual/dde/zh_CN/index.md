@@ -27,13 +27,13 @@
 || |
 | ----------- |------------------------------------------ |
 | 打开方式    | 选定系统默认打开方式，也可以选择其他关联应用程序来打开。 |
-| 复制        |复制文件或文件夹。             |
-| 剪切        |移动文件或文件夹。             |
+| 剪切      |移动文件或文件夹。             |
+| 复制      |复制文件或文件夹。             |
 | 重命名      |重命名文件或文件夹。            |
 | 删除        |删除文件或文件夹。              |
-| 压缩/解压缩 |压缩文件或文件夹，或对压缩文件进行解压。 |
 | 创建链接    |创建一个快捷方式。                         |
 | 标记信息    |添加标记信息，以对文件或文件夹进行标签化管理。      |
+| 压缩/解压缩 |压缩文件或文件夹，或对压缩文件进行解压。 |
 | 属性        |查看文件或文件夹的基本信息，共享方式，及其权限。      |
 
 ### 设置排列方式
@@ -127,27 +127,28 @@
 ### 认识任务栏图标
 任务栏图标包括启动器图标、应用程序图标、托盘区图标、系统插件图标等。
 
-![1|fashion](jpg/fashion.png)
+![1|fashion](jpg/dock.jpg)
 
-|                                                              |                                     |                                                          |                                             |
-| ------------------------------------------------------------ | :---------------------------------- | -------------------------------------------------------- | ------------------------------------------- |
-| ![launcher](icon/deepin-launcher.svg)                        | 启动器 - 点击查看所有已安装的应用。 | ![deepin-toggle-desktop](icon/deepin-toggle-desktop.svg) | 显示桌面。                                  |
-| ![deepin-multitasking-view](icon/deepin-multitasking-view.svg) | 多任务视图 - 点击显示工作区。       | ![dde-file-manager](icon/dde-file-manager.svg)           | 文件管理器 - 点击查看磁盘中的文件、文件夹。 |
-| ![deepin-appstore](icon/deepin-appstore.svg)                 | 商店 - 可搜索安装应用软件。         | ![deepin-music](icon/deepin-music.svg)                   | 音乐 - 可播放本地音乐。                     |
-| ![deepin-movie](icon/deepin-movie.svg)                       | 影院 - 可播放本地视频。             | ![google-chrome](icon/google-chrome.svg)                 | 谷歌浏览器 - 点击打开网页。                 |
-| ![controlcenter](icon/controlcenter.svg)                     | 控制中心 - 点击进入系统设置。       | ![onboard](icon/onboard.svg)                             | 屏幕键盘 - 点击使用虚拟键盘。               |
-| ![notification](icon/notification.svg)                       | 通知中心 - 显示所有系统和应用的通知 | ![shutdown](icon/system-shutdown.svg)                    | 点击进入关机界面。                          |
-| ![trash](icon/trash_icon.svg)                                | 回收站。                            |                                                          |                                             |
+|                                                              |                                     |                                                          |                                                     |
+| ------------------------------------------------------------ | :---------------------------------- | -------------------------------------------------------- | --------------------------------------------------- |
+| ![launcher](icon/deepin-launcher.svg)                        | 启动器 - 点击查看所有已安装的应用。 | ![deepin-toggle-desktop](icon/deepin-toggle-desktop.svg) | 显示桌面。                                          |
+| ![deepin-multitasking-view](icon/deepin-multitasking-view.svg) | 多任务视图 - 点击显示工作区。       | ![dde-file-manager](icon/dde-file-manager.svg)           | 文件管理器 - 点击查看磁盘中的文件、文件夹。         |
+| ![ uosbrowser-cn](icon/uosbrowser-cn.svg)                    | 浏览器 - 点击打开网页。             | ![deepin-appstore](icon/deepin-appstore.svg)             | 商店 - 搜索安装应用软件。                           |
+| ![ deepin-album](icon/deepin-album.svg)                      | 相册 - 导入并管理照片。             | ![deepin-music](icon/deepin-music.svg)                   | 音乐 - 播放本地音乐。                               |
+| ![deepin-movie](icon/deepin-movie.svg)                       | 影院 - 播放本地视频。               | ![dde-calendar](icon/dde-calendar.svg)                   | 日历 - 查看日期、新建日程。                         |
+| ![controlcenter](icon/controlcenter.svg)                     | 控制中心 - 点击进入系统设置。       | ![notification](icon/notification.svg)                   | 通知中心 - 显示所有系统和应用的通知。               |
+| ![onboard](icon/onboard.svg)                                 | 屏幕键盘 - 点击使用虚拟键盘。       | ![desktop-ai-assistant](icon/desktop-ai-assistant.svg)   | 桌面智能助手 - 使用语音或文字来发布指令或进行询问。 |
+| ![shutdown](icon/system-shutdown.svg)                        | 点击进入关机界面。                  | ![trash](icon/trash_icon.svg)                            | 回收站。                                            |
 
 > ![tips](icon/tips.svg)：将鼠标指针移到任务栏上已打开窗口的图标时，会显示相应的预览窗口。
 
 ### 切换显示模式
-任务栏提供两种显示模式：时尚模式和高效模式。两种模式下的应用窗口激活效果显示不同。
+任务栏提供两种显示模式：时尚模式和高效模式，显示不同的图标大小和应用窗口激活效果。
 
 
-![1|fashion](jpg/fashion.png)
+![1|fashion](jpg/fashion.jpg)
 
-![1|efficient](jpg/efficient.png)
+![1|efficient](jpg/efficient.jpg)
 
 
 您可以通过以下操作来切换显示模式：
@@ -175,30 +176,33 @@
 
 ### 显示/隐藏插件
 1. 右键单击任务栏。
-2. 在 **插件** 子菜单中勾选或取消勾选 **回收站、电源、显示桌面、屏幕键盘、通知中心、多任务视图、时间、桌面智能助手**，可以设置这些插件在任务栏上的显示和隐藏效果。
+2. 在 **插件** 子菜单中勾选或取消勾选 **回收站、电源、显示桌面、屏幕键盘、多任务视图、时间、桌面智能助手**，可以设置这些插件在任务栏上的显示和隐藏效果。
 
 ### 查看通知
-当有系统或应用通知时，会在桌面中央弹出通知消息。若有按钮，点击按钮执行对应事件；若无按钮，点击关闭此消息。
+当有系统或应用通知时，会在桌面上方弹出通知消息。若有按钮，点击按钮执行对应操作；若无按钮，点击关闭此消息。
 
 ![message](jpg/message.jpg)
 
 您还可以点击任务栏上的 ![notification](icon/notification.svg)， 打开通知中心，查看所有通知。
 
-![notification](jpg/notification.png)
-
 ### 使用智能助手
 
-1. 点击任务栏上的 ![ai](icon/desktop-ai-assistant.svg)，或按下 ![Super](icon/Super.svg) + ![p](icon/P.svg)组合键打开桌面智能助手。
+1. 点击任务栏上的 ![ai](icon/desktop-ai-assistant.svg)，或按下 ![Super](icon/Super.svg) + ![Q](icon/Q.svg)组合键打开桌面智能助手。
 
 2. 您可以使用语音与助手直接对话。
 
 3. 等输入框出现后，还可以输入文字指令。
 
-![ai1](jpg/ai1.png) 
-![ai2](jpg/ai2.png)
+![ai1](jpg/ai1.png) ![ai2](jpg/ai2.png)
+
+
+### 查看日期时间
+
+- 鼠标指针悬停在任务栏的时间上，查看当前日期、星期和时间。
+- 点击时间，打开日历。
 
 ### 进入关机界面
-您可以点击任务栏上的![shutdown](icon/system-shutdown.svg) 进入关机界面，也可以在启动器的小窗口模式中点击 ![poweroff_normal](icon/poweroff_normal.svg)。
+您可以点击任务栏上的 ![shutdown](icon/system-shutdown.svg) 进入关机界面，也可以在启动器的小窗口模式中点击 ![poweroff_normal](icon/poweroff_normal.svg)。
 
 |||
 |--|---|
@@ -212,10 +216,6 @@
 
 > ![notes](icon/notes.svg)：当系统存在多个账户时才显示 ![userswitch_normal](icon/userswitch_normal.svg)。
 
-### 查看日期时间
-
-- 鼠标指针悬停在任务栏的时间上，查看当前日期、星期和时间。
-- 点击时间，打开日历应用。
 
 ### 回收站
 电脑中临时被删除的所有文件您都可以在回收站中找到，回收站中的文件可以被恢复或清空。
@@ -300,7 +300,7 @@
 ### 安装应用
 如果启动器中没有您需要的应用，可以在应用商店一键下载安装。
 
-![0|Search](jpg/search.jpg)
+![0|appstore](jpg/appstore.jpg)
 
 ### 运行应用
 对于已经创建了桌面快捷方式或固定到任务栏上的应用，您可以通过以下途径来打开应用。
@@ -340,8 +340,8 @@
 标题栏包含返回按钮，搜索框，主菜单及窗口按钮。
 
 - 返回按钮：若要返回首页，点击 ![back](icon/back.svg)。
-- 搜索框：输入关键字，搜索相应设置。
-- 主菜单：点击![menu](icon/icon_menu.svg) 进入主菜单。在主菜单中，您可以设置窗口主题，查看帮助文档，或退出控制中心。
+- 搜索框：输入关键字或点击 ![voice](icon/voice.svg) 后输入语音（语音会转化为文字显示在搜索框中），回车，搜索相应设置。
+- 主菜单：点击![menu](icon/icon_menu.svg) 进入主菜单。在主菜单中，您可以设置窗口主题，查看版本，或退出控制中心。
 
 ### 账户设置
 在安装系统时您已经创建了一个账户。在这里，您可以修改账户设置或创建一个新账户。
@@ -417,7 +417,7 @@
 > ![attention](icon/attention.svg): 已登录的账户无法被删除。
 
 ### 云同步
-登录Deepin ID后，可同步各种系统配置到云端，如网络、声音、鼠标、更新、任务栏、启动器、壁纸、主题、电源、和热区。若想在另一台电脑上使用相同的系统配置，只需登录此Deepin ID，即可一键同步以上配置到该设备。
+登录UOS ID后，可同步各种系统配置到云端，如网络、声音、鼠标、更新、任务栏、启动器、壁纸、主题、电源、和热区。若想在另一台电脑上使用相同的系统配置，只需登录此UOS ID，即可一键同步以上配置到该设备。
 
 > ![tips](icon/tips.svg)： 当“自动同步配置”开启时，可以选择同步项；关闭时，全部不能同步。
 
@@ -748,7 +748,7 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 
 1. 在控制中心首页，点击 ![bluetooth_normal](icon/bluetooth_normal.svg)。
 2. 开启 **蓝牙**，系统将自动扫描附近的蓝牙设备，并显示在 **其他设备** 列表。
-3. 点击想连接的蓝牙设备，输入蓝牙配对码（若需要），配对成功后将自动连接。
+3. 点击想连接的蓝牙设备，在该设备上输入蓝牙配对码（若需要），配对成功后将自动连接。
 4. 连接成功后，蓝牙设备会添加到 **我的设备** 列表中。
 5. 在列表中点击该设备，您可以 **断开连接**，或修改设备名称。
 
@@ -1052,12 +1052,6 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 - 当前系统版本、类型、内核版本；
 - 电脑硬件信息：处理器、主板、内存、硬盘、显卡、显示器、声卡、网卡等。
 
-#### 查看系统协议
-
-1. 在控制中心首页，点击 ![system_info_normal](icon/system_info_normal.svg)。
-2. 点击 **版权协议**， 查看GNU通用公共许可协议的详细信息。
-3. 点击 **最终用户许可协议**，查看该版本的最终用户许可协议。
-
 ### 通用设置
 
 ![general](jpg/general.png)
@@ -1085,13 +1079,6 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 3. 开启 **主题**，使用该主题为启动菜单的背景。
 
 > ![tips](icon/tips.svg)：您也可以把图片拖拽到预览窗口，来更换启动菜单的背景。
-
-#### 用户体验计划
-用户体验计划会收集您的硬件信息、应用信息和系统信息，帮助我们更好地了解用户的使用习惯， 进而改善和提升用户体验。为了更好地使用统一操作系统，建议您开启用户体验计划。您可以随时参与或退出该计划。
-
-1. 在控制中心首页，点击 ![general](icon/general.svg)。
-2. 打开 **用户体验计划** 开关，了解隐私协议。
-3. 若同意，勾选 **同意并加入用户体验计划**，点击 **确定**。
 
 ## 窗口管理器
 窗口管理器可以在不同的工作区内展示不同的窗口内容。通过窗口管理器您可以同时使用多个桌面，以便对桌面窗口进行分组管理。

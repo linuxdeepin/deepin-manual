@@ -56,10 +56,10 @@ export default class Index extends Component {
   constructor(props) {
     super(props);
     let sequence = [
-      // '浏览器',
+      'deepin-browser',
       'dde-file-manager',
       'deepin-app-store',
-      // '输入法',
+      'sogouimebs',
       // '邮件',
       'deepin-contacts',
       'deepin-screen-recorder',
@@ -84,7 +84,7 @@ export default class Index extends Component {
       'deepin-devicemanager',
       'deepin-system-monitor',
       'deepin-boot-maker',
-      // 'deepin-log-viewer',
+      'deepin-log-viewer',
       'deepin-repair-tools',
       'deepin-clone',
       'deepin-cloud-print',
