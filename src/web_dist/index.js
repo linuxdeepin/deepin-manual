@@ -150,6 +150,9 @@ var App = function (_React$Component) {
         document.documentElement.style.setProperty('--nav-hash-word-color', '#0059D2');
         document.documentElement.style.setProperty('--article-read-word-color', '#C0C6D4');
         document.documentElement.style.setProperty('--article-read-h2-word-color', '#0082FA');
+        document.documentElement.style.setProperty('--article-table-text-color', '#6D7C88');
+        document.documentElement.style.setProperty('--article-table-border-color', 'rgba(96, 96, 96, 0.5)');
+        document.documentElement.style.setProperty('--article-table-cell-border-color', 'rgba(96, 96, 96, 0.1)');
         document.documentElement.style.setProperty('--index-item-background-color', 'rgba(255,255,255,0.05)');
         document.documentElement.style.setProperty('--index-item-hover-color', 'rgba(255,255,255,0.2)');
         document.documentElement.style.setProperty('--index-item-span-word-color', '#C0C6D4');
@@ -181,6 +184,9 @@ var App = function (_React$Component) {
         document.documentElement.style.setProperty('--nav-hash-word-color', '#0081FF');
         document.documentElement.style.setProperty('--article-read-word-color', '#000000');
         document.documentElement.style.setProperty('--article-read-h2-word-color', '#2CA7F8');
+        document.documentElement.style.setProperty('--article-table-text-color', '#606060');
+        document.documentElement.style.setProperty('--article-table-border-color', 'rgba(0, 0, 0, 0.1)');
+        document.documentElement.style.setProperty('--article-table-cell-border-color', 'rgba(0, 0, 0, 0.05)');
         document.documentElement.style.setProperty('--index-item-background-color', '#FFFFFF');
         document.documentElement.style.setProperty('--index-item-hover-color', 'rgba(0,0,0,0.05)');
         document.documentElement.style.setProperty('--index-item-span-word-color', '#001A2E');
@@ -208,7 +214,7 @@ var App = function (_React$Component) {
   }, {
     key: 'onContentResult',
     value: function onContentResult(appName, titleList, idList, contentList) {
-      console.log('搜索结果', appName, titleList, idList, contentList);
+      // console.log('搜索结果', appName, titleList, idList, contentList);
       var searchResult = this.state.searchResult;
 
       searchResult.push({
@@ -1109,7 +1115,6 @@ exports.default = function (mdFile, mdData) {
     if (level == 2 || level == 3) {
       hlist.push({ id: id, text: text, type: type });
     }
-    console.log("renderer.image type:" + type + ",text:" + text);
     return '<' + type + ' id="' + id + '" text="' + text + '">' + text + '</' + type + '>\n';
   };
   console.log(path);
@@ -1120,7 +1125,6 @@ exports.default = function (mdFile, mdData) {
       var ext = _path.pop();
       hrefX2 = _path.join('.') + 'x2.' + ext;
     }
-    console.log("renderer.image href:" + href + ",text:" + text);
     return '<img src="' + hrefX2 + '" data-src="' + href + '" alt="' + text + '" />';
   };
   html = (0, _marked2.default)(mdData, { renderer: renderer }).replace(/src="/g, '$&' + path);
@@ -1448,7 +1452,6 @@ var Items = function (_Component) {
             }
           })
         );
-        console.log(_this2.props.contentList[i]);
         resultList.push(c);
       };
 

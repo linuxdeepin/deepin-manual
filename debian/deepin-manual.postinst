@@ -1,0 +1,5 @@
+#!/bin/sh
+
+killall dman-search
+
+exit 0

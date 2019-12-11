@@ -109,6 +109,9 @@ class App extends React.Component {
     document.documentElement.style.setProperty(`--nav-hash-word-color`, '#0059D2');
     document.documentElement.style.setProperty(`--article-read-word-color`, '#C0C6D4');
     document.documentElement.style.setProperty(`--article-read-h2-word-color`, '#0082FA');
+    document.documentElement.style.setProperty(`--article-table-text-color`, '#6D7C88');
+    document.documentElement.style.setProperty(`--article-table-border-color`, 'rgba(96, 96, 96, 0.5)');
+    document.documentElement.style.setProperty(`--article-table-cell-border-color`, 'rgba(96, 96, 96, 0.1)');
     document.documentElement.style.setProperty(`--index-item-background-color`, 'rgba(255,255,255,0.05)');
     document.documentElement.style.setProperty(`--index-item-hover-color`, 'rgba(255,255,255,0.2)');
     document.documentElement.style.setProperty(`--index-item-span-word-color`, '#C0C6D4');
@@ -128,7 +131,7 @@ class App extends React.Component {
     document.documentElement.style.setProperty(`--search-button-hover-color-end`, '#606060');
     document.documentElement.style.setProperty(`--search-WikiSearch-color`, '#6D7C88');
     document.documentElement.style.setProperty(`--search-itemTitle-word-color`, '#C0C6D4');
-document.documentElement.style.setProperty(`--search-context-word-color`, '#6D7C88');
+    document.documentElement.style.setProperty(`--search-context-word-color`, '#6D7C88');
     }else if("LightType"==themeType){
     // console.log('LightType');
     document.documentElement.style.setProperty(`--body-background-color`, '#F8F8F8');
@@ -140,6 +143,9 @@ document.documentElement.style.setProperty(`--search-context-word-color`, '#6D7C
     document.documentElement.style.setProperty(`--nav-hash-word-color`, '#0081FF');
     document.documentElement.style.setProperty(`--article-read-word-color`, '#000000');
     document.documentElement.style.setProperty(`--article-read-h2-word-color`, '#2CA7F8');
+    document.documentElement.style.setProperty(`--article-table-text-color`, '#606060');
+    document.documentElement.style.setProperty(`--article-table-border-color`, 'rgba(0, 0, 0, 0.1)');
+    document.documentElement.style.setProperty(`--article-table-cell-border-color`, 'rgba(0, 0, 0, 0.05)');
     document.documentElement.style.setProperty(`--index-item-background-color`, '#FFFFFF');
     document.documentElement.style.setProperty(`--index-item-hover-color`, 'rgba(0,0,0,0.05)');
     document.documentElement.style.setProperty(`--index-item-span-word-color`, '#001A2E');

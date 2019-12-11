@@ -89,10 +89,10 @@
         margin: 0;
       }
       table {
-        color: #606060;
+        color: var(--article-table-text-color);
         border-collapse: collapse;
-        border-top: 2px solid rgba(0, 0, 0, 0.1);
-        border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+        border-top: 2px solid var(--article-table-border-color);
+        border-bottom: 2px solid var(--article-table-border-color);
         margin-top: 20px;
         // white-space: nowrap;
         //表格block等级
@@ -104,7 +104,7 @@
           }
         }
         tr {
-          border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+          border-bottom: 1px solid var(--article-table-cell-border-color);
           font-size: 0.9rem;
           td {
             padding: 5px;

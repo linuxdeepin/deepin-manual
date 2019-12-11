@@ -160,10 +160,10 @@ div {
         line-height: 1.5em;
         margin: 0; }
       #article #article_bg .read table {
-        color: #606060;
+        color: var(--article-table-text-color);
         border-collapse: collapse;
-        border-top: 2px solid rgba(0, 0, 0, 0.1);
-        border-bottom: 2px solid rgba(0, 0, 0, 0.1);
+        border-top: 2px solid var(--article-table-border-color);
+        border-bottom: 2px solid var(--article-table-border-color);
         margin-top: 20px; }
         #article #article_bg .read table.block1 {
           width: 99%;
@@ -182,7 +182,7 @@ div {
           float: left;
           margin-right: 1%; }
         #article #article_bg .read table tr {
-          border-bottom: 1px solid rgba(0, 0, 0, 0.05);
+          border-bottom: 1px solid var(--article-table-cell-border-color);
           font-size: 0.9rem; }
           #article #article_bg .read table tr td {
             padding: 5px; }
