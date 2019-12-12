@@ -49,6 +49,23 @@ Utils::~Utils()
 {
 }
 
+struct timeval Utils::getTime()
+{
+    struct timeval tp;
+    gettimeofday(&tp, nullptr);
+    return tp;
+}
+
+struct timeval Utils::showDiffTime(struct timeval tpStart)
+{
+    struct timeval tpEnd;
+    gettimeofday(&tpEnd, nullptr);
+    double timeuse = (1000000*(tpEnd.tv_sec-tpStart.tv_sec) + tpEnd.tv_usec-tpStart.tv_usec)/1000000.0;
+    qDebug() << __FUNCTION__ << __LINE__ << timeuse << endl;
+
+    return tpEnd;
+}
+
 QString Utils::getQssContent(const QString &filePath)
 {
     QFile file(filePath);

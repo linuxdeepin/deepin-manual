@@ -19,7 +19,12 @@
 #include "controller/search_manager.h"
 #include "view/web_window.h"
 #include "base/utils.h"
+#include "base/consts.h"
 #include "dbus/dbus_consts.h"
+
+#include <qcef_context.h>
+#include <qcef_web_settings.h>
+#include <qcef_global_settings.h>
 
 #include <unistd.h>
 
@@ -38,6 +43,11 @@ const int kWinMinWidth = 800;
 const int kWinMinHeight = 600;
 const int kWinOffset = 30;
 
+const char kEnableDomStorageFlush[] = "--enable-aggressive-domstorage-flushing";
+const char kDisableGpu[] = "--disable-gpu";
+const char kEnableLogging[] = "--enable-logging";
+const char kLogLevel[] = "--log-level";
+
 }  // namespace
 
 #define WM_SENDER_NAME "Sender"
@@ -46,22 +56,24 @@ WindowManager::WindowManager(QObject *parent)
     : QObject(parent)
     , windows_()
     , search_manager_(nullptr)
-    , m_dbusConn(QDBusConnection::connectToBus(QDBusConnection::SessionBus, WM_SENDER_NAME))
 {
-    initDBus();
+    QTimer::singleShot(50, this, [this] {
+        initDBus();
+    });
 }
 
 WindowManager::~WindowManager() {}
 
 void WindowManager::initDBus()
 {
-    if (!m_dbusConn.isConnected()) {
+    QDBusConnection dbusConn = QDBusConnection::connectToBus(QDBusConnection::SessionBus, WM_SENDER_NAME);
+    if (!dbusConn.isConnected()) {
         qDebug() << WM_SENDER_NAME << "connectToBus() failed";
         return;
     }
 
-    if (!m_dbusConn.registerService(dman::kManualSearchService+QString(WM_SENDER_NAME)) ||
-        !m_dbusConn.registerObject(dman::kManualSearchIface+QString(WM_SENDER_NAME), this)) {
+    if (!dbusConn.registerService(dman::kManualSearchService+QString(WM_SENDER_NAME)) ||
+        !dbusConn.registerObject(dman::kManualSearchIface+QString(WM_SENDER_NAME), this)) {
         qCritical() << WM_SENDER_NAME << " failed to register dbus service!";
 
         return;
@@ -73,6 +85,7 @@ void WindowManager::initDBus()
 
 void WindowManager::SendMsg(const QString &msg)
 {
+    QDBusConnection dbusConn = QDBusConnection::connectToBus(QDBusConnection::SessionBus, WM_SENDER_NAME);
     qDebug() << "start send keyword:" << QString::number(qApp->applicationPid());
     QDBusMessage dbusMsg = QDBusMessage::createSignal(
                                 dman::kManualSearchIface + QString(WM_SENDER_NAME),
@@ -82,7 +95,7 @@ void WindowManager::SendMsg(const QString &msg)
     dbusMsg << QString::number(qApp->applicationPid()) + "|" + msg;
 
     //将进程号+窗口WinId拼接后发给dman-search后台进程
-    bool isSuccess = m_dbusConn.send(dbusMsg);
+    bool isSuccess = dbusConn.send(dbusMsg);
     if (isSuccess) {
         qDebug() << "send success";
     }
@@ -121,6 +134,43 @@ void WindowManager::onNewAppOpen()
     }
 }
 
+int WindowManager::initQCef(int argc, char **argv)
+{
+    QCefGlobalSettings settings;
+    // Do not use sandbox.
+    settings.setNoSandbox(true);
+
+    if (qEnvironmentVariableIntValue("QCEF_DEBUG") == 1) {
+        // Open http://localhost:9222 in chromium browser to see dev tools.
+        settings.setRemoteDebug(true);
+        settings.setLogSeverity(QCefGlobalSettings::LogSeverity::Verbose);
+    } else {
+        settings.setRemoteDebug(false);
+        settings.setLogSeverity(QCefGlobalSettings::LogSeverity::Error);
+    }
+
+    // Disable GPU process.
+    settings.addCommandLineSwitch(dman::kDisableGpu, "");
+
+    // Enable aggressive storage commit to minimize data loss.
+    // See public/common/content_switches.cc.
+    settings.addCommandLineSwitch(dman::kEnableDomStorageFlush, "");
+
+    // Set web cache folder.
+    QDir cache_dir(dman::GetCacheDir());
+    cache_dir.mkpath(".");
+    settings.setCachePath(cache_dir.filePath("cache"));
+    settings.setUserDataPath(cache_dir.filePath("cef-storage"));
+
+    // TODO: Rotate console log.
+    settings.setLogFile(cache_dir.filePath("web-console.log"));
+    settings.addCommandLineSwitch(dman::kEnableLogging, "");
+    settings.addCommandLineSwitch(dman::kLogLevel, "0");
+    settings.addCommandLineSwitch("--use-views", "");
+
+    return QCefInit(argc, argv, settings);
+}
+
 void WindowManager::openManual(const QString &app_name)
 {
     qDebug() << Q_FUNC_INFO << app_name;
@@ -131,37 +181,38 @@ void WindowManager::openManual(const QString &app_name)
             window->show();
             window->raise();
             window->activateWindow();
-            window->setSearchManager(currSearchManager());
 
-            SendMsg(QString::number(window->winId()));
+            QTimer::singleShot(50, this, [=] {
+                window->setSearchManager(currSearchManager());
+                SendMsg(QString::number(window->winId()));
+            });
         }
         return;
     }
 
-    // Add a placeholder record.
-    windows_.insert(app_name, nullptr);
-
     WebWindow *window = new WebWindow;
-    window->setAppName(app_name);
 
     moveWindow(window);
     window->show();
     window->activateWindow();
 
-    windows_.insert(app_name, window);
+    QTimer::singleShot(50, this, [=] {
+        // Add a placeholder record.
+        windows_.insert(app_name, nullptr);
+        windows_.insert(app_name, window);
+        search_manager_ = currSearchManager();
+        window->setAppName(app_name);
+        window->setSearchManager(search_manager_);
+        connect(window, &WebWindow::closed, this, &WindowManager::onWindowClosed);
 
-    search_manager_ = currSearchManager();
-    window->setSearchManager(search_manager_);
-    connect(window, &WebWindow::closed, this, &WindowManager::onWindowClosed);
+        SendMsg(QString::number(window->winId()));
+    });
 
-    SendMsg(QString::number(window->winId()));
 }
 
 void WindowManager::openManualWithSearch(const QString &app_name, const QString &keyword)
 {
-    qDebug() << "openManualWithSearch: " << keyword << endl;
-
-    qDebug() << Q_FUNC_INFO << app_name;
+    qDebug() << Q_FUNC_INFO << "openManualWithSearch: " << app_name << ", keyword:" << keyword << endl;
     if (windows_.contains(app_name)) {
         qDebug() << "openManual contains:" << app_name;
         WebWindow *window = windows_.value(app_name);
@@ -169,32 +220,32 @@ void WindowManager::openManualWithSearch(const QString &app_name, const QString 
             window->show();
             window->raise();
             window->activateWindow();
-            window->setSearchManager(currSearchManager());
 
-            SendMsg(QString::number(window->winId()));
-            emit window->manualSearchByKeyword(keyword);
+            QTimer::singleShot(50, this, [=] {
+                window->setSearchManager(currSearchManager());
+                SendMsg(QString::number(window->winId()));
+                emit window->manualSearchByKeyword(keyword);
+            });
         }
         return;
     }
-
-    // Add a placeholder record.
-    windows_.insert(app_name, nullptr);
-
     WebWindow *window = new WebWindow;
-    window->setSearchKeyword(keyword);
-    window->setAppName(app_name);
-
     moveWindow(window);
     window->show();
     window->activateWindow();
 
-    windows_.insert(app_name, window);
+    QTimer::singleShot(50, this, [=] {
+        // Add a placeholder record.
+        windows_.insert(app_name, nullptr);
+        windows_.insert(app_name, window);
+        search_manager_ = currSearchManager();
+        window->setSearchKeyword(keyword);
+        window->setAppName(app_name);
+        window->setSearchManager(search_manager_);
+        connect(window, &WebWindow::closed, this, &WindowManager::onWindowClosed);
 
-    search_manager_ = currSearchManager();
-    window->setSearchManager(search_manager_);
-    connect(window, &WebWindow::closed, this, &WindowManager::onWindowClosed);
-
-    SendMsg(QString::number(window->winId()));
+        SendMsg(QString::number(window->winId()));
+    });
 }
 
 SearchManager* WindowManager::currSearchManager()

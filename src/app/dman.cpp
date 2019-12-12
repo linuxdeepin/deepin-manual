@@ -23,6 +23,7 @@
 #include <qcef_global_settings.h>
 
 #include "base/consts.h"
+#include "base/utils.h"
 #include "view/web_window.h"
 #include "controller/argument_parser.h"
 #include "controller/window_manager.h"
@@ -36,56 +37,13 @@
 
 DWIDGET_USE_NAMESPACE
 
-// namespace
-namespace dman
-{
-    const char kEnableDomStorageFlush[] = "--enable-aggressive-domstorage-flushing";
-    const char kDisableGpu[] = "--disable-gpu";
-    const char kEnableLogging[] = "--enable-logging";
-    const char kLogLevel[] = "--log-level";
-}
-
 int main(int argc, char **argv)
 {
     qputenv("DXCB_FAKE_PLATFORM_NAME_XCB", "true");
 
-    QCefGlobalSettings settings;
-    // Do not use sandbox.
-    settings.setNoSandbox(true);
-
-    if (qEnvironmentVariableIntValue("QCEF_DEBUG") == 1) {
-        // Open http://localhost:9222 in chromium browser to see dev tools.
-        qDebug() << "enable QCEF_DEBUG " << endl;
-        settings.setRemoteDebug(true);
-        settings.setLogSeverity(QCefGlobalSettings::LogSeverity::Verbose);
-    } else {
-        qDebug() << "disable QCEF_DEBUG " << endl;
-        settings.setRemoteDebug(false);
-        settings.setLogSeverity(QCefGlobalSettings::LogSeverity::Error);
-    }
-
-    // Disable GPU process.
-    settings.addCommandLineSwitch(dman::kDisableGpu, "");
-
-    // Enable aggressive storage commit to minimize data loss.
-    // See public/common/content_switches.cc.
-    settings.addCommandLineSwitch(dman::kEnableDomStorageFlush, "");
-
-    // Set web cache folder.
-    QDir cache_dir(dman::GetCacheDir());
-    cache_dir.mkpath(".");
-    settings.setCachePath(cache_dir.filePath("cache"));
-    settings.setUserDataPath(cache_dir.filePath("cef-storage"));
-
-    // TODO: Rotate console log.
-    settings.setLogFile(cache_dir.filePath("web-console.log"));
-    settings.addCommandLineSwitch(dman::kEnableLogging, "");
-    settings.addCommandLineSwitch(dman::kLogLevel, "0");
-    settings.addCommandLineSwitch("--use-views", "");
-
-    const int exit_code = QCefInit(argc, argv, settings);
-    if (exit_code >= 0) {
-        return exit_code;
+    int exitCode = dman::WindowManager::initQCef(argc, argv);
+    if (exitCode >= 0) {
+        return exitCode;
     }
 
     Dtk::Widget::DApplication::loadDXcbPlugin();
@@ -110,20 +68,6 @@ int main(int argc, char **argv)
     app.setApplicationAcknowledgementPage(
         "https://www.deepin.org/acknowledgments/deepin-manual/");
 
-    //save theme
-    DApplicationSettings dApplicationSettings;
-
-    Dtk::Core::DLogManager::registerFileAppender();
-    Dtk::Core::DLogManager::registerConsoleAppender();
-
-    // fix error for cutelogger
-    // No appenders associated with category js
-    auto category = "js";
-    auto fileAppender = new Dtk::Core::RollingFileAppender(Dtk::Core::DLogManager::getlogFilePath());
-    static Dtk::Core::Logger customLoggerInstance(category);
-    customLoggerInstance.logToGlobalInstance(category, true);
-    customLoggerInstance.registerAppender(fileAppender);
-
     dman::ArgumentParser argument_parser;
     dman::WindowManager window_manager;
     QObject::connect(&argument_parser,
@@ -140,8 +84,6 @@ int main(int argc, char **argv)
         return app.exec();
     }
 
-    QCefBindApp(&app);
-
     qDebug() << "argument_parser.openManualsDelay()";
     QObject::connect(&argument_parser,
                      &dman::ArgumentParser::openManualRequested,
@@ -153,6 +95,22 @@ int main(int argc, char **argv)
                      &dman::WindowManager::openManualWithSearch);
     // Send openManualRequested() signals after slots connected.
     argument_parser.openManualsDelay();
+
+    //save theme
+    DApplicationSettings dApplicationSettings;
+
+    Dtk::Core::DLogManager::registerFileAppender();
+    Dtk::Core::DLogManager::registerConsoleAppender();
+
+    // fix error for cutelogger
+    // No appenders associated with category js
+    auto category = "js";
+    auto fileAppender = new Dtk::Core::RollingFileAppender(Dtk::Core::DLogManager::getlogFilePath());
+    static Dtk::Core::Logger customLoggerInstance(category);
+    customLoggerInstance.logToGlobalInstance(category, true);
+    customLoggerInstance.registerAppender(fileAppender);
+
+    QCefBindApp(&app);
 
     return app.exec();
 }

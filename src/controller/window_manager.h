@@ -23,9 +23,10 @@
 #include <QPoint>
 #include <QDBusConnection>
 
+class QCefGlobalSettings;
+
 namespace dman {
 
-class QCefGlobalSettings;
 class SearchManager;
 class WebWindow;
 
@@ -42,15 +43,15 @@ public:
 
     void SendMsg(const QString &msg);
 
+    static int initQCef(int argc, char **argv);
+
 private:
     QPoint newWindowPosition();
     void initDBus();
 
-
     QHash<QString, WebWindow*> windows_;
     SearchManager* search_manager_ { nullptr };
     QPoint last_new_window_pos_;
-    QDBusConnection m_dbusConn;
 
 private slots:
     /**

@@ -38,7 +38,6 @@
 #include <QShortcut>
 #include <QWindow>
 #include <QApplication>
-#include <DLog>
 #include <QFileInfo>
 #include <QMouseEvent>
 #include <QResizeEvent>
@@ -46,6 +45,7 @@
 #include <QDBusConnection>
 #include <QX11Info>
 
+#include <DLog>
 #include <DTitlebar>
 #include <DButtonBox>
 #include <DApplicationHelper>

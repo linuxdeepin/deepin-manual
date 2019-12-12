@@ -20,6 +20,8 @@
 #ifndef UTILS_H
 #define UTILS_H
 
+#include "sys/time.h"
+
 #include <QObject>
 #include <QHash>
 #include <QWidget>
@@ -44,6 +46,9 @@ public:
         SourceHanSansNormal,
         DefautFont
     };
+
+    static struct timeval getTime();
+    static struct timeval showDiffTime(struct timeval tpStart);
 
     static QHash<QString, QPixmap> m_imgCacheHash;
     static QHash<QString, QString> m_fontNameCache;
