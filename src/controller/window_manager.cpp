@@ -191,7 +191,6 @@ void WindowManager::openManual(const QString &app_name)
     }
 
     WebWindow *window = new WebWindow;
-
     moveWindow(window);
     window->show();
     window->activateWindow();
@@ -205,6 +204,7 @@ void WindowManager::openManual(const QString &app_name)
         window->setSearchManager(search_manager_);
         connect(window, &WebWindow::closed, this, &WindowManager::onWindowClosed);
 
+        window->initWebView();
         SendMsg(QString::number(window->winId()));
     });
 
@@ -229,6 +229,7 @@ void WindowManager::openManualWithSearch(const QString &app_name, const QString 
         }
         return;
     }
+
     WebWindow *window = new WebWindow;
     moveWindow(window);
     window->show();
@@ -244,6 +245,7 @@ void WindowManager::openManualWithSearch(const QString &app_name, const QString 
         window->setSearchManager(search_manager_);
         connect(window, &WebWindow::closed, this, &WindowManager::onWindowClosed);
 
+        window->initWebView();
         SendMsg(QString::number(window->winId()));
     });
 }

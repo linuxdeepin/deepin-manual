@@ -112,9 +112,6 @@ void WebWindow::setAppName(const QString &app_name)
     if (0 == app_name.length()) {
         this->slot_ButtonHide();
     }
-
-    const QFileInfo info(kIndexPage);
-    web_view_->load(QUrl::fromLocalFile(info.absoluteFilePath()));
 }
 
 void WebWindow::setSearchKeyword(const QString &keyword)
@@ -126,8 +123,6 @@ void WebWindow::initConnections()
 {
     connect(search_edit_, &SearchEdit::textChanged,
             this, &WebWindow::onSearchTextChanged);
-    connect(web_view_->page(), &QCefWebPage::loadFinished,
-            this, &WebWindow::onWebPageLoadFinished);
     connect(search_edit_, &SearchEdit::downKeyPressed,
             completion_window_, &SearchCompletionWindow::goDown);
     connect(search_edit_, &SearchEdit::enterPressed,
@@ -215,6 +210,11 @@ void WebWindow::initUI()
     this->titlebar()->setSeparatorVisible(true);
     this->titlebar()->setIcon(QIcon::fromTheme("deepin-manual"));
 
+    this->setFocusPolicy(Qt::ClickFocus);
+}
+
+void WebWindow::initWebView()
+{
     image_viewer_ = new ImageViewer(this);
     image_viewer_proxy_ = new ImageViewerProxy(image_viewer_, this);
 
@@ -245,7 +245,11 @@ void WebWindow::initUI()
     channel->registerObject("titleBar", title_bar_proxy_);
     channel->registerObject("settings", settings_proxy_);
 
-    this->setFocusPolicy(Qt::ClickFocus);
+    connect(web_view_->page(), &QCefWebPage::loadFinished,
+            this, &WebWindow::onWebPageLoadFinished);
+
+    const QFileInfo info(kIndexPage);
+    web_view_->load(QUrl::fromLocalFile(info.absoluteFilePath()));
 }
 
 void WebWindow::initShortcuts()

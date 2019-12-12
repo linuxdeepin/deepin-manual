@@ -64,6 +64,8 @@ public:
     void showAllShortcut();
     void setSearchManager(SearchManager *searchManager);
 
+    void initWebView();
+
     Dtk::Widget::DButtonBoxButton *m_backButton;
     Dtk::Widget::DButtonBoxButton *m_forwardButton;
 
