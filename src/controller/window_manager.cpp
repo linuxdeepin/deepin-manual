@@ -143,10 +143,11 @@ void WindowManager::openManual(const QString &app_name)
 
     WebWindow *window = new WebWindow;
     window->setAppName(app_name);
+
+    moveWindow(window);
     window->show();
     window->activateWindow();
 
-    moveWindow(window);
     windows_.insert(app_name, window);
 
     search_manager_ = currSearchManager();
@@ -182,10 +183,11 @@ void WindowManager::openManualWithSearch(const QString &app_name, const QString 
     WebWindow *window = new WebWindow;
     window->setSearchKeyword(keyword);
     window->setAppName(app_name);
+
+    moveWindow(window);
     window->show();
     window->activateWindow();
 
-    moveWindow(window);
     windows_.insert(app_name, window);
 
     search_manager_ = currSearchManager();
