@@ -57,9 +57,6 @@ WindowManager::WindowManager(QObject *parent)
     , windows_()
     , search_manager_(nullptr)
 {
-    QTimer::singleShot(50, this, [this] {
-        initDBus();
-    });
 }
 
 WindowManager::~WindowManager() {}
@@ -255,6 +252,7 @@ SearchManager* WindowManager::currSearchManager()
     if (nullptr == search_manager_) {
         qDebug() << "init SearchManager" << endl;
         search_manager_ = new SearchManager(this);
+        initDBus();
     }
 
     return search_manager_;
