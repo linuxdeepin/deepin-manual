@@ -21,7 +21,7 @@ ifneq (,$(wildcard .git/config))
 	git submodule update --remote
 else
 	rm -rf src/web/node_modules
-	git clone https://cr.deepin.io/vendor-deps src/web/node_modules
+	git clone https://gitlab.deepin.io/vendor-deps src/web/node_modules
 	cd src/web/node_modules && git checkout deepin-manual
 endif
 	dh_auto_build -- dman
