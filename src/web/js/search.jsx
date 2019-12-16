@@ -39,10 +39,7 @@ class Items extends Component {
           <div
             className="context"
             dangerouslySetInnerHTML={{
-              __html: this.props.contentList[i].replace(
-                re,
-                "<span class='highlight'>$&</span>"
-              )
+              __html: this.props.contentList[i]
             }}
           />
         </div>

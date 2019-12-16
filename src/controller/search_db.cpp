@@ -225,6 +225,105 @@ void SearchDb::handleSearchAnchor(const QString &keyword)
     emit this->searchAnchorResult(keyword, result);
 }
 
+QString insertHighlight(QString srcString,  QString keyword)
+{
+    QString resultString = srcString;
+    int currIndex = 0;
+
+    QString highlightStart = "<span class='highlight'>";
+    QString highlightEnd = "</span>";
+
+    do {
+        QString substr = resultString.mid(currIndex, keyword.length());
+        if (substr.toLower() == keyword.toLower()) {
+            resultString.insert(currIndex, highlightStart);
+            currIndex += highlightStart.length()+keyword.length();
+            resultString.insert(currIndex, highlightEnd);
+            currIndex += highlightEnd.length();
+        }
+        else {
+            ++currIndex;
+        }
+
+    } while(currIndex <= resultString.length()-keyword.length());
+
+    return resultString;
+}
+
+QString SearchDb::highlightKeyword(QString srcString, QString keyword)
+{
+    QString substrImgStart = "";
+    QString substrImgEnd = "";
+
+    QStringList strList;
+    QList<int> strEndIndexList;
+
+    const QString imgStartString = "<img";
+    const QString imgEndString = "\">";
+
+    int currIndex = 0;
+    int startSubStringIndex = 0;
+    int findImgIndex = 0;
+    const int imgStartLen = imgStartString.length();
+    const int imgEndLen = imgEndString.length();
+
+    QString highlightString = "";
+
+    if (!srcString.contains(imgStartString)) {
+        highlightString = insertHighlight(srcString, keyword);
+        return highlightString;
+    }
+
+    do {
+        substrImgStart = srcString.mid(currIndex, imgStartLen);
+        if (substrImgStart == imgStartString) {
+            findImgIndex = currIndex;
+        }
+
+        substrImgEnd = srcString.mid(currIndex, imgEndLen);
+        if (substrImgEnd == imgEndString) {
+            startSubStringIndex = currIndex+imgEndLen;
+            strEndIndexList.append(startSubStringIndex);
+
+            highlightString.append(srcString.mid(findImgIndex, startSubStringIndex-findImgIndex));
+        }
+
+        if (findImgIndex > startSubStringIndex)
+        {
+            QString findStr = srcString.mid(startSubStringIndex, findImgIndex-startSubStringIndex);
+            if (!strList.contains(findStr))
+            {
+                strList.append(findStr);
+
+                QString hightLightStr = findStr;
+                hightLightStr = insertHighlight(hightLightStr, keyword);
+                highlightString.append(hightLightStr);
+            }
+        }
+        ++currIndex;
+
+    } while(currIndex <= srcString.length()-keyword.length());
+
+    if (!strEndIndexList.isEmpty()) {
+        int lastImgEndIndex = strEndIndexList.last();
+
+        QString lastStr = srcString.mid(lastImgEndIndex, srcString.length()-lastImgEndIndex);
+        if (lastStr.length() > 0) {
+            strList.append(lastStr);
+
+            QString hightLightStr = lastStr;
+            hightLightStr = insertHighlight(hightLightStr, keyword);
+            highlightString.append(hightLightStr);
+        }
+    }
+
+    if (!strList.join("").contains(keyword, Qt::CaseInsensitive)) {
+        return "";
+    }
+
+    return highlightString;
+}
+
 void SearchDb::handleSearchContent(const QString &keyword)
 {
     qDebug() << Q_FUNC_INFO << keyword;
@@ -243,19 +342,31 @@ void SearchDb::handleSearchContent(const QString &keyword)
         QStringList anchors;
         QStringList anchorIds;
         QStringList contents;
+        QHash<QString, bool> appHasMatchHash;
         while (query.next()) {
             result_empty = false;
             const QString app_name = query.value(0).toString();
             const QString anchor = query.value(1).toString();
             const QString anchorId = query.value(2).toString();
             const QString content = query.value(3).toString();
+
+            QString tmpContent = content;
+            tmpContent = tmpContent.replace("\" >", "\">");
+            QString highlightContent = highlightKeyword(tmpContent, keyword);
+
+            if (highlightContent.length() > 0) {
+                appHasMatchHash.insert(app_name, true);
+            }
+
             if (app_name == last_app_name) {
-                anchors.append(anchor);
-                anchorIds.append(anchorId);
-                contents.append(content);
+                if (highlightContent.length() > 0) {
+                    anchors.append(anchor);
+                    anchorIds.append(anchorId);
+                    contents.append(highlightContent);
+                }
             } else {
-                if (!last_app_name.isEmpty()) {
-                    qDebug() << Q_FUNC_INFO << "emit searchContentResult()";
+                if (!last_app_name.isEmpty() && appHasMatchHash.value(last_app_name) && contents.size() > 0) {
+                    qDebug() << Q_FUNC_INFO << "emit searchContentResult()" << contents.length();
                     emit this->searchContentResult(last_app_name, anchors,
                                                    anchorIds, contents);
                 }
@@ -263,15 +374,19 @@ void SearchDb::handleSearchContent(const QString &keyword)
                 anchors.clear();
                 anchorIds.clear();
                 contents.clear();
-                last_app_name = app_name;
-                anchors.append(anchor);
-                anchorIds.append(anchorId);
-                contents.append(content);
+
+                if (highlightContent.length() > 0) {
+                    last_app_name = app_name;
+                    anchors.append(anchor);
+                    anchorIds.append(anchorId);
+                    contents.append(highlightContent);
+                }
             }
         }
 
         // Last record.
-        if (!result_empty) {
+        if (!result_empty && contents.size() > 0) {
+            qDebug() << Q_FUNC_INFO << "emit searchContentResult()" << contents.length();
             emit this->searchContentResult(last_app_name, anchors,
                                            anchorIds, contents);
         }

@@ -60,6 +60,7 @@ public slots:
 
 private:
     void initConnections();
+    inline QString highlightKeyword(QString srcString, QString keyword);
 
     SearchDbPrivate *p_ = nullptr;
 

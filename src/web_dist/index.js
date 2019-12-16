@@ -1450,9 +1450,15 @@ var Items = function (_Component) {
             }
           }),
           _react2.default.createElement('div', {
-            className: 'context',
-            dangerouslySetInnerHTML: {
-              __html: _this2.props.contentList[i].replace(re, "<span class='highlight'>$&</span>")
+            className: 'context'
+            // dangerouslySetInnerHTML={{
+            //   __html: this.props.contentList[i].replace(
+            //     re,
+            //     "<span class='highlight'>$&</span>"
+            //   )
+            // }}
+            , dangerouslySetInnerHTML: {
+              __html: _this2.props.contentList[i]
             }
           })
         );
