@@ -302,7 +302,7 @@ QString SearchDb::highlightKeyword(QString srcString, QString keyword)
         }
         ++currIndex;
 
-    } while(currIndex <= srcString.length()-keyword.length());
+    } while(currIndex <= srcString.length());
 
     if (!strEndIndexList.isEmpty()) {
         int lastImgEndIndex = strEndIndexList.last();
@@ -344,7 +344,6 @@ void SearchDb::handleSearchContent(const QString &keyword)
         QStringList contents;
         QHash<QString, bool> appHasMatchHash;
         while (query.next()) {
-            result_empty = false;
             const QString app_name = query.value(0).toString();
             const QString anchor = query.value(1).toString();
             const QString anchorId = query.value(2).toString();
@@ -366,6 +365,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
                 }
             } else {
                 if (!last_app_name.isEmpty() && appHasMatchHash.value(last_app_name) && contents.size() > 0) {
+                    result_empty = false;
                     qDebug() << Q_FUNC_INFO << "emit searchContentResult()" << contents.length();
                     emit this->searchContentResult(last_app_name, anchors,
                                                    anchorIds, contents);
@@ -386,6 +386,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
 
         // Last record.
         if (!result_empty && contents.size() > 0) {
+            result_empty = false;
             qDebug() << Q_FUNC_INFO << "emit searchContentResult()" << contents.length();
             emit this->searchContentResult(last_app_name, anchors,
                                            anchorIds, contents);
