@@ -274,8 +274,6 @@ var App = function (_React$Component) {
       global.open = function (file) {
         var hash = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
 
-        console.log("file" + file);
-        console.log("hash" + hash);
         file = encodeURIComponent(file);
         hash = encodeURIComponent(hash);
         global.hash = hash;
@@ -441,14 +439,14 @@ var Article = function (_Component) {
     value: function scrollToHash() {
       var _this2 = this;
 
-      console.log('scrollToHash');
+      // console.log('scrollToHash');
       var tempHash = this.hash;
       var hashNode = document.getElementById(tempHash);
-      console.log('hashNode' + tempHash);
       if (hashNode) {
         this.setState({ smoothScroll: true });
         (0, _smoothScrollIntoViewIfNeeded2.default)(hashNode, { behavior: 'smooth', block: 'start' }).then(function () {
 
+          //find parent h3 title of h4 title
           var hList = _reactDom2.default.findDOMNode(_this2).querySelectorAll('h2,h3,h4');
           var currH3Hash = '';
           for (var i = 0; i < hList.length; i++) {
@@ -471,7 +469,6 @@ var Article = function (_Component) {
           }, 500);
         });
       } else {
-        console.log('else ' + this.props.hlist[0].id);
         this.props.setHash(this.props.hlist[0].id);
       }
     }
@@ -481,10 +478,7 @@ var Article = function (_Component) {
       var _this3 = this;
 
       if (this.hash != this.props.hash) {
-        console.log("this.props.hash" + this.props.hash);
-        console.log("before  this.hash" + this.hash);
         this.hash = this.props.hash;
-        console.log("after   this.hash" + this.hash);
         this.scrollToHash();
       }
       if (!this.load) {

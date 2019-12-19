@@ -97,6 +97,12 @@ div {
     background-color: var(--nav-background-color);
     border-radius: 8px; }
     #article #article_bg .read {
+      position: absolute;
+      width: 90%;
+      min-width: 600px;
+      max-width: 1024px;
+      left: 50%;
+      transform: translateX(-50%);
       background-color: transparent;
       font-family: SourceHanSansSC-Normal;
       margin: 0px;
