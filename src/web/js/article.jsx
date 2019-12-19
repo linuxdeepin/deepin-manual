@@ -17,14 +17,33 @@ export default class Article extends Component {
   //滚动到锚点
   scrollToHash() {
     // console.log('scrollToHash');
-    const hashNode = document.getElementById(this.hash);
+    let tempHash = this.hash;
+    const hashNode = document.getElementById(tempHash);
     if (hashNode) {
       this.setState({ smoothScroll: true });
       scrollIntoView(hashNode, { behavior: 'smooth', block: 'start' }).then(() => {
+
+        //find parent h3 title of h4 title
+        let hList = ReactDOM.findDOMNode(this).querySelectorAll('h2,h3,h4');
+        var currH3Hash = '';
+        for (let i = 0; i < hList.length; i++) {
+          if (hList[i].tagName == 'H3') {
+            currH3Hash = hList[i].id; 
+          }
+
+          if (tempHash == hList[i].id && hList[i].tagName == 'H4') {
+            console.log("article: scroll hlist:" + hList[i].tagName  + "," + hList[i].id);
+            console.log("currH3Hash:" + currH3Hash);
+            this.hash = currH3Hash;
+            this.props.setHash(currH3Hash);
+            this.props.setScroll(currH3Hash);
+            break;
+          }
+        }
+
         setTimeout(() => {
           this.setState({ smoothScroll: false });
         },500);
-        // this.setState({ smoothScroll: false });
       });
     } else {
       this.props.setHash(this.props.hlist[0].id);

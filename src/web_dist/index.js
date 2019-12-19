@@ -274,6 +274,8 @@ var App = function (_React$Component) {
       global.open = function (file) {
         var hash = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
 
+        console.log("file" + file);
+        console.log("hash" + hash);
         file = encodeURIComponent(file);
         hash = encodeURIComponent(hash);
         global.hash = hash;
@@ -439,17 +441,37 @@ var Article = function (_Component) {
     value: function scrollToHash() {
       var _this2 = this;
 
-      // console.log('scrollToHash');
-      var hashNode = document.getElementById(this.hash);
+      console.log('scrollToHash');
+      var tempHash = this.hash;
+      var hashNode = document.getElementById(tempHash);
+      console.log('hashNode' + tempHash);
       if (hashNode) {
         this.setState({ smoothScroll: true });
         (0, _smoothScrollIntoViewIfNeeded2.default)(hashNode, { behavior: 'smooth', block: 'start' }).then(function () {
+
+          var hList = _reactDom2.default.findDOMNode(_this2).querySelectorAll('h2,h3,h4');
+          var currH3Hash = '';
+          for (var i = 0; i < hList.length; i++) {
+            if (hList[i].tagName == 'H3') {
+              currH3Hash = hList[i].id;
+            }
+
+            if (tempHash == hList[i].id && hList[i].tagName == 'H4') {
+              console.log("article: scroll hlist:" + hList[i].tagName + "," + hList[i].id);
+              console.log("currH3Hash:" + currH3Hash);
+              _this2.hash = currH3Hash;
+              _this2.props.setHash(currH3Hash);
+              _this2.props.setScroll(currH3Hash);
+              break;
+            }
+          }
+
           setTimeout(function () {
             _this2.setState({ smoothScroll: false });
           }, 500);
-          // this.setState({ smoothScroll: false });
         });
       } else {
+        console.log('else ' + this.props.hlist[0].id);
         this.props.setHash(this.props.hlist[0].id);
       }
     }
@@ -459,7 +481,10 @@ var Article = function (_Component) {
       var _this3 = this;
 
       if (this.hash != this.props.hash) {
+        console.log("this.props.hash" + this.props.hash);
+        console.log("before  this.hash" + this.hash);
         this.hash = this.props.hash;
+        console.log("after   this.hash" + this.hash);
         this.scrollToHash();
       }
       if (!this.load) {
@@ -1450,14 +1475,8 @@ var Items = function (_Component) {
             }
           }),
           _react2.default.createElement('div', {
-            className: 'context'
-            // dangerouslySetInnerHTML={{
-            //   __html: this.props.contentList[i].replace(
-            //     re,
-            //     "<span class='highlight'>$&</span>"
-            //   )
-            // }}
-            , dangerouslySetInnerHTML: {
+            className: 'context',
+            dangerouslySetInnerHTML: {
               __html: _this2.props.contentList[i]
             }
           })
