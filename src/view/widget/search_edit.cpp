@@ -39,8 +39,8 @@ void SearchEdit::keyPressEvent(QKeyEvent* event) {
       emit this->downKeyPressed();
       break;
     }
-    case Qt::Key_Enter:  // Fall through
-    case Qt::Key_Return: {
+    case Qt::Key_Return:  // Fall through
+    case Qt::Key_Enter: {
       emit this->enterPressed();
       break;
     }

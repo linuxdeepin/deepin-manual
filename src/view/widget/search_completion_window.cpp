@@ -173,8 +173,6 @@ void SearchCompletionWindow::initConnections()
             this, &SearchCompletionWindow::onResultListClicked);
     connect(result_view_, &DListView::entered,
             this, &SearchCompletionWindow::onResultListEntered);
-    connect(result_view_, &DListView::pressed,
-            this, &SearchCompletionWindow::onResultListClicked);
     connect(search_button_, &SearchButton::entered,
             this, &SearchCompletionWindow::onSearchButtonEntered);
     connect(search_button_, &SearchButton::pressed,
@@ -246,6 +244,7 @@ void SearchCompletionWindow::onResultListClicked(const QModelIndex &index)
     if (index.isValid()) {
         const int row = index.row();
         emit this->resultClicked(result_.at(row));
+        result_view_->setCurrentIndex(QModelIndex());
     } else {
         // Simulate button click event.
         emit this->searchButtonClicked();
