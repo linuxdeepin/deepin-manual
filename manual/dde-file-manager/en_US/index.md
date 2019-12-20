@@ -1,4 +1,4 @@
-# Deepin File Manager|../common/dde-file-manager.svg|
+# Deepin File Manager|../common/deepin-file-manager.svg|
 
 ## Overview
 
@@ -247,7 +247,7 @@ By inputting a path or keyword in the bar and pressing ![enter](icon/Enter.svg),
   - To search in a specific directory, please enter the directory and then search.
 2. Input the keywords and press ![enter](icon/Enter.svg), the search results will be shown in the window.
 
-> ![tips](icon/tips.svg): In **Settings**, check "Auto index internal disk" and "Index external storage device after connected to computer" to quicken the searching speed.
+> ![tips](icon/tips.svg): In **Settings**, check "Auto index internal disk" and "Index external storage device after connected to computer" to quicken the searching speed.
 
 #### Advanced Search
 1. In search bar, input the keywords and press enter, click ![filter](icon/filter.svg) to show advanced search.
