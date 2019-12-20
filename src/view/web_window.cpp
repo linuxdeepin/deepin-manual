@@ -339,7 +339,7 @@ void WebWindow::onSearchTextChangedDelay()
     QString textTemp = search_edit_->text();
     const QString text = textTemp.remove('\n').remove('\r').remove("\r\n");
     // Filters special chars.
-    if (text.size() < 1 || text.contains(QRegExp("[+-_$!@#%^&\\(\\)]"))) {
+    if (text.size() < 1 || text.toLower().contains(QRegExp("[+-_$!@#%^&\\(\\)]"))) {
         return;
     }
 
