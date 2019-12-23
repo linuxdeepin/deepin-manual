@@ -346,7 +346,6 @@ void WebWindow::onSearchEditFocusOut()
 {
     QTimer::singleShot(20, [=]() {
         this->completion_window_->hide();
-        web_view_->page()->remapBrowserWindow(web_view_->winId(), this->winId());
     });
 }
 
