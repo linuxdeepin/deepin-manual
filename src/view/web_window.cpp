@@ -40,7 +40,7 @@
 #include <QApplication>
 #include <QFileInfo>
 #include <QMouseEvent>
-#include <QResizeEvent>
+#include <QShowEvent>
 #include <QWebChannel>
 #include <QDBusConnection>
 #include <QX11Info>
@@ -129,6 +129,11 @@ void WebWindow::setSearchManager(SearchManager *search_manager)
 {
     search_manager_ = search_manager;
 
+    connect(search_manager_, &SearchManager::searchContentResult,
+            search_proxy_, &SearchProxy::onContentResult);
+    connect(search_manager_, &SearchManager::searchContentMismatch,
+            search_proxy_, &SearchProxy::mismatch);
+
     connect(search_manager_, &SearchManager::searchAnchorResult,
             this, &WebWindow::onSearchAnchorResult);
 }
@@ -166,10 +171,6 @@ void WebWindow::initConnections()
             this, &WebWindow::onSearchButtonClicked);
     connect(&search_timer_, &QTimer::timeout,
             this, &WebWindow::onSearchTextChangedDelay);
-    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
-            theme_proxy_, &ThemeProxy::slot_ThemeChange);
-    connect(title_bar_proxy_, &TitleBarProxy::buttonShowSignal,
-            this, &WebWindow::slot_ButtonShow);
 
     connect(this, &WebWindow::manualSearchByKeyword,
             this, &WebWindow::onManualSearchByKeyword);
@@ -229,11 +230,14 @@ void WebWindow::initUI()
     this->titlebar()->setSeparatorVisible(true);
     this->titlebar()->setIcon(QIcon::fromTheme("deepin-manual"));
 
+    search_proxy_ = new SearchProxy(this);
     title_bar_proxy_ = new TitleBarProxy(this);
     connect(m_backButton, &DButtonBoxButton::clicked,
             title_bar_proxy_, &TitleBarProxy::backwardButtonClicked);
     connect(m_forwardButton, &DButtonBoxButton::clicked,
             title_bar_proxy_, &TitleBarProxy::forwardButtonClicked);
+    connect(title_bar_proxy_, &TitleBarProxy::buttonShowSignal,
+            this, &WebWindow::slot_ButtonShow);
 
     this->setFocusPolicy(Qt::ClickFocus);
 }
@@ -242,16 +246,7 @@ void WebWindow::initWebView()
 {
     image_viewer_ = new ImageViewer(this);
     image_viewer_proxy_ = new ImageViewerProxy(image_viewer_, this);
-
     manual_proxy_ = new ManualProxy(this);
-    connect(manual_proxy_, &ManualProxy::WidgetLower, this, &WebWindow::lower);
-
-    search_proxy_ = new SearchProxy(this);
-    connect(search_manager_, &SearchManager::searchContentResult,
-            search_proxy_, &SearchProxy::onContentResult);
-    connect(search_manager_, &SearchManager::searchContentMismatch,
-            search_proxy_, &SearchProxy::mismatch);
-
     theme_proxy_ = new ThemeProxy(this);
     settings_proxy_ = new SettingsProxy(this);
     i18n_proxy = new I18nProxy(this);
@@ -283,9 +278,9 @@ void WebWindow::initWebView()
 
     connect(web_view_->page(), &QCefWebPage::loadFinished,
             this, &WebWindow::onWebPageLoadFinished);
-
-    const QFileInfo info(kIndexPage);
-    web_view_->load(QUrl::fromLocalFile(info.absoluteFilePath()));
+    connect(manual_proxy_, &ManualProxy::WidgetLower, this, &WebWindow::lower);
+    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
+            theme_proxy_, &ThemeProxy::slot_ThemeChange);
 }
 
 void WebWindow::initShortcuts()
@@ -317,9 +312,23 @@ void WebWindow::initShortcuts()
     });
 }
 
-void WebWindow::resizeEvent(QResizeEvent *event)
+void WebWindow::showEvent(QShowEvent *event)
 {
-    QWidget::resizeEvent(event);
+    QWidget::showEvent(event);
+
+    emit this->shown(this);
+
+    QTimer::singleShot(10, this, [this] {
+        const QFileInfo info(kIndexPage);
+        web_view_->load(QUrl::fromLocalFile(info.absoluteFilePath()));
+    });
+}
+
+void WebWindow::closeEvent(QCloseEvent *event)
+{
+    emit this->closed(app_name_);
+
+    QWidget::closeEvent(event);
 }
 
 void WebWindow::onSearchContentByKeyword(const QString &keyword)
@@ -485,13 +494,6 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
     return QObject::eventFilter(watched, event);
 }
 
-void WebWindow::closeEvent(QCloseEvent *event)
-{
-    emit this->closed(app_name_);
-
-    QWidget::closeEvent(event);
-}
-
 void WebWindow::slot_ButtonHide()
 {
     QTimer::singleShot(20, [=]() {
@@ -505,10 +507,6 @@ void WebWindow::slot_ButtonShow()
     QTimer::singleShot(20, [=]() {
         qDebug() << "slot_ButtonShow";
         buttonBox->show();
-
-        //这里这样做是为了让快捷键（左右键）能够生效
-        titlebar()->grabKeyboard();
-        titlebar()->releaseKeyboard();
     });
 }
 

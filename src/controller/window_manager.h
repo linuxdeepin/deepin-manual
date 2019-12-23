@@ -48,10 +48,14 @@ public:
 private:
     QPoint newWindowPosition();
     void initDBus();
+    void initWebWindow();
+    void activeExistingWindow();
 
     QHash<QString, WebWindow*> windows_;
     SearchManager* search_manager_ { nullptr };
     QPoint last_new_window_pos_;
+    QString curr_app_name_;
+    QString curr_keyword_;
 
 private slots:
     /**
@@ -59,6 +63,7 @@ private slots:
     * @param app_name
     */
     void onWindowClosed(const QString& app_name);
+    void onWindowShown(WebWindow *window);
     void RecvMsg(const QString &data);
 
 public slots:

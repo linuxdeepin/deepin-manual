@@ -56,6 +56,8 @@ WindowManager::WindowManager(QObject *parent)
     : QObject(parent)
     , windows_()
     , search_manager_(nullptr)
+    , curr_app_name_("")
+    , curr_keyword_("")
 {
 }
 
@@ -168,89 +170,56 @@ int WindowManager::initQCef(int argc, char **argv)
     return QCefInit(argc, argv, settings);
 }
 
-void WindowManager::openManual(const QString &app_name)
+void WindowManager::initWebWindow()
 {
-    qDebug() << Q_FUNC_INFO << app_name;
-    if (windows_.contains(app_name)) {
-        qDebug() << "openManual contains:" << app_name;
-        WebWindow *window = windows_.value(app_name);
-        if (window != nullptr) {
-            window->show();
-            window->raise();
-            window->activateWindow();
-
-            QTimer::singleShot(50, this, [=] {
-                window->setSearchManager(currSearchManager());
-                SendMsg(QString::number(window->winId()));
-            });
-        }
-        return;
-    }
-
     WebWindow *window = new WebWindow;
+    connect(window, &WebWindow::closed, this, &WindowManager::onWindowClosed);
+    connect(window, &WebWindow::shown, this, &WindowManager::onWindowShown);
     moveWindow(window);
     window->show();
     window->activateWindow();
+}
 
-    QTimer::singleShot(50, this, [=] {
-        // Add a placeholder record.
-        windows_.insert(app_name, nullptr);
-        windows_.insert(app_name, window);
-        search_manager_ = currSearchManager();
-        window->setAppName(app_name);
-        window->setSearchManager(search_manager_);
-        connect(window, &WebWindow::closed, this, &WindowManager::onWindowClosed);
+void WindowManager::activeExistingWindow()
+{
+    qDebug() << "openManual contains:" << curr_app_name_;
+    WebWindow *window = windows_.value(curr_app_name_);
+    if (window != nullptr) {
+        window->show();
+        window->raise();
+        window->activateWindow();
 
-        window->initWebView();
         SendMsg(QString::number(window->winId()));
-    });
+    }
 
+    if (curr_keyword_.length() > 0) {
+        emit window->manualSearchByKeyword(curr_keyword_);
+    }
+}
+
+void WindowManager::openManual(const QString &app_name)
+{
+    curr_app_name_ = app_name;
+    curr_keyword_ = "";
+    qDebug() << Q_FUNC_INFO << app_name;
+    if (windows_.contains(app_name)) {
+        activeExistingWindow();
+        return;
+    }
+
+    initWebWindow();
 }
 
 void WindowManager::openManualWithSearch(const QString &app_name, const QString &keyword)
 {
-    qDebug() << Q_FUNC_INFO << "openManualWithSearch: " << app_name << ", keyword:" << keyword << endl;
-    if (windows_.contains(app_name)) {
-        qDebug() << "openManual contains:" << app_name;
-        WebWindow *window = windows_.value(app_name);
-        if (window != nullptr) {
-            window->show();
-            window->raise();
-            window->activateWindow();
-
-            QTimer::singleShot(50, this, [=] {
-                window->setSearchManager(currSearchManager());
-                SendMsg(QString::number(window->winId()));
-                emit window->manualSearchByKeyword(keyword);
-            });
-        }
-        return;
-    }
-
-    WebWindow *window = new WebWindow;
-    moveWindow(window);
-    window->show();
-    window->activateWindow();
-
-    QTimer::singleShot(50, this, [=] {
-        // Add a placeholder record.
-        windows_.insert(app_name, nullptr);
-        windows_.insert(app_name, window);
-        search_manager_ = currSearchManager();
-        window->setSearchKeyword(keyword);
-        window->setAppName(app_name);
-        window->setSearchManager(search_manager_);
-        connect(window, &WebWindow::closed, this, &WindowManager::onWindowClosed);
-
-        window->initWebView();
-        SendMsg(QString::number(window->winId()));
-    });
+    curr_keyword_ = keyword;
+    openManual(app_name);
 }
 
 SearchManager* WindowManager::currSearchManager()
 {
     if (nullptr == search_manager_) {
-        qDebug() << "init SearchManager" << endl;
+        qDebug() << "start init SearchManager" << endl;
         search_manager_ = new SearchManager(this);
         initDBus();
     }
@@ -293,6 +262,23 @@ void WindowManager::onWindowClosed(const QString &app_name)
     WebWindow *window = windows_.value(app_name);
     SendMsg(QString::number(window->winId()) + "|close");
     windows_.remove(app_name);
+}
+
+void WindowManager::onWindowShown(WebWindow *window)
+{
+    window->initWebView();
+
+    // Add a placeholder record.
+    windows_.insert(curr_app_name_, nullptr);
+    windows_.insert(curr_app_name_, window);
+    search_manager_ = currSearchManager();
+    window->setSearchManager(search_manager_);
+    window->setAppName(curr_app_name_);
+    if (curr_keyword_.length() > 0) {
+        window->setSearchKeyword(curr_keyword_);
+    }
+
+    SendMsg(QString::number(window->winId()));
 }
 
 }  // namespace dman

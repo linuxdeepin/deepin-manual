@@ -67,6 +67,7 @@ public:
 
 signals:
     void closed(const QString &app_name);
+    void shown(WebWindow *window);
     void manualSearchByKeyword(const QString &keyword);
     void webWindowShown();
     void webWindowLoaded();
@@ -80,8 +81,7 @@ public slots:
 protected:
     void closeEvent(QCloseEvent *event) override;
 
-    // Update width of title bar when main window is resized.
-    void resizeEvent(QResizeEvent *event) override;
+    void showEvent(QShowEvent *event) override;
 
 private:
     void initConnections();
