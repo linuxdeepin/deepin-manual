@@ -359,6 +359,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
 
             if (app_name == last_app_name) {
                 if (highlightContent.length() > 0) {
+                    result_empty = false;
                     anchors.append(anchor);
                     anchorIds.append(anchorId);
                     contents.append(highlightContent);
@@ -376,6 +377,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
                 contents.clear();
 
                 if (highlightContent.length() > 0) {
+                    result_empty = false;
                     last_app_name = app_name;
                     anchors.append(anchor);
                     anchorIds.append(anchorId);
@@ -387,7 +389,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
         // Last record.
         if (!result_empty && contents.size() > 0) {
             result_empty = false;
-            qDebug() << Q_FUNC_INFO << "emit searchContentResult()" << contents.length();
+            qDebug() << Q_FUNC_INFO << "emit searchContentResult() last record" << contents.length();
             emit this->searchContentResult(last_app_name, anchors,
                                            anchorIds, contents);
         }
@@ -397,6 +399,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
     }
 
     if (result_empty) {
+        qDebug() << "searchContentMismatch";
         emit this->searchContentMismatch(keyword);
     }
 }
