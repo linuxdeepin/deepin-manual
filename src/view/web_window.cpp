@@ -66,9 +66,6 @@ const int kSearchDelay = 200;
 WebWindow::WebWindow(QWidget *parent)
     : Dtk::Widget::DMainWindow(parent)
     , app_name_()
-    , search_proxy_(new SearchProxy(this))
-    , theme_proxy_(new ThemeProxy(this))
-    , settings_proxy_(new SettingsProxy(this))
     , search_timer_()
     , keyword_("")
     , first_webpage_loaded_(true)
@@ -91,6 +88,41 @@ WebWindow::~WebWindow()
         delete completion_window_;
         completion_window_ = nullptr;
     }
+
+    if (image_viewer_proxy_ != nullptr) {
+        image_viewer_proxy_->deleteLater();
+        image_viewer_proxy_ = nullptr;
+    }
+
+    if (search_proxy_ != nullptr) {
+        search_proxy_->deleteLater();
+        search_proxy_ = nullptr;
+    }
+
+    if (theme_proxy_ != nullptr) {
+        theme_proxy_->deleteLater();
+        theme_proxy_ = nullptr;
+    }
+
+    if (manual_proxy_ != nullptr) {
+        manual_proxy_->deleteLater();
+        manual_proxy_ = nullptr;
+    }
+
+    if (title_bar_proxy_ != nullptr) {
+        title_bar_proxy_->deleteLater();
+        title_bar_proxy_ = nullptr;
+    }
+
+    if (settings_proxy_ != nullptr) {
+        settings_proxy_->deleteLater();
+        settings_proxy_ = nullptr;
+    }
+}
+
+const QString& WebWindow::appName() const
+{
+    return app_name_;
 }
 
 void WebWindow::setSearchManager(SearchManager *search_manager)
@@ -99,10 +131,6 @@ void WebWindow::setSearchManager(SearchManager *search_manager)
 
     connect(search_manager_, &SearchManager::searchAnchorResult,
             this, &WebWindow::onSearchAnchorResult);
-    connect(search_manager_, &SearchManager::searchContentResult,
-            search_proxy_, &SearchProxy::onContentResult);
-    connect(search_manager_, &SearchManager::searchContentMismatch,
-            search_proxy_, &SearchProxy::mismatch);
 }
 
 void WebWindow::setAppName(const QString &app_name)
@@ -156,8 +184,6 @@ void WebWindow::onManualSearchByKeyword(const QString &keyword)
 
 void WebWindow::initUI()
 {
-    i18n_ = new I18nProxy(this);
-
     completion_window_ = new SearchCompletionWindow();
     completion_window_->hide();
 
@@ -200,15 +226,14 @@ void WebWindow::initUI()
     this->titlebar()->addWidget(buttonFrame, Qt::AlignLeft);
     this->titlebar()->addWidget(search_edit_, Qt::AlignCenter);
 
-    //
+    this->titlebar()->setSeparatorVisible(true);
+    this->titlebar()->setIcon(QIcon::fromTheme("deepin-manual"));
+
     title_bar_proxy_ = new TitleBarProxy(this);
     connect(m_backButton, &DButtonBoxButton::clicked,
             title_bar_proxy_, &TitleBarProxy::backwardButtonClicked);
     connect(m_forwardButton, &DButtonBoxButton::clicked,
             title_bar_proxy_, &TitleBarProxy::forwardButtonClicked);
-
-    this->titlebar()->setSeparatorVisible(true);
-    this->titlebar()->setIcon(QIcon::fromTheme("deepin-manual"));
 
     this->setFocusPolicy(Qt::ClickFocus);
 }
@@ -220,6 +245,16 @@ void WebWindow::initWebView()
 
     manual_proxy_ = new ManualProxy(this);
     connect(manual_proxy_, &ManualProxy::WidgetLower, this, &WebWindow::lower);
+
+    search_proxy_ = new SearchProxy(this);
+    connect(search_manager_, &SearchManager::searchContentResult,
+            search_proxy_, &SearchProxy::onContentResult);
+    connect(search_manager_, &SearchManager::searchContentMismatch,
+            search_proxy_, &SearchProxy::mismatch);
+
+    theme_proxy_ = new ThemeProxy(this);
+    settings_proxy_ = new SettingsProxy(this);
+    i18n_proxy = new I18nProxy(this);
 
     web_view_ = new ManualWebView();
     web_view_->setParentWindow(this);
@@ -235,15 +270,16 @@ void WebWindow::initWebView()
     settings->setDefaultFontSize(this->fontInfo().pixelSize());
 
     // Use TitleBarProxy instead.
-    QWebChannel *channel = web_view_->page()->webChannel();
+    QWebChannel *web_channel = web_view_->page()->webChannel();
     web_view_->setAcceptDrops(false);
-    channel->registerObject("i18n", i18n_);
-    channel->registerObject("imageViewer", image_viewer_proxy_);
-    channel->registerObject("manual", manual_proxy_);
-    channel->registerObject("search", search_proxy_);
-    channel->registerObject("theme", theme_proxy_);
-    channel->registerObject("titleBar", title_bar_proxy_);
-    channel->registerObject("settings", settings_proxy_);
+
+    web_channel->registerObject("i18n", i18n_proxy);
+    web_channel->registerObject("imageViewer", image_viewer_proxy_);
+    web_channel->registerObject("manual", manual_proxy_);
+    web_channel->registerObject("search", search_proxy_);
+    web_channel->registerObject("theme", theme_proxy_);
+    web_channel->registerObject("titleBar", title_bar_proxy_);
+    web_channel->registerObject("settings", settings_proxy_);
 
     connect(web_view_->page(), &QCefWebPage::loadFinished,
             this, &WebWindow::onWebPageLoadFinished);

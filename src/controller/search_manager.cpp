@@ -26,9 +26,18 @@ namespace dman {
 
 SearchManager::SearchManager(QObject *parent)
     : QObject(parent),
-      db_(new SearchDb()),
-      db_thread_(new QThread(this))
+      db_(nullptr),
+      db_thread_(nullptr)
 {
+    QTimer::singleShot(500, this, [this] {
+        initSearchManager();
+    });
+}
+
+void SearchManager::initSearchManager()
+{
+    db_thread_ = new QThread(this);
+    db_ = new SearchDb();
     db_thread_->start();
     db_->moveToThread(db_thread_);
 

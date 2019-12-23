@@ -51,6 +51,8 @@ signals:
     void searchContentMismatch(const QString &keyword);
 
 private:
+    void initSearchManager();
+
     SearchDb *db_ = nullptr;
     QThread *db_thread_ = nullptr;
 };

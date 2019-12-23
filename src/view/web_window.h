@@ -54,14 +54,10 @@ public:
     ~WebWindow() override;
 
     // Get app name of manual currently presented.
-    const QString &appName() const
-    {
-        return app_name_;
-    }
+    const QString &appName() const;
 
     bool eventFilter(QObject *watched, QEvent *event) override;
 
-    void showAllShortcut();
     void setSearchManager(SearchManager *searchManager);
 
     void initWebView();
@@ -95,16 +91,16 @@ private:
 
     QString app_name_;
     SearchManager *search_manager_ { nullptr };
+    SearchCompletionWindow *completion_window_ { nullptr };
+    ImageViewer *image_viewer_ { nullptr };
+    I18nProxy *i18n_proxy { nullptr };
     SearchProxy *search_proxy_ { nullptr };
     ThemeProxy *theme_proxy_ { nullptr };
-    SearchCompletionWindow *completion_window_ { nullptr };
-    I18nProxy *i18n_ { nullptr };
-    ImageViewer *image_viewer_ { nullptr };
     ImageViewerProxy *image_viewer_proxy_ { nullptr };
     ManualProxy *manual_proxy_ { nullptr };
-    TitleBar *title_bar_ { nullptr };
     TitleBarProxy *title_bar_proxy_ { nullptr };
     SettingsProxy *settings_proxy_ { nullptr };
+    TitleBar *title_bar_ { nullptr };
     ManualWebView *web_view_ { nullptr};
     QTimer search_timer_;
     Dtk::Widget::DButtonBox *buttonBox { nullptr};
