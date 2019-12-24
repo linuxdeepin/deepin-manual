@@ -121,10 +121,10 @@ var App = function (_React$Component) {
         global.qtObjects.theme.themeChange.connect(_this2.themeChange.bind(_this2));
         global.qtObjects.settings.fontChangeRequested.connect(function (fontFamily, fontSize) {
           console.log("fontChangeRequested: fontFamily:" + fontFamily + ",fontSize:" + fontSize);
-          console.log("fontSize/13.0:" + fontSize / 13.0);
+          console.log("fontSize/13.0:" + fontSize);
           var HTMLGlobal = document.querySelector('html');
           HTMLGlobal.style.fontFamily = fontFamily;
-          HTMLGlobal.style.fontSize = fontSize / 13.0 + 'rem';
+          HTMLGlobal.style.fontSize = fontSize;
         });
       });
     }
@@ -137,7 +137,7 @@ var App = function (_React$Component) {
         document.documentElement.style.setProperty('--span-font-size', '0.9rem');
       } else {
         document.documentElement.style.setProperty('--span-line-height', '1.4rem');
-        document.documentElement.style.setProperty('--span-font-size', '1.3rem');
+        document.documentElement.style.setProperty('--span-font-size', '1.03rem');
       }
       if ("DarkType" == themeType) {
         // console.log('DarkType');
@@ -189,7 +189,7 @@ var App = function (_React$Component) {
         document.documentElement.style.setProperty('--article-table-cell-border-color', 'rgba(0, 0, 0, 0.05)');
         document.documentElement.style.setProperty('--index-item-background-color', '#FFFFFF');
         document.documentElement.style.setProperty('--index-item-hover-color', 'rgba(0,0,0,0.05)');
-        document.documentElement.style.setProperty('--index-item-span-word-color', '#001A2E');
+        document.documentElement.style.setProperty('--index-item-span-word-color', '#414D68');
         document.documentElement.style.setProperty('--search-noresult-word-color', '#000000');
         document.documentElement.style.setProperty('--search-button-word-color', '#414D68');
         document.documentElement.style.setProperty('--search-button-hover-word-color', '#001B2E');

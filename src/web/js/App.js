@@ -81,10 +81,10 @@ class App extends React.Component {
       );
       global.qtObjects.settings.fontChangeRequested.connect((fontFamily, fontSize) => {
         console.log("fontChangeRequested: fontFamily:"+fontFamily+",fontSize:"+fontSize);
-        console.log("fontSize/13.0:"+(fontSize/13.0));
+        console.log("fontSize/13.0:"+(fontSize));
         const HTMLGlobal = document.querySelector('html');
         HTMLGlobal.style.fontFamily = fontFamily;
-        HTMLGlobal.style.fontSize = fontSize/13.0 + 'rem';
+        HTMLGlobal.style.fontSize = fontSize;
       });
     });
   }
@@ -96,7 +96,7 @@ class App extends React.Component {
     }
     else{
       document.documentElement.style.setProperty(`--span-line-height`, '1.4rem');
-      document.documentElement.style.setProperty(`--span-font-size`, '1.3rem');
+      document.documentElement.style.setProperty(`--span-font-size`, '1.03rem');
     }
     if("DarkType"==themeType){
     // console.log('DarkType');
@@ -148,7 +148,7 @@ class App extends React.Component {
     document.documentElement.style.setProperty(`--article-table-cell-border-color`, 'rgba(0, 0, 0, 0.05)');
     document.documentElement.style.setProperty(`--index-item-background-color`, '#FFFFFF');
     document.documentElement.style.setProperty(`--index-item-hover-color`, 'rgba(0,0,0,0.05)');
-    document.documentElement.style.setProperty(`--index-item-span-word-color`, '#001A2E');
+    document.documentElement.style.setProperty(`--index-item-span-word-color`, '#414D68');
     document.documentElement.style.setProperty(`--search-noresult-word-color`, '#000000');
     document.documentElement.style.setProperty(`--search-button-word-color`, '#414D68');
     document.documentElement.style.setProperty(`--search-button-hover-word-color`, '#001B2E');
