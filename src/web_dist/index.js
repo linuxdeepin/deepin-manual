@@ -162,9 +162,9 @@ var App = function (_React$Component) {
         document.documentElement.style.setProperty('--search-items-word-color', '#6D7C88');
         document.documentElement.style.setProperty('--search-items-resultnum-word-color', '#6D7C88');
         document.documentElement.style.setProperty('--search-item-background-color', 'rgba(255,255,255,0.05)');
-        document.documentElement.style.setProperty('--scrollbar-div-background-color', '#1A1A1A');
-        document.documentElement.style.setProperty('--scrollbar-div-hover-background-color', '#1A1A1A');
-        document.documentElement.style.setProperty('--scrollbar-div-select-background-color', '#121212');
+        document.documentElement.style.setProperty('--scrollbar-div-background-color', '#444444');
+        document.documentElement.style.setProperty('--scrollbar-div-hover-background-color', '#3D3D3D');
+        document.documentElement.style.setProperty('--scrollbar-div-select-background-color', '#303B69');
         document.documentElement.style.setProperty('--index-h2-color', 'rgba(255,255,255,0.05)');
         document.documentElement.style.setProperty('--search-button-background-color-start', '#484848');
         document.documentElement.style.setProperty('--search-button-background-color-end', '#414141');
