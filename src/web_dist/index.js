@@ -122,9 +122,9 @@ var App = function (_React$Component) {
         global.qtObjects.settings.fontChangeRequested.connect(function (fontFamily, fontSize) {
           console.log("fontChangeRequested: fontFamily:" + fontFamily + ",fontSize:" + fontSize);
           console.log("fontSize/13.0:" + fontSize / 13.0);
-          // const HTMLGlobal = document.querySelector('html');
-          // HTMLGlobal.style.fontFamily = fontFamily;
-          // HTMLGlobal.style.fontSize = fontSize/13.0 + 'rem';
+          var HTMLGlobal = document.querySelector('html');
+          HTMLGlobal.style.fontFamily = fontFamily;
+          HTMLGlobal.style.fontSize = fontSize / 13.0 + 'rem';
         });
       });
     }
