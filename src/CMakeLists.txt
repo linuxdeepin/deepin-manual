@@ -301,22 +301,11 @@ install(DIRECTORY ${CMAKE_BINARY_DIR}/translations
 install(DIRECTORY ${CMAKE_SOURCE_DIR}/manual
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
 
-install(DIRECTORY ${CMAKE_CURRENT_SOURCE_DIR}/web_dist
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/web_dist
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
 
 string(TOLOWER ${CMAKE_SYSTEM_PROCESSOR} LOWERCASE_CMAKE_SYSTEM_PROCESSOR)
 
-if (LOWERCASE_CMAKE_SYSTEM_PROCESSOR MATCHES "(^mips64|^mips)")
-    install(FILES ${CMAKE_SOURCE_DIR}/search.db
-            DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
-elseif (LOWERCASE_CMAKE_SYSTEM_PROCESSOR MATCHES "(x64|x86_64|amd64)")
-    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/search.db
-            DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
-elseif (LOWERCASE_CMAKE_SYSTEM_PROCESSOR MATCHES "^arm")
-    install(FILES ${CMAKE_CURRENT_BINARY_DIR}/search.db
-            DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
-else ()
-    install(FILES ${CMAKE_SOURCE_DIR}/search.db
-            DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
-endif ()
+install(FILES ${CMAKE_SOURCE_DIR}/search.db
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
 
