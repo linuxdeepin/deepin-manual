@@ -22,6 +22,10 @@ class Nav extends Component {
       return true;
     }
 
+    if ('POP' == global.lastAction) {
+      return true;
+    }
+
     if (global.hash != global.oldHash) {
       return false;
     }
