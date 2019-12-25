@@ -301,7 +301,7 @@ install(DIRECTORY ${CMAKE_BINARY_DIR}/translations
 install(DIRECTORY ${CMAKE_SOURCE_DIR}/manual
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
 
-install(DIRECTORY ${CMAKE_SOURCE_DIR}/web_dist
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/web_dist
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
 
 string(TOLOWER ${CMAKE_SYSTEM_PROCESSOR} LOWERCASE_CMAKE_SYSTEM_PROCESSOR)
