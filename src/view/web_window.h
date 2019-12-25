@@ -108,7 +108,8 @@ private:
     QPoint start_point_;
     int start_drag_x;
     QString keyword_;
-    bool first_webpage_loaded_;
+    bool first_webpage_loaded_ {true};
+    bool is_index_loaded_ {false};
 
 private slots:
     void onSearchEditFocusOut();

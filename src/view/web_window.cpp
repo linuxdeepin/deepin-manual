@@ -316,12 +316,15 @@ void WebWindow::showEvent(QShowEvent *event)
 {
     QWidget::showEvent(event);
 
-    emit this->shown(this);
+    if (!is_index_loaded_) {
 
-    QTimer::singleShot(10, this, [this] {
-        const QFileInfo info(kIndexPage);
-        web_view_->load(QUrl::fromLocalFile(info.absoluteFilePath()));
-    });
+        emit this->shown(this);
+        is_index_loaded_ = true;
+        QTimer::singleShot(10, this, [this] {
+            const QFileInfo info(kIndexPage);
+            web_view_->load(QUrl::fromLocalFile(info.absoluteFilePath()));
+        });
+    }
 }
 
 void WebWindow::closeEvent(QCloseEvent *event)
