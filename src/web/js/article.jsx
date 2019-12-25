@@ -24,14 +24,14 @@ export default class Article extends Component {
       scrollIntoView(hashNode, { behavior: 'smooth', block: 'start' }).then(() => {
 
         //find parent h3 title of h4 title
-        let hList = ReactDOM.findDOMNode(this).querySelectorAll('h2,h3,h4');
+        let hList = ReactDOM.findDOMNode(this).querySelectorAll('h2,h3,h4,h5');
         var currH3Hash = '';
         for (let i = 0; i < hList.length; i++) {
           if (hList[i].tagName == 'H3') {
             currH3Hash = hList[i].id; 
           }
 
-          if (tempHash == hList[i].id && hList[i].tagName == 'H4') {
+          if (tempHash == hList[i].id && (hList[i].tagName == 'H4' || hList[i].tagName == 'H5')) {
             console.log("article: scroll hlist:" + hList[i].tagName  + "," + hList[i].id);
             console.log("currH3Hash:" + currH3Hash);
             this.hash = currH3Hash;

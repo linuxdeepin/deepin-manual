@@ -447,14 +447,14 @@ var Article = function (_Component) {
         (0, _smoothScrollIntoViewIfNeeded2.default)(hashNode, { behavior: 'smooth', block: 'start' }).then(function () {
 
           //find parent h3 title of h4 title
-          var hList = _reactDom2.default.findDOMNode(_this2).querySelectorAll('h2,h3,h4');
+          var hList = _reactDom2.default.findDOMNode(_this2).querySelectorAll('h2,h3,h4,h5');
           var currH3Hash = '';
           for (var i = 0; i < hList.length; i++) {
             if (hList[i].tagName == 'H3') {
               currH3Hash = hList[i].id;
             }
 
-            if (tempHash == hList[i].id && hList[i].tagName == 'H4') {
+            if (tempHash == hList[i].id && (hList[i].tagName == 'H4' || hList[i].tagName == 'H5')) {
               console.log("article: scroll hlist:" + hList[i].tagName + "," + hList[i].id);
               console.log("currH3Hash:" + currH3Hash);
               _this2.hash = currH3Hash;
