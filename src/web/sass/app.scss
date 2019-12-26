@@ -1,25 +1,5 @@
 @charset "utf-8";
-:root {
-  --body-background-color: #F8F8F8;
-  --body-color-white2black: #FFFFFF;
-  --app-word-color:#414D68;
-  --nav-background-color: #FFFFFF;
-  --nav-h2-word-color:#001A2E;
-  --nav-h3-word-color:#414D68;
-  --nav-hash-word-color:#0081FF;
-  --article-read-word-color:#000000;
-  --article-read-h2-word-color:#2CA7F8;
-  --index-item-background-color: #FFFFFF;
-  --index-item-span-word-color: #001A2E;
-  --search-noresult-word-color: #000000;
-  --search-button-word-color: #414D68;
-  --search-items-word-color: #000000;
-  --search-items-resultnum-word-color: #303030;
-  --search-item-background-color: #FFFFFF;
-  --scrollbar-div-background-color: rgba(83,96,118,0.4);
-  --scrollbar-div-hover-background-color: rgba(83,96,118,0.5);
-  --scrollbar-div-select-background-color: rgba(83,96,118,0.6);
-}
+
 body {
   background-color: var(--body-background-color);
   width: 100%;  
