@@ -88,9 +88,20 @@ export default class Article extends Component {
       });
     }
   }
+
+  componentWillUpdate() {
+    var alink_arr = document.getElementsByTagName('a');
+    for(var i=0; i<alink_arr.length; i++) {
+      alink_arr[i].onclick = function () {
+        global.isLinkClicked = true;
+      };
+    }
+  }
+
   componentDidMount() {
     this.componentDidUpdate();
   }
+
   componentWillReceiveProps(nextProps) {
     if (nextProps.file != this.props.file) {
       this.hash = '';

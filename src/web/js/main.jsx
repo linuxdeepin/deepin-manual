@@ -29,6 +29,11 @@ export default class Main extends Component {
   }
   setHash(hash) {
     console.log("main setHash:" + hash);
+    if (global.isLinkClicked) {
+      global.hash = hash;
+      global.oldHash = hash;
+      global.isLinkClicked = false;
+    }
     this.setState({ hash });
   }
   setScroll(hash) {

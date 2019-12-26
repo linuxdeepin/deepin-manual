@@ -14,6 +14,8 @@ global.oldHash = ' ';
 global.isMouseClickNav = false;
 global.isMouseScrollArticle = false;
 
+global.isLinkClicked = false;
+
 global.lastUrlBeforeSearch = '/';
 global.lastHistoryIndex = 0;
 global.lastAction = 'PUSH';
@@ -160,7 +162,7 @@ class App extends React.Component {
       if("DarkType"==themeType){
       console.log('DarkType');
       document.documentElement.style.setProperty(`--body-background-color`, '#252525');
-      document.documentElement.style.setProperty(`--body-color-white2black`, '#252525');
+      document.documentElement.style.setProperty(`--body-color-white2black`, '#000000');
       document.documentElement.style.setProperty(`--app-word-color`, '#C0C6D4');
       document.documentElement.style.setProperty(`--nav-background-color`, '#282828');
       document.documentElement.style.setProperty(`--nav-h2-word-color`, '#C0C6D4');

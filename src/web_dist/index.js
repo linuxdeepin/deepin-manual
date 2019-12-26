@@ -47,6 +47,8 @@ global.oldHash = ' ';
 global.isMouseClickNav = false;
 global.isMouseScrollArticle = false;
 
+global.isLinkClicked = false;
+
 global.lastUrlBeforeSearch = '/';
 global.lastHistoryIndex = 0;
 global.lastAction = 'PUSH';
@@ -217,7 +219,7 @@ var App = function (_React$Component) {
         if ("DarkType" == themeType) {
           console.log('DarkType');
           document.documentElement.style.setProperty('--body-background-color', '#252525');
-          document.documentElement.style.setProperty('--body-color-white2black', '#252525');
+          document.documentElement.style.setProperty('--body-color-white2black', '#000000');
           document.documentElement.style.setProperty('--app-word-color', '#C0C6D4');
           document.documentElement.style.setProperty('--nav-background-color', '#282828');
           document.documentElement.style.setProperty('--nav-h2-word-color', '#C0C6D4');
@@ -516,6 +518,16 @@ var Article = function (_Component) {
             }
           };
         });
+      }
+    }
+  }, {
+    key: 'componentWillUpdate',
+    value: function componentWillUpdate() {
+      var alink_arr = document.getElementsByTagName('a');
+      for (var i = 0; i < alink_arr.length; i++) {
+        alink_arr[i].onclick = function () {
+          global.isLinkClicked = true;
+        };
       }
     }
   }, {
@@ -1057,6 +1069,11 @@ var Main = function (_Component) {
     key: 'setHash',
     value: function setHash(hash) {
       console.log("main setHash:" + hash);
+      if (global.isLinkClicked) {
+        global.hash = hash;
+        global.oldHash = hash;
+        global.isLinkClicked = false;
+      }
       this.setState({ hash: hash });
     }
   }, {
