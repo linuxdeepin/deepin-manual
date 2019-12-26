@@ -1530,7 +1530,7 @@ function Mismatch(props) {
       _react2.default.createElement(
         'div',
         { id: 'NoResult' },
-        global.i18n['NoResult'].replace('%1', props.keyword)
+        global.i18n['NoResult'].replace('%1', decodeURIComponent(props.keyword))
       ),
       _react2.default.createElement(
         'div',
