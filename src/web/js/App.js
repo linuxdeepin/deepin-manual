@@ -89,86 +89,7 @@ class App extends React.Component {
     });
   }
   themeChange(themeType) {
-    console.log('主题切换', themeType);
-    if(navigator.language.toString().indexOf('en_') != -1) {
-      document.documentElement.style.setProperty(`--span-line-height`, '1.0rem');
-      document.documentElement.style.setProperty(`--span-font-size`, '0.9rem');
-    }
-    else{
-      document.documentElement.style.setProperty(`--span-line-height`, '1.4rem');
-      document.documentElement.style.setProperty(`--span-font-size`, '1.03rem');
-    }
-    if("DarkType"==themeType){
-    // console.log('DarkType');
-    document.documentElement.style.setProperty(`--body-background-color`, '#252525');
-    document.documentElement.style.setProperty(`--body-color-white2black`, '#000000');
-    document.documentElement.style.setProperty(`--app-word-color`, '#C0C6D4');
-    document.documentElement.style.setProperty(`--nav-background-color`, '#282828');
-    document.documentElement.style.setProperty(`--nav-h2-word-color`, '#C0C6D4');
-    document.documentElement.style.setProperty(`--nav-h3-word-color`, '#C0C0C0');
-    document.documentElement.style.setProperty(`--nav-hash-word-color`, '#0059D2');
-    document.documentElement.style.setProperty(`--article-read-word-color`, '#C0C6D4');
-    document.documentElement.style.setProperty(`--article-read-h2-word-color`, '#0082FA');
-    document.documentElement.style.setProperty(`--article-table-text-color`, '#6D7C88');
-    document.documentElement.style.setProperty(`--article-table-border-color`, 'rgba(96, 96, 96, 0.5)');
-    document.documentElement.style.setProperty(`--article-table-cell-border-color`, 'rgba(96, 96, 96, 0.1)');
-    document.documentElement.style.setProperty(`--index-item-background-color`, 'rgba(255,255,255,0.05)');
-    document.documentElement.style.setProperty(`--index-item-hover-color`, 'rgba(255,255,255,0.2)');
-    document.documentElement.style.setProperty(`--index-item-span-word-color`, '#C0C6D4');
-    document.documentElement.style.setProperty(`--search-noresult-word-color`, '#C0C6D4');
-    document.documentElement.style.setProperty(`--search-button-word-color`, '#C0C6D4');
-    document.documentElement.style.setProperty(`--search-button-hover-word-color`, '#FFFFFF');
-    document.documentElement.style.setProperty(`--search-items-word-color`, '#6D7C88');
-    document.documentElement.style.setProperty(`--search-items-resultnum-word-color`, '#6D7C88');
-    document.documentElement.style.setProperty(`--search-item-background-color`, 'rgba(255,255,255,0.05)');
-    document.documentElement.style.setProperty(`--scrollbar-div-background-color`, '#444444');
-    document.documentElement.style.setProperty(`--scrollbar-div-hover-background-color`, '#3D3D3D');
-    document.documentElement.style.setProperty(`--scrollbar-div-select-background-color`, '#303B69');
-    document.documentElement.style.setProperty(`--index-h2-color`, 'rgba(255,255,255,0.05)');
-    document.documentElement.style.setProperty(`--search-button-background-color-start`, '#484848');
-    document.documentElement.style.setProperty(`--search-button-background-color-end`, '#414141');
-    document.documentElement.style.setProperty(`--search-button-hover-color-start`, '#676767');
-    document.documentElement.style.setProperty(`--search-button-hover-color-end`, '#606060');
-    document.documentElement.style.setProperty(`--search-WikiSearch-color`, '#6D7C88');
-    document.documentElement.style.setProperty(`--search-itemTitle-word-color`, '#C0C6D4');
-    document.documentElement.style.setProperty(`--search-context-word-color`, '#6D7C88');
-    }else if("LightType"==themeType){
-    // console.log('LightType');
-    document.documentElement.style.setProperty(`--body-background-color`, '#F8F8F8');
-    document.documentElement.style.setProperty(`--body-color-white2black`, '#FFFFFF');
-    document.documentElement.style.setProperty(`--app-word-color`, '#414D68');
-    document.documentElement.style.setProperty(`--nav-background-color`, '#FFFFFF');
-    document.documentElement.style.setProperty(`--nav-h2-word-color`, '#001A2E');
-    document.documentElement.style.setProperty(`--nav-h3-word-color`, '#414D68');
-    document.documentElement.style.setProperty(`--nav-hash-word-color`, '#0081FF');
-    document.documentElement.style.setProperty(`--article-read-word-color`, '#000000');
-    document.documentElement.style.setProperty(`--article-read-h2-word-color`, '#2CA7F8');
-    document.documentElement.style.setProperty(`--article-table-text-color`, '#606060');
-    document.documentElement.style.setProperty(`--article-table-border-color`, 'rgba(0, 0, 0, 0.1)');
-    document.documentElement.style.setProperty(`--article-table-cell-border-color`, 'rgba(0, 0, 0, 0.05)');
-    document.documentElement.style.setProperty(`--index-item-background-color`, '#FFFFFF');
-    document.documentElement.style.setProperty(`--index-item-hover-color`, 'rgba(0,0,0,0.05)');
-    document.documentElement.style.setProperty(`--index-item-span-word-color`, '#414D68');
-    document.documentElement.style.setProperty(`--search-noresult-word-color`, '#000000');
-    document.documentElement.style.setProperty(`--search-button-word-color`, '#414D68');
-    document.documentElement.style.setProperty(`--search-button-hover-word-color`, '#001B2E');
-    document.documentElement.style.setProperty(`--search-items-word-color`, '#000000');
-    document.documentElement.style.setProperty(`--search-items-resultnum-word-color`, '#303030');
-    document.documentElement.style.setProperty(`--search-item-background-color`, 'rgba(255,255,255,1)');
-    document.documentElement.style.setProperty(`--scrollbar-div-background-color`, 'rgba(83,96,118,0.4)');
-    document.documentElement.style.setProperty(`--scrollbar-div-hover-background-color`, 'rgba(83,96,118,0.5)');
-    document.documentElement.style.setProperty(`--scrollbar-div-select-background-color`, 'rgba(83,96,118,0.6)');
-    document.documentElement.style.setProperty(`--index-h2-color`, 'rgba(0, 0, 0, 0.1)');
-    document.documentElement.style.setProperty(`--search-button-background-color-start`, '#E6E6E6');
-    document.documentElement.style.setProperty(`--search-button-background-color-end`, '#E3E3E3');
-    document.documentElement.style.setProperty(`--search-button-hover-color-start`, '#CACACA');
-    document.documentElement.style.setProperty(`--search-button-hover-color-end`, '#C6C6C6');
-    document.documentElement.style.setProperty(`--search-WikiSearch-color`, '#7a7a7a');
-    document.documentElement.style.setProperty(`--search-itemTitle-word-color`, '#000000');
-	  document.documentElement.style.setProperty(`--search-context-word-color`, '#000000');
-    }else{
-      console.log('Null');
-    }
+    global.setTheme(themeType);
   }
   onContentResult(appName, titleList, idList, contentList) {
     // console.log('搜索结果', appName, titleList, idList, contentList);
@@ -225,6 +146,90 @@ class App extends React.Component {
       console.log(url);
       this.context.router.history.push(url);
     };
+
+    global.setTheme = (themeType) => {
+      console.log('主题切换', themeType);
+      if(navigator.language.toString().indexOf('en_') != -1) {
+        document.documentElement.style.setProperty(`--span-line-height`, '1.0rem');
+        document.documentElement.style.setProperty(`--span-font-size`, '0.9rem');
+      }
+      else{
+        document.documentElement.style.setProperty(`--span-line-height`, '1.4rem');
+        document.documentElement.style.setProperty(`--span-font-size`, '1.03rem');
+      }
+      if("DarkType"==themeType){
+      console.log('DarkType');
+      document.documentElement.style.setProperty(`--body-background-color`, '#252525');
+      document.documentElement.style.setProperty(`--body-color-white2black`, '#000000');
+      document.documentElement.style.setProperty(`--app-word-color`, '#C0C6D4');
+      document.documentElement.style.setProperty(`--nav-background-color`, '#282828');
+      document.documentElement.style.setProperty(`--nav-h2-word-color`, '#C0C6D4');
+      document.documentElement.style.setProperty(`--nav-h3-word-color`, '#C0C0C0');
+      document.documentElement.style.setProperty(`--nav-hash-word-color`, '#0059D2');
+      document.documentElement.style.setProperty(`--article-read-word-color`, '#C0C6D4');
+      document.documentElement.style.setProperty(`--article-read-h2-word-color`, '#0082FA');
+      document.documentElement.style.setProperty(`--article-table-text-color`, '#6D7C88');
+      document.documentElement.style.setProperty(`--article-table-border-color`, 'rgba(96, 96, 96, 0.5)');
+      document.documentElement.style.setProperty(`--article-table-cell-border-color`, 'rgba(96, 96, 96, 0.1)');
+      document.documentElement.style.setProperty(`--index-item-background-color`, 'rgba(255,255,255,0.05)');
+      document.documentElement.style.setProperty(`--index-item-hover-color`, 'rgba(255,255,255,0.2)');
+      document.documentElement.style.setProperty(`--index-item-span-word-color`, '#C0C6D4');
+      document.documentElement.style.setProperty(`--search-noresult-word-color`, '#C0C6D4');
+      document.documentElement.style.setProperty(`--search-button-word-color`, '#C0C6D4');
+      document.documentElement.style.setProperty(`--search-button-hover-word-color`, '#FFFFFF');
+      document.documentElement.style.setProperty(`--search-items-word-color`, '#6D7C88');
+      document.documentElement.style.setProperty(`--search-items-resultnum-word-color`, '#6D7C88');
+      document.documentElement.style.setProperty(`--search-item-background-color`, 'rgba(255,255,255,0.05)');
+      document.documentElement.style.setProperty(`--scrollbar-div-background-color`, '#444444');
+      document.documentElement.style.setProperty(`--scrollbar-div-hover-background-color`, '#3D3D3D');
+      document.documentElement.style.setProperty(`--scrollbar-div-select-background-color`, '#303B69');
+      document.documentElement.style.setProperty(`--index-h2-color`, 'rgba(255,255,255,0.05)');
+      document.documentElement.style.setProperty(`--search-button-background-color-start`, '#484848');
+      document.documentElement.style.setProperty(`--search-button-background-color-end`, '#414141');
+      document.documentElement.style.setProperty(`--search-button-hover-color-start`, '#676767');
+      document.documentElement.style.setProperty(`--search-button-hover-color-end`, '#606060');
+      document.documentElement.style.setProperty(`--search-WikiSearch-color`, '#6D7C88');
+      document.documentElement.style.setProperty(`--search-itemTitle-word-color`, '#C0C6D4');
+      document.documentElement.style.setProperty(`--search-context-word-color`, '#6D7C88');
+      }else if("LightType"==themeType){
+      console.log('LightType');
+      document.documentElement.style.setProperty(`--body-background-color`, '#F8F8F8');
+      document.documentElement.style.setProperty(`--body-color-white2black`, '#FFFFFF');
+      document.documentElement.style.setProperty(`--app-word-color`, '#414D68');
+      document.documentElement.style.setProperty(`--nav-background-color`, '#FFFFFF');
+      document.documentElement.style.setProperty(`--nav-h2-word-color`, '#001A2E');
+      document.documentElement.style.setProperty(`--nav-h3-word-color`, '#414D68');
+      document.documentElement.style.setProperty(`--nav-hash-word-color`, '#0081FF');
+      document.documentElement.style.setProperty(`--article-read-word-color`, '#000000');
+      document.documentElement.style.setProperty(`--article-read-h2-word-color`, '#2CA7F8');
+      document.documentElement.style.setProperty(`--article-table-text-color`, '#606060');
+      document.documentElement.style.setProperty(`--article-table-border-color`, 'rgba(0, 0, 0, 0.1)');
+      document.documentElement.style.setProperty(`--article-table-cell-border-color`, 'rgba(0, 0, 0, 0.05)');
+      document.documentElement.style.setProperty(`--index-item-background-color`, '#FFFFFF');
+      document.documentElement.style.setProperty(`--index-item-hover-color`, 'rgba(0,0,0,0.05)');
+      document.documentElement.style.setProperty(`--index-item-span-word-color`, '#414D68');
+      document.documentElement.style.setProperty(`--search-noresult-word-color`, '#000000');
+      document.documentElement.style.setProperty(`--search-button-word-color`, '#414D68');
+      document.documentElement.style.setProperty(`--search-button-hover-word-color`, '#001B2E');
+      document.documentElement.style.setProperty(`--search-items-word-color`, '#000000');
+      document.documentElement.style.setProperty(`--search-items-resultnum-word-color`, '#303030');
+      document.documentElement.style.setProperty(`--search-item-background-color`, 'rgba(255,255,255,1)');
+      document.documentElement.style.setProperty(`--scrollbar-div-background-color`, 'rgba(83,96,118,0.4)');
+      document.documentElement.style.setProperty(`--scrollbar-div-hover-background-color`, 'rgba(83,96,118,0.5)');
+      document.documentElement.style.setProperty(`--scrollbar-div-select-background-color`, 'rgba(83,96,118,0.6)');
+      document.documentElement.style.setProperty(`--index-h2-color`, 'rgba(0, 0, 0, 0.1)');
+      document.documentElement.style.setProperty(`--search-button-background-color-start`, '#E6E6E6');
+      document.documentElement.style.setProperty(`--search-button-background-color-end`, '#E3E3E3');
+      document.documentElement.style.setProperty(`--search-button-hover-color-start`, '#CACACA');
+      document.documentElement.style.setProperty(`--search-button-hover-color-end`, '#C6C6C6');
+      document.documentElement.style.setProperty(`--search-WikiSearch-color`, '#7a7a7a');
+      document.documentElement.style.setProperty(`--search-itemTitle-word-color`, '#000000');
+      document.documentElement.style.setProperty(`--search-context-word-color`, '#000000');
+      }else{
+        console.log('Null');
+      }
+    }
+
     global.openSearchPage = keyword => {
       console.log("openSearchPage", this.context.router.history);
       console.log(`lastUrl:${global.lastUrlBeforeSearch}, lastHistoryIndex: ${global.lastHistoryIndex}`);

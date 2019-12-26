@@ -255,6 +255,7 @@ void WebWindow::initWebView()
     web_view_->setParentWindow(this);
     web_view_->page()->setEventDelegate(new WebEventDelegate(this));
     this->setCentralWidget(web_view_);
+    web_view_->hide();
 
     // Disable web security.
     auto settings = web_view_->page()->settings();
@@ -408,6 +409,15 @@ void WebWindow::onTitleBarEntered()
 void WebWindow::onWebPageLoadFinished(bool ok)
 {
     if (ok) {
+        QString qsthemetype = "Null";
+        DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
+        if (themeType == DGuiApplicationHelper::LightType) {
+            qsthemetype = "LightType";
+        }
+        else if (themeType == DGuiApplicationHelper::DarkType) {
+            qsthemetype = "DarkType";
+        }
+        web_view_->page()->runJavaScript(QString("setTheme('%1')").arg(qsthemetype));
         if (app_name_.isEmpty()) {
             web_view_->page()->runJavaScript("index()");
         } else {
@@ -424,6 +434,9 @@ void WebWindow::onWebPageLoadFinished(bool ok)
                     QString("open('%1')").arg(app_name_));
             }
         }
+        QTimer::singleShot(100, [&]() {
+            web_view_->show();
+        });
     }
 
     if (first_webpage_loaded_) {
