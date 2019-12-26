@@ -294,13 +294,10 @@ var App = function (_React$Component) {
         console.log('lastUrl:' + global.lastUrlBeforeSearch + ', lastHistoryIndex: ' + global.lastHistoryIndex);
 
         var entriesLen = _this3.context.router.history.entries.length;
-        if ('POP' == global.lastAction && lastHistoryIndex < entriesLen - 1) {
-          var diffLen = entriesLen - 1 - lastHistoryIndex;
-          _this3.context.router.history.entries.length = entriesLen - diffLen;
-          _this3.context.router.history.length = entriesLen - diffLen;
-          _this3.context.router.history.index = lastHistoryIndex;
-          console.log('diffLen:' + diffLen + ', entries.length: ' + _this3.context.router.history.entries.length);
-          console.log('history.length:' + _this3.context.router.history.length + ', history.index: ' + _this3.context.router.history.index);
+        if ('POP' == global.lastAction && lastHistoryIndex > 0 && lastHistoryIndex < entriesLen - 1) {
+          _this3.context.router.history.entries.length = lastHistoryIndex;
+          _this3.context.router.history.length = lastHistoryIndex;
+          _this3.context.router.history.index = lastHistoryIndex - 1;
 
           _this3.setState({ searchResult: [] });
           _this3.context.router.history.push('/search/' + encodeURIComponent(keyword));
@@ -311,7 +308,8 @@ var App = function (_React$Component) {
         entriesLen = _this3.context.router.history.entries.length;
         if (entriesLen > 1) {
           var entry = _this3.context.router.history.entries[entriesLen - 1];
-          if (entry.pathname.toString().indexOf("/search/") != -1) {
+          var entryIndex = entry.pathname.toString().indexOf("/search/");
+          if (entryIndex != -1) {
             _this3.context.router.history.entries.length = entriesLen - 1;
             _this3.context.router.history.length = entriesLen - 1;
             _this3.context.router.history.index = _this3.context.router.history.entries.length - 1;

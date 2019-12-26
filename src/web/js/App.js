@@ -237,13 +237,10 @@ class App extends React.Component {
       console.log(`lastUrl:${global.lastUrlBeforeSearch}, lastHistoryIndex: ${global.lastHistoryIndex}`);
 
       let entriesLen = this.context.router.history.entries.length;
-      if ('POP' == global.lastAction && lastHistoryIndex < entriesLen-1) {
-        let diffLen = entriesLen-1 - lastHistoryIndex;
-        this.context.router.history.entries.length = entriesLen-diffLen;
-        this.context.router.history.length = entriesLen-diffLen;
-        this.context.router.history.index = lastHistoryIndex;
-        console.log(`diffLen:${diffLen}, entries.length: ${this.context.router.history.entries.length}`);
-        console.log(`history.length:${this.context.router.history.length}, history.index: ${this.context.router.history.index}`);
+      if ('POP' == global.lastAction && lastHistoryIndex > 0 && lastHistoryIndex < entriesLen-1) {
+        this.context.router.history.entries.length = lastHistoryIndex;
+        this.context.router.history.length = lastHistoryIndex;
+        this.context.router.history.index = lastHistoryIndex-1;
 
         this.setState({ searchResult: [] });
         this.context.router.history.push(
@@ -256,7 +253,8 @@ class App extends React.Component {
       entriesLen = this.context.router.history.entries.length;
       if (entriesLen > 1) {
         let entry = this.context.router.history.entries[entriesLen-1];
-        if (entry.pathname.toString().indexOf("/search/") != -1) {
+        let entryIndex = entry.pathname.toString().indexOf("/search/");
+        if (entryIndex != -1) {
           this.context.router.history.entries.length = entriesLen-1;
           this.context.router.history.length = entriesLen-1;
           this.context.router.history.index = this.context.router.history.entries.length-1;
