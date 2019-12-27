@@ -298,7 +298,6 @@ div {
         font-family: SourceHanSansSC-Medium;
         font-size: var(--span-font-size);
         line-height: var(--span-line-height);
-        font-weight: bold;
         color: var(--index-item-span-word-color); }
       #index .items .item:hover {
         background-clip: content-box;
