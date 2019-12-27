@@ -60,7 +60,7 @@ export default class Index extends Component {
       'dde-file-manager',
       'deepin-app-store',
       'sogouimebs',
-      // '邮件',
+      'deepin-mail',
       'deepin-contacts',
       'deepin-screen-recorder',
       'deepin-image-viewer',
@@ -76,7 +76,7 @@ export default class Index extends Component {
       'dde-printer',
       'deepin-terminal',
       // '安全中心',
-      // '下载器',
+      'downloader',
       'deepin-deb-installer',
       'deepin-font-manager',
       'deepin-calculator',
@@ -92,7 +92,8 @@ export default class Index extends Component {
       'deepin-voice-recorder',
       'deepin-picker',
       'deepin-remote-assistance',
-      'deepin-presentation-assistant'
+      'deepin-presentation-assistant',
+      'chineseime'
     ];
     this.state = {
       sequence,
