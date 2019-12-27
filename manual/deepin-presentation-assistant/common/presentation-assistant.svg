@@ -1,42 +1,39 @@
-<svg width="96" height="96" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
- <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
- <title>deepin-presentation-assistant</title>
- <desc>Created with Sketch.</desc>
- <defs>
-  <circle r="21" cy="21" cx="21" id="path-1"/>
-  <filter id="filter-2" filterUnits="objectBoundingBox" height="200%" width="200%" y="-50%" x="-50%">
-   <feGaussianBlur stdDeviation="1"/>
-  </filter>
-  <rect height="5" width="2" y="29" x="20" id="path-4"/>
-  <mask height="5" width="2" y="0" x="0" maskUnits="objectBoundingBox" maskContentUnits="userSpaceOnUse" id="mask-5">
-   <use id="svg_1" xlink:href="#path-4"/>
-  </mask>
-  <linearGradient id="linearGradient-3" y2="100%" x2="50%" y1="0%" x1="50%">
-   <stop offset="0%" stop-color="#70C5FE"/>
-   <stop offset="100%" stop-color="#0B9DFE"/>
-  </linearGradient>
- </defs>
- <g>
-  <title>background</title>
-  <rect fill="none" id="canvas_background" height="98" width="98" y="-1" x="-1"/>
- </g>
- <g>
-  <title>Layer 1</title>
-  <g fill-rule="evenodd" fill="none" id="Page-1">
-   <g stroke="null" id="deepin-presentation-assistant">
-    <g stroke="null" id="Group">
-     <g stroke="null" id="Oval-4">
-      <use transform="matrix(2.1666667461395264,0,0,2.1666667461395264,-3.500000238418579,-3.500000238418579) " stroke="null" id="svg_2" x="3" y="3" xlink:href="#path-1" filter="url(#filter-2)" fill="black"/>
-      <use transform="matrix(2.1666667461395264,0,0,2.1666667461395264,-3.500000238418579,-3.500000238418579) " stroke="null" id="svg_3" x="3" y="3" xlink:href="#path-1" fill-rule="evenodd" fill="#D8D8D8" fill-opacity="0"/>
-     </g>
-     <circle stroke="null" r="45.500002" cy="48.500002" cx="48.500002" fill="url(#linearGradient-3)" id="Oval-4"/>
-     <path stroke="null" fill="#FFFFFF" id="Combined-Shape" d="m22.500001,28.999914c0,-1.196563 0.969518,-2.16658 2.168162,-2.16658l47.663678,0c1.19743,0 2.168162,0.985205 2.168162,2.16658l0,32.500175c0,1.196563 -0.969518,2.16658 -2.168162,2.16658l-47.663678,0c-1.19743,0 -2.168162,-0.985205 -2.168162,-2.16658l0,-32.500175zm19.500001,4.33342c-7.179705,0 -13,5.820295 -13,13c0,7.179705 5.820295,13 13,13c7.179705,0 13,-5.820295 13,-13l-13,0l0,-13zm15.036667,8.670762l-10.703334,0l0,-10.703334c5.582547,0.69615 10.007205,5.120787 10.703334,10.703334zm2.296667,-2.170762l8.666667,0l0,2.166667l-8.666667,0l0,-2.166667zm0,4.333333l8.666667,0l0,2.166667l-8.666667,0l0,-2.166667zm0,4.333333l8.666667,0l0,2.166667l-8.666667,0l0,-2.166667zm0,4.333333l8.666667,0l0,2.166667l-8.666667,0l0,-2.166667z"/>
-     <path stroke="#FFFFFF" id="Path-6" d="m27.916668,27.916668l0,-6.479699c0,-1.20783 0.975195,-2.186968 2.18569,-2.186968l9.730977,0"/>
-     <rect stroke="null" rx="1" height="6.5" width="10.833334" y="16" x="36.583335" fill="#FFFFFF" id="Rectangle-2"/>
-     <use transform="matrix(2.1666667461395264,0,0,2.1666667461395264,-3.500000238418579,-3.500000238418579) " stroke="#FFFFFF" x="3" y="3" xlink:href="#path-4" stroke-width="2" mask="url(#mask-5)" id="Rectangle-20"/>
-     <path stroke="#FFFFFF" id="Path-10" d="m37.666668,77.750003l21.666667,0"/>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>deepin-presentation-assistant</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <circle id="path-1" cx="21" cy="21" r="21"></circle>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-2">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="1" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-3">
+            <stop stop-color="#70C5FE" offset="0%"></stop>
+            <stop stop-color="#0B9DFE" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-4" x="20" y="29" width="2" height="5"></rect>
+        <mask id="mask-5" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="2" height="5" fill="white">
+            <use xlink:href="#path-4"></use>
+        </mask>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="deepin-presentation-assistant">
+            <g id="Group" transform="translate(3.000000, 3.000000)">
+                <g id="Oval-4">
+                    <use fill="black" fill-opacity="1" filter="url(#filter-2)" xlink:href="#path-1"></use>
+                    <use fill-opacity="0" fill="#D8D8D8" fill-rule="evenodd" xlink:href="#path-1"></use>
+                </g>
+                <circle id="Oval-4" fill="url(#linearGradient-3)" cx="21" cy="21" r="21"></circle>
+                <path d="M9,11.9999602 C9,11.4476974 9.44746922,11 10.0006946,11 L31.9993054,11 C32.5519738,11 33,11.4547089 33,11.9999602 L33,27.0000398 C33,27.5523026 32.5525308,28 31.9993054,28 L10.0006946,28 C9.44802625,28 9,27.5452911 9,27.0000398 L9,11.9999602 Z M18,14 C14.6862915,14 12,16.6862915 12,20 C12,23.3137085 14.6862915,26 18,26 C21.3137085,26 24,23.3137085 24,20 L18,20 L18,14 Z M24.9400001,18.0018938 L20,18.0018938 L20,13.0618938 C22.5765624,13.3831865 24.6187073,15.4253314 24.9400001,18.0018938 Z M26,17 L30,17 L30,18 L26,18 L26,17 Z M26,19 L30,19 L30,20 L26,20 L26,19 Z M26,21 L30,21 L30,22 L26,22 L26,21 Z M26,23 L30,23 L30,24 L26,24 L26,23 Z" id="Combined-Shape" fill="#FFFFFF"></path>
+                <path d="M11.5,11.5 L11.5,8.5093689 C11.5,7.95190985 11.9500881,7.5 12.5087848,7.5 L17,7.5" id="Path-6" stroke="#FFFFFF"></path>
+                <rect id="Rectangle-2" fill="#FFFFFF" x="15.5" y="6" width="5" height="3" rx="1"></rect>
+                <use id="Rectangle-20" stroke="#FFFFFF" mask="url(#mask-5)" stroke-width="2" xlink:href="#path-4"></use>
+                <path d="M16,34.5 L26,34.5" id="Path-10" stroke="#FFFFFF"></path>
+            </g>
+        </g>
     </g>
-   </g>
-  </g>
- </g>
 </svg>

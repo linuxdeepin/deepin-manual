@@ -36,17 +36,42 @@
 
 ![0|boot-maker](jpg/select-disk.png)
 
-### 制作完成
+### 制作成功
 
 制作过程需要一定的时间，请耐心等待，制作时请不要移除磁盘或关机。待进度条满格，出现 **制作成功** 的提示，表明启动盘已经制作完成。
 
 
-![3|boot-maker](jpg/boot-making.png)
+![boot-maker](jpg/boot-making.png)
 
-![3|recoder](jpg/success.png)
+![recoder](jpg/success.png)
 
-如果制作失败，点击 **反馈问题**，系统将自动上传错误日志。
-![3|boot-maker](jpg/failed.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+### 制作失败
+
+如果制作失败，可能由如下情况导致：
+
+- 磁盘格式错误
+
+- 磁盘空间错误
+
+- 磁盘挂载错误 (Linux系统才有的错误）
+
+- 解压镜像错误
+
+- 执行命令错误
+
+- 未知错误
+
+![boot-maker](jpg/failed.png)
+![boot-maker](jpg/failed-02.png)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+当制作失败窗口中出现“提交反馈”的信息时，点击 **提交反馈**，打开社区网站的用户反馈页面，系统将自动上传错误日志。
+
+![boot-maker](jpg/failed-01.png)
+
 
 ## 主菜单
 

@@ -69,11 +69,9 @@
 3. 在打印预览界面，点击最右边的打印机图标，在弹出的窗口中选择打印机，并设置相关参数。
 4. 点击 **打印** 即可将文件发送到打印机打印。
 
-![preview](jpg/preview.jpg)
-
-![pagesetup](jpg/pagesetup.jpg)
-
-![printer](jpg/printer.jpg)
+![preview](jpg/preview-editor.png)
+![pagesetup](jpg/pageSetup-editor.png)
+![printer](jpg/printer-editor.png)
 
 ### 管理标签页
 
@@ -201,15 +199,12 @@
 #### 基础设置
 
 1. 点击![icon_menu](icon/icon_menu.svg) > **设置**。
-
 2. 在基础设置选项，您可以选择：
-
-- 设置字体样式，选择字体和字号。
-- 勾选或取消勾选 **自动换行**。
+ - 设置字体样式，选择字体和字号。
+ - 勾选或取消勾选 **自动换行**。
 
 > ![tips](icon/tips.svg)：您还可以使用 ![Ctrl](icon/Ctrl.svg) + ![+](icon/+.svg)/ ![-](icon/-.svg) 来调节编辑器的默认字号。使用 ![Ctrl](icon/Ctrl.svg) + ![0](icon/0.svg) 恢复默认字号。
 
-![setting](jpg/setting1.png)
 
 
 #### 快捷键设置
@@ -217,9 +212,8 @@
 1. 点击![icon_menu](icon/icon_menu.svg) > **设置**，在 **快捷键** 选项查看当前快捷键。
 2. 选择一种快捷键映射。
 3. 您可以点击并重新输入快捷键，来自定义快捷键。
-> ![notes](icon/notes.svg): 快捷键映射允许您选择某一种键盘快捷键。您可以使用标准快捷键，Emacs快捷键，或自定义快捷键，以符合您的使用习惯。
-![setting](jpg/setting2.png)
 
+> ![notes](icon/notes.svg): 快捷键映射允许您选择某一种键盘快捷键。您可以使用标准快捷键，Emacs快捷键，或自定义快捷键，以符合您的使用习惯。
 
 
 #### 高级设置
@@ -231,7 +225,6 @@
 
 > ![attention](icon/attention.svg)：点击设置界面上的 **恢复默认**，会将所有设置恢复到默认状态。
 
-![setting](jpg/setting3.png)
 
 ### 主题
 

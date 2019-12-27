@@ -42,7 +42,7 @@
 ### 导入照片
 
 在相册界面，可以采用以下方式导入照片。
-- 点击![icon_menu](icon/icon_menu.svg) >  **导入**。
+- 点击![icon_menu](icon/icon_menu.svg) >  **导入照片**。
 - 直接将照片或所在文件夹拖拽到界面上。
 
 > ![tips](icon/tips.svg)：当相册中尚无照片时，点击 **导入照片**，将照片导入相册管理系统。
@@ -56,8 +56,8 @@
    - 点击![button_voice](icon/button_voice.svg)，输入语音，语音会转化为文字显示在搜索框中。
 
 2. 按下键盘上的 **Enter** 键后快速定位。
-
-当没有搜索到匹配的信息时，在界面中间显示 ”无搜索结果”。
+   - 当搜索到匹配的信息时，在界面中显示搜索结果列表。
+   - 当没有搜索到匹配的信息时，在界面中间显示 ”无搜索结果”。
 
 
 ### 查看照片
@@ -66,22 +66,22 @@
 
 双击照片，或右键单击照片选择 **查看** ，进入看图界面。
 
-| 图标                                               | 名称    | 说明                         |
-| -------------------------------------------------- | ------- | ---------------------------- |
-| ![ back_normal](icon/back_normal.svg)              | 返回    | 显示返回到主界面。           |
-| ![previous](icon/previous.svg)                     | 上一张  | 显示上一张照片。             |
-| ![next](icon/next.svg)                             | 下一张  | 显示下一张照片。             |
-| ![adapt-image](icon/adapt-image.svg)               | 1:1显示 | 照片按照实际尺寸显示。       |
-| ![adapt-screen](icon/adapt-screen.svg)             | 自适应  | 照片适应窗口尺寸显示。       |
-| ![collect](icon/collect.svg)                       | 收藏    | 将喜欢的照片添加到个人收藏。 |
-| ![clockwise-rotation](icon/clockwise-rotation.svg) | 顺时针  | 照片顺时针旋转90度。         |
-| ![contrarotate](icon/contrarotate.svg)             | 逆时针  | 照片逆时针旋转90度。         |
-| ![delete](icon/delete.svg)                         | 删除    | 删除当前照片。               |
+| 图标                                               | 名称       | 说明                         |
+| -------------------------------------------------- | ---------- | ---------------------------- |
+| ![ back_normal](icon/back_normal.svg)              | 返回       | 显示返回到主界面。           |
+| ![previous](icon/previous.svg)                     | 上一张     | 显示上一张照片。             |
+| ![next](icon/next.svg)                             | 下一张     | 显示下一张照片。             |
+| ![adapt-image](icon/adapt-image.svg)               | 1:1视图    | 照片按照实际尺寸显示。       |
+| ![adapt-screen](icon/adapt-screen.svg)             | 适应窗口   | 照片适应窗口尺寸显示。       |
+| ![collect](icon/collect.svg)                       | 收藏       | 将喜欢的照片添加到个人收藏。 |
+| ![clockwise-rotation](icon/clockwise-rotation.svg) | 顺时针旋转 | 照片顺时针旋转90度。         |
+| ![contrarotate](icon/contrarotate.svg)             | 逆时针旋转 | 照片逆时针旋转90度。         |
+| ![delete](icon/delete.svg)                         | 删除       | 删除当前照片。               |
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
-> ![tips](icon/tips.svg)：在1:1视图下，当照片大小超出窗口范围时，会出现导航窗口。拖动导航窗口中的方框，查看该区域的图片。点击右上角的 ![close_icon](icon/close_icon.svg) 关闭导航窗口，也可以右键单击照片，选择“隐藏导航窗口”。
+> ![tips](icon/tips.svg)：在1:1视图下，当照片大小超出窗口范围时，会出现导航窗口。拖动导航窗口中的方框，查看该区域的图片。点击导航窗口右上角的 ![close_icon](icon/close_icon.svg) 关闭导航窗口，也可以右键单击照片，选择“隐藏导航窗口”。
 
 ![0|copy](jpg/view-pic.png)
 
@@ -121,7 +121,7 @@
 ### 收藏照片
 
 1. 在相册界面上，右键单击照片。
-2. 选择 **收藏**，照片将会添加到“个人收藏”。
+2. 选择 **收藏**，照片将会添加到“我的收藏”。
 3. 右键单击已收藏的照片，也可以 **取消收藏**。
 
 > ![tips](icon/tips.svg)：在查看照片时，点击界面上的![collect](icon/collect.svg)，将照片加入我的收藏。再次点击![collect-active](icon/collect-active.svg)，取消收藏。

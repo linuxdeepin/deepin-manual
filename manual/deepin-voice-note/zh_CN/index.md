@@ -2,9 +2,7 @@
 
 ## 概述
 
-语音记事本是一款设计简洁、美观易用的集文本、录音来记事的软件。用户可以将录音转存为 MP3，或者将录音转化为文字保存。
-
-![0|voice_recorder](jpg/add-text.png)
+语音记事本是一款设计简洁、美观易用的集文本、录音来记事的软件。用户可以将录音转存为 MP3，或者将录音转化为文字保存。![0|voice_recorder](jpg/add-text.png)
 
 
 ## 使用入门
@@ -45,8 +43,10 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-- 当语音记事本中已创建有记事本时，在语音记事本界面上点击 ![add](icon/circlebutton_add2.svg) 图标，创建新的记事本。创建新的记事本后，可以开始记录语言及文字。
+- 当语音记事本中已创建有记事本时，在语音记事本界面上点击 ![add](icon/circlebutton_add2.svg) 图标，创建新的记事本。
 
+  创建新的记事本后，可以开始记录语言及文字。
+  
   记事本默认的命名规则为 记事本（n），其中n≥0，n为整数 。
 
 ![0|new](jpg/create1.png)
@@ -61,7 +61,7 @@
 
 > ![tips](icon/tips.svg)：录音过程中您可以点击 ![pause](icon/pause_red_normal.svg) 按钮暂停录音，想继续录音时再点一下 ![record_normal](icon/record_normal.svg) 就可以了。
 
-![notes](icon/notes.svg)：录音的限制时长为60分钟。
+> ![notes](icon/notes.svg)：录音的限制时长为60分钟。
 
 ![0|Recorder](jpg/recorder1.png)
 
@@ -85,7 +85,9 @@
 
 2. 按下键盘上的 **Enter** 键后快速定位。
 
-   当没有搜索到匹配的信息时，在列表中间显示 ”无搜索结果”。
+   - 当搜索到匹配的信息时，在界面显示搜索结果列表。
+
+   - 当没有搜索到匹配的信息时，在界面显示 ”无搜索结果”。
 
 3. 在搜索文本框中点击![0|three_dots](icon/close_normal-2.svg)清除当前输入的关键字或取消搜索。
 
@@ -110,7 +112,7 @@
 1. 在语音记事本界面上点击 ![mic](icon/circlebutton_add2.svg) 图标，添加新记事本。
 2. 点击 **添加文字笔记**，输入需要记录的文字。
 
-> ![tips](icon/tips.svg)：在新记事中可以录制音频，详细操作请参考录制音频。
+> ![tips](icon/tips.svg)：在记事本中可以录制音频，详细操作请参考录制音频。
 
 ![0|words_recorder](jpg/add-text.png)
 
@@ -120,12 +122,11 @@
 1. 在语音记事本界面上，选择一个文字笔记。
 2. 点击 ![0|three_dots](icon/more_normal.svg)图标，选择 **保存为TXT**。
 3. 将文字笔记保存至储存设备中。
-
-![0|save](jpg/toTxT.png)
+    ![0|save](jpg/toTxT.png)
 
 ### 重命名新记事本
 
-记事文件完成后，记事文件自动保存成名为“新记事（n）”的音频文件，您可以重命名记事文件。
+记事文件完成后，记事文件自动保存成名为“记事本（n）”，您可以重命名记事本。
 
 1. 在语音记事本界面上，右键单击一个新记事本。
 2. 选择 **重命名**。

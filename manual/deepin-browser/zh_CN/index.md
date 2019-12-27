@@ -200,7 +200,7 @@
 
 通过如下操作设置自动下载项。
 
-1. 在浏览器窗口，点击  ![icon_menu](/home/deepin/Documents/deepin_Info/deepin-browser/zh_CN/icon/icon_menu.svg)  > **设置 **。
+1. 在浏览器窗口，点击  ![icon_menu](icon/icon_menu.svg)  > **设置 **。
 2. 在“隐私和安全”区域，点击"网站设置"旁边的更多图标 >，进入“内容设置”窗口。
 3. 点击 **管理例外情况...**。
 
@@ -318,12 +318,12 @@
 
 #### 修改书签
 
-1. 在浏览器窗口，点击  ![icon_menu](/home/deepin/Documents/deepin_Info/deepin-browser/zh_CN/icon/icon_menu.svg)  > **管理收藏夹 **。
+1. 在浏览器窗口，点击  ![icon_menu](icon/icon_menu.svg)  > **管理收藏夹 **。
 2. 在收藏管理器页面，选择一个书签，在书签所在行点击 **修改**图标。
 
 #### 删除书签
 
-1. 在浏览器窗口，点击  ![icon_menu](/home/deepin/Documents/deepin_Info/deepin-browser/zh_CN/icon/icon_menu.svg)  > **管理收藏夹 **。
+1. 在浏览器窗口，点击  ![icon_menu](icon/icon_menu.svg)  > **管理收藏夹 **。
 2. 在收藏管理器页面，选择一个书签，在书签所在行点击 **删除**图标。
 
 ![notes](icon/notes.svg)：如果需要修改或删除已经收藏的书签，您还可以在浏览器的窗口某个网页点击星形图标，并在弹出的窗口中点击 **修改** 或 **删除**。
@@ -398,7 +398,7 @@ Cookie 分为：
 如果删除 Cookie，即会退出相应网站，已保存的偏好设置可能也会随之删除。
 
 1. 在浏览器窗口，点击  ![icon_menu](icon/icon_menu.svg)  > **设置 **。
-2. 在“隐私和安全”区域，点击"网站设置"旁边的更多图标 >，进入“内容设置”窗口。
+2. 在“隐私和安全”区域，点击"网站设置"旁边的更多图标 ">"，进入“内容设置”窗口。
 3. 在Cookie下方，点击 **所有Cookie和网站数据...**，弹出“Cookie和网站数据”窗口。
    - 删除特定Cookie和网站数据：搜索Cookie和网站数据的名称，在该网站的网址右侧点击 ![](icon/close_icon.svg)。
    - 删除所有的Cookie和网站数据：点击 **全部删除**。
@@ -414,7 +414,7 @@ Cookie 分为：
 
 #### 更改Cookie设置
 
-1. 在浏览器窗口，点击  ![icon_menu](/home/deepin/Documents/deepin_Info/deepin-browser/zh_CN/icon/icon_menu.svg)  > **设置 **。
+1. 在浏览器窗口，点击  ![icon_menu](icon/icon_menu.svg)  > **设置 **。
 2. 在“隐私和安全”区域，点击"网站设置"旁边的更多图标 >，进入“内容设置”窗口。
 3. 在Cookie下方，您可以：
    - **允许设置本地数据（推荐）**：默认设置
@@ -471,7 +471,7 @@ Cookie 分为：
 
 #### 更改默认的位置信息设置
 
-1. 在浏览器窗口，点击  ![icon_menu](/home/deepin/Documents/deepin_Info/deepin-browser/zh_CN/icon/icon_menu.svg)  > **设置 **。
+1. 在浏览器窗口，点击  ![icon_menu](icon/icon_menu.svg)  > **设置 **。
 2. 在“自动填充”区域，勾选 **地址和其他信息**，并点击“地址和其他信息”旁边的更多图标 >，进入 **自动填充设置** 窗口。
 3. 点击 **添加新地址...**。
 
@@ -495,7 +495,7 @@ Cookie 分为：
 
 #### 更改网站的摄像头和麦克风权限
 
-1. 在浏览器窗口，点击  ![icon_menu](/home/deepin/Documents/deepin_Info/deepin-browser/zh_CN/icon/icon_menu.svg)  > **设置 **。
+1. 在浏览器窗口，点击  ![icon_menu](icon/icon_menu.svg)  > **设置 **。
 2. 在“隐私和安全”区域，点击“网站设置”旁边的更多图标 >，进入“内容设置”窗口。
 3. 在“麦克风”区域，您可以：
    - 设置麦克风音频
@@ -530,7 +530,7 @@ Cookie 分为：
 
 #### 更改所有网站的设置
 
-1. 在浏览器窗口，点击  ![icon_menu](/home/deepin/Documents/deepin_Info/deepin-browser/zh_CN/icon/icon_menu.svg)  > **设置 **。
+1. 在浏览器窗口，点击  ![icon_menu](icon/icon_menu.svg)  > **设置 **。
 2. 在“隐私和安全”区域，点击“网站设置”旁边的更多图标 >，进入“内容设置”窗口。
 3. 选择需要更新的权限，您可以更改：
 

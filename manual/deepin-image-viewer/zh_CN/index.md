@@ -45,21 +45,21 @@
 
 > ![tips](icon/tips.svg)：您可以在控制中心中将看图设置为默认的图片查看程序，具体操作请参阅 [默认程序设置](dman:///dde#默认程序设置)。
 
-图片支持的格式BMP、ICO、JPG/JPE/JPEG、PNG、TGA、TIF/TIFF、XPM、DDS、GIF、SGI、RAW、WEBP、CR2、NEF、DNG、RAF、MEF、MRW、XBM、SVG、ORF、MNG。
+图片支持的格式BMP、ICO、JPG/JPE/JPEG、PNG、TGA、TIF/TIFF、XPM、GIF、SGI、RAW、WEBP、CR2、NEF、DNG、RAF、MEF、MRW、XBM、SVG、ORF、MNG。
 
 ### 界面介绍
 
 ![1|main](jpg/main.png)
 
-| 图标                                               | 名称    | 说明                   |
-| -------------------------------------------------- | ------- | ---------------------- |
-| ![previous](icon/previous.svg)                     | 上一张  | 显示上一张图片。       |
-| ![next](icon/next.svg)                             | 下一张  | 显示下一张图片。       |
-| ![adapt-image](icon/adapt-image.svg)               | 1:1显示 | 图片按照实际尺寸显示。 |
-| ![adapt-screen](icon/adapt-screen.svg)             | 自适应  | 图片适应窗口尺寸显示。 |
-| ![clockwise-rotation](icon/clockwise-rotation.svg) | 顺时针  | 图片顺时针旋转90度。   |
-| ![contrarotate](icon/contrarotate.svg)             | 逆时针  | 图片逆时针旋转90度。   |
-| ![delete](icon/delete.svg)                         | 删除    | 删除当前图片。         |
+| 图标                                               | 名称       | 说明                   |
+| -------------------------------------------------- | ---------- | ---------------------- |
+| ![previous](icon/previous.svg)                     | 上一张     | 显示上一张图片。       |
+| ![next](icon/next.svg)                             | 下一张     | 显示下一张图片。       |
+| ![adapt-image](icon/adapt-image.svg)               | 1:1视图    | 图片按照实际尺寸显示。 |
+| ![adapt-screen](icon/adapt-screen.svg)             | 适应窗口   | 图片适应窗口尺寸显示。 |
+| ![clockwise-rotation](icon/clockwise-rotation.svg) | 顺时针旋转 | 图片顺时针旋转90度。   |
+| ![contrarotate](icon/contrarotate.svg)             | 逆时针旋转 | 图片逆时针旋转90度。   |
+| ![delete](icon/delete.svg)                         | 删除       | 删除当前图片。         |
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 > ![tips](icon/tips.svg)：在1:1视图下，当图片超出界面范围时，界面上会出现导航窗口。点击导航窗口的右上角关闭导航窗口，也可以在看图界面上单击鼠标右键选择 **隐藏导航窗口/显示导航窗口**。
@@ -119,9 +119,7 @@
 1. 在看图界面上，单击鼠标右键。
 2. 选择 **图片信息** 可以显示图片信息。
 
-![1|info](jpg/info.png)
-
-
+![info](jpg/info.png)
 
 ## 主菜单
 

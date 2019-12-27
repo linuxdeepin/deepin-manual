@@ -4,7 +4,7 @@
 
 系统修复工具是一款帮助用户快速修复操作系统中某些问题的工具，其中包含硬盘检测、磁盘空间清理、引导修复、权限修复、登录密码重设等。
 
-![0|overview](jpg/overview.jpg)
+![0|overview](jpg/overview.png)
 
 
 ## 基本操作
@@ -19,17 +19,17 @@
 2. 等待修复工具进行修复过程。
 3. 修复成功后点击 **重新启动**，重启电脑来完成修复操作。
 
-![0|detect](jpg/detect.jpg)
+![0|detect](jpg/detect.png)
 
 ### 磁盘空间清理
 
 当系统使用一段时间后，临时文件、日志文件等会占用系统的磁盘空间，可以对磁盘空间进行清理。
 
-1. 在界面上点击 **磁盘空间清理**。
+1. 在界面上点击 **磁盘清理**。
 2. 点击 **清理**，等待工具清理并提示信息。
 3. 点击 **完成**。
 
-![0|clean](jpg/clean.jpg)
+![0|clean](jpg/clean.png)
 
 ### DPKG修复
 
@@ -41,7 +41,7 @@
 
 > ![notes](icon/notes.svg):DPKG是一种系统底层命令行工具，主要用来安装、删除、构建和管理软件包，出现DPKG问题时您可能无法安装或卸载应用，此时您可以使用系统修复工具来进行DPKG修复。
 
-![0|dpkg](jpg/dpkg.jpg)
+![0|dpkg](jpg/dpkg.png)
 
 
 ### 引导修复
@@ -52,7 +52,7 @@
 2. 点击 **修复**，等待修复处理，可以点击显示详细过程进行查看。
 3. 点击 **完成**。 
 
-![0|boot](jpg/boot.jpg)
+![0|boot](jpg/boot.png)
 
 ### 权限修复
 
@@ -63,17 +63,17 @@
 3. 点击 **完成**。 
 
 
-![0|privilege](jpg/privilege.jpg)
+![0|privilege](jpg/privilege.png)
 
 ### 登录密码重设
 
 当用户忘记登录密码时，可以通过Live系统运行系统修复工具，来重置系统的登录密码。
 
-1. 在界面上点击 **重置密码**。
+1. 在界面上点击 **密码重置**。
 2. 输入新的密码和重复密码确认，点击 **确定**。
 3. 提示重设成功，点击 **完成**。
 
-![0|password-reset](jpg/password-reset.jpg)
+![0|password-reset](jpg/password-reset.png)
 
 
 ## 主菜单
