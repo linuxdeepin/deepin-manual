@@ -66,6 +66,8 @@ find_package(Qt5Gui REQUIRED)
 find_package(Qt5X11Extras REQUIRED)
 find_package(Qt5LinguistTools)
 find_package(Qt5Sql REQUIRED)
+find_package(Qt5WebEngine REQUIRED)
+find_package(Qt5WebEngineWidgets REQUIRED)
 find_package(Qt5WebChannel REQUIRED)
 find_package(Qt5Widgets REQUIRED)
 find_package(Qt5LinguistTools REQUIRED)
@@ -85,6 +87,8 @@ set(LINK_LIBS
     Qt5::Widgets
     Qt5::X11Extras
     Qt5::WebChannel
+    Qt5::WebEngine
+    Qt5::WebEngineWidgets
 
     ${DtkWidget_LDFLAGS}
     ${DtkGui_LDFLAGS}
@@ -177,8 +181,6 @@ set(VIEW_FILES
     view/widget/search_completion_delegate.h
     view/widget/search_edit.cpp
     view/widget/search_edit.h
-    view/widget/manual_webview.cpp
-    view/widget/manual_webview.h
     )
 
 # Main executable

@@ -266,8 +266,6 @@ void WindowManager::onWindowClosed(const QString &app_name)
 
 void WindowManager::onWindowShown(WebWindow *window)
 {
-    window->initWebView();
-
     // Add a placeholder record.
     windows_.insert(curr_app_name_, nullptr);
     windows_.insert(curr_app_name_, window);
