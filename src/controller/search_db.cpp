@@ -143,7 +143,7 @@ void SearchDb::addSearchEntry(const QString &app_name,
     qDebug() << "addSearchEntry()" << app_name << lang << anchors;// << contents;
 
     QStringList newContents = contents;
-    for(int i=0; i<contents.size(); i++) {
+    for (int i = 0; i < contents.size(); i++) {
         QString content = contents.at(i);
         content = content.replace("icon/", "/usr/share/deepin-manual/manual/" + app_name + "/" + lang + "/icon/");
         newContents.replace(i, content);
@@ -237,15 +237,14 @@ QString insertHighlight(QString srcString,  QString keyword)
         QString substr = resultString.mid(currIndex, keyword.length());
         if (substr.toLower() == keyword.toLower()) {
             resultString.insert(currIndex, highlightStart);
-            currIndex += highlightStart.length()+keyword.length();
+            currIndex += highlightStart.length() + keyword.length();
             resultString.insert(currIndex, highlightEnd);
             currIndex += highlightEnd.length();
-        }
-        else {
+        } else {
             ++currIndex;
         }
 
-    } while(currIndex <= resultString.length()-keyword.length());
+    } while (currIndex <= resultString.length() - keyword.length());
 
     return resultString;
 }
@@ -282,17 +281,15 @@ QString SearchDb::highlightKeyword(QString srcString, QString keyword)
 
         substrImgEnd = srcString.mid(currIndex, imgEndLen);
         if (substrImgEnd == imgEndString) {
-            startSubStringIndex = currIndex+imgEndLen;
+            startSubStringIndex = currIndex + imgEndLen;
             strEndIndexList.append(startSubStringIndex);
 
-            highlightString.append(srcString.mid(findImgIndex, startSubStringIndex-findImgIndex));
+            highlightString.append(srcString.mid(findImgIndex, startSubStringIndex - findImgIndex));
         }
 
-        if (findImgIndex > startSubStringIndex)
-        {
-            QString findStr = srcString.mid(startSubStringIndex, findImgIndex-startSubStringIndex);
-            if (!strList.contains(findStr))
-            {
+        if (findImgIndex > startSubStringIndex) {
+            QString findStr = srcString.mid(startSubStringIndex, findImgIndex - startSubStringIndex);
+            if (!strList.contains(findStr)) {
                 strList.append(findStr);
 
                 QString hightLightStr = findStr;
@@ -302,12 +299,12 @@ QString SearchDb::highlightKeyword(QString srcString, QString keyword)
         }
         ++currIndex;
 
-    } while(currIndex <= srcString.length());
+    } while (currIndex <= srcString.length());
 
     if (!strEndIndexList.isEmpty()) {
         int lastImgEndIndex = strEndIndexList.last();
 
-        QString lastStr = srcString.mid(lastImgEndIndex, srcString.length()-lastImgEndIndex);
+        QString lastStr = srcString.mid(lastImgEndIndex, srcString.length() - lastImgEndIndex);
         if (lastStr.length() > 0) {
             strList.append(lastStr);
 
@@ -350,6 +347,8 @@ void SearchDb::handleSearchContent(const QString &keyword)
             const QString content = query.value(3).toString();
 
             QString tmpContent = content;
+
+            tmpContent = tmpContent.replace("alt>", ">");
             tmpContent = tmpContent.replace("\" >", "\">");
             QString highlightContent = highlightKeyword(tmpContent, keyword);
 
