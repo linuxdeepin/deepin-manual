@@ -42,7 +42,6 @@
 #include <QMouseEvent>
 #include <QShowEvent>
 #include <QWebChannel>
-#include <QWebEngineSettings>
 #include <QDBusConnection>
 #include <QX11Info>
 
@@ -71,6 +70,16 @@ WebWindow::WebWindow(QWidget *parent)
     , keyword_("")
     , first_webpage_loaded_(true)
 {
+    // 使用 redirectContent 模式，用于内嵌 x11 窗口时能有正确的圆角效果
+    Dtk::Widget::DPlatformWindowHandle::enableDXcbForWindow(this, true);
+
+    search_timer_.setSingleShot(true);
+
+    this->initUI();
+    this->initConnections();
+    this->initShortcuts();
+
+    qApp->installEventFilter(this);
 }
 
 WebWindow::~WebWindow()
@@ -201,7 +210,6 @@ void WebWindow::initUI()
     buttonBox = new Dtk::Widget::DButtonBox(this);
     buttonBox->setButtonList(buttonList, false);
     buttonBox->setFocusPolicy(Qt::NoFocus);
-    buttonBox->hide();
 
     buttonLayout->addWidget(buttonBox);
     buttonLayout->setSpacing(0);
@@ -243,20 +251,23 @@ void WebWindow::initWebView()
     settings_proxy_ = new SettingsProxy(this);
     i18n_proxy = new I18nProxy(this);
 
-    web_view_ = new QWebEngineView();
-//    web_view_->page()->setEventDelegate(new WebEventDelegate(this));
+    web_view_ = new ManualWebView();
+    web_view_->setParentWindow(this);
+    web_view_->page()->setEventDelegate(new WebEventDelegate(this));
     this->setCentralWidget(web_view_);
     web_view_->hide();
 
-    auto settings = web_view_->page()->settings();
-    settings->setFontSize(QWebEngineSettings::FontSize::DefaultFontSize, this->fontInfo().pixelSize());
     // Disable web security.
-//    settings->setWebSecurity(QCefWebSettings::StateDisabled);
+    auto settings = web_view_->page()->settings();
+    settings->setMinimumFontSize(8);
+    settings->setWebSecurity(QCefWebSettings::StateDisabled);
+
+    // init default font size
+    settings->setDefaultFontSize(this->fontInfo().pixelSize());
 
     // Use TitleBarProxy instead.
+    QWebChannel *web_channel = web_view_->page()->webChannel();
     web_view_->setAcceptDrops(false);
-    QWebChannel *web_channel = new QWebChannel(this);
-    web_view_->page()->setWebChannel(web_channel);
 
     web_channel->registerObject("i18n", i18n_proxy);
     web_channel->registerObject("imageViewer", image_viewer_proxy_);
@@ -266,7 +277,7 @@ void WebWindow::initWebView()
     web_channel->registerObject("titleBar", title_bar_proxy_);
     web_channel->registerObject("settings", settings_proxy_);
 
-    connect(web_view_, &QWebEngineView::loadFinished,
+    connect(web_view_->page(), &QCefWebPage::loadFinished,
             this, &WebWindow::onWebPageLoadFinished);
     connect(manual_proxy_, &ManualProxy::WidgetLower, this, &WebWindow::lower);
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
@@ -298,6 +309,7 @@ void WebWindow::initShortcuts()
     connect(scSearch, &QShortcut::activated, this, [this]{
         qDebug() << "search" << endl;
         search_edit_->lineEdit()->setFocus(Qt::ShortcutFocusReason);
+        web_view_->page()->remapBrowserWindow(web_view_->winId(), this->winId());
     });
 }
 
@@ -309,24 +321,10 @@ void WebWindow::showEvent(QShowEvent *event)
 
         is_index_loaded_ = true;
         QTimer::singleShot(20, this, [this] {
-
-            // 使用 redirectContent 模式，用于内嵌 x11 窗口时能有正确的圆角效果
-            Dtk::Widget::DPlatformWindowHandle::enableDXcbForWindow(this, true);
-
-            search_timer_.setSingleShot(true);
-
-            this->initUI();
-            this->initConnections();
-            this->initShortcuts();
-
-            qApp->installEventFilter(this);
-
-            QTimer::singleShot(20, this, [this] {
-                this->initWebView();
-                const QFileInfo info(kIndexPage);
-                web_view_->load(QUrl::fromLocalFile(info.absoluteFilePath()));
-                emit this->shown(this);
-            });
+            emit this->shown(this);
+            this->initWebView();
+            const QFileInfo info(kIndexPage);
+            web_view_->load(QUrl::fromLocalFile(info.absoluteFilePath()));
         });
     }
 }
@@ -437,7 +435,7 @@ void WebWindow::onWebPageLoadFinished(bool ok)
                     QString("open('%1')").arg(app_name_));
             }
         }
-        QTimer::singleShot(20, [&]() {
+        QTimer::singleShot(100, [&]() {
             web_view_->show();
         });
     }
@@ -514,7 +512,7 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
 
 void WebWindow::slot_ButtonHide()
 {
-    QTimer::singleShot(100, [=]() {
+    QTimer::singleShot(20, [=]() {
         qDebug() << "slot_ButtonHide";
         buttonBox->hide();
     });
@@ -522,7 +520,7 @@ void WebWindow::slot_ButtonHide()
 
 void WebWindow::slot_ButtonShow()
 {
-    QTimer::singleShot(100, [=]() {
+    QTimer::singleShot(20, [=]() {
         qDebug() << "slot_ButtonShow";
         buttonBox->show();
     });
