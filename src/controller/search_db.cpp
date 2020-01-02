@@ -17,8 +17,8 @@
 
 #include "controller/search_db.h"
 
-#include <QDateTime>
 #include <DLog>
+#include <QDateTime>
 #include <QDir>
 #include <QSqlDatabase>
 #include <QSqlError>
@@ -30,35 +30,41 @@ namespace {
 
 const char kSearchDropTable[] = "DROP TABLE IF EXISTS search";
 
-const char kSearchTableSchema[] = "CREATE TABLE IF NOT EXISTS search "
-                                  "(id INTEGER PRIMARY KEY AUTOINCREMENT,"
-                                  "appName TEXT,"
-                                  "lang TEXT,"
-                                  "anchor TEXT,"
-                                  "anchorId TEXT,"
-                                  "content TEXT)";
+const char kSearchTableSchema[] =
+    "CREATE TABLE IF NOT EXISTS search "
+    "(id INTEGER PRIMARY KEY AUTOINCREMENT,"
+    "appName TEXT,"
+    "lang TEXT,"
+    "anchor TEXT,"
+    "anchorId TEXT,"
+    "content TEXT)";
 
-const char kSearchIndexSchema[] = "CREATE INDEX IF NOT EXISTS search_idx "
-                                  "ON search (id, appName, lang)";
+const char kSearchIndexSchema[] =
+    "CREATE INDEX IF NOT EXISTS search_idx "
+    "ON search (id, appName, lang)";
 
-const char kSearchDeleteEntryByApp[] = "DELETE FROM search "
-                                       "WHERE appName = ? AND lang = ?";
-const char kSearchInsertEntry[] = "INSERT INTO search "
-                                  "(appName, lang, anchor, anchorId, content) "
-                                  "VALUES (?, ?, ?, ?, ?)";
+const char kSearchDeleteEntryByApp[] =
+    "DELETE FROM search "
+    "WHERE appName = ? AND lang = ?";
+const char kSearchInsertEntry[] =
+    "INSERT INTO search "
+    "(appName, lang, anchor, anchorId, content) "
+    "VALUES (?, ?, ?, ?, ?)";
 
-//const char kSearchSelectAll[] = "SELECT * FROM search";
+// const char kSearchSelectAll[] = "SELECT * FROM search";
 
-const char kSearchSelectAnchor[] = "SELECT t1.appName, t2.anchor appDisplayName, t1.anchor, t1.anchorId FROM search t1 "
-                                   "LEFT JOIN (SELECT anchor,appName FROM search where anchorId='h0' and lang=':lang') t2 "
-                                   "WHERE t1.appName=t2.appName "
-                                   "AND t1.lang = ':lang' "
-                                   "AND t1.anchor LIKE '%:anchor%' --case insensitive";
+const char kSearchSelectAnchor[] =
+    "SELECT t1.appName, t2.anchor appDisplayName, t1.anchor, t1.anchorId FROM search t1 "
+    "LEFT JOIN (SELECT anchor,appName FROM search where anchorId='h0' and lang=':lang') t2 "
+    "WHERE t1.appName=t2.appName "
+    "AND t1.lang = ':lang' "
+    "AND t1.anchor LIKE '%:anchor%' --case insensitive";
 
-const char kSearchSelectContent[] = "SELECT appName, anchor, anchorId, content "
-                                    "FROM search "
-                                    "WHERE lang = ':lang' AND "
-                                    "content LIKE '%:content%' --case insensitive";
+const char kSearchSelectContent[] =
+    "SELECT appName, anchor, anchorId, content "
+    "FROM search "
+    "WHERE lang = ':lang' AND "
+    "content LIKE '%:content%' --case insensitive";
 
 const int kResultLimitation = INT_MAX;
 
@@ -69,8 +75,8 @@ struct SearchDbPrivate {
 };
 
 SearchDb::SearchDb(QObject *parent)
-    : QObject(parent),
-      p_(new SearchDbPrivate())
+    : QObject(parent)
+    , p_(new SearchDbPrivate())
 {
     qRegisterMetaType<SearchAnchorResult>("SearchAnchorResult");
     qRegisterMetaType<SearchAnchorResultList>("SearchAnchorResultList");
@@ -93,17 +99,14 @@ SearchDb::~SearchDb()
 
 void SearchDb::initConnections()
 {
-    connect(this, &SearchDb::initDbAsync,
-            this, &SearchDb::initDb);
-    connect(this, &SearchDb::searchAnchor,
-            this, &SearchDb::handleSearchAnchor);
-    connect(this, &SearchDb::searchContent,
-            this, &SearchDb::handleSearchContent);
+    connect(this, &SearchDb::initDbAsync, this, &SearchDb::initDb);
+    connect(this, &SearchDb::searchAnchor, this, &SearchDb::handleSearchAnchor);
+    connect(this, &SearchDb::searchContent, this, &SearchDb::handleSearchContent);
 }
 
 void SearchDb::initDb(const QString &db_path)
 {
-    qDebug() << "initDb database path is:" << db_path << endl;
+    qDebug() << "initDb database path is------------------>:" << db_path << endl;
     p_->db = QSqlDatabase::addDatabase("QSQLITE");
     p_->db.setDatabaseName(db_path);
     if (!p_->db.open()) {
@@ -121,38 +124,34 @@ void SearchDb::initSearchTable()
     }
 
     if (!query.exec(kSearchTableSchema)) {
-        qCritical() << "Failed to initialize search table:"
-                    << query.lastError().text();
+        qCritical() << "Failed to initialize search table:" << query.lastError().text();
         return;
     }
     if (!query.exec(kSearchIndexSchema)) {
-        qCritical() << "Failed to create index for search table"
-                    << query.lastError().text();
+        qCritical() << "Failed to create index for search table" << query.lastError().text();
         return;
     }
 }
 
-void SearchDb::addSearchEntry(const QString &app_name,
-                              const QString &lang,
-                              const QStringList &anchors,
-                              const QStringList &anchorIdList,
+void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
+                              const QStringList &anchors, const QStringList &anchorIdList,
                               const QStringList &contents)
 {
     Q_ASSERT(p_->db.isOpen());
     Q_ASSERT(anchors.length() == contents.length());
-    qDebug() << "addSearchEntry()" << app_name << lang << anchors;// << contents;
+    qDebug() << "addSearchEntry()" << app_name << lang << anchors;  // << contents;
 
     QStringList newContents = contents;
     for (int i = 0; i < contents.size(); i++) {
         QString content = contents.at(i);
-        content = content.replace("icon/", "/usr/share/deepin-manual/manual/" + app_name + "/" + lang + "/icon/");
+        content = content.replace(
+            "icon/", "/usr/share/deepin-manual/manual/" + app_name + "/" + lang + "/icon/");
         newContents.replace(i, content);
     }
 
-    if (anchors.length() != newContents.length() ||
-            anchors.length() != anchorIdList.length()) {
-        qCritical() << "anchor list and contents mismatch:"
-                    << anchors.length() << newContents.length();
+    if (anchors.length() != newContents.length() || anchors.length() != anchorIdList.length()) {
+        qCritical() << "anchor list and contents mismatch:" << anchors.length()
+                    << newContents.length();
         return;
     }
 
@@ -161,8 +160,7 @@ void SearchDb::addSearchEntry(const QString &app_name,
     query.bindValue(0, app_name);
     query.bindValue(1, lang);
     if (!query.exec()) {
-        qCritical() << "Failed to delete search entry:"
-                    << query.lastError().text();
+        qCritical() << "Failed to delete search entry:" << query.lastError().text();
         return;
     }
 
@@ -186,8 +184,7 @@ void SearchDb::addSearchEntry(const QString &app_name,
 
     if (!ok) {
         p_->db.rollback();
-        qCritical() << "Failed to insert search entry:"
-                    << query.lastError().text();
+        qCritical() << "Failed to insert search entry:" << query.lastError().text();
     } else {
         p_->db.commit();
     }
@@ -202,13 +199,12 @@ void SearchDb::handleSearchAnchor(const QString &keyword)
 
     QSqlQuery query(p_->db);
     const QString lang = QLocale().name();
-    const QString sql = QString(kSearchSelectAnchor)
-                        .replace(":anchor", keyword)
-                        .replace(":lang", lang);
+    const QString sql =
+        QString(kSearchSelectAnchor).replace(":anchor", keyword).replace(":lang", lang);
     qDebug() << "handleSearchAnchor sql is:" << sql;
     if (query.exec(sql)) {
         while (query.next() && (result.size() < kResultLimitation)) {
-            result.append(SearchAnchorResult{
+            result.append(SearchAnchorResult {
                 query.value(0).toString(),
                 query.value(1).toString(),
                 query.value(2).toString(),
@@ -216,8 +212,7 @@ void SearchDb::handleSearchAnchor(const QString &keyword)
             });
         }
     } else {
-        qCritical() << "Failed to select anchor:"
-                    << query.lastError().text();
+        qCritical() << "Failed to select anchor:" << query.lastError().text();
     }
 
     qDebug() << "result size:" << result.size() << keyword;
@@ -225,7 +220,7 @@ void SearchDb::handleSearchAnchor(const QString &keyword)
     emit this->searchAnchorResult(keyword, result);
 }
 
-QString insertHighlight(QString srcString,  QString keyword)
+QString insertHighlight(QString srcString, QString keyword)
 {
     QString resultString = srcString;
     int currIndex = 0;
@@ -288,7 +283,8 @@ QString SearchDb::highlightKeyword(QString srcString, QString keyword)
         }
 
         if (findImgIndex > startSubStringIndex) {
-            QString findStr = srcString.mid(startSubStringIndex, findImgIndex - startSubStringIndex);
+            QString findStr =
+                srcString.mid(startSubStringIndex, findImgIndex - startSubStringIndex);
             if (!strList.contains(findStr)) {
                 strList.append(findStr);
 
@@ -329,9 +325,8 @@ void SearchDb::handleSearchContent(const QString &keyword)
 
     QSqlQuery query(p_->db);
     const QString lang = QLocale().name();
-    const QString sql = QString(kSearchSelectContent)
-                        .replace(":lang", lang)
-                        .replace(":content", keyword);
+    const QString sql =
+        QString(kSearchSelectContent).replace(":lang", lang).replace(":content", keyword);
 
     bool result_empty = true;
     if (query.exec(sql)) {
@@ -364,11 +359,11 @@ void SearchDb::handleSearchContent(const QString &keyword)
                     contents.append(highlightContent);
                 }
             } else {
-                if (!last_app_name.isEmpty() && appHasMatchHash.value(last_app_name) && contents.size() > 0) {
+                if (!last_app_name.isEmpty() && appHasMatchHash.value(last_app_name) &&
+                    contents.size() > 0) {
                     result_empty = false;
                     qDebug() << Q_FUNC_INFO << "emit searchContentResult()" << contents.length();
-                    emit this->searchContentResult(last_app_name, anchors,
-                                                   anchorIds, contents);
+                    emit this->searchContentResult(last_app_name, anchors, anchorIds, contents);
                 }
 
                 anchors.clear();
@@ -388,13 +383,12 @@ void SearchDb::handleSearchContent(const QString &keyword)
         // Last record.
         if (!result_empty && contents.size() > 0) {
             result_empty = false;
-            qDebug() << Q_FUNC_INFO << "emit searchContentResult() last record" << contents.length();
-            emit this->searchContentResult(last_app_name, anchors,
-                                           anchorIds, contents);
+            qDebug() << Q_FUNC_INFO << "emit searchContentResult() last record"
+                     << contents.length();
+            emit this->searchContentResult(last_app_name, anchors, anchorIds, contents);
         }
     } else {
-        qCritical() << "Failed to select contents:"
-                    << query.lastError().text();
+        qCritical() << "Failed to select contents:" << query.lastError().text();
     }
 
     if (result_empty) {

@@ -46,35 +46,29 @@ QString GetDeepinManualId(const QString &desktop_file)
 }  // namespace
 
 ManualProxy::ManualProxy(QObject *parent)
-    : QObject(parent),
-      launcher_interface_(new LauncherInterface(
-                              kLauncherService,
-                              kLauncherIface,
-                              QDBusConnection::sessionBus(),
-                              this))
+    : QObject(parent)
+    , launcher_interface_(new LauncherInterface(kLauncherService, kLauncherIface,
+                                                QDBusConnection::sessionBus(), this))
 {
     AppInfo::registerMetaType();
 }
 
-ManualProxy::~ManualProxy()
-{
-
-}
+ManualProxy::~ManualProxy() {}
 
 QStringList ManualProxy::getSystemManualList()
 {
     const QHash<QString, QString> kAppNameMap = {
-        { "org.deepin.flatdeb.deepin-calendar", "dde-calendar" },
-        { "org.deepin.flatdeb.deepin-music", "deepin-music" },
-        { "org.deepin.flatdeb.deepin-screenshot", "deepin-screenshot" },
-        { "org.deepin.flatdeb.deepin-voice-recorder", "deepin-voice-recorder" },
-        { "deepin-cloud-print-configurator", "deepin-cloud-print" },
-        { "org.deepin.flatdeb.deepin-image-viewer", "deepin-image-viewer" },
-        { "deepin-cloud-scan-configurator", "deepin-cloud-scan" },
-        { "org.deepin.flatdeb.deepin-movie", "deepin-movie" },
-        { "org.deepin.flatdeb.deepin-screen-recorder", "deepin-screen-recorder" },
-        { "org.deepin.flatdeb.deepin-calculator", "deepin-calculator"},
-        { "com.deepin.editor", "deepin-editor"},
+        {"org.deepin.flatdeb.deepin-calendar", "dde-calendar"},
+        {"org.deepin.flatdeb.deepin-music", "deepin-music"},
+        {"org.deepin.flatdeb.deepin-screenshot", "deepin-screenshot"},
+        {"org.deepin.flatdeb.deepin-voice-recorder", "deepin-voice-recorder"},
+        {"deepin-cloud-print-configurator", "deepin-cloud-print"},
+        {"org.deepin.flatdeb.deepin-image-viewer", "deepin-image-viewer"},
+        {"deepin-cloud-scan-configurator", "deepin-cloud-scan"},
+        {"org.deepin.flatdeb.deepin-movie", "deepin-movie"},
+        {"org.deepin.flatdeb.deepin-screen-recorder", "deepin-screen-recorder"},
+        {"org.deepin.flatdeb.deepin-calculator", "deepin-calculator"},
+        {"com.deepin.editor", "deepin-editor"},
     };
 
     if (app_list_.isEmpty()) {
@@ -82,14 +76,12 @@ QStringList ManualProxy::getSystemManualList()
         const AppInfoList list = launcher_interface_->GetAllItemInfos();
         for (const AppInfo &info : list) {
             const QString app_name = kAppNameMap.value(info.key, info.key);
-            if ((dir_entry.indexOf(app_name) != -1) &&
-                    app_list_.indexOf(app_name) == -1) {
+            if ((dir_entry.indexOf(app_name) != -1) && app_list_.indexOf(app_name) == -1) {
                 app_list_.append(app_name);
             }
 
             const QString deepin_app_id = GetDeepinManualId(info.desktop);
-            if (deepin_app_id == app_name &&
-                    app_list_.indexOf(app_name) == -1) {
+            if (deepin_app_id == app_name && app_list_.indexOf(app_name) == -1) {
                 app_list_.append(app_name);
             }
         }
@@ -102,13 +94,15 @@ QStringList ManualProxy::getSystemManualList()
             app_list_.removeAll("youdao-dict");
         }
     }
-    qDebug() << "app list:" << app_list_ << ", count:" << app_list_.size();
+    qDebug() << "app list===============:" << app_list_ << ", count:" << app_list_.size();
     return app_list_;
 }
 
 void ManualProxy::openExternalLink(const QString &url)
 {
+    qDebug() << "ManualProxy::openExternalLink===========" << url;
+
     QDesktopServices::openUrl(url);
 }  // namespace dman
 
-}
+}  // namespace dman

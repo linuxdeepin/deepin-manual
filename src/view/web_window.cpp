@@ -340,11 +340,14 @@ void WebWindow::onSearchContentByKeyword(const QString &keyword)
 {
     qDebug() << "calling keyword is:" << keyword << endl;
     QString key(keyword);
-    const QString searchKey = key.remove('\n').remove('\r').remove("\r\n");
+    QString searchKey = key.remove('\n').remove('\r').remove("\r\n");
     search_manager_->searchContent(searchKey);
 
+    QString base64Key = QString(searchKey.toUtf8().toBase64());
+    qDebug() << base64Key << endl;
+
     // Show search page.
-    web_view_->page()->runJavaScript(QString("openSearchPage('%1')").arg(searchKey));
+    web_view_->page()->runJavaScript(QString("openSearchPage('%1')").arg(base64Key));
 }
 
 void WebWindow::onSearchEditFocusOut()

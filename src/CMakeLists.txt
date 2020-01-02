@@ -6,11 +6,13 @@ project(deepin-manual C CXX)
 set(CMAKE_INSTALL_PREFIX /usr)
 
 if (CMAKE_BUILD_TYPE MATCHES Debug)
-  add_definitions(-DDMAN_SEARCH_DB="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/search.db")
+#  add_definitions(-DDMAN_SEARCH_DB="${CMAKE_CURRENT_SOURCE_DIR}/search.db")
+  add_definitions(-DDMAN_SEARCH_DB="${CMAKE_SOURCE_DIR}/manual")
   add_definitions(-DDMAN_WEB_DIR="${CMAKE_CURRENT_SOURCE_DIR}/web_dist")
   add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_SOURCE_DIR}/manual")
 else()
-  add_definitions(-DDMAN_SEARCH_DB="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/search.db")
+#  add_definitions(-DDMAN_SEARCH_DB="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/search.db")
+  add_definitions(-DDMAN_SEARCH_DB="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual")
   add_definitions(-DDMAN_WEB_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/web_dist")
   add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual")
 endif ()
@@ -306,6 +308,6 @@ install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/web_dist
 
 string(TOLOWER ${CMAKE_SYSTEM_PROCESSOR} LOWERCASE_CMAKE_SYSTEM_PROCESSOR)
 
-install(FILES ${CMAKE_SOURCE_DIR}/search.db
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
+#install(FILES ${CMAKE_SOURCE_DIR}/search.db
+#        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
 

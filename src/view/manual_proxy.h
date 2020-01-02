@@ -18,38 +18,50 @@
 #ifndef DEEPIN_MANUAL_VIEW_MANUAL_PROXY_H
 #define DEEPIN_MANUAL_VIEW_MANUAL_PROXY_H
 
-#include <QObject>
+#include <DSysInfo>
+#include <QDebug>
 #include <QList>
+#include <QObject>
 
 class LauncherInterface;
 
 namespace dman {
 
-class ManualProxy : public QObject {
-  Q_OBJECT
- public:
-  explicit ManualProxy(QObject* parent = nullptr);
-  ~ManualProxy() override;
+class ManualProxy : public QObject
+{
+    Q_OBJECT
+public:
+    explicit ManualProxy(QObject* parent = nullptr);
+    ~ManualProxy() override;
 
 signals:
-   void WidgetLower();
- public slots:
-  QString getSystemManualDir() const {
-    return DMAN_MANUAL_DIR;
-  }
+    void WidgetLower();
+public slots:
+    QString getSystemManualDir() const
+    {
+        QString strMANUAL_DIR = DMAN_MANUAL_DIR;
+        int nType = Dtk::Core::DSysInfo::deepinType();
+        if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
+            strMANUAL_DIR += "/server";
+            //            strMANUAL_DIR += "/professional";
+        } else {
+            //            strMANUAL_DIR += "/server";
+            strMANUAL_DIR += "/professional";
+        }
+        return strMANUAL_DIR;
+    }
 
-  QStringList getSystemManualList();
+    QStringList getSystemManualList();
 
-  /**
-   * Open link with xdg-open.
-   * @param url
-   */
-  void openExternalLink(const QString& url);
+    /**
+     * Open link with xdg-open.
+     * @param url
+     */
+    void openExternalLink(const QString& url);
 
-
- private:
-  LauncherInterface* launcher_interface_ = nullptr;
-  QStringList app_list_;
+private:
+    LauncherInterface* launcher_interface_ = nullptr;
+    QStringList app_list_;
 };
 
 }  // namespace dman

@@ -18,6 +18,7 @@
 #include "controller/search_manager.h"
 
 #include <DLog>
+#include <DSysInfo>
 #include <QThread>
 
 #include "controller/search_db.h"
@@ -25,9 +26,9 @@
 namespace dman {
 
 SearchManager::SearchManager(QObject *parent)
-    : QObject(parent),
-      db_(nullptr),
-      db_thread_(nullptr)
+    : QObject(parent)
+    , db_(nullptr)
+    , db_thread_(nullptr)
 {
     QTimer::singleShot(500, this, [this] {
         qDebug() << "init SearchManager" << endl;
@@ -42,21 +43,26 @@ void SearchManager::initSearchManager()
     db_thread_->start();
     db_->moveToThread(db_thread_);
 
-    connect(this, &SearchManager::searchAnchor,
-            db_, &SearchDb::searchAnchor);
-    connect(db_, &SearchDb::searchAnchorResult,
-            this, &SearchManager::searchAnchorResult);
-    connect(this, &SearchManager::searchContent,
-            db_, &SearchDb::searchContent);
-    connect(db_, &SearchDb::searchContentResult,
-            this, &SearchManager::searchContentResult);
-    connect(db_, &SearchDb::searchContentMismatch,
-            this, &SearchManager::searchContentMismatch);
+    connect(this, &SearchManager::searchAnchor, db_, &SearchDb::searchAnchor);
+    connect(db_, &SearchDb::searchAnchorResult, this, &SearchManager::searchAnchorResult);
+    connect(this, &SearchManager::searchContent, db_, &SearchDb::searchContent);
+    connect(db_, &SearchDb::searchContentResult, this, &SearchManager::searchContentResult);
+    connect(db_, &SearchDb::searchContentMismatch, this, &SearchManager::searchContentMismatch);
 
-    connect(db_thread_, &QThread::destroyed,
-            db_, &QObject::deleteLater);
+    connect(db_thread_, &QThread::destroyed, db_, &QObject::deleteLater);
 
-    emit db_->initDbAsync(DMAN_SEARCH_DB);
+    //    qDebug() << "SearchManager::initSearchManager--------------->" << DMAN_SEARCH_DB;
+    QString strDB = DMAN_SEARCH_DB;
+    int nType = Dtk::Core::DSysInfo::deepinType();
+    if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
+        strDB += "/server/search.db";
+        //        strDB += "/professional/search.db";
+    } else {
+        strDB += "/professional/search.db";
+        //        strDB += "/server/search.db";
+    }
+
+    emit db_->initDbAsync(strDB);
 }
 
 SearchManager::~SearchManager()
