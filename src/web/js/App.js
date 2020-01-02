@@ -232,7 +232,27 @@ class App extends React.Component {
       }
     }
 
+    let Base64 = {
+      encode(str) {
+          // first we use encodeURIComponent to get percent-encoded UTF-8,
+          // then we convert the percent encodings into raw bytes which
+          // can be fed into btoa.
+          return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g,
+              function toSolidBytes(match, p1) {
+                  return String.fromCharCode('0x' + p1);
+              }));
+      },
+      decode(str) {
+          // Going backwards: from bytestream, to percent-encoding, to original string.
+          return decodeURIComponent(atob(str).split('').map(function (c) {
+              return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+          }).join(''));
+      }
+    };
+
     global.openSearchPage = keyword => {
+      let decodeKeyword = Base64.decode(keyword);
+      console.log("decodeKeyword", decodeKeyword);
       console.log("openSearchPage", this.context.router.history);
       console.log(`lastUrl:${global.lastUrlBeforeSearch}, lastHistoryIndex: ${global.lastHistoryIndex}`);
 
@@ -244,7 +264,7 @@ class App extends React.Component {
 
         this.setState({ searchResult: [] });
         this.context.router.history.push(
-          '/search/' + encodeURIComponent(keyword)
+          '/search/' + encodeURIComponent(decodeKeyword)
         );
 
         return;
@@ -263,7 +283,7 @@ class App extends React.Component {
 
       this.setState({ searchResult: [] });
       this.context.router.history.push(
-        '/search/' + encodeURIComponent(keyword)
+        '/search/' + encodeURIComponent(decodeKeyword)
       );
     };
 

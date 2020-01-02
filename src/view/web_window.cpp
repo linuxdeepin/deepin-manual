@@ -340,7 +340,7 @@ void WebWindow::onSearchContentByKeyword(const QString &keyword)
 {
     qDebug() << "calling keyword is:" << keyword << endl;
     QString key(keyword);
-    QString searchKey = key.remove('\n').remove('\r').remove("\r\n");
+    const QString searchKey = key.remove('\n').remove('\r').remove("\r\n");
     search_manager_->searchContent(searchKey);
 
     QString base64Key = QString(searchKey.toUtf8().toBase64());
