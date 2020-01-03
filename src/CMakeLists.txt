@@ -74,10 +74,12 @@ find_package(Qt5LinguistTools REQUIRED)
 
 pkg_search_module(DtkWidget REQUIRED dtkwidget)
 pkg_search_module(DtkGui REQUIRED dtkgui)
+pkg_search_module(DtkCore REQUIRED dtkcore)
 pkg_search_module(LibQCef REQUIRED libqcef)
 
 include_directories(${DtkWidget_INCLUDE_DIRS})
 include_directories(${DtkGui_INCLUDE_DIRS})
+include_directories(${DtkCore_INCLUDE_DIRS})
 include_directories(${LibQCef_INCLUDE_DIRS})
 
 set(LINK_LIBS
@@ -90,9 +92,16 @@ set(LINK_LIBS
 
     ${DtkWidget_LDFLAGS}
     ${DtkGui_LDFLAGS}
+    ${DtkCore_LDFLAGS}
     ${LibQCef_LDFLAGS}
 
     -lX11
+    )
+
+set(DMAN_SEARCH_LINK_LIBS
+    Qt5::Core
+    Qt5::DBus
+    ${DtkCore_LDFLAGS}
     )
 
 set(BASE_FILES
@@ -251,8 +260,7 @@ add_executable(dman-search
                ${DBUS_FILES}
                )
 target_link_libraries(dman-search
-                      Qt5::Core
-                      Qt5::DBus)
+                      ${DMAN_SEARCH_LINK_LIBS})
 
 if (CMAKE_BUILD_TYPE MATCHES Debug)
   set(SEARCH_DEMO_FILES 

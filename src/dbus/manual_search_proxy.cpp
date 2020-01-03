@@ -23,7 +23,7 @@
 
 #include <DLog>
 
-ManualSearchProxy::ManualSearchProxy(QObject* parent)
+ManualSearchProxy::ManualSearchProxy(QObject *parent)
     : QObject(parent)
     , m_dbusConn(QDBusConnection::connectToBus(QDBusConnection::SessionBus, "Receiver"))
 {
@@ -35,42 +35,40 @@ ManualSearchProxy::ManualSearchProxy(QObject* parent)
     connectToSender();
 }
 
-ManualSearchProxy::~ManualSearchProxy() {
-
-}
+ManualSearchProxy::~ManualSearchProxy() {}
 
 void ManualSearchProxy::initDBus()
 {
     if (!m_dbusConn.isConnected()) {
-        qDebug() << "Receiver" << "connectToBus() failed";
+        qDebug() << "Receiver"
+                 << "connectToBus() failed";
         return;
     }
 
-    if (!m_dbusConn.registerService(dman::kManualSearchService+QString("Receiver")) ||
-        !m_dbusConn.registerObject(dman::kManualSearchIface+QString("Receiver"), this)) {
+    if (!m_dbusConn.registerService(dman::kManualSearchService + QString("Receiver")) ||
+        !m_dbusConn.registerObject(dman::kManualSearchIface + QString("Receiver"), this)) {
         qCritical() << "Receiver failed to register dbus service";
         return;
-    }
-    else {
+    } else {
         qDebug() << "Receiver register dbus service success!";
     }
 }
 
 void ManualSearchProxy::connectToSender()
 {
-    QDBusConnection senderConn = QDBusConnection::connectToBus(QDBusConnection::SessionBus, "Sender");
+    QDBusConnection senderConn =
+        QDBusConnection::connectToBus(QDBusConnection::SessionBus, "Sender");
 
     if (!senderConn.connect(
-            dman::kManualSearchService+QString("Sender"),               //sender's service name
-            dman::kManualSearchIface+QString("Sender"),                 //sender's path name
-            dman::kManualSearchService+QString("Sender"),               //interface
-            "SendWinInfo",                                              //sender's signal name
-            this,                                                       //receiver
-            SLOT(RecvMsg(const QString &)))) {                          //slot
+            dman::kManualSearchService + QString("Sender"),  // sender's service name
+            dman::kManualSearchIface + QString("Sender"),    // sender's path name
+            dman::kManualSearchService + QString("Sender"),  // interface
+            "SendWinInfo",                                   // sender's signal name
+            this,                                            // receiver
+            SLOT(RecvMsg(const QString &)))) {               // slot
 
         qDebug() << "connectToBus()::connect() Sender SendWinInfo failed";
-    }
-    else {
+    } else {
         qDebug() << "connectToBus()::connect() Sender SendWinInfo success";
     }
 }
@@ -88,7 +86,7 @@ void ManualSearchProxy::RecvMsg(const QString &data)
 
     QList<int> removeIndexList;
     QString currWinId = dataList.at(1);
-    for(int i=0; i<winInfoList.size(); i++) {
+    for (int i = 0; i < winInfoList.size(); i++) {
         QHash<QString, QString> winInfo = winInfoList.at(i);
         qDebug() << "processId:" << winInfo.keys().first();
         if (currProcessId != winInfo.keys().first()) {
@@ -97,7 +95,7 @@ void ManualSearchProxy::RecvMsg(const QString &data)
     }
 
     if (removeIndexList.size() > 0) {
-        for(int i=removeIndexList.size()-1; i>=0; i--) {
+        for (int i = removeIndexList.size() - 1; i >= 0; i--) {
             int removeIndex = removeIndexList.at(i);
             qDebug() << "remove window" << removeIndex;
             winInfoList.removeAt(removeIndex);
@@ -112,13 +110,12 @@ void ManualSearchProxy::RecvMsg(const QString &data)
         return;
     }
 
-
     QString flag = dataList.last();
 
     if ("close" == flag) {
         int removeWinIndex = -1;
         if (winInfoList.size() > 0) {
-            for(int i=0; i<winInfoList.size(); i++) {
+            for (int i = 0; i < winInfoList.size(); i++) {
                 QHash<QString, QString> winInfo = winInfoList.at(i);
                 if (dataList.at(1) == winInfo.value(winInfo.keys().first())) {
                     removeWinIndex = i;
@@ -144,11 +141,9 @@ void ManualSearchProxy::OnNewWindowOpen(const QString &data)
     }
 
     bool hasProcess = false;
-    for(int i=0; i<winInfoList.size(); i++)
-    {
+    for (int i = 0; i < winInfoList.size(); i++) {
         QHash<QString, QString> winInfo = winInfoList.at(i);
-        if (winInfo.keys().first() == data)
-        {
+        if (winInfo.keys().first() == data) {
             hasProcess = true;
             break;
         }
@@ -156,15 +151,15 @@ void ManualSearchProxy::OnNewWindowOpen(const QString &data)
 
     if (!hasProcess) {
         QHash<QString, QString> winInfo = winInfoList.first();
-        qDebug() << "first Window:process" << winInfo.keys().first() << ", winId:" << winInfo.value(winInfo.keys().first());
+        qDebug() << "first Window:process" << winInfo.keys().first()
+                 << ", winId:" << winInfo.value(winInfo.keys().first());
 
         quintptr winId = winInfo.value(winInfo.keys().first()).toULong();
         // new interface use applicationName as id
-        QDBusInterface manual("com.deepin.dde.daemon.Dock",
-                              "/com/deepin/dde/daemon/Dock",
+        QDBusInterface manual("com.deepin.dde.daemon.Dock", "/com/deepin/dde/daemon/Dock",
                               "com.deepin.dde.daemon.Dock");
         QDBusReply<void> reply = manual.call("ActivateWindow", winId);
-        if (reply.isValid())  {
+        if (reply.isValid()) {
             qDebug() << "call com.deepin.dde.daemon.Dock success";
             return;
         }
@@ -174,6 +169,14 @@ void ManualSearchProxy::OnNewWindowOpen(const QString &data)
 
 bool ManualSearchProxy::ManualExists(const QString &app_name)
 {
-    QDir manual_dir(DMAN_MANUAL_DIR);
+    QString strManualPath = DMAN_MANUAL_DIR;
+    int nType = Dtk::Core::DSysInfo::deepinType();
+    if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
+        strManualPath += "/server";
+    } else {
+        strManualPath += "/professional";
+    }
+
+    QDir manual_dir(strManualPath);
     return manual_dir.exists(app_name);
 }

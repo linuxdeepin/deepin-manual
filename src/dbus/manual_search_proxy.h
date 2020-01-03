@@ -18,8 +18,13 @@
 #ifndef DEEPIN_MANUAL_DBUS_MANUAL_SEARCH_PROXY_H
 #define DEEPIN_MANUAL_DBUS_MANUAL_SEARCH_PROXY_H
 
-#include <QObject>
+//#include "view/manual_proxy.h"
+
+#include <DSysInfo>
 #include <QDBusConnection>
+#include <QObject>
+// class LauncherInterface;
+#include <DSysInfo>
 
 class ManualSearchProxy : public QObject
 {
