@@ -50,6 +50,7 @@ private:
     void initDBus();
     void initWebWindow();
     void activeExistingWindow();
+    void activeOrInitWindow(const QString &app_name);
 
     QHash<QString, WebWindow*> windows_;
     SearchManager* search_manager_ { nullptr };

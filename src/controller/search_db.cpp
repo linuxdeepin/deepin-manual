@@ -18,6 +18,8 @@
 #include "controller/search_db.h"
 
 #include <DLog>
+#include <DSysInfo>
+
 #include <QDateTime>
 #include <QDir>
 #include <QSqlDatabase>
@@ -141,11 +143,19 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
     Q_ASSERT(anchors.length() == contents.length());
     qDebug() << "addSearchEntry()" << app_name << lang << anchors;  // << contents;
 
+    QString strManualPath = "";
+    int nType = Dtk::Core::DSysInfo::deepinType();
+    if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
+        strManualPath += "/server";
+    } else {
+        strManualPath += "/professional";
+    }
+
     QStringList newContents = contents;
     for (int i = 0; i < contents.size(); i++) {
         QString content = contents.at(i);
         content = content.replace(
-            "icon/", "/usr/share/deepin-manual/manual/" + app_name + "/" + lang + "/icon/");
+            "icon/", "/usr/share/deepin-manual/manual/" + strManualPath + "/" + app_name + "/" + lang + "/icon/");
         newContents.replace(i, content);
     }
 

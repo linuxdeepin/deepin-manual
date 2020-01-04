@@ -197,10 +197,8 @@ void WindowManager::activeExistingWindow()
     }
 }
 
-void WindowManager::openManual(const QString &app_name)
+void WindowManager::activeOrInitWindow(const QString &app_name)
 {
-    curr_app_name_ = app_name;
-    curr_keyword_ = "";
     qDebug() << Q_FUNC_INFO << app_name;
     if (windows_.contains(app_name)) {
         activeExistingWindow();
@@ -210,10 +208,20 @@ void WindowManager::openManual(const QString &app_name)
     initWebWindow();
 }
 
+void WindowManager::openManual(const QString &app_name)
+{
+    curr_app_name_ = app_name;
+    curr_keyword_ = "";
+    activeOrInitWindow(app_name);
+    qDebug() << Q_FUNC_INFO << app_name << curr_keyword_;
+}
+
 void WindowManager::openManualWithSearch(const QString &app_name, const QString &keyword)
 {
+    curr_app_name_ = app_name;
     curr_keyword_ = keyword;
-    openManual(app_name);
+    activeOrInitWindow(app_name);
+    qDebug() << Q_FUNC_INFO << app_name << curr_keyword_;
 }
 
 SearchManager* WindowManager::currSearchManager()

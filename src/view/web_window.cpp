@@ -438,18 +438,19 @@ void WebWindow::onWebPageLoadFinished(bool ok)
                     QString("open('%1')").arg(app_name_));
             }
         }
-        QTimer::singleShot(100, [&]() {
-            web_view_->show();
-        });
-    }
 
-    if (first_webpage_loaded_) {
-        first_webpage_loaded_ = false;
-        if (keyword_.length() > 0) {
-            QTimer::singleShot(10, [=]{
-                emit this->manualSearchByKeyword(keyword_);
-            });
-        }
+        QTimer::singleShot(100, [&]() {
+            qDebug() << "show webview";
+            web_view_->show();
+
+            if (first_webpage_loaded_) {
+                first_webpage_loaded_ = false;
+                if (keyword_.length() > 0) {
+                    qDebug() << "first_webpage_loaded_ manualSearchByKeyword:" << keyword_;
+                    emit this->manualSearchByKeyword(keyword_);
+                }
+            }
+        });
     }
 }
 
