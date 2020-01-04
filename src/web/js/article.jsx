@@ -204,12 +204,28 @@ export default class Article extends Component {
       let { top, left, right } = rect;
       let style = {};
       let tClass = 't_';
-      if (right > document.body.clientWidth / 2) {
+      //center
+      if (((right + left)/2 > (300 + 170)) && (((right + left)/2 + 300 < document.body.clientWidth))) {
+        style.left　=　(right + left)/2 - 300;
         tClass += 'right_';
-        style.left = left - 600 + 60 + rect.width - 5;
-      } else {
+      }
+      //right
+      else if (((right + left)/2 + 300 < document.body.clientWidth))
+      {
+        style.left　=　right - 600;
+        tClass += 'right_';
+      }
+      //left
+      else if ((right + left)/2 <= (300 + 170))
+      {
+        style.left　=　left;
         tClass += 'left_';
-        style.left = left + rect.width - 60 - 40;
+      }
+      //left
+      else {
+        style.left　= 170;
+        tClass += 'left_';
+        
       }
       if (top > document.body.clientHeight / 2) {
         tClass += 'down';
