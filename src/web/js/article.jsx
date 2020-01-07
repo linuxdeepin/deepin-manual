@@ -12,17 +12,26 @@ export default class Article extends Component {
       preview: null,
       smoothScroll: false,
       fillblank: null,
+      bIsTimerOut:true
     };
+
+    var timerObj;
   }
   //滚动到锚点
   scrollToHash() {
-    // console.log('scrollToHash');
     let tempHash = this.hash;
     const hashNode = document.getElementById(tempHash);
     if (hashNode) {
-      this.setState({ smoothScroll: true });
-      scrollIntoView(hashNode, { behavior: 'smooth', block: 'start' }).then(() => {
 
+      clearTimeout(this.timerObj);
+      this.setState({ smoothScroll: true });
+
+      this.timerObj = setTimeout(() => {
+          this.setState({ smoothScroll: false });
+      },800);
+
+      scrollIntoView(hashNode, { behavior: 'smooth', block: 'start' }).then(() => {
+        console.log("scrollIntoView finish..");
         //find parent h3 title of h4 title
         let hList = ReactDOM.findDOMNode(this).querySelectorAll('h2,h3,h4,h5');
         var currH3Hash = '';
@@ -40,10 +49,6 @@ export default class Article extends Component {
             break;
           }
         }
-
-        setTimeout(() => {
-          this.setState({ smoothScroll: false });
-        },500);
       });
     } else {
       this.props.setHash(this.props.hlist[0].id);

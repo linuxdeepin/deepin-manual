@@ -451,8 +451,11 @@ var Article = function (_Component) {
     _this.state = {
       preview: null,
       smoothScroll: false,
-      fillblank: null
+      fillblank: null,
+      bIsTimerOut: true
     };
+
+    var timerObj;
     return _this;
   }
   //滚动到锚点
@@ -463,13 +466,19 @@ var Article = function (_Component) {
     value: function scrollToHash() {
       var _this2 = this;
 
-      // console.log('scrollToHash');
       var tempHash = this.hash;
       var hashNode = document.getElementById(tempHash);
       if (hashNode) {
-        this.setState({ smoothScroll: true });
-        (0, _smoothScrollIntoViewIfNeeded2.default)(hashNode, { behavior: 'smooth', block: 'start' }).then(function () {
 
+        clearTimeout(this.timerObj);
+        this.setState({ smoothScroll: true });
+
+        this.timerObj = setTimeout(function () {
+          _this2.setState({ smoothScroll: false });
+        }, 800);
+
+        (0, _smoothScrollIntoViewIfNeeded2.default)(hashNode, { behavior: 'smooth', block: 'start' }).then(function () {
+          console.log("scrollIntoView finish..");
           //find parent h3 title of h4 title
           var hList = _reactDom2.default.findDOMNode(_this2).querySelectorAll('h2,h3,h4,h5');
           var currH3Hash = '';
@@ -487,10 +496,6 @@ var Article = function (_Component) {
               break;
             }
           }
-
-          setTimeout(function () {
-            _this2.setState({ smoothScroll: false });
-          }, 500);
         });
       } else {
         this.props.setHash(this.props.hlist[0].id);
