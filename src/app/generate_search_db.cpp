@@ -45,19 +45,21 @@ int main(int argc, char **argv)
     db.initDb(DMAN_SEARCH_ORIG_DB);
     db.initSearchTable();
 
-    for (const QString &locale : {"zh_CN", "en_US"}) {
+    for (const QString &locale : {
+                "zh_CN", "en_US"
+            }) {
         QString strManualDir = DMAN_ORIG_MANUAL_DIR;
         int nType = Dtk::Core::DSysInfo::deepinType();
         if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
-            //            strManualDir += "/professional";
+            //   strManualDir += "/professional";
             strManualDir += "/server";
         } else {
-            //            strManualDir += "/server";
+            // strManualDir += "/server";
             strManualDir += "/professional";
         }
 
         for (const QString &app_name :
-             QDir(strManualDir).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+                QDir(strManualDir).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
             const QString md_file =
                 QStringList {strManualDir, app_name, locale, "index.md"}.join(QDir::separator());
             if (!QFileInfo(md_file).isFile()) {
@@ -69,10 +71,10 @@ int main(int argc, char **argv)
             manualDir.cdUp();
             qDebug() << manualDir.path();
             QString searchIndexFilePath = QString("%1/%2/%3/%4")
-                                              .arg(manualDir.path())
-                                              .arg("src")
-                                              .arg("web")
-                                              .arg("toSearchIndex.js");
+                                          .arg(manualDir.path())
+                                          .arg("src")
+                                          .arg("web")
+                                          .arg("toSearchIndex.js");
             qDebug() << searchIndexFilePath;
             QString out, err;
             //            QStringList cmdList = {"node"};
