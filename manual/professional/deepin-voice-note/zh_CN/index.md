@@ -2,7 +2,7 @@
 
 ## 概述
 
-语音记事本是一款设计简洁、美观易用的集文本、录音来记事的软件。用户可以将录音转存为 MP3，或者将录音转化为文字保存。![0|voice_recorder](jpg/add-text.png)
+语音记事本是一款设计简洁、美观易用的集文本、录音来记事的软件。用户可以将录音转存为 MP3，或者将录音转化为文字保存。![0|voice_recorder](jpg/main.png)
 
 
 ## 使用入门
@@ -114,7 +114,7 @@
 
 > ![tips](icon/tips.svg)：在记事本中可以录制音频，详细操作请参考录制音频。
 
-![0|words_recorder](jpg/add-text.png)
+![0|words_recorder](jpg/main.png)
 
 
 ### 保存为TXT文件

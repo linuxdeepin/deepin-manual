@@ -70,22 +70,6 @@
 
 > ![notes](icon/notes.svg)：关于显示的设置，具体操作请参阅 [显示设置](#显示设置)。
 
-### 设置热区
-热区可以简化您的操作，方便您快速进入系统的主要界面。桌面的四个角落默认没有热区，设置热区后您可以快速打开启动器和控制中心，关闭屏幕，显示桌面等。
-
-
-1. 在桌面上，点击鼠标右键。
-2. 点击 **热区设置**。
-3. 整个屏幕会变暗并且在屏幕的四个角落将显示对应的热区功能。
-4. 将鼠标指针置于桌面的某个角落，在选项中重新选择一项。
-5. 在桌面的空白处点击一下鼠标，退出热区设置。
-
-![1|hotspace](jpg/hotspace2.png)
-<!--此图未更新-->
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-> ![tips](icon/tips.svg)：请留意热区设置界面的动画，学习热区使用方法。将鼠标移动到屏幕一角并继续向外拖动就可以唤醒对应的热区功能。
-
 
  ### 更改壁纸
 您可以选择一些精美、时尚的壁纸来美化桌面，让您的电脑显示与众不同。
@@ -203,6 +187,7 @@
 |注销![logout_normal](icon/logout_normal.svg)|清除当前登录用户的信息。|
 |系统监视器![deepin-system-monitor](icon/deepin-system-monitor.svg)|快速启动系统监视器。|
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 > ![notes](icon/notes.svg)：当系统存在多个账户时才显示 ![userswitch_normal](icon/userswitch_normal.svg)。
 
 
@@ -373,6 +358,7 @@
 3. 打开 **自动登录** 开关，开启自动登录功能。
 
 #### 无密码登录
+
 开启“无密码登录”后，下次登录系统时（重启，开机，和在注销后再次登录），不需要密码，点击 ![login](icon/login.svg) 即可登录系统。
 1. 在控制中心首页，点击![account_normal](icon/account_normal.svg)。
 2. 点击当前帐户。
