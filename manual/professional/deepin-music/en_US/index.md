@@ -1,4 +1,4 @@
-# Deepin Music|../common/deepin-music.svg|
+# Music|../common/deepin-music.svg|
 
 ## Overview
 

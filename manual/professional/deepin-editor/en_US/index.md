@@ -1,4 +1,4 @@
-# Deepin Editor|../common/deepin-editor.svg|
+# Editor|../common/deepin-editor.svg|
 
 ## Overview
 
@@ -150,7 +150,7 @@ If you make a misoperation, press ![Ctrl](icon/Ctrl.svg) + ![Z](icon/Z.svg) to u
 1. Click on ![menu](icon/icon_menu.svg), and select **Find**, or press ![Ctrl](icon/Ctrl.svg) + ![F](icon/F.svg) to open "Find" box below.
 2. Input the text you want to find. Once input, all the matches will be highlighted.
 3. Click **Next**, **Previous** to find each match, or press ![Enter](icon/Enter.svg) to find next match.
-4. Press ![Esc](icon/Esc.svg) or click close button to close the dialog box.
+4. Press ![Esc](icon/Esc.svg) or click close button to close the dialog box.
 
 > ![tips](icon/tips.svg): Select the text and then press ![Ctrl](icon/Ctrl.svg) + ![F](icon/F.svg), the text will be automatically in the "Find" box.
 
@@ -158,7 +158,7 @@ If you make a misoperation, press ![Ctrl](icon/Ctrl.svg) + ![Z](icon/Z.svg) to u
 1. Click on ![menu](icon/icon_menu.svg), and select **Replace**, or press ![Ctrl](icon/Ctrl.svg) + ![H](icon/H.svg) to open "Replace" box below.
 2. Input the text to be replaced and the new text.
 3. Click **Replace** to replace the matches one by one, click **Replace Rest**、**Replace All** to replace the rest or all the matches. Click **Skip** to skip the current matching text.
-4. Press ![Esc](icon/Esc.svg) or click close button to close the dialog box.
+4. Press ![Esc](icon/Esc.svg) or click close button to close the dialog box.
 
 ### Go to Line
 Use it to jump to specific line directly.

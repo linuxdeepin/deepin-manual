@@ -1,4 +1,4 @@
-# Deepin File Manager|../common/deepin-file-manager.svg|
+# File Manager|../common/deepin-file-manager.svg|
 
 ## Overview
 

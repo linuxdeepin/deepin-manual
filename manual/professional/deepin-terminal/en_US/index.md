@@ -1,4 +1,4 @@
-# Deepin Terminal|../common/deepin-terminal.svg|
+# Terminal|../common/deepin-terminal.svg|
 
 ## Overview
 

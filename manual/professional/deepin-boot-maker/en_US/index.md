@@ -1,4 +1,4 @@
-# Deepin Boot Maker|../common/deepin-boot-maker.svg|
+# Boot Maker|../common/deepin-boot-maker.svg|
 
 ## Overview
 

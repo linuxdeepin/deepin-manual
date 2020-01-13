@@ -1,4 +1,4 @@
-# Deepin Movie |../common/deepin-movie.svg|
+# Movie |../common/deepin-movie.svg|
 ## Overview
 
 Deepin Movie is a video player with various features built in deepin. It offers simple interface and rich shortcuts, supports various video formats. You can also play online video resources, freely set the sound, frame and subtitle.

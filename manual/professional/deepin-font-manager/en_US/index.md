@@ -1,4 +1,4 @@
-# Deepin Font Manager |../common/deepin-font-manager.svg|
+# Font Manager |../common/deepin-font-manager.svg|
 
 ## Overview
 

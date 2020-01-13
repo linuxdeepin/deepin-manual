@@ -1,4 +1,4 @@
-# Deepin Image Viewer|../common/deepin-image-viewer.svg|
+# Image Viewer|../common/deepin-image-viewer.svg|
 
 ## Overview
 

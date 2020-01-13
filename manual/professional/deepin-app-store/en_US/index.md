@@ -1,4 +1,4 @@
-# Deepin Store|../common/deepin-appstore.svg|
+# Store|../common/deepin-appstore.svg|
 
 ## Overview
 Deepin Store is an app store with the integration of application display, downloading, installation, uninstallation, commenting, rating, and recommendation. Deepin Store collects different types of applications for you, each one has been installed and verified manually. You can search the popular applications with one-click download and automatic installation.

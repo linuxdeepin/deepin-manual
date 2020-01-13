@@ -1,4 +1,4 @@
-# Deepin Repair|../common/deepin-repair.svg|
+# Repair|../common/deepin-repair.svg|
 
 ## Overview
 

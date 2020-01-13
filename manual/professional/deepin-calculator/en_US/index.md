@@ -1,4 +1,4 @@
-# Deepin Calculator|../common/deepin-calculator.svg|
+# Calculator|../common/deepin-calculator.svg|
 
 ## Overview
 

@@ -1,4 +1,4 @@
-# Deepin Package Manager |../common/deepin-deb-installer.svg|
+# Package Manager |../common/deepin-deb-installer.svg|
 
 ## Overview
 

@@ -1,4 +1,4 @@
-# Deepin Clone |../common/deepin-clone.svg|
+# Clone |../common/deepin-clone.svg|
 
 ## Overview
 Deepin Clone is a powerful backup and restore tool in deepin. You can freely clone, backup and restore between disks or partitions. With Deepin Clone, don't worry about data loss any more!
