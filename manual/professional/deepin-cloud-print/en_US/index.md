@@ -1,18 +1,18 @@
-# Deepin Cloud Print|../common/deepin-cloud-print.svg|
+# Cloud Print|../common/deepin-cloud-print.svg|
 
 ## Overview
 
-Deepin Cloud Print is a new printing solution developed by Wuhan Deepin Technology Co., Ltd.. It will connect your printer to the network, and is enabled for network printing via daily used applications. Deepin Cloud Print is suitable for desktops, laptops, some tablets and other networking devices that you have authorized to print.
+Cloud Print is a new printing solution. It will connect your printer to the network, and is enabled for network printing via daily used applications. Cloud Print is suitable for desktops, laptops, some tablets and other networking devices that you have authorized to print.
 
-Deepin Cloud Print consists of Server (in Windows) and Client (in deepin), which will be configured respectively.
+Cloud Print consists of Server (in Windows) and Client (in UOS), which will be configured respectively.
 
 ## Server Configurations
 
-You can install the application program for Deepin Cloud Print Server and configure the authorization code in Windows.
+You can install the application program for Cloud Print Server and configure the authorization code in Windows.
 
-### Install Deepin Cloud Print
+### Install Cloud Print
 
-1. Download the installation program for Deepin Cloud Print Server.
+1. Download the installation program for Cloud Print Server.
 2. Install in Windows.
 3. Finish the installation by wizard.
 
@@ -22,9 +22,9 @@ The server IP address will be acquired in Windows automatically after finished t
 
 > ![notes](icon/notes.svg): If you need to change the authorization code, please input a new one in the textbox, and then click on **Update**.
 
-1. Click the start menu to open the program of Deepin Cloud Print Server in Windows.
+1. Click the start menu to open the program of Cloud Print Server in Windows.
 2. Acquire the IP address automatically.
-3. Input the authorization code in the settings interface of Deepin Cloud Print Server.
+3. Input the authorization code in the settings interface of Cloud Print Server.
 4. Click on **Update**, then ![spinner](icon/icon_spinner.png) will be displayed.
 5. After updated the authorization code, ![success](icon/icon_success.svg) will be displayed.
 
@@ -32,16 +32,16 @@ The server IP address will be acquired in Windows automatically after finished t
 
 ## Client Configurations
 
-You can open Deepin Cloud Print Client in deepin to add one or more cloud printers.
+You can open Cloud Print Client in UOS to add one or more cloud printers.
 
-### Open Deepin Cloud Print
+### Open Cloud Print
 
-1. Click on ![launcher-24](icon/launcher-24.svg) to enter launcher.
-2. Click on ![printer-24](icon/printer-24.svg) to enter the interface of Deepin Cloud Print.
+1. Click on ![launcher](icon/deepin-launcher.svg) to enter launcher.
+2. Click on ![printer-24](icon/printer-24.svg) to enter the interface of Cloud Print.
 
-### Set Deepin Cloud Print
+### Set Cloud Print
 
-1. On the interface of Deepin Cloud Print, input the IP address and authorization code of Deepin Cloud Print Server from Windows.
+1. On the interface of Cloud Print, input the IP address and authorization code of Cloud Print Server from Windows.
 2. Click on ![icon_next](icon/icon_next.svg) to show all printers from Windows.
 3. Click on ![icon_plus](icon/icon_plus.svg) to add the printer, and then its status will be displayed in "Added".
 4. Click on ![icon_setting](icon/icon_setting.svg) to enter the interface of print settings.
@@ -53,7 +53,7 @@ You can open Deepin Cloud Print Client in deepin to add one or more cloud printe
 
 ## Print Test 
 
-You can use cloud print to print files in deepin, taking .doc files as the example.
+You can use cloud print to print files in UOS, taking .doc files as the example.
 
 1. Open .doc files by WPS.
 2. Click on **Writer** on the top left corner.

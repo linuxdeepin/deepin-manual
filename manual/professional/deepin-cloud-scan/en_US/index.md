@@ -1,10 +1,10 @@
-# Deepin Cloud Scan|../common/deepin-cloud-scanner.svg|
+# Cloud Scan|../common/deepin-cloud-scanner.svg|
 
 ## Overview
 
-Deepin Cloud Scan is a new scanning technology developed by Wuhan Deepin Technology Co., Ltd.. It will connect your scanner to the network, and is enabled for network scanning via daily used applications. Deepin Cloud Scan is suitable for desktops, laptops, tablets and other networking devices that you have authorized to scan.
+Cloud Scan is a new scanning technology. It will connect your scanner to the network, and is enabled for network scanning via daily used applications. Cloud Scan is suitable for desktops, laptops, tablets and other networking devices that you have authorized to scan.
 
-Deepin Cloud Scan consists of server and client. Server is installed in Windows and Client is preinstalled in deepin.
+Cloud Scan consists of server and client. Server is installed in Windows and Client is preinstalled in UOS.
 
 ## Server Configuration
 
@@ -12,7 +12,7 @@ You can install the server in Windows and configure the authorization code for c
 
 ### Install Server
 
-DeepinCloudScanServerInstaller_1.0.0.1.exe is the installation program of server, you can install it by the following steps:
+CloudScanServerInstaller_1.0.0.1.exe is the installation program of server, you can install it by the following steps:
 
 1. Get the installation program of server.
 2. Install it in Windows.
@@ -33,11 +33,11 @@ Open the server from the start menu in Windows, then you can see the the interfa
 
 ## Client Configuration
 
-The client of Deepin Cloud Scan is preinstalled in deepin ISO. 
+The client of Cloud Scan is preinstalled in UOS ISO. 
 
 ### Open Client
 
-1. Click on ![launcher-24](icon/launcher-24.svg) to enter launcher.
+1. Click on ![launcher](icon/deepin-launcher.svg) to enter launcher.
 2. Click on ![scanner-24](icon/scanner-24.svg) to open the "Add Scanner" interface.
 
 ### Configure Client
@@ -56,23 +56,23 @@ The client of Deepin Cloud Scan is preinstalled in deepin ISO.
 
 ### About
 
-You can click "About" to view the introduction of Deepin Cloud Scan.
+You can click "About" to view the introduction of Cloud Scan.
 
 1. On "Add scanner" interface, click on ![icon_next](icon/icon_menu.svg).
 2. Click on **About**.
-3. View the version and introduction of Deepin Cloud Scan.
+3. View the version and introduction of Cloud Scan.
 
 ### Help
 
-You can click "Help" to read the manual, which will help you further know and use Deepin Cloud Scan.
+You can click "Help" to read the manual, which will help you further know and use Cloud Scan.
 
 1. On "Add scanner" interface, click on ![icon_next](icon/icon_menu.svg).
 2. Click on **Help**.
-3. View the manual of Deepin Cloud Scan.
+3. View the manual of Cloud Scan.
 
 ### Exit
 
-You can click "Exit" to exit Deepin Cloud Scan.
+You can click "Exit" to exit Cloud Scan.
 
 1. On "Add scanner" interface, click on ![icon_next](icon/icon_menu.svg).
 2. Click on **Exit**.
@@ -82,7 +82,7 @@ on "Add scanner" interface to exit.
 
 ## Scan Test
 
-You can use Deepin Cloud Scan to scan files in deepin, the steps are as below.
+You can use Cloud Scan to scan files in UOS, the steps are as below.
 
 1. Click on ![icon_scan](icon/icon_scan.png) to enter the interface of scan settings.
 2. Click the top left corner to select **Preferences** to set the scanning parameters.

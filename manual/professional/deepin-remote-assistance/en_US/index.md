@@ -1,6 +1,7 @@
 # Remote Assistance|../common/deepin-remote-assistance.svg|
 
 ## Overview
+
 Remote Assistance is used to help users and technicians to solve all kinds of issues, and seek for help when issues are encountered. With Remote Assistance, remote work, training and interactive teaching can be easily done.
 
 ![0|remoteinterface](jpg/remoteinterface.jpg)
@@ -9,7 +10,7 @@ Remote Assistance is used to help users and technicians to solve all kinds of is
 
 If you encountered an issue and need online help, by starting Remote Assistance, you can share your desktop to another user to remotely assist you.
 
-1. Click on ![Launcher](icon/launcher-24.svg) at the bottom of desktop or move the mouse pointer to the upper left corner of the screen, enter into launcher interface.
+1. Click ![Launcher](icon/deepin-launcher.svg) on dock to enter into launcher interface.
 2. Locate and click on ![remoteassistance-24](icon/remoteassistance-24.svg).
 3. On Remote Assistance interface, click on **Assist me**.
 4. The system will randomly generate a 6-digit verification code.

@@ -2,41 +2,41 @@
 
 ## Overview
 
-Deepin Presentation Assistant is an application to share phone contents. It supports photo sharing annotation, phone screen sharing, PPT remote control and so on.
+Presentation Assistant is an application to share phone contents. It supports photo sharing annotation, phone screen sharing, PPT remote control and so on.
 
 ## Guide
 
-Deepin Link and Deepin Presentation Assistant should be in the same network. Wi-Fi is recommended, you can also connect to hotspot on computer or phone.
+Link and Presentation Assistant should be in the same network. Wi-Fi is recommended, you can also connect to hotspot on computer or phone.
 
-1. Click on ![presentation](icon/presentation.svg) in Launcher to open Deepin Presentation Assistant.
+1. Click on ![presentation](icon/presentation.svg) in Launcher to open Presentation Assistant.
 2. Set your network according to needs:
    - Connect phone to the computer Wi-Fi, then click on **Yes**.
    - Click on **No**, connect phone to computer hotspot or connect computer to phone hotspot, then click on **Next** to continue.
 
-> ![notes](icon/notes.svg): Your computer should support wireless network if use phone or computer hotspot to connect Deepin Presentation Assistant. You also need to set hotspot connection manually if select **No**, then continue the next operations.
+> ![notes](icon/notes.svg): Your computer should support wireless network if use phone or computer hotspot to connect Presentation Assistant. You also need to set hotspot connection manually if select **No**, then continue the next operations.
 
 ![0|guide](jpg/guide.jpg)
 
 ## Basic Operations
 
-### Installation and Connection
+### Installation and Connection 
 
 
 2. Select your version and scan QR code to download and install.
-3. Click on **Deepin Link** on your phone and scan QR code to connect to computer.
+3. Click on **Link** on your phone and scan QR code to connect to computer.
 4. After connected, you can see the main interface.
 5. Click on **Disconnect** to stop the connection.
 
 ![1|link](jpg/link.jpg)
 
-> ![notes](icon/notes.svg): Deepin Presentation Assistant will be preinstalled in editions after deepin 15.4. Please make sure your phone and computer are in the same LAN before connecting, or there will be a failure prompt and you can follow the steps to connect.
+> ![notes](icon/notes.svg):Please make sure your phone and computer are in the same LAN before connecting, or there will be a failure prompt and you can follow the steps to connect.
 
 
 ### Photo Sharing
 
 You can share a photo from your phone albums or take a photo to share in computer.
 
-1. Select **Camera** on Deepin Presentation Assistant interface.
+1. Select **Camera** on Presentation Assistant interface.
 2. Click on ![camera](icon/camera.svg) to select a photo from albums or take a photo.
 3. Click on ![ok](icon/ok.svg) to select the photo to share in computer.
 4. Then you can do some operations on it.
@@ -79,7 +79,7 @@ Click on ![tool_rotate](icon/tool_rotate.svg) to rotate the photo, and every cli
 
 ### PPT Presentation
 1. Open the PPT file in your computer.
-2. Select **PPT Presentation** of Deepin Link interface on your phone.
+2. Select **PPT Presentation** of Link interface on your phone.
 3. The PPT will be demonstrated on the computer in fullscreen, you can click on ![previous](icon/previous.svg) or ![next](icon/next.svg) to page up or down.
 4. Click the last page of the PPT to exit.
 
@@ -90,7 +90,7 @@ Click on ![tool_rotate](icon/tool_rotate.svg) to rotate the photo, and every cli
 
 ### Wireless Projection
 
-1. Select **Wireless Projection** on Deepin Presentation Assistant.
+1. Select **Wireless Projection** on Presentation Assistant.
 2. Click on **Start Projection**.
 3. When ![success](icon/success.png) is displayed, your phone screen has been projected to the computer.
 4. You can start to show the phone contents.
@@ -106,7 +106,7 @@ Click on ![tool_rotate](icon/tool_rotate.svg) to rotate the photo, and every cli
 
 You can click to view the version description.
 
-1. On Deepin Presentation Assistant interface, click on ![icon_menu](icon/icon_menu.svg).
+1. On Presentation Assistant interface, click on ![icon_menu](icon/icon_menu.svg).
 2. Click on **About**.
 3. View the version description.
 
@@ -115,9 +115,9 @@ You can click to view the version description.
 
 ### Help
 
-You can click to view the manual, which will help you further know and use Deepin Presentation Assistant.
+You can click to view the manual, which will help you further know and use Presentation Assistant.
 
-1. On Deepin Presentation Assistant interface, click on ![icon_menu](icon/icon_menu.svg) .
+1. On Presentation Assistant interface, click on ![icon_menu](icon/icon_menu.svg) .
 2. Click on **Help**.
 3. View the manual.
 
@@ -127,8 +127,8 @@ You can click to view the manual, which will help you further know and use Deepi
 
 ### Exit
 
-You can click to exit Deepin Boot Maker.
+You can click to exit Boot Maker.
 
-1. On Deepin Presentation Assistant interface, click on ![icon_menu](icon/icon_menu.svg).
+1. On Presentation Assistant interface, click on ![icon_menu](icon/icon_menu.svg).
 
 2. Click on **Exit** to exit.
