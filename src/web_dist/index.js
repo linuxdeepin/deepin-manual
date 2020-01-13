@@ -1580,21 +1580,6 @@ function Mismatch(props) {
         'div',
         { id: 'NoResult' },
         global.i18n['NoResult'].replace('%1', decodeURIComponent(props.keyword))
-      ),
-      _react2.default.createElement(
-        'div',
-        { id: 'WikiSearch' },
-        global.i18n['WikiSearch']
-      ),
-      _react2.default.createElement(
-        'span',
-        {
-          'class': 'button',
-          onClick: function onClick() {
-            return global.openWindow('https://wiki.deepin.org/index.php?title&search=' + encodeURIComponent(props.keyword));
-          }
-        },
-        global.i18n['SearchInWiki']
       )
     )
   );

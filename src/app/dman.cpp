@@ -15,25 +15,25 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QDesktopWidget>
-#include <QDBusConnection>
-#include <QIcon>
 #include <qcef_context.h>
-#include <qcef_web_settings.h>
 #include <qcef_global_settings.h>
+#include <qcef_web_settings.h>
+#include <QDBusConnection>
+#include <QDesktopWidget>
+#include <QIcon>
 
 #include "base/consts.h"
 #include "base/utils.h"
-#include "view/web_window.h"
 #include "controller/argument_parser.h"
 #include "controller/window_manager.h"
-#include "resources/themes/images.h"
 #include "environments.h"
+#include "resources/themes/images.h"
+#include "view/web_window.h"
 
-#include <DLog>
 #include <DApplication>
-#include <DPlatformWindowHandle>
 #include <DApplicationSettings>
+#include <DLog>
+#include <DPlatformWindowHandle>
 
 DWIDGET_USE_NAMESPACE
 
@@ -53,7 +53,7 @@ int main(int argc, char **argv)
         app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings, true);
     }
 
-//    app.setAttribute(Qt::AA_EnableHighDpiScaling, true);
+    //    app.setAttribute(Qt::AA_EnableHighDpiScaling, true);
     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
     app.setWindowIcon(QIcon::fromTheme("deepin-manual"));
     app.setProductIcon(QIcon::fromTheme("deepin-manual"));
@@ -63,40 +63,33 @@ int main(int argc, char **argv)
     app.setApplicationName(dman::kAppName);
     app.loadTranslator();
     app.setApplicationDisplayName(QObject::tr("Manual"));
-    app.setApplicationDescription(QObject::tr("Manual is designed to help users learn UOS and its applications,"
-                                              " providing specific instructions and function descriptions."));
-    app.setApplicationAcknowledgementPage(
-        "https://www.deepin.org/acknowledgments/deepin-manual/");
+
+    app.setApplicationDescription(QObject::tr(
+        "Manual is designed to help users learn the operating system and its applications,"
+        " providing specific instructions and function descriptions."));
+    app.setApplicationAcknowledgementPage("https://www.deepin.org/acknowledgments/deepin-manual/");
 
     dman::ArgumentParser argument_parser;
     dman::WindowManager window_manager;
-    QObject::connect(&argument_parser,
-                     &dman::ArgumentParser::onNewAppOpen,
-                     &window_manager,
+    QObject::connect(&argument_parser, &dman::ArgumentParser::onNewAppOpen, &window_manager,
                      &dman::WindowManager::onNewAppOpen);
 
     if (argument_parser.parseArguments()) {
         qDebug() << "argument_parser.parseArguments()";
         // Exit process after 1000ms.
-        QTimer::singleShot(1000, [&]() {
-            app.quit();
-        });
+        QTimer::singleShot(1000, [&]() { app.quit(); });
         return app.exec();
     }
 
     qDebug() << "argument_parser.openManualsDelay()";
-    QObject::connect(&argument_parser,
-                     &dman::ArgumentParser::openManualRequested,
-                     &window_manager,
+    QObject::connect(&argument_parser, &dman::ArgumentParser::openManualRequested, &window_manager,
                      &dman::WindowManager::openManual);
-    QObject::connect(&argument_parser,
-                     &dman::ArgumentParser::openManualWithSearchRequested,
-                     &window_manager,
-                     &dman::WindowManager::openManualWithSearch);
+    QObject::connect(&argument_parser, &dman::ArgumentParser::openManualWithSearchRequested,
+                     &window_manager, &dman::WindowManager::openManualWithSearch);
     // Send openManualRequested() signals after slots connected.
     argument_parser.openManualsDelay();
 
-    //save theme
+    // save theme
     DApplicationSettings dApplicationSettings;
 
     Dtk::Core::DLogManager::registerFileAppender();
@@ -105,7 +98,8 @@ int main(int argc, char **argv)
     // fix error for cutelogger
     // No appenders associated with category js
     auto category = "js";
-    auto fileAppender = new Dtk::Core::RollingFileAppender(Dtk::Core::DLogManager::getlogFilePath());
+    auto fileAppender =
+        new Dtk::Core::RollingFileAppender(Dtk::Core::DLogManager::getlogFilePath());
     static Dtk::Core::Logger customLoggerInstance(category);
     customLoggerInstance.logToGlobalInstance(category, true);
     customLoggerInstance.registerAppender(fileAppender);
