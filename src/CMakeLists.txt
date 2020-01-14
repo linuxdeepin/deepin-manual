@@ -290,6 +290,14 @@ if (CMAKE_BUILD_TYPE MATCHES Debug)
                  ${RESOURCES_FILES}
                  )
   target_link_libraries(image-viewer-demo ${LINK_LIBS})
+
+
+  set(MANUAL_TRANSLATE_FILES
+      app/manual_translate.cpp
+      )
+  add_executable(manual-translate-demo ${MANUAL_TRANSLATE_FILES})
+  target_link_libraries(manual-translate-demo ${LINK_LIBS})
+
 endif ()
 
 
