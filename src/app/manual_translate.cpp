@@ -31,7 +31,7 @@ int main(int argc, char **argv)
         {"deepin-image-viewer", "deepin-image-viewer"},       //看图
         {"deepin-graphics-driver-manager", "deepin-graphics-driver-manager"},  //显卡驱动管理器
         {"deepin-font-manager", "deepin-font-manager"},                        //字体管理器
-        {"deepin-editor", "deepin-editor"},                                    //编辑器
+        {"deepin-text-editor", "deepin-editor"},                               //编辑器
         {"deepin-draw", "deepin-draw"},                                        //画板
         {"", "deepin-document-viewer"},                                        //文档查看器**
         {"", "deepin-devicemanager"},                                          //设备管理器**

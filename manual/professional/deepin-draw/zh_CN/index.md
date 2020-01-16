@@ -103,7 +103,7 @@
    - 侧边数取值范围为4-10条，数值既可以通过拖拽滑动块进行调节，也可以⼿动输⼊。
 3. 在画板区域拖动鼠标来绘制形状。
 
-> ![tips](icon/tips.svg)：在使用 ![rectangle](icon/rectangle_normal.svg) 或  ![oval](icon/oval_normal.svg)或![triangle](icon/triangle_tool_normal.svg)或![star](icon/draw-star.svg)或![hexagon](icon/hexagon_tool_normal.svg)绘制性质时，配合键盘上的![Shift](icon/Shift.svg) 或![Shift](icon/Shift.svg)+ ![Alt](icon/Alt.svg) 键可以画出正方形、正圆、正三角、正五角星、正多边形。
+> ![tips](icon/tips.svg)：在使用 ![rectangle](icon/rectangle_normal.svg) 或  ![oval](icon/oval_normal.svg)或![triangle](icon/triangle_tool_normal.svg)或![star](icon/draw-star.svg)或![hexagon](icon/hexagon_tool_normal.svg)绘制图形时，配合键盘上的![Shift](icon/Shift.svg) 或![Shift](icon/Shift.svg)+ ![Alt](icon/Alt.svg) 键可以画出正方形、正圆、正三角、正五角星、正多边形。
 
 ![1|shape](jpg/shape1.png)
 

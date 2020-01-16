@@ -13,7 +13,7 @@
 成功登录系统后，即可体验UOS桌面环境。桌面环境主要由桌面、任务栏、启动器、控制中心和窗口管理器等组成，是您使用该操作系统的基础。
 
 ## 桌面
-桌面是您登录后看到的主屏幕区域。在桌面上，您可以新建文件/文件夹、排列文件、打开终端、设置热区、设置壁纸和屏保等，还可以通过 [发送到桌面](#设置快捷方式) 向桌面添加应用的快捷方式。
+桌面是您登录后看到的主屏幕区域。在桌面上，您可以新建文件/文件夹、排列文件、打开终端、设置壁纸和屏保等，还可以通过 [发送到桌面](#设置快捷方式) 向桌面添加应用的快捷方式。
 
 ![0|rightbuttonmenu](jpg/contextmenu.png)
 
@@ -182,7 +182,7 @@
 |--|---|
 |关机![poweroff_normal](icon/poweroff_normal.svg)|关闭电脑。|
 |重启![reboot_normal](icon/reboot_normal.svg)|关机后再次重新运行您的电脑。|
-|锁定![lock_normal](icon/lock_normal.svg)|锁定电脑，或按下键盘上的 ![Super](icon/Super.svg)+![L](icon/L.svg) 组合键锁定。|
+|锁定![lock_normal](icon/lock_normal.svg)|锁定电脑，或按下键盘上的 **Super** +![L](icon/L.svg) 组合键锁定。|
 |切换用户![userswitch_normal](icon/userswitch_normal.svg)|选择另一个用户帐户登录。|
 |注销![logout_normal](icon/logout_normal.svg)|清除当前登录用户的信息。|
 |系统监视器![deepin-system-monitor](icon/deepin-system-monitor.svg)|快速启动系统监视器。|
@@ -451,7 +451,7 @@
  - **只在xxx显示 **只在某个屏幕显示内容。
  - **自定义** 设置显示模式，主屏、分辨率、刷新率和屏幕旋转方向。
 
-> ![tips](icon/tips.svg)：在多屏环境下，您还可以按下 ![super](icon/Super.svg) + ![P](icon/P.svg) 调出多屏显示模式的OSD。按住 ![super](icon/Super.svg)不放，按下 ![P](icon/P.svg) 或鼠标点击来进行模式选择。松开按键，确认选择，模式生效。
+> ![tips](icon/tips.svg)：在多屏环境下，您还可以按下 **Super** + ![P](icon/P.svg) 调出多屏显示模式的OSD。按住 **Super** 不放，按下 ![P](icon/P.svg) 或鼠标点击来进行模式选择。松开按键，确认选择，模式生效。
 
 ##### 自定义设置
 
@@ -915,20 +915,19 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 
 
 ## 窗口管理器
-
 窗口管理器可以在不同的工作区内展示不同的窗口内容。通过窗口管理器您可以同时使用多个桌面，以便对桌面窗口进行分组管理。
 
-![1|workspace](jpg/workspace.jpg)
+![1|workspace](jpg/workspace.png)
 
 ### 打开工作区
 工作区将您的桌面窗口进行分组管理，通过划分工作区可以增大您的工作区域。
 
-按下![Super](icon/Super.svg) + ![S](icon/S.svg) 组合键，或点击 ![multitasking](icon/deepin-multitasking-view.svg) 打开工作区界面。
+按下**Super** + **S** 组合键，或点击 ![multitasking](icon/deepin-multitasking-view.svg) 打开工作区界面。
 
 ### 添加工作区
 在工作区界面，您可以通过以下方式添加工作区。
 
-- 点击工作区下方的 ![plus](icon/plus.svg)。
+- 点击工作区上方的 ![plus](icon/plus.svg)。
 - 按下键盘上的![plus](icon/plus.svg)。
 
 > ![notes](icon/notes.svg)：当您添加的工作区达到最大值时，将不能再添加工作区。
@@ -936,8 +935,8 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 ### 切换工作区
 在桌面和工作区界面，您可以通过以下方式切换工作区。
 
-- 在桌面，按下键盘上的 ![Super](icon/Super.svg) + ![Left](icon/Left.svg) / ![Right](icon/Right.svg) 组合键，切换到上一个/下一个工作区。
-- 在桌面，按下键盘上的 ![Super](icon/Super.svg) + 数字键 (1-7) ， 切换到指定顺序的工作区。
+- 在桌面，按下键盘上的 **Super** + ![Left](icon/Left.svg) / ![Right](icon/Right.svg) 组合键，切换到上一个/下一个工作区。
+- 在桌面，按下键盘上的 **Super** + 数字键 (1-7) ， 切换到指定顺序的工作区。
 - 在工作区界面，滚动鼠标滚轮切换到上一个/下一个工作区。
 - 在工作区界面，按下键盘上的 ![Left](icon/Left.svg) / ![Right](icon/Right.svg)键来切换到上一个/下一个工作区。
 - 在工作区界面，点击对应的预览窗口或按下数字键（1-7）来切换到指定工作区。
@@ -946,27 +945,27 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 ### 删除工作区
 当您执行删除工作区操作后，该工作区中的所有窗口将自动转移到相邻的工作区中显示，当桌面环境中只存在一个工作区时，将不能执行删除工作区的操作。
 
-- 在工作区界面，点击![-](icon/-.svg)或按下键盘上的![-](icon/-.svg) ，向左删除工作区。
+- 在工作区界面，点击 **X** 删除工作区。
 
 ### 退出工作区
 当您在工作区界面完成相关操作后，可以通过以下方式退出工作区。
 
 - 按下键盘上的 ![Esc](icon/Esc.svg) 键。
 - 在当前工作区界面区域内的任意位置点击一下鼠标。
-- 再次按下键盘上的 ![Super](icon/Super.svg) + ![S](icon/S.svg) 组合键。
+- 再次按下键盘上的 **Super** +  **S** 组合键。
 
 ### 查看所有窗口
 您可以通过以下方式查看工作区的所有窗口。
 
-- 按下键盘上的 ![Super](icon/Super.svg) + ![A](icon/A.svg) 组合键，查看所有工作区的窗口。
-- 按下键盘上的 ![Super](icon/Super.svg) + ![W](icon/W.svg) 组合键，查看当前工作区的窗口。
+- 按下键盘上的 **Super** + ![A](icon/A.svg) 组合键，查看所有工作区的窗口。
+- 按下键盘上的 **Super** + ![W](icon/W.svg) 组合键，查看当前工作区的窗口。
 
 ### 移动工作区窗口
 您可以通过以下方式移动窗口到另一工作区。
 
 - 在工作区界面，拖拽窗口到指定的工作区。
-- 在桌面，按下键盘上的 ![Super](icon/Super.svg) + ![Shift](icon/Shift.svg) + ![Left](icon/Left.svg) / ![Right](icon/Right.svg) 键，将当前窗口移动到上一个/下一个工作区。
-- 在桌面，按下键盘上的 ![Super](icon/Super.svg) + ![Shift](icon/Shift.svg) + 数字键，将当前窗口移动到对应顺序的工作区。
+- 在桌面，按下键盘上的 **Super**+ ![Shift](icon/Shift.svg) + ![Left](icon/Left.svg) / ![Right](icon/Right.svg) 键，将当前窗口移动到上一个/下一个工作区。
+- 在桌面，按下键盘上的 **Super** + ![Shift](icon/Shift.svg) + 数字键，将当前窗口移动到对应顺序的工作区。
 - 在桌面，按下键盘上的 ![Alt](icon/Alt.svg) + ![space](icon/Space.svg) 或在窗口标题栏上点击右键，打开窗口快捷操作菜单，选择 **总在可见工作区**，或 **移至右边的工作区** 或 **移至左边的工作区**，将当前窗口移动到指定的工作区。
 
 > ![tips](icon/tips.svg)：在窗口快捷操作菜单，您还可以选择最小化，最大化，移动窗口，改变窗口大小，置顶窗口和关闭窗口。

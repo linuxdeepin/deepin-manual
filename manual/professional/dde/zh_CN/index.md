@@ -13,7 +13,7 @@
 成功登录系统后，即可体验UOS桌面环境。桌面环境主要由桌面、任务栏、启动器、控制中心和窗口管理器等组成，是您使用该操作系统的基础。
 
 ## 桌面
-桌面是您登录后看到的主屏幕区域。在桌面上，您可以新建文件/文件夹、排列文件、打开终端、设置热区、设置壁纸和屏保等，还可以通过 [发送到桌面](#设置快捷方式) 向桌面添加应用的快捷方式。
+桌面是您登录后看到的主屏幕区域。在桌面上，您可以新建文件/文件夹、排列文件、打开终端、设置壁纸和屏保等，还可以通过 [发送到桌面](#设置快捷方式) 向桌面添加应用的快捷方式。
 
 ![0|rightbuttonmenu](jpg/contextmenu.png)
 
@@ -81,8 +81,6 @@
 
 ![1|wallpaper](jpg/wallpaper.jpg)
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
 > ![tips](icon/tips.svg)：勾选 **自动更换壁纸**，设置自动更换壁纸的时间间隔。您还可以设置在“登录时”和“唤醒时”自动更换壁纸。
 
 > ![tips](icon/tips.svg)： 您还可以在图片查看器中设置您喜欢的图片为桌面壁纸。
@@ -125,10 +123,7 @@
 | ![deepin-contacts](icon/deepin-contacts.svg)                 | 联系人 - 好友通讯，视频会议。       | ![dde-calendar](icon/dde-calendar.svg)                   | 日历 - 查看日期、新建日程。                         |
 | ![controlcenter](icon/controlcenter.svg)                     | 控制中心 - 点击进入系统设置。       | ![notification](icon/notification.svg)                   | 通知中心 - 显示所有系统和应用的通知。               |
 | ![desktop-ai-assistant](icon/desktop-ai-assistant.svg)                                    |   桌面智能助手 - 使用语音或文字来发布指令或进行询问。     |![onboard](icon/onboard.svg) | 屏幕键盘 - 点击使用虚拟键盘。 |
-| ![shutdown](icon/system-shutdown.svg)                        | 点击进入关机界面。                  | ![trash](icon/trash_icon.svg)                            | 回收站。                                            |
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
+| ![shutdown](icon/system-shutdown.svg)                        | 电源 - 点击进入关机界面。            | ![trash](icon/trash_icon.svg)                            | 回收站。                                            |
 
 > ![tips](icon/tips.svg)：在高效模式下，点击任务栏右侧可显示桌面。将鼠标指针移到任务栏上已打开窗口的图标时，会显示相应的预览窗口。
 
@@ -172,21 +167,18 @@
 当有系统或应用通知时，会在桌面上方弹出通知消息。若有按钮，点击按钮执行对应操作；若无按钮，点击关闭此消息。
 
 ![message](jpg/message.jpg)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 您还可以点击任务栏上的 ![notification](icon/notification.svg)， 打开通知中心，查看所有通知。
 
 ### 使用智能助手
 
-1. 点击任务栏上的 ![ai](icon/desktop-ai-assistant.svg)，或按下 ![Super](icon/Super.svg) + ![Q](icon/Q.svg)组合键打开桌面智能助手。
+1. 点击任务栏上的 ![ai](icon/desktop-ai-assistant.svg)，或按下 **Super** + **Q** 组合键打开桌面智能助手。
 2. 连接录音设备后，使用语音与助手直接对话，如更换壁纸、调节屏幕亮度，查询信息等。
 3. 等输入框出现后，还可以输入文字指令。
 
-> ![tips](icon/tips.svg)：选中文字按下![Ctrl](icon/Ctrl.svg)+ ![Alt](icon/Alt.svg) + ![P](icon/P.svg) 可以进行语音播报；连接录音设备后，输入框内按下![Ctrl](icon/Ctrl.svg)+ ![Alt](icon/Alt.svg) + ![O](icon/O.svg)进入听写模式，把语音输入转换为文字。
-
 ![ai1](jpg/ai1.png) ![ai2](jpg/ai2.png)
 
-
+> ![tips](icon/tips.svg)：选中文字按下![Ctrl](icon/Ctrl.svg)+ ![Alt](icon/Alt.svg) + P![P](icon/P.svg) 可以进行语音播报；连接录音设备后，输入框内按下![Ctrl](icon/Ctrl.svg)+ ![Alt](icon/Alt.svg) + ![O](icon/O.svg)进入听写模式，把语音输入转换为文字。
 
 ### 查看日期时间
 
@@ -201,12 +193,11 @@
 |关机![poweroff_normal](icon/poweroff_normal.svg)|关闭电脑。|
 |重启![reboot_normal](icon/reboot_normal.svg)|关机后再次重新运行您的电脑。|
 |待机![suspend_normal](icon/suspend_normal.svg)|整个系统将处于低能耗运转的状态。|
-|锁定![lock_normal](icon/lock_normal.svg)|锁定电脑，或按下键盘上的 ![Super](icon/Super.svg)+![L](icon/L.svg) 组合键锁定。|
+|锁定![lock_normal](icon/lock_normal.svg)|锁定电脑，或按下键盘上的 **Super** +![L](icon/L.svg) 组合键锁定。|
 |切换用户![userswitch_normal](icon/userswitch_normal.svg)|选择另一个用户帐户登录。|
 |注销![logout_normal](icon/logout_normal.svg)|清除当前登录用户的信息。|
 |系统监视器![deepin-system-monitor](icon/deepin-system-monitor.svg)|快速启动系统监视器。|
 
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 > ![notes](icon/notes.svg)：当系统存在多个账户时才显示 ![userswitch_normal](icon/userswitch_normal.svg)。
 
 
@@ -248,10 +239,9 @@
 - 点击启动器界面左上角分类图标![category](icon/category_icon.svg)进行排列。
 
 ![1|sortapp](jpg/sortapp.jpg)
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
 在小窗口模式下，默认按照使用频率排列应用。
-
 
 ### 查找应用
 
@@ -271,10 +261,9 @@
 
 - 点击 **发送到任务栏**，将应用固定到任务栏。
 
-> ![notes](icon/notes.svg)：您还可以从启动器拖拽应用图标到任务栏上放置。但是当应用处于运行状态时您将无法拖拽固定，此时您可以右键单击任务栏上的应用图标，选择 **驻留** 将应用固定到任务栏，以便下次使用时从任务栏上快速打开。
-
 ![0|sendto](jpg/sendto.png)
 
+> ![notes](icon/notes.svg)：您还可以从启动器拖拽应用图标到任务栏上放置。但是当应用处于运行状态时您将无法拖拽固定，此时您可以右键单击任务栏上的应用图标，选择 **驻留** 将应用固定到任务栏，以便下次使用时从任务栏上快速打开。
 
 #### 删除快捷方式
 您既可以在桌面直接删除应用的快捷方式，也可以在任务栏和启动器中删除。
@@ -325,7 +314,6 @@
 控制中心首页主要展示各个设置模块，方便日常查看和快速设置。
 
 ![2|dcchomepage](jpg/dcc.png)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 打开控制中心的某一设置模块后，可以通过左侧导航栏快速切换到另一设置模块。
 
@@ -416,7 +404,7 @@
 ### 网络帐户
 登录网络帐户后，您可以使用云同步、应用商店、邮件客户端、浏览器等相关云服务功能。
 
-开启云同步，可自动同步各种系统配置到云端，如网络、声音、鼠标、更新、任务栏、启动器、壁纸、主题、电源、和热区。若想在另一台电脑上使用相同的系统配置，只需登录此网络帐户，即可一键同步以上配置到该设备。
+开启云同步，可自动同步各种系统配置到云端，如网络、声音、鼠标、更新、任务栏、启动器、壁纸、主题、电源等。若想在另一台电脑上使用相同的系统配置，只需登录此网络帐户，即可一键同步以上配置到该设备。
 
 > ![tips](icon/tips.svg)： 当“自动同步配置”开启时，可以选择同步项；关闭时，全部不能同步。
 
@@ -483,7 +471,7 @@
  - **只在xxx显示 **只在某个屏幕显示内容。
  - **自定义** 设置显示模式，主屏、分辨率、刷新率和屏幕旋转方向。
 
-> ![tips](icon/tips.svg)：在多屏环境下，您还可以按下 ![super](icon/Super.svg) + ![P](icon/P.svg) 调出多屏显示模式的OSD。按住 ![super](icon/Super.svg)不放，按下 ![P](icon/P.svg) 或鼠标点击来进行模式选择。松开按键，确认选择，模式生效。
+> ![tips](icon/tips.svg)：在多屏环境下，您还可以按下 **Super** + **P **调出多屏显示模式的OSD。按住 **Super** 不放，按下 **P** 或鼠标点击来进行模式选择。松开按键，确认选择，模式生效。
 
 ##### 自定义设置
 
@@ -731,10 +719,10 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 
 ### 蓝牙设置
 蓝牙能够实现短距离的无线通信。通过蓝牙与附近的其它蓝牙设备连接，而无需网络或连接线。常见的蓝牙设备包括：蓝牙键盘、蓝牙鼠标、蓝牙耳机、蓝牙音响等。
-> ![notes](icon/notes.svg)：大多数笔记本电脑都配备有蓝牙模块，您只需开启蓝牙开关；而大部分台式电脑都没有配备蓝牙，您可以购买蓝牙适配器，插入到电脑的USB端口中使用。
 
 ![0|bluetooth](jpg/bluetooth.png)
 
+> ![notes](icon/notes.svg)：大多数笔记本电脑都配备有蓝牙模块，您只需开启蓝牙开关；而大部分台式电脑都没有配备蓝牙，您可以购买蓝牙适配器，插入到电脑的USB端口中使用。
 
 #### 修改蓝牙名称
 
@@ -793,7 +781,6 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 对系统电源进行一些设置，让笔记本电池更耐用，让系统更安全。
 
 ![0|power](jpg/power.png)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 > ![notes](icon/notes.svg)：如果您使用的是台式机，将不会看到节能模式设置和“使用电池”的选项。
 
@@ -862,18 +849,19 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 4. 点击 **自然滚动** / **鼠标加速** 开关，开启相应功能。
 
 
- > ![notes](icon/notes.svg)：开启鼠标加速，提高了指针精确度，鼠标指针在屏幕上的移动距离会根据移动速度的加快而增加。可以根据使用情况开启或关闭。
+> ![notes](icon/notes.svg)：开启鼠标加速，提高了指针精确度，鼠标指针在屏幕上的移动距离会根据移动速度的加快而增加。可以根据使用情况开启或关闭。
 
- > ![notes](icon/notes.svg)：自然滚动开启后，鼠标滚轮向下滚动，内容会向下滚动；鼠标滚轮向上滚动，内容会向上滚动。
+> ![notes](icon/notes.svg)：自然滚动开启后，鼠标滚轮向下滚动，内容会向下滚动；鼠标滚轮向上滚动，内容会向上滚动。
 
 
 
 #### 触控板设置
 
+![0|touchpad](jpg/touchpad.png)
+
 若您使用的是笔记本电脑，可以开启 **输入时禁用触控板**，**插入鼠标时禁用触控板**，并开启 **掌压检测** 设置 **最小接触面** 和 **最小压力值**，以避免误触触控板。
 
 您还可以调节触控板的 **指针速度**，控制手指移动时指针移动的速度；开启自然滚动，变更滚动方向。
-![0|touchpad](jpg/touchpad.png)
 
 
 #### 指点杆设置
@@ -888,7 +876,8 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 连接到电脑后，您可以设置数位板的压感力度，即笔尖和橡皮擦的压力感应值。
 
 
- > ![notes](icon/notes.svg)： 连接数位板设备后，该模块才会显示。
+
+> ![notes](icon/notes.svg)： 连接数位板设备后，该模块才会显示。
 
 1. 在控制中心首页，点击![drawing](icon/drawing.svg) 。
 2. 选择 **笔** 模式。
@@ -1061,8 +1050,6 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 
 #### 激活方式
 
-授权管理分为在线激活和离线激活两种方式。
-
 **在线激活**
 
 在线激活的前提是系统网络连接正常。
@@ -1133,18 +1120,13 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 
 1. 激活成功界面显示产品名称、产品版本和激活方式等信息。
  - 产品名称：操作系统的名称。
-
  - 产品版本：操作系统的版本。
-
  - 授权状态：授权状态分为未授权、已过期、已授权，激活成功显示已授权。
-
  - 授权对象：被授权的用户名称。
-
  - 激活方式：激活方式分为激活码、激活文件及离线激活码，根据实际激活方式体现。
-
  - 到期时间：超过了截止时间，系统会提醒授权即将到期。
 
-  ![0|activation code3](jpg/activation code3.png)
+![0|activation code3](jpg/activation code3.png)
 
 2. 系统激活成功后，右下角托盘不再显示授权管理图标，可通过控制中心查看授权管理工具。
 
@@ -1191,8 +1173,8 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 
 1. 在控制中心首页，点击 ![general](icon/general.svg)。
 2. 点击 **开发者模式**，点击 **进入开发者模式** 按钮。
- - 若选择在线模式，请先登录网络帐户。仔细查看开发者模式免责声明，了解注意事项后，勾选 **同意并进入开发者模式**，点击 **确定**。待系统下发证书后，按钮变为 **已进入开发者模式**。
- - 若选择离线模式，根据提示下载证书，导入证书后，即进入开发者模式。
+   - 若选择在线模式，请先登录网络帐户。仔细查看开发者模式免责声明，了解注意事项后，勾选 **同意并进入开发者模式**，点击 **确定**。待系统下发证书后，按钮变为 **已进入开发者模式**。
+   - 若选择离线模式，根据提示下载证书，待系统导入证书后，即可进入开发者模式。
 3. 在弹出的对话框中点击 **立即重启**， 重启系统后开发者模式生效。
 
 > ![attention](icon/attention.svg)：进入开发者模式后不可退出或撤销。系统所有帐号都将拥有root权限。
@@ -1207,17 +1189,17 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 ## 窗口管理器
 窗口管理器可以在不同的工作区内展示不同的窗口内容。通过窗口管理器您可以同时使用多个桌面，以便对桌面窗口进行分组管理。
 
-![1|workspace](jpg/workspace.jpg)
+![1|workspace](jpg/workspace.png)
 
 ### 打开工作区
 工作区将您的桌面窗口进行分组管理，通过划分工作区可以增大您的工作区域。
 
-按下![Super](icon/Super.svg) + ![S](icon/S.svg) 组合键，或点击 ![multitasking](icon/deepin-multitasking-view.svg) 打开工作区界面。
+按下**Super** + **S** 组合键，或点击 ![multitasking](icon/deepin-multitasking-view.svg) 打开工作区界面。
 
 ### 添加工作区
 在工作区界面，您可以通过以下方式添加工作区。
 
-- 点击工作区下方的 ![plus](icon/plus.svg)。
+- 点击工作区上方的 ![plus](icon/plus.svg)。
 - 按下键盘上的![plus](icon/plus.svg)。
 
 > ![notes](icon/notes.svg)：当您添加的工作区达到最大值时，将不能再添加工作区。
@@ -1225,8 +1207,8 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 ### 切换工作区
 在桌面和工作区界面，您可以通过以下方式切换工作区。
 
-- 在桌面，按下键盘上的 ![Super](icon/Super.svg) + ![Left](icon/Left.svg) / ![Right](icon/Right.svg) 组合键，切换到上一个/下一个工作区。
-- 在桌面，按下键盘上的 ![Super](icon/Super.svg) + 数字键 (1-7) ， 切换到指定顺序的工作区。
+- 在桌面，按下键盘上的 **Super** + ![Left](icon/Left.svg) / ![Right](icon/Right.svg) 组合键，切换到上一个/下一个工作区。
+- 在桌面，按下键盘上的 **Super** + 数字键 (1-7) ， 切换到指定顺序的工作区。
 - 在工作区界面，滚动鼠标滚轮切换到上一个/下一个工作区。
 - 在工作区界面，按下键盘上的 ![Left](icon/Left.svg) / ![Right](icon/Right.svg)键来切换到上一个/下一个工作区。
 - 在工作区界面，点击对应的预览窗口或按下数字键（1-7）来切换到指定工作区。
@@ -1235,27 +1217,27 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 ### 删除工作区
 当您执行删除工作区操作后，该工作区中的所有窗口将自动转移到相邻的工作区中显示，当桌面环境中只存在一个工作区时，将不能执行删除工作区的操作。
 
-- 在工作区界面，点击![-](icon/-.svg)或按下键盘上的![-](icon/-.svg) ，向左删除工作区。
+- 在工作区界面，点击 **X** 删除工作区。
 
 ### 退出工作区
 当您在工作区界面完成相关操作后，可以通过以下方式退出工作区。
 
 - 按下键盘上的 ![Esc](icon/Esc.svg) 键。
 - 在当前工作区界面区域内的任意位置点击一下鼠标。
-- 再次按下键盘上的 ![Super](icon/Super.svg) + ![S](icon/S.svg) 组合键。
+- 再次按下键盘上的 **Super** +  **S** 组合键。
 
 ### 查看所有窗口
 您可以通过以下方式查看工作区的所有窗口。
 
-- 按下键盘上的 ![Super](icon/Super.svg) + ![A](icon/A.svg) 组合键，查看所有工作区的窗口。
-- 按下键盘上的 ![Super](icon/Super.svg) + ![W](icon/W.svg) 组合键，查看当前工作区的窗口。
+- 按下键盘上的 **Super** + ![A](icon/A.svg) 组合键，查看所有工作区的窗口。
+- 按下键盘上的 **Super** + ![W](icon/W.svg) 组合键，查看当前工作区的窗口。
 
 ### 移动工作区窗口
 您可以通过以下方式移动窗口到另一工作区。
 
 - 在工作区界面，拖拽窗口到指定的工作区。
-- 在桌面，按下键盘上的 ![Super](icon/Super.svg) + ![Shift](icon/Shift.svg) + ![Left](icon/Left.svg) / ![Right](icon/Right.svg) 键，将当前窗口移动到上一个/下一个工作区。
-- 在桌面，按下键盘上的 ![Super](icon/Super.svg) + ![Shift](icon/Shift.svg) + 数字键，将当前窗口移动到对应顺序的工作区。
+- 在桌面，按下键盘上的 **Super**+ ![Shift](icon/Shift.svg) + ![Left](icon/Left.svg) / ![Right](icon/Right.svg) 键，将当前窗口移动到上一个/下一个工作区。
+- 在桌面，按下键盘上的 **Super** + ![Shift](icon/Shift.svg) + 数字键，将当前窗口移动到对应顺序的工作区。
 - 在桌面，按下键盘上的 ![Alt](icon/Alt.svg) + ![space](icon/Space.svg) 或在窗口标题栏上点击右键，打开窗口快捷操作菜单，选择 **总在可见工作区**，或 **移至右边的工作区** 或 **移至左边的工作区**，将当前窗口移动到指定的工作区。
 
 > ![tips](icon/tips.svg)：在窗口快捷操作菜单，您还可以选择最小化，最大化，移动窗口，改变窗口大小，置顶窗口和关闭窗口。
@@ -1303,7 +1285,7 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 | ![Up](icon/Up.svg)    ![Down](icon/Down.svg)     ![Left](icon/Left.svg) ![Right](icon/Right.svg) | 在同区域内对不同的对象进行选择。使用 ![Right](icon/Right.svg) 进入下级菜单,使用 ![Left](icon/Left.svg) 返回上级菜单。 |
 | ![Enter](icon/Enter.svg)                                     | 执行选定对象。                                               |
 | ![Space](icon/Space.svg)                                     | 在文件管理器中，预览选定对象；在深度影院和深度音乐中，开始/暂停播放；在下拉列表中，展开下拉选项（也可使用回车键）。 |
-| ![Ctrl](icon/Ctrl.svg)+ ![M](icon/M.svg)                     | 打开右键菜单。                                               |
+| **Ctrl** + **M**                                             | 打开右键菜单。                                               |
 
 ## 触控板手势
 
@@ -1355,9 +1337,9 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 
 ### 最大化/还原窗口
 
-三指向上移动，最大化窗口，对应 ![super](icon/Super.svg) + ![Up](icon/Up.svg) 快捷键；
+三指向上移动，最大化窗口，对应 **Super** + ![Up](icon/Up.svg) 快捷键；
 
-三指向下移动，还原窗口，对应 ![super](icon/Super.svg) + ![Down](icon/Down.svg) 快捷键。
+三指向下移动，还原窗口，对应 **Super** + ![Down](icon/Down.svg) 快捷键。
 
 ### 左右分屏
 
@@ -1367,7 +1349,7 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 
 ### 显示所有窗口
 
-三指距离加大或缩小， 显示所有窗口，对应 ![super](icon/Super.svg) + ![W](icon/W.svg) 快捷键。
+三指距离加大或缩小， 显示所有窗口，对应 **Super** + ![W](icon/W.svg) 快捷键。
 
 ### 移动窗口
 
@@ -1376,20 +1358,20 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 
 ### 显示/隐藏工作区
 
-四指/五指向上或向下移动， 显示/隐藏工作区，对应 ![super](icon/Super.svg) + ![S](icon/S.svg) 快捷键。
+四指/五指向上或向下移动， 显示/隐藏工作区，对应 **Super** + ![S](icon/S.svg) 快捷键。
 
 ### 切换工作区
 
-四指/五指向左移动，切换到前一个工作区，对应 ![super](icon/Super.svg) + ![Left](icon/Left.svg) 快捷键；
-四指/五指向右移动，切换到下一个工作区，对应 ![super](icon/Super.svg) + ![Right](icon/Right.svg) 快捷键。
+四指/五指向左移动，切换到前一个工作区，对应 **Super** + ![Left](icon/Left.svg) 快捷键；
+四指/五指向右移动，切换到下一个工作区，对应 **Super** + ![Right](icon/Right.svg) 快捷键。
 
 ### 显示/隐藏桌面
 
-四指/五指距离加大，显示/隐藏桌面， 对应 ![super](icon/Super.svg) + ![D](icon/D.svg) 快捷键。
+四指/五指距离加大，显示/隐藏桌面， 对应 **Super** + ![D](icon/D.svg) 快捷键。
 
 ### 显示/隐藏启动器
 
-四指/五指距离缩小，显示/隐藏启动器， 对应 ![super](icon/Super.svg) 快捷键。
+四指/五指距离缩小，显示/隐藏启动器， 对应 **Super** 快捷键。
 
 ## 触屏手势
 
