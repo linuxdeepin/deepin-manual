@@ -41,6 +41,7 @@ class ManualOpenAdapter: public QDBusAbstractAdaptor
 "    <method name=\"Search\">\n"
 "      <arg direction=\"in\" type=\"s\" name=\"keyword\"/>\n"
 "    </method>\n"
+                
 "  </interface>\n"
         "")
 public:
