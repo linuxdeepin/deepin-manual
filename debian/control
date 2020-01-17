@@ -21,7 +21,7 @@ Homepage: https://github.com/linuxdeepin/deepin-manual/
 Vcs-Git: git://github.com/linuxdeepin/deepin-manual.git
 Vcs-Browser: https://github.com/linuxdeepin/deepin-manual/
 
-Package: deepin-manual
+Package:manual
 Architecture: any
 Depends: ${misc:Depends},
  ${shlibs:Depends},
@@ -31,5 +31,5 @@ Depends: ${misc:Depends},
 Recommends: qt5dxcb-plugin,
 Conflicts: dde-help
 Provides: dde-help
-Description: Deepin Manual
- Deepin User Manual
+Description:Manual
+ Manual is designed to help users learn the operating system and its applications, providing specific instructions and function descriptions.
