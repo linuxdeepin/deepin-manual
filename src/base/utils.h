@@ -22,12 +22,12 @@
 
 #include "sys/time.h"
 
-#include <QObject>
 #include <QHash>
+#include <QObject>
 #include <QWidget>
 
-#include <DPalette>
 #include <DApplicationHelper>
+#include <DPalette>
 
 #define dApp (static_cast<DApplication *>(QCoreApplication::instance()))
 
@@ -41,11 +41,7 @@ public:
     Utils(QObject *parent = nullptr);
     ~Utils();
 
-    enum FontType {
-        SourceHanSansMedium,
-        SourceHanSansNormal,
-        DefautFont
-    };
+    enum FontType { SourceHanSansMedium, SourceHanSansNormal, DefautFont };
 
     static struct timeval getTime();
     static struct timeval showDiffTime(struct timeval tpStart);
@@ -61,6 +57,7 @@ public:
     static QString loadFontFamilyByType(FontType fontType);
     static QFont loadFontBySizeAndWeight(QString fontFamily, int fontSize, int fontWeight);
     static QString fromSpecialEncoding(const QString &inputStr);
+    static QString translateTitle(const QString &titleUS);
 };
 
 class ExApplicationHelper : public DGuiApplicationHelper

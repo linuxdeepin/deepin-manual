@@ -22,7 +22,8 @@
 
 namespace dman {
 
-class ArgumentParser : public QObject {
+class ArgumentParser : public QObject
+{
     Q_OBJECT
 public:
     explicit ArgumentParser(QObject* parent = nullptr);
@@ -33,7 +34,7 @@ public:
     void openManualsDelay();
 
 signals:
-    void openManualRequested(const QString& app_name);
+    void openManualRequested(const QString& app_name, const QString& title_name);
     void openManualWithSearchRequested(const QString& app_name, const QString& keyword);
     void searchRequested(const QString& keyword);
     void onNewAppOpen();
@@ -42,7 +43,7 @@ private:
     QStringList manuals_;
 
 private slots:
-    void onOpenAppRequested(const QString& app_name);
+    void onOpenAppRequested(const QString& app_name, const QString& title_name = "");
     void onSearchRequested(const QString& keyword);
 };
 

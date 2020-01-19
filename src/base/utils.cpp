@@ -20,34 +20,34 @@
 
 #include "utils.h"
 
-#include <QUrl>
+#include <DLog>
+#include <QApplication>
 #include <QDir>
 #include <QFile>
-#include <DLog>
 #include <QFileInfo>
-#include <QFontInfo>
-#include <QMimeType>
-#include <QApplication>
-#include <QMimeDatabase>
-#include <QStandardPaths>
-#include <QImageReader>
-#include <QPixmap>
-#include <QFile>
 #include <QFontDatabase>
+#include <QFontInfo>
+#include <QImageReader>
+#include <QMimeDatabase>
+#include <QMimeType>
+#include <QPixmap>
+#include <QStandardPaths>
 #include <QTextCodec>
+#include <QUrl>
 
 QHash<QString, QPixmap> Utils::m_imgCacheHash;
 QHash<QString, QString> Utils::m_fontNameCache;
 
+//标题映射表
+const int langCount = 2;
+QString languageArr[][langCount] = {{"License activator", "授权管理"}};
 
 Utils::Utils(QObject *parent)
     : QObject(parent)
 {
 }
 
-Utils::~Utils()
-{
-}
+Utils::~Utils() {}
 
 struct timeval Utils::getTime()
 {
@@ -60,7 +60,8 @@ struct timeval Utils::showDiffTime(struct timeval tpStart)
 {
     struct timeval tpEnd;
     gettimeofday(&tpEnd, nullptr);
-    double timeuse = (1000000*(tpEnd.tv_sec-tpStart.tv_sec) + tpEnd.tv_usec-tpStart.tv_usec)/1000000.0;
+    double timeuse =
+        (1000000 * (tpEnd.tv_sec - tpStart.tv_sec) + tpEnd.tv_usec - tpStart.tv_usec) / 1000000.0;
     qDebug() << __FUNCTION__ << __LINE__ << timeuse << endl;
 
     return tpEnd;
@@ -81,17 +82,17 @@ QString Utils::getQssContent(const QString &filePath)
 QString Utils::getConfigPath()
 {
     QDir dir(QDir(QStandardPaths::standardLocations(QStandardPaths::ConfigLocation).first())
-             .filePath(qApp->organizationName()));
+                 .filePath(qApp->organizationName()));
 
     return dir.filePath(qApp->applicationName());
 }
 
 bool Utils::isFontMimeType(const QString &filePath)
 {
-    const QString mimeName = QMimeDatabase().mimeTypeForFile(filePath).name();;
+    const QString mimeName = QMimeDatabase().mimeTypeForFile(filePath).name();
+    ;
 
-    if (mimeName.startsWith("font/") ||
-        mimeName.startsWith("application/x-font")) {
+    if (mimeName.startsWith("font/") || mimeName.startsWith("application/x-font")) {
         return true;
     }
 
@@ -131,18 +132,17 @@ QPixmap Utils::renderSVG(const QString &filePath, const QSize &size)
 QString Utils::loadFontFamilyByType(FontType fontType)
 {
     QString fontFileName = "";
-    switch(fontType) {
-    case SourceHanSansMedium:
-        fontFileName = ":/font/SourceHanSansCN-Medium.ttf";
-        break;
-    case SourceHanSansNormal:
-        fontFileName = ":/font/SourceHanSansCN-Normal.ttf";
-        break;
-    case DefautFont:
-        QFont font;
-        return font.family();
+    switch (fontType) {
+        case SourceHanSansMedium:
+            fontFileName = ":/font/SourceHanSansCN-Medium.ttf";
+            break;
+        case SourceHanSansNormal:
+            fontFileName = ":/font/SourceHanSansCN-Normal.ttf";
+            break;
+        case DefautFont:
+            QFont font;
+            return font.family();
     }
-
 
     if (m_fontNameCache.contains(fontFileName)) {
         return m_fontNameCache.value(fontFileName);
@@ -150,16 +150,14 @@ QString Utils::loadFontFamilyByType(FontType fontType)
 
     QString fontFamilyName = "";
     QFile fontFile(fontFileName);
-    if(!fontFile.open(QIODevice::ReadOnly))
-    {
-        qDebug()<<"Open font file error";
+    if (!fontFile.open(QIODevice::ReadOnly)) {
+        qDebug() << "Open font file error";
         return fontFamilyName;
     }
 
     int loadedFontID = QFontDatabase::addApplicationFontFromData(fontFile.readAll());
     QStringList loadedFontFamilies = QFontDatabase::applicationFontFamilies(loadedFontID);
-    if(!loadedFontFamilies.empty())
-    {
+    if (!loadedFontFamilies.empty()) {
         fontFamilyName = loadedFontFamilies.at(0);
     }
     fontFile.close();
@@ -168,7 +166,7 @@ QString Utils::loadFontFamilyByType(FontType fontType)
     return fontFamilyName;
 }
 
-QFont Utils::loadFontBySizeAndWeight(QString fontFamily,int fontSize, int fontWeight)
+QFont Utils::loadFontBySizeAndWeight(QString fontFamily, int fontSize, int fontWeight)
 {
     QFont font(fontFamily);
     font.setPixelSize(fontSize);
@@ -186,93 +184,105 @@ QString Utils::fromSpecialEncoding(const QString &inputStr)
     }
 
     QTextCodec *codec = QTextCodec::codecForName("utf-8");
-    if (codec)
-    {
-        QString unicodeStr =  codec->toUnicode(inputStr.toLatin1());
+    if (codec) {
+        QString unicodeStr = codec->toUnicode(inputStr.toLatin1());
         qDebug() << "convert to unicode:" << unicodeStr << endl;
         return unicodeStr;
-    }
-    else
-    {
+    } else {
         return inputStr;
     }
 }
 
+QString Utils::translateTitle(const QString &titleUS)
+{
+    QString strRet = titleUS;
+    if (QLocale::system().name() == "zh_CN") {
+        int nCount = sizeof(languageArr) / sizeof(languageArr[0]);
+        for (int i = 0; i < nCount; i++) {
+            if (languageArr[i][0] == titleUS) {
+                strRet = languageArr[i][1];
+                break;
+            }
+        }
+    }
+    return strRet;
+}
+
 ExApplicationHelper *ExApplicationHelper::instance()
 {
-    return qobject_cast<ExApplicationHelper*>(DGuiApplicationHelper::instance());
+    return qobject_cast<ExApplicationHelper *>(DGuiApplicationHelper::instance());
 }
 
 #define CAST_INT static_cast<int>
 
 static QColor light_qpalette[QPalette::NColorRoles] {
-    QColor("#000000"),                              //WindowText
-    QColor("#e5e5e5"),                              //Button
-    QColor("#e6e6e6"),                              //Light
-    QColor("#e5e5e5"),                              //Midlight
-    QColor("#e3e3e3"),                              //Dark
-    QColor("#e4e4e4"),                              //Mid
-    QColor("#414d68"),                              //Text
-    Qt::black,                                      //BrightText
-    QColor("#414d68"),                              //ButtonText
-    Qt::white,                                      //Base
-    QColor("#f8f8f8"),                              //Window
-    QColor(0, 0, 0, CAST_INT(0.05 * 255)),          //Shadow
-    QColor("#0081ff"),                              //Highlight
-    Qt::white,                                      //HighlightedText
-    QColor("#0082fa"),                              //Link
-    QColor("#ad4579"),                              //LinkVisited
-    QColor(0, 0, 0, CAST_INT(0.03 * 255)),          //AlternateBase
-    Qt::white,                                      //NoRole
-    QColor(255, 255, 255, CAST_INT(0.8 * 255)),     //ToolTipBase
-    Qt::black                                       //ToolTipText
+    QColor("#000000"),                           // WindowText
+    QColor("#e5e5e5"),                           // Button
+    QColor("#e6e6e6"),                           // Light
+    QColor("#e5e5e5"),                           // Midlight
+    QColor("#e3e3e3"),                           // Dark
+    QColor("#e4e4e4"),                           // Mid
+    QColor("#414d68"),                           // Text
+    Qt::black,                                   // BrightText
+    QColor("#414d68"),                           // ButtonText
+    Qt::white,                                   // Base
+    QColor("#f8f8f8"),                           // Window
+    QColor(0, 0, 0, CAST_INT(0.05 * 255)),       // Shadow
+    QColor("#0081ff"),                           // Highlight
+    Qt::white,                                   // HighlightedText
+    QColor("#0082fa"),                           // Link
+    QColor("#ad4579"),                           // LinkVisited
+    QColor(0, 0, 0, CAST_INT(0.03 * 255)),       // AlternateBase
+    Qt::white,                                   // NoRole
+    QColor(255, 255, 255, CAST_INT(0.8 * 255)),  // ToolTipBase
+    Qt::black                                    // ToolTipText
 };
 
 static QColor dark_qpalette[QPalette::NColorRoles] {
-    QColor("#ffffff"),                              //WindowText
-    QColor("#444444"),                              //Button
-    QColor("#484848"),                              //Light
-    QColor("#474747"),                              //Midlight
-    QColor("#414141"),                              //Dark
-    QColor("#434343"),                              //Mid
-    QColor("#c0c6d4"),                              //Text
-    Qt::white,                                      //BrightText
-    QColor("#c0c6d4"),                              //ButtonText
-    QColor("#282828"),                              //Base
-    QColor("#252525"),                              //Window
-    QColor(0, 0, 0, CAST_INT(0.05 * 255)),          //Shadow
-    QColor("#0081ff"),                              //Highlight
-    QColor("#F1F6FF"),                              //HighlightedText
-    QColor("#0082fa"),                              //Link
-    QColor("#ad4579"),                              //LinkVisited
-    QColor(0, 0, 0, CAST_INT(0.05 * 255)),          //AlternateBase
-    Qt::black,                                      //NoRole
-    QColor(45, 45, 45, CAST_INT(0.8 * 255)),        //ToolTipBase
-    QColor("#c0c6d4")                               //ToolTipText
+    QColor("#ffffff"),                        // WindowText
+    QColor("#444444"),                        // Button
+    QColor("#484848"),                        // Light
+    QColor("#474747"),                        // Midlight
+    QColor("#414141"),                        // Dark
+    QColor("#434343"),                        // Mid
+    QColor("#c0c6d4"),                        // Text
+    Qt::white,                                // BrightText
+    QColor("#c0c6d4"),                        // ButtonText
+    QColor("#282828"),                        // Base
+    QColor("#252525"),                        // Window
+    QColor(0, 0, 0, CAST_INT(0.05 * 255)),    // Shadow
+    QColor("#0081ff"),                        // Highlight
+    QColor("#F1F6FF"),                        // HighlightedText
+    QColor("#0082fa"),                        // Link
+    QColor("#ad4579"),                        // LinkVisited
+    QColor(0, 0, 0, CAST_INT(0.05 * 255)),    // AlternateBase
+    Qt::black,                                // NoRole
+    QColor(45, 45, 45, CAST_INT(0.8 * 255)),  // ToolTipBase
+    QColor("#c0c6d4")                         // ToolTipText
 };
 
 static QColor light_dpalette[DPalette::NColorTypes] {
-    QColor(),                                   //NoType
-    QColor(255, 255, 255, CAST_INT(0.2 * 255)), //ItemBackground
-    QColor("#001A2E"),                          //TextTitle
-    QColor("#8AA1B4"),                          //TextTips
-    QColor("#FF5736"),                          //TextWarning
-    QColor("#0082FA"),                          //TextLively
-    QColor("#25b7ff"),                          //LightLively
-    QColor(235, 235, 235, CAST_INT(0 * 255)),   //DarkLively
-    QColor(235, 235, 235, CAST_INT(0 * 255))    //FrameBorder
+    QColor(),                                    // NoType
+    QColor(255, 255, 255, CAST_INT(0.2 * 255)),  // ItemBackground
+    QColor("#001A2E"),                           // TextTitle
+    QColor("#8AA1B4"),                           // TextTips
+    QColor("#FF5736"),                           // TextWarning
+    QColor("#0082FA"),                           // TextLively
+    QColor("#25b7ff"),                           // LightLively
+    QColor(235, 235, 235, CAST_INT(0 * 255)),    // DarkLively
+    QColor(235, 235, 235, CAST_INT(0 * 255))     // FrameBorder
 };
 
 static QColor dark_dpalette[DPalette::NColorTypes] {
-    QColor(),                                       //NoType
-    QColor(25, 25, 25, CAST_INT(0 * 255)),          //ItemBackground
-    QColor("#C0C6D4"),                              //TextTitle
-    QColor("#6D7C88"),                              //TextTips
-    QColor("#FF5736"),                              //TextWarning
-    QColor("#0082FA"),                              //TextLively
-    QColor("#0056c1"),                              //LightLively
-    QColor(25, 25, 25, CAST_INT(0 * 255)),          //DarkLively
-    QColor(25, 25, 25, CAST_INT(0.5 * 255))         //FrameBorder
+    QColor(),                                // NoType
+    QColor(25, 25, 25, CAST_INT(0 * 255)),   // ItemBackground
+    QColor("#C0C6D4"),                       // TextTitle
+    QColor("#6D7C88"),                       // TextTips
+    QColor("#FF5736"),                       // TextWarning
+    QColor("#0082FA"),                       // TextLively
+    QColor("#0056c1"),                       // LightLively
+    QColor(25, 25, 25, CAST_INT(0 * 255)),   // DarkLively
+    QColor(25, 25, 25, CAST_INT(0.5 * 255))  // FrameBorder
 };
 
 DPalette ExApplicationHelper::standardPalette(DGuiApplicationHelper::ColorType type) const
@@ -306,7 +316,7 @@ DPalette ExApplicationHelper::standardPalette(DGuiApplicationHelper::ColorType t
         generatePaletteColor(*pa, role, type);
     }
 
-    return *const_cast<const DPalette*>(pa);
+    return *const_cast<const DPalette *>(pa);
 }
 
 DPalette ExApplicationHelper::palette(const QWidget *widget, const QPalette &base) const
@@ -322,7 +332,7 @@ DPalette ExApplicationHelper::palette(const QWidget *widget, const QPalette &bas
         palette = standardPalette(toColorType(wp));
 
         // 关注控件palette改变的事件
-        const_cast<QWidget*>(widget)->installEventFilter(const_cast<ExApplicationHelper*>(this));
+        const_cast<QWidget *>(widget)->installEventFilter(const_cast<ExApplicationHelper *>(this));
     } while (false);
 
     return palette;
@@ -341,9 +351,9 @@ void ExApplicationHelper::resetPalette(QWidget *widget)
     widget->setAttribute(Qt::WA_SetPalette, false);
 }
 
-ExApplicationHelper::ExApplicationHelper(){}
+ExApplicationHelper::ExApplicationHelper() {}
 
-ExApplicationHelper::~ExApplicationHelper(){}
+ExApplicationHelper::~ExApplicationHelper() {}
 
 bool ExApplicationHelper::eventFilter(QObject *watched, QEvent *event)
 {

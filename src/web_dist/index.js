@@ -44,6 +44,7 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 
 global.hash = ' ';
 global.oldHash = ' ';
+global.linktitle = '';
 global.isMouseClickNav = false;
 global.isMouseScrollArticle = false;
 
@@ -205,6 +206,12 @@ var App = function (_React$Component) {
         var url = '/open/' + file + '/' + hash;
         console.log(url);
         _this3.context.router.history.push(url);
+      };
+
+      global.linkTitle = function (title) {
+        console.log("===============");
+        console.log(title);
+        global.linktitle = title;
       };
 
       global.setTheme = function (themeType) {
@@ -1095,6 +1102,20 @@ var Main = function (_Component) {
           init: true,
           hash: hash ? hash : hlist[0].id
         });
+
+        if (global.linktitle != '') {
+          var nHash = '';
+          for (var i = 0; i < _this2.state.hlist.length; i++) {
+            var element = _this2.state.hlist[i];
+
+            if (element.text == global.linktitle) {
+              console.log("----------" + element.text);
+              nHash = element.id;
+            }
+          }
+          _this2.setScrollTitle(nHash);
+          global.linktitle = '';
+        }
       });
     }
   }, {
@@ -1106,6 +1127,16 @@ var Main = function (_Component) {
         global.oldHash = hash;
         global.isLinkClicked = false;
       }
+      this.setState({ hash: hash });
+    }
+  }, {
+    key: 'setScrollTitle',
+    value: function setScrollTitle(hash) {
+      console.log("main title setHash:" + hash);
+      global.hash = hash;
+      global.oldHash = hash;
+      global.isMouseClickNav = true;
+      global.isMouseScrollArticle = false;
       this.setState({ hash: hash });
     }
   }, {

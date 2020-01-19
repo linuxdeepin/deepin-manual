@@ -18,10 +18,10 @@
 #ifndef DEEPIN_MANUAL_CONTROLLER_WINDOW_MANAGER_H
 #define DEEPIN_MANUAL_CONTROLLER_WINDOW_MANAGER_H
 
+#include <QDBusConnection>
 #include <QHash>
 #include <QObject>
 #include <QPoint>
-#include <QDBusConnection>
 
 class QCefGlobalSettings;
 
@@ -32,47 +32,49 @@ class WebWindow;
 
 // Manages visibility and lifecycle of web windows.
 // Current process will exit only if all of these windows are closed.
-class WindowManager : public QObject {
+class WindowManager : public QObject
+{
     Q_OBJECT
 public:
     explicit WindowManager(QObject* parent = nullptr);
     ~WindowManager() override;
 
-    void moveWindow(WebWindow *window);
+    void moveWindow(WebWindow* window);
     SearchManager* currSearchManager();
 
-    void SendMsg(const QString &msg);
+    void SendMsg(const QString& msg);
 
-    static int initQCef(int argc, char **argv);
+    static int initQCef(int argc, char** argv);
 
 private:
     QPoint newWindowPosition();
     void initDBus();
     void initWebWindow();
     void activeExistingWindow();
-    void activeOrInitWindow(const QString &app_name);
+    void activeOrInitWindow(const QString& app_name);
 
     QHash<QString, WebWindow*> windows_;
-    SearchManager* search_manager_ { nullptr };
+    SearchManager* search_manager_ {nullptr};
     QPoint last_new_window_pos_;
     QString curr_app_name_;
     QString curr_keyword_;
+    QString curr_title_name_;
 
 private slots:
     /**
-    * Remove window from window list.
-    * @param app_name
-    */
+     * Remove window from window list.
+     * @param app_name
+     */
     void onWindowClosed(const QString& app_name);
-    void onWindowShown(WebWindow *window);
-    void RecvMsg(const QString &data);
+    void onWindowShown(WebWindow* window);
+    void RecvMsg(const QString& data);
 
 public slots:
     /**
-    * Open manual page of application with name |app_name|.
-    * If manual of that app has already been presented, just raise to front.
-    */
-    void openManual(const QString& app_name);
+     * Open manual page of application with name |app_name|.
+     * If manual of that app has already been presented, just raise to front.
+     */
+    void openManual(const QString& app_name, const QString& title_name);
     void openManualWithSearch(const QString& app_name, const QString& keyword);
 
     void onNewAppOpen();

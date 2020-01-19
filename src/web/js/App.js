@@ -11,6 +11,7 @@ import sIndex from './searchIndex';
 
 global.hash = ' ';
 global.oldHash = ' ';
+global.linktitle = '';
 global.isMouseClickNav = false;
 global.isMouseScrollArticle = false;
 
@@ -147,6 +148,12 @@ class App extends React.Component {
       let url = `/open/${file}/${hash}`;
       console.log(url);
       this.context.router.history.push(url);
+    };
+
+    global.linkTitle = (title) => {
+      console.log("===============");
+      console.log(title);
+      global.linktitle = title;
     };
 
     global.setTheme = (themeType) => {

@@ -25,8 +25,27 @@ export default class Main extends Component {
         init: true,
         hash: hash ? hash : hlist[0].id
       });
+
+
+      if (global.linktitle != '')
+      {
+        var nHash = '';
+        for (let i = 0; i < this.state.hlist.length; i++)
+        {
+          var element = this.state.hlist[i];
+
+          if (element.text == global.linktitle)
+          {
+            console.log("----------"+element.text);
+            nHash = element.id;
+          }
+        }
+        this.setScrollTitle(nHash);
+        global.linktitle = '';
+      }
     });
   }
+
   setHash(hash) {
     console.log("main setHash:" + hash);
     if (global.isLinkClicked) {
@@ -36,6 +55,16 @@ export default class Main extends Component {
     }
     this.setState({ hash });
   }
+
+  setScrollTitle(hash){
+    console.log("main title setHash:" + hash);
+    global.hash = hash;
+    global.oldHash = hash;
+    global.isMouseClickNav = true;
+    global.isMouseScrollArticle = false;
+    this.setState({ hash });
+  }
+
   setScroll(hash) {
     console.log("main setScroll:" + hash);
     global.hash = hash;

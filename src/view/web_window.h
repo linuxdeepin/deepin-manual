@@ -19,14 +19,14 @@
 #define DEEPIN_MANUAL_VIEW_WEB_WINDOW_H
 
 #include "controller/search_result.h"
-#include "widget/manual_webview.h"
 #include "view/settings_proxy.h"
+#include "widget/manual_webview.h"
 
 #include <QTimer>
 #include <QtDBus/QtDBus>
 
-#include <DMainWindow>
 #include <DButtonBox>
+#include <DMainWindow>
 
 namespace dman {
 
@@ -62,6 +62,8 @@ public:
 
     void initWebView();
 
+    void setTitleName(const QString &title_name);
+
     Dtk::Widget::DButtonBoxButton *m_backButton;
     Dtk::Widget::DButtonBoxButton *m_forwardButton;
 
@@ -90,21 +92,22 @@ private:
     void initDBus();
 
     QString app_name_;
-    SearchManager *search_manager_ { nullptr };
-    SearchCompletionWindow *completion_window_ { nullptr };
-    ImageViewer *image_viewer_ { nullptr };
-    I18nProxy *i18n_proxy { nullptr };
-    SearchProxy *search_proxy_ { nullptr };
-    ThemeProxy *theme_proxy_ { nullptr };
-    ImageViewerProxy *image_viewer_proxy_ { nullptr };
-    ManualProxy *manual_proxy_ { nullptr };
-    TitleBarProxy *title_bar_proxy_ { nullptr };
-    SettingsProxy *settings_proxy_ { nullptr };
-    TitleBar *title_bar_ { nullptr };
-    ManualWebView *web_view_ { nullptr};
+    QString title_name_;
+    SearchManager *search_manager_ {nullptr};
+    SearchCompletionWindow *completion_window_ {nullptr};
+    ImageViewer *image_viewer_ {nullptr};
+    I18nProxy *i18n_proxy {nullptr};
+    SearchProxy *search_proxy_ {nullptr};
+    ThemeProxy *theme_proxy_ {nullptr};
+    ImageViewerProxy *image_viewer_proxy_ {nullptr};
+    ManualProxy *manual_proxy_ {nullptr};
+    TitleBarProxy *title_bar_proxy_ {nullptr};
+    SettingsProxy *settings_proxy_ {nullptr};
+    TitleBar *title_bar_ {nullptr};
+    ManualWebView *web_view_ {nullptr};
     QTimer search_timer_;
-    Dtk::Widget::DButtonBox *buttonBox { nullptr};
-    SearchEdit *search_edit_ { nullptr};
+    Dtk::Widget::DButtonBox *buttonBox {nullptr};
+    SearchEdit *search_edit_ {nullptr};
     QPoint start_point_;
     int start_drag_x;
     QString keyword_;
@@ -116,8 +119,7 @@ private slots:
     void onSearchButtonClicked();
     void onSearchContentByKeyword(const QString &keyword);
     void onSearchResultClicked(const SearchAnchorResult &result);
-    void onSearchAnchorResult(const QString &keyword,
-                              const SearchAnchorResultList &result);
+    void onSearchAnchorResult(const QString &keyword, const SearchAnchorResultList &result);
     void onSearchTextChanged(const QString &text);
     void onSearchTextChangedDelay();
     void onTitleBarEntered();

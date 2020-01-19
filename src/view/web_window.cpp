@@ -16,43 +16,42 @@
  */
 
 #include "view/web_window.h"
+#include "base/command.h"
 #include "base/consts.h"
-#include "dbus/dbus_consts.h"
+#include "base/utils.h"
 #include "controller/search_manager.h"
+#include "dbus/dbus_consts.h"
 #include "view/i18n_proxy.h"
 #include "view/image_viewer_proxy.h"
 #include "view/manual_proxy.h"
 #include "view/search_proxy.h"
+#include "view/settings_proxy.h"
 #include "view/theme_proxy.h"
 #include "view/title_bar_proxy.h"
-#include "view/settings_proxy.h"
 #include "view/web_event_delegate.h"
 #include "view/widget/image_viewer.h"
 #include "view/widget/search_completion_window.h"
 #include "view/widget/search_edit.h"
-#include "base/command.h"
-#include "base/utils.h"
 
 #include <qcef_web_page.h>
 
-#include <QShortcut>
-#include <QWindow>
 #include <QApplication>
+#include <QDBusConnection>
 #include <QFileInfo>
 #include <QMouseEvent>
+#include <QShortcut>
 #include <QShowEvent>
 #include <QWebChannel>
-#include <QDBusConnection>
+#include <QWindow>
 #include <QX11Info>
 
-#include <DLog>
-#include <DTitlebar>
-#include <DButtonBox>
 #include <DApplicationHelper>
+#include <DButtonBox>
+#include <DLog>
 #include <DPlatformWindowHandle>
+#include <DTitlebar>
 
 DWIDGET_USE_NAMESPACE
-
 
 namespace dman {
 
@@ -62,10 +61,10 @@ const int kSearchDelay = 200;
 
 }  // namespace
 
-
 WebWindow::WebWindow(QWidget *parent)
     : Dtk::Widget::DMainWindow(parent)
     , app_name_()
+    , title_name_("")
     , search_timer_()
     , keyword_("")
     , first_webpage_loaded_(true)
@@ -120,7 +119,7 @@ WebWindow::~WebWindow()
     }
 }
 
-const QString& WebWindow::appName() const
+const QString &WebWindow::appName() const
 {
     return app_name_;
 }
@@ -129,13 +128,13 @@ void WebWindow::setSearchManager(SearchManager *search_manager)
 {
     search_manager_ = search_manager;
 
-    connect(search_manager_, &SearchManager::searchContentResult,
-            search_proxy_, &SearchProxy::onContentResult);
-    connect(search_manager_, &SearchManager::searchContentMismatch,
-            search_proxy_, &SearchProxy::mismatch);
+    connect(search_manager_, &SearchManager::searchContentResult, search_proxy_,
+            &SearchProxy::onContentResult);
+    connect(search_manager_, &SearchManager::searchContentMismatch, search_proxy_,
+            &SearchProxy::mismatch);
 
-    connect(search_manager_, &SearchManager::searchAnchorResult,
-            this, &WebWindow::onSearchAnchorResult);
+    connect(search_manager_, &SearchManager::searchAnchorResult, this,
+            &WebWindow::onSearchAnchorResult);
 }
 
 void WebWindow::setAppName(const QString &app_name)
@@ -154,26 +153,21 @@ void WebWindow::setSearchKeyword(const QString &keyword)
 
 void WebWindow::initConnections()
 {
-    connect(search_edit_, &SearchEdit::textChanged,
-            this, &WebWindow::onSearchTextChanged);
-    connect(search_edit_, &SearchEdit::downKeyPressed,
-            completion_window_, &SearchCompletionWindow::goDown);
-    connect(search_edit_, &SearchEdit::enterPressed,
-            this, &WebWindow::onTitleBarEntered);
-    connect(search_edit_, &SearchEdit::upKeyPressed,
-            completion_window_, &SearchCompletionWindow::goUp);
-    connect(search_edit_, &SearchEdit::focusChanged,
-            this, &WebWindow::onSearchEditFocusOut);
+    connect(search_edit_, &SearchEdit::textChanged, this, &WebWindow::onSearchTextChanged);
+    connect(search_edit_, &SearchEdit::downKeyPressed, completion_window_,
+            &SearchCompletionWindow::goDown);
+    connect(search_edit_, &SearchEdit::enterPressed, this, &WebWindow::onTitleBarEntered);
+    connect(search_edit_, &SearchEdit::upKeyPressed, completion_window_,
+            &SearchCompletionWindow::goUp);
+    connect(search_edit_, &SearchEdit::focusChanged, this, &WebWindow::onSearchEditFocusOut);
 
-    connect(completion_window_, &SearchCompletionWindow::resultClicked,
-            this, &WebWindow::onSearchResultClicked);
-    connect(completion_window_, &SearchCompletionWindow::searchButtonClicked,
-            this, &WebWindow::onSearchButtonClicked);
-    connect(&search_timer_, &QTimer::timeout,
-            this, &WebWindow::onSearchTextChangedDelay);
+    connect(completion_window_, &SearchCompletionWindow::resultClicked, this,
+            &WebWindow::onSearchResultClicked);
+    connect(completion_window_, &SearchCompletionWindow::searchButtonClicked, this,
+            &WebWindow::onSearchButtonClicked);
+    connect(&search_timer_, &QTimer::timeout, this, &WebWindow::onSearchTextChangedDelay);
 
-    connect(this, &WebWindow::manualSearchByKeyword,
-            this, &WebWindow::onManualSearchByKeyword);
+    connect(this, &WebWindow::manualSearchByKeyword, this, &WebWindow::onManualSearchByKeyword);
 }
 
 void WebWindow::onManualSearchByKeyword(const QString &keyword)
@@ -188,7 +182,7 @@ void WebWindow::initUI()
     completion_window_ = new SearchCompletionWindow();
     completion_window_->hide();
 
-    //init custom title
+    // init custom title
     QHBoxLayout *buttonLayout = new QHBoxLayout;
     buttonLayout->setMargin(0);
     buttonLayout->setSpacing(0);
@@ -232,12 +226,11 @@ void WebWindow::initUI()
 
     search_proxy_ = new SearchProxy(this);
     title_bar_proxy_ = new TitleBarProxy(this);
-    connect(m_backButton, &DButtonBoxButton::clicked,
-            title_bar_proxy_, &TitleBarProxy::backwardButtonClicked);
-    connect(m_forwardButton, &DButtonBoxButton::clicked,
-            title_bar_proxy_, &TitleBarProxy::forwardButtonClicked);
-    connect(title_bar_proxy_, &TitleBarProxy::buttonShowSignal,
-            this, &WebWindow::slot_ButtonShow);
+    connect(m_backButton, &DButtonBoxButton::clicked, title_bar_proxy_,
+            &TitleBarProxy::backwardButtonClicked);
+    connect(m_forwardButton, &DButtonBoxButton::clicked, title_bar_proxy_,
+            &TitleBarProxy::forwardButtonClicked);
+    connect(title_bar_proxy_, &TitleBarProxy::buttonShowSignal, this, &WebWindow::slot_ButtonShow);
 
     this->setFocusPolicy(Qt::ClickFocus);
 }
@@ -277,11 +270,15 @@ void WebWindow::initWebView()
     web_channel->registerObject("titleBar", title_bar_proxy_);
     web_channel->registerObject("settings", settings_proxy_);
 
-    connect(web_view_->page(), &QCefWebPage::loadFinished,
-            this, &WebWindow::onWebPageLoadFinished);
+    connect(web_view_->page(), &QCefWebPage::loadFinished, this, &WebWindow::onWebPageLoadFinished);
     connect(manual_proxy_, &ManualProxy::WidgetLower, this, &WebWindow::lower);
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
             theme_proxy_, &ThemeProxy::slot_ThemeChange);
+}
+
+void WebWindow::setTitleName(const QString &title_name)
+{
+    title_name_ = title_name;
 }
 
 void WebWindow::initShortcuts()
@@ -293,10 +290,10 @@ void WebWindow::initShortcuts()
     scWndReize->setKey(tr("Ctrl+Alt+F"));
     scWndReize->setContext(Qt::WindowShortcut);
     scWndReize->setAutoRepeat(false);
-    connect(scWndReize, &QShortcut::activated, this, [this]{
+    connect(scWndReize, &QShortcut::activated, this, [this] {
         if (this->windowState() & Qt::WindowMaximized) {
             this->showNormal();
-        } else if (this->windowState() == Qt::WindowNoState){
+        } else if (this->windowState() == Qt::WindowNoState) {
             this->showMaximized();
         }
     });
@@ -306,7 +303,7 @@ void WebWindow::initShortcuts()
     scSearch->setKey(tr("Ctrl+F"));
     scSearch->setContext(Qt::WindowShortcut);
     scSearch->setAutoRepeat(false);
-    connect(scSearch, &QShortcut::activated, this, [this]{
+    connect(scSearch, &QShortcut::activated, this, [this] {
         qDebug() << "search" << endl;
         search_edit_->lineEdit()->setFocus(Qt::ShortcutFocusReason);
         web_view_->page()->remapBrowserWindow(web_view_->winId(), this->winId());
@@ -318,7 +315,6 @@ void WebWindow::showEvent(QShowEvent *event)
     QWidget::showEvent(event);
 
     if (!is_index_loaded_) {
-
         is_index_loaded_ = true;
         QTimer::singleShot(20, this, [this] {
             emit this->shown(this);
@@ -352,9 +348,7 @@ void WebWindow::onSearchContentByKeyword(const QString &keyword)
 
 void WebWindow::onSearchEditFocusOut()
 {
-    QTimer::singleShot(20, [=]() {
-        this->completion_window_->hide();
-    });
+    QTimer::singleShot(20, [=]() { this->completion_window_->hide(); });
 }
 
 void WebWindow::onSearchButtonClicked()
@@ -368,12 +362,11 @@ void WebWindow::onSearchButtonClicked()
 
 void WebWindow::onSearchResultClicked(const SearchAnchorResult &result)
 {
-    web_view_->page()->runJavaScript(
-        QString("open('%1', '%2', '%3', '%4')")
-        .arg(result.app_name)
-        .arg(result.anchorId)
-        .arg(result.anchor)
-        .arg(result.app_display_name));
+    web_view_->page()->runJavaScript(QString("open('%1', '%2', '%3', '%4')")
+                                         .arg(result.app_name)
+                                         .arg(result.anchorId)
+                                         .arg(result.anchor)
+                                         .arg(result.app_display_name));
 }
 
 void WebWindow::onSearchTextChanged(const QString &text)
@@ -417,8 +410,7 @@ void WebWindow::onWebPageLoadFinished(bool ok)
         DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
         if (themeType == DGuiApplicationHelper::LightType) {
             qsthemetype = "LightType";
-        }
-        else if (themeType == DGuiApplicationHelper::DarkType) {
+        } else if (themeType == DGuiApplicationHelper::DarkType) {
             qsthemetype = "DarkType";
         }
         web_view_->page()->runJavaScript(QString("setTheme('%1')").arg(qsthemetype));
@@ -430,12 +422,14 @@ void WebWindow::onWebPageLoadFinished(bool ok)
                 // Open markdown file with absolute path.
                 QFileInfo info(real_path);
                 real_path = info.canonicalFilePath();
-                web_view_->page()->runJavaScript(
-                    QString("open('%1')").arg(real_path));
+                web_view_->page()->runJavaScript(QString("open('%1')").arg(real_path));
             } else {
                 // Open system manual.
-                web_view_->page()->runJavaScript(
-                    QString("open('%1')").arg(app_name_));
+                web_view_->page()->runJavaScript(QString("open('%1')").arg(app_name_));
+            }
+
+            if (!title_name_.isEmpty()) {
+                web_view_->page()->runJavaScript(QString("linkTitle('%1')").arg(title_name_));
             }
         }
 
@@ -454,8 +448,7 @@ void WebWindow::onWebPageLoadFinished(bool ok)
     }
 }
 
-void WebWindow::onSearchAnchorResult(const QString &keyword,
-                                     const SearchAnchorResultList &result)
+void WebWindow::onSearchAnchorResult(const QString &keyword, const SearchAnchorResultList &result)
 {
     // Ignore this signal if current manual window is not present.
     if (keyword != completion_window_->keyword()) {
@@ -472,7 +465,8 @@ void WebWindow::onSearchAnchorResult(const QString &keyword,
         completion_window_->raise();
         completion_window_->autoResize();
         // Move to below of search edit.
-        const QPoint local_point(this->rect().width() / 2 - search_edit_->width() / 2, titlebar()->height()-3);
+        const QPoint local_point(this->rect().width() / 2 - search_edit_->width() / 2,
+                                 titlebar()->height() - 3);
         const QPoint global_point(this->mapToGlobal(local_point));
         completion_window_->move(global_point);
         completion_window_->setFocusPolicy(Qt::NoFocus);
@@ -483,8 +477,7 @@ void WebWindow::onSearchAnchorResult(const QString &keyword,
 bool WebWindow::eventFilter(QObject *watched, QEvent *event)
 {
     // Filters mouse press event only.
-    if (event->type() == QEvent::MouseButtonPress &&
-        qApp->activeWindow() == this &&
+    if (event->type() == QEvent::MouseButtonPress && qApp->activeWindow() == this &&
         watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
         QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
         switch (mouseEvent->button()) {
@@ -507,7 +500,8 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
         if (this->settings_proxy_) {
             qDebug() << "eventFilter QEvent::FontChange";
             auto fontInfo = this->fontInfo();
-            Q_EMIT this->settings_proxy_->fontChangeRequested(fontInfo.family(), fontInfo.pixelSize());
+            Q_EMIT this->settings_proxy_->fontChangeRequested(fontInfo.family(),
+                                                              fontInfo.pixelSize());
         }
     }
 
@@ -531,4 +525,3 @@ void WebWindow::slot_ButtonShow()
 }
 
 }  // namespace dman
-
