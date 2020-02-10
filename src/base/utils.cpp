@@ -40,7 +40,27 @@ QHash<QString, QString> Utils::m_fontNameCache;
 
 //标题映射表
 const int langCount = 2;
-QString languageArr[][langCount] = {{"License activator", "授权管理"}};
+QString languageArr[][langCount] = {
+                                    //dde model
+                                    {"License activator", "授权管理"},
+                                    {"Control Center","控制中心"},
+                                    {"Control Center Home","首页介绍"},
+                                    {"Account","账户设置"},
+                                    {"Cloud Account","网络账户"},
+                                    {"Display","显示设置"},
+                                    {"Default Applications","默认程序设置"},
+                                    {"Personalization","个性化设置"},
+                                    {"Network","网络设置"},
+                                    {"Sound","声音设置"},
+                                    {"Bluetooth","蓝牙设置"},
+                                    {"Date and Time","日期和时间"},
+                                    {"Power","电源管理"},
+                                    {"Mouse","鼠标和触控板"},
+                                    {"Drawing Tablet","数位板"},
+                                    {"Keyboard and Language","键盘和语言"},
+                                    {"Update","系统更新"},
+                                    {"System Info","系统信息"},
+                                    {"General Settings","通用设置"}};
 
 Utils::Utils(QObject *parent)
     : QObject(parent)
