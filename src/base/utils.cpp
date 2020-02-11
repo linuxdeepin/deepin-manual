@@ -43,24 +43,23 @@ const int langCount = 2;
 QString languageArr[][langCount] = {
                                     //dde model
                                     {"License activator", "授权管理"},
-                                    {"Control Center","控制中心"},
-                                    {"Control Center Home","首页介绍"},
-                                    {"Account","账户设置"},
-                                    {"Cloud Account","网络账户"},
-                                    {"Display","显示设置"},
-                                    {"Default Applications","默认程序设置"},
-                                    {"Personalization","个性化设置"},
-                                    {"Network","网络设置"},
-                                    {"Sound","声音设置"},
-                                    {"Bluetooth","蓝牙设置"},
-                                    {"Date and Time","日期和时间"},
-                                    {"Power","电源管理"},
-                                    {"Mouse","鼠标和触控板"},
-                                    {"Drawing Tablet","数位板"},
-                                    {"Keyboard and Language","键盘和语言"},
-                                    {"Update","系统更新"},
-                                    {"System Info","系统信息"},
-                                    {"General Settings","通用设置"}};
+                                    {"controlcenter","控制中心"},
+                                    {"accounts","账户设置"},
+                                    {"cloudsync","网络账户"},
+                                    {"display","显示设置"},
+                                    {"defapp","默认程序设置"},
+                                    {"personalization","个性化设置"},
+                                    {"network","网络设置"},
+                                    {"sound","声音设置"},
+                                    {"bluetooth","蓝牙设置"},
+                                    {"datetime","日期和时间"},
+                                    {"power","电源管理"},
+                                    {"mouse","鼠标和触控板"},
+                                    {"tablet","数位板"},
+                                    {"keyboard","键盘和语言"},
+                                    {"update","系统更新"},
+                                    {"systeminfo","系统信息"},
+                                    {"commoninfo","通用设置"}};
 
 Utils::Utils(QObject *parent)
     : QObject(parent)
