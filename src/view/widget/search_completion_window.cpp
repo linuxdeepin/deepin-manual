@@ -26,6 +26,7 @@
 
 #include <DPlatformWindowHandle>
 #include <DStyleHelper>
+#include <DWindowManagerHelper>
 
 namespace dman {
 
@@ -36,12 +37,13 @@ const int kItemHeight = 34;
 }  // namespace
 
 SearchCompletionWindow::SearchCompletionWindow(QWidget *parent)
-    : DBlurEffectWidget(parent)
+    : DBlurEffectWidget (parent)
 {
     this->setObjectName("SearchCompletionWindow");
 
     this->initUI();
     this->initConnections();
+
 }
 
 SearchCompletionWindow::~SearchCompletionWindow()
@@ -225,6 +227,7 @@ void SearchCompletionWindow::initUI()
     this->setAttribute(Qt::WA_NativeWindow, true);
 }
 
+
 void SearchCompletionWindow::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event)
@@ -232,10 +235,23 @@ void SearchCompletionWindow::paintEvent(QPaintEvent *event)
     QStylePainter painter(this);
     QPainterPath path;
     path.addRect(this->rect());
-
     DPalette pa = ExApplicationHelper::instance()->palette(this);
     DStyleHelper styleHelper;
-    QColor fillColor = pa.color(DPalette::FrameBorder);
+    QColor fillColor;
+    if (DWindowManagerHelper::instance()->hasComposite())
+    {
+
+        fillColor = pa.color(DPalette::FrameBorder);
+    }
+    else {
+        DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
+        if (themeType == DGuiApplicationHelper::LightType) {
+            fillColor = QColor(255,255,255);
+        } else if (themeType == DGuiApplicationHelper::DarkType) {
+            fillColor = QColor(0,0,0);
+        }
+
+    }
     painter.fillPath(path, QBrush(fillColor));
 }
 
