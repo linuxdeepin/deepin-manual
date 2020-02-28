@@ -74,6 +74,8 @@ public slots:
      * Open manual page of application with name |app_name|.
      * If manual of that app has already been presented, just raise to front.
      */
+    void openManualAll(const QString& app_name, const QString& key_name, const QString& title_name);
+
     void openManual(const QString& app_name, const QString& title_name);
     void openManualWithSearch(const QString& app_name, const QString& keyword);
 

@@ -29,11 +29,12 @@ public:
     explicit ArgumentParser(QObject* parent = nullptr);
     ~ArgumentParser() override;
 
-    bool parseArguments();
-
+    void parseArguments();
     void openManualsDelay();
 
 signals:
+    void openManualAllRequested(const QString& app_name, const QString& key_name,
+                                const QString& title_name);
     void openManualRequested(const QString& app_name, const QString& title_name);
     void openManualWithSearchRequested(const QString& app_name, const QString& keyword);
     void searchRequested(const QString& keyword);

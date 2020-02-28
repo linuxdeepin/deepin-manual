@@ -15,29 +15,32 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <DLog>
 #include <QCoreApplication>
 #include <QDBusConnection>
-#include <DLog>
 
-#include "dbus/dbus_consts.h"
-#include "dbus/manual_search_adapter.h"
-#include "dbus/manual_search_proxy.h"
+#include "controller/windowmanager.h"
 
-int main(int argc, char** argv) {
-  QCoreApplication app(argc, argv);
+int main(int argc, char** argv)
+{
+    QCoreApplication app(argc, argv);
 
-  ManualSearchProxy search_obj;
-  ManualSearchAdapter adapter(&search_obj);
+    windowManager* manager = new windowManager;
 
-  QDBusConnection conn = QDBusConnection::sessionBus();
-  if (!conn.registerService(dman::kManualSearchService) ||
-      !conn.registerObject(dman::kManualSearchIface, &search_obj)) {
-        qCritical() << "dman-search failed to register dbus service";
+    if (!manager->initDbus()) {
         return 1;
-  }
-  else {
-      qDebug() << "dman-search register dbus service success!";
-  }
+    }
+    //    ManualOpenProxy search_obj;
+    //    ManualOpenAdapter adapter(&search_obj);
 
-  return app.exec();
+    //    QDBusConnection conn = QDBusConnection::sessionBus();
+    //    if (!conn.registerService(dman::kManualOpenService) ||
+    //        !conn.registerObject(dman::kManualOpenIface, &search_obj)) {
+    //        qCritical() << "dman-search failed to register dbus service";
+    //        return 1;
+    //    } else {
+    //        qDebug() << "dman-search register dbus service success!";
+    //    }
+
+    return app.exec();
 }

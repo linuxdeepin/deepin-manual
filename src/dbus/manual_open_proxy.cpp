@@ -33,22 +33,22 @@ ManualOpenProxy::~ManualOpenProxy() {}
 void ManualOpenProxy::Open(const QString& app_name)
 {
     qDebug() << Q_FUNC_INFO << app_name;
-    emit this->openManualRequested(app_name, "");
+    emit this->openManual(app_name, "", "");
 }
 
 void ManualOpenProxy::OpenTitle(const QString& app_name, const QString& title_name)
 {
     qDebug() << Q_FUNC_INFO << app_name << "---" << title_name;
-    emit this->openManualRequested(app_name, title_name);
+    emit this->openManual(app_name, "", title_name);
 }
 
 void ManualOpenProxy::ShowManual(const QString& app_name)
 {
-    this->Open(app_name);
+    emit this->openManual(app_name, "", "");
 }
 
 void ManualOpenProxy::Search(const QString& keyword)
 {
     qDebug() << Q_FUNC_INFO << keyword;
-    emit this->searchRequested(keyword);
+    emit this->openManual("", keyword, "");
 }

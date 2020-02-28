@@ -20,11 +20,11 @@
 
 //#include "view/manual_proxy.h"
 
-#include <DSysInfo>
-#include <QDBusConnection>
+//#include <DSysInfo>
+//#include <QDBusConnection>
 #include <QObject>
 // class LauncherInterface;
-#include <DSysInfo>
+//#include <DSysInfo>
 
 class ManualSearchProxy : public QObject
 {
@@ -34,21 +34,23 @@ public:
     ~ManualSearchProxy() override;
 
 signals:
-    void SendWinInfo(const QString &data);
+    void bindManual(const QString &appName, const QString &winId);
+    void closeManual(const QString &winId);
 
 public slots:
-    bool ManualExists(const QString &app_name);
-
-private slots:
-    void RecvMsg(const QString &data);
-    void OnNewWindowOpen(const QString &data);
+    //    void RecvMsg(const QString &data);
+    void BindManual(const QString &app_name, const QString &winId);
+    void CloseManual(const QString &winId);
+    bool OnNewWindowOpen(const QString &data);
 
 private:
-    void initDBus();
-    void connectToSender();
+    //    void initDBus();
+    //    void connectToSender();
 
-    QDBusConnection m_dbusConn;
-    QList<QHash<QString, QString>> winInfoList;
+    //    QDBusConnection m_dbusConn;
+    //    QList<QHash<QString, QString>> winInfoList;
+
+    //    QList<QHash<QString, QString>> winInfoList;  // app---winId
 };
 
 #endif  // DEEPIN_MANUAL_DBUS_MANUAL_SEARCH_PROXY_H

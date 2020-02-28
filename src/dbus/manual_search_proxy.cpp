@@ -25,18 +25,18 @@
 
 ManualSearchProxy::ManualSearchProxy(QObject *parent)
     : QObject(parent)
-    , m_dbusConn(QDBusConnection::connectToBus(QDBusConnection::SessionBus, "Receiver"))
 {
     this->setObjectName("ManualSearchProxy");
 
-    winInfoList.clear();
+    //    winInfoList.clear();
 
-    initDBus();
-    connectToSender();
+    //    initDBus();  //no use
+    //    connectToSender();
 }
 
 ManualSearchProxy::~ManualSearchProxy() {}
 
+/*
 void ManualSearchProxy::initDBus()
 {
     if (!m_dbusConn.isConnected()) {
@@ -53,7 +53,8 @@ void ManualSearchProxy::initDBus()
         qDebug() << "Receiver register dbus service success!";
     }
 }
-
+*/
+/*
 void ManualSearchProxy::connectToSender()
 {
     QDBusConnection senderConn =
@@ -130,43 +131,60 @@ void ManualSearchProxy::RecvMsg(const QString &data)
         }
     }
 }
+*/
 
-void ManualSearchProxy::OnNewWindowOpen(const QString &data)
+void ManualSearchProxy::BindManual(const QString &app_name, const QString &winId)
 {
-    qDebug() << "Search data is: " << data;
-
-    if (winInfoList.size() == 0) {
-        qDebug() << "winInfoList is: " << winInfoList;
-        return;
-    }
-
-    bool hasProcess = false;
-    for (int i = 0; i < winInfoList.size(); i++) {
-        QHash<QString, QString> winInfo = winInfoList.at(i);
-        if (winInfo.keys().first() == data) {
-            hasProcess = true;
-            break;
-        }
-    }
-
-    if (!hasProcess) {
-        QHash<QString, QString> winInfo = winInfoList.first();
-        qDebug() << "first Window:process" << winInfo.keys().first()
-                 << ", winId:" << winInfo.value(winInfo.keys().first());
-
-        quintptr winId = winInfo.value(winInfo.keys().first()).toULong();
-        // new interface use applicationName as id
-        QDBusInterface manual("com.deepin.dde.daemon.Dock", "/com/deepin/dde/daemon/Dock",
-                              "com.deepin.dde.daemon.Dock");
-        QDBusReply<void> reply = manual.call("ActivateWindow", winId);
-        if (reply.isValid()) {
-            qDebug() << "call com.deepin.dde.daemon.Dock success";
-            return;
-        }
-        qDebug() << "call com.deepin.dde.daemon.Dock failed" << reply.error();
-    }
+    qDebug() << Q_FUNC_INFO;
+    emit bindManual(app_name, winId);
 }
 
+void ManualSearchProxy::CloseManual(const QString &winId)
+{
+    emit closeManual(winId);
+}
+
+bool ManualSearchProxy::OnNewWindowOpen(const QString &data)
+{
+    qDebug() << data;
+    return true;
+    /*
+        qDebug() << "Search data is: " << data;
+
+        if (winInfoList.size() == 0) {
+            qDebug() << "winInfoList is: " << winInfoList;
+            return;
+        }
+
+        bool hasProcess = false;
+        for (int i = 0; i < winInfoList.size(); i++) {
+            QHash<QString, QString> winInfo = winInfoList.at(i);
+            if (winInfo.keys().first() == data) {
+                hasProcess = true;
+                break;
+            }
+        }
+
+        if (!hasProcess) {
+            QHash<QString, QString> winInfo = winInfoList.first();
+            qDebug() << "first Window:process" << winInfo.keys().first()
+                     << ", winId:" << winInfo.value(winInfo.keys().first());
+
+            quintptr winId = winInfo.value(winInfo.keys().first()).toULong();
+            // new interface use applicationName as id
+            QDBusInterface manual("com.deepin.dde.daemon.Dock", "/com/deepin/dde/daemon/Dock",
+                                  "com.deepin.dde.daemon.Dock");
+            QDBusReply<void> reply = manual.call("ActivateWindow", winId);
+            if (reply.isValid()) {
+                qDebug() << "call com.deepin.dde.daemon.Dock success";
+                return;
+            }
+            qDebug() << "call com.deepin.dde.daemon.Dock failed" << reply.error();
+        }
+        */
+}
+
+/*
 bool ManualSearchProxy::ManualExists(const QString &app_name)
 {
     QString strManualPath = DMAN_MANUAL_DIR;
@@ -180,3 +198,4 @@ bool ManualSearchProxy::ManualExists(const QString &app_name)
     QDir manual_dir(strManualPath);
     return manual_dir.exists(app_name);
 }
+*/

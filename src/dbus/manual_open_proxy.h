@@ -29,8 +29,10 @@ public:
     ~ManualOpenProxy() override;
 
 signals:
-    void openManualRequested(const QString& app_name, const QString& title_name);
-    void searchRequested(const QString& keyword);
+    //    void openManualRequested(const QString& app_name, const QString& title_name);
+    //    void searchRequested(const QString& keyword);
+
+    void openManual(const QString& appName, const QString& keyName, const QString& titleName);
 
 public slots:
     void Open(const QString& app_name);

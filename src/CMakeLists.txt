@@ -258,6 +258,8 @@ endif ()
 
 add_executable(dman-search
                app/dman_search.cpp
+               controller/windowmanager.cpp
+               controller/windowmanager.h
                ${DBUS_FILES}
                )
 target_link_libraries(dman-search
@@ -299,6 +301,7 @@ if (CMAKE_BUILD_TYPE MATCHES Debug)
   target_link_libraries(manual-translate-demo ${LINK_LIBS})
 
 endif ()
+
 
 
 ## Installation

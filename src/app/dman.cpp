@@ -71,23 +71,29 @@ int main(int argc, char **argv)
 
     dman::ArgumentParser argument_parser;
     dman::WindowManager window_manager;
-    QObject::connect(&argument_parser, &dman::ArgumentParser::onNewAppOpen, &window_manager,
-                     &dman::WindowManager::onNewAppOpen);
+    //    QObject::connect(&argument_parser, &dman::ArgumentParser::onNewAppOpen, &window_manager,
+    //                     &dman::WindowManager::onNewAppOpen);
 
-    if (argument_parser.parseArguments()) {
-        qDebug() << "argument_parser.parseArguments()";
-        // Exit process after 1000ms.
-        QTimer::singleShot(1000, [&]() { app.quit(); });
-        return app.exec();
-    }
+    //    if (argument_parser.parseArguments()) {
+    //        qDebug() << "argument_parser.parseArguments()";
+    //        // Exit process after 1000ms.
+    //        QTimer::singleShot(1000, [&]() { app.quit(); });
+    //        return app.exec();
+    //    }
 
-    qDebug() << "argument_parser.openManualsDelay()";
-    QObject::connect(&argument_parser, &dman::ArgumentParser::openManualRequested, &window_manager,
-                     &dman::WindowManager::openManual);
-    QObject::connect(&argument_parser, &dman::ArgumentParser::openManualWithSearchRequested,
-                     &window_manager, &dman::WindowManager::openManualWithSearch);
+    //    qDebug() << "argument_parser.openManualsDelay()";
+    //    QObject::connect(&argument_parser, &dman::ArgumentParser::openManualRequested,
+    //    &window_manager,
+    //                     &dman::WindowManager::openManual);
+    //    QObject::connect(&argument_parser, &dman::ArgumentParser::openManualWithSearchRequested,
+    //                     &window_manager, &dman::WindowManager::openManualWithSearch);
+
+    QObject::connect(&argument_parser, &dman::ArgumentParser::openManualAllRequested,
+                     &window_manager, &dman::WindowManager::openManualAll);
+    argument_parser.parseArguments();
+
     // Send openManualRequested() signals after slots connected.
-    argument_parser.openManualsDelay();
+    //    argument_parser.openManualsDelay();
 
     // save theme
     DApplicationSettings dApplicationSettings;

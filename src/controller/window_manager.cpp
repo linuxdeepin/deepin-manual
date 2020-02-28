@@ -108,6 +108,17 @@ void WindowManager::RecvMsg(const QString &data)
     qDebug() << "sync:" << data;
 }
 
+void WindowManager::openManualAll(const QString &app_name, const QString &key_name,
+                                  const QString &title_name)
+{
+    qDebug() << Q_FUNC_INFO << app_name << key_name << title_name;
+    curr_app_name_ = app_name;
+    curr_keyword_ = key_name;
+    curr_title_name_ = Utils::translateTitle(title_name);
+    activeOrInitWindow(app_name);
+    qDebug() << Q_FUNC_INFO << app_name << curr_keyword_ << title_name;
+}
+
 void WindowManager::onNewAppOpen()
 {
     qDebug() << "slot onNewAppOpen";
@@ -197,10 +208,10 @@ void WindowManager::activeExistingWindow()
 void WindowManager::activeOrInitWindow(const QString &app_name)
 {
     qDebug() << Q_FUNC_INFO << app_name;
-    if (windows_.contains(app_name)) {
-        activeExistingWindow();
-        return;
-    }
+    //    if (windows_.contains(app_name)) {
+    //        activeExistingWindow();
+    //        return;
+    //    }
 
     initWebWindow();
 }

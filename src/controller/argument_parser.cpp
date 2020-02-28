@@ -55,20 +55,39 @@ ArgumentParser::ArgumentParser(QObject* parent)
 
 ArgumentParser::~ArgumentParser() {}
 
-bool ArgumentParser::parseArguments()
+void ArgumentParser::parseArguments()
 {
-    QCommandLineParser parser;
-    parser.addHelpOption();
-    parser.addVersionOption();
-    parser.addOption(QCommandLineOption("dbus", "enable daemon mode"));
-    parser.parse(qApp->arguments());
+    QStringList list = qApp->arguments();
+    if (list.count() > 1) {
+        QString strTemp = "";
+        for (int i = 1; i < list.count(); i++) {
+            if (i != 1) {
+                strTemp += " ";
+            }
+            strTemp += list.at(i);
+        }
+        QStringList strlist = strTemp.split("%");
+        if (strlist.count() >= 3) {
+            emit this->openManualAllRequested(strlist.at(0), strlist.at(1), strlist.at(2));
+            return;
+        }
+    }
+    emit this->openManualAllRequested("", "", "");
 
+    //    QCommandLineParser parser;
+    //    parser.addHelpOption();
+    //    parser.addVersionOption();
+    //    parser.addOption(QCommandLineOption("dbus", "enable daemon mode"));
+    //    parser.parse(qApp->arguments());
+
+    /*
     // Register dbus service.
     QDBusConnection conn = QDBusConnection::sessionBus();
     ManualOpenProxy* proxy = new ManualOpenProxy(this);
-    connect(proxy, &ManualOpenProxy::openManualRequested, this,
-            &ArgumentParser::onOpenAppRequested);
-    connect(proxy, &ManualOpenProxy::searchRequested, this, &ArgumentParser::onSearchRequested);
+            connect(proxy, &ManualOpenProxy::openManualRequested, this,
+                    &ArgumentParser::onOpenAppRequested);
+            connect(proxy, &ManualOpenProxy::searchRequested, this,
+            &ArgumentParser::onSearchRequested);
 
     ManualOpenAdapter* adapter = new ManualOpenAdapter(proxy);
     Q_UNUSED(adapter);
@@ -137,6 +156,7 @@ bool ArgumentParser::parseArguments()
 
         return false;
     }
+    */
 }
 
 void ArgumentParser::openManualsDelay()
