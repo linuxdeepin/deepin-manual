@@ -18,6 +18,7 @@ You can create a new file/folder, sort files, set hot corners and wallpapers, et
 ![0|contextmenu](jpg/contextmenu.jpg)
 
 ### Create New File/Folder
+
 You can create a new folder, common documents, or use general operations for files on the desktop, just like in the file manager.
 
 - Right click on desktop and click on **New folder**, enter the name for it.
@@ -67,6 +68,7 @@ You can create a new folder, common documents, or use general operations for fil
 
 
 ### Sort Files
+
 You can sort the files on desktop to fit your needs.
 
 1. Right click on desktop.
@@ -81,7 +83,8 @@ You can sort the files on desktop to fit your needs.
 > ![tips](icon/tips.svg): You can also check **Auto arrange**, the desktop icons will be arranged automatically, and when some of the icons are removed, others will fill in the blanks.
 
 #### Auto Merge
-You can check “Auto merge” to keep your files on desktop organized. When it is checked, files on the desktop will be automatically grouped into different folders named by Videos, Music, Pictures, Documents, Applications, and Others.
+
+You can check “Auto merge” to keep files on your desktop organized. When it is checked, files on the desktop will be automatically grouped into different folders named by Videos, Music, Pictures, Documents, Applications, and Others.
 
 ![1|merge](jpg/merge.jpg)
 
@@ -103,9 +106,9 @@ You can check “Auto merge” to keep your files on desktop organized. When it 
 
 > ![tips](icon/tips.svg): Press ![Ctrl](icon/Ctrl.svg) + ![=](icon/=.svg)/![-](icon/-.svg) to adjust icon size on desktop and that in launcher.
 
-
 ### Set Display
-You can set the screen resolution, brightness and so on.
+
+You can set the screen resolution, brightness and more.
 
 1. Right click on desktop.
 2. Click on **Display Settings** to open the interface of display settings in Control Center.
@@ -113,10 +116,11 @@ You can set the screen resolution, brightness and so on.
 > ![notes](icon/notes.svg): Specific operations refer to [Display Settings](#Display Settings).
 
 ### Set Hot Corners
+
 Hot Corner is to simplify your operations and helps you quickly enter the main interface.
 
 1. Right click on desktop.
-2. Click on **Corner Settings**, then the whole screen will get dark and the corresponding hot corner function will be displayed on the four corners.
+2. Click on **Corner Settings**, the screen will get darker and show the corresponding hot corner function on the four corners.
 3. Move the mouse pointer to a corner and select one option to set the corner.
 4. Click on the desktop blank area to exit.
 
@@ -125,6 +129,7 @@ Hot Corner is to simplify your operations and helps you quickly enter the main i
 > ![tips](icon/tips.svg): Please pay attention to the animation of corner settings.
 
 ### Set Wallpaper
+
 You can select some elegant and fashionable wallpapers to beautify desktop and make it distinctive.
 
 1. Right click on desktop.
@@ -134,10 +139,11 @@ You can select some elegant and fashionable wallpapers to beautify desktop and m
 
 ![1|wallpaper](jpg/wallpaper.jpg)
 
-> ![tips](icon/tips.svg): Check **Wallpaper Slideshow**, and set the time interval to change wallpaper automatically, or set to change the wallpaper when login or wakeup. 
+> ![tips](icon/tips.svg): Check **Wallpaper Slideshow**, and set the time interval to change wallpaper automatically, or set to change the wallpaper when you login or wakeup. 
 
 ### Set Screensaver
-The screensaver was used to protect the monitor before, now it is mainly for protecting personal privacy from peeing.
+
+The screensaver was used to protect the monitor before, now it is mainly used to protecting personal privacy from leaking.
 
 1. Right click on desktop.
 2. Click on **Wallpaper and Screensaver**, and select **Screensaver** to preview all the screensavers at the bottom of the desktop.
@@ -148,9 +154,11 @@ The screensaver was used to protect the monitor before, now it is mainly for pro
 ![1|screensaver](jpg/screensaver.jpg)
 
 ## Dock
+
 Dock is usually displayed at the bottom of the desktop to help you quickly open frequently used applications, which includes Launcher, application icons, tray, power button and system datetime, etc.
 
 ### Dock Icons
+
 You can add application shortcuts to Dock from Launcher and do related operations on it.
 
 ![1|fashion](jpg/fashion.jpg)
@@ -201,6 +209,7 @@ You can add application shortcuts to Dock from Launcher and do related operation
 </table>
 
 ### Switch Display Mode
+
 There are two display modes of Dock, which are fashion mode and efficient mode.
 
 - **Fashion Mode**: This mode is similar to Mac OS and shown as a dock at the bottom of the screen. All fixed application icons will be on Dock, and the tray area can be folded or expanded.
@@ -214,11 +223,12 @@ There are two display modes of Dock, which are fashion mode and efficient mode.
 
 You can switch the display modes by the following operations:
 
-1. On the desktop, move the mouse pointer over Dock.
+1. On the desktop, move the mouse over Dock.
 2. Right click to select **Mode**.
 3. Select a display mode.
 
 ### Set Dock Location
+
 You can place the Dock on any direction of your desktop.
 
 1. On the desktop, move the mouse pointer over Dock.
@@ -246,6 +256,7 @@ You can place the Dock on any direction of your desktop.
 1. On the desktop, move the mouse pointer over Dock.
 2. Right click to select **Plugins**.
 3. On the submenu, you can check or uncheck **Trash, Power, Onboard, Datetime** to show or hide the corresponding icon on Dock.
+
 > ![notes](icon/notes.svg): Uncheck the plugin icon, it will be hidden on Dock.
 
 ### Shutdown Interface
@@ -257,7 +268,6 @@ There are two ways to shut down:
 Click ![power](icon/poweroff_normal.svg) on Dock.
 
 <table class="block1">
-
     <tbody>
         <tr>
             <td width="30px">Shut down</td>
