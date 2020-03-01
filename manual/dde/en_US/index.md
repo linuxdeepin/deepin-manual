@@ -1,13 +1,13 @@
 # Desktop Environment|../common/deepin-system.svg|
 
 ## Overview
-deepin is an elegant, easy to use and reliable Linux desktop operating system developed by Deepin Technology Co., Ltd. WPS Office, Text Editor, Google Chrome and other deepin featured applications have been preinstalled. It allows you to experience a variety of recreational activities, but also to meet your daily needs. With continually improved and perfected functions, we believe deepin will be loved and used by more and more users.
+deepin is an elegant, easy to use and reliable Linux desktop operating system developed by Deepin Technology Co., Ltd. Deepin comes pre-installed with WPS Office, a Text Editor, Google Chrome and other deepin featured applications. Deepin allows you to experience a variety of recreational activities, but also to meet your daily needs. With continually improved and perfected functions, we believe deepin will be loved and get used by more and more users.
 
 ![1|desk](jpg/desk.jpg)
 
 ### Welcome
 
-When you login deepin for the first time, a welcome program will automatically start. You can watch the introduction video to get deepin new features, select desktop mode and icon theme, enable window effect, and know more about deepin.
+When you login to deepin for the first time, a welcome program will automatically start. You can watch the introduction video to get deepin new features, choose a desktop mode and icon theme, enable window effect, and get to know more about deepin.
 
 ![0|welcome](jpg/welcome.jpg)
 
@@ -18,7 +18,7 @@ You can create a new file/folder, sort files, set hot corners and wallpapers, et
 ![0|contextmenu](jpg/contextmenu.jpg)
 
 ### Create New File/Folder
-You can create a new folder, common documents, or doing general operations for files the on desktop, just like in file manager.
+You can create a new folder, common documents, or use general operations for files on the desktop, just like in the file manager.
 
 - Right click on desktop and click on **New folder**, enter the name for it.
 - Right click on desktop and click on **New document**, select the type and enter its name.
@@ -27,7 +27,7 @@ You can create a new folder, common documents, or doing general operations for f
 <tbody>
     <tr>
         <td width="20px">Open with</td>
-        <td width="100px">Select the default one or choose another software to open the file.</td>
+        <td width="100px">Select the default software or choose another to open the file.</td>
     </tr>
     <tr>
         <td>Cut</td>
@@ -72,10 +72,10 @@ You can sort the files on desktop to fit your needs.
 1. Right click on desktop.
 2. Click on **Sort by**, you can:
 
- - Click on **Name** to display files in the order of name.
- - Click on **Time modified** to display files in the order of last modified date.
- - Click on **Size** to display files in the order of size.
- - Click on **Type** to display files in the order of type.
+ - Click on **Name** to display files ordered by name.
+ - Click on **Time modified** to display files ordered by last modified date.
+ - Click on **Size** to display files ordered by size.
+ - Click on **Type** to display files ordered by type.
 
 
 > ![tips](icon/tips.svg): You can also check **Auto arrange**, the desktop icons will be arranged automatically, and when some of the icons are removed, others will fill in the blanks.
