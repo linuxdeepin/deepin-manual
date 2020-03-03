@@ -42,11 +42,11 @@ public slots:
         QString strMANUAL_DIR = DMAN_MANUAL_DIR;
         int nType = Dtk::Core::DSysInfo::deepinType();
         if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
-            strMANUAL_DIR += "/server";
-            //            strMANUAL_DIR += "/professional";
-        } else {
             //            strMANUAL_DIR += "/server";
             strMANUAL_DIR += "/professional";
+        } else {
+            strMANUAL_DIR += "/server";
+            //            strMANUAL_DIR += "/professional";
         }
         return strMANUAL_DIR;
     }

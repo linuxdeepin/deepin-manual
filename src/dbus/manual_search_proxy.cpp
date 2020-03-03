@@ -133,15 +133,31 @@ void ManualSearchProxy::RecvMsg(const QString &data)
 }
 */
 
+bool ManualSearchProxy::ManualExists(const QString &app_name)
+{
+    QString strManualPath = DMAN_MANUAL_DIR;
+    int nType = Dtk::Core::DSysInfo::deepinType();
+    if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
+        //        strManualPath += "/server";
+        strManualPath += "/professional";
+    } else {
+        //        strManualPath += "/professional";
+        strManualPath += "/server";
+    }
+
+    QDir manual_dir(strManualPath);
+    return manual_dir.exists(app_name);
+}
+
 void ManualSearchProxy::BindManual(const QString &app_name, const QString &winId)
 {
     qDebug() << Q_FUNC_INFO;
     emit bindManual(app_name, winId);
 }
 
-void ManualSearchProxy::CloseManual(const QString &winId)
+void ManualSearchProxy::CloseManual(const QString &app_name)
 {
-    emit closeManual(winId);
+    emit closeManual(app_name);
 }
 
 bool ManualSearchProxy::OnNewWindowOpen(const QString &data)

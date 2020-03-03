@@ -35,15 +35,24 @@ ManualSearchAdapter::~ManualSearchAdapter()
     // destructor
 }
 
+bool ManualSearchAdapter::ManualExists(const QString &in0)
+{
+    // handle method call com.deepin.Manual.Search.ManualExists
+    bool out0;
+    QMetaObject::invokeMethod(parent(), "ManualExists", Q_RETURN_ARG(bool, out0),
+                              Q_ARG(QString, in0));
+    return out0;
+}
+
 void ManualSearchAdapter::BindManual(const QString &app_name, const QString &winId)
 {
     QMetaObject::invokeMethod(parent(), "BindManual", Q_ARG(QString, app_name),
                               Q_ARG(QString, winId));
 }
 
-void ManualSearchAdapter::CloseManual(const QString &winId)
+void ManualSearchAdapter::CloseManual(const QString &app_name)
 {
-    QMetaObject::invokeMethod(parent(), "CloseManual", Q_ARG(QString, winId));
+    QMetaObject::invokeMethod(parent(), "CloseManual", Q_ARG(QString, app_name));
 }
 
 bool ManualSearchAdapter::OnNewWindowOpen(const QString &data)

@@ -21,10 +21,12 @@ public:
 private slots:
     void onOpenManual(const QString& appName, const QString& keyName, const QString& titleName);
     void onBindManual(const QString& appName, const QString& winId);
-    void onCloseManual(const QString& winId);
+    void onCloseManual(const QString& app_name);
 
 private:
     void initConnect();
+    void runShell(const QString& appName, const QString& keyName, const QString& titleName);
+    void activeWindow(const QString& winId);
 
 private:
     QString strCurApp;

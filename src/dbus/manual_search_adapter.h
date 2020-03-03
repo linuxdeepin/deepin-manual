@@ -36,6 +36,10 @@ class ManualSearchAdapter : public QDBusAbstractAdaptor
     Q_CLASSINFO("D-Bus Introspection",
                 ""
                 "  <interface name=\"com.deepin.Manual.Search\">\n"
+                "    <method name=\"ManualExists\">\n"
+                "      <arg direction=\"in\" type=\"s\"/>\n"
+                "      <arg direction=\"out\" type=\"b\"/>\n"
+                "    </method>\n"
                 "    <method name=\"BindManual\">\n"
                 "      <arg direction=\"in\" type=\"s\"/>\n"
                 "      <arg direction=\"in\" type=\"s\"/>\n"
@@ -55,8 +59,9 @@ public:
 
 public:          // PROPERTIES
 public Q_SLOTS:  // METHODS
+    bool ManualExists(const QString &in0);
     void BindManual(const QString &app_name, const QString &winId);
-    void CloseManual(const QString &winId);
+    void CloseManual(const QString &app_name);
     bool OnNewWindowOpen(const QString &data);
 };
 

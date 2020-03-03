@@ -44,6 +44,9 @@ public:
 
     void SendMsg(const QString& msg);
 
+    void bindManual(const QString& app_name, const QString& winId);
+    void closeManual(const QString& app_name);
+
     static int initQCef(int argc, char** argv);
 
 private:
@@ -59,6 +62,7 @@ private:
     QString curr_app_name_;
     QString curr_keyword_;
     QString curr_title_name_;
+    WebWindow* curWindow;
 
 private slots:
     /**

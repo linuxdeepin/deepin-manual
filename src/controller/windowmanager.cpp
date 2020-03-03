@@ -50,15 +50,22 @@ bool windowManager::initDbus()
 void windowManager::onOpenManual(const QString &appName, const QString &keyName,
                                  const QString &titleName)
 {
-    qDebug() << Q_FUNC_INFO;
-    // run shell
-    QStringList argList;
-    QString strArgu = appName + "%" + keyName + "%" + titleName;
-    argList << strArgu;
-    QProcess process;
-    process.start("/usr/bin/dman", argList);
-    process.waitForBytesWritten();
-    process.waitForFinished(1);
+    bool hasProcess = false;
+    QString strWinId = "";
+    for (int i = 0; i < winInfoList.size(); i++) {
+        QHash<QString, QString> winInfo = winInfoList.at(i);
+        if (winInfo.keys().first() == appName) {
+            hasProcess = true;
+            strWinId = winInfo.values().first();
+            break;
+        }
+    }
+
+    if (hasProcess) {
+        activeWindow(strWinId);
+    } else {
+        runShell(appName, keyName, titleName);
+    }
 }
 
 void windowManager::onBindManual(const QString &appName, const QString &winId)
@@ -68,13 +75,13 @@ void windowManager::onBindManual(const QString &appName, const QString &winId)
     winInfoList.append(winInfo);
 }
 
-void windowManager::onCloseManual(const QString &winId)
+void windowManager::onCloseManual(const QString &app_name)
 {
     int removeWinIndex = -1;
     if (winInfoList.size() > 0) {
         for (int i = 0; i < winInfoList.size(); i++) {
             QHash<QString, QString> winInfo = winInfoList.at(i);
-            if (winId == winInfo.value(winInfo.keys().first())) {
+            if (app_name == winInfo.key(winInfo.values().first())) {
                 removeWinIndex = i;
                 qDebug() << "remove window" << removeWinIndex;
                 break;
@@ -92,4 +99,36 @@ void windowManager::initConnect()
     connect(openObj, &ManualOpenProxy::openManual, this, &windowManager::onOpenManual);
     connect(searchObj, &ManualSearchProxy::bindManual, this, &windowManager::onBindManual);
     connect(searchObj, &ManualSearchProxy::closeManual, this, &windowManager::onCloseManual);
+}
+
+void windowManager::runShell(const QString &appName, const QString &keyName,
+                             const QString &titleName)
+{
+    qDebug() << Q_FUNC_INFO;
+    // run shell
+    QStringList argList;
+    QString strArgu = appName + "%" + keyName + "%" + titleName;
+    argList << strArgu;
+    QProcess process;
+    process.start("/usr/bin/dman", argList);
+    //    process.waitForStarted();
+    //    process.waitForFinished();
+    //    process.start("/home/archermind/Desktop/dman", argList);
+    //    process.start("/home/archermind/Documents/gitWork/build-manual-qt5_11_3-Debug/src/dman",
+    //                  argList);
+    process.waitForBytesWritten();
+    process.waitForFinished(1);
+}
+
+void windowManager::activeWindow(const QString &winId)
+{
+    QDBusInterface manual("com.deepin.dde.daemon.Dock", "/com/deepin/dde/daemon/Dock",
+                          "com.deepin.dde.daemon.Dock");
+    quintptr nwinId = winId.toULong();
+    QDBusReply<void> reply = manual.call("ActivateWindow", nwinId);
+    if (reply.isValid()) {
+        qDebug() << "call com.deepin.dde.daemon.Dock success";
+    } else {
+        qDebug() << "call com.deepin.dde.daemon.Dock failed" << reply.error();
+    }
 }

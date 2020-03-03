@@ -34,19 +34,19 @@
 
 namespace dman {
 
-namespace {
+// namespace {
 
-QString ConvertOldDmanPath(const QString& app_name)
-{
-    const QStringList parts = app_name.split('/');
-    const int dman_index = parts.indexOf("dman");
-    if (dman_index > 0 && dman_index < parts.length() - 1) {
-        return parts.at(dman_index + 1);
-    }
-    return app_name;
-}
+// QString ConvertOldDmanPath(const QString& app_name)
+//{
+//    const QStringList parts = app_name.split('/');
+//    const int dman_index = parts.indexOf("dman");
+//    if (dman_index > 0 && dman_index < parts.length() - 1) {
+//        return parts.at(dman_index + 1);
+//    }
+//    return app_name;
+//}
 
-}  // namespace
+//}  // namespace
 
 ArgumentParser::ArgumentParser(QObject* parent)
     : QObject(parent)
@@ -159,6 +159,7 @@ void ArgumentParser::parseArguments()
     */
 }
 
+/*
 void ArgumentParser::openManualsDelay()
 {
     qDebug() << "call openManualsDelay";
@@ -181,5 +182,6 @@ void ArgumentParser::onSearchRequested(const QString& keyword)
     qDebug() << Q_FUNC_INFO << keyword;
     emit this->openManualWithSearchRequested("", keyword);
 }
+*/
 
 }  // namespace dman

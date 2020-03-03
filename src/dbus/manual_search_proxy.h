@@ -20,7 +20,7 @@
 
 //#include "view/manual_proxy.h"
 
-//#include <DSysInfo>
+#include <DSysInfo>
 //#include <QDBusConnection>
 #include <QObject>
 // class LauncherInterface;
@@ -35,12 +35,13 @@ public:
 
 signals:
     void bindManual(const QString &appName, const QString &winId);
-    void closeManual(const QString &winId);
+    void closeManual(const QString &app_name);
 
 public slots:
     //    void RecvMsg(const QString &data);
+    bool ManualExists(const QString &app_name);
     void BindManual(const QString &app_name, const QString &winId);
-    void CloseManual(const QString &winId);
+    void CloseManual(const QString &app_name);
     bool OnNewWindowOpen(const QString &data);
 
 private:
