@@ -9,7 +9,9 @@
 #include "dbus/manual_open_adapter.h"
 #include "dbus/manual_open_proxy.h"
 #include "dbus/manual_search_adapter.h"
-#include "dbus/manual_search_proxy.h"
+//#include "dbus/manual_search_proxy.h"
+
+class ManualSearchProxy;
 
 class windowManager : public QObject
 {
@@ -17,6 +19,7 @@ class windowManager : public QObject
 public:
     windowManager(QObject* parent = nullptr);
     bool initDbus();
+    bool newWindowOpen(const QString& winId);
 
 private slots:
     void onOpenManual(const QString& appName, const QString& keyName, const QString& titleName);

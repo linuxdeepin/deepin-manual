@@ -65,24 +65,24 @@ WindowManager::WindowManager(QObject *parent)
 
 WindowManager::~WindowManager() {}
 
-void WindowManager::initDBus()
-{
-    QDBusConnection dbusConn =
-        QDBusConnection::connectToBus(QDBusConnection::SessionBus, WM_SENDER_NAME);
-    if (!dbusConn.isConnected()) {
-        qDebug() << WM_SENDER_NAME << "connectToBus() failed";
-        return;
-    }
+// void WindowManager::initDBus()
+//{
+//    QDBusConnection dbusConn =
+//        QDBusConnection::connectToBus(QDBusConnection::SessionBus, WM_SENDER_NAME);
+//    if (!dbusConn.isConnected()) {
+//        qDebug() << WM_SENDER_NAME << "connectToBus() failed";
+//        return;
+//    }
 
-    if (!dbusConn.registerService(dman::kManualSearchService + QString(WM_SENDER_NAME)) ||
-        !dbusConn.registerObject(dman::kManualSearchIface + QString(WM_SENDER_NAME), this)) {
-        qCritical() << WM_SENDER_NAME << " failed to register dbus service!";
+//    if (!dbusConn.registerService(dman::kManualSearchService + QString(WM_SENDER_NAME)) ||
+//        !dbusConn.registerObject(dman::kManualSearchIface + QString(WM_SENDER_NAME), this)) {
+//        qCritical() << WM_SENDER_NAME << " failed to register dbus service!";
 
-        return;
-    } else {
-        qDebug() << WM_SENDER_NAME << " register dbus service success!";
-    }
-}
+//        return;
+//    } else {
+//        qDebug() << WM_SENDER_NAME << " register dbus service success!";
+//    }
+//}
 
 void WindowManager::SendMsg(const QString &msg)
 {
@@ -130,6 +130,21 @@ void WindowManager::closeManual(const QString &app_name)
     }
 }
 
+void WindowManager::newWindowOpen(const QString &winId)
+{
+    QDBusInterface iface(dman::kManualSearchService, dman::kManualSearchIface,
+                         dman::kManualSearchService, QDBusConnection::sessionBus());
+
+    QDBusMessage reply = iface.call("OnNewWindowOpen", winId);
+    QList<QVariant> list = reply.arguments();
+    if (list.count() > 0) {
+        bool bRet = list.at(0).toBool();
+        if (!bRet) {
+            QTimer::singleShot(1000, [&]() { qApp->quit(); });
+        }
+    }
+}
+
 void WindowManager::RecvMsg(const QString &data)
 {
     qDebug() << "sync:" << data;
@@ -145,6 +160,13 @@ void WindowManager::openManualAll(const QString &app_name, const QString &key_na
     initWebWindow();
     //    activeOrInitWindow(app_name);
     qDebug() << Q_FUNC_INFO << app_name << curr_keyword_ << title_name;
+}
+
+void WindowManager::openManualNew()
+{
+    if (curWindow) {
+        newWindowOpen(QString::number(curWindow->winId()));
+    }
 }
 
 void WindowManager::onNewAppOpen()
@@ -209,12 +231,12 @@ int WindowManager::initQCef(int argc, char **argv)
 void WindowManager::initWebWindow()
 {
     WebWindow *window = new WebWindow;
+    curWindow = window;
     connect(window, &WebWindow::closed, this, &WindowManager::onWindowClosed);
     connect(window, &WebWindow::shown, this, &WindowManager::onWindowShown);
     moveWindow(window);
     window->show();
     window->activateWindow();
-    curWindow = window;
 }
 
 void WindowManager::activeExistingWindow()
@@ -267,7 +289,7 @@ SearchManager *WindowManager::currSearchManager()
     if (nullptr == search_manager_) {
         qDebug() << "start init SearchManager" << endl;
         search_manager_ = new SearchManager(this);
-        initDBus();
+        //        initDBus();
     }
 
     return search_manager_;

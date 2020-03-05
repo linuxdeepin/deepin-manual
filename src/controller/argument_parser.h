@@ -35,6 +35,7 @@ public:
 signals:
     void openManualAllRequested(const QString& app_name, const QString& key_name,
                                 const QString& title_name);
+    void newMaunalNewRequest();
 
     //    void openManualRequested(const QString& app_name, const QString& title_name);
     //    void openManualWithSearchRequested(const QString& app_name, const QString& keyword);

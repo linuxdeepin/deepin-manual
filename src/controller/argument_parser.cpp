@@ -73,6 +73,8 @@ void ArgumentParser::parseArguments()
         }
     }
     emit this->openManualAllRequested("", "", "");
+    emit this->newMaunalNewRequest();
+
 
     //    QCommandLineParser parser;
     //    parser.addHelpOption();

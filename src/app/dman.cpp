@@ -90,6 +90,8 @@ int main(int argc, char **argv)
 
     QObject::connect(&argument_parser, &dman::ArgumentParser::openManualAllRequested,
                      &window_manager, &dman::WindowManager::openManualAll);
+    QObject::connect(&argument_parser, &dman::ArgumentParser::newMaunalNewRequest,
+                     &window_manager, &dman::WindowManager::openManualNew);
     argument_parser.parseArguments();
 
     // Send openManualRequested() signals after slots connected.

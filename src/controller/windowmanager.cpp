@@ -1,5 +1,6 @@
 #include "windowmanager.h"
 #include <QProcess>
+#include "dbus/manual_search_proxy.h"
 
 windowManager::windowManager(QObject *parent)
     : QObject(parent)
@@ -8,6 +9,7 @@ windowManager::windowManager(QObject *parent)
     , searchObj(new ManualSearchProxy)
     , searchAdapter(new ManualSearchAdapter(searchObj))
 {
+    searchObj->setManagerObj(this);
     initConnect();
 }
 
@@ -39,6 +41,20 @@ bool windowManager::initDbus()
     } else {
         return false;
     }
+}
+
+bool windowManager::newWindowOpen(const QString &winId)
+{
+    bool bRet = false;
+    if (winInfoList.count() == 0) {
+        bRet = true;
+        onBindManual("deepin-manual", winId);
+    } else {
+        QHash<QString, QString> winInfo = winInfoList.at(0);
+        QString winId = winInfo.values().first();
+        activeWindow(winId);
+    }
+    return bRet;
 }
 
 /**
@@ -110,10 +126,10 @@ void windowManager::runShell(const QString &appName, const QString &keyName,
     QString strArgu = appName + "%" + keyName + "%" + titleName;
     argList << strArgu;
     QProcess process;
-    process.start("/usr/bin/dman", argList);
+    //    process.start("/usr/bin/dman", argList);
     //    process.waitForStarted();
     //    process.waitForFinished();
-    //    process.start("/home/archermind/Desktop/dman", argList);
+    process.start("/home/archermind/Desktop/dman", argList);
     //    process.start("/home/archermind/Documents/gitWork/build-manual-qt5_11_3-Debug/src/dman",
     //                  argList);
     process.waitForBytesWritten();
