@@ -16,6 +16,7 @@
  */
 
 #include "dbus/manual_search_proxy.h"
+#include "controller/windowmanager.h"
 #include "dbus/dbus_consts.h"
 
 #include <DLog>
@@ -24,7 +25,6 @@
 
 ManualSearchProxy::ManualSearchProxy(QObject *parent)
     : QObject(parent)
-    , pManagerObj(nullptr)
 {
     this->setObjectName("ManualSearchProxy");
 }
@@ -41,11 +41,11 @@ bool ManualSearchProxy::ManualExists(const QString &app_name)
     QString strManualPath = DMAN_MANUAL_DIR;
     int nType = Dtk::Core::DSysInfo::deepinType();
     if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
-        //        strManualPath += "/server";
-        strManualPath += "/professional";
-    } else {
-        //        strManualPath += "/professional";
         strManualPath += "/server";
+        //        strManualPath += "/professional";
+    } else {
+        strManualPath += "/professional";
+        //        strManualPath += "/server";
     }
 
     QDir manual_dir(strManualPath);

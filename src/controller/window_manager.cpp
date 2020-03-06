@@ -139,10 +139,16 @@ void WindowManager::newWindowOpen(const QString &winId)
     QList<QVariant> list = reply.arguments();
     if (list.count() > 0) {
         bool bRet = list.at(0).toBool();
-        if (!bRet) {
-            QTimer::singleShot(1000, [&]() { qApp->quit(); });
+        if (bRet) {
+            if (curWindow) {
+                curWindow->show();
+                curWindow->activateWindow();
+                return;
+            }
         }
     }
+    qDebug() << Q_FUNC_INFO << "qapp->quit()";
+    QTimer::singleShot(20, [&]() { qApp->quit(); });
 }
 
 void WindowManager::RecvMsg(const QString &data)
@@ -235,8 +241,10 @@ void WindowManager::initWebWindow()
     connect(window, &WebWindow::closed, this, &WindowManager::onWindowClosed);
     connect(window, &WebWindow::shown, this, &WindowManager::onWindowShown);
     moveWindow(window);
-    window->show();
-    window->activateWindow();
+    if (!curr_app_name_.isEmpty()) {
+        window->show();
+        window->activateWindow();
+    }
 }
 
 void WindowManager::activeExistingWindow()
@@ -347,8 +355,9 @@ void WindowManager::onWindowShown(WebWindow *window)
         window->setSearchKeyword(curr_keyword_);
     }
 
-    bindManual(curr_app_name_, QString::number(window->winId()));
-    //    SendMsg(QString::number(window->winId()));
+    if (!curr_app_name_.isEmpty()) {
+        bindManual(curr_app_name_, QString::number(window->winId()));
+    }
 }
 
 }  // namespace dman

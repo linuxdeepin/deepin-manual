@@ -9,9 +9,7 @@
 #include "dbus/manual_open_adapter.h"
 #include "dbus/manual_open_proxy.h"
 #include "dbus/manual_search_adapter.h"
-//#include "dbus/manual_search_proxy.h"
-
-class ManualSearchProxy;
+#include "dbus/manual_search_proxy.h"
 
 class windowManager : public QObject
 {

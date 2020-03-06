@@ -19,12 +19,6 @@
 
 #include "base/consts.h"
 #include "base/utils.h"
-#include "dbus/dbus_consts.h"
-#include "dbus/manual_open_adapter.h"
-#include "dbus/manual_open_interface.h"
-#include "dbus/manual_open_proxy.h"
-#include "view/web_window.h"
-#include "window_manager.h"
 
 #include <DLog>
 #include <QCommandLineParser>
@@ -58,6 +52,7 @@ ArgumentParser::~ArgumentParser() {}
 void ArgumentParser::parseArguments()
 {
     QStringList list = qApp->arguments();
+    qDebug() << Q_FUNC_INFO << list;
     if (list.count() > 1) {
         QString strTemp = "";
         for (int i = 1; i < list.count(); i++) {
@@ -74,7 +69,6 @@ void ArgumentParser::parseArguments()
     }
     emit this->openManualAllRequested("", "", "");
     emit this->newMaunalNewRequest();
-
 
     //    QCommandLineParser parser;
     //    parser.addHelpOption();

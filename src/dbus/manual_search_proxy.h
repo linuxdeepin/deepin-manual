@@ -20,7 +20,9 @@
 
 #include <DSysInfo>
 #include <QObject>
-#include "controller/windowmanager.h"
+//#include "controller/windowmanager.h"
+
+class windowManager;
 
 class ManualSearchProxy : public QObject
 {
@@ -41,7 +43,7 @@ public slots:
     bool OnNewWindowOpen(const QString &winId);
 
 private:
-    windowManager *pManagerObj;
+    windowManager *pManagerObj = nullptr;
 };
 
 #endif  // DEEPIN_MANUAL_DBUS_MANUAL_SEARCH_PROXY_H

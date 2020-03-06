@@ -146,11 +146,11 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
     QString strManualPath = "";
     int nType = Dtk::Core::DSysInfo::deepinType();
     if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
-        //        strManualPath += "/server";
-        strManualPath += "/professional";
-    } else {
-        //        strManualPath += "/professional";
         strManualPath += "/server";
+        //        strManualPath += "/professional";
+    } else {
+        strManualPath += "/professional";
+        //        strManualPath += "/server";
     }
 
     QStringList newContents = contents;
