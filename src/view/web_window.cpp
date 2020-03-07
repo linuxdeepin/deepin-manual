@@ -312,18 +312,21 @@ void WebWindow::initShortcuts()
 
 void WebWindow::showEvent(QShowEvent *event)
 {
-    QWidget::showEvent(event);
-    qDebug() << Q_FUNC_INFO;
+    qDebug() << "WebWindow::showEvent";
 
     if (!is_index_loaded_) {
         is_index_loaded_ = true;
-        QTimer::singleShot(20, this, [this] {
-            emit this->shown(this);
-            this->initWebView();
-            const QFileInfo info(kIndexPage);
-            web_view_->load(QUrl::fromLocalFile(info.absoluteFilePath()));
-        });
+        //        QTimer::singleShot(20, this, [this] {
+        qDebug() << "WebWindow::showEvent  timer begin";
+        emit this->shown(this);
+        this->initWebView();
+        const QFileInfo info(kIndexPage);
+        web_view_->load(QUrl::fromLocalFile(info.absoluteFilePath()));
+        qDebug() << "WebWindow::showEvent  timer finish";
+        //        });
     }
+
+    QWidget::showEvent(event);
 }
 
 void WebWindow::closeEvent(QCloseEvent *event)
@@ -406,6 +409,7 @@ void WebWindow::onTitleBarEntered()
 
 void WebWindow::onWebPageLoadFinished(bool ok)
 {
+    qDebug() << Q_FUNC_INFO;
     if (ok) {
         QString qsthemetype = "Null";
         DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
@@ -434,18 +438,18 @@ void WebWindow::onWebPageLoadFinished(bool ok)
             }
         }
 
-        QTimer::singleShot(100, [&]() {
-            qDebug() << "show webview";
-            web_view_->show();
+        //        QTimer::singleShot(100, [&]() {
+        qDebug() << "show webview";
+        web_view_->show();
 
-            if (first_webpage_loaded_) {
-                first_webpage_loaded_ = false;
-                if (keyword_.length() > 0) {
-                    qDebug() << "first_webpage_loaded_ manualSearchByKeyword:" << keyword_;
-                    emit this->manualSearchByKeyword(keyword_);
-                }
+        if (first_webpage_loaded_) {
+            first_webpage_loaded_ = false;
+            if (keyword_.length() > 0) {
+                qDebug() << "first_webpage_loaded_ manualSearchByKeyword:" << keyword_;
+                emit this->manualSearchByKeyword(keyword_);
             }
-        });
+        }
+        //        });
     }
 }
 
@@ -511,18 +515,18 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
 
 void WebWindow::slot_ButtonHide()
 {
-    QTimer::singleShot(20, [=]() {
-        qDebug() << "slot_ButtonHide";
-        buttonBox->hide();
-    });
+    //    QTimer::singleShot(20, [=]() {
+    qDebug() << "slot_ButtonHide";
+    buttonBox->hide();
+    //    });
 }
 
 void WebWindow::slot_ButtonShow()
 {
-    QTimer::singleShot(20, [=]() {
-        qDebug() << "slot_ButtonShow";
-        buttonBox->show();
-    });
+    //    QTimer::singleShot(20, [=]() {
+    qDebug() << "slot_ButtonShow";
+    buttonBox->show();
+    //    });
 }
 
 }  // namespace dman

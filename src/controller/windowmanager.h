@@ -27,7 +27,7 @@ private slots:
 private:
     void initConnect();
     void runShell(const QString& appName, const QString& keyName, const QString& titleName);
-    void activeWindow(const QString& winId);
+    bool activeWindow(const QString& winId);
 
 private:
     QString strCurApp;

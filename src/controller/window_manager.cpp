@@ -107,9 +107,9 @@ void WindowManager::SendMsg(const QString &msg)
 void WindowManager::bindManual(const QString &app_name, const QString &winId)
 {
     QDBusInterface iface(dman::kManualSearchService, dman::kManualSearchIface,
-                         dman::kManualSearchService, QDBusConnection::sessionBus());
+                         dman::kManualSearchService);
 
-    QDBusReply<int> reply = iface.call("BindManual", app_name, winId);
+    QDBusReply<void> reply = iface.call("BindManual", app_name, winId);
     if (reply.isValid()) {
         qDebug() << "BindManual success..";
     } else {
@@ -122,7 +122,7 @@ void WindowManager::closeManual(const QString &app_name)
     QDBusInterface iface(dman::kManualSearchService, dman::kManualSearchIface,
                          dman::kManualSearchService, QDBusConnection::sessionBus());
 
-    QDBusReply<int> reply = iface.call("CloseManual", app_name);
+    QDBusReply<void> reply = iface.call("CloseManual", app_name);
     if (reply.isValid()) {
         qDebug() << "CloseManual success..";
     } else {
@@ -133,7 +133,7 @@ void WindowManager::closeManual(const QString &app_name)
 void WindowManager::newWindowOpen(const QString &winId)
 {
     QDBusInterface iface(dman::kManualSearchService, dman::kManualSearchIface,
-                         dman::kManualSearchService, QDBusConnection::sessionBus());
+                         dman::kManualSearchService);
 
     QDBusMessage reply = iface.call("OnNewWindowOpen", winId);
     QList<QVariant> list = reply.arguments();
@@ -175,6 +175,7 @@ void WindowManager::openManualNew()
     }
 }
 
+/*
 void WindowManager::onNewAppOpen()
 {
     qDebug() << "slot onNewAppOpen";
@@ -196,6 +197,7 @@ void WindowManager::onNewAppOpen()
         qDebug() << "ErrorMessage";
     }
 }
+*/
 
 int WindowManager::initQCef(int argc, char **argv)
 {
@@ -237,6 +239,7 @@ int WindowManager::initQCef(int argc, char **argv)
 void WindowManager::initWebWindow()
 {
     WebWindow *window = new WebWindow;
+
     curWindow = window;
     connect(window, &WebWindow::closed, this, &WindowManager::onWindowClosed);
     connect(window, &WebWindow::shown, this, &WindowManager::onWindowShown);
@@ -275,6 +278,7 @@ void WindowManager::activeOrInitWindow(const QString &app_name)
     initWebWindow();
 }
 
+/*
 void WindowManager::openManual(const QString &app_name, const QString &title_name)
 {
     curr_app_name_ = app_name;
@@ -291,6 +295,7 @@ void WindowManager::openManualWithSearch(const QString &app_name, const QString 
     activeOrInitWindow(app_name);
     qDebug() << Q_FUNC_INFO << app_name << curr_keyword_;
 }
+*/
 
 SearchManager *WindowManager::currSearchManager()
 {
@@ -350,14 +355,12 @@ void WindowManager::onWindowShown(WebWindow *window)
     window->setSearchManager(search_manager_);
     window->setAppName(curr_app_name_);
     window->setTitleName(curr_title_name_);
-
-    if (curr_keyword_.length() > 0) {
-        window->setSearchKeyword(curr_keyword_);
-    }
+    window->setSearchKeyword(curr_keyword_);
 
     if (!curr_app_name_.isEmpty()) {
         bindManual(curr_app_name_, QString::number(window->winId()));
     }
+    qDebug() << Q_FUNC_INFO << " finish.....";
 }
 
 }  // namespace dman

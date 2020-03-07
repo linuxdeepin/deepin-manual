@@ -64,8 +64,10 @@ void ArgumentParser::parseArguments()
         QStringList strlist = strTemp.split("%");
         if (strlist.count() >= 3) {
             emit this->openManualAllRequested(strlist.at(0), strlist.at(1), strlist.at(2));
-            return;
+        } else {
+            emit this->openManualAllRequested(strlist.at(0), "", "");
         }
+        return;
     }
     emit this->openManualAllRequested("", "", "");
     emit this->newMaunalNewRequest();

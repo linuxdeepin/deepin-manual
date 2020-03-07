@@ -52,6 +52,7 @@ int main(int argc, char **argv)
     if (!DPlatformWindowHandle::pluginVersion().isEmpty()) {
         app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings, true);
     }
+    QCefBindApp(&app);
 
     //    app.setAttribute(Qt::AA_EnableHighDpiScaling, true);
     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
@@ -93,7 +94,6 @@ int main(int argc, char **argv)
     QObject::connect(&argument_parser, &dman::ArgumentParser::newMaunalNewRequest, &window_manager,
                      &dman::WindowManager::openManualNew);
     argument_parser.parseArguments();
-    qDebug() << "herre..........";
 
     // Send openManualRequested() signals after slots connected.
     //    argument_parser.openManualsDelay();
@@ -104,16 +104,14 @@ int main(int argc, char **argv)
     Dtk::Core::DLogManager::registerFileAppender();
     Dtk::Core::DLogManager::registerConsoleAppender();
 
-    // fix error for cutelogger
-    // No appenders associated with category js
+    //     fix error for cutelogger
+    //    No appenders associated with category js
     auto category = "js";
     auto fileAppender =
         new Dtk::Core::RollingFileAppender(Dtk::Core::DLogManager::getlogFilePath());
     static Dtk::Core::Logger customLoggerInstance(category);
     customLoggerInstance.logToGlobalInstance(category, true);
     customLoggerInstance.registerAppender(fileAppender);
-
-    QCefBindApp(&app);
 
     return app.exec();
 }

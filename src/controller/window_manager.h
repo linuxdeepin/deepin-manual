@@ -83,10 +83,10 @@ public slots:
     void openManualAll(const QString& app_name, const QString& key_name, const QString& title_name);
     void openManualNew();
 
-    void openManual(const QString& app_name, const QString& title_name);
-    void openManualWithSearch(const QString& app_name, const QString& keyword);
+//    void openManual(const QString& app_name, const QString& title_name);
+//    void openManualWithSearch(const QString& app_name, const QString& keyword);
 
-    void onNewAppOpen();
+//    void onNewAppOpen();
 };
 
 }  // namespace dman
