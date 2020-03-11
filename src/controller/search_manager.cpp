@@ -30,10 +30,10 @@ SearchManager::SearchManager(QObject *parent)
     , db_(nullptr)
     , db_thread_(nullptr)
 {
-    //    QTimer::singleShot(50, this, [this] {
-    qDebug() << "init SearchManager" << endl;
-    initSearchManager();
-    //    });
+    QTimer::singleShot(50, this, [this] {
+        qDebug() << "init SearchManager" << endl;
+        initSearchManager();
+    });
 }
 
 void SearchManager::initSearchManager()

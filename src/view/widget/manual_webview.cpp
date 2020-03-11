@@ -18,16 +18,18 @@ ManualWebView::ManualWebView(QWidget* parent)
     , m_parentWin(nullptr)
     , p_(new QCefWebViewPrivate())
 {
-    this->setAttribute(Qt::WA_NativeWindow, true);
-    this->setAttribute(Qt::WA_DontCreateNativeAncestors, true);
+    //        this->setAttribute(Qt::WA_NativeWindow, true);
+    //        this->setAttribute(Qt::WA_DontCreateNativeAncestors, true);
 
-    connect(page(), &QCefWebPage::renderContextCreated, this, &ManualWebView::updateWebZoom,
-            Qt::QueuedConnection);
+    //        connect(page(), &QCefWebPage::renderContextCreated, this,
+    //        &ManualWebView::updateWebZoom,
+    //                Qt::QueuedConnection);
 
-    if (qApp->metaObject()->indexOfSignal("screenDevicePixelRatioChanged(QScreen*)") >= 0) {
-        connect(qApp, SIGNAL(screenDevicePixelRatioChanged(QScreen*)), this,
-                SLOT(onScreenScaleChanged(QScreen*)), Qt::QueuedConnection);
-    }
+    //        if (qApp->metaObject()->indexOfSignal("screenDevicePixelRatioChanged(QScreen*)") >= 0)
+    //        {
+    //            connect(qApp, SIGNAL(screenDevicePixelRatioChanged(QScreen*)), this,
+    //                    SLOT(onScreenScaleChanged(QScreen*)), Qt::QueuedConnection);
+    //        }
 }
 
 ManualWebView::~ManualWebView()
@@ -75,9 +77,8 @@ void ManualWebView::showEvent(QShowEvent* event)
 
     if (!p_->window_mapped) {
         p_->window_mapped = true;
-        //        QTimer::singleShot(1, this, [=]() {
-        page()->remapBrowserWindow(this->winId(), m_parentWin->winId());
-        //        });
+        QTimer::singleShot(
+            1, this, [=]() { page()->remapBrowserWindow(this->winId(), m_parentWin->winId()); });
 
         updateWebZoom();
     }

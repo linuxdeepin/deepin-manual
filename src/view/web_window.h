@@ -104,7 +104,7 @@ private:
     TitleBarProxy *title_bar_proxy_ {nullptr};
     SettingsProxy *settings_proxy_ {nullptr};
     TitleBar *title_bar_ {nullptr};
-    ManualWebView *web_view_ {nullptr};
+    QCefWebView *web_view_ {nullptr};
     QTimer search_timer_;
     Dtk::Widget::DButtonBox *buttonBox {nullptr};
     SearchEdit *search_edit_ {nullptr};
