@@ -93,7 +93,9 @@ export default class Index extends Component {
       'deepin-picker',
       'deepin-remote-assistance',
       'deepin-presentation-assistant',
-      'chineseime'
+      'chineseime',
+      'deepin-defender',
+      'uos-service-support'
     ];
     this.state = {
       sequence,

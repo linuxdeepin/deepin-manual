@@ -935,7 +935,7 @@ var Index = function (_Component2) {
 
     var sequence = ['deepin-browser', 'dde-file-manager', 'deepin-app-store', 'sogouimebs', 'deepin-mail', 'deepin-contacts', 'deepin-screen-recorder', 'deepin-image-viewer', 'deepin-album', 'deepin-music', 'deepin-movie', 'deepin-draw', 'dde-calendar', 'deepin-voice-note', 'deepin-reader', 'deepin-editor', 'deepin-compressor', 'dde-printer', 'deepin-terminal',
     // '安全中心',
-    'downloader', 'deepin-deb-installer', 'deepin-font-manager', 'deepin-calculator', 'deepin-graphics-driver-manager', 'deepin-devicemanager', 'deepin-system-monitor', 'deepin-boot-maker', 'deepin-log-viewer', 'deepin-repair-tools', 'deepin-clone', 'deepin-cloud-print', 'deepin-cloud-scan', 'deepin-voice-recorder', 'deepin-picker', 'deepin-remote-assistance', 'deepin-presentation-assistant', 'chineseime'];
+    'downloader', 'deepin-deb-installer', 'deepin-font-manager', 'deepin-calculator', 'deepin-graphics-driver-manager', 'deepin-devicemanager', 'deepin-system-monitor', 'deepin-boot-maker', 'deepin-log-viewer', 'deepin-repair-tools', 'deepin-clone', 'deepin-cloud-print', 'deepin-cloud-scan', 'deepin-voice-recorder', 'deepin-picker', 'deepin-remote-assistance', 'deepin-presentation-assistant', 'chineseime', 'deepin-defender', 'uos-service-support'];
     _this3.state = {
       sequence: sequence,
       appList: []

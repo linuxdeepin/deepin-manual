@@ -13,7 +13,7 @@ int main(int argc, char **argv)
 
     // hash--> key: old name   value: new name
     const QHash<QString, QString> hash = {
-        {"", "downloader"},                                   //下载器  ***
+        {"deepin-downloader", "downloader"},                  //下载器
         {"", "deepin-voice-recorder"},                        //录音 ***
         {"deepin-voice-note", "deepin-voice-note"},           //语音记事本
         {"deepin-terminal", "deepin-terminal"},               //终端
