@@ -319,6 +319,13 @@ install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/app/dman.sh
         GROUP_READ GROUP_EXECUTE
         WORLD_READ WORLD_EXECUTE
         RENAME dman)
+
+install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/app/stop_dman_search.sh
+        DESTINATION $ENV{HOME}/.config/autostop
+        PERMISSIONS OWNER_READ OWNER_EXECUTE
+        GROUP_READ GROUP_EXECUTE
+        WORLD_READ WORLD_EXECUTE)
+
 install(TARGETS dman-search
         DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 

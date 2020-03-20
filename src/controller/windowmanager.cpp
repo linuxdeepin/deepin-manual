@@ -146,7 +146,11 @@ void windowManager::onCloseManual(const QString &app_name)
             winInfoList.removeAt(removeWinIndex);
         }
     }
-    qDebug() << Q_FUNC_INFO << winInfoList.size();
+
+    if (winInfoList.count() <= 0) {
+        // if dman is empty,quit dman-search;
+        qApp->quit();
+    }
 }
 
 void windowManager::initConnect()

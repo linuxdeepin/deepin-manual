@@ -45,6 +45,8 @@
 
 > ![tips](icon/tips.svg)：您可以一次导入多张图片，您也可以通过 ![menu](icon/icon_menu.svg) > **打开** 导入图片。
 
+
+
 目前仅支持导入30张图片，且支持的图片格式为JPG、PNG、TIF和BMP。
 
 ![1|mian](jpg/open.png)
