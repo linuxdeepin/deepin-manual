@@ -72,6 +72,7 @@ find_package(Qt5Sql REQUIRED)
 find_package(Qt5WebChannel REQUIRED)
 find_package(Qt5Widgets REQUIRED)
 find_package(Qt5LinguistTools REQUIRED)
+find_package(Qt5WebEngineWidgets REQUIRED)
 
 pkg_search_module(DtkWidget REQUIRED dtkwidget)
 pkg_search_module(DtkGui REQUIRED dtkgui)
@@ -90,6 +91,7 @@ set(LINK_LIBS
     Qt5::Widgets
     Qt5::X11Extras
     Qt5::WebChannel
+    Qt5::WebEngineWidgets
 
     ${DtkWidget_LDFLAGS}
     ${DtkGui_LDFLAGS}
