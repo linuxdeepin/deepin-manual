@@ -22,7 +22,7 @@ int main(int argc, char **argv)
         {"deepin-screen-capture", "deepin-screen-recorder"},  //录屏
         {"deepin-repair", "deepin-repair-tools"},             //系统修复工具
         {"", "deepin-remote-assistance"},                     //远程协助**
-        {"", "deepin-reader"},                                //文档查看器**
+        {"deepin-document-viewer", "deepin-reader"},          //文档查看器**
         {"", "deepin-presentation-assistant"},                //演示助手**
         {"deepin-picker", "deepin-picker"},                   //取色器
         {"deepin-music", "deepin-music"},                     //音乐
