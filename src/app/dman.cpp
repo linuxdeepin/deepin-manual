@@ -41,10 +41,10 @@ int main(int argc, char **argv)
 {
     qputenv("DXCB_FAKE_PLATFORM_NAME_XCB", "true");
 
-    //    int exitCode = dman::WindowManager::initQCef(argc, argv);
-    //    if (exitCode >= 0) {
-    //        return exitCode;
-    //    }
+    int exitCode = dman::WindowManager::initQCef(argc, argv);
+    if (exitCode >= 0) {
+        return exitCode;
+    }
 
     Dtk::Widget::DApplication::loadDXcbPlugin();
 
@@ -52,7 +52,7 @@ int main(int argc, char **argv)
     if (!DPlatformWindowHandle::pluginVersion().isEmpty()) {
         app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings, true);
     }
-    //    QCefBindApp(&app);
+    QCefBindApp(&app);
 
     //    app.setAttribute(Qt::AA_EnableHighDpiScaling, true);
     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);

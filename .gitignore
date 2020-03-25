@@ -14,6 +14,7 @@ __pycache__
 .directory
 
 debian/deepin-manual/
+debian/manual/
 debian/files
 debian/*.debhelper
 debian/*.debhelper.log
