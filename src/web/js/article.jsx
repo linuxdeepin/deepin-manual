@@ -209,13 +209,15 @@ export default class Article extends Component {
       let { top, left, right } = rect;
       let style = {};
       let tClass = 't_';
+
+      console.log("left-right:"+(left) + "  - "+ right);
       //center
       if (((right + left)/2 > (300 + 170)) && (((right + left)/2 + 300 < document.body.clientWidth))) {
         style.left　=　(right + left)/2 - 300;
-        tClass += 'right_';
+        tClass += 'center_';
       }
       //right
-      else if (((right + left)/2 + 300 < document.body.clientWidth))
+      else if (((right + left)/2  > (600 + 170)))
       {
         style.left　=　right - 600;
         tClass += 'right_';

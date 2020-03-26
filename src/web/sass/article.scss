@@ -183,6 +183,22 @@
      }
      padding: 8px 0px;
    }
+   .t_center_down {
+    &::after {
+      @extend .Triangle;
+      right: 300px;
+      bottom: -4px;
+      box-shadow: 0 1px rgba(0, 0, 0, 0.1), 1px 0 rgba(0, 0, 0, 0.1);
+    }
+  }
+  .t_center_up {
+    &::after {
+      @extend .Triangle;
+      right: 300px;
+      top: -4px;
+      box-shadow: 0 -1px rgba(0, 0, 0, 0.1), -1px 0 rgba(0, 0, 0, 0.1);
+    }
+  }
    .t_right_down {
      &::after {
        @extend .Triangle;
