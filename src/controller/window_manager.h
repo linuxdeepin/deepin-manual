@@ -44,15 +44,11 @@ public:
 
     void SendMsg(const QString& msg);
 
-    void bindManual(const QString& app_name, const QString& winId);
-    void closeManual(const QString& app_name);
-    void newWindowOpen(const QString& winId);
-
     static int initQCef(int argc, char** argv);
 
 private:
     QPoint newWindowPosition();
-    //    void initDBus();
+    void initDBus();
     void initWebWindow();
     void activeExistingWindow();
     void activeOrInitWindow(const QString& app_name);
@@ -63,7 +59,6 @@ private:
     QString curr_app_name_;
     QString curr_keyword_;
     QString curr_title_name_;
-    WebWindow* curWindow;
 
 private slots:
     /**
@@ -72,7 +67,6 @@ private slots:
      */
     void onWindowClosed(const QString& app_name);
     void onWindowShown(WebWindow* window);
-
     void RecvMsg(const QString& data);
 
 public slots:
@@ -80,13 +74,10 @@ public slots:
      * Open manual page of application with name |app_name|.
      * If manual of that app has already been presented, just raise to front.
      */
-    void openManualAll(const QString& app_name, const QString& key_name, const QString& title_name);
-    void openManualNew();
+    void openManual(const QString& app_name, const QString& title_name);
+    void openManualWithSearch(const QString& app_name, const QString& keyword);
 
-//    void openManual(const QString& app_name, const QString& title_name);
-//    void openManualWithSearch(const QString& app_name, const QString& keyword);
-
-//    void onNewAppOpen();
+    void onNewAppOpen();
 };
 
 }  // namespace dman

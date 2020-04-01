@@ -3,8 +3,8 @@
 
 windowManager::windowManager(QObject *parent)
     : QObject(parent)
-    , openObj(new ManualOpenProxy)
-    , openAdapter(new ManualOpenAdapter(openObj))
+    //    , openObj(new ManualOpenProxy)
+    //    , openAdapter(new ManualOpenAdapter(openObj))
     , searchObj(new ManualSearchProxy)
     , searchAdapter(new ManualSearchAdapter(searchObj))
 {
@@ -14,40 +14,41 @@ windowManager::windowManager(QObject *parent)
 
 bool windowManager::initDbus()
 {
-    bool openBool = false;
-    QDBusConnection conn = QDBusConnection::sessionBus();
-    if (!conn.registerService(dman::kManualOpenService) ||
-        !conn.registerObject(dman::kManualOpenIface, openObj)) {
-        qCritical() << "dman-search failed to register dbus service";
-    } else {
-        qDebug() << "dman-search register dbus service success!";
-        openBool = true;
-    }
+    //    bool openBool = false;
+    //    QDBusConnection conn = QDBusConnection::sessionBus();
+    //    if (!conn.registerService(dman::kManualOpenService) ||
+    //        !conn.registerObject(dman::kManualOpenIface, openObj)) {
+    //        qCritical() << "dman-search failed to register dbus service";
+    //    } else {
+    //        qDebug() << "dman-search register dbus service success!";
+    //        openBool = true;
+    //    }
 
-    bool searchBool = false;
+    //    bool searchBool = false;
     QDBusConnection conn1 = QDBusConnection::sessionBus();
     if (!conn1.registerService(dman::kManualSearchService) ||
         !conn1.registerObject(dman::kManualSearchIface, searchObj)) {
         qCritical() << "dman-search failed to register search-dbus service";
+        return false;
     } else {
         qDebug() << "dman-search register search-dbus service success!";
-        searchBool = true;
+        return true;
     }
 
-    if (openBool && searchBool) {
-        return true;
-    } else {
-        return false;
-    }
+    //    if (openBool && searchBool) {
+    //        return true;
+    //    } else {
+    //        return false;
+    //    }
 }
 
-bool windowManager::newWindowOpen(const QString &winId)
+bool windowManager::newWindowOpen(const QString &app_name)
 {
     bool bRet = false;
     qDebug() << Q_FUNC_INFO;
     if (winInfoList.count() == 0) {
         bRet = true;
-        onBindManual("deepin-manual", winId);
+        onBindManual("deepin-manual", app_name);
     } else {
         QHash<QString, QString> winInfo = winInfoList.at(0);
         QString firstWinId = winInfo.values().first();
@@ -155,7 +156,7 @@ void windowManager::onCloseManual(const QString &app_name)
 
 void windowManager::initConnect()
 {
-    connect(openObj, &ManualOpenProxy::openManual, this, &windowManager::onOpenManual);
+//    connect(openObj, &ManualOpenProxy::openManual, this, &windowManager::onOpenManual);
     connect(searchObj, &ManualSearchProxy::bindManual, this, &windowManager::onBindManual);
     connect(searchObj, &ManualSearchProxy::closeManual, this, &windowManager::onCloseManual);
 }

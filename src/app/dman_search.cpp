@@ -16,17 +16,28 @@
  */
 
 #include <QCoreApplication>
-#include "controller/windowmanager.h"
+#include <QDBusConnection>
+#include <DLog>
 
-int main(int argc, char** argv)
-{
-    QCoreApplication app(argc, argv);
+#include "dbus/dbus_consts.h"
+#include "dbus/manual_search_adapter.h"
+#include "dbus/manual_search_proxy.h"
 
-    windowManager* manager = new windowManager;
+int main(int argc, char** argv) {
+  QCoreApplication app(argc, argv);
 
-    if (!manager->initDbus()) {
+  ManualSearchProxy search_obj;
+  ManualSearchAdapter adapter(&search_obj);
+
+  QDBusConnection conn = QDBusConnection::sessionBus();
+  if (!conn.registerService(dman::kManualSearchService) ||
+      !conn.registerObject(dman::kManualSearchIface, &search_obj)) {
+        qCritical() << "dman-search failed to register dbus service";
         return 1;
-    }
+  }
+  else {
+      qDebug() << "dman-search register dbus service success!";
+  }
 
-    return app.exec();
+  return app.exec();
 }

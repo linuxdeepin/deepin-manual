@@ -16,24 +16,155 @@
  */
 
 #include "dbus/manual_search_proxy.h"
-#include "controller/windowmanager.h"
 #include "dbus/dbus_consts.h"
 
-#include <DLog>
 #include <QDir>
 #include <QtDBus/QtDBus>
 
+#include <DLog>
+
 ManualSearchProxy::ManualSearchProxy(QObject *parent)
     : QObject(parent)
+    , m_dbusConn(QDBusConnection::connectToBus(QDBusConnection::SessionBus, "Receiver"))
 {
     this->setObjectName("ManualSearchProxy");
+
+    winInfoList.clear();
+
+    initDBus();
+    connectToSender();
 }
 
 ManualSearchProxy::~ManualSearchProxy() {}
 
-void ManualSearchProxy::setManagerObj(windowManager *pObj)
+void ManualSearchProxy::initDBus()
 {
-    pManagerObj = pObj;
+    if (!m_dbusConn.isConnected()) {
+        qDebug() << "Receiver"
+                 << "connectToBus() failed";
+        return;
+    }
+
+    if (!m_dbusConn.registerService(dman::kManualSearchService + QString("Receiver")) ||
+        !m_dbusConn.registerObject(dman::kManualSearchIface + QString("Receiver"), this)) {
+        qCritical() << "Receiver failed to register dbus service";
+        return;
+    } else {
+        qDebug() << "Receiver register dbus service success!";
+    }
+}
+
+void ManualSearchProxy::connectToSender()
+{
+    QDBusConnection senderConn =
+        QDBusConnection::connectToBus(QDBusConnection::SessionBus, "Sender");
+
+    if (!senderConn.connect(
+            dman::kManualSearchService + QString("Sender"),  // sender's service name
+            dman::kManualSearchIface + QString("Sender"),    // sender's path name
+            dman::kManualSearchService + QString("Sender"),  // interface
+            "SendWinInfo",                                   // sender's signal name
+            this,                                            // receiver
+            SLOT(RecvMsg(const QString &)))) {               // slot
+
+        qDebug() << "connectToBus()::connect() Sender SendWinInfo failed";
+    } else {
+        qDebug() << "connectToBus()::connect() Sender SendWinInfo success";
+    }
+}
+
+void ManualSearchProxy::RecvMsg(const QString &data)
+{
+    qDebug() << "RecvMsg data is: " << data;
+    QStringList dataList = data.split("|");
+    if (dataList.size() < 2) {
+        qDebug() << "wrong data style! " << data;
+        return;
+    }
+
+    QString currProcessId = dataList.first();
+
+    QList<int> removeIndexList;
+    QString currWinId = dataList.at(1);
+    for (int i = 0; i < winInfoList.size(); i++) {
+        QHash<QString, QString> winInfo = winInfoList.at(i);
+        qDebug() << "processId:" << winInfo.keys().first();
+        if (currProcessId != winInfo.keys().first()) {
+            removeIndexList.append(i);
+        }
+    }
+
+    if (removeIndexList.size() > 0) {
+        for (int i = removeIndexList.size() - 1; i >= 0; i--) {
+            int removeIndex = removeIndexList.at(i);
+            qDebug() << "remove window" << removeIndex;
+            winInfoList.removeAt(removeIndex);
+        }
+    }
+
+    if (dataList.size() == 2) {
+        QHash<QString, QString> winInfo;
+        winInfo.insert(dataList.first(), dataList.last());
+        winInfoList.append(winInfo);
+
+        return;
+    }
+
+    QString flag = dataList.last();
+
+    if ("close" == flag) {
+        int removeWinIndex = -1;
+        if (winInfoList.size() > 0) {
+            for (int i = 0; i < winInfoList.size(); i++) {
+                QHash<QString, QString> winInfo = winInfoList.at(i);
+                if (dataList.at(1) == winInfo.value(winInfo.keys().first())) {
+                    removeWinIndex = i;
+                    qDebug() << "remove window" << removeWinIndex;
+                    break;
+                }
+            }
+
+            if (removeWinIndex != -1) {
+                winInfoList.removeAt(removeWinIndex);
+            }
+        }
+    }
+}
+
+void ManualSearchProxy::OnNewWindowOpen(const QString &data)
+{
+    qDebug() << "Search data is: " << data;
+
+    if (winInfoList.size() == 0) {
+        qDebug() << "winInfoList is: " << winInfoList;
+        return;
+    }
+
+    bool hasProcess = false;
+    for (int i = 0; i < winInfoList.size(); i++) {
+        QHash<QString, QString> winInfo = winInfoList.at(i);
+        if (winInfo.keys().first() == data) {
+            hasProcess = true;
+            break;
+        }
+    }
+
+    if (!hasProcess) {
+        QHash<QString, QString> winInfo = winInfoList.first();
+        qDebug() << "first Window:process" << winInfo.keys().first()
+                 << ", winId:" << winInfo.value(winInfo.keys().first());
+
+        quintptr winId = winInfo.value(winInfo.keys().first()).toULong();
+        // new interface use applicationName as id
+        QDBusInterface manual("com.deepin.dde.daemon.Dock", "/com/deepin/dde/daemon/Dock",
+                              "com.deepin.dde.daemon.Dock");
+        QDBusReply<void> reply = manual.call("ActivateWindow", winId);
+        if (reply.isValid()) {
+            qDebug() << "call com.deepin.dde.daemon.Dock success";
+            return;
+        }
+        qDebug() << "call com.deepin.dde.daemon.Dock failed" << reply.error();
+    }
 }
 
 bool ManualSearchProxy::ManualExists(const QString &app_name)
@@ -42,32 +173,10 @@ bool ManualSearchProxy::ManualExists(const QString &app_name)
     int nType = Dtk::Core::DSysInfo::deepinType();
     if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
         strManualPath += "/server";
-        //        strManualPath += "/professional";
     } else {
         strManualPath += "/professional";
-        //        strManualPath += "/server";
     }
 
     QDir manual_dir(strManualPath);
     return manual_dir.exists(app_name);
-}
-
-void ManualSearchProxy::BindManual(const QString &app_name, const QString &winId)
-{
-    qDebug() << Q_FUNC_INFO;
-    emit bindManual(app_name, winId);
-}
-
-void ManualSearchProxy::CloseManual(const QString &app_name)
-{
-    emit closeManual(app_name);
-}
-
-bool ManualSearchProxy::OnNewWindowOpen(const QString &winId)
-{
-    bool bRet = false;
-    if (pManagerObj) {
-        bRet = pManagerObj->newWindowOpen(winId);
-    }
-    return bRet;
 }

@@ -72,7 +72,6 @@ find_package(Qt5Sql REQUIRED)
 find_package(Qt5WebChannel REQUIRED)
 find_package(Qt5Widgets REQUIRED)
 find_package(Qt5LinguistTools REQUIRED)
-find_package(Qt5WebEngineWidgets REQUIRED)
 
 pkg_search_module(DtkWidget REQUIRED dtkwidget)
 pkg_search_module(DtkGui REQUIRED dtkgui)
@@ -91,7 +90,6 @@ set(LINK_LIBS
     Qt5::Widgets
     Qt5::X11Extras
     Qt5::WebChannel
-    Qt5::WebEngineWidgets
 
     ${DtkWidget_LDFLAGS}
     ${DtkGui_LDFLAGS}
@@ -235,14 +233,9 @@ add_custom_target(update-web DEPENDS rebuild-web)
 
 add_executable(dman
                app/dman.cpp
-               dbus/dbus_consts.cpp
-               dbus/dbus_consts.h
-               dbus/dbusvariant/app_info.cpp
-               dbus/dbusvariant/app_info.h
-               dbus/launcher_interface.cpp
-               dbus/launcher_interface.h
                ${BASE_FILES}
                ${CONTROLLER_FILES}
+               ${DBUS_FILES}
                ${RESOURCES_FILES}
                ${VIEW_FILES}
                )
@@ -265,15 +258,13 @@ endif ()
 
 add_executable(dman-search
                app/dman_search.cpp
-               controller/windowmanager.cpp
-               controller/windowmanager.h
                ${DBUS_FILES}
                )
 target_link_libraries(dman-search
                       ${DMAN_SEARCH_LINK_LIBS})
 
 if (CMAKE_BUILD_TYPE MATCHES Debug)
-  set(SEARCH_DEMO_FILES
+  set(SEARCH_DEMO_FILES 
       app/search_demo.cpp
       base/consts.cpp
       base/consts.h
@@ -310,7 +301,6 @@ if (CMAKE_BUILD_TYPE MATCHES Debug)
 endif ()
 
 
-
 ## Installation
 install(TARGETS dman
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
@@ -321,13 +311,6 @@ install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/app/dman.sh
         GROUP_READ GROUP_EXECUTE
         WORLD_READ WORLD_EXECUTE
         RENAME dman)
-
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/app/stop_dman_search.sh
-        DESTINATION $ENV{HOME}/.config/autostop
-        PERMISSIONS OWNER_READ OWNER_EXECUTE
-        GROUP_READ GROUP_EXECUTE
-        WORLD_READ WORLD_EXECUTE)
-
 install(TARGETS dman-search
         DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 
@@ -342,4 +325,6 @@ install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/web_dist
 
 string(TOLOWER ${CMAKE_SYSTEM_PROCESSOR} LOWERCASE_CMAKE_SYSTEM_PROCESSOR)
 
+#install(FILES ${CMAKE_SOURCE_DIR}/search.db
+#        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
 

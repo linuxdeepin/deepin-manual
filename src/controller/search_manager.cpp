@@ -38,7 +38,6 @@ SearchManager::SearchManager(QObject *parent)
 
 void SearchManager::initSearchManager()
 {
-    qDebug() << Q_FUNC_INFO;
     db_thread_ = new QThread(this);
     db_ = new SearchDb();
     db_thread_->start();
@@ -64,7 +63,6 @@ void SearchManager::initSearchManager()
     }
 
     emit db_->initDbAsync(strDB);
-    qDebug() << Q_FUNC_INFO << " finish...";
 }
 
 SearchManager::~SearchManager()

@@ -244,9 +244,8 @@ void WebWindow::initWebView()
     settings_proxy_ = new SettingsProxy(this);
     i18n_proxy = new I18nProxy(this);
 
-    web_view_ = new QCefWebView(this);
+    web_view_ = new QCefWebView();
     //    web_view_->setParentWindow(this);
-    //    web_view_ = new QWebEngineView;
     web_view_->page()->setEventDelegate(new WebEventDelegate(this));
     this->setCentralWidget(web_view_);
     web_view_->hide();
@@ -261,7 +260,6 @@ void WebWindow::initWebView()
 
     // Use TitleBarProxy instead.
     QWebChannel *web_channel = web_view_->page()->webChannel();
-    //    QWebChannel *web_channel = new QWebChannel;
     web_view_->setAcceptDrops(false);
 
     web_channel->registerObject("i18n", i18n_proxy);
@@ -271,10 +269,7 @@ void WebWindow::initWebView()
     web_channel->registerObject("theme", theme_proxy_);
     web_channel->registerObject("titleBar", title_bar_proxy_);
     web_channel->registerObject("settings", settings_proxy_);
-    //    web_view_->page()->setWebChannel(web_channel);
 
-    //    connect(web_view_->page(), &QWebEnginePage::loadFinished, this,
-    //            &WebWindow::onWebPageLoadFinished);
     connect(web_view_->page(), &QCefWebPage::loadFinished, this, &WebWindow::onWebPageLoadFinished);
     connect(manual_proxy_, &ManualProxy::WidgetLower, this, &WebWindow::lower);
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
@@ -311,27 +306,23 @@ void WebWindow::initShortcuts()
     connect(scSearch, &QShortcut::activated, this, [this] {
         qDebug() << "search" << endl;
         search_edit_->lineEdit()->setFocus(Qt::ShortcutFocusReason);
-        //        web_view_->page()->remapBrowserWindow(web_view_->winId(), this->winId());
+        web_view_->page()->remapBrowserWindow(web_view_->winId(), this->winId());
     });
 }
 
 void WebWindow::showEvent(QShowEvent *event)
 {
-    qDebug() << "WebWindow::showEvent";
+    QWidget::showEvent(event);
 
     if (!is_index_loaded_) {
         is_index_loaded_ = true;
         QTimer::singleShot(20, this, [this] {
-            qDebug() << "WebWindow::showEvent  timer begin";
             emit this->shown(this);
             this->initWebView();
             const QFileInfo info(kIndexPage);
             web_view_->load(QUrl::fromLocalFile(info.absoluteFilePath()));
-            qDebug() << "WebWindow::showEvent  timer finish";
         });
     }
-
-    QWidget::showEvent(event);
 }
 
 void WebWindow::closeEvent(QCloseEvent *event)
@@ -414,7 +405,6 @@ void WebWindow::onTitleBarEntered()
 
 void WebWindow::onWebPageLoadFinished(bool ok)
 {
-    qDebug() << Q_FUNC_INFO;
     if (ok) {
         QString qsthemetype = "Null";
         DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();

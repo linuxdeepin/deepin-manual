@@ -17,7 +17,7 @@ class windowManager : public QObject
 public:
     windowManager(QObject* parent = nullptr);
     bool initDbus();
-    bool newWindowOpen(const QString& winId);
+    bool newWindowOpen(const QString& app_name);
 
 private slots:
     void onOpenManual(const QString& appName, const QString& keyName, const QString& titleName);
@@ -31,8 +31,8 @@ private:
 
 private:
     QString strCurApp;
-    ManualOpenProxy* openObj;
-    ManualOpenAdapter* openAdapter;
+    //    ManualOpenProxy* openObj;
+    //    ManualOpenAdapter* openAdapter;
     ManualSearchProxy* searchObj;
     ManualSearchAdapter* searchAdapter;
     QList<QHash<QString, QString>> winInfoList;  // app---winId

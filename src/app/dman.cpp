@@ -39,7 +39,6 @@ DWIDGET_USE_NAMESPACE
 
 int main(int argc, char **argv)
 {
-    //    qputenv("QCEF_DEBUG", "1");
     qputenv("DXCB_FAKE_PLATFORM_NAME_XCB", "true");
 
     int exitCode = dman::WindowManager::initQCef(argc, argv);
@@ -53,7 +52,6 @@ int main(int argc, char **argv)
     if (!DPlatformWindowHandle::pluginVersion().isEmpty()) {
         app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings, true);
     }
-    QCefBindApp(&app);
 
     //    app.setAttribute(Qt::AA_EnableHighDpiScaling, true);
     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
@@ -73,31 +71,23 @@ int main(int argc, char **argv)
 
     dman::ArgumentParser argument_parser;
     dman::WindowManager window_manager;
-    //    QObject::connect(&argument_parser, &dman::ArgumentParser::onNewAppOpen, &window_manager,
-    //                     &dman::WindowManager::onNewAppOpen);
+    QObject::connect(&argument_parser, &dman::ArgumentParser::onNewAppOpen, &window_manager,
+                     &dman::WindowManager::onNewAppOpen);
 
-    //    if (argument_parser.parseArguments()) {
-    //        qDebug() << "argument_parser.parseArguments()";
-    //        // Exit process after 1000ms.
-    //        QTimer::singleShot(1000, [&]() { app.quit(); });
-    //        return app.exec();
-    //    }
+    if (argument_parser.parseArguments()) {
+        qDebug() << "argument_parser.parseArguments()";
+        // Exit process after 1000ms.
+        QTimer::singleShot(1000, [&]() { app.quit(); });
+        return app.exec();
+    }
 
-    //    qDebug() << "argument_parser.openManualsDelay()";
-    //    QObject::connect(&argument_parser, &dman::ArgumentParser::openManualRequested,
-    //    &window_manager,
-    //                     &dman::WindowManager::openManual);
-    //    QObject::connect(&argument_parser, &dman::ArgumentParser::openManualWithSearchRequested,
-    //                     &window_manager, &dman::WindowManager::openManualWithSearch);
-
-    QObject::connect(&argument_parser, &dman::ArgumentParser::openManualAllRequested,
-                     &window_manager, &dman::WindowManager::openManualAll);
-    QObject::connect(&argument_parser, &dman::ArgumentParser::newMaunalNewRequest, &window_manager,
-                     &dman::WindowManager::openManualNew);
-    argument_parser.parseArguments();
-
+    qDebug() << "argument_parser.openManualsDelay()";
+    QObject::connect(&argument_parser, &dman::ArgumentParser::openManualRequested, &window_manager,
+                     &dman::WindowManager::openManual);
+    QObject::connect(&argument_parser, &dman::ArgumentParser::openManualWithSearchRequested,
+                     &window_manager, &dman::WindowManager::openManualWithSearch);
     // Send openManualRequested() signals after slots connected.
-    //    argument_parser.openManualsDelay();
+    argument_parser.openManualsDelay();
 
     // save theme
     DApplicationSettings dApplicationSettings;
@@ -105,14 +95,16 @@ int main(int argc, char **argv)
     Dtk::Core::DLogManager::registerFileAppender();
     Dtk::Core::DLogManager::registerConsoleAppender();
 
-    //     fix error for cutelogger
-    //    No appenders associated with category js
+    // fix error for cutelogger
+    // No appenders associated with category js
     auto category = "js";
     auto fileAppender =
         new Dtk::Core::RollingFileAppender(Dtk::Core::DLogManager::getlogFilePath());
     static Dtk::Core::Logger customLoggerInstance(category);
     customLoggerInstance.logToGlobalInstance(category, true);
     customLoggerInstance.registerAppender(fileAppender);
+
+    QCefBindApp(&app);
 
     return app.exec();
 }

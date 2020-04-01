@@ -29,25 +29,22 @@ public:
     explicit ArgumentParser(QObject* parent = nullptr);
     ~ArgumentParser() override;
 
-    void parseArguments();
-    //    void openManualsDelay();
+    bool parseArguments();
+
+    void openManualsDelay();
 
 signals:
-    void openManualAllRequested(const QString& app_name, const QString& key_name,
-                                const QString& title_name);
-    void newMaunalNewRequest();
-
-    //    void openManualRequested(const QString& app_name, const QString& title_name);
-    //    void openManualWithSearchRequested(const QString& app_name, const QString& keyword);
-    //    void searchRequested(const QString& keyword);
-    //    void onNewAppOpen();
+    void openManualRequested(const QString& app_name, const QString& title_name);
+    void openManualWithSearchRequested(const QString& app_name, const QString& keyword);
+    void searchRequested(const QString& keyword);
+    void onNewAppOpen();
 
 private:
     QStringList manuals_;
 
-    // private slots:
-    //    void onOpenAppRequested(const QString& app_name, const QString& title_name = "");
-    //    void onSearchRequested(const QString& keyword);
+private slots:
+    void onOpenAppRequested(const QString& app_name, const QString& title_name = "");
+    void onSearchRequested(const QString& keyword);
 };
 
 }  // namespace dman

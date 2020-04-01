@@ -19,6 +19,12 @@
 
 #include "base/consts.h"
 #include "base/utils.h"
+#include "dbus/dbus_consts.h"
+#include "dbus/manual_open_adapter.h"
+#include "dbus/manual_open_interface.h"
+#include "dbus/manual_open_proxy.h"
+#include "view/web_window.h"
+#include "window_manager.h"
 
 #include <DLog>
 #include <QCommandLineParser>
@@ -28,19 +34,19 @@
 
 namespace dman {
 
-// namespace {
+namespace {
 
-// QString ConvertOldDmanPath(const QString& app_name)
-//{
-//    const QStringList parts = app_name.split('/');
-//    const int dman_index = parts.indexOf("dman");
-//    if (dman_index > 0 && dman_index < parts.length() - 1) {
-//        return parts.at(dman_index + 1);
-//    }
-//    return app_name;
-//}
+QString ConvertOldDmanPath(const QString& app_name)
+{
+    const QStringList parts = app_name.split('/');
+    const int dman_index = parts.indexOf("dman");
+    if (dman_index > 0 && dman_index < parts.length() - 1) {
+        return parts.at(dman_index + 1);
+    }
+    return app_name;
+}
 
-//}  // namespace
+}  // namespace
 
 ArgumentParser::ArgumentParser(QObject* parent)
     : QObject(parent)
@@ -49,43 +55,20 @@ ArgumentParser::ArgumentParser(QObject* parent)
 
 ArgumentParser::~ArgumentParser() {}
 
-void ArgumentParser::parseArguments()
+bool ArgumentParser::parseArguments()
 {
-    QStringList list = qApp->arguments();
-    qDebug() << Q_FUNC_INFO << list;
-    if (list.count() > 1) {
-        QString strTemp = "";
-        for (int i = 1; i < list.count(); i++) {
-            if (i != 1) {
-                strTemp += " ";
-            }
-            strTemp += list.at(i);
-        }
-        QStringList strlist = strTemp.split("%");
-        if (strlist.count() >= 3) {
-            emit this->openManualAllRequested(strlist.at(0), strlist.at(1), strlist.at(2));
-        } else {
-            emit this->openManualAllRequested(strlist.at(0), "", "");
-        }
-        return;
-    }
-    emit this->openManualAllRequested("", "", "");
-    emit this->newMaunalNewRequest();
+    QCommandLineParser parser;
+    parser.addHelpOption();
+    parser.addVersionOption();
+    parser.addOption(QCommandLineOption("dbus", "enable daemon mode"));
+    parser.parse(qApp->arguments());
 
-    //    QCommandLineParser parser;
-    //    parser.addHelpOption();
-    //    parser.addVersionOption();
-    //    parser.addOption(QCommandLineOption("dbus", "enable daemon mode"));
-    //    parser.parse(qApp->arguments());
-
-    /*
     // Register dbus service.
     QDBusConnection conn = QDBusConnection::sessionBus();
     ManualOpenProxy* proxy = new ManualOpenProxy(this);
-            connect(proxy, &ManualOpenProxy::openManualRequested, this,
-                    &ArgumentParser::onOpenAppRequested);
-            connect(proxy, &ManualOpenProxy::searchRequested, this,
-            &ArgumentParser::onSearchRequested);
+    connect(proxy, &ManualOpenProxy::openManualRequested, this,
+            &ArgumentParser::onOpenAppRequested);
+    connect(proxy, &ManualOpenProxy::searchRequested, this, &ArgumentParser::onSearchRequested);
 
     ManualOpenAdapter* adapter = new ManualOpenAdapter(proxy);
     Q_UNUSED(adapter);
@@ -154,10 +137,8 @@ void ArgumentParser::parseArguments()
 
         return false;
     }
-    */
 }
 
-/*
 void ArgumentParser::openManualsDelay()
 {
     qDebug() << "call openManualsDelay";
@@ -180,6 +161,5 @@ void ArgumentParser::onSearchRequested(const QString& keyword)
     qDebug() << Q_FUNC_INFO << keyword;
     emit this->openManualWithSearchRequested("", keyword);
 }
-*/
 
 }  // namespace dman

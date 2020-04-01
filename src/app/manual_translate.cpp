@@ -13,22 +13,22 @@ int main(int argc, char **argv)
 
     // hash--> key: old name   value: new name
     const QHash<QString, QString> hash = {
-        {"deepin-downloader", "downloader"},                                   //下载器
-        {"", "deepin-voice-recorder"},                                         //录音 ***
-        {"deepin-voice-note", "deepin-voice-note"},                            //语音记事本
-        {"deepin-terminal", "deepin-terminal"},                                //终端
-        {"deepin-system-monitor", "deepin-system-monitor"},                    //系统监视器
-        {"", "deepin-screenshot"},                                             //截屏
-        {"deepin-screen-capture", "deepin-screen-recorder"},                   //录屏
-        {"deepin-repair", "deepin-repair-tools"},                              //系统修复工具
-        {"", "deepin-remote-assistance"},                                      //远程协助**
-        {"deepin-document-viewer", "deepin-reader"},                           //文档查看器
-        {"", "deepin-presentation-assistant"},                                 //演示助手**
-        {"deepin-picker", "deepin-picker"},                                    //取色器
-        {"deepin-music", "deepin-music"},                                      //音乐
-        {"deepin-movie", "deepin-movie"},                                      //影院
-        {"deepin-log-viewer", "deepin-log-viewer"},                            //日志收集工具
-        {"deepin-image-viewer", "deepin-image-viewer"},                        //看图
+        {"", "downloader"},                                   //下载器  ***
+        {"", "deepin-voice-recorder"},                        //录音 ***
+        {"deepin-voice-note", "deepin-voice-note"},           //语音记事本
+        {"deepin-terminal", "deepin-terminal"},               //终端
+        {"deepin-system-monitor", "deepin-system-monitor"},   //系统监视器
+        {"", "deepin-screenshot"},                            //截屏
+        {"deepin-screen-capture", "deepin-screen-recorder"},  //录屏
+        {"deepin-repair", "deepin-repair-tools"},             //系统修复工具
+        {"", "deepin-remote-assistance"},                     //远程协助**
+        {"", "deepin-reader"},                                //文档查看器**
+        {"", "deepin-presentation-assistant"},                //演示助手**
+        {"deepin-picker", "deepin-picker"},                   //取色器
+        {"deepin-music", "deepin-music"},                     //音乐
+        {"deepin-movie", "deepin-movie"},                     //影院
+        {"", "deepin-log-viewer"},                            //日志收集工具**
+        {"deepin-image-viewer", "deepin-image-viewer"},       //看图
         {"deepin-graphics-driver-manager", "deepin-graphics-driver-manager"},  //显卡驱动管理器
         {"deepin-font-manager", "deepin-font-manager"},                        //字体管理器
         {"deepin-text-editor", "deepin-editor"},                               //编辑器
