@@ -85,7 +85,7 @@
       margin: 10px auto auto -20px;
       cursor: pointer;
       height: 32px;
-      font-size: 1.3rem;
+      font-size: 1.1rem;
       display: -webkit-box;
       -webkit-line-clamp: 1;
       -webkit-box-orient: vertical;
@@ -94,7 +94,8 @@
       img {
         //svg图片内嵌同行
         &[src$='svg'] {
-          height: 20px;
+          margin-top: -2px;
+          height: 18px;
           vertical-align: middle;
         }
         //png图片
@@ -106,7 +107,7 @@
               zoom: 0.5/$i;
             }
           }
-          margin-top: 26px;
+          // margin-top: 26px;  //搜索界面图片对其
           max-width: 99%;
           cursor: pointer;
         }
@@ -119,7 +120,7 @@
               zoom: 0.5/$i;
             }
           }
-          margin-top: 26px;
+          // margin-top: 26px;
           max-width: 99%;
           cursor: pointer;
           border-radius: 4px;
@@ -151,7 +152,7 @@
       padding: 7px 10px 0px 0px;
       margin: 10px auto auto -20px;
       font-size: 0.9rem;
-      line-height: 1.4rem;
+      line-height: 1.8rem;
       border-radius: 8px;
       background-color: var(--search-item-background-color);
       display: -webkit-box;

@@ -154,8 +154,8 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
     QStringList newContents = contents;
     for (int i = 0; i < contents.size(); i++) {
         QString content = contents.at(i);
-        content = content.replace(
-            "icon/", "/usr/share/deepin-manual/manual/" + strManualPath + "/" + app_name + "/" + lang + "/icon/");
+        content = content.replace("icon/", "/usr/share/deepin-manual/manual/" + strManualPath +
+                                               "/" + app_name + "/" + lang + "/icon/");
         newContents.replace(i, content);
     }
 

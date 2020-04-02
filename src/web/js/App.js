@@ -207,7 +207,7 @@ class App extends React.Component {
       document.documentElement.style.setProperty(`--app-word-color`, '#414D68');
       document.documentElement.style.setProperty(`--nav-background-color`, '#FFFFFF');
       document.documentElement.style.setProperty(`--nav-h2-word-color`, '#001A2E');
-      document.documentElement.style.setProperty(`--nav-h3-word-color`, '#414D68');
+      document.documentElement.style.setProperty(`--nav-h3-word-color`, '#001A2E');
       document.documentElement.style.setProperty(`--nav-hash-word-color`, '#0081FF');
       document.documentElement.style.setProperty(`--article-read-word-color`, '#000000');
       document.documentElement.style.setProperty(`--article-read-h2-word-color`, '#2CA7F8');
@@ -221,7 +221,7 @@ class App extends React.Component {
       document.documentElement.style.setProperty(`--search-button-word-color`, '#414D68');
       document.documentElement.style.setProperty(`--search-button-hover-word-color`, '#001B2E');
       document.documentElement.style.setProperty(`--search-items-word-color`, '#000000');
-      document.documentElement.style.setProperty(`--search-items-resultnum-word-color`, '#303030');
+      document.documentElement.style.setProperty(`--search-items-resultnum-word-color`, '#8AA1B4'); 
       document.documentElement.style.setProperty(`--search-item-background-color`, 'rgba(255,255,255,1)');
       document.documentElement.style.setProperty(`--scrollbar-div-background-color`, 'rgba(83,96,118,0.4)');
       document.documentElement.style.setProperty(`--scrollbar-div-hover-background-color`, 'rgba(83,96,118,0.5)');

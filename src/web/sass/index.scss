@@ -47,13 +47,17 @@
       cursor: pointer;
       img {
         width: 96px;
-        margin-top: 16px;
+        height: 96px;
+        margin-top: 8px;
         margin-bottom: 8px;
       }
       span {
         width:160px;
-        word-break: normal;
+        // word-break: normal;
         display: inline-block;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        white-space: nowrap;
         font-family: SourceHanSansSC-Medium;
         font-size: var(--span-font-size);
         line-height: var(--span-line-height);

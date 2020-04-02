@@ -17,16 +17,16 @@
 
 #include "view/widget/image_viewer.h"
 
-#include <QApplication>
 #include <DLog>
-#include <QPainter>
-#include <QMouseEvent>
-#include <QResizeEvent>
-#include <QStackedLayout>
-#include <QtCore/QTimer>
+#include <QApplication>
 #include <QDesktopWidget>
 #include <QLabel>
+#include <QMouseEvent>
+#include <QPainter>
+#include <QResizeEvent>
 #include <QShortcut>
+#include <QStackedLayout>
+#include <QtCore/QTimer>
 
 DWIDGET_USE_NAMESPACE
 namespace dman {
@@ -44,14 +44,10 @@ ImageViewer::ImageViewer(QWidget *parent)
     this->setObjectName("ImageViewer");
     this->initUI();
 
-    connect(close_button_, &Dtk::Widget::DIconButton::clicked,
-            this, &ImageViewer::close);
+    connect(close_button_, &Dtk::Widget::DIconButton::clicked, this, &ImageViewer::close);
 }
 
-ImageViewer::~ImageViewer()
-{
-
-}
+ImageViewer::~ImageViewer() {}
 
 void ImageViewer::open(const QString &filepath)
 {
@@ -68,11 +64,8 @@ void ImageViewer::open(const QString &filepath)
     const QRect screen_rect = qApp->desktop()->screenGeometry(QCursor::pos());
     const int pixmap_max_width = static_cast<int>(screen_rect.width() * 0.8);
     const int pixmap_max_height = static_cast<int>(screen_rect.height() * 0.8);
-    if ((pixmap.width() > pixmap_max_width) ||
-            (pixmap.height() > pixmap_max_height)) {
-        pixmap = pixmap.scaled(pixmap_max_width,
-                               pixmap_max_height,
-                               Qt::KeepAspectRatio,
+    if ((pixmap.width() > pixmap_max_width) || (pixmap.height() > pixmap_max_height)) {
+        pixmap = pixmap.scaled(pixmap_max_width, pixmap_max_height, Qt::KeepAspectRatio,
                                Qt::SmoothTransformation);
     }
 
@@ -83,9 +76,8 @@ void ImageViewer::open(const QString &filepath)
     img_label_->setPixmap(pixmap);
     img_label_->setFixedSize(pixmap.width(), pixmap.height());
     QRect img_rect = img_label_->rect();
-    img_rect.moveTo(
-        static_cast<int>((screen_rect.width() - pixmap.width()) / 2.0),
-        static_cast<int>((screen_rect.height() - pixmap.height()) / 2.0));
+    img_rect.moveTo(static_cast<int>((screen_rect.width() - pixmap.width()) / 2.0),
+                    static_cast<int>((screen_rect.height() - pixmap.height()) / 2.0));
     img_label_->move(img_rect.topLeft());
 
     // Move close button to top-right corner of image.
@@ -106,13 +98,11 @@ void ImageViewer::initUI()
     close_button_->setObjectName("CloseButton");
     close_button_->raise();
     close_button_->setFocusPolicy(Qt::FocusPolicy::NoFocus);
-    close_button_->setIconSize(QSize(20, 20));
+    close_button_->setIconSize(QSize(36, 36));
     close_button_->setFixedSize(45, 45);
 
     this->setContentsMargins(kBorderSize, kBorderSize, kBorderSize, kBorderSize);
-    this->setWindowFlags(Qt::FramelessWindowHint |
-                         Qt::BypassWindowManagerHint |
-                         Qt::Dialog |
+    this->setWindowFlags(Qt::FramelessWindowHint | Qt::BypassWindowManagerHint | Qt::Dialog |
                          Qt::WindowStaysOnTopHint);
     this->setAttribute(Qt::WA_TranslucentBackground, true);
     this->setModal(true);
@@ -121,7 +111,7 @@ void ImageViewer::initUI()
     scHideDialog->setContext(Qt::ApplicationShortcut);
     scHideDialog->setAutoRepeat(false);
 
-    connect(scHideDialog, &QShortcut::activated, this, [this]{
+    connect(scHideDialog, &QShortcut::activated, this, [this] {
         qDebug() << "pressed esc!" << endl;
         this->hide();
     });
