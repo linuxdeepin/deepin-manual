@@ -301,7 +301,7 @@ div {
         margin-top: 8px;
         margin-bottom: 8px; }
       #index .items .item span {
-        width: 160px;
+        width: 130px;
         display: inline-block;
         overflow: hidden;
         text-overflow: ellipsis;
@@ -336,7 +336,7 @@ div {
     text-overflow: ellipsis;
     white-space: nowrap; }
     #nav .h[type='h2'] {
-      font-size: 1.2rem;
+      font-size: 1.3rem;
       font-weight: 500;
       color: var(--nav-h2-word-color);
       padding: 4px 0px;
@@ -429,6 +429,7 @@ div {
       #search .items .itemsTitle .resulttitle {
         color: var(--search-noresult-word-color);
         vertical-align: middle;
+        font-size: 1.3rem;
         font-weight: bold; }
       #search .items .itemsTitle .resultnum {
         font-family: SourceHanSansSC-Normal;
@@ -488,7 +489,7 @@ div {
             zoom: 0.5; } }
       #search .items .item .itemTitle {
         width: 99%;
-        margin: 0px 0px 7px 15px;
+        margin: 0px 0px 0px 15px;
         font-size: 1.1rem;
         line-height: 1.5rem;
         height: 1.5rem;
