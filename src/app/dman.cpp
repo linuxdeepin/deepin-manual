@@ -39,6 +39,7 @@ DWIDGET_USE_NAMESPACE
 
 int main(int argc, char **argv)
 {
+    qputenv("QCEF_DEBUG", "1");
     qputenv("DXCB_FAKE_PLATFORM_NAME_XCB", "true");
 
     int exitCode = dman::WindowManager::initQCef(argc, argv);

@@ -90,6 +90,7 @@ class App extends React.Component {
         HTMLGlobal.style.fontSize = fontSize;
       });
     });
+    console.log("initQt(channel)...");
   }
   themeChange(themeType) {
     global.setTheme(themeType);

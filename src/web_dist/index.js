@@ -130,6 +130,7 @@ var App = function (_React$Component) {
           HTMLGlobal.style.fontSize = fontSize;
         });
       });
+      console.log("initQt(channel)...");
     }
   }, {
     key: 'themeChange',
