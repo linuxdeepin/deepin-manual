@@ -174,7 +174,11 @@ bool ManualSearchProxy::ManualExists(const QString &app_name)
     if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
         strManualPath += "/server";
     } else {
-        strManualPath += "/professional";
+        if (Dtk::Core::DSysInfo::isCommunityEdition()) {
+            strManualPath += "/community";
+        } else {
+            strManualPath += "/professional";
+        }
     }
 
     QDir manual_dir(strManualPath);

@@ -43,10 +43,12 @@ public slots:
         int nType = Dtk::Core::DSysInfo::deepinType();
         if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
             strMANUAL_DIR += "/server";
-            //            strMANUAL_DIR += "/professional";
         } else {
-            //            strMANUAL_DIR += "/server";
-            strMANUAL_DIR += "/professional";
+            if (Dtk::Core::DSysInfo::isCommunityEdition()) {
+                strMANUAL_DIR += "/community";
+            } else {
+                strMANUAL_DIR += "/professional";
+            }
         }
         return strMANUAL_DIR;
     }
