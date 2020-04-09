@@ -352,6 +352,9 @@ void SearchDb::handleSearchContent(const QString &keyword)
             const QString content = query.value(3).toString();
 
             QString tmpContent = content;
+            // remove jpg & png
+            tmpContent.remove(QRegExp("<img .*png\"\\s*>"));
+            tmpContent.remove(QRegExp("<img .*jpg\"\\s*>"));
 
             tmpContent = tmpContent.replace("alt>", ">");
             tmpContent = tmpContent.replace("\" >", "\">");

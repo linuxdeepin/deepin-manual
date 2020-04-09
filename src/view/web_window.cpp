@@ -244,6 +244,7 @@ void WebWindow::initWebView()
     settings_proxy_ = new SettingsProxy(this);
     i18n_proxy = new I18nProxy(this);
 
+    /*
     web_view_ = new QCefWebView();
     //    web_view_->setParentWindow(this);
     web_view_->page()->setEventDelegate(new WebEventDelegate(this));
@@ -271,6 +272,28 @@ void WebWindow::initWebView()
     web_channel->registerObject("settings", settings_proxy_);
 
     connect(web_view_->page(), &QCefWebPage::loadFinished, this, &WebWindow::onWebPageLoadFinished);
+    connect(manual_proxy_, &ManualProxy::WidgetLower, this, &WebWindow::lower);
+    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
+            theme_proxy_, &ThemeProxy::slot_ThemeChange);
+            */
+
+    web_view_ = new QWebEngineView;
+    this->setCentralWidget(web_view_);
+    web_view_->hide();
+    QWebChannel *web_channel = new QWebChannel;
+    web_view_->setAcceptDrops(false);
+
+    web_channel->registerObject("i18n", i18n_proxy);
+    web_channel->registerObject("imageViewer", image_viewer_proxy_);
+    web_channel->registerObject("manual", manual_proxy_);
+    web_channel->registerObject("search", search_proxy_);
+    web_channel->registerObject("theme", theme_proxy_);
+    web_channel->registerObject("titleBar", title_bar_proxy_);
+    web_channel->registerObject("settings", settings_proxy_);
+    web_view_->page()->setWebChannel(web_channel);
+
+    connect(web_view_->page(), &QWebEnginePage::loadFinished, this,
+            &WebWindow::onWebPageLoadFinished);
     connect(manual_proxy_, &ManualProxy::WidgetLower, this, &WebWindow::lower);
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
             theme_proxy_, &ThemeProxy::slot_ThemeChange);
@@ -306,7 +329,7 @@ void WebWindow::initShortcuts()
     connect(scSearch, &QShortcut::activated, this, [this] {
         qDebug() << "search" << endl;
         search_edit_->lineEdit()->setFocus(Qt::ShortcutFocusReason);
-        web_view_->page()->remapBrowserWindow(web_view_->winId(), this->winId());
+//        web_view_->page()->remapBrowserWindow(web_view_->winId(), this->winId());
     });
 }
 
@@ -443,6 +466,12 @@ void WebWindow::onWebPageLoadFinished(bool ok)
                     qDebug() << "first_webpage_loaded_ manualSearchByKeyword:" << keyword_;
                     emit this->manualSearchByKeyword(keyword_);
                 }
+            }
+
+            if (this->settings_proxy_) {
+                auto fontInfo = this->fontInfo();
+                Q_EMIT this->settings_proxy_->fontChangeRequested(fontInfo.family(),
+                                                                  fontInfo.pixelSize());
             }
         });
     }
