@@ -41,11 +41,13 @@ int main(int argc, char **argv)
 {
     //    qputenv("QCEF_DEBUG", "1");
     qputenv("DXCB_FAKE_PLATFORM_NAME_XCB", "true");
+    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu");
+//    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--enable-aggressive-domstorage-flushing");
 
-    //    int exitCode = dman::WindowManager::initQCef(argc, argv);
-    //    if (exitCode >= 0) {
-    //        return exitCode;
-    //    }
+        int exitCode = dman::WindowManager::initQCef(argc, argv);
+        if (exitCode >= 0) {
+            return exitCode;
+        }
 
     Dtk::Widget::DApplication::loadDXcbPlugin();
 
