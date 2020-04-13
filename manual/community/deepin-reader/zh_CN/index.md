@@ -164,7 +164,6 @@
 
 3. 在搜索框中，您可以：
    - 点击![search](icon/search.svg)，输入关键字。
-   - 点击![button_voice](icon/button_voice.svg)，输入语音，语音会转化为文字显示在搜索框中。
 
 4. 按下键盘上的 **Enter** 键进行搜索。
    - 当搜索到匹配的信息时，显示搜索结果列表。
