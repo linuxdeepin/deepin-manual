@@ -31,7 +31,7 @@ class ManualProxy : public QObject
 {
     Q_OBJECT
 public:
-    explicit ManualProxy(QObject* parent = nullptr);
+    explicit ManualProxy(QObject *parent = nullptr);
     ~ManualProxy() override;
 
 signals:
@@ -43,6 +43,8 @@ public slots:
         int nType = Dtk::Core::DSysInfo::deepinType();
         if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
             strMANUAL_DIR += "/server";
+        } else if (Dtk::Core::DSysInfo::DeepinPersonal == (Dtk::Core::DSysInfo::DeepinType)nType) {
+            strMANUAL_DIR += "/personal";
         } else {
             if (Dtk::Core::DSysInfo::isCommunityEdition()) {
                 strMANUAL_DIR += "/community";
@@ -59,10 +61,10 @@ public slots:
      * Open link with xdg-open.
      * @param url
      */
-    void openExternalLink(const QString& url);
+    void openExternalLink(const QString &url);
 
 private:
-    LauncherInterface* launcher_interface_ = nullptr;
+    LauncherInterface *launcher_interface_ = nullptr;
     QStringList app_list_;
 };
 

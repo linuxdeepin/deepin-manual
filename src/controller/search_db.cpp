@@ -147,6 +147,8 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
     int nType = Dtk::Core::DSysInfo::deepinType();
     if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
         strManualPath += "/server";
+    } else if (Dtk::Core::DSysInfo::DeepinPersonal == (Dtk::Core::DSysInfo::DeepinType)nType) {
+        strManualPath += "/personal";
     } else {
         if (Dtk::Core::DSysInfo::isCommunityEdition()) {
             strManualPath += "/community";
@@ -159,7 +161,7 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
     for (int i = 0; i < contents.size(); i++) {
         QString content = contents.at(i);
         content = content.replace("icon/", "/usr/share/deepin-manual/manual/" + strManualPath +
-                                               "/" + app_name + "/" + lang + "/icon/");
+                                  "/" + app_name + "/" + lang + "/icon/");
         newContents.replace(i, content);
     }
 
@@ -374,7 +376,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
                 }
             } else {
                 if (!last_app_name.isEmpty() && appHasMatchHash.value(last_app_name) &&
-                    contents.size() > 0) {
+                        contents.size() > 0) {
                     result_empty = false;
                     qDebug() << Q_FUNC_INFO << "emit searchContentResult()" << contents.length();
                     emit this->searchContentResult(last_app_name, anchors, anchorIds, contents);
