@@ -44,10 +44,10 @@ int main(int argc, char **argv)
     qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu");
 //    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--enable-aggressive-domstorage-flushing");
 
-        int exitCode = dman::WindowManager::initQCef(argc, argv);
-        if (exitCode >= 0) {
-            return exitCode;
-        }
+//        int exitCode = dman::WindowManager::initQCef(argc, argv);
+//        if (exitCode >= 0) {
+//            return exitCode;
+//        }
 
     Dtk::Widget::DApplication::loadDXcbPlugin();
 
@@ -68,8 +68,8 @@ int main(int argc, char **argv)
     app.setApplicationDisplayName(QObject::tr("Manual"));
 
     app.setApplicationDescription(QObject::tr(
-        "Manual is designed to help users learn the operating system and its applications,"
-        " providing specific instructions and function descriptions."));
+                                      "Manual is designed to help users learn the operating system and its applications,"
+                                      " providing specific instructions and function descriptions."));
     app.setApplicationAcknowledgementPage("https://www.deepin.org/acknowledgments/deepin-manual/");
 
     dman::ArgumentParser argument_parser;
@@ -80,7 +80,9 @@ int main(int argc, char **argv)
     if (argument_parser.parseArguments()) {
         qDebug() << "argument_parser.parseArguments()";
         // Exit process after 1000ms.
-        QTimer::singleShot(1000, [&]() { app.quit(); });
+        QTimer::singleShot(1000, [&]() {
+            app.quit();
+        });
         return app.exec();
     }
 
