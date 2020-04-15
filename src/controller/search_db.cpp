@@ -153,8 +153,7 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
         if (Dtk::Core::DSysInfo::isCommunityEdition()) {
             strManualPath += "/community";
         } else {
-//            strManualPath += "/professional";
-            strManualPath += "/personal";
+            strManualPath += "/professional";
         }
     }
 
