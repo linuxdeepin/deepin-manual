@@ -159,7 +159,7 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
     for (int i = 0; i < contents.size(); i++) {
         QString content = contents.at(i);
         content = content.replace("icon/", "/usr/share/deepin-manual/manual/" + strManualPath +
-                                               "/" + app_name + "/" + lang + "/icon/");
+                                  "/" + app_name + "/" + lang + "/icon/");
         newContents.replace(i, content);
     }
 
@@ -356,6 +356,9 @@ void SearchDb::handleSearchContent(const QString &keyword)
             const QString content = query.value(3).toString();
 
             QString tmpContent = content;
+            // remove jpg & png
+            tmpContent.remove(QRegExp("<img .*png\"\\s*>"));
+            tmpContent.remove(QRegExp("<img .*jpg\"\\s*>"));
 
             tmpContent = tmpContent.replace("alt>", ">");
             tmpContent = tmpContent.replace("\" >", "\">");
@@ -374,7 +377,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
                 }
             } else {
                 if (!last_app_name.isEmpty() && appHasMatchHash.value(last_app_name) &&
-                    contents.size() > 0) {
+                        contents.size() > 0) {
                     result_empty = false;
                     qDebug() << Q_FUNC_INFO << "emit searchContentResult()" << contents.length();
                     emit this->searchContentResult(last_app_name, anchors, anchorIds, contents);

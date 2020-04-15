@@ -243,23 +243,43 @@ void WebWindow::initWebView()
     theme_proxy_ = new ThemeProxy(this);
     settings_proxy_ = new SettingsProxy(this);
     i18n_proxy = new I18nProxy(this);
+    /*
+        web_view_ = new QCefWebView();
+        //    web_view_->setParentWindow(this);
+        web_view_->page()->setEventDelegate(new WebEventDelegate(this));
+        this->setCentralWidget(web_view_);
+        web_view_->hide();
 
-    web_view_ = new QCefWebView();
-    //    web_view_->setParentWindow(this);
-    web_view_->page()->setEventDelegate(new WebEventDelegate(this));
+        // Disable web security.
+        auto settings = web_view_->page()->settings();
+        settings->setMinimumFontSize(8);
+        settings->setWebSecurity(QCefWebSettings::StateDisabled);
+
+        // init default font size
+        settings->setDefaultFontSize(this->fontInfo().pixelSize());
+
+        // Use TitleBarProxy instead.
+        QWebChannel *web_channel = web_view_->page()->webChannel();
+        web_view_->setAcceptDrops(false);
+
+        web_channel->registerObject("i18n", i18n_proxy);
+        web_channel->registerObject("imageViewer", image_viewer_proxy_);
+        web_channel->registerObject("manual", manual_proxy_);
+        web_channel->registerObject("search", search_proxy_);
+        web_channel->registerObject("theme", theme_proxy_);
+        web_channel->registerObject("titleBar", title_bar_proxy_);
+        web_channel->registerObject("settings", settings_proxy_);
+
+        connect(web_view_->page(), &QCefWebPage::loadFinished, this, &WebWindow::onWebPageLoadFinished);
+        connect(manual_proxy_, &ManualProxy::WidgetLower, this, &WebWindow::lower);
+        connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
+                theme_proxy_, &ThemeProxy::slot_ThemeChange);
+                */
+
+    web_view_ = new QWebEngineView;
     this->setCentralWidget(web_view_);
     web_view_->hide();
-
-    // Disable web security.
-    auto settings = web_view_->page()->settings();
-    settings->setMinimumFontSize(8);
-    settings->setWebSecurity(QCefWebSettings::StateDisabled);
-
-    // init default font size
-    settings->setDefaultFontSize(this->fontInfo().pixelSize());
-
-    // Use TitleBarProxy instead.
-    QWebChannel *web_channel = web_view_->page()->webChannel();
+    QWebChannel *web_channel = new QWebChannel;
     web_view_->setAcceptDrops(false);
 
     web_channel->registerObject("i18n", i18n_proxy);
@@ -269,8 +289,10 @@ void WebWindow::initWebView()
     web_channel->registerObject("theme", theme_proxy_);
     web_channel->registerObject("titleBar", title_bar_proxy_);
     web_channel->registerObject("settings", settings_proxy_);
+    web_view_->page()->setWebChannel(web_channel);
 
-    connect(web_view_->page(), &QCefWebPage::loadFinished, this, &WebWindow::onWebPageLoadFinished);
+    connect(web_view_->page(), &QWebEnginePage::loadFinished, this,
+            &WebWindow::onWebPageLoadFinished);
     connect(manual_proxy_, &ManualProxy::WidgetLower, this, &WebWindow::lower);
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
             theme_proxy_, &ThemeProxy::slot_ThemeChange);
@@ -291,9 +313,11 @@ void WebWindow::initShortcuts()
     scWndReize->setContext(Qt::WindowShortcut);
     scWndReize->setAutoRepeat(false);
     connect(scWndReize, &QShortcut::activated, this, [this] {
-        if (this->windowState() & Qt::WindowMaximized) {
+        if (this->windowState() & Qt::WindowMaximized)
+        {
             this->showNormal();
-        } else if (this->windowState() == Qt::WindowNoState) {
+        } else if (this->windowState() == Qt::WindowNoState)
+        {
             this->showMaximized();
         }
     });
@@ -306,7 +330,7 @@ void WebWindow::initShortcuts()
     connect(scSearch, &QShortcut::activated, this, [this] {
         qDebug() << "search" << endl;
         search_edit_->lineEdit()->setFocus(Qt::ShortcutFocusReason);
-        web_view_->page()->remapBrowserWindow(web_view_->winId(), this->winId());
+//        web_view_->page()->remapBrowserWindow(web_view_->winId(), this->winId());
     });
 }
 
@@ -348,7 +372,9 @@ void WebWindow::onSearchContentByKeyword(const QString &keyword)
 
 void WebWindow::onSearchEditFocusOut()
 {
-    QTimer::singleShot(20, [=]() { this->completion_window_->hide(); });
+    QTimer::singleShot(20, [ = ]() {
+        this->completion_window_->hide();
+    });
 }
 
 void WebWindow::onSearchButtonClicked()
@@ -363,10 +389,10 @@ void WebWindow::onSearchButtonClicked()
 void WebWindow::onSearchResultClicked(const SearchAnchorResult &result)
 {
     web_view_->page()->runJavaScript(QString("open('%1', '%2', '%3', '%4')")
-                                         .arg(result.app_name)
-                                         .arg(result.anchorId)
-                                         .arg(result.anchor)
-                                         .arg(result.app_display_name));
+                                     .arg(result.app_name)
+                                     .arg(result.anchorId)
+                                     .arg(result.anchor)
+                                     .arg(result.app_display_name));
 }
 
 void WebWindow::onSearchTextChanged(const QString &text)
@@ -444,6 +470,12 @@ void WebWindow::onWebPageLoadFinished(bool ok)
                     emit this->manualSearchByKeyword(keyword_);
                 }
             }
+
+            if (this->settings_proxy_) {
+                auto fontInfo = this->fontInfo();
+                Q_EMIT this->settings_proxy_->fontChangeRequested(fontInfo.family(),
+                                                                  fontInfo.pixelSize());
+            }
         });
     }
 }
@@ -478,21 +510,21 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
 {
     // Filters mouse press event only.
     if (event->type() == QEvent::MouseButtonPress && qApp->activeWindow() == this &&
-        watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
+            watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
         QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
         switch (mouseEvent->button()) {
-            case Qt::BackButton: {
-                qDebug() << "eventFilter back";
-                title_bar_proxy_->backwardButtonClicked();
-                break;
-            }
-            case Qt::ForwardButton: {
-                qDebug() << "eventFilter forward";
-                title_bar_proxy_->forwardButtonClicked();
-                break;
-            }
-            default: {
-            }
+        case Qt::BackButton: {
+            qDebug() << "eventFilter back";
+            title_bar_proxy_->backwardButtonClicked();
+            break;
+        }
+        case Qt::ForwardButton: {
+            qDebug() << "eventFilter forward";
+            title_bar_proxy_->forwardButtonClicked();
+            break;
+        }
+        default: {
+        }
         }
     }
 
@@ -510,7 +542,7 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
 
 void WebWindow::slot_ButtonHide()
 {
-    QTimer::singleShot(20, [=]() {
+    QTimer::singleShot(20, [ = ]() {
         qDebug() << "slot_ButtonHide";
         buttonBox->hide();
     });
@@ -518,7 +550,7 @@ void WebWindow::slot_ButtonHide()
 
 void WebWindow::slot_ButtonShow()
 {
-    QTimer::singleShot(20, [=]() {
+    QTimer::singleShot(20, [ = ]() {
         qDebug() << "slot_ButtonShow";
         buttonBox->show();
     });
