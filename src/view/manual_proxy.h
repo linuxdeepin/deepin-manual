@@ -49,7 +49,8 @@ public slots:
             if (Dtk::Core::DSysInfo::isCommunityEdition()) {
                 strMANUAL_DIR += "/community";
             } else {
-                strMANUAL_DIR += "/professional";
+//                strMANUAL_DIR += "/professional";
+                strMANUAL_DIR += "/personal";
             }
         }
         return strMANUAL_DIR;

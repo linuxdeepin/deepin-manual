@@ -62,7 +62,8 @@ void SearchManager::initSearchManager()
         if (Dtk::Core::DSysInfo::isCommunityEdition()) {
             strDB += "/community/search.db";
         } else {
-            strDB += "/professional/search.db";
+//            strDB += "/professional/search.db";
+            strDB += "/personal/search.db";
         }
     }
 
