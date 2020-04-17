@@ -356,13 +356,15 @@ void SearchDb::handleSearchContent(const QString &keyword)
             const QString content = query.value(3).toString();
 
             QString tmpContent = content;
-            // remove jpg & png
-            tmpContent.remove(QRegExp("<img .*png\"\\s*>"));
-            tmpContent.remove(QRegExp("<img .*jpg\"\\s*>"));
-
             tmpContent = tmpContent.replace("alt>", ">");
             tmpContent = tmpContent.replace("\" >", "\">");
+
             QString highlightContent = highlightKeyword(tmpContent, keyword);
+
+            //remove img src
+            QRegExp exp("<img .*>");
+            exp.setMinimal(true);
+            highlightContent.remove(exp);
 
             if (highlightContent.length() > 0) {
                 appHasMatchHash.insert(app_name, true);

@@ -48,7 +48,7 @@ int main(int argc, char **argv)
         {"print-manager", "dde-printer"},                               //打印管理器
         {"file-manager", "dde-file-manager"},                           //文件管理器
         {"calendar", "dde-calendar"},                                   //日历
-        {"", "chineseime"}                                             //中文输入法**
+        {"", "chineseime"}                                              //中文输入法**
     };
 
     QWidget widget;
