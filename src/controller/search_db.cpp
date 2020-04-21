@@ -362,6 +362,10 @@ void SearchDb::handleSearchContent(const QString &keyword)
             tmpContent = tmpContent.replace("alt>", ">");
             tmpContent = tmpContent.replace("\" >", "\">");
             QString highlightContent = highlightKeyword(tmpContent, keyword);
+            //remove img src
+            QRegExp exp("<img .*>");
+            exp.setMinimal(true);
+            highlightContent.remove(exp);
 
             if (highlightContent.length() > 0) {
                 appHasMatchHash.insert(app_name, true);
