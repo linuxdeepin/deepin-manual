@@ -282,6 +282,19 @@ void WebWindow::initWebView()
     QWebChannel *web_channel = new QWebChannel;
     web_view_->setAcceptDrops(false);
 
+    web_view_->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(web_view_, &QWidget::customContextMenuRequested, this, [this]() {
+        if (!web_view_->selectedText().isEmpty()) {
+            QMenu *menu = new QMenu(this);
+            QAction *action =  menu->addAction(QObject::tr("Copy"));
+            connect(action, &QAction::triggered, this, [ = ]() {
+                QApplication::clipboard()->setText(web_view_->selectedText());
+            });
+            menu->exec(QCursor::pos());
+        } else {
+        }
+    });
+
     web_channel->registerObject("i18n", i18n_proxy);
     web_channel->registerObject("imageViewer", image_viewer_proxy_);
     web_channel->registerObject("manual", manual_proxy_);

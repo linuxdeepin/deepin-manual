@@ -2,9 +2,14 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/view/web_event_delegate.cpp" line="63"/>
-        <source>Copy</source>
-        <translation>Copy</translation>
+        <location filename="../src/app/dman.cpp" line="62"/>
+        <source>Manual</source>
+        <translation>Manual</translation>
+    </message>
+    <message>
+        <location filename="../src/app/dman.cpp" line="64"/>
+        <source>Manual is designed to help users learn the operating system and its applications, providing specific instructions and function descriptions.</source>
+        <translation>Manual is designed to help users learn the operating system and its applications, providing specific instructions and function descriptions.</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="34"/>
@@ -37,31 +42,18 @@
         <translation>  results</translation>
     </message>
     <message>
-        <source>result</source>
-        <translation type="vanished">result</translation>
+        <location filename="../src/view/web_event_delegate.cpp" line="63"/>
+        <source>Copy</source>
+        <translation>Copy</translation>
     </message>
     <message>
-        <source>results</source>
-        <translation type="vanished">results</translation>
-    </message>
-    <message>
-        <location filename="../src/view/web_window.cpp" line="225"/>
+        <location filename="../src/view/web_window.cpp" line="219"/>
         <source>Search</source>
         <translation>Search</translation>
     </message>
     <message>
-        <location filename="../src/app/dman.cpp" line="65"/>
-        <source>Manual</source>
-        <translation>Manual</translation>
-    </message>
-    <message>
-        <location filename="../src/app/dman.cpp" line="67"/>
-        <source>Manual is designed to help users learn the operating system and its applications, providing specific instructions and function descriptions.</source>
-        <translation>Manual is designed to help users learn the operating system and its applications, providing specific instructions and function descriptions.</translation>
-    </message>
-    <message>
-        <location filename="../src/view/widget/search_completion_window.cpp" line="146"/>
-        <location filename="../src/view/widget/search_completion_window.cpp" line="216"/>
+        <location filename="../src/view/widget/search_completion_window.cpp" line="148"/>
+        <location filename="../src/view/widget/search_completion_window.cpp" line="218"/>
         <source>Search for &quot;%1&quot; in the full text</source>
         <translation>Search for &quot;%1&quot; in the full text</translation>
     </message>
@@ -69,12 +61,17 @@
 <context>
     <name>WebWindow</name>
     <message>
-        <location filename="../src/view/web_window.cpp" line="293"/>
+        <location filename="../src/view/web_window.cpp" line="289"/>
+        <source>Copy</source>
+        <translation>Copy</translation>
+    </message>
+    <message>
+        <location filename="../src/view/web_window.cpp" line="325"/>
         <source>Ctrl+Alt+F</source>
         <translation>Ctrl+Alt+F</translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="306"/>
+        <location filename="../src/view/web_window.cpp" line="340"/>
         <source>Ctrl+F</source>
         <translation>Ctrl+F</translation>
     </message>

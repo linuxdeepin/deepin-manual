@@ -2,14 +2,44 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/app/dman.cpp" line="82"/>
-        <source>Deepin Manual</source>
-        <translation>دليل ديبين</translation>
+        <location filename="../src/app/dman.cpp" line="62"/>
+        <source>Manual</source>
+        <translation>كتيّب</translation>
     </message>
     <message>
-        <location filename="../src/app/dman.cpp" line="83"/>
-        <source>Deepin Manual is designed to help users learn deepin and Deepin applications, providing specific instructions and function descriptions.</source>
-        <translation>تم تصميم ديبين دليل لمساعدة المستخدمين على تعلم ديبين وتطبيقات ديبين، وتوفير تعليمات معينة ووصف المهام.</translation>
+        <location filename="../src/app/dman.cpp" line="64"/>
+        <source>Manual is designed to help users learn the operating system and its applications, providing specific instructions and function descriptions.</source>
+        <translation>كتيّب التعليمات مصمم لمساعدة المستخدمين على تعلم نظام التشغيل وتطبيقاته عن طريق تزويدهم بإرشادات مخصصة ووصف للوظائف التي يقوم لها النظام.</translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="34"/>
+        <source>System</source>
+        <translation>النظام</translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="35"/>
+        <source>Applications</source>
+        <translation>التطبيقات</translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="38"/>
+        <source>No search results</source>
+        <translation>لا يوجد نتائج لبحثك</translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="41"/>
+        <source>Home</source>
+        <translation>البداية</translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="43"/>
+        <source>  result</source>
+        <translation>النتيجة</translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="44"/>
+        <source>  results</source>
+        <translation>النتائج</translation>
     </message>
     <message>
         <location filename="../src/view/web_event_delegate.cpp" line="63"/>
@@ -17,45 +47,33 @@
         <translation>نسخ</translation>
     </message>
     <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="32"/>
-        <source>System</source>
-        <translation>النظام</translation>
-    </message>
-    <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="33"/>
-        <source>Applications</source>
-        <translation>التطبيقات</translation>
-    </message>
-    <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="35"/>
-        <source>Sorry, there are no search results of &quot;%1&quot;</source>
-        <translation>عذراً ، لا توجد نتائج بحث حول &quot;℅1&quot;</translation>
-    </message>
-    <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="36"/>
-        <source>Change your keywords and try again, or search it in Deepin Wiki</source>
-        <translation>قم بتغيير كلماتك المفتاحية وحاول مرة أخرى، أو قم  بالبحث في ويكي ديبين </translation>
-    </message>
-    <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="38"/>
-        <source>Home</source>
-        <translation>البداية</translation>
-    </message>
-    <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="39"/>
-        <source>Deepin Wiki</source>
-        <translation>ويكي ديبين</translation>
-    </message>
-    <message>
-        <location filename="../src/view/widget/search_completion_window.cpp" line="113"/>
-        <location filename="../src/view/widget/search_completion_window.cpp" line="162"/>
-        <source>Search &quot;%1&quot; in the full text</source>
-        <translation>البحث عن &quot;%1&quot; في كامل النص</translation>
-    </message>
-    <message>
-        <location filename="../src/view/widget/title_bar.cpp" line="96"/>
+        <location filename="../src/view/web_window.cpp" line="219"/>
         <source>Search</source>
         <translation>بحث</translation>
+    </message>
+    <message>
+        <location filename="../src/view/widget/search_completion_window.cpp" line="148"/>
+        <location filename="../src/view/widget/search_completion_window.cpp" line="218"/>
+        <source>Search for &quot;%1&quot; in the full text</source>
+        <translation>البحث عن &quot;%1&quot; في كامل النص</translation>
+    </message>
+</context>
+<context>
+    <name>WebWindow</name>
+    <message>
+        <location filename="../src/view/web_window.cpp" line="289"/>
+        <source>Copy</source>
+        <translation>نسخ</translation>
+    </message>
+    <message>
+        <location filename="../src/view/web_window.cpp" line="325"/>
+        <source>Ctrl+Alt+F</source>
+        <translation> Ctrl+Alt+F</translation>
+    </message>
+    <message>
+        <location filename="../src/view/web_window.cpp" line="340"/>
+        <source>Ctrl+F</source>
+        <translation> Ctrl+F</translation>
     </message>
 </context>
 </TS>

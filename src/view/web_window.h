@@ -28,7 +28,8 @@
 #include <DButtonBox>
 #include <DMainWindow>
 #include <QWebEngineView>
-
+#include <QAction>
+#include <QClipboard>
 
 namespace dman {
 
@@ -45,6 +46,7 @@ class TitleBarProxy;
 class SettingsProxy;
 class SearchEdit;
 class DButtonBox;
+
 
 class WebWindow : public Dtk::Widget::DMainWindow
 {
