@@ -14,14 +14,7 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
 #include "view/manual_proxy.h"
-
-#include <QDBusConnection>
-#include <QDesktopServices>
-
-#include "dbus/dbus_consts.h"
-#include "dbus/launcher_interface.h"
 
 namespace dman {
 
@@ -74,7 +67,13 @@ QStringList ManualProxy::getSystemManualList()
     if (app_list_.isEmpty()) {
         const QStringList dir_entry = QDir(this->getSystemManualDir()).entryList();
         const AppInfoList list = launcher_interface_->GetAllItemInfos();
-        for (const AppInfo &info : list) {
+
+        QMultiMap<qlonglong, AppInfo> appMap;
+        for (int var = 0; var < list.size(); ++var) {
+            appMap.insert(list.at(var).installed_time, list.at(var));
+        }
+        foreach (const AppInfo &info, appMap.values()) {
+            qDebug() << info.key << info.installed_time;
             const QString app_name = kAppNameMap.value(info.key, info.key);
             if ((dir_entry.indexOf(app_name) != -1) && app_list_.indexOf(app_name) == -1) {
                 app_list_.append(app_name);
@@ -83,6 +82,7 @@ QStringList ManualProxy::getSystemManualList()
             const QString deepin_app_id = GetDeepinManualId(info.desktop);
             if (deepin_app_id == app_name && app_list_.indexOf(app_name) == -1) {
                 app_list_.append(app_name);
+                //qDebug() << app_name << "---";
             }
         }
 
@@ -106,3 +106,5 @@ void ManualProxy::openExternalLink(const QString &url)
 }  // namespace dman
 
 }  // namespace dman
+
+//bool ManualPro

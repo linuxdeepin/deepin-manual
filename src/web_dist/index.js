@@ -969,12 +969,19 @@ var Index = function (_Component2) {
       var sysSoft = ['dde'].filter(function (appName) {
         return _this4.state.appList.indexOf(appName) != -1;
       });
-      var appSoft = this.state.sequence.filter(function (appName) {
-        return _this4.state.appList.indexOf(appName) != -1;
-      });
-      var otherSoft = this.state.appList.filter(function (appName) {
-        return _this4.state.sequence.indexOf(appName) == -1 && sysSoft.indexOf(appName) == -1;
-      });
+      // let appSoft = this.state.sequence.filter(
+      //   appName => this.state.appList.indexOf(appName) != -1
+      // );
+      // let otherSoft = this.state.appList.filter(
+      //   appName => this.state.sequence.indexOf(appName) == -1 &&
+      //     sysSoft.indexOf(appName) == -1
+      // );
+
+      var appSoft = this.state.appList;
+      var index = appSoft.indexOf("dde");
+      appSoft.splice(index, 1);
+      var otherSoft = [""];
+
       return _react2.default.createElement(
         _scrollbar2.default,
         null,

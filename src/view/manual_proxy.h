@@ -23,6 +23,16 @@
 #include <QList>
 #include <QObject>
 
+#include <QDBusConnection>
+#include <QDesktopServices>
+
+#include "dbus/dbus_consts.h"
+#include "dbus/launcher_interface.h"
+
+#include <QtAlgorithms>
+#include <qalgorithms.h>
+#include <QMultiMap>
+
 class LauncherInterface;
 
 namespace dman {
@@ -31,9 +41,8 @@ class ManualProxy : public QObject
 {
     Q_OBJECT
 public:
-    explicit ManualProxy(QObject* parent = nullptr);
+    explicit ManualProxy(QObject *parent = nullptr);
     ~ManualProxy() override;
-
 signals:
     void WidgetLower();
 public slots:
@@ -59,10 +68,10 @@ public slots:
      * Open link with xdg-open.
      * @param url
      */
-    void openExternalLink(const QString& url);
+    void openExternalLink(const QString &url);
 
 private:
-    LauncherInterface* launcher_interface_ = nullptr;
+    LauncherInterface *launcher_interface_ = nullptr;
     QStringList app_list_;
 };
 

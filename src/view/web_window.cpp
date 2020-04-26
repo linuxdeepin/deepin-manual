@@ -304,8 +304,7 @@ void WebWindow::initWebView()
     web_channel->registerObject("settings", settings_proxy_);
     web_view_->page()->setWebChannel(web_channel);
 
-    connect(web_view_->page(), &QWebEnginePage::loadFinished, this,
-            &WebWindow::onWebPageLoadFinished);
+    connect(web_view_->page(), &QWebEnginePage::loadFinished, this, &WebWindow::onWebPageLoadFinished);
     connect(manual_proxy_, &ManualProxy::WidgetLower, this, &WebWindow::lower);
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
             theme_proxy_, &ThemeProxy::slot_ThemeChange);
@@ -358,6 +357,7 @@ void WebWindow::showEvent(QShowEvent *event)
             emit this->shown(this);
             this->initWebView();
             const QFileInfo info(kIndexPage);
+            qDebug() << Q_FUNC_INFO << "web_View_->load ... ";
             web_view_->load(QUrl::fromLocalFile(info.absoluteFilePath()));
         });
     }
@@ -445,6 +445,7 @@ void WebWindow::onTitleBarEntered()
 
 void WebWindow::onWebPageLoadFinished(bool ok)
 {
+    qDebug() << Q_FUNC_INFO << " onWebPageLoadFinished :" << ok;
     if (ok) {
         QString qsthemetype = "Null";
         DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
@@ -456,7 +457,9 @@ void WebWindow::onWebPageLoadFinished(bool ok)
         web_view_->page()->runJavaScript(QString("setTheme('%1')").arg(qsthemetype));
         if (app_name_.isEmpty()) {
             web_view_->page()->runJavaScript("index()");
+            qDebug() << Q_FUNC_INFO << 460;
         } else {
+            qDebug() << Q_FUNC_INFO << 462;
             QString real_path(app_name_);
             if (real_path.contains('/')) {
                 // Open markdown file with absolute path.
@@ -475,10 +478,12 @@ void WebWindow::onWebPageLoadFinished(bool ok)
 
         QTimer::singleShot(100, [&]() {
             qDebug() << "show webview";
+            qDebug() << Q_FUNC_INFO << 481;
             web_view_->show();
-
+            qDebug() << Q_FUNC_INFO << 482;
             if (first_webpage_loaded_) {
                 first_webpage_loaded_ = false;
+                qDebug() << Q_FUNC_INFO << 486;
                 if (keyword_.length() > 0) {
                     qDebug() << "first_webpage_loaded_ manualSearchByKeyword:" << keyword_;
                     emit this->manualSearchByKeyword(keyword_);
@@ -486,6 +491,7 @@ void WebWindow::onWebPageLoadFinished(bool ok)
             }
 
             if (this->settings_proxy_) {
+                qDebug() << Q_FUNC_INFO << 494;
                 auto fontInfo = this->fontInfo();
                 Q_EMIT this->settings_proxy_->fontChangeRequested(fontInfo.family(),
                                                                   fontInfo.pixelSize());
