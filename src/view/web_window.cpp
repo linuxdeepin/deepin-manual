@@ -556,10 +556,11 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
 
 void WebWindow::slot_ButtonHide()
 {
-    QTimer::singleShot(20, [ = ]() {
-        qDebug() << "slot_ButtonHide";
-        buttonBox->hide();
-    });
+//    QTimer::singleShot(20, [ = ]() {
+//        qDebug() << "slot_ButtonHide";
+//        buttonBox->hide();
+//    });
+    buttonBox->hide();
 }
 
 void WebWindow::slot_ButtonShow()
