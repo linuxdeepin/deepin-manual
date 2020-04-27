@@ -82,7 +82,6 @@ QStringList ManualProxy::getSystemManualList()
             const QString deepin_app_id = GetDeepinManualId(info.desktop);
             if (deepin_app_id == app_name && app_list_.indexOf(app_name) == -1) {
                 app_list_.append(app_name);
-                //qDebug() << app_name << "---";
             }
         }
 

@@ -208,7 +208,6 @@ void WebWindow::initUI()
     buttonLayout->addWidget(buttonBox);
     buttonLayout->setSpacing(0);
     buttonLayout->setContentsMargins(13, 0, 0, 0);
-
     QFrame *buttonFrame = new QFrame(this);
     buttonFrame->setLayout(buttonLayout);
 
@@ -279,8 +278,8 @@ void WebWindow::initWebView()
     web_view_ = new QWebEngineView;
     this->setCentralWidget(web_view_);
     web_view_->hide();
-    QWebChannel *web_channel = new QWebChannel;
     web_view_->setAcceptDrops(false);
+    slot_ThemeChanged();
 
     web_view_->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(web_view_, &QWidget::customContextMenuRequested, this, [this]() {
@@ -295,6 +294,7 @@ void WebWindow::initWebView()
         }
     });
 
+    QWebChannel *web_channel = new QWebChannel;
     web_channel->registerObject("i18n", i18n_proxy);
     web_channel->registerObject("imageViewer", image_viewer_proxy_);
     web_channel->registerObject("manual", manual_proxy_);
@@ -308,6 +308,8 @@ void WebWindow::initWebView()
     connect(manual_proxy_, &ManualProxy::WidgetLower, this, &WebWindow::lower);
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
             theme_proxy_, &ThemeProxy::slot_ThemeChange);
+    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
+            this, &WebWindow::slot_ThemeChanged);
 }
 
 void WebWindow::setTitleName(const QString &title_name)
@@ -348,8 +350,8 @@ void WebWindow::initShortcuts()
 
 void WebWindow::showEvent(QShowEvent *event)
 {
-    QWidget::showEvent(event);
 
+    QWidget::showEvent(event);
     if (!is_index_loaded_) {
         is_index_loaded_ = true;
         QTimer::singleShot(20, this, [this] {
@@ -577,4 +579,13 @@ void WebWindow::slot_ButtonShow()
     });
 }
 
+void WebWindow::slot_ThemeChanged()
+{
+    DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
+    if (themeType == DGuiApplicationHelper::LightType)
+        web_view_->page()->setBackgroundColor(QColor("#F8F8F8"));
+    else if (themeType == DGuiApplicationHelper::DarkType) {
+        web_view_->page()->setBackgroundColor(QColor("#282828"));
+    }
+}
 }  // namespace dman

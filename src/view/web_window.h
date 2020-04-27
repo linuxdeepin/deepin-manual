@@ -83,10 +83,10 @@ public slots:
     void setSearchKeyword(const QString &keyword);
     void slot_ButtonHide();
     void slot_ButtonShow();
+    void slot_ThemeChanged();
 
 protected:
     void closeEvent(QCloseEvent *event) override;
-
     void showEvent(QShowEvent *event) override;
 
 private:
