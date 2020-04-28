@@ -94,6 +94,7 @@ private:
     void initUI();
     void initShortcuts();
     void initDBus();
+    void setHashWordColor();
 
     QString app_name_;
     QString title_name_;
@@ -132,6 +133,7 @@ private slots:
     void onWebPageLoadFinished(bool ok);
 
     void onManualSearchByKeyword(const QString &keyword);
+    void onACtiveColorChanged(QString, QMap<QString, QVariant>, QStringList);
 };
 
 }  // namespace dman

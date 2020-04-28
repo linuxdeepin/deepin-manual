@@ -77,6 +77,7 @@ WebWindow::WebWindow(QWidget *parent)
     this->initUI();
     this->initConnections();
     this->initShortcuts();
+    this->initDBus();
 
     qApp->installEventFilter(this);
 }
@@ -175,6 +176,12 @@ void WebWindow::onManualSearchByKeyword(const QString &keyword)
     qDebug() << "WebWindow: onManualSearchByKeyword keyword:" << keyword;
 
     this->onSearchContentByKeyword(keyword);
+}
+
+void WebWindow::onACtiveColorChanged(QString, QMap<QString, QVariant>map, QStringList)
+{
+    QString strColor = map.begin().value().toString();
+    web_view_->page()->runJavaScript(QString("setHashWordColor('%1')").arg(strColor));
 }
 
 void WebWindow::initUI()
@@ -348,6 +355,30 @@ void WebWindow::initShortcuts()
     });
 }
 
+void WebWindow::initDBus()
+{
+    QDBusConnection senderConn = QDBusConnection::connectToBus(QDBusConnection::SessionBus, "Sender");
+    if (!senderConn.connect(
+                "com.deepin.daemon.Appearance",  // sender's service name
+                "/com/deepin/daemon/Appearance",    // sender's path name
+                "org.freedesktop.DBus.Properties",  // interface
+                "PropertiesChanged",                                   // sender's signal name
+                this,                                           // receiver
+                SLOT(onACtiveColorChanged(QString, QMap<QString, QVariant>, QStringList)))) {
+
+        qDebug() << "connectToBus()::connect()  PropertiesChanged failed";
+    } else {
+        qDebug() << "connectToBus()::connect()  PropertiesChanged success";
+    }
+}
+
+void WebWindow::setHashWordColor()
+{
+    QColor Color = DGuiApplicationHelper::instance()->applicationPalette().highlight().color();
+    QString strColor = Color.name(QColor::NameFormat::HexRgb);
+    web_view_->page()->runJavaScript(QString("setHashWordColor('%1')").arg(strColor));
+}
+
 void WebWindow::showEvent(QShowEvent *event)
 {
 
@@ -447,6 +478,8 @@ void WebWindow::onTitleBarEntered()
 
 void WebWindow::onWebPageLoadFinished(bool ok)
 {
+    //改变ｊs颜色
+    setHashWordColor();
     qDebug() << Q_FUNC_INFO << " onWebPageLoadFinished :" << ok;
     if (ok) {
         QString qsthemetype = "Null";

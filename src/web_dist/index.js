@@ -214,6 +214,10 @@ var App = function (_React$Component) {
         global.linktitle = title;
       };
 
+      global.setHashWordColor = function (strRgb) {
+        document.documentElement.style.setProperty('--nav-hash-word-color', strRgb); //btnlist 改这行
+      };
+
       global.setTheme = function (themeType) {
         console.log('主题切换', themeType);
         if (navigator.language.toString().indexOf('en_') != -1) {
@@ -231,7 +235,7 @@ var App = function (_React$Component) {
           document.documentElement.style.setProperty('--nav-background-color', '#282828');
           document.documentElement.style.setProperty('--nav-h2-word-color', '#C0C6D4');
           document.documentElement.style.setProperty('--nav-h3-word-color', '#C0C0C0');
-          document.documentElement.style.setProperty('--nav-hash-word-color', '#0059D2');
+          //document.documentElement.style.setProperty(`--nav-hash-word-color`, '#0059D2');     //btnlist 改这行
           document.documentElement.style.setProperty('--article-read-word-color', '#C0C6D4');
           document.documentElement.style.setProperty('--article-read-h2-word-color', '#0082FA');
           document.documentElement.style.setProperty('--article-table-text-color', '#6D7C88');
@@ -265,7 +269,7 @@ var App = function (_React$Component) {
           document.documentElement.style.setProperty('--nav-background-color', '#FFFFFF');
           document.documentElement.style.setProperty('--nav-h2-word-color', '#001A2E');
           document.documentElement.style.setProperty('--nav-h3-word-color', '#001A2E');
-          document.documentElement.style.setProperty('--nav-hash-word-color', '#0081FF');
+          // document.documentElement.style.setProperty(`--nav-hash-word-color`, '#ca0c16');   //btn list 改这一行
           document.documentElement.style.setProperty('--article-read-word-color', '#000000');
           document.documentElement.style.setProperty('--article-read-h2-word-color', '#2CA7F8');
           document.documentElement.style.setProperty('--article-table-text-color', '#606060');
