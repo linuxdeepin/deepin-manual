@@ -183,9 +183,12 @@ void WebWindow::onManualSearchByKeyword(const QString &keyword)
  * @param map
  * 改变系统活动用色时，触发此槽，
  */
-void WebWindow::onACtiveColorChanged(QString, QMap<QString, QVariant>map, QStringList)
+void WebWindow::onACtiveColorChanged(QString str, QMap<QString, QVariant>map, QStringList list)
 {
     QString strColor = map.begin().value().toString();
+    if (0 == strColor.compare("deepin-dark") || 0 == strColor.compare("deepin") || 0 == strColor.compare("deepin-auto")) {
+        return;
+    }
     web_view_->page()->runJavaScript(QString("setHashWordColor('%1')").arg(strColor));
     completion_window_->updateColor(QColor(strColor));
 }
@@ -343,7 +346,7 @@ void WebWindow::cancelTextChanged()
 
 void WebWindow::updateBtnBox()
 {
-    if (m_forwardButton->isEnabled() || m_backButton->isEnabled() ) {
+    if (m_forwardButton->isEnabled() || m_backButton->isEnabled()) {
         buttonBox->show();
     } else {
         buttonBox->hide();
