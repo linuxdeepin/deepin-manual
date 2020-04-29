@@ -60,7 +60,7 @@ class App extends React.Component {
         this.setState({ init: true });
       });
       global.openWindow = global.qtObjects.manual.openExternalLink;
-      global.qtObjects.titleBar.setBackwardButtonActive(true);
+      global.qtObjects.titleBar.setBackwardButtonActive(false);
       global.qtObjects.titleBar.setForwardButtonActive(false);
       global.qtObjects.titleBar.backwardButtonClicked.connect(() => {
         // console.log("backwardButtonClicked history.goBack()", this.context.router.history);
@@ -316,11 +316,11 @@ class App extends React.Component {
   }
   componentDidUpdate() {
     if (global.qtObjects) {
-      global.qtObjects.titleBar.setForwardButtonActive(
-        this.context.router.history.length - this.state.historyGO > 1
-      );
       global.qtObjects.titleBar.setBackwardButtonActive(
         this.state.historyGO > 0
+      );
+      global.qtObjects.titleBar.setForwardButtonActive(
+        this.context.router.history.length - this.state.historyGO > 1
       );
     }
   }

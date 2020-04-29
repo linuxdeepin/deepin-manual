@@ -197,10 +197,12 @@ void WebWindow::initUI()
     m_backButton = new DButtonBoxButton(DStyle::SP_ArrowLeave);
     m_backButton->setDisabled(true);
     m_backButton->setFixedSize(36, 36);
+    m_backButton->setEnabled(false);
 
     m_forwardButton = new DButtonBoxButton(DStyle::SP_ArrowEnter);
     m_forwardButton->setDisabled(true);
     m_forwardButton->setFixedSize(36, 36);
+    m_forwardButton->setEnabled(false);
 
     m_backButton->setShortcut(Qt::Key_Left);
     m_forwardButton->setShortcut(Qt::Key_Right);
@@ -211,6 +213,7 @@ void WebWindow::initUI()
     buttonBox = new Dtk::Widget::DButtonBox(this);
     buttonBox->setButtonList(buttonList, false);
     buttonBox->setFocusPolicy(Qt::NoFocus);
+    updateBtnBox();
 
     buttonLayout->addWidget(buttonBox);
     buttonLayout->setSpacing(0);
@@ -330,6 +333,15 @@ void WebWindow::setTitleName(const QString &title_name)
 void WebWindow::cancelTextChanged()
 {
     web_view_->setContextMenuPolicy(Qt::NoContextMenu);
+}
+
+void WebWindow::updateBtnBox()
+{
+    if (m_forwardButton->isEnabled() || m_backButton->isEnabled() ) {
+        buttonBox->show();
+    } else {
+        buttonBox->hide();
+    }
 }
 
 void WebWindow::initShortcuts()

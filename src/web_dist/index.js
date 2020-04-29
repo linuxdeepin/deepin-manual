@@ -103,7 +103,7 @@ var App = function (_React$Component) {
           _this2.setState({ init: true });
         });
         global.openWindow = global.qtObjects.manual.openExternalLink;
-        global.qtObjects.titleBar.setBackwardButtonActive(true);
+        global.qtObjects.titleBar.setBackwardButtonActive(false);
         global.qtObjects.titleBar.setForwardButtonActive(false);
         global.qtObjects.titleBar.backwardButtonClicked.connect(function () {
           // console.log("backwardButtonClicked history.goBack()", this.context.router.history);
@@ -369,8 +369,8 @@ var App = function (_React$Component) {
     key: 'componentDidUpdate',
     value: function componentDidUpdate() {
       if (global.qtObjects) {
-        global.qtObjects.titleBar.setForwardButtonActive(this.context.router.history.length - this.state.historyGO > 1);
         global.qtObjects.titleBar.setBackwardButtonActive(this.state.historyGO > 0);
+        global.qtObjects.titleBar.setForwardButtonActive(this.context.router.history.length - this.state.historyGO > 1);
       }
     }
   }, {

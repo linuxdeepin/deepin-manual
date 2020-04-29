@@ -69,6 +69,7 @@ public:
     void setTitleName(const QString &title_name);
 
     void cancelTextChanged();
+    void updateBtnBox();
 
     Dtk::Widget::DButtonBoxButton *m_backButton;
     Dtk::Widget::DButtonBoxButton *m_forwardButton;
