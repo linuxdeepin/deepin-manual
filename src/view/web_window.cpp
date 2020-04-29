@@ -289,6 +289,9 @@ void WebWindow::initWebView()
     slot_ThemeChanged();
 
     web_view_->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(web_view_, &QWebEngineView::selectionChanged, this, [this]() {
+        web_view_->setContextMenuPolicy(Qt::CustomContextMenu);
+    });
     connect(web_view_, &QWidget::customContextMenuRequested, this, [this]() {
         if (!web_view_->selectedText().isEmpty()) {
             QMenu *menu = new QMenu(this);
@@ -322,6 +325,11 @@ void WebWindow::initWebView()
 void WebWindow::setTitleName(const QString &title_name)
 {
     title_name_ = title_name;
+}
+
+void WebWindow::cancelTextChanged()
+{
+    web_view_->setContextMenuPolicy(Qt::NoContextMenu);
 }
 
 void WebWindow::initShortcuts()
