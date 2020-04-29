@@ -32,22 +32,25 @@ namespace dman {
 
 class SearchButton;
 
-class SearchCompletionWindow : public DBlurEffectWidget {
+class SearchCompletionWindow : public DBlurEffectWidget
+{
     Q_OBJECT
 public:
-    explicit SearchCompletionWindow(QWidget* parent = nullptr);
+    explicit SearchCompletionWindow(QWidget *parent = nullptr);
     ~SearchCompletionWindow() override;
+    void updateColor(const QColor &color);
 
     void autoResize();
-    const QString& keyword() const {
-    return keyword_;
+    const QString &keyword() const
+    {
+        return keyword_;
     }
 
 protected:
     void paintEvent(QPaintEvent *event) override;
 
 signals:
-    void resultClicked(const SearchAnchorResult& result);
+    void resultClicked(const SearchAnchorResult &result);
     void searchButtonClicked();
 
 public slots:
@@ -55,24 +58,24 @@ public slots:
     void goUp();
     void onEnterPressed();
 
-    void setKeyword(const QString& keyword);
-    void setSearchAnchorResult(const SearchAnchorResultList& result);
+    void setKeyword(const QString &keyword);
+    void setSearchAnchorResult(const SearchAnchorResultList &result);
 
 private:
     void initConnections();
     void initSearchCompletionListData(QList<SearchCompletionItemModel> dataList);
     void initUI();
 
-    SearchCompletionListView* result_view_ {nullptr};
-    QStandardItemModel* search_compeletion_model_ {nullptr};
-    SearchButton* search_button_ {nullptr};
+    SearchCompletionListView *result_view_ {nullptr};
+    QStandardItemModel *search_compeletion_model_ {nullptr};
+    SearchButton *search_button_ {nullptr};
     SearchAnchorResultList result_;
     QString keyword_;
 
 private slots:
     void onSearchButtonEntered();
-    void onResultListClicked(const QModelIndex& index);
-    void onResultListEntered(const QModelIndex& index);
+    void onResultListClicked(const QModelIndex &index);
+    void onResultListEntered(const QModelIndex &index);
 };
 
 }  // namespace dman

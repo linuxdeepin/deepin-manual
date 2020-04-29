@@ -178,10 +178,16 @@ void WebWindow::onManualSearchByKeyword(const QString &keyword)
     this->onSearchContentByKeyword(keyword);
 }
 
+/**
+ * @brief WebWindow::onACtiveColorChanged
+ * @param map
+ * 改变系统活动用色时，触发此槽，
+ */
 void WebWindow::onACtiveColorChanged(QString, QMap<QString, QVariant>map, QStringList)
 {
     QString strColor = map.begin().value().toString();
     web_view_->page()->runJavaScript(QString("setHashWordColor('%1')").arg(strColor));
+    completion_window_->updateColor(QColor(strColor));
 }
 
 void WebWindow::initUI()
@@ -397,6 +403,7 @@ void WebWindow::setHashWordColor()
     QColor Color = DGuiApplicationHelper::instance()->applicationPalette().highlight().color();
     QString strColor = Color.name(QColor::NameFormat::HexRgb);
     web_view_->page()->runJavaScript(QString("setHashWordColor('%1')").arg(strColor));
+    completion_window_->updateColor(Color);
 }
 
 void WebWindow::showEvent(QShowEvent *event)
