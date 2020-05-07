@@ -73,7 +73,6 @@ QStringList ManualProxy::getSystemManualList()
             appMap.insert(list.at(var).installed_time, list.at(var));
         }
         foreach (const AppInfo &info, appMap.values()) {
-            qDebug() << info.key << info.installed_time;
             const QString app_name = kAppNameMap.value(info.key, info.key);
             if ((dir_entry.indexOf(app_name) != -1) && app_list_.indexOf(app_name) == -1) {
                 app_list_.append(app_name);

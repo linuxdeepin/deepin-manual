@@ -183,14 +183,15 @@ void WebWindow::onManualSearchByKeyword(const QString &keyword)
  * @param map
  * 改变系统活动用色时，触发此槽，
  */
-void WebWindow::onACtiveColorChanged(QString str, QMap<QString, QVariant>map, QStringList list)
+void WebWindow::onACtiveColorChanged(QString, QMap<QString, QVariant>map, QStringList)
 {
+
     QString strColor = map.begin().value().toString();
-    if (0 == strColor.compare("deepin-dark") || 0 == strColor.compare("deepin") || 0 == strColor.compare("deepin-auto")) {
-        return;
+    QString strKey = map.begin().key();
+    if (0 == strKey.compare("QtActiveColor")) {
+        web_view_->page()->runJavaScript(QString("setHashWordColor('%1')").arg(strColor));
+        completion_window_->updateColor(QColor(strColor));
     }
-    web_view_->page()->runJavaScript(QString("setHashWordColor('%1')").arg(strColor));
-    completion_window_->updateColor(QColor(strColor));
 }
 
 void WebWindow::initUI()
@@ -299,6 +300,7 @@ void WebWindow::initWebView()
     web_view_->hide();
     web_view_->setAcceptDrops(false);
     slot_ThemeChanged();
+
 
     web_view_->setContextMenuPolicy(Qt::CustomContextMenu);
     connect(web_view_, &QWebEngineView::selectionChanged, this, [this]() {
