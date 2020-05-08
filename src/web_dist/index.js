@@ -1086,7 +1086,8 @@ var Main = function (_Component) {
     var _this = _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this, props));
 
     _this.state = {
-      init: false
+      init: false,
+      bTest: true
     };
     var _this$props$match$par = _this.props.match.params,
         file = _this$props$match$par.file,
@@ -1101,6 +1102,7 @@ var Main = function (_Component) {
     value: function init(file, hash) {
       var _this2 = this;
 
+      console.log("main init" + file);
       if (file.indexOf('/') == -1) {
         file = global.path + '/' + file + '/' + global.lang + '/index.md';
       }
@@ -1115,6 +1117,8 @@ var Main = function (_Component) {
           init: true,
           hash: hash ? hash : hlist[0].id
         });
+
+        console.log("main init linktitle" + global.linktitle);
 
         if (global.linktitle != '') {
           var nHash = '';
@@ -1136,21 +1140,27 @@ var Main = function (_Component) {
     value: function setHash(hash) {
       console.log("main setHash:" + hash);
       if (global.isLinkClicked) {
+        console.log("main --setHash");
         global.hash = hash;
         global.oldHash = hash;
         global.isLinkClicked = false;
       }
+      console.log("main*********setHash");
       this.setState({ hash: hash });
     }
   }, {
     key: 'setScrollTitle',
     value: function setScrollTitle(hash) {
-      console.log("main title setHash:" + hash);
-      global.hash = hash;
-      global.oldHash = hash;
-      global.isMouseClickNav = true;
-      global.isMouseScrollArticle = false;
-      this.setState({ hash: hash });
+      var _this3 = this;
+
+      // console.log("main title setHash:" + hash);
+      setTimeout(function () {
+        global.hash = hash;
+        global.oldHash = hash;
+        global.isMouseClickNav = true;
+        global.isMouseScrollArticle = false;
+        _this3.setState({ hash: hash });
+      }, 400);
     }
   }, {
     key: 'setScroll',
@@ -1163,11 +1173,22 @@ var Main = function (_Component) {
   }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
+      console.log("main componentWillReceivePropss");
       var _nextProps$match$para = nextProps.match.params,
           file = _nextProps$match$para.file,
           hash = _nextProps$match$para.hash;
 
       this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null);
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      global.hash = ' ';
+      global.oldHash = ' ';
+      global.linktitle = '';
+      global.isMouseClickNav = false;
+      global.isMouseScrollArticle = false;
+      global.isLinkClicked = false;
     }
   }, {
     key: 'render',
