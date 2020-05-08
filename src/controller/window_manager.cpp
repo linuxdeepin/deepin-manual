@@ -74,7 +74,7 @@ void WindowManager::initDBus()
     }
 
     if (!dbusConn.registerService(dman::kManualSearchService + QString(WM_SENDER_NAME)) ||
-        !dbusConn.registerObject(dman::kManualSearchIface + QString(WM_SENDER_NAME), this)) {
+            !dbusConn.registerObject(dman::kManualSearchIface + QString(WM_SENDER_NAME), this)) {
         qCritical() << WM_SENDER_NAME << " failed to register dbus service!";
 
         return;
@@ -89,8 +89,8 @@ void WindowManager::SendMsg(const QString &msg)
         QDBusConnection::connectToBus(QDBusConnection::SessionBus, WM_SENDER_NAME);
     qDebug() << "start send keyword:" << QString::number(qApp->applicationPid());
     QDBusMessage dbusMsg = QDBusMessage::createSignal(
-        dman::kManualSearchIface + QString(WM_SENDER_NAME),
-        dman::kManualSearchService + QString(WM_SENDER_NAME), "SendWinInfo");
+                               dman::kManualSearchIface + QString(WM_SENDER_NAME),
+                               dman::kManualSearchService + QString(WM_SENDER_NAME), "SendWinInfo");
 
     dbusMsg << QString::number(qApp->applicationPid()) + "|" + msg;
 
@@ -172,6 +172,7 @@ void WindowManager::initWebWindow()
     WebWindow *window = new WebWindow;
     connect(window, &WebWindow::closed, this, &WindowManager::onWindowClosed);
     connect(window, &WebWindow::shown, this, &WindowManager::onWindowShown);
+    windows_.insert(curr_app_name_, window);
     moveWindow(window);
     window->show();
     window->activateWindow();
@@ -197,11 +198,11 @@ void WindowManager::activeExistingWindow()
 void WindowManager::activeOrInitWindow(const QString &app_name)
 {
     qDebug() << Q_FUNC_INFO << app_name;
+    QMutexLocker locker(&_mutex);
     if (windows_.contains(app_name)) {
         activeExistingWindow();
         return;
     }
-
     initWebWindow();
 }
 
@@ -255,7 +256,7 @@ QPoint WindowManager::newWindowPosition()
         last_new_window_pos_.setX(last_new_window_pos_.x() + kWinOffset);
         last_new_window_pos_.setY(last_new_window_pos_.y() + kWinOffset);
         if ((last_new_window_pos_.x() + kWinWidth >= geometry.width()) ||
-            (last_new_window_pos_.y() + kWinHeight >= geometry.height())) {
+                (last_new_window_pos_.y() + kWinHeight >= geometry.height())) {
             last_new_window_pos_.setX(0);
             last_new_window_pos_.setY(0);
         }
@@ -273,8 +274,8 @@ void WindowManager::onWindowClosed(const QString &app_name)
 void WindowManager::onWindowShown(WebWindow *window)
 {
     // Add a placeholder record.
-    windows_.insert(curr_app_name_, nullptr);
-    windows_.insert(curr_app_name_, window);
+//    windows_.insert(curr_app_name_, nullptr);
+//    windows_.insert(curr_app_name_, window);
     search_manager_ = currSearchManager();
     window->setSearchManager(search_manager_);
     window->setAppName(curr_app_name_);

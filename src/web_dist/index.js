@@ -103,7 +103,7 @@ var App = function (_React$Component) {
           _this2.setState({ init: true });
         });
         global.openWindow = global.qtObjects.manual.openExternalLink;
-        global.qtObjects.titleBar.setBackwardButtonActive(true);
+        global.qtObjects.titleBar.setBackwardButtonActive(false);
         global.qtObjects.titleBar.setForwardButtonActive(false);
         global.qtObjects.titleBar.backwardButtonClicked.connect(function () {
           // console.log("backwardButtonClicked history.goBack()", this.context.router.history);
@@ -215,6 +215,14 @@ var App = function (_React$Component) {
         global.linktitle = title;
       };
 
+      global.setHashWordColor = function (strRgb) {
+        document.documentElement.style.setProperty('--nav-hash-word-color', strRgb); //btnlist 改这行
+      };
+
+      global.setWordFontfamily = function (strFontFamily) {
+        document.documentElement.style.setProperty('--nav-world-font-family', strFontFamily); //btnlist 改这行
+      };
+
       global.setTheme = function (themeType) {
         console.log('主题切换', themeType);
         if (navigator.language.toString().indexOf('en_') != -1) {
@@ -232,7 +240,7 @@ var App = function (_React$Component) {
           document.documentElement.style.setProperty('--nav-background-color', '#282828');
           document.documentElement.style.setProperty('--nav-h2-word-color', '#C0C6D4');
           document.documentElement.style.setProperty('--nav-h3-word-color', '#C0C0C0');
-          document.documentElement.style.setProperty('--nav-hash-word-color', '#0059D2');
+          //document.documentElement.style.setProperty(`--nav-hash-word-color`, '#0059D2');     //btnlist 改这行
           document.documentElement.style.setProperty('--article-read-word-color', '#C0C6D4');
           document.documentElement.style.setProperty('--article-read-h2-word-color', '#0082FA');
           document.documentElement.style.setProperty('--article-table-text-color', '#6D7C88');
@@ -266,7 +274,7 @@ var App = function (_React$Component) {
           document.documentElement.style.setProperty('--nav-background-color', '#FFFFFF');
           document.documentElement.style.setProperty('--nav-h2-word-color', '#001A2E');
           document.documentElement.style.setProperty('--nav-h3-word-color', '#001A2E');
-          document.documentElement.style.setProperty('--nav-hash-word-color', '#0081FF');
+          // document.documentElement.style.setProperty(`--nav-hash-word-color`, '#ca0c16');   //btn list 改这一行
           document.documentElement.style.setProperty('--article-read-word-color', '#000000');
           document.documentElement.style.setProperty('--article-read-h2-word-color', '#2CA7F8');
           document.documentElement.style.setProperty('--article-table-text-color', '#606060');
@@ -366,8 +374,8 @@ var App = function (_React$Component) {
     key: 'componentDidUpdate',
     value: function componentDidUpdate() {
       if (global.qtObjects) {
-        global.qtObjects.titleBar.setForwardButtonActive(this.context.router.history.length - this.state.historyGO > 1);
         global.qtObjects.titleBar.setBackwardButtonActive(this.state.historyGO > 0);
+        global.qtObjects.titleBar.setForwardButtonActive(this.context.router.history.length - this.state.historyGO > 1);
       }
     }
   }, {
@@ -970,12 +978,19 @@ var Index = function (_Component2) {
       var sysSoft = ['dde'].filter(function (appName) {
         return _this4.state.appList.indexOf(appName) != -1;
       });
-      var appSoft = this.state.sequence.filter(function (appName) {
-        return _this4.state.appList.indexOf(appName) != -1;
-      });
-      var otherSoft = this.state.appList.filter(function (appName) {
-        return _this4.state.sequence.indexOf(appName) == -1 && sysSoft.indexOf(appName) == -1;
-      });
+      // let appSoft = this.state.sequence.filter(
+      //   appName => this.state.appList.indexOf(appName) != -1
+      // );
+      // let otherSoft = this.state.appList.filter(
+      //   appName => this.state.sequence.indexOf(appName) == -1 &&
+      //     sysSoft.indexOf(appName) == -1
+      // );
+
+      var appSoft = this.state.appList;
+      var index = appSoft.indexOf("dde");
+      appSoft.splice(index, 1);
+      var otherSoft = [""];
+
       return _react2.default.createElement(
         _scrollbar2.default,
         null,
@@ -1076,7 +1091,8 @@ var Main = function (_Component) {
     var _this = _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this, props));
 
     _this.state = {
-      init: false
+      init: false,
+      bTest: true
     };
     var _this$props$match$par = _this.props.match.params,
         file = _this$props$match$par.file,
@@ -1091,6 +1107,7 @@ var Main = function (_Component) {
     value: function init(file, hash) {
       var _this2 = this;
 
+      console.log("main init" + file);
       if (file.indexOf('/') == -1) {
         file = global.path + '/' + file + '/' + global.lang + '/index.md';
       }
@@ -1105,6 +1122,8 @@ var Main = function (_Component) {
           init: true,
           hash: hash ? hash : hlist[0].id
         });
+
+        console.log("main init linktitle" + global.linktitle);
 
         if (global.linktitle != '') {
           var nHash = '';
@@ -1126,21 +1145,27 @@ var Main = function (_Component) {
     value: function setHash(hash) {
       console.log("main setHash:" + hash);
       if (global.isLinkClicked) {
+        console.log("main --setHash");
         global.hash = hash;
         global.oldHash = hash;
         global.isLinkClicked = false;
       }
+      console.log("main*********setHash");
       this.setState({ hash: hash });
     }
   }, {
     key: 'setScrollTitle',
     value: function setScrollTitle(hash) {
-      console.log("main title setHash:" + hash);
-      global.hash = hash;
-      global.oldHash = hash;
-      global.isMouseClickNav = true;
-      global.isMouseScrollArticle = false;
-      this.setState({ hash: hash });
+      var _this3 = this;
+
+      // console.log("main title setHash:" + hash);
+      setTimeout(function () {
+        global.hash = hash;
+        global.oldHash = hash;
+        global.isMouseClickNav = true;
+        global.isMouseScrollArticle = false;
+        _this3.setState({ hash: hash });
+      }, 400);
     }
   }, {
     key: 'setScroll',
@@ -1153,11 +1178,22 @@ var Main = function (_Component) {
   }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
+      console.log("main componentWillReceivePropss");
       var _nextProps$match$para = nextProps.match.params,
           file = _nextProps$match$para.file,
           hash = _nextProps$match$para.hash;
 
       this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null);
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      global.hash = ' ';
+      global.oldHash = ' ';
+      global.linktitle = '';
+      global.isMouseClickNav = false;
+      global.isMouseScrollArticle = false;
+      global.isLinkClicked = false;
     }
   }, {
     key: 'render',

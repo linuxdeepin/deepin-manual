@@ -120,14 +120,19 @@ export default class Index extends Component {
     let sysSoft = ['dde'].filter(
       appName => this.state.appList.indexOf(appName) != -1
     );
-    let appSoft = this.state.sequence.filter(
-      appName => this.state.appList.indexOf(appName) != -1
-    );
-    let otherSoft = this.state.appList.filter(
-      appName =>
-        this.state.sequence.indexOf(appName) == -1 &&
-        sysSoft.indexOf(appName) == -1
-    );
+    // let appSoft = this.state.sequence.filter(
+    //   appName => this.state.appList.indexOf(appName) != -1
+    // );
+    // let otherSoft = this.state.appList.filter(
+    //   appName => this.state.sequence.indexOf(appName) == -1 &&
+    //     sysSoft.indexOf(appName) == -1
+    // );
+
+    let appSoft = this.state.appList;
+    var index = appSoft.indexOf("dde");
+    appSoft.splice(index, 1);
+    let otherSoft = [""];
+
     return (
       <Scrollbar>
         <div id="index" tabIndex="-1">

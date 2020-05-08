@@ -30,12 +30,14 @@ namespace dman {
 /**
  * Overloading of push button which emits entered() signal on mouse hover.
  */
-class SearchButton : public DBlurEffectWidget {
+class SearchButton : public DBlurEffectWidget
+{
     Q_OBJECT
 public:
-    explicit SearchButton(QWidget* parent = nullptr);
+    explicit SearchButton(QWidget *parent = nullptr);
     ~SearchButton() override;
 
+    void updateColor(const QColor &color);
     void setText(QString title);
     void setChecked(bool bChecked);
     bool isChecked();
@@ -48,7 +50,7 @@ private slots:
     void onThemeChange(DGuiApplicationHelper::ColorType themeType);
 
 protected:
-    void enterEvent(QEvent* event) override;
+    void enterEvent(QEvent *event) override;
     void leaveEvent(QEvent *event) override;
     void paintEvent(QPaintEvent *event) override;
     void mousePressEvent(QMouseEvent *event) override;
@@ -57,6 +59,7 @@ protected:
 private:
     DLabel *m_textLabel;
     DIconButton *iconBtn;
+    QColor myColor;
 
     bool m_bHover;
 };
