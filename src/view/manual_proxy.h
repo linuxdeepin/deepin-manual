@@ -23,6 +23,16 @@
 #include <QList>
 #include <QObject>
 
+#include <QDBusConnection>
+#include <QDesktopServices>
+
+#include "dbus/dbus_consts.h"
+#include "dbus/launcher_interface.h"
+
+#include <QtAlgorithms>
+#include <qalgorithms.h>
+#include <QMultiMap>
+
 class LauncherInterface;
 
 namespace dman {
@@ -31,9 +41,8 @@ class ManualProxy : public QObject
 {
     Q_OBJECT
 public:
-    explicit ManualProxy(QObject* parent = nullptr);
+    explicit ManualProxy(QObject *parent = nullptr);
     ~ManualProxy() override;
-
 signals:
     void WidgetLower();
 public slots:
@@ -43,10 +52,12 @@ public slots:
         int nType = Dtk::Core::DSysInfo::deepinType();
         if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
             strMANUAL_DIR += "/server";
-            //            strMANUAL_DIR += "/professional";
         } else {
-            //            strMANUAL_DIR += "/server";
-            strMANUAL_DIR += "/professional";
+            if (Dtk::Core::DSysInfo::isCommunityEdition()) {
+                strMANUAL_DIR += "/community";
+            } else {
+                strMANUAL_DIR += "/professional";
+            }
         }
         return strMANUAL_DIR;
     }
@@ -57,10 +68,10 @@ public slots:
      * Open link with xdg-open.
      * @param url
      */
-    void openExternalLink(const QString& url);
+    void openExternalLink(const QString &url);
 
 private:
-    LauncherInterface* launcher_interface_ = nullptr;
+    LauncherInterface *launcher_interface_ = nullptr;
     QStringList app_list_;
 };
 

@@ -27,7 +27,8 @@
       left: 50%;
       transform: translateX(-50%);
       background-color: transparent;
-      font-family: SourceHanSansSC-Normal;
+      // font-family: SourceHanSansSC-Normal;
+      font-family: var(--nav-world-font-family);
       margin: 0px;
       padding: 0 8.8%;
       font-size: 0.9rem;

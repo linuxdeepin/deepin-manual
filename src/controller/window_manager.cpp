@@ -203,7 +203,6 @@ void WindowManager::activeOrInitWindow(const QString &app_name)
         activeExistingWindow();
         return;
     }
-
     initWebWindow();
 }
 
