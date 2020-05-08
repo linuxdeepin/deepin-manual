@@ -218,6 +218,10 @@ var App = function (_React$Component) {
         document.documentElement.style.setProperty('--nav-hash-word-color', strRgb); //btnlist 改这行
       };
 
+      global.setWordFontfamily = function (strFontFamily) {
+        document.documentElement.style.setProperty('--nav-world-font-family', strFontFamily); //btnlist 改这行
+      };
+
       global.setTheme = function (themeType) {
         console.log('主题切换', themeType);
         if (navigator.language.toString().indexOf('en_') != -1) {

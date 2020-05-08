@@ -186,11 +186,13 @@ void WebWindow::onManualSearchByKeyword(const QString &keyword)
 void WebWindow::onACtiveColorChanged(QString, QMap<QString, QVariant>map, QStringList)
 {
 
-    QString strColor = map.begin().value().toString();
+    QString strValue = map.begin().value().toString();
     QString strKey = map.begin().key();
     if (0 == strKey.compare("QtActiveColor")) {
-        web_view_->page()->runJavaScript(QString("setHashWordColor('%1')").arg(strColor));
-        completion_window_->updateColor(QColor(strColor));
+        web_view_->page()->runJavaScript(QString("setHashWordColor('%1')").arg(strValue));
+        completion_window_->updateColor(QColor(strValue));
+    } else if (0 == strKey.compare("StandardFont")) {
+        web_view_->page()->runJavaScript(QString("setWordFontfamily('%1')").arg(strValue));
     }
 }
 

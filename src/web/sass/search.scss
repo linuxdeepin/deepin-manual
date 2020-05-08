@@ -15,7 +15,8 @@
     -webkit-box-align: center;
     text-align: center;
     #NoResult {
-      font-family: SourceHanSansSC-Normal;
+      // font-family: SourceHanSansSC-Normal;
+      font-family: var(--nav-world-font-family);
       margin-top: -68px;
       overflow-x: hidden;
       white-space: nowrap;
@@ -25,13 +26,15 @@
       margin-bottom: 11px;
     }
     #WikiSearch {
-      font-family: SourceHanSansSC-Normal;
+      // font-family: SourceHanSansSC-Normal;
+      font-family: var(--nav-world-font-family);
       font-size: 0.9rem;
       color: var(--search-WikiSearch-color);
       margin-bottom: 26px;
     }
     .button {
-      font-family: SourceHanSansSC-Medium;
+      // font-family: SourceHanSansSC-Medium;
+      font-family: var(--nav-world-font-family);
       font-weight: 500;
       font-size: 1.1rem;
       padding: 6px 42px 8px;
@@ -58,7 +61,8 @@
   .items {
     padding: 0px 20px 0px 40px;
     color: var(--search-items-word-color);
-    font-family: SourceHanSansSC-Bold;
+    // font-family: SourceHanSansSC-Bold;
+    font-family: var(--nav-world-font-family);
     margin: 20px 0px 0px -20px;
     .itemsTitle {
       img {
@@ -73,7 +77,8 @@
         font-weight: bold;
       }
       .resultnum {
-        font-family: SourceHanSansSC-Normal;
+        // font-family: SourceHanSansSC-Normal;
+        font-family: var(--nav-world-font-family);
         font-size: 0.9rem;
         line-height: 1.4rem;
         float: right;
@@ -142,7 +147,8 @@
       .context {
         width: 98%;
         margin: 7px 0px 10px 15px;
-        font-family: SourceHanSansSC-Normal;
+        // font-family: SourceHanSansSC-Normal;
+        font-family: var(--nav-world-font-family);
         color: var(--search-context-word-color);
         overflow: hidden;
         display: -webkit-box;
