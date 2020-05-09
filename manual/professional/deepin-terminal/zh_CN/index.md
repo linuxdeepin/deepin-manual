@@ -32,7 +32,7 @@
 
 在终端界面上，按下键盘上的 ![Ctrl](icon/Ctrl.svg) + ![Shift](icon/Shift.svg) + ![QM](icon/QM.svg) 组合键来查看快捷键，熟练的使用快捷键，将大大提升您的操作效率。
 
- ![1|hotkey](jpg/hotkeys.png)
+ ![1|hotkey](jpg/hotkey.png)
 
 ## 基本操作
 

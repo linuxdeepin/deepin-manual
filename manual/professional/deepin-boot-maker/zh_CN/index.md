@@ -6,6 +6,25 @@
 
 ![0|boot-maker](jpg/select-file.png)
 
+## 使用入门
+
+通过以下方式运行或关闭启动盘制作工具，或者创建启动盘制作工具的快捷方式。
+
+### 运行启动盘制作工具
+
+1. 单击任务栏上的启动器 ![deepin-launcher](icon/deepin-launcher.svg)，进入启动器界面。
+2. 上下滚动鼠标滚轮浏览或通过搜索，找到启动盘制作工具![deepin-boot-maker](icon/deepin-boot-maker.svg) ，单击运行。
+3. 右键单击 ![deepin-boot-maker](icon/deepin-boot-maker.svg)  ，您可以：
+ - 单击 **发送到桌面**，在桌面创建快捷方式。
+ - 单击 **发送到任务栏**，将应用程序固定到任务栏。
+ - 单击 **开机自动启动**，将应用程序添加到开机启动项，在电脑开机时自动运行该应用。
+
+
+### 关闭启动盘制作工具
+
+   - 在启动盘制作工具窗口，单击 ![close](icon/close.svg) ，退出启动盘制作工具。
+   - 在任务栏右键单击 ![deepin-boot-maker](icon/deepin-boot-maker.svg) ，选择 **关闭所有** 来退出启动盘制作工具。
+   - 在启动盘制作工具界面，单击 ![icon_menu](icon/icon_menu.svg) ，选择 **退出** 来退出启动盘制作工具。
 ## 操作介绍
 
 ### 准备工作
@@ -13,7 +32,7 @@
 1. 到UOS官网下载最新的系统镜像文件。
 2. 准备一个8GB的空白U盘。
 3. 运行启动盘制作工具。
-   - 系统中已经默认集成了启动盘制作工具，可以直接在启动器中点击使用。
+   - UOS系统中已经默认集成了启动盘制作工具，可以直接在启动器中找到并使用。
    - windows系统可以从光盘镜像中解压 xxx-boot-maker.exe 到电脑中使用。
    - 您也可以访问UOS官网下载指定版本的启动盘制作工具来使用。
 
@@ -26,7 +45,7 @@
 
 > ![notes](icon/notes.svg)：请提前校验镜像文件的MD5值，确认和官网的MD5值一致后使用。非官方下载的镜像文件或者文件下载不完成可能会导致制作失败。
 
-![0|boot-maker](jpg/select-file.png)
+![0|boot-maker](jpg/select-iso.png)
 
 ### 选择制作U盘
 
@@ -64,6 +83,7 @@
 - 未知错误
 
 ![boot-maker](jpg/failed.png)
+
 ![boot-maker](jpg/failed-02.png)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

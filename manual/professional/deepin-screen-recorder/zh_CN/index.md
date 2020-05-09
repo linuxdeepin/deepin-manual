@@ -1,36 +1,35 @@
-# 截图录屏|../common/deepin-screenshot.svg|
+# 截屏工具|../common/deepin-screen-recorder.svg|
 
 ## 概述
 
-录屏是一款集截图和录制屏幕于一体的工具。在截图或者录制屏幕时，既可以自动选定窗口，也可手动选择区域。
+截屏工具是一款小巧实用的截图小工具。在截图时，既可以自动选定窗口，也可手动选择区域。
 
-![partarea](jpg/partarea.jpg)
+![partarea](jpg/partarea.png)
 
 
 
 ## 使用入门
 
-通过以下方式运行、关闭截图录屏，同时还可以创建快捷方式。
+通过以下方式运行、关闭截屏工具，同时还可以创建快捷方式。
 
-### 运行截图录屏
+### 运行截屏工具
 
 1. 点击桌面底部的 ![deepin-launcher](icon/deepin-launcher.svg) ，进入启动器界面。
-2. 上下滚动鼠标滚轮浏览或通过搜索，找到截图录屏 ![deepin-screenshot](icon/deepin-screenshot.svg) 点击运行。
+2. 上下滚动鼠标滚轮浏览或通过搜索，找到截屏工具 ![deepin-screenshot](icon/deepin-screenshot.svg) 点击运行。
 3. 右键单击 ![deepin-screenshot](icon/deepin-screenshot.svg) ，您可以：
 
    - 点击 **发送到桌面**，在桌面创建快捷方式。
    - 点击 **发送到任务栏**，将应用程序固定到任务栏。
    - 点击 **开机自动启动**，将应用程序添加到开机启动项，在电脑开机时自动运行该应用。
 
-> ![notes](icon/notes.svg)：如果录屏已经默认固定在任务栏上，您也可以点击任务栏上的 ![deepin-screenshot](icon/deepin-screenshot.svg) 来运行。
+> ![notes](icon/notes.svg)：如果截屏工具已经默认固定在任务栏上，您也可以点击任务栏上的 ![deepin-screenshot](icon/deepin-screenshot.svg) 来运行。
 
-### 关闭截图录屏
+### 关闭截屏工具
 
-- 截图录屏会在截图结束后自动退出。
-- 截图录屏会在录制结束后自动退出。
-- 在截图录屏界面，点击![close](icon/close-normal.svg) ，退出录屏。
-- 按下键盘上的 Ctrl + S 组合键 或 esc 键。
-- 在截图录屏界面，点击鼠标右键，选择 **保存** 或 **退出**。
+- 截屏工具会在截图结束后自动退出。
+- 在截屏工具界面，点击![close](icon/close-normal.svg) ，退出截图。
+- 按下键盘上的 Ctrl + S 组合键 或 Esc 键。
+- 在截屏工具界面，点击鼠标右键，选择 **保存** 或 **退出**。
 
 
 
@@ -64,7 +63,7 @@
 
 选择全屏是识别当前显示器的整个屏幕。
 
-![1|全屏截图](jpg/fullscreen.jpg)
+![1|全屏截图](jpg/fullscreen.png)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -77,14 +76,14 @@
 
 您也可以直接操作以下步骤来进行全屏截图：
 
-- 如果您已经将录屏截图固定到任务栏，右键单击任务栏上的![deepin-screenshot](icon/deepin-screenshot.svg)  ，然后选择截取全屏 。
+- 如果您已经将截屏工具固定到任务栏，右键单击任务栏上的![deepin-screenshot](icon/deepin-screenshot.svg)  ，然后选择截取全屏 。
 - 按下键盘上的 ![print](icon/Print.svg) 键，实现全屏截图。
 
 ##### 选择程序窗口
 
 选择程序窗口是自动识别当前的应用窗口。
 
-![1|窗口截图](jpg/window.jpg)
+![1|窗口截图](jpg/window.png)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -97,7 +96,7 @@
 
 选择自选区域是通过拖动鼠标，自由选择截取的范围。
 
-![1|区域截图](jpg/partarea.jpg)
+![1|partarea](jpg/partarea.png)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -126,7 +125,7 @@
 
 #### 编辑截图
 
-录屏截图自带的图片编辑功能，包括图形标记、文字批注等，完全可以满足您的日常图片处理需求。您还可以给图片打上马赛克，保护您的隐私。
+截屏工具自带的图片编辑功能，包括图形标记、文字批注等，完全可以满足您的日常图片处理需求。您还可以给图片打上马赛克，保护您的隐私。
 
 您可以通过执行以下操作之一来编辑截图：
 
@@ -140,12 +139,12 @@
 
 ##### 工具栏说明
 
-在截图过程中，您可以点击工具栏及其对应属性栏上的各个图标以完成各项操作。运行录屏截图，通过鼠标选中截图区域后，工具栏会自动出现在截图的下方。
+在截图过程中，您可以点击工具栏及其对应属性栏上的各个图标以完成各项操作。运行截屏工具，通过鼠标选中截图区域后，工具栏会自动出现在截图的下方。
 
-> ![attention](icon/attention.svg)：如果您已经对工具栏和属性栏中，如线条粗细、字体大小等进行了设置，录屏截图会记住您的选择。当您下次启动录屏截图后，将默认使用该设置，您也可以重新进行选择。
+> ![attention](icon/attention.svg)：如果您已经对工具栏和属性栏中，如线条粗细、字体大小等进行了设置，截屏工具会记住您的选择。当您下次启动截屏工具后，将默认使用该设置，您也可以重新进行选择。
 
 
-![0|截图工具栏](jpg/capture-bar.png)
+![0|截屏工具栏](jpg/capture-bar.png)
 
 <table class="block1">
     <caption>图标说明</caption>
@@ -176,7 +175,7 @@
 
 ##### 矩形工具
 
-![1|矩形工具](jpg/recttool.jpg)
+![1|矩形工具](jpg/recttool.png)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -186,13 +185,13 @@
 4. 按住鼠标左键不放，拖动鼠标以完成图形区域的绘制。
 5. 如果截图中包含了个人隐私信息，请点击工具栏展开面板中的 ![模糊](icon/vague_normal.svg) 或 ![马赛克](icon/Mosaic_normal.svg) 来涂抹。
 
-![2|blurtool](jpg/blurtool.jpg)
-![2|mosaictool](jpg/mosaictool.jpg)
+![2|blurtool](jpg/blurtool.png)
+![2|mosaictool](jpg/mosaictool.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
 ##### 椭圆工具
-![1|椭圆工具](jpg/ellipsetool.jpg)
+![1|椭圆工具](jpg/ellipsetool.png)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -205,7 +204,7 @@
 
 ##### 直线和箭头工具
 
-![1|线条工具](jpg/line.jpg)
+![1|线条工具](jpg/line.png)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -218,7 +217,7 @@
 
 ##### 画笔工具
 
-![1|pencil](jpg/pencil.jpg)
+![1|pencil](jpg/pencil.png)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -237,7 +236,7 @@
 #### 修改图形
 如果您在截图中绘制了其他的图形，您可以对绘制的图形进行修改和移动。
 
-![1|修改图形](jpg/changetool.jpg)
+![1|修改图形](jpg/changetool.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 ##### 移动图形
@@ -261,7 +260,7 @@
 
 对截取的图片进行文字补充和说明，帮助他人更清楚的了解截取的图片。
 
-![0|文本框](jpg/text.jpg)
+![0|文本框](jpg/text.png)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -291,7 +290,7 @@
 
 
 #### 设置标记颜色
-录屏截图总共提供了4种颜色供您选择，您可以选择不同的颜色来进行不同的图形标记。
+截屏工具总共提供了4种颜色供您选择，您可以选择不同的颜色来进行不同的图形标记。
 
 1. 在截图区域出现的工具栏中，选择一种工具。
 2. 在工具栏展开的属性面板中，点击![颜色](icon/red.svg)或![颜色](icon/yellow.svg)或![颜色](icon/blue.svg)或![颜色](icon/green.svg)，选择一种颜色。
@@ -302,10 +301,10 @@
 
 当截图保存成功之后，您可以在桌面右上角看到提示信息，点击 **查看**，可打开截图所在的文件夹。
 
-开启录屏截图，并选定截图区域后，您可以通过执行以下操作之一来保存截取的图片：
+开启截屏工具，并选定截图区域后，您可以通过执行以下操作之一来保存截取的图片：
 
 - 双击鼠标左键来保存。
-- 点击截图工具栏中的“截图”按钮。
+- 点击截屏工具栏中的“截图”按钮。
 - 按下键盘上的 ![ctrl](icon/Ctrl.svg)+![S](icon/S.svg) 组合键来保存。
 - 在截取的图片中，点击鼠标右键，选择 **保存** 完成保存操作。
 
@@ -324,77 +323,3 @@
 - 选择 **复制到剪贴板**，将图片复制到剪切板。
 
 
-### 录屏
-
-#### 工具栏说明
-
-![0|工具栏](jpg/recorder-bar.png)
-
-<table class="block1">
-    <caption>图标说明</caption>
-    <tbody>
-        <tr>
-            <td><img src="icon/microphone_normal.svg" alt="录制声音" class="inline" /></td>
-            <td>麦克风</td>
-            <td class="blank"></td>
-            <td><img src="icon/audio-frequency_normal.svg" alt="录制声音" class="inline" /></td>
-            <td>系统音频</td>
-        <td class="blank"></td>
-            <td><img src="icon/key_mormal.svg" alt="按键" class="inline" /></td>
-            <td>显示按键</td>
-        </tr>
-          <tr>
-            <td><img src="icon/webcam_normal.svg" alt="摄像头" class="inline" /></td>
-            <td>开启摄像头</td>
-            <td class="blank"></td>
-            <td><img src="icon/mouse_mormal.svg" alt="鼠标点击" class="inline" /></td>
-            <td>显示鼠标点击</td>
-            <td class="blank"></td>
-            <td><img src="icon/close-normal.svg" alt="关闭" class="inline" /></td>
-            <td>退出录屏</td>
-        </tr>
-    </tbody>
-</table>
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-#### 选择录制区域
-
-录屏启动后直接开始选择录制区域，可以选择全屏、自动识别窗口和自定义窗口。
-
-- 全屏和自动识别窗口：在选择录制区域时，随着鼠标移动，录屏会自动识别桌面上的窗口，被识别的窗口上会出现一个矩形选择框，单击鼠标就可以选中当前窗口录制。由于整个桌面也可以算作一个窗口，所以当鼠标位于桌面背景上的时候，应用会识别成全屏录制。
-- 自定义窗口：在选择录制区域时，可以使用鼠标圈选任意区域，被圈选的区域上显示矩形选择框，此时您还可以拖动选择框内部和边缘来调整选择框的位置和大小，然后再单击鼠标选择当前窗口录制。
-
-#### 设置录制声音/按键/摄像头/鼠标点击
-
-在录制视频的工具栏中，您可以根据需要设置声音、按键、摄像头等为录制视频做准备。
-
-- 录制声音：包含麦克风、内置音频，默认开启。
-- 按键：点击显示按键，录屏时显示操作按键，最多支持5个最近操作按键同时显示。再次点击可以取消按键显示。
-- 摄像头：点击后，显示摄像头窗口在录制画面，可拖拽窗口边角位置调整窗口大小/调整位置，再次点击可以取消开启，无法显示图像则展示为黑屏。
-- 鼠标点击：点击后，录屏时显示鼠标、触屏；再次点击可以取消显示。
-
-> ![attention](icon/attention.svg)：请先检测接入设备是否支持声音录制、摄像头功能。
-- 当接入设备支持声音录制、摄像头功能时，用户可以设置相应的操作。
-- 当接入设备不支持声音录制、摄像头功能时，按钮为置灰状态，用户不能设置相应的操作。
-
-#### 设置录制格式和帧率
-
-选择好录制区域后，在录屏界面的工具栏中，点击 **选项** 的下拉选项，您可以录制 **GIF** 和 **MP4** 格式的视频，还可以设置视频帧率。
-
-> ![notes](icon/notes.svg)：如果默认的录屏设置不是您想要的，请更改设置之后再启动视频录制。
-
-#### 录制视频
-
-录屏可以自定义录制区域，还可以选择录制格式，基本操作步骤如下：
-
-1. 启动录屏后，点击 ![ctrl](icon/screencap-normal.svg)**录屏** 开始选择录制区域。
-2. 选择录制格式。
-3. 点击 **开始录屏**。
-4. 录制完成后点击任务栏上的图标结束录制。
-5. 结束后视频将自动保存到桌面。
-
-> ![notes](icon/notes.svg)：在录制视频时，如果接入多屏显示器，不论多屏显示器为复制模式还是扩展模式，仅针对当前操作屏进行录屏。
-
-### 查看帮助手册
-
-启动录屏后按下键盘上的 ![F1](icon/F1.svg) 键即可打开帮助手册。
