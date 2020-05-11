@@ -8,12 +8,14 @@ export default class Main extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      init: false
+      init: false,
+      bTest:true
     };
     let { file, hash } = this.props.match.params;
     this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null);
   }
   init(file, hash) {
+    console.log("main init"+file);
     if (file.indexOf('/') == -1) {
       file = `${global.path}/${file}/${global.lang}/index.md`;
     }
@@ -26,7 +28,8 @@ export default class Main extends Component {
         hash: hash ? hash : hlist[0].id
       });
 
-
+      console.log("main init linktitle"+global.linktitle);
+    
       if (global.linktitle != '')
       {
         var nHash = '';
@@ -49,20 +52,26 @@ export default class Main extends Component {
   setHash(hash) {
     console.log("main setHash:" + hash);
     if (global.isLinkClicked) {
+      console.log("main --setHash");
       global.hash = hash;
       global.oldHash = hash;
       global.isLinkClicked = false;
     }
+    console.log("main*********setHash");
     this.setState({ hash });
   }
 
   setScrollTitle(hash){
-    console.log("main title setHash:" + hash);
-    global.hash = hash;
-    global.oldHash = hash;
-    global.isMouseClickNav = true;
-    global.isMouseScrollArticle = false;
-    this.setState({ hash });
+    // console.log("main title setHash:" + hash);
+    setTimeout(() => {
+      global.hash = hash;
+      global.oldHash = hash;
+      global.isMouseClickNav = true;
+      global.isMouseScrollArticle = false;
+      this.setState({ hash });
+    },400);
+
+      
   }
 
   setScroll(hash) {
@@ -72,9 +81,20 @@ export default class Main extends Component {
     this.setState({ hash });
   }
   componentWillReceiveProps(nextProps) {
+    console.log("main componentWillReceivePropss");
     let { file, hash } = nextProps.match.params;
     this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null);
   }
+
+  componentWillUnmount(){
+    global.hash = ' ';
+  global.oldHash = ' ';
+  global.linktitle = '';
+  global.isMouseClickNav = false;
+  global.isMouseScrollArticle = false;
+  global.isLinkClicked = false;
+  }
+
   render() {
     return (
       this.state.init && (

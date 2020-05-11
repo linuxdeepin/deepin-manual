@@ -83,7 +83,7 @@ div {
       left: 50%;
       transform: translateX(-50%);
       background-color: transparent;
-      font-family: SourceHanSansSC-Normal;
+      font-family: var(--nav-world-font-family);
       margin: 0px;
       padding: 0 8.8%;
       font-size: 0.9rem;
@@ -265,7 +265,7 @@ div {
     width: 100%;
     height: 100px; }
   #index h2 {
-    font-family: SourceHanSansSC-Normal;
+    font-family: var(--nav-world-font-family);
     font-weight: normal;
     font-size: 3.1rem;
     line-height: 4.5rem;
@@ -306,7 +306,7 @@ div {
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        font-family: SourceHanSansSC-Medium;
+        font-family: var(--nav-world-font-family);
         font-size: var(--span-font-size);
         line-height: var(--span-line-height);
         color: var(--index-item-span-word-color); }
@@ -317,7 +317,7 @@ div {
 
 #nav {
   margin: 0px 0 0;
-  font-family: SourceHanSansSC-Medium;
+  font-family: var(--nav-world-font-family);
   user-select: none;
   width: 164px !important;
   position: fixed;
@@ -374,7 +374,7 @@ div {
     -webkit-box-align: center;
     text-align: center; }
     #search #mismatch #NoResult {
-      font-family: SourceHanSansSC-Normal;
+      font-family: var(--nav-world-font-family);
       margin-top: -68px;
       overflow-x: hidden;
       white-space: nowrap;
@@ -383,12 +383,12 @@ div {
       color: var(--search-noresult-word-color);
       margin-bottom: 11px; }
     #search #mismatch #WikiSearch {
-      font-family: SourceHanSansSC-Normal;
+      font-family: var(--nav-world-font-family);
       font-size: 0.9rem;
       color: var(--search-WikiSearch-color);
       margin-bottom: 26px; }
     #search #mismatch .button {
-      font-family: SourceHanSansSC-Medium;
+      font-family: var(--nav-world-font-family);
       font-weight: 500;
       font-size: 1.1rem;
       padding: 6px 42px 8px;
@@ -411,7 +411,7 @@ div {
   #search .items {
     padding: 0px 20px 0px 40px;
     color: var(--search-items-word-color);
-    font-family: SourceHanSansSC-Bold;
+    font-family: var(--nav-world-font-family);
     margin: 20px 0px 0px -20px; }
     #search .items .itemsTitle {
       padding: 7px 10px 0px 0px;
@@ -432,7 +432,7 @@ div {
         font-size: 1.3rem;
         font-weight: bold; }
       #search .items .itemsTitle .resultnum {
-        font-family: SourceHanSansSC-Normal;
+        font-family: var(--nav-world-font-family);
         font-size: 0.9rem;
         line-height: 1.4rem;
         float: right;
@@ -498,7 +498,7 @@ div {
       #search .items .item .context {
         width: 98%;
         margin: 7px 0px 10px 15px;
-        font-family: SourceHanSansSC-Normal;
+        font-family: var(--nav-world-font-family);
         color: var(--search-context-word-color);
         overflow: hidden;
         display: -webkit-box;
