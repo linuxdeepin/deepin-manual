@@ -23,6 +23,16 @@
 #include <QList>
 #include <QObject>
 
+#include <QDBusConnection>
+#include <QDesktopServices>
+
+#include "dbus/dbus_consts.h"
+#include "dbus/launcher_interface.h"
+
+#include <QtAlgorithms>
+#include <qalgorithms.h>
+#include <QMultiMap>
+
 class LauncherInterface;
 
 namespace dman {
@@ -33,7 +43,6 @@ class ManualProxy : public QObject
 public:
     explicit ManualProxy(QObject *parent = nullptr);
     ~ManualProxy() override;
-
 signals:
     void WidgetLower();
 public slots:

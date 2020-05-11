@@ -50,6 +50,13 @@ SearchCompletionWindow::~SearchCompletionWindow()
 {
 }
 
+void SearchCompletionWindow::updateColor(const QColor &color)
+{
+    if (search_button_) {
+        search_button_->updateColor(color);
+    }
+}
+
 void SearchCompletionWindow::autoResize()
 {
     int rowCount = result_view_->model()->rowCount();
@@ -59,13 +66,12 @@ void SearchCompletionWindow::autoResize()
         resultViewHeight = rowCount * kItemHeight + 7;
         result_view_->setFixedHeight(resultViewHeight);
         this->setFixedHeight(resultViewHeight + kItemHeight + 7);
-        search_button_->setGeometry(0, resultViewHeight, result_view_->width(), kItemHeight+7);
-    }
-    else {
+        search_button_->setGeometry(0, resultViewHeight, result_view_->width(), kItemHeight + 7);
+    } else {
         resultViewHeight = 7 * kItemHeight + 7;
         result_view_->setFixedHeight(7 * kItemHeight + 7);
         this->setFixedHeight(resultViewHeight + kItemHeight + 7);
-        search_button_->setGeometry(0, resultViewHeight, result_view_->width(), kItemHeight+7);
+        search_button_->setGeometry(0, resultViewHeight, result_view_->width(), kItemHeight + 7);
     }
 
     result_view_->setFixedWidth(this->width());
@@ -147,7 +153,7 @@ void SearchCompletionWindow::setKeyword(const QString &keyword)
         metrics.elidedText(
             QObject::tr("Search for \"%1\" in the full text").arg(keyword),
             Qt::ElideRight,
-            350-39));
+            350 - 39));
 }
 
 void SearchCompletionWindow::setSearchAnchorResult(const SearchAnchorResultList &result)
@@ -214,9 +220,9 @@ void SearchCompletionWindow::initUI()
 
     search_button_ = new SearchButton(this);
     search_button_->setObjectName("SearchButton");
-    search_button_->setFixedHeight(35+7);
+    search_button_->setFixedHeight(35 + 7);
     search_button_->setText(QObject::tr("Search for \"%1\" in the full text"));
-    search_button_->setGeometry(0, 7 * kItemHeight + 7, result_view_->width(), 34+7);
+    search_button_->setGeometry(0, 7 * kItemHeight + 7, result_view_->width(), 34 + 7);
 
     this->setContentsMargins(0, 0, 0, 0);
     this->setMinimumHeight(kItemHeight);
@@ -238,17 +244,15 @@ void SearchCompletionWindow::paintEvent(QPaintEvent *event)
     DPalette pa = ExApplicationHelper::instance()->palette(this);
     DStyleHelper styleHelper;
     QColor fillColor;
-    if (DWindowManagerHelper::instance()->hasComposite())
-    {
+    if (DWindowManagerHelper::instance()->hasComposite()) {
 
         fillColor = pa.color(DPalette::FrameBorder);
-    }
-    else {
+    } else {
         DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
         if (themeType == DGuiApplicationHelper::LightType) {
-            fillColor = QColor(255,255,255);
+            fillColor = QColor(255, 255, 255);
         } else if (themeType == DGuiApplicationHelper::DarkType) {
-            fillColor = QColor(0,0,0);
+            fillColor = QColor(0, 0, 0);
         }
 
     }

@@ -77,6 +77,7 @@ WebWindow::WebWindow(QWidget *parent)
     this->initUI();
     this->initConnections();
     this->initShortcuts();
+    this->initDBus();
 
     qApp->installEventFilter(this);
 }
@@ -177,6 +178,24 @@ void WebWindow::onManualSearchByKeyword(const QString &keyword)
     this->onSearchContentByKeyword(keyword);
 }
 
+/**
+ * @brief WebWindow::onACtiveColorChanged
+ * @param map
+ * 改变系统活动用色时，触发此槽，
+ */
+void WebWindow::onACtiveColorChanged(QString, QMap<QString, QVariant>map, QStringList)
+{
+
+    QString strValue = map.begin().value().toString();
+    QString strKey = map.begin().key();
+    if (0 == strKey.compare("QtActiveColor")) {
+        web_view_->page()->runJavaScript(QString("setHashWordColor('%1')").arg(strValue));
+        completion_window_->updateColor(QColor(strValue));
+    } else if (0 == strKey.compare("StandardFont")) {
+        web_view_->page()->runJavaScript(QString("setWordFontfamily('%1')").arg(strValue));
+    }
+}
+
 void WebWindow::initUI()
 {
     completion_window_ = new SearchCompletionWindow();
@@ -190,10 +209,12 @@ void WebWindow::initUI()
     m_backButton = new DButtonBoxButton(DStyle::SP_ArrowLeave);
     m_backButton->setDisabled(true);
     m_backButton->setFixedSize(36, 36);
+    m_backButton->setEnabled(false);
 
     m_forwardButton = new DButtonBoxButton(DStyle::SP_ArrowEnter);
     m_forwardButton->setDisabled(true);
     m_forwardButton->setFixedSize(36, 36);
+    m_forwardButton->setEnabled(false);
 
     m_backButton->setShortcut(Qt::Key_Left);
     m_forwardButton->setShortcut(Qt::Key_Right);
@@ -204,11 +225,11 @@ void WebWindow::initUI()
     buttonBox = new Dtk::Widget::DButtonBox(this);
     buttonBox->setButtonList(buttonList, false);
     buttonBox->setFocusPolicy(Qt::NoFocus);
+    updateBtnBox();
 
     buttonLayout->addWidget(buttonBox);
     buttonLayout->setSpacing(0);
     buttonLayout->setContentsMargins(13, 0, 0, 0);
-
     QFrame *buttonFrame = new QFrame(this);
     buttonFrame->setLayout(buttonLayout);
 
@@ -243,25 +264,63 @@ void WebWindow::initWebView()
     theme_proxy_ = new ThemeProxy(this);
     settings_proxy_ = new SettingsProxy(this);
     i18n_proxy = new I18nProxy(this);
+    /*
+        web_view_ = new QCefWebView();
+        //    web_view_->setParentWindow(this);
+        web_view_->page()->setEventDelegate(new WebEventDelegate(this));
+        this->setCentralWidget(web_view_);
+        web_view_->hide();
 
-    web_view_ = new QCefWebView();
-    //    web_view_->setParentWindow(this);
-    web_view_->page()->setEventDelegate(new WebEventDelegate(this));
+        // Disable web security.
+        auto settings = web_view_->page()->settings();
+        settings->setMinimumFontSize(8);
+        settings->setWebSecurity(QCefWebSettings::StateDisabled);
+
+        // init default font size
+        settings->setDefaultFontSize(this->fontInfo().pixelSize());
+
+        // Use TitleBarProxy instead.
+        QWebChannel *web_channel = web_view_->page()->webChannel();
+        web_view_->setAcceptDrops(false);
+
+        web_channel->registerObject("i18n", i18n_proxy);
+        web_channel->registerObject("imageViewer", image_viewer_proxy_);
+        web_channel->registerObject("manual", manual_proxy_);
+        web_channel->registerObject("search", search_proxy_);
+        web_channel->registerObject("theme", theme_proxy_);
+        web_channel->registerObject("titleBar", title_bar_proxy_);
+        web_channel->registerObject("settings", settings_proxy_);
+
+        connect(web_view_->page(), &QCefWebPage::loadFinished, this, &WebWindow::onWebPageLoadFinished);
+        connect(manual_proxy_, &ManualProxy::WidgetLower, this, &WebWindow::lower);
+        connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
+                theme_proxy_, &ThemeProxy::slot_ThemeChange);
+                */
+
+    web_view_ = new QWebEngineView;
     this->setCentralWidget(web_view_);
     web_view_->hide();
-
-    // Disable web security.
-    auto settings = web_view_->page()->settings();
-    settings->setMinimumFontSize(8);
-    settings->setWebSecurity(QCefWebSettings::StateDisabled);
-
-    // init default font size
-    settings->setDefaultFontSize(this->fontInfo().pixelSize());
-
-    // Use TitleBarProxy instead.
-    QWebChannel *web_channel = web_view_->page()->webChannel();
     web_view_->setAcceptDrops(false);
+    slot_ThemeChanged();
 
+
+    web_view_->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(web_view_, &QWebEngineView::selectionChanged, this, [this]() {
+        web_view_->setContextMenuPolicy(Qt::CustomContextMenu);
+    });
+    connect(web_view_, &QWidget::customContextMenuRequested, this, [this]() {
+        if (!web_view_->selectedText().isEmpty()) {
+            QMenu *menu = new QMenu(this);
+            QAction *action =  menu->addAction(QObject::tr("Copy"));
+            connect(action, &QAction::triggered, this, [ = ]() {
+                QApplication::clipboard()->setText(web_view_->selectedText());
+            });
+            menu->exec(QCursor::pos());
+        } else {
+        }
+    });
+
+    QWebChannel *web_channel = new QWebChannel;
     web_channel->registerObject("i18n", i18n_proxy);
     web_channel->registerObject("imageViewer", image_viewer_proxy_);
     web_channel->registerObject("manual", manual_proxy_);
@@ -269,16 +328,33 @@ void WebWindow::initWebView()
     web_channel->registerObject("theme", theme_proxy_);
     web_channel->registerObject("titleBar", title_bar_proxy_);
     web_channel->registerObject("settings", settings_proxy_);
+    web_view_->page()->setWebChannel(web_channel);
 
-    connect(web_view_->page(), &QCefWebPage::loadFinished, this, &WebWindow::onWebPageLoadFinished);
+    connect(web_view_->page(), &QWebEnginePage::loadFinished, this, &WebWindow::onWebPageLoadFinished);
     connect(manual_proxy_, &ManualProxy::WidgetLower, this, &WebWindow::lower);
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
             theme_proxy_, &ThemeProxy::slot_ThemeChange);
+    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
+            this, &WebWindow::slot_ThemeChanged);
 }
 
 void WebWindow::setTitleName(const QString &title_name)
 {
     title_name_ = title_name;
+}
+
+void WebWindow::cancelTextChanged()
+{
+    web_view_->setContextMenuPolicy(Qt::NoContextMenu);
+}
+
+void WebWindow::updateBtnBox()
+{
+    if (m_forwardButton->isEnabled() || m_backButton->isEnabled()) {
+        buttonBox->show();
+    } else {
+        buttonBox->hide();
+    }
 }
 
 void WebWindow::initShortcuts()
@@ -291,9 +367,11 @@ void WebWindow::initShortcuts()
     scWndReize->setContext(Qt::WindowShortcut);
     scWndReize->setAutoRepeat(false);
     connect(scWndReize, &QShortcut::activated, this, [this] {
-        if (this->windowState() & Qt::WindowMaximized) {
+        if (this->windowState() & Qt::WindowMaximized)
+        {
             this->showNormal();
-        } else if (this->windowState() == Qt::WindowNoState) {
+        } else if (this->windowState() == Qt::WindowNoState)
+        {
             this->showMaximized();
         }
     });
@@ -306,20 +384,47 @@ void WebWindow::initShortcuts()
     connect(scSearch, &QShortcut::activated, this, [this] {
         qDebug() << "search" << endl;
         search_edit_->lineEdit()->setFocus(Qt::ShortcutFocusReason);
-        web_view_->page()->remapBrowserWindow(web_view_->winId(), this->winId());
+//        web_view_->page()->remapBrowserWindow(web_view_->winId(), this->winId());
     });
+}
+
+void WebWindow::initDBus()
+{
+    QDBusConnection senderConn = QDBusConnection::connectToBus(QDBusConnection::SessionBus, "Sender");
+    if (!senderConn.connect(
+                "com.deepin.daemon.Appearance",  // sender's service name
+                "/com/deepin/daemon/Appearance",    // sender's path name
+                "org.freedesktop.DBus.Properties",  // interface
+                "PropertiesChanged",                                   // sender's signal name
+                this,                                           // receiver
+                SLOT(onACtiveColorChanged(QString, QMap<QString, QVariant>, QStringList)))) {
+
+        qDebug() << "connectToBus()::connect()  PropertiesChanged failed";
+    } else {
+        qDebug() << "connectToBus()::connect()  PropertiesChanged success";
+    }
+}
+
+void WebWindow::setHashWordColor()
+{
+    QColor Color = DGuiApplicationHelper::instance()->applicationPalette().highlight().color();
+    QString strColor = Color.name(QColor::NameFormat::HexRgb);
+    web_view_->page()->runJavaScript(QString("setHashWordColor('%1')").arg(strColor));
+    completion_window_->updateColor(Color);
 }
 
 void WebWindow::showEvent(QShowEvent *event)
 {
-    QWidget::showEvent(event);
 
+    QWidget::showEvent(event);
     if (!is_index_loaded_) {
         is_index_loaded_ = true;
         QTimer::singleShot(20, this, [this] {
+            qDebug() << Q_FUNC_INFO;
             emit this->shown(this);
             this->initWebView();
             const QFileInfo info(kIndexPage);
+            qDebug() << Q_FUNC_INFO << "web_View_->load ... ";
             web_view_->load(QUrl::fromLocalFile(info.absoluteFilePath()));
         });
     }
@@ -348,7 +453,9 @@ void WebWindow::onSearchContentByKeyword(const QString &keyword)
 
 void WebWindow::onSearchEditFocusOut()
 {
-    QTimer::singleShot(20, [=]() { this->completion_window_->hide(); });
+    QTimer::singleShot(20, [ = ]() {
+        this->completion_window_->hide();
+    });
 }
 
 void WebWindow::onSearchButtonClicked()
@@ -363,10 +470,10 @@ void WebWindow::onSearchButtonClicked()
 void WebWindow::onSearchResultClicked(const SearchAnchorResult &result)
 {
     web_view_->page()->runJavaScript(QString("open('%1', '%2', '%3', '%4')")
-                                         .arg(result.app_name)
-                                         .arg(result.anchorId)
-                                         .arg(result.anchor)
-                                         .arg(result.app_display_name));
+                                     .arg(result.app_name)
+                                     .arg(result.anchorId)
+                                     .arg(result.anchor)
+                                     .arg(result.app_display_name));
 }
 
 void WebWindow::onSearchTextChanged(const QString &text)
@@ -405,6 +512,9 @@ void WebWindow::onTitleBarEntered()
 
 void WebWindow::onWebPageLoadFinished(bool ok)
 {
+    //改变ｊs颜色
+    setHashWordColor();
+    qDebug() << Q_FUNC_INFO << " onWebPageLoadFinished :" << ok;
     if (ok) {
         QString qsthemetype = "Null";
         DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
@@ -416,7 +526,9 @@ void WebWindow::onWebPageLoadFinished(bool ok)
         web_view_->page()->runJavaScript(QString("setTheme('%1')").arg(qsthemetype));
         if (app_name_.isEmpty()) {
             web_view_->page()->runJavaScript("index()");
+            qDebug() << Q_FUNC_INFO << 460;
         } else {
+            qDebug() << Q_FUNC_INFO << 462;
             QString real_path(app_name_);
             if (real_path.contains('/')) {
                 // Open markdown file with absolute path.
@@ -435,14 +547,23 @@ void WebWindow::onWebPageLoadFinished(bool ok)
 
         QTimer::singleShot(100, [&]() {
             qDebug() << "show webview";
+            qDebug() << Q_FUNC_INFO << 481;
             web_view_->show();
-
+            qDebug() << Q_FUNC_INFO << 482;
             if (first_webpage_loaded_) {
                 first_webpage_loaded_ = false;
+                qDebug() << Q_FUNC_INFO << 486;
                 if (keyword_.length() > 0) {
                     qDebug() << "first_webpage_loaded_ manualSearchByKeyword:" << keyword_;
                     emit this->manualSearchByKeyword(keyword_);
                 }
+            }
+
+            if (this->settings_proxy_) {
+                qDebug() << Q_FUNC_INFO << 494;
+                auto fontInfo = this->fontInfo();
+                Q_EMIT this->settings_proxy_->fontChangeRequested(fontInfo.family(),
+                                                                  fontInfo.pixelSize());
             }
         });
     }
@@ -478,21 +599,21 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
 {
     // Filters mouse press event only.
     if (event->type() == QEvent::MouseButtonPress && qApp->activeWindow() == this &&
-        watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
+            watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
         QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
         switch (mouseEvent->button()) {
-            case Qt::BackButton: {
-                qDebug() << "eventFilter back";
-                title_bar_proxy_->backwardButtonClicked();
-                break;
-            }
-            case Qt::ForwardButton: {
-                qDebug() << "eventFilter forward";
-                title_bar_proxy_->forwardButtonClicked();
-                break;
-            }
-            default: {
-            }
+        case Qt::BackButton: {
+            qDebug() << "eventFilter back";
+            title_bar_proxy_->backwardButtonClicked();
+            break;
+        }
+        case Qt::ForwardButton: {
+            qDebug() << "eventFilter forward";
+            title_bar_proxy_->forwardButtonClicked();
+            break;
+        }
+        default: {
+        }
         }
     }
 
@@ -510,18 +631,28 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
 
 void WebWindow::slot_ButtonHide()
 {
-    QTimer::singleShot(20, [=]() {
-        qDebug() << "slot_ButtonHide";
-        buttonBox->hide();
-    });
+//    QTimer::singleShot(20, [ = ]() {
+//        qDebug() << "slot_ButtonHide";
+//        buttonBox->hide();
+//    });
+    buttonBox->hide();
 }
 
 void WebWindow::slot_ButtonShow()
 {
-    QTimer::singleShot(20, [=]() {
+    QTimer::singleShot(20, [ = ]() {
         qDebug() << "slot_ButtonShow";
         buttonBox->show();
     });
 }
 
+void WebWindow::slot_ThemeChanged()
+{
+    DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
+    if (themeType == DGuiApplicationHelper::LightType)
+        web_view_->page()->setBackgroundColor(QColor("#F8F8F8"));
+    else if (themeType == DGuiApplicationHelper::DarkType) {
+        web_view_->page()->setBackgroundColor(QColor("#282828"));
+    }
+}
 }  // namespace dman

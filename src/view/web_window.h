@@ -27,6 +27,9 @@
 
 #include <DButtonBox>
 #include <DMainWindow>
+#include <QWebEngineView>
+#include <QAction>
+#include <QClipboard>
 
 namespace dman {
 
@@ -43,6 +46,7 @@ class TitleBarProxy;
 class SettingsProxy;
 class SearchEdit;
 class DButtonBox;
+
 
 class WebWindow : public Dtk::Widget::DMainWindow
 {
@@ -64,6 +68,9 @@ public:
 
     void setTitleName(const QString &title_name);
 
+    void cancelTextChanged();
+    void updateBtnBox();
+
     Dtk::Widget::DButtonBoxButton *m_backButton;
     Dtk::Widget::DButtonBoxButton *m_forwardButton;
 
@@ -79,10 +86,10 @@ public slots:
     void setSearchKeyword(const QString &keyword);
     void slot_ButtonHide();
     void slot_ButtonShow();
+    void slot_ThemeChanged();
 
 protected:
     void closeEvent(QCloseEvent *event) override;
-
     void showEvent(QShowEvent *event) override;
 
 private:
@@ -90,6 +97,7 @@ private:
     void initUI();
     void initShortcuts();
     void initDBus();
+    void setHashWordColor();
 
     QString app_name_;
     QString title_name_;
@@ -105,7 +113,8 @@ private:
     SettingsProxy *settings_proxy_ {nullptr};
     TitleBar *title_bar_ {nullptr};
     //    ManualWebView *web_view_ {nullptr};
-    QCefWebView *web_view_ {nullptr};
+//    QCefWebView *web_view_ {nullptr};
+    QWebEngineView *web_view_ {nullptr};
     QTimer search_timer_;
     Dtk::Widget::DButtonBox *buttonBox {nullptr};
     SearchEdit *search_edit_ {nullptr};
@@ -127,6 +136,7 @@ private slots:
     void onWebPageLoadFinished(bool ok);
 
     void onManualSearchByKeyword(const QString &keyword);
+    void onACtiveColorChanged(QString, QMap<QString, QVariant>, QStringList);
 };
 
 }  // namespace dman

@@ -17,6 +17,7 @@ else()
   add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual")
 endif ()
 
+
 configure_file(environments.h.in environments.h @ONLY)
 
 # These macros ared used at compile time only.
@@ -72,6 +73,7 @@ find_package(Qt5Sql REQUIRED)
 find_package(Qt5WebChannel REQUIRED)
 find_package(Qt5Widgets REQUIRED)
 find_package(Qt5LinguistTools REQUIRED)
+find_package(Qt5WebEngineWidgets REQUIRED)
 
 pkg_search_module(DtkWidget REQUIRED dtkwidget)
 pkg_search_module(DtkGui REQUIRED dtkgui)
@@ -90,6 +92,7 @@ set(LINK_LIBS
     Qt5::Widgets
     Qt5::X11Extras
     Qt5::WebChannel
+    Qt5::WebEngineWidgets
 
     ${DtkWidget_LDFLAGS}
     ${DtkGui_LDFLAGS}

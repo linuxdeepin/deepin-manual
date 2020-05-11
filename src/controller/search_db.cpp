@@ -358,9 +358,9 @@ void SearchDb::handleSearchContent(const QString &keyword)
             const QString content = query.value(3).toString();
 
             QString tmpContent = content;
-
             tmpContent = tmpContent.replace("alt>", ">");
             tmpContent = tmpContent.replace("\" >", "\">");
+
             QString highlightContent = highlightKeyword(tmpContent, keyword);
             //remove img src
             QRegExp exp("<img .*>");

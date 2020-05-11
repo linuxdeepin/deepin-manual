@@ -12,7 +12,8 @@
     height: 100px;
   }
   h2 {
-    font-family: SourceHanSansSC-Normal;
+    // font-family: SourceHanSansSC-Normal;
+    font-family: var(--nav-world-font-family);
     font-weight: normal;
     font-size: 3.1rem;
     line-height: 4.5rem;
@@ -58,7 +59,8 @@
         overflow: hidden;
         text-overflow: ellipsis;
         white-space: nowrap;
-        font-family: SourceHanSansSC-Medium;
+        // font-family: SourceHanSansSC-Medium;
+        font-family: var(--nav-world-font-family);
         font-size: var(--span-font-size);
         line-height: var(--span-line-height);
         // font-weight: bold;
