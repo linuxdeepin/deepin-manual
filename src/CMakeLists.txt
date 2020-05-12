@@ -107,6 +107,7 @@ set(DMAN_SEARCH_LINK_LIBS
     ${DtkCore_LDFLAGS}
     )
 
+
 set(BASE_FILES
     base/command.cpp
     base/command.h

@@ -41,25 +41,27 @@ QHash<QString, QString> Utils::m_fontNameCache;
 //标题映射表
 const int langCount = 2;
 QString languageArr[][langCount] = {
-                                    //dde model
-                                    {"License activator", "授权管理"},
-                                    {"controlcenter","控制中心"},
-                                    {"accounts","账户设置"},
-                                    {"cloudsync","网络账户"},
-                                    {"display","显示设置"},
-                                    {"defapp","默认程序设置"},
-                                    {"personalization","个性化设置"},
-                                    {"network","网络设置"},
-                                    {"sound","声音设置"},
-                                    {"bluetooth","蓝牙设置"},
-                                    {"datetime","日期和时间"},
-                                    {"power","电源管理"},
-                                    {"mouse","鼠标和触控板"},
-                                    {"tablet","数位板"},
-                                    {"keyboard","键盘和语言"},
-                                    {"update","系统更新"},
-                                    {"systeminfo","系统信息"},
-                                    {"commoninfo","通用设置"}};
+    //dde model
+    {"License activator", "授权管理"},
+    {"controlcenter", "控制中心"},
+    {"accounts", "账户设置"},
+    {"cloudsync", "网络帐户"},
+    {"display", "显示设置"},
+    {"defapp", "默认程序设置"},
+    {"personalization", "个性化设置"},
+    {"network", "网络设置"},
+    {"sound", "声音设置"},
+    {"bluetooth", "蓝牙设置"},
+    {"datetime", "时间日期"},
+    {"power", "电源管理"},
+    {"mouse", "鼠标和触控板"},
+    {"tablet", "数位板"},
+    {"keyboard", "键盘和语言"},
+    {"update", "系统更新"},
+    {"voice", "辅助功能"},
+    {"systeminfo", "系统信息"},
+    {"commoninfo", "通用设置"}
+};
 
 Utils::Utils(QObject *parent)
     : QObject(parent)
@@ -101,7 +103,7 @@ QString Utils::getQssContent(const QString &filePath)
 QString Utils::getConfigPath()
 {
     QDir dir(QDir(QStandardPaths::standardLocations(QStandardPaths::ConfigLocation).first())
-                 .filePath(qApp->organizationName()));
+             .filePath(qApp->organizationName()));
 
     return dir.filePath(qApp->applicationName());
 }
@@ -152,15 +154,15 @@ QString Utils::loadFontFamilyByType(FontType fontType)
 {
     QString fontFileName = "";
     switch (fontType) {
-        case SourceHanSansMedium:
-            fontFileName = ":/font/SourceHanSansCN-Medium.ttf";
-            break;
-        case SourceHanSansNormal:
-            fontFileName = ":/font/SourceHanSansCN-Normal.ttf";
-            break;
-        case DefautFont:
-            QFont font;
-            return font.family();
+    case SourceHanSansMedium:
+        fontFileName = ":/font/SourceHanSansCN-Medium.ttf";
+        break;
+    case SourceHanSansNormal:
+        fontFileName = ":/font/SourceHanSansCN-Normal.ttf";
+        break;
+    case DefautFont:
+        QFont font;
+        return font.family();
     }
 
     if (m_fontNameCache.contains(fontFileName)) {
