@@ -260,10 +260,15 @@ void WebWindow::initWebView()
 {
     image_viewer_ = new ImageViewer(this);
     image_viewer_proxy_ = new ImageViewerProxy(image_viewer_, this);
-    manual_proxy_ = new ManualProxy(this);
     theme_proxy_ = new ThemeProxy(this);
     settings_proxy_ = new SettingsProxy(this);
     i18n_proxy = new I18nProxy(this);
+    manual_proxy_ = new ManualProxy(this);
+    // Do real search.
+    if (search_manager_) {
+        QStringList strlist = manual_proxy_->getSystemManualList();
+        search_manager_->installApps(strlist);
+    }
     /*
         web_view_ = new QCefWebView();
         //    web_view_->setParentWindow(this);
