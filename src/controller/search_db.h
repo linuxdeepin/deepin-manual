@@ -47,6 +47,7 @@ signals:
                              const QStringList &anchorIdList,
                              const QStringList &contents);
     void searchContentMismatch(const QString &keyword);
+    void installApps(const QStringList &strlistApps);
 
 public slots:
     void initDb(const QString &db_path);
@@ -63,10 +64,12 @@ private:
     inline QString highlightKeyword(QString srcString, QString keyword);
 
     SearchDbPrivate *p_ = nullptr;
+    QStringList strlistApp;
 
 private slots:
     void handleSearchAnchor(const QString &keyword);
     void handleSearchContent(const QString &keyword);
+    void handleInstallApps(const QStringList &strlistApps);
 };
 
 }  // namespace dman

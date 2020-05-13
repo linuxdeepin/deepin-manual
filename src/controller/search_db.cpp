@@ -104,6 +104,7 @@ void SearchDb::initConnections()
     connect(this, &SearchDb::initDbAsync, this, &SearchDb::initDb);
     connect(this, &SearchDb::searchAnchor, this, &SearchDb::handleSearchAnchor);
     connect(this, &SearchDb::searchContent, this, &SearchDb::handleSearchContent);
+    connect(this, &SearchDb::installApps, this, &SearchDb::handleInstallApps);
 }
 
 void SearchDb::initDb(const QString &db_path)
@@ -218,12 +219,15 @@ void SearchDb::handleSearchAnchor(const QString &keyword)
     qDebug() << "handleSearchAnchor sql is:" << sql;
     if (query.exec(sql)) {
         while (query.next() && (result.size() < kResultLimitation)) {
-            result.append(SearchAnchorResult {
-                query.value(0).toString(),
-                query.value(1).toString(),
-                query.value(2).toString(),
-                query.value(3).toString(),
-            });
+            //只将当前预装应用中的内容输出。
+            if (strlistApp.contains(query.value(0).toString())) {
+                result.append(SearchAnchorResult {
+                    query.value(0).toString(),
+                    query.value(1).toString(),
+                    query.value(2).toString(),
+                    query.value(3).toString(),
+                });
+            }
         }
     } else {
         qCritical() << "Failed to select anchor:" << query.lastError().text();
@@ -354,6 +358,10 @@ void SearchDb::handleSearchContent(const QString &keyword)
             const QString anchor = query.value(1).toString();
             const QString anchorId = query.value(2).toString();
             const QString content = query.value(3).toString();
+            qDebug() << Q_FUNC_INFO << app_name << " " << anchor << " " << anchorId << " " << content << " ";
+            if (!strlistApp.contains(app_name)) {
+                continue;
+            }
 
             QString tmpContent = content;
             tmpContent = tmpContent.replace("alt>", ">");
@@ -381,7 +389,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
                 if (!last_app_name.isEmpty() && appHasMatchHash.value(last_app_name) &&
                         contents.size() > 0) {
                     result_empty = false;
-                    qDebug() << Q_FUNC_INFO << "emit searchContentResult()" << contents.length();
+                    qDebug() << Q_FUNC_INFO << "emit searchContentResult()" << last_app_name << " " << contents.length();
                     emit this->searchContentResult(last_app_name, anchors, anchorIds, contents);
                 }
 
@@ -414,6 +422,11 @@ void SearchDb::handleSearchContent(const QString &keyword)
         qDebug() << "searchContentMismatch";
         emit this->searchContentMismatch(keyword);
     }
+}
+
+void SearchDb::handleInstallApps(const QStringList &strlistApps)
+{
+    strlistApp = strlistApps;
 }
 
 }  // namespace dman
