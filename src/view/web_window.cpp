@@ -313,10 +313,10 @@ void WebWindow::initWebView()
     connect(web_view_, &QWebEngineView::selectionChanged, this, [this]() {
         web_view_->setContextMenuPolicy(Qt::CustomContextMenu);
     });
-    connect(web_view_, &QWidget::customContextMenuRequested, this, [this]() {
+    QMenu *menu = new QMenu(this);
+    QAction *action =  menu->addAction(QObject::tr("Copy"));
+    connect(web_view_, &QWidget::customContextMenuRequested, this, [ = ]() {
         if (!web_view_->selectedText().isEmpty()) {
-            QMenu *menu = new QMenu(this);
-            QAction *action =  menu->addAction(QObject::tr("Copy"));
             connect(action, &QAction::triggered, this, [ = ]() {
                 QApplication::clipboard()->setText(web_view_->selectedText());
             });
@@ -606,22 +606,26 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
     if (event->type() == QEvent::MouseButtonPress && qApp->activeWindow() == this &&
             watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
         QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
-        switch (mouseEvent->button()) {
-        case Qt::BackButton: {
-            qDebug() << "eventFilter back";
-            title_bar_proxy_->backwardButtonClicked();
-            break;
+        if (mouseEvent->button()) {
+            switch (mouseEvent->button()) {
+            case Qt::BackButton: {
+                qDebug() << "eventFilter back";
+                title_bar_proxy_->backwardButtonClicked();
+                break;
+            }
+            case Qt::ForwardButton: {
+                qDebug() << "eventFilter forward";
+                title_bar_proxy_->forwardButtonClicked();
+                break;
+            }
+            default: {
+            }
+            }
         }
-        case Qt::ForwardButton: {
-            qDebug() << "eventFilter forward";
-            title_bar_proxy_->forwardButtonClicked();
-            break;
-        }
-        default: {
-        }
+        if (!search_edit_->geometry().contains(this->mapFromGlobal(QCursor::pos()))) {
+            completion_window_->hide();
         }
     }
-
     if (event->type() == QEvent::FontChange && watched == this) {
         if (this->settings_proxy_) {
             qDebug() << "eventFilter QEvent::FontChange";
