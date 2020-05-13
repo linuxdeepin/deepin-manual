@@ -200,6 +200,9 @@ var App = function (_React$Component) {
       global.open = function (file) {
         var hash = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
 
+        if (hash == 'h0') {
+          hash = 'h1';
+        }
         file = encodeURIComponent(file);
         hash = encodeURIComponent(hash);
         global.hash = hash;
