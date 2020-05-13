@@ -85,7 +85,10 @@ QStringList ManualProxy::getSystemManualList()
         }
 
         // Add "dde" by hand, as it has no desktop file.
-        app_list_.append("dde");
+        if (dir_entry.contains("dde")) {
+            app_list_.append("dde");
+        }
+
 
         // Remove youdao-dict if current locale is not Simplified Chinese.
         if (!QLocale().name().startsWith("zh")) {
