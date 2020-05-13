@@ -141,6 +141,11 @@ class App extends React.Component {
       }
     };
     global.open = (file, hash = '') => {
+      //h0默认为应用名称，内容为空，所以当打开h0，将其变为h1概述的位置。
+      if (hash == 'h0')
+      {
+        hash = 'h1'
+      }
       file = encodeURIComponent(file);
       hash = encodeURIComponent(hash);
       global.hash = hash;
