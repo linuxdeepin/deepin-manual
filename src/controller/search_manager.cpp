@@ -30,10 +30,11 @@ SearchManager::SearchManager(QObject *parent)
     , db_(nullptr)
     , db_thread_(nullptr)
 {
-    QTimer::singleShot(50, this, [this] {
-        qDebug() << "init SearchManager" << endl;
-        initSearchManager();
-    });
+//    QTimer::singleShot(50, this, [this] {
+//        qDebug() << "init SearchManager" << endl;
+
+//    });
+    initSearchManager();
 }
 
 void SearchManager::initSearchManager()
@@ -48,6 +49,7 @@ void SearchManager::initSearchManager()
     connect(this, &SearchManager::searchContent, db_, &SearchDb::searchContent);
     connect(db_, &SearchDb::searchContentResult, this, &SearchManager::searchContentResult);
     connect(db_, &SearchDb::searchContentMismatch, this, &SearchManager::searchContentMismatch);
+    connect(this, &SearchManager::installApps, db_, &SearchDb::installApps);
 
     connect(db_thread_, &QThread::destroyed, db_, &QObject::deleteLater);
 
