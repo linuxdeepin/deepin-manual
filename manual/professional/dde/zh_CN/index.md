@@ -1134,6 +1134,8 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 
 #### 激活方式
 
+授权管理激活方式分在线激活和离线激活，而在线激活方式包含试用期激活、输入序列号、导入激活文件。
+
 **在线激活**
 
 在线激活的前提是系统网络连接正常。
@@ -1154,13 +1156,13 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 
    ![0|probation3](jpg/probation3.png)
 
-输入激活码
+输入序列号
 
 1. 点击右下角托盘上的 ![uos1](icon/uos1.svg)进入界面。
 
-2. 点击 **输入激活码**，输入或复制正确的激活码，点击 **立即激活**。
+2. 点击 **输入序列号**，输入或复制正确的序列号，点击 **立即激活**。
 
-   ![0|activation code1](jpg/activation code1.png)
+   ![0|activation_code1](jpg/activation_code1.png)
 
 3. 会弹出二次确认弹框，点击 **确定**，弹出激活成功界面。
 
@@ -1170,7 +1172,7 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 
 2. 点击 **导入激活文件**，弹出文件管理器，选择.key格式的激活文件。
 
-   ![0|file activation2](jpg/file activation2.png)
+   ![0|file_activation2](jpg/activation_via_file2.png)
 
 3. 选择正确的文件，点击 **立即激活**。会弹出二次确认弹框，点击 **确定**，弹出激活成功界面。
 
@@ -1180,23 +1182,23 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 
 1. 选择输入序列号或导入授权文件激活时，系统检测网络连接异常，则跳转到离线激活界面。
 
-2. 离线激活界面显示二维码、激活码、机器ID及离线激活码输入框。
+2. 离线激活界面显示二维码、序列号、机器ID及离线激活码输入框。
 
-   ![0|activate offline1](jpg/activate offline1.png)
+   ![0|activate_offline1](jpg/activation_offline1.jpg)
 
-3. 手机扫描二维码，手机端弹出激活界面，界面显示当前机器ID及激活码。
+3. 手机扫描二维码，手机端弹出激活界面，界面显示当前机器ID及序列号。
 
-   ![0|activate offline2](jpg/activate offline2.png)
+   ![0|activate_offline2](jpg/activate_offline2.jpg)
 
 4. 点击 **立即激活**，会弹出二次确认弹框，点击 **确定**。
 
-5. 跳转到激活成功界面，显示机器ID、激活码和离线激活码。
+5. 跳转到激活成功界面，显示机器ID、序列号和离线激活码。
 
-   ![0|activate offline3](jpg/activate offline3.png)
+   ![0|activate_offline3](jpg/activate_offline3.jpg)
 
 6. 手动将手机端的离线激活码输入电脑端的离线激活码输入框。
 
-   ![0|activate offline4](jpg/activate offline4.png)
+   ![0|activate_offline4](jpg/activation_offline4.jpg)
 
 7. 点击 **离线激活**，跳转到激活成功界面。
 
@@ -1207,10 +1209,10 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
  - 产品版本：操作系统的版本。
  - 授权状态：授权状态分为未授权、已过期、已授权，激活成功显示已授权。
  - 授权对象：被授权的用户名称。
- - 激活方式：激活方式分为激活码、激活文件及离线激活码，根据实际激活方式体现。
+ - 激活方式：激活方式分为序列号、激活文件及离线激活码，根据实际激活方式体现。
  - 到期时间：超过了截止时间，系统会提醒授权即将到期。
 
-![0|activation code3](jpg/activation code3.png)
+![0|activation_code3](jpg/activation_code3.png)
 
 2. 系统激活成功后，右下角托盘不再显示授权管理图标，可通过控制中心查看授权管理工具。
 
