@@ -21,11 +21,6 @@
 #include "controller/search_manager.h"
 #include "dbus/dbus_consts.h"
 #include "view/web_window.h"
-
-#include <qcef_context.h>
-#include <qcef_global_settings.h>
-#include <qcef_web_settings.h>
-
 #include <unistd.h>
 
 #include <DLog>
@@ -128,43 +123,6 @@ void WindowManager::onNewAppOpen()
     if (QDBusMessage::ErrorMessage == response.type()) {
         qDebug() << "ErrorMessage";
     }
-}
-
-int WindowManager::initQCef(int argc, char **argv)
-{
-    QCefGlobalSettings settings;
-    // Do not use sandbox.
-    settings.setNoSandbox(true);
-
-    if (qEnvironmentVariableIntValue("QCEF_DEBUG") == 1) {
-        // Open http://localhost:9222 in chromium browser to see dev tools.
-        settings.setRemoteDebug(true);
-        settings.setLogSeverity(QCefGlobalSettings::LogSeverity::Verbose);
-    } else {
-        settings.setRemoteDebug(false);
-        settings.setLogSeverity(QCefGlobalSettings::LogSeverity::Error);
-    }
-
-    // Disable GPU process.
-    settings.addCommandLineSwitch(dman::kDisableGpu, "");
-
-    // Enable aggressive storage commit to minimize data loss.
-    // See public/common/content_switches.cc.
-    settings.addCommandLineSwitch(dman::kEnableDomStorageFlush, "");
-
-    // Set web cache folder.
-    QDir cache_dir(dman::GetCacheDir());
-    cache_dir.mkpath(".");
-    settings.setCachePath(cache_dir.filePath("cache"));
-    settings.setUserDataPath(cache_dir.filePath("cef-storage"));
-
-    // TODO: Rotate console log.
-    settings.setLogFile(cache_dir.filePath("web-console.log"));
-    settings.addCommandLineSwitch(dman::kEnableLogging, "");
-    settings.addCommandLineSwitch(dman::kLogLevel, "0");
-    settings.addCommandLineSwitch("--use-views", "");
-
-    return QCefInit(argc, argv, settings);
 }
 
 void WindowManager::initWebWindow()

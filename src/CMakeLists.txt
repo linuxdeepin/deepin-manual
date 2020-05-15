@@ -77,12 +77,10 @@ find_package(Qt5WebEngineWidgets REQUIRED)
 pkg_search_module(DtkWidget REQUIRED dtkwidget)
 pkg_search_module(DtkGui REQUIRED dtkgui)
 pkg_search_module(DtkCore REQUIRED dtkcore)
-pkg_search_module(LibQCef REQUIRED libqcef)
 
 include_directories(${DtkWidget_INCLUDE_DIRS})
 include_directories(${DtkGui_INCLUDE_DIRS})
 include_directories(${DtkCore_INCLUDE_DIRS})
-include_directories(${LibQCef_INCLUDE_DIRS})
 
 set(LINK_LIBS
     Qt5::Core
@@ -96,7 +94,6 @@ set(LINK_LIBS
     ${DtkWidget_LDFLAGS}
     ${DtkGui_LDFLAGS}
     ${DtkCore_LDFLAGS}
-    ${LibQCef_LDFLAGS}
 
     -lX11
     )
@@ -175,8 +172,6 @@ set(VIEW_FILES
     view/title_bar_proxy.h
     view/settings_proxy.h
     view/settings_proxy.cpp
-    view/web_event_delegate.cpp
-    view/web_event_delegate.h
     view/web_window.cpp
     view/web_window.h
 
@@ -192,8 +187,6 @@ set(VIEW_FILES
     view/widget/search_completion_delegate.h
     view/widget/search_edit.cpp
     view/widget/search_edit.h
-    view/widget/manual_webview.cpp
-    view/widget/manual_webview.h
     )
 
 # Main executable
@@ -245,12 +238,8 @@ add_executable(dman
 
 set(CMAKE_SKIP_BUILD_RPATH FALSE)
 set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
-set(CMAKE_INSTALL_RPATH "${LibQCef_LIBDIR}/qcef")
 set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
-set_target_properties(dman
-                      PROPERTIES INSTALL_RPATH "${LibQCef_LIBDIR}/qcef")
-target_link_libraries(dman ${LibQCef_LIBDIR}/qcef/libcef.so
-                      ${LINK_LIBS})
+target_link_libraries(dman  ${LINK_LIBS})
 
 # Auto generate qm files and search.db in release mode.
 if (CMAKE_BUILD_TYPE MATCHES Release)

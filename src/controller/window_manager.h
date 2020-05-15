@@ -24,8 +24,6 @@
 #include <QPoint>
 #include <QMutex>
 
-class QCefGlobalSettings;
-
 namespace dman {
 
 class SearchManager;
@@ -44,8 +42,6 @@ public:
     SearchManager *currSearchManager();
 
     void SendMsg(const QString &msg);
-
-    static int initQCef(int argc, char **argv);
 
 private:
     QPoint newWindowPosition();
