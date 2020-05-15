@@ -199,6 +199,7 @@ var App = function (_React$Component) {
       global.open = function (file) {
         var hash = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
 
+        //h0默认为应用名称，内容为空，所以当打开h0，将其变为h1概述的位置。
         if (hash == 'h0') {
           hash = 'h1';
         }
@@ -1167,7 +1168,7 @@ var Main = function (_Component) {
         global.isMouseClickNav = true;
         global.isMouseScrollArticle = false;
         _this3.setState({ hash: hash });
-      }, 400);
+      }, 800);
     }
   }, {
     key: 'setScroll',
