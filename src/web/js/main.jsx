@@ -69,9 +69,7 @@ export default class Main extends Component {
       global.isMouseClickNav = true;
       global.isMouseScrollArticle = false;
       this.setState({ hash });
-    },400);
-
-      
+    },800);
   }
 
   setScroll(hash) {
