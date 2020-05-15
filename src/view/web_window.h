@@ -20,7 +20,6 @@
 
 #include "controller/search_result.h"
 #include "view/settings_proxy.h"
-#include "widget/manual_webview.h"
 
 #include <QTimer>
 #include <QtDBus/QtDBus>
@@ -112,8 +111,6 @@ private:
     TitleBarProxy *title_bar_proxy_ {nullptr};
     SettingsProxy *settings_proxy_ {nullptr};
     TitleBar *title_bar_ {nullptr};
-    //    ManualWebView *web_view_ {nullptr};
-//    QCefWebView *web_view_ {nullptr};
     QWebEngineView *web_view_ {nullptr};
     QTimer search_timer_;
     Dtk::Widget::DButtonBox *buttonBox {nullptr};
