@@ -25,6 +25,7 @@
    - 在启动盘制作工具窗口，单击 ![close](icon/close.svg) ，退出启动盘制作工具。
    - 在任务栏右键单击 ![deepin-boot-maker](icon/deepin-boot-maker.svg) ，选择 **关闭所有** 来退出启动盘制作工具。
    - 在启动盘制作工具界面，单击 ![icon_menu](icon/icon_menu.svg) ，选择 **退出** 来退出启动盘制作工具。
+
 ## 操作介绍
 
 ### 准备工作

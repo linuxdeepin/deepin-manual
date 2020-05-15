@@ -313,7 +313,7 @@
 
 您还可以在截图界面的工具栏中，点击 **选项** 的下拉选项：
 
-![0|保存](jpg/options.png)
+![0|option](jpg/option.png)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -328,6 +328,8 @@
 #### 工具栏说明
 
 ![0|工具栏](jpg/recorder-bar.png)
+
+> ![notes](icon/notes.svg)：若在控制中心>个性化中关闭窗口特效，录屏功能将会被隐藏。
 
 <table class="block1">
     <caption>图标说明</caption>
@@ -375,6 +377,8 @@
 > ![attention](icon/attention.svg)：请先检测接入设备是否支持声音录制、摄像头功能。
 - 当接入设备支持声音录制、摄像头功能时，用户可以设置相应的操作。
 - 当接入设备不支持声音录制、摄像头功能时，按钮为置灰状态，用户不能设置相应的操作。
+
+> ![notes](icon/notes.svg)：x86、ARM平台上支持录屏功能但不支持录制声音；龙芯、SW平台不支持录屏功能。
 
 #### 设置录制格式和帧率
 
