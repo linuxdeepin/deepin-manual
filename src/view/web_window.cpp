@@ -28,12 +28,9 @@
 #include "view/settings_proxy.h"
 #include "view/theme_proxy.h"
 #include "view/title_bar_proxy.h"
-#include "view/web_event_delegate.h"
 #include "view/widget/image_viewer.h"
 #include "view/widget/search_completion_window.h"
 #include "view/widget/search_edit.h"
-
-#include <qcef_web_page.h>
 
 #include <QApplication>
 #include <QDBusConnection>
@@ -269,38 +266,6 @@ void WebWindow::initWebView()
         QStringList strlist = manual_proxy_->getSystemManualList();
         search_manager_->installApps(strlist);
     }
-    /*
-        web_view_ = new QCefWebView();
-        //    web_view_->setParentWindow(this);
-        web_view_->page()->setEventDelegate(new WebEventDelegate(this));
-        this->setCentralWidget(web_view_);
-        web_view_->hide();
-
-        // Disable web security.
-        auto settings = web_view_->page()->settings();
-        settings->setMinimumFontSize(8);
-        settings->setWebSecurity(QCefWebSettings::StateDisabled);
-
-        // init default font size
-        settings->setDefaultFontSize(this->fontInfo().pixelSize());
-
-        // Use TitleBarProxy instead.
-        QWebChannel *web_channel = web_view_->page()->webChannel();
-        web_view_->setAcceptDrops(false);
-
-        web_channel->registerObject("i18n", i18n_proxy);
-        web_channel->registerObject("imageViewer", image_viewer_proxy_);
-        web_channel->registerObject("manual", manual_proxy_);
-        web_channel->registerObject("search", search_proxy_);
-        web_channel->registerObject("theme", theme_proxy_);
-        web_channel->registerObject("titleBar", title_bar_proxy_);
-        web_channel->registerObject("settings", settings_proxy_);
-
-        connect(web_view_->page(), &QCefWebPage::loadFinished, this, &WebWindow::onWebPageLoadFinished);
-        connect(manual_proxy_, &ManualProxy::WidgetLower, this, &WebWindow::lower);
-        connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
-                theme_proxy_, &ThemeProxy::slot_ThemeChange);
-                */
 
     web_view_ = new QWebEngineView;
     this->setCentralWidget(web_view_);

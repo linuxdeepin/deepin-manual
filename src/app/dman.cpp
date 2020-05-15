@@ -14,10 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-
-#include <qcef_context.h>
-#include <qcef_global_settings.h>
-#include <qcef_web_settings.h>
 #include <QDBusConnection>
 #include <QDesktopWidget>
 #include <QIcon>
@@ -28,8 +24,6 @@
 #include "controller/window_manager.h"
 #include "environments.h"
 #include "resources/themes/images.h"
-#include "view/web_window.h"
-
 #include <DApplication>
 #include <DApplicationSettings>
 #include <DLog>
