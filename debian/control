@@ -6,7 +6,6 @@ Build-Depends:
  ca-certificates,
  cmake,
  debhelper (>= 9),
- libqcef-dev,
  libdtkwidget-dev,
  libdtkgui-dev,
  qtwebengine5-dev,
