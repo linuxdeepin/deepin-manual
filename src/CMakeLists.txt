@@ -3,25 +3,26 @@ project(deepin-manual C CXX)
 #set(CMAKE_C_COMPILER  /usr/bin/clang)
 #set(CMAKE_CXX_COMPILER  /usr/bin/clang++)
 
+
 set(CMAKE_INSTALL_PREFIX /usr)
 
 if (CMAKE_BUILD_TYPE MATCHES Debug)
 #  add_definitions(-DDMAN_SEARCH_DB="${CMAKE_CURRENT_SOURCE_DIR}/search.db")
-  add_definitions(-DDMAN_SEARCH_DB="${CMAKE_SOURCE_DIR}/manual")
+  add_definitions(-DDMAN_SEARCH_DB="${CMAKE_SOURCE_DIR}/manual-assets")
   add_definitions(-DDMAN_WEB_DIR="${CMAKE_CURRENT_SOURCE_DIR}/web_dist")
-  add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_SOURCE_DIR}/manual")
+  add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_SOURCE_DIR}/manual-assets")
 else()
 #  add_definitions(-DDMAN_SEARCH_DB="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/search.db")
-  add_definitions(-DDMAN_SEARCH_DB="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual")
+  add_definitions(-DDMAN_SEARCH_DB="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets")
   add_definitions(-DDMAN_WEB_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/web_dist")
-  add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual")
+  add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets")
 endif ()
 
 configure_file(environments.h.in environments.h @ONLY)
 
 # These macros ared used at compile time only.
 add_definitions(-DDMAN_SEARCH_ORIG_DB="${CMAKE_CURRENT_BINARY_DIR}/search.db")
-add_definitions(-DDMAN_ORIG_MANUAL_DIR="${CMAKE_SOURCE_DIR}/manual")
+add_definitions(-DDMAN_ORIG_MANUAL_DIR="${CMAKE_SOURCE_DIR}/manual-assets")
 add_definitions(-DDMAN_SEARCH_WORK_DIR="${CMAKE_CURRENT_SOURCE_DIR}/web")
 add_definitions(-DDMAN_SEARCH_CREATE_DB_PATH="${CMAKE_CURRENT_BINARY_DIR}/dbPath")
 
@@ -310,7 +311,7 @@ install(TARGETS dman-search
 install(DIRECTORY ${CMAKE_BINARY_DIR}/translations
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
 
-install(DIRECTORY ${CMAKE_SOURCE_DIR}/manual
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/manual-assets
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
 
 install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/web_dist

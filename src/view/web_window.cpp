@@ -389,7 +389,7 @@ void WebWindow::showEvent(QShowEvent *event)
     QWidget::showEvent(event);
     if (!is_index_loaded_) {
         is_index_loaded_ = true;
-        QTimer::singleShot(20, this, [this] {
+        QTimer::singleShot(200, this, [this] {
             qDebug() << Q_FUNC_INFO;
             emit this->shown(this);
             this->initWebView();
