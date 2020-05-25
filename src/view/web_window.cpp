@@ -583,6 +583,9 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
                 title_bar_proxy_->forwardButtonClicked();
                 break;
             }
+            case Qt::MiddleButton: {
+                return true;
+            }
             default: {
             }
             }
