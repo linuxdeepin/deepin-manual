@@ -58,6 +58,8 @@ void SearchManager::initSearchManager()
     int nType = Dtk::Core::DSysInfo::deepinType();
     if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
         strDB += "/server/search.db";
+    } else if (Dtk::Core::DSysInfo::DeepinPersonal == (Dtk::Core::DSysInfo::DeepinType)nType) {
+        strDB += "/personal/search.db";
     } else {
         if (Dtk::Core::DSysInfo::isCommunityEdition()) {
             strDB += "/community/search.db";

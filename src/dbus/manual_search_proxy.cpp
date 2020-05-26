@@ -46,7 +46,7 @@ void ManualSearchProxy::initDBus()
     }
 
     if (!m_dbusConn.registerService(dman::kManualSearchService + QString("Receiver")) ||
-        !m_dbusConn.registerObject(dman::kManualSearchIface + QString("Receiver"), this)) {
+            !m_dbusConn.registerObject(dman::kManualSearchIface + QString("Receiver"), this)) {
         qCritical() << "Receiver failed to register dbus service";
         return;
     } else {
@@ -60,12 +60,12 @@ void ManualSearchProxy::connectToSender()
         QDBusConnection::connectToBus(QDBusConnection::SessionBus, "Sender");
 
     if (!senderConn.connect(
-            dman::kManualSearchService + QString("Sender"),  // sender's service name
-            dman::kManualSearchIface + QString("Sender"),    // sender's path name
-            dman::kManualSearchService + QString("Sender"),  // interface
-            "SendWinInfo",                                   // sender's signal name
-            this,                                            // receiver
-            SLOT(RecvMsg(const QString &)))) {               // slot
+                dman::kManualSearchService + QString("Sender"),  // sender's service name
+                dman::kManualSearchIface + QString("Sender"),    // sender's path name
+                dman::kManualSearchService + QString("Sender"),  // interface
+                "SendWinInfo",                                   // sender's signal name
+                this,                                            // receiver
+                SLOT(RecvMsg(const QString &)))) {               // slot
 
         qDebug() << "connectToBus()::connect() Sender SendWinInfo failed";
     } else {
@@ -173,6 +173,8 @@ bool ManualSearchProxy::ManualExists(const QString &app_name)
     int nType = Dtk::Core::DSysInfo::deepinType();
     if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
         strManualPath += "/server";
+    } else if (Dtk::Core::DSysInfo::DeepinPersonal == (Dtk::Core::DSysInfo::DeepinType)nType) {
+        strManualPath += "/personal";
     } else {
         if (Dtk::Core::DSysInfo::isCommunityEdition()) {
             strManualPath += "/community";
