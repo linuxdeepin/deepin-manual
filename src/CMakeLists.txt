@@ -3,25 +3,26 @@ project(deepin-manual C CXX)
 #set(CMAKE_C_COMPILER  /usr/bin/clang)
 #set(CMAKE_CXX_COMPILER  /usr/bin/clang++)
 
+
 set(CMAKE_INSTALL_PREFIX /usr)
 
 if (CMAKE_BUILD_TYPE MATCHES Debug)
 #  add_definitions(-DDMAN_SEARCH_DB="${CMAKE_CURRENT_SOURCE_DIR}/search.db")
-  add_definitions(-DDMAN_SEARCH_DB="${CMAKE_SOURCE_DIR}/manual")
+  add_definitions(-DDMAN_SEARCH_DB="${CMAKE_SOURCE_DIR}/manual-assets")
   add_definitions(-DDMAN_WEB_DIR="${CMAKE_CURRENT_SOURCE_DIR}/web_dist")
-  add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_SOURCE_DIR}/manual")
+  add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_SOURCE_DIR}/manual-assets")
 else()
 #  add_definitions(-DDMAN_SEARCH_DB="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/search.db")
-  add_definitions(-DDMAN_SEARCH_DB="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual")
+  add_definitions(-DDMAN_SEARCH_DB="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets")
   add_definitions(-DDMAN_WEB_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/web_dist")
-  add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual")
+  add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets")
 endif ()
 
 configure_file(environments.h.in environments.h @ONLY)
 
 # These macros ared used at compile time only.
 add_definitions(-DDMAN_SEARCH_ORIG_DB="${CMAKE_CURRENT_BINARY_DIR}/search.db")
-add_definitions(-DDMAN_ORIG_MANUAL_DIR="${CMAKE_SOURCE_DIR}/manual")
+add_definitions(-DDMAN_ORIG_MANUAL_DIR="${CMAKE_SOURCE_DIR}/manual-assets")
 add_definitions(-DDMAN_SEARCH_WORK_DIR="${CMAKE_CURRENT_SOURCE_DIR}/web")
 add_definitions(-DDMAN_SEARCH_CREATE_DB_PATH="${CMAKE_CURRENT_BINARY_DIR}/dbPath")
 
@@ -256,32 +257,33 @@ target_link_libraries(dman-search
                       ${DMAN_SEARCH_LINK_LIBS})
 
 if (CMAKE_BUILD_TYPE MATCHES Debug)
-  set(SEARCH_DEMO_FILES 
-      app/search_demo.cpp
-      base/consts.cpp
-      base/consts.h
-      controller/search_db.cpp
-      controller/search_db.h
-      controller/search_manager.cpp
-      controller/search_manager.h
-      )
-  add_executable(search-demo ${SEARCH_DEMO_FILES})
-  target_link_libraries(search-demo ${LINK_LIBS})
 
-  set(IMAGE_VIEWER_DEMO_FILES
-      app/image_viewer_demo.cpp
-      base/file_util.cpp
-      base/file_util.h
-      view/theme_manager.cpp
-      view/theme_manager.h
-      view/widget/image_viewer.cpp
-      view/widget/image_viewer.h
-      )
-  add_executable(image-viewer-demo
-                 ${IMAGE_VIEWER_DEMO_FILES}
-                 ${RESOURCES_FILES}
-                 )
-  target_link_libraries(image-viewer-demo ${LINK_LIBS})
+#  set(SEARCH_DEMO_FILES
+#      app/search_demo.cpp
+#      base/consts.cpp
+#      base/consts.h
+#      controller/search_db.cpp
+#      controller/search_db.h
+#      controller/search_manager.cpp
+#      controller/search_manager.h
+#      )
+#  add_executable(search-demo ${SEARCH_DEMO_FILES})
+#  target_link_libraries(search-demo ${LINK_LIBS})
+
+#  set(IMAGE_VIEWER_DEMO_FILES
+#      app/image_viewer_demo.cpp
+#      base/file_util.cpp
+#      base/file_util.h
+#      view/theme_manager.cpp
+#      view/theme_manager.h
+#      view/widget/image_viewer.cpp
+#      view/widget/image_viewer.h
+#      )
+#  add_executable(image-viewer-demo
+#                 ${IMAGE_VIEWER_DEMO_FILES}
+#                 ${RESOURCES_FILES}
+#                 )
+#  target_link_libraries(image-viewer-demo ${LINK_LIBS})
 
 
   set(MANUAL_TRANSLATE_FILES
@@ -309,7 +311,7 @@ install(TARGETS dman-search
 install(DIRECTORY ${CMAKE_BINARY_DIR}/translations
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
 
-install(DIRECTORY ${CMAKE_SOURCE_DIR}/manual
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/manual-assets
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
 
 install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/web_dist

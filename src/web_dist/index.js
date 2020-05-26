@@ -488,6 +488,11 @@ var Article = function (_Component) {
 
       var tempHash = this.hash;
       var hashNode = document.getElementById(tempHash);
+
+      if (this.state.preview != null) {
+        this.setState({ preview: null });
+      }
+
       if (hashNode) {
 
         clearTimeout(this.timerObj);

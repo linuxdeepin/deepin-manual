@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+<filter  id="filter-3" y="-20.8%" x="-29.2%" width="158.3%" height="158.3%" filterUnits="objectBoundingBox">
+	<feOffset  result="shadowOffsetOuter1" in="SourceAlpha" dy="2" dx="0"></feOffset>
+	<feGaussianBlur  result="shadowBlurOuter1" in="shadowOffsetOuter1" stdDeviation="2"></feGaussianBlur>
+	<feComposite  in2="SourceAlpha" result="shadowBlurOuter1" in="shadowBlurOuter1" operator="out"></feComposite>
+	<feColorMatrix  values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.05 0" in="shadowBlurOuter1" type="matrix"></feColorMatrix>
+</filter>
+<title>切片</title>
+<desc>Created with Sketch.</desc>
+<g id="Rectangle-175" transform="translate(12.000000, 12.000000) scale(-1, 1) translate(-12.000000, -12.000000) ">
+	<g filter="url(#filter-3)">
+		<path id="path-2_2_" d="M5,0h14c2.761,0,5,2.239,5,5v14c0,2.762-2.239,5-5,5H5c-2.762,0-5-2.238-5-5V5C0,2.239,2.238,0,5,0z"/>
+	</g>
+	<g>
+		<path id="path-2_1_" fill-opacity="0.08" d="M5,0h14c2.761,0,5,2.239,5,5v14c0,2.762-2.239,5-5,5H5c-2.762,0-5-2.238-5-5V5
+			C0,2.239,2.238,0,5,0z"/>
+	</g>
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="321.7769" y1="415.7861" x2="321.7769" y2="414.8296" gradientTransform="matrix(-23 0 0 -23 7412.8594 9563.5625)">
+		<stop  offset="0" style="stop-color:#E6E6E6"/>
+		<stop  offset="1" style="stop-color:#E3E3E3"/>
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#000000" stroke-opacity="0.03" d="M5.5,0.5h13c2.761,0,5,2.239,5,5v13c0,2.762-2.239,5-5,5
+		h-13c-2.762,0-5-2.238-5-5v-13C0.5,2.739,2.738,0.5,5.5,0.5z"/>
+</g>
+<path id="形状" fill="#536076" d="M17.922,12.798v-1.595c-0.814-0.29-1.329-0.372-1.59-0.997v0
+	c-0.259-0.627,0.051-1.053,0.419-1.83l-1.128-1.127c-0.77,0.366-1.2,0.679-1.828,0.418h-0.001c-0.626-0.26-0.709-0.778-0.996-1.589
+	h-1.595c-0.288,0.807-0.37,1.328-0.997,1.589h0c-0.627,0.261-1.052-0.049-1.83-0.418L7.249,8.376
+	c0.368,0.774,0.679,1.202,0.418,1.83c-0.261,0.627-0.782,0.709-1.589,0.997v1.595c0.806,0.286,1.328,0.369,1.589,0.996
+	c0.261,0.633-0.056,1.069-0.418,1.828l1.127,1.13c0.771-0.367,1.202-0.68,1.83-0.42h0c0.627,0.261,0.709,0.78,0.997,1.59h1.595
+	c0.287-0.807,0.369-1.328,0.999-1.591h0.002c0.622-0.258,1.047,0.051,1.823,0.421l1.129-1.129c-0.367-0.771-0.679-1.2-0.419-1.828
+	C16.592,13.168,17.117,13.085,17.922,12.798L17.922,12.798z M12,14.961c-1.636,0-2.961-1.326-2.961-2.961S10.364,9.039,12,9.039
+	c1.635,0,2.961,1.326,2.961,2.961S13.635,14.961,12,14.961z M13.185,12c0,0.652-0.532,1.185-1.185,1.185
+	c-0.653,0-1.184-0.532-1.184-1.185c0-0.653,0.531-1.184,1.184-1.184C12.652,10.816,13.185,11.347,13.185,12z"/>
+</svg>

@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="36px" height="36px" viewBox="0 0 36 36" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 56.2 (81672) - https://sketch.com -->
+    <title>magnifier_normal_light</title>
+    <desc>Created with Sketch.</desc>
+    <g id="page" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="按钮规范new" transform="translate(-334.000000, -49.000000)">
+            <g id="编组" transform="translate(334.000000, 49.000000)">
+                <circle id="椭圆形" stroke="#414D68" transform="translate(16.055456, 16.805456) rotate(-45.000000) translate(-16.055456, -16.805456) " cx="16.0554564" cy="16.8054564" r="6.5"></circle>
+                <rect id="矩形" fill="#414D68" transform="translate(22.772971, 23.522971) rotate(-315.000000) translate(-22.772971, -23.522971) " x="19.7729708" y="23.0229708" width="6" height="1"></rect>
+                <rect id="矩形" fill="#414D68" x="13" y="16.5" width="6" height="1"></rect>
+                <rect id="矩形备份" fill="#414D68" transform="translate(16.000000, 17.000000) rotate(-90.000000) translate(-16.000000, -17.000000) " x="13" y="16.5" width="6" height="1"></rect>
+            </g>
+        </g>
+    </g>
+</svg>
