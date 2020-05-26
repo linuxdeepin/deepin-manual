@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="64px" height="64px" viewBox="0 0 64 64" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>record_start_normal</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
+            <stop stop-color="#FFFFFF" offset="0%"></stop>
+            <stop stop-color="#F8F8F8" offset="97.7260045%"></stop>
+        </linearGradient>
+        <circle id="path-2" cx="24" cy="24" r="24"></circle>
+        <filter x="-50%" y="-50%" width="200%" height="200%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+        <mask id="mask-4" maskContentUnits="userSpaceOnUse" maskUnits="objectBoundingBox" x="0" y="0" width="48" height="48" fill="white">
+            <use xlink:href="#path-2"></use>
+        </mask>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-5">
+            <stop stop-color="#FF5050" offset="0%"></stop>
+            <stop stop-color="#FF0F4B" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="record_start_normal">
+            <g id="record">
+                <g transform="translate(8.000000, 8.000000)">
+                    <g id="Oval">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                        <use stroke="#FF9191" mask="url(#mask-4)" stroke-width="3" fill="url(#linearGradient-1)" fill-rule="evenodd" xlink:href="#path-2"></use>
+                    </g>
+                    <path d="M32,26.531248 L32,25.031248 L31,25.031248 L31,26.531248 C31,27.427088 30.828128,28.26562 30.484376,29.046876 C30.140624,29.828128 29.671876,30.515624 29.078124,31.109376 C28.484372,31.703128 27.791672,32.166664 27,32.5 C26.208328,32.833336 25.364588,33 24.468752,33 L24.468752,33 C23.572912,33 22.73438,32.833336 21.953124,32.5 C21.171872,32.166664 20.484378,31.703128 19.8906248,31.109376 C19.296872,30.515624 18.8333348,29.828128 18.5,29.046876 C18.1666652,28.26562 18,27.427088 18,26.531248 L18,25.031248 L17,25.031248 L17,26.531248 C17,27.468756 17.166665,28.359372 17.5,29.203124 C17.8333348,30.04688 18.2864556,30.791664 18.8593752,31.4375 C19.4322944,32.083336 20.1093712,32.624996 20.8906248,33.0625 C21.67188,33.500004 22.510412,33.781248 23.406248,33.906248 L23.406248,36.90625 C21.989576,37.0312508 20.8072964,37.2968728 19.8593752,37.7031248 C18.9114536,38.1093772 18.4375,38.531248 18.4375,38.96875 C18.4375,38.9895834 19.0781184,39 20.3593752,39 L24.578124,39 L28.796876,39 C30.078132,39 30.718752,38.9895834 30.718752,38.96875 C30.718752,38.5104144 30.20834,38.0729188 29.1875,37.65625 C28.16666,37.2395812 26.906256,36.9895836 25.406248,36.90625 L25.406248,33.906248 C26.32292,33.802084 27.182288,33.53646 27.984376,33.109376 C28.786464,32.682288 29.484372,32.140628 30.078124,31.484376 C30.671876,30.82812 31.140624,30.078128 31.484376,29.234376 C31.828128,28.39062 32,27.489588 32,26.531248 Z M24.468752,31.9375 C25.989592,31.9375 27.29166,31.406256 28.375,30.343752 C29.45834,29.281244 30,27.989592 30,26.468752 L30,25.031248 L19,25.031248 L19,26.468752 C19,27.989592 19.5312448,29.281244 20.59375,30.343752 C21.656256,31.406256 22.947908,31.9375 24.468752,31.9375 Z M30,15.468752 L30,24.0625 L19,24.0625 L19,15.468752 C19,13.968744 19.5312448,12.682296 20.59375,11.609376 C21.656256,10.536452 22.947908,10 24.468752,10 C25.989592,10 27.29166,10.536452 28.375,11.609376 C29.45834,12.682296 30,13.968744 30,15.468752 Z M22,12 L22,13 L23,13 L23,12 L22,12 Z M21,14 L21,15 L22,15 L22,14 L21,14 Z M27,22 L27,23 L30,23 L30,22 L27,22 Z M26,22 L26,23 L27,23 L27,22 L26,22 Z M22,22 L22,23 L23,23 L23,22 L22,22 Z M19,22 L19,23 L22,23 L22,22 L19,22 Z M26,20 L26,21 L30,21 L30,20 L26,20 Z M19,20 L19,21 L23,21 L23,20 L19,20 Z M28,18 L28,19 L29,19 L29,18 L28,18 Z M26,18 L26,19 L27,19 L27,18 L26,18 Z M24,18 L24,19 L25,19 L25,18 L24,18 Z M22,18 L22,19 L23,19 L23,18 L22,18 Z M20,18 L20,19 L21,19 L21,18 L20,18 Z M28,16 L28,17 L29,17 L29,16 L28,16 Z M26,16 L26,17 L27,17 L27,16 L26,16 Z M24,16 L24,17 L25,17 L25,16 L24,16 Z M22,16 L22,17 L23,17 L23,16 L22,16 Z M20,16 L20,17 L21,17 L21,16 L20,16 Z M24,12 L24,13 L25,13 L25,12 L24,12 Z M23,14 L23,15 L24,15 L24,14 L23,14 Z M26,12 L26,13 L27,13 L27,12 L26,12 Z M25,14 L25,15 L26,15 L26,14 L25,14 Z M27,14 L27,15 L28,15 L28,14 L27,14 Z" id="Page-1" fill="url(#linearGradient-5)"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

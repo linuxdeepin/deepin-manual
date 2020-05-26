@@ -148,6 +148,8 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
     int nType = Dtk::Core::DSysInfo::deepinType();
     if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
         strManualPath += "/server";
+    } else if (Dtk::Core::DSysInfo::DeepinPersonal == (Dtk::Core::DSysInfo::DeepinType)nType) {
+        strManualPath += "/personal";
     } else {
         if (Dtk::Core::DSysInfo::isCommunityEdition()) {
             strManualPath += "/community";

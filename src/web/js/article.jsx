@@ -21,6 +21,11 @@ export default class Article extends Component {
   scrollToHash() {
     let tempHash = this.hash;
     const hashNode = document.getElementById(tempHash);
+
+    if (this.state.preview != null) {
+      this.setState({ preview: null });
+    }
+
     if (hashNode) {
 
       clearTimeout(this.timerObj);

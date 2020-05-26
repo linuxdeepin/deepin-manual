@@ -52,6 +52,8 @@ public slots:
         int nType = Dtk::Core::DSysInfo::deepinType();
         if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
             strMANUAL_DIR += "/server";
+        } else if (Dtk::Core::DSysInfo::DeepinPersonal == (Dtk::Core::DSysInfo::DeepinType)nType) {
+            strMANUAL_DIR += "/personal";
         } else {
             if (Dtk::Core::DSysInfo::isCommunityEdition()) {
                 strMANUAL_DIR += "/community";
