@@ -1,321 +1,269 @@
-# Movie |../common/deepin-movie.svg|
+# Movie|../common/deepin-movie.svg|
+
 ## Overview
 
-Deepin Movie is a video player with various features built in deepin. It offers simple interface and rich shortcuts, supports various video formats. You can also play online video resources, freely set the sound, frame and subtitle.
+Movie is a video player with various features. It offers simple interface and rich shortcuts and supports various video formats. You can also play online video resources and freely set the sound, frame and subtitle only with the keyboard.
 
-Deepin Movie, shares extreme play experience with you. Use it, you will love it!
+Movie shares extreme play experience with you. Use it and you will love it!
 
-![1|main_interface](jpg/main_interface.jpg)
+![1|主界面](jpg/main.png)
 
 ## Guide
 
-### Run Deepin Movie
+### Run Movie
 
-1. On Dock, click on ![launcher_icon](icon/launcher_icon.svg) to enter Launcher.
-2. Right click on ![movie-24](icon/movie-24.svg), you can:
-  - Click on **Send to desktop** to create a desktop shortcut.
-  - Click on **Send to dock** to fix its icon on Dock.
-  - Click on **Add to startup** to add it to startup, it will auto run when system boots.
+1.  Run ![deepin-launcher](icon/deepin-launcher.svg) on dock to enter the Launcher interface.
+2.  Locate  ![movie-24](icon/movie-24.svg) by scrolling the mouse wheel or searching movie in the Launcher interface and click it to run.
+3.  Right-click ![movie-24](icon/movie-24.svg) and you can:
+ - Click **Send to desktop** to create a desktop shortcut.
+ - Click **Send to dock** to fix it on Dock.
+ - Click **Add to startup** to add it to startup and it will auto run when the system boots.
 
-> ![notes](icon/notes.svg): You can also right click on a video and select **Open with Deepin Movie** to run.
-
-### Exit Deepin Movie
-
-- On Deepin Movie interface, click on ![close](icon/close.svg) to exit.
-- Right click on ![movie-24](icon/movie-24.svg) on Dock, select **Close All** to exit.
-- Click on ![main_memu](icon/main_menu.svg) and select **Exit** to exit.
+### Exit Movie
+- On the Movie interface, click ![close](icon/close.svg) to exit.
+- Right-click ![movie-24](icon/movie-24.svg) on Dock and  select **Close All** to exit.
+- Click ![icon_menu](icon/icon_menu.svg) on the Movie interface and select  **Exit** to exit.
 
 ### View Shortcuts
 
-1. On Deepin Movie Interface, press ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![QM](icon/QM.svg).
-2. You can view all the shortcuts on the preview interface.
+Learning about the shortcuts in advance before playing videos will make your subsequent operations more effective.
 
-![1|shortcut](jpg/shortcut.jpg)
+1.  On the Movie interface, press **Ctrl** + **Shift** + **？** on the keyboard to open the shortcut preview interface.
+2.   You can view all the shortcuts on the preview interface.
+
+> ![attention](icon/attention.svg) : You can open the shortcut preview interface any time during your video playback.
+
+ ![1|shortcut](jpg/shortcut.jpg)
+
 
 ## Main Interface
 
-![1|interface](jpg/interface.png)
-<p>
-<table>
-  <tr>
-            <td>1</td>
-            <td width="60px">Play window</td>
-            <td>Display the film content, film information and function icons will be displayed after the mouse pointer moved into the play window, otherwise will be hidden. Play window is the frameless mode, you can freely drag and drop play window to manually adjust its size. </td>
-        </tr>
-        <tr>
-            <td>2</td>
-            <td>Progress bar</td>
-            <td>It's to display film play progress and you can change the progress by dragging and dropping the progress bar. Move the mouse pointer over the progress bar, and the progress bar will be bold intelligently and display the film preview window. </td>
-        </tr>
-         <tr>
-            <td>3</td>
-            <td>Time display</td>
-            <td>Display the total time and played time information of current film. </td>
-        </tr>
-         <tr>
-            <td>4</td>
-            <td>Preview window</td>
-            <td>Display the film preview, you can view the video content at a point in time by the preview window. </td>
-        </tr>
-         <tr>
-            <td>5</td>
-            <td>Film title</td>
-            <td>Display the film name. </td>
-        </tr>
-</table>
-</p>
+Perform the common playback operations and enjoy the videos to your heart's content!
+
+![1|播放视频界面](jpg/playmovie.png)
+
+| Number | Name           | Description                                                  |
+| ------ | -------------- | ------------------------------------------------------------ |
+| 1      | Play window    | Display the video content. The video information and function icons will be displayed after the mouse pointer is moved into the play window. Otherwise, they will be hidden. The play window is frameless. You can freely drag the play window to manually adjust its size. |
+| 2      | Time display   | Display the total time and played time information of current video. |
+| 3      | Progress bar   | Display the play progress. Drag the progress bar to change your play progress. The progress bar will be bold intelligently and the video preview window will be displayed when the mouse pointer is placed over the progress bar. |
+| 4      | Preview window | Display the video preview. You can view the video content at a point in time by the preview window. |
+| 5      | Video title    | Display the video name being played.                         |
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+> ![notes](icon/notes.svg) : The preview window is displayed by default when the mouse is placed over the progress bar. If you do not need to display the preview window, you can enter the settings to change it. Please refer to the [basic settings](#basic settings) for details.
+
 ### Icon Description
-<p>
-<table>
-     <tr>
-       <td><img src="icon/main_menu.svg" class="inline" /></td>
-       <td>Main Menu</td>
-       <td><img src="icon/minimize.svg" class="inline" /></td>
-       <td>Minimize</td>
-       <td><img src="icon/maximize.svg" class="inline" /></td>
-       <td>Maximize</td>
-       <td><img src="icon/close.svg" class="inline" /></td>
-       <td>Close</td>
-     </tr>
-     <tr>
-       <td><img src="icon/play.svg" class="inline" /></td>
-       <td>Play</td>
-       <td><img src="icon/pause.svg" class="inline" /></td>
-       <td>Pause</td>
-       <td><img src="icon/previous.svg" class="inline" /></td>
-       <td>Play previous film</td>
-       <td><img src="icon/next.svg" class="inline" /></td>
-       <td>Play next film</td>
-     </tr>
-     <tr>
-       <td><img src="icon/volume.svg" class="inline" /></td>
-       <td>Volume</td>
-       <td><img src="icon/fullscreen.svg" class="inline" /></td>
-       <td>Fullscreen</td>
-       <td><img src="icon/playlist.svg" class="inline" /></td>
-       <td>Playlist</td>
-       <td><img src="icon/mini.png" class="inline" /></td>
-       <td>Exit mini mode</td>
-     </tr>
-</table>
-</p>
-### Play Film
 
-You can play film by the following ways:
-
-1. On Deepin Movie interface, right click or click on ![main_menu](icon/main_menu.svg) to select **Open File**.
-2. On Deepin Movie interface, right click or click on ![main_menu](icon/main_menu.svg) to select **Open Folder**.
-3. On Deepin Movie interface, right click to select **Open URL**.
-4. On Deepin Movie interface, right click to select **Open CD/DVD**.
-5. Drag and drop file/folder to the main interface.
+| Icon                                                  | Name       | Icon                                                 | Name      |
+| ----------------------------------------------------- | ---------- | ---------------------------------------------------- | --------- |
+| <img src="icon/last_normal.svg" class="inline" />     | Previous   | <img src="icon/next_normal.svg" class="inline" />    | Next      |
+| <img src="icon/play_normal.svg" class="inline" />     | Play       | <img src="icon/suspend_normal.svg" class="inline" /> | Pause     |
+| <img src="icon/zoom in_normal.svg" class="inline" />  | Fullscreen | <img src="icon/volume_normal.svg" class="inline" />  | Volume    |
+| <img src="icon/episodes_normal.svg" class="inline" /> | Playlist   | <img src="icon/menu.svg" class="inline" />           | Main Menu |
+| <img src="icon/mix.svg" class="inline" />             | Minimize   | <img src="icon/max.svg" class="inline" />            | Maximize  |
+| <img src="icon/close.svg" class="inline" />           | Close      |                                                      |           |
 
 
-### Play/Pause
 
-- On Deepin Movie interface, click on ![Play](icon/play.svg)/![Pause](icon/pause.svg).
-- On Deepin Movie interface, press ![Space](icon/Space.svg) on keyboard.
-- On Deepin Movie interface, click the left mouse button.
+### Play Films
 
->![notes](icon/notes.svg): Play and pause are mutually exclusive states.
+You can play films by the following ways:
+- When there is no files in the playlist, click![play](icon/play_normal.svg)and open the file selector to select a film file.
+- On the Movie interface, right-click or click![menu](icon/icon_menu.svg) to select **Open file** and open the file selector to select a film file.
+- On the Movie interface, right-click or click![menu](icon/icon_menu.svg) to select **Open folder**. All the audiovisual files in the folder are displayed in the playlist and played in turn. 
+- On the Movie interface, right-click to select **Open URL** and paste the online address to play the film.
+- On the Movie interface, right-click to select **Open CD/DVD** to play the films in CD/DVD.
+- Drag the file/folder directly to the Movie interface to play local films.
 
-### Previous/Next
+> ![notes](icon/notes.svg) : Please make sure your network is well connected before playing online videos with Movie.
 
-- On Deepin Movie interface, press  ![Page Up](icon/PageUp.svg)/![Page Down](icon/PageDown.svg) .
-- On Deepin Movie interface, click on ![Previous](icon/previous.svg)/![Next](icon/next.svg).
 
+![0|open](jpg/open.png)
 
 ### Forward/Rewind
 
-1. On Deepin Movie interface, press ![Right](icon/Right.svg) to forward the film.
-2. Press ![Left](icon/Left.svg) on keyboard to rewind the film.
-
+1.  On the Movie interface, press![Right](icon/Right.svg) on the keyboard to fast forward the film.
+2.  On the Movie interface, press![Left](icon/Left.svg) on the keyboard to fast rewind the film.
 
 ### Speed Up/Down
 
-1. On Deepin Movie interface, press ![Ctrl](icon/Ctrl.svg)+![Right](icon/Right.svg) to speed up the film.
-2. Press ![Ctrl](icon/Ctrl.svg)+![Left](icon/Left.svg) to speed down the film
-3. If you want to restore the original play speed, press ![R](icon/R.svg) on keyboard.
+1.  On the Movie interface, press **Ctrl**+![Right](icon/Right.svg) on the keyboard to speed up the film playback.
+2.  Press **Ctrl** +![Left](icon/Left.svg) on the keyboard to speed down the film playback.
+3.  If you want to restore the original play speed, press **R** on the keyboard.
 
->![notes](icon/notes.svg): Speed up/down is relative to the original play speed. Every pressing is 0.1 times. Maximum speed is 2 times of the original play speed and the minimum is 0.1 times.
+>![notes](icon/notes.svg) : Speed up/down is relative to the original play speed. The video playback speed increases / decreases by 0.1 times by default each time it is sped up / down. Press and hold **Ctrl**+![Right](icon/Right.svg) or ![Left](icon/Left.svg) on the keyboard and the playback speed will increase or decrease. The maximum playback speed is 2 times the original playback speed and the minimum playback speed is 0.1 times the original playback speed.
 
 ## Basic operations
-On Deepin Movie interface, you can do many operations according to needs.
+
+On the Movie interface, you can do many operations according to your needs.
 
 ### Adjust Window
 
-1. Right click on Deepin Movie interface.
-2. Select **Fullscreen** to play in fullscreen.
-3. Select **Mini Mode** to play in mini mode.
-4. Select **Always on Top** to put the window on top layer.
+You can adjust the window size as you wish during playback.
 
-> ![notes](icon/notes.svg): You can also drag and drop the window in equal proportion by needs.
+ Right-click on the Movie interface:
+- Select **Fullscreen** to play in fullscreen.
+- Select **Mini Mode** to play in mini mode.
+- Select **Always on Top** to put the window on the top layer.
+- You can also drag the window edge to adjust the window size.
 
-![0|window](jpg/window.jpg)
+>![notes](icon/notes.svg) : Double-click the window to switch between **Fullscreen** and **Normal Window**.
+
+![0|window](jpg/window.png)
 
 ### Select Play Mode
 
-1. Right click on Deepin Movie interface.
-2. Select **Play Mode**, you can:
-  - Check **Order Play**, films in playlist will be played orderly.
-  - Check **Shuffle Play**, films in playlist will be played disorderly, but won't repeat a film over and over.
-  - Check **Single Play**, the player will stop when the current film played.
-  - Check **Single Loop**, the film will be played over and over.
-  - Check ** List Loop**, the whole playlist will be played over and over.
+1.  Right-click on the Movie interface.
+2.  Select **Play Mode** and you can:
+ - Select **Order Play** and the  films in the playlist will be played orderly until the last one.
+ - Select **Shuffle Play** and films in the playlist will be played randomly. Loop shuffle play mode will continue after finishing playing all the files in the playlist.
+ - Select **Single Play** and the player will stop after playing the current film.
+ - Select **Single Loop** and the film will be played over and over again.
+ - Select **List Loop** and the whole playlist will be played over and over again.
 
 ![0|play_mode](jpg/play_mode.png)
 
 ### Adjust Frame
-
-1. Right click on Deepin Movie interface.
-2. Select **Frame**, you can:
-  - Adjust the film aspect ratio between 4:3, 16:9, 16:10, 1.85:1 and 2.35:1.
-  - Rotate the film frame clockwise or counterclockwise.
-  - Jump to previous frame/next frame.
+1.  Right-click on the Movie interface.
+2. Select **Frame** and you can:
+ - Adjust the film aspect ratio between 4:3, 16:9, 16:10, 1.85:1 and 2.35:1.
+ - Rotate the film frame clockwise or counterclockwise.
+ - Jump to previous frame/next frame.
 
 ![0|frame](jpg/frame.png)
 
 ### Set Sound
-
-1. Right click on Deepin Movie interface.
-2. Select **Sound** > **Channel**, you can:
-  - Check **Stereo**, the film will be played in stereo.
-  - Check **Left channel**, the film will be played in left channel.
-  - Check **Right channel**, the film will be played in right channel.
-3. Select **Sound** > **Track**, you can select to play the film in a track.
+1.  Right-click on the Movie interface.
+2.  Select **Sound** and you can:
+ - Select **Channel** and select the channel on which the film is played.
+ - Select **Track** and select the play track for the film.
 
 ![0|sound](jpg/sound.png)
 
 ### Set Subtitle
-
-1. Right click on Deepin Movie interface.
-2. Select **Subtitle**, you can:
-  - Check **Load**, to manually load subtitles.
-  - Check **Online Search**, to search subtitles online for the film and auto load the subtitles.
-  - Check **Select**, to select a subtitle for the film.
-  - Check **Hide**, to hide the current film subtitle.
-  - Check **Encodings**, to select an encoding for the film.
+1.  Right-click on the Movie interface.
+2. Select **Subtitle** and you can:
+ - Select **Load**  to manually load subtitles.
+ - Select **Online Search** to search subtitles online for the film and load the subtitles after successful match automatically.
+ - Check **Select** to switch between multiple subtitles for the film.
+ - Select **Hide** to hide the current film subtitle.
+ - Select **Encodings** to select an encoding for the film to solve the garbled subtitles in some cases.
 
 ![0|subtitle](jpg/subtitle.png)
 
-### Take a Screenshot
-
-1. Right click on Deepin Movie interface.
-2. Select **Screenshot**, you can:
-  - Check **Film Screenshot**, to take a screenshot of the film in current frame.
-  - Check **Burst Shooting**, to take 15 pictures of the film in different times.
+### Take Screenshots
+1.  Right-click on the Movie interface.
+2.  Select **Screenshot** and you can:
+ - Select **Film Screenshot** to take a screenshot of the film in current frame.
+ - Select **Burst Shooting** to take 15 screenshots of the film in different times and finally form a preview of the plot burst shooting.
+ - Select **Go To Screenshot Folder** to view the screenshots.
 
 ![0|screenshot](jpg/screenshot.png)
 
 ### View Film Info
 
-1. Right click on Deepin Movie interface.
-2. Select **Film Info**, you can view the file type, resolution, file size, duration and file path of the file.
+1.  Right-click on the Movie interface.
+2.  Select **Film Info** and you can view the film info, codec info and audio info of the film. 
 
-> ![notes](icon/notes.svg): You can also right click on playlist to select **Film Info** to view.
-
-![1|info](jpg/info.jpg)
 
 ## Playlist Management
 
-### Show/Hide Playlist
+You can enter the playlist to add or delete the video files.
 
-1. Right click on Deepin Movie interface.
-2. Check **Playlist** to show playlist and check again to hide playlist.
+### Add Films to the Playlist
 
-> ![notes](icon/notes.svg): You can also click on ![playlist](icon/playlist.svg) on the main interface to show/hide playlist.
+You can add films to the playlist by the following ways:
+- Right-click on the Movie interface and select **Open file/Open folder/Open URL/Open CD/DVD** or click ![menu](icon/icon_menu.svg) > **Open file/Open folder**  to add films to the playlist.
+- You can also drag files/folders directly to the playlist.
 
-![1|playlist](jpg/playlist.jpg)
+### Delete Film from the Playlist
 
-### Add Film to Playlist
+1.  Click ![movie](icon/episodes_normal.svg )on the Movie interface.
+2. Hover the mouse pointer over video file and right-click to delete it from the playlist.
 
-You can add film to playlist by the following ways:
-- Show the playlist, drag and drop file/folder to it.
-- Right click on the main interface, and select **Open File/Open Folder/Open URL/Open CD/DVD** to add.
-- Click on ![main_menu](icon/main_menu.svg) on Deepin Movie interface, and select **Open File/Open Folder** to add.
+> ![tips](icon/tips.svg): On the playlist interface, hover the mouse pointer over the video file and click![关闭图标](icon/close.svg) to delete it.
 
-### Delete Film from Playlist
+![list](jpg/list-manag.png)
 
-1. On the playlist of Deepin Movie, hover on a film.
-2. Click on the delete button on top right corner to delete file from playlist.
 
-![1|delete](jpg/delete.jpg)
+### Clear the Playlist
 
-### Clear Playlist
-
-1. Right click on the playlist.
-2. Select **Clear playlist** to clear films from the playlist.
-
-![1|clear](jpg/clear.jpg)
-
+1.  Click![movie](icon/episodes_normal.svg )on the Movie interface.
+2.  Click the **Empty** icon under Playlist or  right-click to select **Empty playlist**.
 
 ### Display in File Manager
 
-1. Right click on the playlist.
-2. Select **Display in file manager** to show the film file in file manager.
-
-![1|display](jpg/display.jpg)
+1.   Click![movie](icon/episodes_normal.svg )on the Movie interface.
+2.  Hover the mouse pointer over the video file and right-click to select **Display in file manager** to show the film file in file manager.
 
 ## Main Menu
-### Basic Settings
 
-1. On Deepin Movie interface, click on ![main_menu](icon/main_menu.svg).
-2. Select **Settings** > **Basic settings**.
-3. In the option **Play**, you can:
- - Check the box of **Clear playlist when exit**, the playlist will be cleared when you exit Deepin Movie.
- - Check the box of **Remember playback position**, the film will be played automatically from last position played when Deepin Movie runs.
- - Check the box of **Auto add similar files to play**,the related film files will be played one by one after the current film played.
- - Check the box of **Show video preview on mouseover**, the film preview will be shown when hovering on the progress bar.
- - Check the box of **Open a new player for each file played**, a new player will be opened when playing a film file.
- - Check the box of **Pause when minimized**, the film will be paused when minimizing Deepin Movie window.
-4. In the option of **Screenshot**, you can select the path to save screenshot.
+On the main menu, you can open files/folders, switch window themes, view help manual and get more information about Movie.
+### Settings
 
-![1|basic](jpg/basic.jpg)
+You can set the basic information, shortcut keys and subtitiles.
 
-### Shortcuts Settings
+#### Basic Settings
 
-1. On Deepin Movie interface, click on ![main_menu](icon/main_menu.svg).
-2. Select **Settings** > **Shortcuts**.
-3. You can set the shortcuts for playback, frame/sound, file, subtitle and screenshot.
+1.  Right-click or click ![界面按钮图标](icon/icon_menu.svg)on the Movie interface.
+2.  Click **Settings** > **Basic**.
+3.  In the option **Play**, you can:
+  - Check the **Clear playlist when exit** box to clear the playlist when you exit Movie.
+  - Check the **Remember playback position** box to resume the film automatically from the last position played when Movie runs.
+  - Check the **Auto add similar files to play **box to add the similar film files in the same folder to the playlist  for playback in order.
+  - Check the  **Show video preview on mouseover** box to show the film preview when hovering on the progress bar.
+  - Check the **Pause when minimized** to pause the playback automatically when minimizing the Movie window.
+4.  In the option of **Screenshot**, you can select the path to save screenshots as you wish.
 
-![1|settings](jpg/settings.jpg)
+![1|basic](jpg/basic.png)
 
-### Subtitle Settings
 
-1. On Deepin Movie interface, click on ![main_menu](icon/main_menu.svg).
-2. Select **Settings** > **Subtitle**.
-3. You can set the font and font size for subtitles.
 
-> ![notes](icon/notes.svg): You can also click on **Restore Defaults** to restore all settings.
+#### Shortcuts Settings
 
-![1|subtitle_settings](jpg/subtitle_settings.jpg)
+1.  Right-click or click ![界面按钮图标](icon/icon_menu.svg)on the Movie interface.
+2.  Select **Settings** > **Shortcuts**.
+3.  You can set the shortcuts for playback, frame/sound, file, subtitle and screenshot.
 
-### Switch Theme
+![1|settings](jpg/settings.png)
 
-The theme of Deepin Movie is dark by default, you can click on **Light Theme** to switch.
 
-1. On Deepin Movie interface, click on ![main_menu](icon/main_menu.svg).
-2. Select **Light Theme**.
-3. The interface will switch to light theme.
 
-![1|theme](jpg/theme.jpg)
+#### Subtitle Settings
+
+1.   Right-click or click ![界面按钮图标](icon/icon_menu.svg)on the Movie interface.
+2.  Select **Settings** > **Subtitle**.
+3.  You can set the font and font size for subtitles.
+>  ![attention](icon/attention.svg): Click **Restore Defaults** on the interface to restore all settings.
+
+![1|subtitlesettings](jpg/subtitlesettings.png)
+
+
+
+### Theme
+
+The window theme includes Light Theme, Dark Theme and System Theme (default).
+
+1.  On the Movie interface, click![icon_menu](icon/icon_menu.svg).
+2.  Click **Theme** to select a theme.
 
 ### Help
 
-1. On Deepin Movie interface, click on ![main_menu](icon/main_menu.svg).
-2. Select **Help**.
-3. View the manual.
+View Help to get more information about Movie.
 
-
+1.   On the Movie interface, click ![icon_menu](icon/icon_menu.svg) .
+2.  Select **Help**.
+3.  View the manual.
 
 ### About
 
-1. On Deepin Movie interface, click on ![main_menu](icon/main_menu.svg).
-2. Select **About**.
-3. View the version description.
-
-
+1.  On the Movie interface, click ![icon_menu](icon/icon_menu.svg) .
+2.  Select **About**.
+3.  View the version description.
 
 ### Exit
 
-1. On Deepin Movie interface, click on ![main_menu](icon/main_menu.svg).
-2. Click on **Exit** to exit.
+1.   On the Movie interface, click ![icon_menu](icon/icon_menu.svg).
+2.  Click **Exit** to exit.

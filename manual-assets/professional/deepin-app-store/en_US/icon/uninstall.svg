@@ -1,21 +1,27 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<svg width="60px" height="22px" viewBox="0 0 60 22" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 50.2 (55047) - http://www.bohemiancoding.com/sketch -->
+<svg width="61px" height="23px" viewBox="0 0 61 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
     <title>uninstall</title>
-    <desc>Created with Sketch.</desc>
     <defs>
         <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-1">
             <stop stop-color="#4FBDFF" offset="0%"></stop>
             <stop stop-color="#199FF3" offset="100%"></stop>
         </linearGradient>
     </defs>
-    <g id="浅色" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="按钮的下载和安装状态" transform="translate(-901.000000, -670.000000)">
-            <g id="uninstall" transform="translate(901.000000, 670.000000)">
-                <rect id="Rectangle-5" stroke-opacity="0.3" stroke="#1D82FF" fill="url(#linearGradient-1)" x="0.5" y="0.5" width="59" height="21" rx="4"></rect>
-                <text id="Uninstall" font-family="SourceHanSansSC-Normal, Source Han Sans SC" font-size="11" font-weight="normal" line-spacing="14" fill="#FFFFFF">
-                    <tspan x="7" y="16">Uninstall</tspan>
-                </text>
+    <g id="页面1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="详情页" transform="translate(-210.000000, -146.000000)">
+            <g transform="translate(60.000000, 55.000000)" id="icon">
+                <g transform="translate(151.000000, 58.000000)">
+                    <g>
+                        <g id="uninstall" transform="translate(0.000000, 34.000000)">
+                            <rect id="Rectangle-5" stroke-opacity="0.3" stroke="#1D82FF" fill="url(#linearGradient-1)" fill-rule="nonzero" x="0" y="0" width="59" height="21" rx="4"></rect>
+                            <g id="编组" transform="translate(6.000000, 2.000000)" fill="#FFFFFF" font-family="SourceHanSansSC-Normal, Source Han Sans SC" font-size="11" font-weight="normal">
+                                <text id="Uninstall">
+                                    <tspan x="0" y="13"> Uninstall</tspan>
+                                </text>
+                            </g>
+                        </g>
+                    </g>
+                </g>
             </g>
         </g>
     </g>

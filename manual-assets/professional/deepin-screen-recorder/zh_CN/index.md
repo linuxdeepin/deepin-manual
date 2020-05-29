@@ -1,4 +1,4 @@
-# 截图录屏|../common/deepin-screen-recorder.svg|
+# 截图录屏|../common/deepin-screenshot.svg|
 
 ## 概述
 
@@ -187,6 +187,7 @@
 5. 如果截图中包含了个人隐私信息，请点击工具栏展开面板中的 ![模糊](icon/vague_normal.svg) 或 ![马赛克](icon/Mosaic_normal.svg) 来涂抹。
 
 ![2|blurtool](jpg/blurtool.jpg)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 ![2|mosaictool](jpg/mosaictool.jpg)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -322,6 +323,7 @@
 - 选择 **指定位置**，点击后弹出选取文件夹对话框，选择文件夹后，截图文件将自动保存到用户设定的文件夹目录下。
 - 选择 **PNG/JPG/BMP**，设置图片格式。
 - 选择 **复制到剪贴板**，将图片复制到剪切板。
+- 选择 **显示光标**，光标在截图区域内，截图生成图片时会同时显示光标所在的位置和样式。
 
 ### 录屏
 
@@ -329,7 +331,11 @@
 
 ![0|工具栏](jpg/recorder-bar.png)
 
-> ![notes](icon/notes.svg)：若在控制中心>个性化中关闭窗口特效，录屏功能将会被隐藏。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+> ![notes](icon/notes.svg)：
+- 若在控制中心>个性化中关闭窗口特效，录屏功能将会被隐藏。
+-  x86、ARM平台上支持录屏功能但不支持录制声音；龙芯、SW平台不支持录屏功能。
 
 <table class="block1">
     <caption>图标说明</caption>
@@ -378,7 +384,7 @@
 - 当接入设备支持声音录制、摄像头功能时，用户可以设置相应的操作。
 - 当接入设备不支持声音录制、摄像头功能时，按钮为置灰状态，用户不能设置相应的操作。
 
-> ![notes](icon/notes.svg)：x86、ARM平台上支持录屏功能但不支持录制声音；龙芯、SW平台不支持录屏功能。
+
 
 #### 设置录制格式和帧率
 

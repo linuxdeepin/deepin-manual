@@ -2,84 +2,119 @@
 
 ## Overview
 
-Deepin Boot Maker is a tool to make deepin boot disk developed by Deepin Technology Team. It's easy to operate with simple interface.
+Boot Maker is an easy-to-use tool with a simple interface to help you make system boot disks conveniently.
+
+![0|boot-maker](jpg/select-file.png)
+
+## Guide
+
+### Run Boot Maker
+
+1. Click ![deepin-launcher](icon/deepin-launcher.svg) on the Dock to enter the interface of launcher.
+
+2. Locate ![deepin-boot-maker](icon/deepin-boot-maker.svg) by scrolling the mouse wheel or searching "Boot Maker" in the Launcher interface and click it to run. 
+
+3. Right-click![deepin-boot-maker](icon/deepin-boot-maker.svg) to:
+
+   - Select **Send to desktop** to create a shortcut on the desktop.
+   - Select  **Send to dock** to fix it onto the dock.
+   - Select **Add to startup** to run it automatically when the computer is turned on.
+
+###  Exit Boot Maker
+
+- On the main interface, click![close_icon](icon/close.svg) to exit.
+- Right-click ![deepin-boot-maker](icon/deepin-boot-maker.svg)  on the Dock, select **Close all** or **Force Quit** to exit.
+- On interface of Device Manager, click ![icon_menu](icon/icon_menu.svg)  and select **Exit** to exit.
 
 
 ## Basic Operations
 
 ### Preparation
 
-1. Download the latest official image file from official website.
-2. Prepare a 8GB USB drive.
-3. Run Deepin Boot Maker.
- - Deepin Boot Maker is built in deepin.
- - You can download its newest version from official website.
- - You can also extract deepin-boot-maker.exe from the image file in Windows.
+1. Download the latest official image file from UOS official website.
+2. Prepare an empty USB disk (8GB).
+3. Run Boot Maker.
+ - Boot Maker is built in UOS system by default, so you can find it in Launcher quickly.
+ - For Windows system, you can also extract xxx-boot-maker.exe from the image file.
+ - You can download its specified version from UOS official website.
 
 ### Select Image File
 
 There are two ways to select the image file:
 
-1.Click on **Select an ISO image file** to select the downloaded file, then click on **Next**.
+1.Click **Select an ISO image file** to select the downloaded file, then click **Next**.
 
-2.Drag an ISO image file and drop it to the interface, then click on **Next**.
-
-
-> ![notes](icon/notes.svg): Please check the MD5 checksum of image file firstly, or will be failed to make.
-
-![0|file](jpg/file.jpg)
+2.Drag an ISO image file and drop it to the interface, then click **Next**.
 
 
-### Select Making Disk
+> ![notes](icon/notes.svg): Please check if the MD5 checksum of image file is the same as that in the UOS official website in advance. Failure would occur due to ISO image files that are not downloaded from UOS official website or not downloaded completely.
 
-Select the making disk and click on **Start making** to complete.
-
-
-> ![tips](icon/tips.svg): Please tick the box of **Formatting disk can increase the making success rate**.
-
-![0|drive](jpg/drive.jpg)
+![0|file](jpg/select-file.png)
 
 
-### Start Making
+### Select Disk
 
-There will be a prompt of **Make Successfully** when completed. During the time of making, please do not remove the disk or shut down the computer.
+Select the USB disk and click **Start**.
 
 
-> ![notes](icon/notes.svg): There will be a prompt when failed to make, you can click on **Feedback** to auto upload the error log.
+> ![tips](icon/tips.svg): It's suggested to check the box **Format the disk to increase the burning success rate**.
 
-![3|making](jpg/making.jpg)
-![3|done](jpg/done.jpg)
-![3|failed](jpg/failed.jpg)
+![0|drive](jpg/drive.png)
+
+
+### Make Successfully
+
+It takes a few minutes to make a boot disk. Please wait patiently. Please do not remove the USB disk or shut down the computer. When the progress bar is full, a prompt **Successful** pops up, which means the boot disk is made successfully.  
+
+![3|making](jpg/making.png)
+![3|done](jpg/success.png)
+
+### Make Failed
+
+Common causes of failure may include:
+
+- Wrong disk format
+- Wrong disk space 
+- Wrong disk mounting (Only applicable for Linux)
+- Image distract error
+- Execute command error
+- Unkown error
+
+![boot-maker](jpg/failed.png)
+
+> ![notes](icon/notes.svg):Click **Feedback** when you see this button, then jump to user feedback page of the community website, and the system will upload the error log automatically. 
+
+
+
+
 
 ## Main Menu
 
+In the main menu, you can switch themes, view manual, and so on.
+
+### Theme
+
+The window theme includes Light Theme, Dark Theme and System Theme (default).
+
+1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
+2. Click  **Theme** to select one.
+
 ### Help
 
-You can click to view the manual, which will help you further know and use Deepin Boot Maker.
+You can click to view the manual, which will help you further know and use Boot Maker.
 
-1. On Deepin Boot Maker interface, click on ![icon_menu](icon/icon_menu.svg) .
-2. Click on **Help**.
+1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
+2. Click **Help**.
 3. View the manual.
-
-
-
-
 
 ### About
 
-You can click to view the version description.
-
-1. On Deepin Boot Maker interface, click on ![icon_menu](icon/icon_menu.svg).
-2. Click on **About**.
+1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
+2. Click **About**.
 3. View the version description.
-
-
-
 
 ### Exit
 
-You can click to exit Deepin Boot Maker.
+1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 
-1. On Deepin Boot Maker interface, click on ![icon_menu](icon/icon_menu.svg).
-
-2. Click on **Exit** to exit.
+2. Click **Exit**.

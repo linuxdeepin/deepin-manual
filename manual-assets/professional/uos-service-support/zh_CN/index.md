@@ -9,8 +9,8 @@
 ### 运行服务与支持
 
 1. 单击任务栏上的启动器 ![deepin-launcher](icon/deepin-launcher.svg)，进入启动器界面。
-2. 上下滚动鼠标滚轮浏览或通过搜索，找到服务与支持![support](jpg/support.png)， 单击运行。
-3. 右键单击 ![support](jpg/support.png)，您可以：
+2. 上下滚动鼠标滚轮浏览或通过搜索，找到服务与支持![support](icon/support.svg)， 单击运行。
+3. 右键单击 ![support](icon/support.svg)，您可以：
 
  - 单击 **发送到桌面**，在桌面创建快捷方式。
  - 单击 **发送到任务栏**，将应用程序固定到任务栏。
@@ -19,7 +19,7 @@
 ### 关闭服务与支持
 
 - 在服务与支持界面单击  ![close_icon](icon/close.svg) ，退出服务与支持。
-- 在任务栏右键单击 ![support](jpg/support.png)，选择 **关闭所有** 退出服务与支持。
+- 在任务栏右键单击 ![support](icon/support.svg)，选择 **关闭所有** 退出服务与支持。
 - 在服务与支持界面单击 ![icon_menu](icon/icon_menu.svg) ，选择 **退出** 来退出服务与支持。
 
 ## 主界面

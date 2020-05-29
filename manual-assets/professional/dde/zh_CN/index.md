@@ -1,12 +1,12 @@
 # 桌面环境|../common/dde.svg|
 
 ## 概述
-统一操作系统(UOS)是一款美观易用、安全可靠的国产桌面操作系统。UOS预装了文件管理器、应用商店、看图、影院等一系列原生应用。它既能让您体验到丰富多彩的娱乐生活，也可以满足您的日常工作需要。随着功能的不断升级和完善，统一操作系统已成为国内最受欢迎的桌面操作系统之一。
+统信操作系统(UOS)是一款美观易用、安全可靠的国产桌面操作系统。UOS预装了文件管理器、应用商店、看图、影院等一系列原生应用。它既能让您体验到丰富多彩的娱乐生活，也可以满足您的日常工作需要。随着功能的不断升级和完善，统信操作系统已成为国内最受欢迎的桌面操作系统之一。
 
 ![1|desk](jpg/desk.jpg)
 
 ### 系统简介
-初次进入统一操作系统，会自动打开欢迎程序。您可以观看视频了解系统功能，选择桌面模式和图标主题，进一步了解该系统。
+初次进入统信操作系统，会自动打开欢迎程序。您可以观看视频了解系统功能，选择桌面模式和图标主题，进一步了解该系统。
 
 ![welcome](jpg/welcome.png)
 
@@ -82,7 +82,7 @@
 
 ![1|wallpaper](jpg/wallpaper.jpg)
 
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 > ![tips](icon/tips.svg)：勾选 **自动更换壁纸**，设置自动更换壁纸的时间间隔。您还可以设置在“登录时”和“唤醒时”自动更换壁纸。
 
 > ![tips](icon/tips.svg)： 您还可以在图片查看器中设置您喜欢的图片为桌面壁纸。
@@ -139,6 +139,7 @@
 ![1|efficient](jpg/efficient.jpg)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
 您可以通过以下操作来切换显示模式：
 
 1. 右键单击任务栏。
@@ -172,6 +173,7 @@
 ![message](jpg/message.png)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
 您还可以点击任务栏上的 ![notification](icon/notification.svg)， 打开通知中心，查看所有通知。
 
 ### 使用智能助手
@@ -180,7 +182,7 @@
 
 使用以下方法可以唤醒智能助手：
 
-- 通过快捷键 Super + q ，唤出助手对话框界面。
+- 通过快捷键 **Super** + **q** ，唤出助手对话框界面。
 - 支持固定语“你好，小华”或“你好，小华+命令语”唤起桌面智能助手，唤出助手对话界面。
 
 使用智能助手文字输入、语音输入的操作步骤如下。
@@ -240,6 +242,8 @@
 |注销![logout_normal](icon/logout_normal.svg)|清除当前登录用户的信息。|
 |系统监视器![deepin-system-monitor](icon/deepin-system-monitor.svg)|快速启动系统监视器。|
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
 > ![notes](icon/notes.svg)：当系统存在多个账户时才显示 ![userswitch_normal](icon/userswitch_normal.svg)。
 
 
@@ -283,6 +287,7 @@
 ![1|sortapp](jpg/sortapp.jpg)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
 在小窗口模式下，默认按照使用频率排列应用。
 
 ### 查找应用
@@ -350,12 +355,14 @@
 
 
 ## 控制中心
-统一操作系统通过控制中心来管理系统的基本设置，包括帐户管理、网络设置、日期和时间、个性化设置、显示设置、系统升级等。当您进入桌面环境后，点击任务栏上的![controlcenter](icon/controlcenter.svg) 即可打开控制中心窗口。
+统信操作系统通过控制中心来管理系统的基本设置，包括帐户管理、网络设置、日期和时间、个性化设置、显示设置、系统升级等。当您进入桌面环境后，点击任务栏上的![controlcenter](icon/controlcenter.svg) 即可打开控制中心窗口。
 
 ### 首页介绍
 控制中心首页主要展示各个设置模块，方便日常查看和快速设置。
 
 ![2|dcchomepage](jpg/dcc.png)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 打开控制中心的某一设置模块后，可以通过左侧导航栏快速切换到另一设置模块。
 
@@ -431,7 +438,7 @@
 4. 使用指纹设备录入指纹。
 5. 待指纹添加成功之后点击 **完成**。
 
-> ![notes](icon/notes.svg)：您可以添加多个指纹密码；**清除指纹** 会将指纹密码全部清空。
+> ![notes](icon/notes.svg)：您可以添加10个指纹密码；**清除指纹** 会将指纹密码全部清空。
 
 
 #### 删除帐户
@@ -738,8 +745,11 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 
 1. 在控制中心首页，点击 ![sound_normal](icon/sound_normal.svg)。
 2. 点击 **扬声器**，进入扬声器设置界面。
-3. 打开 **扬声器** 开关。
-4. 调节输出音量，和左右声道平衡。
+3. 打开 **扬声器** 开关，您可以：
+
+   - 通过拖曳滑块调节输出音量和左/右声道平衡。
+   - 打开 **音量增强**，音量的可调节区间由0~100% 转变为0~150%。
+
 
 > ![tips](icon/tips.svg)：若关闭扬声器，系统全部静音，您将无法听到系统音效和声音。
 
@@ -769,6 +779,8 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 蓝牙能够实现短距离的无线通信。通过蓝牙与附近的其它蓝牙设备连接，而无需网络或连接线。常见的蓝牙设备包括：蓝牙键盘、蓝牙鼠标、蓝牙耳机、蓝牙音响等。
 
 ![0|bluetooth](jpg/bluetooth.png)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 > ![notes](icon/notes.svg)：大多数笔记本电脑都配备有蓝牙模块，您只需开启蓝牙开关；而大部分台式电脑都没有配备蓝牙，您可以购买蓝牙适配器，插入到电脑的USB端口中使用。
 
@@ -829,6 +841,8 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 对系统电源进行一些设置，让笔记本电池更耐用，让系统更安全。
 
 ![0|power](jpg/power.png)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 > ![notes](icon/notes.svg)：如果您使用的是台式机，将不会看到节能模式设置和“使用电池”的选项。
 
@@ -907,6 +921,8 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 
 ![0|touchpad](jpg/touchpad.png)
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
 若您使用的是笔记本电脑，可以开启 **输入时禁用触控板**，**插入鼠标时禁用触控板**，并开启 **掌压检测** 设置 **最小接触面** 和 **最小压力值**，以避免误触触控板。
 
 您还可以调节触控板的 **指针速度**，控制手指移动时指针移动的速度；开启自然滚动，变更滚动方向。
@@ -928,6 +944,7 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 
 ![0|graphics-tablet](jpg/graphics-tablet.png)
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 1. 在控制中心首页，点击![drawing](icon/drawing.svg) 。
 2. 选择 **笔** 模式。
@@ -1034,6 +1051,8 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 ### 辅助功能
 
 在辅助功能界面，您可以使用桌面智能助手、语音听写、语音朗读、文本翻译等功能。
+
+![0|auxiliary](jpg/auxiliary_function.png)
 
 #### 桌面智能助手
 

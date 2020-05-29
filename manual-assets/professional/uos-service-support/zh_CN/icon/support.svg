@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>deepin-support_24px</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <filter x="-20.0%" y="-20.0%" width="140.0%" height="140.0%" filterUnits="objectBoundingBox" id="filter-1">
+            <feOffset dx="0" dy="1" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="0.5" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.15 0" type="matrix" in="shadowBlurOuter1" result="shadowMatrixOuter1"></feColorMatrix>
+            <feMerge>
+                <feMergeNode in="shadowMatrixOuter1"></feMergeNode>
+                <feMergeNode in="SourceGraphic"></feMergeNode>
+            </feMerge>
+        </filter>
+        <path d="M-3.5875501,9.59450159 L-3.5875501,3.76125725 L3.75062056,3.76125725 L6.54146446,3.76125725 C8.1522704,3.76125725 9.45808663,5.06707347 9.45808663,6.67787942 C9.45808663,8.28868536 8.1522704,9.59450159 6.54146446,9.59450159 L3.75062056,9.59450159 L-0.670927931,9.59450159 L-3.5875501,9.59450159 Z" id="path-2"></path>
+        <linearGradient x1="25.2139062%" y1="-40.5871022%" x2="25.2139062%" y2="100%" id="linearGradient-4">
+            <stop stop-color="#00F6D8" offset="0%"></stop>
+            <stop stop-color="#09B9EE" stop-opacity="0.202797203" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="100%" y1="50%" x2="0%" y2="50%" id="linearGradient-5">
+            <stop stop-color="#18F2E6" offset="0%"></stop>
+            <stop stop-color="#37E5EE" stop-opacity="0.243826486" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-6">
+            <stop stop-color="#00EFCB" offset="0%"></stop>
+            <stop stop-color="#00DB9B" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="deepin-support_24px" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="编组-31备份-6" filter="url(#filter-1)" transform="translate(2.000000, 2.000000)">
+            <g id="编组-30" transform="translate(9.977657, 10.007205) rotate(-45.000000) translate(-9.977657, -10.007205) translate(2.977657, 3.007205)">
+                <g id="编组-29" transform="translate(0.000000, -0.000000)">
+                    <mask id="mask-3" fill="white">
+                        <use xlink:href="#path-2"></use>
+                    </mask>
+                    <use id="形状结合备份-7" fill="#6734FF" transform="translate(2.935268, 6.677879) rotate(-90.000000) translate(-2.935268, -6.677879) " xlink:href="#path-2"></use>
+                    <path d="M-0.0201937662,13.0595152 L-0.0201937662,2.74032506 C-0.0201937662,4.81139288 1.60627179,6.5025793 3.65157449,6.60625593 L3.85077398,6.61129281 L8.02507867,6.61129281 C8.09799165,6.61129281 8.1704338,6.60927692 8.24235242,6.60529784 L9.81143301,6.60498203 C10.3913942,6.60498203 10.9356247,6.7579635 11.4059725,7.0257745 L-0.0201937662,7.02632506 L-0.0201937662,2.74032506 Z" id="形状结合" fill="#4324BF" mask="url(#mask-3)"></path>
+                </g>
+                <path d="M-7.95807864e-13,3.15907432 C-7.9554605e-13,5.29695077 1.73309129,7.03004206 3.87096774,7.03004206 L3.87096774,7.03004206 L5.869,7.02907432 L5.87,7.03335856 L9.98318345,7.03435546 C11.6745297,7.03435546 13.0456367,8.4054625 13.0456367,10.0968087 C13.0456367,11.788155 11.6745297,13.159262 9.98318345,13.159262 L-2.61479727e-12,13.159262 Z" id="形状结合" fill="url(#linearGradient-4)" opacity="0.833821615"></path>
+                <path d="M-1.8189894e-12,13.159262 L-1.8189894e-12,7.32601768 L7.33817066,7.32601768 L10.1290146,7.32601768 C11.7398205,7.32601768 13.0456367,8.6318339 13.0456367,10.2426398 C13.0456367,11.8534458 11.7398205,13.159262 10.1290146,13.159262 L7.33817066,13.159262 L2.91662217,13.159262 L-1.8189894e-12,13.159262 Z" id="形状结合" fill="url(#linearGradient-5)"></path>
+            </g>
+            <circle id="椭圆形" fill="url(#linearGradient-6)" cx="9.53045973" cy="3.87449062" r="2.91427281"></circle>
+        </g>
+    </g>
+</svg>
