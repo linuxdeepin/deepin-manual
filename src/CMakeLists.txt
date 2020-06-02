@@ -249,7 +249,7 @@ target_link_libraries(dman-search
                       ${DMAN_SEARCH_LINK_LIBS})
 
 # Auto generate qm files and search.db in release mode.
-if (CMAKE_BUILD_TYPE MATCHES Release)
+if (NOT (${CMAKE_BUILD_TYPE} MATCHES "Debug"))
 
     # Generate .qm files from .ts files.
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3")
