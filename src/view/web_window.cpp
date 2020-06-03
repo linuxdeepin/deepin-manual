@@ -272,24 +272,6 @@ void WebWindow::initWebView()
     web_view_->hide();
     web_view_->setAcceptDrops(false);
     slot_ThemeChanged();
-
-
-    web_view_->setContextMenuPolicy(Qt::CustomContextMenu);
-    connect(web_view_, &QWebEngineView::selectionChanged, this, [this]() {
-        web_view_->setContextMenuPolicy(Qt::CustomContextMenu);
-    });
-    QMenu *menu = new QMenu(this);
-    QAction *action =  menu->addAction(QObject::tr("Copy"));
-    connect(web_view_, &QWidget::customContextMenuRequested, this, [ = ]() {
-        if (!web_view_->selectedText().isEmpty()) {
-            connect(action, &QAction::triggered, this, [ = ]() {
-                QApplication::clipboard()->setText(web_view_->selectedText());
-            });
-            menu->exec(QCursor::pos());
-        } else {
-        }
-    });
-
     QWebChannel *web_channel = new QWebChannel;
     web_channel->registerObject("i18n", i18n_proxy);
     web_channel->registerObject("imageViewer", image_viewer_proxy_);
@@ -381,6 +363,25 @@ void WebWindow::setHashWordColor()
     QString strColor = Color.name(QColor::NameFormat::HexRgb);
     web_view_->page()->runJavaScript(QString("setHashWordColor('%1')").arg(strColor));
     completion_window_->updateColor(Color);
+}
+
+void WebWindow::settingContextMenu()
+{
+    web_view_->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(web_view_, &QWebEngineView::selectionChanged, this, [this]() {
+        web_view_->setContextMenuPolicy(Qt::CustomContextMenu);
+    });
+    QMenu *menu = new QMenu(this);
+    QAction *action =  menu->addAction(QObject::tr("Copy"));
+    connect(web_view_, &QWidget::customContextMenuRequested, this, [ = ]() {
+        if (!web_view_->selectedText().isEmpty()) {
+            connect(action, &QAction::triggered, this, [ = ]() {
+                QApplication::clipboard()->setText(web_view_->selectedText());
+            });
+            menu->exec(QCursor::pos());
+        } else {
+        }
+    });
 }
 
 void WebWindow::showEvent(QShowEvent *event)
@@ -484,6 +485,7 @@ void WebWindow::onWebPageLoadFinished(bool ok)
 {
     //改变ｊs颜色
     setHashWordColor();
+    settingContextMenu();
     qDebug() << Q_FUNC_INFO << " onWebPageLoadFinished :" << ok;
     if (ok) {
         QString qsthemetype = "Null";
