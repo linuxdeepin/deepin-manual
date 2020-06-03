@@ -569,6 +569,11 @@ void WebWindow::onSearchAnchorResult(const QString &keyword, const SearchAnchorR
 
 bool WebWindow::eventFilter(QObject *watched, QEvent *event)
 {
+    if (event->type() == QEvent::KeyPress && qApp->activeWindow() == this &&
+            watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
+        search_edit_->lineEdit()->setFocus();
+    }
+
     // Filters mouse press event only.
     if (event->type() == QEvent::MouseButtonPress && qApp->activeWindow() == this &&
             watched->objectName() == QLatin1String("QMainWindowClassWindow")) {

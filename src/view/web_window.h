@@ -98,6 +98,7 @@ private:
     void initDBus();
     void setHashWordColor();
     void settingContextMenu();
+
     QString app_name_;
     QString title_name_;
     SearchManager *search_manager_ {nullptr};
