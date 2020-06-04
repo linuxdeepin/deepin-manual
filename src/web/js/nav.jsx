@@ -2,6 +2,7 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import Scrollbar from './scrollbar.jsx';
+import { kMaxLength } from 'buffer';
 
 class Nav extends Component {
   componentDidMount() {
@@ -127,6 +128,7 @@ class Nav extends Component {
                 cid={h.id}
                 type={h.type}
                 className={this.props.hash == h.id ? 'h hash' : 'h'}
+                title={h.text}
               >
                 {h.text}
               </div>
