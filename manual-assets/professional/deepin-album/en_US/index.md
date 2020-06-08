@@ -1,4 +1,4 @@
-# Album|../common/album.svg|
+# Album|../common/deepin-album.svg|
 
 ## Overview
 

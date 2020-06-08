@@ -264,8 +264,8 @@ div {
       background-color: var(--index-item-background-color);
       border-radius: 18px;
       padding: 0px;
-      width: 160px;
-      height: 160px;
+      width: var(--index-item-size);
+      height: var(--index-item-size);
       margin: 30px 0px 0px 50px;
       display: inline-block;
       text-align: center;
@@ -277,11 +277,13 @@ div {
         margin-top: 8px;
         margin-bottom: 8px; }
       #index .items .item span {
-        width: 130px;
+        width: var(--index-span-width);
+        height: var(--index-span-height);
+        word-break: break-all;
         display: inline-block;
         overflow: hidden;
         text-overflow: ellipsis;
-        white-space: nowrap;
+        white-space: normal;
         font-family: var(--nav-world-font-family);
         font-size: var(--span-font-size);
         line-height: var(--span-line-height);

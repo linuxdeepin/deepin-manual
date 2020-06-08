@@ -86,8 +86,18 @@ class App extends React.Component {
         console.log("fontChangeRequested: fontFamily:"+fontFamily+",fontSize:"+fontSize);
         console.log("fontSize/13.0:"+(fontSize));
         const HTMLGlobal = document.querySelector('html');
-        HTMLGlobal.style.fontFamily = fontFamily;
-        HTMLGlobal.style.fontSize = fontSize;
+        HTMLGlobal.style.fontFamily = fontFamily;    
+        HTMLGlobal.style.fontSize = fontSize;   //设置rem标准   设计图上默认是在14px字体上设计,所以默认1rem = 14px.
+        if ( fontSize >= 18)
+        {
+          document.documentElement.style.setProperty(`--index-item-size`, '170px');
+          document.documentElement.style.setProperty(`--index-span-width`, '140px');
+        }
+        else{
+          document.documentElement.style.setProperty(`--index-item-size`, '160px');
+          document.documentElement.style.setProperty(`--index-span-width`, '130px');
+        }
+        document.documentElement.style.setProperty(`--index-span-height`, '2.9rem'); // 设置首页span只显示两行,故获取其能容纳两行当前字号字体的高度
       });
     });
   }

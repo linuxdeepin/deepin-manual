@@ -39,8 +39,10 @@
       background-color: var(--index-item-background-color);
       border-radius: 18px;
       padding:0px;
-      width: 160px;
-      height: 160px;
+      // width: 160px;
+      // height: 160px;
+      width: var(--index-item-size);
+      height: var(--index-item-size);
       margin: 30px 0px 0px 50px;
       display: inline-block;
       text-align: center;
@@ -53,13 +55,13 @@
         margin-bottom: 8px;
       }
       span {
-        width:130px;
-        // word-break: normal;
+        width: var(--index-span-width);
+        height: var(--index-span-height);
+        word-break: break-all;
         display: inline-block;
         overflow: hidden;
         text-overflow: ellipsis;
-        white-space: nowrap;
-        // font-family: SourceHanSansSC-Medium;
+        white-space: normal;
         font-family: var(--nav-world-font-family);
         font-size: var(--span-font-size);
         line-height: var(--span-line-height);
