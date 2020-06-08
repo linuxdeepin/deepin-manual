@@ -23,20 +23,28 @@
 
 namespace dman {
 
-ImageViewerProxy::ImageViewerProxy(ImageViewer* viewer,
-                                   QObject* parent)
+ImageViewerProxy::ImageViewerProxy(ImageViewer *viewer,
+                                   QObject *parent)
     : QObject(parent),
-      viewer_(viewer) {
+      viewer_(viewer)
+{
 }
 
-ImageViewerProxy::~ImageViewerProxy() {
+ImageViewerProxy::~ImageViewerProxy()
+{
 
 }
 
-void ImageViewerProxy::open(const QString& filepath) {
-  Q_ASSERT(viewer_ != nullptr);
-  Q_UNUSED(filepath);
-  viewer_->open(filepath);
+void ImageViewerProxy::open(const QString &filepath)
+{
+    Q_ASSERT(viewer_ != nullptr);
+    Q_UNUSED(filepath);
+    viewer_->open(filepath);
+}
+
+void ImageViewerProxy::openHttpUrl(const QString &httpUrl)
+{
+    QDesktopServices::openUrl(QUrl(httpUrl));
 }
 
 }  // namespace dman

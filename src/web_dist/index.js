@@ -764,7 +764,9 @@ var Article = function (_Component) {
         case 'A':
           var dmanProtocol = 'dman://';
           var hashProtocol = '#';
+          var httpProtocol = 'http';
           var href = e.target.getAttribute('href');
+          console.log("href:" + href);
           switch (0) {
             case href.indexOf(hashProtocol):
               e.preventDefault();
@@ -780,6 +782,10 @@ var Article = function (_Component) {
 
               var rect = e.target.getBoundingClientRect();
               this.showPreview(appName, hash, rect);
+              return;
+            case href.indexOf(httpProtocol):
+              e.preventDefault();
+              global.qtObjects.imageViewer.openHttpUrl(href);
               return;
           }
       }

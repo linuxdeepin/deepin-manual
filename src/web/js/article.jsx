@@ -267,7 +267,9 @@ export default class Article extends Component {
       case 'A':
         const dmanProtocol = 'dman://';
         const hashProtocol = '#';
+        const httpProtocol = 'http';
         const href = e.target.getAttribute('href');
+        console.log("href:"+ href);
         switch (0) {
           case href.indexOf(hashProtocol):
             e.preventDefault();
@@ -278,6 +280,10 @@ export default class Article extends Component {
             const [appName, hash] = href.slice(dmanProtocol.length + 1).split('#');
             const rect = e.target.getBoundingClientRect();
             this.showPreview(appName, hash, rect);
+            return;
+          case href.indexOf(httpProtocol):
+            e.preventDefault();
+            global.qtObjects.imageViewer.openHttpUrl(href);
             return;
         }
     }
