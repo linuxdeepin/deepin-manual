@@ -333,7 +333,7 @@ div {
       text-indent: 1.5rem; }
     #nav .h:hover {
       border-radius: 8px;
-      background-color: rgba(0, 0, 0, 0.1); }
+      background-color: var(--nav-hover-color); }
   #nav .hash {
     background-color: var(--nav-hash-word-color);
     color: #FFFFFF !important;

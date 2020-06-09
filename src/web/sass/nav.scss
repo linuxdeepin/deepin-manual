@@ -40,7 +40,7 @@
     }
     &:hover {
       border-radius: 8px;
-      background-color: rgba(0, 0, 0, 0.1);
+      background-color: var(--nav-hover-color);
     }
     overflow: hidden;
     text-overflow: ellipsis;

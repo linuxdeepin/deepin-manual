@@ -245,6 +245,7 @@ var App = function (_React$Component) {
         }
         if ("DarkType" == themeType) {
           console.log('DarkType');
+          document.documentElement.style.setProperty('--nav-hover-color', 'rgba(255,255,255,0.1)');
           document.documentElement.style.setProperty('--body-background-color', '#252525');
           document.documentElement.style.setProperty('--body-color-white2black', '#000000');
           document.documentElement.style.setProperty('--app-word-color', '#C0C6D4');
@@ -279,6 +280,7 @@ var App = function (_React$Component) {
           document.documentElement.style.setProperty('--search-context-word-color', '#6D7C88');
         } else if ("LightType" == themeType) {
           console.log('LightType');
+          document.documentElement.style.setProperty('--nav-hover-color', 'rgba(0,0,0,0.1)');
           document.documentElement.style.setProperty('--body-background-color', '#F8F8F8');
           document.documentElement.style.setProperty('--body-color-white2black', '#FFFFFF');
           document.documentElement.style.setProperty('--app-word-color', '#414D68');
