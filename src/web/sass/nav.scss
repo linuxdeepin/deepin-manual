@@ -38,6 +38,10 @@
       margin-right: 11px;
       text-indent: 1.5rem;
     }
+    &:hover {
+      border-radius: 8px;
+      background-color: rgba(0, 0, 0, 0.1);
+    }
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
@@ -48,5 +52,8 @@
     color: #FFFFFF !important;
     border-radius: 8px;
     font-weight: bold;
+    &:hover {
+      background-color: var(--nav-hash-word-color);
+    }
   }
 }

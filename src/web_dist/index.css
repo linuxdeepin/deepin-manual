@@ -331,11 +331,16 @@ div {
       margin-left: 10px;
       margin-right: 11px;
       text-indent: 1.5rem; }
+    #nav .h:hover {
+      border-radius: 8px;
+      background-color: rgba(0, 0, 0, 0.1); }
   #nav .hash {
     background-color: var(--nav-hash-word-color);
     color: #FFFFFF !important;
     border-radius: 8px;
     font-weight: bold; }
+    #nav .hash:hover {
+      background-color: var(--nav-hash-word-color); }
 
 #search {
   width: 80%;
