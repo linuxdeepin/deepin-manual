@@ -74,6 +74,13 @@ class Nav extends Component {
       }
     }
   }
+
+  //右键菜单事件,去除选中状态
+  contentMenu(e){
+    e.preventDefault();
+    document.getSelection().empty();
+  }
+
   render() {
     let max = this.props.hlist[0];
     this.props.hlist.map(h => {
@@ -108,6 +115,7 @@ class Nav extends Component {
         id="nav"
         lang={global.lang}
         onClick={e => this.click(e)}
+        onContextMenu={this.contentMenu.bind(this)}
         style={{
           width: `calc(${maxWidth}px + ${c}rem`
         }}
@@ -129,6 +137,7 @@ class Nav extends Component {
                 type={h.type}
                 className={this.props.hash == h.id ? 'h hash' : 'h'}
                 title={h.text}
+                // onContextMenu={this.contentMenu.bind(this)}
               >
                 {h.text}
               </div>

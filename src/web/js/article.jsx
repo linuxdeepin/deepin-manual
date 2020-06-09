@@ -288,6 +288,24 @@ export default class Article extends Component {
         }
     }
   }
+
+  //右键菜单事件
+  contentMenu(e){
+    switch (e.target.nodeName) {
+      //当前为图片或者链接时,右键清除选中状态.
+      //当前为图片
+      case 'IMG':
+        e.preventDefault();
+        document.getSelection().empty();  
+        return;
+      //当前为链接
+      case 'A':
+        e.preventDefault();
+        document.getSelection().empty();
+        return;
+      }
+  }
+
   render() {
     return (
           <div id="article">
@@ -304,6 +322,7 @@ export default class Article extends Component {
                   dangerouslySetInnerHTML={{ __html: this.props.html }}
                   style={this.state.fillblank}
                   onClick={this.click.bind(this)}
+                  onContextMenu={this.contentMenu.bind(this)}
                 />
                 {this.state.preview != null && (
                   <div

@@ -790,6 +790,26 @@ var Article = function (_Component) {
           }
       }
     }
+
+    //右键菜单事件
+
+  }, {
+    key: 'contentMenu',
+    value: function contentMenu(e) {
+      switch (e.target.nodeName) {
+        //当前为图片或者链接时,右键清除选中状态.
+        //当前为图片
+        case 'IMG':
+          e.preventDefault();
+          document.getSelection().empty();
+          return;
+        //当前为链接
+        case 'A':
+          e.preventDefault();
+          document.getSelection().empty();
+          return;
+      }
+    }
   }, {
     key: 'render',
     value: function render() {
@@ -820,7 +840,8 @@ var Article = function (_Component) {
               tabIndex: '-1',
               dangerouslySetInnerHTML: { __html: this.props.html },
               style: this.state.fillblank,
-              onClick: this.click.bind(this)
+              onClick: this.click.bind(this),
+              onContextMenu: this.contentMenu.bind(this)
             }),
             this.state.preview != null && _react2.default.createElement(
               'div',
@@ -1424,6 +1445,15 @@ var Nav = function (_Component) {
         }
       }
     }
+
+    //右键菜单事件,去除选中状态
+
+  }, {
+    key: 'contentMenu',
+    value: function contentMenu(e) {
+      e.preventDefault();
+      document.getSelection().empty();
+    }
   }, {
     key: 'render',
     value: function render() {
@@ -1465,6 +1495,7 @@ var Nav = function (_Component) {
           onClick: function onClick(e) {
             return _this2.click(e);
           },
+          onContextMenu: this.contentMenu.bind(this),
           style: {
             width: 'calc(' + maxWidth + 'px + ' + c + 'rem'
           }
@@ -1493,6 +1524,7 @@ var Nav = function (_Component) {
                 type: h.type,
                 className: _this2.props.hash == h.id ? 'h hash' : 'h',
                 title: h.text
+                // onContextMenu={this.contentMenu.bind(this)}
               },
               h.text
             );

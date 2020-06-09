@@ -375,12 +375,11 @@ void WebWindow::settingContextMenu()
     QAction *action =  menu->addAction(QObject::tr("Copy"));
     connect(web_view_, &QWidget::customContextMenuRequested, this, [ = ]() {
         if (!web_view_->selectedText().isEmpty()) {
-            connect(action, &QAction::triggered, this, [ = ]() {
-                QApplication::clipboard()->setText(web_view_->selectedText());
-            });
             menu->exec(QCursor::pos());
-        } else {
         }
+    });
+    connect(action, &QAction::triggered, this, [ = ]() {
+        QApplication::clipboard()->setText(web_view_->selectedText());
     });
 }
 
