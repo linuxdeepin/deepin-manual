@@ -277,13 +277,14 @@ div {
         margin-top: 8px;
         margin-bottom: 8px; }
       #index .items .item span {
+        margin-left: 15px;
         width: var(--index-span-width);
-        height: var(--index-span-height);
-        word-break: break-all;
-        display: inline-block;
+        word-break: normal;
         overflow: hidden;
         text-overflow: ellipsis;
-        white-space: normal;
+        display: -webkit-box;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
         font-family: var(--nav-world-font-family);
         font-size: var(--span-font-size);
         line-height: var(--span-line-height);

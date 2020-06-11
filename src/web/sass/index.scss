@@ -55,13 +55,14 @@
         margin-bottom: 8px;
       }
       span {
+        margin-left: 15px;    //保持span居中,当设置display:-webkit-box后,默认居左,故设置其外边距
         width: var(--index-span-width);
-        height: var(--index-span-height);
-        word-break: break-all;
-        display: inline-block;
+        word-break: normal;
         overflow: hidden;
         text-overflow: ellipsis;
-        white-space: normal;
+        display:-webkit-box;    //设置其排列两行
+        -webkit-box-orient:vertical;
+        -webkit-line-clamp:2;
         font-family: var(--nav-world-font-family);
         font-size: var(--span-font-size);
         line-height: var(--span-line-height);

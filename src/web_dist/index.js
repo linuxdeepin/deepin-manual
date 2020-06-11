@@ -135,7 +135,6 @@ var App = function (_React$Component) {
             document.documentElement.style.setProperty('--index-item-size', '160px');
             document.documentElement.style.setProperty('--index-span-width', '130px');
           }
-          document.documentElement.style.setProperty('--index-span-height', '2.9rem'); // 设置首页span只显示两行,故获取其能容纳两行当前字号字体的高度
         });
       });
     }
