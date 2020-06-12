@@ -52,7 +52,7 @@ QList<AppInfo> ManualProxy::sortAppList(QMultiMap<qlonglong, AppInfo> map)
     QMapIterator<qlonglong, AppInfo> it(map);
     QList<AppInfo> listEnd;
     QList<AppInfo> listtmp;
-    qlonglong longlongtmp;
+    qlonglong longlongtmp = 0;
     while (it.hasNext()) {
         it.next();
         //qDebug() << it.value().name;
