@@ -1,6 +1,7 @@
 @charset "utf-8";
 #nav {
-  margin: 0px 0 0;
+  margin: 0 0 0 0;
+  padding-bottom: 10px;
   // font-family: SourceHanSansSC-Medium;
   font-family: var(--nav-world-font-family);
   user-select: none;
@@ -12,7 +13,8 @@
   white-space: nowrap;
   overflow-y: auto;
   overflow-x: hidden;
-  height: 100%;
+  height:calc(100% - 10px);
+  
   //border-right: 1px solid rgba(0, 0, 0, 0.1);
   .h {
     cursor: pointer;
@@ -25,7 +27,7 @@
       padding: 4px 0px;
       margin-top: 10px;
       margin-left: 10px;
-      margin-right: 11px;
+      margin-right: 10px;
       text-indent: 0.88rem;
     }
     &[type='h3'] {
@@ -35,7 +37,7 @@
       margin-top: 2px;
       padding: 4px 0 5px;
       margin-left: 10px;
-      margin-right: 11px;
+      margin-right: 10px;
       text-indent: 1.5rem;
     }
     &:hover {
