@@ -65,6 +65,7 @@ WebWindow::WebWindow(QWidget *parent)
     , search_timer_()
     , keyword_("")
     , first_webpage_loaded_(true)
+    , m_winInfoConfig(new QSettings(getWinInfoConfigPath(), QSettings::IniFormat))
 {
     // 使用 redirectContent 模式，用于内嵌 x11 窗口时能有正确的圆角效果
     Dtk::Widget::DPlatformWindowHandle::enableDXcbForWindow(this, true);
@@ -75,6 +76,7 @@ WebWindow::WebWindow(QWidget *parent)
     this->initConnections();
     this->initShortcuts();
     this->initDBus();
+
 
     qApp->installEventFilter(this);
 }
@@ -193,6 +195,17 @@ void WebWindow::onACtiveColorChanged(QString, QMap<QString, QVariant>map, QStrin
     }
 }
 
+QString WebWindow::getWinInfoConfigPath()
+{
+    QDir winInfoPath(QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation));
+    if (!winInfoPath.exists()) {
+        winInfoPath.mkpath(QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation));
+    }
+
+    QString winInfoFilePath(winInfoPath.filePath("wininfo-config.conf"));
+    return winInfoFilePath;
+}
+
 void WebWindow::initUI()
 {
     completion_window_ = new SearchCompletionWindow();
@@ -249,6 +262,19 @@ void WebWindow::initUI()
     connect(m_forwardButton, &DButtonBoxButton::clicked, title_bar_proxy_,
             &TitleBarProxy::forwardButtonClicked);
     connect(title_bar_proxy_, &TitleBarProxy::buttonShowSignal, this, &WebWindow::slot_ButtonShow);
+
+
+    int saveWidth = m_winInfoConfig->value(CONFIG_WINDOW_WIDTH).toInt();
+    int saveHeight = m_winInfoConfig->value(CONFIG_WINDOW_HEIGHT).toInt();
+    qDebug() << "load window_width: " << saveWidth;
+    qDebug() << "load window_height: " << saveHeight;
+    // 如果配置文件没有数据
+    if (saveWidth == 0 || saveHeight == 0) {
+        saveWidth = 1000;
+        saveHeight = 600;
+    }
+    resize(QSize(saveWidth, saveHeight));
+
 
     this->setFocusPolicy(Qt::ClickFocus);
 }
@@ -307,6 +333,14 @@ void WebWindow::updateBtnBox()
     } else {
         buttonBox->hide();
     }
+}
+
+void WebWindow::saveWindowSize()
+{
+    // 记录最后一个正常窗口的大小
+    m_winInfoConfig->setValue(CONFIG_WINDOW_WIDTH, width());
+    m_winInfoConfig->setValue(CONFIG_WINDOW_HEIGHT, height());
+    qDebug() << "save window_Size:" << width() << ", " << height();
 }
 
 void WebWindow::initShortcuts()
@@ -403,6 +437,7 @@ void WebWindow::showEvent(QShowEvent *event)
 void WebWindow::closeEvent(QCloseEvent *event)
 {
     emit this->closed(app_name_);
+    saveWindowSize();
 
     QWidget::closeEvent(event);
 }

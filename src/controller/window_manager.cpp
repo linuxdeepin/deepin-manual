@@ -194,7 +194,7 @@ SearchManager *WindowManager::currSearchManager()
 
 void WindowManager::moveWindow(WebWindow *window)
 {
-    window->resize(kWinWidth, kWinHeight);
+    //window->resize(kWinWidth, kWinHeight);
     window->setMinimumSize(kWinMinWidth, kWinMinHeight);
     const QPoint pos = this->newWindowPosition();
     window->move(pos);

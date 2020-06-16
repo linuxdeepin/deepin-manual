@@ -58,17 +58,18 @@ public:
 
     // Get app name of manual currently presented.
     const QString &appName() const;
-
     bool eventFilter(QObject *watched, QEvent *event) override;
-
     void setSearchManager(SearchManager *searchManager);
-
     void initWebView();
-
     void setTitleName(const QString &title_name);
-
     void cancelTextChanged();
     void updateBtnBox();
+
+    //增加 定义
+    static constexpr const char *CONFIG_WINDOW_WIDTH = "window_width";
+    static constexpr const char *CONFIG_WINDOW_HEIGHT = "window_height";
+    // 保存窗口尺寸
+    void saveWindowSize();
 
     Dtk::Widget::DButtonBoxButton *m_backButton;
     Dtk::Widget::DButtonBoxButton *m_forwardButton;
@@ -122,6 +123,9 @@ private:
     bool first_webpage_loaded_ {true};
     bool is_index_loaded_ {false};
 
+
+    QSettings *m_winInfoConfig = nullptr;
+
 private slots:
     void onSearchEditFocusOut();
     void onSearchButtonClicked();
@@ -135,6 +139,8 @@ private slots:
 
     void onManualSearchByKeyword(const QString &keyword);
     void onACtiveColorChanged(QString, QMap<QString, QVariant>, QStringList);
+
+    QString getWinInfoConfigPath();
 };
 
 }  // namespace dman
