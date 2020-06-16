@@ -294,6 +294,26 @@ div {
         border-radius: 18px;
         background-color: var(--index-item-hover-color); }
 
+#main .tooltip-wp {
+  position: absolute;
+  width: 200px;
+  z-index: 100;
+  display: none; }
+
+#main .tooltip-wp:after {
+  content: attr(data-title);
+  position: absolute;
+  left: 0;
+  top: 0;
+  max-width: 500px;
+  padding: 2px 5px;
+  word-break: normal;
+  background-color: var(--nav-background-color);
+  color: var(--nav-h2-word-color);
+  font-family: var(--nav-world-font-family);
+  border-radius: 5px;
+  border: 1px solid gray; }
+
 #nav {
   margin: 0px 0 0;
   font-family: var(--nav-world-font-family);
