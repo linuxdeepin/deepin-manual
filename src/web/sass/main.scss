@@ -1,7 +1,11 @@
 @charset "utf-8";
 
-#main {
+//去除最外层滚动条
+body {
+    overflow: hidden;
+}
 
+#main {
     .tooltip-wp{
         position: absolute;
         width: 200px;

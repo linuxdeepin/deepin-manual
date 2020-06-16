@@ -294,6 +294,9 @@ div {
         border-radius: 18px;
         background-color: var(--index-item-hover-color); }
 
+body {
+  overflow: hidden; }
+
 #main .tooltip-wp {
   position: absolute;
   width: 200px;

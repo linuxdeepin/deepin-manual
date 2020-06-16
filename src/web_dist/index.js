@@ -970,7 +970,7 @@ var Item = function (_Component) {
         _react2.default.createElement('br', null),
         _react2.default.createElement(
           'span',
-          { lang: global.lang, title: this.state.title },
+          { lang: global.lang },
           this.state.title
         )
       );
