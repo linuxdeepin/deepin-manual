@@ -22,7 +22,7 @@ You can run, exit or create a shortcut for Archive Manager by the following ways
  - Click **Send to dock** to fix it on Dock.
  - Click **Add to startup** to add it to startup and it will auto run when the system boots.
 
-> ![tips](icon/tips.svg): You can set Archive Manager in the control center as the default compression and decompression viewer. Please refer to [Default Program Settings](#Default Program Settings) for details.
+> ![tips](icon/tips.svg)Tips: You can set Archive Manager in the control center as the default compression and decompression viewer. Please refer to [Default Program Settings](#Default Program Settings) for details.
 
 ### Exit Archive Manager
 
@@ -44,11 +44,11 @@ It is available for you to compress a single file/folder/package or a collection
 
 1. On the Archive Manager interface, click **Select File** to select the file to be compressed and click **Open**.
 
-   > ![tips](icon/tips.svg): You can drag one or more files directly to the Archive Manager interface for compression.
+   > ![tips](icon/tips.svg)Tips: You can drag one or more files directly to the Archive Manager interface for compression.
    
 2.  Click  ![plus](icon/icon_plus.svg) to add files to be compressed.
 
-   > ![tips](icon/tips.svg): It is available for you to click  ![icon_menu](icon/icon_menu.svg) > **Open file** to add files to be compressed.
+   > ![tips](icon/tips.svg)Tips: It is available for you to click  ![icon_menu](icon/icon_menu.svg) > **Open file** to add files to be compressed.
 
    ![1|compressor](jpg/compress-add.png)
 
@@ -58,7 +58,7 @@ It is available for you to compress a single file/folder/package or a collection
 
 5.  If you enable the advanced option mode, it is available for you to set the package encryption password and volume compression.
 
-   > ![notes](icon/notes.svg): The default package format is zip and the available formats are 7z, cbz, exe and zip.
+   > ![notes](icon/notes.svg)Notes: The default package format is zip and the available formats are 7z, cbz, exe and zip.
    
    ![1|compressor](jpg/compress-file.png)
 
@@ -66,7 +66,7 @@ It is available for you to compress a single file/folder/package or a collection
 
 7.  Click **View** to view the specific storage location or click **Back** to return to the main interface after successful compression.
 
-   > ![tips](icon/tips.svg): You can also right-click **Compress** to compress the file.
+   > ![tips](icon/tips.svg)Tips: You can also right-click **Compress** to compress the file.
 
    ![1|compressor](jpg/compress-success.png)
 
@@ -77,11 +77,11 @@ It is available for you to compress a single file/folder/package or a collection
 3.  Click **Extract to:  /home/de/Desktop**  to customize the extraction path.
 4.  Click **Extract** to extract the files to the default path.
 
-   > ![notes](icon/notes.svg): When the file to be extracted is encrypted, you need to enter the password to complete extraction.
+   > ![notes](icon/notes.svg)Notes: When the file to be extracted is encrypted, you need to enter the password to complete extraction.
 
 5.  Click **View** after successful extraction to view the specific storage location for the files extracted or click **Back** to return to the main interface.
 
-   > ![tips](icon/tips.svg): You can also right-click **Extract** to decompress the file.
+   > ![tips](icon/tips.svg)Tips: You can also right-click **Extract** to decompress the file.
 
    ![1|decompression](jpg/decompression.png)
 
@@ -91,7 +91,7 @@ On the Archive Manager interface, click **Select File** and then select a file t
 
 Click **Extract** or **Extract to  /home/de/Desktop** to extract the files to the corresponding path. You can also customize the extraction path.
 
-> ![notes](icon/notes.svg): When the file to be extracted is encrypted, you need to enter the password to open and extract the files. 
+> ![notes](icon/notes.svg)Notes: When the file to be extracted is encrypted, you need to enter the password to open and extract the files. 
 
 ![1|decompression](jpg/extract.png)
 
@@ -114,7 +114,7 @@ On the main menu, you can open the compression interface, switch window themes, 
  -  Set to automatically open the corresponding folder  after extraction.
  - Set the associated file type.
 
-![tips](icon/tips.svg): Click **Restore Defaults** on the interface to restore the default setting.
+![tips](icon/tips.svg)Tips: Click **Restore Defaults** on the interface to restore the default setting.
 
 ### Theme
 

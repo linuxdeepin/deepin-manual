@@ -15,19 +15,19 @@ You can run, close or create shortcuts for screen capture by the following opera
 ### Run Screen Capture
 
 1.  Click ![deepin-launcher](icon/deepin-launcher.svg) on dock to enter the launcher interface.
-2.  Locate ![deepin-screenshot](icon/deepin-screenshot.svg)by scrolling the mouse wheel or searching "Screen Capture" in the Launcher interface and click it to run. 
+2.  Locate ![deepin-screenshot](icon/deepin-screenshot.svg)by scrolling the mouse wheel or searching "Screen Capture" in the Launcher interface and click it to run. 
 3.  Right-click ![deepin-screenshot](icon/deepin-screenshot.svg) and you can:
 
     - Click **Send to desktop** to create a desktop shortcut.
     - Click **Send to dock** to fix it on Dock.
     - Click **Add to startup** to add it to startup and it will automatically run when the system starts up.
 
-> ![notes](icon/notes.svg): If Screen Capture has been fixed on dock by default, you can also click ![deepin-screenshot](icon/deepin-screenshot.svg) on dock to run it.
+> ![notes](icon/notes.svg)Notes: If Screen Capture has been fixed on dock by default, you can also click ![deepin-screenshot](icon/deepin-screenshot.svg) on dock to run it.
 
 ### Close Screen Capture
 
 - Screen Capture will exit automatically after screenshot or screen recording.
-- On the Screen Capture interface, click ![close](icon/close-normal.svg) to exit Screen Capture.
+- On the Screen Capture interface, click ![close](icon/close-normal.svg) to exit Screen Capture.
 - On the Screen Capture interface, press **Ctrl** + **S** or **Esc** on the keyboard to save the screen capture or exit.
 - On the Screen Capture interface, right-click to select **Save** or **Exit**.
 
@@ -55,7 +55,7 @@ It is convenient and time-saving to perform relevant operations through shortcut
 
 There are three kinds of common screenshot areas, the full screen, program window and customized area. During screenshot, the selected area will be bordered with dashed line and looks brighter than the other area.
 
-> ![notes](icon/notes.svg): When the computer is connected to multiple displays, you can also use Screen Capture to screenshot areas on different displays.
+> ![notes](icon/notes.svg)Notes: When the computer is connected to multiple displays, you can also use Screen Capture to screenshot areas on different displays.
 
 ##### Full Screen Selection
 
@@ -74,7 +74,7 @@ You can select the full screen by the following ways:
 
 You can also take a full screen screenshot directly by the following ways:
 
-- If Screen Capture has been fixed on dock, right-click ![deepin-screenshot](icon/deepin-screenshot.svg) on dock to select **Full screenshot**. 
+- If Screen Capture has been fixed on dock, right-click ![deepin-screenshot](icon/deepin-screenshot.svg) on dock to select **Full screenshot**. 
 - Press ![print](icon/Print.svg) on the keyboard to take a full screen screenshot.
 
 ##### Program Window Selection
@@ -137,7 +137,7 @@ You can draw some simple graphics in the screenshots, such as rectangle, ellipse
 
 While capturing screenshots, you can click the icons on the toolbar to complete various operations. Run Screen Capture and the toolbar will automatically appear below the screenshot area after selecting the screenshot area. 
 
-> ![attention](icon/attention.svg): Your settings in the toolbar and attribute column, such as line thickness and font size will be remembered and applied by default the next time you launch Screen Capture. You are also able to reset it before screen capture. 
+> ![attention](icon/attention.svg)Attention: Your settings in the toolbar and attribute column, such as line thickness and font size will be remembered and applied by default the next time you launch Screen Capture. You are also able to reset it before screen capture. 
 
 
 ![0|截图工具栏](jpg/capture-bar.png)
@@ -309,7 +309,7 @@ You can save the screenshot  by the following ways after launching Screen Captur
 - Click the "Start Shot" icon in the toolbar and press **Ctrl** + **S** to save the screenshot.
 - Right-click the screenshot to select **Save** to save the screenshot.
 
-> ![notes](icon/notes.svg): The screenshot is saved to the desktop by default.
+> ![notes](icon/notes.svg)Notes: The screenshot is saved to the desktop by default.
 
 Click **Options** in the toolbar of the Screen Capture interface and expand the drop-down list:
 
@@ -374,7 +374,7 @@ In the toolbar of Screen Capture, you can set sound, keystroke, camera, etc. to 
 - Camera:  Click **Webcam On** and the camera window is displayed on the recording screen. Drag the camera window border to adjust the window size and position. Click the icon once again to disable the camera. No image can be displayed and it will be displayed as black screen.
 - Click: Click **Show Click** to display mouse and touchscreen during screen recording and click it again to cancel display.
 
-> ![attention](icon/attention.svg): Please check first whether the device connected supports sound recording and camera functions.
+> ![attention](icon/attention.svg)Attention: Please check first whether the device connected supports sound recording and camera functions.
 
 - When the device connected supports sound recording and camera functions, you are able to make corresponding operation settings.
 - When the device connected does not support sound recording and camera functions, the icons are gray  and you are not able to make corresponding operation settings.
@@ -383,7 +383,7 @@ In the toolbar of Screen Capture, you can set sound, keystroke, camera, etc. to 
 
 Click **Options** to expand the drop-down list in the **Screen Capture** toolbar, select the options and you are able to record videos in GIG or MP4 format and set the FPS.
 
-> ![notes](icon/notes.svg): Please start video recording after changing the corresponding settings if the default settings are not what you want.
+> ![notes](icon/notes.svg)Notes: Please start video recording after changing the corresponding settings if the default settings are not what you want.
 
 #### Record Videos
 
@@ -399,7 +399,7 @@ Click the icon on dock or in the system tray to finish recording.
 
 The recorded video will be saved to the desktop automatically.
 
-> ![notes](icon/notes.svg): During video recording, if multi-screen display is connected, whether the multi-screen display is in copy mode or extended mode, only the current operation screen is recorded.
+> ![notes](icon/notes.svg)Notes: During video recording, if multi-screen display is connected, whether the multi-screen display is in copy mode or extended mode, only the current operation screen is recorded.
 
 ### View Help
 

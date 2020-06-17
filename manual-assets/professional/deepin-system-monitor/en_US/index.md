@@ -12,9 +12,9 @@ System Monitor is a system tool monitoring and managing hardware load, program r
 1. In the searching box, you can :
 - Click ![search](icon/search.svg) to input keywords. 
 - Click ![button_voice](icon/button_voice.svg) to speak, and your speech will be turned into words and displayed in the searching box. 
-2. Press  **Enter** to search. 
+2. Press  ![enter](icon/Enter.svg) to search. 
 - All matching information will be displayed in a list. 
-- If searching fails, "No results" will be displayed. 
+- If searching fails, "No search results" will be displayed. 
 
 ![1|search](jpg/search.png)
 
@@ -41,9 +41,9 @@ System Monitor can monitor the CPU, memory and network status of your system:
 
 Click the top right tabs on interface to view "Applications", "My processes" and "All processes".
 
-- Click ![application](icon/application.png) to switch to **Applications**. 
-- Click ![user](icon/user.png) to switch to **My processes**. 
-- Click ![all](icon/all.png) to switch to **All processes**.
+- Click ![application](jpg/app-process.png) to switch to **Applications**. 
+- Click ![user](jpg/my-process.png) to switch to **My processes**. 
+- Click ![all](jpg/all-process.png) to switch to **All processes**.
 
 ![1|monitor](jpg/tab-switch.png)
 
@@ -51,8 +51,8 @@ Click the top right tabs on interface to view "Applications", "My processes" and
 
 You can adjust the process order by Name, CPU, User, Memory, Upload, Download, Disk read, Disk write, PID, Nice and Priority.
 
-1. On System Monitor interface, click the top tabs of process list to sort the processes. Multiple clicks to sort from low to high or high to low.
-3. Right-click the top tabs to check options you want to view or to uncheck options you want to hide.
+- On System Monitor interface, click the top tabs of process list to sort the processes. Multiple clicks to sort from low to high or high to low.
+- Right-click the top tabs to check options you want to view or to uncheck options you want to hide.
 
 ![1|sort](jpg/sort.png)
 
@@ -72,7 +72,7 @@ System Monitor can be used to end processes.
 1. On System Monitor interface, click ![icon_menu](icon/icon_menu.svg).
 
 2. Select **Force end application**.
-> ![notes](icon/notes.svg)：This function can only end GUI processes.
+> ![notes](icon/notes.svg): This function can only end GUI processes.
 
 3. Click the opened application window under the prompt.
 
@@ -121,27 +121,27 @@ In the list of system services, force end application is prohibited.
 
 #### Start system service
 1. Select **Services** tab on System Monitor interface.
-2. Select a process that is not started yet, right-click and select **Start**.
-3. Please enter password if authentication window pops up.
-4. Right-click and select **Startup type**.
+2. Select a process that is not started yet, right-click and select **Start**. Please enter password if authentication window pops up.
+3. **Active** is displayed in the **Active** column.
+4. Right-click and select **Startup type**, you will have two options "Auto" and "Manual".
 5. Right-click and select **Refresh**.
 
-**Active** is displayed in the **Active** column.
+
 
 #### Stop system service
 
 1. Select **Services** tab on System Monitor interface.
-2. Select a process that is started already, right-click and select **Stop**.
-3. Please enter password if authentication window pops up.
+2. Select a process that is started already, right-click and select **Stop**. Please enter password if authentication window pops up.
+3. **Inactive** is displayed in the **Active** column.
 4. Right-click and select **Refresh**.
-
-**Inactive** is displayed in the **Active** column.
 
 You can also right-click a system process and select **Restart**. 
 
 ## Main Menu
 
-### Switch Theme
+In main menu, you can switch monitoring modes and themes, view help manual and learn more information of System Monitor.
+
+### Theme
 
 The window theme includes Light Theme, Dark Theme and System Theme (default).
 
@@ -153,7 +153,10 @@ The window theme includes Light Theme, Dark Theme and System Theme (default).
 System Monitor offers expand view and compact view for you to choose.
 
 1. Click![icon_menu](icon/icon_menu.svg) on the interface.
+
 2. Click **View** to choose one mode.
+
+> ![notes](icon/notes.svg): If you switched views under "Services" tab, you would have to go to "Processes" tab to view the effect.
 
 
 ### Help

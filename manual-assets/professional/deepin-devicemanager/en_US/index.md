@@ -160,7 +160,7 @@ Device Manager is capable to identify built-in and externally connected CD-ROM d
 Other devices include other non-PCI input devices connected to other ports such as electronic pens, handwriting pads, joysticks and so on. 
 
 
-> ![notes](icon/notes.svg)：If several devices are found, you can select one to view its info. If no devices are found, you will see a hint **No Other PCI Devices Found**.
+> ![notes](icon/notes.svg)Notes: If several devices are found, you can select one to view its info. If no devices are found, you will see a hint **No Other PCI Devices Found**.
 
 ### Right-click Operations 
 

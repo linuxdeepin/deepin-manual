@@ -21,7 +21,7 @@ You can run, close or create shortcuts for Album by the following ways.
  - Click **Send to dock** to fix the application on dock.
  - Click **Add to startup** to add the application to startup and it will automatically run when the system starts up.
 
-> ![tips](icon/tips.svg): In Control Center, the user can set Album as the default photo viewing application. Please refer to [Default Application Settings](dman:///dde#Default Application Settings) for specific operations.
+> ![tips](icon/tips.svg)Tips: In Control Center, the user can set Album as the default photo viewing application. Please refer to [Default Application Settings](dman:///dde#Default Application Settings) for specific operations.
 
 ### Exit Album
 
@@ -46,9 +46,9 @@ On the Album interface, you are able to import photos as follows:
 - Drag directly the photo or the folder where the photo is located to the Album interface.
 - Import photos from the mobile device.
 
-> ![tips](icon/tips.svg): Import photos to the empty Album by clicking **Import photos** on the Album interface.
+> ![tips](icon/tips.svg)Tips: Import photos to the empty Album by clicking **Import photos** on the Album interface.
 
-> ![notes](icon/notes.svg): The photo formats supported include BMP, GIF, JPG, PNG, PBM, PGM, PPM, XBM, XPM, SVG, DDS, ICNS, JP2, MNG, TGA, TIFF, WBMP, WEBP, PSD, PDF and EPS.
+> ![notes](icon/notes.svg)Notes: The photo formats supported include BMP, GIF, JPG, PNG, PBM, PGM, PPM, XBM, XPM, SVG, DDS, ICNS, JP2, MNG, TGA, TIFF, WBMP, WEBP, PSD, PDF and EPS.
 
 ### Search Photos 
 
@@ -82,7 +82,7 @@ Double-click or right-click the photo to select **View** and enter the photo vie
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
-> ![tips](icon/tips.svg): Scroll the mouse wheel to enlarge the picture. If the photo size exceeds the window, a navigation window will appear at the lower part. Drag the box in the window to fast locate the corresponding photo areas. Click **x** on the top right corner of the navigation window to close it or right-click the photo to select "Hide navigation window".
+> ![tips](icon/tips.svg)Tips: Scroll the mouse wheel to enlarge the picture. If the photo size exceeds the window, a navigation window will appear at the lower part. Drag the box in the window to fast locate the corresponding photo areas. Click **x** on the top right corner of the navigation window to close it or right-click the photo to select "Hide navigation window".
 
 ![0|copy](jpg/view-pic.png)
 
@@ -121,7 +121,7 @@ You can delete photos from Album by the following ways:
 - Right-click the photo to select **Delete**.
 - On the Album interface, press **Delete** on the keyboard.
 
-> ![tips](icon/tips.svg): The deleted photos in the Album are not deleted permanently but stored in Trash temporarily. When the remaining days displayed on the photo are 0, the photos will be deleted permanently. You are able to restore or delete the photo in advance.
+> ![tips](icon/tips.svg)Tips: The deleted photos in the Album are not deleted permanently but stored in Trash temporarily. When the remaining days displayed on the photo are 0, the photos will be deleted permanently. You are able to restore or delete the photo in advance.
 
 
 ### Favorite Photos
@@ -130,7 +130,7 @@ You can delete photos from Album by the following ways:
 2. Select **Favorite** and the photo will be added to "Favorites".
 3. Right-click the photo in Favorite to **Unfavorite** it.
 
-> ![tips](icon/tips.svg): When viewing a photo, click the ![collect](icon/collect.svg)icon to favorite the photo and click ![collect-active](icon/collect-active.svg)again to unfavorite it.
+> ![tips](icon/tips.svg)Tips: When viewing a photo, click the ![collect](icon/collect.svg)icon to favorite the photo and click ![collect-active](icon/collect-active.svg)again to unfavorite it.
 
 
 ### Rotate Photos
@@ -163,17 +163,17 @@ You can delete photos from Album by the following ways:
 
 On the Album interface, you are able to create new albums, manage photos in the album and view all albums.
 
-> ![notes](icon/notes.svg): **Import**, **Trash** and **Favorites** are albums generated automatically by the system according to the actual conditions, which cannot be deleted and renamed.
-> 
+> ![notes](icon/notes.svg)Notes: **Import**, **Trash** and **Favorites** are albums generated automatically by the system according to the actual conditions, which cannot be deleted and renamed.
+
 ![1|album](jpg/album.png)
 
 
 ### Create New Albums
 
 1.  On the Album interface, Click![create](jpg/create.png) or ![icon_menu](icon/icon_menu.svg)> **New Album**.
-3.  Enter the album name and click **Create**.
+2.  Enter the album name and click **Create**.
 
-> ![tips](icon/tips.svg): You are able to create a new album by right-clicking the album created to select **New Album** or create a new album when adding photos to albums.
+> ![tips](icon/tips.svg)Tips: You are able to create a new album by right-clicking the album created to select **New Album** or create a new album when adding photos to albums.
 
 ![0|album](jpg/album.png)
 
@@ -181,7 +181,9 @@ On the Album interface, you are able to create new albums, manage photos in the 
 ### Adding Photos to Albums
 
 1.  On the Album interface, right-click a photo and select **Add to album**.
-3.  Select an album and add the photo to it.![tips](icon/tips.svg): you are also able to add photos to an album by dragging directly the photo or photo folder to it.
+2.  Select an album and add the photo to it.
+
+>![tips](icon/tips.svg)Tips: you are also able to add photos to an album by dragging directly the photo or photo folder to it.
 
 ![0|add-to-album](jpg/add-to-album.png)
 
@@ -195,7 +197,7 @@ On the Album interface, you are able to create new albums, manage photos in the 
 ### Rename Albums
 
 1.  On the Album interface, right-click the album to be renamed and select **Rename**. 
-3.  Enter the album name and press the **Enter** key on the keyboard or click the blank area of the interface.
+2.  Enter the album name and press the **Enter** key on the keyboard or click the blank area of the interface.
 
 ### Export Albums
 
@@ -213,9 +215,10 @@ In the main menu, you can [Create New Albums](#Create New Albums), [Import Photo
 
 ### Theme
 
+The window theme includes Light Theme, Dark Theme and System Theme (default).
+
 1.  On the Album interface, click ![main_menu](icon/icon_menu.svg).
-2.  Click **Theme** and select **Dark Theme**, **Light Theme** or **System Theme** as needed.
-3.  The interface will switch to the corresponding theme.
+2.  Click **Theme** to choose one theme.
 
 ### Help
 

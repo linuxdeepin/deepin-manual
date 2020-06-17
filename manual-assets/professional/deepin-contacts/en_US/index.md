@@ -76,7 +76,7 @@ On the main interface, click ![18](icon/18.svg) .
 
 2. To find a friend quickly, you can input his/her UOS ID, nickname, remark name, or group name into the searching box.
 
-  > ![notes](icon/notes.svg) ：The object being searched should be somehow related to the UOS ID, instead of a totally stranger.
+  > ![notes](icon/notes.svg) Notes: The object being searched should be somehow related to the UOS ID, instead of a totally stranger.
 
 ### New friend
 
@@ -161,7 +161,7 @@ One default groups classification is displayed here, if you want to add others, 
 1. Hover the cursor over **Groups** and right-click; or click ![19](icon/19.svg), a popping-up box saying  **Add Groups Classification** appears.
 2. click **Add Groups Classification** to input a name, then, a new group classification is created. If you haven't input a name for the new classification when creating it, you can right-click to select **Rename Classification**.
 
-![4add group](jpg/4add group.png)
+![add_group_category](jpg/add_group_category.png)
 
 #### Delete Groups Classification
 
@@ -204,7 +204,7 @@ To create a new group, you can:
 1. When you don't need a group any more, you can choose to dismiss it.
 2. Select the group you want to dismiss, and click  ![15](icon/15.svg) .
 3. Click  **OK**, then the group doesn't exist any more. The group will also disappear from the members' lists of groups automatically.
-> ![notes](icon/notes.svg) : Only the creator of the group can dismiss it. Group members can only select to quit it.
+> ![notes](icon/notes.svg) Notes: Only the creator of the group can dismiss it. Group members can only select to quit it.
 
 #### Transfer Group
 

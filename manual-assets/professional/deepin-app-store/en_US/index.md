@@ -18,7 +18,7 @@ You can run, close or create a shortcut of App Store as follows.
  - Select **Send to dock** to fix it onto the dock.
  - Select **Add to startup** to add it to startup. When the computer starts up, App Store runs automatically.
 
-> ![notes](icon/notes.svg) ：App Store has been fixed on the dock by default. You can click on  ![store-24](icon/store-24.svg) on the dock to run it.
+> ![notes](icon/notes.svg) Notes: App Store has been fixed on the dock by default. You can click on  ![store-24](icon/store-24.svg) on the dock to run it.
 
 
 ### Exit App Store
@@ -115,8 +115,7 @@ App Store offers one-click downloading and installation of applications. During 
 
 App Store supports application synchronization. After signing in, you can synchronize the applications installed on other devices with the same account, and install the Cloud apps at one click.
 
-> ![notes](icon/notes.svg)
-：If you haven't signed in, installed applications will be displayed in local applications only.
+> ![notes](icon/notes.svg)Notes: If you haven't signed in, installed applications will be displayed in local applications only.
 
 #### Local Applications
 
@@ -124,7 +123,7 @@ App Store supports application synchronization. After signing in, you can synchr
 
 2. Click **Download** in the left panel to view downloading/installing progress.
 
-   > ![tips](icon/tips.svg)：you can click the application icon or name to enter the information page to view basic information and then click ![installhover](icon/installhover.svg) .
+   > ![tips](icon/tips.svg)Tips: you can click the application icon or name to enter the information page to view basic information and then click ![installhover](icon/installhover.svg) .
 
    ![1|installprocess](jpg/installprocess.png)
 
@@ -144,9 +143,9 @@ App Store supports application synchronization. After signing in, you can synchr
 
 ### Update/Upgrade Application
 
-To update/upgrade the applications, you can set in Control Center, specific operations refer to [Update Settings](dman:///dde#System Updates).
+To update/upgrade the applications, you can set in Control Center, specific operations refer to [Update Settings](dman:///dde#Update Settings).
 
-> ![notes](icon/notes.svg)：Besides update and upgrade the applications, you can also update and upgrade the system in Control Center if system .
+> ![notes](icon/notes.svg)Notes: Besides update and upgrade the applications, you can also update and upgrade the system in Control Center if system .
 
 ### Uninstall Applications
 
@@ -169,14 +168,14 @@ You can open the information page of any application to view its ratings, downlo
 
 ![1|commenrandrate](jpg/commentandrate.png)
 
-> ![tips](icon/tips.svg)：You can click the icon at the right of the comment to like it.
+> ![tips](icon/tips.svg)Tips: You can click the icon at the right of the comment to like it.
 
 
 - Click the avatar on the title bar and select  **My Comments**  to view and edit all your ratings and comments.
 
 ![1|editcomment](jpg/editcomment.png)
 
-> ![notes](icon/notes.svg)：If you haven't signed in your cloud account, you can not comment or rate but only view comments and ratings.
+> ![notes](icon/notes.svg)Notes: If you haven't signed in your cloud account, you can not comment or rate but only view comments and ratings.
 
 ## Main Menu
 
@@ -186,7 +185,7 @@ You can open the information page of any application to view its ratings, downlo
 
 3. Click **Sign In**.
 
-> ![attention](icon/attention.svg)：If you don't have an account yet, you can click **Sign Up** in the pop-up box to sign up. 
+> ![attention](icon/attention.svg)Attention: If you don't have an account yet, you can click **Sign Up** in the pop-up box to sign up. 
 
 ![login](jpg/login.png)
 

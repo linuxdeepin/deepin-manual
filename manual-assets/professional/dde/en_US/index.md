@@ -53,7 +53,7 @@ Sort the files on your desktop to make it organized and fit your needs.
  - Click **Type** to display files in type.
 
 
-> ![tips](icon/tips.svg): Check **Auto arrange**, icons on the desktop will be listed in order automatically, and if an icon is removed, another one will fill in the blank.
+> ![tips](icon/tips.svg)Tips: Check **Auto arrange**, icons on the desktop will be listed in order automatically, and if an icon is removed, another one will fill in the blank.
 
 #### Auto Merge
 Check “Auto merge” to keep your files on the desktop organized. 
@@ -68,7 +68,7 @@ When it is checked, all files and folders on the desktop will be automatically g
 1. Right-click the desktop.
 2. Click **Icon size**, and choose a proper size.
 
-> ![tips](icon/tips.svg): Press **Ctrl** + ![=](icon/=.svg)/![-](icon/-.svg) to adjust icon size on the desktop and in Launcher.
+> ![tips](icon/tips.svg)Tips: Press **Ctrl** + ![=](icon/=.svg)/![-](icon/-.svg) to adjust icon size on the desktop and in Launcher.
 
 ### Change Display Settings
 You can set display scaling, screen resolution, brightness and so on from the desktop.
@@ -76,7 +76,7 @@ You can set display scaling, screen resolution, brightness and so on from the de
 1. Right-click the desktop.
 2. Click **Display Settings** to open the settings in Control Center.
 
-> ![notes](icon/notes.svg): For specific operations, please refer to [Display Settings](#Display Settings).
+> ![notes](icon/notes.svg)Notes: For specific operations, please refer to [Display Settings](#Display Settings).
 
 ### Change Wallpaper
 Select some elegant and fashionable wallpapers to beautify your desktop and make it distinctive.
@@ -88,8 +88,8 @@ Select some elegant and fashionable wallpapers to beautify your desktop and make
 
 ![1|wallpaper](jpg/wallpaper.png)
 
-> ![tips](icon/tips.svg): Check **Wallpaper Slideshow**, and set the time interval to change wallpaper automatically, or set to change the wallpaper in the process of login or wakeup. 
-> ![tips](icon/tips.svg): You can also set your favorite picture as wallpaper in an image viewer.
+> ![tips](icon/tips.svg)Tips: Check **Wallpaper Slideshow**, and set the time interval to change wallpaper automatically, or set to change the wallpaper in the process of login or wakeup. 
+> ![tips](icon/tips.svg)Tips: You can also set your favorite picture as wallpaper in an image viewer.
 
 ### Set Screensaver
 The screensaver was used to protect the monitor before, but now it is mainly for protecting personal privacy from peering.
@@ -146,7 +146,7 @@ You can send application icons from Launcher to Dock so as to open it quickly.
 | ![shutdown](icon/system-shutdown.svg) | Click to enter the shutdown interface. |
 | ![trash](icon/trash_icon.svg) | Trash. |
 
-> ![tips](icon/tips.svg)：Move the mouse pointer to the running app in the Dock and you will see its preview window.
+> ![tips](icon/tips.svg)Tips：Move the mouse pointer to the running app in the Dock and you will see its preview window.
 
 ### Switch Display Mode
 There are two display modes of Dock: fashion mode and efficient mode. The latter one displays application icons in smaller ones.
@@ -206,7 +206,7 @@ AI Assistant is pre-programmed by the system, supporting voice and text input, i
 3. It is also available to input text instructions after the input box appears.
 
 ![ai1](jpg/ai1.png) ![ai2](jpg/ai2.png)
-> ![tips](icon/tips.svg)：Select the text information needed and press **Ctrl**+**Alt**+ **P** for voice broadcast; after connecting the recording devices, press **Ctrl**+ **Alt** + **O** in the input box to enter the dictation mode and convert the voice input to texts.
+> ![tips](icon/tips.svg)Tips: Select the text information needed and press **Ctrl**+**Alt**+ **P** for voice broadcast; after connecting the recording devices, press **Ctrl**+ **Alt** + **O** in the input box to enter the dictation mode and convert the voice input to texts.
 #### Set up Speech to Text
 
 Speech to Text is set in Assistive Tools in Control Center.  It is enabled by default and can be disabled as needed. 
@@ -222,9 +222,7 @@ Text to Speech is only available for the currently-selected texts and the operat
 1. Select the texts, press  **Ctrl** + **AIt** + **O** on the keyboard or right-click **Text to Speech** to start reading.
 2. Click the speaker icon or right-click **Stop reading** to stop reading.
 
-> ![notes](icon/notes.svg)
->
-> : If you select other texts in the reading process, the current speaker icon will be displayed in the newly-selected location. Click the speaker icon, use the shortcut key or right-click **Text to Speech**, the current reading will be interrupted and  it starts reading the newly-selected texts.
+> ![notes](icon/notes.svg)Notes: If you select other texts in the reading process, the current speaker icon will be displayed in the newly-selected location. Click the speaker icon, use the shortcut key or right-click **Text to Speech**, the current reading will be interrupted and  it starts reading the newly-selected texts.
 
 #### Set up Translation
 
@@ -234,9 +232,7 @@ Translation is only available for the currently-selected texts and the operation
 
 1. Select the texts, press  **Ctrl** + **AIt** + **U** on the keyboard or right-click **Translate** to start translation.
 
-> ![notes](icon/notes.svg)
->
-> : It only supports Chinese-English translation currently.
+> ![notes](icon/notes.svg)Notes: It only supports Chinese-English translation currently.
 
 ### View Date and Time
 
@@ -260,7 +256,7 @@ There are two ways to enter the shutdown interface:
 | Log out ![logout_normal](icon/logout_normal.svg)             | End all the processes and initialize the system.             |
 | Start system monitor![deepin-system-monitor](icon/deepin-system-monitor.svg) | View the running processes and end the one you want.         |
 
-> ![notes](icon/notes.svg): ![userswitch_normal](icon/userswitch_normal.svg) will be shown if there are multiple accounts in the system.
+> ![notes](icon/notes.svg)Notes: ![userswitch_normal](icon/userswitch_normal.svg) will be shown if there are multiple accounts in the system.
 
 ### Trash
 You can find all deleted files in the trash, which can be restored or emptied.
@@ -271,7 +267,7 @@ You can find all deleted files in the trash, which can be restored or emptied.
 2. Right-click the file and select **Restore**.
 3. The file will be in its original path.
 
-> ![tips](icon/tips.svg): To restore file/folder just deleted, press **Ctrl** +  **Z** to undo it. If the original folder of the file has been deleted, the deleted file will be restored to a new folder automatically created.
+> ![tips](icon/tips.svg)Tips: To restore file/folder just deleted, press **Ctrl** +  **Z** to undo it. If the original folder of the file has been deleted, the deleted file will be restored to a new folder automatically created.
 
 #### Empty Trash
 Empty trash to release the occupied space on your disk.
@@ -281,7 +277,7 @@ Empty trash to release the occupied space on your disk.
 ## Launcher
 Launcher ![launcher](icon/deepin-launcher.svg)  helps you manage all the installed applications, where you can quickly find an application by category navigation or by a search.
 
-> ![tips](icon/tips.svg): A newly-installed application in Launcher is followed with a blue dot.
+> ![tips](icon/tips.svg)Tips: A newly-installed application in Launcher is followed with a blue dot.
 
 
 ### Switch Launcher Modes
@@ -325,7 +321,7 @@ In Launcher, right-click an app icon and you can:
 
 ![0|sendto](jpg/sendto.png)
 
-> ![notes](icon/notes.svg): You can drag the application icon from Launcher to Dock. But you cannot drag and drop the application while it is running. Then you can right-click the application icon in Dock and select **Dock** to fix it.
+> ![notes](icon/notes.svg)Notes: You can drag the application icon from Launcher to Dock. But you cannot drag and drop the application while it is running. Then you can right-click the application icon in Dock and select **Dock** to fix it.
 
 #### Delete App Shortcut
 Delete an app shorcut from the desktop directly, or remove it from Dock or Launcher.
@@ -341,7 +337,7 @@ In Launcher, right-click the icon and you can:
 - **Remove from desktop** to delete the shortcut from the desktop.
 - **Remove from dock** to remove the application icon from Dock.
 
-> ![notes](icon/notes.svg): The above operations only delete the shortcut rather than uninstall the applications.
+> ![notes](icon/notes.svg)Notes: The above operations only delete the shortcut rather than uninstall the applications.
 
 ### Install Applications
 Search and install more applications you want in App Store.
@@ -356,7 +352,7 @@ For the applications whose shortcuts have been created on the desktop or Dock, y
 
 To open the application only shown in Launcher, click the icon or right-click it and select **Open**.
 
-> ![tips](icon/tips.svg): For the frequently-used applications, right-click the app icon and select **Add to startup** to run it when the computer boots.
+> ![tips](icon/tips.svg)Tips: For the frequently-used applications, right-click the app icon and select **Add to startup** to run it when the computer boots.
 
 ### Uninstall Applications
 Uninstall the applications you no longer use to save disk space.
@@ -364,7 +360,7 @@ Uninstall the applications you no longer use to save disk space.
 1. In Launcher, right-click the application icon.
 2. Click **Uninstall**.
 
-> ![tips](icon/tips.svg): In **Fashion mode**, drag the application icon in Launcher fullscreen mode to ![trash](icon/trash_icon.svg) in the Dock to uninstall the application.
+> ![tips](icon/tips.svg)Tips: In **Fashion mode**, drag the application icon in Launcher fullscreen mode to ![trash](icon/trash_icon.svg) in the Dock to uninstall the application.
 
 
 ## Control Center
@@ -437,7 +433,7 @@ If "Login Without Password" is enabled, you only need to click ![login](icon/log
 2. Click the current account.
 3. Switch on **Login Without Password** and you can log into the system without a password.
 
-> ![tips](icon/tips.svg): If both **Auto Login** and **Login Without Password** are enabled, once reboot or start, your computer will enter the desktop directly without requiring a password.
+> ![tips](icon/tips.svg)Tips: If both **Auto Login** and **Login Without Password** are enabled, once reboot or start, your computer will enter the desktop directly without requiring a password.
 
 #### Set Fingerprint Password
 
@@ -448,7 +444,7 @@ Fingerprint password is used in system login, application authorization, and oth
 3. Click **Add Fingerprint**.
 4. Put your finger on a fingerprint reader and follow the instructions repeatedly until your fingerprint is added successfully.
 
-> ![notes](icon/notes.svg): You can add multiple fingerprint passwords for one account; Click **Delete fingerprint** to remove all fingerprint passwords. 
+> ![notes](icon/notes.svg)Notes: You can add multiple fingerprint passwords for one account; Click **Delete fingerprint** to remove all fingerprint passwords. 
 
 
 #### Delete Account
@@ -458,13 +454,13 @@ Fingerprint password is used in system login, application authorization, and oth
 3. Click **Delete Account**.
 4. In the confirm dialog, click **Delete**.
 
-> ![attention](icon/attention.svg): The logged in account cannot be deleted.
+> ![attention](icon/attention.svg)Attention: The logged in account cannot be deleted.
 
 ### Cloud Account
 
 By signing in UOS ID, you can sync the current system settings to the cloud, including network settings, sound settings, mouse settings, update settings, power settings, theme, wallpaper, launcher, and Dock. To sync the settings from the cloud to another computer, just sign in with the same UOS ID on that computer.
 
-> ![tips](icon/tips.svg): When "Auto Sync" is enabled, you can uncheck the unwanted options; when it is disabled, all settings will not be synced.
+> ![tips](icon/tips.svg)Tips: When "Auto Sync" is enabled, you can uncheck the unwanted options; when it is disabled, all settings will not be synced.
 
 ![0|sync](jpg/sync.png)
 
@@ -501,9 +497,9 @@ Set a proper display scale to have a normal display.
 2. Click **Display Scaling**.
 3. Change the display scaling, log out and log in again to see the changes.
 
-> ![notes](icon/notes.svg): When a HiDPI screen is detected, the display scaling will be automatically adjusted.
+> ![notes](icon/notes.svg)Notes: When a HiDPI screen is detected, the display scaling will be automatically adjusted.
 
-> ![notes](icon/notes.svg): For the applications that do not support scaling, right-click it in Launcher and select **Disable display scaling** to get a better display.
+> ![notes](icon/notes.svg)Notes: For the applications that do not support scaling, right-click it in Launcher and select **Disable display scaling** to get a better display.
 
 ##### Change Refresh Rate
 1. On the homepage of Control Center, click ![display_normal](icon/display_normal.svg).
@@ -528,11 +524,9 @@ Expand your desktop by multiple screens! Use VGA/HDMI/DP cable to connect your c
     - **XXX only**: display the screen content only on one screen.
     - **Customize**: customize the display settings for multiple screens.
 
-> ![tips](icon/tips.svg): In multiple displays, press **Super** + **P** to show its OSD. Hold **Super** and press **P** or click to select the options. Once releasing the keys, the selected mode will take into effect.
+> ![tips](icon/tips.svg)Tips: In multiple displays, press **Super** + **P** to show its OSD. Hold **Super** and press **P** or click to select the options. Once releasing the keys, the selected mode will take into effect.
 
->![notes](icon/notes.svg)
->
->:  When the multiple displays are in the extend mode, only the main screen supports desktop icon display, right-click menu operation and other functions, while the sub-screens do not. 
+>![notes](icon/notes.svg)Notes: When the multiple displays are in the extend mode, only the main screen supports desktop icon display, right-click menu operation and other functions, while the sub-screens do not. 
 
 ##### Custom Settings
 
@@ -541,7 +535,7 @@ Expand your desktop by multiple screens! Use VGA/HDMI/DP cable to connect your c
 3. Choose **Merge** or **Split** the screens, specify the main screen, set the resolution and refresh rate, and rotate screen if you want.
 4. Click **Save**.
 
-> ![notes](icon/notes.svg): "Merge" means duplicate mode, "Split" means extend mode. 
+> ![notes](icon/notes.svg)Notes: "Merge" means duplicate mode, "Split" means extend mode. 
 
 ### Default Application Settings
 If you have installed several applications with similar functions, such as text editor, choose one of them to be the default application to open that type of file.
@@ -587,7 +581,7 @@ You can change the appearance of desktop and windows here by adjusting the trans
 2. Click **General**.
 3. Select one window theme, which will be used as system theme.
 
-> ![tips](icon/tips.svg): "Auto" means changing window theme automatically according to the sunset and sunrise time. After sunrise, it is light theme; after sunset, it is dark theme.
+> ![tips](icon/tips.svg)Tips: "Auto" means changing window theme automatically according to the sunset and sunrise time. After sunrise, it is light theme; after sunset, it is dark theme.
 
 #### Change Accent Color
 Accent color refers to the color used when you select one option or file in the system.
@@ -633,7 +627,7 @@ Enable window effect to make the desktop and the windows more beautiful and deli
 ### Network Settings
 After login, you should connect to a network first and then surf the Internet! 
 
-> ![tips](icon/tips.svg): Check your network status by hovering over the network icon in Dock.
+> ![tips](icon/tips.svg)Tips: Check your network status by hovering over the network icon in Dock.
 
 ![0|network](jpg/network.png)
 
@@ -715,7 +709,7 @@ VPN (Virtual Private Network) extends a private network across a public network,
 3. Click ![add](icon/add.svg) or ![import](icon/import.svg) to create or import VPN settings.
 4. After being created, you can click **Export** to export the configuration file. 
 
-> ![notes](icon/notes.svg): If you don't want to use the VPN as the default routing, switch on **Only applied in corresponding resources**.
+> ![notes](icon/notes.svg)Notes: If you don't want to use the VPN as the default routing, switch on **Only applied in corresponding resources**.
 
 #### System Proxy
 
@@ -732,7 +726,7 @@ VPN (Virtual Private Network) extends a private network across a public network,
 3. Select a proxy type, and fill in the IP address, port, etc.
 3. Click **Save** to save the proxy settings.
 
-> ![notes](icon/notes.svg): After being configured, right-click an application in Launcher and check **Use a proxy**, and then the application will be opened by proxy.
+> ![notes](icon/notes.svg)Notes: After being configured, right-click an application in Launcher and check **Use a proxy**, and then the application will be opened by proxy.
 
 #### Network Info
 
@@ -755,7 +749,7 @@ Set your speaker and microphone properly to make you hear more comfortable and s
 3. Switch on **Speaker** to enable the speaker.
 4. Adjust the output volume and left/right balance.
 
-> ![tips](icon/tips.svg): If "Speaker" is switched off, you will not hear any sound.
+> ![tips](icon/tips.svg)Tips: If "Speaker" is switched off, you will not hear any sound.
 
 #### Microphone
 
@@ -764,7 +758,7 @@ Set your speaker and microphone properly to make you hear more comfortable and s
 3. Switch on **Microphone** to enable the microphone.
 4. Adjust the input volume.
 
-> ![tips](icon/tips.svg): Here is how to set input volume: Speak to your microphone at a normal volume and view "Input Level". If the indicator changes obviously according to the volume, then the input volume is at a proper level. Note that a high input volume will make the sound distorted.
+> ![tips](icon/tips.svg)Tips: Here is how to set input volume: Speak to your microphone at a normal volume and view "Input Level". If the indicator changes obviously according to the volume, then the input volume is at a proper level. Note that a high input volume will make the sound distorted.
 
 #### Advanced Settings
 
@@ -777,7 +771,7 @@ Set your speaker and microphone properly to make you hear more comfortable and s
 1. On the homepage of Control Center, click ![sound_normal](icon/sound_normal.svg).
 2. Click **Sound Effects** to enter the setting page and check or uncheck the sound effects as you like.
 
-> ![notes](icon/notes.svg): Click to listen to the sound effect.
+> ![notes](icon/notes.svg)Notes: Click to listen to the sound effect.
 
 
 ### Bluetooth Settings
@@ -785,14 +779,14 @@ Bluetooth helps you make a short-distance wireless communication between Bluetoo
 
 ![0|bluetooth](jpg/bluetooth.png)
 
-> ![notes](icon/notes.svg): Most laptops have Bluetooth. Just enable and use it; but most desktop computers do not have it and you can purchase one Bluetooth adapter and plug it into computer USB port to enable the function.
+> ![notes](icon/notes.svg)Notes: Most laptops have Bluetooth. Just enable and use it; but most desktop computers do not have it and you can purchase one Bluetooth adapter and plug it into computer USB port to enable the function.
 
 #### Change Bluetooth Name
 
 1. On the homepage of Control Center, click ![bluetooth_normal](icon/bluetooth_normal.svg).
 2. Click ![edit](icon/edit.svg) after the Bluetooth name, and enter a new name for your computer.
 
-> ![notes](icon/notes.svg): Your computer new name will be broadcasted automatically, and other devices should rescan to find it.
+> ![notes](icon/notes.svg)Notes: Your computer new name will be broadcasted automatically, and other devices should rescan to find it.
 
 #### Connect to a Bluetooth Device
 
@@ -846,7 +840,7 @@ Power management turns the system to a low-power state when inactive, thus makin
 
 ![0|power](jpg/power.png)
 
-> ![notes](icon/notes.svg): If you are using a desktop computer, you will not see Power Saving Mode and On Battery. 
+> ![notes](icon/notes.svg)Notes: If you are using a desktop computer, you will not see Power Saving Mode and On Battery. 
 
 #### Power Saving Mode
 To reduce the power consumption of your laptop, turn on power saving mode to reduce screen brightness.
@@ -856,7 +850,7 @@ To reduce the power consumption of your laptop, turn on power saving mode to red
 3. Switch on **Power Saving Mode** to enter power saving mode.
 4. Switch on **Auto Mode Switch**, your laptop will enter power saving mode automatically when unplugged, and revert to normal mode when plugged in.
 
-> ![notes](icon/notes.svg): Power saving mode is only for laptops.
+> ![notes](icon/notes.svg)Notes: Power saving mode is only for laptops.
 
 #### Password Required on Wakeup
 
@@ -870,7 +864,7 @@ To reduce the power consumption of your laptop, turn on power saving mode to red
 2. Click **Plugged In** or **On Battery**.
 3. Set the time to turn off the monitor.
 
-> ![notes](icon/notes.svg): The time to turn off monitor, suspend and lock screen can be different in the settings of "Plugged In" and "On Battery".
+> ![notes](icon/notes.svg)Notes: The time to turn off monitor, suspend and lock screen can be different in the settings of "Plugged In" and "On Battery".
 
 #### Time to Suspend
 
@@ -878,7 +872,7 @@ To reduce the power consumption of your laptop, turn on power saving mode to red
 2. Click **Plugged In** and **On Battery**.
 3. Set the time to suspend.
 
-> ![tips](icon/tips.svg): There is an option for laptops plugged in - **Suspend on lid close**. Switch it on according to your needs. 
+> ![tips](icon/tips.svg)Tips: There is an option for laptops plugged in - **Suspend on lid close**. Switch it on according to your needs. 
 
 #### Time to Lock Screen
 1. On the homepage of Control Center, click ![power_normal](icon/power_normal.svg).
@@ -896,22 +890,22 @@ Mouse and Touchpad are common computer input devices. They control cursors in th
 2. Click **General**.
 3. Switch on **Left Hand**, and adjust **Scrolling Speed**, **Double-click Speed** for both mouse and touchpad.
 
-> ![notes](icon/notes.svg): If "Left Hand" is enabled, left-click and right-click exchange.
+> ![notes](icon/notes.svg)Notes: If "Left Hand" is enabled, left-click and right-click exchange.
 
 #### Mouse
 Adjust your mouse settings here to make it fit your habits.
 
-> ![notes](icon/notes.svg): If there is no touchpad, “Disable touchpad when a mouse is connected” will not be shown.
+> ![notes](icon/notes.svg)Notes: If there is no touchpad, “Disable touchpad when a mouse is connected” will not be shown.
 
 1. On the homepage of Control Center, click ![mouse_touchpad_normal](icon/mouse_touchpad_normal.svg).
 2. Click **Mouse**.
 3. Adjust **Pointer Speed**, and switch on **Natural Scrolling**/**Mouse Acceleration** if you want.
 
-> ![notes](icon/notes.svg): Pointer Speed is the speed at which the mouse pointer moves when moving the mouse.
+> ![notes](icon/notes.svg)Notes: Pointer Speed is the speed at which the mouse pointer moves when moving the mouse.
 
-> ![notes](icon/notes.svg): Mouse Acceleration is a form of pointer acceleration that determines how fast the pointer moves in response to movements of the mouse or finger on a touchpad. It can make your pointer more precise in some situations, but it can also make the pointer less precise in many others. 
+> ![notes](icon/notes.svg)Notes: Mouse Acceleration is a form of pointer acceleration that determines how fast the pointer moves in response to movements of the mouse or finger on a touchpad. It can make your pointer more precise in some situations, but it can also make the pointer less precise in many others. 
 
-> ![notes](icon/notes.svg): If Natural Scrolling is enabled, when you scroll down, the page will scroll down, when you scroll up, the page will scroll up as well. The scrolling direction of the page is the same as that of the mouse wheel. 
+> ![notes](icon/notes.svg)Notes: If Natural Scrolling is enabled, when you scroll down, the page will scroll down, when you scroll up, the page will scroll up as well. The scrolling direction of the page is the same as that of the mouse wheel. 
 
 
 #### Touchpad
@@ -932,7 +926,7 @@ TrackPoint, also called pointing stick, is a small joystick used as a pointing d
 ### Drawing Tablet
 Drawing tablet, also called graphics tablet and pen tablet, is a computer input device that enables a user to hand draw images, animations and graphics with a special pen-like stylus. 
 
-> ![notes](icon/notes.svg): This part will be shown only if a drawing tablet is connected.
+> ![notes](icon/notes.svg)Notes: This part will be shown only if a drawing tablet is connected.
 
 1. On the homepage of Control Center, click ![drawing](icon/drawing.svg).
 2. Choose **Pen** mode.
@@ -975,7 +969,7 @@ You have set a keyboard layout during system installation, but you can add more 
 2. Click **Keyboard Layout**.
 3. Click the layout you want to switch to.
 
-> ![tips](icon/tips.svg): You can also select one or more shortcuts to switch the keyboard layouts in order. Set the range the layout applies to: the whole system or the current application.
+> ![tips](icon/tips.svg)Tips: You can also select one or more shortcuts to switch the keyboard layouts in order. Set the range the layout applies to: the whole system or the current application.
 
 #### System Language
 
@@ -994,7 +988,7 @@ Add multiple languages into the list to change language conveniently.
 3. Select the language, and the language package will be installed automatically.
 4. After being successfully installed, log out and log in again to view the changes.
 
-> ![attention](icon/attention.svg): The keyboard layout may also be changed in the process of switching the system language. Please make sure that you select a correct keyboard layout to enter the login password.
+> ![attention](icon/attention.svg)Attention: The keyboard layout may also be changed in the process of switching the system language. Please make sure that you select a correct keyboard layout to enter the login password.
 
 #### Shortcuts
 The shortcut list includes all shortcuts in the system. View, modify and customize the shortcuts here as you want.
@@ -1015,9 +1009,7 @@ The shortcut list includes all shortcuts in the system. View, modify and customi
 3. Click the shortcut you want to modify.
 4. Press new shortcut to change it.
 
-> ![tips](icon/tips.svg): To disable a shortcut, please press ![Backspace](icon/Backspace.svg) on the keyboard. To cancel modifying, press **Esc**
->
-> or click Restore Defaults at the bottom.
+> ![tips](icon/tips.svg)Tips: To disable a shortcut, please press ![Backspace](icon/Backspace.svg) on the keyboard. To cancel modifying, press **Esc** or click Restore Defaults at the bottom.
 
 ##### Customize Shortcuts
 
@@ -1028,7 +1020,7 @@ The shortcut list includes all shortcuts in the system. View, modify and customi
 5. Click **Add**.
 6. After being successfully added, click **Edit** > ![delete](icon/delete.svg) to delete the custom shortcut.
 
-> ![tips](icon/tips.svg): To change the shortcut, click it and press a new shortcut to change it directly. To edit the name and command of the custom shortcut, click **Edit ** > ![edit](icon/edit.svg) near the shortcut name to enter the shortcut settings.
+> ![tips](icon/tips.svg)Tips: To change the shortcut, click it and press a new shortcut to change it directly. To edit the name and command of the custom shortcut, click **Edit ** > ![edit](icon/edit.svg) near the shortcut name to enter the shortcut settings.
 
 ### Assistive Tools
 
@@ -1062,7 +1054,7 @@ Desktop AI Assistant  boosts your productivity by executing voice commands, such
 
 When there are system updates, it will be notified on the home page of Control Center. Click it to download and install system and application updates. You can also set to download the updates automatically, and switch on **Smart Mirror Switch** to auto connect to the quickest mirror site, which makes your download faster.
 
-> ![tips](icon/tips.svg): If you do not want to get the updates prompt, switch off "Updates Notification" in Update Settings.
+> ![tips](icon/tips.svg)Tips: If you do not want to get the updates prompt, switch off "Updates Notification" in Update Settings.
 
 ![0|update](jpg/update.png)
 
@@ -1075,7 +1067,7 @@ When there are system updates, it will be notified on the home page of Control C
 3. Click the button to download and install updates.
 4. After being updated successfully, shut down or reboot your computer to make the updates come into effect.
 
-> ![notes](icon/notes.svg): You can click the button to pause and resume the downloading process. 
+> ![notes](icon/notes.svg)Notes: You can click the button to pause and resume the downloading process. 
 
 #### Auto Download Updates
 
@@ -1084,7 +1076,7 @@ When there are system updates, it will be notified on the home page of Control C
 3. Switch on **Auto Download Updates**.
 4. When there are system updates, they will be automatically downloaded.
 
-> ![tips](icon/tips.svg):  Switch on **Auto Clear Package Cache** to remove the downloaded package caches regularly. 
+> ![tips](icon/tips.svg)Tips:  Switch on **Auto Clear Package Cache** to remove the downloaded package caches regularly. 
 
 ### System Info
 You can view system version, authorization info, hardware info, and the agreements here.
@@ -1126,7 +1118,7 @@ Authorization management is a pre-installed system tool to help you activate the
 
 3. Choose the proper way to activate the system.
 
-> ![notes](icon/notes.svg) : If the system is not activated, the authorization management icon ![uos1](icon/uos1.svg)will be docked on the tray in the lower right corner and displayed immediately upon startup.
+> ![notes](icon/notes.svg)Notes: If the system is not activated, the authorization management icon ![uos1](icon/uos1.svg)will be docked on the tray in the lower right corner and displayed immediately upon startup.
 #### Activation Method
 
 ##### **On-line Activation**
@@ -1244,7 +1236,7 @@ When there is only one system in the computer, Startup Delay will be switched of
 2. Click **Boot Menu**.
 3. Switch on **Theme** to use it as the theme of boot menu.
 
-> ![tips](icon/tips.svg): You can drag and drop an image to the preview window to change the background of boot menu.
+> ![tips](icon/tips.svg)Tips: You can drag and drop an image to the preview window to change the background of boot menu.
 #### Developer Mode
 
 It is available to use the root permission, execute sudo operations, install and run the unsigned applications that are not in the App Store, which may damage the integrity of the system. No official maintenance services are available for such damage. Please use it with caution. The system is not in developer mode by default.
@@ -1257,7 +1249,7 @@ It is available to use the root permission, execute sudo operations, install and
 
 3. Click **Reboot Immediately** in the pop-up  dialogue and enter the developer mode after rebooting the system.
 
-   ![attention](icon/attention.svg)
+   > ![attention](icon/attention.svg)Attention: You can not exit or undo after you enter Developer Mode. All accounts will have root access.
 
 
 
@@ -1285,7 +1277,7 @@ On the workspace interface, you can add workspace in the following ways:
 - Click ![plus](icon/plus.svg) above.
 - Press <img src="icon/plus.svg" alt="plus" style="zoom:50%;" /> on the keyboard.
 
-> ![notes](icon/notes.svg): When the workspace number has reached its limit, you cannot add more workspaces. 
+> ![notes](icon/notes.svg)Notes: When the workspace number has reached its limit, you cannot add more workspaces. 
 
 ### Switch Workspace
 On the workspace interface and desktop, you can switch workspace in the following ways:
@@ -1322,7 +1314,7 @@ Move the windows to other workspaces in the following ways:
 - On the desktop, press  **Super** + **Shift** + Numeric Keys to move the current window to the specified workspace.
 - On the desktop, press  **AIt** + **Space** or right-click the window title bar to open the window menu, and select **Always on Visible Workspace** or **Move to Workspace Left/Right** to move the current window to the specified workspace.
 
-> ![tips](icon/tips.svg): In the window menu, you can also minimize, maximize, move, resize, stick or close the window.
+> ![tips](icon/tips.svg)Tips: In the window menu, you can also minimize, maximize, move, resize, stick or close the window.
 
 ### Switch Desktop Windows
 Switch desktop windows in the current workspace as below.
@@ -1354,7 +1346,7 @@ A split-screen allows the simultaneous presentation of related graphical and tex
 3. Drag the middle connection to adjust the width of both left and right windows.
 4. You can also put another window on top of the left or right window.
 
-> ![tips](icon/tips.svg): To remove the window from the left or right part, just drag it from the screen edge.
+> ![tips](icon/tips.svg)Tips: To remove the window from the left or right part, just drag it from the screen edge.
 
 ## Keyboard Interaction
 
@@ -1372,9 +1364,7 @@ You can use the keyboard to switch between various interface areas, select objec
 
 On the touchpad, you can use the following gestures instead of mouse operations.
 
-> ![attention](icon/attention.svg)
->
-> : Your touchpad may not support some of the following gestures. Please confirm whether the touchpad supports multi-touch. 
+> ![attention](icon/attention.svg)Attention: Your touchpad may not support some of the following gestures. Please confirm whether the touchpad supports multi-touch. 
 
 ### Move the Cursor
 
@@ -1469,9 +1459,7 @@ Click with a single finger to finish the mouse click operation on your touchscre
 
 Double-click with a single finger to finish the mouse double-click operation on your touchscreen.
 
-> ![tips](icon/tips.svg)
->
-> :Double-click to select the texts and drag your finger on the screen to select the texts to be selected.
+> ![tips](icon/tips.svg)Tips: Double-click to select the texts and drag your finger on the screen to select the texts to be selected.
 
 ### Move and Drag 
 

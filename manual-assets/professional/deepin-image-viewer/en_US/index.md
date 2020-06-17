@@ -44,7 +44,7 @@ You can use one of the following ways to open image files:
 - Open Image Viewer and drag the image to the interface to open it.
 - Drag the image to the Image Viewer icon on desktop or dock to open it.
 
-> ![tips](icon/tips.svg): In Control Center, you can set Image Viewer as the default image viewer. Please refer to [Default Application Settings](dman:///dde#Default Application Settings) for specific operations.
+> ![tips](icon/tips.svg)Tips: In Control Center, you can set Image Viewer as the default image viewer. Please refer to [Default Applications](dman:///dde#Default Application Settings) for specific operations.
 >
 > The supported images include the following format: BMP, ICO, PG/JPE/JPEG, PNG, TGA, TIF/TIFF, XPM, GIF, SGI, RAW, WEBP, CR2, NEF, DNG, RAF, MEF, MRW, XBM, SVG, ORF and MNG.
 
@@ -64,11 +64,9 @@ You can use one of the following ways to open image files:
 
 
 
-> ![tips](icon/tips.svg): If the image size exceeds the window, a navigation window will appear at the lower left corner of the interface, which helps the user to fast locate image areas. You can click the top right corner of navigation window to close it and then it won't automatically show next time. You can select **Hide/Show navigation window** in the right-click context menu.
+> ![tips](icon/tips.svg)Tips: If the image size exceeds the window, a navigation window will appear at the lower left corner of the interface, which helps the user to fast locate image areas. You can click the top right corner of navigation window to close it and then it won't automatically show next time. You can select **Hide/Show navigation window** in the right-click context menu.
 
-> ![notess](icon/notes.svg)
->
-> : The Rotate and Delete icons are grayed out and disabled for system images.
+> ![notess](icon/notes.svg)Notes: The Rotate and Delete icons are grayed out and disabled for system images.
 
 ### Print Images
 
@@ -78,7 +76,7 @@ You can print images in Image Viewer.
 2. Choose a printer and set the print options.
 3. Click **Print ** to send the picture to the printer.
 
-> ![notess](icon/notes.svg)：If you selected a pdf printer, you'll need to choose a location for the printed pdf file.
+> ![notess](icon/notes.svg)Notes: If you selected a pdf printer, you'll need to choose a location for the printed pdf file.
 
 ![0|menu](jpg/menu.png)
 
@@ -89,7 +87,7 @@ You can copy images in Image Viewer.
 1. Right-click the image on the Image Viewer interface and select **Copy**.
 2. On the target place, right-click the blank area and select **Paste** to copy image to the place.
 
-> ![tips](icon/tips.svg)：It copies both the path and the content of picture.
+> ![tips](icon/tips.svg)Tips: It copies both the path and the content of picture.
 
 ### Delete Images
 
@@ -123,9 +121,10 @@ In the main menu, you can switch window themes, view help and get more informati
 
 ### Theme
 
+The window theme includes Light Theme, Dark Theme and System Theme (default).
+
 1. On the Image Viewer interface, click ![main_menu](icon/icon_menu.svg).
-2. Select **Dark Theme**, **Light Theme** or **System Theme** as needed.
-3. The interface will switch to the corresponding theme.
+2. Click **Theme** to choose one.
 
 ### Help
 Click "Help" to get the manual, which will help you further know and use Image Viewer.

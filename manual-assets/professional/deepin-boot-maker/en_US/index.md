@@ -47,7 +47,7 @@ There are two ways to select the image file:
 2.Drag an ISO image file and drop it to the interface, then click **Next**.
 
 
-> ![notes](icon/notes.svg): Please check if the MD5 checksum of image file is the same as that in the UOS official website in advance. Failure would occur due to ISO image files that are not downloaded from UOS official website or not downloaded completely.
+> ![notes](icon/notes.svg)Notes: Please check if the MD5 checksum of image file is the same as that in the UOS official website in advance. Failure would occur due to ISO image files that are not downloaded from UOS official website or not downloaded completely.
 
 ![0|file](jpg/select-file.png)
 
@@ -57,19 +57,19 @@ There are two ways to select the image file:
 Select the USB disk and click **Start**.
 
 
-> ![tips](icon/tips.svg): It's suggested to check the box **Format the disk to increase the burning success rate**.
+> ![tips](icon/tips.svg)Tips: It's suggested to check the box **Format the disk to increase the burning success rate**.
 
 ![0|drive](jpg/drive.png)
 
 
-### Make Successfully
+### Burned Successfully
 
 It takes a few minutes to make a boot disk. Please wait patiently. Please do not remove the USB disk or shut down the computer. When the progress bar is full, a prompt **Successful** pops up, which means the boot disk is made successfully.  
 
 ![3|making](jpg/making.png)
 ![3|done](jpg/success.png)
 
-### Make Failed
+### Burning Failed
 
 Common causes of failure may include:
 
@@ -82,7 +82,7 @@ Common causes of failure may include:
 
 ![boot-maker](jpg/failed.png)
 
-> ![notes](icon/notes.svg):Click **Feedback** when you see this button, then jump to user feedback page of the community website, and the system will upload the error log automatically. 
+> ![notes](icon/notes.svg)Notes: Click **Feedback** when you see this button, then jump to user feedback page of the community website, and the system will upload the error log automatically. 
 
 
 

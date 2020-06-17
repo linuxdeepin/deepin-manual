@@ -67,7 +67,7 @@ Package Installer is used to uninstall .deb packages of those the same or differ
 
 ![1|remove](jpg/remove.png)
 
-> ![attention](icon/attention.svg): The system or other applications would be affected if you uninstalled some applications. Please operate carefully. 
+> ![attention](icon/attention.svg): The system or other applications would be affected if you have uninstalled some applications. Please operate carefully. 
 
 ## Main Menu
 

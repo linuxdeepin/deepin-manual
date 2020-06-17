@@ -12,13 +12,12 @@ You can run, close or create a shortcut for calendar by the following ways.
 
 ### Run Calender
 
-1.  Click ![deepin-launcher](icon/deepin-launcher.svg) on dock to enter the Launcher interface.
-2.  Locate ![draw](icon/dde-calendar.svg)by scrolling the mouse wheel or searching calendar in the Launcher interface and click it to run.
-3.  Right-click ![draw](icon/dde-calendar.svg)and you can:
-
-- Click **Send to desktop** to create a desktop shortcut.
-- Click **Send to dock** to fix it on Dock.
-- Click **Add to startup** to add it to startup and it will auto run when the system boots.
+1. Click ![deepin-launcher](icon/deepin-launcher.svg) on dock to enter the Launcher interface.
+2. Locate ![draw](icon/dde-calendar.svg)by scrolling the mouse wheel or searching calendar in the Launcher interface and click it to run.
+3. Right-click ![draw](icon/dde-calendar.svg)and you can:
+   - Click **Send to desktop** to create a desktop shortcut.
+   - Click **Send to dock** to fix it on Dock.
+   - Click **Add to startup** to add it to startup and it will auto run when the system boots.
 
 
 ### Exit Calendar
@@ -60,7 +59,7 @@ The monthly view is the default view and you can click to switch between differe
 
    ![0|create](jpg/create.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-   
+
    - Type: work, life and other.
    - Event time: all day, start time and end time.
    
@@ -76,9 +75,11 @@ The monthly view is the default view and you can click to switch between differe
    
    - End Repeat: Never, after n times or on the date.
 
- > ![notess](icon/notes.svg): Only when you enable the **Repeat** feature, can **End Repeat** be displayed.
+ > ![notes](icon/notes.svg)Notes: Only when you enable the **Repeat** feature, can **End Repeat** be displayed.
 
 4.  Click **Save** to create the event.
+
+> ![tips](icon/tips.svg)Tips: It supports dragging the event label to the specified time or date.
 
 ### Edit Events
 

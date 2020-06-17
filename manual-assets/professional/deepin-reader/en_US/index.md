@@ -20,7 +20,7 @@ You can run, close or create a shortcut of Document Viewer as follows.
  - Select **Send to dock** to fix it onto the dock.
  - Select **Add to startup** to add it to startup. When the computer starts up, it runs automatically.
 
-> ![tips](icon/tips.svg): You can set Document Viewer as the default application to view documents in Control Center, refer to  [Default Applications](dman:///dde#Default Applications) for details. 
+> ![tips](icon/tips.svg)Tips: You can set Document Viewer as the default application to view documents in Control Center, refer to  [Default Applications](dman:///dde#Default Application Settings) for details. 
 
 
 ### Exit Document Viewer
@@ -50,11 +50,13 @@ You can open a file by:
 
 - Right-clicking it and selecting **Open with** > **Select default program**, and then selecting Document Viewer from the list.
 
-   > ![tips](icon/tips.svg): Document will be opened by default program by directly double clicking on it. You can right-click it and select a default program by clicking on **Properties** > **Open with**. Or you can set a default program for this type of documents in [Default Applications](dman:///dde#Default Applications) from Control Center. 
+   > ![tips](icon/tips.svg)Tips: Document will be opened by default program by directly double clicking on it. You can right-click it and select a default program by clicking on **Properties** > **Open with**. Or you can set a default program for this type of documents in [Default Applications](dman:///dde#Default Application Settings) from Control Center. 
 
 - Clicking **Select File** and selecting a file on Document Viewer interface.
 
 - On Document Viewer interface, pressing ![Ctrl](icon/Ctrl.svg) + ![O](icon/O.svg)and selecting the file you want to open. 
+
+> ![notes](icon/notes.svg)Notes: Document Viewer supports PDF and DJVU formats.
 
 ### Save documents
 
@@ -62,7 +64,7 @@ To save the document that has been edited and modified, you can
 
 - Press![Ctrl](icon/Ctrl.svg) + ![S](icon/S.svg).
 - Click ![icon_menu](icon/icon_menu.svg) > **Save**.
-> ![tips](icon/tips.svg): Besides, you can press![Ctrl](icon/Ctrl.svg) + ![Shift](icon/Shift.svg) + ![S](icon/S.svg) or click ![icon_menu](icon/icon_menu.svg) > **Save as**.
+> ![tips](icon/tips.svg)Tips: Besides, you can press![Ctrl](icon/Ctrl.svg) + ![Shift](icon/Shift.svg) + ![S](icon/S.svg) or click ![icon_menu](icon/icon_menu.svg) > **Save as**.
 
 
 ### Print documents
@@ -120,7 +122,7 @@ On Document Viewer interface, open a file.
    - Right-click the bookmark and select **Remove bookmark**. 
    - Click the colored bookmark icon to cancel/delete the bookmark.
 
-> ![notes](icon/notes.svg): The bookmark icon appears only when the cursor move to the bookmark area, and it disappears when the cursor moves out of the area. It will be colored and always displayed after you click it.
+> ![notes](icon/notes.svg)Notes: The bookmark icon appears only when the cursor moves to the bookmark area, and it disappears when the cursor moves out of the area. It will be colored after you click it when it appears and always displayed no matter where the cursor is.
 
 ### Manage notes
 
@@ -136,12 +138,12 @@ On Document Viewer interface, open a file.
    
    4. Click "**x**" of the window or in any blank area outside the window, the note will be saved automatically.  The selected text will be highlighted after the note is added successfully. 
    
-  > ![tips](icon/tips.svg): You can also right-click at any blank area or the place you want to add a note and select **Add annotation**. After a note is successfully added, a highlighted note icon appears.
-  
-  > ![notes](icon/notes.svg): 
-  > * click "**x**" of the window without inputing any content, then the note is not added successfully or is deleted automatically. 
-  > * click "**x**" of the window after inputing some content, the content will be saved automatically and displayed as a small icon. 
-  
+  > ![tips](icon/tips.svg)Tips: You can also right-click at any blank area or the place you want to add a note and select **Add annotation**. After a note is successfully added, a highlighted note icon appears.
+
+  > ![notes](icon/notes.svg)Notes: 
+  > * Click "**x**" of the window without inputing any content, then the note is not added successfully or is deleted automatically. 
+  > * Click "**x**" of the window after inputing some content, the content will be saved automatically and displayed as a small icon. 
+
 - Copy note
    -  Right-click the highlighted text to which a note is successfully added and select **Copy** to copy the content.
    -  Right-click the note icon, select **Copy** to copy the content.
@@ -156,7 +158,7 @@ On Document Viewer interface, open a file.
    - Right-click the note icon and select **Remove annotation**. 
    - Click the catalog icon ![view](icon/comments_normal.svg) on the left column, and select a note, right-click to select **Remove annotation**, this note is deleted and so is its content. 
 
-
+> ![notes](icon\notes.svg)Notes: You can not add annotations to DJVU files.
 
 ## Common operations
 
@@ -165,26 +167,25 @@ Document Viewer integrates many features to make document management simpler and
 ### Search
 This function is only applicable for the current tab.
 1. On Document Viewer interface, open a file. 
-2. Right-click and select **Search** to open a searching window. 
+2. Right-click and select **Search** or press **Ctrl**+**F** to open a searching window. 
    
-> ![tips](icon/tips.svg) : Press **Ctrl**+**F** to open a searching window. 
-
 3. In the searching box, you can :
    - Click ![search](icon/search.svg) to input keywords. 
    - Click ![button_voice](icon/button_voice.svg) to speak, and your speech will be turned into words and displayed in the searching box. 
 
 4. Press  **Enter** to search. 
-   - All matching information will be displayed in a list. 
-   - If searching fails, "No results" will be displayed. 
-   > ![notes](icon/notes.svg): All matching results will be highlighted. 
-
+   - All matching information will be displayed in a list and are highlighted in the document.
+   - If searching fails, "No search results" will be displayed. 
+   
 5.  When matching results are found, click![search](icon/previous-up.svg) or ![search](icon/next-down.svg) to view results one by one. 
 
 6. Click one result, you can skip to the page it's located, and it's highlighted. 
    
-> ![attention](icon/attention.svg): The above mentioned operations are only applicable when PDF file supports searching. Searching fails in case the text is coded in pictures in some PDF files. 
+> ![attention](icon/attention.svg)Attention: The above mentioned operations are only applicable when PDF file supports searching. Searching fails in case the text is coded in pictures in some PDF files. 
 
-7.  Clear up words in the searching box to clear up all results. 
+7. Clear up words in the searching box to clear up all results. 
+
+> ![notes](icon\notes.svg)Notes: You can not search in DJVU files.
 
 
 ### Move in files
@@ -224,7 +225,7 @@ To zoom in or out a page, you can:
 - Press![Ctrl](icon/Ctrl.svg) + ![+](icon/+.svg) or![Ctrl](icon/Ctrl.svg) +![-](icon/-.svg) 
 - Press![Ctrl](icon/Ctrl.svg) and scroll the mouse wheel up and down at the same time. 
 - On Document Viewer interface, click  ![icon_menu](icon/+.svg) or  ![icon_menu](icon/-.svg). 
-> ![notes](icon/notes.svg): Manual input is supported here. You can choose display percentage from the drop-down box of the menu bar: 10%, 25%, 50%, 75%, 100%, 125%, 150%, 175%, 200%, 300%, 400%, and 500%, according to which the file is zoomed in and out.
+> ![notes](icon/notes.svg)Notes: Manual input is supported here. You can choose display percentage from the drop-down box of the menu bar: 10%, 25%, 50%, 75%, 100%, 125%, 150%, 175%, 200%, 300%, 400%, and 500%, according to which the file is zoomed in and out.
 
 
 ### Highlight
@@ -233,13 +234,16 @@ To zoom in or out a page, you can:
 
 2. Select the text, right-click and select **Highlight**, there are several colors for you to choose. 
    
-> ![notes](icon/notes.svg): If no text is highlighted, **Remove highlight** button is unavailable. 
+> ![notes](icon/notes.svg)Notes: If no text is highlighted, **Remove highlight** button is unavailable. 
 
 3. Select a color, the text selected will be highlighted in that color. 
 
 4. Select the highlighted text, click **Remove highlight** to restore it to the status it was. 
 
-> ![notes](icon/notes.svg): Document Viewer memorizes the color choice of the user, which will be the default color used when the user highlights any text the next time.  You can change the color as you wish. 
+> ![notes](icon/notes.svg)Notes: 
+>
+> - Document Viewer memorizes the color choice of the user, which will be the default color used when the user highlights any text the next time.  You can change the color as you wish. 
+> - DJVU files don't support highlighting.
 
 ### Adjust view
 

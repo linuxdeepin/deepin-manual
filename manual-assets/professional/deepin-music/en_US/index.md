@@ -17,7 +17,7 @@ You can run, close and create a shortcut for Music by the following ways.
  - Click **Send to dock** to fix the application on dock.
  - Click **Add to startup** to add the application to startup and it will automatically run when the system starts up.
 
-> ![notes](icon/notes.svg): If Music has been fixed on Dock, you can also click its icon to run it.
+> ![notes](icon/notes.svg)Notes: If Music has been fixed on Dock, you can also click its icon to run it.
 
 ### Minimize to System Tray
 
@@ -25,9 +25,7 @@ Music can be minimized to the system tray.
 
 Click ![close_icon](icon/close.svg) on the Music interface to close the main window,  select **Minimize to system tray** and click **Confirm** to minimize it in the system tray.
 
-> ![notes](icon/notes.svg)
->
-> : Check **Do not ask again** and the pop-up will no longer be displayed.
+> ![notes](icon/notes.svg)Notes: Check **Do not ask again** and the pop-up will no longer be displayed.
 
 Right-click the Music application icon in the tray and you can perform the following operations:
 
@@ -156,9 +154,7 @@ You can play music by the following ways:
 - Select a list under the playlist in the left navigation bar and right-click **Play** to play all the songs in the list according to the currently-set order.
 - Click **Play All** to Play all the songs in the current list according to the order set. 
 
-> ![tips](icon/tips.svg)
->
-> : On the Music interface, click ![play_normal](icon/play_normal.svg) to play the selected music. Click ![suspend_normal](icon/suspend_normal.svg) to pause the play. Click ![last_normal](icon/last_normal.svg) or ![next_normal](icon/next_normal.svg) to switch to the previous or next song according to the current play mode.
+> ![tips](icon/tips.svg)Tips: On the Music interface, click ![play_normal](icon/play_normal.svg) to play the selected music. Click ![suspend_normal](icon/suspend_normal.svg) to pause the play. Click ![last_normal](icon/last_normal.svg) or ![next_normal](icon/next_normal.svg) to switch to the previous or next song according to the current play mode.
 
 ### Add Music to My Favorites
 
@@ -166,7 +162,7 @@ On the Music interface, click ![collect](icon/collect.svg) to add music to my fa
 
 The prompt information **Successfully added to "My Favorites"** pops up and the music is added to **My Favorites** list.
 
-> ![notes](icon/notes.svg): You can also right-click the music, and click on **Add to playlist** > **My Favorites** to finish this task.
+> ![notes](icon/notes.svg)Notes: You can also right-click the music, and click on **Add to playlist** > **My Favorites** to finish this task.
 
 ### View Lyrics
 
@@ -204,7 +200,7 @@ On the Music interface, click ![single](icon/single-tune-circulation_normal.svg)
 1. On the Music interface, right click the music.
 2. Click **Encoding**, you can select the encoding you want.
 
-![0|encoding](C:/Users/Admin/Documents/敏琦/专业版帮助手册-20200427/music/en_US/jpg/encoding.jpg)
+![0|encoding](jpg/encoding.jpg)
 
 ### View Music Info
 
@@ -218,9 +214,7 @@ On the Music interface, click ![single](icon/single-tune-circulation_normal.svg)
 
 On the Music interface, you can create, delete, rename playlist and add music to the playlist.
 
-> ![notes](icon/notes.svg)
->
-> :  **All music**  and **My favorites ** are the default lists and cannot be deleted. Custom playlists are subsets of the **All Music ** list. **My Favorites ** list can be managed directly or through the Favorites button on the main interface.
+> ![notes](icon/notes.svg)Notes: **All music**  and **My favorites ** are the default lists and cannot be deleted. Custom playlists are subsets of the **All Music ** list. **My Favorites ** list can be managed directly or through the Favorites button on the main interface.
 
 
 ### Create a New Playlist
@@ -245,7 +239,7 @@ On the Music interface, you can create, delete, rename playlist and add music to
 2. Right-click to select **Add to playlist** to add the music to the selected playlist.
 
 
-> ![notes](icon/notes.svg): You can drag the local music to a specified playlist to add the music to the current playlist and **All Music**. 
+> ![notes](icon/notes.svg)Notes: You can drag the local music to a specified playlist to add the music to the current playlist and **All Music**. 
 
 ![0|addtolist](jpg/addtolist.png)
 

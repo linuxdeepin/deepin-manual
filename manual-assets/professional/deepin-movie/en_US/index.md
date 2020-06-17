@@ -6,7 +6,7 @@ Movie is a video player with various features. It offers simple interface and ri
 
 Movie shares extreme play experience with you. Use it and you will love it!
 
-![1|主界面](jpg/main.png)
+![1|main](jpg/main.png)
 
 ## Guide
 
@@ -31,7 +31,7 @@ Learning about the shortcuts in advance before playing videos will make your sub
 1.  On the Movie interface, press **Ctrl** + **Shift** + **？** on the keyboard to open the shortcut preview interface.
 2.   You can view all the shortcuts on the preview interface.
 
-> ![attention](icon/attention.svg) : You can open the shortcut preview interface any time during your video playback.
+> ![attention](icon/attention.svg)Attention: You can open the shortcut preview interface any time during your video playback.
 
  ![1|shortcut](jpg/shortcut.jpg)
 
@@ -52,7 +52,7 @@ Perform the common playback operations and enjoy the videos to your heart's cont
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-> ![notes](icon/notes.svg) : The preview window is displayed by default when the mouse is placed over the progress bar. If you do not need to display the preview window, you can enter the settings to change it. Please refer to the [basic settings](#basic settings) for details.
+> ![notes](icon/notes.svg)Notes: The preview window is displayed by default when the mouse is placed over the progress bar. If you do not need to display the preview window, you can enter the settings to change it. Please refer to the [basic settings](#basic settings) for details.
 
 ### Icon Description
 
@@ -77,7 +77,7 @@ You can play films by the following ways:
 - On the Movie interface, right-click to select **Open CD/DVD** to play the films in CD/DVD.
 - Drag the file/folder directly to the Movie interface to play local films.
 
-> ![notes](icon/notes.svg) : Please make sure your network is well connected before playing online videos with Movie.
+> ![notes](icon/notes.svg)Notes: Please make sure your network is well connected before playing online videos with Movie.
 
 
 ![0|open](jpg/open.png)
@@ -93,7 +93,7 @@ You can play films by the following ways:
 2.  Press **Ctrl** +![Left](icon/Left.svg) on the keyboard to speed down the film playback.
 3.  If you want to restore the original play speed, press **R** on the keyboard.
 
->![notes](icon/notes.svg) : Speed up/down is relative to the original play speed. The video playback speed increases / decreases by 0.1 times by default each time it is sped up / down. Press and hold **Ctrl**+![Right](icon/Right.svg) or ![Left](icon/Left.svg) on the keyboard and the playback speed will increase or decrease. The maximum playback speed is 2 times the original playback speed and the minimum playback speed is 0.1 times the original playback speed.
+>![notes](icon/notes.svg)Notes: Speed up/down is relative to the original play speed. The video playback speed increases / decreases by 0.1 times by default each time it is sped up / down. Press and hold **Ctrl**+![Right](icon/Right.svg) or ![Left](icon/Left.svg) on the keyboard and the playback speed will increase or decrease. The maximum playback speed is 2 times the original playback speed and the minimum playback speed is 0.1 times the original playback speed.
 
 ## Basic operations
 
@@ -109,7 +109,7 @@ You can adjust the window size as you wish during playback.
 - Select **Always on Top** to put the window on the top layer.
 - You can also drag the window edge to adjust the window size.
 
->![notes](icon/notes.svg) : Double-click the window to switch between **Fullscreen** and **Normal Window**.
+>![notes](icon/notes.svg)Notes: Double-click the window to switch between **Fullscreen** and **Normal Window**.
 
 ![0|window](jpg/window.png)
 
@@ -183,7 +183,7 @@ You can add films to the playlist by the following ways:
 1.  Click ![movie](icon/episodes_normal.svg )on the Movie interface.
 2. Hover the mouse pointer over video file and right-click to delete it from the playlist.
 
-> ![tips](icon/tips.svg): On the playlist interface, hover the mouse pointer over the video file and click![关闭图标](icon/close.svg) to delete it.
+> ![tips](icon/tips.svg)Tips: On the playlist interface, hover the mouse pointer over the video file and click![关闭图标](icon/close.svg) to delete it.
 
 ![list](jpg/list-manag.png)
 
@@ -236,7 +236,7 @@ You can set the basic information, shortcut keys and subtitiles.
 1.   Right-click or click ![界面按钮图标](icon/icon_menu.svg)on the Movie interface.
 2.  Select **Settings** > **Subtitle**.
 3.  You can set the font and font size for subtitles.
->  ![attention](icon/attention.svg): Click **Restore Defaults** on the interface to restore all settings.
+>  ![attention](icon/attention.svg)Attention: Click **Restore Defaults** on the interface to restore all settings.
 
 ![1|subtitlesettings](jpg/subtitlesettings.png)
 

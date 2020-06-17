@@ -35,7 +35,7 @@ On Document Viewer interface, press  ![Ctrl](icon/Ctrl.svg) + ![Shift](icon/Shif
 
 On File Manager interface, you can execute many operations with the functional bars. It is designed to be easy-to-use, user-friendly and efficient improving.
 
-![1|maininterface](jpg/main interface.png)
+![1|maininterface](jpg/main-interface.png)
 
 | No. | Name          | Description                                                         |
 | ---- | ------------- | ------------------------------------------------------------ |
@@ -47,7 +47,7 @@ On File Manager interface, you can execute many operations with the functional b
 | 6    | Status bar        | You can view the number of files or selected files.                            |
 
 
-> ![tips](icon/tips.svg): you can drag the dividing line on the right of left panel to change its width.
+> ![tips](icon/tips.svg)Tips: you can drag the dividing line on the right of left panel to change its width.
 
 
 ## Basic Functions
@@ -77,7 +77,7 @@ File Manager is featured with the basic functions as a file manager, you can eas
 
 ![0|rename](jpg/contextmenu.png)
 
-> ![tips](icon/tips.svg): Check "Hide file extension when rename" in **Settings** to rename file more conveniently.
+> ![tips](icon/tips.svg)Tips: Check "Hide file extension when rename" in **Settings** to rename file more conveniently.
 
 ### Batch Rename
 
@@ -102,9 +102,9 @@ Click ![icon_view](icon/icon_view.svg) and ![list_view](icon/list_view.svg) on t
 
 ![1|list-view](jpg/list-view.png)
 
-> ![tips](icon/tips.svg): In list view, place the cursor on the dividing line between any two columns and drag it to change the width of the current column. Double-click the dividing line to adjust to the biggest width of the current column automatically. 
+> ![tips](icon/tips.svg)Tips: In list view, place the cursor on the dividing line between any two columns and drag it to change the width of the current column. Double-click the dividing line to adjust to the biggest width of the current column automatically. 
 
-> ![tips](icon/tips.svg): Press  **Ctrl**+**1**  or  **Ctrl**+ **2**  to switch icon view and list view. 
+> ![tips](icon/tips.svg)Tips: Press  **Ctrl**+**1**  or  **Ctrl**+ **2**  to switch icon view and list view. 
 
 
 
@@ -113,7 +113,7 @@ Click ![icon_view](icon/icon_view.svg) and ![list_view](icon/list_view.svg) on t
 1. Right-click in the blank area on File Manager, select **Sort by**.
 2. Choose among the sorting options, which include **Name**, **Time modified**, **Size** and **Type**.
 
-> ![tips](icon/tips.svg): you can click the head of the columns in the list view to change the sort order.
+> ![tips](icon/tips.svg)Tips: you can click the head of the columns in the list view to change the sort order.
 
 
 
@@ -123,11 +123,11 @@ Click ![icon_view](icon/icon_view.svg) and ![list_view](icon/list_view.svg) on t
 2. In the context menu, select **Open with**>**Select default program**.
 3. Select the application you want to open the file in the list.
 
-> ![notes](icon/notes.svg): It will use the default application to open the file when you double-click it. You can right-click the file, select **Properties** and choose a default application in **Open with ** list. You can also set the options in the [Default Applications](dman:///dde#Default Applications) of the Control Center to change the global default applications of the specified file types.
+> ![notes](icon/notes.svg)Notes: It will use the default application to open the file when you double-click it. You can right-click the file, select **Properties** and choose a default application in **Open with ** list. You can also set the options in the [Default Applications](dman:///dde#Default Application Settings) of the Control Center to change the global default applications of the specified file types.
 
 ![0|open_with](jpg/open.png)
 
-> ![tips](icon/tips.svg): You can right-click multiple files of the same type, and select **Open with** to open them at a time.
+> ![tips](icon/tips.svg)Tips: You can right-click multiple files of the same type, and select **Open with** to open them at a time.
 
 
 
@@ -148,7 +148,7 @@ Click ![icon_view](icon/icon_view.svg) and ![list_view](icon/list_view.svg) on t
 3. Select a location to store it.
 4. Select **Compress** to generate the compressed file.
 
-> ![notes](icon/notes.svg): Switch on **Advanced Options** to set password and split volumes sizes. **Encrypt thr archive** and **Split to volumes** are only applicable for some formats.
+> ![notes](icon/notes.svg)Notes: Switch on **Advanced Options** to set password and split volumes sizes. **Encrypt thr archive** and **Split to volumes** are only applicable for some formats.
 
 ### Delete File/Folder
 
@@ -156,7 +156,7 @@ Right-click file/folder to select **Delete**.
   - You can find the deleted files in Trash. Right-click files in Trash, you can choose **Restore** or **Delete**. 
   - The shortcut of the deleted files will become invalid.
 
-> ![attention](icon/attention.svg): File/folder in external device will be permanently deleted and can not be restored when you select **Delete**.
+> ![attention](icon/attention.svg)Attention: File/folder in external device will be permanently deleted and can not be restored when you select **Delete**.
 
 ### Undo Operation
 In file manager,  use ![Ctrl](icon/Ctrl.svg) + ![Z](icon/Z.svg) to undo the previous steps, including:
@@ -166,7 +166,7 @@ In file manager,  use ![Ctrl](icon/Ctrl.svg) + ![Z](icon/Z.svg) to undo the prev
 - Restore the moved (via drag or cut) file/folder to the previous location.
 - Delete the copied and pasted file/folder.
 
-> ![attention](icon/attention.svg): If the above operations are continuous, you can undo all of them; if there is file overwriting or permanently file deleting, then you can only return to that step.
+> ![attention](icon/attention.svg)Attention: If the above operations are continuous, you can undo all of them; if there is file overwriting or permanently file deleting, then you can only return to that step.
 
 
 
@@ -180,11 +180,15 @@ In Properties of files, you can view the basic info, open with list, and permiss
 ![0|info](jpg/info.png)
 
 
-> ![notes](icon/notes.svg): If you check the properties of multiple files at a time, the total size and quantities will be displayed. If you check the properties of a shortcut, the source file location will be displayed in addition. You can use shortcuts![Ctrl](icon/Ctrl.svg) + ![I](icon/I.svg) to view the properties as well.
+> ![notes](icon/notes.svg)Notes: If you check the properties of multiple files at a time, the total size and quantities will be displayed. If you check the properties of a shortcut, the source file location will be displayed in addition. You can use shortcuts![Ctrl](icon/Ctrl.svg) + ![I](icon/I.svg) to view the properties as well.
 
 ## Common Operations
 
 File Manager is featured with many useful functions, which are all designed to ease the commonly used operations.
+
+> 
+
+
 
 ### Switch Address Bar
 
@@ -192,7 +196,7 @@ There are three sections in address bar, namely back/forward buttons, breadcrumb
 
 
 
-![0|addressbar](jpg/addressbar1.jpg)
+![0|addressbar](jpg/addressbar1.png)
 
 - Clicking back/forward buttons to quickly view the previous address or the next address. 
 - Each level of the location of a file will form a breadcrumb. You can switch quickly among levels by clicking all breadcrumbs.
@@ -201,7 +205,7 @@ By clicking the search icon, or right-click the file path and select **Edit addr
 
 
 
-![0|addressbar](jpg/addressbar2.jpg)
+![0|addressbar](jpg/addressbar2.png)
 
 - The inputting box can identify smartly. You can input keywords or an address and press ![enter](icon/enter.svg), the system will identify automatically and search or visit.
 
@@ -211,7 +215,7 @@ Click the search button or press ![Ctrl](icon/Ctrl.svg) + ![F](icon/F.svg)  to s
 
 - If you need to search in a specified directory, please enter it before search.
 
-> ![notes](icon/notes.svg): In **Settings**, check "Auto index internal disk" and "Index external storage device after connected to computer" to quicken the searching speed.
+> ![notes](icon/notes.svg)Notes: In **Settings**, check "Auto index internal disk" and "Index external storage device after connected to computer" to quicken the searching speed.
 
 #### Advanced Search
 1. In search bar, input the keywords and press enter, click ![filter](icon/filter.svg) to show advanced search.
@@ -222,7 +226,7 @@ Click the search button or press ![Ctrl](icon/Ctrl.svg) + ![F](icon/F.svg)  to s
 ### Recent Files
 By default, there is a **Recent** entry on left panel. Click it to view the recently used files. Files are sorted by default in reverse order of access time.
 
-> ![notes](icon/notes.svg):If you want to hide "Recent", you can uncheck "Display recent file entry in left panel" in Settings > Basic > Hidden files. To hide the access record of a specific file, right-click the file and select **Remove** which will not delete the file.
+> ![notes](icon/notes.svg)Notes: If you want to hide "Recent", you can uncheck "Display recent file entry in left panel" in Settings > Basic > Hidden files. To hide the access record of a specific file, right-click the file and select **Remove** which will not delete the file.
 
 ### Manage Tabs
 
@@ -236,7 +240,7 @@ File Manager supports multi-tab view.
 
 ![1|tab](jpg/tab.png)
 
-> ![tips](icon/tips.svg): When the File Manager has only one tab, the tab bar is hidden, you can press ![Ctrl](icon/Ctrl.svg) + ![T](icon/T.svg) to add a new tab.
+> ![tips](icon/tips.svg)Tips: When the File Manager has only one tab, the tab bar is hidden, you can press ![Ctrl](icon/Ctrl.svg) + ![T](icon/T.svg) to add a new tab.
 
 ### Manage Bookmarks
 
@@ -252,7 +256,7 @@ To quickly visit a folder from the left panel, you can add bookmarks for frequen
 
 By adding tags on file/folder, you can classify and manage your files better.
 
-> ![notes](icon/notes.svg): currently only x86 platform supports **Tag information**. All contents related to "Tag information" in this manual are only applicable for x86 platform.
+> ![notes](icon/notes.svg)Notes: currently only x86 platform supports **Tag information**. All contents related to "Tag information" in this manual are only applicable for x86 platform.
 
 #### Add Tags
 
@@ -262,7 +266,7 @@ By adding tags on file/folder, you can classify and manage your files better.
 2. Input tag info. Use comma to separate tags in case of multiple tags.
 3. Press  ![enter](icon/enter.svg) to finish adding tag.
 
-> ![notes](icon/notes.svg): The tag color is randomly assigned from eight default colors.
+> ![notes](icon/notes.svg)Notes: The tag color is randomly assigned from eight default colors.
 
 
 ![1|tag info](jpg/tag info.png)
@@ -280,9 +284,9 @@ Select a file/folder, click ![fileinfo](icon/fileinfo.svg), and add tags in the 
 
 ![1|info tag](jpg/info tag.png)
 
-> ![notes](icon/notes.svg): You can add tag to multiple files/folders at a time, or add multiple tags to a single file/folder; you can also add tags in Properties of the file/folder. The tag appears in the left panel.
+> ![notes](icon/notes.svg)Notes: You can add tag to multiple files/folders at a time, or add multiple tags to a single file/folder; you can also add tags in Properties of the file/folder. The tag appears in the left panel.
 
-> ![attention](icon/attention.svg): If a file has a tag, copy or cut and then paste it, the new file still has the same tag.
+> ![attention](icon/attention.svg)Attention: If a file has a tag, copy or cut and then paste it, the new file still has the same tag.
 
 #### Rename Tag
 
@@ -314,7 +318,7 @@ File Manager supports file preview by pressing space bar. Select a file and pres
 
 ![1|video preview](jpg/video preview.png)
 
-![notes](icon/notes.svg): You can select multiple files and press space bar to preview them at a time.
+![notes](icon/notes.svg)Notes: You can select multiple files and press space bar to preview them at a time.
 
 ### Permission Management
 In file/folder properties, click **Permissions** to set **Owner**, **Group** and **Others**. 
@@ -335,7 +339,7 @@ You can share folders in File Manager, if there are some folders shared, the sha
 
 ![0|share](jpg/share.png)
 
-> ![tips](icon/tips.svg): You can cancel sharing by unchecking **Share this folder**, or right-click the folder and select **Cancel sharing**. 
+> ![tips](icon/tips.svg)Tips: You can cancel sharing by unchecking **Share this folder**, or right-click the folder and select **Cancel sharing**. 
 
 #### Visit Sharing Folders 
 
@@ -380,7 +384,7 @@ You can find sharing folders of other users in the same LAN in **Computers in LA
 
 
 
-> ![tips](icon/tips.svg): By selecting **Send to desktop** for an item, you can create a link on desktop with one click.
+> ![tips](icon/tips.svg)Tips: By selecting **Send to desktop** for an item, you can create a link on desktop with one click.
 
 ### Send To Other Device
 
@@ -391,7 +395,63 @@ When there is an external device inserted, you can directly send file/folder to 
 3. Select the device you want to send to.
 4. File/folder will be copied to the device.
 
+## File Vault
 
+File Vault is designed to  create a special safe space for you and protect your privacy. With the advanced encryption technology and convenient operations, it's quite easy to use.
+
+### Set vault password
+
+You will have to set a password when you use File Vault for the first time as follows:
+
+1. Click ![file-vault](icon/file-vault.svg) in the left panel or double-click **My Vault** in the **Computer** interface, and then click **Create** in the pop-up dialogue box.  
+2. Set the "Method", "Password", "Repeat password" and "Hint", click **Next**. 
+
+![0|password](jpg/password.png)
+
+> ![notes](icon/notes.svg)Notes: the password must contain upper case letters, lower case letters,  Arabic numbers and special symbols at the same time and no less that 8 digits. Otherwise, you are not able to go to the next step.
+> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+3. A key/QR code is generated. It is recommended to save it in case you forget it. Click **Next**. 
+
+4. Click **Encrypt**; enter your login password in the pop-up authentication box and click **Confirm**. 
+   ![encrypt](jpg/encrypt.png)
+
+5. Click **OK** when encryption finishes.
+6. You can now save your files in File Vault.
+
+
+
+### Lock File Vault
+
+After you put files into File Vault, right-click![file-vault](icon/file-vault.svg) in the left panel or right-click **My Vault** in the **Computer** interface. 
+
+- Select **Lock** to lock File Vault. 
+- Select **Auto lock** and select in the sub-menu:
+  + Select "Never", which means the file vault remains unlock until computer is shutdown. 
+  + Select "5 minutes", "10 minutes" or "20 minutes", which means File Vault will be locked automatically in corresponding time. 
+
+![0|right](jpg/right.png)
+
+
+
+### Unlock File Vault
+
+To unlock File Vault, you can click![file-vault](icon/file-vault.svg) in the left panel or double-click **My Vault** in the **Computer** interface and input password. Or you can right-click ![file-vault](icon/file-vault.svg) in the left panel or **My Vault** in the **Computer** interface, and then: 
+
+- Select  **Unlock**, input password in the pop-up dialogue box and click **Unlock**. 
+- Select  **Unlock by key**, input the 32-digit recovery key in the pop-up dialogue box and click **Unlock**. 
+
+
+
+### Delete File Vault
+
+You can delete a vault only after unlocking it.
+
+1. Right-click ![file-vault](icon/file-vault.svg) in the left panel  or right-click **My Vault** in the **Computer** interface and select **Remove File Vault**. 
+2. Input file vault password in the pop-up dialogue box and click **Remove**. 
+3. Input your login password in the pop-up dialogue box and click **Confirm** to finish this operation.
+
+> ![attention](icon/attention.svg)Attention: Files inside the vault would be deleted as you remove the file vault. Please backup them before you remove the file vault if needed. 
 
 ## Disk Management
 
@@ -419,7 +479,7 @@ Local disks are displayed in the left panel of File Manager. When you mount any 
     </tbody>
 </table>
 
-> ![notes](icon/notes.svg): If disks or folders in the disk are encrypted, you will have to input password before visiting them. 
+> ![notes](icon/notes.svg)Notes: If disks or folders in the disk are encrypted, you will have to input password before visiting them. 
 
 ### Unmount/Eject/Safely Remove Disks
 
@@ -432,7 +492,7 @@ Local disks are displayed in the left panel of File Manager. When you mount any 
 
 ![0|disk](jpg/disk1.png)
 
-> ![tips](icon/tips.svg): you can also click ![unmount](icon/unmount_normal.svg) in the left panel to unmount the disk.
+> ![tips](icon/tips.svg)Tips: you can also click ![unmount](icon/unmount_normal.svg) in the left panel to unmount the disk.
 
 ### Rename Disks
 1. In the left panel or on computer interface, right-click the disk you want to rename.
@@ -451,7 +511,7 @@ Local disks are displayed in the left panel of File Manager. When you mount any 
 
    ![0|disk](jpg/disk2.png)
 
-> ![notes](icon/notes.svg): If you check **Quick Format**, the disk can be formated quickly in a few seconds, but the data could be restored by file recovery tools. If you don't want these data to be restored, you can uncheck this option box and format the disk.
+> ![notes](icon/notes.svg)Notes: If you check **Quick Format**, the disk can be formated quickly in a few seconds, but the data could be restored by file recovery tools. If you don't want these data to be restored, you can uncheck this option box and format the disk.
 
 
 ## Main Menu
