@@ -65,9 +65,6 @@ public:
     void cancelTextChanged();
     void updateBtnBox();
 
-    //增加 定义
-    static constexpr const char *CONFIG_WINDOW_WIDTH = "window_width";
-    static constexpr const char *CONFIG_WINDOW_HEIGHT = "window_height";
     // 保存窗口尺寸
     void saveWindowSize();
 
@@ -122,9 +119,6 @@ private:
     QString keyword_;
     bool first_webpage_loaded_ {true};
     bool is_index_loaded_ {false};
-
-
-    QSettings *m_winInfoConfig = nullptr;
 
 private slots:
     void onSearchEditFocusOut();

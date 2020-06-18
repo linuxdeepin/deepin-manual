@@ -40,7 +40,6 @@ public:
 
     void moveWindow(WebWindow *window);
     SearchManager *currSearchManager();
-
     void SendMsg(const QString &msg);
 
 private:

@@ -31,6 +31,7 @@
 #include "view/widget/image_viewer.h"
 #include "view/widget/search_completion_window.h"
 #include "view/widget/search_edit.h"
+#include "controller/config_manager.h"
 
 #include <QApplication>
 #include <QDBusConnection>
@@ -55,6 +56,9 @@ namespace dman {
 namespace {
 
 const int kSearchDelay = 200;
+static constexpr const char *CONFIG_WINDOW_WIDTH = "window_width";
+static constexpr const char *CONFIG_WINDOW_HEIGHT = "window_height";
+static constexpr const char *CONFIG_WINDOW_INFO = "window_info";
 
 }  // namespace
 
@@ -65,7 +69,6 @@ WebWindow::WebWindow(QWidget *parent)
     , search_timer_()
     , keyword_("")
     , first_webpage_loaded_(true)
-    , m_winInfoConfig(new QSettings(getWinInfoConfigPath(), QSettings::IniFormat))
 {
     // 使用 redirectContent 模式，用于内嵌 x11 窗口时能有正确的圆角效果
     Dtk::Widget::DPlatformWindowHandle::enableDXcbForWindow(this, true);
@@ -263,15 +266,17 @@ void WebWindow::initUI()
             &TitleBarProxy::forwardButtonClicked);
     connect(title_bar_proxy_, &TitleBarProxy::buttonShowSignal, this, &WebWindow::slot_ButtonShow);
 
-
-    int saveWidth = m_winInfoConfig->value(CONFIG_WINDOW_WIDTH).toInt();
-    int saveHeight = m_winInfoConfig->value(CONFIG_WINDOW_HEIGHT).toInt();
+    QSettings *setting = ConfigManager::getInstance()->getSettings();
+    setting->beginGroup(CONFIG_WINDOW_INFO);
+    int saveWidth = setting->value(CONFIG_WINDOW_WIDTH).toInt();
+    int saveHeight = setting->value(CONFIG_WINDOW_HEIGHT).toInt();
+    setting->endGroup();
     qDebug() << "load window_width: " << saveWidth;
     qDebug() << "load window_height: " << saveHeight;
     // 如果配置文件没有数据
     if (saveWidth == 0 || saveHeight == 0) {
-        saveWidth = 1000;
-        saveHeight = 600;
+        saveWidth = 1024;
+        saveHeight = 680;
     }
     resize(QSize(saveWidth, saveHeight));
 
@@ -338,8 +343,11 @@ void WebWindow::updateBtnBox()
 void WebWindow::saveWindowSize()
 {
     // 记录最后一个正常窗口的大小
-    m_winInfoConfig->setValue(CONFIG_WINDOW_WIDTH, width());
-    m_winInfoConfig->setValue(CONFIG_WINDOW_HEIGHT, height());
+    QSettings *setting = ConfigManager::getInstance()->getSettings();
+    setting->beginGroup(CONFIG_WINDOW_INFO);
+    setting->setValue(CONFIG_WINDOW_WIDTH, width());
+    setting->setValue(CONFIG_WINDOW_HEIGHT, height());
+    setting->endGroup();
     qDebug() << "save window_Size:" << width() << ", " << height();
 }
 
