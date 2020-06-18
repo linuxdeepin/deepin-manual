@@ -276,7 +276,7 @@ div {
         height: 96px;
         margin-top: 8px;
         margin-bottom: 8px; }
-      #index .items .item span {
+      #index .items .item .content {
         margin-left: 15px;
         width: var(--index-span-width);
         word-break: normal;
@@ -293,6 +293,13 @@ div {
         background-clip: content-box;
         border-radius: 18px;
         background-color: var(--index-item-hover-color); }
+      #index .items .item .tag {
+        display: inline-block;
+        height: 8px;
+        width: 8px;
+        margin-right: 4px;
+        border-radius: 8px;
+        background-color: var(--nav-hash-word-color); }
 
 body {
   overflow: hidden; }

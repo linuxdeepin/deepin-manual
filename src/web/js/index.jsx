@@ -39,13 +39,14 @@ class Item extends Component {
             }
           }}
         >
+          
           <img
             draggable="false"
             src={this.state.logo}
             alt={this.props.appName}
           />
           <br />
-          <span lang={global.lang}>{this.state.title}</span>
+            <span className="content" lang={global.lang}><span className="tag"></span>{this.state.title}</span>
         </div>
       )
     );
