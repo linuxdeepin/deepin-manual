@@ -24,6 +24,11 @@ const char kAppProcessName[] = "dman";
 const char kAppVersion[] = "2.0.10";
 const char kIndexPage[] = DMAN_WEB_DIR "/index.html";
 
+const char CONFIG_WINDOW_WIDTH[] = "window_width";
+const char CONFIG_WINDOW_HEIGHT[] = "window_height";
+const char CONFIG_WINDOW_INFO[] = "window_info";
+const char CONFIG_APPLIST[] = "AppList";
+
 QString GetCacheDir()
 {
     const char kAppCacheDir[] = ".cache/deepin/deepin-manual";

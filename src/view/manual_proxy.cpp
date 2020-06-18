@@ -15,6 +15,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include "view/manual_proxy.h"
+#include "controller/config_manager.h"
+#include "base/consts.h"
 
 namespace dman {
 
@@ -134,6 +136,7 @@ QStringList ManualProxy::getSystemManualList()
         }
     }
     qDebug() << "app list===============:" << app_list_ << ", count:" << app_list_.size();
+    saveAppList(app_list_);
     return app_list_;
 }
 
@@ -142,7 +145,56 @@ void ManualProxy::openExternalLink(const QString &url)
     qDebug() << "ManualProxy::openExternalLink===========" << url;
 
     QDesktopServices::openUrl(url);
-}  // namespace dman
+}
+
+void ManualProxy::setApplicationState(const QString &appName)
+{
+    QSettings *setting = ConfigManager::getInstance()->getSettings();
+    setting->beginGroup(CONFIG_APPLIST);
+    if (setting->contains(appName)) {
+        setting->value(appName, false);
+        qDebug() << setting->applicationName() << setting->fileName() << ": " << appName << " state=false";
+    } else {
+        qDebug() << setting->fileName() << ": " << appName << " not find";
+    }
+    setting->endGroup();
+}
+
+QStringList ManualProxy::getUsedAppList()
+{
+
+    QSettings *setting = ConfigManager::getInstance()->getSettings();
+    setting->beginGroup(CONFIG_APPLIST);
+    QStringList list = setting->allKeys();
+    QStringList appList;
+    for (int i = 0; i < list.size(); ++i) {
+        if (!setting->value(list.at(i)).toBool()) {
+            appList.append(list.at(i));
+        } else {
+
+        }
+    }
+    qDebug() << "The application of already used： " << appList;
+    return appList;
+}
+
+void ManualProxy::saveAppList(const QStringList &list)
+{
+
+    QSettings *setting = ConfigManager::getInstance()->getSettings();
+    setting->beginGroup(CONFIG_APPLIST);
+    for (int i = 0; i < list.size(); ++i) {
+        if (setting->contains(list.at(i))) {
+            continue;
+        } else {
+            setting->setValue(list.at(i), true);
+        }
+    }
+    QStringList l = setting->allKeys();
+    setting->endGroup();
+    qDebug() << "+++++++++++app allKeys+++++++++" << l.size();
+
+}
 
 }  // namespace dman
 

@@ -72,6 +72,10 @@ public slots:
      * @param url
      */
     void openExternalLink(const QString &url);
+    void setApplicationState(const QString &appName);
+    QStringList getUsedAppList();
+public:
+    void saveAppList(const QStringList &list);
 
 private:
     LauncherInterface *launcher_interface_ = nullptr;

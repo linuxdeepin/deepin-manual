@@ -129,6 +129,8 @@ set(CONTROLLER_FILES
     controller/search_result.h
     controller/window_manager.cpp
     controller/window_manager.h
+    controller/config_manager.cpp
+    controller/config_manager.h
     )
 
 set(DBUS_FILES
