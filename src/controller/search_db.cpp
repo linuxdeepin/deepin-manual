@@ -360,7 +360,6 @@ void SearchDb::handleSearchContent(const QString &keyword)
             const QString anchor = query.value(1).toString();
             const QString anchorId = query.value(2).toString();
             const QString content = query.value(3).toString();
-            qDebug() << Q_FUNC_INFO << app_name << " " << anchor << " " << anchorId << " " << content << " ";
             if (!strlistApp.contains(app_name)) {
                 continue;
             }

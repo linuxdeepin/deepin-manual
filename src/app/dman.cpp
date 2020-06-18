@@ -36,7 +36,7 @@ int main(int argc, char **argv)
     qputenv("DXCB_FAKE_PLATFORM_NAME_XCB", "true");
     qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu");
     qputenv("DTK_FORCE_RASTER_WIDGETS", "FALSE");
-//    qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "7777");
+    qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "7777");
 
     Dtk::Widget::DApplication::loadDXcbPlugin();
     Dtk::Widget::DApplication app(argc, argv);

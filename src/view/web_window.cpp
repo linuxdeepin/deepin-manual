@@ -525,9 +525,7 @@ void WebWindow::onWebPageLoadFinished(bool ok)
         web_view_->page()->runJavaScript(QString("setTheme('%1')").arg(qsthemetype));
         if (app_name_.isEmpty()) {
             web_view_->page()->runJavaScript("index()");
-            qDebug() << Q_FUNC_INFO << 460;
         } else {
-            qDebug() << Q_FUNC_INFO << 462;
             QString real_path(app_name_);
             if (real_path.contains('/')) {
                 // Open markdown file with absolute path.

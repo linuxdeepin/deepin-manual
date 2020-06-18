@@ -45,6 +45,7 @@ class App extends React.Component {
     new QWebChannel(qt.webChannelTransport, this.initQt.bind(this));
   }
   initQt(channel) {
+    console.log("channel initqt.....");
     channel.objects.i18n.getSentences(i18n => {
       channel.objects.i18n.getLocale(lang => {
         if (lang === 'en_US' || lang === 'zh_CN') {
@@ -55,6 +56,7 @@ class App extends React.Component {
       });
       global.i18n = i18n;
       global.qtObjects = channel.objects;
+      console.log("finsh global.qtObjects = channel.objects...");
       channel.objects.manual.getSystemManualDir(path => {
         global.path = path;
         this.setState({ init: true });
@@ -150,6 +152,7 @@ class App extends React.Component {
       }
     };
     global.open = (file, hash = '') => {
+      console.log("global.open..."+ file);
       //h0默认为应用名称，内容为空，所以当打开h0，将其变为h1概述的位置。
       if (hash == 'h0')
       {
@@ -160,8 +163,13 @@ class App extends React.Component {
       global.hash = hash;
       global.oldHash = hash;
       let url = `/open/${file}/${hash}`;
-      console.log(url);
+      console.log("global.open: " +url);
       this.context.router.history.push(url);
+
+      //延时通知qt对象, 以避免通过F1开启帮助时,会直接调用此JS方法,但未完成channnel中qt对象和js中global对象的绑定.
+      setTimeout(function(){
+        global.qtObjects.manual.setApplicationState(file);
+      },200);
     };
 
     global.linkTitle = (title) => {

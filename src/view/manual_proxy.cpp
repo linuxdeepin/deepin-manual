@@ -149,20 +149,30 @@ void ManualProxy::openExternalLink(const QString &url)
 
 void ManualProxy::setApplicationState(const QString &appName)
 {
+    QString strApp;
+    //部分传的是完整路径,部分直接是模块名称
+    if (appName.contains("%2F")) {
+        //以"%2F"分割字符,取倒数第三位为具体模块名
+        QStringList strlist = appName.split("%2F");
+        strApp = strlist.at(strlist.count() - 3);
+    } else {
+        strApp = appName;
+    }
+    qDebug() << "open app---->" << strApp;
+
     QSettings *setting = ConfigManager::getInstance()->getSettings();
     setting->beginGroup(CONFIG_APPLIST);
-    if (setting->contains(appName)) {
-        setting->value(appName, false);
-        qDebug() << setting->applicationName() << setting->fileName() << ": " << appName << " state=false";
+    if (setting->contains(strApp)) {
+        setting->setValue(strApp, false);
+        qDebug() << setting->applicationName() << setting->fileName() << ": " << strApp << " state=false";
     } else {
-        qDebug() << setting->fileName() << ": " << appName << " not find";
+        qDebug() << setting->fileName() << ": " << strApp << " not find";
     }
     setting->endGroup();
 }
 
 QStringList ManualProxy::getUsedAppList()
 {
-
     QSettings *setting = ConfigManager::getInstance()->getSettings();
     setting->beginGroup(CONFIG_APPLIST);
     QStringList list = setting->allKeys();
@@ -174,13 +184,14 @@ QStringList ManualProxy::getUsedAppList()
 
         }
     }
+    setting->endGroup();
     qDebug() << "The application of already used： " << appList;
     return appList;
 }
 
 void ManualProxy::saveAppList(const QStringList &list)
 {
-
+    Q_UNUSED(list)
     QSettings *setting = ConfigManager::getInstance()->getSettings();
     setting->beginGroup(CONFIG_APPLIST);
     for (int i = 0; i < list.size(); ++i) {

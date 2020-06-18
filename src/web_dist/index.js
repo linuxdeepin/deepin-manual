@@ -88,6 +88,7 @@ var App = function (_React$Component) {
     value: function initQt(channel) {
       var _this2 = this;
 
+      console.log("channel initqt.....");
       channel.objects.i18n.getSentences(function (i18n) {
         channel.objects.i18n.getLocale(function (lang) {
           if (lang === 'en_US' || lang === 'zh_CN') {
@@ -98,6 +99,7 @@ var App = function (_React$Component) {
         });
         global.i18n = i18n;
         global.qtObjects = channel.objects;
+        console.log("finsh global.qtObjects = channel.objects...");
         channel.objects.manual.getSystemManualDir(function (path) {
           global.path = path;
           _this2.setState({ init: true });
@@ -206,6 +208,7 @@ var App = function (_React$Component) {
       global.open = function (file) {
         var hash = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
 
+        console.log("global.open..." + file);
         //h0默认为应用名称，内容为空，所以当打开h0，将其变为h1概述的位置。
         if (hash == 'h0') {
           hash = 'h1';
@@ -215,8 +218,13 @@ var App = function (_React$Component) {
         global.hash = hash;
         global.oldHash = hash;
         var url = '/open/' + file + '/' + hash;
-        console.log(url);
+        console.log("global.open: " + url);
         _this3.context.router.history.push(url);
+
+        //延时通知qt对象, 以避免通过F1开启帮助时,会直接调用此JS方法,但未完成channnel中qt对象和js中global对象的绑定.
+        setTimeout(function () {
+          global.qtObjects.manual.setApplicationState(file);
+        }, 200);
       };
 
       global.linkTitle = function (title) {
@@ -946,19 +954,38 @@ var Item = function (_Component) {
     value: function render() {
       var _this2 = this;
 
+      var contentSpan = null;
+      if (this.props.isOpened) {
+        contentSpan = _react2.default.createElement(
+          'span',
+          { className: 'content', lang: global.lang },
+          this.state.title
+        );
+      } else {
+        contentSpan = _react2.default.createElement(
+          'span',
+          { className: 'content', lang: global.lang },
+          _react2.default.createElement('span', { className: 'tag' }),
+          this.state.title
+        );
+      }
+
       return this.state.show && _react2.default.createElement(
         'div',
         {
           draggable: 'false',
           tabIndex: '1',
-          className: 'item',
-          onClick: function onClick() {
-            return global.open(_this2.state.file);
+          className: 'item'
+          //this is old
+          // onClick={() => global.open(this.state.file)}
+          , onClick: function onClick() {
+            return global.open(_this2.props.appName);
           }
           // onMouseEnter={e => e.target.focus()}
           , onKeyPress: function onKeyPress(e) {
             if (e.key === 'Enter') {
-              global.open(_this2.state.file);
+              // global.open(this.state.file);
+              global.open(_this2.props.appName);
             }
           }
         },
@@ -968,12 +995,7 @@ var Item = function (_Component) {
           alt: this.props.appName
         }),
         _react2.default.createElement('br', null),
-        _react2.default.createElement(
-          'span',
-          { className: 'content', lang: global.lang },
-          _react2.default.createElement('span', { className: 'tag' }),
-          this.state.title
-        )
+        contentSpan
       );
     }
   }]);
@@ -994,21 +1016,36 @@ var Index = function (_Component2) {
     'downloader', 'deepin-deb-installer', 'deepin-font-manager', 'deepin-calculator', 'deepin-graphics-driver-manager', 'deepin-devicemanager', 'deepin-system-monitor', 'deepin-boot-maker', 'deepin-log-viewer', 'deepin-repair-tools', 'deepin-clone', 'deepin-cloud-print', 'deepin-cloud-scan', 'deepin-voice-recorder', 'deepin-picker', 'deepin-remote-assistance', 'deepin-presentation-assistant', 'chineseime', 'deepin-defender', 'uos-service-support'];
     _this3.state = {
       sequence: sequence,
-      appList: []
+      appList: [],
+      openedAppList: []
     };
     global.qtObjects.manual.getSystemManualList(function (appList) {
       return _this3.setState({ appList: appList });
+    });
+    global.qtObjects.manual.getUsedAppList(function (openedAppList) {
+      console.log("openlist :" + openedAppList);
+      _this3.setState({ openedAppList: openedAppList });
     });
     return _this3;
   }
 
   _createClass(Index, [{
+    key: 'bIsBeOpen',
+    value: function bIsBeOpen(app) {
+      if (this.state.openedAppList.indexOf(app) != -1) {
+        return true;
+      }
+      return false;
+    }
+  }, {
     key: 'shouldComponentUpdate',
     value: function shouldComponentUpdate(nextProps, nextState) {
-      if (nextState.appList.toString() == this.state.appList.toString()) {
-        return false;
-      }
-      return true;
+      if (nextState.appList.toString() == this.state.appList.toString())
+        //  && nextState.openedAppList.toString == this.state.openedAppList.toString()) 
+        {
+          return true;
+        }
+      return false;
     }
   }, {
     key: 'componentDidUpdate',
@@ -1054,7 +1091,7 @@ var Index = function (_Component2) {
               'div',
               { className: 'items' },
               sysSoft.map(function (appName) {
-                return _react2.default.createElement(Item, { key: appName, appName: appName });
+                return _react2.default.createElement(Item, { key: appName, appName: appName, isOpened: _this4.bIsBeOpen(appName) });
               })
             )
           ),
@@ -1070,10 +1107,10 @@ var Index = function (_Component2) {
               'div',
               { className: 'items' },
               appSoft.map(function (appName) {
-                return _react2.default.createElement(Item, { key: appName, appName: appName });
+                return _react2.default.createElement(Item, { key: appName, appName: appName, isOpened: _this4.bIsBeOpen(appName) });
               }),
               otherSoft.map(function (appName) {
-                return _react2.default.createElement(Item, { key: appName, appName: appName });
+                return _react2.default.createElement(Item, { key: appName, appName: appName, isOpened: _this4.bIsBeOpen(appName) });
               }),
               Array.from(new Array(10), function (val, index) {
                 return index;
