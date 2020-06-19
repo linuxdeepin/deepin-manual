@@ -19,7 +19,7 @@ You can run, close and create shortcuts for Image Viewer by the following ways.
  - Click **Send to dock** to fix the application on dock.
  - Click **Add to startup** to add the application to startup and it will automatically run when the system starts up.
 
-![tips](icon/tips.svg)Tips: In Control Center, you can set Draw as default picture viewer. Please refer to  [Default Application Settings](dman:///dde#Default Application Settings) for specific operations.
+![tips](icon/tips.svg)Tips: In Control Center, you can set Draw as default picture viewer. Please refer to  [Default Applications](dman:///dde#Default Application Settings) for specific operations.
 
 ### Exit Draw
 

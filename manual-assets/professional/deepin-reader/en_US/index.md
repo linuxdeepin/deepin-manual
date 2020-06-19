@@ -76,7 +76,7 @@ To print you have to connect and configure a printer.
 3. In this previewing interface, click the printer icon on the right, and select a printer from the popped out window and set the parameters you want. 
 4. Click **Print**  then the document will be sent to the printer for printing. 
 
-![preview](jpg/preview-doc.png)
+![preview](jpg/preview-doc1.png)
 
 ![pagesetup](jpg/pageSetup-doc.png)
 
@@ -139,11 +139,11 @@ On Document Viewer interface, open a file.
    4. Click "**x**" of the window or in any blank area outside the window, the note will be saved automatically.  The selected text will be highlighted after the note is added successfully. 
    
   > ![tips](icon/tips.svg)Tips: You can also right-click at any blank area or the place you want to add a note and select **Add annotation**. After a note is successfully added, a highlighted note icon appears.
-
+  
   > ![notes](icon/notes.svg)Notes: 
   > * Click "**x**" of the window without inputing any content, then the note is not added successfully or is deleted automatically. 
   > * Click "**x**" of the window after inputing some content, the content will be saved automatically and displayed as a small icon. 
-
+  
 - Copy note
    -  Right-click the highlighted text to which a note is successfully added and select **Copy** to copy the content.
    -  Right-click the note icon, select **Copy** to copy the content.
@@ -278,7 +278,7 @@ To make the window adapted to all sizes, you can:
 
 ## Main Menu
 
-In the main menu, you can [Save](#Save), [Print](#Print), view document info, switch themes, view help to know more about Document Viewer. 
+In the main menu, you can save, print, view document info, switch themes, view help to know more about Document Viewer. 
 
 
 ### Document info

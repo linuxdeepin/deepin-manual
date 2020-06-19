@@ -21,7 +21,7 @@ You can run, close or create shortcuts for Album by the following ways.
  - Click **Send to dock** to fix the application on dock.
  - Click **Add to startup** to add the application to startup and it will automatically run when the system starts up.
 
-> ![tips](icon/tips.svg)Tips: In Control Center, the user can set Album as the default photo viewing application. Please refer to [Default Application Settings](dman:///dde#Default Application Settings) for specific operations.
+> ![tips](icon/tips.svg)Tips: In Control Center, the user can set Album as the default photo viewing application. Please refer to [Default Applications](dman:///dde#Default Application Settings) for specific operations.
 
 ### Exit Album
 
@@ -48,7 +48,7 @@ On the Album interface, you are able to import photos as follows:
 
 > ![tips](icon/tips.svg)Tips: Import photos to the empty Album by clicking **Import photos** on the Album interface.
 
-> ![notes](icon/notes.svg)Notes: The photo formats supported include BMP, GIF, JPG, PNG, PBM, PGM, PPM, XBM, XPM, SVG, DDS, ICNS, JP2, MNG, TGA, TIFF, WBMP, WEBP, PSD, PDF and EPS.
+> ![notes](icon/notes.svg)Notes: The photo formats supported include BMP, GIF, JPG, PNG, PBM, PGM, PPM, XBM, XPM, SVG, DDS, ICNS, JP2, MNG, TGA, TIFF, WBMP, WEBP, PSD, PDF, and EPS.
 
 ### Search Photos 
 
@@ -65,7 +65,7 @@ On the Album interface, you are able to import photos as follows:
 
 Click the scroll bar in the Album interface to adjust the thumbnail size of photos.
 
-Double-click or right-click the photo to select **View** and enter the photo viewing interface. Press **Esc** on the keyboard to exit.
+Double-click or right-click the photo to select **View** and enter the photo viewing interface. Press ![Esc](icon/Esc.svg) on the keyboard to exit.
 
 | Icon                                               | Name                    | Description                                                  |
 | -------------------------------------------------- | ----------------------- | ------------------------------------------------------------ |
@@ -82,7 +82,7 @@ Double-click or right-click the photo to select **View** and enter the photo vie
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
-> ![tips](icon/tips.svg)Tips: Scroll the mouse wheel to enlarge the picture. If the photo size exceeds the window, a navigation window will appear at the lower part. Drag the box in the window to fast locate the corresponding photo areas. Click **x** on the top right corner of the navigation window to close it or right-click the photo to select "Hide navigation window".
+> ![tips](icon/tips.svg)Tips: Scroll the mouse wheel to enlarge the picture. If the photo size exceeds the window, a navigation window will appear at the lower part. Drag the box in the window to fast locate the corresponding photo areas. You can click **x** on the top right corner of the navigation window to close it. Right-click the photo, you can select **Hide navigation window/Show navigation window**.
 
 ![0|copy](jpg/view-pic.png)
 
@@ -97,11 +97,11 @@ In timelines, all photos are sorted by date.  Photos with the same date are disp
 2. Select the printer and set the print options as needed.
 3. Click the Print icon for printing. 
 
-### Play Slide Show
+### Slide Show
 
 1.  On the Album interface, right-click a photo.
 2. Select **Slide show** to play the photo as slides in full screen.
-3. Press **Esc** on the keyboard to exit. 
+3. Press ![Esc](icon/Esc.svg) on the keyboard to exit. 
 
 ![0|copy](jpg/play.png)
 
@@ -121,7 +121,7 @@ You can delete photos from Album by the following ways:
 - Right-click the photo to select **Delete**.
 - On the Album interface, press **Delete** on the keyboard.
 
-> ![tips](icon/tips.svg)Tips: The deleted photos in the Album are not deleted permanently but stored in Trash temporarily. When the remaining days displayed on the photo are 0, the photos will be deleted permanently. You are able to restore or delete the photo in advance.
+> ![tips](icon/tips.svg)Tips: The deleted photos in the Album are not deleted permanently but temporarily stored in "Trash"(click **Albums** on the top of the interface and it will display in the left panel). When the remaining days displayed on the photo are 0, the photos will be deleted permanently. You are able to restore or delete the photo in advance.
 
 
 ### Favorite Photos
@@ -138,7 +138,7 @@ You can delete photos from Album by the following ways:
 1. On the Album interface, right-click a photo and select **Rotate clockwise** or **Rotate counterclockwise**.
 2. The photo will be rotated clockwise or counterclockwise for 90 degrees.
 
-### Set the Photo as Wallpaper
+### Set as Wallpaper
 
 1.  Right-click the photo on the Album interface.  
 2.  Select **Set as wallpaper** to set the current photo as wallpaper.
@@ -183,7 +183,7 @@ On the Album interface, you are able to create new albums, manage photos in the 
 1.  On the Album interface, right-click a photo and select **Add to album**.
 2.  Select an album and add the photo to it.
 
->![tips](icon/tips.svg)Tips: you are also able to add photos to an album by dragging directly the photo or photo folder to it.
+>![tips](icon/tips.svg)Tips: you are also able to add photos to an album by dragging the photo or photo folder directly to it.
 
 ![0|add-to-album](jpg/add-to-album.png)
 
@@ -197,7 +197,7 @@ On the Album interface, you are able to create new albums, manage photos in the 
 ### Rename Albums
 
 1.  On the Album interface, right-click the album to be renamed and select **Rename**. 
-2.  Enter the album name and press the **Enter** key on the keyboard or click the blank area of the interface.
+2.  Enter the album name and press the ![enter](icon/Enter.svg)key on the keyboard or click the blank area of the interface.
 
 ### Export Albums
 
@@ -211,7 +211,7 @@ On the Album interface, you are able to create new albums, manage photos in the 
 
 ## Main Menu
 
-In the main menu, you can [Create New Albums](#Create New Albums), [Import Photos](#Import Photos), switch window themes, view help and get more information about Album.
+In the main menu, you can create [New Albums](#Create New Albums), [Import Photos](#Import Photos), switch window themes, view help and get more information about Album.
 
 ### Theme
 

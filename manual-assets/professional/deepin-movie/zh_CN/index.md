@@ -29,7 +29,7 @@
 1. 在影院界面，按下键盘上的 ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![QM](icon/QM.svg) 组合键，打开快捷键预览界面。
 2. 在快捷键预览界面，您可以查看到所有的快捷键。
 
-> ![attention](icon/attention.svg) ：在视频播放的过程中，您也可以随时调出快捷键预览界面。
+> ![attention](icon/attention.svg)注意 ：在视频播放的过程中，您也可以随时调出快捷键预览界面。
 
  ![1|快捷键界面](jpg/hotkey.png)
 
@@ -50,7 +50,7 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-> ![notes](icon/notes.svg) ：当鼠标置于进度条上时，默认显示预览窗口，如果您不需要预览显示，您可以进入设置中去更改，具体操作请参阅 [基础设置](#基础设置)。
+> ![notes](icon/notes.svg)说明 ：当鼠标置于进度条上时，默认显示预览窗口，如果您不需要预览显示，您可以进入设置中去更改，具体操作请参阅 [基础设置](#基础设置)。
 
 ### 图标介绍
 
@@ -75,7 +75,7 @@
 - 单击鼠标右键，选择 **播放光盘**，播放光盘中的影片。
 - 直接拖拽文件或文件夹到影院界面上，来播放本地影片。
 
-> ![attention](icon/attention.svg) ：使用影院在线播放视频时，请确保您的电脑是连入网络的。
+> ![attention](icon/attention.svg)注意 ：使用影院在线播放视频时，请确保您的电脑是连入网络的。
 
 
 ![0|open](jpg/open.png)
@@ -91,7 +91,7 @@
 2. 如果要减速播放，请按下键盘上的 ![Ctrl](icon/Ctrl.svg)+![Left](icon/Left.svg) 键。
 3. 如果要恢复原速播放，请按下键盘上的 ![R](icon/R.svg) 键。
 
->![notes](icon/notes.svg) ：加速/ 减速播放是相对于原播放速度而言的，每加速/减速一次，视频播放速度默认增加/减少0.1 倍。如果按住键盘上的 ![Ctrl](icon/Ctrl.svg)+![Right](icon/Right.svg) 或 ![Left](icon/Left.svg) 键不放，视频播放速度将递增或递减。最高播放速度为2倍的原播放速度，最低播放速度为0.1倍的原播放速度。
+>![notes](icon/notes.svg)说明 ：加速/ 减速播放是相对于原播放速度而言的，每加速/减速一次，视频播放速度默认增加/减少0.1 倍。如果按住键盘上的 ![Ctrl](icon/Ctrl.svg)+![Right](icon/Right.svg) 或 ![Left](icon/Left.svg) 键不放，视频播放速度将递增或递减。最高播放速度为2倍的原播放速度，最低播放速度为0.1倍的原播放速度。
 
 ## 功能设置
 
@@ -104,7 +104,7 @@
 - 选择 **置顶窗口**，将播放窗口置顶到桌面上方。
 - 您也可以使用鼠标拖拽窗口边缘，自由调整窗口大小。
 
->![notes](icon/notes.svg) ：您可以在播放窗口上双击鼠标，播放窗口将在 **全屏/正常窗口** 之间切换。
+>![notes](icon/notes.svg)说明 ：您可以在播放窗口上双击鼠标，播放窗口将在 **全屏/正常窗口** 之间切换。
 
 ![0|windows](jpg/fullscreen.png)
 
@@ -181,7 +181,7 @@
 2. 进入播放列表窗口，将鼠标指针置于视频文件上。
 3. 右键单击 **从播放列表删除**。
 
-> ![tips](icon/tips.svg)： 在播放列表界面，将鼠标指针置于视频文件上，点击![关闭图标](icon/close.svg) 删除视频文件。
+> ![tips](icon/tips.svg)窍门： 在播放列表界面，将鼠标指针置于视频文件上，点击![关闭图标](icon/close.svg) 删除视频文件。
 
 ![list](jpg/list-manag.png)
 
@@ -240,7 +240,7 @@
  - 选择字幕字体。
  - 选择字幕字号。
 
->  ![attention](icon/attention.svg)：点击设置界面上的 **恢复默认**，会将所有设置恢复到默认状态。
+>  ![attention](icon/attention.svg)注意：点击设置界面上的 **恢复默认**，会将所有设置恢复到默认状态。
 
 ![1|setting](jpg/setting3.png)
 

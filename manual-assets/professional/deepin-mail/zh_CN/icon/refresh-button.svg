@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="44px" height="44px" viewBox="0 0 44 44" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 58 (84663) - https://sketch.com -->
+    <title>联系人icon备份</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="95.6533653%" id="linearGradient-1">
+            <stop stop-color="#E6E6E6" offset="0%"></stop>
+            <stop stop-color="#E3E3E3" offset="100%"></stop>
+        </linearGradient>
+        <rect id="path-2" x="0" y="0" width="36" height="36" rx="8"></rect>
+        <filter x="-19.4%" y="-13.9%" width="138.9%" height="138.9%" filterUnits="objectBoundingBox" id="filter-3">
+            <feOffset dx="0" dy="2" in="SourceAlpha" result="shadowOffsetOuter1"></feOffset>
+            <feGaussianBlur stdDeviation="2" in="shadowOffsetOuter1" result="shadowBlurOuter1"></feGaussianBlur>
+            <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"></feComposite>
+            <feColorMatrix values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.05 0" type="matrix" in="shadowBlurOuter1"></feColorMatrix>
+        </filter>
+    </defs>
+    <g id="组件" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="工具栏" transform="translate(-183.000000, -5.000000)">
+            <g id="联系人icon备份">
+                <g transform="translate(187.000000, 7.000000)">
+                    <g id="矩形">
+                        <use fill="black" fill-opacity="1" filter="url(#filter-3)" xlink:href="#path-2"></use>
+                        <use fill-opacity="0.08" fill="#000000" fill-rule="evenodd" xlink:href="#path-2"></use>
+                        <rect stroke-opacity="0.03" stroke="#000000" stroke-width="1" stroke-linejoin="square" fill="url(#linearGradient-1)" fill-rule="evenodd" x="0.5" y="0.5" width="35" height="35" rx="8"></rect>
+                    </g>
+                    <path d="M10.5,13 L13,17 L11.0708922,16.9999765 C11.0241731,17.326587 11,17.6604705 11,18 C11,21.8659932 14.1340068,25 18,25 C19.9610111,25 21.7336828,24.1936236 23.0045182,22.8943678 L23.7234152,23.5895057 C22.2707552,25.0767479 20.2431961,26 18,26 C13.581722,26 10,22.418278 10,18 C10,17.66147 10.0210271,17.3278512 10.0618466,17.0003784 L8,17 L10.5,13 Z M18,10 C22.0796344,10 25.4460359,13.0537136 25.9381123,17.0000487 L28,17 L25.5,21 L23,17 L24.92911,16.9999918 C24.4438768,13.6077016 21.5264691,11 18,11 C16.4714619,11 15.0573521,11.4899258 13.906135,12.3213129 L13.2172852,11.586467 C14.5513683,10.5899991 16.2067833,10 18,10 Z" id="dcc_refresh_icon" fill="#536076"></path>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>

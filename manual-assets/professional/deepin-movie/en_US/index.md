@@ -2,9 +2,7 @@
 
 ## Overview
 
-Movie is a video player with various features. It offers simple interface and rich shortcuts and supports various video formats. You can also play online video resources and freely set the sound, frame and subtitle only with the keyboard.
-
-Movie shares extreme play experience with you. Use it and you will love it!
+Movie shares comfortable leisure time with you! Movie is a video player with various features. It offers simple interface and rich shortcuts. You can fullfill all operations with keyboard, which lets you get rid of the bondage of mouse clicks completely. It supports various video formats. 
 
 ![1|main](jpg/main.png)
 
@@ -28,12 +26,12 @@ Movie shares extreme play experience with you. Use it and you will love it!
 
 Learning about the shortcuts in advance before playing videos will make your subsequent operations more effective.
 
-1.  On the Movie interface, press **Ctrl** + **Shift** + **？** on the keyboard to open the shortcut preview interface.
+1.  On the Movie interface, press  ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![QM](icon/QM.svg) on the keyboard to open the shortcut preview interface.
 2.   You can view all the shortcuts on the preview interface.
 
 > ![attention](icon/attention.svg)Attention: You can open the shortcut preview interface any time during your video playback.
 
- ![1|shortcut](jpg/shortcut.jpg)
+ ![1|shortcut](jpg/shortcut.png)
 
 
 ## Main Interface
@@ -89,15 +87,13 @@ You can play films by the following ways:
 
 ### Speed Up/Down
 
-1.  On the Movie interface, press **Ctrl**+![Right](icon/Right.svg) on the keyboard to speed up the film playback.
-2.  Press **Ctrl** +![Left](icon/Left.svg) on the keyboard to speed down the film playback.
-3.  If you want to restore the original play speed, press **R** on the keyboard.
+1.  On the Movie interface, press ![Ctrl](icon/Ctrl.svg)+![Right](icon/Right.svg) on the keyboard to speed up the film playback.
+2.  Press ![Ctrl](icon/Ctrl.svg) +![Left](icon/Left.svg) on the keyboard to speed down the film playback.
+3.  If you want to restore the original play speed, press ![R](icon/r.svg)on the keyboard.
 
->![notes](icon/notes.svg)Notes: Speed up/down is relative to the original play speed. The video playback speed increases / decreases by 0.1 times by default each time it is sped up / down. Press and hold **Ctrl**+![Right](icon/Right.svg) or ![Left](icon/Left.svg) on the keyboard and the playback speed will increase or decrease. The maximum playback speed is 2 times the original playback speed and the minimum playback speed is 0.1 times the original playback speed.
+>![notes](icon/notes.svg)Notes: Speed up/down is relative to the original play speed. The video playback speed increases / decreases by 0.1 times by default each time it is sped up / down. Press and hold ![Ctrl](icon/Ctrl.svg)+![Right](icon/Right.svg) or ![Left](icon/Left.svg) on the keyboard and the playback speed will increase or decrease. The maximum playback speed is 2 times the original playback speed and the minimum playback speed is 0.1 times the original playback speed.
 
-## Basic operations
-
-On the Movie interface, you can do many operations according to your needs.
+## Functions
 
 ### Adjust Window
 
@@ -113,7 +109,7 @@ You can adjust the window size as you wish during playback.
 
 ![0|window](jpg/window.png)
 
-### Select Play Mode
+### Adjust Play Mode
 
 1.  Right-click on the Movie interface.
 2.  Select **Play Mode** and you can:
@@ -158,7 +154,7 @@ You can adjust the window size as you wish during playback.
 2.  Select **Screenshot** and you can:
  - Select **Film Screenshot** to take a screenshot of the film in current frame.
  - Select **Burst Shooting** to take 15 screenshots of the film in different times and finally form a preview of the plot burst shooting.
- - Select **Go To Screenshot Folder** to view the screenshots.
+ - Select **Open Screenshot Folder** to view the screenshots.
 
 ![0|screenshot](jpg/screenshot.png)
 
@@ -181,7 +177,7 @@ You can add films to the playlist by the following ways:
 ### Delete Film from the Playlist
 
 1.  Click ![movie](icon/episodes_normal.svg )on the Movie interface.
-2. Hover the mouse pointer over video file and right-click to delete it from the playlist.
+2. Hover the mouse pointer over video file and right-click to select **Delete from playlist**.
 
 > ![tips](icon/tips.svg)Tips: On the playlist interface, hover the mouse pointer over the video file and click![关闭图标](icon/close.svg) to delete it.
 
@@ -214,6 +210,7 @@ You can set the basic information, shortcut keys and subtitiles.
   - Check the **Remember playback position** box to resume the film automatically from the last position played when Movie runs.
   - Check the **Auto add similar files to play **box to add the similar film files in the same folder to the playlist  for playback in order.
   - Check the  **Show video preview on mouseover** box to show the film preview when hovering on the progress bar.
+  - Check the **Show thumbnails in progress bar** , a preview window will be displayed when the corsur hovers on the progress bar.
   - Check the **Pause when minimized** to pause the playback automatically when minimizing the Movie window.
 4.  In the option of **Screenshot**, you can select the path to save screenshots as you wish.
 
@@ -225,7 +222,7 @@ You can set the basic information, shortcut keys and subtitiles.
 
 1.  Right-click or click ![界面按钮图标](icon/icon_menu.svg)on the Movie interface.
 2.  Select **Settings** > **Shortcuts**.
-3.  You can set the shortcuts for playback, frame/sound, file, subtitle and screenshot.
+3.  You can select and input new shortcuts.
 
 ![1|settings](jpg/settings.png)
 

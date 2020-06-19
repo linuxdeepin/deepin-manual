@@ -44,7 +44,7 @@
 - 单击 **选择光盘镜像文件**，选中已下载的镜像文件后单击 **下一步**。
 - 直接将镜像文件拖拽到制作工具界面，然后单击 **下一步**。
 
-> ![notes](icon/notes.svg)：请提前校验镜像文件的MD5值，确认和官网的MD5值一致后使用。非官方下载的镜像文件或者文件下载不完成可能会导致制作失败。
+> ![notes](icon/notes.svg)说明：请提前校验镜像文件的MD5值，确认和官网的MD5值一致后使用。非官方下载的镜像文件或者文件下载不完整可能会导致制作失败。
 
 ![0|boot-maker](jpg/select-file.png)
 
@@ -52,7 +52,7 @@
 
 选中制作启动盘使用的U盘，然后单击 **开始制作**。
 
-> ![tips](icon/tips.svg)：建议勾选 **格式化磁盘可以提高制作成功率**。
+> ![tips](icon/tips.svg)窍门：建议勾选 **格式化磁盘可以提高制作成功率**。
 
 ![0|boot-maker](jpg/select-disk.png)
 
@@ -84,6 +84,7 @@
 - 未知错误
 
 ![boot-maker](jpg/failed.png)
+
 ![boot-maker](jpg/failed-02.png)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;

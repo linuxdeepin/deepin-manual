@@ -29,7 +29,7 @@ You can run, exit or create a shortcut for Font Manager by the following ways.
 -  Right-click ![deepin-font-manager](icon/deepin-font-manager.svg) on dock and select **Close All** to exit.
 - Click ![icon_menu](icon/icon_menu.svg) on the Font Manager interface and select  **Exit** to exit.
 
-## Operation Instructions
+## Operation
 
 ### Interface Description
 

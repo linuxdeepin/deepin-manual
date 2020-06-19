@@ -21,7 +21,7 @@
  - 点击 **发送到任务栏**，将应用程序固定到任务栏。
  - 点击 **开机自动启动**，将应用程序添加到开机启动项，在电脑开机时自动运行该应用。
 
-> ![tips](icon/tips.svg)：您可以在控制中心将相册设置为默认的照片查看程序，具体操作请参考 [默认程序设置](dman:///dde#默认程序设置)。
+> ![tips](icon/tips.svg)窍门：您可以在控制中心将相册设置为默认的照片查看程序，具体操作请参考 [默认程序设置](dman:///dde#默认程序设置)。
 
 ### 关闭相册
 
@@ -46,9 +46,9 @@
 - 直接将照片或所在文件夹拖拽到界面上。
 - 从移动设备导入照片。
 
-> ![tips](icon/tips.svg)：当相册中尚无照片时，点击 **导入照片**，将照片导入相册管理系统。
+> ![tips](icon/tips.svg)窍门：当相册中尚无照片时，点击 **导入照片**，将照片导入相册管理系统。
 
-> ![notes](icon/notes.svg)：相册支持的图片格式有BMP、GIF、JPG、PNG、PBM、PGM、PPM、XBM、XPM、SVG、DDS、ICNS、JP2、MNG、TGA、TIFF、WBMP、WEBP、PSD、PDF、EPS。
+> ![notes](icon/notes.svg)说明：相册支持的图片格式有BMP、GIF、JPG、PNG、PBM、PGM、PPM、XBM、XPM、SVG、DDS、ICNS、JP2、MNG、TGA、TIFF、WBMP、WEBP、PSD、PDF、EPS。
 
 ### 搜索照片
 
@@ -82,7 +82,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
-> ![tips](icon/tips.svg)：滚动鼠标放大图片且当图片超出界面范围时，界面上会出现导航窗口。拖动导航窗口内的方框，查看该区域的信息。点击导航窗口右上角 **x**按钮，关闭导航窗口；也可以在看图界面上单击鼠标右键选择**隐藏导航窗口**/**显示导航窗口**。
+> ![tips](icon/tips.svg)窍门：滚动鼠标放大图片且当图片超出界面范围时，界面上会出现导航窗口。拖动导航窗口内的方框，查看该区域的信息。点击导航窗口右上角 **x**按钮，关闭导航窗口；也可以在看图界面上单击鼠标右键选择**隐藏导航窗口**/**显示导航窗口**。
 
 ![0|copy](jpg/view-pic.png)
 
@@ -122,7 +122,7 @@
 - 右键单击照片，选择 **删除**。
 - 在相册界面上，按下键盘上的 **Delete** 键。
 
-> ![tips](icon/tips.svg)：在相册中删除的照片并没有被永久删除，而是暂时存放在“最近删除”中。当照片上的剩余天数显示为0天时，照片将被永久删除。您可以提前恢复或彻底删除这里的照片。
+> ![tips](icon/tips.svg)窍门：在相册中删除的照片并没有被永久删除，而是暂时存放在“最近删除”中。当照片上的剩余天数显示为0天时，照片将被永久删除。您可以提前恢复或彻底删除这里的照片。
 
 
 ### 收藏照片
@@ -131,7 +131,7 @@
 2. 选择 **收藏**，照片将会添加到“我的收藏”。
 3. 右键单击已收藏的照片，也可以 **取消收藏**。
 
-> ![tips](icon/tips.svg)：在查看照片时，点击界面上的![collect](icon/collect.svg)，将照片加入我的收藏。再次点击![collect-active](icon/collect-active.svg)，取消收藏。
+> ![tips](icon/tips.svg)窍门：在查看照片时，点击界面上的![collect](icon/collect.svg)，将照片加入我的收藏。再次点击![collect-active](icon/collect-active.svg)，取消收藏。
 >
 > ![favorite](jpg/favorite.png)
 
@@ -167,7 +167,7 @@
 
 在相册界面，您可以新建相册，管理相册中的照片，查看所有相册。
 
-> ![notes](icon/notes.svg)：**已导入**、**最近删除**、**我的收藏** 是系统根据实际情况自动生成的，这3个相册不可删除、重命名。
+> ![notes](icon/notes.svg)说明：**已导入**、**最近删除**、**我的收藏** 是系统根据实际情况自动生成的，这3个相册不可删除、重命名。
 > 
 ![1|album](jpg/album.png)
 
@@ -177,7 +177,7 @@
 1. 在相册界面，点击![icon_menu](icon/create.png) 或 ![icon_menu](icon/icon_menu.svg)  > **新建相册**。
 2. 输入相册名称，点击 **新建**。
 
-> ![tips](icon/tips.svg)：右键单击已创建的相册，也可以新建相册。您还可以在添加照片到相册时新建相册。
+> ![tips](icon/tips.svg)窍门：右键单击已创建的相册，也可以新建相册。您还可以在添加照片到相册时新建相册。
 
 ![0|album](jpg/album.png)
 
@@ -188,7 +188,7 @@
 2. 选择 **添加到相册**。
 3. 选择一个相册，将照片添加到相册中。
 
-> ![tips](icon/tips.svg)：也可以直接拖拽照片或照片文件夹到相册中，添加照片到相册。
+> ![tips](icon/tips.svg)窍门：也可以直接拖拽照片或照片文件夹到相册中，添加照片到相册。
 
 ![0|add-to-album](jpg/add-to-album.png)
 

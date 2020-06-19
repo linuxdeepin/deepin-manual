@@ -2,7 +2,7 @@
 
 ## 概述
 
-画板是一款简单的绘图工具，支持旋转、裁剪、翻转、添加文字、绘制形状等功能。用户可以对本地图片进行简单编辑，也可以绘制一张简单图片。
+画板是一款简单的绘图工具，支持旋转、裁剪、翻转、添加文字、绘制形状等功能。您可以对本地图片进行简单编辑，也可以绘制一张简单图片。
 
 ![1|mian](jpg/main.png)
 
@@ -19,7 +19,7 @@
  - 点击 **发送到任务栏**，将应用程序固定到任务栏。
  - 点击 **开机自动启动**，将应用程序添加到开机启动项，在电脑开机时自动运行该应用。
 
-![tips](icon/tips.svg)：您可以在控制中心中将画板设置为默认的图片查看程序，具体操作请参考 [默认程序设置](dman:///dde#默认程序设置)。
+![tips](icon/tips.svg)窍门：您可以在控制中心中将画板设置为默认的图片查看程序，具体操作请参考 [默认程序设置](dman:///dde#默认程序设置)。
 
 ### 关闭画板
 
@@ -36,7 +36,9 @@
 
 ## 常用功能
 
-使用画板可以处理导入的图片，也可以自由绘制图形，并可以保存为多种图片格式。
+使用画板可以处理导入的图片，也可以自由绘制图形，并可以导出多种图片格式。
+
+### 新建标签页
 
 ![1|mian](jpg/open.png)
 
@@ -45,14 +47,18 @@
 
  当标签页比较多时，通过拖拽调整标签页，或点击 ![previous](jpg/previous.png)或![next](jpg/next.png)按钮来调整标签页。  
 
+### 关闭标签页
+
+-  鼠标左键点击标签页，点击 **x** 按钮关闭当前标签页。
+- 鼠标右键点击标签页，选择 **关闭标签页** 或 **关闭其他标签页**。
+
+
 ### 打开图片
 
 1. 在画板界面上，点击 ![import](icon/Import_normal.svg)。
 2. 选择想要导入的图片，点击 **打开**。
 
-> ![tips](icon/tips.svg)：您可以一次导入多张图片，您也可以通过 ![menu](icon/icon_menu.svg) > **打开** 导入图片。
-
-
+> ![tips](icon/tips.svg)窍门：您可以一次导入多张图片，您也可以通过 ![menu](icon/icon_menu.svg) > **打开** 导入图片。
 
 目前仅支持导入30张图片，且支持的图片格式为JPG、PNG、TIF和BMP。
 
@@ -70,7 +76,7 @@
 2. 设置保存的文件名、格式。
 3. 点击 **保存**。
 
-> ![notes](icon/notes.svg)：填写保存文件名时可以省略后缀名，会自动保存为文件格式栏选择的格式。
+> ![notes](icon/notes.svg)说明：填写保存文件名时可以省略后缀名，会自动保存为文件格式栏选择的格式。
 
 ### 打印图片
 
@@ -79,7 +85,7 @@
 3. 设置打印参数。
 4. 点击 **打印**。
 
-> ![notes](icon/notes.svg)：点击 **属性** 和 **选项** 可以自定义您的打印效果。
+> ![notes](icon/notes.svg)说明：点击 **属性** 和 **选项** 可以自定义您的打印效果。
 
 
 
@@ -96,9 +102,8 @@
 - 在选择状态中的图形，拖拽调整图形大小。
 - 支持按住 **Shift**键，选择多个图形。
 
-  
 
-> ![notes](icon/notes.svg)：点击画板空白区域，取消当前已选图形。
+> ![notes](icon/notes.svg)说明：点击画板空白区域，取消当前已选图形。
 
 ### 形状工具
 
@@ -114,7 +119,7 @@
    - 侧边数取值范围为4-10条，数值既可以通过拖拽滑动块进行调节，也可以⼿动输⼊。
 3. 在画板区域拖动鼠标来绘制形状。
 
-> ![tips](icon/tips.svg)：在使用 ![rectangle](icon/rectangle_normal.svg) 或  ![oval](icon/oval_normal.svg)或![triangle](icon/triangle_tool_normal.svg)或![star](icon/draw-star.svg)或![hexagon](icon/hexagon_tool_normal.svg)绘制图形时，配合键盘上的![Shift](icon/Shift.svg) 或![Shift](icon/Shift.svg)+ ![Alt](icon/Alt.svg) 键可以画出正方形、正圆、正三角、正五角星、正多边形。
+> ![tips](icon/tips.svg)窍门：在使用 ![rectangle](icon/rectangle_normal.svg) 或  ![oval](icon/oval_normal.svg)或![triangle](icon/triangle_tool_normal.svg)或![star](icon/draw-star.svg)或![hexagon](icon/hexagon_tool_normal.svg)绘制图形时，配合键盘上的![Shift](icon/Shift.svg) 或![Shift](icon/Shift.svg)+ ![Alt](icon/Alt.svg) 键可以画出正方形、正圆、正三角、正五角星、正多边形。
 
 ![1|shape](jpg/shape1.png)
 
@@ -156,7 +161,7 @@
 
 1. 在画板界面上，点击 ![blur](icon/blur_normal.svg)。
 2. 选择模糊类型。
-3. 通过左右拖动设置条上的滑块设置涂抹区域的粗细。
+3. 选择涂抹区域的粗细值。
 4. 在画板区域拖动鼠标来涂抹需要模糊的区域。
 
 ![1|blur](jpg/blur.png)
@@ -191,7 +196,7 @@
 1. 在画板界面上，选择已导入的图片。
 2. 点击 ![flip](icon/filp_Vertical_normal.svg) 或 ![flip](icon/flip_Horizontal_normal.svg) 将图片垂直翻转或水平翻转。
 
-![1|roll-over](jpg/roll-over.png)
+![1|rotate](jpg/rotate.png)
 
 
 ### 旋转
@@ -199,9 +204,17 @@
 1. 在画板界面上，选择已导入的图片。
 2. 点击 ![rotate](icon/rotate_right_normal.svg) 或 ![rotate](icon/rotate_left_normal.svg) 将图片顺时针或逆时针旋转90°。
 
-> ![tips](icon/tips.svg)：您也可以通过鼠标拖动图片或图形的原点来自由旋转操作。
+> ![tips](icon/tips.svg)窍门：您也可以通过鼠标拖动图片或图形的原点来自由旋转操作。
 
-![1|rotate](jpg/rotate.png)
+
+
+### 自适应画布
+
+1. 在画板界面，选择已导入的图片。
+2. 点击 ![auto fit](icon/auto fit.svg)，根据图片自适应画布大小。
+   - 若选择单张图片，根据图片的宽高来调整画布大小。
+   - 若选择多张图片，按最大边界范围调整画布大小。
+
 
 
 ### 删除
@@ -215,14 +228,26 @@
 ### 调整图层
 
 1. 在画板界面上，选择一个图形。
-2. 单击鼠标右键选择 **向上一层**、**向下一层**、**置于顶层**、**至于底层** 来调整图层顺序。
+2. 单击鼠标右键选择 **图层**，在其下拉列表选择 **向上一层**、**向下一层**、**置于顶层** 或 **置于底层** 来调整图层顺序。
 
 ![1|layer](jpg/layer.png)
 
+### 对齐图层
+
+1. 在画板界面上，选中一个或多个图形。
+
+2. 单击鼠标右键选择 **对齐**，在其下拉列表选择 **左对齐**、**水平居中**、**右对齐**、**顶对齐**、**垂直居中**、**底对齐**、**水平等间矩** 或 **垂直等间矩** 来调整图层对齐方式。
+
+![notes](icon/notes.svg)说明：
+   - 仅选中一个图形进行操作时，图层则与画布对齐。
+   - 选中三个或三个以上的图形时，才能进行“水平等间矩”和“垂直等间矩”的操作。
+
+![1|align1](jpg/align1.png)
+
 ### 对齐文本
 
-1. 在画板界面上，点击 ![text](icon/text_normal.svg)。
-2. 单击鼠标右键选择 **左对齐**、**右对齐**、**居中对齐** 来对齐文本。
+1. 在画板界面上，点击 ![text](icon/text_normal.svg)，调整文本框大小。
+2. 选中文本内容后单击鼠标右键选择 **左对齐**、**右对齐**、**居中对齐** 来对齐文本。
 
 ![1|layer](jpg/align.png)
 

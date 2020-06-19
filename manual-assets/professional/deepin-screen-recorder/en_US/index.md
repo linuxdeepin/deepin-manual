@@ -15,19 +15,19 @@ You can run, close or create shortcuts for screen capture by the following opera
 ### Run Screen Capture
 
 1.  Click ![deepin-launcher](icon/deepin-launcher.svg) on dock to enter the launcher interface.
-2.  Locate ![deepin-screenshot](icon/deepin-screenshot.svg)by scrolling the mouse wheel or searching "Screen Capture" in the Launcher interface and click it to run. 
+2.  Locate ![deepin-screenshot](icon/deepin-screenshot.svg)by scrolling the mouse wheel or searching "Screen Capture" in the Launcher interface and click it to run. 
 3.  Right-click ![deepin-screenshot](icon/deepin-screenshot.svg) and you can:
 
     - Click **Send to desktop** to create a desktop shortcut.
     - Click **Send to dock** to fix it on Dock.
     - Click **Add to startup** to add it to startup and it will automatically run when the system starts up.
 
-> ![notes](icon/notes.svg)Notes: If Screen Capture has been fixed on dock by default, you can also click ![deepin-screenshot](icon/deepin-screenshot.svg) on dock to run it.
+> ![notes](icon/notes.svg)Notes: If Screen Capture has been fixed on dock by default, you can also click ![deepin-screenshot](icon/deepin-screenshot.svg) on dock to run it.
 
 ### Close Screen Capture
 
 - Screen Capture will exit automatically after screenshot or screen recording.
-- On the Screen Capture interface, click ![close](icon/close-normal.svg) to exit Screen Capture.
+- On the Screen Capture interface, click ![close](icon/close-normal.svg) to exit Screen Capture.
 - On the Screen Capture interface, press **Ctrl** + **S** or **Esc** on the keyboard to save the screen capture or exit.
 - On the Screen Capture interface, right-click to select **Save** or **Exit**.
 
@@ -74,7 +74,7 @@ You can select the full screen by the following ways:
 
 You can also take a full screen screenshot directly by the following ways:
 
-- If Screen Capture has been fixed on dock, right-click ![deepin-screenshot](icon/deepin-screenshot.svg) on dock to select **Full screenshot**. 
+- If Screen Capture has been fixed on dock, right-click ![deepin-screenshot](icon/deepin-screenshot.svg) on dock to select **Full screenshot**. 
 - Press ![print](icon/Print.svg) on the keyboard to take a full screen screenshot.
 
 ##### Program Window Selection
@@ -322,6 +322,7 @@ Click **Options** in the toolbar of the Screen Capture interface and expand the 
 - Click **Folder**, select the destination folder of the screenshot and the screenshot will be saved to the folder directory set by the user automatically. 
 - Select **PNG/JPG/BMP** to set the screenshot format.
 - Select **Copy to clipboard** to copy the screenshot to clipboard.
+- Select **Show cursor**, the cursor will be displayed in the screenshot area, and it's position and pattern will also be saved in the picture generated.
 
 
 ### Screen Recording

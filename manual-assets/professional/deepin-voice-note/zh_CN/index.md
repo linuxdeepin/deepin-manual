@@ -19,7 +19,7 @@
    - 点击 **发送到任务栏**，将应用程序固定到任务栏。
    - 点击 **开机自动启动**，将应用程序添加到开机启动项，在电脑开机时自动运行该应用。
 
-> ![notes](icon/notes.svg)：如果语音记事本已经默认固定在任务栏上，您也可以点击任务栏上的 ![deepin-voice-note](icon/deepin-voice-note.svg) 来运行。
+> ![notes](icon/notes.svg)说明：如果语音记事本已经默认固定在任务栏上，您也可以点击任务栏上的 ![deepin-voice-note](icon/deepin-voice-note.svg) 来运行。
 
 ### 关闭语音记事本
 
@@ -59,9 +59,9 @@
 1. 在语音记事本界面上点击 ![record_normal](icon/record_normal.svg) 图标，开始录音。
 2. 点击 ![finish](icon/finish_normal.svg) 按钮完成录音。
 
-> ![tips](icon/tips.svg)：录音过程中您可以点击 ![pause](icon/pause_red_normal.svg) 按钮暂停录音，想继续录音时再点一下 ![record_normal](icon/record_normal.svg) 就可以了。
+> ![tips](icon/tips.svg)窍门：录音过程中您可以点击 ![pause](icon/pause_red_normal.svg) 按钮暂停录音，想继续录音时再点一下 ![record_normal](icon/record_normal.svg) 就可以了。
 
-> ![notes](icon/notes.svg)：录音的限制时长为60分钟。
+> ![notes](icon/notes.svg)说明：录音的限制时长为60分钟。
 
 ![0|Recorder](jpg/recorder1.png)
 
@@ -71,7 +71,7 @@
 
 录制完成后，录音以列表形式显示在语音记事本界面上，选择一个录音文件，点击![play_blue_normal](icon/play_blue_normal.svg)播放按钮可以收听录音回放。
 
-> ![tips](icon/tips.svg)：收听录音回放时可以点击![pause_blue_normal](icon/pause_blue_normal.svg)按钮暂停或停止播放录音，想继续回放时再点一下![play_blue_normal](icon/play_blue_normal.svg)就可以了。
+> ![tips](icon/tips.svg)窍门：收听录音回放时可以点击![pause_blue_normal](icon/pause_blue_normal.svg)按钮暂停或停止播放录音，想继续回放时再点一下![play_blue_normal](icon/play_blue_normal.svg)就可以了。
 
 ![0|replay](jpg/replay.png)
 
@@ -109,10 +109,10 @@
 
 ### 添加文字笔记
 
-1. 选择一个记事本，鼠标右键选择 **新建笔记**，或者点击 ![mic](icon/circlebutton_add2.svg) 按钮，在该记事本下新增一条文本笔记。
+1. 选择一个记事本，鼠标右键选择 **新建笔记**，或者在文本列表内点击 ![mic](icon/circlebutton_add2.svg) 按钮，在该记事本下新增一条文本笔记。
 2. 将光标移入右侧详情页内，点击鼠标左键后输入文字笔记。
 
-> ![tips](icon/tips.svg)：在记事本中可以录制音频，详细操作请参考录制音频。
+> ![tips](icon/tips.svg)窍门：在记事本中可以录制音频，详细操作请参考录制音频。
 
 ![0|txt-input](jpg/txt-input.png)
 
@@ -133,7 +133,7 @@
 3. 输入文件名称。
 4. 鼠标点击界面空白处或者按下键盘上的 ![Enter](icon/Enter.svg) 键完成重命名。
 
-> ![tips](icon/tips.svg): 您也可以对记事本下的各个文本笔记进行重命名，详细操作可参考重命名新记事本。
+> ![tips](icon/tips.svg)窍门: 您也可以对记事本下的各个文本笔记进行重命名，详细操作可参考重命名新记事本。
 
 ![0|rename](jpg/rename.png)
 

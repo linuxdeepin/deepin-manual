@@ -10,7 +10,7 @@ Text Editor is a simple text editing tool. You can use it to write a simple text
 
 ### Run Text Editor
 
-Click on ![deepin-launcher](icon/deepin-launcher.svg)on dock to enter the Launcher interface.  Locate Text Editor ![deepin-editor](icon/deepin-editor.svg)
+Click ![deepin-launcher](icon/deepin-launcher.svg)on dock to enter the Launcher interface.  Locate Text Editor ![deepin-editor](icon/deepin-editor.svg)
 
 by  scrolling the mouse wheel or searching "text editor" in the Launcher interface and click it to run.
 
@@ -47,7 +47,7 @@ You can open the text file in the following ways, and the selected file will ope
 - On the Text Editor interface, click ![icon_menu](icon/icon_menu.svg) > **Open file** and select the file.
 - On the Text Editor interface, use **Ctrl** + **O** to open the file.
 
-> ![tips](icon/tips.svg): You can open multiple files at one time.
+> ![tips](icon/tips.svg)Tips: You can open multiple files at one time.
 
 ### Save Files
 
@@ -59,10 +59,14 @@ You can also press **Ctrl** + **Shift** + **S** to save the file as  a new one.
 ### Close Files
 
 - Press **Ctrl** + **W** to close the file.
-- Move the cursor to the title and click the close button there to close the file.
+- Move the cursor to the title and click the **X** button there or the mouse middle button to close the file.
 - Right-click the title and select **Close tab** or **Close other tabs**.
+- Right-click the title and select **More ways to close**.
+- Select **Close left tabs** to close all the tabs on the left of the current tab.
+- Select **Close right tabs** to close all the tabs on the right of the current tab.
+- Select **Close unchanged tabs** to close all the unchanged tabs.
 
-> ![notes](icon/notes.svg): If you make changes to the file but have not saved it, Text Editor will prompt you to save it before closing.
+> ![notes](icon/notes.svg)Notes: If you make changes to the file but have not saved it, Text Editor will prompt you to save it before closing.
 
 ### Print Documents
 
@@ -150,11 +154,11 @@ If you make a misoperation, press **Ctrl** + **Z** to undo it, or right-click to
 ### Find Texts
 
 1. Click ![menu](icon/icon_menu.svg), and select **Find**, or press **Ctrl** + **F** to open the "Find" box below.
-2. Input the text you want to find. All the matches will be highlighted in the process of inputing texts.
+2. Input the text you want to find. 
 3. Click **Next**, **Previous** to find each match, or press **Enter** to find the next match.
 4. Press **Esc** or click the close button to close the dialog box.
 
-> ![tips](icon/tips.svg): Select the text and then press **Ctrl** + **F** and the text will be automatically displayed in the "Find" box.
+> ![tips](icon/tips.svg)Tips: Select the text and then press **Ctrl** + **F** and the text will be automatically displayed in the "Find" box.
 
 ### Replace Texts
 1. Click ![menu](icon/icon_menu.svg), and select **Replace**, or press **Ctrl** + **H** to open the "Replace" box below.
@@ -187,19 +191,70 @@ Use the shortcuts below to edit lines easily:
 
 ### Enable/Disable Read-only Mode
 
-1. Open the document with Text Editor and right-click to select **Turn on Read-Only mode**.
-2.  Right-click to select **Turn off Read-Only mode** under the read-only mode.
+1. Open the document with Text Editor and right-click to select **Turn on Read-only Mode**.
+2.  Right-click to select **Turn off Read-only Mode** under the read-only mode.
 
 ### Text to Speech  
 
 You can perform the following operations after enabling the Text to Speech and Speech to Text features in Control Center.
 
-1. Right-click to select Speech to Text and the input voices through microphone will be converted to texts and displayed in the editor.
+1. Right-click to select Speech to Text and the input voices through microphone will be converted to texts and displayed in the document being edited.
 2. Select a section of texts, right-click to select Text to Speech and the texts selected will be broadcast.
 
-> ![notes](icon/notes.svg)
->
-> : The **Text to Speech** option in the right-click menu is grayed out and cannot be activated when no text is selected.
+> ![notes](icon/notes.svg)Notes: The **Text to Speech** option in the right-click menu is grayed out and cannot be activated when no text is selected.
+
+### Translate
+
+Enable **Translation** in Control Center > Assistive Tools and set the corresponding language according to your needs. Select the text to be translated in Text Editor, right-click to select **Translate** and the text selected will be translated into the target language.
+
+![translation](jpg/translation.png)
+
+### Color Mark
+
+Select the text to be marked in Text Editor, right-click to select **Color Mark** and select the corresponding options in the drop-down list as needed.
+
+ ![colormark](jpg/colormark.png)
+
+- Select **Mark Current Line** to mark the current line. There are four styles, with each representing a color.
+
+- Select **Cancel Last Mark** to cancel the last mark operation.
+
+- Select **Cancel Mark All Line** to cancel all the current marks.
+
+- Select **Mark All Line** to mark all the contents in Text Editor. There are four styles, with each representing a color.
+
+
+### Bookmark Management
+
+It is available to click any line on the Text Editor interface to add a bookmark for the current line.
+
+- Add bookmark
+
+   + Click any line on the left column to add a bookmark for the line.
+   + Right-click any line on the left column and select **Add bookmark** to  add a bookmark for the line.
+   + Place the cursor on any line and press **Ctrl** + **F2** to add a bookmark for the line.
+
+-   Delete bookmark  
+
+   + Click the bookmark icon to delete the bookmark of the line directly.
+   + Right-click the bookmark to select **Cancel bookmark** to delete the bookmark in the line.
+   + Right-click a bookmark to select **Clear bookmark** to delete all the bookmarks in the text.
+
+### Comment Management
+
+You can add comments to the text in code format on the Text  Editor interface.
+
+- Add comment
+  - Select the text needed and right-click to select **Add comment**.
+  - Select the text needed and press **Alt** + **A**.
+
+- Cancel comment
+     - Select the text needed and right-click to select **Cancel comment**.
+
+     - Select the text needed and press **Alt** + **Z**.
+
+
+> ![notes](icon/notes.svg)Notes: It supports comments in different languages, mainly based on the actual situation. For example, C, C# and Java comment symbols are // and /* */ and Python comment symbols are #.
 
 ## Main Menu
 
@@ -211,18 +266,21 @@ It is available to set the basic information, shortcuts and advanced information
 
 #### Basic Settings
 
-1.  Click ![icon_menu](icon/icon_menu.svg) > **Settings**.
-2.  In the Settings window, select the font and font size.
-3.  Check or uncheck  **Word Wrap**.
+Click ![icon_menu](icon/icon_menu.svg) > **Settings** and you can perform the following in the Settings window:
 
-> ![tips](icon/tips.svg): You can also use **Ctrl** + ![+](icon/+.svg)/ ![-](icon/-.svg) to adjust the font size, and press **Ctrl** + **0** to reset font size.
+- Select the Font and Font Size.
+- Check or uncheck  **Word Wrap**.
+- Check **Code Fold Flag** and ![next](icon/next.svg)or![next](icon/next-down.svg) are displayed in the edit area. Right-click to select Fold/Unfold Current Level or Fold/Unfold All Levels to perform the corresponding operations.
+- Check **Show Line Number** to display the line number in the edit area.
+
+> ![tips](icon/tips.svg)Tips: You can also use **Ctrl** + ![+](icon/+.svg)/ ![-](icon/-.svg) to adjust the font size, and press **Ctrl** + **0** to reset font size.
 
 #### Shortcuts Settings
 1. Click ![icon_menu](icon/icon_menu.svg) > **Settings** to view the current shortcut in the **Shortcuts** option.
 2. Select a keymap in **Shortcuts** and view the shortcuts.
 3. You can click and press new shortcuts to customize it.
 
-> ![notes](icon/notes.svg): Choose a proper keymap to fit your habits, including standard keymap, Emacs keymap, or customize it as you like.
+> ![notes](icon/notes.svg)Notes: Choose a proper keymap to fit your habits, including standard keymap, Emacs keymap, or customize it as you like.
 
 #### Advanced Settings
 
@@ -231,7 +289,7 @@ It is available to set the basic information, shortcuts and advanced information
    - Window size: Normal, Maximum, or Fullscreen;
    - Tab space: The indentation width when pressing Tab.
 
-> ![attention](icon/attention.svg): Clicking  **Restore Defaults** will restore all settings to the default.
+> ![attention](icon/attention.svg)Attention: Clicking  **Restore Defaults** will restore all settings to the default.
 
 ### Theme
 
