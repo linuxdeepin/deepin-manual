@@ -33,7 +33,7 @@
 ![0|single](jpg/single.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
->![notes](icon/notes.svg):软件包安装器会自动检测您的安装包，如果本地已经安装过该应用，会显示“已安装相同版本”或“已安装其他版本”提示信息，此时可以选择 **卸载** 或 **重新安装** 操作。
+>![notes](icon/notes.svg)说明:软件包安装器会自动检测您的安装包，如果本地已经安装过该应用，会显示“已安装相同版本”或“已安装其他版本”提示信息，此时可以选择 **卸载** 或 **重新安装** 操作。
 
 
 
@@ -44,7 +44,7 @@
 
 - 批量安装同样也可以查看安装进程。
 - 批量安装时按钮只显示 **安装** 按钮。本地已安装其他版本的软件包执行安装操作，本地已安装相同版本的软件包执行重新安装操作。
-- 批量安装时将鼠标移动到一个应用栏上，点击右键选择 **删除**将该安装包从安装列表移除。
+- 批量安装时点击任务栏上的安装包，点击右键选择 **删除**将该安装包从安装列表移除。
 
 
 ![0|mult](jpg/mult.png)
@@ -78,7 +78,7 @@
 ![0|uninstall](jpg/uninstall.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-> ![attention](icon/attention.svg):卸载某些应用可能会对系统或其他软件产生影响，请谨慎操作。
+> ![attention](icon/attention.svg)注意:卸载某些应用可能会对系统或其他软件产生影响，请谨慎操作。
 
 
 
