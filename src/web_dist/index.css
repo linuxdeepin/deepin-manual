@@ -324,6 +324,22 @@ body {
   border-radius: 5px;
   border: 1px solid gray; }
 
+#main .support-div {
+  width: 48px;
+  height: 48px;
+  border-radius: 48px;
+  background-color: var(--nav-hash-word-color);
+  display: inline-block;
+  position: absolute;
+  right: 20px;
+  bottom: 20px; }
+
+#main .support {
+  width: 20px;
+  height: 21px;
+  margin-top: 14px;
+  margin-left: 14px; }
+
 #nav {
   margin: 0 0 0 0;
   padding-bottom: 10px;

@@ -142,6 +142,7 @@ export default class Main extends Component {
             setHash={this.setHash.bind(this)}
             setScroll={this.setScroll.bind(this)}
           />
+          <div className="support-div"><img className="support" src="./pic.svg"></img></div>
           <div className="tooltip-wp"></div>
         </div>
       )

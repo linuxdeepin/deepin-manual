@@ -1343,6 +1343,11 @@ var Main = function (_Component) {
           setHash: this.setHash.bind(this),
           setScroll: this.setScroll.bind(this)
         }),
+        _react2.default.createElement(
+          'div',
+          { className: 'support-div' },
+          _react2.default.createElement('img', { className: 'support', src: './pic.svg' })
+        ),
         _react2.default.createElement('div', { className: 'tooltip-wp' })
       );
     }

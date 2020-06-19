@@ -26,7 +26,23 @@ body {
           font-family: var(--nav-world-font-family);
           border-radius: 5px;
           border: 1px solid gray;
-          
+      }
+      .support-div{
+        width: 48px;
+        height: 48px;
+        border-radius: 48px;
+        background-color: var(--nav-hash-word-color);
+        display: inline-block;
+        position:absolute;
+        right: 20px;
+        bottom: 20px;
+      }
+
+      .support{
+        width: 20px;
+        height: 21px;
+        margin-top: 14px;
+        margin-left: 14px;
       }
 
 }
