@@ -135,18 +135,19 @@ QStringList ManualProxy::getSystemManualList()
             app_list_.removeAll("youdao-dict");
         }
     }
-    qDebug() << "app list===============:" << app_list_ << ", count:" << app_list_.size();
+    qDebug() << "app list　:　" << app_list_ << ", count:" << app_list_.size();
     saveAppList(app_list_);
     return app_list_;
 }
 
 void ManualProxy::openExternalLink(const QString &url)
 {
-    qDebug() << "ManualProxy::openExternalLink===========" << url;
+    qDebug() << "ManualProxy::openExternalLink：" << url;
 
     QDesktopServices::openUrl(url);
 }
 
+/*** 应用图标点击后修改配置文件 2020-06-18 16:30:17 wangml ***/
 void ManualProxy::setApplicationState(const QString &appName)
 {
     QString strApp;
@@ -162,15 +163,16 @@ void ManualProxy::setApplicationState(const QString &appName)
 
     QSettings *setting = ConfigManager::getInstance()->getSettings();
     setting->beginGroup(CONFIG_APPLIST);
-    if (setting->contains(strApp)) {
-        setting->setValue(strApp, false);
-        qDebug() << setting->applicationName() << setting->fileName() << ": " << strApp << " state=false";
+    if (setting->contains(appName)) {
+        setting->setValue(appName, false);
+        qDebug() << setting->applicationName() << setting->fileName() << ": " << appName << " state=false";
     } else {
         qDebug() << setting->fileName() << ": " << strApp << " not find";
     }
     setting->endGroup();
 }
 
+/*** 获取已经使用过的应用列表 2020-06-18 16:29:15 wangml ***/
 QStringList ManualProxy::getUsedAppList()
 {
     QSettings *setting = ConfigManager::getInstance()->getSettings();
@@ -181,7 +183,7 @@ QStringList ManualProxy::getUsedAppList()
         if (!setting->value(list.at(i)).toBool()) {
             appList.append(list.at(i));
         } else {
-
+            continue;
         }
     }
     setting->endGroup();
@@ -189,6 +191,7 @@ QStringList ManualProxy::getUsedAppList()
     return appList;
 }
 
+/*** 保存应用列表至配置文件并设置状态 2020-06-18 16:32:52 wangml ***/
 void ManualProxy::saveAppList(const QStringList &list)
 {
     Q_UNUSED(list)
@@ -203,7 +206,7 @@ void ManualProxy::saveAppList(const QStringList &list)
     }
     QStringList l = setting->allKeys();
     setting->endGroup();
-    qDebug() << "+++++++++++app allKeys+++++++++" << l.size();
+    qDebug() << "app config  allKeys count : " << l.size();
 
 }
 

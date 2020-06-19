@@ -84,6 +84,7 @@ public slots:
     void slot_ButtonHide();
     void slot_ButtonShow();
     void slot_ThemeChanged();
+    void slot_HelpSupportTriggered();
 
 protected:
     void closeEvent(QCloseEvent *event) override;

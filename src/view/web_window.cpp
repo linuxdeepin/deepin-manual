@@ -238,6 +238,12 @@ void WebWindow::initUI()
     search_edit_->setFixedSize(350, 44);
     search_edit_->setPlaceHolder(QObject::tr("Search"));
 
+    DMenu *pMenu = new DMenu;
+    QAction *pHelpSupport = new QAction(tr("UOS Support"));
+    pMenu->addAction(pHelpSupport);
+    this->titlebar()->setMenu(pMenu);
+
+
     this->titlebar()->addWidget(buttonFrame, Qt::AlignLeft);
     this->titlebar()->addWidget(search_edit_, Qt::AlignCenter);
 
@@ -251,6 +257,7 @@ void WebWindow::initUI()
     connect(m_forwardButton, &DButtonBoxButton::clicked, title_bar_proxy_,
             &TitleBarProxy::forwardButtonClicked);
     connect(title_bar_proxy_, &TitleBarProxy::buttonShowSignal, this, &WebWindow::slot_ButtonShow);
+    connect(pHelpSupport, &QAction::triggered, this, &WebWindow::slot_HelpSupportTriggered);
 
     QSettings *setting = ConfigManager::getInstance()->getSettings();
     setting->beginGroup(CONFIG_WINDOW_INFO);
@@ -297,13 +304,14 @@ void WebWindow::initWebView()
     web_channel->registerObject("titleBar", title_bar_proxy_);
     web_channel->registerObject("settings", settings_proxy_);
     web_view_->page()->setWebChannel(web_channel);
-
     connect(web_view_->page(), &QWebEnginePage::loadFinished, this, &WebWindow::onWebPageLoadFinished);
     connect(manual_proxy_, &ManualProxy::WidgetLower, this, &WebWindow::lower);
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
             theme_proxy_, &ThemeProxy::slot_ThemeChange);
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
             this, &WebWindow::slot_ThemeChanged);
+
+    manual_proxy_->setApplicationState("dde");
 }
 
 void WebWindow::setTitleName(const QString &title_name)
@@ -459,9 +467,7 @@ void WebWindow::onSearchEditFocusOut()
 void WebWindow::onSearchButtonClicked()
 {
     QString text = search_edit_->text();
-
     this->onSearchContentByKeyword(text);
-
     completion_window_->hide();
 }
 
@@ -663,5 +669,10 @@ void WebWindow::slot_ThemeChanged()
     else if (themeType == DGuiApplicationHelper::DarkType) {
         web_view_->page()->setBackgroundColor(QColor("#282828"));
     }
+}
+
+void WebWindow::slot_HelpSupportTriggered()
+{
+    qDebug() << "helpSupportTriggered";
 }
 }  // namespace dman
