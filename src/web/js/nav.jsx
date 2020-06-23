@@ -2,10 +2,6 @@ import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import Scrollbar from './scrollbar.jsx';
-import { kMaxLength } from 'buffer';
-// import webjs from './web.js'
-
-
 
 class Nav extends Component {
   componentDidMount() {
