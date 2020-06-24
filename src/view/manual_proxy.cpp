@@ -55,7 +55,8 @@ QList<AppInfo> ManualProxy::sortAppList(QMultiMap<qlonglong, AppInfo> map)
     qlonglong longlongtmp = 0;
     while (it.hasNext()) {
         it.next();
-        //qDebug() << it.value().name;
+        qDebug() << it.value().name;
+
         if (it.value().name == map.first().name) {
             listtmp.append(it.value());
             longlongtmp = it.key();
@@ -64,8 +65,8 @@ QList<AppInfo> ManualProxy::sortAppList(QMultiMap<qlonglong, AppInfo> map)
         if (it.key() == longlongtmp) {
             listtmp.append(it.value());
         } else if (listtmp.size() != 0 && it.key() != longlongtmp) {
+            qDebug() << __LINE__;
             AppInfo m;
-            longlongtmp = it.key();
             for (int i = 0; i < listtmp.size(); ++i) {
                 for (int j = 0; j < listtmp.size() - 1; ++j) {
                     if (listtmp.at(j).name > listtmp.at(j + 1).name) {
@@ -77,10 +78,27 @@ QList<AppInfo> ManualProxy::sortAppList(QMultiMap<qlonglong, AppInfo> map)
             }
             listEnd.append(listtmp);
             listtmp.clear();
+            longlongtmp = it.key();
             listtmp.append(it.value());
         }
     }
-    listEnd.append(map.last());
+    if (!listtmp.isEmpty()) {
+        QList<AppInfo> temp;
+        {
+            AppInfo m;
+            for (int i = 0; i < listtmp.size(); ++i) {
+                for (int j = 0; j < listtmp.size() - 1; ++j) {
+                    if (listtmp.at(j).name > listtmp.at(j + 1).name) {
+                        m = listtmp.at(j);
+                        listtmp[j] = listtmp[j + 1];
+                        listtmp[j + 1] = m;
+                    }
+                }
+            }
+            temp.append(listtmp);
+        }
+        listEnd.append(temp);
+    }
     return listEnd;
 }
 
@@ -102,9 +120,11 @@ QStringList ManualProxy::getSystemManualList()
         {"com.deepin.editor", "deepin-editor"},
     };
 
+
     if (app_list_.isEmpty()) {
         const QStringList dir_entry = QDir(this->getSystemManualDir()).entryList();
         const AppInfoList list = launcher_interface_->GetAllItemInfos();
+        qDebug() << "get list:...." << __LINE__ << list;
 
         QMultiMap<qlonglong, AppInfo> appMap;
         for (int var = 0; var < list.size(); ++var) {
@@ -112,10 +132,11 @@ QStringList ManualProxy::getSystemManualList()
         }
         //Installation time phase at the same time, sorted by name
         QList<AppInfo> listApp = sortAppList(appMap);
+        qDebug() << "listapp: " << __LINE__ << listApp << listApp.count();
 
         for (int i = 0; i < listApp.size(); ++i) {
             const QString app_name = kAppNameMap.value(listApp.at(i).key, listApp.at(i).key);
-            //qDebug() << app_name;
+//            qDebug() << app_name;
             if ((dir_entry.indexOf(app_name) != -1) && app_list_.indexOf(app_name) == -1) {
                 app_list_.append(app_name);
             }
