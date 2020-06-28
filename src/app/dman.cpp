@@ -33,7 +33,7 @@ DWIDGET_USE_NAMESPACE
 
 int main(int argc, char **argv)
 {
-    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu");
+//    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu");
     qputenv("DXCB_FAKE_PLATFORM_NAME_XCB", "true");
     qputenv("DTK_FORCE_RASTER_WIDGETS", "FALSE");
 //    qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "7777");
