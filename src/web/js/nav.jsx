@@ -73,6 +73,58 @@ class Nav extends Component {
       }
     }
   }
+
+  //右键菜单事件,去除选中状态
+  contentMenu(e){
+    e.preventDefault();
+    document.getSelection().empty();
+  }
+/*
+  mouseOver(e){
+    var value =  e.currentTarget.innerHTML;
+    console.log("mouse over:" + value);
+    // var showFloatTimer=null;
+    
+    // function(event){
+      clearTimeout(this.showFloatTimer);
+      this.showFloatTimer=setTimeout(function(){
+          $('.tooltip-wp').attr('data-title', value); //动态设置data-title属性
+          $('.tooltip-wp').fadeIn(200);//浮动框淡出
+      },300);
+  }
+
+  mouseOut(e){
+    console.log("mouse out" + e.target.getAttribute('cid'));
+    $('.tooltip-wp').hide();
+    // }
+  }
+
+  mouseMove(e){
+    console.log("mouse move : ");
+
+    var xClient = e.clientX;
+    var yClient = e.clientY;
+    console.log(" --:"+ xClient + "  "+ yClient);
+
+    var xPage = e.pageX;
+    var yPage = e.pageY + 20;
+    var canRun=true;
+    // return function(){//e是mousemove的event参数
+        if(!canRun){return;}//如果有一个定时方法，直接返回
+        canRun=false;
+        setTimeout(function(){
+            var top = e.pageY+5;
+            var left = e.pageX+5;
+            $('.tooltip-wp').css({
+                'top' : yPage + 'px',
+                'left': xPage+ 'px'
+            });
+            canRun=true;
+        },150);
+    
+  }
+  */
+
   render() {
     let max = this.props.hlist[0];
     this.props.hlist.map(h => {
@@ -107,6 +159,7 @@ class Nav extends Component {
         id="nav"
         lang={global.lang}
         onClick={e => this.click(e)}
+        onContextMenu={this.contentMenu.bind(this)}
         style={{
           width: `calc(${maxWidth}px + ${c}rem`
         }}
@@ -127,6 +180,12 @@ class Nav extends Component {
                 cid={h.id}
                 type={h.type}
                 className={this.props.hash == h.id ? 'h hash' : 'h'}
+                // onMouseOver={this.mouseOver.bind(this)}
+                // onMouseOut={this.mouseOut.bind(this)}
+                // onMouseMove={this.mouseMove.bind(this)}
+                onMouseOver={(e)=>this.props.onNavOver(e)}
+                onMouseOut ={(e)=>this.props.onNavOut(e)}
+                onMouseMove={(e)=>this.props.onNavMove(e)}
               >
                 {h.text}
               </div>

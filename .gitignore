@@ -7,6 +7,7 @@ PageRoot/
 
 *.nw
 *.log
+*.qm
 
 *.pyo
 *.pyc

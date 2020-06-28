@@ -161,7 +161,7 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
     QStringList newContents = contents;
     for (int i = 0; i < contents.size(); i++) {
         QString content = contents.at(i);
-        content = content.replace("icon/", "/usr/share/deepin-manual/manual/" + strManualPath +
+        content = content.replace("icon/", DMAN_INSTALL_DB_PATH + strManualPath +
                                   "/" + app_name + "/" + lang + "/icon/");
         newContents.replace(i, content);
     }
@@ -371,8 +371,8 @@ void SearchDb::handleSearchContent(const QString &keyword)
 
             QString highlightContent = highlightKeyword(tmpContent, keyword);
 
-            //remove img src
-            QRegExp exp("<img .*>");
+            //remove jpg src
+            QRegExp exp("<img src=\\\"jpg.*>");
             exp.setMinimal(true);
             highlightContent.remove(exp);
 
