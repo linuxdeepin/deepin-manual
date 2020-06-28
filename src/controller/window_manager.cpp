@@ -22,6 +22,8 @@
 #include "dbus/dbus_consts.h"
 #include "view/web_window.h"
 #include <unistd.h>
+#include "controller/config_manager.h"
+
 
 #include <DLog>
 #include <QApplication>
@@ -32,11 +34,13 @@ namespace dman {
 
 namespace {
 
-const int kWinWidth = 1024;
-const int kWinHeight = 680;
 const int kWinMinWidth = 800;
 const int kWinMinHeight = 600;
 const int kWinOffset = 30;
+
+static constexpr const char *CONFIG_WINDOW_INFO = "window_info";
+static constexpr const char *CONFIG_WINDOW_WIDTH = "window_width";
+static constexpr const char *CONFIG_WINDOW_HEIGHT = "window_height";
 
 const char kEnableDomStorageFlush[] = "--enable-aggressive-domstorage-flushing";
 const char kDisableGpu[] = "--disable-gpu";
@@ -194,7 +198,6 @@ SearchManager *WindowManager::currSearchManager()
 
 void WindowManager::moveWindow(WebWindow *window)
 {
-    window->resize(kWinWidth, kWinHeight);
     window->setMinimumSize(kWinMinWidth, kWinMinHeight);
     const QPoint pos = this->newWindowPosition();
     window->move(pos);
@@ -204,17 +207,30 @@ QPoint WindowManager::newWindowPosition()
 {
     // If there is no window created, move new window to center of screen.
     // Else stack window one after another.
+    QSettings *setting = ConfigManager::getInstance()->getSettings();
+    setting->beginGroup(CONFIG_WINDOW_INFO);
+    int saveWidth = setting->value(CONFIG_WINDOW_WIDTH).toInt();
+    int saveHeight = setting->value(CONFIG_WINDOW_HEIGHT).toInt();
+    setting->endGroup();
+    qDebug() << "load window_width: " << saveWidth;
+    qDebug() << "load window_height: " << saveHeight;
+    // 如果配置文件没有数据
+    if (saveWidth == 0 || saveHeight == 0) {
+        saveWidth = 1024;
+        saveHeight = 680;
+    }
+
     QDesktopWidget *desktop = QApplication::desktop();
     Q_ASSERT(desktop != nullptr);
     const QRect geometry = desktop->availableGeometry(QCursor::pos());
     if (windows_.isEmpty() || windows_.size() == 1) {
         const QPoint center = geometry.center();
-        return QPoint(center.x() - kWinWidth / 2, center.y() - kWinHeight / 2);
+        return QPoint(center.x() - saveWidth / 2, center.y() - saveHeight / 2);
     } else {
         last_new_window_pos_.setX(last_new_window_pos_.x() + kWinOffset);
         last_new_window_pos_.setY(last_new_window_pos_.y() + kWinOffset);
-        if ((last_new_window_pos_.x() + kWinWidth >= geometry.width()) ||
-                (last_new_window_pos_.y() + kWinHeight >= geometry.height())) {
+        if ((last_new_window_pos_.x() + saveWidth >= geometry.width()) ||
+                (last_new_window_pos_.y() + saveHeight >= geometry.height())) {
             last_new_window_pos_.setX(0);
             last_new_window_pos_.setY(0);
         }

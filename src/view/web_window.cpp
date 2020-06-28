@@ -31,6 +31,7 @@
 #include "view/widget/image_viewer.h"
 #include "view/widget/search_completion_window.h"
 #include "view/widget/search_edit.h"
+#include "controller/config_manager.h"
 
 #include <QApplication>
 #include <QDBusConnection>
@@ -55,6 +56,9 @@ namespace dman {
 namespace {
 
 const int kSearchDelay = 200;
+static constexpr const char *CONFIG_WINDOW_WIDTH = "window_width";
+static constexpr const char *CONFIG_WINDOW_HEIGHT = "window_height";
+static constexpr const char *CONFIG_WINDOW_INFO = "window_info";
 
 }  // namespace
 
@@ -75,6 +79,7 @@ WebWindow::WebWindow(QWidget *parent)
     this->initConnections();
     this->initShortcuts();
     this->initDBus();
+
 
     qApp->installEventFilter(this);
 }
@@ -193,6 +198,17 @@ void WebWindow::onACtiveColorChanged(QString, QMap<QString, QVariant>map, QStrin
     }
 }
 
+QString WebWindow::getWinInfoConfigPath()
+{
+    QDir winInfoPath(QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation));
+    if (!winInfoPath.exists()) {
+        winInfoPath.mkpath(QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation));
+    }
+
+    QString winInfoFilePath(winInfoPath.filePath("wininfo-config.conf"));
+    return winInfoFilePath;
+}
+
 void WebWindow::initUI()
 {
     completion_window_ = new SearchCompletionWindow();
@@ -250,6 +266,21 @@ void WebWindow::initUI()
             &TitleBarProxy::forwardButtonClicked);
     connect(title_bar_proxy_, &TitleBarProxy::buttonShowSignal, this, &WebWindow::slot_ButtonShow);
 
+    QSettings *setting = ConfigManager::getInstance()->getSettings();
+    setting->beginGroup(CONFIG_WINDOW_INFO);
+    int saveWidth = setting->value(CONFIG_WINDOW_WIDTH).toInt();
+    int saveHeight = setting->value(CONFIG_WINDOW_HEIGHT).toInt();
+    setting->endGroup();
+    qDebug() << "load window_width: " << saveWidth;
+    qDebug() << "load window_height: " << saveHeight;
+    // 如果配置文件没有数据
+    if (saveWidth == 0 || saveHeight == 0) {
+        saveWidth = 1024;
+        saveHeight = 680;
+    }
+    resize(QSize(saveWidth, saveHeight));
+
+
     this->setFocusPolicy(Qt::ClickFocus);
 }
 
@@ -272,24 +303,6 @@ void WebWindow::initWebView()
     web_view_->hide();
     web_view_->setAcceptDrops(false);
     slot_ThemeChanged();
-
-
-    web_view_->setContextMenuPolicy(Qt::CustomContextMenu);
-    connect(web_view_, &QWebEngineView::selectionChanged, this, [this]() {
-        web_view_->setContextMenuPolicy(Qt::CustomContextMenu);
-    });
-    QMenu *menu = new QMenu(this);
-    QAction *action =  menu->addAction(QObject::tr("Copy"));
-    connect(web_view_, &QWidget::customContextMenuRequested, this, [ = ]() {
-        if (!web_view_->selectedText().isEmpty()) {
-            connect(action, &QAction::triggered, this, [ = ]() {
-                QApplication::clipboard()->setText(web_view_->selectedText());
-            });
-            menu->exec(QCursor::pos());
-        } else {
-        }
-    });
-
     QWebChannel *web_channel = new QWebChannel;
     web_channel->registerObject("i18n", i18n_proxy);
     web_channel->registerObject("imageViewer", image_viewer_proxy_);
@@ -323,6 +336,17 @@ void WebWindow::updateBtnBox()
     } else {
         buttonBox->hide();
     }
+}
+
+void WebWindow::saveWindowSize()
+{
+    // 记录最后一个正常窗口的大小
+    QSettings *setting = ConfigManager::getInstance()->getSettings();
+    setting->beginGroup(CONFIG_WINDOW_INFO);
+    setting->setValue(CONFIG_WINDOW_WIDTH, width());
+    setting->setValue(CONFIG_WINDOW_HEIGHT, height());
+    setting->endGroup();
+    qDebug() << "save window_Size:" << width() << ", " << height();
 }
 
 void WebWindow::initShortcuts()
@@ -381,6 +405,24 @@ void WebWindow::setHashWordColor()
     completion_window_->updateColor(Color);
 }
 
+void WebWindow::settingContextMenu()
+{
+    web_view_->setContextMenuPolicy(Qt::CustomContextMenu);
+    connect(web_view_, &QWebEngineView::selectionChanged, this, [this]() {
+        web_view_->setContextMenuPolicy(Qt::CustomContextMenu);
+    });
+    QMenu *menu = new QMenu(this);
+    QAction *action =  menu->addAction(QObject::tr("Copy"));
+    connect(web_view_, &QWidget::customContextMenuRequested, this, [ = ]() {
+        if (!web_view_->selectedText().isEmpty()) {
+            menu->exec(QCursor::pos());
+        }
+    });
+    connect(action, &QAction::triggered, this, [ = ]() {
+        QApplication::clipboard()->setText(web_view_->selectedText());
+    });
+}
+
 void WebWindow::showEvent(QShowEvent *event)
 {
 
@@ -401,6 +443,7 @@ void WebWindow::showEvent(QShowEvent *event)
 void WebWindow::closeEvent(QCloseEvent *event)
 {
     emit this->closed(app_name_);
+    saveWindowSize();
 
     QWidget::closeEvent(event);
 }
@@ -482,6 +525,7 @@ void WebWindow::onWebPageLoadFinished(bool ok)
 {
     //改变ｊs颜色
     setHashWordColor();
+    settingContextMenu();
     qDebug() << Q_FUNC_INFO << " onWebPageLoadFinished :" << ok;
     if (ok) {
         QString qsthemetype = "Null";
@@ -564,6 +608,11 @@ void WebWindow::onSearchAnchorResult(const QString &keyword, const SearchAnchorR
 
 bool WebWindow::eventFilter(QObject *watched, QEvent *event)
 {
+    if (event->type() == QEvent::KeyPress && qApp->activeWindow() == this &&
+            watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
+        search_edit_->lineEdit()->setFocus();
+    }
+
     // Filters mouse press event only.
     if (event->type() == QEvent::MouseButtonPress && qApp->activeWindow() == this &&
             watched->objectName() == QLatin1String("QMainWindowClassWindow")) {

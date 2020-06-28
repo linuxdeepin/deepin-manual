@@ -58,17 +58,15 @@ public:
 
     // Get app name of manual currently presented.
     const QString &appName() const;
-
     bool eventFilter(QObject *watched, QEvent *event) override;
-
     void setSearchManager(SearchManager *searchManager);
-
     void initWebView();
-
     void setTitleName(const QString &title_name);
-
     void cancelTextChanged();
     void updateBtnBox();
+
+    // 保存窗口尺寸
+    void saveWindowSize();
 
     Dtk::Widget::DButtonBoxButton *m_backButton;
     Dtk::Widget::DButtonBoxButton *m_forwardButton;
@@ -97,6 +95,7 @@ private:
     void initShortcuts();
     void initDBus();
     void setHashWordColor();
+    void settingContextMenu();
 
     QString app_name_;
     QString title_name_;
@@ -134,6 +133,8 @@ private slots:
 
     void onManualSearchByKeyword(const QString &keyword);
     void onACtiveColorChanged(QString, QMap<QString, QVariant>, QStringList);
+
+    QString getWinInfoConfigPath();
 };
 
 }  // namespace dman

@@ -86,8 +86,17 @@ class App extends React.Component {
         console.log("fontChangeRequested: fontFamily:"+fontFamily+",fontSize:"+fontSize);
         console.log("fontSize/13.0:"+(fontSize));
         const HTMLGlobal = document.querySelector('html');
-        HTMLGlobal.style.fontFamily = fontFamily;
-        HTMLGlobal.style.fontSize = fontSize;
+        HTMLGlobal.style.fontFamily = fontFamily;    
+        HTMLGlobal.style.fontSize = fontSize;   //设置rem标准   设计图上默认是在14px字体上设计,所以默认1rem = 14px.
+        if ( fontSize >= 18)
+        {
+          document.documentElement.style.setProperty(`--index-item-size`, '170px');
+          document.documentElement.style.setProperty(`--index-span-width`, '140px');
+        }
+        else{
+          document.documentElement.style.setProperty(`--index-item-size`, '160px');
+          document.documentElement.style.setProperty(`--index-span-width`, '130px');
+        }
       });
     });
     console.log("initQt(channel)...");
@@ -183,6 +192,7 @@ class App extends React.Component {
       }
       if("DarkType"==themeType){
       console.log('DarkType');
+      document.documentElement.style.setProperty(`--nav-hover-color`, 'rgba(255,255,255,0.1)');
       document.documentElement.style.setProperty(`--body-background-color`, '#252525');
       document.documentElement.style.setProperty(`--body-color-white2black`, '#000000');
       document.documentElement.style.setProperty(`--app-word-color`, '#C0C6D4');
@@ -217,6 +227,7 @@ class App extends React.Component {
       document.documentElement.style.setProperty(`--search-context-word-color`, '#6D7C88');
       }else if("LightType"==themeType){
       console.log('LightType');
+      document.documentElement.style.setProperty(`--nav-hover-color`, 'rgba(0,0,0,0.1)');
       document.documentElement.style.setProperty(`--body-background-color`, '#F8F8F8');
       document.documentElement.style.setProperty(`--body-color-white2black`, '#FFFFFF');
       document.documentElement.style.setProperty(`--app-word-color`, '#414D68');

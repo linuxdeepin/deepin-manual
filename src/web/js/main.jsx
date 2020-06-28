@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import $ from 'jquery';
 
 import Nav from './nav.jsx';
 import Article from './article.jsx';
@@ -13,6 +14,7 @@ export default class Main extends Component {
     };
     let { file, hash } = this.props.match.params;
     this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null);
+    var showFloatTimer=null;
   }
   init(file, hash) {
     console.log("main init"+file);
@@ -78,6 +80,33 @@ export default class Main extends Component {
     global.oldHash = hash;
     this.setState({ hash });
   }
+
+  //处理Nav类的Over Out Move事件,自定义Title框
+  handleNavOver(e){
+    var value =  e.currentTarget.innerHTML;
+    clearTimeout(this.showFloatTimer);
+    this.showFloatTimer=setTimeout(function(){
+        $('.tooltip-wp').attr('data-title', value); //动态设置data-title属性
+        $('.tooltip-wp').fadeIn(200);//浮动框淡出
+    },300);
+  }
+
+  handleNavOut(e){
+    clearTimeout(this.showFloatTimer);
+    $('.tooltip-wp').hide();
+  }
+
+  handleNavMove(e){
+    var xPage = e.pageX;
+    var yPage = e.pageY + 20;
+    setTimeout(function(){
+        $('.tooltip-wp').css({
+            'top' : yPage + 'px',
+            'left': xPage+ 'px'
+        });
+    },150);
+  }
+
   componentWillReceiveProps(nextProps) {
     console.log("main componentWillReceivePropss");
     let { file, hash } = nextProps.match.params;
@@ -86,11 +115,11 @@ export default class Main extends Component {
 
   componentWillUnmount(){
     global.hash = ' ';
-  global.oldHash = ' ';
-  global.linktitle = '';
-  global.isMouseClickNav = false;
-  global.isMouseScrollArticle = false;
-  global.isLinkClicked = false;
+    global.oldHash = ' ';
+    global.linktitle = '';
+    global.isMouseClickNav = false;
+    global.isMouseScrollArticle = false;
+    global.isLinkClicked = false;
   }
 
   render() {
@@ -101,6 +130,9 @@ export default class Main extends Component {
             hlist={this.state.hlist}
             hash={this.state.hash}
             setHash={this.setHash.bind(this)}
+            onNavOver={(e)=>this.handleNavOver(e)}
+            onNavOut={(e)=>this.handleNavOut(e)}
+            onNavMove={(e)=>this.handleNavMove(e)}
           />
           <Article
             file={this.props.match.params.file}
@@ -110,6 +142,7 @@ export default class Main extends Component {
             setHash={this.setHash.bind(this)}
             setScroll={this.setScroll.bind(this)}
           />
+          <div className="tooltip-wp"></div>
         </div>
       )
     );

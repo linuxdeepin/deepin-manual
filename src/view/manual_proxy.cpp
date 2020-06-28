@@ -46,6 +46,62 @@ ManualProxy::ManualProxy(QObject *parent)
     AppInfo::registerMetaType();
 }
 
+//Installation time phase at the same time, sorted by appName
+QList<AppInfo> ManualProxy::sortAppList(QMultiMap<qlonglong, AppInfo> map)
+{
+    QMapIterator<qlonglong, AppInfo> it(map);
+    QList<AppInfo> listEnd;
+    QList<AppInfo> listtmp;
+    qlonglong longlongtmp = 0;
+    while (it.hasNext()) {
+        it.next();
+        qDebug() << it.value().name;
+
+        if (it.value().name == map.first().name) {
+            listtmp.append(it.value());
+            longlongtmp = it.key();
+            continue;
+        }
+        if (it.key() == longlongtmp) {
+            listtmp.append(it.value());
+        } else if (listtmp.size() != 0 && it.key() != longlongtmp) {
+            qDebug() << __LINE__;
+            AppInfo m;
+            for (int i = 0; i < listtmp.size(); ++i) {
+                for (int j = 0; j < listtmp.size() - 1; ++j) {
+                    if (listtmp.at(j).name > listtmp.at(j + 1).name) {
+                        m = listtmp.at(j);
+                        listtmp[j] = listtmp[j + 1];
+                        listtmp[j + 1] = m;
+                    }
+                }
+            }
+            listEnd.append(listtmp);
+            listtmp.clear();
+            longlongtmp = it.key();
+            listtmp.append(it.value());
+        }
+    }
+    if (!listtmp.isEmpty()) {
+        QList<AppInfo> temp;
+        {
+            AppInfo m;
+            for (int i = 0; i < listtmp.size(); ++i) {
+                for (int j = 0; j < listtmp.size() - 1; ++j) {
+                    if (listtmp.at(j).name > listtmp.at(j + 1).name) {
+                        m = listtmp.at(j);
+                        listtmp[j] = listtmp[j + 1];
+                        listtmp[j + 1] = m;
+                    }
+                }
+            }
+            temp.append(listtmp);
+        }
+        listEnd.append(temp);
+    }
+    return listEnd;
+}
+
 ManualProxy::~ManualProxy() {}
 
 QStringList ManualProxy::getSystemManualList()
@@ -64,32 +120,35 @@ QStringList ManualProxy::getSystemManualList()
         {"com.deepin.editor", "deepin-editor"},
     };
 
+
     if (app_list_.isEmpty()) {
         const QStringList dir_entry = QDir(this->getSystemManualDir()).entryList();
         const AppInfoList list = launcher_interface_->GetAllItemInfos();
+        qDebug() << "get list:...." << __LINE__ << list;
 
         QMultiMap<qlonglong, AppInfo> appMap;
         for (int var = 0; var < list.size(); ++var) {
             appMap.insert(list.at(var).installed_time, list.at(var));
         }
-        foreach (const AppInfo &info, appMap.values()) {
-            const QString app_name = kAppNameMap.value(info.key, info.key);
+        //Installation time phase at the same time, sorted by name
+        QList<AppInfo> listApp = sortAppList(appMap);
+        qDebug() << "listapp: " << __LINE__ << listApp << listApp.count();
+
+        for (int i = 0; i < listApp.size(); ++i) {
+            const QString app_name = kAppNameMap.value(listApp.at(i).key, listApp.at(i).key);
+//            qDebug() << app_name;
             if ((dir_entry.indexOf(app_name) != -1) && app_list_.indexOf(app_name) == -1) {
                 app_list_.append(app_name);
             }
-
-            const QString deepin_app_id = GetDeepinManualId(info.desktop);
+            const QString deepin_app_id = GetDeepinManualId(listApp.at(i).desktop);
             if (deepin_app_id == app_name && app_list_.indexOf(app_name) == -1) {
                 app_list_.append(app_name);
             }
         }
-
         // Add "dde" by hand, as it has no desktop file.
         if (dir_entry.contains("dde")) {
             app_list_.append("dde");
         }
-
-
         // Remove youdao-dict if current locale is not Simplified Chinese.
         if (!QLocale().name().startsWith("zh")) {
             app_list_.removeAll("youdao-dict");
