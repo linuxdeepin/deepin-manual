@@ -267,7 +267,9 @@ export default class Article extends Component {
       case 'A':
         const dmanProtocol = 'dman://';
         const hashProtocol = '#';
+        const httpProtocol = 'http';
         const href = e.target.getAttribute('href');
+        console.log("href:"+ href);
         switch (0) {
           case href.indexOf(hashProtocol):
             e.preventDefault();
@@ -279,9 +281,31 @@ export default class Article extends Component {
             const rect = e.target.getBoundingClientRect();
             this.showPreview(appName, hash, rect);
             return;
+          case href.indexOf(httpProtocol):
+            e.preventDefault();
+            global.qtObjects.imageViewer.openHttpUrl(href);
+            return;
         }
     }
   }
+
+  //右键菜单事件
+  contentMenu(e){
+    switch (e.target.nodeName) {
+      //当前为图片或者链接时,右键清除选中状态.
+      //当前为图片
+      case 'IMG':
+        e.preventDefault();
+        document.getSelection().empty();  
+        return;
+      //当前为链接
+      case 'A':
+        e.preventDefault();
+        document.getSelection().empty();
+        return;
+      }
+  }
+
   render() {
     return (
           <div id="article">
@@ -298,6 +322,7 @@ export default class Article extends Component {
                   dangerouslySetInnerHTML={{ __html: this.props.html }}
                   style={this.state.fillblank}
                   onClick={this.click.bind(this)}
+                  onContextMenu={this.contentMenu.bind(this)}
                 />
                 {this.state.preview != null && (
                   <div
