@@ -19,26 +19,30 @@
 #define DEEPIN_MANUAL_VIEW_IMAGE_VIEWER_PROXY_H
 
 #include <QObject>
+#include <QDesktopServices>
 
 namespace dman {
 
 class ImageViewer;
 
-class ImageViewerProxy : public QObject {
-  Q_OBJECT
- public:
-  explicit ImageViewerProxy(ImageViewer* viewer, QObject* parent = nullptr);
-  ~ImageViewerProxy() override;
+class ImageViewerProxy : public QObject
+{
+    Q_OBJECT
+public:
+    explicit ImageViewerProxy(ImageViewer *viewer, QObject *parent = nullptr);
+    ~ImageViewerProxy() override;
 
- public slots:
-  /**
-   * Open image in viewer window.
-   * @param filepath Absolute path to image file.
-   */
-  void open(const QString& filepath);
+public slots:
+    /**
+     * Open image in viewer window.
+     * @param filepath Absolute path to image file.
+     */
+    void open(const QString &filepath);
 
- private:
-  ImageViewer* viewer_ = nullptr;
+    void openHttpUrl(const QString &httpUrl);
+
+private:
+    ImageViewer *viewer_ = nullptr;
 };
 
 }  // namespace dman

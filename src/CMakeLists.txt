@@ -7,12 +7,10 @@ project(deepin-manual C CXX)
 set(CMAKE_INSTALL_PREFIX /usr)
 
 if (CMAKE_BUILD_TYPE MATCHES Debug)
-#  add_definitions(-DDMAN_SEARCH_DB="${CMAKE_CURRENT_SOURCE_DIR}/search.db")
   add_definitions(-DDMAN_SEARCH_DB="${CMAKE_SOURCE_DIR}/manual-assets")
   add_definitions(-DDMAN_WEB_DIR="${CMAKE_CURRENT_SOURCE_DIR}/web_dist")
   add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_SOURCE_DIR}/manual-assets")
 else()
-#  add_definitions(-DDMAN_SEARCH_DB="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/search.db")
   add_definitions(-DDMAN_SEARCH_DB="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets")
   add_definitions(-DDMAN_WEB_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/web_dist")
   add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets")
@@ -25,6 +23,8 @@ add_definitions(-DDMAN_SEARCH_ORIG_DB="${CMAKE_CURRENT_BINARY_DIR}/search.db")
 add_definitions(-DDMAN_ORIG_MANUAL_DIR="${CMAKE_SOURCE_DIR}/manual-assets")
 add_definitions(-DDMAN_SEARCH_WORK_DIR="${CMAKE_CURRENT_SOURCE_DIR}/web")
 add_definitions(-DDMAN_SEARCH_CREATE_DB_PATH="${CMAKE_CURRENT_BINARY_DIR}/dbPath")
+# This is for icon path on db
+add_definitions(-DDMAN_INSTALL_DB_PATH="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets")
 
 add_subdirectory(dbus)
 add_subdirectory(resources)
@@ -129,6 +129,8 @@ set(CONTROLLER_FILES
     controller/search_result.h
     controller/window_manager.cpp
     controller/window_manager.h
+    controller/config_manager.cpp
+    controller/config_manager.h
     )
 
 set(DBUS_FILES
@@ -212,13 +214,13 @@ add_custom_target(update-search-db DEPENDS _update-search-db)
 add_dependencies(update-search-db
                  generate-search-db)
 
-# Generate .qm files from .ts files.
-file(GLOB DMAN_TRANSLATION_TS
-     ${CMAKE_SOURCE_DIR}/translations/deepin-manual*.ts)
-set_source_files_properties(${DMAN_TRANSLATION_TS}
-                            PROPERTIES OUTPUT_LOCATION ${CMAKE_BINARY_DIR}/translations)
-qt5_add_translation(DMAN_TRANSLATION_QM ${DMAN_TRANSLATION_TS})
-add_custom_target(update-qm DEPENDS ${DMAN_TRANSLATION_QM})
+## Generate .qm files from .ts files.
+#file(GLOB DMAN_TRANSLATION_TS
+#     ${CMAKE_SOURCE_DIR}/translations/deepin-manual*.ts)
+#set_source_files_properties(${DMAN_TRANSLATION_TS}
+#                            PROPERTIES OUTPUT_LOCATION ${CMAKE_BINARY_DIR}/translations)
+#qt5_add_translation(DMAN_TRANSLATION_QM ${DMAN_TRANSLATION_TS})
+#add_custom_target(update-qm DEPENDS ${DMAN_TRANSLATION_QM})
 
 # Build web project and generate js files.
 add_custom_command(OUTPUT rebuild-web
@@ -242,13 +244,6 @@ set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
 set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 target_link_libraries(dman  ${LINK_LIBS})
 
-# Auto generate qm files and search.db in release mode.
-if (CMAKE_BUILD_TYPE MATCHES Release)
-  add_dependencies(dman
-                   update-search-db
-                   update-qm)
-endif ()
-
 add_executable(dman-search
                app/dman_search.cpp
                ${DBUS_FILES}
@@ -256,35 +251,19 @@ add_executable(dman-search
 target_link_libraries(dman-search
                       ${DMAN_SEARCH_LINK_LIBS})
 
+# Auto generate qm files and search.db in release mode.
+if (NOT (${CMAKE_BUILD_TYPE} MATCHES "Debug"))
+
+    # Generate .qm files from .ts files.
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3")
+
+    # generate qm files
+    execute_process(COMMAND bash "translate_generation.sh"
+                    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
+endif ()
+
+
 if (CMAKE_BUILD_TYPE MATCHES Debug)
-
-#  set(SEARCH_DEMO_FILES
-#      app/search_demo.cpp
-#      base/consts.cpp
-#      base/consts.h
-#      controller/search_db.cpp
-#      controller/search_db.h
-#      controller/search_manager.cpp
-#      controller/search_manager.h
-#      )
-#  add_executable(search-demo ${SEARCH_DEMO_FILES})
-#  target_link_libraries(search-demo ${LINK_LIBS})
-
-#  set(IMAGE_VIEWER_DEMO_FILES
-#      app/image_viewer_demo.cpp
-#      base/file_util.cpp
-#      base/file_util.h
-#      view/theme_manager.cpp
-#      view/theme_manager.h
-#      view/widget/image_viewer.cpp
-#      view/widget/image_viewer.h
-#      )
-#  add_executable(image-viewer-demo
-#                 ${IMAGE_VIEWER_DEMO_FILES}
-#                 ${RESOURCES_FILES}
-#                 )
-#  target_link_libraries(image-viewer-demo ${LINK_LIBS})
-
 
   set(MANUAL_TRANSLATE_FILES
       app/manual_translate.cpp
@@ -308,8 +287,10 @@ install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/app/dman.sh
 install(TARGETS dman-search
         DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 
-install(DIRECTORY ${CMAKE_BINARY_DIR}/translations
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
+# Install qm files
+file(GLOB QM_FILES  ${CMAKE_SOURCE_DIR}/translations/deepin-manual*.qm)
+install(FILES ${QM_FILES}
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual/translations/)
 
 install(DIRECTORY ${CMAKE_SOURCE_DIR}/manual-assets
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
@@ -318,7 +299,3 @@ install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/web_dist
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
 
 string(TOLOWER ${CMAKE_SYSTEM_PROCESSOR} LOWERCASE_CMAKE_SYSTEM_PROCESSOR)
-
-#install(FILES ${CMAKE_SOURCE_DIR}/search.db
-#        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
-

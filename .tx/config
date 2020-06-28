@@ -6,7 +6,7 @@ mode = developer
 [deepin-manual.deepin-manual]
 file_filter = translations/deepin-manual_<lang>.ts
 source_file = translations/deepin-manual.ts
-source_lang = en
+source_lang = en_US
 type = QT
 
 [deepin-manual.desktopts]

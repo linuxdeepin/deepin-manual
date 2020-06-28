@@ -39,8 +39,10 @@
       background-color: var(--index-item-background-color);
       border-radius: 18px;
       padding:0px;
-      width: 160px;
-      height: 160px;
+      // width: 160px;
+      // height: 160px;
+      width: var(--index-item-size);
+      height: var(--index-item-size);
       margin: 30px 0px 0px 50px;
       display: inline-block;
       text-align: center;
@@ -53,13 +55,14 @@
         margin-bottom: 8px;
       }
       span {
-        width:130px;
-        // word-break: normal;
-        display: inline-block;
+        margin-left: 15px;    //保持span居中,当设置display:-webkit-box后,默认居左,故设置其外边距
+        width: var(--index-span-width);
+        word-break: normal;
         overflow: hidden;
         text-overflow: ellipsis;
-        white-space: nowrap;
-        // font-family: SourceHanSansSC-Medium;
+        display:-webkit-box;    //设置其排列两行
+        -webkit-box-orient:vertical;
+        -webkit-line-clamp:2;
         font-family: var(--nav-world-font-family);
         font-size: var(--span-font-size);
         line-height: var(--span-line-height);

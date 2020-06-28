@@ -42,6 +42,7 @@ class ManualProxy : public QObject
     Q_OBJECT
 public:
     explicit ManualProxy(QObject *parent = nullptr);
+    QList<AppInfo> sortAppList(QMultiMap<qlonglong, AppInfo> map);
     ~ManualProxy() override;
 signals:
     void WidgetLower();
