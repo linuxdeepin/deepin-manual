@@ -39,28 +39,28 @@ QHash<QString, QPixmap> Utils::m_imgCacheHash;
 QHash<QString, QString> Utils::m_fontNameCache;
 
 //标题映射表
-const int langCount = 2;
+const int langCount = 3;
 QString languageArr[][langCount] = {
     //dde model
-    {"License activator", "授权管理"},
-    {"controlcenter", "控制中心"},
-    {"accounts", "账户设置"},
-    {"cloudsync", "网络帐户"},
-    {"display", "显示设置"},
-    {"defapp", "默认程序设置"},
-    {"personalization", "个性化设置"},
-    {"network", "网络设置"},
-    {"sound", "声音设置"},
-    {"bluetooth", "蓝牙设置"},
-    {"datetime", "时间日期"},
-    {"power", "电源管理"},
-    {"mouse", "鼠标和触控板"},
-    {"tablet", "数位板"},
-    {"keyboard", "键盘和语言"},
-    {"update", "系统更新"},
-    {"voice", "辅助功能"},
-    {"systeminfo", "系统信息"},
-    {"commoninfo", "通用设置"}
+    {"controlcenter", "控制中心", "Control Center"},
+    {"accounts", "账户设置", "Account Settings"},
+    {"cloudsync", "网络帐户", "Cloud Account"},
+    {"display", "显示设置", "Display Settings"},
+    {"defapp", "默认程序设置", "Default Application Settings"},
+    {"personalization", "个性化设置", "Personalization Settings"},
+    {"network", "网络设置", "Network Settings"},
+    {"sound", "声音设置", "Sound Settings"},
+    {"bluetooth", "蓝牙设置", "Sound Settings"},
+    {"datetime", "时间日期", "Date and Time"},
+    {"power", "电源管理", "Power Management"},
+    {"mouse", "鼠标和触控板", "Mouse and Touchpad"},
+    {"tablet", "数位板", "Drawing Tablet"},
+    {"keyboard", "键盘和语言", "Keyboard and Language"},
+    {"voice", "辅助功能", "Assistive Tools"},
+    {"update", "系统更新", "Update Settings"},
+    {"systeminfo", "系统信息", "System Info"},
+    {"License activator", "授权管理", "Authorization Management"},
+    {"commoninfo", "通用设置", "General Settings"}
 };
 
 Utils::Utils(QObject *parent)
@@ -214,14 +214,20 @@ QString Utils::fromSpecialEncoding(const QString &inputStr)
     }
 }
 
+/*** 返回title映射字段，目前主要用于＂控制中心＂跳转 2020-06-29 11:19:37 wangml ***/
 QString Utils::translateTitle(const QString &titleUS)
 {
     QString strRet = titleUS;
-    if (QLocale::system().name() == "zh_CN") {
-        int nCount = sizeof(languageArr) / sizeof(languageArr[0]);
-        for (int i = 0; i < nCount; i++) {
-            if (languageArr[i][0] == titleUS) {
+    int nCount = sizeof(languageArr) / sizeof(languageArr[0]);
+    for (int i = 0; i < nCount; i++) {
+        if (languageArr[i][0] == titleUS) {
+            if (QLocale::system().name() == "zh_CN") {
                 strRet = languageArr[i][1];
+                return strRet;
+            } else if (QLocale::system().name() == "en_US") {
+                strRet = languageArr[i][2];
+                return strRet;
+            } else {
                 break;
             }
         }
