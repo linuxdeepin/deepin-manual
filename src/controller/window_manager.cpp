@@ -63,7 +63,14 @@ WindowManager::WindowManager(QObject *parent)
 
 WindowManager::~WindowManager()
 {
+    QHashIterator<QString, WebWindow *> iterator(windows_);
 
+    while (iterator.hasNext()) {
+        iterator.next();
+        WebWindow *web = iterator.value();
+        delete web;
+        web = nullptr;
+    }
 
 }
 

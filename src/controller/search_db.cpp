@@ -297,8 +297,7 @@ QString SearchDb::highlightKeyword(QString srcString, QString keyword)
         if (substrImgEnd == imgEndString) {
             startSubStringIndex = currIndex + imgEndLen;
             strEndIndexList.append(startSubStringIndex);
-
-            highlightString.append(srcString.mid(findImgIndex, startSubStringIndex - findImgIndex));
+            highlightString.append(srcString.midRef(findImgIndex, startSubStringIndex - findImgIndex));
         }
 
         if (findImgIndex > startSubStringIndex) {

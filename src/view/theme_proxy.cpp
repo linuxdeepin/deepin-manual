@@ -12,7 +12,7 @@ dman::ThemeProxy::~ThemeProxy()
 
 void dman::ThemeProxy :: slot_ThemeChange()
 {
-    themeChange(getTheme());
+    emit themeChange(getTheme());
 }
 
 QString dman::ThemeProxy :: getTheme() const

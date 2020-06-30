@@ -107,16 +107,16 @@ set(DMAN_SEARCH_LINK_LIBS
 
 
 set(BASE_FILES
-    base/command.cpp
-    base/command.h
+#    base/command.cpp
+#    base/command.h
     base/consts.cpp
     base/consts.h
-    base/file_util.cpp
-    base/file_util.h
+#    base/file_util.cpp
+#    base/file_util.h
     base/utils.cpp
     base/utils.h
-    base/sysinfo.cpp
-    base/sysinfo.h
+#    base/sysinfo.cpp
+#    base/sysinfo.h
     )
 
 set(CONTROLLER_FILES

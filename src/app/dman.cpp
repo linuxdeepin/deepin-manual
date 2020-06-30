@@ -67,10 +67,10 @@ int main(int argc, char **argv)
     QObject::connect(&argument_parser, &dman::ArgumentParser::onNewAppOpen, &window_manager,
                      &dman::WindowManager::onNewAppOpen);
 
-    if (argument_parser.parseArguments()) {
+    if (!argument_parser.parseArguments()) {
         qDebug() << "argument_parser.parseArguments()";
         // Exit process after 1000ms.
-        QTimer::singleShot(1000, [&]() {
+        QTimer::singleShot(1000,  [&]() {
             app.quit();
         });
         return app.exec();

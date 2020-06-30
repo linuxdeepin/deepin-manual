@@ -61,13 +61,13 @@ int main(int argc, char **argv)
     QObject::connect(btn, &QPushButton::clicked, [ = ]() {
         QString curPath = QDir::currentPath();  //获取系统当前目录
         QString dlgTitle = "translate dir";     //对话框标题
-        QString strDirPath = QFileDialog::getExistingDirectory();
+        QString strDirPath = QFileDialog::getExistingDirectory(nullptr, dlgTitle, curPath);
         if (!strDirPath.isEmpty()) {
             QDir dirDir(strDirPath);
-            for (const QString &strFile :
+            for (QString &strFile :
                     QDir(strDirPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-                QHashIterator<QString, QString> iterator(hash);
 
+                QHashIterator<QString, QString> iterator(hash);
                 while (iterator.hasNext()) {
                     iterator.next();
                     if (!iterator.key().isEmpty()) {

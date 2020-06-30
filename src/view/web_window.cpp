@@ -289,7 +289,7 @@ void WebWindow::initWebView()
     //将当前存在的applist传入到数据库管理类中.
     if (search_manager_) {
         QStringList strlist = manual_proxy_->getSystemManualList();
-        search_manager_->installApps(strlist);
+        emit search_manager_->installApps(strlist);
     }
 
     web_view_ = new QWebEngineView;
@@ -459,7 +459,7 @@ void WebWindow::onSearchContentByKeyword(const QString &keyword)
     qDebug() << "calling keyword is:" << keyword << endl;
     QString key(keyword);
     const QString searchKey = key.remove('\n').remove('\r').remove("\r\n");
-    search_manager_->searchContent(searchKey);
+    emit search_manager_->searchContent(searchKey);
 
     QString base64Key = QString(searchKey.toUtf8().toBase64());
     qDebug() << base64Key << endl;
@@ -470,7 +470,7 @@ void WebWindow::onSearchContentByKeyword(const QString &keyword)
 
 void WebWindow::onSearchEditFocusOut()
 {
-    QTimer::singleShot(20, [ = ]() {
+    QTimer::singleShot(20, this, [ = ]() {
         this->completion_window_->hide();
     });
 }
@@ -487,10 +487,11 @@ void WebWindow::onSearchButtonClicked()
 void WebWindow::onSearchResultClicked(const SearchAnchorResult &result)
 {
     web_view_->page()->runJavaScript(QString("open('%1', '%2', '%3', '%4')")
-                                     .arg(result.app_name)
-                                     .arg(result.anchorId)
-                                     .arg(result.anchor)
-                                     .arg(result.app_display_name));
+                                     .arg(result.app_name
+                                          , result.anchorId
+                                          , result.anchor
+                                          , result.app_display_name));
+
 }
 
 void WebWindow::onSearchTextChanged(const QString &text)
@@ -508,14 +509,14 @@ void WebWindow::onSearchTextChangedDelay()
     QString textTemp = search_edit_->text();
     const QString text = textTemp.remove('\n').remove('\r').remove("\r\n");
     // Filters special chars.
-    if (text.size() < 1 || text.toLower().contains(QRegExp("[+-_$!@#%^&\\(\\)]"))) {
+    if (text.isEmpty() || text.contains(QRegExp("[+-_$!@#%^&\\(\\)]"))) {
         return;
     }
 
     completion_window_->setKeyword(text);
 
     // Do real search.
-    search_manager_->searchAnchor(text);
+    emit search_manager_->searchAnchor(text);
 }
 
 void WebWindow::onTitleBarEntered()
@@ -566,7 +567,7 @@ void WebWindow::onWebPageLoadFinished(bool ok)
             }
         }
 
-        QTimer::singleShot(100, [&]() {
+        QTimer::singleShot(100, this, [&]() {
             web_view_->show();
             if (first_webpage_loaded_) {
                 first_webpage_loaded_ = false;
@@ -631,12 +632,12 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
             switch (mouseEvent->button()) {
             case Qt::BackButton: {
                 qDebug() << "eventFilter back";
-                title_bar_proxy_->backwardButtonClicked();
+                emit title_bar_proxy_->backwardButtonClicked();
                 break;
             }
             case Qt::ForwardButton: {
                 qDebug() << "eventFilter forward";
-                title_bar_proxy_->forwardButtonClicked();
+                emit title_bar_proxy_->forwardButtonClicked();
                 break;
             }
             case Qt::MiddleButton: {
@@ -673,7 +674,7 @@ void WebWindow::slot_ButtonHide()
 
 void WebWindow::slot_ButtonShow()
 {
-    QTimer::singleShot(20, [ = ]() {
+    QTimer::singleShot(20, this, [ = ]() {
         qDebug() << "slot_ButtonShow";
         buttonBox->show();
     });
