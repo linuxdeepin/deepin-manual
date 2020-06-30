@@ -46,6 +46,7 @@ int main(int argc, char **argv)
         app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings, true);
     }
 
+    //设置窗口属性
     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
     app.setWindowIcon(QIcon::fromTheme("deepin-manual"));
     app.setProductIcon(QIcon::fromTheme("deepin-manual"));
@@ -80,10 +81,11 @@ int main(int argc, char **argv)
                      &dman::WindowManager::openManual);
     QObject::connect(&argument_parser, &dman::ArgumentParser::openManualWithSearchRequested,
                      &window_manager, &dman::WindowManager::openManualWithSearch);
-    // Send openManualRequested() signals after slots connected.
+
+    //发送openManualRequested()信号后与槽连接。
     argument_parser.openManualsDelay();
 
-    // save theme
+    // 保存主题
     DApplicationSettings dApplicationSettings;
 
     Dtk::Core::DLogManager::registerFileAppender();
