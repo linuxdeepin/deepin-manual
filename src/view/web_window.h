@@ -133,8 +133,6 @@ private slots:
 
     void onManualSearchByKeyword(const QString &keyword);
     void onACtiveColorChanged(QString, QMap<QString, QVariant>, QStringList);
-
-    QString getWinInfoConfigPath();
 };
 
 }  // namespace dman

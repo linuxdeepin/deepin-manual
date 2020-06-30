@@ -198,17 +198,6 @@ void WebWindow::onACtiveColorChanged(QString, QMap<QString, QVariant>map, QStrin
     }
 }
 
-QString WebWindow::getWinInfoConfigPath()
-{
-    QDir winInfoPath(QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation));
-    if (!winInfoPath.exists()) {
-        winInfoPath.mkpath(QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation));
-    }
-
-    QString winInfoFilePath(winInfoPath.filePath("wininfo-config.conf"));
-    return winInfoFilePath;
-}
-
 void WebWindow::initUI()
 {
     completion_window_ = new SearchCompletionWindow();
@@ -266,6 +255,7 @@ void WebWindow::initUI()
             &TitleBarProxy::forwardButtonClicked);
     connect(title_bar_proxy_, &TitleBarProxy::buttonShowSignal, this, &WebWindow::slot_ButtonShow);
 
+    //获取窗口上次保存尺寸,加载上次保存尺寸.
     QSettings *setting = ConfigManager::getInstance()->getSettings();
     setting->beginGroup(CONFIG_WINDOW_INFO);
     int saveWidth = setting->value(CONFIG_WINDOW_WIDTH).toInt();
@@ -284,6 +274,10 @@ void WebWindow::initUI()
     this->setFocusPolicy(Qt::ClickFocus);
 }
 
+/**
+ * @brief WebWindow::initWebView
+ * @note 初始化qwebengines, 初始化QWebChannel,通过QWebChannel完成QT与JS间通讯
+ */
 void WebWindow::initWebView()
 {
     image_viewer_ = new ImageViewer(this);
@@ -292,7 +286,7 @@ void WebWindow::initWebView()
     settings_proxy_ = new SettingsProxy(this);
     i18n_proxy = new I18nProxy(this);
     manual_proxy_ = new ManualProxy(this);
-    // Do real search.
+    //将当前存在的applist传入到数据库管理类中.
     if (search_manager_) {
         QStringList strlist = manual_proxy_->getSystemManualList();
         search_manager_->installApps(strlist);
@@ -331,6 +325,9 @@ void WebWindow::cancelTextChanged()
     web_view_->setContextMenuPolicy(Qt::NoContextMenu);
 }
 
+/**
+ * @brief WebWindow::updateBtnBox 更新当前按钮组状态
+ */
 void WebWindow::updateBtnBox()
 {
     if (m_forwardButton->isEnabled() || m_backButton->isEnabled()) {
@@ -340,21 +337,25 @@ void WebWindow::updateBtnBox()
     }
 }
 
+/**
+ * @brief WebWindow::saveWindowSize 记录最后一个窗口关闭时的大小
+ */
 void WebWindow::saveWindowSize()
 {
-    // 记录最后一个正常窗口的大小
     QSettings *setting = ConfigManager::getInstance()->getSettings();
     setting->beginGroup(CONFIG_WINDOW_INFO);
     setting->setValue(CONFIG_WINDOW_WIDTH, width());
     setting->setValue(CONFIG_WINDOW_HEIGHT, height());
     setting->endGroup();
-    qDebug() << "save window_Size:" << width() << ", " << height();
+    qDebug() << __func__ << "save window_Size:" << width() << ", " << height();
 }
 
+/**
+ * @brief WebWindow::initShortcuts 设置窗口支持的快捷键
+ */
 void WebWindow::initShortcuts()
 {
     qDebug() << "init Short cuts" << endl;
-
     //设置窗口大小切换快捷键
     QShortcut *scWndReize = new QShortcut(this);
     scWndReize->setKey(tr("Ctrl+Alt+F"));
@@ -370,18 +371,20 @@ void WebWindow::initShortcuts()
         }
     });
 
-    //设置搜索快捷键
-    QShortcut *scSearch = new QShortcut(this);
-    scSearch->setKey(tr("Ctrl+F"));
-    scSearch->setContext(Qt::WindowShortcut);
-    scSearch->setAutoRepeat(false);
-    connect(scSearch, &QShortcut::activated, this, [this] {
-        qDebug() << "search" << endl;
-        search_edit_->lineEdit()->setFocus(Qt::ShortcutFocusReason);
-//        web_view_->page()->remapBrowserWindow(web_view_->winId(), this->winId());
-    });
+    //设置搜索快捷键  后期将支持盲打功能,故不需要此快捷键
+//    QShortcut *scSearch = new QShortcut(this);
+//    scSearch->setKey(tr("Ctrl+F"));
+//    scSearch->setContext(Qt::WindowShortcut);
+//    scSearch->setAutoRepeat(false);
+//    connect(scSearch, &QShortcut::activated, this, [this] {
+//        qDebug() << "search" << endl;
+//        search_edit_->lineEdit()->setFocus(Qt::ShortcutFocusReason);
+//    });
 }
 
+/**
+ * @brief WebWindow::initDBus 初始化Dbus接口, 获取系统设置中个性化设置变化信号.
+ */
 void WebWindow::initDBus()
 {
     QDBusConnection senderConn = QDBusConnection::connectToBus(QDBusConnection::SessionBus, "Sender");
@@ -407,6 +410,9 @@ void WebWindow::setHashWordColor()
     completion_window_->updateColor(Color);
 }
 
+/**
+ * @brief WebWindow::settingContextMenu 初始化鼠标选中内容右键菜单Menu.
+ */
 void WebWindow::settingContextMenu()
 {
     web_view_->setContextMenuPolicy(Qt::CustomContextMenu);
@@ -521,6 +527,11 @@ void WebWindow::onTitleBarEntered()
     }
 }
 
+/**
+ * @brief WebWindow::onWebPageLoadFinished qwebengines加载页面完成槽
+ * @note  网页加载完成后设置其配置
+ * @param ok
+ */
 void WebWindow::onWebPageLoadFinished(bool ok)
 {
     //改变ｊs颜色
@@ -574,6 +585,11 @@ void WebWindow::onWebPageLoadFinished(bool ok)
     }
 }
 
+/**
+ * @brief WebWindow::onSearchAnchorResult 搜索结果框内容显示
+ * @param keyword 搜索关键字
+ * @param result  搜索的内容
+ */
 void WebWindow::onSearchAnchorResult(const QString &keyword, const SearchAnchorResultList &result)
 {
     // Ignore this signal if current manual window is not present.
