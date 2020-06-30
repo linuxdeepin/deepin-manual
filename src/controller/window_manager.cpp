@@ -61,7 +61,11 @@ WindowManager::WindowManager(QObject *parent)
 {
 }
 
-WindowManager::~WindowManager() {}
+WindowManager::~WindowManager()
+{
+
+
+}
 
 void WindowManager::initDBus()
 {
@@ -212,8 +216,6 @@ QPoint WindowManager::newWindowPosition()
     int saveWidth = setting->value(CONFIG_WINDOW_WIDTH).toInt();
     int saveHeight = setting->value(CONFIG_WINDOW_HEIGHT).toInt();
     setting->endGroup();
-    qDebug() << "load window_width: " << saveWidth;
-    qDebug() << "load window_height: " << saveHeight;
     // 如果配置文件没有数据
     if (saveWidth == 0 || saveHeight == 0) {
         saveWidth = 1024;

@@ -182,14 +182,14 @@ void WebWindow::onManualSearchByKeyword(const QString &keyword)
 
 /**
  * @brief WebWindow::onACtiveColorChanged
- * @param map
- * 改变系统活动用色时，触发此槽，
+ * @param map 个性化对, QString:更改类型  QVariant:更改后的值
+ * @note 改变系统个性化时，触发此槽
  */
 void WebWindow::onACtiveColorChanged(QString, QMap<QString, QVariant>map, QStringList)
 {
-
     QString strValue = map.begin().value().toString();
     QString strKey = map.begin().key();
+    qDebug() << __func__ << " key: " << strKey << " value: " << strValue;
     if (0 == strKey.compare("QtActiveColor")) {
         web_view_->page()->runJavaScript(QString("setHashWordColor('%1')").arg(strValue));
         completion_window_->updateColor(QColor(strValue));
@@ -427,7 +427,6 @@ void WebWindow::settingContextMenu()
 
 void WebWindow::showEvent(QShowEvent *event)
 {
-
     QWidget::showEvent(event);
     if (!is_index_loaded_) {
         is_index_loaded_ = true;
@@ -436,7 +435,6 @@ void WebWindow::showEvent(QShowEvent *event)
             emit this->shown(this);
             this->initWebView();
             const QFileInfo info(kIndexPage);
-            qDebug() << Q_FUNC_INFO << "web_View_->load ... ";
             web_view_->load(QUrl::fromLocalFile(info.absoluteFilePath()));
         });
     }
@@ -540,9 +538,7 @@ void WebWindow::onWebPageLoadFinished(bool ok)
         web_view_->page()->runJavaScript(QString("setTheme('%1')").arg(qsthemetype));
         if (app_name_.isEmpty()) {
             web_view_->page()->runJavaScript("index()");
-            qDebug() << Q_FUNC_INFO << 460;
         } else {
-            qDebug() << Q_FUNC_INFO << 462;
             QString real_path(app_name_);
             if (real_path.contains('/')) {
                 // Open markdown file with absolute path.
@@ -560,13 +556,9 @@ void WebWindow::onWebPageLoadFinished(bool ok)
         }
 
         QTimer::singleShot(100, [&]() {
-            qDebug() << "show webview";
-            qDebug() << Q_FUNC_INFO << 481;
             web_view_->show();
-            qDebug() << Q_FUNC_INFO << 482;
             if (first_webpage_loaded_) {
                 first_webpage_loaded_ = false;
-                qDebug() << Q_FUNC_INFO << 486;
                 if (keyword_.length() > 0) {
                     qDebug() << "first_webpage_loaded_ manualSearchByKeyword:" << keyword_;
                     emit this->manualSearchByKeyword(keyword_);
@@ -574,10 +566,9 @@ void WebWindow::onWebPageLoadFinished(bool ok)
             }
 
             if (this->settings_proxy_) {
-                qDebug() << Q_FUNC_INFO << 494;
                 auto fontInfo = this->fontInfo();
-                Q_EMIT this->settings_proxy_->fontChangeRequested(fontInfo.family(),
-                                                                  fontInfo.pixelSize());
+                emit this->settings_proxy_->fontChangeRequested(fontInfo.family(),
+                                                                fontInfo.pixelSize());
             }
         });
     }
@@ -647,8 +638,8 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
         if (this->settings_proxy_) {
             qDebug() << "eventFilter QEvent::FontChange";
             auto fontInfo = this->fontInfo();
-            Q_EMIT this->settings_proxy_->fontChangeRequested(fontInfo.family(),
-                                                              fontInfo.pixelSize());
+            emit this->settings_proxy_->fontChangeRequested(fontInfo.family(),
+                                                            fontInfo.pixelSize());
         }
     }
 

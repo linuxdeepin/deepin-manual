@@ -218,7 +218,6 @@ void SearchDb::handleSearchAnchor(const QString &keyword)
     const QString lang = QLocale().name();
     const QString sql =
         QString(kSearchSelectAnchor).replace(":anchor", keyword).replace(":lang", lang);
-    qDebug() << "handleSearchAnchor sql is:" << sql;
     if (query.exec(sql)) {
         while (query.next() && (result.size() < kResultLimitation)) {
             //只将当前预装应用中的内容输出。
@@ -360,7 +359,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
             const QString anchor = query.value(1).toString();
             const QString anchorId = query.value(2).toString();
             const QString content = query.value(3).toString();
-            qDebug() << Q_FUNC_INFO << app_name << " " << anchor << " " << anchorId << " " << content << " ";
+            qDebug() << Q_FUNC_INFO << app_name << " " << anchor << " " << anchorId;
             if (!strlistApp.contains(app_name)) {
                 continue;
             }
