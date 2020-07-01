@@ -16,7 +16,6 @@
  */
 
 #include "view/widget/search_completion_window.h"
-#include "view/theme_manager.h"
 #include "view/widget/search_button.h"
 #include "base/utils.h"
 

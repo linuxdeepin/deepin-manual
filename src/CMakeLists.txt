@@ -107,16 +107,10 @@ set(DMAN_SEARCH_LINK_LIBS
 
 
 set(BASE_FILES
-#    base/command.cpp
-#    base/command.h
     base/consts.cpp
     base/consts.h
-#    base/file_util.cpp
-#    base/file_util.h
     base/utils.cpp
     base/utils.h
-#    base/sysinfo.cpp
-#    base/sysinfo.h
     )
 
 set(CONTROLLER_FILES
@@ -169,8 +163,6 @@ set(VIEW_FILES
     view/search_proxy.h
     view/theme_proxy.cpp
     view/theme_proxy.h
-    view/theme_manager.cpp
-    view/theme_manager.h
     view/title_bar_proxy.cpp
     view/title_bar_proxy.h
     view/settings_proxy.h

@@ -684,9 +684,9 @@ void WebWindow::slot_ThemeChanged()
 {
     DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
     if (themeType == DGuiApplicationHelper::LightType)
-        web_view_->page()->setBackgroundColor(QColor("#F8F8F8"));
+        web_view_->page()->setBackgroundColor(QColor(0xF8, 0xF8, 0xF8));
     else if (themeType == DGuiApplicationHelper::DarkType) {
-        web_view_->page()->setBackgroundColor(QColor("#282828"));
+        web_view_->page()->setBackgroundColor(QColor(0x28, 0x28, 0x28));
     }
 }
 }  // namespace dman
