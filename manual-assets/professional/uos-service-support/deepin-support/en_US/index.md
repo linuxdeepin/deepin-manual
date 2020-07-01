@@ -22,23 +22,22 @@ Uos Service Support is an application developed by UnionTech Software enabling t
 -  Right-click ![support](icon/support.svg)on dock to select **Close All** or **Force Quit** to exit.
 - On the Support interface, click ![icon_menu](icon/icon_menu.svg) and select **Exit** to exit.
 
-## Main Interface
+## Self-Service
 
-The left panel on the main interface is composed of Introduction, Consults, Online Support, Contact Us and Self-Service.
+Click **Self-Service** on the left panel to enter the Self-Service interface. You can  search and read the manual, document center and FAQ on UOS website to resolve issues.  
 
-![main-interface](jpg/introduce-service.png)
+- **Document Center**: Click the **Document Center** icon and you will be directed to UOS's product website. Input the user name and password to log in (If you don't have an account, you need to sing up first before logging into the website.) and view the corresponding documents in the Document Center page.
+
+- **FAQ**: Click the **FAQ** icon and you will be directed to UOS's product website and enter FAQ page.  
+
+- **Manual**: Click the **Manual** icon to view the manual.
+
+You can also click **More** ro know more about the services.
 
 
-You can obtain technical support and services by:
-- Online Service: Consult us by instant messaging or submitting an issue. 
-- Telephone: Telephone support on 5 x 8 hours or 7 x 24 hours. 
-- Email: Send emails to the specific official email address for help.
-- Wechat Work: Add Wechat Work account of the support team member via Wechat for online help.
-- Self-Service: Search and read the manual, document center and FAQ to resolve the issues.
+![self-service](jpg/self-support-service.png)
 
-Click **More** to go to the UOS official technical support page
 
-（https://www.uniontech.com/service）.
 
 
 ## Consults
@@ -48,7 +47,7 @@ For efficient services, you can leave a message including your connection inform
 1.  Click the **Consults** tab on the left panel.
 
    - Go to the Consults page directly when the external network is available and execute Step 2 below.
-   - Click **Contact Us** when the external network is unavailable. Please refer to the operations in Contact Us for details.
+   - Click **Contact Us** when the external network is unavailable. Please refer to the operations in [Contact Us](#Contact Us) for details.
    
 2.  Set the relevant parameters as shown in the figure below:
 
@@ -62,17 +61,11 @@ For efficient services, you can leave a message including your connection inform
    
    ![message-submit](jpg/message-submit.png)
    
-3.   Click **Submit** and the **Submission Successful** dialogue pops up. The submitted information will be feedbacked to the UOS service and support team.
+3.   Click **Submit**  to feedback the message to the UOS service and support team.
 
-   You can click **Reset** before submitting the feedback information to clear up the filled and uploaded content or attachments  and restore them to the initial default state.
+   > ![Notes](icon/notes.svg)Notes: If you click **Reset**, all message and uploaded content or attachments will restore to the initial default state. Please operate carefully.
    
-4.  Click **Done** to return to the main interface.
-
- The UOS service and support team will feedback the progress and results to you via the email offered after submitting your consultations.
-
-   ![message-success](jpg/message-success.png)
-
-
+4.  After successful submission, please keep an eye on the mailbox you offered about any progress and results.
 
 ## Online Support
 
@@ -81,43 +74,24 @@ You are able to communicate with the customer service timely on services and tec
 1.  Click **Online Support** on the left panel.
 
    - You will be directed to the Online Support interface and execute Step 2 below when there is network connection.
-   - Click **Contact Us** when there is no network connection. Please refer to the operations in Contact Us for details.
+   - Please refer to [Contact Us](#Contact Us) for detailed operations when there is no network connection. 
 
 2.    You can chat by instant messaging, send attachments or view the history.
 
    - Start your online chat just by entering in the input box what you expect to consult. 
    - Click ![upload attachments](jpg/upload attachments.png)to upload attachments.
-   - Click **View history** on top of the dialogue to view the history.![online-service](jpg/online-service.png)
+   - Click **View history** on top of the dialogue to view the history.![online-service](jpg/online-service.jpg)
 
 
 
 ## Contact Us
 
-You can obtain online one-to-one consulting services via calls, emails, or by scanning the QR code of WeChat Work from the team member from your personal WeChat. 
+You can obtain one-to-one consulting services via calls, emails, or by scanning the QR code from your personal WeChat. 
 
 1.  Click **Contact Us** on the left panel to enter the Contact Us interface.
 2.   Select the category of your consultation and the contact information of the matching support team member will be shown.  You can contact us by the contact information displayed.
 
 ![contactUs](jpg/contactUs.png)
-
-
-
-
-## Self-Service
-
-You can  search and read the manual, document center and FAQ on UOS website to resolve issues.  
-
-Click **Self-Service** on the left panel to enter the Self-Service interface.
-
-- **Document Center**: Click the **Document Center** icon and you will be directed to https://doc.chinauos.com/. Input the user name and password to log into the UOS official website (If you don't have an account, you need to sing up first before logging into the website.) and view the corresponding documents in the Document Center page.
-- **FAQ**: Click the **FAQ** icon and you will be directed to https://doc.chinauos.com/. Input the user name and password to log into the UOS official website (If you don't have an account, you need to sign up first before logging into the website.) and enter the FAQ page.  
-- **Manual**: Click the **Manual** icon to view the manual.
-
-
-![self-service](jpg/self-support-service.png)
-
-
-![manual 2](jpg/manual-01.png)
 
 
 

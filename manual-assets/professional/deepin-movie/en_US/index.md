@@ -50,7 +50,7 @@ Perform the common playback operations and enjoy the videos to your heart's cont
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-> ![notes](icon/notes.svg)Notes: The preview window is displayed by default when the mouse is placed over the progress bar. If you do not need to display the preview window, you can enter the settings to change it. Please refer to the [basic settings](#basic settings) for details.
+> ![notes](icon/notes.svg)Notes: The preview window is displayed by default when the mouse is placed over the progress bar. If you do not need to display the preview window, you can enter the settings to change it. Please refer to the [Basic Settings](#Basic Settings) for details.
 
 ### Icon Description
 
@@ -75,7 +75,7 @@ You can play films by the following ways:
 - On the Movie interface, right-click to select **Open CD/DVD** to play the films in CD/DVD.
 - Drag the file/folder directly to the Movie interface to play local films.
 
-> ![notes](icon/notes.svg)Notes: Please make sure your network is well connected before playing online videos with Movie.
+> ![attention](icon/attention.svg)Attention: Please make sure your network is well connected before playing online videos with Movie.
 
 
 ![0|open](jpg/open.png)
@@ -89,7 +89,7 @@ You can play films by the following ways:
 
 1.  On the Movie interface, press ![Ctrl](icon/Ctrl.svg)+![Right](icon/Right.svg) on the keyboard to speed up the film playback.
 2.  Press ![Ctrl](icon/Ctrl.svg) +![Left](icon/Left.svg) on the keyboard to speed down the film playback.
-3.  If you want to restore the original play speed, press ![R](icon/r.svg)on the keyboard.
+3.  If you want to restore the original play speed, press ![R](icon/R.svg)on the keyboard.
 
 >![notes](icon/notes.svg)Notes: Speed up/down is relative to the original play speed. The video playback speed increases / decreases by 0.1 times by default each time it is sped up / down. Press and hold ![Ctrl](icon/Ctrl.svg)+![Right](icon/Right.svg) or ![Left](icon/Left.svg) on the keyboard and the playback speed will increase or decrease. The maximum playback speed is 2 times the original playback speed and the minimum playback speed is 0.1 times the original playback speed.
 
@@ -161,7 +161,7 @@ You can adjust the window size as you wish during playback.
 ### View Film Info
 
 1.  Right-click on the Movie interface.
-2.  Select **Film Info** and you can view the film info, codec info and audio info of the film. 
+2.  Select **Film Info** and you can view the film info, code info and audio info of the film. 
 
 
 ## Playlist Management

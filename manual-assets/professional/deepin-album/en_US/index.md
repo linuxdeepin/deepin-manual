@@ -25,13 +25,13 @@ You can run, close or create shortcuts for Album by the following ways.
 
 ### Exit Album
 
-- On the Album interface, click![close_icon](icon/close_icon.svg)to exit Album.
+- On the Album interface, click![close_icon](icon/close.svg)to exit Album.
 - Right-click ![deepin-album](icon/deepin-album.svg)on dock and select **Close all** to exit Album.
 - On the Album interface, click![icon_menu](icon/icon_menu.svg) and select **Exit** to exit Album.
 
 ### View Shortcuts
 
-On the Album interface, press  **Ctrl** + **Shift**+ **?** to view shortcuts. Proficiency in shortcuts will greatly improve your efficiency.
+On the Album interface, press  ![Ctrl](icon/Ctrl.svg) + ![Shift](icon/Shift.svg) + ![QM](icon/QM.svg)to view shortcuts. Proficiency in shortcuts will greatly improve your efficiency.
 
 ![0|hotkey](jpg/hotkey.png)
 
@@ -56,7 +56,7 @@ On the Album interface, you are able to import photos as follows:
    - Click![search](icon/search.svg)to enter keywords.
    - Click ![button_voice](icon/button_voice.svg)to input the voice content, which will be converted to texts and displayed in the search box.
 
-2.  Press the Enter key on the keyboard to locate the photos searched quickly.
+2.  Press the ![enter](icon/Enter.svg) key on the keyboard to locate the photos searched quickly.
    - When there is information matched, a search result list will be displayed on the interface.
    - When there is no information matched, "No search results" will be displayed on the interface.
 
@@ -82,7 +82,7 @@ Double-click or right-click the photo to select **View** and enter the photo vie
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
-> ![tips](icon/tips.svg)Tips: Scroll the mouse wheel to enlarge the picture. If the photo size exceeds the window, a navigation window will appear at the lower part. Drag the box in the window to fast locate the corresponding photo areas. You can click **x** on the top right corner of the navigation window to close it. Right-click the photo, you can select **Hide navigation window/Show navigation window**.
+> ![tips](icon/tips.svg)Tips: Scroll the mouse wheel to enlarge the picture. If the photo size exceeds the window, a navigation window will appear at the lower part. Drag the box in the window to fast locate the corresponding photo areas. You can click ![close_icon](icon/close.svg) on the top right corner of the navigation window to close it. Right-click the photo, you can select **Hide navigation window/Show navigation window**.
 
 ![0|copy](jpg/view-pic.png)
 

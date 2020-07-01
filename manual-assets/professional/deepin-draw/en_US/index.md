@@ -23,13 +23,13 @@ You can run, close and create shortcuts for Image Viewer by the following ways.
 
 ### Exit Draw
 
-- On the Draw interface, click  ![close_icon](icon/close_icon.svg) to exit Draw.
+- On the Draw interface, click  ![close_icon](icon/close.svg) to exit Draw.
 - Right-click ![draw](icon/deepin-draw.svg) on dock and select **Close All** to exit Draw.
 - Click ![icon_menu](icon/icon_menu.svg) on the Draw interface and select **Exit** to exit Draw.
 
 ### View Shortcuts
 
-On the Draw interface, press **Ctrl** + **Shift** + **?** on the keyboard to view shortcuts. Proficiency in shortcuts will greatly improve your efficiency.
+On the Draw interface, press ![Ctrl](icon/Ctrl.svg)+ ![Shift](icon/Shift.svg)+![QM](icon/QM.svg) on the keyboard to view shortcuts. Proficiency in shortcuts will greatly improve your efficiency.
 
 ![1|hotkey](jpg/hotkey.png)
 
@@ -38,7 +38,7 @@ On the Draw interface, press **Ctrl** + **Shift** + **?** on the keyboard to vie
 
 You are able to process imported pictures, draw pictures freely with Draw and save them in multiple formats.
 
-
+### New tabs
 
 ![1|mian](jpg/open.png)
 
@@ -46,6 +46,11 @@ You are able to process imported pictures, draw pictures freely with Draw and sa
 - You can also click ![add](jpg/add.png) to create a new tab when there are two or more tabs in the window.
 
 When there are multiple tabs, you can adjust the tab order by dragging the tab to or clicking ![previous](jpg/previous.png) or ![next](jpg/next.png) icon.
+
+### Close tabs
+
+- Click a tab, click ![close_icon](icon/close.svg) to close the current tab.
+- Right-click a tab, select **Close tab** or **Close other tabs**. 
 
 ### Open Pictures
 
@@ -66,7 +71,7 @@ Currently it is only available to import 30 pictures in JPG, PNG, TIF and BMP.
 1.   On the Draw interface, click ![menu](icon/icon_menu.svg) > **Save** or  ![menu](icon/icon_menu.svg) > **Save as**.
 2.   Set the file name and format to be saved and click **Save**.
 
-> ![notes](icon/notes.svg): The suffix of the file name can be omitted and it can be saved as the selected format automatically. 
+> ![notes](icon/notes.svg)Notes: The suffix of the file name can be omitted and it can be saved as the selected format automatically. 
 
 ### Print Pictures
 
@@ -89,9 +94,9 @@ By clicking the graphics drawing tool to draw entities, you can perform the foll
 - Select drawn graphics, texts or blurred areas.
 - Perform marquee selection and all graphics within the marquee selection area are in selected status.
 - Drag to adjust the size of the graphic within the selected area.
-- Hold down the **Shift** key and click to select multiple graphics.
+- Hold down the ![Shift](icon/Shift.svg) key and click to select multiple graphics.
 
-> ![notes](icon/notes.svg): Click the blank area in Draw to cancel the graphic selected.
+> ![notes](icon/notes.svg)Notes: Click the blank area in Draw to cancel the graphic selected.
 
 ### Shape Tool
 
@@ -107,7 +112,7 @@ By clicking the graphics drawing tool to draw entities, you can perform the foll
    - Sides range from 4 to 10, which can be adjusted by clicking the up and down adjustment icon or entering the value manually.
 3.   Drag the mouse to draw graphics in Draw area. 
 
->![tips](icon/tips.svg)Tips: Facilitated by the **Shift** or **Shift**+ **Alt** keys on the keyboard, you can draw a square, perfect circle, equilateral triangle, regular pentagram and regular pentagon when drawing graphics with ![rectangle](icon/rectangle_normal.svg), ![oval](icon/oval_normal.svg), ![triangle](icon/triangle_tool_normal.svg), ![star](icon/draw-star.svg) and ![hexagon](icon/hexagon_tool_normal.svg).
+>![tips](icon/tips.svg)Tips: Facilitated by the ![Shift](icon/Shift.svg) or ![Shift](icon/Shift.svg)+ ![Alt](icon/Alt.svg) keys on the keyboard, you can draw a square, perfect circle, equilateral triangle, regular pentagram and regular pentagon when drawing graphics with ![rectangle](icon/rectangle_normal.svg), ![oval](icon/oval_normal.svg), ![triangle](icon/triangle_tool_normal.svg), ![star](icon/draw-star.svg) and ![hexagon](icon/hexagon_tool_normal.svg).
 
 ![1|shape](jpg/shape01 .png)
 
@@ -173,7 +178,7 @@ You can copy, crop, rotate graphics by the edition function, and also adjust lay
   - Original: crop in proportion to the original picture, such as: 1:1, 2:3, 8:5 and 16:9.
 
 3.  Select the cropping mode and select the area to be cropped.
-4.  Press the **Enter** key to crop out the graphics out of the selected area.
+4.  Press the ![Enter](icon/Enter.svg) key to crop out the graphics out of the selected area.
 
 ![1|cut](jpg/cut.png)
 
@@ -183,7 +188,7 @@ You can copy, crop, rotate graphics by the edition function, and also adjust lay
 1. On the Draw interface, select an imported picture.
 2.  Click ![flip](icon/filp_Vertical_normal.svg)or ![flip](icon/flip_Horizontal_normal.svg) to flip the picture vertically or horizontally.
 
-![1|roll-over](jpg/roll-over.png)
+![1|roll-over](jpg/rotate.png)
 
 
 ### Rotate
@@ -191,8 +196,6 @@ You can copy, crop, rotate graphics by the edition function, and also adjust lay
 1.  On the Draw interface, select an imported picture.
 2.  Click ![rotate](icon/rotate_right_normal.svg) or ![rotate](icon/rotate_left_normal.svg) to rotate the picture for 90 degrees clockwise or counterclockwise.
 >![tips](icon/tips.svg)Tips: You can also rotate it freely by dragging the origin of the picture or graphics with the mouse.
-
-![1|rotate](jpg/rotate.png)
 
 
 
@@ -207,7 +210,7 @@ You can copy, crop, rotate graphics by the edition function, and also adjust lay
 ### Delete
 
 1.  On the Draw interface, select an imported picture.
-2.  Right-click to select **Delete** or use the **Delete** key on the keyboard to delete the selected picture.
+2.  Right-click to select **Delete** or use the ![Delete](icon/Delete.svg) key on the keyboard to delete the selected picture.
 
 ![1|delete](jpg/delete.png)
 

@@ -16,26 +16,26 @@ You can run, close or create a shortcut for calendar by the following ways.
 2.  Locate ![draw](icon/dde-calendar.svg)by scrolling the mouse wheel or searching calendar in the Launcher interface and click it to run.
 3.  Right-click ![draw](icon/dde-calendar.svg)and you can:
 
-- Click **Send to desktop** to create a desktop shortcut.
-- Click **Send to dock** to fix it on Dock.
-- Click **Add to startup** to add it to startup and it will auto run when the system boots.
+   - Click **Send to desktop** to create a desktop shortcut.
+   - Click **Send to dock** to fix it on Dock.
+   - Click **Add to startup** to add it to startup and it will auto run when the system boots.
 
 
 ### Exit Calendar
 
-- On the Calendar interface, click  ![close_icon](icon/close_icon.svg) to exit calendar.
+- On the Calendar interface, click  ![close_icon](icon/close.svg) to exit calendar.
 - Right-click ![draw](icon/dde-calendar.svg)on dock and select **Close All** to exit.
 - Click ![icon_menu](icon/icon_menu.svg) on the Calendar interface and select  **Exit** to exit.
 
 ### View Shortcuts
 
-On the Calendar interface, press **Ctrl** + **Shift**+ **?** on the keyboard to view shortcuts. Proficiency in shortcuts will greatly improve your efficiency.
+On the Calendar interface, press ![Ctrl](icon/Ctrl.svg) + ![Shift](icon/Shift.svg) + ![QM](icon/QM.svg) on the keyboard to view shortcuts. Proficiency in shortcuts will greatly improve your efficiency.
 
 ![0|view](jpg/hotkey.png)
 
 
 
-## Operation Instructions
+## Operations
 
 Calendar can be divided into yearly view, monthly view, weekly view and daily view, displaying date attributes by different views.
 
@@ -70,9 +70,9 @@ The monthly view is the default view and you can click to switch between differe
       
       - When all day is not checked:
          - You can select dates, hours and minutes as starts and ends.
-      - Remind me: None, at time of event, 15 minutes before, 30 minutes before, one hour before, one day before and two days before. 
+         - Remind me: None, at time of event, 15 minutes before, 30 minutes before, one hour before, one day before and two days before. 
    
-   - Repeat: Never,  daily, weekdays, weekly, monthly or yearly.
+   - Repeat: Never, daily, weekdays, weekly, monthly or yearly.
    
    - End Repeat: Never, after n times or on the date.
 

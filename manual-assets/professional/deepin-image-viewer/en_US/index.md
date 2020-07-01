@@ -29,7 +29,7 @@ You can run, close and create shortcuts for Image Viewer by the following ways.
 
 ### View Shortcuts 
 
-On the Image Viewer interface, press **Ctrl** + **Shift** + **?** on the keyboard to view shortcuts. 
+On the Image Viewer interface, press ![Ctrl](icon/Ctrl.svg) + ![Shift](icon/Shift.svg) + ![QM](icon/QM.svg) on the keyboard to view shortcuts. 
 
 ![1|hotkey](jpg/hotkey.png)
 
@@ -76,9 +76,17 @@ You can print images in Image Viewer.
 2. Choose a printer and set the print options.
 3. Click **Print ** to send the picture to the printer.
 
-> ![notess](icon/notes.svg)Notes: If you selected a pdf printer, you'll need to choose a location for the printed pdf file.
+### Rename Images
 
-![0|menu](jpg/menu.png)
+1. Right-click the image on the Image Viewer interface and select **Rename**.
+2. Input a new name in the pop-up window.
+3. Click **Confirm** to finish renaming.
+
+### Slide show
+
+1. Right-click the image on the Image Viewer interface.  and .
+2. Select **Slide show** and all images will be played as slides in fullscreen. 
+3. Press ![Esc](icon/Esc.svg) to exit slide show.
 
 ### Copy Images
 
@@ -87,7 +95,9 @@ You can copy images in Image Viewer.
 1. Right-click the image on the Image Viewer interface and select **Copy**.
 2. On the target place, right-click the blank area and select **Paste** to copy image to the place.
 
-> ![tips](icon/tips.svg)Tips: It copies both the path and the content of picture.
+> ![tips](icon/tips.svg)Tips: Both the path and the content of picture are copied.
+
+![0|copy](jpg/copy.png)
 
 ### Delete Images
 
@@ -102,9 +112,13 @@ The user can delete images from Image Viewer by the following ways.
 1. Right-click the image on the Image Viewer interface and select **Rotate clockwise** or **Rotate counterclockwise**.
 2. The image will rotate clockwise or counterclockwise for 90 degrees.
 
+![0|rotate](jpg/rotate.png)
+
 ### Set the Image as Wallpaper
 
 You can set an image as the desktop wallpaper. Right-click the image on the Image Viewer interface and select **Set as wallpaper**.
+
+![0|wallpaper](jpg/wallpaper.png)
 
 ### View Image Information
 

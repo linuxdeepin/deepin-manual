@@ -22,21 +22,21 @@ You can run, exit or create a shortcut for Archive Manager by the following ways
  - Click **Send to dock** to fix it on Dock.
  - Click **Add to startup** to add it to startup and it will auto run when the system boots.
 
-> ![tips](icon/tips.svg)Tips: You can set Archive Manager in the control center as the default compression and decompression viewer. Please refer to [Default Program Settings](#Default Program Settings) for details.
+> ![tips](icon/tips.svg)Tips: You can set Archive Manager in the control center as the default compression and decompression viewer. Please refer to [Default Applications](dman:///dde#Default Application Settings) for details.
 
 ### Exit Archive Manager
 
-- Click  ![close_icon](icon/close_icon.svg) on the Archive Manager interface to exit Archive Manager.
+- Click  ![close_icon](icon/close.svg) on the Archive Manager interface to exit Archive Manager.
 - Right-click ![deepin-compressor](icon/deepin-compressor.svg)on dock and select **Close All** to exit.
 - Click ![icon_menu](icon/icon_menu.svg) on the Archive Manager interface and select  **Exit** to exit.
 
 ### View Shortcuts
 
-On the Archive Manager interface, press  **Ctrl** + **Shift** + **？** on the keyboard to view shortcuts. Proficiency in shortcuts will greatly improve your efficiency.
+On the Archive Manager interface, press ![Ctrl](icon/Ctrl.svg) + ![Shift](icon/Shift.svg) + ![QM](icon/QM.svg) on the keyboard to view shortcuts. Proficiency in shortcuts will greatly improve your efficiency.
 
 ![1|hotkey](jpg/hotkey.png)
 
-## Operation Instructions
+## Operations
 
 ### Compress
 
@@ -71,15 +71,18 @@ It is available for you to compress a single file/folder/package or a collection
    ![1|compressor](jpg/compress-success.png)
 
 
-### Extract
+### Decompression
 
-1.  On the Archive Manager interface, click **Select File** to select the file to be extracted and click **Open**.
-3.  Click **Extract to:  /home/de/Desktop**  to customize the extraction path.
-4.  Click **Extract** to extract the files to the default path.
+1.  On the Archive Manager interface, click **Select File** to select the file to be decompressed and click **Open**.
+2.  Click **Extract to:  /home/xxx/Desktop**  to customize the extraction path.
+
+   >![notes](icon/notes.svg)Notes: "xxx" refers to your username of the system.
+
+3.  Click **Extract** to extract the files to the default path.
 
    > ![notes](icon/notes.svg)Notes: When the file to be extracted is encrypted, you need to enter the password to complete extraction.
 
-5.  Click **View** after successful extraction to view the specific storage location for the files extracted or click **Back** to return to the main interface.
+4.  Click **View** after successful extraction to view the specific storage location for the files extracted or click **Back** to return to the main interface.
 
    > ![tips](icon/tips.svg)Tips: You can also right-click **Extract** to decompress the file.
 
@@ -87,9 +90,7 @@ It is available for you to compress a single file/folder/package or a collection
 
 ### Extract Files
 
-On the Archive Manager interface, click **Select File** and then select a file to be extracted. 
-
-Click **Extract** or **Extract to  /home/de/Desktop** to extract the files to the corresponding path. You can also customize the extraction path.
+On the Archive Manager interface, select a file to be extracted, right-click and select **Extract** or **Extract to  current directory** to extract the files to the corresponding directory. 
 
 > ![notes](icon/notes.svg)Notes: When the file to be extracted is encrypted, you need to enter the password to open and extract the files. 
 
@@ -100,18 +101,18 @@ Click **Extract** or **Extract to  /home/de/Desktop** to extract the files to th
 
 On the main menu, you can open the compression interface, switch window themes, view the help manual and get more information about Archive Manager.
 
-### Open
+### Open file
 1.  Click  ![icon_menu](icon/icon_menu.svg) on the Archive Manager interface.
 2.  Select **Open file** and select the file to be compressed or extracted from the file selector.
 
-### Set up
+### Settings
 
 1.   Click  ![icon_menu](icon/icon_menu.svg) on the Archive Manager interface.
 2.  Click **Settings**.
 3.  You can perform the following settings as needed:
- - Set the default extraction location.
- - Set to create folders automatically.
- -  Set to automatically open the corresponding folder  after extraction.
+ - Set the default extraction directory.
+ - Set whether to create folders automatically.
+ -  Set whether to automatically open the corresponding folder after extraction.
  - Set the associated file type.
 
 ![tips](icon/tips.svg)Tips: Click **Restore Defaults** on the interface to restore the default setting.

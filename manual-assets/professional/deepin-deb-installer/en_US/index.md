@@ -29,7 +29,7 @@ Package Installer is capable to install an individual application or multiple ap
 5. Click **Back** to newly add or click **OK** to exit.
 
 
-> ![notes](icon/notes.svg): You can also drag and drop file to Package Installer to add.
+> ![notes](icon/notes.svg)Notes: You can also drag and drop file to Package Installer to add.
 
 ![1|single-install](jpg/single-install.png)
 
@@ -67,7 +67,7 @@ Package Installer is used to uninstall .deb packages of those the same or differ
 
 ![1|remove](jpg/remove.png)
 
-> ![attention](icon/attention.svg): The system or other applications would be affected if you have uninstalled some applications. Please operate carefully. 
+> ![attention](icon/attention.svg)Attention: The system or other applications would be affected if you have uninstalled some applications. Please operate carefully. 
 
 ## Main Menu
 

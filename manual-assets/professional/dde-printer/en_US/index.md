@@ -2,7 +2,7 @@
 
 ## Overview
 
-Printer Manager is an easy-to-use tool that manages several printers at a time with a simple interface providing users with great convenience to add printers and install drivers quickly.
+Printer Manager is an easy-to-use CUPS-based tool that manages several printers at a time with a simple interface providing users with great convenience to add printers and install drivers quickly.
 
 ![0|homepage](jpg/homepage.png)
 
@@ -21,7 +21,7 @@ You can run, close or create a shortcut for Printer Manager as follows.
 
 ### Exit Printer Manager
 
-- On the main interface, click  ![close_icon](icon/close_icon.svg) to exit.
+- On the main interface, click  ![close_icon](icon/close.svg) to exit.
 - Right-click ![dde-printer](icon/dde-printer.svg) on the Dock, select **Close all** or **Force Quit** to exit.
 - On the main interface, click ![icon_menu](icon/icon_menu.svg)  and select **Quit** to exit.
 
@@ -29,7 +29,7 @@ You can run, close or create a shortcut for Printer Manager as follows.
 
 ### Add Printer
 
-On the main interface, click![plus](icon/plus.svg) and you will have three options including **Discover Printer**, **Find Printer**, and **Enter URI**. 
+On the main interface, click![+](icon/+.svg) and you will have three options including **Discover Printer**, **Find Printer**, and **Enter URI**. 
 
 ![0|1add printer](jpg/1add printer.png)
 
@@ -48,10 +48,7 @@ On the main interface, click![plus](icon/plus.svg) and you will have three optio
 
 1. Click **Find Printer** , input user name or IP address to search printers through different protocols. 
 
-   > ![notes](icon/notes.svg)：In case samba protocol is applied, you will have to input user name, password and group name when finding printers. The default group is your current domain. If you don't have a domain, "workgroup" is set by default. 
-
-
-![0|3manual search](jpg/3manual search.png)
+   ![0|3manual search](jpg/3manual search.png)
 
 2. After you select a printer, its driver list is loaded below, and the recommended driver is selected by default. If no list is loaded, you can choose "Select a driver" from the drop down list to enter an interface to choose a driver.
 
@@ -70,7 +67,7 @@ On the main interface, click![plus](icon/plus.svg) and you will have three optio
 
 4. Choose the correct driver and click **Install Driver** to enter installing interface. 
 
-> ![notes](icon/notes.svg)：Prerequisite of this operation is that user knows the printer's URI and applicable protocol. 
+> ![notes](icon/notes.svg)Notes: Prerequisite of this operation is that user knows the printer's URI and applicable protocol. 
 
 
 ### Select drivers
@@ -86,7 +83,7 @@ On the main interface, click![plus](icon/plus.svg) and you will have three optio
 
    * Local PPD files: drag and drop local PPD files here or click **Select a PPD file** to find one in local folder, for example, you can select a PPD file under the directory of /usr/share/ppd.  
 
-   > ![notes](icon/notes.svg)：Prerequisite of this operation is that user has installed driver locally. If not, you will get a hint "Driver install failed".
+   > ![notes](icon/notes.svg)Notes: Prerequisite of this operation is that user has installed driver locally. If not, you will get a hint "Driver install failed".
 
    ![0|6ppd document](jpg/6ppd document.png)
 
@@ -148,7 +145,7 @@ Once a printer is added successfully, when you click the printer in the interfac
 
 4. Restore defaults: click this button, all settings will be restored to default. 
    
-   > ![notes](icon/notes.svg)：**Properties** are related to the printer model and its driver. Different printer models and drivers have different properties. You can set according to your practical situation. 
+   > ![notes](icon/notes.svg)Notes: **Properties** are related to the printer model and its driver. Different printer models and drivers have different properties. You can set according to your practical situation. 
 
 
 #### Print Queue
@@ -206,7 +203,7 @@ Select the printer and right-click, you will have four options such as "Shared",
 
 ### Delete Printer
 
-On the main interface, click![mini_icon](icon/mini_icon.svg) to delete selected printer. 
+On the main interface, click![-](icon/-.svg) to delete selected printer. 
 
 ![0|14delete](jpg/14delete.png)
 

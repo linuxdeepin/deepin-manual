@@ -124,7 +124,7 @@ On Document Viewer interface, open a file.
 
 > ![notes](icon/notes.svg)Notes: The bookmark icon appears only when the cursor moves to the bookmark area, and it disappears when the cursor moves out of the area. It will be colored after you click it when it appears and always displayed no matter where the cursor is.
 
-### Manage notes
+### Manage annotation
 
 On Document Viewer interface, open a file. 
 
@@ -173,7 +173,7 @@ This function is only applicable for the current tab.
    - Click ![search](icon/search.svg) to input keywords. 
    - Click ![button_voice](icon/button_voice.svg) to speak, and your speech will be turned into words and displayed in the searching box. 
 
-4. Press  **Enter** to search. 
+4. Press  **Enter** to locate quickly. 
    - All matching information will be displayed in a list and are highlighted in the document.
    - If searching fails, "No search results" will be displayed. 
    
@@ -313,6 +313,6 @@ click Help to get the manual, which will help you further know and use Document 
 
 ### Exit
 
-1. On Document Viewer interface, click ![icon_menu](icon/icon_menu.svg). 
+1. Click ![icon_menu](icon/icon_menu.svg) on the main interface.
 2. Click  **Exit**.
 

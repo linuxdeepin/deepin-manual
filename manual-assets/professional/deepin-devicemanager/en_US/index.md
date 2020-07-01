@@ -30,7 +30,7 @@ You can run, close or create a shortcut for Device Manager as follows.
 
 ### Exit Device Manager
 
-- On the main interface, click![close_icon](icon/close_icon.svg) to exit.
+- On the main interface, click![close_icon](icon/close.svg) to exit.
 - Right-click ![deepin-devicemanager](icon/deepin-devicemanager.svg)  on the Dock, select **Close all** or **Force Quit** to exit.
 - On interface of Device Manager, click ![icon_menu](icon/icon_menu.svg)  and select **Exit** to exit.
 
@@ -68,33 +68,33 @@ You can run, close or create a shortcut for Device Manager as follows.
 1. On the main interface, click **Storage**.
 2. You can view a storage device list and particular info such as model, vendor, media type, size, speed and so on.
 
-![0|storage device](jpg/storage device.png)
+![0|storage device](jpg/storage-device.png)
 
 ### Display Adapter
 
 1. On the main interface, click **Display Adapter**.
 2. You can view info about Display Adapter such as name, vendor, graphic memory, resolution, driver and so on.
 
-![0|display adapter](jpg/display adapter.png)
+![0|display adapter](jpg/display-adapter.png)
 
 ### Monitor
 
 1. On the main interface, click **Monitor **.
 2. You can view info about Monitor such as name, vendor, resolution, connect type and so on.
 
-![0|display device](jpg/display device.png)
+![0|display device](jpg/display-device.png)
 
 ### Network Adapter
 
 1. On the main interface, click **Network Adapter**.
-2. You can view info about Network Adapter such as name, vendor, Mac address, speed and so on.![0|network adapter](jpg/network adapter.png)
+2. You can view info about Network Adapter such as name, vendor, Mac address, speed and so on.![0|network adapter](jpg/network-adapter.png)
 
 ### Sound Adapter
 
 1. On the main interface, click **Sound Adapter **。
 2. You can view a list of audio adapters and info such as name, vendor, bus info, width, driver and so on.
 
-![0|audio adapter](jpg/audio adapter.png)
+![0|audio adapter](jpg/audio-adapter.png)
 
 ### Bluetooth
 
@@ -110,11 +110,11 @@ You can run, close or create a shortcut for Device Manager as follows.
 
 ![0|pci](jpg/pci.png)
 
-### Power
-1. On the main interface, click **Power **.
+### Battery
+1. On the main interface, click **Battery **.
 2. You can view info such as name, vendor, size, type, and so on.
 
-![0|power supply](jpg/power supply.png)
+![0|power supply](jpg/power-supply.png)
 
 ### Keyboard
 
@@ -144,7 +144,7 @@ Image Devices include cameras and scanners and so on connected to any port.
 1. On the main interface, click **Camera**.
 2. You can view info such as name, vendor, type, and so on.
 
-![0|imaging device](jpg/imaging device.png)
+![0|imaging device](jpg/imaging-device.png)
 
 ### CD-ROM
 
@@ -153,7 +153,7 @@ Device Manager is capable to identify built-in and externally connected CD-ROM d
 1. On the main interface, click **CD-ROM**.
 2. You can view info such as name, vendor, type, and so on.
 
-![0|optical drive](jpg/optical drive.png)
+![0|optical drive](jpg/optical-drive.png)
 
 ### Other Devices
 

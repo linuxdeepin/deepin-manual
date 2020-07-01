@@ -10,11 +10,11 @@ System Monitor is a system tool monitoring and managing hardware load, program r
 ### Search Process
 
 1. In the searching box, you can :
-- Click ![search](icon/search.svg) to input keywords. 
-- Click ![button_voice](icon/button_voice.svg) to speak, and your speech will be turned into words and displayed in the searching box. 
-2. Press  ![enter](icon/Enter.svg) to search. 
-- All matching information will be displayed in a list. 
-- If searching fails, "No search results" will be displayed. 
+   - Click ![search](icon/search.svg) to input keywords. 
+   - Click ![button_voice](icon/button_voice.svg) to speak, and your speech will be turned into words and displayed in the searching box. 
+2. Press  ![enter](icon/Enter.svg) to search to locate quickly. 
+   - All matching information will be displayed in a list. 
+   - If searching fails, "No search results" will be displayed. 
 
 ![1|search](jpg/search.png)
 
@@ -72,13 +72,13 @@ System Monitor can be used to end processes.
 1. On System Monitor interface, click ![icon_menu](icon/icon_menu.svg).
 
 2. Select **Force end application**.
-> ![notes](icon/notes.svg): This function can only end GUI processes.
+> ![notes](icon/notes.svg)Notes: This function can only end graphical processes.
 
 3. Click the opened application window under the prompt.
 
 4. Click **Force End** in the pop-up window to confirm.
 
-> ![tips](icon/tips.svg): You can select a process, right-click and select **End Process**. 
+> ![tips](icon/tips.svg)Tips: You can select a process, right-click and select **End Process**. 
 
 
 #### Suspend/Resume Process
@@ -96,7 +96,7 @@ System Monitor can be used to end processes.
 
 2. Select **Change priority** and select a level.
 
-![notes](icon/notes.svg): You can also custom a priority level.
+![notes](icon/notes.svg)Notes: You can also custom a priority level.
 
 ![1|priority](jpg/priority.png)
 
@@ -117,7 +117,7 @@ System Monitor can be used to end processes.
 
 You can start, stop, restart, set startup type, refresh system service processes.
 In the list of system services, force end application is prohibited.
->![attention](icon/attention.svg): For better system operation, please don't end any processes of the system services and root processes.
+>![attention](icon/attention.svg)Attention: For better system operation, please don't end any processes of the system services and root processes.
 
 #### Start system service
 1. Select **Services** tab on System Monitor interface.
@@ -156,7 +156,7 @@ System Monitor offers expand view and compact view for you to choose.
 
 2. Click **View** to choose one mode.
 
-> ![notes](icon/notes.svg): If you switched views under "Services" tab, you would have to go to "Processes" tab to view the effect.
+> ![notes](icon/notes.svg)Notes: If you switched views under "Services" tab, you would have to go to "Processes" tab to view the effect.
 
 
 ### Help

@@ -21,7 +21,7 @@ You can run, close and create a shortcut for File Manager by the following ways.
 
 ### Exit File Manager
 
-- On File Manager interface, click ![close](icon/close_icon.svg) to exit.
+- On File Manager interface, click ![close](icon/close.svg) to exit.
 - Right-click ![File Manager](icon/deepin-file-manager.svg) on Dock, select **Close All** to exit File Manager.
 - Click ![Settings](icon/icon_menu.svg) and select **Exit** to exit File Manager.
 
@@ -83,9 +83,9 @@ File Manager is featured with the basic functions as a file manager, you can eas
 
 1. On File Manager interface, select multiple files.
 2. Right-click and select **Rename**.
- - Replace Text: Input the content to be replaced in Find box, and input content to rename in Replace box.
- - Add Text: Input the content to add in Add box, and select the location.
- - Custom Text: Input the file name and SN.
+   - **Replace Text**: Input the content to be replaced in Find box, and input content to rename in Replace box.
+   - **Add Text**: Input the content to add in Add box, and select the location.
+   - **Custom Text**: Input the file name and SN.
 3. Click **Rename** to finish operation.
 
 ![1|batch_rename](jpg/rename.png)
@@ -163,7 +163,7 @@ In file manager,  use ![Ctrl](icon/Ctrl.svg) + ![Z](icon/Z.svg) to undo the prev
 - Delete the newly created file/folder.
 - Resume the renamed file/folder to the previous name.
 - Restore the deleted file/folder from trash.
-- Restore the moved (via drag or cut) file/folder to the previous location.
+- Restore the moved (via dragging or cutting) file/folder to the previous location.
 - Delete the copied and pasted file/folder.
 
 > ![attention](icon/attention.svg)Attention: If the above operations are continuous, you can undo all of them; if there is file overwriting or permanently file deleting, then you can only return to that step.
@@ -185,10 +185,6 @@ In Properties of files, you can view the basic info, open with list, and permiss
 ## Common Operations
 
 File Manager is featured with many useful functions, which are all designed to ease the commonly used operations.
-
-> 
-
-
 
 ### Switch Address Bar
 
@@ -236,7 +232,8 @@ File Manager supports multi-tab view.
 2. In the pop-up context menu, select **Open in new tab**.
 3. When the window has multi-tabs, you can:
  - Click + in tab bar to add a new tab.
- - Click × on the tab of the tab bar or middle-click to close an existing tab.
+ - Click × on the tab to close it. 
+ - Place the cursor on the tab, middle-click to close it.
 
 ![1|tab](jpg/tab.png)
 
@@ -382,8 +379,6 @@ You can find sharing folders of other users in the same LAN in **Computers in LA
 3. In the popup window, select a location and input the name of the link.
 4. Click **Save** to finish creating the link.
 
-
-
 > ![tips](icon/tips.svg)Tips: By selecting **Send to desktop** for an item, you can create a link on desktop with one click.
 
 ### Send To Other Device
@@ -436,12 +431,12 @@ After you put files into File Vault, right-click![file-vault](icon/file-vault.sv
 
 ### Unlock File Vault
 
-To unlock File Vault, you can click![file-vault](icon/file-vault.svg) in the left panel or double-click **My Vault** in the **Computer** interface and input password. Or you can right-click ![file-vault](icon/file-vault.svg) in the left panel or **My Vault** in the **Computer** interface, and then: 
+Right-click![file-vault](icon/file-vault.svg) or **My Vault** in the **Computer** interface. 
 
 - Select  **Unlock**, input password in the pop-up dialogue box and click **Unlock**. 
 - Select  **Unlock by key**, input the 32-digit recovery key in the pop-up dialogue box and click **Unlock**. 
 
-
+> ![tips](icon/tips.svg)Tips: You can click ![file-vault](icon/file-vault.svg) in the left panel or double-click **My Vault** in the **Computer** interface and input password. 
 
 ### Delete File Vault
 
@@ -492,7 +487,7 @@ Local disks are displayed in the left panel of File Manager. When you mount any 
 
 ![0|disk](jpg/disk1.png)
 
-> ![tips](icon/tips.svg)Tips: you can also click ![unmount](icon/unmount_normal.svg) in the left panel to unmount the disk.
+> ![tips](icon/tips.svg)Tips: you can also select **Eject** or click ![unmount](icon/unmount_normal.svg) in the left panel to unmount the disk.
 
 ### Rename Disks
 1. In the left panel or on computer interface, right-click the disk you want to rename.
@@ -516,7 +511,7 @@ Local disks are displayed in the left panel of File Manager. When you mount any 
 
 ## Main Menu
 
-You can create new window, switch themes, [set share password](#share local folders),make settings, view manual and version information in Main Menu.
+You can create new window, switch themes, [set share password](#Share Local Files),make settings, view manual and version information in Main Menu.
 
 
 ### New Window
@@ -545,7 +540,6 @@ The window theme includes Light Theme, Dark Theme and System Theme (default).
  - In **Mount**, you can set to auto mount.
  - In **Dialog**, you can set whether to use the file chooser dialog of the File Manager.
  - In **Other**, you can set whether to hide system disk or not.
- - You can click **Restore Defaults** to restore all settings.
 
 ![1|settings](jpg/settings.png)
 

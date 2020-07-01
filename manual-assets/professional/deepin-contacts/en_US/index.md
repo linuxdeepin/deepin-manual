@@ -21,7 +21,7 @@ You can run, close or create a shortcut for Contacts as follows.
 
 ### Exit Contacts
 
-- On the main interface, click   ![close](icon/close_icon.svg) to exit.
+- On the main interface, click   ![close](icon/close.svg) to exit.
 - Right-click ![deepin-contacts](icon/deepin-contacts.svg) on the Dock, select **Close all** or **Force Quit** to exit.
 - On the main interface, click ![icon_menu](icon/icon_menu.svg) and select **Exit** to exit.
 
@@ -42,7 +42,7 @@ Once **Contacts** is run, the interface **Cloud Sync Sign in** pops up automatic
 - After signing up is completed, you can return to the interface of Cloud Sync Sign in to sign in your account.
 
 
-#### Forgot Password
+#### Forgot Password？
 
 Once **Contacts** is run, the interface **Cloud Sync Sign in** pops up automatically. If you have forgotten password, you can get it back as follows.
 
@@ -78,14 +78,14 @@ On the main interface, click ![18](icon/18.svg) .
 
   > ![notes](icon/notes.svg) Notes: The object being searched should be somehow related to the UOS ID, instead of a totally stranger.
 
-### New friend
+### New friends
 
 This interface mainly displays the contacts who request to add you as a friend.
 
 1. When somebody requests to add you as a friend, a red prompt will pop up from the lower right corner.
-2. Click **New friend**, you can select **Agree** or **Refuse** to add this contact. You can also view history.
+2. Click **New friends**, you can select **Agree** or **Refuse** to add this contact. You can also view history.
 
-![new friend](jpg/new friend.png)
+![new friend](jpg/new-friend.png)
 
 ### Friends
 
@@ -97,7 +97,7 @@ This interface mainly displays the contacts who request to add you as a friend.
 
 3. Click **Add Friends Classification** to input a name, then, a new classification is created. If you haven't input a name for the new classification when creating it, you can right-click to select **Rename Classification**.
 
-![3add friend group](jpg/3add friend group.png)
+![3add friend group](jpg/3add-friend-group.png)
 
 
 #### Delete Classification
@@ -121,11 +121,11 @@ To add a friend, you can:
 
 2. Input user name, email or phone number to search a friend, and he/she will appear in the list if searched successfully, click![add-normal](icon/add-normal.svg) .
 
-![add friend2](jpg/3add friend2.png)
+![add friend2](jpg/3add-friend2.png)
 
 3. A dialogue box "Add Friend Request" pops up. Select classification, input a message and click  **Send**.
 
-![3add friend3](jpg/3add friend3.png)
+![3add friend3](jpg/3add-friend3.png)
 
 4. After the friend agrees to add you, you can see him/her in the list, which means you have added him/her successfully. 
 
@@ -136,7 +136,7 @@ To add a friend, you can:
 1. Click a friend you want to view in the list, you can see detailed information about him/her.
 2. The detailed information includes account, remark name, mobile phone and email. You can also create a conference here.
 
-![3friend inf](jpg/3friend inf.png)
+![3friend inf](jpg/3friend-inf.png)
 
 #### Move Friend to
 
@@ -153,7 +153,16 @@ To add a friend, you can:
 1. Prerequisite: the friend is online.
 2. Click![13](icon/13.svg) to create a video conference.
 
+#### Chat with friend
+
+1. Click ![chat](icon/chat.svg) to chat with a friend, and in the chatting window, you can send emoji and files, share contact card, view chat history and make video calls.
+2. Click![detail](icon/detail.svg) to view the friend's information and create a new group with him/her.
+3. In the left column, right-click a friend and select **Top**, this friend will be displayed on the top; select **Mute**, there will be no reminders when the friend sends you messages; select **Delete**, the friend will be deleted from the chatting list.
+
+
+
 ### Groups
+
 #### Add Groups Classification
 
 One default groups classification is displayed here, if you want to add others, do as follows.
@@ -183,7 +192,7 @@ To create a new group, you can:
 
 3. Click **OK**. After created successfully, you can see it in Default Groups Classifications.
 
-![4add group](jpg/4add group.png)
+![4add group](jpg/4add-group.png)
 
 
 
@@ -192,7 +201,7 @@ To create a new group, you can:
 1. Select the group you want to view, and the detailed information will appear on the right side.
 2. You can see group name, group notice, create time, invitation mode and group members. You can also dismiss group or transfer group here.
 
-![4group inf](jpg/4group inf.png)
+![4group inf](jpg/4group-inf.png)
 
 #### Move Group to
 
@@ -217,6 +226,13 @@ To create a new group, you can:
 1. Click![13](icon/13.svg) to create a video conference.
 2. Select members, set attributes, and click **OK**.
 3. Then the conference is created successfully. You can view it from the interface of conference.
+
+#### Start group chatting
+
+1. Click ![chat](icon/chat.svg) to start chatting in the group, and in the chatting window, you can send emoji and files, share contact card, view chat history and make video calls.
+2. Click![detail](icon/detail.svg) to view the group's information and group members' personal information;  click ![14](icon/14.svg) to exit the group. 
+3. In the left column, right-click a group and select **Top**, this group will be displayed on the top; select **Mute**, there will be no reminders when there're group messages; select **Delete**, the group will be deleted from the chatting list.
+
 
 
 ## Conference
@@ -260,7 +276,7 @@ On the main interface, click ![17](icon/17.svg) to enter the interface of confer
 
    - Invite participants: you can select participants from the list on the left.
 
-![5new meeting](jpg/5new meeting.png)
+![5new meeting](jpg/5new-meeting.png)
 
 ### Quickly Join Conference
 
@@ -270,13 +286,13 @@ This function is designed only for the option **Allow guest dial-in** .
 
 2. Input the conference room number and password, select whether to "turn off camera" or "turn off microphone" or not, then join the conference. 
 
-![6quick meeting](jpg/6quick meeting.png)
+![6quick meeting](jpg/6quick-meeting.png)
 
 ### During Conference
 
 During conference the owner can do the following settings.
 
-![7in meeting](jpg/7in meeting.png)
+![7in meeting](jpg/7in-meeting.png)
 
    - Mute![1](icon/1.svg) : you can mute your microphone. "Unmute" is set by default. 
 
@@ -305,17 +321,17 @@ During conference the owner can do the following settings.
 
        - Hand up/Hand down.
 
-     ![7in meeting1](jpg/7in meeting1.png)
+     ![7in meeting1](jpg/7in-meeting1.png)
 
    - Conference invite![5](icon/5.svg) : owner can click this button to invite other participants.
 
    - Layout![6](icon/6.svg) : speaker mode and gallery mode are included. In speaker mode, the speaker's view is bigger than others'. While in gallery mode, all views are in the same size arranged in 2x2 windows. If there are more than four windows, they are displayed in the order of speech activation. 
 
-     ![7in meeting3](jpg/7in meeting3.png)
+     ![7in meeting3](jpg/7in-meeting3.png)
 
    - Settings ![7](icon/7.svg) : options such as microphone, speaker, camera and notify mute are included.
 
-     ![7in meeting4](jpg/7in meeting4.png)
+     ![7in meeting4](jpg/7in-meeting4.png)
 
    - Terminate conference![8](icon/8.svg) : only the owner can click this button to terminate the conference while participants could not terminate a conference. 
 
@@ -332,7 +348,7 @@ List of conference rooms and their particular numbers are displayed below this t
 
    - Grant Access to Conference Room: you can grant your conference room to others so they are able to create conferences using your room, and, your room will appear in their lists of **ConfRooms**.
 
-![8meeting room](jpg/8meeting room.png)
+![8meeting room](jpg/8meeting-room.png)
 
 ### To be Attending Conferences
 
@@ -346,14 +362,14 @@ List of conferences to be attending and their related information are displayed 
    - Edit: click![11](icon/11.svg) to revise conference info.
    - Delete: click![12](icon/12.svg) to delete conferences to be attending.
 
-![8future meeting](jpg/8future meeting.png)
+![8future meeting](jpg/8future-meeting.png)
 
 
 ### History Conference
 
 List of conferences finished and their related information are displayed below this title.
 
-![8history meeting ](jpg/8history meeting.png)
+![8history meeting ](jpg/8history-meeting.png)
 
 ## Main Menu
 
@@ -365,7 +381,7 @@ In the main menu, you can view your user personal info, setting, theme, help, an
 
 2. Click **User Personal Info** to view personal information and buy a service package. 
 
-![user info](jpg/user info.png)
+![user info](jpg/user-info.png)
 
 3. Click **Recharge**, you can choose to buy monthly, seasonly or annually, and you can also view your purchasing history. After you buy any service package, you have the following rights:
 

@@ -18,17 +18,19 @@ You can run, close and create a shortcut for Security Center by the following wa
 2. Locate ![deepin-defender](icon/deepin-defender.svg) by scrolling mouse wheel or searching by "File Manager" in Launcher interface.
 3. Right-click ![deepin-defender](icon/deepin-defender.svg), you can
 
- - Click **Send to desktop** to create a desktop shortcut.
- - Click **Send to dock** to fix the application on dock.
- - Click **Add to startup** to add the application to startup, it will automatically run when the system starts up.
+   - Click **Send to desktop** to create a desktop shortcut.
+   - Click **Send to dock** to fix the application on dock.
+   - Click **Add to startup** to add the application to startup, it will automatically run when the system starts up.
 
 
 
 ### Exit Security Center
 
-- On Security Center interface, click ![close](icon/close_icon.svg) to exit.
+- On Security Center interface, click ![close](icon/close.svg) to exit.
 - Right-click ![deepin-defender](icon/deepin-defender.svg) on Dock, select **Close All** to exit.
 - Click ![Settings](icon/icon_menu.svg) and select **Exit**.
+
+## Operations
 
 ### Homepage
 
@@ -38,7 +40,7 @@ Open Security Center, click **Home** in the left panel, you can click **Check No
 
 
 
-When system examination is finished, you can choose whether to improve system security level according to the prompts, such as "your system is not up to date". Or, you can redo the settings.
+When system examination is finished, you can choose whether to improve system security level according to the prompts, such as "your system is not up to date". Or, you can click **Go to Settings** to redo the settings.
 
 ![0|result](jpg/result.png)
 
@@ -46,11 +48,11 @@ When system examination is finished, you can choose whether to improve system se
 
 Open Security Center, click **Firewall** in the left panel, you can set Internet access, remote connection and view data usage. 
 
-#### Homepage of Firewall
+#### Global Settings
 
-In homepage of Firewall, you can set  Internet access, remote connection and restore defaults. 
+On the interface of Firewall, you can set  Internet access and remote connection for all applications and services. You can also reset the firewall, which will restore **Internet Access** and **Remote Connection** to **Ask me always**. 
 
-
+![0|global setting](jpg/global-setting.png)
 
 **Internet Access **
 
@@ -68,13 +70,14 @@ This item controls the default Internet access settings of all applications and 
 
 3. Allow always: the application is always allowed to connect to the Internet, and no prompt will pop up. 
 
-   ![0|connet network](jpg/connect network.png)
+   ![0|connet network](jpg/connect-network.png)
 
 **Remote Connection **
 
 This item specifies whether remote access to your system through applications and services is permitted or not. There are three options in the drop-down box.
 
 1. Ask me always(default): when an application starts up port listening, a prompt saying **xxx wants to start remote connection** pops up. And you can select **Allow Once**, **Allow always** or **Disable**. 
+
    - Allow once: remote access to your system is allowed this time without modifying its remote connection setting.
    - Allow always: the application's remote connection setting is modified into **Allow**, and remote access to your system is allowed this time. No prompt will pop up when the application starts up remote connection after this time. 
    - Disable: remote access to your system is disabled this time. No modification is done to the application's remote connection setting. 
@@ -101,7 +104,7 @@ On the homepage of Firewall, click **Internet Control** at the bottom.  Its func
 
 - Default(xxx): it means the application's default Internet access setting. 
 
-   > ![tips](icon/tips.svg): You can sort "Name" and "Status" by one click, from low to high: allow, ask, disable, default(xx); from high to low: disable, ask, allow and default(xx).  
+   > ![tips](icon/tips.svg)Tips: You can sort "Name" and "Status" by one click, from low to high: allow, ask, disable, default(xx); from high to low: disable, ask, allow and default(xx).  
 
 ![0|network control](jpg/networkcontrol.png)
 
@@ -111,13 +114,13 @@ On the homepage of Firewall, click **Data Usage** at the bottom. You can see det
 
 - In **Apps and Services** page, you can see all running applications with their downloading/uploading speed and settings. Click the setting icon on each line to jump to "Internet Access" page. 
 
-![0|current network](jpg/current network.png)
+![0|current network](jpg/current-network.png)
 
 - In **Rankings** page, you can see all running applications are ranked by "Downloaded", "Uploaded", and "Data Used".  There are four options in the upper right corner: today, yesterday, this month, and last month. 
 
-   > ![tips](icon/tips.svg): You can click "Name", "Downloaded", "Uploaded" and "Data Used" to sort. 
+   > ![tips](icon/tips.svg)Tips: You can click "Name", "Downloaded", "Uploaded" and "Data Used" to sort. 
 
-![0|traffic ranking](jpg/traffic ranking.png) 
+![0|traffic ranking](jpg/traffic-ranking.png) 
 
 #### Remote Connection
 
@@ -130,12 +133,12 @@ In the homepage of Firewall, click **Remote Connection** at the bottom. Its func
 
 - Default(xxx): it means the application's default remote connection setting. 
 
-​    ![0|remote access control](jpg/remote access control.png) 
+​    ![0|remote access control](jpg/remote-access-control.png) 
 
 ### Startup Programs
 
 In the Security Center interface, click **Startup Programs** in the left panel. Only applications in the Launcher are displayed and detailed by "Name", "Auto Startup" and "Action". You can choose "Allow" or "Remove" for each application. 
-![0|self-launch management](jpg/self-launch management.png) 
+![0|self-launch management](jpg/startup.png) 
 
 ### System Security
 In the Security Center interface, click **System Security** in the left panel. You can do settings for password security levels, screen protection and update policy. 
@@ -145,23 +148,23 @@ On System Security interface, click **Login Safety**. You can set password secur
 - **High** or **Medium**: If you have chosen either one of them, when you modify password in Control Center or setup password when creating new ID, the password you set will not be saved successfully if it doesn't comply with the requirement of the corresponding level. You can go to Control Center to reset your password or modify security level in Security Center. 
 - **Low**:  If you have chosen this option, when you modify password in Control Center or setup password when creating new ID, the new password will be saved directly. 
 
-![0|login security](jpg/login security.png)
+![0|login security](jpg/login-security.png)
 
 #### Screen Protection
 
 On System Security interface, click **Screen Protection**. You can do settings such as auto screen locking period, lockscreen wallpaper, power settings and screensaver. 
 
-![0|screen security](jpg/screen security.png)
+![0|screen security](jpg/screen-security.png)
 
 Click **Settings** after "Turn off monitor", you will jump to "Plugged In" page of Control Center. 
 
-![0|power settings](jpg/power settings.png)
+![0|power settings](jpg/power-settings.png)
 
 #### Update Policy
 
 On System Security interface, click **Update Policy** to view if the system is up to date, you can choose whether to update the system, and you can also switch on "Updates Notification". 
 
-![0|upgrade strategy](jpg/upgrade strategy.png)
+![0|update strategy](jpg/update-strategy.png)
 
 
 ## Main Menu

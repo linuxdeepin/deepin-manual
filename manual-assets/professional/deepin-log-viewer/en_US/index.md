@@ -45,7 +45,7 @@ You can run, close or create a shortcut for Log Viewer.
 
 ### Selector
 
-Selectors include **period**, **level**, **status**, and **application list**. 
+Selectors include **period**, **level**, **status**, **application list** and **event type**.. 
 - Selecting by period: selecting in the order of log generating date
 
   Options include: "All", "Today", "3 days", "1 week", "1 month", and "3 months". Default option is "All".
@@ -128,7 +128,7 @@ Selectors include **period**, **level**, **status**, and **application list**.
 3. Click a log, you can see its particular info below the list, including user, event type, username, and detailed info.
 ![0|power event](jpg/power event.png)
 
-> ![notes](icon/notes.svg)：When using Log Viewer, if a prompt appears saying **Authentication is required to super permissions**, you can input UOS password to continue viewing.
+> ![notes](icon/notes.svg)Notes: When using Log Viewer, if a prompt appears saying **Authentication is required to super permissions**, you can input UOS password to continue viewing.
 
 ![0|password](jpg/password.png)
 
@@ -154,14 +154,14 @@ You can select a log type in the left panel, right-click to display in file mana
 
    - Select **Display in file manager**, the folder path of the current log will be opened. 
 
-> ![notes](icon/notes.svg): **Display in file manager** is only applicable for kernel log, boot log, dpkg log, Xorg log and application log.
+> ![notes](icon/notes.svg)Notes: **Display in file manager** is only applicable for kernel log, boot log, dpkg log, Xorg log and application log.
 
    - Select **Clear log**, click **Confirm** button in the pop-up window to clear current logs.
 If authentication window pops up, please input password to finish the operation.
 
 
 
-> ![notes](icon/notes.svg): **Clear log** is only applicable for kernel log, boot log, dpkg log, Xorg log and application log.
+> ![notes](icon/notes.svg)Notes: **Clear log** is only applicable for kernel log, boot log, dpkg log, Xorg log and application log.
 
 
    - Select **Refresh** to reload the log and update log list.

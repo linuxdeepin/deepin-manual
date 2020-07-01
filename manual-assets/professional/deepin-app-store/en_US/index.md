@@ -23,16 +23,17 @@ You can run, close or create a shortcut of App Store as follows.
 
 ### Exit App Store
 
-- On App Store interface, click ![icon_close](icon/icon_close.svg) to exit.
+- On App Store interface, click ![icon_close](icon/close.svg) to exit.
 - Right-click  ![store-24](icon/store-24.svg) on Dock and select  **Close All** or **Force Quit** to exit.
 - On App Store interface, click  ![icon_menu](icon/icon_menu.svg) and select  **Exit**.
 
 ## Main Interface
-Main interface consists of navigation bar, search box, main menu, slide show, recommendation, rankings, essential apps, columns, download management and my apps.
+Main interface consists of navigation bar, search box, main menu, slide show, new updates, hot apps, rankings, essential apps, hot topics, download management， updates and my apps.
 
 ![1|maininterfacedetail01](jpg/maininterfacedetail1.png)
 
 ![1|maininterfacedetail02](jpg/maininterfacedetail2.png)
+
 
 <table class="block1">
     <caption>Main Interface</caption>
@@ -67,31 +68,38 @@ Main interface consists of navigation bar, search box, main menu, slide show, re
             <td>New Updates</td>
             <td>Applications that are newly added into App Store are displayed here.</td>
         </tr>
-         <tr>
+        <tr>
             <td>7</td>
-            <td>Hot Apps</td>
-            <td>Recommended popular apps are displayed here.</td>
+            <td>Download</td>
+            <td>Currently downloading tasks, downloading and installing progress are displayed here. You can pause and delete any download task.</td>
         </tr>
         <tr>
             <td>8</td>
-            <td>Download</td>
-            <td>Currently downloading tasks, downloading and installing progress are displayed here. You can pause and delete any download task.</td>
+            <td>Updates</td>
+            <td>You can view applications to be updated here and you can choose whether to update it or not.</td>
         </tr>
         <tr>
             <td>9</td>
             <td>My Apps</td>
             <td>You can view all apps installed and uninstall apps you don't need any more here.</td>
         </tr>
+            <tr>
             <td>10</td>
+            <td>Hot Apps</td>
+            <td>Recommended popular apps are displayed here.</td>
+        </tr>
+             <tr>
+            <td>11</td>
             <td>Essential Apps</td>
             <td>You can view all essential software and install the ones you want here.</td>
-        </tr>   <td>11</td>
-​            <td>Hot Topics</td>
-​            <td>Hot app categories are displayed here.</td>
-​        </tr>
-  </tbody>
- </table>
-
+        </tr>
+      <tr>
+            <td>12</td>
+            <td>Hot Topics</td>
+            <td>Hot app categories are displayed here.</td>
+        </tr>
+   </tbody>
+   </table>
 
 
 
@@ -127,7 +135,13 @@ App Store supports application synchronization. After signing in, you can synchr
 
    ![1|installprocess](jpg/installprocess.png)
 
-3. After installation, installed applications are displayed in local applications only.
+3. After installation, installed applications are displayed in local applications only. Click **App filter** to screen applications based on categories.
+
+   
+
+   ![1|localapp](jpg/localapp.png)
+
+   
 
 #### Cloud applications
 
@@ -137,15 +151,21 @@ App Store supports application synchronization. After signing in, you can synchr
 4. After installation, the apps will be displayed both in local apps and remote apps synchronically.
 5. If you want to install applications in batches, you can choose  **Install All **. Check all cloud applications you want to install, click  **Start Installation**.
 
-![1|remoteapp](jpg/remoteapp.png)
+![1|remoteapp](jpg/remoteapp1.png)
 
 
 
 ### Update/Upgrade Application
 
-To update/upgrade the applications, you can set in Control Center, specific operations refer to [Update Settings](dman:///dde#Update Settings).
+Select **Updates** on the interface to view view applications to be updated here and you can choose whether to update it or not.
 
-> ![notes](icon/notes.svg)Notes: Besides update and upgrade the applications, you can also update and upgrade the system in Control Center if system .
+
+
+![1|update](jpg/update.png)
+
+
+
+> ![tips](icon/tips.svg)Tips: You can also update/upgrade applications in Control Center. Refer to [Update Settings](dman:///dde#Update Settings) for particular operations.
 
 ### Uninstall Applications
 

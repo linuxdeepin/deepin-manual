@@ -4,6 +4,12 @@
 
 Music is a local music playing application with brand new UI design and extreme playing experience featured with local music scanning and lyric sync functions, etc.
 
+
+
+![main](jpg/main1.png)
+
+
+
 ## Guide
 
 You can run, close and create a shortcut for Music by the following ways.
@@ -17,7 +23,7 @@ You can run, close and create a shortcut for Music by the following ways.
  - Click **Send to dock** to fix the application on dock.
  - Click **Add to startup** to add the application to startup and it will automatically run when the system starts up.
 
-> ![notes](icon/notes.svg)Notes: If Music has been fixed on Dock, you can also click its icon to run it.
+> ![notes](icon/notes.svg)Notes: If Music has been fixed on Dock, you can also click ![music_icon-24](icon/music_icon-24.svg) to run it.
 
 ### Minimize to System Tray
 
@@ -43,9 +49,9 @@ Right-click the Music application icon in the tray and you can perform the follo
 
 ### View Shortcuts
 
-On the Music interface, press **Ctrl** + **Shift**+ **?** to view the shortcuts. Proficiency in shortcuts will greatly improve your efficiency.
+On the Music interface, press ![Ctrl](icon/Ctrl.svg) + ![Shift](icon/Shift.svg) + ![QM](icon/QM.svg) to view the shortcuts. Proficiency in shortcuts will greatly improve your efficiency.
 
-
+![0|view](jpg/hotkey.png)
 
 
 ## Main Interface
@@ -129,7 +135,7 @@ On the Music interface, you can:
 - Click ![icon_menu](icon/icon_menu.svg) > **Add playlist** or ![icon_menu](icon/icon_menu.svg) > **Add music** to add music files to the playlist.
 - Drag the music file/folder to the Music interface and add the music file to the playlist.
 
-![0|add](jpg/add.png)
+
 
 ### Search Music
 
@@ -200,7 +206,7 @@ On the Music interface, click ![single](icon/single-tune-circulation_normal.svg)
 1. On the Music interface, right click the music.
 2. Click **Encoding**, you can select the encoding you want.
 
-![0|encoding](jpg/encoding.jpg)
+![0|encoding](jpg/encoding.png)
 
 ### View Music Info
 
@@ -221,7 +227,7 @@ On the Music interface, you can create, delete, rename playlist and add music to
 
 1.  On the  Music interface, click ![icon_plus](icon/icon_plus.svg) next to the playlist.
 2.  Enter the name of the playlist.
-3.  Press the **Enter** key on the keyboard.
+3.  Press the ![Enter](icon/Enter.svg) key on the keyboard.
 
 ![0|addlist](jpg/addlist.png)
 
@@ -245,10 +251,10 @@ On the Music interface, you can create, delete, rename playlist and add music to
 
 ### Remove Music from Playlist
 
-1. On the Music interface, select the music you want to remove.
+1. On the Music interface, select a playlist and then, the music you want to remove.
 2. Right-click to select **Remove from play queue**.
 
-![0|remove](jpg/remove.png)
+![0|remove](jpg/removefromlist.png)
 
 
 ### Delete Playlist

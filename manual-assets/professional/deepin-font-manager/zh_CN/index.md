@@ -71,7 +71,7 @@
 
 > ![notes](icon/notes.svg)说明：您可以打开 **控制中心** > **个性化** > **字体** 来设置 **标准字体**。
 
-![0|mult](jpg/mult.png)
+![0|multi](jpg/multi.png)
 
 ### 搜索字体
 
@@ -176,7 +176,7 @@
 2. 在弹出的提示对话框中点击 **确定**。
 3. 如果弹出授权窗口，请输入密码授权，即可删除字体。
 
-![0|font-delete](jpg/font-delete.png)
+![0|delete](jpg/font-delete.png)
 
 
 

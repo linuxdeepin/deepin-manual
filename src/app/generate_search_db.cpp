@@ -59,7 +59,8 @@ int main(int argc, char **argv)
         db.initDb(strCreateDbPath);
         db.initSearchTable();
 
-        QStringList list = {"zh_CN", "en_US"};
+        QStringList list ;
+        list << "zh_CN" << "en_US";
         for (QString &locale : list) {
             QString strManualDir = DMAN_ORIG_MANUAL_DIR;
             strManualDir += "/" + dbType;
