@@ -389,14 +389,14 @@ void WebWindow::initShortcuts()
     });
 
     //设置搜索快捷键  后期将支持盲打功能,故不需要此快捷键
-//    QShortcut *scSearch = new QShortcut(this);
-//    scSearch->setKey(tr("Ctrl+F"));
-//    scSearch->setContext(Qt::WindowShortcut);
-//    scSearch->setAutoRepeat(false);
-//    connect(scSearch, &QShortcut::activated, this, [this] {
-//        qDebug() << "search" << endl;
-//        search_edit_->lineEdit()->setFocus(Qt::ShortcutFocusReason);
-//    });
+    QShortcut *scSearch = new QShortcut(this);
+    scSearch->setKey(tr("Ctrl+F"));
+    scSearch->setContext(Qt::WindowShortcut);
+    scSearch->setAutoRepeat(false);
+    connect(scSearch, &QShortcut::activated, this, [this] {
+        qDebug() << "search" << endl;
+        search_edit_->lineEdit()->setFocus(Qt::ShortcutFocusReason);
+    });
 }
 
 /**
@@ -669,15 +669,21 @@ void WebWindow::onSearchAnchorResult(const QString &keyword, const SearchAnchorR
 
 void WebWindow::keyPressEvent(QKeyEvent *event)
 {
-    if ((event->modifiers() == (Qt::ControlModifier | Qt::AltModifier)) && event->key() == Qt::Key_F) {
+    if (event->key() == Qt::Key_V &&
+            event->modifiers().testFlag(Qt::ControlModifier)) {
+        const QString &clipboardText = QApplication::clipboard()->text();
+        // support Ctrl+V shortcuts.
+        if (!clipboardText.isEmpty()) {
+            search_edit_->lineEdit()->setText(clipboardText);
+            search_edit_->lineEdit()->setFocus();
+        }
+    } else if ((event->modifiers() == Qt::ControlModifier)) {
         return;
-    } else if (event->key() == Qt::Key_Control) {
+    } else if ((event->key() == Qt::Key_Alt)
+               || (event->key() == Qt::Key_Shift)
+               || (event->key() == Qt::Key_Control)) {
         return;
-    } else if (event->key() == Qt::Key_Alt) {
-        return;
-    } else if ((event->modifiers() & Qt::ControlModifier) && event->key() == Qt::Key_Alt) {
-        return;
-    } else {
+    }  else {
         search_edit_->lineEdit()->setFocus();
     }
     QWidget::keyPressEvent(event);
