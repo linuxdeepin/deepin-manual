@@ -277,6 +277,8 @@ var App = function (_React$Component) {
           document.documentElement.style.setProperty('--search-WikiSearch-color', '#6D7C88');
           document.documentElement.style.setProperty('--search-itemTitle-word-color', '#C0C6D4');
           document.documentElement.style.setProperty('--search-context-word-color', '#6D7C88');
+          document.documentElement.style.setProperty('--tips-background-color', '#2A2A2A');
+          document.documentElement.style.setProperty('--tips-border-color', 'rgba(0, 0, 0,0.3)');
         } else if ("LightType" == themeType) {
           console.log('LightType');
           document.documentElement.style.setProperty('--nav-hover-color', 'rgba(0,0,0,0.1)');
@@ -312,6 +314,8 @@ var App = function (_React$Component) {
           document.documentElement.style.setProperty('--search-WikiSearch-color', '#7a7a7a');
           document.documentElement.style.setProperty('--search-itemTitle-word-color', '#000000');
           document.documentElement.style.setProperty('--search-context-word-color', '#000000');
+          document.documentElement.style.setProperty('--tips-background-color', '#F7F7F7');
+          document.documentElement.style.setProperty('--tips-border-color', 'rgba(0,0,0,0.05)');
         } else {
           console.log('Null');
         }

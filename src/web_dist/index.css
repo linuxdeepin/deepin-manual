@@ -311,11 +311,11 @@ body {
   max-width: 500px;
   padding: 2px 5px;
   word-break: normal;
-  background-color: var(--nav-background-color);
+  background-color: var(--tips-background-color);
   color: var(--nav-h2-word-color);
   font-family: var(--nav-world-font-family);
-  border-radius: 5px;
-  border: 1px solid gray; }
+  border-radius: 8px;
+  border: 1px solid var(--tips-border-color); }
 
 #nav {
   margin: 0 0 0 0;

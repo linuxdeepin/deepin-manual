@@ -72,13 +72,16 @@ WebWindow::WebWindow(QWidget *parent)
 {
     // 使用 redirectContent 模式，用于内嵌 x11 窗口时能有正确的圆角效果
     Dtk::Widget::DPlatformWindowHandle::enableDXcbForWindow(this, true);
-
+    this->setAttribute(Qt::WA_InputMethodEnabled, true);
     search_timer_.setSingleShot(true);
 
     this->initUI();
     this->initConnections();
     this->initShortcuts();
     this->initDBus();
+
+    DStyle::setFocusRectVisible(search_edit_->lineEdit(), false);
+    search_edit_->setFocus();
 
 
     qApp->installEventFilter(this);
@@ -241,11 +244,13 @@ void WebWindow::initUI()
     search_edit_->setFixedSize(350, 44);
     search_edit_->setPlaceHolder(QObject::tr("Search"));
 
+
     this->titlebar()->addWidget(buttonFrame, Qt::AlignLeft);
     this->titlebar()->addWidget(search_edit_, Qt::AlignCenter);
 
     this->titlebar()->setSeparatorVisible(true);
     this->titlebar()->setIcon(QIcon::fromTheme("deepin-manual"));
+    this->titlebar()->setFocusPolicy(Qt::StrongFocus);
 
     search_proxy_ = new SearchProxy(this);
     title_bar_proxy_ = new TitleBarProxy(this);
@@ -446,6 +451,43 @@ void WebWindow::showEvent(QShowEvent *event)
     }
 }
 
+void WebWindow::inputMethodEvent(QInputMethodEvent *e)
+{
+    qDebug() << __func__;
+    if (!e->commitString().isEmpty()) {
+        search_edit_->lineEdit()->setText(e->commitString());
+        search_edit_->lineEdit()->setFocus();
+    }
+
+    QWidget::inputMethodEvent(e);
+}
+
+QVariant WebWindow::inputMethodQuery(Qt::InputMethodQuery prop) const
+{
+//    qDebug() << __func__;
+//    switch (prop) {
+//    case Qt::ImEnabled:
+//        return true;
+//    case Qt::ImCursorRectangle: {
+//        qDebug() << __func__ << __LINE__;
+//        const QWidget *const self = this;
+//        const QWidget *w = search_edit_->lineEdit();
+//        QPoint offset;
+//        while (w && w != self) {
+//            offset += w->pos();
+//            w = qobject_cast<QWidget *>(w->parent());
+//        }
+
+//        return offset;
+//    }
+
+//    default:
+//        ;
+//    }
+
+    return QWidget::inputMethodQuery(prop);
+}
+
 void WebWindow::closeEvent(QCloseEvent *event)
 {
     emit this->closed(app_name_);
@@ -619,10 +661,10 @@ void WebWindow::onSearchAnchorResult(const QString &keyword, const SearchAnchorR
 
 bool WebWindow::eventFilter(QObject *watched, QEvent *event)
 {
-    if (event->type() == QEvent::KeyPress && qApp->activeWindow() == this &&
-            watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
-        search_edit_->lineEdit()->setFocus();
-    }
+//    if (event->type() == QEvent::KeyPress && qApp->activeWindow() == this &&
+//            watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
+//        search_edit_->lineEdit()->setFocus();
+//    }
 
     // Filters mouse press event only.
     if (event->type() == QEvent::MouseButtonPress && qApp->activeWindow() == this &&

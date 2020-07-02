@@ -88,6 +88,8 @@ public slots:
 protected:
     void closeEvent(QCloseEvent *event) override;
     void showEvent(QShowEvent *event) override;
+    void inputMethodEvent(QInputMethodEvent *e) Q_DECL_OVERRIDE;
+    QVariant inputMethodQuery(Qt::InputMethodQuery prop) const Q_DECL_OVERRIDE;
 
 private:
     void initConnections();
