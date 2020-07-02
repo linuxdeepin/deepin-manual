@@ -72,17 +72,12 @@ WebWindow::WebWindow(QWidget *parent)
 {
     // 使用 redirectContent 模式，用于内嵌 x11 窗口时能有正确的圆角效果
     Dtk::Widget::DPlatformWindowHandle::enableDXcbForWindow(this, true);
-    this->setAttribute(Qt::WA_InputMethodEnabled, true);
-    search_timer_.setSingleShot(true);
 
+    search_timer_.setSingleShot(true);
     this->initUI();
     this->initConnections();
     this->initShortcuts();
     this->initDBus();
-
-    DStyle::setFocusRectVisible(search_edit_->lineEdit(), false);
-    search_edit_->setFocus();
-
 
     qApp->installEventFilter(this);
 }
@@ -157,6 +152,9 @@ void WebWindow::setSearchKeyword(const QString &keyword)
     keyword_ = keyword;
 }
 
+/**
+ * @brief WebWindow::initConnections
+ */
 void WebWindow::initConnections()
 {
     connect(search_edit_, &SearchEdit::textChanged, this, &WebWindow::onSearchTextChanged);
@@ -174,6 +172,7 @@ void WebWindow::initConnections()
     connect(&search_timer_, &QTimer::timeout, this, &WebWindow::onSearchTextChangedDelay);
 
     connect(this, &WebWindow::manualSearchByKeyword, this, &WebWindow::onManualSearchByKeyword);
+
 }
 
 void WebWindow::onManualSearchByKeyword(const QString &keyword)
@@ -194,19 +193,26 @@ void WebWindow::onACtiveColorChanged(QString, QMap<QString, QVariant>map, QStrin
     QString strKey = map.begin().key();
     qDebug() << __func__ << " key: " << strKey << " value: " << strValue;
     if (0 == strKey.compare("QtActiveColor")) {
+        //获取系统活动色
         web_view_->page()->runJavaScript(QString("setHashWordColor('%1')").arg(strValue));
         completion_window_->updateColor(QColor(strValue));
     } else if (0 == strKey.compare("StandardFont")) {
+        //获取系统字体
         web_view_->page()->runJavaScript(QString("setWordFontfamily('%1')").arg(strValue));
     }
 }
+
+/**
+ * @brief WebWindow::initUI
+ * @note 初始化窗口
+ */
 
 void WebWindow::initUI()
 {
     completion_window_ = new SearchCompletionWindow();
     completion_window_->hide();
 
-    // init custom title
+    // 初始化标题栏
     QHBoxLayout *buttonLayout = new QHBoxLayout;
     buttonLayout->setMargin(0);
     buttonLayout->setSpacing(0);
@@ -243,6 +249,7 @@ void WebWindow::initUI()
     search_edit_->setObjectName("SearchEdit");
     search_edit_->setFixedSize(350, 44);
     search_edit_->setPlaceHolder(QObject::tr("Search"));
+    search_edit_->setFocus();
 
 
     this->titlebar()->addWidget(buttonFrame, Qt::AlignLeft);
@@ -325,6 +332,11 @@ void WebWindow::setTitleName(const QString &title_name)
     title_name_ = title_name;
 }
 
+/**
+ * @brief WebWindow::cancelTextChanged
+ * @note 取消文本选中状态，用于在帮助手册首页时不显示＂Ｃopy＂按钮
+ * 每次切换页面时取消显示menu，当selectionChanged触发时设置显示menu
+ */
 void WebWindow::cancelTextChanged()
 {
     web_view_->setContextMenuPolicy(Qt::NoContextMenu);
@@ -407,6 +419,9 @@ void WebWindow::initDBus()
     }
 }
 
+/**
+ * @brief WebWindow::setHashWordColor 调用ｊｓ接口，改变活动色
+ */
 void WebWindow::setHashWordColor()
 {
     QColor Color = DGuiApplicationHelper::instance()->applicationPalette().highlight().color();
@@ -441,6 +456,7 @@ void WebWindow::showEvent(QShowEvent *event)
     QWidget::showEvent(event);
     if (!is_index_loaded_) {
         is_index_loaded_ = true;
+        //延迟显示webView，200ms主要用于web_view_->load();
         QTimer::singleShot(200, this, [this] {
             qDebug() << Q_FUNC_INFO;
             emit this->shown(this);
@@ -450,66 +466,47 @@ void WebWindow::showEvent(QShowEvent *event)
         });
     }
 }
-
-void WebWindow::inputMethodEvent(QInputMethodEvent *e)
-{
-    qDebug() << __func__;
-    if (!e->commitString().isEmpty()) {
-        search_edit_->lineEdit()->setText(e->commitString());
-        search_edit_->lineEdit()->setFocus();
-    }
-
-    QWidget::inputMethodEvent(e);
-}
-
-QVariant WebWindow::inputMethodQuery(Qt::InputMethodQuery prop) const
-{
-//    qDebug() << __func__;
-//    switch (prop) {
-//    case Qt::ImEnabled:
-//        return true;
-//    case Qt::ImCursorRectangle: {
-//        qDebug() << __func__ << __LINE__;
-//        const QWidget *const self = this;
-//        const QWidget *w = search_edit_->lineEdit();
-//        QPoint offset;
-//        while (w && w != self) {
-//            offset += w->pos();
-//            w = qobject_cast<QWidget *>(w->parent());
-//        }
-
-//        return offset;
+//void WebWindow::inputMethodEvent(QInputMethodEvent *e)
+//{
+//    if (!e->commitString().isEmpty()) {
+//        search_edit_->lineEdit()->setText(e->commitString());
+//        search_edit_->lineEdit()->setFocus();
 //    }
-
-//    default:
-//        ;
-//    }
-
-    return QWidget::inputMethodQuery(prop);
-}
+//    QWidget::inputMethodEvent(e);
+//}
 
 void WebWindow::closeEvent(QCloseEvent *event)
 {
     emit this->closed(app_name_);
+    //保存窗口大小
     saveWindowSize();
 
     QWidget::closeEvent(event);
 }
 
+/**
+ * @brief WebWindow::onSearchContentByKeyword
+ * @param keyword 搜索关键字
+ * @note 通过关键字进行搜索，显示探索页面
+ */
 void WebWindow::onSearchContentByKeyword(const QString &keyword)
 {
     qDebug() << "calling keyword is:" << keyword << endl;
     QString key(keyword);
     const QString searchKey = key.remove('\n').remove('\r').remove("\r\n");
+    //发送信号，通过Ｓearch_db类执行搜索
     emit search_manager_->searchContent(searchKey);
 
     QString base64Key = QString(searchKey.toUtf8().toBase64());
     qDebug() << base64Key << endl;
 
-    // Show search page.
+    // 调用ｊｓ接口显示搜索内容
     web_view_->page()->runJavaScript(QString("openSearchPage('%1')").arg(base64Key));
 }
 
+/**
+ * @brief WebWindow::onSearchEditFocusOut 搜索框失去焦点
+ */
 void WebWindow::onSearchEditFocusOut()
 {
     QTimer::singleShot(20, this, [ = ]() {
@@ -517,6 +514,10 @@ void WebWindow::onSearchEditFocusOut()
     });
 }
 
+/**
+ * @brief WebWindow::onSearchButtonClicked
+ * @note 输入搜索关键字之后点击弹出窗口中的最下部的 SearchButton触发
+ */
 void WebWindow::onSearchButtonClicked()
 {
     QString text = search_edit_->text();
@@ -526,6 +527,11 @@ void WebWindow::onSearchButtonClicked()
     completion_window_->hide();
 }
 
+/**
+ * @brief WebWindow::onSearchResultClicked
+ * @param result
+ * @note 点击SearchList Item 时调用js方法
+ */
 void WebWindow::onSearchResultClicked(const SearchAnchorResult &result)
 {
     web_view_->page()->runJavaScript(QString("open('%1', '%2', '%3', '%4')")
@@ -536,6 +542,11 @@ void WebWindow::onSearchResultClicked(const SearchAnchorResult &result)
 
 }
 
+/**
+ * @brief WebWindow::onSearchTextChanged
+ * @param text
+ * @note ２００ｍｓ内搜索框中的文本改变时重新计时执行一次搜索操作, 200ms搜索一次
+ */
 void WebWindow::onSearchTextChanged(const QString &text)
 {
     if (text.size() >= 1) {
@@ -550,14 +561,12 @@ void WebWindow::onSearchTextChangedDelay()
 {
     QString textTemp = search_edit_->text();
     const QString text = textTemp.remove('\n').remove('\r').remove("\r\n");
-    // Filters special chars.
+    // 过滤特殊字符
     if (text.isEmpty() || text.contains(QRegExp("[+-_$!@#%^&\\(\\)]"))) {
         return;
     }
-
     completion_window_->setKeyword(text);
-
-    // Do real search.
+    //执行搜索
     emit search_manager_->searchAnchor(text);
 }
 
@@ -627,7 +636,6 @@ void WebWindow::onWebPageLoadFinished(bool ok)
         });
     }
 }
-
 /**
  * @brief WebWindow::onSearchAnchorResult 搜索结果框内容显示
  * @param keyword 搜索关键字
@@ -659,17 +667,35 @@ void WebWindow::onSearchAnchorResult(const QString &keyword, const SearchAnchorR
     }
 }
 
+void WebWindow::keyPressEvent(QKeyEvent *event)
+{
+    if ((event->modifiers() == (Qt::ControlModifier | Qt::AltModifier)) && event->key() == Qt::Key_F) {
+        return;
+    } else if (event->key() == Qt::Key_Control) {
+        return;
+    } else if (event->key() == Qt::Key_Alt) {
+        return;
+    } else if ((event->modifiers() & Qt::ControlModifier) && event->key() == Qt::Key_Alt) {
+        return;
+    } else {
+        search_edit_->lineEdit()->setFocus();
+    }
+    QWidget::keyPressEvent(event);
+}
+
+/**
+ * @brief WebWindow::eventFilter 事件过滤
+ * @param watched
+ * @param event
+ * @return
+ */
 bool WebWindow::eventFilter(QObject *watched, QEvent *event)
 {
-//    if (event->type() == QEvent::KeyPress && qApp->activeWindow() == this &&
-//            watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
-//        search_edit_->lineEdit()->setFocus();
-//    }
-
-    // Filters mouse press event only.
+    // 过滤鼠标事件
     if (event->type() == QEvent::MouseButtonPress && qApp->activeWindow() == this &&
             watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
         QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
+        this->web_view_->update();
         if (mouseEvent->button()) {
             switch (mouseEvent->button()) {
             case Qt::BackButton: {
@@ -687,12 +713,14 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
             }
             default: {
             }
+            if (!search_edit_->geometry().contains(this->mapFromGlobal(QCursor::pos()))) {
+                completion_window_->hide();
+            }
             }
         }
-        if (!search_edit_->geometry().contains(this->mapFromGlobal(QCursor::pos()))) {
-            completion_window_->hide();
-        }
     }
+
+    //过滤字体改变事件
     if (event->type() == QEvent::FontChange && watched == this) {
         if (this->settings_proxy_) {
             qDebug() << "eventFilter QEvent::FontChange";
@@ -705,6 +733,10 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
     return QObject::eventFilter(watched, event);
 }
 
+/**
+ * @brief WebWindow::slot_ButtonHide
+ * @note 隐藏前进/后退按钮
+ */
 void WebWindow::slot_ButtonHide()
 {
 //    QTimer::singleShot(20, [ = ]() {
@@ -714,6 +746,10 @@ void WebWindow::slot_ButtonHide()
     buttonBox->hide();
 }
 
+/**
+ * @brief WebWindow::slot_ButtonShow
+ * @note 显示前进/后退按钮
+ */
 void WebWindow::slot_ButtonShow()
 {
     QTimer::singleShot(20, this, [ = ]() {
@@ -721,7 +757,10 @@ void WebWindow::slot_ButtonShow()
         buttonBox->show();
     });
 }
-
+/**
+ * @brief WebWindow::slot_ThemeChanged
+ * @note 修改背景颜色，　减少WebEngeineView 控件在黑色主题下的明显闪屏效果
+ */
 void WebWindow::slot_ThemeChanged()
 {
     DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();

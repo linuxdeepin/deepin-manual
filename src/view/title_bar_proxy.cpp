@@ -30,6 +30,11 @@ TitleBarProxy::~TitleBarProxy()
 {
 }
 
+/**
+ * @brief TitleBarProxy::setBackwardButtonActive
+ * @param active true为显示
+ * @note 控制后退按钮激活状态
+ */
 void TitleBarProxy::setBackwardButtonActive(bool active)
 {
     m_first++;
@@ -40,6 +45,11 @@ void TitleBarProxy::setBackwardButtonActive(bool active)
     m_webWindow->updateBtnBox();
 }
 
+/**
+ * @brief TitleBarProxy::setForwardButtonActive
+ * @param active
+ * @note 控制前进按钮激活状态
+ */
 void TitleBarProxy::setForwardButtonActive(bool active)
 {
     m_webWindow->m_forwardButton->setEnabled(active);
