@@ -48,6 +48,7 @@
 #include <DLog>
 #include <DPlatformWindowHandle>
 #include <DTitlebar>
+#include <QStyleOptionViewItem>
 
 DWIDGET_USE_NAMESPACE
 
@@ -172,6 +173,7 @@ void WebWindow::initConnections()
     connect(&search_timer_, &QTimer::timeout, this, &WebWindow::onSearchTextChangedDelay);
 
     connect(this, &WebWindow::manualSearchByKeyword, this, &WebWindow::onManualSearchByKeyword);
+    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged, this, &WebWindow::onThemeChange);
 
 }
 
@@ -193,12 +195,28 @@ void WebWindow::onACtiveColorChanged(QString, QMap<QString, QVariant>map, QStrin
     QString strKey = map.begin().key();
     qDebug() << __func__ << " key: " << strKey << " value: " << strValue;
     if (0 == strKey.compare("QtActiveColor")) {
-        //获取系统活动色
-        web_view_->page()->runJavaScript(QString("setHashWordColor('%1')").arg(strValue));
-        completion_window_->updateColor(QColor(strValue));
+        QTimer::singleShot(100, this, [&]() {
+            //获取系统活动色
+            QColor fillColor = DGuiApplicationHelper::instance()->applicationPalette().highlight().color();
+            web_view_->page()->runJavaScript(QString("setHashWordColor('%1')").arg(fillColor.name()));
+        });
     } else if (0 == strKey.compare("StandardFont")) {
         //获取系统字体
         web_view_->page()->runJavaScript(QString("setWordFontfamily('%1')").arg(strValue));
+    }
+}
+
+void WebWindow::onThemeChange(DGuiApplicationHelper::ColorType themeType)
+{
+    Q_UNUSED(themeType)
+    if (web_view_) {
+        QColor fillColor = DGuiApplicationHelper::instance()->applicationPalette().highlight().color();
+        web_view_->page()->runJavaScript(QString("setHashWordColor('%1')").arg(fillColor.name()));
+    } else {
+        QTimer::singleShot(300, this, [&]() {
+            QColor fillColor = DGuiApplicationHelper::instance()->applicationPalette().highlight().color();
+            web_view_->page()->runJavaScript(QString("setHashWordColor('%1')").arg(fillColor.name()));
+        });
     }
 }
 

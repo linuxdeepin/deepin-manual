@@ -29,6 +29,7 @@
 #include <QWebEngineView>
 #include <QAction>
 #include <QClipboard>
+#include <DApplicationHelper>
 
 namespace dman {
 
@@ -132,6 +133,7 @@ private slots:
 
     void onManualSearchByKeyword(const QString &keyword);
     void onACtiveColorChanged(QString, QMap<QString, QVariant>, QStringList);
+    void onThemeChange(DGuiApplicationHelper::ColorType themeType);
 };
 
 }  // namespace dman
