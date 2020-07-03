@@ -1,4 +1,4 @@
-# 截图录屏|../common/deepin-screenshot.svg|
+# h截图录屏|../common/deepin-screenshot.svg|
 
 ## 概述
 
@@ -116,16 +116,17 @@
 - 按住鼠标左键不放，拖动鼠标来放大或缩小截图区域。
 - 按下键盘上的 ![ctrl](icon/Ctrl.svg)+![向上](icon/Up.svg) 或 ![向下](icon/Down.svg) 来上下扩展截图区域，按下键盘上的 ![ctrl](icon/Ctrl.svg)+![向左](icon/Left.svg) 或 ![向右](icon/Right.svg) 来左右扩展截图区域。
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 ##### 移动截图位置
 
-将鼠标指针置于截图区域上，鼠标指针变为![finger2](jpg/fingers2.png)。您可以：
+将鼠标指针置于截图区域上，鼠标指针变为 ![手指](icon/hand.svg)。您可以：
 - 按住鼠标左键不放，拖动鼠标来移动截图区域的位置。
 - 按下键盘上的 ![向上](icon/Up.svg) 或 ![向下](icon/Down.svg) 来上下移动截图区域，按下键盘上的 ![向左](icon/Left.svg) 或 ![向右](icon/Right.svg) 来左右移动截图区域。
 
 #### 编辑截图
 
-录屏截图自带的图片编辑功能，包括图形标记、文字批注等，完全可以满足您的日常图片处理需s求。您还可以给图片打上马赛克，保护您的隐私。
+录屏截图自带的图片编辑功能，包括图形标记、文字批注等，完全可以满足您的日常图片处理需求。您还可以给图片打上马赛克，保护您的隐私。
 
 您可以通过执行以下操作之一来编辑截图：
 

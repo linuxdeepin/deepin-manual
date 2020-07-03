@@ -2,7 +2,7 @@
 
 ## Overview
 
-Document Viewer is a powerful and easy-to-use software built-in the system for viewing PDF files quickly, supporting operations such as adding bookmarks, adding notes, and highlighting some text. 
+Document Viewer is a powerful and easy-to-use software built-in the system for opening and viewing files quickly, supporting operations such as adding bookmarks, adding notes, and highlighting some text. 
 
 
 ## Guide

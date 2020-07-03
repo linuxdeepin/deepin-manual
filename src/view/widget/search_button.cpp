@@ -101,6 +101,22 @@ bool SearchButton::isChecked()
     return m_bHover;
 }
 
+void SearchButton::leaveFocus()
+{
+    m_bHover = false;
+    if (DGuiApplicationHelper::DarkType == DGuiApplicationHelper::instance()->themeType()) {
+
+        QPixmap iconPm = Utils::renderSVG(QString(kImageDarkSearchIcon), QSize(20, 20));
+        iconBtn->setIcon(iconPm);
+    } else {
+
+        QPixmap iconPm = Utils::renderSVG(QString(kImageLightSearchIcon), QSize(20, 20));
+        iconBtn->setIcon(iconPm);
+    }
+
+    update();
+}
+
 void SearchButton::setChecked(bool bChecked)
 {
     m_bHover = bChecked;
@@ -148,6 +164,8 @@ void SearchButton::paintEvent(QPaintEvent *event)
         DPalette paLabel = ExApplicationHelper::instance()->palette(this);
         paLabel.setColor(DPalette::WindowText, paLabel.color(DPalette::Text));
         m_textLabel->setPalette(paLabel);
+        leaveFocus();
+
     }
 }
 
@@ -179,7 +197,7 @@ void SearchButton::enterEvent(QEvent *event)
 void SearchButton::leaveEvent(QEvent *event)
 {
     Q_UNUSED(event);
-
+    qDebug() << "-----------leaveEvent-------";
     m_bHover = false;
     if (DGuiApplicationHelper::DarkType == DGuiApplicationHelper::instance()->themeType()) {
 

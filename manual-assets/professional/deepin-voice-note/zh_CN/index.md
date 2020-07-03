@@ -2,7 +2,8 @@
 
 ## 概述
 
-语音记事本是一款设计简洁、美观易用的集文本、录音来记事的软件。用户可以将录音转存为 MP3，或者将录音转化为文字保存。![0|voice_recorder](jpg/main.png)
+语音记事本是一款设计简洁、美观易用的集文本、录音来记事的软件。用户可以将录音转存为 MP3，或者将录音转化为文字保存。
+![0|voice_recorder](jpg/main.png)
 
 
 ## 使用入门
@@ -19,7 +20,7 @@
    - 点击 **发送到任务栏**，将应用程序固定到任务栏。
    - 点击 **开机自动启动**，将应用程序添加到开机启动项，在电脑开机时自动运行该应用。
 
-> ![notes](icon/notes.svg)说明：如果语音记事本已经默认固定在任务栏上，您也可以点击任务栏上的 ![deepin-voice-note](icon/deepin-voice-note.svg) 来运行。
+   > ![notes](icon/notes.svg)说明：如果语音记事本已经默认固定在任务栏上，您也可以点击任务栏上的 ![deepin-voice-note](icon/deepin-voice-note.svg) 来运行。
 
 ### 关闭语音记事本
 
@@ -29,9 +30,9 @@
 
 ### 查看快捷键
 
-在语音记事本界面上，按下键盘上的 ![Ctrl](icon/Ctrl.svg) + ![Shift](icon/Shift.svg) + ![QM](icon/QM.svg) 组合键来查看快捷键，熟练的使用快捷键，将大大提升您的操作效率。
+在语音记事本界面上，按下键盘上的 **Ctrl+Shift+？**组合键来查看快捷键，熟练的使用快捷键，将大大提升您的操作效率。
 
- ![1|hotkey](jpg/hotkey.png)
+![1|hotkey](jpg/hotkey.png)
 
 ## 操作介绍
 
@@ -59,9 +60,9 @@
 1. 在语音记事本界面上点击 ![record_normal](icon/record_normal.svg) 图标，开始录音。
 2. 点击 ![finish](icon/finish_normal.svg) 按钮完成录音。
 
-> ![tips](icon/tips.svg)窍门：录音过程中您可以点击 ![pause](icon/pause_red_normal.svg) 按钮暂停录音，想继续录音时再点一下 ![record_normal](icon/record_normal.svg) 就可以了。
+   > ![tips](icon/tips.svg)窍门：录音过程中您可以点击 ![pause](icon/pause_red_normal.svg) 按钮暂停录音，想继续录音时再点一下 ![record_normal](icon/record_normal.svg) 就可以了。
 
-> ![notes](icon/notes.svg)说明：录音的限制时长为60分钟。
+   > ![notes](icon/notes.svg)说明：录音的限制时长为60分钟。
 
 ![0|Recorder](jpg/recorder1.png)
 
@@ -131,9 +132,9 @@
 1. 在语音记事本界面上，右键单击一个新记事本。
 2. 选择 **重命名**。
 3. 输入文件名称。
-4. 鼠标点击界面空白处或者按下键盘上的 ![Enter](icon/Enter.svg) 键完成重命名。
+4. 鼠标点击界面空白处或者按下键盘上的 **Enter** 键完成重命名。
 
-> ![tips](icon/tips.svg)窍门: 您也可以对记事本下的各个文本笔记进行重命名，详细操作可参考重命名新记事本。
+   > ![tips](icon/tips.svg)窍门: 您也可以对记事本下的各个文本笔记进行重命名，详细操作可参考重命名新记事本。
 
 ![0|rename](jpg/rename.png)
 
@@ -166,7 +167,7 @@
 
 ### 主题
 
-窗口主题包含浅色主题、深色主题和系统主题，其中系统主题为默认设置。
+窗口主题包含浅色主题、深色主题和跟随系统主题，其中跟随系统主题为默认设置。
 
 1. 在语音记事本界面，点击![icon_menu](icon/icon_menu.svg)。
 2. 点击 **主题**，选择一个主题颜色。

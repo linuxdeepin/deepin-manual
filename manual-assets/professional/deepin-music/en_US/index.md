@@ -233,9 +233,9 @@ On the Music interface, you can create, delete, rename playlist and add music to
 
 ### Rename Playlist
 
-2.  Right-click the playlist to select **Rename**.
-2.  Enter the name of the playlist.
-3.  Click the blank area of the Music, or press the Enter key.
+1.  Select a playlist from "Playlists".
+2.  Right-click to select **Rename**.
+3.  Enter the name of the playlist and press the Enter key to save.
 
 ![0|renamelist](jpg/renamelist.png)
 
@@ -251,8 +251,9 @@ On the Music interface, you can create, delete, rename playlist and add music to
 
 ### Remove Music from Playlist
 
-1. On the Music interface, select a playlist and then, the music you want to remove.
-2. Right-click to select **Remove from play queue**.
+1. Select a playlist from "Playlists", and them select the music you want to remove from it.
+2. Right-click.
+3. Select **Remove from play queue** to remove it from the playlist.
 
 ![0|remove](jpg/removefromlist.png)
 

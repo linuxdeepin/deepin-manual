@@ -1,69 +1,15 @@
-<?xml version="1.0" encoding="UTF-8" standalone="no"?>
-<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
-
-<svg
-   xmlns:ns="&amp;ns_sfw;"
-   xmlns:dc="http://purl.org/dc/elements/1.1/"
-   xmlns:cc="http://creativecommons.org/ns#"
-   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
-   xmlns:svg="http://www.w3.org/2000/svg"
-   xmlns="http://www.w3.org/2000/svg"
-   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
-   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
-   version="1.1"
-   id="图层_1"
-   x="0px"
-   y="0px"
-   viewBox="0 0 20 20"
-   enable-background="new 0 0 20 20"
-   xml:space="preserve"
-   sodipodi:docname="=.svg"
-   width="20"
-   height="20"
-   inkscape:version="0.92.1 r15371"><defs
-     id="defs17" /><sodipodi:namedview
-     pagecolor="#ffffff"
-     bordercolor="#666666"
-     borderopacity="1"
-     objecttolerance="10"
-     gridtolerance="10"
-     guidetolerance="10"
-     inkscape:pageopacity="0"
-     inkscape:pageshadow="2"
-     inkscape:window-width="836"
-     inkscape:window-height="480"
-     id="namedview15"
-     showgrid="false"
-     fit-margin-top="0"
-     fit-margin-left="0"
-     fit-margin-right="0"
-     fit-margin-bottom="0"
-     inkscape:zoom="11.8"
-     inkscape:cx="10"
-     inkscape:cy="10"
-     inkscape:window-x="0"
-     inkscape:window-y="0"
-     inkscape:window-maximized="0"
-     inkscape:current-layer="图层_1" /><metadata
-     id="metadata2"><ns:sfw><ns:slices /><ns:sliceSourceBounds
-         width="16383"
-         height="633"
-         y="-188"
-         x="-8121"
-         bottomLeftOrigin="true" /></ns:sfw><rdf:RDF><cc:Work
-         rdf:about=""><dc:format>image/svg+xml</dc:format><dc:type
-           rdf:resource="http://purl.org/dc/dcmitype/StillImage" /><dc:title></dc:title></cc:Work></rdf:RDF></metadata><g
-     id="g12"><path
-       d="M 15.7,19.5 H 4.3 C 2.21,19.5 0.5,17.79 0.5,15.7 V 4.3 C 0.5,2.21 2.21,0.5 4.3,0.5 h 11.4 c 2.09,0 3.8,1.71 3.8,3.8 v 11.4 c 0,2.09 -1.71,3.8 -3.8,3.8 z"
-       id="path4"
-       inkscape:connector-curvature="0"
-       style="opacity:0.1;fill:#ffffff" /><path
-       stroke-miterlimit="10"
-       d="m 15.5,19.5 h -11 c -2.209,0 -4,-1.791 -4,-4 v -11 c 0,-2.209 1.791,-4 4,-4 h 11 c 2.209,0 4,1.791 4,4 v 11 c 0,2.209 -1.791,4 -4,4 z"
-       id="path6"
-       inkscape:connector-curvature="0"
-       style="fill:none;stroke:#cbcbcb;stroke-miterlimit:10" /><g
-       id="g10"><path
-         d="M 5,8 H 15 V 9 H 5 Z m 0,4 h 10 v 1 H 5 Z"
-         id="path8"
-         inkscape:connector-curvature="0" /></g></g></svg>
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="20px" height="20px" viewBox="0 0 20 20" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 64 (93537) - https://sketch.com -->
+    <title>=</title>
+    <desc>Created with Sketch.</desc>
+    <g id="页面-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="=">
+            <path d="M15.7,19.5 L4.3,19.5 C2.21,19.5 0.5,17.79 0.5,15.7 L0.5,4.3 C0.5,2.21 2.21,0.5 4.3,0.5 L15.7,0.5 C17.79,0.5 19.5,2.21 19.5,4.3 L19.5,15.7 C19.5,17.79 17.79,19.5 15.7,19.5 Z" id="path4" fill="#FFFFFF" fill-rule="nonzero"></path>
+            <path d="M15.5,19.5 L4.5,19.5 C2.291,19.5 0.5,17.709 0.5,15.5 L0.5,4.5 C0.5,2.291 2.291,0.5 4.5,0.5 L15.5,0.5 C17.709,0.5 19.5,2.291 19.5,4.5 L19.5,15.5 C19.5,17.709 17.709,19.5 15.5,19.5 Z" id="path6" stroke="#CBCBCB"></path>
+            <g id="g10" transform="translate(5.000000, 8.000000)" fill="#000000" fill-rule="nonzero">
+                <path d="M0,0 L10,0 L10,1 L0,1 L0,0 Z M0,4 L10,4 L10,5 L0,5 L0,4 Z" id="path8"></path>
+            </g>
+        </g>
+    </g>
+</svg>

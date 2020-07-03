@@ -54,6 +54,16 @@ On the interface of Firewall, you can set  Internet access and remote connection
 
 ![0|global setting](jpg/global-setting.png)
 
+**Switch on/off Firewall**
+
+This switch controls whether to enable **Internet Access ** and **Remote Connection**; however, **Data Usage** is not affected by it. Firewall is switched off here by default.
+
+Off: **Internet Access ** and **Remote Connection** are disabled.
+
+On: **Internet Access ** and **Remote Connection** are enabled. You can go to set them further as follows.
+
+
+
 **Internet Access **
 
 This item controls the default Internet access settings of all applications and services. There are three options in the drop-down box.
@@ -112,7 +122,7 @@ On the homepage of Firewall, click **Internet Control** at the bottom.  Its func
 
 On the homepage of Firewall, click **Data Usage** at the bottom. You can see details of **Apps and Services** and **Rankings**. 
 
-- In **Apps and Services** page, you can see all running applications with their downloading/uploading speed and settings. Click the setting icon on each line to jump to "Internet Access" page. 
+- In **Apps and Services** page, you can see all running applications with their downloading/uploading speed and settings. Click the setting icon ![setting](icon/setting.svg) on each line to jump to "Internet Access" page. 
 
 ![0|current network](jpg/current-network.png)
 
@@ -158,11 +168,11 @@ On System Security interface, click **Screen Protection**. You can do settings s
 
 Click **Settings** after "Turn off monitor", you will jump to "Plugged In" page of Control Center. 
 
-![0|power settings](jpg/power-settings.png)
+
 
 #### Update Policy
 
-On System Security interface, click **Update Policy** to view if the system is up to date, you can choose whether to update the system, and you can also switch on "Updates Notification". 
+On System Security interface, click **Update Policy** to view if the system is up to date, you can choose whether to update the system, and you can also switch on "Updates Notification" and "Auto Download Updates". 
 
 ![0|update strategy](jpg/update-strategy.png)
 

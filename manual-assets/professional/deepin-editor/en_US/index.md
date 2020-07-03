@@ -30,7 +30,7 @@ In Launcher, right-click Text Editor and you can:
 
 On the Text Editor Interface, press ![Ctrl](icon/Ctrl.svg) + ![Shift](icon/Shift.svg) + ![QM](icon/QM.svg) to view all the shortcuts. You can get them in Settings as well. Using shortcuts will greatly improve your work efficiency.
 
-![1|hotkey](jpg/hotkey.jpg)
+![1|hotkey](jpg/hotkey.png)
 
 ## Basic Operations
 

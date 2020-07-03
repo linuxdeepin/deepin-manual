@@ -37,7 +37,7 @@
 
 2. 选好打印机后，会加载出驱动列表，默认选择推荐打印机驱动。若选择手动驱动方案，则会跳转到手动选择打印机驱动界面。
 
-   ![0|2automatic search](jpg/2automatic search.png)
+   ![0|automatic-search](jpg/automatic-search.png)
 
 3. 单击 **安装驱动**，进入安装界面。
 
@@ -45,7 +45,7 @@
 #### 手动查找
 
 1. 单击 **手动查找** 按钮，输入主机名或IP查找打印机，系统通过各种协议扫描打印机。
-![0|3manual search](jpg/3manual search.png)
+![0|manual-search](jpg/manual-search.png)
 
 2. 选好打印机后，会加载出驱动列表，默认选择推荐打印机驱动。若没有加载出驱动列表，则选择手动驱动方案，则会跳转到手动选择打印机驱动界面。
 3. 单击 **安装驱动**，进入安装界面。
@@ -56,7 +56,7 @@
 
 2. 单击 **URI查找** 按钮，输入打印机的URI。
 
-   ![0|4URI search](jpg/4URI search.png)
+   ![0|URI-search](jpg/URI-search.png)
 
 3. 系统默认选择手动驱动方案安装，单击 **下一步** ，进入选择驱动界面。
 
@@ -74,17 +74,17 @@
 
    * 本地驱动：通过下拉框选择厂商及型号，查询本地驱动。
 
-     ![0|5local driver](jpg/5local driver.png)
+     ![0|local-driver](jpg/local-driver.png)
 
    * 本地PPD文件：将本地文件PPD文件拖放到对应地方，或单击 **选择一个PPD文件** 在本地文件夹查找，比如在/usr/share/ppd目录下选择ppd文件。
 
    > ![notes](icon/notes.svg)说明：使用前提是用户必须在本地安装了驱动，才可以使用PPD文件安装。否则，会提示驱动安装失败。
 
-   ![0|6ppd document](jpg/6ppd document.png)
+   ![0|ppd-document](jpg/ppd-document.png)
 
    * 搜索打印机驱动：输入精确的厂商和型号，系统会在后台驱动库中探测搜索，搜索结果会显示在下拉框中。
 
-   ![0|7search driver](jpg/7search driver.png)
+   ![0|search-driver](jpg/search-driver.png)
 
 ### 安装打印机
 
@@ -93,70 +93,39 @@
 - 安装成功
   弹出窗口提示安装成功，可以单击 **打印测试页**，查看是否可以正常打印；或单击 **查看打印机**，跳转到打印机管理界面。
 
-  ![0|8successful installion](jpg/8successful installion.png)
+  ![0|successful-installion](jpg/successful-installion.png)
 
 - 安装失败
   弹出窗口提示安装失败，则可选择重新安装。
 
-  ![0|8fail installion](jpg/8fail installion.png)
+  ![0|fail-installion](jpg/fail-installion.png)
 
 ### 打印管理界面
 
 若已经成功添加了打印机，打开应用，进入打印管理界面。选中打印机，可选择属性设置、打印队列、打印测试页及故障排查。
 
-![0|9printer management](jpg/9printer management.png)
+![0|homepage](jpg/homepage.png)
 
 #### 属性 
 
 1. 单击 **属性**，跳转到打印设置列表界面。
-
-2. 不可设置仅可查看项为：打印机驱动、URI、位置、描述、颜色及分辨率。
-
-![0|10printer settings1](jpg/10printer settings1.png)
-
-3. 可设置项为：纸张来源、纸张类型、纸张大小、双面打印、页边距位置、方向、打印顺序、装订。
-  - 纸张来源：纸张来源默认选中 **自动**，用户可以根据实际情况选择相应的纸盒。
-
-   - 纸张类型：纸张类型默认选中 **自动**，可选普通纸、再生纸、彩色纸、胶片等，用户可以根据需求和打印机支持的纸张选择。
-
-   - 纸张大小：纸张大小默认选中 **A4**，可选A5、B5、A3、Letter等，用户可以根据需求和打印机支持的情况选择。
-
-   - 双面打印：打印方式默认选中 **单面打印**，可选双面长边翻转打印、双面短边翻转打印。
-
-   - 页边距位置：页边距位置默认选中 **左侧**，可选顶部，打印时会留出一定的空间。
-
-   - 装订位置：默认选中无装订，可选装订（左）、装订（右）。若选择装订，打印时会标示装订位置。
-
-   - 方向：进纸方向默认选中 **纵向（无旋转）**，可选横向、反横向、反纵向。
-
-   - 打印顺序：打印顺序默认选中 **从前向后**，可选从后向前，用户根据实际需求选择。
-
-     ![0|10printer settings2](jpg/10printer settings2.png)
-
-4. 恢复默认：单击后，所有设置项恢复为默认状态。
+2. 您可以查看打印机驱动、URI、位置、描述、颜色及分辨率等。
+3. 还可以设置项纸张来源、纸张类型、纸张大小、双面打印、页边距位置、方向、打印顺序等。可根据您的实际需求进行设置，如纸张大小可以选择A4、A5、B5或A3等，打印方向可以选择纵向、横向或反横向等。
 
 > ![notes](icon/notes.svg)说明：打印机属性列表与打印机型号及驱动相关联，请以实际情况为准。
+
+![0|printer-settings1](jpg/printer-settings.png)
 
 #### 打印队列
 
 1. 单击 **打印队列**，进入主界面，可选择全部列表、打印队列、已完成列表和刷新列表操作。系统默认选择 **打印队列** 界面。
 
-2. 列表内容为：任务ID、用户、文档名称、打印机、大小、提交时间、状态及操作。
+2. 界面列表内容为：任务ID、用户、文档名称、打印机、大小、提交时间、状态及操作。
 
-3. 操作选项：
-
-   - 开始/暂停打印：开始或暂停当前任务。
-
-   - 删除任务：删除当前打印任务。
-
-     ![0|11print queue](jpg/11print queue.png)
-
-4. 右键菜单：
+3. 选择一个打印任务后，右键可进行 **取消打印**、**删除任务**、**暂停打印**、**恢复打印**、**优先打印**、**重新打印** 操作。
 
 
-​       选择一个打印任务后，右键可进行 **取消打印**、**删除任务**、**暂停打印**、**恢复打印**、**优先打印**、**重新打印** 操作。
-
-![0|11right click setting](jpg/11right click setting.png)
+![0|right-menu](jpg/right-menu.png)
 
 #### 打印测试页
 
@@ -170,7 +139,7 @@
 
 打印失败时，可单击 **故障排查**，排查内容如下：
 
-![0|12troubleshooting ](jpg/12troubleshooting.png)
+![0|troubleshooting ](jpg/troubleshooting.png)
 
    - 检查cups服务是否开启。
 
@@ -185,13 +154,13 @@
 
 选中打印机型号，单击右键，可设置打印机是否共享、是否启动、是否接受任务、是否设为默认打印机。
 
-![0|9right click setting](jpg/9right click setting.png)
+![0|right-click-setting](jpg/right-click-setting.png)
 
 ### 删除打印机
 
 在打印管理器界面，单击![edit-delete](icon/edit-delete.svg)，可删除选中的打印机。
 
-![0|14delete](jpg/14delete.png)
+![0|delete](jpg/delete.png)
 
 
 ## 主菜单
@@ -210,7 +179,7 @@
    - 是否允许远程管理打印机
    - 是否保留调试信息用于故障排除
 
-   ![0|13right click setting main menu](jpg/13right click setting main menu.png)
+   ![0|13right click setting main menu](jpg/right-click-setting-main-menu.png)
 
 ### 主题
 

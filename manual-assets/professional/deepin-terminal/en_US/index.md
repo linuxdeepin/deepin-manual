@@ -20,7 +20,7 @@ You can run, exit or create shortcuts for Terminal.
  - Select **Send to dock** to fix it on dock.
  - Select **Add to startup** to add it to startup, it will automatically run when the system starts up.
 
-> ![notes](icon/notes.svg)Notes: You can also press ![Ctrl](icon/Ctrl.svg)+![Alt](icon/Alt.svg)+![T](icon/T.svg) to open Terminal.
+> ![notes](icon/notes.svg)Notes: You can also press **Ctrl**+**Alt**+**T** to open Terminal.
 
 
 ### Exit Terminal ###
@@ -36,7 +36,7 @@ You can run, exit or create shortcuts for Terminal.
 
 ### View Shortcuts ###
 
-You can press ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![QM](icon/QM.svg) on keyboard to open shortcuts preview interface.
+You can press **Ctrl**+**Shift**+**?** on keyboard to open shortcuts preview interface.
 
  ![1|shortcuts](jpg/hotkey.png)
 
@@ -56,35 +56,28 @@ You can use the "Find" function to quickly search contents in terminal.
 
 2. Click **Find**.
 
-3. Type the word in search box and press ![Enter](icon/Enter.svg)key on keyboard.
+3. Type the word in search box and press **Enter** key on keyboard.
 
 4. Then the search results will be highlighted.
 
-5. Press ![Esc](icon/Esc.svg) on keyboard or click any blank location of terminal interface to hide search.
+5. Press **Esc** on keyboard or click any blank location of terminal interface to hide search.
 
-> ![tips](icon/tips.svg)Tips: Press ![Enter](icon/Enter.svg) to search down from current location. You can also click ![up](icon/up.svg) and ![down](icon/down.svg) to search.
+> ![tips](icon/tips.svg)Tips: Press **Enter** to search down from current location. You can also click ![up](icon/up.svg) and ![down](icon/down.svg) to search.
 
 
 ### Web Search ###
 
-You can search the keyword through web browser in terminal.
+Terminal can call the browser to search some contents in the Terminal quickly and conveniently. 
 
-1. Select the words in terminal.
-
-2. Right-click to select **Search** and select a search engine.
-
-3. Your browser will pop up and start searching.
+1. On the interface of Terminal, select the content you want to search.
+2. Right-click to select **Search**.
+3. Select a search engine.
+4. Your browser will pop up and start searching.
 
 
 ### Copy/Paste ###
 
-You can freely copy and paste the contents or commands in terminal and anywhere else.
-
-1. Select the commands or contents.
-
-2. Right-click to select **Copy**.
-
-3. Right-click to **Paste** the contents at anywhere.
+You can freely copy and paste the contents or commands in Terminal to any specified position or copy any contents elsewhere into Terminal by clicking **Copy** and **Paste**.
 
 > ![tips](icon/tips.svg)Tips: If it is a link, just right-click it to copy without selection.
 
@@ -92,11 +85,11 @@ You can freely copy and paste the contents or commands in terminal and anywhere 
 
 ### Quake Mode ###
 
-Quake Mode is the unique function of Terminal. Press ![Alt](icon/Alt.svg) + ![F2](icon/F2.svg) to open a quake window, and press again to hide it.
+Quake Mode is the unique function of Terminal. Press **Alt** + **F2** to open a quake window, and press again to hide it.
 
 > ![tips](icon/tips.svg)Tips: You can also click ![deepin-terminal](icon/deepin-terminal.svg) on Dock to select **Quake Terminal** to open a quake window.
 
-### Open File and Application ###
+### Open Files and Applications ###
 
 On Terminal interface, select the file in current directory and right click to **Open** it by the application.
 
@@ -142,28 +135,28 @@ You can create a new window in the following ways:
 
 ### Split Window ###
 
-1. On Terminal interface, right-click.
+1. Open Terminal in Launcher.
+2. On Terminal interface, right-click.
 
   - Click **Vertical split** to split the interface into left and right parts.
 
   - Click **Horizontal split** to split the interface into top and bottom parts.
 
-2. You can input commands in each terminal window, and view both the execution results of the command.
+3. You can input commands in each terminal window, and view both the execution results of the command.
 
-> ![tips](icon/tips.svg)Tips: You can also press ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![J](icon/J.svg) on keyboard to split vertically, and press ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![H](icon/H.svg) to split horizontally.
+> ![tips](icon/tips.svg)Tips: You can also press **Ctrl+Shift+J** on keyboard to split vertically, and press **Ctrl+Shift+H** to split horizontally.
 
  ![1|splitscreen](jpg/splitscreen.png)
 
 ### Rename Window ###
 
 
-1. On Terminal interface, right-click.
+1. Open Terminal in Launcher.
+2. On Terminal interface, right-click.
+3. Select **Rename title**.
+4. Input the name and click **OK**.
 
-2. Select **Rename title**.
-
-3. Input the name and click **OK**.
-
-> ![tips](icon/tips.svg)Tips: You can also press ![F2](icon/F2.svg)  to rename the window title.
+> ![tips](icon/tips.svg)Tips: You can also press **F2**  to rename the window title.
 
  ![1|rename](jpg/rename.png)
 
@@ -174,9 +167,9 @@ You can create a new window in the following ways:
 
 1. Open Terminal in launcher interface.
 
-2. Press ![F11](icon/F11.svg) to display Terminal in fullscreen.
+2. Press **F11** to display Terminal in fullscreen.
 
-3. If you want to restore the normal display, please press ![F11](icon/F11.svg).
+3. If you want to restore the normal display, please press **F11**.
 
 > ![notes](icon/notes.svg)Notes: You can also right-click to select **Fullscreen** or **Exit fullscreen** on Terminal interface.
 
@@ -197,17 +190,14 @@ For multiple splitting windows, you can execute the following operations to clos
 
 ## Workspace Operations
 
-The current workspace status will be displayed in different color from the other workspace tabs.
-
- ![1|workspace](jpg/workspace.png)
-
-
 ### New Workspace ###
+
+You can create new workspaces as follows:
 
 - On Terminal interface, right-click and select **New workspace** to create a new workspace.
 
 - Click + on the top to create a workspace.
-- Use shortkeys ![Ctrl](icon/Ctrl.svg) + ![Shift](icon/Shift.svg) +![T](icon/T.svg)on the keyboard to create a new workspace.
+- Press **Ctrl+Shift+T** on the keyboard to create a new workspace.
 
 
 ### Select Workspace ###
@@ -215,16 +205,17 @@ The current workspace status will be displayed in different color from the other
 You can freely switch among multiple workspaces by one of the following operations:
 
 - Directly click the workspace tab to select a workspace.
-- Press ![Ctrl](icon/Ctrl.svg)+![Tab](icon/Tab.svg) to switch in sequence.
-- Press ![Alt](icon/Alt.svg)+ 1~9 Number key to select the workspace; when there are more than 9 workspaces, the last workspace will be selected rather the ninth one.
-
+- Press **Ctrl+Tab** to switch in sequence.
+- Press **Ctrl+Shift+1~9** Number key to select the workspace; when there are more than 9 workspaces, the last workspace will be selected rather the ninth one.
 
 ### Close Workspace ###
+
+You can close workspace as follows:
 
 1. Click one workspace tab, and click ![close_icon](icon/close.svg) to close it.
 2. Right-click any workspace tab to:
  - Select **Close workspace** to close it.
- - Select  **Close other workspace** to close other workspaces other than the current one.
+ - Select  **Close other workspaces** to close other workspaces other than the current one.
 
 > ![tips](icon/tips.svg)Tips: When there is only one window in workspace, you can also right-click and select **Close window** to close the workspace.
 
@@ -236,13 +227,8 @@ You can use context menu pops up after right-clicking or click the main menu to 
 ### Add Server ###
 
 1. On Terminal interface, click ![icon_menu](icon/icon_menu.svg)> **Remote Management**.
-2. Click **Add server** to fill out:
-
-  - Server name
-  - Address
-  - Username
-  - Password
-
+2. Click **Add server**.
+3. Fill out **Server name, Address, Username, Password**
 4. Click **Add**.
 
    >  ![notes](icon/notes.svg)Notes: If you need more parameters, please click **Advanced options** to set. Or you can keep the default values and edit them when you need to.
@@ -267,12 +253,9 @@ You can use context menu pops up after right-clicking or click the main menu to 
 When you set a group for a server, it will be added in the group and displayed in the right remote management panel.
 
 1. Enter "Edit Server" interface.
-
 2. Click **Advanced options**.
-
-3. Fill out the group and click **Save**.
-
-4. Then this server will be grouped.
+3. Fill out **Group**.
+4. Click **Save**.
 
  ![0|groupssh](jpg/groupssh.png)
 
@@ -283,7 +266,7 @@ When there are many servers or groups, the search box will be displayed on the t
 
 1. On Terminal interface, right-click.
 2. Select **Remote management**. 
-3. Input the keywords and press ![Enter](icon/Enter.svg).
+3. Input the keywords and press **Enter**.
 4. The search results will be displayed.
 
 ![0|searchssh](jpg/searchssh.png)
@@ -391,6 +374,7 @@ The window theme includes Light Theme, Dark Theme and System Theme (default).
   - Set window startup mode.
   - Enable or disable **Hide quake window after lost focus**.
   - Enable or disable **Blur background**.
+  - **Restore defaults**: click this button, all settings will be restored to default.  
 
 ### Help
 

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Boot Maker is an easy-to-use tool with a simple interface to help you make system boot disks conveniently.
+Boot Maker is an easy-to-use tool with a simple interface to help you burn the system image files into installation medium such as CDs and USB disks.
 
 ![0|boot-maker](jpg/select-file.png)
 
@@ -27,7 +27,7 @@ Boot Maker is an easy-to-use tool with a simple interface to help you make syste
 - On interface of Device Manager, click ![icon_menu](icon/icon_menu.svg)  and select **Exit** to exit.
 
 
-## Basic Operations
+## Operations
 
 ### Preparation
 
