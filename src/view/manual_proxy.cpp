@@ -115,6 +115,7 @@ QStringList ManualProxy::getSystemManualList()
         {"org.deepin.flatdeb.deepin-screen-recorder", "deepin-screen-recorder"},
         {"org.deepin.flatdeb.deepin-calculator", "deepin-calculator"},
         {"com.deepin.editor", "deepin-editor"},
+        {"org.deepin.scaner", "scaner"},
     };
 
 
