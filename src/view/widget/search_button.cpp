@@ -61,7 +61,6 @@ SearchButton::SearchButton(QWidget *parent)
     }
 
     DPalette paLabel = DApplicationHelper::instance()->palette(m_textLabel);
-//    paLabel.setColor(DPalette::WindowText, paLabel.color(DPalette::WindowText));
     paLabel.setColor(DPalette::WindowText, paLabel.color(DPalette::WindowText));
     m_textLabel->setPalette(paLabel);
 
@@ -131,17 +130,20 @@ void SearchButton::paintEvent(QPaintEvent *event)
     if (m_bHover) {
         DPalette pa = ExApplicationHelper::instance()->palette(this);
         DStyleHelper styleHelper;
-        painter.fillPath(path, QBrush(myColor));
+        QColor fillColor = DGuiApplicationHelper::instance()->applicationPalette().highlight().color();
+        painter.fillPath(path, QBrush(fillColor));
 
         DPalette paLabel = ExApplicationHelper::instance()->palette(this);
         paLabel.setColor(DPalette::WindowText, paLabel.color(DPalette::HighlightedText));
         m_textLabel->setPalette(paLabel);
+
+        QPixmap iconPm = Utils::renderSVG(QString(kImageWhiteSearchIcon), QSize(20, 20));
+        iconBtn->setIcon(iconPm);
     } else {
         DPalette pa = ExApplicationHelper::instance()->palette(this);
         DStyleHelper styleHelper;
-        QColor fillColor = pa.color(DPalette::DarkLively);
+        QColor fillColor = pa.color(DPalette::ItemBackground);
         painter.fillPath(path, QBrush(fillColor));
-//        painter.fillPath(path, QBrush(myColor));
 
         DPalette paLabel = ExApplicationHelper::instance()->palette(this);
         paLabel.setColor(DPalette::WindowText, paLabel.color(DPalette::Text));
@@ -179,10 +181,6 @@ void SearchButton::leaveEvent(QEvent *event)
     Q_UNUSED(event);
 
     m_bHover = false;
-
-//    QPixmap iconPm = Utils::renderSVG(QString(kImageLightSearchIcon), QSize(20, 20));
-//    iconBtn->setIcon(iconPm);
-
     if (DGuiApplicationHelper::DarkType == DGuiApplicationHelper::instance()->themeType()) {
 
         QPixmap iconPm = Utils::renderSVG(QString(kImageDarkSearchIcon), QSize(20, 20));
