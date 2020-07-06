@@ -685,6 +685,11 @@ void WebWindow::onSearchAnchorResult(const QString &keyword, const SearchAnchorR
     }
 }
 
+/**
+ * @brief WebWindow::keyPressEvent
+ * @param event
+ * @note 支持外层窗口ctrl+v直接定位到搜索框同时粘贴, 支持A~Z,0~9 space盲打.
+ */
 void WebWindow::keyPressEvent(QKeyEvent *event)
 {
     if (event->key() == Qt::Key_V &&
@@ -695,13 +700,10 @@ void WebWindow::keyPressEvent(QKeyEvent *event)
             search_edit_->lineEdit()->setText(clipboardText);
             search_edit_->lineEdit()->setFocus();
         }
-    } else if ((event->modifiers() == Qt::ControlModifier)) {
-        return;
-    } else if ((event->key() == Qt::Key_Alt)
-               || (event->key() == Qt::Key_Shift)
-               || (event->key() == Qt::Key_Control)) {
-        return;
-    }  else {
+    } else if (((event->key() <= Qt::Key_Z && event->key() >= Qt::Key_A) ||
+                (event->key() <= Qt::Key_9 && event->key() >= Qt::Key_0) ||
+                (event->key() == Qt::Key_Space)) &&
+               event->modifiers() == Qt::NoModifier) {
         search_edit_->lineEdit()->setFocus();
     }
     QWidget::keyPressEvent(event);
