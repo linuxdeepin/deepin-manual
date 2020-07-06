@@ -18,18 +18,19 @@ export default class Main extends Component {
   }
   init(file, hash) {
     console.log("main init"+file);
-    if (file.indexOf('/') == -1) {
-      file = `${global.path}/${file}/${global.lang}/index.md`;
+    var filePath = file;
+    if (filePath.indexOf('/') == -1) {
+      filePath = `${global.path}/${file}/${global.lang}/index.md`;
     }
-    global.readFile(file, data => {
-      let { html, hlist } = m2h(file, data);
+    global.readFile(filePath, data => {
+      let { html, hlist } = m2h(filePath, data);
       this.setState({
+        file,
         html,
         hlist,
         init: true,
         hash: hash ? hash : hlist[0].id
       });
-
       console.log("main init linktitle"+global.linktitle);
     
       if (global.linktitle != '')
@@ -52,7 +53,7 @@ export default class Main extends Component {
   }
 
   setHash(hash) {
-    console.log("main setHash:" + hash);
+    console.log("main setHash: " + hash);
     if (global.isLinkClicked) {
       console.log("main --setHash");
       global.hash = hash;
@@ -64,7 +65,7 @@ export default class Main extends Component {
   }
 
   setScrollTitle(hash){
-    // console.log("main title setHash:" + hash);
+    console.log("main setScrollTitle: " + hash);
     setTimeout(() => {
       global.hash = hash;
       global.oldHash = hash;
@@ -108,9 +109,17 @@ export default class Main extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log("main componentWillReceivePropss");
     let { file, hash } = nextProps.match.params;
-    this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null);
+    console.log("main componentWillReceivePropss: "+file+" "+hash+"  this.file:"+ this.state.file);
+    //仅当页面文件发生改变时,才刷新页面.
+    if (file != this.state.file)
+    {
+      this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null);
+    }
+  }
+
+  componentWillUpdate(){
+    console.log("main componentWillUpdate..");
   }
 
   componentWillUnmount(){
@@ -142,7 +151,7 @@ export default class Main extends Component {
             setHash={this.setHash.bind(this)}
             setScroll={this.setScroll.bind(this)}
           />
-          <div className="support-div"><img className="support" src="./pic.svg"></img></div>
+          <div className="support-div" onClick={() =>{console.log("support click...")}}><img className="support" src="./pic.svg"></img></div>
           <div className="tooltip-wp"></div>
         </div>
       )

@@ -19,6 +19,7 @@ export default class Article extends Component {
   }
   //滚动到锚点
   scrollToHash() {
+    console.log("article scrollToHash");
     let tempHash = this.hash;
     const hashNode = document.getElementById(tempHash);
 
@@ -27,7 +28,6 @@ export default class Article extends Component {
     }
 
     if (hashNode) {
-
       clearTimeout(this.timerObj);
       this.setState({ smoothScroll: true });
 
@@ -59,7 +59,9 @@ export default class Article extends Component {
       this.props.setHash(this.props.hlist[0].id);
     }
   }
+
   componentDidUpdate() {
+    console.log("article componentDidUpdate");
     if (this.hash != this.props.hash) {
       this.hash = this.props.hash;
       this.scrollToHash();
@@ -100,6 +102,7 @@ export default class Article extends Component {
   }
 
   componentWillUpdate() {
+    console.log("article componentWillUpdate");
     var alink_arr = document.getElementsByTagName('a');
     for(var i=0; i<alink_arr.length; i++) {
       alink_arr[i].onclick = function () {
@@ -109,10 +112,12 @@ export default class Article extends Component {
   }
 
   componentDidMount() {
+    console.log("article componentDidMount");
     this.componentDidUpdate();
   }
 
   componentWillReceiveProps(nextProps) {
+    console.log("article componentWillReceiveProps");
     if (nextProps.file != this.props.file) {
       this.hash = '';
       this.load = false;
@@ -149,6 +154,7 @@ export default class Article extends Component {
 
   //滚动事件
   scroll() {
+    console.log("article scroll");
     if (!this.load) {
       return;
     }
@@ -193,6 +199,7 @@ export default class Article extends Component {
   }
   //内部链接预览
   showPreview(appName, hash, rect) {
+    console.log("article showPreview");
     let file = `${global.path}/${appName}/${global.lang}/index.md`;
     global.readFile(file, data => {
       let { html } = m2h(file, data);
@@ -249,8 +256,25 @@ export default class Article extends Component {
       this.setState({ preview: { html, style, tClass } });
     });
   }
+
+  showPreviewTmp(appName, hash){
+    console.log("article showPreviewTmp");
+    let file = `${global.path}/${appName}/${global.lang}/index.md`;
+    global.readFile(file, data => {
+      console.log("showPreviewTmp...");
+      let { html } = m2h(file, data);
+      let d = document.createElement('div');
+      d.innerHTML = html;
+      let hashID = d.querySelector(`[text="${hash}"]`).id;
+
+      console.log("file: "+ appName + " hash: "+ hashID);
+      global.open(appName,hashID);
+    })
+  }
+
   //链接处理
   click(e) {
+    console.log("article click");
     if (this.state.preview != null) {
       this.setState({ preview: null });
     }
@@ -278,8 +302,9 @@ export default class Article extends Component {
           case href.indexOf(dmanProtocol):
             e.preventDefault();
             const [appName, hash] = href.slice(dmanProtocol.length + 1).split('#');
-            const rect = e.target.getBoundingClientRect();
-            this.showPreview(appName, hash, rect);
+            // const rect = e.target.getBoundingClientRect();
+            // this.showPreview(appName, hash, rect);
+            this.showPreviewTmp(appName,hash);
             return;
           case href.indexOf(httpProtocol):
             e.preventDefault();

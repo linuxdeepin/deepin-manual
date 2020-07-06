@@ -55,6 +55,7 @@ global.lastHistoryIndex = 0;
 global.lastAction = 'PUSH';
 
 global.readFile = function (fileName, callback) {
+  console.log("global.readFile...");
   var xhr = new XMLHttpRequest();
   xhr.open('GET', fileName);
   xhr.onload = function () {
@@ -108,13 +109,18 @@ var App = function (_React$Component) {
         global.qtObjects.titleBar.setBackwardButtonActive(false);
         global.qtObjects.titleBar.setForwardButtonActive(false);
         global.qtObjects.titleBar.backwardButtonClicked.connect(function () {
-          // console.log("backwardButtonClicked history.goBack()", this.context.router.history);
+          console.log("----------backwardButtonClicked----------");
           _this2.setState({ historyGO: _this2.state.historyGO - 1 });
+          console.log("==========backwardButtonClicked=========>");
           _this2.context.router.history.goBack();
+          console.log("back history location: " + _this2.context.router.history.location.pathname);
         });
         global.qtObjects.titleBar.forwardButtonClicked.connect(function () {
+          console.log("----------forwardButtonClicked----------");
           _this2.setState({ historyGO: _this2.state.historyGO + 1 });
+          console.log("==========forwardButtonClicked=========>");
           _this2.context.router.history.goForward();
+          console.log("forward history location: " + _this2.context.router.history.location.pathname);
         });
         global.qtObjects.search.mismatch.connect(function () {
           return _this2.setState({ mismatch: true });
@@ -203,12 +209,15 @@ var App = function (_React$Component) {
 
         if (_this3.context.router.history.canGo(-1 * goNum)) {
           _this3.context.router.history.go(-1 * goNum);
+          // this.context.router.history.go(0);
         }
       };
+
+      //打开某一个文件,并定位到具体hash
       global.open = function (file) {
         var hash = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
 
-        console.log("global.open..." + file);
+        console.log("global.open()....file:" + file + " hash:" + hash);
         //h0默认为应用名称，内容为空，所以当打开h0，将其变为h1概述的位置。
         if (hash == 'h0') {
           hash = 'h1';
@@ -220,6 +229,8 @@ var App = function (_React$Component) {
         var url = '/open/' + file + '/' + hash;
         console.log("global.open: " + url);
         _this3.context.router.history.push(url);
+
+        console.log("router.history--->", _this3.context.router.history);
 
         //延时通知qt对象, 以避免通过F1开启帮助时,会直接调用此JS方法,但未完成channnel中qt对象和js中global对象的绑定.
         setTimeout(function () {
@@ -502,6 +513,7 @@ var Article = function (_Component) {
     value: function scrollToHash() {
       var _this2 = this;
 
+      console.log("article scrollToHash");
       var tempHash = this.hash;
       var hashNode = document.getElementById(tempHash);
 
@@ -510,7 +522,6 @@ var Article = function (_Component) {
       }
 
       if (hashNode) {
-
         clearTimeout(this.timerObj);
         this.setState({ smoothScroll: true });
 
@@ -547,6 +558,7 @@ var Article = function (_Component) {
     value: function componentDidUpdate() {
       var _this3 = this;
 
+      console.log("article componentDidUpdate");
       if (this.hash != this.props.hash) {
         this.hash = this.props.hash;
         this.scrollToHash();
@@ -586,6 +598,7 @@ var Article = function (_Component) {
   }, {
     key: 'componentWillUpdate',
     value: function componentWillUpdate() {
+      console.log("article componentWillUpdate");
       var alink_arr = document.getElementsByTagName('a');
       for (var i = 0; i < alink_arr.length; i++) {
         alink_arr[i].onclick = function () {
@@ -596,11 +609,13 @@ var Article = function (_Component) {
   }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
+      console.log("article componentDidMount");
       this.componentDidUpdate();
     }
   }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
+      console.log("article componentWillReceiveProps");
       if (nextProps.file != this.props.file) {
         this.hash = '';
         this.load = false;
@@ -645,6 +660,7 @@ var Article = function (_Component) {
   }, {
     key: 'scroll',
     value: function scroll() {
+      console.log("article scroll");
       if (!this.load) {
         return;
       }
@@ -692,6 +708,7 @@ var Article = function (_Component) {
     value: function showPreview(appName, hash, rect) {
       var _this4 = this;
 
+      console.log("article showPreview");
       var file = global.path + '/' + appName + '/' + global.lang + '/index.md';
       global.readFile(file, function (data) {
         var _m2h = (0, _mdToHtml2.default)(file, data),
@@ -752,11 +769,32 @@ var Article = function (_Component) {
         _this4.setState({ preview: { html: html, style: style, tClass: tClass } });
       });
     }
+  }, {
+    key: 'showPreviewTmp',
+    value: function showPreviewTmp(appName, hash) {
+      console.log("article showPreviewTmp");
+      var file = global.path + '/' + appName + '/' + global.lang + '/index.md';
+      global.readFile(file, function (data) {
+        console.log("showPreviewTmp...");
+
+        var _m2h2 = (0, _mdToHtml2.default)(file, data),
+            html = _m2h2.html;
+
+        var d = document.createElement('div');
+        d.innerHTML = html;
+        var hashID = d.querySelector('[text="' + hash + '"]').id;
+
+        console.log("file: " + appName + " hash: " + hashID);
+        global.open(appName, hashID);
+      });
+    }
+
     //链接处理
 
   }, {
     key: 'click',
     value: function click(e) {
+      console.log("article click");
       if (this.state.preview != null) {
         this.setState({ preview: null });
       }
@@ -788,9 +826,11 @@ var Article = function (_Component) {
                   _href$slice$split2 = _slicedToArray(_href$slice$split, 2),
                   appName = _href$slice$split2[0],
                   hash = _href$slice$split2[1];
+              // const rect = e.target.getBoundingClientRect();
+              // this.showPreview(appName, hash, rect);
 
-              var rect = e.target.getBoundingClientRect();
-              this.showPreview(appName, hash, rect);
+
+              this.showPreviewTmp(appName, hash);
               return;
             case href.indexOf(httpProtocol):
               e.preventDefault();
@@ -1195,21 +1235,22 @@ var Main = function (_Component) {
       var _this2 = this;
 
       console.log("main init" + file);
-      if (file.indexOf('/') == -1) {
-        file = global.path + '/' + file + '/' + global.lang + '/index.md';
+      var filePath = file;
+      if (filePath.indexOf('/') == -1) {
+        filePath = global.path + '/' + file + '/' + global.lang + '/index.md';
       }
-      global.readFile(file, function (data) {
-        var _m2h = (0, _mdToHtml2.default)(file, data),
+      global.readFile(filePath, function (data) {
+        var _m2h = (0, _mdToHtml2.default)(filePath, data),
             html = _m2h.html,
             hlist = _m2h.hlist;
 
         _this2.setState({
+          file: file,
           html: html,
           hlist: hlist,
           init: true,
           hash: hash ? hash : hlist[0].id
         });
-
         console.log("main init linktitle" + global.linktitle);
 
         if (global.linktitle != '') {
@@ -1230,7 +1271,7 @@ var Main = function (_Component) {
   }, {
     key: 'setHash',
     value: function setHash(hash) {
-      console.log("main setHash:" + hash);
+      console.log("main setHash: " + hash);
       if (global.isLinkClicked) {
         console.log("main --setHash");
         global.hash = hash;
@@ -1245,7 +1286,7 @@ var Main = function (_Component) {
     value: function setScrollTitle(hash) {
       var _this3 = this;
 
-      // console.log("main title setHash:" + hash);
+      console.log("main setScrollTitle: " + hash);
       setTimeout(function () {
         global.hash = hash;
         global.oldHash = hash;
@@ -1296,12 +1337,20 @@ var Main = function (_Component) {
   }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
-      console.log("main componentWillReceivePropss");
       var _nextProps$match$para = nextProps.match.params,
           file = _nextProps$match$para.file,
           hash = _nextProps$match$para.hash;
 
-      this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null);
+      console.log("main componentWillReceivePropss: " + file + " " + hash + "  this.file:" + this.state.file);
+      //仅当页面文件发生改变时,才刷新页面.
+      if (file != this.state.file) {
+        this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null);
+      }
+    }
+  }, {
+    key: 'componentWillUpdate',
+    value: function componentWillUpdate() {
+      console.log("main componentWillUpdate..");
     }
   }, {
     key: 'componentWillUnmount',
@@ -1345,7 +1394,9 @@ var Main = function (_Component) {
         }),
         _react2.default.createElement(
           'div',
-          { className: 'support-div' },
+          { className: 'support-div', onClick: function onClick() {
+              console.log("support click...");
+            } },
           _react2.default.createElement('img', { className: 'support', src: './pic.svg' })
         ),
         _react2.default.createElement('div', { className: 'tooltip-wp' })
@@ -1474,8 +1525,7 @@ var Nav = function (_Component) {
   }, {
     key: 'shouldComponentUpdate',
     value: function shouldComponentUpdate(newProps, newState) {
-      console.log("global.hash" + global.hash);
-      console.log("shouldComponentUpdate newProps:" + newProps.hash + ", old hash:" + global.oldHash);
+      console.log("nav shouldComponentUpdate newProps:" + newProps.hash + ", old hash:" + global.oldHash);
 
       if (' ' == global.hash) {
         return true;
@@ -1500,11 +1550,12 @@ var Nav = function (_Component) {
   }, {
     key: 'componentWillUpdate',
     value: function componentWillUpdate() {
-      console.log("componentWillUpdate");
+      console.log("nav componentWillUpdate");
     }
   }, {
     key: 'componentDidUpdate',
     value: function componentDidUpdate() {
+      console.log("nav componentDidUpdate");
       var hashDOM = _reactDom2.default.findDOMNode(this).querySelector('.hash');
       if (hashDOM == null) {
         return;
@@ -1549,52 +1600,6 @@ var Nav = function (_Component) {
       e.preventDefault();
       document.getSelection().empty();
     }
-    /*
-      mouseOver(e){
-        var value =  e.currentTarget.innerHTML;
-        console.log("mouse over:" + value);
-        // var showFloatTimer=null;
-        
-        // function(event){
-          clearTimeout(this.showFloatTimer);
-          this.showFloatTimer=setTimeout(function(){
-              $('.tooltip-wp').attr('data-title', value); //动态设置data-title属性
-              $('.tooltip-wp').fadeIn(200);//浮动框淡出
-          },300);
-      }
-    
-      mouseOut(e){
-        console.log("mouse out" + e.target.getAttribute('cid'));
-        $('.tooltip-wp').hide();
-        // }
-      }
-    
-      mouseMove(e){
-        console.log("mouse move : ");
-    
-        var xClient = e.clientX;
-        var yClient = e.clientY;
-        console.log(" --:"+ xClient + "  "+ yClient);
-    
-        var xPage = e.pageX;
-        var yPage = e.pageY + 20;
-        var canRun=true;
-        // return function(){//e是mousemove的event参数
-            if(!canRun){return;}//如果有一个定时方法，直接返回
-            canRun=false;
-            setTimeout(function(){
-                var top = e.pageY+5;
-                var left = e.pageX+5;
-                $('.tooltip-wp').css({
-                    'top' : yPage + 'px',
-                    'left': xPage+ 'px'
-                });
-                canRun=true;
-            },150);
-        
-      }
-      */
-
   }, {
     key: 'render',
     value: function render() {
@@ -1663,11 +1668,8 @@ var Nav = function (_Component) {
                 key: h.id,
                 cid: h.id,
                 type: h.type,
-                className: _this2.props.hash == h.id ? 'h hash' : 'h'
-                // onMouseOver={this.mouseOver.bind(this)}
-                // onMouseOut={this.mouseOut.bind(this)}
-                // onMouseMove={this.mouseMove.bind(this)}
-                , onMouseOver: function onMouseOver(e) {
+                className: _this2.props.hash == h.id ? 'h hash' : 'h',
+                onMouseOver: function onMouseOver(e) {
                   return _this2.props.onNavOver(e);
                 },
                 onMouseOut: function onMouseOut(e) {

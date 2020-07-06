@@ -88,6 +88,24 @@ QList<AppInfo> ManualProxy::sortAppList(QMultiMap<qlonglong, AppInfo> map)
 
 ManualProxy::~ManualProxy() {}
 
+QString ManualProxy::getSystemManualDir()
+{
+    QString strMANUAL_DIR = DMAN_MANUAL_DIR;
+    int nType = Dtk::Core::DSysInfo::deepinType();
+    if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
+        strMANUAL_DIR += "/server";
+    } else if (Dtk::Core::DSysInfo::DeepinPersonal == (Dtk::Core::DSysInfo::DeepinType)nType) {
+        strMANUAL_DIR += "/personal";
+    } else {
+        if (Dtk::Core::DSysInfo::isCommunityEdition()) {
+            strMANUAL_DIR += "/community";
+        } else {
+            strMANUAL_DIR += "/professional";
+        }
+    }
+    return strMANUAL_DIR;
+}
+
 QStringList ManualProxy::getSystemManualList()
 {
     const QHash<QString, QString> kAppNameMap = {

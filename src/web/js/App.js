@@ -22,6 +22,7 @@ global.lastHistoryIndex = 0;
 global.lastAction = 'PUSH';
 
 global.readFile = (fileName, callback) => {
+  console.log("global.readFile...");
   let xhr = new XMLHttpRequest();
   xhr.open('GET', fileName);
   xhr.onload = () => {
@@ -65,13 +66,18 @@ class App extends React.Component {
       global.qtObjects.titleBar.setBackwardButtonActive(false);
       global.qtObjects.titleBar.setForwardButtonActive(false);
       global.qtObjects.titleBar.backwardButtonClicked.connect(() => {
-        // console.log("backwardButtonClicked history.goBack()", this.context.router.history);
+        console.log("----------backwardButtonClicked----------");
         this.setState({ historyGO: this.state.historyGO - 1 });
+        console.log("==========backwardButtonClicked=========>");
         this.context.router.history.goBack();
+        console.log("back history location: "+this.context.router.history.location.pathname);
       });
       global.qtObjects.titleBar.forwardButtonClicked.connect(() => {
+        console.log("----------forwardButtonClicked----------");
         this.setState({ historyGO: this.state.historyGO + 1 });
+        console.log("==========forwardButtonClicked=========>");
         this.context.router.history.goForward();
+        console.log("forward history location: "+this.context.router.history.location.pathname);
       });
       global.qtObjects.search.mismatch.connect(() =>
         this.setState({ mismatch: true })
@@ -149,10 +155,13 @@ class App extends React.Component {
 
       if (this.context.router.history.canGo(-1 * goNum)) {
         this.context.router.history.go(-1 * goNum);
+        // this.context.router.history.go(0);
       }
     };
+
+    //打开某一个文件,并定位到具体hash
     global.open = (file, hash = '') => {
-      console.log("global.open..."+ file);
+      console.log("global.open()....file:"+ file + " hash:" + hash);
       //h0默认为应用名称，内容为空，所以当打开h0，将其变为h1概述的位置。
       if (hash == 'h0')
       {
@@ -165,6 +174,9 @@ class App extends React.Component {
       let url = `/open/${file}/${hash}`;
       console.log("global.open: " +url);
       this.context.router.history.push(url);
+
+
+      console.log("router.history--->", this.context.router.history);
 
       //延时通知qt对象, 以避免通过F1开启帮助时,会直接调用此JS方法,但未完成channnel中qt对象和js中global对象的绑定.
       setTimeout(function(){
