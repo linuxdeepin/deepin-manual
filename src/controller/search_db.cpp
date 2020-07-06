@@ -136,7 +136,7 @@ void SearchDb::initSearchTable()
     }
 }
 
-void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
+void SearchDb::addSearchEntry(const QString &system, const QString &app_name, const QString &lang,
                               const QStringList &anchors, const QStringList &anchorIdList,
                               const QStringList &contents)
 {
@@ -144,19 +144,19 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
     Q_ASSERT(anchors.length() == contents.length());
     qDebug() << "addSearchEntry()" << app_name << lang << anchors;  // << contents;
 
-    QString strManualPath = "";
-    int nType = Dtk::Core::DSysInfo::deepinType();
-    if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
-        strManualPath += "/server";
-    } else if (Dtk::Core::DSysInfo::DeepinPersonal == (Dtk::Core::DSysInfo::DeepinType)nType) {
-        strManualPath += "/personal";
-    } else {
-        if (Dtk::Core::DSysInfo::isCommunityEdition()) {
-            strManualPath += "/community";
-        } else {
-            strManualPath += "/professional";
-        }
-    }
+    QString strManualPath = "/" + system;
+//    int nType = Dtk::Core::DSysInfo::deepinType();
+//    if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
+//        strManualPath += "/server";
+//    } else if (Dtk::Core::DSysInfo::DeepinPersonal == (Dtk::Core::DSysInfo::DeepinType)nType) {
+//        strManualPath += "/personal";
+//    } else {
+//        if (Dtk::Core::DSysInfo::isCommunityEdition()) {
+//            strManualPath += "/community";
+//        } else {
+//            strManualPath += "/professional";
+//        }
+//    }
 
     QStringList newContents = contents;
     for (int i = 0; i < contents.size(); i++) {

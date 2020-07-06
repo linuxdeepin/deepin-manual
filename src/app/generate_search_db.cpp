@@ -42,10 +42,8 @@ int main(int argc, char **argv)
     QDir::setCurrent(DMAN_SEARCH_WORK_DIR);
     QStringList list = QDir(DMAN_ORIG_MANUAL_DIR).entryList(QDir::NoDotAndDotDot | QDir::Dirs);
 
-//    for (const QString &dbType :
-//         QDir(DMAN_ORIG_MANUAL_DIR).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-    for (int i = 0; i < list.count(); i++) {
-        const QString dbType = list.at(i);
+    for (QString &dbType :
+            QDir(DMAN_ORIG_MANUAL_DIR).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
         QString strCreateDbPath = DMAN_SEARCH_CREATE_DB_PATH;
         strCreateDbPath += "/" + dbType;
 
@@ -78,9 +76,6 @@ int main(int argc, char **argv)
                 qDebug() << manualDir.path();
                 QString searchIndexFilePath = QString("%1/%2/%3/%4")
                                               .arg(manualDir.path(), "src", "web", "toSearchIndex.js");
-//                                              .arg(QString("src"))
-//                                              .arg(QString("web"))
-//                                              .arg(QString("toSearchIndex.js"));
                 qDebug() << searchIndexFilePath;
                 QString out, err;
                 //            QStringList cmdList = {"node"};
@@ -126,7 +121,7 @@ int main(int argc, char **argv)
 
                 if (!invalid_entry) {
                     qDebug() << "add search entry" << app_name << locale << anchors << endl;
-                    db.addSearchEntry(app_name, locale, anchors, anchorIdList, contents);
+                    db.addSearchEntry(dbType, app_name, locale, anchors, anchorIdList, contents);
                 }
             }
         }
