@@ -106,7 +106,7 @@ Selectors include **period**, **level**, **status**, **application list** and **
 
 ### Xorg Log
 
-1. On the main interface, click **Ｘorg Log**.
+1. On the main interface, click **Xorg Log**.
 2. You can see a list of Xorg logs which are detailed by "Date and time" and "Info".
 3. Click a log, you can see its particular info below the list, including process, user, time and info.
 

@@ -1214,7 +1214,8 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 > - 限制系统更新。
 > - 限制应用商店下载、应用更新。
 > - 限制使用语音功能，包括：桌面智能助手、语音朗读/语音听写、翻译/语音记事本转写。
-> - 关闭控制中心-网络账户（云同步）开关。
+> - 限制打开控制中心-网络账户（云同步）的开关。
+> - 限制开启开发者模式。
 
 
 **在线激活**
@@ -1242,6 +1243,7 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 1. 点击右下角托盘上的 ![uos1](icon/uos1.svg)进入界面。
 
 2. 点击 **输入序列号**，输入或复制正确的序列号，点击 **立即激活**。
+   > ![notes](icon/notes.svg)说明：UOS既支持16位的序列号，也支持25位的序列号。
 
    ![0|activation_code1](jpg/activation_code1.png)
 
@@ -1265,21 +1267,21 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 
 2. 离线激活界面显示二维码、序列号、机器ID及离线激活码输入框。
 
-   ![0|activate_offline1](jpg/activation_offline1.jpg)
+   ![0|activate_offline1](jpg/activation_offline1.png)
 
 3. 手机扫描二维码，手机端弹出激活界面，界面显示当前机器ID及序列号。
 
-   ![0|activate_offline2](jpg/activate_offline2.jpg)
+   ![0|activate_offline2](jpg/activate_offline2.png)
 
 4. 点击 **立即激活**，会弹出二次确认弹框，点击 **确定**。
 
 5. 跳转到激活成功界面，显示机器ID、序列号和离线激活码。
 
-   ![0|activate_offline3](jpg/activate_offline3.jpg)
+   ![0|activate_offline3](jpg/activate_offline3.png)
 
 6. 手动将手机端的离线激活码输入电脑端的离线激活码输入框。
 
-   ![0|activate_offline4](jpg/activation_offline4.jpg)
+   ![0|activate_offline4](jpg/activation_offline4.png)
 
 7. 点击 **离线激活**，跳转到激活成功界面。
 
@@ -1326,8 +1328,7 @@ UOS提供初始化备份、控制中心备份的备份方式。
 2. 选择 **备份/还原** > **备份**，设置备份模式和备份文件的保存路径。
    备份模式：全盘备份、系统备份
    - 全盘备份：备份全磁盘的系统文件和用户文件
-
-   - 系统备份：不保留用户数据时，备份根分区和启动分区的文件；保留用户数据时，备份根分区、启动分区、opt分区、home分区文件。
+   - 系统备份：备份根分区、启动分区
 
    > ![attention](icon/attention.svg)注意： 全盘备份无法备份在自己本身的磁盘里，只能备份在其它存储介质中；系统备份设置了文件默认存放位置，当存放空间不足时，用户可以手动更改备份文件的存放路径。
 
