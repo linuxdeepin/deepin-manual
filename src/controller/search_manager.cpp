@@ -77,6 +77,8 @@ SearchManager::~SearchManager()
     db_thread_->wait();
     delete db_thread_;
     db_thread_ = nullptr;
+    delete db_;
+    db_ = nullptr;
 }
 
 }  // namespace dman

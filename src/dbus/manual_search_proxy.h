@@ -48,7 +48,7 @@ private:
     void connectToSender();
 
     QDBusConnection m_dbusConn;
-    QList<QHash<QString, QString>> winInfoList;
+    //QList<QHash<QString, QString>> winInfoList;
 };
 
 #endif  // DEEPIN_MANUAL_DBUS_MANUAL_SEARCH_PROXY_H

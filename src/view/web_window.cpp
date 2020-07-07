@@ -333,6 +333,29 @@ void WebWindow::updateBtnBox()
     }
 }
 
+void WebWindow::openjsPage(const QString &app_name, const QString &title_name)
+{
+    if (app_name.isEmpty()) {
+        web_view_->page()->runJavaScript("index()");
+    } else {
+        QString real_path(app_name);
+        if (real_path.contains('/')) {
+            // Open markdown file with absolute path.
+            QFileInfo info(real_path);
+            real_path = info.canonicalFilePath();
+            web_view_->page()->runJavaScript(QString("open('%1')").arg(real_path));
+        } else {
+            // Open system manual.
+            web_view_->page()->runJavaScript(QString("open('%1')").arg(app_name));
+        }
+
+        if (!title_name.isEmpty()) {
+            web_view_->page()->runJavaScript(QString("linkTitle('%1')").arg(title_name));
+        }
+    }
+
+}
+
 void WebWindow::saveWindowSize()
 {
     // 记录最后一个正常窗口的大小
@@ -513,6 +536,7 @@ void WebWindow::onTitleBarEntered()
         completion_window_->onEnterPressed();
     }
 }
+
 
 void WebWindow::onWebPageLoadFinished(bool ok)
 {

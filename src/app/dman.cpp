@@ -61,8 +61,6 @@ int main(int argc, char **argv)
 
     dman::ArgumentParser argument_parser;
     dman::WindowManager window_manager;
-    QObject::connect(&argument_parser, &dman::ArgumentParser::onNewAppOpen, &window_manager,
-                     &dman::WindowManager::onNewAppOpen);
 
     if (argument_parser.parseArguments()) {
         qDebug() << "argument_parser.parseArguments()";
@@ -80,6 +78,7 @@ int main(int argc, char **argv)
                      &window_manager, &dman::WindowManager::openManualWithSearch);
     // Send openManualRequested() signals after slots connected.
     argument_parser.openManualsDelay();
+
 
     // save theme
     DApplicationSettings dApplicationSettings;

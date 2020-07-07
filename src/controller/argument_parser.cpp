@@ -36,7 +36,7 @@ namespace dman {
 
 namespace {
 
-QString ConvertOldDmanPath(const QString& app_name)
+QString ConvertOldDmanPath(const QString &app_name)
 {
     const QStringList parts = app_name.split('/');
     const int dman_index = parts.indexOf("dman");
@@ -48,7 +48,7 @@ QString ConvertOldDmanPath(const QString& app_name)
 
 }  // namespace
 
-ArgumentParser::ArgumentParser(QObject* parent)
+ArgumentParser::ArgumentParser(QObject *parent)
     : QObject(parent)
 {
 }
@@ -65,16 +65,16 @@ bool ArgumentParser::parseArguments()
 
     // Register dbus service.
     QDBusConnection conn = QDBusConnection::sessionBus();
-    ManualOpenProxy* proxy = new ManualOpenProxy(this);
+    ManualOpenProxy *proxy = new ManualOpenProxy(this);
     connect(proxy, &ManualOpenProxy::openManualRequested, this,
             &ArgumentParser::onOpenAppRequested);
     connect(proxy, &ManualOpenProxy::searchRequested, this, &ArgumentParser::onSearchRequested);
 
-    ManualOpenAdapter* adapter = new ManualOpenAdapter(proxy);
+    ManualOpenAdapter *adapter = new ManualOpenAdapter(proxy);
     Q_UNUSED(adapter);
 
     if (!conn.registerService(kManualOpenService) ||
-        !conn.registerObject(kManualOpenIface, proxy)) {
+            !conn.registerObject(kManualOpenIface, proxy)) {
         qDebug() << "Failed to register dbus";
 
         // Failed to register dbus service.
@@ -89,19 +89,19 @@ bool ArgumentParser::parseArguments()
                 qDebug() << "position_args.size() > 1:" << position_args.size();
             }
 
-            ManualOpenInterface* iface = new ManualOpenInterface(
+            ManualOpenInterface *iface = new ManualOpenInterface(
                 kManualOpenService, kManualOpenIface, QDBusConnection::sessionBus(), this);
 
             if (iface->isValid()) {
                 // Call dbus interface.
                 // Only parse positional arguments.
-                for (const QString& arg : position_args) {
+                for (const QString &arg : position_args) {
                     iface->Open(arg);
                 }
             } else {
                 // It may fail to register dbus service in root session.
                 // Create new instance.
-                for (const QString& manual : position_args) {
+                for (const QString &manual : position_args) {
                     manuals_.append(manual);
                 }
                 return false;
@@ -113,7 +113,7 @@ bool ArgumentParser::parseArguments()
             qDebug() << "argName:" << argName;
 
             if (argName == QString(kAppProcessName) ||
-                argName.endsWith("/" + QString(kAppProcessName))) {
+                    argName.endsWith("/" + QString(kAppProcessName))) {
                 qDebug() << "emit onNewAppOpen";
                 emit onNewAppOpen();
             }
@@ -130,7 +130,7 @@ bool ArgumentParser::parseArguments()
             }
         } else {
             // Only parse positional arguments.
-            for (const QString& manual : position_args) {
+            for (const QString &manual : position_args) {
                 manuals_.append(manual);
             }
         }
@@ -142,13 +142,13 @@ bool ArgumentParser::parseArguments()
 void ArgumentParser::openManualsDelay()
 {
     qDebug() << "call openManualsDelay";
-    for (const QString& manual : manuals_) {
+    for (const QString &manual : manuals_) {
         qDebug() << Q_FUNC_INFO << manual;
         this->onOpenAppRequested(manual);
     }
 }
-
-void ArgumentParser::onOpenAppRequested(const QString& app_name, const QString& title_name)
+/*** Ｆ１　启动时调用　2020-06-28 18:03:30 wangml ***/
+void ArgumentParser::onOpenAppRequested(const QString &app_name, const QString &title_name)
 {
     const QString compact_app_name = ConvertOldDmanPath(app_name);
     const QString title = Utils::translateTitle(title_name);
@@ -156,7 +156,7 @@ void ArgumentParser::onOpenAppRequested(const QString& app_name, const QString& 
     emit this->openManualRequested(compact_app_name, title);
 }
 
-void ArgumentParser::onSearchRequested(const QString& keyword)
+void ArgumentParser::onSearchRequested(const QString &keyword)
 {
     qDebug() << Q_FUNC_INFO << keyword;
     emit this->openManualWithSearchRequested("", keyword);
