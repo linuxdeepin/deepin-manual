@@ -18,7 +18,6 @@
     margin: 0px 10px 0px 10px;
     background-color: var(--nav-background-color);
     border-radius: 8px;
-
     .read {
       position: absolute;
       width: 90%;
@@ -35,6 +34,19 @@
       
       color: var(--article-read-word-color);
       outline: 0px;
+      .version-info {
+        margin-top: 20px;     
+        border-top: 1px solid var(--index-h2-color);
+        padding-top: 10px;
+        color: #414d68;
+        span {
+          padding-right: 10px;
+        }
+        a{
+          float:right;
+          color:#0081FF;
+        }
+      }
       h2 {
         font-weight: normal;
         font-size: 1.5rem;
@@ -231,7 +243,7 @@
        top: -4px;
        box-shadow: 0 -1px rgba(0, 0, 0, 0.1), -1px 0 rgba(0, 0, 0, 0.1);
      }
-   }
+   }  
    #contextMenu {
      user-select: none;
      font-size: 0.9rem;
