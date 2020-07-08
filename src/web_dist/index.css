@@ -365,7 +365,7 @@ body {
     border-radius: 8px;
     font-weight: bold; }
     #nav .hash:hover {
-      background-color: var(--nav-hash-word-color); }
+      background-color: var(--nav-hash-hover-color); }
 
 #search {
   width: 80%;
