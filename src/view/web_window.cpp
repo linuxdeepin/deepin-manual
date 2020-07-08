@@ -623,12 +623,16 @@ void WebWindow::onWebPageLoadFinished(bool ok)
             QString real_path(app_name_);
             if (real_path.contains('/')) {
                 // Open markdown file with absolute path.
-                QFileInfo info(real_path);
-                real_path = info.canonicalFilePath();
-                web_view_->page()->runJavaScript(QString("open('%1')").arg(real_path));
+                QTimer::singleShot(150, this, [&]() {
+                    QFileInfo info(real_path);
+                    real_path = info.canonicalFilePath();
+                    web_view_->page()->runJavaScript(QString("open('%1')").arg(real_path));
+                });
             } else {
                 // Open system manual.
-                web_view_->page()->runJavaScript(QString("open('%1')").arg(app_name_));
+                QTimer::singleShot(150, this, [&]() {
+                    web_view_->page()->runJavaScript(QString("open('%1')").arg(app_name_));
+                });
             }
 
             if (!title_name_.isEmpty()) {

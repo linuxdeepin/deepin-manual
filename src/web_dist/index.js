@@ -499,7 +499,14 @@ var Article = function (_Component) {
       var _this2 = this;
 
       var tempHash = this.hash;
+
+      // if (tempHash == 'h21')
+      // {
+      //   tempHash = 'h250';
+      // }
+
       var hashNode = document.getElementById(tempHash);
+      console.log("article scrollToHash temphash: " + tempHash + " " + hashNode);
 
       if (this.state.preview != null) {
         this.setState({ preview: null });
@@ -543,6 +550,7 @@ var Article = function (_Component) {
     value: function componentDidUpdate() {
       var _this3 = this;
 
+      console.log("article componentDidUpdate.." + this.hash + " props hash->" + this.props.hash);
       if (this.hash != this.props.hash) {
         this.hash = this.props.hash;
         this.scrollToHash();
@@ -582,6 +590,7 @@ var Article = function (_Component) {
   }, {
     key: 'componentWillUpdate',
     value: function componentWillUpdate() {
+      console.log("article componentWillUpdate..");
       var alink_arr = document.getElementsByTagName('a');
       for (var i = 0; i < alink_arr.length; i++) {
         alink_arr[i].onclick = function () {
@@ -597,6 +606,7 @@ var Article = function (_Component) {
   }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
+      console.log("article componentWillReceiveProps..");
       if (nextProps.file != this.props.file) {
         this.hash = '';
         this.load = false;
