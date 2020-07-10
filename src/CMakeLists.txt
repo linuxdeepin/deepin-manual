@@ -108,16 +108,10 @@ set(DMAN_SEARCH_LINK_LIBS
 
 
 set(BASE_FILES
-    base/command.cpp
-    base/command.h
     base/consts.cpp
     base/consts.h
-    base/file_util.cpp
-    base/file_util.h
     base/utils.cpp
     base/utils.h
-    base/sysinfo.cpp
-    base/sysinfo.h
     )
 
 set(CONTROLLER_FILES
@@ -170,8 +164,6 @@ set(VIEW_FILES
     view/search_proxy.h
     view/theme_proxy.cpp
     view/theme_proxy.h
-    view/theme_manager.cpp
-    view/theme_manager.h
     view/title_bar_proxy.cpp
     view/title_bar_proxy.h
     view/settings_proxy.h
@@ -298,5 +290,8 @@ install(DIRECTORY ${CMAKE_SOURCE_DIR}/manual-assets
 
 install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/web_dist
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
+
+install(FILES ${CMAKE_SOURCE_DIR}/manual-assets/deepin-manual.svg
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/scalable/apps/)
 
 string(TOLOWER ${CMAKE_SYSTEM_PROCESSOR} LOWERCASE_CMAKE_SYSTEM_PROCESSOR)

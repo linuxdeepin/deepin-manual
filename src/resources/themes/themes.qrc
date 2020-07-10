@@ -21,5 +21,6 @@
         <file>light/TitleBar.css</file>
         <file>common/images/search_indicator_dark.svg</file>
         <file>common/images/search_indicator_light.svg</file>
+        <file>common/images/search_indicator_white.svg</file>
     </qresource>
 </RCC>

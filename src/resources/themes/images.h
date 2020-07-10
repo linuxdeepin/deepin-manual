@@ -26,6 +26,7 @@ namespace dman {
 extern const char kImageDeepinManual[];
 extern const char kImageLightSearchIcon[];
 extern const char kImageDarkSearchIcon[];
+extern const char kImageWhiteSearchIcon[];
 
 }  // namespace
 
