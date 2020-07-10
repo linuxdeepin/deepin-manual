@@ -34,7 +34,7 @@
 
 在文档查看器界面上，按下键盘上的 **Ctrl+Shift+ ？**组合键来查看快捷键，熟练地使用快捷键，将大大提升您的操作效率。
 
-![1|hotkey](jpg/hotkey.png)
+![1|hotkey](jpg/hotkey.jpg)
 
 
 ## 基本功能
@@ -64,7 +64,7 @@
 
 - 使用![Ctrl](icon/Ctrl.svg) + ![S](icon/S.svg)组合键保存当前文件。
 - 点击![icon_menu](icon/icon_menu.svg) > **保存**，保存文件。
-   
+  
    > ![tips](icon/tips.svg)窍门：您还可以使用 **Ctrl+Shift+S** 或点击![icon_menu](icon/icon_menu.svg) > **另存为**，另存文件。
 
 
@@ -280,7 +280,7 @@
 1. 在文档查看器界面，打开一个文件。
 2. 点击![icon_menu](icon/icon_menu.svg)>  **放大镜**。
 3. 将鼠标移动到页面需要查看的区域，则该区域内容放大。
-4. 再次点击一下放大镜或按下键盘上的 **Esc** 键或右键单击，即可取消放大镜功能。
+4. 按下键盘上的 **Esc** 键或右键单击，即可取消放大镜功能。
 
 
 

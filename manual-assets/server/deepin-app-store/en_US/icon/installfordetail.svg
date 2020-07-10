@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="102px" height="21px" viewBox="0 0 102 21" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>编组 2</title>
+    <defs>
+        <linearGradient x1="50%" y1="-0.0987951807%" x2="50%" y2="100.104819%" id="linearGradient-1">
+            <stop stop-color="#4BBBFE" offset="0%"></stop>
+            <stop stop-color="#1DA1F4" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="页面1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="详情页" transform="translate(-359.000000, -115.000000)">
+            <g transform="translate(60.000000, 55.000000)" id="icon">
+                <g transform="translate(151.000000, 58.000000)">
+                    <g>
+                        <g id="编组-2" transform="translate(148.000000, 2.000000)">
+                            <g id="installfordetail">
+                                <g id="编组">
+                                    <image id="位图" opacity="0.2" x="0.2" y="0.5333" width="101.76" height="20.16" xlink:href="data:image/png;base64,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"></image>
+                                    <g transform="translate(1.000000, 1.000000)" fill-rule="nonzero">
+                                        <path d="M5,17.3 C2.7,17.3 0.9,15.4 0.9,13.1 L0.9,4.8 C0.9,2.5 2.8,0.7 5,0.7 L95,0.7 C97.3,0.7 99.1,2.6 99.1,4.8 L99.1,13.1 C99.1,15.4 97.2,17.3 95,17.3 L5,17.3 Z" id="路径" fill="url(#linearGradient-1)"></path>
+                                        <path d="M95,0.8 C97.2,0.8 99,2.6 99,4.8 L99,13.1 C99,15.3 97.2,17.1 95,17.1 L5,17.1 C2.8,17.1 1,15.3 1,13.1 L1,4.8 C1,2.6 2.8,0.8 5,0.8 L95,0.8 M95,0.5 L5,0.5 C2.6,0.5 0.7,2.4 0.7,4.8 L0.7,13.1 C0.7,15.5 2.6,17.4 5,17.4 L95,17.4 C97.4,17.4 99.3,15.5 99.3,13.1 L99.3,4.8 C99.3,2.5 97.4,0.5 95,0.5 L95,0.5 Z" id="形状" fill="#1B96F7"></path>
+                                    </g>
+                                </g>
+                            </g>
+                            <g id="编组" transform="translate(33.000000, 4.000000)" fill="#FFFFFF" font-family="SourceHanSansSC-Normal, Source Han Sans SC" font-size="11" font-weight="normal" line-spacing="11">
+                                <text id="Install">
+                                    <tspan x="0" y="13"> Install </tspan>
+                                </text>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
