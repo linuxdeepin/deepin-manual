@@ -50,15 +50,15 @@ Calculator supports keyboard operation and fault-tolerant computing of special s
 
 - Historical Expression
 
-  - Click  =  in the current expression input area or press the ![Enter](icon/Enter.svg) key on the keyboard to perform calculation and display the calculated result in the current input box. The expression becomes historical expression. There is no limit on the number of historical expressions.
-  - Reedit: Click a single expression to reedit. The expression is displayed in the expression input area. After editing, press the ![Enter](icon/Enter.svg) key or = on the keyboard or click = in the expression input area to modify the result of historical expression and linkage expression.
+  - Click  =  in the current expression input area or press the **Enter** key on the keyboard to perform calculation and display the calculated result in the current input box. The expression becomes historical expression. There is no limit on the number of historical expressions.
+  - Reedit: Click a single expression to reedit. The expression is displayed in the expression input area. After editing, press the **Enter** key or = on the keyboard or click = in the expression input area to modify the result of historical expression and linkage expression.
   - Expression error: If the expression input is incorrect, it is unavailable to perform calculation and "Expression error" is displayed.
 
 - Input Expression
 
   - Large characters show the expression currently being entered in the area.
   
-  - Press ![Ctrl](icon/Ctrl.svg) + ![C](icon/C.svg) on the keyboard to copy the calculation result of the current expression to the system clipboard. If there is expression error, the current expression will be copied to the system clipboard.
+  - Press **Ctrl + C** on the keyboard to copy the calculation result of the current expression to the system clipboard. If there is expression error, the current expression will be copied to the system clipboard.
   - Percentage conversion rule:
 
     - Percentage is treated as operation symbol and converted to number directly. For example, when you input 1%, 0.01 is displayed on the interface.  When you input another 1, the number displayed will be 0.011. Input another %, the number displayed will be 0.00011.
@@ -73,13 +73,13 @@ Calculator supports keyboard operation and fault-tolerant computing of special s
 
   - When the calculation result is positive and greater than 16 digits, it is displayed in the following format: number + numbers of 15 digits after the decimal point+e+number.
 
-  - When the calculation result is decimal, it is displayed in the following format: number + numbers of 15 digits after the decimal point+e+number.
+  - When the calculation result is decimal and greater than 16 digits, it is displayed in the following format: number + numbers of 15 digits after the decimal point+e-number.
 
   ![0|scientific-notation](jpg/scientific-notation.png)
 
 ### Digital Linkage
 
-- It is available to continue entering operator after an expression displays its numerical result. The first number in the expression now is the calculation result of the previous one.  Take the current expression 10 + 20 = 30 for example. The displayed result is 30.  Input + and number 9 and a new expression will be formed, 30 + 9. Press the Enter key and the calculation result of the new expression will be 39.
+- It is available to continue entering operator after an expression displays its numerical result. The first number in the expression now is the calculation result of the previous one.  Take the current expression 10 + 20 = 30 for example. The displayed result is 30.  Input + and number 9 and a new expression will be formed, 30 + 9. Press the **Enter** key and the calculation result of the new expression will be 39.
 - After the two expressions are linked, modify the numbers and operators of the previous expression. If the calculation result changes, it will affect the result of the new expression linked to it. For example, the two expressions 10 + 20 = 30 and 30 +9 = 39 are linked. If the operator +  in the first expression is changed to *, the expression will be 10 x 20 = 200. The second expression will be changed to 200 + 9 = 209 automatically. Up to 9 expression linkages are supported according to this rule.
 -  In the process of re-editing an expression containing linked numbers, if the expression of linked numbers or linked numbers are modified incorrectly, the linkage can be released. 
 

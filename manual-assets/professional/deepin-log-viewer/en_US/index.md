@@ -43,30 +43,30 @@ You can run, close or create a shortcut for Log Viewer.
 
 ![0|search](jpg/search.png)
 
-### Selector
+### Filter
 
-Selectors include **period**, **level**, **status**, **application list** and **event type**.. 
-- Selecting by period: selecting in the order of log generating date
+Filtering parameters include **period**, **level**, **status**, **application list** and **event type**.. 
+- Filtering by period: Filtering in the order of log generating date
 
   Options include: "All", "Today", "3 days", "1 week", "1 month", and "3 months". Default option is "All".
 
-  Applicable for: system logs, kernel logs, dpkg logs, and application logs
+  Applicable for: "period" is not displayed only for boot logs, other kinds of logs support filtering by period.
 
-- Selecting by level: selecting by seriousness levels of events
+- Filtering by level: filtering by seriousness levels of events
 
   Options include: "All", "Emergency", "Allert", "Critical", "Error", "Warning", "Notice", "Info"and "Debug". Default option is "Info".
 
   Applicable for: system logs and application logs
 
-- Selecting by status: 
+- Filtering by status: 
 
-  only applicable for startup logs, options include "All", "OK", and "Failed". Default option is "All".
+  only applicable for boot logs, options include "All", "OK", and "Failed". Default option is "All".
 
-- Selecting by application list: 
+- Filtering by application list: 
 
-  only applicable for application logs, default option is the first one. 
+  only applicable for application logs, it's used to filter log files of applications, default option is the first one. 
   
-- Selecting by event type: 
+- Filtering by event type: 
   
   only applicable for boot-shutdown events, options include:  "All", "Login", "Reboot", and "Shutdown", the default option is "all".  
   
@@ -106,7 +106,7 @@ Selectors include **period**, **level**, **status**, **application list** and **
 
 ### Xorg Log
 
-1. On the main interface, click **Xorg Log**.
+1. On the main interface, click **Ｘorg Log**.
 2. You can see a list of Xorg logs which are detailed by "Date and time" and "Info".
 3. Click a log, you can see its particular info below the list, including process, user, time and info.
 
@@ -128,7 +128,7 @@ Selectors include **period**, **level**, **status**, **application list** and **
 3. Click a log, you can see its particular info below the list, including user, event type, username, and detailed info.
 ![0|power event](jpg/power event.png)
 
-> ![notes](icon/notes.svg)Notes: When using Log Viewer, if a prompt appears saying **Authentication is required to super permissions**, you can input UOS password to continue viewing.
+> ![notes](icon/notes.svg)Notes: When using Log Viewer, if a prompt appears saying **Authentication is required to view the log**, you can input login password to continue viewing.
 
 ![0|password](jpg/password.png)
 

@@ -64,7 +64,7 @@ You can use one of the following ways to open image files:
 
 
 
-> ![tips](icon/tips.svg)Tips: If the image size exceeds the window, a navigation window will appear at the lower left corner of the interface, which helps the user to fast locate image areas. You can click the top right corner of navigation window to close it and then it won't automatically show next time. You can select **Hide/Show navigation window** in the right-click context menu.
+> ![tips](icon/tips.svg)Tips: If the image size exceeds the window, a navigation window will appear at the lower left corner of the interface, which helps the user to fast locate image areas. You can click X at the top right corner of navigation window to close it and then it won't automatically show next time. You can select **Hide/Show navigation window** in the right-click context menu.
 
 > ![notess](icon/notes.svg)Notes: The Rotate and Delete icons are grayed out and disabled for system images.
 

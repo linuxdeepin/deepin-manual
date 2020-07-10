@@ -294,7 +294,7 @@ Click ![icon_menu](icon/icon_menu.svg) > **Settings** and you can perform the fo
 - Check **Code Fold Flag** and ![next](icon/next.svg)or![next](icon/next-down.svg) are displayed in the edit area. Right-click to select Fold/Unfold Current Level or Fold/Unfold All Levels to perform the corresponding operations.
 - Check **Show Line Number** to display the line number in the edit area.
 
-> ![tips](icon/tips.svg)Tips: You can also use ![Ctrl](icon/Ctrl.svg) + ![+](icon/+.svg)/ ![-](icon/-.svg) to adjust the font size, and press ![Ctrl](icon/Ctrl.svg) + ![O](icon/O.svg)to reset font size.
+> ![tips](icon/tips.svg)Tips: You can also use ![Ctrl](icon/Ctrl.svg) + ![+](icon/+.svg)/ ![-](icon/-.svg) to adjust the font size, and press ![Ctrl](icon/Ctrl.svg) + ![O](icon/O.svg)to restore default font size.
 
 #### Shortcuts Settings
 1. Click ![icon_menu](icon/icon_menu.svg) > **Settings** to view the current shortcut in the **Shortcuts** option.

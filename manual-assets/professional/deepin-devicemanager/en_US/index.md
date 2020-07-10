@@ -133,7 +133,7 @@ You can run, close or create a shortcut for Device Manager as follows.
 ### Printer
 
 1. On the main interface, click **Printer**.
-2. You can view a list of printers connected and info such as name, vendor, model, device RUI and so on.
+2. You can view a list of printers connected and info such as name, vendor, model, device URI and so on.
 
 ![0|printer](jpg/printer.png)
 

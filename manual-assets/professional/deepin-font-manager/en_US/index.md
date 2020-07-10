@@ -154,9 +154,9 @@ You can enable or disable a font via Font Manager.
 
    The disabled font will not be displayed in the **Active** list and is grayed out  in the other font set list with the status being "Disabled" .
 
-4.   You can also right-click **Enable** or **Disable** in All Fonts lists to finish the corresponding operation.
+4.   You can also right-click **Enable** or **Disable** in All Fonts lists to finish the corresponding operation. 
 
-> ![notes](icon/notes.svg)Notes: It supports enabling/disabling not only a single font but also batch fonts.
+> ![notes](icon/notes.svg)Notes: It supports enabling/disabling not only a single font but also batch fonts. System font could not be disabled.
 
 ### Delete Fonts
 
@@ -164,7 +164,7 @@ You can delete a font through Font Manager.
 
 > ![notes](icon/notes.svg)Notes: It supports deleting not only a single font but also batch fonts. System fonts cannot be deleted.
 
-1. Select a font in User on the Font Manager interface and right-click **Delete**.
+1. Select a font in **User** on the Font Manager interface and right-click **Delete**.
 2.  Click **Confirm** in the pop-up prompt dialogue box.
 3.  Please enter the authorization password in the pop-up authorization dialogue (if any) to finish deleting the font.
 

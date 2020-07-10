@@ -66,13 +66,13 @@ The monthly view is the default view and you can click to switch between differe
    
       - When all day is checked:
          - You can only select dates as starts and ends and cannot set hours and minutes. 
-         - Remind me: Never, on start day (9:00 AM), 1 day before  (9:00 am) (the default setting), 2 days before (9:00 am) and 1 week before
+         - Remind me: Never, On start day (9:00 AM), 1 day before (the default setting), 2 days before and 1 week before
       
       - When all day is not checked:
          - You can select dates, hours and minutes as starts and ends.
-         - Remind me: None, at time of event, 15 minutes before, 30 minutes before, one hour before, one day before and two days before. 
+         - Remind me: Never, At time of event, 15 minutes before, 30 minutes before, 1 hour before, 1 day before, 2 days before and 1 week before. 
    
-   - Repeat: Never, daily, weekdays, weekly, monthly or yearly.
+   - Repeat: Never, Daily, Weekdays, Weekly, Monthly or Yearly.
    
    - End Repeat: Never, after n times or on the date.
 

@@ -33,7 +33,7 @@ You can run, close or create shortcuts for screen capture by the following opera
 
 ## Operations
 
-### Sceenshot
+### Screenshot
 
 You can achieve quick screenshots  by the following ways:
 

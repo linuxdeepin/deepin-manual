@@ -148,7 +148,7 @@ Click ![icon_view](icon/icon_view.svg) and ![list_view](icon/list_view.svg) on t
 3. Select a location to store it.
 4. Select **Compress** to generate the compressed file.
 
-> ![notes](icon/notes.svg)Notes: Switch on **Advanced Options** to set password and split volumes sizes. **Encrypt thr archive** and **Split to volumes** are only applicable for some formats.
+> ![notes](icon/notes.svg)Notes: Switch on **Advanced Options** to set password and split volumes sizes. **Encrypt the archive** and **Split to volumes** are only applicable for some formats.
 
 ### Delete File/Folder
 

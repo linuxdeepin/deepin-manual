@@ -77,7 +77,7 @@ You can set display scaling, screen resolution, brightness and so on from the de
 1. Right-click the desktop.
 2. Click **Display Settings** to open the settings in Control Center.
 
-> ![notes](icon/notes.svg)Notes: For specific operations, please refer to [Display Settings](#Display Settings).
+> ![notes](icon/notes.svg)Notes: For specific operations, please refer to [Display](#Display).
 
 ### Change Wallpaper
 Select some elegant and fashionable wallpapers to beautify your desktop and make it distinctive.
@@ -559,7 +559,7 @@ Expand your desktop by multiple screens! Use VGA/HDMI/DP cable to connect your c
 
 > ![notes](icon/notes.svg)Notes: "Merge" means duplicate mode, "Split" means extend mode. 
 
-### Default Applications Settings
+### Default Application Settings
 If you have installed several applications with similar functions, such as text editor, choose one of them to be the default application to open that type of file.
 
 ![0|default](jpg/cc-navigation.png)
