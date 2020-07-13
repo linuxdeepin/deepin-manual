@@ -56,12 +56,7 @@ Sort the files on your desktop to make it organized and fit your needs.
 
 > ![tips](icon/tips.svg)Tips: Check **Auto arrange**, icons on the desktop will be listed in order automatically, and if an icon is removed, another one will fill in the blank.
 
-#### Auto Merge
-Check “Auto merge” to keep your files on the desktop organized. 
 
-When it is checked, all files and folders on the desktop will be automatically grouped into folders named by Videos, Music, Pictures, Documents, Applications, Others and Folders.
-
-![1|merge](jpg/merge.png)
 
 
 ### Adjust Icon Size
