@@ -147,10 +147,16 @@ void ArgumentParser::openManualsDelay()
         this->onOpenAppRequested(manual);
     }
 }
-/*** Ｆ１　启动时调用　2020-06-28 18:03:30 wangml ***/
+
+/**
+ * @brief ArgumentParser::onOpenAppRequested 打开对应模块帮助手册
+ * @param app_name   模块名称
+ * @param title_name 需要定位到的标题名称,如果为空,则定位在概述.
+ */
 void ArgumentParser::onOpenAppRequested(const QString &app_name, const QString &title_name)
 {
     const QString compact_app_name = ConvertOldDmanPath(app_name);
+    //通过语言映射表,将传入标题名称映射转换成对应名称.
     const QString title = Utils::translateTitle(title_name);
     qDebug() << Q_FUNC_INFO << compact_app_name << "---" << title;
     emit this->openManualRequested(compact_app_name, title);

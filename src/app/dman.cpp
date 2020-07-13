@@ -61,6 +61,11 @@ int main(int argc, char **argv)
 
     dman::ArgumentParser argument_parser;
     dman::WindowManager window_manager;
+    QObject::connect(&argument_parser, &dman::ArgumentParser::onNewAppOpen, &window_manager,
+                     &dman::WindowManager::onNewAppOpen);
+    QObject::connect(&argument_parser, &dman::ArgumentParser::openManualWithSearchRequested,
+                     &window_manager, &dman::WindowManager::openManualWithSearch);
+
 
     if (argument_parser.parseArguments()) {
         qDebug() << "argument_parser.parseArguments()";

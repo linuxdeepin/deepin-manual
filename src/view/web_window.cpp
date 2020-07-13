@@ -71,6 +71,8 @@ WebWindow::WebWindow(QWidget *parent)
     Dtk::Widget::DPlatformWindowHandle::enableDXcbForWindow(this, true);
     search_timer_.setSingleShot(true);
 
+    setAttribute(Qt::WA_InputMethodEnabled, true);
+
     this->initUI();
     this->initConnections();
     this->initShortcuts();
@@ -232,7 +234,7 @@ void WebWindow::initUI()
     QFrame *buttonFrame = new QFrame(this);
     buttonFrame->setLayout(buttonLayout);
 
-    search_edit_ = new SearchEdit(this);
+    search_edit_ = new SearchEdit;
     DFontSizeManager::instance()->bind(search_edit_, DFontSizeManager::T6, QFont::Normal);
     search_edit_->setObjectName("SearchEdit");
     search_edit_->setFixedSize(350, 44);
@@ -246,9 +248,10 @@ void WebWindow::initUI()
 
     this->titlebar()->addWidget(buttonFrame, Qt::AlignLeft);
     this->titlebar()->addWidget(search_edit_, Qt::AlignCenter);
-
     this->titlebar()->setSeparatorVisible(true);
     this->titlebar()->setIcon(QIcon::fromTheme("deepin-manual"));
+    //隐藏title阴影
+    this->setTitlebarShadowEnabled(false);
 
     search_proxy_ = new SearchProxy(this);
     title_bar_proxy_ = new TitleBarProxy(this);
@@ -272,6 +275,8 @@ void WebWindow::initUI()
         saveHeight = 680;
     }
     resize(QSize(saveWidth, saveHeight));
+
+    search_edit_->setFocus();
 
     this->setFocusPolicy(Qt::ClickFocus);
 }
@@ -534,6 +539,8 @@ void WebWindow::onTitleBarEntered()
     const QString text = textTemp.remove('\n').remove('\r').remove("\r\n");
     if (text.size() >= 1) {
         completion_window_->onEnterPressed();
+    } else if (textTemp.isEmpty()) {
+        m_backButton->click();
     }
 }
 
@@ -553,25 +560,7 @@ void WebWindow::onWebPageLoadFinished(bool ok)
             qsthemetype = "DarkType";
         }
         web_view_->page()->runJavaScript(QString("setTheme('%1')").arg(qsthemetype));
-        if (app_name_.isEmpty()) {
-            web_view_->page()->runJavaScript("index()");
-        } else {
-            QString real_path(app_name_);
-            if (real_path.contains('/')) {
-                // Open markdown file with absolute path.
-                QFileInfo info(real_path);
-                real_path = info.canonicalFilePath();
-                web_view_->page()->runJavaScript(QString("open('%1')").arg(real_path));
-            } else {
-                // Open system manual.
-                web_view_->page()->runJavaScript(QString("open('%1')").arg(app_name_));
-            }
-
-            if (!title_name_.isEmpty()) {
-                web_view_->page()->runJavaScript(QString("linkTitle('%1')").arg(title_name_));
-            }
-        }
-
+        openjsPage(app_name_, title_name_);
         QTimer::singleShot(100, [&]() {
             qDebug() << "show webview";
             qDebug() << Q_FUNC_INFO << 481;
@@ -585,7 +574,6 @@ void WebWindow::onWebPageLoadFinished(bool ok)
                     emit this->manualSearchByKeyword(keyword_);
                 }
             }
-
             if (this->settings_proxy_) {
                 qDebug() << Q_FUNC_INFO << 494;
                 auto fontInfo = this->fontInfo();
@@ -622,13 +610,54 @@ void WebWindow::onSearchAnchorResult(const QString &keyword, const SearchAnchorR
     }
 }
 
-bool WebWindow::eventFilter(QObject *watched, QEvent *event)
+void WebWindow::inputMethodEvent(QInputMethodEvent *e)
 {
-    if (event->type() == QEvent::KeyPress && qApp->activeWindow() == this &&
-            watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
+    if (!e->commitString().isEmpty()) {
+        search_edit_->lineEdit()->setText(e->commitString());
         search_edit_->lineEdit()->setFocus();
     }
 
+    QWidget::inputMethodEvent(e);
+}
+
+QVariant WebWindow::inputMethodQuery(Qt::InputMethodQuery prop) const
+{
+    switch (prop) {
+    case Qt::ImEnabled:
+        return true;
+    case Qt::ImCursorRectangle:
+    default: ;
+    }
+
+    return QWidget::inputMethodQuery(prop);
+}
+
+bool WebWindow::eventFilter(QObject *watched, QEvent *event)
+{
+
+    if (event->type() == QEvent::MouseButtonRelease && qApp->activeWindow() == this &&
+            watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
+        this->setFocus();
+    }
+
+    if (event->type() == QEvent::KeyPress && qApp->activeWindow() == this &&
+            watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
+        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+        if (keyEvent->key() == Qt::Key_V &&
+                keyEvent->modifiers().testFlag(Qt::ControlModifier)) {
+            const QString &clipboardText = QApplication::clipboard()->text();
+            // support Ctrl+V shortcuts.
+            if (!clipboardText.isEmpty()) {
+                search_edit_->lineEdit()->setText(clipboardText);
+                search_edit_->lineEdit()->setFocus();
+            }
+        } else if (((keyEvent->key() <= Qt::Key_Z && keyEvent->key() >= Qt::Key_A) ||
+                    (keyEvent->key() <= Qt::Key_9 && keyEvent->key() >= Qt::Key_0) ||
+                    (keyEvent->key() == Qt::Key_Space)) &&
+                   keyEvent->modifiers() == Qt::NoModifier) {
+            search_edit_->lineEdit()->setFocus();
+        }
+    }
     // Filters mouse press event only.
     if (event->type() == QEvent::MouseButtonPress && qApp->activeWindow() == this &&
             watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
@@ -664,8 +693,8 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
                                                               fontInfo.pixelSize());
         }
     }
-
     return QObject::eventFilter(watched, event);
+
 }
 
 void WebWindow::slot_ButtonHide()

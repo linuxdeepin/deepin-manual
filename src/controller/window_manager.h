@@ -63,8 +63,8 @@ private slots:
      * Remove window from window list.
      * @param app_name
      */
-    // void onWindowClosed(const QString &app_name);
-    void onWindowShown(WebWindow *window);
+    void onWindowClosed();
+    void onWindowShown();
 
 public slots:
     /**
@@ -73,8 +73,7 @@ public slots:
      */
     void openManual(const QString &app_name, const QString &title_name);
     void openManualWithSearch(const QString &app_name, const QString &keyword);
-
-    //void onNewAppOpen();
+    void onNewAppOpen();
 };
 
 }  // namespace dman
