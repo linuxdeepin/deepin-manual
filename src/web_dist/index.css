@@ -65,6 +65,16 @@ div {
       font-size: 0.9rem;
       color: var(--article-read-word-color);
       outline: 0px; }
+      #article #article_bg .read .version-info {
+        margin-top: 20px;
+        border-top: 1px solid var(--index-h2-color);
+        padding-top: 10px;
+        color: #414d68; }
+        #article #article_bg .read .version-info span {
+          padding-right: 10px; }
+        #article #article_bg .read .version-info a {
+          float: right;
+          color: #0081FF; }
       #article #article_bg .read h2 {
         font-weight: normal;
         font-size: 1.5rem;

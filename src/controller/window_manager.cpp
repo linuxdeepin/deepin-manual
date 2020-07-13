@@ -228,6 +228,9 @@ void WindowManager::onWindowShown()
 
     search_manager_ = currSearchManager();
     window->setSearchManager(search_manager_);
+    window->setAppName(curr_app_name_);
+    window->setTitleName(curr_title_name_);
+
     if (curr_keyword_.length() > 0) {
         window->setSearchKeyword(curr_keyword_);
     }

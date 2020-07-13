@@ -17,11 +17,12 @@ export default class Main extends Component {
     var showFloatTimer=null;
   }
   init(file, hash) {
-    console.log("main init"+file);
+    console.log("main init==>file:",file," hash:",hash);
     var filePath = file;
     if (filePath.indexOf('/') == -1) {
       filePath = `${global.path}/${file}/${global.lang}/index.md`;
     }
+  
     global.readFile(filePath, data => {
       let { html, hlist } = m2h(filePath, data);
       this.setState({
@@ -31,24 +32,6 @@ export default class Main extends Component {
         init: true,
         hash: hash ? hash : hlist[0].id
       });
-      console.log("main init linktitle"+global.linktitle);
-    
-      if (global.linktitle != '')
-      {
-        var nHash = '';
-        for (let i = 0; i < this.state.hlist.length; i++)
-        {
-          var element = this.state.hlist[i];
-
-          if (element.text == global.linktitle)
-          {
-            console.log("----------"+element.text);
-            nHash = element.id;
-          }
-        }
-        this.setScrollTitle(nHash);
-        global.linktitle = '';
-      }
     });
   }
 
@@ -64,16 +47,16 @@ export default class Main extends Component {
     this.setState({ hash });
   }
 
-  setScrollTitle(hash){
-    console.log("main setScrollTitle: " + hash);
-    setTimeout(() => {
-      global.hash = hash;
-      global.oldHash = hash;
-      global.isMouseClickNav = true;
-      global.isMouseScrollArticle = false;
-      this.setState({ hash });
-    },800);
-  }
+  // setScrollTitle(hash){
+  //   console.log("main setScrollTitle: " + hash);
+  //   setTimeout(() => {
+  //     global.hash = hash;
+  //     global.oldHash = hash;
+  //     global.isMouseClickNav = true;
+  //     global.isMouseScrollArticle = false;
+  //     this.setState({ hash });
+  //   },800);
+  // }
 
   setScroll(hash) {
     console.log("main setScroll:" + hash);
@@ -111,8 +94,8 @@ export default class Main extends Component {
   componentWillReceiveProps(nextProps) {
     let { file, hash } = nextProps.match.params;
     console.log("main componentWillReceivePropss: "+file+" "+hash+"  this.file:"+ this.state.file);
-    //仅当页面文件发生改变时,才刷新页面.
-    if (file != this.state.file)
+    //仅当页面文件发生改变时(文件改变或hash值发生改变),才刷新页面.
+    if (file != this.state.file || ((file == this.state.file) && (hash != this.state.hash)))
     {
       this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null);
     }
@@ -125,13 +108,14 @@ export default class Main extends Component {
   componentWillUnmount(){
     global.hash = ' ';
     global.oldHash = ' ';
-    global.linktitle = '';
     global.isMouseClickNav = false;
     global.isMouseScrollArticle = false;
     global.isLinkClicked = false;
   }
 
   render() {
+
+    console.log("main render....hash:",this.state.hash);
     return (
       this.state.init && (
         <div id="main">

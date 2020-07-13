@@ -257,20 +257,20 @@ export default class Article extends Component {
     });
   }
 
-  showPreviewTmp(appName, hash){
-    console.log("article showPreviewTmp");
-    let file = `${global.path}/${appName}/${global.lang}/index.md`;
-    global.readFile(file, data => {
-      console.log("showPreviewTmp...");
-      let { html } = m2h(file, data);
-      let d = document.createElement('div');
-      d.innerHTML = html;
-      let hashID = d.querySelector(`[text="${hash}"]`).id;
+  // showPreviewTmp(appName, hash){
+  //   console.log("article showPreviewTmp");
+    // let file = `${global.path}/${appName}/${global.lang}/index.md`;
+    // global.readFile(file, data => {
+    //   console.log("showPreviewTmp...");
+    //   let { html } = m2h(file, data);
+    //   let d = document.createElement('div');
+    //   d.innerHTML = html;
+    //   let hashID = d.querySelector(`[text="${hash}"]`).id;
 
-      console.log("file: "+ appName + " hash: "+ hashID);
-      global.open(appName,hashID);
-    })
-  }
+    //   console.log("file: "+ appName + " hash: "+ hashID);
+    //   global.open(appName,hashID);
+    // })
+  // }
 
   //链接处理
   click(e) {
@@ -304,7 +304,8 @@ export default class Article extends Component {
             const [appName, hash] = href.slice(dmanProtocol.length + 1).split('#');
             // const rect = e.target.getBoundingClientRect();
             // this.showPreview(appName, hash, rect);
-            this.showPreviewTmp(appName,hash);
+            // this.showPreviewTmp(appName,hash);
+            global.openTitle(appName,hash);
             return;
           case href.indexOf(httpProtocol):
             e.preventDefault();

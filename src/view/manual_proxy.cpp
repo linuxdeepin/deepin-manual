@@ -209,6 +209,11 @@ QStringList ManualProxy::getUsedAppList()
     return appList;
 }
 
+void ManualProxy::finishChannel()
+{
+    emit channelInit();
+}
+
 /*** 保存应用列表至配置文件并设置状态 2020-06-18 16:32:52 wangml ***/
 void ManualProxy::saveAppList(const QStringList &list)
 {

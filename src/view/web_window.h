@@ -135,10 +135,10 @@ private slots:
     void onSearchTextChangedDelay();
     void onTitleBarEntered();
     void onWebPageLoadFinished(bool ok);
+    void onChannelFinish();
 
     void onManualSearchByKeyword(const QString &keyword);
     void onACtiveColorChanged(QString, QMap<QString, QVariant>, QStringList);
-
 };
 
 }  // namespace dman

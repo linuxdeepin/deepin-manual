@@ -46,6 +46,8 @@ public:
     ~ManualProxy() override;
 signals:
     void WidgetLower();
+    void channelInit();
+
 public slots:
     QString getSystemManualDir();
     QStringList getSystemManualList();
@@ -57,7 +59,10 @@ public slots:
     void openExternalLink(const QString &url);
     void setApplicationState(const QString &appName);
     QStringList getUsedAppList();
-public:
+
+    void finishChannel();
+
+private:
     void saveAppList(const QStringList &list);
 
 private:

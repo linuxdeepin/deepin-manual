@@ -4,14 +4,13 @@ import { render } from 'react-dom';
 import { Router as Router, Switch, Route, Link } from 'react-router-dom';
 import { createMemoryHistory } from 'history'
 
+import m2h from './mdToHtml';
 import Index from './index.jsx';
 import Main from './main.jsx';
 import Search from './search.jsx';
-import sIndex from './searchIndex';
 
 global.hash = ' ';
 global.oldHash = ' ';
-global.linktitle = '';
 global.isMouseClickNav = false;
 global.isMouseScrollArticle = false;
 
@@ -57,7 +56,7 @@ class App extends React.Component {
       });
       global.i18n = i18n;
       global.qtObjects = channel.objects;
-      console.log("finsh global.qtObjects = channel.objects...");
+      
       channel.objects.manual.getSystemManualDir(path => {
         global.path = path;
         this.setState({ init: true });
@@ -106,7 +105,10 @@ class App extends React.Component {
           document.documentElement.style.setProperty(`--index-span-width`, '130px');
         }
       });
+      console.log("finsh global.qtObjects = channel.objects...");
+      global.qtObjects.manual.finishChannel();
     });
+   
   }
   themeChange(themeType) {
     global.setTheme(themeType);
@@ -184,10 +186,28 @@ class App extends React.Component {
       },200);
     };
 
-    global.linkTitle = (title) => {
-      console.log("===============");
-      console.log(title);
-      global.linktitle = title;
+    global.openTitle = (file, title = '') => {
+      console.log("global linkTitle==> file:" + file + " title: "+title);
+      if (title !== '')
+      {
+        let filePath = `${global.path}/${file}/${global.lang}/index.md`;
+        global.readFile(filePath, data => {
+          let { html } = m2h(filePath, data);
+          let d = document.createElement('div');
+          d.innerHTML = html;
+          let hashID = 'h0';
+          if (d.querySelector(`[text="${title}"]`))
+          {
+            hashID = d.querySelector(`[text="${title}"]`).id;
+          }
+          // console.log("file: "+ file + " hash: "+ hashID);
+          global.open(file,hashID);
+        })
+      }
+      else
+      {
+        global.open(file);
+      }
     };
 
     global.setHashWordColor = (strRgb) => {

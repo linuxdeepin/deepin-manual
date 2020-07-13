@@ -310,6 +310,7 @@ void WebWindow::initWebView()
     web_channel->registerObject("settings", settings_proxy_);
     web_view_->page()->setWebChannel(web_channel);
     connect(web_view_->page(), &QWebEnginePage::loadFinished, this, &WebWindow::onWebPageLoadFinished);
+    connect(manual_proxy_, &ManualProxy::channelInit, this, &WebWindow::onChannelFinish);
     connect(manual_proxy_, &ManualProxy::WidgetLower, this, &WebWindow::lower);
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
             theme_proxy_, &ThemeProxy::slot_ThemeChange);
@@ -351,14 +352,14 @@ void WebWindow::openjsPage(const QString &app_name, const QString &title_name)
             web_view_->page()->runJavaScript(QString("open('%1')").arg(real_path));
         } else {
             // Open system manual.
-            web_view_->page()->runJavaScript(QString("open('%1')").arg(app_name));
+//            web_view_->page()->runJavaScript(QString("open('%1')").arg(app_name));
+            web_view_->page()->runJavaScript(QString("openTitle('%1','%2')").arg(app_name, title_name));
         }
 
-        if (!title_name.isEmpty()) {
-            web_view_->page()->runJavaScript(QString("linkTitle('%1')").arg(title_name));
-        }
+//        if (!title_name.isEmpty()) {
+//            web_view_->page()->runJavaScript(QString("linkTitle('%1')").arg(title_name));
+//        }
     }
-
 }
 
 void WebWindow::saveWindowSize()
@@ -547,41 +548,113 @@ void WebWindow::onTitleBarEntered()
 
 void WebWindow::onWebPageLoadFinished(bool ok)
 {
-    //改变ｊs颜色
+    Q_UNUSED(ok)
+    /*
+       //改变ｊs颜色
+       setHashWordColor();
+       settingContextMenu();
+       qDebug() << Q_FUNC_INFO << " onWebPageLoadFinished :" << ok;
+       if (ok) {
+           QString qsthemetype = "Null";
+           DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
+           if (themeType == DGuiApplicationHelper::LightType) {
+               qsthemetype = "LightType";
+           } else if (themeType == DGuiApplicationHelper::DarkType) {
+               qsthemetype = "DarkType";
+           }
+           web_view_->page()->runJavaScript(QString("setTheme('%1')").arg(qsthemetype));
+           qDebug() << Q_FUNC_INFO << " app:" << app_name_ << " title:" << title_name_;
+           if (app_name_.isEmpty()) {
+               web_view_->page()->runJavaScript("index()");
+           } else {
+               QString real_path(app_name_);
+               if (real_path.contains('/')) {
+                   // Open markdown file with absolute path.
+                   QFileInfo info(real_path);
+                   real_path = info.canonicalFilePath();
+                   web_view_->page()->runJavaScript(QString("open('%1')").arg(real_path));
+               } else {
+                   // Open system manual.
+    //                web_view_->page()->runJavaScript(QString("open('%1')").arg(app_name_));
+                   web_view_->page()->runJavaScript(QString("openTitle('%1','%2')").arg(app_name_, title_name_));
+               }
+
+    //            if (!title_name_.isEmpty()) {
+    //                web_view_->page()->runJavaScript(QString("linkTitle('%1')").arg(title_name_));
+    //            }
+           }
+
+           QTimer::singleShot(100, [&]() {
+               qDebug() << "show webview";
+               qDebug() << Q_FUNC_INFO << 481;
+               web_view_->show();
+               qDebug() << Q_FUNC_INFO << 482;
+               if (first_webpage_loaded_) {
+                   first_webpage_loaded_ = false;
+                   qDebug() << Q_FUNC_INFO << 486;
+                   if (keyword_.length() > 0) {
+                       qDebug() << "first_webpage_loaded_ manualSearchByKeyword:" << keyword_;
+                       emit this->manualSearchByKeyword(keyword_);
+                   }
+               }
+
+               if (this->settings_proxy_) {
+                   qDebug() << Q_FUNC_INFO << 494;
+                   auto fontInfo = this->fontInfo();
+                   Q_EMIT this->settings_proxy_->fontChangeRequested(fontInfo.family(),
+                                                                     fontInfo.pixelSize());
+               }
+           });
+       }
+       */
+}
+
+/**
+ * @brief WebWindow::onChannelFinish  完成channel对象与Qt对象绑定后回调
+ */
+void WebWindow::onChannelFinish()
+{
+    qDebug() << Q_FUNC_INFO;
+
     setHashWordColor();
     settingContextMenu();
-    qDebug() << Q_FUNC_INFO << " onWebPageLoadFinished :" << ok;
-    if (ok) {
-        QString qsthemetype = "Null";
-        DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
-        if (themeType == DGuiApplicationHelper::LightType) {
-            qsthemetype = "LightType";
-        } else if (themeType == DGuiApplicationHelper::DarkType) {
-            qsthemetype = "DarkType";
-        }
-        web_view_->page()->runJavaScript(QString("setTheme('%1')").arg(qsthemetype));
-        openjsPage(app_name_, title_name_);
-        QTimer::singleShot(100, [&]() {
-            qDebug() << "show webview";
-            qDebug() << Q_FUNC_INFO << 481;
-            web_view_->show();
-            qDebug() << Q_FUNC_INFO << 482;
-            if (first_webpage_loaded_) {
-                first_webpage_loaded_ = false;
-                qDebug() << Q_FUNC_INFO << 486;
-                if (keyword_.length() > 0) {
-                    qDebug() << "first_webpage_loaded_ manualSearchByKeyword:" << keyword_;
-                    emit this->manualSearchByKeyword(keyword_);
-                }
-            }
-            if (this->settings_proxy_) {
-                qDebug() << Q_FUNC_INFO << 494;
-                auto fontInfo = this->fontInfo();
-                Q_EMIT this->settings_proxy_->fontChangeRequested(fontInfo.family(),
-                                                                  fontInfo.pixelSize());
-            }
-        });
+    //设置主题
+    QString qsthemetype = "Null";
+    DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
+    if (themeType == DGuiApplicationHelper::LightType) {
+        qsthemetype = "LightType";
+    } else if (themeType == DGuiApplicationHelper::DarkType) {
+        qsthemetype = "DarkType";
     }
+    web_view_->page()->runJavaScript(QString("setTheme('%1')").arg(qsthemetype));
+
+    //设置打开页面
+    if (app_name_.isEmpty()) {
+        web_view_->page()->runJavaScript("index()");
+    } else {
+        QString real_path(app_name_);
+        if (real_path.contains('/')) {
+            // Open markdown file with absolute path.
+            QFileInfo info(real_path);
+            real_path = info.canonicalFilePath();
+            web_view_->page()->runJavaScript(QString("open('%1')").arg(real_path));
+        } else {
+            web_view_->page()->runJavaScript(QString("openTitle('%1','%2')").arg(app_name_, title_name_));
+        }
+    }
+    if (first_webpage_loaded_) {
+        first_webpage_loaded_ = false;
+        if (keyword_.length() > 0) {
+            emit this->manualSearchByKeyword(keyword_);
+        }
+    }
+    //设置字体
+    if (this->settings_proxy_) {
+        QFontInfo fontInfo = this->fontInfo();
+        emit this->settings_proxy_->fontChangeRequested(fontInfo.family(),
+                                                        fontInfo.pixelSize());
+    }
+    web_view_->show();
 }
 
 void WebWindow::onSearchAnchorResult(const QString &keyword, const SearchAnchorResultList &result)
@@ -626,7 +699,8 @@ QVariant WebWindow::inputMethodQuery(Qt::InputMethodQuery prop) const
     case Qt::ImEnabled:
         return true;
     case Qt::ImCursorRectangle:
-    default: ;
+    default:
+        ;
     }
 
     return QWidget::inputMethodQuery(prop);
