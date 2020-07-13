@@ -19,7 +19,7 @@ export default class Article extends Component {
   }
   //滚动到锚点
   scrollToHash() {
-    console.log("article scrollToHash");
+    console.log("article scrollToHash ",this.hash);
     let tempHash = this.hash;
     const hashNode = document.getElementById(tempHash);
 
@@ -36,6 +36,10 @@ export default class Article extends Component {
       },800);
 
       scrollIntoView(hashNode, { behavior: 'smooth', block: 'start' }).then(() => {
+
+        //scrollIntoView函数存在异步,如果tempHash != this.hash时,说明存在异步操作,直接return. 
+        if(tempHash != this.hash) return;
+
         console.log("scrollIntoView finish..");
         //find parent h3 title of h4 title
         let hList = ReactDOM.findDOMNode(this).querySelectorAll('h2,h3,h4,h5');
@@ -44,7 +48,6 @@ export default class Article extends Component {
           if (hList[i].tagName == 'H3') {
             currH3Hash = hList[i].id; 
           }
-
           if (tempHash == hList[i].id && (hList[i].tagName == 'H4' || hList[i].tagName == 'H5')) {
             console.log("article: scroll hlist:" + hList[i].tagName  + "," + hList[i].id);
             console.log("currH3Hash:" + currH3Hash);
@@ -117,7 +120,7 @@ export default class Article extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log("article componentWillReceiveProps");
+    console.log("article componentWillReceiveProps nextfile",nextProps.nextProps,' prop.file:',this.props.file);
     if (nextProps.file != this.props.file) {
       this.hash = '';
       this.load = false;
@@ -197,7 +200,8 @@ export default class Article extends Component {
       }
     }
   }
-  //内部链接预览
+  //内部链接预览....暂时去除,修改为直接跳转
+ /* 
   showPreview(appName, hash, rect) {
     console.log("article showPreview");
     let file = `${global.path}/${appName}/${global.lang}/index.md`;
@@ -256,21 +260,7 @@ export default class Article extends Component {
       this.setState({ preview: { html, style, tClass } });
     });
   }
-
-  // showPreviewTmp(appName, hash){
-  //   console.log("article showPreviewTmp");
-    // let file = `${global.path}/${appName}/${global.lang}/index.md`;
-    // global.readFile(file, data => {
-    //   console.log("showPreviewTmp...");
-    //   let { html } = m2h(file, data);
-    //   let d = document.createElement('div');
-    //   d.innerHTML = html;
-    //   let hashID = d.querySelector(`[text="${hash}"]`).id;
-
-    //   console.log("file: "+ appName + " hash: "+ hashID);
-    //   global.open(appName,hashID);
-    // })
-  // }
+  */
 
   //链接处理
   click(e) {
@@ -333,6 +323,7 @@ export default class Article extends Component {
   }
 
   render() {
+    console.log("article render...");
     return (
           <div id="article">
             <div id="article_bg">

@@ -43,7 +43,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
 global.hash = ' ';
-global.oldHash = ' ';
 global.isMouseClickNav = false;
 global.isMouseScrollArticle = false;
 
@@ -226,17 +225,14 @@ var App = function (_React$Component) {
         file = encodeURIComponent(file);
         hash = encodeURIComponent(hash);
         global.hash = hash;
-        global.oldHash = hash;
         var url = '/open/' + file + '/' + hash;
         console.log("global.open: " + url);
         _this3.context.router.history.push(url);
 
         console.log("router.history--->", _this3.context.router.history);
 
-        //延时通知qt对象, 以避免通过F1开启帮助时,会直接调用此JS方法,但未完成channnel中qt对象和js中global对象的绑定.
-        setTimeout(function () {
-          global.qtObjects.manual.setApplicationState(file);
-        }, 200);
+        //通知qt对象,修改应用打开状态
+        global.qtObjects.manual.setApplicationState(file);
       };
 
       global.openTitle = function (file) {
@@ -532,7 +528,7 @@ var Article = function (_Component) {
     value: function scrollToHash() {
       var _this2 = this;
 
-      console.log("article scrollToHash");
+      console.log("article scrollToHash ", this.hash);
       var tempHash = this.hash;
       var hashNode = document.getElementById(tempHash);
 
@@ -549,6 +545,10 @@ var Article = function (_Component) {
         }, 800);
 
         (0, _smoothScrollIntoViewIfNeeded2.default)(hashNode, { behavior: 'smooth', block: 'start' }).then(function () {
+
+          //scrollIntoView函数存在异步,如果tempHash != this.hash时,说明存在异步操作,直接return. 
+          if (tempHash != _this2.hash) return;
+
           console.log("scrollIntoView finish..");
           //find parent h3 title of h4 title
           var hList = _reactDom2.default.findDOMNode(_this2).querySelectorAll('h2,h3,h4,h5');
@@ -557,7 +557,6 @@ var Article = function (_Component) {
             if (hList[i].tagName == 'H3') {
               currH3Hash = hList[i].id;
             }
-
             if (tempHash == hList[i].id && (hList[i].tagName == 'H4' || hList[i].tagName == 'H5')) {
               console.log("article: scroll hlist:" + hList[i].tagName + "," + hList[i].id);
               console.log("currH3Hash:" + currH3Hash);
@@ -634,7 +633,7 @@ var Article = function (_Component) {
   }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
-      console.log("article componentWillReceiveProps");
+      console.log("article componentWillReceiveProps nextfile", nextProps.nextProps, ' prop.file:', this.props.file);
       if (nextProps.file != this.props.file) {
         this.hash = '';
         this.load = false;
@@ -720,89 +719,66 @@ var Article = function (_Component) {
         }
       }
     }
-    //内部链接预览
-
-  }, {
-    key: 'showPreview',
-    value: function showPreview(appName, hash, rect) {
-      var _this4 = this;
-
-      console.log("article showPreview");
-      var file = global.path + '/' + appName + '/' + global.lang + '/index.md';
-      global.readFile(file, function (data) {
-        var _m2h = (0, _mdToHtml2.default)(file, data),
-            html = _m2h.html;
-
-        var d = document.createElement('div');
-        d.innerHTML = html;
-        var hashDom = d.querySelector('[text="' + hash + '"]');
-        var DomList = [hashDom];
-        var nextDom = hashDom.nextElementSibling;
-        while (nextDom) {
-          if (nextDom.nodeName == hashDom.nodeName) {
-            break;
-          }
-          DomList.push(nextDom);
-          nextDom = nextDom.nextElementSibling;
-        }
-        d.innerHTML = '';
-        DomList.map(function (el) {
-          return d.appendChild(el);
-        });
-        html = d.innerHTML;
-        var top = rect.top,
-            left = rect.left,
-            right = rect.right;
-
-        var style = {};
-        var tClass = 't_';
-
-        console.log("left-right:" + left + "  - " + right);
-        //center
-        if ((right + left) / 2 > 300 + 170 && (right + left) / 2 + 300 < document.body.clientWidth) {
-          style.left = (right + left) / 2 - 300;
-          tClass += 'center_';
-        }
-        //right
-        else if ((right + left) / 2 > 600 + 170) {
-            style.left = right - 600;
-            tClass += 'right_';
-          }
-          //left
-          else if ((right + left) / 2 <= 300 + 170) {
-              style.left = left;
-              tClass += 'left_';
-            }
-            //left
-            else {
-                style.left = 170;
-                tClass += 'left_';
-              }
-        if (top > document.body.clientHeight / 2) {
-          tClass += 'down';
-          style.top = top - 250 - 20;
-        } else {
-          tClass += 'up';
-          style.top = top + rect.height + 10;
-        }
-        _this4.setState({ preview: { html: html, style: style, tClass: tClass } });
-      });
-    }
-
-    // showPreviewTmp(appName, hash){
-    //   console.log("article showPreviewTmp");
-    // let file = `${global.path}/${appName}/${global.lang}/index.md`;
-    // global.readFile(file, data => {
-    //   console.log("showPreviewTmp...");
-    //   let { html } = m2h(file, data);
-    //   let d = document.createElement('div');
-    //   d.innerHTML = html;
-    //   let hashID = d.querySelector(`[text="${hash}"]`).id;
-
-    //   console.log("file: "+ appName + " hash: "+ hashID);
-    //   global.open(appName,hashID);
-    // })
-    // }
+    //内部链接预览....暂时去除,修改为直接跳转
+    /* 
+     showPreview(appName, hash, rect) {
+       console.log("article showPreview");
+       let file = `${global.path}/${appName}/${global.lang}/index.md`;
+       global.readFile(file, data => {
+         let { html } = m2h(file, data);
+         let d = document.createElement('div');
+         d.innerHTML = html;
+         let hashDom = d.querySelector(`[text="${hash}"]`);
+         let DomList = [hashDom];
+         let nextDom = hashDom.nextElementSibling;
+         while (nextDom) {
+           if (nextDom.nodeName == hashDom.nodeName) {
+             break;
+           }
+           DomList.push(nextDom);
+           nextDom = nextDom.nextElementSibling;
+         }
+         d.innerHTML = '';
+         DomList.map(el => d.appendChild(el));
+         html = d.innerHTML;
+         let { top, left, right } = rect;
+         let style = {};
+         let tClass = 't_';
+          console.log("left-right:"+(left) + "  - "+ right);
+         //center
+         if (((right + left)/2 > (300 + 170)) && (((right + left)/2 + 300 < document.body.clientWidth))) {
+           style.left　=　(right + left)/2 - 300;
+           tClass += 'center_';
+         }
+         //right
+         else if (((right + left)/2  > (600 + 170)))
+         {
+           style.left　=　right - 600;
+           tClass += 'right_';
+         }
+         //left
+         else if ((right + left)/2 <= (300 + 170))
+         {
+           style.left　=　left;
+           tClass += 'left_';
+         }
+         //left
+         else {
+           style.left　= 170;
+           tClass += 'left_';
+           
+         }
+         if (top > document.body.clientHeight / 2) {
+           tClass += 'down';
+           style.top = top - 250 - 20;
+         } else {
+           tClass += 'up';
+           style.top = top + rect.height + 10;
+         }
+         this.setState({ preview: { html, style, tClass } });
+       });
+     }
+     */
 
     //链接处理
 
@@ -878,8 +854,9 @@ var Article = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _this5 = this;
+      var _this4 = this;
 
+      console.log("article render...");
       return _react2.default.createElement(
         'div',
         { id: 'article' },
@@ -890,13 +867,13 @@ var Article = function (_Component) {
             _scrollbar2.default,
             { onScroll: this.scroll.bind(this),
               onWheel: function onWheel(e) {
-                return _this5.handleWheelScroll(e);
+                return _this4.handleWheelScroll(e);
               },
               onKeyUp: function onKeyUp(e) {
-                return _this5.handleKeyUp(e);
+                return _this4.handleKeyUp(e);
               },
               onKeyDown: function onKeyDown(e) {
-                return _this5.handleKeyDown(e);
+                return _this4.handleKeyDown(e);
               } },
             _react2.default.createElement('div', {
               id: 'read',
@@ -1257,6 +1234,8 @@ var Main = function (_Component) {
       }
 
       global.readFile(filePath, function (data) {
+        console.log("main init===>readfile finish...");
+
         var _m2h = (0, _mdToHtml2.default)(filePath, data),
             html = _m2h.html,
             hlist = _m2h.hlist;
@@ -1277,7 +1256,6 @@ var Main = function (_Component) {
       if (global.isLinkClicked) {
         console.log("main --setHash");
         global.hash = hash;
-        global.oldHash = hash;
         global.isLinkClicked = false;
       }
       console.log("main*********setHash");
@@ -1300,7 +1278,6 @@ var Main = function (_Component) {
     value: function setScroll(hash) {
       console.log("main setScroll:" + hash);
       global.hash = hash;
-      global.oldHash = hash;
       this.setState({ hash: hash });
     }
 
@@ -1355,8 +1332,7 @@ var Main = function (_Component) {
   }, {
     key: 'componentWillUnmount',
     value: function componentWillUnmount() {
-      global.hash = ' ';
-      global.oldHash = ' ';
+      global.hash = '';
       global.isMouseClickNav = false;
       global.isMouseScrollArticle = false;
       global.isLinkClicked = false;
@@ -1367,6 +1343,7 @@ var Main = function (_Component) {
       var _this3 = this;
 
       console.log("main render....hash:", this.state.hash);
+      console.log("main render....hList:", this.state.hlist);
       return this.state.init && _react2.default.createElement(
         'div',
         { id: 'main' },
@@ -1504,9 +1481,6 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
-// import webjs from './web.js'
-
-
 var Nav = function (_Component) {
   _inherits(Nav, _Component);
 
@@ -1525,24 +1499,17 @@ var Nav = function (_Component) {
   }, {
     key: 'shouldComponentUpdate',
     value: function shouldComponentUpdate(newProps, newState) {
-      console.log("nav shouldComponentUpdate newProps:" + newProps.hash + ", old hash:" + global.oldHash);
+      console.log("nav shouldComponentUpdate newProps:" + newProps.hash + " global hash:" + global.hash);
 
-      if (' ' == global.hash) {
-        return true;
-      }
-
-      if (' ' == global.oldHash) {
+      if ('' == global.hash) {
         return true;
       }
 
       if ('POP' == global.lastAction) {
         return true;
       }
-
-      if (global.hash != global.oldHash) {
-        return false;
-      }
-      if (newProps.hash != global.oldHash) {
+      //why........
+      if (newProps.hash != global.hash) {
         return false;
       }
       return true;
@@ -1573,7 +1540,6 @@ var Nav = function (_Component) {
       if (cid) {
         console.log('搜索结果', cid);
         global.hash = cid;
-        global.oldHash = cid;
         global.isMouseClickNav = true;
         global.isMouseScrollArticle = false;
         this.props.setHash(cid);
@@ -1605,13 +1571,14 @@ var Nav = function (_Component) {
     value: function render() {
       var _this2 = this;
 
+      console.log("nav render...");
       var max = this.props.hlist[0];
       this.props.hlist.map(function (h) {
         if (max.text.length < h.text.length) {
           max = h;
         }
       });
-      console.log(max, max.text.length);
+      // console.log(max, max.text.length);
       // let maxWidth = 0;
       // if (global.lang == 'zh_CN') {
       //   maxWidth = max.text.length * 16;

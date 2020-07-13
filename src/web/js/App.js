@@ -10,7 +10,6 @@ import Main from './main.jsx';
 import Search from './search.jsx';
 
 global.hash = ' ';
-global.oldHash = ' ';
 global.isMouseClickNav = false;
 global.isMouseScrollArticle = false;
 
@@ -172,7 +171,6 @@ class App extends React.Component {
       file = encodeURIComponent(file);
       hash = encodeURIComponent(hash);
       global.hash = hash;
-      global.oldHash = hash;
       let url = `/open/${file}/${hash}`;
       console.log("global.open: " +url);
       this.context.router.history.push(url);
@@ -180,10 +178,8 @@ class App extends React.Component {
 
       console.log("router.history--->", this.context.router.history);
 
-      //延时通知qt对象, 以避免通过F1开启帮助时,会直接调用此JS方法,但未完成channnel中qt对象和js中global对象的绑定.
-      setTimeout(function(){
+      //通知qt对象,修改应用打开状态
         global.qtObjects.manual.setApplicationState(file);
-      },200);
     };
 
     global.openTitle = (file, title = '') => {

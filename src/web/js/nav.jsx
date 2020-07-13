@@ -3,8 +3,6 @@ import ReactDOM from 'react-dom';
 import { Link } from 'react-router-dom';
 import Scrollbar from './scrollbar.jsx';
 import { kMaxLength } from 'buffer';
-// import webjs from './web.js'
-
 
 
 class Nav extends Component {
@@ -15,24 +13,17 @@ class Nav extends Component {
     this.componentDidUpdate();
   }
   shouldComponentUpdate(newProps, newState) {
-    console.log("nav shouldComponentUpdate newProps:" + newProps.hash + ", old hash:" + global.oldHash);
+    console.log("nav shouldComponentUpdate newProps:" + newProps.hash +" global hash:" + global.hash);
 
-    if (' ' == global.hash) {
-      return true;
-    }
-
-    if (' ' == global.oldHash) {
+    if ('' == global.hash) {
       return true;
     }
 
     if ('POP' == global.lastAction) {
       return true;
     }
-
-    if (global.hash != global.oldHash) {
-      return false;
-    }
-    if (newProps.hash != global.oldHash) {
+    //why........
+    if (newProps.hash != global.hash) {
       return false;
     }
     return true;
@@ -60,7 +51,6 @@ class Nav extends Component {
     if (cid) {
       console.log('搜索结果', cid);
       global.hash = cid;
-      global.oldHash = cid;
       global.isMouseClickNav = true;
       global.isMouseScrollArticle = false;
       this.props.setHash(cid);
@@ -88,13 +78,14 @@ class Nav extends Component {
   }
 
   render() {
+    console.log("nav render...");
     let max = this.props.hlist[0];
     this.props.hlist.map(h => {
       if (max.text.length < h.text.length) {
         max = h;
       }
     });
-    console.log(max, max.text.length);
+    // console.log(max, max.text.length);
     // let maxWidth = 0;
     // if (global.lang == 'zh_CN') {
     //   maxWidth = max.text.length * 16;

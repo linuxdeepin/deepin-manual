@@ -24,6 +24,7 @@ export default class Main extends Component {
     }
   
     global.readFile(filePath, data => {
+      console.log("main init===>readfile finish...");
       let { html, hlist } = m2h(filePath, data);
       this.setState({
         file,
@@ -40,7 +41,6 @@ export default class Main extends Component {
     if (global.isLinkClicked) {
       console.log("main --setHash");
       global.hash = hash;
-      global.oldHash = hash;
       global.isLinkClicked = false;
     }
     console.log("main*********setHash");
@@ -61,7 +61,6 @@ export default class Main extends Component {
   setScroll(hash) {
     console.log("main setScroll:" + hash);
     global.hash = hash;
-    global.oldHash = hash;
     this.setState({ hash });
   }
 
@@ -106,16 +105,15 @@ export default class Main extends Component {
   }
 
   componentWillUnmount(){
-    global.hash = ' ';
-    global.oldHash = ' ';
+    global.hash = '';
     global.isMouseClickNav = false;
     global.isMouseScrollArticle = false;
     global.isLinkClicked = false;
   }
 
   render() {
-
     console.log("main render....hash:",this.state.hash);
+    console.log("main render....hList:",this.state.hlist);
     return (
       this.state.init && (
         <div id="main">
