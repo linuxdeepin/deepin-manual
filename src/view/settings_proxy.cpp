@@ -21,20 +21,25 @@
 
 #include "settings_proxy.h"
 
-namespace dman
-{
+namespace dman {
 
 SettingsProxy::SettingsProxy(QObject *parent) : QObject(parent)
 {
     this->setObjectName("SettingsProxy");
 }
 
+/**
+ * @brief SettingsProxy::openUrl
+ * @param url
+ */
 void SettingsProxy::openUrl(const QString &url)
 {
     QDesktopServices::openUrl(QUrl(url));
 }
 
-
+/**
+ * @brief SettingsProxy::raiseWindow
+ */
 void SettingsProxy::raiseWindow()
 {
     emit this->raiseWindowRequested();

@@ -29,6 +29,7 @@
 #include <QWebEngineView>
 #include <QAction>
 #include <QClipboard>
+#include <DApplicationHelper>
 
 namespace dman {
 
@@ -64,10 +65,7 @@ public:
     void setTitleName(const QString &title_name);
     void cancelTextChanged();
     void updateBtnBox();
-
-    // 保存窗口尺寸
     void saveWindowSize();
-
     Dtk::Widget::DButtonBoxButton *m_backButton;
     Dtk::Widget::DButtonBoxButton *m_forwardButton;
 
@@ -89,6 +87,8 @@ protected:
     void closeEvent(QCloseEvent *event) override;
     void showEvent(QShowEvent *event) override;
 
+    void keyPressEvent(QKeyEvent *event) override;
+    //void inputMethodEvent(QInputMethodEvent *e) Q_DECL_OVERRIDE;
 private:
     void initConnections();
     void initUI();
@@ -133,8 +133,7 @@ private slots:
 
     void onManualSearchByKeyword(const QString &keyword);
     void onACtiveColorChanged(QString, QMap<QString, QVariant>, QStringList);
-
-    QString getWinInfoConfigPath();
+    void onThemeChange(DGuiApplicationHelper::ColorType themeType);
 };
 
 }  // namespace dman

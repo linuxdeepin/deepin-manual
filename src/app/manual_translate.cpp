@@ -15,7 +15,7 @@ int main(int argc, char **argv)
     const QHash<QString, QString> hash = {
         {"downloader", "uos-downloadmanager"},                //下载器  ***
         {"", "deepin-voice-recorder"},                        //录音 ***
-        {"voice-notes", "deepin-voice-note"},                 //语音记事本
+        {"voice-note", "deepin-voice-note"},                 //语音记事本
         {"terminal", "deepin-terminal"},                      //终端
         {"system-monitor", "deepin-system-monitor"},          //系统监视器
 //        {"", "deepin-screenshot"},                          //截屏
@@ -43,13 +43,15 @@ int main(int argc, char **argv)
         {"calculator", "deepin-calculator"},                            //计算器
         {"browser", "deepin-browser"},                                  //浏览器**
         {"boot-maker", "deepin-boot-maker"},                            //启动盘制作工具
-        {"app-store", "deepin-app-store"},                        //应用商店
+        {"appstore", "deepin-app-store"},                        //应用商店
         {"album", "deepin-album"},                                      //相册
         {"print-manager", "dde-printer"},                               //打印管理器
         {"file-manager", "dde-file-manager"},                           //文件管理器
         {"calendar", "dde-calendar"},                                   //日历
         {"", "chineseime"},                                             //中文输入法**
-        {"support", "uos-service-support"}                              //服务与支持
+        {"support", "uos-service-support"},                             //服务与支持
+        {"security-center", "deepin-defender"},                         //安全中心
+        {"scan-manager", "scaner"},                                     //扫描管理器
     };
 
     QWidget widget;
@@ -61,13 +63,13 @@ int main(int argc, char **argv)
     QObject::connect(btn, &QPushButton::clicked, [ = ]() {
         QString curPath = QDir::currentPath();  //获取系统当前目录
         QString dlgTitle = "translate dir";     //对话框标题
-        QString strDirPath = QFileDialog::getExistingDirectory();
+        QString strDirPath = QFileDialog::getExistingDirectory(nullptr, dlgTitle, curPath);
         if (!strDirPath.isEmpty()) {
             QDir dirDir(strDirPath);
-            for (const QString &strFile :
+            for (QString &strFile :
                     QDir(strDirPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-                QHashIterator<QString, QString> iterator(hash);
 
+                QHashIterator<QString, QString> iterator(hash);
                 while (iterator.hasNext()) {
                     iterator.next();
                     if (!iterator.key().isEmpty()) {
