@@ -10,11 +10,19 @@ dman::ThemeProxy::~ThemeProxy()
 {
 }
 
+/**
+ * @brief dman::ThemeProxy::slot_ThemeChange
+ * @note 系统主题颜色改变时调用
+ */
 void dman::ThemeProxy :: slot_ThemeChange()
 {
-    themeChange(getTheme());
+    emit themeChange(getTheme());
 }
 
+/**
+ * @brief dman::ThemeProxy::getTheme 获取系统主题颜色，白色/黑色
+ * @return
+ */
 QString dman::ThemeProxy :: getTheme() const
 {
     QString qsthemetype = "Null";

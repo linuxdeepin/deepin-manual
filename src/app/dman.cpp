@@ -35,6 +35,8 @@ int main(int argc, char **argv)
 {
 //    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu");
     qputenv("DXCB_FAKE_PLATFORM_NAME_XCB", "true");
+
+    //龙芯机器配置,使得DApplication能正确加载QTWEBENGINE
     qputenv("DTK_FORCE_RASTER_WIDGETS", "FALSE");
 //    qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "7777");
 
@@ -44,6 +46,7 @@ int main(int argc, char **argv)
         app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings, true);
     }
 
+    //设置窗口属性
     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
     app.setWindowIcon(QIcon::fromTheme("deepin-manual"));
     app.setProductIcon(QIcon::fromTheme("deepin-manual"));
@@ -64,10 +67,10 @@ int main(int argc, char **argv)
     QObject::connect(&argument_parser, &dman::ArgumentParser::onNewAppOpen, &window_manager,
                      &dman::WindowManager::onNewAppOpen);
 
-    if (argument_parser.parseArguments()) {
+    if (!argument_parser.parseArguments()) {
         qDebug() << "argument_parser.parseArguments()";
         // Exit process after 1000ms.
-        QTimer::singleShot(1000, [&]() {
+        QTimer::singleShot(1000,  [&]() {
             app.quit();
         });
         return app.exec();
@@ -78,10 +81,11 @@ int main(int argc, char **argv)
                      &dman::WindowManager::openManual);
     QObject::connect(&argument_parser, &dman::ArgumentParser::openManualWithSearchRequested,
                      &window_manager, &dman::WindowManager::openManualWithSearch);
-    // Send openManualRequested() signals after slots connected.
+
+    //发送openManualRequested()信号后与槽连接。
     argument_parser.openManualsDelay();
 
-    // save theme
+    // 保存主题
     DApplicationSettings dApplicationSettings;
 
     Dtk::Core::DLogManager::registerFileAppender();

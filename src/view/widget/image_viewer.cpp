@@ -27,6 +27,7 @@
 #include <QShortcut>
 #include <QStackedLayout>
 #include <QtCore/QTimer>
+#include <QImageReader>
 
 DWIDGET_USE_NAMESPACE
 namespace dman {
@@ -59,25 +60,39 @@ void ImageViewer::open(const QString &filepath)
         QUrl url(abspath);
         abspath = url.path();
     }
+    QImage image;
+    QImageReader reader(abspath);
+    reader.setDecideFormatFromContent(true);
+    if (reader.canRead()) {
+        if (reader.read(&image)) {
 
-    QPixmap pixmap(abspath);
+            qDebug() << "open is successful....";
+        } else {
+            qDebug() << "open is failed...." << reader.errorString();
+        }
+
+    } else {
+        qDebug() << "can not read...." << reader.errorString();
+    }
     const QRect screen_rect = qApp->desktop()->screenGeometry(QCursor::pos());
     const int pixmap_max_width = static_cast<int>(screen_rect.width() * 0.8);
     const int pixmap_max_height = static_cast<int>(screen_rect.height() * 0.8);
-    if ((pixmap.width() > pixmap_max_width) || (pixmap.height() > pixmap_max_height)) {
-        pixmap = pixmap.scaled(pixmap_max_width, pixmap_max_height, Qt::KeepAspectRatio,
-                               Qt::SmoothTransformation);
+
+    if ((image.width() > pixmap_max_width) || (image.height() > pixmap_max_height)) {
+        image = image.scaled(pixmap_max_width, pixmap_max_height, Qt::KeepAspectRatio,
+                             Qt::SmoothTransformation);
     }
 
     this->move(screen_rect.topLeft());
     this->resize(screen_rect.size());
     this->showFullScreen();
 
-    img_label_->setPixmap(pixmap);
-    img_label_->setFixedSize(pixmap.width(), pixmap.height());
+    img_label_->setPixmap(QPixmap::fromImage(image));
+    img_label_->setFixedSize(image.width(), image.height());
+
     QRect img_rect = img_label_->rect();
-    img_rect.moveTo(static_cast<int>((screen_rect.width() - pixmap.width()) / 2.0),
-                    static_cast<int>((screen_rect.height() - pixmap.height()) / 2.0));
+    img_rect.moveTo(static_cast<int>((screen_rect.width() - image.width()) / 2.0),
+                    static_cast<int>((screen_rect.height() - image.height()) / 2.0));
     img_label_->move(img_rect.topLeft());
 
     // Move close button to top-right corner of image.

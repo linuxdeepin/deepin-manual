@@ -52,7 +52,8 @@ signals:
 public slots:
     void initDb(const QString &db_path);
     void initSearchTable();
-    void addSearchEntry(const QString &app_name,
+    void addSearchEntry(const QString &system,
+                        const QString &app_name,
                         const QString &lang,
                         const QStringList &anchors,
                         const QStringList &anchorIdList,

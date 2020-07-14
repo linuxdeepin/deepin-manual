@@ -136,7 +136,7 @@ void SearchDb::initSearchTable()
     }
 }
 
-void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
+void SearchDb::addSearchEntry(const QString &system, const QString &app_name, const QString &lang,
                               const QStringList &anchors, const QStringList &anchorIdList,
                               const QStringList &contents)
 {
@@ -144,19 +144,19 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
     Q_ASSERT(anchors.length() == contents.length());
     qDebug() << "addSearchEntry()" << app_name << lang << anchors;  // << contents;
 
-    QString strManualPath = "";
-    int nType = Dtk::Core::DSysInfo::deepinType();
-    if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
-        strManualPath += "/server";
-    } else if (Dtk::Core::DSysInfo::DeepinPersonal == (Dtk::Core::DSysInfo::DeepinType)nType) {
-        strManualPath += "/personal";
-    } else {
-        if (Dtk::Core::DSysInfo::isCommunityEdition()) {
-            strManualPath += "/community";
-        } else {
-            strManualPath += "/professional";
-        }
-    }
+    QString strManualPath = "/" + system;
+//    int nType = Dtk::Core::DSysInfo::deepinType();
+//    if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
+//        strManualPath += "/server";
+//    } else if (Dtk::Core::DSysInfo::DeepinPersonal == (Dtk::Core::DSysInfo::DeepinType)nType) {
+//        strManualPath += "/personal";
+//    } else {
+//        if (Dtk::Core::DSysInfo::isCommunityEdition()) {
+//            strManualPath += "/community";
+//        } else {
+//            strManualPath += "/professional";
+//        }
+//    }
 
     QStringList newContents = contents;
     for (int i = 0; i < contents.size(); i++) {
@@ -218,7 +218,6 @@ void SearchDb::handleSearchAnchor(const QString &keyword)
     const QString lang = QLocale().name();
     const QString sql =
         QString(kSearchSelectAnchor).replace(":anchor", keyword).replace(":lang", lang);
-    qDebug() << "handleSearchAnchor sql is:" << sql;
     if (query.exec(sql)) {
         while (query.next() && (result.size() < kResultLimitation)) {
             //只将当前预装应用中的内容输出。
@@ -298,8 +297,7 @@ QString SearchDb::highlightKeyword(QString srcString, QString keyword)
         if (substrImgEnd == imgEndString) {
             startSubStringIndex = currIndex + imgEndLen;
             strEndIndexList.append(startSubStringIndex);
-
-            highlightString.append(srcString.mid(findImgIndex, startSubStringIndex - findImgIndex));
+            highlightString.append(srcString.midRef(findImgIndex, startSubStringIndex - findImgIndex));
         }
 
         if (findImgIndex > startSubStringIndex) {
@@ -360,7 +358,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
             const QString anchor = query.value(1).toString();
             const QString anchorId = query.value(2).toString();
             const QString content = query.value(3).toString();
-            qDebug() << Q_FUNC_INFO << app_name << " " << anchor << " " << anchorId << " " << content << " ";
+            qDebug() << Q_FUNC_INFO << app_name << " " << anchor << " " << anchorId;
             if (!strlistApp.contains(app_name)) {
                 continue;
             }

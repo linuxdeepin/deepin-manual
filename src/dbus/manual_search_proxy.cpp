@@ -85,11 +85,11 @@ void ManualSearchProxy::RecvMsg(const QString &data)
     QString currProcessId = dataList.first();
 
     QList<int> removeIndexList;
-    QString currWinId = dataList.at(1);
     for (int i = 0; i < winInfoList.size(); i++) {
         QHash<QString, QString> winInfo = winInfoList.at(i);
-        qDebug() << "processId:" << winInfo.keys().first();
-        if (currProcessId != winInfo.keys().first()) {
+        qDebug() << "processId:" << winInfo.begin().key();
+//        if (currProcessId != winInfo.keys().first()) {
+        if (currProcessId != winInfo.begin().key()) {
             removeIndexList.append(i);
         }
     }
@@ -117,7 +117,8 @@ void ManualSearchProxy::RecvMsg(const QString &data)
         if (winInfoList.size() > 0) {
             for (int i = 0; i < winInfoList.size(); i++) {
                 QHash<QString, QString> winInfo = winInfoList.at(i);
-                if (dataList.at(1) == winInfo.value(winInfo.keys().first())) {
+//                if (dataList.at(1) == winInfo.value(winInfo.keys().first())) {
+                if (dataList.at(1) == winInfo.value(winInfo.begin().key())) {
                     removeWinIndex = i;
                     qDebug() << "remove window" << removeWinIndex;
                     break;
@@ -143,7 +144,7 @@ void ManualSearchProxy::OnNewWindowOpen(const QString &data)
     bool hasProcess = false;
     for (int i = 0; i < winInfoList.size(); i++) {
         QHash<QString, QString> winInfo = winInfoList.at(i);
-        if (winInfo.keys().first() == data) {
+        if (winInfo.begin().value() == data) {
             hasProcess = true;
             break;
         }
@@ -151,10 +152,9 @@ void ManualSearchProxy::OnNewWindowOpen(const QString &data)
 
     if (!hasProcess) {
         QHash<QString, QString> winInfo = winInfoList.first();
-        qDebug() << "first Window:process" << winInfo.keys().first()
-                 << ", winId:" << winInfo.value(winInfo.keys().first());
 
-        quintptr winId = winInfo.value(winInfo.keys().first()).toULong();
+//        quintptr winId = winInfo.value(winInfo.keys().first()).toULong();
+        quintptr winId = winInfo.begin().value().toULong();
         // new interface use applicationName as id
         QDBusInterface manual("com.deepin.dde.daemon.Dock", "/com/deepin/dde/daemon/Dock",
                               "com.deepin.dde.daemon.Dock");
