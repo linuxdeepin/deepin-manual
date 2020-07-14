@@ -16,7 +16,6 @@
  */
 
 #include "view/widget/search_completion_window.h"
-#include "view/theme_manager.h"
 #include "view/widget/search_button.h"
 #include "base/utils.h"
 
@@ -162,7 +161,7 @@ void SearchCompletionWindow::setSearchAnchorResult(const SearchAnchorResultList 
 
     QList<SearchCompletionItemModel> searchDataList;
     for (const SearchAnchorResult &entry : result) {
-        QString anchor = QString("%1(%2)").arg(entry.anchor).arg(entry.app_display_name);
+//        QString anchor = QString("%1(%2)").arg(entry.anchor, entry.app_display_name);
         SearchCompletionItemModel model;
         model.strSearchKeyword = entry.anchor;
         model.strSearchAnchorId = entry.anchorId;

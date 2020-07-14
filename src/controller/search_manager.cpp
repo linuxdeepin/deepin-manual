@@ -34,6 +34,7 @@ SearchManager::SearchManager(QObject *parent)
 //        qDebug() << "init SearchManager" << endl;
 
 //    });
+
     initSearchManager();
 }
 
@@ -67,8 +68,8 @@ void SearchManager::initSearchManager()
             strDB += "/professional/search.db";
         }
     }
-
     emit db_->initDbAsync(strDB);
+
 }
 
 SearchManager::~SearchManager()
@@ -77,6 +78,9 @@ SearchManager::~SearchManager()
     db_thread_->wait();
     delete db_thread_;
     db_thread_ = nullptr;
+    /*** 2020-06-28 13:39:53 wangml ***/
+    delete  db_;
+    db_ = nullptr;
 }
 
 }  // namespace dman

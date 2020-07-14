@@ -226,8 +226,35 @@ var App = function (_React$Component) {
         global.linktitle = title;
       };
 
+      //获取当前系统活动色
       global.setHashWordColor = function (strRgb) {
+        console.log("hash color: ", strRgb);
         document.documentElement.style.setProperty('--nav-hash-word-color', strRgb); //btnlist 改这行
+
+        //对系统活动色统一增加一定的值作为Hover色
+        var rgb = strRgb.slice(1);
+        var r = rgb.substr(0, 2);
+        var g = rgb.substr(2, 2);
+        var b = rgb.substr(4, 2);
+        var nR = parseInt(r, 16);
+        var nG = parseInt(g, 16);
+        var nB = parseInt(b, 16);
+        nR += 16;
+        nG += 16;
+        nB += 16;
+        if (nR > 255) nR = 255;
+        if (nG > 255) nG = 255;
+        if (nB > 255) nB = 255;
+        var toR = nR.toString(16);
+        var toG = nG.toString(16);
+        var toB = nB.toString(16);
+        if (toR.length == 1) toR = '0' + toR;
+        if (toG.length == 1) toG = '0' + toG;
+        if (toB.length == 1) toB = '0' + toB;
+
+        var toRGB = "#" + toR + toG + toB;
+        console.log('hover color:', toRGB);
+        document.documentElement.style.setProperty('--nav-hash-hover-color', toRGB);
       };
 
       global.setWordFontfamily = function (strFontFamily) {
@@ -278,6 +305,8 @@ var App = function (_React$Component) {
           document.documentElement.style.setProperty('--search-WikiSearch-color', '#6D7C88');
           document.documentElement.style.setProperty('--search-itemTitle-word-color', '#C0C6D4');
           document.documentElement.style.setProperty('--search-context-word-color', '#6D7C88');
+          document.documentElement.style.setProperty('--tips-background-color', '#2A2A2A');
+          document.documentElement.style.setProperty('--tips-border-color', 'rgba(0, 0, 0,0.3)');
         } else if ("LightType" == themeType) {
           console.log('LightType');
           document.documentElement.style.setProperty('--nav-hover-color', 'rgba(0,0,0,0.1)');
@@ -313,6 +342,8 @@ var App = function (_React$Component) {
           document.documentElement.style.setProperty('--search-WikiSearch-color', '#7a7a7a');
           document.documentElement.style.setProperty('--search-itemTitle-word-color', '#000000');
           document.documentElement.style.setProperty('--search-context-word-color', '#000000');
+          document.documentElement.style.setProperty('--tips-background-color', '#F7F7F7');
+          document.documentElement.style.setProperty('--tips-border-color', 'rgba(0,0,0,0.05)');
         } else {
           console.log('Null');
         }
@@ -496,7 +527,14 @@ var Article = function (_Component) {
       var _this2 = this;
 
       var tempHash = this.hash;
+
+      // if (tempHash == 'h21')
+      // {
+      //   tempHash = 'h250';
+      // }
+
       var hashNode = document.getElementById(tempHash);
+      console.log("article scrollToHash temphash: " + tempHash + " " + hashNode);
 
       if (this.state.preview != null) {
         this.setState({ preview: null });
@@ -540,6 +578,7 @@ var Article = function (_Component) {
     value: function componentDidUpdate() {
       var _this3 = this;
 
+      console.log("article componentDidUpdate.." + this.hash + " props hash->" + this.props.hash);
       if (this.hash != this.props.hash) {
         this.hash = this.props.hash;
         this.scrollToHash();
@@ -579,6 +618,7 @@ var Article = function (_Component) {
   }, {
     key: 'componentWillUpdate',
     value: function componentWillUpdate() {
+      console.log("article componentWillUpdate..");
       var alink_arr = document.getElementsByTagName('a');
       for (var i = 0; i < alink_arr.length; i++) {
         alink_arr[i].onclick = function () {
@@ -594,6 +634,7 @@ var Article = function (_Component) {
   }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
+      console.log("article componentWillReceiveProps..");
       if (nextProps.file != this.props.file) {
         this.hash = '';
         this.load = false;

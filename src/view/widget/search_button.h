@@ -41,6 +41,7 @@ public:
     void setText(QString title);
     void setChecked(bool bChecked);
     bool isChecked();
+    void leaveFocus();
 
 signals:
     void pressed();

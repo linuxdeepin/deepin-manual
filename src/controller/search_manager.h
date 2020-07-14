@@ -54,8 +54,9 @@ signals:
 private:
     void initSearchManager();
 
-    SearchDb *db_ = nullptr;
-    QThread *db_thread_ = nullptr;
+    /*** 2020-06-28 10:42:56 wangml ***/
+    SearchDb *db_ ;
+    QThread *db_thread_;
 };
 
 }  // namespace dman
