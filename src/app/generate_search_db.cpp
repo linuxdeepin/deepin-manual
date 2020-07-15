@@ -30,6 +30,7 @@
 
 #include "base/command.h"
 #include "controller/search_db.h"
+#include "dpinyin.h"
 
 int main(int argc, char **argv)
 {
@@ -42,7 +43,7 @@ int main(int argc, char **argv)
     QDir::setCurrent(DMAN_SEARCH_WORK_DIR);
 
     for (const QString &dbType :
-         QDir(DMAN_ORIG_MANUAL_DIR).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+            QDir(DMAN_ORIG_MANUAL_DIR).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
         QString strCreateDbPath = DMAN_SEARCH_CREATE_DB_PATH;
         strCreateDbPath += "/" + dbType;
 
@@ -60,7 +61,7 @@ int main(int argc, char **argv)
             QString strManualDir = DMAN_ORIG_MANUAL_DIR;
             strManualDir += "/" + dbType;
             for (const QString &app_name :
-                 QDir(strManualDir).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+                    QDir(strManualDir).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
                 const QString md_file =
                     QStringList {strManualDir, app_name, locale, "index.md"}.join(
                         QDir::separator());
@@ -73,10 +74,10 @@ int main(int argc, char **argv)
                 manualDir.cdUp();
                 qDebug() << manualDir.path();
                 QString searchIndexFilePath = QString("%1/%2/%3/%4")
-                                                  .arg(manualDir.path())
-                                                  .arg("src")
-                                                  .arg("web")
-                                                  .arg("toSearchIndex.js");
+                                              .arg(manualDir.path())
+                                              .arg("src")
+                                              .arg("web")
+                                              .arg("toSearchIndex.js");
                 qDebug() << searchIndexFilePath;
                 QString out, err;
                 //            QStringList cmdList = {"node"};
@@ -102,6 +103,8 @@ int main(int argc, char **argv)
                 const QJsonArray array = document.array();
                 QStringList anchors;
                 QStringList anchorIdList;
+                QStringList anchorInitialList;
+                QStringList anchorSpellList;
                 QStringList contents;
                 bool invalid_entry = false;
                 for (const QJsonValue &value : array) {
@@ -114,15 +117,38 @@ int main(int argc, char **argv)
                     const QJsonArray anchor = value.toArray();
                     const QString id = anchor.at(0).toString();
                     anchorIdList.append(id);
-                    const QString title = anchor.at(1).toString();
-                    anchors.append(title);
+                    const QString title_ch = anchor.at(1).toString();
+                    const QString title_us = anchor.at(1).toString();
+                    anchors.append(title_ch);
+                    if (locale == "zh_CN") {
+                        QString anchorInitial;
+                        for (int i = 0; i < title_ch.length(); i++) {
+                            anchorInitial.append(Dtk::Core::Chinese2Pinyin(title_ch.at(i)).left(1));
+                        }
+                        anchorInitialList.append(anchorInitial);
+                        if (id == "h0") {
+                            QString str = Dtk::Core::Chinese2Pinyin(title_ch).remove(QRegExp("[1-9]"));
+                            anchorSpellList.append(str);
+                        } else {
+                            anchorSpellList.append("null");
+                        }
+
+                    } else if (locale == "en_US") {
+                        QStringList list = title_us.split(" ");
+                        QString anchorInitial;
+                        for (QString str : list) {
+                            anchorInitial.append(str.left(1));
+                        }
+                        anchorInitialList.append(anchorInitial);
+                        anchorSpellList.append(anchorInitial);
+                    }
                     const QString content = anchor.at(2).toString();
                     contents.append(content);
                 }
 
                 if (!invalid_entry) {
-                    qDebug() << "add search entry" << app_name << locale << anchors << endl;
-                    db.addSearchEntry(app_name, locale, anchors, anchorIdList, contents);
+                    qDebug() << "add search entry" << app_name << locale << anchors  << endl;
+                    db.addSearchEntry(app_name, locale, anchors, anchorInitialList, anchorSpellList, anchorIdList, contents);
                 }
             }
         }

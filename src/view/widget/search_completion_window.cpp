@@ -37,7 +37,7 @@ const int kItemHeight = 34;
 }  // namespace
 
 SearchCompletionWindow::SearchCompletionWindow(QWidget *parent)
-    : DBlurEffectWidget (parent)
+    : DBlurEffectWidget(parent)
 {
     this->setObjectName("SearchCompletionWindow");
 

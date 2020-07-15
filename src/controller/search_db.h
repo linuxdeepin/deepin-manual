@@ -55,6 +55,8 @@ public slots:
     void addSearchEntry(const QString &app_name,
                         const QString &lang,
                         const QStringList &anchors,
+                        const QStringList &anchorInitialList,
+                        const QStringList &anchorSpellList,
                         const QStringList &anchorIdList,
                         const QStringList &contents
                        );

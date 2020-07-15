@@ -9,14 +9,14 @@
 #include <DApplicationHelper>
 
 SearchCompletionDelegate::SearchCompletionDelegate(QAbstractItemView *parent)
-    :DStyledItemDelegate(parent)
+    : DStyledItemDelegate(parent)
     , m_parentView(parent)
 {
 }
 
 //用于去除选中项的边框
 void SearchCompletionDelegate::paint(QPainter *painter, const QStyleOptionViewItem &option,
-                             const QModelIndex &index) const
+                                     const QModelIndex &index) const
 {
     if (index.isValid()) {
 
@@ -57,18 +57,17 @@ void SearchCompletionDelegate::paint(QPainter *painter, const QStyleOptionViewIt
 
             painter->setPen(QPen(option.palette.color(DPalette::HighlightedText)));
 
-            QRect searchTextRect = QRect(rect.left()+32, rect.top()+7, rect.width()-64, rect.height()-14);
+            QRect searchTextRect = QRect(rect.left() + 32, rect.top() + 7, rect.width() - 64, rect.height() - 14);
             QFontMetrics fontMetric(nameFont);
-            const QString elidedSearchText = fontMetric.elidedText(searchText, Qt::ElideRight, rect.width()-64);
+            const QString elidedSearchText = fontMetric.elidedText(searchText, Qt::ElideRight, rect.width() - 64);
             painter->drawText(searchTextRect, Qt::AlignLeft | Qt::AlignVCenter, elidedSearchText);
-        }
-        else {
+        } else {
             QPainterPath path;
             QRect rect;
             rect.setX(option.rect.x());
-            rect.setY(option.rect.y()+1);
+            rect.setY(option.rect.y() + 1);
             rect.setWidth(option.rect.width());
-            rect.setHeight(option.rect.height()-1);
+            rect.setHeight(option.rect.height() - 1);
             path.addRect(rect);
             DPalette pa = ExApplicationHelper::instance()->palette(m_parentView);
             DStyleHelper styleHelper;
@@ -77,9 +76,9 @@ void SearchCompletionDelegate::paint(QPainter *painter, const QStyleOptionViewIt
 
             painter->setPen(QPen(option.palette.color(DPalette::ToolTipText)));
 
-            QRect searchTextRect = QRect(rect.left()+32, rect.top()+6, rect.width()-64, rect.height()-13);
+            QRect searchTextRect = QRect(rect.left() + 32, rect.top() + 6, rect.width() - 64, rect.height() - 13);
             QFontMetrics fontMetric(nameFont);
-            const QString elidedSearchText = fontMetric.elidedText(searchText, Qt::ElideRight, rect.width()-64);
+            const QString elidedSearchText = fontMetric.elidedText(searchText, Qt::ElideRight, rect.width() - 64);
             painter->drawText(searchTextRect, Qt::AlignLeft | Qt::AlignVCenter, elidedSearchText);
         }
 
@@ -93,9 +92,8 @@ QSize SearchCompletionDelegate::sizeHint(const QStyleOptionViewItem &option,
                                          const QModelIndex &index) const
 {
     if (0 == index.row()) {
-        return QSize(option.rect.width(), 34+7);
-    }
-    else {
+        return QSize(option.rect.width(), 34 + 7);
+    } else {
         return QSize(option.rect.width(), 34);
     }
 }

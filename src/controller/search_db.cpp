@@ -38,6 +38,8 @@ const char kSearchTableSchema[] =
     "appName TEXT,"
     "lang TEXT,"
     "anchor TEXT,"
+    "anchorInitial TEXT,"
+    "anchorSpell TEXT,"
     "anchorId TEXT,"
     "content TEXT)";
 
@@ -50,17 +52,19 @@ const char kSearchDeleteEntryByApp[] =
     "WHERE appName = ? AND lang = ?";
 const char kSearchInsertEntry[] =
     "INSERT INTO search "
-    "(appName, lang, anchor, anchorId, content) "
-    "VALUES (?, ?, ?, ?, ?)";
+    "(appName, lang, anchor, anchorInitial, anchorSpell, anchorId, content) "
+    "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 // const char kSearchSelectAll[] = "SELECT * FROM search";
 
 const char kSearchSelectAnchor[] =
-    "SELECT t1.appName, t2.anchor appDisplayName, t1.anchor, t1.anchorId FROM search t1 "
-    "LEFT JOIN (SELECT anchor,appName FROM search where anchorId='h0' and lang=':lang') t2 "
+    "SELECT t1.appName, t2.anchor, t1.anchor, t1.anchorId FROM search t1 "
+    "LEFT JOIN (SELECT anchor,appName FROM search where anchorId='h0' and lang=':lang') t2 ON t1.appName=t2.appName "
     "WHERE t1.appName=t2.appName "
     "AND t1.lang = ':lang' "
-    "AND t1.anchor LIKE '%:anchor%' --case insensitive";
+    "AND t1.anchor LIKE '%:anchor%' "
+    "OR t1.anchorSpell LIKE '%:anchor%' "
+    "OR t1.anchorInitial LIKE '%:anchor%' --case insensitive";
 
 const char kSearchSelectContent[] =
     "SELECT appName, anchor, anchorId, content "
@@ -137,7 +141,8 @@ void SearchDb::initSearchTable()
 }
 
 void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
-                              const QStringList &anchors, const QStringList &anchorIdList,
+                              const QStringList &anchors, const QStringList &anchorInitialList,
+                              const QStringList &anchorSpellList, const QStringList &anchorIdList,
                               const QStringList &contents)
 {
     Q_ASSERT(p_->db.isOpen());
@@ -195,8 +200,10 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
     query.bindValue(0, app_names);
     query.bindValue(1, lang_list);
     query.bindValue(2, anchors);
-    query.bindValue(3, anchorIdList);
-    query.bindValue(4, newContents);
+    query.bindValue(3, anchorInitialList);
+    query.bindValue(4, anchorSpellList);
+    query.bindValue(5, anchorIdList);
+    query.bindValue(6, newContents);
     bool ok = query.execBatch();
 
     if (!ok) {
@@ -234,9 +241,7 @@ void SearchDb::handleSearchAnchor(const QString &keyword)
     } else {
         qCritical() << "Failed to select anchor:" << query.lastError().text();
     }
-
     qDebug() << "result size:" << result.size() << keyword;
-
     emit this->searchAnchorResult(keyword, result);
 }
 

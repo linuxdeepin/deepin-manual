@@ -476,11 +476,11 @@ void WebWindow::onSearchContentByKeyword(const QString &keyword)
 {
     qDebug() << "calling keyword is:" << keyword << endl;
     QString key(keyword);
-    const QString searchKey = key.remove('\n').remove('\r').remove("\r\n");
+    const QString searchKey = key.remove('\n').remove('\r').remove("\r\n").remove(QRegExp("\\s"));
     search_manager_->searchContent(searchKey);
 
     QString base64Key = QString(searchKey.toUtf8().toBase64());
-    qDebug() << base64Key << endl;
+    qDebug() << " base64Key " << base64Key << endl;
 
     // Show search page.
     web_view_->page()->runJavaScript(QString("openSearchPage('%1')").arg(base64Key));
@@ -495,7 +495,8 @@ void WebWindow::onSearchEditFocusOut()
 
 void WebWindow::onSearchButtonClicked()
 {
-    QString text = search_edit_->text();
+    QString textTemp = search_edit_->text();
+    const QString text = textTemp.remove('\n').remove('\r').remove("\r\n");
     this->onSearchContentByKeyword(text);
     completion_window_->hide();
 }
@@ -522,7 +523,7 @@ void WebWindow::onSearchTextChanged(const QString &text)
 void WebWindow::onSearchTextChangedDelay()
 {
     QString textTemp = search_edit_->text();
-    const QString text = textTemp.remove('\n').remove('\r').remove("\r\n");
+    const QString text = textTemp.remove('\n').remove('\r').remove("\r\n").remove(QRegExp("\\s"));
     // Filters special chars.
     if (text.size() < 1 || text.toLower().contains(QRegExp("[+-_$!@#%^&\\(\\)]"))) {
         return;

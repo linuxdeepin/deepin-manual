@@ -1,5300 +1,4 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
-(function (global){
-'use strict';
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _reactDom = require('react-dom');
-
-var _reactRouterDom = require('react-router-dom');
-
-var _history = require('history');
-
-var _mdToHtml = require('./mdToHtml');
-
-var _mdToHtml2 = _interopRequireDefault(_mdToHtml);
-
-var _index = require('./index.jsx');
-
-var _index2 = _interopRequireDefault(_index);
-
-var _main = require('./main.jsx');
-
-var _main2 = _interopRequireDefault(_main);
-
-var _search = require('./search.jsx');
-
-var _search2 = _interopRequireDefault(_search);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-global.hash = ' ';
-global.isMouseClickNav = false;
-global.isMouseScrollArticle = false;
-
-global.isLinkClicked = false;
-
-global.lastUrlBeforeSearch = '/';
-global.lastHistoryIndex = 0;
-global.lastAction = 'PUSH';
-
-global.readFile = function (fileName, callback) {
-  console.log("global.readFile...");
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', fileName);
-  xhr.onload = function () {
-    if (xhr.responseText != '') {
-      callback(xhr.responseText);
-    }
-  };
-  xhr.send();
-};
-
-var App = function (_React$Component) {
-  _inherits(App, _React$Component);
-
-  function App(props, context) {
-    _classCallCheck(this, App);
-
-    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props, context));
-
-    _this.state = {
-      init: false,
-      searchResult: [],
-      mismatch: false,
-      historyGO: 0
-    };
-    new QWebChannel(qt.webChannelTransport, _this.initQt.bind(_this));
-    return _this;
-  }
-
-  _createClass(App, [{
-    key: 'initQt',
-    value: function initQt(channel) {
-      var _this2 = this;
-
-      console.log("channel initqt.....");
-      channel.objects.i18n.getSentences(function (i18n) {
-        channel.objects.i18n.getLocale(function (lang) {
-          if (lang === 'en_US' || lang === 'zh_CN') {
-            global.lang = lang;
-          } else {
-            global.lang = 'en_US';
-          }
-        });
-        global.i18n = i18n;
-        global.qtObjects = channel.objects;
-
-        channel.objects.manual.getSystemManualDir(function (path) {
-          global.path = path;
-          _this2.setState({ init: true });
-        });
-        global.openWindow = global.qtObjects.manual.openExternalLink;
-        global.qtObjects.titleBar.setBackwardButtonActive(false);
-        global.qtObjects.titleBar.setForwardButtonActive(false);
-        global.qtObjects.titleBar.backwardButtonClicked.connect(function () {
-          console.log("----------backwardButtonClicked----------");
-          _this2.setState({ historyGO: _this2.state.historyGO - 1 });
-          console.log("==========backwardButtonClicked=========>");
-          _this2.context.router.history.goBack();
-          console.log("back history location: " + _this2.context.router.history.location.pathname);
-        });
-        global.qtObjects.titleBar.forwardButtonClicked.connect(function () {
-          console.log("----------forwardButtonClicked----------");
-          _this2.setState({ historyGO: _this2.state.historyGO + 1 });
-          console.log("==========forwardButtonClicked=========>");
-          _this2.context.router.history.goForward();
-          console.log("forward history location: " + _this2.context.router.history.location.pathname);
-        });
-        global.qtObjects.search.mismatch.connect(function () {
-          return _this2.setState({ mismatch: true });
-        });
-        global.qtObjects.search.onContentResult.connect(_this2.onContentResult.bind(_this2));
-        global.qtObjects.theme.getTheme(function (themeType) {
-          return _this2.themeChange(themeType);
-        });
-        global.qtObjects.theme.themeChange.connect(_this2.themeChange.bind(_this2));
-        global.qtObjects.settings.fontChangeRequested.connect(function (fontFamily, fontSize) {
-          console.log("fontChangeRequested: fontFamily:" + fontFamily + ",fontSize:" + fontSize);
-          console.log("fontSize/13.0:" + fontSize);
-          var HTMLGlobal = document.querySelector('html');
-          HTMLGlobal.style.fontFamily = fontFamily;
-          HTMLGlobal.style.fontSize = fontSize; //设置rem标准   设计图上默认是在14px字体上设计,所以默认1rem = 14px.
-          if (fontSize >= 18) {
-            document.documentElement.style.setProperty('--index-item-size', '170px');
-            document.documentElement.style.setProperty('--index-span-width', '140px');
-          } else {
-            document.documentElement.style.setProperty('--index-item-size', '160px');
-            document.documentElement.style.setProperty('--index-span-width', '130px');
-          }
-        });
-        console.log("finsh global.qtObjects = channel.objects...");
-        global.qtObjects.manual.finishChannel();
-      });
-    }
-  }, {
-    key: 'themeChange',
-    value: function themeChange(themeType) {
-      global.setTheme(themeType);
-    }
-  }, {
-    key: 'onContentResult',
-    value: function onContentResult(appName, titleList, idList, contentList) {
-      // console.log('搜索结果', appName, titleList, idList, contentList);
-      var searchResult = this.state.searchResult;
-
-      searchResult.push({
-        file: global.path + '/' + appName + '/' + global.lang + '/index.md',
-        idList: idList,
-        titleList: titleList,
-        contentList: contentList
-      });
-      this.setState({ searchResult: searchResult, mismatch: false });
-    }
-  }, {
-    key: 'getChildContext',
-    value: function getChildContext() {
-      var _state = this.state,
-          searchResult = _state.searchResult,
-          mismatch = _state.mismatch;
-
-      return { searchResult: searchResult, mismatch: mismatch };
-    }
-  }, {
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
-      console.log("componentWillReceiveProps", this.context.router.history);
-      if (this.context.router.history.action == 'PUSH') {
-        var entriesLen = this.context.router.history.entries.length;
-        //console.log("entriesLen" + entriesLen);
-        if (entriesLen > 1) {
-          var entry = this.context.router.history.entries[entriesLen - 1];
-          if (entry.pathname.toString().indexOf("/search/") != -1) {
-            //console.log(entry.pathname);
-            this.setState({ historyGO: entriesLen - 1 });
-            return;
-          }
-        }
-        this.setState({ historyGO: entriesLen - 1 });
-      }
-    }
-  }, {
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      var _this3 = this;
-
-      global.index = function () {
-        // this.context.router.history.push('/');
-      };
-      global.backHome = function () {
-        console.log("global.backHome()" + _this3.context.router.history.entries.length);
-        console.log("global.backHome()" + _this3.state.historyGO);
-        var goNum = _this3.state.historyGO;
-        _this3.setState({ historyGO: 0 });
-        console.log("global.backHome()" + goNum);
-
-        if (_this3.context.router.history.canGo(-1 * goNum)) {
-          _this3.context.router.history.go(-1 * goNum);
-          // this.context.router.history.go(0);
-        }
-      };
-
-      //打开某一个文件,并定位到具体hash
-      global.open = function (file) {
-        var hash = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-
-        console.log("global.open()....file:" + file + " hash:" + hash);
-        //h0默认为应用名称，内容为空，所以当打开h0，将其变为h1概述的位置。
-        if (hash == 'h0') {
-          hash = 'h1';
-        }
-        file = encodeURIComponent(file);
-        hash = encodeURIComponent(hash);
-        global.hash = hash;
-        var url = '/open/' + file + '/' + hash;
-        console.log("global.open: " + url);
-        _this3.context.router.history.push(url);
-
-        console.log("router.history--->", _this3.context.router.history);
-
-        //通知qt对象,修改应用打开状态
-        global.qtObjects.manual.setApplicationState(file);
-      };
-
-      global.openTitle = function (file) {
-        var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-
-        console.log("global linkTitle==> file:" + file + " title: " + title);
-        if (title !== '') {
-          var filePath = global.path + '/' + file + '/' + global.lang + '/index.md';
-          global.readFile(filePath, function (data) {
-            var _m2h = (0, _mdToHtml2.default)(filePath, data),
-                html = _m2h.html;
-
-            var d = document.createElement('div');
-            d.innerHTML = html;
-            var hashID = 'h0';
-            if (d.querySelector('[text="' + title + '"]')) {
-              hashID = d.querySelector('[text="' + title + '"]').id;
-            }
-            // console.log("file: "+ file + " hash: "+ hashID);
-            global.open(file, hashID);
-          });
-        } else {
-          global.open(file);
-        }
-      };
-
-      global.setHashWordColor = function (strRgb) {
-        document.documentElement.style.setProperty('--nav-hash-word-color', strRgb); //btnlist 改这行
-      };
-
-      global.setWordFontfamily = function (strFontFamily) {
-        document.documentElement.style.setProperty('--nav-world-font-family', strFontFamily); //btnlist 改这行
-      };
-
-      global.setTheme = function (themeType) {
-        console.log('主题切换', themeType);
-        if (navigator.language.toString().indexOf('en_') != -1) {
-          document.documentElement.style.setProperty('--span-line-height', '1.0rem');
-          document.documentElement.style.setProperty('--span-font-size', '0.9rem');
-        } else {
-          document.documentElement.style.setProperty('--span-line-height', '1.4rem');
-          document.documentElement.style.setProperty('--span-font-size', '1.03rem');
-        }
-        if ("DarkType" == themeType) {
-          console.log('DarkType');
-          document.documentElement.style.setProperty('--nav-hover-color', 'rgba(255,255,255,0.1)');
-          document.documentElement.style.setProperty('--body-background-color', '#252525');
-          document.documentElement.style.setProperty('--body-color-white2black', '#000000');
-          document.documentElement.style.setProperty('--app-word-color', '#C0C6D4');
-          document.documentElement.style.setProperty('--nav-background-color', '#282828');
-          document.documentElement.style.setProperty('--nav-h2-word-color', '#C0C6D4');
-          document.documentElement.style.setProperty('--nav-h3-word-color', '#C0C0C0');
-          //document.documentElement.style.setProperty(`--nav-hash-word-color`, '#0059D2');     //btnlist 改这行
-          document.documentElement.style.setProperty('--article-read-word-color', '#C0C6D4');
-          document.documentElement.style.setProperty('--article-read-h2-word-color', '#0082FA');
-          document.documentElement.style.setProperty('--article-table-text-color', '#6D7C88');
-          document.documentElement.style.setProperty('--article-table-border-color', 'rgba(96, 96, 96, 0.5)');
-          document.documentElement.style.setProperty('--article-table-cell-border-color', 'rgba(96, 96, 96, 0.1)');
-          document.documentElement.style.setProperty('--index-item-background-color', 'rgba(255,255,255,0.05)');
-          document.documentElement.style.setProperty('--index-item-hover-color', 'rgba(255,255,255,0.2)');
-          document.documentElement.style.setProperty('--index-item-span-word-color', '#C0C6D4');
-          document.documentElement.style.setProperty('--search-noresult-word-color', '#C0C6D4');
-          document.documentElement.style.setProperty('--search-button-word-color', '#C0C6D4');
-          document.documentElement.style.setProperty('--search-button-hover-word-color', '#FFFFFF');
-          document.documentElement.style.setProperty('--search-items-word-color', '#6D7C88');
-          document.documentElement.style.setProperty('--search-items-resultnum-word-color', '#6D7C88');
-          document.documentElement.style.setProperty('--search-item-background-color', 'rgba(255,255,255,0.05)');
-          document.documentElement.style.setProperty('--scrollbar-div-background-color', '#444444');
-          document.documentElement.style.setProperty('--scrollbar-div-hover-background-color', '#3D3D3D');
-          document.documentElement.style.setProperty('--scrollbar-div-select-background-color', '#303B69');
-          document.documentElement.style.setProperty('--index-h2-color', 'rgba(255,255,255,0.05)');
-          document.documentElement.style.setProperty('--search-button-background-color-start', '#484848');
-          document.documentElement.style.setProperty('--search-button-background-color-end', '#414141');
-          document.documentElement.style.setProperty('--search-button-hover-color-start', '#676767');
-          document.documentElement.style.setProperty('--search-button-hover-color-end', '#606060');
-          document.documentElement.style.setProperty('--search-WikiSearch-color', '#6D7C88');
-          document.documentElement.style.setProperty('--search-itemTitle-word-color', '#C0C6D4');
-          document.documentElement.style.setProperty('--search-context-word-color', '#6D7C88');
-        } else if ("LightType" == themeType) {
-          console.log('LightType');
-          document.documentElement.style.setProperty('--nav-hover-color', 'rgba(0,0,0,0.1)');
-          document.documentElement.style.setProperty('--body-background-color', '#F8F8F8');
-          document.documentElement.style.setProperty('--body-color-white2black', '#FFFFFF');
-          document.documentElement.style.setProperty('--app-word-color', '#414D68');
-          document.documentElement.style.setProperty('--nav-background-color', '#FFFFFF');
-          document.documentElement.style.setProperty('--nav-h2-word-color', '#001A2E');
-          document.documentElement.style.setProperty('--nav-h3-word-color', '#001A2E');
-          // document.documentElement.style.setProperty(`--nav-hash-word-color`, '#ca0c16');   //btn list 改这一行
-          document.documentElement.style.setProperty('--article-read-word-color', '#000000');
-          document.documentElement.style.setProperty('--article-read-h2-word-color', '#2CA7F8');
-          document.documentElement.style.setProperty('--article-table-text-color', '#606060');
-          document.documentElement.style.setProperty('--article-table-border-color', 'rgba(0, 0, 0, 0.1)');
-          document.documentElement.style.setProperty('--article-table-cell-border-color', 'rgba(0, 0, 0, 0.05)');
-          document.documentElement.style.setProperty('--index-item-background-color', '#FFFFFF');
-          document.documentElement.style.setProperty('--index-item-hover-color', 'rgba(0,0,0,0.05)');
-          document.documentElement.style.setProperty('--index-item-span-word-color', '#414D68');
-          document.documentElement.style.setProperty('--search-noresult-word-color', '#000000');
-          document.documentElement.style.setProperty('--search-button-word-color', '#414D68');
-          document.documentElement.style.setProperty('--search-button-hover-word-color', '#001B2E');
-          document.documentElement.style.setProperty('--search-items-word-color', '#000000');
-          document.documentElement.style.setProperty('--search-items-resultnum-word-color', '#8AA1B4');
-          document.documentElement.style.setProperty('--search-item-background-color', 'rgba(255,255,255,1)');
-          document.documentElement.style.setProperty('--scrollbar-div-background-color', 'rgba(83,96,118,0.4)');
-          document.documentElement.style.setProperty('--scrollbar-div-hover-background-color', 'rgba(83,96,118,0.5)');
-          document.documentElement.style.setProperty('--scrollbar-div-select-background-color', 'rgba(83,96,118,0.6)');
-          document.documentElement.style.setProperty('--index-h2-color', 'rgba(0, 0, 0, 0.1)');
-          document.documentElement.style.setProperty('--search-button-background-color-start', '#E6E6E6');
-          document.documentElement.style.setProperty('--search-button-background-color-end', '#E3E3E3');
-          document.documentElement.style.setProperty('--search-button-hover-color-start', '#CACACA');
-          document.documentElement.style.setProperty('--search-button-hover-color-end', '#C6C6C6');
-          document.documentElement.style.setProperty('--search-WikiSearch-color', '#7a7a7a');
-          document.documentElement.style.setProperty('--search-itemTitle-word-color', '#000000');
-          document.documentElement.style.setProperty('--search-context-word-color', '#000000');
-        } else {
-          console.log('Null');
-        }
-      };
-
-      var Base64 = {
-        encode: function encode(str) {
-          // first we use encodeURIComponent to get percent-encoded UTF-8,
-          // then we convert the percent encodings into raw bytes which
-          // can be fed into btoa.
-          return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function toSolidBytes(match, p1) {
-            return String.fromCharCode('0x' + p1);
-          }));
-        },
-        decode: function decode(str) {
-          // Going backwards: from bytestream, to percent-encoding, to original string.
-          return decodeURIComponent(atob(str).split('').map(function (c) {
-            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-          }).join(''));
-        }
-      };
-
-      global.openSearchPage = function (keyword) {
-        var decodeKeyword = Base64.decode(keyword);
-        console.log("decodeKeyword", decodeKeyword);
-        console.log("openSearchPage", _this3.context.router.history);
-        console.log('lastUrl:' + global.lastUrlBeforeSearch + ', lastHistoryIndex: ' + global.lastHistoryIndex);
-
-        var entriesLen = _this3.context.router.history.entries.length;
-        if ('POP' == global.lastAction && lastHistoryIndex > 0 && lastHistoryIndex < entriesLen - 1) {
-          _this3.context.router.history.entries.length = lastHistoryIndex;
-          _this3.context.router.history.length = lastHistoryIndex;
-          _this3.context.router.history.index = lastHistoryIndex - 1;
-
-          _this3.setState({ searchResult: [] });
-          _this3.context.router.history.push('/search/' + encodeURIComponent(decodeKeyword));
-
-          return;
-        }
-
-        entriesLen = _this3.context.router.history.entries.length;
-        if (entriesLen > 1) {
-          var entry = _this3.context.router.history.entries[entriesLen - 1];
-          var entryIndex = entry.pathname.toString().indexOf("/search/");
-          if (entryIndex != -1) {
-            _this3.context.router.history.entries.length = entriesLen - 1;
-            _this3.context.router.history.length = entriesLen - 1;
-            _this3.context.router.history.index = _this3.context.router.history.entries.length - 1;
-          }
-        }
-
-        _this3.setState({ searchResult: [] });
-        _this3.context.router.history.push('/search/' + encodeURIComponent(decodeKeyword));
-      };
-
-      this.context.router.history.listen(function (location, action) {
-        //console.log(`The current URL is ${location.pathname}${location.search}${location.hash}` );
-        //console.log(`The last navigation action was ${action}`);
-        //console.log("index:" + this.context.router.history.index);
-        global.lastUrlBeforeSearch = location.pathname;
-        global.lastHistoryIndex = _this3.context.router.history.index;
-        global.lastAction = action;
-      });
-
-      global.back = function () {
-        console.log("global.back()");
-        _this3.context.router.history.goBack();
-      };
-      this.componentDidUpdate();
-    }
-  }, {
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate() {
-      if (global.qtObjects) {
-        global.qtObjects.titleBar.setBackwardButtonActive(this.state.historyGO > 0);
-        global.qtObjects.titleBar.setForwardButtonActive(this.context.router.history.length - this.state.historyGO > 1);
-      }
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'div',
-        null,
-        this.state.init && _react2.default.createElement(
-          _reactRouterDom.Switch,
-          null,
-          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _index2.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/index', component: _index2.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/open/:file/:hash?', component: _main2.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/search/:keyword', component: _search2.default })
-        )
-      );
-    }
-  }]);
-
-  return App;
-}(_react2.default.Component);
-
-App.contextTypes = {
-  router: _propTypes2.default.object
-};
-App.childContextTypes = {
-  searchResult: _propTypes2.default.array,
-  mismatch: _propTypes2.default.bool
-};
-
-(0, _reactDom.render)(_react2.default.createElement(
-  _reactRouterDom.Router,
-  { history: (0, _history.createMemoryHistory)('/') },
-  _react2.default.createElement(App, null)
-), document.getElementById('app'));
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./index.jsx":3,"./main.jsx":4,"./mdToHtml":5,"./search.jsx":8,"history":16,"prop-types":31,"react":76,"react-dom":45,"react-router-dom":61}],2:[function(require,module,exports){
-(function (global){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = require('react-dom');
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _smoothScrollIntoViewIfNeeded = require('smooth-scroll-into-view-if-needed');
-
-var _smoothScrollIntoViewIfNeeded2 = _interopRequireDefault(_smoothScrollIntoViewIfNeeded);
-
-var _mdToHtml = require('./mdToHtml');
-
-var _mdToHtml2 = _interopRequireDefault(_mdToHtml);
-
-var _scrollbar = require('./scrollbar.jsx');
-
-var _scrollbar2 = _interopRequireDefault(_scrollbar);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Article = function (_Component) {
-  _inherits(Article, _Component);
-
-  function Article(props) {
-    _classCallCheck(this, Article);
-
-    var _this = _possibleConstructorReturn(this, (Article.__proto__ || Object.getPrototypeOf(Article)).call(this, props));
-
-    _this.state = {
-      preview: null,
-      smoothScroll: false,
-      fillblank: null,
-      bIsTimerOut: true
-    };
-
-    var timerObj;
-    return _this;
-  }
-  //滚动到锚点
-
-
-  _createClass(Article, [{
-    key: 'scrollToHash',
-    value: function scrollToHash() {
-      var _this2 = this;
-
-      console.log("article scrollToHash ", this.hash);
-      var tempHash = this.hash;
-      var hashNode = document.getElementById(tempHash);
-
-      if (this.state.preview != null) {
-        this.setState({ preview: null });
-      }
-
-      if (hashNode) {
-        clearTimeout(this.timerObj);
-        this.setState({ smoothScroll: true });
-
-        this.timerObj = setTimeout(function () {
-          _this2.setState({ smoothScroll: false });
-        }, 800);
-
-        (0, _smoothScrollIntoViewIfNeeded2.default)(hashNode, { behavior: 'smooth', block: 'start' }).then(function () {
-
-          //scrollIntoView函数存在异步,如果tempHash != this.hash时,说明存在异步操作,直接return. 
-          if (tempHash != _this2.hash) return;
-
-          console.log("scrollIntoView finish..");
-          //find parent h3 title of h4 title
-          var hList = _reactDom2.default.findDOMNode(_this2).querySelectorAll('h2,h3,h4,h5');
-          var currH3Hash = '';
-          for (var i = 0; i < hList.length; i++) {
-            if (hList[i].tagName == 'H3') {
-              currH3Hash = hList[i].id;
-            }
-            if (tempHash == hList[i].id && (hList[i].tagName == 'H4' || hList[i].tagName == 'H5')) {
-              console.log("article: scroll hlist:" + hList[i].tagName + "," + hList[i].id);
-              console.log("currH3Hash:" + currH3Hash);
-              _this2.hash = currH3Hash;
-              _this2.props.setHash(currH3Hash);
-              _this2.props.setScroll(currH3Hash);
-              break;
-            }
-          }
-        });
-      } else {
-        this.props.setHash(this.props.hlist[0].id);
-      }
-    }
-  }, {
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate() {
-      var _this3 = this;
-
-      console.log("article componentDidUpdate");
-      if (this.hash != this.props.hash) {
-        this.hash = this.props.hash;
-        this.scrollToHash();
-      }
-      if (!this.load) {
-        var article = _reactDom2.default.findDOMNode(this);
-        var read = article.querySelector('#read');
-        read.focus();
-        var imgList = [].concat(_toConsumableArray(article.querySelectorAll('img')));
-        var loadCount = 0;
-        imgList.map(function (el) {
-          el.onload = function () {
-            loadCount++;
-            if (loadCount == imgList.length) {
-              // console.log('image loaded');
-              _this3.load = true;
-              _this3.scrollToHash();
-              var last = article.querySelector('#' + _this3.props.hlist[_this3.props.hlist.length - 1].id);
-              var fillblank = {
-                marginBottom: article.clientHeight - (read.clientHeight - last.offsetTop)
-              };
-              _this3.setState({
-                fillblank: fillblank
-              });
-            }
-          };
-          el.onerror = function () {
-            if (el.getAttribute('src') == el.dataset.src) {
-              el.onload();
-            } else {
-              el.src = el.dataset.src;
-            }
-          };
-        });
-      }
-    }
-  }, {
-    key: 'componentWillUpdate',
-    value: function componentWillUpdate() {
-      console.log("article componentWillUpdate");
-      var alink_arr = document.getElementsByTagName('a');
-      for (var i = 0; i < alink_arr.length; i++) {
-        alink_arr[i].onclick = function () {
-          global.isLinkClicked = true;
-        };
-      }
-    }
-  }, {
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      console.log("article componentDidMount");
-      this.componentDidUpdate();
-    }
-  }, {
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
-      console.log("article componentWillReceiveProps nextfile", nextProps.nextProps, ' prop.file:', this.props.file);
-      if (nextProps.file != this.props.file) {
-        this.hash = '';
-        this.load = false;
-      }
-    }
-  }, {
-    key: 'gethID',
-    value: function gethID(htext) {
-      var id = this.props.hlist[0].id;
-      console.log(this.props.hlist[0]);
-      var hlist = this.props.hlist.filter(function (h) {
-        return h.text == htext;
-      });
-      if (hlist.length > 0) {
-        id = hlist[0].id;
-      }
-      console.log(htext, id);
-      return id;
-    }
-  }, {
-    key: 'handleWheelScroll',
-    value: function handleWheelScroll(e) {
-      global.isMouseScrollArticle = true;
-    }
-  }, {
-    key: 'handleKeyDown',
-    value: function handleKeyDown(e) {
-      if (38 == e.keyCode || 40 == e.keyCode) {
-        global.isMouseScrollArticle = true;
-      }
-    }
-  }, {
-    key: 'handleKeyUp',
-    value: function handleKeyUp(e) {
-      if (38 == e.keyCode || 40 == e.keyCode) {
-        global.isMouseScrollArticle = true;
-      }
-    }
-
-    //滚动事件
-
-  }, {
-    key: 'scroll',
-    value: function scroll() {
-      console.log("article scroll");
-      if (!this.load) {
-        return;
-      }
-      if (this.state.smoothScroll) {
-        return;
-      }
-      if (this.state.preview != null) {
-        this.setState({ preview: null });
-      }
-      var hList = _reactDom2.default.findDOMNode(this).querySelectorAll('h2,h3');
-      var aritleView = this.refs.articleView;
-
-      var hash = hList[0].id;
-      for (var i = 0; i < hList.length; i++) {
-        //console.log("article: scroll hlist:" + hList[i]);
-        //console.log("article: scroll hlist offset top:" + hList[i].getBoundingClientRect().top);
-        var articleTop = Math.abs(aritleView.getBoundingClientRect().top);
-        //console.log(hList[i].id + "," + hList[i].nodeName + ", hList[" + i + "].offsetTop" + hList[i].offsetTop + ", articleTop" + articleTop);
-        var offsetY = 10;
-        if (hList[i].nodeName == 'H2') {
-          offsetY = 10;
-        } else if (hList[i].nodeName == 'H3') {
-          offsetY = 30;
-        }
-        if (hList[i].offsetTop - offsetY >= articleTop) {
-          //console.log("article: scroll hlist offset top:" + hList[i].offsetTop);
-          break;
-        }
-        hash = hList[i].id;
-      }
-      console.log("article: scroll this.hash:" + this.hash + "   hash:" + hash);
-      if (this.hash != hash) {
-        console.log('article: scroll hash update');
-        this.hash = hash;
-        this.props.setHash(hash);
-        if (global.isMouseScrollArticle) {
-          this.props.setScroll(hash);
-        }
-      }
-    }
-    //内部链接预览....暂时去除,修改为直接跳转
-    /* 
-     showPreview(appName, hash, rect) {
-       console.log("article showPreview");
-       let file = `${global.path}/${appName}/${global.lang}/index.md`;
-       global.readFile(file, data => {
-         let { html } = m2h(file, data);
-         let d = document.createElement('div');
-         d.innerHTML = html;
-         let hashDom = d.querySelector(`[text="${hash}"]`);
-         let DomList = [hashDom];
-         let nextDom = hashDom.nextElementSibling;
-         while (nextDom) {
-           if (nextDom.nodeName == hashDom.nodeName) {
-             break;
-           }
-           DomList.push(nextDom);
-           nextDom = nextDom.nextElementSibling;
-         }
-         d.innerHTML = '';
-         DomList.map(el => d.appendChild(el));
-         html = d.innerHTML;
-         let { top, left, right } = rect;
-         let style = {};
-         let tClass = 't_';
-          console.log("left-right:"+(left) + "  - "+ right);
-         //center
-         if (((right + left)/2 > (300 + 170)) && (((right + left)/2 + 300 < document.body.clientWidth))) {
-           style.left　=　(right + left)/2 - 300;
-           tClass += 'center_';
-         }
-         //right
-         else if (((right + left)/2  > (600 + 170)))
-         {
-           style.left　=　right - 600;
-           tClass += 'right_';
-         }
-         //left
-         else if ((right + left)/2 <= (300 + 170))
-         {
-           style.left　=　left;
-           tClass += 'left_';
-         }
-         //left
-         else {
-           style.left　= 170;
-           tClass += 'left_';
-           
-         }
-         if (top > document.body.clientHeight / 2) {
-           tClass += 'down';
-           style.top = top - 250 - 20;
-         } else {
-           tClass += 'up';
-           style.top = top + rect.height + 10;
-         }
-         this.setState({ preview: { html, style, tClass } });
-       });
-     }
-     */
-
-    //链接处理
-
-  }, {
-    key: 'click',
-    value: function click(e) {
-      console.log("article click");
-      if (this.state.preview != null) {
-        this.setState({ preview: null });
-      }
-      switch (e.target.nodeName) {
-        case 'IMG':
-          e.preventDefault();
-          var src = e.target.src;
-          if (src.indexOf('.svg') != -1) {
-            return;
-          }
-          console.log('imageViewer', src);
-          global.qtObjects.imageViewer.open(src);
-          return;
-        case 'A':
-          var dmanProtocol = 'dman://';
-          var hashProtocol = '#';
-          var httpProtocol = 'http';
-          var href = e.target.getAttribute('href');
-          console.log("href:" + href);
-          switch (0) {
-            case href.indexOf(hashProtocol):
-              e.preventDefault();
-              this.props.setHash(document.querySelector('[text="' + href.slice(1) + '"]').id);
-              return;
-            case href.indexOf(dmanProtocol):
-              e.preventDefault();
-
-              var _href$slice$split = href.slice(dmanProtocol.length + 1).split('#'),
-                  _href$slice$split2 = _slicedToArray(_href$slice$split, 2),
-                  appName = _href$slice$split2[0],
-                  hash = _href$slice$split2[1];
-              // const rect = e.target.getBoundingClientRect();
-              // this.showPreview(appName, hash, rect);
-              // this.showPreviewTmp(appName,hash);
-
-
-              global.openTitle(appName, hash);
-              return;
-            case href.indexOf(httpProtocol):
-              e.preventDefault();
-              global.qtObjects.imageViewer.openHttpUrl(href);
-              return;
-          }
-      }
-    }
-
-    //右键菜单事件
-
-  }, {
-    key: 'contentMenu',
-    value: function contentMenu(e) {
-      switch (e.target.nodeName) {
-        //当前为图片或者链接时,右键清除选中状态.
-        //当前为图片
-        case 'IMG':
-          e.preventDefault();
-          document.getSelection().empty();
-          return;
-        //当前为链接
-        case 'A':
-          e.preventDefault();
-          document.getSelection().empty();
-          return;
-      }
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this4 = this;
-
-      console.log("article render...");
-      return _react2.default.createElement(
-        'div',
-        { id: 'article' },
-        _react2.default.createElement(
-          'div',
-          { id: 'article_bg' },
-          _react2.default.createElement(
-            _scrollbar2.default,
-            { onScroll: this.scroll.bind(this),
-              onWheel: function onWheel(e) {
-                return _this4.handleWheelScroll(e);
-              },
-              onKeyUp: function onKeyUp(e) {
-                return _this4.handleKeyUp(e);
-              },
-              onKeyDown: function onKeyDown(e) {
-                return _this4.handleKeyDown(e);
-              } },
-            _react2.default.createElement('div', {
-              id: 'read',
-              ref: 'articleView',
-              className: 'read',
-              tabIndex: '-1',
-              dangerouslySetInnerHTML: { __html: this.props.html },
-              style: this.state.fillblank,
-              onClick: this.click.bind(this),
-              onContextMenu: this.contentMenu.bind(this)
-            }),
-            this.state.preview != null && _react2.default.createElement(
-              'div',
-              {
-                style: this.state.preview.style,
-                className: this.state.preview.tClass,
-                id: 'preview'
-              },
-              _react2.default.createElement(
-                'div',
-                { id: 'view' },
-                _react2.default.createElement(
-                  _scrollbar2.default,
-                  null,
-                  _react2.default.createElement('div', {
-                    className: 'read',
-                    dangerouslySetInnerHTML: {
-                      __html: this.state.preview.html
-                    }
-                  })
-                )
-              )
-            )
-          )
-        )
-      );
-    }
-  }]);
-
-  return Article;
-}(_react.Component);
-
-exports.default = Article;
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./mdToHtml":5,"./scrollbar.jsx":7,"react":76,"react-dom":45,"smooth-scroll-into-view-if-needed":85}],3:[function(require,module,exports){
-(function (global){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRouterDom = require('react-router-dom');
-
-var _reactDom = require('react-dom');
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _scrollbar = require('./scrollbar.jsx');
-
-var _scrollbar2 = _interopRequireDefault(_scrollbar);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Item = function (_Component) {
-  _inherits(Item, _Component);
-
-  function Item(props) {
-    _classCallCheck(this, Item);
-
-    var _this = _possibleConstructorReturn(this, (Item.__proto__ || Object.getPrototypeOf(Item)).call(this, props));
-
-    _this.state = {
-      name: '',
-      title: '',
-      logo: '',
-      show: false
-    };
-    var path = global.path + '/' + _this.props.appName + '/' + global.lang + '/';
-    var file = path + 'index.md';
-    global.readFile(file, function (data) {
-      var _data$substr$split = data.substr('# '.length, data.indexOf('\n')).split('|'),
-          _data$substr$split2 = _slicedToArray(_data$substr$split, 2),
-          title = _data$substr$split2[0],
-          logo = _data$substr$split2[1];
-
-      logo = '' + path + logo;
-
-      _this.setState({ title: title, logo: logo, file: file, show: true });
-    });
-    return _this;
-  }
-
-  _createClass(Item, [{
-    key: 'render',
-    value: function render() {
-      var _this2 = this;
-
-      var contentSpan = null;
-      if (this.props.isOpened) {
-        contentSpan = _react2.default.createElement(
-          'span',
-          { className: 'content', lang: global.lang },
-          this.state.title
-        );
-      } else {
-        contentSpan = _react2.default.createElement(
-          'span',
-          { className: 'content', lang: global.lang },
-          _react2.default.createElement('span', { className: 'tag' }),
-          this.state.title
-        );
-      }
-
-      return this.state.show && _react2.default.createElement(
-        'div',
-        {
-          draggable: 'false',
-          tabIndex: '1',
-          className: 'item'
-          //this is old
-          // onClick={() => global.open(this.state.file)}
-          , onClick: function onClick() {
-            return global.open(_this2.props.appName);
-          }
-          // onMouseEnter={e => e.target.focus()}
-          , onKeyPress: function onKeyPress(e) {
-            if (e.key === 'Enter') {
-              // global.open(this.state.file);
-              global.open(_this2.props.appName);
-            }
-          }
-        },
-        _react2.default.createElement('img', {
-          draggable: 'false',
-          src: this.state.logo,
-          alt: this.props.appName
-        }),
-        _react2.default.createElement('br', null),
-        contentSpan
-      );
-    }
-  }]);
-
-  return Item;
-}(_react.Component);
-
-var Index = function (_Component2) {
-  _inherits(Index, _Component2);
-
-  function Index(props) {
-    _classCallCheck(this, Index);
-
-    var _this3 = _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).call(this, props));
-
-    var sequence = ['deepin-browser', 'dde-file-manager', 'deepin-app-store', 'sogouimebs', 'deepin-mail', 'deepin-contacts', 'deepin-screen-recorder', 'deepin-image-viewer', 'deepin-album', 'deepin-music', 'deepin-movie', 'deepin-draw', 'dde-calendar', 'deepin-voice-note', 'deepin-reader', 'deepin-editor', 'deepin-compressor', 'dde-printer', 'deepin-terminal',
-    // '安全中心',
-    'downloader', 'deepin-deb-installer', 'deepin-font-manager', 'deepin-calculator', 'deepin-graphics-driver-manager', 'deepin-devicemanager', 'deepin-system-monitor', 'deepin-boot-maker', 'deepin-log-viewer', 'deepin-repair-tools', 'deepin-clone', 'deepin-cloud-print', 'deepin-cloud-scan', 'deepin-voice-recorder', 'deepin-picker', 'deepin-remote-assistance', 'deepin-presentation-assistant', 'chineseime', 'deepin-defender', 'uos-service-support'];
-    _this3.state = {
-      sequence: sequence,
-      appList: [],
-      openedAppList: []
-    };
-    global.qtObjects.manual.getSystemManualList(function (appList) {
-      return _this3.setState({ appList: appList });
-    });
-    global.qtObjects.manual.getUsedAppList(function (openedAppList) {
-      console.log("openlist :" + openedAppList);
-      _this3.setState({ openedAppList: openedAppList });
-    });
-    return _this3;
-  }
-
-  _createClass(Index, [{
-    key: 'bIsBeOpen',
-    value: function bIsBeOpen(app) {
-      if (this.state.openedAppList.indexOf(app) != -1) {
-        return true;
-      }
-      return false;
-    }
-  }, {
-    key: 'shouldComponentUpdate',
-    value: function shouldComponentUpdate(nextProps, nextState) {
-      if (nextState.appList.toString() == this.state.appList.toString())
-        //  && nextState.openedAppList.toString == this.state.openedAppList.toString()) 
-        {
-          return true;
-        }
-      return false;
-    }
-  }, {
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate() {
-      _reactDom2.default.findDOMNode(this).querySelector('#index').focus();
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this4 = this;
-
-      var sysSoft = ['dde'].filter(function (appName) {
-        return _this4.state.appList.indexOf(appName) != -1;
-      });
-      // let appSoft = this.state.sequence.filter(
-      //   appName => this.state.appList.indexOf(appName) != -1
-      // );
-      // let otherSoft = this.state.appList.filter(
-      //   appName => this.state.sequence.indexOf(appName) == -1 &&
-      //     sysSoft.indexOf(appName) == -1
-      // );
-
-      var appSoft = this.state.appList;
-      var index = appSoft.indexOf("dde");
-      appSoft.splice(index, 1);
-      var otherSoft = [""];
-
-      return _react2.default.createElement(
-        _scrollbar2.default,
-        null,
-        _react2.default.createElement(
-          'div',
-          { id: 'index', tabIndex: '-1' },
-          _react2.default.createElement(
-            'h2',
-            null,
-            global.i18n['System']
-          ),
-          sysSoft.length > 0 && _react2.default.createElement(
-            'div',
-            { id: 'forMargin' },
-            _react2.default.createElement(
-              'div',
-              { className: 'items' },
-              sysSoft.map(function (appName) {
-                return _react2.default.createElement(Item, { key: appName, appName: appName, isOpened: _this4.bIsBeOpen(appName) });
-              })
-            )
-          ),
-          _react2.default.createElement(
-            'h2',
-            null,
-            global.i18n['Applications']
-          ),
-          _react2.default.createElement(
-            'div',
-            { id: 'forMargin' },
-            _react2.default.createElement(
-              'div',
-              { className: 'items' },
-              appSoft.map(function (appName) {
-                return _react2.default.createElement(Item, { key: appName, appName: appName, isOpened: _this4.bIsBeOpen(appName) });
-              }),
-              otherSoft.map(function (appName) {
-                return _react2.default.createElement(Item, { key: appName, appName: appName, isOpened: _this4.bIsBeOpen(appName) });
-              }),
-              Array.from(new Array(10), function (val, index) {
-                return index;
-              }).map(function (i) {
-                return _react2.default.createElement('a', { key: i, className: 'empty' });
-              })
-            )
-          )
-        )
-      );
-    }
-  }]);
-
-  return Index;
-}(_react.Component);
-
-exports.default = Index;
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./scrollbar.jsx":7,"react":76,"react-dom":45,"react-router-dom":61}],4:[function(require,module,exports){
-(function (global){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _jquery = require('jquery');
-
-var _jquery2 = _interopRequireDefault(_jquery);
-
-var _nav = require('./nav.jsx');
-
-var _nav2 = _interopRequireDefault(_nav);
-
-var _article = require('./article.jsx');
-
-var _article2 = _interopRequireDefault(_article);
-
-var _mdToHtml = require('./mdToHtml.js');
-
-var _mdToHtml2 = _interopRequireDefault(_mdToHtml);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Main = function (_Component) {
-  _inherits(Main, _Component);
-
-  function Main(props) {
-    _classCallCheck(this, Main);
-
-    var _this = _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this, props));
-
-    _this.state = {
-      init: false,
-      bTest: true
-    };
-    var _this$props$match$par = _this.props.match.params,
-        file = _this$props$match$par.file,
-        hash = _this$props$match$par.hash;
-
-    _this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null);
-    var showFloatTimer = null;
-    return _this;
-  }
-
-  _createClass(Main, [{
-    key: 'init',
-    value: function init(file, hash) {
-      var _this2 = this;
-
-      console.log("main init==>file:", file, " hash:", hash);
-      var filePath = file;
-      if (filePath.indexOf('/') == -1) {
-        filePath = global.path + '/' + file + '/' + global.lang + '/index.md';
-      }
-
-      global.readFile(filePath, function (data) {
-        console.log("main init===>readfile finish...");
-
-        var _m2h = (0, _mdToHtml2.default)(filePath, data),
-            html = _m2h.html,
-            hlist = _m2h.hlist;
-
-        _this2.setState({
-          file: file,
-          html: html,
-          hlist: hlist,
-          init: true,
-          hash: hash ? hash : hlist[0].id
-        });
-      });
-    }
-  }, {
-    key: 'setHash',
-    value: function setHash(hash) {
-      console.log("main setHash: " + hash);
-      if (global.isLinkClicked) {
-        console.log("main --setHash");
-        global.hash = hash;
-        global.isLinkClicked = false;
-      }
-      console.log("main*********setHash");
-      this.setState({ hash: hash });
-    }
-
-    // setScrollTitle(hash){
-    //   console.log("main setScrollTitle: " + hash);
-    //   setTimeout(() => {
-    //     global.hash = hash;
-    //     global.oldHash = hash;
-    //     global.isMouseClickNav = true;
-    //     global.isMouseScrollArticle = false;
-    //     this.setState({ hash });
-    //   },800);
-    // }
-
-  }, {
-    key: 'setScroll',
-    value: function setScroll(hash) {
-      console.log("main setScroll:" + hash);
-      global.hash = hash;
-      this.setState({ hash: hash });
-    }
-
-    //处理Nav类的Over Out Move事件,自定义Title框
-
-  }, {
-    key: 'handleNavOver',
-    value: function handleNavOver(e) {
-      var value = e.currentTarget.innerHTML;
-      clearTimeout(this.showFloatTimer);
-      this.showFloatTimer = setTimeout(function () {
-        (0, _jquery2.default)('.tooltip-wp').attr('data-title', value); //动态设置data-title属性
-        (0, _jquery2.default)('.tooltip-wp').fadeIn(200); //浮动框淡出
-      }, 300);
-    }
-  }, {
-    key: 'handleNavOut',
-    value: function handleNavOut(e) {
-      clearTimeout(this.showFloatTimer);
-      (0, _jquery2.default)('.tooltip-wp').hide();
-    }
-  }, {
-    key: 'handleNavMove',
-    value: function handleNavMove(e) {
-      var xPage = e.pageX;
-      var yPage = e.pageY + 20;
-      setTimeout(function () {
-        (0, _jquery2.default)('.tooltip-wp').css({
-          'top': yPage + 'px',
-          'left': xPage + 'px'
-        });
-      }, 150);
-    }
-  }, {
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
-      var _nextProps$match$para = nextProps.match.params,
-          file = _nextProps$match$para.file,
-          hash = _nextProps$match$para.hash;
-
-      console.log("main componentWillReceivePropss: " + file + " " + hash + "  this.file:" + this.state.file);
-      //仅当页面文件发生改变时(文件改变或hash值发生改变),才刷新页面.
-      if (file != this.state.file || file == this.state.file && hash != this.state.hash) {
-        this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null);
-      }
-    }
-  }, {
-    key: 'componentWillUpdate',
-    value: function componentWillUpdate() {
-      console.log("main componentWillUpdate..");
-    }
-  }, {
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      global.hash = '';
-      global.isMouseClickNav = false;
-      global.isMouseScrollArticle = false;
-      global.isLinkClicked = false;
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this3 = this;
-
-      console.log("main render....hash:", this.state.hash);
-      console.log("main render....hList:", this.state.hlist);
-      return this.state.init && _react2.default.createElement(
-        'div',
-        { id: 'main' },
-        _react2.default.createElement(_nav2.default, {
-          hlist: this.state.hlist,
-          hash: this.state.hash,
-          setHash: this.setHash.bind(this),
-          onNavOver: function onNavOver(e) {
-            return _this3.handleNavOver(e);
-          },
-          onNavOut: function onNavOut(e) {
-            return _this3.handleNavOut(e);
-          },
-          onNavMove: function onNavMove(e) {
-            return _this3.handleNavMove(e);
-          }
-        }),
-        _react2.default.createElement(_article2.default, {
-          file: this.props.match.params.file,
-          hlist: this.state.hlist,
-          html: this.state.html,
-          hash: this.state.hash,
-          setHash: this.setHash.bind(this),
-          setScroll: this.setScroll.bind(this)
-        }),
-        _react2.default.createElement(
-          'div',
-          { className: 'support-div', onClick: function onClick() {
-              console.log("support click...");
-            } },
-          _react2.default.createElement('img', { className: 'support', src: './pic.svg' })
-        ),
-        _react2.default.createElement('div', { className: 'tooltip-wp' })
-      );
-    }
-  }]);
-
-  return Main;
-}(_react.Component);
-
-exports.default = Main;
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./article.jsx":2,"./mdToHtml.js":5,"./nav.jsx":6,"jquery":21,"react":76}],5:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-exports.default = function (mdFile, mdData) {
-  var hlist = [];
-  var info = {};
-  var html = '';
-
-  var path = mdFile.slice(0, mdFile.lastIndexOf('/') + 1);
-  var renderer = new _marked2.default.Renderer();
-  var count = 0;
-  renderer.heading = function (text, level) {
-    var id = 'h' + count;
-    count++;
-    if (level == 1) {
-      var _text$split = text.split('|'),
-          _text$split2 = _slicedToArray(_text$split, 2),
-          title = _text$split2[0],
-          logo = _text$split2[1];
-
-      logo = path + logo;
-      console.log(logo);
-      info = { title: title, logo: logo };
-      return '';
-    }
-    if (level == 2) {
-      text = text.split('|')[0];
-    }
-    var type = 'h' + level;
-    if (level == 2 || level == 3) {
-      hlist.push({ id: id, text: text, type: type });
-    }
-    return '<' + type + ' id="' + id + '" text="' + text + '">' + text + '</' + type + '>\n';
-  };
-  console.log(path);
-  renderer.image = function (href, title, text) {
-    var hrefX2 = href;
-    if (devicePixelRatio >= 1.5 && href.indexOf('.svg') == -1) {
-      var _path = href.split('.');
-      var ext = _path.pop();
-      hrefX2 = _path.join('.') + 'x2.' + ext;
-    }
-    return '<img src="' + hrefX2 + '" data-src="' + href + '" alt="' + text + '" />';
-  };
-  html = (0, _marked2.default)(mdData, { renderer: renderer }).replace(/src="/g, '$&' + path);
-  return { html: html, hlist: hlist, info: info };
-};
-
-var _marked = require('marked');
-
-var _marked2 = _interopRequireDefault(_marked);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-},{"marked":22}],6:[function(require,module,exports){
-(function (global){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = require('react-dom');
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _reactRouterDom = require('react-router-dom');
-
-var _scrollbar = require('./scrollbar.jsx');
-
-var _scrollbar2 = _interopRequireDefault(_scrollbar);
-
-var _buffer = require('buffer');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Nav = function (_Component) {
-  _inherits(Nav, _Component);
-
-  function Nav() {
-    _classCallCheck(this, Nav);
-
-    return _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).apply(this, arguments));
-  }
-
-  _createClass(Nav, [{
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      document.getElementById('article').style.marginLeft = _reactDom2.default.findDOMNode(this).clientWidth;
-      this.componentDidUpdate();
-    }
-  }, {
-    key: 'shouldComponentUpdate',
-    value: function shouldComponentUpdate(newProps, newState) {
-      console.log("nav shouldComponentUpdate newProps:" + newProps.hash + " global hash:" + global.hash);
-
-      if ('' == global.hash) {
-        return true;
-      }
-
-      if ('POP' == global.lastAction) {
-        return true;
-      }
-      //why........
-      if (newProps.hash != global.hash) {
-        return false;
-      }
-      return true;
-    }
-  }, {
-    key: 'componentWillUpdate',
-    value: function componentWillUpdate() {
-      console.log("nav componentWillUpdate");
-    }
-  }, {
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate() {
-      console.log("nav componentDidUpdate");
-      var hashDOM = _reactDom2.default.findDOMNode(this).querySelector('.hash');
-      if (hashDOM == null) {
-        return;
-      }
-      if (hashDOM.getAttribute('cid') == this.props.hlist[0].id) {
-        document.getElementById('backHome').scrollIntoViewIfNeeded(false);
-        return;
-      }
-      hashDOM.scrollIntoViewIfNeeded(false);
-    }
-  }, {
-    key: 'click',
-    value: function click(e) {
-      var cid = e.target.getAttribute('cid');
-      if (cid) {
-        console.log('搜索结果', cid);
-        global.hash = cid;
-        global.isMouseClickNav = true;
-        global.isMouseScrollArticle = false;
-        this.props.setHash(cid);
-      }
-    }
-  }, {
-    key: 'wheel',
-    value: function wheel(e) {
-      var nav = _reactDom2.default.findDOMNode(this);
-      if (e.deltaY > 0) {
-        if (e.deltaY > 0 && nav.scrollHeight == nav.clientHeight + nav.scrollTop) {
-          e.preventDefault();
-        } else if (e.deltaY < 0 && nav.scrollTop == 0) {
-          e.preventDefault();
-        }
-      }
-    }
-
-    //右键菜单事件,去除选中状态
-
-  }, {
-    key: 'contentMenu',
-    value: function contentMenu(e) {
-      e.preventDefault();
-      document.getSelection().empty();
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this2 = this;
-
-      console.log("nav render...");
-      var max = this.props.hlist[0];
-      this.props.hlist.map(function (h) {
-        if (max.text.length < h.text.length) {
-          max = h;
-        }
-      });
-      // console.log(max, max.text.length);
-      // let maxWidth = 0;
-      // if (global.lang == 'zh_CN') {
-      //   maxWidth = max.text.length * 16;
-      // } else {
-      //   maxWidth = max.text.length / 1.8;
-      // }
-      var maxWidth = max.text.length;
-      var c = 0;
-      if (global.lang === 'zh_CN') {
-        if (maxWidth <= 6) {
-          c = 3;
-        } else {
-          c = 1;
-        }
-        maxWidth *= 18;
-      } else {
-        if (maxWidth <= 20) {
-          c = 2;
-        }
-        maxWidth *= 9;
-      }
-      return _react2.default.createElement(
-        'div',
-        {
-          id: 'nav',
-          lang: global.lang,
-          onClick: function onClick(e) {
-            return _this2.click(e);
-          },
-          onContextMenu: this.contentMenu.bind(this),
-          style: {
-            width: 'calc(' + maxWidth + 'px + ' + c + 'rem'
-          }
-        },
-        _react2.default.createElement(
-          _scrollbar2.default,
-          null,
-          _react2.default.createElement(
-            'div',
-            {
-              type: 'h2',
-              id: 'backHome',
-              className: 'h',
-              onClick: function onClick() {
-                return global.backHome();
-              }
-            },
-            global.i18n['ToIndexPage']
-          ),
-          this.props.hlist.map(function (h) {
-            return _react2.default.createElement(
-              'div',
-              {
-                key: h.id,
-                cid: h.id,
-                type: h.type,
-                className: _this2.props.hash == h.id ? 'h hash' : 'h',
-                onMouseOver: function onMouseOver(e) {
-                  return _this2.props.onNavOver(e);
-                },
-                onMouseOut: function onMouseOut(e) {
-                  return _this2.props.onNavOut(e);
-                },
-                onMouseMove: function onMouseMove(e) {
-                  return _this2.props.onNavMove(e);
-                }
-              },
-              h.text
-            );
-          })
-        )
-      );
-    }
-  }]);
-
-  return Nav;
-}(_react.Component);
-
-exports.default = Nav;
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./scrollbar.jsx":7,"buffer":11,"react":76,"react-dom":45,"react-router-dom":61}],7:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-exports.default = function (props) {
-  return _react2.default.createElement(
-    _reactCustomScrollbars.Scrollbars,
-    _extends({}, props, { className: 'scrollbar', autoHide: true, renderTrackHorizontal: renderScrollBarTrackHorizontal, autoHideTimeout: 800 }),
-    props.children
-  );
-};
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactCustomScrollbars = require('react-custom-scrollbars');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function renderScrollBarTrackHorizontal(props) {
-  return _react2.default.createElement('span', null);
-}
-
-},{"react":76,"react-custom-scrollbars":37}],8:[function(require,module,exports){
-(function (global){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = require('react-dom');
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _scrollbar = require('./scrollbar.jsx');
-
-var _scrollbar2 = _interopRequireDefault(_scrollbar);
-
-var _reactRouterDom = require('react-router-dom');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Items = function (_Component) {
-  _inherits(Items, _Component);
-
-  function Items(props) {
-    _classCallCheck(this, Items);
-
-    var _this = _possibleConstructorReturn(this, (Items.__proto__ || Object.getPrototypeOf(Items)).call(this, props));
-
-    _this.state = {
-      title: '',
-      logo: '',
-      show: false
-    };
-    var path = props.file.slice(0, props.file.lastIndexOf('/') + 1);
-    global.readFile(props.file, function (data) {
-      var _data$substr$split = data.substr('# '.length, data.indexOf('\n')).split('|'),
-          _data$substr$split2 = _slicedToArray(_data$substr$split, 2),
-          title = _data$substr$split2[0],
-          logo = _data$substr$split2[1];
-
-      logo = '' + path + logo;
-      _this.setState({ title: title, logo: logo, show: true });
-    });
-    return _this;
-  }
-
-  _createClass(Items, [{
-    key: 'render',
-    value: function render() {
-      var _this2 = this;
-
-      var resultList = [];
-      var re = new RegExp(this.props.keyword, 'gi');
-
-      var _loop = function _loop(i) {
-        var c = _react2.default.createElement(
-          'div',
-          { className: 'item', key: i, onClick: function onClick() {
-              return global.open(_this2.props.file, _this2.props.idList[i]);
-            } },
-          _react2.default.createElement('div', {
-            className: 'itemTitle',
-            dangerouslySetInnerHTML: {
-              __html: _this2.props.titleList[i].replace(re, "<span class='highlight'>$&</span>")
-            }
-          }),
-          _react2.default.createElement('div', {
-            className: 'context',
-            dangerouslySetInnerHTML: {
-              __html: _this2.props.contentList[i]
-            }
-          })
-        );
-        resultList.push(c);
-      };
-
-      for (var i = 0; i < this.props.idList.length; i++) {
-        _loop(i);
-      }
-      var sresultnum;
-      if (resultList.length > 1) sresultnum = resultList.length + global.i18n['ResultNumSuffixs'];else sresultnum = resultList.length + global.i18n['ResultNumSuffix'];
-      return this.state.show && _react2.default.createElement(
-        'div',
-        { className: 'items' },
-        _react2.default.createElement(
-          'div',
-          { className: 'itemsTitle', onClick: function onClick() {
-              return global.open(_this2.props.file);
-            } },
-          _react2.default.createElement('img', { src: this.state.logo }),
-          _react2.default.createElement(
-            'span',
-            { className: 'resulttitle' },
-            this.state.title
-          ),
-          _react2.default.createElement(
-            'span',
-            { className: 'resultnum' },
-            sresultnum
-          )
-        ),
-        resultList
-      );
-    }
-  }]);
-
-  return Items;
-}(_react.Component);
-
-function Mismatch(props) {
-  return _react2.default.createElement(
-    'div',
-    { id: 'mismatch' },
-    _react2.default.createElement(
-      'div',
-      null,
-      _react2.default.createElement(
-        'div',
-        { id: 'NoResult' },
-        global.i18n['NoResult'].replace('%1', decodeURIComponent(props.keyword))
-      )
-    )
-  );
-}
-
-var SearchPage = function (_Component2) {
-  _inherits(SearchPage, _Component2);
-
-  function SearchPage(props, context) {
-    _classCallCheck(this, SearchPage);
-
-    return _possibleConstructorReturn(this, (SearchPage.__proto__ || Object.getPrototypeOf(SearchPage)).call(this, props, context));
-  }
-
-  _createClass(SearchPage, [{
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate() {
-      _reactDom2.default.findDOMNode(this).querySelector('#search').focus();
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this4 = this;
-
-      var c = null;
-      if (this.context.mismatch) {
-        c = _react2.default.createElement(Mismatch, { keyword: this.props.match.params.keyword });
-      } else {
-        c = this.context.searchResult.map(function (result) {
-          return _react2.default.createElement(Items, {
-            key: result.file,
-            file: result.file,
-            idList: result.idList,
-            titleList: result.titleList,
-            contentList: result.contentList,
-            keyword: _this4.props.match.params.keyword
-          });
-        });
-      }
-      return _react2.default.createElement(
-        _scrollbar2.default,
-        null,
-        _react2.default.createElement(
-          'div',
-          {
-            id: 'search',
-            tabIndex: '-1'
-            // onMouseOver={e => document.getElementById('search').focus()}
-          },
-          c
-        )
-      );
-    }
-  }]);
-
-  return SearchPage;
-}(_react.Component);
-
-exports.default = SearchPage;
-
-
-SearchPage.contextTypes = {
-  searchResult: _propTypes2.default.array,
-  mismatch: _propTypes2.default.bool
-};
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./scrollbar.jsx":7,"prop-types":31,"react":76,"react-dom":45,"react-router-dom":61}],9:[function(require,module,exports){
-/* The following list is defined in React's core */
-var IS_UNITLESS = {
-  animationIterationCount: true,
-  boxFlex: true,
-  boxFlexGroup: true,
-  boxOrdinalGroup: true,
-  columnCount: true,
-  flex: true,
-  flexGrow: true,
-  flexPositive: true,
-  flexShrink: true,
-  flexNegative: true,
-  flexOrder: true,
-  gridRow: true,
-  gridColumn: true,
-  fontWeight: true,
-  lineClamp: true,
-  lineHeight: true,
-  opacity: true,
-  order: true,
-  orphans: true,
-  tabSize: true,
-  widows: true,
-  zIndex: true,
-  zoom: true,
-
-  // SVG-related properties
-  fillOpacity: true,
-  stopOpacity: true,
-  strokeDashoffset: true,
-  strokeOpacity: true,
-  strokeWidth: true
-};
-
-module.exports = function(name, value) {
-  if(typeof value === 'number' && !IS_UNITLESS[ name ]) {
-    return value + 'px';
-  } else {
-    return value;
-  }
-};
-},{}],10:[function(require,module,exports){
-'use strict'
-
-exports.byteLength = byteLength
-exports.toByteArray = toByteArray
-exports.fromByteArray = fromByteArray
-
-var lookup = []
-var revLookup = []
-var Arr = typeof Uint8Array !== 'undefined' ? Uint8Array : Array
-
-var code = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
-for (var i = 0, len = code.length; i < len; ++i) {
-  lookup[i] = code[i]
-  revLookup[code.charCodeAt(i)] = i
-}
-
-// Support decoding URL-safe base64 strings, as Node.js does.
-// See: https://en.wikipedia.org/wiki/Base64#URL_applications
-revLookup['-'.charCodeAt(0)] = 62
-revLookup['_'.charCodeAt(0)] = 63
-
-function getLens (b64) {
-  var len = b64.length
-
-  if (len % 4 > 0) {
-    throw new Error('Invalid string. Length must be a multiple of 4')
-  }
-
-  // Trim off extra bytes after placeholder bytes are found
-  // See: https://github.com/beatgammit/base64-js/issues/42
-  var validLen = b64.indexOf('=')
-  if (validLen === -1) validLen = len
-
-  var placeHoldersLen = validLen === len
-    ? 0
-    : 4 - (validLen % 4)
-
-  return [validLen, placeHoldersLen]
-}
-
-// base64 is 4/3 + up to two characters of the original data
-function byteLength (b64) {
-  var lens = getLens(b64)
-  var validLen = lens[0]
-  var placeHoldersLen = lens[1]
-  return ((validLen + placeHoldersLen) * 3 / 4) - placeHoldersLen
-}
-
-function _byteLength (b64, validLen, placeHoldersLen) {
-  return ((validLen + placeHoldersLen) * 3 / 4) - placeHoldersLen
-}
-
-function toByteArray (b64) {
-  var tmp
-  var lens = getLens(b64)
-  var validLen = lens[0]
-  var placeHoldersLen = lens[1]
-
-  var arr = new Arr(_byteLength(b64, validLen, placeHoldersLen))
-
-  var curByte = 0
-
-  // if there are placeholders, only get up to the last complete 4 chars
-  var len = placeHoldersLen > 0
-    ? validLen - 4
-    : validLen
-
-  var i
-  for (i = 0; i < len; i += 4) {
-    tmp =
-      (revLookup[b64.charCodeAt(i)] << 18) |
-      (revLookup[b64.charCodeAt(i + 1)] << 12) |
-      (revLookup[b64.charCodeAt(i + 2)] << 6) |
-      revLookup[b64.charCodeAt(i + 3)]
-    arr[curByte++] = (tmp >> 16) & 0xFF
-    arr[curByte++] = (tmp >> 8) & 0xFF
-    arr[curByte++] = tmp & 0xFF
-  }
-
-  if (placeHoldersLen === 2) {
-    tmp =
-      (revLookup[b64.charCodeAt(i)] << 2) |
-      (revLookup[b64.charCodeAt(i + 1)] >> 4)
-    arr[curByte++] = tmp & 0xFF
-  }
-
-  if (placeHoldersLen === 1) {
-    tmp =
-      (revLookup[b64.charCodeAt(i)] << 10) |
-      (revLookup[b64.charCodeAt(i + 1)] << 4) |
-      (revLookup[b64.charCodeAt(i + 2)] >> 2)
-    arr[curByte++] = (tmp >> 8) & 0xFF
-    arr[curByte++] = tmp & 0xFF
-  }
-
-  return arr
-}
-
-function tripletToBase64 (num) {
-  return lookup[num >> 18 & 0x3F] +
-    lookup[num >> 12 & 0x3F] +
-    lookup[num >> 6 & 0x3F] +
-    lookup[num & 0x3F]
-}
-
-function encodeChunk (uint8, start, end) {
-  var tmp
-  var output = []
-  for (var i = start; i < end; i += 3) {
-    tmp =
-      ((uint8[i] << 16) & 0xFF0000) +
-      ((uint8[i + 1] << 8) & 0xFF00) +
-      (uint8[i + 2] & 0xFF)
-    output.push(tripletToBase64(tmp))
-  }
-  return output.join('')
-}
-
-function fromByteArray (uint8) {
-  var tmp
-  var len = uint8.length
-  var extraBytes = len % 3 // if we have 1 byte left, pad 2 bytes
-  var parts = []
-  var maxChunkLength = 16383 // must be multiple of 3
-
-  // go through the array every three bytes, we'll deal with trailing stuff later
-  for (var i = 0, len2 = len - extraBytes; i < len2; i += maxChunkLength) {
-    parts.push(encodeChunk(
-      uint8, i, (i + maxChunkLength) > len2 ? len2 : (i + maxChunkLength)
-    ))
-  }
-
-  // pad the end with zeros, but make sure to not forget the extra bytes
-  if (extraBytes === 1) {
-    tmp = uint8[len - 1]
-    parts.push(
-      lookup[tmp >> 2] +
-      lookup[(tmp << 4) & 0x3F] +
-      '=='
-    )
-  } else if (extraBytes === 2) {
-    tmp = (uint8[len - 2] << 8) + uint8[len - 1]
-    parts.push(
-      lookup[tmp >> 10] +
-      lookup[(tmp >> 4) & 0x3F] +
-      lookup[(tmp << 2) & 0x3F] +
-      '='
-    )
-  }
-
-  return parts.join('')
-}
-
-},{}],11:[function(require,module,exports){
-(function (Buffer){
-/*!
- * The buffer module from node.js, for the browser.
- *
- * @author   Feross Aboukhadijeh <https://feross.org>
- * @license  MIT
- */
-/* eslint-disable no-proto */
-
-'use strict'
-
-var base64 = require('base64-js')
-var ieee754 = require('ieee754')
-var customInspectSymbol =
-  (typeof Symbol === 'function' && typeof Symbol.for === 'function')
-    ? Symbol.for('nodejs.util.inspect.custom')
-    : null
-
-exports.Buffer = Buffer
-exports.SlowBuffer = SlowBuffer
-exports.INSPECT_MAX_BYTES = 50
-
-var K_MAX_LENGTH = 0x7fffffff
-exports.kMaxLength = K_MAX_LENGTH
-
-/**
- * If `Buffer.TYPED_ARRAY_SUPPORT`:
- *   === true    Use Uint8Array implementation (fastest)
- *   === false   Print warning and recommend using `buffer` v4.x which has an Object
- *               implementation (most compatible, even IE6)
- *
- * Browsers that support typed arrays are IE 10+, Firefox 4+, Chrome 7+, Safari 5.1+,
- * Opera 11.6+, iOS 4.2+.
- *
- * We report that the browser does not support typed arrays if the are not subclassable
- * using __proto__. Firefox 4-29 lacks support for adding new properties to `Uint8Array`
- * (See: https://bugzilla.mozilla.org/show_bug.cgi?id=695438). IE 10 lacks support
- * for __proto__ and has a buggy typed array implementation.
- */
-Buffer.TYPED_ARRAY_SUPPORT = typedArraySupport()
-
-if (!Buffer.TYPED_ARRAY_SUPPORT && typeof console !== 'undefined' &&
-    typeof console.error === 'function') {
-  console.error(
-    'This browser lacks typed array (Uint8Array) support which is required by ' +
-    '`buffer` v5.x. Use `buffer` v4.x if you require old browser support.'
-  )
-}
-
-function typedArraySupport () {
-  // Can typed array instances can be augmented?
-  try {
-    var arr = new Uint8Array(1)
-    var proto = { foo: function () { return 42 } }
-    Object.setPrototypeOf(proto, Uint8Array.prototype)
-    Object.setPrototypeOf(arr, proto)
-    return arr.foo() === 42
-  } catch (e) {
-    return false
-  }
-}
-
-Object.defineProperty(Buffer.prototype, 'parent', {
-  enumerable: true,
-  get: function () {
-    if (!Buffer.isBuffer(this)) return undefined
-    return this.buffer
-  }
-})
-
-Object.defineProperty(Buffer.prototype, 'offset', {
-  enumerable: true,
-  get: function () {
-    if (!Buffer.isBuffer(this)) return undefined
-    return this.byteOffset
-  }
-})
-
-function createBuffer (length) {
-  if (length > K_MAX_LENGTH) {
-    throw new RangeError('The value "' + length + '" is invalid for option "size"')
-  }
-  // Return an augmented `Uint8Array` instance
-  var buf = new Uint8Array(length)
-  Object.setPrototypeOf(buf, Buffer.prototype)
-  return buf
-}
-
-/**
- * The Buffer constructor returns instances of `Uint8Array` that have their
- * prototype changed to `Buffer.prototype`. Furthermore, `Buffer` is a subclass of
- * `Uint8Array`, so the returned instances will have all the node `Buffer` methods
- * and the `Uint8Array` methods. Square bracket notation works as expected -- it
- * returns a single octet.
- *
- * The `Uint8Array` prototype remains unmodified.
- */
-
-function Buffer (arg, encodingOrOffset, length) {
-  // Common case.
-  if (typeof arg === 'number') {
-    if (typeof encodingOrOffset === 'string') {
-      throw new TypeError(
-        'The "string" argument must be of type string. Received type number'
-      )
-    }
-    return allocUnsafe(arg)
-  }
-  return from(arg, encodingOrOffset, length)
-}
-
-// Fix subarray() in ES2016. See: https://github.com/feross/buffer/pull/97
-if (typeof Symbol !== 'undefined' && Symbol.species != null &&
-    Buffer[Symbol.species] === Buffer) {
-  Object.defineProperty(Buffer, Symbol.species, {
-    value: null,
-    configurable: true,
-    enumerable: false,
-    writable: false
-  })
-}
-
-Buffer.poolSize = 8192 // not used by this implementation
-
-function from (value, encodingOrOffset, length) {
-  if (typeof value === 'string') {
-    return fromString(value, encodingOrOffset)
-  }
-
-  if (ArrayBuffer.isView(value)) {
-    return fromArrayLike(value)
-  }
-
-  if (value == null) {
-    throw new TypeError(
-      'The first argument must be one of type string, Buffer, ArrayBuffer, Array, ' +
-      'or Array-like Object. Received type ' + (typeof value)
-    )
-  }
-
-  if (isInstance(value, ArrayBuffer) ||
-      (value && isInstance(value.buffer, ArrayBuffer))) {
-    return fromArrayBuffer(value, encodingOrOffset, length)
-  }
-
-  if (typeof value === 'number') {
-    throw new TypeError(
-      'The "value" argument must not be of type number. Received type number'
-    )
-  }
-
-  var valueOf = value.valueOf && value.valueOf()
-  if (valueOf != null && valueOf !== value) {
-    return Buffer.from(valueOf, encodingOrOffset, length)
-  }
-
-  var b = fromObject(value)
-  if (b) return b
-
-  if (typeof Symbol !== 'undefined' && Symbol.toPrimitive != null &&
-      typeof value[Symbol.toPrimitive] === 'function') {
-    return Buffer.from(
-      value[Symbol.toPrimitive]('string'), encodingOrOffset, length
-    )
-  }
-
-  throw new TypeError(
-    'The first argument must be one of type string, Buffer, ArrayBuffer, Array, ' +
-    'or Array-like Object. Received type ' + (typeof value)
-  )
-}
-
-/**
- * Functionally equivalent to Buffer(arg, encoding) but throws a TypeError
- * if value is a number.
- * Buffer.from(str[, encoding])
- * Buffer.from(array)
- * Buffer.from(buffer)
- * Buffer.from(arrayBuffer[, byteOffset[, length]])
- **/
-Buffer.from = function (value, encodingOrOffset, length) {
-  return from(value, encodingOrOffset, length)
-}
-
-// Note: Change prototype *after* Buffer.from is defined to workaround Chrome bug:
-// https://github.com/feross/buffer/pull/148
-Object.setPrototypeOf(Buffer.prototype, Uint8Array.prototype)
-Object.setPrototypeOf(Buffer, Uint8Array)
-
-function assertSize (size) {
-  if (typeof size !== 'number') {
-    throw new TypeError('"size" argument must be of type number')
-  } else if (size < 0) {
-    throw new RangeError('The value "' + size + '" is invalid for option "size"')
-  }
-}
-
-function alloc (size, fill, encoding) {
-  assertSize(size)
-  if (size <= 0) {
-    return createBuffer(size)
-  }
-  if (fill !== undefined) {
-    // Only pay attention to encoding if it's a string. This
-    // prevents accidentally sending in a number that would
-    // be interpretted as a start offset.
-    return typeof encoding === 'string'
-      ? createBuffer(size).fill(fill, encoding)
-      : createBuffer(size).fill(fill)
-  }
-  return createBuffer(size)
-}
-
-/**
- * Creates a new filled Buffer instance.
- * alloc(size[, fill[, encoding]])
- **/
-Buffer.alloc = function (size, fill, encoding) {
-  return alloc(size, fill, encoding)
-}
-
-function allocUnsafe (size) {
-  assertSize(size)
-  return createBuffer(size < 0 ? 0 : checked(size) | 0)
-}
-
-/**
- * Equivalent to Buffer(num), by default creates a non-zero-filled Buffer instance.
- * */
-Buffer.allocUnsafe = function (size) {
-  return allocUnsafe(size)
-}
-/**
- * Equivalent to SlowBuffer(num), by default creates a non-zero-filled Buffer instance.
- */
-Buffer.allocUnsafeSlow = function (size) {
-  return allocUnsafe(size)
-}
-
-function fromString (string, encoding) {
-  if (typeof encoding !== 'string' || encoding === '') {
-    encoding = 'utf8'
-  }
-
-  if (!Buffer.isEncoding(encoding)) {
-    throw new TypeError('Unknown encoding: ' + encoding)
-  }
-
-  var length = byteLength(string, encoding) | 0
-  var buf = createBuffer(length)
-
-  var actual = buf.write(string, encoding)
-
-  if (actual !== length) {
-    // Writing a hex string, for example, that contains invalid characters will
-    // cause everything after the first invalid character to be ignored. (e.g.
-    // 'abxxcd' will be treated as 'ab')
-    buf = buf.slice(0, actual)
-  }
-
-  return buf
-}
-
-function fromArrayLike (array) {
-  var length = array.length < 0 ? 0 : checked(array.length) | 0
-  var buf = createBuffer(length)
-  for (var i = 0; i < length; i += 1) {
-    buf[i] = array[i] & 255
-  }
-  return buf
-}
-
-function fromArrayBuffer (array, byteOffset, length) {
-  if (byteOffset < 0 || array.byteLength < byteOffset) {
-    throw new RangeError('"offset" is outside of buffer bounds')
-  }
-
-  if (array.byteLength < byteOffset + (length || 0)) {
-    throw new RangeError('"length" is outside of buffer bounds')
-  }
-
-  var buf
-  if (byteOffset === undefined && length === undefined) {
-    buf = new Uint8Array(array)
-  } else if (length === undefined) {
-    buf = new Uint8Array(array, byteOffset)
-  } else {
-    buf = new Uint8Array(array, byteOffset, length)
-  }
-
-  // Return an augmented `Uint8Array` instance
-  Object.setPrototypeOf(buf, Buffer.prototype)
-
-  return buf
-}
-
-function fromObject (obj) {
-  if (Buffer.isBuffer(obj)) {
-    var len = checked(obj.length) | 0
-    var buf = createBuffer(len)
-
-    if (buf.length === 0) {
-      return buf
-    }
-
-    obj.copy(buf, 0, 0, len)
-    return buf
-  }
-
-  if (obj.length !== undefined) {
-    if (typeof obj.length !== 'number' || numberIsNaN(obj.length)) {
-      return createBuffer(0)
-    }
-    return fromArrayLike(obj)
-  }
-
-  if (obj.type === 'Buffer' && Array.isArray(obj.data)) {
-    return fromArrayLike(obj.data)
-  }
-}
-
-function checked (length) {
-  // Note: cannot use `length < K_MAX_LENGTH` here because that fails when
-  // length is NaN (which is otherwise coerced to zero.)
-  if (length >= K_MAX_LENGTH) {
-    throw new RangeError('Attempt to allocate Buffer larger than maximum ' +
-                         'size: 0x' + K_MAX_LENGTH.toString(16) + ' bytes')
-  }
-  return length | 0
-}
-
-function SlowBuffer (length) {
-  if (+length != length) { // eslint-disable-line eqeqeq
-    length = 0
-  }
-  return Buffer.alloc(+length)
-}
-
-Buffer.isBuffer = function isBuffer (b) {
-  return b != null && b._isBuffer === true &&
-    b !== Buffer.prototype // so Buffer.isBuffer(Buffer.prototype) will be false
-}
-
-Buffer.compare = function compare (a, b) {
-  if (isInstance(a, Uint8Array)) a = Buffer.from(a, a.offset, a.byteLength)
-  if (isInstance(b, Uint8Array)) b = Buffer.from(b, b.offset, b.byteLength)
-  if (!Buffer.isBuffer(a) || !Buffer.isBuffer(b)) {
-    throw new TypeError(
-      'The "buf1", "buf2" arguments must be one of type Buffer or Uint8Array'
-    )
-  }
-
-  if (a === b) return 0
-
-  var x = a.length
-  var y = b.length
-
-  for (var i = 0, len = Math.min(x, y); i < len; ++i) {
-    if (a[i] !== b[i]) {
-      x = a[i]
-      y = b[i]
-      break
-    }
-  }
-
-  if (x < y) return -1
-  if (y < x) return 1
-  return 0
-}
-
-Buffer.isEncoding = function isEncoding (encoding) {
-  switch (String(encoding).toLowerCase()) {
-    case 'hex':
-    case 'utf8':
-    case 'utf-8':
-    case 'ascii':
-    case 'latin1':
-    case 'binary':
-    case 'base64':
-    case 'ucs2':
-    case 'ucs-2':
-    case 'utf16le':
-    case 'utf-16le':
-      return true
-    default:
-      return false
-  }
-}
-
-Buffer.concat = function concat (list, length) {
-  if (!Array.isArray(list)) {
-    throw new TypeError('"list" argument must be an Array of Buffers')
-  }
-
-  if (list.length === 0) {
-    return Buffer.alloc(0)
-  }
-
-  var i
-  if (length === undefined) {
-    length = 0
-    for (i = 0; i < list.length; ++i) {
-      length += list[i].length
-    }
-  }
-
-  var buffer = Buffer.allocUnsafe(length)
-  var pos = 0
-  for (i = 0; i < list.length; ++i) {
-    var buf = list[i]
-    if (isInstance(buf, Uint8Array)) {
-      buf = Buffer.from(buf)
-    }
-    if (!Buffer.isBuffer(buf)) {
-      throw new TypeError('"list" argument must be an Array of Buffers')
-    }
-    buf.copy(buffer, pos)
-    pos += buf.length
-  }
-  return buffer
-}
-
-function byteLength (string, encoding) {
-  if (Buffer.isBuffer(string)) {
-    return string.length
-  }
-  if (ArrayBuffer.isView(string) || isInstance(string, ArrayBuffer)) {
-    return string.byteLength
-  }
-  if (typeof string !== 'string') {
-    throw new TypeError(
-      'The "string" argument must be one of type string, Buffer, or ArrayBuffer. ' +
-      'Received type ' + typeof string
-    )
-  }
-
-  var len = string.length
-  var mustMatch = (arguments.length > 2 && arguments[2] === true)
-  if (!mustMatch && len === 0) return 0
-
-  // Use a for loop to avoid recursion
-  var loweredCase = false
-  for (;;) {
-    switch (encoding) {
-      case 'ascii':
-      case 'latin1':
-      case 'binary':
-        return len
-      case 'utf8':
-      case 'utf-8':
-        return utf8ToBytes(string).length
-      case 'ucs2':
-      case 'ucs-2':
-      case 'utf16le':
-      case 'utf-16le':
-        return len * 2
-      case 'hex':
-        return len >>> 1
-      case 'base64':
-        return base64ToBytes(string).length
-      default:
-        if (loweredCase) {
-          return mustMatch ? -1 : utf8ToBytes(string).length // assume utf8
-        }
-        encoding = ('' + encoding).toLowerCase()
-        loweredCase = true
-    }
-  }
-}
-Buffer.byteLength = byteLength
-
-function slowToString (encoding, start, end) {
-  var loweredCase = false
-
-  // No need to verify that "this.length <= MAX_UINT32" since it's a read-only
-  // property of a typed array.
-
-  // This behaves neither like String nor Uint8Array in that we set start/end
-  // to their upper/lower bounds if the value passed is out of range.
-  // undefined is handled specially as per ECMA-262 6th Edition,
-  // Section 13.3.3.7 Runtime Semantics: KeyedBindingInitialization.
-  if (start === undefined || start < 0) {
-    start = 0
-  }
-  // Return early if start > this.length. Done here to prevent potential uint32
-  // coercion fail below.
-  if (start > this.length) {
-    return ''
-  }
-
-  if (end === undefined || end > this.length) {
-    end = this.length
-  }
-
-  if (end <= 0) {
-    return ''
-  }
-
-  // Force coersion to uint32. This will also coerce falsey/NaN values to 0.
-  end >>>= 0
-  start >>>= 0
-
-  if (end <= start) {
-    return ''
-  }
-
-  if (!encoding) encoding = 'utf8'
-
-  while (true) {
-    switch (encoding) {
-      case 'hex':
-        return hexSlice(this, start, end)
-
-      case 'utf8':
-      case 'utf-8':
-        return utf8Slice(this, start, end)
-
-      case 'ascii':
-        return asciiSlice(this, start, end)
-
-      case 'latin1':
-      case 'binary':
-        return latin1Slice(this, start, end)
-
-      case 'base64':
-        return base64Slice(this, start, end)
-
-      case 'ucs2':
-      case 'ucs-2':
-      case 'utf16le':
-      case 'utf-16le':
-        return utf16leSlice(this, start, end)
-
-      default:
-        if (loweredCase) throw new TypeError('Unknown encoding: ' + encoding)
-        encoding = (encoding + '').toLowerCase()
-        loweredCase = true
-    }
-  }
-}
-
-// This property is used by `Buffer.isBuffer` (and the `is-buffer` npm package)
-// to detect a Buffer instance. It's not possible to use `instanceof Buffer`
-// reliably in a browserify context because there could be multiple different
-// copies of the 'buffer' package in use. This method works even for Buffer
-// instances that were created from another copy of the `buffer` package.
-// See: https://github.com/feross/buffer/issues/154
-Buffer.prototype._isBuffer = true
-
-function swap (b, n, m) {
-  var i = b[n]
-  b[n] = b[m]
-  b[m] = i
-}
-
-Buffer.prototype.swap16 = function swap16 () {
-  var len = this.length
-  if (len % 2 !== 0) {
-    throw new RangeError('Buffer size must be a multiple of 16-bits')
-  }
-  for (var i = 0; i < len; i += 2) {
-    swap(this, i, i + 1)
-  }
-  return this
-}
-
-Buffer.prototype.swap32 = function swap32 () {
-  var len = this.length
-  if (len % 4 !== 0) {
-    throw new RangeError('Buffer size must be a multiple of 32-bits')
-  }
-  for (var i = 0; i < len; i += 4) {
-    swap(this, i, i + 3)
-    swap(this, i + 1, i + 2)
-  }
-  return this
-}
-
-Buffer.prototype.swap64 = function swap64 () {
-  var len = this.length
-  if (len % 8 !== 0) {
-    throw new RangeError('Buffer size must be a multiple of 64-bits')
-  }
-  for (var i = 0; i < len; i += 8) {
-    swap(this, i, i + 7)
-    swap(this, i + 1, i + 6)
-    swap(this, i + 2, i + 5)
-    swap(this, i + 3, i + 4)
-  }
-  return this
-}
-
-Buffer.prototype.toString = function toString () {
-  var length = this.length
-  if (length === 0) return ''
-  if (arguments.length === 0) return utf8Slice(this, 0, length)
-  return slowToString.apply(this, arguments)
-}
-
-Buffer.prototype.toLocaleString = Buffer.prototype.toString
-
-Buffer.prototype.equals = function equals (b) {
-  if (!Buffer.isBuffer(b)) throw new TypeError('Argument must be a Buffer')
-  if (this === b) return true
-  return Buffer.compare(this, b) === 0
-}
-
-Buffer.prototype.inspect = function inspect () {
-  var str = ''
-  var max = exports.INSPECT_MAX_BYTES
-  str = this.toString('hex', 0, max).replace(/(.{2})/g, '$1 ').trim()
-  if (this.length > max) str += ' ... '
-  return '<Buffer ' + str + '>'
-}
-if (customInspectSymbol) {
-  Buffer.prototype[customInspectSymbol] = Buffer.prototype.inspect
-}
-
-Buffer.prototype.compare = function compare (target, start, end, thisStart, thisEnd) {
-  if (isInstance(target, Uint8Array)) {
-    target = Buffer.from(target, target.offset, target.byteLength)
-  }
-  if (!Buffer.isBuffer(target)) {
-    throw new TypeError(
-      'The "target" argument must be one of type Buffer or Uint8Array. ' +
-      'Received type ' + (typeof target)
-    )
-  }
-
-  if (start === undefined) {
-    start = 0
-  }
-  if (end === undefined) {
-    end = target ? target.length : 0
-  }
-  if (thisStart === undefined) {
-    thisStart = 0
-  }
-  if (thisEnd === undefined) {
-    thisEnd = this.length
-  }
-
-  if (start < 0 || end > target.length || thisStart < 0 || thisEnd > this.length) {
-    throw new RangeError('out of range index')
-  }
-
-  if (thisStart >= thisEnd && start >= end) {
-    return 0
-  }
-  if (thisStart >= thisEnd) {
-    return -1
-  }
-  if (start >= end) {
-    return 1
-  }
-
-  start >>>= 0
-  end >>>= 0
-  thisStart >>>= 0
-  thisEnd >>>= 0
-
-  if (this === target) return 0
-
-  var x = thisEnd - thisStart
-  var y = end - start
-  var len = Math.min(x, y)
-
-  var thisCopy = this.slice(thisStart, thisEnd)
-  var targetCopy = target.slice(start, end)
-
-  for (var i = 0; i < len; ++i) {
-    if (thisCopy[i] !== targetCopy[i]) {
-      x = thisCopy[i]
-      y = targetCopy[i]
-      break
-    }
-  }
-
-  if (x < y) return -1
-  if (y < x) return 1
-  return 0
-}
-
-// Finds either the first index of `val` in `buffer` at offset >= `byteOffset`,
-// OR the last index of `val` in `buffer` at offset <= `byteOffset`.
-//
-// Arguments:
-// - buffer - a Buffer to search
-// - val - a string, Buffer, or number
-// - byteOffset - an index into `buffer`; will be clamped to an int32
-// - encoding - an optional encoding, relevant is val is a string
-// - dir - true for indexOf, false for lastIndexOf
-function bidirectionalIndexOf (buffer, val, byteOffset, encoding, dir) {
-  // Empty buffer means no match
-  if (buffer.length === 0) return -1
-
-  // Normalize byteOffset
-  if (typeof byteOffset === 'string') {
-    encoding = byteOffset
-    byteOffset = 0
-  } else if (byteOffset > 0x7fffffff) {
-    byteOffset = 0x7fffffff
-  } else if (byteOffset < -0x80000000) {
-    byteOffset = -0x80000000
-  }
-  byteOffset = +byteOffset // Coerce to Number.
-  if (numberIsNaN(byteOffset)) {
-    // byteOffset: it it's undefined, null, NaN, "foo", etc, search whole buffer
-    byteOffset = dir ? 0 : (buffer.length - 1)
-  }
-
-  // Normalize byteOffset: negative offsets start from the end of the buffer
-  if (byteOffset < 0) byteOffset = buffer.length + byteOffset
-  if (byteOffset >= buffer.length) {
-    if (dir) return -1
-    else byteOffset = buffer.length - 1
-  } else if (byteOffset < 0) {
-    if (dir) byteOffset = 0
-    else return -1
-  }
-
-  // Normalize val
-  if (typeof val === 'string') {
-    val = Buffer.from(val, encoding)
-  }
-
-  // Finally, search either indexOf (if dir is true) or lastIndexOf
-  if (Buffer.isBuffer(val)) {
-    // Special case: looking for empty string/buffer always fails
-    if (val.length === 0) {
-      return -1
-    }
-    return arrayIndexOf(buffer, val, byteOffset, encoding, dir)
-  } else if (typeof val === 'number') {
-    val = val & 0xFF // Search for a byte value [0-255]
-    if (typeof Uint8Array.prototype.indexOf === 'function') {
-      if (dir) {
-        return Uint8Array.prototype.indexOf.call(buffer, val, byteOffset)
-      } else {
-        return Uint8Array.prototype.lastIndexOf.call(buffer, val, byteOffset)
-      }
-    }
-    return arrayIndexOf(buffer, [val], byteOffset, encoding, dir)
-  }
-
-  throw new TypeError('val must be string, number or Buffer')
-}
-
-function arrayIndexOf (arr, val, byteOffset, encoding, dir) {
-  var indexSize = 1
-  var arrLength = arr.length
-  var valLength = val.length
-
-  if (encoding !== undefined) {
-    encoding = String(encoding).toLowerCase()
-    if (encoding === 'ucs2' || encoding === 'ucs-2' ||
-        encoding === 'utf16le' || encoding === 'utf-16le') {
-      if (arr.length < 2 || val.length < 2) {
-        return -1
-      }
-      indexSize = 2
-      arrLength /= 2
-      valLength /= 2
-      byteOffset /= 2
-    }
-  }
-
-  function read (buf, i) {
-    if (indexSize === 1) {
-      return buf[i]
-    } else {
-      return buf.readUInt16BE(i * indexSize)
-    }
-  }
-
-  var i
-  if (dir) {
-    var foundIndex = -1
-    for (i = byteOffset; i < arrLength; i++) {
-      if (read(arr, i) === read(val, foundIndex === -1 ? 0 : i - foundIndex)) {
-        if (foundIndex === -1) foundIndex = i
-        if (i - foundIndex + 1 === valLength) return foundIndex * indexSize
-      } else {
-        if (foundIndex !== -1) i -= i - foundIndex
-        foundIndex = -1
-      }
-    }
-  } else {
-    if (byteOffset + valLength > arrLength) byteOffset = arrLength - valLength
-    for (i = byteOffset; i >= 0; i--) {
-      var found = true
-      for (var j = 0; j < valLength; j++) {
-        if (read(arr, i + j) !== read(val, j)) {
-          found = false
-          break
-        }
-      }
-      if (found) return i
-    }
-  }
-
-  return -1
-}
-
-Buffer.prototype.includes = function includes (val, byteOffset, encoding) {
-  return this.indexOf(val, byteOffset, encoding) !== -1
-}
-
-Buffer.prototype.indexOf = function indexOf (val, byteOffset, encoding) {
-  return bidirectionalIndexOf(this, val, byteOffset, encoding, true)
-}
-
-Buffer.prototype.lastIndexOf = function lastIndexOf (val, byteOffset, encoding) {
-  return bidirectionalIndexOf(this, val, byteOffset, encoding, false)
-}
-
-function hexWrite (buf, string, offset, length) {
-  offset = Number(offset) || 0
-  var remaining = buf.length - offset
-  if (!length) {
-    length = remaining
-  } else {
-    length = Number(length)
-    if (length > remaining) {
-      length = remaining
-    }
-  }
-
-  var strLen = string.length
-
-  if (length > strLen / 2) {
-    length = strLen / 2
-  }
-  for (var i = 0; i < length; ++i) {
-    var parsed = parseInt(string.substr(i * 2, 2), 16)
-    if (numberIsNaN(parsed)) return i
-    buf[offset + i] = parsed
-  }
-  return i
-}
-
-function utf8Write (buf, string, offset, length) {
-  return blitBuffer(utf8ToBytes(string, buf.length - offset), buf, offset, length)
-}
-
-function asciiWrite (buf, string, offset, length) {
-  return blitBuffer(asciiToBytes(string), buf, offset, length)
-}
-
-function latin1Write (buf, string, offset, length) {
-  return asciiWrite(buf, string, offset, length)
-}
-
-function base64Write (buf, string, offset, length) {
-  return blitBuffer(base64ToBytes(string), buf, offset, length)
-}
-
-function ucs2Write (buf, string, offset, length) {
-  return blitBuffer(utf16leToBytes(string, buf.length - offset), buf, offset, length)
-}
-
-Buffer.prototype.write = function write (string, offset, length, encoding) {
-  // Buffer#write(string)
-  if (offset === undefined) {
-    encoding = 'utf8'
-    length = this.length
-    offset = 0
-  // Buffer#write(string, encoding)
-  } else if (length === undefined && typeof offset === 'string') {
-    encoding = offset
-    length = this.length
-    offset = 0
-  // Buffer#write(string, offset[, length][, encoding])
-  } else if (isFinite(offset)) {
-    offset = offset >>> 0
-    if (isFinite(length)) {
-      length = length >>> 0
-      if (encoding === undefined) encoding = 'utf8'
-    } else {
-      encoding = length
-      length = undefined
-    }
-  } else {
-    throw new Error(
-      'Buffer.write(string, encoding, offset[, length]) is no longer supported'
-    )
-  }
-
-  var remaining = this.length - offset
-  if (length === undefined || length > remaining) length = remaining
-
-  if ((string.length > 0 && (length < 0 || offset < 0)) || offset > this.length) {
-    throw new RangeError('Attempt to write outside buffer bounds')
-  }
-
-  if (!encoding) encoding = 'utf8'
-
-  var loweredCase = false
-  for (;;) {
-    switch (encoding) {
-      case 'hex':
-        return hexWrite(this, string, offset, length)
-
-      case 'utf8':
-      case 'utf-8':
-        return utf8Write(this, string, offset, length)
-
-      case 'ascii':
-        return asciiWrite(this, string, offset, length)
-
-      case 'latin1':
-      case 'binary':
-        return latin1Write(this, string, offset, length)
-
-      case 'base64':
-        // Warning: maxLength not taken into account in base64Write
-        return base64Write(this, string, offset, length)
-
-      case 'ucs2':
-      case 'ucs-2':
-      case 'utf16le':
-      case 'utf-16le':
-        return ucs2Write(this, string, offset, length)
-
-      default:
-        if (loweredCase) throw new TypeError('Unknown encoding: ' + encoding)
-        encoding = ('' + encoding).toLowerCase()
-        loweredCase = true
-    }
-  }
-}
-
-Buffer.prototype.toJSON = function toJSON () {
-  return {
-    type: 'Buffer',
-    data: Array.prototype.slice.call(this._arr || this, 0)
-  }
-}
-
-function base64Slice (buf, start, end) {
-  if (start === 0 && end === buf.length) {
-    return base64.fromByteArray(buf)
-  } else {
-    return base64.fromByteArray(buf.slice(start, end))
-  }
-}
-
-function utf8Slice (buf, start, end) {
-  end = Math.min(buf.length, end)
-  var res = []
-
-  var i = start
-  while (i < end) {
-    var firstByte = buf[i]
-    var codePoint = null
-    var bytesPerSequence = (firstByte > 0xEF) ? 4
-      : (firstByte > 0xDF) ? 3
-        : (firstByte > 0xBF) ? 2
-          : 1
-
-    if (i + bytesPerSequence <= end) {
-      var secondByte, thirdByte, fourthByte, tempCodePoint
-
-      switch (bytesPerSequence) {
-        case 1:
-          if (firstByte < 0x80) {
-            codePoint = firstByte
-          }
-          break
-        case 2:
-          secondByte = buf[i + 1]
-          if ((secondByte & 0xC0) === 0x80) {
-            tempCodePoint = (firstByte & 0x1F) << 0x6 | (secondByte & 0x3F)
-            if (tempCodePoint > 0x7F) {
-              codePoint = tempCodePoint
-            }
-          }
-          break
-        case 3:
-          secondByte = buf[i + 1]
-          thirdByte = buf[i + 2]
-          if ((secondByte & 0xC0) === 0x80 && (thirdByte & 0xC0) === 0x80) {
-            tempCodePoint = (firstByte & 0xF) << 0xC | (secondByte & 0x3F) << 0x6 | (thirdByte & 0x3F)
-            if (tempCodePoint > 0x7FF && (tempCodePoint < 0xD800 || tempCodePoint > 0xDFFF)) {
-              codePoint = tempCodePoint
-            }
-          }
-          break
-        case 4:
-          secondByte = buf[i + 1]
-          thirdByte = buf[i + 2]
-          fourthByte = buf[i + 3]
-          if ((secondByte & 0xC0) === 0x80 && (thirdByte & 0xC0) === 0x80 && (fourthByte & 0xC0) === 0x80) {
-            tempCodePoint = (firstByte & 0xF) << 0x12 | (secondByte & 0x3F) << 0xC | (thirdByte & 0x3F) << 0x6 | (fourthByte & 0x3F)
-            if (tempCodePoint > 0xFFFF && tempCodePoint < 0x110000) {
-              codePoint = tempCodePoint
-            }
-          }
-      }
-    }
-
-    if (codePoint === null) {
-      // we did not generate a valid codePoint so insert a
-      // replacement char (U+FFFD) and advance only 1 byte
-      codePoint = 0xFFFD
-      bytesPerSequence = 1
-    } else if (codePoint > 0xFFFF) {
-      // encode to utf16 (surrogate pair dance)
-      codePoint -= 0x10000
-      res.push(codePoint >>> 10 & 0x3FF | 0xD800)
-      codePoint = 0xDC00 | codePoint & 0x3FF
-    }
-
-    res.push(codePoint)
-    i += bytesPerSequence
-  }
-
-  return decodeCodePointsArray(res)
-}
-
-// Based on http://stackoverflow.com/a/22747272/680742, the browser with
-// the lowest limit is Chrome, with 0x10000 args.
-// We go 1 magnitude less, for safety
-var MAX_ARGUMENTS_LENGTH = 0x1000
-
-function decodeCodePointsArray (codePoints) {
-  var len = codePoints.length
-  if (len <= MAX_ARGUMENTS_LENGTH) {
-    return String.fromCharCode.apply(String, codePoints) // avoid extra slice()
-  }
-
-  // Decode in chunks to avoid "call stack size exceeded".
-  var res = ''
-  var i = 0
-  while (i < len) {
-    res += String.fromCharCode.apply(
-      String,
-      codePoints.slice(i, i += MAX_ARGUMENTS_LENGTH)
-    )
-  }
-  return res
-}
-
-function asciiSlice (buf, start, end) {
-  var ret = ''
-  end = Math.min(buf.length, end)
-
-  for (var i = start; i < end; ++i) {
-    ret += String.fromCharCode(buf[i] & 0x7F)
-  }
-  return ret
-}
-
-function latin1Slice (buf, start, end) {
-  var ret = ''
-  end = Math.min(buf.length, end)
-
-  for (var i = start; i < end; ++i) {
-    ret += String.fromCharCode(buf[i])
-  }
-  return ret
-}
-
-function hexSlice (buf, start, end) {
-  var len = buf.length
-
-  if (!start || start < 0) start = 0
-  if (!end || end < 0 || end > len) end = len
-
-  var out = ''
-  for (var i = start; i < end; ++i) {
-    out += toHex(buf[i])
-  }
-  return out
-}
-
-function utf16leSlice (buf, start, end) {
-  var bytes = buf.slice(start, end)
-  var res = ''
-  for (var i = 0; i < bytes.length; i += 2) {
-    res += String.fromCharCode(bytes[i] + (bytes[i + 1] * 256))
-  }
-  return res
-}
-
-Buffer.prototype.slice = function slice (start, end) {
-  var len = this.length
-  start = ~~start
-  end = end === undefined ? len : ~~end
-
-  if (start < 0) {
-    start += len
-    if (start < 0) start = 0
-  } else if (start > len) {
-    start = len
-  }
-
-  if (end < 0) {
-    end += len
-    if (end < 0) end = 0
-  } else if (end > len) {
-    end = len
-  }
-
-  if (end < start) end = start
-
-  var newBuf = this.subarray(start, end)
-  // Return an augmented `Uint8Array` instance
-  Object.setPrototypeOf(newBuf, Buffer.prototype)
-
-  return newBuf
-}
-
-/*
- * Need to make sure that buffer isn't trying to write out of bounds.
- */
-function checkOffset (offset, ext, length) {
-  if ((offset % 1) !== 0 || offset < 0) throw new RangeError('offset is not uint')
-  if (offset + ext > length) throw new RangeError('Trying to access beyond buffer length')
-}
-
-Buffer.prototype.readUIntLE = function readUIntLE (offset, byteLength, noAssert) {
-  offset = offset >>> 0
-  byteLength = byteLength >>> 0
-  if (!noAssert) checkOffset(offset, byteLength, this.length)
-
-  var val = this[offset]
-  var mul = 1
-  var i = 0
-  while (++i < byteLength && (mul *= 0x100)) {
-    val += this[offset + i] * mul
-  }
-
-  return val
-}
-
-Buffer.prototype.readUIntBE = function readUIntBE (offset, byteLength, noAssert) {
-  offset = offset >>> 0
-  byteLength = byteLength >>> 0
-  if (!noAssert) {
-    checkOffset(offset, byteLength, this.length)
-  }
-
-  var val = this[offset + --byteLength]
-  var mul = 1
-  while (byteLength > 0 && (mul *= 0x100)) {
-    val += this[offset + --byteLength] * mul
-  }
-
-  return val
-}
-
-Buffer.prototype.readUInt8 = function readUInt8 (offset, noAssert) {
-  offset = offset >>> 0
-  if (!noAssert) checkOffset(offset, 1, this.length)
-  return this[offset]
-}
-
-Buffer.prototype.readUInt16LE = function readUInt16LE (offset, noAssert) {
-  offset = offset >>> 0
-  if (!noAssert) checkOffset(offset, 2, this.length)
-  return this[offset] | (this[offset + 1] << 8)
-}
-
-Buffer.prototype.readUInt16BE = function readUInt16BE (offset, noAssert) {
-  offset = offset >>> 0
-  if (!noAssert) checkOffset(offset, 2, this.length)
-  return (this[offset] << 8) | this[offset + 1]
-}
-
-Buffer.prototype.readUInt32LE = function readUInt32LE (offset, noAssert) {
-  offset = offset >>> 0
-  if (!noAssert) checkOffset(offset, 4, this.length)
-
-  return ((this[offset]) |
-      (this[offset + 1] << 8) |
-      (this[offset + 2] << 16)) +
-      (this[offset + 3] * 0x1000000)
-}
-
-Buffer.prototype.readUInt32BE = function readUInt32BE (offset, noAssert) {
-  offset = offset >>> 0
-  if (!noAssert) checkOffset(offset, 4, this.length)
-
-  return (this[offset] * 0x1000000) +
-    ((this[offset + 1] << 16) |
-    (this[offset + 2] << 8) |
-    this[offset + 3])
-}
-
-Buffer.prototype.readIntLE = function readIntLE (offset, byteLength, noAssert) {
-  offset = offset >>> 0
-  byteLength = byteLength >>> 0
-  if (!noAssert) checkOffset(offset, byteLength, this.length)
-
-  var val = this[offset]
-  var mul = 1
-  var i = 0
-  while (++i < byteLength && (mul *= 0x100)) {
-    val += this[offset + i] * mul
-  }
-  mul *= 0x80
-
-  if (val >= mul) val -= Math.pow(2, 8 * byteLength)
-
-  return val
-}
-
-Buffer.prototype.readIntBE = function readIntBE (offset, byteLength, noAssert) {
-  offset = offset >>> 0
-  byteLength = byteLength >>> 0
-  if (!noAssert) checkOffset(offset, byteLength, this.length)
-
-  var i = byteLength
-  var mul = 1
-  var val = this[offset + --i]
-  while (i > 0 && (mul *= 0x100)) {
-    val += this[offset + --i] * mul
-  }
-  mul *= 0x80
-
-  if (val >= mul) val -= Math.pow(2, 8 * byteLength)
-
-  return val
-}
-
-Buffer.prototype.readInt8 = function readInt8 (offset, noAssert) {
-  offset = offset >>> 0
-  if (!noAssert) checkOffset(offset, 1, this.length)
-  if (!(this[offset] & 0x80)) return (this[offset])
-  return ((0xff - this[offset] + 1) * -1)
-}
-
-Buffer.prototype.readInt16LE = function readInt16LE (offset, noAssert) {
-  offset = offset >>> 0
-  if (!noAssert) checkOffset(offset, 2, this.length)
-  var val = this[offset] | (this[offset + 1] << 8)
-  return (val & 0x8000) ? val | 0xFFFF0000 : val
-}
-
-Buffer.prototype.readInt16BE = function readInt16BE (offset, noAssert) {
-  offset = offset >>> 0
-  if (!noAssert) checkOffset(offset, 2, this.length)
-  var val = this[offset + 1] | (this[offset] << 8)
-  return (val & 0x8000) ? val | 0xFFFF0000 : val
-}
-
-Buffer.prototype.readInt32LE = function readInt32LE (offset, noAssert) {
-  offset = offset >>> 0
-  if (!noAssert) checkOffset(offset, 4, this.length)
-
-  return (this[offset]) |
-    (this[offset + 1] << 8) |
-    (this[offset + 2] << 16) |
-    (this[offset + 3] << 24)
-}
-
-Buffer.prototype.readInt32BE = function readInt32BE (offset, noAssert) {
-  offset = offset >>> 0
-  if (!noAssert) checkOffset(offset, 4, this.length)
-
-  return (this[offset] << 24) |
-    (this[offset + 1] << 16) |
-    (this[offset + 2] << 8) |
-    (this[offset + 3])
-}
-
-Buffer.prototype.readFloatLE = function readFloatLE (offset, noAssert) {
-  offset = offset >>> 0
-  if (!noAssert) checkOffset(offset, 4, this.length)
-  return ieee754.read(this, offset, true, 23, 4)
-}
-
-Buffer.prototype.readFloatBE = function readFloatBE (offset, noAssert) {
-  offset = offset >>> 0
-  if (!noAssert) checkOffset(offset, 4, this.length)
-  return ieee754.read(this, offset, false, 23, 4)
-}
-
-Buffer.prototype.readDoubleLE = function readDoubleLE (offset, noAssert) {
-  offset = offset >>> 0
-  if (!noAssert) checkOffset(offset, 8, this.length)
-  return ieee754.read(this, offset, true, 52, 8)
-}
-
-Buffer.prototype.readDoubleBE = function readDoubleBE (offset, noAssert) {
-  offset = offset >>> 0
-  if (!noAssert) checkOffset(offset, 8, this.length)
-  return ieee754.read(this, offset, false, 52, 8)
-}
-
-function checkInt (buf, value, offset, ext, max, min) {
-  if (!Buffer.isBuffer(buf)) throw new TypeError('"buffer" argument must be a Buffer instance')
-  if (value > max || value < min) throw new RangeError('"value" argument is out of bounds')
-  if (offset + ext > buf.length) throw new RangeError('Index out of range')
-}
-
-Buffer.prototype.writeUIntLE = function writeUIntLE (value, offset, byteLength, noAssert) {
-  value = +value
-  offset = offset >>> 0
-  byteLength = byteLength >>> 0
-  if (!noAssert) {
-    var maxBytes = Math.pow(2, 8 * byteLength) - 1
-    checkInt(this, value, offset, byteLength, maxBytes, 0)
-  }
-
-  var mul = 1
-  var i = 0
-  this[offset] = value & 0xFF
-  while (++i < byteLength && (mul *= 0x100)) {
-    this[offset + i] = (value / mul) & 0xFF
-  }
-
-  return offset + byteLength
-}
-
-Buffer.prototype.writeUIntBE = function writeUIntBE (value, offset, byteLength, noAssert) {
-  value = +value
-  offset = offset >>> 0
-  byteLength = byteLength >>> 0
-  if (!noAssert) {
-    var maxBytes = Math.pow(2, 8 * byteLength) - 1
-    checkInt(this, value, offset, byteLength, maxBytes, 0)
-  }
-
-  var i = byteLength - 1
-  var mul = 1
-  this[offset + i] = value & 0xFF
-  while (--i >= 0 && (mul *= 0x100)) {
-    this[offset + i] = (value / mul) & 0xFF
-  }
-
-  return offset + byteLength
-}
-
-Buffer.prototype.writeUInt8 = function writeUInt8 (value, offset, noAssert) {
-  value = +value
-  offset = offset >>> 0
-  if (!noAssert) checkInt(this, value, offset, 1, 0xff, 0)
-  this[offset] = (value & 0xff)
-  return offset + 1
-}
-
-Buffer.prototype.writeUInt16LE = function writeUInt16LE (value, offset, noAssert) {
-  value = +value
-  offset = offset >>> 0
-  if (!noAssert) checkInt(this, value, offset, 2, 0xffff, 0)
-  this[offset] = (value & 0xff)
-  this[offset + 1] = (value >>> 8)
-  return offset + 2
-}
-
-Buffer.prototype.writeUInt16BE = function writeUInt16BE (value, offset, noAssert) {
-  value = +value
-  offset = offset >>> 0
-  if (!noAssert) checkInt(this, value, offset, 2, 0xffff, 0)
-  this[offset] = (value >>> 8)
-  this[offset + 1] = (value & 0xff)
-  return offset + 2
-}
-
-Buffer.prototype.writeUInt32LE = function writeUInt32LE (value, offset, noAssert) {
-  value = +value
-  offset = offset >>> 0
-  if (!noAssert) checkInt(this, value, offset, 4, 0xffffffff, 0)
-  this[offset + 3] = (value >>> 24)
-  this[offset + 2] = (value >>> 16)
-  this[offset + 1] = (value >>> 8)
-  this[offset] = (value & 0xff)
-  return offset + 4
-}
-
-Buffer.prototype.writeUInt32BE = function writeUInt32BE (value, offset, noAssert) {
-  value = +value
-  offset = offset >>> 0
-  if (!noAssert) checkInt(this, value, offset, 4, 0xffffffff, 0)
-  this[offset] = (value >>> 24)
-  this[offset + 1] = (value >>> 16)
-  this[offset + 2] = (value >>> 8)
-  this[offset + 3] = (value & 0xff)
-  return offset + 4
-}
-
-Buffer.prototype.writeIntLE = function writeIntLE (value, offset, byteLength, noAssert) {
-  value = +value
-  offset = offset >>> 0
-  if (!noAssert) {
-    var limit = Math.pow(2, (8 * byteLength) - 1)
-
-    checkInt(this, value, offset, byteLength, limit - 1, -limit)
-  }
-
-  var i = 0
-  var mul = 1
-  var sub = 0
-  this[offset] = value & 0xFF
-  while (++i < byteLength && (mul *= 0x100)) {
-    if (value < 0 && sub === 0 && this[offset + i - 1] !== 0) {
-      sub = 1
-    }
-    this[offset + i] = ((value / mul) >> 0) - sub & 0xFF
-  }
-
-  return offset + byteLength
-}
-
-Buffer.prototype.writeIntBE = function writeIntBE (value, offset, byteLength, noAssert) {
-  value = +value
-  offset = offset >>> 0
-  if (!noAssert) {
-    var limit = Math.pow(2, (8 * byteLength) - 1)
-
-    checkInt(this, value, offset, byteLength, limit - 1, -limit)
-  }
-
-  var i = byteLength - 1
-  var mul = 1
-  var sub = 0
-  this[offset + i] = value & 0xFF
-  while (--i >= 0 && (mul *= 0x100)) {
-    if (value < 0 && sub === 0 && this[offset + i + 1] !== 0) {
-      sub = 1
-    }
-    this[offset + i] = ((value / mul) >> 0) - sub & 0xFF
-  }
-
-  return offset + byteLength
-}
-
-Buffer.prototype.writeInt8 = function writeInt8 (value, offset, noAssert) {
-  value = +value
-  offset = offset >>> 0
-  if (!noAssert) checkInt(this, value, offset, 1, 0x7f, -0x80)
-  if (value < 0) value = 0xff + value + 1
-  this[offset] = (value & 0xff)
-  return offset + 1
-}
-
-Buffer.prototype.writeInt16LE = function writeInt16LE (value, offset, noAssert) {
-  value = +value
-  offset = offset >>> 0
-  if (!noAssert) checkInt(this, value, offset, 2, 0x7fff, -0x8000)
-  this[offset] = (value & 0xff)
-  this[offset + 1] = (value >>> 8)
-  return offset + 2
-}
-
-Buffer.prototype.writeInt16BE = function writeInt16BE (value, offset, noAssert) {
-  value = +value
-  offset = offset >>> 0
-  if (!noAssert) checkInt(this, value, offset, 2, 0x7fff, -0x8000)
-  this[offset] = (value >>> 8)
-  this[offset + 1] = (value & 0xff)
-  return offset + 2
-}
-
-Buffer.prototype.writeInt32LE = function writeInt32LE (value, offset, noAssert) {
-  value = +value
-  offset = offset >>> 0
-  if (!noAssert) checkInt(this, value, offset, 4, 0x7fffffff, -0x80000000)
-  this[offset] = (value & 0xff)
-  this[offset + 1] = (value >>> 8)
-  this[offset + 2] = (value >>> 16)
-  this[offset + 3] = (value >>> 24)
-  return offset + 4
-}
-
-Buffer.prototype.writeInt32BE = function writeInt32BE (value, offset, noAssert) {
-  value = +value
-  offset = offset >>> 0
-  if (!noAssert) checkInt(this, value, offset, 4, 0x7fffffff, -0x80000000)
-  if (value < 0) value = 0xffffffff + value + 1
-  this[offset] = (value >>> 24)
-  this[offset + 1] = (value >>> 16)
-  this[offset + 2] = (value >>> 8)
-  this[offset + 3] = (value & 0xff)
-  return offset + 4
-}
-
-function checkIEEE754 (buf, value, offset, ext, max, min) {
-  if (offset + ext > buf.length) throw new RangeError('Index out of range')
-  if (offset < 0) throw new RangeError('Index out of range')
-}
-
-function writeFloat (buf, value, offset, littleEndian, noAssert) {
-  value = +value
-  offset = offset >>> 0
-  if (!noAssert) {
-    checkIEEE754(buf, value, offset, 4, 3.4028234663852886e+38, -3.4028234663852886e+38)
-  }
-  ieee754.write(buf, value, offset, littleEndian, 23, 4)
-  return offset + 4
-}
-
-Buffer.prototype.writeFloatLE = function writeFloatLE (value, offset, noAssert) {
-  return writeFloat(this, value, offset, true, noAssert)
-}
-
-Buffer.prototype.writeFloatBE = function writeFloatBE (value, offset, noAssert) {
-  return writeFloat(this, value, offset, false, noAssert)
-}
-
-function writeDouble (buf, value, offset, littleEndian, noAssert) {
-  value = +value
-  offset = offset >>> 0
-  if (!noAssert) {
-    checkIEEE754(buf, value, offset, 8, 1.7976931348623157E+308, -1.7976931348623157E+308)
-  }
-  ieee754.write(buf, value, offset, littleEndian, 52, 8)
-  return offset + 8
-}
-
-Buffer.prototype.writeDoubleLE = function writeDoubleLE (value, offset, noAssert) {
-  return writeDouble(this, value, offset, true, noAssert)
-}
-
-Buffer.prototype.writeDoubleBE = function writeDoubleBE (value, offset, noAssert) {
-  return writeDouble(this, value, offset, false, noAssert)
-}
-
-// copy(targetBuffer, targetStart=0, sourceStart=0, sourceEnd=buffer.length)
-Buffer.prototype.copy = function copy (target, targetStart, start, end) {
-  if (!Buffer.isBuffer(target)) throw new TypeError('argument should be a Buffer')
-  if (!start) start = 0
-  if (!end && end !== 0) end = this.length
-  if (targetStart >= target.length) targetStart = target.length
-  if (!targetStart) targetStart = 0
-  if (end > 0 && end < start) end = start
-
-  // Copy 0 bytes; we're done
-  if (end === start) return 0
-  if (target.length === 0 || this.length === 0) return 0
-
-  // Fatal error conditions
-  if (targetStart < 0) {
-    throw new RangeError('targetStart out of bounds')
-  }
-  if (start < 0 || start >= this.length) throw new RangeError('Index out of range')
-  if (end < 0) throw new RangeError('sourceEnd out of bounds')
-
-  // Are we oob?
-  if (end > this.length) end = this.length
-  if (target.length - targetStart < end - start) {
-    end = target.length - targetStart + start
-  }
-
-  var len = end - start
-
-  if (this === target && typeof Uint8Array.prototype.copyWithin === 'function') {
-    // Use built-in when available, missing from IE11
-    this.copyWithin(targetStart, start, end)
-  } else if (this === target && start < targetStart && targetStart < end) {
-    // descending copy from end
-    for (var i = len - 1; i >= 0; --i) {
-      target[i + targetStart] = this[i + start]
-    }
-  } else {
-    Uint8Array.prototype.set.call(
-      target,
-      this.subarray(start, end),
-      targetStart
-    )
-  }
-
-  return len
-}
-
-// Usage:
-//    buffer.fill(number[, offset[, end]])
-//    buffer.fill(buffer[, offset[, end]])
-//    buffer.fill(string[, offset[, end]][, encoding])
-Buffer.prototype.fill = function fill (val, start, end, encoding) {
-  // Handle string cases:
-  if (typeof val === 'string') {
-    if (typeof start === 'string') {
-      encoding = start
-      start = 0
-      end = this.length
-    } else if (typeof end === 'string') {
-      encoding = end
-      end = this.length
-    }
-    if (encoding !== undefined && typeof encoding !== 'string') {
-      throw new TypeError('encoding must be a string')
-    }
-    if (typeof encoding === 'string' && !Buffer.isEncoding(encoding)) {
-      throw new TypeError('Unknown encoding: ' + encoding)
-    }
-    if (val.length === 1) {
-      var code = val.charCodeAt(0)
-      if ((encoding === 'utf8' && code < 128) ||
-          encoding === 'latin1') {
-        // Fast path: If `val` fits into a single byte, use that numeric value.
-        val = code
-      }
-    }
-  } else if (typeof val === 'number') {
-    val = val & 255
-  } else if (typeof val === 'boolean') {
-    val = Number(val)
-  }
-
-  // Invalid ranges are not set to a default, so can range check early.
-  if (start < 0 || this.length < start || this.length < end) {
-    throw new RangeError('Out of range index')
-  }
-
-  if (end <= start) {
-    return this
-  }
-
-  start = start >>> 0
-  end = end === undefined ? this.length : end >>> 0
-
-  if (!val) val = 0
-
-  var i
-  if (typeof val === 'number') {
-    for (i = start; i < end; ++i) {
-      this[i] = val
-    }
-  } else {
-    var bytes = Buffer.isBuffer(val)
-      ? val
-      : Buffer.from(val, encoding)
-    var len = bytes.length
-    if (len === 0) {
-      throw new TypeError('The value "' + val +
-        '" is invalid for argument "value"')
-    }
-    for (i = 0; i < end - start; ++i) {
-      this[i + start] = bytes[i % len]
-    }
-  }
-
-  return this
-}
-
-// HELPER FUNCTIONS
-// ================
-
-var INVALID_BASE64_RE = /[^+/0-9A-Za-z-_]/g
-
-function base64clean (str) {
-  // Node takes equal signs as end of the Base64 encoding
-  str = str.split('=')[0]
-  // Node strips out invalid characters like \n and \t from the string, base64-js does not
-  str = str.trim().replace(INVALID_BASE64_RE, '')
-  // Node converts strings with length < 2 to ''
-  if (str.length < 2) return ''
-  // Node allows for non-padded base64 strings (missing trailing ===), base64-js does not
-  while (str.length % 4 !== 0) {
-    str = str + '='
-  }
-  return str
-}
-
-function toHex (n) {
-  if (n < 16) return '0' + n.toString(16)
-  return n.toString(16)
-}
-
-function utf8ToBytes (string, units) {
-  units = units || Infinity
-  var codePoint
-  var length = string.length
-  var leadSurrogate = null
-  var bytes = []
-
-  for (var i = 0; i < length; ++i) {
-    codePoint = string.charCodeAt(i)
-
-    // is surrogate component
-    if (codePoint > 0xD7FF && codePoint < 0xE000) {
-      // last char was a lead
-      if (!leadSurrogate) {
-        // no lead yet
-        if (codePoint > 0xDBFF) {
-          // unexpected trail
-          if ((units -= 3) > -1) bytes.push(0xEF, 0xBF, 0xBD)
-          continue
-        } else if (i + 1 === length) {
-          // unpaired lead
-          if ((units -= 3) > -1) bytes.push(0xEF, 0xBF, 0xBD)
-          continue
-        }
-
-        // valid lead
-        leadSurrogate = codePoint
-
-        continue
-      }
-
-      // 2 leads in a row
-      if (codePoint < 0xDC00) {
-        if ((units -= 3) > -1) bytes.push(0xEF, 0xBF, 0xBD)
-        leadSurrogate = codePoint
-        continue
-      }
-
-      // valid surrogate pair
-      codePoint = (leadSurrogate - 0xD800 << 10 | codePoint - 0xDC00) + 0x10000
-    } else if (leadSurrogate) {
-      // valid bmp char, but last char was a lead
-      if ((units -= 3) > -1) bytes.push(0xEF, 0xBF, 0xBD)
-    }
-
-    leadSurrogate = null
-
-    // encode utf8
-    if (codePoint < 0x80) {
-      if ((units -= 1) < 0) break
-      bytes.push(codePoint)
-    } else if (codePoint < 0x800) {
-      if ((units -= 2) < 0) break
-      bytes.push(
-        codePoint >> 0x6 | 0xC0,
-        codePoint & 0x3F | 0x80
-      )
-    } else if (codePoint < 0x10000) {
-      if ((units -= 3) < 0) break
-      bytes.push(
-        codePoint >> 0xC | 0xE0,
-        codePoint >> 0x6 & 0x3F | 0x80,
-        codePoint & 0x3F | 0x80
-      )
-    } else if (codePoint < 0x110000) {
-      if ((units -= 4) < 0) break
-      bytes.push(
-        codePoint >> 0x12 | 0xF0,
-        codePoint >> 0xC & 0x3F | 0x80,
-        codePoint >> 0x6 & 0x3F | 0x80,
-        codePoint & 0x3F | 0x80
-      )
-    } else {
-      throw new Error('Invalid code point')
-    }
-  }
-
-  return bytes
-}
-
-function asciiToBytes (str) {
-  var byteArray = []
-  for (var i = 0; i < str.length; ++i) {
-    // Node's code seems to be doing this and not & 0x7F..
-    byteArray.push(str.charCodeAt(i) & 0xFF)
-  }
-  return byteArray
-}
-
-function utf16leToBytes (str, units) {
-  var c, hi, lo
-  var byteArray = []
-  for (var i = 0; i < str.length; ++i) {
-    if ((units -= 2) < 0) break
-
-    c = str.charCodeAt(i)
-    hi = c >> 8
-    lo = c % 256
-    byteArray.push(lo)
-    byteArray.push(hi)
-  }
-
-  return byteArray
-}
-
-function base64ToBytes (str) {
-  return base64.toByteArray(base64clean(str))
-}
-
-function blitBuffer (src, dst, offset, length) {
-  for (var i = 0; i < length; ++i) {
-    if ((i + offset >= dst.length) || (i >= src.length)) break
-    dst[i + offset] = src[i]
-  }
-  return i
-}
-
-// ArrayBuffer or Uint8Array objects from other contexts (i.e. iframes) do not pass
-// the `instanceof` check but they should be treated as of that type.
-// See: https://github.com/feross/buffer/issues/166
-function isInstance (obj, type) {
-  return obj instanceof type ||
-    (obj != null && obj.constructor != null && obj.constructor.name != null &&
-      obj.constructor.name === type.name)
-}
-function numberIsNaN (obj) {
-  // For IE11 support
-  return obj !== obj // eslint-disable-line no-self-compare
-}
-
-}).call(this,require("buffer").Buffer)
-},{"base64-js":10,"buffer":11,"ieee754":18}],12:[function(require,module,exports){
-"use strict";
-
-exports.__esModule = true;
-exports.default = void 0;
-
-function isElement(el) {
-  return el != null && typeof el === 'object' && el.nodeType === 1;
-}
-
-function canOverflow(overflow, skipOverflowHiddenElements) {
-  if (skipOverflowHiddenElements && overflow === 'hidden') {
-    return false;
-  }
-
-  return overflow !== 'visible' && overflow !== 'clip';
-}
-
-function isScrollable(el, skipOverflowHiddenElements) {
-  if (el.clientHeight < el.scrollHeight || el.clientWidth < el.scrollWidth) {
-    var style = getComputedStyle(el, null);
-    return canOverflow(style.overflowY, skipOverflowHiddenElements) || canOverflow(style.overflowX, skipOverflowHiddenElements);
-  }
-
-  return false;
-}
-
-function alignNearest(scrollingEdgeStart, scrollingEdgeEnd, scrollingSize, scrollingBorderStart, scrollingBorderEnd, elementEdgeStart, elementEdgeEnd, elementSize) {
-  if (elementEdgeStart < scrollingEdgeStart && elementEdgeEnd > scrollingEdgeEnd || elementEdgeStart > scrollingEdgeStart && elementEdgeEnd < scrollingEdgeEnd) {
-    return 0;
-  }
-
-  if (elementEdgeStart <= scrollingEdgeStart && elementSize <= scrollingSize || elementEdgeEnd >= scrollingEdgeEnd && elementSize >= scrollingSize) {
-    return elementEdgeStart - scrollingEdgeStart - scrollingBorderStart;
-  }
-
-  if (elementEdgeEnd > scrollingEdgeEnd && elementSize < scrollingSize || elementEdgeStart < scrollingEdgeStart && elementSize > scrollingSize) {
-    return elementEdgeEnd - scrollingEdgeEnd + scrollingBorderEnd;
-  }
-
-  return 0;
-}
-
-var _default = function _default(target, options) {
-  var scrollMode = options.scrollMode,
-      block = options.block,
-      inline = options.inline,
-      boundary = options.boundary,
-      skipOverflowHiddenElements = options.skipOverflowHiddenElements;
-  var checkBoundary = typeof boundary === 'function' ? boundary : function (node) {
-    return node !== boundary;
-  };
-
-  if (!isElement(target)) {
-    throw new TypeError('Invalid target');
-  }
-
-  var scrollingElement = document.scrollingElement || document.documentElement;
-  var frames = [];
-  var cursor = target;
-
-  while (isElement(cursor) && checkBoundary(cursor)) {
-    cursor = cursor.parentNode;
-
-    if (cursor === scrollingElement) {
-      frames.push(cursor);
-      break;
-    }
-
-    if (cursor === document.body && isScrollable(cursor) && !isScrollable(document.documentElement)) {
-      continue;
-    }
-
-    if (isScrollable(cursor, skipOverflowHiddenElements)) {
-      frames.push(cursor);
-    }
-  }
-
-  var viewportWidth = window.visualViewport ? visualViewport.width : innerWidth;
-  var viewportHeight = window.visualViewport ? visualViewport.height : innerHeight;
-  var viewportX = window.scrollX || pageXOffset;
-  var viewportY = window.scrollY || pageYOffset;
-
-  var _target$getBoundingCl = target.getBoundingClientRect(),
-      targetHeight = _target$getBoundingCl.height,
-      targetWidth = _target$getBoundingCl.width,
-      targetTop = _target$getBoundingCl.top,
-      targetRight = _target$getBoundingCl.right,
-      targetBottom = _target$getBoundingCl.bottom,
-      targetLeft = _target$getBoundingCl.left;
-
-  var targetBlock = block === 'start' || block === 'nearest' ? targetTop : block === 'end' ? targetBottom : targetTop + targetHeight / 2;
-  var targetInline = inline === 'center' ? targetLeft + targetWidth / 2 : inline === 'end' ? targetRight : targetLeft;
-  var computations = [];
-
-  for (var index = 0; index < frames.length; index++) {
-    var frame = frames[index];
-
-    var _frame$getBoundingCli = frame.getBoundingClientRect(),
-        _height = _frame$getBoundingCli.height,
-        _width = _frame$getBoundingCli.width,
-        _top = _frame$getBoundingCli.top,
-        right = _frame$getBoundingCli.right,
-        bottom = _frame$getBoundingCli.bottom,
-        _left = _frame$getBoundingCli.left;
-
-    if (scrollMode === 'if-needed' && targetTop >= 0 && targetLeft >= 0 && targetBottom <= viewportHeight && targetRight <= viewportWidth && targetTop >= _top && targetBottom <= bottom && targetLeft >= _left && targetRight <= right) {
-      return computations;
-    }
-
-    var frameStyle = getComputedStyle(frame);
-    var borderLeft = parseInt(frameStyle.borderLeftWidth, 10);
-    var borderTop = parseInt(frameStyle.borderTopWidth, 10);
-    var borderRight = parseInt(frameStyle.borderRightWidth, 10);
-    var borderBottom = parseInt(frameStyle.borderBottomWidth, 10);
-    var blockScroll = 0;
-    var inlineScroll = 0;
-    var scrollbarWidth = 'offsetWidth' in frame ? frame.offsetWidth - frame.clientWidth - borderLeft - borderRight : 0;
-    var scrollbarHeight = 'offsetHeight' in frame ? frame.offsetHeight - frame.clientHeight - borderTop - borderBottom : 0;
-
-    if (scrollingElement === frame) {
-      if (block === 'start') {
-        blockScroll = targetBlock;
-      } else if (block === 'end') {
-        blockScroll = targetBlock - viewportHeight;
-      } else if (block === 'nearest') {
-        blockScroll = alignNearest(viewportY, viewportY + viewportHeight, viewportHeight, borderTop, borderBottom, viewportY + targetBlock, viewportY + targetBlock + targetHeight, targetHeight);
-      } else {
-        blockScroll = targetBlock - viewportHeight / 2;
-      }
-
-      if (inline === 'start') {
-        inlineScroll = targetInline;
-      } else if (inline === 'center') {
-        inlineScroll = targetInline - viewportWidth / 2;
-      } else if (inline === 'end') {
-        inlineScroll = targetInline - viewportWidth;
-      } else {
-        inlineScroll = alignNearest(viewportX, viewportX + viewportWidth, viewportWidth, borderLeft, borderRight, viewportX + targetInline, viewportX + targetInline + targetWidth, targetWidth);
-      }
-
-      blockScroll = Math.max(0, blockScroll + viewportY);
-      inlineScroll = Math.max(0, inlineScroll + viewportX);
-    } else {
-      if (block === 'start') {
-        blockScroll = targetBlock - _top - borderTop;
-      } else if (block === 'end') {
-        blockScroll = targetBlock - bottom + borderBottom + scrollbarHeight;
-      } else if (block === 'nearest') {
-        blockScroll = alignNearest(_top, bottom, _height, borderTop, borderBottom + scrollbarHeight, targetBlock, targetBlock + targetHeight, targetHeight);
-      } else {
-        blockScroll = targetBlock - (_top + _height / 2) + scrollbarHeight / 2;
-      }
-
-      if (inline === 'start') {
-        inlineScroll = targetInline - _left - borderLeft;
-      } else if (inline === 'center') {
-        inlineScroll = targetInline - (_left + _width / 2) + scrollbarWidth / 2;
-      } else if (inline === 'end') {
-        inlineScroll = targetInline - right + borderRight + scrollbarWidth;
-      } else {
-        inlineScroll = alignNearest(_left, right, _width, borderLeft, borderRight + scrollbarWidth, targetInline, targetInline + targetWidth, targetWidth);
-      }
-
-      var scrollLeft = frame.scrollLeft,
-          scrollTop = frame.scrollTop;
-      blockScroll = Math.max(0, Math.min(scrollTop + blockScroll, frame.scrollHeight - _height + scrollbarHeight));
-      inlineScroll = Math.max(0, Math.min(scrollLeft + inlineScroll, frame.scrollWidth - _width + scrollbarWidth));
-      targetBlock += scrollTop - blockScroll;
-      targetInline += scrollLeft - inlineScroll;
-    }
-
-    computations.push({
-      el: frame,
-      top: blockScroll,
-      left: inlineScroll
-    });
-  }
-
-  return computations;
-};
-
-exports.default = _default;
-module.exports = exports.default;
-},{}],13:[function(require,module,exports){
-var prefix = require('prefix-style')
-var toCamelCase = require('to-camel-case')
-var cache = { 'float': 'cssFloat' }
-var addPxToStyle = require('add-px-to-style')
-
-function style (element, property, value) {
-  var camel = cache[property]
-  if (typeof camel === 'undefined') {
-    camel = detect(property)
-  }
-
-  // may be false if CSS prop is unsupported
-  if (camel) {
-    if (value === undefined) {
-      return element.style[camel]
-    }
-
-    element.style[camel] = addPxToStyle(camel, value)
-  }
-}
-
-function each (element, properties) {
-  for (var k in properties) {
-    if (properties.hasOwnProperty(k)) {
-      style(element, k, properties[k])
-    }
-  }
-}
-
-function detect (cssProp) {
-  var camel = toCamelCase(cssProp)
-  var result = prefix(camel)
-  cache[camel] = cache[cssProp] = cache[result] = result
-  return result
-}
-
-function set () {
-  if (arguments.length === 2) {
-    if (typeof arguments[1] === 'string') {
-      arguments[0].style.cssText = arguments[1]
-    } else {
-      each(arguments[0], arguments[1])
-    }
-  } else {
-    style(arguments[0], arguments[1], arguments[2])
-  }
-}
-
-module.exports = set
-module.exports.set = set
-
-module.exports.get = function (element, properties) {
-  if (Array.isArray(properties)) {
-    return properties.reduce(function (obj, prop) {
-      obj[prop] = style(element, prop || '')
-      return obj
-    }, {})
-  } else {
-    return style(element, properties || '')
-  }
-}
-
-},{"add-px-to-style":9,"prefix-style":26,"to-camel-case":88}],14:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, '__esModule', { value: true });
-
-function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
-
-var resolvePathname = _interopDefault(require('resolve-pathname'));
-var valueEqual = _interopDefault(require('value-equal'));
-var warning = _interopDefault(require('tiny-warning'));
-var invariant = _interopDefault(require('tiny-invariant'));
-
-function _extends() {
-  _extends = Object.assign || function (target) {
-    for (var i = 1; i < arguments.length; i++) {
-      var source = arguments[i];
-
-      for (var key in source) {
-        if (Object.prototype.hasOwnProperty.call(source, key)) {
-          target[key] = source[key];
-        }
-      }
-    }
-
-    return target;
-  };
-
-  return _extends.apply(this, arguments);
-}
-
-function addLeadingSlash(path) {
-  return path.charAt(0) === '/' ? path : '/' + path;
-}
-function stripLeadingSlash(path) {
-  return path.charAt(0) === '/' ? path.substr(1) : path;
-}
-function hasBasename(path, prefix) {
-  return new RegExp('^' + prefix + '(\\/|\\?|#|$)', 'i').test(path);
-}
-function stripBasename(path, prefix) {
-  return hasBasename(path, prefix) ? path.substr(prefix.length) : path;
-}
-function stripTrailingSlash(path) {
-  return path.charAt(path.length - 1) === '/' ? path.slice(0, -1) : path;
-}
-function parsePath(path) {
-  var pathname = path || '/';
-  var search = '';
-  var hash = '';
-  var hashIndex = pathname.indexOf('#');
-
-  if (hashIndex !== -1) {
-    hash = pathname.substr(hashIndex);
-    pathname = pathname.substr(0, hashIndex);
-  }
-
-  var searchIndex = pathname.indexOf('?');
-
-  if (searchIndex !== -1) {
-    search = pathname.substr(searchIndex);
-    pathname = pathname.substr(0, searchIndex);
-  }
-
-  return {
-    pathname: pathname,
-    search: search === '?' ? '' : search,
-    hash: hash === '#' ? '' : hash
-  };
-}
-function createPath(location) {
-  var pathname = location.pathname,
-      search = location.search,
-      hash = location.hash;
-  var path = pathname || '/';
-  if (search && search !== '?') path += search.charAt(0) === '?' ? search : "?" + search;
-  if (hash && hash !== '#') path += hash.charAt(0) === '#' ? hash : "#" + hash;
-  return path;
-}
-
-function createLocation(path, state, key, currentLocation) {
-  var location;
-
-  if (typeof path === 'string') {
-    // Two-arg form: push(path, state)
-    location = parsePath(path);
-    location.state = state;
-  } else {
-    // One-arg form: push(location)
-    location = _extends({}, path);
-    if (location.pathname === undefined) location.pathname = '';
-
-    if (location.search) {
-      if (location.search.charAt(0) !== '?') location.search = '?' + location.search;
-    } else {
-      location.search = '';
-    }
-
-    if (location.hash) {
-      if (location.hash.charAt(0) !== '#') location.hash = '#' + location.hash;
-    } else {
-      location.hash = '';
-    }
-
-    if (state !== undefined && location.state === undefined) location.state = state;
-  }
-
-  try {
-    location.pathname = decodeURI(location.pathname);
-  } catch (e) {
-    if (e instanceof URIError) {
-      throw new URIError('Pathname "' + location.pathname + '" could not be decoded. ' + 'This is likely caused by an invalid percent-encoding.');
-    } else {
-      throw e;
-    }
-  }
-
-  if (key) location.key = key;
-
-  if (currentLocation) {
-    // Resolve incomplete/relative pathname relative to current location.
-    if (!location.pathname) {
-      location.pathname = currentLocation.pathname;
-    } else if (location.pathname.charAt(0) !== '/') {
-      location.pathname = resolvePathname(location.pathname, currentLocation.pathname);
-    }
-  } else {
-    // When there is no prior location and pathname is empty, set it to /
-    if (!location.pathname) {
-      location.pathname = '/';
-    }
-  }
-
-  return location;
-}
-function locationsAreEqual(a, b) {
-  return a.pathname === b.pathname && a.search === b.search && a.hash === b.hash && a.key === b.key && valueEqual(a.state, b.state);
-}
-
-function createTransitionManager() {
-  var prompt = null;
-
-  function setPrompt(nextPrompt) {
-    warning(prompt == null, 'A history supports only one prompt at a time');
-    prompt = nextPrompt;
-    return function () {
-      if (prompt === nextPrompt) prompt = null;
-    };
-  }
-
-  function confirmTransitionTo(location, action, getUserConfirmation, callback) {
-    // TODO: If another transition starts while we're still confirming
-    // the previous one, we may end up in a weird state. Figure out the
-    // best way to handle this.
-    if (prompt != null) {
-      var result = typeof prompt === 'function' ? prompt(location, action) : prompt;
-
-      if (typeof result === 'string') {
-        if (typeof getUserConfirmation === 'function') {
-          getUserConfirmation(result, callback);
-        } else {
-          warning(false, 'A history needs a getUserConfirmation function in order to use a prompt message');
-          callback(true);
-        }
-      } else {
-        // Return false from a transition hook to cancel the transition.
-        callback(result !== false);
-      }
-    } else {
-      callback(true);
-    }
-  }
-
-  var listeners = [];
-
-  function appendListener(fn) {
-    var isActive = true;
-
-    function listener() {
-      if (isActive) fn.apply(void 0, arguments);
-    }
-
-    listeners.push(listener);
-    return function () {
-      isActive = false;
-      listeners = listeners.filter(function (item) {
-        return item !== listener;
-      });
-    };
-  }
-
-  function notifyListeners() {
-    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
-      args[_key] = arguments[_key];
-    }
-
-    listeners.forEach(function (listener) {
-      return listener.apply(void 0, args);
-    });
-  }
-
-  return {
-    setPrompt: setPrompt,
-    confirmTransitionTo: confirmTransitionTo,
-    appendListener: appendListener,
-    notifyListeners: notifyListeners
-  };
-}
-
-var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
-function getConfirmation(message, callback) {
-  callback(window.confirm(message)); // eslint-disable-line no-alert
-}
-/**
- * Returns true if the HTML5 history API is supported. Taken from Modernizr.
- *
- * https://github.com/Modernizr/Modernizr/blob/master/LICENSE
- * https://github.com/Modernizr/Modernizr/blob/master/feature-detects/history.js
- * changed to avoid false negatives for Windows Phones: https://github.com/reactjs/react-router/issues/586
- */
-
-function supportsHistory() {
-  var ua = window.navigator.userAgent;
-  if ((ua.indexOf('Android 2.') !== -1 || ua.indexOf('Android 4.0') !== -1) && ua.indexOf('Mobile Safari') !== -1 && ua.indexOf('Chrome') === -1 && ua.indexOf('Windows Phone') === -1) return false;
-  return window.history && 'pushState' in window.history;
-}
-/**
- * Returns true if browser fires popstate on hash change.
- * IE10 and IE11 do not.
- */
-
-function supportsPopStateOnHashChange() {
-  return window.navigator.userAgent.indexOf('Trident') === -1;
-}
-/**
- * Returns false if using go(n) with hash history causes a full page reload.
- */
-
-function supportsGoWithoutReloadUsingHash() {
-  return window.navigator.userAgent.indexOf('Firefox') === -1;
-}
-/**
- * Returns true if a given popstate event is an extraneous WebKit event.
- * Accounts for the fact that Chrome on iOS fires real popstate events
- * containing undefined state when pressing the back button.
- */
-
-function isExtraneousPopstateEvent(event) {
-  event.state === undefined && navigator.userAgent.indexOf('CriOS') === -1;
-}
-
-var PopStateEvent = 'popstate';
-var HashChangeEvent = 'hashchange';
-
-function getHistoryState() {
-  try {
-    return window.history.state || {};
-  } catch (e) {
-    // IE 11 sometimes throws when accessing window.history.state
-    // See https://github.com/ReactTraining/history/pull/289
-    return {};
-  }
-}
-/**
- * Creates a history object that uses the HTML5 history API including
- * pushState, replaceState, and the popstate event.
- */
-
-
-function createBrowserHistory(props) {
-  if (props === void 0) {
-    props = {};
-  }
-
-  !canUseDOM ? invariant(false, 'Browser history needs a DOM') : void 0;
-  var globalHistory = window.history;
-  var canUseHistory = supportsHistory();
-  var needsHashChangeListener = !supportsPopStateOnHashChange();
-  var _props = props,
-      _props$forceRefresh = _props.forceRefresh,
-      forceRefresh = _props$forceRefresh === void 0 ? false : _props$forceRefresh,
-      _props$getUserConfirm = _props.getUserConfirmation,
-      getUserConfirmation = _props$getUserConfirm === void 0 ? getConfirmation : _props$getUserConfirm,
-      _props$keyLength = _props.keyLength,
-      keyLength = _props$keyLength === void 0 ? 6 : _props$keyLength;
-  var basename = props.basename ? stripTrailingSlash(addLeadingSlash(props.basename)) : '';
-
-  function getDOMLocation(historyState) {
-    var _ref = historyState || {},
-        key = _ref.key,
-        state = _ref.state;
-
-    var _window$location = window.location,
-        pathname = _window$location.pathname,
-        search = _window$location.search,
-        hash = _window$location.hash;
-    var path = pathname + search + hash;
-    warning(!basename || hasBasename(path, basename), 'You are attempting to use a basename on a page whose URL path does not begin ' + 'with the basename. Expected path "' + path + '" to begin with "' + basename + '".');
-    if (basename) path = stripBasename(path, basename);
-    return createLocation(path, state, key);
-  }
-
-  function createKey() {
-    return Math.random().toString(36).substr(2, keyLength);
-  }
-
-  var transitionManager = createTransitionManager();
-
-  function setState(nextState) {
-    _extends(history, nextState);
-
-    history.length = globalHistory.length;
-    transitionManager.notifyListeners(history.location, history.action);
-  }
-
-  function handlePopState(event) {
-    // Ignore extraneous popstate events in WebKit.
-    if (isExtraneousPopstateEvent(event)) return;
-    handlePop(getDOMLocation(event.state));
-  }
-
-  function handleHashChange() {
-    handlePop(getDOMLocation(getHistoryState()));
-  }
-
-  var forceNextPop = false;
-
-  function handlePop(location) {
-    if (forceNextPop) {
-      forceNextPop = false;
-      setState();
-    } else {
-      var action = 'POP';
-      transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
-        if (ok) {
-          setState({
-            action: action,
-            location: location
-          });
-        } else {
-          revertPop(location);
-        }
-      });
-    }
-  }
-
-  function revertPop(fromLocation) {
-    var toLocation = history.location; // TODO: We could probably make this more reliable by
-    // keeping a list of keys we've seen in sessionStorage.
-    // Instead, we just default to 0 for keys we don't know.
-
-    var toIndex = allKeys.indexOf(toLocation.key);
-    if (toIndex === -1) toIndex = 0;
-    var fromIndex = allKeys.indexOf(fromLocation.key);
-    if (fromIndex === -1) fromIndex = 0;
-    var delta = toIndex - fromIndex;
-
-    if (delta) {
-      forceNextPop = true;
-      go(delta);
-    }
-  }
-
-  var initialLocation = getDOMLocation(getHistoryState());
-  var allKeys = [initialLocation.key]; // Public interface
-
-  function createHref(location) {
-    return basename + createPath(location);
-  }
-
-  function push(path, state) {
-    warning(!(typeof path === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to push when the 1st ' + 'argument is a location-like object that already has state; it is ignored');
-    var action = 'PUSH';
-    var location = createLocation(path, state, createKey(), history.location);
-    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
-      if (!ok) return;
-      var href = createHref(location);
-      var key = location.key,
-          state = location.state;
-
-      if (canUseHistory) {
-        globalHistory.pushState({
-          key: key,
-          state: state
-        }, null, href);
-
-        if (forceRefresh) {
-          window.location.href = href;
-        } else {
-          var prevIndex = allKeys.indexOf(history.location.key);
-          var nextKeys = allKeys.slice(0, prevIndex === -1 ? 0 : prevIndex + 1);
-          nextKeys.push(location.key);
-          allKeys = nextKeys;
-          setState({
-            action: action,
-            location: location
-          });
-        }
-      } else {
-        warning(state === undefined, 'Browser history cannot push state in browsers that do not support HTML5 history');
-        window.location.href = href;
-      }
-    });
-  }
-
-  function replace(path, state) {
-    warning(!(typeof path === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to replace when the 1st ' + 'argument is a location-like object that already has state; it is ignored');
-    var action = 'REPLACE';
-    var location = createLocation(path, state, createKey(), history.location);
-    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
-      if (!ok) return;
-      var href = createHref(location);
-      var key = location.key,
-          state = location.state;
-
-      if (canUseHistory) {
-        globalHistory.replaceState({
-          key: key,
-          state: state
-        }, null, href);
-
-        if (forceRefresh) {
-          window.location.replace(href);
-        } else {
-          var prevIndex = allKeys.indexOf(history.location.key);
-          if (prevIndex !== -1) allKeys[prevIndex] = location.key;
-          setState({
-            action: action,
-            location: location
-          });
-        }
-      } else {
-        warning(state === undefined, 'Browser history cannot replace state in browsers that do not support HTML5 history');
-        window.location.replace(href);
-      }
-    });
-  }
-
-  function go(n) {
-    globalHistory.go(n);
-  }
-
-  function goBack() {
-    go(-1);
-  }
-
-  function goForward() {
-    go(1);
-  }
-
-  var listenerCount = 0;
-
-  function checkDOMListeners(delta) {
-    listenerCount += delta;
-
-    if (listenerCount === 1 && delta === 1) {
-      window.addEventListener(PopStateEvent, handlePopState);
-      if (needsHashChangeListener) window.addEventListener(HashChangeEvent, handleHashChange);
-    } else if (listenerCount === 0) {
-      window.removeEventListener(PopStateEvent, handlePopState);
-      if (needsHashChangeListener) window.removeEventListener(HashChangeEvent, handleHashChange);
-    }
-  }
-
-  var isBlocked = false;
-
-  function block(prompt) {
-    if (prompt === void 0) {
-      prompt = false;
-    }
-
-    var unblock = transitionManager.setPrompt(prompt);
-
-    if (!isBlocked) {
-      checkDOMListeners(1);
-      isBlocked = true;
-    }
-
-    return function () {
-      if (isBlocked) {
-        isBlocked = false;
-        checkDOMListeners(-1);
-      }
-
-      return unblock();
-    };
-  }
-
-  function listen(listener) {
-    var unlisten = transitionManager.appendListener(listener);
-    checkDOMListeners(1);
-    return function () {
-      checkDOMListeners(-1);
-      unlisten();
-    };
-  }
-
-  var history = {
-    length: globalHistory.length,
-    action: 'POP',
-    location: initialLocation,
-    createHref: createHref,
-    push: push,
-    replace: replace,
-    go: go,
-    goBack: goBack,
-    goForward: goForward,
-    block: block,
-    listen: listen
-  };
-  return history;
-}
-
-var HashChangeEvent$1 = 'hashchange';
-var HashPathCoders = {
-  hashbang: {
-    encodePath: function encodePath(path) {
-      return path.charAt(0) === '!' ? path : '!/' + stripLeadingSlash(path);
-    },
-    decodePath: function decodePath(path) {
-      return path.charAt(0) === '!' ? path.substr(1) : path;
-    }
-  },
-  noslash: {
-    encodePath: stripLeadingSlash,
-    decodePath: addLeadingSlash
-  },
-  slash: {
-    encodePath: addLeadingSlash,
-    decodePath: addLeadingSlash
-  }
-};
-
-function getHashPath() {
-  // We can't use window.location.hash here because it's not
-  // consistent across browsers - Firefox will pre-decode it!
-  var href = window.location.href;
-  var hashIndex = href.indexOf('#');
-  return hashIndex === -1 ? '' : href.substring(hashIndex + 1);
-}
-
-function pushHashPath(path) {
-  window.location.hash = path;
-}
-
-function replaceHashPath(path) {
-  var hashIndex = window.location.href.indexOf('#');
-  window.location.replace(window.location.href.slice(0, hashIndex >= 0 ? hashIndex : 0) + '#' + path);
-}
-
-function createHashHistory(props) {
-  if (props === void 0) {
-    props = {};
-  }
-
-  !canUseDOM ? invariant(false, 'Hash history needs a DOM') : void 0;
-  var globalHistory = window.history;
-  var canGoWithoutReload = supportsGoWithoutReloadUsingHash();
-  var _props = props,
-      _props$getUserConfirm = _props.getUserConfirmation,
-      getUserConfirmation = _props$getUserConfirm === void 0 ? getConfirmation : _props$getUserConfirm,
-      _props$hashType = _props.hashType,
-      hashType = _props$hashType === void 0 ? 'slash' : _props$hashType;
-  var basename = props.basename ? stripTrailingSlash(addLeadingSlash(props.basename)) : '';
-  var _HashPathCoders$hashT = HashPathCoders[hashType],
-      encodePath = _HashPathCoders$hashT.encodePath,
-      decodePath = _HashPathCoders$hashT.decodePath;
-
-  function getDOMLocation() {
-    var path = decodePath(getHashPath());
-    warning(!basename || hasBasename(path, basename), 'You are attempting to use a basename on a page whose URL path does not begin ' + 'with the basename. Expected path "' + path + '" to begin with "' + basename + '".');
-    if (basename) path = stripBasename(path, basename);
-    return createLocation(path);
-  }
-
-  var transitionManager = createTransitionManager();
-
-  function setState(nextState) {
-    _extends(history, nextState);
-
-    history.length = globalHistory.length;
-    transitionManager.notifyListeners(history.location, history.action);
-  }
-
-  var forceNextPop = false;
-  var ignorePath = null;
-
-  function handleHashChange() {
-    var path = getHashPath();
-    var encodedPath = encodePath(path);
-
-    if (path !== encodedPath) {
-      // Ensure we always have a properly-encoded hash.
-      replaceHashPath(encodedPath);
-    } else {
-      var location = getDOMLocation();
-      var prevLocation = history.location;
-      if (!forceNextPop && locationsAreEqual(prevLocation, location)) return; // A hashchange doesn't always == location change.
-
-      if (ignorePath === createPath(location)) return; // Ignore this change; we already setState in push/replace.
-
-      ignorePath = null;
-      handlePop(location);
-    }
-  }
-
-  function handlePop(location) {
-    if (forceNextPop) {
-      forceNextPop = false;
-      setState();
-    } else {
-      var action = 'POP';
-      transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
-        if (ok) {
-          setState({
-            action: action,
-            location: location
-          });
-        } else {
-          revertPop(location);
-        }
-      });
-    }
-  }
-
-  function revertPop(fromLocation) {
-    var toLocation = history.location; // TODO: We could probably make this more reliable by
-    // keeping a list of paths we've seen in sessionStorage.
-    // Instead, we just default to 0 for paths we don't know.
-
-    var toIndex = allPaths.lastIndexOf(createPath(toLocation));
-    if (toIndex === -1) toIndex = 0;
-    var fromIndex = allPaths.lastIndexOf(createPath(fromLocation));
-    if (fromIndex === -1) fromIndex = 0;
-    var delta = toIndex - fromIndex;
-
-    if (delta) {
-      forceNextPop = true;
-      go(delta);
-    }
-  } // Ensure the hash is encoded properly before doing anything else.
-
-
-  var path = getHashPath();
-  var encodedPath = encodePath(path);
-  if (path !== encodedPath) replaceHashPath(encodedPath);
-  var initialLocation = getDOMLocation();
-  var allPaths = [createPath(initialLocation)]; // Public interface
-
-  function createHref(location) {
-    return '#' + encodePath(basename + createPath(location));
-  }
-
-  function push(path, state) {
-    warning(state === undefined, 'Hash history cannot push state; it is ignored');
-    var action = 'PUSH';
-    var location = createLocation(path, undefined, undefined, history.location);
-    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
-      if (!ok) return;
-      var path = createPath(location);
-      var encodedPath = encodePath(basename + path);
-      var hashChanged = getHashPath() !== encodedPath;
-
-      if (hashChanged) {
-        // We cannot tell if a hashchange was caused by a PUSH, so we'd
-        // rather setState here and ignore the hashchange. The caveat here
-        // is that other hash histories in the page will consider it a POP.
-        ignorePath = path;
-        pushHashPath(encodedPath);
-        var prevIndex = allPaths.lastIndexOf(createPath(history.location));
-        var nextPaths = allPaths.slice(0, prevIndex === -1 ? 0 : prevIndex + 1);
-        nextPaths.push(path);
-        allPaths = nextPaths;
-        setState({
-          action: action,
-          location: location
-        });
-      } else {
-        warning(false, 'Hash history cannot PUSH the same path; a new entry will not be added to the history stack');
-        setState();
-      }
-    });
-  }
-
-  function replace(path, state) {
-    warning(state === undefined, 'Hash history cannot replace state; it is ignored');
-    var action = 'REPLACE';
-    var location = createLocation(path, undefined, undefined, history.location);
-    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
-      if (!ok) return;
-      var path = createPath(location);
-      var encodedPath = encodePath(basename + path);
-      var hashChanged = getHashPath() !== encodedPath;
-
-      if (hashChanged) {
-        // We cannot tell if a hashchange was caused by a REPLACE, so we'd
-        // rather setState here and ignore the hashchange. The caveat here
-        // is that other hash histories in the page will consider it a POP.
-        ignorePath = path;
-        replaceHashPath(encodedPath);
-      }
-
-      var prevIndex = allPaths.indexOf(createPath(history.location));
-      if (prevIndex !== -1) allPaths[prevIndex] = path;
-      setState({
-        action: action,
-        location: location
-      });
-    });
-  }
-
-  function go(n) {
-    warning(canGoWithoutReload, 'Hash history go(n) causes a full page reload in this browser');
-    globalHistory.go(n);
-  }
-
-  function goBack() {
-    go(-1);
-  }
-
-  function goForward() {
-    go(1);
-  }
-
-  var listenerCount = 0;
-
-  function checkDOMListeners(delta) {
-    listenerCount += delta;
-
-    if (listenerCount === 1 && delta === 1) {
-      window.addEventListener(HashChangeEvent$1, handleHashChange);
-    } else if (listenerCount === 0) {
-      window.removeEventListener(HashChangeEvent$1, handleHashChange);
-    }
-  }
-
-  var isBlocked = false;
-
-  function block(prompt) {
-    if (prompt === void 0) {
-      prompt = false;
-    }
-
-    var unblock = transitionManager.setPrompt(prompt);
-
-    if (!isBlocked) {
-      checkDOMListeners(1);
-      isBlocked = true;
-    }
-
-    return function () {
-      if (isBlocked) {
-        isBlocked = false;
-        checkDOMListeners(-1);
-      }
-
-      return unblock();
-    };
-  }
-
-  function listen(listener) {
-    var unlisten = transitionManager.appendListener(listener);
-    checkDOMListeners(1);
-    return function () {
-      checkDOMListeners(-1);
-      unlisten();
-    };
-  }
-
-  var history = {
-    length: globalHistory.length,
-    action: 'POP',
-    location: initialLocation,
-    createHref: createHref,
-    push: push,
-    replace: replace,
-    go: go,
-    goBack: goBack,
-    goForward: goForward,
-    block: block,
-    listen: listen
-  };
-  return history;
-}
-
-function clamp(n, lowerBound, upperBound) {
-  return Math.min(Math.max(n, lowerBound), upperBound);
-}
-/**
- * Creates a history object that stores locations in memory.
- */
-
-
-function createMemoryHistory(props) {
-  if (props === void 0) {
-    props = {};
-  }
-
-  var _props = props,
-      getUserConfirmation = _props.getUserConfirmation,
-      _props$initialEntries = _props.initialEntries,
-      initialEntries = _props$initialEntries === void 0 ? ['/'] : _props$initialEntries,
-      _props$initialIndex = _props.initialIndex,
-      initialIndex = _props$initialIndex === void 0 ? 0 : _props$initialIndex,
-      _props$keyLength = _props.keyLength,
-      keyLength = _props$keyLength === void 0 ? 6 : _props$keyLength;
-  var transitionManager = createTransitionManager();
-
-  function setState(nextState) {
-    _extends(history, nextState);
-
-    history.length = history.entries.length;
-    transitionManager.notifyListeners(history.location, history.action);
-  }
-
-  function createKey() {
-    return Math.random().toString(36).substr(2, keyLength);
-  }
-
-  var index = clamp(initialIndex, 0, initialEntries.length - 1);
-  var entries = initialEntries.map(function (entry) {
-    return typeof entry === 'string' ? createLocation(entry, undefined, createKey()) : createLocation(entry, undefined, entry.key || createKey());
-  }); // Public interface
-
-  var createHref = createPath;
-
-  function push(path, state) {
-    warning(!(typeof path === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to push when the 1st ' + 'argument is a location-like object that already has state; it is ignored');
-    var action = 'PUSH';
-    var location = createLocation(path, state, createKey(), history.location);
-    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
-      if (!ok) return;
-      var prevIndex = history.index;
-      var nextIndex = prevIndex + 1;
-      var nextEntries = history.entries.slice(0);
-
-      if (nextEntries.length > nextIndex) {
-        nextEntries.splice(nextIndex, nextEntries.length - nextIndex, location);
-      } else {
-        nextEntries.push(location);
-      }
-
-      setState({
-        action: action,
-        location: location,
-        index: nextIndex,
-        entries: nextEntries
-      });
-    });
-  }
-
-  function replace(path, state) {
-    warning(!(typeof path === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to replace when the 1st ' + 'argument is a location-like object that already has state; it is ignored');
-    var action = 'REPLACE';
-    var location = createLocation(path, state, createKey(), history.location);
-    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
-      if (!ok) return;
-      history.entries[history.index] = location;
-      setState({
-        action: action,
-        location: location
-      });
-    });
-  }
-
-  function go(n) {
-    var nextIndex = clamp(history.index + n, 0, history.entries.length - 1);
-    var action = 'POP';
-    var location = history.entries[nextIndex];
-    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
-      if (ok) {
-        setState({
-          action: action,
-          location: location,
-          index: nextIndex
-        });
-      } else {
-        // Mimic the behavior of DOM histories by
-        // causing a render after a cancelled POP.
-        setState();
-      }
-    });
-  }
-
-  function goBack() {
-    go(-1);
-  }
-
-  function goForward() {
-    go(1);
-  }
-
-  function canGo(n) {
-    var nextIndex = history.index + n;
-    return nextIndex >= 0 && nextIndex < history.entries.length;
-  }
-
-  function block(prompt) {
-    if (prompt === void 0) {
-      prompt = false;
-    }
-
-    return transitionManager.setPrompt(prompt);
-  }
-
-  function listen(listener) {
-    return transitionManager.appendListener(listener);
-  }
-
-  var history = {
-    length: entries.length,
-    action: 'POP',
-    location: entries[index],
-    index: index,
-    entries: entries,
-    createHref: createHref,
-    push: push,
-    replace: replace,
-    go: go,
-    goBack: goBack,
-    goForward: goForward,
-    canGo: canGo,
-    block: block,
-    listen: listen
-  };
-  return history;
-}
-
-exports.createBrowserHistory = createBrowserHistory;
-exports.createHashHistory = createHashHistory;
-exports.createMemoryHistory = createMemoryHistory;
-exports.createLocation = createLocation;
-exports.locationsAreEqual = locationsAreEqual;
-exports.parsePath = parsePath;
-exports.createPath = createPath;
-
-},{"resolve-pathname":77,"tiny-invariant":86,"tiny-warning":87,"value-equal":91}],15:[function(require,module,exports){
-"use strict";function _interopDefault(n){return n&&"object"==typeof n&&"default"in n?n.default:n}Object.defineProperty(exports,"__esModule",{value:!0});var resolvePathname=_interopDefault(require("resolve-pathname")),valueEqual=_interopDefault(require("value-equal"));require("tiny-warning");var invariant=_interopDefault(require("tiny-invariant"));function _extends(){return(_extends=Object.assign||function(n){for(var t=1;t<arguments.length;t++){var e=arguments[t];for(var a in e)Object.prototype.hasOwnProperty.call(e,a)&&(n[a]=e[a])}return n}).apply(this,arguments)}function addLeadingSlash(n){return"/"===n.charAt(0)?n:"/"+n}function stripLeadingSlash(n){return"/"===n.charAt(0)?n.substr(1):n}function hasBasename(n,t){return new RegExp("^"+t+"(\\/|\\?|#|$)","i").test(n)}function stripBasename(n,t){return hasBasename(n,t)?n.substr(t.length):n}function stripTrailingSlash(n){return"/"===n.charAt(n.length-1)?n.slice(0,-1):n}function parsePath(n){var t=n||"/",e="",a="",o=t.indexOf("#");-1!==o&&(a=t.substr(o),t=t.substr(0,o));var r=t.indexOf("?");return-1!==r&&(e=t.substr(r),t=t.substr(0,r)),{pathname:t,search:"?"===e?"":e,hash:"#"===a?"":a}}function createPath(n){var t=n.pathname,e=n.search,a=n.hash,o=t||"/";return e&&"?"!==e&&(o+="?"===e.charAt(0)?e:"?"+e),a&&"#"!==a&&(o+="#"===a.charAt(0)?a:"#"+a),o}function createLocation(n,t,e,a){var o;"string"==typeof n?(o=parsePath(n)).state=t:(void 0===(o=_extends({},n)).pathname&&(o.pathname=""),o.search?"?"!==o.search.charAt(0)&&(o.search="?"+o.search):o.search="",o.hash?"#"!==o.hash.charAt(0)&&(o.hash="#"+o.hash):o.hash="",void 0!==t&&void 0===o.state&&(o.state=t));try{o.pathname=decodeURI(o.pathname)}catch(n){throw n instanceof URIError?new URIError('Pathname "'+o.pathname+'" could not be decoded. This is likely caused by an invalid percent-encoding.'):n}return e&&(o.key=e),a?o.pathname?"/"!==o.pathname.charAt(0)&&(o.pathname=resolvePathname(o.pathname,a.pathname)):o.pathname=a.pathname:o.pathname||(o.pathname="/"),o}function locationsAreEqual(n,t){return n.pathname===t.pathname&&n.search===t.search&&n.hash===t.hash&&n.key===t.key&&valueEqual(n.state,t.state)}function createTransitionManager(){var r=null;var a=[];return{setPrompt:function(n){return r=n,function(){r===n&&(r=null)}},confirmTransitionTo:function(n,t,e,a){if(null!=r){var o="function"==typeof r?r(n,t):r;"string"==typeof o?"function"==typeof e?e(o,a):a(!0):a(!1!==o)}else a(!0)},appendListener:function(n){var t=!0;function e(){t&&n.apply(void 0,arguments)}return a.push(e),function(){t=!1,a=a.filter(function(n){return n!==e})}},notifyListeners:function(){for(var n=arguments.length,t=new Array(n),e=0;e<n;e++)t[e]=arguments[e];a.forEach(function(n){return n.apply(void 0,t)})}}}var canUseDOM=!("undefined"==typeof window||!window.document||!window.document.createElement);function getConfirmation(n,t){t(window.confirm(n))}function supportsHistory(){var n=window.navigator.userAgent;return(-1===n.indexOf("Android 2.")&&-1===n.indexOf("Android 4.0")||-1===n.indexOf("Mobile Safari")||-1!==n.indexOf("Chrome")||-1!==n.indexOf("Windows Phone"))&&(window.history&&"pushState"in window.history)}function supportsPopStateOnHashChange(){return-1===window.navigator.userAgent.indexOf("Trident")}function supportsGoWithoutReloadUsingHash(){return-1===window.navigator.userAgent.indexOf("Firefox")}function isExtraneousPopstateEvent(n){void 0===n.state&&navigator.userAgent.indexOf("CriOS")}var PopStateEvent="popstate",HashChangeEvent="hashchange";function getHistoryState(){try{return window.history.state||{}}catch(n){return{}}}function createBrowserHistory(n){void 0===n&&(n={}),canUseDOM||invariant(!1);var c=window.history,s=supportsHistory(),t=!supportsPopStateOnHashChange(),e=n,a=e.forceRefresh,h=void 0!==a&&a,o=e.getUserConfirmation,u=void 0===o?getConfirmation:o,r=e.keyLength,i=void 0===r?6:r,f=n.basename?stripTrailingSlash(addLeadingSlash(n.basename)):"";function l(n){var t=n||{},e=t.key,a=t.state,o=window.location,r=o.pathname+o.search+o.hash;return f&&(r=stripBasename(r,f)),createLocation(r,a,e)}function d(){return Math.random().toString(36).substr(2,i)}var v=createTransitionManager();function p(n){_extends(T,n),T.length=c.length,v.notifyListeners(T.location,T.action)}function g(n){isExtraneousPopstateEvent(n)||w(l(n.state))}function P(){w(l(getHistoryState()))}var m=!1;function w(t){if(m)m=!1,p();else{v.confirmTransitionTo(t,"POP",u,function(n){n?p({action:"POP",location:t}):function(n){var t=T.location,e=H.indexOf(t.key);-1===e&&(e=0);var a=H.indexOf(n.key);-1===a&&(a=0);var o=e-a;o&&(m=!0,L(o))}(t)})}}var y=l(getHistoryState()),H=[y.key];function x(n){return f+createPath(n)}function L(n){c.go(n)}var O=0;function E(n){1===(O+=n)&&1===n?(window.addEventListener(PopStateEvent,g),t&&window.addEventListener(HashChangeEvent,P)):0===O&&(window.removeEventListener(PopStateEvent,g),t&&window.removeEventListener(HashChangeEvent,P))}var S=!1;var T={length:c.length,action:"POP",location:y,createHref:x,push:function(n,t){var i=createLocation(n,t,d(),T.location);v.confirmTransitionTo(i,"PUSH",u,function(n){if(n){var t=x(i),e=i.key,a=i.state;if(s)if(c.pushState({key:e,state:a},null,t),h)window.location.href=t;else{var o=H.indexOf(T.location.key),r=H.slice(0,-1===o?0:o+1);r.push(i.key),H=r,p({action:"PUSH",location:i})}else window.location.href=t}})},replace:function(n,t){var r="REPLACE",i=createLocation(n,t,d(),T.location);v.confirmTransitionTo(i,r,u,function(n){if(n){var t=x(i),e=i.key,a=i.state;if(s)if(c.replaceState({key:e,state:a},null,t),h)window.location.replace(t);else{var o=H.indexOf(T.location.key);-1!==o&&(H[o]=i.key),p({action:r,location:i})}else window.location.replace(t)}})},go:L,goBack:function(){L(-1)},goForward:function(){L(1)},block:function(n){void 0===n&&(n=!1);var t=v.setPrompt(n);return S||(E(1),S=!0),function(){return S&&(S=!1,E(-1)),t()}},listen:function(n){var t=v.appendListener(n);return E(1),function(){E(-1),t()}}};return T}var HashChangeEvent$1="hashchange",HashPathCoders={hashbang:{encodePath:function(n){return"!"===n.charAt(0)?n:"!/"+stripLeadingSlash(n)},decodePath:function(n){return"!"===n.charAt(0)?n.substr(1):n}},noslash:{encodePath:stripLeadingSlash,decodePath:addLeadingSlash},slash:{encodePath:addLeadingSlash,decodePath:addLeadingSlash}};function getHashPath(){var n=window.location.href,t=n.indexOf("#");return-1===t?"":n.substring(t+1)}function pushHashPath(n){window.location.hash=n}function replaceHashPath(n){var t=window.location.href.indexOf("#");window.location.replace(window.location.href.slice(0,0<=t?t:0)+"#"+n)}function createHashHistory(n){void 0===n&&(n={}),canUseDOM||invariant(!1);var t=window.history,e=(supportsGoWithoutReloadUsingHash(),n),a=e.getUserConfirmation,i=void 0===a?getConfirmation:a,o=e.hashType,r=void 0===o?"slash":o,c=n.basename?stripTrailingSlash(addLeadingSlash(n.basename)):"",s=HashPathCoders[r],h=s.encodePath,u=s.decodePath;function f(){var n=u(getHashPath());return c&&(n=stripBasename(n,c)),createLocation(n)}var l=createTransitionManager();function d(n){_extends(E,n),E.length=t.length,l.notifyListeners(E.location,E.action)}var v=!1,p=null;function g(){var n=getHashPath(),t=h(n);if(n!==t)replaceHashPath(t);else{var e=f(),a=E.location;if(!v&&locationsAreEqual(a,e))return;if(p===createPath(e))return;p=null,function(t){if(v)v=!1,d();else{l.confirmTransitionTo(t,"POP",i,function(n){n?d({action:"POP",location:t}):function(n){var t=E.location,e=y.lastIndexOf(createPath(t));-1===e&&(e=0);var a=y.lastIndexOf(createPath(n));-1===a&&(a=0);var o=e-a;o&&(v=!0,H(o))}(t)})}}(e)}}var P=getHashPath(),m=h(P);P!==m&&replaceHashPath(m);var w=f(),y=[createPath(w)];function H(n){t.go(n)}var x=0;function L(n){1===(x+=n)&&1===n?window.addEventListener(HashChangeEvent$1,g):0===x&&window.removeEventListener(HashChangeEvent$1,g)}var O=!1;var E={length:t.length,action:"POP",location:w,createHref:function(n){return"#"+h(c+createPath(n))},push:function(n,t){var r=createLocation(n,void 0,void 0,E.location);l.confirmTransitionTo(r,"PUSH",i,function(n){if(n){var t=createPath(r),e=h(c+t);if(getHashPath()!==e){p=t,pushHashPath(e);var a=y.lastIndexOf(createPath(E.location)),o=y.slice(0,-1===a?0:a+1);o.push(t),y=o,d({action:"PUSH",location:r})}else d()}})},replace:function(n,t){var o="REPLACE",r=createLocation(n,void 0,void 0,E.location);l.confirmTransitionTo(r,o,i,function(n){if(n){var t=createPath(r),e=h(c+t);getHashPath()!==e&&(p=t,replaceHashPath(e));var a=y.indexOf(createPath(E.location));-1!==a&&(y[a]=t),d({action:o,location:r})}})},go:H,goBack:function(){H(-1)},goForward:function(){H(1)},block:function(n){void 0===n&&(n=!1);var t=l.setPrompt(n);return O||(L(1),O=!0),function(){return O&&(O=!1,L(-1)),t()}},listen:function(n){var t=l.appendListener(n);return L(1),function(){L(-1),t()}}};return E}function clamp(n,t,e){return Math.min(Math.max(n,t),e)}function createMemoryHistory(n){void 0===n&&(n={});var t=n,o=t.getUserConfirmation,e=t.initialEntries,a=void 0===e?["/"]:e,r=t.initialIndex,i=void 0===r?0:r,c=t.keyLength,s=void 0===c?6:c,h=createTransitionManager();function u(n){_extends(g,n),g.length=g.entries.length,h.notifyListeners(g.location,g.action)}function f(){return Math.random().toString(36).substr(2,s)}var l=clamp(i,0,a.length-1),d=a.map(function(n){return createLocation(n,void 0,"string"==typeof n?f():n.key||f())}),v=createPath;function p(n){var t=clamp(g.index+n,0,g.entries.length-1),e=g.entries[t];h.confirmTransitionTo(e,"POP",o,function(n){n?u({action:"POP",location:e,index:t}):u()})}var g={length:d.length,action:"POP",location:d[l],index:l,entries:d,createHref:v,push:function(n,t){var a=createLocation(n,t,f(),g.location);h.confirmTransitionTo(a,"PUSH",o,function(n){if(n){var t=g.index+1,e=g.entries.slice(0);e.length>t?e.splice(t,e.length-t,a):e.push(a),u({action:"PUSH",location:a,index:t,entries:e})}})},replace:function(n,t){var e="REPLACE",a=createLocation(n,t,f(),g.location);h.confirmTransitionTo(a,e,o,function(n){n&&(g.entries[g.index]=a,u({action:e,location:a}))})},go:p,goBack:function(){p(-1)},goForward:function(){p(1)},canGo:function(n){var t=g.index+n;return 0<=t&&t<g.entries.length},block:function(n){return void 0===n&&(n=!1),h.setPrompt(n)},listen:function(n){return h.appendListener(n)}};return g}exports.createBrowserHistory=createBrowserHistory,exports.createHashHistory=createHashHistory,exports.createMemoryHistory=createMemoryHistory,exports.createLocation=createLocation,exports.locationsAreEqual=locationsAreEqual,exports.parsePath=parsePath,exports.createPath=createPath;
-
-},{"resolve-pathname":77,"tiny-invariant":86,"tiny-warning":87,"value-equal":91}],16:[function(require,module,exports){
-(function (process){
-'use strict';
-
-if (process.env.NODE_ENV === 'production') {
-  module.exports = require('./cjs/history.min.js');
-} else {
-  module.exports = require('./cjs/history.js');
-}
-
-}).call(this,require('_process'))
-},{"./cjs/history.js":14,"./cjs/history.min.js":15,"_process":27}],17:[function(require,module,exports){
-'use strict';
-
-/**
- * Copyright 2015, Yahoo! Inc.
- * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
- */
-var REACT_STATICS = {
-    childContextTypes: true,
-    contextTypes: true,
-    defaultProps: true,
-    displayName: true,
-    getDefaultProps: true,
-    getDerivedStateFromProps: true,
-    mixins: true,
-    propTypes: true,
-    type: true
-};
-
-var KNOWN_STATICS = {
-    name: true,
-    length: true,
-    prototype: true,
-    caller: true,
-    callee: true,
-    arguments: true,
-    arity: true
-};
-
-var defineProperty = Object.defineProperty;
-var getOwnPropertyNames = Object.getOwnPropertyNames;
-var getOwnPropertySymbols = Object.getOwnPropertySymbols;
-var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
-var getPrototypeOf = Object.getPrototypeOf;
-var objectPrototype = getPrototypeOf && getPrototypeOf(Object);
-
-function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
-    if (typeof sourceComponent !== 'string') { // don't hoist over string (html) components
-
-        if (objectPrototype) {
-            var inheritedComponent = getPrototypeOf(sourceComponent);
-            if (inheritedComponent && inheritedComponent !== objectPrototype) {
-                hoistNonReactStatics(targetComponent, inheritedComponent, blacklist);
-            }
-        }
-
-        var keys = getOwnPropertyNames(sourceComponent);
-
-        if (getOwnPropertySymbols) {
-            keys = keys.concat(getOwnPropertySymbols(sourceComponent));
-        }
-
-        for (var i = 0; i < keys.length; ++i) {
-            var key = keys[i];
-            if (!REACT_STATICS[key] && !KNOWN_STATICS[key] && (!blacklist || !blacklist[key])) {
-                var descriptor = getOwnPropertyDescriptor(sourceComponent, key);
-                try { // Avoid failures from read-only properties
-                    defineProperty(targetComponent, key, descriptor);
-                } catch (e) {}
-            }
-        }
-
-        return targetComponent;
-    }
-
-    return targetComponent;
-}
-
-module.exports = hoistNonReactStatics;
-
-},{}],18:[function(require,module,exports){
-exports.read = function (buffer, offset, isLE, mLen, nBytes) {
-  var e, m
-  var eLen = (nBytes * 8) - mLen - 1
-  var eMax = (1 << eLen) - 1
-  var eBias = eMax >> 1
-  var nBits = -7
-  var i = isLE ? (nBytes - 1) : 0
-  var d = isLE ? -1 : 1
-  var s = buffer[offset + i]
-
-  i += d
-
-  e = s & ((1 << (-nBits)) - 1)
-  s >>= (-nBits)
-  nBits += eLen
-  for (; nBits > 0; e = (e * 256) + buffer[offset + i], i += d, nBits -= 8) {}
-
-  m = e & ((1 << (-nBits)) - 1)
-  e >>= (-nBits)
-  nBits += mLen
-  for (; nBits > 0; m = (m * 256) + buffer[offset + i], i += d, nBits -= 8) {}
-
-  if (e === 0) {
-    e = 1 - eBias
-  } else if (e === eMax) {
-    return m ? NaN : ((s ? -1 : 1) * Infinity)
-  } else {
-    m = m + Math.pow(2, mLen)
-    e = e - eBias
-  }
-  return (s ? -1 : 1) * m * Math.pow(2, e - mLen)
-}
-
-exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
-  var e, m, c
-  var eLen = (nBytes * 8) - mLen - 1
-  var eMax = (1 << eLen) - 1
-  var eBias = eMax >> 1
-  var rt = (mLen === 23 ? Math.pow(2, -24) - Math.pow(2, -77) : 0)
-  var i = isLE ? 0 : (nBytes - 1)
-  var d = isLE ? 1 : -1
-  var s = value < 0 || (value === 0 && 1 / value < 0) ? 1 : 0
-
-  value = Math.abs(value)
-
-  if (isNaN(value) || value === Infinity) {
-    m = isNaN(value) ? 1 : 0
-    e = eMax
-  } else {
-    e = Math.floor(Math.log(value) / Math.LN2)
-    if (value * (c = Math.pow(2, -e)) < 1) {
-      e--
-      c *= 2
-    }
-    if (e + eBias >= 1) {
-      value += rt / c
-    } else {
-      value += rt * Math.pow(2, 1 - eBias)
-    }
-    if (value * c >= 2) {
-      e++
-      c /= 2
-    }
-
-    if (e + eBias >= eMax) {
-      m = 0
-      e = eMax
-    } else if (e + eBias >= 1) {
-      m = ((value * c) - 1) * Math.pow(2, mLen)
-      e = e + eBias
-    } else {
-      m = value * Math.pow(2, eBias - 1) * Math.pow(2, mLen)
-      e = 0
-    }
-  }
-
-  for (; mLen >= 8; buffer[offset + i] = m & 0xff, i += d, m /= 256, mLen -= 8) {}
-
-  e = (e << mLen) | m
-  eLen += mLen
-  for (; eLen > 0; buffer[offset + i] = e & 0xff, i += d, e /= 256, eLen -= 8) {}
-
-  buffer[offset + i - d] |= s * 128
-}
-
-},{}],19:[function(require,module,exports){
-(function (process){
-/**
- * Copyright (c) 2013-present, Facebook, Inc.
- *
- * This source code is licensed under the MIT license found in the
- * LICENSE file in the root directory of this source tree.
- */
-
-'use strict';
-
-/**
- * Use invariant() to assert state which your program assumes to be true.
- *
- * Provide sprintf-style format (only %s is supported) and arguments
- * to provide information about what broke and what you were
- * expecting.
- *
- * The invariant message will be stripped in production, but the invariant
- * will remain to ensure logic does not differ in production.
- */
-
-var invariant = function(condition, format, a, b, c, d, e, f) {
-  if (process.env.NODE_ENV !== 'production') {
-    if (format === undefined) {
-      throw new Error('invariant requires an error message argument');
-    }
-  }
-
-  if (!condition) {
-    var error;
-    if (format === undefined) {
-      error = new Error(
-        'Minified exception occurred; use the non-minified dev environment ' +
-        'for the full error message and additional helpful warnings.'
-      );
-    } else {
-      var args = [a, b, c, d, e, f];
-      var argIndex = 0;
-      error = new Error(
-        format.replace(/%s/g, function() { return args[argIndex++]; })
-      );
-      error.name = 'Invariant Violation';
-    }
-
-    error.framesToPop = 1; // we don't care about invariant's own frame
-    throw error;
-  }
-};
-
-module.exports = invariant;
-
-}).call(this,require('_process'))
-},{"_process":27}],20:[function(require,module,exports){
-module.exports = Array.isArray || function (arr) {
-  return Object.prototype.toString.call(arr) == '[object Array]';
-};
-
-},{}],21:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v3.5.1
  * https://jquery.com/
@@ -16168,6 +10872,5302 @@ if ( typeof noGlobal === "undefined" ) {
 return jQuery;
 } );
 
+},{}],2:[function(require,module,exports){
+(function (global){
+'use strict';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _reactDom = require('react-dom');
+
+var _reactRouterDom = require('react-router-dom');
+
+var _history = require('history');
+
+var _mdToHtml = require('./mdToHtml');
+
+var _mdToHtml2 = _interopRequireDefault(_mdToHtml);
+
+var _index = require('./index.jsx');
+
+var _index2 = _interopRequireDefault(_index);
+
+var _main = require('./main.jsx');
+
+var _main2 = _interopRequireDefault(_main);
+
+var _search = require('./search.jsx');
+
+var _search2 = _interopRequireDefault(_search);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+global.hash = ' ';
+global.isMouseClickNav = false;
+global.isMouseScrollArticle = false;
+
+global.isLinkClicked = false;
+
+global.lastUrlBeforeSearch = '/';
+global.lastHistoryIndex = 0;
+global.lastAction = 'PUSH';
+
+global.readFile = function (fileName, callback) {
+  console.log("global.readFile...");
+  var xhr = new XMLHttpRequest();
+  xhr.open('GET', fileName);
+  xhr.onload = function () {
+    if (xhr.responseText != '') {
+      callback(xhr.responseText);
+    }
+  };
+  xhr.send();
+};
+
+var App = function (_React$Component) {
+  _inherits(App, _React$Component);
+
+  function App(props, context) {
+    _classCallCheck(this, App);
+
+    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props, context));
+
+    _this.state = {
+      init: false,
+      searchResult: [],
+      mismatch: false,
+      historyGO: 0
+    };
+    new QWebChannel(qt.webChannelTransport, _this.initQt.bind(_this));
+    return _this;
+  }
+
+  _createClass(App, [{
+    key: 'initQt',
+    value: function initQt(channel) {
+      var _this2 = this;
+
+      console.log("channel initqt.....");
+      channel.objects.i18n.getSentences(function (i18n) {
+        channel.objects.i18n.getLocale(function (lang) {
+          if (lang === 'en_US' || lang === 'zh_CN') {
+            global.lang = lang;
+          } else {
+            global.lang = 'en_US';
+          }
+        });
+        global.i18n = i18n;
+        global.qtObjects = channel.objects;
+
+        channel.objects.manual.getSystemManualDir(function (path) {
+          global.path = path;
+          _this2.setState({ init: true });
+        });
+        global.openWindow = global.qtObjects.manual.openExternalLink;
+        global.qtObjects.titleBar.setBackwardButtonActive(false);
+        global.qtObjects.titleBar.setForwardButtonActive(false);
+        global.qtObjects.titleBar.backwardButtonClicked.connect(function () {
+          console.log("----------backwardButtonClicked----------");
+          _this2.setState({ historyGO: _this2.state.historyGO - 1 });
+          console.log("==========backwardButtonClicked=========>");
+          _this2.context.router.history.goBack();
+          console.log("back history location: " + _this2.context.router.history.location.pathname);
+        });
+        global.qtObjects.titleBar.forwardButtonClicked.connect(function () {
+          console.log("----------forwardButtonClicked----------");
+          _this2.setState({ historyGO: _this2.state.historyGO + 1 });
+          console.log("==========forwardButtonClicked=========>");
+          _this2.context.router.history.goForward();
+          console.log("forward history location: " + _this2.context.router.history.location.pathname);
+        });
+        global.qtObjects.search.mismatch.connect(function () {
+          return _this2.setState({ mismatch: true });
+        });
+        global.qtObjects.search.onContentResult.connect(_this2.onContentResult.bind(_this2));
+        global.qtObjects.theme.getTheme(function (themeType) {
+          return _this2.themeChange(themeType);
+        });
+        global.qtObjects.theme.themeChange.connect(_this2.themeChange.bind(_this2));
+        global.qtObjects.settings.fontChangeRequested.connect(function (fontFamily, fontSize) {
+          console.log("fontChangeRequested: fontFamily:" + fontFamily + ",fontSize:" + fontSize);
+          console.log("fontSize/13.0:" + fontSize);
+          var HTMLGlobal = document.querySelector('html');
+          HTMLGlobal.style.fontFamily = fontFamily;
+          HTMLGlobal.style.fontSize = fontSize; //设置rem标准   设计图上默认是在14px字体上设计,所以默认1rem = 14px.
+          if (fontSize >= 18) {
+            document.documentElement.style.setProperty('--index-item-size', '170px');
+            document.documentElement.style.setProperty('--index-span-width', '140px');
+          } else {
+            document.documentElement.style.setProperty('--index-item-size', '160px');
+            document.documentElement.style.setProperty('--index-span-width', '130px');
+          }
+        });
+        console.log("finsh global.qtObjects = channel.objects...");
+        global.qtObjects.manual.finishChannel();
+      });
+    }
+  }, {
+    key: 'themeChange',
+    value: function themeChange(themeType) {
+      global.setTheme(themeType);
+    }
+  }, {
+    key: 'onContentResult',
+    value: function onContentResult(appName, titleList, idList, contentList) {
+      // console.log('搜索结果', appName, titleList, idList, contentList);
+      var searchResult = this.state.searchResult;
+
+      searchResult.push({
+        file: global.path + '/' + appName + '/' + global.lang + '/index.md',
+        idList: idList,
+        titleList: titleList,
+        contentList: contentList
+      });
+      this.setState({ searchResult: searchResult, mismatch: false });
+    }
+  }, {
+    key: 'getChildContext',
+    value: function getChildContext() {
+      var _state = this.state,
+          searchResult = _state.searchResult,
+          mismatch = _state.mismatch;
+
+      return { searchResult: searchResult, mismatch: mismatch };
+    }
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      console.log("componentWillReceiveProps", this.context.router.history);
+      if (this.context.router.history.action == 'PUSH') {
+        var entriesLen = this.context.router.history.entries.length;
+        //console.log("entriesLen" + entriesLen);
+        if (entriesLen > 1) {
+          var entry = this.context.router.history.entries[entriesLen - 1];
+          if (entry.pathname.toString().indexOf("/search/") != -1) {
+            //console.log(entry.pathname);
+            this.setState({ historyGO: entriesLen - 1 });
+            return;
+          }
+        }
+        this.setState({ historyGO: entriesLen - 1 });
+      }
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      var _this3 = this;
+
+      global.index = function () {
+        // this.context.router.history.push('/');
+      };
+      global.backHome = function () {
+        console.log("global.backHome()" + _this3.context.router.history.entries.length);
+        console.log("global.backHome()" + _this3.state.historyGO);
+        var goNum = _this3.state.historyGO;
+        _this3.setState({ historyGO: 0 });
+        console.log("global.backHome()" + goNum);
+
+        if (_this3.context.router.history.canGo(-1 * goNum)) {
+          _this3.context.router.history.go(-1 * goNum);
+          // this.context.router.history.go(0);
+        }
+      };
+
+      //打开某一个文件,并定位到具体hash
+      global.open = function (file) {
+        var hash = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
+        console.log("global.open()....file:" + file + " hash:" + hash);
+        //h0默认为应用名称，内容为空，所以当打开h0，将其变为h1概述的位置。
+        if (hash == 'h0') {
+          hash = 'h1';
+        }
+        file = encodeURIComponent(file);
+        hash = encodeURIComponent(hash);
+        global.hash = hash;
+        var url = '/open/' + file + '/' + hash;
+        console.log("global.open: " + url);
+        _this3.context.router.history.push(url);
+
+        console.log("router.history--->", _this3.context.router.history);
+
+        //通知qt对象,修改应用打开状态
+        global.qtObjects.manual.setApplicationState(file);
+      };
+
+      global.openTitle = function (file) {
+        var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
+        console.log("global linkTitle==> file:" + file + " title: " + title);
+        if (title !== '') {
+          var filePath = global.path + '/' + file + '/' + global.lang + '/index.md';
+          global.readFile(filePath, function (data) {
+            var _m2h = (0, _mdToHtml2.default)(filePath, data),
+                html = _m2h.html;
+
+            var d = document.createElement('div');
+            d.innerHTML = html;
+            var hashID = 'h0';
+            if (d.querySelector('[text="' + title + '"]')) {
+              hashID = d.querySelector('[text="' + title + '"]').id;
+            }
+            // console.log("file: "+ file + " hash: "+ hashID);
+            global.open(file, hashID);
+          });
+        } else {
+          global.open(file);
+        }
+      };
+
+      global.setHashWordColor = function (strRgb) {
+        document.documentElement.style.setProperty('--nav-hash-word-color', strRgb); //btnlist 改这行
+      };
+
+      global.setWordFontfamily = function (strFontFamily) {
+        document.documentElement.style.setProperty('--nav-world-font-family', strFontFamily); //btnlist 改这行
+      };
+
+      global.setTheme = function (themeType) {
+        console.log('主题切换', themeType);
+        if (navigator.language.toString().indexOf('en_') != -1) {
+          document.documentElement.style.setProperty('--span-line-height', '1.0rem');
+          document.documentElement.style.setProperty('--span-font-size', '0.9rem');
+        } else {
+          document.documentElement.style.setProperty('--span-line-height', '1.4rem');
+          document.documentElement.style.setProperty('--span-font-size', '1.03rem');
+        }
+        if ("DarkType" == themeType) {
+          console.log('DarkType');
+          document.documentElement.style.setProperty('--nav-hover-color', 'rgba(255,255,255,0.1)');
+          document.documentElement.style.setProperty('--body-background-color', '#252525');
+          document.documentElement.style.setProperty('--body-color-white2black', '#000000');
+          document.documentElement.style.setProperty('--app-word-color', '#C0C6D4');
+          document.documentElement.style.setProperty('--nav-background-color', '#282828');
+          document.documentElement.style.setProperty('--nav-h2-word-color', '#C0C6D4');
+          document.documentElement.style.setProperty('--nav-h3-word-color', '#C0C0C0');
+          //document.documentElement.style.setProperty(`--nav-hash-word-color`, '#0059D2');     //btnlist 改这行
+          document.documentElement.style.setProperty('--article-read-word-color', '#C0C6D4');
+          document.documentElement.style.setProperty('--article-read-h2-word-color', '#0082FA');
+          document.documentElement.style.setProperty('--article-table-text-color', '#6D7C88');
+          document.documentElement.style.setProperty('--article-table-border-color', 'rgba(96, 96, 96, 0.5)');
+          document.documentElement.style.setProperty('--article-table-cell-border-color', 'rgba(96, 96, 96, 0.1)');
+          document.documentElement.style.setProperty('--index-item-background-color', 'rgba(255,255,255,0.05)');
+          document.documentElement.style.setProperty('--index-item-hover-color', 'rgba(255,255,255,0.2)');
+          document.documentElement.style.setProperty('--index-item-span-word-color', '#C0C6D4');
+          document.documentElement.style.setProperty('--search-noresult-word-color', '#C0C6D4');
+          document.documentElement.style.setProperty('--search-button-word-color', '#C0C6D4');
+          document.documentElement.style.setProperty('--search-button-hover-word-color', '#FFFFFF');
+          document.documentElement.style.setProperty('--search-items-word-color', '#6D7C88');
+          document.documentElement.style.setProperty('--search-items-resultnum-word-color', '#6D7C88');
+          document.documentElement.style.setProperty('--search-item-background-color', 'rgba(255,255,255,0.05)');
+          document.documentElement.style.setProperty('--scrollbar-div-background-color', '#444444');
+          document.documentElement.style.setProperty('--scrollbar-div-hover-background-color', '#3D3D3D');
+          document.documentElement.style.setProperty('--scrollbar-div-select-background-color', '#303B69');
+          document.documentElement.style.setProperty('--index-h2-color', 'rgba(255,255,255,0.05)');
+          document.documentElement.style.setProperty('--search-button-background-color-start', '#484848');
+          document.documentElement.style.setProperty('--search-button-background-color-end', '#414141');
+          document.documentElement.style.setProperty('--search-button-hover-color-start', '#676767');
+          document.documentElement.style.setProperty('--search-button-hover-color-end', '#606060');
+          document.documentElement.style.setProperty('--search-WikiSearch-color', '#6D7C88');
+          document.documentElement.style.setProperty('--search-itemTitle-word-color', '#C0C6D4');
+          document.documentElement.style.setProperty('--search-context-word-color', '#6D7C88');
+        } else if ("LightType" == themeType) {
+          console.log('LightType');
+          document.documentElement.style.setProperty('--nav-hover-color', 'rgba(0,0,0,0.1)');
+          document.documentElement.style.setProperty('--body-background-color', '#F8F8F8');
+          document.documentElement.style.setProperty('--body-color-white2black', '#FFFFFF');
+          document.documentElement.style.setProperty('--app-word-color', '#414D68');
+          document.documentElement.style.setProperty('--nav-background-color', '#FFFFFF');
+          document.documentElement.style.setProperty('--nav-h2-word-color', '#001A2E');
+          document.documentElement.style.setProperty('--nav-h3-word-color', '#001A2E');
+          // document.documentElement.style.setProperty(`--nav-hash-word-color`, '#ca0c16');   //btn list 改这一行
+          document.documentElement.style.setProperty('--article-read-word-color', '#000000');
+          document.documentElement.style.setProperty('--article-read-h2-word-color', '#2CA7F8');
+          document.documentElement.style.setProperty('--article-table-text-color', '#606060');
+          document.documentElement.style.setProperty('--article-table-border-color', 'rgba(0, 0, 0, 0.1)');
+          document.documentElement.style.setProperty('--article-table-cell-border-color', 'rgba(0, 0, 0, 0.05)');
+          document.documentElement.style.setProperty('--index-item-background-color', '#FFFFFF');
+          document.documentElement.style.setProperty('--index-item-hover-color', 'rgba(0,0,0,0.05)');
+          document.documentElement.style.setProperty('--index-item-span-word-color', '#414D68');
+          document.documentElement.style.setProperty('--search-noresult-word-color', '#000000');
+          document.documentElement.style.setProperty('--search-button-word-color', '#414D68');
+          document.documentElement.style.setProperty('--search-button-hover-word-color', '#001B2E');
+          document.documentElement.style.setProperty('--search-items-word-color', '#000000');
+          document.documentElement.style.setProperty('--search-items-resultnum-word-color', '#8AA1B4');
+          document.documentElement.style.setProperty('--search-item-background-color', 'rgba(255,255,255,1)');
+          document.documentElement.style.setProperty('--scrollbar-div-background-color', 'rgba(83,96,118,0.4)');
+          document.documentElement.style.setProperty('--scrollbar-div-hover-background-color', 'rgba(83,96,118,0.5)');
+          document.documentElement.style.setProperty('--scrollbar-div-select-background-color', 'rgba(83,96,118,0.6)');
+          document.documentElement.style.setProperty('--index-h2-color', 'rgba(0, 0, 0, 0.1)');
+          document.documentElement.style.setProperty('--search-button-background-color-start', '#E6E6E6');
+          document.documentElement.style.setProperty('--search-button-background-color-end', '#E3E3E3');
+          document.documentElement.style.setProperty('--search-button-hover-color-start', '#CACACA');
+          document.documentElement.style.setProperty('--search-button-hover-color-end', '#C6C6C6');
+          document.documentElement.style.setProperty('--search-WikiSearch-color', '#7a7a7a');
+          document.documentElement.style.setProperty('--search-itemTitle-word-color', '#000000');
+          document.documentElement.style.setProperty('--search-context-word-color', '#000000');
+        } else {
+          console.log('Null');
+        }
+      };
+
+      var Base64 = {
+        encode: function encode(str) {
+          // first we use encodeURIComponent to get percent-encoded UTF-8,
+          // then we convert the percent encodings into raw bytes which
+          // can be fed into btoa.
+          return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function toSolidBytes(match, p1) {
+            return String.fromCharCode('0x' + p1);
+          }));
+        },
+        decode: function decode(str) {
+          // Going backwards: from bytestream, to percent-encoding, to original string.
+          return decodeURIComponent(atob(str).split('').map(function (c) {
+            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+          }).join(''));
+        }
+      };
+
+      global.openSearchPage = function (keyword) {
+        var decodeKeyword = Base64.decode(keyword);
+        console.log("decodeKeyword", decodeKeyword);
+        console.log("openSearchPage", _this3.context.router.history);
+        console.log('lastUrl:' + global.lastUrlBeforeSearch + ', lastHistoryIndex: ' + global.lastHistoryIndex);
+
+        var entriesLen = _this3.context.router.history.entries.length;
+        if ('POP' == global.lastAction && lastHistoryIndex > 0 && lastHistoryIndex < entriesLen - 1) {
+          _this3.context.router.history.entries.length = lastHistoryIndex;
+          _this3.context.router.history.length = lastHistoryIndex;
+          _this3.context.router.history.index = lastHistoryIndex - 1;
+
+          _this3.setState({ searchResult: [] });
+          _this3.context.router.history.push('/search/' + encodeURIComponent(decodeKeyword));
+
+          return;
+        }
+
+        entriesLen = _this3.context.router.history.entries.length;
+        if (entriesLen > 1) {
+          var entry = _this3.context.router.history.entries[entriesLen - 1];
+          var entryIndex = entry.pathname.toString().indexOf("/search/");
+          if (entryIndex != -1) {
+            _this3.context.router.history.entries.length = entriesLen - 1;
+            _this3.context.router.history.length = entriesLen - 1;
+            _this3.context.router.history.index = _this3.context.router.history.entries.length - 1;
+          }
+        }
+
+        _this3.setState({ searchResult: [] });
+        _this3.context.router.history.push('/search/' + encodeURIComponent(decodeKeyword));
+      };
+
+      this.context.router.history.listen(function (location, action) {
+        //console.log(`The current URL is ${location.pathname}${location.search}${location.hash}` );
+        //console.log(`The last navigation action was ${action}`);
+        //console.log("index:" + this.context.router.history.index);
+        global.lastUrlBeforeSearch = location.pathname;
+        global.lastHistoryIndex = _this3.context.router.history.index;
+        global.lastAction = action;
+      });
+
+      global.back = function () {
+        console.log("global.back()");
+        _this3.context.router.history.goBack();
+      };
+      this.componentDidUpdate();
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+      if (global.qtObjects) {
+        global.qtObjects.titleBar.setBackwardButtonActive(this.state.historyGO > 0);
+        global.qtObjects.titleBar.setForwardButtonActive(this.context.router.history.length - this.state.historyGO > 1);
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      return _react2.default.createElement(
+        'div',
+        null,
+        this.state.init && _react2.default.createElement(
+          _reactRouterDom.Switch,
+          null,
+          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _index2.default }),
+          _react2.default.createElement(_reactRouterDom.Route, { path: '/index', component: _index2.default }),
+          _react2.default.createElement(_reactRouterDom.Route, { path: '/open/:file/:hash?', component: _main2.default }),
+          _react2.default.createElement(_reactRouterDom.Route, { path: '/search/:keyword', component: _search2.default })
+        )
+      );
+    }
+  }]);
+
+  return App;
+}(_react2.default.Component);
+
+App.contextTypes = {
+  router: _propTypes2.default.object
+};
+App.childContextTypes = {
+  searchResult: _propTypes2.default.array,
+  mismatch: _propTypes2.default.bool
+};
+
+(0, _reactDom.render)(_react2.default.createElement(
+  _reactRouterDom.Router,
+  { history: (0, _history.createMemoryHistory)('/') },
+  _react2.default.createElement(App, null)
+), document.getElementById('app'));
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"./index.jsx":4,"./main.jsx":5,"./mdToHtml":6,"./search.jsx":9,"history":17,"prop-types":31,"react":76,"react-dom":45,"react-router-dom":61}],3:[function(require,module,exports){
+(function (global){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = require('react-dom');
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _smoothScrollIntoViewIfNeeded = require('smooth-scroll-into-view-if-needed');
+
+var _smoothScrollIntoViewIfNeeded2 = _interopRequireDefault(_smoothScrollIntoViewIfNeeded);
+
+var _mdToHtml = require('./mdToHtml');
+
+var _mdToHtml2 = _interopRequireDefault(_mdToHtml);
+
+var _scrollbar = require('./scrollbar.jsx');
+
+var _scrollbar2 = _interopRequireDefault(_scrollbar);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Article = function (_Component) {
+  _inherits(Article, _Component);
+
+  function Article(props) {
+    _classCallCheck(this, Article);
+
+    var _this = _possibleConstructorReturn(this, (Article.__proto__ || Object.getPrototypeOf(Article)).call(this, props));
+
+    _this.state = {
+      preview: null,
+      smoothScroll: false,
+      fillblank: null,
+      bIsTimerOut: true
+    };
+
+    var timerObj;
+    return _this;
+  }
+  //滚动到锚点
+
+
+  _createClass(Article, [{
+    key: 'scrollToHash',
+    value: function scrollToHash() {
+      var _this2 = this;
+
+      console.log("article scrollToHash ", this.hash);
+      var tempHash = this.hash;
+      var hashNode = document.getElementById(tempHash);
+
+      if (this.state.preview != null) {
+        this.setState({ preview: null });
+      }
+
+      if (hashNode) {
+        clearTimeout(this.timerObj);
+        this.setState({ smoothScroll: true });
+
+        this.timerObj = setTimeout(function () {
+          _this2.setState({ smoothScroll: false });
+        }, 800);
+
+        (0, _smoothScrollIntoViewIfNeeded2.default)(hashNode, { behavior: 'smooth', block: 'start' }).then(function () {
+
+          //scrollIntoView函数存在异步,如果tempHash != this.hash时,说明存在异步操作,直接return. 
+          if (tempHash != _this2.hash) return;
+
+          console.log("scrollIntoView finish..");
+          //find parent h3 title of h4 title
+          var hList = _reactDom2.default.findDOMNode(_this2).querySelectorAll('h2,h3,h4,h5');
+          var currH3Hash = '';
+          for (var i = 0; i < hList.length; i++) {
+            if (hList[i].tagName == 'H3') {
+              currH3Hash = hList[i].id;
+            }
+            if (tempHash == hList[i].id && (hList[i].tagName == 'H4' || hList[i].tagName == 'H5')) {
+              console.log("article: scroll hlist:" + hList[i].tagName + "," + hList[i].id);
+              console.log("currH3Hash:" + currH3Hash);
+              _this2.hash = currH3Hash;
+              _this2.props.setHash(currH3Hash);
+              _this2.props.setScroll(currH3Hash);
+              break;
+            }
+          }
+        });
+      } else {
+        this.props.setHash(this.props.hlist[0].id);
+      }
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+      var _this3 = this;
+
+      console.log("article componentDidUpdate");
+      if (this.hash != this.props.hash) {
+        this.hash = this.props.hash;
+        this.scrollToHash();
+      }
+      if (!this.load) {
+        var article = _reactDom2.default.findDOMNode(this);
+        var read = article.querySelector('#read');
+        read.focus();
+        var imgList = [].concat(_toConsumableArray(article.querySelectorAll('img')));
+        var loadCount = 0;
+        imgList.map(function (el) {
+          el.onload = function () {
+            loadCount++;
+            if (loadCount == imgList.length) {
+              // console.log('image loaded');
+              _this3.load = true;
+              _this3.scrollToHash();
+              var last = article.querySelector('#' + _this3.props.hlist[_this3.props.hlist.length - 1].id);
+              var fillblank = {
+                marginBottom: article.clientHeight - (read.clientHeight - last.offsetTop)
+              };
+              _this3.setState({
+                fillblank: fillblank
+              });
+            }
+          };
+          el.onerror = function () {
+            if (el.getAttribute('src') == el.dataset.src) {
+              el.onload();
+            } else {
+              el.src = el.dataset.src;
+            }
+          };
+        });
+      }
+    }
+  }, {
+    key: 'componentWillUpdate',
+    value: function componentWillUpdate() {
+      console.log("article componentWillUpdate");
+      var alink_arr = document.getElementsByTagName('a');
+      for (var i = 0; i < alink_arr.length; i++) {
+        alink_arr[i].onclick = function () {
+          global.isLinkClicked = true;
+        };
+      }
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      console.log("article componentDidMount");
+      this.componentDidUpdate();
+    }
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      console.log("article componentWillReceiveProps nextfile", nextProps.nextProps, ' prop.file:', this.props.file);
+      if (nextProps.file != this.props.file) {
+        this.hash = '';
+        this.load = false;
+      }
+    }
+  }, {
+    key: 'gethID',
+    value: function gethID(htext) {
+      var id = this.props.hlist[0].id;
+      console.log(this.props.hlist[0]);
+      var hlist = this.props.hlist.filter(function (h) {
+        return h.text == htext;
+      });
+      if (hlist.length > 0) {
+        id = hlist[0].id;
+      }
+      console.log(htext, id);
+      return id;
+    }
+  }, {
+    key: 'handleWheelScroll',
+    value: function handleWheelScroll(e) {
+      global.isMouseScrollArticle = true;
+    }
+  }, {
+    key: 'handleKeyDown',
+    value: function handleKeyDown(e) {
+      if (38 == e.keyCode || 40 == e.keyCode) {
+        global.isMouseScrollArticle = true;
+      }
+    }
+  }, {
+    key: 'handleKeyUp',
+    value: function handleKeyUp(e) {
+      if (38 == e.keyCode || 40 == e.keyCode) {
+        global.isMouseScrollArticle = true;
+      }
+    }
+
+    //滚动事件
+
+  }, {
+    key: 'scroll',
+    value: function scroll() {
+      console.log("article scroll");
+      if (!this.load) {
+        return;
+      }
+      if (this.state.smoothScroll) {
+        return;
+      }
+      if (this.state.preview != null) {
+        this.setState({ preview: null });
+      }
+      var hList = _reactDom2.default.findDOMNode(this).querySelectorAll('h2,h3');
+      var aritleView = this.refs.articleView;
+
+      var hash = hList[0].id;
+      for (var i = 0; i < hList.length; i++) {
+        //console.log("article: scroll hlist:" + hList[i]);
+        //console.log("article: scroll hlist offset top:" + hList[i].getBoundingClientRect().top);
+        var articleTop = Math.abs(aritleView.getBoundingClientRect().top);
+        //console.log(hList[i].id + "," + hList[i].nodeName + ", hList[" + i + "].offsetTop" + hList[i].offsetTop + ", articleTop" + articleTop);
+        var offsetY = 10;
+        if (hList[i].nodeName == 'H2') {
+          offsetY = 10;
+        } else if (hList[i].nodeName == 'H3') {
+          offsetY = 30;
+        }
+        if (hList[i].offsetTop - offsetY >= articleTop) {
+          //console.log("article: scroll hlist offset top:" + hList[i].offsetTop);
+          break;
+        }
+        hash = hList[i].id;
+      }
+      console.log("article: scroll this.hash:" + this.hash + "   hash:" + hash);
+      if (this.hash != hash) {
+        console.log('article: scroll hash update');
+        this.hash = hash;
+        this.props.setHash(hash);
+        if (global.isMouseScrollArticle) {
+          this.props.setScroll(hash);
+        }
+      }
+    }
+    //内部链接预览....暂时去除,修改为直接跳转
+    /* 
+     showPreview(appName, hash, rect) {
+       console.log("article showPreview");
+       let file = `${global.path}/${appName}/${global.lang}/index.md`;
+       global.readFile(file, data => {
+         let { html } = m2h(file, data);
+         let d = document.createElement('div');
+         d.innerHTML = html;
+         let hashDom = d.querySelector(`[text="${hash}"]`);
+         let DomList = [hashDom];
+         let nextDom = hashDom.nextElementSibling;
+         while (nextDom) {
+           if (nextDom.nodeName == hashDom.nodeName) {
+             break;
+           }
+           DomList.push(nextDom);
+           nextDom = nextDom.nextElementSibling;
+         }
+         d.innerHTML = '';
+         DomList.map(el => d.appendChild(el));
+         html = d.innerHTML;
+         let { top, left, right } = rect;
+         let style = {};
+         let tClass = 't_';
+          console.log("left-right:"+(left) + "  - "+ right);
+         //center
+         if (((right + left)/2 > (300 + 170)) && (((right + left)/2 + 300 < document.body.clientWidth))) {
+           style.left　=　(right + left)/2 - 300;
+           tClass += 'center_';
+         }
+         //right
+         else if (((right + left)/2  > (600 + 170)))
+         {
+           style.left　=　right - 600;
+           tClass += 'right_';
+         }
+         //left
+         else if ((right + left)/2 <= (300 + 170))
+         {
+           style.left　=　left;
+           tClass += 'left_';
+         }
+         //left
+         else {
+           style.left　= 170;
+           tClass += 'left_';
+           
+         }
+         if (top > document.body.clientHeight / 2) {
+           tClass += 'down';
+           style.top = top - 250 - 20;
+         } else {
+           tClass += 'up';
+           style.top = top + rect.height + 10;
+         }
+         this.setState({ preview: { html, style, tClass } });
+       });
+     }
+     */
+
+    //链接处理
+
+  }, {
+    key: 'click',
+    value: function click(e) {
+      console.log("article click");
+      if (this.state.preview != null) {
+        this.setState({ preview: null });
+      }
+      switch (e.target.nodeName) {
+        case 'IMG':
+          e.preventDefault();
+          var src = e.target.src;
+          if (src.indexOf('.svg') != -1) {
+            return;
+          }
+          console.log('imageViewer', src);
+          global.qtObjects.imageViewer.open(src);
+          return;
+        case 'A':
+          var dmanProtocol = 'dman://';
+          var hashProtocol = '#';
+          var httpProtocol = 'http';
+          var href = e.target.getAttribute('href');
+          console.log("href:" + href);
+          switch (0) {
+            case href.indexOf(hashProtocol):
+              e.preventDefault();
+              this.props.setHash(document.querySelector('[text="' + href.slice(1) + '"]').id);
+              return;
+            case href.indexOf(dmanProtocol):
+              e.preventDefault();
+
+              var _href$slice$split = href.slice(dmanProtocol.length + 1).split('#'),
+                  _href$slice$split2 = _slicedToArray(_href$slice$split, 2),
+                  appName = _href$slice$split2[0],
+                  hash = _href$slice$split2[1];
+              // const rect = e.target.getBoundingClientRect();
+              // this.showPreview(appName, hash, rect);
+              // this.showPreviewTmp(appName,hash);
+
+
+              global.openTitle(appName, hash);
+              return;
+            case href.indexOf(httpProtocol):
+              e.preventDefault();
+              global.qtObjects.imageViewer.openHttpUrl(href);
+              return;
+          }
+      }
+    }
+
+    //右键菜单事件
+
+  }, {
+    key: 'contentMenu',
+    value: function contentMenu(e) {
+      switch (e.target.nodeName) {
+        //当前为图片或者链接时,右键清除选中状态.
+        //当前为图片
+        case 'IMG':
+          e.preventDefault();
+          document.getSelection().empty();
+          return;
+        //当前为链接
+        case 'A':
+          e.preventDefault();
+          document.getSelection().empty();
+          return;
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this4 = this;
+
+      console.log("article render...");
+      return _react2.default.createElement(
+        'div',
+        { id: 'article' },
+        _react2.default.createElement(
+          'div',
+          { id: 'article_bg' },
+          _react2.default.createElement(
+            _scrollbar2.default,
+            { onScroll: this.scroll.bind(this),
+              onWheel: function onWheel(e) {
+                return _this4.handleWheelScroll(e);
+              },
+              onKeyUp: function onKeyUp(e) {
+                return _this4.handleKeyUp(e);
+              },
+              onKeyDown: function onKeyDown(e) {
+                return _this4.handleKeyDown(e);
+              } },
+            _react2.default.createElement('div', {
+              id: 'read',
+              ref: 'articleView',
+              className: 'read',
+              tabIndex: '-1',
+              dangerouslySetInnerHTML: { __html: this.props.html },
+              style: this.state.fillblank,
+              onClick: this.click.bind(this),
+              onContextMenu: this.contentMenu.bind(this)
+            }),
+            this.state.preview != null && _react2.default.createElement(
+              'div',
+              {
+                style: this.state.preview.style,
+                className: this.state.preview.tClass,
+                id: 'preview'
+              },
+              _react2.default.createElement(
+                'div',
+                { id: 'view' },
+                _react2.default.createElement(
+                  _scrollbar2.default,
+                  null,
+                  _react2.default.createElement('div', {
+                    className: 'read',
+                    dangerouslySetInnerHTML: {
+                      __html: this.state.preview.html
+                    }
+                  })
+                )
+              )
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Article;
+}(_react.Component);
+
+exports.default = Article;
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"./mdToHtml":6,"./scrollbar.jsx":8,"react":76,"react-dom":45,"smooth-scroll-into-view-if-needed":85}],4:[function(require,module,exports){
+(function (global){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = require('react-router-dom');
+
+var _reactDom = require('react-dom');
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _scrollbar = require('./scrollbar.jsx');
+
+var _scrollbar2 = _interopRequireDefault(_scrollbar);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Item = function (_Component) {
+  _inherits(Item, _Component);
+
+  function Item(props) {
+    _classCallCheck(this, Item);
+
+    var _this = _possibleConstructorReturn(this, (Item.__proto__ || Object.getPrototypeOf(Item)).call(this, props));
+
+    _this.state = {
+      name: '',
+      title: '',
+      logo: '',
+      show: false
+    };
+    var path = global.path + '/' + _this.props.appName + '/' + global.lang + '/';
+    var file = path + 'index.md';
+    global.readFile(file, function (data) {
+      var _data$substr$split = data.substr('# '.length, data.indexOf('\n')).split('|'),
+          _data$substr$split2 = _slicedToArray(_data$substr$split, 2),
+          title = _data$substr$split2[0],
+          logo = _data$substr$split2[1];
+
+      logo = '' + path + logo;
+
+      _this.setState({ title: title, logo: logo, file: file, show: true });
+    });
+    return _this;
+  }
+
+  _createClass(Item, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var contentSpan = null;
+      if (this.props.isOpened) {
+        contentSpan = _react2.default.createElement(
+          'span',
+          { className: 'content', lang: global.lang },
+          this.state.title
+        );
+      } else {
+        contentSpan = _react2.default.createElement(
+          'span',
+          { className: 'content', lang: global.lang },
+          _react2.default.createElement('span', { className: 'tag' }),
+          this.state.title
+        );
+      }
+
+      return this.state.show && _react2.default.createElement(
+        'div',
+        {
+          draggable: 'false',
+          tabIndex: '1',
+          className: 'item'
+          //this is old
+          // onClick={() => global.open(this.state.file)}
+          , onClick: function onClick() {
+            return global.open(_this2.props.appName);
+          }
+          // onMouseEnter={e => e.target.focus()}
+          , onKeyPress: function onKeyPress(e) {
+            if (e.key === 'Enter') {
+              // global.open(this.state.file);
+              global.open(_this2.props.appName);
+            }
+          }
+        },
+        _react2.default.createElement('img', {
+          draggable: 'false',
+          src: this.state.logo,
+          alt: this.props.appName
+        }),
+        _react2.default.createElement('br', null),
+        contentSpan
+      );
+    }
+  }]);
+
+  return Item;
+}(_react.Component);
+
+var Index = function (_Component2) {
+  _inherits(Index, _Component2);
+
+  function Index(props) {
+    _classCallCheck(this, Index);
+
+    var _this3 = _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).call(this, props));
+
+    var sequence = ['deepin-browser', 'dde-file-manager', 'deepin-app-store', 'sogouimebs', 'deepin-mail', 'deepin-contacts', 'deepin-screen-recorder', 'deepin-image-viewer', 'deepin-album', 'deepin-music', 'deepin-movie', 'deepin-draw', 'dde-calendar', 'deepin-voice-note', 'deepin-reader', 'deepin-editor', 'deepin-compressor', 'dde-printer', 'deepin-terminal',
+    // '安全中心',
+    'downloader', 'deepin-deb-installer', 'deepin-font-manager', 'deepin-calculator', 'deepin-graphics-driver-manager', 'deepin-devicemanager', 'deepin-system-monitor', 'deepin-boot-maker', 'deepin-log-viewer', 'deepin-repair-tools', 'deepin-clone', 'deepin-cloud-print', 'deepin-cloud-scan', 'deepin-voice-recorder', 'deepin-picker', 'deepin-remote-assistance', 'deepin-presentation-assistant', 'chineseime', 'deepin-defender', 'uos-service-support'];
+    _this3.state = {
+      sequence: sequence,
+      appList: [],
+      openedAppList: []
+    };
+    global.qtObjects.manual.getSystemManualList(function (appList) {
+      return _this3.setState({ appList: appList });
+    });
+    global.qtObjects.manual.getUsedAppList(function (openedAppList) {
+      console.log("openlist :" + openedAppList);
+      _this3.setState({ openedAppList: openedAppList });
+    });
+    return _this3;
+  }
+
+  _createClass(Index, [{
+    key: 'bIsBeOpen',
+    value: function bIsBeOpen(app) {
+      if (this.state.openedAppList.indexOf(app) != -1) {
+        return true;
+      }
+      return false;
+    }
+  }, {
+    key: 'shouldComponentUpdate',
+    value: function shouldComponentUpdate(nextProps, nextState) {
+      if (nextState.appList.toString() == this.state.appList.toString())
+        //  && nextState.openedAppList.toString == this.state.openedAppList.toString()) 
+        {
+          return true;
+        }
+      return false;
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+      _reactDom2.default.findDOMNode(this).querySelector('#index').focus();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this4 = this;
+
+      var sysSoft = ['dde'].filter(function (appName) {
+        return _this4.state.appList.indexOf(appName) != -1;
+      });
+      // let appSoft = this.state.sequence.filter(
+      //   appName => this.state.appList.indexOf(appName) != -1
+      // );
+      // let otherSoft = this.state.appList.filter(
+      //   appName => this.state.sequence.indexOf(appName) == -1 &&
+      //     sysSoft.indexOf(appName) == -1
+      // );
+
+      var appSoft = this.state.appList;
+      var index = appSoft.indexOf("dde");
+      appSoft.splice(index, 1);
+      var otherSoft = [""];
+
+      return _react2.default.createElement(
+        _scrollbar2.default,
+        null,
+        _react2.default.createElement(
+          'div',
+          { id: 'index', tabIndex: '-1' },
+          _react2.default.createElement(
+            'h2',
+            null,
+            global.i18n['System']
+          ),
+          sysSoft.length > 0 && _react2.default.createElement(
+            'div',
+            { id: 'forMargin' },
+            _react2.default.createElement(
+              'div',
+              { className: 'items' },
+              sysSoft.map(function (appName) {
+                return _react2.default.createElement(Item, { key: appName, appName: appName, isOpened: _this4.bIsBeOpen(appName) });
+              })
+            )
+          ),
+          _react2.default.createElement(
+            'h2',
+            null,
+            global.i18n['Applications']
+          ),
+          _react2.default.createElement(
+            'div',
+            { id: 'forMargin' },
+            _react2.default.createElement(
+              'div',
+              { className: 'items' },
+              appSoft.map(function (appName) {
+                return _react2.default.createElement(Item, { key: appName, appName: appName, isOpened: _this4.bIsBeOpen(appName) });
+              }),
+              otherSoft.map(function (appName) {
+                return _react2.default.createElement(Item, { key: appName, appName: appName, isOpened: _this4.bIsBeOpen(appName) });
+              }),
+              Array.from(new Array(10), function (val, index) {
+                return index;
+              }).map(function (i) {
+                return _react2.default.createElement('a', { key: i, className: 'empty' });
+              })
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Index;
+}(_react.Component);
+
+exports.default = Index;
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"./scrollbar.jsx":8,"react":76,"react-dom":45,"react-router-dom":61}],5:[function(require,module,exports){
+(function (global){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _jquery = require('jquery');
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+var _nav = require('./nav.jsx');
+
+var _nav2 = _interopRequireDefault(_nav);
+
+var _article = require('./article.jsx');
+
+var _article2 = _interopRequireDefault(_article);
+
+var _mdToHtml = require('./mdToHtml.js');
+
+var _mdToHtml2 = _interopRequireDefault(_mdToHtml);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Main = function (_Component) {
+  _inherits(Main, _Component);
+
+  function Main(props) {
+    _classCallCheck(this, Main);
+
+    var _this = _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this, props));
+
+    _this.state = {
+      init: false,
+      bTest: true
+    };
+    var _this$props$match$par = _this.props.match.params,
+        file = _this$props$match$par.file,
+        hash = _this$props$match$par.hash;
+
+    _this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null);
+    var showFloatTimer = null;
+    return _this;
+  }
+
+  _createClass(Main, [{
+    key: 'init',
+    value: function init(file, hash) {
+      var _this2 = this;
+
+      console.log("main init==>file:", file, " hash:", hash);
+      var filePath = file;
+      if (filePath.indexOf('/') == -1) {
+        filePath = global.path + '/' + file + '/' + global.lang + '/index.md';
+      }
+
+      global.readFile(filePath, function (data) {
+        console.log("main init===>readfile finish...");
+
+        var _m2h = (0, _mdToHtml2.default)(filePath, data),
+            html = _m2h.html,
+            hlist = _m2h.hlist;
+
+        _this2.setState({
+          file: file,
+          html: html,
+          hlist: hlist,
+          init: true,
+          hash: hash ? hash : hlist[0].id
+        });
+      });
+    }
+  }, {
+    key: 'setHash',
+    value: function setHash(hash) {
+      console.log("main setHash: " + hash);
+      if (global.isLinkClicked) {
+        console.log("main --setHash");
+        global.hash = hash;
+        global.isLinkClicked = false;
+      }
+      console.log("main*********setHash");
+      this.setState({ hash: hash });
+    }
+
+    // setScrollTitle(hash){
+    //   console.log("main setScrollTitle: " + hash);
+    //   setTimeout(() => {
+    //     global.hash = hash;
+    //     global.oldHash = hash;
+    //     global.isMouseClickNav = true;
+    //     global.isMouseScrollArticle = false;
+    //     this.setState({ hash });
+    //   },800);
+    // }
+
+  }, {
+    key: 'setScroll',
+    value: function setScroll(hash) {
+      console.log("main setScroll:" + hash);
+      global.hash = hash;
+      this.setState({ hash: hash });
+    }
+
+    //处理Nav类的Over Out Move事件,自定义Title框
+
+  }, {
+    key: 'handleNavOver',
+    value: function handleNavOver(e) {
+      var value = e.currentTarget.innerHTML;
+      clearTimeout(this.showFloatTimer);
+      this.showFloatTimer = setTimeout(function () {
+        (0, _jquery2.default)('.tooltip-wp').attr('data-title', value); //动态设置data-title属性
+        (0, _jquery2.default)('.tooltip-wp').fadeIn(200); //浮动框淡出
+      }, 300);
+    }
+  }, {
+    key: 'handleNavOut',
+    value: function handleNavOut(e) {
+      clearTimeout(this.showFloatTimer);
+      (0, _jquery2.default)('.tooltip-wp').hide();
+    }
+  }, {
+    key: 'handleNavMove',
+    value: function handleNavMove(e) {
+      var xPage = e.pageX;
+      var yPage = e.pageY + 20;
+      setTimeout(function () {
+        (0, _jquery2.default)('.tooltip-wp').css({
+          'top': yPage + 'px',
+          'left': xPage + 'px'
+        });
+      }, 150);
+    }
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      var _nextProps$match$para = nextProps.match.params,
+          file = _nextProps$match$para.file,
+          hash = _nextProps$match$para.hash;
+
+      console.log("main componentWillReceivePropss: " + file + " " + hash + "  this.file:" + this.state.file);
+      //仅当页面文件发生改变时(文件改变或hash值发生改变),才刷新页面.
+      if (file != this.state.file || file == this.state.file && hash != this.state.hash) {
+        this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null);
+      }
+    }
+  }, {
+    key: 'componentWillUpdate',
+    value: function componentWillUpdate() {
+      console.log("main componentWillUpdate..");
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      global.hash = '';
+      global.isMouseClickNav = false;
+      global.isMouseScrollArticle = false;
+      global.isLinkClicked = false;
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this3 = this;
+
+      console.log("main render....hash:", this.state.hash);
+      console.log("main render....hList:", this.state.hlist);
+      return this.state.init && _react2.default.createElement(
+        'div',
+        { id: 'main' },
+        _react2.default.createElement(_nav2.default, {
+          hlist: this.state.hlist,
+          hash: this.state.hash,
+          setHash: this.setHash.bind(this),
+          onNavOver: function onNavOver(e) {
+            return _this3.handleNavOver(e);
+          },
+          onNavOut: function onNavOut(e) {
+            return _this3.handleNavOut(e);
+          },
+          onNavMove: function onNavMove(e) {
+            return _this3.handleNavMove(e);
+          }
+        }),
+        _react2.default.createElement(_article2.default, {
+          file: this.props.match.params.file,
+          hlist: this.state.hlist,
+          html: this.state.html,
+          hash: this.state.hash,
+          setHash: this.setHash.bind(this),
+          setScroll: this.setScroll.bind(this)
+        }),
+        _react2.default.createElement(
+          'div',
+          { className: 'support-div', onClick: function onClick() {
+              console.log("support click...");
+            } },
+          _react2.default.createElement('img', { className: 'support', src: './pic.svg' })
+        ),
+        _react2.default.createElement('div', { className: 'tooltip-wp' })
+      );
+    }
+  }]);
+
+  return Main;
+}(_react.Component);
+
+exports.default = Main;
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"./article.jsx":3,"./mdToHtml.js":6,"./nav.jsx":7,"jquery":1,"react":76}],6:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+exports.default = function (mdFile, mdData) {
+  var hlist = [];
+  var info = {};
+  var html = '';
+
+  var path = mdFile.slice(0, mdFile.lastIndexOf('/') + 1);
+  var renderer = new _marked2.default.Renderer();
+  var count = 0;
+  renderer.heading = function (text, level) {
+    var id = 'h' + count;
+    count++;
+    if (level == 1) {
+      var _text$split = text.split('|'),
+          _text$split2 = _slicedToArray(_text$split, 2),
+          title = _text$split2[0],
+          logo = _text$split2[1];
+
+      logo = path + logo;
+      console.log(logo);
+      info = { title: title, logo: logo };
+      return '';
+    }
+    if (level == 2) {
+      text = text.split('|')[0];
+    }
+    var type = 'h' + level;
+    if (level == 2 || level == 3) {
+      hlist.push({ id: id, text: text, type: type });
+    }
+    return '<' + type + ' id="' + id + '" text="' + text + '">' + text + '</' + type + '>\n';
+  };
+  console.log(path);
+  renderer.image = function (href, title, text) {
+    var hrefX2 = href;
+    if (devicePixelRatio >= 1.5 && href.indexOf('.svg') == -1) {
+      var _path = href.split('.');
+      var ext = _path.pop();
+      hrefX2 = _path.join('.') + 'x2.' + ext;
+    }
+    return '<img src="' + hrefX2 + '" data-src="' + href + '" alt="' + text + '" />';
+  };
+  html = (0, _marked2.default)(mdData, { renderer: renderer }).replace(/src="/g, '$&' + path);
+  return { html: html, hlist: hlist, info: info };
+};
+
+var _marked = require('marked');
+
+var _marked2 = _interopRequireDefault(_marked);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+},{"marked":22}],7:[function(require,module,exports){
+(function (global){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = require('react-dom');
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _reactRouterDom = require('react-router-dom');
+
+var _scrollbar = require('./scrollbar.jsx');
+
+var _scrollbar2 = _interopRequireDefault(_scrollbar);
+
+var _buffer = require('buffer');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Nav = function (_Component) {
+  _inherits(Nav, _Component);
+
+  function Nav() {
+    _classCallCheck(this, Nav);
+
+    return _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).apply(this, arguments));
+  }
+
+  _createClass(Nav, [{
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      document.getElementById('article').style.marginLeft = _reactDom2.default.findDOMNode(this).clientWidth;
+      this.componentDidUpdate();
+    }
+  }, {
+    key: 'shouldComponentUpdate',
+    value: function shouldComponentUpdate(newProps, newState) {
+      console.log("nav shouldComponentUpdate newProps:" + newProps.hash + " global hash:" + global.hash);
+
+      if ('' == global.hash) {
+        return true;
+      }
+
+      if ('POP' == global.lastAction) {
+        return true;
+      }
+      //why........
+      if (newProps.hash != global.hash) {
+        return false;
+      }
+      return true;
+    }
+  }, {
+    key: 'componentWillUpdate',
+    value: function componentWillUpdate() {
+      console.log("nav componentWillUpdate");
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+      console.log("nav componentDidUpdate");
+      var hashDOM = _reactDom2.default.findDOMNode(this).querySelector('.hash');
+      if (hashDOM == null) {
+        return;
+      }
+      if (hashDOM.getAttribute('cid') == this.props.hlist[0].id) {
+        document.getElementById('backHome').scrollIntoViewIfNeeded(false);
+        return;
+      }
+      hashDOM.scrollIntoViewIfNeeded(false);
+    }
+  }, {
+    key: 'click',
+    value: function click(e) {
+      var cid = e.target.getAttribute('cid');
+      if (cid) {
+        console.log('搜索结果', cid);
+        global.hash = cid;
+        global.isMouseClickNav = true;
+        global.isMouseScrollArticle = false;
+        this.props.setHash(cid);
+      }
+    }
+  }, {
+    key: 'wheel',
+    value: function wheel(e) {
+      var nav = _reactDom2.default.findDOMNode(this);
+      if (e.deltaY > 0) {
+        if (e.deltaY > 0 && nav.scrollHeight == nav.clientHeight + nav.scrollTop) {
+          e.preventDefault();
+        } else if (e.deltaY < 0 && nav.scrollTop == 0) {
+          e.preventDefault();
+        }
+      }
+    }
+
+    //右键菜单事件,去除选中状态
+
+  }, {
+    key: 'contentMenu',
+    value: function contentMenu(e) {
+      e.preventDefault();
+      document.getSelection().empty();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      console.log("nav render...");
+      var max = this.props.hlist[0];
+      this.props.hlist.map(function (h) {
+        if (max.text.length < h.text.length) {
+          max = h;
+        }
+      });
+      // console.log(max, max.text.length);
+      // let maxWidth = 0;
+      // if (global.lang == 'zh_CN') {
+      //   maxWidth = max.text.length * 16;
+      // } else {
+      //   maxWidth = max.text.length / 1.8;
+      // }
+      var maxWidth = max.text.length;
+      var c = 0;
+      if (global.lang === 'zh_CN') {
+        if (maxWidth <= 6) {
+          c = 3;
+        } else {
+          c = 1;
+        }
+        maxWidth *= 18;
+      } else {
+        if (maxWidth <= 20) {
+          c = 2;
+        }
+        maxWidth *= 9;
+      }
+      return _react2.default.createElement(
+        'div',
+        {
+          id: 'nav',
+          lang: global.lang,
+          onClick: function onClick(e) {
+            return _this2.click(e);
+          },
+          onContextMenu: this.contentMenu.bind(this),
+          style: {
+            width: 'calc(' + maxWidth + 'px + ' + c + 'rem'
+          }
+        },
+        _react2.default.createElement(
+          _scrollbar2.default,
+          null,
+          _react2.default.createElement(
+            'div',
+            {
+              type: 'h2',
+              id: 'backHome',
+              className: 'h',
+              onClick: function onClick() {
+                return global.backHome();
+              }
+            },
+            global.i18n['ToIndexPage']
+          ),
+          this.props.hlist.map(function (h) {
+            return _react2.default.createElement(
+              'div',
+              {
+                key: h.id,
+                cid: h.id,
+                type: h.type,
+                className: _this2.props.hash == h.id ? 'h hash' : 'h',
+                onMouseOver: function onMouseOver(e) {
+                  return _this2.props.onNavOver(e);
+                },
+                onMouseOut: function onMouseOut(e) {
+                  return _this2.props.onNavOut(e);
+                },
+                onMouseMove: function onMouseMove(e) {
+                  return _this2.props.onNavMove(e);
+                }
+              },
+              h.text
+            );
+          })
+        )
+      );
+    }
+  }]);
+
+  return Nav;
+}(_react.Component);
+
+exports.default = Nav;
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"./scrollbar.jsx":8,"buffer":12,"react":76,"react-dom":45,"react-router-dom":61}],8:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+exports.default = function (props) {
+  return _react2.default.createElement(
+    _reactCustomScrollbars.Scrollbars,
+    _extends({}, props, { className: 'scrollbar', autoHide: true, renderTrackHorizontal: renderScrollBarTrackHorizontal, autoHideTimeout: 800 }),
+    props.children
+  );
+};
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactCustomScrollbars = require('react-custom-scrollbars');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function renderScrollBarTrackHorizontal(props) {
+  return _react2.default.createElement('span', null);
+}
+
+},{"react":76,"react-custom-scrollbars":37}],9:[function(require,module,exports){
+(function (global){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = require('react-dom');
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _scrollbar = require('./scrollbar.jsx');
+
+var _scrollbar2 = _interopRequireDefault(_scrollbar);
+
+var _reactRouterDom = require('react-router-dom');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Items = function (_Component) {
+  _inherits(Items, _Component);
+
+  function Items(props) {
+    _classCallCheck(this, Items);
+
+    var _this = _possibleConstructorReturn(this, (Items.__proto__ || Object.getPrototypeOf(Items)).call(this, props));
+
+    _this.state = {
+      title: '',
+      logo: '',
+      show: false
+    };
+    var path = props.file.slice(0, props.file.lastIndexOf('/') + 1);
+    global.readFile(props.file, function (data) {
+      var _data$substr$split = data.substr('# '.length, data.indexOf('\n')).split('|'),
+          _data$substr$split2 = _slicedToArray(_data$substr$split, 2),
+          title = _data$substr$split2[0],
+          logo = _data$substr$split2[1];
+
+      logo = '' + path + logo;
+      _this.setState({ title: title, logo: logo, show: true });
+    });
+    return _this;
+  }
+
+  _createClass(Items, [{
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var resultList = [];
+      var re = new RegExp(this.props.keyword, 'gi');
+
+      var _loop = function _loop(i) {
+        var c = _react2.default.createElement(
+          'div',
+          { className: 'item', key: i, onClick: function onClick() {
+              return global.open(_this2.props.file, _this2.props.idList[i]);
+            } },
+          _react2.default.createElement('div', {
+            className: 'itemTitle',
+            dangerouslySetInnerHTML: {
+              __html: _this2.props.titleList[i].replace(re, "<span class='highlight'>$&</span>")
+            }
+          }),
+          _react2.default.createElement('div', {
+            className: 'context',
+            dangerouslySetInnerHTML: {
+              __html: _this2.props.contentList[i]
+            }
+          })
+        );
+        resultList.push(c);
+      };
+
+      for (var i = 0; i < this.props.idList.length; i++) {
+        _loop(i);
+      }
+      var sresultnum;
+      if (resultList.length > 1) sresultnum = resultList.length + global.i18n['ResultNumSuffixs'];else sresultnum = resultList.length + global.i18n['ResultNumSuffix'];
+      return this.state.show && _react2.default.createElement(
+        'div',
+        { className: 'items' },
+        _react2.default.createElement(
+          'div',
+          { className: 'itemsTitle', onClick: function onClick() {
+              return global.open(_this2.props.file);
+            } },
+          _react2.default.createElement('img', { src: this.state.logo }),
+          _react2.default.createElement(
+            'span',
+            { className: 'resulttitle' },
+            this.state.title
+          ),
+          _react2.default.createElement(
+            'span',
+            { className: 'resultnum' },
+            sresultnum
+          )
+        ),
+        resultList
+      );
+    }
+  }]);
+
+  return Items;
+}(_react.Component);
+
+function Mismatch(props) {
+  return _react2.default.createElement(
+    'div',
+    { id: 'mismatch' },
+    _react2.default.createElement(
+      'div',
+      null,
+      _react2.default.createElement(
+        'div',
+        { id: 'NoResult' },
+        global.i18n['NoResult'].replace('%1', decodeURIComponent(props.keyword))
+      )
+    )
+  );
+}
+
+var SearchPage = function (_Component2) {
+  _inherits(SearchPage, _Component2);
+
+  function SearchPage(props, context) {
+    _classCallCheck(this, SearchPage);
+
+    return _possibleConstructorReturn(this, (SearchPage.__proto__ || Object.getPrototypeOf(SearchPage)).call(this, props, context));
+  }
+
+  _createClass(SearchPage, [{
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+      _reactDom2.default.findDOMNode(this).querySelector('#search').focus();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this4 = this;
+
+      var c = null;
+      if (this.context.mismatch) {
+        c = _react2.default.createElement(Mismatch, { keyword: this.props.match.params.keyword });
+      } else {
+        c = this.context.searchResult.map(function (result) {
+          return _react2.default.createElement(Items, {
+            key: result.file,
+            file: result.file,
+            idList: result.idList,
+            titleList: result.titleList,
+            contentList: result.contentList,
+            keyword: _this4.props.match.params.keyword
+          });
+        });
+      }
+      return _react2.default.createElement(
+        _scrollbar2.default,
+        null,
+        _react2.default.createElement(
+          'div',
+          {
+            id: 'search',
+            tabIndex: '-1'
+            // onMouseOver={e => document.getElementById('search').focus()}
+          },
+          c
+        )
+      );
+    }
+  }]);
+
+  return SearchPage;
+}(_react.Component);
+
+exports.default = SearchPage;
+
+
+SearchPage.contextTypes = {
+  searchResult: _propTypes2.default.array,
+  mismatch: _propTypes2.default.bool
+};
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"./scrollbar.jsx":8,"prop-types":31,"react":76,"react-dom":45,"react-router-dom":61}],10:[function(require,module,exports){
+/* The following list is defined in React's core */
+var IS_UNITLESS = {
+  animationIterationCount: true,
+  boxFlex: true,
+  boxFlexGroup: true,
+  boxOrdinalGroup: true,
+  columnCount: true,
+  flex: true,
+  flexGrow: true,
+  flexPositive: true,
+  flexShrink: true,
+  flexNegative: true,
+  flexOrder: true,
+  gridRow: true,
+  gridColumn: true,
+  fontWeight: true,
+  lineClamp: true,
+  lineHeight: true,
+  opacity: true,
+  order: true,
+  orphans: true,
+  tabSize: true,
+  widows: true,
+  zIndex: true,
+  zoom: true,
+
+  // SVG-related properties
+  fillOpacity: true,
+  stopOpacity: true,
+  strokeDashoffset: true,
+  strokeOpacity: true,
+  strokeWidth: true
+};
+
+module.exports = function(name, value) {
+  if(typeof value === 'number' && !IS_UNITLESS[ name ]) {
+    return value + 'px';
+  } else {
+    return value;
+  }
+};
+},{}],11:[function(require,module,exports){
+'use strict'
+
+exports.byteLength = byteLength
+exports.toByteArray = toByteArray
+exports.fromByteArray = fromByteArray
+
+var lookup = []
+var revLookup = []
+var Arr = typeof Uint8Array !== 'undefined' ? Uint8Array : Array
+
+var code = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/'
+for (var i = 0, len = code.length; i < len; ++i) {
+  lookup[i] = code[i]
+  revLookup[code.charCodeAt(i)] = i
+}
+
+// Support decoding URL-safe base64 strings, as Node.js does.
+// See: https://en.wikipedia.org/wiki/Base64#URL_applications
+revLookup['-'.charCodeAt(0)] = 62
+revLookup['_'.charCodeAt(0)] = 63
+
+function getLens (b64) {
+  var len = b64.length
+
+  if (len % 4 > 0) {
+    throw new Error('Invalid string. Length must be a multiple of 4')
+  }
+
+  // Trim off extra bytes after placeholder bytes are found
+  // See: https://github.com/beatgammit/base64-js/issues/42
+  var validLen = b64.indexOf('=')
+  if (validLen === -1) validLen = len
+
+  var placeHoldersLen = validLen === len
+    ? 0
+    : 4 - (validLen % 4)
+
+  return [validLen, placeHoldersLen]
+}
+
+// base64 is 4/3 + up to two characters of the original data
+function byteLength (b64) {
+  var lens = getLens(b64)
+  var validLen = lens[0]
+  var placeHoldersLen = lens[1]
+  return ((validLen + placeHoldersLen) * 3 / 4) - placeHoldersLen
+}
+
+function _byteLength (b64, validLen, placeHoldersLen) {
+  return ((validLen + placeHoldersLen) * 3 / 4) - placeHoldersLen
+}
+
+function toByteArray (b64) {
+  var tmp
+  var lens = getLens(b64)
+  var validLen = lens[0]
+  var placeHoldersLen = lens[1]
+
+  var arr = new Arr(_byteLength(b64, validLen, placeHoldersLen))
+
+  var curByte = 0
+
+  // if there are placeholders, only get up to the last complete 4 chars
+  var len = placeHoldersLen > 0
+    ? validLen - 4
+    : validLen
+
+  var i
+  for (i = 0; i < len; i += 4) {
+    tmp =
+      (revLookup[b64.charCodeAt(i)] << 18) |
+      (revLookup[b64.charCodeAt(i + 1)] << 12) |
+      (revLookup[b64.charCodeAt(i + 2)] << 6) |
+      revLookup[b64.charCodeAt(i + 3)]
+    arr[curByte++] = (tmp >> 16) & 0xFF
+    arr[curByte++] = (tmp >> 8) & 0xFF
+    arr[curByte++] = tmp & 0xFF
+  }
+
+  if (placeHoldersLen === 2) {
+    tmp =
+      (revLookup[b64.charCodeAt(i)] << 2) |
+      (revLookup[b64.charCodeAt(i + 1)] >> 4)
+    arr[curByte++] = tmp & 0xFF
+  }
+
+  if (placeHoldersLen === 1) {
+    tmp =
+      (revLookup[b64.charCodeAt(i)] << 10) |
+      (revLookup[b64.charCodeAt(i + 1)] << 4) |
+      (revLookup[b64.charCodeAt(i + 2)] >> 2)
+    arr[curByte++] = (tmp >> 8) & 0xFF
+    arr[curByte++] = tmp & 0xFF
+  }
+
+  return arr
+}
+
+function tripletToBase64 (num) {
+  return lookup[num >> 18 & 0x3F] +
+    lookup[num >> 12 & 0x3F] +
+    lookup[num >> 6 & 0x3F] +
+    lookup[num & 0x3F]
+}
+
+function encodeChunk (uint8, start, end) {
+  var tmp
+  var output = []
+  for (var i = start; i < end; i += 3) {
+    tmp =
+      ((uint8[i] << 16) & 0xFF0000) +
+      ((uint8[i + 1] << 8) & 0xFF00) +
+      (uint8[i + 2] & 0xFF)
+    output.push(tripletToBase64(tmp))
+  }
+  return output.join('')
+}
+
+function fromByteArray (uint8) {
+  var tmp
+  var len = uint8.length
+  var extraBytes = len % 3 // if we have 1 byte left, pad 2 bytes
+  var parts = []
+  var maxChunkLength = 16383 // must be multiple of 3
+
+  // go through the array every three bytes, we'll deal with trailing stuff later
+  for (var i = 0, len2 = len - extraBytes; i < len2; i += maxChunkLength) {
+    parts.push(encodeChunk(
+      uint8, i, (i + maxChunkLength) > len2 ? len2 : (i + maxChunkLength)
+    ))
+  }
+
+  // pad the end with zeros, but make sure to not forget the extra bytes
+  if (extraBytes === 1) {
+    tmp = uint8[len - 1]
+    parts.push(
+      lookup[tmp >> 2] +
+      lookup[(tmp << 4) & 0x3F] +
+      '=='
+    )
+  } else if (extraBytes === 2) {
+    tmp = (uint8[len - 2] << 8) + uint8[len - 1]
+    parts.push(
+      lookup[tmp >> 10] +
+      lookup[(tmp >> 4) & 0x3F] +
+      lookup[(tmp << 2) & 0x3F] +
+      '='
+    )
+  }
+
+  return parts.join('')
+}
+
+},{}],12:[function(require,module,exports){
+(function (Buffer){
+/*!
+ * The buffer module from node.js, for the browser.
+ *
+ * @author   Feross Aboukhadijeh <https://feross.org>
+ * @license  MIT
+ */
+/* eslint-disable no-proto */
+
+'use strict'
+
+var base64 = require('base64-js')
+var ieee754 = require('ieee754')
+var customInspectSymbol =
+  (typeof Symbol === 'function' && typeof Symbol.for === 'function')
+    ? Symbol.for('nodejs.util.inspect.custom')
+    : null
+
+exports.Buffer = Buffer
+exports.SlowBuffer = SlowBuffer
+exports.INSPECT_MAX_BYTES = 50
+
+var K_MAX_LENGTH = 0x7fffffff
+exports.kMaxLength = K_MAX_LENGTH
+
+/**
+ * If `Buffer.TYPED_ARRAY_SUPPORT`:
+ *   === true    Use Uint8Array implementation (fastest)
+ *   === false   Print warning and recommend using `buffer` v4.x which has an Object
+ *               implementation (most compatible, even IE6)
+ *
+ * Browsers that support typed arrays are IE 10+, Firefox 4+, Chrome 7+, Safari 5.1+,
+ * Opera 11.6+, iOS 4.2+.
+ *
+ * We report that the browser does not support typed arrays if the are not subclassable
+ * using __proto__. Firefox 4-29 lacks support for adding new properties to `Uint8Array`
+ * (See: https://bugzilla.mozilla.org/show_bug.cgi?id=695438). IE 10 lacks support
+ * for __proto__ and has a buggy typed array implementation.
+ */
+Buffer.TYPED_ARRAY_SUPPORT = typedArraySupport()
+
+if (!Buffer.TYPED_ARRAY_SUPPORT && typeof console !== 'undefined' &&
+    typeof console.error === 'function') {
+  console.error(
+    'This browser lacks typed array (Uint8Array) support which is required by ' +
+    '`buffer` v5.x. Use `buffer` v4.x if you require old browser support.'
+  )
+}
+
+function typedArraySupport () {
+  // Can typed array instances can be augmented?
+  try {
+    var arr = new Uint8Array(1)
+    var proto = { foo: function () { return 42 } }
+    Object.setPrototypeOf(proto, Uint8Array.prototype)
+    Object.setPrototypeOf(arr, proto)
+    return arr.foo() === 42
+  } catch (e) {
+    return false
+  }
+}
+
+Object.defineProperty(Buffer.prototype, 'parent', {
+  enumerable: true,
+  get: function () {
+    if (!Buffer.isBuffer(this)) return undefined
+    return this.buffer
+  }
+})
+
+Object.defineProperty(Buffer.prototype, 'offset', {
+  enumerable: true,
+  get: function () {
+    if (!Buffer.isBuffer(this)) return undefined
+    return this.byteOffset
+  }
+})
+
+function createBuffer (length) {
+  if (length > K_MAX_LENGTH) {
+    throw new RangeError('The value "' + length + '" is invalid for option "size"')
+  }
+  // Return an augmented `Uint8Array` instance
+  var buf = new Uint8Array(length)
+  Object.setPrototypeOf(buf, Buffer.prototype)
+  return buf
+}
+
+/**
+ * The Buffer constructor returns instances of `Uint8Array` that have their
+ * prototype changed to `Buffer.prototype`. Furthermore, `Buffer` is a subclass of
+ * `Uint8Array`, so the returned instances will have all the node `Buffer` methods
+ * and the `Uint8Array` methods. Square bracket notation works as expected -- it
+ * returns a single octet.
+ *
+ * The `Uint8Array` prototype remains unmodified.
+ */
+
+function Buffer (arg, encodingOrOffset, length) {
+  // Common case.
+  if (typeof arg === 'number') {
+    if (typeof encodingOrOffset === 'string') {
+      throw new TypeError(
+        'The "string" argument must be of type string. Received type number'
+      )
+    }
+    return allocUnsafe(arg)
+  }
+  return from(arg, encodingOrOffset, length)
+}
+
+// Fix subarray() in ES2016. See: https://github.com/feross/buffer/pull/97
+if (typeof Symbol !== 'undefined' && Symbol.species != null &&
+    Buffer[Symbol.species] === Buffer) {
+  Object.defineProperty(Buffer, Symbol.species, {
+    value: null,
+    configurable: true,
+    enumerable: false,
+    writable: false
+  })
+}
+
+Buffer.poolSize = 8192 // not used by this implementation
+
+function from (value, encodingOrOffset, length) {
+  if (typeof value === 'string') {
+    return fromString(value, encodingOrOffset)
+  }
+
+  if (ArrayBuffer.isView(value)) {
+    return fromArrayLike(value)
+  }
+
+  if (value == null) {
+    throw new TypeError(
+      'The first argument must be one of type string, Buffer, ArrayBuffer, Array, ' +
+      'or Array-like Object. Received type ' + (typeof value)
+    )
+  }
+
+  if (isInstance(value, ArrayBuffer) ||
+      (value && isInstance(value.buffer, ArrayBuffer))) {
+    return fromArrayBuffer(value, encodingOrOffset, length)
+  }
+
+  if (typeof value === 'number') {
+    throw new TypeError(
+      'The "value" argument must not be of type number. Received type number'
+    )
+  }
+
+  var valueOf = value.valueOf && value.valueOf()
+  if (valueOf != null && valueOf !== value) {
+    return Buffer.from(valueOf, encodingOrOffset, length)
+  }
+
+  var b = fromObject(value)
+  if (b) return b
+
+  if (typeof Symbol !== 'undefined' && Symbol.toPrimitive != null &&
+      typeof value[Symbol.toPrimitive] === 'function') {
+    return Buffer.from(
+      value[Symbol.toPrimitive]('string'), encodingOrOffset, length
+    )
+  }
+
+  throw new TypeError(
+    'The first argument must be one of type string, Buffer, ArrayBuffer, Array, ' +
+    'or Array-like Object. Received type ' + (typeof value)
+  )
+}
+
+/**
+ * Functionally equivalent to Buffer(arg, encoding) but throws a TypeError
+ * if value is a number.
+ * Buffer.from(str[, encoding])
+ * Buffer.from(array)
+ * Buffer.from(buffer)
+ * Buffer.from(arrayBuffer[, byteOffset[, length]])
+ **/
+Buffer.from = function (value, encodingOrOffset, length) {
+  return from(value, encodingOrOffset, length)
+}
+
+// Note: Change prototype *after* Buffer.from is defined to workaround Chrome bug:
+// https://github.com/feross/buffer/pull/148
+Object.setPrototypeOf(Buffer.prototype, Uint8Array.prototype)
+Object.setPrototypeOf(Buffer, Uint8Array)
+
+function assertSize (size) {
+  if (typeof size !== 'number') {
+    throw new TypeError('"size" argument must be of type number')
+  } else if (size < 0) {
+    throw new RangeError('The value "' + size + '" is invalid for option "size"')
+  }
+}
+
+function alloc (size, fill, encoding) {
+  assertSize(size)
+  if (size <= 0) {
+    return createBuffer(size)
+  }
+  if (fill !== undefined) {
+    // Only pay attention to encoding if it's a string. This
+    // prevents accidentally sending in a number that would
+    // be interpretted as a start offset.
+    return typeof encoding === 'string'
+      ? createBuffer(size).fill(fill, encoding)
+      : createBuffer(size).fill(fill)
+  }
+  return createBuffer(size)
+}
+
+/**
+ * Creates a new filled Buffer instance.
+ * alloc(size[, fill[, encoding]])
+ **/
+Buffer.alloc = function (size, fill, encoding) {
+  return alloc(size, fill, encoding)
+}
+
+function allocUnsafe (size) {
+  assertSize(size)
+  return createBuffer(size < 0 ? 0 : checked(size) | 0)
+}
+
+/**
+ * Equivalent to Buffer(num), by default creates a non-zero-filled Buffer instance.
+ * */
+Buffer.allocUnsafe = function (size) {
+  return allocUnsafe(size)
+}
+/**
+ * Equivalent to SlowBuffer(num), by default creates a non-zero-filled Buffer instance.
+ */
+Buffer.allocUnsafeSlow = function (size) {
+  return allocUnsafe(size)
+}
+
+function fromString (string, encoding) {
+  if (typeof encoding !== 'string' || encoding === '') {
+    encoding = 'utf8'
+  }
+
+  if (!Buffer.isEncoding(encoding)) {
+    throw new TypeError('Unknown encoding: ' + encoding)
+  }
+
+  var length = byteLength(string, encoding) | 0
+  var buf = createBuffer(length)
+
+  var actual = buf.write(string, encoding)
+
+  if (actual !== length) {
+    // Writing a hex string, for example, that contains invalid characters will
+    // cause everything after the first invalid character to be ignored. (e.g.
+    // 'abxxcd' will be treated as 'ab')
+    buf = buf.slice(0, actual)
+  }
+
+  return buf
+}
+
+function fromArrayLike (array) {
+  var length = array.length < 0 ? 0 : checked(array.length) | 0
+  var buf = createBuffer(length)
+  for (var i = 0; i < length; i += 1) {
+    buf[i] = array[i] & 255
+  }
+  return buf
+}
+
+function fromArrayBuffer (array, byteOffset, length) {
+  if (byteOffset < 0 || array.byteLength < byteOffset) {
+    throw new RangeError('"offset" is outside of buffer bounds')
+  }
+
+  if (array.byteLength < byteOffset + (length || 0)) {
+    throw new RangeError('"length" is outside of buffer bounds')
+  }
+
+  var buf
+  if (byteOffset === undefined && length === undefined) {
+    buf = new Uint8Array(array)
+  } else if (length === undefined) {
+    buf = new Uint8Array(array, byteOffset)
+  } else {
+    buf = new Uint8Array(array, byteOffset, length)
+  }
+
+  // Return an augmented `Uint8Array` instance
+  Object.setPrototypeOf(buf, Buffer.prototype)
+
+  return buf
+}
+
+function fromObject (obj) {
+  if (Buffer.isBuffer(obj)) {
+    var len = checked(obj.length) | 0
+    var buf = createBuffer(len)
+
+    if (buf.length === 0) {
+      return buf
+    }
+
+    obj.copy(buf, 0, 0, len)
+    return buf
+  }
+
+  if (obj.length !== undefined) {
+    if (typeof obj.length !== 'number' || numberIsNaN(obj.length)) {
+      return createBuffer(0)
+    }
+    return fromArrayLike(obj)
+  }
+
+  if (obj.type === 'Buffer' && Array.isArray(obj.data)) {
+    return fromArrayLike(obj.data)
+  }
+}
+
+function checked (length) {
+  // Note: cannot use `length < K_MAX_LENGTH` here because that fails when
+  // length is NaN (which is otherwise coerced to zero.)
+  if (length >= K_MAX_LENGTH) {
+    throw new RangeError('Attempt to allocate Buffer larger than maximum ' +
+                         'size: 0x' + K_MAX_LENGTH.toString(16) + ' bytes')
+  }
+  return length | 0
+}
+
+function SlowBuffer (length) {
+  if (+length != length) { // eslint-disable-line eqeqeq
+    length = 0
+  }
+  return Buffer.alloc(+length)
+}
+
+Buffer.isBuffer = function isBuffer (b) {
+  return b != null && b._isBuffer === true &&
+    b !== Buffer.prototype // so Buffer.isBuffer(Buffer.prototype) will be false
+}
+
+Buffer.compare = function compare (a, b) {
+  if (isInstance(a, Uint8Array)) a = Buffer.from(a, a.offset, a.byteLength)
+  if (isInstance(b, Uint8Array)) b = Buffer.from(b, b.offset, b.byteLength)
+  if (!Buffer.isBuffer(a) || !Buffer.isBuffer(b)) {
+    throw new TypeError(
+      'The "buf1", "buf2" arguments must be one of type Buffer or Uint8Array'
+    )
+  }
+
+  if (a === b) return 0
+
+  var x = a.length
+  var y = b.length
+
+  for (var i = 0, len = Math.min(x, y); i < len; ++i) {
+    if (a[i] !== b[i]) {
+      x = a[i]
+      y = b[i]
+      break
+    }
+  }
+
+  if (x < y) return -1
+  if (y < x) return 1
+  return 0
+}
+
+Buffer.isEncoding = function isEncoding (encoding) {
+  switch (String(encoding).toLowerCase()) {
+    case 'hex':
+    case 'utf8':
+    case 'utf-8':
+    case 'ascii':
+    case 'latin1':
+    case 'binary':
+    case 'base64':
+    case 'ucs2':
+    case 'ucs-2':
+    case 'utf16le':
+    case 'utf-16le':
+      return true
+    default:
+      return false
+  }
+}
+
+Buffer.concat = function concat (list, length) {
+  if (!Array.isArray(list)) {
+    throw new TypeError('"list" argument must be an Array of Buffers')
+  }
+
+  if (list.length === 0) {
+    return Buffer.alloc(0)
+  }
+
+  var i
+  if (length === undefined) {
+    length = 0
+    for (i = 0; i < list.length; ++i) {
+      length += list[i].length
+    }
+  }
+
+  var buffer = Buffer.allocUnsafe(length)
+  var pos = 0
+  for (i = 0; i < list.length; ++i) {
+    var buf = list[i]
+    if (isInstance(buf, Uint8Array)) {
+      buf = Buffer.from(buf)
+    }
+    if (!Buffer.isBuffer(buf)) {
+      throw new TypeError('"list" argument must be an Array of Buffers')
+    }
+    buf.copy(buffer, pos)
+    pos += buf.length
+  }
+  return buffer
+}
+
+function byteLength (string, encoding) {
+  if (Buffer.isBuffer(string)) {
+    return string.length
+  }
+  if (ArrayBuffer.isView(string) || isInstance(string, ArrayBuffer)) {
+    return string.byteLength
+  }
+  if (typeof string !== 'string') {
+    throw new TypeError(
+      'The "string" argument must be one of type string, Buffer, or ArrayBuffer. ' +
+      'Received type ' + typeof string
+    )
+  }
+
+  var len = string.length
+  var mustMatch = (arguments.length > 2 && arguments[2] === true)
+  if (!mustMatch && len === 0) return 0
+
+  // Use a for loop to avoid recursion
+  var loweredCase = false
+  for (;;) {
+    switch (encoding) {
+      case 'ascii':
+      case 'latin1':
+      case 'binary':
+        return len
+      case 'utf8':
+      case 'utf-8':
+        return utf8ToBytes(string).length
+      case 'ucs2':
+      case 'ucs-2':
+      case 'utf16le':
+      case 'utf-16le':
+        return len * 2
+      case 'hex':
+        return len >>> 1
+      case 'base64':
+        return base64ToBytes(string).length
+      default:
+        if (loweredCase) {
+          return mustMatch ? -1 : utf8ToBytes(string).length // assume utf8
+        }
+        encoding = ('' + encoding).toLowerCase()
+        loweredCase = true
+    }
+  }
+}
+Buffer.byteLength = byteLength
+
+function slowToString (encoding, start, end) {
+  var loweredCase = false
+
+  // No need to verify that "this.length <= MAX_UINT32" since it's a read-only
+  // property of a typed array.
+
+  // This behaves neither like String nor Uint8Array in that we set start/end
+  // to their upper/lower bounds if the value passed is out of range.
+  // undefined is handled specially as per ECMA-262 6th Edition,
+  // Section 13.3.3.7 Runtime Semantics: KeyedBindingInitialization.
+  if (start === undefined || start < 0) {
+    start = 0
+  }
+  // Return early if start > this.length. Done here to prevent potential uint32
+  // coercion fail below.
+  if (start > this.length) {
+    return ''
+  }
+
+  if (end === undefined || end > this.length) {
+    end = this.length
+  }
+
+  if (end <= 0) {
+    return ''
+  }
+
+  // Force coersion to uint32. This will also coerce falsey/NaN values to 0.
+  end >>>= 0
+  start >>>= 0
+
+  if (end <= start) {
+    return ''
+  }
+
+  if (!encoding) encoding = 'utf8'
+
+  while (true) {
+    switch (encoding) {
+      case 'hex':
+        return hexSlice(this, start, end)
+
+      case 'utf8':
+      case 'utf-8':
+        return utf8Slice(this, start, end)
+
+      case 'ascii':
+        return asciiSlice(this, start, end)
+
+      case 'latin1':
+      case 'binary':
+        return latin1Slice(this, start, end)
+
+      case 'base64':
+        return base64Slice(this, start, end)
+
+      case 'ucs2':
+      case 'ucs-2':
+      case 'utf16le':
+      case 'utf-16le':
+        return utf16leSlice(this, start, end)
+
+      default:
+        if (loweredCase) throw new TypeError('Unknown encoding: ' + encoding)
+        encoding = (encoding + '').toLowerCase()
+        loweredCase = true
+    }
+  }
+}
+
+// This property is used by `Buffer.isBuffer` (and the `is-buffer` npm package)
+// to detect a Buffer instance. It's not possible to use `instanceof Buffer`
+// reliably in a browserify context because there could be multiple different
+// copies of the 'buffer' package in use. This method works even for Buffer
+// instances that were created from another copy of the `buffer` package.
+// See: https://github.com/feross/buffer/issues/154
+Buffer.prototype._isBuffer = true
+
+function swap (b, n, m) {
+  var i = b[n]
+  b[n] = b[m]
+  b[m] = i
+}
+
+Buffer.prototype.swap16 = function swap16 () {
+  var len = this.length
+  if (len % 2 !== 0) {
+    throw new RangeError('Buffer size must be a multiple of 16-bits')
+  }
+  for (var i = 0; i < len; i += 2) {
+    swap(this, i, i + 1)
+  }
+  return this
+}
+
+Buffer.prototype.swap32 = function swap32 () {
+  var len = this.length
+  if (len % 4 !== 0) {
+    throw new RangeError('Buffer size must be a multiple of 32-bits')
+  }
+  for (var i = 0; i < len; i += 4) {
+    swap(this, i, i + 3)
+    swap(this, i + 1, i + 2)
+  }
+  return this
+}
+
+Buffer.prototype.swap64 = function swap64 () {
+  var len = this.length
+  if (len % 8 !== 0) {
+    throw new RangeError('Buffer size must be a multiple of 64-bits')
+  }
+  for (var i = 0; i < len; i += 8) {
+    swap(this, i, i + 7)
+    swap(this, i + 1, i + 6)
+    swap(this, i + 2, i + 5)
+    swap(this, i + 3, i + 4)
+  }
+  return this
+}
+
+Buffer.prototype.toString = function toString () {
+  var length = this.length
+  if (length === 0) return ''
+  if (arguments.length === 0) return utf8Slice(this, 0, length)
+  return slowToString.apply(this, arguments)
+}
+
+Buffer.prototype.toLocaleString = Buffer.prototype.toString
+
+Buffer.prototype.equals = function equals (b) {
+  if (!Buffer.isBuffer(b)) throw new TypeError('Argument must be a Buffer')
+  if (this === b) return true
+  return Buffer.compare(this, b) === 0
+}
+
+Buffer.prototype.inspect = function inspect () {
+  var str = ''
+  var max = exports.INSPECT_MAX_BYTES
+  str = this.toString('hex', 0, max).replace(/(.{2})/g, '$1 ').trim()
+  if (this.length > max) str += ' ... '
+  return '<Buffer ' + str + '>'
+}
+if (customInspectSymbol) {
+  Buffer.prototype[customInspectSymbol] = Buffer.prototype.inspect
+}
+
+Buffer.prototype.compare = function compare (target, start, end, thisStart, thisEnd) {
+  if (isInstance(target, Uint8Array)) {
+    target = Buffer.from(target, target.offset, target.byteLength)
+  }
+  if (!Buffer.isBuffer(target)) {
+    throw new TypeError(
+      'The "target" argument must be one of type Buffer or Uint8Array. ' +
+      'Received type ' + (typeof target)
+    )
+  }
+
+  if (start === undefined) {
+    start = 0
+  }
+  if (end === undefined) {
+    end = target ? target.length : 0
+  }
+  if (thisStart === undefined) {
+    thisStart = 0
+  }
+  if (thisEnd === undefined) {
+    thisEnd = this.length
+  }
+
+  if (start < 0 || end > target.length || thisStart < 0 || thisEnd > this.length) {
+    throw new RangeError('out of range index')
+  }
+
+  if (thisStart >= thisEnd && start >= end) {
+    return 0
+  }
+  if (thisStart >= thisEnd) {
+    return -1
+  }
+  if (start >= end) {
+    return 1
+  }
+
+  start >>>= 0
+  end >>>= 0
+  thisStart >>>= 0
+  thisEnd >>>= 0
+
+  if (this === target) return 0
+
+  var x = thisEnd - thisStart
+  var y = end - start
+  var len = Math.min(x, y)
+
+  var thisCopy = this.slice(thisStart, thisEnd)
+  var targetCopy = target.slice(start, end)
+
+  for (var i = 0; i < len; ++i) {
+    if (thisCopy[i] !== targetCopy[i]) {
+      x = thisCopy[i]
+      y = targetCopy[i]
+      break
+    }
+  }
+
+  if (x < y) return -1
+  if (y < x) return 1
+  return 0
+}
+
+// Finds either the first index of `val` in `buffer` at offset >= `byteOffset`,
+// OR the last index of `val` in `buffer` at offset <= `byteOffset`.
+//
+// Arguments:
+// - buffer - a Buffer to search
+// - val - a string, Buffer, or number
+// - byteOffset - an index into `buffer`; will be clamped to an int32
+// - encoding - an optional encoding, relevant is val is a string
+// - dir - true for indexOf, false for lastIndexOf
+function bidirectionalIndexOf (buffer, val, byteOffset, encoding, dir) {
+  // Empty buffer means no match
+  if (buffer.length === 0) return -1
+
+  // Normalize byteOffset
+  if (typeof byteOffset === 'string') {
+    encoding = byteOffset
+    byteOffset = 0
+  } else if (byteOffset > 0x7fffffff) {
+    byteOffset = 0x7fffffff
+  } else if (byteOffset < -0x80000000) {
+    byteOffset = -0x80000000
+  }
+  byteOffset = +byteOffset // Coerce to Number.
+  if (numberIsNaN(byteOffset)) {
+    // byteOffset: it it's undefined, null, NaN, "foo", etc, search whole buffer
+    byteOffset = dir ? 0 : (buffer.length - 1)
+  }
+
+  // Normalize byteOffset: negative offsets start from the end of the buffer
+  if (byteOffset < 0) byteOffset = buffer.length + byteOffset
+  if (byteOffset >= buffer.length) {
+    if (dir) return -1
+    else byteOffset = buffer.length - 1
+  } else if (byteOffset < 0) {
+    if (dir) byteOffset = 0
+    else return -1
+  }
+
+  // Normalize val
+  if (typeof val === 'string') {
+    val = Buffer.from(val, encoding)
+  }
+
+  // Finally, search either indexOf (if dir is true) or lastIndexOf
+  if (Buffer.isBuffer(val)) {
+    // Special case: looking for empty string/buffer always fails
+    if (val.length === 0) {
+      return -1
+    }
+    return arrayIndexOf(buffer, val, byteOffset, encoding, dir)
+  } else if (typeof val === 'number') {
+    val = val & 0xFF // Search for a byte value [0-255]
+    if (typeof Uint8Array.prototype.indexOf === 'function') {
+      if (dir) {
+        return Uint8Array.prototype.indexOf.call(buffer, val, byteOffset)
+      } else {
+        return Uint8Array.prototype.lastIndexOf.call(buffer, val, byteOffset)
+      }
+    }
+    return arrayIndexOf(buffer, [val], byteOffset, encoding, dir)
+  }
+
+  throw new TypeError('val must be string, number or Buffer')
+}
+
+function arrayIndexOf (arr, val, byteOffset, encoding, dir) {
+  var indexSize = 1
+  var arrLength = arr.length
+  var valLength = val.length
+
+  if (encoding !== undefined) {
+    encoding = String(encoding).toLowerCase()
+    if (encoding === 'ucs2' || encoding === 'ucs-2' ||
+        encoding === 'utf16le' || encoding === 'utf-16le') {
+      if (arr.length < 2 || val.length < 2) {
+        return -1
+      }
+      indexSize = 2
+      arrLength /= 2
+      valLength /= 2
+      byteOffset /= 2
+    }
+  }
+
+  function read (buf, i) {
+    if (indexSize === 1) {
+      return buf[i]
+    } else {
+      return buf.readUInt16BE(i * indexSize)
+    }
+  }
+
+  var i
+  if (dir) {
+    var foundIndex = -1
+    for (i = byteOffset; i < arrLength; i++) {
+      if (read(arr, i) === read(val, foundIndex === -1 ? 0 : i - foundIndex)) {
+        if (foundIndex === -1) foundIndex = i
+        if (i - foundIndex + 1 === valLength) return foundIndex * indexSize
+      } else {
+        if (foundIndex !== -1) i -= i - foundIndex
+        foundIndex = -1
+      }
+    }
+  } else {
+    if (byteOffset + valLength > arrLength) byteOffset = arrLength - valLength
+    for (i = byteOffset; i >= 0; i--) {
+      var found = true
+      for (var j = 0; j < valLength; j++) {
+        if (read(arr, i + j) !== read(val, j)) {
+          found = false
+          break
+        }
+      }
+      if (found) return i
+    }
+  }
+
+  return -1
+}
+
+Buffer.prototype.includes = function includes (val, byteOffset, encoding) {
+  return this.indexOf(val, byteOffset, encoding) !== -1
+}
+
+Buffer.prototype.indexOf = function indexOf (val, byteOffset, encoding) {
+  return bidirectionalIndexOf(this, val, byteOffset, encoding, true)
+}
+
+Buffer.prototype.lastIndexOf = function lastIndexOf (val, byteOffset, encoding) {
+  return bidirectionalIndexOf(this, val, byteOffset, encoding, false)
+}
+
+function hexWrite (buf, string, offset, length) {
+  offset = Number(offset) || 0
+  var remaining = buf.length - offset
+  if (!length) {
+    length = remaining
+  } else {
+    length = Number(length)
+    if (length > remaining) {
+      length = remaining
+    }
+  }
+
+  var strLen = string.length
+
+  if (length > strLen / 2) {
+    length = strLen / 2
+  }
+  for (var i = 0; i < length; ++i) {
+    var parsed = parseInt(string.substr(i * 2, 2), 16)
+    if (numberIsNaN(parsed)) return i
+    buf[offset + i] = parsed
+  }
+  return i
+}
+
+function utf8Write (buf, string, offset, length) {
+  return blitBuffer(utf8ToBytes(string, buf.length - offset), buf, offset, length)
+}
+
+function asciiWrite (buf, string, offset, length) {
+  return blitBuffer(asciiToBytes(string), buf, offset, length)
+}
+
+function latin1Write (buf, string, offset, length) {
+  return asciiWrite(buf, string, offset, length)
+}
+
+function base64Write (buf, string, offset, length) {
+  return blitBuffer(base64ToBytes(string), buf, offset, length)
+}
+
+function ucs2Write (buf, string, offset, length) {
+  return blitBuffer(utf16leToBytes(string, buf.length - offset), buf, offset, length)
+}
+
+Buffer.prototype.write = function write (string, offset, length, encoding) {
+  // Buffer#write(string)
+  if (offset === undefined) {
+    encoding = 'utf8'
+    length = this.length
+    offset = 0
+  // Buffer#write(string, encoding)
+  } else if (length === undefined && typeof offset === 'string') {
+    encoding = offset
+    length = this.length
+    offset = 0
+  // Buffer#write(string, offset[, length][, encoding])
+  } else if (isFinite(offset)) {
+    offset = offset >>> 0
+    if (isFinite(length)) {
+      length = length >>> 0
+      if (encoding === undefined) encoding = 'utf8'
+    } else {
+      encoding = length
+      length = undefined
+    }
+  } else {
+    throw new Error(
+      'Buffer.write(string, encoding, offset[, length]) is no longer supported'
+    )
+  }
+
+  var remaining = this.length - offset
+  if (length === undefined || length > remaining) length = remaining
+
+  if ((string.length > 0 && (length < 0 || offset < 0)) || offset > this.length) {
+    throw new RangeError('Attempt to write outside buffer bounds')
+  }
+
+  if (!encoding) encoding = 'utf8'
+
+  var loweredCase = false
+  for (;;) {
+    switch (encoding) {
+      case 'hex':
+        return hexWrite(this, string, offset, length)
+
+      case 'utf8':
+      case 'utf-8':
+        return utf8Write(this, string, offset, length)
+
+      case 'ascii':
+        return asciiWrite(this, string, offset, length)
+
+      case 'latin1':
+      case 'binary':
+        return latin1Write(this, string, offset, length)
+
+      case 'base64':
+        // Warning: maxLength not taken into account in base64Write
+        return base64Write(this, string, offset, length)
+
+      case 'ucs2':
+      case 'ucs-2':
+      case 'utf16le':
+      case 'utf-16le':
+        return ucs2Write(this, string, offset, length)
+
+      default:
+        if (loweredCase) throw new TypeError('Unknown encoding: ' + encoding)
+        encoding = ('' + encoding).toLowerCase()
+        loweredCase = true
+    }
+  }
+}
+
+Buffer.prototype.toJSON = function toJSON () {
+  return {
+    type: 'Buffer',
+    data: Array.prototype.slice.call(this._arr || this, 0)
+  }
+}
+
+function base64Slice (buf, start, end) {
+  if (start === 0 && end === buf.length) {
+    return base64.fromByteArray(buf)
+  } else {
+    return base64.fromByteArray(buf.slice(start, end))
+  }
+}
+
+function utf8Slice (buf, start, end) {
+  end = Math.min(buf.length, end)
+  var res = []
+
+  var i = start
+  while (i < end) {
+    var firstByte = buf[i]
+    var codePoint = null
+    var bytesPerSequence = (firstByte > 0xEF) ? 4
+      : (firstByte > 0xDF) ? 3
+        : (firstByte > 0xBF) ? 2
+          : 1
+
+    if (i + bytesPerSequence <= end) {
+      var secondByte, thirdByte, fourthByte, tempCodePoint
+
+      switch (bytesPerSequence) {
+        case 1:
+          if (firstByte < 0x80) {
+            codePoint = firstByte
+          }
+          break
+        case 2:
+          secondByte = buf[i + 1]
+          if ((secondByte & 0xC0) === 0x80) {
+            tempCodePoint = (firstByte & 0x1F) << 0x6 | (secondByte & 0x3F)
+            if (tempCodePoint > 0x7F) {
+              codePoint = tempCodePoint
+            }
+          }
+          break
+        case 3:
+          secondByte = buf[i + 1]
+          thirdByte = buf[i + 2]
+          if ((secondByte & 0xC0) === 0x80 && (thirdByte & 0xC0) === 0x80) {
+            tempCodePoint = (firstByte & 0xF) << 0xC | (secondByte & 0x3F) << 0x6 | (thirdByte & 0x3F)
+            if (tempCodePoint > 0x7FF && (tempCodePoint < 0xD800 || tempCodePoint > 0xDFFF)) {
+              codePoint = tempCodePoint
+            }
+          }
+          break
+        case 4:
+          secondByte = buf[i + 1]
+          thirdByte = buf[i + 2]
+          fourthByte = buf[i + 3]
+          if ((secondByte & 0xC0) === 0x80 && (thirdByte & 0xC0) === 0x80 && (fourthByte & 0xC0) === 0x80) {
+            tempCodePoint = (firstByte & 0xF) << 0x12 | (secondByte & 0x3F) << 0xC | (thirdByte & 0x3F) << 0x6 | (fourthByte & 0x3F)
+            if (tempCodePoint > 0xFFFF && tempCodePoint < 0x110000) {
+              codePoint = tempCodePoint
+            }
+          }
+      }
+    }
+
+    if (codePoint === null) {
+      // we did not generate a valid codePoint so insert a
+      // replacement char (U+FFFD) and advance only 1 byte
+      codePoint = 0xFFFD
+      bytesPerSequence = 1
+    } else if (codePoint > 0xFFFF) {
+      // encode to utf16 (surrogate pair dance)
+      codePoint -= 0x10000
+      res.push(codePoint >>> 10 & 0x3FF | 0xD800)
+      codePoint = 0xDC00 | codePoint & 0x3FF
+    }
+
+    res.push(codePoint)
+    i += bytesPerSequence
+  }
+
+  return decodeCodePointsArray(res)
+}
+
+// Based on http://stackoverflow.com/a/22747272/680742, the browser with
+// the lowest limit is Chrome, with 0x10000 args.
+// We go 1 magnitude less, for safety
+var MAX_ARGUMENTS_LENGTH = 0x1000
+
+function decodeCodePointsArray (codePoints) {
+  var len = codePoints.length
+  if (len <= MAX_ARGUMENTS_LENGTH) {
+    return String.fromCharCode.apply(String, codePoints) // avoid extra slice()
+  }
+
+  // Decode in chunks to avoid "call stack size exceeded".
+  var res = ''
+  var i = 0
+  while (i < len) {
+    res += String.fromCharCode.apply(
+      String,
+      codePoints.slice(i, i += MAX_ARGUMENTS_LENGTH)
+    )
+  }
+  return res
+}
+
+function asciiSlice (buf, start, end) {
+  var ret = ''
+  end = Math.min(buf.length, end)
+
+  for (var i = start; i < end; ++i) {
+    ret += String.fromCharCode(buf[i] & 0x7F)
+  }
+  return ret
+}
+
+function latin1Slice (buf, start, end) {
+  var ret = ''
+  end = Math.min(buf.length, end)
+
+  for (var i = start; i < end; ++i) {
+    ret += String.fromCharCode(buf[i])
+  }
+  return ret
+}
+
+function hexSlice (buf, start, end) {
+  var len = buf.length
+
+  if (!start || start < 0) start = 0
+  if (!end || end < 0 || end > len) end = len
+
+  var out = ''
+  for (var i = start; i < end; ++i) {
+    out += toHex(buf[i])
+  }
+  return out
+}
+
+function utf16leSlice (buf, start, end) {
+  var bytes = buf.slice(start, end)
+  var res = ''
+  for (var i = 0; i < bytes.length; i += 2) {
+    res += String.fromCharCode(bytes[i] + (bytes[i + 1] * 256))
+  }
+  return res
+}
+
+Buffer.prototype.slice = function slice (start, end) {
+  var len = this.length
+  start = ~~start
+  end = end === undefined ? len : ~~end
+
+  if (start < 0) {
+    start += len
+    if (start < 0) start = 0
+  } else if (start > len) {
+    start = len
+  }
+
+  if (end < 0) {
+    end += len
+    if (end < 0) end = 0
+  } else if (end > len) {
+    end = len
+  }
+
+  if (end < start) end = start
+
+  var newBuf = this.subarray(start, end)
+  // Return an augmented `Uint8Array` instance
+  Object.setPrototypeOf(newBuf, Buffer.prototype)
+
+  return newBuf
+}
+
+/*
+ * Need to make sure that buffer isn't trying to write out of bounds.
+ */
+function checkOffset (offset, ext, length) {
+  if ((offset % 1) !== 0 || offset < 0) throw new RangeError('offset is not uint')
+  if (offset + ext > length) throw new RangeError('Trying to access beyond buffer length')
+}
+
+Buffer.prototype.readUIntLE = function readUIntLE (offset, byteLength, noAssert) {
+  offset = offset >>> 0
+  byteLength = byteLength >>> 0
+  if (!noAssert) checkOffset(offset, byteLength, this.length)
+
+  var val = this[offset]
+  var mul = 1
+  var i = 0
+  while (++i < byteLength && (mul *= 0x100)) {
+    val += this[offset + i] * mul
+  }
+
+  return val
+}
+
+Buffer.prototype.readUIntBE = function readUIntBE (offset, byteLength, noAssert) {
+  offset = offset >>> 0
+  byteLength = byteLength >>> 0
+  if (!noAssert) {
+    checkOffset(offset, byteLength, this.length)
+  }
+
+  var val = this[offset + --byteLength]
+  var mul = 1
+  while (byteLength > 0 && (mul *= 0x100)) {
+    val += this[offset + --byteLength] * mul
+  }
+
+  return val
+}
+
+Buffer.prototype.readUInt8 = function readUInt8 (offset, noAssert) {
+  offset = offset >>> 0
+  if (!noAssert) checkOffset(offset, 1, this.length)
+  return this[offset]
+}
+
+Buffer.prototype.readUInt16LE = function readUInt16LE (offset, noAssert) {
+  offset = offset >>> 0
+  if (!noAssert) checkOffset(offset, 2, this.length)
+  return this[offset] | (this[offset + 1] << 8)
+}
+
+Buffer.prototype.readUInt16BE = function readUInt16BE (offset, noAssert) {
+  offset = offset >>> 0
+  if (!noAssert) checkOffset(offset, 2, this.length)
+  return (this[offset] << 8) | this[offset + 1]
+}
+
+Buffer.prototype.readUInt32LE = function readUInt32LE (offset, noAssert) {
+  offset = offset >>> 0
+  if (!noAssert) checkOffset(offset, 4, this.length)
+
+  return ((this[offset]) |
+      (this[offset + 1] << 8) |
+      (this[offset + 2] << 16)) +
+      (this[offset + 3] * 0x1000000)
+}
+
+Buffer.prototype.readUInt32BE = function readUInt32BE (offset, noAssert) {
+  offset = offset >>> 0
+  if (!noAssert) checkOffset(offset, 4, this.length)
+
+  return (this[offset] * 0x1000000) +
+    ((this[offset + 1] << 16) |
+    (this[offset + 2] << 8) |
+    this[offset + 3])
+}
+
+Buffer.prototype.readIntLE = function readIntLE (offset, byteLength, noAssert) {
+  offset = offset >>> 0
+  byteLength = byteLength >>> 0
+  if (!noAssert) checkOffset(offset, byteLength, this.length)
+
+  var val = this[offset]
+  var mul = 1
+  var i = 0
+  while (++i < byteLength && (mul *= 0x100)) {
+    val += this[offset + i] * mul
+  }
+  mul *= 0x80
+
+  if (val >= mul) val -= Math.pow(2, 8 * byteLength)
+
+  return val
+}
+
+Buffer.prototype.readIntBE = function readIntBE (offset, byteLength, noAssert) {
+  offset = offset >>> 0
+  byteLength = byteLength >>> 0
+  if (!noAssert) checkOffset(offset, byteLength, this.length)
+
+  var i = byteLength
+  var mul = 1
+  var val = this[offset + --i]
+  while (i > 0 && (mul *= 0x100)) {
+    val += this[offset + --i] * mul
+  }
+  mul *= 0x80
+
+  if (val >= mul) val -= Math.pow(2, 8 * byteLength)
+
+  return val
+}
+
+Buffer.prototype.readInt8 = function readInt8 (offset, noAssert) {
+  offset = offset >>> 0
+  if (!noAssert) checkOffset(offset, 1, this.length)
+  if (!(this[offset] & 0x80)) return (this[offset])
+  return ((0xff - this[offset] + 1) * -1)
+}
+
+Buffer.prototype.readInt16LE = function readInt16LE (offset, noAssert) {
+  offset = offset >>> 0
+  if (!noAssert) checkOffset(offset, 2, this.length)
+  var val = this[offset] | (this[offset + 1] << 8)
+  return (val & 0x8000) ? val | 0xFFFF0000 : val
+}
+
+Buffer.prototype.readInt16BE = function readInt16BE (offset, noAssert) {
+  offset = offset >>> 0
+  if (!noAssert) checkOffset(offset, 2, this.length)
+  var val = this[offset + 1] | (this[offset] << 8)
+  return (val & 0x8000) ? val | 0xFFFF0000 : val
+}
+
+Buffer.prototype.readInt32LE = function readInt32LE (offset, noAssert) {
+  offset = offset >>> 0
+  if (!noAssert) checkOffset(offset, 4, this.length)
+
+  return (this[offset]) |
+    (this[offset + 1] << 8) |
+    (this[offset + 2] << 16) |
+    (this[offset + 3] << 24)
+}
+
+Buffer.prototype.readInt32BE = function readInt32BE (offset, noAssert) {
+  offset = offset >>> 0
+  if (!noAssert) checkOffset(offset, 4, this.length)
+
+  return (this[offset] << 24) |
+    (this[offset + 1] << 16) |
+    (this[offset + 2] << 8) |
+    (this[offset + 3])
+}
+
+Buffer.prototype.readFloatLE = function readFloatLE (offset, noAssert) {
+  offset = offset >>> 0
+  if (!noAssert) checkOffset(offset, 4, this.length)
+  return ieee754.read(this, offset, true, 23, 4)
+}
+
+Buffer.prototype.readFloatBE = function readFloatBE (offset, noAssert) {
+  offset = offset >>> 0
+  if (!noAssert) checkOffset(offset, 4, this.length)
+  return ieee754.read(this, offset, false, 23, 4)
+}
+
+Buffer.prototype.readDoubleLE = function readDoubleLE (offset, noAssert) {
+  offset = offset >>> 0
+  if (!noAssert) checkOffset(offset, 8, this.length)
+  return ieee754.read(this, offset, true, 52, 8)
+}
+
+Buffer.prototype.readDoubleBE = function readDoubleBE (offset, noAssert) {
+  offset = offset >>> 0
+  if (!noAssert) checkOffset(offset, 8, this.length)
+  return ieee754.read(this, offset, false, 52, 8)
+}
+
+function checkInt (buf, value, offset, ext, max, min) {
+  if (!Buffer.isBuffer(buf)) throw new TypeError('"buffer" argument must be a Buffer instance')
+  if (value > max || value < min) throw new RangeError('"value" argument is out of bounds')
+  if (offset + ext > buf.length) throw new RangeError('Index out of range')
+}
+
+Buffer.prototype.writeUIntLE = function writeUIntLE (value, offset, byteLength, noAssert) {
+  value = +value
+  offset = offset >>> 0
+  byteLength = byteLength >>> 0
+  if (!noAssert) {
+    var maxBytes = Math.pow(2, 8 * byteLength) - 1
+    checkInt(this, value, offset, byteLength, maxBytes, 0)
+  }
+
+  var mul = 1
+  var i = 0
+  this[offset] = value & 0xFF
+  while (++i < byteLength && (mul *= 0x100)) {
+    this[offset + i] = (value / mul) & 0xFF
+  }
+
+  return offset + byteLength
+}
+
+Buffer.prototype.writeUIntBE = function writeUIntBE (value, offset, byteLength, noAssert) {
+  value = +value
+  offset = offset >>> 0
+  byteLength = byteLength >>> 0
+  if (!noAssert) {
+    var maxBytes = Math.pow(2, 8 * byteLength) - 1
+    checkInt(this, value, offset, byteLength, maxBytes, 0)
+  }
+
+  var i = byteLength - 1
+  var mul = 1
+  this[offset + i] = value & 0xFF
+  while (--i >= 0 && (mul *= 0x100)) {
+    this[offset + i] = (value / mul) & 0xFF
+  }
+
+  return offset + byteLength
+}
+
+Buffer.prototype.writeUInt8 = function writeUInt8 (value, offset, noAssert) {
+  value = +value
+  offset = offset >>> 0
+  if (!noAssert) checkInt(this, value, offset, 1, 0xff, 0)
+  this[offset] = (value & 0xff)
+  return offset + 1
+}
+
+Buffer.prototype.writeUInt16LE = function writeUInt16LE (value, offset, noAssert) {
+  value = +value
+  offset = offset >>> 0
+  if (!noAssert) checkInt(this, value, offset, 2, 0xffff, 0)
+  this[offset] = (value & 0xff)
+  this[offset + 1] = (value >>> 8)
+  return offset + 2
+}
+
+Buffer.prototype.writeUInt16BE = function writeUInt16BE (value, offset, noAssert) {
+  value = +value
+  offset = offset >>> 0
+  if (!noAssert) checkInt(this, value, offset, 2, 0xffff, 0)
+  this[offset] = (value >>> 8)
+  this[offset + 1] = (value & 0xff)
+  return offset + 2
+}
+
+Buffer.prototype.writeUInt32LE = function writeUInt32LE (value, offset, noAssert) {
+  value = +value
+  offset = offset >>> 0
+  if (!noAssert) checkInt(this, value, offset, 4, 0xffffffff, 0)
+  this[offset + 3] = (value >>> 24)
+  this[offset + 2] = (value >>> 16)
+  this[offset + 1] = (value >>> 8)
+  this[offset] = (value & 0xff)
+  return offset + 4
+}
+
+Buffer.prototype.writeUInt32BE = function writeUInt32BE (value, offset, noAssert) {
+  value = +value
+  offset = offset >>> 0
+  if (!noAssert) checkInt(this, value, offset, 4, 0xffffffff, 0)
+  this[offset] = (value >>> 24)
+  this[offset + 1] = (value >>> 16)
+  this[offset + 2] = (value >>> 8)
+  this[offset + 3] = (value & 0xff)
+  return offset + 4
+}
+
+Buffer.prototype.writeIntLE = function writeIntLE (value, offset, byteLength, noAssert) {
+  value = +value
+  offset = offset >>> 0
+  if (!noAssert) {
+    var limit = Math.pow(2, (8 * byteLength) - 1)
+
+    checkInt(this, value, offset, byteLength, limit - 1, -limit)
+  }
+
+  var i = 0
+  var mul = 1
+  var sub = 0
+  this[offset] = value & 0xFF
+  while (++i < byteLength && (mul *= 0x100)) {
+    if (value < 0 && sub === 0 && this[offset + i - 1] !== 0) {
+      sub = 1
+    }
+    this[offset + i] = ((value / mul) >> 0) - sub & 0xFF
+  }
+
+  return offset + byteLength
+}
+
+Buffer.prototype.writeIntBE = function writeIntBE (value, offset, byteLength, noAssert) {
+  value = +value
+  offset = offset >>> 0
+  if (!noAssert) {
+    var limit = Math.pow(2, (8 * byteLength) - 1)
+
+    checkInt(this, value, offset, byteLength, limit - 1, -limit)
+  }
+
+  var i = byteLength - 1
+  var mul = 1
+  var sub = 0
+  this[offset + i] = value & 0xFF
+  while (--i >= 0 && (mul *= 0x100)) {
+    if (value < 0 && sub === 0 && this[offset + i + 1] !== 0) {
+      sub = 1
+    }
+    this[offset + i] = ((value / mul) >> 0) - sub & 0xFF
+  }
+
+  return offset + byteLength
+}
+
+Buffer.prototype.writeInt8 = function writeInt8 (value, offset, noAssert) {
+  value = +value
+  offset = offset >>> 0
+  if (!noAssert) checkInt(this, value, offset, 1, 0x7f, -0x80)
+  if (value < 0) value = 0xff + value + 1
+  this[offset] = (value & 0xff)
+  return offset + 1
+}
+
+Buffer.prototype.writeInt16LE = function writeInt16LE (value, offset, noAssert) {
+  value = +value
+  offset = offset >>> 0
+  if (!noAssert) checkInt(this, value, offset, 2, 0x7fff, -0x8000)
+  this[offset] = (value & 0xff)
+  this[offset + 1] = (value >>> 8)
+  return offset + 2
+}
+
+Buffer.prototype.writeInt16BE = function writeInt16BE (value, offset, noAssert) {
+  value = +value
+  offset = offset >>> 0
+  if (!noAssert) checkInt(this, value, offset, 2, 0x7fff, -0x8000)
+  this[offset] = (value >>> 8)
+  this[offset + 1] = (value & 0xff)
+  return offset + 2
+}
+
+Buffer.prototype.writeInt32LE = function writeInt32LE (value, offset, noAssert) {
+  value = +value
+  offset = offset >>> 0
+  if (!noAssert) checkInt(this, value, offset, 4, 0x7fffffff, -0x80000000)
+  this[offset] = (value & 0xff)
+  this[offset + 1] = (value >>> 8)
+  this[offset + 2] = (value >>> 16)
+  this[offset + 3] = (value >>> 24)
+  return offset + 4
+}
+
+Buffer.prototype.writeInt32BE = function writeInt32BE (value, offset, noAssert) {
+  value = +value
+  offset = offset >>> 0
+  if (!noAssert) checkInt(this, value, offset, 4, 0x7fffffff, -0x80000000)
+  if (value < 0) value = 0xffffffff + value + 1
+  this[offset] = (value >>> 24)
+  this[offset + 1] = (value >>> 16)
+  this[offset + 2] = (value >>> 8)
+  this[offset + 3] = (value & 0xff)
+  return offset + 4
+}
+
+function checkIEEE754 (buf, value, offset, ext, max, min) {
+  if (offset + ext > buf.length) throw new RangeError('Index out of range')
+  if (offset < 0) throw new RangeError('Index out of range')
+}
+
+function writeFloat (buf, value, offset, littleEndian, noAssert) {
+  value = +value
+  offset = offset >>> 0
+  if (!noAssert) {
+    checkIEEE754(buf, value, offset, 4, 3.4028234663852886e+38, -3.4028234663852886e+38)
+  }
+  ieee754.write(buf, value, offset, littleEndian, 23, 4)
+  return offset + 4
+}
+
+Buffer.prototype.writeFloatLE = function writeFloatLE (value, offset, noAssert) {
+  return writeFloat(this, value, offset, true, noAssert)
+}
+
+Buffer.prototype.writeFloatBE = function writeFloatBE (value, offset, noAssert) {
+  return writeFloat(this, value, offset, false, noAssert)
+}
+
+function writeDouble (buf, value, offset, littleEndian, noAssert) {
+  value = +value
+  offset = offset >>> 0
+  if (!noAssert) {
+    checkIEEE754(buf, value, offset, 8, 1.7976931348623157E+308, -1.7976931348623157E+308)
+  }
+  ieee754.write(buf, value, offset, littleEndian, 52, 8)
+  return offset + 8
+}
+
+Buffer.prototype.writeDoubleLE = function writeDoubleLE (value, offset, noAssert) {
+  return writeDouble(this, value, offset, true, noAssert)
+}
+
+Buffer.prototype.writeDoubleBE = function writeDoubleBE (value, offset, noAssert) {
+  return writeDouble(this, value, offset, false, noAssert)
+}
+
+// copy(targetBuffer, targetStart=0, sourceStart=0, sourceEnd=buffer.length)
+Buffer.prototype.copy = function copy (target, targetStart, start, end) {
+  if (!Buffer.isBuffer(target)) throw new TypeError('argument should be a Buffer')
+  if (!start) start = 0
+  if (!end && end !== 0) end = this.length
+  if (targetStart >= target.length) targetStart = target.length
+  if (!targetStart) targetStart = 0
+  if (end > 0 && end < start) end = start
+
+  // Copy 0 bytes; we're done
+  if (end === start) return 0
+  if (target.length === 0 || this.length === 0) return 0
+
+  // Fatal error conditions
+  if (targetStart < 0) {
+    throw new RangeError('targetStart out of bounds')
+  }
+  if (start < 0 || start >= this.length) throw new RangeError('Index out of range')
+  if (end < 0) throw new RangeError('sourceEnd out of bounds')
+
+  // Are we oob?
+  if (end > this.length) end = this.length
+  if (target.length - targetStart < end - start) {
+    end = target.length - targetStart + start
+  }
+
+  var len = end - start
+
+  if (this === target && typeof Uint8Array.prototype.copyWithin === 'function') {
+    // Use built-in when available, missing from IE11
+    this.copyWithin(targetStart, start, end)
+  } else if (this === target && start < targetStart && targetStart < end) {
+    // descending copy from end
+    for (var i = len - 1; i >= 0; --i) {
+      target[i + targetStart] = this[i + start]
+    }
+  } else {
+    Uint8Array.prototype.set.call(
+      target,
+      this.subarray(start, end),
+      targetStart
+    )
+  }
+
+  return len
+}
+
+// Usage:
+//    buffer.fill(number[, offset[, end]])
+//    buffer.fill(buffer[, offset[, end]])
+//    buffer.fill(string[, offset[, end]][, encoding])
+Buffer.prototype.fill = function fill (val, start, end, encoding) {
+  // Handle string cases:
+  if (typeof val === 'string') {
+    if (typeof start === 'string') {
+      encoding = start
+      start = 0
+      end = this.length
+    } else if (typeof end === 'string') {
+      encoding = end
+      end = this.length
+    }
+    if (encoding !== undefined && typeof encoding !== 'string') {
+      throw new TypeError('encoding must be a string')
+    }
+    if (typeof encoding === 'string' && !Buffer.isEncoding(encoding)) {
+      throw new TypeError('Unknown encoding: ' + encoding)
+    }
+    if (val.length === 1) {
+      var code = val.charCodeAt(0)
+      if ((encoding === 'utf8' && code < 128) ||
+          encoding === 'latin1') {
+        // Fast path: If `val` fits into a single byte, use that numeric value.
+        val = code
+      }
+    }
+  } else if (typeof val === 'number') {
+    val = val & 255
+  } else if (typeof val === 'boolean') {
+    val = Number(val)
+  }
+
+  // Invalid ranges are not set to a default, so can range check early.
+  if (start < 0 || this.length < start || this.length < end) {
+    throw new RangeError('Out of range index')
+  }
+
+  if (end <= start) {
+    return this
+  }
+
+  start = start >>> 0
+  end = end === undefined ? this.length : end >>> 0
+
+  if (!val) val = 0
+
+  var i
+  if (typeof val === 'number') {
+    for (i = start; i < end; ++i) {
+      this[i] = val
+    }
+  } else {
+    var bytes = Buffer.isBuffer(val)
+      ? val
+      : Buffer.from(val, encoding)
+    var len = bytes.length
+    if (len === 0) {
+      throw new TypeError('The value "' + val +
+        '" is invalid for argument "value"')
+    }
+    for (i = 0; i < end - start; ++i) {
+      this[i + start] = bytes[i % len]
+    }
+  }
+
+  return this
+}
+
+// HELPER FUNCTIONS
+// ================
+
+var INVALID_BASE64_RE = /[^+/0-9A-Za-z-_]/g
+
+function base64clean (str) {
+  // Node takes equal signs as end of the Base64 encoding
+  str = str.split('=')[0]
+  // Node strips out invalid characters like \n and \t from the string, base64-js does not
+  str = str.trim().replace(INVALID_BASE64_RE, '')
+  // Node converts strings with length < 2 to ''
+  if (str.length < 2) return ''
+  // Node allows for non-padded base64 strings (missing trailing ===), base64-js does not
+  while (str.length % 4 !== 0) {
+    str = str + '='
+  }
+  return str
+}
+
+function toHex (n) {
+  if (n < 16) return '0' + n.toString(16)
+  return n.toString(16)
+}
+
+function utf8ToBytes (string, units) {
+  units = units || Infinity
+  var codePoint
+  var length = string.length
+  var leadSurrogate = null
+  var bytes = []
+
+  for (var i = 0; i < length; ++i) {
+    codePoint = string.charCodeAt(i)
+
+    // is surrogate component
+    if (codePoint > 0xD7FF && codePoint < 0xE000) {
+      // last char was a lead
+      if (!leadSurrogate) {
+        // no lead yet
+        if (codePoint > 0xDBFF) {
+          // unexpected trail
+          if ((units -= 3) > -1) bytes.push(0xEF, 0xBF, 0xBD)
+          continue
+        } else if (i + 1 === length) {
+          // unpaired lead
+          if ((units -= 3) > -1) bytes.push(0xEF, 0xBF, 0xBD)
+          continue
+        }
+
+        // valid lead
+        leadSurrogate = codePoint
+
+        continue
+      }
+
+      // 2 leads in a row
+      if (codePoint < 0xDC00) {
+        if ((units -= 3) > -1) bytes.push(0xEF, 0xBF, 0xBD)
+        leadSurrogate = codePoint
+        continue
+      }
+
+      // valid surrogate pair
+      codePoint = (leadSurrogate - 0xD800 << 10 | codePoint - 0xDC00) + 0x10000
+    } else if (leadSurrogate) {
+      // valid bmp char, but last char was a lead
+      if ((units -= 3) > -1) bytes.push(0xEF, 0xBF, 0xBD)
+    }
+
+    leadSurrogate = null
+
+    // encode utf8
+    if (codePoint < 0x80) {
+      if ((units -= 1) < 0) break
+      bytes.push(codePoint)
+    } else if (codePoint < 0x800) {
+      if ((units -= 2) < 0) break
+      bytes.push(
+        codePoint >> 0x6 | 0xC0,
+        codePoint & 0x3F | 0x80
+      )
+    } else if (codePoint < 0x10000) {
+      if ((units -= 3) < 0) break
+      bytes.push(
+        codePoint >> 0xC | 0xE0,
+        codePoint >> 0x6 & 0x3F | 0x80,
+        codePoint & 0x3F | 0x80
+      )
+    } else if (codePoint < 0x110000) {
+      if ((units -= 4) < 0) break
+      bytes.push(
+        codePoint >> 0x12 | 0xF0,
+        codePoint >> 0xC & 0x3F | 0x80,
+        codePoint >> 0x6 & 0x3F | 0x80,
+        codePoint & 0x3F | 0x80
+      )
+    } else {
+      throw new Error('Invalid code point')
+    }
+  }
+
+  return bytes
+}
+
+function asciiToBytes (str) {
+  var byteArray = []
+  for (var i = 0; i < str.length; ++i) {
+    // Node's code seems to be doing this and not & 0x7F..
+    byteArray.push(str.charCodeAt(i) & 0xFF)
+  }
+  return byteArray
+}
+
+function utf16leToBytes (str, units) {
+  var c, hi, lo
+  var byteArray = []
+  for (var i = 0; i < str.length; ++i) {
+    if ((units -= 2) < 0) break
+
+    c = str.charCodeAt(i)
+    hi = c >> 8
+    lo = c % 256
+    byteArray.push(lo)
+    byteArray.push(hi)
+  }
+
+  return byteArray
+}
+
+function base64ToBytes (str) {
+  return base64.toByteArray(base64clean(str))
+}
+
+function blitBuffer (src, dst, offset, length) {
+  for (var i = 0; i < length; ++i) {
+    if ((i + offset >= dst.length) || (i >= src.length)) break
+    dst[i + offset] = src[i]
+  }
+  return i
+}
+
+// ArrayBuffer or Uint8Array objects from other contexts (i.e. iframes) do not pass
+// the `instanceof` check but they should be treated as of that type.
+// See: https://github.com/feross/buffer/issues/166
+function isInstance (obj, type) {
+  return obj instanceof type ||
+    (obj != null && obj.constructor != null && obj.constructor.name != null &&
+      obj.constructor.name === type.name)
+}
+function numberIsNaN (obj) {
+  // For IE11 support
+  return obj !== obj // eslint-disable-line no-self-compare
+}
+
+}).call(this,require("buffer").Buffer)
+},{"base64-js":11,"buffer":12,"ieee754":19}],13:[function(require,module,exports){
+"use strict";
+
+exports.__esModule = true;
+exports.default = void 0;
+
+function isElement(el) {
+  return el != null && typeof el === 'object' && el.nodeType === 1;
+}
+
+function canOverflow(overflow, skipOverflowHiddenElements) {
+  if (skipOverflowHiddenElements && overflow === 'hidden') {
+    return false;
+  }
+
+  return overflow !== 'visible' && overflow !== 'clip';
+}
+
+function isScrollable(el, skipOverflowHiddenElements) {
+  if (el.clientHeight < el.scrollHeight || el.clientWidth < el.scrollWidth) {
+    var style = getComputedStyle(el, null);
+    return canOverflow(style.overflowY, skipOverflowHiddenElements) || canOverflow(style.overflowX, skipOverflowHiddenElements);
+  }
+
+  return false;
+}
+
+function alignNearest(scrollingEdgeStart, scrollingEdgeEnd, scrollingSize, scrollingBorderStart, scrollingBorderEnd, elementEdgeStart, elementEdgeEnd, elementSize) {
+  if (elementEdgeStart < scrollingEdgeStart && elementEdgeEnd > scrollingEdgeEnd || elementEdgeStart > scrollingEdgeStart && elementEdgeEnd < scrollingEdgeEnd) {
+    return 0;
+  }
+
+  if (elementEdgeStart <= scrollingEdgeStart && elementSize <= scrollingSize || elementEdgeEnd >= scrollingEdgeEnd && elementSize >= scrollingSize) {
+    return elementEdgeStart - scrollingEdgeStart - scrollingBorderStart;
+  }
+
+  if (elementEdgeEnd > scrollingEdgeEnd && elementSize < scrollingSize || elementEdgeStart < scrollingEdgeStart && elementSize > scrollingSize) {
+    return elementEdgeEnd - scrollingEdgeEnd + scrollingBorderEnd;
+  }
+
+  return 0;
+}
+
+var _default = function _default(target, options) {
+  var scrollMode = options.scrollMode,
+      block = options.block,
+      inline = options.inline,
+      boundary = options.boundary,
+      skipOverflowHiddenElements = options.skipOverflowHiddenElements;
+  var checkBoundary = typeof boundary === 'function' ? boundary : function (node) {
+    return node !== boundary;
+  };
+
+  if (!isElement(target)) {
+    throw new TypeError('Invalid target');
+  }
+
+  var scrollingElement = document.scrollingElement || document.documentElement;
+  var frames = [];
+  var cursor = target;
+
+  while (isElement(cursor) && checkBoundary(cursor)) {
+    cursor = cursor.parentNode;
+
+    if (cursor === scrollingElement) {
+      frames.push(cursor);
+      break;
+    }
+
+    if (cursor === document.body && isScrollable(cursor) && !isScrollable(document.documentElement)) {
+      continue;
+    }
+
+    if (isScrollable(cursor, skipOverflowHiddenElements)) {
+      frames.push(cursor);
+    }
+  }
+
+  var viewportWidth = window.visualViewport ? visualViewport.width : innerWidth;
+  var viewportHeight = window.visualViewport ? visualViewport.height : innerHeight;
+  var viewportX = window.scrollX || pageXOffset;
+  var viewportY = window.scrollY || pageYOffset;
+
+  var _target$getBoundingCl = target.getBoundingClientRect(),
+      targetHeight = _target$getBoundingCl.height,
+      targetWidth = _target$getBoundingCl.width,
+      targetTop = _target$getBoundingCl.top,
+      targetRight = _target$getBoundingCl.right,
+      targetBottom = _target$getBoundingCl.bottom,
+      targetLeft = _target$getBoundingCl.left;
+
+  var targetBlock = block === 'start' || block === 'nearest' ? targetTop : block === 'end' ? targetBottom : targetTop + targetHeight / 2;
+  var targetInline = inline === 'center' ? targetLeft + targetWidth / 2 : inline === 'end' ? targetRight : targetLeft;
+  var computations = [];
+
+  for (var index = 0; index < frames.length; index++) {
+    var frame = frames[index];
+
+    var _frame$getBoundingCli = frame.getBoundingClientRect(),
+        _height = _frame$getBoundingCli.height,
+        _width = _frame$getBoundingCli.width,
+        _top = _frame$getBoundingCli.top,
+        right = _frame$getBoundingCli.right,
+        bottom = _frame$getBoundingCli.bottom,
+        _left = _frame$getBoundingCli.left;
+
+    if (scrollMode === 'if-needed' && targetTop >= 0 && targetLeft >= 0 && targetBottom <= viewportHeight && targetRight <= viewportWidth && targetTop >= _top && targetBottom <= bottom && targetLeft >= _left && targetRight <= right) {
+      return computations;
+    }
+
+    var frameStyle = getComputedStyle(frame);
+    var borderLeft = parseInt(frameStyle.borderLeftWidth, 10);
+    var borderTop = parseInt(frameStyle.borderTopWidth, 10);
+    var borderRight = parseInt(frameStyle.borderRightWidth, 10);
+    var borderBottom = parseInt(frameStyle.borderBottomWidth, 10);
+    var blockScroll = 0;
+    var inlineScroll = 0;
+    var scrollbarWidth = 'offsetWidth' in frame ? frame.offsetWidth - frame.clientWidth - borderLeft - borderRight : 0;
+    var scrollbarHeight = 'offsetHeight' in frame ? frame.offsetHeight - frame.clientHeight - borderTop - borderBottom : 0;
+
+    if (scrollingElement === frame) {
+      if (block === 'start') {
+        blockScroll = targetBlock;
+      } else if (block === 'end') {
+        blockScroll = targetBlock - viewportHeight;
+      } else if (block === 'nearest') {
+        blockScroll = alignNearest(viewportY, viewportY + viewportHeight, viewportHeight, borderTop, borderBottom, viewportY + targetBlock, viewportY + targetBlock + targetHeight, targetHeight);
+      } else {
+        blockScroll = targetBlock - viewportHeight / 2;
+      }
+
+      if (inline === 'start') {
+        inlineScroll = targetInline;
+      } else if (inline === 'center') {
+        inlineScroll = targetInline - viewportWidth / 2;
+      } else if (inline === 'end') {
+        inlineScroll = targetInline - viewportWidth;
+      } else {
+        inlineScroll = alignNearest(viewportX, viewportX + viewportWidth, viewportWidth, borderLeft, borderRight, viewportX + targetInline, viewportX + targetInline + targetWidth, targetWidth);
+      }
+
+      blockScroll = Math.max(0, blockScroll + viewportY);
+      inlineScroll = Math.max(0, inlineScroll + viewportX);
+    } else {
+      if (block === 'start') {
+        blockScroll = targetBlock - _top - borderTop;
+      } else if (block === 'end') {
+        blockScroll = targetBlock - bottom + borderBottom + scrollbarHeight;
+      } else if (block === 'nearest') {
+        blockScroll = alignNearest(_top, bottom, _height, borderTop, borderBottom + scrollbarHeight, targetBlock, targetBlock + targetHeight, targetHeight);
+      } else {
+        blockScroll = targetBlock - (_top + _height / 2) + scrollbarHeight / 2;
+      }
+
+      if (inline === 'start') {
+        inlineScroll = targetInline - _left - borderLeft;
+      } else if (inline === 'center') {
+        inlineScroll = targetInline - (_left + _width / 2) + scrollbarWidth / 2;
+      } else if (inline === 'end') {
+        inlineScroll = targetInline - right + borderRight + scrollbarWidth;
+      } else {
+        inlineScroll = alignNearest(_left, right, _width, borderLeft, borderRight + scrollbarWidth, targetInline, targetInline + targetWidth, targetWidth);
+      }
+
+      var scrollLeft = frame.scrollLeft,
+          scrollTop = frame.scrollTop;
+      blockScroll = Math.max(0, Math.min(scrollTop + blockScroll, frame.scrollHeight - _height + scrollbarHeight));
+      inlineScroll = Math.max(0, Math.min(scrollLeft + inlineScroll, frame.scrollWidth - _width + scrollbarWidth));
+      targetBlock += scrollTop - blockScroll;
+      targetInline += scrollLeft - inlineScroll;
+    }
+
+    computations.push({
+      el: frame,
+      top: blockScroll,
+      left: inlineScroll
+    });
+  }
+
+  return computations;
+};
+
+exports.default = _default;
+module.exports = exports.default;
+},{}],14:[function(require,module,exports){
+var prefix = require('prefix-style')
+var toCamelCase = require('to-camel-case')
+var cache = { 'float': 'cssFloat' }
+var addPxToStyle = require('add-px-to-style')
+
+function style (element, property, value) {
+  var camel = cache[property]
+  if (typeof camel === 'undefined') {
+    camel = detect(property)
+  }
+
+  // may be false if CSS prop is unsupported
+  if (camel) {
+    if (value === undefined) {
+      return element.style[camel]
+    }
+
+    element.style[camel] = addPxToStyle(camel, value)
+  }
+}
+
+function each (element, properties) {
+  for (var k in properties) {
+    if (properties.hasOwnProperty(k)) {
+      style(element, k, properties[k])
+    }
+  }
+}
+
+function detect (cssProp) {
+  var camel = toCamelCase(cssProp)
+  var result = prefix(camel)
+  cache[camel] = cache[cssProp] = cache[result] = result
+  return result
+}
+
+function set () {
+  if (arguments.length === 2) {
+    if (typeof arguments[1] === 'string') {
+      arguments[0].style.cssText = arguments[1]
+    } else {
+      each(arguments[0], arguments[1])
+    }
+  } else {
+    style(arguments[0], arguments[1], arguments[2])
+  }
+}
+
+module.exports = set
+module.exports.set = set
+
+module.exports.get = function (element, properties) {
+  if (Array.isArray(properties)) {
+    return properties.reduce(function (obj, prop) {
+      obj[prop] = style(element, prop || '')
+      return obj
+    }, {})
+  } else {
+    return style(element, properties || '')
+  }
+}
+
+},{"add-px-to-style":10,"prefix-style":26,"to-camel-case":88}],15:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, '__esModule', { value: true });
+
+function _interopDefault (ex) { return (ex && (typeof ex === 'object') && 'default' in ex) ? ex['default'] : ex; }
+
+var resolvePathname = _interopDefault(require('resolve-pathname'));
+var valueEqual = _interopDefault(require('value-equal'));
+var warning = _interopDefault(require('tiny-warning'));
+var invariant = _interopDefault(require('tiny-invariant'));
+
+function _extends() {
+  _extends = Object.assign || function (target) {
+    for (var i = 1; i < arguments.length; i++) {
+      var source = arguments[i];
+
+      for (var key in source) {
+        if (Object.prototype.hasOwnProperty.call(source, key)) {
+          target[key] = source[key];
+        }
+      }
+    }
+
+    return target;
+  };
+
+  return _extends.apply(this, arguments);
+}
+
+function addLeadingSlash(path) {
+  return path.charAt(0) === '/' ? path : '/' + path;
+}
+function stripLeadingSlash(path) {
+  return path.charAt(0) === '/' ? path.substr(1) : path;
+}
+function hasBasename(path, prefix) {
+  return new RegExp('^' + prefix + '(\\/|\\?|#|$)', 'i').test(path);
+}
+function stripBasename(path, prefix) {
+  return hasBasename(path, prefix) ? path.substr(prefix.length) : path;
+}
+function stripTrailingSlash(path) {
+  return path.charAt(path.length - 1) === '/' ? path.slice(0, -1) : path;
+}
+function parsePath(path) {
+  var pathname = path || '/';
+  var search = '';
+  var hash = '';
+  var hashIndex = pathname.indexOf('#');
+
+  if (hashIndex !== -1) {
+    hash = pathname.substr(hashIndex);
+    pathname = pathname.substr(0, hashIndex);
+  }
+
+  var searchIndex = pathname.indexOf('?');
+
+  if (searchIndex !== -1) {
+    search = pathname.substr(searchIndex);
+    pathname = pathname.substr(0, searchIndex);
+  }
+
+  return {
+    pathname: pathname,
+    search: search === '?' ? '' : search,
+    hash: hash === '#' ? '' : hash
+  };
+}
+function createPath(location) {
+  var pathname = location.pathname,
+      search = location.search,
+      hash = location.hash;
+  var path = pathname || '/';
+  if (search && search !== '?') path += search.charAt(0) === '?' ? search : "?" + search;
+  if (hash && hash !== '#') path += hash.charAt(0) === '#' ? hash : "#" + hash;
+  return path;
+}
+
+function createLocation(path, state, key, currentLocation) {
+  var location;
+
+  if (typeof path === 'string') {
+    // Two-arg form: push(path, state)
+    location = parsePath(path);
+    location.state = state;
+  } else {
+    // One-arg form: push(location)
+    location = _extends({}, path);
+    if (location.pathname === undefined) location.pathname = '';
+
+    if (location.search) {
+      if (location.search.charAt(0) !== '?') location.search = '?' + location.search;
+    } else {
+      location.search = '';
+    }
+
+    if (location.hash) {
+      if (location.hash.charAt(0) !== '#') location.hash = '#' + location.hash;
+    } else {
+      location.hash = '';
+    }
+
+    if (state !== undefined && location.state === undefined) location.state = state;
+  }
+
+  try {
+    location.pathname = decodeURI(location.pathname);
+  } catch (e) {
+    if (e instanceof URIError) {
+      throw new URIError('Pathname "' + location.pathname + '" could not be decoded. ' + 'This is likely caused by an invalid percent-encoding.');
+    } else {
+      throw e;
+    }
+  }
+
+  if (key) location.key = key;
+
+  if (currentLocation) {
+    // Resolve incomplete/relative pathname relative to current location.
+    if (!location.pathname) {
+      location.pathname = currentLocation.pathname;
+    } else if (location.pathname.charAt(0) !== '/') {
+      location.pathname = resolvePathname(location.pathname, currentLocation.pathname);
+    }
+  } else {
+    // When there is no prior location and pathname is empty, set it to /
+    if (!location.pathname) {
+      location.pathname = '/';
+    }
+  }
+
+  return location;
+}
+function locationsAreEqual(a, b) {
+  return a.pathname === b.pathname && a.search === b.search && a.hash === b.hash && a.key === b.key && valueEqual(a.state, b.state);
+}
+
+function createTransitionManager() {
+  var prompt = null;
+
+  function setPrompt(nextPrompt) {
+    warning(prompt == null, 'A history supports only one prompt at a time');
+    prompt = nextPrompt;
+    return function () {
+      if (prompt === nextPrompt) prompt = null;
+    };
+  }
+
+  function confirmTransitionTo(location, action, getUserConfirmation, callback) {
+    // TODO: If another transition starts while we're still confirming
+    // the previous one, we may end up in a weird state. Figure out the
+    // best way to handle this.
+    if (prompt != null) {
+      var result = typeof prompt === 'function' ? prompt(location, action) : prompt;
+
+      if (typeof result === 'string') {
+        if (typeof getUserConfirmation === 'function') {
+          getUserConfirmation(result, callback);
+        } else {
+          warning(false, 'A history needs a getUserConfirmation function in order to use a prompt message');
+          callback(true);
+        }
+      } else {
+        // Return false from a transition hook to cancel the transition.
+        callback(result !== false);
+      }
+    } else {
+      callback(true);
+    }
+  }
+
+  var listeners = [];
+
+  function appendListener(fn) {
+    var isActive = true;
+
+    function listener() {
+      if (isActive) fn.apply(void 0, arguments);
+    }
+
+    listeners.push(listener);
+    return function () {
+      isActive = false;
+      listeners = listeners.filter(function (item) {
+        return item !== listener;
+      });
+    };
+  }
+
+  function notifyListeners() {
+    for (var _len = arguments.length, args = new Array(_len), _key = 0; _key < _len; _key++) {
+      args[_key] = arguments[_key];
+    }
+
+    listeners.forEach(function (listener) {
+      return listener.apply(void 0, args);
+    });
+  }
+
+  return {
+    setPrompt: setPrompt,
+    confirmTransitionTo: confirmTransitionTo,
+    appendListener: appendListener,
+    notifyListeners: notifyListeners
+  };
+}
+
+var canUseDOM = !!(typeof window !== 'undefined' && window.document && window.document.createElement);
+function getConfirmation(message, callback) {
+  callback(window.confirm(message)); // eslint-disable-line no-alert
+}
+/**
+ * Returns true if the HTML5 history API is supported. Taken from Modernizr.
+ *
+ * https://github.com/Modernizr/Modernizr/blob/master/LICENSE
+ * https://github.com/Modernizr/Modernizr/blob/master/feature-detects/history.js
+ * changed to avoid false negatives for Windows Phones: https://github.com/reactjs/react-router/issues/586
+ */
+
+function supportsHistory() {
+  var ua = window.navigator.userAgent;
+  if ((ua.indexOf('Android 2.') !== -1 || ua.indexOf('Android 4.0') !== -1) && ua.indexOf('Mobile Safari') !== -1 && ua.indexOf('Chrome') === -1 && ua.indexOf('Windows Phone') === -1) return false;
+  return window.history && 'pushState' in window.history;
+}
+/**
+ * Returns true if browser fires popstate on hash change.
+ * IE10 and IE11 do not.
+ */
+
+function supportsPopStateOnHashChange() {
+  return window.navigator.userAgent.indexOf('Trident') === -1;
+}
+/**
+ * Returns false if using go(n) with hash history causes a full page reload.
+ */
+
+function supportsGoWithoutReloadUsingHash() {
+  return window.navigator.userAgent.indexOf('Firefox') === -1;
+}
+/**
+ * Returns true if a given popstate event is an extraneous WebKit event.
+ * Accounts for the fact that Chrome on iOS fires real popstate events
+ * containing undefined state when pressing the back button.
+ */
+
+function isExtraneousPopstateEvent(event) {
+  event.state === undefined && navigator.userAgent.indexOf('CriOS') === -1;
+}
+
+var PopStateEvent = 'popstate';
+var HashChangeEvent = 'hashchange';
+
+function getHistoryState() {
+  try {
+    return window.history.state || {};
+  } catch (e) {
+    // IE 11 sometimes throws when accessing window.history.state
+    // See https://github.com/ReactTraining/history/pull/289
+    return {};
+  }
+}
+/**
+ * Creates a history object that uses the HTML5 history API including
+ * pushState, replaceState, and the popstate event.
+ */
+
+
+function createBrowserHistory(props) {
+  if (props === void 0) {
+    props = {};
+  }
+
+  !canUseDOM ? invariant(false, 'Browser history needs a DOM') : void 0;
+  var globalHistory = window.history;
+  var canUseHistory = supportsHistory();
+  var needsHashChangeListener = !supportsPopStateOnHashChange();
+  var _props = props,
+      _props$forceRefresh = _props.forceRefresh,
+      forceRefresh = _props$forceRefresh === void 0 ? false : _props$forceRefresh,
+      _props$getUserConfirm = _props.getUserConfirmation,
+      getUserConfirmation = _props$getUserConfirm === void 0 ? getConfirmation : _props$getUserConfirm,
+      _props$keyLength = _props.keyLength,
+      keyLength = _props$keyLength === void 0 ? 6 : _props$keyLength;
+  var basename = props.basename ? stripTrailingSlash(addLeadingSlash(props.basename)) : '';
+
+  function getDOMLocation(historyState) {
+    var _ref = historyState || {},
+        key = _ref.key,
+        state = _ref.state;
+
+    var _window$location = window.location,
+        pathname = _window$location.pathname,
+        search = _window$location.search,
+        hash = _window$location.hash;
+    var path = pathname + search + hash;
+    warning(!basename || hasBasename(path, basename), 'You are attempting to use a basename on a page whose URL path does not begin ' + 'with the basename. Expected path "' + path + '" to begin with "' + basename + '".');
+    if (basename) path = stripBasename(path, basename);
+    return createLocation(path, state, key);
+  }
+
+  function createKey() {
+    return Math.random().toString(36).substr(2, keyLength);
+  }
+
+  var transitionManager = createTransitionManager();
+
+  function setState(nextState) {
+    _extends(history, nextState);
+
+    history.length = globalHistory.length;
+    transitionManager.notifyListeners(history.location, history.action);
+  }
+
+  function handlePopState(event) {
+    // Ignore extraneous popstate events in WebKit.
+    if (isExtraneousPopstateEvent(event)) return;
+    handlePop(getDOMLocation(event.state));
+  }
+
+  function handleHashChange() {
+    handlePop(getDOMLocation(getHistoryState()));
+  }
+
+  var forceNextPop = false;
+
+  function handlePop(location) {
+    if (forceNextPop) {
+      forceNextPop = false;
+      setState();
+    } else {
+      var action = 'POP';
+      transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+        if (ok) {
+          setState({
+            action: action,
+            location: location
+          });
+        } else {
+          revertPop(location);
+        }
+      });
+    }
+  }
+
+  function revertPop(fromLocation) {
+    var toLocation = history.location; // TODO: We could probably make this more reliable by
+    // keeping a list of keys we've seen in sessionStorage.
+    // Instead, we just default to 0 for keys we don't know.
+
+    var toIndex = allKeys.indexOf(toLocation.key);
+    if (toIndex === -1) toIndex = 0;
+    var fromIndex = allKeys.indexOf(fromLocation.key);
+    if (fromIndex === -1) fromIndex = 0;
+    var delta = toIndex - fromIndex;
+
+    if (delta) {
+      forceNextPop = true;
+      go(delta);
+    }
+  }
+
+  var initialLocation = getDOMLocation(getHistoryState());
+  var allKeys = [initialLocation.key]; // Public interface
+
+  function createHref(location) {
+    return basename + createPath(location);
+  }
+
+  function push(path, state) {
+    warning(!(typeof path === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to push when the 1st ' + 'argument is a location-like object that already has state; it is ignored');
+    var action = 'PUSH';
+    var location = createLocation(path, state, createKey(), history.location);
+    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+      if (!ok) return;
+      var href = createHref(location);
+      var key = location.key,
+          state = location.state;
+
+      if (canUseHistory) {
+        globalHistory.pushState({
+          key: key,
+          state: state
+        }, null, href);
+
+        if (forceRefresh) {
+          window.location.href = href;
+        } else {
+          var prevIndex = allKeys.indexOf(history.location.key);
+          var nextKeys = allKeys.slice(0, prevIndex === -1 ? 0 : prevIndex + 1);
+          nextKeys.push(location.key);
+          allKeys = nextKeys;
+          setState({
+            action: action,
+            location: location
+          });
+        }
+      } else {
+        warning(state === undefined, 'Browser history cannot push state in browsers that do not support HTML5 history');
+        window.location.href = href;
+      }
+    });
+  }
+
+  function replace(path, state) {
+    warning(!(typeof path === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to replace when the 1st ' + 'argument is a location-like object that already has state; it is ignored');
+    var action = 'REPLACE';
+    var location = createLocation(path, state, createKey(), history.location);
+    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+      if (!ok) return;
+      var href = createHref(location);
+      var key = location.key,
+          state = location.state;
+
+      if (canUseHistory) {
+        globalHistory.replaceState({
+          key: key,
+          state: state
+        }, null, href);
+
+        if (forceRefresh) {
+          window.location.replace(href);
+        } else {
+          var prevIndex = allKeys.indexOf(history.location.key);
+          if (prevIndex !== -1) allKeys[prevIndex] = location.key;
+          setState({
+            action: action,
+            location: location
+          });
+        }
+      } else {
+        warning(state === undefined, 'Browser history cannot replace state in browsers that do not support HTML5 history');
+        window.location.replace(href);
+      }
+    });
+  }
+
+  function go(n) {
+    globalHistory.go(n);
+  }
+
+  function goBack() {
+    go(-1);
+  }
+
+  function goForward() {
+    go(1);
+  }
+
+  var listenerCount = 0;
+
+  function checkDOMListeners(delta) {
+    listenerCount += delta;
+
+    if (listenerCount === 1 && delta === 1) {
+      window.addEventListener(PopStateEvent, handlePopState);
+      if (needsHashChangeListener) window.addEventListener(HashChangeEvent, handleHashChange);
+    } else if (listenerCount === 0) {
+      window.removeEventListener(PopStateEvent, handlePopState);
+      if (needsHashChangeListener) window.removeEventListener(HashChangeEvent, handleHashChange);
+    }
+  }
+
+  var isBlocked = false;
+
+  function block(prompt) {
+    if (prompt === void 0) {
+      prompt = false;
+    }
+
+    var unblock = transitionManager.setPrompt(prompt);
+
+    if (!isBlocked) {
+      checkDOMListeners(1);
+      isBlocked = true;
+    }
+
+    return function () {
+      if (isBlocked) {
+        isBlocked = false;
+        checkDOMListeners(-1);
+      }
+
+      return unblock();
+    };
+  }
+
+  function listen(listener) {
+    var unlisten = transitionManager.appendListener(listener);
+    checkDOMListeners(1);
+    return function () {
+      checkDOMListeners(-1);
+      unlisten();
+    };
+  }
+
+  var history = {
+    length: globalHistory.length,
+    action: 'POP',
+    location: initialLocation,
+    createHref: createHref,
+    push: push,
+    replace: replace,
+    go: go,
+    goBack: goBack,
+    goForward: goForward,
+    block: block,
+    listen: listen
+  };
+  return history;
+}
+
+var HashChangeEvent$1 = 'hashchange';
+var HashPathCoders = {
+  hashbang: {
+    encodePath: function encodePath(path) {
+      return path.charAt(0) === '!' ? path : '!/' + stripLeadingSlash(path);
+    },
+    decodePath: function decodePath(path) {
+      return path.charAt(0) === '!' ? path.substr(1) : path;
+    }
+  },
+  noslash: {
+    encodePath: stripLeadingSlash,
+    decodePath: addLeadingSlash
+  },
+  slash: {
+    encodePath: addLeadingSlash,
+    decodePath: addLeadingSlash
+  }
+};
+
+function getHashPath() {
+  // We can't use window.location.hash here because it's not
+  // consistent across browsers - Firefox will pre-decode it!
+  var href = window.location.href;
+  var hashIndex = href.indexOf('#');
+  return hashIndex === -1 ? '' : href.substring(hashIndex + 1);
+}
+
+function pushHashPath(path) {
+  window.location.hash = path;
+}
+
+function replaceHashPath(path) {
+  var hashIndex = window.location.href.indexOf('#');
+  window.location.replace(window.location.href.slice(0, hashIndex >= 0 ? hashIndex : 0) + '#' + path);
+}
+
+function createHashHistory(props) {
+  if (props === void 0) {
+    props = {};
+  }
+
+  !canUseDOM ? invariant(false, 'Hash history needs a DOM') : void 0;
+  var globalHistory = window.history;
+  var canGoWithoutReload = supportsGoWithoutReloadUsingHash();
+  var _props = props,
+      _props$getUserConfirm = _props.getUserConfirmation,
+      getUserConfirmation = _props$getUserConfirm === void 0 ? getConfirmation : _props$getUserConfirm,
+      _props$hashType = _props.hashType,
+      hashType = _props$hashType === void 0 ? 'slash' : _props$hashType;
+  var basename = props.basename ? stripTrailingSlash(addLeadingSlash(props.basename)) : '';
+  var _HashPathCoders$hashT = HashPathCoders[hashType],
+      encodePath = _HashPathCoders$hashT.encodePath,
+      decodePath = _HashPathCoders$hashT.decodePath;
+
+  function getDOMLocation() {
+    var path = decodePath(getHashPath());
+    warning(!basename || hasBasename(path, basename), 'You are attempting to use a basename on a page whose URL path does not begin ' + 'with the basename. Expected path "' + path + '" to begin with "' + basename + '".');
+    if (basename) path = stripBasename(path, basename);
+    return createLocation(path);
+  }
+
+  var transitionManager = createTransitionManager();
+
+  function setState(nextState) {
+    _extends(history, nextState);
+
+    history.length = globalHistory.length;
+    transitionManager.notifyListeners(history.location, history.action);
+  }
+
+  var forceNextPop = false;
+  var ignorePath = null;
+
+  function handleHashChange() {
+    var path = getHashPath();
+    var encodedPath = encodePath(path);
+
+    if (path !== encodedPath) {
+      // Ensure we always have a properly-encoded hash.
+      replaceHashPath(encodedPath);
+    } else {
+      var location = getDOMLocation();
+      var prevLocation = history.location;
+      if (!forceNextPop && locationsAreEqual(prevLocation, location)) return; // A hashchange doesn't always == location change.
+
+      if (ignorePath === createPath(location)) return; // Ignore this change; we already setState in push/replace.
+
+      ignorePath = null;
+      handlePop(location);
+    }
+  }
+
+  function handlePop(location) {
+    if (forceNextPop) {
+      forceNextPop = false;
+      setState();
+    } else {
+      var action = 'POP';
+      transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+        if (ok) {
+          setState({
+            action: action,
+            location: location
+          });
+        } else {
+          revertPop(location);
+        }
+      });
+    }
+  }
+
+  function revertPop(fromLocation) {
+    var toLocation = history.location; // TODO: We could probably make this more reliable by
+    // keeping a list of paths we've seen in sessionStorage.
+    // Instead, we just default to 0 for paths we don't know.
+
+    var toIndex = allPaths.lastIndexOf(createPath(toLocation));
+    if (toIndex === -1) toIndex = 0;
+    var fromIndex = allPaths.lastIndexOf(createPath(fromLocation));
+    if (fromIndex === -1) fromIndex = 0;
+    var delta = toIndex - fromIndex;
+
+    if (delta) {
+      forceNextPop = true;
+      go(delta);
+    }
+  } // Ensure the hash is encoded properly before doing anything else.
+
+
+  var path = getHashPath();
+  var encodedPath = encodePath(path);
+  if (path !== encodedPath) replaceHashPath(encodedPath);
+  var initialLocation = getDOMLocation();
+  var allPaths = [createPath(initialLocation)]; // Public interface
+
+  function createHref(location) {
+    return '#' + encodePath(basename + createPath(location));
+  }
+
+  function push(path, state) {
+    warning(state === undefined, 'Hash history cannot push state; it is ignored');
+    var action = 'PUSH';
+    var location = createLocation(path, undefined, undefined, history.location);
+    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+      if (!ok) return;
+      var path = createPath(location);
+      var encodedPath = encodePath(basename + path);
+      var hashChanged = getHashPath() !== encodedPath;
+
+      if (hashChanged) {
+        // We cannot tell if a hashchange was caused by a PUSH, so we'd
+        // rather setState here and ignore the hashchange. The caveat here
+        // is that other hash histories in the page will consider it a POP.
+        ignorePath = path;
+        pushHashPath(encodedPath);
+        var prevIndex = allPaths.lastIndexOf(createPath(history.location));
+        var nextPaths = allPaths.slice(0, prevIndex === -1 ? 0 : prevIndex + 1);
+        nextPaths.push(path);
+        allPaths = nextPaths;
+        setState({
+          action: action,
+          location: location
+        });
+      } else {
+        warning(false, 'Hash history cannot PUSH the same path; a new entry will not be added to the history stack');
+        setState();
+      }
+    });
+  }
+
+  function replace(path, state) {
+    warning(state === undefined, 'Hash history cannot replace state; it is ignored');
+    var action = 'REPLACE';
+    var location = createLocation(path, undefined, undefined, history.location);
+    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+      if (!ok) return;
+      var path = createPath(location);
+      var encodedPath = encodePath(basename + path);
+      var hashChanged = getHashPath() !== encodedPath;
+
+      if (hashChanged) {
+        // We cannot tell if a hashchange was caused by a REPLACE, so we'd
+        // rather setState here and ignore the hashchange. The caveat here
+        // is that other hash histories in the page will consider it a POP.
+        ignorePath = path;
+        replaceHashPath(encodedPath);
+      }
+
+      var prevIndex = allPaths.indexOf(createPath(history.location));
+      if (prevIndex !== -1) allPaths[prevIndex] = path;
+      setState({
+        action: action,
+        location: location
+      });
+    });
+  }
+
+  function go(n) {
+    warning(canGoWithoutReload, 'Hash history go(n) causes a full page reload in this browser');
+    globalHistory.go(n);
+  }
+
+  function goBack() {
+    go(-1);
+  }
+
+  function goForward() {
+    go(1);
+  }
+
+  var listenerCount = 0;
+
+  function checkDOMListeners(delta) {
+    listenerCount += delta;
+
+    if (listenerCount === 1 && delta === 1) {
+      window.addEventListener(HashChangeEvent$1, handleHashChange);
+    } else if (listenerCount === 0) {
+      window.removeEventListener(HashChangeEvent$1, handleHashChange);
+    }
+  }
+
+  var isBlocked = false;
+
+  function block(prompt) {
+    if (prompt === void 0) {
+      prompt = false;
+    }
+
+    var unblock = transitionManager.setPrompt(prompt);
+
+    if (!isBlocked) {
+      checkDOMListeners(1);
+      isBlocked = true;
+    }
+
+    return function () {
+      if (isBlocked) {
+        isBlocked = false;
+        checkDOMListeners(-1);
+      }
+
+      return unblock();
+    };
+  }
+
+  function listen(listener) {
+    var unlisten = transitionManager.appendListener(listener);
+    checkDOMListeners(1);
+    return function () {
+      checkDOMListeners(-1);
+      unlisten();
+    };
+  }
+
+  var history = {
+    length: globalHistory.length,
+    action: 'POP',
+    location: initialLocation,
+    createHref: createHref,
+    push: push,
+    replace: replace,
+    go: go,
+    goBack: goBack,
+    goForward: goForward,
+    block: block,
+    listen: listen
+  };
+  return history;
+}
+
+function clamp(n, lowerBound, upperBound) {
+  return Math.min(Math.max(n, lowerBound), upperBound);
+}
+/**
+ * Creates a history object that stores locations in memory.
+ */
+
+
+function createMemoryHistory(props) {
+  if (props === void 0) {
+    props = {};
+  }
+
+  var _props = props,
+      getUserConfirmation = _props.getUserConfirmation,
+      _props$initialEntries = _props.initialEntries,
+      initialEntries = _props$initialEntries === void 0 ? ['/'] : _props$initialEntries,
+      _props$initialIndex = _props.initialIndex,
+      initialIndex = _props$initialIndex === void 0 ? 0 : _props$initialIndex,
+      _props$keyLength = _props.keyLength,
+      keyLength = _props$keyLength === void 0 ? 6 : _props$keyLength;
+  var transitionManager = createTransitionManager();
+
+  function setState(nextState) {
+    _extends(history, nextState);
+
+    history.length = history.entries.length;
+    transitionManager.notifyListeners(history.location, history.action);
+  }
+
+  function createKey() {
+    return Math.random().toString(36).substr(2, keyLength);
+  }
+
+  var index = clamp(initialIndex, 0, initialEntries.length - 1);
+  var entries = initialEntries.map(function (entry) {
+    return typeof entry === 'string' ? createLocation(entry, undefined, createKey()) : createLocation(entry, undefined, entry.key || createKey());
+  }); // Public interface
+
+  var createHref = createPath;
+
+  function push(path, state) {
+    warning(!(typeof path === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to push when the 1st ' + 'argument is a location-like object that already has state; it is ignored');
+    var action = 'PUSH';
+    var location = createLocation(path, state, createKey(), history.location);
+    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+      if (!ok) return;
+      var prevIndex = history.index;
+      var nextIndex = prevIndex + 1;
+      var nextEntries = history.entries.slice(0);
+
+      if (nextEntries.length > nextIndex) {
+        nextEntries.splice(nextIndex, nextEntries.length - nextIndex, location);
+      } else {
+        nextEntries.push(location);
+      }
+
+      setState({
+        action: action,
+        location: location,
+        index: nextIndex,
+        entries: nextEntries
+      });
+    });
+  }
+
+  function replace(path, state) {
+    warning(!(typeof path === 'object' && path.state !== undefined && state !== undefined), 'You should avoid providing a 2nd state argument to replace when the 1st ' + 'argument is a location-like object that already has state; it is ignored');
+    var action = 'REPLACE';
+    var location = createLocation(path, state, createKey(), history.location);
+    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+      if (!ok) return;
+      history.entries[history.index] = location;
+      setState({
+        action: action,
+        location: location
+      });
+    });
+  }
+
+  function go(n) {
+    var nextIndex = clamp(history.index + n, 0, history.entries.length - 1);
+    var action = 'POP';
+    var location = history.entries[nextIndex];
+    transitionManager.confirmTransitionTo(location, action, getUserConfirmation, function (ok) {
+      if (ok) {
+        setState({
+          action: action,
+          location: location,
+          index: nextIndex
+        });
+      } else {
+        // Mimic the behavior of DOM histories by
+        // causing a render after a cancelled POP.
+        setState();
+      }
+    });
+  }
+
+  function goBack() {
+    go(-1);
+  }
+
+  function goForward() {
+    go(1);
+  }
+
+  function canGo(n) {
+    var nextIndex = history.index + n;
+    return nextIndex >= 0 && nextIndex < history.entries.length;
+  }
+
+  function block(prompt) {
+    if (prompt === void 0) {
+      prompt = false;
+    }
+
+    return transitionManager.setPrompt(prompt);
+  }
+
+  function listen(listener) {
+    return transitionManager.appendListener(listener);
+  }
+
+  var history = {
+    length: entries.length,
+    action: 'POP',
+    location: entries[index],
+    index: index,
+    entries: entries,
+    createHref: createHref,
+    push: push,
+    replace: replace,
+    go: go,
+    goBack: goBack,
+    goForward: goForward,
+    canGo: canGo,
+    block: block,
+    listen: listen
+  };
+  return history;
+}
+
+exports.createBrowserHistory = createBrowserHistory;
+exports.createHashHistory = createHashHistory;
+exports.createMemoryHistory = createMemoryHistory;
+exports.createLocation = createLocation;
+exports.locationsAreEqual = locationsAreEqual;
+exports.parsePath = parsePath;
+exports.createPath = createPath;
+
+},{"resolve-pathname":77,"tiny-invariant":86,"tiny-warning":87,"value-equal":91}],16:[function(require,module,exports){
+"use strict";function _interopDefault(n){return n&&"object"==typeof n&&"default"in n?n.default:n}Object.defineProperty(exports,"__esModule",{value:!0});var resolvePathname=_interopDefault(require("resolve-pathname")),valueEqual=_interopDefault(require("value-equal"));require("tiny-warning");var invariant=_interopDefault(require("tiny-invariant"));function _extends(){return(_extends=Object.assign||function(n){for(var t=1;t<arguments.length;t++){var e=arguments[t];for(var a in e)Object.prototype.hasOwnProperty.call(e,a)&&(n[a]=e[a])}return n}).apply(this,arguments)}function addLeadingSlash(n){return"/"===n.charAt(0)?n:"/"+n}function stripLeadingSlash(n){return"/"===n.charAt(0)?n.substr(1):n}function hasBasename(n,t){return new RegExp("^"+t+"(\\/|\\?|#|$)","i").test(n)}function stripBasename(n,t){return hasBasename(n,t)?n.substr(t.length):n}function stripTrailingSlash(n){return"/"===n.charAt(n.length-1)?n.slice(0,-1):n}function parsePath(n){var t=n||"/",e="",a="",o=t.indexOf("#");-1!==o&&(a=t.substr(o),t=t.substr(0,o));var r=t.indexOf("?");return-1!==r&&(e=t.substr(r),t=t.substr(0,r)),{pathname:t,search:"?"===e?"":e,hash:"#"===a?"":a}}function createPath(n){var t=n.pathname,e=n.search,a=n.hash,o=t||"/";return e&&"?"!==e&&(o+="?"===e.charAt(0)?e:"?"+e),a&&"#"!==a&&(o+="#"===a.charAt(0)?a:"#"+a),o}function createLocation(n,t,e,a){var o;"string"==typeof n?(o=parsePath(n)).state=t:(void 0===(o=_extends({},n)).pathname&&(o.pathname=""),o.search?"?"!==o.search.charAt(0)&&(o.search="?"+o.search):o.search="",o.hash?"#"!==o.hash.charAt(0)&&(o.hash="#"+o.hash):o.hash="",void 0!==t&&void 0===o.state&&(o.state=t));try{o.pathname=decodeURI(o.pathname)}catch(n){throw n instanceof URIError?new URIError('Pathname "'+o.pathname+'" could not be decoded. This is likely caused by an invalid percent-encoding.'):n}return e&&(o.key=e),a?o.pathname?"/"!==o.pathname.charAt(0)&&(o.pathname=resolvePathname(o.pathname,a.pathname)):o.pathname=a.pathname:o.pathname||(o.pathname="/"),o}function locationsAreEqual(n,t){return n.pathname===t.pathname&&n.search===t.search&&n.hash===t.hash&&n.key===t.key&&valueEqual(n.state,t.state)}function createTransitionManager(){var r=null;var a=[];return{setPrompt:function(n){return r=n,function(){r===n&&(r=null)}},confirmTransitionTo:function(n,t,e,a){if(null!=r){var o="function"==typeof r?r(n,t):r;"string"==typeof o?"function"==typeof e?e(o,a):a(!0):a(!1!==o)}else a(!0)},appendListener:function(n){var t=!0;function e(){t&&n.apply(void 0,arguments)}return a.push(e),function(){t=!1,a=a.filter(function(n){return n!==e})}},notifyListeners:function(){for(var n=arguments.length,t=new Array(n),e=0;e<n;e++)t[e]=arguments[e];a.forEach(function(n){return n.apply(void 0,t)})}}}var canUseDOM=!("undefined"==typeof window||!window.document||!window.document.createElement);function getConfirmation(n,t){t(window.confirm(n))}function supportsHistory(){var n=window.navigator.userAgent;return(-1===n.indexOf("Android 2.")&&-1===n.indexOf("Android 4.0")||-1===n.indexOf("Mobile Safari")||-1!==n.indexOf("Chrome")||-1!==n.indexOf("Windows Phone"))&&(window.history&&"pushState"in window.history)}function supportsPopStateOnHashChange(){return-1===window.navigator.userAgent.indexOf("Trident")}function supportsGoWithoutReloadUsingHash(){return-1===window.navigator.userAgent.indexOf("Firefox")}function isExtraneousPopstateEvent(n){void 0===n.state&&navigator.userAgent.indexOf("CriOS")}var PopStateEvent="popstate",HashChangeEvent="hashchange";function getHistoryState(){try{return window.history.state||{}}catch(n){return{}}}function createBrowserHistory(n){void 0===n&&(n={}),canUseDOM||invariant(!1);var c=window.history,s=supportsHistory(),t=!supportsPopStateOnHashChange(),e=n,a=e.forceRefresh,h=void 0!==a&&a,o=e.getUserConfirmation,u=void 0===o?getConfirmation:o,r=e.keyLength,i=void 0===r?6:r,f=n.basename?stripTrailingSlash(addLeadingSlash(n.basename)):"";function l(n){var t=n||{},e=t.key,a=t.state,o=window.location,r=o.pathname+o.search+o.hash;return f&&(r=stripBasename(r,f)),createLocation(r,a,e)}function d(){return Math.random().toString(36).substr(2,i)}var v=createTransitionManager();function p(n){_extends(T,n),T.length=c.length,v.notifyListeners(T.location,T.action)}function g(n){isExtraneousPopstateEvent(n)||w(l(n.state))}function P(){w(l(getHistoryState()))}var m=!1;function w(t){if(m)m=!1,p();else{v.confirmTransitionTo(t,"POP",u,function(n){n?p({action:"POP",location:t}):function(n){var t=T.location,e=H.indexOf(t.key);-1===e&&(e=0);var a=H.indexOf(n.key);-1===a&&(a=0);var o=e-a;o&&(m=!0,L(o))}(t)})}}var y=l(getHistoryState()),H=[y.key];function x(n){return f+createPath(n)}function L(n){c.go(n)}var O=0;function E(n){1===(O+=n)&&1===n?(window.addEventListener(PopStateEvent,g),t&&window.addEventListener(HashChangeEvent,P)):0===O&&(window.removeEventListener(PopStateEvent,g),t&&window.removeEventListener(HashChangeEvent,P))}var S=!1;var T={length:c.length,action:"POP",location:y,createHref:x,push:function(n,t){var i=createLocation(n,t,d(),T.location);v.confirmTransitionTo(i,"PUSH",u,function(n){if(n){var t=x(i),e=i.key,a=i.state;if(s)if(c.pushState({key:e,state:a},null,t),h)window.location.href=t;else{var o=H.indexOf(T.location.key),r=H.slice(0,-1===o?0:o+1);r.push(i.key),H=r,p({action:"PUSH",location:i})}else window.location.href=t}})},replace:function(n,t){var r="REPLACE",i=createLocation(n,t,d(),T.location);v.confirmTransitionTo(i,r,u,function(n){if(n){var t=x(i),e=i.key,a=i.state;if(s)if(c.replaceState({key:e,state:a},null,t),h)window.location.replace(t);else{var o=H.indexOf(T.location.key);-1!==o&&(H[o]=i.key),p({action:r,location:i})}else window.location.replace(t)}})},go:L,goBack:function(){L(-1)},goForward:function(){L(1)},block:function(n){void 0===n&&(n=!1);var t=v.setPrompt(n);return S||(E(1),S=!0),function(){return S&&(S=!1,E(-1)),t()}},listen:function(n){var t=v.appendListener(n);return E(1),function(){E(-1),t()}}};return T}var HashChangeEvent$1="hashchange",HashPathCoders={hashbang:{encodePath:function(n){return"!"===n.charAt(0)?n:"!/"+stripLeadingSlash(n)},decodePath:function(n){return"!"===n.charAt(0)?n.substr(1):n}},noslash:{encodePath:stripLeadingSlash,decodePath:addLeadingSlash},slash:{encodePath:addLeadingSlash,decodePath:addLeadingSlash}};function getHashPath(){var n=window.location.href,t=n.indexOf("#");return-1===t?"":n.substring(t+1)}function pushHashPath(n){window.location.hash=n}function replaceHashPath(n){var t=window.location.href.indexOf("#");window.location.replace(window.location.href.slice(0,0<=t?t:0)+"#"+n)}function createHashHistory(n){void 0===n&&(n={}),canUseDOM||invariant(!1);var t=window.history,e=(supportsGoWithoutReloadUsingHash(),n),a=e.getUserConfirmation,i=void 0===a?getConfirmation:a,o=e.hashType,r=void 0===o?"slash":o,c=n.basename?stripTrailingSlash(addLeadingSlash(n.basename)):"",s=HashPathCoders[r],h=s.encodePath,u=s.decodePath;function f(){var n=u(getHashPath());return c&&(n=stripBasename(n,c)),createLocation(n)}var l=createTransitionManager();function d(n){_extends(E,n),E.length=t.length,l.notifyListeners(E.location,E.action)}var v=!1,p=null;function g(){var n=getHashPath(),t=h(n);if(n!==t)replaceHashPath(t);else{var e=f(),a=E.location;if(!v&&locationsAreEqual(a,e))return;if(p===createPath(e))return;p=null,function(t){if(v)v=!1,d();else{l.confirmTransitionTo(t,"POP",i,function(n){n?d({action:"POP",location:t}):function(n){var t=E.location,e=y.lastIndexOf(createPath(t));-1===e&&(e=0);var a=y.lastIndexOf(createPath(n));-1===a&&(a=0);var o=e-a;o&&(v=!0,H(o))}(t)})}}(e)}}var P=getHashPath(),m=h(P);P!==m&&replaceHashPath(m);var w=f(),y=[createPath(w)];function H(n){t.go(n)}var x=0;function L(n){1===(x+=n)&&1===n?window.addEventListener(HashChangeEvent$1,g):0===x&&window.removeEventListener(HashChangeEvent$1,g)}var O=!1;var E={length:t.length,action:"POP",location:w,createHref:function(n){return"#"+h(c+createPath(n))},push:function(n,t){var r=createLocation(n,void 0,void 0,E.location);l.confirmTransitionTo(r,"PUSH",i,function(n){if(n){var t=createPath(r),e=h(c+t);if(getHashPath()!==e){p=t,pushHashPath(e);var a=y.lastIndexOf(createPath(E.location)),o=y.slice(0,-1===a?0:a+1);o.push(t),y=o,d({action:"PUSH",location:r})}else d()}})},replace:function(n,t){var o="REPLACE",r=createLocation(n,void 0,void 0,E.location);l.confirmTransitionTo(r,o,i,function(n){if(n){var t=createPath(r),e=h(c+t);getHashPath()!==e&&(p=t,replaceHashPath(e));var a=y.indexOf(createPath(E.location));-1!==a&&(y[a]=t),d({action:o,location:r})}})},go:H,goBack:function(){H(-1)},goForward:function(){H(1)},block:function(n){void 0===n&&(n=!1);var t=l.setPrompt(n);return O||(L(1),O=!0),function(){return O&&(O=!1,L(-1)),t()}},listen:function(n){var t=l.appendListener(n);return L(1),function(){L(-1),t()}}};return E}function clamp(n,t,e){return Math.min(Math.max(n,t),e)}function createMemoryHistory(n){void 0===n&&(n={});var t=n,o=t.getUserConfirmation,e=t.initialEntries,a=void 0===e?["/"]:e,r=t.initialIndex,i=void 0===r?0:r,c=t.keyLength,s=void 0===c?6:c,h=createTransitionManager();function u(n){_extends(g,n),g.length=g.entries.length,h.notifyListeners(g.location,g.action)}function f(){return Math.random().toString(36).substr(2,s)}var l=clamp(i,0,a.length-1),d=a.map(function(n){return createLocation(n,void 0,"string"==typeof n?f():n.key||f())}),v=createPath;function p(n){var t=clamp(g.index+n,0,g.entries.length-1),e=g.entries[t];h.confirmTransitionTo(e,"POP",o,function(n){n?u({action:"POP",location:e,index:t}):u()})}var g={length:d.length,action:"POP",location:d[l],index:l,entries:d,createHref:v,push:function(n,t){var a=createLocation(n,t,f(),g.location);h.confirmTransitionTo(a,"PUSH",o,function(n){if(n){var t=g.index+1,e=g.entries.slice(0);e.length>t?e.splice(t,e.length-t,a):e.push(a),u({action:"PUSH",location:a,index:t,entries:e})}})},replace:function(n,t){var e="REPLACE",a=createLocation(n,t,f(),g.location);h.confirmTransitionTo(a,e,o,function(n){n&&(g.entries[g.index]=a,u({action:e,location:a}))})},go:p,goBack:function(){p(-1)},goForward:function(){p(1)},canGo:function(n){var t=g.index+n;return 0<=t&&t<g.entries.length},block:function(n){return void 0===n&&(n=!1),h.setPrompt(n)},listen:function(n){return h.appendListener(n)}};return g}exports.createBrowserHistory=createBrowserHistory,exports.createHashHistory=createHashHistory,exports.createMemoryHistory=createMemoryHistory,exports.createLocation=createLocation,exports.locationsAreEqual=locationsAreEqual,exports.parsePath=parsePath,exports.createPath=createPath;
+
+},{"resolve-pathname":77,"tiny-invariant":86,"tiny-warning":87,"value-equal":91}],17:[function(require,module,exports){
+(function (process){
+'use strict';
+
+if (process.env.NODE_ENV === 'production') {
+  module.exports = require('./cjs/history.min.js');
+} else {
+  module.exports = require('./cjs/history.js');
+}
+
+}).call(this,require('_process'))
+},{"./cjs/history.js":15,"./cjs/history.min.js":16,"_process":27}],18:[function(require,module,exports){
+'use strict';
+
+/**
+ * Copyright 2015, Yahoo! Inc.
+ * Copyrights licensed under the New BSD License. See the accompanying LICENSE file for terms.
+ */
+var REACT_STATICS = {
+    childContextTypes: true,
+    contextTypes: true,
+    defaultProps: true,
+    displayName: true,
+    getDefaultProps: true,
+    getDerivedStateFromProps: true,
+    mixins: true,
+    propTypes: true,
+    type: true
+};
+
+var KNOWN_STATICS = {
+    name: true,
+    length: true,
+    prototype: true,
+    caller: true,
+    callee: true,
+    arguments: true,
+    arity: true
+};
+
+var defineProperty = Object.defineProperty;
+var getOwnPropertyNames = Object.getOwnPropertyNames;
+var getOwnPropertySymbols = Object.getOwnPropertySymbols;
+var getOwnPropertyDescriptor = Object.getOwnPropertyDescriptor;
+var getPrototypeOf = Object.getPrototypeOf;
+var objectPrototype = getPrototypeOf && getPrototypeOf(Object);
+
+function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
+    if (typeof sourceComponent !== 'string') { // don't hoist over string (html) components
+
+        if (objectPrototype) {
+            var inheritedComponent = getPrototypeOf(sourceComponent);
+            if (inheritedComponent && inheritedComponent !== objectPrototype) {
+                hoistNonReactStatics(targetComponent, inheritedComponent, blacklist);
+            }
+        }
+
+        var keys = getOwnPropertyNames(sourceComponent);
+
+        if (getOwnPropertySymbols) {
+            keys = keys.concat(getOwnPropertySymbols(sourceComponent));
+        }
+
+        for (var i = 0; i < keys.length; ++i) {
+            var key = keys[i];
+            if (!REACT_STATICS[key] && !KNOWN_STATICS[key] && (!blacklist || !blacklist[key])) {
+                var descriptor = getOwnPropertyDescriptor(sourceComponent, key);
+                try { // Avoid failures from read-only properties
+                    defineProperty(targetComponent, key, descriptor);
+                } catch (e) {}
+            }
+        }
+
+        return targetComponent;
+    }
+
+    return targetComponent;
+}
+
+module.exports = hoistNonReactStatics;
+
+},{}],19:[function(require,module,exports){
+exports.read = function (buffer, offset, isLE, mLen, nBytes) {
+  var e, m
+  var eLen = (nBytes * 8) - mLen - 1
+  var eMax = (1 << eLen) - 1
+  var eBias = eMax >> 1
+  var nBits = -7
+  var i = isLE ? (nBytes - 1) : 0
+  var d = isLE ? -1 : 1
+  var s = buffer[offset + i]
+
+  i += d
+
+  e = s & ((1 << (-nBits)) - 1)
+  s >>= (-nBits)
+  nBits += eLen
+  for (; nBits > 0; e = (e * 256) + buffer[offset + i], i += d, nBits -= 8) {}
+
+  m = e & ((1 << (-nBits)) - 1)
+  e >>= (-nBits)
+  nBits += mLen
+  for (; nBits > 0; m = (m * 256) + buffer[offset + i], i += d, nBits -= 8) {}
+
+  if (e === 0) {
+    e = 1 - eBias
+  } else if (e === eMax) {
+    return m ? NaN : ((s ? -1 : 1) * Infinity)
+  } else {
+    m = m + Math.pow(2, mLen)
+    e = e - eBias
+  }
+  return (s ? -1 : 1) * m * Math.pow(2, e - mLen)
+}
+
+exports.write = function (buffer, value, offset, isLE, mLen, nBytes) {
+  var e, m, c
+  var eLen = (nBytes * 8) - mLen - 1
+  var eMax = (1 << eLen) - 1
+  var eBias = eMax >> 1
+  var rt = (mLen === 23 ? Math.pow(2, -24) - Math.pow(2, -77) : 0)
+  var i = isLE ? 0 : (nBytes - 1)
+  var d = isLE ? 1 : -1
+  var s = value < 0 || (value === 0 && 1 / value < 0) ? 1 : 0
+
+  value = Math.abs(value)
+
+  if (isNaN(value) || value === Infinity) {
+    m = isNaN(value) ? 1 : 0
+    e = eMax
+  } else {
+    e = Math.floor(Math.log(value) / Math.LN2)
+    if (value * (c = Math.pow(2, -e)) < 1) {
+      e--
+      c *= 2
+    }
+    if (e + eBias >= 1) {
+      value += rt / c
+    } else {
+      value += rt * Math.pow(2, 1 - eBias)
+    }
+    if (value * c >= 2) {
+      e++
+      c /= 2
+    }
+
+    if (e + eBias >= eMax) {
+      m = 0
+      e = eMax
+    } else if (e + eBias >= 1) {
+      m = ((value * c) - 1) * Math.pow(2, mLen)
+      e = e + eBias
+    } else {
+      m = value * Math.pow(2, eBias - 1) * Math.pow(2, mLen)
+      e = 0
+    }
+  }
+
+  for (; mLen >= 8; buffer[offset + i] = m & 0xff, i += d, m /= 256, mLen -= 8) {}
+
+  e = (e << mLen) | m
+  eLen += mLen
+  for (; eLen > 0; buffer[offset + i] = e & 0xff, i += d, e /= 256, eLen -= 8) {}
+
+  buffer[offset + i - d] |= s * 128
+}
+
+},{}],20:[function(require,module,exports){
+(function (process){
+/**
+ * Copyright (c) 2013-present, Facebook, Inc.
+ *
+ * This source code is licensed under the MIT license found in the
+ * LICENSE file in the root directory of this source tree.
+ */
+
+'use strict';
+
+/**
+ * Use invariant() to assert state which your program assumes to be true.
+ *
+ * Provide sprintf-style format (only %s is supported) and arguments
+ * to provide information about what broke and what you were
+ * expecting.
+ *
+ * The invariant message will be stripped in production, but the invariant
+ * will remain to ensure logic does not differ in production.
+ */
+
+var invariant = function(condition, format, a, b, c, d, e, f) {
+  if (process.env.NODE_ENV !== 'production') {
+    if (format === undefined) {
+      throw new Error('invariant requires an error message argument');
+    }
+  }
+
+  if (!condition) {
+    var error;
+    if (format === undefined) {
+      error = new Error(
+        'Minified exception occurred; use the non-minified dev environment ' +
+        'for the full error message and additional helpful warnings.'
+      );
+    } else {
+      var args = [a, b, c, d, e, f];
+      var argIndex = 0;
+      error = new Error(
+        format.replace(/%s/g, function() { return args[argIndex++]; })
+      );
+      error.name = 'Invariant Violation';
+    }
+
+    error.framesToPop = 1; // we don't care about invariant's own frame
+    throw error;
+  }
+};
+
+module.exports = invariant;
+
+}).call(this,require('_process'))
+},{"_process":27}],21:[function(require,module,exports){
+module.exports = Array.isArray || function (arr) {
+  return Object.prototype.toString.call(arr) == '[object Array]';
+};
+
 },{}],22:[function(require,module,exports){
 (function (global){
 /**
@@ -18080,7 +18080,7 @@ function pathToRegexp (path, keys, options) {
   return stringToRegexp(/** @type {string} */ (path), /** @type {!Array} */ (keys), options)
 }
 
-},{"isarray":20}],25:[function(require,module,exports){
+},{"isarray":21}],25:[function(require,module,exports){
 (function (process){
 // Generated by CoffeeScript 1.12.2
 (function() {
@@ -20093,7 +20093,7 @@ Scrollbars.defaultProps = {
     autoHeightMax: 200,
     universal: false
 };
-},{"../utils/getInnerHeight":38,"../utils/getInnerWidth":39,"../utils/getScrollbarWidth":40,"../utils/isString":41,"../utils/returnFalse":42,"./defaultRenderElements":34,"./styles":36,"dom-css":13,"prop-types":31,"raf":33,"react":76}],36:[function(require,module,exports){
+},{"../utils/getInnerHeight":38,"../utils/getInnerWidth":39,"../utils/getScrollbarWidth":40,"../utils/isString":41,"../utils/returnFalse":42,"./defaultRenderElements":34,"./styles":36,"dom-css":14,"prop-types":31,"raf":33,"react":76}],36:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -20250,7 +20250,7 @@ function getScrollbarWidth() {
     }
     return scrollbarWidth || 0;
 }
-},{"dom-css":13}],41:[function(require,module,exports){
+},{"dom-css":14}],41:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -46143,7 +46143,7 @@ BrowserRouter.propTypes = {
   children: _propTypes2.default.node
 };
 exports.default = BrowserRouter;
-},{"./Router":57,"history":16,"prop-types":31,"react":76,"warning":92}],50:[function(require,module,exports){
+},{"./Router":57,"history":17,"prop-types":31,"react":76,"warning":92}],50:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -46210,7 +46210,7 @@ HashRouter.propTypes = {
   children: _propTypes2.default.node
 };
 exports.default = HashRouter;
-},{"./Router":57,"history":16,"prop-types":31,"react":76,"warning":92}],51:[function(require,module,exports){
+},{"./Router":57,"history":17,"prop-types":31,"react":76,"warning":92}],51:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -46328,7 +46328,7 @@ Link.contextTypes = {
   }).isRequired
 };
 exports.default = Link;
-},{"history":16,"invariant":19,"prop-types":31,"react":76}],52:[function(require,module,exports){
+},{"history":17,"invariant":20,"prop-types":31,"react":76}],52:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -46686,7 +46686,7 @@ MemoryRouter.propTypes = {
   children: _propTypes2.default.node
 };
 exports.default = MemoryRouter;
-},{"./Router":68,"history":16,"prop-types":31,"react":76,"warning":92}],65:[function(require,module,exports){
+},{"./Router":68,"history":17,"prop-types":31,"react":76,"warning":92}],65:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -46777,7 +46777,7 @@ Prompt.contextTypes = {
   }).isRequired
 };
 exports.default = Prompt;
-},{"invariant":19,"prop-types":31,"react":76}],66:[function(require,module,exports){
+},{"invariant":20,"prop-types":31,"react":76}],66:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -46909,7 +46909,7 @@ Redirect.contextTypes = {
   }).isRequired
 };
 exports.default = Redirect;
-},{"./generatePath":71,"history":16,"invariant":19,"prop-types":31,"react":76,"warning":92}],67:[function(require,module,exports){
+},{"./generatePath":71,"history":17,"invariant":20,"prop-types":31,"react":76,"warning":92}],67:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -47067,7 +47067,7 @@ Route.childContextTypes = {
   router: _propTypes2.default.object.isRequired
 };
 exports.default = Route;
-},{"./matchPath":72,"invariant":19,"prop-types":31,"react":76,"warning":92}],68:[function(require,module,exports){
+},{"./matchPath":72,"invariant":20,"prop-types":31,"react":76,"warning":92}],68:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -47187,7 +47187,7 @@ Router.childContextTypes = {
   router: _propTypes2.default.object.isRequired
 };
 exports.default = Router;
-},{"invariant":19,"prop-types":31,"react":76,"warning":92}],69:[function(require,module,exports){
+},{"invariant":20,"prop-types":31,"react":76,"warning":92}],69:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -47357,7 +47357,7 @@ StaticRouter.childContextTypes = {
   router: _propTypes2.default.object.isRequired
 };
 exports.default = StaticRouter;
-},{"./Router":68,"history":16,"invariant":19,"prop-types":31,"react":76,"warning":92}],70:[function(require,module,exports){
+},{"./Router":68,"history":17,"invariant":20,"prop-types":31,"react":76,"warning":92}],70:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -47452,7 +47452,7 @@ Switch.propTypes = {
   location: _propTypes2.default.object
 };
 exports.default = Switch;
-},{"./matchPath":72,"invariant":19,"prop-types":31,"react":76,"warning":92}],71:[function(require,module,exports){
+},{"./matchPath":72,"invariant":20,"prop-types":31,"react":76,"warning":92}],71:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -47633,7 +47633,7 @@ var withRouter = function withRouter(Component) {
 };
 
 exports.default = withRouter;
-},{"./Route":67,"hoist-non-react-statics":17,"prop-types":31,"react":76}],74:[function(require,module,exports){
+},{"./Route":67,"hoist-non-react-statics":18,"prop-types":31,"react":76}],74:[function(require,module,exports){
 (function (process){
 /** @license React v16.9.0
  * react.development.js
@@ -51493,7 +51493,7 @@ function scrollIntoView(target, options) {
 var _default = scrollIntoView;
 exports.default = _default;
 module.exports = exports.default;
-},{"compute-scroll-into-view":12}],85:[function(require,module,exports){
+},{"compute-scroll-into-view":13}],85:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -51886,4 +51886,4 @@ if (__DEV__) {
 module.exports = warning;
 
 }).call(this,require('_process'))
-},{"_process":27}]},{},[1]);
+},{"_process":27}]},{},[2]);
