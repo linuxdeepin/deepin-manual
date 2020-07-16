@@ -118,29 +118,32 @@ int main(int argc, char **argv)
                     const QString id = anchor.at(0).toString();
                     anchorIdList.append(id);
                     const QString title_ch = anchor.at(1).toString();
-                    const QString title_us = anchor.at(1).toString();
+                    QString title_us = anchor.at(1).toString();
                     anchors.append(title_ch);
                     if (locale == "zh_CN") {
-                        QString anchorInitial;
-                        for (int i = 0; i < title_ch.length(); i++) {
-                            anchorInitial.append(Dtk::Core::Chinese2Pinyin(title_ch.at(i)).left(1));
-                        }
-                        anchorInitialList.append(anchorInitial);
+                        QString str = Dtk::Core::Chinese2Pinyin(title_ch).remove(QRegExp("[1-9]"));
+                        anchorSpellList.append(str);
                         if (id == "h0") {
-                            QString str = Dtk::Core::Chinese2Pinyin(title_ch).remove(QRegExp("[1-9]"));
-                            anchorSpellList.append(str);
+                            QString anchorInitial;
+                            for (int i = 0; i < title_ch.length(); i++) {
+                                anchorInitial.append(Dtk::Core::Chinese2Pinyin(title_ch.at(i)).left(1));
+                            }
+                            anchorInitialList.append(anchorInitial);
                         } else {
-                            anchorSpellList.append("null");
+                            anchorInitialList.append("null");
                         }
-
                     } else if (locale == "en_US") {
-                        QStringList list = title_us.split(" ");
-                        QString anchorInitial;
-                        for (QString str : list) {
-                            anchorInitial.append(str.left(1));
+                        if (id == "h0") {
+                            QStringList list = title_us.split(" ");
+                            QString anchorInitial;
+                            for (QString str : list) {
+                                anchorInitial.append(str.left(1));
+                            }
+                            anchorInitialList.append(anchorInitial);
+                        } else {
+                            anchorInitialList.append("null");
                         }
-                        anchorInitialList.append(anchorInitial);
-                        anchorSpellList.append(anchorInitial);
+                        anchorSpellList.append(title_us.remove(" "));
                     }
                     const QString content = anchor.at(2).toString();
                     contents.append(content);

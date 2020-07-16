@@ -62,9 +62,9 @@ const char kSearchSelectAnchor[] =
     "LEFT JOIN (SELECT anchor,appName FROM search where anchorId='h0' and lang=':lang') t2 ON t1.appName=t2.appName "
     "WHERE t1.appName=t2.appName "
     "AND t1.lang = ':lang' "
-    "AND t1.anchor LIKE '%:anchor%' "
+    "AND (t1.anchor LIKE '%:anchor%' "
     "OR t1.anchorSpell LIKE '%:anchor%' "
-    "OR t1.anchorInitial LIKE '%:anchor%' --case insensitive";
+    "OR t1.anchorInitial LIKE '%:anchor%') --case insensitive";
 
 const char kSearchSelectContent[] =
     "SELECT appName, anchor, anchorId, content "
@@ -230,12 +230,22 @@ void SearchDb::handleSearchAnchor(const QString &keyword)
         while (query.next() && (result.size() < kResultLimitation)) {
             //只将当前预装应用中的内容输出。
             if (strlistApp.contains(query.value(0).toString())) {
-                result.append(SearchAnchorResult {
-                    query.value(0).toString(),
-                    query.value(1).toString(),
-                    query.value(2).toString(),
-                    query.value(3).toString(),
-                });
+                //搜索结果优先显示应用名称
+                if (query.value(3) == "h0") {
+                    result.prepend(SearchAnchorResult {
+                        query.value(0).toString(),
+                        query.value(1).toString(),
+                        query.value(2).toString(),
+                        query.value(3).toString(),
+                    });
+                } else {
+                    result.append(SearchAnchorResult {
+                        query.value(0).toString(),
+                        query.value(1).toString(),
+                        query.value(2).toString(),
+                        query.value(3).toString(),
+                    });
+                }
             }
         }
     } else {
