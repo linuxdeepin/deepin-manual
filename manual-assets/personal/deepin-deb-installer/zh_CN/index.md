@@ -30,10 +30,10 @@
 5.  安装过程中可以点击 ![arrowdown_icon](icon/arrowdown_icon.svg)或![arrowup_icon](icon/arrowup_icon.svg)展开或收起安装进程信息。
 6.  安装成功之后，点击 **完成** 退出，或者点击 **返回** 继续安装其他应用。
 
-![0|single](jpg/single.png)
+![0|success](jpg/success.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
->![notes](icon/notes.svg):软件包安装器会自动检测您的安装包，如果本地已经安装过该应用，会显示“已安装相同版本”或“已安装其他版本”提示信息，此时可以选择 **卸载** 或 **重新安装** 操作。
+>![notes](icon/notes.svg)说明: 软件包安装器会自动检测您的安装包，如果本地已经安装过该应用，会显示“已安装相同版本”或“已安装其他版本”提示信息，此时可以选择 **卸载** 或 **重新安装** 操作。
 
 
 
@@ -44,7 +44,7 @@
 
 - 批量安装同样也可以查看安装进程。
 - 批量安装时按钮只显示 **安装** 按钮。本地已安装其他版本的软件包执行安装操作，本地已安装相同版本的软件包执行重新安装操作。
-- 批量安装时将鼠标移动到一个应用栏上，可以点击应用行右侧的 × 将该安装包从安装列表移除。
+- 批量安装列表内，选择一个安装包，单击鼠标右键选择 **删除** 可将安装包从安装列表移除。
 
 
 ![0|mult](jpg/multi.png)
@@ -78,7 +78,7 @@
 ![0|uninstall](jpg/uninstall.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-> ![attention](icon/attention.svg):卸载某些应用可能会对系统或其他软件产生影响，请谨慎操作。
+> ![attention](icon/attention.svg)窍门: 卸载某些应用可能会对系统或其他软件产生影响，请谨慎操作。
 
 
 
@@ -90,7 +90,7 @@
 
 ### 主题
 
-窗口主题包含浅色主题、深色主题和系统主题，其中系统主题为默认设置。
+窗口主题包含浅色主题、深色主题和跟随系统主题，其中跟随系统主题为默认设置。
 
 1. 在软件包安装器界面，点击![icon_menu](icon/icon_menu.svg)。
 2. 点击 **主题**，选择一个主题颜色。

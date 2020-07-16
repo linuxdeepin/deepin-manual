@@ -2,433 +2,405 @@
 
 ## Overview
 
-Deepin Terminal is a terminal emulator with simple interface, rich and powerful functions created by Deepin Technology. You can instantly start and close Deepin Terminal smoothly like normal file window, allowing you to input commands with facility and no distractions. Let's try the Quake mode, browse webs while inputting commands. When there are multiple tasks, you can add tabs in terminal to create more workspaces like in the browser or split the workspace into multiple windows. It's a piece of cake to upload and download files with remote management. More powerful functions are waiting for you to explore!
+Terminal is a terminal emulator with simple interface, rich and powerful functions such as multi-windows, workspace, remote management, Quake mode and etc. You can instantly start and close Terminal smoothly like normal file window, allowing you to input commands with facility and no distractions. Let's try the Quake mode, browse webs while inputting commands. When there are multiple tasks, you can add tabs in terminal to create more workspaces like in the browser or split the workspace into multiple windows. It's a piece of cake to upload and download files with remote management. More powerful functions are waiting for you to explore!
 
- ![1|interface](jpg/interface.jpg)
+ ![1|interface](jpg/interface.png)
 
 
 ## Guide
 
-You can run, exit or create shortcuts for Deepin Terminal.
+You can run, exit or create shortcuts for Terminal.
 
-### Run Deepin Terminal ###
+### Run Terminal ###
 
-1. Click ![launcher-24](icon/launcher-24.svg) on dock to enter launcher interface.
-2. Find ![terminal-24](icon/terminal-24.svg) to click on, you can:
- - Click on **Send to desktop** to create a desktop shortcut.
- - Click on **Send to dock** to fix it on dock.
- - Click on **Add to startup** to add it to startup, it will automatically run when the system starts up.
+1. Click ![deepin-launcher](icon/deepin-launcher.svg) on dock to enter launcher interface.
+2. Locate ![deepin-terminal](icon/deepin-terminal.svg) by scrolling the mouse wheel or searching "Device Manager" in the Launcher interface and click it to run.
+3. Right-click ![deepin-terminal](icon/deepin-terminal.svg) to: 
+ - Select **Send to desktop** to create a desktop shortcut.
+ - Select **Send to dock** to fix it on dock.
+ - Select **Add to startup** to add it to startup, it will automatically run when the system starts up.
 
-> ![notes](icon/notes.svg): You can also press ![Ctrl](icon/Ctrl.svg)+![Alt](icon/Alt.svg)+![T](icon/T.svg) to open Deepin Terminal.
+> ![notes](icon/notes.svg)Notes: You can also press **Ctrl**+**Alt**+**T** to open Terminal.
 
 
-### Exit Deepin Terminal ###
+### Exit Terminal ###
 
-1. On Deepin Terminal interface, click on ![close_icon](icon/close_icon.svg) to exit.
+1. On Terminal interface, click  ![close_icon](icon/close.svg) to exit.
 
-2. Right click on ![terminal-24](icon/terminal-24.svg) on Dock and select **Close All** to exit.
+2. Right-click  ![deepin-terminal](icon/deepin-terminal.svg) on Dock and select **Close All** or **Force Quit** to exit.
 
-3. On Deepin Terminal interface, click on ![menu_icon](icon/menu_icon.svg) to select **Exit** to exit.
+3. On Terminal interface, click ![icon_menu](icon/icon_menu.svg) to select **Exit**.
 
-> ![notes](icon/notes.svg): There will be a prompt when programs are still running in terminal.
+> ![notes](icon/notes.svg)Notes: There will be a prompt when programs are still running in terminal to avoid your data loss.
 
 
 ### View Shortcuts ###
 
-You can press ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![QM](icon/QM.svg) on keyboard to open shortcuts preview interface.
+You can press **Ctrl**+**Shift**+**?** on keyboard to open shortcuts preview interface.
 
- ![1|shortcuts](jpg/shortcuts.jpg)
+ ![1|shortcuts](jpg/hotkey.png)
 
 
 ## Basic Operations
 
-You can right click on Deepin Terminal interface to do daily operations.
+You can right-click Terminal interface to do daily operations.
 
- ![1|rightclick](jpg/rightclick.jpg)
+ ![1|rightclick](jpg/rightclick.png)
 
 
 ### Find ###
 
 You can use the "Find" function to quickly search contents in terminal.
 
-1. Right click on Deepin Terminal interface.
+1. Right-click Terminal interface.
 
-2. Click on **Find**.
+2. Click **Find**.
 
-3. Type the word in search box and click on ![Enter](icon/Enter.svg).
+3. Type the word in search box and press **Enter** key on keyboard.
 
 4. Then the search results will be highlighted.
 
-5. Press ![Esc](icon/Esc.svg) on keyboard or click on any location of terminal interface to exit search.
+5. Press **Esc** on keyboard or click any blank location of terminal interface to hide search.
 
-> ![tips](icon/tips.svg): Press ![Enter](icon/Enter.svg) to search down from current location. You can also click on ![up](icon/up.svg) and ![down](icon/down.svg) to search.
+> ![tips](icon/tips.svg)Tips: Press **Enter** to search down from current location. You can also click ![up](icon/up.svg) and ![down](icon/down.svg) to search.
 
 
 ### Web Search ###
 
-You can search the keyword through web browser in terminal.
+Terminal can call the browser to search some contents in the Terminal quickly and conveniently. 
 
-1. Select the words in terminal.
-
-2. Right click to **Search** and select Google or other search engines.
-
-3. The words will be searched and the results will be displayed in web browser.
+1. On the interface of Terminal, select the content you want to search.
+2. Right-click to select **Search**.
+3. Select a search engine.
+4. Your browser will pop up and start searching.
 
 
 ### Copy/Paste ###
 
-You can freely copy and paste the contents or commands among terminal and anywhere else.
+You can freely copy and paste the contents or commands in Terminal to any specified position or copy any contents elsewhere into Terminal by clicking **Copy** and **Paste**.
 
-1. Select the commands or contents.
+> ![tips](icon/tips.svg)Tips: If it is a link, just right-click it to copy without selection.
 
-2. Right click to select **Copy**.
-
-3. Right click to **Paste** the contents at anywhere.
-
-> ![tips](icon/tips.svg): If it is a link, just right click on it to copy without selection.
-> ![tips](icon/tips.svg): Check **Copy on select** in settings window, to copy the selected text to clipboard automatically.
+> ![tips](icon/tips.svg)Tips: Check **Copy on select** in settings window, to copy the selected text to clipboard automatically.
 
 ### Quake Mode ###
 
-Press ![Alt](icon/Alt.svg) + ![F2](icon/F2.svg) to open a quake window, and press again to hide it.
+Quake Mode is the unique function of Terminal. Press **Alt** + **F2** to open a quake window, and press again to hide it.
 
-> ![tips](icon/tips.svg): You can also click on ![terminal-24](icon/terminal-24.svg) on Dock to select **Quake Terminal** to open a quake window.
+> ![tips](icon/tips.svg)Tips: You can also click ![deepin-terminal](icon/deepin-terminal.svg) on Dock to select **Quake Terminal** to open a quake window.
 
-### Open File and Application ###
+### Open Files and Applications ###
 
-On Deepin Terminal interface, select the file in current directory and right click to **Open** it by the application.
+On Terminal interface, select the file in current directory and right click to **Open** it by the application.
 
-1. On Deepin Terminal interface, input **ls -al** to display files in current directory.
-2. Double click to select the file.
-3. Right click and select **Open**.
-4. The file will open with the proper application.
+1. On Terminal interface, input **ls -al** to display files in current directory.
+2. Double-click to select the file name.
+3. Right-click and select **Open**.
+4. The file will be opened with the proper application.
 
- ![1|openfile](jpg/openfile.jpg)
+ ![1|openfile](jpg/openfile.png)
 
 
-### Switch Encoding ###
+### Adjust Encoding Method ###
 
 When there is messy code or display error, you may switch the encoding to solve it.
 
-1. Right click on Deepin Terminal interface.
-
+1. On Terminal interface, right-click.
 2. Select **Encoding**.
+3. Select one encoding in the list to see if it is correct.
+4. Repeat Step 3 until you get correct contents.
 
-3. Select one encoding in the list to switch.
+> ![notes](icon/notes.svg)Notes: Usually, correct encoding methods are matched automatically in Terminal. Once any error appears under some special circumstances, you can adjust encoding methods manually. You can directly choose the correct encoding method if you are sure of it. If you are not sure, you can try many times. 
 
- ![1|unicode](jpg/unicode.jpg)
+ 
 
 
 ## Window Operations
 
-Window is the base for you to do any operations in terminal. You can create many workspaces and split one into more windows.
+The window is the base for you to do any operations in terminal. You can create many workspaces and split one into more windows.
 
 
 ### New Window ###
 
 You can create a new window in the following ways:
 
-1. Open Deepin Terminal and click on ![menu_icon](icon/menu_icon.svg) to select **New Window**.
+- Open Terminal and click ![icon_menu](icon/icon_menu.svg) > **New Window**.
 
-2. Click on ![terminal-24](icon/terminal-24.svg) on Dock to select **New Window**.
-
-3. Press ![Ctrl](icon/Ctrl.svg)+![Alt](icon/Alt.svg)+ 1~9 Number key to open new windows in different colors.
-
- ![0|new_window](jpg/new_window.jpg)
-
-### Rename Window ###
+- Click ![deepin-terminal](icon/deepin-terminal.svg) on Dock to select **New Window**.
 
 
-1. Right click on Deepin Terminal interface.
+![0|new_window](jpg/newwindow.png)
 
-2. Select **Rename title**.
-
-3. Input the name and click on **Rename**.
-
-> ![tips](icon/tips.svg): You can also press ![F2](icon/F2.svg)  to rename the window title.
-
- ![1|rename](jpg/rename.jpg)
 
 
 ### Split Window ###
 
-1. Right click on Deepin Terminal interface.
+1. Open Terminal in Launcher.
+2. On Terminal interface, right-click.
 
-  - Click on **Vertical split** to split the interface into left and right parts.
+  - Click **Vertical split** to split the interface into left and right parts.
 
-  - Click on **Horizontal split** to split the interface into top and bottom parts.
+  - Click **Horizontal split** to split the interface into top and bottom parts.
 
-2. You can input commands in each terminal window, and view both the results of the executed command.
+3. You can input commands in each terminal window, and view both the execution results of the command.
 
-> ![tips](icon/tips.svg): You can also press ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![J](icon/J.svg) on keyboard to split vertically, and press ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![H](icon/H.svg) to split horizontally.
+> ![tips](icon/tips.svg)Tips: You can also press **Ctrl+Shift+J** on keyboard to split vertically, and press **Ctrl+Shift+H** to split horizontally.
 
- ![1|splitscreen](jpg/splitscreen.jpg)
+ ![1|splitscreen](jpg/splitscreen.png)
+
+### Rename Window ###
+
+
+1. Open Terminal in Launcher.
+2. On Terminal interface, right-click.
+3. Select **Rename title**.
+4. Input the name and click **OK**.
+
+> ![tips](icon/tips.svg)Tips: You can also press **F2**  to rename the window title.
+
+ ![1|rename](jpg/rename.png)
+
+
 
 
 ### Display Window in Fullscreen ###
 
-1. Open Deepin Terminal in launcher interface.
+1. Open Terminal in launcher interface.
 
-2. Press ![F11](icon/F11.svg) to display Deepin Terminal in fullscreen.
+2. Press **F11** to display Terminal in fullscreen.
 
-3. If you want to restore the normal display, please press ![F11](icon/F11.svg).
+3. If you want to restore the normal display, please press **F11**.
 
-> ![notes](icon/notes.svg): You can also right click to select **Fullscreen** or **Exit fullscreen** on Deepin Terminal interface.
+> ![notes](icon/notes.svg)Notes: You can also right-click to select **Fullscreen** or **Exit fullscreen** on Terminal interface.
 
 ### Close Window ###
 
 For multiple splitting windows, you can execute the following operations to close:
 
-1. On Deepin terminal interface, move the mouse pointer over one of the splitting windows.
+1. On Terminal interface, move the cursor over one of the split windows.
 
-2. Right click, you can:
+2. Right-click to:
 
-  - Select **Close window** to close this splitting window.
+  - Select **Close window** to close this split window.
 
-  - Select **Close other windows** to close other splitting windows except the current window.
+  - Select **Close other windows** to close other split windows other than the current one.
 
- ![1|closewindow](jpg/closewindow.jpg)
+ ![1|closewindow](jpg/closesplitscreen.png)
 
 
 ## Workspace Operations
 
-The current workspace status will be displayed in different colors of workspace tabs.
-
- ![1|workspace](jpg/workspace.png)
-
-
 ### New Workspace ###
 
-- Right click on Deepin Terminal interface and select **New workspace** to create a new workspace.
+You can create new workspaces as follows:
 
-- Click on ![add](icon/add_icon.svg) on the top to create a workspace.
+- On Terminal interface, right-click and select **New workspace** to create a new workspace.
+
+- Click + on the top to create a workspace.
+- Press **Ctrl+Shift+T** on the keyboard to create a new workspace.
 
 
 ### Select Workspace ###
 
-You can freely switch between multiple workspaces by one of the following operations:
+You can freely switch among multiple workspaces by one of the following operations:
 
 - Directly click the workspace tab to select a workspace.
-- Press ![Ctrl](icon/Ctrl.svg)+![Tab](icon/Tab.svg) to switch in sequence.
-- Press ![Alt](icon/Alt.svg)+ 1~9 Number key to select the workspace; when there are more than 9 workspaces, the last workspace will be selected rather the ninth one.
-
+- Press **Ctrl+Tab** to switch in sequence.
+- Press **Ctrl+Shift+1~9** Number key to select the workspace; when there are more than 9 workspaces, the last workspace will be selected rather the ninth one.
 
 ### Close Workspace ###
 
-- Move the mouse pointer over the preview window of workspace, click on ![close_icon](icon/close_icon.svg) to close the workspace.
+You can close workspace as follows:
 
-- Press ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![w](icon/W.svg).
+1. Click one workspace tab, and click **X** to close it.
+2. Right-click any workspace tab to:
+ - Select **Close workspace** to close it.
+ - Select  **Close other workspaces** to close other workspaces other than the current one.
 
-> ![tips](icon/tips.svg): When there is only one window in workspace, you can also right click and select **Close window** to close the workspace.
+> ![tips](icon/tips.svg)Tips: When there is only one window in workspace, you can also right-click and select **Close window** to close the workspace.
 
 
 ## Remote Server Management
 
-You can right click or click the main menu to open remote management panel to add remote servers. The remote management panel will be automatically hidden when you adjust the window size.
+You can use context menu pops up after right-clicking or click the main menu to open remote management panel to add remote servers. The remote management panel will be automatically hidden when you adjust the window size. Once a remote server is added into the management list, you can automatically login just by one click. 
 
 ### Add Server ###
 
-1. On Deepin Terminal interface, right click or click on ![menu_icon](icon/menu_icon.svg) in the top right corner.
+1. On Terminal interface, click ![icon_menu](icon/icon_menu.svg)> **Remote Management**.
+2. Click **Add server**.
+3. Fill out **Server name, Address, Username, Password**
+4. Click **Add**.
 
-2. Select **Remote management** to open the panel.
+   >  ![notes](icon/notes.svg)Notes: If you need more parameters, please click **Advanced options** to set. Or you can keep the default values and edit them when you need to.
 
-3. Click on **Add server** to fill out:
+ ![1|addssh](jpg/addssh-all.png)
 
-  - Server name
-  - Address
-  - Username
-  - Password
-  - Certificate
 
-4. Click on **Add** to add.
-
-5. If you need more parameters, please click on **Advanced options** to set, the default certificate file located in ~/.ssh/id_rsa.
-
- ![1|addssh](jpg/addssh-all.jpg)
-
-> ![notes](icon/notes.svg): You can also press ![Ctrl](icon/Ctrl.svg)+![Slash](icon/Slash.svg) to open the remote management panel.
 
 ### Edit Server ###
 
-1. Hover the mouse pointer over the server added, click on ![edit_icon](icon/edit_icon.svg) to enter the detailed interface.
-
+1. On the remote management interface, click ![edit_icon](icon/edit_icon.svg) on the server.
 2. Edit as needed.
+3. Click **Save**.
 
-3. Click on **Save** to save the editing.
+> ![notes](icon/notes.svg)Notes: For better identification and usage, you can also customize the server name.
 
- ![0|editssh](jpg/editssh.jpg)
+ ![0|editssh](jpg/editssh.png)
 
 
 ### Group Servers ###
 
-When we set a group for a server, it will be added in the group and displayed in the right remote management panel.
+When you set a group for a server, it will be added in the group and displayed in the right remote management panel.
 
 1. Enter "Edit Server" interface.
+2. Click **Advanced options**.
+3. Fill out **Group**.
+4. Click **Save**.
 
-2. Click on **Advanced options**.
-
-3. Fill out the group and click on **Save**.
-
-4. Then this server will be grouped.
-
- ![0|groupssh](jpg/groupssh.jpg)
+ ![0|groupssh](jpg/groupssh.png)
 
 
 ### Search Server ###
 
-When there are many servers, the search box will be displayed on the top of remote management panel.
+When there are many servers or groups, the search box will be displayed on the top, so you can quickly search all servers.
 
-1. Input the server name and press ![Enter](icon/Enter.svg).
+1. On Terminal interface, right-click.
+2. Select **Remote management**. 
+3. Input the keywords and press **Enter**.
+4. The search results will be displayed.
 
-2. The search results will be displayed at the panel.
+![0|searchssh](jpg/searchssh.png)
 
-![0|searchssh](jpg/searchssh.jpg)
 
-> ![notes](icon/notes.svg): You can customize the searched server name according to needs.
 
 
 ### Upload/Download File ###
 
-You can upload and download files after logged in a server.
+You can upload and download files after logged in a remote server.
 
-#### Upload File ####
+#### Upload Files ####
 
-1. On the remote management panel, click one of the servers to log in.
+1. On the remote management panel, select one server to log in.
+2. On Terminal interface, right-click to select **Upload file**.
+3. Select file to upload in pup-up window.
+4. Click **Upload** and the file will be uploaded to the remote server.
 
-2. Right click to select **Upload file**.
-
-3. Select file to upload.
-
-![1|upload](jpg/upload.jpg)
+![1|upload](jpg/upload.png)
 
 
-#### Download File ####
+#### Download Files ####
 
-1. On the remote management panel, click one of the servers to log in.
+1. On the remote management panel, select one server to log in.
+2. On Terminal interface, right-click to select **Download file**.
+3. Select the storage location.
+4. Input the path of the file to be downloaded. The file will be downloaded to specified location.
 
-2. Right click to select **Download file**.
-
-3. Select file to download.
-
-![1|download](jpg/download.jpg)
+![1|download](jpg/download.png)
 
 
 ### Delete Server ###
 
 1. Enter "Edit Server" interface.
+2. Click **Advanced options**.
+3. Select **Delete server**.
+4. Click **Delete** on the pop-up window to confirm.
 
-2. Click on **Advanced options**.
-
-3. Select **Delete server** at the bottom to delete.
-
-![0|groupssh](jpg/groupssh.jpg)
+![0|groupssh](jpg/deletessh.png)
 
 ## Main Menu
 
-### Switch Theme ###
+In Main menu, you can create [new window](#new window), custom command, switch themes, view manual and know more about Terminal. 
 
-1. On Deepin Terminal interface, click on ![menu_icon](icon/menu_icon.svg) in the top right corner.
+### Theme ###
 
-2. Click on **Switch theme**.
+The window theme includes Light Theme, Dark Theme and System Theme (default).
 
-3. Select one from the theme list and it takes effect right now.
+1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 
- ![1|change](jpg/change.jpg)
+2. Click **Switch theme** to select one and it takes effect immediately.
 
 ### Custom Commands ###
 
-1. On Deepin Terminal interface, click on ![menu_icon](icon/menu_icon.svg) in the top right corner.
+1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 
-2. Click on **Custom commands**.
+2. Select **Custom commands**.
 
 3. Select **Add command**.
 
 4. Input **Name**, **Command** and **Shortcuts**.
 
-5. Click on **Add**.
+5. Click **Add**.
 
- ![1|command](jpg/command.jpg)
+### Settings
 
-> ![notes](icon/notes.svg): You can also right click on the Deepin Terminal interface and select **Custom commands** to add.
+#### Basic Settings ####
 
-### Basic Settings ###
+1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 
-1. On Deepin Terminal interface, click on ![menu_icon](icon/menu_icon.svg) in the top right corner.
+2. Click **Settings**.
 
-2. Click on **Settings**.
-
-3. In the interface of **Basic**, you can:
+3. In the tab of **Basic**, you can:
 
   - Set the background transparency.
+   >![notes](icon/notes.svg)Notes: if Window Effect is turned off in Control Center, transparency adjusting function will be hidden.
 
   - Set the font and font size.
 
- ![0|generalset](jpg/generalset.jpg)
+#### Shortcuts Settings ####
 
-### Shortcuts Settings ###
+1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 
-1. On Deepin Terminal interface, click on ![menu_icon](icon/menu_icon.svg) in the top right corner.
+2. Click **Settings**.
 
-2. Click on **Settings**.
-
-3. In the interface of **Shortcuts**, you can:
+3. In the tab of **Shortcuts**, you can:
 
   - Click the shortcuts to be modified, and input new shortcuts by keyboard.
 
   - Press ![Backspace](icon/Backspace.svg) if you want to disable the shortcut.
 
- ![0|hotkeyset](jpg/hotkeyset.jpg)
 
+#### Advanced Settings ####
 
-### Advanced Settings ###
+1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 
-1. On Deepin Terminal interface, click on ![menu_icon](icon/menu_icon.svg) in the top right corner.
+2. Click **Settings**.
 
-2. Click on **Settings**.
-
-3. In the interface of **Advanced**, you can:
+3. In the tab of **Advanced**, you can:
 
   - Set cursor style.
   - Enable or disable **Cursor blink**.
-  - Enable or disable **Cursor autohide**.
   - Enable or disable **Copy on select**.
   - Enable or disable **Scroll on keystroke**.
   - Enable or disable **Scroll on output**.
   - Set window startup mode.
   - Enable or disable **Hide quake window after lost focus**.
   - Enable or disable **Blur background**.
+   >![notes](icon/notes.svg)Notes: if Window Effect is turned off in Control Center, **Blur background** will be hidden.
 
- ![0|advanced](jpg/advanced.jpg)
+  - **Restore defaults**: click this button, all settings will be restored to default.  
 
-> ![notes](icon/notes.svg): If you need to restore all default settings, please click on **Restore Defaults**.
+### Help
 
+Click Help to get the manual, which will help you further know and use Terminal.
 
-### Help ###
+1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 
-You can click on **Help** to view the manual.
-
-1. On Deepin Terminal interface, click on ![menu_icon](icon/menu_icon.svg) in the top right corner.
-
-2. Click on **Help** to view the manual of Deepin Terminal.
+2. Click **Help** to view the manual of Terminal.
 
 
 
 
-### About ###
+### About
 
-You can click on **About** to view the introduction of Deepin Terminal.
+1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 
-1. On Deepin Terminal interface, click on ![menu_icon](icon/menu_icon.svg) in the top right corner.
-
-2. Click on **About** to view the introduction of Deepin Terminal.
+2. Click **About** to view the introduction of Terminal.
 
 
 
 
-### Exit ###
+### Exit
 
-You can click on **Exit** to exit Deepin Terminal.
+1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 
-1. On Deepin Terminal interface, click on ![menu_icon](icon/menu_icon.svg) in the top right corner.
-
-2. Click on **Exit** to exit.
+2. Click **Exit**.

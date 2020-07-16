@@ -2,139 +2,176 @@
 
 ## Overview
 
-Deepin System Monitor is an intuitive and powerful system monitor. It can monitor the process CPU, memory, network, disk and other status. You can also search, suspend, resume and end your processes by it.
+System Monitor is a system tool monitoring and managing hardware load, program running and system services. It's capable to real-time monitor CPU status, memory footprint, and upload/download speed, manage system and application processes, search and force end processes as well.
 
 
 ## Basic Operations
 
-### Status Monitoring
+### Search Process
 
-Deepin System Monitor can monitor the CPU, memory and network status of your system:
+1. In the searching box, you can click ![search](icon/search.svg) to input keywords. 
+2. Press  **Enter** key to search to locate quickly. 
+   - All matching information will be displayed in a list. 
+   - If searching fails, "No search results" will be displayed. 
+
+![1|search](jpg/search.png)
+
+
+
+### Hardware Monitoring
+
+System Monitor can monitor the CPU, memory and network status of your system:
 
 - CPU monitoring, you can view the CPU usage and usage trends through graphics, number and curve.
-- Memory monitoring, you can view the memory size and real-time usage, total swap space and real-time usage.
-- Network monitoring, you can view the download and upload speed,total download and upload size as well as the network status trend.
 
-![1|status1](jpg/status1.jpg)
+  - In "Expand view", CPU load is displayed in doughnut chart with percentage. The curve inside the doughnut shows the recent CPU load summary, the height of which automatically fits the inner height of the doughnut height. 
+  ![1|monitor](jpg/expand.png)
+  - In "Compact view", CPU load is displayed in oscillogram with percentage. The curve shows the recent CPU load summary, the height of which automatically fits the height of the oscillogram. 
+  ![1|monitor](jpg/compact.png)
+- Memory monitoring shows the memory real-time usage, total memory and current usage, total swap space and current usage in percentage and graphics.
+- Network monitoring shows the current downloading and uploading speed, and the trend in recent time in waves.
+- Disk monitoring shows the current reading and writing speed, and the trend in recent time in waves.
 
 
 ### Process Management
 
 #### Switch Process Tabs
 
-Click on the top right tabs on interface to switch to view application processes, user's processes and all processes.
+Click the top right tabs on interface to view "Applications", "My processes" and "All processes".
 
-- Click on ![application](icon/application.png) to view the application processes.
-- Click on ![user](icon/user.png) to view the user's processes.
-- Click on ![all](icon/all.png) to view all processes.
+- Click ![application](jpg/app-process.png) to switch to **Applications**. 
+- Click ![user](jpg/my-process.png) to switch to **My processes**. 
+- Click ![all](jpg/all-process.png) to switch to **All processes**.
 
-![1|status2](jpg/status2.jpg)
+![1|monitor](jpg/tab-switch.png)
 
 #### Adjust Process Order
 
-You can adjust the process order by name, CPU, memory, disk write, disk read, download, upload and PID.
+You can adjust the process order by Name, CPU, User, Memory, Upload, Download, Disk read, Disk write, PID, Nice and Priority.
 
-1. On Deepin System Monitor interface, click on the top tabs of process list to sort the processes.
-2. Multiple clicks to sort from low to high or high to low.
-3. Right click on the top tabs to check or uncheck.
+- On System Monitor interface, click the top tabs of process list to sort the processes. Multiple clicks to sort from low to high or high to low.
+- Right-click the top tabs to check options you want to view or to uncheck options you want to hide.
 
-![1|order](jpg/order.jpg)
+![1|sort](jpg/sort.png)
 
-
-#### Search Process
-
-Type the process name in the top search box on Deepin System Monitor interface to search and quickly locate the process.
-
-![1|search](jpg/search.jpg)
-
-#### Force to End Process
-
-1. On Deepin System Monitor interface, click the main menu.
-2. Select **Force to end application**.
-3. Click on the opened application window to end when the mouse becomes ![kill_cursor](icon/kill_cursor.png).
-4. Click on **End application** in the pop-up window to confirm.
-
-> ![notes](icon/notes.svg): You can only end GUI application process by clicking on **Force to end application**.
-
-
-![1|force](jpg/force.jpg)
 
 #### End Process
 
-1. On Deepin System Monitor interface, right click on the process you want to end.
-2. Select **End process**.
-3. Click on **End process** in the pop-up window to confirm.
+System Monitor can be used to end processes.
 
-> ![notes](icon/notes.svg): You can select **End process** to end all processes.
+1. On System Monitor interface, right-click the process you want to end.
+2. Select **End Process**.
+3. Click **End** in the pop-up window to confirm.
 
-![1|end](jpg/end.jpg)
+![1|kill](jpg/kill.png)
+
+#### End Application
+
+1. On System Monitor interface, click ![icon_menu](icon/icon_menu.svg).
+
+2. Select **Force end application**.
+> ![notes](icon/notes.svg)Notes: This function can only end graphical processes.
+
+3. Click the opened application window under the prompt.
+
+4. Click **Force End** in the pop-up window to confirm.
+
+> ![tips](icon/tips.svg)Tips: You can select a process, right-click and select **End Process**. 
 
 
-#### Suspend/Continue Process
+#### Suspend/Resume Process
 
-1. On Deepin System Monitor interface, right click on the process you want to suspend.
-2. Select **Suspend process**.
-3. The process will be suspended, and you can right click to select **Resume process** to resume it.
+1. On System Monitor interface, right-click the process you want to suspend.
+2. Select **Suspend process**. The process will be tagged with **(Suspend)** and becomes red in the list. 
+3. Right-click it again and select **Resume process** to resume it.
 
-![1|suspend](jpg/suspend.jpg)
+![1|pause](jpg/pause.png)
+
+
+#### Change Process Priority 
+
+1. On System Monitor interface, right-click a process.
+
+2. Select **Change priority** and select a level.
+
+![notes](icon/notes.svg)Notes: You can also custom a priority level.
+
+![1|priority](jpg/priority.png)
 
 
 #### View Process Location
 
-1. On Deepin System Monitor interface, right click on the process you want to view.
-2. Select **View process location**.
-3. The process command location will be opened.
-
+1. On System Monitor interface, right-click the process you want to view.
+2. Select **View command location** to open the location in File Manager. 
 
 #### View Process Properties
 
-1. On Deepin System Monitor interface, right click on the process you want to view.
-2. Select **Properties**.
-3. You can view the process name, command line and start time.
+1. On System Monitor interface, right-click the process you want to view.
+2. Select **Properties** to view the process name, command line and start time.
 
-![2|properties](jpg/properties.jpg)
+![0|info](jpg/info.png)
 
+### System service management
+
+You can start, stop, restart, set startup type, refresh system service processes.
+In the list of system services, force end application is prohibited.
+>![attention](icon/attention.svg)Attention: For better system operation, please don't end any processes of the system services and root processes.
+
+#### Start system service
+1. Select **Services** tab on System Monitor interface.
+2. Select a process that is not started yet, right-click and select **Start**. Please enter password if authentication window pops up.
+3. **Active** is displayed in the **Active** column.
+4. Right-click and select **Startup type**, you will have two options "Auto" and "Manual".
+5. Right-click and select **Refresh**.
+
+
+
+#### Stop system service
+
+1. Select **Services** tab on System Monitor interface.
+2. Select a process that is started already, right-click and select **Stop**. Please enter password if authentication window pops up.
+3. **Inactive** is displayed in the **Active** column.
+4. Right-click and select **Refresh**.
+
+You can also right-click a system process and select **Restart**. 
 
 ## Main Menu
 
-### Switch Theme
+In main menu, you can switch monitoring modes and themes, view help manual and learn more information of System Monitor.
 
-You can switch the theme of Deepin System Monitor.
+### Theme
 
-1. On Deepin System Monitor interface, click on ![icon_menu](icon/icon_menu.svg) .
-2. Click on **Dark theme**.
-3. Switch to dark theme from the default light theme.
+The window theme includes Light Theme, Dark Theme and System Theme (default).
 
-![1|theme](jpg/theme.jpg)
+1. Click![icon_menu](icon/icon_menu.svg) on the interface.
+2. Click **Theme** to choose one.
 
+### View
+
+System Monitor offers expand view and compact view for you to choose.
+
+1. Click![icon_menu](icon/icon_menu.svg) on the interface.
+
+2. Click **View** to choose one mode.
+
+> ![notes](icon/notes.svg)Notes: If you switched views under "Services" tab, you would have to go to "Processes" tab to view the effect.
 
 
 ### Help
 
-You can click to view the manual, which will help you further know and use Deepin System Monitor.
+You can click to view the manual, which will help you further know and use System Monitor.
 
-1. On Deepin System Monitor interface, click on ![icon_menu](icon/icon_menu.svg) .
-2. Click on **Help**.
+1. Click![icon_menu](icon/icon_menu.svg) on the interface.
+2. Click **Help**.
 3. View the manual.
-
-
-
-
 
 ### About
 
-You can click to view the version description.
-
-1. On Deepin System Monitor interface, click on ![icon_menu](icon/icon_menu.svg).
-2. Click on **About**.
+1. Click![icon_menu](icon/icon_menu.svg) on the interface.
+2. Click **About**.
 3. View the version description.
-
-
-
 
 ### Exit
 
-You can click to exit Deepin System Monitor.
-
-1. On Deepin System Monitor interface, click on ![icon_menu](icon/icon_menu.svg).
-2. Click on **Exit** to exit.
+1. Click![icon_menu](icon/icon_menu.svg) on the interface.
+2. Click **Exit**.
