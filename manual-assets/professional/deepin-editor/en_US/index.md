@@ -28,7 +28,7 @@ In Launcher, right-click Text Editor and you can:
 
 ### View Shortcuts
 
-On the Text Editor Interface, press ![Ctrl](icon/Ctrl.svg) + ![Shift](icon/Shift.svg) + ![QM](icon/QM.svg) to view all the shortcuts. You can get them in Settings as well. Using shortcuts will greatly improve your work efficiency.
+On the Text Editor Interface, press **Ctrl+ Shift+?** to view all the shortcuts. You can get them in Settings as well. Using shortcuts will greatly improve your work efficiency.
 
 ![1|hotkey](jpg/hotkey.png)
 
@@ -36,7 +36,7 @@ On the Text Editor Interface, press ![Ctrl](icon/Ctrl.svg) + ![Shift](icon/Shift
 
 ### Create Document
 
-Click ![plus_icon](icon/+.svg) on the title bar, or press ![Ctrl](icon/Ctrl.svg) + ![N](icon/N.svg), or click ![icon_menu](icon/icon_menu.svg) > **New window** or **New tab** to create a blank document in Text Editor.
+Click ![plus_icon](icon/+.svg) on the title bar, or press **Ctrl+N**, or click ![icon_menu](icon/icon_menu.svg) > **New window** or **New tab** to create a blank document in Text Editor.
 
 ### Open Files
 
@@ -45,20 +45,20 @@ You can open the text file in the following ways, and the selected file will ope
 - Drag the file directly to the Text Editor interface or its icon.
 - Right-click the file and open it with Text Editor. After selecting Text Editor as the default program, you can double-click the file to open it directly.
 - On the Text Editor interface, click ![icon_menu](icon/icon_menu.svg) > **Open file** and select the file.
-- On the Text Editor interface, use ![Ctrl](icon/Ctrl.svg) + ![O](icon/O.svg) to open the file.
+- On the Text Editor interface, use **Ctrl+O** to open the file.
 
 > ![tips](icon/tips.svg)Tips: You can open multiple files at one time.
 
 ### Save Files
 
-- Press ![Ctrl](icon/Ctrl.svg) + ![s](icon/S.svg) to save the current document.
+- Press **Ctrl+ S** to save the current document.
 - Click ![icon_menu](icon/icon_menu.svg) > **Save** to save the file.
 
-You can also press ![Ctrl](icon/Ctrl.svg) + ![Shift](icon/Shift.svg) + ![S](icon/S.svg) to save the file as  a new one.
+You can also press **Ctrl+Shift+S** to save the file as  a new one.
 
 ### Close Files
 
-- Press ![Ctrl](icon/Ctrl.svg) + ![w](icon/W.svg) to close the file.
+- Press **Ctrl+W** to close the file.
 - Move the cursor to the title and click the ![close](icon/close.svg)button there or the mouse middle button to close the file.
 - Right-click the title and select **Close tab** or **Close other tabs**.
 - Right-click the title and select **More ways to close**.
@@ -72,7 +72,7 @@ You can also press ![Ctrl](icon/Ctrl.svg) + ![Shift](icon/Shift.svg) + ![S](icon
 
 To print a file in Text Editor, you should connect and configure the printer first.
 
-1. Click ![icon_menu](icon/icon_menu.svg) > **Print**, or press ![Ctrl](icon/Ctrl.svg) + ![P](icon/P.svg) to open the print preview interface.
+1. Click ![icon_menu](icon/icon_menu.svg) > **Print**, or press **Ctrl+P** to open the print preview interface.
 
 2.  On the preview interface, preview the document and set the printing page. 
 
@@ -129,7 +129,7 @@ It helps you change the case of selected text. You can change it to lowercase, u
 2. Right-click and select **Change Case**.
 3. Choose **Upper Case**, **Lower Case**, or **Capitalize**. The changes will take effect immediately.
 
-You can also use ![Alt](icon/Alt.svg) + ![U](icon/U.svg)/  ![L](icon/L.svg) /![C](icon/C.svg) to quickly switch the cases.
+You can also use **Alt + U/ L/ C** to quickly switch the cases.
 
 
 
@@ -157,26 +157,26 @@ In addition to deleting characters one by one, you can quickly delete characters
 
 ### Undo
 
-If you make a misoperation, press ![Ctrl](icon/Ctrl.svg) + ![Z](icon/Z.svg) to undo it, or right-click to select **Undo**.
+If you make a misoperation, press **Ctrl+Z** to undo it, or right-click to select **Undo**.
 
 ### Find Texts
 
-1. Click ![menu](icon/icon_menu.svg), and select **Find**, or press ![Ctrl](icon/Ctrl.svg) + ![F](icon/F.svg) to open the "Find" box below.
+1. Click ![menu](icon/icon_menu.svg), and select **Find**, or press **Ctrl+F** to open the "Find" box below.
 2. Input the text you want to find. 
-3. Click **Next**, **Previous** to find each match, or press ![Enter](icon/Enter.svg)to find the next match.
-4. Press ![Esc](icon/Esc.svg) or click the close button to close the dialog box.
+3. Click **Next**, **Previous** to find each match, or press **Enter** key to find the next match.
+4. Press **Esc** key or click the close button to close the dialog box.
 
-> ![tips](icon/tips.svg)Tips: Select the text and then press ![Ctrl](icon/Ctrl.svg) + ![F](icon/F.svg) and the text will be automatically displayed in the "Find" box.
+> ![tips](icon/tips.svg)Tips: Select the text and then press **Ctrl+F** and the text will be automatically displayed in the "Find" box.
 
 ### Replace Texts
-1. Click ![menu](icon/icon_menu.svg), and select **Replace**, or press ![Ctrl](icon/Ctrl.svg) + ![H](icon/H.svg) to open the "Replace" box below.
+1. Click ![menu](icon/icon_menu.svg), and select **Replace**, or press **Ctrl+H** to open the "Replace" box below.
 2.  Input the text to be replaced and the new text.
 3.  Click **Replace** to replace the matches one by one and click **Replace Rest** and **Replace All** to replace the rest or all the matches at once. Click **Skip** to skip the current matching text.
-4.  Press ![Esc](icon/Esc.svg) or click close button to close the dialog box.
+4.  Press **Esc** or click close button to close the dialog box.
 
 ### Go to Line
 Use Go to Line to jump to the specific line directly.
-Right-click and select **Go to Line**, or press ![Ctrl](icon/Ctrl.svg) + ![G](icon/G.svg) and then input the line number to go to that line.
+Right-click and select **Go to Line**, or press **Ctrl+G** and then input the line number to go to that line.
 
 ### Edit Line
 
@@ -251,7 +251,7 @@ It is available to click any line on the Text Editor interface to add a bookmark
 
    + Click ![icon](icon/bookmark_normal_light.svg)to add a bookmark for the line.
    + Right-click ![icon](icon/bookmark_normal_light.svg)and select **Add bookmark** to  add a bookmark for the line.
-   + Place the cursor on any line and press ![Ctrl](icon/Ctrl.svg) + ![F2](icon/F2.svg)to add a bookmark for the line.
+   + Place the cursor on any line and press **Ctrl+F2** to add a bookmark for the line.
 
 -   Delete bookmark  
 
@@ -267,12 +267,12 @@ You can add comments to the text with a suffix of a code type, such as cpp, java
 
 - Add comment
   - Select the text needed and right-click to select **Add comment**.
-  - Select the text needed and press  ![Alt](icon/Alt.svg) + ![A](icon/A.svg).
+  - Select the text needed and press  **Alt+A**.
 
 - Cancel comment
      - Select the text needed and right-click to select **Cancel comment**.
 
-     - Select the text needed and press ![Alt](icon/Alt.svg) + ![Z](icon/Z.svg).
+     - Select the text needed and press **Alt+Z**.
 
 
 > ![notes](icon/notes.svg)Notes: It supports comments in different languages, mainly based on the actual situation. For example, C, C# and Java comment symbols are // and // and Python comment symbols are #.
@@ -294,7 +294,7 @@ Click ![icon_menu](icon/icon_menu.svg) > **Settings** and you can perform the fo
 - Check **Code Fold Flag** and ![next](icon/next.svg)or![next](icon/next-down.svg) are displayed in the edit area. Right-click to select Fold/Unfold Current Level or Fold/Unfold All Levels to perform the corresponding operations.
 - Check **Show Line Number** to display the line number in the edit area.
 
-> ![tips](icon/tips.svg)Tips: You can also use ![Ctrl](icon/Ctrl.svg) + ![+](icon/+.svg)/ ![-](icon/-.svg) to adjust the font size, and press ![Ctrl](icon/Ctrl.svg) + ![O](icon/O.svg)to restore default font size.
+> ![tips](icon/tips.svg)Tips: You can also use **Ctrl + “+”/ “-” ** to adjust the font size, and press **Ctrl+0** to restore default font size.
 
 #### Shortcuts Settings
 1. Click ![icon_menu](icon/icon_menu.svg) > **Settings** to view the current shortcut in the **Shortcuts** option.

@@ -94,7 +94,7 @@ By clicking the graphics drawing tool to draw entities, you can perform the foll
 - Select drawn graphics, texts or blurred areas.
 - Perform marquee selection and all graphics within the marquee selection area are in selected status.
 - Drag to adjust the size of the graphic within the selected area.
-- Hold down the ![Shift](icon/Shift.svg) key and click to select multiple graphics.
+- Hold down the **Shift** key and click to select multiple graphics.
 
 > ![notes](icon/notes.svg)Notes: Click the blank area in Draw to cancel the graphic selected.
 
@@ -112,7 +112,7 @@ By clicking the graphics drawing tool to draw entities, you can perform the foll
    - Sides range from 4 to 10, which can be adjusted by clicking the up and down adjustment icon or entering the value manually.
 3.   Drag the mouse to draw graphics in Draw area. 
 
->![tips](icon/tips.svg)Tips: Facilitated by the ![Shift](icon/Shift.svg) or ![Shift](icon/Shift.svg)+ ![Alt](icon/Alt.svg) keys on the keyboard, you can draw a square, perfect circle, equilateral triangle, regular pentagram and regular pentagon when drawing graphics with ![rectangle](icon/rectangle_normal.svg), ![oval](icon/oval_normal.svg), ![triangle](icon/triangle_tool_normal.svg), ![star](icon/draw-star.svg) and ![hexagon](icon/hexagon_tool_normal.svg).
+>![tips](icon/tips.svg)Tips: Facilitated by the **Shift** or **Shift+ Alt** keys on the keyboard, you can draw a square, perfect circle, equilateral triangle, regular pentagram and regular pentagon when drawing graphics with ![rectangle](icon/rectangle_normal.svg), ![oval](icon/oval_normal.svg), ![triangle](icon/triangle_tool_normal.svg), ![star](icon/draw-star.svg) and ![hexagon](icon/hexagon_tool_normal.svg).
 
 ![1|shape](jpg/shape01 .png)
 
@@ -165,8 +165,8 @@ You can copy, crop, rotate graphics by the edition function, and also adjust lay
 ### Copy and Paste
 
 1.  On the Draw interface, select the graphics to be copied.
-2.  Right-click to select **Copy** or use the shortcuts ![Ctrl](icon/Ctrl.svg) + ![C](icon/C.svg)  to copy the graphics to the clipboard.
-3.  Right-click to select **Paste** or use the shortcuts ![Ctrl](icon/Ctrl.svg) + ![V](icon/V.svg) to paste the graphics to Draw.
+2.  Right-click to select **Copy** or use the shortcuts **Ctrl+ C** to copy the graphics to the clipboard.
+3.  Right-click to select **Paste** or use the shortcuts **Ctrl+ V** to paste the graphics to Draw.
 
 ![1|copy](jpg/copy.png)
 
@@ -178,7 +178,7 @@ You can copy, crop, rotate graphics by the edition function, and also adjust lay
   - Original: crop in proportion to the original picture, such as: 1:1, 2:3, 8:5 and 16:9.
 
 3.  Select the cropping mode and select the area to be cropped.
-4.  Press the ![Enter](icon/Enter.svg) key to crop out the graphics out of the selected area.
+4.  Press the **Enter** key to crop out the graphics out of the selected area.
 
 ![1|cut](jpg/cut.png)
 

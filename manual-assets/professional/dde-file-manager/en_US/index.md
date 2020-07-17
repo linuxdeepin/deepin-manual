@@ -27,7 +27,7 @@ You can run, close and create a shortcut for File Manager by the following ways.
 
 ### View Shortcut Keys
 
-On Document Viewer interface, press  ![Ctrl](icon/Ctrl.svg) + ![Shift](icon/Shift.svg) + ![QM](icon/QM.svg)to view all shortcut keys quickly, which helps you to use them skillfully and improves your working efficiency. 
+On Document Viewer interface, press **Ctrl + Shift + ?** to view all shortcut keys quickly, which helps you to use them skillfully and improves your working efficiency. 
 
 ![1|hotkey](jpg/hotkey.png)
 
@@ -61,19 +61,19 @@ File Manager is featured with the basic functions as a file manager, you can eas
 
 1. On File Manager interface, right-click and select **New document**.
 2. In the pop-up menu, select the document format you want to create.
-3. Input a name for the new document, and press ![enter](icon/enter.svg), or click at blank area.
+3. Input a name for the new document, and press **Enter**, or click at blank area.
 
 ![0|newdoc](jpg/newdoc.png)
 
 #### New Folder
 
 1. On File Manager interface, right-click and select **New folder**.
-2. Input a name for the new folder, and press ![enter](icon/enter.svg), or click at blank area.
+2. Input a name for the new folder, and press **Enter**, or click at blank area.
 
 ### Rename File/Folder
 
 1. Select the file/folder, right-click to select **Rename**.
-2. Input a new name for the file/folder, and press ![enter](icon/enter.svg), or click at any blank area.
+2. Input a new name for the file/folder, and press **Enter**, or click at any blank area.
 
 ![0|rename](jpg/contextmenu.png)
 
@@ -159,7 +159,7 @@ Right-click file/folder to select **Delete**.
 > ![attention](icon/attention.svg)Attention: File/folder in external device will be permanently deleted and can not be restored when you select **Delete**.
 
 ### Undo Operation
-In file manager,  use ![Ctrl](icon/Ctrl.svg) + ![Z](icon/Z.svg) to undo the previous steps, including:
+In file manager,  use **Ctrl + Z** to undo the previous steps, including:
 - Delete the newly created file/folder.
 - Resume the renamed file/folder to the previous name.
 - Restore the deleted file/folder from trash.
@@ -180,7 +180,7 @@ In Properties of files, you can view the basic info, open with list, and permiss
 ![0|info](jpg/info.png)
 
 
-> ![notes](icon/notes.svg)Notes: If you check the properties of multiple files at a time, the total size and quantities will be displayed. If you check the properties of a shortcut, the source file location will be displayed in addition. You can use shortcuts![Ctrl](icon/Ctrl.svg) + ![I](icon/I.svg) to view the properties as well.
+> ![notes](icon/notes.svg)Notes: If you check the properties of multiple files at a time, the total size and quantities will be displayed. If you check the properties of a shortcut, the source file location will be displayed in addition. You can use shortcuts**Ctrl + I** to view the properties as well.
 
 ## Common Operations
 
@@ -203,11 +203,11 @@ By clicking the search icon, or right-click the file path and select **Edit addr
 
 ![0|addressbar](jpg/addressbar2.png)
 
-- The inputting box can identify smartly. You can input keywords or an address and press ![enter](icon/enter.svg), the system will identify automatically and search or visit.
+- The inputting box can identify smartly. You can input keywords or an address and press **Enter**, the system will identify automatically and search or visit.
 
 ### Search files
 
-Click the search button or press ![Ctrl](icon/Ctrl.svg) + ![F](icon/F.svg)  to switch to the search bar. Or, input the keywords and press ![enter](icon/enter.svg), the search results will be shown in the window.
+Click the search button or press **Ctrl + F**  to switch to the search bar. Or, input the keywords and press **Enter**, the search results will be shown in the window.
 
 - If you need to search in a specified directory, please enter it before search.
 
@@ -237,13 +237,13 @@ File Manager supports multi-tab view.
 
 ![1|tab](jpg/tab.png)
 
-> ![tips](icon/tips.svg)Tips: When the File Manager has only one tab, the tab bar is hidden, you can press ![Ctrl](icon/Ctrl.svg) + ![T](icon/T.svg) to add a new tab.
+> ![tips](icon/tips.svg)Tips: When the File Manager has only one tab, the tab bar is hidden, you can press **Ctrl + T** to add a new tab.
 
 ### Manage Bookmarks
 
 To quickly visit a folder from the left panel, you can add bookmarks for frequently used folders.
 
-- Add Bookmarks: On File Manager, right-click the folder, in the popup context menu, select **Add to bookmark**.
+- Add Bookmarks: On File Manager, right-click the folder, in the pop-up context menu, select **Add to bookmark**.
 
 - Move Bookmarks: you can move bookmarks within the bookmark area. Drag and drop the bookmark to the designated location.
 
@@ -261,7 +261,7 @@ By adding tags on file/folder, you can classify and manage your files better.
 
 1. Right-click a file/folder, select **Tag information**.
 2. Input tag info. Use comma to separate tags in case of multiple tags.
-3. Press  ![enter](icon/enter.svg) to finish adding tag.
+3. Press  **Enter** to finish adding tag.
 
 > ![notes](icon/notes.svg)Notes: The tag color is randomly assigned from eight default colors.
 
@@ -344,7 +344,7 @@ You can find sharing folders of other users in the same LAN in **Computers in LA
 
 
 
-1. On File Manager interface, input the sharing address of the LAN user, e.g. smb://xx.x.xx.xxx (usually it should be an IP address), press ![enter](icon/enter.svg).
+1. On File Manager interface, input the sharing address of the LAN user, e.g. smb://xx.x.xx.xxx (usually it should be an IP address), press **Enter**.
 2. Input the username and password or visit by anonymous access.
 - Unencrypted folders can be visited by anonymous access without inputting username and password.
 - When you visit encrypted folders, a window pops up and you will have to input user name and password before visiting. If you check **Remember password**, you don't have to input password when you visit the folder next time.
@@ -376,7 +376,7 @@ You can find sharing folders of other users in the same LAN in **Computers in LA
 
 1. On File Manager interface, right-click the item to create a link for.
 2.  Select **Create link**.
-3. In the popup window, select a location and input the name of the link.
+3. In the pop-up window, select a location and input the name of the link.
 4. Click **Save** to finish creating the link.
 
 > ![tips](icon/tips.svg)Tips: By selecting **Send to desktop** for an item, you can create a link on desktop with one click.
@@ -403,7 +403,7 @@ You will have to set a password when you use File Vault for the first time as fo
 
 ![0|password](jpg/password.png)
 
-> ![notes](icon/notes.svg)Notes: the password must contain upper case letters, lower case letters,  Arabic numbers and special symbols at the same time and no less that 8 digits. Otherwise, you are not able to go to the next step.
+> ![notes](icon/notes.svg)Notes: the password must contain upper case letters, lower case letters,  Arabic numbers and special symbols at the same time and no less than 8 digits. Otherwise, you are not able to go to the next step.
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 3. A key/QR code is generated. It is recommended to save it in case you forget it. Click **Next**. 

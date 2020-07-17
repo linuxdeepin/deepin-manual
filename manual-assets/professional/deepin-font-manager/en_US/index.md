@@ -75,10 +75,8 @@ You can add multiple fonts in a batch at one time by dragging or selecting files
 
 ### Search Fonts
 
-1.   In the search box on top of the Font Manager interface, you can: 
+1.   In the search box on top of the Font Manager interface, you can click![search](icon/search.svg)to enter keywords.
 
-   - Click![search](icon/search.svg)to enter keywords.
-   - Click![button_voice](icon/button_voice.svg)to enter voices and the voices will be converted to texts which will be displayed in the search box.
 2.   Press the Enter key on the keyboard to conduct searching.
    - When there is matched information, the search result lists will be displayed on the interface. 
    - When there is no matched information, "No search results" will be displayed on the interface.

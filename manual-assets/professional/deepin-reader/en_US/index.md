@@ -32,7 +32,7 @@ You can run, close or create a shortcut of Document Viewer as follows.
 
 ### View Shortcut Keys
 
-On Document Viewer interface, press  ![Ctrl](icon/Ctrl.svg) + ![Shift](icon/Shift.svg) + ![QM](icon/QM.svg) to view all shortcut keys quickly, which helps you to use them skillfully and improves your working efficiency. 
+On Document Viewer interface, press  **Ctrl + Shift+ ？** to view all shortcut keys quickly, which helps you to use them skillfully and improves your working efficiency. 
 
 ![1|hotkey](jpg/hotkey.png)
 
@@ -54,7 +54,7 @@ You can open a file by:
 
 - Clicking **Select File** and selecting a file on Document Viewer interface.
 
-- On Document Viewer interface, pressing ![Ctrl](icon/Ctrl.svg) + ![O](icon/O.svg)and selecting the file you want to open. 
+- On Document Viewer interface, pressing **Ctrl+O** and selecting the file you want to open. 
 
 > ![notes](icon/notes.svg)Notes: Document Viewer supports PDF and DJVU formats.
 
@@ -62,16 +62,16 @@ You can open a file by:
 
 To save the document that has been edited and modified, you can 
 
-- Press![Ctrl](icon/Ctrl.svg) + ![S](icon/S.svg).
+- Press **Ctrl+S**.
 - Click ![icon_menu](icon/icon_menu.svg) > **Save**.
-> ![tips](icon/tips.svg)Tips: Besides, you can press![Ctrl](icon/Ctrl.svg) + ![Shift](icon/Shift.svg) + ![S](icon/S.svg) or click ![icon_menu](icon/icon_menu.svg) > **Save as**.
+> ![tips](icon/tips.svg)Tips: Besides, you can press **Ctrl + Shift + S** or click ![icon_menu](icon/icon_menu.svg) > **Save as**.
 
 
 ### Print documents
 
 To print you have to connect and configure a printer. 
 
-1. Click ![icon_menu](icon/icon_menu.svg) > **Print** or press![Ctrl](icon/Ctrl.svg) + ![P](icon/P.svg)to preview.
+1. Click ![icon_menu](icon/icon_menu.svg) > **Print** or press **Ctrl+P** to preview.
 2. In this previewing interface, you can preview and set the printing page. 
 3. In this previewing interface, click the printer icon on the right, and select a printer from the popped out window and set the parameters you want. 
 4. Click **Print**  then the document will be sent to the printer for printing. 
@@ -169,10 +169,8 @@ This function is only applicable for the current tab.
 1. On Document Viewer interface, open a file. 
 2. Right-click and select **Search** or press **Ctrl**+**F** to open a searching window. 
    
-3. In the searching box, you can :
-   - Click ![search](icon/search.svg) to input keywords. 
-   - Click ![button_voice](icon/button_voice.svg) to speak, and your speech will be turned into words and displayed in the searching box. 
-
+3. In the searching box, you can click ![search](icon/search.svg) to input keywords. 
+   
 4. Press  **Enter** to locate quickly. 
    - All matching information will be displayed in a list and are highlighted in the document.
    - If searching fails, "No search results" will be displayed. 
@@ -222,9 +220,9 @@ Using thumbnails you can switch file thumbnails catalog![view](icon/view_normal.
 
 To zoom in or out a page, you can:
 
-- Press![Ctrl](icon/Ctrl.svg) + ![+](icon/+.svg) or![Ctrl](icon/Ctrl.svg) +![-](icon/-.svg) 
-- Press![Ctrl](icon/Ctrl.svg) and scroll the mouse wheel up and down at the same time. 
-- On Document Viewer interface, click  ![icon_menu](icon/+.svg) or  ![icon_menu](icon/-.svg). 
+- Press **Ctrl +“+”**  or**Ctrl +“-”** .
+- Press**Ctrl** and scroll the mouse wheel up and down at the same time. 
+- On Document Viewer interface, click  **+**  or  **-**. 
 > ![notes](icon/notes.svg)Notes: Manual input is supported here. You can choose display percentage from the drop-down box of the menu bar: 10%, 25%, 50%, 75%, 100%, 125%, 150%, 175%, 200%, 300%, 400%, and 500%, according to which the file is zoomed in and out.
 
 

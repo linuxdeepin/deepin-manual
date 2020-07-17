@@ -31,13 +31,13 @@ You can run, close or create shortcuts for Album by the following ways.
 
 ### View Shortcuts
 
-On the Album interface, press  ![Ctrl](icon/Ctrl.svg) + ![Shift](icon/Shift.svg) + ![QM](icon/QM.svg)to view shortcuts. Proficiency in shortcuts will greatly improve your efficiency.
+On the Album interface, press  **Ctrl + Shift + ?** to view shortcuts. Proficiency in shortcuts will greatly improve your efficiency.
 
 ![0|hotkey](jpg/hotkey.png)
 
 ## Photo Management
 
-You are able to manage photos by timeline and Album after launching Album.
+You are able to manage photos by "Timelines" and "Album" after launching Album.
 
 ### Import Photos
 
@@ -52,11 +52,9 @@ On the Album interface, you are able to import photos as follows:
 
 ### Search Photos 
 
-1.  In the search box on top of the Album interface, you can:
-   - Click![search](icon/search.svg)to enter keywords.
-   - Click ![button_voice](icon/button_voice.svg)to input the voice content, which will be converted to texts and displayed in the search box.
-
-2.  Press the ![enter](icon/Enter.svg) key on the keyboard to locate the photos searched quickly.
+1.  In the search box on top of the Album interface, you can click![search](icon/search.svg)to enter keywords.
+   
+2.  Press the **Enter** key on the keyboard to locate the photos searched quickly.
    - When there is information matched, a search result list will be displayed on the interface.
    - When there is no information matched, "No search results" will be displayed on the interface.
 
@@ -65,7 +63,7 @@ On the Album interface, you are able to import photos as follows:
 
 Click the scroll bar in the Album interface to adjust the thumbnail size of photos.
 
-Double-click or right-click the photo to select **View** and enter the photo viewing interface. Press ![Esc](icon/Esc.svg) on the keyboard to exit.
+Double-click or right-click the photo to select **View** and enter the photo viewing interface. Press **Esc** on the keyboard to exit.
 
 | Icon                                               | Name                    | Description                                                  |
 | -------------------------------------------------- | ----------------------- | ------------------------------------------------------------ |
@@ -101,7 +99,7 @@ In timelines, all photos are sorted by date.  Photos with the same date are disp
 
 1.  On the Album interface, right-click a photo.
 2. Select **Slide show** to play the photo as slides in full screen.
-3. Press ![Esc](icon/Esc.svg) on the keyboard to exit. 
+3. Press **Esc** on the keyboard to exit. 
 
 ![0|copy](jpg/play.png)
 
@@ -197,7 +195,7 @@ On the Album interface, you are able to create new albums, manage photos in the 
 ### Rename Albums
 
 1.  On the Album interface, right-click the album to be renamed and select **Rename**. 
-2.  Enter the album name and press the ![enter](icon/Enter.svg)key on the keyboard or click the blank area of the interface.
+2.  Enter the album name and press the **Enter** key on the keyboard or click the blank area of the interface.
 
 ### Export Albums
 

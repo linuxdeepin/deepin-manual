@@ -10,22 +10,22 @@ Calculator is a simple and easy-to-use desktop calculator. It supports addition,
 
 ### Symbol Introduction
 
-| Icon                       | Name                                                | Description                                                  |
-| -------------------------- | :-------------------------------------------------- | ------------------------------------------------------------ |
-| 0~9                        | Number Key                                          | Basic Arabic numerals                                        |
-| MC                         | Clear Key                                           | Clear all memories                                           |
-| MR                         | Storage Key                                         | Memory recall                                                |
-| M+                         | Storage Key                                         | Memory add; click M+ to add the current number accumulatively to the memory and interrupt digital input. |
-| M-                         | Storage Key                                         | Memory subtract; click m- to subtract the current number from the memory and interrupt digital input. |
-| MS                         | Storage Key                                         | Memory store；click MS to add the numeric value in the input box to the memory list. |
-| M^                         | Storage Key                                         | Display the memory list; click M^ to clear the memory after exiting the application. |
-| C                          | Clear                                               | Click once to clear current contents and click twice to clear all. |
-| %                          | Percent Sign                                        | To input percent sign                                        |
-| ![delete](icon/delete.svg) | Delete                                              | Click once to delete a character forward                     |
-| +-×÷                       | Addition, subtraction, multiplication, and division | Basic math operators for addition, subtraction, multiplication and division |
-| .                          | Decimal Point                                       | To input decimal point                                       |
-| ()                         | Bracket                                             | To input brackets with the left and right bracket completed automatically. |
-| =                          | Equal Sign                                          | To get result                                                |
+| Icon                                | Name                                                | Description                                                  |
+| ----------------------------------- | :-------------------------------------------------- | ------------------------------------------------------------ |
+| 0~9                                 | Number Key                                          | Basic Arabic numerals                                        |
+| ![mc](icon/MC.svg)                  | Clear Key                                           | Clear all memories                                           |
+| ![mr](icon/MR.svg)                  | Storage Key                                         | Memory recall                                                |
+| ![m+](icon/M+.svg)                  | Storage Key                                         | Memory add; click ![m+](icon/M+.svg) to add the current number accumulatively to the memory and interrupt digital input. |
+| ![m-](icon/M-.svg)                  | Storage Key                                         | Memory subtract; click ![m-](icon/M-.svg) to subtract the current number from the memory and interrupt digital input. |
+| ![ms](icon/MS.svg)                  | Storage Key                                         | Memory store；click ![ms](icon/MS.svg) to add the numeric value in the input box to the memory list. |
+| ![M](icon/M.svg)/![m^](icon/M^.svg) | Storage Key                                         | Click ![M](icon/M.svg)to expand the memory list; click ![m^](icon/M^.svg) to fold the memory list. The memory will be cleared up when Calculator is closed. |
+| C                                   | Clear                                               | Click once to clear current contents and click twice to clear all. |
+| %                                   | Percent Sign                                        | To input percent sign                                        |
+| ![delete](icon/delete.svg)          | Delete                                              | Click once to delete a character forward                     |
+| +-×÷                                | Addition, subtraction, multiplication, and division | Basic math operators for addition, subtraction, multiplication and division |
+| .                                   | Decimal Point                                       | To input decimal point                                       |
+| ()                                  | Bracket                                             | To input brackets with the left and right bracket completed automatically. |
+| =                                   | Equal Sign                                          | To get result                                                |
 
 
 

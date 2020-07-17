@@ -29,7 +29,7 @@ You can run, close and create shortcuts for Image Viewer by the following ways.
 
 ### View Shortcuts 
 
-On the Image Viewer interface, press ![Ctrl](icon/Ctrl.svg) + ![Shift](icon/Shift.svg) + ![QM](icon/QM.svg) on the keyboard to view shortcuts. 
+On the Image Viewer interface, press **Ctrl+ Shift+ ？** on the keyboard to view shortcuts. 
 
 ![1|hotkey](jpg/hotkey.png)
 
@@ -86,7 +86,7 @@ You can print images in Image Viewer.
 
 1. Right-click the image on the Image Viewer interface.  and .
 2. Select **Slide show** and all images will be played as slides in fullscreen. 
-3. Press ![Esc](icon/Esc.svg) to exit slide show.
+3. Press **Esc** key to exit slide show.
 
 ### Copy Images
 
@@ -105,7 +105,7 @@ The user can delete images from Image Viewer by the following ways.
 
 - Click the ![delete_press](icon/delete.svg) icon on the Image Viewer interface. 
 - Right-click the image and select **Delete**.
-- Press ![delete_press](icon/delete.svg) on the Image Viewer interface.
+- Press **Delete** key on keyboard.
 
 ### Rotate Images
 

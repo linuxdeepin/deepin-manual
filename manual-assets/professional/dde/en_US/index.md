@@ -136,9 +136,9 @@ You can send application icons from Launcher to Dock so as to open it quickly.
 | ![deepin-contacts](icon/deepin-contacts.svg) | Contacts - click to communicate with friends and hold video conferences. |
 | ![dde-calendar](icon/dde-calendar.svg) | Calendar -  view dates and create new schedules. |
 | ![controlcenter](icon/controlcenter.svg) |   Control Center - click to check or change system settings.   |
+| ![notification](icon/notification.svg) | Notification Center - show all notifications from the system and applications. |
 | ![desktop-ai-assistant](icon/desktop-ai-assistant.svg) | Desktop AI Assistant - click to issue instructions or make inquiries with voice or texts. |
 | ![onboard](icon/onboard.svg) | Onboard virtual keyboard. |
-| ![notification](icon/notification.svg) | Notification Center - show all notifications from the system and applications. |
 | ![shutdown](icon/system-shutdown.svg) | Click to enter the shutdown interface. |
 | ![trash](icon/trash_icon.svg) | Trash. |
 
@@ -153,14 +153,14 @@ There are two display modes of Dock: fashion mode and efficient mode, icon sizes
 
 You can switch the display modes by the following operations:
 
-2. Right-click the Dock and select **Mode**.
-3. Select the display mode.
+1. Right-click the Dock and select **Mode**.
+2. Select the display mode.
 
 ### Change Dock Location
 You can place Dock on any direction of your desktop.
 
-2. Right-click the Dock and select **Location**.
-3. Select a location.
+1. Right-click the Dock and select **Location**.
+2. Select a location.
 
 ### Change Dock Height
 Drag the top edge to increase or decrease the height.
@@ -169,8 +169,8 @@ Drag the top edge to increase or decrease the height.
 
 You can hide the Dock in order to maximize the expansion of the desktop operating area. 
 
-2. Right-click the Dock and select **Status**.
-3. On the submenu, you can select:
+1. Right-click the Dock and select **Status**.
+2. On the submenu, you can select:
 - **Keep Shown** - display Dock all the time.
 - **Keep Hidden** - hide Dock and display it only when hovering on the dock area.
 - **Smart Hide** -  hide Dock automatically if the dock area is used.
@@ -178,8 +178,8 @@ You can hide the Dock in order to maximize the expansion of the desktop operatin
 
 ### Show/Hide Plugins
 
-2. Right-click the Dock and select **Plugins**.
-3. On the submenu, you can check or uncheck **Trash, Power, Show Desktop, Onboard, Notification Center, Multitasking View, Datetime and Desktop AI Assistant** to show or hide the corresponding icon in the Dock.
+1. Right-click the Dock and select **Plugins**.
+2. On the submenu, you can check or uncheck **Trash, Power, Show Desktop, Onboard, Notification Center, Multitasking View, Datetime and Desktop AI Assistant** to show or hide the corresponding icon in the Dock.
 
 ### View Notifications
 When there are system or application notifications, they will be shown in the middle of the screen. If there are buttons in the message, click buttons to do the actions; if there are not, click the message to close it.
@@ -390,7 +390,7 @@ Once you open a setting module in Control Center, the navigation appears on the 
 The title bar contains the back button, search box, main menu and the window buttons.
 
 - Back button: Click ![back](icon/back.svg) to go back to the homepage.
-- Search box: Input a keyword or click ![voice](icon/voice.svg)to input voices (The input voices will be converted to texts and displayed in the search box.) and search the related settings.
+- Search box: Input a keyword and search the related settings.
 - Main menu: Click ![menu](icon/icon_menu.svg) to enter the main menu where you can set the window theme, view the manual and exit.
 
 ### Accounts
@@ -469,9 +469,9 @@ Fingerprint password is used in system login, application authorization, and oth
 
 > ![attention](icon/attention.svg)Attention: The logged in account cannot be deleted.
 
-### Cloud Account
+### Union ID
 
-By signing in UOS ID, you can sync the current system settings to the cloud, including network settings, sound settings, mouse settings, update settings, power settings, theme, wallpaper, launcher, and Dock. To sync the settings from the cloud to another computer, just sign in with the same UOS ID on that computer.
+By signing in Union ID, you can sync the current system settings to the cloud, including network settings, sound settings, mouse settings, update settings, power settings, theme, wallpaper, launcher, and Dock. To sync the settings from the cloud to another computer, just sign in with the same Union ID on that computer.
 
 > ![tips](icon/tips.svg)Tips: When "Auto Sync" is enabled, you can uncheck the unwanted options; when it is disabled, all settings will not be synced.
 
@@ -575,7 +575,7 @@ If you have installed several applications with similar functions, such as text 
 
 1. On the homepage of Control Center, click ![default_applications_normal](icon/default_applications_normal.svg).
 2. Select a file type.
-3. Click ![add](icon/add.svg) below to add a desktop file (ususally at /usr/share/applications) or a specified binary file as the default application.
+3. Click ![add](icon/add.svg) below to add a desktop file (usually at /usr/share/applications) or a specified binary file as the default application.
 4. The application will be added to the list and set as default application automatically. 
 
 #### Delete Default Application
@@ -725,7 +725,7 @@ VPN is a virtual private network. Its main function is to establish a private ne
 
 1. On the homepage of Control Center, click ![network_normal](icon/network_normal.svg).
 2. Click **VPN**, and click ![add](icon/add.svg) or ![import](icon/import.svg).
-4. Select the VPN protocol type, and enter the name, gateway, account, password and other information. (Importing VPN will automatically fill in information)
+3. Select the VPN protocol type, and enter the name, gateway, account, password and other information. (Importing VPN will automatically fill in information)
 4. Click **Save**,  the system will try to connect VPN network automatically.
 5. You can export the VPN settings to backup or share with other users. 
 
@@ -744,7 +744,7 @@ VPN is a virtual private network. Its main function is to establish a private ne
 1. On the homepage of Control Center, click ![network_normal](icon/network_normal.svg).
 2. Click **Application Proxy**.
 3. Select a proxy type, and fill in the IP address, port, etc.
-3. Click **Save** to save the proxy settings.
+4. Click **Save** to save the proxy settings.
 
 > ![notes](icon/notes.svg)Notes: After being configured, run Launcher, right-click any application's icon and check **Use a proxy**, and then the application will be opened by proxy.
 
@@ -844,7 +844,7 @@ Bluetooth helps you make a short-distance wireless communication between Bluetoo
 
 1. On the homepage of Control Center, click ![bluetooth_normal](icon/bluetooth_normal.svg).
 2. Switch on **Bluetooth**. The system will scan the nearby devices automatically and list them in **Other Devices**.
-4. Click the device you want to connect, and input the PIN code if required. After pairing successfully, the device will be connected automatically. 
+3. Click the device you want to connect, and input the PIN code if required. After pairing successfully, the device will be connected automatically. 
 4. After that, the Bluetooth device will be added to **My Device** list.
 5. In the list, click the device, you can **Disconnect** the device, or change its name.
 
@@ -883,7 +883,7 @@ Note that the auto-sync function will be disabled after changing date and time m
 2. Click **Time Settings**.
    - Switch on/off **Auto Sync**.
    - Enter the correct date and time.
-4. Click **Confirm**.
+3. Click **Confirm**.
 
 
 ### Power Management
@@ -968,7 +968,7 @@ After inserting or connecting the mouse, make relevant settings in the Control C
 
 #### Touchpad
 
-![0|touchpad](jpg/touchpad.png)
+![0|touchpad](jpg/touchpad.png.jpg)
 
 If you are using a laptop, to avoid mis-operation on the touchpad, switch on **Disable touchpad while typing**, **Disable touchpad when a mouse is connected**,  and turn on **Palm Detection** to set **Minimum Contact Surface** and **Minimum Pressure Value**. 
 
@@ -1010,7 +1010,7 @@ Set the keyboard layout to customize the keyboard for the current language. When
 
 You have set a keyboard layout during system installation, but you can add more for other purposes. 
 
-![layout](jpg/layout.png)
+![layout](jpg/layout.png.jpg)
 
 ##### Add Keyboard Layout
 
@@ -1058,7 +1058,7 @@ Add multiple languages into the list to change language conveniently.
 #### Shortcuts
 The shortcut list includes all shortcuts in the system. View, modify and customize the shortcuts here as you want.
 
-![0|shortcut](jpg/shortcut.png)
+![0|shortcut](jpg/shortcut.png.png)
 
 ##### View Shortcuts
 
@@ -1155,7 +1155,7 @@ You can view system version, authorization info, hardware info, and the agreemen
 #### About This PC
 
 1. On the homepage of Control Center, click ![system_info_normal](icon/system_info_normal.svg).
-2. Under **About This PC**, you can view system version, autohrization and hardware information.
+2. Under **About This PC**, you can view system version, authorization and hardware information.
 3. If the system has not been activated, click **Activate** to activate the system.
 
 #### Edition License
@@ -1185,6 +1185,7 @@ Authorization management is a pre-installed system tool to help you activate the
 3. Choose the proper way to activate the system.
 
 > ![notes](icon/notes.svg)Notes: If the system is not activated, the authorization management icon ![uos1](icon/uos1.svg)will be docked on the tray in the lower right corner and displayed immediately upon startup.
+
 #### Activation Method
 
 The activation methods of authorization management can be divided into online activation and offline activation, while the online activation methods include "Try Full Version", "Input Serial Number" and "Import License File".
@@ -1226,21 +1227,23 @@ Input the serial number
 
 3. Click **Confirm** in the pop-up confirmation dialogue and pops up the activation success interface.
 
-Import the activation document
 
-   1. Click  ![uos1](icon/uos1.svg)on the tray in the lower right corner to enter the interface.
+
+Import the activation document
+ 1. Click  ![uos1](icon/uos1.svg)on the tray in the lower right corner to enter the interface.
    
    2.  Click **Import License File**, select the correct license file in .key format in the File Manager and click **Activate Now**.  
    
    3.  Click **Confirm** to successfully activate the interface
 
+
 ##### Off-line Activation
 
 The off-line activation can be adopted when the network connection is abnormal.    
 
-1.  It will jump to the off-line activation interface when abnormal network connection is detected by the system in the process of activating the system by inputing the serial number or  importing the authorization file.
+1. It will jump to the off-line activation interface when abnormal network connection is detected by the system in the process of activating the system by inputing the serial number or  importing the authorization file.
 
-2.  The off-line activation interface shows the QR code, serial number, device ID as well as the off-line activation code input box.
+2. The off-line activation interface shows the QR code, serial number, device ID as well as the off-line activation code input box.
 
    ![0|activate offline1](jpg/activate-offline1.png)
 
@@ -1252,7 +1255,7 @@ The off-line activation can be adopted when the network connection is abnormal.
 
 5. The device ID, activation code and off-line activation code are displayed in the activation success interface.
 
-6.  Input manually in the input box in PC the off-line activation code in the your mobile phone.
+6. Input manually in the input box in PC the off-line activation code in the your mobile phone.
 
 7. Click **Activate Offline** to jump to the activation success interface.
 
@@ -1302,7 +1305,7 @@ When the system is installed, it will automatically create a recovery partition,
 
 You can either manually backup / restore data or restore data by one click.
 
-1. On the homepage of Control Center, click ![system_info_normal](C:/Users/Admin/Desktop/dde/zh_CN/icon/system_info_normal.svg).
+1. On the homepage of Control Center, click ![system_info_normal](icon/system_info_normal.svg).
 
 2. Select **Backup/Restore** > **Backup** to set the backup type and save the path of files backed up.
    Backup Type: Full Backup and System Backup
@@ -1311,11 +1314,11 @@ You can either manually backup / restore data or restore data by one click.
 
    - System Backup: When the user data is not reserved, the files of the root partition and the boot partition are backed up; when the user data is reserved, the files of the root partition, boot partition, opt partition and home partition are backed up.
 
-   > ![attention](C:/Users/Admin/Desktop/dde/zh_CN/icon/attention.svg)Attention:  **Full Backup** cannot backed up files on its own disk, but can only back up files in other storage media. **System Backup** has set the default storage location of files. When the storage space is insufficient, you can manually change the storage path of backup files.
+   > ![attention](icon/attention.svg)Attention:  **Full Backup** cannot backed up files on its own disk, but can only back up files in other storage media. **System Backup** has set the default storage location of files. When the storage space is insufficient, you can manually change the storage path of backup files.
 
 3. Click **Backup**, the password input box pops up, please input the password to authorize the backup file until the file backup is completed.
 
-> ![notes](C:/Users/Admin/Desktop/dde/zh_CN/icon/notes.svg)Notes: In the process of file backup, please do not unplug the power supply or forcibly shut down to prevent data loss or damage.
+> ![notes](icon/notes.svg)Notes: In the process of file backup, please do not unplug the power supply or forcibly shut down to prevent data loss or damage.
 
 
 
@@ -1331,7 +1334,7 @@ During system startup, in the system selection interface, click **System Restore
 
 You can either restore all settings or manually restore the previous backup data.
 
-1. On the homepage of Control Center, click ![system_info_normal](C:/Users/Admin/Desktop/dde/zh_CN/icon/system_info_normal.svg).
+1. On the homepage of Control Center, click ![system_info_normal](icon/system_info_normal.svg).
 2. Click **Backup/Restore** > **Restore** to select:
 
    - Restore All Settings
@@ -1397,7 +1400,7 @@ User Experience Program collects your hardware, application and system informati
 ## Window Manager
 Window manager controls the placement and appearance of windows. It allows you to switch between your virtual desktops and manage the windows in various workspaces.
 
-![1|workspace](jpg/workspace.png)
+![1|workspace](jpg/workspace.png.jpg)
 
 ### Open Workspace
 Manage your desktop windows in different workspaces to enlarge your Workspaces.

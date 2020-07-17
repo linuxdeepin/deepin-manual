@@ -49,7 +49,7 @@ Right-click the Music application icon in the tray and you can perform the follo
 
 ### View Shortcuts
 
-On the Music interface, press ![Ctrl](icon/Ctrl.svg) + ![Shift](icon/Shift.svg) + ![QM](icon/QM.svg) to view the shortcuts. Proficiency in shortcuts will greatly improve your efficiency.
+On the Music interface, press **Ctrl + Shift + ?**  to view the shortcuts. Proficiency in shortcuts will greatly improve your efficiency.
 
 ![0|view](jpg/hotkey.png)
 
@@ -139,10 +139,7 @@ On the Music interface, you can:
 
 ### Search Music
 
-1. In the search box on top of the Music interface, you can: 
-
-   - Click ![search](icon/search.svg) to enter keywords.
-   - Click ![button_voice](icon/button_voice.svg) to enter voices and the voices will be converted to texts which will be displayed in the search box.
+1. In the search box on top of the Music interface, you can click ![search](icon/search.svg) to enter keywords.
 
 2. Press the **Enter** key on the keyboard to conduct search.
 
@@ -268,7 +265,21 @@ On the Music interface, you can create, delete, rename playlist and add music to
 
 ## Main Menu
 
-You can [Add Music](#Add Music), set the options, switch window themes, view the help manual and get more information about Music.
+You can [Add Music](#Add Music), set the equalizer and the options, switch window themes, view the help manual and get more information about Music.
+
+### Equalizer
+
+You can set your favorite music mode, such as classical, rock and so on. 
+
+1. On the Music interface, click ![menu](icon/icon_menu.svg).
+
+2. Select **Equalizer**.
+
+3. You can switch on equalizer, customize "Preamplifier" values and frequencies, or select a music mode and click **Save**.
+
+4. Click **Restore Defaults** to restore the default settings.
+
+![equalizer](jpg/equalizer-1.png)
 
 ### Settings
 

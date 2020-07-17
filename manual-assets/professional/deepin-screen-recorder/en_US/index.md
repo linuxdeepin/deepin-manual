@@ -28,12 +28,12 @@ You can run, close or create shortcuts for screen capture by the following opera
 
 - Screen Capture will exit automatically after screenshot or screen recording finishes.
 - On the Screen Capture interface, click ![close](icon/close-normal.svg) to exit Screen Capture.
-- On the Screen Capture interface, press ![Ctrl](icon/Ctrl.svg)+ ![S](icon/S.svg) or ![Esc](icon/Esc.svg) on the keyboard to save the screen capture or exit.
+- On the Screen Capture interface, press **Ctrl + S** or **Esc** on the keyboard to save the screen capture or exit.
 - On the Screen Capture interface, right-click to select **Save** or **Exit**.
 
 ## Operations
 
-### Screenshot
+### Sceenshot
 
 You can achieve quick screenshots  by the following ways:
 
@@ -45,7 +45,7 @@ You can achieve quick screenshots  by the following ways:
 
 It is convenient and time-saving to perform relevant operations through shortcuts.
 
-1.  In the Screenshot  mode, press ![Ctrl](icon/Ctrl.svg)+ ![Shift](icon/Shift.svg) + ![QM](icon/QM.svg) on the keyboard to open the shortcuts preview interface.
+1.  In the Screenshot  mode, press **Ctrl + Shift + ?** on the keyboard to open the shortcuts preview interface.
 2.  On the shortcuts preview interface, you can view all shortcuts.
 
 ![1|快捷键](jpg/hotkey.png)
@@ -217,16 +217,16 @@ While capturing screenshots, you can click the icons on the toolbar to complete 
 ![1|pencil](jpg/pencil.png)
 
 
-1.  Clcik ![画笔](icon/Combined_Shape-normal.svg)on the toolbar under the screehshot area.
+1.  Click ![画笔](icon/Combined_Shape-normal.svg)on the toolbar under the screenshot area.
 2.  In the toolbar extension panel, select the pencil thickness. 
 3.  Place the cursor on the screenshot area and then the cursor will be changed to ![画笔指针](icon/brush red.svg).
 4.  Hold down the left mouse button and drag the mouse to finish drawing.
 
 If you need to draw a square, regular circle, etc., you can:
 
-- Hold down the ![Shift](icon/Shift.svg) key on the keyboard and select ![矩形](icon/rectangle-normal.svg)to draw a square.
-- Hold down the ![Shift](icon/Shift.svg) key on the keyboard and select  ![椭圆](icon/oval-normal.svg)to draw a regular circle.
-- Hold down the ![Shift](icon/Shift.svg) key on the keyboard and select![直线](icon/line-normal.svg)or![箭头](icon/Arrow-normal.svg)to draw a straight line or straight line with arrow horizontally or vertically.
+- Hold down the **Shift** key on the keyboard and select ![矩形](icon/rectangle-normal.svg)to draw a square.
+- Hold down the **Shift** key on the keyboard and select  ![椭圆](icon/oval-normal.svg)to draw a regular circle.
+- Hold down the **Shift** key on the keyboard and select![直线](icon/line-normal.svg)or![箭头](icon/Arrow-normal.svg)to draw a straight line or straight line with arrow horizontally or vertically.
 
 
 #### Modify Graphics
@@ -247,10 +247,10 @@ You can modify and move the drawn graphics in the screenshot.
 
 1.  Place the cursor over the graphics border line.
 2.  Click the left mouse button to enter the editing mode and you can:
-    - Press the ![delete](icon/Delete.svg) key on the keyboard to delete the graphics.
-    - Press ![ctrl](icon/Ctrl.svg) + ![Z](icon/Z.svg) on the keyboard to return to the previous step.
+    - Press the **Delete** key on the keyboard to delete the graphics.
+    - Press **Ctrl + Z** on the keyboard to return to the previous step.
     - Place the cursor over the edit box and the mouse will be changed to![双箭头](icon/Mouse_Arrow.svg). You can enlarge or reduce the graphic area by dragging the cursor.
-    - Press ![ctrl](icon/Ctrl.svg) +![向上](icon/Up.svg) ,  ![向下](icon/Down.svg)  ,![向左](icon/Left.svg) or ![向左](icon/Right.svg)  to extend the graphics area vertically or horizontally.
+    - Press **Ctrl** +![向上](icon/Up.svg) ,  ![向下](icon/Down.svg)  ,![向左](icon/Left.svg) or ![向左](icon/Right.svg)  to extend the graphics area vertically or horizontally.
     - Place the cursor over ![旋转](icon/icon_rotate.svg) in the edit box and the cursor will be changed to ![旋转](icon/rotate_mouse.svg). Rotate the graphics by dragging the cursor.
 3.  Click the left mouse button outside the edit box to exit the editing mode.
 
@@ -283,8 +283,8 @@ You can modify and move the text annotations added.
 
 1.  Place the cursor over the text and the cursor will be changed to ![手指](jpg/fingers.png).
 2.  Click the left mouse button to enter the text editing mode and you can:
-    - Press ![delete](icon/Delete.svg) on the keyboard to delete text annotations.
-    - Press  ![ctrl](icon/Ctrl.svg) + ![Z](icon/Z.svg) on the keyboard to return to the previous step.
+    - Press **Delete** on the keyboard to delete text annotations.
+    - Press  **Ctrl + Z** on the keyboard to return to the previous step.
     - Modify the text information in the text box.
 3.  Click outside the text box to exit editing mode.
 
@@ -306,7 +306,7 @@ When the screenshot is saved successfully, you can see a prompt message in the u
 You can save the screenshot  by the following ways after launching Screen Capture and selecting the screenshot area:
 
 - Double-click to save the screen capture.
-- Click the "Start Shot" icon in the toolbar and press ![ctrl](icon/Ctrl.svg) + ![S](icon/S.svg) to save the screenshot.
+- Click the "Start Shot" icon in the toolbar and press **Ctrl + S** to save the screenshot.
 - Right-click the screenshot to select **Save** to save the screenshot.
 
 > ![notes](icon/notes.svg)Notes: The screenshot is saved to the desktop by default.

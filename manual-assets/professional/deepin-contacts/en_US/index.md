@@ -53,18 +53,18 @@ Once **Contacts** is run, the interface **Cloud Sync Sign in** pops up automatic
 
 #### Auto-login
 
-1. Prerequisite: you have logged in the operation system with the UOS ID. 
+1. Prerequisite: you have logged in the operation system with the Union ID. 
 
-2. Once **Contacts** is run, the system will enter into main interface of Contacts without inputing UOS ID and password.
+2. Once **Contacts** is run, the system will enter into main interface of Contacts without inputing Union ID and password.
 
 
 #### Manually login
 
-1. Prerequisite: you haven't logged in the operation system with the UOS ID.
+1. Prerequisite: you haven't logged in the operation system with the Union ID.
 
 2. Once **Contacts** is run, the interface **Cloud Sync Sign in** pops up automatically.
 
-3. Input your UOS ID and password. After verification is completed successfully, logging in from the client terminal is also done and main interface of Contacts is opened. 
+3. Input your Union ID and password. After verification is completed successfully, logging in from the client terminal is also done and main interface of Contacts is opened. 
 
 ## Contacts
 
@@ -74,9 +74,9 @@ On the main interface, click ![18](icon/18.svg) .
 
 1. Prerequisite: you have already added some friends or created groups.
 
-2. To find a friend quickly, you can input his/her UOS ID, nickname, remark name, or group name into the searching box.
+2. To find a friend quickly, you can input his/her Union ID, nickname, remark name, or group name into the searching box.
 
-  > ![notes](icon/notes.svg) Notes: The object being searched should be somehow related to the UOS ID, instead of a totally stranger.
+  > ![notes](icon/notes.svg) Notes: The object being searched should be somehow related to the Union ID, instead of a totally stranger.
 
 ### New friends
 

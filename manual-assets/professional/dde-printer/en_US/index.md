@@ -188,7 +188,7 @@ If printing fails, you can click **Troubleshoot**, the checklist includes follow
 
    - Check if CUPS server is valid.
 
-   - Check if drivre is valid.
+   - Check if driver is valid.
 
    - Check if printer settings are ok, i.e. if printer is started up, and, if tasks are accepted.
 

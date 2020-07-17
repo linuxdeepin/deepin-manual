@@ -31,11 +31,7 @@ You can run, close or create a shortcut for Log Viewer.
 
 ### Search
 
-1. Log Viewer supports searching by keywords and speech.
-
-   - Search by keywords: click![search](icon/search.svg)to input keywords;
-
-   - Search by sound: click![button_voice](icon/button_voice.svg) and speak, your speech will be turned into characters and displayed in the search box;
+1. Log Viewer supports searching by keywords and speech. You can click![search](icon/search.svg)to input keywords;
 
 2. Results are displayed after input. If no matched service is found, you will see a hint **No search results**.
 
@@ -54,7 +50,7 @@ Filtering parameters include **period**, **level**, **status**, **application li
 
 - Filtering by level: filtering by seriousness levels of events
 
-  Options include: "All", "Emergency", "Allert", "Critical", "Error", "Warning", "Notice", "Info"and "Debug". Default option is "Info".
+  Options include: "All", "Emergency", "Alert", "Critical", "Error", "Warning", "Notice", "Info"and "Debug". Default option is "Info".
 
   Applicable for: system logs and application logs
 
@@ -106,7 +102,7 @@ Filtering parameters include **period**, **level**, **status**, **application li
 
 ### Xorg Log
 
-1. On the main interface, click **Ｘorg Log**.
+1. On the main interface, click **Xorg Log**.
 2. You can see a list of Xorg logs which are detailed by "Date and time" and "Info".
 3. Click a log, you can see its particular info below the list, including process, user, time and info.
 
@@ -126,7 +122,7 @@ Filtering parameters include **period**, **level**, **status**, **application li
 1. On the main interface, click  **Boot-Shutdown Event**.
 2. You can see a list of boot-shutdown events which are detailed by "Event Type", "Username", "Date and Time", and "Info".
 3. Click a log, you can see its particular info below the list, including user, event type, username, and detailed info.
-![0|power event](jpg/power event.png)
+![0|power event](jpg/power-event.png)
 
 > ![notes](icon/notes.svg)Notes: When using Log Viewer, if a prompt appears saying **Authentication is required to view the log**, you can input login password to continue viewing.
 

@@ -76,10 +76,7 @@ The finished recordings are displayed on the Voice Notes interface in list. Sele
 
 ### Search
 
-1. In the search box on top of the Voice Notes interface, you can:
-
-   - Click![search](icon/search.svg)to enter keywords.
-   - Click![button_voice](icon/button_voice.svg)to input voices and the voices will be converted to texts and displayed in the in the search box.
+1. In the search box on top of the Voice Notes interface, you can click![search](icon/search.svg)to enter keywords.
 
 2.  Press the **Enter** key on the keyboard to realize quick location.
 
@@ -95,7 +92,7 @@ The finished recordings are displayed on the Voice Notes interface in list. Sele
 1. Select a recording file on the Voice Notes interface.
 2. Right-click and select **Voice to Text**.
 
-![0|save](jpg/toVoice.png)
+![0|save](jpg/toVoice.jpg)
 
 
 ### Save Recordings as MP3 Format

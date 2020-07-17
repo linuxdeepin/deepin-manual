@@ -29,7 +29,7 @@ You can run, close or create a shortcut for calendar by the following ways.
 
 ### View Shortcuts
 
-On the Calendar interface, press ![Ctrl](icon/Ctrl.svg) + ![Shift](icon/Shift.svg) + ![QM](icon/QM.svg) on the keyboard to view shortcuts. Proficiency in shortcuts will greatly improve your efficiency.
+On the Calendar interface, press **Ctrl + Shift+ ?** on the keyboard to view shortcuts. Proficiency in shortcuts will greatly improve your efficiency.
 
 ![0|view](jpg/hotkey.png)
 
@@ -135,9 +135,7 @@ Please refer to the detailed icon description in the prompt information of sched
 
 In the yearly, monthly, weekly or daily view,  enter events in the top search box and the corresponding search results will be displayed automatically on the right of the calendar.
 
-1.  In the top search box of the Calendar interface, you can:
-   - Click![search](icon/search.svg)to enter keywords.
-   - Click![button_voice](icon/button_voice.svg)to enter voices which will be converted to texts and displayed in the search box.
+1.  In the top search box of the Calendar interface, you can click![search](icon/search.svg)to enter keywords.
 
 2.  Press the **Enter** key on the keyboard for searching.
    - When there is matched information, the search result list will be displayed on the right.

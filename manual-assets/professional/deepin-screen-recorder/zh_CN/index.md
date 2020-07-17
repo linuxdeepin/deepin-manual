@@ -15,21 +15,21 @@
 ### 运行截图录屏
 
 1. 点击桌面底部的 ![deepin-launcher](icon/deepin-launcher.svg) ，进入启动器界面。
-2. 上下滚动鼠标滚轮浏览或通过搜索，找到截图录屏 ![deepin-screenshot](icon/deepin-screenshot.svg) 点击运行。
-3. 右键单击 ![deepin-screenshot](icon/deepin-screenshot.svg) ，您可以：
+2. 上下滚动鼠标滚轮浏览或通过搜索，找到截图录屏 ![deepin-screenshot](icon/deepin-screenshot.svg) 点击运行。
+3. 右键单击 ![deepin-screenshot](icon/deepin-screenshot.svg) ，您可以：
 
    - 点击 **发送到桌面**，在桌面创建快捷方式。
    - 点击 **发送到任务栏**，将应用程序固定到任务栏。
    - 点击 **开机自动启动**，将应用程序添加到开机启动项，在电脑开机时自动运行该应用。
 
-> ![notes](icon/notes.svg)说明：如果截图录屏已经默认固定在任务栏上，您也可以点击任务栏上的 ![deepin-screenshot](icon/deepin-screenshot.svg) 来运行。
+> ![notes](icon/notes.svg)说明：如果截图录屏已经默认固定在任务栏上，您也可以点击任务栏上的 ![deepin-screenshot](icon/deepin-screenshot.svg) 来运行。
 
 ### 关闭截图录屏
 
 - 截图录屏会在截图结束后自动退出。
 - 截图录屏会在录制结束后自动退出。
-- 在截图录屏界面，点击![close](icon/close-normal.svg) ，退出录屏。
-- 按下键盘上的 Ctrl + S 组合键 或 esc 键。
+- 在截图录屏界面，点击![close](icon/close-normal.svg) ，退出录屏。
+- 按下键盘上的 **Ctrl + S** 组合键 或 **Esc** 键。
 - 在截图录屏界面，点击鼠标右键，选择 **保存** 或 **退出**。
 
 
@@ -48,7 +48,7 @@
 
 通过快捷键来进行相关操作，省时又省力。
 
-1. 在截图模式下，按下键盘上的 ![ctrl](icon/Ctrl.svg)+![shift](icon/Shift.svg)+![QM](icon/QM.svg) 组合键，打开快捷键预览界面。
+1. 在截图模式下，按下键盘上的 **Ctrl+Shift+？**组合键，打开快捷键预览界面。
 2. 在快捷键预览界面，您可以查看到所有的快捷键。
 
 ![1|快捷键](jpg/hotkey.png)
@@ -70,14 +70,14 @@
 
 您可以通过操作以下步骤来选择全屏：
 
-1. 按下键盘上的 ![ctrl](icon/Ctrl.svg)+![alt](icon/Alt.svg)+![A](icon/A.svg) 组合键，进入截图模式。
+1. 按下键盘上的 **Ctrl+Alt+A** 组合键，进入截图模式。
 2. 将鼠标指针移至桌面上，录屏截图会自动选中整个屏幕，并在其左上角显示当前截图区域的尺寸大小。
 3. 点击桌面，在桌面的右下角会弹出工具栏。
 4. 如果要退出截图，请点击工具栏上的 ![关闭](icon/close_icon.svg) 或点击鼠标右键选择 **退出**。
 
 您也可以直接操作以下步骤来进行全屏截图：
 
-- 如果您已经将录屏截图固定到任务栏，右键单击任务栏上的![deepin-screenshot](icon/deepin-screenshot.svg)  ，然后选择截取全屏 。
+- 如果您已经将录屏截图固定到任务栏，右键单击任务栏上的![deepin-screenshot](icon/deepin-screenshot.svg)  ，然后选择截取全屏 。
 - 按下键盘上的 ![print](icon/Print.svg) 键，实现全屏截图。
 
 ##### 选择程序窗口
@@ -88,7 +88,7 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-1. 按下键盘上的 ![ctrl](icon/Ctrl.svg)+![alt](icon/Alt.svg)+![A](icon/A.svg) 组合键，进入截图模式。
+1. 按下键盘上的 **Ctrl+Alt+A** 组合键，进入截图模式。
 2. 将鼠标指针移至打开的应用窗口上，录屏截图会自动选中该窗口，并在其左上角显示当前截图区域的尺寸大小。
 3. 点击窗口，在窗口的右下角会弹出工具栏。
 4. 如果要退出截图，请点击工具栏上的 ![关闭](icon/close_icon.svg)  或点击鼠标右键选择 **退出**。
@@ -101,7 +101,7 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-1. 按下键盘上的 ![ctrl](icon/Ctrl.svg)+![alt](icon/Alt.svg)+![A](icon/A.svg) 组合键，进入截图模式。
+1. 按下键盘上的 **Ctrl+Alt+A** 组合键，进入截图模式。
 2. 按住鼠标左键不放，拖动鼠标选择截图区域，在其左上角将实时显示当前截图区域的尺寸大小。
 3. 释放鼠标左键，完成截图，在截图区域的右下角会弹出工具栏。
 4. 如果要退出截图，请点击工具栏上的 ![关闭](icon/close_icon.svg)  或点击鼠标右键选择 **退出**。
@@ -230,9 +230,9 @@
 
 如果需要绘制正方形、圆形等图形，您可以：
 
-- 按住键盘上的 ![shift](icon/Shift.svg) 键，然后选择 ![矩形](icon/rectangle-normal.svg)，绘制正方形。
-- 按住键盘上的 ![shift](icon/Shift.svg) 键，然后选择 ![椭圆](icon/oval-normal.svg)，绘制圆形。
-- 按住键盘上的 ![shift](icon/Shift.svg) 键，然后选择![直线](icon/line-normal.svg)或![箭头](icon/Arrow-normal.svg)，绘制水平或垂直方向的直线或带箭头的直线。
+- 按住键盘上的 **Shift** 键，然后选择 ![矩形](icon/rectangle-normal.svg)，绘制正方形。
+- 按住键盘上的 **Shift** 键，然后选择 ![椭圆](icon/oval-normal.svg)，绘制圆形。
+- 按住键盘上的 **Shift** 键，然后选择![直线](icon/line-normal.svg)或![箭头](icon/Arrow-normal.svg)，绘制水平或垂直方向的直线或带箭头的直线。
 
 
 #### 修改图形
@@ -250,8 +250,8 @@
 ##### 编辑图形
 1. 将鼠标指针置于图形的边线上。
 2. 点击鼠标左键，进入图形的编辑模式，您可以：
-   - 按下键盘上的 ![delete](icon/Delete.svg) 键，删除图形。
-   - 按下键盘上的 ![ctrl](icon/Ctrl.svg)+![z](icon/Z.svg) 键，返回至上一步操作。
+   - 按下键盘上的 **Delete** 键，删除图形。
+   - 按下键盘上的 **Ctrl+Z** 键，返回至上一步操作。
    - 将鼠标指针置于编辑框上，此时鼠标指针变成 ![双箭头](icon/Mouse_Arrow.svg)，通过拖动鼠标指针，来放大或缩小图形区域。
    - 按下键盘上的 ![ctrl](icon/Ctrl.svg)+![向上](icon/Up.svg) 或 ![向下](icon/Down.svg) 来上下扩展图形区域，按下键盘上的 ![ctrl](icon/Ctrl.svg)+![向左](icon/Left.svg) 或 ![向右](icon/Right.svg) 来左右扩展图形区域。
    - 将鼠标指针置于编辑框的 ![旋转](icon/icon_rotate.svg) 上，此时鼠标指针变成 ![旋转](icon/rotate_mouse.svg)，通过拖动鼠标指针，来旋转图形。
@@ -285,8 +285,8 @@
 ##### 编辑文字批注
 1. 将鼠标指针置于文字上，此时鼠标指针变为 ![指针](icon/text_mouse.svg)。
 2. 点击鼠标左键，进入文字编辑模式，您可以：
-   - 按下键盘上的 ![delete](icon/Delete.svg) 键，删除文字批注。
-   - 按下键盘上的 ![ctrl](icon/Ctrl.svg)+![z](icon/Z.svg) 键，返回至上一步操作。
+   - 按下键盘上的 **Delete** 键，删除文字批注。
+   - 按下键盘上的 **Ctrl+Z** 键，返回至上一步操作。
    - 在文本框内，修改文字信息。
 3. 在文本框外点击鼠标左键，退出编辑模式。
 
@@ -307,7 +307,7 @@
 
 - 双击鼠标左键来保存。
 - 点击截图工具栏中的“截图”按钮。
-- 按下键盘上的 ![ctrl](icon/Ctrl.svg)+![S](icon/S.svg) 组合键来保存。
+- 按下键盘上的 **Ctrl+S** 组合键来保存。
 - 在截取的图片中，点击鼠标右键，选择 **保存** 完成保存操作。
 
 > ![notes](icon/notes.svg)说明：在以上操作中，截取的图片默认存放到桌面。
@@ -336,7 +336,7 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 > ![notes](icon/notes.svg)说明：
-- 若在控制中心>个性化中关闭窗口特效，录屏功能将会被隐藏。
+- 若在“控制中心”>“个性化”中关闭窗口特效，录屏功能将会被隐藏。
 -  龙芯、SW平台不支持录屏功能。
 
 <table class="block1">
@@ -410,4 +410,5 @@
 
 ### 查看帮助手册
 
-启动录屏后按下键盘上的 ![F1](icon/F1.svg) 键即可打开帮助手册。
+启动录屏后按下键盘上的 **F1** 键即可打开帮助手册。
+

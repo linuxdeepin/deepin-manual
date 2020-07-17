@@ -107,11 +107,7 @@ Main interface consists of navigation bar, search box, main menu, slide show, ne
 You can search, download and install different categories of applications, and also, you can explore more splendid applications through slide show, new updates, essential applications, popular applications, recommendations, hot topics, rankings, user comments and other ways. 
 
 ### Search Applications
-1. Search function is built in App Store, which supports keywords input and speech input.
-
-   - Search by keywords: click![search](icon/search.svg) to input keywords;
-
-   - Search by speech: click ![button_voice](icon/button_voice.svg) to speak, and your speech will be turned into words and displayed in the searching box. 
+1. Search function is built in App Store, you can click![search](icon/search.svg) to input keywords;
 
 2. When you input a keyword, all applications containing that keyword will be displayed automatically below, then you can view all applications containing that keyword.
 
@@ -155,7 +151,7 @@ App Store supports application synchronization. After signing in, you can synchr
 
 
 
-### Update/Upgrade Application
+### Update Applications
 
 Select **Updates** on the interface to view view applications to be updated here and you can choose whether to update it or not.
 

@@ -26,7 +26,7 @@ Movie shares comfortable leisure time with you! Movie is a video player with var
 
 Learning about the shortcuts in advance before playing videos will make your subsequent operations more effective.
 
-1.  On the Movie interface, press  ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![QM](icon/QM.svg) on the keyboard to open the shortcut preview interface.
+1.  On the Movie interface, press  **Ctrl+Shift+?** on the keyboard to open the shortcut preview interface.
 2.   You can view all the shortcuts on the preview interface.
 
 > ![attention](icon/attention.svg)Attention: You can open the shortcut preview interface any time during your video playback.
@@ -87,11 +87,11 @@ You can play films by the following ways:
 
 ### Speed Up/Down
 
-1.  On the Movie interface, press ![Ctrl](icon/Ctrl.svg)+![Right](icon/Right.svg) on the keyboard to speed up the film playback.
-2.  Press ![Ctrl](icon/Ctrl.svg) +![Left](icon/Left.svg) on the keyboard to speed down the film playback.
-3.  If you want to restore the original play speed, press ![R](icon/R.svg)on the keyboard.
+1.  On the Movie interface, press **Ctrl**+![Right](icon/Right.svg) on the keyboard to speed up the film playback.
+2.  Press **Ctrl** +![Left](icon/Left.svg) on the keyboard to speed down the film playback.
+3.  If you want to restore the original play speed, press **R** on the keyboard.
 
->![notes](icon/notes.svg)Notes: Speed up/down is relative to the original play speed. The video playback speed increases / decreases by 0.1 times by default each time it is sped up / down. Press and hold ![Ctrl](icon/Ctrl.svg)+![Right](icon/Right.svg) or ![Left](icon/Left.svg) on the keyboard and the playback speed will increase or decrease. The maximum playback speed is 2 times the original playback speed and the minimum playback speed is 0.1 times the original playback speed.
+>![notes](icon/notes.svg)Notes: Speed up/down is relative to the original play speed. The video playback speed increases / decreases by 0.1 times by default each time it is sped up / down. Press and hold **Ctrl**+![Right](icon/Right.svg) or ![Left](icon/Left.svg) on the keyboard and the playback speed will increase or decrease. The maximum playback speed is 2 times the original playback speed and the minimum playback speed is 0.1 times the original playback speed.
 
 ## Functions
 
@@ -199,7 +199,7 @@ You can add films to the playlist by the following ways:
 On the main menu, you can open files/folders, switch window themes, view help manual and get more information about Movie.
 ### Settings
 
-You can set the basic information, shortcut keys and subtitiles.
+You can set the basic information, shortcut keys and subtitles.
 
 #### Basic Settings
 
@@ -210,11 +210,9 @@ You can set the basic information, shortcut keys and subtitiles.
   - Check the **Remember playback position** box to resume the film automatically from the last position played when Movie runs.
   - Check the **Auto add similar files to play **box to add the similar film files in the same folder to the playlist  for playback in order.
   - Check the  **Show video preview on mouseover** box to show the film preview when hovering on the progress bar.
-  - Check the **Show thumbnails in progress bar** , a preview window will be displayed when the corsur hovers on the progress bar.
+  - Check the **Show thumbnails in progress bar** , a preview window will be displayed when the cursor hovers on the progress bar.
   - Check the **Pause when minimized** to pause the playback automatically when minimizing the Movie window.
 4.  In the option of **Screenshot**, you can select the path to save screenshots as you wish.
-
-![1|basic](jpg/basic.png)
 
 
 
@@ -224,8 +222,6 @@ You can set the basic information, shortcut keys and subtitiles.
 2.  Select **Settings** > **Shortcuts**.
 3.  You can select and input new shortcuts.
 
-![1|settings](jpg/settings.png)
-
 
 
 #### Subtitle Settings
@@ -234,8 +230,6 @@ You can set the basic information, shortcut keys and subtitiles.
 2.  Select **Settings** > **Subtitle**.
 3.  You can set the font and font size for subtitles.
 >  ![attention](icon/attention.svg)Attention: Click **Restore Defaults** on the interface to restore all settings.
-
-![1|subtitlesettings](jpg/subtitlesettings.png)
 
 
 

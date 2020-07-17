@@ -9,10 +9,8 @@ System Monitor is a system tool monitoring and managing hardware load, program r
 
 ### Search Process
 
-1. In the searching box, you can :
-   - Click ![search](icon/search.svg) to input keywords. 
-   - Click ![button_voice](icon/button_voice.svg) to speak, and your speech will be turned into words and displayed in the searching box. 
-2. Press  ![enter](icon/Enter.svg) to search to locate quickly. 
+1. In the searching box, you can click ![search](icon/search.svg) to input keywords. 
+2. Press  **Enter** key to search to locate quickly. 
    - All matching information will be displayed in a list. 
    - If searching fails, "No search results" will be displayed. 
 

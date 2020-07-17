@@ -50,7 +50,6 @@
 > ![tips](icon/tips.svg)窍门：您也可以勾选 **自动排列**，桌面图标将从上往下，从左往右按照当前排序规则排列，有图标被删除时后面的图标会自动向前填充。
 
 
-
 ### 调整图标大小
 1. 在桌面上，点击鼠标右键。
 2. 点击 **图标大小**。
@@ -372,7 +371,7 @@
 标题栏包含返回按钮，搜索框，主菜单及窗口按钮。
 
 - 返回按钮：若要返回首页，点击 ![back](icon/back.svg)。
-- 搜索框：输入关键字或点击 ![voice](icon/voice.svg) 后输入语音（语音会转化为文字显示在搜索框中），回车，搜索相应设置。
+- 搜索框：输入关键字，回车，搜索相应设置。
 - 主菜单：点击![menu](icon/icon_menu.svg) 进入主菜单。在主菜单中，您可以设置窗口主题，查看版本，或退出控制中心。
 
 ### 账户设置
@@ -585,7 +584,7 @@
 ### 个性化设置
 在这里，您可以设置透明度：调节启动器（小窗口模式）、任务栏的透明度；还可以设置系统主题、活动用色、字体、窗口特效等，改变桌面和窗口的外观，设置成您喜欢的显示风格。
 
-![0|personalise](jpg/personalise.png)
+![p0|personalise](jpg/personalise.png)
 
 #### 设置窗口主题
 1. 在控制中心首页，点击 ![personalization_normal](icon/personalization_normal.svg)。
@@ -879,7 +878,7 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 
 对系统电源进行一些设置，让笔记本电池更耐用，让系统更安全。
 
-![0|power](jpg/power.png)
+![m0|power](jpg/power.png)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
