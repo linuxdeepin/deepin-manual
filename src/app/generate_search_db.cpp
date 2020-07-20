@@ -130,7 +130,7 @@ int main(int argc, char **argv)
                             }
                             anchorInitialList.append(anchorInitial);
                         } else {
-                            anchorInitialList.append("null");
+                            anchorInitialList.append("");
                         }
                     } else if (locale == "en_US") {
                         if (id == "h0") {
@@ -141,7 +141,7 @@ int main(int argc, char **argv)
                             }
                             anchorInitialList.append(anchorInitial);
                         } else {
-                            anchorInitialList.append("null");
+                            anchorInitialList.append("");
                         }
                         anchorSpellList.append(title_us.remove(" "));
                     }
