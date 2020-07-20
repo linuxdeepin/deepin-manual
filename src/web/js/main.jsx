@@ -12,12 +12,12 @@ export default class Main extends Component {
       init: false,
       bTest:true
     };
-    let { file, hash } = this.props.match.params;
-    this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null);
+    let { file, hash ,key} = this.props.match.params;
+    this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null, key);
     var showFloatTimer=null;
   }
-  init(file, hash) {
-    console.log("main init==>file:",file," hash:",hash);
+  init(file, hash,key='') {
+    console.log("main init==>file:",file," hash:",hash," key:",key);
     var filePath = file;
     if (filePath.indexOf('/') == -1) {
       filePath = `${global.path}/${file}/${global.lang}/index.md`;
@@ -25,7 +25,7 @@ export default class Main extends Component {
   
     global.readFile(filePath, data => {
       console.log("main init===>readfile finish...");
-      let { html, hlist } = m2h(filePath, data);
+      let { html, hlist } = m2h(filePath, data,key);
       this.setState({
         file,
         html,
@@ -91,12 +91,12 @@ export default class Main extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    let { file, hash } = nextProps.match.params;
-    console.log("main componentWillReceivePropss: "+file+" "+hash+"  this.file:"+ this.state.file);
+    let { file, hash,key } = nextProps.match.params;
+    console.log("main componentWillReceivePropss: "+file+" "+hash+"  this.file:"+ this.state.file + " key:",key);
     //仅当页面文件发生改变时(文件改变或hash值发生改变),才刷新页面.
     if (file != this.state.file || ((file == this.state.file) && (hash != this.state.hash)))
     {
-      this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null);
+      this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null,key);
     }
   }
 

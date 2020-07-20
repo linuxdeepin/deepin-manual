@@ -1,6 +1,6 @@
 import marked from 'marked';
 
-export default function(mdFile, mdData) {
+export default function(mdFile, mdData, key='') {
   let hlist = [];
   let info = {};
   let html = '';
@@ -38,5 +38,11 @@ export default function(mdFile, mdData) {
     return `<img src="${hrefX2}" data-src="${href}" alt="${text}" />`;
   };
   html = marked(mdData, { renderer }).replace(/src="/g, `$&${path}`);
+  if (key != '')
+  {
+    let sKey = "<span style='background-color: yellow'>" + key + "</span>";
+    html = html.replace(new RegExp(key,'g'), `${sKey}`);
+  }
+  
   return { html, hlist, info };
 }

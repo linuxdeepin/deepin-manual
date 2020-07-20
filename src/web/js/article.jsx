@@ -323,7 +323,7 @@ export default class Article extends Component {
   }
 
   render() {
-    console.log("article render...");
+    console.log("article render...", this.state.preview);
     return (
           <div id="article">
             <div id="article_bg">
@@ -341,7 +341,7 @@ export default class Article extends Component {
                   onClick={this.click.bind(this)}
                   onContextMenu={this.contentMenu.bind(this)}
                 />
-                {this.state.preview != null && (
+                {/* {this.state.preview != null && (
                   <div
                     style={this.state.preview.style}
                     className={this.state.preview.tClass}
@@ -358,7 +358,7 @@ export default class Article extends Component {
                       </Scrollbar>
                     </div>
                   </div>
-                )}
+                )} */}
               </Scrollbar>
             </div>
           </div>

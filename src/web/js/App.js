@@ -128,14 +128,13 @@ class App extends React.Component {
     return { searchResult, mismatch };
   }
   componentWillReceiveProps(nextProps) {
-    console.log("componentWillReceiveProps", this.context.router.history);
+    console.log("app componentWillReceiveProps", this.context.router.history);
+    // console.log("this location: "+this.context.router.history.location);
     if (this.context.router.history.action == 'PUSH') {
       let entriesLen = this.context.router.history.entries.length;
-      //console.log("entriesLen" + entriesLen);
       if (entriesLen > 1) {
         let entry = this.context.router.history.entries[entriesLen-1];
         if (entry.pathname.toString().indexOf("/search/") != -1) {
-          //console.log(entry.pathname);
           this.setState({ historyGO: entriesLen - 1 });
           return;
         }
@@ -161,8 +160,8 @@ class App extends React.Component {
     };
 
     //打开某一个文件,并定位到具体hash
-    global.open = (file, hash = '') => {
-      console.log("global.open()....file:"+ file + " hash:" + hash);
+    global.open = (file, hash = '', key='') => {
+      console.log("global.open()....file:"+ file + " hash:" + hash+" key:"+key);
       //h0默认为应用名称，内容为空，所以当打开h0，将其变为h1概述的位置。
       if (hash == 'h0')
       {
@@ -171,7 +170,7 @@ class App extends React.Component {
       file = encodeURIComponent(file);
       hash = encodeURIComponent(hash);
       global.hash = hash;
-      let url = `/open/${file}/${hash}`;
+      let url = `/open/${file}/${hash}/${key}`;
       console.log("global.open: " +url);
       this.context.router.history.push(url);
 
@@ -196,7 +195,6 @@ class App extends React.Component {
           {
             hashID = d.querySelector(`[text="${title}"]`).id;
           }
-          // console.log("file: "+ file + " hash: "+ hashID);
           global.open(file,hashID);
         })
       }
@@ -387,7 +385,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" component={Index} />
             <Route path="/index" component={Index} />
-            <Route path="/open/:file/:hash?" component={Main} />
+            <Route path="/open/:file/:hash?/:key?" component={Main} />
             <Route path="/search/:keyword" component={Search} />
           </Switch>
         )}

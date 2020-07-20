@@ -26,7 +26,7 @@ class Items extends Component {
     let re = new RegExp(this.props.keyword, 'gi');
     for (let i = 0; i < this.props.idList.length; i++) {
       let c = (
-        <div className="item" key={i} onClick={() => global.open(this.props.file, this.props.idList[i])}>
+        <div className="item" key={i} onClick={() => global.open(this.props.file, this.props.idList[i], this.props.keyword)}>
           <div
             className="itemTitle"
             dangerouslySetInnerHTML={{
