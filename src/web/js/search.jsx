@@ -24,7 +24,30 @@ class Items extends Component {
   render() {
     let resultList = [];
     let re = new RegExp(this.props.keyword, 'gi');
+
+    let cTitle =(
+      <span
+        className="resulttitle"
+        dangerouslySetInnerHTML={{
+          __html: this.state.title.replace(
+            re,
+            "<span class='highlight'>$&</span>"
+          )
+        }}
+      />
+    );
+    console.log("==========>",this.props.idList.length);
+
     for (let i = 0; i < this.props.idList.length; i++) {
+
+      // let contentTrans = this.props.contentList[i];
+      // let index = contentTrans.indexOf(this.props.keyword);
+      // console.log("keyword index: ",index);
+      // if (index > 100)
+      // {
+      //   contentTrans = "..." + contentTrans.slice(index-100);
+      // }
+
       let c = (
         <div className="item" key={i} onClick={() => global.open(this.props.file, this.props.idList[i], this.props.keyword)}>
           <div
@@ -40,23 +63,27 @@ class Items extends Component {
             className="context"
             dangerouslySetInnerHTML={{
               __html: this.props.contentList[i]
+              // __html:contentTrans
             }}
           />
         </div>
       );
-      resultList.push(c);
+      if (resultList.length < 5)
+      {
+        resultList.push(c);
+      }
     }
     var sresultnum;
-      if(resultList.length>1)
-      sresultnum=resultList.length+global.i18n['ResultNumSuffixs'];
+      if(this.props.idList.length >1)
+      sresultnum=this.props.idList.length+global.i18n['ResultNumSuffixs'];
       else
-      sresultnum=resultList.length+global.i18n['ResultNumSuffix'];
+      sresultnum=this.props.idList.length+global.i18n['ResultNumSuffix'];
     return (
       this.state.show && (
         <div className="items">
-          <div className="itemsTitle" onClick={() => global.open(this.props.file)}>
+          <div className="itemsTitle" onClick={() => global.open(this.props.file,'',this.props.keyword)}>
             <img src={this.state.logo} />
-            <span className="resulttitle">{this.state.title}</span>
+            {cTitle}
             <span className="resultnum">{sresultnum}</span>
           </div>
           {resultList}

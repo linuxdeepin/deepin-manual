@@ -66,11 +66,16 @@ const char kSearchSelectAnchor[] =
     "OR t1.anchorSpell LIKE '%:anchor%' "
     "OR t1.anchorInitial LIKE '%:anchor%') --case insensitive";
 
+//将包含关键字的搜索结果顺序输出
 const char kSearchSelectContent[] =
-    "SELECT appName, anchor, anchorId, content "
-    "FROM search "
-    "WHERE lang = ':lang' AND "
-    "content LIKE '%:content%' --case insensitive";
+//    "SELECT appName, anchor, anchorId, content "
+//    "FROM search "
+//    "WHERE lang = ':lang' AND "
+//    "content LIKE '%:content%' --case insensitive";
+    "select appName, anchor, anchorId, content from search where lang = ':lang' and anchor like '%:content%' "
+    "union all "
+    "select appName, anchor, anchorId, content from search where lang = ':lang' and content like '%:content%' and anchor not like '%:content%' "
+    "order by appName";
 
 const int kResultLimitation = INT_MAX;
 
@@ -423,7 +428,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
             }
         }
 
-        // Last record.
+        // 最后一次搜索结果,信号发出
         if (!result_empty && contents.size() > 0) {
             result_empty = false;
             qDebug() << Q_FUNC_INFO << "emit searchContentResult() last record"

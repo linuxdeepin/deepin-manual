@@ -219,7 +219,7 @@ var App = function (_React$Component) {
 
         console.log("global.open()....file:" + file + " hash:" + hash + " key:" + key);
         //h0默认为应用名称，内容为空，所以当打开h0，将其变为h1概述的位置。
-        if (hash == 'h0') {
+        if (hash == 'h0' || hash == '') {
           hash = 'h1';
         }
         file = encodeURIComponent(file);
@@ -1749,7 +1749,24 @@ var Items = function (_Component) {
       var resultList = [];
       var re = new RegExp(this.props.keyword, 'gi');
 
+      var cTitle = _react2.default.createElement('span', {
+        className: 'resulttitle',
+        dangerouslySetInnerHTML: {
+          __html: this.state.title.replace(re, "<span class='highlight'>$&</span>")
+        }
+      });
+      console.log("==========>", this.props.idList.length);
+
       var _loop = function _loop(i) {
+
+        // let contentTrans = this.props.contentList[i];
+        // let index = contentTrans.indexOf(this.props.keyword);
+        // console.log("keyword index: ",index);
+        // if (index > 100)
+        // {
+        //   contentTrans = "..." + contentTrans.slice(index-100);
+        // }
+
         var c = _react2.default.createElement(
           'div',
           { className: 'item', key: i, onClick: function onClick() {
@@ -1765,31 +1782,30 @@ var Items = function (_Component) {
             className: 'context',
             dangerouslySetInnerHTML: {
               __html: _this2.props.contentList[i]
+              // __html:contentTrans
             }
           })
         );
-        resultList.push(c);
+        if (resultList.length < 5) {
+          resultList.push(c);
+        }
       };
 
       for (var i = 0; i < this.props.idList.length; i++) {
         _loop(i);
       }
       var sresultnum;
-      if (resultList.length > 1) sresultnum = resultList.length + global.i18n['ResultNumSuffixs'];else sresultnum = resultList.length + global.i18n['ResultNumSuffix'];
+      if (this.props.idList.length > 1) sresultnum = this.props.idList.length + global.i18n['ResultNumSuffixs'];else sresultnum = this.props.idList.length + global.i18n['ResultNumSuffix'];
       return this.state.show && _react2.default.createElement(
         'div',
         { className: 'items' },
         _react2.default.createElement(
           'div',
           { className: 'itemsTitle', onClick: function onClick() {
-              return global.open(_this2.props.file);
+              return global.open(_this2.props.file, '', _this2.props.keyword);
             } },
           _react2.default.createElement('img', { src: this.state.logo }),
-          _react2.default.createElement(
-            'span',
-            { className: 'resulttitle' },
-            this.state.title
-          ),
+          cTitle,
           _react2.default.createElement(
             'span',
             { className: 'resultnum' },
