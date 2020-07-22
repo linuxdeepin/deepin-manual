@@ -390,7 +390,7 @@ Once you open a setting module in Control Center, the navigation appears on the 
 The title bar contains the back button, search box, main menu and the window buttons.
 
 - Back button: Click ![back](icon/back.svg) to go back to the homepage.
-- Search box: Input a keyword or click ![voice](icon/voice.svg)to input voices (The input voices will be converted to texts and displayed in the search box.) and search the related settings.
+- Search box: Input a keyword and search the related settings.
 - Main menu: Click ![menu](icon/icon_menu.svg) to enter the main menu where you can set the window theme, view the manual and exit.
 
 ### Accounts
