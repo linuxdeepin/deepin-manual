@@ -171,6 +171,7 @@ QStringList ManualProxy::getSystemManualList()
         }
     }
     qDebug() << "exist app list====:" << app_list_ << ", count:" << app_list_.size();
+    saveAppList(app_list_);
     return app_list_;
 }
 
@@ -197,8 +198,8 @@ void ManualProxy::setApplicationState(const QString &appName)
 
     QSettings *setting = ConfigManager::getInstance()->getSettings();
     setting->beginGroup(CONFIG_APPLIST);
-    if (setting->contains(appName)) {
-        setting->setValue(appName, false);
+    if (setting->contains(strApp)) {
+        setting->setValue(strApp, false);
         qDebug() << setting->applicationName() << setting->fileName() << ": " << appName << " state=false";
     } else {
         qDebug() << setting->fileName() << ": " << strApp << " not find";
