@@ -48,7 +48,9 @@ private:
     void connectToSender();
 
     QDBusConnection m_dbusConn;
-    QList<QHash<QString, QString>> winInfoList;
+    bool m_bWindowState;
+    QString m_sApplicationPid = nullptr;
+
 };
 
 #endif  // DEEPIN_MANUAL_DBUS_MANUAL_SEARCH_PROXY_H

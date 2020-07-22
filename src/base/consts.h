@@ -27,6 +27,11 @@ extern const char kAppProcessName[];
 extern const char kAppVersion[];
 extern const char kIndexPage[];
 
+extern const char CONFIG_WINDOW_WIDTH[];
+extern const char CONFIG_WINDOW_HEIGHT[];
+extern const char CONFIG_WINDOW_INFO[];
+extern const char CONFIG_APPLIST[];
+
 // Get user cache directory.
 QString GetCacheDir();
 

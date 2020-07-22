@@ -65,6 +65,9 @@ public:
     void setTitleName(const QString &title_name);
     void cancelTextChanged();
     void updateBtnBox();
+
+    void openjsPage(const QString &app_name, const QString &title_name);
+    // 保存窗口尺寸
     void saveWindowSize();
     Dtk::Widget::DButtonBoxButton *m_backButton;
     Dtk::Widget::DButtonBoxButton *m_forwardButton;
@@ -82,13 +85,15 @@ public slots:
     void slot_ButtonHide();
     void slot_ButtonShow();
     void slot_ThemeChanged();
+    void slot_HelpSupportTriggered();
 
 protected:
     void closeEvent(QCloseEvent *event) override;
     void showEvent(QShowEvent *event) override;
 
-    void keyPressEvent(QKeyEvent *event) override;
-    //void inputMethodEvent(QInputMethodEvent *e) Q_DECL_OVERRIDE;
+    void inputMethodEvent(QInputMethodEvent *e) Q_DECL_OVERRIDE;
+    QVariant inputMethodQuery(Qt::InputMethodQuery prop) const Q_DECL_OVERRIDE;
+
 private:
     void initConnections();
     void initUI();
@@ -119,6 +124,7 @@ private:
     QString keyword_;
     bool first_webpage_loaded_ {true};
     bool is_index_loaded_ {false};
+    bool bIsSetKeyword{false};
 
 private slots:
     void onSearchEditFocusOut();
@@ -130,6 +136,8 @@ private slots:
     void onSearchTextChangedDelay();
     void onTitleBarEntered();
     void onWebPageLoadFinished(bool ok);
+    void onChannelFinish();
+    void onSetKeyword(const QString &keyword);
 
     void onManualSearchByKeyword(const QString &keyword);
     void onACtiveColorChanged(QString, QMap<QString, QVariant>, QStringList);

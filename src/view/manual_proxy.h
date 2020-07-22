@@ -46,25 +46,10 @@ public:
     ~ManualProxy() override;
 signals:
     void WidgetLower();
-public slots:
-    QString getSystemManualDir() const
-    {
-        QString strMANUAL_DIR = DMAN_MANUAL_DIR;
-        int nType = Dtk::Core::DSysInfo::deepinType();
-        if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
-            strMANUAL_DIR += "/server";
-        } else if (Dtk::Core::DSysInfo::DeepinPersonal == (Dtk::Core::DSysInfo::DeepinType)nType) {
-            strMANUAL_DIR += "/personal";
-        } else {
-            if (Dtk::Core::DSysInfo::isCommunityEdition()) {
-                strMANUAL_DIR += "/community";
-            } else {
-                strMANUAL_DIR += "/professional";
-            }
-        }
-        return strMANUAL_DIR;
-    }
+    void channelInit();
 
+public slots:
+    QString getSystemManualDir();
     QStringList getSystemManualList();
 
     /**
@@ -72,6 +57,13 @@ public slots:
      * @param url
      */
     void openExternalLink(const QString &url);
+    void setApplicationState(const QString &appName);
+    QStringList getUsedAppList();
+
+    void finishChannel();
+
+private:
+    void saveAppList(const QStringList &list);
 
 private:
     LauncherInterface *launcher_interface_ = nullptr;

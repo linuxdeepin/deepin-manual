@@ -54,7 +54,7 @@
         margin-top: 8px;
         margin-bottom: 8px;
       }
-      span {
+      .content {
         margin-left: 15px;    //保持span居中,当设置display:-webkit-box后,默认居左,故设置其外边距
         width: var(--index-span-width);
         word-break: normal;
@@ -75,6 +75,15 @@
         border-radius: 18px;
         // border: 1px solid transparent;
         background-color: var(--index-item-hover-color);
+      }
+
+      .tag{
+        display: inline-block;
+        height: 8px;
+        width: 8px;
+        margin-right: 4px;
+        border-radius: 8px;
+        background-color: var(--nav-hash-word-color);
       }
     }
   }

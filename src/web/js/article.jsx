@@ -19,6 +19,7 @@ export default class Article extends Component {
   }
   //滚动到锚点
   scrollToHash() {
+    console.log("article scrollToHash ",this.hash);
     let tempHash = this.hash;
 
     // if (tempHash == 'h21')
@@ -34,7 +35,6 @@ export default class Article extends Component {
     }
 
     if (hashNode) {
-
       clearTimeout(this.timerObj);
       this.setState({ smoothScroll: true });
 
@@ -43,6 +43,10 @@ export default class Article extends Component {
       },800);
 
       scrollIntoView(hashNode, { behavior: 'smooth', block: 'start' }).then(() => {
+
+        //scrollIntoView函数存在异步,如果tempHash != this.hash时,说明存在异步操作,直接return. 
+        if(tempHash != this.hash) return;
+
         console.log("scrollIntoView finish..");
         //find parent h3 title of h4 title
         let hList = ReactDOM.findDOMNode(this).querySelectorAll('h2,h3,h4,h5');
@@ -51,7 +55,6 @@ export default class Article extends Component {
           if (hList[i].tagName == 'H3') {
             currH3Hash = hList[i].id; 
           }
-
           if (tempHash == hList[i].id && (hList[i].tagName == 'H4' || hList[i].tagName == 'H5')) {
             console.log("article: scroll hlist:" + hList[i].tagName  + "," + hList[i].id);
             console.log("currH3Hash:" + currH3Hash);
@@ -66,6 +69,7 @@ export default class Article extends Component {
       this.props.setHash(this.props.hlist[0].id);
     }
   }
+
   componentDidUpdate() {
     console.log("article componentDidUpdate.." + this.hash + " props hash->"+ this.props.hash);
     if (this.hash != this.props.hash) {
@@ -118,11 +122,12 @@ export default class Article extends Component {
   }
 
   componentDidMount() {
+    console.log("article componentDidMount");
     this.componentDidUpdate();
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log("article componentWillReceiveProps..");
+    console.log("article componentWillReceiveProps nextfile",nextProps.nextProps,' prop.file:',this.props.file);
     if (nextProps.file != this.props.file) {
       this.hash = '';
       this.load = false;
@@ -159,6 +164,7 @@ export default class Article extends Component {
 
   //滚动事件
   scroll() {
+    console.log("article scroll");
     if (!this.load) {
       return;
     }
@@ -201,8 +207,10 @@ export default class Article extends Component {
       }
     }
   }
-  //内部链接预览
+  //内部链接预览....暂时去除,修改为直接跳转
+ /* 
   showPreview(appName, hash, rect) {
+    console.log("article showPreview");
     let file = `${global.path}/${appName}/${global.lang}/index.md`;
     global.readFile(file, data => {
       let { html } = m2h(file, data);
@@ -259,8 +267,11 @@ export default class Article extends Component {
       this.setState({ preview: { html, style, tClass } });
     });
   }
+  */
+
   //链接处理
   click(e) {
+    console.log("article click");
     if (this.state.preview != null) {
       this.setState({ preview: null });
     }
@@ -288,8 +299,10 @@ export default class Article extends Component {
           case href.indexOf(dmanProtocol):
             e.preventDefault();
             const [appName, hash] = href.slice(dmanProtocol.length + 1).split('#');
-            const rect = e.target.getBoundingClientRect();
-            this.showPreview(appName, hash, rect);
+            // const rect = e.target.getBoundingClientRect();
+            // this.showPreview(appName, hash, rect);
+            // this.showPreviewTmp(appName,hash);
+            global.openTitle(appName,hash);
             return;
           case href.indexOf(httpProtocol):
             e.preventDefault();
@@ -317,6 +330,7 @@ export default class Article extends Component {
   }
 
   render() {
+    console.log("article render...", this.state.preview);
     return (
           <div id="article">
             <div id="article_bg">
@@ -334,7 +348,7 @@ export default class Article extends Component {
                   onClick={this.click.bind(this)}
                   onContextMenu={this.contentMenu.bind(this)}
                 />
-                {this.state.preview != null && (
+                {/* {this.state.preview != null && (
                   <div
                     style={this.state.preview.style}
                     className={this.state.preview.tClass}
@@ -351,7 +365,7 @@ export default class Article extends Component {
                       </Scrollbar>
                     </div>
                   </div>
-                )}
+                )} */}
               </Scrollbar>
             </div>
           </div>

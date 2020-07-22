@@ -12,72 +12,55 @@ export default class Main extends Component {
       init: false,
       bTest:true
     };
-    let { file, hash } = this.props.match.params;
-    this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null);
+    let { file, hash ,key} = this.props.match.params;
+    this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null, key);
     var showFloatTimer=null;
   }
-  init(file, hash) {
-    console.log("main init"+file);
-    if (file.indexOf('/') == -1) {
-      file = `${global.path}/${file}/${global.lang}/index.md`;
+  init(file, hash,key='') {
+    console.log("main init==>file:",file," hash:",hash," key:",key);
+    var filePath = file;
+    if (filePath.indexOf('/') == -1) {
+      filePath = `${global.path}/${file}/${global.lang}/index.md`;
     }
-    global.readFile(file, data => {
-      let { html, hlist } = m2h(file, data);
+  
+    global.readFile(filePath, data => {
+      console.log("main init===>readfile finish...");
+      let { html, hlist } = m2h(filePath, data,key);
       this.setState({
+        file,
         html,
         hlist,
         init: true,
         hash: hash ? hash : hlist[0].id
       });
-
-      console.log("main init linktitle"+global.linktitle);
-    
-      if (global.linktitle != '')
-      {
-        var nHash = '';
-        for (let i = 0; i < this.state.hlist.length; i++)
-        {
-          var element = this.state.hlist[i];
-
-          if (element.text == global.linktitle)
-          {
-            console.log("----------"+element.text);
-            nHash = element.id;
-          }
-        }
-        this.setScrollTitle(nHash);
-        global.linktitle = '';
-      }
     });
   }
 
   setHash(hash) {
-    console.log("main setHash:" + hash);
+    console.log("main setHash: " + hash);
     if (global.isLinkClicked) {
       console.log("main --setHash");
       global.hash = hash;
-      global.oldHash = hash;
       global.isLinkClicked = false;
     }
     console.log("main*********setHash");
     this.setState({ hash });
   }
 
-  setScrollTitle(hash){
-    // console.log("main title setHash:" + hash);
-    setTimeout(() => {
-      global.hash = hash;
-      global.oldHash = hash;
-      global.isMouseClickNav = true;
-      global.isMouseScrollArticle = false;
-      this.setState({ hash });
-    },800);
-  }
+  // setScrollTitle(hash){
+  //   console.log("main setScrollTitle: " + hash);
+  //   setTimeout(() => {
+  //     global.hash = hash;
+  //     global.oldHash = hash;
+  //     global.isMouseClickNav = true;
+  //     global.isMouseScrollArticle = false;
+  //     this.setState({ hash });
+  //   },800);
+  // }
 
   setScroll(hash) {
     console.log("main setScroll:" + hash);
     global.hash = hash;
-    global.oldHash = hash;
     this.setState({ hash });
   }
 
@@ -108,21 +91,29 @@ export default class Main extends Component {
   }
 
   componentWillReceiveProps(nextProps) {
-    console.log("main componentWillReceivePropss");
-    let { file, hash } = nextProps.match.params;
-    this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null);
+    let { file, hash,key } = nextProps.match.params;
+    console.log("main componentWillReceivePropss: "+file+" "+hash+"  this.file:"+ this.state.file + " key:",key);
+    //仅当页面文件发生改变时(文件改变或hash值发生改变),才刷新页面.
+    if (file != this.state.file || ((file == this.state.file) && (hash != this.state.hash)))
+    {
+      this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null,key);
+    }
+  }
+
+  componentWillUpdate(){
+    console.log("main componentWillUpdate..");
   }
 
   componentWillUnmount(){
-    global.hash = ' ';
-    global.oldHash = ' ';
-    global.linktitle = '';
+    global.hash = '';
     global.isMouseClickNav = false;
     global.isMouseScrollArticle = false;
     global.isLinkClicked = false;
   }
 
   render() {
+    console.log("main render....hash:",this.state.hash);
+    console.log("main render....hList:",this.state.hlist);
     return (
       this.state.init && (
         <div id="main">
@@ -142,6 +133,7 @@ export default class Main extends Component {
             setHash={this.setHash.bind(this)}
             setScroll={this.setScroll.bind(this)}
           />
+          <div className="support-div" onClick={() =>{console.log("support click...")}}><img className="support" src="./pic.svg"></img></div>
           <div className="tooltip-wp"></div>
         </div>
       )

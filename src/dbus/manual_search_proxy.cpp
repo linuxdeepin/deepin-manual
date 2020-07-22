@@ -28,8 +28,7 @@ ManualSearchProxy::ManualSearchProxy(QObject *parent)
     , m_dbusConn(QDBusConnection::connectToBus(QDBusConnection::SessionBus, "Receiver"))
 {
     this->setObjectName("ManualSearchProxy");
-
-    winInfoList.clear();
+    m_bWindowState = false;
 
     initDBus();
     connectToSender();
@@ -81,90 +80,21 @@ void ManualSearchProxy::RecvMsg(const QString &data)
         qDebug() << "wrong data style! " << data;
         return;
     }
-
-    QString currProcessId = dataList.first();
-
-    QList<int> removeIndexList;
-    for (int i = 0; i < winInfoList.size(); i++) {
-        QHash<QString, QString> winInfo = winInfoList.at(i);
-        qDebug() << "processId:" << winInfo.begin().key();
-//        if (currProcessId != winInfo.keys().first()) {
-        if (currProcessId != winInfo.begin().key()) {
-            removeIndexList.append(i);
-        }
-    }
-
-    if (removeIndexList.size() > 0) {
-        for (int i = removeIndexList.size() - 1; i >= 0; i--) {
-            int removeIndex = removeIndexList.at(i);
-            qDebug() << "remove window" << removeIndex;
-            winInfoList.removeAt(removeIndex);
-        }
-    }
-
-    if (dataList.size() == 2) {
-        QHash<QString, QString> winInfo;
-        winInfo.insert(dataList.first(), dataList.last());
-        winInfoList.append(winInfo);
-
-        return;
-    }
-
     QString flag = dataList.last();
-
     if ("close" == flag) {
-        int removeWinIndex = -1;
-        if (winInfoList.size() > 0) {
-            for (int i = 0; i < winInfoList.size(); i++) {
-                QHash<QString, QString> winInfo = winInfoList.at(i);
-//                if (dataList.at(1) == winInfo.value(winInfo.keys().first())) {
-                if (dataList.at(1) == winInfo.value(winInfo.begin().key())) {
-                    removeWinIndex = i;
-                    qDebug() << "remove window" << removeWinIndex;
-                    break;
-                }
-            }
-
-            if (removeWinIndex != -1) {
-                winInfoList.removeAt(removeWinIndex);
-            }
-        }
+        m_sApplicationPid = nullptr;
+        m_bWindowState = false;
+    } else {
+        m_bWindowState = true;
+        m_sApplicationPid = dataList.last();
     }
+
+    return;
 }
 
 void ManualSearchProxy::OnNewWindowOpen(const QString &data)
 {
     qDebug() << "Search data is: " << data;
-
-    if (winInfoList.size() == 0) {
-        qDebug() << "winInfoList is: " << winInfoList;
-        return;
-    }
-
-    bool hasProcess = false;
-    for (int i = 0; i < winInfoList.size(); i++) {
-        QHash<QString, QString> winInfo = winInfoList.at(i);
-        if (winInfo.begin().value() == data) {
-            hasProcess = true;
-            break;
-        }
-    }
-
-    if (!hasProcess) {
-        QHash<QString, QString> winInfo = winInfoList.first();
-
-//        quintptr winId = winInfo.value(winInfo.keys().first()).toULong();
-        quintptr winId = winInfo.begin().value().toULong();
-        // new interface use applicationName as id
-        QDBusInterface manual("com.deepin.dde.daemon.Dock", "/com/deepin/dde/daemon/Dock",
-                              "com.deepin.dde.daemon.Dock");
-        QDBusReply<void> reply = manual.call("ActivateWindow", winId);
-        if (reply.isValid()) {
-            qDebug() << "call com.deepin.dde.daemon.Dock success";
-            return;
-        }
-        qDebug() << "call com.deepin.dde.daemon.Dock failed" << reply.error();
-    }
 }
 
 bool ManualSearchProxy::ManualExists(const QString &app_name)

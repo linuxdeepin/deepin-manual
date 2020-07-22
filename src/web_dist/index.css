@@ -65,6 +65,16 @@ div {
       font-size: 0.9rem;
       color: var(--article-read-word-color);
       outline: 0px; }
+      #article #article_bg .read .version-info {
+        margin-top: 20px;
+        border-top: 1px solid var(--index-h2-color);
+        padding-top: 10px;
+        color: #414d68; }
+        #article #article_bg .read .version-info span {
+          padding-right: 10px; }
+        #article #article_bg .read .version-info a {
+          float: right;
+          color: #0081FF; }
       #article #article_bg .read h2 {
         font-weight: normal;
         font-size: 1.5rem;
@@ -276,7 +286,7 @@ div {
         height: 96px;
         margin-top: 8px;
         margin-bottom: 8px; }
-      #index .items .item span {
+      #index .items .item .content {
         margin-left: 15px;
         width: var(--index-span-width);
         word-break: normal;
@@ -293,6 +303,13 @@ div {
         background-clip: content-box;
         border-radius: 18px;
         background-color: var(--index-item-hover-color); }
+      #index .items .item .tag {
+        display: inline-block;
+        height: 8px;
+        width: 8px;
+        margin-right: 4px;
+        border-radius: 8px;
+        background-color: var(--nav-hash-word-color); }
 
 body {
   overflow: hidden; }
@@ -314,8 +331,24 @@ body {
   background-color: var(--tips-background-color);
   color: var(--nav-h2-word-color);
   font-family: var(--nav-world-font-family);
-  border-radius: 8px;
-  border: 1px solid var(--tips-border-color); }
+  border-radius: 5px;
+  border: 1px solid gray; }
+
+#main .support-div {
+  width: 48px;
+  height: 48px;
+  border-radius: 48px;
+  background-color: var(--nav-hash-word-color);
+  display: inline-block;
+  position: absolute;
+  right: 20px;
+  bottom: 20px; }
+
+#main .support {
+  width: 20px;
+  height: 21px;
+  margin-top: 14px;
+  margin-left: 14px; }
 
 #nav {
   margin: 0 0 0 0;

@@ -38,6 +38,8 @@ const char kSearchTableSchema[] =
     "appName TEXT,"
     "lang TEXT,"
     "anchor TEXT,"
+    "anchorInitial TEXT,"
+    "anchorSpell TEXT,"
     "anchorId TEXT,"
     "content TEXT)";
 
@@ -50,23 +52,30 @@ const char kSearchDeleteEntryByApp[] =
     "WHERE appName = ? AND lang = ?";
 const char kSearchInsertEntry[] =
     "INSERT INTO search "
-    "(appName, lang, anchor, anchorId, content) "
-    "VALUES (?, ?, ?, ?, ?)";
+    "(appName, lang, anchor, anchorInitial, anchorSpell, anchorId, content) "
+    "VALUES (?, ?, ?, ?, ?, ?, ?)";
 
 // const char kSearchSelectAll[] = "SELECT * FROM search";
 
 const char kSearchSelectAnchor[] =
-    "SELECT t1.appName, t2.anchor appDisplayName, t1.anchor, t1.anchorId FROM search t1 "
-    "LEFT JOIN (SELECT anchor,appName FROM search where anchorId='h0' and lang=':lang') t2 "
+    "SELECT t1.appName, t2.anchor, t1.anchor, t1.anchorId FROM search t1 "
+    "LEFT JOIN (SELECT anchor,appName FROM search where anchorId='h0' and lang=':lang') t2 ON t1.appName=t2.appName "
     "WHERE t1.appName=t2.appName "
     "AND t1.lang = ':lang' "
-    "AND t1.anchor LIKE '%:anchor%' --case insensitive";
+    "AND (t1.anchor LIKE '%:anchor%' "
+    "OR t1.anchorSpell LIKE '%:anchor%' "
+    "OR t1.anchorInitial LIKE '%:anchor%') --case insensitive";
 
+//将包含关键字的搜索结果顺序输出
 const char kSearchSelectContent[] =
-    "SELECT appName, anchor, anchorId, content "
-    "FROM search "
-    "WHERE lang = ':lang' AND "
-    "content LIKE '%:content%' --case insensitive";
+//    "SELECT appName, anchor, anchorId, content "
+//    "FROM search "
+//    "WHERE lang = ':lang' AND "
+//    "content LIKE '%:content%' --case insensitive";
+    "select appName, anchor, anchorId, content from search where lang = ':lang' and anchor like '%:content%' "
+    "union all "
+    "select appName, anchor, anchorId, content from search where lang = ':lang' and content like '%:content%' and anchor not like '%:content%' "
+    "order by appName";
 
 const int kResultLimitation = INT_MAX;
 
@@ -137,7 +146,8 @@ void SearchDb::initSearchTable()
 }
 
 void SearchDb::addSearchEntry(const QString &system, const QString &app_name, const QString &lang,
-                              const QStringList &anchors, const QStringList &anchorIdList,
+                              const QStringList &anchors, const QStringList &anchorInitialList,
+                              const QStringList &anchorSpellList, const QStringList &anchorIdList,
                               const QStringList &contents)
 {
     Q_ASSERT(p_->db.isOpen());
@@ -195,8 +205,10 @@ void SearchDb::addSearchEntry(const QString &system, const QString &app_name, co
     query.bindValue(0, app_names);
     query.bindValue(1, lang_list);
     query.bindValue(2, anchors);
-    query.bindValue(3, anchorIdList);
-    query.bindValue(4, newContents);
+    query.bindValue(3, anchorInitialList);
+    query.bindValue(4, anchorSpellList);
+    query.bindValue(5, anchorIdList);
+    query.bindValue(6, newContents);
     bool ok = query.execBatch();
 
     if (!ok) {
@@ -222,20 +234,28 @@ void SearchDb::handleSearchAnchor(const QString &keyword)
         while (query.next() && (result.size() < kResultLimitation)) {
             //只将当前预装应用中的内容输出。
             if (strlistApp.contains(query.value(0).toString())) {
-                result.append(SearchAnchorResult {
-                    query.value(0).toString(),
-                    query.value(1).toString(),
-                    query.value(2).toString(),
-                    query.value(3).toString(),
-                });
+                //搜索结果优先显示应用名称
+                if (query.value(3) == "h0") {
+                    result.prepend(SearchAnchorResult {
+                        query.value(0).toString(),
+                        query.value(1).toString(),
+                        query.value(2).toString(),
+                        query.value(3).toString(),
+                    });
+                } else {
+                    result.append(SearchAnchorResult {
+                        query.value(0).toString(),
+                        query.value(1).toString(),
+                        query.value(2).toString(),
+                        query.value(3).toString(),
+                    });
+                }
             }
         }
     } else {
         qCritical() << "Failed to select anchor:" << query.lastError().text();
     }
-
     qDebug() << "result size:" << result.size() << keyword;
-
     emit this->searchAnchorResult(keyword, result);
 }
 
@@ -358,7 +378,6 @@ void SearchDb::handleSearchContent(const QString &keyword)
             const QString anchor = query.value(1).toString();
             const QString anchorId = query.value(2).toString();
             const QString content = query.value(3).toString();
-            qDebug() << Q_FUNC_INFO << app_name << " " << anchor << " " << anchorId;
             if (!strlistApp.contains(app_name)) {
                 continue;
             }
@@ -407,7 +426,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
             }
         }
 
-        // Last record.
+        // 最后一次搜索结果,信号发出
         if (!result_empty && contents.size() > 0) {
             result_empty = false;
             qDebug() << Q_FUNC_INFO << "emit searchContentResult() last record"

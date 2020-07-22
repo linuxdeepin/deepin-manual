@@ -49,22 +49,23 @@ private:
     void activeExistingWindow();
     void activeOrInitWindow(const QString &app_name);
 
-    QHash<QString, WebWindow *> windows_;
     SearchManager *search_manager_ {nullptr};
-    QPoint last_new_window_pos_;
     QString curr_app_name_;
     QString curr_keyword_;
     QString curr_title_name_;
     QMutex _mutex;
+    QPoint last_new_window_pos_;
+
+    /*** 2020-06-22 17:03:25 wangml ***/
+    WebWindow *window = nullptr;
 
 private slots:
     /**
      * Remove window from window list.
      * @param app_name
      */
-    void onWindowClosed(const QString &app_name);
-    void onWindowShown(WebWindow *window);
-    void RecvMsg(const QString &data);
+    void onWindowClosed();
+    void onWindowShown();
 
 public slots:
     /**
@@ -73,7 +74,6 @@ public slots:
      */
     void openManual(const QString &app_name, const QString &title_name);
     void openManualWithSearch(const QString &app_name, const QString &keyword);
-
     void onNewAppOpen();
 };
 

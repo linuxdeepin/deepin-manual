@@ -24,7 +24,6 @@
 #include <unistd.h>
 #include "controller/config_manager.h"
 
-
 #include <DLog>
 #include <QApplication>
 #include <QDesktopWidget>
@@ -38,10 +37,6 @@ const int kWinMinWidth = 800;
 const int kWinMinHeight = 600;
 const int kWinOffset = 30;
 
-static constexpr const char *CONFIG_WINDOW_INFO = "window_info";
-static constexpr const char *CONFIG_WINDOW_WIDTH = "window_width";
-static constexpr const char *CONFIG_WINDOW_HEIGHT = "window_height";
-
 const char kEnableDomStorageFlush[] = "--enable-aggressive-domstorage-flushing";
 const char kDisableGpu[] = "--disable-gpu";
 const char kEnableLogging[] = "--enable-logging";
@@ -53,7 +48,6 @@ const char kLogLevel[] = "--log-level";
 
 WindowManager::WindowManager(QObject *parent)
     : QObject(parent)
-    , windows_()
     , search_manager_(nullptr)
     , curr_app_name_("")
     , curr_keyword_("")
@@ -63,14 +57,14 @@ WindowManager::WindowManager(QObject *parent)
 
 WindowManager::~WindowManager()
 {
-    QHashIterator<QString, WebWindow *> iterator(windows_);
+//    QHashIterator<QString, WebWindow *> iterator(windows_);
 
-    while (iterator.hasNext()) {
-        iterator.next();
-        WebWindow *web = iterator.value();
-        delete web;
-        web = nullptr;
-    }
+//    while (iterator.hasNext()) {
+//        iterator.next();
+//        WebWindow *web = iterator.value();
+//        delete web;
+//        web = nullptr;
+//    }
 
 }
 
@@ -113,11 +107,6 @@ void WindowManager::SendMsg(const QString &msg)
     }
 }
 
-void WindowManager::RecvMsg(const QString &data)
-{
-    qDebug() << "sync:" << data;
-}
-
 void WindowManager::onNewAppOpen()
 {
     qDebug() << "slot onNewAppOpen";
@@ -142,45 +131,36 @@ void WindowManager::onNewAppOpen()
 
 void WindowManager::initWebWindow()
 {
-    WebWindow *window = new WebWindow;
+    /*** 2020-06-22 17:04:18 wangml ***/
+    window = new WebWindow;
     connect(window, &WebWindow::closed, this, &WindowManager::onWindowClosed);
     connect(window, &WebWindow::shown, this, &WindowManager::onWindowShown);
-    windows_.insert(curr_app_name_, window);
+    //windows_.insert(curr_app_name_, window);
     moveWindow(window);
     window->show();
     window->activateWindow();
-}
-
-void WindowManager::activeExistingWindow()
-{
-    qDebug() << "openManual contains:" << curr_app_name_;
-    WebWindow *window = windows_.value(curr_app_name_);
-    if (window != nullptr) {
-        window->show();
-        window->raise();
-        window->activateWindow();
-
-        SendMsg(QString::number(window->winId()));
-    }
-
-    if (curr_keyword_.length() > 0) {
-        emit window->manualSearchByKeyword(curr_keyword_);
-    }
 }
 
 void WindowManager::activeOrInitWindow(const QString &app_name)
 {
     qDebug() << Q_FUNC_INFO << app_name;
     QMutexLocker locker(&_mutex);
-    if (windows_.contains(app_name)) {
-        activeExistingWindow();
+    /*** 只要有窗口就不再创建新窗口 2020-06-22 16:57:50 wangml ***/
+    if (window != nullptr) {
+        this->moveWindow(window);
+        window->show();
+        window->raise();
+        window->activateWindow();
+        window->openjsPage(app_name, curr_title_name_);
         return;
     }
     initWebWindow();
 }
 
+/*** F1快捷启动　2020-06-28 18:07:49 wangml ***/
 void WindowManager::openManual(const QString &app_name, const QString &title_name)
 {
+
     curr_app_name_ = app_name;
     curr_keyword_ = "";
     curr_title_name_ = title_name;
@@ -188,23 +168,14 @@ void WindowManager::openManual(const QString &app_name, const QString &title_nam
     qDebug() << Q_FUNC_INFO << app_name << curr_keyword_;
 }
 
+
+/*** 供　manual_open_proxy::search()接口调用 2020-06-29 18:49:13 wangml ***/
 void WindowManager::openManualWithSearch(const QString &app_name, const QString &keyword)
 {
     curr_app_name_ = app_name;
     curr_keyword_ = keyword;
     activeOrInitWindow(app_name);
     qDebug() << Q_FUNC_INFO << app_name << curr_keyword_;
-}
-
-SearchManager *WindowManager::currSearchManager()
-{
-    if (nullptr == search_manager_) {
-        qDebug() << "start init SearchManager" << endl;
-        search_manager_ = new SearchManager(this);
-        initDBus();
-    }
-
-    return search_manager_;
 }
 
 void WindowManager::moveWindow(WebWindow *window)
@@ -231,34 +202,39 @@ QPoint WindowManager::newWindowPosition()
 
     QDesktopWidget *desktop = QApplication::desktop();
     Q_ASSERT(desktop != nullptr);
+    /*** 2020-06-30 09:21:36 wangml ***/
     const QRect geometry = desktop->availableGeometry(QCursor::pos());
-    if (windows_.isEmpty() || windows_.size() == 1) {
-        const QPoint center = geometry.center();
-        return QPoint(center.x() - saveWidth / 2, center.y() - saveHeight / 2);
+    const QPoint center = geometry.center();
+    if (window != nullptr) {
+        return QPoint(center.x() - window->width() / 2, center.y() - window->height() / 2);
     } else {
-        last_new_window_pos_.setX(last_new_window_pos_.x() + kWinOffset);
-        last_new_window_pos_.setY(last_new_window_pos_.y() + kWinOffset);
-        if ((last_new_window_pos_.x() + saveWidth >= geometry.width()) ||
-                (last_new_window_pos_.y() + saveHeight >= geometry.height())) {
-            last_new_window_pos_.setX(0);
-            last_new_window_pos_.setY(0);
-        }
-        return last_new_window_pos_;
+        return QPoint(center.x() - saveWidth / 2, center.y() - saveHeight / 2);
     }
 }
 
-void WindowManager::onWindowClosed(const QString &app_name)
+void WindowManager::onWindowClosed()
 {
-    WebWindow *window = windows_.value(app_name);
     SendMsg(QString::number(window->winId()) + "|close");
-    windows_.remove(app_name);
 }
 
-void WindowManager::onWindowShown(WebWindow *window)
+SearchManager *WindowManager::currSearchManager()
 {
-    // Add a placeholder record.
-//    windows_.insert(curr_app_name_, nullptr);
-//    windows_.insert(curr_app_name_, window);
+    if (nullptr == search_manager_) {
+        qDebug() << "start init SearchManager" << endl;
+        search_manager_ = new SearchManager(this);
+        initDBus();
+    }
+
+    return search_manager_;
+}
+
+/***  2020-06-29 18:04:34 wangml ***/
+void WindowManager::onWindowShown()
+{
+    //创建search_manager
+    window->setAppName(curr_app_name_);
+    window->setTitleName(curr_title_name_);
+
     search_manager_ = currSearchManager();
     window->setSearchManager(search_manager_);
     window->setAppName(curr_app_name_);
@@ -267,7 +243,6 @@ void WindowManager::onWindowShown(WebWindow *window)
     if (curr_keyword_.length() > 0) {
         window->setSearchKeyword(curr_keyword_);
     }
-
     SendMsg(QString::number(window->winId()));
 }
 

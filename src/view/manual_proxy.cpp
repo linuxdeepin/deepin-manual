@@ -15,6 +15,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include "view/manual_proxy.h"
+#include "controller/config_manager.h"
+#include "base/consts.h"
 
 namespace dman {
 
@@ -101,6 +103,24 @@ QList<AppInfo> ManualProxy::sortAppList(QMultiMap<qlonglong, AppInfo> map)
 
 ManualProxy::~ManualProxy() {}
 
+QString ManualProxy::getSystemManualDir()
+{
+    QString strMANUAL_DIR = DMAN_MANUAL_DIR;
+    int nType = Dtk::Core::DSysInfo::deepinType();
+    if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
+        strMANUAL_DIR += "/server";
+    } else if (Dtk::Core::DSysInfo::DeepinPersonal == (Dtk::Core::DSysInfo::DeepinType)nType) {
+        strMANUAL_DIR += "/personal";
+    } else {
+        if (Dtk::Core::DSysInfo::isCommunityEdition()) {
+            strMANUAL_DIR += "/community";
+        } else {
+            strMANUAL_DIR += "/professional";
+        }
+    }
+    return strMANUAL_DIR;
+}
+
 QStringList ManualProxy::getSystemManualList()
 {
     const QHash<QString, QString> kAppNameMap = {
@@ -156,10 +176,78 @@ QStringList ManualProxy::getSystemManualList()
 
 void ManualProxy::openExternalLink(const QString &url)
 {
-    qDebug() << "ManualProxy::openExternalLink===========" << url;
+    qDebug() << "ManualProxy::openExternalLink：" << url;
 
     QDesktopServices::openUrl(url);
-}  // namespace dman
+}
+
+/*** 应用图标点击后修改配置文件 2020-06-18 16:30:17 wangml ***/
+void ManualProxy::setApplicationState(const QString &appName)
+{
+    QString strApp;
+    //部分传的是完整路径,部分直接是模块名称
+    if (appName.contains("%2F")) {
+        //以"%2F"分割字符,取倒数第三位为具体模块名
+        QStringList strlist = appName.split("%2F");
+        strApp = strlist.at(strlist.count() - 3);
+    } else {
+        strApp = appName;
+    }
+    qDebug() << "open app---->" << strApp;
+
+    QSettings *setting = ConfigManager::getInstance()->getSettings();
+    setting->beginGroup(CONFIG_APPLIST);
+    if (setting->contains(appName)) {
+        setting->setValue(appName, false);
+        qDebug() << setting->applicationName() << setting->fileName() << ": " << appName << " state=false";
+    } else {
+        qDebug() << setting->fileName() << ": " << strApp << " not find";
+    }
+    setting->endGroup();
+}
+
+/*** 获取已经使用过的应用列表 2020-06-18 16:29:15 wangml ***/
+QStringList ManualProxy::getUsedAppList()
+{
+    QSettings *setting = ConfigManager::getInstance()->getSettings();
+    setting->beginGroup(CONFIG_APPLIST);
+    QStringList list = setting->allKeys();
+    QStringList appList;
+    for (int i = 0; i < list.size(); ++i) {
+        if (!setting->value(list.at(i)).toBool()) {
+            appList.append(list.at(i));
+        } else {
+            continue;
+        }
+    }
+    setting->endGroup();
+    qDebug() << "The application of already used： " << appList;
+    return appList;
+}
+
+void ManualProxy::finishChannel()
+{
+    emit channelInit();
+}
+
+/*** 保存应用列表至配置文件并设置状态 2020-06-18 16:32:52 wangml ***/
+void ManualProxy::saveAppList(const QStringList &list)
+{
+    Q_UNUSED(list)
+    QSettings *setting = ConfigManager::getInstance()->getSettings();
+    setting->beginGroup(CONFIG_APPLIST);
+    for (int i = 0; i < list.size(); ++i) {
+        if (setting->contains(list.at(i))) {
+            continue;
+        } else {
+            setting->setValue(list.at(i), true);
+        }
+    }
+    QStringList l = setting->allKeys();
+    setting->endGroup();
+    qDebug() << "app config  allKeys count : " << l.size();
+
+}
 
 }  // namespace dman
 

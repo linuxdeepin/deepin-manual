@@ -4,14 +4,12 @@ import { render } from 'react-dom';
 import { Router as Router, Switch, Route, Link } from 'react-router-dom';
 import { createMemoryHistory } from 'history'
 
+import m2h from './mdToHtml';
 import Index from './index.jsx';
 import Main from './main.jsx';
 import Search from './search.jsx';
-import sIndex from './searchIndex';
 
 global.hash = ' ';
-global.oldHash = ' ';
-global.linktitle = '';
 global.isMouseClickNav = false;
 global.isMouseScrollArticle = false;
 
@@ -23,6 +21,7 @@ global.lastAction = 'PUSH';
 
 
 global.readFile = (fileName, callback) => {
+  console.log("global.readFile...");
   let xhr = new XMLHttpRequest();
   xhr.open('GET', fileName);
   xhr.onload = () => {
@@ -46,6 +45,7 @@ class App extends React.Component {
     new QWebChannel(qt.webChannelTransport, this.initQt.bind(this));
   }
   initQt(channel) {
+    console.log("channel initqt.....");
     channel.objects.i18n.getSentences(i18n => {
       channel.objects.i18n.getLocale(lang => {
         if (lang === 'en_US' || lang === 'zh_CN') {
@@ -56,6 +56,7 @@ class App extends React.Component {
       });
       global.i18n = i18n;
       global.qtObjects = channel.objects;
+      
       channel.objects.manual.getSystemManualDir(path => {
         global.path = path;
         this.setState({ init: true });
@@ -64,13 +65,18 @@ class App extends React.Component {
       global.qtObjects.titleBar.setBackwardButtonActive(false);
       global.qtObjects.titleBar.setForwardButtonActive(false);
       global.qtObjects.titleBar.backwardButtonClicked.connect(() => {
-        // console.log("backwardButtonClicked history.goBack()", this.context.router.history);
+        console.log("----------backwardButtonClicked----------");
         this.setState({ historyGO: this.state.historyGO - 1 });
+        console.log("==========backwardButtonClicked=========>");
         this.context.router.history.goBack();
+        console.log("back history location: "+this.context.router.history.location.pathname);
       });
       global.qtObjects.titleBar.forwardButtonClicked.connect(() => {
+        console.log("----------forwardButtonClicked----------");
         this.setState({ historyGO: this.state.historyGO + 1 });
+        console.log("==========forwardButtonClicked=========>");
         this.context.router.history.goForward();
+        console.log("forward history location: "+this.context.router.history.location.pathname);
       });
       global.qtObjects.search.mismatch.connect(() =>
         this.setState({ mismatch: true })
@@ -99,13 +105,16 @@ class App extends React.Component {
           document.documentElement.style.setProperty(`--index-span-width`, '130px');
         }
       });
+      console.log("finsh global.qtObjects = channel.objects...");
+      global.qtObjects.manual.finishChannel();
     });
+   
   }
   themeChange(themeType) {
     global.setTheme(themeType);
   }
   onContentResult(appName, titleList, idList, contentList) {
-    // console.log('搜索结果', appName, titleList, idList, contentList);
+    console.log('搜索结果', appName, titleList, idList, contentList);
     let { searchResult } = this.state;
     searchResult.push({
       file: `${global.path}/${appName}/${global.lang}/index.md`,
@@ -120,14 +129,29 @@ class App extends React.Component {
     return { searchResult, mismatch };
   }
   componentWillReceiveProps(nextProps) {
-    console.log("componentWillReceiveProps", this.context.router.history);
+    console.log("app componentWillReceiveProps", this.context.router.history);
+    console.log("this location: "+this.context.router.history.location);
+    var pathName = this.context.router.history.location.pathname;
+    var pathList = pathName.split("/");
+    var cKeyword = '';
+
+    //search页===>/search/:keyword 
+    //open页=====>/open/:file/:hash?/:key? 
+    if (pathList.length == 3)
+    {
+      cKeyword = pathList[2];
+    }
+    else if(pathList.length == 5)
+    {
+      cKeyword = pathList[4];
+    }
+    global.qtObjects.search.getKeyword(cKeyword);
+
     if (this.context.router.history.action == 'PUSH') {
       let entriesLen = this.context.router.history.entries.length;
-      //console.log("entriesLen" + entriesLen);
       if (entriesLen > 1) {
         let entry = this.context.router.history.entries[entriesLen-1];
         if (entry.pathname.toString().indexOf("/search/") != -1) {
-          //console.log(entry.pathname);
           this.setState({ historyGO: entriesLen - 1 });
           return;
         }
@@ -148,27 +172,53 @@ class App extends React.Component {
 
       if (this.context.router.history.canGo(-1 * goNum)) {
         this.context.router.history.go(-1 * goNum);
+        // this.context.router.history.go(0);
       }
     };
-    global.open = (file, hash = '') => {
+
+    //打开某一个文件,并定位到具体hash
+    global.open = (file, hash = '', key='') => {
+      console.log("global.open()....file:"+ file + " hash:" + hash+" key:"+key);
       //h0默认为应用名称，内容为空，所以当打开h0，将其变为h1概述的位置。
-      if (hash == 'h0')
+      if (hash == 'h0' || hash == '')
       {
         hash = 'h1'
       }
       file = encodeURIComponent(file);
       hash = encodeURIComponent(hash);
       global.hash = hash;
-      global.oldHash = hash;
-      let url = `/open/${file}/${hash}`;
-      console.log(url);
+      let url = `/open/${file}/${hash}/${key}`;
+      console.log("global.open: " +url);
       this.context.router.history.push(url);
+
+
+      console.log("router.history--->", this.context.router.history);
+
+      //通知qt对象,修改应用打开状态
+        global.qtObjects.manual.setApplicationState(file);
     };
 
-    global.linkTitle = (title) => {
-      console.log("===============");
-      console.log(title);
-      global.linktitle = title;
+    global.openTitle = (file, title = '') => {
+      console.log("global linkTitle==> file:" + file + " title: "+title);
+      if (title !== '')
+      {
+        let filePath = `${global.path}/${file}/${global.lang}/index.md`;
+        global.readFile(filePath, data => {
+          let { html } = m2h(filePath, data);
+          let d = document.createElement('div');
+          d.innerHTML = html;
+          let hashID = 'h0';
+          if (d.querySelector(`[text="${title}"]`))
+          {
+            hashID = d.querySelector(`[text="${title}"]`).id;
+          }
+          global.open(file,hashID);
+        })
+      }
+      else
+      {
+        global.open(file);
+      }
     };
 
     //获取当前系统活动色
@@ -383,7 +433,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" component={Index} />
             <Route path="/index" component={Index} />
-            <Route path="/open/:file/:hash?" component={Main} />
+            <Route path="/open/:file/:hash?/:key?" component={Main} />
             <Route path="/search/:keyword" component={Search} />
           </Switch>
         )}

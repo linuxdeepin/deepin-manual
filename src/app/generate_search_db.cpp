@@ -30,6 +30,7 @@
 
 #include "base/command.h"
 #include "controller/search_db.h"
+#include "dpinyin.h"
 
 int main(int argc, char **argv)
 {
@@ -101,6 +102,8 @@ int main(int argc, char **argv)
                 const QJsonArray array = document.array();
                 QStringList anchors;
                 QStringList anchorIdList;
+                QStringList anchorInitialList;
+                QStringList anchorSpellList;
                 QStringList contents;
                 bool invalid_entry = false;
                 for (const QJsonValue &value : array) {
@@ -113,15 +116,41 @@ int main(int argc, char **argv)
                     const QJsonArray anchor = value.toArray();
                     const QString id = anchor.at(0).toString();
                     anchorIdList.append(id);
-                    const QString title = anchor.at(1).toString();
-                    anchors.append(title);
+                    const QString title_ch = anchor.at(1).toString();
+                    QString title_us = anchor.at(1).toString();
+                    anchors.append(title_ch);
+                    if (locale == "zh_CN") {
+                        QString str = Dtk::Core::Chinese2Pinyin(title_ch).remove(QRegExp("[1-9]"));
+                        anchorSpellList.append(str);
+                        if (id == "h0") {
+                            QString anchorInitial;
+                            for (int i = 0; i < title_ch.length(); i++) {
+                                anchorInitial.append(Dtk::Core::Chinese2Pinyin(title_ch.at(i)).left(1));
+                            }
+                            anchorInitialList.append(anchorInitial);
+                        } else {
+                            anchorInitialList.append("");
+                        }
+                    } else if (locale == "en_US") {
+                        if (id == "h0") {
+                            QStringList list = title_us.split(" ");
+                            QString anchorInitial;
+                            for (QString str : list) {
+                                anchorInitial.append(str.left(1));
+                            }
+                            anchorInitialList.append(anchorInitial);
+                        } else {
+                            anchorInitialList.append("");
+                        }
+                        anchorSpellList.append(title_us.remove(" "));
+                    }
                     const QString content = anchor.at(2).toString();
                     contents.append(content);
                 }
 
                 if (!invalid_entry) {
-                    qDebug() << "add search entry" << app_name << locale << anchors << endl;
-                    db.addSearchEntry(dbType, app_name, locale, anchors, anchorIdList, contents);
+                    qDebug() << "add search entry" << app_name << locale << anchors  << endl;
+                    db.addSearchEntry(dbType, app_name, locale, anchors, anchorInitialList, anchorSpellList, anchorIdList, contents);
                 }
             }
         }
