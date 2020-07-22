@@ -124,6 +124,7 @@ private:
     QString keyword_;
     bool first_webpage_loaded_ {true};
     bool is_index_loaded_ {false};
+    bool bIsSetKeyword{false};
 
 private slots:
     void onSearchEditFocusOut();
@@ -136,6 +137,7 @@ private slots:
     void onTitleBarEntered();
     void onWebPageLoadFinished(bool ok);
     void onChannelFinish();
+    void onSetKeyword(const QString &keyword);
 
     void onManualSearchByKeyword(const QString &keyword);
     void onACtiveColorChanged(QString, QMap<QString, QVariant>, QStringList);

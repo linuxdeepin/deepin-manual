@@ -36,7 +36,6 @@ class Items extends Component {
         }}
       />
     );
-    console.log("==========>",this.props.idList.length);
 
     for (let i = 0; i < this.props.idList.length; i++) {
 
@@ -119,6 +118,13 @@ export default class SearchPage extends Component {
   constructor(props, context) {
     super(props, context);
   }
+
+  componentWillReceiveProps(nextProps){
+    let key = nextProps.match.params;
+    console.log("search componentWillReceiveProps..key:",key);
+
+  }
+
   componentDidUpdate() {
     ReactDOM.findDOMNode(this)
       .querySelector('#search')

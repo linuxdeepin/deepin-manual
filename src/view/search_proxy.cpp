@@ -21,8 +21,16 @@
 
 #include "controller/search_manager.h"
 
-dman::SearchProxy::SearchProxy(QObject* parent) : QObject(parent) {
+dman::SearchProxy::SearchProxy(QObject *parent) : QObject(parent)
+{
 }
 
-dman::SearchProxy::~SearchProxy() {
+dman::SearchProxy::~SearchProxy()
+{
+}
+
+void dman::SearchProxy::getKeyword(const QString &keyword)
+{
+    qDebug() << "================>" << keyword;
+    emit setKeyword(keyword);
 }

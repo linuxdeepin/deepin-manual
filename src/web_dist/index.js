@@ -178,7 +178,20 @@ var App = function (_React$Component) {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
       console.log("app componentWillReceiveProps", this.context.router.history);
-      // console.log("this location: "+this.context.router.history.location);
+      console.log("this location: " + this.context.router.history.location);
+      var pathName = this.context.router.history.location.pathname;
+      var pathList = pathName.split("/");
+      var cKeyword = '';
+
+      //search页===>/search/:keyword 
+      //open页=====>/open/:file/:hash?/:key? 
+      if (pathList.length == 3) {
+        cKeyword = pathList[2];
+      } else if (pathList.length == 5) {
+        cKeyword = pathList[4];
+      }
+      global.qtObjects.search.getKeyword(cKeyword);
+
       if (this.context.router.history.action == 'PUSH') {
         var entriesLen = this.context.router.history.entries.length;
         if (entriesLen > 1) {
@@ -1755,7 +1768,6 @@ var Items = function (_Component) {
           __html: this.state.title.replace(re, "<span class='highlight'>$&</span>")
         }
       });
-      console.log("==========>", this.props.idList.length);
 
       var _loop = function _loop(i) {
 
@@ -1846,6 +1858,12 @@ var SearchPage = function (_Component2) {
   }
 
   _createClass(SearchPage, [{
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      var key = nextProps.match.params;
+      console.log("search componentWillReceiveProps..key:", key);
+    }
+  }, {
     key: 'componentDidUpdate',
     value: function componentDidUpdate() {
       _reactDom2.default.findDOMNode(this).querySelector('#search').focus();

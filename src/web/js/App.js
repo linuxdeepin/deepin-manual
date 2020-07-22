@@ -113,7 +113,7 @@ class App extends React.Component {
     global.setTheme(themeType);
   }
   onContentResult(appName, titleList, idList, contentList) {
-    // console.log('搜索结果', appName, titleList, idList, contentList);
+    console.log('搜索结果', appName, titleList, idList, contentList);
     let { searchResult } = this.state;
     searchResult.push({
       file: `${global.path}/${appName}/${global.lang}/index.md`,
@@ -129,7 +129,23 @@ class App extends React.Component {
   }
   componentWillReceiveProps(nextProps) {
     console.log("app componentWillReceiveProps", this.context.router.history);
-    // console.log("this location: "+this.context.router.history.location);
+    console.log("this location: "+this.context.router.history.location);
+    var pathName = this.context.router.history.location.pathname;
+    var pathList = pathName.split("/");
+    var cKeyword = '';
+
+    //search页===>/search/:keyword 
+    //open页=====>/open/:file/:hash?/:key? 
+    if (pathList.length == 3)
+    {
+      cKeyword = pathList[2];
+    }
+    else if(pathList.length == 5)
+    {
+      cKeyword = pathList[4];
+    }
+    global.qtObjects.search.getKeyword(cKeyword);
+
     if (this.context.router.history.action == 'PUSH') {
       let entriesLen = this.context.router.history.entries.length;
       if (entriesLen > 1) {

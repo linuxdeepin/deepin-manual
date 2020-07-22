@@ -312,6 +312,7 @@ void WebWindow::initWebView()
     connect(web_view_->page(), &QWebEnginePage::loadFinished, this, &WebWindow::onWebPageLoadFinished);
     connect(manual_proxy_, &ManualProxy::channelInit, this, &WebWindow::onChannelFinish);
     connect(manual_proxy_, &ManualProxy::WidgetLower, this, &WebWindow::lower);
+    connect(search_proxy_, &SearchProxy::setKeyword, this, &WebWindow::onSetKeyword);
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
             theme_proxy_, &ThemeProxy::slot_ThemeChange);
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
@@ -512,7 +513,9 @@ void WebWindow::onSearchResultClicked(const SearchAnchorResult &result)
 
 void WebWindow::onSearchTextChanged(const QString &text)
 {
-    if (text.size() >= 1) {
+    if (bIsSetKeyword) {
+        bIsSetKeyword = false;
+    } else if (text.size() >= 1) {
         search_timer_.stop();
         search_timer_.start(kSearchDelay);
     } else {
@@ -541,9 +544,10 @@ void WebWindow::onTitleBarEntered()
     const QString text = textTemp.remove('\n').remove('\r').remove("\r\n");
     if (text.size() >= 1) {
         completion_window_->onEnterPressed();
-    } else if (textTemp.isEmpty()) {
-        m_backButton->click();
     }
+//    else if (textTemp.isEmpty()) {
+//        m_backButton->click();
+//    }
 }
 
 
@@ -656,6 +660,26 @@ void WebWindow::onChannelFinish()
                                                         fontInfo.pixelSize());
     }
     web_view_->show();
+}
+
+/**
+ * @brief WebWindow::onSetKeyword JS根据页面关键字回调设置搜索框
+ * @param keyword 关键字
+ */
+void WebWindow::onSetKeyword(const QString &keyword)
+{
+    bIsSetKeyword = true;
+    QTimer::singleShot(40, [ = ]() {
+        bIsSetKeyword = false;
+    });
+
+    if (search_edit_) {
+        if (keyword.isEmpty()) {
+            search_edit_->clearEdit();
+        } else {
+            search_edit_->setText(keyword);
+        }
+    }
 }
 
 void WebWindow::onSearchAnchorResult(const QString &keyword, const SearchAnchorResultList &result)
