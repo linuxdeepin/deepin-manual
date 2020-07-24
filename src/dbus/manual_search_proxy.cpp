@@ -95,6 +95,19 @@ void ManualSearchProxy::RecvMsg(const QString &data)
 void ManualSearchProxy::OnNewWindowOpen(const QString &data)
 {
     qDebug() << "Search data is: " << data;
+    if (m_bWindowState) {
+        qDebug() << "Window:process" << m_sApplicationPid;
+        quintptr winId = m_sApplicationPid.toULong();
+        // new interface use applicationName as id
+        QDBusInterface manual("com.deepin.dde.daemon.Dock", "/com/deepin/dde/daemon/Dock",
+                              "com.deepin.dde.daemon.Dock");
+        QDBusReply<void> reply = manual.call("ActivateWindow", winId);
+        if (reply.isValid()) {
+            qDebug() << "call com.deepin.dde.daemon.Dock success";
+            return;
+        }
+        qDebug() << "call com.deepin.dde.daemon.Dock failed" << reply.error();
+    }
 }
 
 bool ManualSearchProxy::ManualExists(const QString &app_name)

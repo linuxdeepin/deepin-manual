@@ -39,10 +39,11 @@ ArgumentParser::~ArgumentParser() {}
 
 /**
  * @brief ArgumentParser::parseArguments 解析帮助手册启动参数,同时注册对外dbus接口
- * @return
+ * @return false: 注册dbus失败,已存在dman,关闭当前进程.  true:注册dbus成功,同时获取当前模块参数.
  */
 bool ArgumentParser::parseArguments()
 {
+
     QCommandLineParser parser;
     parser.addHelpOption();
     parser.addVersionOption();
@@ -54,25 +55,20 @@ bool ArgumentParser::parseArguments()
     ManualOpenProxy *proxy = new ManualOpenProxy(this);
     connect(proxy, &ManualOpenProxy::openManualRequested, this,
             &ArgumentParser::onOpenAppRequested);
-    connect(proxy, &ManualOpenProxy::searchRequested, this, &ArgumentParser::onSearchRequested);
+    connect(proxy, &ManualOpenProxy::searchRequested, this,
+            &ArgumentParser::onSearchRequested);
 
     ManualOpenAdapter *adapter = new ManualOpenAdapter(proxy);
     Q_UNUSED(adapter);
 
+    //注册Open服务, 如果注册失败,则说明已存在一个dman.
     if (!conn.registerService(kManualOpenService) ||
             !conn.registerObject(kManualOpenIface, proxy)) {
         qDebug() << "Failed to register dbus";
         // Open appName list with dbus interface.
         const QStringList position_args = parser.positionalArguments();
-        qDebug() << "position_args:" << position_args;
-
         if (!position_args.isEmpty()) {
-            qDebug() << "position_args is not empty";
-
-            if (position_args.size() > 1) {
-                qDebug() << "position_args.size() > 1:" << position_args.size();
-            }
-
+            qDebug() << Q_FUNC_INFO << "position_args is not empty";
             ManualOpenInterface *iface = new ManualOpenInterface(
                 kManualOpenService, kManualOpenIface, QDBusConnection::sessionBus(), this);
 
@@ -82,56 +78,57 @@ bool ArgumentParser::parseArguments()
                 for (const QString &arg : position_args) {
                     iface->Open(arg);
                 }
-            } else {
-                // It may fail to register dbus service in root session.
-                // Create new instance.
-                for (const QString &manual : position_args) {
-                    manuals_.append(manual);
-                }
-                return true;
             }
+
+
+            // It may fail to register dbus service in root session.
+            // Create new instance.
+//            else {
+//                for (const QString &manual : position_args) {
+//                    manuals_.append(manual);
+//                }
+//                return true;
+//            }
         } else {
-            qDebug() << "position_args is empty";
+            qDebug() << Q_FUNC_INFO << "position_args is empty";
+            emit newAppOpen();
+//            QString argName = qApp->arguments().value(0);
+//            qDebug() << "argName:" << argName;
 
-            QString argName = qApp->arguments().value(0);
-            qDebug() << "argName:" << argName;
-
-            if (argName == QString(kAppProcessName) ||
-                    argName.endsWith("/" + QString(kAppProcessName))) {
-                qDebug() << "emit onNewAppOpen";
-                emit onNewAppOpen();
-            }
+//            if (argName == QString(kAppProcessName) ||
+//                    argName.endsWith("/" + QString(kAppProcessName))) {
+//                qDebug() << "emit onNewAppOpen";
+//                emit newAppOpen();
+//            }
         }
-
         return false;
     } else {
         qDebug() << "Register dbus service successfully";
         const QStringList position_args = parser.positionalArguments();
+        // 不带参为首页,带参跳转到具体模块.
         if (position_args.isEmpty()) {
-            // Open index page if not in dbus daemon mode.
-            if (!parser.isSet("dbus")) {
-                manuals_.append("");
+            //如果通过dbus打开dman, 则parser.isSet("dbus")为true
+            if (parser.isSet("dbus")) {
+                bIsDbus = true;
             }
         } else {
-            // Only parse positional arguments.
-            for (const QString &manual : position_args) {
-                manuals_.append(manual);
-            }
+//            for (const QString &manual : position_args) {
+//                manuals_.append(manual);
+//            }
+            curManual = position_args.at(0);
         }
-
         return true;
     }
 }
 
 /**
- * @brief ArgumentParser::openManualsDelay
+ * @brief ArgumentParser::openManualsDelay 发送请求信号
  */
 void ArgumentParser::openManualsDelay()
 {
-    qDebug() << "call openManualsDelay";
-    for (QString &manual : manuals_) {
-        qDebug() << Q_FUNC_INFO << manual;
-        this->onOpenAppRequested(manual);
+    qDebug() << Q_FUNC_INFO << curManual;
+    if (!bIsDbus) {
+        this->onOpenAppRequested(curManual);
     }
 }
 

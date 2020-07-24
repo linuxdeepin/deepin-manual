@@ -29,23 +29,11 @@
 #include <QDesktopWidget>
 #include <QFile>
 
-namespace dman {
-
-namespace {
-
+#define WM_SENDER_NAME "Sender"
 const int kWinMinWidth = 800;
 const int kWinMinHeight = 600;
-const int kWinOffset = 30;
 
-const char kEnableDomStorageFlush[] = "--enable-aggressive-domstorage-flushing";
-const char kDisableGpu[] = "--disable-gpu";
-const char kEnableLogging[] = "--enable-logging";
-const char kLogLevel[] = "--log-level";
-
-}  // namespace
-
-#define WM_SENDER_NAME "Sender"
-
+namespace dman {
 WindowManager::WindowManager(QObject *parent)
     : QObject(parent)
     , search_manager_(nullptr)
@@ -57,15 +45,6 @@ WindowManager::WindowManager(QObject *parent)
 
 WindowManager::~WindowManager()
 {
-//    QHashIterator<QString, WebWindow *> iterator(windows_);
-
-//    while (iterator.hasNext()) {
-//        iterator.next();
-//        WebWindow *web = iterator.value();
-//        delete web;
-//        web = nullptr;
-//    }
-
 }
 
 void WindowManager::initDBus()
@@ -87,6 +66,37 @@ void WindowManager::initDBus()
     }
 }
 
+void WindowManager::initWebWindow()
+{
+    window = new WebWindow;
+    connect(window, &WebWindow::closed, this, &WindowManager::onWindowClosed);
+    connect(window, &WebWindow::shown, this, &WindowManager::onWindowShown);
+    moveWindow(window);
+    window->show();
+    window->activateWindow();
+}
+
+void WindowManager::activeOrInitWindow()
+{
+    qDebug() << Q_FUNC_INFO;
+    // 单页面该锁可能无用......
+    QMutexLocker locker(&_mutex);
+    /*** 只要有窗口就不再创建新窗口 2020-06-22 16:57:50 wangml ***/
+    if (window != nullptr) {
+        this->moveWindow(window);
+        window->show();
+        window->raise();
+        window->activateWindow();
+        window->openjsPage(curr_app_name_, curr_title_name_);
+        return;
+    }
+    initWebWindow();
+}
+
+/**
+ * @brief WindowManager::SendMsg 通过dbus接口来实现前后端通信,
+ * @param msg
+ */
 void WindowManager::SendMsg(const QString &msg)
 {
     QDBusConnection dbusConn =
@@ -101,9 +111,45 @@ void WindowManager::SendMsg(const QString &msg)
     //将进程号+窗口WinId拼接后发给dman-search后台进程
     bool isSuccess = dbusConn.send(dbusMsg);
     if (isSuccess) {
-        qDebug() << "send success";
+        qDebug() << Q_FUNC_INFO << " sendMsg success";
     } else {
-        qDebug() << "send failed";
+        qDebug() << Q_FUNC_INFO << "sendMsg failed";
+    }
+}
+
+void WindowManager::moveWindow(WebWindow *window)
+{
+    window->setMinimumSize(kWinMinWidth, kWinMinHeight);
+    const QPoint pos = this->newWindowPosition();
+    window->move(pos);
+}
+
+/**
+ * @brief WindowManager::newWindowPosition UI居中显示
+ * @return
+ */
+QPoint WindowManager::newWindowPosition()
+{
+    QSettings *setting = ConfigManager::getInstance()->getSettings();
+    setting->beginGroup(CONFIG_WINDOW_INFO);
+    int saveWidth = setting->value(CONFIG_WINDOW_WIDTH).toInt();
+    int saveHeight = setting->value(CONFIG_WINDOW_HEIGHT).toInt();
+    setting->endGroup();
+    // 如果配置文件没有数据
+    if (saveWidth == 0 || saveHeight == 0) {
+        saveWidth = 1024;
+        saveHeight = 680;
+    }
+
+    QDesktopWidget *desktop = QApplication::desktop();
+    Q_ASSERT(desktop != nullptr);
+    /*** 2020-06-30 09:21:36 wangml ***/
+    const QRect geometry = desktop->availableGeometry(QCursor::pos());
+    const QPoint center = geometry.center();
+    if (window != nullptr) {
+        return QPoint(center.x() - window->width() / 2, center.y() - window->height() / 2);
+    } else {
+        return QPoint(center.x() - saveWidth / 2, center.y() - saveHeight / 2);
     }
 }
 
@@ -129,43 +175,13 @@ void WindowManager::onNewAppOpen()
     }
 }
 
-void WindowManager::initWebWindow()
-{
-    /*** 2020-06-22 17:04:18 wangml ***/
-    window = new WebWindow;
-    connect(window, &WebWindow::closed, this, &WindowManager::onWindowClosed);
-    connect(window, &WebWindow::shown, this, &WindowManager::onWindowShown);
-    //windows_.insert(curr_app_name_, window);
-    moveWindow(window);
-    window->show();
-    window->activateWindow();
-}
-
-void WindowManager::activeOrInitWindow(const QString &app_name)
-{
-    qDebug() << Q_FUNC_INFO << app_name;
-    QMutexLocker locker(&_mutex);
-    /*** 只要有窗口就不再创建新窗口 2020-06-22 16:57:50 wangml ***/
-    if (window != nullptr) {
-        this->moveWindow(window);
-        window->show();
-        window->raise();
-        window->activateWindow();
-        window->openjsPage(app_name, curr_title_name_);
-        return;
-    }
-    initWebWindow();
-}
-
 /*** F1快捷启动　2020-06-28 18:07:49 wangml ***/
 void WindowManager::openManual(const QString &app_name, const QString &title_name)
 {
-
     curr_app_name_ = app_name;
     curr_keyword_ = "";
     curr_title_name_ = title_name;
-    activeOrInitWindow(app_name);
-    qDebug() << Q_FUNC_INFO << app_name << curr_keyword_;
+    activeOrInitWindow();
 }
 
 
@@ -174,68 +190,26 @@ void WindowManager::openManualWithSearch(const QString &app_name, const QString 
 {
     curr_app_name_ = app_name;
     curr_keyword_ = keyword;
-    activeOrInitWindow(app_name);
+    activeOrInitWindow();
     qDebug() << Q_FUNC_INFO << app_name << curr_keyword_;
 }
 
-void WindowManager::moveWindow(WebWindow *window)
-{
-    window->setMinimumSize(kWinMinWidth, kWinMinHeight);
-    const QPoint pos = this->newWindowPosition();
-    window->move(pos);
-}
-
-QPoint WindowManager::newWindowPosition()
-{
-    // If there is no window created, move new window to center of screen.
-    // Else stack window one after another.
-    QSettings *setting = ConfigManager::getInstance()->getSettings();
-    setting->beginGroup(CONFIG_WINDOW_INFO);
-    int saveWidth = setting->value(CONFIG_WINDOW_WIDTH).toInt();
-    int saveHeight = setting->value(CONFIG_WINDOW_HEIGHT).toInt();
-    setting->endGroup();
-    // 如果配置文件没有数据
-    if (saveWidth == 0 || saveHeight == 0) {
-        saveWidth = 1024;
-        saveHeight = 680;
-    }
-
-    QDesktopWidget *desktop = QApplication::desktop();
-    Q_ASSERT(desktop != nullptr);
-    /*** 2020-06-30 09:21:36 wangml ***/
-    const QRect geometry = desktop->availableGeometry(QCursor::pos());
-    const QPoint center = geometry.center();
-    if (window != nullptr) {
-        return QPoint(center.x() - window->width() / 2, center.y() - window->height() / 2);
-    } else {
-        return QPoint(center.x() - saveWidth / 2, center.y() - saveHeight / 2);
-    }
-}
 
 void WindowManager::onWindowClosed()
 {
     SendMsg(QString::number(window->winId()) + "|close");
 }
 
-SearchManager *WindowManager::currSearchManager()
-{
-    if (nullptr == search_manager_) {
-        qDebug() << "start init SearchManager" << endl;
-        search_manager_ = new SearchManager(this);
-        initDBus();
-    }
-
-    return search_manager_;
-}
-
-/***  2020-06-29 18:04:34 wangml ***/
+/**
+ * @brief WindowManager::onWindowShown web页面加载完后触发槽
+ */
 void WindowManager::onWindowShown()
 {
     //创建search_manager
     window->setAppName(curr_app_name_);
     window->setTitleName(curr_title_name_);
-
-    search_manager_ = currSearchManager();
+    search_manager_ = new SearchManager(this);
+    initDBus();
     window->setSearchManager(search_manager_);
     window->setAppName(curr_app_name_);
     window->setTitleName(curr_title_name_);

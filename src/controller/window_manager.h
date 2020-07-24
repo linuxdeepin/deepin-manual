@@ -29,8 +29,7 @@ namespace dman {
 class SearchManager;
 class WebWindow;
 
-// Manages visibility and lifecycle of web windows.
-// Current process will exit only if all of these windows are closed.
+// 窗口管理类
 class WindowManager : public QObject
 {
     Q_OBJECT
@@ -38,43 +37,33 @@ public:
     explicit WindowManager(QObject *parent = nullptr);
     ~WindowManager() override;
 
-    void moveWindow(WebWindow *window);
-    SearchManager *currSearchManager();
-    void SendMsg(const QString &msg);
-
 private:
-    QPoint newWindowPosition();
     void initDBus();
     void initWebWindow();
-    void activeExistingWindow();
-    void activeOrInitWindow(const QString &app_name);
+    void activeOrInitWindow();
+    void SendMsg(const QString &msg);
+    void moveWindow(WebWindow *window);
+    QPoint newWindowPosition();
 
     SearchManager *search_manager_ {nullptr};
     QString curr_app_name_;
     QString curr_keyword_;
     QString curr_title_name_;
     QMutex _mutex;
-    QPoint last_new_window_pos_;
-
-    /*** 2020-06-22 17:03:25 wangml ***/
     WebWindow *window = nullptr;
-
-private slots:
-    /**
-     * Remove window from window list.
-     * @param app_name
-     */
-    void onWindowClosed();
-    void onWindowShown();
 
 public slots:
     /**
      * Open manual page of application with name |app_name|.
      * If manual of that app has already been presented, just raise to front.
      */
+    void onNewAppOpen();
     void openManual(const QString &app_name, const QString &title_name);
     void openManualWithSearch(const QString &app_name, const QString &keyword);
-    void onNewAppOpen();
+
+    //web-window槽
+    void onWindowClosed();
+    void onWindowShown();
 };
 
 }  // namespace dman
