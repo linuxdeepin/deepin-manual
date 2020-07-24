@@ -10,11 +10,23 @@ export default class Main extends Component {
     super(props);
     this.state = {
       init: false,
-      bTest:true
+      bTest:true,
+      isShowHelperSupport:false
     };
     let { file, hash ,key} = this.props.match.params;
     this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null, key);
     var showFloatTimer=null;
+    global.qtObjects.manual.hasSelperSupport(bFlag =>
+          {
+            if(bFlag) {
+              console.log("bFlag ---:" + bFlag);
+              this.setState({ 
+                isShowHelperSupport:false
+              });
+            }
+          }
+      );
+
   }
   init(file, hash,key='') {
     console.log("main init==>file:",file," hash:",hash," key:",key);
@@ -114,6 +126,15 @@ export default class Main extends Component {
   render() {
     console.log("main render....hash:",this.state.hash);
     console.log("main render....hList:",this.state.hlist);
+    let support = null;
+    if (this.state.isShowHelperSupport) {
+      support = <div className="support-div" onClick={() =>{console.log("support click...")}}><img className="support" src="./pic.svg"></img></div>
+      console.log("div support");
+    }else{
+      support = <div></div>
+      console.log("not div support");
+    }
+
     return (
       this.state.init && (
         <div id="main">
@@ -133,7 +154,7 @@ export default class Main extends Component {
             setHash={this.setHash.bind(this)}
             setScroll={this.setScroll.bind(this)}
           />
-          <div className="support-div" onClick={() =>{console.log("support click...")}}><img className="support" src="./pic.svg"></img></div>
+          {support}
           <div className="tooltip-wp"></div>
         </div>
       )

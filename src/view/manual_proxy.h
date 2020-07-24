@@ -26,12 +26,8 @@
 #include <QDBusConnection>
 #include <QDesktopServices>
 
-#include "dbus/dbus_consts.h"
-#include "dbus/launcher_interface.h"
-
 #include <QtAlgorithms>
 #include <qalgorithms.h>
-#include <QMultiMap>
 
 class LauncherInterface;
 
@@ -42,7 +38,6 @@ class ManualProxy : public QObject
     Q_OBJECT
 public:
     explicit ManualProxy(QObject *parent = nullptr);
-    QList<AppInfo> sortAppList(QMultiMap<qlonglong, AppInfo> map);
     ~ManualProxy() override;
 signals:
     void WidgetLower();
@@ -59,6 +54,7 @@ public slots:
     void openExternalLink(const QString &url);
     void setApplicationState(const QString &appName);
     QStringList getUsedAppList();
+    bool hasSelperSupport();
 
     void finishChannel();
 
@@ -66,7 +62,6 @@ private:
     void saveAppList(const QStringList &list);
 
 private:
-    LauncherInterface *launcher_interface_ = nullptr;
     QStringList app_list_;
 };
 

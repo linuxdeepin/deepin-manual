@@ -49,6 +49,7 @@
 #include <DPlatformWindowHandle>
 #include <DTitlebar>
 #include <QStyleOptionViewItem>
+#include "base/utils.h"
 
 DWIDGET_USE_NAMESPACE
 
@@ -68,6 +69,8 @@ WebWindow::WebWindow(QWidget *parent)
     , keyword_("")
     , first_webpage_loaded_(true)
 {
+
+
     // 使用 redirectContent 模式，用于内嵌 x11 窗口时能有正确的圆角效果
     Dtk::Widget::DPlatformWindowHandle::enableDXcbForWindow(this, true);
     search_timer_.setSingleShot(true);
@@ -269,12 +272,13 @@ void WebWindow::initUI()
     search_edit_->setPlaceHolder(QObject::tr("Search"));
     search_edit_->setFocus();
 
-
-    DMenu *pMenu = new DMenu;
-    QAction *pHelpSupport = new QAction(tr("UOS Support"));
-    pMenu->addAction(pHelpSupport);
-    this->titlebar()->setMenu(pMenu);
-
+    if (Utils::hasSelperSupport()) {
+        DMenu *pMenu = new DMenu;
+        QAction *pHelpSupport = new QAction(QObject::tr("Support"));
+        pMenu->addAction(pHelpSupport);
+        //this->titlebar()->setMenu(pMenu);
+        connect(pHelpSupport, &QAction::triggered, this, &WebWindow::slot_HelpSupportTriggered);
+    }
 
     this->titlebar()->addWidget(buttonFrame, Qt::AlignLeft);
     this->titlebar()->addWidget(search_edit_, Qt::AlignCenter);
@@ -290,7 +294,6 @@ void WebWindow::initUI()
     connect(m_forwardButton, &DButtonBoxButton::clicked, title_bar_proxy_,
             &TitleBarProxy::forwardButtonClicked);
     connect(title_bar_proxy_, &TitleBarProxy::buttonShowSignal, this, &WebWindow::slot_ButtonShow);
-    connect(pHelpSupport, &QAction::triggered, this, &WebWindow::slot_HelpSupportTriggered);
 
     //获取窗口上次保存尺寸,加载上次保存尺寸.
     QSettings *setting = ConfigManager::getInstance()->getSettings();
@@ -324,6 +327,7 @@ void WebWindow::initWebView()
     settings_proxy_ = new SettingsProxy(this);
     i18n_proxy = new I18nProxy(this);
     manual_proxy_ = new ManualProxy(this);
+
     //将当前存在的applist传入到数据库管理类中.
     if (search_manager_) {
         QStringList strlist = manual_proxy_->getSystemManualList();

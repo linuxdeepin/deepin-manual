@@ -34,9 +34,34 @@
 #include <QStandardPaths>
 #include <QTextCodec>
 #include <QUrl>
+#include <QDebug>
+
+#include <DSysInfo>
 
 QHash<QString, QPixmap> Utils::m_imgCacheHash;
 QHash<QString, QString> Utils::m_fontNameCache;
+
+const char kLauncherService[] = "com.deepin.dde.daemon.Launcher";
+const char kLauncherIface[] = "/com/deepin/dde/daemon/Launcher";
+
+namespace  {
+/**
+ * Read manual id from app desktop file.
+ * @param desktop_file Absolute path to app desktop file.
+ * @return Returns manual id if exists or else returns empty string.
+ */
+QString GetDeepinManualId(const QString &desktop_file)
+{
+    QSettings settings(desktop_file, QSettings::IniFormat);
+    settings.beginGroup("Desktop Entry");
+    const QVariant value = settings.value("X-Deepin-ManualID");
+    if (value.isValid()) {
+        return value.toString();
+    }
+    return "";
+}
+
+}
 
 //标题映射表
 const int langCount = 3;
@@ -62,6 +87,38 @@ QString languageArr[][langCount] = {
     {"License activator", "授权管理", "Authorization Management"},
     {"commoninfo", "通用设置", "General Settings"}
 };
+
+struct ReplyStruct {
+    QString m_desktop;
+    QString m_name;
+    QString m_key;
+    QString m_iconKey;
+
+    qint64 m_categoryId;
+    qint64 m_installedTime;
+};
+Q_DECLARE_METATYPE(ReplyStruct)
+
+QDBusArgument &operator<<(QDBusArgument &argument, const ReplyStruct &info)
+{
+    argument.beginStructure();
+    argument << info.m_desktop << info.m_name << info.m_key << info.m_iconKey;
+    argument << info.m_categoryId << info.m_installedTime;
+    argument.endStructure();
+    return argument;
+}
+
+// Retrieve the MyStructure data from the D-Bus argument
+const QDBusArgument &operator>>(const QDBusArgument &argument, ReplyStruct &info)
+{
+    argument.beginStructure();
+    argument >> info.m_desktop >> info.m_name >> info.m_key >> info.m_iconKey;
+    argument >> info.m_categoryId >> info.m_installedTime;
+    argument.endStructure();
+
+    return argument;
+}
+
 
 Utils::Utils(QObject *parent)
     : QObject(parent)
@@ -225,6 +282,198 @@ QString Utils::translateTitle(const QString &titleUS)
         }
     }
     return strRet;
+}
+
+QList<AppInfo> Utils::launcherInterface()
+{
+    qRegisterMetaType<ReplyStruct>("ReplyStruct");
+    qDBusRegisterMetaType<ReplyStruct>();
+    qRegisterMetaType<QList<ReplyStruct>>("a");
+    qDBusRegisterMetaType<QList<ReplyStruct>>();
+
+    QDBusInterface iface(kLauncherService,
+                         kLauncherIface,
+                         kLauncherService,
+                         QDBusConnection::sessionBus());
+    if (!iface.isValid()) {
+        qDebug() << qPrintable(QDBusConnection::sessionBus().lastError().message());
+        exit(1);
+    }
+
+    QDBusReply<QList<ReplyStruct>> reply = iface.callWithArgumentList(QDBus::CallMode::AutoDetect, "GetAllItemInfos", QVariantList());
+    qDebug() << reply.error().message();
+    QList<AppInfo> applist;
+    if (reply.isValid()) {
+        QList<ReplyStruct> list;
+        list  = reply.value();
+
+        //    qDebug() << "dbusMsg ---- : " << list;
+        for (int var = 0; var < list.size(); ++var) {
+            AppInfo app;
+            app.key = list.at(var).m_key;
+            app.name = list.at(var).m_name;
+            app.desktop = list.at(var).m_desktop;
+            app.category_id = list.at(var).m_categoryId;
+            app.installed_time = list.at(var).m_installedTime;
+            applist.append(app);
+            //qDebug() << "dbusMsg ---- : " << var << list.at(var).m_name;
+        }
+        qDebug() << applist.size() << "applist " <<  applist;
+        return applist;
+    } else {
+        qDebug() << "GetAllItemInfos fail! " << reply.error().message();
+        return applist;
+    }
+}
+
+/**
+ * @brief Utils::getSystemManualList
+ * @return
+ * @note 获取系统应用列表
+ */
+QStringList Utils::getSystemManualList()
+{
+
+    const QHash<QString, QString> kAppNameMap = {
+        {"org.deepin.flatdeb.deepin-calendar", "dde-calendar"},
+        {"org.deepin.flatdeb.deepin-music", "deepin-music"},
+        {"org.deepin.flatdeb.deepin-screenshot", "deepin-screenshot"},
+        {"org.deepin.flatdeb.deepin-voice-recorder", "deepin-voice-recorder"},
+        {"deepin-cloud-print-configurator", "deepin-cloud-print"},
+        {"org.deepin.flatdeb.deepin-image-viewer", "deepin-image-viewer"},
+        {"deepin-cloud-scan-configurator", "deepin-cloud-scan"},
+        {"org.deepin.flatdeb.deepin-movie", "deepin-movie"},
+        {"org.deepin.flatdeb.deepin-screen-recorder", "deepin-screen-recorder"},
+        {"org.deepin.flatdeb.deepin-calculator", "deepin-calculator"},
+        {"com.deepin.editor", "deepin-editor"},
+        {"org.deepin.scaner", "scaner"},
+    };
+
+
+
+    QStringList app_list_;
+    const AppInfoList list = launcherInterface();
+    const QStringList dir_entry = QDir(getSystemManualDir()).entryList();
+    //qDebug() << __func__ << "get all item-->" << list.size() << list;
+
+    QMultiMap<qlonglong, AppInfo> appMap;
+    for (int var = 0; var < list.size(); ++var) {
+        appMap.insert(list.at(var).installed_time, list.at(var));
+    }
+    //Installation time phase at the same time, sorted by name
+    QList<AppInfo> listApp = sortAppList(appMap);
+
+    for (int i = 0; i < listApp.size(); ++i) {
+        const QString app_name = kAppNameMap.value(listApp.at(i).key, listApp.at(i).key);
+        if ((dir_entry.indexOf(app_name) != -1) && app_list_.indexOf(app_name) == -1) {
+            app_list_.append(app_name);
+        }
+        const QString deepin_app_id = GetDeepinManualId(listApp.at(i).desktop);
+        if (deepin_app_id == app_name && app_list_.indexOf(app_name) == -1) {
+            app_list_.append(app_name);
+        }
+    }
+    // Add "dde" by hand, as it has no desktop file.
+    if (dir_entry.contains("dde")) {
+        app_list_.append("dde");
+    }
+    // Remove youdao-dict if current locale is not Simplified Chinese.
+    if (!QLocale().name().startsWith("zh")) {
+        app_list_.removeAll("youdao-dict");
+    }
+
+
+    qDebug() << "exist app list====:" << app_list_ << ", count:" << app_list_.size();
+    return app_list_;
+
+
+}
+
+/**
+ * @brief Utils::getSystemManualDir
+ * @return
+ * @note　获取系统版本信息
+ */
+QString Utils::getSystemManualDir()
+{
+    QString strMANUAL_DIR = DMAN_MANUAL_DIR;
+    int nType = Dtk::Core::DSysInfo::deepinType();
+    if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
+        strMANUAL_DIR += "/server";
+    } else if (Dtk::Core::DSysInfo::DeepinPersonal == (Dtk::Core::DSysInfo::DeepinType)nType) {
+        strMANUAL_DIR += "/personal";
+    } else {
+        if (Dtk::Core::DSysInfo::isCommunityEdition()) {
+            strMANUAL_DIR += "/community";
+        } else {
+            strMANUAL_DIR += "/professional";
+        }
+    }
+    return strMANUAL_DIR;
+}
+
+QList<AppInfo> Utils::sortAppList(QMultiMap<qlonglong, AppInfo> map)
+{
+    QMapIterator<qlonglong, AppInfo> it(map);
+    QList<AppInfo> listEnd;
+    QList<AppInfo> listtmp;
+    qlonglong longlongtmp = 0;
+    while (it.hasNext()) {
+        it.next();
+        if (it.value().name == map.first().name) {
+            listtmp.append(it.value());
+            longlongtmp = it.key();
+            continue;
+        }
+        if (it.key() == longlongtmp) {
+            listtmp.append(it.value());
+        } else if (listtmp.size() != 0 && it.key() != longlongtmp) {
+            AppInfo m;
+            for (int i = 0; i < listtmp.size(); ++i) {
+                for (int j = 0; j < listtmp.size() - 1; ++j) {
+                    if (listtmp.at(j).name > listtmp.at(j + 1).name) {
+                        m = listtmp.at(j);
+                        listtmp[j] = listtmp[j + 1];
+                        listtmp[j + 1] = m;
+                    }
+                }
+            }
+            listEnd.append(listtmp);
+            listtmp.clear();
+            longlongtmp = it.key();
+            listtmp.append(it.value());
+        }
+    }
+    if (!listtmp.isEmpty()) {
+        QList<AppInfo> temp;
+        {
+            AppInfo m;
+            for (int i = 0; i < listtmp.size(); ++i) {
+                for (int j = 0; j < listtmp.size() - 1; ++j) {
+                    if (listtmp.at(j).name > listtmp.at(j + 1).name) {
+                        m = listtmp.at(j);
+                        listtmp[j] = listtmp[j + 1];
+                        listtmp[j + 1] = m;
+                    }
+                }
+            }
+            temp.append(listtmp);
+        }
+        listEnd.append(temp);
+    }
+    return listEnd;
+}
+
+bool Utils::hasSelperSupport()
+{
+    int nType = Dtk::Core::DSysInfo::deepinType();
+    if (Dtk::Core::DSysInfo::DeepinProfessional == (Dtk::Core::DSysInfo::DeepinType)nType) {
+        const QStringList list = getSystemManualList();
+        if (list.contains("uos-service-support")) {
+            return  true;
+        }
+    }
+    return false;
 }
 
 ExApplicationHelper *ExApplicationHelper::instance()

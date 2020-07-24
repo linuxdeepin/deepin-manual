@@ -2,12 +2,12 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/app/dman.cpp" line="62"/>
+        <location filename="../src/app/dman.cpp" line="58"/>
         <source>Manual</source>
         <translation>Manual</translation>
     </message>
     <message>
-        <location filename="../src/app/dman.cpp" line="64"/>
+        <location filename="../src/app/dman.cpp" line="60"/>
         <source>Manual is designed to help users learn the operating system and its applications, providing specific instructions and function descriptions.</source>
         <translation>Manual er designet til at hjælpe brugere med at lære styresystemet og dets programmer, ved at levere bestemte instruktioner og beskrivelser af funktioner.</translation>
     </message>
@@ -42,18 +42,23 @@
         <translation>resultater</translation>
     </message>
     <message>
-        <location filename="../src/view/web_event_delegate.cpp" line="63"/>
-        <source>Copy</source>
-        <translation>Kopiér</translation>
-    </message>
-    <message>
-        <location filename="../src/view/web_window.cpp" line="219"/>
+        <location filename="../src/view/web_window.cpp" line="272"/>
         <source>Search</source>
         <translation>Søg</translation>
     </message>
     <message>
-        <location filename="../src/view/widget/search_completion_window.cpp" line="148"/>
-        <location filename="../src/view/widget/search_completion_window.cpp" line="218"/>
+        <location filename="../src/view/web_window.cpp" line="277"/>
+        <source>Support</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/view/web_window.cpp" line="497"/>
+        <source>Copy</source>
+        <translation>Kopiér</translation>
+    </message>
+    <message>
+        <location filename="../src/view/widget/search_completion_window.cpp" line="153"/>
+        <location filename="../src/view/widget/search_completion_window.cpp" line="223"/>
         <source>Search for &quot;%1&quot; in the full text</source>
         <translation>Søg efter &quot;%1&quot; i den fulde tekst</translation>
     </message>
@@ -61,17 +66,12 @@
 <context>
     <name>WebWindow</name>
     <message>
-        <location filename="../src/view/web_window.cpp" line="289"/>
-        <source>Copy</source>
-        <translation>Kopiér</translation>
-    </message>
-    <message>
-        <location filename="../src/view/web_window.cpp" line="325"/>
+        <location filename="../src/view/web_window.cpp" line="432"/>
         <source>Ctrl+Alt+F</source>
         <translation>Ctrl+Alt+F</translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="340"/>
+        <location filename="../src/view/web_window.cpp" line="447"/>
         <source>Ctrl+F</source>
         <translation>Ctrl+F</translation>
     </message>

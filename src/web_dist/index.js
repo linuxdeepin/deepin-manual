@@ -1239,7 +1239,8 @@ var Main = function (_Component) {
 
     _this.state = {
       init: false,
-      bTest: true
+      bTest: true,
+      isShowHelperSupport: false
     };
     var _this$props$match$par = _this.props.match.params,
         file = _this$props$match$par.file,
@@ -1248,6 +1249,15 @@ var Main = function (_Component) {
 
     _this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null, key);
     var showFloatTimer = null;
+    global.qtObjects.manual.hasSelperSupport(function (bFlag) {
+      if (bFlag) {
+        console.log("bFlag ---:" + bFlag);
+        _this.setState({
+          isShowHelperSupport: false
+        });
+      }
+    });
+
     return _this;
   }
 
@@ -1376,6 +1386,21 @@ var Main = function (_Component) {
 
       console.log("main render....hash:", this.state.hash);
       console.log("main render....hList:", this.state.hlist);
+      var support = null;
+      if (this.state.isShowHelperSupport) {
+        support = _react2.default.createElement(
+          'div',
+          { className: 'support-div', onClick: function onClick() {
+              console.log("support click...");
+            } },
+          _react2.default.createElement('img', { className: 'support', src: './pic.svg' })
+        );
+        console.log("div support");
+      } else {
+        support = _react2.default.createElement('div', null);
+        console.log("not div support");
+      }
+
       return this.state.init && _react2.default.createElement(
         'div',
         { id: 'main' },
@@ -1401,13 +1426,7 @@ var Main = function (_Component) {
           setHash: this.setHash.bind(this),
           setScroll: this.setScroll.bind(this)
         }),
-        _react2.default.createElement(
-          'div',
-          { className: 'support-div', onClick: function onClick() {
-              console.log("support click...");
-            } },
-          _react2.default.createElement('img', { className: 'support', src: './pic.svg' })
-        ),
+        support,
         _react2.default.createElement('div', { className: 'tooltip-wp' })
       );
     }

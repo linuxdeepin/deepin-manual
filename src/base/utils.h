@@ -28,6 +28,7 @@
 
 #include <DApplicationHelper>
 #include <DPalette>
+#include "dbus/dbusvariant/app_info.h"
 
 #define dApp (static_cast<DApplication *>(QCoreApplication::instance()))
 
@@ -57,6 +58,17 @@ public:
     static QFont loadFontBySizeAndWeight(QString fontFamily, int fontSize, int fontWeight);
     static QString fromSpecialEncoding(const QString &inputStr);
     static QString translateTitle(const QString &titleUS);
+
+    //获取所有应用列表
+    static QList<AppInfo> launcherInterface();
+
+    //获取系统应用中有帮助手册的应用列表
+    static QStringList getSystemManualList();
+    static QString getSystemManualDir();
+    static QList<AppInfo> sortAppList(QMultiMap<qlonglong, AppInfo> map);
+    static bool hasSelperSupport();
+
+
 };
 
 class ExApplicationHelper : public DGuiApplicationHelper
