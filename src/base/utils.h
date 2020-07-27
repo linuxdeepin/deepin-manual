@@ -21,14 +21,14 @@
 #define UTILS_H
 
 #include "sys/time.h"
+#include "dbus/dbusvariant/app_info.h"
+
+#include <DApplicationHelper>
+#include <DPalette>
 
 #include <QHash>
 #include <QObject>
 #include <QWidget>
-
-#include <DApplicationHelper>
-#include <DPalette>
-#include "dbus/dbusvariant/app_info.h"
 
 #define dApp (static_cast<DApplication *>(QCoreApplication::instance()))
 

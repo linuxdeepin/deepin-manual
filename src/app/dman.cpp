@@ -14,9 +14,6 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include <QDBusConnection>
-#include <QDesktopWidget>
-#include <QIcon>
 
 #include "base/consts.h"
 #include "base/utils.h"
@@ -24,10 +21,17 @@
 #include "controller/window_manager.h"
 #include "environments.h"
 #include "resources/themes/images.h"
+
 #include <DApplication>
 #include <DApplicationSettings>
 #include <DLog>
 #include <DPlatformWindowHandle>
+
+#include <QDesktopWidget>
+#include <QDBusConnection>
+#include <QIcon>
+
+const char kAppAcknowledgementPage[] = "https://www.deepin.org/acknowledgments/deepin-manual/";
 
 DWIDGET_USE_NAMESPACE
 
@@ -60,7 +64,7 @@ int main(int argc, char **argv)
     app.setApplicationDescription(QObject::tr(
                                       "Manual is designed to help users learn the operating system and its applications,"
                                       " providing specific instructions and function descriptions."));
-    app.setApplicationAcknowledgementPage("https://www.deepin.org/acknowledgments/deepin-manual/");
+    app.setApplicationAcknowledgementPage(kAppAcknowledgementPage);
 
     dman::ArgumentParser argument_parser;
     dman::WindowManager window_manager;
@@ -90,7 +94,6 @@ int main(int argc, char **argv)
 
     // 保存主题
     DApplicationSettings dApplicationSettings;
-
     Dtk::Core::DLogManager::registerFileAppender();
     Dtk::Core::DLogManager::registerConsoleAppender();
 

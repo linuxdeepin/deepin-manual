@@ -21,7 +21,8 @@
 #include "utils.h"
 
 #include <DLog>
-#include <QApplication>
+#include <DSysInfo>
+
 #include <QDir>
 #include <QFile>
 #include <QFileInfo>
@@ -35,8 +36,7 @@
 #include <QTextCodec>
 #include <QUrl>
 #include <QDebug>
-
-#include <DSysInfo>
+#include <QApplication>
 
 QHash<QString, QPixmap> Utils::m_imgCacheHash;
 QHash<QString, QString> Utils::m_fontNameCache;
@@ -97,6 +97,7 @@ struct ReplyStruct {
     qint64 m_categoryId;
     qint64 m_installedTime;
 };
+
 Q_DECLARE_METATYPE(ReplyStruct)
 
 QDBusArgument &operator<<(QDBusArgument &argument, const ReplyStruct &info)
@@ -115,7 +116,6 @@ const QDBusArgument &operator>>(const QDBusArgument &argument, ReplyStruct &info
     argument >> info.m_desktop >> info.m_name >> info.m_key >> info.m_iconKey;
     argument >> info.m_categoryId >> info.m_installedTime;
     argument.endStructure();
-
     return argument;
 }
 
@@ -263,7 +263,12 @@ QString Utils::fromSpecialEncoding(const QString &inputStr)
     }
 }
 
-/*** 返回title映射字段，目前主要用于＂控制中心＂跳转 2020-06-29 11:19:37 wangml ***/
+/**
+ * @brief Utils::translateTitle
+ * @param titleUS
+ * @return
+ * @note 返回title映射字段，目前主要用于＂控制中心＂跳转
+ */
 QString Utils::translateTitle(const QString &titleUS)
 {
     QString strRet = titleUS;
@@ -349,12 +354,9 @@ QStringList Utils::getSystemManualList()
         {"org.deepin.scaner", "scaner"},
     };
 
-
-
     QStringList app_list_;
     const AppInfoList list = launcherInterface();
     const QStringList dir_entry = QDir(getSystemManualDir()).entryList();
-    //qDebug() << __func__ << "get all item-->" << list.size() << list;
 
     QMultiMap<qlonglong, AppInfo> appMap;
     for (int var = 0; var < list.size(); ++var) {
@@ -382,11 +384,8 @@ QStringList Utils::getSystemManualList()
         app_list_.removeAll("youdao-dict");
     }
 
-
-    qDebug() << "exist app list====:" << app_list_ << ", count:" << app_list_.size();
+    qDebug() << "exist app list: " << app_list_ << ", count:" << app_list_.size();
     return app_list_;
-
-
 }
 
 /**
@@ -412,6 +411,12 @@ QString Utils::getSystemManualDir()
     return strMANUAL_DIR;
 }
 
+/**
+ * @brief Utils::sortAppList
+ * @param map
+ * @return
+ * @note appList　排序
+ */
 QList<AppInfo> Utils::sortAppList(QMultiMap<qlonglong, AppInfo> map)
 {
     QMapIterator<qlonglong, AppInfo> it(map);
@@ -464,6 +469,11 @@ QList<AppInfo> Utils::sortAppList(QMultiMap<qlonglong, AppInfo> map)
     return listEnd;
 }
 
+/**
+ * @brief Utils::hasSelperSupport
+ * @return
+ * @note 判断是否需要显示服务与支持功能
+ */
 bool Utils::hasSelperSupport()
 {
     int nType = Dtk::Core::DSysInfo::deepinType();

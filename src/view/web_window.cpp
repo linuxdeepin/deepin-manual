@@ -348,6 +348,7 @@ void WebWindow::initWebView()
     web_channel->registerObject("titleBar", title_bar_proxy_);
     web_channel->registerObject("settings", settings_proxy_);
     web_view_->page()->setWebChannel(web_channel);
+
     connect(web_view_->page(), &QWebEnginePage::loadFinished, this, &WebWindow::onWebPageLoadFinished);
     connect(manual_proxy_, &ManualProxy::channelInit, this, &WebWindow::onChannelFinish);
     connect(manual_proxy_, &ManualProxy::WidgetLower, this, &WebWindow::lower);
@@ -520,14 +521,6 @@ void WebWindow::showEvent(QShowEvent *event)
         });
     }
 }
-//void WebWindow::inputMethodEvent(QInputMethodEvent *e)
-//{
-//    if (!e->commitString().isEmpty()) {
-//        search_edit_->lineEdit()->setText(e->commitString());
-//        search_edit_->lineEdit()->setFocus();
-//    }
-//    QWidget::inputMethodEvent(e);
-//}
 
 void WebWindow::closeEvent(QCloseEvent *event)
 {
@@ -643,7 +636,9 @@ void WebWindow::onTitleBarEntered()
  */
 void WebWindow::onWebPageLoadFinished(bool ok)
 {
+
     Q_UNUSED(ok)
+    //settingContextMenu();
     /*
        //改变ｊs颜色
        setHashWordColor();
@@ -771,6 +766,7 @@ void WebWindow::onSetKeyword(const QString &keyword)
         }
     }
 }
+
 /**
  * @brief WebWindow::onSearchAnchorResult 搜索结果框内容显示
  * @param keyword 搜索关键字
@@ -835,18 +831,20 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
     if (event->type() == QEvent::KeyPress && qApp->activeWindow() == this &&
             watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
         QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
-        if (keyEvent->key() == Qt::Key_V &&
-                keyEvent->modifiers().testFlag(Qt::ControlModifier)) {
+        if (keyEvent->key() == Qt::Key_V
+                && keyEvent->modifiers().testFlag(Qt::ControlModifier)) {
             const QString &clipboardText = QApplication::clipboard()->text();
             // support Ctrl+V shortcuts.
             if (!clipboardText.isEmpty()) {
-                search_edit_->lineEdit()->setText(clipboardText);
                 search_edit_->lineEdit()->setFocus();
             }
-        } else if (((keyEvent->key() <= Qt::Key_Z && keyEvent->key() >= Qt::Key_A) ||
-                    (keyEvent->key() <= Qt::Key_9 && keyEvent->key() >= Qt::Key_0) ||
-                    (keyEvent->key() == Qt::Key_Space)) &&
-                   keyEvent->modifiers() == Qt::NoModifier) {
+        } else if (keyEvent->key() == Qt::Key_C
+                   && keyEvent->modifiers().testFlag(Qt::ControlModifier)) {
+            QApplication::clipboard()->setText(web_view_->selectedText());
+        } else if (((keyEvent->key() <= Qt::Key_Z && keyEvent->key() >= Qt::Key_A)
+                    || (keyEvent->key() <= Qt::Key_9 && keyEvent->key() >= Qt::Key_0)
+                    || (keyEvent->key() == Qt::Key_Space))
+                   && keyEvent->modifiers() == Qt::NoModifier) {
             search_edit_->lineEdit()->setFocus();
         }
     }

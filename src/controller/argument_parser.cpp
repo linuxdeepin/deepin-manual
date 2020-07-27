@@ -9,9 +9,10 @@
 #include "window_manager.h"
 
 #include <DLog>
+#include <DApplicationHelper>
+
 #include <QCommandLineParser>
 #include <QDBusConnection>
-#include <DApplicationHelper>
 
 namespace dman {
 
