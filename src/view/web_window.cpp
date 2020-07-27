@@ -271,6 +271,7 @@ void WebWindow::initUI()
     search_edit_->setFixedSize(350, 44);
     search_edit_->setPlaceHolder(QObject::tr("Search"));
     search_edit_->setFocus();
+    search_edit_->setContextMenuPolicy(Qt::CustomContextMenu);
 
     if (Utils::hasSelperSupport()) {
         DMenu *pMenu = new DMenu;
