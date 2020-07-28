@@ -21,7 +21,7 @@
 
 #ifndef CONFIG_MANAGER_H
 #define CONFIG_MANAGER_H
-/*** 2020-06-18 配置文件管理类 10:08:56 wangml ***/
+
 #include <QObject>
 #include <QMutexLocker>
 #include <QSettings>

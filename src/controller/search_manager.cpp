@@ -16,12 +16,12 @@
  */
 
 #include "controller/search_manager.h"
+#include "controller/search_db.h"
 
 #include <DLog>
 #include <DSysInfo>
 #include <QThread>
 
-#include "controller/search_db.h"
 
 namespace dman {
 

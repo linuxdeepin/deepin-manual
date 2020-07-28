@@ -119,7 +119,7 @@ void SearchDb::initConnections()
 
 void SearchDb::initDb(const QString &db_path)
 {
-    qDebug() << "initDb database path is------------------>:" << db_path << endl;
+    qDebug() << "initDb database path is--->:" << db_path << endl;
     p_->db = QSqlDatabase::addDatabase("QSQLITE");
     p_->db.setDatabaseName(db_path);
     if (!p_->db.open()) {
@@ -172,8 +172,8 @@ void SearchDb::addSearchEntry(const QString &system, const QString &app_name, co
     QStringList newContents = contents;
     for (int i = 0; i < contents.size(); i++) {
         QString content = contents.at(i);
-        content = content.replace("icon/", DMAN_INSTALL_DB_PATH + strManualPath +
-                                  "/" + app_name + "/" + lang + "/icon/");
+        content = content.replace("icon/", DMAN_INSTALL_DB_PATH + strManualPath
+                                  + "/" + app_name + "/" + lang + "/icon/");
         newContents.replace(i, content);
     }
 
@@ -411,8 +411,8 @@ void SearchDb::handleSearchContent(const QString &keyword)
                     contents.append(highlightContent);
                 }
             } else {
-                if (!last_app_name.isEmpty() && appHasMatchHash.value(last_app_name) &&
-                        contents.size() > 0) {
+                if (!last_app_name.isEmpty() && appHasMatchHash.value(last_app_name)
+                        && contents.size() > 0) {
                     result_empty = false;
                     qDebug() << Q_FUNC_INFO << "emit searchContentResult()" << last_app_name << " " << contents.length();
                     emit this->searchContentResult(last_app_name, anchors, anchorIds, contents);

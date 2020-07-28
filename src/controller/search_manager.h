@@ -18,10 +18,10 @@
 #ifndef DEEPIN_MANUAL_CONTROLLER_SEARCH_MANAGER_H
 #define DEEPIN_MANUAL_CONTROLLER_SEARCH_MANAGER_H
 
+#include "controller/search_result.h"
+
 #include <QObject>
 #include <QList>
-
-#include "controller/search_result.h"
 
 class QThread;
 

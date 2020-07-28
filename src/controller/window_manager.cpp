@@ -21,7 +21,6 @@
 #include "controller/search_manager.h"
 #include "dbus/dbus_consts.h"
 #include "view/web_window.h"
-#include <unistd.h>
 #include "controller/config_manager.h"
 
 #include <DLog>
@@ -59,8 +58,8 @@ void WindowManager::initDBus()
         return;
     }
 
-    if (!dbusConn.registerService(dman::kManualSearchService + QString(WM_SENDER_NAME)) ||
-            !dbusConn.registerObject(dman::kManualSearchIface + QString(WM_SENDER_NAME), this)) {
+    if (!dbusConn.registerService(dman::kManualSearchService + QString(WM_SENDER_NAME))
+            || !dbusConn.registerObject(dman::kManualSearchIface + QString(WM_SENDER_NAME), this)) {
         qCritical() << WM_SENDER_NAME << " failed to register dbus service!";
 
         return;
