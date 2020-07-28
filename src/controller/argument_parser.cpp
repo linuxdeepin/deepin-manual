@@ -69,26 +69,10 @@ bool ArgumentParser::parseArguments()
         const QStringList position_args = parser.positionalArguments();
         if (!position_args.isEmpty()) {
             qDebug() << Q_FUNC_INFO << "position_args is not empty";
-            ManualOpenInterface *iface = new ManualOpenInterface(
-                kManualOpenService, kManualOpenIface, QDBusConnection::sessionBus(), this);
-
-            if (iface->isValid()) {
-                // Call dbus interface.　调用Ｄｂｕｓ接口
-                // Only parse positional arguments. 只解析位置参数
-                for (const QString &arg : position_args) {
-                    iface->Open(arg);
-                }
+            QDBusInterface manual(kManualOpenService, kManualOpenIface, kManualOpenService);
+            for (const QString &arg : position_args) {
+                QDBusReply<void> reply = manual.call("Open", arg);
             }
-
-
-            // It may fail to register dbus service in root session.
-            // Create new instance.
-//            else {
-//                for (const QString &manual : position_args) {
-//                    manuals_.append(manual);
-//                }
-//                return true;
-//            }
         } else {
             qDebug() << Q_FUNC_INFO << "position_args is empty";
             emit newAppOpen();

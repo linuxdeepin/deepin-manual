@@ -25,33 +25,13 @@
 
 ManualSearchProxy::ManualSearchProxy(QObject *parent)
     : QObject(parent)
-    , m_dbusConn(QDBusConnection::connectToBus(QDBusConnection::SessionBus, "Receiver"))
+    , m_bWindowState(false)
 {
     this->setObjectName("ManualSearchProxy");
-    m_bWindowState = false;
-
-    initDBus();
     connectToSender();
 }
 
 ManualSearchProxy::~ManualSearchProxy() {}
-
-void ManualSearchProxy::initDBus()
-{
-    if (!m_dbusConn.isConnected()) {
-        qDebug() << "Receiver"
-                 << "connectToBus() failed";
-        return;
-    }
-
-    if (!m_dbusConn.registerService(dman::kManualSearchService + QString("Receiver")) ||
-            !m_dbusConn.registerObject(dman::kManualSearchIface + QString("Receiver"), this)) {
-        qCritical() << "Receiver failed to register dbus service";
-        return;
-    } else {
-        qDebug() << "Receiver register dbus service success!";
-    }
-}
 
 void ManualSearchProxy::connectToSender()
 {

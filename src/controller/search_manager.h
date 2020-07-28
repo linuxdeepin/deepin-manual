@@ -49,7 +49,6 @@ signals:
                              const QStringList &anchorIdList,
                              const QStringList &contents);
     void searchContentMismatch(const QString &keyword);
-    void installApps(const QStringList &strlistApps);
 
 private:
     void initSearchManager();

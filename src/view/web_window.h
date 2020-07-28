@@ -60,7 +60,8 @@ public:
     // Get app name of manual currently presented.
     const QString &appName() const;
     bool eventFilter(QObject *watched, QEvent *event) override;
-    void setSearchManager(SearchManager *searchManager);
+//    void setSearchManager(SearchManager *searchManager);
+    void setSearchManager();
     void initWebView();
     void setTitleName(const QString &title_name);
     void cancelTextChanged();
@@ -90,7 +91,6 @@ public slots:
 protected:
     void closeEvent(QCloseEvent *event) override;
     void showEvent(QShowEvent *event) override;
-
     void inputMethodEvent(QInputMethodEvent *e) Q_DECL_OVERRIDE;
     QVariant inputMethodQuery(Qt::InputMethodQuery prop) const Q_DECL_OVERRIDE;
 
@@ -101,6 +101,7 @@ private:
     void initDBus();
     void setHashWordColor();
     void settingContextMenu();
+    void initWeb();
 
     QString app_name_;
     QString title_name_;
@@ -116,7 +117,7 @@ private:
     SettingsProxy *settings_proxy_ {nullptr};
     TitleBar *title_bar_ {nullptr};
     QWebEngineView *web_view_ {nullptr};
-    QTimer search_timer_;
+    QTimer search_timer_{nullptr};
     Dtk::Widget::DButtonBox *buttonBox {nullptr};
     SearchEdit *search_edit_ {nullptr};
     QPoint start_point_;

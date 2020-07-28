@@ -63,31 +63,25 @@ const int kSearchDelay = 200;
 
 WebWindow::WebWindow(QWidget *parent)
     : Dtk::Widget::DMainWindow(parent)
-    , app_name_()
-    , title_name_("")
-    , search_timer_()
-    , keyword_("")
+    , search_timer_(new QTimer)
     , first_webpage_loaded_(true)
 {
-
-
     // 使用 redirectContent 模式，用于内嵌 x11 窗口时能有正确的圆角效果
     Dtk::Widget::DPlatformWindowHandle::enableDXcbForWindow(this, true);
     search_timer_.setSingleShot(true);
-
     setAttribute(Qt::WA_InputMethodEnabled, true);
 
     this->initUI();
     this->initConnections();
     this->initShortcuts();
     this->initDBus();
+    initWeb();
 
     qApp->installEventFilter(this);
 }
 
 WebWindow::~WebWindow()
 {
-
     if (completion_window_ != nullptr) {
         delete completion_window_;
         completion_window_ = nullptr;
@@ -129,15 +123,15 @@ const QString &WebWindow::appName() const
     return app_name_;
 }
 
-void WebWindow::setSearchManager(SearchManager *search_manager)
+//void WebWindow::setSearchManager(SearchManager *search_manager)
+void WebWindow::setSearchManager()
 {
-    search_manager_ = search_manager;
+    search_manager_ = new SearchManager(this);
 
     connect(search_manager_, &SearchManager::searchContentResult, search_proxy_,
             &SearchProxy::onContentResult);
     connect(search_manager_, &SearchManager::searchContentMismatch, search_proxy_,
             &SearchProxy::mismatch);
-
     connect(search_manager_, &SearchManager::searchAnchorResult, this,
             &WebWindow::onSearchAnchorResult);
 }
@@ -217,8 +211,8 @@ void WebWindow::onThemeChange(DGuiApplicationHelper::ColorType themeType)
         web_view_->page()->runJavaScript(QString("setHashWordColor('%1')").arg(fillColor.name()));
     } else {
         QTimer::singleShot(300, this, [&]() {
-            QColor fillColor = DGuiApplicationHelper::instance()->applicationPalette().highlight().color();
-            web_view_->page()->runJavaScript(QString("setHashWordColor('%1')").arg(fillColor.name()));
+//            QColor fillColor = DGuiApplicationHelper::instance()->applicationPalette().highlight().color();
+//            web_view_->page()->runJavaScript(QString("setHashWordColor('%1')").arg(fillColor.name()));
         });
     }
 }
@@ -230,6 +224,7 @@ void WebWindow::onThemeChange(DGuiApplicationHelper::ColorType themeType)
 
 void WebWindow::initUI()
 {
+    //搜索结果框可移至主窗口创建完成后
     completion_window_ = new SearchCompletionWindow();
     completion_window_->hide();
 
@@ -270,8 +265,9 @@ void WebWindow::initUI()
     search_edit_->setObjectName("SearchEdit");
     search_edit_->setFixedSize(350, 44);
     search_edit_->setPlaceHolder(QObject::tr("Search"));
-    search_edit_->setFocus();
     search_edit_->setContextMenuPolicy(Qt::CustomContextMenu);
+
+//    search_proxy_ = new SearchProxy(this);
 
     if (Utils::hasSelperSupport()) {
         DMenu *pMenu = new DMenu;
@@ -280,39 +276,14 @@ void WebWindow::initUI()
         //this->titlebar()->setMenu(pMenu);
         connect(pHelpSupport, &QAction::triggered, this, &WebWindow::slot_HelpSupportTriggered);
     }
-
     this->titlebar()->addWidget(buttonFrame, Qt::AlignLeft);
     this->titlebar()->addWidget(search_edit_, Qt::AlignCenter);
     this->titlebar()->setSeparatorVisible(true);
     this->titlebar()->setIcon(QIcon::fromTheme("deepin-manual"));
     //隐藏title阴影
     this->setTitlebarShadowEnabled(false);
-
-    search_proxy_ = new SearchProxy(this);
-    title_bar_proxy_ = new TitleBarProxy(this);
-    connect(m_backButton, &DButtonBoxButton::clicked, title_bar_proxy_,
-            &TitleBarProxy::backwardButtonClicked);
-    connect(m_forwardButton, &DButtonBoxButton::clicked, title_bar_proxy_,
-            &TitleBarProxy::forwardButtonClicked);
-    connect(title_bar_proxy_, &TitleBarProxy::buttonShowSignal, this, &WebWindow::slot_ButtonShow);
-
-    //获取窗口上次保存尺寸,加载上次保存尺寸.
-    QSettings *setting = ConfigManager::getInstance()->getSettings();
-    setting->beginGroup(CONFIG_WINDOW_INFO);
-    int saveWidth = setting->value(CONFIG_WINDOW_WIDTH).toInt();
-    int saveHeight = setting->value(CONFIG_WINDOW_HEIGHT).toInt();
-    setting->endGroup();
-    qDebug() << "load window_width: " << saveWidth;
-    qDebug() << "load window_height: " << saveHeight;
-    // 如果配置文件没有数据
-    if (saveWidth == 0 || saveHeight == 0) {
-        saveWidth = 1024;
-        saveHeight = 680;
-    }
-    resize(QSize(saveWidth, saveHeight));
-
+    //键盘盲打
     search_edit_->setFocus();
-
     this->setFocusPolicy(Qt::ClickFocus);
 }
 
@@ -328,12 +299,14 @@ void WebWindow::initWebView()
     settings_proxy_ = new SettingsProxy(this);
     i18n_proxy = new I18nProxy(this);
     manual_proxy_ = new ManualProxy(this);
+    search_proxy_ = new SearchProxy(this);
 
-    //将当前存在的applist传入到数据库管理类中.
-    if (search_manager_) {
-        QStringList strlist = manual_proxy_->getSystemManualList();
-        emit search_manager_->installApps(strlist);
-    }
+    title_bar_proxy_ = new TitleBarProxy(this);
+    connect(m_backButton, &DButtonBoxButton::clicked, title_bar_proxy_,
+            &TitleBarProxy::backwardButtonClicked);
+    connect(m_forwardButton, &DButtonBoxButton::clicked, title_bar_proxy_,
+            &TitleBarProxy::forwardButtonClicked);
+    connect(title_bar_proxy_, &TitleBarProxy::buttonShowSignal, this, &WebWindow::slot_ButtonShow);
 
     web_view_ = new QWebEngineView;
     this->setCentralWidget(web_view_);
@@ -507,20 +480,33 @@ void WebWindow::settingContextMenu()
     });
 }
 
+void WebWindow::initWeb()
+{
+    qDebug() << Q_FUNC_INFO;
+    emit this->shown(this);
+
+    initWebView();
+    setSearchManager();
+
+    const QFileInfo info(kIndexPage);
+    web_view_->load(QUrl::fromLocalFile(info.absoluteFilePath()));
+}
+
 void WebWindow::showEvent(QShowEvent *event)
 {
     QWidget::showEvent(event);
-    if (!is_index_loaded_) {
-        is_index_loaded_ = true;
-        //延迟显示webView，200ms主要用于web_view_->load();
-        QTimer::singleShot(200, this, [this] {
-            qDebug() << Q_FUNC_INFO;
-            emit this->shown(this);
-            this->initWebView();
-            const QFileInfo info(kIndexPage);
-            web_view_->load(QUrl::fromLocalFile(info.absoluteFilePath()));
-        });
-    }
+//    if (!is_index_loaded_) {
+//        is_index_loaded_ = true;
+//        //延迟显示webView，200ms主要用于web_view_->load();
+//        QTimer::singleShot(10 * 1000, this, [this] {
+//            qDebug() << Q_FUNC_INFO;
+//            emit this->shown(this);
+//            setSearchManager();
+//            this->initWebView();
+//            const QFileInfo info(kIndexPage);
+//            web_view_->load(QUrl::fromLocalFile(info.absoluteFilePath()));
+//        });
+//    }
 }
 
 void WebWindow::closeEvent(QCloseEvent *event)
@@ -853,7 +839,7 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
     if (event->type() == QEvent::MouseButtonPress && qApp->activeWindow() == this &&
             watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
         QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
-        this->web_view_->update();
+//        this->web_view_->update();
         if (mouseEvent->button()) {
             switch (mouseEvent->button()) {
             case Qt::BackButton: {

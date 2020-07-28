@@ -136,8 +136,6 @@ set(DBUS_FILES
     dbus/launcher_interface.h
     dbus/manual_open_adapter.cpp
     dbus/manual_open_adapter.h
-    dbus/manual_open_interface.cpp
-    dbus/manual_open_interface.h
     dbus/manual_open_proxy.cpp
     dbus/manual_open_proxy.h
     dbus/manual_search_adapter.cpp
@@ -187,8 +185,12 @@ set(VIEW_FILES
 # Main executable
 set(SEARCH_FILES
     app/generate_search_db.cpp
+    base/utils.cpp
+    base/utils.h
     base/command.cpp
     base/command.h
+    dbus/dbusvariant/app_info.cpp
+    dbus/dbusvariant/app_info.h
     controller/search_db.cpp
     controller/search_db.h
     )

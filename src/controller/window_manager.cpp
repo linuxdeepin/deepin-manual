@@ -47,6 +47,9 @@ WindowManager::~WindowManager()
 {
 }
 
+/**
+ * @brief WindowManager::initDBus 初始化前后端通信Dbus,服务端创建在前端.....wait
+ */
 void WindowManager::initDBus()
 {
     QDBusConnection dbusConn =
@@ -71,7 +74,7 @@ void WindowManager::initWebWindow()
     window = new WebWindow;
     connect(window, &WebWindow::closed, this, &WindowManager::onWindowClosed);
     connect(window, &WebWindow::shown, this, &WindowManager::onWindowShown);
-    moveWindow(window);
+    setWindow(window);
     window->show();
     window->activateWindow();
 }
@@ -83,7 +86,7 @@ void WindowManager::activeOrInitWindow()
     QMutexLocker locker(&_mutex);
     /*** 只要有窗口就不再创建新窗口 2020-06-22 16:57:50 wangml ***/
     if (window != nullptr) {
-        this->moveWindow(window);
+        this->setWindow(window);
         window->show();
         window->raise();
         window->activateWindow();
@@ -117,19 +120,14 @@ void WindowManager::SendMsg(const QString &msg)
     }
 }
 
-void WindowManager::moveWindow(WebWindow *window)
-{
-    window->setMinimumSize(kWinMinWidth, kWinMinHeight);
-    const QPoint pos = this->newWindowPosition();
-    window->move(pos);
-}
-
 /**
- * @brief WindowManager::newWindowPosition UI居中显示
- * @return
+ * @brief WindowManager::moveWindow 设置window窗口属性,UI居中显示
+ * @param window 主页面对象
+ * @note 设置窗口最小尺寸,设置窗口大小,设置窗口居中
  */
-QPoint WindowManager::newWindowPosition()
+void WindowManager::setWindow(WebWindow *window)
 {
+    //获取窗口上次保存尺寸,加载上次保存尺寸.
     QSettings *setting = ConfigManager::getInstance()->getSettings();
     setting->beginGroup(CONFIG_WINDOW_INFO);
     int saveWidth = setting->value(CONFIG_WINDOW_WIDTH).toInt();
@@ -141,26 +139,21 @@ QPoint WindowManager::newWindowPosition()
         saveHeight = 680;
     }
 
-    QDesktopWidget *desktop = QApplication::desktop();
-    Q_ASSERT(desktop != nullptr);
-    /*** 2020-06-30 09:21:36 wangml ***/
-    const QRect geometry = desktop->availableGeometry(QCursor::pos());
-    const QPoint center = geometry.center();
-    if (window != nullptr) {
-        return QPoint(center.x() - window->width() / 2, center.y() - window->height() / 2);
-    } else {
-        return QPoint(center.x() - saveWidth / 2, center.y() - saveHeight / 2);
-    }
+    //设置window窗口属性
+    window->resize(saveWidth, saveHeight);
+    window->setMinimumSize(kWinMinWidth, kWinMinHeight);
+    window->move((QApplication::desktop()->width() - saveWidth) / 2, (QApplication::desktop()->height() - saveHeight) / 2);
 }
 
+/**
+ * @brief WindowManager::onNewAppOpen 已存在dman时,再重启窗口时,通知后端将已存在的dman窗口active.
+ */
 void WindowManager::onNewAppOpen()
 {
-    qDebug() << "slot onNewAppOpen";
-    qDebug() << qApp->applicationPid();
-
+    qDebug() << Q_FUNC_INFO << qApp->applicationPid();
     QDBusMessage msg =
-        QDBusMessage::createMethodCall(dman::kManualSearchService + QString("Receiver"),
-                                       dman::kManualSearchIface + QString("Receiver"),
+        QDBusMessage::createMethodCall(dman::kManualSearchService,
+                                       dman::kManualSearchIface,
                                        dman::kManualSearchService, "OnNewWindowOpen");
 
     msg << QString::number(qApp->applicationPid());
@@ -205,18 +198,15 @@ void WindowManager::onWindowClosed()
  */
 void WindowManager::onWindowShown()
 {
-    //创建search_manager
-    window->setAppName(curr_app_name_);
-    window->setTitleName(curr_title_name_);
-    search_manager_ = new SearchManager(this);
     initDBus();
-    window->setSearchManager(search_manager_);
+    //创建search_manager
+//    search_manager_ = new SearchManager(this);
+//    window->setSearchManager(search_manager_);
+
     window->setAppName(curr_app_name_);
     window->setTitleName(curr_title_name_);
+    window->setSearchKeyword(curr_keyword_);
 
-    if (curr_keyword_.length() > 0) {
-        window->setSearchKeyword(curr_keyword_);
-    }
     SendMsg(QString::number(window->winId()));
 }
 

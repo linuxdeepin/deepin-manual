@@ -16,6 +16,7 @@
  */
 
 #include "controller/search_db.h"
+#include "base/utils.h"
 
 #include <DLog>
 #include <DSysInfo>
@@ -94,7 +95,8 @@ SearchDb::SearchDb(QObject *parent)
     qRegisterMetaType<SearchContentResult>("SearchContentResult");
     qRegisterMetaType<SearchContentResultList>("SearchContentResultList");
 
-    this->initConnections();
+    initConnections();
+    getAllApp();
 }
 
 SearchDb::~SearchDb()
@@ -113,7 +115,6 @@ void SearchDb::initConnections()
     connect(this, &SearchDb::initDbAsync, this, &SearchDb::initDb);
     connect(this, &SearchDb::searchAnchor, this, &SearchDb::handleSearchAnchor);
     connect(this, &SearchDb::searchContent, this, &SearchDb::handleSearchContent);
-    connect(this, &SearchDb::installApps, this, &SearchDb::handleInstallApps);
 }
 
 void SearchDb::initDb(const QString &db_path)
@@ -355,6 +356,11 @@ QString SearchDb::highlightKeyword(QString srcString, QString keyword)
     return highlightString;
 }
 
+void SearchDb::getAllApp()
+{
+    strlistApp = Utils::getSystemManualList();
+}
+
 void SearchDb::handleSearchContent(const QString &keyword)
 {
     qDebug() << Q_FUNC_INFO << keyword;
@@ -442,10 +448,4 @@ void SearchDb::handleSearchContent(const QString &keyword)
         emit this->searchContentMismatch(keyword);
     }
 }
-
-void SearchDb::handleInstallApps(const QStringList &strlistApps)
-{
-    strlistApp = strlistApps;
-}
-
 }  // namespace dman

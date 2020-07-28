@@ -18,13 +18,9 @@
 #ifndef DEEPIN_MANUAL_DBUS_MANUAL_SEARCH_PROXY_H
 #define DEEPIN_MANUAL_DBUS_MANUAL_SEARCH_PROXY_H
 
-//#include "view/manual_proxy.h"
-
 #include <DSysInfo>
 #include <QDBusConnection>
 #include <QObject>
-// class LauncherInterface;
-#include <DSysInfo>
 
 class ManualSearchProxy : public QObject
 {
@@ -47,7 +43,6 @@ private:
     void initDBus();
     void connectToSender();
 
-    QDBusConnection m_dbusConn;
     bool m_bWindowState;
     QString m_sApplicationPid = nullptr;
 

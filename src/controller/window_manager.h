@@ -42,8 +42,7 @@ private:
     void initWebWindow();
     void activeOrInitWindow();
     void SendMsg(const QString &msg);
-    void moveWindow(WebWindow *window);
-    QPoint newWindowPosition();
+    void setWindow(WebWindow *window);
 
     SearchManager *search_manager_ {nullptr};
     QString curr_app_name_;

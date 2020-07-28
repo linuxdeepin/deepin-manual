@@ -67,8 +67,6 @@ public:
     static QString getSystemManualDir();
     static QList<AppInfo> sortAppList(QMultiMap<qlonglong, AppInfo> map);
     static bool hasSelperSupport();
-
-
 };
 
 class ExApplicationHelper : public DGuiApplicationHelper

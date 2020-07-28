@@ -338,7 +338,6 @@ QList<AppInfo> Utils::launcherInterface()
  */
 QStringList Utils::getSystemManualList()
 {
-
     const QHash<QString, QString> kAppNameMap = {
         {"org.deepin.flatdeb.deepin-calendar", "dde-calendar"},
         {"org.deepin.flatdeb.deepin-music", "deepin-music"},

@@ -30,11 +30,6 @@ SearchManager::SearchManager(QObject *parent)
     , db_(nullptr)
     , db_thread_(nullptr)
 {
-//    QTimer::singleShot(50, this, [this] {
-//        qDebug() << "init SearchManager" << endl;
-
-//    });
-
     initSearchManager();
 }
 
@@ -50,16 +45,13 @@ void SearchManager::initSearchManager()
     connect(this, &SearchManager::searchContent, db_, &SearchDb::searchContent);
     connect(db_, &SearchDb::searchContentResult, this, &SearchManager::searchContentResult);
     connect(db_, &SearchDb::searchContentMismatch, this, &SearchManager::searchContentMismatch);
-    connect(this, &SearchManager::installApps, db_, &SearchDb::installApps);
-
     connect(db_thread_, &QThread::destroyed, db_, &QObject::deleteLater);
 
-    //    qDebug() << "SearchManager::initSearchManager--------------->" << DMAN_SEARCH_DB;
     QString strDB = DMAN_SEARCH_DB;
-    int nType = Dtk::Core::DSysInfo::deepinType();
-    if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
+    Dtk::Core::DSysInfo::DeepinType nType = Dtk::Core::DSysInfo::deepinType();
+    if (Dtk::Core::DSysInfo::DeepinServer == nType) {
         strDB += "/server/search.db";
-    } else if (Dtk::Core::DSysInfo::DeepinPersonal == (Dtk::Core::DSysInfo::DeepinType)nType) {
+    } else if (Dtk::Core::DSysInfo::DeepinPersonal == nType) {
         strDB += "/personal/search.db";
     } else {
         if (Dtk::Core::DSysInfo::isCommunityEdition()) {
@@ -69,7 +61,6 @@ void SearchManager::initSearchManager()
         }
     }
     emit db_->initDbAsync(strDB);
-
 }
 
 SearchManager::~SearchManager()
