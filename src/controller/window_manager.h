@@ -59,10 +59,6 @@ public slots:
     void onNewAppOpen();
     void openManual(const QString &app_name, const QString &title_name);
     void openManualWithSearch(const QString &app_name, const QString &keyword);
-
-    //web-window槽
-    void onWindowClosed();
-    void onWindowShown();
 };
 
 }  // namespace dman

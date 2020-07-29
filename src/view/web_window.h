@@ -51,59 +51,46 @@ class DButtonBox;
 class WebWindow : public Dtk::Widget::DMainWindow
 {
     Q_OBJECT
-    Q_PROPERTY(QString appName READ appName WRITE setAppName)
 
 public:
     explicit WebWindow(QWidget *parent = nullptr);
     ~WebWindow() override;
 
-    // Get app name of manual currently presented.
-    const QString &appName() const;
-    bool eventFilter(QObject *watched, QEvent *event) override;
-//    void setSearchManager(SearchManager *searchManager);
-    void setSearchManager();
-    void initWebView();
-    void setTitleName(const QString &title_name);
-    void cancelTextChanged();
+    void initWeb();
     void updateBtnBox();
-
+    void cancelTextChanged();
     void openjsPage(const QString &app_name, const QString &title_name);
-    // 保存窗口尺寸
-    void saveWindowSize();
+    void setAppProperty(const QString &appName, const QString &titleName, const QString &keyword);
+
     Dtk::Widget::DButtonBoxButton *m_backButton;
     Dtk::Widget::DButtonBoxButton *m_forwardButton;
 
 signals:
-    void closed(const QString &app_name);
-    void shown(WebWindow *window);
     void manualSearchByKeyword(const QString &keyword);
-    void webWindowShown();
-    void webWindowLoaded();
 
 public slots:
-    void setAppName(const QString &app_name);
-    void setSearchKeyword(const QString &keyword);
-    void slot_ButtonHide();
-    void slot_ButtonShow();
     void slot_ThemeChanged();
     void slot_HelpSupportTriggered();
 
 protected:
-    void closeEvent(QCloseEvent *event) override;
-    void showEvent(QShowEvent *event) override;
+    void closeEvent(QCloseEvent *event) Q_DECL_OVERRIDE;
     void inputMethodEvent(QInputMethodEvent *e) Q_DECL_OVERRIDE;
+    bool eventFilter(QObject *watched, QEvent *event) Q_DECL_OVERRIDE;
     QVariant inputMethodQuery(Qt::InputMethodQuery prop) const Q_DECL_OVERRIDE;
 
 private:
-    void initConnections();
     void initUI();
-    void initShortcuts();
     void initDBus();
+    void initWebView();
+    void initShortcuts();
+    void saveWindowSize();
+    void initConnections();
     void setHashWordColor();
+    void setSearchManager();
     void settingContextMenu();
-    void initWeb();
 
     QString app_name_;
+    QString keyword_;
     QString title_name_;
     SearchManager *search_manager_ {nullptr};
     SearchCompletionWindow *completion_window_ {nullptr};
@@ -120,11 +107,7 @@ private:
     QTimer search_timer_{nullptr};
     Dtk::Widget::DButtonBox *buttonBox {nullptr};
     SearchEdit *search_edit_ {nullptr};
-    QPoint start_point_;
-    int start_drag_x;
-    QString keyword_;
     bool first_webpage_loaded_ {true};
-    bool is_index_loaded_ {false};
     bool bIsSetKeyword{false};
 
 private slots:
@@ -139,7 +122,6 @@ private slots:
     void onWebPageLoadFinished(bool ok);
     void onChannelFinish();
     void onSetKeyword(const QString &keyword);
-
     void onManualSearchByKeyword(const QString &keyword);
     void onACtiveColorChanged(QString, QMap<QString, QVariant>, QStringList);
     void onThemeChange(DGuiApplicationHelper::ColorType themeType);

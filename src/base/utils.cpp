@@ -323,7 +323,7 @@ QList<AppInfo> Utils::launcherInterface()
             applist.append(app);
             //qDebug() << "dbusMsg ---- : " << var << list.at(var).m_name;
         }
-        qDebug() << applist.size() << "applist " <<  applist;
+//        qDebug() << applist.size() << "applist " <<  applist;
         return applist;
     } else {
         qDebug() << "GetAllItemInfos fail! " << reply.error().message();

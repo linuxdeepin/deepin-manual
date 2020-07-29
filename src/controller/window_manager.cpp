@@ -69,14 +69,21 @@ void WindowManager::initDBus()
     }
 }
 
+/**
+ * @brief WindowManager::initWebWindow 初始化主窗口
+ */
 void WindowManager::initWebWindow()
 {
     window = new WebWindow;
-    connect(window, &WebWindow::closed, this, &WindowManager::onWindowClosed);
-    connect(window, &WebWindow::shown, this, &WindowManager::onWindowShown);
+    window->setAppProperty(curr_app_name_, curr_title_name_, curr_keyword_);
     setWindow(window);
     window->show();
-    window->activateWindow();
+
+    qDebug() << Q_FUNC_INFO << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
+
+    initDBus();
+    SendMsg(QString::number(window->winId()));
+    window->initWeb();
 }
 
 void WindowManager::activeOrInitWindow()
@@ -177,7 +184,6 @@ void WindowManager::openManual(const QString &app_name, const QString &title_nam
     activeOrInitWindow();
 }
 
-
 /*** 供　manual_open_proxy::search()接口调用 2020-06-29 18:49:13 wangml ***/
 void WindowManager::openManualWithSearch(const QString &app_name, const QString &keyword)
 {
@@ -186,28 +192,4 @@ void WindowManager::openManualWithSearch(const QString &app_name, const QString 
     activeOrInitWindow();
     qDebug() << Q_FUNC_INFO << app_name << curr_keyword_;
 }
-
-
-void WindowManager::onWindowClosed()
-{
-    SendMsg(QString::number(window->winId()) + "|close");
-}
-
-/**
- * @brief WindowManager::onWindowShown web页面加载完后触发槽
- */
-void WindowManager::onWindowShown()
-{
-    initDBus();
-    //创建search_manager
-//    search_manager_ = new SearchManager(this);
-//    window->setSearchManager(search_manager_);
-
-    window->setAppName(curr_app_name_);
-    window->setTitleName(curr_title_name_);
-    window->setSearchKeyword(curr_keyword_);
-
-    SendMsg(QString::number(window->winId()));
-}
-
 }  // namespace dman

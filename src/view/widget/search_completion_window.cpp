@@ -42,7 +42,6 @@ SearchCompletionWindow::SearchCompletionWindow(QWidget *parent)
 
     this->initUI();
     this->initConnections();
-
 }
 
 SearchCompletionWindow::~SearchCompletionWindow()

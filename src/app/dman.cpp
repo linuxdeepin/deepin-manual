@@ -36,6 +36,7 @@ DWIDGET_USE_NAMESPACE
 
 int main(int argc, char **argv)
 {
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     qputenv("DXCB_FAKE_PLATFORM_NAME_XCB", "true");
     qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu");
     //龙芯机器配置,使得DApplication能正确加载QTWEBENGINE

@@ -36,7 +36,7 @@ public:
 signals:
     void backwardButtonClicked();
     void forwardButtonClicked();
-    void buttonShowSignal();
+
 public slots:
     void setBackwardButtonActive(bool active);
     void setForwardButtonActive(bool active);
