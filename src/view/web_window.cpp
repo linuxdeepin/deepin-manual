@@ -75,6 +75,8 @@ WebWindow::WebWindow(QWidget *parent)
     Dtk::Widget::DPlatformWindowHandle::enableDXcbForWindow(this, true);
 
     search_timer_.setSingleShot(true);
+    setAttribute(Qt::WA_InputMethodEnabled, true);
+
     this->initUI();
     this->initConnections();
     this->initShortcuts();
@@ -298,6 +300,9 @@ void WebWindow::initUI()
         saveWidth = 1024;
         saveHeight = 680;
     }
+
+    //隐藏title阴影
+    this->setTitlebarShadowEnabled(false);
     resize(QSize(saveWidth, saveHeight));
 
 
@@ -623,16 +628,12 @@ void WebWindow::onWebPageLoadFinished(bool ok)
             QString real_path(app_name_);
             if (real_path.contains('/')) {
                 // Open markdown file with absolute path.
-                QTimer::singleShot(150, this, [&]() {
-                    QFileInfo info(real_path);
-                    real_path = info.canonicalFilePath();
-                    web_view_->page()->runJavaScript(QString("open('%1')").arg(real_path));
-                });
+                QFileInfo info(real_path);
+                real_path = info.canonicalFilePath();
+                web_view_->page()->runJavaScript(QString("open('%1')").arg(real_path));
             } else {
                 // Open system manual.
-                QTimer::singleShot(150, this, [&]() {
-                    web_view_->page()->runJavaScript(QString("open('%1')").arg(app_name_));
-                });
+                web_view_->page()->runJavaScript(QString("open('%1')").arg(app_name_));
             }
 
             if (!title_name_.isEmpty()) {
@@ -689,43 +690,63 @@ void WebWindow::onSearchAnchorResult(const QString &keyword, const SearchAnchorR
     }
 }
 
-/**
- * @brief WebWindow::keyPressEvent
- * @param event
- * @note 支持外层窗口ctrl+v直接定位到搜索框同时粘贴, 支持A~Z,0~9 space盲打.
- */
-void WebWindow::keyPressEvent(QKeyEvent *event)
+void WebWindow::inputMethodEvent(QInputMethodEvent *e)
 {
-    if (event->key() == Qt::Key_V &&
-            event->modifiers().testFlag(Qt::ControlModifier)) {
-        const QString &clipboardText = QApplication::clipboard()->text();
-        // support Ctrl+V shortcuts.
-        if (!clipboardText.isEmpty()) {
-            search_edit_->lineEdit()->setText(clipboardText);
-            search_edit_->lineEdit()->setFocus();
-        }
-    } else if (((event->key() <= Qt::Key_Z && event->key() >= Qt::Key_A) ||
-                (event->key() <= Qt::Key_9 && event->key() >= Qt::Key_0) ||
-                (event->key() == Qt::Key_Space)) &&
-               event->modifiers() == Qt::NoModifier) {
+    if (!e->commitString().isEmpty()) {
+        search_edit_->lineEdit()->setText(e->commitString());
         search_edit_->lineEdit()->setFocus();
     }
-    QWidget::keyPressEvent(event);
+
+    QWidget::inputMethodEvent(e);
 }
 
-/**
- * @brief WebWindow::eventFilter 事件过滤
- * @param watched
- * @param event
- * @return
- */
+QVariant WebWindow::inputMethodQuery(Qt::InputMethodQuery prop) const
+{
+    switch (prop) {
+    case Qt::ImEnabled:
+        return true;
+    case Qt::ImCursorRectangle:
+    default:
+        ;
+    }
+
+    return QWidget::inputMethodQuery(prop);
+}
+
 bool WebWindow::eventFilter(QObject *watched, QEvent *event)
 {
-    // 过滤鼠标事件
+    if (event->type() == QEvent::MouseButtonRelease && qApp->activeWindow() == this
+            && watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
+        if (web_view_ != nullptr) {
+            if (web_view_->selectedText().isEmpty()) {
+                this->setFocus();
+            }
+        }
+    }
+    if (event->type() == QEvent::KeyPress && qApp->activeWindow() == this
+            && watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
+        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+        if (keyEvent->key() == Qt::Key_V
+                && keyEvent->modifiers().testFlag(Qt::ControlModifier)) {
+            const QString &clipboardText = QApplication::clipboard()->text();
+            // support Ctrl+V shortcuts.
+            if (!clipboardText.isEmpty()) {
+                search_edit_->lineEdit()->setFocus();
+            }
+        } else if (keyEvent->key() == Qt::Key_C
+                   && keyEvent->modifiers().testFlag(Qt::ControlModifier)) {
+            QApplication::clipboard()->setText(web_view_->selectedText());
+        } else if (((keyEvent->key() <= Qt::Key_Z && keyEvent->key() >= Qt::Key_A)
+                    || (keyEvent->key() <= Qt::Key_9 && keyEvent->key() >= Qt::Key_0)
+                    || (keyEvent->key() == Qt::Key_Space))
+                   && keyEvent->modifiers() == Qt::NoModifier) {
+            search_edit_->lineEdit()->setFocus();
+        }
+    }
+    // Filters mouse press event only.
     if (event->type() == QEvent::MouseButtonPress && qApp->activeWindow() == this &&
             watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
         QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
-        this->web_view_->update();
         if (mouseEvent->button()) {
             switch (mouseEvent->button()) {
             case Qt::BackButton: {
