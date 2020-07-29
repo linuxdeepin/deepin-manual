@@ -21,10 +21,10 @@
 #include "controller/search_result.h"
 #include "search_completion_listview.h"
 
+#include <DBlurEffectWidget>
+
 #include <QPushButton>
 #include <QStringListModel>
-
-#include <DBlurEffectWidget>
 
 DWIDGET_USE_NAMESPACE
 

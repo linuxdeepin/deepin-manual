@@ -24,12 +24,11 @@
 
 #include "search_completion_delegate.h"
 
-#include <QMetaType>
-#include <QString>
-
 #include <DCheckBox>
 #include <DLabel>
 #include <DListView>
+
+#include <QMetaType>
 
 DWIDGET_USE_NAMESPACE
 

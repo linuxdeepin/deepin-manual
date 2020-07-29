@@ -1,12 +1,12 @@
 #include "search_completion_delegate.h"
 #include "base/utils.h"
 
-#include <QPainter>
-#include <QMouseEvent>
-
 #include <DLog>
 #include <DStyleHelper>
 #include <DApplicationHelper>
+
+#include <QPainter>
+#include <QMouseEvent>
 
 SearchCompletionDelegate::SearchCompletionDelegate(QAbstractItemView *parent)
     : DStyledItemDelegate(parent)
@@ -19,7 +19,6 @@ void SearchCompletionDelegate::paint(QPainter *painter, const QStyleOptionViewIt
                                      const QModelIndex &index) const
 {
     if (index.isValid()) {
-
         painter->save();
         painter->setRenderHint(QPainter::Antialiasing, true);
 

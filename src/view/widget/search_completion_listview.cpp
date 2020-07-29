@@ -8,7 +8,6 @@ SearchCompletionListView::SearchCompletionListView(QWidget *parent)
     : DListView(parent)
 {
     setAutoFillBackground(false);
-
     initDelegate();
 }
 
@@ -22,7 +21,7 @@ void SearchCompletionListView::initDelegate()
     this->setItemDelegate(m_searchCompletionDelegate);
 }
 
-QStandardItemModel* SearchCompletionListView::getErrorListSourceModel()
+QStandardItemModel *SearchCompletionListView::getErrorListSourceModel()
 {
     return m_searchCompletionSourceModel;
 }

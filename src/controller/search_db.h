@@ -35,8 +35,6 @@ public:
 
 signals:
     void initDbAsync(const QString &db_path);
-
-    // Only search in anchor.
     void searchAnchor(const QString &keyword);
     void searchAnchorResult(const QString &keyword,
                             const SearchAnchorResultList &result);

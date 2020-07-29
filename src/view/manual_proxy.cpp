@@ -45,11 +45,14 @@ QStringList ManualProxy::getSystemManualList()
 void ManualProxy::openExternalLink(const QString &url)
 {
     qDebug() << "ManualProxy::openExternalLink：" << url;
-
     QDesktopServices::openUrl(url);
 }
 
-/*** 应用图标点击后修改配置文件 2020-06-18 16:30:17 wangml ***/
+/**
+ * @brief ManualProxy::setApplicationState
+ * @param appName
+ * 应用图标点击后修改配置文件
+ */
 void ManualProxy::setApplicationState(const QString &appName)
 {
     QString strApp;
@@ -74,7 +77,11 @@ void ManualProxy::setApplicationState(const QString &appName)
     setting->endGroup();
 }
 
-/*** 获取已经使用过的应用列表 2020-06-18 16:29:15 wangml ***/
+/**
+ * @brief ManualProxy::getUsedAppList
+ * @return
+ * 获取已经使用过的应用列表
+ */
 QStringList ManualProxy::getUsedAppList()
 {
     QSettings *setting = ConfigManager::getInstance()->getSettings();
@@ -109,7 +116,11 @@ void ManualProxy::finishChannel()
     emit channelInit();
 }
 
-/*** 保存应用列表至配置文件并设置状态 2020-06-18 16:32:52 wangml ***/
+/**
+ * @brief ManualProxy::saveAppList
+ * @param list
+ * 保存应用列表至配置文件并设置状态
+ */
 void ManualProxy::saveAppList(const QStringList &list)
 {
     Q_UNUSED(list)

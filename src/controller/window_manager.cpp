@@ -174,7 +174,11 @@ void WindowManager::onNewAppOpen()
     }
 }
 
-/*** F1快捷启动　2020-06-28 18:07:49 wangml ***/
+/**
+ * @brief WindowManager::openManual F1快捷启动
+ * @param app_name
+ * @param title_name
+ */
 void WindowManager::openManual(const QString &app_name, const QString &title_name)
 {
     curr_app_name_ = app_name;
@@ -183,7 +187,12 @@ void WindowManager::openManual(const QString &app_name, const QString &title_nam
     activeOrInitWindow();
 }
 
-/*** 供　manual_open_proxy::search()接口调用 2020-06-29 18:49:13 wangml ***/
+/**
+ * @brief WindowManager::openManualWithSearch
+ * @param app_name
+ * @param keyword
+ * @note 供　manual_open_proxy::search()接口调用
+ */
 void WindowManager::openManualWithSearch(const QString &app_name, const QString &keyword)
 {
     curr_app_name_ = app_name;

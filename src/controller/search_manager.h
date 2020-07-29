@@ -53,7 +53,6 @@ signals:
 private:
     void initSearchManager();
 
-    /*** 2020-06-28 10:42:56 wangml ***/
     SearchDb *db_ ;
     QThread *db_thread_;
 };

@@ -21,15 +21,15 @@
 #include "controller/search_result.h"
 #include "view/settings_proxy.h"
 
-#include <QTimer>
-#include <QtDBus/QtDBus>
-
 #include <DButtonBox>
 #include <DMainWindow>
+#include <DApplicationHelper>
+
+#include <QTimer>
+#include <QtDBus/QtDBus>
 #include <QWebEngineView>
 #include <QAction>
 #include <QClipboard>
-#include <DApplicationHelper>
 
 namespace dman {
 
@@ -47,7 +47,10 @@ class SettingsProxy;
 class SearchEdit;
 class DButtonBox;
 
-
+/**
+ * @brief The WebWindow class
+ * 帮助手册主窗口类，继承
+ */
 class WebWindow : public Dtk::Widget::DMainWindow
 {
     Q_OBJECT

@@ -18,25 +18,24 @@
 #include <QtCore/QStringList>
 #include <QtCore/QVariant>
 
-/*
- * Implementation of adaptor class ManualOpenAdapter
+/**
+ * @brief ManualOpenAdapter::ManualOpenAdapter
+ * @param parent\
+ * @note Implementation of adaptor class ManualOpenAdapter
  */
-
 ManualOpenAdapter::ManualOpenAdapter(QObject *parent)
     : QDBusAbstractAdaptor(parent)
 {
-    // constructor
     setAutoRelaySignals(true);
 }
 
 ManualOpenAdapter::~ManualOpenAdapter()
 {
-    // destructor
 }
 
 void ManualOpenAdapter::Open(const QString &in0)
 {
-    // handle method call com.deepin.Manual.Open.Open
+    // 调用 com.deepin.Manual.Open.Open
     QMetaObject::invokeMethod(parent(), "Open", Q_ARG(QString, in0));
 }
 
@@ -47,12 +46,12 @@ void ManualOpenAdapter::OpenTitle(const QString &in0, const QString &in1)
 
 void ManualOpenAdapter::Search(const QString &keyword)
 {
-    // handle method call com.deepin.Manual.Open.Search
+    // 调用 com.deepin.Manual.Open.Search
     QMetaObject::invokeMethod(parent(), "Search", Q_ARG(QString, keyword));
 }
 
 void ManualOpenAdapter::ShowManual(const QString &in0)
 {
-    // handle method call com.deepin.Manual.Open.ShowManual
+    // 调用 com.deepin.Manual.Open.ShowManual
     QMetaObject::invokeMethod(parent(), "ShowManual", Q_ARG(QString, in0));
 }

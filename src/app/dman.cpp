@@ -78,7 +78,7 @@ int main(int argc, char **argv)
 
     if (!argument_parser.parseArguments()) {
         qDebug() << "argument_parser.parseArguments()";
-        // Exit process after 1000ms.
+        //解析参数失败，１００ｍｓ退出进程
         QTimer::singleShot(100,  [&]() {
             app.quit();
         });
@@ -94,7 +94,7 @@ int main(int argc, char **argv)
 
     // fix error for cutelogger
     // No appenders associated with category js
-    // .....TO DO what????
+    // 日志相关
     auto category = "js";
     auto fileAppender =
         new Dtk::Core::RollingFileAppender(Dtk::Core::DLogManager::getlogFilePath());

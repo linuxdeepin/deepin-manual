@@ -69,7 +69,6 @@ SearchManager::~SearchManager()
     db_thread_->wait();
     delete db_thread_;
     db_thread_ = nullptr;
-    /*** 2020-06-28 13:39:53 wangml ***/
     delete  db_;
     db_ = nullptr;
 }

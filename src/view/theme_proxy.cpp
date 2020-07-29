@@ -12,7 +12,7 @@ dman::ThemeProxy::~ThemeProxy()
 
 /**
  * @brief dman::ThemeProxy::slot_ThemeChange
- * @note 系统主题颜色改变时调用
+ * 系统主题颜色改变时调用
  */
 void dman::ThemeProxy :: slot_ThemeChange()
 {
@@ -20,8 +20,9 @@ void dman::ThemeProxy :: slot_ThemeChange()
 }
 
 /**
- * @brief dman::ThemeProxy::getTheme 获取系统主题颜色，白色/黑色
+ * @brief dman::ThemeProxy::getTheme
  * @return
+ * 获取系统主题颜色，白色/黑色
  */
 QString dman::ThemeProxy :: getTheme() const
 {

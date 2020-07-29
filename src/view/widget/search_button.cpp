@@ -19,15 +19,14 @@
 #include "base/utils.h"
 #include "resources/themes/images.h"
 
-#include <QHBoxLayout>
-#include <QStylePainter>
-#include <QMouseEvent>
-
 #include <DStyleHelper>
 #include <DApplicationHelper>
 #include <DFontSizeManager>
-
 #include <DLog>
+
+#include <QHBoxLayout>
+#include <QStylePainter>
+#include <QMouseEvent>
 
 DWIDGET_USE_NAMESPACE
 
@@ -105,11 +104,9 @@ void SearchButton::leaveFocus()
 {
     m_bHover = false;
     if (DGuiApplicationHelper::DarkType == DGuiApplicationHelper::instance()->themeType()) {
-
         QPixmap iconPm = Utils::renderSVG(QString(kImageDarkSearchIcon), QSize(20, 20));
         iconBtn->setIcon(iconPm);
     } else {
-
         QPixmap iconPm = Utils::renderSVG(QString(kImageLightSearchIcon), QSize(20, 20));
         iconBtn->setIcon(iconPm);
     }
@@ -136,7 +133,6 @@ void SearchButton::onThemeChange(DGuiApplicationHelper::ColorType themeType)
 
 void SearchButton::paintEvent(QPaintEvent *event)
 {
-
     Q_UNUSED(event)
 
     QStylePainter painter(this);
@@ -165,7 +161,6 @@ void SearchButton::paintEvent(QPaintEvent *event)
         paLabel.setColor(DPalette::WindowText, paLabel.color(DPalette::Text));
         m_textLabel->setPalette(paLabel);
         leaveFocus();
-
     }
 }
 
@@ -197,8 +192,8 @@ void SearchButton::enterEvent(QEvent *event)
 void SearchButton::leaveEvent(QEvent *event)
 {
     Q_UNUSED(event);
-    qDebug() << "-----------leaveEvent-------";
     m_bHover = false;
+    //根据不同系统主题使用不同的Ｉｃｏｎ
     if (DGuiApplicationHelper::DarkType == DGuiApplicationHelper::instance()->themeType()) {
 
         QPixmap iconPm = Utils::renderSVG(QString(kImageDarkSearchIcon), QSize(20, 20));

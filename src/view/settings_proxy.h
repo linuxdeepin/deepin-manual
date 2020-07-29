@@ -21,11 +21,11 @@
 #include <QObject>
 #include <QVariantMap>
 
-namespace dman
-{
+namespace dman {
 
 /**
- * Expose backend settings to web page.
+ * @brief The SettingsProxy class
+ * 页面设置接口类
  */
 class SettingsProxy : public QObject
 {
@@ -38,17 +38,7 @@ Q_SIGNALS:
     void fontChangeRequested(const QString &fontFamily, int pixelSize);
 
 public Q_SLOTS:
-
-    /**
-     * Request to open url in external web browser.
-     * @param url
-     */
     void openUrl(const QString &url);
-
-
-    /**
-     * Raise main window.
-     */
     void raiseWindow();
 };
 

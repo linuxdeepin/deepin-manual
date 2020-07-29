@@ -21,34 +21,38 @@
 
 namespace dman {
 
-SearchEdit::SearchEdit(QWidget* parent) : DSearchEdit(parent) {
+SearchEdit::SearchEdit(QWidget *parent)
+    : DSearchEdit(parent)
+{
 
 }
 
-SearchEdit::~SearchEdit() {
+SearchEdit::~SearchEdit()
+{
 
 }
 
-void SearchEdit::keyPressEvent(QKeyEvent* event) {
-  switch (event->key()) {
+void SearchEdit::keyPressEvent(QKeyEvent *event)
+{
+    switch (event->key()) {
     case Qt::Key_Up: {
-      emit this->upKeyPressed();
-      break;
+        emit this->upKeyPressed();
+        break;
     }
     case Qt::Key_Down: {
-      emit this->downKeyPressed();
-      break;
+        emit this->downKeyPressed();
+        break;
     }
-    case Qt::Key_Return:  // Fall through
+    case Qt::Key_Return:
     case Qt::Key_Enter: {
-      emit this->enterPressed();
-      break;
+        emit this->enterPressed();
+        break;
     }
     default: {
     }
-  }
+    }
 
-  DSearchEdit::keyPressEvent(event);
+    DSearchEdit::keyPressEvent(event);
 }
 
 }  // namespace dman

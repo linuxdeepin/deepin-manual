@@ -20,7 +20,6 @@
 #include <DLog>
 #include <QApplication>
 #include <QDesktopWidget>
-#include <QLabel>
 #include <QMouseEvent>
 #include <QPainter>
 #include <QResizeEvent>
@@ -29,7 +28,6 @@
 #include <QtCore/QTimer>
 #include <QImageReader>
 
-DWIDGET_USE_NAMESPACE
 namespace dman {
 
 namespace {
@@ -50,6 +48,12 @@ ImageViewer::ImageViewer(QWidget *parent)
 
 ImageViewer::~ImageViewer() {}
 
+
+/**
+ * @brief ImageViewer::open
+ * @param filepath
+ * @note 根据给定的图片文件路径，打开图片并全屏显示
+ */
 void ImageViewer::open(const QString &filepath)
 {
     qDebug() << Q_FUNC_INFO << filepath;
@@ -95,7 +99,7 @@ void ImageViewer::open(const QString &filepath)
                     static_cast<int>((screen_rect.height() - image.height()) / 2.0));
     img_label_->move(img_rect.topLeft());
 
-    // Move close button to top-right corner of image.
+    //关闭按钮移到图片右上角
     const QPoint top_right_point = img_rect.topRight();
     close_button_->move(top_right_point.x() - kCloseBtnSize / 2,
                         top_right_point.y() - kCloseBtnSize / 2);
@@ -117,8 +121,8 @@ void ImageViewer::initUI()
     close_button_->setFixedSize(45, 45);
 
     this->setContentsMargins(kBorderSize, kBorderSize, kBorderSize, kBorderSize);
-    this->setWindowFlags(Qt::FramelessWindowHint | Qt::BypassWindowManagerHint | Qt::Dialog |
-                         Qt::WindowStaysOnTopHint);
+    this->setWindowFlags(Qt::FramelessWindowHint | Qt::BypassWindowManagerHint
+                         | Qt::Dialog | Qt::WindowStaysOnTopHint);
     this->setAttribute(Qt::WA_TranslucentBackground, true);
     this->setModal(true);
 

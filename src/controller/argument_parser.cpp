@@ -65,7 +65,6 @@ bool ArgumentParser::parseArguments()
     if (!conn.registerService(kManualOpenService)
             || !conn.registerObject(kManualOpenIface, proxy)) {
         qDebug() << "Failed to register dbus";
-        // Open appName list with dbus interface.
         const QStringList position_args = parser.positionalArguments();
         if (!position_args.isEmpty()) {
             qDebug() << Q_FUNC_INFO << "position_args is not empty";

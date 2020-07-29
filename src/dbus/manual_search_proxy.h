@@ -19,9 +19,15 @@
 #define DEEPIN_MANUAL_DBUS_MANUAL_SEARCH_PROXY_H
 
 #include <DSysInfo>
+#include <DSysInfo>
+
 #include <QDBusConnection>
 #include <QObject>
 
+/**
+ * @brief The ManualSearchProxy class
+ * 用于判断是否存在给定应用名称对应的帮助手册内容
+ */
 class ManualSearchProxy : public QObject
 {
     Q_OBJECT

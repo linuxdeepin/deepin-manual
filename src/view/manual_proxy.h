@@ -19,17 +19,15 @@
 #define DEEPIN_MANUAL_VIEW_MANUAL_PROXY_H
 
 #include <DSysInfo>
+
 #include <QDebug>
 #include <QList>
 #include <QObject>
-
 #include <QDBusConnection>
 #include <QDesktopServices>
-
 #include <QtAlgorithms>
-#include <qalgorithms.h>
 
-class LauncherInterface;
+#include <qalgorithms.h>
 
 namespace dman {
 
@@ -47,10 +45,6 @@ public slots:
     QString getSystemManualDir();
     QStringList getSystemManualList();
 
-    /**
-     * Open link with xdg-open.
-     * @param url
-     */
     void openExternalLink(const QString &url);
     void setApplicationState(const QString &appName);
     QStringList getUsedAppList();

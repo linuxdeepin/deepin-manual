@@ -46,9 +46,9 @@ const char kLauncherIface[] = "/com/deepin/dde/daemon/Launcher";
 
 namespace  {
 /**
- * Read manual id from app desktop file.
- * @param desktop_file Absolute path to app desktop file.
- * @return Returns manual id if exists or else returns empty string.
+ * 从应用程序桌面文件获取帮助手册id。
+ * @param desktop_file 桌面文件的绝对路径
+ * @return 返回帮助手册id如果存在,否则返回空字符串。
  */
 QString GetDeepinManualId(const QString &desktop_file)
 {
@@ -109,7 +109,12 @@ QDBusArgument &operator<<(QDBusArgument &argument, const ReplyStruct &info)
     return argument;
 }
 
-// Retrieve the MyStructure data from the D-Bus argument
+/**
+ * @brief operator >> //结构体数据检查
+ * @param argument
+ * @param info
+ * @return
+ */
 const QDBusArgument &operator>>(const QDBusArgument &argument, ReplyStruct &info)
 {
     argument.beginStructure();
@@ -285,6 +290,10 @@ QString Utils::translateTitle(const QString &titleUS)
     return strRet;
 }
 
+/**
+ * @brief Utils::launcherInterface
+ * @return 返回系统所有应用列表
+ */
 QList<AppInfo> Utils::launcherInterface()
 {
     qRegisterMetaType<ReplyStruct>("ReplyStruct");
@@ -308,7 +317,6 @@ QList<AppInfo> Utils::launcherInterface()
         QList<ReplyStruct> list;
         list  = reply.value();
 
-        //    qDebug() << "dbusMsg ---- : " << list;
         for (int var = 0; var < list.size(); ++var) {
             AppInfo app;
             app.key = list.at(var).m_key;
@@ -329,8 +337,7 @@ QList<AppInfo> Utils::launcherInterface()
 
 /**
  * @brief Utils::getSystemManualList
- * @return
- * @note 获取系统应用列表
+ * @return　返回系统中存在帮助手册的应用列表
  */
 QStringList Utils::getSystemManualList()
 {
@@ -357,7 +364,7 @@ QStringList Utils::getSystemManualList()
     for (int var = 0; var < list.size(); ++var) {
         appMap.insert(list.at(var).installed_time, list.at(var));
     }
-    //Installation time phase at the same time, sorted by name
+    //安装时间相同时,按名称排序
     QList<AppInfo> listApp = sortAppList(appMap);
 
     for (int i = 0; i < listApp.size(); ++i) {
@@ -409,8 +416,8 @@ QString Utils::getSystemManualDir()
 /**
  * @brief Utils::sortAppList
  * @param map
- * @return
- * @note appList　排序
+ * @return 返回排序后的ａｐｐｌｉｓｔ
+ * @note appList　排序,如果安装时间相同时按字母前后排序
  */
 QList<AppInfo> Utils::sortAppList(QMultiMap<qlonglong, AppInfo> map)
 {

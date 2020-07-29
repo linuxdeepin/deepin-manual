@@ -32,7 +32,7 @@ extern const char CONFIG_WINDOW_HEIGHT[];
 extern const char CONFIG_WINDOW_INFO[];
 extern const char CONFIG_APPLIST[];
 
-// Get user cache directory.
+// 获取用户缓存目录
 QString GetCacheDir();
 
 }  // namespace dman

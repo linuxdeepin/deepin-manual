@@ -21,22 +21,26 @@
 #include <QDBusConnection>
 #include <QObject>
 
+/**
+ * @brief The ManualOpenProxy class
+ * 用于其他应用通过按键F1调用DBus接口唤起帮助手册窗口并展示对应的帮助内容
+ */
 class ManualOpenProxy : public QObject
 {
     Q_OBJECT
 public:
-    explicit ManualOpenProxy(QObject* parent = nullptr);
+    explicit ManualOpenProxy(QObject *parent = nullptr);
     ~ManualOpenProxy() override;
 
 signals:
-    void openManualRequested(const QString& app_name, const QString& title_name);
-    void searchRequested(const QString& keyword);
+    void openManualRequested(const QString &app_name, const QString &title_name);
+    void searchRequested(const QString &keyword);
 
 public slots:
-    void Open(const QString& app_name);
-    void OpenTitle(const QString& app_name, const QString& title_name);
-    void ShowManual(const QString& app_name);
-    void Search(const QString& keyword);
+    void Open(const QString &app_name);
+    void OpenTitle(const QString &app_name, const QString &title_name);
+    void ShowManual(const QString &app_name);
+    void Search(const QString &keyword);
 };
 
 #endif  // DEEPIN_MANUAL_DBUS_MANUAL_OPEN_PROXY_H

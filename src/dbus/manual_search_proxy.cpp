@@ -18,10 +18,10 @@
 #include "dbus/manual_search_proxy.h"
 #include "dbus/dbus_consts.h"
 
+#include <DLog>
+
 #include <QDir>
 #include <QtDBus/QtDBus>
-
-#include <DLog>
 
 ManualSearchProxy::ManualSearchProxy(QObject *parent)
     : QObject(parent)
@@ -72,6 +72,11 @@ void ManualSearchProxy::RecvMsg(const QString &data)
     return;
 }
 
+/**
+ * @brief ManualSearchProxy::OnNewWindowOpen
+ * @param data
+ * @note 配合WindowManager类用于多窗口管理，帮助手册窗口的打开/激活
+ */
 void ManualSearchProxy::OnNewWindowOpen(const QString &data)
 {
     qDebug() << "Search data is: " << data;
@@ -90,6 +95,12 @@ void ManualSearchProxy::OnNewWindowOpen(const QString &data)
     }
 }
 
+/**
+ * @brief ManualSearchProxy::ManualExists
+ * @param app_name
+ * @return
+ * @note 根据给定的应用名称，判断对应的帮助手册内容是否存在
+ */
 bool ManualSearchProxy::ManualExists(const QString &app_name)
 {
     QString strManualPath = DMAN_MANUAL_DIR;

@@ -20,12 +20,12 @@
 #include "base/utils.h"
 
 #include <DLog>
-#include <QStylePainter>
-#include <QVBoxLayout>
-
 #include <DPlatformWindowHandle>
 #include <DStyleHelper>
 #include <DWindowManagerHelper>
+
+#include <QStylePainter>
+#include <QVBoxLayout>
 
 namespace dman {
 
@@ -108,7 +108,6 @@ void SearchCompletionWindow::goUp()
     if (nullptr == search_compeletion_model_) {
         return;
     }
-
     if (search_compeletion_model_->rowCount() == 0) {
         search_button_->setChecked(true);
     } else {
@@ -138,7 +137,7 @@ void SearchCompletionWindow::onEnterPressed()
         const QModelIndex idx = result_view_->currentIndex();
         this->onResultListClicked(idx);
     }
-    // Hide completion window whenever any items was activated.
+    // 点击任何一个Ｉｔｅｍ后都隐藏整个窗口
     this->hide();
 }
 
@@ -150,8 +149,7 @@ void SearchCompletionWindow::setKeyword(const QString &keyword)
     search_button_->setText(
         metrics.elidedText(
             QObject::tr("Search for \"%1\" in the full text").arg(keyword),
-            Qt::ElideRight,
-            350 - 39));
+            Qt::ElideRight, 350 - 39));
 }
 
 void SearchCompletionWindow::setSearchAnchorResult(const SearchAnchorResultList &result)
@@ -160,7 +158,6 @@ void SearchCompletionWindow::setSearchAnchorResult(const SearchAnchorResultList 
 
     QList<SearchCompletionItemModel> searchDataList;
     for (const SearchAnchorResult &entry : result) {
-//        QString anchor = QString("%1(%2)").arg(entry.anchor, entry.app_display_name);
         SearchCompletionItemModel model;
         model.strSearchKeyword = entry.anchor;
         model.strSearchAnchorId = entry.anchorId;
@@ -190,7 +187,6 @@ void SearchCompletionWindow::initSearchCompletionListData(QList<SearchCompletion
     search_compeletion_model_ = new QStandardItemModel(result_view_);
 
     for (int i = 0; i < dataList.size(); i++) {
-
         QStandardItem *item = new QStandardItem;
         SearchCompletionItemModel itemModel = dataList.at(i);
         item->setData(QVariant::fromValue(itemModel), Qt::DisplayRole);
@@ -225,9 +221,9 @@ void SearchCompletionWindow::initUI()
     this->setContentsMargins(0, 0, 0, 0);
     this->setMinimumHeight(kItemHeight);
     this->setFixedWidth(350);
-    this->setWindowFlags(Qt::FramelessWindowHint |
-                         Qt::CustomizeWindowHint |
-                         Qt::BypassWindowManagerHint);
+    this->setWindowFlags(Qt::FramelessWindowHint
+                         | Qt::CustomizeWindowHint
+                         | Qt::BypassWindowManagerHint);
     this->setAttribute(Qt::WA_NativeWindow, true);
 }
 
@@ -243,7 +239,6 @@ void SearchCompletionWindow::paintEvent(QPaintEvent *event)
     DStyleHelper styleHelper;
     QColor fillColor;
     if (DWindowManagerHelper::instance()->hasComposite()) {
-
         fillColor = pa.color(DPalette::FrameBorder);
     } else {
         DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
@@ -264,10 +259,9 @@ void SearchCompletionWindow::onResultListClicked(const QModelIndex &index)
         emit this->resultClicked(result_.at(row));
         result_view_->setCurrentIndex(QModelIndex());
     } else {
-        // Simulate button click event.
+        // 模拟按钮单击事件。
         emit this->searchButtonClicked();
     }
-
     this->hide();
 }
 
