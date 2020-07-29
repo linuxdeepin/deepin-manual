@@ -206,7 +206,12 @@ QString Utils::fromSpecialEncoding(const QString &inputStr)
     }
 }
 
-/*** 返回title映射字段，目前主要用于＂控制中心＂跳转 2020-06-29 11:19:37 wangml ***/
+/**
+ * @brief Utils::translateTitle 返回title映射字段，目前主要用于＂控制中心＂跳转
+ * @param titleUS
+ * @return
+ * @note 除简体中文外,其他暂时都当英文.
+ */
 QString Utils::translateTitle(const QString &titleUS)
 {
     QString strRet = titleUS;
@@ -215,12 +220,8 @@ QString Utils::translateTitle(const QString &titleUS)
         if (languageArr[i][0] == titleUS) {
             if (QLocale::system().name() == "zh_CN") {
                 strRet = languageArr[i][1];
-                return strRet;
-            } else if (QLocale::system().name() == "en_US") {
-                strRet = languageArr[i][2];
-                return strRet;
             } else {
-                break;
+                strRet = languageArr[i][2];
             }
         }
     }
