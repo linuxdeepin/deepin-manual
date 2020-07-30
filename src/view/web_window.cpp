@@ -231,7 +231,9 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
 
     if (event->type() == QEvent::MouseButtonRelease && qApp->activeWindow() == this &&
             watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
-        this->setFocus();
+        if (web_view_->selectedText().isEmpty()) {
+            this->setFocus();
+        }
     }
     if (event->type() == QEvent::KeyPress && qApp->activeWindow() == this &&
             watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
@@ -254,33 +256,33 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
         }
     }
     // Filters mouse press event only.
-    if (event->type() == QEvent::MouseButtonPress && qApp->activeWindow() == this &&
-            watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
-        QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
-//        this->web_view_->update();
-        if (mouseEvent->button()) {
-            switch (mouseEvent->button()) {
-            case Qt::BackButton: {
-                qDebug() << "eventFilter back";
-                emit title_bar_proxy_->backwardButtonClicked();
-                break;
-            }
-            case Qt::ForwardButton: {
-                qDebug() << "eventFilter forward";
-                emit title_bar_proxy_->forwardButtonClicked();
-                break;
-            }
-            case Qt::MiddleButton: {
-                return true;
-            }
-            default: {
-            }
-            if (!search_edit_->geometry().contains(this->mapFromGlobal(QCursor::pos()))) {
-                completion_window_->hide();
-            }
-            }
-        }
-    }
+//    if (event->type() == QEvent::MouseButtonPress && qApp->activeWindow() == this &&
+//            watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
+//        QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
+////        this->web_view_->update();
+//        if (mouseEvent->button()) {
+//            switch (mouseEvent->button()) {
+//            case Qt::BackButton: {
+//                qDebug() << "eventFilter back";
+//                emit title_bar_proxy_->backwardButtonClicked();
+//                break;
+//            }
+//            case Qt::ForwardButton: {
+//                qDebug() << "eventFilter forward";
+//                emit title_bar_proxy_->forwardButtonClicked();
+//                break;
+//            }
+//            case Qt::MiddleButton: {
+//                return true;
+//            }
+//            default: {
+//            }
+//            if (!search_edit_->geometry().contains(this->mapFromGlobal(QCursor::pos()))) {
+//                completion_window_->hide();
+//            }
+//            }
+//        }
+//    }
 
     //过滤字体改变事件
     if (event->type() == QEvent::FontChange && watched == this) {
