@@ -1,86 +1,91 @@
-# Editor|../common/deepin-editor.svg|
+# Text Editor|../common/deepin-editor.svg|
 
 ## Overview
 
-Deepin Editor is a simple text editing tool. You can use it to write a simple text document, or use its advanced features as a code editing tool that supports code syntax highlighting.
+Text Editor is a simple text editing tool. You can use it to write a simple text document, or use its advanced features as a code editing tool that supports code syntax highlighting.
 
-![overview](jpg/overview.jpg)
+![overview](jpg/overview.png)
 
 ## Guide
 
-### Run Deepin Editor
+### Run Text Editor
 
-On Dock, click on ![launcher_icon](icon/launcher_icon.svg) to enter Launcher.  Search or browse to find Deepin Editor ![deepin-editor](icon/deepin-editor.svg), click to open it.
+Click ![deepin-launcher](icon/deepin-launcher.svg)on dock to enter the Launcher interface.  Locate Text Editor ![deepin-editor](icon/deepin-editor.svg)
 
-In Launcher, right click on Deepin Editor, you can:
+by  scrolling the mouse wheel or searching "text editor" in the Launcher interface and click it to run.
 
-  - Click on **Send to desktop** to create a desktop shortcut.
-  - Click on **Send to dock** to fix its icon on Dock.
-  - Click on **Add to startup** to add it to startup, it will auto run when system boots.
+In Launcher, right-click Text Editor and you can:
 
-### Exit Deepin Editor
+  - Click **Send to desktop** to create a desktop shortcut.
+  - Click **Send to dock** to fix its icon on Dock.
+  - Click **Add to startup** to add it to startup and it will auto run when system boots.
 
-- On Deepin Editor interface, click on ![close](icon/close_icon.svg) to exit.
-- On Deepin Editor interface, click on ![icon_menu](icon/icon_menu.svg) > **Exit** to exit.
-- Right click on ![deepin-editor](icon/deepin-editor.svg) on Dock, select **Close All** to exit.
+### Exit Text Editor
+
+- On the Text Editor interface, click![close](icon/close.svg) to exit.
+- On the Text Editor interface, click![icon_menu](icon/icon_menu.svg) > **Exit** to exit.
+- Right-click ![deepin-editor](icon/deepin-editor.svg) on Dock and select **Close All** to exit.
 
 ### View Shortcuts
 
-On Deepin Editor Interface, press ![Ctrl](icon/Ctrl.svg)+![Shift](icon/Shift.svg)+![QM](icon/QM.svg) to view all the shortcuts. You can get them in Settings as well. Using shortcuts will greatly improve your work efficiency.
+On the Text Editor Interface, press **Ctrl+ Shift+?** to view all the shortcuts. You can get them in Settings as well. Using shortcuts will greatly improve your work efficiency.
 
-![1|hotkey](jpg/hotkey.jpg)
+![1|hotkey](jpg/hotkey.png)
 
 ## Basic Operations
 
 ### Create Document
 
-Click ![plus_icon](icon/plus_icon.svg) on the title bar, or press ![Ctrl](icon/Ctrl.svg) +![N](icon/N.svg), or select **New window** and **New tab** in the main menu, you can create blank document in Deepin Editor.
+Click ![plus_icon](icon/+.svg) on the title bar, or press **Ctrl+N**, or click ![icon_menu](icon/icon_menu.svg) > **New window** or **New tab** to create a blank document in Text Editor.
 
-### Open File
+### Open Files
 
 You can open the text file in the following ways, and the selected file will open in the new tab:
 
-- Drag and drop the file to Deepin Editor interface or its icon.
-- Right click the file and open it with Deepin Editor. After selecting Deepin Editor as the default program, you can double-click the file to open it directly.
-- In Deepin Editor interface, click ![icon_menu](icon/icon_menu.svg) > **Open file** and select the file.
-- In Deepin Editor interface, use ![Ctrl](icon/Ctrl.svg) + ![O](icon/O.svg) to open the file.
+- Drag the file directly to the Text Editor interface or its icon.
+- Right-click the file and open it with Text Editor. After selecting Text Editor as the default program, you can double-click the file to open it directly.
+- On the Text Editor interface, click ![icon_menu](icon/icon_menu.svg) > **Open file** and select the file.
+- On the Text Editor interface, use **Ctrl+O** to open the file.
 
-> ![tips](icon/tips.svg): You can open multiple files at one time.
+> ![tips](icon/tips.svg)Tips: You can open multiple files at one time.
 
-### Save File
+### Save Files
 
-- Press ![Ctrl](icon/Ctrl.svg) + ![S](icon/S.svg) to save the current document.
-- Press ![icon_menu](icon/icon_menu.svg) > **Save** to save the file.
+- Press **Ctrl+ S** to save the current document.
+- Click ![icon_menu](icon/icon_menu.svg) > **Save** to save the file.
 
-You can also press ![Ctrl](icon/Ctrl.svg) + ![Shift](icon/Shift.svg) + ![S](icon/S.svg) to save the file as  a new one.
+You can also press **Ctrl+Shift+S** to save the file as  a new one.
 
-### Close File
+### Close Files
 
-- Press ![Ctrl](icon/Ctrl.svg) + ![W](icon/W.svg) to close the file.
-- Move cursor to the title, click the close button there to close the file.
-- Right click the title, select **Close tab** or **Close other tabs**.
+- Press **Ctrl+W** to close the current file.
+- Move the cursor to the title and click the ![close](icon/close.svg)button there or the mouse middle button to close the file.
+- Right-click the title and select **Close tab** or **Close other tabs**.
+- Right-click the title and select **More ways to close**.
 
-> ![notes](icon/notes.svg): If you make changes to the file but have not saved it, Deepin Editor will prompt you to save it when closing.
+> ![notes](icon/notes.svg)Notes: If you make changes to the file but have not saved it, Text Editor will prompt you to save it before closing.
 
-### Print Document
+### Print Documents
 
-To print file in Deepin Editor, you should have connected and configured the printer.
+To print a file in Text Editor, you should connect and configure the printer first.
 
-1. Click ![icon_menu](icon/icon_menu.svg) > **Print**, or press ![Ctrl](icon/Ctrl.svg) + ![P](icon/P.svg) to open print preview.
+1. Click ![icon_menu](icon/icon_menu.svg) > **Print**, or press **Ctrl+P** to open the print preview interface.
 
-2. In the preview interface, preview the document and set the printing page.
+2.  On the preview interface, preview the document and set the printing page. 
 
-3. Click the printer icon on the right of preview window. In the pop-up window, select the printer and set the parameters. 
+3.  Click the printer icon on the right of preview window. In the pop-up window, select the printer and set the parameters. 
 
-4. Click **Print** to start print.
+4.  Click **Print** to start printing.
 
-![preview](jpg/preview.jpg)
-![pagesetup](jpg/pagesetup.jpg)
-![printer](jpg/printer.jpg)
+![preview](jpg/preview.png)
 
-### Manage Tab
+![pagesetup](jpg/pagesetup.png)
 
-In Deepin Editor, you can drag to reorder tabs within the same window, remove tab to create a new window, or move tab from one window to another.
+![printer](jpg/printer.png)
+
+### Manage Tabs
+
+In Text Editor, you can drag to reorder tabs within the same window, remove the tab out to create a new window, or move the tab from one window to another.
 
 #### Tab Shortcuts
 
@@ -93,7 +98,7 @@ In Deepin Editor, you can drag to reorder tabs within the same window, remove ta
 | Close other tabs | Ctrl + Shift + W |
 | Restore tab (Reopen closed tab) | Ctrl + Shift + T |
 
-## Edit Text
+## Edit Texts
 
 ### Move Cursor
 
@@ -113,24 +118,30 @@ In addition to using the arrow keys and mouse clicks, you can also use the follo
 | Forward over a pair (Jump forward after the right parenthesis) | Alt + P |
 | Backward over a pair (Jump backward before the left parenthesis) | Alt + N |
 
-### Change Case
+### Change Cases
 
 It helps you change the case of selected text. You can change it to lowercase, uppercase, or capitalize the initial.
 
 1. Select the text.
-2. Right click and select **Change Case**.
+2. Right-click and select **Change Case**.
 3. Choose **Upper Case**, **Lower Case**, or **Capitalize**. The changes will take effect immediately.
 
-You can also use ![Alt](icon/Alt.svg) + ![U](icon/U.svg) / ![L](icon/L.svg) / ![C](icon/C.svg) to quickly switch the cases.
+You can also use **Alt + U/ L/ C** to quickly switch the cases.
 
-### Highlight Text
-Deepin Editor supports highlighting different kinds of texts.
 
-Click the triangle symbol at the right corner of status bar at bottom, and select the type of text you want to highlight.
+
+![toggle-case](jpg/toggle-case.png)
+
+
+
+### Highlight Texts
+Text Editor supports highlighting different kinds of texts.
+
+Click the triangle symbol at the far right corner of the status bar at the bottom, and select the type of text you want to highlight. The corresponding contents in the text will be highlighted automatically.
 
 ![highlight](jpg/highlight.png)
 
-### Delete Text
+### Delete Texts
 
 In addition to deleting characters one by one, you can quickly delete characters by using the following shortcuts:
 
@@ -143,35 +154,35 @@ In addition to deleting characters one by one, you can quickly delete characters
 
 ### Undo
 
-If you make a misoperation, press ![Ctrl](icon/Ctrl.svg) + ![Z](icon/Z.svg) to undo it, or right click and select **Undo**.
+If you make a misoperation, press **Ctrl+Z** to undo it, or right-click to select **Undo**.
 
-### Find Text
+### Find Texts
 
-1. Click on ![menu](icon/icon_menu.svg), and select **Find**, or press ![Ctrl](icon/Ctrl.svg) + ![F](icon/F.svg) to open "Find" box below.
-2. Input the text you want to find. Once input, all the matches will be highlighted.
-3. Click **Next**, **Previous** to find each match, or press ![Enter](icon/Enter.svg) to find next match.
-4. Press ![Esc](icon/Esc.svg) or click close button to close the dialog box.
+1. Click ![menu](icon/icon_menu.svg), and select **Find**, or press **Ctrl+F** to open the "Find" box below.
+2. Input the text you want to find. 
+3. Click **Next**, **Previous** to find each match, or press **Enter** key to find the next match.
+4. Press **Esc** key or click the close button to close the dialog box.
 
-> ![tips](icon/tips.svg): Select the text and then press ![Ctrl](icon/Ctrl.svg) + ![F](icon/F.svg), the text will be automatically in the "Find" box.
+> ![tips](icon/tips.svg)Tips: Select the text and then press **Ctrl+F** and the text will be automatically displayed in the "Find" box.
 
-### Replace Text
-1. Click on ![menu](icon/icon_menu.svg), and select **Replace**, or press ![Ctrl](icon/Ctrl.svg) + ![H](icon/H.svg) to open "Replace" box below.
-2. Input the text to be replaced and the new text.
-3. Click **Replace** to replace the matches one by one, click **Replace Rest**、**Replace All** to replace the rest or all the matches. Click **Skip** to skip the current matching text.
-4. Press ![Esc](icon/Esc.svg) or click close button to close the dialog box.
+### Replace Texts
+1. Click ![menu](icon/icon_menu.svg), and select **Replace**, or press **Ctrl+H** to open the "Replace" box below.
+2.  Input the text to be replaced and the new text.
+3.  Click **Replace** to replace the matches one by one and click **Replace Rest** and **Replace All** to replace the rest or all the matches at once. Click **Skip** to skip the current matching text.
+4.  Press **Esc** or click close button to close the dialog box.
 
 ### Go to Line
-Use it to jump to specific line directly.
-Right click and select **Go to Line**, or press ![Ctrl](icon/Ctrl.svg) + ![G](icon/G.svg), and then input the line number to go to that line.
+Use Go to Line to jump to the specific line directly.
+Right-click and select **Go to Line**, or press **Ctrl+G** and then input the line number to go to that line.
 
 ### Edit Line
 
-Use below shortcuts to edit lines easily:
+Use the shortcuts below to edit lines easily:
 
 | Function  |  Shortcuts |
 | ------------ | ------------ |
 | New line above (Insert one line above) | Ctrl + Enter |
-| New line below(Insert one line below) | Ctrl + Shift + Enter |
+| New line below (Insert one line below) | Ctrl + Shift + Enter |
 | Duplicate line | Ctrl + Shift + D |
 | Swap line up (Swap the current line with above line) | Ctrl + Shift + Up |
 | Swap line down (Swap the current line with below line)  | Ctrl + Shift + Down |
@@ -183,55 +194,72 @@ Use below shortcuts to edit lines easily:
 | Cut line | Super + X |
 | Merge lines | Ctrl + J |
 
+### Enable/Disable Read-only Mode
+
+1. Open the document with Text Editor and right-click to select **Turn on Read-only Mode**.
+
+![read-only](jpg/read-only.png)
+
+2.  Right-click to select **Turn off Read-only Mode** under the read-only mode.
+
+![read-only](jpg/read-only-02.png)
+
+
 
 ## Main Menu
 
-### Switch Theme
+On the main menu, you can create new windows and new tabs, search the contents to be replaced, save documents, switch window themes, view help manual and get more information about Text Editor.
 
-Deepin Editor has various themes for you to change its style.
+### Settings
 
-Click ![icon_menu](icon/icon_menu.svg) > **Switch Theme**, and select the theme you want. It will change immediately.
+It is available to set the basic information, shortcuts and advanced information in settings.
 
-### Basic Settings
-#### Font Style
+#### Basic Settings
 
-1. Click ![icon_menu](icon/icon_menu.svg) > **Settings**.
-2. In Settings window, select the font and font size.
-3. The text will then use the new font and font size.
+Click ![icon_menu](icon/icon_menu.svg) > **Settings** and you can perform the following in the Settings window:
 
-> ![tips](icon/tips.svg): You can also use ![Ctrl](icon/Ctrl.svg) + ![+](icon/+.svg)/ ![-](icon/-.svg) to adjust the font size, and press ![Ctrl](icon/Ctrl.svg) + ![0](icon/0.svg) to reset font size.
+- Select the Font and Font Size.
+- Check or uncheck  **Word Wrap**.
 
-### Shortcuts
-1. Click ![icon_menu](icon/icon_menu.svg) > **Settings**.
+> ![tips](icon/tips.svg)Tips: You can also use **Ctrl + “+”/ “-” ** to adjust the font size, and press **Ctrl+0** to restore default font size.
+
+#### Shortcuts Settings
+1. Click ![icon_menu](icon/icon_menu.svg) > **Settings** to view the current shortcut in the **Shortcuts** option.
 2. Select a keymap in **Shortcuts** and view the shortcuts.
 3. You can click and press new shortcuts to customize it.
 
-![shortcuts](jpg/shortcuts.jpg)
+> ![notes](icon/notes.svg)Notes: You can choose a proper keymap to fit your habits, including standard keymap, Emacs keymap, or customize it as you like.
 
-> ![notes](icon/notes.svg): Choose a proper keymap to fit your habits, including standard keymap, Emacs keymap, or customize it as you like.
-
-### Advanced Settings
+#### Advanced Settings
 
 1. Click ![icon_menu](icon/icon_menu.svg) > **Settings**.
-2. In **Advanced**, you can set:
+2. In the **Advanced** option, you can set:
    - Window size: Normal, Maximum, or Fullscreen;
-   - Tab space: The indentation width when pressing Tab.
+   - Tab width: The indentation width when pressing Tab.
 
-> ![attention](icon/attention.svg): Clicking on Restore Defaults will restore all settings to default.
+> ![attention](icon/attention.svg)Attention: Clicking  **Restore Defaults** will restore all settings to the default.
+
+### Theme
+
+The window theme includes Light Theme, Dark Theme and System Theme (default).
+
+1. On the Text Editor interface, click![icon_menu](icon/icon_menu.svg).
+
+2.  Click **Theme** to select a theme.
 
 ### Help
 
-1. On Deepin Editor interface, click on ![menu](icon/icon_menu.svg).
-2. Select **Help**.
-3. View the manual.
+1.  On the Text Editor interface, click ![menu](icon/icon_menu.svg).
+2.  Select **Help**.
+3.  View the manual.
 
 ### About
 
-1. On Deepin Editor interface, click on ![menu](icon/icon_menu.svg).
-2. Select **About**.
-3. View the version and description.
+1. On the Text Editor interface, click  ![menu](icon/icon_menu.svg).
+2.  Select **About**.
+3.  View the version and description.
 
 ### Exit
 
-1. On Deepin Editor interface, click on ![menu](icon/icon_menu.svg).
-2. Click on **Exit** to exit.  
+1. On the Text Editor interface, click ![menu](icon/icon_menu.svg).
+2. Click **Exit** to exit.  
