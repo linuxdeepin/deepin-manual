@@ -21,7 +21,6 @@
 #include "controller/search_result.h"
 
 #include <QObject>
-#include <QList>
 
 class QThread;
 
@@ -53,10 +52,10 @@ signals:
 private:
     void initSearchManager();
 
-    SearchDb *db_ ;
+    SearchDb *db_;
     QThread *db_thread_;
 };
 
-}  // namespace dman
+} // namespace dman
 
-#endif  // DEEPIN_MANUAL_CONTROLLER_SEARCH_MANAGER_H
+#endif // DEEPIN_MANUAL_CONTROLLER_SEARCH_MANAGER_H

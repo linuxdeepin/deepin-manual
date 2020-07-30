@@ -18,10 +18,8 @@
 #include "controller/search_manager.h"
 #include "controller/search_db.h"
 
-#include <DLog>
 #include <DSysInfo>
 #include <QThread>
-
 
 namespace dman {
 
@@ -69,8 +67,8 @@ SearchManager::~SearchManager()
     db_thread_->wait();
     delete db_thread_;
     db_thread_ = nullptr;
-    delete  db_;
+    delete db_;
     db_ = nullptr;
 }
 
-}  // namespace dman
+} // namespace dman

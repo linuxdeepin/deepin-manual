@@ -19,13 +19,9 @@
 #include "view/widget/search_button.h"
 #include "base/utils.h"
 
-#include <DLog>
-#include <DPlatformWindowHandle>
-#include <DStyleHelper>
 #include <DWindowManagerHelper>
 
 #include <QStylePainter>
-#include <QVBoxLayout>
 
 namespace dman {
 
@@ -33,7 +29,7 @@ namespace {
 
 const int kItemHeight = 34;
 
-}  // namespace
+} // namespace
 
 SearchCompletionWindow::SearchCompletionWindow(QWidget *parent)
     : DBlurEffectWidget(parent)
@@ -227,7 +223,6 @@ void SearchCompletionWindow::initUI()
     this->setAttribute(Qt::WA_NativeWindow, true);
 }
 
-
 void SearchCompletionWindow::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event)
@@ -247,7 +242,6 @@ void SearchCompletionWindow::paintEvent(QPaintEvent *event)
         } else if (themeType == DGuiApplicationHelper::DarkType) {
             fillColor = QColor(0, 0, 0);
         }
-
     }
     painter.fillPath(path, QBrush(fillColor));
 }
@@ -277,4 +271,4 @@ void SearchCompletionWindow::onResultListEntered(const QModelIndex &index)
     search_button_->setChecked(false);
 }
 
-}  // namespace dman
+} // namespace dman

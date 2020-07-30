@@ -13,13 +13,12 @@
 #ifndef MANUAL_OPEN_ADAPTER_H
 #define MANUAL_OPEN_ADAPTER_H
 
-#include <QtCore/QObject>
 #include <QtDBus/QtDBus>
 QT_BEGIN_NAMESPACE
 class QByteArray;
-template <class T>
+template<class T>
 class QList;
-template <class Key, class Value>
+template<class Key, class Value>
 class QMap;
 class QString;
 class QStringList;
@@ -56,13 +55,13 @@ public:
     ManualOpenAdapter(QObject *parent);
     virtual ~ManualOpenAdapter();
 
-public:          // PROPERTIES
-public Q_SLOTS:  // METHODS
+public: // PROPERTIES
+public Q_SLOTS: // METHODS
     void Open(const QString &in0);
     void OpenTitle(const QString &in0, const QString &in1);
     void Search(const QString &keyword);
     void ShowManual(const QString &in0);
-Q_SIGNALS:  // SIGNALS
+Q_SIGNALS: // SIGNALS
 };
 
 #endif

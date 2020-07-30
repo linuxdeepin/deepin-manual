@@ -10,13 +10,6 @@
  */
 
 #include "manual_open_adapter.h"
-#include <QtCore/QByteArray>
-#include <QtCore/QList>
-#include <QtCore/QMap>
-#include <QtCore/QMetaObject>
-#include <QtCore/QString>
-#include <QtCore/QStringList>
-#include <QtCore/QVariant>
 
 /**
  * @brief ManualOpenAdapter::ManualOpenAdapter

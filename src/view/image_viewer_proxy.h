@@ -44,6 +44,6 @@ private:
     ImageViewer *viewer_ = nullptr;
 };
 
-}  // namespace dman
+} // namespace dman
 
-#endif  // DEEPIN_MANUAL_VIEW_IMAGE_VIEWER_PROXY_H
+#endif // DEEPIN_MANUAL_VIEW_IMAGE_VIEWER_PROXY_H

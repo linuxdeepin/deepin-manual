@@ -53,4 +53,4 @@ void TitleBarProxy::setForwardButtonActive(bool active)
     m_webWindow->updateBtnBox();
 }
 
-}  // namespace dman
+} // namespace dman

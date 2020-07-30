@@ -15,7 +15,6 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-//#include "base/utils.h"
 #include "base/consts.h"
 #include "controller/argument_parser.h"
 #include "controller/window_manager.h"
@@ -30,8 +29,6 @@
 #include <QIcon>
 #include <DLog>
 
-const char kAppAcknowledgementPage[] = "https://www.deepin.org/acknowledgments/deepin-manual/";
-
 DWIDGET_USE_NAMESPACE
 
 int main(int argc, char **argv)
@@ -42,8 +39,8 @@ int main(int argc, char **argv)
     //龙芯机器配置,使得DApplication能正确加载QTWEBENGINE
     qputenv("DTK_FORCE_RASTER_WIDGETS", "FALSE");
 
-//    qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "7777");
-//    Dtk::Widget::DApplication::loadDXcbPlugin();
+    qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "7777");
+    //    Dtk::Widget::DApplication::loadDXcbPlugin();
 
     Dtk::Widget::DApplication app(argc, argv);
     if (!DPlatformWindowHandle::pluginVersion().isEmpty()) {
@@ -60,10 +57,9 @@ int main(int argc, char **argv)
     app.loadTranslator();
     app.setApplicationDisplayName(QObject::tr("Manual"));
     app.setApplicationDescription(QObject::tr(
-                                      "Manual is designed to help users learn the operating system and its applications,"
-                                      " providing specific instructions and function descriptions."));
-    app.setApplicationAcknowledgementPage(kAppAcknowledgementPage);
-
+        "Manual is designed to help users learn the operating system and its applications,"
+        " providing specific instructions and function descriptions."));
+    app.setApplicationAcknowledgementPage("https://www.deepin.org/acknowledgments/deepin-manual/");
 
     dman::ArgumentParser argument_parser;
     dman::WindowManager window_manager;
@@ -75,17 +71,15 @@ int main(int argc, char **argv)
     QObject::connect(&argument_parser, &dman::ArgumentParser::openManualRequested,
                      &window_manager, &dman::WindowManager::openManual);
 
-
     if (!argument_parser.parseArguments()) {
         qDebug() << "argument_parser.parseArguments()";
         //解析参数失败，１００ｍｓ退出进程
-        QTimer::singleShot(100,  [&]() {
+        QTimer::singleShot(100, [&]() {
             app.quit();
         });
         return app.exec();
     }
     argument_parser.openManualsDelay();
-
 
     // 日志保存, 路径:~/.cach/deepin/deepin-manual/
     DApplicationSettings dApplicationSettings;

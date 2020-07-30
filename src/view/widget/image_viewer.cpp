@@ -20,12 +20,7 @@
 #include <DLog>
 #include <QApplication>
 #include <QDesktopWidget>
-#include <QMouseEvent>
-#include <QPainter>
-#include <QResizeEvent>
 #include <QShortcut>
-#include <QStackedLayout>
-#include <QtCore/QTimer>
 #include <QImageReader>
 
 namespace dman {
@@ -35,7 +30,7 @@ namespace {
 const int kBorderSize = 12;
 const int kCloseBtnSize = 48;
 
-}  // namespace
+} // namespace
 
 ImageViewer::ImageViewer(QWidget *parent)
     : QDialog(parent)
@@ -46,8 +41,9 @@ ImageViewer::ImageViewer(QWidget *parent)
     connect(close_button_, &Dtk::Widget::DIconButton::clicked, this, &ImageViewer::close);
 }
 
-ImageViewer::~ImageViewer() {}
-
+ImageViewer::~ImageViewer()
+{
+}
 
 /**
  * @brief ImageViewer::open
@@ -69,7 +65,6 @@ void ImageViewer::open(const QString &filepath)
     reader.setDecideFormatFromContent(true);
     if (reader.canRead()) {
         if (reader.read(&image)) {
-
             qDebug() << "open is successful....";
         } else {
             qDebug() << "open is failed...." << reader.errorString();
@@ -149,4 +144,4 @@ void ImageViewer::paintEvent(QPaintEvent *event)
     painter.fillRect(0, 0, this->width(), this->height(), QColor(0, 0, 0, 77));
 }
 
-}  // namespace dman
+} // namespace dman

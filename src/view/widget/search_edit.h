@@ -42,6 +42,6 @@ protected:
     void keyPressEvent(QKeyEvent *event) override;
 };
 
-}  // namespace dman
+} // namespace dman
 
-#endif  // DEEPIN_MANUAL_VIEW_WIDGET_SEARCH_EDIT_H
+#endif // DEEPIN_MANUAL_VIEW_WIDGET_SEARCH_EDIT_H

@@ -27,7 +27,9 @@ ManualProxy::ManualProxy(QObject *parent)
     AppInfo::registerMetaType();
 }
 
-ManualProxy::~ManualProxy() {}
+ManualProxy::~ManualProxy()
+{
+}
 
 QString ManualProxy::getSystemManualDir()
 {
@@ -41,7 +43,11 @@ QStringList ManualProxy::getSystemManualList()
     saveAppList(list);
     return list;
 }
-
+/**
+ * @brief ManualProxy::openExternalLink
+ * @param url
+ * 打开外部连接
+ */
 void ManualProxy::openExternalLink(const QString &url)
 {
     qDebug() << "ManualProxy::openExternalLink：" << url;
@@ -67,7 +73,7 @@ void ManualProxy::setApplicationState(const QString &appName)
     qDebug() << "open app---->" << strApp;
 
     QSettings *setting = ConfigManager::getInstance()->getSettings();
-    setting->beginGroup(CONFIG_APPLIST);
+    setting->beginGroup(kConfigAppList);
     if (setting->contains(strApp)) {
         setting->setValue(strApp, false);
         qDebug() << setting->applicationName() << setting->fileName() << ": " << appName << " state=false";
@@ -85,7 +91,7 @@ void ManualProxy::setApplicationState(const QString &appName)
 QStringList ManualProxy::getUsedAppList()
 {
     QSettings *setting = ConfigManager::getInstance()->getSettings();
-    setting->beginGroup(CONFIG_APPLIST);
+    setting->beginGroup(kConfigAppList);
     QStringList list = setting->allKeys();
     QStringList appList;
     for (int i = 0; i < list.size(); ++i) {
@@ -125,7 +131,7 @@ void ManualProxy::saveAppList(const QStringList &list)
 {
     Q_UNUSED(list)
     QSettings *setting = ConfigManager::getInstance()->getSettings();
-    setting->beginGroup(CONFIG_APPLIST);
+    setting->beginGroup(kConfigAppList);
     for (int i = 0; i < list.size(); ++i) {
         if (setting->contains(list.at(i))) {
             continue;
@@ -136,9 +142,8 @@ void ManualProxy::saveAppList(const QStringList &list)
     QStringList l = setting->allKeys();
     setting->endGroup();
     qDebug() << "app config  allKeys count : " << l.size();
-
 }
 
-}  // namespace dman
+} // namespace dman
 
 //bool ManualPro

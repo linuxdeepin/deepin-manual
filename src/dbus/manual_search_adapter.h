@@ -12,12 +12,14 @@
 #ifndef MANUAL_SEARCH_ADAPTER_H
 #define MANUAL_SEARCH_ADAPTER_H
 
-#include <QtCore/QObject>
 #include <QtDBus/QtDBus>
+
 QT_BEGIN_NAMESPACE
 class QByteArray;
-template<class T> class QList;
-template<class Key, class Value> class QMap;
+template<class T>
+class QList;
+template<class Key, class Value>
+class QMap;
 class QString;
 class QStringList;
 class QVariant;
@@ -26,24 +28,24 @@ QT_END_NAMESPACE
 /*
  * Adaptor class for interface com.deepin.Manual.Search
  */
-class ManualSearchAdapter: public QDBusAbstractAdaptor
+class ManualSearchAdapter : public QDBusAbstractAdaptor
 {
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "com.deepin.Manual.Search")
     Q_CLASSINFO("D-Bus Introspection", ""
-"  <interface name=\"com.deepin.Manual.Search\">\n"
-"    <method name=\"ManualExists\">\n"
-"      <arg direction=\"in\" type=\"s\"/>\n"
-"      <arg direction=\"out\" type=\"b\"/>\n"
-"    </method>\n"
-"    <signal name=\"SendWinInfo\">\n"
-"      <arg direction=\"out\" type=\"s\" name=\"data\"/>\n"
-"    </signal>\n"
-"    <method name=\"OnNewWindowOpen\">\n"
-"      <arg direction=\"in\" type=\"s\" name=\"data\"/>\n"
-"    </method>\n"
-"  </interface>\n"
-"")
+                                       "  <interface name=\"com.deepin.Manual.Search\">\n"
+                                       "    <method name=\"ManualExists\">\n"
+                                       "      <arg direction=\"in\" type=\"s\"/>\n"
+                                       "      <arg direction=\"out\" type=\"b\"/>\n"
+                                       "    </method>\n"
+                                       "    <signal name=\"SendWinInfo\">\n"
+                                       "      <arg direction=\"out\" type=\"s\" name=\"data\"/>\n"
+                                       "    </signal>\n"
+                                       "    <method name=\"OnNewWindowOpen\">\n"
+                                       "      <arg direction=\"in\" type=\"s\" name=\"data\"/>\n"
+                                       "    </method>\n"
+                                       "  </interface>\n"
+                                       "")
 public:
     ManualSearchAdapter(QObject *parent);
     virtual ~ManualSearchAdapter();

@@ -19,10 +19,6 @@
 #define DEEPIN_MANUAL_DBUS_MANUAL_SEARCH_PROXY_H
 
 #include <DSysInfo>
-#include <DSysInfo>
-
-#include <QDBusConnection>
-#include <QObject>
 
 /**
  * @brief The ManualSearchProxy class
@@ -51,7 +47,6 @@ private:
 
     bool m_bWindowState;
     QString m_sApplicationPid = nullptr;
-
 };
 
-#endif  // DEEPIN_MANUAL_DBUS_MANUAL_SEARCH_PROXY_H
+#endif // DEEPIN_MANUAL_DBUS_MANUAL_SEARCH_PROXY_H

@@ -18,7 +18,6 @@
 #ifndef DEEPIN_MANUAL_UI_CHANNEL_SETTINGS_PROXY_H
 #define DEEPIN_MANUAL_UI_CHANNEL_SETTINGS_PROXY_H
 
-#include <QObject>
 #include <QVariantMap>
 
 namespace dman {
@@ -42,6 +41,6 @@ public Q_SLOTS:
     void raiseWindow();
 };
 
-}  // namespace dman
+} // namespace dman
 
-#endif  // DEEPIN_MANUAL_UI_CHANNEL_SETTINGS_PROXY_H
+#endif // DEEPIN_MANUAL_UI_CHANNEL_SETTINGS_PROXY_H

@@ -19,16 +19,13 @@
 #define DEEPIN_MANUAL_VIEW_WEB_WINDOW_H
 
 #include "controller/search_result.h"
-#include "view/settings_proxy.h"
 
 #include <DButtonBox>
 #include <DMainWindow>
 #include <DApplicationHelper>
 
-#include <QTimer>
 #include <QtDBus/QtDBus>
 #include <QWebEngineView>
-#include <QAction>
 #include <QClipboard>
 
 namespace dman {
@@ -107,7 +104,7 @@ private:
     SettingsProxy *settings_proxy_ {nullptr};
     TitleBar *title_bar_ {nullptr};
     QWebEngineView *web_view_ {nullptr};
-    QTimer search_timer_{nullptr};
+    QTimer search_timer_ {nullptr};
     Dtk::Widget::DButtonBox *buttonBox {nullptr};
     SearchEdit *search_edit_ {nullptr};
     bool first_webpage_loaded_ {true};
@@ -130,6 +127,6 @@ private slots:
     void onThemeChange(DGuiApplicationHelper::ColorType themeType);
 };
 
-}  // namespace dman
+} // namespace dman
 
-#endif  // DEEPIN_MANUAL_VIEW_WEB_WINDOW_H
+#endif // DEEPIN_MANUAL_VIEW_WEB_WINDOW_H

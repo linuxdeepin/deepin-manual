@@ -18,19 +18,14 @@
 #ifndef DEEPIN_MANUAL_DBUS_DBUS_VARIANT_APP_INFO_H
 #define DEEPIN_MANUAL_DBUS_DBUS_VARIANT_APP_INFO_H
 
-#include <DLog>
-
 #include <QtDBus>
-#include <QList>
 
 struct AppInfo {
 public:
     AppInfo();
-
     ~AppInfo();
 
     static void registerMetaType();
-
     inline bool operator==(const AppInfo &other) const
     {
         return desktop == other.desktop;
@@ -58,4 +53,4 @@ Q_DECLARE_METATYPE(AppInfo)
 
 Q_DECLARE_METATYPE(AppInfoList)
 
-#endif  // DEEPIN_MANUAL_DBUS_DBUS_VARIANT_APP_INFO_H
+#endif // DEEPIN_MANUAL_DBUS_DBUS_VARIANT_APP_INFO_H

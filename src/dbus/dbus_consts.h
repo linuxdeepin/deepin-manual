@@ -30,6 +30,6 @@ extern const char kLauncherIface[];
 extern const char kManualWinManagerService[];
 extern const char kManualWinManagerIface[];
 
-}  // namespace dman
+} // namespace dman
 
-#endif  // DEEPIN_MANUAL_DBUS_DBUS_CONSTS_H
+#endif // DEEPIN_MANUAL_DBUS_DBUS_CONSTS_H

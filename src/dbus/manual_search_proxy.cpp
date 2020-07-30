@@ -18,9 +18,6 @@
 #include "dbus/manual_search_proxy.h"
 #include "dbus/dbus_consts.h"
 
-#include <DLog>
-
-#include <QDir>
 #include <QtDBus/QtDBus>
 
 ManualSearchProxy::ManualSearchProxy(QObject *parent)
@@ -31,7 +28,9 @@ ManualSearchProxy::ManualSearchProxy(QObject *parent)
     connectToSender();
 }
 
-ManualSearchProxy::~ManualSearchProxy() {}
+ManualSearchProxy::~ManualSearchProxy()
+{
+}
 
 void ManualSearchProxy::connectToSender()
 {
@@ -39,12 +38,12 @@ void ManualSearchProxy::connectToSender()
         QDBusConnection::connectToBus(QDBusConnection::SessionBus, "Sender");
 
     if (!senderConn.connect(
-                dman::kManualSearchService + QString("Sender"),  // sender's service name
-                dman::kManualSearchIface + QString("Sender"),    // sender's path name
-                dman::kManualSearchService + QString("Sender"),  // interface
-                "SendWinInfo",                                   // sender's signal name
-                this,                                            // receiver
-                SLOT(RecvMsg(const QString &)))) {               // slot
+            dman::kManualSearchService + QString("Sender"), // sender's service name
+            dman::kManualSearchIface + QString("Sender"), // sender's path name
+            dman::kManualSearchService + QString("Sender"), // interface
+            "SendWinInfo", // sender's signal name
+            this, // receiver
+            SLOT(RecvMsg(const QString &)))) { // slot
 
         qDebug() << "connectToBus()::connect() Sender SendWinInfo failed";
     } else {

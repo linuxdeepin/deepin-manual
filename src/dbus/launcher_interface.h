@@ -13,19 +13,10 @@
 
 #include "dbus/dbusvariant/app_info.h"
 
-#include <QtCore/QObject>
-#include <QtCore/QByteArray>
-#include <QtCore/QList>
-#include <QtCore/QMap>
-#include <QtCore/QString>
-#include <QtCore/QStringList>
-#include <QtCore/QVariant>
-#include <QtDBus/QtDBus>
-
 /*
  * Proxy class for interface com.deepin.dde.daemon.Launcher
  */
-class LauncherInterface: public QDBusAbstractInterface
+class LauncherInterface : public QDBusAbstractInterface
 {
     Q_OBJECT
 public:
@@ -63,7 +54,7 @@ namespace dde {
 namespace daemon {
 typedef ::LauncherInterface Launcher;
 }
-}
-}
-}
+} // namespace dde
+} // namespace deepin
+} // namespace com
 #endif

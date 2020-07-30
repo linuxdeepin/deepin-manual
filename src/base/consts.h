@@ -27,14 +27,14 @@ extern const char kAppProcessName[];
 extern const char kAppVersion[];
 extern const char kIndexPage[];
 
-extern const char CONFIG_WINDOW_WIDTH[];
-extern const char CONFIG_WINDOW_HEIGHT[];
-extern const char CONFIG_WINDOW_INFO[];
-extern const char CONFIG_APPLIST[];
+extern const char kConfigWindowWidth[];
+extern const char kConfigWindowHeight[];
+extern const char kConfigWindowInfo[];
+extern const char kConfigAppList[];
 
 // 获取用户缓存目录
 QString GetCacheDir();
 
-}  // namespace dman
+} // namespace dman
 
-#endif  // DEEPIN_MANUAL_BASE_CONSTS_H
+#endif // DEEPIN_MANUAL_BASE_CONSTS_H

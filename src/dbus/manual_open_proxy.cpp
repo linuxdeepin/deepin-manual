@@ -16,12 +16,8 @@
  */
 
 #include "dbus/manual_open_proxy.h"
-#include "dbus_consts.h"
 
-#include <DLog>
 #include <QtDBus/QtDBus>
-
-
 
 ManualOpenProxy::ManualOpenProxy(QObject *parent)
     : QObject(parent)
@@ -29,7 +25,9 @@ ManualOpenProxy::ManualOpenProxy(QObject *parent)
     this->setObjectName("ManualOpenProxy");
 }
 
-ManualOpenProxy::~ManualOpenProxy() {}
+ManualOpenProxy::~ManualOpenProxy()
+{
+}
 
 /**
  * @brief ManualOpenProxy::Open

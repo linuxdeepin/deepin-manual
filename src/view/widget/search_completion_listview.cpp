@@ -2,7 +2,6 @@
 #include "base/utils.h"
 
 #include <QMouseEvent>
-#include <QPainter>
 
 SearchCompletionListView::SearchCompletionListView(QWidget *parent)
     : DListView(parent)

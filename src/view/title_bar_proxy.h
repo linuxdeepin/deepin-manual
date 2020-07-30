@@ -49,6 +49,6 @@ private:
     int m_first;
 };
 
-}  // namespace dman
+} // namespace dman
 
-#endif  // DEEPIN_MANUAL_VIEWS_TITLE_BAR_PROXY_H
+#endif // DEEPIN_MANUAL_VIEWS_TITLE_BAR_PROXY_H

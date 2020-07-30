@@ -41,13 +41,11 @@ public:
     QSettings *getSettings();
 
 protected:
-
 private:
     explicit ConfigManager(QObject *parent = 0);
     static ConfigManager *_pInstance;
     static QMutex _mutex;
     QSettings *m_winInfoConfig = nullptr;
-
 };
 
 #endif // CONFIG_MANAGER_H

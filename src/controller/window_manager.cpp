@@ -18,15 +18,12 @@
 #include "controller/window_manager.h"
 #include "base/consts.h"
 #include "base/utils.h"
-#include "controller/search_manager.h"
 #include "dbus/dbus_consts.h"
 #include "view/web_window.h"
 #include "controller/config_manager.h"
 
-#include <DLog>
 #include <QApplication>
 #include <QDesktopWidget>
-#include <QFile>
 
 #define WM_SENDER_NAME "Sender"
 const int kWinMinWidth = 800;
@@ -59,7 +56,7 @@ void WindowManager::initDBus()
     }
 
     if (!dbusConn.registerService(dman::kManualSearchService + QString(WM_SENDER_NAME))
-            || !dbusConn.registerObject(dman::kManualSearchIface + QString(WM_SENDER_NAME), this)) {
+        || !dbusConn.registerObject(dman::kManualSearchIface + QString(WM_SENDER_NAME), this)) {
         qCritical() << WM_SENDER_NAME << " failed to register dbus service!";
 
         return;
@@ -112,8 +109,8 @@ void WindowManager::SendMsg(const QString &msg)
         QDBusConnection::connectToBus(QDBusConnection::SessionBus, WM_SENDER_NAME);
     qDebug() << "start send keyword:" << QString::number(qApp->applicationPid());
     QDBusMessage dbusMsg = QDBusMessage::createSignal(
-                               dman::kManualSearchIface + QString(WM_SENDER_NAME),
-                               dman::kManualSearchService + QString(WM_SENDER_NAME), "SendWinInfo");
+        dman::kManualSearchIface + QString(WM_SENDER_NAME),
+        dman::kManualSearchService + QString(WM_SENDER_NAME), "SendWinInfo");
 
     dbusMsg << QString::number(qApp->applicationPid()) + "|" + msg;
 
@@ -135,9 +132,9 @@ void WindowManager::setWindow(WebWindow *window)
 {
     //获取窗口上次保存尺寸,加载上次保存尺寸.
     QSettings *setting = ConfigManager::getInstance()->getSettings();
-    setting->beginGroup(CONFIG_WINDOW_INFO);
-    int saveWidth = setting->value(CONFIG_WINDOW_WIDTH).toInt();
-    int saveHeight = setting->value(CONFIG_WINDOW_HEIGHT).toInt();
+    setting->beginGroup(kConfigWindowInfo);
+    int saveWidth = setting->value(kConfigWindowWidth).toInt();
+    int saveHeight = setting->value(kConfigWindowHeight).toInt();
     setting->endGroup();
     // 如果配置文件没有数据
     if (saveWidth == 0 || saveHeight == 0) {
@@ -200,4 +197,27 @@ void WindowManager::openManualWithSearch(const QString &app_name, const QString 
     activeOrInitWindow();
     qDebug() << Q_FUNC_INFO << app_name << curr_keyword_;
 }
-}  // namespace dman
+
+void WindowManager::onWindowClosed()
+{
+    SendMsg(QString::number(window->winId()) + "|close");
+}
+
+/**
+ * @brief WindowManager::onWindowShown web页面加载完后触发槽
+ */
+void WindowManager::onWindowShown()
+{
+    initDBus();
+    //创建search_manager
+    //    search_manager_ = new SearchManager(this);
+    //    window->setSearchManager(search_manager_);
+
+    window->setAppName(curr_app_name_);
+    window->setTitleName(curr_title_name_);
+    window->setSearchKeyword(curr_keyword_);
+
+    SendMsg(QString::number(window->winId()));
+}
+
+} // namespace dman

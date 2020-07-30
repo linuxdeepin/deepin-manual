@@ -5,8 +5,8 @@
 ConfigManager *ConfigManager::_pInstance = 0;
 QMutex ConfigManager::_mutex;
 
-
-ConfigManager::ConfigManager(QObject *parent) : QObject(parent)
+ConfigManager::ConfigManager(QObject *parent)
+    : QObject(parent)
 {
     m_winInfoConfig = new QSettings(getWinInfoConfigPath(), QSettings::IniFormat);
 }

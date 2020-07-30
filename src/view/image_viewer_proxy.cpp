@@ -50,4 +50,4 @@ void ImageViewerProxy::openHttpUrl(const QString &httpUrl)
     QDesktopServices::openUrl(QUrl(httpUrl));
 }
 
-}  // namespace dman
+} // namespace dman

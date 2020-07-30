@@ -56,8 +56,7 @@ public slots:
                         const QStringList &anchorInitialList,
                         const QStringList &anchorSpellList,
                         const QStringList &anchorIdList,
-                        const QStringList &contents
-                       );
+                        const QStringList &contents);
 
 private:
     void initConnections();
@@ -72,6 +71,6 @@ private slots:
     void handleSearchContent(const QString &keyword);
 };
 
-}  // namespace dman
+} // namespace dman
 
-#endif  // DEEPIN_MANUAL_CONTROLLER_SEARCH_DB_H
+#endif // DEEPIN_MANUAL_CONTROLLER_SEARCH_DB_H

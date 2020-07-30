@@ -18,7 +18,6 @@
 #ifndef DEEPIN_MANUAL_DBUS_MANUAL_OPEN_PROXY_H
 #define DEEPIN_MANUAL_DBUS_MANUAL_OPEN_PROXY_H
 
-#include <QDBusConnection>
 #include <QObject>
 
 /**
@@ -43,4 +42,4 @@ public slots:
     void Search(const QString &keyword);
 };
 
-#endif  // DEEPIN_MANUAL_DBUS_MANUAL_OPEN_PROXY_H
+#endif // DEEPIN_MANUAL_DBUS_MANUAL_OPEN_PROXY_H

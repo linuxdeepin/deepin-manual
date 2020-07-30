@@ -28,14 +28,16 @@ QString ConvertOldDmanPath(const QString &app_name)
     return app_name;
 }
 
-}  // namespace
+} // namespace
 
 ArgumentParser::ArgumentParser(QObject *parent)
     : QObject(parent)
 {
 }
 
-ArgumentParser::~ArgumentParser() {}
+ArgumentParser::~ArgumentParser()
+{
+}
 
 /**
  * @brief ArgumentParser::parseArguments 解析帮助手册启动参数,同时注册对外dbus接口
@@ -43,7 +45,6 @@ ArgumentParser::~ArgumentParser() {}
  */
 bool ArgumentParser::parseArguments()
 {
-
     QCommandLineParser parser;
     parser.addHelpOption();
     parser.addVersionOption();
@@ -63,7 +64,7 @@ bool ArgumentParser::parseArguments()
 
     //注册Open服务, 如果注册失败,则说明已存在一个dman.
     if (!conn.registerService(kManualOpenService)
-            || !conn.registerObject(kManualOpenIface, proxy)) {
+        || !conn.registerObject(kManualOpenIface, proxy)) {
         qDebug() << "Failed to register dbus";
         const QStringList position_args = parser.positionalArguments();
         if (!position_args.isEmpty()) {
@@ -75,14 +76,14 @@ bool ArgumentParser::parseArguments()
         } else {
             qDebug() << Q_FUNC_INFO << "position_args is empty";
             emit newAppOpen();
-//            QString argName = qApp->arguments().value(0);
-//            qDebug() << "argName:" << argName;
+            //            QString argName = qApp->arguments().value(0);
+            //            qDebug() << "argName:" << argName;
 
-//            if (argName == QString(kAppProcessName) ||
-//                    argName.endsWith("/" + QString(kAppProcessName))) {
-//                qDebug() << "emit onNewAppOpen";
-//                emit newAppOpen();
-//            }
+            //            if (argName == QString(kAppProcessName) ||
+            //                    argName.endsWith("/" + QString(kAppProcessName))) {
+            //                qDebug() << "emit onNewAppOpen";
+            //                emit newAppOpen();
+            //            }
         }
         return false;
     } else {
@@ -95,9 +96,9 @@ bool ArgumentParser::parseArguments()
                 bIsDbus = true;
             }
         } else {
-//            for (const QString &manual : position_args) {
-//                manuals_.append(manual);
-//            }
+            //            for (const QString &manual : position_args) {
+            //                manuals_.append(manual);
+            //            }
             curManual = position_args.at(0);
         }
         return true;
@@ -135,4 +136,4 @@ void ArgumentParser::onSearchRequested(const QString &keyword)
     emit this->openManualWithSearchRequested("", keyword);
 }
 
-}  // namespace dman
+} // namespace dman

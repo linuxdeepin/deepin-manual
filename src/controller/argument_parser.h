@@ -38,13 +38,13 @@ signals:
 
 private:
     QString curManual;
-    bool bIsDbus{false};
+    bool bIsDbus {false};
 
 private slots:
     void onOpenAppRequested(const QString &app_name, const QString &title_name = "");
     void onSearchRequested(const QString &keyword);
 };
 
-}  // namespace dman
+} // namespace dman
 
-#endif  // DEEPIN_MANUAL_CONTROLLER_ARGUMENT_PARSER_H
+#endif // DEEPIN_MANUAL_CONTROLLER_ARGUMENT_PARSER_H

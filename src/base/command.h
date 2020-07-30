@@ -37,6 +37,6 @@ bool SpawnCmd(const QString &cmd, const QStringList &args, QString &output);
 bool SpawnCmd(const QString &cmd, const QStringList &args, QString &output,
               QString &err);
 
-}  // namespace dman
+} // namespace dman
 
-#endif  // INSTALLER_BASE_COMMAND_H
+#endif // INSTALLER_BASE_COMMAND_H

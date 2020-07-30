@@ -19,14 +19,10 @@
 #include "base/utils.h"
 #include "resources/themes/images.h"
 
-#include <DStyleHelper>
-#include <DApplicationHelper>
 #include <DFontSizeManager>
-#include <DLog>
 
 #include <QHBoxLayout>
 #include <QStylePainter>
-#include <QMouseEvent>
 
 DWIDGET_USE_NAMESPACE
 
@@ -82,7 +78,6 @@ SearchButton::SearchButton(QWidget *parent)
 
 SearchButton::~SearchButton()
 {
-
 }
 
 void SearchButton::updateColor(const QColor &color)
@@ -195,11 +190,9 @@ void SearchButton::leaveEvent(QEvent *event)
     m_bHover = false;
     //根据不同系统主题使用不同的Ｉｃｏｎ
     if (DGuiApplicationHelper::DarkType == DGuiApplicationHelper::instance()->themeType()) {
-
         QPixmap iconPm = Utils::renderSVG(QString(kImageDarkSearchIcon), QSize(20, 20));
         iconBtn->setIcon(iconPm);
     } else {
-
         QPixmap iconPm = Utils::renderSVG(QString(kImageLightSearchIcon), QSize(20, 20));
         iconBtn->setIcon(iconPm);
     }
@@ -207,4 +200,4 @@ void SearchButton::leaveEvent(QEvent *event)
     update();
 }
 
-}  // namespace dman
+} // namespace dman

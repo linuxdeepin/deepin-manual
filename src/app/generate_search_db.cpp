@@ -21,12 +21,6 @@
  */
 
 #include <DLog>
-#include <DSysInfo>
-#include <QCoreApplication>
-#include <QDir>
-#include <QJsonArray>
-#include <QJsonDocument>
-#include <QJsonObject>
 
 #include "base/command.h"
 #include "controller/search_db.h"
@@ -44,7 +38,7 @@ int main(int argc, char **argv)
     QStringList list = QDir(DMAN_ORIG_MANUAL_DIR).entryList(QDir::NoDotAndDotDot | QDir::Dirs);
 
     for (QString &dbType :
-            QDir(DMAN_ORIG_MANUAL_DIR).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+         QDir(DMAN_ORIG_MANUAL_DIR).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
         QString strCreateDbPath = DMAN_SEARCH_CREATE_DB_PATH;
         strCreateDbPath += "/" + dbType;
 
@@ -58,14 +52,14 @@ int main(int argc, char **argv)
         db.initDb(strCreateDbPath);
         db.initSearchTable();
 
-        QStringList list ;
-        list << "zh_CN" << "en_US";
+        QStringList list;
+        list << "zh_CN"
+             << "en_US";
         for (QString &locale : list) {
             QString strManualDir = DMAN_ORIG_MANUAL_DIR;
             strManualDir += "/" + dbType;
             for (QString &app_name :
-                    QDir(strManualDir).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-
+                 QDir(strManualDir).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
                 const QString md_file = QStringList {strManualDir, app_name, locale, "index.md"}.join(QDir::separator());
                 if (!QFileInfo(md_file).isFile()) {
                     qWarning() << md_file << "not found";
@@ -76,7 +70,7 @@ int main(int argc, char **argv)
                 manualDir.cdUp();
                 qDebug() << manualDir.path();
                 QString searchIndexFilePath = QString("%1/%2/%3/%4")
-                                              .arg(manualDir.path(), "src", "web", "toSearchIndex.js");
+                                                  .arg(manualDir.path(), "src", "web", "toSearchIndex.js");
                 qDebug() << searchIndexFilePath;
                 QString out, err;
                 //            QStringList cmdList = {"node"};
@@ -149,7 +143,7 @@ int main(int argc, char **argv)
                 }
 
                 if (!invalid_entry) {
-                    qDebug() << "add search entry" << app_name << locale << anchors  << endl;
+                    qDebug() << "add search entry" << app_name << locale << anchors << endl;
                     db.addSearchEntry(dbType, app_name, locale, anchors, anchorInitialList, anchorSpellList, anchorIdList, contents);
                 }
             }

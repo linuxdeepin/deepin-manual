@@ -41,6 +41,6 @@ public slots:
     void getKeyword(const QString &keyword);
 };
 
-}  // namespace dman
+} // namespace dman
 
-#endif  // DEEPIN_MANUAL_VIEW_SEARCH_PROXY_H
+#endif // DEEPIN_MANUAL_VIEW_SEARCH_PROXY_H

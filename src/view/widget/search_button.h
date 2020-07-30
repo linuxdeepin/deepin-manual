@@ -69,6 +69,6 @@ private:
     bool m_bHover;
 };
 
-}  // namespace dman
+} // namespace dman
 
-#endif  // DEEPIN_MANUAL_VIEW_WIDGETS_SEARCH_BUTTON_H
+#endif // DEEPIN_MANUAL_VIEW_WIDGETS_SEARCH_BUTTON_H

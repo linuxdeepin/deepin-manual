@@ -24,10 +24,7 @@
 #include "dbus/dbusvariant/app_info.h"
 
 #include <DApplicationHelper>
-#include <DPalette>
 
-#include <QHash>
-#include <QObject>
 #include <QWidget>
 
 #define dApp (static_cast<DApplication *>(QCoreApplication::instance()))
@@ -42,7 +39,9 @@ public:
     Utils(QObject *parent = nullptr);
     ~Utils();
 
-    enum FontType { SourceHanSansMedium, SourceHanSansNormal, DefautFont };
+    enum FontType { SourceHanSansMedium,
+                    SourceHanSansNormal,
+                    DefautFont };
 
     static struct timeval getTime();
     static struct timeval showDiffTime(struct timeval tpStart);

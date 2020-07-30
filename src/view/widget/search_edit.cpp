@@ -24,14 +24,17 @@ namespace dman {
 SearchEdit::SearchEdit(QWidget *parent)
     : DSearchEdit(parent)
 {
-
 }
 
 SearchEdit::~SearchEdit()
 {
-
 }
 
+/**
+ * @brief SearchEdit::keyPressEvent
+ * @param event
+ * 重写键盘事件，定义快捷键
+ */
 void SearchEdit::keyPressEvent(QKeyEvent *event)
 {
     switch (event->key()) {
@@ -55,4 +58,4 @@ void SearchEdit::keyPressEvent(QKeyEvent *event)
     DSearchEdit::keyPressEvent(event);
 }
 
-}  // namespace dman
+} // namespace dman

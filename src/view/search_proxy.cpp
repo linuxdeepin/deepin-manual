@@ -16,11 +16,11 @@
  */
 
 #include "view/search_proxy.h"
-#include "controller/search_manager.h"
 
 #include <DLog>
 
-dman::SearchProxy::SearchProxy(QObject *parent) : QObject(parent)
+dman::SearchProxy::SearchProxy(QObject *parent)
+    : QObject(parent)
 {
 }
 

@@ -22,11 +22,7 @@
 #ifndef THEME_PROXY_H
 #define THEME_PROXY_H
 
-#include <DGuiApplicationHelper>
-
 #include <QObject>
-
-#include <dtkgui_global.h>
 
 namespace dman {
 

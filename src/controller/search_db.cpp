@@ -18,12 +18,6 @@
 #include "controller/search_db.h"
 #include "base/utils.h"
 
-#include <DLog>
-#include <DSysInfo>
-
-#include <QDateTime>
-#include <QDir>
-#include <QSqlDatabase>
 #include <QSqlError>
 #include <QSqlQuery>
 
@@ -69,10 +63,10 @@ const char kSearchSelectAnchor[] =
 
 //将包含关键字的搜索结果顺序输出
 const char kSearchSelectContent[] =
-//    "SELECT appName, anchor, anchorId, content "
-//    "FROM search "
-//    "WHERE lang = ':lang' AND "
-//    "content LIKE '%:content%' --case insensitive";
+    //    "SELECT appName, anchor, anchorId, content "
+    //    "FROM search "
+    //    "WHERE lang = ':lang' AND "
+    //    "content LIKE '%:content%' --case insensitive";
     "select appName, anchor, anchorId, content from search where lang = ':lang' and anchor like '%:content%' "
     "union all "
     "select appName, anchor, anchorId, content from search where lang = ':lang' and content like '%:content%' and anchor not like '%:content%' "
@@ -80,7 +74,7 @@ const char kSearchSelectContent[] =
 
 const int kResultLimitation = INT_MAX;
 
-}  // namespace
+} // namespace
 
 struct SearchDbPrivate {
     QSqlDatabase db;
@@ -153,27 +147,27 @@ void SearchDb::addSearchEntry(const QString &system, const QString &app_name, co
 {
     Q_ASSERT(p_->db.isOpen());
     Q_ASSERT(anchors.length() == contents.length());
-    qDebug() << "addSearchEntry()" << app_name << lang << anchors;  // << contents;
+    qDebug() << "addSearchEntry()" << app_name << lang << anchors; // << contents;
 
     QString strManualPath = "/" + system;
-//    int nType = Dtk::Core::DSysInfo::deepinType();
-//    if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
-//        strManualPath += "/server";
-//    } else if (Dtk::Core::DSysInfo::DeepinPersonal == (Dtk::Core::DSysInfo::DeepinType)nType) {
-//        strManualPath += "/personal";
-//    } else {
-//        if (Dtk::Core::DSysInfo::isCommunityEdition()) {
-//            strManualPath += "/community";
-//        } else {
-//            strManualPath += "/professional";
-//        }
-//    }
+    //    int nType = Dtk::Core::DSysInfo::deepinType();
+    //    if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
+    //        strManualPath += "/server";
+    //    } else if (Dtk::Core::DSysInfo::DeepinPersonal == (Dtk::Core::DSysInfo::DeepinType)nType) {
+    //        strManualPath += "/personal";
+    //    } else {
+    //        if (Dtk::Core::DSysInfo::isCommunityEdition()) {
+    //            strManualPath += "/community";
+    //        } else {
+    //            strManualPath += "/professional";
+    //        }
+    //    }
 
     QStringList newContents = contents;
     for (int i = 0; i < contents.size(); i++) {
         QString content = contents.at(i);
         content = content.replace("icon/", DMAN_INSTALL_DB_PATH + strManualPath
-                                  + "/" + app_name + "/" + lang + "/icon/");
+                                               + "/" + app_name + "/" + lang + "/icon/");
         newContents.replace(i, content);
     }
 
@@ -411,8 +405,8 @@ void SearchDb::handleSearchContent(const QString &keyword)
                     contents.append(highlightContent);
                 }
             } else {
-                if (!last_app_name.isEmpty() && appHasMatchHash.value(last_app_name)
-                        && contents.size() > 0) {
+                if (!last_app_name.isEmpty()
+                    && appHasMatchHash.value(last_app_name) && contents.size() > 0) {
                     result_empty = false;
                     qDebug() << Q_FUNC_INFO << "emit searchContentResult()" << last_app_name << " " << contents.length();
                     emit this->searchContentResult(last_app_name, anchors, anchorIds, contents);
@@ -448,4 +442,4 @@ void SearchDb::handleSearchContent(const QString &keyword)
         emit this->searchContentMismatch(keyword);
     }
 }
-}  // namespace dman
+} // namespace dman

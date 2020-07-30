@@ -24,10 +24,10 @@ const char kAppProcessName[] = "dman";
 const char kAppVersion[] = "2.0.10";
 const char kIndexPage[] = DMAN_WEB_DIR "/index.html";
 
-const char CONFIG_WINDOW_WIDTH[] = "window_width";
-const char CONFIG_WINDOW_HEIGHT[] = "window_height";
-const char CONFIG_WINDOW_INFO[] = "window_info";
-const char CONFIG_APPLIST[] = "AppList";
+const char kConfigWindowWidth[] = "window_width";
+const char kConfigWindowHeight[] = "window_height";
+const char kConfigWindowInfo[] = "window_info";
+const char kConfigAppList[] = "AppList";
 
 QString GetCacheDir()
 {
@@ -35,4 +35,4 @@ QString GetCacheDir()
     return QDir::home().absoluteFilePath(kAppCacheDir);
 }
 
-}  // namespace dman
+} // namespace dman

@@ -18,10 +18,7 @@
 #ifndef DEEPIN_MANUAL_CONTROLLER_WINDOW_MANAGER_H
 #define DEEPIN_MANUAL_CONTROLLER_WINDOW_MANAGER_H
 
-#include <QDBusConnection>
-#include <QHash>
 #include <QObject>
-#include <QPoint>
 #include <QMutex>
 
 namespace dman {
@@ -58,6 +55,6 @@ public slots:
     void openManualWithSearch(const QString &app_name, const QString &keyword);
 };
 
-}  // namespace dman
+} // namespace dman
 
-#endif  // DEEPIN_MANUAL_CONTROLLER_WINDOW_MANAGER_H
+#endif // DEEPIN_MANUAL_CONTROLLER_WINDOW_MANAGER_H

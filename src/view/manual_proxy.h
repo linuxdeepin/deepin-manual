@@ -18,16 +18,8 @@
 #ifndef DEEPIN_MANUAL_VIEW_MANUAL_PROXY_H
 #define DEEPIN_MANUAL_VIEW_MANUAL_PROXY_H
 
-#include <DSysInfo>
-
-#include <QDebug>
-#include <QList>
-#include <QObject>
 #include <QDBusConnection>
 #include <QDesktopServices>
-#include <QtAlgorithms>
-
-#include <qalgorithms.h>
 
 namespace dman {
 
@@ -59,6 +51,6 @@ private:
     QStringList app_list_;
 };
 
-}  // namespace dman
+} // namespace dman
 
-#endif  // DEEPIN_MANUAL_VIEW_MANUAL_PROXY_H
+#endif // DEEPIN_MANUAL_VIEW_MANUAL_PROXY_H

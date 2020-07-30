@@ -19,7 +19,6 @@
 
 #include <QtGui/QDesktopServices>
 #include <QUrl>
-#include <QDebug>
 
 namespace dman {
 
@@ -48,5 +47,4 @@ void SettingsProxy::raiseWindow()
     emit this->raiseWindowRequested();
 }
 
-
-}  // namespace dstore
+} // namespace dman

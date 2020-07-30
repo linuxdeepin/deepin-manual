@@ -20,7 +20,6 @@
 
 #include <DLabel>
 #include <DDialogCloseButton>
-#include <DFloatingButton>
 
 #include <QDialog>
 
@@ -57,6 +56,6 @@ private:
     using QDialog::open;
 };
 
-}  // namespace dman
+} // namespace dman
 
-#endif  // DEEPIN_MANUAL_VIEW_WIDGETS_IMAGE_VIEWER_H
+#endif // DEEPIN_MANUAL_VIEW_WIDGETS_IMAGE_VIEWER_H
