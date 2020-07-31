@@ -41,6 +41,9 @@
 #include <QWindow>
 #include <QX11Info>
 
+#include <QRegion>
+#include <QFocusEvent>
+
 #include "base/utils.h"
 
 DWIDGET_USE_NAMESPACE
@@ -267,36 +270,39 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
                     qDebug() << "emit searchEditTextisEmpty";
                 }
             }
+        } else if (keyEvent->key() == Qt::Key_A
+                   && keyEvent->modifiers().testFlag(Qt::ControlModifier)) {
+            web_view_->setFocus(Qt::ActiveWindowFocusReason);
         }
     }
     // Filters mouse press event only.
-//    if (event->type() == QEvent::MouseButtonPress && qApp->activeWindow() == this &&
-//            watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
-//        QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
-////        this->web_view_->update();
-//        if (mouseEvent->button()) {
-//            switch (mouseEvent->button()) {
-//            case Qt::BackButton: {
-//                qDebug() << "eventFilter back";
-//                emit title_bar_proxy_->backwardButtonClicked();
-//                break;
-//            }
-//            case Qt::ForwardButton: {
-//                qDebug() << "eventFilter forward";
-//                emit title_bar_proxy_->forwardButtonClicked();
-//                break;
-//            }
-//            case Qt::MiddleButton: {
-//                return true;
-//            }
-//            default: {
-//            }
-//            if (!search_edit_->geometry().contains(this->mapFromGlobal(QCursor::pos()))) {
-//                completion_window_->hide();
-//            }
-//            }
-//        }
-//    }
+    if (event->type() == QEvent::MouseButtonPress && qApp->activeWindow() == this &&
+            watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
+        QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
+//        this->web_view_->update();
+        if (mouseEvent->button()) {
+            switch (mouseEvent->button()) {
+            case Qt::BackButton: {
+                qDebug() << "eventFilter back";
+                emit title_bar_proxy_->backwardButtonClicked();
+                break;
+            }
+            case Qt::ForwardButton: {
+                qDebug() << "eventFilter forward";
+                emit title_bar_proxy_->forwardButtonClicked();
+                break;
+            }
+            case Qt::MiddleButton: {
+                return true;
+            }
+            default: {
+            }
+            if (!search_edit_->geometry().contains(this->mapFromGlobal(QCursor::pos()))) {
+                completion_window_->hide();
+            }
+            }
+        }
+    }
 
     //过滤字体改变事件
     if (event->type() == QEvent::FontChange && watched == this) {
@@ -324,9 +330,6 @@ QVariant WebWindow::inputMethodQuery(Qt::InputMethodQuery prop) const
     return QWidget::inputMethodQuery(prop);
 }
 
-
-
-//void WebWindow::setSearchManager(SearchManager *search_manager)
 void WebWindow::setSearchManager()
 {
     search_manager_ = new SearchManager(this);
@@ -551,6 +554,16 @@ void WebWindow::initShortcuts()
         }
     });
 
+//    //设置全选切换快捷键
+//    QShortcut *sCheckAll = new QShortcut(this);
+//    sCheckAll->setKey(tr("Ctrl+A"));
+//    sCheckAll->setContext(Qt::WindowShortcut);
+//    sCheckAll->setAutoRepeat(false);
+//    connect(sCheckAll, &QShortcut::activated, this, [this] {
+
+//        web_view_->setFocus();
+//    });
+
     //设置搜索快捷键  后期将支持盲打功能,故不需要此快捷键
     QShortcut *scSearch = new QShortcut(this);
     scSearch->setKey(tr("Ctrl+F"));
@@ -705,7 +718,7 @@ void WebWindow::onSearchTextChangedDelay()
 void WebWindow::onTitleBarEntered()
 {
     QString textTemp = search_edit_->text();
-    const QString text = textTemp.remove('\n').remove('\r').remove("\r\n").remove(QRegExp("\\s"));
+    const QString text = textTemp.remove('\n').remove('\r').remove("\r\n");//.remove(QRegExp("\\s"));
     if (text.size() >= 1) {
         completion_window_->onEnterPressed();
     }
