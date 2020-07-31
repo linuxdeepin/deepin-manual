@@ -705,7 +705,7 @@ void WebWindow::onSearchTextChangedDelay()
 void WebWindow::onTitleBarEntered()
 {
     QString textTemp = search_edit_->text();
-    const QString text = textTemp.remove('\n').remove('\r').remove("\r\n");
+    const QString text = textTemp.remove('\n').remove('\r').remove("\r\n").remove(QRegExp("\\s"));
     if (text.size() >= 1) {
         completion_window_->onEnterPressed();
     }
