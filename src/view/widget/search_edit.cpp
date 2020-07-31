@@ -18,12 +18,28 @@
 #include "view/widget/search_edit.h"
 
 #include <QKeyEvent>
+#include <QToolButton>
+#include <QAction>
+#include <QDebug>
 
 namespace dman {
 
 SearchEdit::SearchEdit(QWidget *parent)
     : DSearchEdit(parent)
 {
+    QAction *clearAction = this->lineEdit()->findChild<QAction *>(QLatin1String("_q_qlineeditclearaction"));
+    if (clearAction != nullptr) {
+        QList<QToolButton *> list = this->lineEdit()->findChildren<QToolButton *>();
+        for (int i = 0; i < list.count(); i++) {
+            if (list.at(i)->defaultAction() == clearAction) {
+                QToolButton *clearBtn = list.at(i);
+                connect(clearBtn, &QToolButton::clicked, this, [ = ] {
+                    emit this->onClickedClearBtn();
+                    qDebug() << "emit onClickedClearBtn";
+                });
+            }
+        }
+    }
 }
 
 SearchEdit::~SearchEdit()

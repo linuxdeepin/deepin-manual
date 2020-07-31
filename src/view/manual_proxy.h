@@ -32,6 +32,7 @@ public:
 signals:
     void WidgetLower();
     void channelInit();
+    void searchEditTextisEmpty();
 
 public slots:
     QString getSystemManualDir();

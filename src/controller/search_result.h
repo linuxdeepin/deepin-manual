@@ -23,8 +23,8 @@
 namespace dman {
 
 struct SearchAnchorResult {
-    QString app_name; //app name(for system)
-    QString app_display_name; //display name(for users)
+    QString app_name;               //app name(for system)
+    QString app_display_name;       //display name(for users)
     QString anchor;
     QString anchorId;
 };

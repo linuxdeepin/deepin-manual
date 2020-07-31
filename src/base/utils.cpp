@@ -72,7 +72,8 @@ QString languageArr[][langCount] = {
     {"update", "系统更新", "Update Settings"},
     {"systeminfo", "系统信息", "System Info"},
     {"License activator", "授权管理", "Authorization Management"},
-    {"commoninfo", "通用设置", "General Settings"}};
+    {"commoninfo", "通用设置", "General Settings"}
+};
 
 struct ReplyStruct {
     QString m_desktop;
@@ -483,49 +484,49 @@ ExApplicationHelper *ExApplicationHelper::instance()
 #define CAST_INT static_cast<int>
 
 QColor light_qpalette[QPalette::NColorRoles] {
-    QColor(0x00, 0x00, 0x00), // WindowText
-    QColor(0xe5, 0xe5, 0xe5), // Button
-    QColor(0xe6, 0xe6, 0xe6), // Light
-    QColor(0xe5, 0xe5, 0xe5), // Midlight
-    QColor(0xe3, 0xe3, 0xe3), // Dark
-    QColor(0xe4, 0xe4, 0xe4), // Mid
-    QColor(0x41, 0x4d, 0x68), // Text
-    Qt::black, // BrightText
-    QColor(0x41, 0x4d, 0x68), // ButtonText
-    Qt::white, // Base
-    QColor(0xf8, 0xf8, 0xf8), // Window
-    QColor(0, 0, 0, CAST_INT(0.05 * 255)), // Shadow
-    QColor(0x00, 0x81, 0xff), // Highlight
-    Qt::white, // HighlightedText
-    QColor(0x00, 0x82, 0xfa), // Link
-    QColor(0xad, 0x45, 0x79), // LinkVisited
-    QColor(0, 0, 0, CAST_INT(0.03 * 255)), // AlternateBase
-    Qt::white, // NoRole
-    QColor(255, 255, 255, CAST_INT(0.8 * 255)), // ToolTipBase
-    Qt::black // ToolTipText
+    QColor(0x00, 0x00, 0x00),                         // WindowText
+    QColor(0xe5, 0xe5, 0xe5),                         // Button
+    QColor(0xe6, 0xe6, 0xe6),                         // Light
+    QColor(0xe5, 0xe5, 0xe5),                         // Midlight
+    QColor(0xe3, 0xe3, 0xe3),                         // Dark
+    QColor(0xe4, 0xe4, 0xe4),                         // Mid
+    QColor(0x41, 0x4d, 0x68),                         // Text
+    Qt::black,                                   // BrightText
+    QColor(0x41, 0x4d, 0x68),                         // ButtonText
+    Qt::white,                                   // Base
+    QColor(0xf8, 0xf8, 0xf8),                         // Window
+    QColor(0, 0, 0, CAST_INT(0.05 * 255)),       // Shadow
+    QColor(0x00, 0x81, 0xff),                           // Highlight
+    Qt::white,                                   // HighlightedText
+    QColor(0x00, 0x82, 0xfa),                         // Link
+    QColor(0xad, 0x45, 0x79),                         // LinkVisited
+    QColor(0, 0, 0, CAST_INT(0.03 * 255)),       // AlternateBase
+    Qt::white,                                   // NoRole
+    QColor(255, 255, 255, CAST_INT(0.8 * 255)),  // ToolTipBase
+    Qt::black                                    // ToolTipText
 };
 
 QColor dark_qpalette[QPalette::NColorRoles] {
-    QColor(0xff, 0xff, 0xff), // WindowText
-    QColor(0x44, 0x44, 0x44), // Button
-    QColor(0x48, 0x48, 0x48), // Light
-    QColor(0x47, 0x47, 0x47), // Midlight
-    QColor(0x41, 0x41, 0x41), // Dark
-    QColor(0x43, 0x43, 0x43), // Mid
-    QColor(0xc0, 0xc6, 0xd4), // Text
-    Qt::white, // BrightText
-    QColor(0xc0, 0xc6, 0xd4), // ButtonText
-    QColor(0x28, 0x28, 0x28), // Base
-    QColor(0x25, 0x25, 0x25), // Window
-    QColor(0, 0, 0, CAST_INT(0.05 * 255)), // Shadow
-    QColor(0x00, 0x81, 0xff), // Highlight
-    QColor(0xF1, 0xF6, 0xFF), // HighlightedText
-    QColor(0x00, 0x82, 0xfa), // Link
-    QColor(0xad, 0x45, 0x79), // LinkVisited
-    QColor(0, 0, 0, CAST_INT(0.05 * 255)), // AlternateBase
-    Qt::black, // NoRole
-    QColor(45, 45, 45, CAST_INT(0.8 * 255)), // ToolTipBase
-    QColor(0xc0, 0xc6, 0xd4) // ToolTipText
+    QColor(0xff, 0xff, 0xff),                      // WindowText
+    QColor(0x44, 0x44, 0x44),                      // Button
+    QColor(0x48, 0x48, 0x48),                      // Light
+    QColor(0x47, 0x47, 0x47),                      // Midlight
+    QColor(0x41, 0x41, 0x41),                      // Dark
+    QColor(0x43, 0x43, 0x43),                      // Mid
+    QColor(0xc0, 0xc6, 0xd4),                      // Text
+    Qt::white,                                // BrightText
+    QColor(0xc0, 0xc6, 0xd4),                      // ButtonText
+    QColor(0x28, 0x28, 0x28),                      // Base
+    QColor(0x25, 0x25, 0x25),                      // Window
+    QColor(0, 0, 0, CAST_INT(0.05 * 255)),    // Shadow
+    QColor(0x00, 0x81, 0xff),                      // Highlight
+    QColor(0xF1, 0xF6, 0xFF),                      // HighlightedText
+    QColor(0x00, 0x82, 0xfa),                      // Link
+    QColor(0xad, 0x45, 0x79),                      // LinkVisited
+    QColor(0, 0, 0, CAST_INT(0.05 * 255)),    // AlternateBase
+    Qt::black,                                // NoRole
+    QColor(45, 45, 45, CAST_INT(0.8 * 255)),  // ToolTipBase
+    QColor(0xc0, 0xc6, 0xd4)                       // ToolTipText
 };
 
 QColor light_dpalette[DPalette::NColorTypes] {

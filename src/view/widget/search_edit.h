@@ -37,6 +37,7 @@ signals:
     void downKeyPressed();
     void enterPressed();
     void upKeyPressed();
+    void onClickedClearBtn();
 
 protected:
     void keyPressEvent(QKeyEvent *event) override;
