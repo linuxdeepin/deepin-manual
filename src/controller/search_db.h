@@ -25,6 +25,7 @@
 namespace dman {
 
 struct SearchDbPrivate;
+struct searchStrct;
 
 class SearchDb : public QObject
 {
@@ -62,9 +63,12 @@ private:
     void initConnections();
     inline QString highlightKeyword(QString srcString, QString keyword);
     void getAllApp();
+    void sortSearchList(const QString &appName, const QStringList &anchors
+                        , const QStringList &anchorIds, const QStringList &contents);
 
     SearchDbPrivate *p_ = nullptr;
     QStringList strlistApp;
+    QList<searchStrct> listStruct;
 
 private slots:
     void handleSearchAnchor(const QString &keyword);

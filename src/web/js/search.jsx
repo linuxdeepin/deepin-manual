@@ -46,6 +46,10 @@ class Items extends Component {
       // {
       //   contentTrans = "..." + contentTrans.slice(index-100);
       // }
+      if (this.props.idList[i] == 'h0')
+      {
+        continue;
+      }
 
       let c = (
         <div className="item" key={i} onClick={() => global.open(this.props.file, this.props.idList[i], this.props.keyword)}>

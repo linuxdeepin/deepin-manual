@@ -1833,6 +1833,9 @@ var Items = function (_Component) {
         // {
         //   contentTrans = "..." + contentTrans.slice(index-100);
         // }
+        if (_this2.props.idList[i] == 'h0') {
+          return 'continue';
+        }
 
         var c = _react2.default.createElement(
           'div',
@@ -1859,7 +1862,9 @@ var Items = function (_Component) {
       };
 
       for (var i = 0; i < this.props.idList.length; i++) {
-        _loop(i);
+        var _ret = _loop(i);
+
+        if (_ret === 'continue') continue;
       }
       var sresultnum;
       if (this.props.idList.length > 1) sresultnum = this.props.idList.length + global.i18n['ResultNumSuffixs'];else sresultnum = this.props.idList.length + global.i18n['ResultNumSuffix'];

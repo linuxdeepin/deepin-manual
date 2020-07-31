@@ -80,6 +80,14 @@ struct SearchDbPrivate {
     QSqlDatabase db;
 };
 
+struct searchStrct {
+    QString appName;
+    QStringList anchors;
+    QStringList anchorIds;
+    QStringList contents;
+};
+
+
 SearchDb::SearchDb(QObject *parent)
     : QObject(parent)
     , p_(new SearchDbPrivate())
@@ -355,6 +363,28 @@ void SearchDb::getAllApp()
     strlistApp = Utils::getSystemManualList();
 }
 
+/**
+ * @brief SearchDb::sortSearchList 搜索结果排序, 将含有h0的应用放在最前面.
+ * @param appName
+ * @param anchors
+ * @param anchorIds
+ * @param contents
+ */
+void SearchDb::sortSearchList(const QString &appName, const QStringList &anchors, const QStringList &anchorIds, const QStringList &contents)
+{
+    searchStrct obj;
+    obj.appName = appName;
+    obj.anchors = anchors;
+    obj.anchorIds = anchorIds;
+    obj.contents = contents;
+
+    if (anchorIds.contains("h0")) {
+        listStruct.insert(0, obj);
+    } else {
+        listStruct.append(obj);
+    }
+}
+
 void SearchDb::handleSearchContent(const QString &keyword)
 {
     qDebug() << Q_FUNC_INFO << keyword;
@@ -366,9 +396,10 @@ void SearchDb::handleSearchContent(const QString &keyword)
     const QString sql =
         QString(kSearchSelectContent).replace(":lang", lang).replace(":content", keyword);
 
+    listStruct.clear();
     bool result_empty = true;
     if (query.exec(sql)) {
-        QString last_app_name;
+        QString last_app_name = "";
         QStringList anchors;
         QStringList anchorIds;
         QStringList contents;
@@ -385,7 +416,6 @@ void SearchDb::handleSearchContent(const QString &keyword)
             QString tmpContent = content;
             tmpContent = tmpContent.replace("alt>", ">");
             tmpContent = tmpContent.replace("\" >", "\">");
-
             QString highlightContent = highlightKeyword(tmpContent, keyword);
 
             //remove jpg src
@@ -393,45 +423,27 @@ void SearchDb::handleSearchContent(const QString &keyword)
             exp.setMinimal(true);
             highlightContent.remove(exp);
 
-            if (highlightContent.length() > 0) {
-                appHasMatchHash.insert(app_name, true);
-            }
-
             if (app_name == last_app_name) {
-                if (highlightContent.length() > 0) {
-                    result_empty = false;
-                    anchors.append(anchor);
-                    anchorIds.append(anchorId);
-                    contents.append(highlightContent);
-                }
+                anchors.append(anchor);
+                anchorIds.append(anchorId);
+                contents.append(highlightContent);
             } else {
-                if (!last_app_name.isEmpty()
-                    && appHasMatchHash.value(last_app_name) && contents.size() > 0) {
-                    result_empty = false;
-                    qDebug() << Q_FUNC_INFO << "emit searchContentResult()" << last_app_name << " " << contents.length();
-                    emit this->searchContentResult(last_app_name, anchors, anchorIds, contents);
+                if (!last_app_name.isEmpty()) {
+                    sortSearchList(last_app_name, anchors, anchorIds, contents);
+                    anchors.clear();
+                    anchorIds.clear();
+                    contents.clear();
                 }
-
-                anchors.clear();
-                anchorIds.clear();
-                contents.clear();
-
-                if (highlightContent.length() > 0) {
-                    result_empty = false;
-                    last_app_name = app_name;
-                    anchors.append(anchor);
-                    anchorIds.append(anchorId);
-                    contents.append(highlightContent);
-                }
+                anchors.append(anchor);
+                anchorIds.append(anchorId);
+                contents.append(highlightContent);
+                last_app_name = app_name;
             }
         }
-
-        // 最后一次搜索结果,信号发出
-        if (!result_empty && contents.size() > 0) {
-            result_empty = false;
-            qDebug() << Q_FUNC_INFO << "emit searchContentResult() last record"
-                     << contents.length();
-            emit this->searchContentResult(last_app_name, anchors, anchorIds, contents);
+        sortSearchList(last_app_name, anchors, anchorIds, contents);
+        for (searchStrct obj : listStruct) {
+            if (result_empty) result_empty = false;
+            emit this->searchContentResult(obj.appName, obj.anchors, obj.anchorIds, obj.contents);
         }
     } else {
         qCritical() << "Failed to select contents:" << query.lastError().text();
