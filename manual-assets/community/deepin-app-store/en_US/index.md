@@ -74,21 +74,27 @@ Main interface consists of navigation bar, search box, main menu, slide show, ho
         </tr>  
         <tr>
         <td>8</td>
+        <td>Updates</td>
+        <td>You can view all apps to be updated and select whether to update them here.</td>
+    </tr>
+        <tr>
+        <td>9</td>
         <td>My Apps</td>
         <td>You can view all apps installed and uninstall apps you don't need any more here.</td>
     </tr>
         <tr>
-        <td>9</td>
+        <td>10</td>
         <td>Essential Apps</td>
         <td>You can view all essential software and install the ones you want here.</td>
     </tr>
   <tr>
-        <td>10</td>
+        <td>11</td>
         <td>Hot Topics</td>
         <td>Hot app categories are displayed here.</td>
     </tr>
    </tbody>
    </table>
+
 
 
 
@@ -138,9 +144,15 @@ App Store supports application synchronization. After signing in, you can synchr
 
 
 
-### Update/Upgrade Application
+### Update Application
 
-You can also update/upgrade applications in Control Center. Refer to [Update Settings](dman:///dde#Update Settings) for particular operations.
+You can click **Updates** in the left panel to view applications to be updates and select whether to update them. 
+
+![1|update](jpg/update.png)
+
+> ![tips](icon/tips.svg)Tips: You can also update/upgrade applications in Control Center. Refer to [Update Settings](dman:///dde#Update Settings) for particular operations.
+
+
 
 ### Uninstall Applications
 
@@ -160,8 +172,6 @@ You can open the information page of any application to view its ratings, downlo
 ### Comment and Rate
 
 - After sign in, you can comment on and rate the applications. But you have to submit your comments and ratings at the same time.
-
-![1|commenrandrate](jpg/commentandrate.png)
 
 > ![tips](icon/tips.svg)Tips: You can click the icon at the right of the comment to like it.
 

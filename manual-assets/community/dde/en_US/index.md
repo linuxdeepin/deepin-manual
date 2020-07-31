@@ -1095,7 +1095,9 @@ When there is only one system in the computer, Startup Delay will be switched of
 
 Window manager controls the alignment and appearance of windows. It allows you to switch between your virtual desktops and manage the windows in various workspaces.
 
-![1|workspace](jpg/workspace.png.jpg)
+> ![notes](icon/notes.svg)Notes: this function is available only when **Window Effect** is turned on in **Personalization** in **Control Center**. 
+
+![1|workspace](jpg/workspace.png)
 
 ### Open Workspace
 Manage your desktop windows in different workspaces to enlarge your Workspaces.
