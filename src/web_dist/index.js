@@ -249,6 +249,9 @@ var App = function (_React$Component) {
         }
         this.setState({ historyGO: entriesLen - 1 });
       }
+
+      //切换状态时,去除选中状态....为何选中状态切换页面时会保留??????
+      window.getSelection().empty();
     }
   }, {
     key: 'componentDidMount',
@@ -1408,9 +1411,6 @@ var Main = function (_Component) {
       if (yPage + 40 > document.body.scrollHeight) {
         yPage = document.body.scrollHeight - 40;
       }
-      //console.log("tooltipHeight :" + tooltipHeight);
-      console.log("scrollHeigth: " + document.body.scrollHeight);
-      console.log("main setScroll:" + yPage);
       setTimeout(function () {
         (0, _jquery2.default)('.tooltip-wp').css({
           'top': yPage + 'px',

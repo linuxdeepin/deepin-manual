@@ -215,6 +215,9 @@ class App extends React.Component {
       }
       this.setState({ historyGO: entriesLen - 1 });
     }
+
+    //切换状态时,去除选中状态....为何选中状态切换页面时会保留??????
+    window.getSelection().empty();
   }
   componentDidMount() {
     global.index = () => {
