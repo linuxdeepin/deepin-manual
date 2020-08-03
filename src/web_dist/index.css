@@ -403,7 +403,8 @@ body {
 
 #search {
   width: 80%;
-  margin: auto; }
+  margin: auto;
+  user-select: text !important; }
   #search div {
     width: 100%; }
   #search #mismatch {

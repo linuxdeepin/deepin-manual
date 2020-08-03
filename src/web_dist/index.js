@@ -107,6 +107,9 @@ var App = function (_React$Component) {
         global.qtObjects.titleBar.setBackwardButtonActive(false);
         global.qtObjects.titleBar.setForwardButtonActive(false);
         global.qtObjects.titleBar.backwardButtonClicked.connect(function () {
+          console.log("global.hash------->:", global.hash);
+
+          global.handleLocation(global.hash);
           console.log("----------backwardButtonClicked----------");
           _this2.setState({ historyGO: _this2.state.historyGO - 1 });
           console.log("==========backwardButtonClicked=========>");
@@ -114,6 +117,9 @@ var App = function (_React$Component) {
           console.log("back history location: " + _this2.context.router.history.location.pathname);
         });
         global.qtObjects.titleBar.forwardButtonClicked.connect(function () {
+          console.log("global.hash------->:", global.hash);
+
+          global.handleLocation(global.hash);
           console.log("----------forwardButtonClicked----------");
           _this2.setState({ historyGO: _this2.state.historyGO + 1 });
           console.log("==========forwardButtonClicked=========>");
@@ -242,8 +248,6 @@ var App = function (_React$Component) {
         console.log("global.open: " + url);
         _this3.context.router.history.push(url);
 
-        console.log("router.history--->", _this3.context.router.history);
-
         //通知qt对象,修改应用打开状态
         global.qtObjects.manual.setApplicationState(file);
       };
@@ -252,6 +256,7 @@ var App = function (_React$Component) {
         var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
 
         console.log("global linkTitle==> file:" + file + " title: " + title);
+        global.handleLocation(global.hash);
         if (title !== '') {
           var filePath = global.path + '/' + file + '/' + global.lang + '/index.md';
           global.readFile(filePath, function (data) {
@@ -268,6 +273,20 @@ var App = function (_React$Component) {
           });
         } else {
           global.open(file);
+        }
+      };
+
+      //替换当前URL,仅仅在切换到其他页面处调用...(包含前进,后退,重新打开一个新的页面)
+      global.handleLocation = function () {
+        var hash = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+        var url = _this3.context.router.history.location.pathname;
+        console.log("global.handhash: ", url);
+        var urlList = url.split("/");
+        if (urlList.length == 5) {
+          url = '/' + urlList[1] + '/' + urlList[2] + '/' + hash + '/' + urlList[4];
+          console.log("new url:", url);
+          _this3.context.router.history.replace(url);
         }
       };
 
@@ -1257,7 +1276,6 @@ var Main = function (_Component) {
         });
       }
     });
-
     return _this;
   }
 
@@ -1269,6 +1287,7 @@ var Main = function (_Component) {
       var key = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
       console.log("main init==>file:", file, " hash:", hash, " key:", key);
+      global.hash = hash;
       var filePath = file;
       if (filePath.indexOf('/') == -1) {
         filePath = global.path + '/' + file + '/' + global.lang + '/index.md';

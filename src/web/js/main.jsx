@@ -26,10 +26,10 @@ export default class Main extends Component {
             }
           }
       );
-
   }
   init(file, hash,key='') {
     console.log("main init==>file:",file," hash:",hash," key:",key);
+    global.hash = hash;
     var filePath = file;
     if (filePath.indexOf('/') == -1) {
       filePath = `${global.path}/${file}/${global.lang}/index.md`;

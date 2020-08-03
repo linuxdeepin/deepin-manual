@@ -65,6 +65,9 @@ class App extends React.Component {
       global.qtObjects.titleBar.setBackwardButtonActive(false);
       global.qtObjects.titleBar.setForwardButtonActive(false);
       global.qtObjects.titleBar.backwardButtonClicked.connect(() => {
+        console.log("global.hash------->:",global.hash);
+
+        global.handleLocation(global.hash);
         console.log("----------backwardButtonClicked----------");
         this.setState({ historyGO: this.state.historyGO - 1 });
         console.log("==========backwardButtonClicked=========>");
@@ -72,6 +75,9 @@ class App extends React.Component {
         console.log("back history location: "+this.context.router.history.location.pathname);
       });
       global.qtObjects.titleBar.forwardButtonClicked.connect(() => {
+        console.log("global.hash------->:",global.hash);
+
+        global.handleLocation(global.hash);
         console.log("----------forwardButtonClicked----------");
         this.setState({ historyGO: this.state.historyGO + 1 });
         console.log("==========forwardButtonClicked=========>");
@@ -191,15 +197,13 @@ class App extends React.Component {
       console.log("global.open: " +url);
       this.context.router.history.push(url);
 
-
-      console.log("router.history--->", this.context.router.history);
-
       //通知qt对象,修改应用打开状态
         global.qtObjects.manual.setApplicationState(file);
     };
 
     global.openTitle = (file, title = '') => {
       console.log("global linkTitle==> file:" + file + " title: "+title);
+      global.handleLocation(global.hash);
       if (title !== '')
       {
         let filePath = `${global.path}/${file}/${global.lang}/index.md`;
@@ -220,6 +224,19 @@ class App extends React.Component {
         global.open(file);
       }
     };
+
+    //替换当前URL,仅仅在切换到其他页面处调用...(包含前进,后退,重新打开一个新的页面)
+    global.handleLocation=(hash='') =>{
+      let url = this.context.router.history.location.pathname;
+      console.log("global.handhash: ",url);
+      let urlList = url.split("/");
+      if (urlList.length == 5)
+      {
+        url = `/${urlList[1]}/${urlList[2]}/${hash}/${urlList[4]}`;
+        console.log("new url:",url);
+        this.context.router.history.replace(url);
+      }
+    }
 
     //获取当前系统活动色
     global.setHashWordColor = (strRgb) => {
