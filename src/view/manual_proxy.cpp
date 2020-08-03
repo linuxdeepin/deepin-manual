@@ -122,6 +122,11 @@ void ManualProxy::finishChannel()
     emit channelInit();
 }
 
+void ManualProxy::supportClick()
+{
+    emit supportBeClick();
+}
+
 /**
  * @brief ManualProxy::saveAppList
  * @param list

@@ -1313,12 +1313,9 @@ var Main = function (_Component) {
     _this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null, key);
     var showFloatTimer = null;
     global.qtObjects.manual.hasSelperSupport(function (bFlag) {
-      if (bFlag) {
-        console.log("bFlag ---:" + bFlag);
-        _this.setState({
-          isShowHelperSupport: false
-        });
-      }
+      _this.setState({
+        isShowHelperSupport: bFlag
+      });
     });
     return _this;
   }
@@ -1419,6 +1416,12 @@ var Main = function (_Component) {
       }, 150);
     }
   }, {
+    key: 'onSupportClick',
+    value: function onSupportClick() {
+      // global.Object.manual
+      global.qtObjects.manual.supportClick();
+    }
+  }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
       var _nextProps$match$para = nextProps.match.params,
@@ -1456,15 +1459,11 @@ var Main = function (_Component) {
       if (this.state.isShowHelperSupport) {
         support = _react2.default.createElement(
           'div',
-          { className: 'support-div', onClick: function onClick() {
-              console.log("support click...");
-            } },
+          { className: 'support-div', onClick: this.onSupportClick.bind(this) },
           _react2.default.createElement('img', { className: 'support', src: './pic.svg' })
         );
-        console.log("div support");
       } else {
         support = _react2.default.createElement('div', null);
-        console.log("not div support");
       }
 
       return this.state.init && _react2.default.createElement(

@@ -18,12 +18,9 @@ export default class Main extends Component {
     var showFloatTimer=null;
     global.qtObjects.manual.hasSelperSupport(bFlag =>
           {
-            if(bFlag) {
-              console.log("bFlag ---:" + bFlag);
-              this.setState({ 
-                isShowHelperSupport:false
-              });
-            }
+            this.setState({ 
+              isShowHelperSupport:bFlag
+            });
           }
       );
   }
@@ -105,6 +102,11 @@ export default class Main extends Component {
     },150);
   }
 
+  onSupportClick(){
+    // global.Object.manual
+    global.qtObjects.manual.supportClick();
+  }
+
   componentWillReceiveProps(nextProps) {
     let { file, hash,key } = nextProps.match.params;
     console.log("main componentWillReceivePropss: "+file+" "+hash+"  this.file:"+ this.state.file + " key:",key);
@@ -131,11 +133,9 @@ export default class Main extends Component {
     console.log("main render....hList:",this.state.hlist);
     let support = null;
     if (this.state.isShowHelperSupport) {
-      support = <div className="support-div" onClick={() =>{console.log("support click...")}}><img className="support" src="./pic.svg"></img></div>
-      console.log("div support");
+      support = <div className="support-div" onClick={this.onSupportClick.bind(this)}><img className="support" src="./pic.svg"></img></div>
     }else{
       support = <div></div>
-      console.log("not div support");
     }
 
     return (

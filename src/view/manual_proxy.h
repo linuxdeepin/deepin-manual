@@ -33,6 +33,7 @@ signals:
     void WidgetLower();
     void channelInit();
     void searchEditTextisEmpty();
+    void supportBeClick();
 
 public slots:
     QString getSystemManualDir();
@@ -42,8 +43,8 @@ public slots:
     void setApplicationState(const QString &appName);
     QStringList getUsedAppList();
     bool hasSelperSupport();
-
     void finishChannel();
+    void supportClick();
 
 private:
     void saveAppList(const QStringList &list);

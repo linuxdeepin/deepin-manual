@@ -215,7 +215,16 @@ void WebWindow::slot_ThemeChanged()
  */
 void WebWindow::slot_HelpSupportTriggered()
 {
-    qDebug() << "helpSupportTriggered";
+    QDBusInterface interface("com.deepin.dde.ServiceAndSupport",
+                                 "/com/deepin/dde/ServiceAndSupport",
+                                 "com.deepin.dde.ServiceAndSupport");
+
+    QDBusReply<void> reply = interface.call("ShowCustomerChat");
+    if (reply.isValid()) {
+        qDebug() << "call com.deepin.dde.ServiceAndSupport success";
+    } else {
+        qDebug() << "call com.deepin.dde.ServiceAndSupport failed";
+    }
 }
 
 void WebWindow::closeEvent(QCloseEvent *event)
@@ -457,7 +466,7 @@ void WebWindow::initUI()
         DMenu *pMenu = new DMenu;
         QAction *pHelpSupport = new QAction(QObject::tr("Support"));
         pMenu->addAction(pHelpSupport);
-        //this->titlebar()->setMenu(pMenu);
+        this->titlebar()->setMenu(pMenu);
         connect(pHelpSupport, &QAction::triggered, this, &WebWindow::slot_HelpSupportTriggered);
     }
     this->titlebar()->addWidget(buttonFrame, Qt::AlignLeft);
@@ -508,6 +517,7 @@ void WebWindow::initWebView()
     connect(web_view_->page(), &QWebEnginePage::loadFinished, this, &WebWindow::onWebPageLoadFinished);
     connect(manual_proxy_, &ManualProxy::channelInit, this, &WebWindow::onChannelFinish);
     connect(manual_proxy_, &ManualProxy::WidgetLower, this, &WebWindow::lower);
+    connect(manual_proxy_, &ManualProxy::supportBeClick, this, &WebWindow::slot_HelpSupportTriggered);
     connect(search_edit_, &SearchEdit::onClickedClearBtn, manual_proxy_,
             &ManualProxy::searchEditTextisEmpty);
     connect(search_proxy_, &SearchProxy::setKeyword, this, &WebWindow::onSetKeyword);
