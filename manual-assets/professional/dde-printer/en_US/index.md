@@ -98,7 +98,7 @@ After you add a printer and select the correct driver, click **Install Driver** 
 - Successfully Installed 
   A window pops up saying the printer is successfully installed, in which you can click **Print Test Page** to verify if printing works normally, or, you can click **View Printer** to enter the interface of printer manager. 
 
-  ![0|8successful installion](jpg/8successful installion.png)
+  ![0|8successful installion](jpg/8successful install.png)
 
 - Install Failed
   
@@ -129,7 +129,7 @@ Once a printer is added successfully, when you click the printer in the interfac
 
   - Page Size: **Letter** is set by default. You can choose other size according to your needs.
 
-  - Color Precision: **Normal** is set by default. The other option is **Best**.
+  - Resolution: you can choose the suitable resolution here.
 
   - Media Type: **Photo Paper Pro Platinum** is set by default. There are many other options for you to choose. 
 
@@ -140,8 +140,6 @@ Once a printer is added successfully, when you click the printer in the interfac
   - Resolution: **Automatic**  is set by default. There are many other options for you to choose. 
 
   - Shrink Page If Necessary to Fit Borders: **Shrink (print the whole page)** is set by default. The other two options are **Crop (preserve dimensions)** and **Expand (use maximum page area)**.
-
-![0|10printer settings2](jpg/10printer settings2.png)
 
 4. Restore defaults: click this button, all settings will be restored to default. 
    

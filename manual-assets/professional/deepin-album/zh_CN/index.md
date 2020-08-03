@@ -14,7 +14,7 @@
 
 ### 运行相册
 
-1. 点击桌面底部的 ![launcher](icon/deepin-launcher.svg) ，进入启动器界面。
+1. 点击桌面底部的 ![launcher](icon/deepin-launcher.svg)，进入启动器界面。
 2. 上下滚动鼠标滚轮浏览或通过搜索，找到相册 ![deepin-album](icon/deepin-album.svg)点击运行。
 3. 右键单击 ![deepin-album](icon/deepin-album.svg)，您可以：
  - 点击 **发送到桌面**，在桌面创建快捷方式。
@@ -25,13 +25,13 @@
 
 ### 关闭相册
 
-- 在相册界面点击  ![close_icon](icon/close_icon.svg) ，退出相册。
+- 在相册界面点击  ![close_icon](icon/close_icon.svg)，退出相册。
 - 在任务栏右键单击 ![deepin-album](icon/deepin-album.svg)，选择 **关闭所有** 来退出相册。
 - 在相册界面点击 ![icon_menu](icon/icon_menu.svg) ，选择 **退出** 来退出相册。
 
 ### 查看快捷键
 
-在相册界面上，按下 **Ctrl + Shift + ？** 组合键来查看快捷键，熟练的使用快捷键，将大大提升您的操作效率。
+在相册界面上，按下 **Ctrl + Shift + ?** 组合键来查看快捷键，熟练的使用快捷键，将大大提升您的操作效率。
 
 ![0|hotkey](jpg/hotkey.png)
 
@@ -42,7 +42,7 @@
 ### 导入照片
 
 在相册界面，可以采用以下方式导入照片。
-- 点击![icon_menu](icon/icon_menu.svg) >  **导入照片**。
+- 点击![icon_menu](icon/icon_menu.svg)> **导入照片**。
 - 直接将照片或所在文件夹拖拽到界面上。
 - 从移动设备导入照片。
 
@@ -113,7 +113,7 @@
 
 在相册中您可以通过如下方法删除照片：
 
-- 查看图片时，点击界面上的 ![delete_press](icon/delete.svg)  图标。
+- 查看图片时，点击界面上的 ![delete_press](icon/delete.svg)图标。
 - 右键单击照片，选择 **删除**。
 - 在相册界面上，按下键盘上的 **Delete** 键。
 
@@ -165,7 +165,7 @@
 
 ### 新建相册
 
-1. 在相册界面，点击![icon_menu](icon/create.png) 或 ![icon_menu](icon/icon_menu.svg)  > **新建相册**。
+1. 在相册界面，点击![icon_menu](icon/create.png) 或 ![icon_menu](icon/icon_menu.svg) > **新建相册**。
 2. 输入相册名称，点击 **新建**。
 
    > ![tips](icon/tips.svg)窍门：右键单击已创建的相册，也可以新建相册。您还可以在添加照片到相册时新建相册。
@@ -218,14 +218,14 @@
 
 查看帮助手册，进一步了解和使用相册。
 
-1. 在相册界面，点击  ![icon_menu](icon/icon_menu.svg) 。
+1. 在相册界面，点击  ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **帮助**。
 3. 查看相册的帮助手册。
 
 
 ### 关于
 
-1. 在相册界面，点击  ![icon_menu](icon/icon_menu.svg) 。
+1. 在相册界面，点击  ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **关于**。
 3. 查看相册的版本和介绍。
 

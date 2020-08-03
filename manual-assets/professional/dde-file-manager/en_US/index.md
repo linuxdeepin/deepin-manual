@@ -541,7 +541,7 @@ The window theme includes Light Theme, Dark Theme and System Theme (default).
  - In **Dialog**, you can set whether to use the file chooser dialog of the File Manager.
  - In **Other**, you can set whether to hide system disk or not.
 
-![1|settings](jpg/settings.png)
+
 
 ### Help
 

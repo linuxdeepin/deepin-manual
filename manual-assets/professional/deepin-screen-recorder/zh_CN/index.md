@@ -14,21 +14,21 @@
 
 ### 运行截图录屏
 
-1. 点击桌面底部的 ![deepin-launcher](icon/deepin-launcher.svg) ，进入启动器界面。
-2. 上下滚动鼠标滚轮浏览或通过搜索，找到截图录屏 ![deepin-screenshot](icon/deepin-screenshot.svg) 点击运行。
-3. 右键单击 ![deepin-screenshot](icon/deepin-screenshot.svg) ，您可以：
+1. 点击桌面底部的 ![deepin-launcher](icon/deepin-launcher.svg)，进入启动器界面。
+2. 上下滚动鼠标滚轮浏览或通过搜索，找到截图录屏 ![deepin-screenshot](icon/deepin-screenshot.svg)点击运行。
+3. 右键单击 ![deepin-screenshot](icon/deepin-screenshot.svg)，您可以：
 
    - 点击 **发送到桌面**，在桌面创建快捷方式。
    - 点击 **发送到任务栏**，将应用程序固定到任务栏。
    - 点击 **开机自动启动**，将应用程序添加到开机启动项，在电脑开机时自动运行该应用。
 
-> ![notes](icon/notes.svg)说明：如果截图录屏已经默认固定在任务栏上，您也可以点击任务栏上的 ![deepin-screenshot](icon/deepin-screenshot.svg) 来运行。
+> ![notes](icon/notes.svg)说明：如果截图录屏已经默认固定在任务栏上，您也可以点击任务栏上的 ![deepin-screenshot](icon/deepin-screenshot.svg)来运行。
 
 ### 关闭截图录屏
 
 - 截图录屏会在截图结束后自动退出。
 - 截图录屏会在录制结束后自动退出。
-- 在截图录屏界面，点击![close](icon/close-normal.svg) ，退出录屏。
+- 在截图录屏界面，点击![close](icon/close-normal.svg)，退出录屏。
 - 按下键盘上的 **Ctrl + S** 组合键 或 **Esc** 键。
 - 在截图录屏界面，点击鼠标右键，选择 **保存** 或 **退出**。
 
@@ -40,7 +40,7 @@
 
 您可以通过多种方式来实现快速截图：
 
-- 使用键盘上的 ![print](icon/Print.svg) 键来截取整个显示器的屏幕。
+- 使用键盘上的 ![print](icon/Print.svg)键来截取整个显示器的屏幕。
 - 使用各个应用软件如腾讯 QQ、Chrome 浏览器等软件的截图功能。
 - 使用专业的截图软件来截取屏幕，如操作系统自带的录屏截图软件。
 
@@ -48,7 +48,7 @@
 
 通过快捷键来进行相关操作，省时又省力。
 
-1. 在截图模式下，按下键盘上的 **Ctrl+Shift+？**组合键，打开快捷键预览界面。
+1. 在截图模式下，按下键盘上的 **Ctrl + Shift + ?** 组合键，打开快捷键预览界面。
 2. 在快捷键预览界面，您可以查看到所有的快捷键。
 
 ![1|快捷键](jpg/hotkey.png)
@@ -70,15 +70,15 @@
 
 您可以通过操作以下步骤来选择全屏：
 
-1. 按下键盘上的 **Ctrl+Alt+A** 组合键，进入截图模式。
+1. 按下键盘上的 **Ctrl + Alt + A** 组合键，进入截图模式。
 2. 将鼠标指针移至桌面上，录屏截图会自动选中整个屏幕，并在其左上角显示当前截图区域的尺寸大小。
 3. 点击桌面，在桌面的右下角会弹出工具栏。
-4. 如果要退出截图，请点击工具栏上的 ![关闭](icon/close_icon.svg) 或点击鼠标右键选择 **退出**。
+4. 如果要退出截图，请点击工具栏上的 ![关闭](icon/close_icon.svg)或点击鼠标右键选择 **退出**。
 
 您也可以直接操作以下步骤来进行全屏截图：
 
-- 如果您已经将录屏截图固定到任务栏，右键单击任务栏上的![deepin-screenshot](icon/deepin-screenshot.svg)  ，然后选择截取全屏 。
-- 按下键盘上的 ![print](icon/Print.svg) 键，实现全屏截图。
+- 如果您已经将录屏截图固定到任务栏，右键单击任务栏上的![deepin-screenshot](icon/deepin-screenshot.svg)，然后选择截取全屏 。
+- 按下键盘上的 ![print](icon/Print.svg)键，实现全屏截图。
 
 ##### 选择程序窗口
 
@@ -88,10 +88,10 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-1. 按下键盘上的 **Ctrl+Alt+A** 组合键，进入截图模式。
+1. 按下键盘上的 **Ctrl + Alt + A** 组合键，进入截图模式。
 2. 将鼠标指针移至打开的应用窗口上，录屏截图会自动选中该窗口，并在其左上角显示当前截图区域的尺寸大小。
 3. 点击窗口，在窗口的右下角会弹出工具栏。
-4. 如果要退出截图，请点击工具栏上的 ![关闭](icon/close_icon.svg)  或点击鼠标右键选择 **退出**。
+4. 如果要退出截图，请点击工具栏上的 ![关闭](icon/close_icon.svg)或点击鼠标右键选择 **退出**。
 
 ##### 选择自选区域
 
@@ -101,10 +101,10 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-1. 按下键盘上的 **Ctrl+Alt+A** 组合键，进入截图模式。
+1. 按下键盘上的 **Ctrl + Alt + A** 组合键，进入截图模式。
 2. 按住鼠标左键不放，拖动鼠标选择截图区域，在其左上角将实时显示当前截图区域的尺寸大小。
 3. 释放鼠标左键，完成截图，在截图区域的右下角会弹出工具栏。
-4. 如果要退出截图，请点击工具栏上的 ![关闭](icon/close_icon.svg)  或点击鼠标右键选择 **退出**。
+4. 如果要退出截图，请点击工具栏上的 ![关闭](icon/close_icon.svg)或点击鼠标右键选择 **退出**。
 
 #### 调整截图区域
 
@@ -122,7 +122,7 @@
 
 将鼠标指针置于截图区域上，鼠标指针变为 ![手指](icon/hand.svg)。您可以：
 - 按住鼠标左键不放，拖动鼠标来移动截图区域的位置。
-- 按下键盘上的 ![向上](icon/Up.svg) 或 ![向下](icon/Down.svg) 来上下移动截图区域，按下键盘上的 ![向左](icon/Left.svg) 或 ![向右](icon/Right.svg) 来左右移动截图区域。
+- 按下键盘上的 ![向上](icon/Up.svg)或 ![向下](icon/Down.svg)来上下移动截图区域，按下键盘上的 ![向左](icon/Left.svg)或 ![向右](icon/Right.svg)来左右移动截图区域。
 
 #### 编辑截图
 
@@ -184,7 +184,7 @@
 2. 在工具栏展开面板中，选择矩形边线的粗细。
 3. 将鼠标指针置于截图区域上，鼠标指针变为 ![矩形指针](icon/rect_mouse.svg)。
 4. 按住鼠标左键不放，拖动鼠标以完成图形区域的绘制。
-5. 如果截图中包含了个人隐私信息，请点击工具栏展开面板中的 ![模糊](icon/vague_normal.svg) 或 ![马赛克](icon/Mosaic_normal.svg) 来涂抹。
+5. 如果截图中包含了个人隐私信息，请点击工具栏展开面板中的 ![模糊](icon/vague_normal.svg) 或 ![马赛克](icon/Mosaic_normal.svg)来涂抹。
 
 ![2|blurtool](jpg/blurtool.jpg)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -201,7 +201,7 @@
 2. 在工具栏展开面板中，选择椭圆边线的粗细。
 3. 将鼠标指针置于截图区域上，鼠标指针变为 ![椭圆指针](icon/ellipse_mouse.svg)。
 4. 按住鼠标左键不放，拖动鼠标以完成图形区域的绘制。
-5. 如果截图中包含了个人隐私信息，请点击工具栏展开面板中的 ![模糊](icon/vague_normal.svg) 或 ![马赛克](icon/Mosaic_normal.svg) 来涂抹。
+5. 如果截图中包含了个人隐私信息，请点击工具栏展开面板中的 ![模糊](icon/vague_normal.svg) 或 ![马赛克](icon/Mosaic_normal.svg)来涂抹。
 
 
 ##### 直线和箭头工具
@@ -212,7 +212,7 @@
 
 1. 在截图区域下方的工具栏中，点击 ![直线](icon/line-normal.svg)。
 2. 在工具栏展开面板中，选择线条的粗细。
-3. 点击 ![直线](icon/line-normal.svg) 或 ![箭头](icon/Arrow-normal.svg)，在直线和箭头之间切换。
+3. 点击 ![直线](icon/line-normal.svg)或 ![箭头](icon/Arrow-normal.svg)，在直线和箭头之间切换。
 4. 将鼠标指针置于截图区域上，鼠标指针变为 ![线条指针](icon/line_mouse.svg)或 ![箭头指针](icon/arrow_mouse.svg)。
 5. 按住鼠标左键不放，拖动鼠标以完成图形区域的绘制。
 
@@ -307,7 +307,7 @@
 
 - 双击鼠标左键来保存。
 - 点击截图工具栏中的“截图”按钮。
-- 按下键盘上的 **Ctrl+S** 组合键来保存。
+- 按下键盘上的 **Ctrl + S** 组合键来保存。
 - 在截取的图片中，点击鼠标右键，选择 **保存** 完成保存操作。
 
 > ![notes](icon/notes.svg)说明：在以上操作中，截取的图片默认存放到桌面。

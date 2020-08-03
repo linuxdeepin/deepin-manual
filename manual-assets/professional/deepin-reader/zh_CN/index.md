@@ -25,14 +25,14 @@
 
 ### 关闭文档查看器
 
-- 在文档查看器界面点击 ![close_icon](icon/close_normal_light.svg) ，退出文档查看器。
+- 在文档查看器界面点击 ![close_icon](icon/close_normal_light.svg)，退出文档查看器。
 - 在任务栏右键单击 ![deepin-reader-24](icon/deepin-reader-24.svg)，选择 **关闭所有** 来退出文档查看器。
-- 在文档查看器界面点击 ![icon_menu](icon/icon_menu.svg) ，选择 **退出** 来退出文档查看器。
+- 在文档查看器界面点击 ![icon_menu](icon/icon_menu.svg)，选择 **退出** 来退出文档查看器。
 
 
 ### 查看快捷键
 
-在文档查看器界面上，按下键盘上的 **Ctrl + Shift+ ？**组合键来查看快捷键，熟练地使用快捷键，将大大提升您的操作效率。
+在文档查看器界面上，按下键盘上的 **Ctrl + Shift + ?** 组合键来查看快捷键，熟练地使用快捷键，将大大提升您的操作效率。
 
 ![1|hotkey](jpg/hotkey.png)
 
@@ -52,7 +52,7 @@
    > ![tips](icon/tips.svg)窍门：直接双击文件会使用默认程序打开文件，您可以右键单击文件，在 **属性 > 打开方式** 中选择一个默认程序，也可以到控制中心[默认程序设置](dman:///dde#默认程序设置)中去设置此类文件的全局默认程序。
 
 - 在文档查看器初始界面，点击 **选择文件**。
-- 在文档查看器界面，使用 **Ctrl+O** 组合键，选择文件打开。
+- 在文档查看器界面，使用 **Ctrl + O** 组合键，选择文件打开。
 
    > ![notes](icon/notes.svg)说明：文档查看器支持的文件格式有：PDF、DJVU。
 
@@ -60,7 +60,7 @@
 
 对当前正在编辑、修改的文档进行保存。
 
-- 使用 **Ctrl+S** 组合键保存当前文件。
+- 使用 **Ctrl + S** 组合键保存当前文件。
 - 点击![icon_menu](icon/icon_menu.svg) > **保存**，保存文件。
   
    > ![tips](icon/tips.svg)窍门：您还可以使用 **Ctrl + Shift + S** 或点击![icon_menu](icon/icon_menu.svg) > **另存为**，另存文件。
@@ -70,25 +70,27 @@
 
 在文档查看器中使用打印，需要您连接并配置好打印机。
 
-1. 点击![icon_menu](icon/icon_menu.svg) > **打印**，也可以使用组合键 **Ctrl+P** 打开打印预览。
+1. 点击 ![icon_menu](icon/icon_menu.svg) > **打印**，也可以使用组合键 **Ctrl + P** 打开打印预览。
 2. 在打印预览界面，您可以预览并设置打印页面。
 3. 在打印预览界面，点击最右边的打印机图标，在弹出的窗口中选择打印机，并设置相关参数。
 4. 点击 **打印** 即可将文件发送到打印机打印。
 
-![preview](jpg/preview-doc.png)
+![preview](jpg/preview-doc.png) 
+
 ![pagesetup](jpg/pageSetup-doc.png)
+
 ![printer](jpg/printer-doc.png)
 
 ### 管理标签页
 
 新增标签页
 
-1. 点击![icon_menu](icon/plus_icon.svg)或者![icon_menu](icon/icon_menu.svg) > **新标签页**，新增一个标签页。
+1. 点击 ![icon_menu](icon/plus_icon.svg)或者 ![icon_menu](icon/icon_menu.svg) > **新标签页**，新增一个标签页。
 
 使用以下方式切换/调整标签页
 
 - 支持在同一窗口内拖拽调整标签页排序。
-- 支持点击![previous](icon/previous.svg)或![next](icon/next.svg)按钮，左右移动一个。
+- 支持点击 ![previous](icon/previous.svg) 或 ![next](icon/next.svg) 按钮，左右移动一个。
 - 首个标签页，左移按钮置灰，选择最后一个标签页，右移按钮置灰。
 - 滚动鼠标支持自动切换标签页。 
 - 当目前只有一个窗口时，双击文档或右击文档选择文档查看器方式，在最早打开的窗口中打开文档。
@@ -116,7 +118,7 @@
 
 - 添加书签
    - 右键单击文档查看器中的文件页，选择 **添加书签**，可以为当前正在浏览的页面添加书签。
-   - 将鼠标移至浏览页面右上角书签区域显示![view](icon/bookmark.svg)，点击书签图标为当前页添加书签，书签图标变为蓝色填充色。
+   - 将鼠标移至浏览页面右上角书签区域显示 ![view](icon/bookmark.svg)，点击书签图标为当前页添加书签，书签图标变为蓝色填充色。
 - 删除书签：
    - 在已添加书签的页面，右键单击书签，选择 **删除书签** 来删除书签。
    - 鼠标移到书签位置, 点击有填充颜色的书签，可以取消(删除)该书签。
@@ -144,7 +146,7 @@
 - 复制注释
    -  在页面上，右键单击已完成注释的高亮文本内容，在右键菜单中选择 **复制**，可以复制该条注释的全部内容。
    -  在页面上，右键单击注释图标，在右键菜单中选择 **复制**，可以复制该条注释的全部内容。
-   -  点击![menu](icon/thumbnail_normal_light.svg)，在左侧选择注释目录![view](icon/comments_normal_light.svg)，选定一个注释，右键单击选择 **复制**，可以复制这条注释的全部内容。
+   -  点击![menu](icon/thumbnail_normal_light.svg)，在左侧选择注释目录 ![view](icon/comments_normal_light.svg)，选定一个注释，右键单击选择 **复制**，可以复制这条注释的全部内容。
 
 - 显示注释  
    1.  将鼠标悬停至注释图标上，在出现的浮框中显示部分注释内容。
@@ -153,7 +155,7 @@
 - 删除注释
    - 右键点击已完成注释的高亮文本内容，在右键菜单中选择 **取消高亮**，可以删除该条注释内容。
    - 右键点击注释图标，在右键菜单中选择 **删除注释**，可以删除该条注释内容。
-   - 在左侧选择注释目录![view](icon/comments_normal_light.svg)，选定一个注释，右键单击选择 **删除注释**，删除这条注释，对应页面上的这条注释内容也删除。
+   - 在左侧选择注释目录 ![view](icon/comments_normal_light.svg)，选定一个注释，右键单击选择 **删除注释**，删除这条注释，对应页面上的这条注释内容也删除。
 
    > ![notes](icon/notes.svg)说明：DJVU格式的文件不支持添加注释。
 
@@ -190,28 +192,28 @@
 - 使用鼠标滚轮向上或向下滚屏。
 - 使用文档窗口的滚动条，向上或向下拖动滚动条。
 - 使用您键盘的向上和向下键。
-- 使用手型工具![hand](icon/hand_small_normal_light.svg)，用鼠标拖挪页面，就像您正在抓住页面那样。
+- 使用手型工具 ![hand](icon/hand_small_normal_light.svg)，用鼠标拖挪页面，就像您正在抓住页面那样。
 
 ### 快速翻页
 
 您能够使用下列方法之一在文档的页面中移动：
 
 - 右键单击，在快捷菜单中选择  **前一页** 或 **后一页** 。
-- 按下键盘上的  ![Down](icon/Down.svg)  或 ![Up](icon/Up.svg) 键。
+- 按下键盘上的 ![Down](icon/Down.svg) 或 ![Up](icon/Up.svg) 键。
 - 转至指定页面：
   - 输入页码数并按回车键。
   - 如果您想直接浏览文档的开头或结尾：右键单击，在快捷菜单中选择 **第一页** 或 **最后一页**。
 
 ### 切换目录
 
-通过缩略图可以进行文档缩略图目录![view](icon/view_normal.svg)、文档目录![catalog](icon/catalog.svg) 、书签目录![view](icon/bookmark_normal.svg)、注释目录![view](icon/comments_normal_light.svg)的切换。手动拖拽目录边框，缩略图跟随可拖拽宽度大小的变化而变化。
+通过缩略图可以进行文档缩略图目录 ![view](icon/view_normal.svg)、文档目录 ![catalog](icon/catalog.svg) 、书签目录 ![view](icon/bookmark_normal.svg)、注释目录 ![view](icon/comments_normal_light.svg) 的切换。手动拖拽目录边框，缩略图跟随可拖拽宽度大小的变化而变化。
 
 
 ### 幻灯片放映
 
-1. 在文档查看器界面，点击![icon_menu](icon/icon_menu.svg) 。
+1. 在文档查看器界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 选择 **幻灯片放映**，文档页面将以幻灯片形式进行播放。
-3. 点击![play](icon/previous.svg)或![play](icon/next.svg)切换文档页面，也可以点击 ![play](icon/suspend_normal.svg)停止播放。
+3. 点击 ![play](icon/previous.svg) 或 ![play](icon/next.svg)切换文档页面，也可以点击 ![play](icon/suspend_normal.svg) 停止播放。
 4. 按下键盘上的 **Esc** 键退出播放。
 
 
@@ -219,7 +221,7 @@
 
 使用下列方法之一放大或缩小页面：
 
-- 按下键盘上的 **Ctrl +“+”** 或 **Ctrl +“-”** 。
+- 按下键盘上的 **Ctrl + “+”** 或 **Ctrl + “-”** 。
 - 按下键盘上的 **Ctrl** 键的同时按住鼠标中键向上或向下滑动。
 - 在文档查看器界面菜单栏，点击 “**+** ”放大或 “**-**” 缩小 。
 
@@ -229,7 +231,7 @@
 
 ### 设置高亮
 
-1. 在文档查看器界面，点击  ![choose](icon/choose_normal_light.svg)，选择 ![choose](icon/choose_small_normal.svg)。
+1. 在文档查看器界面，点击 ![choose](icon/choose_normal_light.svg)，选择 ![choose](icon/choose_small_normal.svg)。
 2. 选中文本，点击右键，在右键菜单选择添加高亮，此时有不同的高亮颜色可供选择。   
    
    > ![notes](icon/notes.svg)说明：如果文本还没有被高亮显示，则 **取消高亮** 显示菜单置灰。
@@ -245,7 +247,7 @@
 
 ### 调整页面视图
 
-在菜单栏点击![view](icon/setting_normal.svg)，在展开的子菜单中您可以：
+在菜单栏点击 ![view](icon/setting_normal.svg)，在展开的子菜单中您可以：
 
 - 点击 **双页显示**，进入双页显示模式。
 - 点击  **适应高度**，页面高度在视窗内全部显示。
@@ -256,7 +258,7 @@
 
 使用以下方式之一适配窗口：
 
-- 鼠标拖拽窗口时，文本需根据窗口拖拽大小等比例调整适配  。 
+- 鼠标拖拽窗口时，文本需根据窗口拖拽大小等比例调整适配。 
 - 切换窗口大小时，左边目录栏展示比例需根据窗口大小比例进行等比调整适配。   
 - 如果在高分屏的情况下，缩略图左边栏宽度需要与屏幕分辨率进行等比例适配，需要适配高分屏的宽度值。 
 
@@ -265,13 +267,13 @@
 ### 旋转
 
 1. 在文档查看器界面，打开一个文件。
-2. 在菜单栏点击![view](icon/setting_normal.svg)，在展开的子菜单中选择 **左旋转** 或 **右旋转**，页面全部同时向左或向右旋转90°。
+2. 在菜单栏点击 ![view](icon/setting_normal.svg)，在展开的子菜单中选择 **左旋转** 或 **右旋转**，页面全部同时向左或向右旋转90°。
 
 
 ### 放大镜
 
 1. 在文档查看器界面，打开一个文件。
-2. 点击![icon_menu](icon/icon_menu.svg)>  **放大镜**。
+2. 点击 ![icon_menu](icon/icon_menu.svg) >  **放大镜**。
 3. 将鼠标移动到页面需要查看的区域，则该区域内容放大。
 4. 按下键盘上的 **Esc** 键或右键单击，即可取消放大镜功能。
 
@@ -283,19 +285,19 @@
 
 
 ### 查看文档信息
-1. 在文档查看器界面，点击![icon_menu](icon/icon_menu.svg)。
+1. 在文档查看器界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **文档信息**，展示文档的属性相关参数信息。
 
 ### 在文件管理器中显示
 
-1. 在文档查看器界面，点击![icon_menu](icon/icon_menu.svg)。
+1. 在文档查看器界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **在文件管理器中显示**，打开并定位该文件存放在文件夹的位置。
 
 ### 主题
 
 窗口主题包含浅色主题、深色主题和跟随系统主题，其中跟随系统主题为默认设置。
 
-1. 在文档查看器界面，点击![icon_menu](icon/icon_menu.svg)。
+1. 在文档查看器界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **主题**，选择一个主题颜色。
 
 ### 帮助

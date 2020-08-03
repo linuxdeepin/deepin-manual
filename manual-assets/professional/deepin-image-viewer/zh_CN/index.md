@@ -23,13 +23,13 @@
 
 ### 关闭看图
 
-- 在看图界面点击  ![close_icon](icon/close_icon.svg) ，退出看图。
-- 在任务栏右键单击 ![viewer](icon/deepin-image-viewer.svg) ，选择 **关闭所有** 来退出看图。
-- 在看图界面点击 ![icon_menu](icon/icon_menu.svg) ，选择 **退出** 来退出看图。
+- 在看图界面点击  ![close_icon](icon/close_icon.svg)，退出看图。
+- 在任务栏右键单击 ![viewer](icon/deepin-image-viewer.svg)，选择 **关闭所有** 来退出看图。
+- 在看图界面点击 ![icon_menu](icon/icon_menu.svg)，选择 **退出** 来退出看图。
 
 ### 查看快捷键
 
-在看图界面上，按下键盘上的按下键盘上的 **Ctrl+ Shift+ ？**组合键来查看快捷键。
+在看图界面上，按下键盘上的按下键盘上的 **Ctrl + Shift + ?** 组合键来查看快捷键。
 
 ![1|hotkey](jpg/hotkey.png)
 
@@ -76,14 +76,13 @@
 4. 根据需要设置打印属性。
 5. 选择 **打印**，将图片发送到打印机进行打印。
 
-   
 
 ### 重命名
 
 1. 在看图界面上，单击鼠标右键。
 2. 选择 **重命名**，在弹出的重命名窗口内，将图片名字进行修改。
 3. 点击 **确定** 完成修改。
-
+>![notes](icon/notes.svg)：系统图片不支持重命名。
 
 ### 幻灯片放映
 
@@ -143,20 +142,20 @@
 
 窗口主题包含浅色主题、深色主题和跟随系统主题，其中跟随系统主题为默认设置。
 
-1. 在看图界面，点击  ![icon_menu](icon/icon_menu.svg) 。
+1. 在看图界面，点击  ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **主题**，选择一个主题颜色。
 
 ### 帮助
 
 查看帮助手册，进一步了解和使用看图。
 
-1. 在看图界面，点击  ![icon_menu](icon/icon_menu.svg) 。
+1. 在看图界面，点击  ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **帮助**。
 3. 查看看图的帮助手册。
 
 ### 关于
 
-1. 在看图界面，点击  ![icon_menu](icon/icon_menu.svg) 。
+1. 在看图界面，点击  ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **关于**。
 3. 查看看图的版本和介绍。
 

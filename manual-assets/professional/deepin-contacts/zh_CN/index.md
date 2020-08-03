@@ -13,7 +13,7 @@
 ### 运行联系人
 
 1. 单击任务栏上的 ![deepin-launcher](icon/deepin-launcher.svg)进入启动器界面。
-2. 通过浏览找到 ![deepin-contacts](icon/deepin-contacts.svg) 单击运行。
+2. 通过浏览找到 ![deepin-contacts](icon/deepin-contacts.svg)单击运行。
 3. 右键单击![deepin-contacts](icon/deepin-contacts.svg)，您可以：
    - 单击 **发送到桌面**，在桌面创建快捷方式。
    - 单击 **发送到任务栏**，将应用程序固定到任务栏。
@@ -21,9 +21,9 @@
 
 ### 关闭联系人
 
-- 在联系人界面，单击  ![close_icon](icon/close_icon.svg) ，退出联系人应用。
+- 在联系人界面，单击  ![close_icon](icon/close_icon.svg)，退出联系人应用。
 - 右键单击任务栏上的 ![deepin-contacts](icon/deepin-contacts.svg) 图标，选择 **关闭所有** 来退出联系人应用。
-- 在联系人界面单击 ![icon_menu](icon/icon_menu.svg) ，选择 **退出** 来退出联系人应用。
+- 在联系人界面单击 ![icon_menu](icon/icon_menu.svg)，选择 **退出** 来退出联系人应用。
 
 ## 登录
 
@@ -76,7 +76,7 @@
 
 2. 在搜索框中输入想要搜索的好友网络帐号、好友昵称、好友备注、群名称，可以快速的找到联系人。
 
-  > ![notes](icon/notes.svg) 说明：搜索对象与网络帐号呈一定相关性，非陌生人对象。
+  > ![notes](icon/notes.svg)说明：搜索对象与网络帐号呈一定相关性，非陌生人对象。
 
 ### 新的朋友
 
@@ -353,7 +353,7 @@
 
 ## 主菜单
 
-在主菜单中，您可以查看用户个人信息，基础设置，切换窗口主题，查看帮助手册等操作。
+在主菜单中，您可以查看用户个人信息、基础设置、切换窗口主题、查看帮助手册等操作。
 
 ### 用户个人信息
 
@@ -376,17 +376,17 @@
 
 ### 设置
 
-1. 在联系人主界面，单击 ![icon_menu](icon/icon_menu.svg) 。
+1. 在联系人主界面，单击![icon_menu](icon/icon_menu.svg) 。
 
 2. 单击 **设置**。
 
-3. 设置麦克风，扬声器，摄像头及静音时是否通知，也可在会议中进行设置。
+3. 设置麦克风、扬声器、摄像头及静音时是否通知，也可在会议中进行设置。
 
 ### 主题
 
 窗口主题包含浅色主题、深色主题和跟随系统主题，其中跟随系统主题为默认设置。
 
-1. 在联系人主界面，单击![icon_menu](icon/icon_menu.svg) 。
+1. 在联系人主界面，单击![icon_menu](icon/icon_menu.svg)。
 2. 单击 **主题**，选择一个主题颜色。
 
 ### 帮助
@@ -398,13 +398,13 @@
 
 ### 关于
 
-1. 在联系人主界面，单击 ![icon_menu](icon/icon_menu.svg) 。
+1. 在联系人主界面，单击 ![icon_menu](icon/icon_menu.svg)。
 2. 单击 **关于**。
 3. 查看关于联系人的版本和介绍。
 
 ### 退出
 
-1. 在联系人主界面，单击 ![icon_menu](icon/icon_menu.svg) 。
+1. 在联系人主界面，单击 ![icon_menu](icon/icon_menu.svg)。
 2. 单击 **退出**。
 
 

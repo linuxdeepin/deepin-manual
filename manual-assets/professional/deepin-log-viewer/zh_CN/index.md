@@ -12,20 +12,18 @@
 
 ### 运行日志收集工具
 
-1. 点击任务栏上的 ![deepin-launcher](icon/deepin-launcher.svg)进入启动器界面。
-2. 上下滚动鼠标滚轮浏览或通过搜索找到  ![deepin-log-viewer](icon/deepin-log-viewer.svg) ，单击运行日志收集工具。
-3. 右键点![deepin-log-viewer](icon/deepin-log-viewer.svg)，您可以：
+1. 点击任务栏上的 ![deepin-launcher](icon/deepin-launcher.svg) 进入启动器界面。
+2. 上下滚动鼠标滚轮浏览或通过搜索找到 ![deepin-log-viewer](icon/deepin-log-viewer.svg)，单击运行日志收集工具。
+3. 右键点 ![deepin-log-viewer](icon/deepin-log-viewer.svg)，您可以：
    - 点击 **发送到桌面**，在桌面创建快捷方式。
-
    - 点击 **发送到任务栏**，将应用程序固定到任务栏。
-
    - 点击 **开机自动启动**，将应用程序添加到开机启动项，在电脑开机时自动运行该应用程序。
 
 ### 关闭日志收集工具
 
-- 在日志收集工具界面，点击  ![close_icon](icon/close_icon.svg) ，退出日志收集工具。
-- 右键单击任务栏上的 ![deepin-log-viewer](icon/deepin-log-viewer.svg)  图标，选择 **关闭所有** 来退出日志收集工具。
-- 在日志收集工具界面点击 ![icon_menu](icon/icon_menu.svg) ，选择 **退出** 来退出日志收集工具。
+- 在日志收集工具界面，点击 ![close_icon](icon/close_icon.svg)，退出日志收集工具。
+- 右键单击任务栏上的 ![deepin-log-viewer](icon/deepin-log-viewer.svg) 图标，选择 **关闭所有** 来退出日志收集工具。
+- 在日志收集工具界面点击 ![icon_menu](icon/icon_menu.svg)，选择 **退出** 来退出日志收集工具。
 
 ## 操作介绍
 
@@ -114,7 +112,7 @@
 2. 界面显示应用日志列表，显示字段为级别、时间、来源和信息。
 3. 选中某条日志后，列表下方会显示该日志的详细信息，包括来源、主机名、时间、级别和详细信息。
 
-> ![0|applog](jpg/applog.png)
+![0|applog](jpg/applog.png)
 
 ### 开关机事件
 
@@ -122,7 +120,7 @@
 2. 界面显示开关机事件列表，显示字段为事件类型、用户名、时间和信息。
 3. 选中某条日志后，列表下方会显示该日志的详细信息，包括主机名、事件类型、用户名和详细信息。
 
-> ![0|power event](jpg/power event.png)
+![0|power event](jpg/power event.png)
 
 > ![notes](icon/notes.svg)说明：在查看日志的过程中，如果有弹框出现 **查看日志需要授权** 界面，输入登录密码即可继续查看。
 
@@ -167,7 +165,7 @@
 
 窗口主题包含浅色主题、深色主题和跟随系统主题，其中跟随系统主题为默认设置。
 
-1. 在日志收集工具界面，点击![icon_menu](icon/icon_menu.svg)。
+1. 在日志收集工具界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **主题**，选择一个主题颜色。
 
 

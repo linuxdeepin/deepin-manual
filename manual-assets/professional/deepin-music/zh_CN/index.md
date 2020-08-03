@@ -12,9 +12,9 @@
 
 ### 运行音乐
 
-1. 点击桌面底部的 ![launcher_icon](icon/deepin-launcher.svg) ，进入启动器界面。
-2. 上下滚动鼠标滚轮浏览或通过搜索，找到音乐 ![music_icon-24](icon/music_icon-24.svg) 点击运行。
-3. 右键单击 ![music_icon-24](icon/music_icon-24.svg) ，您可以：
+1. 点击桌面底部的 ![launcher_icon](icon/deepin-launcher.svg)，进入启动器界面。
+2. 上下滚动鼠标滚轮浏览或通过搜索，找到音乐 ![music_icon-24](icon/music_icon-24.svg)点击运行。
+3. 右键单击 ![music_icon-24](icon/music_icon-24.svg)，您可以：
    - 点击 **发送到桌面**，在桌面创建快捷方式。
    - 点击 **发送到任务栏**，将应用程序固定到任务栏。
    - 点击 **开机自动启动**，将应用程序添加到开机启动项，在电脑开机时自动运行该应用。
@@ -44,11 +44,9 @@
 
 ### 查看快捷键
 
-在音乐界面上，按下 ![Ctrl](icon/Ctrl.svg) + ![Shift](icon/Shift.svg) + ![QM](icon/QM.svg) 组合键来查看快捷键，熟练的使用快捷键，将大大提升您的操作效率。
+在音乐界面上，按下 **Ctrl + Shift + ?** 组合键来查看快捷键，熟练的使用快捷键，将大大提升您的操作效率。
 
 ![0|view](jpg/hotkey.png)
-
-
 
 
 
@@ -57,8 +55,6 @@
 通过界面按钮可以进行常规的播放操作，查看播放列表和歌曲歌词信息。
 
 ![1|main](jpg/music-main.png)
-
-
 
 | 标号 | 名称          | 说明                                                         |
 | ---- | ------------- | ------------------------------------------------------------ |
@@ -122,7 +118,7 @@
 
 ### 调整播放模式
 
-在音乐界面，点击 ![single](icon/single-tune-circulation_normal.svg) 或  ![cross-cycling_normal](icon/cross-cycling_normal.svg) 或 ![sequential-loop_normal](icon/sequential-loop_normal.svg)调整播放模式。
+在音乐界面，点击 ![single](icon/single-tune-circulation_normal.svg)或 ![cross-cycling_normal](icon/cross-cycling_normal.svg) 或 ![sequential-loop_normal](icon/sequential-loop_normal.svg)调整播放模式。
 
 其中，
 
@@ -176,7 +172,7 @@
 
 ### 新建歌单
 
-1. 在音乐界面，点击“我的歌单”右侧的 ![icon_plus](icon/icon_plus.svg) 。
+1. 在音乐界面，点击“我的歌单”右侧的 ![icon_plus](icon/icon_plus.svg) 或者 ![icon_menu](icon/icon_menu.svg) > **添加新歌单**。
 2. 输入歌单的名称。
 3. 按下键盘上的 **Enter** 键。
 
@@ -226,7 +222,7 @@
 
 1. 在音乐界面，点击![icon_menu](icon/icon_menu.svg) 。
 2. 点击 **均衡器**。
-3. 开启 **均衡器**，您可以自定义调节“前置放大”增益值和频率波段，或者选择一种音乐模式，点击 **保存** 按钮。
+3. 开启 **均衡器**，自定义调节“前置放大”增益值和频率波段，或者选择一种音乐模式，点击 **保存** 按钮。
 4. 点击 **恢复默认**，将设置恢复到默认状态。
 
 ![equalizer](jpg/equalizer.png)
@@ -237,7 +233,7 @@
 
 #### 基础设置
 
-1. 在音乐界面，点击 ![icon_menu](icon/icon_menu.svg) 。
+1. 在音乐界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **设置**。
 3. 在 **播放** 选项，您可以：
    - 勾选 **启动时自动播放** 复选框，在音乐启动后自动播放音乐。
@@ -250,7 +246,7 @@
 
 #### 快捷键设置
 
-1. 在音乐界面，点击 ![icon_menu](icon/icon_menu.svg) 。
+1. 在音乐界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **设置**。
 3. 在 **快捷键** 选项查看当前快捷键。
 4. 您可以选择并重新输入快捷键，来自定义快捷键。
@@ -268,14 +264,14 @@
 
 查看帮助手册，通过帮助进一步让您了解和使用音乐。
 
-1. 在音乐界面，点击  ![icon_menu](icon/icon_menu.svg) 。
+1. 在音乐界面，点击  ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **帮助**。
 3. 查看音乐的帮助手册。
 
 
 ### 关于
 
-1. 在音乐界面，点击  ![icon_menu](icon/icon_menu.svg) 。
+1. 在音乐界面，点击  ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **关于**。
 3. 查看音乐的版本和介绍。
 

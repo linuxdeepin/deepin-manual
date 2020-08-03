@@ -77,9 +77,15 @@ Terminal can call the browser to search some contents in the Terminal quickly an
 
 ### Copy/Paste ###
 
-You can freely copy and paste the contents or commands in Terminal to any specified position or copy any contents elsewhere into Terminal by clicking **Copy** and **Paste**.
+- Copy
+   - In Terminal interface, select the content you want to copy and press **Ctrl + Shift + C**.
+   - In Terminal interface, select the content you want to copy, right-click and select **Copy**.
+- Paste
+   - In Terminal interface, press **Ctrl + Shift + V**.
+   - In Terminal interface, middle-click to paste.
+   - In Terminal interface,  right-click and select **Paste**.
 
-> ![tips](icon/tips.svg)Tips: If it is a link, just right-click it to copy without selection.
+> ![tips](icon/tips.svg)Tips: If it is a link you want to copy, just right-click it to copy without selection.
 
 > ![tips](icon/tips.svg)Tips: Check **Copy on select** in settings window, to copy the selected text to clipboard automatically.
 

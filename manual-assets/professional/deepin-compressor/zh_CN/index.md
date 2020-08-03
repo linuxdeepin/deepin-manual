@@ -15,7 +15,7 @@
 
 ### 运行压缩
 
-1. 点击桌面底部的 ![launcher](icon/deepin-launcher.svg) ，进入启动器界面。
+1. 点击桌面底部的 ![launcher](icon/deepin-launcher.svg)，进入启动器界面。
 2. 上下滚动鼠标滚轮浏览或通过搜索，找到归档管理器 ![deepin-compressor](icon/deepin-compressor.svg)点击运行。
 3. 右键单击 ![deepin-compressor](icon/deepin-compressor.svg)，您可以：
  - 点击 **发送到桌面**，在桌面创建快捷方式。
@@ -26,13 +26,13 @@
 
 ### 关闭压缩
 
-- 在归档管理器界面点击  ![close_icon](icon/close_icon.svg) ，退出压缩。
+- 在归档管理器界面点击  ![close_icon](icon/close_icon.svg)，退出压缩。
 - 在任务栏右键单击 ![deepin-compressor](icon/deepin-compressor.svg)，选择 **关闭所有** 来退出归档管理器。
-- 在归档管理器界面点击 ![icon_menu](icon/icon_menu.svg) ，选择 **退出** 来退出归档管理器。
+- 在归档管理器界面点击 ![icon_menu](icon/icon_menu.svg)，选择 **退出** 来退出归档管理器。
 
 ### 查看快捷键
 
-在归档管理器界面上，按下键盘上的 **Ctrl+ Shift+？**组合键来查看快捷键，熟练地使用快捷键，将大大提升您的操作效率。
+在归档管理器界面上，按下键盘上的 **Ctrl + Shift + ? ** 组合键来查看快捷键，熟练地使用快捷键，将大大提升您的操作效率。
 
 ![1|hotkey](jpg/hotkey.png)
 
@@ -48,7 +48,7 @@
    
 2. 如果需要添加压缩文件时，点击 ![plus](icon/icon_plus.svg)添加。
 
-   > ![tips](icon/tips.svg)窍门：也可以点击  ![icon_menu](icon/icon_menu.svg) > **打开文件**，添加压缩文件。
+   > ![tips](icon/tips.svg)窍门：也可以点击  ![icon_menu](icon/icon_menu.svg)> **打开文件**，添加压缩文件。
 
    ![1|compressor](jpg/compress-add.png)
 
@@ -92,7 +92,7 @@
 
 ### 提取文件
 
-在归档管理器界面，选中一个待解压缩文件或该文件夹中的子文件，右键单击 **提取**或 **提取到当前文件夹**，将文件提取到相应的路径下。
+在归档管理器界面，选中一个待解压缩文件或该文件夹中的子文件，右键单击 **提取** 或 **提取到当前文件夹**，将文件提取到相应的路径下。
 
 > ![notes](icon/notes.svg)说明：当提取的文件为加密文件时，需要输入密码才可以打开和提取文件。
 

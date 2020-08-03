@@ -1,19 +1,19 @@
 # Desktop Environment|../common/dde.svg|
 
 ## Overview
-UOS(Uniontech operating system) is a beautiful, easy-to-use and reliable Linux desktop operating system. It is equipped with a series of original applications such as File Manager, App Store, Image Viewer, Movie, and etc, which not only offers you abundant entertainment experience but also meet your daily needs of learning and working. With continual improvement, UOS is becoming one of the most popular open-source operating systems in China.
+UnionTech OS(Uniontech operating system) is a beautiful, easy-to-use and reliable Linux desktop operating system. It is equipped with a series of original applications such as File Manager, App Store, Image Viewer, Movie, and etc, which not only offers you abundant entertainment experience but also meet your daily needs of learning and working. With continual improvement, UnionTech OS is becoming one of the most popular open-source operating systems in China.
 
 ![1|desk](jpg/desk.png)
 
 ### Getting Started
 
-When you log into the system for the first time, a welcome program will automatically start.  Watch the introduction video to get new features, customize your desktop, enable the window effect and know more about UOS.
+When you log into the system for the first time, a welcome program will automatically start.  Watch the introduction video to get new features, customize your desktop, enable the window effect and know more about UnionTech OS.
 
 ![0|welcome](jpg/welcome.png)
 
-Once login, you are experiencing UOS Desktop Environment, which is comprised of Desktop, Dock, Launcher, Control Center, and window manager. 
+Once login, you are experiencing UnionTech OS Desktop Environment, which is comprised of Desktop, Dock, Launcher, Control Center, and window manager. 
 
-Read below and learn how to work in the UOS Desktop Environment.
+Read below and learn how to work in the UnionTech OS Desktop Environment.
 
 ## Desktop
 
@@ -110,7 +110,7 @@ All the texts, pictures and documents cut and copied by the current user after l
 
 4. Click![close](icon/close_normal.svg)to delete the current content and click **Clear All** to clear the clipboard.
 
-   ![1|clipboard](jpg/clipboard.jpg)
+   ![1|clipboard](jpg/clipboard.png)
 
 ## Dock
 
@@ -121,7 +121,7 @@ In the Dock, there are icons of Launcher, applications, system tray, and plugins
 
 You can send application icons from Launcher to Dock so as to open it quickly.
 
-![1|fashion](jpg/dock.jpg)
+![1|fashion](jpg/dock.png)
 
 | Icon | Description |
 | ---- | ---- |
@@ -147,9 +147,9 @@ You can send application icons from Launcher to Dock so as to open it quickly.
 ### Switch Display Mode
 There are two display modes of Dock: fashion mode and efficient mode, icon sizes and window effects are different in them.
 
-![1|fashion](jpg/fashion.jpg)
+![1|fashion](jpg/fashion.png)
 
-![1|efficient](jpg/efficient.jpg)
+![1|efficient](jpg/efficient.png)
 
 You can switch the display modes by the following operations:
 
@@ -213,7 +213,7 @@ You can input words and voice as follows：
 
 
 ![ai1](jpg/ai1.png) ![ai2](jpg/ai2.png)
-> ![tips](icon/tips.svg)Tips: Select the text information needed and press **Ctrl**+**Alt**+ **P** for voice reading; after connecting the recording devices, press **Ctrl**+ **Alt** + **O** in the input box to enter the dictation mode and convert the voice input to texts.
+> ![tips](icon/tips.svg)Tips: Select the text information needed and press **Ctrl** + **Alt** + **P** for voice reading; after connecting the recording devices, press **Ctrl** + **Alt** + **O** in the input box to enter the dictation mode and convert the voice input to texts.
 #### Set up Speech to Text
 
 Speech to Text is set in Assistive Tools in Control Center.  It is enabled by default and can be disabled as needed. 
@@ -982,6 +982,8 @@ TrackPoint, also called pointing stick, is a small joystick used as a pointing d
 3. Adjust **Pointer Speed** to a proper level.
 
 ### Drawing Tablet
+![0|graphics-tablet](jpg/graphics-tablet.png)
+
 Drawing tablet, also called graphics tablet and pen tablet, is a computer input device that enables a user to hand draw images, animations and graphics with a special pen-like stylus. 
 
 After connecting to the computer, you can set the pressure sensing force of the drawing tablet, that is, the pressure sensing value of the pen tip and eraser.
@@ -1295,7 +1297,7 @@ In order to avoid data loss or damage caused by software defects, hardware damag
 
 #### Backup
 
-UOS provides backup by initialization and backup through Control Center.
+UnionTech OS provides backup by initialization and backup through Control Center.
 
 ##### Backup by initialization
 
@@ -1324,11 +1326,11 @@ You can either manually backup / restore data or restore data by one click.
 
 #### Restore
 
-UOS provides "restore from grub" and "restore from control center".
+UnionTech OS provides "restore from grub" and "restore from control center".
 
 ##### Restore from Grub
 
-During system startup, in the system selection interface, click **System Restore**, you can choose "Reset to factory settings" to read and restore factory settings backup, or choose "restore UOS historical backup" to open the file directory and select the backup to be restored.
+During system startup, in the system selection interface, click **System Restore**, you can choose "Reset to factory settings" to read and restore factory settings backup, or choose "restore UnionTech OS historical backup" to open the file directory and select the backup to be restored.
 
 ##### Restore from Control Center
 
@@ -1400,7 +1402,9 @@ User Experience Program collects your hardware, application and system informati
 ## Window Manager
 Window manager controls the placement and appearance of windows. It allows you to switch between your virtual desktops and manage the windows in various workspaces.
 
-![1|workspace](jpg/workspace.png.jpg)
+> ![notes](icon/notes.svg)Notes: this function is available only when **Window Effect** is turned on in **Personalization** in **Control Center**. 
+
+![1|workspace](jpg/workspace.png)
 
 ### Open Workspace
 Manage your desktop windows in different workspaces to enlarge your Workspaces.
