@@ -92,8 +92,11 @@ export default class Main extends Component {
   }
 
   handleNavMove(e){
-    var xPage = e.pageX;
-    var yPage = e.pageY + 20;
+    var xPage = e.pageX+10;
+    var yPage = e.pageY;
+    if((yPage + 40) > document.body.scrollHeight){
+      yPage = document.body.scrollHeight-40;
+    }
     setTimeout(function(){
         $('.tooltip-wp').css({
             'top' : yPage + 'px',

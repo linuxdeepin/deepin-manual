@@ -353,9 +353,6 @@ void WebWindow::initConnections()
     connect(search_edit_, &SearchEdit::upKeyPressed, completion_window_,
             &SearchCompletionWindow::goUp);
     connect(search_edit_, &SearchEdit::focusChanged, this, &WebWindow::onSearchEditFocusOut);
-
-    connect(search_edit_, &SearchEdit::onClickedClearBtn, manual_proxy_, &ManualProxy::searchEditTextisEmpty);
-
     connect(completion_window_, &SearchCompletionWindow::resultClicked, this,
             &WebWindow::onSearchResultClicked);
     connect(completion_window_, &SearchCompletionWindow::searchButtonClicked, this,
@@ -493,7 +490,6 @@ void WebWindow::initWebView()
             &TitleBarProxy::backwardButtonClicked);
     connect(m_forwardButton, &DButtonBoxButton::clicked, title_bar_proxy_,
             &TitleBarProxy::forwardButtonClicked);
-
     web_view_ = new QWebEngineView;
     this->setCentralWidget(web_view_);
     web_view_->hide();
@@ -512,6 +508,8 @@ void WebWindow::initWebView()
     connect(web_view_->page(), &QWebEnginePage::loadFinished, this, &WebWindow::onWebPageLoadFinished);
     connect(manual_proxy_, &ManualProxy::channelInit, this, &WebWindow::onChannelFinish);
     connect(manual_proxy_, &ManualProxy::WidgetLower, this, &WebWindow::lower);
+    connect(search_edit_, &SearchEdit::onClickedClearBtn, manual_proxy_,
+            &ManualProxy::searchEditTextisEmpty);
     connect(search_proxy_, &SearchProxy::setKeyword, this, &WebWindow::onSetKeyword);
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
             theme_proxy_, &ThemeProxy::slot_ThemeChange);
@@ -718,7 +716,7 @@ void WebWindow::onSearchTextChangedDelay()
 void WebWindow::onTitleBarEntered()
 {
     QString textTemp = search_edit_->text();
-    const QString text = textTemp.remove('\n').remove('\r').remove("\r\n");//.remove(QRegExp("\\s"));
+    const QString text = textTemp.remove('\n').remove('\r').remove("\r\n").remove(QRegExp("\\s"));
     if (text.size() >= 1) {
         completion_window_->onEnterPressed();
     }
