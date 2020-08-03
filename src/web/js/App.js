@@ -65,8 +65,6 @@ class App extends React.Component {
       global.qtObjects.titleBar.setBackwardButtonActive(false);
       global.qtObjects.titleBar.setForwardButtonActive(false);
       global.qtObjects.titleBar.backwardButtonClicked.connect(() => {
-        console.log("global.hash------->:",global.hash);
-
         global.handleLocation(global.hash);
         console.log("----------backwardButtonClicked----------");
         this.setState({ historyGO: this.state.historyGO - 1 });
@@ -75,8 +73,6 @@ class App extends React.Component {
         console.log("back history location: "+this.context.router.history.location.pathname);
       });
       global.qtObjects.titleBar.forwardButtonClicked.connect(() => {
-        console.log("global.hash------->:",global.hash);
-
         global.handleLocation(global.hash);
         console.log("----------forwardButtonClicked----------");
         this.setState({ historyGO: this.state.historyGO + 1 });
@@ -89,6 +85,9 @@ class App extends React.Component {
       );
       global.qtObjects.search.onContentResult.connect(
         this.onContentResult.bind(this)
+      );
+      global.qtObjects.manual.searchEditTextisEmpty.connect(
+        this.onSearchEditClear.bind(this)
       );
       global.qtObjects.theme.getTheme(themeType => 
         this.themeChange(themeType));
@@ -130,6 +129,58 @@ class App extends React.Component {
     });
     this.setState({ searchResult, mismatch: false });
   }
+
+  //搜索框清空后回到上一个页面(未搜索的页面).
+  onSearchEditClear(){
+    console.log("==================>onSearcheditclear");
+    var locationPath = this.context.router.history.location.pathname;
+    var list = locationPath.split("/");
+    let bFlag = false;
+    //open页length = 5, search页length = 3
+    if (list.length == 5 && list[4] != "")
+    {
+      bFlag = true;
+    }
+    else if (list.length == 3 && list[2] != ""){
+      bFlag = true;
+    }
+
+    if (bFlag)
+    {
+      var step;
+      var indexGo = this.state.historyGO;
+      let objList = this.context.router.history.entries;
+      for (let i = indexGo; i >= 0; i--)
+      {
+        let curPath = objList[i].pathname;
+        let curPathList = curPath.split("/");
+        if (curPathList.length == 5 && curPathList[4] == "")
+        {
+          step = indexGo - i ;
+          break;
+        }
+        else if (curPathList.length == 3 && curPathList[2] == "")
+        {
+          step = indexGo - i;
+          break;
+        }
+        else if (curPathList.length == 2)
+        {
+          step = indexGo - i;
+          break;
+        }
+      }
+      if (step)
+      {
+        if (this.context.router.history.canGo(-1 * step)) {
+          this.setState({ historyGO: this.state.historyGO-step });
+          this.context.router.history.go(-1 * step);
+        }
+      }
+
+    }
+  }
+
   getChildContext() {
     let { searchResult, mismatch } = this.state;
     return { searchResult, mismatch };
@@ -382,6 +433,7 @@ class App extends React.Component {
     };
 
     global.openSearchPage = keyword => {
+      global.handleLocation(global.hash);
       let decodeKeyword = Base64.decode(keyword);
       console.log("decodeKeyword", decodeKeyword);
       console.log("openSearchPage", this.context.router.history);

@@ -107,8 +107,6 @@ var App = function (_React$Component) {
         global.qtObjects.titleBar.setBackwardButtonActive(false);
         global.qtObjects.titleBar.setForwardButtonActive(false);
         global.qtObjects.titleBar.backwardButtonClicked.connect(function () {
-          console.log("global.hash------->:", global.hash);
-
           global.handleLocation(global.hash);
           console.log("----------backwardButtonClicked----------");
           _this2.setState({ historyGO: _this2.state.historyGO - 1 });
@@ -117,8 +115,6 @@ var App = function (_React$Component) {
           console.log("back history location: " + _this2.context.router.history.location.pathname);
         });
         global.qtObjects.titleBar.forwardButtonClicked.connect(function () {
-          console.log("global.hash------->:", global.hash);
-
           global.handleLocation(global.hash);
           console.log("----------forwardButtonClicked----------");
           _this2.setState({ historyGO: _this2.state.historyGO + 1 });
@@ -130,6 +126,7 @@ var App = function (_React$Component) {
           return _this2.setState({ mismatch: true });
         });
         global.qtObjects.search.onContentResult.connect(_this2.onContentResult.bind(_this2));
+        global.qtObjects.manual.searchEditTextisEmpty.connect(_this2.onSearchEditClear.bind(_this2));
         global.qtObjects.theme.getTheme(function (themeType) {
           return _this2.themeChange(themeType);
         });
@@ -170,6 +167,49 @@ var App = function (_React$Component) {
         contentList: contentList
       });
       this.setState({ searchResult: searchResult, mismatch: false });
+    }
+
+    //搜索框清空后回到上一个页面(未搜索的页面).
+
+  }, {
+    key: 'onSearchEditClear',
+    value: function onSearchEditClear() {
+      console.log("==================>onSearcheditclear");
+      var locationPath = this.context.router.history.location.pathname;
+      var list = locationPath.split("/");
+      var bFlag = false;
+      //open页length = 5, search页length = 3
+      if (list.length == 5 && list[4] != "") {
+        bFlag = true;
+      } else if (list.length == 3 && list[2] != "") {
+        bFlag = true;
+      }
+
+      if (bFlag) {
+        var step;
+        var indexGo = this.state.historyGO;
+        var objList = this.context.router.history.entries;
+        for (var i = indexGo; i >= 0; i--) {
+          var curPath = objList[i].pathname;
+          var curPathList = curPath.split("/");
+          if (curPathList.length == 5 && curPathList[4] == "") {
+            step = indexGo - i;
+            break;
+          } else if (curPathList.length == 3 && curPathList[2] == "") {
+            step = indexGo - i;
+            break;
+          } else if (curPathList.length == 2) {
+            step = indexGo - i;
+            break;
+          }
+        }
+        if (step) {
+          if (this.context.router.history.canGo(-1 * step)) {
+            this.setState({ historyGO: this.state.historyGO - step });
+            this.context.router.history.go(-1 * step);
+          }
+        }
+      }
     }
   }, {
     key: 'getChildContext',
@@ -431,6 +471,7 @@ var App = function (_React$Component) {
       };
 
       global.openSearchPage = function (keyword) {
+        global.handleLocation(global.hash);
         var decodeKeyword = Base64.decode(keyword);
         console.log("decodeKeyword", decodeKeyword);
         console.log("openSearchPage", _this3.context.router.history);
