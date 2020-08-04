@@ -285,8 +285,8 @@ div {
       #index .items .item img {
         width: 96px;
         height: 96px;
-        margin-top: 8px;
-        margin-bottom: 8px; }
+        margin-top: 18px;
+        margin-bottom: 3px; }
       #index .items .item .content {
         margin-left: 15px;
         width: var(--index-span-width);
