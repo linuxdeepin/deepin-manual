@@ -309,6 +309,8 @@ div {
         height: 8px;
         width: 8px;
         margin-right: 4px;
+        margin-bottom: var(--span-maring-bottom);
+        box-shadow: 0px 2px 8px 0px var(--nav-hash-hover-color);
         border-radius: 8px;
         background-color: var(--nav-hash-word-color); }
 
@@ -399,6 +401,8 @@ body {
     border-radius: 8px;
     font-weight: bold; }
     #nav .hash:hover {
+      background-color: var(--nav-hash-hover-color); }
+    #nav .hash:active {
       background-color: var(--nav-hash-hover-color); }
 
 #search {

@@ -333,10 +333,12 @@ class App extends React.Component {
       if(navigator.language.toString().indexOf('en_') != -1) {
         document.documentElement.style.setProperty(`--span-line-height`, '1.0rem');
         document.documentElement.style.setProperty(`--span-font-size`, '0.9rem');
+        document.documentElement.style.setProperty(`--span-maring-bottom`, '0.15rem');
       }
       else{
         document.documentElement.style.setProperty(`--span-line-height`, '1.4rem');
         document.documentElement.style.setProperty(`--span-font-size`, '1.03rem');
+        document.documentElement.style.setProperty(`--span-maring-bottom`, '0.15rem');
       }
       if("DarkType"==themeType){
       console.log('DarkType');

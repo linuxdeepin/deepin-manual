@@ -57,5 +57,8 @@
     &:hover {
       background-color: var(--nav-hash-hover-color);
     }
+    &:active{
+      background-color: var(--nav-hash-hover-color);
+    }
   }
 }
