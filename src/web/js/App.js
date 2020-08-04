@@ -224,6 +224,7 @@ class App extends React.Component {
       // this.context.router.history.push('/');
     };
     global.backHome = () => {
+      global.handleLocation(global.hash);
       console.log("global.backHome()" + this.context.router.history.entries.length);
       console.log("global.backHome()" + this.state.historyGO);
       let goNum = this.state.historyGO;

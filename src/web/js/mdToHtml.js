@@ -40,8 +40,11 @@ export default function(mdFile, mdData, key='') {
   html = marked(mdData, { renderer }).replace(/src="/g, `$&${path}`);
   if (key != '')
   {
-    let sKey = "<span style='background-color: yellow'>" + key + "</span>";
-    html = html.replace(new RegExp(key,'g'), `${sKey}`);
+    // var formatKeyword = key.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')
+    var finder = new RegExp(">.*?<",'g') // 提取位于标签内的文本，避免误操作 class、id 等
+    html = html.replace(finder,function(matched){
+            return matched.replace(new RegExp(key,'gi'),"<span style='background-color: yellow'>$&</span>");
+    })
   }
   
   return { html, hlist, info };

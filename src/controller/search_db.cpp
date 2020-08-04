@@ -175,7 +175,7 @@ void SearchDb::addSearchEntry(const QString &system, const QString &app_name, co
     for (int i = 0; i < contents.size(); i++) {
         QString content = contents.at(i);
         content = content.replace("icon/", DMAN_INSTALL_DB_PATH + strManualPath
-                                               + "/" + app_name + "/" + lang + "/icon/");
+                                  + "/" + app_name + "/" + lang + "/icon/");
         newContents.replace(i, content);
     }
 
@@ -417,6 +417,9 @@ void SearchDb::handleSearchContent(const QString &keyword)
             tmpContent = tmpContent.replace("alt>", ">");
             tmpContent = tmpContent.replace("\" >", "\">");
             QString highlightContent = highlightKeyword(tmpContent, keyword);
+
+            //如果关键字在img路径中,返回后退出本次循环.
+            if (highlightContent.isEmpty()) continue;
 
             //remove jpg src
             QRegExp exp("<img src=\\\"jpg.*>");

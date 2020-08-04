@@ -262,6 +262,7 @@ var App = function (_React$Component) {
         // this.context.router.history.push('/');
       };
       global.backHome = function () {
+        global.handleLocation(global.hash);
         console.log("global.backHome()" + _this3.context.router.history.entries.length);
         console.log("global.backHome()" + _this3.state.historyGO);
         var goNum = _this3.state.historyGO;
@@ -1420,7 +1421,6 @@ var Main = function (_Component) {
   }, {
     key: 'onSupportClick',
     value: function onSupportClick() {
-      // global.Object.manual
       global.qtObjects.manual.supportClick();
     }
   }, {
@@ -1559,8 +1559,11 @@ exports.default = function (mdFile, mdData) {
   };
   html = (0, _marked2.default)(mdData, { renderer: renderer }).replace(/src="/g, '$&' + path);
   if (key != '') {
-    var sKey = "<span style='background-color: yellow'>" + key + "</span>";
-    html = html.replace(new RegExp(key, 'g'), '' + sKey);
+    // var formatKeyword = key.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')
+    var finder = new RegExp(">.*?<", 'g'); // 提取位于标签内的文本，避免误操作 class、id 等
+    html = html.replace(finder, function (matched) {
+      return matched.replace(new RegExp(key, 'gi'), "<span style='background-color: yellow'>$&</span>");
+    });
   }
 
   return { html: html, hlist: hlist, info: info };

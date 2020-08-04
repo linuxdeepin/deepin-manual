@@ -103,7 +103,6 @@ export default class Main extends Component {
   }
 
   onSupportClick(){
-    // global.Object.manual
     global.qtObjects.manual.supportClick();
   }
 
