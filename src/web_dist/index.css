@@ -46,7 +46,8 @@ div {
 #article {
   width: calc(100% - 164px);
   margin: 10px 0px 10px 0px;
-  border-radius: 8px; }
+  border-radius: 8px;
+  user-select: text !important; }
   #article #article_bg {
     margin: 0px 10px 0px 10px;
     background-color: var(--nav-background-color);
@@ -369,7 +370,8 @@ body {
 
 #search {
   width: 80%;
-  margin: auto; }
+  margin: auto;
+  user-select: text !important; }
   #search div {
     width: 100%; }
   #search #mismatch {
