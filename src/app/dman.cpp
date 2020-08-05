@@ -35,7 +35,10 @@ int main(int argc, char **argv)
 {
     qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     qputenv("DXCB_FAKE_PLATFORM_NAME_XCB", "true");
-    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu");
+    //禁用GPU
+//    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu");
+    //所有进程类型禁用沙箱..此配置开启禁用gpu后无效
+//    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--no-sandbox");
     //龙芯机器配置,使得DApplication能正确加载QTWEBENGINE
     qputenv("DTK_FORCE_RASTER_WIDGETS", "FALSE");
 
@@ -57,8 +60,8 @@ int main(int argc, char **argv)
     app.loadTranslator();
     app.setApplicationDisplayName(QObject::tr("Manual"));
     app.setApplicationDescription(QObject::tr(
-        "Manual is designed to help users learn the operating system and its applications,"
-        " providing specific instructions and function descriptions."));
+                                      "Manual is designed to help users learn the operating system and its applications,"
+                                      " providing specific instructions and function descriptions."));
     app.setApplicationAcknowledgementPage("https://www.deepin.org/acknowledgments/deepin-manual/");
 
     dman::ArgumentParser argument_parser;

@@ -284,6 +284,8 @@ QString Utils::translateTitle(const QString &titleUS)
  */
 QList<AppInfo> Utils::launcherInterface()
 {
+    QList<AppInfo> applist;
+
     qRegisterMetaType<ReplyStruct>("ReplyStruct");
     qDBusRegisterMetaType<ReplyStruct>();
     qRegisterMetaType<QList<ReplyStruct>>("a");
@@ -293,14 +295,16 @@ QList<AppInfo> Utils::launcherInterface()
                          kLauncherIface,
                          kLauncherService,
                          QDBusConnection::sessionBus());
+    //root权限下此dbus接口无效...
     if (!iface.isValid()) {
         qDebug() << qPrintable(QDBusConnection::sessionBus().lastError().message());
-        exit(1);
+        return applist;
+//        exit(1);
     }
 
     QDBusReply<QList<ReplyStruct>> reply = iface.callWithArgumentList(QDBus::CallMode::AutoDetect, "GetAllItemInfos", QVariantList());
     qDebug() << reply.error().message();
-    QList<AppInfo> applist;
+
     if (reply.isValid()) {
         QList<ReplyStruct> list;
         list = reply.value();

@@ -49,6 +49,7 @@ int main(int argc, char **argv)
         {"support", "uos-service-support"},                             //服务与支持
         {"security-center", "deepin-defender"},                         //安全中心
         {"scan-manager", "scaner"},                                     //扫描管理器
+        {"camera", "deepin-camera"},                                    //相机
     };
 
     QWidget widget;
@@ -57,14 +58,14 @@ int main(int argc, char **argv)
     QPushButton *btn = new QPushButton("Open", &widget);
     btn->setFixedSize(80, 40);
     layout->addWidget(btn);
-    QObject::connect(btn, &QPushButton::clicked, [=]() {
-        QString curPath = QDir::currentPath(); 	//获取系统当前目录
-        QString dlgTitle = "translate dir"; 	//对话框标题
+    QObject::connect(btn, &QPushButton::clicked, [ = ]() {
+        QString curPath = QDir::currentPath();  //获取系统当前目录
+        QString dlgTitle = "translate dir";     //对话框标题
         QString strDirPath = QFileDialog::getExistingDirectory(nullptr, dlgTitle, curPath);
         if (!strDirPath.isEmpty()) {
             QDir dirDir(strDirPath);
             for (QString &strFile :
-                 QDir(strDirPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+                    QDir(strDirPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
                 QHashIterator<QString, QString> iterator(hash);
                 while (iterator.hasNext()) {
                     iterator.next();
