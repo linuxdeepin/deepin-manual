@@ -471,7 +471,7 @@ void WebWindow::initUI()
     }
     this->titlebar()->addWidget(buttonFrame, Qt::AlignLeft);
     this->titlebar()->addWidget(search_edit_, Qt::AlignCenter);
-    this->titlebar()->setSeparatorVisible(true);
+    this->titlebar()->setSeparatorVisible(false);
     this->titlebar()->setIcon(QIcon::fromTheme("deepin-manual"));
     //隐藏title阴影
     this->setTitlebarShadowEnabled(false);
