@@ -1,5 +1,5 @@
 [Desktop Entry]
-Categories=Documentation;Utility;
+Categories=Documentation;System;Utility;
 Exec=dman %u
 GenericName=Manual
 Icon=deepin-manual
