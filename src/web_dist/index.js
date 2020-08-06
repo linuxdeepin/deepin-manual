@@ -1731,7 +1731,7 @@ var Nav = function (_Component) {
         {
           id: 'nav',
           lang: global.lang,
-          onClick: function onClick(e) {
+          onMouseDown: function onMouseDown(e) {
             return _this2.click(e);
           },
           onContextMenu: this.contentMenu.bind(this),

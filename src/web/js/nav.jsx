@@ -109,7 +109,7 @@ class Nav extends Component {
       <div
         id="nav"
         lang={global.lang}
-        onClick={e => this.click(e)}
+        onMouseDown={e => this.click(e)}
         onContextMenu={this.contentMenu.bind(this)}
         style={{
           width: `calc(${maxWidth}px + ${c}rem`
