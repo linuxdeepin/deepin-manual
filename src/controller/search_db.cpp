@@ -371,13 +371,14 @@ void SearchDb::getAllApp()
 }
 
 /**
- * @brief SearchDb::sortSearchList 搜索结果排序, 将含有h0的应用放在最前面.
- * @param appName
- * @param anchors
- * @param anchorIds
- * @param contents
+ * @brief SearchDb::sortSearchList 搜索结果排序, 将含有h0的应用(应用名称含有关键字)放在最前面, 将标题中含有关键字的放在中间.
+ * @param appName      应用名称
+ * @param anchors      标题名称
+ * @param anchorIds    标题Hash值
+ * @param contents     内容
+ * @param bIsTitleHigh 该应用搜索结果中标题是否含有关键字  true: 标题含有关键字  false:标题未含有关键字
  */
-void SearchDb::sortSearchList(const QString &appName, const QStringList &anchors, const QStringList &anchorIds, const QStringList &contents)
+void SearchDb::sortSearchList(const QString &appName, const QStringList &anchors, const QStringList &anchorIds, const QStringList &contents, bool bIsTitleHigh)
 {
     searchStrct obj;
     obj.appName = appName;
@@ -387,6 +388,9 @@ void SearchDb::sortSearchList(const QString &appName, const QStringList &anchors
 
     if (anchorIds.contains("h0")) {
         listStruct.insert(0, obj);
+        nH0OfList++;
+    } else if (bIsTitleHigh) {
+        listStruct.insert(nH0OfList, obj);
     } else {
         listStruct.append(obj);
     }
@@ -454,7 +458,9 @@ void SearchDb::handleSearchContent(const QString &keyword)
         QString(kSearchSelectContent).replace(":lang", lang).replace(":content", keyword);
 
     listStruct.clear();
+    nH0OfList = 0;
     bool result_empty = true;
+    bool bIsTitle = false;
     if (query.exec(sql)) {
         QString last_app_name = "";
         QStringList anchors;
@@ -473,37 +479,42 @@ void SearchDb::handleSearchContent(const QString &keyword)
             QString tmpContent = content;
             tmpContent = tmpContent.replace("alt>", ">");
             tmpContent = tmpContent.replace("\" >", "\">");
+
             QString highlightContent = highlightKeyword(tmpContent, keyword);
 
             //如果关键字在img路径中,返回后退出本次循环.
-            if (highlightContent.isEmpty()) continue;
+            if (highlightContent.isEmpty() && !anchor.contains(keyword)) continue;
 
-            //remove jpg src
+            //去除jpg文件, 影响页面格式.
             QRegExp exp("<img src=\\\"jpg.*>");
             exp.setMinimal(true);
             highlightContent.remove(exp);
 
+            //处理内容是否省略..
             omitHighlight(highlightContent, keyword);
 
             if (app_name == last_app_name) {
                 anchors.append(anchor);
                 anchorIds.append(anchorId);
                 contents.append(highlightContent);
+                if (anchor.contains(keyword)) bIsTitle = true;
             } else {
                 if (!last_app_name.isEmpty()) {
-                    sortSearchList(last_app_name, anchors, anchorIds, contents);
+                    sortSearchList(last_app_name, anchors, anchorIds, contents, bIsTitle);
                     anchors.clear();
                     anchorIds.clear();
                     contents.clear();
+                    bIsTitle = false;
                 }
                 anchors.append(anchor);
                 anchorIds.append(anchorId);
                 contents.append(highlightContent);
+                if (anchor.contains(keyword)) bIsTitle = true;
                 last_app_name = app_name;
             }
         }
         if (!last_app_name.isEmpty()) {
-            sortSearchList(last_app_name, anchors, anchorIds, contents);
+            sortSearchList(last_app_name, anchors, anchorIds, contents, bIsTitle);
         }
         for (searchStrct obj : listStruct) {
             if (result_empty) result_empty = false;

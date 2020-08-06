@@ -64,13 +64,15 @@ private:
     inline QString highlightKeyword(QString srcString, QString keyword);
     void getAllApp();
     void sortSearchList(const QString &appName, const QStringList &anchors
-                        , const QStringList &anchorIds, const QStringList &contents);
+                        , const QStringList &anchorIds, const QStringList &contents
+                        , bool bIsTitleHigh);
 
     void omitHighlight (QString &highLight, const QString &keyword);
 
     SearchDbPrivate *p_ = nullptr;
     QStringList strlistApp;
     QList<searchStrct> listStruct;
+    int nH0OfList;
 
 private slots:
     void handleSearchAnchor(const QString &keyword);
