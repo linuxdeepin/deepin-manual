@@ -85,7 +85,7 @@ div {
         height: 20px;
         vertical-align: middle; }
       #article #article_bg .read img[src$='png'] {
-        margin-top: 26px;
+        margin-top: 10px;
         max-width: 99%;
         cursor: pointer; }
         @media screen and (-webkit-min-device-pixel-ratio: 1.25) {
@@ -101,7 +101,7 @@ div {
           #article #article_bg .read img[src$='png'] {
             zoom: 0.5; } }
       #article #article_bg .read img[src$='jpg'] {
-        margin-top: 26px;
+        margin-top: 10px;
         max-width: 99%;
         cursor: pointer;
         border-radius: 4px;

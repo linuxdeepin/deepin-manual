@@ -68,7 +68,7 @@ void ImageViewer::open(const QString &filepath)
 
             qDebug() << "open is successful....";
         } else {
-            qDebug() << "open is failed...." << reader.errorString();
+            qDebug() << "image open is failed...." << reader.errorString();
         }
 
     } else {
@@ -82,7 +82,10 @@ void ImageViewer::open(const QString &filepath)
         image = image.scaled(pixmap_max_width, pixmap_max_height, Qt::KeepAspectRatio,
                              Qt::SmoothTransformation);
     }
-
+    //小图标不点击放大
+    if (image.width() < 50 && image.height() < 50) {
+        return;
+    }
     this->move(screen_rect.topLeft());
     this->resize(screen_rect.size());
     this->showFullScreen();
