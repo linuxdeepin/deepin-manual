@@ -66,6 +66,8 @@ private:
     void sortSearchList(const QString &appName, const QStringList &anchors
                         , const QStringList &anchorIds, const QStringList &contents);
 
+    void omitHighlight (QString &highLight, const QString &keyword);
+
     SearchDbPrivate *p_ = nullptr;
     QStringList strlistApp;
     QList<searchStrct> listStruct;

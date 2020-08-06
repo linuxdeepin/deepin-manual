@@ -99,6 +99,13 @@ SearchDb::SearchDb(QObject *parent)
 
     initConnections();
     getAllApp();
+
+    QString str = "   在文本编辑器界面，您可对后缀名为代码类型的文件进行添加注释的操作。   "
+                  "添加注释选中一段文本内容，在右键菜单选择 添加注释。选中一段文本内容，使用组合键 Alt+A 添加注释。"
+                  "取消注释选中一段文本内容，在右键菜单选择 取消注释。选中一段文本内容，使用组合键 Alt+Z 取消"
+                  "注释。<img src=\"/usr/share/deepin-manual/manual-assets/professional/deepin-editor/zh_CN/icon/notes.svg\">说明："
+                  "支持不同代码语言的注释，具体以实际为主。例如C，C#，Java注释符号为 //，P<span class='highlight'>y</span>thon 注释符号为 #。";
+//    omitHighlight(str);
 }
 
 SearchDb::~SearchDb()
@@ -385,6 +392,56 @@ void SearchDb::sortSearchList(const QString &appName, const QStringList &anchors
     }
 }
 
+/**
+ * @brief SearchDb::omitHighlight 高亮省略处理..
+ * @param highLight 高亮字段
+ * @param keyword  关键字
+ * @note  将内容里IMG部分先全部提取出来,并记录IMG内容以及IMG位置. 剩下部分为处理后的文本内容,对此进行关键字位置判断.
+ *        如果关键字位置大于N个字符,则对前N个字符用...替代.
+ *        如何进行真实内容的截断:循环判断暂存的IMG的位置,如果关键字位置大于暂存的IGM位置的话,就说明省略部分前方有IMG,
+ *        需要将IMG内容长度加入到关键字位置上. 否则,则表示前方没有IMG内容,此时关键字位置就能够拿来用作截断位置.
+ */
+void SearchDb::omitHighlight(QString &highLight, const QString &keyword)
+{
+    QString highLightTemp = highLight;
+    int nindex = highLightTemp.length();
+    const QString imgStartString = "<img";
+    const QString imgEndString = "\">";
+    int imgStartLeng = imgStartString.length();
+    QList<QString> imgList;
+    QList<int> imgIndexList;
+    int nSearchIndex = nindex - imgStartLeng;
+
+    while (nSearchIndex > 0) {
+        //判断后N个字符里是否含有img路径..
+        if (highLightTemp.indexOf(QRegExp("<img .*"), nSearchIndex) != -1) {
+            int nImgStart = highLightTemp.indexOf(imgStartString, nSearchIndex);
+            int nImgEnd = highLightTemp.indexOf(imgEndString, nSearchIndex);
+            if (nImgEnd > nImgStart) {
+                QString strImg = highLightTemp.mid(nImgStart, nImgEnd - nImgStart);
+                imgList.insert(0, strImg);
+                imgIndexList.insert(0, nImgStart);
+                highLightTemp = highLightTemp.left(nImgStart + 1) + highLightTemp.right(highLightTemp.length() - nImgEnd);
+            }
+        }
+        nSearchIndex -= imgStartLeng;
+    }
+
+    int keywordIndex = highLightTemp.indexOf(keyword);
+    //暂时用150个字符来判断...后期是否可根据不同语言来分别用不同的长度判断条件..
+    if (keywordIndex > 150) {
+        int nOmitIndex = keywordIndex - 150;
+
+        for (int i = 0; i < imgIndexList.count(); i++) {
+            if (nOmitIndex > imgIndexList[i]) {
+                nOmitIndex += imgList[i].length();
+
+            }
+        }
+        highLight = "..." + highLight.mid(nOmitIndex);
+    }
+}
+
 void SearchDb::handleSearchContent(const QString &keyword)
 {
     qDebug() << Q_FUNC_INFO << keyword;
@@ -426,6 +483,8 @@ void SearchDb::handleSearchContent(const QString &keyword)
             exp.setMinimal(true);
             highlightContent.remove(exp);
 
+            omitHighlight(highlightContent, keyword);
+
             if (app_name == last_app_name) {
                 anchors.append(anchor);
                 anchorIds.append(anchorId);
@@ -443,7 +502,9 @@ void SearchDb::handleSearchContent(const QString &keyword)
                 last_app_name = app_name;
             }
         }
-        sortSearchList(last_app_name, anchors, anchorIds, contents);
+        if (!last_app_name.isEmpty()) {
+            sortSearchList(last_app_name, anchors, anchorIds, contents);
+        }
         for (searchStrct obj : listStruct) {
             if (result_empty) result_empty = false;
             emit this->searchContentResult(obj.appName, obj.anchors, obj.anchorIds, obj.contents);
