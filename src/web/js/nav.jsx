@@ -4,12 +4,18 @@ import { Link } from 'react-router-dom';
 import Scrollbar from './scrollbar.jsx';
 
 class Nav extends Component {
+
+  componentWillMount(){
+    console.log("nav componentWillMount");
+  }
   componentDidMount() {
+    console.log("nav componentDidMount");
     document.getElementById('article').style.marginLeft = ReactDOM.findDOMNode(
       this
     ).clientWidth;
     this.componentDidUpdate();
   }
+  
   shouldComponentUpdate(newProps, newState) {
     console.log("nav shouldComponentUpdate newProps:" + newProps.hash +" global hash:" + global.hash);
 

@@ -35,6 +35,7 @@ export default class Article extends Component {
     }
 
     if (hashNode) {
+      console.log(" article===============>");
       clearTimeout(this.timerObj);
       this.setState({ smoothScroll: true });
 
@@ -67,6 +68,33 @@ export default class Article extends Component {
       });
     } else {
       this.props.setHash(this.props.hlist[0].id);
+    }
+  }
+
+  componentWillMount(){
+    console.log("article componentWillMount");
+  }
+
+  componentDidMount() {
+    console.log("article componentDidMount");
+    this.componentDidUpdate();
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log("article componentWillReceiveProps nextfile",nextProps.nextProps,' prop.file:',this.props.file);
+    if (nextProps.file != this.props.file) {
+      this.hash = '';
+      this.load = false;
+    }
+  }
+
+  componentWillUpdate() {
+    console.log("article componentWillUpdate..");
+    var alink_arr = document.getElementsByTagName('a');
+    for(var i=0; i<alink_arr.length; i++) {
+      alink_arr[i].onclick = function () {
+        global.isLinkClicked = true;
+      };
     }
   }
 
@@ -111,28 +139,6 @@ export default class Article extends Component {
     }
   }
 
-  componentWillUpdate() {
-    console.log("article componentWillUpdate..");
-    var alink_arr = document.getElementsByTagName('a');
-    for(var i=0; i<alink_arr.length; i++) {
-      alink_arr[i].onclick = function () {
-        global.isLinkClicked = true;
-      };
-    }
-  }
-
-  componentDidMount() {
-    console.log("article componentDidMount");
-    this.componentDidUpdate();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    console.log("article componentWillReceiveProps nextfile",nextProps.nextProps,' prop.file:',this.props.file);
-    if (nextProps.file != this.props.file) {
-      this.hash = '';
-      this.load = false;
-    }
-  }
   gethID(htext) {
     let id = this.props.hlist[0].id;
     console.log(this.props.hlist[0]);
@@ -207,67 +213,6 @@ export default class Article extends Component {
       }
     }
   }
-  //内部链接预览....暂时去除,修改为直接跳转
- /* 
-  showPreview(appName, hash, rect) {
-    console.log("article showPreview");
-    let file = `${global.path}/${appName}/${global.lang}/index.md`;
-    global.readFile(file, data => {
-      let { html } = m2h(file, data);
-      let d = document.createElement('div');
-      d.innerHTML = html;
-      let hashDom = d.querySelector(`[text="${hash}"]`);
-      let DomList = [hashDom];
-      let nextDom = hashDom.nextElementSibling;
-      while (nextDom) {
-        if (nextDom.nodeName == hashDom.nodeName) {
-          break;
-        }
-        DomList.push(nextDom);
-        nextDom = nextDom.nextElementSibling;
-      }
-      d.innerHTML = '';
-      DomList.map(el => d.appendChild(el));
-      html = d.innerHTML;
-      let { top, left, right } = rect;
-      let style = {};
-      let tClass = 't_';
-
-      console.log("left-right:"+(left) + "  - "+ right);
-      //center
-      if (((right + left)/2 > (300 + 170)) && (((right + left)/2 + 300 < document.body.clientWidth))) {
-        style.left　=　(right + left)/2 - 300;
-        tClass += 'center_';
-      }
-      //right
-      else if (((right + left)/2  > (600 + 170)))
-      {
-        style.left　=　right - 600;
-        tClass += 'right_';
-      }
-      //left
-      else if ((right + left)/2 <= (300 + 170))
-      {
-        style.left　=　left;
-        tClass += 'left_';
-      }
-      //left
-      else {
-        style.left　= 170;
-        tClass += 'left_';
-        
-      }
-      if (top > document.body.clientHeight / 2) {
-        tClass += 'down';
-        style.top = top - 250 - 20;
-      } else {
-        tClass += 'up';
-        style.top = top + rect.height + 10;
-      }
-      this.setState({ preview: { html, style, tClass } });
-    });
-  }
-  */
 
   //链接处理
   click(e) {

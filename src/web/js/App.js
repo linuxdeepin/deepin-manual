@@ -18,6 +18,7 @@ global.isLinkClicked = false;
 global.lastUrlBeforeSearch = '/';
 global.lastHistoryIndex = 0;
 global.lastAction = 'PUSH';
+global.isShowHelperSupport = false;
 
 
 global.readFile = (fileName, callback) => {
@@ -56,6 +57,10 @@ class App extends React.Component {
       });
       global.i18n = i18n;
       global.qtObjects = channel.objects;
+
+      global.qtObjects.manual.hasSelperSupport(bFlag =>{
+        global.isShowHelperSupport = bFlag;
+      });
       
       channel.objects.manual.getSystemManualDir(path => {
         global.path = path;

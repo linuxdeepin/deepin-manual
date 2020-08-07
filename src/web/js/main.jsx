@@ -10,19 +10,11 @@ export default class Main extends Component {
     super(props);
     this.state = {
       init: false,
-      bTest:true,
-      isShowHelperSupport:false
+      bTest:true
     };
     let { file, hash ,key} = this.props.match.params;
     this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null, key);
     var showFloatTimer=null;
-    global.qtObjects.manual.hasSelperSupport(bFlag =>
-          {
-            this.setState({ 
-              isShowHelperSupport:bFlag
-            });
-          }
-      );
   }
   init(file, hash,key='') {
     console.log("main init==>file:",file," hash:",hash," key:",key);
@@ -131,7 +123,7 @@ export default class Main extends Component {
     console.log("main render....hash:",this.state.hash);
     console.log("main render....hList:",this.state.hlist);
     let support = null;
-    if (this.state.isShowHelperSupport) {
+    if (global.isShowHelperSupport) {
       support = <div className="support-div" onClick={this.onSupportClick.bind(this)}><img className="support" src="./pic.svg"></img></div>
     }else{
       support = <div></div>

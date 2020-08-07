@@ -51,6 +51,7 @@ global.isLinkClicked = false;
 global.lastUrlBeforeSearch = '/';
 global.lastHistoryIndex = 0;
 global.lastAction = 'PUSH';
+global.isShowHelperSupport = false;
 
 global.readFile = function (fileName, callback) {
   console.log("global.readFile...");
@@ -98,6 +99,10 @@ var App = function (_React$Component) {
         });
         global.i18n = i18n;
         global.qtObjects = channel.objects;
+
+        global.qtObjects.manual.hasSelperSupport(function (bFlag) {
+          global.isShowHelperSupport = bFlag;
+        });
 
         channel.objects.manual.getSystemManualDir(function (path) {
           global.path = path;
@@ -653,6 +658,7 @@ var Article = function (_Component) {
       }
 
       if (hashNode) {
+        console.log(" article===============>");
         clearTimeout(this.timerObj);
         this.setState({ smoothScroll: true });
 
@@ -685,6 +691,37 @@ var Article = function (_Component) {
         });
       } else {
         this.props.setHash(this.props.hlist[0].id);
+      }
+    }
+  }, {
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      console.log("article componentWillMount");
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      console.log("article componentDidMount");
+      this.componentDidUpdate();
+    }
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      console.log("article componentWillReceiveProps nextfile", nextProps.nextProps, ' prop.file:', this.props.file);
+      if (nextProps.file != this.props.file) {
+        this.hash = '';
+        this.load = false;
+      }
+    }
+  }, {
+    key: 'componentWillUpdate',
+    value: function componentWillUpdate() {
+      console.log("article componentWillUpdate..");
+      var alink_arr = document.getElementsByTagName('a');
+      for (var i = 0; i < alink_arr.length; i++) {
+        alink_arr[i].onclick = function () {
+          global.isLinkClicked = true;
+        };
       }
     }
   }, {
@@ -727,32 +764,6 @@ var Article = function (_Component) {
             }
           };
         });
-      }
-    }
-  }, {
-    key: 'componentWillUpdate',
-    value: function componentWillUpdate() {
-      console.log("article componentWillUpdate..");
-      var alink_arr = document.getElementsByTagName('a');
-      for (var i = 0; i < alink_arr.length; i++) {
-        alink_arr[i].onclick = function () {
-          global.isLinkClicked = true;
-        };
-      }
-    }
-  }, {
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      console.log("article componentDidMount");
-      this.componentDidUpdate();
-    }
-  }, {
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
-      console.log("article componentWillReceiveProps nextfile", nextProps.nextProps, ' prop.file:', this.props.file);
-      if (nextProps.file != this.props.file) {
-        this.hash = '';
-        this.load = false;
       }
     }
   }, {
@@ -835,66 +846,6 @@ var Article = function (_Component) {
         }
       }
     }
-    //内部链接预览....暂时去除,修改为直接跳转
-    /* 
-     showPreview(appName, hash, rect) {
-       console.log("article showPreview");
-       let file = `${global.path}/${appName}/${global.lang}/index.md`;
-       global.readFile(file, data => {
-         let { html } = m2h(file, data);
-         let d = document.createElement('div');
-         d.innerHTML = html;
-         let hashDom = d.querySelector(`[text="${hash}"]`);
-         let DomList = [hashDom];
-         let nextDom = hashDom.nextElementSibling;
-         while (nextDom) {
-           if (nextDom.nodeName == hashDom.nodeName) {
-             break;
-           }
-           DomList.push(nextDom);
-           nextDom = nextDom.nextElementSibling;
-         }
-         d.innerHTML = '';
-         DomList.map(el => d.appendChild(el));
-         html = d.innerHTML;
-         let { top, left, right } = rect;
-         let style = {};
-         let tClass = 't_';
-          console.log("left-right:"+(left) + "  - "+ right);
-         //center
-         if (((right + left)/2 > (300 + 170)) && (((right + left)/2 + 300 < document.body.clientWidth))) {
-           style.left　=　(right + left)/2 - 300;
-           tClass += 'center_';
-         }
-         //right
-         else if (((right + left)/2  > (600 + 170)))
-         {
-           style.left　=　right - 600;
-           tClass += 'right_';
-         }
-         //left
-         else if ((right + left)/2 <= (300 + 170))
-         {
-           style.left　=　left;
-           tClass += 'left_';
-         }
-         //left
-         else {
-           style.left　= 170;
-           tClass += 'left_';
-           
-         }
-         if (top > document.body.clientHeight / 2) {
-           tClass += 'down';
-           style.top = top - 250 - 20;
-         } else {
-           tClass += 'up';
-           style.top = top + rect.height + 10;
-         }
-         this.setState({ preview: { html, style, tClass } });
-       });
-     }
-     */
 
     //链接处理
 
@@ -1305,8 +1256,7 @@ var Main = function (_Component) {
 
     _this.state = {
       init: false,
-      bTest: true,
-      isShowHelperSupport: false
+      bTest: true
     };
     var _this$props$match$par = _this.props.match.params,
         file = _this$props$match$par.file,
@@ -1315,11 +1265,6 @@ var Main = function (_Component) {
 
     _this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null, key);
     var showFloatTimer = null;
-    global.qtObjects.manual.hasSelperSupport(function (bFlag) {
-      _this.setState({
-        isShowHelperSupport: bFlag
-      });
-    });
     return _this;
   }
 
@@ -1458,7 +1403,7 @@ var Main = function (_Component) {
       console.log("main render....hash:", this.state.hash);
       console.log("main render....hList:", this.state.hlist);
       var support = null;
-      if (this.state.isShowHelperSupport) {
+      if (global.isShowHelperSupport) {
         support = _react2.default.createElement(
           'div',
           { className: 'support-div', onClick: this.onSupportClick.bind(this) },
@@ -1617,8 +1562,14 @@ var Nav = function (_Component) {
   }
 
   _createClass(Nav, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      console.log("nav componentWillMount");
+    }
+  }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
+      console.log("nav componentDidMount");
       document.getElementById('article').style.marginLeft = _reactDom2.default.findDOMNode(this).clientWidth;
       this.componentDidUpdate();
     }
