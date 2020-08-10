@@ -32,7 +32,6 @@ const int kWinMinHeight = 600;
 namespace dman {
 WindowManager::WindowManager(QObject *parent)
     : QObject(parent)
-    , search_manager_(nullptr)
     , curr_app_name_("")
     , curr_keyword_("")
     , curr_title_name_("")
@@ -70,6 +69,7 @@ void WindowManager::initDBus()
  */
 void WindowManager::initWebWindow()
 {
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     window = new WebWindow;
     window->setAppProperty(curr_app_name_, curr_title_name_, curr_keyword_);
     setWindow(window);
@@ -77,13 +77,16 @@ void WindowManager::initWebWindow()
 
     qDebug() << Q_FUNC_INFO << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
 
-    initDBus();
-    SendMsg(QString::number(window->winId()));
-    window->initWeb();
+    QTimer::singleShot(0, [ = ]() {
+        initDBus();
+        SendMsg(QString::number(window->winId()));
+        window->initWeb();
+    });
 }
 
 void WindowManager::activeOrInitWindow()
 {
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     qDebug() << Q_FUNC_INFO;
     // 单页面该锁可能无用......
     QMutexLocker locker(&_mutex);
@@ -178,6 +181,7 @@ void WindowManager::onNewAppOpen()
  */
 void WindowManager::openManual(const QString &app_name, const QString &title_name)
 {
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     curr_app_name_ = app_name;
     curr_keyword_ = "";
     curr_title_name_ = title_name;

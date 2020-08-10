@@ -45,7 +45,9 @@ int main(int argc, char **argv)
 //    qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "7777");
 //    Dtk::Widget::DApplication::loadDXcbPlugin();
 
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     Dtk::Widget::DApplication app(argc, argv);
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     if (!DPlatformWindowHandle::pluginVersion().isEmpty()) {
         app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings, true);
     }
@@ -77,12 +79,15 @@ int main(int argc, char **argv)
     if (!argument_parser.parseArguments()) {
         qDebug() << "argument_parser.parseArguments()";
         //解析参数失败，１００ｍｓ退出进程
-        QTimer::singleShot(100, [&]() {
+        QTimer::singleShot(100, [ & ]() {
             app.quit();
         });
         return app.exec();
     }
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     argument_parser.openManualsDelay();
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
+
 
     // 日志保存, 路径:~/.cach/deepin/deepin-manual/
     DApplicationSettings dApplicationSettings;

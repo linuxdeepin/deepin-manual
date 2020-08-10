@@ -61,15 +61,21 @@ WebWindow::WebWindow(QWidget *parent)
     , search_timer_(new QTimer)
     , first_webpage_loaded_(true)
 {
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     // 使用 redirectContent 模式，用于内嵌 x11 窗口时能有正确的圆角效果
     Dtk::Widget::DPlatformWindowHandle::enableDXcbForWindow(this, true);
     search_timer_.setSingleShot(true);
     setAttribute(Qt::WA_InputMethodEnabled, true);
 
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     this->initUI();
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     this->initConnections();
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     this->initShortcuts();
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     this->initDBus();
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
 
     qApp->installEventFilter(this);
 }
@@ -132,10 +138,14 @@ WebWindow::~WebWindow()
 void WebWindow::initWeb()
 {
     qDebug() << Q_FUNC_INFO;
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     initWebView();
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     setSearchManager();
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     const QFileInfo info(kIndexPage);
     web_view_->load(QUrl::fromLocalFile(info.absoluteFilePath()));
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
 }
 
 /**
@@ -249,7 +259,7 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
     if (event->type() == QEvent::MouseButtonRelease && qApp->activeWindow() == this &&
             watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
         QRect rect = hasSearchEditRect();
-        if (web_view_->selectedText().isEmpty() && !rect.contains(QCursor::pos())) {
+        if (web_view_ && web_view_->selectedText().isEmpty() && !rect.contains(QCursor::pos())) {
             this->setFocus();
         }
     }
@@ -404,11 +414,6 @@ void WebWindow::onThemeChange(DGuiApplicationHelper::ColorType themeType)
     if (web_view_) {
         QColor fillColor = DGuiApplicationHelper::instance()->applicationPalette().highlight().color();
         web_view_->page()->runJavaScript(QString("setHashWordColor('%1')").arg(fillColor.name()));
-    } else {
-        QTimer::singleShot(300, this, [&]() {
-            QColor fillColor = DGuiApplicationHelper::instance()->applicationPalette().highlight().color();
-            web_view_->page()->runJavaScript(QString("setHashWordColor('%1')").arg(fillColor.name()));
-        });
     }
 }
 

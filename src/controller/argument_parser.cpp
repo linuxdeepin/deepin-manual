@@ -64,7 +64,7 @@ bool ArgumentParser::parseArguments()
 
     //注册Open服务, 如果注册失败,则说明已存在一个dman.
     if (!conn.registerService(kManualOpenService)
-        || !conn.registerObject(kManualOpenIface, proxy)) {
+            || !conn.registerObject(kManualOpenIface, proxy)) {
         qDebug() << "Failed to register dbus";
         const QStringList position_args = parser.positionalArguments();
         if (!position_args.isEmpty()) {
@@ -110,6 +110,7 @@ bool ArgumentParser::parseArguments()
  */
 void ArgumentParser::openManualsDelay()
 {
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     qDebug() << Q_FUNC_INFO << curManual;
     if (!bIsDbus) {
         this->onOpenAppRequested(curManual);
@@ -123,9 +124,11 @@ void ArgumentParser::openManualsDelay()
  */
 void ArgumentParser::onOpenAppRequested(const QString &app_name, const QString &title_name)
 {
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     const QString compact_app_name = ConvertOldDmanPath(app_name);
     //通过语言映射表,将传入标题名称映射转换成对应名称.
     const QString title = Utils::translateTitle(title_name);
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     qDebug() << Q_FUNC_INFO << compact_app_name << "---" << title;
     emit this->openManualRequested(compact_app_name, title);
 }
