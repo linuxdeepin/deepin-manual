@@ -685,12 +685,7 @@ void WebWindow::onSearchButtonClicked()
  */
 void WebWindow::onSearchResultClicked(const SearchAnchorResult &result)
 {
-    web_view_->page()->runJavaScript(QString("open('%1', '%2', '%3', '%4')")
-                                     .arg(result.app_name
-                                          , result.anchorId
-                                          , result.anchor
-                                          , result.app_display_name));
-
+    web_view_->page()->runJavaScript(QString("open('%1', '%2', '%3')").arg(result.app_name, result.anchorId, result.anchor));
 }
 
 /**
@@ -856,6 +851,7 @@ void WebWindow::onChannelFinish()
 /**
  * @brief WebWindow::onSetKeyword JS根据页面关键字回调设置搜索框
  * @param keyword 关键字
+ * @note keyword 可能存在转换后的字符,所以需要将字符反向转换回去.
  */
 void WebWindow::onSetKeyword(const QString &keyword)
 {
@@ -868,7 +864,11 @@ void WebWindow::onSetKeyword(const QString &keyword)
         if (keyword.isEmpty()) {
             search_edit_->clearEdit();
         } else {
-            search_edit_->setText(keyword);
+            QString strTemp = keyword;
+            if (strTemp.contains("-+")) {
+                strTemp.replace("-+", "/");
+            }
+            search_edit_->setText(strTemp);
         }
     }
 }

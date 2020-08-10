@@ -40,6 +40,8 @@ export default function(mdFile, mdData, key='') {
   html = marked(mdData, { renderer }).replace(/src="/g, `$&${path}`);
   if (key != '')
   {
+    //将'-+'字符串 反向还原成'/'
+    key = key.replace(/-+/g,'/');
     // var formatKeyword = key.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')
     var finder = new RegExp(">.*?<",'g') // 提取位于标签内的文本，避免误操作 class、id 等
     html = html.replace(finder,function(matched){

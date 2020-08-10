@@ -253,8 +253,14 @@ class App extends React.Component {
       file = encodeURIComponent(file);
       hash = encodeURIComponent(hash);
       global.hash = hash;
+
+      // '/'字符替换为其他非常用字符组合,来替代'/', 路由URL使用'/'来区分字段,所以应该避免字段中含有'/'.
+      if (key.indexOf('/') !== -1)
+      {
+         key = key.replace(/\//g,'-+');
+      }
+
       let url = `/open/${file}/${hash}/${key}`;
-      console.log("global.open: " +url);
       this.context.router.history.push(url);
 
       //通知qt对象,修改应用打开状态
