@@ -246,10 +246,10 @@ void WebWindow::inputMethodEvent(QInputMethodEvent *e)
 
 bool WebWindow::eventFilter(QObject *watched, QEvent *event)
 {
-
     if (event->type() == QEvent::MouseButtonRelease && qApp->activeWindow() == this &&
             watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
-        if (web_view_->selectedText().isEmpty()) {
+        QRect rect = hasSearchEditRect();
+        if (web_view_->selectedText().isEmpty() && !rect.contains(QCursor::pos())) {
             this->setFocus();
         }
     }
@@ -284,11 +284,12 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
             web_view_->setFocus(Qt::ActiveWindowFocusReason);
         }
     }
+
     // Filters mouse press event only.
     if (event->type() == QEvent::MouseButtonPress && qApp->activeWindow() == this &&
             watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
         QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
-//        this->web_view_->update();
+        //        this->web_view_->update();
         if (mouseEvent->button()) {
             switch (mouseEvent->button()) {
             case Qt::BackButton: {
@@ -305,9 +306,6 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
                 return true;
             }
             default: {
-            }
-            if (!search_edit_->geometry().contains(this->mapFromGlobal(QCursor::pos()))) {
-                completion_window_->hide();
             }
             }
         }
@@ -634,6 +632,34 @@ void WebWindow::settingContextMenu()
     connect(action, &QAction::triggered, this, [ = ]() {
         QApplication::clipboard()->setText(web_view_->selectedText());
     });
+}
+
+/**
+ * @brief WebWindow::hasSearchEditRect
+ * @return 返回SearchEdit的绝对坐标范围
+ */
+QRect WebWindow::hasSearchEditRect()
+{
+    QRect rect;
+    QList<QWidget *> list = this->titlebar()->findChildren<QWidget *>();
+    for (int i = 0 ; i < list.length(); ++i) {
+        if (list.at(i)->inherits("QLabel")) {
+            if (list.at(i)->width() == 28 || list.at(i)->width() == 640) {
+                continue;
+            }
+            int x = (list.at(i)->width() - search_edit_->width()) / 2;
+            int y = (list.at(i)->height() - search_edit_->height()) / 2;
+            QPoint gp = list.at(i)->mapToGlobal(list.at(i)->pos());
+            QPoint p(gp.x() + x - 200, gp.y() + y);
+            //QRect rect(p1.x(), p1.y(), search_edit_->width(), search_edit_->height());
+            rect.setX(p.x());
+            rect.setY(p.y());
+            rect.setWidth(search_edit_->width());
+            rect.setHeight(search_edit_->height());
+            return rect;
+        }
+    }
+    return rect;
 }
 
 /**
