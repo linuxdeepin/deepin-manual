@@ -34,11 +34,15 @@ int main(int argc, char **argv)
 
     QCoreApplication app(argc, argv);
 
+    //设置当前工作目录为 manual/src/web
     QDir::setCurrent(DMAN_SEARCH_WORK_DIR);
-    QStringList list = QDir(DMAN_ORIG_MANUAL_DIR).entryList(QDir::NoDotAndDotDot | QDir::Dirs);
 
+//    //获取manual/manual-assets目录下的文件夹列表
+//    QStringList list = QDir(DMAN_ORIG_MANUAL_DIR).entryList(QDir::NoDotAndDotDot | QDir::Dirs);
+
+    //遍历manual/manual-assets目录下的文件夹列表
     for (QString &dbType :
-         QDir(DMAN_ORIG_MANUAL_DIR).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+            QDir(DMAN_ORIG_MANUAL_DIR).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
         QString strCreateDbPath = DMAN_SEARCH_CREATE_DB_PATH;
         strCreateDbPath += "/" + dbType;
 
@@ -59,7 +63,7 @@ int main(int argc, char **argv)
             QString strManualDir = DMAN_ORIG_MANUAL_DIR;
             strManualDir += "/" + dbType;
             for (QString &app_name :
-                 QDir(strManualDir).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+                    QDir(strManualDir).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
                 const QString md_file = QStringList {strManualDir, app_name, locale, "index.md"}.join(QDir::separator());
                 if (!QFileInfo(md_file).isFile()) {
                     qWarning() << md_file << "not found";
@@ -70,7 +74,7 @@ int main(int argc, char **argv)
                 manualDir.cdUp();
                 qDebug() << manualDir.path();
                 QString searchIndexFilePath = QString("%1/%2/%3/%4")
-                                                  .arg(manualDir.path(), "src", "web", "toSearchIndex.js");
+                                              .arg(manualDir.path(), "src", "web", "toSearchIndex.js");
                 qDebug() << searchIndexFilePath;
                 QString out, err;
                 //            QStringList cmdList = {"node"};

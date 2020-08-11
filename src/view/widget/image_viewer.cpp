@@ -105,6 +105,10 @@ void ImageViewer::open(const QString &filepath)
     close_button_->raise();
 }
 
+/**
+ * @brief ImageViewer::initUI
+ * 界面初始化
+ */
 void ImageViewer::initUI()
 {
     img_label_ = new DLabel(this);
@@ -134,12 +138,22 @@ void ImageViewer::initUI()
     });
 }
 
+/**
+ * @brief ImageViewer::mousePressEvent
+ * @param event
+ * 重写鼠标点击事件，打开图片后点击窗口任意位置，都隐藏此界面
+ */
 void ImageViewer::mousePressEvent(QMouseEvent *event)
 {
     QWidget::mousePressEvent(event);
     this->hide();
 }
 
+/**
+ * @brief ImageViewer::paintEvent
+ * @param event
+ * 画图事件，重绘整个屏幕大小
+ */
 void ImageViewer::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event);

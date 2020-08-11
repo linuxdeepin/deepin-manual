@@ -46,6 +46,7 @@
 
 #include "base/utils.h"
 
+
 DWIDGET_USE_NAMESPACE
 
 namespace dman {
@@ -70,7 +71,6 @@ WebWindow::WebWindow(QWidget *parent)
     this->initConnections();
     this->initShortcuts();
     this->initDBus();
-
     qApp->installEventFilter(this);
 }
 
@@ -227,6 +227,11 @@ void WebWindow::slot_HelpSupportTriggered()
     }
 }
 
+/**
+ * @brief WebWindow::closeEvent
+ * @param event
+ * 重写关闭事件，保存窗口大小
+ */
 void WebWindow::closeEvent(QCloseEvent *event)
 {
     //保存窗口大小
@@ -234,6 +239,11 @@ void WebWindow::closeEvent(QCloseEvent *event)
     QWidget::closeEvent(event);
 }
 
+/**
+ * @brief WebWindow::inputMethodEvent
+ * @param e
+ * 中文输入法支持
+ */
 void WebWindow::inputMethodEvent(QInputMethodEvent *e)
 {
     if (!e->commitString().isEmpty()) {
@@ -244,6 +254,32 @@ void WebWindow::inputMethodEvent(QInputMethodEvent *e)
     QWidget::inputMethodEvent(e);
 }
 
+/**
+ * @brief WebWindow::inputMethodQuery
+ * @param prop
+ * @return
+ * 中文输入法支持
+ */
+QVariant WebWindow::inputMethodQuery(Qt::InputMethodQuery prop) const
+{
+    switch (prop) {
+    case Qt::ImEnabled:
+        return true;
+    case Qt::ImCursorRectangle:
+    default:
+        ;
+    }
+
+    return QWidget::inputMethodQuery(prop);
+}
+
+/**
+ * @brief WebWindow::eventFilter
+ * @param watched 事件对象
+ * @param event
+ * @return
+ * 事件过滤器
+ */
 bool WebWindow::eventFilter(QObject *watched, QEvent *event)
 {
     if (event->type() == QEvent::MouseButtonRelease && qApp->activeWindow() == this &&
@@ -324,19 +360,10 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
 
 }
 
-QVariant WebWindow::inputMethodQuery(Qt::InputMethodQuery prop) const
-{
-    switch (prop) {
-    case Qt::ImEnabled:
-        return true;
-    case Qt::ImCursorRectangle:
-    default:
-        ;
-    }
-
-    return QWidget::inputMethodQuery(prop);
-}
-
+/**
+ * @brief WebWindow::setSearchManager
+ * 创建搜索管理类对象，绑定信号槽
+ */
 void WebWindow::setSearchManager()
 {
     search_manager_ = new SearchManager(this);
@@ -350,6 +377,7 @@ void WebWindow::setSearchManager()
 
 /**
  * @brief WebWindow::initConnections
+ * 绑定信号槽
  */
 void WebWindow::initConnections()
 {
@@ -370,6 +398,11 @@ void WebWindow::initConnections()
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged, this, &WebWindow::onThemeChange);
 }
 
+/**
+ * @brief WebWindow::onManualSearchByKeyword
+ * @param keyword
+ * 关键字搜索
+ */
 void WebWindow::onManualSearchByKeyword(const QString &keyword)
 {
     qDebug() << "WebWindow: onManualSearchByKeyword keyword:" << keyword;
@@ -398,6 +431,11 @@ void WebWindow::onACtiveColorChanged(QString, QMap<QString, QVariant>map, QStrin
     }
 }
 
+/**
+ * @brief WebWindow::onThemeChange
+ * @param themeType
+ * 系统主题改变时，调用js接口setHashWordColor()设置导航栏颜色
+ */
 void WebWindow::onThemeChange(DGuiApplicationHelper::ColorType themeType)
 {
     Q_UNUSED(themeType)
@@ -731,6 +769,10 @@ void WebWindow::onSearchTextChanged(const QString &text)
     }
 }
 
+/**
+ * @brief WebWindow::onSearchTextChangedDelay
+ * 获取searchEidt中的文本，过滤特殊字符与中隔，设置searchButton显示文本
+ */
 void WebWindow::onSearchTextChangedDelay()
 {
     QString textTemp = search_edit_->text();
@@ -744,6 +786,10 @@ void WebWindow::onSearchTextChangedDelay()
     emit search_manager_->searchAnchor(text);
 }
 
+/**
+ * @brief WebWindow::onTitleBarEntered
+ * 焦点在SearchEdit中，按回车时调用 ，调用onEnterPressed()进行搜索操作
+ */
 void WebWindow::onTitleBarEntered()
 {
     QString textTemp = search_edit_->text();

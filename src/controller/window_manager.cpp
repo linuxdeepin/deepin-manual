@@ -44,7 +44,8 @@ WindowManager::~WindowManager()
 }
 
 /**
- * @brief WindowManager::initDBus 初始化前后端通信Dbus,服务端创建在前端.....wait
+ * @brief WindowManager::initDBus
+ * 初始化前后端通信Dbus,服务端创建在前端.....wait
  */
 void WindowManager::initDBus()
 {
@@ -82,6 +83,10 @@ void WindowManager::initWebWindow()
     window->initWeb();
 }
 
+/**
+ * @brief WindowManager::activeOrInitWindow
+ * 初始化窗口管理，应用启动时进行判断，如果窗口已经创建则激活
+ */
 void WindowManager::activeOrInitWindow()
 {
     qDebug() << Q_FUNC_INFO;
@@ -101,7 +106,7 @@ void WindowManager::activeOrInitWindow()
 
 /**
  * @brief WindowManager::SendMsg 通过dbus接口来实现前后端通信,
- * @param msg
+ * @param msg 信息内容
  */
 void WindowManager::SendMsg(const QString &msg)
 {
@@ -149,7 +154,8 @@ void WindowManager::setWindow(WebWindow *window)
 }
 
 /**
- * @brief WindowManager::onNewAppOpen 已存在dman时,再重启窗口时,通知后端将已存在的dman窗口active.
+ * @brief WindowManager::onNewAppOpen
+ * 已存在dman时,再重启窗口时,通知后端将已存在的dman窗口active.
  */
 void WindowManager::onNewAppOpen()
 {
@@ -173,8 +179,8 @@ void WindowManager::onNewAppOpen()
 
 /**
  * @brief WindowManager::openManual F1快捷启动
- * @param app_name
- * @param title_name
+ * @param app_name 应用名称
+ * @param title_name 标签名称
  */
 void WindowManager::openManual(const QString &app_name, const QString &title_name)
 {

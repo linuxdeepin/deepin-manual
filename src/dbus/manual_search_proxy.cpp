@@ -32,6 +32,10 @@ ManualSearchProxy::~ManualSearchProxy()
 {
 }
 
+/**
+ * @brief ManualSearchProxy::connectToSender
+ * 连接DBus服务，获取SendWinInfo信息
+ */
 void ManualSearchProxy::connectToSender()
 {
     QDBusConnection senderConn =
@@ -51,6 +55,11 @@ void ManualSearchProxy::connectToSender()
     }
 }
 
+/**
+ * @brief ManualSearchProxy::RecvMsg
+ * @param data 窗口状态
+ * Dbus槽函数，读取SendWinInfo信息，获取窗口状态， 关闭或打开
+ */
 void ManualSearchProxy::RecvMsg(const QString &data)
 {
     qDebug() << "RecvMsg data is: " << data;

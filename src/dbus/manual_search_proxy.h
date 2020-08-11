@@ -32,17 +32,22 @@ public:
     ~ManualSearchProxy() override;
 
 signals:
+    //窗口状态信号，打开/关闭
     void SendWinInfo(const QString &data);
 
 public slots:
+    //根据给定的应用名称，判断对应的帮助手册内容是否存在
     bool ManualExists(const QString &app_name);
 
 private slots:
+    //读取窗口状态信息
     void RecvMsg(const QString &data);
+    //配合WindowManager类用于多窗口管理，帮助手册窗口的打开/激活
     void OnNewWindowOpen(const QString &data);
 
 private:
-    void initDBus();
+//    void initDBus();
+    //连接DBus服务，获取SendWinInfo信息
     void connectToSender();
 
     bool m_bWindowState;

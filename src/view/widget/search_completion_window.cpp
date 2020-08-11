@@ -44,6 +44,11 @@ SearchCompletionWindow::~SearchCompletionWindow()
 {
 }
 
+/**
+ * @brief SearchCompletionWindow::updateColor
+ * @param color 系统活动色
+ * 修改系统活动色，使searchButon背景色与系统活动色一致
+ */
 void SearchCompletionWindow::updateColor(const QColor &color)
 {
     if (search_button_) {
@@ -51,6 +56,11 @@ void SearchCompletionWindow::updateColor(const QColor &color)
     }
 }
 
+/**
+ * @brief SearchCompletionWindow::autoResize
+ * 根据搜索结果的数量自动设置窗口高度，最多显示7行结果，支持滚屏
+ * 设置searchButton位置在listview下方
+ */
 void SearchCompletionWindow::autoResize()
 {
     int rowCount = result_view_->model()->rowCount();
@@ -73,6 +83,10 @@ void SearchCompletionWindow::autoResize()
     result_view_->setVisible(search_compeletion_model_->rowCount() > 0);
 }
 
+/**
+ * @brief SearchCompletionWindow::goDown
+ * 方向键“下”，实现可循环滚动效果
+ */
 void SearchCompletionWindow::goDown()
 {
     if (nullptr == search_compeletion_model_) {
@@ -99,6 +113,10 @@ void SearchCompletionWindow::goDown()
     }
 }
 
+/**
+ * @brief SearchCompletionWindow::goUp
+ * 方向键“上”，实现可循环滚动效果
+ */
 void SearchCompletionWindow::goUp()
 {
     if (nullptr == search_compeletion_model_) {
@@ -125,6 +143,12 @@ void SearchCompletionWindow::goUp()
     }
 }
 
+/**
+ * @brief SearchCompletionWindow::onEnterPressed
+ * 焦点在searchEdit输入关键字后 点击回车键触发该槽
+ * 如果searchButton为选择状态时执行全文搜索
+ * 否则通过listViewItem的索引获取选中行的内容，执行页面显示
+ */
 void SearchCompletionWindow::onEnterPressed()
 {
     if (search_button_->isChecked()) {
@@ -137,10 +161,14 @@ void SearchCompletionWindow::onEnterPressed()
     this->hide();
 }
 
+/**
+ * @brief SearchCompletionWindow::setKeyword
+ * @param keyword 搜索关键字
+ * 设置seearchButton中的搜索关键字
+ */
 void SearchCompletionWindow::setKeyword(const QString &keyword)
 {
     keyword_ = keyword;
-
     QFontMetrics metrics = search_button_->fontMetrics();
     search_button_->setText(
         metrics.elidedText(
@@ -148,11 +176,16 @@ void SearchCompletionWindow::setKeyword(const QString &keyword)
             Qt::ElideRight, 350 - 39));
 }
 
+/**
+ * @brief SearchCompletionWindow::setSearchAnchorResult
+ * @param result 搜索结果内容
+ * 数据转换，全文搜索结果数据添加到searchDataList中，调用initSearchCompletionListData()方法，设置ListView;
+ */
 void SearchCompletionWindow::setSearchAnchorResult(const SearchAnchorResultList &result)
 {
     result_ = result;
-
     QList<SearchCompletionItemModel> searchDataList;
+
     for (const SearchAnchorResult &entry : result) {
         SearchCompletionItemModel model;
         model.strSearchKeyword = entry.anchor;
@@ -166,6 +199,10 @@ void SearchCompletionWindow::setSearchAnchorResult(const SearchAnchorResultList 
     this->autoResize();
 }
 
+/**
+ * @brief SearchCompletionWindow::initConnections
+ * 信号槽连接
+ */
 void SearchCompletionWindow::initConnections()
 {
     connect(result_view_, &SearchCompletionListView::onClickSearchCompletionItem,
@@ -178,6 +215,11 @@ void SearchCompletionWindow::initConnections()
             this, &SearchCompletionWindow::searchButtonClicked);
 }
 
+/**
+ * @brief SearchCompletionWindow::initSearchCompletionListData
+ * @param dataList 搜索结果list
+ * 全文搜索结果数据，添加到QStandardItemModel中，通过setModel()，设置ListView
+ */
 void SearchCompletionWindow::initSearchCompletionListData(QList<SearchCompletionItemModel> dataList)
 {
     search_compeletion_model_ = new QStandardItemModel(result_view_);
@@ -193,6 +235,10 @@ void SearchCompletionWindow::initSearchCompletionListData(QList<SearchCompletion
     result_view_->setModel(search_compeletion_model_);
 }
 
+/**
+ * @brief SearchCompletionWindow::initUI
+ * 界面初始化，创建ListView对象
+ */
 void SearchCompletionWindow::initUI()
 {
     setAutoFillBackground(false);
@@ -223,6 +269,11 @@ void SearchCompletionWindow::initUI()
     this->setAttribute(Qt::WA_NativeWindow, true);
 }
 
+/**
+ * @brief SearchCompletionWindow::paintEvent
+ * @param event
+ * 重写绘制事件
+ */
 void SearchCompletionWindow::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event)
@@ -246,6 +297,14 @@ void SearchCompletionWindow::paintEvent(QPaintEvent *event)
     painter.fillPath(path, QBrush(fillColor));
 }
 
+/**
+ * @brief SearchCompletionWindow::onResultListClicked
+ * @param index 被选中的ListItem索引
+ * listItem被点击或选中后 按回车时调用，
+ * 通QModelIndex确定并获取选中的ListItem中的内容，
+ * 内容通过信号resultClicked()发给web_window类，通过调用js中的open接口显示页面
+ * 如果索引无效时,模拟的searchButton点击执行全文搜索
+ */
 void SearchCompletionWindow::onResultListClicked(const QModelIndex &index)
 {
     if (index.isValid()) {
@@ -259,12 +318,21 @@ void SearchCompletionWindow::onResultListClicked(const QModelIndex &index)
     this->hide();
 }
 
+/**
+ * @brief SearchCompletionWindow::onSearchButtonEntered
+ * searchButton被选中，修改状态，并设置ListView索引
+ */
 void SearchCompletionWindow::onSearchButtonEntered()
 {
     search_button_->setChecked(true);
     result_view_->setCurrentIndex(QModelIndex());
 }
 
+/**
+ * @brief SearchCompletionWindow::onResultListEntered
+ * @param index
+ * 绑定DListView::entered()信号，鼠标移入Item时解发
+ */
 void SearchCompletionWindow::onResultListEntered(const QModelIndex &index)
 {
     result_view_->setCurrentIndex(index);

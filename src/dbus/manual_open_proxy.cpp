@@ -40,12 +40,23 @@ void ManualOpenProxy::Open(const QString &app_name)
     emit this->openManualRequested(app_name, "");
 }
 
+/**
+ * @brief ManualOpenProxy::OpenTitle
+ * @param app_name
+ * @param title_name
+ * 通过 应用名称与标签名，打开相应页面
+ */
 void ManualOpenProxy::OpenTitle(const QString &app_name, const QString &title_name)
 {
     qDebug() << Q_FUNC_INFO << app_name << "---" << title_name;
     emit this->openManualRequested(app_name, title_name);
 }
 
+/**
+ * @brief ManualOpenProxy::ShowManual
+ * @param app_name
+ * 显示帮助手册页面， 调用open()接口实现
+ */
 void ManualOpenProxy::ShowManual(const QString &app_name)
 {
     this->Open(app_name);

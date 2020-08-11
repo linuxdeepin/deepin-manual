@@ -99,13 +99,6 @@ SearchDb::SearchDb(QObject *parent)
 
     initConnections();
     getAllApp();
-
-    QString str = "   在文本编辑器界面，您可对后缀名为代码类型的文件进行添加注释的操作。   "
-                  "添加注释选中一段文本内容，在右键菜单选择 添加注释。选中一段文本内容，使用组合键 Alt+A 添加注释。"
-                  "取消注释选中一段文本内容，在右键菜单选择 取消注释。选中一段文本内容，使用组合键 Alt+Z 取消"
-                  "注释。<img src=\"/usr/share/deepin-manual/manual-assets/professional/deepin-editor/zh_CN/icon/notes.svg\">说明："
-                  "支持不同代码语言的注释，具体以实际为主。例如C，C#，Java注释符号为 //，P<span class='highlight'>y</span>thon 注释符号为 #。";
-//    omitHighlight(str);
 }
 
 SearchDb::~SearchDb()
@@ -119,6 +112,11 @@ SearchDb::~SearchDb()
     }
 }
 
+/**
+ * @brief SearchDb::initConnections
+ * 绑定信号槽
+ */
+
 void SearchDb::initConnections()
 {
     connect(this, &SearchDb::initDbAsync, this, &SearchDb::initDb);
@@ -126,6 +124,11 @@ void SearchDb::initConnections()
     connect(this, &SearchDb::searchContent, this, &SearchDb::handleSearchContent);
 }
 
+/**
+ * @brief SearchDb::initDb
+ * @param db_path 数据库文件路径
+ * 数据库操作初始化
+ */
 void SearchDb::initDb(const QString &db_path)
 {
     qDebug() << "initDb database path is--->:" << db_path << endl;
@@ -137,6 +140,10 @@ void SearchDb::initDb(const QString &db_path)
     }
 }
 
+/**
+ * @brief SearchDb::initSearchTable
+ * 数据库search表初始化操作
+ */
 void SearchDb::initSearchTable()
 {
     QSqlQuery query(p_->db);
@@ -155,6 +162,18 @@ void SearchDb::initSearchTable()
     }
 }
 
+/**
+ * @brief SearchDb::addSearchEntry
+ * @param system            文件版本，如：professional专业版 server服务器版
+ * @param app_name          应用名称
+ * @param lang              语言 如：zh_CN中文
+ * @param anchors           标题 md文件中以“#”开头
+ * @param anchorInitialList 首字母字段
+ * @param anchorSpellList   全拼字段
+ * @param anchorIdList      标题Id 如：h1, h2 ...
+ * @param contents          内容
+ * 解析md文件之后，生成数据，插入到数据库
+ */
 void SearchDb::addSearchEntry(const QString &system, const QString &app_name, const QString &lang,
                               const QStringList &anchors, const QStringList &anchorInitialList,
                               const QStringList &anchorSpellList, const QStringList &anchorIdList,
@@ -229,6 +248,11 @@ void SearchDb::addSearchEntry(const QString &system, const QString &app_name, co
     }
 }
 
+/**
+ * @brief SearchDb::handleSearchAnchor
+ * @param keyword 搜索关键字
+ * 根据keyword 在数据库中匹配，匹配结果通过searchAnchorResult()信号发出
+ */
 void SearchDb::handleSearchAnchor(const QString &keyword)
 {
     qDebug() << Q_FUNC_INFO << keyword;
@@ -269,6 +293,13 @@ void SearchDb::handleSearchAnchor(const QString &keyword)
     emit this->searchAnchorResult(keyword, result);
 }
 
+/**
+ * @brief insertHighlight
+ * @param srcString 传入文本，其中内容没有img内容
+ * @param keyword 关键字
+ * @return
+ * 在传入的文本中的搜索关键字加入<span>标签，用以js解析显示高亮
+ */
 QString insertHighlight(QString srcString, QString keyword)
 {
     QString resultString = srcString;
@@ -293,6 +324,13 @@ QString insertHighlight(QString srcString, QString keyword)
     return resultString;
 }
 
+/**
+ * @brief SearchDb::highlightKeyword
+ * @param srcString 搜索结果文本内容
+ * @param keyword   搜索关键字
+ * @return 返回添加高亮标签之后文本内容
+ * 处理搜索结果，为搜索结果中的关键字添加高亮标签， <img>国片内容进行过滤不添加高亮
+ */
 QString SearchDb::highlightKeyword(QString srcString, QString keyword)
 {
     QString substrImgStart = "";
@@ -311,8 +349,9 @@ QString SearchDb::highlightKeyword(QString srcString, QString keyword)
     const int imgEndLen = imgEndString.length();
 
     QString highlightString = "";
-
+    //搜索结果中不包含图片，文字添加标签后返回
     if (!srcString.contains(imgStartString)) {
+        //添加<span>标签
         highlightString = insertHighlight(srcString, keyword);
         return highlightString;
     }
@@ -337,6 +376,7 @@ QString SearchDb::highlightKeyword(QString srcString, QString keyword)
                 strList.append(findStr);
 
                 QString hightLightStr = findStr;
+                //添加<SPAN>标签
                 hightLightStr = insertHighlight(hightLightStr, keyword);
                 highlightString.append(hightLightStr);
             }
@@ -353,6 +393,7 @@ QString SearchDb::highlightKeyword(QString srcString, QString keyword)
             strList.append(lastStr);
 
             QString hightLightStr = lastStr;
+            //添加<SPAN>标签
             hightLightStr = insertHighlight(hightLightStr, keyword);
             highlightString.append(hightLightStr);
         }
@@ -365,6 +406,10 @@ QString SearchDb::highlightKeyword(QString srcString, QString keyword)
     return highlightString;
 }
 
+/**
+ * @brief SearchDb::getAllApp
+ * 获取系统中存在帮助手册的应用列表
+ */
 void SearchDb::getAllApp()
 {
     strlistApp = Utils::getSystemManualList();
@@ -446,6 +491,12 @@ void SearchDb::omitHighlight(QString &highLight, const QString &keyword)
     }
 }
 
+/**
+ * @brief SearchDb::handleSearchContent
+ * @param keyword 搜索关键字
+ * 根据关键字执行搜索，并对搜索结果进行处理，
+ * 通过searchContentResult()信号发送到JS进行显示
+ */
 void SearchDb::handleSearchContent(const QString &keyword)
 {
     qDebug() << Q_FUNC_INFO << keyword;

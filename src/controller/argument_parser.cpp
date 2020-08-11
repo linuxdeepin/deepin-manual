@@ -64,7 +64,7 @@ bool ArgumentParser::parseArguments()
 
     //注册Open服务, 如果注册失败,则说明已存在一个dman.
     if (!conn.registerService(kManualOpenService)
-        || !conn.registerObject(kManualOpenIface, proxy)) {
+            || !conn.registerObject(kManualOpenIface, proxy)) {
         qDebug() << "Failed to register dbus";
         const QStringList position_args = parser.positionalArguments();
         if (!position_args.isEmpty()) {

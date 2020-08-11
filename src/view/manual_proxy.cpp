@@ -31,12 +31,22 @@ ManualProxy::~ManualProxy()
 {
 }
 
+/**
+ * @brief ManualProxy::getSystemManualDir
+ * @return 帮助手册的版本信息 专业版 、服务器版
+ * 获取帮助手册版本信息
+ */
 QString ManualProxy::getSystemManualDir()
 {
     QString str = Utils::getSystemManualDir();
     return str;
 }
 
+/**
+ * @brief ManualProxy::getSystemManualList
+ * @return 应用列表
+ * 获取存在帮助手册的应用列表
+ */
 QStringList ManualProxy::getSystemManualList()
 {
     QStringList list = Utils::getSystemManualList();
@@ -117,11 +127,19 @@ bool ManualProxy::hasSelperSupport()
     return b;
 }
 
+/**
+ * @brief ManualProxy::finishChannel
+ * 完成channel对象与Qt对象绑定后调用WebWindow中的onChannelFinish方法
+ */
 void ManualProxy::finishChannel()
 {
     emit channelInit();
 }
 
+/**
+ * @brief ManualProxy::supportClick
+ * 服务与支持
+ */
 void ManualProxy::supportClick()
 {
     emit supportBeClick();

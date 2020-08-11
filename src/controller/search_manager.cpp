@@ -31,6 +31,10 @@ SearchManager::SearchManager(QObject *parent)
     initSearchManager();
 }
 
+/**
+ * @brief SearchManager::initSearchManager
+ * 初始化数据库类对象， 绑定信号槽
+ */
 void SearchManager::initSearchManager()
 {
     db_thread_ = new QThread(this);

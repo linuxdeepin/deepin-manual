@@ -87,6 +87,12 @@ struct ReplyStruct {
 
 Q_DECLARE_METATYPE(ReplyStruct)
 
+/**
+ * @brief operator <<
+ * @param argument
+ * @param info
+ * @return
+ */
 QDBusArgument &operator<<(QDBusArgument &argument, const ReplyStruct &info)
 {
     argument.beginStructure();
@@ -120,6 +126,11 @@ Utils::~Utils()
 {
 }
 
+/**
+ * @brief Utils::getTime
+ * @return
+ * 获取系统时间
+ */
 struct timeval Utils::getTime()
 {
     struct timeval tp;
@@ -127,6 +138,12 @@ struct timeval Utils::getTime()
     return tp;
 }
 
+/**
+ * @brief Utils::showDiffTime
+ * @param tpStart 开始计时时间
+ * @return
+ * 获取时间差
+ */
 struct timeval Utils::showDiffTime(struct timeval tpStart)
 {
     struct timeval tpEnd;
@@ -138,6 +155,12 @@ struct timeval Utils::showDiffTime(struct timeval tpStart)
     return tpEnd;
 }
 
+/**
+ * @brief Utils::getQssContent
+ * @param filePath 文件路径
+ * @return
+ * 读取qss文件内容
+ */
 QString Utils::getQssContent(const QString &filePath)
 {
     QFile file(filePath);
@@ -150,6 +173,12 @@ QString Utils::getQssContent(const QString &filePath)
     return qss;
 }
 
+/**
+ * @brief Utils::isFontMimeType
+ * @param filePath
+ * @return
+ * 判断是否为字体文件
+ */
 bool Utils::isFontMimeType(const QString &filePath)
 {
     const QString mimeName = QMimeDatabase().mimeTypeForFile(filePath).name();
@@ -162,11 +191,22 @@ bool Utils::isFontMimeType(const QString &filePath)
     return false;
 }
 
+/**
+ * @brief Utils::suffixList
+ * @return 返回字体文件格式
+ */
 QString Utils::suffixList()
 {
     return QString("Font Files (*.ttf *.ttc *.otf)");
 }
 
+/**
+ * @brief Utils::renderSVG
+ * @param filePath 文件路径
+ * @param size 图标大小
+ * @return
+ * 根据传入的路径，大小，应用信息得到像素图
+ */
 QPixmap Utils::renderSVG(const QString &filePath, const QSize &size)
 {
     if (m_imgCacheHash.contains(filePath)) {
@@ -229,6 +269,14 @@ QString Utils::loadFontFamilyByType(FontType fontType)
     return fontFamilyName;
 }
 
+/**
+ * @brief Utils::loadFontBySizeAndWeight
+ * @param fontFamily 字体格式
+ * @param fontSize 字体大小
+ * @param fontWeight 粗细
+ * @return
+ * 设置传入字体的大小和粗细
+ */
 QFont Utils::loadFontBySizeAndWeight(QString fontFamily, int fontSize, int fontWeight)
 {
     QFont font(fontFamily);
@@ -238,6 +286,12 @@ QFont Utils::loadFontBySizeAndWeight(QString fontFamily, int fontSize, int fontW
     return font;
 }
 
+/**
+ * @brief Utils::fromSpecialEncoding
+ * @param inputStr
+ * @return 返回文本的 utf-8 格式
+ * 把文本转成utf-8编码格式
+ */
 QString Utils::fromSpecialEncoding(const QString &inputStr)
 {
     qDebug() << "inputStr is:" << inputStr << endl;

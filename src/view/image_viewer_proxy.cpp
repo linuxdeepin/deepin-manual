@@ -45,6 +45,11 @@ void ImageViewerProxy::open(const QString &filepath)
     viewer_->open(filepath);
 }
 
+/**
+ * @brief ImageViewerProxy::openHttpUrl
+ * @param httpUrl 链接地址
+ * 打开外部链接
+ */
 void ImageViewerProxy::openHttpUrl(const QString &httpUrl)
 {
     QDesktopServices::openUrl(QUrl(httpUrl));

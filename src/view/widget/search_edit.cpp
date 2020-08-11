@@ -27,6 +27,7 @@ namespace dman {
 SearchEdit::SearchEdit(QWidget *parent)
     : DSearchEdit(parent)
 {
+    //设置：当lineEidt中的closeButton被点击时发送信号onClickedClearBtn()
     QAction *clearAction = this->lineEdit()->findChild<QAction *>(QLatin1String("_q_qlineeditclearaction"));
     if (clearAction != nullptr) {
         QList<QToolButton *> list = this->lineEdit()->findChildren<QToolButton *>();
