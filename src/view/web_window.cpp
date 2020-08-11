@@ -173,7 +173,10 @@ void WebWindow::cancelTextChanged()
 void WebWindow::openjsPage(const QString &app_name, const QString &title_name)
 {
     if (app_name.isEmpty()) {
+        qDebug() << "===========>";
+        qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
         web_view_->page()->runJavaScript("index()");
+        qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     } else {
         QString real_path(app_name);
         if (real_path.contains('/')) {
@@ -212,10 +215,14 @@ void WebWindow::setAppProperty(const QString &appName, const QString &titleName,
  */
 void WebWindow::slot_ThemeChanged()
 {
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
-    if (themeType == DGuiApplicationHelper::LightType)
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
+    if (themeType == DGuiApplicationHelper::LightType) {
+        qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
         web_view_->page()->setBackgroundColor(QColor(0xF8, 0xF8, 0xF8));
-    else if (themeType == DGuiApplicationHelper::DarkType) {
+        qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
+    } else if (themeType == DGuiApplicationHelper::DarkType) {
         web_view_->page()->setBackgroundColor(QColor(0x28, 0x28, 0x28));
     }
 }
@@ -489,6 +496,7 @@ void WebWindow::initUI()
  */
 void WebWindow::initWebView()
 {
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     image_viewer_ = new ImageViewer(this);
     image_viewer_proxy_ = new ImageViewerProxy(image_viewer_, this);
     theme_proxy_ = new ThemeProxy(this);
@@ -496,18 +504,24 @@ void WebWindow::initWebView()
     i18n_proxy = new I18nProxy(this);
     manual_proxy_ = new ManualProxy(this);
     search_proxy_ = new SearchProxy(this);
-
     title_bar_proxy_ = new TitleBarProxy(this);
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
+
     connect(m_backButton, &DButtonBoxButton::clicked, title_bar_proxy_,
             &TitleBarProxy::backwardButtonClicked);
     connect(m_forwardButton, &DButtonBoxButton::clicked, title_bar_proxy_,
             &TitleBarProxy::forwardButtonClicked);
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     web_view_ = new QWebEngineView;
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     this->setCentralWidget(web_view_);
     web_view_->hide();
     web_view_->setAcceptDrops(false);
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     slot_ThemeChanged();
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     QWebChannel *web_channel = new QWebChannel;
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     web_channel->registerObject("i18n", i18n_proxy);
     web_channel->registerObject("imageViewer", image_viewer_proxy_);
     web_channel->registerObject("manual", manual_proxy_);
@@ -515,7 +529,9 @@ void WebWindow::initWebView()
     web_channel->registerObject("theme", theme_proxy_);
     web_channel->registerObject("titleBar", title_bar_proxy_);
     web_channel->registerObject("settings", settings_proxy_);
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     web_view_->page()->setWebChannel(web_channel);
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
 
     connect(web_view_->page(), &QWebEnginePage::loadFinished, this, &WebWindow::onWebPageLoadFinished);
     connect(manual_proxy_, &ManualProxy::channelInit, this, &WebWindow::onChannelFinish);
@@ -526,10 +542,11 @@ void WebWindow::initWebView()
     connect(search_proxy_, &SearchProxy::setKeyword, this, &WebWindow::onSetKeyword);
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
             theme_proxy_, &ThemeProxy::slot_ThemeChange);
-    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
-            this, &WebWindow::slot_ThemeChanged);
+//    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
+//            this, &WebWindow::slot_ThemeChanged);
 
     manual_proxy_->setApplicationState("dde");
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
 }
 
 /**
@@ -746,7 +763,9 @@ void WebWindow::onSearchTextChangedDelay()
     }
     completion_window_->setKeyword(text);
     //执行搜索
-    emit search_manager_->searchAnchor(text);
+    if (search_manager_) {
+        emit search_manager_->searchAnchor(text);
+    }
 }
 
 void WebWindow::onTitleBarEntered()
