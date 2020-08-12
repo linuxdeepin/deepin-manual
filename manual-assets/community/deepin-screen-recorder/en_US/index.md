@@ -1,4 +1,4 @@
-# Screen Capture|../common/deepin-screenshot.svg|
+# Screen Capture|../common/deepin-screen-capture.svg|
 
 ## Overview
 

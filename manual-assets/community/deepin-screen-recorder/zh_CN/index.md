@@ -1,4 +1,4 @@
-# 截图录屏|../common/deepin-screen-recorder.svg|
+# 截图录屏|../common/deepin-screen-capture.svg|
 
 ## 概述
 
