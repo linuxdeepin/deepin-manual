@@ -72,12 +72,13 @@ void WindowManager::initWebWindow()
     qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     window = new WebWindow;
     window->setAppProperty(curr_app_name_, curr_title_name_, curr_keyword_);
+    qDebug() << Q_FUNC_INFO << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     setWindow(window);
+    qDebug() << Q_FUNC_INFO << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     window->show();
-
     qDebug() << Q_FUNC_INFO << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
 
-    QTimer::singleShot(20, [ = ]() {
+    QTimer::singleShot(100, [ = ]() {
         initDBus();
         SendMsg(QString::number(window->winId()));
         window->initWeb();

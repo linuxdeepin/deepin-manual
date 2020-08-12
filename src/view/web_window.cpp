@@ -910,6 +910,7 @@ void WebWindow::onChannelFinish()
     m_spinner->hide();
     this->setCentralWidget(web_view_);
     web_view_->show();
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
 }
 
 /**
