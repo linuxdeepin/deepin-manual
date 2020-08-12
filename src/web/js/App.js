@@ -19,6 +19,7 @@ global.lastUrlBeforeSearch = '/';
 global.lastHistoryIndex = 0;
 global.lastAction = 'PUSH';
 global.isShowHelperSupport = false;
+// global.gHistoryGo = 0;
 
 
 global.readFile = (fileName, callback) => {
@@ -73,6 +74,7 @@ class App extends React.Component {
         global.handleLocation(global.hash);
         console.log("----------backwardButtonClicked----------");
         this.setState({ historyGO: this.state.historyGO - 1 });
+        // global.gHistoryGo = global.gHistoryGo - 1;
         console.log("==========backwardButtonClicked=========>");
         this.context.router.history.goBack();
         console.log("back history location: "+this.context.router.history.location.pathname);
@@ -81,6 +83,7 @@ class App extends React.Component {
         global.handleLocation(global.hash);
         console.log("----------forwardButtonClicked----------");
         this.setState({ historyGO: this.state.historyGO + 1 });
+        // global.gHistoryGo = global.gHistoryGo + 1;
         console.log("==========forwardButtonClicked=========>");
         this.context.router.history.goForward();
         console.log("forward history location: "+this.context.router.history.location.pathname);
@@ -154,9 +157,11 @@ class App extends React.Component {
     {
       var step;
       var indexGo = this.state.historyGO;
+      // var indexGo = global.gHistoryGo;
       let objList = this.context.router.history.entries;
       for (let i = indexGo; i >= 0; i--)
       {
+
         let curPath = objList[i].pathname;
         let curPathList = curPath.split("/");
         if (curPathList.length == 5 && curPathList[4] == "")
@@ -179,6 +184,7 @@ class App extends React.Component {
       {
         if (this.context.router.history.canGo(-1 * step)) {
           this.setState({ historyGO: this.state.historyGO-step });
+          // global.gHistoryGo = global.gHistoryGo - step;
           this.context.router.history.go(-1 * step);
         }
       }
@@ -215,10 +221,12 @@ class App extends React.Component {
         let entry = this.context.router.history.entries[entriesLen-1];
         if (entry.pathname.toString().indexOf("/search/") != -1) {
           this.setState({ historyGO: entriesLen - 1 });
+          // global.gHistoryGo = entriesLen - 1;
           return;
         }
       }
       this.setState({ historyGO: entriesLen - 1 });
+      // global.gHistoryGo = entriesLen - 1;
     }
 
     //切换状态时,去除选中状态....为何选中状态切换页面时会保留??????
@@ -506,9 +514,11 @@ class App extends React.Component {
     if (global.qtObjects) {
       global.qtObjects.titleBar.setBackwardButtonActive(
         this.state.historyGO > 0
+        // global.gHistoryGo > 0
       );
       global.qtObjects.titleBar.setForwardButtonActive(
         this.context.router.history.length - this.state.historyGO > 1
+        // this.context.router.history.length  - global.gHistoryGo > 1
       );
     }
   }

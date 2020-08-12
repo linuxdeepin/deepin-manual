@@ -52,6 +52,8 @@ global.lastUrlBeforeSearch = '/';
 global.lastHistoryIndex = 0;
 global.lastAction = 'PUSH';
 global.isShowHelperSupport = false;
+// global.gHistoryGo = 0;
+
 
 global.readFile = function (fileName, callback) {
   console.log("global.readFile...");
@@ -115,6 +117,7 @@ var App = function (_React$Component) {
           global.handleLocation(global.hash);
           console.log("----------backwardButtonClicked----------");
           _this2.setState({ historyGO: _this2.state.historyGO - 1 });
+          // global.gHistoryGo = global.gHistoryGo - 1;
           console.log("==========backwardButtonClicked=========>");
           _this2.context.router.history.goBack();
           console.log("back history location: " + _this2.context.router.history.location.pathname);
@@ -123,6 +126,7 @@ var App = function (_React$Component) {
           global.handleLocation(global.hash);
           console.log("----------forwardButtonClicked----------");
           _this2.setState({ historyGO: _this2.state.historyGO + 1 });
+          // global.gHistoryGo = global.gHistoryGo + 1;
           console.log("==========forwardButtonClicked=========>");
           _this2.context.router.history.goForward();
           console.log("forward history location: " + _this2.context.router.history.location.pathname);
@@ -193,8 +197,10 @@ var App = function (_React$Component) {
       if (bFlag) {
         var step;
         var indexGo = this.state.historyGO;
+        // var indexGo = global.gHistoryGo;
         var objList = this.context.router.history.entries;
         for (var i = indexGo; i >= 0; i--) {
+
           var curPath = objList[i].pathname;
           var curPathList = curPath.split("/");
           if (curPathList.length == 5 && curPathList[4] == "") {
@@ -211,6 +217,7 @@ var App = function (_React$Component) {
         if (step) {
           if (this.context.router.history.canGo(-1 * step)) {
             this.setState({ historyGO: this.state.historyGO - step });
+            // global.gHistoryGo = global.gHistoryGo - step;
             this.context.router.history.go(-1 * step);
           }
         }
@@ -249,10 +256,12 @@ var App = function (_React$Component) {
           var entry = this.context.router.history.entries[entriesLen - 1];
           if (entry.pathname.toString().indexOf("/search/") != -1) {
             this.setState({ historyGO: entriesLen - 1 });
+            // global.gHistoryGo = entriesLen - 1;
             return;
           }
         }
         this.setState({ historyGO: entriesLen - 1 });
+        // global.gHistoryGo = entriesLen - 1;
       }
 
       //切换状态时,去除选中状态....为何选中状态切换页面时会保留??????
@@ -539,8 +548,12 @@ var App = function (_React$Component) {
     key: 'componentDidUpdate',
     value: function componentDidUpdate() {
       if (global.qtObjects) {
-        global.qtObjects.titleBar.setBackwardButtonActive(this.state.historyGO > 0);
-        global.qtObjects.titleBar.setForwardButtonActive(this.context.router.history.length - this.state.historyGO > 1);
+        global.qtObjects.titleBar.setBackwardButtonActive(this.state.historyGO > 0
+        // global.gHistoryGo > 0
+        );
+        global.qtObjects.titleBar.setForwardButtonActive(this.context.router.history.length - this.state.historyGO > 1
+        // this.context.router.history.length  - global.gHistoryGo > 1
+        );
       }
     }
   }, {
@@ -1288,7 +1301,7 @@ var Main = function (_Component) {
       }
 
       global.readFile(filePath, function (data) {
-        console.log("main init===>readfile finish...");
+        console.log("main init===>readfile finish...", filePath);
 
         var _m2h = (0, _mdToHtml2.default)(filePath, data, key),
             html = _m2h.html,
@@ -1381,9 +1394,9 @@ var Main = function (_Component) {
           hash = _nextProps$match$para.hash,
           key = _nextProps$match$para.key;
 
-      console.log("main componentWillReceivePropss: " + file + " " + hash + "  this.file:" + this.state.file + " key:", key);
+      console.log("main componentWillReceivePropss: " + file + " " + hash + "  this.file:" + this.state.file + " this.hash" + this.state.hash + " key:", key);
       //仅当页面文件发生改变时(文件改变或hash值发生改变),才刷新页面.
-      if (file != this.state.file || file == this.state.file && hash != this.state.hash) {
+      if (decodeURIComponent(file) != this.state.file || file == this.state.file && hash != this.state.hash) {
         this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null, key);
       }
     }

@@ -25,7 +25,7 @@ export default class Main extends Component {
     }
   
     global.readFile(filePath, data => {
-      console.log("main init===>readfile finish...");
+      console.log("main init===>readfile finish...",filePath);
       let { html, hlist } = m2h(filePath, data,key);
       this.setState({
         file,
@@ -100,9 +100,9 @@ export default class Main extends Component {
 
   componentWillReceiveProps(nextProps) {
     let { file, hash,key } = nextProps.match.params;
-    console.log("main componentWillReceivePropss: "+file+" "+hash+"  this.file:"+ this.state.file + " key:",key);
+    console.log("main componentWillReceivePropss: "+file+" "+hash+"  this.file:"+ this.state.file +" this.hash"+this.state.hash+ " key:",key);
     //仅当页面文件发生改变时(文件改变或hash值发生改变),才刷新页面.
-    if (file != this.state.file || ((file == this.state.file) && (hash != this.state.hash)))
+    if (decodeURIComponent(file) != this.state.file || ((file == this.state.file) && (hash != this.state.hash)))
     {
       this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null,key);
     }

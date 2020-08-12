@@ -33,7 +33,6 @@ DWIDGET_USE_NAMESPACE
 
 int main(int argc, char **argv)
 {
-    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     qputenv("DXCB_FAKE_PLATFORM_NAME_XCB", "true");
     //禁用GPU
 //    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu");
@@ -42,7 +41,7 @@ int main(int argc, char **argv)
     //龙芯机器配置,使得DApplication能正确加载QTWEBENGINE
     qputenv("DTK_FORCE_RASTER_WIDGETS", "FALSE");
 
-//    qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "7777");
+    qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "7777");
 //    Dtk::Widget::DApplication::loadDXcbPlugin();
 
     Dtk::Widget::DApplication app(argc, argv);

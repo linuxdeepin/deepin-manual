@@ -76,7 +76,6 @@ void WindowManager::initWebWindow()
     setWindow(window);
     window->show();
 
-    qDebug() << Q_FUNC_INFO << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
 
     initDBus();
     SendMsg(QString::number(window->winId()));
