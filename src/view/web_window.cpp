@@ -60,6 +60,7 @@ WebWindow::WebWindow(QWidget *parent)
     : Dtk::Widget::DMainWindow(parent)
     , search_timer_(new QTimer)
     , first_webpage_loaded_(true)
+    , m_spinner(new DSpinner)
 {
     qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     // 使用 redirectContent 模式，用于内嵌 x11 窗口时能有正确的圆角效果
@@ -488,6 +489,14 @@ void WebWindow::initUI()
     //键盘盲打
     search_edit_->setFocus();
     this->setFocusPolicy(Qt::ClickFocus);
+
+
+    QWidget *spinnerPage = new QWidget;
+    QVBoxLayout *spinnerLayout = new QVBoxLayout(spinnerPage);
+    m_spinner->setFixedSize(50, 50);
+    spinnerLayout->addWidget(m_spinner, 0, Qt::AlignCenter);
+    this->setCentralWidget(spinnerPage);
+    m_spinner->start();
 }
 
 /**
@@ -514,8 +523,8 @@ void WebWindow::initWebView()
     qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     web_view_ = new QWebEngineView;
     qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
-    this->setCentralWidget(web_view_);
-    web_view_->hide();
+//    this->setCentralWidget(web_view_);
+//    web_view_->hide();
     web_view_->setAcceptDrops(false);
     qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     slot_ThemeChanged();
@@ -895,6 +904,11 @@ void WebWindow::onChannelFinish()
         emit this->settings_proxy_->fontChangeRequested(fontInfo.family(),
                                                         fontInfo.pixelSize());
     }
+
+
+    m_spinner->stop();
+    m_spinner->hide();
+    this->setCentralWidget(web_view_);
     web_view_->show();
 }
 
