@@ -797,6 +797,12 @@ void WebWindow::onTitleBarEntered()
 void WebWindow::onWebPageLoadFinished(bool ok)
 {
     Q_UNUSED(ok)
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
+    m_spinner->stop();
+    m_spinner->hide();
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
+    this->setCentralWidget(web_view_);
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     //settingContextMenu();
     /*
        //改变ｊs颜色
@@ -906,10 +912,10 @@ void WebWindow::onChannelFinish()
     }
 
 
-    m_spinner->stop();
-    m_spinner->hide();
-    this->setCentralWidget(web_view_);
-    web_view_->show();
+//    m_spinner->stop();
+//    m_spinner->hide();
+//    this->setCentralWidget(web_view_);
+//    web_view_->show();
     qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
 }
 
