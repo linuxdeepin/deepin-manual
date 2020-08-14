@@ -32,6 +32,7 @@ class SearchEdit : public Dtk::Widget::DSearchEdit
 public:
     explicit SearchEdit(QWidget *parent = nullptr);
     ~SearchEdit() override;
+    QString getStr();
 
 signals:
     void downKeyPressed();

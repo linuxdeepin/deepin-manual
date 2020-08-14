@@ -22,6 +22,8 @@
 #include <QAction>
 #include <QDebug>
 
+#include "base/utils.h"
+
 namespace dman {
 
 SearchEdit::SearchEdit(QWidget *parent)
@@ -37,6 +39,8 @@ SearchEdit::SearchEdit(QWidget *parent)
                 connect(clearBtn, &QToolButton::clicked, this, [ = ] {
                     emit this->onClickedClearBtn();
                     qDebug() << "emit onClickedClearBtn";
+
+                    qDebug() << Utils::getSystemManualDir();
                 });
             }
         }
@@ -45,6 +49,11 @@ SearchEdit::SearchEdit(QWidget *parent)
 
 SearchEdit::~SearchEdit()
 {
+}
+
+QString SearchEdit::getStr()
+{
+    return "abc";
 }
 
 /**

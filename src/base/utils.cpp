@@ -432,7 +432,7 @@ QStringList Utils::getSystemManualList()
         app_list_.removeAll("youdao-dict");
     }
 
-    qDebug() << "exist app list: " << app_list_ << ", count:" << app_list_.size();
+    // qDebug() << "exist app list: " << app_list_ << ", count:" << app_list_.size();
     return app_list_;
 }
 
