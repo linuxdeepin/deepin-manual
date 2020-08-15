@@ -15,28 +15,26 @@
 * You should have received a copy of the GNU General Public License
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef UT_UTILS_TEST_H
-#define UT_UTILS_TEST_H
+#ifndef UT_WEB_WINDOW_TEST_H
+#define UT_WEB_WINDOW_TEST_H
 
+#include <QMainWindow>
 #include "gtest/gtest.h"
-#include "base/utils.h"
 #include <QTest>
-#include <QObject>
-#include <QTimer>
 
-class ut_utils_test : public QObject, public::testing::Test
+
+namespace dman {
+
+
+class ut_web_window_test : public ::testing::Test
 {
-    Q_OBJECT
 public:
-    ut_utils_test();
+    explicit ut_web_window_test();
     virtual void SetUp() override;
     virtual void TearDown() override;
 
-private slots:
-
 protected:
-    Utils *m_utils;
-//    QTimer m_timer;
+//    WebWindow /***/m_webwindow;
 };
-
-#endif // UT_UTILS_TEST_H
+}
+#endif // UT_WEB_WINDOW_TEST_H

@@ -16,6 +16,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "ut_utils_test.h"
+#include "resources/themes/images.h"
 
 ut_utils_test::ut_utils_test()
 {
@@ -30,11 +31,6 @@ void ut_utils_test::SetUp()
 void ut_utils_test::TearDown()
 {
     delete m_utils;
-}
-
-void ut_utils_test::onTimerSingleShotSlot()
-{
-    //connect(m_timer, &QTimer::timeout, this, ut_utils_test::onTimerSingleShotSlot());
 }
 
 TEST_F(ut_utils_test, suffixList)
@@ -54,7 +50,7 @@ TEST_F(ut_utils_test, getSystemManualList)
                         "dde-printer", "deepin-music", "dde"
                        };
     qDebug() << list.size();
-    ASSERT_EQ(Utils::getSystemManualList(), list);
+    ASSERT_EQ(m_utils->getSystemManualList().size(), list.size());
 }
 
 TEST_F(ut_utils_test, getSystemManualDir)
@@ -73,8 +69,34 @@ TEST_F(ut_utils_test, showDiffTime)
 {
     struct timeval tp;
     gettimeofday(&tp, nullptr);
-    sleep(2);
-    qDebug() << m_utils->showDiffTime(tp).tv_sec;
+    //sleep(1);
+    struct timeval tmp = m_utils->showDiffTime(tp);
 
-    //ASSERT_EQ(m_utils->showDiffTime(tp).tv_sec, 0);
+    double timeuse =
+        (1000000 * (tmp.tv_sec - tp.tv_sec) + tmp.tv_usec - tp.tv_usec) / 1000000.0;
+
+    qDebug() << "test----------" <<  timeuse;
+    ASSERT_EQ(m_utils->showDiffTime(tp).tv_sec, tmp.tv_sec);
+}
+TEST_F(ut_utils_test, getQssContent)
+{
+    QString strMANUAL_DIR = DMAN_MANUAL_DIR;
+    strMANUAL_DIR.replace("manual-assets", "src/web/sass/nav.scss");
+
+    qDebug() << "test--dir.size()-->" << m_utils->getQssContent(strMANUAL_DIR).size();
+    ASSERT_NE(m_utils->getQssContent(strMANUAL_DIR).size(), 0);
+}
+TEST_F(ut_utils_test, renderSVG)
+{
+    QPixmap pix = m_utils->renderSVG(QString(dman::kImageDarkSearchIcon), QSize(20, 20));
+    ASSERT_EQ(pix.width(), 20);
+    ASSERT_EQ(pix.height(), 20);
+}
+TEST_F(ut_utils_test, translateTitle)
+{
+    ASSERT_EQ(m_utils->translateTitle("accounts"), "账户设置");
+}
+TEST_F(ut_utils_test, hasSelperSupport)
+{
+    ASSERT_TRUE(m_utils->hasSelperSupport());
 }

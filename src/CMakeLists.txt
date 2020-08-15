@@ -231,16 +231,15 @@ FILE (GLOB allTestSource
     "./dman_qtest/*.cpp"  "./dman_qtest/*.c"
     "./dman_qtest/*.h"
     )
-
-set(BASE_FILES_TEST
-    dman_qtest/base/ut_consts_test.h
-    dman_qtest/base/ut_consts_test.cpp
-    dman_qtest/base/ut_utils_test.h
-    dman_qtest/base/ut_utils_test.cpp
+file(GLOB BASE_FILES_TEST
+    "dman_qtest/base/*.h"
+    "dman_qtest/base/*.cpp"
     )
-set(VIEW_FILES_TEST
-    dman_qtest/view/widget/ut_searchedit_test.cpp
-    dman_qtest/view/widget/ut_searchedit_test.h
+FILE(GLOB VIEW_FILES_TEST
+    "dman_qtest/view/widget/*.cpp"
+    "dman_qtest/view/*.cpp"
+    "dman_qtest/view/widget/*.h"
+    "dman_qtest/view/*.h"
     )
 # 生成测试可执行程序
 add_executable(${PROJECT_NAME_TEST}

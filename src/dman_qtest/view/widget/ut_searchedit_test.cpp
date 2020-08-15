@@ -46,9 +46,11 @@ void ut_SearchEdit_test::TearDown()
 TEST_F(ut_SearchEdit_test, getStr)
 {
     ASSERT_EQ(m_se->getStr(), "abc");
+//    m_se->show();
 }
-//TEST_F(ut_SearchEdit_test, getStr1)
-//{
-//    ASSERT_EQ(m_se->getStr(), "");
-//}
+TEST_F(ut_SearchEdit_test, settext)
+{
+    m_se->setText("abc");
+    ASSERT_EQ(m_se->text(), "abc");
+}
 }
