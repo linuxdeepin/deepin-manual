@@ -53,16 +53,6 @@ QStringList ManualProxy::getSystemManualList()
     saveAppList(list);
     return list;
 }
-/**
- * @brief ManualProxy::openExternalLink
- * @param url
- * 打开外部连接
- */
-void ManualProxy::openExternalLink(const QString &url)
-{
-    qDebug() << "ManualProxy::openExternalLink：" << url;
-    QDesktopServices::openUrl(url);
-}
 
 /**
  * @brief ManualProxy::setApplicationState

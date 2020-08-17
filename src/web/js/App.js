@@ -65,29 +65,16 @@ class App extends React.Component {
       
       channel.objects.manual.getSystemManualDir(path => {
         global.path = path;
-        this.setState({ init: true });
       });
-      global.openWindow = global.qtObjects.manual.openExternalLink;
-      global.qtObjects.titleBar.setBackwardButtonActive(false);
-      global.qtObjects.titleBar.setForwardButtonActive(false);
-      global.qtObjects.titleBar.backwardButtonClicked.connect(() => {
-        global.handleLocation(global.hash);
-        console.log("----------backwardButtonClicked----------");
-        this.setState({ historyGO: this.state.historyGO - 1 });
-        // global.gHistoryGo = global.gHistoryGo - 1;
-        console.log("==========backwardButtonClicked=========>");
-        this.context.router.history.goBack();
-        console.log("back history location: "+this.context.router.history.location.pathname);
-      });
-      global.qtObjects.titleBar.forwardButtonClicked.connect(() => {
-        global.handleLocation(global.hash);
-        console.log("----------forwardButtonClicked----------");
-        this.setState({ historyGO: this.state.historyGO + 1 });
-        // global.gHistoryGo = global.gHistoryGo + 1;
-        console.log("==========forwardButtonClicked=========>");
-        this.context.router.history.goForward();
-        console.log("forward history location: "+this.context.router.history.location.pathname);
-      });
+      // global.openWindow = global.qtObjects.manual.openExternalLink;
+      // global.qtObjects.titleBar.setBackwardButtonActive(false);
+      // global.qtObjects.titleBar.setForwardButtonActive(false);
+      global.qtObjects.titleBar.backwardButtonClicked.connect(
+        this.onBackwardClick.bind(this)
+      );
+      global.qtObjects.titleBar.forwardButtonClicked.connect(
+        this.onForwardClick.bind(this)
+      );
       global.qtObjects.search.mismatch.connect(() =>
         this.setState({ mismatch: true })
       );
@@ -102,27 +89,50 @@ class App extends React.Component {
       global.qtObjects.theme.themeChange.connect(
         this.themeChange.bind(this)
       );
-      global.qtObjects.settings.fontChangeRequested.connect((fontFamily, fontSize) => {
-        console.log("fontChangeRequested: fontFamily:"+fontFamily+",fontSize:"+fontSize);
-        console.log("fontSize/13.0:"+(fontSize));
-        const HTMLGlobal = document.querySelector('html');
-        HTMLGlobal.style.fontFamily = fontFamily;    
-        HTMLGlobal.style.fontSize = fontSize;   //设置rem标准   设计图上默认是在14px字体上设计,所以默认1rem = 14px.
-        if ( fontSize >= 18)
-        {
-          document.documentElement.style.setProperty(`--index-item-size`, '170px');
-          document.documentElement.style.setProperty(`--index-span-width`, '140px');
-        }
-        else{
-          document.documentElement.style.setProperty(`--index-item-size`, '160px');
-          document.documentElement.style.setProperty(`--index-span-width`, '130px');
-        }
-      });
+      global.qtObjects.settings.fontChangeRequested.connect(
+        this.onFontChange.bind(this)
+      );
       console.log("finsh global.qtObjects = channel.objects...");
       global.qtObjects.manual.finishChannel();
     });
    
   }
+
+  onBackwardClick(){
+    global.handleLocation(global.hash);
+        console.log("----------backwardButtonClicked----------");
+        this.setState({ historyGO: this.state.historyGO - 1 });
+        console.log("==========backwardButtonClicked=========>");
+        this.context.router.history.goBack();
+        console.log("back history location: "+this.context.router.history.location.pathname);
+  }
+
+  onForwardClick(){
+    global.handleLocation(global.hash);
+        console.log("----------forwardButtonClicked----------");
+        this.setState({ historyGO: this.state.historyGO + 1 });
+        console.log("==========forwardButtonClicked=========>");
+        this.context.router.history.goForward();
+        console.log("forward history location: "+this.context.router.history.location.pathname);
+  }
+
+  onFontChange(fontFamily,fontSize){
+    console.log("fontChangeRequested: fontFamily:"+fontFamily+",fontSize:"+fontSize);
+    console.log("fontSize/13.0:"+(fontSize));
+    const HTMLGlobal = document.querySelector('html');
+    HTMLGlobal.style.fontFamily = fontFamily;    
+    HTMLGlobal.style.fontSize = fontSize;   //设置rem标准   设计图上默认是在14px字体上设计,所以默认1rem = 14px.
+    if ( fontSize >= 18)
+    {
+      document.documentElement.style.setProperty(`--index-item-size`, '170px');
+      document.documentElement.style.setProperty(`--index-span-width`, '140px');
+    }
+    else{
+      document.documentElement.style.setProperty(`--index-item-size`, '160px');
+      document.documentElement.style.setProperty(`--index-span-width`, '130px');
+    }
+  }
+
   themeChange(themeType) {
     global.setTheme(themeType);
   }
@@ -235,6 +245,10 @@ class App extends React.Component {
   componentDidMount() {
     global.index = () => {
       // this.context.router.history.push('/');
+      if (this.state.init == false)
+      {
+        this.setState({ init: true });
+      }
     };
     global.backHome = () => {
       global.handleLocation(global.hash);
@@ -276,6 +290,11 @@ class App extends React.Component {
     };
 
     global.openTitle = (file, title = '') => {
+      if (this.state.init == false)
+      {
+        this.setState({ init: true });
+      }
+      
       console.log("global linkTitle==> file:" + file + " title: "+title);
       global.handleLocation(global.hash);
       if (title !== '')

@@ -39,7 +39,6 @@ public slots:
     QString getSystemManualDir();
     QStringList getSystemManualList();
 
-    void openExternalLink(const QString &url);
     void setApplicationState(const QString &appName);
     QStringList getUsedAppList();
     bool hasSelperSupport();
