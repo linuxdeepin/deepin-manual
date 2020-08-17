@@ -476,7 +476,7 @@ void SearchDb::omitHighlight(QString &highLight, const QString &keyword)
         nSearchIndex -= imgStartLeng;
     }
 
-    int keywordIndex = highLightTemp.indexOf(keyword);
+    int keywordIndex = highLightTemp.indexOf(keyword, 0, Qt::CaseInsensitive);
     //暂时用150个字符来判断...后期是否可根据不同语言来分别用不同的长度判断条件..
     if (keywordIndex > 150) {
         int nOmitIndex = keywordIndex - 150;
