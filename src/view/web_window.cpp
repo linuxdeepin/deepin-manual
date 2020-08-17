@@ -61,6 +61,7 @@ WebWindow::WebWindow(QWidget *parent)
     : Dtk::Widget::DMainWindow(parent)
     , search_timer_(new QTimer)
     , first_webpage_loaded_(true)
+    , m_spinner(new DSpinner(this))
 {
     // 使用 redirectContent 模式，用于内嵌 x11 窗口时能有正确的圆角效果
     Dtk::Widget::DPlatformWindowHandle::enableDXcbForWindow(this, true);
@@ -203,9 +204,7 @@ void WebWindow::setAppProperty(const QString &appName, const QString &titleName,
 void WebWindow::slot_ThemeChanged()
 {
     DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
-    if (themeType == DGuiApplicationHelper::LightType)
-        web_view_->page()->setBackgroundColor(QColor(0xF8, 0xF8, 0xF8));
-    else if (themeType == DGuiApplicationHelper::DarkType) {
+    if (themeType == DGuiApplicationHelper::DarkType) {
         web_view_->page()->setBackgroundColor(QColor(0x28, 0x28, 0x28));
     }
 }
@@ -285,7 +284,7 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
     if (event->type() == QEvent::MouseButtonRelease && qApp->activeWindow() == this &&
             watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
         QRect rect = hasSearchEditRect();
-        if (web_view_->selectedText().isEmpty() && !rect.contains(QCursor::pos())) {
+        if (web_view_ && web_view_->selectedText().isEmpty() && !rect.contains(QCursor::pos())) {
             this->setFocus();
         }
     }
@@ -442,11 +441,6 @@ void WebWindow::onThemeChange(DGuiApplicationHelper::ColorType themeType)
     if (web_view_) {
         QColor fillColor = DGuiApplicationHelper::instance()->applicationPalette().highlight().color();
         web_view_->page()->runJavaScript(QString("setHashWordColor('%1')").arg(fillColor.name()));
-    } else {
-        QTimer::singleShot(300, this, [&]() {
-            QColor fillColor = DGuiApplicationHelper::instance()->applicationPalette().highlight().color();
-            web_view_->page()->runJavaScript(QString("setHashWordColor('%1')").arg(fillColor.name()));
-        });
     }
 }
 
@@ -514,6 +508,14 @@ void WebWindow::initUI()
     //键盘盲打
     search_edit_->setFocus();
     this->setFocusPolicy(Qt::ClickFocus);
+
+    QWidget *spinnerPage = new QWidget;
+    QVBoxLayout *spinnerLayout = new QVBoxLayout(spinnerPage);
+    m_spinner->setFixedSize(50, 50);
+    spinnerLayout->addWidget(m_spinner, 0, Qt::AlignCenter);
+    this->setCentralWidget(spinnerPage);
+    m_spinner->start();
+
 }
 
 /**
@@ -536,8 +538,6 @@ void WebWindow::initWebView()
     connect(m_forwardButton, &DButtonBoxButton::clicked, title_bar_proxy_,
             &TitleBarProxy::forwardButtonClicked);
     web_view_ = new QWebEngineView;
-    this->setCentralWidget(web_view_);
-    web_view_->hide();
     web_view_->setAcceptDrops(false);
     slot_ThemeChanged();
     QWebChannel *web_channel = new QWebChannel;
@@ -559,8 +559,8 @@ void WebWindow::initWebView()
     connect(search_proxy_, &SearchProxy::setKeyword, this, &WebWindow::onSetKeyword);
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
             theme_proxy_, &ThemeProxy::slot_ThemeChange);
-    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
-            this, &WebWindow::slot_ThemeChanged);
+//    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
+//            this, &WebWindow::slot_ThemeChanged);
 
     manual_proxy_->setApplicationState("dde");
 }
@@ -782,8 +782,11 @@ void WebWindow::onSearchTextChangedDelay()
         return;
     }
     completion_window_->setKeyword(text);
+
     //执行搜索
-    emit search_manager_->searchAnchor(text);
+    if (search_manager_) {
+        emit search_manager_->searchAnchor(text);
+    }
 }
 
 /**
@@ -810,65 +813,9 @@ void WebWindow::onTitleBarEntered()
 void WebWindow::onWebPageLoadFinished(bool ok)
 {
     Q_UNUSED(ok)
-    //settingContextMenu();
-    /*
-       //改变ｊs颜色
-       setHashWordColor();
-       settingContextMenu();
-       qDebug() << Q_FUNC_INFO << " onWebPageLoadFinished :" << ok;
-       if (ok) {
-           QString qsthemetype = "Null";
-           DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
-           if (themeType == DGuiApplicationHelper::LightType) {
-               qsthemetype = "LightType";
-           } else if (themeType == DGuiApplicationHelper::DarkType) {
-               qsthemetype = "DarkType";
-           }
-           web_view_->page()->runJavaScript(QString("setTheme('%1')").arg(qsthemetype));
-           qDebug() << Q_FUNC_INFO << " app:" << app_name_ << " title:" << title_name_;
-           if (app_name_.isEmpty()) {
-               web_view_->page()->runJavaScript("index()");
-           } else {
-               QString real_path(app_name_);
-               if (real_path.contains('/')) {
-                   // Open markdown file with absolute path.
-                   QFileInfo info(real_path);
-                   real_path = info.canonicalFilePath();
-                   web_view_->page()->runJavaScript(QString("open('%1')").arg(real_path));
-               } else {
-                   // Open system manual.
-    //                web_view_->page()->runJavaScript(QString("open('%1')").arg(app_name_));
-                   web_view_->page()->runJavaScript(QString("openTitle('%1','%2')").arg(app_name_, title_name_));
-               }
-
-    //            if (!title_name_.isEmpty()) {
-    //                web_view_->page()->runJavaScript(QString("linkTitle('%1')").arg(title_name_));
-    //            }
-           }
-
-           QTimer::singleShot(100, [&]() {
-               qDebug() << "show webview";
-               qDebug() << Q_FUNC_INFO << 481;
-               web_view_->show();
-               qDebug() << Q_FUNC_INFO << 482;
-               if (first_webpage_loaded_) {
-                   first_webpage_loaded_ = false;
-                   qDebug() << Q_FUNC_INFO << 486;
-                   if (keyword_.length() > 0) {
-                       qDebug() << "first_webpage_loaded_ manualSearchByKeyword:" << keyword_;
-                       emit this->manualSearchByKeyword(keyword_);
-                   }
-               }
-
-               if (this->settings_proxy_) {
-                   qDebug() << Q_FUNC_INFO << 494;
-                   auto fontInfo = this->fontInfo();
-                   Q_EMIT this->settings_proxy_->fontChangeRequested(fontInfo.family(),
-                                                                     fontInfo.pixelSize());
-               }
-           });
-       }
-       */
+    m_spinner->stop();
+    m_spinner->hide();
+    this->setCentralWidget(web_view_);
 }
 
 /**
@@ -877,8 +824,6 @@ void WebWindow::onWebPageLoadFinished(bool ok)
  */
 void WebWindow::onChannelFinish()
 {
-    qDebug() << Q_FUNC_INFO;
-
     setHashWordColor();
     settingContextMenu();
     //设置主题
@@ -917,7 +862,6 @@ void WebWindow::onChannelFinish()
         emit this->settings_proxy_->fontChangeRequested(fontInfo.family(),
                                                         fontInfo.pixelSize());
     }
-    web_view_->show();
 }
 
 /**

@@ -27,6 +27,7 @@
 #include <QtDBus/QtDBus>
 #include <QWebEngineView>
 #include <QClipboard>
+#include <DSpinner>
 
 namespace dman {
 
@@ -110,6 +111,7 @@ private:
     SearchEdit *search_edit_ {nullptr};
     bool first_webpage_loaded_ {true};
     bool bIsSetKeyword{false};
+    Dtk::Widget::DSpinner *m_spinner;
 
 private slots:
     void onSearchEditFocusOut();

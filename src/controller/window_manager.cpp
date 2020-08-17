@@ -32,7 +32,6 @@ const int kWinMinHeight = 600;
 namespace dman {
 WindowManager::WindowManager(QObject *parent)
     : QObject(parent)
-    , search_manager_(nullptr)
     , curr_app_name_("")
     , curr_keyword_("")
     , curr_title_name_("")
@@ -76,10 +75,12 @@ void WindowManager::initWebWindow()
     setWindow(window);
     window->show();
 
+    QTimer::singleShot(100, [ = ]() {
+        initDBus();
+        SendMsg(QString::number(window->winId()));
+        window->initWeb();
+    });
 
-    initDBus();
-    SendMsg(QString::number(window->winId()));
-    window->initWeb();
 }
 
 /**

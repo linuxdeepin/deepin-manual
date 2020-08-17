@@ -23,7 +23,6 @@
 
 namespace dman {
 
-class SearchManager;
 class WebWindow;
 
 // 窗口管理类
@@ -41,7 +40,6 @@ private:
     void SendMsg(const QString &msg);
     void setWindow(WebWindow *window);
 
-    SearchManager *search_manager_ {nullptr};
     QString curr_app_name_;
     QString curr_keyword_;
     QString curr_title_name_;
