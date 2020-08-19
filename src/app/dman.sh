@@ -6,10 +6,12 @@
 # time2=$(date "+%Y-%m-%d %H:%M:%S.%N")
 # echo $time2
 
-if [ ! x"${USER}" = x"root" ];then
-    /usr/share/deepin-manual/dman $@
-else
-    /usr/share/deepin-manual/dman $@ --no-sandbox
-fi
+/usr/share/deepin-manual/dman $@
+
+# if [ ! x"${USER}" = x"root" ];then
+#     /usr/share/deepin-manual/dman $@
+# else
+#     /usr/share/deepin-manual/dman $@ --no-sandbox
+# fi
 
 
