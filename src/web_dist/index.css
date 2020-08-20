@@ -76,6 +76,8 @@ div {
         #article #article_bg .read .version-info a {
           float: right;
           color: #0081FF; }
+        #article #article_bg .read .version-info .spanbox {
+          display: none; }
       #article #article_bg .read h2 {
         font-weight: normal;
         font-size: 1.5rem;
@@ -165,8 +167,6 @@ div {
         font-weight: bold;
         color: #757575;
         cursor: pointer; }
-        #article #article_bg .read a[href^='http']:after {
-          content: '🔗'; }
         #article #article_bg .read a[href^='#'] {
           color: #0082fa; }
         #article #article_bg .read a[href^='dman://'] {

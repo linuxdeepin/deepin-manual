@@ -47,6 +47,9 @@
           float:right;
           color:#0081FF;
         }
+        .spanbox{
+          display: none;      //暂时将历史版本href隐藏
+        }
       }
       h2 {
         font-weight: normal;
@@ -139,11 +142,11 @@
         font-weight: bold;
         color: #757575;
         cursor: pointer;
-        &[href^='http'] {
-          &:after {
-            content: '🔗';
-          }
-        }
+        // &[href^='http'] {
+        //   &:after {
+        //     content: '🔗';
+        //   }
+        // }
         &[href^='#'] {
           color: #0082fa;
         }
