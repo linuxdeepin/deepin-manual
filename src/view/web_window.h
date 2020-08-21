@@ -127,7 +127,7 @@ private slots:
     void onSetKeyword(const QString &keyword);
     void onManualSearchByKeyword(const QString &keyword);
     void onACtiveColorChanged(QString, QMap<QString, QVariant>, QStringList);
-    void onThemeChange(DGuiApplicationHelper::ColorType themeType);
+//    void onThemeChange(DGuiApplicationHelper::ColorType themeType);
 };
 
 } // namespace dman

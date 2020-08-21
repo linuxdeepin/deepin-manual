@@ -394,7 +394,6 @@ void WebWindow::initConnections()
     connect(&search_timer_, &QTimer::timeout, this, &WebWindow::onSearchTextChangedDelay);
 
     connect(this, &WebWindow::manualSearchByKeyword, this, &WebWindow::onManualSearchByKeyword);
-    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged, this, &WebWindow::onThemeChange);
 }
 
 /**
@@ -427,20 +426,6 @@ void WebWindow::onACtiveColorChanged(QString, QMap<QString, QVariant>map, QStrin
     } else if (0 == strKey.compare("StandardFont")) {
         //获取系统字体
         web_view_->page()->runJavaScript(QString("setWordFontfamily('%1')").arg(strValue));
-    }
-}
-
-/**
- * @brief WebWindow::onThemeChange
- * @param themeType
- * 系统主题改变时，调用js接口setHashWordColor()设置导航栏颜色
- */
-void WebWindow::onThemeChange(DGuiApplicationHelper::ColorType themeType)
-{
-    Q_UNUSED(themeType)
-    if (web_view_) {
-        QColor fillColor = DGuiApplicationHelper::instance()->applicationPalette().highlight().color();
-        web_view_->page()->runJavaScript(QString("setHashWordColor('%1')").arg(fillColor.name()));
     }
 }
 
