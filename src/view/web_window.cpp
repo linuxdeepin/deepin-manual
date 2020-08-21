@@ -385,7 +385,7 @@ void WebWindow::initConnections()
     connect(&search_timer_, &QTimer::timeout, this, &WebWindow::onSearchTextChangedDelay);
 
     connect(this, &WebWindow::manualSearchByKeyword, this, &WebWindow::onManualSearchByKeyword);
-    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged, this, &WebWindow::onThemeChange);
+//    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged, this, &WebWindow::onThemeChange);
 }
 
 void WebWindow::onManualSearchByKeyword(const QString &keyword)

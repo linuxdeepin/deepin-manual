@@ -36,6 +36,7 @@ WindowManager::WindowManager(QObject *parent)
     , curr_keyword_("")
     , curr_title_name_("")
 {
+    connect(this, &WindowManager::initWebSingal, this, &WindowManager::onInitWebWindow);
 }
 
 WindowManager::~WindowManager()
@@ -77,12 +78,15 @@ void WindowManager::initWebWindow()
     qDebug() << Q_FUNC_INFO << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     window->show();
     qDebug() << Q_FUNC_INFO << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
-
-    QTimer::singleShot(100, [ = ]() {
-        initDBus();
-        SendMsg(QString::number(window->winId()));
-        window->initWeb();
-    });
+    emit initWebSingal();
+//    QTimer::singleShot(100, [ = ]() {
+//        qDebug() << Q_FUNC_INFO << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
+//        initDBus();
+//        qDebug() << Q_FUNC_INFO << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
+//        SendMsg(QString::number(window->winId()));
+//        qDebug() << Q_FUNC_INFO << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
+//        window->initWeb();
+//    });
 }
 
 void WindowManager::activeOrInitWindow()
@@ -201,6 +205,16 @@ void WindowManager::openManualWithSearch(const QString &app_name, const QString 
     curr_keyword_ = keyword;
     activeOrInitWindow();
     qDebug() << Q_FUNC_INFO << app_name << curr_keyword_;
+}
+
+void WindowManager::onInitWebWindow()
+{
+    qDebug() << Q_FUNC_INFO << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
+    initDBus();
+    qDebug() << Q_FUNC_INFO << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
+    SendMsg(QString::number(window->winId()));
+    qDebug() << Q_FUNC_INFO << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
+    window->initWeb();
 }
 
 } // namespace dman
