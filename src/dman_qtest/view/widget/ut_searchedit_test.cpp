@@ -16,6 +16,8 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "ut_searchedit_test.h"
+#include <QToolButton>
+#include <QAction>
 
 namespace dman {
 
@@ -53,4 +55,27 @@ TEST_F(ut_SearchEdit_test, settext)
     m_se->setText("abc");
     ASSERT_EQ(m_se->text(), "abc");
 }
+
+TEST_F(ut_SearchEdit_test, keyEvent)
+{
+    QTest::keyClick(m_se->lineEdit(), Qt::Key_Up);
+    QTest::keyClick(m_se->lineEdit(), Qt::Key_Down);
+    QTest::keyClick(m_se->lineEdit(), Qt::Key_Enter);
+
+    QTest::keyClick(m_se->lineEdit(), Qt::Key_A);
+    qDebug() << "se.text()-->" << m_se->text();
+    ASSERT_EQ(m_se->text(), 'a');
+    QAction *clearAction = m_se->lineEdit()->findChild<QAction *>(QLatin1String("_q_qlineeditclearaction"));
+    if (clearAction != nullptr) {
+        QList<QToolButton *> list = m_se->lineEdit()->findChildren<QToolButton *>();
+        for (int i = 0; i < list.count(); i++) {
+            if (list.at(i)->defaultAction() == clearAction) {
+                QToolButton *clearBtn = list.at(i);
+                QTest::mouseClick(clearBtn, Qt::LeftButton);
+                ASSERT_EQ(m_se->text(), "");
+            }
+        }
+    }
+}
+
 }

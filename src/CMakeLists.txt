@@ -374,7 +374,7 @@ add_custom_command(TARGET test
     #3.过滤一些我们不感兴趣的文件的覆盖率信息
     COMMAND echo " =================== do filter begin ==================== "
     COMMAND lcov --remove ./coverageResult/${PROJECT_NAME}_Coverage.info
-    '*/${PROJECT_NAME_TEST}_autogen/*' '*/${PROJECT_NAME}_autogen/*' '*/usr/include/*' '*/tests/*' '*/googletest/*'
+    '*/${PROJECT_NAME_TEST}_autogen/*' '*/${PROJECT_NAME}_autogen/*' '*/usr/include/*' '*/dman_qtest/*' '*/googletest/*'
     -o ./coverageResult/${PROJECT_NAME}_Coverage.info
     COMMAND echo " =================== do filter end ==================== "
 

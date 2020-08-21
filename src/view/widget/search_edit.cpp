@@ -39,8 +39,6 @@ SearchEdit::SearchEdit(QWidget *parent)
                 connect(clearBtn, &QToolButton::clicked, this, [ = ] {
                     emit this->onClickedClearBtn();
                     qDebug() << "emit onClickedClearBtn";
-
-                    qDebug() << Utils::getSystemManualDir();
                 });
             }
         }

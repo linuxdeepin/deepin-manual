@@ -211,7 +211,8 @@ void WebWindow::slot_ThemeChanged()
 }
 
 /**
- * @brief WebWindow::slot_HelpSupportTriggered  服务与支持触发槽
+ * @brief WebWindow::slot_HelpSupportTriggered
+ * 服务与支持触发槽
  */
 void WebWindow::slot_HelpSupportTriggered()
 {

@@ -15,29 +15,16 @@
 * You should have received a copy of the GNU General Public License
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef UT_WEB_WINDOW_TEST_H
-#define UT_WEB_WINDOW_TEST_H
+#ifndef UT_SEARCH_COMPLETION_LISTVIEW_TEST_H
+#define UT_SEARCH_COMPLETION_LISTVIEW_TEST_H
 
-#include <QMainWindow>
 #include "gtest/gtest.h"
 #include <QTest>
-#include <DObject>
-#include <DApplicationHelper>
 
-DWIDGET_USE_NAMESPACE
-
-namespace dman {
-
-
-class ut_web_window_test : public ::testing::Test
+class ut_search_completion_listview_test : public::testing::Test
 {
 public:
-    explicit ut_web_window_test();
-    virtual void SetUp() override;
-    virtual void TearDown() override;
-
-protected:
-//    WebWindow /***/m_webwindow;
+    ut_search_completion_listview_test();
 };
-}
-#endif // UT_WEB_WINDOW_TEST_H
+
+#endif // UT_SEARCH_COMPLETION_LISTVIEW_TEST_H

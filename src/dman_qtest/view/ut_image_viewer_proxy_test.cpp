@@ -15,29 +15,40 @@
 * You should have received a copy of the GNU General Public License
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef UT_WEB_WINDOW_TEST_H
-#define UT_WEB_WINDOW_TEST_H
+#include "ut_image_viewer_proxy_test.h"
 
-#include <QMainWindow>
-#include "gtest/gtest.h"
-#include <QTest>
-#include <DObject>
-#include <DApplicationHelper>
+#define private public
+#include "view/image_viewer_proxy.h"
+#include "view/widget/image_viewer.h"
+#undef private
 
-DWIDGET_USE_NAMESPACE
+#include "resources/themes/images.h"
 
 namespace dman {
 
-
-class ut_web_window_test : public ::testing::Test
+ut_image_viewer_proxy_test::ut_image_viewer_proxy_test()
 {
-public:
-    explicit ut_web_window_test();
-    virtual void SetUp() override;
-    virtual void TearDown() override;
 
-protected:
-//    WebWindow /***/m_webwindow;
-};
 }
-#endif // UT_WEB_WINDOW_TEST_H
+
+TEST_F(ut_image_viewer_proxy_test, open)
+{
+//    QString filePath = kImageDeepinManual;
+//    ImageViewer *iv = new ImageViewer;
+//    ImageViewerProxy ip(iv);
+//    ip.open(filePath);
+//    DLabel label;
+//    QPixmap pix(filePath);
+//    label.setPixmap(pix);
+//    label.setFixedSize(pix.size());
+//    ASSERT_EQ(ip.viewer_->img_label_->width(), label.width());
+}
+
+TEST_F(ut_image_viewer_proxy_test, openHttpUrl)
+{
+    ImageViewer *iv = new ImageViewer;
+    ImageViewerProxy ip(iv);
+    ip.openHttpUrl("www.baidu.com");
+}
+
+}
