@@ -22,7 +22,7 @@ global.isShowHelperSupport = false;
 
 
 global.readFile = (fileName, callback) => {
-  console.log("global.readFile...");
+  console.log("global.readFile...",fileName,new Date().getSeconds(),new Date().getMilliseconds());
   let xhr = new XMLHttpRequest();
   xhr.open('GET', fileName);
   xhr.onload = () => {
@@ -46,8 +46,9 @@ class App extends React.Component {
     new QWebChannel(qt.webChannelTransport, this.initQt.bind(this));
   }
   initQt(channel) {
-    console.log("channel initqt.....");
+    console.log("channel initqt.....",new Date().getSeconds(),new Date().getMilliseconds());
     channel.objects.i18n.getSentences(i18n => {
+      console.log("channel initFinish====>",new Date().getSeconds(),new Date().getMilliseconds());
       channel.objects.i18n.getLocale(lang => {
         if (lang === 'en_US' || lang === 'zh_CN') {
           global.lang = lang;
@@ -225,6 +226,7 @@ class App extends React.Component {
     window.getSelection().empty();
   }
   componentDidMount() {
+    console.log("mid componentDidMount: ");
     global.index = () => {
       // this.context.router.history.push('/');
     };

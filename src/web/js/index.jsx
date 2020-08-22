@@ -166,6 +166,8 @@ export default class Index extends Component {
     appSoft.splice(index, 1);
     let otherSoft = [""];
 
+    console.log("index render...");
+
     return (
       <Scrollbar>
         <div id="index" tabIndex="-1">
@@ -178,15 +180,17 @@ export default class Index extends Component {
             </div>
           )}
           <h2>{global.i18n['Applications']}</h2>
-          <div id="forMargin">
-              <div className="items">
-                {appSoft.map(appName => <Item key={appName} appName={appName} isOpened={this.bIsBeOpen(appName)}/>)}
-                {otherSoft.map(appName => <Item key={appName} appName={appName} isOpened={this.bIsBeOpen(appName)}/>)}
-                {Array.from(new Array(10), (val, index) => index).map(i => (
-                  <a key={i} className="empty" />
-                ))}
-              </div>
-           </div>
+          {appSoft.length > 0 && (
+            <div id="forMargin">
+                <div className="items">
+                  {appSoft.map(appName => <Item key={appName} appName={appName} isOpened={this.bIsBeOpen(appName)}/>)}
+                  {/* {otherSoft.map(appName => <Item key={appName} appName={appName} isOpened={this.bIsBeOpen(appName)}/>)}
+                  {Array.from(new Array(10), (val, index) => index).map(i => (
+                    <a key={i} className="empty" />
+                  ))} */}
+                </div>
+            </div>
+          )}
         </div>
       </Scrollbar>
     );

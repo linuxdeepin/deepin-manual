@@ -54,7 +54,7 @@ global.lastAction = 'PUSH';
 global.isShowHelperSupport = false;
 
 global.readFile = function (fileName, callback) {
-  console.log("global.readFile...");
+  console.log("global.readFile...", fileName, new Date().getSeconds(), new Date().getMilliseconds());
   var xhr = new XMLHttpRequest();
   xhr.open('GET', fileName);
   xhr.onload = function () {
@@ -88,8 +88,9 @@ var App = function (_React$Component) {
     value: function initQt(channel) {
       var _this2 = this;
 
-      console.log("channel initqt.....");
+      console.log("channel initqt.....", new Date().getSeconds(), new Date().getMilliseconds());
       channel.objects.i18n.getSentences(function (i18n) {
+        console.log("channel initFinish====>", new Date().getSeconds(), new Date().getMilliseconds());
         channel.objects.i18n.getLocale(function (lang) {
           if (lang === 'en_US' || lang === 'zh_CN') {
             global.lang = lang;
@@ -263,6 +264,7 @@ var App = function (_React$Component) {
     value: function componentDidMount() {
       var _this3 = this;
 
+      console.log("mid componentDidMount: ");
       global.index = function () {
         // this.context.router.history.push('/');
       };
@@ -1156,6 +1158,8 @@ var Index = function (_Component2) {
       appSoft.splice(index, 1);
       var otherSoft = [""];
 
+      console.log("index render...");
+
       return _react2.default.createElement(
         _scrollbar2.default,
         null,
@@ -1183,7 +1187,7 @@ var Index = function (_Component2) {
             null,
             global.i18n['Applications']
           ),
-          _react2.default.createElement(
+          appSoft.length > 0 && _react2.default.createElement(
             'div',
             { id: 'forMargin' },
             _react2.default.createElement(
@@ -1191,14 +1195,6 @@ var Index = function (_Component2) {
               { className: 'items' },
               appSoft.map(function (appName) {
                 return _react2.default.createElement(Item, { key: appName, appName: appName, isOpened: _this4.bIsBeOpen(appName) });
-              }),
-              otherSoft.map(function (appName) {
-                return _react2.default.createElement(Item, { key: appName, appName: appName, isOpened: _this4.bIsBeOpen(appName) });
-              }),
-              Array.from(new Array(10), function (val, index) {
-                return index;
-              }).map(function (i) {
-                return _react2.default.createElement('a', { key: i, className: 'empty' });
               })
             )
           )
