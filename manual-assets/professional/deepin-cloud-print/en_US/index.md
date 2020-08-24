@@ -64,3 +64,6 @@ You can use cloud print to print files in UOS, taking .doc files as the example.
  ![0|printsetting](jpg/printsetting.jpg)
 
 > ![attention](icon/attention.svg): If authorization code has been updated in Windows, when you are printing a file, there will be a prompt of "The authorization code of cloud print server has been updated, please input a new authorization code". Please contact the administrator to get the new one to print. If errors occurred during printing, please reset according to the errors.
+
+<div class="version-info"><span>Update Date: 2020-08-24</span><span> Version: (无)
+</span></div>

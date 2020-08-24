@@ -718,3 +718,5 @@ The detailed kinds are in the following:
 
 
 
+
+<div class="version-info"><span>Update Date: 2020-08-24</span><span> Version: 5.0</span></div>

@@ -187,3 +187,5 @@ View Help to get more information about Voice Notes.
 
 1. On the Voice Notes interface, click ![icon_menu](icon/icon_menu.svg) .
 2.  Click **Exit** to exit.
+
+<div class="version-info"><span>Update Date: 2020-08-24</span><span> Version: 5.7</span></div>

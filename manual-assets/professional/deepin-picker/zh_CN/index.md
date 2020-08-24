@@ -31,3 +31,4 @@
 启动取色器后，点击吸取所需的颜色，取色器将自动拷贝颜色到剪切板。
 
 ![picker](jpg/picker.png)
+<div class="version-info"><span>文档更新时间: 2020-08-24</span><span> 版本: 5.0</span></div>

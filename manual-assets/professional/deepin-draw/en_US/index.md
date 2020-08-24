@@ -276,3 +276,5 @@ Click "Help" to get the manual, which will help you further know and use Draw.
 
 1.  On the Draw interface, click ![icon_menu](icon/icon_menu.svg).
 2.  Click **Exit** to exit Draw.
+
+<div class="version-info"><span>Update Date: 2020-08-24</span><span> Version: 5.8</span></div>

@@ -68,3 +68,5 @@
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 > ![attention](icon/attention.svg) ：如果Windows操作系统更新了云打印的授权码，当您在打印文件时，系统自动弹出“云打印服务器授权码已被更新，请输入新的授权码”对话框，请联系管理员获取新的授权码后输入继续打印。打印过程中如果出现错误，请根据错误提示，重新进行设置。
+<div class="version-info"><span>文档更新时间: 2020-08-24</span><span> 版本: (无)
+</span></div>

@@ -113,3 +113,5 @@ You can click on **Exit** to exit Voice Recorder.
 1. On Voice Recorder interface, click on ![icon_menu](icon/icon_menu.svg).
 
 2. Click on **Exit** to exit.
+
+<div class="version-info"><span>Update Date: 2020-08-24</span><span> Version: 5.0</span></div>

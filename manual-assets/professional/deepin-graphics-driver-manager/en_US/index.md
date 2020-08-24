@@ -101,3 +101,5 @@ If the system detected AMD graphics card, no other solutions available,  just cl
 
 1. On Deepin Graphics Driver Manager interface, click on ![main_menu](icon/main_menu.svg).
 2. Click on **Exit** to exit.
+
+<div class="version-info"><span>Update Date: 2020-08-24</span><span> Version: 5.0</span></div>

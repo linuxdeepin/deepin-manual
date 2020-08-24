@@ -477,3 +477,5 @@
 * 通过左右拖动滑条来调节保存图片的质量。
 
 
+
+<div class="version-info"><span>文档更新时间: 2020-08-24</span><span> 版本: 5.0</span></div>

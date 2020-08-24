@@ -290,3 +290,5 @@ UOS ID：登录或退出登录UOS ID。
 1. 在邮箱主界面，单击 ![icon_menu](icon/icon_menu.svg)。
 2. 单击 **退出**。
 
+
+<div class="version-info"><span>文档更新时间: 2020-08-24</span><span> 版本: 5.1</span></div>

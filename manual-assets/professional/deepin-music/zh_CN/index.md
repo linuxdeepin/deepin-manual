@@ -283,3 +283,5 @@
 
 1. 在音乐界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **退出**。
+
+<div class="version-info"><span>文档更新时间: 2020-08-24</span><span> 版本: 6.0</span></div>

@@ -409,3 +409,4 @@ The recorded video will be saved to the desktop automatically.
 ### View Help
 
 Press ![F1](icon/F1.svg) on the keyboard to view the help manual after launching Screen Capture.
+<div class="version-info"><span>Update Date: 2020-08-24</span><span> Version: 5.8</span></div>

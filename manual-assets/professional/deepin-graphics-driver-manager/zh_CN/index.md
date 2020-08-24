@@ -107,3 +107,5 @@ AMD显卡使用官方开源驱动是最佳的驱动方案，目前没有其他�
 1. 在显卡驱动管理器界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **退出**。
 
+
+<div class="version-info"><span>文档更新时间: 2020-08-24</span><span> 版本: 5.0</span></div>

@@ -341,3 +341,5 @@ Click **Exit** to exit Music.
 
 2.  Click **Exit** to exit.
 
+
+<div class="version-info"><span>Update Date: 2020-08-24</span><span> Version: 6.0</span></div>

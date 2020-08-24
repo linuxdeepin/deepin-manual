@@ -258,3 +258,4 @@ View Help to get more information about Movie.
 
 1.   On the Movie interface, click ![icon_menu](icon/icon_menu.svg).
 2.  Click **Exit** to exit.
+<div class="version-info"><span>Update Date: 2020-08-24</span><span> Version: 5.7</span></div>

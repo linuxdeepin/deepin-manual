@@ -235,3 +235,5 @@ Click "Help" to get the manual, which will help you further know and use Album.
 
 1.  On the Image Viewer interface, click ![icon_menu](icon/icon_menu.svg).
 2.  Click **Exit** to exit Album.
+
+<div class="version-info"><span>Update Date: 2020-08-24</span><span> Version: 5.6</span></div>
