@@ -10,6 +10,7 @@ StartupNotify=true
 Terminal=false
 Type=Application
 X-Deepin-Vendor=deepin
+TZ='Asia/Shanghai'
 
 # Translations:
 # Do not manually modify!
