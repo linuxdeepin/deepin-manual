@@ -61,6 +61,9 @@ else()
   set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -O2 -Wl,-O1 -Wl,--gc-sections")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -O2 -Wl,-O1 -Wl,--gc-sections")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-rtti")
+
+  set(CMAKE_CXX_FLAGS "-Wl,-as-need -fPIE")
+  set(CMAKE_EXE_LINKER_FLAGS "-pie")
 endif()
 
 if (${CMAKE_SYSTEM_PROCESSOR} MATCHES "mips64")
