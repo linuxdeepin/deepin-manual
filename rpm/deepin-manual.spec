@@ -7,7 +7,7 @@
 %endif
 
 
-Name:           dde-calendar
+Name:           deepin-manual
 Version:        5.6.32
 Release:        %{specrelease}
 Summary:        Manual is designed to help users learn the operating system and its applications, providing specific instructions and function descriptions
