@@ -292,7 +292,4 @@ install(DIRECTORY ${CMAKE_SOURCE_DIR}/manual-assets
 install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/web_dist
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
 
-install(FILES ${CMAKE_SOURCE_DIR}/manual-assets/deepin-manual.svg
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/scalable/apps/)
-
 string(TOLOWER ${CMAKE_SYSTEM_PROCESSOR} LOWERCASE_CMAKE_SYSTEM_PROCESSOR)
