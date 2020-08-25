@@ -1,6 +1,6 @@
 [Desktop Entry]
 Categories=Documentation;System;Utility;
-#Exec=dman %u
+Exec=dman %u
 GenericName=Manual
 Icon=deepin-manual
 Keywords=documentation;information;manual;help;
@@ -11,7 +11,6 @@ Terminal=false
 Type=Application
 X-Deepin-Vendor=deepin
 TZ='Asia/Shanghai'
-Exec=/usr/bin/deepin-turbo-invoker  --type=dtkwidget dman %U 
 
 # Translations:
 # Do not manually modify!

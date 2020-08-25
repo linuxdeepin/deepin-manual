@@ -1,15 +1,6 @@
 #!/bin/sh
 
-#time1=$(date "+%Y-%m-%d %H:%M:%S.%N")
-#echo $time1
-#rm -rf ${HOME}/.cache/fontconfig
-time2=$(date "+%Y-%m-%d %H:%M:%S.%N")
-echo $time2
+/usr/bin/deepin-turbo-invoker  --type=dtkwidget /usr/share/deepin-manual/dman $@ 
 
-if [ ! x"${USER}" = x"root" ];then
-    /usr/share/deepin-manual/dman $@
-else
-    /usr/share/deepin-manual/dman $@ --no-sandbox
-fi
 
 
