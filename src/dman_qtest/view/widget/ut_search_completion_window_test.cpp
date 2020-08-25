@@ -166,6 +166,34 @@ TEST_F(ut_search_completion_window_test, goDown2)
 TEST_F(ut_search_completion_window_test, goUp)
 {
     SearchCompletionWindow sw;
+    sw.initUI();
+    SearchAnchorResultList list;
+    for (int i = 0; i < 3; ++i) {
+        SearchAnchorResult result;
+        result.anchor = QString("运行应用商店") + QString::number(i);
+        result.anchorId = "h0";
+        result.app_name = "deepin-app-store";
+        result.app_display_name = "应用商店";
+        list.append(result);
+    }
+    sw.setSearchAnchorResult(list);
+    qDebug() << "sw.search_compeletion_model_->rowCount() -->" << sw.search_compeletion_model_->rowCount();
+    sw.goUp();
+    ASSERT_TRUE(sw.search_button_->isChecked());
+    sw.goUp();
+    ASSERT_EQ(sw.result_view_->currentIndex().row(), 2);
+    ASSERT_FALSE(sw.search_button_->isChecked());
+    sw.goUp();
+    ASSERT_EQ(sw.result_view_->currentIndex().row(), 1);
+    sw.goUp();
+    ASSERT_EQ(sw.result_view_->currentIndex().row(), 0);
+    sw.goUp();
+    ASSERT_TRUE(sw.search_button_->isChecked());
+}
+
+TEST_F(ut_search_completion_window_test, goUp2)
+{
+    SearchCompletionWindow sw;
     sw.goUp();
     ASSERT_FALSE(sw.search_compeletion_model_);
     sw.initUI();
@@ -203,23 +231,23 @@ TEST_F(ut_search_completion_window_test, paintEvent)
 
 
 }
-//TEST_F(ut_search_completion_window_test, paintEvent2)
-//{
-//    SearchCompletionWindow sw;
+TEST_F(ut_search_completion_window_test, paintEvent2)
+{
+    SearchCompletionWindow sw;
 //    DPalette pa = ExApplicationHelper::instance()->palette(sw.window());
 //    QColor fillColor = pa.color(DPalette::FrameBorder);
-//    QPaintEvent *event;
-//    sw.paintEvent(event);
-//    DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::LightType;
-//    qDebug() << "fillcolor--> " << fillColor;
-////    ASSERT_EQ(fillColor, QColor(255, 255, 255));
-////    DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
-////    if (themeType == DGuiApplicationHelper::LightType) {
-////       ASSERT_EQ(fillColor, QColor(255, 255, 255));
-////    } else if (themeType == DGuiApplicationHelper::DarkType) {
-////       ASSERT_EQ(fillColor, QColor(0, 0, 0));
-////    }
-//}
+    QPaintEvent *event;
+    sw.paintEvent(event);
+    //DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::LightType;
+    //  qDebug() << "fillcolor--> " << fillColor;
+//    ASSERT_EQ(fillColor, QColor(255, 255, 255));
+//    DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
+//    if (themeType == DGuiApplicationHelper::LightType) {
+//       ASSERT_EQ(fillColor, QColor(255, 255, 255));
+//    } else if (themeType == DGuiApplicationHelper::DarkType) {
+//       ASSERT_EQ(fillColor, QColor(0, 0, 0));
+//    }
+}
 TEST_F(ut_search_completion_window_test, onResultListClicked)
 {
     SearchCompletionWindow sw;

@@ -241,6 +241,9 @@ FILE(GLOB VIEW_FILES_TEST
     "dman_qtest/view/widget/*.h"
     "dman_qtest/view/*.h"
     )
+FILE(GLOB CONTROLLER_FILES_TEST
+    "dman_qtest/controller/*.cpp"
+    )
 # 生成测试可执行程序
 add_executable(${PROJECT_NAME_TEST}
     ${BASE_FILES}
@@ -248,6 +251,7 @@ add_executable(${PROJECT_NAME_TEST}
     ${DBUS_FILES}
     ${RESOURCES_FILES}
     ${VIEW_FILES}
+    ${CONTROLLER_FILES_TEST}
 
     ${allTestSource}
     ${BASE_FILES_TEST}
@@ -374,7 +378,7 @@ add_custom_command(TARGET test
     #3.过滤一些我们不感兴趣的文件的覆盖率信息
     COMMAND echo " =================== do filter begin ==================== "
     COMMAND lcov --remove ./coverageResult/${PROJECT_NAME}_Coverage.info
-    '*/${PROJECT_NAME_TEST}_autogen/*' '*/${PROJECT_NAME}_autogen/*' '*/usr/include/*' '*/dman_qtest/*' '*/googletest/*'
+    '*/${PROJECT_NAME_TEST}_autogen/*' '*/${PROJECT_NAME}_autogen/*' '*/usr/include/*' '*/dman_qtest/*' '*/googletest/*' '*/src/*autogen*/*'
     -o ./coverageResult/${PROJECT_NAME}_Coverage.info
     COMMAND echo " =================== do filter end ==================== "
 

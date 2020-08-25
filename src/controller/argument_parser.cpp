@@ -86,7 +86,7 @@ bool ArgumentParser::parseArguments()
             //            }
         }
         return false;
-    } else {
+    }  else {
         qDebug() << "Register dbus service successfully";
         const QStringList position_args = parser.positionalArguments();
         // 不带参为首页,带参跳转到具体模块.

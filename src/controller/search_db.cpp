@@ -239,7 +239,6 @@ void SearchDb::addSearchEntry(const QString &system, const QString &app_name, co
     query.bindValue(5, anchorIdList);
     query.bindValue(6, newContents);
     bool ok = query.execBatch();
-
     if (!ok) {
         p_->db.rollback();
         qCritical() << "Failed to insert search entry:" << query.lastError().text();

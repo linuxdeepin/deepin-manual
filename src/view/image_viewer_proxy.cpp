@@ -52,7 +52,7 @@ void ImageViewerProxy::open(const QString &filepath)
  */
 void ImageViewerProxy::openHttpUrl(const QString &httpUrl)
 {
-    QDesktopServices::openUrl(QUrl(httpUrl));
+    //QDesktopServices::openUrl(QUrl(httpUrl));
 }
 
 } // namespace dman

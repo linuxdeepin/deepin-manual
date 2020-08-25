@@ -18,6 +18,7 @@
 #include "ut_web_window_test.h"
 
 #define private public
+#define protected public
 #include "view/web_window.h"
 #include "view/widget/search_edit.h"
 #include "view/widget/search_completion_window.h"
@@ -27,6 +28,7 @@
 #include "base/consts.h"
 #include "controller/config_manager.h"
 #undef private
+#undef protected
 
 namespace dman {
 
@@ -55,10 +57,6 @@ TEST_F(ut_web_window_test, init)
     web.initWeb();
     web.onChannelFinish();
     web.setSearchManager();
-
-//    ASSERT_TRUE(web.web_view_.);
-//    m_webwindow->show();
-//    ASSERT_EQ()
 }
 
 
@@ -122,6 +120,21 @@ TEST_F(ut_web_window_test, closeEvent)
     ASSERT_EQ(setting->value(kConfigWindowHeight), 1200);
 }
 
+//TEST_F(ut_web_window_test, inputMethodEvent)
+//{
+//    WebWindow web;
+//    web.initUI();
+//    web.initWeb();
+//    QInputMethodEvent *e;
+//    web.inputMethodEvent(e);
+//}
+
+//TEST_F(ut_web_window_test, inputMethodQuery)
+//{
+//    WebWindow web;
+//    Qt::InputMethodQuery prop;
+//    web.inputMethodQuery(prop);
+//}
 
 TEST_F(ut_web_window_test, eventFilter)
 {
