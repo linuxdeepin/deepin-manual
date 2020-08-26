@@ -15,7 +15,8 @@ else()
   add_definitions(-DDMAN_WEB_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/web_dist")
   add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets")
 endif ()
-add_definitions(-DQT_NO_DEBUG_OUTPUT)
+#禁止Debug日志输出
+#add_definitions(-DQT_NO_DEBUG_OUTPUT)
 
 configure_file(environments.h.in environments.h @ONLY)
 
