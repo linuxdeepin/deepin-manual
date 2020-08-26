@@ -322,3 +322,5 @@ The window theme includes Light Theme, Dark Theme and System Theme (default).
 
 1. On the Text Editor interface, click ![menu](icon/icon_menu.svg).
 2. Click **Exit** to exit.  
+
+<div class="version-info"><span>Update Date: 2020-08-26</span><span> Version: 5.6</span></div>

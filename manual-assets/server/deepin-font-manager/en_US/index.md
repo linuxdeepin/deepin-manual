@@ -200,3 +200,5 @@ View Help to get more information about Font Manager.
 1.   On the Font Manager interface, click![icon_menu](icon/icon_menu.svg).
 2.   Click **Exit** to exit.
 
+
+<div class="version-info"><span>Update Date: 2020-08-26</span><span> Version: 5.6</span></div>

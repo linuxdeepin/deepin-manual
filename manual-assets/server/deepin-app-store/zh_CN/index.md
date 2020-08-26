@@ -214,3 +214,5 @@
 
 1. 在应用商店界面，单击 ![icon_menu](icon/icon_menu.svg)。
 2. 单击 **退出**。
+
+<div class="version-info"><span>文档更新时间: 2020-08-26</span><span> 版本: 6.2</span></div>

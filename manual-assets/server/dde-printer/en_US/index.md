@@ -251,3 +251,5 @@ click Help to get the manual, which will help you further know and use Printer M
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Click  **Exit**.
 
+
+<div class="version-info"><span>Update Date: 2020-08-26</span><span> Version: 0.5</span></div>

@@ -1124,3 +1124,5 @@ UOS提供从Grub进入还原、控制中心还原的还原方式。
 | **Ctrl**+**M**| 打开右键菜单。                                               |
 
 
+
+<div class="version-info"><span>文档更新时间: 2020-08-26</span><span> 版本: 2020.03</span></div>
