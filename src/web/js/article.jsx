@@ -14,6 +14,10 @@ export default class Article extends Component {
       fillblank: null,
       bIsTimerOut:true
     };
+    
+    this.scroll = this.scroll.bind(this);
+    this.click  = this.click.bind(this);
+    this.contentMenu = this.contentMenu.bind(this)
 
     var timerObj;
   }
@@ -279,7 +283,7 @@ export default class Article extends Component {
     return (
           <div id="article">
             <div id="article_bg">
-              <Scrollbar onScroll={this.scroll.bind(this)}
+              <Scrollbar onScroll={this.scroll}
                          onWheel={(e) => this.handleWheelScroll(e)}
                          onKeyUp={(e) => this.handleKeyUp(e)}
                          onKeyDown={(e) => this.handleKeyDown(e)}>
@@ -290,8 +294,8 @@ export default class Article extends Component {
                   tabIndex="-1"
                   dangerouslySetInnerHTML={{ __html: this.props.html }}
                   style={this.state.fillblank}
-                  onClick={this.click.bind(this)}
-                  onContextMenu={this.contentMenu.bind(this)}
+                  onClick = {this.click}
+                  onContextMenu={this.contentMenu}
                 />
                 {/* {this.state.preview != null && (
                   <div

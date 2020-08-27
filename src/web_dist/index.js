@@ -662,6 +662,10 @@ var Article = function (_Component) {
       bIsTimerOut: true
     };
 
+    _this.scroll = _this.scroll.bind(_this);
+    _this.click = _this.click.bind(_this);
+    _this.contentMenu = _this.contentMenu.bind(_this);
+
     var timerObj;
     return _this;
   }
@@ -963,7 +967,7 @@ var Article = function (_Component) {
           { id: 'article_bg' },
           _react2.default.createElement(
             _scrollbar2.default,
-            { onScroll: this.scroll.bind(this),
+            { onScroll: this.scroll,
               onWheel: function onWheel(e) {
                 return _this4.handleWheelScroll(e);
               },
@@ -980,8 +984,8 @@ var Article = function (_Component) {
               tabIndex: '-1',
               dangerouslySetInnerHTML: { __html: this.props.html },
               style: this.state.fillblank,
-              onClick: this.click.bind(this),
-              onContextMenu: this.contentMenu.bind(this)
+              onClick: this.click,
+              onContextMenu: this.contentMenu
             })
           )
         )
@@ -1296,6 +1300,10 @@ var Main = function (_Component) {
 
     _this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null, key);
     var showFloatTimer = null;
+
+    _this.setHash = _this.setHash.bind(_this);
+    _this.setScroll = _this.setScroll.bind(_this);
+    _this.onSupportClick = _this.onSupportClick.bind(_this);
     return _this;
   }
 
@@ -1437,7 +1445,7 @@ var Main = function (_Component) {
       if (global.isShowHelperSupport) {
         support = _react2.default.createElement(
           'div',
-          { className: 'support-div', onClick: this.onSupportClick.bind(this) },
+          { className: 'support-div', onClick: this.onSupportClick },
           _react2.default.createElement('img', { className: 'support', src: './pic.svg' })
         );
       } else {
@@ -1450,7 +1458,7 @@ var Main = function (_Component) {
         _react2.default.createElement(_nav2.default, {
           hlist: this.state.hlist,
           hash: this.state.hash,
-          setHash: this.setHash.bind(this),
+          setHash: this.setHash,
           onNavOver: function onNavOver(e) {
             return _this3.handleNavOver(e);
           },
@@ -1466,8 +1474,8 @@ var Main = function (_Component) {
           hlist: this.state.hlist,
           html: this.state.html,
           hash: this.state.hash,
-          setHash: this.setHash.bind(this),
-          setScroll: this.setScroll.bind(this)
+          setHash: this.setHash,
+          setScroll: this.setScroll
         }),
         support,
         _react2.default.createElement('div', { className: 'tooltip-wp' })
@@ -1588,10 +1596,13 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Nav = function (_Component) {
   _inherits(Nav, _Component);
 
-  function Nav() {
+  function Nav(props) {
     _classCallCheck(this, Nav);
 
-    return _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).call(this, props));
+
+    _this.contentMenu = _this.contentMenu.bind(_this);
+    return _this;
   }
 
   _createClass(Nav, [{
@@ -1718,7 +1729,7 @@ var Nav = function (_Component) {
           onMouseDown: function onMouseDown(e) {
             return _this2.click(e);
           },
-          onContextMenu: this.contentMenu.bind(this),
+          onContextMenu: this.contentMenu,
           style: {
             width: 'calc(' + maxWidth + 'px + ' + c + 'rem'
           }
