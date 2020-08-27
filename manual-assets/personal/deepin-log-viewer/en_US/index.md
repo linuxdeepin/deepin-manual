@@ -31,42 +31,43 @@ You can run, close or create a shortcut for Log Viewer.
 
 ### Search
 
-1. Log Viewer supports searching by keywords and speech. You can click![search](icon/search.svg)to input keywords;
-
+1. Log Viewer supports searching by keywords.
+   - Click![search](icon/search.svg)to input keywords.
 2. Results are displayed after input. If no matched service is found, you will see a hint **No search results**.
-
 3. Click ![close_icon](icon/close_icon.svg) to close current searching.
 
 ![0|search](jpg/search.png)
 
 ### Filter
 
-Filtering parameters include **period**, **level**, **status**, **application list** and **event type**.. 
-- Filtering by period: Filtering in the order of log generating date
+ Filtering parameters include **period**, **level**, **status**, **application list** and **event type**.. 
 
-  Options include: "All", "Today", "3 days", "1 week", "1 month", and "3 months". Default option is "All".
+  - Filtering by period: Filtering in the order of log generating date
 
-  Applicable for: "period" is not displayed only for boot logs, other kinds of logs support filtering by period.
+    Options include: "All", "Today", "3 days", "1 week", "1 month", and "3 months". Default option is "All".
 
-- Filtering by level: filtering by seriousness levels of events
+    Applicable for: "period" is not displayed only for boot logs, other kinds of logs support filtering by period.
 
-  Options include: "All", "Emergency", "Alert", "Critical", "Error", "Warning", "Notice", "Info"and "Debug". Default option is "Info".
+  - Filtering by level: filtering by seriousness levels of events
 
-  Applicable for: system logs and application logs
+    Options include: "All", "Emergency", "Allert", "Critical", "Error", "Warning", "Notice", "Info"and "Debug". Default option is "Info".
 
-- Filtering by status: 
+    Applicable for: system logs and application logs
 
-  only applicable for boot logs, options include "All", "OK", and "Failed". Default option is "All".
+  - Filtering by status: 
 
-- Filtering by application list: 
+    only applicable for boot logs, options include "All", "OK", and "Failed". Default option is "All".
 
-  only applicable for application logs, it's used to filter log files of applications, default option is the first one. 
-  
-- Filtering by event type: 
-  
-  only applicable for boot-shutdown events, options include:  "All", "Login", "Reboot", and "Shutdown", the default option is "all".  
-  
-  
+  - Filtering by application list: 
+
+    only applicable for application logs, it's used to filter log files of applications, default option is the first one. 
+
+  - Filtering by event type: 
+
+    only applicable for boot-shutdown events, options include:  "All", "Login", "Reboot", and "Shutdown", the default option is "all".  
+
+    
+
 
 ### System Log
 
@@ -102,7 +103,7 @@ Filtering parameters include **period**, **level**, **status**, **application li
 
 ### Xorg Log
 
-1. On the main interface, click **Xorg Log**.
+1. On the main interface, click **Ｘorg Log**.
 2. You can see a list of Xorg logs which are detailed by "Date and time" and "Info".
 3. Click a log, you can see its particular info below the list, including process, user, time and info.
 
@@ -142,25 +143,22 @@ You can export logs and save them in format of  txt/doc/xls/html.
 
 
 
-### Right-click Operation
+### Display in File Manager
 
-You can select a log type in the left panel, right-click to display in file manager, to clear log and to refresh the log.
-
-![0|clear](jpg/right-click.png)
-
-   - Select **Display in file manager**, the folder path of the current log will be opened. 
+1. On the interface of File Manager, select a log type in the left panel and right-click.
+2. Select **Display in file manager**, the folder path of the current log will be opened. 
 
 > ![notes](icon/notes.svg)Notes: **Display in file manager** is only applicable for kernel log, boot log, dpkg log, Xorg log and application log.
 
-   - Select **Clear log**, click **Confirm** button in the pop-up window to clear current logs.
-If authentication window pops up, please input password to finish the operation.
-
-
-
+### Clear Log
+1. On the interface of File Manager, select a log type in the left panel and right-click.
+2. Select **Clear log**, click **Confirm** button in the pop-up window to clear current logs.
+3. If authentication window pops up, please input password to finish the operation.
 > ![notes](icon/notes.svg)Notes: **Clear log** is only applicable for kernel log, boot log, dpkg log, Xorg log and application log.
 
-
-   - Select **Refresh** to reload the log and update log list.
+### Refresh
+1. On the interface of File Manager, select a log type in the left panel and right-click.
+2. Select **Refresh** to reload the log and update log list.
 
 ## Main Menu
 

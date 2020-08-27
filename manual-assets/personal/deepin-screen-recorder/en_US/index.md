@@ -1,8 +1,8 @@
-# Screen Capture|../common/deepin-screenshot.svg|
+# Screen Capture|../common/deepin-screen-capture.svg|
 
 ## Overview
 
-Screen Capture is a tool integrates the screenshot and screen recorder into one. You are free to select windows or areas automatically or manually during screen capture or recording. 
+Screen Capture is a tool which integrates the screenshot and screen recorder into one. You are free to select windows or areas automatically or manually during screen capture or recording. 
 
 ![partarea](jpg/partarea.png)
 
@@ -15,7 +15,7 @@ You can run, close or create shortcuts for screen capture by the following opera
 ### Run Screen Capture
 
 1.  Click ![deepin-launcher](icon/deepin-launcher.svg) on dock to enter the launcher interface.
-2.  Locate ![deepin-screenshot](icon/deepin-screenshot.svg)by scrolling the mouse wheel or searching "Screen Capture" in the Launcher interface and click it to run. 
+2.  Locate ![deepin-screenshot](icon/deepin-screenshot.svg) by scrolling the mouse wheel or searching "Screen Capture" in the Launcher interface and click it to run. 
 3.  Right-click ![deepin-screenshot](icon/deepin-screenshot.svg) and you can:
 
     - Click **Send to desktop** to create a desktop shortcut.
@@ -37,15 +37,15 @@ You can run, close or create shortcuts for screen capture by the following opera
 
 You can achieve quick screenshots  by the following ways:
 
-- Press the  ![print](icon/Print.svg) key on the keyboard to screenshot the entire display screen.
-- Use the screenshot features of various applications such as Tencent QQ and the Chrome browser.
-- Use the professional screenshot software to take screenshots , e.g. the Screen Capture software that comes with the operation system.
+- Press the ![print](icon/Print.svg) key on the keyboard to screenshot the entire display screen.
+- Use the screenshot features of various applications such as Tencent QQ and Chrome browser.
+- Use professional screenshot software to take screenshots,such as the Screen Capture software that comes with the operation system.
 
 #### Shortcuts
 
 It is convenient and time-saving to perform relevant operations through shortcuts.
 
-1.  In the Screenshot  mode, press **Ctrl + Shift + ?** on the keyboard to open the shortcuts preview interface.
+1.  In the Screenshot mode, press **Ctrl + Shift + ?** on the keyboard to open the shortcuts preview interface.
 2.  On the shortcuts preview interface, you can view all shortcuts.
 
 ![1|快捷键](jpg/hotkey.png)
@@ -53,9 +53,9 @@ It is convenient and time-saving to perform relevant operations through shortcut
 
 #### Select Screenshot Area
 
-There are three kinds of common screenshot areas, the full screen, program window and customized area. During screenshot, the selected area will be bordered with dashed line and looks brighter than the other area.
+There are three kinds of common screenshot areas, namely the full screen, program window and customized area. When a screenshot is captured, the selected area will be bordered with dashed blue line and looks brighter than the other area.
 
-> ![notes](icon/notes.svg)Notes: When the computer is connected to multiple monitors, you can also use Screen Capture to screenshot areas on different monitors.
+> ![notes](icon/notes.svg)Notes: When the computer is connected to multiple monitors, you can also use Screen Capture to capture areas on different monitors.
 
 ##### Full Screen Selection
 
@@ -67,10 +67,10 @@ Full screen selection is to identify the entire screen of the current display.
 
 You can select the full screen by the following ways:
 
-1.  Press ![ctrl](icon/Ctrl.svg)+![alt](icon/Alt.svg)+![A](icon/A.svg)  on the keyboard to enter the screen capture mode.
-2.  Move the cursor to the desktop and the full screen will be selected automatically, with the screenshot dimension displayed in the upper left corner. 
+1.  Press **Ctrl + Alt + A** on the keyboard to enter the screen capture mode.
+2.  Move the cursor to the desktop and the full screen will be selected automatically. The screenshot dimension will be displayed in the upper left corner. 
 3.  Click the desktop and a toolbar will pop up.
-4.  Click ![关闭](icon/close.svg)on the toolbar or right-click to select **Exit** to exit Screen Capture.
+4.  Click ![关闭](icon/close.svg) on the toolbar or right-click to select **Exit** to exit Screen Capture.
 
 You can also take a full screen screenshot directly by the following ways:
 
@@ -85,7 +85,7 @@ Program window selection is to identify the current application window automatic
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-1.  Press ![ctrl](icon/Ctrl.svg)+![alt](icon/Alt.svg)+![A](icon/A.svg)  on the keyboard to enter the screen capture mode.
+1.  Press **Ctrl + Alt + A** on the keyboard to enter the screen capture mode.
 2.  Move the cursor to the application window and the window will be selected automatically, with the screenshot dimension displayed in the upper left corner. 
 3.  Click the window and a toolbar will pop up in the lower right of the window.
 4.  Click![关闭](icon/close.svg)on the toolbar or right-click to select **Exit** to exit Screen Capture.
@@ -98,28 +98,28 @@ Customized area selection is to drag the mouse to select the screenshot area fre
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-1.  Press ![ctrl](icon/Ctrl.svg)+![alt](icon/Alt.svg)+![A](icon/A.svg) on the keyboard to enter the screen capture mode.
+1.  Press **Ctrl + Alt + A** on the keyboard to enter the screen capture mode.
 2.  Hold down and drag the left mouse button to select the screen capture area with the screenshot dimension displayed in the upper left. 
-3.  Release the left mouse button to complete screenshot area selection and the toolbar will pop up under the lower right corner of the screenshot area.
-4.  Click ![关闭](icon/close.svg)on the toolbar or right-click to select **Exit** to exit the screen capture.
+3.  Release the left mouse button to select the screenshot area. A toolbar will pop up under the lower right corner of the screenshot area.
+4.  Click ![关闭](icon/close.svg) on the toolbar or right-click to select **Exit** to exit the screen capture.
 
 #### Adjust the Screenshot Area
 
-You can do fine adjustments to the screenshot area, for example, enlarging or reducing the captured scope, moving the screenshot and so on. 
+You can fine tune the screenshot area. For example, you can enlarge or reduce the captured scope, move the screenshot among other functions. 
 
 ##### Enlarge/Reduce the Screenshot Area
 
 Place the cursor over the white boarder of the screenshot area and the cursor will be changed to ![双箭头](icon/Mouse_Arrow.svg)You can:
 
 - Hold down the left mouse button and drag the mouse to enlarge or reduce the screenshot area. 
-- Press ![ctrl](icon/Ctrl.svg)+![向上](icon/Up.svg) ,![向下](icon/Down.svg) ,![向左](icon/Left.svg) or ![向右](icon/Right.svg)  and drag the mouse to enlarge or reduce the screenshot area vertically or horizontally.
+- Press **Ctrl** +![向上](icon/Up.svg) , ![向下](icon/Down.svg) , ![向左](icon/Left.svg) or ![向右](icon/Right.svg)  and drag the mouse to enlarge or reduce the screenshot area vertically or horizontally.
 
 ##### Move the Screenshot Position
 
 Place the cursor over the screenshot area and it will be changed to ![手指](jpg/fingers2.png). You can:
 
 - Hold down the left mouse button and drag the mouse to move the position of the screenshot area.
-- Press ![向上](icon/Up.svg) , ![向下](icon/Down.svg) , ![向左](icon/Left.svg) or![向右](icon/Right.svg) on the keyboard to move the screenshot area vertically or horizontally.
+- Press ![向上](icon/Up.svg) , ![向下](icon/Down.svg) , ![向左](icon/Left.svg) or ![向右](icon/Right.svg) on the keyboard to move the screenshot area vertically or horizontally.
 
 #### Edit Screenshot
 
@@ -133,13 +133,13 @@ You can edit screenshots by the following ways:
 
 #### Draw
 
-You can draw some simple graphics in the screenshots, such as rectangle, ellipse, and so on.
+You can draw some simple graphics in the screenshots, such as rectangle, ellipse and other shapes.
 
 ##### Toolbar description
 
 While capturing screenshots, you can click the icons on the toolbar to complete various operations. Run Screen Capture and the toolbar will automatically appear below the screenshot area after selecting the screenshot area. 
 
-> ![attention](icon/attention.svg)Attention: Your settings in the toolbar and attribute column, such as line thickness and font size will be remembered and applied by default the next time you launch Screen Capture. You are also able to reset it before screen capture. 
+> ![attention](icon/attention.svg)Attention: Your settings in the toolbar and attribute column, such as line thickness and font size, is remembered and applied by default and will be resumed the next time when you launch the Screen Capture. You are also able to reset it before screen capture. 
 
 
 ![0|截图工具栏](jpg/capture-bar.png)
@@ -170,63 +170,63 @@ While capturing screenshots, you can click the icons on the toolbar to complete 
     </tbody>
 </table>
 
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 ##### Rectangle
 
 ![1|矩形工具](jpg/recttool.png)
-
-1.  Click![矩形](icon/rectangle-normal.svg)on the toolbar under the screenshot area.
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+1.  Click ![矩形](icon/rectangle-normal.svg) on the toolbar under the screenshot area.
 2.  In the toolbar extension panel, select the thickness of rectangle border line. 
-3.  Place the cursor on the screenshot area, and then the cursor will be changed to ![矩形指针](icon/rect_mouse.svg).
+3.  Place the cursor on the screenshot area and the cursor will be changed to ![矩形指针](icon/rect_mouse.svg).
 4.  Hold down the left mouse button and drag the mouse to finish drawing.
-5.  Please click ![模糊](icon/vague_normal.svg) or ![马赛克](icon/Mosaic_normal.svg) in the toolbar extension panel to mosaic the private information in the screenshot (if any).
+5.  Click ![模糊](icon/vague_normal.svg) or ![马赛克](icon/Mosaic_normal.svg) in the toolbar extension panel to mosaic the private information in the screenshot (if any).
 
 ![2|blurtool](jpg/blurtool.png)
 
 
 ![2|mosaictool](jpg/mosaictool.png)
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
 ##### Ellipse
 
 ![1|椭圆工具](jpg/ellipsetool.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-
-1.  Click ![椭圆](icon/oval-normal.svg)on the toolbar under the screenshot area.
+1.  Click ![椭圆](icon/oval-normal.svg) on the toolbar under the screenshot area.
 2.  In the toolbar extension panel, select the thickness of ellipse border line. 
 3.  Place the cursor on the screenshot area and then the cursor will be changed to ![椭圆指针](icon/ellipse_mouse.svg).
 4.  Hold down the left mouse button and drag the mouse to finish drawing.
-5.  Please click ![模糊](icon/vague_normal.svg)or ![马赛克](icon/Mosaic_normal.svg)in the toolbar extension panel  to mosaic the private information in the screenshot (if any).
+5.  Click ![模糊](icon/vague_normal.svg) or ![马赛克](icon/Mosaic_normal.svg) in the toolbar extension panel  to mosaic the private information in the screenshot (if any).
 
 
 ##### Straight Line and Arrow
 
 ![1|线条工具](jpg/line.png)
-
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 1.  Click ![直线](icon/line-normal.svg)on the toolbar under the screenshot area.
 2.  In the toolbar extension panel, select the line thickness. 
 3.  Click ![直线](icon/line-normal.svg) or ![箭头](icon/Arrow-normal.svg)to toggle between straight line and arrow.
-4.  Place the cursor on the screenshot area and then the cursor will be changed to ![线条指针](icon/line_mouse.svg)or ![箭头指针](icon/arrow_mouse.svg).
+4.  Place the cursor on the screenshot area and then the cursor will be changed to ![线条指针](icon/line_mouse.svg) or ![箭头指针](icon/arrow_mouse.svg).
 5.  Hold down the left mouse button and drag the mouse to finish drawing.
 
 
 ##### Pencil
 
 ![1|pencil](jpg/pencil.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-
-1.  Click ![画笔](icon/Combined_Shape-normal.svg)on the toolbar under the screenshot area.
+1.  Click ![画笔](icon/Combined_Shape-normal.svg) on the toolbar under the screenshot area.
 2.  In the toolbar extension panel, select the pencil thickness. 
 3.  Place the cursor on the screenshot area and then the cursor will be changed to ![画笔指针](icon/brush red.svg).
 4.  Hold down the left mouse button and drag the mouse to finish drawing.
 
 If you need to draw a square, regular circle, etc., you can:
 
-- Hold down the **Shift** key on the keyboard and select ![矩形](icon/rectangle-normal.svg)to draw a square.
-- Hold down the **Shift** key on the keyboard and select  ![椭圆](icon/oval-normal.svg)to draw a regular circle.
-- Hold down the **Shift** key on the keyboard and select![直线](icon/line-normal.svg)or![箭头](icon/Arrow-normal.svg)to draw a straight line or straight line with arrow horizontally or vertically.
+- Hold down the **Shift** key on the keyboard and select ![矩形](icon/rectangle-normal.svg) to draw a square.
+- Hold down the **Shift** key on the keyboard and select  ![椭圆](icon/oval-normal.svg) to draw a regular circle.
+- Hold down the **Shift** key on the keyboard and select ![直线](icon/line-normal.svg) or ![箭头](icon/Arrow-normal.svg) to draw a straight line or straight line with arrow horizontally or vertically.
 
 
 #### Modify Graphics
@@ -234,34 +234,33 @@ If you need to draw a square, regular circle, etc., you can:
 You can modify and move the drawn graphics in the screenshot.
 
 ![1|修改图形](jpg/changetool.png)
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 ##### Move Graphics
 
 1.  Place the cursor over the graphics border line and the mouse will be changed to ![手指](jpg/fingers.png).
 2.  Hold down the left mouse button and drag the graphics to any place in the screenshot area.
-3.  Press ![向上](icon/Up.svg) , ![向下](icon/Down.svg), ![向左](icon/Left.svg) or![向右](icon/Right.svg) on the keyboard to move the graphics vertically or horizontally.
+3.  Press ![向上](icon/Up.svg) , ![向下](icon/Down.svg), ![向左](icon/Left.svg) or ![向右](icon/Right.svg) on the keyboard to move the graphics vertically or horizontally.
 
 
 ##### Edit Graphics
 
 1.  Place the cursor over the graphics border line.
-2.  Click the left mouse button to enter the editing mode and you can:
+2.  Left-click to enter the editing mode and you can:
     - Press the **Delete** key on the keyboard to delete the graphics.
     - Press **Ctrl + Z** on the keyboard to return to the previous step.
     - Place the cursor over the edit box and the mouse will be changed to![双箭头](icon/Mouse_Arrow.svg). You can enlarge or reduce the graphic area by dragging the cursor.
     - Press **Ctrl** +![向上](icon/Up.svg) ,  ![向下](icon/Down.svg)  ,![向左](icon/Left.svg) or ![向左](icon/Right.svg)  to extend the graphics area vertically or horizontally.
     - Place the cursor over ![旋转](icon/icon_rotate.svg) in the edit box and the cursor will be changed to ![旋转](icon/rotate_mouse.svg). Rotate the graphics by dragging the cursor.
-3.  Click the left mouse button outside the edit box to exit the editing mode.
+3.  Left-click outside the edit box to exit the editing mode.
 
 
 #### Add Text Annotation
 
-You are able to add text annotations to the screenshot in order to help others better understand it.
+You are able to add text annotations to the screenshot in order to help others better understand.
 
 ![0|文本框](jpg/text.png)
-
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 1.  Click ![文字](icon/text_normal.svg)on the toolbar under the screenshot area.
 2.  In the toolbar extension panel, select the font size as needed. 
@@ -282,9 +281,9 @@ You can modify and move the text annotations added.
 ##### Edit Text Annotations
 
 1.  Place the cursor over the text and the cursor will be changed to ![手指](jpg/fingers.png).
-2.  Click the left mouse button to enter the text editing mode and you can:
+2.  Left-click to enter the text editing mode and you can:
     - Press **Delete** on the keyboard to delete text annotations.
-    - Press  **Ctrl + Z** on the keyboard to return to the previous step.
+    - Press **Ctrl + Z** on the keyboard to return to the previous step.
     - Modify the text information in the text box.
 3.  Click outside the text box to exit editing mode.
 
@@ -303,7 +302,7 @@ Save the screenshot for future use.
 
 When the screenshot is saved successfully, you can see a prompt message in the upper right corner of the desktop. Click **View** to open the folder where the screenshot is located.
 
-You can save the screenshot  by the following ways after launching Screen Capture and selecting the screenshot area:
+You can save the screenshot by the following ways after launching Screen Capture and selecting the screenshot area:
 
 - Double-click to save the screen capture.
 - Click the "Start Shot" icon in the toolbar and press **Ctrl + S** to save the screenshot.
@@ -320,8 +319,8 @@ Click **Options** in the toolbar of the Screen Capture interface and expand the 
 - Select **Clipboard** to save the screenshot to clipboard.
 - Click **Desktop** (the default setting) and the screenshot will be saved to the desktop.
 - Click **Pictures** and the screenshot will be saved to the pictures folder automatically.
-- Click **Folder**, select the destination folder of the screenshot and the screenshot will be saved to the folder directory set by the user automatically. 
-- Select **Show cursor**, the cursor will be displayed in the screenshot area, and it's position and pattern will also be saved in the picture generated.
+- Click **Folder**. Select destination folder of the screenshot and the screenshot will be saved to the folder directory set by the user automatically. 
+- Select **Show cursor** and the cursor will be displayed in the screenshot area. Its position and pattern will also be saved in the picture generated.
 - Select **PNG/JPG/BMP** to set the screenshot format.
 
 
@@ -330,10 +329,10 @@ Click **Options** in the toolbar of the Screen Capture interface and expand the 
 #### Toolbar Instructions
 
 ![0|工具栏](jpg/recorder-bar.png)
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 >![notes](icon/notes.svg)Notes: 
 - If window effect is turned off in Control Center, screen recording will be hidden.
-- Loongson and SW platform don't support screen recording.
+- Screen recording is not supported by Loongson and SW platforms.
 
 <table class="block1">
     <caption>Icon Description</caption>
@@ -368,27 +367,26 @@ Click **Options** in the toolbar of the Screen Capture interface and expand the 
 After running screen recorder, you can select the recording area, namely full screen, automatic identification window and custom window.
 
 - Full screen and automatic identification window: when you select the recording area, screen recorder will automatically identify the window on the desktop along with mouse moving and there will be a rectangle selection box in the identified window.  Click to select the current window recording. As desktop is also a kind of windows, when the mouse is located on the desktop, full screen recording will be identified.
-- Custom window:  When selecting a recording area, you can use the mouse to select any area, then adjust the rectangle box position and size and finally click to select the current window for recording.
+- Custom window: When selecting a recording area, you can use the mouse to select any area. You can later adjust the rectangle box position and size and click to select the current window for recording.
 
 #### Set Sound, Keystroke, Camera and Click for Recording 
 
-In the toolbar of Screen Capture, you can set sound, keystroke, camera, etc. to make preparation for video recording.
+In the toolbar of Screen Capture, you can set sound, keystroke, camera, etc. to get ready for video recording.
 
 - Record sound: including microphone and built-in audio (enabled by default).
-- Keystroke: Click **Show Keystroke** and the operation keystroke will be displayed during screen recording. Up to five recent operation keystrokes can be displayed at the same time. Click **Hide Keystroke** to cancel keystroke display.
-- Camera:  Click **Webcam On** and the camera window is displayed on the recording screen. Drag the camera window border to adjust the window size and position. Click the icon once again to disable the camera. No image can be displayed and it will be displayed as black screen.
-- Click: Click **Show Click** to display mouse and touchscreen during screen recording and click it again to cancel display.
+- Keystroke: Hover the cursor over ![icon](icon/key_mormal.svg) and **Show Keystroke** will display. Click it and the operation keystroke will be displayed during screen recording. Up to five recent operation keystrokes can be displayed at the same time. Click the icon once again enable **Hide Keystroke** to cancel keystroke display.
+- Camera: Hover the cursor over ![icon](icon/webcam_normal.svg) and **Webcam On** will display. Click it and the camera window will be displayed on the recording screen. Drag the camera window border to adjust the window size and position. Click the icon once again to disable the camera. No image can be displayed and it will be displayed as black screen.
+- Click: Hover the cursor over ![icon](icon/mouse_mormal.svg) and **Show Click** will display. Click it to display mouse and touchscreen during screen recording. Click it again to cancel display.
 
 > ![attention](icon/attention.svg)Attention: Please check first whether the device connected supports sound recording and camera functions.
-
-- When the device connected supports sound recording and camera functions, you are able to make corresponding operation settings.
-- When the device connected does not support sound recording and camera functions, the icons are gray  and you are not able to make corresponding operation settings.
+>    - When the device connected supports sound recording and camera functions, you are able to process relevant operations.
+>    - When the device connected does not support sound recording and camera functions, the icons are gray and you are not able to process relevant operations.
 
 #### Set Recording Format and FPS (Frame Per Second)
 
-Click **Options** to expand the drop-down list in the **Screen Capture** toolbar, select the options and you are able to record videos in GIG or MP4 format and set the FPS.
+Click **Options** to expand the drop-down list in the **Screen Capture** toolbar. Select the options and you are able to record videos in GIF, MP4 and MKV format. You can also set the FPS.
 
-> ![notes](icon/notes.svg)Notes: Please start video recording after changing the corresponding settings if the default settings are not what you want.
+> ![notes](icon/notes.svg)Notes: Please start video recording after making changes to the settings if the default setting is not in line with your needs.
 
 #### Record Videos
 

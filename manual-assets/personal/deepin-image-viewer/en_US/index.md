@@ -23,13 +23,13 @@ You can run, close and create shortcuts for Image Viewer by the following ways.
 
 ### Exit Image Viewer
 
-1. On the Image Viewer interface, click  ![close](icon/close_icon.svg) to exit Image Viewer.
+1. On the Image Viewer interface, click ![close](icon/close.svg) to exit Image Viewer.
 2. Right-click ![viewer](icon/deepin-image-viewer.svg) on dock and select **Close All** to exit Image Viewer.
 3. Click ![Settings](icon/icon_menu.svg) on the Image Viewer interface and select **Exit** to exit Image Viewer.
 
 ### View Shortcuts 
 
-On the Image Viewer interface, press **Ctrl+ Shift+ ？** on the keyboard to view shortcuts. 
+On the Image Viewer interface, press **Ctrl + Shift + ?** on the keyboard to view shortcuts. 
 
 ![1|hotkey](jpg/hotkey.png)
 
@@ -46,7 +46,7 @@ You can use one of the following ways to open image files:
 
 > ![tips](icon/tips.svg)Tips: In Control Center, you can set Image Viewer as the default image viewer. Please refer to [Default Applications](dman:///dde#Default Application Settings) for specific operations.
 >
-> The supported images include the following format: BMP, ICO, PG/JPE/JPEG, PNG, TGA, TIF/TIFF, XPM, GIF, SGI, RAW, WEBP, CR2, NEF, DNG, RAF, MEF, MRW, XBM, SVG, ORF and MNG.
+> The supported images include the following format: BMP, ICO, JPG/JPE/JPEG, PNG, TGA, TIF/TIFF, XPM, GIF, SGI, RAW, WEBP, CR2, NEF, DNG, RAF, MEF, MRW, XBM, SVG, ORF and MNG.
 
 ### Main Interface
 

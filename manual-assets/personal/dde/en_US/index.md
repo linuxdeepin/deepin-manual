@@ -1,19 +1,19 @@
 # Desktop Environment|../common/dde.svg|
 
 ## Overview
-UOS(Uniontech operating system) is a beautiful, easy-to-use and reliable Linux desktop operating system. It is equipped with a series of original applications such as File Manager, App Store, Image Viewer, Movie, and etc, which not only offers you abundant entertainment experience but also meet your daily needs of learning and working. With continual improvement, UOS is becoming one of the most popular open-source operating systems in China.
+UnionTech OS is a beautiful, easy-to-use and reliable Linux desktop operating system. It is equipped with a series of original applications such as File Manager, App Store, Image Viewer, Movie, and etc, which not only offers you abundant entertainment experience but also meet your daily needs of learning and working. With continual improvement, UnionTech OS is becoming one of the most popular open-source operating systems in China.
 
 ![1|desk](jpg/desk.png)
 
 ### Getting Started
 
-When you log into the system for the first time, a welcome program will automatically start.  Watch the introduction video to get new features, customize your desktop, enable the window effect and know more about UOS.
+When you log into the system for the first time, a welcome program will automatically start.  Watch the introduction video to get new features, customize your desktop, enable the window effect and know more about UnionTech OS.
 
 ![0|welcome](jpg/welcome.png)
 
-Once login, you are experiencing UOS Desktop Environment, which is comprised of Desktop, Dock, Launcher, Control Center, and window manager. 
+Once login, you are experiencing UnionTech OS Desktop Environment, which is comprised of Desktop, Dock, Launcher, Control Center, and window manager. 
 
-Read below and learn how to work in the UOS Desktop Environment.
+Read below and learn how to work in the UnionTech OS Desktop Environment.
 
 ## Desktop
 
@@ -110,7 +110,7 @@ All the texts, pictures and documents cut and copied by the current user after l
 
 4. Click![close](icon/close_normal.svg)to delete the current content and click **Clear All** to clear the clipboard.
 
-   ![1|clipboard](jpg/clipboard.jpg)
+   ![1|clipboard](jpg/clipboard.png)
 
 ## Dock
 
@@ -121,7 +121,7 @@ In the Dock, there are icons of Launcher, applications, system tray, and plugins
 
 You can send application icons from Launcher to Dock so as to open it quickly.
 
-![1|fashion](jpg/dock.jpg)
+![1|fashion](jpg/dock.png)
 
 | Icon | Description |
 | ---- | ---- |
@@ -147,9 +147,9 @@ You can send application icons from Launcher to Dock so as to open it quickly.
 ### Switch Display Mode
 There are two display modes of Dock: fashion mode and efficient mode, icon sizes and window effects are different in them.
 
-![1|fashion](jpg/fashion.jpg)
+![1|fashion](jpg/fashion.png)
 
-![1|efficient](jpg/efficient.jpg)
+![1|efficient](jpg/efficient.png)
 
 You can switch the display modes by the following operations:
 
@@ -390,7 +390,7 @@ Once you open a setting module in Control Center, the navigation appears on the 
 The title bar contains the back button, search box, main menu and the window buttons.
 
 - Back button: Click ![back](icon/back.svg) to go back to the homepage.
-- Search box: Input a keyword and search the related settings.
+- Search box: Input a keyword or click ![voice](icon/voice.svg)to input voices (The input voices will be converted to texts and displayed in the search box.) and search the related settings.
 - Main menu: Click ![menu](icon/icon_menu.svg) to enter the main menu where you can set the window theme, view the manual and exit.
 
 ### Accounts
@@ -1212,7 +1212,7 @@ In order to avoid data loss or damage caused by software defects, hardware damag
 
 #### Backup
 
-UOS provides backup by initialization and backup through Control Center.
+UnionTech OS provides backup by initialization and backup through Control Center.
 
 ##### Backup by initialization
 
@@ -1241,11 +1241,11 @@ You can either manually backup / restore data or restore data by one click.
 
 #### Restore
 
-UOS provides "restore from grub" and "restore from control center".
+UnionTech OS provides "restore from grub" and "restore from control center".
 
 ##### Restore from Grub
 
-During system startup, in the system selection interface, click **System Restore**, you can choose "Reset to factory settings" to read and restore factory settings backup, or choose "restore UOS historical backup" to open the file directory and select the backup to be restored.
+During system startup, in the system selection interface, click **System Restore**, you can choose "Reset to factory settings" to read and restore factory settings backup, or choose "restore UnionTech OS historical backup" to open the file directory and select the backup to be restored.
 
 ##### Restore from Control Center
 
@@ -1295,12 +1295,12 @@ When there is only one system in the computer, Startup Delay will be switched of
 It is available to use the root permission, execute sudo operations, install and run the unsigned applications that are not in the App Store, which may damage the integrity of the system. No official maintenance services are available for such damage. Please use it with caution. The system is not in developer mode by default.
 
 1. On the homepage of Control Center, click ![general](icon/general.svg).
-2. Click the **Developer Mode** and click the **Enter Developer Mode** Icon.
+2. Click the **Developer Mode** and click the **Request Root Access** Icon.
 
-- If you choose the online Mode, please log into your network account first. Read the disclaimer carefully, check **Agree and Enter the Developer Mode** and click **Confirm** after understanding the precautions. The button will be changed to **Having Entered the Developer Mode** after the certificate is issued by the system.
+- If you choose the online Mode, please log into your Union ID first. Read the disclaimer carefully, check **Agree and Request Root Access** and click **Confirm** after understanding the precautions. The button will change to **Root Access Allowed**.
 - If you choose the offline mode, download the certificate according to the prompt. Enter the developer mode after importing the certificate.
 
-3. Click **Reboot Immediately** in the pop-up  dialogue and enter the developer mode after rebooting the system.
+3. Click **Restart Now** in the pop-up  dialogue and enter the developer mode after rebooting the system.
 
    > ![attention](icon/attention.svg)Attention: You can not exit or undo after you enter Developer Mode. All accounts will have root access.
 
@@ -1317,7 +1317,9 @@ User Experience Program collects your hardware, application and system informati
 ## Window Manager
 Window manager controls the placement and appearance of windows. It allows you to switch between your virtual desktops and manage the windows in various workspaces.
 
-![1|workspace](jpg/workspace.png.jpg)
+> ![notes](icon/notes.svg)Notes: this function is available only when **Window Effect** is turned on in **Personalization** in **Control Center**. 
+
+![1|workspace](jpg/workspace.png)
 
 ### Open Workspace
 Manage your desktop windows in different workspaces to enlarge your Workspaces.

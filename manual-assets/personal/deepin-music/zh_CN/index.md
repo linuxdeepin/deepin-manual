@@ -12,9 +12,9 @@
 
 ### 运行音乐
 
-1. 点击桌面底部的 ![launcher_icon](icon/deepin-launcher.svg) ，进入启动器界面。
+1. 点击桌面底部的 ![launcher_icon](icon/deepin-launcher.svg)，进入启动器界面。
 2. 上下滚动鼠标滚轮浏览或通过搜索，找到音乐 ![music_icon-24](icon/music_icon-24.svg) 点击运行。
-3. 右键单击 ![music_icon-24](icon/music_icon-24.svg) ，您可以：
+3. 右键单击 ![music_icon-24](icon/music_icon-24.svg)，您可以：
    - 点击 **发送到桌面**，在桌面创建快捷方式。
    - 点击 **发送到任务栏**，将应用程序固定到任务栏。
    - 点击 **开机自动启动**，将应用程序添加到开机启动项，在电脑开机时自动运行该应用。
@@ -44,11 +44,9 @@
 
 ### 查看快捷键
 
-在音乐界面上，按下 ![Ctrl](icon/Ctrl.svg) + ![Shift](icon/Shift.svg) + ![QM](icon/QM.svg) 组合键来查看快捷键，熟练的使用快捷键，将大大提升您的操作效率。
+在音乐界面上，按下 **Ctrl + Shift + ?** 组合键来查看快捷键，熟练的使用快捷键，将大大提升您的操作效率。
 
 ![0|view](jpg/hotkey.png)
-
-
 
 
 
@@ -62,7 +60,7 @@
 
 | 标号 | 名称          | 说明                                                         |
 | ---- | ------------- | ------------------------------------------------------------ |
-| 1    | 搜索框        | 用户可以通过搜素框快速查找音乐。                             |
+| 1    | 搜索框        | 用户可以通过搜索框快速查找音乐。                             |
 | 2    | 主菜单        | 通过菜单栏您可以添加新歌单、添加音乐、设置音乐、查看帮助手册、关于音乐、退出音乐。 |
 | 3    | 排序方式      | 可以对音乐列表进行排序，排序方式包括：添加时间、歌曲名称、歌手名称、专辑名称。 默认按添加时间排序。 |
 | 4    | 上一首/下一首 | 点击可以切换到上一首/下一首音乐。                            |
@@ -91,11 +89,11 @@
 ### 搜索音乐
 
 1. 在音乐界面顶部搜索框中，您可以：
-   - 点击![search](icon/search.svg)，输入关键字。   
+   - 点击 ![search](icon/search.svg)，输入关键字。   
 2. 按下键盘上的 **Enter** 键进行搜索。
    - 当搜索到匹配的信息时，在搜索结果列表点击播放全部，可以播放搜索结果列表中音乐。
    - 当没有搜索到匹配的信息时，在列表中间显示 “无搜索结果”。
-3. 在搜索框中点击![0|close](icon/close.svg)或删除输入的信息，即可清除当前输入的信息或取消搜索。
+3. 在搜索框中点击 ![close](icon/close.svg) 或删除输入的信息，即可清除当前输入的信息或取消搜索。
 
 
 ### 播放音乐
@@ -106,7 +104,7 @@
 - 在左侧导航栏播放列表下选择某歌单，右键单击 **播放**，可以按照当前设置的播放顺序播放当前歌单中所有歌曲。
 - 在音乐列表，点击 **播放所有**，可以按照当前设置的播放顺序播放当前列表中所有歌曲。
 
-> ![tips](icon/tips.svg)窍门：在音乐界面，点击 ![play_normal](icon/play_normal.svg)播放选中的歌曲；点击 ![suspend_normal](icon/suspend_normal.svg)暂停正在播放的歌曲；点击![last_normal](icon/last_normal.svg) 或 ![next_normal](icon/next_normal.svg) ，按照当前播放模式切换到上一首或下一首歌曲。
+> ![tips](icon/tips.svg)窍门：在音乐界面，点击 ![play_normal](icon/play_normal.svg) 播放选中的歌曲；点击 ![suspend_normal](icon/suspend_normal.svg) 暂停正在播放的歌曲；点击![last_normal](icon/last_normal.svg) 或 ![next_normal](icon/next_normal.svg)，按照当前播放模式切换到上一首或下一首歌曲。
 
 
 ### 收藏音乐
@@ -118,17 +116,17 @@
 
 ### 查看歌词
 
-在音乐界面，点击![lyric_normal](icon/lyric_normal.svg)切换到歌词界面，再次点击，收起歌词界面。
+在音乐界面，点击 ![lyric_normal](icon/lyric_normal.svg) 切换到歌词界面，再次点击，收起歌词界面。
 
 ### 调整播放模式
 
-在音乐界面，点击 ![single](icon/single-tune-circulation_normal.svg) 或  ![cross-cycling_normal](icon/cross-cycling_normal.svg) 或 ![sequential-loop_normal](icon/sequential-loop_normal.svg)调整播放模式。
+在音乐界面，点击 ![single](icon/single-tune-circulation_normal.svg) 或 ![cross-cycling_normal](icon/cross-cycling_normal.svg) 或 ![sequential-loop_normal](icon/sequential-loop_normal.svg)调整播放模式。
 
 其中，
 
-![single](icon/single-tune-circulation_normal.svg) ：单曲循环
+![single](icon/single-tune-circulation_normal.svg)：单曲循环
 
-![cross-cycling_normal](icon/cross-cycling_normal.svg) ：随机播放
+![cross-cycling_normal](icon/cross-cycling_normal.svg)：随机播放
 
 ![sequential-loop_normal](icon/sequential-loop_normal.svg)：列表循环
 
@@ -176,7 +174,7 @@
 
 ### 新建歌单
 
-1. 在音乐界面，点击“我的歌单”右侧的 ![icon_plus](icon/icon_plus.svg) 。
+1. 在音乐界面，点击“我的歌单”右侧的 ![icon_plus](icon/icon_plus.svg) 或![icon_menu](icon/icon_menu.svg) > **添加新歌单**。
 2. 输入歌单的名称。
 3. 按下键盘上的 **Enter** 键。
 
@@ -224,9 +222,9 @@
 
 您可以根据自己的喜好来调节音乐模式，如古典、摇滚、电子乐等。
 
-1. 在音乐界面，点击![icon_menu](icon/icon_menu.svg) 。
-2. 点击 **均衡器**。
-3. 开启 **均衡器**，您可以自定义调节“前置放大”增益值和频率波段，或者选择一种音乐模式，点击 **保存** 按钮。
+1. 在音乐界面，点击 ![icon_menu](icon/icon_menu.svg)。
+2. 选择 **均衡器**。
+3. 开启 **均衡器**，自定义调节“前置放大”增益值和频率波段，或者选择一种音乐模式，点击 **保存** 按钮。
 4. 点击 **恢复默认**，将设置恢复到默认状态。
 
 ![equalizer](jpg/equalizer.png)
@@ -237,7 +235,7 @@
 
 #### 基础设置
 
-1. 在音乐界面，点击 ![icon_menu](icon/icon_menu.svg) 。
+1. 在音乐界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **设置**。
 3. 在 **播放** 选项，您可以：
    - 勾选 **启动时自动播放** 复选框，在音乐启动后自动播放音乐。
@@ -250,7 +248,7 @@
 
 #### 快捷键设置
 
-1. 在音乐界面，点击 ![icon_menu](icon/icon_menu.svg) 。
+1. 在音乐界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **设置**。
 3. 在 **快捷键** 选项查看当前快捷键。
 4. 您可以选择并重新输入快捷键，来自定义快捷键。
@@ -260,7 +258,7 @@
 
 窗口主题包含浅色主题、深色主题和跟随系统主题，其中跟随系统主题为默认设置。
 
-1. 在音乐界面，点击![icon_menu](icon/icon_menu.svg)。
+1. 在音乐界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **主题**，选择一种主题颜色。
 
 
@@ -268,14 +266,14 @@
 
 查看帮助手册，通过帮助进一步让您了解和使用音乐。
 
-1. 在音乐界面，点击  ![icon_menu](icon/icon_menu.svg) 。
+1. 在音乐界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **帮助**。
 3. 查看音乐的帮助手册。
 
 
 ### 关于
 
-1. 在音乐界面，点击  ![icon_menu](icon/icon_menu.svg) 。
+1. 在音乐界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **关于**。
 3. 查看音乐的版本和介绍。
 

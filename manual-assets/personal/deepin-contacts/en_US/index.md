@@ -2,7 +2,7 @@
 
 ## Overview
 
-Contacts is a communication management software based on Cloud Sync accounts supporting functions such as video conference, desktop sharing and so on, which provides users with great convenience in discussion and communication, and efficiency improvement as well.  
+Contacts is a communication management software based on Cloud accounts supporting functions such as video conference, desktop sharing and so on, which provides users with great convenience in discussion and communication, and efficiency improvement as well.  
 
 ![1homepage](jpg/1homepage.png)
 
@@ -91,11 +91,11 @@ This interface mainly displays the contacts who request to add you as a friend.
 
 #### Add Friends Classification
 
-1. One default friends classification is displayed here, if you want to add others, do as follows.
+One default friends classification is displayed here, if you want to add others, do as follows.
 
 2. Hover the cursor over **Friends** and right-click; or click ![19](icon/19.svg), a popping-up box saying  **Add Friends Classification** appears.
 
-3. Click **Add Friends Classification** to input a name, then, a new classification is created. If you haven't input a name for the new classification when creating it, you can right-click to select **Rename Classification**.
+3. Input a name and press **Enter** key, then, a new classification is created. If you have to change its name, you can right-click to select **Rename Classification**.
 
 ![3add friend group](jpg/3add-friend-group.png)
 
@@ -140,8 +140,8 @@ To add a friend, you can:
 
 #### Move Friend to
 
-1. Select the friend you want to move, and right-click.
-2. Select another classification in the popping-up box to complete this operation.
+1. Select the friend you want to move, right-click and select **Move Friend To**.
+2. Select the target classification in the popped-up box to complete this operation.
 
 #### Delete Friend
 
@@ -205,8 +205,8 @@ To create a new group, you can:
 
 #### Move Group to
 
-1. Select the group you want to move, and right-click.
-2. Select another groups classification in the popping-up box to complete this operation.
+1. Select the group you want to move, right-click and select **Move Group To**.
+2. Select the target groups classification in the popping-up box to complete this operation.
 
 #### Dismiss Group
 
@@ -231,7 +231,7 @@ To create a new group, you can:
 
 1. Click ![chat](icon/chat.svg) to start chatting in the group, and in the chatting window, you can send emoji and files, share contact card, view chat history and make video calls.
 2. Click![detail](icon/detail.svg) to view the group's information and group members' personal information;  click ![14](icon/14.svg) to exit the group. 
-3. In the left column, right-click a group and select **Top**, this group will be displayed on the top; select **Mute**, there will be no reminders when there're group messages; select **Delete**, the group will be deleted from the chatting list.
+3. In the left column, right-click a group and select **Top**, this group will be displayed on the top; select **Mute**, there will be no reminders when there are group messages; select **Delete**, the group will be deleted from the chatting list.
 
 
 
@@ -284,7 +284,7 @@ This function is designed only for the option **Allow guest dial-in** .
 
 1. Click  **Quickly Join Conference**, a popped-up box appears.
 
-2. Input the conference room number and password, select whether to "turn off camera" or "turn off microphone" or not, then join the conference. 
+2. Input the conference room number and password, select whether to "turn off camera" or "turn off microphone" or not, then click **Join**. 
 
 ![6quick meeting](jpg/6quick-meeting.png)
 

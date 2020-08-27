@@ -13,8 +13,8 @@ You can run, close or create a shortcut for calendar by the following ways.
 ### Run Calender
 
 1.  Click ![deepin-launcher](icon/deepin-launcher.svg) on dock to enter the Launcher interface.
-2.  Locate ![draw](icon/dde-calendar.svg)by scrolling the mouse wheel or searching calendar in the Launcher interface and click it to run.
-3.  Right-click ![draw](icon/dde-calendar.svg)and you can:
+2.  Locate ![draw](icon/dde-calendar.svg) by scrolling the mouse wheel or searching calendar in the Launcher interface and click it to run.
+3.  Right-click ![draw](icon/dde-calendar.svg) and you can:
 
    - Click **Send to desktop** to create a desktop shortcut.
    - Click **Send to dock** to fix it on Dock.
@@ -23,13 +23,13 @@ You can run, close or create a shortcut for calendar by the following ways.
 
 ### Exit Calendar
 
-- On the Calendar interface, click  ![close_icon](icon/close.svg) to exit calendar.
-- Right-click ![draw](icon/dde-calendar.svg)on dock and select **Close All** to exit.
+- On the Calendar interface, click ![close_icon](icon/close.svg) to exit calendar.
+- Right-click ![draw](icon/dde-calendar.svg) on dock and select **Close All** to exit.
 - Click ![icon_menu](icon/icon_menu.svg) on the Calendar interface and select  **Exit** to exit.
 
 ### View Shortcuts
 
-On the Calendar interface, press **Ctrl + Shift+ ?** on the keyboard to view shortcuts. Proficiency in shortcuts will greatly improve your efficiency.
+On the Calendar interface, press **Ctrl + Shift + ?** on the keyboard to view shortcuts. Proficiency in shortcuts will greatly improve your efficiency.
 
 ![0|view](jpg/hotkey.png)
 
@@ -55,7 +55,7 @@ The monthly view is the default view and you can click to switch between differe
 ### Create Events
 
 1.  Select a date in the  monthly, weekly or daily view.
-2.  Right-click to select **New event** and pops up the  **New event** window.
+2.  Right-click to select **New event** and pops up the **New event** window.
 3.  Set the schedule type, description, time, reminder, etc.
 
    ![0|create](jpg/create.png)
@@ -66,7 +66,7 @@ The monthly view is the default view and you can click to switch between differe
    
       - When all day is checked:
          - You can only select dates as starts and ends and cannot set hours and minutes. 
-         - Remind me: Never, On start day (9:00 AM), 1 day before (the default setting), 2 days before and 1 week before
+         - Remind me: Never, On start day (9:00 AM), 1 day before (the default setting), 2 days before and 1 week before.
       
       - When all day is not checked:
          - You can select dates, hours and minutes as starts and ends.
@@ -84,11 +84,11 @@ The monthly view is the default view and you can click to switch between differe
 
 ### Edit Events
 
-1. Right-click a date with schedule in the  monthly, weekly or daily view.
+1. Right-click a date with schedule in the monthly, weekly or daily view.
 2.  Select **Edit** and pops up the **Edit Event** dialogue.
 3.  Set the relevant properties of the editing event.  
 4.  Click **Save**. 
-5.  If it is set all day or repeatedly, a prompt box will pop up for you to confirm the prompt information and then complete editing. 
+5.  If it is set all day or repeatedly, a prompt box will pop up for you to confirm the prompt information and complete editing. 
 
 During event editing, different prompt information will be displayed according to the change content. Please refer to the icon description in the prompt information in the table below.
 
@@ -101,14 +101,14 @@ During event editing, different prompt information will be displayed according t
 
 ### Set an All-day or Multiple-day Event
 
-Check **All Day**, set the **Starts** and **Ends ** and you are able to set an all-day or multiple consecutive all-day events when creating or editing an event.
+Check **All Day**, set the **Starts** and **Ends** and you are able to set an all-day or multiple consecutive all-day events when creating or editing an event.
 
 ### Set Repeating Events
 
 1. Click the drop-down list on the right of **Repeat** and select an option when creating or editing an event.
-   - **Daily**:  Enter the number of days between each repetition.
+   - **Daily**: Enter the number of days between each repetition.
    - **Weekdays**: Enter the number of weekdays between each repetition.
-   - **Weekly**:  Enter the number of weeks between each repetition and select the day on which the event should occur.
+   - **Weekly**: Enter the number of weeks between each repetition and select the day on which the event should occur.
    - **Monthly**: Enter the number of months between each repetition.
    - **Yearly**: Enter the number of months between each repetition and click the month in which the schedule should occur.
 
@@ -116,7 +116,7 @@ Check **All Day**, set the **Starts** and **Ends ** and you are able to set an a
 
 ### View Events
 
-Double-click an event title in the  monthly, weekly or daily view and pops up the "My Event"window. You can view events, [Edit Events](#Edit Events) or [Delete Events](#Delete Events). 
+Double-click an event title in the  monthly, weekly or daily view and pops up the "My Event" window. You can view events, [Edit Events](#Edit Events) or [Delete Events](#Delete Events). 
 
 ### View Schedule Reminder Details
 
@@ -126,27 +126,27 @@ Please refer to the detailed icon description in the prompt information of sched
 
 | Icon                   | Description                                                  |
 | ---------------------- | ------------------------------------------------------------ |
-| Remind me later        | The reminder is set to the current day.  After the first reminder, click "Remind me later" and you will be reminded 10 minutes later. Then the reminder time interval will be increased 5 minutes more each time you click "Remind me later". |
+| Remind me later        | The reminder is set to the current day. After the first reminder, click "Remind me later" and you will be reminded 10 minutes later. Then the reminder time interval will be increased 5 minutes more each time when you click "Remind me later". |
 | Remind  me    tomorrow | The reminder is set to one day or two days ahead of the schedule. |
 | One day before start   | The reminder is set to one week ahead of the schedule.       |
 | Close                  | Turn off the prompt information.                             |
 
 ### Search Events
 
-In the yearly, monthly, weekly or daily view,  enter events in the top search box and the corresponding search results will be displayed automatically on the right of the calendar.
+In the yearly, monthly, weekly or daily view, enter events in the top search box and the corresponding search results will be displayed automatically on the right of the calendar.
 
-1.  In the top search box of the Calendar interface, you can click![search](icon/search.svg)to enter keywords.
+1.  In the top search box of the Calendar interface, you can click ![search](icon/search.svg) to enter keywords.
 
 2.  Press the **Enter** key on the keyboard for searching.
    - When there is matched information, the search result list will be displayed on the right.
    - When there is no matched information, "No search results" will be displayed on the right.
 
-3.   Click ![0|close](icon/close.svg)or delete the entered information in the search box to clear the currently-entered keywords or cancel the search. 
+3.   Click ![0|close](icon/close.svg) or delete the entered information in the search box to clear the current keywords or cancel the search. 
 
 ### Delete Events
 
 1.  Right-click a date with event in the monthly, weekly or daily view.
-2.  Click **Delete** and pops up the **You are deleting an event** prompt box.
+2.  Click **Delete** and **You are deleting an event** prompt box will pop up.
 3.  Confirm the prompt information and delete the event.
 
 You can also click **Cancel** to cancel the operation.
@@ -179,7 +179,7 @@ On the main menu, you can switch window themes, view help manual and get more in
 
 The window theme includes Light Theme, Dark Theme and System Theme (default).
 
-1.  On the Calendar interface, click![icon_menu](icon/icon_menu.svg).
+1.  On the Calendar interface, click ![icon_menu](icon/icon_menu.svg).
 
 2.  Click **Theme** to select a theme.
 

@@ -2,7 +2,7 @@
 
 ## Overview
 
-Movie shares comfortable leisure time with you! Movie is a video player with various features. It offers simple interface and rich shortcuts. You can fullfill all operations with keyboard, which lets you get rid of the bondage of mouse clicks completely. It supports various video formats. 
+Movie shares a pleasant leisure time with you! Movie is a video player which supports many video formats with various features. With its simple interface and rich shortcuts, you can fulfill all operations with just one keyboard, saying farewell to your mouse in an easy way. 
 
 ![1|main](jpg/main.png)
 
@@ -11,7 +11,7 @@ Movie shares comfortable leisure time with you! Movie is a video player with var
 ### Run Movie
 
 1.  Run ![deepin-launcher](icon/deepin-launcher.svg) on dock to enter the Launcher interface.
-2.  Locate  ![movie-24](icon/movie-24.svg) by scrolling the mouse wheel or searching movie in the Launcher interface and click it to run.
+2.  Locate ![movie-24](icon/movie-24.svg) by scrolling the mouse wheel or searching movie in the Launcher interface and click it to run.
 3.  Right-click ![movie-24](icon/movie-24.svg) and you can:
  - Click **Send to desktop** to create a desktop shortcut.
  - Click **Send to dock** to fix it on Dock.
@@ -19,14 +19,14 @@ Movie shares comfortable leisure time with you! Movie is a video player with var
 
 ### Exit Movie
 - On the Movie interface, click ![close](icon/close.svg) to exit.
-- Right-click ![movie-24](icon/movie-24.svg) on Dock and  select **Close All** to exit.
-- Click ![icon_menu](icon/icon_menu.svg) on the Movie interface and select  **Exit** to exit.
+- Right-click ![movie-24](icon/movie-24.svg) on Dock and select **Close All** to exit.
+- Click ![icon_menu](icon/icon_menu.svg) on the Movie interface and select **Exit** to exit.
 
 ### View Shortcuts
 
 Learning about the shortcuts in advance before playing videos will make your subsequent operations more effective.
 
-1.  On the Movie interface, press  **Ctrl+Shift+?** on the keyboard to open the shortcut preview interface.
+1.  On the Movie interface, press **Ctrl + Shift + ? ** on the keyboard to open the shortcut preview interface.
 2.   You can view all the shortcuts on the preview interface.
 
 > ![attention](icon/attention.svg)Attention: You can open the shortcut preview interface any time during your video playback.
@@ -50,7 +50,7 @@ Perform the common playback operations and enjoy the videos to your heart's cont
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-> ![notes](icon/notes.svg)Notes: The preview window is displayed by default when the mouse is placed over the progress bar. If you do not need to display the preview window, you can enter the settings to change it. Please refer to the [Basic Settings](#Basic Settings) for details.
+> ![notes](icon/notes.svg)Notes: The preview window is displayed by default when the mouse is placed over the progress bar. If you do not need to display the preview window, you can enter the settings to change. Please refer to the [Basic Settings](#Basic Settings) for details.
 
 ### Icon Description
 
@@ -68,9 +68,9 @@ Perform the common playback operations and enjoy the videos to your heart's cont
 ### Play Films
 
 You can play films by the following ways:
-- When there is no files in the playlist, click![play](icon/play_normal.svg)and open the file selector to select a film file.
-- On the Movie interface, right-click or click![menu](icon/icon_menu.svg) to select **Open file** and open the file selector to select a film file.
-- On the Movie interface, right-click or click![menu](icon/icon_menu.svg) to select **Open folder**. All the audiovisual files in the folder are displayed in the playlist and played in turn. 
+- When there is no files in the playlist, click ![play](icon/play_normal.svg) and open the file selector to select a film file.
+- On the Movie interface, right-click or click ![menu](icon/icon_menu.svg) to select **Open file** and open the file selector to select a film file.
+- On the Movie interface, right-click or click ![menu](icon/icon_menu.svg) to select **Open folder**. All the audiovisual files in the folder are displayed in the playlist and played in turn. 
 - On the Movie interface, right-click to select **Open URL** and paste the online address to play the film.
 - On the Movie interface, right-click to select **Open CD/DVD** to play the films in CD/DVD.
 - Drag the file/folder directly to the Movie interface to play local films.
@@ -82,18 +82,16 @@ You can play films by the following ways:
 
 ### Forward/Rewind
 
-1.  On the Movie interface, press![Right](icon/Right.svg) on the keyboard to fast forward the film.
-2.  On the Movie interface, press![Left](icon/Left.svg) on the keyboard to fast rewind the film.
+1.  On the Movie interface, press ![Right](icon/Right.svg) on the keyboard to fast forward the film.
+2.  On the Movie interface, press ![Left](icon/Left.svg) on the keyboard to fast rewind the film.
 
 ### Speed Up/Down
 
-1.  On the Movie interface, press **Ctrl**+![Right](icon/Right.svg) on the keyboard to speed up the film playback.
-2.  Press **Ctrl** +![Left](icon/Left.svg) on the keyboard to speed down the film playback.
+1.  On the Movie interface, press **Ctrl **+ ![Right](icon/Right.svg) on the keyboard to speed up the film playback.
+2.  Press **Ctrl** + ![Left](icon/Left.svg) on the keyboard to speed down the film playback.
 3.  If you want to restore the original play speed, press **R** on the keyboard.
 
->![notes](icon/notes.svg)Notes: Speed up/down is relative to the original play speed. The video playback speed increases / decreases by 0.1 times by default each time it is sped up / down. Press and hold **Ctrl**+![Right](icon/Right.svg) or ![Left](icon/Left.svg) on the keyboard and the playback speed will increase or decrease. The maximum playback speed is 2 times the original playback speed and the minimum playback speed is 0.1 times the original playback speed.
-
-## Functions
+>![notes](icon/notes.svg)Notes: Speed up/down is relative to the original play speed. The video playback speed increases / decreases by 0.1 times by default each time it is sped up / down. Press and hold **Ctrl** + ![Right](icon/Right.svg) or ![Left](icon/Left.svg) on the keyboard and the playback speed will increase or decrease. The maximum playback speed is 2 times faster than the original playback speed and the minimum playback speed is 10 times slower than the original playback speed.
 
 ### Adjust Window
 
@@ -161,7 +159,7 @@ You can adjust the window size as you wish during playback.
 ### View Film Info
 
 1.  Right-click on the Movie interface.
-2.  Select **Film Info** and you can view the film info, code info and audio info of the film. 
+2.  Select **Film Info** and you can view the film info, codec info and audio info of the film. 
 
 
 ## Playlist Management
@@ -176,7 +174,7 @@ You can add films to the playlist by the following ways:
 
 ### Delete Film from the Playlist
 
-1.  Click ![movie](icon/episodes_normal.svg )on the Movie interface.
+1.  Click ![movie](icon/episodes_normal.svg ) on the Movie interface.
 2. Hover the mouse pointer over video file and right-click to select **Delete from playlist**.
 
 > ![tips](icon/tips.svg)Tips: On the playlist interface, hover the mouse pointer over the video file and click![关闭图标](icon/close.svg) to delete it.
@@ -186,12 +184,12 @@ You can add films to the playlist by the following ways:
 
 ### Clear the Playlist
 
-1.  Click![movie](icon/episodes_normal.svg )on the Movie interface.
-2.  Click the **Empty** icon under Playlist or  right-click to select **Empty playlist**.
+1.  Click ![movie](icon/episodes_normal.svg ) on the Movie interface.
+2.  Click the **Empty** icon under Playlist or right-click to select **Empty playlist**.
 
 ### Display in File Manager
 
-1.   Click![movie](icon/episodes_normal.svg )on the Movie interface.
+1.   Click ![movie](icon/episodes_normal.svg ) on the Movie interface.
 2.  Hover the mouse pointer over the video file and right-click to select **Display in file manager** to show the film file in file manager.
 
 ## Main Menu
@@ -209,48 +207,42 @@ You can set the basic information, shortcut keys and subtitles.
   - Check the **Clear playlist when exit** box to clear the playlist when you exit Movie.
   - Check the **Remember playback position** box to resume the film automatically from the last position played when Movie runs.
   - Check the **Auto add similar files to play **box to add the similar film files in the same folder to the playlist  for playback in order.
-  - Check the  **Show video preview on mouseover** box to show the film preview when hovering on the progress bar.
-  - Check the **Show thumbnails in progress bar** , a preview window will be displayed when the cursor hovers on the progress bar.
+  - Check the **Show video preview on mouseover** box to show the film preview when hovering on the progress bar.
+  - Check the **Show thumbnails in progress bar**, a preview window will be displayed when the cursor hovers on the progress bar.
   - Check the **Pause when minimized** to pause the playback automatically when minimizing the Movie window.
 4.  In the option of **Screenshot**, you can select the path to save screenshots as you wish.
 
-
-
 #### Shortcuts Settings
 
-1.  Right-click or click ![界面按钮图标](icon/icon_menu.svg)on the Movie interface.
+1.  Right-click or click ![界面按钮图标](icon/icon_menu.svg) on the Movie interface.
 2.  Select **Settings** > **Shortcuts**.
 3.  You can select and input new shortcuts.
 
-
-
 #### Subtitle Settings
 
-1.   Right-click or click ![界面按钮图标](icon/icon_menu.svg)on the Movie interface.
+1.   Right-click or click ![界面按钮图标](icon/icon_menu.svg) on the Movie interface.
 2.  Select **Settings** > **Subtitle**.
 3.  You can set the font and font size for subtitles.
 >  ![attention](icon/attention.svg)Attention: Click **Restore Defaults** on the interface to restore all settings.
-
-
 
 ### Theme
 
 The window theme includes Light Theme, Dark Theme and System Theme (default).
 
-1.  On the Movie interface, click![icon_menu](icon/icon_menu.svg).
+1.  On the Movie interface, click ![icon_menu](icon/icon_menu.svg).
 2.  Click **Theme** to select a theme.
 
 ### Help
 
 View Help to get more information about Movie.
 
-1.   On the Movie interface, click ![icon_menu](icon/icon_menu.svg) .
+1.   On the Movie interface, click ![icon_menu](icon/icon_menu.svg).
 2.  Select **Help**.
 3.  View the manual.
 
 ### About
 
-1.  On the Movie interface, click ![icon_menu](icon/icon_menu.svg) .
+1.  On the Movie interface, click ![icon_menu](icon/icon_menu.svg).
 2.  Select **About**.
 3.  View the version description.
 

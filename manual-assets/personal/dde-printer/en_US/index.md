@@ -98,7 +98,7 @@ After you add a printer and select the correct driver, click **Install Driver** 
 - Successfully Installed 
   A window pops up saying the printer is successfully installed, in which you can click **Print Test Page** to verify if printing works normally, or, you can click **View Printer** to enter the interface of printer manager. 
 
-  ![0|8successful installion](jpg/8successful installion.png)
+  ![0|8successful installion](jpg/8successful install.png)
 
 - Install Failed
   
@@ -160,7 +160,7 @@ Once a printer is added successfully, when you click the printer in the interfac
 
    - Delete: click this button to delete current job. 
 
-     ![0|11print queue](jpg/11print-queue.png)
+     ![0|11print queue](jpg/11print queue.png)
 
 4. Operation with right-clicking:
 
@@ -168,7 +168,7 @@ Once a printer is added successfully, when you click the printer in the interfac
 
 
 
-![0|11right click setting](jpg/11right-click-setting.png)
+![0|11right click setting](jpg/11right click setting.png)
 
 
 
