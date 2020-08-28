@@ -61,6 +61,7 @@ popd
 %{_datadir}/deepin-manual/web_dist/index.js
 %{_datadir}/deepin-manual/web_dist/qwebchannel.js
 %{_datadir}/icons/hicolor/scalable/apps/deepin-manual.svg
+%{_datadir}/%{name}/manual-assets/deepin-manual.svg
 %{_datadir}/deepin-manual/manual-assets/professional/*
 %{_datadir}/%{name}/translations/*.qm
 %{_datadir}/deepin-manual/manual-assets/server/*
