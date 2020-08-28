@@ -19,10 +19,12 @@
 #define UT_UTILS_TEST_H
 
 #include "gtest/gtest.h"
-#include "base/utils.h"
+
 #include <QTest>
 #include <QObject>
 #include <QTimer>
+
+class Utils;
 
 class ut_utils_test : public QObject, public::testing::Test
 {

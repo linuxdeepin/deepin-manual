@@ -223,6 +223,11 @@ add_dependencies(update-search-db
 
 # /*** 2020-08-12 20:37:50 wangml ***/
 
+set(COMMAND_FILES
+    base/command.cpp
+    base/command.h
+    )
+
 set(PROJECT_NAME_TEST
     ${PROJECT_NAME}_test)
 
@@ -252,6 +257,8 @@ add_executable(${PROJECT_NAME_TEST}
     ${RESOURCES_FILES}
     ${VIEW_FILES}
     ${CONTROLLER_FILES_TEST}
+    ${COMMAND_FILES}
+
 
     ${allTestSource}
     ${BASE_FILES_TEST}
@@ -378,7 +385,7 @@ add_custom_command(TARGET test
     #3.过滤一些我们不感兴趣的文件的覆盖率信息
     COMMAND echo " =================== do filter begin ==================== "
     COMMAND lcov --remove ./coverageResult/${PROJECT_NAME}_Coverage.info
-    '*/${PROJECT_NAME_TEST}_autogen/*' '*/${PROJECT_NAME}_autogen/*' '*/usr/include/*' '*/dman_qtest/*' '*/googletest/*' '*/src/*autogen*/*'
+    '*/${PROJECT_NAME_TEST}_autogen/*' '*/${PROJECT_NAME}_autogen/*' '*/usr/include/*' '*/dman_qtest/*' '*/googletest/*' '*/src/*autogen*/*' '*/app/*'
     -o ./coverageResult/${PROJECT_NAME}_Coverage.info
     COMMAND echo " =================== do filter end ==================== "
 

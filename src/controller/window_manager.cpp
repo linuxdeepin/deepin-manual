@@ -59,7 +59,6 @@ void WindowManager::initDBus()
     if (!dbusConn.registerService(dman::kManualSearchService + QString(WM_SENDER_NAME))
             || !dbusConn.registerObject(dman::kManualSearchIface + QString(WM_SENDER_NAME), this)) {
         qCritical() << WM_SENDER_NAME << " failed to register dbus service!";
-
         return;
     } else {
         qDebug() << WM_SENDER_NAME << " register dbus service success!";

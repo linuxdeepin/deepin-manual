@@ -15,7 +15,11 @@
 * You should have received a copy of the GNU General Public License
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+
 #include "ut_utils_test.h"
+#define private public
+#include "base/utils.h"
+#undef private
 #include "resources/themes/images.h"
 
 ut_utils_test::ut_utils_test()
@@ -31,6 +35,18 @@ void ut_utils_test::SetUp()
 void ut_utils_test::TearDown()
 {
     delete m_utils;
+}
+
+TEST_F(ut_utils_test, isFontMimeType)
+{
+    QString filePath = "file:///usr/share/fonts/truetype/liberation/LiberationSans-Italic.ttf";
+    ASSERT_TRUE(m_utils->isFontMimeType(filePath));
+}
+
+TEST_F(ut_utils_test, isFontMimeType2)
+{
+    QString filePath = "file:///usr/share/fonts/truetype/liberation/LiberationSans-Italic.tt";
+    ASSERT_FALSE(m_utils->isFontMimeType(filePath));
 }
 
 TEST_F(ut_utils_test, suffixList)
@@ -92,11 +108,107 @@ TEST_F(ut_utils_test, renderSVG)
     ASSERT_EQ(pix.width(), 20);
     ASSERT_EQ(pix.height(), 20);
 }
+
+TEST_F(ut_utils_test, renderSVG2)
+{
+    QString imgPath = dman::kImageDarkSearchIcon;
+    imgPath += "xx";
+    QPixmap pix = m_utils->renderSVG(imgPath, QSize(20, 20));
+//    ASSERT_EQ(pix.width(), 20);
+//    ASSERT_EQ(pix.height(), 20);
+}
+
+TEST_F(ut_utils_test, loadFontFamilyByType)
+{
+    m_utils->loadFontFamilyByType(m_utils->FontType:: SourceHanSansMedium);
+}
+
+TEST_F(ut_utils_test, loadFontFamilyByType2)
+{
+    QString str = m_utils->loadFontFamilyByType(m_utils->FontType:: SourceHanSansNormal);
+    ASSERT_EQ(str, "");
+}
+
+TEST_F(ut_utils_test, loadFontFamilyByType3)
+{
+    m_utils->loadFontFamilyByType(m_utils->FontType:: DefautFont);
+}
+
+TEST_F(ut_utils_test, loadFontBySizeAndWeight)
+{
+    QFont font = m_utils->loadFontBySizeAndWeight("arial", 20, 20);
+    ASSERT_EQ(font.family(), "arial");
+}
+
+TEST_F(ut_utils_test, fromSpecialEncoding)
+{
+    ASSERT_EQ(m_utils->fromSpecialEncoding("帮助"), "帮助");
+}
+
+TEST_F(ut_utils_test, fromSpecialEncoding2)
+{
+    ASSERT_EQ(m_utils->fromSpecialEncoding("1"), "1");
+}
+
 TEST_F(ut_utils_test, translateTitle)
 {
-    ASSERT_EQ(m_utils->translateTitle("accounts"), "账户设置");
+    QString str = m_utils->translateTitle("accounts");
+    if (QLocale::system().name() == "zh_CN")
+        ASSERT_EQ(str, "账户设置");
+    else
+        ASSERT_EQ(str, "Account Settings");
+
 }
+
+TEST_F(ut_utils_test, launcherInterface)
+{
+
+    m_utils->launcherInterface();
+}
+
+
 TEST_F(ut_utils_test, hasSelperSupport)
 {
     ASSERT_TRUE(m_utils->hasSelperSupport());
+}
+
+TEST_F(ut_utils_test, exapplicationHelperInstance)
+{
+    ExApplicationHelper *eh = ExApplicationHelper::instance();
+}
+
+TEST_F(ut_utils_test, standardPalette)
+{
+    ExApplicationHelper ex;
+//    ExApplicationHelper::standardPalette(DGuiApplicationHelper::DarkType);
+    ex.standardPalette(DGuiApplicationHelper::DarkType);
+}
+
+TEST_F(ut_utils_test, eventFilter)
+{
+    ExApplicationHelper ex;
+    QEvent *e;
+    ex.eventFilter(&ex, e);
+}
+
+TEST_F(ut_utils_test, setPalette)
+{
+    QWidget *w = new QWidget;
+    DPalette p;
+    ExApplicationHelper ex;
+    ex.setPalette(w, p);
+}
+
+TEST_F(ut_utils_test, resetPalette)
+{
+    ExApplicationHelper ex;
+    QWidget *w = new QWidget;
+    ex.resetPalette(w);
+}
+
+TEST_F(ut_utils_test, ExApplicationHelper)
+{
+    ExApplicationHelper *ex = new ExApplicationHelper;
+    ex->deleteLater();
+
 }
