@@ -23,6 +23,10 @@ BuildRequires: qt5-devel
 BuildRequires: pkgconfig(dtkwidget)
 BuildRequires: pkgconfig(dtkgui)
 BuildRequires: pkgconfig(dtkcore)
+BuildRequires: qt5-qtwebengine-devel
+BuildRequires: qt5-qtwebchannel-devel
+BuildRequires: qt5-linguist
+BuildRequires: qt5-qtx11extras-devel
 
 
 %description
