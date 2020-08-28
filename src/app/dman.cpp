@@ -31,6 +31,7 @@
 #include <QIcon>
 #include <DLog>
 #include <QDateTime>
+#include <QSurfaceFormat>
 
 DWIDGET_USE_NAMESPACE
 
@@ -50,7 +51,13 @@ int main(int argc, char **argv)
 
 //    qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "7777");
 //    Dtk::Widget::DApplication::loadDXcbPlugin();
-
+//    QCoreApplication::setAttribute(Qt::AA_UseOpenGLES);
+    qputenv("QT_WAYLAND_SHELL_INTEGRATION", "kwayland-shell");
+    qputenv("_d_disableDBusFileDialog", "true");
+    setenv("PULSE_PROP_media.role", "video", 1);
+    QSurfaceFormat format;
+    format.setRenderableType(QSurfaceFormat::OpenGLES);
+    format.setDefaultFormat(format);
 
     Dtk::Widget::DApplication app(argc, argv);
     if (!DPlatformWindowHandle::pluginVersion().isEmpty()) {
