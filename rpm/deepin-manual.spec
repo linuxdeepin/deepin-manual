@@ -66,7 +66,6 @@ popd
 %{_datadir}/deepin-manual/manual-assets/server/*
 %doc README.md
 %license LICENSE
-%{_bindir}/%{name}
 
 
 %changelog
