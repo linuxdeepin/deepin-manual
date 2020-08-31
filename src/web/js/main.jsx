@@ -112,6 +112,11 @@ export default class Main extends Component {
     }
   }
 
+  shouldComponentUpdate(nextProps,nextState){
+    console.log("main shouldComponentUpdate====");
+    return true;
+  }
+
   componentWillUpdate(){
     console.log("main componentWillUpdate..");
   }

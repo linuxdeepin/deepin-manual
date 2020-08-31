@@ -84,6 +84,15 @@ export default class Article extends Component {
     this.componentDidUpdate();
   }
 
+  shouldComponentUpdate(nextProps,nextState){
+    console.log("article shouldComponentUpdate====",this.hash , "prop hash:" ,this.props.hash);
+    // if (this.hash == this.props.hash)
+    // {
+    //   return false;
+    // }
+    return true;
+  }
+
   componentWillReceiveProps(nextProps) {
     console.log("article componentWillReceiveProps nextfile",nextProps.nextProps,' prop.file:',this.props.file);
     if (nextProps.file != this.props.file) {

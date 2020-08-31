@@ -320,16 +320,17 @@ var App = function (_React$Component) {
         var url = '/open/' + file + '/' + hash + '/' + key;
         _this3.context.router.history.push(url);
 
+        //Init属性设置, 放在index与opentitle中. 避免直接跳转到特定模块时会先走/模块.
+        if (_this3.state.init == false) {
+          _this3.setState({ init: true });
+        }
+
         //通知qt对象,修改应用打开状态
         global.qtObjects.manual.setApplicationState(file);
       };
 
       global.openTitle = function (file) {
         var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-
-        if (_this3.state.init == false) {
-          _this3.setState({ init: true });
-        }
 
         console.log("global linkTitle==> file:" + file + " title: " + title);
         global.handleLocation(global.hash);
@@ -740,6 +741,16 @@ var Article = function (_Component) {
       this.componentDidUpdate();
     }
   }, {
+    key: 'shouldComponentUpdate',
+    value: function shouldComponentUpdate(nextProps, nextState) {
+      console.log("article shouldComponentUpdate====", this.hash, "prop hash:", this.props.hash);
+      // if (this.hash == this.props.hash)
+      // {
+      //   return false;
+      // }
+      return true;
+    }
+  }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
       console.log("article componentWillReceiveProps nextfile", nextProps.nextProps, ' prop.file:', this.props.file);
@@ -1088,16 +1099,12 @@ var Item = function (_Component) {
         {
           draggable: 'false',
           tabIndex: '1',
-          className: 'item'
-          //this is old
-          // onClick={() => global.open(this.state.file)}
-          , onClick: function onClick() {
+          className: 'item',
+          onClick: function onClick() {
             return global.open(_this2.props.appName);
-          }
-          // onMouseEnter={e => e.target.focus()}
-          , onKeyPress: function onKeyPress(e) {
+          },
+          onKeyPress: function onKeyPress(e) {
             if (e.key === 'Enter') {
-              // global.open(this.state.file);
               global.open(_this2.props.appName);
             }
           }
@@ -1124,20 +1131,17 @@ var Index = function (_Component2) {
 
     var _this3 = _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).call(this, props));
 
-    var sequence = ['deepin-browser', 'dde-file-manager', 'deepin-app-store', 'sogouimebs', 'deepin-mail', 'deepin-contacts', 'deepin-screen-recorder', 'deepin-image-viewer', 'deepin-album', 'deepin-music', 'deepin-movie', 'deepin-draw', 'dde-calendar', 'deepin-voice-note', 'deepin-reader', 'deepin-editor', 'deepin-compressor', 'dde-printer', 'deepin-terminal',
-    // '安全中心',
-    'downloader', 'deepin-deb-installer', 'deepin-font-manager', 'deepin-calculator', 'deepin-graphics-driver-manager', 'deepin-devicemanager', 'deepin-system-monitor', 'deepin-boot-maker', 'deepin-log-viewer', 'deepin-repair-tools', 'deepin-clone', 'deepin-cloud-print', 'deepin-cloud-scan', 'deepin-voice-recorder', 'deepin-picker', 'deepin-remote-assistance', 'deepin-presentation-assistant', 'chineseime', 'deepin-defender', 'uos-service-support'];
     _this3.state = {
-      sequence: sequence,
       appList: [],
       openedAppList: []
     };
+
     global.qtObjects.manual.getSystemManualList(function (appList) {
       return _this3.setState({ appList: appList });
     });
+
     global.qtObjects.manual.getUsedAppList(function (openedAppList) {
-      console.log("openlist :" + openedAppList);
-      _this3.setState({ openedAppList: openedAppList });
+      return _this3.setState({ openedAppList: openedAppList });
     });
     return _this3;
   }
@@ -1153,12 +1157,12 @@ var Index = function (_Component2) {
   }, {
     key: 'shouldComponentUpdate',
     value: function shouldComponentUpdate(nextProps, nextState) {
-      if (nextState.appList.toString() == this.state.appList.toString())
-        //  && nextState.openedAppList.toString == this.state.openedAppList.toString()) 
-        {
-          return true;
-        }
-      return false;
+      console.log("index shouldcomponentupdate");
+      if (nextState.appList.toString() == this.state.appList.toString() && nextState.openedAppList.toString() == this.state.openedAppList.toString()) {
+        console.log("index no update");
+        return false;
+      }
+      return true;
     }
   }, {
     key: 'componentDidUpdate',
@@ -1173,18 +1177,11 @@ var Index = function (_Component2) {
       var sysSoft = ['dde'].filter(function (appName) {
         return _this4.state.appList.indexOf(appName) != -1;
       });
-      // let appSoft = this.state.sequence.filter(
-      //   appName => this.state.appList.indexOf(appName) != -1
-      // );
-      // let otherSoft = this.state.appList.filter(
-      //   appName => this.state.sequence.indexOf(appName) == -1 &&
-      //     sysSoft.indexOf(appName) == -1
-      // );
 
-      var appSoft = this.state.appList;
+      var appSoft = this.state.appList.concat(); //使用数据副本
       var index = appSoft.indexOf("dde");
       appSoft.splice(index, 1);
-      var otherSoft = [""];
+      // let otherSoft = [""];
 
       return _react2.default.createElement(
         _scrollbar2.default,
@@ -1221,14 +1218,6 @@ var Index = function (_Component2) {
               { className: 'items' },
               appSoft.map(function (appName) {
                 return _react2.default.createElement(Item, { key: appName, appName: appName, isOpened: _this4.bIsBeOpen(appName) });
-              }),
-              otherSoft.map(function (appName) {
-                return _react2.default.createElement(Item, { key: appName, appName: appName, isOpened: _this4.bIsBeOpen(appName) });
-              }),
-              Array.from(new Array(10), function (val, index) {
-                return index;
-              }).map(function (i) {
-                return _react2.default.createElement('a', { key: i, className: 'empty' });
               })
             )
           )
@@ -1420,6 +1409,12 @@ var Main = function (_Component) {
       if (decodeURIComponent(file) != this.state.file || file == this.state.file && hash != this.state.hash) {
         this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null, key);
       }
+    }
+  }, {
+    key: 'shouldComponentUpdate',
+    value: function shouldComponentUpdate(nextProps, nextState) {
+      console.log("main shouldComponentUpdate====");
+      return true;
     }
   }, {
     key: 'componentWillUpdate',
@@ -1890,14 +1885,6 @@ var Items = function (_Component) {
       });
 
       var _loop = function _loop(i) {
-
-        // let contentTrans = this.props.contentList[i];
-        // let index = contentTrans.indexOf(this.props.keyword);
-        // console.log("keyword index: ",index);
-        // if (index > 100)
-        // {
-        //   contentTrans = "..." + contentTrans.slice(index-100);
-        // }
         if (_this2.props.idList[i] == 'h0') {
           return 'continue';
         }
@@ -1980,13 +1967,15 @@ var SearchPage = function (_Component2) {
     _classCallCheck(this, SearchPage);
 
     return _possibleConstructorReturn(this, (SearchPage.__proto__ || Object.getPrototypeOf(SearchPage)).call(this, props, context));
+
+    // console.log('search constructor:',this.context);
   }
 
   _createClass(SearchPage, [{
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
-      var key = nextProps.match.params;
-      console.log("search componentWillReceiveProps..key:", key);
+      // console.log("search componentWillReceiveProps..",this.context.searchResult);
+      console.log("search componentWillReceiveProps..");
     }
   }, {
     key: 'componentDidUpdate',
@@ -2021,7 +2010,6 @@ var SearchPage = function (_Component2) {
           {
             id: 'search',
             tabIndex: '-1'
-            // onMouseOver={e => document.getElementById('search').focus()}
           },
           c
         )
