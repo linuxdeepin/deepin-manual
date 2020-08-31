@@ -285,16 +285,17 @@ class App extends React.Component {
       let url = `/open/${file}/${hash}/${key}`;
       this.context.router.history.push(url);
 
+      //Init属性设置, 放在index与opentitle中. 避免直接跳转到特定模块时会先走/模块.
+      if (this.state.init == false)
+      {
+        this.setState({ init: true });
+      }
+
       //通知qt对象,修改应用打开状态
         global.qtObjects.manual.setApplicationState(file);
     };
 
     global.openTitle = (file, title = '') => {
-      if (this.state.init == false)
-      {
-        this.setState({ init: true });
-      }
-      
       console.log("global linkTitle==> file:" + file + " title: "+title);
       global.handleLocation(global.hash);
       if (title !== '')
