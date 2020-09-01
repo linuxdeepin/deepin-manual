@@ -249,6 +249,11 @@ FILE(GLOB VIEW_FILES_TEST
 FILE(GLOB CONTROLLER_FILES_TEST
     "dman_qtest/controller/*.cpp"
     )
+
+FILE(GLOB DBUS_FILES_TEST
+    "dman_qtest/dbus/*.cpp"
+    )
+
 # 生成测试可执行程序
 add_executable(${PROJECT_NAME_TEST}
     ${BASE_FILES}
@@ -256,13 +261,15 @@ add_executable(${PROJECT_NAME_TEST}
     ${DBUS_FILES}
     ${RESOURCES_FILES}
     ${VIEW_FILES}
-    ${CONTROLLER_FILES_TEST}
     ${COMMAND_FILES}
 
 
+
     ${allTestSource}
+    ${CONTROLLER_FILES_TEST}
     ${BASE_FILES_TEST}
     ${VIEW_FILES_TEST}
+    ${DBUS_FILES_TEST}
     )
 
 # 生成测试可执行程序的依赖库

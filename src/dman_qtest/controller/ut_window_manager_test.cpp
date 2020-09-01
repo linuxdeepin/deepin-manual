@@ -54,22 +54,37 @@ TEST_F(ut_window_manager_test, activeOrInitWindow2)
 
 TEST_F(ut_window_manager_test, SendMsg)
 {
-
-    QProcess p;
-//    QString
-    QString cmd = "mv /usr/share/dbus-1/services/com.deepin.Manual.Search.service "
-                  "/usr/share/dbus-1/services/com.deepin.Manual.Search.service-test";
-    qDebug() << cmd;
-    p.start(cmd);
-    p.close();
+//    QProcess p;
+//    QString cmd = "mv /usr/share/dbus-1/services/com.deepin.Manual.Search.service "
+//                  "/usr/share/dbus-1/services/com.deepin.Manual.Search.service-test";
+//    qDebug() << cmd;
+//    p.start(cmd);
+//    p.close();
     WindowManager wm;
     wm.SendMsg("中国");
+//    QProcess p2;
+//    QString cmd2 = "sudo mv /usr/share/dbus-1/services/com.deepin.Manual.Search.service-test "
+//                   "/usr/share/dbus-1/services/com.deepin.Manual.Search.service";
+//    p2.start(cmd2);
+//    p2.close();
+}
 
-    QProcess p2;
-    QString cmd2 = "sudo mv /usr/share/dbus-1/services/com.deepin.Manual.Search.service-test "
-                   "/usr/share/dbus-1/services/com.deepin.Manual.Search.service";
-    p2.start(cmd2);
-    p2.close();
+TEST_F(ut_window_manager_test, onNewAppOpen)
+{
+    WindowManager vm;
+    vm.onNewAppOpen();
+}
+
+TEST_F(ut_window_manager_test, openManual)
+{
+    WindowManager mv;
+    mv.openManual("输入法", "概述");
+}
+
+TEST_F(ut_window_manager_test, openManualWithSearch)
+{
+    WindowManager mv;
+    mv.openManualWithSearch("输入法", "");
 }
 
 }
