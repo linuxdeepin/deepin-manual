@@ -34,7 +34,7 @@ DWIDGET_USE_NAMESPACE
 
 int main(int argc, char **argv)
 {
-//    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu");
+    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu");
     qputenv("DXCB_FAKE_PLATFORM_NAME_XCB", "true");
 
     //龙芯机器配置,使得DApplication能正确加载QTWEBENGINE
