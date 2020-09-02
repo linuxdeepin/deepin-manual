@@ -24,4 +24,4 @@ const char kImageLightSearchIcon[] = ":/common/images/search_indicator_light.svg
 const char kImageDarkSearchIcon[] = ":/common/images/search_indicator_dark.svg";
 const char kImageWhiteSearchIcon[] = ":/common/images/search_indicator_white.svg";
 
-}  // namespace dman
+} // namespace dman

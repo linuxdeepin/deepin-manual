@@ -11,25 +11,19 @@
 #ifndef LAUNCHER_INTERFACE_H
 #define LAUNCHER_INTERFACE_H
 
-#include <QtCore/QObject>
-#include <QtCore/QByteArray>
-#include <QtCore/QList>
-#include <QtCore/QMap>
-#include <QtCore/QString>
-#include <QtCore/QStringList>
-#include <QtCore/QVariant>
-#include <QtDBus/QtDBus>
 #include "dbus/dbusvariant/app_info.h"
 
 /*
  * Proxy class for interface com.deepin.dde.daemon.Launcher
  */
-class LauncherInterface: public QDBusAbstractInterface
+class LauncherInterface : public QDBusAbstractInterface
 {
     Q_OBJECT
 public:
     static inline const char *staticInterfaceName()
-    { return "com.deepin.dde.daemon.Launcher"; }
+    {
+        return "com.deepin.dde.daemon.Launcher";
+    }
 
 public:
     LauncherInterface(const QString &service, const QString &path, const QDBusConnection &connection, QObject *parent = nullptr);
@@ -55,12 +49,12 @@ Q_SIGNALS: // SIGNALS
 };
 
 namespace com {
-  namespace deepin {
-    namespace dde {
-      namespace daemon {
-        typedef ::LauncherInterface Launcher;
-      }
-    }
-  }
+namespace deepin {
+namespace dde {
+namespace daemon {
+typedef ::LauncherInterface Launcher;
 }
+} // namespace dde
+} // namespace deepin
+} // namespace com
 #endif

@@ -26,27 +26,25 @@ class ArgumentParser : public QObject
 {
     Q_OBJECT
 public:
-    explicit ArgumentParser(QObject* parent = nullptr);
+    explicit ArgumentParser(QObject *parent = nullptr);
     ~ArgumentParser() override;
-
     bool parseArguments();
-
     void openManualsDelay();
 
 signals:
-    void openManualRequested(const QString& app_name, const QString& title_name);
-    void openManualWithSearchRequested(const QString& app_name, const QString& keyword);
-    void searchRequested(const QString& keyword);
-    void onNewAppOpen();
+    void openManualRequested(const QString &app_name, const QString &title_name);
+    void openManualWithSearchRequested(const QString &app_name, const QString &keyword);
+    void newAppOpen();
 
 private:
-    QStringList manuals_;
+    QString curManual;
+    bool bIsDbus {false};
 
 private slots:
-    void onOpenAppRequested(const QString& app_name, const QString& title_name = "");
-    void onSearchRequested(const QString& keyword);
+    void onOpenAppRequested(const QString &app_name, const QString &title_name = "");
+    void onSearchRequested(const QString &keyword);
 };
 
-}  // namespace dman
+} // namespace dman
 
-#endif  // DEEPIN_MANUAL_CONTROLLER_ARGUMENT_PARSER_H
+#endif // DEEPIN_MANUAL_CONTROLLER_ARGUMENT_PARSER_H

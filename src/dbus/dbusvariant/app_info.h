@@ -19,35 +19,32 @@
 #define DEEPIN_MANUAL_DBUS_DBUS_VARIANT_APP_INFO_H
 
 #include <QtDBus>
-#include <DLog>
-#include <QList>
 
 struct AppInfo {
- public:
-  AppInfo();
+public:
+    AppInfo();
+    ~AppInfo();
 
-  ~AppInfo();
+    static void registerMetaType();
+    inline bool operator==(const AppInfo &other) const
+    {
+        return desktop == other.desktop;
+    }
 
-  static void registerMetaType();
+    friend QDebug operator<<(QDebug debug, const AppInfo &info);
+    friend QDBusArgument &operator<<(QDBusArgument &argument,
+                                     const AppInfo &info);
+    friend QDataStream &operator<<(QDataStream &stream, const AppInfo &info);
+    friend const QDBusArgument &operator>>(const QDBusArgument &argument,
+                                           AppInfo &info);
+    friend const QDataStream &operator>>(QDataStream &stream, AppInfo &info);
 
-  inline bool operator==(const AppInfo& other) const {
-    return desktop == other.desktop;
-  }
-
-  friend QDebug operator<<(QDebug debug, const AppInfo& info);
-  friend QDBusArgument& operator<<(QDBusArgument& argument,
-                                   const AppInfo& info);
-  friend QDataStream& operator<<(QDataStream& stream, const AppInfo& info);
-  friend const QDBusArgument& operator>>(const QDBusArgument & argument,
-                                         AppInfo& info);
-  friend const QDataStream& operator>>(QDataStream& stream, AppInfo& info);
-
-  QString desktop;
-  QString name;
-  QString key;
-  QString icon_key;
-  qlonglong category_id;
-  qlonglong installed_time;
+    QString desktop;
+    QString name;
+    QString key;
+    QString icon_key;
+    qlonglong category_id;
+    qlonglong installed_time;
 };
 
 typedef QList<AppInfo> AppInfoList;
@@ -56,4 +53,4 @@ Q_DECLARE_METATYPE(AppInfo)
 
 Q_DECLARE_METATYPE(AppInfoList)
 
-#endif  // DEEPIN_MANUAL_DBUS_DBUS_VARIANT_APP_INFO_H
+#endif // DEEPIN_MANUAL_DBUS_DBUS_VARIANT_APP_INFO_H

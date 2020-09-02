@@ -23,4 +23,3 @@ LauncherInterface::LauncherInterface(const QString &service, const QString &path
 LauncherInterface::~LauncherInterface()
 {
 }
-

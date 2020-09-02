@@ -1,79 +1,81 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="en" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1">
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/app/dman.cpp" line="62"/>
+        <location filename="../src/app/dman.cpp" line="58"/>
         <source>Manual</source>
-        <translation>Manual</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/dman.cpp" line="64"/>
+        <location filename="../src/app/dman.cpp" line="60"/>
         <source>Manual is designed to help users learn the operating system and its applications, providing specific instructions and function descriptions.</source>
-        <translation>Manual is designed to help users learn the operating system and its applications, providing specific instructions and function descriptions.</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="34"/>
         <source>System</source>
-        <translation>System</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="35"/>
         <source>Applications</source>
-        <translation>Applications</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="38"/>
         <source>No search results</source>
-        <translation>No search results</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="41"/>
         <source>Home</source>
-        <translation>Home</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="43"/>
         <source>  result</source>
-        <translation>  result</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="44"/>
         <source>  results</source>
-        <translation>  results</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/web_event_delegate.cpp" line="63"/>
-        <source>Copy</source>
-        <translation>Copy</translation>
-    </message>
-    <message>
-        <location filename="../src/view/web_window.cpp" line="219"/>
+        <location filename="../src/view/web_window.cpp" line="272"/>
         <source>Search</source>
-        <translation>Search</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/widget/search_completion_window.cpp" line="148"/>
-        <location filename="../src/view/widget/search_completion_window.cpp" line="218"/>
+        <location filename="../src/view/web_window.cpp" line="277"/>
+        <source>Support</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/web_window.cpp" line="497"/>
+        <source>Copy</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/widget/search_completion_window.cpp" line="153"/>
+        <location filename="../src/view/widget/search_completion_window.cpp" line="223"/>
         <source>Search for &quot;%1&quot; in the full text</source>
-        <translation>Search for &quot;%1&quot; in the full text</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
     <name>WebWindow</name>
     <message>
-        <location filename="../src/view/web_window.cpp" line="289"/>
-        <source>Copy</source>
-        <translation>Copy</translation>
-    </message>
-    <message>
-        <location filename="../src/view/web_window.cpp" line="325"/>
+        <location filename="../src/view/web_window.cpp" line="432"/>
         <source>Ctrl+Alt+F</source>
-        <translation>Ctrl+Alt+F</translation>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="340"/>
+        <location filename="../src/view/web_window.cpp" line="447"/>
         <source>Ctrl+F</source>
-        <translation>Ctrl+F</translation>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

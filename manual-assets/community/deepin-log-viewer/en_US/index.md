@@ -143,6 +143,23 @@ You can export logs and save them in format of  txt/doc/xls/html.
 
 
 
+### Display in File Manager
+
+1. On the interface of File Manager, select a log type in the left panel and right-click.
+2. Select **Display in file manager**, the folder path of the current log will be opened. 
+
+> ![notes](icon/notes.svg)Notes: **Display in file manager** is only applicable for kernel log, boot log, dpkg log, Xorg log and application log.
+
+### Clear Log
+1. On the interface of File Manager, select a log type in the left panel and right-click.
+2. Select **Clear log**, click **Confirm** button in the pop-up window to clear current logs.
+3. If authentication window pops up, please input password to finish the operation.
+> ![notes](icon/notes.svg)Notes: **Clear log** is only applicable for kernel log, boot log, dpkg log, Xorg log and application log.
+
+### Refresh
+1. On the interface of File Manager, select a log type in the left panel and right-click.
+2. Select **Refresh** to reload the log and update log list.
+
 ## Main Menu
 
 In the main menu, you can switch themes, view help manual, and so on.
@@ -173,3 +190,5 @@ Click Help to get the manual, which will help you further know and use Log Viewe
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Click  **Exit**.
 
+
+<div class="version-info"><span>Update Date: 2020-09-02</span><span> Version: 5.8</span></div>

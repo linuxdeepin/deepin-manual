@@ -348,6 +348,8 @@ The window theme includes Light Theme, Dark Theme and System Theme (default).
 3. In the tab of **Basic**, you can:
 
   - Set the background transparency.
+   >![notes](icon/notes.svg)Notes: if Window Effect is turned off in Control Center, transparency adjusting function will be hidden.
+
   - Set the font and font size.
 
 #### Shortcuts Settings ####
@@ -379,6 +381,8 @@ The window theme includes Light Theme, Dark Theme and System Theme (default).
   - Set window startup mode.
   - Enable or disable **Hide quake window after lost focus**.
   - Enable or disable **Blur background**.
+   >![notes](icon/notes.svg)Notes: if Window Effect is turned off in Control Center, **Blur background** will be hidden.
+
   - **Restore defaults**: click this button, all settings will be restored to default.  
 
 ### Help
@@ -406,3 +410,5 @@ Click Help to get the manual, which will help you further know and use Terminal.
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 
 2. Click **Exit**.
+
+<div class="version-info"><span>Update Date: 2020-09-02</span><span> Version: 5.2</span></div>

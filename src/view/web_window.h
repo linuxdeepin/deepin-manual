@@ -19,17 +19,15 @@
 #define DEEPIN_MANUAL_VIEW_WEB_WINDOW_H
 
 #include "controller/search_result.h"
-#include "view/settings_proxy.h"
-
-#include <QTimer>
-#include <QtDBus/QtDBus>
 
 #include <DButtonBox>
 #include <DMainWindow>
-#include <QWebEngineView>
-#include <QAction>
-#include <QClipboard>
 #include <DApplicationHelper>
+
+#include <QtDBus/QtDBus>
+#include <QWebEngineView>
+#include <QClipboard>
+#include <DSpinner>
 
 namespace dman {
 
@@ -47,57 +45,54 @@ class SettingsProxy;
 class SearchEdit;
 class DButtonBox;
 
-
+/**
+ * @brief The WebWindow class
+ * 帮助手册主窗口类，继承
+ */
 class WebWindow : public Dtk::Widget::DMainWindow
 {
     Q_OBJECT
-    Q_PROPERTY(QString appName READ appName WRITE setAppName)
 
 public:
     explicit WebWindow(QWidget *parent = nullptr);
     ~WebWindow() override;
 
-    // Get app name of manual currently presented.
-    const QString &appName() const;
-    bool eventFilter(QObject *watched, QEvent *event) override;
-    void setSearchManager(SearchManager *searchManager);
-    void initWebView();
-    void setTitleName(const QString &title_name);
-    void cancelTextChanged();
+    void initWeb();
     void updateBtnBox();
-    void saveWindowSize();
+    void cancelTextChanged();
+    void openjsPage(const QString &app_name, const QString &title_name);
+    void setAppProperty(const QString &appName, const QString &titleName, const QString &keyword);
+
     Dtk::Widget::DButtonBoxButton *m_backButton;
     Dtk::Widget::DButtonBoxButton *m_forwardButton;
 
 signals:
-    void closed(const QString &app_name);
-    void shown(WebWindow *window);
     void manualSearchByKeyword(const QString &keyword);
-    void webWindowShown();
-    void webWindowLoaded();
 
 public slots:
-    void setAppName(const QString &app_name);
-    void setSearchKeyword(const QString &keyword);
-    void slot_ButtonHide();
-    void slot_ButtonShow();
     void slot_ThemeChanged();
+    void slot_HelpSupportTriggered();
 
 protected:
-    void closeEvent(QCloseEvent *event) override;
-    void showEvent(QShowEvent *event) override;
+    void closeEvent(QCloseEvent *event) Q_DECL_OVERRIDE;
+    void inputMethodEvent(QInputMethodEvent *e) Q_DECL_OVERRIDE;
+    bool eventFilter(QObject *watched, QEvent *event) Q_DECL_OVERRIDE;
+    QVariant inputMethodQuery(Qt::InputMethodQuery prop) const Q_DECL_OVERRIDE;
 
-    void keyPressEvent(QKeyEvent *event) override;
-    //void inputMethodEvent(QInputMethodEvent *e) Q_DECL_OVERRIDE;
 private:
-    void initConnections();
     void initUI();
-    void initShortcuts();
     void initDBus();
+    void initWebView();
+    void initShortcuts();
+    void saveWindowSize();
+    void initConnections();
     void setHashWordColor();
+    void setSearchManager();
     void settingContextMenu();
+    QRect hasSearchEditRect();
 
     QString app_name_;
+    QString keyword_;
     QString title_name_;
     SearchManager *search_manager_ {nullptr};
     SearchCompletionWindow *completion_window_ {nullptr};
@@ -111,14 +106,12 @@ private:
     SettingsProxy *settings_proxy_ {nullptr};
     TitleBar *title_bar_ {nullptr};
     QWebEngineView *web_view_ {nullptr};
-    QTimer search_timer_;
+    QTimer search_timer_ {nullptr};
     Dtk::Widget::DButtonBox *buttonBox {nullptr};
     SearchEdit *search_edit_ {nullptr};
-    QPoint start_point_;
-    int start_drag_x;
-    QString keyword_;
     bool first_webpage_loaded_ {true};
-    bool is_index_loaded_ {false};
+    bool bIsSetKeyword{false};
+    Dtk::Widget::DSpinner *m_spinner;
 
 private slots:
     void onSearchEditFocusOut();
@@ -130,12 +123,13 @@ private slots:
     void onSearchTextChangedDelay();
     void onTitleBarEntered();
     void onWebPageLoadFinished(bool ok);
-
+    void onChannelFinish();
+    void onSetKeyword(const QString &keyword);
     void onManualSearchByKeyword(const QString &keyword);
     void onACtiveColorChanged(QString, QMap<QString, QVariant>, QStringList);
-    void onThemeChange(DGuiApplicationHelper::ColorType themeType);
+//    void onThemeChange(DGuiApplicationHelper::ColorType themeType);
 };
 
-}  // namespace dman
+} // namespace dman
 
-#endif  // DEEPIN_MANUAL_VIEW_WEB_WINDOW_H
+#endif // DEEPIN_MANUAL_VIEW_WEB_WINDOW_H

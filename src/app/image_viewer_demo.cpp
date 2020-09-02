@@ -19,11 +19,12 @@
 
 #include "view/widget/image_viewer.h"
 
-int main(int argc, char** argv) {
-  QApplication app(argc, argv);
+int main(int argc, char **argv)
+{
+    QApplication app(argc, argv);
 
-  dman::ImageViewer viewer;
-  viewer.open("/tmp/a.jpg");
+    dman::ImageViewer viewer;
+    viewer.open("/tmp/a.jpg");
 
-  return app.exec();
+    return app.exec();
 }

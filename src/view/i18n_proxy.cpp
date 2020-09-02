@@ -21,12 +21,14 @@
 
 namespace dman {
 
-I18nProxy::I18nProxy(QObject* parent)
+I18nProxy::I18nProxy(QObject *parent)
     : QObject(parent)
 {
 }
 
-I18nProxy::~I18nProxy() {}
+I18nProxy::~I18nProxy()
+{
+}
 
 QVariantHash I18nProxy::getSentences() const
 {
@@ -40,7 +42,7 @@ QVariantHash I18nProxy::getSentences() const
         //          "Change your keywords and try again, or search for it in Deepin Wiki") },
         {"ToIndexPage", QObject::tr("Home")},
         //      { "SearchInWiki", QObject::tr("Deepin Wiki") },
-        {"ResultNumSuffix", QObject::tr("  result")},  //单数结果后缀
+        {"ResultNumSuffix", QObject::tr("  result")}, //单数结果后缀
         {"ResultNumSuffixs", QObject::tr("  results")}};
     return result;
 }
@@ -56,4 +58,4 @@ QString I18nProxy::getLocale() const
     }
 }
 
-}  // namespace dman
+} // namespace dman

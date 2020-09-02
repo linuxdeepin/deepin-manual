@@ -24,9 +24,27 @@ class Items extends Component {
   render() {
     let resultList = [];
     let re = new RegExp(this.props.keyword, 'gi');
+
+    let cTitle =(
+      <span
+        className="resulttitle"
+        dangerouslySetInnerHTML={{
+          __html: this.state.title.replace(
+            re,
+            "<span class='highlight'>$&</span>"
+          )
+        }}
+      />
+    );
+
     for (let i = 0; i < this.props.idList.length; i++) {
+      if (this.props.idList[i] == 'h0')
+      {
+        continue;
+      }
+
       let c = (
-        <div className="item" key={i} onClick={() => global.open(this.props.file, this.props.idList[i])}>
+        <div className="item" key={i} onClick={() => global.open(this.props.file, this.props.idList[i], this.props.keyword)}>
           <div
             className="itemTitle"
             dangerouslySetInnerHTML={{
@@ -40,23 +58,27 @@ class Items extends Component {
             className="context"
             dangerouslySetInnerHTML={{
               __html: this.props.contentList[i]
+              // __html:contentTrans
             }}
           />
         </div>
       );
-      resultList.push(c);
+      if (resultList.length < 5)
+      {
+        resultList.push(c);
+      }
     }
     var sresultnum;
-      if(resultList.length>1)
-      sresultnum=resultList.length+global.i18n['ResultNumSuffixs'];
+      if(this.props.idList.length >1)
+      sresultnum=this.props.idList.length+global.i18n['ResultNumSuffixs'];
       else
-      sresultnum=resultList.length+global.i18n['ResultNumSuffix'];
+      sresultnum=this.props.idList.length+global.i18n['ResultNumSuffix'];
     return (
       this.state.show && (
         <div className="items">
-          <div className="itemsTitle" onClick={() => global.open(this.props.file)}>
+          <div className="itemsTitle" onClick={() => global.open(this.props.file,'',this.props.keyword)}>
             <img src={this.state.logo} />
-            <span className="resulttitle">{this.state.title}</span>
+            {cTitle}
             <span className="resultnum">{sresultnum}</span>
           </div>
           {resultList}
@@ -72,18 +94,6 @@ function Mismatch(props) {
         <div id="NoResult">
           {global.i18n['NoResult'].replace('%1', decodeURIComponent(props.keyword))}
         </div>
-        {/* <div id="WikiSearch">{global.i18n['WikiSearch']}</div>
-        <span
-          class="button"
-          onClick={() =>
-            global.openWindow(
-              `https://wiki.deepin.org/index.php?title&search=${encodeURIComponent(
-                props.keyword
-              )}`
-            )}
-        >
-          {global.i18n['SearchInWiki']}
-        </span> */}
       </div>
     </div>
   );
@@ -91,7 +101,15 @@ function Mismatch(props) {
 export default class SearchPage extends Component {
   constructor(props, context) {
     super(props, context);
+
+    // console.log('search constructor:',this.context);
   }
+
+  componentWillReceiveProps(nextProps){
+    // console.log("search componentWillReceiveProps..",this.context.searchResult);
+    console.log("search componentWillReceiveProps..");
+  }
+
   componentDidUpdate() {
     ReactDOM.findDOMNode(this)
       .querySelector('#search')
@@ -118,7 +136,6 @@ export default class SearchPage extends Component {
         <div
           id="search"
           tabIndex="-1"
-          // onMouseOver={e => document.getElementById('search').focus()}
         >
           {c}
         </div>

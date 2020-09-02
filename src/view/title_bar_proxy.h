@@ -18,13 +18,16 @@
 #ifndef DEEPIN_MANUAL_VIEWS_TITLE_BAR_PROXY_H
 #define DEEPIN_MANUAL_VIEWS_TITLE_BAR_PROXY_H
 
-#include <QObject>
 #include "web_window.h"
+
+#include <QObject>
 
 namespace dman {
 
-//class TitleBar;
-
+/**
+ * @brief The TitleBarProxy class
+ * 前进后退按钮控制接口类，ｊｓ调用
+ */
 class TitleBarProxy : public QObject
 {
     Q_OBJECT
@@ -36,7 +39,7 @@ public:
 signals:
     void backwardButtonClicked();
     void forwardButtonClicked();
-    void buttonShowSignal();
+
 public slots:
     void setBackwardButtonActive(bool active);
     void setForwardButtonActive(bool active);
@@ -46,6 +49,6 @@ private:
     int m_first;
 };
 
-}  // namespace dman
+} // namespace dman
 
-#endif  // DEEPIN_MANUAL_VIEWS_TITLE_BAR_PROXY_H
+#endif // DEEPIN_MANUAL_VIEWS_TITLE_BAR_PROXY_H

@@ -18,10 +18,9 @@
 #ifndef DEEPIN_MANUAL_CONTROLLER_SEARCH_MANAGER_H
 #define DEEPIN_MANUAL_CONTROLLER_SEARCH_MANAGER_H
 
-#include <QObject>
-#include <QList>
-
 #include "controller/search_result.h"
+
+#include <QObject>
 
 class QThread;
 
@@ -49,16 +48,14 @@ signals:
                              const QStringList &anchorIdList,
                              const QStringList &contents);
     void searchContentMismatch(const QString &keyword);
-    void installApps(const QStringList &strlistApps);
 
 private:
     void initSearchManager();
 
-    /*** 2020-06-28 10:42:56 wangml ***/
-    SearchDb *db_ ;
+    SearchDb *db_;
     QThread *db_thread_;
 };
 
-}  // namespace dman
+} // namespace dman
 
-#endif  // DEEPIN_MANUAL_CONTROLLER_SEARCH_MANAGER_H
+#endif // DEEPIN_MANUAL_CONTROLLER_SEARCH_MANAGER_H

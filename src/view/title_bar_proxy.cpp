@@ -37,9 +37,6 @@ TitleBarProxy::~TitleBarProxy()
  */
 void TitleBarProxy::setBackwardButtonActive(bool active)
 {
-    m_first++;
-    if (m_first == 3)
-        emit buttonShowSignal();
     m_webWindow->cancelTextChanged();
     m_webWindow->m_backButton->setEnabled(active);
     m_webWindow->updateBtnBox();
@@ -56,4 +53,4 @@ void TitleBarProxy::setForwardButtonActive(bool active)
     m_webWindow->updateBtnBox();
 }
 
-}  // namespace dman
+} // namespace dman

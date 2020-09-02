@@ -21,13 +21,11 @@
 #define UTILS_H
 
 #include "sys/time.h"
-
-#include <QHash>
-#include <QObject>
-#include <QWidget>
+#include "dbus/dbusvariant/app_info.h"
 
 #include <DApplicationHelper>
-#include <DPalette>
+
+#include <QWidget>
 
 #define dApp (static_cast<DApplication *>(QCoreApplication::instance()))
 
@@ -41,7 +39,9 @@ public:
     Utils(QObject *parent = nullptr);
     ~Utils();
 
-    enum FontType { SourceHanSansMedium, SourceHanSansNormal, DefautFont };
+    enum FontType { SourceHanSansMedium,
+                    SourceHanSansNormal,
+                    DefautFont };
 
     static struct timeval getTime();
     static struct timeval showDiffTime(struct timeval tpStart);
@@ -57,6 +57,15 @@ public:
     static QFont loadFontBySizeAndWeight(QString fontFamily, int fontSize, int fontWeight);
     static QString fromSpecialEncoding(const QString &inputStr);
     static QString translateTitle(const QString &titleUS);
+
+    //获取所有应用列表
+    static QList<AppInfo> launcherInterface();
+
+    //获取系统应用中有帮助手册的应用列表
+    static QStringList getSystemManualList();
+    static QString getSystemManualDir();
+    static QList<AppInfo> sortAppList(QMultiMap<qlonglong, AppInfo> map);
+    static bool hasSelperSupport();
 };
 
 class ExApplicationHelper : public DGuiApplicationHelper

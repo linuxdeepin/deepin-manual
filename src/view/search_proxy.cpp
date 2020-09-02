@@ -19,10 +19,22 @@
 
 #include <DLog>
 
-#include "controller/search_manager.h"
-
-dman::SearchProxy::SearchProxy(QObject* parent) : QObject(parent) {
+dman::SearchProxy::SearchProxy(QObject *parent)
+    : QObject(parent)
+{
 }
 
-dman::SearchProxy::~SearchProxy() {
+dman::SearchProxy::~SearchProxy()
+{
+}
+
+/**
+ * @brief dman::SearchProxy::getKeyword
+ * @param keyword 搜索关键字
+ * JS根据页面关键字回调设置搜索框
+ */
+void dman::SearchProxy::getKeyword(const QString &keyword)
+{
+    qDebug() << "-->" << keyword;
+    emit setKeyword(keyword);
 }

@@ -100,3 +100,5 @@ View Help to get more information about Calculator.
 
 1. On the Calculator interface, click ![main_menu](icon/main_menu.svg).
 2. Click **Exit** to exit.
+
+<div class="version-info"><span>Update Date: 2020-09-02</span><span> Version: 5.5</span></div>

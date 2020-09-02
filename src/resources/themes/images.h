@@ -18,8 +18,12 @@
 #ifndef DEEPIN_MANUAL_RESOURCES_IMAGES_H
 #define DEEPIN_MANUAL_RESOURCES_IMAGES_H
 
-// This header file defines image files included in images.qrc.
-// Never write hard-coded image filename in cpp code.
+/**
+ * This header file defines image files included in images.qrc.
+ * 定义图像文件路径
+ * Never write hard-coded image filename in cpp code.
+ * 在．ｃｐｐ 文件中不需要再写 hard-coded
+ */
 
 namespace dman {
 
@@ -28,6 +32,6 @@ extern const char kImageLightSearchIcon[];
 extern const char kImageDarkSearchIcon[];
 extern const char kImageWhiteSearchIcon[];
 
-}  // namespace
+} // namespace dman
 
-#endif  // DEEPIN_MANUAL_RESOURCES_IMAGES_H
+#endif // DEEPIN_MANUAL_RESOURCES_IMAGES_H

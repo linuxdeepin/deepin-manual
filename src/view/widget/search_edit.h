@@ -22,22 +22,27 @@
 
 namespace dman {
 
-// Provides an edit box in TitleBar.
-class SearchEdit : public Dtk::Widget::DSearchEdit {
-  Q_OBJECT
- public:
-  explicit SearchEdit(QWidget* parent = nullptr);
-  ~SearchEdit() override;
+/**
+ * @brief The SearchEdit class
+ * 标题栏中的搜索框，居中显示
+ */
+class SearchEdit : public Dtk::Widget::DSearchEdit
+{
+    Q_OBJECT
+public:
+    explicit SearchEdit(QWidget *parent = nullptr);
+    ~SearchEdit() override;
 
- signals:
-  void downKeyPressed();
-  void enterPressed();
-  void upKeyPressed();
+signals:
+    void downKeyPressed();
+    void enterPressed();
+    void upKeyPressed();
+    void onClickedClearBtn();
 
- protected:
-  void keyPressEvent(QKeyEvent* event) override;
+protected:
+    void keyPressEvent(QKeyEvent *event) override;
 };
 
-}  // namespace dman
+} // namespace dman
 
-#endif  // DEEPIN_MANUAL_VIEW_WIDGET_SEARCH_EDIT_H
+#endif // DEEPIN_MANUAL_VIEW_WIDGET_SEARCH_EDIT_H

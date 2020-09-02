@@ -1,5 +1,5 @@
 [Desktop Entry]
-Categories=Documentation;Utility;
+Categories=Documentation;System;Utility;
 Exec=dman %u
 GenericName=Manual
 Icon=deepin-manual
@@ -10,6 +10,7 @@ StartupNotify=true
 Terminal=false
 Type=Application
 X-Deepin-Vendor=deepin
+TZ='Asia/Shanghai'
 
 # Translations:
 # Do not manually modify!

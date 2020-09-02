@@ -25,6 +25,7 @@
 namespace dman {
 
 struct SearchDbPrivate;
+struct searchStrct;
 
 class SearchDb : public QObject
 {
@@ -35,8 +36,6 @@ public:
 
 signals:
     void initDbAsync(const QString &db_path);
-
-    // Only search in anchor.
     void searchAnchor(const QString &keyword);
     void searchAnchorResult(const QString &keyword,
                             const SearchAnchorResultList &result);
@@ -47,7 +46,6 @@ signals:
                              const QStringList &anchorIdList,
                              const QStringList &contents);
     void searchContentMismatch(const QString &keyword);
-    void installApps(const QStringList &strlistApps);
 
 public slots:
     void initDb(const QString &db_path);
@@ -56,23 +54,31 @@ public slots:
                         const QString &app_name,
                         const QString &lang,
                         const QStringList &anchors,
+                        const QStringList &anchorInitialList,
+                        const QStringList &anchorSpellList,
                         const QStringList &anchorIdList,
-                        const QStringList &contents
-                       );
+                        const QStringList &contents);
 
 private:
     void initConnections();
     inline QString highlightKeyword(QString srcString, QString keyword);
+    void getAllApp();
+    void sortSearchList(const QString &appName, const QStringList &anchors
+                        , const QStringList &anchorIds, const QStringList &contents
+                        , bool bIsTitleHigh);
+
+    void omitHighlight (QString &highLight, const QString &keyword);
 
     SearchDbPrivate *p_ = nullptr;
     QStringList strlistApp;
+    QList<searchStrct> listStruct;
+    int nH0OfList;
 
 private slots:
     void handleSearchAnchor(const QString &keyword);
     void handleSearchContent(const QString &keyword);
-    void handleInstallApps(const QStringList &strlistApps);
 };
 
-}  // namespace dman
+} // namespace dman
 
-#endif  // DEEPIN_MANUAL_CONTROLLER_SEARCH_DB_H
+#endif // DEEPIN_MANUAL_CONTROLLER_SEARCH_DB_H

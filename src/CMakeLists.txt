@@ -15,6 +15,8 @@ else()
   add_definitions(-DDMAN_WEB_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/web_dist")
   add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets")
 endif ()
+#禁止Debug日志输出
+#add_definitions(-DQT_NO_DEBUG_OUTPUT)
 
 configure_file(environments.h.in environments.h @ONLY)
 
@@ -61,6 +63,14 @@ else()
   set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -O2 -Wl,-O1 -Wl,--gc-sections")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -O2 -Wl,-O1 -Wl,--gc-sections")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-rtti")
+
+  set(CMAKE_CXX_FLAGS "-Wl,-as-need -fPIE")
+  set(CMAKE_EXE_LINKER_FLAGS "-pie")
+endif()
+
+if (${CMAKE_SYSTEM_PROCESSOR} MATCHES "mips64")
+    message(STATUS "this system is mips64=========")
+    set(FLAGS_COMMON "-O3 -ftree-vectorize -march=loongson3a -mhard-float -mno-micromips -mno-mips16 -flax-vector-conversions -mloongson-ext2 -mloongson-mmi -Wl, as-need")
 endif()
 
 find_package(PkgConfig REQUIRED)
@@ -136,8 +146,6 @@ set(DBUS_FILES
     dbus/launcher_interface.h
     dbus/manual_open_adapter.cpp
     dbus/manual_open_adapter.h
-    dbus/manual_open_interface.cpp
-    dbus/manual_open_interface.h
     dbus/manual_open_proxy.cpp
     dbus/manual_open_proxy.h
     dbus/manual_search_adapter.cpp
@@ -187,8 +195,12 @@ set(VIEW_FILES
 # Main executable
 set(SEARCH_FILES
     app/generate_search_db.cpp
+    base/utils.cpp
+    base/utils.h
     base/command.cpp
     base/command.h
+    dbus/dbusvariant/app_info.cpp
+    dbus/dbusvariant/app_info.h
     controller/search_db.cpp
     controller/search_db.h
     )
@@ -289,8 +301,5 @@ install(DIRECTORY ${CMAKE_SOURCE_DIR}/manual-assets
 
 install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/web_dist
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
-
-install(FILES ${CMAKE_SOURCE_DIR}/manual-assets/deepin-manual.svg
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/scalable/apps/)
 
 string(TOLOWER ${CMAKE_SYSTEM_PROCESSOR} LOWERCASE_CMAKE_SYSTEM_PROCESSOR)

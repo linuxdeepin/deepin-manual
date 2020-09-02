@@ -4,14 +4,12 @@ import { render } from 'react-dom';
 import { Router as Router, Switch, Route, Link } from 'react-router-dom';
 import { createMemoryHistory } from 'history'
 
+import m2h from './mdToHtml';
 import Index from './index.jsx';
 import Main from './main.jsx';
 import Search from './search.jsx';
-import sIndex from './searchIndex';
 
 global.hash = ' ';
-global.oldHash = ' ';
-global.linktitle = '';
 global.isMouseClickNav = false;
 global.isMouseScrollArticle = false;
 
@@ -20,9 +18,12 @@ global.isLinkClicked = false;
 global.lastUrlBeforeSearch = '/';
 global.lastHistoryIndex = 0;
 global.lastAction = 'PUSH';
+global.isShowHelperSupport = false;
+// global.gHistoryGo = 0;
 
 
 global.readFile = (fileName, callback) => {
+  console.log("global.readFile...");
   let xhr = new XMLHttpRequest();
   xhr.open('GET', fileName);
   xhr.onload = () => {
@@ -46,6 +47,7 @@ class App extends React.Component {
     new QWebChannel(qt.webChannelTransport, this.initQt.bind(this));
   }
   initQt(channel) {
+    console.log("channel initqt.....");
     channel.objects.i18n.getSentences(i18n => {
       channel.objects.i18n.getLocale(lang => {
         if (lang === 'en_US' || lang === 'zh_CN') {
@@ -56,56 +58,86 @@ class App extends React.Component {
       });
       global.i18n = i18n;
       global.qtObjects = channel.objects;
+
+      global.qtObjects.manual.hasSelperSupport(bFlag =>{
+        global.isShowHelperSupport = bFlag;
+      });
+      
       channel.objects.manual.getSystemManualDir(path => {
         global.path = path;
-        this.setState({ init: true });
       });
-      global.openWindow = global.qtObjects.manual.openExternalLink;
-      global.qtObjects.titleBar.setBackwardButtonActive(false);
-      global.qtObjects.titleBar.setForwardButtonActive(false);
-      global.qtObjects.titleBar.backwardButtonClicked.connect(() => {
-        // console.log("backwardButtonClicked history.goBack()", this.context.router.history);
-        this.setState({ historyGO: this.state.historyGO - 1 });
-        this.context.router.history.goBack();
-      });
-      global.qtObjects.titleBar.forwardButtonClicked.connect(() => {
-        this.setState({ historyGO: this.state.historyGO + 1 });
-        this.context.router.history.goForward();
-      });
+      // global.openWindow = global.qtObjects.manual.openExternalLink;
+      // global.qtObjects.titleBar.setBackwardButtonActive(false);
+      // global.qtObjects.titleBar.setForwardButtonActive(false);
+      global.qtObjects.titleBar.backwardButtonClicked.connect(
+        this.onBackwardClick.bind(this)
+      );
+      global.qtObjects.titleBar.forwardButtonClicked.connect(
+        this.onForwardClick.bind(this)
+      );
       global.qtObjects.search.mismatch.connect(() =>
         this.setState({ mismatch: true })
       );
       global.qtObjects.search.onContentResult.connect(
         this.onContentResult.bind(this)
       );
+      global.qtObjects.manual.searchEditTextisEmpty.connect(
+        this.onSearchEditClear.bind(this)
+      );
       global.qtObjects.theme.getTheme(themeType => 
         this.themeChange(themeType));
       global.qtObjects.theme.themeChange.connect(
         this.themeChange.bind(this)
       );
-      global.qtObjects.settings.fontChangeRequested.connect((fontFamily, fontSize) => {
-        console.log("fontChangeRequested: fontFamily:"+fontFamily+",fontSize:"+fontSize);
-        console.log("fontSize/13.0:"+(fontSize));
-        const HTMLGlobal = document.querySelector('html');
-        HTMLGlobal.style.fontFamily = fontFamily;    
-        HTMLGlobal.style.fontSize = fontSize;   //设置rem标准   设计图上默认是在14px字体上设计,所以默认1rem = 14px.
-        if ( fontSize >= 18)
-        {
-          document.documentElement.style.setProperty(`--index-item-size`, '170px');
-          document.documentElement.style.setProperty(`--index-span-width`, '140px');
-        }
-        else{
-          document.documentElement.style.setProperty(`--index-item-size`, '160px');
-          document.documentElement.style.setProperty(`--index-span-width`, '130px');
-        }
-      });
+      global.qtObjects.settings.fontChangeRequested.connect(
+        this.onFontChange.bind(this)
+      );
+      console.log("finsh global.qtObjects = channel.objects...");
+      global.qtObjects.manual.finishChannel();
     });
+   
   }
+
+  onBackwardClick(){
+    global.handleLocation(global.hash);
+        console.log("----------backwardButtonClicked----------");
+        this.setState({ historyGO: this.state.historyGO - 1 });
+        console.log("==========backwardButtonClicked=========>");
+        this.context.router.history.goBack();
+        console.log("back history location: "+this.context.router.history.location.pathname);
+  }
+
+  onForwardClick(){
+    global.handleLocation(global.hash);
+        console.log("----------forwardButtonClicked----------");
+        this.setState({ historyGO: this.state.historyGO + 1 });
+        console.log("==========forwardButtonClicked=========>");
+        this.context.router.history.goForward();
+        console.log("forward history location: "+this.context.router.history.location.pathname);
+  }
+
+  onFontChange(fontFamily,fontSize){
+    console.log("fontChangeRequested: fontFamily:"+fontFamily+",fontSize:"+fontSize);
+    console.log("fontSize/13.0:"+(fontSize));
+    const HTMLGlobal = document.querySelector('html');
+    HTMLGlobal.style.fontFamily = fontFamily;    
+    HTMLGlobal.style.fontSize = fontSize;   //设置rem标准   设计图上默认是在14px字体上设计,所以默认1rem = 14px.
+    if ( fontSize >= 18)
+    {
+      document.documentElement.style.setProperty(`--index-item-size`, '170px');
+      document.documentElement.style.setProperty(`--index-span-width`, '140px');
+    }
+    else{
+      document.documentElement.style.setProperty(`--index-item-size`, '160px');
+      document.documentElement.style.setProperty(`--index-span-width`, '130px');
+    }
+  }
+
   themeChange(themeType) {
     global.setTheme(themeType);
   }
   onContentResult(appName, titleList, idList, contentList) {
-    // console.log('搜索结果', appName, titleList, idList, contentList);
+    console.log('搜索结果', appName, titleList, idList, contentList);
     let { searchResult } = this.state;
     searchResult.push({
       file: `${global.path}/${appName}/${global.lang}/index.md`,
@@ -115,31 +147,111 @@ class App extends React.Component {
     });
     this.setState({ searchResult, mismatch: false });
   }
+
+  //搜索框清空后回到上一个页面(未搜索的页面).
+  onSearchEditClear(){
+    console.log("==================>onSearcheditclear");
+    var locationPath = this.context.router.history.location.pathname;
+    var list = locationPath.split("/");
+    let bFlag = false;
+    //open页length = 5, search页length = 3
+    if (list.length == 5 && list[4] != "")
+    {
+      bFlag = true;
+    }
+    else if (list.length == 3 && list[2] != ""){
+      bFlag = true;
+    }
+
+    if (bFlag)
+    {
+      var step;
+      var indexGo = this.state.historyGO;
+      // var indexGo = global.gHistoryGo;
+      let objList = this.context.router.history.entries;
+      for (let i = indexGo; i >= 0; i--)
+      {
+
+        let curPath = objList[i].pathname;
+        let curPathList = curPath.split("/");
+        if (curPathList.length == 5 && curPathList[4] == "")
+        {
+          step = indexGo - i ;
+          break;
+        }
+        else if (curPathList.length == 3 && curPathList[2] == "")
+        {
+          step = indexGo - i;
+          break;
+        }
+        else if (curPathList.length == 2)
+        {
+          step = indexGo - i;
+          break;
+        }
+      }
+      if (step)
+      {
+        if (this.context.router.history.canGo(-1 * step)) {
+          this.setState({ historyGO: this.state.historyGO-step });
+          // global.gHistoryGo = global.gHistoryGo - step;
+          this.context.router.history.go(-1 * step);
+        }
+      }
+
+    }
+  }
+
   getChildContext() {
     let { searchResult, mismatch } = this.state;
     return { searchResult, mismatch };
   }
   componentWillReceiveProps(nextProps) {
-    console.log("componentWillReceiveProps", this.context.router.history);
+    console.log("app componentWillReceiveProps", this.context.router.history);
+    console.log("this location: "+this.context.router.history.location);
+    var pathName = this.context.router.history.location.pathname;
+    var pathList = pathName.split("/");
+    var cKeyword = '';
+
+    //search页===>/search/:keyword 
+    //open页=====>/open/:file/:hash?/:key? 
+    if (pathList.length == 3)
+    {
+      cKeyword = pathList[2];
+    }
+    else if(pathList.length == 5)
+    {
+      cKeyword = pathList[4];
+    }
+    global.qtObjects.search.getKeyword(cKeyword);
+
     if (this.context.router.history.action == 'PUSH') {
       let entriesLen = this.context.router.history.entries.length;
-      //console.log("entriesLen" + entriesLen);
       if (entriesLen > 1) {
         let entry = this.context.router.history.entries[entriesLen-1];
         if (entry.pathname.toString().indexOf("/search/") != -1) {
-          //console.log(entry.pathname);
           this.setState({ historyGO: entriesLen - 1 });
+          // global.gHistoryGo = entriesLen - 1;
           return;
         }
       }
       this.setState({ historyGO: entriesLen - 1 });
+      // global.gHistoryGo = entriesLen - 1;
     }
+
+    //切换状态时,去除选中状态....为何选中状态切换页面时会保留??????
+    window.getSelection().empty();
   }
   componentDidMount() {
     global.index = () => {
       // this.context.router.history.push('/');
+      if (this.state.init == false)
+      {
+        this.setState({ init: true });
+      }
     };
     global.backHome = () => {
+      global.handleLocation(global.hash);
       console.log("global.backHome()" + this.context.router.history.entries.length);
       console.log("global.backHome()" + this.state.historyGO);
       let goNum = this.state.historyGO;
@@ -148,28 +260,77 @@ class App extends React.Component {
 
       if (this.context.router.history.canGo(-1 * goNum)) {
         this.context.router.history.go(-1 * goNum);
+        // this.context.router.history.go(0);
       }
     };
-    global.open = (file, hash = '') => {
+
+    //打开某一个文件,并定位到具体hash
+    global.open = (file, hash = '', key='') => {
+      console.log("global.open()....file:"+ file + " hash:" + hash+" key:"+key);
       //h0默认为应用名称，内容为空，所以当打开h0，将其变为h1概述的位置。
-      if (hash == 'h0')
+      if (hash == 'h0' || hash == '')
       {
         hash = 'h1'
       }
       file = encodeURIComponent(file);
       hash = encodeURIComponent(hash);
       global.hash = hash;
-      global.oldHash = hash;
-      let url = `/open/${file}/${hash}`;
-      console.log(url);
+
+      // '/'字符替换为其他非常用字符组合,来替代'/', 路由URL使用'/'来区分字段,所以应该避免字段中含有'/'.
+      if (key.indexOf('/') !== -1)
+      {
+         key = key.replace(/\//g,'-+');
+      }
+
+      let url = `/open/${file}/${hash}/${key}`;
       this.context.router.history.push(url);
+
+      //Init属性设置, 放在index与opentitle中. 避免直接跳转到特定模块时会先走/模块.
+      if (this.state.init == false)
+      {
+        this.setState({ init: true });
+      }
+
+      //通知qt对象,修改应用打开状态
+        global.qtObjects.manual.setApplicationState(file);
     };
 
-    global.linkTitle = (title) => {
-      console.log("===============");
-      console.log(title);
-      global.linktitle = title;
+    global.openTitle = (file, title = '') => {
+      console.log("global linkTitle==> file:" + file + " title: "+title);
+      global.handleLocation(global.hash);
+      if (title !== '')
+      {
+        let filePath = `${global.path}/${file}/${global.lang}/index.md`;
+        global.readFile(filePath, data => {
+          let { html } = m2h(filePath, data);
+          let d = document.createElement('div');
+          d.innerHTML = html;
+          let hashID = 'h0';
+          if (d.querySelector(`[text="${title}"]`))
+          {
+            hashID = d.querySelector(`[text="${title}"]`).id;
+          }
+          global.open(file,hashID);
+        })
+      }
+      else
+      {
+        global.open(file);
+      }
     };
+
+    //替换当前URL,仅仅在切换到其他页面处调用...(包含前进,后退,重新打开一个新的页面)
+    global.handleLocation=(hash='') =>{
+      let url = this.context.router.history.location.pathname;
+      console.log("global.handhash: ",url);
+      let urlList = url.split("/");
+      if (urlList.length == 5)
+      {
+        url = `/${urlList[1]}/${urlList[2]}/${hash}/${urlList[4]}`;
+        console.log("new url:",url);
+        this.context.router.history.replace(url);
+      }
+    }
 
     //获取当前系统活动色
     global.setHashWordColor = (strRgb) => {
@@ -212,10 +373,12 @@ class App extends React.Component {
       if(navigator.language.toString().indexOf('en_') != -1) {
         document.documentElement.style.setProperty(`--span-line-height`, '1.0rem');
         document.documentElement.style.setProperty(`--span-font-size`, '0.9rem');
+        document.documentElement.style.setProperty(`--span-maring-bottom`, '0.15rem');
       }
       else{
         document.documentElement.style.setProperty(`--span-line-height`, '1.4rem');
         document.documentElement.style.setProperty(`--span-font-size`, '1.03rem');
+        document.documentElement.style.setProperty(`--span-maring-bottom`, '0.15rem');
       }
       if("DarkType"==themeType){
       console.log('DarkType');
@@ -315,6 +478,7 @@ class App extends React.Component {
     };
 
     global.openSearchPage = keyword => {
+      global.handleLocation(global.hash);
       let decodeKeyword = Base64.decode(keyword);
       console.log("decodeKeyword", decodeKeyword);
       console.log("openSearchPage", this.context.router.history);
@@ -370,9 +534,11 @@ class App extends React.Component {
     if (global.qtObjects) {
       global.qtObjects.titleBar.setBackwardButtonActive(
         this.state.historyGO > 0
+        // global.gHistoryGo > 0
       );
       global.qtObjects.titleBar.setForwardButtonActive(
         this.context.router.history.length - this.state.historyGO > 1
+        // this.context.router.history.length  - global.gHistoryGo > 1
       );
     }
   }
@@ -383,7 +549,7 @@ class App extends React.Component {
           <Switch>
             <Route exact path="/" component={Index} />
             <Route path="/index" component={Index} />
-            <Route path="/open/:file/:hash?" component={Main} />
+            <Route path="/open/:file/:hash?/:key?" component={Main} />
             <Route path="/search/:keyword" component={Search} />
           </Switch>
         )}

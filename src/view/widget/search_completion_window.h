@@ -21,9 +21,6 @@
 #include "controller/search_result.h"
 #include "search_completion_listview.h"
 
-#include <QPushButton>
-#include <QStringListModel>
-
 #include <DBlurEffectWidget>
 
 DWIDGET_USE_NAMESPACE
@@ -32,6 +29,11 @@ namespace dman {
 
 class SearchButton;
 
+/**
+ * @brief The SearchCompletionWindow class 搜索下拉框
+ * 由SearchCompletionListView与SearchButton两个类组合成的窗体
+ * 搜索结果显示在SearchEdit下方
+ */
 class SearchCompletionWindow : public DBlurEffectWidget
 {
     Q_OBJECT
@@ -78,6 +80,6 @@ private slots:
     void onResultListEntered(const QModelIndex &index);
 };
 
-}  // namespace dman
+} // namespace dman
 
-#endif  // DEEPIN_MANUAL_VIEW_SEARCH_COMPLETION_WINDOW_H
+#endif // DEEPIN_MANUAL_VIEW_SEARCH_COMPLETION_WINDOW_H

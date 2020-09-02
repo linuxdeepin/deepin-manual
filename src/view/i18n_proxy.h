@@ -18,24 +18,23 @@
 #ifndef DEEPIN_MANUAL_VIEW_I18N_PROXY_H
 #define DEEPIN_MANUAL_VIEW_I18N_PROXY_H
 
-#include <QObject>
-#include <QHash>
 #include <QVariant>
 
 namespace dman {
 
-class I18nProxy : public QObject {
-  Q_OBJECT
- public:
-  explicit I18nProxy(QObject* parent = nullptr);
-  ~I18nProxy() override;
+class I18nProxy : public QObject
+{
+    Q_OBJECT
+public:
+    explicit I18nProxy(QObject *parent = nullptr);
+    ~I18nProxy() override;
 
- public slots:
-  QVariantHash getSentences() const;
+public slots:
+    QVariantHash getSentences() const;
 
-  QString getLocale() const;
+    QString getLocale() const;
 };
 
-}  // namespace dman
+} // namespace dman
 
-#endif  // DEEPIN_MANUAL_VIEW_I18N_PROXY_H
+#endif // DEEPIN_MANUAL_VIEW_I18N_PROXY_H

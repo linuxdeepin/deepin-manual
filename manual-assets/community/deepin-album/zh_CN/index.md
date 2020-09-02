@@ -127,6 +127,9 @@
 3. 右键单击已收藏的照片，也可以 **取消收藏**。
 
    > ![tips](icon/tips.svg)窍门：在查看照片时，点击界面上的![collect](icon/collect.svg)，将照片加入我的收藏。再次点击![collect-active](icon/collect-active.svg)，取消收藏。
+
+
+
 ### 旋转照片
 
 1. 在相册界面上，右键单击照片。
@@ -233,3 +236,5 @@
 
 1. 在相册界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **退出**。
+
+<div class="version-info"><span>文档更新时间: 2020-09-02</span><span> 版本: 5.6</span></div>

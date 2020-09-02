@@ -56,14 +56,6 @@ Sort the icons on your desktop to organize according to your needs.
 
 > ![tips](icon/tips.svg)Tips: Check **Auto arrange**. Icons on the desktop will be listed in order automatically. If an icon is removed, another one will fill in the blank.
 
-#### Auto Merge
-
-Check “Auto merge” to keep your files on the desktop organized. 
-
-When it is checked, all files and folders on the desktop will be automatically grouped into folders named by Videos, Music, Pictures, Documents, Applications, Others and Folders.
-
-![1|merge](jpg/merge.png)
-
 
 ### Adjust Icon Size
 
@@ -180,7 +172,7 @@ You can hide the Dock in order to maximize the expansion of the desktop operatin
 ### Show/Hide Plugins
 
 1. Right click the Dock and select **Plugins**.
-2. On the submenu, you can check or uncheck **Trash, Power, Show Desktop, Onboard, Notification Center, Multitasking View, Datetime and Desktop AI Assistant** to show or hide the corresponding icon on Dock.
+2. On the submenu, you can check or uncheck **Trash, Power, Show Desktop, Onboard, Notification Center, Multitasking View, Datetime** to show or hide the corresponding icon on Dock.
 
 ### View Notifications
 When there are system or application notifications, they will be shown in the middle of the screen. If there are buttons in the message, click buttons to do the actions; if there are not, click the message to close it.
@@ -208,6 +200,7 @@ There are two ways to enter the shutdown interface:
 | Shut down ![poweroff_normal](icon/poweroff_normal.svg)       | Shut down the computer.                                      |
 | Reboot ![reboot_normal](icon/reboot_normal.svg)              | Restart the computer.                                        |
 | Suspend ![suspend_normal](icon/suspend_normal.svg)           | The computer will run with low consumption.                  |
+| Hibernate ![sleep_hover](icon/sleep_hover.svg)           | "Hibernate" is mounted to system with swap partition. This option does not appear for systems without swap partition.                  |
 | Lock ![lock_normal](icon/lock_normal.svg)                    | Lock the computer with the password. Or press **Super** + **L** to lock it. |
 | Switch user ![userswitch_normal](icon/userswitch_normal.svg) | Log in with another user account.                            |
 | Log out ![logout_normal](icon/logout_normal.svg)             | End all the processes and initialize the system.             |
@@ -418,9 +411,9 @@ Fingerprint password is used in system login, application authorization and othe
 
 > ![attention](icon/attention.svg)Attention: The logged in account cannot be deleted.
 
-### Cloud Account
+### Union ID
 
-By signing in Cloud Account, you can sync the current system settings to the cloud, including network settings, sound settings, mouse settings, update settings, power settings, theme, wallpaper, launcher and Dock. To sync the settings from the cloud to another computer, just sign in with the same Cloud Account on that computer.
+By signing in Union ID, you can sync the current system settings to the cloud, including network settings, sound settings, mouse settings, update settings, power settings, theme, wallpaper, launcher and Dock. To sync the settings from the cloud to another computer, just sign in with the same Union ID on that computer.
 
 > ![tips](icon/tips.svg)Tips: When "Auto Sync" is enabled, you can uncheck the unwanted options; when it is disabled, all settings will not be synced.
 
@@ -1097,7 +1090,7 @@ Window manager controls the alignment and appearance of windows. It allows you t
 
 > ![notes](icon/notes.svg)Notes: this function is available only when **Window Effect** is turned on in **Personalization** in **Control Center**. 
 
-![1|workspace](jpg/workspace.png)
+![1|workspace](jpg/workspace.jpg)
 
 ### Open Workspace
 Manage your desktop windows in different workspaces to enlarge your Workspaces.
@@ -1325,3 +1318,5 @@ The scrolling direction of the screen is the same as where your finger goes.
 
 Pinch two fingers to zoom out on the web page or picture. Open two fingers to zoom in on the web page or picture.
 
+
+<div class="version-info"><span>Update Date: 2020-09-02</span><span> Version: 2020.08</span></div>

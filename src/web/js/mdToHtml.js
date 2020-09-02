@@ -1,6 +1,6 @@
 import marked from 'marked';
 
-export default function(mdFile, mdData) {
+export default function(mdFile, mdData, key='') {
   let hlist = [];
   let info = {};
   let html = '';
@@ -38,5 +38,16 @@ export default function(mdFile, mdData) {
     return `<img src="${hrefX2}" data-src="${href}" alt="${text}" />`;
   };
   html = marked(mdData, { renderer }).replace(/src="/g, `$&${path}`);
+  if (key != '')
+  {
+    //将'-+'字符串 反向还原成'/'
+    key = key.replace(/-+/g,'/');
+    // var formatKeyword = key.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')
+    var finder = new RegExp(">.*?<",'g') // 提取位于标签内的文本，避免误操作 class、id 等
+    html = html.replace(finder,function(matched){
+            return matched.replace(new RegExp(key,'gi'),"<span style='background-color: yellow'>$&</span>");
+    })
+  }
+  
   return { html, hlist, info };
 }

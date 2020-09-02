@@ -1,12 +1,7 @@
 #include "search_completion_delegate.h"
 #include "base/utils.h"
 
-#include <QPainter>
-#include <QMouseEvent>
-
-#include <DLog>
 #include <DStyleHelper>
-#include <DApplicationHelper>
 
 SearchCompletionDelegate::SearchCompletionDelegate(QAbstractItemView *parent)
     : DStyledItemDelegate(parent)
@@ -19,7 +14,6 @@ void SearchCompletionDelegate::paint(QPainter *painter, const QStyleOptionViewIt
                                      const QModelIndex &index) const
 {
     if (index.isValid()) {
-
         painter->save();
         painter->setRenderHint(QPainter::Antialiasing, true);
 
@@ -29,7 +23,7 @@ void SearchCompletionDelegate::paint(QPainter *painter, const QStyleOptionViewIt
         QString strSearchKeyword = itemModel.strSearchKeyword;
         QString strSearchAppDisplayName = itemModel.strSearchAppDisplayName;
 
-        QStyleOptionViewItem viewOption(option);  //用来在视图中画一个item
+        QStyleOptionViewItem viewOption(option); //用来在视图中画一个item
 
         DPalette::ColorGroup cg = option.state & QStyle::State_Enabled ? DPalette::Normal : DPalette::Disabled;
         if (cg == DPalette::Normal && !(option.state & QStyle::State_Active)) {

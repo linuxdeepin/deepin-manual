@@ -130,20 +130,19 @@ On Document Viewer interface, open a file.
 
 - Add note
 
-   1. Select text using the selecting tool and right-click, select **Add annotation** and an inputing window pops up. When you finish the operation, the text selected is highlighted.
-   
-   2. Move the cursor to the place where you want to add a note, right-click and select **Add annotation**. When you finish the operation, a note icon appears. 
-   
-   3.  Click the note icon on the bottom of the left panel, and click **Add annotation**, and click the place where you want to add a note on the current page to add a note.
-   
-   4. Click "**x**" of the window or in any blank area outside the window, the note will be saved automatically.  The selected text will be highlighted after the note is added successfully. 
-   
-  > ![tips](icon/tips.svg)Tips: You can also right-click at any blank area or the place you want to add a note and select **Add annotation**. After a note is successfully added, a highlighted note icon appears.
-  
-  > ![notes](icon/notes.svg)Notes: 
-  > * Click "**x**" of the window without inputing any content, then the note is not added successfully or is deleted automatically. 
-  > * Click "**x**" of the window after inputing some content, the content will be saved automatically and displayed as a small icon. 
-  
+  1. Select text using the selecting tool and right-click, select **Add annotation** and an inputing window pops up. When you finish the operation, the text selected is highlighted.
+  2. Move the cursor into annotation window and click to input your annotation.
+  3. Click "**x**" of the window or in any blank area outside the window, the note will be saved automatically.  
+
+The selected text will be highlighted after the note is added successfully. 
+
+   > ![tips](icon/tips.svg)Tips: You can also right-click at any blank area or the place you want to add a note and select **Add annotation**. After a note is successfully added, a highlighted note icon appears.
+
+   > ![notes](icon/notes.svg)Notes: 
+   > 
+   > * Click "**x**" of the window without inputing any content, then the note is not added successfully or is deleted automatically. 
+   > * Click "**x**" of the window after inputing some content, the content will be saved automatically and displayed as a small icon. 
+
 - Copy note
    -  Right-click the highlighted text to which a note is successfully added and select **Copy** to copy the content.
    -  Right-click the note icon, select **Copy** to copy the content.
@@ -314,3 +313,5 @@ click Help to get the manual, which will help you further know and use Document 
 1. Click ![icon_menu](icon/icon_menu.svg) on the main interface.
 2. Click  **Exit**.
 
+
+<div class="version-info"><span>Update Date: 2020-09-02</span><span> Version: 5.7</span></div>
