@@ -89,7 +89,7 @@ private:
     void setHashWordColor();
     void setSearchManager();
     void settingContextMenu();
-    QRect hasSearchEditRect();
+    QRect hasWidgetRect(QWidget *);
 
     QString app_name_;
     QString keyword_;
