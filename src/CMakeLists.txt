@@ -69,8 +69,8 @@ else()
 endif()
 
 if (${CMAKE_SYSTEM_PROCESSOR} MATCHES "mips64")
-    message(STATUS "this system is mips64=========")
     set(FLAGS_COMMON "-O3 -ftree-vectorize -march=loongson3a -mhard-float -mno-micromips -mno-mips16 -flax-vector-conversions -mloongson-ext2 -mloongson-mmi -Wl, as-need")
+    add_definitions(-DDCPU_IS_LONGSON)
 endif()
 
 find_package(PkgConfig REQUIRED)
@@ -135,6 +135,8 @@ set(CONTROLLER_FILES
     controller/window_manager.h
     controller/config_manager.cpp
     controller/config_manager.h
+    controller/shellobj.cpp
+    controller/shellobj.h
     )
 
 set(DBUS_FILES
