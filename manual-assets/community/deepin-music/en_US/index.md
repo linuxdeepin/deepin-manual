@@ -154,19 +154,19 @@ On the Music interface, you can:
 
 You can play music by the following ways:
 
-- Double click or right click a selected music in the palylist to play the music.
-- Select a list under the playlist in the left navigation bar and right click **Play** to play all the songs in the list according to the current order.
+- Double click or right-click a selected music in the palylist to play the music.
+- Select a list under the playlist in the left navigation bar and right-click **Play** to play all the songs in the list according to the current order.
 - Click **Play All** to Play all the songs in the current list according to the chosen order. 
 
 > ![tips](icon/tips.svg)Tips: On the Music interface, click ![play_normal](icon/play_normal.svg) to play the selected music. Click ![suspend_normal](icon/suspend_normal.svg) to pause the play. Click ![last_normal](icon/last_normal.svg) or ![next_normal](icon/next_normal.svg) to switch to the previous or next song according to the current play mode.
 
 ### Add Music to My Favorites
 
-On the Music interface, click ![collect](icon/collect.svg) to add music to my favorites.
+On the Music interface, click ![collect](icon/collect.svg) to add music to My Favorites.
 
-The prompt information **Successfully added to "My Favorites"** pops up and the music is added to **My Favorites** list.
+The prompt information **Successfully added to "My favorites"** pops up and the music is added to **My Favorites** list.
 
-> ![notes](icon/notes.svg)Notes: You can also right click the music, and click **Add to playlist** > **My Favorites** to complete the addition.
+> ![notes](icon/notes.svg)Notes: You can also right-click the music, and click **Add to playlist** > **My favorites** to complete the addition.
 
 ### View Lyrics
 
@@ -218,14 +218,14 @@ On the Music interface, click ![single](icon/single-tune-circulation_normal.svg)
 
 On the Music interface, you can create, delete and rename playlist. You can also add music to the playlist.
 
-> ![notes](icon/notes.svg)Notes: **All music** and **My favorites **are set as default lists and cannot be deleted. Custom playlists are subsets of the **All Music **list. **My Favorites **list can be managed directly or through the Favorites button on the main interface.
+> ![notes](icon/notes.svg)Notes: **All music** and **My favorites **are set as default lists and cannot be deleted. Custom playlists are subsets of the **All Music **list. **My Favorites **list can be managed directly or through the Favorite button on the main interface.
 
 
 ### Create a New Playlist
 
 1.  On the Music interface, click ![icon_plus](icon/icon_plus.svg) right to the playlist or click ![menu](icon/icon_menu.svg)**> Add Playlist**.
 2.  Enter the name of the playlist.
-3.  Press the **Enter** key on the keyboard.
+3.  Press the **Enter** key on keyboard.
 
 ![0|addlist](jpg/addlist.png)
 
@@ -233,7 +233,7 @@ On the Music interface, you can create, delete and rename playlist. You can also
 
 1.  Select a playlist from **Playlists**.
 2.  Right-click to select **Rename**.
-3.  Enter the name of the playlist and press the Enter key to save.
+3.  Enter the name of the playlist and press the **Enter** key on keyboard to save.
 
 ![0|renamelist](jpg/renamelist.png)
 
@@ -257,7 +257,8 @@ On the Music interface, you can create, delete and rename playlist. You can also
 
 ### Delete Playlist
 
-2. Right-click the playlist in **Playlists** to be deleted and select **Delete**.
+1. Select a playlist from **Playlists**. 
+2. Right-click the playlist to be deleted and select **Delete**.
 3. In the pop-up window, select **Delete** to confirm the operation.
 
 ![0|deletelist](jpg/deletelist.png)
@@ -265,7 +266,7 @@ On the Music interface, you can create, delete and rename playlist. You can also
 
 ## Main Menu
 
-You can [Add Music](#Add Music), set the equalizer and the options, switch window themes, view the help manual and get more information about Music.
+In the main menu, you can [Add Music](#Add Music), set the equalizer and the options, switch window themes, view help manual and get more information about Music.
 
 ### Equalizer
 
@@ -275,7 +276,7 @@ You can set your favorite music mode, such as classical, rock and so on.
 
 2. Select **Equalizer**.
 
-3. You can switch on equalizer, customize "Preamplifier" values and frequencies or select a music mode and click **Save**.
+3. You can switch on equalizer, customize **Preamplifier** values and frequencies or select a music mode and click **Save**.
 
 4. Click **Restore Defaults** to restore the default settings.
 
@@ -309,7 +310,7 @@ You can set the basic information and shortcuts in settings.
 
 ### Theme
 
-The window theme includes Light Theme, Dark Theme and System Theme (default).
+The window theme provides three theme types, namely Light Theme, Dark Theme and System Theme (default).
 
 1.  On the Music interface, click ![icon_menu](icon/icon_menu.svg).
 
@@ -317,15 +318,11 @@ The window theme includes Light Theme, Dark Theme and System Theme (default).
 
 ### Help
 
-You can click **Help** to view the manual.
-
 1.  On the Music interface, click ![menu](icon/icon_menu.svg).
 
 2.  Click **Help** to view the manual of Music.
 
 ### About
-
-Click **About** to view the introduction of Music.
 
 1. On the Music interface, click ![menu](icon/icon_menu.svg).
 
@@ -334,11 +331,9 @@ Click **About** to view the introduction of Music.
 
 ### Exit
 
-Click **Exit** to exit Music.
-
 1.  On the Music interface, click ![menu](icon/icon_menu.svg).
 
-2.  Click **Exit** to exit.
+2.  Click **Exit** to exit Music.
 
 
-<div class="version-info"><span>Update Date: 2020-09-02</span><span> Version: 6.0</span></div>
+<div class="version-info"><span>Update Date: 2020-09-07</span><span> Version: 6.0</span></div>

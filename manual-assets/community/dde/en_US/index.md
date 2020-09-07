@@ -172,7 +172,7 @@ You can hide the Dock in order to maximize the expansion of the desktop operatin
 ### Show/Hide Plugins
 
 1. Right click the Dock and select **Plugins**.
-2. On the submenu, you can check or uncheck **Trash, Power, Show Desktop, Onboard, Notification Center, Multitasking View, Datetime** to show or hide the corresponding icon on Dock.
+2. On the submenu, you can check or uncheck **Trash, Power, Show Desktop, Onboard, Notification Center, Multitasking View** and **Datetime** to show or hide the corresponding icon on Dock.
 
 ### View Notifications
 When there are system or application notifications, they will be shown in the middle of the screen. If there are buttons in the message, click buttons to do the actions; if there are not, click the message to close it.
@@ -411,9 +411,9 @@ Fingerprint password is used in system login, application authorization and othe
 
 > ![attention](icon/attention.svg)Attention: The logged in account cannot be deleted.
 
-### Union ID
+### Deepin ID
 
-By signing in Union ID, you can sync the current system settings to the cloud, including network settings, sound settings, mouse settings, update settings, power settings, theme, wallpaper, launcher and Dock. To sync the settings from the cloud to another computer, just sign in with the same Union ID on that computer.
+By signing in Deepin ID, you can sync the current system settings to the cloud, including network settings, sound settings, mouse settings, update settings, power settings, theme, wallpaper, launcher and Dock. To sync the settings from the cloud to another computer, just sign in with the same Deepin ID on that computer.
 
 > ![tips](icon/tips.svg)Tips: When "Auto Sync" is enabled, you can uncheck the unwanted options; when it is disabled, all settings will not be synced.
 
@@ -442,7 +442,7 @@ Set screen resolution, brightness, direction and display scaling properly to hav
 2. Click **Brightness**.
    - Drag the slider to set screen brightness.
    - Once **Night Shift** is switched on, the screen hue will be auto-adjusted according to your location.
-   - Once **Auto Brightness** is switched on, the monitor brightness will be auto-adjusted according to environmental lightings (only applicable for PC(s) with a light sensor).
+   - Once **Change Color Temperature** is switched on, you can adjust the monitor brightness as you wish. 
 
 ##### Set Display Scaling
 
@@ -697,6 +697,35 @@ You can view MAC, IP address, gateway and other network info in network details.
 1. On the homepage of Control Center, click ![network_normal](icon/network_normal.svg).
 2. Click **Network Details**.
 3. View the network info of the current wired or wireless network.
+
+### Notification Settings
+
+You can set "Do Not Disturb" to system notifications, and also switch on or off the notification hints of some applications.
+
+![0|noti](jpg/noti.png)
+
+#### System Notification Settings
+
+You can set "Do Not Disturb" to system notifications and whether to show icon on Dock here.
+
+1. On the homepage of Control Center, click ![nav_notifi_42px](icon/nav_notifi_42px.svg).
+
+2. Click **System Notification**.
+
+   - Switch on/off **Do Not Disturb**.
+     After switching on this button, you can set the starting and ending time; also, you can check **When the screen is locked**. Under this mode, all notification are muted, but you can view all notifications in Notification Center. 
+   - Switch on/off **Show icon on Dock**.
+
+#### App Notification Settings
+
+You can custom notification hints for all applications.
+
+1. On the homepage of Control Center, click ![nav_notifi_42px](icon/nav_notifi_42px.svg).
+2. Under **App Notifications**, select an application, and in the window on the right, you can choose to check:
+   - Play a sound
+   - Show messages on lockscreen
+   - Show only in notification center
+   - Show message preview
 
 
 
@@ -1319,4 +1348,4 @@ The scrolling direction of the screen is the same as where your finger goes.
 Pinch two fingers to zoom out on the web page or picture. Open two fingers to zoom in on the web page or picture.
 
 
-<div class="version-info"><span>Update Date: 2020-09-02</span><span> Version: 2020.08</span></div>
+<div class="version-info"><span>Update Date: 2020-09-07</span><span> Version: 2020.08</span></div>

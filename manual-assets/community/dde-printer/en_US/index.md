@@ -250,4 +250,4 @@ click Help to get the manual, which will help you further know and use Printer M
 2. Click  **Exit**.
 
 
-<div class="version-info"><span>Update Date: 2020-09-02</span><span> Version: 0.6</span></div>
+<div class="version-info"><span>Update Date: 2020-09-07</span><span> Version: 0.6</span></div>

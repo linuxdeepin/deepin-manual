@@ -205,4 +205,4 @@
 1. 在应用商店界面，单击 ![icon_menu](icon/icon_menu.svg)。
 2. 单击 **退出**，即可退出应用商店。
 
-<div class="version-info"><span>文档更新时间: 2020-09-02</span><span> 版本: 6.0</span></div>
+<div class="version-info"><span>文档更新时间: 2020-09-07</span><span> 版本: 6.0</span></div>

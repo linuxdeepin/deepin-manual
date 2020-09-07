@@ -156,28 +156,26 @@ On the main menu, you can switch window themes, view help manual and get more in
 
 ### Theme
 
-The window theme includes Light Theme, Dark Theme and System Theme (default).
+The window theme provides three theme types, namely Light Theme, Dark Theme and System Theme (default).
 
 1. On the Voice Notes interface, click ![icon_menu](icon/icon_menu.svg).
-2. Click **Theme** to select a theme.
+2. Click **Theme** to select one theme.
 
 ### Help
 
 View Help to get more information about Voice Notes.
 
 1.  On the Voice Notes interface, click ![icon_menu](icon/icon_menu.svg).
-2.  Click **Help**.
-3.  View the manual.
+2.  Click **Help** to view the manual of Voice Notes.
 
 ### About
 
 1.  On the Voice Notes interface, click ![icon_menu](icon/icon_menu.svg). 
-2.  Click **About**.
-3.  View the version description.
+2.  Click **About** to view the version and introduction of Voice Notes.
 
 ### Exit
 
 1. On the Voice Notes interface, click ![icon_menu](icon/icon_menu.svg).
-2.  Click **Exit** to exit.
+2.  Click **Exit** to exit Voice Notes.
 
-<div class="version-info"><span>Update Date: 2020-09-02</span><span> Version: 5.7</span></div>
+<div class="version-info"><span>Update Date: 2020-09-07</span><span> Version: 5.7</span></div>

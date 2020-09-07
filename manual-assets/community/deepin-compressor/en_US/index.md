@@ -32,7 +32,7 @@ You can run, exit or create a shortcut for Archive Manager by the following ways
 
 ### View Shortcuts
 
-On the Archive Manager interface, press **Ctrl+ Shift+？** on the keyboard to view shortcuts. Proficiency in shortcuts will greatly improve your efficiency.
+On the Archive Manager interface, press **Ctrl+ Shift+?** on the keyboard to view shortcuts. Proficiency in shortcuts will greatly improve your efficiency.
 
 ![1|hotkey](jpg/hotkey.png)
 
@@ -68,7 +68,7 @@ It is available for you to compress a single file/folder/package or a collection
 
    - Click **View** to view the specific storage location.
    - Click **Back** to return to the main interface after successful compression.
-    
+   
    > ![tips](icon/tips.svg)Tips: You can also right-click **Compress** to compress the file.
    
    ![1|compressor](jpg/compress-success.png)
@@ -147,4 +147,4 @@ View Help to get more information about Archive Manager.
 1.  On the Archive Manager interface, click ![icon_menu](icon/icon_menu.svg) .
 2.  Click **Exit** to exit.
 
-<div class="version-info"><span>Update Date: 2020-09-02</span><span> Version: 5.8</span></div>
+<div class="version-info"><span>Update Date: 2020-09-07</span><span> Version: 5.8</span></div>

@@ -46,9 +46,7 @@
 
    > ![tips](icon/tips.svg)窍门：也可以选择将一个或者多个文件拖拽到界面上进行压缩操作。
    
-2. 如果需要添加压缩文件时，点击 ![plus](icon/icon_plus.svg) 添加。
-
-   > ![tips](icon/tips.svg)窍门：也可以点击  ![icon_menu](icon/icon_menu.svg) > **打开文件**，添加压缩文件。
+2. 如果需要继续添加压缩文件，可点击工具栏上的 ![plus](icon/icon_plus.svg)或者  ![icon_menu](icon/icon_menu.svg)> **打开文件**，添加压缩文件。
 
    ![1|compressor](jpg/compress-add.png)
 
@@ -56,10 +54,10 @@
 
 4. 设置文件名、存储路径、压缩包格式等。
 
-5. 如果开启高级选项模式，可以设置压缩包加密密码、分卷压缩。
+5. 如果开启高级选项模式，可以设置文件加密、文件列表加密或分卷压缩。
 
-   > ![notes](icon/notes.svg)说明：压缩包的默认文件格式是zip，可以设置加密文件的格式有7z、cbz、exe、zip。
-   
+   > ![notes](icon/notes.svg)说明：压缩包的默认文件格式是.zip，可设置文件加密的格式有.7z、.cbz、.exe、.zip；可设置文件列表加密的格式有.7z；可设置分卷压缩的格式有.7z。
+
    ![1|compressor](jpg/compress-file.png)
 
 6. 点击 **压缩**。
@@ -152,4 +150,4 @@
 1. 在归档管理器界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **退出**。
 
-<div class="version-info"><span>文档更新时间: 2020-09-02</span><span> 版本: 5.8</span></div>
+<div class="version-info"><span>文档更新时间: 2020-09-07</span><span> 版本: 5.8</span></div>

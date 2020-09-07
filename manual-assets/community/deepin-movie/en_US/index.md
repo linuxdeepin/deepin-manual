@@ -64,7 +64,7 @@ Immerse yourself in the pure joy of wonderful videos through frequently used fun
 
 ### Play Films
 
-You can play films by the following ways:
+You can play films in the following ways:
 - When there are no files in the playlist, click ![play](icon/play_normal.svg) and open the file selector to select a film file.
 - On the Movie interface, right-click or click ![menu](icon/icon_menu.svg) to select **Open file** and open the file selector to select a film file.
 - On the Movie interface, right-click or click ![menu](icon/icon_menu.svg) to select **Open folder**. All the audiovisual files in the folder are displayed in the playlist and played in turn. 
@@ -123,7 +123,7 @@ You can adjust the window size as you wish during playback.
 2. Select **Frame** and you can:
  - Adjust the film aspect ratio between 4:3, 16:9, 16:10, 1.85:1 and 2.35:1.
  - Rotate the film frame clockwise or counterclockwise.
- - Jump to previous frame/next frame.
+ - Jump to previous frame or next frame.
 
 ![0|frame](jpg/frame.png)
 
@@ -168,7 +168,7 @@ You can enter the playlist to add or delete the video files.
 ### Add Films to the Playlist
 
 You can add films to the playlist by the following ways:
-- Right-click on the Movie interface and select **Open file/Open folder/Open URL/Open CD/DVD** or click ![menu](icon/icon_menu.svg)> **Open file/Open folder**  to add films to the playlist.
+- Right-click on the Movie interface and select **Open file/Open folder/Open URL/Open CD/DVD** or click ![menu](icon/icon_menu.svg)> **Open file/Open folder** to add films to the playlist.
 - You can also drag files/folders directly to the playlist.
 
 ### Delete Film from the Playlist
@@ -181,7 +181,7 @@ You can add films to the playlist by the following ways:
 ![list](jpg/list-manag.png)
 
 
-### Clear the Playlist
+### Clear Playlist
 
 1.  Click ![movie](icon/episodes_normal.svg ) on the Movie interface.
 2.  Click the **Empty** icon under Playlist or right-click to select **Empty playlist**.
@@ -206,20 +206,16 @@ You can set the basic information, shortcut keys and subtitles.
   - Check the **Clear playlist when exit** box to clear the playlist when you exit Movie.
   - Check the **Remember playback position** box to resume the film automatically from the last position played when Movie runs.
   - Check the **Auto add similar files to play **box to add the similar film files in the same folder to the playlist for playback in order.
-  - Check the **Show video preview on mouseover** box to show the film preview when hovering on the progress bar.
-  - Check the **Show thumbnails in progress bar**, a preview window will be displayed when the cursor hovers on the progress bar.
+  - Check the **Show video preview on mouseover** box to show the film preview when you move the mouse over progress bar.
+  - Check the **Show thumbnails in progress bar**, a preview window will be displayed when you move the mouse over progress bar.
   - Check the **Pause when minimized** to pause the playback automatically when minimizing the Movie window.
 4.  Under the **Screenshot** option, you can select the path to save screenshots as you wish.
-
-
 
 #### Shortcuts Settings
 
 1.  Right-click or click ![界面按钮图标](icon/icon_menu.svg) on the Movie interface.
 2.  Select **Settings** > **Shortcuts**.
 3.  You can select and input new shortcuts.
-
-
 
 #### Subtitle Settings
 
@@ -228,33 +224,27 @@ You can set the basic information, shortcut keys and subtitles.
 3.  You can set the font and font size for subtitles.
 >  ![attention](icon/attention.svg)Attention: Click **Restore Defaults** on the interface to restore all settings.
 
-
-
 ### Theme
 
-The window theme includes Light Theme, Dark Theme and System Theme (default).
+The window theme provides three theme types, namely Light Theme, Dark Theme and System Theme (default).
 
 1.  On the Movie interface, click ![icon_menu](icon/icon_menu.svg).
-2.  Click **Theme** to select a theme.
+2.  Click **Theme** to select one theme.
 
 ### Help
 
-View Help to get more information about Movie.
-
 1.   On the Movie interface, click ![icon_menu](icon/icon_menu.svg) .
-2.  Select **Help**.
-3.  View the manual.
+2.  Select **Help** to view the manual of Help.
 
 ### About
 
 1.  On the Movie interface, click ![icon_menu](icon/icon_menu.svg).
-2.  Select **About**.
-3.  View the version description.
+2.  Select **About** to view the version and introduction of Movie.
 
 ### Exit
 
 1.   On the Movie interface, click ![icon_menu](icon/icon_menu.svg).
-2.  Click **Exit** to exit.
+2.  Click **Exit** to exit Movie.
 
 
-<div class="version-info"><span>Update Date: 2020-09-02</span><span> Version: 5.7</span></div>
+<div class="version-info"><span>Update Date: 2020-09-07</span><span> Version: 5.7</span></div>

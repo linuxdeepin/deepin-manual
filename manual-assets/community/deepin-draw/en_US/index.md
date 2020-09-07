@@ -13,7 +13,7 @@ You can run, close and create shortcuts for Image Viewer by the following ways.
 ### Run Draw
 
 1.   Click ![deepin-launcher](icon/deepin-launcher.svg) in the Dock to enter the Launcher interface.
-2.   Locate ![draw](icon/deepin-draw.svg) by scrolling the mouse wheel or searching "Draw" in the Launcher interface.
+2.   Locate ![draw](icon/deepin-draw.svg) by scrolling the mouse wheel or searching "draw" in the Launcher interface.
 3.   Right click ![draw](icon/deepin-draw.svg) and the user can:
  - Click **Send to desktop** to create a desktop shortcut.
  - Click **Send to dock** to fix the application in the Dock.
@@ -65,19 +65,19 @@ Currently, a maximum of 30 pictures could be exported. Formats including JPG, PN
 
 ### Export Pictures
 
-1.  On the Draw interface, click ![menu](icon/icon_menu.svg) > **Export**.
+1.  On the Draw interface, click ![menu](icon/icon_menu.svg)> **Export**.
 2.  Set the parameters including file name, path, format and picture quality. Click **Save**. 
 
 ### Save Pictures
 
-1.   On the Draw interface, click ![menu](icon/icon_menu.svg) > **Save** or ![menu](icon/icon_menu.svg) > **Save as**.
+1.   On the Draw interface, click ![menu](icon/icon_menu.svg)> **Save** or ![menu](icon/icon_menu.svg)> **Save as**.
 2.   Set the file name and format to be saved and click **Save**.
 
 > ![notes](icon/notes.svg)Notes: The suffix of the file name can be omitted and it can be saved as the selected format automatically. 
 
 ### Print Pictures
 
-1.  On the Draw interface, click ![menu](icon/icon_menu.svg) > **Print**.
+1.  On the Draw interface, click ![menu](icon/icon_menu.svg)> **Print**.
 2.  Select the printer and set the printing parameters.
 3.  Click **Print**.
 
@@ -108,8 +108,7 @@ After drawing entities with the graphics drawing tool, you can perform the follo
  - Click **Stroke** to set the stroke color and transparency for graphics.
  - Choose and set the width of Stroke from the drop-down list right to the **Stroke** button.
  - Click **Points** (from 3 to 50) and **Diameter** (from 0% to 100%) to set the points and diameter for star graphics only.
- - Click **Sides** to set sides for polygon graphics only.
-   - The number of sides ranges from 4 to 10, which can be adjusted by clicking the up and down adjustment icon or entering the value manually.
+ - Click **Sides** to set sides for polygon graphics only. The number of sides ranges from 4 to 10, which can be adjusted by clicking the up and down adjustment icon or entering the value manually.
 3.   Drag the mouse to draw graphics in Draw area. 
 
 >![tips](icon/tips.svg)Tips: Facilitated by the **Shift** or **Shift + Alt** keys on the keyboard, you can draw a square, perfect circle, equilateral triangle, regular pentagram and regular pentagon when drawing graphics with ![rectangle](icon/rectangle_normal.svg), ![oval](icon/oval_normal.svg), ![triangle](icon/triangle_tool_normal.svg), ![star](icon/draw-star.svg) and ![hexagon](icon/hexagon_tool_normal.svg).
@@ -235,7 +234,7 @@ You can copy, crop and rotate graphics with the edition functions, and also adju
 
 >![notes](icon/notes.svg)Notes: 
     - When you select one graphic, the layer will be aligned with the canvas.
-    - When you select 3 or more graphics, "Distribute horizontal space" and "Distribute vertical space" are available.
+    - When you select 3 or more graphics, **Distribute horizontal space** and **Distribute vertical space** are available.
 
 ![1|align1](jpg/align1.png)
 
@@ -260,23 +259,21 @@ You can create a new drawing.
 
 ### Theme
 
-The window theme includes Light Theme, Dark Theme and System Theme (default).
+The window theme provides three theme types, namely Light Theme, Dark Theme and System Theme (default).
 
 1. On the Draw interface, click ![icon_menu](icon/icon_menu.svg).
-2. Click **Theme** to choose one theme.
+2. Click **Theme** to select one theme.
 
 ### Help
 
-Click "Help" to get the manual. This will help you further understand how to use Draw.
-
 1.  On the Draw interface, click ![icon_menu](icon/icon_menu.svg).
-2.  Click **Help** to view the manual of  Draw.
+2.  Click **Help** to view the manual of Draw.
 
 
 ### About
 
 1.   On the Draw interface, click ![icon_menu](icon/icon_menu.svg).
-2.  Click **About** to view the version and introductions of Draw.
+2.  Click **About** to view the version and introduction of Draw.
 
 ### Exit
 
@@ -284,4 +281,4 @@ Click "Help" to get the manual. This will help you further understand how to use
 2.  Click **Exit** to exit Draw.
 
 
-<div class="version-info"><span>Update Date: 2020-09-02</span><span> Version: 5.8</span></div>
+<div class="version-info"><span>Update Date: 2020-09-07</span><span> Version: 5.8</span></div>

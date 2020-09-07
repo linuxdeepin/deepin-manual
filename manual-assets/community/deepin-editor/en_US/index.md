@@ -14,7 +14,7 @@ Click ![deepin-launcher](icon/deepin-launcher.svg) on dock to enter the Launcher
 
 by  scrolling the mouse wheel or searching "text editor" in the Launcher interface and click it to run.
 
-In Launcher, right click Text Editor and you can:
+In Launcher, right-click Text Editor and you can:
 
   - Click **Send to desktop** to create a desktop shortcut.
   - Click **Send to dock** to fix it on Dock.
@@ -43,7 +43,7 @@ Click ![plus_icon](icon/+.svg) on the title bar, or press **Ctrl + N**, or click
 You can open the text file in the following ways, and the selected file will open in the new tab:
 
 - Drag the file directly to the Text Editor interface or its icon.
-- Right click the file and open it with Text Editor. After selecting Text Editor as the default program, you can double click the file to open it directly.
+- Right-click the file and open it with Text Editor. After selecting Text Editor as the default program, you can double click the file to open it directly.
 - On the Text Editor interface, click ![icon_menu](icon/icon_menu.svg)> **Open file** and select the file.
 - On the Text Editor interface, use **Ctrl + O** to open the file.
 
@@ -60,8 +60,8 @@ You can also press **Ctrl + Shift + S** to save the file as  a new one.
 
 - Press **Ctrl + W** to close the file.
 - Move the cursor to the title and click the ![close](icon/close.svg) button there or the mouse middle button to close the file.
-- Right click the title and select **Close tab** or **Close other tabs**.
-- Right click the title and select **More ways to close**.
+- Right-click the title and select **Close tab** or **Close other tabs**.
+- Right-click the title and select **More ways to close**.
    - Select **Close left tabs** to close all the tabs on the left of the current tab.
    - Select **Close right tabs** to close all the tabs on the right of the current tab.
    - Select **Close unmodified tabs** to close all the unchanged tabs.
@@ -126,7 +126,7 @@ In addition to the arrow keys and mouse clicks, you can also use the following s
 It helps you change the case of selected text. You can change it to lowercase, uppercase, or capitalize the initial.
 
 1. Select the text.
-2. Right click and select **Change Case**.
+2. Right-click and select **Change Case**.
 3. Choose **Upper Case**, **Lower Case**, or **Capitalize**. The changes will take effect immediately.
 
 You can also use **Alt + U / L / C** to quickly switch the cases.
@@ -155,7 +155,7 @@ In addition to deleting characters one by one, you can quickly delete characters
 
 ### Undo
 
-If you make an incorrect operation, press **Ctrl + Z** to undo it, or right click to select **Undo**.
+If you make an incorrect operation, press **Ctrl + Z** to undo it, or right-click to select **Undo**.
 
 ### Find Texts
 
@@ -174,7 +174,7 @@ If you make an incorrect operation, press **Ctrl + Z** to undo it, or right clic
 
 ### Go to Line
 Use Go to Line to jump to the specific line directly.
-Right click and select **Go to Line**, or press **Ctrl + G** and then input the line number to go to that line.
+Right-click and select **Go to Line**, or press **Ctrl + G** and then input the line number to go to that line.
 
 ### Edit Line
 
@@ -197,19 +197,19 @@ Use the shortcuts below to edit lines easily:
 
 ### Enable/Disable Read-only Mode
 
-1. Open the document with Text Editor and right click to select **Turn on Read-only Mode**.
+1. Open the document with Text Editor and right-click to select **Turn on Read-only Mode**.
 
 ![readonly](jpg/readonly.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-2.  Right click to select **Turn off Read-only Mode** under the read-only mode.
+2.  Right-click to select **Turn off Read-only Mode** under the read-only mode.
 
 ![read-only](jpg/turnoffreadonly.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 ### Mark up
 
-Select the text to be marked in Text Editor, right click to select **Mark up** and select the corresponding options in the drop-down list as needed.
+Select the text to be marked in Text Editor, right-click to select **Mark up** and select the corresponding options in the drop-down list as needed.
 
 ![mark](jpg/mark.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -234,14 +234,14 @@ You can add a bookmark for any current line on the Text Editor interface. The ic
 - Add bookmark
 
    + Click ![icon](icon/bookmark_normal_light.svg) to add a bookmark for the line.
-   + Right click ![icon](icon/bookmark_normal_light.svg) and select **Add bookmark** to  add a bookmark for the line.
+   + Right-click ![icon](icon/bookmark_normal_light.svg) and select **Add bookmark** to  add a bookmark for the line.
    + Place the cursor on any line and press **Ctrl + F2** to add a bookmark for the line.
 
 -   Delete bookmark  
 
    + Click the colored bookmark icon ![bookmarkbig](icon/bookmarkbig_checked_light.svg) to delete the bookmark of the line directly.
-   + Right click the colored bookmark icon ![bookmarkbig](icon/bookmarkbig_checked_light.svg) to select **Cancel bookmark** to delete the bookmark in the line.
-   + Right click a bookmark to select **Clear bookmark** to delete all the bookmarks in the text.
+   + Right-click the colored bookmark icon ![bookmarkbig](icon/bookmarkbig_checked_light.svg) to select **Cancel bookmark** to delete the bookmark in the line.
+   + Right-click a bookmark to select **Clear bookmark** to delete all the bookmarks in the text.
   >![Notes](icon/notes.svg)Notes: the bookmark icon appears only when cursor is hovered over to the left of the line number in the left column; when it's moved beyond the left bookmark column, the bookmark icon will disappear. Click the icon when it appears and it will be filled with color, after which this filled color icon will remain no matter if the cursor hovers near the bookmark column.
 
 
@@ -250,11 +250,11 @@ You can add a bookmark for any current line on the Text Editor interface. The ic
 You can add comments to any text with a code type suffix, such as cpp and java, among others.
 
 - Add comment
-  - Select the text needed and right click to select **Add comment**.
+  - Select the text needed and right-click to select **Add comment**.
   - Select the text needed and press **Alt + A**.
 
 - Cancel comment
-     - Select the text needed and right click to select **Cancel comment**.
+     - Select the text needed and right-click to select **Cancel comment**.
 
      - Select the text needed and press **Alt + Z**.
 
@@ -275,7 +275,7 @@ Click ![icon_menu](icon/icon_menu.svg)> **Settings** and you can perform the fol
 
 - Select the Font and Font Size.
 - Check or uncheck **Word Wrap**.
-- Check **Code Fold Flag** and ![next](icon/next.svg) or ![next](icon/next-down.svg) are displayed in the edit area. Right click to select Fold/Unfold Current Level or Fold/Unfold All Levels to perform the corresponding operations.
+- Check **Code Fold Flag** and ![next](icon/next.svg) or ![next](icon/next-down.svg) are displayed in the edit area. Right-click to select Fold/Unfold Current Level or Fold/Unfold All Levels to perform the corresponding operations.
 - Check **Show Line Number** to display the line number in the edit area.
 
 > ![tips](icon/tips.svg)Tips: You can also use **Ctrl + “+”/ “-” ** to adjust the font size, and press **Ctrl + 0** to restore default font size.
@@ -298,27 +298,25 @@ Click ![icon_menu](icon/icon_menu.svg)> **Settings** and you can perform the fol
 
 ### Theme
 
-The window theme includes Light Theme, Dark Theme and System Theme (default).
+The window theme provides three theme types, namely Light Theme, Dark Theme and System Theme (default).
 
 1. On the Text Editor interface, click ![icon_menu](icon/icon_menu.svg).
 
-2.  Click **Theme** to select a theme.
+2.  Click **Theme** to select one theme.
 
 ### Help
 
 1.  On the Text Editor interface, click ![menu](icon/icon_menu.svg).
-2.  Select **Help**.
-3.  View the manual.
+2.  Select **Help** to view the manual of Text Editor.
 
 ### About
 
 1. On the Text Editor interface, click ![menu](icon/icon_menu.svg).
-2.  Select **About**.
-3.  View the version and description.
+2.  Select **About** to view the version and introduction of Text Editor.
 
 ### Exit
 
 1. On the Text Editor interface, click ![menu](icon/icon_menu.svg).
-2. Click **Exit** to exit.  
+2. Click **Exit** to exit Text Editor.  
 
-<div class="version-info"><span>Update Date: 2020-09-02</span><span> Version: 5.6</span></div>
+<div class="version-info"><span>Update Date: 2020-09-07</span><span> Version: 5.6</span></div>

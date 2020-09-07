@@ -220,7 +220,7 @@ The window theme includes Light Theme, Dark Theme and System Theme (default).
 
 ### Help
 
-Click "Help" to get the manual, which will help you further know and use Album.
+Click **Help** to view the manual.
 
 1.  On the Album interface, click ![icon_menu](icon/icon_menu.svg).
 2.  Click **Help** to view the manual of Album.
@@ -236,4 +236,4 @@ Click "Help" to get the manual, which will help you further know and use Album.
 1.  On the Album interface, click ![icon_menu](icon/icon_menu.svg).
 2.  Click **Exit** to exit Album.
 
-<div class="version-info"><span>Update Date: 2020-09-02</span><span> Version: 5.6</span></div>
+<div class="version-info"><span>Update Date: 2020-09-07</span><span> Version: 5.6</span></div>
