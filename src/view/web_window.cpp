@@ -692,7 +692,7 @@ void WebWindow::onSearchAnchorResult(const QString &keyword, const SearchAnchorR
 
 void WebWindow::inputMethodEvent(QInputMethodEvent *e)
 {
-    if (!e->commitString().isEmpty()) {
+    if (!e->commitString().isEmpty() && e->commitString() != search_edit_->lineEdit()->text()) {
         search_edit_->lineEdit()->setText(e->commitString());
         search_edit_->lineEdit()->setFocus();
     }
