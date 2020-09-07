@@ -63,18 +63,30 @@ const char kSearchSelectAnchor[] =
     "AND t1.anchor LIKE '%:anchor%' --case insensitive";
 
 const char kSearchSelectContent[] =
-    "SELECT appName, anchor, anchorId, content "
-    "FROM search "
-    "WHERE lang = ':lang' AND "
-    "content LIKE '%:content%' --case insensitive";
+    "select appName, anchor, anchorId, content from search where lang = ':lang' and anchor like '%:content%' "
+    "union all "
+    "select appName, anchor, anchorId, content from search where lang = ':lang' and content like '%:content%' and anchor not like '%:content%' "
+    "order by appName";
 
 const int kResultLimitation = INT_MAX;
 
-}  // namespace
+}
+
+
+// namespace
 
 struct SearchDbPrivate {
     QSqlDatabase db;
 };
+
+
+struct searchStrct {
+    QString appName;
+    QStringList anchors;
+    QStringList anchorIds;
+    QStringList contents;
+};
+
 
 SearchDb::SearchDb(QObject *parent)
     : QObject(parent)
@@ -335,6 +347,83 @@ QString SearchDb::highlightKeyword(QString srcString, QString keyword)
     return highlightString;
 }
 
+
+/**
+ * @brief SearchDb::omitHighlight 高亮省略处理..
+ * @param highLight 高亮字段
+ * @param keyword  关键字
+ * @note  将内容里IMG部分先全部提取出来,并记录IMG内容以及IMG位置. 剩下部分为处理后的文本内容,对此进行关键字位置判断.
+ *        如果关键字位置大于N个字符,则对前N个字符用...替代.
+ *        如何进行真实内容的截断:循环判断暂存的IMG的位置,如果关键字位置大于暂存的IGM位置的话,就说明省略部分前方有IMG,
+ *        需要将IMG内容长度加入到关键字位置上. 否则,则表示前方没有IMG内容,此时关键字位置就能够拿来用作截断位置.
+ */
+void SearchDb::omitHighlight(QString &highLight, const QString &keyword)
+{
+    QString highLightTemp = highLight;
+    int nindex = highLightTemp.length();
+    const QString imgStartString = "<img";
+    const QString imgEndString = "\">";
+    int imgStartLeng = imgStartString.length();
+    QList<QString> imgList;
+    QList<int> imgIndexList;
+    int nSearchIndex = nindex - imgStartLeng;
+
+    while (nSearchIndex > 0) {
+        //判断后N个字符里是否含有img路径..
+        if (highLightTemp.indexOf(QRegExp("<img .*"), nSearchIndex) != -1) {
+            int nImgStart = highLightTemp.indexOf(imgStartString, nSearchIndex);
+            int nImgEnd = highLightTemp.indexOf(imgEndString, nSearchIndex);
+            if (nImgEnd > nImgStart) {
+                QString strImg = highLightTemp.mid(nImgStart, nImgEnd - nImgStart);
+                imgList.insert(0, strImg);
+                imgIndexList.insert(0, nImgStart);
+                highLightTemp = highLightTemp.left(nImgStart + 1) + highLightTemp.right(highLightTemp.length() - nImgEnd);
+            }
+        }
+        nSearchIndex -= imgStartLeng;
+    }
+
+    int keywordIndex = highLightTemp.indexOf(keyword, 0, Qt::CaseInsensitive);
+    //暂时用150个字符来判断...后期是否可根据不同语言来分别用不同的长度判断条件..
+    if (keywordIndex > 150) {
+        int nOmitIndex = keywordIndex - 150;
+
+        for (int i = 0; i < imgIndexList.count(); i++) {
+            if (nOmitIndex > imgIndexList[i]) {
+                nOmitIndex += imgList[i].length();
+
+            }
+        }
+        highLight = "..." + highLight.mid(nOmitIndex);
+    }
+}
+
+/**
+ * @brief SearchDb::sortSearchList 搜索结果排序, 将含有h0的应用(应用名称含有关键字)放在最前面, 将标题中含有关键字的放在中间.
+ * @param appName      应用名称
+ * @param anchors      标题名称
+ * @param anchorIds    标题Hash值
+ * @param contents     内容
+ * @param bIsTitleHigh 该应用搜索结果中标题是否含有关键字  true: 标题含有关键字  false:标题未含有关键字
+ */
+void SearchDb::sortSearchList(const QString &appName, const QStringList &anchors, const QStringList &anchorIds, const QStringList &contents, bool bIsTitleHigh)
+{
+    searchStrct obj;
+    obj.appName = appName;
+    obj.anchors = anchors;
+    obj.anchorIds = anchorIds;
+    obj.contents = contents;
+
+    if (anchorIds.contains("h0")) {
+        listStruct.insert(0, obj);
+        nH0OfList++;
+    } else if (bIsTitleHigh) {
+        listStruct.insert(nH0OfList, obj);
+    } else {
+        listStruct.append(obj);
+    }
+}
+
 void SearchDb::handleSearchContent(const QString &keyword)
 {
     qDebug() << Q_FUNC_INFO << keyword;
@@ -346,9 +435,12 @@ void SearchDb::handleSearchContent(const QString &keyword)
     const QString sql =
         QString(kSearchSelectContent).replace(":lang", lang).replace(":content", keyword);
 
+    listStruct.clear();
+    nH0OfList = 0;
     bool result_empty = true;
+    bool bIsTitle = false;
     if (query.exec(sql)) {
-        QString last_app_name;
+        QString last_app_name = "";
         QStringList anchors;
         QStringList anchorIds;
         QStringList contents;
@@ -358,7 +450,6 @@ void SearchDb::handleSearchContent(const QString &keyword)
             const QString anchor = query.value(1).toString();
             const QString anchorId = query.value(2).toString();
             const QString content = query.value(3).toString();
-            qDebug() << Q_FUNC_INFO << app_name << " " << anchor << " " << anchorId;
             if (!strlistApp.contains(app_name)) {
                 continue;
             }
@@ -369,50 +460,43 @@ void SearchDb::handleSearchContent(const QString &keyword)
 
             QString highlightContent = highlightKeyword(tmpContent, keyword);
 
-            //remove jpg src
+            //如果关键字在img路径中,返回后退出本次循环.
+            if (highlightContent.isEmpty() && !anchor.contains(keyword)) continue;
+
+            //去除jpg文件, 影响页面格式.
             QRegExp exp("<img src=\\\"jpg.*>");
             exp.setMinimal(true);
             highlightContent.remove(exp);
 
-            if (highlightContent.length() > 0) {
-                appHasMatchHash.insert(app_name, true);
-            }
+            //处理内容是否省略..
+            omitHighlight(highlightContent, keyword);
 
             if (app_name == last_app_name) {
-                if (highlightContent.length() > 0) {
-                    result_empty = false;
-                    anchors.append(anchor);
-                    anchorIds.append(anchorId);
-                    contents.append(highlightContent);
-                }
+                anchors.append(anchor);
+                anchorIds.append(anchorId);
+                contents.append(highlightContent);
+                if (anchor.contains(keyword)) bIsTitle = true;
             } else {
-                if (!last_app_name.isEmpty() && appHasMatchHash.value(last_app_name) &&
-                        contents.size() > 0) {
-                    result_empty = false;
-                    qDebug() << Q_FUNC_INFO << "emit searchContentResult()" << last_app_name << " " << contents.length();
-                    emit this->searchContentResult(last_app_name, anchors, anchorIds, contents);
+                if (!last_app_name.isEmpty()) {
+                    sortSearchList(last_app_name, anchors, anchorIds, contents, bIsTitle);
+                    anchors.clear();
+                    anchorIds.clear();
+                    contents.clear();
+                    bIsTitle = false;
                 }
-
-                anchors.clear();
-                anchorIds.clear();
-                contents.clear();
-
-                if (highlightContent.length() > 0) {
-                    result_empty = false;
-                    last_app_name = app_name;
-                    anchors.append(anchor);
-                    anchorIds.append(anchorId);
-                    contents.append(highlightContent);
-                }
+                anchors.append(anchor);
+                anchorIds.append(anchorId);
+                contents.append(highlightContent);
+                if (anchor.contains(keyword)) bIsTitle = true;
+                last_app_name = app_name;
             }
         }
-
-        // Last record.
-        if (!result_empty && contents.size() > 0) {
-            result_empty = false;
-            qDebug() << Q_FUNC_INFO << "emit searchContentResult() last record"
-                     << contents.length();
-            emit this->searchContentResult(last_app_name, anchors, anchorIds, contents);
+        if (!last_app_name.isEmpty()) {
+            sortSearchList(last_app_name, anchors, anchorIds, contents, bIsTitle);
+        }
+        for (searchStrct obj : listStruct) {
+            if (result_empty) result_empty = false;
+            emit this->searchContentResult(obj.appName, obj.anchors, obj.anchorIds, obj.contents);
         }
     } else {
         qCritical() << "Failed to select contents:" << query.lastError().text();
