@@ -322,7 +322,7 @@ QString Utils::translateTitle(const QString &titleUS)
     int nCount = sizeof(languageArr) / sizeof(languageArr[0]);
     for (int i = 0; i < nCount; i++) {
         if (languageArr[i][0] == titleUS) {
-            if (QLocale::system().name() == "zh_CN") {
+            if (QLocale::system().name() == "zh_CN" || QLocale::system().name() == "zh_HK" || QLocale::system().name() == "zh_TW") {
                 strRet = languageArr[i][1];
             } else {
                 strRet = languageArr[i][2];

@@ -51,10 +51,17 @@ QString I18nProxy::getLocale() const
 {
     const QString locale = QLocale().name();
     // Fallback to default locale.
-    if (locale != "en_US" && locale != "zh_CN") {
+//    if (locale != "en_US" && locale != "zh_CN") {
+//        return "en_US";
+//    } else {
+//        return locale;
+//    }
+    if (locale == "zh_CN" || locale == "zh_HK" || locale == "zh_TW") {
+        return "zh_CN";
+    } else if (locale == "en_US" || locale == "en_GB") {
         return "en_US";
     } else {
-        return locale;
+        return  "";
     }
 }
 
