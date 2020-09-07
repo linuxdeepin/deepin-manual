@@ -245,11 +245,10 @@ void WebWindow::closeEvent(QCloseEvent *event)
  */
 void WebWindow::inputMethodEvent(QInputMethodEvent *e)
 {
-    if (!e->commitString().isEmpty()) {
+    if (!e->commitString().isEmpty() && search_edit_->lineEdit()->text() != e->commitString()) {
         search_edit_->lineEdit()->setText(e->commitString());
         search_edit_->lineEdit()->setFocus();
     }
-
     QWidget::inputMethodEvent(e);
 }
 
