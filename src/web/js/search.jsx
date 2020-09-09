@@ -21,9 +21,18 @@ class Items extends Component {
       this.setState({ title, logo, show: true });
     });
   }
+
+  //转义特定字符
+  escapeRegExp(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+  }
+
   render() {
     let resultList = [];
-    let re = new RegExp(this.props.keyword, 'gi');
+
+    //将关键字转义
+    let keyTemp = decodeURIComponent(this.props.keyword)
+    let re = new RegExp(this.escapeRegExp(keyTemp), 'gi');
 
     let cTitle =(
       <span

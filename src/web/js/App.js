@@ -223,7 +223,8 @@ class App extends React.Component {
     {
       cKeyword = pathList[4];
     }
-    global.qtObjects.search.getKeyword(cKeyword);
+    
+    global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
 
     if (this.context.router.history.action == 'PUSH') {
       let entriesLen = this.context.router.history.entries.length;
@@ -479,8 +480,9 @@ class App extends React.Component {
 
     global.openSearchPage = keyword => {
       global.handleLocation(global.hash);
+      console.log('====>',keyword);
       let decodeKeyword = Base64.decode(keyword);
-      console.log("decodeKeyword", decodeKeyword);
+      console.log("decodeKeyword", decodeKeyword,"===",encodeURIComponent(decodeKeyword));
       console.log("openSearchPage", this.context.router.history);
       console.log(`lastUrl:${global.lastUrlBeforeSearch}, lastHistoryIndex: ${global.lastHistoryIndex}`);
 

@@ -254,7 +254,8 @@ var App = function (_React$Component) {
       } else if (pathList.length == 5) {
         cKeyword = pathList[4];
       }
-      global.qtObjects.search.getKeyword(cKeyword);
+
+      global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
 
       if (this.context.router.history.action == 'PUSH') {
         var entriesLen = this.context.router.history.entries.length;
@@ -511,8 +512,9 @@ var App = function (_React$Component) {
 
       global.openSearchPage = function (keyword) {
         global.handleLocation(global.hash);
+        console.log('====>', keyword);
         var decodeKeyword = Base64.decode(keyword);
-        console.log("decodeKeyword", decodeKeyword);
+        console.log("decodeKeyword", decodeKeyword, "===", encodeURIComponent(decodeKeyword));
         console.log("openSearchPage", _this3.context.router.history);
         console.log('lastUrl:' + global.lastUrlBeforeSearch + ', lastHistoryIndex: ' + global.lastHistoryIndex);
 
@@ -1899,13 +1901,24 @@ var Items = function (_Component) {
     return _this;
   }
 
+  //转义特定字符
+
+
   _createClass(Items, [{
+    key: 'escapeRegExp',
+    value: function escapeRegExp(text) {
+      return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _this2 = this;
 
       var resultList = [];
-      var re = new RegExp(this.props.keyword, 'gi');
+
+      //将关键字转义
+      var keyTemp = decodeURIComponent(this.props.keyword);
+      var re = new RegExp(this.escapeRegExp(keyTemp), 'gi');
 
       var cTitle = _react2.default.createElement('span', {
         className: 'resulttitle',
