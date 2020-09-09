@@ -902,6 +902,7 @@ var Article = function (_Component) {
       if (this.state.preview != null) {
         this.setState({ preview: null });
       }
+      console.log("======>", e.target.nodeName);
       switch (e.target.nodeName) {
         case 'IMG':
           e.preventDefault();
@@ -913,35 +914,64 @@ var Article = function (_Component) {
           global.qtObjects.imageViewer.open(src);
           return;
         case 'A':
-          var dmanProtocol = 'dman://';
-          var hashProtocol = '#';
-          var httpProtocol = 'http';
-          var href = e.target.getAttribute('href');
-          console.log("href:" + href);
-          switch (0) {
-            case href.indexOf(hashProtocol):
-              e.preventDefault();
-              this.props.setHash(document.querySelector('[text="' + href.slice(1) + '"]').id);
-              return;
-            case href.indexOf(dmanProtocol):
-              e.preventDefault();
+          {
+            var dmanProtocol = 'dman://';
+            var hashProtocol = '#';
+            var httpProtocol = 'http';
+            var _href = e.target.getAttribute('href');
+            console.log("href:" + _href);
+            switch (0) {
+              case _href.indexOf(hashProtocol):
+                e.preventDefault();
+                this.props.setHash(document.querySelector('[text="' + _href.slice(1) + '"]').id);
+                return;
+              case _href.indexOf(dmanProtocol):
+                e.preventDefault();
 
-              var _href$slice$split = href.slice(dmanProtocol.length + 1).split('#'),
-                  _href$slice$split2 = _slicedToArray(_href$slice$split, 2),
-                  appName = _href$slice$split2[0],
-                  hash = _href$slice$split2[1];
-              // const rect = e.target.getBoundingClientRect();
-              // this.showPreview(appName, hash, rect);
-              // this.showPreviewTmp(appName,hash);
+                var _href$slice$split = _href.slice(dmanProtocol.length + 1).split('#'),
+                    _href$slice$split2 = _slicedToArray(_href$slice$split, 2),
+                    appName = _href$slice$split2[0],
+                    hash = _href$slice$split2[1];
 
-
-              global.openTitle(appName, hash);
-              return;
-            case href.indexOf(httpProtocol):
-              e.preventDefault();
-              global.qtObjects.imageViewer.openHttpUrl(href);
-              return;
+                global.openTitle(appName, hash);
+                return;
+              case _href.indexOf(httpProtocol):
+                e.preventDefault();
+                global.qtObjects.imageViewer.openHttpUrl(_href);
+                return;
+            }
           }
+        //解决bug-46888, 当a标签内含有span标签,点击获取的是span标签,此时用其父元素来处理.
+        case 'SPAN':
+          e.preventDefault();
+          var parNode = e.target.parentNode;
+          if (parNode.nodeName == 'A') {
+            var _dmanProtocol = 'dman://';
+            var _hashProtocol = '#';
+            var _httpProtocol = 'http';
+            var hrefTmp = parNode.getAttribute('href');
+            switch (0) {
+              case hrefTmp.indexOf(_hashProtocol):
+                e.preventDefault();
+                this.props.setHash(document.querySelector('[text="' + href.slice(1) + '"]').id);
+                return;
+              case hrefTmp.indexOf(_dmanProtocol):
+                e.preventDefault();
+
+                var _hrefTmp$slice$split = hrefTmp.slice(_dmanProtocol.length + 1).split('#'),
+                    _hrefTmp$slice$split2 = _slicedToArray(_hrefTmp$slice$split, 2),
+                    _appName = _hrefTmp$slice$split2[0],
+                    _hash = _hrefTmp$slice$split2[1];
+
+                global.openTitle(_appName, _hash);
+                return;
+              case hrefTmp.indexOf(_httpProtocol):
+                e.preventDefault();
+                global.qtObjects.imageViewer.openHttpUrl(hrefTmp);
+                return;
+            }
+          }
+          return;
       }
     }
 

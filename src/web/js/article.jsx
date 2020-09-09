@@ -233,6 +233,7 @@ export default class Article extends Component {
     if (this.state.preview != null) {
       this.setState({ preview: null });
     }
+    console.log("======>",e.target.nodeName);
     switch (e.target.nodeName) {
       case 'IMG':
         e.preventDefault();
@@ -244,6 +245,7 @@ export default class Article extends Component {
         global.qtObjects.imageViewer.open(src);
         return;
       case 'A':
+      {
         const dmanProtocol = 'dman://';
         const hashProtocol = '#';
         const httpProtocol = 'http';
@@ -257,9 +259,6 @@ export default class Article extends Component {
           case href.indexOf(dmanProtocol):
             e.preventDefault();
             const [appName, hash] = href.slice(dmanProtocol.length + 1).split('#');
-            // const rect = e.target.getBoundingClientRect();
-            // this.showPreview(appName, hash, rect);
-            // this.showPreviewTmp(appName,hash);
             global.openTitle(appName,hash);
             return;
           case href.indexOf(httpProtocol):
@@ -267,6 +266,34 @@ export default class Article extends Component {
             global.qtObjects.imageViewer.openHttpUrl(href);
             return;
         }
+      }
+      //解决bug-46888, 当a标签内含有span标签,点击获取的是span标签,此时用其父元素来处理.
+      case 'SPAN':
+        e.preventDefault();
+        var parNode = e.target.parentNode;
+        if (parNode.nodeName == 'A')
+        {
+          const dmanProtocol = 'dman://';
+          const hashProtocol = '#';
+          const httpProtocol = 'http';
+          const hrefTmp = parNode.getAttribute('href');
+          switch (0) {
+            case hrefTmp.indexOf(hashProtocol):
+              e.preventDefault();
+              this.props.setHash(document.querySelector(`[text="${href.slice(1)}"]`).id);
+              return;
+            case hrefTmp.indexOf(dmanProtocol):
+              e.preventDefault();
+              const [appName, hash] = hrefTmp.slice(dmanProtocol.length + 1).split('#');
+              global.openTitle(appName,hash);
+              return;
+            case hrefTmp.indexOf(httpProtocol):
+              e.preventDefault();
+              global.qtObjects.imageViewer.openHttpUrl(hrefTmp);
+              return;
+          }
+        }
+        return;
     }
   }
 
