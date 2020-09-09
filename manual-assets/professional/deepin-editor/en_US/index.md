@@ -2,7 +2,7 @@
 
 ## Overview
 
-Text Editor is a simple text editing tool. You can use it to write a simple text document, or use its advanced features as a code editing tool that supports code syntax highlighting.
+Text Editor is a simple text editing tool. You can use it to write a simple text document, or make it a code editing tool with its advanced features which support code syntax highlighting.
 
 ![overview](jpg/overview.png)
 
@@ -10,69 +10,69 @@ Text Editor is a simple text editing tool. You can use it to write a simple text
 
 ### Run Text Editor
 
-Click ![deepin-launcher](icon/deepin-launcher.svg)on dock to enter the Launcher interface.  Locate Text Editor ![deepin-editor](icon/deepin-editor.svg)
+Click ![deepin-launcher](icon/deepin-launcher.svg) in the dock to enter the Launcher interface.  Locate Text Editor ![deepin-editor](icon/deepin-editor.svg)
 
 by  scrolling the mouse wheel or searching "text editor" in the Launcher interface and click it to run.
 
-In Launcher, right-click Text Editor and you can:
+In Launcher, right-click Text Editor to:
 
   - Click **Send to desktop** to create a desktop shortcut.
-  - Click **Send to dock** to fix its icon on Dock.
-  - Click **Add to startup** to add it to startup and it will auto run when system boots.
+  - Click **Send to dock** to fix it in the Dock.
+  - Click **Add to startup** to add the application to startup and it will automatically run when the system starts up.
 
 ### Exit Text Editor
 
-- On the Text Editor interface, click![close](icon/close.svg) to exit.
-- On the Text Editor interface, click![icon_menu](icon/icon_menu.svg) > **Exit** to exit.
-- Right-click ![deepin-editor](icon/deepin-editor.svg) on Dock and select **Close All** to exit.
+- On the Text Editor interface, click ![close](icon/close.svg) to exit.
+- On the Text Editor interface, click ![icon_menu](icon/icon_menu.svg)> **Exit** to exit.
+- Right-click ![deepin-editor](icon/deepin-editor.svg) in the Dock and select **Close All** to exit.
 
 ### View Shortcuts
 
-On the Text Editor Interface, press **Ctrl+ Shift+?** to view all the shortcuts. You can get them in Settings as well. Using shortcuts will greatly improve your work efficiency.
+On the Text Editor Interface, press **Ctrl + Shift + ? ** to view shortcuts. You can also check shortcuts in Settings. Proficiency in shortcuts will greatly improve your efficiency.
 
 ![1|hotkey](jpg/hotkey.png)
 
 ## Basic Operations
 
-### Create Document
+### Create Files
 
-Click ![plus_icon](icon/+.svg) on the title bar, or press **Ctrl+N**, or click ![icon_menu](icon/icon_menu.svg) > **New window** or **New tab** to create a blank document in Text Editor.
+Click ![plus_icon](icon/+.svg) on the title bar, or press **Ctrl + N**, or click ![icon_menu](icon/icon_menu.svg)> **New window** or **New tab** to create a blank document in Text Editor.
 
 ### Open Files
 
 You can open the text file in the following ways, and the selected file will open in the new tab:
 
 - Drag the file directly to the Text Editor interface or its icon.
-- Right-click the file and open it with Text Editor. After selecting Text Editor as the default program, you can double-click the file to open it directly.
-- On the Text Editor interface, click ![icon_menu](icon/icon_menu.svg) > **Open file** and select the file.
-- On the Text Editor interface, use **Ctrl+O** to open the file.
+- Right-click the file and open it with Text Editor. After selecting Text Editor as the default program, you can double click the file to open it directly.
+- On the Text Editor interface, click ![icon_menu](icon/icon_menu.svg)> **Open file** and select the file.
+- On the Text Editor interface, use **Ctrl + O** to open the file.
 
 > ![tips](icon/tips.svg)Tips: You can open multiple files at one time.
 
 ### Save Files
 
-- Press **Ctrl+ S** to save the current document.
-- Click ![icon_menu](icon/icon_menu.svg) > **Save** to save the file.
+- Press **Ctrl + S** to save the current document.
+- Click ![icon_menu](icon/icon_menu.svg)> **Save** to save the file.
 
-You can also press **Ctrl+Shift+S** to save the file as  a new one.
+You can also press **Ctrl + Shift + S** to save the file as  a new one.
 
 ### Close Files
 
-- Press **Ctrl+W** to close the file.
-- Move the cursor to the title and click the ![close](icon/close.svg)button there or the mouse middle button to close the file.
+- Press **Ctrl + W** to close the file.
+- Move the cursor to the title and click the ![close](icon/close.svg) button there or the mouse middle button to close the file.
 - Right-click the title and select **Close tab** or **Close other tabs**.
 - Right-click the title and select **More ways to close**.
-- Select **Close left tabs** to close all the tabs on the left of the current tab.
-- Select **Close right tabs** to close all the tabs on the right of the current tab.
-- Select **Close unchanged tabs** to close all the unchanged tabs.
+   - Select **Close left tabs** to close all the tabs on the left of the current tab.
+   - Select **Close right tabs** to close all the tabs on the right of the current tab.
+   - Select **Close unmodified tabs** to close all the unchanged tabs.
 
-> ![notes](icon/notes.svg)Notes: If you make changes to the file but have not saved it, Text Editor will prompt you to save it before closing.
+> ![notes](icon/notes.svg)Notes: If you make changes to the file but does not save it, you will be prompted by Text Editor to save before closing the file.
 
-### Print Documents
+### Print Files
 
-To print a file in Text Editor, you should connect and configure the printer first.
+To print a file in Text Editor, you should connect and set up the printer first.
 
-1. Click ![icon_menu](icon/icon_menu.svg) > **Print**, or press **Ctrl+P** to open the print preview interface.
+1. Click ![icon_menu](icon/icon_menu.svg)> **Print**, or press **Ctrl + P** to open the print preview interface.
 
 2.  On the preview interface, preview the document and set the printing page. 
 
@@ -88,7 +88,7 @@ To print a file in Text Editor, you should connect and configure the printer fir
 
 ### Manage Tabs
 
-In Text Editor, you can drag to reorder tabs within the same window, remove the tab out to create a new window, or move the tab from one window to another.
+In Text Editor, you can reorder tabs within the same window through dragging. You can also remove the tab out to create a new window, or move the tab from one window to another.
 
 #### Tab Shortcuts
 
@@ -96,7 +96,7 @@ In Text Editor, you can drag to reorder tabs within the same window, remove the 
 | ---------------------------------- | ------------ |
 | New tab   |  Ctrl + T |
 | Next tab | Ctrl + Tab |
-| Previous tab  | Ctrl + Shift + Tab |
+| Previous tab  | Ctrl + Shift + Backtab |
 | Close tab | Ctrl + W |
 | Close other tabs | Ctrl + Shift + W |
 | Restore tab (Reopen closed tab) | Ctrl + Shift + T |
@@ -105,14 +105,14 @@ In Text Editor, you can drag to reorder tabs within the same window, remove the 
 
 ### Move Cursor
 
-In addition to using the arrow keys and mouse clicks, you can also use the following shortcuts to move the cursor quickly:
+In addition to the arrow keys and mouse clicks, you can also use the following shortcuts to move the cursor quickly:
 
 | Function   |  Shortcuts |
 | --------------- | ------------ |
 | Save cursor position | Ctrl + Shift + > |
 | Reset cursor position (Jump to cursor last saving position) | Ctrl + Shift + < |
-| Forward word (Jump forward over a word) | Ctrl + Right |
-| Backward word (Jump backward over a word) | Ctrl + Left |
+| Forward one word (Jump forward over one word) | Ctrl + Right |
+| Backward one word (Jump backward over one word) | Ctrl + Left |
 | Move to end of line | End |
 | Move to start of line | Home |
 | Move to end of text | Ctrl + End |
@@ -129,11 +129,11 @@ It helps you change the case of selected text. You can change it to lowercase, u
 2. Right-click and select **Change Case**.
 3. Choose **Upper Case**, **Lower Case**, or **Capitalize**. The changes will take effect immediately.
 
-You can also use **Alt + U/ L/ C** to quickly switch the cases.
+You can also use **Alt + U/L/C** to quickly switch the cases.
 
 
 
-![toggle-case](jpg/toggle-case.png)
+![changecase](jpg/changecase.png)
 
 
 
@@ -152,31 +152,31 @@ In addition to deleting characters one by one, you can quickly delete characters
 | --------------- | ------------ |
 | Delete to end of line | Ctrl + K |
 | Delete current line | Ctrl + Shift + K |
-| Delete backward word | Alt + Shift + N |
-| Delete forward word | Alt + Shift + M |
+| Delete one word backward | Alt + Shift + N |
+| Delete one word forward | Alt + Shift + M |
 
 ### Undo
 
-If you make a misoperation, press **Ctrl+Z** to undo it, or right-click to select **Undo**.
+If you make an incorrect operation, press **Ctrl + Z** to undo it, or right-click to select **Undo**.
 
 ### Find Texts
 
-1. Click ![menu](icon/icon_menu.svg), and select **Find**, or press **Ctrl+F** to open the "Find" box below.
+1. Click ![menu](icon/icon_menu.svg) and select **Find**, or press **Ctrl + F** to open the **Find** box below.
 2. Input the text you want to find. 
 3. Click **Next**, **Previous** to find each match, or press **Enter** key to find the next match.
 4. Press **Esc** key or click the close button to close the dialog box.
 
-> ![tips](icon/tips.svg)Tips: Select the text and then press **Ctrl+F** and the text will be automatically displayed in the "Find" box.
+> ![tips](icon/tips.svg)Tips: Select the text and then press **Ctrl + F** and the text will be automatically displayed in the **Find** box.
 
 ### Replace Texts
-1. Click ![menu](icon/icon_menu.svg), and select **Replace**, or press **Ctrl+H** to open the "Replace" box below.
+1. Click ![menu](icon/icon_menu.svg), and select **Replace**, or press **Ctrl + H** to open the **Replace** box below.
 2.  Input the text to be replaced and the new text.
 3.  Click **Replace** to replace the matches one by one and click **Replace Rest** and **Replace All** to replace the rest or all the matches at once. Click **Skip** to skip the current matching text.
 4.  Press **Esc** or click close button to close the dialog box.
 
 ### Go to Line
 Use Go to Line to jump to the specific line directly.
-Right-click and select **Go to Line**, or press **Ctrl+G** and then input the line number to go to that line.
+Right-click and select **Go to Line**, or press **Ctrl + G** and then input the line number to go to that line.
 
 ### Edit Line
 
@@ -199,11 +199,12 @@ Use the shortcuts below to edit lines easily:
 
 ### Enable/Disable Read-only Mode
 
-1. Open the document with Text Editor and right-click to select **Turn on Read-only Mode**.
+1. Open the document with Text Editor and right-click to select **Turn on Read-Only Mode**.
 
-![read-only](jpg/read-only.png)
+![readonly](jpg/read-only.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-2.  Right-click to select **Turn off Read-only Mode** under the read-only mode.
+2.  Right-click to select **Turn off Read-Only Mode** under the read-only mode.
 
 ![read-only](jpg/read-only-02.png)
 
@@ -211,93 +212,100 @@ Use the shortcuts below to edit lines easily:
 
 You can perform the following operations after enabling the Text to Speech and Speech to Text features in Control Center.
 
-1. Right-click to select Speech to Text and the input voices through microphone will be converted to texts and displayed in the document being edited.
-2. Select a section of texts, right-click to select Text to Speech and the texts selected will be broadcast.
+1. Right-click to select **Speech to Text ** and the input voices through microphone will be converted to texts and edited in the document.
+2. Select a paragraph of texts. Right-click to select **Text to Speech** and the texts selected will be broadcast.
 
 > ![notes](icon/notes.svg)Notes: The **Text to Speech** option in the right-click menu is grayed out and cannot be activated when no text is selected.
 
-![read-only](jpg/reading.png)
+![speech](jpg/texttospeech.png)
 
 ### Translate
 
-Enable **Translation** in Control Center > Assistive Tools and set the corresponding language pairs according to your needs. Select the text to be translated in Text Editor, right-click to select **Translate** and the text selected will be translated into the target language.
+Enable **Translation** in **Control Center** > **Assistive Tools** and set the corresponding language pairs according to your needs. Select the texts to be translated in Text Editor. Right-click to select **Translate** and the texts selected will be translated into the target language.
 
-![translation](jpg/translation.png)
+![translate](jpg/translate.png)
+
+### Use Column Mode
+
+You can input identical content to or remove content from multiple lines of code by using the column mode function efficiently. 
+
+- Edit content in multiple lines at the same time: Press and hold the **Alt** key, drag the mouse to select multiple lines, and edit the content.
+- Delete content in multiple lines at the same time: Press and hold the **Alt** key, drag the mouse to select multiple lines, and click **Delete** to delete content.
+
+![mode](jpg/column mode.png)
 
 ### Color Mark
 
 Select the text to be marked in Text Editor, right-click to select **Color Mark** and select the corresponding options in the drop-down list as needed.
 
- ![colormark](jpg/colormark.png)
+![colormark](jpg/colormark.png)
 
-- Select **Mark** to mark the current line. There are four styles, with each representing a color.
-   - Place the cursor at any line, you will mark the current line.
-   - Select some text, you will mark the selected text.
-
-- Select **Cancel Last Mark** to cancel the last mark operation.
-
-- Select **Cancel Mark All Line** to cancel all the current marks.
-
-- Select **Mark All Line** to mark all the contents in Text Editor. There are four styles, with each representing a color.
-   - Place the cursor at any line, you will mark all contents.
-   - Select any content, you will mark the same ones in the whole context. 
+- Select **Mark** to mark a certain line or a paragraph of texts. You can choose from 8 colors displayed through icons.
+   - Place the cursor at any line and you can mark the current line.
+   - Select a paragraph of texts and you can mark the selected texts.
+- Select **Mark All** to mark all the contents in Text Editor, or mark all the matching contents of selected texts in Text Editor. You can choose from 8 colors displayed through icons.
+   - Place the cursor at any line and you can mark all contents.
+   - Select any content and you can mark the same content in the whole document. 
+- Select **Clear Last Mark** to cancel the last mark operation.
+- Select **Clear All Marks** to cancel all the current marks.
 
 
-### Bookmark Management
+### Manage Bookmark 
 
-It is available to click any line on the Text Editor interface to add a bookmark for the current line. The icon ![icon](icon/bookmark_normal_light.svg) shows up when you move the cursor to any line in the left column, and the icon ![bookmarkbig](icon/bookmarkbig_checked_light.svg) will appear after a bookmark is successfully added.
+You can add a bookmark for any current line on the Text Editor interface. The icon ![icon](icon/bookmark_normal_light.svg) shows up when you move the cursor to any line in the left column, and the icon ![bookmarkbig](icon/bookmarkbig_checked_light.svg) will appear after a bookmark is successfully added.
 
 - Add bookmark
 
-   + Click ![icon](icon/bookmark_normal_light.svg)to add a bookmark for the line.
-   + Right-click ![icon](icon/bookmark_normal_light.svg)and select **Add bookmark** to  add a bookmark for the line.
-   + Place the cursor on any line and press **Ctrl+F2** to add a bookmark for the line.
+   + Click ![icon](icon/bookmark_normal_light.svg) to add a bookmark for the line.
+   + Right-click ![icon](icon/bookmark_normal_light.svg) and select **Add bookmark** to  add a bookmark for the line.
+   + Place the cursor on any line and press **Ctrl + F2** to add a bookmark for the line.
 
 -   Delete bookmark  
 
-   + Click the colored bookmark icon![bookmarkbig](icon/bookmarkbig_checked_light.svg) to delete the bookmark of the line directly.
-   + Right-click the colored bookmark icon ![bookmarkbig](icon/bookmarkbig_checked_light.svg)to select **Cancel bookmark** to delete the bookmark in the line.
+   + Click the colored bookmark icon ![bookmarkbig](icon/bookmarkbig_checked_light.svg) to delete the bookmark of the line directly.
+   + Right-click the colored bookmark icon ![bookmarkbig](icon/bookmarkbig_checked_light.svg) to select **Cancel bookmark** to delete the bookmark in the line.
    + Right-click a bookmark to select **Clear bookmark** to delete all the bookmarks in the text.
-  >![Notes](icon/notes.svg)Notes: the bookmark icon appears only when the cursor is near it, otherwise it disappears.
+  >![Notes](icon/notes.svg)Notes: the bookmark icon appears only when cursor is hovered over to the left of the line number in the left column; when it's moved beyond the left bookmark column, the bookmark icon will disappear. Click the icon when it appears and it will be filled with color, after which this filled color icon will remain no matter if the cursor hovers near the bookmark column.
 
 
-### Comment Management
+### Manage Comment 
 
-You can add comments to the text with a suffix of a code type, such as cpp, java, and so on.
+You can add comments to any text with a code type suffix, such as cpp and java, among others.
 
 - Add comment
   - Select the text needed and right-click to select **Add comment**.
-  - Select the text needed and press  **Alt+A**.
+  - Select the text needed and press **Alt + A** to add comment.
 
 - Cancel comment
-     - Select the text needed and right-click to select **Cancel comment**.
+     - Select the text with comments, and right-click to select **Cancel comment**.
 
-     - Select the text needed and press **Alt+Z**.
+     - Select the text with comments, and press **Alt + Z** do cancel comment.
 
 
-> ![notes](icon/notes.svg)Notes: It supports comments in different languages, mainly based on the actual situation. For example, C, C# and Java comment symbols are // and // and Python comment symbols are #.
+> ![notes](icon/notes.svg)Notes: This supports comments in different languages. Please refer to actual conditions for detailed information. For example, comment symbol for C, C# and Java is //, and comment symbol for Python is #.
 
 ## Main Menu
 
-On the main menu, you can create new windows and new tabs, search the contents to be replaced, save documents, switch window themes, view help manual and get more information about Text Editor.
+On the main menu, you can create [New Windows](#Create Files) and tabs, search or replace contents, save files, switch window themes, view help manual and get more information about Text Editor.
 
 ### Settings
 
-It is available to set the basic information, shortcuts and advanced information in settings.
+You can set the basic information, shortcuts and advanced information in settings.
 
 #### Basic Settings
 
-Click ![icon_menu](icon/icon_menu.svg) > **Settings** and you can perform the following in the Settings window:
+Click ![icon_menu](icon/icon_menu.svg)> **Settings** and you can perform the following in the **Basic** option:
 
 - Select the Font and Font Size.
-- Check or uncheck  **Word Wrap**.
-- Check **Code Fold Flag** and ![next](icon/next.svg)or![next](icon/next-down.svg) are displayed in the edit area. Right-click to select Fold/Unfold Current Level or Fold/Unfold All Levels to perform the corresponding operations.
+- Check or uncheck **Word Wrap**.
+- Check **Code Fold Flag** and ![next](icon/next.svg) or ![next](icon/next-down.svg) are displayed in the edit area. Right-click to select Fold/Unfold Current Level or Fold/Unfold All Levels to perform the corresponding operations.
 - Check **Show Line Number** to display the line number in the edit area.
+- Check **Show white spaces and tabs** to display all the white spaces and tabs. You can also input or delete white spaces and tabs manually.
 
-> ![tips](icon/tips.svg)Tips: You can also use **Ctrl + “+”/ “-” ** to adjust the font size, and press **Ctrl+0** to restore default font size.
+> ![tips](icon/tips.svg)Tips: You can also use **Ctrl + “+”/ “-” ** to adjust the font size, and press **Ctrl + 0** to restore default font size.
 
 #### Shortcuts Settings
-1. Click ![icon_menu](icon/icon_menu.svg) > **Settings** to view the current shortcut in the **Shortcuts** option.
+1. Click ![icon_menu](icon/icon_menu.svg)> **Settings** to view the current shortcut in the **Shortcuts** option.
 2. Select a keymap in **Shortcuts** and view the shortcuts.
 3. You can click and press new shortcuts to customize it.
 
@@ -305,36 +313,34 @@ Click ![icon_menu](icon/icon_menu.svg) > **Settings** and you can perform the fo
 
 #### Advanced Settings
 
-1. Click ![icon_menu](icon/icon_menu.svg) > **Settings**.
+1. Click ![icon_menu](icon/icon_menu.svg)> **Settings**.
 2. In the **Advanced** option, you can set:
-   - Window size: Normal, Maximum, or Fullscreen;
+   - Window size: Normal, Maximum, or Full screen;
    - Tab width: The indentation width when pressing Tab.
 
-> ![attention](icon/attention.svg)Attention: Clicking  **Restore Defaults** will restore all settings to the default.
+> ![attention](icon/attention.svg)Attention: Clicking **Restore Defaults** will restore all settings to the default status.
 
 ### Theme
 
-The window theme includes Light Theme, Dark Theme and System Theme (default).
+The window theme provides three theme types, namely Light Theme, Dark Theme and System Theme (default).
 
-1. On the Text Editor interface, click![icon_menu](icon/icon_menu.svg).
+1. On the Text Editor interface, click ![icon_menu](icon/icon_menu.svg).
 
-2.  Click **Theme** to select a theme.
+2.  Click **Theme** to select one theme.
 
 ### Help
 
 1.  On the Text Editor interface, click ![menu](icon/icon_menu.svg).
-2.  Select **Help**.
-3.  View the manual.
+2.  Select **Help** to view the manual of Text Editor.
 
 ### About
 
-1. On the Text Editor interface, click  ![menu](icon/icon_menu.svg).
-2.  Select **About**.
-3.  View the version and description.
+1. On the Text Editor interface, click ![menu](icon/icon_menu.svg).
+2.  Select **About** to view the version and introduction of Text Editor.
 
 ### Exit
 
 1. On the Text Editor interface, click ![menu](icon/icon_menu.svg).
-2. Click **Exit** to exit.  
+2. Click **Exit** to exit Text Editor.  
 
-<div class="version-info"><span>Update Date: 2020-08-24</span><span> Version: 5.6</span></div>
+<div class="version-info"><span>Update Date: 2020-09-09</span><span> Version: 5.6</span></div>

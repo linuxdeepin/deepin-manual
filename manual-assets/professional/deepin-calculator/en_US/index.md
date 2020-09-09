@@ -2,13 +2,16 @@
 
 ## Overview
 
-Calculator is a simple and easy-to-use desktop calculator. It supports addition, subtraction, multiplication and division with keyboard input perfectly matched, as well as symbolic fault-tolerant computing and calculation result linkage.
+Calculator is a simple and easy-to-use desktop calculator. It supports standard mode and scientific mode, with keyboard input perfectly matched, as well as symbolic fault-tolerant computing and calculation result linkage.
 
-​                            ![0|calculator](jpg/main.png)
+## Operations
 
-## Common Operations
+Calculator supports standard mode and scientific mode. In standard mode, you can execute the four fundamental operations of arithmetic(addition, subtraction, multiplication and division). And in scientific mode, you can calculate high-level operations such as function, exponent, root, and so on. The standard mode is set by default, click ![icon_menu](icon/icon_menu.svg) > **Mode** to select the one you want.
 
-### Symbol Introduction
+### Standard Mode
+
+
+​                            ![0|calculator](jpg/standard mode.png)
 
 | Icon                                | Name                                                | Description                                                  |
 | ----------------------------------- | :-------------------------------------------------- | ------------------------------------------------------------ |
@@ -27,9 +30,34 @@ Calculator is a simple and easy-to-use desktop calculator. It supports addition,
 | ()                                  | Bracket                                             | To input brackets with the left and right bracket completed automatically. |
 | =                                   | Equal Sign                                          | To get result                                                |
 
+### Scientific Mode
+
+![0|scientific](jpg/scientific mode.png)
 
 
-> ![tips](icon/tips.svg)Tips: You can select the current line by mouse to edit and copy.
+
+| Icon                                                         | Name       | Description                                                         |
+| ------------------------------------------------------------ | :--------- | ------------------------------------------------------------ |
+| F-E                                                          | E-notation   | Click F-E to startup E-notation. Click ![icon](icon/F-E.svg) to close E-notation. |
+| ![icon](jpg/deg_normal.png)/![icon](jpg/grad_normal.png)/![icon](jpg/rad_normal.png) | Metric conversions   | It calculates the angle, gradient and radian respectively. |
+| sin、cos、tan、cot                                           | Trigonometric functions | It calculates the sine, cosine, tangent and cotangent of the numerical value respectively. |
+| &#124;x&#124;、Rand                                          | F functions | It calculates the absolute value of the value and randomly display a 31 bit number. |
+| 2<sup>nd</sup>                                               | 2<sup>nd</sup> function key | Click 2<sup>nd</sup> to switch to anti trigonometric function and open root operation interface ; click ![icon](icon/2nd.svg) to switch to trigonometric functions and power operations. |
+| x<sup>2</sup>、x<sup>3</sup> 、x<sup>y</sup>、10<sup>x</sup> | Power calculation | It calculates the square, cubic, y-power of numerical values and x-power of 10 respectively. |
+| log、In                                                      | Logarithmic function | It calculates the logarithms based on 10 and E, respectively. |
+| π                                                          | PI                                      | Approximately equals to 3.14159......, which can be accurate to 31 digits after the decimal point. |
+| e                                                            | Constant | Approximately equals to 2.71828....., which can be accurate to 31 digits after the decimal point. |
+| Mod                                                          | Remainder | It displays the modulus or remainder of x / y. |
+| 1/x                                                          | Inverse proportional function | It calculates the reciprocal of the displayed value. |
+| x!                                                           | Factorial | It calculates the factorial of the displayed number. |
+| exp                                                          | Exponent | It allows you to enter numbers in scientific notation. |
+| sin<sup>-1</sup>、cos<sup>-1</sup>、tan<sup>-1</sup>、cot<sup>-1</sup> | Anti-trigonometric function | It calculates the anti-trigonometric functions of sin, cos, tan and cot respectively. |
+| ![icon](jpg/square root_normal.png)、![icon](jpg/cube root_normal.png)、![icon](jpg/y root_normal.png) | Rooting operations | It calculates the square root, cube root and y-th root of X respectively. |
+| 2<sup>x</sup>                                                | Power operations | It calculates x-power of 2.                  |
+| log<sub>y</sub><sup>x</sup>                                  | Logarithmic function | It calculates the logarithm of x with y as the base. |
+| e<sup>x</sup>                                                | Exponential function | It calculates x-power of e.                     |
+
+> ![tips](icon/tips.svg)Tips: You can click ![icon_menu](icon/icon_menu.svg) > **History** to view historical expressions and memory list, and delete history, too.
 
 ### Symbolic Fault-tolerant Computing
 
@@ -69,11 +97,11 @@ Calculator supports keyboard operation and fault-tolerant computing of special s
 
 - Scientific Notation
 
-  When the calculation result is more than 16 digits, it will be displayed in scientific notation, that is, taking the first 16 digits multiplied by 10 to the power of plus or minus n.
+  When the calculation result is more than 16 digits / 32 digits respectively, it will be displayed in scientific notation, that is, taking the first 16 digits / 32 digits multiplied by 10 to the power of plus or minus n.
 
-  - When the calculation result is positive and greater than 16 digits, it is displayed in the following format: number + numbers of 15 digits after the decimal point+e+number.
+  - When the calculation result is positive and greater than 16 digits / 32 digits, it is displayed in the following format: number + numbers of 15 digits / 31 digits after the decimal point+E+number.
 
-  - When the calculation result is decimal and greater than 16 digits, it is displayed in the following format: number + numbers of 15 digits after the decimal point+e-number.
+  - When the calculation result is decimal and greater than 16 digits / 32 digits, it is displayed in the following format: number + numbers of 15 digits / 31 digits after the decimal point+E-number.
 
   ![0|scientific-notation](jpg/scientific-notation.png)
 
@@ -88,6 +116,12 @@ Calculator supports keyboard operation and fault-tolerant computing of special s
 ## Main Menu
 
 On the main menu, you can switch window themes, view help manual and get more information about Calculator.
+
+### History 
+
+This function is available only in Scientific Mode.
+1. On the Calculator interface, click  ![main_menu](icon/main_menu.svg).
+2. Click **History** to view historical expressions and memory list.
 
 ### Theme
 
@@ -115,4 +149,4 @@ View Help to get more information about Calculator.
 1. On the Calculator interface, click ![main_menu](icon/main_menu.svg).
 2. Click **Exit** to exit.
 
-<div class="version-info"><span>Update Date: 2020-08-24</span><span> Version: 5.5</span></div>
+<div class="version-info"><span>Update Date: 2020-09-09</span><span> Version: 5.5</span></div>

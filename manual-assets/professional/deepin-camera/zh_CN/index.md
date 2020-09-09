@@ -34,15 +34,12 @@
 
 ![image](jpg/image.png)
 
-> ![tips](icon/tips.svg)窍门：鼠标移入拍照窗口的四个角，可以拖拽改变窗口尺寸。
 
 ### 录制视频 
 
-在相机主界面，单击按钮 ![transcribe-bottom](icon/transcribe-bottom.svg)，进入视频模式。单击录制视频按钮 ![transcribe](icon/transcribe.svg)进行录制，录制完了后单击结束录制按钮![stop](icon/stop.svg)，视频文件会展示在界面。
+在相机主界面，单击按钮 ![transcribe-bottom](icon/transcribe-bottom.svg)，进入视频模式。单击录制视频按钮 ![transcribe](icon/transcribe.svg)进行录制，录制完成后单击结束录制按钮![stop](icon/stop.svg)，视频文件会展示在界面，也会保存在默认路径下。
 
 ![video](jpg/video.png)
-
-> ![attention](icon/attention.svg)注意：视频录制时长不得超过30分钟，超过后应用自动停止，并保存30分钟时长的视频文件。
 
 ### 图片/视频处理
 
@@ -70,9 +67,11 @@
 
    - 拍照设置：设置连拍次数及拍照延时。
 
-   - 输出格式：设置图片及视频的输出格式。
+     ![settings](jpg/settings.png)
 
-   ![settings](jpg/settings.png)
+   - 输出设置：设置图片/视频的输出格式，还可以设置分辨率。
+
+     ![output-settings](jpg/output-settings.png)
 
 ### 主题
 
@@ -85,7 +84,7 @@
 ### 帮助
 
 1. 在相机界面，单击 ![icon_menu](icon/icon_menu.svg)。
-2. 单击 **帮助**，查看相机的帮助手册，进一步让您了解和使用相机。
+2. 单击 **帮助**，查看相机的帮助手册，让您进一步了解和使用相机。
 
 
 ### 关于
@@ -98,3 +97,5 @@
 1. 在相机界面，单击 ![icon_menu](icon/icon_menu.svg)。
 2. 单击 **退出**。
 
+
+<div class="version-info"><span>文档更新时间: 2020-09-09</span><span> 版本: 0.0</span></div>

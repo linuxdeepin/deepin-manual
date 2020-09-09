@@ -2,7 +2,7 @@
 
 ## Overview 
 
-Security Center is a pre-installed security software featured functions such as system examination, firewall, startup management and system security, which helps you improve overall system security.
+Security Center is a pre-installed security software featured functions such as system examination, virus scanning, firewall, startup management and system security, which helps you improve overall system security.
 
 
 
@@ -44,6 +44,46 @@ When system examination is finished, you can choose whether to improve system se
 
 ![0|result](jpg/result.png)
 
+### Virus scan
+#### Scanning
+
+Security Center supports full scanning, quick scanning, and custom scanning.
+
+1. On the homepage, click **Virus Scan** in the left panel, and select a scanning method. After scanning finishes, you will see the result.
+
+![0|virus-scan](jpg/virus-scan.png)
+
+2. According to the result, you can choose corresponding operations to one or multiple results, including:
+
+   Repair: click ![repair](icon/repair.svg), this risk will be repaired, and it won't be diagnosed as a risk for the next time.
+
+   Quarantine: click ![isolation](icon/isolation.svg), this risk will be quarantined, other files would not be affected. It won't be diagnosed as a risk for the next time. You can click **Quarantine** icon below to view it. 
+
+   Trust: click ![trust](icon/trust.svg), this risk will be trusted. It won't be diagnosed as a risk for the next time. You can click **Whitelist** icon below to view it. 
+
+![0|virus-result](jpg/virus-result.png)
+
+#### Quarantine
+On the interface of Virus Scan, you can click **Quarantine** icon below to view the list of quarantined files, and click **Restore** to move them out of it.
+
+![0|quarantine-area](jpg/quarantine-area.png)
+
+#### Whitelist
+On the interface of Virus Scan, you can click **Whitelist** icon below to view the list of quarantined files, and click **Remove** to move them out of it.
+
+![0|trust-area](jpg/trust-area.png)
+
+#### Scan Logs
+On the interface of Virus Scan, you can click **Scan Logs** icon below to view scanning time, scan type, results and action. Click ![icon-details](icon/icon-details.svg) to view details and you can also delete logs.
+
+![0|log](jpg/log.png)
+
+#### Virus database update
+
+New virus keep coming out everyday. So your virus database should be regularly updated to satisfy the security needs of your computer.
+
+On the interface of Virus Scan, whenever there is a new virus database, you can click **The virus database is not up to date. Update first and start a scan please.** in the lower right corner. 
+
 ### Firewall
 
 Open Security Center, click **Firewall** in the left panel, you can set Internet access, remote connection and view data usage. 
@@ -61,8 +101,6 @@ This switch controls whether to enable **Internet Access ** and **Remote Connect
 Off: **Internet Access ** and **Remote Connection** are disabled.
 
 On: **Internet Access ** and **Remote Connection** are enabled. You can go to set them further as follows.
-
-
 
 **Internet Access **
 
@@ -132,18 +170,7 @@ On the homepage of Firewall, click **Data Usage** at the bottom. You can see det
 
 ![0|traffic ranking](jpg/traffic-ranking.png) 
 
-#### Remote Connection
-
-In the homepage of Firewall, click **Remote Connection** at the bottom. Its function is to set the remote connection status  of all applications in the Launcher. There are 4 options in the drop-down box of each application.
-
-- Ask:  If you choose this option, when an application starts up remote connection, a prompt pops up to ask for your permission always.  
-- Allow: If you choose this option, the application's remote connection is always allowed, no prompt pops up.
-
-- Disable:  If you choose this option, the application's remote connection is disabled always, and a prompt pops up.  
-
-- Default(xxx): it means the application's default remote connection setting. 
-
-​    ![0|remote access control](jpg/remote-access-control.png) 
+ 
 
 ### Startup Programs
 
@@ -168,14 +195,21 @@ On System Security interface, click **Screen Protection**. You can do settings s
 
 Click **Settings** after "Turn off monitor", you will jump to "Plugged In" page of Control Center. 
 
-
-
 #### Update Policy
 
 On System Security interface, click **Update Policy** to view if the system is up to date, you can choose whether to update the system, and you can also switch on "Updates Notification" and "Auto Download Updates". 
 
 ![0|update strategy](jpg/update-strategy.png)
 
+#### USB Connection
+
+On System Security interface, click **USB Connection**. You can switch on **Save connection record of USB devices** to view all history about USB devices with storage function connecting to your computer.
+
+![0|usb-conneting](jpg/usb-connecting.png)
+
+You can also add the USB device used very often into whitelist, and select **Only Whitelist** in **Connection limitation** to avoid data breach.
+
+![0|usb-whitelist](jpg/usb-whitelist.png)
 
 ## Main Menu
 
@@ -214,4 +248,4 @@ View the manual to help you further know and use Security Center.
 2. Click **Exit**.
 
 
-<div class="version-info"><span>Update Date: 2020-08-24</span><span> Version: 2.0</span></div>
+<div class="version-info"><span>Update Date: 2020-09-09</span><span> Version: 2.0</span></div>

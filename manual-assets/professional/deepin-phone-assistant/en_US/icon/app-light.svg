@@ -1,0 +1,168 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="15mm"
+   height="15mm"
+   viewBox="0 0 15 15"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="1.svg">
+  <defs
+     id="defs2">
+    <linearGradient
+       id="linearGradient-1"
+       y2="68"
+       x2="34"
+       y1="0"
+       x1="34"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop70"
+         offset="0%"
+         stop-color="#FFBF7D" />
+      <stop
+         id="stop72"
+         offset="100%"
+         stop-color="#FF5959" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient-2"
+       y2="45.608601"
+       x2="35.328236"
+       y1="17.11311"
+       x1="35.328236"
+       gradientTransform="scale(0.94874462,1.0540244)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop75"
+         offset="0%"
+         stop-color="#FFFFFF" />
+      <stop
+         id="stop77"
+         offset="100%"
+         stop-opacity="0.6"
+         stop-color="#FFFFFF" />
+    </linearGradient>
+    <path
+       id="path-3"
+       d="m 29,31.072581 h -5 c -2.328571,0 -4,-1.671429 -4,-4 v -5 c 0,-2.328572 1.671429,-4 4,-4 h 5 c 2.328571,0 4,1.671428 4,4 v 5 c 0,2.328571 -1.671429,4 -4,4 z m 0,17 h -5 c -2.328571,0 -4,-1.671429 -4,-4 v -5 c 0,-2.328572 1.671429,-4 4,-4 h 5 c 2.328571,0 4,1.671428 4,4 v 5 c 0,2.328571 -1.671429,4 -4,4 z m 9.333333,-17.866667 -3.466666,-3.466667 c -1.202151,-1.118279 -1.202151,-3.215053 0,-4.333333 l 3.466666,-3.466667 c 1.11828,-1.20215 3.215054,-1.20215 4.333334,0 l 3.466666,3.466667 c 1.202151,1.11828 1.202151,3.215054 0,4.333333 l -3.466666,3.466667 c -1.11828,1.20215 -3.298925,1.20215 -4.333334,0 z M 43,48.072581 h -5 c -2.328571,0 -4,-1.671429 -4,-4 v -5 c 0,-2.328572 1.671429,-4 4,-4 h 5 c 2.328571,0 4,1.671428 4,4 v 5 c 0,2.328571 -1.671429,4 -4,4 z"
+       inkscape:connector-curvature="0" />
+    <filter
+       id="filter-4"
+       filterUnits="objectBoundingBox"
+       height="1.0669999"
+       width="1.0369999"
+       y="-0.017000001"
+       x="-0.017999999">
+      <feOffset
+         id="feOffset81"
+         result="shadowOffsetOuter1"
+         in="SourceAlpha"
+         dy="1"
+         dx="0" />
+      <feColorMatrix
+         id="feColorMatrix83"
+         in="shadowOffsetOuter1"
+         type="matrix"
+         values="0 0 0 0 0.784313725   0 0 0 0 0.0392156863   0 0 0 0 0.0392156863  0 0 0 0.2 0" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="3.0117001"
+     inkscape:cx="40.358033"
+     inkscape:cy="66.958589"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="972"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     showguides="false" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-282)">
+    <g
+       id="页面-1备份"
+       transform="matrix(0.18676471,0,0,0.18676471,1.2450952,283.16966)"
+       style="fill:none;fill-rule:evenodd;stroke:none;stroke-width:1">
+      <g
+         transform="translate(-1123,-342)"
+         id="1-首页-ANDROID-手机"
+         style="fill-rule:nonzero">
+        <g
+           transform="translate(1092,325)"
+           id="编组-5">
+          <g
+             transform="translate(31,17)"
+             id="deepin-multitasking-view">
+            <g
+               id="Group-63-Copy">
+              <g
+                 id="应用">
+                <rect
+                   rx="18"
+                   height="68"
+                   width="68"
+                   y="0"
+                   x="0"
+                   id="Rectangle"
+                   style="fill:url(#linearGradient-1)" />
+                <g
+                   id="形状">
+                  <use
+                     id="use89"
+                     xlink:href="#path-3"
+                     style="fill:#000000;fill-opacity:1;filter:url(#filter-4)"
+                     x="0"
+                     y="0"
+                     width="100%"
+                     height="100%" />
+                  <use
+                     id="use91"
+                     xlink:href="#path-3"
+                     style="fill:url(#linearGradient-2)"
+                     x="0"
+                     y="0"
+                     width="100%"
+                     height="100%" />
+                </g>
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

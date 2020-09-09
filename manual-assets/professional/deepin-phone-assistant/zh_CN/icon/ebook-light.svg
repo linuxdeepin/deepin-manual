@@ -1,0 +1,219 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!-- Created with Inkscape (http://www.inkscape.org/) -->
+
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:xlink="http://www.w3.org/1999/xlink"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   width="13mm"
+   height="13mm"
+   viewBox="0 0 13 13"
+   version="1.1"
+   id="svg8"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)"
+   sodipodi:docname="1.svg">
+  <defs
+     id="defs2">
+    <linearGradient
+       id="linearGradient-1"
+       y2="68"
+       x2="34"
+       y1="0"
+       x1="34"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop70"
+         offset="0%"
+         stop-color="#FFBF7D" />
+      <stop
+         id="stop72"
+         offset="100%"
+         stop-color="#FF5959" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient-2"
+       y2="45.608601"
+       x2="35.328236"
+       y1="17.11311"
+       x1="35.328236"
+       gradientTransform="scale(0.94874462,1.0540244)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop75"
+         offset="0%"
+         stop-color="#FFFFFF" />
+      <stop
+         id="stop77"
+         offset="100%"
+         stop-opacity="0.6"
+         stop-color="#FFFFFF" />
+    </linearGradient>
+    <path
+       id="path-3"
+       d="m 29,31.072581 h -5 c -2.328571,0 -4,-1.671429 -4,-4 v -5 c 0,-2.328572 1.671429,-4 4,-4 h 5 c 2.328571,0 4,1.671428 4,4 v 5 c 0,2.328571 -1.671429,4 -4,4 z m 0,17 h -5 c -2.328571,0 -4,-1.671429 -4,-4 v -5 c 0,-2.328572 1.671429,-4 4,-4 h 5 c 2.328571,0 4,1.671428 4,4 v 5 c 0,2.328571 -1.671429,4 -4,4 z m 9.333333,-17.866667 -3.466666,-3.466667 c -1.202151,-1.118279 -1.202151,-3.215053 0,-4.333333 l 3.466666,-3.466667 c 1.11828,-1.20215 3.215054,-1.20215 4.333334,0 l 3.466666,3.466667 c 1.202151,1.11828 1.202151,3.215054 0,4.333333 l -3.466666,3.466667 c -1.11828,1.20215 -3.298925,1.20215 -4.333334,0 z M 43,48.072581 h -5 c -2.328571,0 -4,-1.671429 -4,-4 v -5 c 0,-2.328572 1.671429,-4 4,-4 h 5 c 2.328571,0 4,1.671428 4,4 v 5 c 0,2.328571 -1.671429,4 -4,4 z"
+       inkscape:connector-curvature="0" />
+    <filter
+       id="filter-4"
+       filterUnits="objectBoundingBox"
+       height="1.0669999"
+       width="1.0369999"
+       y="-0.017000001"
+       x="-0.017999999">
+      <feOffset
+         id="feOffset81"
+         result="shadowOffsetOuter1"
+         in="SourceAlpha"
+         dy="1"
+         dx="0" />
+      <feColorMatrix
+         id="feColorMatrix83"
+         in="shadowOffsetOuter1"
+         type="matrix"
+         values="0 0 0 0 0.784313725   0 0 0 0 0.0392156863   0 0 0 0 0.0392156863  0 0 0 0.2 0" />
+    </filter>
+    <linearGradient
+       id="linearGradient-1-3"
+       y2="66.661125"
+       x2="34"
+       y1="0"
+       x1="34"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop166"
+         offset="0%"
+         stop-color="#FFCB52" />
+      <stop
+         id="stop168"
+         offset="100%"
+         stop-color="#FF7B02" />
+    </linearGradient>
+    <linearGradient
+       id="linearGradient-2-6"
+       y2="45.729568"
+       x2="35.895809"
+       y1="16.798616"
+       x1="35.895809"
+       gradientTransform="scale(0.93325653,1.0715168)"
+       gradientUnits="userSpaceOnUse">
+      <stop
+         id="stop171"
+         offset="0%"
+         stop-color="#FFFFFF" />
+      <stop
+         id="stop173"
+         offset="100%"
+         stop-opacity="0.6"
+         stop-color="#FFFFFF" />
+    </linearGradient>
+    <path
+       id="path-3-7"
+       d="m 43.4,18 c 1.988225,0 3.6,1.611775 3.6,3.6 v 18.9 c 0,2.414273 -1.901237,4.384489 -4.288164,4.495102 L 42.5,45 H 24.9 c -0.458821,0 -0.837452,0.343337 -0.892988,0.787106 L 24,45.9 v 0.2 c 0,0.458821 0.343337,0.837452 0.787106,0.892988 L 24.9,47 45.38699,47.000419 C 45.75243,47.239006 46,47.488287 46,48 c 0,0.666667 -0.416667,1 -1.25,1 H 23.6 C 21.611775,49 20,47.388225 20,45.4 V 21.6 C 20,19.611775 21.611775,18 23.6,18 Z M 40,23 H 26 v 4 h 14 z"
+       inkscape:connector-curvature="0" />
+    <filter
+       id="filter-4-5"
+       filterUnits="objectBoundingBox"
+       height="1.0650001"
+       width="1.0369999"
+       y="-0.016000001"
+       x="-0.018999999">
+      <feOffset
+         id="feOffset177"
+         result="shadowOffsetOuter1"
+         in="SourceAlpha"
+         dy="1"
+         dx="0" />
+      <feColorMatrix
+         id="feColorMatrix179"
+         in="shadowOffsetOuter1"
+         type="matrix"
+         values="0 0 0 0 0.934103261   0 0 0 0 0.459443539   0 0 0 0 0.00720868561  0 0 0 1 0" />
+    </filter>
+  </defs>
+  <sodipodi:namedview
+     id="base"
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1.0"
+     inkscape:pageopacity="0.0"
+     inkscape:pageshadow="2"
+     inkscape:zoom="3.0117001"
+     inkscape:cx="23.375892"
+     inkscape:cy="40.395519"
+     inkscape:document-units="mm"
+     inkscape:current-layer="layer1"
+     showgrid="false"
+     inkscape:window-width="1920"
+     inkscape:window-height="972"
+     inkscape:window-x="0"
+     inkscape:window-y="0"
+     inkscape:window-maximized="1"
+     showguides="false" />
+  <metadata
+     id="metadata5">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title></dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <g
+     inkscape:label="Layer 1"
+     inkscape:groupmode="layer"
+     id="layer1"
+     transform="translate(0,-284)">
+    <g
+       id="页面-1备份"
+       transform="matrix(0.18676471,0,0,0.18676471,0.14075604,284.15924)"
+       style="fill:none;fill-rule:evenodd;stroke:none;stroke-width:1">
+      <g
+         transform="translate(-1288,-502)"
+         id="1-首页-ANDROID-手机">
+        <g
+           transform="translate(1092,325)"
+           id="编组-5">
+          <g
+             transform="translate(196,177)"
+             id="编组-4">
+            <g
+               id="电子书">
+              <path
+                 style="fill:url(#linearGradient-1-3)"
+                 id="Rectangle"
+                 d="m 23.074967,0 h 21.850066 c 8.023669,0 10.933245,0.8354305 13.866578,2.4041943 2.933334,1.5687639 5.235431,3.870861 6.804195,6.8041944 C 67.164569,12.141722 68,15.051298 68,23.074967 v 21.850066 c 0,8.023669 -0.835431,10.933245 -2.404194,13.866578 -1.568764,2.933334 -3.870861,5.235431 -6.804195,6.804195 C 55.858278,67.164569 52.948702,68 44.925033,68 H 23.074967 C 15.051298,68 12.141722,67.164569 9.2083887,65.595806 6.2750553,64.027042 3.9729582,61.724945 2.4041943,58.791611 0.8354305,55.858278 0,52.948702 0,44.925033 V 23.074967 C 0,15.051298 0.8354305,12.141722 2.4041943,9.2083887 3.9729582,6.2750553 6.2750553,3.9729582 9.2083887,2.4041943 12.141722,0.8354305 15.051298,0 23.074967,0 Z"
+                 inkscape:connector-curvature="0" />
+              <g
+                 id="形状结合"
+                 style="fill-rule:nonzero">
+                <use
+                   style="fill:#000000;fill-opacity:1;filter:url(#filter-4-5)"
+                   id="use185"
+                   xlink:href="#path-3-7"
+                   x="0"
+                   y="0"
+                   width="100%"
+                   height="100%" />
+                <use
+                   style="fill:url(#linearGradient-2-6)"
+                   id="use187"
+                   xlink:href="#path-3-7"
+                   x="0"
+                   y="0"
+                   width="100%"
+                   height="100%" />
+              </g>
+            </g>
+          </g>
+        </g>
+      </g>
+    </g>
+  </g>
+</svg>

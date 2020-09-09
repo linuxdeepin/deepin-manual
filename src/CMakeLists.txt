@@ -6,6 +6,7 @@ project(deepin-manual C CXX)
 
 set(CMAKE_INSTALL_PREFIX /usr)
 
+
 if (CMAKE_BUILD_TYPE MATCHES Debug)
   add_definitions(-DDMAN_SEARCH_DB="${CMAKE_SOURCE_DIR}/manual-assets")
   add_definitions(-DDMAN_WEB_DIR="${CMAKE_CURRENT_SOURCE_DIR}/web_dist")

@@ -98,7 +98,7 @@ After you add a printer and select the correct driver, click **Install Driver** 
 - Successfully Installed 
   A window pops up saying the printer is successfully installed, in which you can click **Print Test Page** to verify if printing works normally, or, you can click **View Printer** to enter the interface of printer manager. 
 
-  ![0|8successful installion](jpg/8successful installion.png)
+  ![0|8successful installion](jpg/8successful install.png)
 
 - Install Failed
   
@@ -108,9 +108,9 @@ After you add a printer and select the correct driver, click **Install Driver** 
 
 ### Printer Manager Interface
 
-Once a printer is added successfully, when you click the printer in the interface of printer manager, you can see four buttons on the right, which are "Properties", "Print Queue", "Print Test Page" and "Troubleshoot". 
+Once a printer is added successfully, when you click the printer in the interface of printer manager, you can see four buttons on the right, which are "Properties", "Print Queue", "Print Test Page", "Supplies" and "Troubleshoot". 
 
-![0|9printer management](jpg/9printer management.png)
+![0|9printer management](jpg/9printer-management.png)
 
 #### Properties 
 
@@ -129,7 +129,7 @@ Once a printer is added successfully, when you click the printer in the interfac
 
   - Page Size: **Letter** is set by default. You can choose other size according to your needs.
 
-  - Color Precision: **Normal** is set by default. The other option is **Best**.
+  - Resolution: you can choose the suitable resolution here.
 
   - Media Type: **Photo Paper Pro Platinum** is set by default. There are many other options for you to choose. 
 
@@ -140,8 +140,6 @@ Once a printer is added successfully, when you click the printer in the interfac
   - Resolution: **Automatic**  is set by default. There are many other options for you to choose. 
 
   - Shrink Page If Necessary to Fit Borders: **Shrink (print the whole page)** is set by default. The other two options are **Crop (preserve dimensions)** and **Expand (use maximum page area)**.
-
-![0|10printer settings2](jpg/10printer settings2.png)
 
 4. Restore defaults: click this button, all settings will be restored to default. 
    
@@ -154,17 +152,8 @@ Once a printer is added successfully, when you click the printer in the interfac
 
 2. The list contains: "Job", "User", "Document", "Printer", "Size", "Time Submitted", "Status" and "Action". 
 
-3. Options of Action: 
+3. Select a job, right-click and you can select **Cancel**, **Delete**, **Pause**, **Resume**, **Print first**,  and **Reprint**. 
 
-   - Start/Pause printing: click this button to start or pause current job. 
-
-   - Delete: click this button to delete current job. 
-
-     ![0|11print queue](jpg/11print queue.png)
-
-4. Operation with right-clicking:
-
-​       Select a job and right-click, you will have options such as **Cancel**, **Delete**, **Pause**, **Resume**, **Print first**,  and **Reprint**. 
 
 
 
@@ -179,6 +168,10 @@ Click **Print Test Page** to test if printing is completed successfully.
    - Print successfully: if printing is completed successfully, you can continue with other tasks.
 
    - Print failed: if printing fails, you can reinstall a printer or start troubleshooting. 
+
+#### Supplies
+
+In the main interface of Print Manager, click **Supplies** to view the ink/toner status. If it's insufficient, it needs to be replaced.
 
 #### Troubleshoot
 
@@ -252,4 +245,4 @@ click Help to get the manual, which will help you further know and use Printer M
 2. Click  **Exit**.
 
 
-<div class="version-info"><span>Update Date: 2020-08-24</span><span> Version: 0.6</span></div>
+<div class="version-info"><span>Update Date: 2020-09-09</span><span> Version: 0.6</span></div>

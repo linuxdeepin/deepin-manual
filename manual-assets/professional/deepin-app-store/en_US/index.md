@@ -209,10 +209,6 @@ You can open the information page of any application to view its ratings, downlo
 1. Click  ![icon_menu](icon/icon_menu.svg) on the main interface.
 2. Click  **Clear cache** to clear up package caches.
 
-### Privacy Policy
-1. Click  ![icon_menu](icon/icon_menu.svg) on the main interface.
-2. Click  **Privacy Policy** to check privacy clauses.
-
 ### Theme
 
 The window theme includes Light Theme, Dark Theme and System Theme (default).
@@ -229,11 +225,11 @@ Click Help to get the manual, which will help you further know and use App Store
 
 ### About
 1. Click  ![icon_menu](icon/icon_menu.svg) on the main interface.
-2. Click **About** to view version information about App Store.
+2. Click **About** to view version information about App Store and **UnionTech Software Privacy Policy**.
 
 
 ### Exit
 1. Click  ![icon_menu](icon/icon_menu.svg) on the main interface.
 2. Click  **Exit**.
 
-<div class="version-info"><span>Update Date: 2020-08-24</span><span> Version: 6.0</span></div>
+<div class="version-info"><span>Update Date: 2020-09-09</span><span> Version: 6.2</span></div>
