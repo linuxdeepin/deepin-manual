@@ -228,6 +228,7 @@ void WebWindow::onThemeChange(DGuiApplicationHelper::ColorType themeType)
 void WebWindow::initUI()
 {
     completion_window_ = new SearchCompletionWindow();
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     completion_window_->hide();
 
     // 初始化标题栏
@@ -539,7 +540,7 @@ void WebWindow::onSearchButtonClicked()
     QString text = search_edit_->text();
 
     this->onSearchContentByKeyword(text);
-
+    qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
     completion_window_->hide();
 }
 
@@ -671,6 +672,7 @@ void WebWindow::onSearchAnchorResult(const QString &keyword, const SearchAnchorR
     Q_UNUSED(keyword);
     if (result.isEmpty()) {
         // Hide completion window if no anchor entry matches.
+        qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
         completion_window_->hide();
     } else {
         completion_window_->setSearchAnchorResult(result);
@@ -742,6 +744,7 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
             default: {
             }
             if (!search_edit_->geometry().contains(this->mapFromGlobal(QCursor::pos()))) {
+                qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
                 completion_window_->hide();
             }
             }
