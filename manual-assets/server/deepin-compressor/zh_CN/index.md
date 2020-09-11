@@ -15,7 +15,7 @@
 
 ### 运行压缩
 
-1. 点击桌面底部的 ![launcher](icon/deepin-launcher.svg) ，进入启动器界面。
+1. 点击桌面底部的 ![launcher](icon/deepin-launcher.svg)，进入启动器界面。
 2. 上下滚动鼠标滚轮浏览或通过搜索，找到归档管理器 ![deepin-compressor](icon/deepin-compressor.svg)点击运行。
 3. 右键单击 ![deepin-compressor](icon/deepin-compressor.svg)，您可以：
  - 点击 **发送到桌面**，在桌面创建快捷方式。
@@ -26,13 +26,13 @@
 
 ### 关闭压缩
 
-- 在归档管理器界面点击  ![close_icon](icon/close_icon.svg) ，退出压缩。
+- 在归档管理器界面点击  ![close_icon](icon/close_icon.svg)，退出压缩。
 - 在任务栏右键单击 ![deepin-compressor](icon/deepin-compressor.svg)，选择 **关闭所有** 来退出归档管理器。
-- 在归档管理器界面点击 ![icon_menu](icon/icon_menu.svg) ，选择 **退出** 来退出归档管理器。
+- 在归档管理器界面点击 ![icon_menu](icon/icon_menu.svg)，选择 **退出** 来退出归档管理器。
 
 ### 查看快捷键
 
-在归档管理器界面上，按下键盘上的 ![Ctrl](icon/Ctrl.svg) + ![Shift](icon/Shift.svg) + ![QM](icon/QM.svg) 组合键来查看快捷键，熟练地使用快捷键，将大大提升您的操作效率。
+在归档管理器界面上，按下键盘上的 **Ctrl + Shift + ? ** 组合键来查看快捷键，熟练地使用快捷键，将大大提升您的操作效率。
 
 ![1|hotkey](jpg/hotkey.png)
 
@@ -46,24 +46,19 @@
 
    > ![tips](icon/tips.svg)窍门：也可以选择将一个或者多个文件拖拽到界面上进行压缩操作。
    
-2. 如果需要添加压缩文件时，点击 ![plus](icon/icon_plus.svg)添加。
-
-   > ![tips](icon/tips.svg)窍门：也可以点击  ![icon_menu](icon/icon_menu.svg) > **打开文件**，添加压缩文件。
+2. 如果需要继续添加压缩文件，可点击工具栏上的 ![plus](icon/icon_plus.svg)或者  ![icon_menu](icon/icon_menu.svg)> **打开文件**，添加压缩文件。
 
    ![1|compressor](jpg/compress-add.png)
 
 3. 点击 **下一步**。
-
 4. 设置文件名、存储路径、压缩包格式等。
+5. 如果开启高级选项模式，可以设置文件加密、文件列表加密或分卷压缩。
 
-5. 如果开启高级选项模式，可以设置压缩包加密密码、分卷压缩。
-
-   > ![notes](icon/notes.svg)说明：压缩包的默认文件格式是zip，可以设置加密文件的格式有7z、cbz、exe、zip。
+   > ![notes](icon/notes.svg)说明：压缩包的默认文件格式是zip，可设置文件加密的格式有.7z、.cbz、.exe、.zip；可设置文件列表加密的格式有.7z；可设置分卷压缩的格式有.7z。
    
    ![1|compressor](jpg/compress-file.png)
 
 6. 点击 **压缩**。
-
 7. 压缩成功之后，您可以
    - 点击 **查看文件**，查看压缩文件的具体存放位置。
    - 点击 **返回**，返回主界面，选择文件进行压缩。
@@ -77,7 +72,7 @@
 
 1. 在归档管理器界面，点击 **选择文件** 。
 2. 选择需要解压缩的文件，点击 **打开**。
-3. 点击 **解压到：/home/viki**，您也可以重新设置解压缩路径。
+3. 点击 **解压到：/home/viki** ，您也可以重新设置解压缩路径。
 
    ![1|decompression](jpg/decompression.png)
 
@@ -95,7 +90,7 @@
 
 ### 提取文件
 
-在归档管理器界面，选中一个待解压缩文件或该文件夹中的子文件，右键单击 **提取**或 **提取到当前文件夹**，将文件提取到相应的路径下。
+在归档管理器界面，选中一个待解压缩文件或该文件夹中的子文件，右键单击 **提取** 或 **提取到当前文件夹**，将文件提取到相应的路径下。
 
 > ![notes](icon/notes.svg)说明：当提取的文件为加密文件时，需要输入密码才可以打开和提取文件。
 
@@ -120,7 +115,7 @@
  - 设置当解压完成后自动打开对应的文件夹。
  - 设置关联文件类型。
 
-![tips](icon/tips.svg)窍门：点击设置界面上的 **恢复默认**，会将所有设置恢复到默认状态。
+>![tips](icon/tips.svg)窍门：点击设置界面上的 **恢复默认**，会将所有设置恢复到默认状态。
 
 ### 主题
 
@@ -149,4 +144,4 @@
 1. 在归档管理器界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **退出**。
 
-<div class="version-info"><span>文档更新时间: 2020-08-26</span><span> 版本: 5.6</span></div>
+<div class="version-info"><span>文档更新时间: 2020-09-11</span><span> 版本: 5.8</span></div>

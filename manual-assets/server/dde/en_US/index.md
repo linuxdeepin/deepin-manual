@@ -1,19 +1,19 @@
 # Desktop Environment|../common/dde.svg|
 
 ## Overview
-UOS(Uniontech operating system) is a beautiful, easy-to-use and reliable Linux desktop operating system. It is equipped with a series of original applications such as File Manager, App Store, Image Viewer, Movie, and etc, which not only offers you abundant entertainment experience but also meet your daily needs of learning and working. With continual improvement, UOS is becoming one of the most popular open-source operating systems in China.
+UnionTech OS is a beautiful, easy-to-use and reliable Linux desktop operating system. It is equipped with a series of original applications such as File Manager, App Store, Image Viewer, Movie, and etc, which not only offers you abundant entertainment experience but also meet your daily needs of learning and working. With continual improvement, UnionTech OS is becoming one of the most popular open-source operating systems in China.
 
 ![1|desk](jpg/desk.png)
 
 ### Getting Started
 
-When you log into the system for the first time, a welcome program will automatically start.  Watch the introduction video to get new features, customize your desktop, enable the window effect and know more about UOS.
+When you log into the system for the first time, a welcome program will automatically start.  Watch the introduction video to get new features, customize your desktop, enable the window effect and know more about UnionTech OS.
 
 ![0|welcome](jpg/welcome.png)
 
-Once login, you are experiencing UOS Desktop Environment, which is comprised of Desktop, Dock, Launcher, Control Center, and window manager. 
+Once login, you are experiencing UnionTech OS Desktop Environment, which is comprised of Desktop, Dock, Launcher, Control Center, and window manager. 
 
-Read below and learn how to work in the UOS Desktop Environment.
+Read below and learn how to work in the UnionTech OS Desktop Environment.
 
 ## Desktop
 
@@ -84,8 +84,7 @@ Select some elegant and fashionable wallpapers to beautify your desktop and make
 
 ![1|wallpaper](jpg/wallpaper.png)
 
-> ![tips](icon/tips.svg)Tips: Check **Wallpaper Slideshow**, and set the time interval to change wallpaper automatically, or set to change the wallpaper in the process of login or wakeup. 
->
+
 
 > ![tips](icon/tips.svg)Tips: You can also set your favorite picture as wallpaper in an image viewer.
 
@@ -112,7 +111,7 @@ All the texts, pictures and documents cut and copied by the current user after l
 
 4. Click![close](icon/close_normal.svg)to delete the current content and click **Clear All** to clear the clipboard.
 
-   ![1|clipboard](jpg/clipboard.jpg)
+   ![1|clipboard](jpg/clipboard.png)
 
 ## Dock
 
@@ -123,7 +122,7 @@ In the Dock, there are icons of Launcher, applications, system tray, and plugins
 
 
 
-![1|fashion](jpg/dock-efficient.png)
+![1|fashion](jpg/dock.png)
 
 | Icon | Description |
 | ---- | ---- |
@@ -144,20 +143,20 @@ In the Dock, there are icons of Launcher, applications, system tray, and plugins
 ### Switch Display Mode
 There are two display modes of Dock: fashion mode and efficient mode, icon sizes and window effects are different in them.
 
-![1|fashion](jpg/dock-fashion.png)
+![1|fashion](jpg/fashion.png)
 
-![1|efficient](jpg/dock-efficient.png)
+![1|efficient](jpg/efficient.png)
 
 You can switch the display modes by the following operations:
 
-2. Right-click the Dock and select **Mode**.
-3. Select the display mode.
+1. Right-click the Dock and select **Mode**.
+2. Select the display mode.
 
 ### Change Dock Location
 You can place Dock on any direction of your desktop.
 
-2. Right-click the Dock and select **Location**.
-3. Select a location.
+1. Right-click the Dock and select **Location**.
+2. Select a location.
 
 ### Change Dock Height
 Drag the top edge to increase or decrease the height.
@@ -166,8 +165,8 @@ Drag the top edge to increase or decrease the height.
 
 You can hide the Dock in order to maximize the expansion of the desktop operating area. 
 
-2. Right-click the Dock and select **Status**.
-3. On the submenu, you can select:
+1. Right-click the Dock and select **Status**.
+2. On the submenu, you can select:
 - **Keep Shown** - display Dock all the time.
 - **Keep Hidden** - hide Dock and display it only when hovering on the dock area.
 - **Smart Hide** -  hide Dock automatically if the dock area is used.
@@ -175,8 +174,8 @@ You can hide the Dock in order to maximize the expansion of the desktop operatin
 
 ### Show/Hide Plugins
 
-2. Right-click the Dock and select **Plugins**.
-3. On the submenu, you can check or uncheck **Trash, Power, Show Desktop, Onboard**, and **Datetime** to show or hide the corresponding icon in the Dock.
+1. Right-click the Dock and select **Plugins**.
+2. On the submenu, you can check or uncheck **Trash, Power, Show Desktop, Onboard**, and **Datetime** to show or hide the corresponding icon in the Dock.
 
 ### View Notifications
 When there are system or application notifications, they will be shown in the middle of the screen. If there are buttons in the message, click buttons to do the actions; if there are not, click the message to close it.
@@ -224,9 +223,7 @@ You can restore deleted files in Trash or press **Ctrl** + **Z** to restore the 
 > ![attention](icon/attention.svg)Attention: If the original folder of the file has been deleted, the deleted file will be restored to a new folder automatically created.
 
 #### Empty Trash
-Empty trash to release the occupied space on your disk.
-
-- In the trash, click **Empty** to permanently delete all the files in the trash.
+In the trash, click **Empty** to permanently delete all the files in the trash.
 
 ## Launcher
 Launcher ![launcher](icon/deepin-launcher.svg)  helps you manage all the installed applications, where you can quickly find an application by category navigation or by a search.
@@ -334,7 +331,7 @@ Once you open a setting module in Control Center, the navigation appears on the 
 The title bar contains the back button, search box, main menu and the window buttons.
 
 - Back button: Click ![back](icon/back.svg) to go back to the homepage.
-- Search box: Input a keyword or click ![voice](icon/voice.svg)to input voices (The input voices will be converted to texts and displayed in the search box.) and search the related settings.
+- Search box: Input a keyword and search the related settings.
 - Main menu: Click ![menu](icon/icon_menu.svg) to enter the main menu where you can set the window theme, view the manual and exit.
 
 ### Accounts
@@ -431,7 +428,34 @@ Set screen resolution, brightness, direction and display scaling properly to hav
 3. Every time you click, the screen will rotate 90 degrees counterclockwise.
 4. To restore to the original direction, click the right button to exit; to use the current direction,  press **Ctrl**+ **S** to save it.
 
+#### Multiple Screen Settings
 
+Expand your desktop by multiple screens! Use VGA/HDMI/DP cable to connect your computer to other display devices.
+
+1. On the homepage of Control Center, click ![display_normal](D:/工作/专业版/SP2 UPDATE1-英文-0803/dde/en_US/icon/display_normal.svg).
+2. Click **Multiple Displays**.
+3. Select a display mode:
+   - **Duplicate**: display the same image on other screens.
+   - **Extend**: expand the desktop across the screens.
+   - **XXX only**: display the screen content only on one screen.
+   - **Customize**: customize the display settings for multiple screens.
+
+> ![tips](D:/工作/专业版/SP2 UPDATE1-英文-0803/dde/en_US/icon/tips.svg)Tips: In multiple displays, press **Super** + **P** to show its OSD. Operations are as follows:
+>
+> 1. Hold **Super** and press **P** or click to select the options. 
+> 2. Release the keys, the selected mode will take into effect.
+
+>![notes](D:/工作/专业版/SP2 UPDATE1-英文-0803/dde/en_US/icon/notes.svg)Notes: When the multiple displays are in the extend mode, only the main screen supports desktop icon display, right-click menu operation and other functions, while the sub-screens do not. 
+
+##### Custom Settings
+
+1. On the homepage of Control Center, click ![display_normal](D:/工作/专业版/SP2 UPDATE1-英文-0803/dde/en_US/icon/display_normal.svg).
+2. Click **Multiple Displays** > **Customize**.
+3. Click **Recognize**. 
+4. Choose **Merge** or **Split** the screens, specify the main screen, set the resolution and refresh rate, and rotate screen if you want.
+5. Click **Save**.
+
+> ![notes](D:/工作/专业版/SP2 UPDATE1-英文-0803/dde/en_US/icon/notes.svg)Notes: "Merge" means duplicate mode, "Split" means extend mode. 
 
 ### Default Application Settings
 If you have installed several applications with similar functions, such as text editor, choose one of them to be the default application to open that type of file.
@@ -454,7 +478,7 @@ If you have installed several applications with similar functions, such as text 
 
 1. On the homepage of Control Center, click ![default_applications_normal](icon/default_applications_normal.svg).
 2. Select a file type.
-3. Click ![add](icon/add.svg) below to add a desktop file (ususally at /usr/share/applications) or a specified binary file as the default application.
+3. Click ![add](icon/add.svg) below to add a desktop file (usually at /usr/share/applications) or a specified binary file as the default application.
 4. The application will be added to the list and set as default application automatically. 
 
 #### Delete Default Application
@@ -469,7 +493,7 @@ To delete the default applications you have added, do as below:
 
 
 ### Personalization Settings
-You can adjust the transparency of Launcher (in mini mode) and Dock, and also set theme, accent color, font, window effect, change the appearance of the desktop and windows to your favorite style. 
+You can set theme, accent color, font, window effect, change the appearance of the desktop and windows to your favorite style. 
 
 ![0|personalise](jpg/personalise.png)
 
@@ -552,7 +576,7 @@ To prevent others from scanning your network and cracking your password, you can
 
 #### Hotspot
 
-Hotspot changes the connected network signal to Wi-Fi hotspot, so that other devices nearby can connect to the hotspot and surf the internet. To enable hotspot, your computer must connect to a network and have a wireless network adapter.
+Hotspot changes the connected network signal to Wi-Fi hotspot, so that other devices nearby can connect to the hotspot and surf the Internet. To enable hotspot, your computer must connect to a network and have a wireless network adapter.
 
 1. On the homepage of Control Center, click ![network_normal](icon/network_normal.svg).
 2. Click **Personal Hotspot**.
@@ -587,7 +611,7 @@ VPN is a virtual private network. Its main function is to establish a private ne
 
 1. On the homepage of Control Center, click ![network_normal](icon/network_normal.svg).
 2. Click **VPN**, and click ![add](icon/add.svg) or ![import](icon/import.svg).
-4. Select the VPN protocol type, and enter the name, gateway, account, password and other information. (Importing VPN will automatically fill in information)
+3. Select the VPN protocol type, and enter the name, gateway, account, password and other information. (Importing VPN will automatically fill in information)
 4. Click **Save**,  the system will try to connect VPN network automatically.
 5. You can export the VPN settings to backup or share with other users. 
 
@@ -606,7 +630,7 @@ VPN is a virtual private network. Its main function is to establish a private ne
 1. On the homepage of Control Center, click ![network_normal](icon/network_normal.svg).
 2. Click **Application Proxy**.
 3. Select a proxy type, and fill in the IP address, port, etc.
-3. Click **Save** to save the proxy settings.
+4. Click **Save** to save the proxy settings.
 
 > ![notes](icon/notes.svg)Notes: After being configured, run Launcher, right-click any application's icon and check **Use a proxy**, and then the application will be opened by proxy.
 
@@ -722,7 +746,7 @@ Note that the auto-sync function will be disabled after changing date and time m
 2. Click **Time Settings**.
    - Switch on/off **Auto Sync**.
    - Enter the correct date and time.
-4. Click **Confirm**.
+3. Click **Confirm**.
 
 
 ### Power Management
@@ -761,8 +785,6 @@ Mouse are common computer input devices. Using the mouse, you can make the opera
 
 #### Mouse
 After inserting or connecting the mouse, make relevant settings in the Control Center to make it more in line with your usage habits. 
-
-> ![notes](icon/notes.svg)Notes: If there is no touchpad, “Disable touchpad when a mouse is connected” will not be shown.
 
 1. On the homepage of Control Center, click ![mouse_touchpad_normal](icon/mouse_touchpad_normal.svg).
 2. Click **Mouse**.
@@ -907,7 +929,7 @@ You can view system version, authorization info, hardware info, and the agreemen
 #### About This PC
 
 1. On the homepage of Control Center, click ![system_info_normal](icon/system_info_normal.svg).
-2. Under **About This PC**, you can view system version, autohrization and hardware information.
+2. Under **About This PC**, you can view system version, authorization and hardware information.
 3. If the system has not been activated, click **Activate** to activate the system.
 
 #### Edition License
@@ -1040,7 +1062,7 @@ In order to avoid data loss or damage caused by software defects, hardware damag
 
 #### Backup
 
-UOS provides backup by initialization and backup through Control Center.
+UnionTech OS provides backup by initialization and backup through Control Center.
 
 ##### Backup by initialization
 
@@ -1069,11 +1091,11 @@ You can either manually backup / restore data or restore data by one click.
 
 #### Restore
 
-UOS provides "restore from grub" and "restore from control center".
+UnionTech OS provides "restore from grub" and "restore from control center".
 
 ##### Restore from Grub
 
-During system startup, in the system selection interface, click **System Restore**, you can choose "Reset to factory settings" to read and restore factory settings backup, or choose "restore UOS historical backup" to open the file directory and select the backup to be restored.
+During system startup, in the system selection interface, click **UnionTech OS Backup & Restore**, you can choose "Reset to factory settings" to read and restore factory settings backup, or choose "restore UnionTech OS historical backup" to open the file directory and select the backup to be restored.
 
 ##### Restore from Control Center
 
@@ -1133,4 +1155,4 @@ You can use the keyboard to switch between various interface areas, select objec
 | **Ctrl** + **M**                                             | Open the right-click menu.                                   |
 
 
-<div class="version-info"><span>Update Date: 2020-08-26</span><span> Version: 2020.03</span></div>
+<div class="version-info"><span>Update Date: 2020-09-11</span><span> Version: 2020.03</span></div>

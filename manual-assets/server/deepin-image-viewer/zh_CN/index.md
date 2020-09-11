@@ -29,7 +29,7 @@
 
 ### 查看快捷键
 
-在看图界面上，按下键盘上的按下键盘上的 **Ctrl+ Shift+ ？**组合键来查看快捷键。
+在看图界面上，按下键盘上的按下键盘上的 **Ctrl + Shift + ?** 组合键来查看快捷键。
 
 ![1|hotkey](jpg/hotkey.png)
 
@@ -77,13 +77,12 @@
 5. 选择 **打印**，将图片发送到打印机进行打印。
 
    
-
 ### 重命名
 
 1. 在看图界面上，单击鼠标右键。
 2. 选择 **重命名**，在弹出的重命名窗口内，将图片名字进行修改。
 3. 点击 **确定** 完成修改。
-
+>![notes](icon/notes.svg)说明：系统图片不支持重命名。
 
 ### 幻灯片放映
 
@@ -107,7 +106,7 @@
 
 在看图中您可以通过如下方法删除图片：
 
-- 点击看图界面上的 ![delete_press](icon/delete.svg)  图标。
+- 点击看图界面上的 ![delete_press](icon/delete.svg) 图标。
 - 右键单击图片，选择 **删除**。
 - 在看图界面上，按下键盘的 **Delete** 键。
 
@@ -143,20 +142,20 @@
 
 窗口主题包含浅色主题、深色主题和跟随系统主题，其中跟随系统主题为默认设置。
 
-1. 在看图界面，点击  ![icon_menu](icon/icon_menu.svg) 。
+1. 在看图界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **主题**，选择一个主题颜色。
 
 ### 帮助
 
 查看帮助手册，进一步了解和使用看图。
 
-1. 在看图界面，点击  ![icon_menu](icon/icon_menu.svg) 。
+1. 在看图界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **帮助**。
 3. 查看看图的帮助手册。
 
 ### 关于
 
-1. 在看图界面，点击  ![icon_menu](icon/icon_menu.svg) 。
+1. 在看图界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **关于**。
 3. 查看看图的版本和介绍。
 
@@ -165,4 +164,4 @@
 1. 在看图界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **退出**。   
 
-<div class="version-info"><span>文档更新时间: 2020-08-26</span><span> 版本: 5.6</span></div>
+<div class="version-info"><span>文档更新时间: 2020-09-11</span><span> 版本: 5.6</span></div>

@@ -34,6 +34,7 @@ Main interface consists of navigation bar, search box, main menu, slide show, ne
 
 ![1|maininterfacedetail02](jpg/maininterfacedetail2.png)
 
+
 <table class="block1">
     <caption>Main Interface</caption>
     <tbody>
@@ -71,30 +72,34 @@ Main interface consists of navigation bar, search box, main menu, slide show, ne
             <td>7</td>
             <td>Download</td>
             <td>Currently downloading tasks, downloading and installing progress are displayed here. You can pause and delete any download task.</td>
-        </tr>  
+        </tr>
         <tr>
-        <td>8</td>
-        <td>My Apps</td>
-        <td>You can view all apps installed and uninstall apps you don't need any more here.</td>
-    </tr>
+            <td>8</td>
+            <td>Updates</td>
+            <td>You can view applications to be updated here and you can choose whether to update it or not.</td>
+        </tr>
         <tr>
-        <td>9</td>
-        <td>Hot Apps</td>
-        <td>Recommended popular apps are displayed here.</td>
-    </tr>
-         <tr>
-        <td>10</td>
-        <td>Essential Apps</td>
-        <td>You can view all essential software and install the ones you want here.</td>
-    </tr>
-  <tr>
-        <td>11</td>
-        <td>Hot Topics</td>
-        <td>Hot app categories are displayed here.</td>
-    </tr>
+            <td>9</td>
+            <td>My Apps</td>
+            <td>You can view all apps installed and uninstall apps you don't need any more here.</td>
+        </tr>
+            <tr>
+            <td>10</td>
+            <td>Hot Apps</td>
+            <td>Recommended popular apps are displayed here.</td>
+        </tr>
+             <tr>
+            <td>11</td>
+            <td>Essential Apps</td>
+            <td>You can view all essential software and install the ones you want here.</td>
+        </tr>
+      <tr>
+            <td>12</td>
+            <td>Hot Topics</td>
+            <td>Hot app categories are displayed here.</td>
+        </tr>
    </tbody>
    </table>
-
 
 
 
@@ -102,7 +107,7 @@ Main interface consists of navigation bar, search box, main menu, slide show, ne
 You can search, download and install different categories of applications, and also, you can explore more splendid applications through slide show, new updates, essential applications, popular applications, recommendations, hot topics, rankings, user comments and other ways. 
 
 ### Search Applications
-1. Search function is built in App Store, which supports keywords input. Click![search](icon/search.svg) to input keywords.
+1. Search function is built in App Store, you can click![search](icon/search.svg) to input keywords;
 
 2. When you input a keyword, all applications containing that keyword will be displayed automatically below, then you can view all applications containing that keyword.
 
@@ -126,7 +131,11 @@ App Store supports application synchronization. After signing in, you can synchr
 
    ![1|installprocess](jpg/installprocess.png)
 
-3. After installation, installed applications are displayed in local applications only. 
+3. After installation, installed applications are displayed in local applications only. Click **App filter** to screen applications based on categories.
+
+   
+
+   ![1|localapp](jpg/localapp.png)
 
    
 
@@ -142,9 +151,17 @@ App Store supports application synchronization. After signing in, you can synchr
 
 
 
-### Update/Upgrade Application
+### Update Applications
 
-You can also update/upgrade applications in Control Center. Refer to [Update Settings](dman:///dde#Update Settings) for particular operations.
+Select **Updates** on the interface to view view applications to be updated here and you can choose whether to update it or not.
+
+
+
+![1|update](jpg/update.png)
+
+
+
+> ![tips](icon/tips.svg)Tips: You can also update/upgrade applications in Control Center. Refer to [Update Settings](dman:///dde#Update Settings) for particular operations.
 
 ### Uninstall Applications
 
@@ -192,10 +209,6 @@ You can open the information page of any application to view its ratings, downlo
 1. Click  ![icon_menu](icon/icon_menu.svg) on the main interface.
 2. Click  **Clear cache** to clear up package caches.
 
-### Privacy Policy
-1. Click  ![icon_menu](icon/icon_menu.svg) on the main interface.
-2. Click  **Privacy Policy** to check privacy clauses.
-
 ### Theme
 
 The window theme includes Light Theme, Dark Theme and System Theme (default).
@@ -219,4 +232,4 @@ Click Help to get the manual, which will help you further know and use App Store
 1. Click  ![icon_menu](icon/icon_menu.svg) on the main interface.
 2. Click  **Exit**.
 
-<div class="version-info"><span>Update Date: 2020-08-26</span><span> Version: 6.2</span></div>
+<div class="version-info"><span>Update Date: 2020-09-11</span><span> Version: 6.2</span></div>

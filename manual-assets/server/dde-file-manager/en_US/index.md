@@ -331,7 +331,7 @@ You can share folders in File Manager, if there are some folders shared, the sha
 #### Share Local Files
 
 1. On File Manager interface, right-click a folder, select **Share folder**.
-2. In the popup window, check **Share this folder** under **Sharing**.
+2. In the pop-up window, check **Share this folder** under **Sharing**.
 3. Input **Share name**, and choose **Permission** and **Anonymous ** according to actual needs before closing the window.
 5. To set share password, click ![menu](icon/icon_menu.svg) and select **Set share password**.
 5. Input password and click **Confirm**.
@@ -378,7 +378,7 @@ You can find sharing folders of other users in the same LAN in **Computers in LA
 
 1. On File Manager interface, right-click the item to create a link for.
 2.  Select **Create link**.
-3. In the popup window, select a location and input the name of the link.
+3. In the pop-up window, select a location and input the name of the link.
 4. Click **Save** to finish creating the link.
 
 > ![tips](icon/tips.svg)Tips: By selecting **Send to desktop** for an item, you can create a link on desktop with one click.
@@ -405,7 +405,7 @@ You will have to set a password when you use File Vault for the first time as fo
 
 ![0|password](jpg/password.png)
 
-> ![notes](icon/notes.svg)Notes: the password must contain upper case letters, lower case letters,  Arabic numbers and special symbols at the same time and no less that 8 digits. Otherwise, you are not able to go to the next step.
+> ![notes](icon/notes.svg)Notes: the password must contain upper case letters, lower case letters,  Arabic numbers and special symbols at the same time and no less than 8 digits. Otherwise, you are not able to go to the next step.
 > &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 3. A key/QR code is generated. It is recommended to save it in case you forget it. Click **Next**. 
@@ -564,4 +564,4 @@ The window theme includes Light Theme, Dark Theme and System Theme (default).
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Click **Exit**.
 
-<div class="version-info"><span>Update Date: 2020-08-26</span><span> Version: 5.1</span></div>
+<div class="version-info"><span>Update Date: 2020-09-11</span><span> Version: 5.2</span></div>

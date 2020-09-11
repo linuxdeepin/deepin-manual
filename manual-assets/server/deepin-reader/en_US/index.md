@@ -32,7 +32,7 @@ You can run, close or create a shortcut of Document Viewer as follows.
 
 ### View Shortcut Keys
 
-On Document Viewer interface, press  **Ctrl+Shift+ ？** to view all shortcut keys quickly, which helps you to use them skillfully and improves your working efficiency. 
+On Document Viewer interface, press  **Ctrl+Shift+ ?** to view all shortcut keys quickly, which helps you to use them skillfully and improves your working efficiency. 
 
 ![1|hotkey](jpg/hotkey.png)
 
@@ -54,7 +54,7 @@ You can open a file by:
 
 - Clicking **Select File** and selecting a file on Document Viewer interface.
 
-- On Document Viewer interface, pressing ![Ctrl](icon/Ctrl.svg) + ![O](icon/O.svg)and selecting the file you want to open. 
+- On Document Viewer interface, pressing **Ctrl + O** and selecting the file you want to open. 
 
 > ![notes](icon/notes.svg)Notes: Document Viewer supports PDF and DJVU formats.
 
@@ -62,16 +62,16 @@ You can open a file by:
 
 To save the document that has been edited and modified, you can 
 
-- Press**Ctrl+S**.
+- Press **Ctrl+S**.
 - Click ![icon_menu](icon/icon_menu.svg) > **Save**.
-> ![tips](icon/tips.svg)Tips: Besides, you can press**Ctrl+Shift+S** or click ![icon_menu](icon/icon_menu.svg) > **Save as**.
+> ![tips](icon/tips.svg)Tips: Besides, you can press **Ctrl+Shift+S** or click ![icon_menu](icon/icon_menu.svg) > **Save as**.
 
 
 ### Print documents
 
 To print you have to connect and configure a printer. 
 
-1. Click ![icon_menu](icon/icon_menu.svg) > **Print** or press**Ctrl+P**to preview.
+1. Click ![icon_menu](icon/icon_menu.svg) > **Print** or press **Ctrl+P** to preview.
 2. In this previewing interface, you can preview and set the printing page. 
 3. In this previewing interface, click the printer icon on the right, and select a printer from the popped out window and set the parameters you want. 
 4. Click **Print**  then the document will be sent to the printer for printing. 
@@ -312,4 +312,4 @@ click Help to get the manual, which will help you further know and use Document 
 2. Click  **Exit**.
 
 
-<div class="version-info"><span>Update Date: 2020-08-26</span><span> Version: 5.6</span></div>
+<div class="version-info"><span>Update Date: 2020-09-11</span><span> Version: 5.7</span></div>

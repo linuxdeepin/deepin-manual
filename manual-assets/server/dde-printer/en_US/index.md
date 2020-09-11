@@ -29,7 +29,7 @@ You can run, close or create a shortcut for Printer Manager as follows.
 
 ### Add Printer
 
-On the main interface, click![+](icon/+.svg) and you will have three options including **Discover Printer**, **Find Printer**, and **Enter URI**. 
+On the main interface, click ![+](icon/+.svg) and you will have three options including **Discover Printer**, **Find Printer**, and **Enter URI**. 
 
 ![0|1add printer](jpg/1add printer.png)
 
@@ -98,7 +98,7 @@ After you add a printer and select the correct driver, click **Install Driver** 
 - Successfully Installed 
   A window pops up saying the printer is successfully installed, in which you can click **Print Test Page** to verify if printing works normally, or, you can click **View Printer** to enter the interface of printer manager. 
 
-  ![0|8successful installion](jpg/8successful installion.png)
+  ![0|8successful installion](jpg/8successful install.png)
 
 - Install Failed
   
@@ -188,9 +188,9 @@ If printing fails, you can click **Troubleshoot**, the checklist includes follow
 
    - Check if CUPS server is valid.
 
-   - Check if drivre is valid.
+   - Check if driver is valid.
 
-   - Check if printer settings are ok, i.e. if printer is started up, and, if tasks are accepted.
+   - Check if printer settings are OK, i.e. if printer is started up, and, if tasks are accepted.
 
    - Check if printer connection is valid.
 
@@ -252,4 +252,4 @@ click Help to get the manual, which will help you further know and use Printer M
 2. Click  **Exit**.
 
 
-<div class="version-info"><span>Update Date: 2020-08-26</span><span> Version: 0.5</span></div>
+<div class="version-info"><span>Update Date: 2020-09-11</span><span> Version: 0.6</span></div>
