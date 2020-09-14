@@ -526,7 +526,10 @@ void WebWindow::onSearchContentByKeyword(const QString &keyword)
  */
 void WebWindow::onSearchEditFocusOut()
 {
+    qDebug() << "searchedit....focuschang";
+
     QTimer::singleShot(20, this, [ = ]() {
+        qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
         this->completion_window_->hide();
     });
 }
