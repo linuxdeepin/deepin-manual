@@ -55,14 +55,15 @@ const int langCount = 3;
 QString languageArr[][langCount] = {
     //dde model
     {"controlcenter", "控制中心", "Control Center"},
-    {"accounts", "账户设置", "Account Settings"},
-    {"cloudsync", "网络帐户", "Cloud Account"},
+    {"accounts", "帐户设置", "Accounts"},
+    {"cloudsync", "Union ID", "Union ID"},
     {"display", "显示设置", "Display Settings"},
     {"defapp", "默认程序设置", "Default Application Settings"},
     {"personalization", "个性化设置", "Personalization Settings"},
     {"network", "网络设置", "Network Settings"},
+    {"notification", "通知设置", "Notification Settings"},
     {"sound", "声音设置", "Sound Settings"},
-    {"bluetooth", "蓝牙设置", "Sound Settings"},
+    {"bluetooth", "蓝牙设置", "Bluetooth Settings"},
     {"datetime", "时间日期", "Date and Time"},
     {"power", "电源管理", "Power Management"},
     {"mouse", "鼠标和触控板", "Mouse and Touchpad"},
