@@ -58,18 +58,21 @@
 
 ![download](jpg/download.png) 
 
-   >![attention](icon/attention.svg)注意：为保证PC端手机助手功能正常使用，请保持数据线正常连接，且客户端手机助手正常运行。
+>![icon](icon/notes.svg)说明：若手机挂载失败，请断开USB线并重新连接。
+
+>![attention](icon/attention.svg)注意：为保证PC端手机助手功能正常使用，请保持数据线正常连接，且客户端手机助手正常运行。
 
 ### iOS系统
 
 1. 使用数据线将手机与PC端连接，并在PC端运行手机助手。
 2. 解锁手机，手机端弹出“是否信任此电脑”的对话框，点击“信任”完成连接。连接完成后方可在PC端手机助手上进行操作。
 
-
+> ![icon](icon/notes.svg)说明：若手机挂载失败，请断开USB线并重新连接。
 
 ## 功能介绍
 
 通过手机助手，您可以对手机中的应用、照片、视频、音乐、电子书及文件进行管理和操作。
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 > ![icon](icon/notes.svg)说明：iOS系统仅在文件管理界面支持导入的功能，其它界面暂不支持此功能。
 
@@ -77,6 +80,8 @@
 点击左侧导航栏 ![应用](icon/app.svg) 图标或者主界面 ![应用](icon/app-light.svg) 进入应用管理界面，您可以导出或者卸载手机中的应用。
 
 - 导出应用：选择一个或多个应用，点击工具栏上的![export](icon/export.svg)，将应用保存到PC端自定义的位置。
+  
+   > ![icon](icon/notes.svg)说明：iOS系统暂不支持导出的功能。
 - 卸载应用：选择一个或多个应用，点击工具栏上的 ![delete](icon/delete.svg)，在弹出的对话框中点击 **确定** 卸载应用。
 
 ![app](jpg/app.png)
@@ -173,4 +178,4 @@
 2. 点击 **退出**。
 
 
-<div class="version-info"><span>文档更新时间: 2020-08-28</span><span> 版本: 5.1</span></div>
+<div class="version-info"><span>文档更新时间: 2020-09-09</span><span> 版本: 5.1</span></div>

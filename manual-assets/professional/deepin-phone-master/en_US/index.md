@@ -2,7 +2,7 @@
 
 ## Overview
 
-Phone Manager is a convenient tool for managing smart phones from your personal computer which supports a wide range of mobile phone models to best meet your needs. ![0|voice_recorder](jpg/main.png)
+Phone Master is a convenient tool for managing smart phones from your personal computer which supports a wide range of mobile phone models to best meet your needs. ![0|voice_recorder](jpg/main.png)
 
 
 ## Guide
@@ -12,14 +12,14 @@ You can run, exit or create a shortcut for Phone Master by the following ways.
 ### Run Phone Master
 
 1.  Click ![deepin-launcher](icon/deepin-launcher.svg) on dock to enter the Launcher interface.
-2.  Locate ![phone-master](icon/phone master.svg) by scrolling the mouse wheel or searching Phone Master in the Launcher interface and click it to run.
+2.  Locate ![phone-master](icon/phone master.svg) by scrolling the mouse wheel or searching "phone master" in the Launcher interface and click it to run.
 3.  Right-click ![phone-master](icon/phone master.svg) and you can:
 
    - Click **Send to desktop** to create a desktop shortcut.
    
    - Click **Send to dock** to fix it on Dock.
    
-   - Click **Add to startup** to add it to startup and it will auto run when the system boots.
+   - Click **Add to startup** to add it to startup and it will automatically run when the system starts up.
    
      
 
@@ -50,7 +50,7 @@ You can use Phone Master to connect with multiple phones concurrently. Follow be
 
    >![notes](icon/notes.svg)Notes: 
    >
-   >  - Above path is for your reference only as the path directory might differ by their names. Navigate your phone to get more detailed information. 
+   >  - Above path is for your reference only as the path directory might differ by their names for different phone devices. Navigate your phone to get more detailed information. 
    >  - Once **Developer Options** screen is enabled on your phone, please keep it on so you can proceed to step 5 directly every time when you use Phone Master.
 
 2. Connect your phone to your computer with a USB cable and run Phone Master on your computer.
@@ -61,17 +61,19 @@ You can use Phone Master to connect with multiple phones concurrently. Follow be
 
 ![USB](jpg/USB.png) 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-6. A pop-up window will show on your phone requesting **Install via USB** for UOS Phone Master. Grant permit for installation and the UOS Phone Master will be installed on your phone. Once it's completed, you can operate Phone Master on your computer.
+5. A pop-up window will show on your phone requesting **Install via USB** for UOS Phone Master. Grant permit for installation and the UOS Phone Master will be installed on your phone. Once it's completed, you can operate Phone Master on your computer.
 
 ![download](jpg/download.png) 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+   >![notes](icon/notes.svg)Notes: If your phone fails to mount, disconnect the USB cable and reconnect to your computer.
    >![attention](icon/attention.svg)Attention: To ensure normal function of Phone Master on your computer, you shall keep the USB  cable connected and make sure Phone Master runs on your computer. 
 
 ### iOS
 
 1. Connect your phone to your computer with a USB cable and run Phone Master on your computer.
 2. Unlock your phone and a pop-up window shows asking for your permission to **Trust This Computer**. Click **Trust** to connect your phone to your computer.
-
+   
+>![notes](icon/notes.svg)Notes: If your phone fails to mount, disconnect the USB cable and reconnect to your computer.
 
 
 ## Main Functions
@@ -84,8 +86,10 @@ Manage apps, photos, videos, songs, eBooks and files with your Phone Master.
 
 Click ![应用](icon/app.svg) on the left navigation bar or ![应用](icon/app-light.svg) on the main interface to enter the Apps interface, where you can export or delete apps stored in your phone. 
 
-- Export: select one or multiple apps, click ![export](icon/export.svg) on the toolbar, and save the app(s) to the destination on your computer per your needs.
-- Delete: select one or multiple apps, click ![delete](icon/delete.svg) on the toolbar, and click **Confirm** in the pop-up box to delete the app(s). 
+- Export: Select one or multiple apps, click ![export](icon/export.svg) on the toolbar, and save the app(s) to the destination on your computer per your needs.
+  
+   >![notes](icon/notes.svg)Notes: for iOS system, currently exporting of app(s) is not supported.
+- Delete: Select one or multiple apps, click ![delete](icon/delete.svg) on the toolbar, and click **Confirm** in the pop-up box to delete the app(s). 
 
 ![app](jpg/app.png)
 
@@ -93,9 +97,9 @@ Click ![应用](icon/app.svg) on the left navigation bar or ![应用](icon/app-l
 
 Click ![照片](icon/photo.svg) on the left navigation bar or ![照片](icon/photo-light.svg) on the main interface to enter the Photos interface, where you can import, export or delete photos stored in your phone. 
 
-- Export: select one or multiple photos, click ![export](icon/export.svg) on the toolbar, and save the photo(s) to the destination on your computer per your needs.
-- Import: click ![import](icon/import.svg) on the toolbar, select photo(s) from your computer and import to your phone. 
-- Delete: select one or multiple photos, click ![delete](icon/delete.svg) on the toolbar, and click **Confirm** in the pop-up box to delete the photo(s). 
+- Export: Select one or multiple photos, click ![export](icon/export.svg) on the toolbar, and save the photo(s) to the destination on your computer per your needs.
+- Import: Click ![import](icon/import.svg) on the toolbar, select photo(s) from your computer and import to your phone. 
+- Delete: Select one or multiple photos, click ![delete](icon/delete.svg) on the toolbar, and click **Confirm** in the pop-up box to delete the photo(s). 
 
 ![photo](jpg/photo.png)
 
@@ -104,9 +108,9 @@ Click ![照片](icon/photo.svg) on the left navigation bar or ![照片](icon/pho
 
 Click ![视频](icon/video.svg) on the left navigation bar or ![视频](icon/video-light.svg) on the main interface to enter the Videos interface, where you can import, export or delete videos stored in your phone. 
 
-- Export: select one or multiple videos, click ![export](icon/export.svg) on the toolbar, and save the video(s) to the destination on your computer per your needs.
-- Import: click ![import](icon/import.svg) on the toolbar, select video(s) from your computer and import to your phone. 
-- Delete: select one or multiple videos, click ![delete](icon/delete.svg) on the toolbar, and click **Confirm** in the pop-up box to delete the video(s). 
+- Export: Select one or multiple videos, click ![export](icon/export.svg) on the toolbar, and save the video(s) to the destination on your computer per your needs.
+- Import: Click ![import](icon/import.svg) on the toolbar, select video(s) from your computer and import to your phone. 
+- Delete: Select one or multiple videos, click ![delete](icon/delete.svg) on the toolbar, and click **Confirm** in the pop-up box to delete the video(s). 
 
 ![video](jpg/video.png)
 
@@ -115,9 +119,9 @@ Click ![视频](icon/video.svg) on the left navigation bar or ![视频](icon/vid
 
 Click ![音乐](icon/music.svg) on the left navigation bar or ![音乐](icon/music-light.svg) on the main interface to enter the Songs interface, where you can import, export or delete Songs stored in your phone. 
 
-- Export: select one or multiple songs, click ![export](icon/export.svg) on the toolbar, and save the song(s) to the destination on your computer per your needs.
-- Import: click ![import](icon/import.svg) on the toolbar, select song(s) from your computer and import to your phone. 
-- Delete: select one or multiple songs, click ![delete](icon/delete.svg) on the toolbar, and click **Confirm** in the pop-up box to delete the song(s). 
+- Export: Select one or multiple songs, click ![export](icon/export.svg) on the toolbar, and save the song(s) to the destination on your computer per your needs.
+- Import: Click ![import](icon/import.svg) on the toolbar, select song(s) from your computer and import to your phone. 
+- Delete: Select one or multiple songs, click ![delete](icon/delete.svg) on the toolbar, and click **Confirm** in the pop-up box to delete the song(s). 
 
 ![music](jpg/music.png)
 
@@ -125,9 +129,9 @@ Click ![音乐](icon/music.svg) on the left navigation bar or ![音乐](icon/mus
 
 Click ![电子书](icon/ebook.svg) on the left navigation bar or ![电子书](icon/ebook-light.svg) on the main interface to enter the eBooks interface, where you can import, export or delete Songs stored in your phone. 
 
-- Export: select one or multiple ebooks, click ![export](icon/export.svg) on the toolbar, and save the ebook(s) to the destination on your computer per your needs.
-- Import: click ![import](icon/import.svg) on the toolbar, select ebook(s) from your computer and import to your phone. 
-- Delete: select one or multiple ebooks, click ![delete](icon/delete.svg) on the toolbar, and click **Confirm** in the pop-up box to delete the ebook(s). 
+- Export: Select one or multiple ebooks, click ![export](icon/export.svg) on the toolbar, and save the ebook(s) to the destination on your computer per your needs.
+- Import: Click ![import](icon/import.svg) on the toolbar, select ebook(s) from your computer and import to your phone. 
+- Delete: Select one or multiple ebooks, click ![delete](icon/delete.svg) on the toolbar, and click **Confirm** in the pop-up box to delete the ebook(s). 
 
 ![ebook](jpg/ebook.png)
 
@@ -136,10 +140,10 @@ Click ![电子书](icon/ebook.svg) on the left navigation bar or ![电子书](ic
 
 Click ![文件](icon/file.svg) on the left navigation bar or ![文件](icon/file-light.svg) on the main interface to enter the Files interface, where you can create folders, and import, export or delete files stored in your phone. 
 
-- Create: click ![create](icon/create.svg) on the toolbar to create a new folder.
-- Export: select one or multiple files, click ![export](icon/export.svg) on the toolbar, and save the file(s) to the destination on your computer per your needs.
-- Import: click ![import](icon/import.svg) on the toolbar, select file(s) from your computer and import to your phone. 
-- Delete: select one or multiple files, click ![delete](icon/delete.svg) on the toolbar, and click **Confirm** in the pop-up box or right click and select **Delete** to delete the file(s). 
+- Create: Click ![create](icon/create.svg) on the toolbar to create a new folder.
+- Export: Select one or multiple files, click ![export](icon/export.svg) on the toolbar, and save the file(s) to the destination on your computer per your needs.
+- Import: Click ![import](icon/import.svg) on the toolbar, select file(s) from your computer and import to your phone. 
+- Delete: Select one or multiple files, click ![delete](icon/delete.svg) on the toolbar, and click **Confirm** in the pop-up box or right click and select **Delete** to delete the file(s). 
 
 ![file](jpg/file.png)
 
@@ -150,7 +154,7 @@ On the main menu, you can set options, switch window themes, view help manual an
 
 ### Settings
 
-1. Click ![界面按钮图标](icon/icon_menu.svg) on the Phone Master interface.
+1. On the Phone Master interface, click ![icon_menu](icon/icon_menu.svg).
 
 2. Click **Basic**.
 
@@ -164,26 +168,24 @@ On the main menu, you can set options, switch window themes, view help manual an
 
 ### Theme
 
-The window theme includes Light Theme, Dark Theme and System Theme (default).
+The window theme provides three theme types, namely Light Theme, Dark Theme and System Theme (default).
 
 1. On the Phone Master interface, click ![icon_menu](icon/icon_menu.svg).
-2. Click **Theme** to select a theme.
+2. Click **Theme** to select one theme.
 
 ### Help
 
 1.  On the Phone Master interface, click ![icon_menu](icon/icon_menu.svg).
-2.  Click **Help**.
-3.  View the manual.
+2.  Click **Help** to view the manual of Phone Master.
 
 ### About
 
 1.  On the Phone Master interface, click ![icon_menu](icon/icon_menu.svg). 
-2.  Click **About**.
-3.  View the version description.
+2.  Click **About** to view the version and introduction of Phone Master.
 
 ### Exit
 
 1. On the Phone Master interface, click ![icon_menu](icon/icon_menu.svg).
-2.  Click **Exit** to exit.
+2.  Click **Exit** to exit Phone Master.
 
-<div class="version-info"><span>Update Date: 2020-08-28</span><span> Version: 5.1</span></div>
+<div class="version-info"><span>Update Date: 2020-09-09</span><span> Version: 5.1</span></div>
