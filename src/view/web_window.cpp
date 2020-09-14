@@ -164,7 +164,7 @@ void WebWindow::initConnections()
     connect(search_edit_, &SearchEdit::enterPressed, this, &WebWindow::onTitleBarEntered);
     connect(search_edit_, &SearchEdit::upKeyPressed, completion_window_,
             &SearchCompletionWindow::goUp);
-    connect(search_edit_, &SearchEdit::focusChanged, this, &WebWindow::onSearchEditFocusOut);
+//    connect(search_edit_, &SearchEdit::focusChanged, this, &WebWindow::onSearchEditFocusOut);
 
     connect(completion_window_, &SearchCompletionWindow::resultClicked, this,
             &WebWindow::onSearchResultClicked);
@@ -468,6 +468,25 @@ void WebWindow::settingContextMenu()
     });
 }
 
+/**
+ * @brief WebWindow::hasWidgetRect
+ * @return 返回控件Rect位置
+ * 根据父控件位置确定子控件位置
+ */
+QRect WebWindow::hasWidgetRect(QWidget *widget)
+{
+    QRect rect;
+    QWidget *tmpWidget = widget;
+    while (tmpWidget) {
+        rect.setX(rect.x() + tmpWidget->x());
+        rect.setY(rect.y() + tmpWidget->y());
+        tmpWidget = tmpWidget->parentWidget();
+    }
+    rect.setWidth(widget->width());
+    rect.setHeight(widget->height());
+    return rect;
+}
+
 void WebWindow::showEvent(QShowEvent *event)
 {
     QWidget::showEvent(event);
@@ -746,7 +765,7 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
             }
             default: {
             }
-            if (!search_edit_->geometry().contains(this->mapFromGlobal(QCursor::pos()))) {
+            if (!hasWidgetRect(search_edit_).contains(mapFromGlobal(QCursor::pos()))) {
                 qDebug() << __func__ << __LINE__ << QDateTime::currentDateTime().toString("yyyy.MM.dd hh:mm:ss.zzz");
                 completion_window_->hide();
             }

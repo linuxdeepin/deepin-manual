@@ -96,6 +96,7 @@ private:
     void initDBus();
     void setHashWordColor();
     void settingContextMenu();
+    QRect hasWidgetRect(QWidget *);
 
     QString app_name_;
     QString title_name_;
