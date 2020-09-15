@@ -314,10 +314,14 @@ class App extends React.Component {
           let { html } = m2h(filePath, data);
           let d = document.createElement('div');
           d.innerHTML = html;
+          let dlist = d.querySelectorAll(`[text="${title}"]`);
           let hashID = 'h0';
-          if (d.querySelector(`[text="${title}"]`))
+          for(let i = 0; i < dlist.length; i++)
           {
-            hashID = d.querySelector(`[text="${title}"]`).id;
+            if (dlist[i].tagName == 'H2' || dlist[i].tagName == 'H3')
+            {
+              hashID = dlist[i].id;
+            }
           }
           global.open(file,hashID);
         })

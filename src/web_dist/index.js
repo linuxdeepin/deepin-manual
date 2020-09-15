@@ -351,9 +351,12 @@ var App = function (_React$Component) {
 
             var d = document.createElement('div');
             d.innerHTML = html;
+            var dlist = d.querySelectorAll('[text="' + title + '"]');
             var hashID = 'h0';
-            if (d.querySelector('[text="' + title + '"]')) {
-              hashID = d.querySelector('[text="' + title + '"]').id;
+            for (var i = 0; i < dlist.length; i++) {
+              if (dlist[i].tagName == 'H2' || dlist[i].tagName == 'H3') {
+                hashID = dlist[i].id;
+              }
             }
             global.open(file, hashID);
           });
