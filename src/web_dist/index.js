@@ -52,6 +52,7 @@ global.lastUrlBeforeSearch = '/';
 global.lastHistoryIndex = 0;
 global.lastAction = 'PUSH';
 global.isShowHelperSupport = false;
+global.scrollBehavior = 'smooth';
 // global.gHistoryGo = 0;
 
 
@@ -99,11 +100,18 @@ var App = function (_React$Component) {
             global.lang = 'en_US';
           }
         });
+
         global.i18n = i18n;
         global.qtObjects = channel.objects;
 
         global.qtObjects.manual.hasSelperSupport(function (bFlag) {
           global.isShowHelperSupport = bFlag;
+        });
+
+        global.qtObjects.manual.bIsLongSon(function (isLongSon) {
+          if (isLongSon) {
+            global.scrollBehavior = 'auto';
+          }
         });
 
         channel.objects.manual.getSystemManualDir(function (path) {
@@ -704,7 +712,7 @@ var Article = function (_Component) {
           _this2.setState({ smoothScroll: false });
         }, 800);
 
-        (0, _smoothScrollIntoViewIfNeeded2.default)(hashNode, { behavior: 'smooth', block: 'start' }).then(function () {
+        (0, _smoothScrollIntoViewIfNeeded2.default)(hashNode, { behavior: global.scrollBehavior, block: 'start' }).then(function () {
 
           //scrollIntoView函数存在异步,如果tempHash != this.hash时,说明存在异步操作,直接return. 
           if (tempHash != _this2.hash) return;

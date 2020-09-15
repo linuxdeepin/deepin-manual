@@ -44,6 +44,8 @@ public slots:
     bool hasSelperSupport();
     void finishChannel();
     void supportClick();
+    bool bIsLongSon();
+
 
 private:
     void saveAppList(const QStringList &list);

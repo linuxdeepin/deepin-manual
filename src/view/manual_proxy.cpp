@@ -135,6 +135,15 @@ void ManualProxy::supportClick()
     emit supportBeClick();
 }
 
+bool ManualProxy::bIsLongSon()
+{
+    bool bRet = false;
+#ifdef DCPU_IS_LONGSON
+    bRet = true;
+#endif
+    return bRet;
+}
+
 /**
  * @brief ManualProxy::saveAppList
  * @param list

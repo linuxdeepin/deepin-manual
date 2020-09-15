@@ -19,6 +19,7 @@ global.lastUrlBeforeSearch = '/';
 global.lastHistoryIndex = 0;
 global.lastAction = 'PUSH';
 global.isShowHelperSupport = false;
+global.scrollBehavior = 'smooth';
 // global.gHistoryGo = 0;
 
 
@@ -56,12 +57,19 @@ class App extends React.Component {
           global.lang = 'en_US';
         }
       });
+
       global.i18n = i18n;
       global.qtObjects = channel.objects;
 
       global.qtObjects.manual.hasSelperSupport(bFlag =>{
         global.isShowHelperSupport = bFlag;
       });
+
+      global.qtObjects.manual.bIsLongSon(isLongSon =>{
+        if (isLongSon){
+          global.scrollBehavior = 'auto';
+        }
+    })
       
       channel.objects.manual.getSystemManualDir(path => {
         global.path = path;

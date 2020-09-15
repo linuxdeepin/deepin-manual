@@ -47,7 +47,7 @@ export default class Article extends Component {
           this.setState({ smoothScroll: false });
       },800);
 
-      scrollIntoView(hashNode, { behavior: 'smooth', block: 'start' }).then(() => {
+      scrollIntoView(hashNode, { behavior: global.scrollBehavior, block: 'start' }).then(() => {
 
         //scrollIntoView函数存在异步,如果tempHash != this.hash时,说明存在异步操作,直接return. 
         if(tempHash != this.hash) return;
