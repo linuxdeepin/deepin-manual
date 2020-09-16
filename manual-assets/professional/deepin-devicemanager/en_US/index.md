@@ -36,7 +36,7 @@ You can run, close or create a shortcut for Device Manager as follows.
 
 ## Operations
 
-The following hardware device information is for reference only. If there is no mouse, keyboard, camera and other devices inserted into your computer, the corresponding hardware information will not be displayed in the device manager.
+The following hardware device information is for reference only. If there is no mouse, keyboard, and other devices inserted into your computer, the corresponding hardware information will not be displayed in the device manager.
 
 ### Overview
 
@@ -120,15 +120,6 @@ The following hardware device information is for reference only. If there is no 
 
 ![0|printer](jpg/printer.png)
 
-### Camera
-
-Image Devices include cameras and scanners and so on connected to any port.
-
-1. On the main interface, click **Camera**.
-2. You can view info such as name, vendor, model, and so on.
-
-![0|imaging device](jpg/imaging-device.png)
-
 
 
 ### Right-click Operations 
@@ -174,4 +165,4 @@ Click Help to get the manual, which will help you further know and use Device Ma
 2. Click  **Exit**.
 
 
-<div class="version-info"><span>Update Date: 2020-09-09</span><span> Version: 5.5</span></div>
+<div class="version-info"><span>Update Date: 2020-09-16</span><span> Version: 5.5</span></div>

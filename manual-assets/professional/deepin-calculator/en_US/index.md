@@ -71,8 +71,8 @@ Calculator supports keyboard operation and fault-tolerant computing of special s
 - Fault-tolerance processing of decimal point: Input an English decimal point (.) or a Chinese period (。) to trigger decimal point.
 - Fault-tolerance processing of the bracket symbol: Input open and close brackets to trigger bracket;
 - Fault-tolerance processing of equal sign: Input = in English and Chinese or press the Enter key to trigger equal sign;
-- Fault-tolerance processing of the clear symbol: Press Esc to trigger clearing;
-- Fault-tolerance processing of the delete symbol: Press Backspace  to trigger deleting;
+- Fault-tolerance processing of the clear symbol: Press **Esc** to trigger clearing;
+- Fault-tolerance processing of the delete symbol: Press **Backspace**  to trigger deleting;
 
 ### Expression
 
@@ -111,6 +111,7 @@ Calculator supports keyboard operation and fault-tolerant computing of special s
 - After the two expressions are linked, modify the numbers and operators of the previous expression. If the calculation result changes, it will affect the result of the new expression linked to it. For example, the two expressions 10 + 20 = 30 and 30 +9 = 39 are linked. If the operator +  in the first expression is changed to *, the expression will be 10 x 20 = 200. The second expression will be changed to 200 + 9 = 209 automatically. Up to 9 expression linkages are supported according to this rule.
 -  In the process of re-editing an expression containing linked numbers, if the expression of linked numbers or linked numbers are modified incorrectly, the linkage can be released. 
 
+>![notes](icon/notes.svg)Notes: This function is only supported under Standard Mode.
 
 
 ## Main Menu
@@ -149,4 +150,4 @@ View Help to get more information about Calculator.
 1. On the Calculator interface, click ![main_menu](icon/main_menu.svg).
 2. Click **Exit** to exit.
 
-<div class="version-info"><span>Update Date: 2020-09-09</span><span> Version: 5.5</span></div>
+<div class="version-info"><span>Update Date: 2020-09-16</span><span> Version: 5.5</span></div>

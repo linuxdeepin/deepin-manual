@@ -32,9 +32,11 @@
 - 网络监控可以实时显示当前上传下载速度，还可以通过波形显示最近一段时间的上传下载速度趋势。
 - 磁盘监控可以实时显示当前磁盘读写速度，还可以通过波形显示最近一段时间的磁盘读写速度趋势。
 
+![1|monitor](jpg/expand.png)
+
 ![1|compact](jpg/compact.png)
 
-![1|monitor](jpg/expand.png)
+
 
 
 
@@ -182,4 +184,4 @@
 2. 点击 **退出**。
 
 
-<div class="version-info"><span>文档更新时间: 2020-09-09</span><span> 版本: 5.6</span></div>
+<div class="version-info"><span>文档更新时间: 2020-09-16</span><span> 版本: 5.6</span></div>
