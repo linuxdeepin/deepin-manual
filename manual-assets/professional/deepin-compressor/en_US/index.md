@@ -46,10 +46,7 @@ It is available for you to compress a single file/folder/package or a collection
 
    > ![tips](icon/tips.svg)Tips: You can drag one or more files directly to the Archive Manager interface for compression.
    
-2.  Click  ![plus](icon/icon_plus.svg) to add files to be compressed.
-
-   > ![tips](icon/tips.svg)Tips: It is available for you to click  ![icon_menu](icon/icon_menu.svg) > **Open file** to add files to be compressed.
-
+2.  Click  ![plus](icon/icon_plus.svg) or ![icon_menu](icon/icon_menu.svg) > **Open file** to add more files to be compressed.
    ![1|compressor](jpg/compress-add.png)
 
 3.  Click **Next**.
@@ -58,7 +55,7 @@ It is available for you to compress a single file/folder/package or a collection
 
 5.  If you enable the advanced option mode, it is available for you to set the package encryption password and volume compression.
 
-   > ![notes](icon/notes.svg)Notes: The default package format is zip and the available formats are 7z, cbz, exe and zip.
+   > ![notes](icon/notes.svg)Notes: The default package is in .zip format, and the available formats for file encryption are .7z and .zip; for list encryption, it is .7z; for volume compression, it is .7z. 
    
    ![1|compressor](jpg/compress-file.png)
 
@@ -68,7 +65,7 @@ It is available for you to compress a single file/folder/package or a collection
 
    - Click **View** to view the specific storage location.
    - Click **Back** to return to the main interface after successful compression.
-    
+   
    > ![tips](icon/tips.svg)Tips: You can also right-click **Compress** to compress the file.
    
    ![1|compressor](jpg/compress-success.png)

@@ -1,10 +1,10 @@
-# 截图录屏|../common/deepin-screenshot.svg|
+# 截图录屏|../common/deepin-screen-capture.svg|
 
 ## 概述
 
 截图录屏是一款集截图和录制屏幕于一体的工具。在截图或者录制屏幕时，既可以自动选定窗口，也可手动选择区域。
 
-![partarea](jpg/partarea.jpg)
+![part-area](jpg/part-area.png)
 
 
 
@@ -56,7 +56,7 @@
 
 #### 选择截图区域
 
-目前比较常用的有三种截图区域：全屏、程序窗口和自选区域。在截图时选中对应的区域，在区域四周会出现一个蓝色边框，并且该区域会亮度显示。
+目前比较常用的有三种截图区域：全屏、程序窗口和自选区域。在截图时选中对应的区域，在区域四周会出现一个白色边框，并且该区域会亮度显示。
 
 > ![notes](icon/notes.svg)说明：当电脑多屏显示时，您也可以使用录屏截图来截取不同屏幕上的区域。
 
@@ -64,7 +64,7 @@
 
 选择全屏是识别当前显示器的整个屏幕。
 
-![1|全屏截图](jpg/fullscreen.jpg)
+![1|全屏截图](jpg/fullscreen.png)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -72,7 +72,7 @@
 
 1. 按下键盘上的 **Ctrl + Alt + A** 组合键，进入截图模式。
 2. 将鼠标指针移至桌面上，录屏截图会自动选中整个屏幕，并在其左上角显示当前截图区域的尺寸大小。
-3. 点击桌面，在桌面的右下角会弹出工具栏。
+3. 点击桌面，弹出工具栏。
 4. 如果要退出截图，请点击工具栏上的 ![关闭](icon/close_icon.svg)或点击鼠标右键选择 **退出**。
 
 您也可以直接操作以下步骤来进行全屏截图：
@@ -84,26 +84,26 @@
 
 选择程序窗口是自动识别当前的应用窗口。
 
-![1|窗口截图](jpg/window.jpg)
+![1|窗口截图](jpg/window.png)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 1. 按下键盘上的 **Ctrl + Alt + A** 组合键，进入截图模式。
 2. 将鼠标指针移至打开的应用窗口上，录屏截图会自动选中该窗口，并在其左上角显示当前截图区域的尺寸大小。
-3. 点击窗口，在窗口的右下角会弹出工具栏。
+3. 点击窗口，弹出工具栏。
 4. 如果要退出截图，请点击工具栏上的 ![关闭](icon/close_icon.svg)或点击鼠标右键选择 **退出**。
 
 ##### 选择自选区域
 
 选择自选区域是通过拖动鼠标，自由选择截取的范围。
 
-![1|区域截图](jpg/partarea.jpg)
+![1|区域截图](jpg/part-area.png)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 1. 按下键盘上的 **Ctrl + Alt + A** 组合键，进入截图模式。
 2. 按住鼠标左键不放，拖动鼠标选择截图区域，在其左上角将实时显示当前截图区域的尺寸大小。
-3. 释放鼠标左键，完成截图，在截图区域的右下角会弹出工具栏。
+3. 释放鼠标左键，完成截图，截图区域附近会弹出工具栏。
 4. 如果要退出截图，请点击工具栏上的 ![关闭](icon/close_icon.svg)或点击鼠标右键选择 **退出**。
 
 #### 调整截图区域
@@ -112,9 +112,9 @@
 
 ##### 放大/ 缩小截图区域
 
-将鼠标指针置于截图区域的蓝色边框上，鼠标指针变为 ![双箭头](icon/Mouse_Arrow.svg)。您可以：
+将鼠标指针置于截图区域的白色边框上，鼠标指针变为 ![双箭头](icon/Mouse_Arrow.svg)。您可以：
 - 按住鼠标左键不放，拖动鼠标来放大或缩小截图区域。
-- 按下键盘上的 ![ctrl](icon/Ctrl.svg)+![向上](icon/Up.svg) 或 ![向下](icon/Down.svg) 来上下扩展截图区域，按下键盘上的 ![ctrl](icon/Ctrl.svg)+![向左](icon/Left.svg) 或 ![向右](icon/Right.svg) 来左右扩展截图区域。
+- 按下键盘上的 **Ctrl** + ![向上](icon/Up.svg) 或 ![向下](icon/Down.svg) 来上下扩展截图区域，按下键盘上的 **Ctrl** +![向左](icon/Left.svg) 或 ![向右](icon/Right.svg) 来左右扩展截图区域。
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -140,7 +140,7 @@
 
 ##### 工具栏说明
 
-在截图过程中，您可以点击工具栏及其对应属性栏上的各个图标以完成各项操作。运行录屏截图，通过鼠标选中截图区域后，工具栏会自动出现在截图的下方。
+在截图过程中，您可以点击工具栏及其对应属性栏上的各个图标以完成各项操作。运行截图录屏，通过鼠标选中截图区域后，工具栏会自动显示。
 
 > ![attention](icon/attention.svg)注意：如果您已经对工具栏和属性栏中，如线条粗细、字体大小等进行了设置，录屏截图会记住您的选择。当您下次启动录屏截图后，将默认使用该设置，您也可以重新进行选择。
 
@@ -176,7 +176,7 @@
 
 ##### 矩形工具
 
-![1|矩形工具](jpg/recttool.jpg)
+![1|矩形工具](jpg/recttool.png)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -186,14 +186,14 @@
 4. 按住鼠标左键不放，拖动鼠标以完成图形区域的绘制。
 5. 如果截图中包含了个人隐私信息，请点击工具栏展开面板中的 ![模糊](icon/vague_normal.svg) 或 ![马赛克](icon/Mosaic_normal.svg)来涂抹。
 
-![2|blurtool](jpg/blurtool.jpg)
+![2|blurtool](jpg/blurtool.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-![2|mosaictool](jpg/mosaictool.jpg)
+![2|mosaictool](jpg/mosaictool.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
 ##### 椭圆工具
-![1|椭圆工具](jpg/ellipsetool.jpg)
+![1|椭圆工具](jpg/ellipsetool.png)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -206,7 +206,7 @@
 
 ##### 直线和箭头工具
 
-![1|线条工具](jpg/line.jpg)
+![1|线条工具](jpg/line.png)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -219,7 +219,7 @@
 
 ##### 画笔工具
 
-![1|pencil](jpg/pencil.jpg)
+![1|pencil](jpg/pencil.png)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -238,7 +238,7 @@
 #### 修改图形
 如果您在截图中绘制了其他的图形，您可以对绘制的图形进行修改和移动。
 
-![1|修改图形](jpg/changetool.jpg)
+![1|修改图形](jpg/changetool.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 ##### 移动图形
@@ -253,7 +253,7 @@
    - 按下键盘上的 **Delete** 键，删除图形。
    - 按下键盘上的 **Ctrl+Z** 键，返回至上一步操作。
    - 将鼠标指针置于编辑框上，此时鼠标指针变成 ![双箭头](icon/Mouse_Arrow.svg)，通过拖动鼠标指针，来放大或缩小图形区域。
-   - 按下键盘上的 ![ctrl](icon/Ctrl.svg)+![向上](icon/Up.svg) 或 ![向下](icon/Down.svg) 来上下扩展图形区域，按下键盘上的 ![ctrl](icon/Ctrl.svg)+![向左](icon/Left.svg) 或 ![向右](icon/Right.svg) 来左右扩展图形区域。
+   - 按下键盘上的 **Ctrl** + ![向上](icon/Up.svg) 或 ![向下](icon/Down.svg) 来上下扩展图形区域，按下键盘上的 **Ctrl **+ ![向左](icon/Left.svg) 或 ![向右](icon/Right.svg) 来左右扩展图形区域。
    - 将鼠标指针置于编辑框的 ![旋转](icon/icon_rotate.svg) 上，此时鼠标指针变成 ![旋转](icon/rotate_mouse.svg)，通过拖动鼠标指针，来旋转图形。
 3. 在编辑框外点击鼠标左键，退出编辑模式。
 
@@ -262,7 +262,7 @@
 
 对截取的图片进行文字补充和说明，帮助他人更清楚的了解截取的图片。
 
-![0|文本框](jpg/text.jpg)
+![0|文本框](jpg/text.png)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -286,7 +286,7 @@
 1. 将鼠标指针置于文字上，此时鼠标指针变为 ![指针](icon/text_mouse.svg)。
 2. 点击鼠标左键，进入文字编辑模式，您可以：
    - 按下键盘上的 **Delete** 键，删除文字批注。
-   - 按下键盘上的 **Ctrl+Z** 键，返回至上一步操作。
+   - 按下键盘上的 **Ctrl + Z** 键，返回至上一步操作。
    - 在文本框内，修改文字信息。
 3. 在文本框外点击鼠标左键，退出编辑模式。
 
@@ -303,10 +303,10 @@
 
 当截图保存成功之后，您可以在桌面右上角看到提示信息，点击 **查看**，可打开截图所在的文件夹。
 
-开启录屏截图，并选定截图区域后，您可以通过执行以下操作之一来保存截取的图片：
+开启截图录屏，并选定截图区域后，您可以通过执行以下操作之一来保存截取的图片：
 
 - 双击鼠标左键来保存。
-- 点击截图工具栏中的“截图”按钮。
+- 点击截图工具栏中的 ![cion](icon/screenshot button.svg) 按钮。
 - 按下键盘上的 **Ctrl + S** 组合键来保存。
 - 在截取的图片中，点击鼠标右键，选择 **保存** 完成保存操作。
 
@@ -378,9 +378,9 @@
 在录制视频的工具栏中，您可以根据需要设置声音、按键、摄像头等为录制视频做准备。
 
 - 录制声音：包含麦克风、内置音频，默认开启。
-- 按键：点击显示按键，录屏时显示操作按键，最多支持5个最近操作按键同时显示。再次点击可以取消按键显示。
-- 摄像头：点击后，显示摄像头窗口在录制画面，可拖拽窗口边角位置调整窗口大小/调整位置，再次点击可以取消开启，无法显示图像则展示为黑屏。
-- 鼠标点击：点击后，录屏时显示鼠标、触屏；再次点击可以取消显示。
+- 按键：点击![icon](icon/key_mormal.svg)，录屏时显示操作按键，最多支持5个最近操作按键同时显示。再次点击可以取消按键显示。
+- 摄像头：点击![icon](icon/webcam_normal.svg)，显示摄像头窗口在录制画面，可拖拽窗口边角位置调整窗口大小/调整位置，再次点击可以取消开启，无法显示图像则展示为黑屏。
+- 鼠标点击：点击![icon](icon/mouse_mormal.svg)，录屏时显示鼠标、触屏；再次点击可以取消显示。
 
 > ![attention](icon/attention.svg)注意：请先检测接入设备是否支持声音录制、摄像头功能。
 - 当接入设备支持声音录制、摄像头功能时，用户可以设置相应的操作。
@@ -410,5 +410,5 @@
 
 ### 查看帮助手册
 
-启动录屏后按下键盘上的 **F1** 键即可打开帮助手册。
+启动截图录屏后按下键盘上的 **F1** 键即可打开帮助手册。
 

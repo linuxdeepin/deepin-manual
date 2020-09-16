@@ -27,7 +27,7 @@
 2.  选择需要安装的软件包，点击 **打开**。
 3.  点击 **安装**。
 4.  如果弹出授权窗口，请输入密码授权。
-5.  安装过程中可以点击 ![arrowdown_icon](icon/arrowdown_icon.svg)或![arrowup_icon](icon/arrowup_icon.svg)展开或收起安装进程信息。
+5.  安装过程中可以点击 ![arrowdown_icon](icon/down.svg) 或 ![arrowup_icon](icon/up.svg) 展开或收起安装进程信息。
 6.  安装成功之后，点击 **完成** 退出，或者点击 **返回** 继续安装其他应用。
 
 ![0|success](jpg/success.png)
@@ -80,8 +80,6 @@
 
 > ![attention](icon/attention.svg)窍门: 卸载某些应用可能会对系统或其他软件产生影响，请谨慎操作。
 
-
-
 当安装或卸载软件完成后，点击 **返回** 按钮，可以回到初始界面，继续进行安装或卸载操作。
 
 ## 主菜单
@@ -92,7 +90,7 @@
 
 窗口主题包含浅色主题、深色主题和跟随系统主题，其中跟随系统主题为默认设置。
 
-1. 在软件包安装器界面，点击![icon_menu](icon/icon_menu.svg)。
+1. 在软件包安装器界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **主题**，选择一个主题颜色。
 
 ### 帮助

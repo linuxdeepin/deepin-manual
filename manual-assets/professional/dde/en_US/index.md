@@ -500,7 +500,7 @@ Set screen resolution, brightness, direction and display scaling properly to hav
 2. Click **Brightness**.
    - Drag the slider to set screen brightness.
    - Switch on **Night Shift**, the screen hue will be auto-adjusted according to your location.
-   - Switch on **Auto Brightness**, the monitor will change the brightness automatically according to ambient light (shown only if PC has a light sensor).
+   - Once **Change Color Temperature** is switched on, you can adjust the monitor brightness as you wish. 
 
 ##### Set Display Scaling
 
@@ -968,9 +968,7 @@ After inserting or connecting the mouse, make relevant settings in the Control C
 
 #### Touchpad
 
-![0|touchpad](jpg/touchpad.png.jpg)
-
-If you are using a laptop, to avoid mis-operation on the touchpad, switch on **Disable touchpad while typing**, **Disable touchpad when a mouse is connected**,  and turn on **Palm Detection** to set **Minimum Contact Surface** and **Minimum Pressure Value**. 
+![0|touchpad](jpg/touchpad.png)
 
 You can also change **Pointer Speed**, and switch on **Natural Scrolling** for the touchpad.
 

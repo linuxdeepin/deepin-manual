@@ -31,12 +31,12 @@ Boot Maker is an easy-to-use tool with a simple interface to help you burn the s
 
 ### Preparation
 
-1. Download the latest official image file from UOS official website.
+1. Download the latest official image file from UnionTech OS official website.
 2. Prepare an empty USB disk (8GB).
 3. Run Boot Maker.
- - Boot Maker is built in UOS system by default, so you can find it in Launcher quickly.
+ - Boot Maker is built in UnionTech OS system by default, so you can find it in Launcher quickly.
  - For Windows system, you can also extract xxx-boot-maker.exe from the image file.
- - You can download its specified version from UOS official website.
+ - You can download its specified version from UnionTech OS official website.
 
 ### Select Image File
 
@@ -47,7 +47,7 @@ There are two ways to select the image file:
 2.Drag an ISO image file and drop it to the interface, then click **Next**.
 
 
-> ![notes](icon/notes.svg)Notes: Please check if the MD5 checksum of image file is the same as that in the UOS official website in advance. Failure would occur due to ISO image files that are not downloaded from UOS official website or not downloaded completely.
+> ![notes](icon/notes.svg)Notes: Please check if the MD5 checksum of image file is the same as that in the official website in advance. Failure would occur due to ISO image files that are not downloaded from official website or not downloaded completely.
 
 ![0|file](jpg/select-file.png)
 
@@ -78,7 +78,7 @@ Common causes of failure may include:
 - Wrong disk mounting (Only applicable for Linux)
 - Image distract error
 - Execute command error
-- Unkown error
+- Unknown error
 
 ![boot-maker](jpg/failed.png)
 

@@ -57,14 +57,8 @@ Calculator supports keyboard operation and fault-tolerant computing of special s
 - Input Expression
 
   - Large characters show the expression currently being entered in the area.
-  
+
   - Press **Ctrl + C** on the keyboard to copy the calculation result of the current expression to the system clipboard. If there is expression error, the current expression will be copied to the system clipboard.
-  - Percentage conversion rule:
-
-    - Percentage is treated as operation symbol and converted to number directly. For example, when you input 1%, 0.01 is displayed on the interface.  When you input another 1, the number displayed will be 0.011. Input another %, the number displayed will be 0.00011.
-
-    - Affect digital linkage effect: The result of the former expression will be automatically displayed in the input line. The % entered will be converted to a number without linkage with the former expression. For example, if the result for the former expression is 10, the number in the input line is 10. When you input %, it will become 0.1.
-  
   - Expressions with no actual operation symbol will not listed in the history record.
 
 - Scientific Notation

@@ -83,6 +83,8 @@ You can run, close or create a shortcut for Log Viewer.
 2. You can see a list of kernel logs which are detailed by "Date and time", "User", "Process" and "Info".
 3. Click a log, you can see its particular info below the list, including time, user, process, and info.
 
+>![notes](icon/notes.svg)Notes: To view kernel log, a prompt appears saying **Authentication is required to view the log**, you can input login password to continue viewing.
+
 ![0|kernlog](jpg/kernlog.png)
 
 ### Boot Log
@@ -90,6 +92,8 @@ You can run, close or create a shortcut for Log Viewer.
 1. On the main interface, click **Boot Log**.
 2. You can see a list of boot logs which are detailed by "Status" and "Info".
 3. Click a log, you can see its particular info below the list, including process, user, status and info.
+
+>![notes](icon/notes.svg)Notes: To view kernel log, a prompt appears saying **Authentication is required to view the log**, you can input login password to continue viewing.
 
 ![0|bootlog](jpg/bootlog.png)
 
@@ -124,11 +128,6 @@ You can run, close or create a shortcut for Log Viewer.
 2. You can see a list of boot-shutdown events which are detailed by "Event Type", "Username", "Date and Time", and "Info".
 3. Click a log, you can see its particular info below the list, including user, event type, username, and detailed info.
 ![0|power event](jpg/power-event.png)
-
-> ![notes](icon/notes.svg)Notes: When using Log Viewer, if a prompt appears saying **Authentication is required to view the log**, you can input login password to continue viewing.
-
-![0|password](jpg/password.png)
-
 
 
 ### Export

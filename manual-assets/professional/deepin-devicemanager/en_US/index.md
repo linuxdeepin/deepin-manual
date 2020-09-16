@@ -14,7 +14,7 @@ You can run, close or create a shortcut for Device Manager as follows.
 
 1. Click ![deepin-launcher](icon/deepin-launcher.svg) on the Dock to enter the interface of launcher.
 
-2. Locate ![deepin-devicemanager](icon/deepin-devicemanager.svg) by scrolling the mouse wheel or searching "Device Manager" in the Launcher interface and click it to run. An authentication box pops up. You should input the UOS password for verification. 
+2. Locate ![deepin-devicemanager](icon/deepin-devicemanager.svg) by scrolling the mouse wheel or searching "Device Manager" in the Launcher interface and click it to run. An authentication box pops up. You should input the login password for verification. 
 
    ![0|password](jpg/password.png)
 
