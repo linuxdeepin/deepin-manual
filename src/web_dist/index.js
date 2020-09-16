@@ -864,10 +864,9 @@ var Article = function (_Component) {
   }, {
     key: 'scroll',
     value: function scroll() {
-      console.log("article scroll");
-      if (!this.load) {
-        return;
-      }
+      // if (!this.load) {
+      //   return;
+      // }
       if (this.state.smoothScroll) {
         return;
       }

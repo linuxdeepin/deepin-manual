@@ -183,10 +183,9 @@ export default class Article extends Component {
 
   //滚动事件
   scroll() {
-    console.log("article scroll");
-    if (!this.load) {
-      return;
-    }
+    // if (!this.load) {
+    //   return;
+    // }
     if (this.state.smoothScroll) {
       return;
     }
