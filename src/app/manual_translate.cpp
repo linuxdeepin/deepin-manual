@@ -43,7 +43,7 @@ int main(int argc, char **argv)
         {"calculator", "deepin-calculator"},                            //计算器
         {"browser", "deepin-browser"},                                  //浏览器**
         {"boot-maker", "deepin-boot-maker"},                            //启动盘制作工具
-        {"appstore", "deepin-app-store"},                        //应用商店
+        {"app-store", "deepin-app-store"},                               //应用商店
         {"album", "deepin-album"},                                      //相册
         {"print-manager", "dde-printer"},                               //打印管理器
         {"file-manager", "dde-file-manager"},                           //文件管理器
