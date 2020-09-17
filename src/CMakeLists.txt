@@ -70,7 +70,7 @@ else()
 endif()
 
 if (${CMAKE_SYSTEM_PROCESSOR} MATCHES "mips64")
-    set(CMAKE_CXX_FLAGS "-O3 -ftree-vectorize -march=loongson3a -mhard-float -mno-micromips -mno-mips16 -flax-vector-conversions -mloongson-ext2 -mloongson-mmi -Wl, --as-needed")
+    set(CMAKE_CXX_FLAGS "-O3 -ftree-vectorize -march=loongson3a -mhard-float -mno-micromips -mno-mips16 -flax-vector-conversions -mloongson-ext2 -mloongson-mmi -Wl,--as-needed")
     add_definitions(-DDCPU_IS_LONGSON)
 endif()
 
