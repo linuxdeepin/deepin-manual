@@ -15,19 +15,19 @@ You can run, close or create shortcuts for screen capture in the following opera
 ### Run Screen Capture
 
 1.  Click ![deepin-launcher](icon/deepin-launcher.svg) in the dock to enter the launcher interface.
-2.  Locate ![deepin-screenshot](icon/deepin-screenshot.svg) by scrolling the mouse wheel or searching "screen capture" in the Launcher interface and click it to run. 
+2.  Locate ![deepin-screenshot](icon/deepin-screenshot.svg) by scrolling the mouse wheel or searching "screen capture" in the Launcher interface and click it to run. 
 3.  Right-click ![deepin-screenshot](icon/deepin-screenshot.svg) and you can:
 
     - Click **Send to desktop** to create a desktop shortcut.
     - Click **Send to dock** to fix it in the Dock.
     - Click **Add to startup** to add it to startup and it will automatically run when the system starts up.
 
-> ![notes](icon/notes.svg)Notes: If Screen Capture has been fixed in the dock by default, you can click ![deepin-screenshot](icon/deepin-screenshot.svg) in the dock to run it.
+> ![notes](icon/notes.svg)Notes: If Screen Capture has been fixed in the dock by default, you can click ![deepin-screenshot](icon/deepin-screenshot.svg) in the dock to run it.
 
 ### Close Screen Capture
 
 - Screen Capture will exit automatically after screen capturing or screen recording completes.
-- On the Screen Capture interface, click ![close](icon/close-normal.svg) to exit Screen Capture.
+- On the Screen Capture interface, click ![close](icon/close-normal.svg) to exit Screen Capture.
 - On the Screen Capture interface, press **Ctrl + S** or **Esc** on the keyboard to save the screen capture or exit.
 - On the Screen Capture interface, right-click to select **Save** or **Exit**.
 
@@ -71,7 +71,7 @@ You can select the full screen in the following ways:
 
 You can also take a full screen screenshot directly in the following ways:
 
-- If Screen Capture has been fixed in the dock, right-click ![deepin-screenshot](icon/deepin-screenshot.svg) in the dock to select **Full screenshot**. 
+- If Screen Capture has been fixed in the dock, right-click ![deepin-screenshot](icon/deepin-screenshot.svg) in the dock to select **Full screenshot**. 
 - Press ![print](icon/Print.svg) on the keyboard to take a full screen screenshot.
 
 ##### Select Program Window
@@ -374,9 +374,9 @@ After running screen recorder, you can select the recording area, namely the ful
 On the toolbar of Screen Capture, you can set sound, keystroke, camera, etc. to get ready for video recording.
 
 - Record sound: include microphone and built-in audio (enabled by default).
-- Keystroke: hover the cursor over ![icon](/home/uter/Documents/文档相关/帮助手册/个人版帮助手册-0826/screen-capture/en_US/icon/key_mormal.svg) and **Show Keystroke** will display. Click it and the operation keystroke will be displayed during screen recording. Up to five recent operation keystrokes can be displayed at the same time. Click the icon again to enable **Hide Keystroke** and cancel keystroke display.
-- Camera: hover the cursor over ![icon](/home/uter/Documents/文档相关/帮助手册/个人版帮助手册-0826/screen-capture/en_US/icon/webcam_normal.svg) and **Webcam On** will display. Click it and the camera window will be displayed on the recording screen. Drag the camera window outline to adjust the window size and position. Click the icon again to disable the camera. No image can be displayed except for a black screen.
-- Click: hover the cursor over ![icon](/home/uter/Documents/文档相关/帮助手册/个人版帮助手册-0826/screen-capture/en_US/icon/mouse_mormal.svg) and **Show Click** will display. Click it to display mouse and touchscreen during screen recording. Click it again to cancel display.
+- Keystroke: hover the cursor over ![icon](icon/key_mormal.svg) and **Show Keystroke** will display. Click it and the operation keystroke will be displayed during screen recording. Up to five recent operation keystrokes can be displayed at the same time. Click the icon again to enable **Hide Keystroke** and cancel keystroke display.
+- Camera: hover the cursor over ![icon](icon/webcam_normal.svg) and **Webcam On** will display. Click it and the camera window will be displayed on the recording screen. Drag the camera window outline to adjust the window size and position. Click the icon again to disable the camera. No image can be displayed except for a black screen.
+- Click: hover the cursor over ![icon](icon/mouse_mormal.svg) and **Show Click** will display. Click it to display mouse and touchscreen during screen recording. Click it again to cancel display.
   
 >![attention](icon/attention.svg) Attention: first, check whether the device connected supports sound recording and camera functions.
 >    - When the device connected supports sound recording and camera functions, you are able to process relevant operations.
@@ -407,4 +407,5 @@ The recorded video will be saved to the desktop automatically.
 ### View Help
 
 Press ![F1](icon/F1.svg) on the keyboard to view the help manual after launching Screen Capture.
-<div class="version-info"><span>Update Date: 2020-09-09</span><span> Version: 5.8</span></div>
+
+<div class="version-info"><span>Update Date: 2020-09-18</span><span> Version: 5.8</span></div>

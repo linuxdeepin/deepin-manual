@@ -14,7 +14,7 @@ You can run, exit or create a shortcut for Font Manager by the following ways.
 
 ### Run Font Manager
 
-1.   Click ![launcher](icon/deepin-launcher.svg) in the dock to enter the Launcher interface.
+1.   Click ![launcher](icon/deepin-launcher.svg) in the dock to enter the Launcher interface.
 2.   Locate ![deepin-font-manager](icon/deepin-font-manager.svg) by by scrolling the mouse wheel or searching "font manager" in the Launcher interface and click it to run.
 3.   Right-click ![deepin-font-manager](icon/deepin-font-manager.svg) and you can:
 
@@ -154,7 +154,7 @@ You can enable or disable a font via Font Manager.
 
 4.   You can also right-click to **Enable** or **Disable** in the **All Fonts** list to complete the corresponding operation. 
 
-> ![notes](icon/notes.svg)Notes: Enable/Disable are available for a single font and a batch of fonts. System font and font currently being used can not be disabled and deleted.
+> ![notes](icon/notes.svg)Notes: Enable/Disable are available for a single font and a batch of fonts. System font and font currently being used can not be disabled.
 
 ### Delete Fonts
 
@@ -163,7 +163,7 @@ You can delete a font through Font Manager.
 > ![notes](icon/notes.svg)Notes: Delete is available for a single font and a batch of fonts. System font and font currently being used can not be deleted.
 
 1. Select a font in the **User** list on the Font Manager interface and right-click **Delete**.
-2.  Click **Confirm** in the pop-up box.
+2.  Click **Delete** in the pop-up box.
 3.  Please enter the authorization password in the pop-up authorization dialogue (if any) to delete the font.
 
 ![0|font-delete](jpg/font-delete.png)
@@ -196,5 +196,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 1.   On the Font Manager interface, click ![icon_menu](icon/icon_menu.svg).
 2.   Click **Exit** to exit Font Manager.
 
-
-<div class="version-info"><span>Update Date: 2020-09-09</span><span> Version: 5.6</span></div>
+<div class="version-info"><span>Update Date: 2020-09-18</span><span> Version: 5.6</span></div>

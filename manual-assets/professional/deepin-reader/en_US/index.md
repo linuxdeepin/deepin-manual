@@ -71,16 +71,16 @@ To save the document that has been edited and modified, you can
 
 To print you have to connect and configure a printer. 
 
-1. Click ![icon_menu](icon/icon_menu.svg) > **Print** or press **Ctrl+P** to preview.
+1. Open a document in Document Viewer, right-click and select **Print**, or press **Ctrl  + P** to open the preview page.
 2. In this previewing interface, you can preview and set the printing page. 
-3. In this previewing interface, click the printer icon on the right, and select a printer from the popped out window and set the parameters you want. 
+3. In this previewing interface, click **Advanced** to set the page size, print method and other parameters. 
 4. Click **Print**  then the document will be sent to the printer for printing. 
 
 ![preview](jpg/preview-doc1.png)
 
 ![pagesetup](jpg/pageSetup-doc.png)
 
-![printer](jpg/printer-doc.png)
+
 
 ### Manage tabs
 
@@ -92,6 +92,7 @@ New tab
 To switch/adjust tabs, you can:
 
 - Drag within the window to adjust the sequence of tabs. 
+- Click the ![previous](icon/previous.svg) or ![next](icon/next.svg)button to move left and right. 
 - Scroll the mouse wheel to switch tabs automatically.  
 - When there is only one window currently, double-click or right-click the file and select Document Viewer to open the file in a new tab in the window. 
 
@@ -99,12 +100,14 @@ To switch/adjust tabs, you can:
 Operations among windows
 
 - Drag any tab to move it out of the current window and create a new one. 
+- Drag a tab from one window to another. 
 - When there are several windows, double-click or right-click the file and select Document Viewer to open the file in the first window.
 
 
 Dragging rule for multiple windows and tabs:
 
 - When you drag several files to Document Viewer at the same time, they are opened as several tabs in one window. 
+- You can open several windows at a time, and tabs can be dragged from one window to another. 
 - No matter how many windows there are, one file can be opened only once. 
 - If no operation is done to a file, the save button is unavailable. 
 
@@ -141,13 +144,13 @@ The selected text will be highlighted after the annotation is added successfully
    > * Click in any blank area outside the window after inputing some content, the content will be saved automatically and displayed as a small icon. 
 
 - Copy note
-   -  Right-click the highlighted text to which a note is successfully added and select **Copy** to copy the content.
-   -  Right-click the note icon, select **Copy** to copy the content.
-   -  Click![menu](icon/thumbnail_normal_light.svg) and the catalog icon ![view](icon/comments_normal_light.svg) on the left and select a note, right-click and select **Copy**. 
+   -  Right-click the highlighted text to which a note is successfully added and select **Copy** to copy the content.
+   -  Right-click the note icon, select **Copy** to copy the content.
+   -  Click![menu](icon/thumbnail_normal_light.svg) and the catalog icon ![view](icon/comments_normal_light.svg) on the left and select a note, right-click and select **Copy**. 
    
 - Show note  
-   1.  Hove the cursor over the note icon to show the content. 
-   2.  Click the note icon to pop up a window, you can view and re-edit. 
+   1.  Hove the cursor over the note icon to show the content. 
+   2.  Click the note icon to pop up a window, you can view and re-edit. 
 
 - Delete note 
    - Right-click the highlighted text to which you have added a note, and select **Remove highlight**. 
@@ -176,7 +179,6 @@ This function is only applicable for the current tab.
 5.  When matching results are found, click![search](icon/previous-up.svg) or ![search](icon/next-down.svg) to view results one by one. 
 
 6. Click one result, you can skip to the page where it's located, and it's highlighted. 
-   
 > ![attention](icon/attention.svg)Attention: Searching fails in case the text is coded in pictures in some PDF files. 
 
 7. Clear up words in the searching box to clear up all results. 
@@ -212,7 +214,7 @@ Using thumbnails you can switch file thumbnails catalog![view](icon/view_normal.
 1. On Document Viewer interface, right-click and select **Fullscreen** or press shortcut key **F11**.
 2. Move the cursor to the top or the left part of the window to call out the top tool bar or the left tool bar. Otherwise, the tool bar will be hidden.
 3. After you call out the side tool bar under **Fullscreen** mode, click ![icon](icon/thumbnail_normal_light.svg) to keep it shown.
-4. Press **Esc** to exit **Fullscreen** mode.
+4. Press **Esc** or **F11** key to exit **Fullscreen** mode.
 
 ### Slide show
 
@@ -226,7 +228,7 @@ To zoom in or out a page, you can:
 
 - Press **Ctrl +“+”**  or **Ctrl +“-”** .
 - Press **Ctrl** and scroll the mouse wheel up and down at the same time. 
-- On Document Viewer interface, click  **+**  or  **-**. 
+- On Document Viewer interface, click "**+**"  or  "**-**". 
 > ![notes](icon/notes.svg)Notes: Manual input is supported here. You can choose display percentage from the drop-down box of the menu bar: 10%, 25%, 50%, 75%, 100%, 125%, 150%, 175%, 200%, 300%, 400%, and 500%, according to which the file is zoomed in and out.
 
 
@@ -313,5 +315,4 @@ click Help to get the manual, which will help you further know and use Document 
 1. Click ![icon_menu](icon/icon_menu.svg) on the main interface.
 2. Click  **Exit**.
 
-
-<div class="version-info"><span>Update Date: 2020-09-09</span><span> Version: 5.7</span></div>
+<div class="version-info"><span>Update Date: 2020-09-18</span><span> Version: 5.7</span></div>

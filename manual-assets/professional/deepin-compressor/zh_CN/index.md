@@ -3,7 +3,7 @@
 ## 概述
 
 
-归档管理器是一款界面友好、使用方便的压缩与解压缩软件，支持7z、jar、tar、tar.bz2、tar.gz、tar.lz、tar.lzm、tar.lzo、tar.Z、zip等多种压缩包格式，还支持加密压缩等设置。
+归档管理器是一款界面友好、使用方便的压缩与解压缩软件，支持7z、jar、tar、tar.bz2、tar.gz、tar.lz、tar.lzma、tar.lzo、tar.Z、zip等多种压缩包格式，还支持加密压缩等设置。
 
 ![1|main](jpg/main.png)
 
@@ -54,7 +54,7 @@
 4. 设置文件名、存储路径、压缩包格式等。
 5. 如果开启高级选项模式，可以设置文件加密、文件列表加密或分卷压缩。
 
-   > ![notes](icon/notes.svg)说明：压缩包的默认文件格式是.zip，可设置文件加密的格式有.7z、.cbz、.exe、.zip；可设置文件列表加密的格式有.7z；可设置分卷压缩的格式有.7z。
+   > ![notes](icon/notes.svg)说明：压缩包的默认文件格式是zip，可设置文件加密的格式有7z、zip；可设置文件列表加密的格式有7z；可设置分卷压缩的格式有7z。
    
    ![1|compressor](jpg/compress-file.png)
 
@@ -148,4 +148,4 @@
 1. 在归档管理器界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **退出**。
 
-<div class="version-info"><span>文档更新时间: 2020-09-09</span><span> 版本: 5.8</span></div>
+<div class="version-info"><span>文档更新时间: 2020-09-18</span><span> 版本: 5.8</span></div>

@@ -275,7 +275,7 @@ You can set your favorite music mode, such as classical, rock, and so on.
 
 2. Select **Equalizer**.
 
-3. You can switch on equalizer, customize **Preamplifier** values and frequencies or select a music mode. Click **Save**.
+3. You can switch on equalizer, customize **Preamplifier** values and frequencies, and click **Save**; or select a music mode from the drop-down list which will be automatically saved by the system.
 
 4. Click **Restore Defaults** to restore the default settings.
 
@@ -334,5 +334,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 
 2.  Click **Exit** to exit Music.
 
-
-<div class="version-info"><span>Update Date: 2020-09-09</span><span> Version: 6.0</span></div>
+<div class="version-info"><span>Update Date: 2020-09-18</span><span> Version: 6.0</span></div>

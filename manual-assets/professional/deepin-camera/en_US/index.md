@@ -38,6 +38,8 @@ Photo mode is defaulted when Camera starts up. Click ![photograph](icon/photogra
 
 On the Camera interface, click ![transcribe-bottom](icon/transcribe-bottom.svg) icon to to enter video mode. Click ![transcribe](icon/transcribe.svg) icon to start recording, and click ![stop](icon/stop.svg) icon to stop recording after video recording is completed. Video files will be displayed on the interface, and will also be saved in the default path.
 
+![video](jpg/video.png)
+
 ### Process Photos and Videos
 
 On the Camera interface, right-click the photos or video files to select copy, delete and open folder.
@@ -69,7 +71,7 @@ On the main menu, you can change settings for Camera, switch window themes, view
      ![settings](jpg/settings.png)
 
    - **Output** setting: set up the **Output format** and **Resolution** for photos and videos.
-    
+   
      ![output-settings](jpg/output-settings.png)
 
 #### Theme
@@ -96,5 +98,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 1.   On the Camera interface, click ![icon_menu](icon/icon_menu.svg). 
 2.  Click **Exit** to exit Camera.
 
-
-<div class="version-info"><span>Update Date: 2020-09-09</span><span> Version: 0.0</span></div>
+<div class="version-info"><span>Update Date: 2020-09-18</span><span> Version: 1.0</span></div>

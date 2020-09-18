@@ -41,8 +41,8 @@ Immerse yourself in the pure joy of wonderful videos through frequently used fun
 | ------ | -------------- | ------------------------------------------------------------ |
 | 1      | Play window    | Display the video content. The video information and function icons will display after the mouse pointer is moved into the play window. Otherwise, they will be hidden. The play window is frameless. You can freely drag the play window to manually adjust its size. |
 | 2      | Time display   | Display the total time and played time of the current video. |
-| 3      | Progress bar   | Display the play progress. Drag the progress bar to adjust your play progress. The progress bar will turn bold automatically and the video preview window will display when the mouse pointer is placed over the progress bar. |
-| 4      | Preview window | Display the video preview. You can view the video content at a time point via the preview window. |
+| 3      | Preview window | Display the video preview. You can view the video content at a time point via the preview window. |
+| 4      | Progress bar   | Display the play progress. Drag the progress bar to adjust your play progress. The progress bar will turn bold automatically and the video preview window will display when the mouse pointer is placed over the progress bar. |
 | 5      | Video title    | Display the name of video which is now playing.              |
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -151,7 +151,7 @@ You can adjust the window size as you wish during playback.
 2.  Select **Screenshot** and you can:
  - Select **Film Screenshot** to take a screenshot of the film in the current frame.
  - Select **Burst Shooting** to take 15 screenshots of the film at different times to form a preview image of the storyline.
- - Select **Open Screenshot Folder** to view the screenshots.
+ - Select **Open screenshot folder** to view the screenshots.
 
 ![0|screenshot](jpg/screenshot.png)
 
@@ -246,5 +246,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 1.   On the Movie interface, click ![icon_menu](icon/icon_menu.svg).
 2.  Click **Exit** to exit Movie.
 
-
-<div class="version-info"><span>Update Date: 2020-09-09</span><span> Version: 5.7</span></div>
+<div class="version-info"><span>Update Date: 2020-09-18</span><span> Version: 5.7</span></div>

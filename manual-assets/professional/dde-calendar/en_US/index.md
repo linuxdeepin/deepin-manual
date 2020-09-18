@@ -14,7 +14,7 @@ You can run, close or create a shortcut for calendar by the following ways.
 
 ### Run Calender
 
-1.  Click ![deepin-launcher](icon/deepin-launcher.svg) in the dock to enter the Launcher interface.
+1.  Click ![deepin-launcher](icon/deepin-launcher.svg) in the dock to enter the Launcher interface.
 2.  Locate ![draw](icon/dde-calendar.svg) by scrolling the mouse wheel or searching "calendar" in the Launcher interface and click it to run.
 3.  Right-click ![draw](icon/dde-calendar.svg) and you can:
 
@@ -52,7 +52,7 @@ Monthly view is defaulted and you can click to switch between different views.
 | Yearly View  | Display the months and days of the whole year.               |
 | Monthly View | Display the holiday information and schedule.                |
 | Weekly View  | Display the schedule of this week.                           |
-| Daily View   | Display the holiday information, detailed schedule arrangements and an almanac. |
+| Daily View   | Display the holiday information and detailed schedule arrangements. |
 
 ### Create Events
 
@@ -88,7 +88,7 @@ Monthly view is defaulted and you can click to switch between different views.
 
 1. Right-click a date with schedule in the monthly, weekly or daily view.
 2.  Select **Edit** and an **Edit Event** dialogue will pop up.
-3.  Set properties for the event under editing.  
+3.  Set properties for the event under editing.  
 4.  Click **Save**. 
 5.  If it is set as an all day event or a repeated event, a prompt box will pop up for you to confirm information and then complete editing. 
 
@@ -200,5 +200,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 1.   On the Calendar interface, click ![icon_menu](icon/icon_menu.svg). 
 2.  Click **Exit** to exit Calendar.
 
-
-<div class="version-info"><span>Update Date: 2020-09-09</span><span> Version: 5.7</span></div>
+<div class="version-info"><span>Update Date: 2020-09-18</span><span> Version: 5.7</span></div>

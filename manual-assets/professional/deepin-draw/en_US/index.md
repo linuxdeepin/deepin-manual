@@ -14,7 +14,7 @@ You can run, close and create shortcuts for Image Viewer by the following ways.
 
 1.   Click ![deepin-launcher](icon/deepin-launcher.svg) in the dock to enter the Launcher interface.
 2.   Locate ![draw](icon/deepin-draw.svg) by scrolling the mouse wheel or searching "draw" in the Launcher interface.
-3.   Right click ![draw](icon/deepin-draw.svg) and the user can:
+3.   Right-click ![draw](icon/deepin-draw.svg) and the user can:
  - Click **Send to desktop** to create a desktop shortcut.
  - Click **Send to dock** to fix the application in the dock.
  - Click **Add to startup** to add the application to startup and it will automatically run when the system starts up.
@@ -79,7 +79,7 @@ Currently, a maximum of 30 pictures can be exported. Formats including JPG, PNG,
 2.  Select the printer and set the printing parameters.
 3.  Click **Print**.
 
-> ![notes](icon/notes.svg)Notes: Click **Properties** and **Options** to customize the printing effect.
+> ![notes](icon/notes.svg)Notes: Click **Advanced** to customize the printing parameters.
 
 
 
@@ -126,6 +126,7 @@ After drawing entities with the graphics drawing tool, you can perform the follo
 2.   You can set parameters for your pencil as follows:
 
    - Click **Color** to set the color and transparency of the pencil.
+   - Select the weight of pencil from the drop-down list. 
    - Click **Start** and **End** to choose the style of starting point and ending point of the graphics with different arrow and circle types.
 3. Drag the mouse in the Draw area to draw lines.
 
@@ -169,8 +170,8 @@ You can copy, crop, and rotate graphics with the editing functions, and also adj
 ### Copy and Paste
 
 1.  On the Draw interface, select the graphics to be copied.
-2.  Right click to select **Copy** or use the shortcuts **Ctrl + C** to copy the graphics to the clipboard.
-3.  Right click to select **Paste** or use the shortcuts **Ctrl + V** to paste the graphics to Draw.
+2.  Right-click to select **Copy** or use the shortcuts **Ctrl + C** to copy the graphics to the clipboard.
+3.  Right-click to select **Paste** or use the shortcuts **Ctrl + V** to paste the graphics to Draw.
 
 ![1|copy](jpg/copy.png)
 
@@ -214,7 +215,7 @@ You can copy, crop, and rotate graphics with the editing functions, and also adj
 ### Delete
 
 1.  On the Draw interface, select an imported picture.
-2.  Right click to select **Delete** or use the ![Delete](icon/delete.svg) key on the keyboard to delete the selected picture.
+2.  Right-click to select **Delete** or use the ![Delete](icon/delete.svg) key on the keyboard to delete the selected picture.
 
 ![1|delete](jpg/delete.png)
 
@@ -279,5 +280,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 1.  On the Draw interface, click ![icon_menu](icon/icon_menu.svg).
 2.  Click **Exit** to exit Draw.
 
-
-<div class="version-info"><span>Update Date: 2020-09-09</span><span> Version: 5.8</span></div>
+<div class="version-info"><span>Update Date: 2020-09-18</span><span> Version: 5.8</span></div>

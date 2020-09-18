@@ -61,9 +61,9 @@ You can also press **Ctrl + Shift + S** to save the file as  a new one.
 - Press **Ctrl + W** to close the file.
 - Move the cursor to the title and click the ![close](icon/close.svg) button there or the mouse middle button to close the file.
 - Right-click the title and select **Close tab** or **Close other tabs**.
-- Right-click the title and select **More ways to close**.
-   - Select **Close left tabs** to close all the tabs on the left of the current tab.
-   - Select **Close right tabs** to close all the tabs on the right of the current tab.
+- Right-click the title and select **More options**.
+   - Select **Close tabs to the left** to close all the tabs on the left of the current tab.
+   - Select **Close tabs to the right** to close all the tabs on the right of the current tab.
    - Select **Close unmodified tabs** to close all the unchanged tabs.
 
 > ![notes](icon/notes.svg)Notes: If you make changes to the file but does not save it, you will be prompted by Text Editor to save before closing the file.
@@ -74,17 +74,15 @@ To print a file in Text Editor, you should connect and set up the printer first.
 
 1. Click ![icon_menu](icon/icon_menu.svg)> **Print**, or press **Ctrl + P** to open the print preview interface.
 
-2.  On the preview interface, preview the document and set the printing page. 
+2.  On the preview interface, preview the document, select a printer, and set the printing page. 
 
-3.  Click the printer icon on the right of preview window. In the pop-up window, select the printer and set the parameters. 
+3.  Click **Advanced** option on the preview interface to select parameters including paper size and layout. 
 
-4.  Click **Print** to start printing.
+4.  Click **Print** to start printing at the printer selected.
 
 ![preview](jpg/preview.png)
 
-![pagesetup](jpg/pagesetup.png)
-
-![printer](jpg/printer.png)
+![pagesetup](jpg/advanced-preview.png)
 
 ### Manage Tabs
 
@@ -130,8 +128,6 @@ It helps you change the case of selected text. You can change it to lowercase, u
 3. Choose **Upper Case**, **Lower Case**, or **Capitalize**. The changes will take effect immediately.
 
 You can also use **Alt + U/L/C** to quickly switch the cases.
-
-
 
 ![changecase](jpg/changecase.png)
 
@@ -343,4 +339,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 1. On the Text Editor interface, click ![menu](icon/icon_menu.svg).
 2. Click **Exit** to exit Text Editor.  
 
-<div class="version-info"><span>Update Date: 2020-09-09</span><span> Version: 5.6</span></div>
+<div class="version-info"><span>Update Date: 2020-09-18</span><span> Version: 5.6</span></div>
