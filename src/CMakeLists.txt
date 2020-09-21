@@ -29,14 +29,6 @@ add_definitions(-DDMAN_INSTALL_DB_PATH="${CMAKE_INSTALL_PREFIX}/share/deepin-man
 add_subdirectory(dbus)
 add_subdirectory(resources)
 
-#/***gtest 2020-08-12 20:07:12 wangml ***/
-include_directories(googletest)                           #一下三行添加包含以便测试用例代码的编写
-include_directories(googletest/googlemock/include)
-include_directories(googletest/googletest/include)
-add_subdirectory(googletest)                              #添加googletest库
-include_directories(dman_qtest)
-#add_subdirectory(dman_qtest)
-
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_C_STANDARD 11)
 set(CMAKE_C_STANDARD_REQUIRED ON)
@@ -118,6 +110,8 @@ set(DMAN_SEARCH_LINK_LIBS
 
 
 set(BASE_FILES
+    base/command.h
+    base/command.cpp
     base/consts.cpp
     base/consts.h
     base/utils.cpp
@@ -219,68 +213,6 @@ add_custom_target(update-search-db DEPENDS _update-search-db)
 add_dependencies(update-search-db
                  generate-search-db)
 
-
-
-# /*** 2020-08-12 20:37:50 wangml ***/
-
-set(COMMAND_FILES
-    base/command.cpp
-    base/command.h
-    )
-
-set(PROJECT_NAME_TEST
-    ${PROJECT_NAME}_test)
-
-# 定义 source 文件
-FILE (GLOB allTestSource
-    "./dman_qtest/*.cpp"  "./dman_qtest/*.c"
-    "./dman_qtest/*.h"
-    )
-file(GLOB BASE_FILES_TEST
-    "dman_qtest/base/*.h"
-    "dman_qtest/base/*.cpp"
-    )
-FILE(GLOB VIEW_FILES_TEST
-    "dman_qtest/view/widget/*.cpp"
-    "dman_qtest/view/*.cpp"
-    "dman_qtest/view/widget/*.h"
-    "dman_qtest/view/*.h"
-    )
-FILE(GLOB CONTROLLER_FILES_TEST
-    "dman_qtest/controller/*.cpp"
-    )
-
-FILE(GLOB DBUS_FILES_TEST
-    "dman_qtest/dbus/*.cpp"
-    )
-
-# 生成测试可执行程序
-add_executable(${PROJECT_NAME_TEST}
-    ${BASE_FILES}
-    ${CONTROLLER_FILES}
-    ${DBUS_FILES}
-    ${RESOURCES_FILES}
-    ${VIEW_FILES}
-    ${COMMAND_FILES}
-
-
-
-    ${allTestSource}
-    ${CONTROLLER_FILES_TEST}
-    ${BASE_FILES_TEST}
-    ${VIEW_FILES_TEST}
-    ${DBUS_FILES_TEST}
-    )
-
-# 生成测试可执行程序的依赖库
-target_link_libraries(${PROJECT_NAME_TEST} gmock gmock_main gtest gtest_main)
-
-target_include_directories(${PROJECT_NAME_TEST} PUBLIC ${DtkWidget_INCLUDE_DIRS}
-                                                       ${DtkCore_INCLUDE_DIRS}
-                                                        ${DtkGui_INCLUDE_DIRS})
-target_link_libraries (${PROJECT_NAME_TEST} ${LINK_LIBS})
-#end
-
 ## Generate .qm files from .ts files.
 #file(GLOB DMAN_TRANSLATION_TS
 #     ${CMAKE_SOURCE_DIR}/translations/deepin-manual*.ts)
@@ -369,45 +301,3 @@ install(FILES ${CMAKE_SOURCE_DIR}/manual-assets/deepin-manual.svg
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/scalable/apps/)
 
 string(TOLOWER ${CMAKE_SYSTEM_PROCESSOR} LOWERCASE_CMAKE_SYSTEM_PROCESSOR)
-
-#------------------------------ 创建'make test'指令---------------------------------------
-add_custom_target(test
-    #执行mkdir -p 创建 coverageResult
-    COMMAND mkdir -p coverageResult
-    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-)
-
-
-add_custom_command(TARGET test
-    COMMAND echo " =================== CREAT LCOV REPROT BEGIN ==================== "
-
-    #1.清理原先的gcov信息
-    COMMAND lcov --directory ./CMakeFiles/${PROJECT_NAME_TEST}.dir --zerocounters
-    COMMAND lcov --directory ./CMakeFiles/${PROJECT_NAME}.dir --zerocounters
-    COMMAND ./src/${PROJECT_NAME_TEST}
-
-    #2.收集gcov信息到.info文件中
-    COMMAND lcov --directory . --capture --output-file ./coverageResult/${PROJECT_NAME}_Coverage.info
-
-    #3.过滤一些我们不感兴趣的文件的覆盖率信息
-    COMMAND echo " =================== do filter begin ==================== "
-    COMMAND lcov --remove ./coverageResult/${PROJECT_NAME}_Coverage.info
-    '*/${PROJECT_NAME_TEST}_autogen/*' '*/${PROJECT_NAME}_autogen/*' '*/usr/include/*' '*/dman_qtest/*' '*/googletest/*' '*/src/*autogen*/*' '*/app/*'
-    -o ./coverageResult/${PROJECT_NAME}_Coverage.info
-    COMMAND echo " =================== do filter end ==================== "
-
-    #3.将.info信息生成报告到reprot文件夹中
-    COMMAND genhtml -o ./coverageResult/report ./coverageResult/${PROJECT_NAME}_Coverage.info
-
-    COMMAND echo " =================== CREAT LCOV REPROT END ==================== "
-
-    COMMAND echo " Coverage files have been output to ${CMAKE_BINARY_DIR}/coverageResult/report "
-
-    WORKING_DIRECTORY ${CMAKE_BINARY_DIR}
-    )
-
-#'make test'命令依赖与我们的测试程序
-add_dependencies(test ${PROJECT_NAME_TEST})
-
-# 设置添加gocv相关信息的输出
-set(CMAKE_CXX_FLAGS "-g -fprofile-arcs -ftest-coverage")
