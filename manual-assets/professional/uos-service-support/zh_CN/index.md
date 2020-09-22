@@ -123,4 +123,4 @@
 2. 单击 **退出**。
 
 
-<div class="version-info"><span>文档更新时间: 2020-09-09</span><span> 版本: 2.1</span></div>
+<div class="version-info"><span>文档更新时间: 2020-09-22</span><span> 版本: 2.2</span></div>

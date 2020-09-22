@@ -119,4 +119,4 @@ You can click to view the manual, which will help you further know and use Boot 
 
 2. Click **Exit**.
 
-<div class="version-info"><span>Update Date: 2020-09-09</span><span> Version: 5.4</span></div>
+<div class="version-info"><span>Update Date: 2020-09-22</span><span> Version: 5.4</span></div>

@@ -98,4 +98,4 @@ In **Main Menu**, select **About** to check the version and introduction of Deep
 
 In **Main Menu**, select **Exit** to exit Deepin Repair.
 
-<div class="version-info"><span>Update Date: 2020-08-24</span><span> Version: 5.0</span></div>
+<div class="version-info"><span>Update Date: 2020-09-22</span><span> Version: 5.0</span></div>

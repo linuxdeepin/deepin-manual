@@ -101,4 +101,4 @@
 2. 点击 **关于**。
 3. 查看关于录音的版本和介绍。
 
-<div class="version-info"><span>文档更新时间: 2020-08-24</span><span> 版本: 5.0</span></div>
+<div class="version-info"><span>文档更新时间: 2020-09-22</span><span> 版本: 5.0</span></div>

@@ -171,4 +171,4 @@ System Monitor offers Expand view and Compact view for your choice.
 1. On the System Monitor interface, click ![icon_menu](icon/icon_menu.svg).
 2. Click **Exit** to exit System Monitor.
 
-<div class="version-info"><span>Update Date: 2020-09-09</span><span> Version: 5.6</span></div>
+<div class="version-info"><span>Update Date: 2020-09-22</span><span> Version: 5.6</span></div>

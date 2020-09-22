@@ -334,4 +334,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 
 2.  Click **Exit** to exit Music.
 
-<div class="version-info"><span>Update Date: 2020-09-18</span><span> Version: 6.0</span></div>
+<div class="version-info"><span>Update Date: 2020-09-22</span><span> Version: 6.0</span></div>

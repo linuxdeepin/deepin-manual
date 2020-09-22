@@ -339,4 +339,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 1. On the Text Editor interface, click ![menu](icon/icon_menu.svg).
 2. Click **Exit** to exit Text Editor.  
 
-<div class="version-info"><span>Update Date: 2020-09-18</span><span> Version: 5.6</span></div>
+<div class="version-info"><span>Update Date: 2020-09-22</span><span> Version: 5.6</span></div>

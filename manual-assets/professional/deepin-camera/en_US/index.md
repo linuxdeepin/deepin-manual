@@ -98,4 +98,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 1.   On the Camera interface, click ![icon_menu](icon/icon_menu.svg). 
 2.  Click **Exit** to exit Camera.
 
-<div class="version-info"><span>Update Date: 2020-09-18</span><span> Version: 1.0</span></div>
+<div class="version-info"><span>Update Date: 2020-09-22</span><span> Version: 1.0</span></div>

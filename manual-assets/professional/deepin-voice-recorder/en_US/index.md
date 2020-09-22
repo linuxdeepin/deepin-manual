@@ -114,4 +114,4 @@ You can click on **Exit** to exit Voice Recorder.
 
 2. Click on **Exit** to exit.
 
-<div class="version-info"><span>Update Date: 2020-08-24</span><span> Version: 5.0</span></div>
+<div class="version-info"><span>Update Date: 2020-09-22</span><span> Version: 5.0</span></div>

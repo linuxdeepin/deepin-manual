@@ -227,4 +227,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 1. On the Voice Notes interface, click ![icon_menu](icon/icon_menu.svg).
 2.  Click **Exit** to exit Voice Notes.
 
-<div class="version-info"><span>Update Date: 2020-09-09</span><span> Version: 5.7</span></div>
+<div class="version-info"><span>Update Date: 2020-09-22</span><span> Version: 5.8</span></div>

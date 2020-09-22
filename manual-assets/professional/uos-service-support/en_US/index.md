@@ -123,4 +123,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 2.  Click **Exit** to exit Support.
 
 
-<div class="version-info"><span>Update Date: 2020-09-09</span><span> Version: 2.1</span></div>
+<div class="version-info"><span>Update Date: 2020-09-22</span><span> Version: 2.2</span></div>

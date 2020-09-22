@@ -1633,4 +1633,4 @@ The scrolling directions of the screen are the same as where your finger goes.
 Pinch two fingers to zoom out on the webpage or picture.  Open two fingers to zoom in on the webpage or picture.
 
 
-<div class="version-info"><span>Update Date: 2020-09-09</span><span> Version: 2020.03</span></div>
+<div class="version-info"><span>Update Date: 2020-09-22</span><span> Version: 2020.03</span></div>

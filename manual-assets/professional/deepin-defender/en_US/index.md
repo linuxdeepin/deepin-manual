@@ -248,4 +248,4 @@ View the manual to help you further know and use Security Center.
 2. Click **Exit**.
 
 
-<div class="version-info"><span>Update Date: 2020-09-09</span><span> Version: 2.0</span></div>
+<div class="version-info"><span>Update Date: 2020-09-22</span><span> Version: 2.1</span></div>
