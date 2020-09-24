@@ -20,8 +20,6 @@
 
 #include <QVariantMap>
 
-namespace dman {
-
 /**
  * @brief The SettingsProxy class
  * 页面设置接口类
@@ -40,7 +38,5 @@ public Q_SLOTS:
     void openUrl(const QString &url);
     void raiseWindow();
 };
-
-} // namespace dman
 
 #endif // DEEPIN_MANUAL_UI_CHANNEL_SETTINGS_PROXY_H

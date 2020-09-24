@@ -52,7 +52,8 @@ int main(int argc, char **argv)
         }
         strCreateDbPath += "/search.db";
 
-        dman::SearchDb db;
+//        dman::SearchDb db;
+        SearchDb db;
         db.initDb(strCreateDbPath);
         db.initSearchTable();
 

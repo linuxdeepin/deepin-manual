@@ -27,8 +27,8 @@ int main(int argc, char **argv)
     ManualSearchAdapter adapter(&search_obj);
 
     QDBusConnection conn = QDBusConnection::sessionBus();
-    if (!conn.registerService(dman::kManualSearchService)
-        || !conn.registerObject(dman::kManualSearchIface, &search_obj)) {
+    if (!conn.registerService(kManualSearchService)
+        || !conn.registerObject(kManualSearchIface, &search_obj)) {
         qCritical() << "dman-search failed to register dbus service";
         return 1;
     } else {

@@ -21,6 +21,7 @@
 #include "environments.h"
 #include "resources/themes/images.h"
 #include "controller/shellobj.h"
+#include "base/accessible.h"
 
 #include <DApplication>
 #include <DApplicationSettings>
@@ -65,7 +66,7 @@ int main(int argc, char **argv)
     app.setOrganizationName("deepin");
     app.setOrganizationDomain("deepin.org");
     app.setApplicationVersion(VERSION);
-    app.setApplicationName(dman::kAppName);
+    app.setApplicationName(kAppName);
     app.loadTranslator();
     app.setApplicationDisplayName(QObject::tr("Manual"));
     app.setApplicationDescription(QObject::tr(
@@ -73,15 +74,15 @@ int main(int argc, char **argv)
                                       " providing specific instructions and function descriptions."));
     app.setApplicationAcknowledgementPage("https://www.deepin.org/acknowledgments/deepin-manual/");
 
-    dman::ArgumentParser argument_parser;
-    dman::WindowManager window_manager;
+    ArgumentParser argument_parser;
+    WindowManager window_manager;
     //绑定参数解析 信号与槽
-    QObject::connect(&argument_parser, &dman::ArgumentParser::newAppOpen,
-                     &window_manager, &dman::WindowManager::onNewAppOpen);
-    QObject::connect(&argument_parser, &dman::ArgumentParser::openManualWithSearchRequested,
-                     &window_manager, &dman::WindowManager::openManualWithSearch);
-    QObject::connect(&argument_parser, &dman::ArgumentParser::openManualRequested,
-                     &window_manager, &dman::WindowManager::openManual);
+    QObject::connect(&argument_parser, &ArgumentParser::newAppOpen,
+                   &window_manager, &WindowManager::onNewAppOpen);
+    QObject::connect(&argument_parser, &ArgumentParser::openManualWithSearchRequested,
+                   &window_manager, &WindowManager::openManualWithSearch);
+    QObject::connect(&argument_parser, &ArgumentParser::openManualRequested,
+                   &window_manager, &WindowManager::openManual);
 
     if (!argument_parser.parseArguments()) {
         qDebug() << "argument_parser.parseArguments()";
@@ -92,6 +93,8 @@ int main(int argc, char **argv)
         return app.exec();
     }
     argument_parser.openManualsDelay();
+
+
 
     // 日志保存, 路径:~/.cach/deepin/deepin-manual/
     DApplicationSettings dApplicationSettings;
@@ -107,5 +110,7 @@ int main(int argc, char **argv)
     static Dtk::Core::Logger customLoggerInstance(category);
     customLoggerInstance.logToGlobalInstance(category, true);
     customLoggerInstance.registerAppender(fileAppender);
+
+    QAccessible::installFactory(accessibleFactory);
     return app.exec();
 }

@@ -21,8 +21,6 @@
 #include <QSqlError>
 #include <QSqlQuery>
 
-namespace dman {
-
 namespace {
 
 const char kSearchDropTable[] = "DROP TABLE IF EXISTS search";
@@ -580,4 +578,3 @@ void SearchDb::handleSearchContent(const QString &keyword)
         emit this->searchContentMismatch(keyword);
     }
 }
-} // namespace dman

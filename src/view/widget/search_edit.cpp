@@ -22,8 +22,6 @@
 #include <QAction>
 #include <QDebug>
 
-namespace dman {
-
 SearchEdit::SearchEdit(QWidget *parent)
     : DSearchEdit(parent)
 {
@@ -74,5 +72,3 @@ void SearchEdit::keyPressEvent(QKeyEvent *event)
 
     DSearchEdit::keyPressEvent(event);
 }
-
-} // namespace dman

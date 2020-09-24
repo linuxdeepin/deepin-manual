@@ -25,8 +25,6 @@
 
 DWIDGET_USE_NAMESPACE
 
-namespace dman {
-
 /**
  * @brief ImageViewer::ImageViewer
  * @param parent
@@ -54,7 +52,5 @@ private:
 
     using QDialog::open;
 };
-
-} // namespace dman
 
 #endif // DEEPIN_MANUAL_VIEW_WIDGETS_IMAGE_VIEWER_H

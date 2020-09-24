@@ -25,8 +25,6 @@
 
 DWIDGET_USE_NAMESPACE
 
-namespace dman {
-
 class SearchButton;
 
 /**
@@ -79,7 +77,5 @@ private slots:
     void onResultListClicked(const QModelIndex &index);
     void onResultListEntered(const QModelIndex &index);
 };
-
-} // namespace dman
 
 #endif // DEEPIN_MANUAL_VIEW_SEARCH_COMPLETION_WINDOW_H

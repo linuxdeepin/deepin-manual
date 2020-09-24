@@ -17,8 +17,6 @@
 
 #include "view/title_bar_proxy.h"
 
-namespace dman {
-
 TitleBarProxy::TitleBarProxy(QObject *parent)
     : QObject(parent)
 {
@@ -52,5 +50,3 @@ void TitleBarProxy::setForwardButtonActive(bool active)
     m_webWindow->m_forwardButton->setEnabled(active);
     m_webWindow->updateBtnBox();
 }
-
-} // namespace dman

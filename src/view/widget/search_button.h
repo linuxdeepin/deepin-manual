@@ -25,8 +25,6 @@
 
 DWIDGET_USE_NAMESPACE
 
-namespace dman {
-
 /**
 * @brief The SearchButton class　全文搜索按钮
 * Overloading of push button which emits entered() signal on mouse hover.
@@ -68,7 +66,5 @@ private:
 
     bool m_bHover;
 };
-
-} // namespace dman
 
 #endif // DEEPIN_MANUAL_VIEW_WIDGETS_SEARCH_BUTTON_H

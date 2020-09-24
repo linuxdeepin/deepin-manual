@@ -49,8 +49,6 @@
 
 DWIDGET_USE_NAMESPACE
 
-namespace dman {
-
 namespace {
 
 const int kSearchDelay = 200;
@@ -896,6 +894,3 @@ void WebWindow::onSearchAnchorResult(const QString &keyword, const SearchAnchorR
         completion_window_->setFocusPolicy(Qt::StrongFocus);
     }
 }
-
-
-}  // namespace dman

@@ -20,8 +20,6 @@
 
 #include <QVariant>
 
-namespace dman {
-
 class I18nProxy : public QObject
 {
     Q_OBJECT
@@ -34,7 +32,5 @@ public slots:
 
     QString getLocale() const;
 };
-
-} // namespace dman
 
 #endif // DEEPIN_MANUAL_VIEW_I18N_PROXY_H

@@ -26,8 +26,6 @@
 
 DWIDGET_USE_NAMESPACE
 
-namespace dman {
-
 SearchButton::SearchButton(QWidget *parent)
     : DBlurEffectWidget(parent)
     , m_bHover(false)
@@ -244,5 +242,3 @@ void SearchButton::leaveEvent(QEvent *event)
 
     update();
 }
-
-} // namespace dman

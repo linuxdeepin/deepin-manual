@@ -22,8 +22,6 @@
 
 #include "controller/search_result.h"
 
-namespace dman {
-
 struct SearchDbPrivate;
 struct searchStrct;
 
@@ -78,7 +76,5 @@ private slots:
     void handleSearchAnchor(const QString &keyword);
     void handleSearchContent(const QString &keyword);
 };
-
-} // namespace dman
 
 #endif // DEEPIN_MANUAL_CONTROLLER_SEARCH_DB_H

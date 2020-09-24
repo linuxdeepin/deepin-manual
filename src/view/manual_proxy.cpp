@@ -19,8 +19,6 @@
 #include "base/consts.h"
 #include "base/utils.h"
 
-namespace dman {
-
 ManualProxy::ManualProxy(QObject *parent)
     : QObject(parent)
 {
@@ -168,7 +166,5 @@ void ManualProxy::saveAppList(const QStringList &list)
     setting->sync();
     qDebug() << "app config  allKeys count : " << l.size();
 }
-
-} // namespace dman
 
 //bool ManualPro

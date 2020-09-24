@@ -20,8 +20,6 @@
 
 #include <QDir>
 
-namespace dman {
-
 extern const char kAppName[];
 extern const char kAppProcessName[];
 extern const char kAppVersion[];
@@ -34,7 +32,5 @@ extern const char kConfigAppList[];
 
 // 获取用户缓存目录
 QString GetCacheDir();
-
-} // namespace dman
 
 #endif // DEEPIN_MANUAL_BASE_CONSTS_H

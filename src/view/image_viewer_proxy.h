@@ -21,8 +21,6 @@
 #include <QObject>
 #include <QDesktopServices>
 
-namespace dman {
-
 class ImageViewer;
 
 /**
@@ -43,7 +41,5 @@ public slots:
 private:
     ImageViewer *viewer_ = nullptr;
 };
-
-} // namespace dman
 
 #endif // DEEPIN_MANUAL_VIEW_IMAGE_VIEWER_PROXY_H
