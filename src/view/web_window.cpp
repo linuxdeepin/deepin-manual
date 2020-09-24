@@ -513,6 +513,7 @@ void WebWindow::showEvent(QShowEvent *event)
 
 void WebWindow::closeEvent(QCloseEvent *event)
 {
+    completion_window_->hide();
     emit this->closed(app_name_);
     //保存窗口大小
     saveWindowSize();
