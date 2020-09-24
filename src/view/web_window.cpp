@@ -678,6 +678,24 @@ QRect WebWindow::hasWidgetRect(QWidget *widget)
     return rect;
 }
 
+void WebWindow::inputMethodEvent(QInputMethodEvent *e)
+{
+   if (!e->commitString().isEmpty()) {
+       search_edit_->lineEdit()->setText(e->commitString());
+       search_edit_->lineEdit()->setFocus();
+   }
+   QWidget::inputMethodEvent(e);
+}
+
+void WebWindow::closeEvent(QCloseEvent *event)
+{
+    completion_window_->hide();
+    emit this->closed(app_name_);
+    //保存窗口大小
+    saveWindowSize();
+    QWidget::closeEvent(event);
+}
+
 /**
  * @brief WebWindow::onSearchContentByKeyword
  * @param keyword 搜索关键字
