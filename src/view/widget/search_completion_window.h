@@ -23,7 +23,7 @@
 
 #include <QPushButton>
 #include <QStringListModel>
-
+#include <QPainterPath>
 #include <DBlurEffectWidget>
 
 DWIDGET_USE_NAMESPACE

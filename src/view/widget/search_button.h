@@ -22,6 +22,7 @@
 #include <DIconButton>
 #include <DBlurEffectWidget>
 #include <DApplicationHelper>
+#include <QPainterPath>
 
 DWIDGET_USE_NAMESPACE
 

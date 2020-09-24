@@ -23,6 +23,7 @@
 #define SEARCH_COMPLETION_DELEGATE_H
 
 #include <DStyledItemDelegate>
+#include <QPainterPath>
 
 DWIDGET_USE_NAMESPACE
 
