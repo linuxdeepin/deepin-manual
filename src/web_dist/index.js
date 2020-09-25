@@ -1578,14 +1578,22 @@ exports.default = function (mdFile, mdData) {
     }
     return '<img src="' + hrefX2 + '" data-src="' + href + '" alt="' + text + '" />';
   };
+
   html = (0, _marked2.default)(mdData, { renderer: renderer }).replace(/src="/g, '$&' + path);
+  console.log("-----------------------------------");
   if (key != '') {
     //将'-+'字符串 反向还原成'/'
     key = key.replace(/-+/g, '/');
+
+    //将关键字转义
+    var keyTemp = new RegExp(escapeRegExp(key), 'gi');
+
+    // key = re;
+    console.log("--------->", keyTemp);
     // var formatKeyword = key.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')
     var finder = new RegExp(">.*?<", 'g'); // 提取位于标签内的文本，避免误操作 class、id 等
     html = html.replace(finder, function (matched) {
-      return matched.replace(new RegExp(key, 'gi'), "<span style='background-color: yellow'>$&</span>");
+      return matched.replace(new RegExp(keyTemp, 'gi'), "<span style='background-color: yellow'>$&</span>");
     });
   }
 
@@ -1597,6 +1605,11 @@ var _marked = require('marked');
 var _marked2 = _interopRequireDefault(_marked);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//转义特定字符
+function escapeRegExp(text) {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+};
 
 },{"marked":19}],6:[function(require,module,exports){
 (function (global){
