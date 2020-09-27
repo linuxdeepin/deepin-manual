@@ -703,9 +703,12 @@ void WebWindow::onSearchAnchorResult(const QString &keyword, const SearchAnchorR
         completion_window_->raise();
         completion_window_->autoResize();
         // Move to below of search edit.
+        qDebug()<<"this rect:"<<this->rect().width()<<" :"<<search_edit_->width()<<" :"<<titlebar()->height();
         const QPoint local_point(this->rect().width() / 2 - search_edit_->width() / 2,
                                  titlebar()->height() - 3);
+        qDebug()<<"local pos:"<<local_point.x()<<" "<<local_point.y();
         const QPoint global_point(this->mapToGlobal(local_point));
+        qDebug()<<"local pos:"<<global_point.x()<<" "<<global_point.y();
         completion_window_->move(global_point);
         completion_window_->setFocusPolicy(Qt::NoFocus);
         completion_window_->setFocusPolicy(Qt::StrongFocus);
