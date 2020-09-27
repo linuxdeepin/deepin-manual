@@ -1,4 +1,4 @@
-#  手机助手|../common/deepin-phone-master.svg|
+#  手机助手|../common/deepin-phone-assistant.svg|
 
 ## 概述
 
@@ -54,7 +54,7 @@
 3. 下拉手机通知栏，找到“正在通过USB充电”的通知并进入，将充电模式切换成“传输文件（MTP）”的模式。
 4. 在“设置”中找到“开发者选项”并打开，找到”USB调试“并开启，此时手机端弹出需要授权的提示，点击“确定”完成授权。
 
-![USB](jpg/USB.png) 5. 手机端会弹出安装“UOS手机助手”的提示，请根据提示安装客户端手机助手，安装完成后方可在PC端进行操作。
+![USB](jpg/USB.png) 5. 手机端会弹出安装“手机助手”的提示，请根据提示安装客户端手机助手，安装完成后方可在PC端进行操作。
 
 ![download](jpg/download.png) 
 
@@ -178,4 +178,4 @@
 2. 点击 **退出**。
 
 
-<div class="version-info"><span>文档更新时间: 2020-09-22</span><span> 版本: 5.1</span></div>
+<div class="version-info"><span>文档更新时间: 2020-09-27</span><span> 版本: 5.1</span></div>

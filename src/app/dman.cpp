@@ -96,7 +96,6 @@ int main(int argc, char **argv)
     argument_parser.openManualsDelay();
 
 
-
     // 日志保存, 路径:~/.cach/deepin/deepin-manual/
     DApplicationSettings dApplicationSettings;
     Dtk::Core::DLogManager::registerFileAppender();
