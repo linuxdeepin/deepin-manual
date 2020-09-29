@@ -713,7 +713,7 @@ void WebWindow::onSearchAnchorResult(const QString &keyword, const SearchAnchorR
         QRect rect = hasWidgetRect(search_edit_);
         qDebug()<<"=======>"<<rect<<" "<<titlebar()->height();
 
-        completion_window_->move(rect.x(),rect.y()+titlebar()->height()-3);
+        completion_window_->move(rect.x(),rect.y()+titlebar()->height()-3+45);
         completion_window_->setFocusPolicy(Qt::NoFocus);
         completion_window_->setFocusPolicy(Qt::StrongFocus);
     }
