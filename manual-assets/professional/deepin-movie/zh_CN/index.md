@@ -183,7 +183,7 @@
 
 1. 在影院界面，点击 ![movie](icon/episodes_normal.svg )。
 2. 进入播放列表窗口，将鼠标指针置于视频文件上。
-3. 右键单击 **清空播放列表**。
+3. 单击右键选择 **清空播放列表** 或 直接点击左侧 **清空列表**。
 
 ### 在文件管理器中显示
 
@@ -258,5 +258,4 @@
 
 1. 在影院界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **退出**。
-
-<div class="version-info"><span>文档更新时间: 2020-09-22</span><span> 版本: 5.7</span></div>
+<div class="version-info"><span>文档更新时间: 2020-09-30</span><span> 版本: 5.7</span></div>

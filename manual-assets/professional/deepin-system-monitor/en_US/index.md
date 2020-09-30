@@ -49,7 +49,7 @@ Click the top right tabs on the System Monitoring interface to view **Applicatio
 
 You can adjust the process order by Name, CPU, User, Memory, Upload, Download, Disk read, Disk write, PID, Nice and Priority.
 
-- On System Monitor interface, click the tabs in the top of the process list to sort the processes. Multiple clicks allows sorting from low to high or high to low.
+- On the System Monitor interface, click the tabs in the top of the process list to sort the processes. Multiple clicks allows sorting from low to high or high to low.
 - Right-click the top tabs to check the options you want to view or uncheck the options you want to hide.
 
 ![1|sort](jpg/sort.png)
@@ -76,7 +76,7 @@ System Monitor can be used to end processes.
 
 4. Click **Force End** in the pop-up window to confirm.
 
-> ![tips](icon/tips.svg)Tips: You can end a process by selecting a process, right-clicking and selecting **End Process**. 
+> ![tips](icon/tips.svg)Tips: You can end a process by selecting a process, right-clicking it, and selecting **End Process**. 
 
 
 #### Suspend/Resume Process
@@ -94,7 +94,7 @@ System Monitor can be used to end processes.
 
 2. Select **Change priority** and select a priority level.
 
-![notes](icon/notes.svg)Notes: You can also select **custom** priority level.
+> ![notes](icon/notes.svg)Notes: You can also select **Custom** priority level.
 
 ![1|priority](jpg/priority.png)
 
@@ -107,40 +107,40 @@ System Monitor can be used to end processes.
 #### View Process Properties
 
 1. On the System Monitor interface, right-click the process you want to view.
-2. Select **Properties** to view the name, command line and start time of process.
+2. Select **Properties** to view the name, command line, and start time of the process.
 
 ![0|info](jpg/info.png)
 
 ### System service management
 
-You can start, stop, restart, set startup type, refresh system service processes.
-In the list of system services, force-ending application is prohibited.
+You can start, stop, restart, set startup type, and refresh system service processes.
+In the list of system services, force-ending of application is prohibited.
 
->![attention](icon/attention.svg)Attention: For better system operation, please don't end any processes of the system services and root processes.
+>![attention](icon/attention.svg)Attention: For better system operation, please don't end any system services processes and root processes.
 
 #### Start system service
 1. Select **Services** tab on the System Monitor interface.
-2. Select a process that is not started yet, right-click and select **Start**. Enter password if authentication window pops up.
+2. Select a process that is not started yet, right-click it, and select **Start**. Enter password if authentication window pops up.
 3. **active** is displayed in the **Active** column.
-4. Right-click and select **Startup type** to select from **Auto** and **Manual** options.
-5. Right-click and select **Refresh**.
+4. Right-click the service and select **Startup type**. Select from **Auto** and **Manual** options.
+5. Right-click the service and select **Refresh**.
 
 #### Stop system service
 
 1. Select **Services** tab on the System Monitor interface.
-2. Select a process that is started already, right-click and select **Stop**. Enter password if authentication window pops up.
+2. Select a process that is started already, right-click it, and select **Stop**. Enter password if authentication window pops up.
 3. **inactive** is displayed in the **Active** column.
-4. Right-click and select **Refresh**.
+4. Right-click the service and select **Refresh**.
 
 You can also right-click a system process and select **Restart**. 
 
 ## Main Menu
 
-In the main menu, you can switch monitoring modes and themes, view help manual and learn more information of System Monitor.
+In the main menu, you can switch monitoring modes and themes, view help manual, and learn more information of System Monitor.
 
 ### Theme
 
-The window theme provides three theme types, namely Light Theme, Dark Theme and System Theme (default).
+The window theme provides three theme types, namely Light Theme, Dark Theme, and System Theme (default).
 
 1. On the System Monitor interface, click ![icon_menu](icon/icon_menu.svg).
 2. Click **Theme** to select one theme.
@@ -153,7 +153,7 @@ System Monitor offers Expand view and Compact view for your choice.
 
 2. Click **View** to select one mode.
 
-> ![notes](icon/notes.svg)Notes: If you switched views under the **Services** tab, you would need to go to the **Processes** tab to view the effect.
+> ![notes](icon/notes.svg)Notes: If you switched views under the **Services** tab, please click the **Processes** tab to view the display.
 
 
 ### Help
@@ -171,4 +171,4 @@ System Monitor offers Expand view and Compact view for your choice.
 1. On the System Monitor interface, click ![icon_menu](icon/icon_menu.svg).
 2. Click **Exit** to exit System Monitor.
 
-<div class="version-info"><span>Update Date: 2020-09-22</span><span> Version: 5.6</span></div>
+<div class="version-info"><span>Update Date: 2020-09-30</span><span> Version: 5.8</span></div>

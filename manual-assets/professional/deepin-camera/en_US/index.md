@@ -42,7 +42,7 @@ On the Camera interface, click ![transcribe-bottom](icon/transcribe-bottom.svg) 
 
 ### Process Photos and Videos
 
-On the Camera interface, right-click the photos or video files to select copy, delete and open folder.
+On the Camera interface, right-click the photos or video files to select copy, delete, and open folder.
 
 Copy: copy the selected photo to another path.
 
@@ -56,7 +56,7 @@ Open folder: open the folder where photos and videos are located.
 
 ## Main Menu
 
-On the main menu, you can change settings for Camera, switch window themes, view help manual and get more information about Camera.
+On the main menu, you can change settings for Camera, switch window themes, view help manual, and get more information about Camera.
 
 ### Settings
 
@@ -66,18 +66,18 @@ On the main menu, you can change settings for Camera, switch window themes, view
 
    - **Basic** setting: set up the **File location** for photos and videos.
 
-   - **Shoot** setting: set up the **Burst mode** and **Self-timer** delay options.
+   - **Shoot** setting: set up the **Burst mode** and **Self-timer delay** options.
 
      ![settings](jpg/settings.png)
 
-   - **Output** setting: set up the **Output format** and **Resolution** for photos and videos.
+   - **Output** setting: set up the **Output format** and **Resolution settings** for photos and videos.
    
      ![output-settings](jpg/output-settings.png)
 
 #### Theme
 
 
-The window theme provides three theme types, namely Light Theme, Dark Theme and System Theme (default).
+The window theme provides three theme types, namely Light Theme, Dark Theme, and System Theme (default).
 
 1.  On the Camera interface, click ![icon_menu](icon/icon_menu.svg).
 
@@ -98,4 +98,5 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 1.   On the Camera interface, click ![icon_menu](icon/icon_menu.svg). 
 2.  Click **Exit** to exit Camera.
 
-<div class="version-info"><span>Update Date: 2020-09-22</span><span> Version: 1.0</span></div>
+
+<div class="version-info"><span>Update Date: 2020-09-30</span><span> Version: 1.0</span></div>

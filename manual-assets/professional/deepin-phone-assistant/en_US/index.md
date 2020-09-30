@@ -2,7 +2,9 @@
 
 ## Overview
 
-Phone Assistant is a convenient tool for managing smart phones from your personal computer which supports a wide range of mobile phone models to best meet your needs. ![0|voice_recorder](jpg/main.png)
+Phone Assistant is a convenient tool for managing smart phones from your personal computer which supports a wide range of mobile phone models to best meet your needs. 
+
+![0|voice_recorder](jpg/main.png)
 
 
 ## Guide
@@ -122,7 +124,7 @@ Click ![视频](icon/video.svg) on the left navigation bar or ![视频](icon/vid
 Click ![音乐](icon/music.svg) on the left navigation bar or ![音乐](icon/music-light.svg) on the main interface to enter the Songs interface, where you can import, export or delete Songs stored in your phone. 
 
 - Export: Select one or multiple songs, click ![export](icon/export.svg) on the toolbar, and save the song(s) to the destination on your computer per your needs.
-- Import: Click ![import](icon/import.svg) on the toolbar, select song(s) from your computer and import to your phone. 
+- Import: Click ![import](icon/import.svg) on the toolbar, select song(s) from your computer, and import to your phone. 
 - Delete: Select one or multiple songs, click ![delete](icon/delete.svg) on the toolbar, and click **Confirm** in the pop-up box to delete the song(s). 
 
 ![music](jpg/music.png)
@@ -165,12 +167,12 @@ On the main menu, you can set options, switch window themes, view help manual, a
         - Select **Exit** to close the main window, and exit Phone Assistant. 
         - Select **Minimize to system tray** to close the main window, and hide the Phone Assistant to system tray.
         - Select **Ask me always** to prompt system notification, and confirm whether to exit Phone Assistant when the main window is closed.
-    - In the option **Desktop Shortcut**, click the **Show icon on desktop** icon, and add a shortcut for Phone Assistant to your desktop.
+    - In the option **Desktop Shortcut**, click the **Show icon on desktop** icon, and add a shortcut of Phone Assistant to your desktop.
 3. Click **Restore Defaults** to restore the default settings.
 
 ### Theme
 
-The window theme provides three theme types, namely Light Theme, Dark Theme and System Theme (default).
+The window theme provides three theme types, namely Light Theme, Dark Theme, and System Theme (default).
 
 1. On the Phone Assistant interface, click ![icon_menu](icon/icon_menu.svg).
 2. Click **Theme** to select one theme.
@@ -190,4 +192,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 1. On the Phone Assistant interface, click ![icon_menu](icon/icon_menu.svg).
 2.  Click **Exit** to exit Phone Assistant.
 
-<div class="version-info"><span>Update Date: 2020-09-27</span><span> Version: 5.1</span></div>
+<div class="version-info"><span>Update Date: 2020-09-30</span><span> Version: 5.1</span></div>

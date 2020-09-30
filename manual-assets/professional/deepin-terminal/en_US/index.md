@@ -4,12 +4,12 @@
 
 Terminal is a terminal emulator with simple interface providing diversified powerful functions including multi-windows, workspace, remote management, Quake mode, among others. You can instantly start and close Terminal smoothly like any normal file windows, refraining you from limitations and hassles while writing commands. Take a try of the Quake mode which enables you to browse other windows while inputting commands on one screen. When there are multiple tasks, you can add tabs in terminal to create more workspaces like in the browser or split the workspace into multiple windows. It's also a piece of cake to upload and download files with remote management. More powerful functions are waiting for you to explore!
 
- ![1|interface](jpg/interface.png)
+![1|interface](jpg/interface.png)
 
 
 ## Guide
 
-You can run, exit or create shortcuts for Terminal.
+You can run, exit, or create shortcuts for Terminal.
 
 ### Run Terminal ###
 
@@ -38,14 +38,14 @@ You can run, exit or create shortcuts for Terminal.
 
 On the Terminal interface, press **Ctrl + Shift + ?** to view shortcuts. Proficiency in shortcuts will greatly improve your efficiency.
 
- ![1|shortcuts](jpg/hotkey.png)
+![1|shortcuts](jpg/hotkey.png)
 
 
 ## Basic Operations
 
 You can right-click on the Terminal interface for daily operations.
 
- ![1|rightclick](jpg/rightclick.png)
+![1|rightclick](jpg/rightclick.png)
 
 
 ### Find ###
@@ -75,11 +75,11 @@ You can use browser in Terminal for quick and convenient web search against sele
 
 - Copy
    - On the Terminal interface, select the content you want to copy and press **Ctrl + Shift + C**.
-   - On the Terminal interface, select the content you want to copy, right-click and select **Copy**.
+   - On the Terminal interface, select the content you want to copy, right-click, and select **Copy**.
 - Paste
    - On the Terminal interface, press **Ctrl + Shift + V**.
    - On the Terminal interface, middle-click to paste.
-   - On the Terminal interface, right-click and select **Paste**.
+   - On the Terminal interface, right-click, and select **Paste**.
 
 > ![tips](icon/tips.svg)Tips: 
     > - If you want to copy a hyperlink, you don't need to select any content. Just simply copy it with a right-click.
@@ -89,7 +89,7 @@ You can use browser in Terminal for quick and convenient web search against sele
 
 Quake Mode is a unique function of Terminal. Press **Alt** + **F2** to open a quake window, and press again to hide it.
 
-> ![tips](icon/tips.svg)Tips: You can also click ![deepin-terminal](icon/deepin-terminal.svg) in the Dock to select **Quake Terminal** to open a quake window.
+> ![tips](icon/tips.svg)Tips: You can also click ![deepin-terminal](icon/deepin-terminal.svg) in the Dock, and select **Quake Terminal** to open a quake window.
 
 ### Open Files and Applications ###
 
@@ -100,7 +100,7 @@ On the Terminal interface, select the file in the current directory and right-cl
 3. Right-click and select **Open**.
 4. The file will be opened with the proper application.
 
- ![1|openfile](jpg/openfile.png)
+![1|openfile](jpg/openfile.png)
 
 
 ### Adjust Encoding Method ###
@@ -147,7 +147,7 @@ You can create a new window in the following ways:
 
 > ![tips](icon/tips.svg)Tips: You can also press **Ctrl + Shift + J** on keyboard to split windows vertically, and press **Ctrl** + **Shift** + **H** to split windows horizontally.
 
- ![1|splitscreen](jpg/splitscreen.png)
+![1|splitscreen](jpg/splitscreen.png)
 
 ### Rename Window ###
 
@@ -158,7 +158,7 @@ You can create a new window in the following ways:
 
 > ![tips](icon/tips.svg)Tips: You can also press **F2**  to rename the window title.
 
- ![1|rename](jpg/rename.png)
+![1|rename](jpg/rename.png)
 
 
 
@@ -185,7 +185,7 @@ You can close multiple split windows in the following steps:
 
   - Select **Close other windows** to close other split windows except for the current one.
 
- ![1|closewindow](jpg/closesplitscreen.png)
+![1|closewindow](jpg/closesplitscreen.png)
 
 
 ## Workspace Operations
@@ -226,14 +226,14 @@ You can open remote management panel to add remote servers via the main menu or 
 
 ### Add Server ###
 
-1. On the Terminal interface, click ![icon_menu](icon/icon_menu.svg)> **Remote Management**.
+1. On the Terminal interface, click ![icon_menu](icon/icon_menu.svg)> **Remote management**.
 2. Click **Add server** and a pop-up box will display.
 3. Fill out **Server name**, **Address**, **Username** and **Password**.
 4. Click **Add**.
 
    >  ![notes](icon/notes.svg)Notes: If you need to set up more parameters, please click **Advanced options**. Or, you can keep the default values and edit them when you need.
 
- ![1|addssh](jpg/addssh-all.png)
+![1|addssh](jpg/addssh-all.png)
 
 
 
@@ -245,7 +245,7 @@ You can open remote management panel to add remote servers via the main menu or 
 
 > ![notes](icon/notes.svg)Notes: For better identification and usage, you can also customize the server name.
 
- ![0|editssh](jpg/editssh.png)
+![0|editssh](jpg/editssh.png)
 
 
 ### Group Servers ###
@@ -257,7 +257,7 @@ When you set a group for a server, it will be added in the corresponding group a
 3. Input **Group** information.
 4. Click **Save**.
 
- ![0|groupssh](jpg/groupssh.png)
+![0|groupssh](jpg/groupssh.png)
 
 
 ### Search Server ###
@@ -308,11 +308,11 @@ You can upload and download files after logging in a remote server.
 
 ## Main Menu
 
-In the Main Menu, you can create [create new window](#Create New Window), customize commands, switch themes, view help manual and get more information about Album.
+In the Main Menu, you can create [create new window](#Create Window), customize commands, switch themes, view help manual, and get more information about Album.
 
 ### Theme ###
 
-The window theme provides three theme types, namely Light Theme, Dark Theme and System Theme (default).
+The window theme provides three theme types, namely Light Theme, Dark Theme, and System Theme (default).
 
 1. On the Terminal interface, click ![main_menu](icon/icon_menu.svg).
 2. Click **Theme** to choose one theme.
@@ -339,10 +339,10 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 
 3. In the **Basic** options, you can:
 
-  - Set **Opacity** for the background.
-   >![notes](icon/notes.svg)Notes: if Window Effect is turned off in Control Center, **Opacity** scroll bar will be hidden.
+    - Set **Opacity** for the background.
+    >![notes](icon/notes.svg)Notes: if Window Effect is turned off in Control Center, **Opacity** scroll bar will be hidden.
 
-  - Set the type and size for font.
+    - Set the type and size for font.
 
 #### Shortcuts Settings ####
 
@@ -352,9 +352,9 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 
 3. In the **Shortcuts** options, you can:
 
-  - Click the shortcuts to be modified, and input new shortcuts by keyboard.
+    - Click the shortcuts to be modified, and input new shortcuts by keyboard.
 
-  - Press ![Backspace](icon/Backspace.svg) if you want to disable the shortcut.
+    - Press ![Backspace](icon/Backspace.svg) if you want to disable the shortcut.
 
 
 #### Advanced Settings ####
@@ -365,17 +365,17 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 
 3. In the **Advanced** options, you can:
 
-  - Set cursor style.
-  - Enable or disable **Cursor blink**.
-  - Enable or disable **Copy on select**.
-  - Enable or disable **Scroll on keystroke**.
-  - Enable or disable **Scroll on output**.
-  - Set the startup mode for window .
-  - Enable or disable **Hide quake window after lost focus**.
-  - Enable or disable **Blur background**.
-   >![notes](icon/notes.svg)Notes: if Window Effect is turned off in Control Center, **Blur background** option will be hidden.
+    - Set cursor style.
+    - Enable or disable **Cursor blink**.
+    - Enable or disable **Copy on select**.
+    - Enable or disable **Scroll on keystroke**.
+    - Enable or disable **Scroll on output**.
+    - Set the startup mode for window .
+    - Enable or disable **Hide quake window after lost focus**.
+    - Enable or disable **Blur background**.
+    >![notes](icon/notes.svg)Notes: if Window Effect is turned off in Control Center, **Blur background** option will be hidden.
 
-  - **Restore defaults**: Click this button to restore to all default settings.  
+4. **Restore defaults**: Click this button to restore to all default settings.  
 
 ### Help
 
@@ -396,4 +396,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 
 2. Click **Exit** to exit Terminal.
 
-<div class="version-info"><span>Update Date: 2020-09-22</span><span> Version: 5.2</span></div>
+<div class="version-info"><span>Update Date: 2020-09-30</span><span> Version: 5.3</span></div>

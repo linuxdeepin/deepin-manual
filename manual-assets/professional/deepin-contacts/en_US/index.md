@@ -27,28 +27,28 @@ You can run, close or create a shortcut for Contacts as follows.
 
 ## Sign In
 
-Once **Contacts** is run, the interface **Cloud Sync Sign in** pops up automatically.
+Once **Contacts** is run, the interface **Union ID Sign in** pops up automatically.
 
-![2login](jpg/2login.png)
+![login](jpg/login.png)
 
 #### Sign up
 
-Once **Contacts** is run, the interface **Cloud Sync Sign in** pops up automatically. If you don't have a Cloud Sync account, you can sign up for one as follows.
+Once **Contacts** is run, the interface **Union ID Sign in** pops up automatically. If you don't have a Union ID account, you can sign up for one as follows.
 
 - Click hyper link **Sign up**, the default browser of the operation system is called successfully and a signing-up page is opened.
 
 - Input information to sign up for an account accordingly as required.
 
-- After signing up is completed, you can return to the interface of Cloud Sync Sign in to sign in your account.
+- After signing up is completed, you can return to the interface of Union ID Sign in to sign in your account.
 
 
 #### Forgot Password？
 
-Once **Contacts** is run, the interface **Cloud Sync Sign in** pops up automatically. If you have forgotten password, you can get it back as follows.
+Once **Contacts** is run, the interface **Union ID Sign in** pops up automatically. If you have forgotten password, you can get it back as follows.
 
 - Click hyper link **Forgot password?** , the default browser of the operation system is called successfully and you can reset your password.
 
-- After password is reset, you can return to the interface of Cloud Sync Sign in to sign in your account.
+- After password is reset, you can return to the interface of Union ID Sign in to sign in your account.
 
 
 #### Auto-login
@@ -62,7 +62,7 @@ Once **Contacts** is run, the interface **Cloud Sync Sign in** pops up automatic
 
 1. Prerequisite: you haven't logged in the operation system with the Union ID.
 
-2. Once **Contacts** is run, the interface **Cloud Sync Sign in** pops up automatically.
+2. Once **Contacts** is run, the interface **Union ID Sign in** pops up automatically.
 
 3. Input your Union ID and password. After verification is completed successfully, logging in from the client terminal is also done and main interface of Contacts is opened. 
 
@@ -93,9 +93,9 @@ This interface mainly displays the contacts who request to add you as a friend.
 
 One default friends classification is displayed here, if you want to add others, do as follows.
 
-2. Hover the cursor over **Friends** and right-click; or click ![19](icon/19.svg), a popping-up box saying  **Add Friends Classification** appears.
+1. Hover the cursor over **Friends** and right-click; or click ![19](icon/19.svg), a popping-up box saying  **Add Friends Classification** appears.
 
-3. Input a name and press **Enter** key, then, a new classification is created. If you have to change its name, you can right-click to select **Rename Classification**.
+2. Input a name and press **Enter** key, then, a new classification is created. If you have to change its name, you can right-click to select **Rename Classification**.
 
 ![3add friend group](jpg/3add-friend-group.png)
 
@@ -118,17 +118,11 @@ There are three ways to add friends, including:
 To add a friend, you can:
 
 1. Click **Add Friend**.
-
 2. Input user name, email or phone number to search a friend, and he/she will appear in the list if searched successfully, click![add-normal](icon/add-normal.svg) .
-
 ![add friend2](jpg/3add-friend2.png)
-
 3. A dialogue box "Add Friend Request" pops up. Select classification, input a message and click  **Send**.
-
 ![3add friend3](jpg/3add-friend3.png)
-
 4. After the friend agrees to add you, you can see him/her in the list, which means you have added him/her successfully. 
-
 5. You can add a remark name for him/her.
 
 #### Contact Information
@@ -156,7 +150,7 @@ To add a friend, you can:
 #### Chat with friend
 
 1. Click ![chat](icon/chat.svg) to chat with a friend
-2. In the chatting window, you can send emoji and files, share contact card, view chat history and make video calls.
+2. In the chatting window, you can send emoji, screenshots and files, share contact card, view chat history and make video calls.
    - In Chat History, you can enter keywords to search relevant history; click ![clear](jpg/clear.png) to empty all history.
    - Click ![detail](icon/detail.svg) to view the friend's information and create a new group.
    - In the list on the left side, right-click a friend's name, select **Top**, this friend will be displayed on the top; select **Mute**, there will be no reminders when the friend sends you messages; select **Delete**, the friend will be deleted from the chatting list.
@@ -232,7 +226,7 @@ To create a new group, you can:
 #### Start group chatting
 
 1. Click ![chat](icon/chat.svg) to start chatting in the group. 
-2. In the chatting window, you can send emoji and files, share contact card, view chat history and make video calls.
+2. In the chatting window, you can send emoji, screenshots and files, share contact card, view chat history and make video calls.
    - In Chat History, you can enter keywords to search relevant history; click ![clear](jpg/clear.png) to empty all history.
    - Click ![detail](icon/detail.svg) to view the information about the group and its members; click **Dismiss Group** to exit the group.
    - In the list on the left side, right-click the group's name, select **Top**, this group will be displayed on the top; select **Mute**, there will be no reminders when there's any group message; select **Delete**, the group will be deleted from the chatting list.
@@ -431,4 +425,4 @@ click Help to get the manual, which will help you further know and use Contacts.
 
 
 
-<div class="version-info"><span>Update Date: 2020-09-22</span><span> Version: 1.0</span></div>
+<div class="version-info"><span>Update Date: 2020-09-30</span><span> Version: 1.0</span></div>

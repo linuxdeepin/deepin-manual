@@ -184,7 +184,7 @@ You can add films to the playlist by the following ways:
 ### Clear Playlist
 
 1.  Click ![movie](icon/episodes_normal.svg ) on the Movie interface.
-2.  Click the **Empty** icon under Playlist or right-click to select **Empty playlist**.
+2.  Click the **Empty** icon under Playlist or right-click the video file to select **Empty playlist**.
 
 ### Display in File Manager
 
@@ -193,10 +193,10 @@ You can add films to the playlist by the following ways:
 
 ## Main Menu
 
-On the main menu, you can open files/folders, switch window themes, view help manual and get more information about Movie.
+On the main menu, you can open files/folders, switch window themes, view help manual, and get more information about Movie.
 ### Settings
 
-You can set the basic information, shortcut keys and subtitles.
+You can set the basic information, shortcut keys, and subtitles.
 
 #### Basic Settings
 
@@ -226,7 +226,7 @@ You can set the basic information, shortcut keys and subtitles.
 
 ### Theme
 
-The window theme provides three theme types, namely Light Theme, Dark Theme and System Theme (default).
+The window theme provides three theme types, namely Light Theme, Dark Theme, and System Theme (default).
 
 1.  On the Movie interface, click ![icon_menu](icon/icon_menu.svg).
 2.  Click **Theme** to select one theme.
@@ -246,4 +246,5 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 1.   On the Movie interface, click ![icon_menu](icon/icon_menu.svg).
 2.  Click **Exit** to exit Movie.
 
-<div class="version-info"><span>Update Date: 2020-09-22</span><span> Version: 5.7</span></div>
+
+<div class="version-info"><span>Update Date: 2020-09-30</span><span> Version: 5.7</span></div>

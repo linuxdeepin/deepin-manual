@@ -98,7 +98,7 @@
 
 1. 在邮箱主界面，单击写邮件按钮![email-button](icon/email-button.svg)，进入写邮件界面。
 2. 输入收件人邮箱帐号，或**单击** ![1](jpg/1.png)从通讯录添加收件人，还可以选择抄送或密送。
-3. 邮件正文支持富文本编辑，包括插入图片、链接及@功能等，可以多样化编辑正文。
+3. 邮件正文支持富文本编辑，包括插入图片、链接等功能，还支持签名功能。
 4. 编辑完成后，单击 **发送 **即可。
 
 ![write-email](jpg/write-email.png)
@@ -107,7 +107,7 @@
 
 收邮件是从服务器同步邮箱数据，包括邮件，地址簿，日历等信息，系统默认每15分钟同步1次邮箱数据。以下介绍两种收邮件的方式：
 
-- 选中邮箱帐户，单击刷新按钮![refresh-button](icon/refresh-button.svg)。
+- 选中邮箱帐户，单击收取邮件按钮![refresh-button](icon/refresh-button.svg)。
 - 选中邮箱帐户并单击右键，选择 **收取邮件**。
 
 ## 查看邮件
@@ -118,7 +118,7 @@
 
    ![contact-info](jpg/contact-info.png)
 
-3. 在邮件正文区域，可以对邮件进行编辑、转发、标星、移动、删除、打印等操作。
+3. 在邮件正文区域，可以对邮件进行编辑、转发、标星、移动、删除等操作。
 
    ![email-text](jpg/email-text.png)
 
@@ -254,4 +254,4 @@
 2. 单击 **退出**。
 
 
-<div class="version-info"><span>文档更新时间: 2020-09-22</span><span> 版本: 5.1</span></div>
+<div class="version-info"><span>文档更新时间: 2020-09-30</span><span> 版本: 5.1</span></div>

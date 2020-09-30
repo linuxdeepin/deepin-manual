@@ -126,6 +126,10 @@
 
 ![0|wallpaper](jpg/wallpaper.png)
 
+### 在文件管理器中显示
+1. 在看图界面上，单击鼠标右键。
+2. 选择 **在文件管理器中显示**，打开并定位该图片所在的文件夹位置。
+
 
 ### 查看图片信息
 
@@ -164,4 +168,4 @@
 1. 在看图界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **退出**。   
 
-<div class="version-info"><span>文档更新时间: 2020-09-22</span><span> 版本: 5.6</span></div>
+<div class="version-info"><span>文档更新时间: 2020-09-30</span><span> 版本: 5.6</span></div>

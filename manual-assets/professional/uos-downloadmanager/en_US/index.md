@@ -236,4 +236,4 @@ Click Help to get the manual, which will help you further know and use Log Viewe
 
 
 
-<div class="version-info"><span>Update Date: 2020-09-22</span><span> Version: 1.0</span></div>
+<div class="version-info"><span>Update Date: 2020-09-30</span><span> Version: 1.0</span></div>

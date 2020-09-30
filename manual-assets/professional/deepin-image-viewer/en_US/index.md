@@ -9,7 +9,7 @@ Image Viewer is a lightweight image viewer with a trendy look and smooth perform
 
 ## Guide
 
-You can run, close and create shortcuts for Image Viewer by the following ways.
+You can run, close, and create shortcuts for Image Viewer in the following ways.
 
 ### Run Image Viewer
 
@@ -39,14 +39,14 @@ On the Image Viewer interface, press **Ctrl + Shift + ?** on the keyboard to vie
 You can use one of the following ways to open image files:
 
 - Right-click an image and select **Open with** > **Image Viewer**. 
-- Double click an image to open if Image Viewer has been set as the default application for image viewing.
+- Double-click an image to open if Image Viewer has been set as the default application for image viewing.
 - Open Image Viewer and click **Open Image** and select the image file to open it.
 - Open Image Viewer and drag the image to the interface to open it.
 - Drag the image to the Image Viewer icon on desktop or in the dock to open it.
 
 > ![tips](icon/tips.svg)Tips: In Control Center, you can set Image Viewer as the default image viewer. Please refer to [Default Applications](dman:///dde#Default Application Settings) for specific operations.
 
-Following Image formats are supported: BMP, ICO, JPG/JPE/JPEG, PNG, TGA, TIF/TIFF, XPM, GIF, SGI, RAW, WEBP, CR2, NEF, DNG, RAF, MEF, MRW, XBM, SVG, ORF and MNG.
+Following Image formats are supported: BMP, ICO, JPG/JPE/JPEG, PNG, TGA, TIF/TIFF, XPM, GIF, SGI, RAW, WEBP, CR2, NEF, DNG, RAF, MEF, MRW, XBM, SVG, ORF, and MNG.
 
 ### Main Interface
 
@@ -57,7 +57,7 @@ Following Image formats are supported: BMP, ICO, JPG/JPE/JPEG, PNG, TGA, TIF/TIF
 | ![previous](icon/previous.svg)                     | Previous                | Switch to the previous image.                                |
 | ![next](icon/next.svg)                             | Next                    | Switch to the next image.                                    |
 | ![adapt-image](icon/adapt-image.svg)               | 1:1 Size                | The image will show in 1:1 size without changing the size of the window. |
-| ![adapt-screen](icon/adapt-screen.svg)             | Fit to window           | The image will be resized to adapt to the current window.    |
+| ![fit_hover](icon/fit_hover.svg)                   | Fit to window           | The image will be resized to adapt to the current window.    |
 | ![clockwise-rotation](icon/clockwise-rotation.svg) | Rotate clockwise        | Rotate the image 90 degrees clockwise.                       |
 | ![contrarotate](icon/contrarotate.svg)             | Rotate counterclockwise | Rotate the image 90 degrees counterclockwise.                |
 | ![delete](icon/delete.svg)                         | Delete                  | Delete the current image.                                    |
@@ -73,8 +73,10 @@ Following Image formats are supported: BMP, ICO, JPG/JPE/JPEG, PNG, TGA, TIF/TIF
 You can print images in Image Viewer.
 
 1. Right-click the image on the Image Viewer interface and select **Print**.
-2. Choose a printer and set the print options.
-3. Click **Print **to send the picture to the printer.
+2. Select the printer and set the printing parameters.
+3. Click **Print**.
+
+> ![notes](icon/notes.svg)Notes: Click **Advanced** to customize the printing parameters.
 
 ### Rename Images
 
@@ -95,7 +97,7 @@ You can print images in Image Viewer.
 You can copy images in Image Viewer.
 
 1. Right-click the image on the Image Viewer interface and select **Copy**.
-2. On the target place, right-click the blank area and select **Paste** to copy image to that location.
+2. On the desktop or in the target place, right-click the blank area and select **Paste** to copy the image to that location.
 
 > ![tips](icon/tips.svg)Tips: Both the path and content of picture are copied.
 
@@ -107,7 +109,7 @@ You can delete images from Image Viewer in the following ways.
 
 - Click the ![delete_press](icon/delete.svg) icon on the Image Viewer interface. 
 - Right-click the image and select **Delete**.
-- Press **Delete** key on the keyboard.
+- Press **Delete** key on the keyboard on the Image View interface.
 
 ### Rotate Images
 
@@ -122,11 +124,16 @@ You can set an image as desktop wallpaper. Right-click the image on the Image Vi
 
 ![0|wallpaper](jpg/wallpaper.png)
 
+### Display in File Manager
+
+1. Right-click the image in the Image Viewer interface and select **Display in file manager**.
+2. The folder location of the image will be opened and displayed.
+
 ### View Image Information
 
 You can view detailed information of the image.
 1. Right-click the image in the Image Viewer interface and select **Image info**.
-2. The Image info window will pop up displaying the detailed information of the Image.
+2. The image info window will pop up displaying the detailed information of the Image.
 
 ![1|view info](jpg/info.png)
 
@@ -155,4 +162,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 
 1. On the Image Viewer interface, click ![icon_menu](icon/icon_menu.svg).
 2. Click **Exit** to exit Image Viewer.
-<div class="version-info"><span>Update Date: 2020-09-22</span><span> Version: 5.6</span></div>
+<div class="version-info"><span>Update Date: 2020-09-30</span><span> Version: 5.6</span></div>

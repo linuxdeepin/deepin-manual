@@ -3,7 +3,7 @@
 ## Overview
 UnionTech OS(Uniontech operating system) is a beautiful, easy-to-use and reliable Linux desktop operating system. It is equipped with a series of original applications such as File Manager, App Store, Image Viewer, Movie, and etc, which not only offers you abundant entertainment experience but also meet your daily needs of learning and working. With continual improvement, UnionTech OS is becoming one of the most popular open-source operating systems in China.
 
-![1|desk](jpg/desk.png)
+![1|desk](jpg/desk.jpg)
 
 ### Getting Started
 
@@ -85,6 +85,7 @@ Select some elegant and fashionable wallpapers to beautify your desktop and make
 ![1|wallpaper](jpg/wallpaper.png)
 
 > ![tips](icon/tips.svg)Tips: Check **Wallpaper Slideshow**, and set the time interval to change wallpaper automatically, or set to change the wallpaper in the process of login or wakeup. 
+
 > ![tips](icon/tips.svg)Tips: You can also set your favorite picture as wallpaper in an image viewer.
 
 ### Set Screensaver
@@ -762,11 +763,13 @@ You can view MAC, IP address, gateway and other network info in network details.
 
 You can set "Do Not Disturb" to system notifications, and also switch on or off the notification hints of some applications.
 
+![noti-center](jpg/noti-center.png)
+
 #### System Notification Settings
 
 You can set "Do Not Disturb" to system notifications and whether to show icon on Dock here.
 
-1. On the homepage of Control Center, click ![nav_notifi_42px](icon/nav_notifi_42px.svg).
+1. On the homepage of Control Center, click ![nav_notifi_42px](icon/dcc_nav_notification_36px.svg).
 
 2. Click **System Notification**.
 
@@ -778,7 +781,7 @@ You can set "Do Not Disturb" to system notifications and whether to show icon on
 
 You can custom notification hints for all applications.
 
-1. On the homepage of Control Center, click ![nav_notifi_42px](icon/nav_notifi_42px.svg).
+1. On the homepage of Control Center, click ![nav_notifi_42px](icon/dcc_nav_notification_36px.svg).
 2. Under **App Notifications**, select an application, and in the window on the right, you can choose to check:
    - Play a sound
    - Show messages on lockscreen
@@ -968,7 +971,7 @@ After inserting or connecting the mouse, make relevant settings in the Control C
 
 #### Touchpad
 
-![0|touchpad](jpg/touchpad.png.jpg)
+![0|touchpad](jpg/touchpad.png.png)
 
 If you are using a laptop, to avoid mis-operation on the touchpad, switch on **Disable touchpad while typing**, **Disable touchpad when a mouse is connected**,  and turn on **Palm Detection** to set **Minimum Contact Surface** and **Minimum Pressure Value**. 
 
@@ -1012,7 +1015,7 @@ Set the keyboard layout to customize the keyboard for the current language. When
 
 You have set a keyboard layout during system installation, but you can add more for other purposes. 
 
-![layout](jpg/layout.png.jpg)
+![layout](jpg/layout.png)
 
 ##### Add Keyboard Layout
 
@@ -1060,7 +1063,7 @@ Add multiple languages into the list to change language conveniently.
 #### Shortcuts
 The shortcut list includes all shortcuts in the system. View, modify and customize the shortcuts here as you want.
 
-![0|shortcut](jpg/shortcut.png.png)
+![0|shortcut](jpg/shortcut.png)
 
 ##### View Shortcuts
 
@@ -1205,7 +1208,7 @@ The on-line activation is available only when the network is connected normally.
 
 Trial Period Activation
 
-There is only one trial period activation opportunity for each device and the valid period is 90 days calculated from the activation date. All the system functions are available in the trial period.
+Under both online/offline mode, the system is activated automatically. There is only one trial period activation opportunity for each device and the valid period is 90 days calculated from the activation date. All the system functions are available in the trial period.
 
 1. Click  ![uos1](icon/uos1.svg)on the tray in the lower right corner to enter the interface.
 
@@ -1232,7 +1235,7 @@ Input the serial number
 
 
 Import the activation document
- 1. Click  ![uos1](icon/uos1.svg)on the tray in the lower right corner to enter the interface.
+   1. Click  ![uos1](icon/uos1.svg)on the tray in the lower right corner to enter the interface.
    
    2.  Click **Import License File**, select the correct license file in .key format in the File Manager and click **Activate Now**.  
    
@@ -1265,17 +1268,17 @@ The off-line activation can be adopted when the network connection is abnormal.
 
 1.  The activation success interface shows the product name, version number, activation method, etc.
 
-- Product Name:  operation system name
+   - Product Name:  operation system name
 
-- Product Version: operation system version
+   - Product Version: operation system version
 
-- Authorization Status: Authorization Status includes Unauthorized, Expired and Authorized.  Successful activation indicates Authorized.
+   - Authorization Status: Authorization Status includes Unauthorized, Expired and Authorized.  Successful activation indicates Authorized.
 
-- Authorized Object: authorized user name
+   - Authorized Object: authorized user name
 
-- Activation Method: Activation Methods include activation code, activation file as well as off-line activation code.
+   - Activation Method: Activation Methods include activation code, activation file as well as off-line activation code.
 
-- Expiration Time: The system will remind you that the authorization is about to expire when the deadline is approaching.
+   - Expiration Time: The system will remind you that the authorization is about to expire when the deadline is approaching.
 
 ![0|activation code3](jpg/activation-code3.png)
 
@@ -1633,4 +1636,4 @@ The scrolling directions of the screen are the same as where your finger goes.
 Pinch two fingers to zoom out on the webpage or picture.  Open two fingers to zoom in on the webpage or picture.
 
 
-<div class="version-info"><span>Update Date: 2020-09-22</span><span> Version: 2020.03</span></div>
+<div class="version-info"><span>Update Date: 2020-09-30</span><span> Version: 2020.03</span></div>

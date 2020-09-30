@@ -144,13 +144,13 @@ The selected text will be highlighted after the annotation is added successfully
    > * Click in any blank area outside the window after inputing some content, the content will be saved automatically and displayed as a small icon. 
 
 - Copy note
-   -  Right-click the highlighted text to which a note is successfully added and select **Copy** to copy the content.
-   -  Right-click the note icon, select **Copy** to copy the content.
-   -  Click![menu](icon/thumbnail_normal_light.svg) and the catalog icon ![view](icon/comments_normal_light.svg) on the left and select a note, right-click and select **Copy**. 
+   -  Right-click the highlighted text to which a note is successfully added and select **Copy** to copy the content.
+   -  Right-click the note icon, select **Copy** to copy the content.
+   -  Click![menu](icon/thumbnail_normal_light.svg) and the catalog icon ![view](icon/comments_normal_light.svg) on the left and select a note, right-click and select **Copy**. 
    
 - Show note  
-   1.  Hove the cursor over the note icon to show the content. 
-   2.  Click the note icon to pop up a window, you can view and re-edit. 
+   1.  Hove the cursor over the note icon to show the content. 
+   2.  Click the note icon to pop up a window, you can view and re-edit. 
 
 - Delete note 
    - Right-click the highlighted text to which you have added a note, and select **Remove highlight**. 
@@ -315,4 +315,5 @@ click Help to get the manual, which will help you further know and use Document 
 1. Click ![icon_menu](icon/icon_menu.svg) on the main interface.
 2. Click  **Exit**.
 
-<div class="version-info"><span>Update Date: 2020-09-22</span><span> Version: 5.7</span></div>
+
+<div class="version-info"><span>Update Date: 2020-09-30</span><span> Version: 5.8</span></div>

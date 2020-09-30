@@ -41,7 +41,7 @@ With Draw, you are able to process imported pictures and draw pictures freely. Y
 ### Create tabs
 
 ![1|mian](jpg/new.png)
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 - On the Draw interface, click ![menu](icon/icon_menu.svg)> **New** to create a new tab.
 - You can also click ![add](jpg/add.png) to create a new tab when there are two or more tabs in the window.
 
@@ -59,17 +59,19 @@ When there are multiple tabs, you can adjust the order of tabs by dragging the t
 
 > ![tips](icon/tips.svg)Tips: You are able to import multiple pictures at a time or import pictures via ![menu](icon/icon_menu.svg)> **Open**. 
 
-Currently, a maximum of 30 pictures can be exported. Formats including JPG, PNG, TIF and BMP are supported.
+Currently, a maximum of 30 pictures can be exported. Formats including JPG, PNG, TIF, and BMP are supported.
 
 ### Export Pictures
 
 1.  On the Draw interface, click ![menu](icon/icon_menu.svg)> **Export**.
-2.  Set the parameters including file name, path, format and picture quality. Click **Save**. 
+2.  Set the parameters including file name, path, format and picture quality. 
+3.  Click **Save**. 
 
 ### Save Pictures
 
 1.   On the Draw interface, click ![menu](icon/icon_menu.svg)> **Save** or ![menu](icon/icon_menu.svg)> **Save as**.
-2.   Set the file name and format to be saved and click **Save**.
+2.   Set the file name and format to be saved.
+3.   Click **Save**.
 
 > ![notes](icon/notes.svg)Notes: The suffix of the file name can be omitted and it can be saved as the selected format automatically. 
 
@@ -109,15 +111,13 @@ After drawing entities with the graphics drawing tool, you can perform the follo
  - Click **Sides** to set sides for polygon graphics only. The number of sides ranges from 4 to 10, which can be adjusted by clicking the up or down arrow in the **Sides** or entering the value manually.
 3.   Drag the mouse to draw graphics in the Draw area. 
 
->![tips](icon/tips.svg)Tips: Facilitated by the **Shift** or **Shift + Alt** keys on the keyboard, you can draw a square, perfect circle, equilateral triangle, regular pentagram and regular pentagon when drawing graphics with ![rectangle](icon/rectangle_normal.svg), ![oval](icon/oval_normal.svg), ![triangle](icon/triangle_tool_normal.svg), ![star](icon/draw-star.svg) and ![hexagon](icon/hexagon_tool_normal.svg).
+>![tips](icon/tips.svg)Tips: Facilitated by the **Shift** or **Shift + Alt** keys on the keyboard, you can draw a square, circle, equilateral triangle, regular pentagram and regular pentagon when drawing graphics with ![rectangle](icon/rectangle_normal.svg), ![oval](icon/oval_normal.svg), ![triangle](icon/triangle_tool_normal.svg), ![star](icon/draw-star.svg) and ![hexagon](icon/hexagon_tool_normal.svg).
 
-![1|shape](jpg/shape01 .png)
-
-![1|shape](jpg/shape2.png)
-
-![1|shape](jpg/star.png)
+![1|shape](jpg/shape1.png)
 
 ![1|shape](jpg/shape3.png)
+
+![1|shape](jpg/star.png)
 
 ### Line/Pencil Tool
 
@@ -143,7 +143,6 @@ After drawing entities with the graphics drawing tool, you can perform the follo
    - Adjust the **Size** by entering a value manually or selecting a size in the drop-down list.
    
 3. Click in the Draw area to enter texts in the text box.
-
 
 ![1|text](jpg/text.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -182,7 +181,7 @@ You can copy, crop, and rotate graphics with the editing functions, and also adj
   - Free: enter the dimension manually or adjust the area to be cropped by dragging the cropping border to customize cropping.
   - Original: crop in proportion to the original picture by a ratio of 1:1, 2:3, 8:5 and 16:9 respectively.
 
-3.  Select the cropping mode and select the area to be cropped.
+3.  Select the cropping mode, and select the area to be cropped.
 4.  Press the **Enter** key to crop the graphics from the selected area.
 
 ![1|cut](jpg/cut.png)
@@ -193,13 +192,14 @@ You can copy, crop, and rotate graphics with the editing functions, and also adj
 1. On the Draw interface, select an imported picture.
 2.  Click ![flip](icon/filp_Vertical_normal.svg) or ![flip](icon/flip_Horizontal_normal.svg) to flip the picture vertically or horizontally.
 
-![1|roll-over](jpg/rotate.png)
-
 
 ### Rotate
 
 1.  On the Draw interface, select an imported picture.
 2.  Click ![rotate](icon/rotate_right_normal.svg) or ![rotate](icon/rotate_left_normal.svg) to rotate the picture for 90 degrees clockwise or counterclockwise.
+
+![1|roll-over](jpg/rotate.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 >![tips](icon/tips.svg)Tips: You can also rotate it freely by dragging the base point of the picture or graphics with the mouse.
 
 
@@ -230,32 +230,32 @@ You can copy, crop, and rotate graphics with the editing functions, and also adj
 
 1. On the Draw interface, select one or several graphics.
 
-2. Right-click and select **Align**. Now you can choose from **Align left**, **Horizontal centers**, **Align right**, **Align top**, **Vertical centers**, **Align bottom**, **Distribute horizontal space** or **Distribute vertical space**. 
+2. Right-click and select **Align**. Choose from **Align left**, **Horizontal centers**, **Align right**, **Align top**, **Vertical centers**, **Align bottom**, **Flip horizontally** or **Distribute vertical space**. 
 
 >![notes](icon/notes.svg)Notes: 
     - When you select one graphic, the layer will be aligned with the canvas.
-    - When you select 3 or more graphics, **Distribute horizontal space** and **Distribute vertical space** are available.
+    - When you select 3 or more graphics, **Flip horizontally** and **Distribute vertical space** are available to be selected.
 
 ![1|align1](jpg/align1.png)
 
 ### Align Texts
 
 1.  On the Draw interface, click ![text](icon/text_normal.svg) and adjust the size of text box.
-2.  Select target text. Right-click and select **Text Alight Left**, **Text  Align Right** or **Text Align Center** to align texts as needed.
+2.  Select target text. Right-click and select **Text Alight Left**, **Text  Align Right** or **Text Align Center** to align texts.
 
 ![1|layer](jpg/align.png)
 
 
 ## Main Menu
 
-In the main menu, you can create a new drawing, [Open Pictures](#Open Pictures), [Export Pictures](#Export Pictures), [Save Pictures](#Save Pictures), switch window themes, view help manual and get more information about Draw.
+In the main menu, you can create a new tab, [Open Pictures](#Open Pictures), [Export Pictures](#Export Pictures), [Save Pictures](#Save Pictures), [Print Pictures](#Print Pictures), switch window themes, view help manual, and get more information about Draw.
 
 ### New
 
 You can create a new drawing.
 
 1.  On the Draw interface, click ![icon_menu](icon/icon_menu.svg).
-2.  Click **New** to add a new drawing.
+2.  Click **New** to add a new tab.
 
 ### Theme
 
@@ -280,4 +280,5 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 1.  On the Draw interface, click ![icon_menu](icon/icon_menu.svg).
 2.  Click **Exit** to exit Draw.
 
-<div class="version-info"><span>Update Date: 2020-09-22</span><span> Version: 5.8</span></div>
+
+<div class="version-info"><span>Update Date: 2020-09-30</span><span> Version: 5.8</span></div>

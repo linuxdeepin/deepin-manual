@@ -6,7 +6,7 @@
 
 ## 操作介绍
 
-计算器支持标准模式和科学模式，标准模式执行基本的加减乘除运算，而科学模式执行函数、指数、方根等高级运算，其中标准模式为默认设置，点击 ![icon_menu](icon/icon_menu.svg) > **模式**，选择一种模式。
+在计算器界面，点击 ![icon_menu](icon/icon_menu.svg) > **模式**，选择标准模式或科学模式。标准模式执行基本的加减乘除运算，而科学模式执行函数、指数、方根等高级运算，其中标准模式为默认设置。
 
 ### 标准模式
 
@@ -36,21 +36,19 @@
 | F-E        | 科学计数 | 点击 F-E 开启科学计数；点击 ![icon](icon/F-E.svg) 关闭科学计数。 |
 | ![icon](jpg/deg_normal.png)/![icon](jpg/grad_normal.png)/![icon](jpg/rad_normal.png) | 度量转换 | 分别计算角度、梯度、弧度。 |
 | sin、cos、tan、cot          | 三角函数 | 分别计算数值的正弦、余弦、正切、余切。                        |
+| sin<sup>-1</sup>、cos<sup>-1</sup>、tan<sup>-1</sup>、cot<sup>-1</sup> | 反三角函数 | 第二功能界面按钮，分别计算sin、cos、tan、cot的反三角函数。 |
 | &#124;x&#124;、Rand | F函数 | 分别计算数值的绝对值和随机显示一个31位的数。                 |
 | 2<sup>nd</sup> | 第二功能键 | 点击 2<sup>nd</sup> 切换到反三角函数和开根运算界面；点击 ![icon](icon/2nd.svg) 切换到三角函数与次方运算界面。 |
-|  x<sup>2</sup>、x<sup>3</sup> 、x<sup>y</sup>、10<sup>x</sup>  | 次方运算 | 分别计算数值的平方、立方、y次方、10的x次方。 |
-| log、In                | 对数函数 | 分别以10为底的对数值和以e为底的对数值。 |
+|  x<sup>2</sup>、x<sup>3</sup> 、x<sup>y</sup> | 幂函数 | 分别计算数值的平方、立方、y次方。 |
+|  10<sup>x</sup>、2<sup>x</sup>、e<sup>x</sup>  | 指数函数 | 分别计算10的x次方、2的x次方和e的x次方。其中2<sup>x</sup>和e<sup>x</sup>为第二功能界面按钮。 |
+|  ![icon](jpg/square root_normal.png)、![icon](jpg/cube root_normal.png)、![icon](jpg/y root_normal.png) | 幂函数  | 第二功能界面按钮，分别计算数值的平方根、立方根、x的y次方根。 |
+| log、In、log<sub>y</sub><sup>x</sup> | 对数函数 | 分别以10为底的对数值、以e为底的对数值、以y为底x的对数。其中log<sub>y</sub><sup>x</sup> 为第二功能界面按钮。 |
 | π | 圆周率 | 约等于3.14159......，可精确到小数点后31位。 |
 | e              | 自然常数 | 约等于2.71828.....，可精确到小数点后31位。 |
 | Mod            | 求余函数 | 显示x/y的模数或余数。 |
 | 1/x | 反比例函数 | 计算显示数值的倒数。 |
 |x! | 阶乘 | 计算显示数字的阶乘。 |
 |exp | 指数 | 允许输入用科学计数法表示的数字。 |
-| sin<sup>-1</sup>、cos<sup>-1</sup>、tan<sup>-1</sup>、cot<sup>-1</sup> | 反三角函数 | 分别计算sin、cos、tan、cot的反三角函数。 |
-|  ![icon](jpg/square root_normal.png)、![icon](jpg/cube root_normal.png)、![icon](jpg/y root_normal.png) | 开根运算 | 分别计算数值的平方根、立方根、x的y次方根。 |
-|2<sup>x</sup>              |次方运算 | 计算2的x次方。 |
-| log<sub>y</sub><sup>x</sup>               | 对数函数 | 以y为底x的对数。 |
-| e<sup>x</sup>   | 指数函数 | 计算e的x次方。 |
 
 > ![tips](icon/tips.svg)窍门：您可以点击 ![icon_menu](icon/icon_menu.svg) > **历史记录** 查看科学模式下的历史表达式和内存列表，也可以删除历史记录。
 
@@ -116,6 +114,8 @@
 
 1. 在计算器界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **历史记录**，查看历史表达式和内存列表。
+   
+   >![icon](icon/notes.svg)说明：关闭应用后，历史记录会清零。
 
 ### 主题
 
@@ -146,4 +146,4 @@
 2. 点击 **退出**。
 
 
-<div class="version-info"><span>文档更新时间: 2020-09-22</span><span> 版本: 5.5</span></div>
+<div class="version-info"><span>文档更新时间: 2020-09-30</span><span> 版本: 5.6</span></div>

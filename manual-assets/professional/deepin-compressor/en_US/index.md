@@ -15,7 +15,7 @@ You can run, exit or create a shortcut for Archive Manager by the following ways
 
 ### Run Archive Manager
 
-1.  Click ![launcher](icon/deepin-launcher.svg) on dock  to enter the Launcher interface.
+1.  Click ![launcher](icon/deepin-launcher.svg) on dock  to enter the Launcher interface.
 2.  Locate ![deepin-compressor](icon/deepin-compressor.svg) by scrolling the mouse wheel or searching Archive Manager in the Launcher interface and click it to run.
 3.  Right-click ![deepin-compressor](icon/deepin-compressor.svg) and you can:
  - Click **Send to desktop** to create a desktop shortcut.
@@ -43,24 +43,32 @@ On the Archive Manager interface, press **Ctrl+ Shift+?** on the keyboard to vie
 It is available for you to compress a single file/folder/package or a collection of multiple files/folders/packages.
 
 1. On the Archive Manager interface, click **Select File** to select the file to be compressed and click **Open**.
+
    > ![tips](icon/tips.svg)Tips: You can drag one or more files directly to the Archive Manager interface for compression.
    
 2.  Click  ![plus](icon/icon_plus.svg) or click  ![icon_menu](icon/icon_menu.svg) > **Open file** to add files to be compressed.
-![1|compressor](jpg/compress-add.png)
+
+   ![1|compressor](jpg/compress-add.png)
 
 3.  Click **Next**.
+
 4.  Set the compressed file name, storage location, package format, etc.
+
 5.  If you enable the advanced option mode, it is available for you to set the package encryption password and volume compression.
    > ![notes](icon/notes.svg)Notes: The default package is in .zip format, and the available formats for file encryption are .7z and .zip; for list encryption, it is .7z; for volume compression, it is .7z. 
-
+   
    ![1|compressor](jpg/compress-file.png)
+
 6.  Click **Compress**.
+
 7.  After compression is successfully finished, you can:
+
    - Click **View** to view the specific storage location.
    - Click **Back** to return to the main interface after successful compression.
+   
    > ![tips](icon/tips.svg)Tips: You can also right-click **Compress** to compress the file.
-
-![1|compressor](jpg/compress-success.png)
+   
+   ![1|compressor](jpg/compress-success.png)
 
 
 ### Decompression
@@ -86,7 +94,7 @@ On the Archive Manager interface, select a file to be extracted, right-click and
 
 > ![notes](icon/notes.svg)Notes: When the file to be extracted is encrypted, you need to enter the password to open and extract the files. 
 
-![1|decompression](jpg/extract.png)
+   ![1|decompression](jpg/extract.png)
 
 
 ## Main Menu
@@ -141,4 +149,4 @@ View Help to get more information about Archive Manager.
 1.  On the Archive Manager interface, click ![icon_menu](icon/icon_menu.svg) .
 2.  Click **Exit** to exit.
 
-<div class="version-info"><span>Update Date: 2020-09-22</span><span> Version: 5.8</span></div>
+<div class="version-info"><span>Update Date: 2020-09-30</span><span> Version: 5.9</span></div>

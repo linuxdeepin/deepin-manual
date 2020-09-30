@@ -113,6 +113,7 @@ Click ![icon_view](icon/icon_view.svg) and ![list_view](icon/list_view.svg) on t
 
 > ![tips](icon/tips.svg)Tips: you can click the head of the columns in the list view to change the sort order.
 
+
 ### Open Files
 
 1. On File Manager, right-click the file you want to open.
@@ -176,6 +177,13 @@ In Properties of files, you can view the basic info, open with list, and permiss
 
 > ![notes](icon/notes.svg)Notes: If you check the properties of multiple files at a time, the total size and quantities will be displayed. If you check the properties of a shortcut, the source file location will be displayed in addition. You can use shortcuts **Ctrl + I** to view the properties as well.
 
+### Virus scan
+
+1. On File Manager interface, right-click a file. 
+2. Select **Virus scan**, the **Virus Scan** interface of Security Center pops up, so you can scan the file for virus.
+
+>![notes](icon/notes.svg)Notes: If Security Center is executing virus scanning currently, you can click **View** in the pop-up window to enter the **Virus Scan** interface of Security Center.
+
 ## Common Operations
 
 File Manager is featured with many useful functions, which are all designed to ease the commonly used operations.
@@ -207,7 +215,7 @@ Click the search button or press **Ctrl + F**  to switch to the search bar. Or, 
 
 > ![notes](icon/notes.svg)Notes: 
    - In **Settings**, check "Auto index internal disk" and "Index external storage device after connected to computer" to quicken the searching speed.
-   - In case you want to search files by keywords in the content, you can check **Full-Text search** in **Settings** > ** Advanced** > **Index**.
+   - In case you want to search files by keywords in the content, you can check **Full-Text search** in **Settings** > **Advanced** > **Index**.
 
 #### Advanced Search
 1. In search bar, input the keywords and press **Enter**. When the results appear, you will see ![filter](icon/filter.svg) icon, you can click it to do advanced search.
@@ -361,12 +369,16 @@ You can find sharing folders of other users in the same LAN in **Computers in LA
    - When you visit encrypted folders, a window pops up and you will have to input user name and password before visiting. If you check **Remember password**, you don't have to input password when you visit the folder next time.
 4. Click **Connect** to establish connection.
 
+### Open in new window as admin
 
+1. Right-click in the blank area on File Manager. 
+2. Select **Open in new window as admin**, input your login password in the pop-up window and click **Confirm**.
+3. The file will be opened in a new window, in which you can operate with admin permissions. And you will exit admin permissions when you close this window.
 
-### Open in Terminal
+### Open in terminal
 
-1. On File Manager interface, right-click in any blank area.
-2. Select **Open in terminal** to start up Terminal, and its path is the current directory.
+1. Right-click in the blank area on File Manager. 
+2. Select **Open in terminal**, Terminal will be opened, and its directory will be the current one.
 
 ![0|openinterminal](jpg/openinterminal.png)
 
@@ -392,8 +404,8 @@ When there is an external device inserted, you can directly send file/folder to 
 If your computer is equipped with Bluetooth module, you can transfer files in short distance through Bluetooth.
 1. On File Manager interface, select a file.
 2. Right-click and select **Send to** > **Send to Bluetooth**.
-3. If your computer is not connected to a Bluetooth device, click "Go to Bluetooth Settings" in the pop-up dialog box, and the interface will jump to the **Control Center** > **Bluetooth** setting window. Switch on the Bluetooth function, search for nearby Bluetooth devices and connect. After the connection is successful, a prompt of successful connection will pop up on the top of the desktop.
-4. A dialogue box pops up, you can select a receiving device and click **Next**.
+3. If your computer is not connected to a Bluetooth device, click "Go to Bluetooth Settings" in the pop-up dialog box, and the interface will jump to the **Control Center** > **Bluetooth** setting window. Refer to [Connect to a Bluetooth Device](dman:///dde#Connect to a Bluetooth Device) for details.
+4. After the connection is successful, a dialogue box pops up, you can select a receiving device and click **Next**.
 5. After transferring is finished successfully, click **Done** in the pop-up dialogue box.
 >![tips](icon/tips.svg)Tips: If you need to transfer a folder, you can compress it in advance and send it through Bluetooth.
 
@@ -571,4 +583,4 @@ The window theme includes Light Theme, Dark Theme and System Theme (default).
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Click **Exit**.
 
-<div class="version-info"><span>Update Date: 2020-09-22</span><span> Version: 5.2</span></div>
+<div class="version-info"><span>Update Date: 2020-09-30</span><span> Version: 5.2</span></div>

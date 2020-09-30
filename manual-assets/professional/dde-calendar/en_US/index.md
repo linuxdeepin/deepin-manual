@@ -10,11 +10,11 @@ Calendar is a useful tool to manage your personal life. By relating events with 
 
 ## Guide
 
-You can run, close or create a shortcut for calendar by the following ways.
+You can run, close, or create a shortcut for calendar in the following ways.
 
 ### Run Calender
 
-1.  Click ![deepin-launcher](icon/deepin-launcher.svg) in the dock to enter the Launcher interface.
+1.  Click ![deepin-launcher](icon/deepin-launcher.svg) in the dock to enter the Launcher interface.
 2.  Locate ![draw](icon/dde-calendar.svg) by scrolling the mouse wheel or searching "calendar" in the Launcher interface and click it to run.
 3.  Right-click ![draw](icon/dde-calendar.svg) and you can:
 
@@ -58,25 +58,25 @@ Monthly view is defaulted and you can click to switch between different views.
 
 1.  Select a date in the monthly, weekly or daily view.
 2.  Double-click, or right-click to select **New event** in the blank area on a date and a **New event** window will pop up.
-3.  Set the schedule type, description, time, reminder, etc.
+3.  Set the schedule type, description, time, and reminder, etc.
 
    ![0|create](jpg/create.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
    
-   - Type: work, life and other.
-   - Event time: all day, start time and end time.
+   - Type: work, life, and other.
+   - Event time: all day, start time, and end time.
    
       - When all day is checked:
-         - You can only select dates as starts and ends and cannot set hours and minutes. 
-         - Remind me: Never, On start day (9:00 AM), 1 day before (the default setting), 2 days before and 1 week before
+         - You can only select dates as starts and ends, and cannot set hours and minutes. 
+         - Remind me: Never, On start day (9:00 AM), 1 day before (the default setting), 2 days before, and 1 week before
       
       - When all day is not checked:
-         - You can select dates, hours and minutes as starts and ends.
-         - Remind me: Never, At time of event, 15 minutes before, 30 minutes before, 1 hour before, 1 day before, 2 days before and 1 week before. 
+         - You can select dates, hours, and minutes as starts and ends.
+         - Remind me: Never, At time of event, 15 minutes before, 30 minutes before, 1 hour before, 1 day before, 2 days before, and 1 week before. 
    
-   - Repeat: Never, Daily, Weekdays, Weekly, Monthly or Yearly.
+   - Repeat: Never, Daily, Weekdays, Weekly, Monthly, or Yearly.
    
-   - End Repeat: Never, after n time(s) or on the date selected.
+   - End Repeat: Never, after n time(s), or on the date selected.
 
  > ![notes](icon/notes.svg)Notes: Only when you enable the **Repeat** feature can **End Repeat** be displayed.
 
@@ -86,9 +86,9 @@ Monthly view is defaulted and you can click to switch between different views.
 
 ### Edit Events
 
-1. Right-click a date with schedule in the monthly, weekly or daily view.
+1. Right-click a date with schedule in the monthly, weekly, or daily view.
 2.  Select **Edit** and an **Edit Event** dialogue will pop up.
-3.  Set properties for the event under editing.  
+3.  Set properties for the event under editing.  
 4.  Click **Save**. 
 5.  If it is set as an all day event or a repeated event, a prompt box will pop up for you to confirm information and then complete editing. 
 
@@ -108,7 +108,7 @@ Check **All Day**, set the **Starts** and **Ends **and you are able to set an al
 ### Set Repeating Events
 
 1. Click the drop-down list on the right of **Repeat** and select an option when creating or editing an event.
-   - **Daily**:  Enter the number of days between each repetition.
+   - **Daily**: Enter the number of days between each repetition.
    - **Weekdays**: Enter the number of weekdays between each repetition.
    - **Weekly**: Enter the number of weeks between each repetition and select the day on which the event shall occur.
    - **Monthly**: Enter the number of months between each repetition.
@@ -118,7 +118,7 @@ Check **All Day**, set the **Starts** and **Ends **and you are able to set an al
 
 ### View Events
 
-Double-click an event title in the monthly, weekly or daily view and a **My Event** window will pop up. You can view events, [Edit Events](#Edit Events) or [Delete Events](#Delete Events). 
+Double-click an event title in the monthly, weekly, or daily view and a **My Event** window will pop up. You can view events, [Edit Events](#Edit Events), or [Delete Events](#Delete Events). 
 
 ### View Schedule Reminder Details
 
@@ -135,7 +135,7 @@ Description of icons contained in the prompt information is listed as below.
 
 ### Search Events
 
-In the yearly, monthly, weekly or daily view, when the events are entered in the top search box, the corresponding search results will be displayed automatically on the right of the calendar.
+In the yearly, monthly, weekly, or daily view, when the events are entered in the top search box, the corresponding search results will be displayed automatically on the right of the calendar.
 
 1.  In the top search box of the Calendar interface, you can click![search](icon/search.svg)to enter keywords.
 
@@ -147,13 +147,13 @@ In the yearly, monthly, weekly or daily view, when the events are entered in the
 
 ### Delete Events
 
-1.  Right-click a date with event in the monthly, weekly or daily view.
+1.  Right-click a date with event in the monthly, weekly, or daily view.
 2.  Click **Delete** and a **You are deleting an event** prompt box will pop up.
 3.  Confirm the prompt information and delete the event.
 
 You can also click **Cancel** to cancel the operation.
 
-Description of icons contained in the prompt information for repeating and non-repeating events is listed as below.
+Description of icons contained in the prompt information for repeating and non-repeating events when deleting a event is listed as below.
 
 | Icon                     | Description                                                  |
 | ------------------------ | ------------------------------------------------------------ |
@@ -175,11 +175,11 @@ In the Calendar, if you select one or more occurrences of the repeating events, 
 
 ## Main Menu
 
-On the main menu, you can switch window themes, view help manual and get more information about Calendar.
+On the main menu, you can switch window themes, view help manual, and get more information about Calendar.
 
 ### Theme
 
-The window theme provides three theme types, namely Light Theme, Dark Theme and System Theme (default).
+The window theme provides three theme types, namely Light Theme, Dark Theme, and System Theme (default).
 
 1.  On the Calendar interface, click ![icon_menu](icon/icon_menu.svg).
 
@@ -200,4 +200,5 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 1.   On the Calendar interface, click ![icon_menu](icon/icon_menu.svg). 
 2.  Click **Exit** to exit Calendar.
 
-<div class="version-info"><span>Update Date: 2020-09-22</span><span> Version: 5.7</span></div>
+
+<div class="version-info"><span>Update Date: 2020-09-30</span><span> Version: 5.7</span></div>
