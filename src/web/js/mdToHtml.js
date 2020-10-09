@@ -47,16 +47,17 @@ export default function(mdFile, mdData, key='') {
   console.log("-----------------------------------");
   if (key != '')
   {
-    //将'-+'字符串 反向还原成'/'
-    key = key.replace(/-+/g,'/');
+    console.log("regexp==============>",key);
+    //将'=-='字符串 反向还原成'%'
+    key = key.replace(/=-=/g,'%');
+
+    console.log("regexp===>",key);
 
     //将关键字转义
     const keyTemp = new RegExp(escapeRegExp(key), 'gi');
 
     
     // key = re;
-    console.log("--------->",keyTemp);
-    // var formatKeyword = key.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')
     var finder = new RegExp(">.*?<",'g') // 提取位于标签内的文本，避免误操作 class、id 等
     html = html.replace(finder,function(matched){
             return matched.replace(new RegExp(keyTemp,'gi'),"<span style='background-color: yellow'>$&</span>");

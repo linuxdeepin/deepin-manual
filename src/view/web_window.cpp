@@ -856,8 +856,8 @@ void WebWindow::onSetKeyword(const QString &keyword)
             search_edit_->clearEdit();
         } else {
             QString strTemp = keyword;
-            if (strTemp.contains("-+")) {
-                strTemp.replace("-+", "/");
+            if (strTemp.contains("=-=")) {
+                strTemp.replace("=-=", "%");
             }
             search_edit_->setText(strTemp);
         }

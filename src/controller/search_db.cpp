@@ -55,9 +55,9 @@ const char kSearchSelectAnchor[] =
     "LEFT JOIN (SELECT anchor,appName FROM search where anchorId='h0' and lang=':lang') t2 ON t1.appName=t2.appName "
     "WHERE t1.appName=t2.appName "
     "AND t1.lang = ':lang' "
-    "AND (t1.anchor LIKE '%:anchor%' "
-    "OR t1.anchorSpell LIKE '%:anchor%' "
-    "OR t1.anchorInitial LIKE '%:anchor%') --case insensitive";
+    "AND (t1.anchor LIKE '%/:anchor%' escape '/' "
+    "OR t1.anchorSpell LIKE '%/:anchor%' escape '/'"
+    "OR t1.anchorInitial LIKE '%/:anchor%' escape '/') --case insensitive";
 
 //将包含关键字的搜索结果顺序输出
 const char kSearchSelectContent[] =
@@ -65,9 +65,9 @@ const char kSearchSelectContent[] =
     //    "FROM search "
     //    "WHERE lang = ':lang' AND "
     //    "content LIKE '%:content%' --case insensitive";
-    "select appName, anchor, anchorId, content from search where lang = ':lang' and anchor like '%:content%' "
+    "select appName, anchor, anchorId, content from search where lang = ':lang' and anchor like '%/:content%' escape '/' "
     "union all "
-    "select appName, anchor, anchorId, content from search where lang = ':lang' and content like '%:content%' and anchor not like '%:content%' "
+    "select appName, anchor, anchorId, content from search where lang = ':lang' and content like '%/:content%' escape '/' and anchor not like '%/:content%' escape '/'"
     "order by appName";
 
 const int kResultLimitation = INT_MAX;
@@ -262,6 +262,7 @@ void SearchDb::handleSearchAnchor(const QString &keyword)
     const QString lang = QLocale().name();
     const QString sql =
         QString(kSearchSelectAnchor).replace(":anchor", keyword).replace(":lang", lang);
+    qDebug()<<"=======>"<<sql;
     if (query.exec(sql)) {
         while (query.next() && (result.size() < kResultLimitation)) {
             //只将当前预装应用中的内容输出。
@@ -498,8 +499,14 @@ void SearchDb::omitHighlight(QString &highLight, const QString &keyword)
 void SearchDb::handleSearchContent(const QString &keyword)
 {
     qDebug() << Q_FUNC_INFO << keyword;
-
     Q_ASSERT(p_->db.isOpen());
+
+    //屏蔽部分特殊字符，会导致JS层对HTML无法对应替换
+    if(keyword.contains(QRegExp("[|&-]")))
+    {
+        emit this->searchContentMismatch(keyword);
+        return;
+    }
 
     QSqlQuery query(p_->db);
     const QString lang = QLocale().name();
