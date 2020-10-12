@@ -35,12 +35,3 @@ void SettingsProxy::openUrl(const QString &url)
 {
     QDesktopServices::openUrl(QUrl(url));
 }
-
-/**
- * @brief SettingsProxy::raiseWindow
- * 窗口置顶
- */
-void SettingsProxy::raiseWindow()
-{
-    emit this->raiseWindowRequested();
-}

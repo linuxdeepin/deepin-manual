@@ -2,8 +2,8 @@
 #include <QDir>
 #include <QStandardPaths>
 
-ConfigManager *ConfigManager::_pInstance = 0;
-QMutex ConfigManager::_mutex;
+ConfigManager *ConfigManager::_pInstance = nullptr;
+//QMutex ConfigManager::_mutex;
 
 ConfigManager::ConfigManager(QObject *parent)
     : QObject(parent)
@@ -19,11 +19,12 @@ ConfigManager::ConfigManager(QObject *parent)
 ConfigManager *ConfigManager::getInstance()
 {
     if (!_pInstance) {
-        QMutexLocker lock(&_mutex);
-        if (!_pInstance) {
-            ConfigManager *pInstance = new ConfigManager();
-            _pInstance = pInstance;
-        }
+        _pInstance =  new ConfigManager();
+//        QMutexLocker lock(&_mutex);
+//        if (!_pInstance) {
+//            ConfigManager *pInstance = new ConfigManager();
+//            _pInstance = pInstance;
+//        }
     }
     return _pInstance;
 }

@@ -57,9 +57,9 @@ int main(int argc, char **argv)
         db.initDb(strCreateDbPath);
         db.initSearchTable();
 
-        QStringList list;
-        list << "zh_CN"
-             << "en_US";
+        QStringList list = {"zh_CN","en_US"};
+//        list << "zh_CN"
+//             << "en_US";
         for (QString &locale : list) {
             QString strManualDir = DMAN_ORIG_MANUAL_DIR;
             strManualDir += "/" + dbType;
@@ -132,9 +132,9 @@ int main(int argc, char **argv)
                         }
                     } else if (locale == "en_US") {
                         if (id == "h0") {
-                            QStringList list = title_us.split(" ");
+                            QStringList listTitle = title_us.split(" ");
                             QString anchorInitial;
-                            for (QString str : list) {
+                            for (QString str : listTitle) {
                                 anchorInitial.append(str.left(1));
                             }
                             anchorInitialList.append(anchorInitial);

@@ -31,12 +31,10 @@ public:
     explicit SettingsProxy(QObject *parent = nullptr);
 
 Q_SIGNALS:
-    void raiseWindowRequested();
     void fontChangeRequested(const QString &fontFamily, int pixelSize);
 
 public Q_SLOTS:
     void openUrl(const QString &url);
-    void raiseWindow();
 };
 
 #endif // DEEPIN_MANUAL_UI_CHANNEL_SETTINGS_PROXY_H

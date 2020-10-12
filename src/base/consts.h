@@ -30,7 +30,5 @@ extern const char kConfigWindowHeight[];
 extern const char kConfigWindowInfo[];
 extern const char kConfigAppList[];
 
-// 获取用户缓存目录
-QString GetCacheDir();
 
 #endif // DEEPIN_MANUAL_BASE_CONSTS_H

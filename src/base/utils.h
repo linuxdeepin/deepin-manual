@@ -43,19 +43,19 @@ public:
                     SourceHanSansNormal,
                     DefautFont };
 
-    static struct timeval getTime();
-    static struct timeval showDiffTime(struct timeval tpStart);
+//    static struct timeval getTime();
+//    static struct timeval showDiffTime(struct timeval tpStart);
 
     static QHash<QString, QPixmap> m_imgCacheHash;
     static QHash<QString, QString> m_fontNameCache;
 
-    static QString getQssContent(const QString &filePath);
-    static bool isFontMimeType(const QString &filePath);
-    static QString suffixList();
+//    static QString getQssContent(const QString &filePath);
+//    static bool isFontMimeType(const QString &filePath);
+//    static QString suffixList();
     static QPixmap renderSVG(const QString &filePath, const QSize &size);
-    static QString loadFontFamilyByType(FontType fontType);
-    static QFont loadFontBySizeAndWeight(QString fontFamily, int fontSize, int fontWeight);
-    static QString fromSpecialEncoding(const QString &inputStr);
+//    static QString loadFontFamilyByType(FontType fontType);
+//    static QFont loadFontBySizeAndWeight(QString fontFamily, int fontSize, int fontWeight);
+//    static QString fromSpecialEncoding(const QString &inputStr);
     static QString translateTitle(const QString &titleUS);
 
     //获取所有应用列表
@@ -78,7 +78,6 @@ public:
     DPalette standardPalette(DGuiApplicationHelper::ColorType type) const;
     DPalette palette(const QWidget *widget, const QPalette &base = QPalette()) const;
     void setPalette(QWidget *widget, const DPalette &palette);
-    void resetPalette(QWidget *widget);
 
 private:
     ExApplicationHelper();

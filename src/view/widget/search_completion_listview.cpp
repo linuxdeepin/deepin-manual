@@ -24,11 +24,6 @@ void SearchCompletionListView::initDelegate()
     this->setItemDelegate(m_searchCompletionDelegate);
 }
 
-QStandardItemModel *SearchCompletionListView::getErrorListSourceModel()
-{
-    return m_searchCompletionSourceModel;
-}
-
 /**
  * @brief SearchCompletionListView::mousePressEvent
  * @param event

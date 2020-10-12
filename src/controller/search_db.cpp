@@ -515,9 +515,9 @@ void SearchDb::handleSearchContent(const QString &keyword)
 
     listStruct.clear();
     nH0OfList = 0;
-    bool result_empty = true;
-    bool bIsTitle = false;
+    bool result_empty = true; 
     if (query.exec(sql)) {
+        bool bIsTitle = false;
         QString last_app_name = "";
         QStringList anchors;
         QStringList anchorIds;
