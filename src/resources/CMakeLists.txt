@@ -1,4 +1,4 @@
-install(FILES deepin-manual.desktop
+install(FILES dman.desktop
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/applications/)
 
 install(FILES themes/common/images/deepin-manual.svg
