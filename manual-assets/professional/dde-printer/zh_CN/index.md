@@ -74,13 +74,14 @@
 
    * 本地驱动：通过下拉框选择厂商及型号，查询本地驱动。
 
-     ![0|local-driver](jpg/local-driver.png)
+   ![0|local-driver](jpg/local-driver.png)
 
    * 本地PPD文件：将本地文件PPD文件拖放到对应地方，或单击 **选择一个PPD文件** 在本地文件夹查找，比如在/usr/share/ppd目录下选择ppd文件。
 
    > ![notes](icon/notes.svg)说明：使用前提是用户必须在本地安装了驱动，才可以使用PPD文件安装。否则，会提示驱动安装失败。
 
    ![0|ppd-document](jpg/ppd-document.png)
+
 
    * 搜索打印机驱动：输入精确的厂商和型号，系统会在后台驱动库中搜索，搜索结果会显示在下拉框中。
 
@@ -209,4 +210,4 @@
 2. 单击 **退出**。
 
 
-<div class="version-info"><span>文档更新时间: 2020-09-30</span><span> 版本: 0.6</span></div>
+<div class="version-info"><span>文档更新时间: 2020-10-20</span><span> 版本: 0.6</span></div>

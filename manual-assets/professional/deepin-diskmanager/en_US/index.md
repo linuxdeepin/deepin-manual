@@ -6,7 +6,7 @@ Disk Manager is a useful tool to help you better manage your disks through disk 
 
 ## Guide
 
-You can run, close, or create shortcuts for Disk Manager in the following ways.
+You can run, close, and create shortcuts for Disk Manager in the following ways.
 
 ### Run Disk Manager
 
@@ -28,13 +28,13 @@ You can run, close, or create shortcuts for Disk Manager in the following ways.
 - On the Disk Manager interface, click ![icon_menu](icon/icon_menu.svg) and select **Exit** to exit Disk Manager.
 
 ## Disk Partitioning
-On the Disk Manager interface, a list of disk(s) and information about relevant partition(s) are displayed, including format, capacity, and mount point of partitions. You can create, resize, format, mount, and unmount a partition.
+On the Disk Manager interface, a list of disk(s) and information about relevant partition(s) are displayed, including format, capacity, and mount points of partitions. You can create, resize, format, mount, and unmount a partition.
 
 ![0|disk-main-interface](jpg/disk-main-interface.png)
 
 ### Create a Partition
 
-1. On the Disk Manager interface, select an unallocated partition and click the Partition icon ![partition](icon/partition.svg) on the top toolbar.
+1. On the Disk Manager interface, select an unallocated partition, and click the Partition icon ![partition](icon/partition.svg) on the top toolbar.
 2. A confirmation dialogue pops up. Click **Confirm** to enter the partitioning unallocated interface, where you can check the size, name, and file system of this partition, and read information of the disk where this partition locates. 
 3. In the partition information area, fill in the name and size of partition, select file system of partition, and click the ![add-normal](icon/add-normal.svg) icon. You can also create multiple partitions, and each partition name will be displayed on the bar graph under disk information. You can delete a partition by clicking the ![edit-delete](icon/edit-delete.svg) icon when you're creating a new partition.
 
@@ -43,17 +43,19 @@ On the Disk Manager interface, a list of disk(s) and information about relevant 
 > ![attention](icon/attention.svg)Attention: A maximum of 24 partitions can be created. To create a partition, you need a storage space of at least 52 MB. 
 
 4. After setting up, click **Confirm**. The newly created partition will be displayed under the corresponding disk. 
-5. You can use the newly created partition after it's formatted and mounted. Please refer to [Format a Partition](#Format a Partition) and [Mount a Partition](#Mount a Partition) for detailed information.
+5. The new partition will be automatically formatted when you create it. You can use the newly created partition after it's mounted. Please refer to [Mount a Partition](#Mount a Partition) for detailed information.
+> ![attention](icon/attention.svg)Notes: If the partition is created on a portable device, such as a USB flash drive, this partition will be automatically mounted to the /media/... directory when it's replugged. Thus, You don't need to manually mount the device.
 
 ### Resize a Partition
 
 You can resize a partition if the size is too small. Please note that you can only resize an unmounted partition.
 
-1. On the Disk Manager interface, select an unmounted partition and click the Resize icon ![space-adjustment](icon/space-adjustment.svg) on the top toolbar.
+1. On the Disk Manager interface, select an unmounted partition, and click the Resize icon ![space-adjustment](icon/space-adjustment.svg) on the top toolbar.
 2. A resizing interface pops up. Fill in the reserved size, and click **Confirm**. 
 
   ![0|space-adjustment](jpg/space-adjustment.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
 3. You can check the capacity of partition once it's resized.
 
 ### Hide a Partition
@@ -63,26 +65,26 @@ After a partition is hidden, it will not be displayed on the Computer interface.
 Please note that you can only hide an unmounted partition. Also, system partition cannot be hidden. 
 
 1. On the Disk Manager interface, select a partition and right-click it. 
-2. Select **Hide partition**, and a confirmation dialogue pops up. Click **Hide**, and the icon of this partition will be changed to the hidden status. 
+2. Select **Hide partition** and a confirmation dialogue pops up. Click **Hide** and the icon of this partition will be changed to the hidden status. 
 
 ![0|hidden-partition](jpg/hidden-partition.png)
 
 ### Unhide a Partition
 
 1. On the Disk Manager interface, select a hidden partition and right-click it. 
-2. Select **Unhide partition**, and a confirmation dialogue pops up. Click **Unhide**, and the icon of this partition will be changed to the unhidden status. 
+2. Select **Unhide partition** and a confirmation dialogue pops up. Click **Unhide** and the icon of this partition will be changed to the unhidden status. 
 3. Once a partition is unhidden, it will be unmounted automatically. Please manually mount the partition for normal use. 
 
 ## Disk Data Administration
 
 ### Format a Partition
 
-Formatting a partition will erase all data on the disk. Please proceed with caution as this action is irreversible. 
+Formatting a partition is normally executed to change the format of partitions, and will erase all data on the disk. Please proceed with caution as this action is irreversible. 
 
 Notice that you can only format an unmounted partition which is not currently in use.
 
 1. On the Disk Manager interface, select a partition and click Format ![format](icon/format.svg) icon on the top toolbar.
-2. A formatting interface pops up. Fill in the name, and select file system. 
+2. A formatting interface pops up. Fill in the name and select file system. 
 
   ![0|format](jpg/format.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -111,7 +113,7 @@ Once a partition is deleted, you will lose all data in it. Please proceed with c
 Please note that you can only delete an unmounted partition.
 
 1. On the Disk Manager interface, select a partition and right-click it. 
-2. Select **Delete partition**, and a confirmation dialogue pops up. Click **Delete**, and this partition will disappear under the corresponding disk.
+2. Select **Delete partition** and a confirmation dialogue pops up. Click **Delete**, and this partition will disappear under the corresponding disk.
 
 ## Disk Health Management
 
@@ -168,4 +170,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 2.  Click **Exit** to exit Disk Manager.
 
 
-<div class="version-info"><span>Update Date: 2020-09-30</span><span> Version: 1.1</span></div>
+<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 1.1</span></div>

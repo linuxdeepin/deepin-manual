@@ -49,7 +49,7 @@
 
 ### 界面介绍
 
-![1|main](jpg/main.png)
+![1|main](jpg/navigation.png)
 
 | 图标                                               | 名称       | 说明                   |
 | -------------------------------------------------- | ---------- | ---------------------- |
@@ -168,4 +168,4 @@
 1. 在看图界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **退出**。   
 
-<div class="version-info"><span>文档更新时间: 2020-09-30</span><span> 版本: 5.6</span></div>
+<div class="version-info"><span>文档更新时间: 2020-10-20</span><span> 版本: 5.6</span></div>

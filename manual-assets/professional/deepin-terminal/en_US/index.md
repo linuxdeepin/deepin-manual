@@ -9,7 +9,7 @@ Terminal is a terminal emulator with simple interface providing diversified powe
 
 ## Guide
 
-You can run, exit, or create shortcuts for Terminal.
+You can run, exit, and create shortcuts for Terminal in the following ways.
 
 ### Run Terminal ###
 
@@ -66,7 +66,7 @@ You can use **Find** function to quickly search contents in terminal.
 You can use browser in Terminal for quick and convenient web search against selected content on the Terminal interface. 
 
 1. On the Terminal interface, select the content you want to search.
-2. Right-click to select **Search**.
+2. Right-click and select **Search**.
 3. Select a search engine.
 4. Your browser will pop up and start searching based on the content you select on the Terminal interface.
 
@@ -107,7 +107,7 @@ On the Terminal interface, select the file in the current directory and right-cl
 
 When there is a messy code or display error, you may switch the encoding to solve it.
 
-1. On the Terminal interface, right-click to select **Encoding**.
+1. On the Terminal interface, right-click and select **Encoding**.
 3. Select one encoding in the list to see if the content is correctly displayed.
 4. Repeat Step 2 until you get correct display of content.
 
@@ -118,7 +118,7 @@ When there is a messy code or display error, you may switch the encoding to solv
 
 ## Window Operations
 
-Window is the foundation for your operations in Terminal. You can create many workspaces and split one into more windows.
+Window serves as the foundation for your operations in Terminal. You can create many workspaces, or split one into multiple windows.
 
 
 ### Create Window ###
@@ -154,7 +154,7 @@ You can create a new window in the following ways:
 
 1. Open Terminal in Launcher.
 2. On the Terminal interface, right-click and select **Rename title**.
-4. Input the name and click **OK**.
+4. Input the name and click **Confirm**.
 
 > ![tips](icon/tips.svg)Tips: You can also press **F2**  to rename the window title.
 
@@ -165,7 +165,7 @@ You can create a new window in the following ways:
 
 ### Display Window in Fullscreen ###
 
-1. Open Terminal in launcher interface.
+1. Open Terminal in Launcher.
 
 2. Press **F11** to display Terminal in fullscreen.
 
@@ -179,7 +179,7 @@ You can close multiple split windows in the following steps:
 
 1. On the Terminal interface, move the cursor over one of the split windows.
 
-2. Right-click to:
+2. Right-click and:
 
   - Select **Close window** to close this split window.
 
@@ -192,28 +192,28 @@ You can close multiple split windows in the following steps:
 
 ### Create Workspace ###
 
-You can create new workspaces as follows:
+You can create new workspaces in the following ways:
 
 - On the Terminal interface, right-click and select **New workspace** to create a new workspace.
 
-- Click ![add](icon/+.svg) on the top to create a workspace.
-- Press **Ctrl** + **Shift** + **T** on keyboard to create a new workspace.
+- Click ![add](icon/+.svg) on the top to create a new workspace.
+- Press **Ctrl** + **Shift** + **T** on the keyboard to create a new workspace.
 
 
 ### Select Workspace ###
 
-You can freely switch among multiple workspaces via following methods:
+You can freely switch among different workspaces in the following ways:
 
 - Directly click the workspace tab to select a workspace.
 - Press **Ctrl** + **Tab** to switch in sequence.
-- Press **Ctrl** + **Shift** + **1~9** number keys to select the workspace. When there are more than 9 workspaces, the last workspace will be selected rather the ninth one.
+- Press **Ctrl** + **Shift** + **1~9** number keys to select the workspace. When there are more than 9 workspaces, pressing **Ctrl** + **Shift** + **9** will select the last workspace instead of the ninth one.
 
 ### Close Workspace ###
 
-You can close workspace as follows:
+You can close workspace in the following ways:
 
 1. Select the tab of one workspace, and click ![add](icon/close.svg) to close it.
-2. Right-click any workspace tab to:
+2. Right-click any workspace tab and:
  - Select **Close workspace** to close it.
  - Select **Close other workspaces** to close other workspaces other than the current one.
 
@@ -222,7 +222,7 @@ You can close workspace as follows:
 
 ## Remote Server Management
 
-You can open remote management panel to add remote servers via the main menu or right-click menu. The remote management panel will be automatically hidden when you adjust the window size. Once a remote server is added into the management list, you can automatically login just by one click. 
+You can open remote management panel to add remote servers via the main menu or the right-click menu. The remote management panel will be automatically hidden when you adjust the window size. Once a remote server is added into the management list, you can automatically login just by one click. 
 
 ### Add Server ###
 
@@ -231,7 +231,7 @@ You can open remote management panel to add remote servers via the main menu or 
 3. Fill out **Server name**, **Address**, **Username** and **Password**.
 4. Click **Add**.
 
-   >  ![notes](icon/notes.svg)Notes: If you need to set up more parameters, please click **Advanced options**. Or, you can keep the default values and edit them when you need.
+   >  ![notes](icon/notes.svg)Notes: If you need to set up more parameters, click **Advanced options**. Or, you can keep the default values and edit later when you need.
 
 ![1|addssh](jpg/addssh-all.png)
 
@@ -280,7 +280,7 @@ You can upload and download files after logging in a remote server.
 #### Upload Files ####
 
 1. On the Remote Management panel, select one server to log in.
-2. On the Terminal interface, right-click to select **Upload file**.
+2. On the Terminal interface, right-click and select **Upload file**.
 3. Select the file to be uploaded in the pop-up window.
 4. Click **Upload** and the file will be uploaded to the remote server.
 
@@ -290,7 +290,7 @@ You can upload and download files after logging in a remote server.
 #### Download Files ####
 
 1. On the Remote Management panel, select one server to log in.
-2. On the Terminal interface, right-click to select **Download file**.
+2. On the Terminal interface, right-click and select **Download file**.
 3. Select the storage location.
 4. Input the path of the file to be downloaded. The file will be downloaded to the specified location.
 
@@ -308,7 +308,7 @@ You can upload and download files after logging in a remote server.
 
 ## Main Menu
 
-In the Main Menu, you can create [create new window](#Create Window), customize commands, switch themes, view help manual, and get more information about Album.
+In the Main Menu, you can create [create new window](#Create Window), customize commands, switch themes, view help manual, and get more information about Terminal.
 
 ### Theme ###
 
@@ -323,7 +323,7 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 
 2. Select **Custom commands**.
 
-3. Select **Add command**.
+3. Select **Add Command**.
 
 4. Input **Name**, **Command** and **Shortcuts**.
 
@@ -365,17 +365,17 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 
 3. In the **Advanced** options, you can:
 
-    - Set cursor style.
+    - Select **Cursor style**.
     - Enable or disable **Cursor blink**.
     - Enable or disable **Copy on select**.
     - Enable or disable **Scroll on keystroke**.
     - Enable or disable **Scroll on output**.
     - Set the startup mode for window .
-    - Enable or disable **Hide quake window after lost focus**.
+    - Enable or disable **Hide Quake window after losing focus**.
     - Enable or disable **Blur background**.
     >![notes](icon/notes.svg)Notes: if Window Effect is turned off in Control Center, **Blur background** option will be hidden.
 
-4. **Restore defaults**: Click this button to restore to all default settings.  
+4. **Restore Defaults**: Click this button to restore to all default settings.  
 
 ### Help
 
@@ -396,4 +396,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 
 2. Click **Exit** to exit Terminal.
 
-<div class="version-info"><span>Update Date: 2020-09-30</span><span> Version: 5.3</span></div>
+<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 5.3</span></div>

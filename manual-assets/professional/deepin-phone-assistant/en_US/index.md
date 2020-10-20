@@ -56,11 +56,8 @@ You can use Phone Assistant to connect with multiple phones concurrently. Follow
    >  - Once **Developer Options** screen is enabled on your phone, please keep it on so you can proceed to step 5 directly every time when you use Phone Assistant.
 
 2. Connect your phone to your computer with a USB cable, and run Phone Assistant on your computer.
-
 3. Pull down the notification bar on your phone to locate the message displaying **Charging this device via USB**. Click this message to switch to **Use USB for File Transfer** mode.
-
 4. Go to **Settings** > **Additional Settings** > **Developer Options**, and locate **USB debugging** option on your phone. Click it to open, and a prompt will show displaying **Allow USB debugging**. Click **OK** to grant authorization.
-
 ![USB](jpg/USB.png) 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 5. A pop-up window will show on your phone requesting **Install via USB** for Phone Assistant. Grant permit for installation, and the Phone Assistant will be installed on your phone. Once it's completed, you can operate Phone Assistant on your computer.
@@ -192,4 +189,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 1. On the Phone Assistant interface, click ![icon_menu](icon/icon_menu.svg).
 2.  Click **Exit** to exit Phone Assistant.
 
-<div class="version-info"><span>Update Date: 2020-09-30</span><span> Version: 5.1</span></div>
+<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 5.1</span></div>

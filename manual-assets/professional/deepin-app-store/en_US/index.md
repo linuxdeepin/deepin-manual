@@ -254,4 +254,4 @@ Click Help to get the manual, which will help you further know and use App Store
 1. Click  ![icon_menu](icon/icon_menu.svg) on the main interface.
 2. Click  **Exit**.
 
-<div class="version-info"><span>Update Date: 2020-09-30</span><span> Version: 6.2</span></div>
+<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 6.2</span></div>

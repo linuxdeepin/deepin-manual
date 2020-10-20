@@ -9,7 +9,7 @@ Album is a stylish and smooth photo management tool, supporting photo viewing an
 
 ## Guide
 
-You can run, close or create shortcuts for Album in the following ways.
+You can run, close, and create shortcuts for Album in the following ways.
 
 ### Run Album
 
@@ -62,7 +62,7 @@ On the Album interface, you are able to import photos as follows:
 
 Click the scroll bar on the Album interface to adjust the thumbnail size of photos.
 
-Double-click or right-click the photo to select **View** and enter the photo viewing interface. Press **Esc** on the keyboard to exit.
+Double-click the photo, or right-click the photo and select **View** to enter the photo viewing interface. Press **Esc** on the keyboard to exit.
 
 | Icon                                               | Name                    | Description                                                  |
 | -------------------------------------------------- | ----------------------- | ------------------------------------------------------------ |
@@ -117,8 +117,8 @@ In Timelines, all photos are sorted by date. Photos with the same date are displ
 You can delete photos from Album in the following ways:
 
 - Click the ![delete_press](icon/delete.svg) icon on the Album interface when viewing photos.
-- Right-click the photo to select **Delete**.
-- On the Album interface, press **Delete** on the keyboard.
+- Right-click the photo and select **Delete**.
+- On the Album interface, click to select the photo and press **Delete** on the keyboard.
 
 > ![tips](icon/tips.svg)Tips: The deleted photos in the Album are not deleted permanently but are temporarily stored in the **Trash** album. When the number displayed in remaining days on the photo is 0, the photos will be deleted permanently. You are able to restore or permanently delete the photos here in advance.
 
@@ -160,9 +160,9 @@ You can delete photos from Album in the following ways:
 
 ## Album Management
 
-On the Album interface, you are able to create new albums, manage photos in the album and view all albums.
+On the Album interface, you are able to create new albums, manage photos in the album, and view all albums.
 
-> ![notes](icon/notes.svg)Notes: **Import**, **Trash** and **Favorites** are albums generated automatically by the system according to the actual conditions, which cannot be deleted and renamed.
+> ![notes](icon/notes.svg)Notes: **Import**, **Trash** and **Favorites** are albums generated automatically by the system according to the actual conditions, which cannot be deleted or renamed.
 
 ![1|album](jpg/album.png)
 
@@ -172,7 +172,7 @@ On the Album interface, you are able to create new albums, manage photos in the 
 1.  On the Albums interface, Click ![create](jpg/create.png) or ![icon_menu](icon/icon_menu.svg)> **New album**.
 2.  Enter the album name and click **Create**.
 
-> ![tips](icon/tips.svg)Tips: You are able to create a new album by right-clicking the album created to select **New album** or create a new album when adding photos to albums.
+> ![tips](icon/tips.svg)Tips: You are able to create a new album by right-clicking the album created to select **New album**, or create a new album when adding photos to albums.
 
 
 ### Add Photos to Albums
@@ -194,7 +194,7 @@ On the Album interface, you are able to create new albums, manage photos in the 
 ### Rename Albums
 
 1.  On the Albums interface, right-click the album to be renamed and select **Rename**. 
-2.  Enter the album name and press the **Enter** key on the keyboard or click the blank area of the interface.
+2.  Enter the album name and press the **Enter** key on the keyboard, or click the blank area of the interface.
 
 ### Export Albums
 
@@ -208,7 +208,7 @@ On the Album interface, you are able to create new albums, manage photos in the 
 
 ## Main Menu
 
-In the main menu, you can [Create New Albums](#Create New Albums), [Import Photos](#Import Photos), switch window themes, view help manual , and get more information about Album.
+In the main menu, you can [Create New Albums](#Create New Albums), [Import Photos](#Import Photos), switch window themes, view help manual, and get more information about Album.
 
 ### Theme
 
@@ -232,4 +232,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 1.  On the Album interface, click ![icon_menu](icon/icon_menu.svg).
 2.  Click **Exit** to exit Album.
 
-<div class="version-info"><span>Update Date: 2020-09-30</span><span> Version: 5.8</span></div>
+<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 5.8</span></div>

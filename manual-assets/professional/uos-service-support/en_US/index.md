@@ -69,15 +69,10 @@ Please sign in your Union ID and connect to the Internet to access Consults serv
    - **Add attachments**: optional, you can add no more than 4 attachments, with each no more than 10MB.
    - **Upload log**: optional and disabled by default. You can choose to enable it and your personal information will be protected in the process of uploading.
    - **Email**: required. You will receive the progress and results from UnionTech OS support team via email. 
-
-
    ![message-submit](jpg/message-submit.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
 3.   Click **Submit** to provide feedback to the service and support team of UnionTech OS.
-
    > ![Notes](icon/notes.svg)Notes: If you click **Reset**, all messages, uploaded content or attachments will be restored to the initial default status. Please operate carefully.
-
 4.  After submitting your feedback, please keep an eye on your email box as provided for any progress and results.
 
 ## Online Support
@@ -140,4 +135,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 2.  Click **Exit** to exit Support.
 
 
-<div class="version-info"><span>Update Date: 2020-09-30</span><span> Version: 2.2</span></div>
+<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 2.2</span></div>

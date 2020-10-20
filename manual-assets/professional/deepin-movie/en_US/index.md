@@ -68,11 +68,11 @@ You can play films in the following ways:
 - When there are no files in the playlist, click ![play](icon/play_normal.svg) and open the file selector to select a film file.
 - On the Movie interface, right-click or click ![menu](icon/icon_menu.svg) to select **Open file** and open the file selector to select a film file.
 - On the Movie interface, right-click or click ![menu](icon/icon_menu.svg) to select **Open folder**. All the audiovisual files in the folder are displayed in the playlist and will be played in turn. 
-- On the Movie interface, right-click to select **Open URL** and paste the online address to play the film.
-- On the Movie interface, right-click to select **Open CD/DVD** to play the films in CD/DVD.
+- On the Movie interface, right-click, select **Open URL**, and paste the online address to play the film.
+- On the Movie interface, right-click and select **Open CD/DVD** to play the films in CD/DVD.
 - Drag the file/folder directly to the Movie interface to play local films.
 
-> ![attention](icon/attention.svg)Attention: Please make sure your network is well connected before playing online videos with Movie.
+> ![attention](icon/attention.svg)Attention: Make sure your network is well connected before playing online videos with Movie.
 
 
 ![0|open](jpg/open.png)
@@ -86,7 +86,7 @@ You can play films in the following ways:
 
 1.  On the Movie interface, press **Ctrl** + ![Right](icon/Right.svg) on the keyboard to speed up the film playback.
 2.  Press **Ctrl** + ![Left](icon/Left.svg) on the keyboard to speed down the film playback.
-3.  If you want to restore the original play speed, press **R** on the keyboard.
+3.  If you want to restore to the original play speed, press **R** on the keyboard.
 
 >![notes](icon/notes.svg)Notes: Speed up/down is relative to the original play speed. The video playback speed increases/decreases by 0.1 times in default mode each time when it is sped up/down. Press and hold **Ctrl **+ ![Right](icon/Right.svg) or ![Left](icon/Left.svg) on the keyboard and the playback speed will increase or decrease. The maximum playback speed is 2 times faster than the original speed and the minimum playback speed is 10 times slower than the original speed.
 
@@ -96,7 +96,7 @@ You can play films in the following ways:
 
 You can adjust the window size as you wish during playback.
 
- Right-click on the Movie interface:
+ Right-click on the Movie interface and you can:
 - Select **Fullscreen** to play in fullscreen.
 - Select **Mini Mode** to play in mini mode.
 - Select **Always on Top** to put the window on the top layer.
@@ -110,18 +110,18 @@ You can adjust the window size as you wish during playback.
 
 1.  Right-click on the Movie interface.
 2.  Select **Play Mode** and you can:
- - Select **Order Play** and the  films in the playlist will be played orderly until the last one.
+ - Select **Order Play** and the films in the playlist will be played in order until the last one.
  - Select **Shuffle Play** and films in the playlist will be played randomly. Loop shuffle play mode will continue after playing all the files in the playlist.
  - Select **Single Play** and the player will stop after playing the current film.
  - Select **Single Loop** and the film will be played over and over again.
- - Select **List Loop** and the whole playlist will be played over and over again.
+ - Select **List Loop** and the whole playlist will be played over and over again in the current order.
 
 ![0|play_mode](jpg/play_mode.png)
 
 ### Adjust Frame
 1.  Right-click on the Movie interface.
 2. Select **Frame** and you can:
- - Adjust the film aspect ratio between 4:3, 16:9, 16:10, 1.85:1 and 2.35:1.
+ - Adjust the film aspect ratio between 4:3, 16:9, 16:10, 1.85:1, and 2.35:1.
  - Rotate the film frame clockwise or counterclockwise.
  - Jump to previous frame or next frame.
 
@@ -158,7 +158,7 @@ You can adjust the window size as you wish during playback.
 ### View Film Info
 
 1.  Right-click on the Movie interface.
-2.  Select **Film Info** and you can view the film info, codec info and audio info of the film. 
+2.  Select **Film Info** and you can view the film info, codec info, and audio info of the film. 
 
 
 ## Playlist Management
@@ -167,14 +167,14 @@ You can enter the playlist to add or delete the video files.
 
 ### Add Films to the Playlist
 
-You can add films to the playlist by the following ways:
-- Right-click on the Movie interface and select **Open file/Open folder/Open URL/Open CD/DVD** or click ![menu](icon/icon_menu.svg)> **Open file/Open folder** to add films to the playlist.
+You can add films to the playlist in the following ways:
+- Right-click on the Movie interface and select **Open file/Open folder/Open URL/Open CD/DVD**, or click ![menu](icon/icon_menu.svg)> **Open file/Open folder** to add films to the playlist.
 - You can also drag files/folders directly to the playlist.
 
 ### Delete Film from the Playlist
 
 1.  Click ![movie](icon/episodes_normal.svg ) on the Movie interface.
-2. Hover mouse pointer over the video file and right-click to select **Delete from playlist**.
+2. Hover mouse pointer over the video file, right-click, and select **Delete from playlist**.
 
 > ![tips](icon/tips.svg)Tips: On the Playlist interface, hover mouse pointer over the video file and click ![关闭图标](icon/close.svg) to delete it.
 
@@ -184,12 +184,12 @@ You can add films to the playlist by the following ways:
 ### Clear Playlist
 
 1.  Click ![movie](icon/episodes_normal.svg ) on the Movie interface.
-2.  Click the **Empty** icon under Playlist or right-click the video file to select **Empty playlist**.
+2.  Click the **Empty** icon under Playlist, or right-click the video file and select **Empty playlist**.
 
 ### Display in File Manager
 
 1.   Click ![movie](icon/episodes_normal.svg ) on the Movie interface.
-2.  Hover the mouse pointer over the video file and right-click to select **Display in file manager** to show the film file in file manager.
+2.  Hover the mouse pointer over the video file, right-click, and select **Display in file manager** to show the film file in file manager.
 
 ## Main Menu
 
@@ -247,4 +247,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 2.  Click **Exit** to exit Movie.
 
 
-<div class="version-info"><span>Update Date: 2020-09-30</span><span> Version: 5.7</span></div>
+<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 5.7</span></div>

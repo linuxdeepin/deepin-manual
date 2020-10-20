@@ -10,7 +10,7 @@ It supports fonts in ttf, ttc, and otf formats.
 
 ## Guide
 
-You can run, exit, or create a shortcut for Font Manager in the following ways.
+You can run, exit, and create shortcuts for Font Manager in the following ways.
 
 ### Run Font Manager
 
@@ -52,7 +52,7 @@ With Font Manager, you can not only install a single font but also install multi
 #### Single Font Installation
 
 1.  On the Font Manager interface, click ![add](icon/icon_plus.svg) or select ![icon_menu](icon/icon_menu.svg)> **Add font**.
-2. Select the font file to be installed and right-click **Open**, or double-click the font file to open Font Manager for installation.
+2. Select the font file to be installed, right-click and select **Open**, or double-click the font file to open Font Manager for installation.
 3.  Please enter the authorization password in the pop-up authorization window (if any).
 4.  Right-click the font file after successful installation, and select **Display in file manager** to view the specific installation location.
 
@@ -64,7 +64,7 @@ With Font Manager, you can not only install a single font but also install multi
 
 #### Batch Installation
 
-You can add multiple fonts in a batch at one time by dragging or selecting files in the Font Manager. Please refer to [Single Font Installation](#Single Font Installation) for the installation steps. Pay attention to the following points during batch installation:
+You can add multiple fonts in a batch at one time by dragging or selecting files in the Font Manager. Please refer to [Single Font Installation](#Single Font Installation) for the installation steps. Pay attention to the following during batch installation:
 
 - You can install a single font or batch fonts after successful batch installation.
 - Re-installation can be performed for fonts which are already installed locally during batch installation.
@@ -85,7 +85,7 @@ You can add multiple fonts in a batch at one time by dragging or selecting files
 
 ### Export Fonts
 
-1. On the Font Manager interface, right-click the font, and select **Export**.
+1. On the Font Manager interface, right-click the font and select **Export**.
 2. A prompt message **The font exported to your desktop** pops up, and disappears several seconds later.
 
 The exported font is saved in the desk folder by default, with Font as its default folder name.
@@ -96,7 +96,7 @@ The exported font is saved in the desk folder by default, with Font as its defau
 
 You can view the basic font information via Font Manager.
 
-1. Right-click to select **Details** in the font sets list on the Font Manager interface.
+1. Right-click the font and select **Details** in the font sets list on the Font Manager interface.
 
    You can view the font icon, name, style, type, version, and description information.
    
@@ -107,7 +107,7 @@ You can view the basic font information via Font Manager.
 
 When the font is installed successfully, you can view its installation location via File Manager.
 
-Right-click to select **Display in file manager** in the font sets list on the Font Manager interface to view the specific installation location.
+Right-click and select **Display in file manager** in the font sets list on the Font Manager interface to view the specific installation location.
 
 ### Preview Fonts
 
@@ -119,9 +119,9 @@ The default preview copy is **Don't let your dreams be dreams**, and is displaye
 
 2.   Set the font size by dragging the control bar horizontally.
 
-   View the display effect in the font set list.
+3. View the display effect in the font set list.
 
-   > ![notes](icon/notes.svg)Notes: Slide the control bar to the left to reduce the font size, and slide it to the right to enlarge the font size. The font size ranges from 6px to 60px.
+   > ![notes](icon/notes.svg)Notes: Drag the scroll bar to the left to reduce the font size, and drag it to the right to enlarge the font size. The font size ranges from 6px to 60px.
 
 ### Favorite/Unfavorite Fonts
 
@@ -130,21 +130,21 @@ You can favorite or unfavorite a font via Font Manager.
 
 2.   Click the ![uncollect](icon/uncollection_normal.svg) icon to the right of a row in the list.
 
-3.  View the font in **Favorites** List. The status is changed to **Favorite** ![collect](icon/collection_normal.svg).
+3.  View the font in the **Favorites** List. The status is changed to **Favorite** ![collect](icon/collection_normal.svg).
 
-4.   Click the ![collect](icon/collection_normal.svg) icon in **All Fonts** lists.
+4.   Click the ![collect](icon/collection_normal.svg) icon in the **All Fonts** lists. 
 
-   The unfavorite font will not be displayed in the **Favorites** list, and the status displayed in other font set lists is changed to **Unfavorite** ![uncollect](icon/uncollection_normal.svg).
+   The unfavorite font will not be displayed in the **Favorites** list, and the font status displayed in other font set lists is changed to **Unfavorite** ![uncollect](icon/uncollection_normal.svg).
 
-5.   In All Fonts list,  you can also right-click to **Favorite** or **Unfavorite**.
+5. In the **All Fonts** list,  you can also right-click and select **Favorite** or **Unfavorite**.
 
 > ![notes](icon/notes.svg)Notes: Favorite/Unfavorite are available for a single font and a batch of fonts.
 
 ### Enable/Disable Fonts
 
-You can enable or disable a font via Font Manager.
+You can enable or disable a font in the Font Manager interface.
 
-1.   Select the font with **Disabled** status in the **User Fonts** list on the Font Manager interface.
+1.   Select the font with **Disabled** status in the **User** list on the Font Manager interface.
 
 2.   Check the font. The font will be enabled and displayed in the **Active** list. 
 
@@ -152,19 +152,19 @@ You can enable or disable a font via Font Manager.
 
    The disabled font will not be displayed in the **Active** list, and is grayed out in other font set lists with a **Disabled** status.
 
-4.   You can also right-click to **Enable** or **Disable** in the **All Fonts** list to complete the corresponding operation. 
+4.   You can also right-click and select **Enable** or **Disable** in the **User** list to complete the corresponding operation. 
 
 > ![notes](icon/notes.svg)Notes: Enable/Disable functions are available for a single font and a batch of fonts. System font and font currently being used can not be disabled.
 
 ### Delete Fonts
 
-You can delete a font through Font Manager.
+You can delete a font in the Font Manager interface.
 
 > ![notes](icon/notes.svg)Notes: Delete function is available for a single font and a batch of fonts. System font and font currently being used can not be deleted.
 
-1. Select a font in the **User** list on the Font Manager interface, and right-click **Delete**.
+1. Select a font in the **User** list on the Font Manager interface, right-click and slect **Delete**.
 2.  Click **Delete** in the pop-up box.
-3.  Please enter the authorization password in the pop-up authorization dialogue (if any) to delete the font.
+3.  Enter the authorization password in the pop-up authorization dialogue (if any) to delete the font.
 
 ![0|font-delete](jpg/font-delete.png)
 
@@ -197,4 +197,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 2.   Click **Exit** to exit Font Manager.
 
 
-<div class="version-info"><span>Update Date: 2020-09-30</span><span> Version: 5.8</span></div>
+<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 5.8</span></div>

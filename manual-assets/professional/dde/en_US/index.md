@@ -1,9 +1,9 @@
 # Desktop Environment|../common/dde.svg|
 
 ## Overview
-UnionTech OS(Uniontech operating system) is a beautiful, easy-to-use and reliable Linux desktop operating system. It is equipped with a series of original applications such as File Manager, App Store, Image Viewer, Movie, and etc, which not only offers you abundant entertainment experience but also meet your daily needs of learning and working. With continual improvement, UnionTech OS is becoming one of the most popular open-source operating systems in China.
+UnionTech OS(UnionTech operating system) is a beautiful, easy-to-use and reliable Linux desktop operating system. It is equipped with a series of original applications such as File Manager, App Store, Image Viewer, Movie, and etc, which not only offers you abundant entertainment experience but also meet your daily needs of learning and working. With continual improvement, UnionTech OS is becoming one of the most popular open-source operating systems in China.
 
-![1|desk](jpg/desk.jpg)
+![1|desk](jpg/desk.png)
 
 ### Getting Started
 
@@ -89,7 +89,7 @@ Select some elegant and fashionable wallpapers to beautify your desktop and make
 > ![tips](icon/tips.svg)Tips: You can also set your favorite picture as wallpaper in an image viewer.
 
 ### Set Screensaver
-The screensaver was used to protect the monitor before, but now it is mainly for protecting personal privacy from peering.
+The screensaver was used to protect the kinescope before, but now it is mainly for protecting personal privacy from peering.
 
 1. Right-click the desktop.
 2. Click **Wallpaper and Screensaver**, and select **Screensaver** to preview all the screensavers.
@@ -187,7 +187,7 @@ When there are system or application notifications, they will be shown in the mi
 
 
 
-![notification](jpg/notification.png)
+![notification](jpg/message.png)
 
 Click ![notification](icon/notification.svg) in Dock to view all the notifications.
 
@@ -412,8 +412,7 @@ You have already created an account when installing the system. Here you can mod
 
 1. On the homepage of Control Center, click ![account_normal](icon/account_normal.svg).
 2. Click an existing account in the list.
-3. Click the user avatar.
-4. Select a avatar or upload a local avatar.
+3. Click the user avatar, select a avatar or upload a local avatar.
 
 #### Set Full Name
 The account full name is shown in account list and system login interface and you can set it as needed.
@@ -444,9 +443,9 @@ If "Login Without Password" is enabled, you only need to click ![login](icon/log
 2. Click the current account.
 3. Switch on **Login Without Password** and you can log into the system without a password.
 
-> ![tips](icon/tips.svg)Tips: If both **Auto Login** and **Login Without Password** are enabled, once reboot or start, your computer will enter the desktop directly without requiring a password.
->
-> ![tips](icon/tips.svg)Tips: "Empty keyring password" is checked by default, which means you don't have to input login password again for the applications of which the password is remembered under "Login Without Password" mode. Otherwise, you will have to input password whenever you run the application.
+> ![tips](icon/tips.svg)Tips: 
+>   - If both **Auto Login** and **Login Without Password** are enabled, once reboot or start, your computer will enter the desktop directly without requiring a password.
+>   - "Empty keyring password" is checked by default, which means you don't have to input login password again for the applications of which the password is remembered under "Login Without Password" mode. Otherwise, you will have to input password whenever you run the application.
 
 #### Set Fingerprint Password
 
@@ -458,7 +457,7 @@ Fingerprint password is used in system login, application authorization, and oth
 4. Put your finger on a fingerprint reader and follow the instructions repeatedly until your fingerprint is added successfully.
 5. Click **Done**. 
 
-> ![notes](icon/notes.svg)Notes: You can add 10 fingerprint passwords for one account; Click **Delete fingerprint** to remove all fingerprint passwords. 
+> ![notes](icon/notes.svg)Notes: You can add multiple fingerprint passwords for one account, and delete one by one as well. 
 
 
 #### Delete Account
@@ -472,7 +471,11 @@ Fingerprint password is used in system login, application authorization, and oth
 
 ### Union ID
 
-By signing in Union ID, you can sync the current system settings to the cloud, including network settings, sound settings, mouse settings, update settings, power settings, theme, wallpaper, launcher, and Dock. To sync the settings from the cloud to another computer, just sign in with the same Union ID on that computer.
+By signing in Union ID, You can use cloud services such as cloud synchronization, app store, mail, browser and others.
+
+ When logging in for the first time, the window of **Privacy Policy** will pop up. If users need to open cloud services and other functions, you can check **I have read and agree to the Privacy Policy**, and click **Confirm**.
+
+Cloud synchronization can automatically synchronize various system configurations to the cloud, such as network, sound, mouse, update, dock, launcher, wallpaper, theme, power supply, etc. To sync the settings from the cloud to another computer, just sign in with the same Union ID on that computer.
 
 > ![tips](icon/tips.svg)Tips: When "Auto Sync" is enabled, you can uncheck the unwanted options; when it is disabled, all settings will not be synced.
 
@@ -538,10 +541,12 @@ Expand your desktop by multiple screens! Use VGA/HDMI/DP cable to connect your c
     - **XXX only**: display the screen content only on one screen.
     - **Customize**: customize the display settings for multiple screens.
 
-> ![tips](icon/tips.svg)Tips: In multiple displays, press **Super** + **P** to show its OSD. Operations are as follows:
->
-> 1. Hold **Super** and press **P** or click to select the options. 
-> 2. Release the keys, the selected mode will take into effect.
+ In multiple displays, press **Super** + **P** to show its OSD. 
+
+Operations are as follows:
+
+1. Hold **Super** and press **P** or click to select the options. 
+2. Release the keys, the selected mode will take into effect.
 
 >![notes](icon/notes.svg)Notes: When the multiple displays are in the extend mode, only the main screen supports desktop icon display, right-click menu operation and other functions, while the sub-screens do not. 
 
@@ -554,6 +559,16 @@ Expand your desktop by multiple screens! Use VGA/HDMI/DP cable to connect your c
 5. Click **Save**.
 
 > ![notes](icon/notes.svg)Notes: "Merge" means duplicate mode, "Split" means extend mode. 
+
+#### Touch Screen
+
+If your computer has a touch screen, you can set your screen and adjust it.
+
+1. On the homepage of Control Center, click ![display_normal](icon/display_normal.svg).
+2. Click **Touch Screen** to set your screen.
+3. Click **Confirm**. 
+
+![touchscreen](jpg/touchscreen.png)
 
 ### Default Application Settings
 If you have installed several applications with similar functions, such as text editor, choose one of them to be the default application to open that type of file.
@@ -763,7 +778,7 @@ You can view MAC, IP address, gateway and other network info in network details.
 
 You can set "Do Not Disturb" to system notifications, and also switch on or off the notification hints of some applications.
 
-![noti-center](jpg/noti-center.png)
+![noti-center](jpg/notification.png)
 
 #### System Notification Settings
 
@@ -796,30 +811,23 @@ Set your speaker and microphone properly to make you hear more comfortable and m
 
 ![0|sound](jpg/sound.png)
 
-#### Speaker
+#### Output
 
 1. On the homepage of Control Center, click ![sound_normal](icon/sound_normal.svg).
-2. Click **Speaker**.
-3. Switch on **Speaker** and you can:
+2. Click **Output** to:
+   - Select output device type from the dropdown list after **Output Device**.
    - Drag the slider to adjust output volume and left/right balance.
    - Switch on **Volume Boost**, the volume could be adjustable from 0~150% (the former range is 0~100%).
 
-> ![tips](icon/tips.svg)Tips: If "Speaker" is switched off, you will not hear any sound.
-
-#### Microphone
+#### Input
 
 1. On the homepage of Control Center, click ![sound_normal](icon/sound_normal.svg).
-2. Click **Microphone**.
-3. Switch on **Microphone** to enable the microphone.
-4. Adjust the input volume.
+2. Click **Input** to:
+   - Select input device type from the dropdown list after **Input Device**.
+   - Adjust input volume by dragging the slider.
+   - You can enable **Automatic Noise Suppression** by clicking the button after "Automatic Noise Suppression". 
 
 > ![tips](icon/tips.svg)Tips: Usually, you need to turn up the input volume to make sure that you can hear the sound of the sound source, but the volume should not be too high, because it will cause distortion of the sound. Here is how to set input volume: Speak to your microphone at a normal volume and view "Input Level". If the indicator changes obviously according to the volume, then the input volume is at a proper level. 
-
-#### Advanced Settings
-
-1. On the homepage of Control Center, click ![sound_normal](icon/sound_normal.svg).
-2. Click **Advanced**.
-3. Select the input and output devices.
 
 #### System Sound Effects
 
@@ -850,6 +858,26 @@ Bluetooth helps you make a short-distance wireless communication between Bluetoo
 3. Click the device you want to connect, and input the PIN code if required. After pairing successfully, the device will be connected automatically. 
 4. After that, the Bluetooth device will be added to **My Device** list.
 5. In the list, click the device, you can **Disconnect** the device, or change its name.
+
+#### Transfer/Receive files via Bluetooth
+
+Files could be transferred / received between UOS PC and non UOS PC or between UOS PC and mobile device (mobile phone / tablet).
+
+Prerequisite: the Bluetooth device of the sender (UOS PC) and the Bluetooth device of the receiver (non UOS PC / mobile phone / tablet) have been paired and connected successfully.
+
+1. On the homepage of Control Center, click ![bluetooth_normal](icon/bluetooth_normal.svg).
+
+2. Switch on Bluetooth. The system will scan Bluetooth devices nearby automatically.
+
+3. Select a paired and connected Bluetooth device in "My Devices". Click **Send Files** (this button will only appear on pc / mobile phone / tablet Bluetooth devices), the interface for you to select files pops up.
+
+4. Select the files to be sent and click **Open**, a request for file transfer is sent. 
+
+   - If the receiver agrees with the request, then the sender starts to transfer the file and "Bluetooth File Transfer" window is displayed; after the file transfer is completed, a prompt message will pop up at the the receiver, and the user can view the file content.
+   - If the receiver is in the following situation, part of the file transfer fails, which will be displayed in the transmission failure list.
+      - The file transfer request is refused by the receiver, then the transfer terminates, and "File Transfer Failed" window pops up.
+      - The receiver times out or the transferring distance is beyond transmission range, and "File Transfer Failed" window pops up(Bluetooth device connection failed).
+      - The receiver does not operate for 1 minute, then the transfer terminates by default,  and "File Transfer Failed" window pops up. 
 
 ### Date and Time
 Set your timezone properly to have correct date and time. You can also change them manually.
@@ -888,6 +916,12 @@ Note that the auto-sync function will be disabled after changing date and time m
    - Enter the correct date and time.
 3. Click **Confirm**.
 
+#### Set Time Format
+
+Setting the format of time and date is supported.
+
+1. On the homepage of Control Center, click ![time](icon/time.svg).
+2. Click **Time Format** to set the first day of week, long date, short date, long time, and short time.
 
 ### Power Management
 
@@ -913,6 +947,13 @@ To reduce the power consumption of your laptop, turn on power saving mode to red
 2. Click **General**.
 3. Switch on **Password is required to wake up the monitor** and **Password is required to wake up the computer** to improve the security.
 
+#### Display capacity 
+1. On the homepage of Control Center, click ![power_normal](icon/power_normal.svg).
+2. Click **General**.
+      - Switch on **Display capacity and remaining charging time** to display remaining capacity and charging time.
+      - Switch off **Display capacity and remaining charging time** to display remaining capacity only.
+>![notes](icon/notes.svg)Notes: This function is only available on laptops.
+
 ####  Time to Turn Off Monitor
 
 1. On the homepage of Control Center, click ![power_normal](icon/power_normal.svg).
@@ -927,12 +968,20 @@ To reduce the power consumption of your laptop, turn on power saving mode to red
 2. Click **Plugged In** and **On Battery**.
 3. Set the time to suspend.
 
-> ![tips](icon/tips.svg)Tips: There is an option for laptops plugged in - **Suspend on lid close**. Switch it on according to your needs. 
+> ![tips](icon/tips.svg)Tips: For laptop users, you can select **Suspend** from the dropdown list after **When the lid is closed**.  
 
 #### Time to Lock Screen
+
 1. On the homepage of Control Center, click ![power_normal](icon/power_normal.svg).
 2. Click **Plugged In** and **On Battery**.
 3. Set the time to lock screen.
+
+#### Set "When the lid is closed"
+
+1. On the homepage of Control Center, click ![power_normal](icon/power_normal.svg).
+2. Click **Plugged In** and **On Battery**.
+3. You can select **Suspend**, **Hibernate**, **Turn off the monitor** and **Do nothing** from the dropdown list after **When the lid is closed**.  
+>![notes](icon/notes.svg)Notes: This function is only available for laptops.
 
 #### Power button settings
 
@@ -941,6 +990,16 @@ To reduce the power consumption of your laptop, turn on power saving mode to red
 3. You can select **Shut down, Suspend, Hibernate, Turn off the monitor, Do nothing** from the drop-down list after **When pressing the power button**.
 
 Any operation done here will take effect immediately. At the same time, the system will notify the user that the power button setting is changed. 
+
+#### Set "Low Battery Notification"
+
+1. On the homepage of Control Center, click ![power_normal](icon/power_normal.svg).
+2. Click **Plugged In**.
+3. Switch on **Low Battery Notification**. The system issues a low battery notification when the remaining battery power is below a set threshold (for example, 20%).
+
+You can adjust the threshold of low battery level by dragging the slider below "Low battery level".  You can adjust the threshold of auto suspend battery level by dragging the slider below "Auto suspend battery level".
+
+>![notes](icon/notes.svg)Notes: This function is only available for laptops.
 
 ### Mouse and Touchpad
 Mouse and Touchpad are common computer input devices. Using the mouse, you can make the operation easier and faster. For notebook computer users, when there is no mouse, the touch pad can also be used to replace the mouse for operation.
@@ -962,18 +1021,19 @@ After inserting or connecting the mouse, make relevant settings in the Control C
 
 1. On the homepage of Control Center, click ![mouse_touchpad_normal](icon/mouse_touchpad_normal.svg).
 2. Click **Mouse**.
-3. Adjust **Pointer Speed**, and switch on **Natural Scrolling**/**Mouse Acceleration** if you want.
+3. Adjust **Pointer Speed**, which helps you to control the speed at which the pointer moves as the mouse moves.
+4. Switch on **Natural Scrolling**/**Mouse Acceleration** if you want.
 
-> ![notes](icon/notes.svg)Notes: Turn on the mouse acceleration to improve the accuracy of the pointer. The moving distance of the mouse pointer on the screen will increase according to the acceleration of the moving speed. It can be turned on or off according to the usage.
-
-> ![notes](icon/notes.svg)Notes: If Natural Scrolling is enabled, when you scroll down, the page will scroll down, when you scroll up, the page will scroll up as well. 
+> ![notes](icon/notes.svg)Notes: 
+>   - Turn on the mouse acceleration to improve the accuracy of the pointer. The moving distance of the mouse pointer on the screen will increase according to the acceleration of the moving speed. It can be turned on or off according to the usage.
+>   - If Natural Scrolling is enabled, when you scroll down, the page will scroll down, when you scroll up, the page will scroll up as well. 
 
 
 #### Touchpad
 
-![0|touchpad](jpg/touchpad.png.png)
+![0|touchpad](jpg/touchpad.png)
 
-If you are using a laptop, to avoid mis-operation on the touchpad, switch on **Disable touchpad while typing**, **Disable touchpad when a mouse is connected**,  and turn on **Palm Detection** to set **Minimum Contact Surface** and **Minimum Pressure Value**. 
+If you are using a laptop,  in order to avoid mis-operation on the touchpad, you can switch on **Disable touchpad while typing** in **Mouse > General** interface, and switch on **Disable touchpad when a mouse is connected** in **Mouse > Mouse** interface.  
 
 You can also change **Pointer Speed**, and switch on **Natural Scrolling** for the touchpad.
 
@@ -985,13 +1045,14 @@ TrackPoint, also called pointing stick, is a small joystick used as a pointing d
 3. Adjust **Pointer Speed** to a proper level.
 
 ### Drawing Tablet
-![0|graphics-tablet](jpg/graphics-tablet.png)
 
 Drawing tablet, also called graphics tablet and pen tablet, is a computer input device that enables a user to hand draw images, animations and graphics with a special pen-like stylus. 
 
 After connecting to the computer, you can set the pressure sensing force of the drawing tablet, that is, the pressure sensing value of the pen tip and eraser.
 
 > ![notes](icon/notes.svg)Notes: This part will be shown only if a drawing tablet is connected.
+
+![0|graphics-tablet](jpg/graphics-tablet.png)
 
 1. On the homepage of Control Center, click ![drawing](icon/drawing.svg).
 2. Choose **Pen** mode.
@@ -1104,9 +1165,10 @@ Desktop AI Assistant, Speech to Text, Text to Speech and Translation are availab
 
 Desktop AI Assistant  boosts your productivity by executing voice commands, such as checking the whether, creating events, etc. 
 
+- Switch on/off **Voice Wakeup**: when you switch on **Voice Wakeup**, you can check **OneShot** to enable wakeup order + semantic order, for example, "Hello, Xiaohua. What's the weather in Beijing?".
 - **Language**: Chinese-Mandarin, English
 - Switch on/off **Show in the Dock**: When it is enabled, Desktop AI Assistant will be displayed in the Dock. Otherwise, it will not be displayed but can be woken up by shortcuts.
-- **Voice Test**:  Test whether the voice input is normal or not.
+- **Voice Test**: Test whether the voice input is normal or not.
 
 #### Speech to Text
 
@@ -1195,12 +1257,8 @@ Authorization management is a pre-installed system tool to help you activate the
 
 The activation methods of authorization management can be divided into online activation and offline activation, while the online activation methods include "Try Full Version", "Input Serial Number" and "Import License File".
 
-> ![attention](icon/attention.svg)Attention: the following functions are available only for activated systems or systems in trial period, otherwise, they will:
+> ![attention](icon/attention.svg)Attention: Only systems in the trial period or the ones activated successfully can all the functions of UOS be used normally, otherwise some functions will be limited. 
 >
-> - Restrict the system updating.
-> - Restrict the App Store downloading and updating applications.
-> - Restrict voice functions, including Desktop Assistant, Speech to Text, Text to Speech, Translation and "Voice to Text" of Voice Note.
-> - Switch off **Auto Sync** of Cloud Account of Control Center.
 
 ##### **On-line Activation**
 
@@ -1220,17 +1278,17 @@ Under both online/offline mode, the system is activated automatically. There is 
 
 4. It is available to view the product name, version, authorization status, expiration date, etc. in this interface or choose to activate the system forever.
 
-   
+   ![0|probation3](jpg/probation3.png)
 
 Input the serial number
 
 1. Click  ![uos1](icon/uos1.svg)on the tray in the lower right corner to enter the interface.
-
 2. Click **Input Serial Number** to input the correct activation code and click **Activate Now**.
+> ![notes](icon/notes.svg)Notes: UOS supports both 16-digit and 25-digit serial numbers. 
 
 ![0|activation code1](jpg/activation-code1.png)
 
-3. Click **Confirm** in the pop-up confirmation dialogue and pops up the activation success interface.
+3. Click **Confirm** in the pop-up confirmation dialogue box and pops up the activation success interface.
 
 
 
@@ -1239,7 +1297,7 @@ Import the activation document
    
    2.  Click **Import License File**, select the correct license file in .key format in the File Manager and click **Activate Now**.  
    
-   3.  Click **Confirm** to successfully activate the interface
+   3.  Click **Confirm** in the secondary confirming dialogue box and pops up the activation success interface.
 
 
 ##### Off-line Activation
@@ -1297,6 +1355,8 @@ If the current server crashes, it is available to customize a new activation ser
 ### Backup and Restore
 
 In order to avoid data loss or damage caused by software defects, hardware damage, improper human operation, hacker attacks, computer viruses, natural disasters and other factors, the application data or system data can be backed up and restored to ensure the normal operation of the system.
+
+![0|backup-recovery](jpg/backup-restore.png)
 
 #### Backup
 
@@ -1436,7 +1496,7 @@ After deleting a workspace, all windows in the workspace will be moved to a near
 
 - On the workspace interface, click the **X** icon on the upper right corner to delete a workspace.
 
-### Quit Workspace
+### Exit Workspace
 After finishing the operations on the workspace interface, you can quit in the following ways:
 
 - Press **Esc**.
@@ -1508,35 +1568,43 @@ On the touchpad, you can use the following gestures as a substitute for mouse op
 
 > ![attention](icon/attention.svg)Attention: Your touchpad may not support some of the following gestures. Please confirm whether the touchpad supports multi-touch. 
 
-### Move the Cursor
+### One-finger Gestures
+
+One-finger gestures are the most basic operation of the operating system, which only includes movement and clicking.
+
+#### Move the Cursor
 
 Move your finger to move the cursor.
 
-### Click
+#### Click
 
 Click with a single finger to finish the mouse click operation.
 
-### Double-click
+#### Double-click
 
 Double-click with a single finger to finish the mouse double-click operation.
 
-### Scroll the Screen
+### Two-finger Gestures 
+
+Two- finger gestures refer to operation for operating system and application window content, including moving, zooming, and clicking.
+
+#### Scroll the Screen
 
 Move upward with two fingers to scroll the screen down. If the "Natural Scrolling" option is enabled, the screen will scroll upward.
 
 Move downward with two fingers to scroll the screen upward. If the "Natural Scrolling" option is enabled, the screen will scroll downward.
 
-### Backward/Forward
+#### Backward/Forward
 
 Move to the left with two fingers to move backward. Move to the right with two fingers to move forward.
 
-### Display/Hide the Control Center
+#### Display/Hide the Control Center
 
 Display the Control Center by sliding with two fingers from the right edge of the touchpad to the left.
 
 Hide the Control Center by sliding with two fingers from the left edge of the touchpad to the right.
 
-### Zoom and Rotate
+#### Zoom and Rotate
 
 Increase the distance between the two fingers to zoom in, which responds to the operation of **Ctrl** + ![=](icon/=.svg);
 
@@ -1546,48 +1614,56 @@ Rotate with two fingers to rotate the content, which mainly supports the rotatio
 
 Double-click with two fingers to zoom in and restore at the ratio of 200% .
 
-### Open the Right-click Menu
+#### Open the Right-click Menu
 
 Click with two fingers to display the right-click menu.
 
-### Maximize/Restore the Window
+### Three-finger Gestures
+
+Three- finger gestures refer to operation for operating system and application window themselves, including moving, zooming, and clicking.
+
+#### Maximize/Restore the Window
 
 Move upward with three fingers to maximize the window, which responds to the operation of **Super** + ![Up](icon/Up.svg);
 
 Move downward with three fingers to maximize the window, which responds to the operation of  **Super** + ![Down](icon/Down.svg).
 
-### Split to Left/Right
+#### Split to Left/Right
 
 Slide with three fingers from the right edge of the touchpad to the left to split the current window left.
 
 Slide with three fingers from the left edge of the touchpad to the right to split the current window right.
 
-### Display All Windows
+#### Display All Windows
 
 Increase or decrease the distance between the three fingers to display all the windows, which responds to the operation of **Super** + **W**.
 
-### Move the Window
+#### Move the Window
 
 1. Click with three fingers to activate the moving status of the current window, which responds to the operation of **AIt** + **F7** .
 2. Move quickly the window in moving status with one finger and click anywhere to exit the moving status.
 
-### Hide/Display Workspace
+#### Fast Translation
 
-Move upward or downward with four/five fingers to display /hide the workspace, which corresponds to the operation of  **Super** + **S**.
+Select the text and then click with three fingers, the selected text will be translated in a small window, which corresponds to the operation of  **Ctrl** + **Alt** + **U**.
 
-### Switch Workspaces
+### Four/Five-finger Gestures
 
-Move with four/five fingers to the left to switch to the previous workspace, which corresponds to the operation of **Super** + ![Left](icon/Left.svg).
+#### Display/Hide Multi-task View
 
-Move with four/five fingers to the right to switch to the next workspace, which corresponds to the operation of **Super** + ![Right](icon/Right.svg).
+Move with four/five fingers upwards to display multi-task view, and move downwards immediately to hide multi-task view, which corresponds to the operation of **Super** + **S**. 
 
-### Display/Hide Desktop
+#### Switch Workspace
 
-Increase the distance between the four/five fingers to display/hide the desktop, which corresponds to the operation of  **Super** + **D**.
+Move with four/five fingers to the left/right to switch to the previous or next workspace, which corresponds to the operation of **Super** + **Left** or **Super** + **Right**. 
 
-### Display/Hide Launcher
+#### Display/Hide Desktop
 
-Decrease the distance between the four/five fingers to display/hide Launcher, which corresponds to the operation of  **Super**.
+Move with four/five fingers downwards to display desktop, and move upwards immediately to hide which corresponds to the operation of **Super** + **D**. 
+
+#### Display/Hide Launcher
+
+Click with four/five fingers to display/hide Launcher, which corresponds to the operation of  **Super**.
 
 ## Touchscreen Gestures
 
@@ -1609,19 +1685,23 @@ Select the content and move your finger on the touchscreen to finish the mouse d
 
 ### Open the Right-click Menu
 
-Open the right-click menu of the current object by long-press and release on the touchscreen.
+Open the right-click menu of the current object by long-press for 1 second and release on the touchscreen.
 
 ###  Open Workspace
 
-Slide in from the left side of the screen to open Workspace.
+Slide in from the bottom of the screen exceeding the dock's height to open Workspace.
 
-###  Open Control Center
+### Call out Clipboard
 
-Slide in from the right side of the screen to open Control Center.
+Slide in from the left edge of the screen exceeding the dock's height to call out Clipboard.
+
+### Call out Notification Center
+
+Slide in from the right edge of the screen exceeding the dock's height to call out Notification Center.
 
 ### Call out Dock
 
-When the Dock is set as "Always Hidden", if the Dock is at the bottom, slide in upward from the bottom edge of the screen to call it out; and if the Dock is on the top, slide in downward from the upper edge of the screen to call it out.
+When the Dock is set as "Always Hidden" or "Smart Hide", if the Dock is at the bottom, slide in upward from the bottom edge of the screen to call it out; and if the Dock is on the top, slide in downward from the upper edge of the screen to call it out.
 
 ### Backward/Forward
 
@@ -1635,5 +1715,9 @@ The scrolling directions of the screen are the same as where your finger goes.
 
 Pinch two fingers to zoom out on the webpage or picture.  Open two fingers to zoom in on the webpage or picture.
 
+### Rotate
 
-<div class="version-info"><span>Update Date: 2020-09-30</span><span> Version: 2020.03</span></div>
+Place two fingers on the picture with a certain distance and rotate the two fingers at the same time to rotate the picture.
+
+
+<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 2020.03</span></div>

@@ -40,11 +40,11 @@ You can use one of the following ways to open image files:
 
 - Right-click an image and select **Open with** > **Image Viewer**. 
 - Double-click an image to open if Image Viewer has been set as the default application for image viewing.
-- Open Image Viewer and click **Open Image** and select the image file to open it.
+- Open Image Viewer, click **Open Image** and select the image file to open it.
 - Open Image Viewer and drag the image to the interface to open it.
 - Drag the image to the Image Viewer icon on desktop or in the dock to open it.
 
-> ![tips](icon/tips.svg)Tips: In Control Center, you can set Image Viewer as the default image viewer. Please refer to [Default Applications](dman:///dde#Default Application Settings) for specific operations.
+> ![tips](icon/tips.svg)Tips: In the Control Center, you can set Image Viewer as the default image viewer. Please refer to [Default Applications](dman:///dde#Default Application Settings) for specific operations.
 
 Following Image formats are supported: BMP, ICO, JPG/JPE/JPEG, PNG, TGA, TIF/TIFF, XPM, GIF, SGI, RAW, WEBP, CR2, NEF, DNG, RAF, MEF, MRW, XBM, SVG, ORF, and MNG.
 
@@ -144,7 +144,7 @@ In the main menu, you can switch window themes, view help manual, and get more i
 
 ### Theme
 
-The window theme provides three theme types, namely Light Theme, Dark Theme and System Theme (default).
+The window theme provides three theme types, namely Light Theme, Dark Theme, and System Theme (default).
 
 1. On the Image Viewer interface, click ![main_menu](icon/icon_menu.svg).
 2. Click **Theme** to select one theme.
@@ -162,4 +162,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 
 1. On the Image Viewer interface, click ![icon_menu](icon/icon_menu.svg).
 2. Click **Exit** to exit Image Viewer.
-<div class="version-info"><span>Update Date: 2020-09-30</span><span> Version: 5.6</span></div>
+<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 5.6</span></div>

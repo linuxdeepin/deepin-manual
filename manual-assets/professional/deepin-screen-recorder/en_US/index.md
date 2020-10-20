@@ -10,7 +10,7 @@ Screen Capture is a tool which integrates the screen capture and recorder functi
 
 ## Guide
 
-You can run, close or create shortcuts for screen capture in the following operations.
+You can run, close, and create shortcuts for Screen Capture in the following operations.
 
 ### Run Screen Capture
 
@@ -29,7 +29,7 @@ You can run, close or create shortcuts for screen capture in the following opera
 - Screen Capture will exit automatically after screen capturing or screen recording completes.
 - On the Screen Capture interface, click ![close](icon/close-normal.svg) to exit Screen Capture.
 - On the Screen Capture interface, press **Ctrl + S** or **Esc** on the keyboard to save the screen capture or exit.
-- On the Screen Capture interface, right-click to select **Save** or **Exit**.
+- On the Screen Capture interface, right-click and select **Save** or **Exit**.
 
 ## Operations
 
@@ -50,7 +50,7 @@ In the Screenshot mode on the Screen Capture interface, press **Ctrl + Shift + ?
 
 #### Select Screenshot Area
 
-There are three kinds of common screenshot areas, namely the full screen, program window and customized area. When a screenshot is captured, the selected area will be bordered with dashed white line and looks brighter than the other area.
+There are three kinds of common screenshot areas, namely the full screen, program window, and customized area. When a screenshot is captured, the selected area will be bordered with dashed white line and looks brighter than the other area.
 
 > ![notes](icon/notes.svg)Notes: When the computer is connected to multiple monitors, you can also use Screen Capture to capture areas on different monitors.
 
@@ -85,7 +85,7 @@ Program window selection is used to identify the current application window auto
 1.  Press **Ctrl + Alt + A** on the keyboard to enter the screen capture mode.
 2.  Move the cursor to the application window and the window will be selected automatically. The screenshot dimension will be displayed above the upper left corner. 
 3.  Click the window and a toolbar will pop up.
-4.  Click ![ ](icon/close.svg) on the toolbar or right-click to select **Exit** to exit Screen Capture.
+4.  Click ![ ](icon/close.svg) on the toolbar, or right-click and select **Exit** to exit Screen Capture.
 
 ##### Select Customized Area
 
@@ -98,7 +98,7 @@ Customized area selection is used to select the screenshot area freely by draggi
 1.  Press **Ctrl + Alt + A** on the keyboard to enter the screen capture mode.
 2.  Hold down and drag the left mouse button to select the screen capture area. The screenshot dimension will be displayed above the upper left corner. 
 3.  Release the left mouse button to complete area selection, and a toolbar will pop up.
-4.  Click ![关闭](icon/close.svg) on the toolbar, or right-click to select **Exit** to exit the screen capture.
+4.  Click ![关闭](icon/close.svg) on the toolbar, or right-click and select **Exit** to exit the screen capture.
 
 #### Adjust the Screenshot Area
 
@@ -126,7 +126,7 @@ You can edit screenshots in the following ways:
 
 - Click the tool icon on the toolbar. 
 - Quickly switch between various editing tools through shortcuts.
-- Right-click to choose the editing tools after selecting the screenshot area.
+- Right-click and choose the editing tools after selecting the screenshot area.
 
 #### Draw
 
@@ -408,4 +408,4 @@ The recorded video will be saved to the desktop automatically.
 ### View Help
 
 Press ![F1](icon/F1.svg) on the keyboard to view the help manual after launching Screen Capture.
-<div class="version-info"><span>Update Date: 2020-09-30</span><span> Version: 5.8</span></div>
+<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 5.8</span></div>

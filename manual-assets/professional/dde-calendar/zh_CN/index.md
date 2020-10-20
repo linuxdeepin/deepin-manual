@@ -212,4 +212,4 @@
 2. 点击 **退出**。
 
 
-<div class="version-info"><span>文档更新时间: 2020-09-30</span><span> 版本: 5.7</span></div>
+<div class="version-info"><span>文档更新时间: 2020-10-20</span><span> 版本: 5.7</span></div>

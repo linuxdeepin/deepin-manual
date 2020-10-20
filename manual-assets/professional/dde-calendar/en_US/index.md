@@ -10,7 +10,7 @@ Calendar is a useful tool to manage your personal life. By relating events with 
 
 ## Guide
 
-You can run, close, or create a shortcut for calendar in the following ways.
+You can run, close, and create a shortcut for Calendar in the following ways.
 
 ### Run Calender
 
@@ -39,7 +39,7 @@ On the Calendar interface, press **Ctrl + Shift + ?** on the keyboard to view sh
 
 ## Operations
 
-Calendar can be divided into yearly view, monthly view, weekly view and daily view, displaying date attributes by different views.
+Calendar can be divided into yearly view, monthly view, weekly view, and daily view, displaying date attributes by different views.
 
 Monthly view is defaulted and you can click to switch between different views.
 
@@ -68,11 +68,11 @@ Monthly view is defaulted and you can click to switch between different views.
    
       - When all day is checked:
          - You can only select dates as starts and ends, and cannot set hours and minutes. 
-         - Remind me: Never, On start day (9:00 AM), 1 day before (the default setting), 2 days before, and 1 week before
+         - Remind me: Never, On start day (9:00 AM), 1 day before (the default setting), 2 days before, or 1 week before.
       
       - When all day is not checked:
          - You can select dates, hours, and minutes as starts and ends.
-         - Remind me: Never, At time of event, 15 minutes before, 30 minutes before, 1 hour before, 1 day before, 2 days before, and 1 week before. 
+         - Remind me: Never, At time of event, 15 minutes before, 30 minutes before, 1 hour before, 1 day before, 2 days before, or 1 week before. 
    
    - Repeat: Never, Daily, Weekdays, Weekly, Monthly, or Yearly.
    
@@ -201,4 +201,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 2.  Click **Exit** to exit Calendar.
 
 
-<div class="version-info"><span>Update Date: 2020-09-30</span><span> Version: 5.7</span></div>
+<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 5.7</span></div>

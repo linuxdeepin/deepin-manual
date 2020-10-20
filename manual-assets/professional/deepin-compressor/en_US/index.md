@@ -99,7 +99,7 @@ On the Archive Manager interface, select a file to be extracted, right-click and
 
 ## Main Menu
 
-On the main menu, you can open the compression interface, switch window themes, view the help manual and get more information about Archive Manager.
+In the main menu, you can open the compression interface, switch window themes, view the help manual and get more information about Archive Manager.
 
 ### Open file
 1.  Click  ![icon_menu](icon/icon_menu.svg) on the Archive Manager interface.
@@ -149,4 +149,4 @@ View Help to get more information about Archive Manager.
 1.  On the Archive Manager interface, click ![icon_menu](icon/icon_menu.svg) .
 2.  Click **Exit** to exit.
 
-<div class="version-info"><span>Update Date: 2020-09-30</span><span> Version: 5.9</span></div>
+<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 5.9</span></div>

@@ -409,6 +409,33 @@ If your computer is equipped with Bluetooth module, you can transfer files in sh
 5. After transferring is finished successfully, click **Done** in the pop-up dialogue box.
 >![tips](icon/tips.svg)Tips: If you need to transfer a folder, you can compress it in advance and send it through Bluetooth.
 
+## Add Corner Marker to Files/Folders
+
+You can assign an icon file to a file or folder icon through the command line and display it as a corner marker.
+>![notes](icon/notes.svg)Notes: 
+>   - The corner marker files support formats such as svg, jpg, png, bmp, and gif, but not bigger than 100kb.
+>   - The corner marker could not be added to files in USB disks and CD-ROM disks.
+
+### Add single corner marker
+
+1. Open Terminal, input **gio set xxx(file path)  -t stringv metadata::emblems "xxx(icon path)"**, which means to add a corner marker in the lower right corner of the file/folder icon by default.
+>![attention](icon/attention.svg)Attention: the special corner markers defined by the system could not be replaced.
+2. You can add position codes into the above command to add a corner marker to the upper left corner(lu), lower left corner(ld), upper right corner(ru) or lower right corner(rd).
+For example, to add a corner marker to the upper left corner, you have to input:
+**gio set xxx(file path)  -t stringv metadata::emblems "xxx(icon path);lu"**
+![mark](jpg/single.png)
+
+### Add multiple corner markers
+To add 2~4 corner markers to a file/folder, you can input "|" in the command to seperate multiple paths of the corner marker files. Only one corner marker can be added to the same corner, but you can replace it.
+
+For example, to add 4 corner markers to a file/folder icon, you can input:
+**gio set xxx(file path)  -t stringv metadata::emblems "xxx(icon path);lu|xxx(icon path);ld|xxx(icon path);ru|xxx(icon path);rd"**
+
+![mark](jpg/multi.png)
+
+### Cancel corner markers
+Open Terminal, input **gio set xxx(file path) -t stringv metadata::emblems ""** to cancel all corner markers on the file/folder icon. 
+
 ## File Vault
 
 File Vault is designed to  create a special safe space for you and protect your privacy. With the advanced encryption technology and convenient operations, it's quite easy to use.
@@ -583,4 +610,4 @@ The window theme includes Light Theme, Dark Theme and System Theme (default).
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Click **Exit**.
 
-<div class="version-info"><span>Update Date: 2020-09-30</span><span> Version: 5.2</span></div>
+<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 5.2</span></div>

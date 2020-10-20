@@ -47,13 +47,11 @@ Document Viewer realizes basic document management such as opening files, saving
 You can open a file by: 
 
 - Dragging it directly into the interface or onto the icon. 
-
 - Right-clicking it and selecting **Open with** > **Select default program**, and then selecting Document Viewer from the list.
 
    > ![tips](icon/tips.svg)Tips: Document will be opened by default program by directly double clicking on it. You can right-click it and select a default program by clicking on **Properties** > **Open with**. Or you can set a default program for this type of documents in [Default Applications](dman:///dde#Default Application Settings) from Control Center. 
 
 - Clicking **Select File** and selecting a file on Document Viewer interface.
-
 - On Document Viewer interface, pressing **Ctrl+O** and selecting the file you want to open. 
 
 > ![notes](icon/notes.svg)Notes: Document Viewer supports PDF and DJVU formats.
@@ -94,7 +92,7 @@ To switch/adjust tabs, you can:
 - Drag within the window to adjust the sequence of tabs. 
 - Click the ![previous](icon/previous.svg) or ![next](icon/next.svg)button to move left and right. 
 - Scroll the mouse wheel to switch tabs automatically.  
-- When there is only one window currently, double-click or right-click the file and select Document Viewer to open the file in a new tab in the window. 
+- When there is only one window currently, double-click or right-click the file and select Document Viewer to open the file in the window which was opened first.  
 
 
 Operations among windows
@@ -133,15 +131,14 @@ On Document Viewer interface, open a file.
   1. Select text using the selecting tool and right-click, select **Add annotation**.
   2. Input your annotation.
   3. Click in any blank area outside the window, your annotation will be saved automatically.  
+  The selected text will be highlighted after the annotation is added successfully. 
 
-The selected text will be highlighted after the annotation is added successfully. 
-
-   > ![tips](icon/tips.svg)Tips: You can also right-click at any blank area or the place you want to add an annotation and select **Add annotation**. After a note is successfully added, a highlighted note icon appears.
-
-   > ![notes](icon/notes.svg)Notes: 
-   >
-   > * Click in any blank area outside the window without inputing any content, then the note is not added successfully or is deleted automatically. 
-   > * Click in any blank area outside the window after inputing some content, the content will be saved automatically and displayed as a small icon. 
+      > ![tips](icon/tips.svg)Tips: You can also right-click at any blank area or the place you want to add an annotation and select **Add annotation**. After a note is successfully added, a highlighted note icon appears.
+      
+      > ![notes](icon/notes.svg)Notes: 
+      >
+      > - Click in any blank area outside the window without inputing any content, then the note is not added successfully or is deleted automatically. 
+      > - Click in any blank area outside the window after inputing some content, the content will be saved automatically and displayed as a small icon. 
 
 - Copy note
    -  Right-click the highlighted text to which a note is successfully added and select **Copy** to copy the content.
@@ -270,13 +267,6 @@ To make the window adapted to all sizes, you can:
 1. On Document Viewer interface, open a document. 
 2. Right-click and select **Rotate Left** or **Rotate Right** from the submenu, the page will rotate to the left or right by 90°. 
 
-### Magnifier 
-
-1. On Document Viewer interface, open a document. 
-2. Click![icon_menu](icon/icon_menu.svg) >  **Magnifier**.
-3. Move the cursor to the area you want to view to magnify. 
-4. Press **Esc** or right-click to cancel magnifying. 
-
 ### Document info
 1. On Document Viewer interface, open a document. 
 2. Right-click and select **Document info** to check the relevant information such as properties about the document.
@@ -289,6 +279,13 @@ In the main menu, you can create new window and new tabs, [save](#Save documents
 
 1. Click ![icon_menu](icon/icon_menu.svg) on the main interface.
 2. Click **Display in file manager** to open and show the file's storing location in File Manager. 
+
+### Magnifier 
+
+1. On Document Viewer interface, open a document. 
+2. Click![icon_menu](icon/icon_menu.svg) >  **Magnifier**.
+3. Move the cursor to the area you want to view to magnify. 
+4. Press **Esc** or right-click to cancel magnifying. 
 
 ### Theme
 
@@ -316,4 +313,4 @@ click Help to get the manual, which will help you further know and use Document 
 2. Click  **Exit**.
 
 
-<div class="version-info"><span>Update Date: 2020-09-30</span><span> Version: 5.8</span></div>
+<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 5.8</span></div>

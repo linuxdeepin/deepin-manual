@@ -12,7 +12,7 @@ Music is a local music playing application with brand new UI design and state-of
 
 ## Guide
 
-You can run, close, and create a shortcut for Music by the following ways.
+You can run, close, and create a shortcut for Music in the following ways.
 
 ### Run Music
 
@@ -76,7 +76,7 @@ On the main interface, you can choose from regular options, check view playlist,
     	<tr>
             <td>3</td>
             <td>Sort options</td>
-            <td>Users can sort the list by different types of order including time added, title, artist or album name.</td>
+            <td>Users can sort the list by different types of order including time added, title, artist, or album name.</td>
         </tr>
     	<tr>
             <td>4</td>
@@ -106,7 +106,7 @@ On the main interface, you can choose from regular options, check view playlist,
     		<tr>
             <td>9</td>
             <td>Play mode</td>
-            <td>Click it to switch to the play mode, including list loop, single loop and shuffle.</td>
+            <td>Click it to switch to the play mode, including list loop, single loop, and shuffle.</td>
         </tr>
     		<tr>
             <td>10</td>
@@ -121,12 +121,13 @@ On the main interface, you can choose from regular options, check view playlist,
     </tbody>
 </table>
 
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 
 ## Common Operations
 
-You can add, delete, and view info of the local music in Music.
+You can add, delete, and view info of the local music in Music in the following ways.
 
 ### Add Music
 
@@ -136,8 +137,6 @@ On the Music interface, you can:
 - Click ![icon_menu](icon/icon_menu.svg)> **Add music** to add music files to the playlist.
 - Drag the music file/folder to the Music interface, and add the music file to the playlist.
 
-
-
 ### Search Music
 
 1. In the search box on top of the Music interface, you can click ![search](icon/search.svg) to enter keywords.
@@ -146,7 +145,7 @@ On the Music interface, you can:
 
    - When there is matched information, click **Play All** in the search result list to play the music in the search result list.
 
-   - When there is no matched information, "No search results" will be displayed in the search result list.
+   - When there is no matched information, **No search results** will be displayed in the search result list.
 
 3. Click ![0|close](icon/close.svg) or delete the entered information in the search box to clear the current information or cancel the search.
 
@@ -154,8 +153,8 @@ On the Music interface, you can:
 
 You can play music in the following ways:
 
-- Select a music in the playlist, and double click or right-click **Play** to play the music.
-- Select a list under the playlist in the left navigation bar, and right-click **Play** to play all the songs in the list according to the current order.
+- Select a music in the playlist, and double-click or right-click and select **Play** to play the music.
+- Select a list under the playlist in the left navigation bar. Right-click and select **Play** to play all the songs in the list according to the current order.
 - Click **Play All** to play all the songs in the current list according to the current order. 
 
 > ![tips](icon/tips.svg)Tips: On the Music interface, click ![play_normal](icon/play_normal.svg) to play the selected music. Click ![suspend_normal](icon/suspend_normal.svg) to pause the play. Click ![last_normal](icon/last_normal.svg) or ![next_normal](icon/next_normal.svg) to switch to the previous or the next song according to the current play mode.
@@ -166,7 +165,7 @@ On the Music interface, click ![collect](icon/collect.svg) to add music to My Fa
 
 The prompt information **Successfully added to "My favorites"** pops up and the music is added to **My Favorites** list.
 
-> ![notes](icon/notes.svg)Notes: You can also right-click the music, and click **Add to playlist** > **My favorites** to add the music to **My Favorites** list.
+> ![notes](icon/notes.svg)Notes: You can also right-click the music, and select **Add to playlist** > **My favorites** to add the music to **My Favorites** list.
 
 ### View Lyrics
 
@@ -191,11 +190,11 @@ On the Music interface, click ![single](icon/single-tune-circulation_normal.svg)
 
 ### Delete Music
 
-1. On the Music interface, right-click the music and you can:
+On the Music interface, right-click the music and you can:
 
-2. Click **Remove from playlist** to remove the music from the playlist, but the music file will still be saved on the local disk.
+- Click **Remove from playlist** to remove the music from the playlist, but the music file will still be saved on the local disk.
 
-3. Click **Delete from local disk** to remove the music both from the playlist and the local disk. 
+- Click **Delete from local disk** to remove the music both from the playlist and the local disk. 
 
 ![0|remove](jpg/remove.png)
 
@@ -232,7 +231,7 @@ On the Music interface, you can create, delete, and rename playlist. You can als
 ### Rename Playlist
 
 1.  Select a playlist from **Playlists**.
-2.  Right-click to select **Rename**.
+2.  Right-click and select **Rename**.
 3.  Enter the name of the playlist, and press the **Enter** key on keyboard to save.
 
 ![0|renamelist](jpg/renamelist.png)
@@ -240,7 +239,7 @@ On the Music interface, you can create, delete, and rename playlist. You can als
 ### Add Music to Playlist
 
 1. On the Music interface, select a music you want to add.
-2. Right-click to select **Add to playlist**, and add the music to the selected playlist.
+2. Right-click and select **Add to playlist** to add the music to the selected playlist.
 
 
 > ![notes](icon/notes.svg)Notes: You can drag the local music to a specified playlist to add the music into the current playlist and **All Music** playlist. 
@@ -250,7 +249,7 @@ On the Music interface, you can create, delete, and rename playlist. You can als
 ### Remove Music from Playlist
 
 1. Select a playlist from **Playlists**, and select the music you want to remove from it.
-2. Right-click, and select **Remove from playlist** to remove the music from the playlist.
+2. Right-click and select **Remove from playlist** to remove the music from the playlist.
 
 ![0|remove](jpg/removefromlist.png)
 
@@ -295,7 +294,7 @@ You can set the basic information and shortcuts in settings.
         - Check the **Remember playback position** box, and the music will be played automatically from the last position played when Music runs.
         - Check the **Enable fade in/out** box, and the music will fade in and out when Music runs.
     - In the option **Close Main Window**, you can:
-        - Select **Minimize to system tray**  to close the main window, and hide the Music to system tray.
+        - Select **Minimize to system tray** to close the main window, and hide the Music to system tray.
         - Select **Exit** to close the main window, and exit Music. 
         - Select **Ask me always** to prompt system notification, and confirm whether to exit Music when the main window is closed.
 3. Click **Restore Defaults** to restore the default settings.
@@ -335,4 +334,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 2.  Click **Exit** to exit Music.
 
 
-<div class="version-info"><span>Update Date: 2020-09-30</span><span> Version: 6.0</span></div>
+<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 6.0</span></div>

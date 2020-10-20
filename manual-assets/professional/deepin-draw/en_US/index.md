@@ -8,7 +8,7 @@ Draw is a simple drawing tool, supporting rotation, cropping, flipping, and addi
 
 ## Guide
 
-You can run, close and create shortcuts for Image Viewer by the following ways.
+You can run, close, and create shortcuts for Draw in the following ways.
 
 ### Run Draw
 
@@ -64,7 +64,7 @@ Currently, a maximum of 30 pictures can be exported. Formats including JPG, PNG,
 ### Export Pictures
 
 1.  On the Draw interface, click ![menu](icon/icon_menu.svg)> **Export**.
-2.  Set the parameters including file name, path, format and picture quality. 
+2.  Set the parameters including file name, path, format, and picture quality. 
 3.  Click **Save**. 
 
 ### Save Pictures
@@ -106,12 +106,12 @@ After drawing entities with the graphics drawing tool, you can perform the follo
 2.   You can set the parameters for graphics as follows:
  - Click **Fill** to set the fill color and transparency for graphics.
  - Click **Stroke** to set the stroke color and transparency for graphics pen.
- - Choose and set the width of Stroke from the drop-down list right to the **Stroke** button.
- - Click **Points** (from 3 to 50) and **Diameter** (from 0% to 100%) to set the points and diameter for star graphics only.
+ - Choose and set the weight of Stroke from the drop-down list right to the **Stroke** button.
+ - Click **Points** (from 3 to 50) and **Radius** (from 0% to 100%) to set the points and radius for star graphics only.
  - Click **Sides** to set sides for polygon graphics only. The number of sides ranges from 4 to 10, which can be adjusted by clicking the up or down arrow in the **Sides** or entering the value manually.
 3.   Drag the mouse to draw graphics in the Draw area. 
 
->![tips](icon/tips.svg)Tips: Facilitated by the **Shift** or **Shift + Alt** keys on the keyboard, you can draw a square, circle, equilateral triangle, regular pentagram and regular pentagon when drawing graphics with ![rectangle](icon/rectangle_normal.svg), ![oval](icon/oval_normal.svg), ![triangle](icon/triangle_tool_normal.svg), ![star](icon/draw-star.svg) and ![hexagon](icon/hexagon_tool_normal.svg).
+>![tips](icon/tips.svg)Tips: Facilitated by **Shift** or **Shift + Alt** on the keyboard, you can draw a square, circle, equilateral triangle, regular pentagram, and regular pentagon when drawing graphics with ![rectangle](icon/rectangle_normal.svg), ![oval](icon/oval_normal.svg), ![triangle](icon/triangle_tool_normal.svg), ![star](icon/draw-star.svg) and ![hexagon](icon/hexagon_tool_normal.svg).
 
 ![1|shape](jpg/shape1.png)
 
@@ -138,7 +138,7 @@ After drawing entities with the graphics drawing tool, you can perform the follo
 
 2.   You can set text styles as follows:
    - Click **Color** to set the fill color and transparency of texts.
-   - Select your font style in the **Font** drop-down list.
+   - Select the font style in the **Font** drop-down list.
    - Select regular font or bold font in the drop-down list.
    - Adjust the **Size** by entering a value manually or selecting a size in the drop-down list.
    
@@ -169,8 +169,8 @@ You can copy, crop, and rotate graphics with the editing functions, and also adj
 ### Copy and Paste
 
 1.  On the Draw interface, select the graphics to be copied.
-2.  Right-click to select **Copy** or use the shortcuts **Ctrl + C** to copy the graphics to the clipboard.
-3.  Right-click to select **Paste** or use the shortcuts **Ctrl + V** to paste the graphics to Draw.
+2.  Right-click and select **Copy** or use the shortcuts **Ctrl + C** to copy the graphics to the clipboard.
+3.  Right-click and select **Paste** or use the shortcuts **Ctrl + V** to paste the graphics to Draw.
 
 ![1|copy](jpg/copy.png)
 
@@ -215,7 +215,7 @@ You can copy, crop, and rotate graphics with the editing functions, and also adj
 ### Delete
 
 1.  On the Draw interface, select an imported picture.
-2.  Right-click to select **Delete** or use the ![Delete](icon/delete.svg) key on the keyboard to delete the selected picture.
+2.  Right-click and select **Delete** or use the ![Delete](icon/delete.svg) key on the keyboard to delete the selected picture.
 
 ![1|delete](jpg/delete.png)
 
@@ -230,7 +230,7 @@ You can copy, crop, and rotate graphics with the editing functions, and also adj
 
 1. On the Draw interface, select one or several graphics.
 
-2. Right-click and select **Align**. Choose from **Align left**, **Horizontal centers**, **Align right**, **Align top**, **Vertical centers**, **Align bottom**, **Flip horizontally** or **Distribute vertical space**. 
+2. Right-click and select **Align**. Choose from **Align left**, **Horizontal centers**, **Align right**, **Align top**, **Vertical centers**, **Align bottom**, **Flip horizontally**, and **Distribute vertical space**. 
 
 >![notes](icon/notes.svg)Notes: 
     - When you select one graphic, the layer will be aligned with the canvas.
@@ -240,8 +240,8 @@ You can copy, crop, and rotate graphics with the editing functions, and also adj
 
 ### Align Texts
 
-1.  On the Draw interface, click ![text](icon/text_normal.svg) and adjust the size of text box.
-2.  Select target text. Right-click and select **Text Alight Left**, **Text  Align Right** or **Text Align Center** to align texts.
+1.  On the Draw interface, click ![text](icon/text_normal.svg) and adjust the size of the text box.
+2.  Select target text. Right-click and select **Text Alight Left**, **Text Align Right** or **Text Align Center** to align texts.
 
 ![1|layer](jpg/align.png)
 
@@ -259,7 +259,7 @@ You can create a new drawing.
 
 ### Theme
 
-The window theme provides three theme types, namely Light Theme, Dark Theme and System Theme (default).
+The window theme provides three theme types, namely Light Theme, Dark Theme, and System Theme (default).
 
 1. On the Draw interface, click ![icon_menu](icon/icon_menu.svg).
 2. Click **Theme** to select one theme.
@@ -281,4 +281,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 2.  Click **Exit** to exit Draw.
 
 
-<div class="version-info"><span>Update Date: 2020-09-30</span><span> Version: 5.8</span></div>
+<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 5.8</span></div>

@@ -7,7 +7,7 @@ Voice Notes is a simple memo software with texts and voice recordings. You are a
 
 ## Guide
 
-You can run, exit or create a shortcut for Voice Notes in the following ways.
+You can run, exit, and create a shortcut for Voice Notes in the following ways.
 
 ### Run Voice Notes
 
@@ -229,4 +229,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 1. On the Voice Notes interface, click ![icon_menu](icon/icon_menu.svg).
 2. Click **Exit** to exit Voice Notes.
 
-<div class="version-info"><span>Update Date: 2020-09-30</span><span> Version: 5.7</span></div>
+<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 5.7</span></div>

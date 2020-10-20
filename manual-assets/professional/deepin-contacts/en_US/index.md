@@ -35,36 +35,33 @@ Once **Contacts** is run, the interface **Union ID Sign in** pops up automatical
 
 Once **Contacts** is run, the interface **Union ID Sign in** pops up automatically. If you don't have a Union ID account, you can sign up for one as follows.
 
-- Click hyper link **Sign up**, the default browser of the operation system is called successfully and a signing-up page is opened.
-
-- Input information to sign up for an account accordingly as required.
-
-- After signing up is completed, you can return to the interface of Union ID Sign in to sign in your account.
+1. Click hyper link **Sign up**, the default browser of the operation system is called successfully and a signing-up page is opened.
+2. Input information to sign up for an account accordingly as required.
+3. After signing up is completed, you can return to the interface of Union ID Sign in to sign in your account.
 
 
 #### Forgot Password？
 
 Once **Contacts** is run, the interface **Union ID Sign in** pops up automatically. If you have forgotten password, you can get it back as follows.
 
-- Click hyper link **Forgot password?** , the default browser of the operation system is called successfully and you can reset your password.
-
-- After password is reset, you can return to the interface of Union ID Sign in to sign in your account.
+1. Click hyper link **Forgot password?** , the default browser of the operation system is called successfully and you can reset your password.
+2. After password is reset, you can return to the interface of Union ID Sign in to sign in your account.
 
 
 #### Auto-login
 
-1. Prerequisite: you have logged in the operation system with the Union ID. 
+Prerequisite: you have logged in the operation system with the Union ID. 
 
-2. Once **Contacts** is run, the system will enter into main interface of Contacts without inputing Union ID and password.
+1. Once **Contacts** is run, the system will enter into main interface of Contacts without inputing Union ID and password.
 
 
 #### Manually login
 
-1. Prerequisite: you haven't logged in the operation system with the Union ID.
+Prerequisite: you haven't logged in the operation system with the Union ID.
 
-2. Once **Contacts** is run, the interface **Union ID Sign in** pops up automatically.
+1. Once **Contacts** is run, the interface **Union ID Sign in** pops up automatically.
 
-3. Input your Union ID and password. After verification is completed successfully, logging in from the client terminal is also done and main interface of Contacts is opened. 
+2. Input your Union ID and password. After verification is completed successfully, logging in from the client terminal is also done and main interface of Contacts is opened. 
 
 ## Contacts
 
@@ -72,9 +69,9 @@ On the main interface, click ![18](icon/18.svg) .
 
 ### Search
 
-1. Prerequisite: you have already added some friends or created groups.
+Prerequisite: you have already added some friends or created groups.
 
-2. To find a friend quickly, you can input his/her Union ID, nickname, remark name, or group name into the searching box.
+1. To find a friend quickly, you can input his/her Union ID, nickname, remark name, or group name into the searching box.
 
   > ![notes](icon/notes.svg) Notes: The object being searched should be somehow related to the Union ID, instead of a totally stranger.
 
@@ -171,7 +168,7 @@ One default groups classification is displayed here, if you want to add others, 
 #### Delete Groups Classification
 
 1. Select the groups classification you want to delete, and right-click; or click![19](icon/19.svg) then select **Delete Classification**.
-2. A confirming box pops up, click **OK** then the selected groups classification will be deleted, members in the classification will be moved into default groups classification. .
+2. A confirming box pops up, click **OK** then the selected groups classification will be deleted, members in the classification will be moved into default groups classification.
 
 #### Create New Group
 
@@ -425,4 +422,4 @@ click Help to get the manual, which will help you further know and use Contacts.
 
 
 
-<div class="version-info"><span>Update Date: 2020-09-30</span><span> Version: 1.0</span></div>
+<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 1.0</span></div>

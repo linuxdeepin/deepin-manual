@@ -10,9 +10,10 @@
 
 ### 运行文本编辑器
 
-点击桌面底部的 ![deepin-launcher](icon/deepin-launcher.svg)，进入启动器界面。搜索或浏览找到文本编辑器 ![deepin-editor](icon/deepin-editor.svg)，点击打开。
+1. 点击桌面底部的 ![deepin-launcher](icon/deepin-launcher.svg)，进入启动器界面。
+2. 搜索或浏览找到文本编辑器 ![deepin-editor](icon/deepin-editor.svg)图标并打开。
+3. 在启动器中，右键单击文本编辑器图标，您可以：
 
-在启动器中，右键单击文本编辑器图标，您可以：
  - 点击 **发送到桌面**，在桌面创建快捷方式。
  - 点击 **发送到任务栏**，将应用程序固定到任务栏。
  - 点击 **开机自动启动**，将应用程序添加到开机启动项，在电脑开机时自动运行该应用。
@@ -342,4 +343,4 @@
 
 1. 在文本编辑器界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **退出**。
-<div class="version-info"><span>文档更新时间: 2020-09-30</span><span> 版本: 5.9</span></div>
+<div class="version-info"><span>文档更新时间: 2020-10-20</span><span> 版本: 5.9</span></div>
