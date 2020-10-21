@@ -20,8 +20,6 @@
 
 #include <QObject>
 
-namespace dman {
-
 class SearchProxy : public QObject
 {
     Q_OBJECT
@@ -40,7 +38,5 @@ signals:
 public slots:
     void getKeyword(const QString &keyword);
 };
-
-} // namespace dman
 
 #endif // DEEPIN_MANUAL_VIEW_SEARCH_PROXY_H

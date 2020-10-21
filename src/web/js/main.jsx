@@ -13,6 +13,7 @@ export default class Main extends Component {
       bTest:true
     };
     let { file, hash ,key} = this.props.match.params;
+    console.log("main constructor...");
     this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null, key);
     var showFloatTimer=null;
 
@@ -21,7 +22,14 @@ export default class Main extends Component {
     this.onSupportClick = this.onSupportClick.bind(this);
   }
   init(file, hash,key='') {
+
+    if (key !== '%')
+    {
+      key = decodeURIComponent(key)
+    }
     console.log("main init==>file:",file," hash:",hash," key:",key);
+
+
     global.hash = hash;
     var filePath = file;
     if (filePath.indexOf('/') == -1) {

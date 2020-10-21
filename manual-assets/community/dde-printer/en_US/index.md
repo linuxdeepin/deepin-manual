@@ -108,9 +108,9 @@ After you add a printer and select the correct driver, click **Install Driver** 
 
 ### Printer Manager Interface
 
-Once a printer is added successfully, when you click the printer in the interface of printer manager, you can see four buttons on the right, which are "Properties", "Print Queue", "Print Test Page", "Supplies" and "Troubleshoot". 
+Once a printer is added successfully, when you click the printer in the interface of printer manager, you can see four buttons on the right, which are "Properties", "Print Queue", "Print Test Page" and "Troubleshoot". 
 
-![0|9printer management](jpg/9printer-management.png)
+![0|9printer management](jpg/9printer management.png)
 
 #### Properties 
 
@@ -152,8 +152,17 @@ Once a printer is added successfully, when you click the printer in the interfac
 
 2. The list contains: "Job", "User", "Document", "Printer", "Size", "Time Submitted", "Status" and "Action". 
 
-3. Select a job, right-click and you can select **Cancel**, **Delete**, **Pause**, **Resume**, **Print first**,  and **Reprint**. 
+3. Options of Action: 
 
+   - Start/Pause printing: click this button to start or pause current job. 
+
+   - Delete: click this button to delete current job. 
+
+     ![0|11print queue](jpg/11print queue.png)
+
+4. Operation with right-clicking:
+
+​       Select a job and right-click, you will have options such as **Cancel**, **Delete**, **Pause**, **Resume**, **Print first**,  and **Reprint**. 
 
 
 
@@ -168,10 +177,6 @@ Click **Print Test Page** to test if printing is completed successfully.
    - Print successfully: if printing is completed successfully, you can continue with other tasks.
 
    - Print failed: if printing fails, you can reinstall a printer or start troubleshooting. 
-
-#### Supplies
-
-In the main interface of Print Manager, click **Supplies** to view the ink/toner status. If it's insufficient, it needs to be replaced.
 
 #### Troubleshoot
 
@@ -245,4 +250,4 @@ click Help to get the manual, which will help you further know and use Printer M
 2. Click  **Exit**.
 
 
-<div class="version-info"><span>Update Date: 2020-09-09</span><span> Version: 0.6</span></div>
+<div class="version-info"><span>Update Date: 2020-09-07</span><span> Version: 0.6</span></div>

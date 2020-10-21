@@ -20,8 +20,6 @@
 
 #include <QObject>
 
-namespace dman {
-
 class ArgumentParser : public QObject
 {
     Q_OBJECT
@@ -44,7 +42,5 @@ private slots:
     void onOpenAppRequested(const QString &app_name, const QString &title_name = "");
     void onSearchRequested(const QString &keyword);
 };
-
-} // namespace dman
 
 #endif // DEEPIN_MANUAL_CONTROLLER_ARGUMENT_PARSER_H

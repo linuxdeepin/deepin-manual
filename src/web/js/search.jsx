@@ -31,7 +31,14 @@ class Items extends Component {
     let resultList = [];
 
     //将关键字转义
-    let keyTemp = decodeURIComponent(this.props.keyword)
+
+    let keyTemp = this.props.keyword;
+    if (this.props.keyword !== '%')
+    {
+      keyTemp = decodeURIComponent(this.props.keyword)
+    }
+
+    // let keyTemp = decodeURIComponent(this.props.keyword)
     let re = new RegExp(this.escapeRegExp(keyTemp), 'gi');
 
     let cTitle =(
@@ -101,7 +108,8 @@ function Mismatch(props) {
     <div id="mismatch">
       <div>
         <div id="NoResult">
-          {global.i18n['NoResult'].replace('%1', decodeURIComponent(props.keyword))}
+          {/* {global.i18n['NoResult'].replace('%1', keyword)} */}
+          {global.i18n['NoResult']}
         </div>
       </div>
     </div>

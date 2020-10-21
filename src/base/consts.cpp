@@ -17,8 +17,6 @@
 
 #include "base/consts.h"
 
-namespace dman {
-
 const char kAppName[] = "deepin-manual";
 const char kAppProcessName[] = "dman";
 const char kAppVersion[] = "2.0.10";
@@ -28,11 +26,3 @@ const char kConfigWindowWidth[] = "window_width";
 const char kConfigWindowHeight[] = "window_height";
 const char kConfigWindowInfo[] = "window_info";
 const char kConfigAppList[] = "AppList";
-
-QString GetCacheDir()
-{
-    const char kAppCacheDir[] = ".cache/deepin/deepin-manual";
-    return QDir::home().absoluteFilePath(kAppCacheDir);
-}
-
-} // namespace dman

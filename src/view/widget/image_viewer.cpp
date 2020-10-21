@@ -23,8 +23,6 @@
 #include <QShortcut>
 #include <QImageReader>
 
-namespace dman {
-
 namespace {
 
 const int kBorderSize = 12;
@@ -160,5 +158,3 @@ void ImageViewer::paintEvent(QPaintEvent *event)
     QPainter painter(this);
     painter.fillRect(0, 0, this->width(), this->height(), QColor(0, 0, 0, 77));
 }
-
-} // namespace dman

@@ -122,6 +122,8 @@ set(BASE_FILES
     base/consts.h
     base/utils.cpp
     base/utils.h
+    base/accessible.h
+    base/accessibledefine.h
     )
 
 set(CONTROLLER_FILES

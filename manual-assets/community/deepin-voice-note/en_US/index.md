@@ -7,12 +7,12 @@ Voice Notes is a simple memo software with texts and voice recordings. You are a
 
 ## Guide
 
-You can run, exit or create a shortcut for Voice Notes in the following ways.
+You can run, exit or create a shortcut for Voice Notes by the following ways.
 
 ### Run Voice Notes
 
 1.  Click ![deepin-launcher](icon/deepin-launcher.svg) in the dock to enter the Launcher interface.
-2.  Locate ![deepin-voice-note](icon/deepin-voice-note.svg) by scrolling the mouse wheel or searching "voice notes" in the Launcher interface and click it to run.
+2.  Locate ![deepin-voice-note](icon/deepin-voice-note.svg) by scrolling the mouse wheel or searching Voice Notes in the Launcher interface and click it to run.
 3.  Right-click ![deepin-voice-note](icon/deepin-voice-note.svg) and you can:
 
    - Click **Send to desktop** to create a desktop shortcut.
@@ -24,7 +24,7 @@ You can run, exit or create a shortcut for Voice Notes in the following ways.
 ### Exit Voice Notes
 
 - Click ![close](icon/close.svg) on the Voice Notes interface to exit Voice Notes.
-- Right-click ![deepin-voice-note](icon/deepin-voice-note.svg) on dock and select **Close All** to exit.
+- Right-click ![deepin-voice-note](icon/deepin-voice-note.svg) in the dock and select **Close All** to exit.
 - Click ![icon_menu](icon/icon_menu.svg) on the Voice Notes interface and select **Exit** to exit.
 
 ### View Shortcuts
@@ -35,7 +35,7 @@ On the Voice Notes interface, press **Ctrl** + **Shift** + **?** on the keyboard
 
 ## Operations
 
-### Create Notebooks
+### Create Notebook
 
 - Click **Create Notebook** to create a new notebook when there is none in Voice Notes.
 
@@ -45,9 +45,9 @@ On the Voice Notes interface, press **Ctrl** + **Shift** + **?** on the keyboard
 
 - When a notebook is created in Voice Note, a text is also created by default. Click ![add](icon/circlebutton_add2.svg) icon on the Voice Notes interface to create more new texts.
 
-  You can start recording voices or writing texts after creating a text.
+  You can start recording voices or making texts after creating a text.
   
-  The default naming rule for Voice Notes is Notebook(n), in which n is an integer no less than 0.
+  The default naming rules for Voice Notes is Notebook(n), in which n is an integer no less than 0.
 
 ![0|new](jpg/create1.png)
 
@@ -74,7 +74,7 @@ The recorded voice files are displayed on the Voice Notes interface in a list. S
 ![0|replay](jpg/replay.png)
 
 
-### Search Voice Notes
+### Search
 
 1. In the search box located in the top center area of the Voice Notes interface, you can click ![search](icon/search.svg) to enter keywords.
 
@@ -85,14 +85,6 @@ The recorded voice files are displayed on the Voice Notes interface in a list. S
    - When there is no matched information, **No search results** will display on the right.
 
 3.  Click ![0|three_dots](icon/close_normal-2.svg) in the search box  to clear the current keywords or cancel the search. 
-
-
-### Convert Voices to Texts
-
-1. Select a voice file on the Voice Notes interface.
-2. Right-click and select **Voice to Text**.
-
-![0|save](jpg/toVoice.png)
 
 
 ### Save Voices as MP3 Format
@@ -106,7 +98,7 @@ The recorded voice files are displayed on the Voice Notes interface in a list. S
 1. Select a notebook, right-click and select **New note** or click ![mic](icon/circlebutton_add2.svg) icon on the Voice Notes interface to add a new text note.
 2.  Move the cursor to the right column to click and input text. 
 
-> ![tips](icon/tips.svg)Tips: You can record audios in notebooks. Please refer to [Record Voice Notes](#Record Voice Notes) for details.
+> ![tips](icon/tips.svg)Tips: You can record audios in notebooks. Please refer to recording audios for details.
 
 ![0|words_recorder](jpg/main.png)
 
@@ -116,44 +108,11 @@ The recorded voice files are displayed on the Voice Notes interface in a list. S
 1.  Select a text note on the Voice Notes interface.
 2.  Right-click and select **Save as TXT**.
 3.  Save the text note to the storage device in TXT format.
-![0|save](jpg/toTxT.png)
-
-### Text to Speech
-
-1. Go to **Control Center** > **Assistive Tools** and enable **Text to Speech**.
-
-2. Select a paragraph of text on the Voice Notes interface and right-click to select **Text to Speech**. The text selected will be converted to speech and read accordingly. Right-click again or left-click to select **Stop reading** to stop reading.
-
-   >![notes](icon/notes.svg)Notes:
-   >
-   >- When no text is selected, **Text to Speech** is greyed out and inoperable. 
-   >- When only an audio file is selected, **Text to Speech** is inoperable; if the audio file selected contains voice-to-text content, **Text to Speech** can be operated.
-
-![0|speech](jpg/speech.png)
-
-### Speech to Text
-
-1. Go to **Control Center** > **Assistive Tools**. Enable **Speech to Text** and select **Language**.
-
-2. In the text input box on the Voice Notes interface, right-click and select **Speech to Text**. Now you can input audios via microphone and the translated text will be edited and displayed in the text input box.  
-
-   >![tips](icon/tips.svg)Tips: You can enable **Speech to Text** while recording audios. 
-
-![0|listen](jpg/listen.png)
-
-### Translate Text Notes
-
-1. Go to **Control Center** > **Assistive Tools**. Enable **Translation** and select the **Language** option from either **en-cn** or **cn-en**.
-
-2. Select a paragraph of text on the Voice Notes interface and right-click to select **Translate**. The text selected will be translated to target language.
-
-   >![notes](icon/notes.svg)Notes: When only an audio file is selected, **Translate** is inoperable; if the audio file selected contains voice-to-text content, **Translate** can be operated.
-
-![0|translate](jpg/translate.png)
+    ![0|save](jpg/toTxT.png)
 
 ### Rename New Notebooks
 
-The notebook created will be automatically saved as **Note (n)**. You can rename it in the following steps. 
+The notebook created will be automatically saved as **Note(n)**. You can rename it in the following steps. 
 
 1. On the Voice Notes interface, right-click a notebook.
 
@@ -184,26 +143,16 @@ The notebook created will be automatically saved as **Note (n)**. You can rename
 3.  Click **Confirm** in the pop-up prompt box.
 
 
-### Delete Notebooks
+### Delete Notebook
 
 1. Select a notebook on the Voice Notes interface.
 2. Right-click and select **Delete**.
-
 3. Click **Confirm** in the pop-up prompt box.
 
 
 ## Main Menu
 
-On the main menu, you can set audio source, check privacy policy, switch window themes, view help manual and get more information about Voice Notes.
-
-### Settings
-
-You can set up audio source from **Internal** and **Microphone** (default) options.。
-
-1. On the Voice Notes interface, click ![icon_menu](icon/icon_menu.svg).
-2. Set up audio source:
-   - Select **Internal** source, and only system built-in sound will be recorded. 
-   - Select **Microphone** source, and only microphone sound will be recorded. 
+On the main menu, you can switch window themes, view help manual and get more information about Voice Notes.
 
 ### Theme
 
@@ -213,6 +162,8 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 2. Click **Theme** to select one theme.
 
 ### Help
+
+View Help to get more information about Voice Notes.
 
 1.  On the Voice Notes interface, click ![icon_menu](icon/icon_menu.svg).
 2.  Click **Help** to view the manual of Voice Notes.
@@ -227,4 +178,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 1. On the Voice Notes interface, click ![icon_menu](icon/icon_menu.svg).
 2.  Click **Exit** to exit Voice Notes.
 
-<div class="version-info"><span>Update Date: 2020-09-09</span><span> Version: 5.7</span></div>
+<div class="version-info"><span>Update Date: 2020-09-07</span><span> Version: 5.7</span></div>

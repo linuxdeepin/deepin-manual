@@ -19,8 +19,6 @@
 
 #include <QLocale>
 
-namespace dman {
-
 I18nProxy::I18nProxy(QObject *parent)
     : QObject(parent)
 {
@@ -64,5 +62,3 @@ QString I18nProxy::getLocale() const
         return  "";
     }
 }
-
-} // namespace dman

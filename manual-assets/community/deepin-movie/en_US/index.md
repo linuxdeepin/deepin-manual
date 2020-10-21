@@ -11,7 +11,7 @@ Movie shares a pleasant leisure time with you! Movie is a video player which sup
 ### Run Movie
 
 1.  Run ![deepin-launcher](icon/deepin-launcher.svg) in the dock to enter the Launcher interface.
-2.  Locate ![movie-24](icon/movie-24.svg) by scrolling the mouse wheel or searching "movie" in the Launcher interface and click it to run.
+2.  Locate ![movie-24](icon/movie-24.svg) by scrolling the mouse wheel or searching movie in the Launcher interface and click it to run.
 3.  Right-click ![movie-24](icon/movie-24.svg) and you can:
  - Click **Send to desktop** to create a desktop shortcut.
  - Click **Send to dock** to fix it in the Dock.
@@ -19,14 +19,14 @@ Movie shares a pleasant leisure time with you! Movie is a video player which sup
 
 ### Exit Movie
 - On the Movie interface, click ![close](icon/close.svg) to exit.
-- Right-click ![movie-24](icon/movie-24.svg) in the Dock and select **Close All** to exit.
+- Right-click ![movie-24](icon/movie-24.svg) on Dock and select **Close All** to exit.
 - Click ![icon_menu](icon/icon_menu.svg) on the Movie interface and select **Exit** to exit.
 
 ### View Shortcuts
 
 On the Movie interface, press **Ctrl + Shift + ?** to view shortcuts. Proficiency in shortcuts will greatly improve your efficiency.
 
-> ![tips](icon/tips.svg)Tips: You can view the shortcuts any time during your video playback.
+> ![tips](icon/tips.svg)Tips: You can open the shortcut preview interface any time during your video playback.
 
  ![1|shortcut](jpg/shortcut.png)
 
@@ -41,7 +41,7 @@ Immerse yourself in the pure joy of wonderful videos through frequently used fun
 | ------ | -------------- | ------------------------------------------------------------ |
 | 1      | Play window    | Display the video content. The video information and function icons will display after the mouse pointer is moved into the play window. Otherwise, they will be hidden. The play window is frameless. You can freely drag the play window to manually adjust its size. |
 | 2      | Time display   | Display the total time and played time of the current video. |
-| 3      | Progress bar   | Display the play progress. Drag the progress bar to adjust your play progress. The progress bar will turn bold automatically and the video preview window will display when the mouse pointer is placed over the progress bar. |
+| 3      | Progress bar   | Display the play progress. Drag the progress bar to change your play progress. The progress bar will turn bold automatically and the video preview window will display when the mouse pointer is placed over the progress bar. |
 | 4      | Preview window | Display the video preview. You can view the video content at a time point via the preview window. |
 | 5      | Video title    | Display the name of video which is now playing.              |
 
@@ -67,7 +67,7 @@ Immerse yourself in the pure joy of wonderful videos through frequently used fun
 You can play films in the following ways:
 - When there are no files in the playlist, click ![play](icon/play_normal.svg) and open the file selector to select a film file.
 - On the Movie interface, right-click or click ![menu](icon/icon_menu.svg) to select **Open file** and open the file selector to select a film file.
-- On the Movie interface, right-click or click ![menu](icon/icon_menu.svg) to select **Open folder**. All the audiovisual files in the folder are displayed in the playlist and will be played in turn. 
+- On the Movie interface, right-click or click ![menu](icon/icon_menu.svg) to select **Open folder**. All the audiovisual files in the folder are displayed in the playlist and played in turn. 
 - On the Movie interface, right-click to select **Open URL** and paste the online address to play the film.
 - On the Movie interface, right-click to select **Open CD/DVD** to play the films in CD/DVD.
 - Drag the file/folder directly to the Movie interface to play local films.
@@ -88,7 +88,7 @@ You can play films in the following ways:
 2.  Press **Ctrl** + ![Left](icon/Left.svg) on the keyboard to speed down the film playback.
 3.  If you want to restore the original play speed, press **R** on the keyboard.
 
->![notes](icon/notes.svg)Notes: Speed up/down is relative to the original play speed. The video playback speed increases/decreases by 0.1 times in default mode each time when it is sped up/down. Press and hold **Ctrl **+ ![Right](icon/Right.svg) or ![Left](icon/Left.svg) on the keyboard and the playback speed will increase or decrease. The maximum playback speed is 2 times faster than the original speed and the minimum playback speed is 10 times slower than the original speed.
+>![notes](icon/notes.svg)Notes: Speed up/down is relative to the original play speed. The video playback speed increases/decreases by 0.1 times in default mode each time it is sped up/down. Press and hold **Ctrl **+ ![Right](icon/Right.svg) or ![Left](icon/Left.svg) on the keyboard and the playback speed will increase or decrease. The maximum playback speed is 2 times faster than the original playback speed and the minimum playback speed is 10 times slower than the original playback speed.
 
 ## Functions
 
@@ -102,7 +102,7 @@ You can adjust the window size as you wish during playback.
 - Select **Always on Top** to put the window on the top layer.
 - You can also drag the window edge to adjust the window size.
 
->![notes](icon/notes.svg)Notes: Double-click the window to switch between **Fullscreen** and **Normal Window**.
+>![notes](icon/notes.svg)Notes: Double click the window to switch between **Fullscreen** and **Normal Window**.
 
 ![0|window](jpg/window.png)
 
@@ -176,7 +176,7 @@ You can add films to the playlist by the following ways:
 1.  Click ![movie](icon/episodes_normal.svg ) on the Movie interface.
 2. Hover mouse pointer over the video file and right-click to select **Delete from playlist**.
 
-> ![tips](icon/tips.svg)Tips: On the Playlist interface, hover mouse pointer over the video file and click ![关闭图标](icon/close.svg) to delete it.
+> ![tips](icon/tips.svg)Tips: On the playlist interface, hover mouse pointer over the video file and click ![关闭图标](icon/close.svg) to delete it.
 
 ![list](jpg/list-manag.png)
 
@@ -234,12 +234,12 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 ### Help
 
 1.   On the Movie interface, click ![icon_menu](icon/icon_menu.svg) .
-2.  Select **Help** to view the manual of Movie.
+2.  Select **Help** to view the manual of Help.
 
 ### About
 
 1.  On the Movie interface, click ![icon_menu](icon/icon_menu.svg).
-2.  Click **About** to view the version and introduction of Movie.
+2.  Select **About** to view the version and introduction of Movie.
 
 ### Exit
 
@@ -247,4 +247,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 2.  Click **Exit** to exit Movie.
 
 
-<div class="version-info"><span>Update Date: 2020-09-09</span><span> Version: 5.7</span></div>
+<div class="version-info"><span>Update Date: 2020-09-07</span><span> Version: 5.7</span></div>

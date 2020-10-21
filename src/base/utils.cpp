@@ -127,79 +127,79 @@ Utils::~Utils()
 {
 }
 
-/**
- * @brief Utils::getTime
- * @return
- * 获取系统时间
- */
-struct timeval Utils::getTime()
-{
-    struct timeval tp;
-    gettimeofday(&tp, nullptr);
-    return tp;
-}
+///**
+// * @brief Utils::getTime
+// * @return
+// * 获取系统时间
+// */
+//struct timeval Utils::getTime()
+//{
+//    struct timeval tp;
+//    gettimeofday(&tp, nullptr);
+//    return tp;
+//}
 
-/**
- * @brief Utils::showDiffTime
- * @param tpStart 开始计时时间
- * @return
- * 获取时间差
- */
-struct timeval Utils::showDiffTime(struct timeval tpStart)
-{
-    struct timeval tpEnd;
-    gettimeofday(&tpEnd, nullptr);
-    double timeuse =
-        (1000000 * (tpEnd.tv_sec - tpStart.tv_sec) + tpEnd.tv_usec - tpStart.tv_usec) / 1000000.0;
-    qDebug() << __FUNCTION__ << __LINE__ << timeuse << endl;
+///**
+// * @brief Utils::showDiffTime
+// * @param tpStart 开始计时时间
+// * @return
+// * 获取时间差
+// */
+//struct timeval Utils::showDiffTime(struct timeval tpStart)
+//{
+//    struct timeval tpEnd;
+//    gettimeofday(&tpEnd, nullptr);
+//    double timeuse =
+//        (1000000 * (tpEnd.tv_sec - tpStart.tv_sec) + tpEnd.tv_usec - tpStart.tv_usec) / 1000000.0;
+//    qDebug() << __FUNCTION__ << __LINE__ << timeuse << endl;
 
-    return tpEnd;
-}
+//    return tpEnd;
+//}
 
-/**
- * @brief Utils::getQssContent
- * @param filePath 文件路径
- * @return
- * 读取qss文件内容
- */
-QString Utils::getQssContent(const QString &filePath)
-{
-    QFile file(filePath);
-    QString qss;
+///**
+// * @brief Utils::getQssContent
+// * @param filePath 文件路径
+// * @return
+// * 读取qss文件内容
+// */
+//QString Utils::getQssContent(const QString &filePath)
+//{
+//    QFile file(filePath);
+//    QString qss;
 
-    if (file.open(QIODevice::ReadOnly)) {
-        qss = file.readAll();
-    }
+//    if (file.open(QIODevice::ReadOnly)) {
+//        qss = file.readAll();
+//    }
 
-    return qss;
-}
+//    return qss;
+//}
 
-/**
- * @brief Utils::isFontMimeType
- * @param filePath
- * @return
- * 判断是否为字体文件
- */
-bool Utils::isFontMimeType(const QString &filePath)
-{
-    const QString mimeName = QMimeDatabase().mimeTypeForFile(filePath).name();
-    ;
+///**
+// * @brief Utils::isFontMimeType
+// * @param filePath
+// * @return
+// * 判断是否为字体文件
+// */
+//bool Utils::isFontMimeType(const QString &filePath)
+//{
+//    const QString mimeName = QMimeDatabase().mimeTypeForFile(filePath).name();
+//    ;
 
-    if (mimeName.startsWith("font/") || mimeName.startsWith("application/x-font")) {
-        return true;
-    }
+//    if (mimeName.startsWith("font/") || mimeName.startsWith("application/x-font")) {
+//        return true;
+//    }
 
-    return false;
-}
+//    return false;
+//}
 
-/**
- * @brief Utils::suffixList
- * @return 返回字体文件格式
- */
-QString Utils::suffixList()
-{
-    return QString("Font Files (*.ttf *.ttc *.otf)");
-}
+///**
+// * @brief Utils::suffixList
+// * @return 返回字体文件格式
+// */
+//QString Utils::suffixList()
+//{
+//    return QString("Font Files (*.ttf *.ttc *.otf)");
+//}
 
 /**
  * @brief Utils::renderSVG
@@ -233,83 +233,83 @@ QPixmap Utils::renderSVG(const QString &filePath, const QSize &size)
     return pixmap;
 }
 
-QString Utils::loadFontFamilyByType(FontType fontType)
-{
-    QString fontFileName = "";
-    switch (fontType) {
-    case SourceHanSansMedium:
-        fontFileName = ":/font/SourceHanSansCN-Medium.ttf";
-        break;
-    case SourceHanSansNormal:
-        fontFileName = ":/font/SourceHanSansCN-Normal.ttf";
-        break;
-    case DefautFont:
-        QFont font;
-        return font.family();
-    }
+//QString Utils::loadFontFamilyByType(FontType fontType)
+//{
+//    QString fontFileName = "";
+//    switch (fontType) {
+//    case SourceHanSansMedium:
+//        fontFileName = ":/font/SourceHanSansCN-Medium.ttf";
+//        break;
+//    case SourceHanSansNormal:
+//        fontFileName = ":/font/SourceHanSansCN-Normal.ttf";
+//        break;
+//    case DefautFont:
+//        QFont font;
+//        return font.family();
+//    }
 
-    if (m_fontNameCache.contains(fontFileName)) {
-        return m_fontNameCache.value(fontFileName);
-    }
+//    if (m_fontNameCache.contains(fontFileName)) {
+//        return m_fontNameCache.value(fontFileName);
+//    }
 
-    QString fontFamilyName = "";
-    QFile fontFile(fontFileName);
-    if (!fontFile.open(QIODevice::ReadOnly)) {
-        qDebug() << "Open font file error";
-        return fontFamilyName;
-    }
+//    QString fontFamilyName = "";
+//    QFile fontFile(fontFileName);
+//    if (!fontFile.open(QIODevice::ReadOnly)) {
+//        qDebug() << "Open font file error";
+//        return fontFamilyName;
+//    }
 
-    int loadedFontID = QFontDatabase::addApplicationFontFromData(fontFile.readAll());
-    QStringList loadedFontFamilies = QFontDatabase::applicationFontFamilies(loadedFontID);
-    if (!loadedFontFamilies.empty()) {
-        fontFamilyName = loadedFontFamilies.at(0);
-    }
-    fontFile.close();
+//    int loadedFontID = QFontDatabase::addApplicationFontFromData(fontFile.readAll());
+//    QStringList loadedFontFamilies = QFontDatabase::applicationFontFamilies(loadedFontID);
+//    if (!loadedFontFamilies.empty()) {
+//        fontFamilyName = loadedFontFamilies.at(0);
+//    }
+//    fontFile.close();
 
-    m_fontNameCache.insert(fontFileName, fontFamilyName);
-    return fontFamilyName;
-}
+//    m_fontNameCache.insert(fontFileName, fontFamilyName);
+//    return fontFamilyName;
+//}
 
-/**
- * @brief Utils::loadFontBySizeAndWeight
- * @param fontFamily 字体格式
- * @param fontSize 字体大小
- * @param fontWeight 粗细
- * @return
- * 设置传入字体的大小和粗细
- */
-QFont Utils::loadFontBySizeAndWeight(QString fontFamily, int fontSize, int fontWeight)
-{
-    QFont font(fontFamily);
-    font.setPixelSize(fontSize);
-    font.setWeight(fontWeight);
+///**
+// * @brief Utils::loadFontBySizeAndWeight
+// * @param fontFamily 字体格式
+// * @param fontSize 字体大小
+// * @param fontWeight 粗细
+// * @return
+// * 设置传入字体的大小和粗细
+// */
+//QFont Utils::loadFontBySizeAndWeight(QString fontFamily, int fontSize, int fontWeight)
+//{
+//    QFont font(fontFamily);
+//    font.setPixelSize(fontSize);
+//    font.setWeight(fontWeight);
 
-    return font;
-}
+//    return font;
+//}
 
-/**
- * @brief Utils::fromSpecialEncoding
- * @param inputStr
- * @return 返回文本的 utf-8 格式
- * 把文本转成utf-8编码格式
- */
-QString Utils::fromSpecialEncoding(const QString &inputStr)
-{
-    qDebug() << "inputStr is:" << inputStr << endl;
-    bool bFlag = inputStr.contains(QRegExp("[\\x4e00-\\x9fa5]+"));
-    if (bFlag) {
-        return inputStr;
-    }
+///**
+// * @brief Utils::fromSpecialEncoding
+// * @param inputStr
+// * @return 返回文本的 utf-8 格式
+// * 把文本转成utf-8编码格式
+// */
+//QString Utils::fromSpecialEncoding(const QString &inputStr)
+//{
+//    qDebug() << "inputStr is:" << inputStr << endl;
+//    bool bFlag = inputStr.contains(QRegExp("[\\x4e00-\\x9fa5]+"));
+//    if (bFlag) {
+//        return inputStr;
+//    }
 
-    QTextCodec *codec = QTextCodec::codecForName("utf-8");
-    if (codec) {
-        QString unicodeStr = codec->toUnicode(inputStr.toLatin1());
-        qDebug() << "convert to unicode:" << unicodeStr << endl;
-        return unicodeStr;
-    } else {
-        return inputStr;
-    }
-}
+//    QTextCodec *codec = QTextCodec::codecForName("utf-8");
+//    if (codec) {
+//        QString unicodeStr = codec->toUnicode(inputStr.toLatin1());
+//        qDebug() << "convert to unicode:" << unicodeStr << endl;
+//        return unicodeStr;
+//    } else {
+//        return inputStr;
+//    }
+//}
 
 /**
  * @brief Utils::translateTitle 返回title映射字段，目前主要用于＂控制中心＂跳转
@@ -679,12 +679,6 @@ void ExApplicationHelper::setPalette(QWidget *widget, const DPalette &palette)
     // 记录此控件被设置过palette
     widget->setProperty("_d_set_palette", true);
     widget->setPalette(palette);
-}
-
-void ExApplicationHelper::resetPalette(QWidget *widget)
-{
-    widget->setProperty("_d_set_palette", QVariant());
-    widget->setAttribute(Qt::WA_SetPalette, false);
 }
 
 ExApplicationHelper::ExApplicationHelper()

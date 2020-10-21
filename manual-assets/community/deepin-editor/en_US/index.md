@@ -10,31 +10,31 @@ Text Editor is a simple text editing tool. You can use it to write a simple text
 
 ### Run Text Editor
 
-Click ![deepin-launcher](icon/deepin-launcher.svg) in the dock to enter the Launcher interface.  Locate Text Editor ![deepin-editor](icon/deepin-editor.svg)
+Click ![deepin-launcher](icon/deepin-launcher.svg) on dock to enter the Launcher interface.  Locate Text Editor ![deepin-editor](icon/deepin-editor.svg)
 
 by  scrolling the mouse wheel or searching "text editor" in the Launcher interface and click it to run.
 
-In Launcher, right-click Text Editor to:
+In Launcher, right-click Text Editor and you can:
 
   - Click **Send to desktop** to create a desktop shortcut.
-  - Click **Send to dock** to fix it in the Dock.
-  - Click **Add to startup** to add the application to startup and it will automatically run when the system starts up.
+  - Click **Send to dock** to fix it on Dock.
+  - Click **Add to startup** to add it to startup and it will auto run when system boots.
 
 ### Exit Text Editor
 
 - On the Text Editor interface, click ![close](icon/close.svg) to exit.
-- On the Text Editor interface, click ![icon_menu](icon/icon_menu.svg)> **Exit** to exit.
-- Right-click ![deepin-editor](icon/deepin-editor.svg) in the Dock and select **Close All** to exit.
+- On the Text Editor interface, click ![icon_menu](icon/icon_menu.svg) > **Exit** to exit.
+- Right-click ![deepin-editor](icon/deepin-editor.svg) on Dock and select **Close All** to exit.
 
 ### View Shortcuts
 
-On the Text Editor Interface, press **Ctrl + Shift + ? ** to view shortcuts. You can also check shortcuts in Settings. Proficiency in shortcuts will greatly improve your efficiency.
+On the Text Editor Interface, press **Ctrl + Shift + ? ** to view all the shortcuts. You can also check shortcuts in Settings. Proficiency in shortcuts will greatly improve your efficiency.
 
 ![1|hotkey](jpg/hotkey.png)
 
 ## Basic Operations
 
-### Create Files
+### Create Document
 
 Click ![plus_icon](icon/+.svg) on the title bar, or press **Ctrl + N**, or click ![icon_menu](icon/icon_menu.svg)> **New window** or **New tab** to create a blank document in Text Editor.
 
@@ -68,7 +68,7 @@ You can also press **Ctrl + Shift + S** to save the file as  a new one.
 
 > ![notes](icon/notes.svg)Notes: If you make changes to the file but does not save it, you will be prompted by Text Editor to save before closing the file.
 
-### Print Files
+### Print Documents
 
 To print a file in Text Editor, you should connect and set up the printer first.
 
@@ -96,7 +96,7 @@ In Text Editor, you can reorder tabs within the same window through dragging. Yo
 | ---------------------------------- | ------------ |
 | New tab   |  Ctrl + T |
 | Next tab | Ctrl + Tab |
-| Previous tab  | Ctrl + Shift + Backtab |
+| Previous tab  | Ctrl + Shift + Tab |
 | Close tab | Ctrl + W |
 | Close other tabs | Ctrl + Shift + W |
 | Restore tab (Reopen closed tab) | Ctrl + Shift + T |
@@ -129,13 +129,11 @@ It helps you change the case of selected text. You can change it to lowercase, u
 2. Right-click and select **Change Case**.
 3. Choose **Upper Case**, **Lower Case**, or **Capitalize**. The changes will take effect immediately.
 
-You can also use **Alt + U/L/C** to quickly switch the cases.
-
-
+You can also use **Alt + U / L / C** to quickly switch the cases.
 
 ![changecase](jpg/changecase.png)
 
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 ### Highlight Texts
 Text Editor supports highlighting different kinds of texts.
@@ -161,15 +159,15 @@ If you make an incorrect operation, press **Ctrl + Z** to undo it, or right-clic
 
 ### Find Texts
 
-1. Click ![menu](icon/icon_menu.svg) and select **Find**, or press **Ctrl + F** to open the **Find** box below.
+1. Click ![menu](icon/icon_menu.svg) and select **Find**, or press **Ctrl + F** to open the "Find" box below.
 2. Input the text you want to find. 
 3. Click **Next**, **Previous** to find each match, or press **Enter** key to find the next match.
 4. Press **Esc** key or click the close button to close the dialog box.
 
-> ![tips](icon/tips.svg)Tips: Select the text and then press **Ctrl + F** and the text will be automatically displayed in the **Find** box.
+> ![tips](icon/tips.svg)Tips: Select the text and then press **Ctrl + F** and the text will be automatically displayed in the "Find" box.
 
 ### Replace Texts
-1. Click ![menu](icon/icon_menu.svg), and select **Replace**, or press **Ctrl + H** to open the **Replace** box below.
+1. Click ![menu](icon/icon_menu.svg), and select **Replace**, or press **Ctrl + H** to open the "Replace" box below.
 2.  Input the text to be replaced and the new text.
 3.  Click **Replace** to replace the matches one by one and click **Replace Rest** and **Replace All** to replace the rest or all the matches at once. Click **Skip** to skip the current matching text.
 4.  Press **Esc** or click close button to close the dialog box.
@@ -199,55 +197,34 @@ Use the shortcuts below to edit lines easily:
 
 ### Enable/Disable Read-only Mode
 
-1. Open the document with Text Editor and right-click to select **Turn on Read-Only Mode**.
+1. Open the document with Text Editor and right-click to select **Turn on Read-only Mode**.
 
-![readonly](jpg/read-only.png)
+![readonly](jpg/readonly.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-2.  Right-click to select **Turn off Read-Only Mode** under the read-only mode.
+2.  Right-click to select **Turn off Read-only Mode** under the read-only mode.
 
-![read-only](jpg/read-only-02.png)
+![read-only](jpg/turnoffreadonly.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-### Text to Speech  
+### Mark up
 
-You can perform the following operations after enabling the Text to Speech and Speech to Text features in Control Center.
+Select the text to be marked in Text Editor, right-click to select **Mark up** and select the corresponding options in the drop-down list as needed.
 
-1. Right-click to select **Speech to Text ** and the input voices through microphone will be converted to texts and edited in the document.
-2. Select a paragraph of texts. Right-click to select **Text to Speech** and the texts selected will be broadcast.
+![mark](jpg/mark.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-> ![notes](icon/notes.svg)Notes: The **Text to Speech** option in the right-click menu is grayed out and cannot be activated when no text is selected.
-
-![speech](jpg/texttospeech.png)
-
-### Translate
-
-Enable **Translation** in **Control Center** > **Assistive Tools** and set the corresponding language pairs according to your needs. Select the texts to be translated in Text Editor. Right-click to select **Translate** and the texts selected will be translated into the target language.
-
-![translate](jpg/translate.png)
-
-### Use Column Mode
-
-You can input identical content to or remove content from multiple lines of code by using the column mode function efficiently. 
-
-- Edit content in multiple lines at the same time: Press and hold the **Alt** key, drag the mouse to select multiple lines, and edit the content.
-- Delete content in multiple lines at the same time: Press and hold the **Alt** key, drag the mouse to select multiple lines, and click **Delete** to delete content.
-
-![mode](jpg/column mode.png)
-
-### Color Mark
-
-Select the text to be marked in Text Editor, right-click to select **Color Mark** and select the corresponding options in the drop-down list as needed.
-
-![colormark](jpg/colormark.png)
-
-- Select **Mark** to mark a certain line or a paragraph of texts. You can choose from 8 colors displayed through icons.
+- Select **Mark** to mark the current line. There are four styles, with each representing a color.
    - Place the cursor at any line and you can mark the current line.
-   - Select a paragraph of texts and you can mark the selected texts.
-- Select **Mark All** to mark all the contents in Text Editor, or mark all the matching contents of selected texts in Text Editor. You can choose from 8 colors displayed through icons.
-   - Place the cursor at any line and you can mark all contents.
-   - Select any content and you can mark the same content in the whole document. 
+   - Select some text and you can mark the selected text.
+
 - Select **Clear Last Mark** to cancel the last mark operation.
+
 - Select **Clear All Marks** to cancel all the current marks.
+
+- Select **Mark All** to mark all the contents in Text Editor. There are four styles, with each representing a color.
+   - Place the cursor at any line and you can mark all contents.
+   - Select any content and you can mark the same content in the whole context. 
 
 
 ### Manage Bookmark 
@@ -274,19 +251,19 @@ You can add comments to any text with a code type suffix, such as cpp and java, 
 
 - Add comment
   - Select the text needed and right-click to select **Add comment**.
-  - Select the text needed and press **Alt + A** to add comment.
+  - Select the text needed and press **Alt + A**.
 
 - Cancel comment
-     - Select the text with comments, and right-click to select **Cancel comment**.
+     - Select the text needed and right-click to select **Cancel comment**.
 
-     - Select the text with comments, and press **Alt + Z** do cancel comment.
+     - Select the text needed and press **Alt + Z**.
 
 
-> ![notes](icon/notes.svg)Notes: This supports comments in different languages. Please refer to actual conditions for detailed information. For example, comment symbol for C, C# and Java is //, and comment symbol for Python is #.
+> ![notes](icon/notes.svg)Notes: This supports comments in different languages. Please refer to actual conditions for detailed information. For example, comment symbol for C, C# and Java is // and comment symbol for Python is #.
 
 ## Main Menu
 
-On the main menu, you can create [New Windows](#Create Files) and tabs, search or replace contents, save files, switch window themes, view help manual and get more information about Text Editor.
+On the main menu, you can create new windows and new tabs, search the contents to be replaced, save documents, switch window themes, view help manual and get more information about Text Editor.
 
 ### Settings
 
@@ -294,13 +271,12 @@ You can set the basic information, shortcuts and advanced information in setting
 
 #### Basic Settings
 
-Click ![icon_menu](icon/icon_menu.svg)> **Settings** and you can perform the following in the **Basic** option:
+Click ![icon_menu](icon/icon_menu.svg)> **Settings** and you can perform the following in the Settings window:
 
 - Select the Font and Font Size.
 - Check or uncheck **Word Wrap**.
 - Check **Code Fold Flag** and ![next](icon/next.svg) or ![next](icon/next-down.svg) are displayed in the edit area. Right-click to select Fold/Unfold Current Level or Fold/Unfold All Levels to perform the corresponding operations.
 - Check **Show Line Number** to display the line number in the edit area.
-- Check **Show white spaces and tabs** to display all the white spaces and tabs. You can also input or delete white spaces and tabs manually.
 
 > ![tips](icon/tips.svg)Tips: You can also use **Ctrl + “+”/ “-” ** to adjust the font size, and press **Ctrl + 0** to restore default font size.
 
@@ -343,4 +319,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 1. On the Text Editor interface, click ![menu](icon/icon_menu.svg).
 2. Click **Exit** to exit Text Editor.  
 
-<div class="version-info"><span>Update Date: 2020-09-09</span><span> Version: 5.6</span></div>
+<div class="version-info"><span>Update Date: 2020-09-07</span><span> Version: 5.6</span></div>

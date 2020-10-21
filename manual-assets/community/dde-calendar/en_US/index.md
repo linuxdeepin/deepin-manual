@@ -201,4 +201,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 2.  Click **Exit** to exit Calendar.
 
 
-<div class="version-info"><span>Update Date: 2020-09-09</span><span> Version: 5.7</span></div>
+<div class="version-info"><span>Update Date: 2020-09-07</span><span> Version: 5.7</span></div>

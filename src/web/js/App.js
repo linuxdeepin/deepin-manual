@@ -232,7 +232,15 @@ class App extends React.Component {
       cKeyword = pathList[4];
     }
     
-    global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
+    // global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
+    if (cKeyword == '%')
+    {
+      global.qtObjects.search.getKeyword(cKeyword);
+    }
+    else{
+      console.log("decode URIComponent componentWillReceiveProps");
+      global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
+    }
 
     if (this.context.router.history.action == 'PUSH') {
       let entriesLen = this.context.router.history.entries.length;
@@ -282,17 +290,20 @@ class App extends React.Component {
         hash = 'h1'
       }
       file = encodeURIComponent(file);
+      console.log("globla.open...........");
       hash = encodeURIComponent(hash);
       global.hash = hash;
 
-      // '/'字符替换为其他非常用字符组合,来替代'/', 路由URL使用'/'来区分字段,所以应该避免字段中含有'/'.
-      if (key.indexOf('/') !== -1)
+      // '%'字符替换为其他非常用字符组合,来替代'%', 路由URL单含此字符会出错。。。
+      if (key == '%')
       {
-         key = key.replace(/\//g,'-+');
+        key = '=-=';
       }
 
       let url = `/open/${file}/${hash}/${key}`;
+      console.log("globla.open==---------->");
       this.context.router.history.push(url);
+      console.log("globla.open.=========.......");
 
       //Init属性设置, 放在index与opentitle中. 避免直接跳转到特定模块时会先走/模块.
       if (this.state.init == false)
@@ -484,6 +495,7 @@ class App extends React.Component {
       },
       decode(str) {
           // Going backwards: from bytestream, to percent-encoding, to original string.
+          console.log("decode URIComponent decode");
           return decodeURIComponent(atob(str).split('').map(function (c) {
               return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
           }).join(''));
@@ -500,6 +512,7 @@ class App extends React.Component {
 
       let entriesLen = this.context.router.history.entries.length;
       if ('POP' == global.lastAction && lastHistoryIndex > 0 && lastHistoryIndex < entriesLen-1) {
+        console.log("global.opensearch...");
         this.context.router.history.entries.length = lastHistoryIndex;
         this.context.router.history.length = lastHistoryIndex;
         this.context.router.history.index = lastHistoryIndex-1;
@@ -533,6 +546,7 @@ class App extends React.Component {
       //console.log(`The current URL is ${location.pathname}${location.search}${location.hash}` );
       //console.log(`The last navigation action was ${action}`);
       //console.log("index:" + this.context.router.history.index);
+      console.log("app router.history.listen...");
       global.lastUrlBeforeSearch = location.pathname;
       global.lastHistoryIndex = this.context.router.history.index;
       global.lastAction = action;

@@ -20,8 +20,6 @@
 #include <QtGui/QDesktopServices>
 #include <QUrl>
 
-namespace dman {
-
 SettingsProxy::SettingsProxy(QObject *parent)
     : QObject(parent)
 {
@@ -37,14 +35,3 @@ void SettingsProxy::openUrl(const QString &url)
 {
     QDesktopServices::openUrl(QUrl(url));
 }
-
-/**
- * @brief SettingsProxy::raiseWindow
- * 窗口置顶
- */
-void SettingsProxy::raiseWindow()
-{
-    emit this->raiseWindowRequested();
-}
-
-} // namespace dman

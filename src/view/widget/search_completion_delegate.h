@@ -31,14 +31,6 @@ struct SearchCompletionItemModel {
     QString strSearchKeyword;
     QString strSearchAppName;
     QString strSearchAppDisplayName;
-
-    SearchCompletionItemModel()
-    {
-        strSearchAnchorId = "";
-        strSearchKeyword = "";
-        strSearchAppName = "";
-        strSearchAppDisplayName = "";
-    }
 };
 
 Q_DECLARE_METATYPE(SearchCompletionItemModel)

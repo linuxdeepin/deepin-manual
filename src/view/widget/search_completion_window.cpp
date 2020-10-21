@@ -22,9 +22,6 @@
 #include <DWindowManagerHelper>
 
 #include <QStylePainter>
-
-namespace dman {
-
 namespace {
 
 const int kItemHeight = 34;
@@ -338,5 +335,3 @@ void SearchCompletionWindow::onResultListEntered(const QModelIndex &index)
     result_view_->setCurrentIndex(index);
     search_button_->setChecked(false);
 }
-
-} // namespace dman

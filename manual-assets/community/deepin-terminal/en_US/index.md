@@ -2,7 +2,7 @@
 
 ## Overview
 
-Terminal is a terminal emulator with simple interface providing diversified powerful functions including multi-windows, workspace, remote management, Quake mode, among others. You can instantly start and close Terminal smoothly like any normal file windows, refraining you from limitations and hassles while writing commands. Take a try of the Quake mode which enables you to browse other windows while inputting commands on one screen. When there are multiple tasks, you can add tabs in terminal to create more workspaces like in the browser or split the workspace into multiple windows. It's also a piece of cake to upload and download files with remote management. More powerful functions are waiting for you to explore!
+Terminal is a terminal emulator with simple interface, rich and powerful functions such as multi-windows, workspace, remote management, Quake mode and etc. You can instantly start and close Terminal smoothly like normal file window, allowing you to input commands with facility and no distractions. Let's try the Quake mode, browse webs while inputting commands. When there are multiple tasks, you can add tabs in terminal to create more workspaces like in the browser or split the workspace into multiple windows. It's a piece of cake to upload and download files with remote management. More powerful functions are waiting for you to explore!
 
  ![1|interface](jpg/interface.png)
 
@@ -13,89 +13,93 @@ You can run, exit or create shortcuts for Terminal.
 
 ### Run Terminal ###
 
-1. Click ![deepin-launcher](icon/deepin-launcher.svg) in the dock to enter launcher interface.
-2. Locate ![deepin-terminal](icon/deepin-terminal.svg) by scrolling the mouse wheel or searching "terminal" in the Launcher interface and click it to run.
+1. Click ![deepin-launcher](icon/deepin-launcher.svg) on dock to enter launcher interface.
+2. Locate ![deepin-terminal](icon/deepin-terminal.svg) by scrolling the mouse wheel or searching "Device Manager" in the Launcher interface and click it to run.
 3. Right-click ![deepin-terminal](icon/deepin-terminal.svg) to: 
  - Select **Send to desktop** to create a desktop shortcut.
- - Select **Send to dock** to fix it in the dock.
- - Select **Add to startup** to add the application to startup and it will automatically run when the system starts up.
+ - Select **Send to dock** to fix it on dock.
+ - Select **Add to startup** to add it to startup, it will automatically run when the system starts up.
 
-> ![notes](icon/notes.svg)Notes: You can also press **Ctrl** + **Alt** + **T** to open Terminal.
+> ![notes](icon/notes.svg)Notes: You can also press **Ctrl**+**Alt**+**T** to open Terminal.
 
 
 ### Exit Terminal ###
 
-1. On the Terminal interface, click  ![close_icon](icon/close.svg) to exit.
+1. On Terminal interface, click  ![close_icon](icon/close.svg) to exit.
 
-2. Right-click ![deepin-terminal](icon/deepin-terminal.svg) in the Dock and select **Close All** or **Force Quit** to exit.
+2. Right-click  ![deepin-terminal](icon/deepin-terminal.svg) on Dock and select **Close All** or **Force Quit** to exit.
 
-3. On the Terminal interface, click ![icon_menu](icon/icon_menu.svg) to select **Exit**.
+3. On Terminal interface, click ![icon_menu](icon/icon_menu.svg) to select **Exit**.
 
-> ![notes](icon/notes.svg)Notes: A prompt will display when programs are still running in the Terminal to avoid your data loss.
+> ![notes](icon/notes.svg)Notes: There will be a prompt when programs are still running in terminal to avoid your data loss.
 
 
 ### View Shortcuts ###
 
-On the Terminal interface, press **Ctrl + Shift + ?** to view shortcuts. Proficiency in shortcuts will greatly improve your efficiency.
+You can press **Ctrl**+**Shift**+**?** on keyboard to open shortcuts preview interface.
 
  ![1|shortcuts](jpg/hotkey.png)
 
 
 ## Basic Operations
 
-You can right-click on the Terminal interface for daily operations.
+You can right-click Terminal interface to do daily operations.
 
  ![1|rightclick](jpg/rightclick.png)
 
 
 ### Find ###
 
-You can use **Find** function to quickly search contents in terminal.
+You can use the "Find" function to quickly search contents in terminal.
 
-1. Right-click on the Terminal interface.
+1. Right-click Terminal interface.
+
 2. Click **Find**.
-3. Type the word in search box.
-4. Press **Enter** key on keyboard and the search results will be highlighted.
-5. Press **Esc** on keyboard or click any blank area on the Terminal interface to hide search.
 
-> ![tips](icon/tips.svg)Tips: Press **Enter** to search down from the current location. You can also search by clicking ![up](icon/up.svg) and ![down](icon/down.svg) on the interface.
+3. Type the word in search box and press **Enter** key on keyboard.
+
+4. Then the search results will be highlighted.
+
+5. Press **Esc** on keyboard or click any blank location of terminal interface to hide search.
+
+> ![tips](icon/tips.svg)Tips: Press **Enter** to search down from current location. You can also click ![up](icon/up.svg) and ![down](icon/down.svg) to search.
 
 
 ### Web Search ###
 
-You can use browser in Terminal for quick and convenient web search against selected content on the Terminal interface. 
+Terminal can call the browser to search some contents in the Terminal quickly and conveniently. 
 
-1. On the Terminal interface, select the content you want to search.
+1. On the interface of Terminal, select the content you want to search.
 2. Right-click to select **Search**.
 3. Select a search engine.
-4. Your browser will pop up and start searching based on the content you select on the Terminal interface.
+4. Your browser will pop up and start searching.
 
 
 ### Copy/Paste ###
 
 - Copy
-   - On the Terminal interface, select the content you want to copy and press **Ctrl + Shift + C**.
-   - On the Terminal interface, select the content you want to copy, right-click and select **Copy**.
+   - In Terminal interface, select the content you want to copy and press **Ctrl + Shift + C**.
+   - In Terminal interface, select the content you want to copy, right-click and select **Copy**.
 - Paste
-   - On the Terminal interface, press **Ctrl + Shift + V**.
-   - On the Terminal interface, middle-click to paste.
-   - On the Terminal interface, right-click and select **Paste**.
+   - In Terminal interface, press **Ctrl + Shift + V**.
+   - In Terminal interface, middle-click to paste.
+   - In Terminal interface,  right-click and select **Paste**.
 
-> ![tips](icon/tips.svg)Tips: 
-    > - If you want to copy a hyperlink, you don't need to select any content. Just simply copy it with a right-click.
-    > - Check **Copy on select** in **Settings** under the main menu to copy the selected text to clipboard automatically.
+> ![tips](icon/tips.svg)Tips: If it is a link you want to copy, just right-click it to copy without selection.
 
-### Select Quake Mode ###
+> ![tips](icon/tips.svg)Tips: Check **Copy on select** in settings window, to copy the selected text to clipboard automatically.
 
-Quake Mode is a unique function of Terminal. Press **Alt** + **F2** to open a quake window, and press again to hide it.
+### Quake Mode ###
 
-> ![tips](icon/tips.svg)Tips: You can also click ![deepin-terminal](icon/deepin-terminal.svg) in the Dock to select **Quake Terminal** to open a quake window.
+Quake Mode is the unique function of Terminal. Press **Alt** + **F2** to open a quake window, and press again to hide it.
+
+> ![tips](icon/tips.svg)Tips: You can also click ![deepin-terminal](icon/deepin-terminal.svg) on Dock to select **Quake Terminal** to open a quake window.
 
 ### Open Files and Applications ###
 
-On the Terminal interface, select the file in the current directory and right-click to **Open** it by system application.
+On Terminal interface, select the file in current directory and right click to **Open** it by the application.
 
-1. On the Terminal interface, input **ls -al** to display files in current directory.
+1. On Terminal interface, input **ls -al** to display files in current directory.
 2. Double-click to select the file name.
 3. Right-click and select **Open**.
 4. The file will be opened with the proper application.
@@ -105,29 +109,30 @@ On the Terminal interface, select the file in the current directory and right-cl
 
 ### Adjust Encoding Method ###
 
-When there is a messy code or display error, you may switch the encoding to solve it.
+When there is messy code or display error, you may switch the encoding to solve it.
 
-1. On the Terminal interface, right-click to select **Encoding**.
-3. Select one encoding in the list to see if the content is correctly displayed.
-4. Repeat Step 2 until you get correct display of content.
+1. On Terminal interface, right-click.
+2. Select **Encoding**.
+3. Select one encoding in the list to see if it is correct.
+4. Repeat Step 3 until you get correct contents.
 
-> ![notes](icon/notes.svg)Notes: Usually, correct encoding methods are matched automatically in Terminal. Once any error appears under some special circumstances, you can adjust encoding methods manually. You can directly choose the correct encoding method if you are sure of it. If you are not sure, you can try multiple times. 
+> ![notes](icon/notes.svg)Notes: Usually, correct encoding methods are matched automatically in Terminal. Once any error appears under some special circumstances, you can adjust encoding methods manually. You can directly choose the correct encoding method if you are sure of it. If you are not sure, you can try many times. 
 
  
 
 
 ## Window Operations
 
-Window is the foundation for your operations in Terminal. You can create many workspaces and split one into more windows.
+The window is the base for you to do any operations in terminal. You can create many workspaces and split one into more windows.
 
 
-### Create Window ###
+### New Window ###
 
 You can create a new window in the following ways:
 
-- Open Terminal and click ![icon_menu](icon/icon_menu.svg)> **New Window**.
+- Open Terminal and click ![icon_menu](icon/icon_menu.svg) > **New Window**.
 
-- Click ![deepin-terminal](icon/deepin-terminal.svg) in the Dock to select **New Window**.
+- Click ![deepin-terminal](icon/deepin-terminal.svg) on Dock to select **New Window**.
 
 
 ![0|new_window](jpg/newwindow.png)
@@ -137,15 +142,15 @@ You can create a new window in the following ways:
 ### Split Window ###
 
 1. Open Terminal in Launcher.
-2. On the Terminal interface, right-click.
+2. On Terminal interface, right-click.
 
-  - Select **Vertical split** to split the interface into left and right columns.
+  - Click **Vertical split** to split the interface into left and right parts.
 
-  - Select **Horizontal split** to split the interface into top and bottom rows.
+  - Click **Horizontal split** to split the interface into top and bottom parts.
 
-3. You can input commands in each terminal window, and view execution results of different commands in different windows simultaneously.
+3. You can input commands in each terminal window, and view both the execution results of the command.
 
-> ![tips](icon/tips.svg)Tips: You can also press **Ctrl + Shift + J** on keyboard to split windows vertically, and press **Ctrl** + **Shift** + **H** to split windows horizontally.
+> ![tips](icon/tips.svg)Tips: You can also press **Ctrl+Shift+J** on keyboard to split vertically, and press **Ctrl+Shift+H** to split horizontally.
 
  ![1|splitscreen](jpg/splitscreen.png)
 
@@ -153,7 +158,8 @@ You can create a new window in the following ways:
 
 
 1. Open Terminal in Launcher.
-2. On the Terminal interface, right-click and select **Rename title**.
+2. On Terminal interface, right-click.
+3. Select **Rename title**.
 4. Input the name and click **OK**.
 
 > ![tips](icon/tips.svg)Tips: You can also press **F2**  to rename the window title.
@@ -169,69 +175,69 @@ You can create a new window in the following ways:
 
 2. Press **F11** to display Terminal in fullscreen.
 
-3. If you want to restore to the normal display, please press **F11**.
+3. If you want to restore the normal display, please press **F11**.
 
-> ![notes](icon/notes.svg)Notes: You can also right-click to select **Fullscreen** or **Exit fullscreen** on the Terminal interface.
+> ![notes](icon/notes.svg)Notes: You can also right-click to select **Fullscreen** or **Exit fullscreen** on Terminal interface.
 
 ### Close Window ###
 
-You can close multiple split windows in the following steps:
+For multiple splitting windows, you can execute the following operations to close:
 
-1. On the Terminal interface, move the cursor over one of the split windows.
+1. On Terminal interface, move the cursor over one of the split windows.
 
 2. Right-click to:
 
   - Select **Close window** to close this split window.
 
-  - Select **Close other windows** to close other split windows except for the current one.
+  - Select **Close other windows** to close other split windows other than the current one.
 
  ![1|closewindow](jpg/closesplitscreen.png)
 
 
 ## Workspace Operations
 
-### Create Workspace ###
+### New Workspace ###
 
 You can create new workspaces as follows:
 
-- On the Terminal interface, right-click and select **New workspace** to create a new workspace.
+- On Terminal interface, right-click and select **New workspace** to create a new workspace.
 
-- Click ![add](icon/+.svg) on the top to create a workspace.
-- Press **Ctrl** + **Shift** + **T** on keyboard to create a new workspace.
+- Click + on the top to create a workspace.
+- Press **Ctrl+Shift+T** on the keyboard to create a new workspace.
 
 
 ### Select Workspace ###
 
-You can freely switch among multiple workspaces via following methods:
+You can freely switch among multiple workspaces by one of the following operations:
 
 - Directly click the workspace tab to select a workspace.
-- Press **Ctrl** + **Tab** to switch in sequence.
-- Press **Ctrl** + **Shift** + **1~9** number keys to select the workspace. When there are more than 9 workspaces, the last workspace will be selected rather the ninth one.
+- Press **Ctrl+Tab** to switch in sequence.
+- Press **Ctrl+Shift+1~9** Number key to select the workspace; when there are more than 9 workspaces, the last workspace will be selected rather the ninth one.
 
 ### Close Workspace ###
 
 You can close workspace as follows:
 
-1. Select the tab of one workspace, and click ![add](icon/close.svg) to close it.
+1. Click one workspace tab, and click **X** to close it.
 2. Right-click any workspace tab to:
  - Select **Close workspace** to close it.
- - Select **Close other workspaces** to close other workspaces other than the current one.
+ - Select  **Close other workspaces** to close other workspaces other than the current one.
 
-> ![tips](icon/tips.svg)Tips: When there is only one window in the workspace, you can also right-click and select **Close window** to close the workspace.
+> ![tips](icon/tips.svg)Tips: When there is only one window in workspace, you can also right-click and select **Close window** to close the workspace.
 
 
 ## Remote Server Management
 
-You can open remote management panel to add remote servers via the main menu or right-click menu. The remote management panel will be automatically hidden when you adjust the window size. Once a remote server is added into the management list, you can automatically login just by one click. 
+You can use context menu pops up after right-clicking or click the main menu to open remote management panel to add remote servers. The remote management panel will be automatically hidden when you adjust the window size. Once a remote server is added into the management list, you can automatically login just by one click. 
 
 ### Add Server ###
 
-1. On the Terminal interface, click ![icon_menu](icon/icon_menu.svg)> **Remote Management**.
-2. Click **Add server** and a pop-up box will display.
-3. Fill out **Server name**, **Address**, **Username** and **Password**.
+1. On Terminal interface, click ![icon_menu](icon/icon_menu.svg)> **Remote Management**.
+2. Click **Add server**.
+3. Fill out **Server name, Address, Username, Password**
 4. Click **Add**.
 
-   >  ![notes](icon/notes.svg)Notes: If you need to set up more parameters, please click **Advanced options**. Or, you can keep the default values and edit them when you need.
+   >  ![notes](icon/notes.svg)Notes: If you need more parameters, please click **Advanced options** to set. Or you can keep the default values and edit them when you need to.
 
  ![1|addssh](jpg/addssh-all.png)
 
@@ -239,8 +245,8 @@ You can open remote management panel to add remote servers via the main menu or 
 
 ### Edit Server ###
 
-1. On the Remote Management interface, click ![edit_icon](icon/edit_icon.svg) on the server.
-2. Edit server information as needed.
+1. On the remote management interface, click ![edit_icon](icon/edit_icon.svg) on the server.
+2. Edit as needed.
 3. Click **Save**.
 
 > ![notes](icon/notes.svg)Notes: For better identification and usage, you can also customize the server name.
@@ -250,11 +256,11 @@ You can open remote management panel to add remote servers via the main menu or 
 
 ### Group Servers ###
 
-When you set a group for a server, it will be added in the corresponding group and displayed in the remote management panel on the right side.
+When you set a group for a server, it will be added in the group and displayed in the right remote management panel.
 
-1. Enter **Edit Server** interface.
+1. Enter "Edit Server" interface.
 2. Click **Advanced options**.
-3. Input **Group** information.
+3. Fill out **Group**.
 4. Click **Save**.
 
  ![0|groupssh](jpg/groupssh.png)
@@ -262,9 +268,10 @@ When you set a group for a server, it will be added in the corresponding group a
 
 ### Search Server ###
 
-When there are multiple servers or groups, the search box will be displayed on the top, so you can quickly search all servers.
+When there are many servers or groups, the search box will be displayed on the top, so you can quickly search all servers.
 
-1. On the Terminal interface, right-click and select **Remote management**. 
+1. On Terminal interface, right-click.
+2. Select **Remote management**. 
 3. Input the keywords and press **Enter**.
 4. The search results will be displayed.
 
@@ -275,13 +282,13 @@ When there are multiple servers or groups, the search box will be displayed on t
 
 ### Upload/Download File ###
 
-You can upload and download files after logging in a remote server.
+You can upload and download files after logged in a remote server.
 
 #### Upload Files ####
 
-1. On the Remote Management panel, select one server to log in.
-2. On the Terminal interface, right-click to select **Upload file**.
-3. Select the file to be uploaded in the pop-up window.
+1. On the remote management panel, select one server to log in.
+2. On Terminal interface, right-click to select **Upload file**.
+3. Select file to upload in pup-up window.
 4. Click **Upload** and the file will be uploaded to the remote server.
 
 ![1|upload](jpg/upload.png)
@@ -289,17 +296,17 @@ You can upload and download files after logging in a remote server.
 
 #### Download Files ####
 
-1. On the Remote Management panel, select one server to log in.
-2. On the Terminal interface, right-click to select **Download file**.
+1. On the remote management panel, select one server to log in.
+2. On Terminal interface, right-click to select **Download file**.
 3. Select the storage location.
-4. Input the path of the file to be downloaded. The file will be downloaded to the specified location.
+4. Input the path of the file to be downloaded. The file will be downloaded to specified location.
 
 ![1|download](jpg/download.png)
 
 
 ### Delete Server ###
 
-1. Enter **Edit Server** interface.
+1. Enter "Edit Server" interface.
 2. Click **Advanced options**.
 3. Select **Delete server**.
 4. Click **Delete** on the pop-up window to confirm.
@@ -308,18 +315,19 @@ You can upload and download files after logging in a remote server.
 
 ## Main Menu
 
-In the Main Menu, you can create [create new window](#Create New Window), customize commands, switch themes, view help manual and get more information about Album.
+In Main menu, you can create [new window](#new window), custom command, switch themes, view manual and know more about Terminal. 
 
 ### Theme ###
 
-The window theme provides three theme types, namely Light Theme, Dark Theme and System Theme (default).
+The window theme includes Light Theme, Dark Theme and System Theme (default).
 
-1. On the Terminal interface, click ![main_menu](icon/icon_menu.svg).
-2. Click **Theme** to choose one theme.
+1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
+
+2. Click **Switch theme** to select one and it takes effect immediately.
 
 ### Custom Commands ###
 
-1. On the Terminal interface, click ![main_menu](icon/icon_menu.svg).
+1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 
 2. Select **Custom commands**.
 
@@ -333,24 +341,24 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 
 #### Basic Settings ####
 
-1. On the Terminal interface, click ![main_menu](icon/icon_menu.svg).
+1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 
 2. Click **Settings**.
 
-3. In the **Basic** options, you can:
+3. In the tab of **Basic**, you can:
 
-  - Set **Opacity** for the background.
-   >![notes](icon/notes.svg)Notes: if Window Effect is turned off in Control Center, **Opacity** scroll bar will be hidden.
+  - Set the background transparency.
+   >![notes](icon/notes.svg)Notes: if Window Effect is turned off in Control Center, transparency adjusting function will be hidden.
 
-  - Set the type and size for font.
+  - Set the font and font size.
 
 #### Shortcuts Settings ####
 
-1. On the Terminal interface, click ![main_menu](icon/icon_menu.svg).
+1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 
 2. Click **Settings**.
 
-3. In the **Shortcuts** options, you can:
+3. In the tab of **Shortcuts**, you can:
 
   - Click the shortcuts to be modified, and input new shortcuts by keyboard.
 
@@ -359,41 +367,48 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 
 #### Advanced Settings ####
 
-1. On the Terminal interface, click ![main_menu](icon/icon_menu.svg).
+1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 
 2. Click **Settings**.
 
-3. In the **Advanced** options, you can:
+3. In the tab of **Advanced**, you can:
 
   - Set cursor style.
   - Enable or disable **Cursor blink**.
   - Enable or disable **Copy on select**.
   - Enable or disable **Scroll on keystroke**.
   - Enable or disable **Scroll on output**.
-  - Set the startup mode for window .
+  - Set window startup mode.
   - Enable or disable **Hide quake window after lost focus**.
   - Enable or disable **Blur background**.
-   >![notes](icon/notes.svg)Notes: if Window Effect is turned off in Control Center, **Blur background** option will be hidden.
+   >![notes](icon/notes.svg)Notes: if Window Effect is turned off in Control Center, **Blur background** will be hidden.
 
-  - **Restore defaults**: Click this button to restore to all default settings.  
+  - **Restore defaults**: click this button, all settings will be restored to default.  
 
 ### Help
 
-2. On the Terminal interface, click ![icon_menu](icon/icon_menu.svg).
+Click Help to get the manual, which will help you further know and use Terminal.
+
+1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
+
 2. Click **Help** to view the manual of Terminal.
+
+
 
 
 ### About
 
-1. On the Terminal interface, click ![icon_menu](icon/icon_menu.svg).
+1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 
-2. Click **About** to view the version and introduction of Terminal.
+2. Click **About** to view the introduction of Terminal.
+
+
 
 
 ### Exit
 
-1. On the Terminal interface, click ![icon_menu](icon/icon_menu.svg).
+1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 
-2. Click **Exit** to exit Terminal.
+2. Click **Exit**.
 
-<div class="version-info"><span>Update Date: 2020-09-09</span><span> Version: 5.2</span></div>
+<div class="version-info"><span>Update Date: 2020-09-07</span><span> Version: 5.2</span></div>

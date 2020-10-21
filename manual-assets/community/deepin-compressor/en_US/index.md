@@ -46,7 +46,9 @@ It is available for you to compress a single file/folder/package or a collection
 
    > ![tips](icon/tips.svg)Tips: You can drag one or more files directly to the Archive Manager interface for compression.
    
-2.  Click  ![plus](icon/icon_plus.svg) or click  ![icon_menu](icon/icon_menu.svg) > **Open file** to add files to be compressed.
+2.  Click  ![plus](icon/icon_plus.svg) to add files to be compressed.
+
+   > ![tips](icon/tips.svg)Tips: It is available for you to click  ![icon_menu](icon/icon_menu.svg) > **Open file** to add files to be compressed.
 
    ![1|compressor](jpg/compress-add.png)
 
@@ -56,7 +58,7 @@ It is available for you to compress a single file/folder/package or a collection
 
 5.  If you enable the advanced option mode, it is available for you to set the package encryption password and volume compression.
 
-   > ![notes](icon/notes.svg)Notes: The default package is in .zip format, and the available formats for file encryption are .7z, .cbz, .exe and .zip; for list encryption, it is .7z; for volume compression, it is .7z. 
+   > ![notes](icon/notes.svg)Notes: The default package format is zip and the available formats are 7z, cbz, exe and zip.
    
    ![1|compressor](jpg/compress-file.png)
 
@@ -108,20 +110,15 @@ On the main menu, you can open the compression interface, switch window themes, 
 
 ### Settings
 
-1.  Click  ![icon_menu](icon/icon_menu.svg) on the Archive Manager interface.
+1.   Click  ![icon_menu](icon/icon_menu.svg) on the Archive Manager interface.
 2.  Click **Settings**.
-   - Extraction:
-      + Set the directory where the extracted archives go to;
-      + Check or uncheck **Auto create a folder for multiple extracted files**;
-      + Check or uncheck **Show extracted files when completed**.
-   - File Management:
-      + Set whether to **Delete archives after extraction**, you have options such as **Never**, **Ask for confirmation** and **Always**.
-      + Check or uncheck **Delete files after compression**.
-   - Files Associated:
-      + Check or uncheck file types of associated files.
-3.  Click **Restore Defaults** on the interface to restore the initial setting.
+3.  You can perform the following settings as needed:
+ - Set the default extraction directory.
+ - Set whether to create folders automatically.
+ -  Set whether to automatically open the corresponding folder after extraction.
+ - Set the associated file type.
 
-
+![tips](icon/tips.svg)Tips: Click **Restore Defaults** on the interface to restore the default setting.
 
 ### Theme
 
@@ -150,4 +147,4 @@ View Help to get more information about Archive Manager.
 1.  On the Archive Manager interface, click ![icon_menu](icon/icon_menu.svg) .
 2.  Click **Exit** to exit.
 
-<div class="version-info"><span>Update Date: 2020-09-09</span><span> Version: 5.8</span></div>
+<div class="version-info"><span>Update Date: 2020-09-07</span><span> Version: 5.8</span></div>

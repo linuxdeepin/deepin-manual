@@ -22,8 +22,6 @@
 
 #include <QObject>
 
-namespace dman {
-
 /**
  * @brief The TitleBarProxy class
  * 前进后退按钮控制接口类，ｊｓ调用
@@ -48,7 +46,5 @@ private:
     WebWindow *m_webWindow;
     int m_first;
 };
-
-} // namespace dman
 
 #endif // DEEPIN_MANUAL_VIEWS_TITLE_BAR_PROXY_H

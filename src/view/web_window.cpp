@@ -49,8 +49,6 @@
 
 DWIDGET_USE_NAMESPACE
 
-namespace dman {
-
 namespace {
 
 const int kSearchDelay = 200;
@@ -858,8 +856,8 @@ void WebWindow::onSetKeyword(const QString &keyword)
             search_edit_->clearEdit();
         } else {
             QString strTemp = keyword;
-            if (strTemp.contains("-+")) {
-                strTemp.replace("-+", "/");
+            if (strTemp.contains("=-=")) {
+                strTemp.replace("=-=", "%");
             }
             search_edit_->setText(strTemp);
         }
@@ -896,6 +894,3 @@ void WebWindow::onSearchAnchorResult(const QString &keyword, const SearchAnchorR
         completion_window_->setFocusPolicy(Qt::StrongFocus);
     }
 }
-
-
-}  // namespace dman

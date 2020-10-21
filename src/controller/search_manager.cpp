@@ -21,8 +21,6 @@
 #include <DSysInfo>
 #include <QThread>
 
-namespace dman {
-
 SearchManager::SearchManager(QObject *parent)
     : QObject(parent)
     , db_(nullptr)
@@ -74,5 +72,3 @@ SearchManager::~SearchManager()
     delete db_;
     db_ = nullptr;
 }
-
-} // namespace dman

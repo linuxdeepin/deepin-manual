@@ -13,8 +13,8 @@
 
 ### 运行看图
 
-1. 点击桌面底部的 ![deepin-launcher](icon/deepin-launcher.svg) ，进入启动器界面。
-2. 上下滚动鼠标滚轮浏览或通过搜索，找到看图 ![viewer](icon/deepin-image-viewer.svg)点击运行。
+1. 点击桌面底部的 ![deepin-launcher](icon/deepin-launcher.svg)，进入启动器界面。
+2. 上下滚动鼠标滚轮浏览或通过搜索，找到看图 ![viewer](icon/deepin-image-viewer.svg) 点击运行。
 3. 右键单击 ![viewer](icon/deepin-image-viewer.svg)，您可以：
  - 点击 **发送到桌面**，在桌面创建快捷方式。
  - 点击 **发送到任务栏**，将应用程序固定到任务栏。
@@ -23,7 +23,7 @@
 
 ### 关闭看图
 
-- 在看图界面点击  ![close_icon](icon/close_icon.svg)，退出看图。
+- 在看图界面点击 ![close_icon](icon/close_icon.svg)，退出看图。
 - 在任务栏右键单击 ![viewer](icon/deepin-image-viewer.svg)，选择 **关闭所有** 来退出看图。
 - 在看图界面点击 ![icon_menu](icon/icon_menu.svg)，选择 **退出** 来退出看图。
 
@@ -106,7 +106,7 @@
 
 在看图中您可以通过如下方法删除图片：
 
-- 点击看图界面上的 ![delete_press](icon/delete.svg)  图标。
+- 点击看图界面上的 ![delete_press](icon/delete.svg) 图标。
 - 右键单击图片，选择 **删除**。
 - 在看图界面上，按下键盘的 **Delete** 键。
 
@@ -142,20 +142,20 @@
 
 窗口主题包含浅色主题、深色主题和跟随系统主题，其中跟随系统主题为默认设置。
 
-1. 在看图界面，点击  ![icon_menu](icon/icon_menu.svg)。
+1. 在看图界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **主题**，选择一个主题颜色。
 
 ### 帮助
 
 查看帮助手册，进一步了解和使用看图。
 
-1. 在看图界面，点击  ![icon_menu](icon/icon_menu.svg)。
+1. 在看图界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **帮助**。
 3. 查看看图的帮助手册。
 
 ### 关于
 
-1. 在看图界面，点击  ![icon_menu](icon/icon_menu.svg)。
+1. 在看图界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **关于**。
 3. 查看看图的版本和介绍。
 
@@ -164,4 +164,4 @@
 1. 在看图界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **退出**。   
 
-<div class="version-info"><span>文档更新时间: 2020-09-09</span><span> 版本: 5.6</span></div>
+<div class="version-info"><span>文档更新时间: 2020-09-07</span><span> 版本: 5.6</span></div>

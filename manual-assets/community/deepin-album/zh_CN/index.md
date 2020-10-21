@@ -15,7 +15,7 @@
 ### 运行相册
 
 1. 点击桌面底部的 ![launcher](icon/deepin-launcher.svg)，进入启动器界面。
-2. 上下滚动鼠标滚轮浏览或通过搜索，找到相册 ![deepin-album](icon/deepin-album.svg)点击运行。
+2. 上下滚动鼠标滚轮浏览或通过搜索，找到相册 ![deepin-album](icon/deepin-album.svg) 点击运行。
 3. 右键单击 ![deepin-album](icon/deepin-album.svg)，您可以：
  - 点击 **发送到桌面**，在桌面创建快捷方式。
  - 点击 **发送到任务栏**，将应用程序固定到任务栏。
@@ -27,7 +27,7 @@
 
 - 在相册界面点击  ![close_icon](icon/close_icon.svg)，退出相册。
 - 在任务栏右键单击 ![deepin-album](icon/deepin-album.svg)，选择 **关闭所有** 来退出相册。
-- 在相册界面点击 ![icon_menu](icon/icon_menu.svg) ，选择 **退出** 来退出相册。
+- 在相册界面点击 ![icon_menu](icon/icon_menu.svg)，选择 **退出** 来退出相册。
 
 ### 查看快捷键
 
@@ -42,7 +42,7 @@
 ### 导入照片
 
 在相册界面，可以采用以下方式导入照片。
-- 点击![icon_menu](icon/icon_menu.svg)> **导入照片**。
+- 点击 ![icon_menu](icon/icon_menu.svg)  >  **导入照片**。
 - 直接将照片或所在文件夹拖拽到界面上。
 - 从移动设备导入照片。
 
@@ -77,7 +77,7 @@
 | ![contrarotate](icon/contrarotate.svg)             | 逆时针旋转 | 照片逆时针旋转90度。         |
 | ![delete](icon/delete.svg)                         | 删除       | 删除当前照片。               |
 
-   > ![tips](icon/tips.svg)窍门：滚动鼠标放大图片且当图片超出界面范围时，界面上会出现导航窗口。拖动导航窗口内的方框，查看该区域的信息。点击导航窗口右上角 **x **按钮，关闭导航窗口；也可以在看图界面上单击鼠标右键选择 **隐藏导航窗口**/ **显示导航窗口**。
+   > ![tips](icon/tips.svg)窍门：滚动鼠标放大图片且当图片超出界面范围时，界面上会出现导航窗口。拖动导航窗口内的方框，查看该区域的信息。点击导航窗口右上角 **x **按钮，关闭导航窗口；也可以在看图界面上单击鼠标右键选择**隐藏导航窗口**/**显示导航窗口**。
 
 ![0|copy](jpg/navagation.png)
 
@@ -113,7 +113,7 @@
 
 在相册中您可以通过如下方法删除照片：
 
-- 查看图片时，点击界面上的 ![delete_press](icon/delete.svg)图标。
+- 查看图片时，点击界面上的 ![delete_press](icon/delete.svg) 图标。
 - 右键单击照片，选择 **删除**。
 - 在相册界面上，按下键盘上的 **Delete** 键。
 
@@ -127,6 +127,9 @@
 3. 右键单击已收藏的照片，也可以 **取消收藏**。
 
    > ![tips](icon/tips.svg)窍门：在查看照片时，点击界面上的![collect](icon/collect.svg)，将照片加入我的收藏。再次点击![collect-active](icon/collect-active.svg)，取消收藏。
+
+
+
 ### 旋转照片
 
 1. 在相册界面上，右键单击照片。
@@ -165,7 +168,7 @@
 
 ### 新建相册
 
-1. 在相册界面，点击![icon_menu](icon/create.png) 或 ![icon_menu](icon/icon_menu.svg) > **新建相册**。
+1. 在相册界面，点击![icon_menu](icon/create.png) 或 ![icon_menu](icon/icon_menu.svg)  > **新建相册**。
 2. 输入相册名称，点击 **新建**。
 
    > ![tips](icon/tips.svg)窍门：右键单击已创建的相册，也可以新建相册。您还可以在添加照片到相册时新建相册。
@@ -234,4 +237,4 @@
 1. 在相册界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **退出**。
 
-<div class="version-info"><span>文档更新时间: 2020-09-09</span><span> 版本: 5.8</span></div>
+<div class="version-info"><span>文档更新时间: 2020-09-07</span><span> 版本: 5.6</span></div>

@@ -41,8 +41,6 @@ public:
     void setSelection(const QRect &rect, QItemSelectionModel::SelectionFlags command) override;
     void initDelegate();
 
-    QStandardItemModel *getErrorListSourceModel();
-
 protected:
     void paintEvent(QPaintEvent *event) override;
 

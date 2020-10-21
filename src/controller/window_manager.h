@@ -21,8 +21,6 @@
 #include <QObject>
 #include <QMutex>
 
-namespace dman {
-
 class WebWindow;
 
 // 窗口管理类
@@ -53,6 +51,5 @@ public slots:
     void openManualWithSearch(const QString &app_name, const QString &keyword);
 };
 
-} // namespace dman
 
 #endif // DEEPIN_MANUAL_CONTROLLER_WINDOW_MANAGER_H

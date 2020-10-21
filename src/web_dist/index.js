@@ -263,7 +263,13 @@ var App = function (_React$Component) {
         cKeyword = pathList[4];
       }
 
-      global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
+      // global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
+      if (cKeyword == '%') {
+        global.qtObjects.search.getKeyword(cKeyword);
+      } else {
+        console.log("decode URIComponent componentWillReceiveProps");
+        global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
+      }
 
       if (this.context.router.history.action == 'PUSH') {
         var entriesLen = this.context.router.history.entries.length;
@@ -318,16 +324,19 @@ var App = function (_React$Component) {
           hash = 'h1';
         }
         file = encodeURIComponent(file);
+        console.log("globla.open...........");
         hash = encodeURIComponent(hash);
         global.hash = hash;
 
-        // '/'字符替换为其他非常用字符组合,来替代'/', 路由URL使用'/'来区分字段,所以应该避免字段中含有'/'.
-        if (key.indexOf('/') !== -1) {
-          key = key.replace(/\//g, '-+');
+        // '%'字符替换为其他非常用字符组合,来替代'%', 路由URL单含此字符会出错。。。
+        if (key == '%') {
+          key = '=-=';
         }
 
         var url = '/open/' + file + '/' + hash + '/' + key;
+        console.log("globla.open==---------->");
         _this3.context.router.history.push(url);
+        console.log("globla.open.=========.......");
 
         //Init属性设置, 放在index与opentitle中. 避免直接跳转到特定模块时会先走/模块.
         if (_this3.state.init == false) {
@@ -515,6 +524,7 @@ var App = function (_React$Component) {
         },
         decode: function decode(str) {
           // Going backwards: from bytestream, to percent-encoding, to original string.
+          console.log("decode URIComponent decode");
           return decodeURIComponent(atob(str).split('').map(function (c) {
             return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
           }).join(''));
@@ -531,6 +541,7 @@ var App = function (_React$Component) {
 
         var entriesLen = _this3.context.router.history.entries.length;
         if ('POP' == global.lastAction && lastHistoryIndex > 0 && lastHistoryIndex < entriesLen - 1) {
+          console.log("global.opensearch...");
           _this3.context.router.history.entries.length = lastHistoryIndex;
           _this3.context.router.history.length = lastHistoryIndex;
           _this3.context.router.history.index = lastHistoryIndex - 1;
@@ -560,6 +571,7 @@ var App = function (_React$Component) {
         //console.log(`The current URL is ${location.pathname}${location.search}${location.hash}` );
         //console.log(`The last navigation action was ${action}`);
         //console.log("index:" + this.context.router.history.index);
+        console.log("app router.history.listen...");
         global.lastUrlBeforeSearch = location.pathname;
         global.lastHistoryIndex = _this3.context.router.history.index;
         global.lastAction = action;
@@ -1329,6 +1341,7 @@ var Main = function (_Component) {
         hash = _this$props$match$par.hash,
         key = _this$props$match$par.key;
 
+    console.log("main constructor...");
     _this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null, key);
     var showFloatTimer = null;
 
@@ -1345,7 +1358,12 @@ var Main = function (_Component) {
 
       var key = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
+
+      if (key !== '%') {
+        key = decodeURIComponent(key);
+      }
       console.log("main init==>file:", file, " hash:", hash, " key:", key);
+
       global.hash = hash;
       var filePath = file;
       if (filePath.indexOf('/') == -1) {
@@ -1578,14 +1596,23 @@ exports.default = function (mdFile, mdData) {
     }
     return '<img src="' + hrefX2 + '" data-src="' + href + '" alt="' + text + '" />';
   };
+
   html = (0, _marked2.default)(mdData, { renderer: renderer }).replace(/src="/g, '$&' + path);
+  console.log("-----------------------------------");
   if (key != '') {
-    //将'-+'字符串 反向还原成'/'
-    key = key.replace(/-+/g, '/');
-    // var formatKeyword = key.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')
+    console.log("regexp==============>", key);
+    //将'=-='字符串 反向还原成'%'
+    key = key.replace(/=-=/g, '%');
+
+    console.log("regexp===>", key);
+
+    //将关键字转义
+    var keyTemp = new RegExp(escapeRegExp(key), 'gi');
+
+    // key = re;
     var finder = new RegExp(">.*?<", 'g'); // 提取位于标签内的文本，避免误操作 class、id 等
     html = html.replace(finder, function (matched) {
-      return matched.replace(new RegExp(key, 'gi'), "<span style='background-color: yellow'>$&</span>");
+      return matched.replace(new RegExp(keyTemp, 'gi'), "<span style='background-color: yellow'>$&</span>");
     });
   }
 
@@ -1597,6 +1624,11 @@ var _marked = require('marked');
 var _marked2 = _interopRequireDefault(_marked);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//转义特定字符
+function escapeRegExp(text) {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+};
 
 },{"marked":19}],6:[function(require,module,exports){
 (function (global){
@@ -1927,7 +1959,13 @@ var Items = function (_Component) {
       var resultList = [];
 
       //将关键字转义
-      var keyTemp = decodeURIComponent(this.props.keyword);
+
+      var keyTemp = this.props.keyword;
+      if (this.props.keyword !== '%') {
+        keyTemp = decodeURIComponent(this.props.keyword);
+      }
+
+      // let keyTemp = decodeURIComponent(this.props.keyword)
       var re = new RegExp(this.escapeRegExp(keyTemp), 'gi');
 
       var cTitle = _react2.default.createElement('span', {
@@ -2007,7 +2045,7 @@ function Mismatch(props) {
       _react2.default.createElement(
         'div',
         { id: 'NoResult' },
-        global.i18n['NoResult'].replace('%1', decodeURIComponent(props.keyword))
+        global.i18n['NoResult']
       )
     )
   );

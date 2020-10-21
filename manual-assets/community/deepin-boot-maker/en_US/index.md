@@ -31,23 +31,23 @@ Boot Maker is an easy-to-use tool with a simple interface to help you burn the s
 
 ### Preparation
 
-1. Download the latest official image file from UnionTech OS official website.
+1. Download the latest official image file from the official website.
 2. Prepare an empty USB disk (8GB).
 3. Run Boot Maker.
- - Boot Maker is built in UnionTech OS system by default, so you can find it in Launcher quickly.
+ - Boot Maker is built in the system by default, so you can find it in Launcher quickly.
  - For Windows system, you can also extract xxx-boot-maker.exe from the image file.
- - You can download its specified version from UnionTech OS official website.
+ - You can download its specified version from the official website.
 
 ### Select Image File
 
 There are two ways to select the image file:
 
-1.Click **Select an ISO image file** to select the downloaded file, then click **Next**.
+1. Click **Select an ISO image file** to select the downloaded file, then click **Next**.
 
-2.Drag an ISO image file and drop it to the interface, then click **Next**.
+2. Drag an ISO image file and drop it to the interface, then click **Next**.
 
 
-> ![notes](icon/notes.svg)Notes: Please check if the MD5 checksum of image file is the same as that in the official website in advance. Failure would occur due to ISO image files that are not downloaded from official website or not downloaded completely.
+> ![notes](icon/notes.svg)Notes: Please check if the MD5 checksum of image file is the same as that in the official website in advance. Failure would occur due to ISO image files that are not downloaded from the official website or not downloaded completely.
 
 ![0|file](jpg/select-file.png)
 
@@ -119,4 +119,4 @@ You can click to view the manual, which will help you further know and use Boot 
 
 2. Click **Exit**.
 
-<div class="version-info"><span>Update Date: 2020-09-09</span><span> Version: 5.4</span></div>
+<div class="version-info"><span>Update Date: 2020-09-07</span><span> Version: 5.4</span></div>

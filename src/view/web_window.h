@@ -29,8 +29,6 @@
 #include <QClipboard>
 #include <DSpinner>
 
-namespace dman {
-
 class I18nProxy;
 class ImageViewer;
 class ImageViewerProxy;
@@ -129,7 +127,5 @@ private slots:
     void onACtiveColorChanged(QString, QMap<QString, QVariant>, QStringList);
 //    void onThemeChange(DGuiApplicationHelper::ColorType themeType);
 };
-
-} // namespace dman
 
 #endif // DEEPIN_MANUAL_VIEW_WEB_WINDOW_H

@@ -110,11 +110,11 @@
 2. 您可以设置图形的参数：
  - 点击 **填充** 设置图形的填充颜色和透明度。
  - 点击 **描边** 设置图形的描边颜色和透明度。
- - 在粗细值下拉框中设置图形的粗细值。
+ - 在粗细值下拉框中设置图形的描边粗细。
  - 设置锚点数（取值范围为3-50个）和半径值（取值范围为0%-100%），仅适用于星型。
  - 设置侧边数（取值范围为4-10条），仅适用于多边形。
    
-      + 锚点数、半径值和侧边数既可以通过点击![icon](icon/up.svg) 或 ![icon](icon/down.svg)按钮来调节，也可以选中数值后使用键盘![Up](icon/Up.svg)或![down](icon/Down.svg) 键或滚动鼠标来调节。
+      + 锚点数、半径值和侧边数既可以通过点击![icon](icon/up.svg) 或 ![icon](icon/down.svg)按钮来调节，也可以选中数值后使用键盘上![Up](icon/Up.svg)或![down](icon/Down.svg) 键或者滚动鼠标来调节。
 3. 在画板区域拖动鼠标来绘制形状。
 
 > ![tips](icon/tips.svg)窍门：在使用 ![rectangle](icon/rectangle_normal.svg) 或 ![oval](icon/oval_normal.svg) 或 ![triangle](icon/triangle_tool_normal.svg) 或 ![star](icon/draw-star.svg) 或 ![hexagon](icon/hexagon_tool_normal.svg)绘制图形时，配合键盘上的 **Shift** 或 **Shift + Alt** 键可以画出正方形、正圆、正三角、正五角星、正多边形。
@@ -133,7 +133,7 @@
 1. 在画板界面上，点击 ![line](icon/line_normal.svg) 或 ![line](icon/pencil_normal.svg)。
 2. 您可以设置画笔参数：
    - 点击 **颜色** 设置画笔的颜色和透明度。
-   - 在粗细值下拉框中选择画笔的粗细值。
+   - 在粗细值下拉框中设置画笔的粗细值。
    - 设置线条的起点和终点样式。
 3. 在画板区域拖动鼠标来绘制线条。
 
@@ -290,4 +290,4 @@
 1. 在画板界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **退出**。
 
-<div class="version-info"><span>文档更新时间: 2020-09-09</span><span> 版本: 5.8</span></div>
+<div class="version-info"><span>文档更新时间: 2020-09-07</span><span> 版本: 5.8</span></div>
