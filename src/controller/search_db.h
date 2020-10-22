@@ -57,6 +57,8 @@ public slots:
                         const QStringList &anchorIdList,
                         const QStringList &contents);
 
+    void initTimeTable();
+
 private:
     void initConnections();
     inline QString highlightKeyword(QString srcString, QString keyword);

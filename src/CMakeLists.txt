@@ -116,6 +116,16 @@ set(DMAN_SEARCH_LINK_LIBS
     ${DtkCore_LDFLAGS}
     )
 
+set (DMAN_HELPER_LIBS
+    Qt5::Core
+    Qt5::Sql
+    Qt5::DBus
+    Qt5::Widgets
+    ${DtkGui_LDFLAGS}
+    ${DtkCore_LDFLAGS}
+    )
+
+
 
 set(BASE_FILES
     base/consts.cpp
@@ -197,6 +207,10 @@ set(VIEW_FILES
     view/widget/search_edit.h
     )
 
+
+
+
+
 # Main executable
 set(SEARCH_FILES
     app/generate_search_db.cpp
@@ -213,15 +227,15 @@ add_executable(generate-search-db
                ${SEARCH_FILES})
 target_link_libraries(generate-search-db ${LINK_LIBS})
 
-# TODO(Shaohua): Generate search db by hand.
-add_custom_command(OUTPUT _update-search-db
-                   COMMAND pwd
-                   COMMAND ${CMAKE_CURRENT_BINARY_DIR}/generate-search-db
-                   WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/
-                   )
-add_custom_target(update-search-db DEPENDS _update-search-db)
-add_dependencies(update-search-db
-                 generate-search-db)
+## TODO(Shaohua): Generate search db by hand.
+#add_custom_command(OUTPUT _update-search-db
+#                   COMMAND pwd
+#                   COMMAND ${CMAKE_CURRENT_BINARY_DIR}/generate-search-db
+#                   WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/
+#                   )
+#add_custom_target(update-search-db DEPENDS _update-search-db)
+#add_dependencies(update-search-db
+#                 generate-search-db)
 
 ## Generate .qm files from .ts files.
 #file(GLOB DMAN_TRANSLATION_TS
@@ -259,6 +273,26 @@ add_executable(dman-search
                )
 target_link_libraries(dman-search
                       ${DMAN_SEARCH_LINK_LIBS})
+
+add_executable(dmanHelper
+                app/dman_helper.cpp
+                base/utils.cpp
+                base/utils.h
+                dbus/dbusvariant/app_info.cpp
+                dbus/dbusvariant/app_info.h
+                base/command.cpp
+                base/command.h
+                controller/helpermanager.cpp
+                controller/helpermanager.h
+                controller/search_db.cpp
+                controller/search_db.h
+                controller/filewatcher.cpp
+                controller/filewatcher.h
+                )
+target_link_libraries(dmanHelper
+                      ${DMAN_HELPER_LIBS})
+
+
 
 # Auto generate qm files and search.db in release mode.
 if (NOT (${CMAKE_BUILD_TYPE} MATCHES "Debug"))

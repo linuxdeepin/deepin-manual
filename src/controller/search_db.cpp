@@ -36,6 +36,13 @@ const char kSearchTableSchema[] =
     "anchorId TEXT,"
     "content TEXT)";
 
+const char kfileTimeTable[] =
+    "CREATE TABLE IF NOT EXISTS filetime"
+    "(id INTEGER PRIMARY KEY AUTOINCREMENT,"
+    "appName TEXT,"
+    "lang TEXT,"
+    "time TEXT)";
+
 const char kSearchIndexSchema[] =
     "CREATE INDEX IF NOT EXISTS search_idx "
     "ON search (id, appName, lang)";
@@ -43,6 +50,7 @@ const char kSearchIndexSchema[] =
 const char kSearchDeleteEntryByApp[] =
     "DELETE FROM search "
     "WHERE appName = ? AND lang = ?";
+
 const char kSearchInsertEntry[] =
     "INSERT INTO search "
     "(appName, lang, anchor, anchorInitial, anchorSpell, anchorId, content) "
@@ -243,6 +251,18 @@ void SearchDb::addSearchEntry(const QString &system, const QString &app_name, co
         qCritical() << "Failed to insert search entry:" << query.lastError().text();
     } else {
         p_->db.commit();
+    }
+}
+
+/**
+ * @brief SearchDb::initTimeTable 初始化创建fileTime表
+ */
+void SearchDb::initTimeTable()
+{
+    QSqlQuery query(p_->db);
+    if (!query.exec(kfileTimeTable)) {
+        qCritical() << "Failed to initialize filetime table:" << query.lastError().text();
+        return;
     }
 }
 
