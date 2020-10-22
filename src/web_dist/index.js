@@ -134,6 +134,7 @@ var App = function (_React$Component) {
         global.qtObjects.settings.fontChangeRequested.connect(_this2.onFontChange.bind(_this2));
         console.log("finsh global.qtObjects = channel.objects...");
         global.qtObjects.manual.finishChannel();
+        global.qtObjects.manual.renderFinish();
       });
     }
   }, {

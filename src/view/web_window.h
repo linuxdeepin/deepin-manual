@@ -66,6 +66,7 @@ public:
 
 signals:
     void manualSearchByKeyword(const QString &keyword);
+    void manualStartFinish(qint64);
 
 public slots:
     void slot_ThemeChanged();

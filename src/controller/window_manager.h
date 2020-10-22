@@ -21,6 +21,7 @@
 #include <QObject>
 #include <QMutex>
 
+
 class WebWindow;
 
 // 窗口管理类
@@ -31,6 +32,8 @@ public:
     explicit WindowManager(QObject *parent = nullptr);
     ~WindowManager() override;
 
+    //获取系统启动时间
+    void setStartTime(qint64 startTime);
 private:
     void initDBus();
     void initWebWindow();
@@ -43,12 +46,15 @@ private:
     QString curr_title_name_;
     QMutex _mutex;
     WebWindow *window = nullptr;
+    qint64 appStartTime;
 
 public slots:
 
     void onNewAppOpen();
     void openManual(const QString &app_name, const QString &title_name);
     void openManualWithSearch(const QString &app_name, const QString &keyword);
+    void onAppStartTimeCount(qint64);
+
 };
 
 

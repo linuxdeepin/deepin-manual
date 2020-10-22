@@ -542,6 +542,8 @@ void WebWindow::initWebView()
     connect(search_proxy_, &SearchProxy::setKeyword, this, &WebWindow::onSetKeyword);
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
             theme_proxy_, &ThemeProxy::slot_ThemeChange);
+    //应用启动时，页面加载成功时间获取
+    connect(manual_proxy_, &ManualProxy::startFinish, this, &WebWindow::manualStartFinish);
 //    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
 //            this, &WebWindow::slot_ThemeChanged);
 

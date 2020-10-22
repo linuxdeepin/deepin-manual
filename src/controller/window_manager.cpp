@@ -41,6 +41,11 @@ WindowManager::~WindowManager()
 {
 }
 
+void WindowManager::setStartTime(qint64 startTime)
+{
+    this->appStartTime = startTime;
+}
+
 /**
  * @brief WindowManager::initDBus
  * 初始化前后端通信Dbus,服务端创建在前端.....wait
@@ -71,6 +76,7 @@ void WindowManager::initWebWindow()
 {
     window = new WebWindow;
     window->setAppProperty(curr_app_name_, curr_title_name_, curr_keyword_);
+    connect(window, &WebWindow::manualStartFinish, this, &WindowManager::onAppStartTimeCount);
     setWindow(window);
     window->show();
 
@@ -201,4 +207,17 @@ void WindowManager::openManualWithSearch(const QString &app_name, const QString 
     curr_keyword_ = keyword;
     activeOrInitWindow();
     qDebug() << Q_FUNC_INFO << app_name << curr_keyword_;
+}
+
+/**
+ * @brief WindowManager::onAppStartTimeCount
+ * @param startfinshTime 通过js触发事件获取的系统启动结束时间
+ * 启动时间统计,打印qinfo
+ */
+void WindowManager::onAppStartTimeCount(qint64 startfinshTime)
+{
+    qDebug() << "startTime ---> " << this->appStartTime;
+    qDebug() << "finshTime ---> " << startfinshTime;
+    qDebug() << "startduration :::";
+    qInfo() << "[GRABPOINT] POINT-0001" << startfinshTime - this->appStartTime;
 }

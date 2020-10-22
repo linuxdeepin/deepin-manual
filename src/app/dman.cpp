@@ -30,11 +30,15 @@
 #include <QDBusConnection>
 #include <QIcon>
 #include <DLog>
+#include <QDateTime>
 
 DWIDGET_USE_NAMESPACE
 
 int main(int argc, char **argv)
 {
+    QDateTime time;
+    qint64 startTime = time.currentMSecsSinceEpoch();
+    qDebug() << "startTime: " << startTime;
     qputenv("DXCB_FAKE_PLATFORM_NAME_XCB", "true");
     //禁用GPU
     qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu");
@@ -77,13 +81,14 @@ int main(int argc, char **argv)
 
     ArgumentParser argument_parser;
     WindowManager window_manager;
+    window_manager.setStartTime(startTime);
     //绑定参数解析 信号与槽
     QObject::connect(&argument_parser, &ArgumentParser::newAppOpen,
-                   &window_manager, &WindowManager::onNewAppOpen);
+                     &window_manager, &WindowManager::onNewAppOpen);
     QObject::connect(&argument_parser, &ArgumentParser::openManualWithSearchRequested,
-                   &window_manager, &WindowManager::openManualWithSearch);
+                     &window_manager, &WindowManager::openManualWithSearch);
     QObject::connect(&argument_parser, &ArgumentParser::openManualRequested,
-                   &window_manager, &WindowManager::openManual);
+                     &window_manager, &WindowManager::openManual);
 
     if (!argument_parser.parseArguments()) {
         qDebug() << "argument_parser.parseArguments()";

@@ -102,6 +102,7 @@ class App extends React.Component {
       );
       console.log("finsh global.qtObjects = channel.objects...");
       global.qtObjects.manual.finishChannel();
+      global.qtObjects.manual.renderFinish();
     });
    
   }

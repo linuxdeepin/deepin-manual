@@ -144,6 +144,12 @@ bool ManualProxy::bIsLongSon()
     return bRet;
 }
 
+void ManualProxy::renderFinish()
+{
+    qint64 dateTime = QDateTime::currentMSecsSinceEpoch();
+    emit startFinish(dateTime);
+}
+
 /**
  * @brief ManualProxy::saveAppList
  * @param list
