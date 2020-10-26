@@ -6,7 +6,7 @@
 
 helperManager::helperManager(QObject *parent)
     : QObject(parent)
-    ,watcherObj(new fileWatcher)
+    , watcherObj(new fileWatcher)
     , dbObj(new SearchDb)
 {
     initDbConfig();
@@ -21,6 +21,7 @@ void helperManager::initDbConfig()
     QString  dbPath = Utils::getSystemManualDir() + "/search.db";
     dbObj->initDb(dbPath);
     dbObj->initTimeTable();
+    dbObj->initSearchTable();
 }
 
 void helperManager::getModuleInfo()

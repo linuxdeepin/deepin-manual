@@ -58,6 +58,19 @@ public slots:
                         const QStringList &contents);
 
     void initTimeTable();
+    //文件信息插入数据库 （先删除数据，再插入数据）
+    void updateFileTimeEntry(const QString &appName,
+                             const QString &lang,
+                             const QString &dataTime);
+    //根据appName|lang 删除表数据
+    void deleteFileTimeEntry(const QString &appName,
+                             const QString &lang);
+    //查找所有 appName | lang
+    QMap < QString, QStringList> selectAllFileTimeIndexList();
+    //根据 appName|lang 返回相应的time
+    QString selectFileTimeByTime(const QString &appName, const QString &lang);
+    //根据 appNa | lang 更新增量更新数据
+    //void updateFileTime(const QString &appName, const QString &lang, const QString &time);
 
 private:
     void initConnections();
@@ -67,7 +80,7 @@ private:
                         , const QStringList &anchorIds, const QStringList &contents
                         , bool bIsTitleHigh);
 
-    void omitHighlight (QString &highLight, const QString &keyword);
+    void omitHighlight(QString &highLight, const QString &keyword);
 
     SearchDbPrivate *p_ = nullptr;
     QStringList strlistApp;
