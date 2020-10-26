@@ -330,6 +330,9 @@ install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/app/dman.sh
 install(TARGETS dman-search
         DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 
+install(TARGETS dmanHelper
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+
 # Install qm files
 file(GLOB QM_FILES  ${CMAKE_SOURCE_DIR}/translations/deepin-manual*.qm)
 install(FILES ${QM_FILES}

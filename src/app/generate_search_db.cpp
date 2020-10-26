@@ -91,6 +91,7 @@ int main(int argc, char **argv)
                     continue;
                 }
 
+                qDebug()<<"====>"<<out;
                 // Parse json
                 QJsonDocument document = QJsonDocument::fromJson(out.toLocal8Bit());
                 if (!document.isArray()) {

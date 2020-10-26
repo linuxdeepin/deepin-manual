@@ -77,21 +77,22 @@ const char kSearchSelectContent[] =
 const char kfileTimeTable[] =
     "CREATE TABLE IF NOT EXISTS filetime "
     "(id INTEGER PRIMARY KEY AUTOINCREMENT,"
-    "appName TEXT,"
-    "lang TEXT,"
+//    "appName TEXT,"
+//    "lang TEXT,"
+    "mdPath TEXT,"
     "time TEXT)";
 //删除
 const char kfileTimeDeleteEntryByApp[] =
     "DELETE FROM filetime "
-    "WHERE appName = ? AND lang = ?";
+    "WHERE mdPath = ?";
 //插入
 const char kfileTimeInsertEntry[] =
-    "INSERT INTO fileime "
-    "(appName, lang, time) "
-    "VALUES (?, ?, ?)";
+    "INSERT INTO filetime "
+    "(mdPath, time) "
+    "VALUES (?, ?)";
 //查找所有appName lang
 const char kfileTimeSelectAll[] =
-    "SELECT appName, lang "
+    "SELECT mdPath, time "
     "FROM filetime";
 //根据 appName lang 查询time
 const char kfileTimeSelectByTime[] =
@@ -277,6 +278,19 @@ void SearchDb::addSearchEntry(const QString &system, const QString &app_name, co
         qCritical() << "Failed to insert search entry:" << query.lastError().text();
     } else {
         p_->db.commit();
+    }
+}
+
+void SearchDb::deleteSearchInfo(const QStringList &appName, const QStringList &lang)
+{
+    Q_ASSERT(p_->db.isOpen());
+    QSqlQuery query(p_->db);
+    query.prepare(kSearchDeleteEntryByApp);
+    query.bindValue(0, appName);
+    query.bindValue(1, lang);
+    if (!query.execBatch()) {
+        qCritical() << "Failed to delete search entry:" << query.lastError().text();
+        return;
     }
 }
 
@@ -639,15 +653,14 @@ void SearchDb::handleSearchContent(const QString &keyword)
  * index.md 时间信息插入fileTime表,
  * 先找到相应数据删除行，再执行插入操作
  */
-void SearchDb::updateFileTimeEntry(const QString &appName, const QString &lang, const QString &dataTime)
+void SearchDb::insertFilesTimeEntry(const QStringList &listMdPath,const QStringList &listDataTime)
 {
     Q_ASSERT(p_->db.isOpen());
 
     QSqlQuery query(p_->db);
     query.prepare(kfileTimeDeleteEntryByApp);
-    query.bindValue(0, appName);
-    query.bindValue(1, lang);
-    if (!query.exec()) {
+    query.bindValue(0, listMdPath);
+    if (!query.execBatch()) {
         qCritical() << "Failed to delete fileTime entry:" << query.lastError().text();
         return;
     }
@@ -657,17 +670,16 @@ void SearchDb::updateFileTimeEntry(const QString &appName, const QString &lang, 
         return;
     }
     query.prepare(kfileTimeInsertEntry);
-    query.bindValue(0, appName);
-    query.bindValue(1, lang);
-    query.bindValue(2, dataTime);
-    bool ok = query.exec();
+    query.bindValue(0, listMdPath);
+    query.bindValue(1, listDataTime);
+    bool ok = query.execBatch();
 
     if (!ok) {
         p_->db.rollback();
-        qCritical() << "Failed to insert fileTime entry:" << query.lastError().text();
+        qCritical() << "Failed to insert fileTime " << query.lastError().text();
     } else {
         p_->db.commit();
-        qCritical() << "insert fileTime : appName = " << appName << " lang = " << lang << " index.md";
+        qCritical() << "insert fileTime";
     }
 }
 
@@ -677,22 +689,38 @@ void SearchDb::updateFileTimeEntry(const QString &appName, const QString &lang, 
  * @param lang       语言
  * 根据应用名与语言删除表中数据
  */
-void SearchDb::deleteFileTimeEntry(const QString &appName, const QString &lang)
+void SearchDb::deleteFilesTimeEntry(const QStringList &listMdPath)
 {
     Q_ASSERT(p_->db.isOpen());
 
     QSqlQuery query(p_->db);
     query.prepare(kfileTimeDeleteEntryByApp);
-    query.bindValue(0, appName);
-    query.bindValue(1, lang);
-    bool ok = query.exec();
+    query.bindValue(0, listMdPath);
+    bool ok = query.execBatch();
     if (!ok) {
         p_->db.rollback();
         qCritical() << "Failed to delete fileTime entry:" << query.lastError().text();
     } else {
         p_->db.commit();
-        qCritical() << "delete fileInfo : appName = " << appName << " lang = " << lang << " index.md";
+        qCritical() << "delete fileInfo : mdPath = " << listMdPath;
     }
+}
+
+/**
+ * @brief SearchDb::selectAllFileTime 查询所有的文件更新时间信息
+ * @return
+ */
+QMap<QString, QString> SearchDb::selectAllFileTime()
+{
+    Q_ASSERT(p_->db.isOpen());
+    QMap <QString, QString> mapRet;
+    QSqlQuery query(p_->db);
+    if (query.exec(kfileTimeSelectAll)) {
+        while (query.next()) {
+            mapRet.insert(query.value(0).toString(), query.value(1).toString());
+        }
+    }
+    return mapRet;
 }
 
 /**
@@ -700,31 +728,31 @@ void SearchDb::deleteFileTimeEntry(const QString &appName, const QString &lang)
  * return
  * 返回fileTime表中所有 appName | lang
  */
-QMap < QString, QStringList> SearchDb::selectAllFileTimeIndexList()
-{
-    Q_ASSERT(p_->db.isOpen());
-    QMap <QString, QStringList> map;
-    QSqlQuery query(p_->db);
-    if (query.exec(kfileTimeSelectAll)) {
-        QString appName;
-        QStringList langs;
-        while (query.next()) {
-            const QString app_name = query.value(0).toString();
-            const QString lang = query.value(1).toString();
-            if (map.contains(appName)) {
-                map[appName].append(lang);
-            } else {
-                QStringList list;
-                list.clear();
-                list.append(lang);
-                map.insert(appName, list);
-            }
-        }
-    } else {
-        qCritical() << "Failed to select contents:" << query.lastError().text();
-    }
-    return map;
-}
+//QMap < QString, QStringList> SearchDb::selectAllFileTimeIndexList()
+//{
+//    Q_ASSERT(p_->db.isOpen());
+//    QMap <QString, QStringList> map;
+//    QSqlQuery query(p_->db);
+//    if (query.exec(kfileTimeSelectAll)) {
+//        QString appName;
+//        QStringList langs;
+//        while (query.next()) {
+//            const QString app_name = query.value(0).toString();
+//            const QString lang = query.value(1).toString();
+//            if (map.contains(appName)) {
+//                map[appName].append(lang);
+//            } else {
+//                QStringList list;
+//                list.clear();
+//                list.append(lang);
+//                map.insert(appName, list);
+//            }
+//        }
+//    } else {
+//        qCritical() << "Failed to select contents:" << query.lastError().text();
+//    }
+//    return map;
+//}
 
 /**
  * @brief SearchDb::selectFileTimeByTime
@@ -733,30 +761,30 @@ QMap < QString, QStringList> SearchDb::selectAllFileTimeIndexList()
  * @return
  * 根据 appName|lang 返回相应的time
  */
-QString SearchDb::selectFileTimeByTime(const QString &appName, const QString &lang)
-{
+//QString SearchDb::selectFileTimeByTime(const QString &appName, const QString &lang)
+//{
 
-    qDebug() << Q_FUNC_INFO << "appName:" << appName << " lang:" << lang;
-    Q_ASSERT(p_->db.isOpen());
-    QString fileTime;
+//    qDebug() << Q_FUNC_INFO << "appName:" << appName << " lang:" << lang;
+//    Q_ASSERT(p_->db.isOpen());
+//    QString fileTime;
 
-    QSqlQuery query(p_->db);
-    const QString sql =
-        QString(kfileTimeSelectByTime).replace(":appName", appName).replace(":lang", lang);
-    qDebug() << "=======>" << sql;
-    query.prepare(sql);
-    fileTime = query.value(0).toString();
-    bool ok = query.exec();
-    if (!ok) {
-        p_->db.rollback();
-        qCritical() << "Failed to select fileTime entry:" << query.lastError().text();
-    } else {
-        p_->db.commit();
-        qCritical() << "Select fileTime : appName = " << appName << " lang = " << lang << " time = " << fileTime;
-    }
+//    QSqlQuery query(p_->db);
+//    const QString sql =
+//        QString(kfileTimeSelectByTime).replace(":appName", appName).replace(":lang", lang);
+//    qDebug() << "=======>" << sql;
+//    query.prepare(sql);
+//    fileTime = query.value(0).toString();
+//    bool ok = query.exec();
+//    if (!ok) {
+//        p_->db.rollback();
+//        qCritical() << "Failed to select fileTime entry:" << query.lastError().text();
+//    } else {
+//        p_->db.commit();
+//        qCritical() << "Select fileTime : appName = " << appName << " lang = " << lang << " time = " << fileTime;
+//    }
 
-    return fileTime;
-}
+//    return fileTime;
+//}
 
 /**
  * @brief SearchDb::updateFileTime
