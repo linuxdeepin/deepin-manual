@@ -77,8 +77,6 @@ const char kSearchSelectContent[] =
 const char kfileTimeTable[] =
     "CREATE TABLE IF NOT EXISTS filetime "
     "(id INTEGER PRIMARY KEY AUTOINCREMENT,"
-//    "appName TEXT,"
-//    "lang TEXT,"
     "mdPath TEXT,"
     "time TEXT)";
 //删除
@@ -179,6 +177,7 @@ void SearchDb::initDb(const QString &db_path)
  */
 void SearchDb::initSearchTable()
 {
+//    Q_ASSERT(p_->db.isOpen());
     QSqlQuery query(p_->db);
     if (!query.exec(kSearchDropTable)) {
         qCritical() << "Failed to drop search table";
