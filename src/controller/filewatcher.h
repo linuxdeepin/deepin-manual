@@ -15,8 +15,8 @@ class fileWatcher : public QObject
 public:
     //构造函数
     fileWatcher(QObject *parent = nullptr);
-    void setFileMap(QMap<QString,QString> &map);
-    void checkMap(QMap<QString,QString> &mapOld, QMap<QString,QString> &mapNow, QStringList &deleteList, QStringList &addList, QStringList &addTime);
+    void setFileMap(QMap<QString, QString> &map);
+    void checkMap(QMap<QString, QString> &mapOld, QMap<QString, QString> &mapNow, QStringList &deleteList, QStringList &addList, QStringList &addTime);
 
 
 signals:
@@ -43,7 +43,7 @@ private:
     QStringList listModule;
 
     //key:md文件路径 value: md文件更新时间
-    QMap<QString,QString> mapOld;
+    QMap<QString, QString> mapOld;
 
     QTimer *timerObj;
 //    QMap<QString,QStringList> mapModule;

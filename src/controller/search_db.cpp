@@ -281,6 +281,12 @@ void SearchDb::addSearchEntry(const QString &system, const QString &app_name, co
     }
 }
 
+/**
+ * @brief SearchDb::deleteSearchInfo
+ * @param appName
+ * @param lang
+ * 删除数据库操作
+ */
 void SearchDb::deleteSearchInfo(const QStringList &appName, const QStringList &lang)
 {
     Q_ASSERT(p_->db.isOpen());
@@ -653,7 +659,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
  * index.md 时间信息插入fileTime表,
  * 先找到相应数据删除行，再执行插入操作
  */
-void SearchDb::insertFilesTimeEntry(const QStringList &listMdPath,const QStringList &listDataTime)
+void SearchDb::insertFilesTimeEntry(const QStringList &listMdPath, const QStringList &listDataTime)
 {
     Q_ASSERT(p_->db.isOpen());
 

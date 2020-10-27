@@ -11,8 +11,10 @@ fileWatcher::fileWatcher(QObject *parent)
     , timerObj(new QTimer)
 {
     timerObj->setSingleShot(true);
-    timerObj->setInterval(3*1000);
+    timerObj->setInterval(3 * 1000);
     connect(timerObj, &QTimer::timeout, this, &fileWatcher::onTimerOut);
+    connect(watcherObj, &QFileSystemWatcher::fileChanged, this, &fileWatcher::onChangeFile);
+    connect(watcherObj, &QFileSystemWatcher::directoryChanged, this, &fileWatcher::onChangeDirSlot);
     monitorFile();
 }
 
@@ -34,23 +36,22 @@ void fileWatcher::checkMap(QMap<QString, QString> &mapOld, QMap<QString, QString
     QList<QString> listOldMd = mapOld.keys();
     QList<QString> listNowMd = mapNow.keys();
 
-    for(const QString &mdPath: listOldMd){
-        if (!listNowMd.contains(mdPath)){
+    for (const QString &mdPath : listOldMd) {
+        if (!listNowMd.contains(mdPath)) {
             deleteList.append(mdPath);
         }
     }
 
-    for(const QString &mdPath: listNowMd){
-        if (!listOldMd.contains(mdPath)){
+    for (const QString &mdPath : listNowMd) {
+        if (!listOldMd.contains(mdPath)) {
             addList.append(mdPath);
-        }
-        else if (mapOld.value(mdPath) != mapNow.value(mdPath)){
+        } else if (mapOld.value(mdPath) != mapNow.value(mdPath)) {
             addList.append(mdPath);
         }
     }
 
-    if (!addList.isEmpty()){
-        for(const QString &file: addList){
+    if (!addList.isEmpty()) {
+        for (const QString &file : addList) {
             addTime.append(mapNow.value(file));
         }
     }
@@ -77,16 +78,14 @@ void fileWatcher::monitorFile()
     }
 
     //监控模块资源文件夹
-    if (!listModule.isEmpty()){
+    if (!listModule.isEmpty()) {
         watcherObj->addPaths(listModule);
     }
     //监控资源文件
     if (!listMonitorFile.isEmpty()) {
         watcherObj->addPaths(listMonitorFile);
     }
-
-    connect(watcherObj, &QFileSystemWatcher::fileChanged, this, &fileWatcher::onChangeFile);
-    connect(watcherObj, &QFileSystemWatcher::directoryChanged, this, &fileWatcher::onChangeDirSlot);
+    qDebug() << Q_FUNC_INFO << "WatchAllFiles... ...";
 }
 
 /**
@@ -96,7 +95,7 @@ void fileWatcher::monitorFile()
  */
 void fileWatcher::onChangeFile(const QString &path)
 {
-    qDebug() << Q_FUNC_INFO<<path;
+    qDebug() << Q_FUNC_INFO << path;
     QTimer::singleShot(50, [ = ]() {
         watcherObj->addPath(path);
     });
@@ -110,7 +109,7 @@ void fileWatcher::onChangeFile(const QString &path)
  */
 void fileWatcher::onChangeDirSlot(const QString &path)
 {
-    qDebug() << Q_FUNC_INFO<<path;
+    qDebug() << Q_FUNC_INFO << path;
     timerObj->start();
 }
 
@@ -127,10 +126,9 @@ void fileWatcher::onTimerOut()
                 listLang.append(lang);
                 QString strMd = modulePath + "/" + lang + "/index.md";
                 QFileInfo fileInfo(strMd);
-                if (fileInfo.exists())
-                {
+                if (fileInfo.exists()) {
                     QString modifyTime = fileInfo.lastModified().toString();
-                    mapNow.insert(strMd,modifyTime);
+                    mapNow.insert(strMd, modifyTime);
                 }
             }
         }
@@ -139,7 +137,8 @@ void fileWatcher::onTimerOut()
     QStringList deleteList;
     QStringList addList;
     QStringList addTime;
-    checkMap(mapOld,mapNow,deleteList,addList,addTime);
+    checkMap(mapOld, mapNow, deleteList, addList, addTime);
     mapOld = mapNow;
-    emit filelistChange(deleteList,addList,addTime);
+    emit filelistChange(deleteList, addList, addTime);
+    this->monitorFile();
 }

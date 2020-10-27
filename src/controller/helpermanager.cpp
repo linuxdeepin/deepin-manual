@@ -14,18 +14,19 @@ helperManager::helperManager(QObject *parent)
 void helperManager::initDbConfig()
 {
     QString  dbPath = Utils::getSystemManualDir() + "/search.db";
-    qDebug()<<"=====>"<<dbPath;
+    qDebug() << "=====>" << dbPath;
     dbObj->initDb(dbPath);
     dbObj->initTimeTable();
 }
 
 void helperManager::getModuleInfo()
 {
+    //获取数据库中所有文件更新时间
     QMap<QString, QString> mapFile =  dbObj->selectAllFileTime();
 //    watcherObj->setFileMap(mapFile);
     QMap<QString, QString> mapNow;
     QString  assetsPath = Utils::getSystemManualDir();
-    //监控资源文件夹
+    //获取所有index.md文件(监控资源文件夹)
     for (QString &module : QDir(assetsPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
         QString modulePath = assetsPath + "/" + module;
         QStringList listLang;
@@ -34,10 +35,9 @@ void helperManager::getModuleInfo()
                 listLang.append(lang);
                 QString strMd = modulePath + "/" + lang + "/index.md";
                 QFileInfo fileInfo(strMd);
-                if (fileInfo.exists())
-                {
+                if (fileInfo.exists()) {
                     QString modifyTime = fileInfo.lastModified().toString();
-                    mapNow.insert(strMd,modifyTime);
+                    mapNow.insert(strMd, modifyTime);
                 }
             }
         }
@@ -47,8 +47,9 @@ void helperManager::getModuleInfo()
     QStringList addList;
     QStringList addTime;
     watcherObj->setFileMap(mapNow);
-    watcherObj->checkMap(mapFile,mapNow,deleteList,addList,addTime);
-    handleDb(deleteList,addList,addTime);
+    //白名单对比，得到差异列表信息
+    watcherObj->checkMap(mapFile, mapNow, deleteList, addList, addTime);
+    handleDb(deleteList, addList, addTime);
 }
 
 void helperManager::initConnect()
@@ -56,27 +57,32 @@ void helperManager::initConnect()
     connect(watcherObj, &fileWatcher::filelistChange, this, &helperManager::onFilelistChange);
 }
 
-void helperManager::handleDb(const QStringList &deleteList,const QStringList &addList, const QStringList &addTime)
+/**
+ * @brief helperManager::handleDb
+ * @param deleteList   比较得出删除的文件
+ * @param addList      比较得出新增的文件（文件增加 & 文件被修改）
+ * @param addTime      新增文件更新时间
+ */
+void helperManager::handleDb(const QStringList &deleteList, const QStringList &addList, const QStringList &addTime)
 {
-    qDebug()<<"========>"<<deleteList.count()<<" "<<addList.count();
+    qDebug() << "========>" << deleteList.count() << " " << addList.count();
 
-    if (!deleteList.isEmpty())
-    {
+    if (!deleteList.isEmpty()) {
         dbObj->deleteFilesTimeEntry(deleteList);
         QStringList appList;
         QStringList langList;
-        for(const QString &path: deleteList){
+        for (const QString &path : deleteList) {
             QStringList list = path.split("/");
-            if (list.count() > 2){
+            if (list.count() > 2) {
                 langList.append(list.at(list.count() - 2));
                 appList.append(list.at(list.count() - 3));
             }
         }
-        dbObj->deleteSearchInfo(appList,langList);
+        dbObj->deleteSearchInfo(appList, langList);
     }
 
-    if (!addList.isEmpty() && !addTime.isEmpty()){
-        dbObj->insertFilesTimeEntry(addList,addTime);
+    if (!addList.isEmpty() && !addTime.isEmpty()) {
+        dbObj->insertFilesTimeEntry(addList, addTime);
 
 
         QString out, err;
@@ -84,10 +90,10 @@ void helperManager::handleDb(const QStringList &deleteList,const QStringList &ad
         cmd.append(QString("%1/toSearch/toSearchIndex.js").arg(DMAN_WEB_DIR));
         cmd.append(addList);
         const bool ok = dman::SpawnCmd("/usr/bin/node", cmd, out, err);
-        qDebug()<<"===========>"<<ok;
+        qDebug() << "===========>" << ok;
 
         QStringList outList = out.split("\n");
-        for (int i = 0; i < outList.count()-1; i++) {
+        for (int i = 0; i < outList.count() - 1; i++) {
             const QString &outKey = outList.at(i);
             QStringList pathList = addList.at(i).split("/");
             if (pathList.count() < 3) return;
@@ -144,16 +150,16 @@ void helperManager::handleDb(const QStringList &deleteList,const QStringList &ad
             }
 
             if (!invalid_entry) {
-    //            qDebug() << "add search entry" << app_name << locale << anchors << endl;
+                //            qDebug() << "add search entry" << app_name << locale << anchors << endl;
                 dbObj->addSearchEntry("professional", appName, lang, anchors, anchorInitialList, anchorSpellList, anchorIdList, contents);
             }
-    }
+        }
     }
 }
 
 void helperManager::onFilelistChange(QStringList deleteList, QStringList addList, QStringList addTime)
 {
-    handleDb(deleteList,addList,addTime);
+    handleDb(deleteList, addList, addTime);
 }
 
 

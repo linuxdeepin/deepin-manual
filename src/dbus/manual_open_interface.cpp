@@ -23,3 +23,4 @@ ManualOpenInterface::ManualOpenInterface(const QString &service, const QString &
 ManualOpenInterface::~ManualOpenInterface()
 {
 }
+
