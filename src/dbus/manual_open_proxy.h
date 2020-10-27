@@ -36,6 +36,8 @@ signals:
     void openManualRequested(const QString &app_name, const QString &title_name);
     //关键字搜索请求
     void searchRequested(const QString &keyword);
+    //文件更新后发送更新文件至js端
+    void filesUpdateRequested(const QStringList &filesList);
 
 public slots:
     //通过应用名打开帮助手册，定位在首先概述
@@ -46,6 +48,8 @@ public slots:
     void ShowManual(const QString &app_name);
     //搜索请求，发送searchRequested() 信号
     void Search(const QString &keyword);
+    //文件更新提醒页面刷新
+    void FilesUpdate(const QStringList &filesList);
 };
 
 #endif // DEEPIN_MANUAL_DBUS_MANUAL_OPEN_PROXY_H

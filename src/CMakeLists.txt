@@ -340,5 +340,9 @@ install(DIRECTORY ${CMAKE_SOURCE_DIR}/manual-assets
 
 install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/web_dist
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
+#后台服务文件
+install(FILES ${CMAKE_SOURCE_DIR}/src/controller/dman-helper.service
+            DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/systemd/system)
+
 
 string(TOLOWER ${CMAKE_SYSTEM_PROCESSOR} LOWERCASE_CMAKE_SYSTEM_PROCESSOR)

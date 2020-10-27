@@ -72,3 +72,14 @@ void ManualOpenProxy::Search(const QString &keyword)
     qDebug() << Q_FUNC_INFO << keyword;
     emit this->searchRequested(keyword);
 }
+
+/**
+ * @brief ManualOpenProxy::FilesUpdate
+ * @param list
+ * 后台进程检测到文件更新， 发送文件更新请求
+ */
+void ManualOpenProxy::FilesUpdate(const QStringList &filesList)
+{
+    qDebug() << Q_FUNC_INFO << filesList;
+    emit this->filesUpdateRequested(filesList);
+}

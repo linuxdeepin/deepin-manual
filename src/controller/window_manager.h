@@ -49,6 +49,8 @@ public slots:
     void onNewAppOpen();
     void openManual(const QString &app_name, const QString &title_name);
     void openManualWithSearch(const QString &app_name, const QString &keyword);
+    //文件更新提示
+    void onFilesUpdate(const QStringList &filesList);
 };
 
 

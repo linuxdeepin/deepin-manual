@@ -3,4 +3,14 @@
 killall dman-search
 killall dman
 
+
+#rm -r /usr/share/deepin-manual/manual-assets/professional
+#rm -r /usr/share/deepin-manual/manual-assets/server
+#rm -r /usr/share/deepin-manual/manual-assets/community
+
+#设置服务开机自启动
+systemctl enable dman-helper.service
+#重启服务
+systemctl restart dman-helper.service 
+
 exit 0

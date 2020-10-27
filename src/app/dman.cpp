@@ -79,11 +79,14 @@ int main(int argc, char **argv)
     WindowManager window_manager;
     //绑定参数解析 信号与槽
     QObject::connect(&argument_parser, &ArgumentParser::newAppOpen,
-                   &window_manager, &WindowManager::onNewAppOpen);
+                     &window_manager, &WindowManager::onNewAppOpen);
     QObject::connect(&argument_parser, &ArgumentParser::openManualWithSearchRequested,
-                   &window_manager, &WindowManager::openManualWithSearch);
+                     &window_manager, &WindowManager::openManualWithSearch);
     QObject::connect(&argument_parser, &ArgumentParser::openManualRequested,
-                   &window_manager, &WindowManager::openManual);
+                     &window_manager, &WindowManager::openManual);
+    //文件更新提示
+    QObject::connect(&argument_parser, &ArgumentParser::filesUpdate,
+                     &window_manager, &WindowManager::onFilesUpdate);
 
     if (!argument_parser.parseArguments()) {
         qDebug() << "argument_parser.parseArguments()";

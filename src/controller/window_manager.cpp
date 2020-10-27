@@ -202,3 +202,14 @@ void WindowManager::openManualWithSearch(const QString &app_name, const QString 
     activeOrInitWindow();
     qDebug() << Q_FUNC_INFO << app_name << curr_keyword_;
 }
+
+/**
+ * @brief WindowManager::onFilesUpdate
+ * @param filesList
+ * 文件更新提示
+ */
+void WindowManager::onFilesUpdate(const QStringList &filesList)
+{
+    qDebug() << Q_FUNC_INFO << filesList;
+    //window->openjsPage()
+}

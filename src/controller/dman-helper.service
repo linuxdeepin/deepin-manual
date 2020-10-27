@@ -1,0 +1,16 @@
+[Unit]                                                                                                        
+Description=dmanHelper service
+#After=network.target
+
+[Service]                                                                                                     
+ExecStart=/home/kevin/project/manual/build-deepin-manual-unknown-Debug/src/dmanHelper &
+KillMode=process 
+Restart=on-failure 
+#RestartPreventExitStatus=255 
+Type=simple
+#RuntimeDirectory=manual
+RuntimeDirectoryMode=0755 
+
+[Install]
+WantedBy=multi-user.target
+#Alias=sshd.service
