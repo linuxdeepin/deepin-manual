@@ -13,6 +13,7 @@ class Items extends Component {
       show: false
     };
     let path = props.file.slice(0, props.file.lastIndexOf('/') + 1);
+    console.log("========path======>",path);
     global.readFile(props.file, data => {
       let [title, logo] = data
         .substr('# '.length, data.indexOf('\n'))

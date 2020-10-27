@@ -23,23 +23,31 @@ void helperManager::getModuleInfo()
 {
     //获取数据库中所有文件更新时间
     QMap<QString, QString> mapFile =  dbObj->selectAllFileTime();
-//    watcherObj->setFileMap(mapFile);
     QMap<QString, QString> mapNow;
     QString  assetsPath = Utils::getSystemManualDir();
-    //获取所有index.md文件(监控资源文件夹)
-    for (QString &module : QDir(assetsPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-        QString modulePath = assetsPath + "/" + module;
-        QStringList listLang;
-        for (QString &lang : QDir(modulePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-            if (lang == "zh_CN" || lang == "en_US") {
-                listLang.append(lang);
-                QString strMd = modulePath + "/" + lang + "/index.md";
-                QFileInfo fileInfo(strMd);
-                if (fileInfo.exists()) {
-                    QString modifyTime = fileInfo.lastModified().toString();
-                    mapNow.insert(strMd, modifyTime);
+
+    for(const QString &type : QDir(assetsPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)){
+        if (type == "system" || type == "application")
+        {
+            QString typePath = assetsPath + "/" + type;
+            //监控资源文件夹
+            for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+                QString modulePath = typePath + "/" + module;
+                QStringList listLang;
+                for (QString &lang : QDir(modulePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+                    if (lang == "zh_CN" || lang == "en_US") {
+                        listLang.append(lang);
+                        QString strMd = modulePath + "/" + lang + "/index.md";
+                        QFileInfo fileInfo(strMd);
+                        if (fileInfo.exists())
+                        {
+                            QString modifyTime = fileInfo.lastModified().toString();
+                            mapNow.insert(strMd,modifyTime);
+                        }
+                    }
                 }
             }
+
         }
     }
 
@@ -150,8 +158,8 @@ void helperManager::handleDb(const QStringList &deleteList, const QStringList &a
             }
 
             if (!invalid_entry) {
-                //            qDebug() << "add search entry" << app_name << locale << anchors << endl;
-                dbObj->addSearchEntry("professional", appName, lang, anchors, anchorInitialList, anchorSpellList, anchorIdList, contents);
+    //            qDebug() << "add search entry" << app_name << locale << anchors << endl;
+                dbObj->addSearchEntry(appName, lang, anchors, anchorInitialList, anchorSpellList, anchorIdList, contents);
             }
         }
     }

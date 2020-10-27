@@ -147,8 +147,17 @@ class App extends React.Component {
   onContentResult(appName, titleList, idList, contentList) {
     console.log('搜索结果', appName, titleList, idList, contentList);
     let { searchResult } = this.state;
+    let filePath;
+    if (appName == "dde")
+    {
+      filePath = `${global.path}/system/${appName}/${global.lang}/index.md`;
+    }
+    else
+    {
+      filePath = `${global.path}/application/${appName}/${global.lang}/index.md`;
+    }
     searchResult.push({
-      file: `${global.path}/${appName}/${global.lang}/index.md`,
+      file: filePath,
       idList,
       titleList,
       contentList
@@ -320,7 +329,16 @@ class App extends React.Component {
       global.handleLocation(global.hash);
       if (title !== '')
       {
-        let filePath = `${global.path}/${file}/${global.lang}/index.md`;
+        let filePath;
+        if(file == "dde")
+        {
+          filePath = `${global.path}/system/${file}/${global.lang}/index.md`
+        }
+        else
+        {
+          filePath = `${global.path}/application/${file}/${global.lang}/index.md`
+        }
+
         global.readFile(filePath, data => {
           let { html } = m2h(filePath, data);
           let d = document.createElement('div');

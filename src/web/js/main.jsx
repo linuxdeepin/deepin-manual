@@ -33,7 +33,14 @@ export default class Main extends Component {
     global.hash = hash;
     var filePath = file;
     if (filePath.indexOf('/') == -1) {
-      filePath = `${global.path}/${file}/${global.lang}/index.md`;
+      if (filePath == "dde")
+      {
+        filePath = `${global.path}/system/${file}/${global.lang}/index.md`;
+      }
+      else{
+        filePath = `${global.path}/application/${file}/${global.lang}/index.md`;
+      }
+      
     }
   
     global.readFile(filePath, data => {

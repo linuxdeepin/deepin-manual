@@ -48,18 +48,19 @@ void SearchManager::initSearchManager()
     connect(db_thread_, &QThread::destroyed, db_, &QObject::deleteLater);
 
     QString strDB = DMAN_SEARCH_DB;
-    Dtk::Core::DSysInfo::DeepinType nType = Dtk::Core::DSysInfo::deepinType();
-    if (Dtk::Core::DSysInfo::DeepinServer == nType) {
-        strDB += "/server/search.db";
-    } else if (Dtk::Core::DSysInfo::DeepinPersonal == nType) {
-        strDB += "/personal/search.db";
-    } else {
-        if (Dtk::Core::DSysInfo::isCommunityEdition()) {
-            strDB += "/community/search.db";
-        } else {
-            strDB += "/professional/search.db";
-        }
-    }
+    strDB += "/search.db";
+//    Dtk::Core::DSysInfo::DeepinType nType = Dtk::Core::DSysInfo::deepinType();
+//    if (Dtk::Core::DSysInfo::DeepinServer == nType) {
+//        strDB += "/server/search.db";
+//    } else if (Dtk::Core::DSysInfo::DeepinPersonal == nType) {
+//        strDB += "/personal/search.db";
+//    } else {
+//        if (Dtk::Core::DSysInfo::isCommunityEdition()) {
+//            strDB += "/community/search.db";
+//        } else {
+//            strDB += "/professional/search.db";
+//        }
+//    }
     emit db_->initDbAsync(strDB);
 }
 

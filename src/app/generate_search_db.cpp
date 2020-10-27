@@ -150,7 +150,7 @@ int main(int argc, char **argv)
 
                 if (!invalid_entry) {
                     qDebug() << "add search entry" << app_name << locale << anchors << endl;
-                    db.addSearchEntry(dbType, app_name, locale, anchors, anchorInitialList, anchorSpellList, anchorIdList, contents);
+                    db.addSearchEntry(app_name, locale, anchors, anchorInitialList, anchorSpellList, anchorIdList, contents);
                 }
             }
         }
