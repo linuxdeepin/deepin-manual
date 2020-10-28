@@ -18,7 +18,7 @@ You can run, close or create a shortcut of App Store as follows.
  - Select **Send to dock** to fix it onto the dock.
  - Select **Add to startup** to add it to startup. When the computer starts up, App Store runs automatically.
 
-> ![notes](icon/notes.svg) Notes: App Store has been fixed on the dock by default. You can click on  ![store-24](icon/store-24.svg) on the dock to run it.
+> ![notes](icon/notes.svg) Notes: App Store has been fixed on the dock by default. You can click  ![store-24](icon/store-24.svg) on the dock to run it.
 
 
 ### Exit App Store
@@ -28,7 +28,7 @@ You can run, close or create a shortcut of App Store as follows.
 - On App Store interface, click  ![icon_menu](icon/icon_menu.svg) and select  **Exit**.
 
 ## Main Interface
-Main interface consists of navigation bar, search box, main menu, slide show, new updates, hot apps, rankings, essential apps, hot topics, download management， updates and my apps.
+Main interface consists of navigation bar, search box, main menu, slide show, new updates, hot apps, rankings, essential apps, hot topics, download management, updates and my apps.
 
 ![1|maininterfacedetail01](jpg/maininterfacedetail1.png)
 
@@ -153,7 +153,7 @@ App Store supports application synchronization. After signing in, you can synchr
 
 ### Update Applications
 
-Select **Updates** on the interface to view view applications to be updated here and you can choose whether to update it or not.
+Select **Updates** on the interface to view applications to be updated here and you can choose whether to update it or not.
 
 
 
@@ -253,5 +253,3 @@ Click Help to get the manual, which will help you further know and use App Store
 ### Exit
 1. Click  ![icon_menu](icon/icon_menu.svg) on the main interface.
 2. Click  **Exit**.
-
-<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 6.2</span></div>

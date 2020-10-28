@@ -375,7 +375,7 @@ Uninstall the applications you no longer use to save disk space.
 
 
 ## Control Center
-You can manage the system settings in Control Center, including account management, network settings, date and time, personalization, display settings, system and application update, etc. After enter the desktop environment, click ![controlcenter](icon/controlcenter.svg) to open Control Center.
+You can manage the system settings in Control Center, including account management, network settings, date and time, personalization, display settings, system and application update, etc. After entering the desktop environment, click ![controlcenter](icon/controlcenter.svg) to open Control Center.
 
 ### Homepage Introduction
 The homepage of Control Center provides several setting modules and click one to enter the detailed settings. 
@@ -538,7 +538,6 @@ Expand your desktop by multiple screens! Use VGA/HDMI/DP cable to connect your c
 3. Select a display mode:
     - **Duplicate**: display the same image on other screens.
     - **Extend**: expand the desktop across the screens.
-    - **XXX only**: display the screen content only on one screen.
     - **Customize**: customize the display settings for multiple screens.
 
  In multiple displays, press **Super** + **P** to show its OSD. 
@@ -1002,7 +1001,7 @@ You can adjust the threshold of low battery level by dragging the slider below "
 >![notes](icon/notes.svg)Notes: This function is only available for laptops.
 
 ### Mouse and Touchpad
-Mouse and Touchpad are common computer input devices. Using the mouse, you can make the operation easier and faster. For notebook computer users, when there is no mouse, the touch pad can also be used to replace the mouse for operation.
+Mouse and Touchpad are common computer input devices. Using the mouse, you can make the operation easier and faster. For laptop computer users, when there is no mouse, the touchpad can also be used to replace the mouse for operation.
 
 ![0|mouse](jpg/mouse.png)
 
@@ -1372,7 +1371,7 @@ You can either manually backup / restore data or restore data by one click.
 
 1. On the homepage of Control Center, click ![system_info_normal](icon/system_info_normal.svg).
 
-2. Select **Backup/Restore** > **Backup** to set the backup type and save the path of files backed up.
+2. Select **Backup and Restore** > **Backup** to set the backup type and save the path of files backed up.
    Backup Type: Full Backup and System Backup
 
    - Full Backup: to back up system files and user files of the whole disk
@@ -1381,7 +1380,7 @@ You can either manually backup / restore data or restore data by one click.
 
    > ![attention](icon/attention.svg)Attention:  **Full Backup** cannot backed up files on its own disk, but can only back up files in other storage media. **System Backup** has set the default storage location of files. When the storage space is insufficient, you can manually change the storage path of backup files.
 
-3. Click **Backup**, the password input box pops up, please input the password to authorize the backup file until the file backup is completed.
+3. Click **Back Up**, the password input box pops up, please input the password to authorize the backup file until the file backup is completed.
 
 > ![notes](icon/notes.svg)Notes: In the process of file backup, please do not unplug the power supply or forcibly shut down to prevent data loss or damage.
 
@@ -1393,21 +1392,21 @@ UnionTech OS provides "restore from grub" and "restore from control center".
 
 ##### Restore from Grub
 
-During system startup, in the system selection interface, click **System Restore**, you can choose "Reset to factory settings" to read and restore factory settings backup, or choose "restore UnionTech OS historical backup" to open the file directory and select the backup to be restored.
+During system startup, in the system selection interface, click **UnionTech OS Backup & Restore**, you can choose "Reset to factory settings" to read and restore factory settings backup, or choose "restore UnionTech OS historical backup" to open the file directory and select the backup to be restored.
 
 ##### Restore from Control Center
 
 You can either restore all settings or manually restore the previous backup data.
 
 1. On the homepage of Control Center, click ![system_info_normal](icon/system_info_normal.svg).
-2. Click **Backup/Restore** > **Restore** to select:
+2. Click **Backup and Restore** > **Restore** to select:
 
    - Restore All Settings
-     1. You can choose to check **Keep personal files and apps** and click **Restore**. Click **OK** in the dialogue box pops up. 
+     1. You can choose to check **Keep personal files and apps** and click **Restore Now**. Click **Confirm** in the dialogue box pops up. 
      2. Please input the password to authorize the data restoring.
    - Manual Restore
      1. After selecting restoring directory, click ![three_dots](jpg/three_dots.png) to select the files you want to restore.
-     2. Click **Restore** to start system restoring.
+     2. Click **Restore Now** to start system restoring.
 
 
 
@@ -1719,5 +1718,3 @@ Pinch two fingers to zoom out on the webpage or picture.  Open two fingers to zo
 
 Place two fingers on the picture with a certain distance and rotate the two fingers at the same time to rotate the picture.
 
-
-<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 2020.03</span></div>
