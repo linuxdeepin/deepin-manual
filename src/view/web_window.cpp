@@ -540,6 +540,7 @@ void WebWindow::initWebView()
     connect(search_edit_, &SearchEdit::onClickedClearBtn, manual_proxy_,
             &ManualProxy::searchEditTextisEmpty);
     connect(search_proxy_, &SearchProxy::setKeyword, this, &WebWindow::onSetKeyword);
+    connect(search_proxy_, &SearchProxy::updateSearchResult, this, &WebWindow::onTitleBarEntered);
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
             theme_proxy_, &ThemeProxy::slot_ThemeChange);
 //    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
@@ -598,7 +599,11 @@ void WebWindow::initShortcuts()
     scSearch->setAutoRepeat(false);
     connect(scSearch, &QShortcut::activated, this, [this] {
         qDebug() << "search" << endl;
-        search_edit_->lineEdit()->setFocus(Qt::ShortcutFocusReason);
+//        search_edit_->lineEdit()->setFocus(Qt::ShortcutFocusReason);
+        QStringList list = {"dde", "deepin-app-store"};
+        emit search_proxy_->reloadPage(list);
+//        web_view_->page()->runJavaScript(QString("reloadPage('%1')").arg("dde"));
+//        onTitleBarEntered();
     });
 }
 

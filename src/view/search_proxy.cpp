@@ -38,3 +38,10 @@ void SearchProxy::getKeyword(const QString &keyword)
     qDebug() << "-->" << keyword;
     emit setKeyword(keyword);
 }
+
+void SearchProxy::updateSearch(const QString &keyword)
+{
+    qDebug() << Q_FUNC_INFO;
+    emit setKeyword(keyword);
+    emit updateSearchResult();
+}

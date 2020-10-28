@@ -177,12 +177,12 @@ void SearchDb::initDb(const QString &db_path)
  */
 void SearchDb::initSearchTable()
 {
-//    Q_ASSERT(p_->db.isOpen());
+    Q_ASSERT(p_->db.isOpen());
     QSqlQuery query(p_->db);
-    if (!query.exec(kSearchDropTable)) {
-        qCritical() << "Failed to drop search table";
-        return;
-    }
+//    if (!query.exec(kSearchDropTable)) {
+//        qCritical() << "Failed to drop search table";
+//        return;
+//    }
 
     if (!query.exec(kSearchTableSchema)) {
         qCritical() << "Failed to initialize search table:" << query.lastError().text();
@@ -216,11 +216,9 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
     qDebug() << "addSearchEntry()" << app_name << lang << anchors; // << contents;
 
     QString strManualPath;
-    if (app_name == "dde")
-    {
+    if (app_name == "dde") {
         strManualPath = "/system";
-    }
-    else {
+    } else {
         strManualPath = "/application";
     }
 

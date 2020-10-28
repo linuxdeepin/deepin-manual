@@ -71,6 +71,8 @@ export default class Index extends Component {
       openedAppList:[]
     };
 
+    console.log("==========>index constructor");
+
     global.qtObjects.manual.getSystemManualList(appList =>
       this.setState({ appList })
     );
@@ -90,8 +92,19 @@ export default class Index extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     console.log("index shouldcomponentupdate");
-    if (nextState.appList.toString() == this.state.appList.toString() 
-          && nextState.openedAppList.toString() == this.state.openedAppList.toString()) 
+    if (global.bIsReload)
+    {
+      global.qtObjects.manual.getSystemManualList(appList =>
+        this.setState({ appList })
+      );
+  
+      global.qtObjects.manual.getUsedAppList(openedAppList =>
+        this.setState({openedAppList})
+      );
+      global.bIsReload = false;
+    }
+    else if (nextState.appList.toString() == this.state.appList.toString() 
+              && nextState.openedAppList.toString() == this.state.openedAppList.toString()) 
     {
       console.log("index no update");
       return false;

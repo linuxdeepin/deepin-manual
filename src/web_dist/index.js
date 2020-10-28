@@ -53,6 +53,7 @@ global.lastHistoryIndex = 0;
 global.lastAction = 'PUSH';
 global.isShowHelperSupport = false;
 global.scrollBehavior = 'smooth';
+global.bIsReload = false;
 // global.gHistoryGo = 0;
 
 
@@ -81,6 +82,7 @@ var App = function (_React$Component) {
       searchResult: [],
       mismatch: false,
       historyGO: 0
+      // changeAppList:[]
     };
     new QWebChannel(qt.webChannelTransport, _this.initQt.bind(_this));
     return _this;
@@ -126,6 +128,7 @@ var App = function (_React$Component) {
           return _this2.setState({ mismatch: true });
         });
         global.qtObjects.search.onContentResult.connect(_this2.onContentResult.bind(_this2));
+        global.qtObjects.search.reloadPage.connect(_this2.onReloadPage.bind(_this2));
         global.qtObjects.manual.searchEditTextisEmpty.connect(_this2.onSearchEditClear.bind(_this2));
         global.qtObjects.theme.getTheme(function (themeType) {
           return _this2.themeChange(themeType);
@@ -197,11 +200,31 @@ var App = function (_React$Component) {
       });
       this.setState({ searchResult: searchResult, mismatch: false });
     }
-
-    //搜索框清空后回到上一个页面(未搜索的页面).
-
+  }, {
+    key: 'onReloadPage',
+    value: function onReloadPage(appList) {
+      console.log("============>page reload...");
+      var locationPath = this.context.router.history.location.pathname;
+      var list = locationPath.split("/");
+      if (list[1] == 'open') {
+        console.log("============>open...");
+        if (appList.indexOf(list[2]) != -1) {
+          global.bIsReload = true;
+          this.context.router.history.go(0);
+        }
+      } else if (list[1] == 'search') {
+        console.log("============>search...", list[2]);
+        global.qtObjects.search.updateSearch(list[2]);
+      } else {
+        global.bIsReload = true;
+        this.context.router.history.go(0);
+      }
+    }
   }, {
     key: 'onSearchEditClear',
+
+
+    //搜索框清空后回到上一个页面(未搜索的页面).
     value: function onSearchEditClear() {
       console.log("==================>onSearcheditclear");
       var locationPath = this.context.router.history.location.pathname;
@@ -1204,6 +1227,8 @@ var Index = function (_Component2) {
       openedAppList: []
     };
 
+    console.log("==========>index constructor");
+
     global.qtObjects.manual.getSystemManualList(function (appList) {
       return _this3.setState({ appList: appList });
     });
@@ -1225,8 +1250,19 @@ var Index = function (_Component2) {
   }, {
     key: 'shouldComponentUpdate',
     value: function shouldComponentUpdate(nextProps, nextState) {
+      var _this4 = this;
+
       console.log("index shouldcomponentupdate");
-      if (nextState.appList.toString() == this.state.appList.toString() && nextState.openedAppList.toString() == this.state.openedAppList.toString()) {
+      if (global.bIsReload) {
+        global.qtObjects.manual.getSystemManualList(function (appList) {
+          return _this4.setState({ appList: appList });
+        });
+
+        global.qtObjects.manual.getUsedAppList(function (openedAppList) {
+          return _this4.setState({ openedAppList: openedAppList });
+        });
+        global.bIsReload = false;
+      } else if (nextState.appList.toString() == this.state.appList.toString() && nextState.openedAppList.toString() == this.state.openedAppList.toString()) {
         console.log("index no update");
         return false;
       }
@@ -1240,10 +1276,10 @@ var Index = function (_Component2) {
   }, {
     key: 'render',
     value: function render() {
-      var _this4 = this;
+      var _this5 = this;
 
       var sysSoft = ['dde'].filter(function (appName) {
-        return _this4.state.appList.indexOf(appName) != -1;
+        return _this5.state.appList.indexOf(appName) != -1;
       });
 
       var appSoft = this.state.appList.concat(); //使用数据副本
@@ -1269,7 +1305,7 @@ var Index = function (_Component2) {
               'div',
               { className: 'items' },
               sysSoft.map(function (appName) {
-                return _react2.default.createElement(Item, { key: appName, appName: appName, isOpened: _this4.bIsBeOpen(appName), type: "system" });
+                return _react2.default.createElement(Item, { key: appName, appName: appName, isOpened: _this5.bIsBeOpen(appName), type: "system" });
               })
             )
           ),
@@ -1285,7 +1321,7 @@ var Index = function (_Component2) {
               'div',
               { className: 'items' },
               appSoft.map(function (appName) {
-                return _react2.default.createElement(Item, { key: appName, appName: appName, isOpened: _this4.bIsBeOpen(appName), type: "application" });
+                return _react2.default.createElement(Item, { key: appName, appName: appName, isOpened: _this5.bIsBeOpen(appName), type: "application" });
               })
             )
           )
@@ -1491,6 +1527,17 @@ var Main = function (_Component) {
   }, {
     key: 'shouldComponentUpdate',
     value: function shouldComponentUpdate(nextProps, nextState) {
+
+      if (global.bIsReload) {
+        var _nextProps$match$para2 = nextProps.match.params,
+            file = _nextProps$match$para2.file,
+            hash = _nextProps$match$para2.hash,
+            key = _nextProps$match$para2.key;
+
+        console.log("main shouldComponentUpdate: " + file + " " + hash + "  this.file:" + this.state.file + " this.hash" + this.state.hash + " key:", key);
+        this.init(decodeURIComponent(file), this.state.hash ? decodeURIComponent(this.state.hash) : null, key);
+        global.bIsReload = false;
+      }
       console.log("main shouldComponentUpdate====");
       return true;
     }
@@ -2086,6 +2133,12 @@ var SearchPage = function (_Component2) {
     value: function componentWillReceiveProps(nextProps) {
       // console.log("search componentWillReceiveProps..",this.context.searchResult);
       console.log("search componentWillReceiveProps..");
+    }
+  }, {
+    key: 'shouldComponentUpdate',
+    value: function shouldComponentUpdate(nextProps, nextState) {
+      console.log("search shouldComponentUpdate..");
+      return true;
     }
   }, {
     key: 'componentDidUpdate',

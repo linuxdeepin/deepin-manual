@@ -20,6 +20,7 @@ global.lastHistoryIndex = 0;
 global.lastAction = 'PUSH';
 global.isShowHelperSupport = false;
 global.scrollBehavior = 'smooth';
+global.bIsReload = false;
 // global.gHistoryGo = 0;
 
 
@@ -44,6 +45,7 @@ class App extends React.Component {
       searchResult: [],
       mismatch: false,
       historyGO: 0
+      // changeAppList:[]
     };
     new QWebChannel(qt.webChannelTransport, this.initQt.bind(this));
   }
@@ -88,6 +90,9 @@ class App extends React.Component {
       );
       global.qtObjects.search.onContentResult.connect(
         this.onContentResult.bind(this)
+      );
+      global.qtObjects.search.reloadPage.connect(
+        this.onReloadPage.bind(this)
       );
       global.qtObjects.manual.searchEditTextisEmpty.connect(
         this.onSearchEditClear.bind(this)
@@ -164,6 +169,31 @@ class App extends React.Component {
     });
     this.setState({ searchResult, mismatch: false });
   }
+
+  onReloadPage(appList) {
+    console.log("============>page reload...");
+    var locationPath = this.context.router.history.location.pathname;
+    var list = locationPath.split("/");
+    if (list[1] == 'open')
+    {
+      console.log("============>open...");
+      if (appList.indexOf(list[2]) != -1)
+      {
+        global.bIsReload = true;
+        this.context.router.history.go(0);
+      }
+    }
+    else if (list[1] == 'search')
+    {
+      console.log("============>search...",list[2]);
+      global.qtObjects.search.updateSearch(list[2]);
+    }
+    else
+    {
+      global.bIsReload = true;
+      this.context.router.history.go(0);
+    }
+  };
 
   //搜索框清空后回到上一个页面(未搜索的页面).
   onSearchEditClear(){

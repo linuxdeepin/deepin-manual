@@ -128,6 +128,11 @@ export default class SearchPage extends Component {
     console.log("search componentWillReceiveProps..");
   }
 
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log("search shouldComponentUpdate..");
+    return true;
+  }
+
   componentDidUpdate() {
     ReactDOM.findDOMNode(this)
       .querySelector('#search')
