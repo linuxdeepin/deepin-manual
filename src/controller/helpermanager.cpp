@@ -1,5 +1,8 @@
 #include "helpermanager.h"
 #include "base/command.h"
+#include <QDBusMessage>
+#include <QtDBus>
+#include <QDBusConnection>
 
 helperManager::helperManager(QObject *parent)
     : QObject(parent)
@@ -74,7 +77,7 @@ void helperManager::initConnect()
 void helperManager::handleDb(const QStringList &deleteList, const QStringList &addList, const QStringList &addTime)
 {
     qDebug() << "========>" << deleteList.count() << " " << addList.count();
-
+    dbusSend(deleteList, addList);
     if (!deleteList.isEmpty()) {
         dbObj->deleteFilesTimeEntry(deleteList);
         QStringList appList;
@@ -163,6 +166,34 @@ void helperManager::handleDb(const QStringList &deleteList, const QStringList &a
             }
         }
     }
+}
+
+void helperManager::dbusSend(const QStringList &deleteList, const QStringList &addList)
+{
+    QStringList list;
+    list.clear();
+    list << deleteList;
+    list << addList;
+
+    qDebug() << Q_FUNC_INFO << list;
+    if (!list.isEmpty()) {
+        QDBusMessage msg =
+            QDBusMessage::createMethodCall("com.deepin.Manual.FilesUpdate",
+                                           "/com/deepin/Manual/FilesUpdate",
+                                           "local.ManualFilesUpdateProxy",
+                                           "OnFilesUpdate");
+        msg << list;
+        QDBusMessage response = QDBusConnection::sessionBus().call(msg);
+
+        if (response.type() == QDBusMessage::ReplyMessage) {
+            qDebug() << Q_FUNC_INFO << "ReplyMessage";
+        }
+
+        if (QDBusMessage::ErrorMessage == response.type()) {
+            qDebug() << Q_FUNC_INFO << "ErrorMessage: " << QDBusConnection::sessionBus().lastError().message();
+        }
+    }
+
 }
 
 void helperManager::onFilelistChange(QStringList deleteList, QStringList addList, QStringList addTime)

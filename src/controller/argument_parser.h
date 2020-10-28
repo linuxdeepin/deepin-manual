@@ -33,7 +33,6 @@ signals:
     void openManualRequested(const QString &app_name, const QString &title_name);
     void openManualWithSearchRequested(const QString &app_name, const QString &keyword);
     void newAppOpen();
-    void filesUpdate(const QStringList &filesList);
 
 private:
     QString curManual;
@@ -42,7 +41,6 @@ private:
 private slots:
     void onOpenAppRequested(const QString &app_name, const QString &title_name = "");
     void onSearchRequested(const QString &keyword);
-    void onFilesUpdateRequested(const QStringList &filesList);
 };
 
 #endif // DEEPIN_MANUAL_CONTROLLER_ARGUMENT_PARSER_H

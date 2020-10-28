@@ -56,9 +56,7 @@ bool ArgumentParser::parseArguments()
             &ArgumentParser::onOpenAppRequested);
     connect(proxy, &ManualOpenProxy::searchRequested, this,
             &ArgumentParser::onSearchRequested);
-    //文件更新通知
-    connect(proxy, &ManualOpenProxy::filesUpdateRequested, this,
-            &ArgumentParser::onFilesUpdateRequested);
+
     ManualOpenAdapter *adapter = new ManualOpenAdapter(proxy);
     Q_UNUSED(adapter);
 
@@ -134,10 +132,4 @@ void ArgumentParser::onSearchRequested(const QString &keyword)
 {
     qDebug() << Q_FUNC_INFO << keyword;
     emit this->openManualWithSearchRequested("", keyword);
-}
-
-void ArgumentParser::onFilesUpdateRequested(const QStringList &filesList)
-{
-    qDebug() << Q_FUNC_INFO << filesList;
-    emit this->filesUpdate(filesList);
 }

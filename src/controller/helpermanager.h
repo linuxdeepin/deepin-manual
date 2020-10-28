@@ -18,11 +18,12 @@ private:
     void getModuleInfo();
     //初始化信号与槽
     void initConnect();
-    void handleDb(const QStringList &deleteList,const QStringList &addList, const QStringList &addTime);
+    void handleDb(const QStringList &deleteList, const QStringList &addList, const QStringList &addTime);
+    void dbusSend(const QStringList &deleteList, const QStringList &addList);
 
 private slots:
     //文件列表发生改变信号槽
-    void onFilelistChange(QStringList deleteList,QStringList addList,QStringList addTime);
+    void onFilelistChange(QStringList deleteList, QStringList addList, QStringList addTime);
 
 
 private:

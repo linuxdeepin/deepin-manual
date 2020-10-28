@@ -84,9 +84,6 @@ int main(int argc, char **argv)
                      &window_manager, &WindowManager::openManualWithSearch);
     QObject::connect(&argument_parser, &ArgumentParser::openManualRequested,
                      &window_manager, &WindowManager::openManual);
-    //文件更新提示
-    QObject::connect(&argument_parser, &ArgumentParser::filesUpdate,
-                     &window_manager, &WindowManager::onFilesUpdate);
 
     if (!argument_parser.parseArguments()) {
         qDebug() << "argument_parser.parseArguments()";

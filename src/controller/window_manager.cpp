@@ -21,6 +21,8 @@
 #include "dbus/dbus_consts.h"
 #include "view/web_window.h"
 #include "controller/config_manager.h"
+#include "dbus/manual_filesupdate_proxy.h"
+#include "dbus/manual_filesupdate_adapter.h"
 
 #include <QApplication>
 #include <QDesktopWidget>
@@ -62,6 +64,22 @@ void WindowManager::initDBus()
     } else {
         qDebug() << WM_SENDER_NAME << " register dbus service success!";
     }
+
+    // 注册Dbus filesUpdate服务
+    QDBusConnection conn = QDBusConnection::sessionBus();
+    ManualFilesUpdateProxy *proxy = new ManualFilesUpdateProxy(this);
+    connect(proxy, &ManualFilesUpdateProxy::FilesUpdate, this, &WindowManager::onFilesUpdate);
+    ManualFilesUpdateAdapter *adapter = new ManualFilesUpdateAdapter(proxy);
+    //ManualOpenAdapter *adapter = new ManualOpenAdapter(proxy);
+    Q_UNUSED(adapter);
+    //注册服务, 如果注册失败,则说明已存在一个dman.
+    if (!conn.registerService(kManualFilesUpdateService)
+            || !conn.registerObject(kManualFilesUpdateIface, proxy)) {
+        qCritical() << "filesUpdate failed to register dbus service";
+    } else {
+        qDebug() << "filesUpdate register dbus service success!";
+    }
+
 }
 
 /**
