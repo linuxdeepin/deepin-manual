@@ -24,8 +24,6 @@
 
 #include <QObject>
 
-namespace dman {
-
 /**
  * @brief The ThemeProxy class
  * 主题接口类，使帮助手册主题色跟随系统颜色变化，ｊｓ调用
@@ -42,5 +40,4 @@ public slots:
     void slot_ThemeChange();
     QString getTheme() const;
 };
-} // namespace dman
 #endif // THEME_PROXY_H

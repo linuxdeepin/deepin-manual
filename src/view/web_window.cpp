@@ -49,8 +49,6 @@
 
 DWIDGET_USE_NAMESPACE
 
-namespace dman {
-
 namespace {
 
 const int kSearchDelay = 200;
@@ -245,11 +243,10 @@ void WebWindow::closeEvent(QCloseEvent *event)
  */
 void WebWindow::inputMethodEvent(QInputMethodEvent *e)
 {
-    if (!e->commitString().isEmpty()) {
+    if (!e->commitString().isEmpty() && search_edit_->lineEdit()->text() != e->commitString()) {
         search_edit_->lineEdit()->setText(e->commitString());
         search_edit_->lineEdit()->setFocus();
     }
-
     QWidget::inputMethodEvent(e);
 }
 
@@ -283,7 +280,7 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
 {
     if (event->type() == QEvent::MouseButtonRelease && qApp->activeWindow() == this &&
             watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
-        QRect rect = hasSearchEditRect();
+        QRect rect = hasWidgetRect(search_edit_);
         if (web_view_ && web_view_->selectedText().isEmpty() && !rect.contains(QCursor::pos())) {
             this->setFocus();
         }
@@ -342,6 +339,9 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
             }
             default: {
             }
+            }
+            if (!hasWidgetRect(search_edit_).contains(mapFromGlobal(QCursor::pos()))) {
+                completion_window_->hide();
             }
         }
     }
@@ -475,7 +475,6 @@ void WebWindow::initUI()
     search_edit_->setObjectName("SearchEdit");
     search_edit_->setFixedSize(350, 44);
     search_edit_->setPlaceHolder(QObject::tr("Search"));
-
     if (Utils::hasSelperSupport()) {
         DMenu *pMenu = new DMenu;
         QAction *pHelpSupport = new QAction(QObject::tr("Support"));
@@ -657,30 +656,21 @@ void WebWindow::settingContextMenu()
 }
 
 /**
- * @brief WebWindow::hasSearchEditRect
- * @return 返回SearchEdit的绝对坐标范围
+ * @brief WebWindow::hasWidgetRect
+ * @return 返回控件Rect位置
+ * 根据父控件位置确定子控件位置
  */
-QRect WebWindow::hasSearchEditRect()
+QRect WebWindow::hasWidgetRect(QWidget *widget)
 {
     QRect rect;
-    QList<QWidget *> list = this->titlebar()->findChildren<QWidget *>();
-    for (int i = 0 ; i < list.length(); ++i) {
-        if (list.at(i)->inherits("QLabel")) {
-            if (list.at(i)->width() == 28 || list.at(i)->width() == 640) {
-                continue;
-            }
-            int x = (list.at(i)->width() - search_edit_->width()) / 2;
-            int y = (list.at(i)->height() - search_edit_->height()) / 2;
-            QPoint gp = list.at(i)->mapToGlobal(list.at(i)->pos());
-            QPoint p(gp.x() + x - 200, gp.y() + y);
-            //QRect rect(p1.x(), p1.y(), search_edit_->width(), search_edit_->height());
-            rect.setX(p.x());
-            rect.setY(p.y());
-            rect.setWidth(search_edit_->width());
-            rect.setHeight(search_edit_->height());
-            return rect;
-        }
+    QWidget *tmpWidget = widget;
+    while (tmpWidget) {
+        rect.setX(rect.x() + tmpWidget->x());
+        rect.setY(rect.y() + tmpWidget->y());
+        tmpWidget = tmpWidget->parentWidget();
     }
+    rect.setWidth(widget->width());
+    rect.setHeight(widget->height());
     return rect;
 }
 
@@ -693,7 +683,7 @@ void WebWindow::onSearchContentByKeyword(const QString &keyword)
 {
     qDebug() << "calling keyword is:" << keyword << endl;
     QString key(keyword);
-    const QString searchKey = key.remove('\n').remove('\r').remove("\r\n");
+    const QString searchKey = key.remove('\n').remove('\r').remove("\r\n").remove(QRegExp("\\s"));
     search_manager_->searchContent(searchKey);
 
     QString base64Key = QString(searchKey.toUtf8().toBase64());
@@ -800,6 +790,7 @@ void WebWindow::onWebPageLoadFinished(bool ok)
     m_spinner->stop();
     m_spinner->hide();
     this->setCentralWidget(web_view_);
+    disconnect(web_view_->page(), &QWebEnginePage::loadFinished, this, &WebWindow::onWebPageLoadFinished);
 }
 
 /**
@@ -865,8 +856,8 @@ void WebWindow::onSetKeyword(const QString &keyword)
             search_edit_->clearEdit();
         } else {
             QString strTemp = keyword;
-            if (strTemp.contains("-+")) {
-                strTemp.replace("-+", "/");
+            if (strTemp.contains("=-=")) {
+                strTemp.replace("=-=", "%");
             }
             search_edit_->setText(strTemp);
         }
@@ -903,6 +894,3 @@ void WebWindow::onSearchAnchorResult(const QString &keyword, const SearchAnchorR
         completion_window_->setFocusPolicy(Qt::StrongFocus);
     }
 }
-
-
-}  // namespace dman

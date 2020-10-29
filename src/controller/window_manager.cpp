@@ -29,7 +29,6 @@
 const int kWinMinWidth = 800;
 const int kWinMinHeight = 600;
 
-namespace dman {
 WindowManager::WindowManager(QObject *parent)
     : QObject(parent)
     , curr_app_name_("")
@@ -55,8 +54,8 @@ void WindowManager::initDBus()
         return;
     }
 
-    if (!dbusConn.registerService(dman::kManualSearchService + QString(WM_SENDER_NAME))
-            || !dbusConn.registerObject(dman::kManualSearchIface + QString(WM_SENDER_NAME), this)) {
+    if (!dbusConn.registerService(kManualSearchService + QString(WM_SENDER_NAME))
+            || !dbusConn.registerObject(kManualSearchIface + QString(WM_SENDER_NAME), this)) {
         qCritical() << WM_SENDER_NAME << " failed to register dbus service!";
 
         return;
@@ -114,8 +113,8 @@ void WindowManager::SendMsg(const QString &msg)
         QDBusConnection::connectToBus(QDBusConnection::SessionBus, WM_SENDER_NAME);
     qDebug() << "start send keyword:" << QString::number(qApp->applicationPid());
     QDBusMessage dbusMsg = QDBusMessage::createSignal(
-                               dman::kManualSearchIface + QString(WM_SENDER_NAME),
-                               dman::kManualSearchService + QString(WM_SENDER_NAME), "SendWinInfo");
+                               kManualSearchIface + QString(WM_SENDER_NAME),
+                               kManualSearchService + QString(WM_SENDER_NAME), "SendWinInfo");
 
     dbusMsg << QString::number(qApp->applicationPid()) + "|" + msg;
 
@@ -161,9 +160,9 @@ void WindowManager::onNewAppOpen()
 {
     qDebug() << Q_FUNC_INFO << qApp->applicationPid();
     QDBusMessage msg =
-        QDBusMessage::createMethodCall(dman::kManualSearchService,
-                                       dman::kManualSearchIface,
-                                       dman::kManualSearchService, "OnNewWindowOpen");
+        QDBusMessage::createMethodCall(kManualSearchService,
+                                       kManualSearchIface,
+                                       kManualSearchService, "OnNewWindowOpen");
 
     msg << QString::number(qApp->applicationPid());
     QDBusMessage response = QDBusConnection::sessionBus().call(msg);
@@ -203,5 +202,3 @@ void WindowManager::openManualWithSearch(const QString &app_name, const QString 
     activeOrInitWindow();
     qDebug() << Q_FUNC_INFO << app_name << curr_keyword_;
 }
-
-} // namespace dman

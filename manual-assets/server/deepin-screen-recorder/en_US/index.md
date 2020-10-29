@@ -2,7 +2,7 @@
 
 ## Overview
 
-Screen Capture is a tool which integrates the screen capture and recorder functions into one. You are free to select windows or areas automatically or manually during screen capturing or recording. 
+Screen Capture is a tool which integrates the screen capture functions into one. You are free to select windows or areas automatically or manually during screen capturing. 
 
 ![partarea](jpg/partarea.png)
 
@@ -10,7 +10,7 @@ Screen Capture is a tool which integrates the screen capture and recorder functi
 
 ## Guide
 
-You can run, close or create shortcuts for screen capture in the following operations.
+You can run, close, or create shortcuts for screen capture in the following ways.
 
 ### Run Screen Capture
 
@@ -26,7 +26,7 @@ You can run, close or create shortcuts for screen capture in the following opera
 
 ### Close Screen Capture
 
-- Screen Capture will exit automatically after screen capturing or screen recording completes.
+- Screen Capture will exit automatically after screen capturing completes.
 - On the Screen Capture interface, click ![close](icon/close-normal.svg) to exit Screen Capture.
 - On the Screen Capture interface, press **Ctrl + S** or **Esc** on the keyboard to save the screen capture or exit.
 - On the Screen Capture interface, right-click to select **Save** or **Exit**.
@@ -50,7 +50,7 @@ In the Screenshot mode on the Screen Capture interface, press **Ctrl + Shift + ?
 
 #### Select Screenshot Area
 
-There are three kinds of common screenshot areas, namely the full screen, program window and customized area. When a screenshot is captured, the selected area will be bordered with dashed white line and looks brighter than the other area.
+There are three kinds of common screenshot areas, namely the full screen, program window, and customized area. When a screenshot is captured, the selected area will be bordered with dashed white line and looks brighter than the other area.
 
 > ![notes](icon/notes.svg)Notes: When the computer is connected to multiple monitors, you can also use Screen Capture to capture areas on different monitors.
 
@@ -59,7 +59,6 @@ There are three kinds of common screenshot areas, namely the full screen, progra
 Full screen selection is used to identify the entire screen of the current monitor.
 
 ![1|全屏截图](jpg/fullscreen.png)
-
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 You can select the full screen in the following ways:
@@ -79,7 +78,6 @@ You can also take a full screen screenshot directly in the following ways:
 Program window selection is used to identify the current application window automatically.
 
 ![1|窗口截图](jpg/window.png)
-
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 1.  Press **Ctrl + Alt + A** on keyboard to enter the screen capture mode.
@@ -92,7 +90,6 @@ Program window selection is used to identify the current application window auto
 Customized area selection is used to select the screenshot area freely by dragging the mouse.
 
 ![1|区域截图](jpg/partarea.png)
-
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 1.  Press **Ctrl + Alt + A** on keyboard to enter the screen capture mode.
@@ -140,7 +137,7 @@ While capturing screenshots, you can click the icons on the toolbar to complete 
 
 
 ![0|截图工具栏](jpg/capturebar.png)
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 <table class="block1">
     <caption>Icon Description</caption>
     <tbody>
@@ -171,7 +168,7 @@ While capturing screenshots, you can click the icons on the toolbar to complete 
 ##### Rectangle
 
 ![1|矩形工具](jpg/recttool.png)
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 1.  Click ![矩形](icon/rectangle-normal.svg) on the toolbar which appears beside the screenshot area.
 2.  In the toolbar extension panel, select the weight of outline for the rectangle shape. 
 3.  Place the cursor on the screenshot area and the cursor will be changed to ![矩形指针](icon/rect_mouse.svg).
@@ -200,8 +197,7 @@ While capturing screenshots, you can click the icons on the toolbar to complete 
 ##### Straight Line and Arrow
 
 ![1|线条工具](jpg/line.png)
-
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 1.  Click ![直线](icon/line-normal.svg) on the toolbar which appears beside the screenshot area.
 2.  In the toolbar extension panel, select the weight of line. 
@@ -213,7 +209,7 @@ While capturing screenshots, you can click the icons on the toolbar to complete 
 ##### Pencil
 
 ![1|pencil](jpg/pencil.png)
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 1.  Click ![画笔](icon/Combined_Shape-normal.svg) on the toolbar which appears beside the screenshot area.
 2.  In the toolbar extension panel, select the weight of pencil. 
@@ -258,8 +254,7 @@ You can modify and move the drawn graphics in the screenshot.
 Add text annotations to the screenshot in order to help others better understand.
 
 ![0|文本框](jpg/text.png)
-
-
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 1.  Click ![文字](icon/text_normal.svg) on the toolbar which appears beside the screenshot area.
 2.  In the toolbar extension panel, select the font size via the scroll bar. 
@@ -304,7 +299,8 @@ When the screenshot is saved successfully, you can see a prompt message in the u
 You can save the screenshot in the following ways after launching Screen Capture and selecting the screenshot area:
 
 - Double-click to save the screen capture.
-- Click ![notes](icon/capture.svg) on the toolbar and press **Ctrl + S** to save the screenshot.
+- Click ![notes](icon/capture.svg) on the toolbar.
+- Press **Ctrl + S** to save the screenshot.
 - Right-click the screenshot and select **Save** to save the screenshot.
 
 > ![notes](icon/notes.svg)Notes: The screenshot is saved to the desktop by default.
@@ -312,7 +308,6 @@ You can save the screenshot in the following ways after launching Screen Capture
 Click **Options** on the toolbar of the Screen Capture interface and expand the drop-down list:
 
 ![0|保存](jpg/option-1.png)
-
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 - Select **Clipboard** to save the screenshot to clipboard.
@@ -327,4 +322,4 @@ Click **Options** on the toolbar of the Screen Capture interface and expand the 
 ### View Help
 
 Press ![F1](icon/F1.svg) on the keyboard to view the help manual after launching Screen Capture.
-<div class="version-info"><span>Update Date: 2020-09-11</span><span> Version: 5.8</span></div>
+<div class="version-info"><span>Update Date: 2020-10-29</span><span> Version: 5.8</span></div>

@@ -4,12 +4,11 @@
 
 Image Viewer is a lightweight image viewer with a trendy look and smooth performance. Supporting a wide range of image formats, it's more than just easy to use. 
 
-
 ![1|maininterface](jpg/main.png)
 
 ## Guide
 
-You can run, close and create shortcuts for Image Viewer by the following ways.
+You can run, close, and create shortcuts for Image Viewer in the following ways.
 
 ### Run Image Viewer
 
@@ -19,7 +18,6 @@ You can run, close and create shortcuts for Image Viewer by the following ways.
  - Click **Send to desktop** to create a desktop shortcut.
  - Click **Send to dock** to fix the application in the dock.
  - Click **Add to startup** to add the application to startup, and it will automatically run when the system starts up.
-
 
 ### Exit Image Viewer
 
@@ -46,18 +44,18 @@ You can use one of the following ways to open image files:
 
 > ![tips](icon/tips.svg)Tips: In Control Center, you can set Image Viewer as the default image viewer. Please refer to [Default Applications](dman:///dde#Default Application Settings) for specific operations.
 
-Following Image formats are supported: BMP, ICO, JPG/JPE/JPEG, PNG, TGA, TIF/TIFF, XPM, GIF, SGI, RAW, WEBP, CR2, NEF, DNG, RAF, MEF, MRW, XBM, SVG, ORF and MNG.
+Following Image formats are supported: BMP, ICO, JPG/JPE/JPEG, PNG, TGA, TIF/TIFF, XPM, GIF, SGI, RAW, WEBP, CR2, NEF, DNG, RAF, MEF, MRW, XBM, SVG, ORF, and MNG.
 
 ### Main Interface
 
-![1|main](jpg/main.png)
+![1|main-interface](jpg/main-interface.png)
 
 | Icon                                               | Name                    | Description                                                  |
 | -------------------------------------------------- | ----------------------- | ------------------------------------------------------------ |
 | ![previous](icon/previous.svg)                     | Previous                | Switch to the previous image.                                |
 | ![next](icon/next.svg)                             | Next                    | Switch to the next image.                                    |
 | ![adapt-image](icon/adapt-image.svg)               | 1:1 Size                | The image will show in 1:1 size without changing the size of the window. |
-| ![adapt-screen](icon/adapt-screen.svg)             | Fit to window           | The image will be resized to adapt to the current window.    |
+| ![fit_hover](icon/fit_hover.svg)                   | Fit to window           | The image will be resized to adapt to the current window.    |
 | ![clockwise-rotation](icon/clockwise-rotation.svg) | Rotate clockwise        | Rotate the image 90 degrees clockwise.                       |
 | ![contrarotate](icon/contrarotate.svg)             | Rotate counterclockwise | Rotate the image 90 degrees counterclockwise.                |
 | ![delete](icon/delete.svg)                         | Delete                  | Delete the current image.                                    |
@@ -74,7 +72,7 @@ You can print images in Image Viewer.
 
 1. Right-click the image on the Image Viewer interface and select **Print**.
 2. Choose a printer and set the print options.
-3. Click **Print **to send the picture to the printer.
+3. Click **Print ** to send the picture to the printer.
 
 ### Rename Images
 
@@ -84,7 +82,7 @@ You can print images in Image Viewer.
 
 > ![notess](icon/notes.svg)Notes: System images can not be renamed.
 
-### Show in slides
+### Show in Slides
 
 1. Right-click the image on the Image Viewer interface.
 2. Select **Slide show** and all images will be played as slides in full screen. 
@@ -122,6 +120,11 @@ You can set an image as desktop wallpaper. Right-click the image on the Image Vi
 
 ![0|wallpaper](jpg/wallpaper.png)
 
+### Display in File Manager
+
+1. Right-click the image in the Image Viewer interface and select **Display in file manager**.
+2. The folder location of the image will be opened and displayed.
+
 ### View Image Information
 
 You can view detailed information of the image.
@@ -130,14 +133,13 @@ You can view detailed information of the image.
 
 ![1|view info](jpg/info.png)
 
-
 ## Main Menu
 
 In the main menu, you can switch window themes, view help manual, and get more information about Image Viewer.
 
 ### Theme
 
-The window theme provides three theme types, namely Light Theme, Dark Theme and System Theme (default).
+The window theme provides three theme types, namely Light Theme, Dark Theme, and System Theme (default).
 
 1. On the Image Viewer interface, click ![main_menu](icon/icon_menu.svg).
 2. Click **Theme** to select one theme.
@@ -155,4 +157,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 
 1. On the Image Viewer interface, click ![icon_menu](icon/icon_menu.svg).
 2. Click **Exit** to exit Image Viewer.
-<div class="version-info"><span>Update Date: 2020-09-11</span><span> Version: 5.6</span></div>
+<div class="version-info"><span>Update Date: 2020-10-29</span><span> Version: 5.6</span></div>

@@ -20,8 +20,6 @@
 
 #include <DLog>
 
-namespace dman {
-
 ImageViewerProxy::ImageViewerProxy(ImageViewer *viewer,
                                    QObject *parent)
     : QObject(parent)
@@ -54,5 +52,3 @@ void ImageViewerProxy::openHttpUrl(const QString &httpUrl)
 {
     QDesktopServices::openUrl(QUrl(httpUrl));
 }
-
-} // namespace dman

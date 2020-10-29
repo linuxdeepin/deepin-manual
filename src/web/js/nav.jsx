@@ -4,6 +4,10 @@ import { Link } from 'react-router-dom';
 import Scrollbar from './scrollbar.jsx';
 
 class Nav extends Component {
+  constructor(props) {
+    super(props);
+    this.contentMenu = this.contentMenu.bind(this)
+  }
 
   componentWillMount(){
     console.log("nav componentWillMount");
@@ -116,7 +120,7 @@ class Nav extends Component {
         id="nav"
         lang={global.lang}
         onMouseDown={e => this.click(e)}
-        onContextMenu={this.contentMenu.bind(this)}
+        onContextMenu={this.contentMenu}
         style={{
           width: `calc(${maxWidth}px + ${c}rem`
         }}

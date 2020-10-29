@@ -18,8 +18,6 @@
 #ifndef DEEPIN_MANUAL_DBUS_DBUS_CONSTS_H
 #define DEEPIN_MANUAL_DBUS_DBUS_CONSTS_H
 
-namespace dman {
-
 extern const char kManualOpenService[];
 extern const char kManualOpenIface[];
 extern const char kManualSearchService[];
@@ -30,6 +28,5 @@ extern const char kLauncherIface[];
 extern const char kManualWinManagerService[];
 extern const char kManualWinManagerIface[];
 
-} // namespace dman
 
 #endif // DEEPIN_MANUAL_DBUS_DBUS_CONSTS_H

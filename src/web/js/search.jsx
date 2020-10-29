@@ -21,9 +21,25 @@ class Items extends Component {
       this.setState({ title, logo, show: true });
     });
   }
+
+  //转义特定字符
+  escapeRegExp(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+  }
+
   render() {
     let resultList = [];
-    let re = new RegExp(this.props.keyword, 'gi');
+
+    //将关键字转义
+
+    let keyTemp = this.props.keyword;
+    if (this.props.keyword !== '%')
+    {
+      keyTemp = decodeURIComponent(this.props.keyword)
+    }
+
+    // let keyTemp = decodeURIComponent(this.props.keyword)
+    let re = new RegExp(this.escapeRegExp(keyTemp), 'gi');
 
     let cTitle =(
       <span
@@ -38,14 +54,6 @@ class Items extends Component {
     );
 
     for (let i = 0; i < this.props.idList.length; i++) {
-
-      // let contentTrans = this.props.contentList[i];
-      // let index = contentTrans.indexOf(this.props.keyword);
-      // console.log("keyword index: ",index);
-      // if (index > 100)
-      // {
-      //   contentTrans = "..." + contentTrans.slice(index-100);
-      // }
       if (this.props.idList[i] == 'h0')
       {
         continue;
@@ -100,20 +108,9 @@ function Mismatch(props) {
     <div id="mismatch">
       <div>
         <div id="NoResult">
-          {global.i18n['NoResult'].replace('%1', decodeURIComponent(props.keyword))}
+          {/* {global.i18n['NoResult'].replace('%1', keyword)} */}
+          {global.i18n['NoResult']}
         </div>
-        {/* <div id="WikiSearch">{global.i18n['WikiSearch']}</div>
-        <span
-          class="button"
-          onClick={() =>
-            global.openWindow(
-              `https://wiki.deepin.org/index.php?title&search=${encodeURIComponent(
-                props.keyword
-              )}`
-            )}
-        >
-          {global.i18n['SearchInWiki']}
-        </span> */}
       </div>
     </div>
   );
@@ -121,12 +118,13 @@ function Mismatch(props) {
 export default class SearchPage extends Component {
   constructor(props, context) {
     super(props, context);
+
+    // console.log('search constructor:',this.context);
   }
 
   componentWillReceiveProps(nextProps){
-    let key = nextProps.match.params;
-    console.log("search componentWillReceiveProps..key:",key);
-
+    // console.log("search componentWillReceiveProps..",this.context.searchResult);
+    console.log("search componentWillReceiveProps..");
   }
 
   componentDidUpdate() {
@@ -155,7 +153,6 @@ export default class SearchPage extends Component {
         <div
           id="search"
           tabIndex="-1"
-          // onMouseOver={e => document.getElementById('search').focus()}
         >
           {c}
         </div>

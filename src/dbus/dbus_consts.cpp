@@ -17,8 +17,6 @@
 
 #include "dbus/dbus_consts.h"
 
-namespace dman {
-
 const char kManualOpenService[] = "com.deepin.Manual.Open";
 const char kManualOpenIface[] = "/com/deepin/Manual/Open";
 const char kManualSearchService[] = "com.deepin.Manual.Search";
@@ -29,4 +27,3 @@ const char kLauncherIface[] = "/com/deepin/dde/daemon/Launcher";
 const char kManualWinManagerService[] = "com.deepin.Manual.WinManager";
 const char kManualWinManagerIface[] = "/com/deepin/Manual/WinManager";
 
-} // namespace dman

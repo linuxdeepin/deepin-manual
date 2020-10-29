@@ -13,11 +13,23 @@ export default class Main extends Component {
       bTest:true
     };
     let { file, hash ,key} = this.props.match.params;
+    console.log("main constructor...");
     this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null, key);
     var showFloatTimer=null;
+
+    this.setHash = this.setHash.bind(this);
+    this.setScroll = this.setScroll.bind(this);
+    this.onSupportClick = this.onSupportClick.bind(this);
   }
   init(file, hash,key='') {
+
+    if (key !== '%')
+    {
+      key = decodeURIComponent(key)
+    }
     console.log("main init==>file:",file," hash:",hash," key:",key);
+
+
     global.hash = hash;
     var filePath = file;
     if (filePath.indexOf('/') == -1) {
@@ -108,6 +120,11 @@ export default class Main extends Component {
     }
   }
 
+  shouldComponentUpdate(nextProps,nextState){
+    console.log("main shouldComponentUpdate====");
+    return true;
+  }
+
   componentWillUpdate(){
     console.log("main componentWillUpdate..");
   }
@@ -124,7 +141,7 @@ export default class Main extends Component {
     console.log("main render....hList:",this.state.hlist);
     let support = null;
     if (global.isShowHelperSupport) {
-      support = <div className="support-div" onClick={this.onSupportClick.bind(this)}><img className="support" src="./pic.svg"></img></div>
+      support = <div className="support-div" onClick={this.onSupportClick}><img className="support" src="./pic.svg"></img></div>
     }else{
       support = <div></div>
     }
@@ -135,7 +152,7 @@ export default class Main extends Component {
           <Nav
             hlist={this.state.hlist}
             hash={this.state.hash}
-            setHash={this.setHash.bind(this)}
+            setHash={this.setHash}
             onNavOver={(e)=>this.handleNavOver(e)}
             onNavOut={(e)=>this.handleNavOut(e)}
             onNavMove={(e)=>this.handleNavMove(e)}
@@ -145,8 +162,8 @@ export default class Main extends Component {
             hlist={this.state.hlist}
             html={this.state.html}
             hash={this.state.hash}
-            setHash={this.setHash.bind(this)}
-            setScroll={this.setScroll.bind(this)}
+            setHash={this.setHash}
+            setScroll={this.setScroll}
           />
           {support}
           <div className="tooltip-wp"></div>

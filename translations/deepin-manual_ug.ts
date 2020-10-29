@@ -49,7 +49,7 @@
     <message>
         <location filename="../src/view/web_window.cpp" line="277"/>
         <source>Support</source>
-        <translation type="unfinished"/>
+        <translation>قوللاش</translation>
     </message>
     <message>
         <location filename="../src/view/web_window.cpp" line="497"/>

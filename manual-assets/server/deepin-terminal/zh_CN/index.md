@@ -274,7 +274,7 @@
 
 ### 主题
 
-窗口主题包含浅色主题，深色主题和跟随系统主题，其中跟随系统主题为默认主题。
+窗口主题包含浅色主题、深色主题和跟随系统主题，其中深色主题为默认主题。
 1. 在终端界面，点击  ![icon_menu](icon/icon_menu.svg) 。
 2. 点击 **主题**，选择一个主题。
 
@@ -333,4 +333,4 @@
 
 1. 在终端界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **退出**。
-<div class="version-info"><span>文档更新时间: 2020-09-11</span><span> 版本: 5.2</span></div>
+<div class="version-info"><span>文档更新时间: 2020-10-29</span><span> 版本: 5.2</span></div>

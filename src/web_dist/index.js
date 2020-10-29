@@ -52,6 +52,7 @@ global.lastUrlBeforeSearch = '/';
 global.lastHistoryIndex = 0;
 global.lastAction = 'PUSH';
 global.isShowHelperSupport = false;
+global.scrollBehavior = 'smooth';
 // global.gHistoryGo = 0;
 
 
@@ -99,11 +100,18 @@ var App = function (_React$Component) {
             global.lang = 'en_US';
           }
         });
+
         global.i18n = i18n;
         global.qtObjects = channel.objects;
 
         global.qtObjects.manual.hasSelperSupport(function (bFlag) {
           global.isShowHelperSupport = bFlag;
+        });
+
+        global.qtObjects.manual.bIsLongSon(function (isLongSon) {
+          if (isLongSon) {
+            global.scrollBehavior = 'auto';
+          }
         });
 
         channel.objects.manual.getSystemManualDir(function (path) {
@@ -254,7 +262,14 @@ var App = function (_React$Component) {
       } else if (pathList.length == 5) {
         cKeyword = pathList[4];
       }
-      global.qtObjects.search.getKeyword(cKeyword);
+
+      // global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
+      if (cKeyword == '%') {
+        global.qtObjects.search.getKeyword(cKeyword);
+      } else {
+        console.log("decode URIComponent componentWillReceiveProps");
+        global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
+      }
 
       if (this.context.router.history.action == 'PUSH') {
         var entriesLen = this.context.router.history.entries.length;
@@ -309,16 +324,24 @@ var App = function (_React$Component) {
           hash = 'h1';
         }
         file = encodeURIComponent(file);
+        console.log("globla.open...........");
         hash = encodeURIComponent(hash);
         global.hash = hash;
 
-        // '/'字符替换为其他非常用字符组合,来替代'/', 路由URL使用'/'来区分字段,所以应该避免字段中含有'/'.
-        if (key.indexOf('/') !== -1) {
-          key = key.replace(/\//g, '-+');
+        // '%'字符替换为其他非常用字符组合,来替代'%', 路由URL单含此字符会出错。。。
+        if (key == '%') {
+          key = '=-=';
         }
 
         var url = '/open/' + file + '/' + hash + '/' + key;
+        console.log("globla.open==---------->");
         _this3.context.router.history.push(url);
+        console.log("globla.open.=========.......");
+
+        //Init属性设置, 放在index与opentitle中. 避免直接跳转到特定模块时会先走/模块.
+        if (_this3.state.init == false) {
+          _this3.setState({ init: true });
+        }
 
         //通知qt对象,修改应用打开状态
         global.qtObjects.manual.setApplicationState(file);
@@ -326,10 +349,6 @@ var App = function (_React$Component) {
 
       global.openTitle = function (file) {
         var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-
-        if (_this3.state.init == false) {
-          _this3.setState({ init: true });
-        }
 
         console.log("global linkTitle==> file:" + file + " title: " + title);
         global.handleLocation(global.hash);
@@ -341,9 +360,12 @@ var App = function (_React$Component) {
 
             var d = document.createElement('div');
             d.innerHTML = html;
+            var dlist = d.querySelectorAll('[text="' + title + '"]');
             var hashID = 'h0';
-            if (d.querySelector('[text="' + title + '"]')) {
-              hashID = d.querySelector('[text="' + title + '"]').id;
+            for (var i = 0; i < dlist.length; i++) {
+              if (dlist[i].tagName == 'H2' || dlist[i].tagName == 'H3') {
+                hashID = dlist[i].id;
+              }
             }
             global.open(file, hashID);
           });
@@ -502,6 +524,7 @@ var App = function (_React$Component) {
         },
         decode: function decode(str) {
           // Going backwards: from bytestream, to percent-encoding, to original string.
+          console.log("decode URIComponent decode");
           return decodeURIComponent(atob(str).split('').map(function (c) {
             return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
           }).join(''));
@@ -510,13 +533,15 @@ var App = function (_React$Component) {
 
       global.openSearchPage = function (keyword) {
         global.handleLocation(global.hash);
+        console.log('====>', keyword);
         var decodeKeyword = Base64.decode(keyword);
-        console.log("decodeKeyword", decodeKeyword);
+        console.log("decodeKeyword", decodeKeyword, "===", encodeURIComponent(decodeKeyword));
         console.log("openSearchPage", _this3.context.router.history);
         console.log('lastUrl:' + global.lastUrlBeforeSearch + ', lastHistoryIndex: ' + global.lastHistoryIndex);
 
         var entriesLen = _this3.context.router.history.entries.length;
         if ('POP' == global.lastAction && lastHistoryIndex > 0 && lastHistoryIndex < entriesLen - 1) {
+          console.log("global.opensearch...");
           _this3.context.router.history.entries.length = lastHistoryIndex;
           _this3.context.router.history.length = lastHistoryIndex;
           _this3.context.router.history.index = lastHistoryIndex - 1;
@@ -546,6 +571,7 @@ var App = function (_React$Component) {
         //console.log(`The current URL is ${location.pathname}${location.search}${location.hash}` );
         //console.log(`The last navigation action was ${action}`);
         //console.log("index:" + this.context.router.history.index);
+        console.log("app router.history.listen...");
         global.lastUrlBeforeSearch = location.pathname;
         global.lastHistoryIndex = _this3.context.router.history.index;
         global.lastAction = action;
@@ -662,6 +688,10 @@ var Article = function (_Component) {
       bIsTimerOut: true
     };
 
+    _this.scroll = _this.scroll.bind(_this);
+    _this.click = _this.click.bind(_this);
+    _this.contentMenu = _this.contentMenu.bind(_this);
+
     var timerObj;
     return _this;
   }
@@ -697,7 +727,7 @@ var Article = function (_Component) {
           _this2.setState({ smoothScroll: false });
         }, 800);
 
-        (0, _smoothScrollIntoViewIfNeeded2.default)(hashNode, { behavior: 'smooth', block: 'start' }).then(function () {
+        (0, _smoothScrollIntoViewIfNeeded2.default)(hashNode, { behavior: global.scrollBehavior, block: 'start' }).then(function () {
 
           //scrollIntoView函数存在异步,如果tempHash != this.hash时,说明存在异步操作,直接return. 
           if (tempHash != _this2.hash) return;
@@ -734,6 +764,16 @@ var Article = function (_Component) {
     value: function componentDidMount() {
       console.log("article componentDidMount");
       this.componentDidUpdate();
+    }
+  }, {
+    key: 'shouldComponentUpdate',
+    value: function shouldComponentUpdate(nextProps, nextState) {
+      console.log("article shouldComponentUpdate====", this.hash, "prop hash:", this.props.hash);
+      // if (this.hash == this.props.hash)
+      // {
+      //   return false;
+      // }
+      return true;
     }
   }, {
     key: 'componentWillReceiveProps',
@@ -836,10 +876,9 @@ var Article = function (_Component) {
   }, {
     key: 'scroll',
     value: function scroll() {
-      console.log("article scroll");
-      if (!this.load) {
-        return;
-      }
+      // if (!this.load) {
+      //   return;
+      // }
       if (this.state.smoothScroll) {
         return;
       }
@@ -887,6 +926,7 @@ var Article = function (_Component) {
       if (this.state.preview != null) {
         this.setState({ preview: null });
       }
+      console.log("======>", e.target.nodeName);
       switch (e.target.nodeName) {
         case 'IMG':
           e.preventDefault();
@@ -898,35 +938,64 @@ var Article = function (_Component) {
           global.qtObjects.imageViewer.open(src);
           return;
         case 'A':
-          var dmanProtocol = 'dman://';
-          var hashProtocol = '#';
-          var httpProtocol = 'http';
-          var href = e.target.getAttribute('href');
-          console.log("href:" + href);
-          switch (0) {
-            case href.indexOf(hashProtocol):
-              e.preventDefault();
-              this.props.setHash(document.querySelector('[text="' + href.slice(1) + '"]').id);
-              return;
-            case href.indexOf(dmanProtocol):
-              e.preventDefault();
+          {
+            var dmanProtocol = 'dman://';
+            var hashProtocol = '#';
+            var httpProtocol = 'http';
+            var _href = e.target.getAttribute('href');
+            console.log("href:" + _href);
+            switch (0) {
+              case _href.indexOf(hashProtocol):
+                e.preventDefault();
+                this.props.setHash(document.querySelector('[text="' + _href.slice(1) + '"]').id);
+                return;
+              case _href.indexOf(dmanProtocol):
+                e.preventDefault();
 
-              var _href$slice$split = href.slice(dmanProtocol.length + 1).split('#'),
-                  _href$slice$split2 = _slicedToArray(_href$slice$split, 2),
-                  appName = _href$slice$split2[0],
-                  hash = _href$slice$split2[1];
-              // const rect = e.target.getBoundingClientRect();
-              // this.showPreview(appName, hash, rect);
-              // this.showPreviewTmp(appName,hash);
+                var _href$slice$split = _href.slice(dmanProtocol.length + 1).split('#'),
+                    _href$slice$split2 = _slicedToArray(_href$slice$split, 2),
+                    appName = _href$slice$split2[0],
+                    hash = _href$slice$split2[1];
 
-
-              global.openTitle(appName, hash);
-              return;
-            case href.indexOf(httpProtocol):
-              e.preventDefault();
-              global.qtObjects.imageViewer.openHttpUrl(href);
-              return;
+                global.openTitle(appName, hash);
+                return;
+              case _href.indexOf(httpProtocol):
+                e.preventDefault();
+                global.qtObjects.imageViewer.openHttpUrl(_href);
+                return;
+            }
           }
+        //解决bug-46888, 当a标签内含有span标签,点击获取的是span标签,此时用其父元素来处理.
+        case 'SPAN':
+          e.preventDefault();
+          var parNode = e.target.parentNode;
+          if (parNode.nodeName == 'A') {
+            var _dmanProtocol = 'dman://';
+            var _hashProtocol = '#';
+            var _httpProtocol = 'http';
+            var hrefTmp = parNode.getAttribute('href');
+            switch (0) {
+              case hrefTmp.indexOf(_hashProtocol):
+                e.preventDefault();
+                this.props.setHash(document.querySelector('[text="' + href.slice(1) + '"]').id);
+                return;
+              case hrefTmp.indexOf(_dmanProtocol):
+                e.preventDefault();
+
+                var _hrefTmp$slice$split = hrefTmp.slice(_dmanProtocol.length + 1).split('#'),
+                    _hrefTmp$slice$split2 = _slicedToArray(_hrefTmp$slice$split, 2),
+                    _appName = _hrefTmp$slice$split2[0],
+                    _hash = _hrefTmp$slice$split2[1];
+
+                global.openTitle(_appName, _hash);
+                return;
+              case hrefTmp.indexOf(_httpProtocol):
+                e.preventDefault();
+                global.qtObjects.imageViewer.openHttpUrl(hrefTmp);
+                return;
+            }
+          }
+          return;
       }
     }
 
@@ -963,7 +1032,7 @@ var Article = function (_Component) {
           { id: 'article_bg' },
           _react2.default.createElement(
             _scrollbar2.default,
-            { onScroll: this.scroll.bind(this),
+            { onScroll: this.scroll,
               onWheel: function onWheel(e) {
                 return _this4.handleWheelScroll(e);
               },
@@ -980,8 +1049,8 @@ var Article = function (_Component) {
               tabIndex: '-1',
               dangerouslySetInnerHTML: { __html: this.props.html },
               style: this.state.fillblank,
-              onClick: this.click.bind(this),
-              onContextMenu: this.contentMenu.bind(this)
+              onClick: this.click,
+              onContextMenu: this.contentMenu
             })
           )
         )
@@ -1084,16 +1153,12 @@ var Item = function (_Component) {
         {
           draggable: 'false',
           tabIndex: '1',
-          className: 'item'
-          //this is old
-          // onClick={() => global.open(this.state.file)}
-          , onClick: function onClick() {
+          className: 'item',
+          onClick: function onClick() {
             return global.open(_this2.props.appName);
-          }
-          // onMouseEnter={e => e.target.focus()}
-          , onKeyPress: function onKeyPress(e) {
+          },
+          onKeyPress: function onKeyPress(e) {
             if (e.key === 'Enter') {
-              // global.open(this.state.file);
               global.open(_this2.props.appName);
             }
           }
@@ -1120,20 +1185,17 @@ var Index = function (_Component2) {
 
     var _this3 = _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).call(this, props));
 
-    var sequence = ['deepin-browser', 'dde-file-manager', 'deepin-app-store', 'sogouimebs', 'deepin-mail', 'deepin-contacts', 'deepin-screen-recorder', 'deepin-image-viewer', 'deepin-album', 'deepin-music', 'deepin-movie', 'deepin-draw', 'dde-calendar', 'deepin-voice-note', 'deepin-reader', 'deepin-editor', 'deepin-compressor', 'dde-printer', 'deepin-terminal',
-    // '安全中心',
-    'downloader', 'deepin-deb-installer', 'deepin-font-manager', 'deepin-calculator', 'deepin-graphics-driver-manager', 'deepin-devicemanager', 'deepin-system-monitor', 'deepin-boot-maker', 'deepin-log-viewer', 'deepin-repair-tools', 'deepin-clone', 'deepin-cloud-print', 'deepin-cloud-scan', 'deepin-voice-recorder', 'deepin-picker', 'deepin-remote-assistance', 'deepin-presentation-assistant', 'chineseime', 'deepin-defender', 'uos-service-support'];
     _this3.state = {
-      sequence: sequence,
       appList: [],
       openedAppList: []
     };
+
     global.qtObjects.manual.getSystemManualList(function (appList) {
       return _this3.setState({ appList: appList });
     });
+
     global.qtObjects.manual.getUsedAppList(function (openedAppList) {
-      console.log("openlist :" + openedAppList);
-      _this3.setState({ openedAppList: openedAppList });
+      return _this3.setState({ openedAppList: openedAppList });
     });
     return _this3;
   }
@@ -1149,12 +1211,12 @@ var Index = function (_Component2) {
   }, {
     key: 'shouldComponentUpdate',
     value: function shouldComponentUpdate(nextProps, nextState) {
-      if (nextState.appList.toString() == this.state.appList.toString())
-        //  && nextState.openedAppList.toString == this.state.openedAppList.toString()) 
-        {
-          return true;
-        }
-      return false;
+      console.log("index shouldcomponentupdate");
+      if (nextState.appList.toString() == this.state.appList.toString() && nextState.openedAppList.toString() == this.state.openedAppList.toString()) {
+        console.log("index no update");
+        return false;
+      }
+      return true;
     }
   }, {
     key: 'componentDidUpdate',
@@ -1169,18 +1231,11 @@ var Index = function (_Component2) {
       var sysSoft = ['dde'].filter(function (appName) {
         return _this4.state.appList.indexOf(appName) != -1;
       });
-      // let appSoft = this.state.sequence.filter(
-      //   appName => this.state.appList.indexOf(appName) != -1
-      // );
-      // let otherSoft = this.state.appList.filter(
-      //   appName => this.state.sequence.indexOf(appName) == -1 &&
-      //     sysSoft.indexOf(appName) == -1
-      // );
 
-      var appSoft = this.state.appList;
+      var appSoft = this.state.appList.concat(); //使用数据副本
       var index = appSoft.indexOf("dde");
       appSoft.splice(index, 1);
-      var otherSoft = [""];
+      // let otherSoft = [""];
 
       return _react2.default.createElement(
         _scrollbar2.default,
@@ -1217,14 +1272,6 @@ var Index = function (_Component2) {
               { className: 'items' },
               appSoft.map(function (appName) {
                 return _react2.default.createElement(Item, { key: appName, appName: appName, isOpened: _this4.bIsBeOpen(appName) });
-              }),
-              otherSoft.map(function (appName) {
-                return _react2.default.createElement(Item, { key: appName, appName: appName, isOpened: _this4.bIsBeOpen(appName) });
-              }),
-              Array.from(new Array(10), function (val, index) {
-                return index;
-              }).map(function (i) {
-                return _react2.default.createElement('a', { key: i, className: 'empty' });
               })
             )
           )
@@ -1294,8 +1341,13 @@ var Main = function (_Component) {
         hash = _this$props$match$par.hash,
         key = _this$props$match$par.key;
 
+    console.log("main constructor...");
     _this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null, key);
     var showFloatTimer = null;
+
+    _this.setHash = _this.setHash.bind(_this);
+    _this.setScroll = _this.setScroll.bind(_this);
+    _this.onSupportClick = _this.onSupportClick.bind(_this);
     return _this;
   }
 
@@ -1306,7 +1358,12 @@ var Main = function (_Component) {
 
       var key = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
+
+      if (key !== '%') {
+        key = decodeURIComponent(key);
+      }
       console.log("main init==>file:", file, " hash:", hash, " key:", key);
+
       global.hash = hash;
       var filePath = file;
       if (filePath.indexOf('/') == -1) {
@@ -1414,6 +1471,12 @@ var Main = function (_Component) {
       }
     }
   }, {
+    key: 'shouldComponentUpdate',
+    value: function shouldComponentUpdate(nextProps, nextState) {
+      console.log("main shouldComponentUpdate====");
+      return true;
+    }
+  }, {
     key: 'componentWillUpdate',
     value: function componentWillUpdate() {
       console.log("main componentWillUpdate..");
@@ -1437,7 +1500,7 @@ var Main = function (_Component) {
       if (global.isShowHelperSupport) {
         support = _react2.default.createElement(
           'div',
-          { className: 'support-div', onClick: this.onSupportClick.bind(this) },
+          { className: 'support-div', onClick: this.onSupportClick },
           _react2.default.createElement('img', { className: 'support', src: './pic.svg' })
         );
       } else {
@@ -1450,7 +1513,7 @@ var Main = function (_Component) {
         _react2.default.createElement(_nav2.default, {
           hlist: this.state.hlist,
           hash: this.state.hash,
-          setHash: this.setHash.bind(this),
+          setHash: this.setHash,
           onNavOver: function onNavOver(e) {
             return _this3.handleNavOver(e);
           },
@@ -1466,8 +1529,8 @@ var Main = function (_Component) {
           hlist: this.state.hlist,
           html: this.state.html,
           hash: this.state.hash,
-          setHash: this.setHash.bind(this),
-          setScroll: this.setScroll.bind(this)
+          setHash: this.setHash,
+          setScroll: this.setScroll
         }),
         support,
         _react2.default.createElement('div', { className: 'tooltip-wp' })
@@ -1533,14 +1596,23 @@ exports.default = function (mdFile, mdData) {
     }
     return '<img src="' + hrefX2 + '" data-src="' + href + '" alt="' + text + '" />';
   };
+
   html = (0, _marked2.default)(mdData, { renderer: renderer }).replace(/src="/g, '$&' + path);
+  console.log("-----------------------------------");
   if (key != '') {
-    //将'-+'字符串 反向还原成'/'
-    key = key.replace(/-+/g, '/');
-    // var formatKeyword = key.replace(/[-\/\\^$*+?.()|[\]{}]/g, '\\$&')
+    console.log("regexp==============>", key);
+    //将'=-='字符串 反向还原成'%'
+    key = key.replace(/=-=/g, '%');
+
+    console.log("regexp===>", key);
+
+    //将关键字转义
+    var keyTemp = new RegExp(escapeRegExp(key), 'gi');
+
+    // key = re;
     var finder = new RegExp(">.*?<", 'g'); // 提取位于标签内的文本，避免误操作 class、id 等
     html = html.replace(finder, function (matched) {
-      return matched.replace(new RegExp(key, 'gi'), "<span style='background-color: yellow'>$&</span>");
+      return matched.replace(new RegExp(keyTemp, 'gi'), "<span style='background-color: yellow'>$&</span>");
     });
   }
 
@@ -1552,6 +1624,11 @@ var _marked = require('marked');
 var _marked2 = _interopRequireDefault(_marked);
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//转义特定字符
+function escapeRegExp(text) {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+};
 
 },{"marked":19}],6:[function(require,module,exports){
 (function (global){
@@ -1588,10 +1665,13 @@ function _inherits(subClass, superClass) { if (typeof superClass !== "function" 
 var Nav = function (_Component) {
   _inherits(Nav, _Component);
 
-  function Nav() {
+  function Nav(props) {
     _classCallCheck(this, Nav);
 
-    return _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).apply(this, arguments));
+    var _this = _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).call(this, props));
+
+    _this.contentMenu = _this.contentMenu.bind(_this);
+    return _this;
   }
 
   _createClass(Nav, [{
@@ -1718,7 +1798,7 @@ var Nav = function (_Component) {
           onMouseDown: function onMouseDown(e) {
             return _this2.click(e);
           },
-          onContextMenu: this.contentMenu.bind(this),
+          onContextMenu: this.contentMenu,
           style: {
             width: 'calc(' + maxWidth + 'px + ' + c + 'rem'
           }
@@ -1863,13 +1943,30 @@ var Items = function (_Component) {
     return _this;
   }
 
+  //转义特定字符
+
+
   _createClass(Items, [{
+    key: 'escapeRegExp',
+    value: function escapeRegExp(text) {
+      return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _this2 = this;
 
       var resultList = [];
-      var re = new RegExp(this.props.keyword, 'gi');
+
+      //将关键字转义
+
+      var keyTemp = this.props.keyword;
+      if (this.props.keyword !== '%') {
+        keyTemp = decodeURIComponent(this.props.keyword);
+      }
+
+      // let keyTemp = decodeURIComponent(this.props.keyword)
+      var re = new RegExp(this.escapeRegExp(keyTemp), 'gi');
 
       var cTitle = _react2.default.createElement('span', {
         className: 'resulttitle',
@@ -1879,14 +1976,6 @@ var Items = function (_Component) {
       });
 
       var _loop = function _loop(i) {
-
-        // let contentTrans = this.props.contentList[i];
-        // let index = contentTrans.indexOf(this.props.keyword);
-        // console.log("keyword index: ",index);
-        // if (index > 100)
-        // {
-        //   contentTrans = "..." + contentTrans.slice(index-100);
-        // }
         if (_this2.props.idList[i] == 'h0') {
           return 'continue';
         }
@@ -1956,7 +2045,7 @@ function Mismatch(props) {
       _react2.default.createElement(
         'div',
         { id: 'NoResult' },
-        global.i18n['NoResult'].replace('%1', decodeURIComponent(props.keyword))
+        global.i18n['NoResult']
       )
     )
   );
@@ -1969,13 +2058,15 @@ var SearchPage = function (_Component2) {
     _classCallCheck(this, SearchPage);
 
     return _possibleConstructorReturn(this, (SearchPage.__proto__ || Object.getPrototypeOf(SearchPage)).call(this, props, context));
+
+    // console.log('search constructor:',this.context);
   }
 
   _createClass(SearchPage, [{
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
-      var key = nextProps.match.params;
-      console.log("search componentWillReceiveProps..key:", key);
+      // console.log("search componentWillReceiveProps..",this.context.searchResult);
+      console.log("search componentWillReceiveProps..");
     }
   }, {
     key: 'componentDidUpdate',
@@ -2010,7 +2101,6 @@ var SearchPage = function (_Component2) {
           {
             id: 'search',
             tabIndex: '-1'
-            // onMouseOver={e => document.getElementById('search').focus()}
           },
           c
         )

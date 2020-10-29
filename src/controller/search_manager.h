@@ -23,9 +23,6 @@
 #include <QObject>
 
 class QThread;
-
-namespace dman {
-
 class SearchDb;
 
 class SearchManager : public QObject
@@ -55,7 +52,5 @@ private:
     SearchDb *db_;
     QThread *db_thread_;
 };
-
-} // namespace dman
 
 #endif // DEEPIN_MANUAL_CONTROLLER_SEARCH_MANAGER_H

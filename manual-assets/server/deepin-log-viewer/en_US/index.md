@@ -187,4 +187,4 @@ Click Help to get the manual, which will help you further know and use Log Viewe
 2. Click  **Exit**.
 
 
-<div class="version-info"><span>Update Date: 2020-09-11</span><span> Version: 5.8</span></div>
+<div class="version-info"><span>Update Date: 2020-10-29</span><span> Version: 5.8</span></div>

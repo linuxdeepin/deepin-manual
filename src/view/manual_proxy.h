@@ -21,8 +21,6 @@
 #include <QDBusConnection>
 #include <QDesktopServices>
 
-namespace dman {
-
 class ManualProxy : public QObject
 {
     Q_OBJECT
@@ -44,6 +42,8 @@ public slots:
     bool hasSelperSupport();
     void finishChannel();
     void supportClick();
+    bool bIsLongSon();
+
 
 private:
     void saveAppList(const QStringList &list);
@@ -51,7 +51,5 @@ private:
 private:
     QStringList app_list_;
 };
-
-} // namespace dman
 
 #endif // DEEPIN_MANUAL_VIEW_MANUAL_PROXY_H

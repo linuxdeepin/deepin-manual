@@ -14,6 +14,10 @@ export default class Article extends Component {
       fillblank: null,
       bIsTimerOut:true
     };
+    
+    this.scroll = this.scroll.bind(this);
+    this.click  = this.click.bind(this);
+    this.contentMenu = this.contentMenu.bind(this)
 
     var timerObj;
   }
@@ -43,7 +47,7 @@ export default class Article extends Component {
           this.setState({ smoothScroll: false });
       },800);
 
-      scrollIntoView(hashNode, { behavior: 'smooth', block: 'start' }).then(() => {
+      scrollIntoView(hashNode, { behavior: global.scrollBehavior, block: 'start' }).then(() => {
 
         //scrollIntoView函数存在异步,如果tempHash != this.hash时,说明存在异步操作,直接return. 
         if(tempHash != this.hash) return;
@@ -78,6 +82,15 @@ export default class Article extends Component {
   componentDidMount() {
     console.log("article componentDidMount");
     this.componentDidUpdate();
+  }
+
+  shouldComponentUpdate(nextProps,nextState){
+    console.log("article shouldComponentUpdate====",this.hash , "prop hash:" ,this.props.hash);
+    // if (this.hash == this.props.hash)
+    // {
+    //   return false;
+    // }
+    return true;
   }
 
   componentWillReceiveProps(nextProps) {
@@ -170,10 +183,9 @@ export default class Article extends Component {
 
   //滚动事件
   scroll() {
-    console.log("article scroll");
-    if (!this.load) {
-      return;
-    }
+    // if (!this.load) {
+    //   return;
+    // }
     if (this.state.smoothScroll) {
       return;
     }
@@ -220,6 +232,7 @@ export default class Article extends Component {
     if (this.state.preview != null) {
       this.setState({ preview: null });
     }
+    console.log("======>",e.target.nodeName);
     switch (e.target.nodeName) {
       case 'IMG':
         e.preventDefault();
@@ -231,6 +244,7 @@ export default class Article extends Component {
         global.qtObjects.imageViewer.open(src);
         return;
       case 'A':
+      {
         const dmanProtocol = 'dman://';
         const hashProtocol = '#';
         const httpProtocol = 'http';
@@ -244,9 +258,6 @@ export default class Article extends Component {
           case href.indexOf(dmanProtocol):
             e.preventDefault();
             const [appName, hash] = href.slice(dmanProtocol.length + 1).split('#');
-            // const rect = e.target.getBoundingClientRect();
-            // this.showPreview(appName, hash, rect);
-            // this.showPreviewTmp(appName,hash);
             global.openTitle(appName,hash);
             return;
           case href.indexOf(httpProtocol):
@@ -254,6 +265,34 @@ export default class Article extends Component {
             global.qtObjects.imageViewer.openHttpUrl(href);
             return;
         }
+      }
+      //解决bug-46888, 当a标签内含有span标签,点击获取的是span标签,此时用其父元素来处理.
+      case 'SPAN':
+        e.preventDefault();
+        var parNode = e.target.parentNode;
+        if (parNode.nodeName == 'A')
+        {
+          const dmanProtocol = 'dman://';
+          const hashProtocol = '#';
+          const httpProtocol = 'http';
+          const hrefTmp = parNode.getAttribute('href');
+          switch (0) {
+            case hrefTmp.indexOf(hashProtocol):
+              e.preventDefault();
+              this.props.setHash(document.querySelector(`[text="${href.slice(1)}"]`).id);
+              return;
+            case hrefTmp.indexOf(dmanProtocol):
+              e.preventDefault();
+              const [appName, hash] = hrefTmp.slice(dmanProtocol.length + 1).split('#');
+              global.openTitle(appName,hash);
+              return;
+            case hrefTmp.indexOf(httpProtocol):
+              e.preventDefault();
+              global.qtObjects.imageViewer.openHttpUrl(hrefTmp);
+              return;
+          }
+        }
+        return;
     }
   }
 
@@ -279,7 +318,7 @@ export default class Article extends Component {
     return (
           <div id="article">
             <div id="article_bg">
-              <Scrollbar onScroll={this.scroll.bind(this)}
+              <Scrollbar onScroll={this.scroll}
                          onWheel={(e) => this.handleWheelScroll(e)}
                          onKeyUp={(e) => this.handleKeyUp(e)}
                          onKeyDown={(e) => this.handleKeyDown(e)}>
@@ -290,8 +329,8 @@ export default class Article extends Component {
                   tabIndex="-1"
                   dangerouslySetInnerHTML={{ __html: this.props.html }}
                   style={this.state.fillblank}
-                  onClick={this.click.bind(this)}
-                  onContextMenu={this.contentMenu.bind(this)}
+                  onClick = {this.click}
+                  onContextMenu={this.contentMenu}
                 />
                 {/* {this.state.preview != null && (
                   <div

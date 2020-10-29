@@ -20,6 +20,8 @@
 #include "controller/window_manager.h"
 #include "environments.h"
 #include "resources/themes/images.h"
+#include "controller/shellobj.h"
+#include "base/accessible.h"
 
 #include <DApplication>
 #include <DApplicationSettings>
@@ -36,6 +38,7 @@ int main(int argc, char **argv)
     qputenv("DXCB_FAKE_PLATFORM_NAME_XCB", "true");
     //禁用GPU
     qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu");
+    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--single-process");
     //所有进程类型禁用沙箱..此配置开启禁用gpu后无效
 //    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--no-sandbox");
     //龙芯机器配置,使得DApplication能正确加载QTWEBENGINE
@@ -44,10 +47,19 @@ int main(int argc, char **argv)
 //    qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "7777");
 //    Dtk::Widget::DApplication::loadDXcbPlugin();
 
+
     Dtk::Widget::DApplication app(argc, argv);
     if (!DPlatformWindowHandle::pluginVersion().isEmpty()) {
         app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings, true);
     }
+
+#ifdef DCPU_IS_LONGSON
+    //add by wujian 20200907 for 解决龙芯平台，QWebEngine因字体库字体太多，造成启动失败的问题
+    QString strHomePath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
+    QString strExeShell = QString("rm -fr %1/.cache/fontconfig").arg(strHomePath);
+    shellObj::execSystem(strExeShell);
+#endif
+
     //设置窗口属性
     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
     app.setWindowIcon(QIcon::fromTheme("deepin-manual"));
@@ -55,7 +67,7 @@ int main(int argc, char **argv)
     app.setOrganizationName("deepin");
     app.setOrganizationDomain("deepin.org");
     app.setApplicationVersion(VERSION);
-    app.setApplicationName(dman::kAppName);
+    app.setApplicationName(kAppName);
     app.loadTranslator();
     app.setApplicationDisplayName(QObject::tr("Manual"));
     app.setApplicationDescription(QObject::tr(
@@ -63,15 +75,15 @@ int main(int argc, char **argv)
                                       " providing specific instructions and function descriptions."));
     app.setApplicationAcknowledgementPage("https://www.deepin.org/acknowledgments/deepin-manual/");
 
-    dman::ArgumentParser argument_parser;
-    dman::WindowManager window_manager;
+    ArgumentParser argument_parser;
+    WindowManager window_manager;
     //绑定参数解析 信号与槽
-    QObject::connect(&argument_parser, &dman::ArgumentParser::newAppOpen,
-                     &window_manager, &dman::WindowManager::onNewAppOpen);
-    QObject::connect(&argument_parser, &dman::ArgumentParser::openManualWithSearchRequested,
-                     &window_manager, &dman::WindowManager::openManualWithSearch);
-    QObject::connect(&argument_parser, &dman::ArgumentParser::openManualRequested,
-                     &window_manager, &dman::WindowManager::openManual);
+    QObject::connect(&argument_parser, &ArgumentParser::newAppOpen,
+                   &window_manager, &WindowManager::onNewAppOpen);
+    QObject::connect(&argument_parser, &ArgumentParser::openManualWithSearchRequested,
+                   &window_manager, &WindowManager::openManualWithSearch);
+    QObject::connect(&argument_parser, &ArgumentParser::openManualRequested,
+                   &window_manager, &WindowManager::openManual);
 
     if (!argument_parser.parseArguments()) {
         qDebug() << "argument_parser.parseArguments()";
@@ -82,6 +94,7 @@ int main(int argc, char **argv)
         return app.exec();
     }
     argument_parser.openManualsDelay();
+
 
     // 日志保存, 路径:~/.cach/deepin/deepin-manual/
     DApplicationSettings dApplicationSettings;
@@ -97,5 +110,7 @@ int main(int argc, char **argv)
     static Dtk::Core::Logger customLoggerInstance(category);
     customLoggerInstance.logToGlobalInstance(category, true);
     customLoggerInstance.registerAppender(fileAppender);
+
+    QAccessible::installFactory(accessibleFactory);
     return app.exec();
 }

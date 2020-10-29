@@ -14,8 +14,6 @@
 #include <QCommandLineParser>
 #include <QDBusConnection>
 
-namespace dman {
-
 namespace {
 
 QString ConvertOldDmanPath(const QString &app_name)
@@ -135,5 +133,3 @@ void ArgumentParser::onSearchRequested(const QString &keyword)
     qDebug() << Q_FUNC_INFO << keyword;
     emit this->openManualWithSearchRequested("", keyword);
 }
-
-} // namespace dman

@@ -315,7 +315,7 @@ Uninstall the applications you no longer use to save disk space.
 
 
 ## Control Center
-You can manage the system settings in Control Center, including account management, network settings, date and time, personalization, display settings, system and application update, etc. After enter the desktop environment, click ![controlcenter](icon/controlcenter.svg) to open Control Center.
+You can manage the system settings in Control Center, including account management, network settings, date and time, personalization, display settings, system and application update, etc. After entering the desktop environment, click ![controlcenter](icon/controlcenter.svg) to open Control Center.
 
 ### Homepage Introduction
 The homepage of Control Center provides several setting modules and click one to enter the detailed settings. 
@@ -432,7 +432,7 @@ Set screen resolution, brightness, direction and display scaling properly to hav
 
 Expand your desktop by multiple screens! Use VGA/HDMI/DP cable to connect your computer to other display devices.
 
-1. On the homepage of Control Center, click ![display_normal](D:/工作/专业版/SP2 UPDATE1-英文-0803/dde/en_US/icon/display_normal.svg).
+1. On the homepage of Control Center, click ![display_normal](icon/display_normal.svg).
 2. Click **Multiple Displays**.
 3. Select a display mode:
    - **Duplicate**: display the same image on other screens.
@@ -440,22 +440,24 @@ Expand your desktop by multiple screens! Use VGA/HDMI/DP cable to connect your c
    - **XXX only**: display the screen content only on one screen.
    - **Customize**: customize the display settings for multiple screens.
 
-> ![tips](D:/工作/专业版/SP2 UPDATE1-英文-0803/dde/en_US/icon/tips.svg)Tips: In multiple displays, press **Super** + **P** to show its OSD. Operations are as follows:
->
-> 1. Hold **Super** and press **P** or click to select the options. 
-> 2. Release the keys, the selected mode will take into effect.
+In multiple displays, press **Super** + **P** to show its OSD. 
 
->![notes](D:/工作/专业版/SP2 UPDATE1-英文-0803/dde/en_US/icon/notes.svg)Notes: When the multiple displays are in the extend mode, only the main screen supports desktop icon display, right-click menu operation and other functions, while the sub-screens do not. 
+Operations are as follows:
+
+1. Hold **Super** and press **P** or click to select the options. 
+2. Release the keys, the selected mode will take into effect.
+
+>![notes](icon/notes.svg)Notes: When the multiple displays are in the extend mode, only the main screen supports desktop icon display, right-click menu operation and other functions, while the sub-screens do not. 
 
 ##### Custom Settings
 
-1. On the homepage of Control Center, click ![display_normal](D:/工作/专业版/SP2 UPDATE1-英文-0803/dde/en_US/icon/display_normal.svg).
+1. On the homepage of Control Center, click ![display_normal](icon/display_normal.svg).
 2. Click **Multiple Displays** > **Customize**.
 3. Click **Recognize**. 
 4. Choose **Merge** or **Split** the screens, specify the main screen, set the resolution and refresh rate, and rotate screen if you want.
 5. Click **Save**.
 
-> ![notes](D:/工作/专业版/SP2 UPDATE1-英文-0803/dde/en_US/icon/notes.svg)Notes: "Merge" means duplicate mode, "Split" means extend mode. 
+> ![notes](icon/notes.svg)Notes: "Merge" means duplicate mode, "Split" means extend mode. 
 
 ### Default Application Settings
 If you have installed several applications with similar functions, such as text editor, choose one of them to be the default application to open that type of file.
@@ -652,7 +654,7 @@ You can set "Do Not Disturb" to system notifications, and also switch on or off 
 
 You can set "Do Not Disturb" to system notifications and whether to show icon on Dock here.
 
-1. On the homepage of Control Center, click ![nav_notifi_42px](icon/nav_notifi_42px.svg).
+1. On the homepage of Control Center, click ![nav_notifi_42px](icon/dcc_nav_notification_36px.svg).
 
 2. Click **System Notification**.
 
@@ -664,7 +666,7 @@ You can set "Do Not Disturb" to system notifications and whether to show icon on
 
 You can custom notification hints for all applications.
 
-1. On the homepage of Control Center, click ![nav_notifi_42px](icon/nav_notifi_42px.svg).
+1. On the homepage of Control Center, click ![nav_notifi_42px](icon/dcc_nav_notification_36px.svg).
 2. Under **App Notifications**, select an application, and in the window on the right, you can choose to check:
    - Play a sound
    - Show messages on lockscreen
@@ -679,30 +681,30 @@ Set your speaker and microphone properly to make you hear more comfortable and m
 
 ![0|sound](jpg/sound.png)
 
-#### Speaker
+#### Output
 
 1. On the homepage of Control Center, click ![sound_normal](icon/sound_normal.svg).
-2. Click **Speaker**.
-3. Switch on **Speaker** and you can:
+
+2. Click **Output** to:
+
+   - Select output device type from the dropdown list after **Output Device**.
+
    - Drag the slider to adjust output volume and left/right balance.
    - Switch on **Volume Boost**, the volume could be adjustable from 0~150% (the former range is 0~100%).
 
-> ![tips](icon/tips.svg)Tips: If "Speaker" is switched off, you will not hear any sound.
 
-#### Microphone
+
+#### Input
 
 1. On the homepage of Control Center, click ![sound_normal](icon/sound_normal.svg).
-2. Click **Microphone**.
-3. Switch on **Microphone** to enable the microphone.
-4. Adjust the input volume.
+2. Click **Input** to:
+   - Select input device type from the dropdown list after **Input Device**.
+   - Adjust input volume by dragging the slider.
+   - You can enable **Automatic Noise Suppression** by clicking the button after "Automatic Noise Suppression". 
 
 > ![tips](icon/tips.svg)Tips: Usually, you need to turn up the input volume to make sure that you can hear the sound of the sound source, but the volume should not be too high, because it will cause distortion of the sound. Here is how to set input volume: Speak to your microphone at a normal volume and view "Input Level". If the indicator changes obviously according to the volume, then the input volume is at a proper level. 
 
-#### Advanced Settings
 
-1. On the homepage of Control Center, click ![sound_normal](icon/sound_normal.svg).
-2. Click **Advanced**.
-3. Select the input and output devices.
 
 #### System Sound Effects
 
@@ -748,6 +750,14 @@ Note that the auto-sync function will be disabled after changing date and time m
    - Enter the correct date and time.
 3. Click **Confirm**.
 
+#### Set Time Format
+
+Setting the format of time and date is supported.
+
+1. On the homepage of Control Center, click ![time](icon/time.svg).
+2. Click **Time Format** to set the first day of week, long date, short date, long time, and short time.
+
+
 
 ### Power Management
 
@@ -770,8 +780,35 @@ Power management turns the system to a low-power state when inactive, thus makin
 2. Click **Plugged In** and **On Battery**.
 3. Set the time to lock screen.
 
+#### Set "When the lid is closed"
+
+1. On the homepage of Control Center, click ![power_normal](icon/power_normal.svg).
+2. Click **Plugged In** and **On Battery**.
+3. You can select **Suspend**, **Hibernate**, **Turn off the monitor** and **Do nothing** from the dropdown list after **When the lid is closed**.  
+
+>![notes](icon/notes.svg)Notes: This function is only available for laptops.
+
+#### Power button settings
+
+1. On the homepage of Control Center, click ![power_normal](icon/power_normal.svg).
+2. Click **Plugged In** and **On Battery**.
+3. You can select **Shut down, Suspend, Hibernate, Turn off the monitor, Do nothing** from the drop-down list after **When pressing the power button**.
+
+Any operation done here will take effect immediately. At the same time, the system will notify the user that the power button setting is changed. 
+
+#### Set "Low Battery Notification"
+
+1. On the homepage of Control Center, click ![power_normal](icon/power_normal.svg).
+2. Click **Plugged In**.
+3. Switch on **Low Battery Notification**. The system issues a low battery notification when the remaining battery power is below a set threshold (for example, 20%).
+
+You can adjust the threshold of low battery level by dragging the slider below "Low battery level".  You can adjust the threshold of auto suspend battery level by dragging the slider below "Auto suspend battery level".
+
+>![notes](icon/notes.svg)Notes: This function is only available for laptops.
+
 ### Mouse
-Mouse are common computer input devices. Using the mouse, you can make the operation easier and faster. 
+
+Mouse and Touchpad are common computer input devices. Using the mouse, you can make the operation easier and faster. For laptop computer users, when there is no mouse, the touchpad can also be used to replace the mouse for operation.
 
 ![0|mouse](jpg/mouse.png)
 
@@ -786,16 +823,31 @@ Mouse are common computer input devices. Using the mouse, you can make the opera
 #### Mouse
 After inserting or connecting the mouse, make relevant settings in the Control Center to make it more in line with your usage habits. 
 
+![notes](icon/notes.svg)Notes: If there is no touchpad, “Disable touchpad when a mouse is connected” will not be shown.
+
 1. On the homepage of Control Center, click ![mouse_touchpad_normal](icon/mouse_touchpad_normal.svg).
 2. Click **Mouse**.
-3. Adjust **Pointer Speed**.
+3. Adjust **Pointer Speed**, which helps you to control the speed at which the pointer moves as the mouse moves.
 4. Switch on **Natural Scrolling**/**Mouse Acceleration** if you want.
 
-> ![notes](icon/notes.svg)Notes: Turn on the mouse acceleration to improve the accuracy of the pointer. The moving distance of the mouse pointer on the screen will increase according to the acceleration of the moving speed. It can be turned on or off according to the usage.
+> ![notes](icon/notes.svg)Notes:
+>   -  Turn on the mouse acceleration to improve the accuracy of the pointer. The moving distance of the mouse pointer on the screen will increase according to the acceleration of the moving speed. It can be turned on or off according to the usage.
+>   -  If Natural Scrolling is enabled, when you scroll down, the page will scroll down, when you scroll up, the page will scroll up as well. 
 
-> ![notes](icon/notes.svg)Notes: If Natural Scrolling is enabled, when you scroll down, the page will scroll down, when you scroll up, the page will scroll up as well. 
+#### Touchpad
 
+![0|touchpad](jpg/touchpad.png)
 
+If you are using a laptop,  in order to avoid mis-operation on the touchpad, you can switch on **Disable touchpad while typing** in **Mouse > General** interface, and switch on **Disable touchpad when a mouse is connected** in **Mouse > Mouse** interface.  
+
+You can also change **Pointer Speed**, and switch on **Natural Scrolling** for the touchpad.
+
+#### TrackPoint
+TrackPoint, also called pointing stick, is a small joystick used as a pointing device, typically mounted centrally in a laptop keyboard and used to control pointer movements on the screen.
+
+1. On the homepage of Control Center, click ![mouse_touchpad_normal](icon/mouse_touchpad_normal.svg).
+2. Click **TrackPoint**.
+3. Adjust **Pointer Speed** to a proper level.
 
 ### Keyboard and Language
 Set keyboard properties and select your keyboard layout to keep your typing habit. You can also adjust the keyboard layout according to the country and language, change system language, and customize shortcuts here.
@@ -921,7 +973,17 @@ When there are system updates, it will be notified on the home page of Control C
 
 > ![tips](icon/tips.svg)Tips:  Switch on **Auto Clear Package Cache** to remove the downloaded package caches regularly. 
 
+
+
+#### System Repository Detection
+
+1. On the homepage of Control Center, click ![update](icon/update.svg).
+2. Click **Update Settings**.
+3. Switch on **System Repository Detection** to show a notification if system update repository has been modified.
+> ![notes](icon/notes.svg)Notes: Switch on **Smart Mirror Switch** to connect to the quickest mirror site automatically.
+
 ### System Info
+
 You can view system version, authorization info, hardware info, and the agreements here.
 
 ![0|info](jpg/info.png)
@@ -1044,7 +1106,7 @@ The off-line activation can be adopted when the network connection is abnormal.
 
 ![0|activation code3](jpg/activation-code3.png)
 
-2. The authorization management icon will no longer be displayed in the tray in the lower right corner after the system is activated successfully. It is available to view the authorization management tool in the Control Center.
+The authorization management icon will no longer be displayed in the tray in the lower right corner after the system is activated successfully. It is available to view the authorization management tool in the Control Center.
 
 #### Activation Failure
 
@@ -1060,6 +1122,8 @@ If the current server crashes, it is available to customize a new activation ser
 
 In order to avoid data loss or damage caused by software defects, hardware damage, improper human operation, hacker attacks, computer viruses, natural disasters and other factors, the application data or system data can be backed up and restored to ensure the normal operation of the system.
 
+![0|backup-recovery](jpg/backup-restore.png)
+
 #### Backup
 
 UnionTech OS provides backup by initialization and backup through Control Center.
@@ -1074,7 +1138,7 @@ You can either manually backup / restore data or restore data by one click.
 
 1. On the homepage of Control Center, click ![system_info_normal](icon/system_info_normal.svg).
 
-2. Select **Backup/Restore** > **Backup** to set the backup type and save the path of files backed up.
+2. Select **Backup and Restore** > **Backup** to set the backup type and save the path of files backed up.
    Backup Type: Full Backup and System Backup
 
    - Full Backup: to back up system files and user files of the whole disk
@@ -1083,7 +1147,7 @@ You can either manually backup / restore data or restore data by one click.
 
    > ![attention](icon/attention.svg)Attention:  **Full Backup** cannot backed up files on its own disk, but can only back up files in other storage media. **System Backup** has set the default storage location of files. When the storage space is insufficient, you can manually change the storage path of backup files.
 
-3. Click **Backup**, the password input box pops up, please input the password to authorize the backup file until the file backup is completed.
+3. Click **Back Up**, the password input box pops up, please input the password to authorize the backup file until the file backup is completed.
 
 > ![notes](icon/notes.svg)Notes: In the process of file backup, please do not unplug the power supply or forcibly shut down to prevent data loss or damage.
 
@@ -1102,14 +1166,14 @@ During system startup, in the system selection interface, click **UnionTech OS B
 You can either restore all settings or manually restore the previous backup data.
 
 1. On the homepage of Control Center, click ![system_info_normal](icon/system_info_normal.svg).
-2. Click **Backup/Restore** > **Restore** to select:
+2. Click **Backup and Restore** > **Restore** to select:
 
    - Restore All Settings
-     1. You can choose to check **Keep personal files and apps** and click **Restore**. Click **OK** in the dialogue box pops up. 
+     1. You can choose to check **Keep personal files and apps** and click **Restore Now** . Click **Confirm** in the dialogue box pops up. 
      2. Please input the password to authorize the data restoring.
    - Manual Restore
      1. After selecting restoring directory, click ![three_dots](jpg/three_dots.png) to select the files you want to restore.
-     2. Click **Restore** to start system restoring.
+     2. Click **Restore Now** to start system restoring.
 
 
 
@@ -1155,4 +1219,4 @@ You can use the keyboard to switch between various interface areas, select objec
 | **Ctrl** + **M**                                             | Open the right-click menu.                                   |
 
 
-<div class="version-info"><span>Update Date: 2020-09-11</span><span> Version: 2020.03</span></div>
+<div class="version-info"><span>Update Date: 2020-10-29</span><span> Version: 2020.03</span></div>
