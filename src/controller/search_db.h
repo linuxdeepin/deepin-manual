@@ -33,7 +33,7 @@ public:
     ~SearchDb() override;
 
 signals:
-    void initDbAsync(const QString &db_path);
+    void initDbAsync();
     void searchAnchor(const QString &keyword);
     void searchAnchorResult(const QString &keyword,
                             const SearchAnchorResultList &result);
@@ -46,7 +46,7 @@ signals:
     void searchContentMismatch(const QString &keyword);
 
 public slots:
-    void initDb(const QString &db_path);
+    void initDb();
     /***************search表***************/
     void initSearchTable();
     void addSearchEntry(const QString &app_name,
@@ -56,14 +56,14 @@ public slots:
                         const QStringList &anchorSpellList,
                         const QStringList &anchorIdList,
                         const QStringList &contents);
-    void deleteSearchInfo(const QStringList &appName,const QStringList &lang);
+    void deleteSearchInfo(const QStringList &appName, const QStringList &lang);
 
 
     /***************filetime表***************/
     void initTimeTable();
     //文件信息插入数据库 （先删除数据，再插入数据）
     void insertFilesTimeEntry(const QStringList &listMdPath,
-                             const QStringList &listDataTime);
+                              const QStringList &listDataTime);
 //    void updateFileTimeEntry(const QString &appName,
 //                             const QString &lang,
 //                             const QString &dataTime);

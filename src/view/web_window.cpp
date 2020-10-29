@@ -137,6 +137,18 @@ void WebWindow::initWeb()
     web_view_->load(QUrl::fromLocalFile(info.absoluteFilePath()));
 }
 
+void WebWindow::updatePage(const QStringList &list)
+{
+    if (search_proxy_) {
+        QStringList appList;
+        for (const QString &app : list) {
+            QStringList splitList = app.split("/");
+            appList.append(splitList.at(splitList.count() - 3));
+        }
+        emit search_proxy_->reloadPage(appList);
+    }
+}
+
 /**
  * @brief WebWindow::updateBtnBox 更新当前按钮组状态
  */
@@ -599,11 +611,7 @@ void WebWindow::initShortcuts()
     scSearch->setAutoRepeat(false);
     connect(scSearch, &QShortcut::activated, this, [this] {
         qDebug() << "search" << endl;
-//        search_edit_->lineEdit()->setFocus(Qt::ShortcutFocusReason);
-        QStringList list = {"dde", "deepin-app-store"};
-        emit search_proxy_->reloadPage(list);
-//        web_view_->page()->runJavaScript(QString("reloadPage('%1')").arg("dde"));
-//        onTitleBarEntered();
+        search_edit_->lineEdit()->setFocus(Qt::ShortcutFocusReason);
     });
 }
 
@@ -774,6 +782,7 @@ void WebWindow::onSearchTextChangedDelay()
  */
 void WebWindow::onTitleBarEntered()
 {
+    qDebug() << Q_FUNC_INFO;
     QString textTemp = search_edit_->text();
     const QString text = textTemp.remove('\n').remove('\r').remove("\r\n").remove(QRegExp("\\s"));
     if (text.size() >= 1) {

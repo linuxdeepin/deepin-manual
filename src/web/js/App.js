@@ -171,17 +171,34 @@ class App extends React.Component {
   }
 
   onReloadPage(appList) {
-    console.log("============>page reload...");
+    // console.log("============>page reload...");
     var locationPath = this.context.router.history.location.pathname;
+    console.log("============>page reload...",locationPath);
     var list = locationPath.split("/");
     if (list[1] == 'open')
     {
-      console.log("============>open...");
-      if (appList.indexOf(list[2]) != -1)
+      console.log("============>open...",appList,list[2]);
+      
+      let bFlag = false;
+      appList.map(app =>{
+        if (!bFlag && list[2].indexOf(app) != -1)
+        {
+          bFlag = true;
+        }
+      })
+
+      if (bFlag)
       {
         global.bIsReload = true;
         this.context.router.history.go(0);
       }
+
+
+      // if (appList.indexOf(list[2]) != -1)
+      // {
+      //   global.bIsReload = true;
+      //   this.context.router.history.go(0);
+      // }
     }
     else if (list[1] == 'search')
     {

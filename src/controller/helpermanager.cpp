@@ -16,9 +16,7 @@ helperManager::helperManager(QObject *parent)
 
 void helperManager::initDbConfig()
 {
-    QString  dbPath = Utils::getSystemManualDir() + "/search.db";
-    qDebug() << "=====>" << dbPath;
-    dbObj->initDb(dbPath);
+    dbObj->initDb();
     dbObj->initSearchTable();
     dbObj->initTimeTable();
 }
@@ -170,7 +168,6 @@ void helperManager::handleDb(const QStringList &deleteList, const QStringList &a
 void helperManager::dbusSend(const QStringList &deleteList, const QStringList &addList)
 {
     QStringList list;
-    list.clear();
     list << deleteList;
     list << addList;
 

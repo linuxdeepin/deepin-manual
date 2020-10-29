@@ -56,6 +56,7 @@ public:
     ~WebWindow() override;
 
     void initWeb();
+    void updatePage(const QStringList &list);
     void updateBtnBox();
     void cancelTextChanged();
     void openjsPage(const QString &app_name, const QString &title_name);

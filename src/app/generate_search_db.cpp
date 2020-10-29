@@ -54,10 +54,10 @@ int main(int argc, char **argv)
 
 //        dman::SearchDb db;
         SearchDb db;
-        db.initDb(strCreateDbPath);
+        db.initDb();
         db.initSearchTable();
 
-        QStringList list = {"zh_CN","en_US"};
+        QStringList list = {"zh_CN", "en_US"};
 //        list << "zh_CN"
 //             << "en_US";
         for (QString &locale : list) {
@@ -91,7 +91,7 @@ int main(int argc, char **argv)
                     continue;
                 }
 
-                qDebug()<<"====>"<<out;
+                qDebug() << "====>" << out;
                 // Parse json
                 QJsonDocument document = QJsonDocument::fromJson(out.toLocal8Bit());
                 if (!document.isArray()) {

@@ -111,20 +111,30 @@ void ManualSearchProxy::OnNewWindowOpen(const QString &data)
  */
 bool ManualSearchProxy::ManualExists(const QString &app_name)
 {
+    QStringList moduleList;
     QString strManualPath = DMAN_MANUAL_DIR;
-    int nType = Dtk::Core::DSysInfo::deepinType();
-    if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
-        strManualPath += "/server";
-    } else if (Dtk::Core::DSysInfo::DeepinPersonal == (Dtk::Core::DSysInfo::DeepinType)nType) {
-        strManualPath += "/personal";
-    } else {
-        if (Dtk::Core::DSysInfo::isCommunityEdition()) {
-            strManualPath += "/community";
-        } else {
-            strManualPath += "/professional";
+    for (const QString &type : QDir(strManualPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+        if (type == "system" || type == "application") {
+            QString typePath = strManualPath + "/" + type;
+            for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+                moduleList.append(module);
+            }
         }
     }
+    return moduleList.contains(app_name);
 
-    QDir manual_dir(strManualPath);
-    return manual_dir.exists(app_name);
+//    int nType = Dtk::Core::DSysInfo::deepinType();
+//    if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
+//        strManualPath += "/server";
+//    } else if (Dtk::Core::DSysInfo::DeepinPersonal == (Dtk::Core::DSysInfo::DeepinType)nType) {
+//        strManualPath += "/personal";
+//    } else {
+//        if (Dtk::Core::DSysInfo::isCommunityEdition()) {
+//            strManualPath += "/community";
+//        } else {
+//            strManualPath += "/professional";
+//        }
+//    }
+//    QDir manual_dir(strManualPath);
+//    return manual_dir.exists(app_name);
 }

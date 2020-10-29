@@ -229,5 +229,8 @@ void WindowManager::openManualWithSearch(const QString &app_name, const QString 
 void WindowManager::onFilesUpdate(const QStringList &filesList)
 {
     qDebug() << Q_FUNC_INFO << filesList;
+    if (window) {
+        window->updatePage(filesList);
+    }
     //window->openjsPage()
 }

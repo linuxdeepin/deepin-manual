@@ -271,19 +271,25 @@ set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
 set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 target_link_libraries(dman  ${LINK_LIBS})
 
-add_executable(dman-search
-               app/dman_search.cpp
-               ${DBUS_FILES}
-               )
-target_link_libraries(dman-search
-                      ${DMAN_SEARCH_LINK_LIBS})
+#add_executable(dman-search
+#               app/dman_search.cpp
+#               ${DBUS_FILES}
+#               )
+#target_link_libraries(dman-search
+#                      ${DMAN_SEARCH_LINK_LIBS})
 
 add_executable(dmanHelper
                 app/dman_helper.cpp
                 base/utils.cpp
                 base/utils.h
+                dbus/dbus_consts.cpp
+                dbus/dbus_consts.h
                 dbus/dbusvariant/app_info.cpp
                 dbus/dbusvariant/app_info.h
+                dbus/manual_search_adapter.cpp
+                dbus/manual_search_adapter.h
+                dbus/manual_search_proxy.cpp
+                dbus/manual_search_proxy.h
                 base/command.cpp
                 base/command.h
                 controller/helpermanager.cpp
@@ -331,8 +337,8 @@ install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/app/dman.sh
         GROUP_READ GROUP_EXECUTE
         WORLD_READ WORLD_EXECUTE
         RENAME dman)
-install(TARGETS dman-search
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+#install(TARGETS dman-search
+#        DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 
 install(TARGETS dmanHelper
         DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
@@ -348,8 +354,8 @@ install(DIRECTORY ${CMAKE_SOURCE_DIR}/manual-assets
 install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/web_dist
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
 #后台服务文件
-install(FILES ${CMAKE_SOURCE_DIR}/src/controller/dman-helper.service
-            DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/systemd/system)
+#install(FILES ${CMAKE_SOURCE_DIR}/src/controller/dman-helper.service
+#            DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/systemd/system)
 
 
 string(TOLOWER ${CMAKE_SYSTEM_PROCESSOR} LOWERCASE_CMAKE_SYSTEM_PROCESSOR)

@@ -160,13 +160,17 @@ void SearchDb::initConnections()
  * @param db_path 数据库文件路径
  * 数据库操作初始化
  */
-void SearchDb::initDb(const QString &db_path)
+void SearchDb::initDb()
 {
-    qDebug() << "initDb database path is--->:" << db_path << endl;
+    QString databasePath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
+    databasePath += "/.local/share/deepin/deepin-manual/search.db";
+
+
+    qDebug() << "initDb database path is--->:" << databasePath  << endl;
     p_->db = QSqlDatabase::addDatabase("QSQLITE");
-    p_->db.setDatabaseName(db_path);
+    p_->db.setDatabaseName(databasePath);
     if (!p_->db.open()) {
-        qCritical() << "Failed to open search db:" << db_path;
+        qCritical() << "Failed to open search db:" << databasePath;
         return;
     }
 }
