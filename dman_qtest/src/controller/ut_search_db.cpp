@@ -22,10 +22,10 @@ TEST_F(ut_search_db_test, initSearchTable)
     if (!dir.exists()) {
         dir.mkpath(strCreateDbPath);
     }
-    strCreateDbPath += "/search.db";
-    SearchDb sd;
+    // strCreateDbPath += "/search.db";
+    //SearchDb sd;
     //sd.initDb(strCreateDbPath);
-    sd.initSearchTable();
+    //sd.initSearchTable();
     qCritical() << "Failed to drop search table";
 }
 
@@ -124,7 +124,7 @@ TEST_F(ut_search_db_test, addSearchEntry)
     strCreateDbPath += "/search.db";
     sd.initDb(strCreateDbPath);
     sd.initSearchTable();
-    sd.addSearchEntry(system, app_name, lang, anchors, anchorInitialList, anchorSpellList, anchorIdList, contents);
+    sd.addSearchEntry(app_name, lang, anchors, anchorInitialList, anchorSpellList, anchorIdList, contents);
 }
 
 TEST_F(ut_search_db_test, addSearchEntry2)
@@ -155,7 +155,7 @@ TEST_F(ut_search_db_test, addSearchEntry2)
     strCreateDbPath += "/search.db";
     sd.initDb(strCreateDbPath);
     sd.initSearchTable();
-    sd.addSearchEntry(system, app_name, lang, anchors, anchorInitialList, anchorSpellList, anchorIdList, contents);
+    sd.addSearchEntry(app_name, lang, anchors, anchorInitialList, anchorSpellList, anchorIdList, contents);
 
 //    QProcess p;
 //    p.start("cp /usr/share/deepin-manual/manual-assets/professional/search.db "
@@ -232,7 +232,7 @@ TEST_F(ut_search_db_test, handleSearchAchor)
     strCreateDbPath += "/search.db";
     sd.initDb(strCreateDbPath);
     sd.initSearchTable();
-    sd.addSearchEntry(system, app_name, lang, anchors, anchorInitialList, anchorSpellList, anchorIdList, contents);
+    sd.addSearchEntry(app_name, lang, anchors, anchorInitialList, anchorSpellList, anchorIdList, contents);
     sd.handleSearchAnchor("概述");
 }
 
@@ -387,6 +387,73 @@ TEST_F(ut_search_db_test, handleSearchContent2)
         QSqlQuery query(db2);
         ASSERT_TRUE(query.exec(kReductionTableName));
     }
+}
+
+TEST_F(ut_search_db_test, initTimeTable)
+{
+    SearchDb sd;
+    sd.initTimeTable();
+}
+
+TEST_F(ut_search_db_test, insertFilesTimeEntry)
+{
+    QStringList listMdPath;
+    QStringList listDataTime;
+    listMdPath << "aaaa" << "A";
+    listDataTime << "0011" << "0022";
+
+    SearchDb sd;
+    QString strCreateDbPath = DMAN_SEARCH_CREATE_DB_PATH;
+    QDir dir(strCreateDbPath);
+    if (!dir.exists()) {
+        dir.mkpath(strCreateDbPath);
+    }
+    strCreateDbPath += "/search.db";
+    sd.initDb(strCreateDbPath);
+
+
+    sd.initTimeTable();
+    sd.insertFilesTimeEntry(listMdPath, listDataTime);
+}
+
+TEST_F(ut_search_db_test, deleteFilesTimeEntry)
+{
+    QStringList listMdPath;
+    listMdPath << "cccc" << "C";
+    SearchDb sd;
+    QString strCreateDbPath = DMAN_SEARCH_CREATE_DB_PATH;
+    QDir dir(strCreateDbPath);
+    if (!dir.exists()) {
+        dir.mkpath(strCreateDbPath);
+    }
+    strCreateDbPath += "/search.db";
+    sd.initDb(strCreateDbPath);
+    sd.deleteFilesTimeEntry(listMdPath);
+}
+
+TEST_F(ut_search_db_test, selectAllFileTime)
+{
+    QMap<QString, QString> map;
+    QStringList listMdPath;
+    QStringList listDataTime;
+    listMdPath << "aaaa" << "A";
+    listDataTime << "0011" << "0022";
+
+    SearchDb sd;
+    QString strCreateDbPath = DMAN_SEARCH_CREATE_DB_PATH;
+    QDir dir(strCreateDbPath);
+    if (!dir.exists()) {
+        dir.mkpath(strCreateDbPath);
+    }
+    strCreateDbPath += "/search.db";
+    sd.initDb(strCreateDbPath);
+    sd.insertFilesTimeEntry(listMdPath, listDataTime);
+    map = sd.selectAllFileTime();
+    ASSERT_EQ(map["aaaa"], "0011");
+    ASSERT_EQ(map["A"], "0022");
+
+
+
 }
 
 
