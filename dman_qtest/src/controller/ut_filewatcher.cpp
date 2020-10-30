@@ -16,6 +16,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "ut_filewatcher.h"
+#include "base/utils.h"
 
 #define private public
 #include "controller/filewatcher.h"

@@ -1,5 +1,9 @@
 #include "helpermanager.h"
 #include "base/command.h"
+#include "base/utils.h"
+#include "controller/filewatcher.h"
+#include "controller/search_db.h"
+
 #include <QDBusMessage>
 #include <QtDBus>
 #include <QDBusConnection>
@@ -158,7 +162,6 @@ void helperManager::handleDb(const QStringList &deleteList, const QStringList &a
             }
 
             if (!invalid_entry) {
-                //            qDebug() << "add search entry" << app_name << locale << anchors << endl;
                 dbObj->addSearchEntry(appName, lang, anchors, anchorInitialList, anchorSpellList, anchorIdList, contents);
             }
         }

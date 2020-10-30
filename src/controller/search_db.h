@@ -64,21 +64,12 @@ public slots:
     //文件信息插入数据库 （先删除数据，再插入数据）
     void insertFilesTimeEntry(const QStringList &listMdPath,
                               const QStringList &listDataTime);
-//    void updateFileTimeEntry(const QString &appName,
-//                             const QString &lang,
-//                             const QString &dataTime);
+
     //根据appName|lang 删除表数据
     void deleteFilesTimeEntry(const QStringList &listMdPath);
 
     //查找filetime表所有内容, key:md文件路径 value: md文件更新时间
     QMap<QString, QString> selectAllFileTime();
-
-    //查找所有 appName | lang
-//    QMap < QString, QStringList> selectAllFileTimeIndexList();
-//    //根据 appName|lang 返回相应的time
-//    QString selectFileTimeByTime(const QString &appName, const QString &lang);
-    //根据 appNa | lang 更新增量更新数据
-    //void updateFileTime(const QString &appName, const QString &lang, const QString &time);
 
 private:
     void initConnections();

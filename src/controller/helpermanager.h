@@ -2,10 +2,10 @@
 #define HELPERMANAGER_H
 
 #include <QObject>
-#include "controller/filewatcher.h"
-#include "controller/search_db.h"
 #include "dpinyin.h"
 
+class fileWatcher;
+class SearchDb;
 class helperManager  : public QObject
 {
     Q_OBJECT

@@ -1,14 +1,13 @@
 #ifndef FILEWATCHER_H
 #define FILEWATCHER_H
 
-#include "base/utils.h"
-
 #include <QObject>
-
 #include <QTimer>
+#include <QMap>
 #include <QFileSystemWatcher>
 
 
+class Utils;
 class fileWatcher : public QObject
 {
     Q_OBJECT
@@ -46,7 +45,6 @@ private:
     QMap<QString, QString> mapOld;
 
     QTimer *timerObj;
-//    QMap<QString,QStringList> mapModule;
 };
 
 #endif // FILEWATCHER_H

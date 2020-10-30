@@ -1,4 +1,5 @@
 #include "filewatcher.h"
+#include "base/utils.h"
 
 #include <QDir>
 #include <QDebug>
@@ -63,10 +64,9 @@ void fileWatcher::monitorFile()
 {
     QString  assetsPath = Utils::getSystemManualDir();
     listModule.append(assetsPath);
-    for(const QString &type : QDir(assetsPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)){
+    for (const QString &type : QDir(assetsPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
         //监控资源文件夹
-        if (type == "system" || type == "application")
-        {
+        if (type == "system" || type == "application") {
             QString typePath = assetsPath + "/" + type;
             listModule.append(typePath);
             for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
@@ -125,9 +125,8 @@ void fileWatcher::onTimerOut()
     QMap<QString, QString> mapNow;
     QString  assetsPath = Utils::getSystemManualDir();
 
-    for(const QString &type : QDir(assetsPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)){
-        if (type == "system" || type == "application")
-        {
+    for (const QString &type : QDir(assetsPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+        if (type == "system" || type == "application") {
             QString typePath = assetsPath + "/" + type;
             //监控资源文件夹
             for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
@@ -138,10 +137,9 @@ void fileWatcher::onTimerOut()
                         listLang.append(lang);
                         QString strMd = modulePath + "/" + lang + "/index.md";
                         QFileInfo fileInfo(strMd);
-                        if (fileInfo.exists())
-                        {
+                        if (fileInfo.exists()) {
                             QString modifyTime = fileInfo.lastModified().toString();
-                            mapNow.insert(strMd,modifyTime);
+                            mapNow.insert(strMd, modifyTime);
                         }
                     }
                 }
