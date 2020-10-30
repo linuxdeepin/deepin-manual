@@ -110,6 +110,7 @@ private:
     SearchEdit *search_edit_ {nullptr};
     bool first_webpage_loaded_ {true};
     bool bIsSetKeyword{false};
+    bool bFinishChannel{false};
     Dtk::Widget::DSpinner *m_spinner;
 
 private slots:
