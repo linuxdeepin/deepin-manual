@@ -18,6 +18,9 @@ helperManager::helperManager(QObject *parent)
     initConnect();
 }
 
+/**
+ * @brief helperManager::initDbConfig 初始化数据库配置
+ */
 void helperManager::initDbConfig()
 {
     dbObj->initDb();
@@ -25,6 +28,9 @@ void helperManager::initDbConfig()
     dbObj->initTimeTable();
 }
 
+/**
+ * @brief helperManager::getModuleInfo 白名单对比
+ */
 void helperManager::getModuleInfo()
 {
     //获取数据库中所有文件更新时间
@@ -168,6 +174,11 @@ void helperManager::handleDb(const QStringList &deleteList, const QStringList &a
     }
 }
 
+/**
+ * @brief helperManager::dbusSend dbus通知刷新
+ * @param deleteList 删除的文件列表
+ * @param addList    更新的文件列表
+ */
 void helperManager::dbusSend(const QStringList &deleteList, const QStringList &addList)
 {
     QStringList list;
@@ -186,13 +197,10 @@ void helperManager::dbusSend(const QStringList &deleteList, const QStringList &a
 
         if (response.type() == QDBusMessage::ReplyMessage) {
             qDebug() << Q_FUNC_INFO << "ReplyMessage";
-        }
-
-        if (QDBusMessage::ErrorMessage == response.type()) {
+        } else if (response.type() == QDBusMessage::ErrorMessage) {
             qDebug() << Q_FUNC_INFO << "ErrorMessage: " << QDBusConnection::sessionBus().lastError().message();
         }
     }
-
 }
 
 void helperManager::onFilelistChange(QStringList deleteList, QStringList addList, QStringList addTime)

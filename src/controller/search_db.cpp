@@ -687,10 +687,8 @@ void SearchDb::insertFilesTimeEntry(const QStringList &listMdPath, const QString
 }
 
 /**
- * @brief SearchDb::deleteFileTimeEntry
- * @param appName    应用名
- * @param lang       语言
- * 根据应用名与语言删除表中数据
+ * @brief SearchDb::deleteFilesTimeEntry
+ * @param listMdPath  删除文件路径列表
  */
 void SearchDb::deleteFilesTimeEntry(const QStringList &listMdPath)
 {

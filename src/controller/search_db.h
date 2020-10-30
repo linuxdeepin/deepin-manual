@@ -65,7 +65,7 @@ public slots:
     void insertFilesTimeEntry(const QStringList &listMdPath,
                               const QStringList &listDataTime);
 
-    //根据appName|lang 删除表数据
+    //根据mdPath删除表数据
     void deleteFilesTimeEntry(const QStringList &listMdPath);
 
     //查找filetime表所有内容, key:md文件路径 value: md文件更新时间

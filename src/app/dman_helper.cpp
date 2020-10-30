@@ -31,7 +31,6 @@ int main(int argc, char **argv)
     if (!conn.registerService(kManualSearchService)
             || !conn.registerObject(kManualSearchIface, &search_obj)) {
         qCritical() << "dman-search failed to register dbus service";
-        return 1;
     } else {
         qDebug() << "dman-search register dbus service success!";
     }

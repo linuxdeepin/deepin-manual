@@ -5,7 +5,6 @@
 #include <QDebug>
 #include <DSysInfo>
 
-
 fileWatcher::fileWatcher(QObject *parent)
     : QObject(parent)
     , watcherObj(new QFileSystemWatcher)
@@ -59,9 +58,13 @@ void fileWatcher::checkMap(QMap<QString, QString> &mapOld, QMap<QString, QString
 }
 
 
-//TODO 监控文件
+/**
+ * @brief fileWatcher::monitorFile 监控特定目录下的所有资源文件夹和资源文件
+ */
 void fileWatcher::monitorFile()
 {
+    QStringList listMonitorFile;
+    QStringList listModule;
     QString  assetsPath = Utils::getSystemManualDir();
     listModule.append(assetsPath);
     for (const QString &type : QDir(assetsPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
@@ -146,7 +149,6 @@ void fileWatcher::onTimerOut()
             }
         }
     }
-
 
     QStringList deleteList;
     QStringList addList;
