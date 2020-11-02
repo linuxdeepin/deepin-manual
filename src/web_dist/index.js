@@ -694,6 +694,7 @@ var Article = function (_Component) {
     _this.contentMenu = _this.contentMenu.bind(_this);
 
     var timerObj;
+    var bIsMount = false;
     return _this;
   }
   //滚动到锚点
@@ -707,11 +708,6 @@ var Article = function (_Component) {
       console.log("article scrollToHash ", this.hash);
       var tempHash = this.hash;
 
-      // if (tempHash == 'h21')
-      // {
-      //   tempHash = 'h250';
-      // }
-
       var hashNode = document.getElementById(tempHash);
       console.log("article scrollToHash temphash: " + tempHash + " " + hashNode);
 
@@ -720,15 +716,25 @@ var Article = function (_Component) {
       }
 
       if (hashNode) {
-        console.log(" article===============>");
+        console.log(" article  scrollToHash===============>", this.bIsMount);
         clearTimeout(this.timerObj);
         this.setState({ smoothScroll: true });
 
+        var timeVar = 800;
+        if (this.bIsMount) {
+          timeVar = 3 * 1000;
+          this.bIsMount = false;
+        }
+
         this.timerObj = setTimeout(function () {
           _this2.setState({ smoothScroll: false });
-        }, 800);
+        }, timeVar);
 
-        (0, _smoothScrollIntoViewIfNeeded2.default)(hashNode, { behavior: global.scrollBehavior, block: 'start' }).then(function () {
+        (0, _smoothScrollIntoViewIfNeeded2.default)(hashNode, { behavior: 'smooth', block: 'start' }).then(function () {
+
+          console.log(" scrollIntoView finish ===============>");
+
+          // this.setState({ smoothScroll: false });
 
           //scrollIntoView函数存在异步,如果tempHash != this.hash时,说明存在异步操作,直接return. 
           if (tempHash != _this2.hash) return;
@@ -764,6 +770,7 @@ var Article = function (_Component) {
     key: 'componentDidMount',
     value: function componentDidMount() {
       console.log("article componentDidMount");
+      this.bIsMount = true;
       this.componentDidUpdate();
     }
   }, {
@@ -783,6 +790,7 @@ var Article = function (_Component) {
       if (nextProps.file != this.props.file) {
         this.hash = '';
         this.load = false;
+        this.bIsMount = true;
       }
     }
   }, {
@@ -814,9 +822,10 @@ var Article = function (_Component) {
         var loadCount = 0;
         imgList.map(function (el) {
           el.onload = function () {
+            console.log("------img onload---------");
             loadCount++;
             if (loadCount == imgList.length) {
-              // console.log('image loaded');
+              console.log('image loaded。。。。。。。。。。。。。。。。');
               _this3.load = true;
               _this3.scrollToHash();
               var last = article.querySelector('#' + _this3.props.hlist[_this3.props.hlist.length - 1].id);
@@ -829,9 +838,12 @@ var Article = function (_Component) {
             }
           };
           el.onerror = function () {
+            console.log("------img onerror---------");
             if (el.getAttribute('src') == el.dataset.src) {
+              console.log("------img == dataset---------");
               el.onload();
             } else {
+              console.log("------img == no dataset---------");
               el.src = el.dataset.src;
             }
           };
