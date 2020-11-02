@@ -37,16 +37,16 @@ namespace {
  * @param desktop_file 桌面文件的绝对路径
  * @return 返回帮助手册id如果存在,否则返回空字符串。
  */
-QString GetDeepinManualId(const QString &desktop_file)
-{
-    QSettings settings(desktop_file, QSettings::IniFormat);
-    settings.beginGroup("Desktop Entry");
-    const QVariant value = settings.value("X-Deepin-ManualID");
-    if (value.isValid()) {
-        return value.toString();
-    }
-    return "";
-}
+//QString GetDeepinManualId(const QString &desktop_file)
+//{
+//    QSettings settings(desktop_file, QSettings::IniFormat);
+//    settings.beginGroup("Desktop Entry");
+//    const QVariant value = settings.value("X-Deepin-ManualID");
+//    if (value.isValid()) {
+//        return value.toString();
+//    }
+//    return "";
+//}
 
 } // namespace
 
@@ -421,10 +421,10 @@ QStringList Utils::getSystemManualList()
         if ((applicationList.indexOf(app_name) != -1) && app_list_.indexOf(app_name) == -1) {
             app_list_.append(app_name);
         }
-        const QString deepin_app_id = GetDeepinManualId(listApp.at(i).desktop);
-        if (deepin_app_id == app_name && app_list_.indexOf(app_name) == -1) {
-            app_list_.append(app_name);
-        }
+//        const QString deepin_app_id = GetDeepinManualId(listApp.at(i).desktop);
+//        if (deepin_app_id == app_name && app_list_.indexOf(app_name) == -1) {
+//            app_list_.append(app_name);
+//        }
     }
     // Add "dde" by hand, as it has no desktop file.
     if (systemList.contains("dde")) {
