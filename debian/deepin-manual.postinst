@@ -9,3 +9,5 @@ killall dman
 #rm -r /usr/share/deepin-manual/manual-assets/server
 #rm -r /usr/share/deepin-manual/manual-assets/community
 
+exit 0
+
