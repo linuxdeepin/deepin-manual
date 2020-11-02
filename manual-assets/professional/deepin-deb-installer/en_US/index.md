@@ -11,6 +11,8 @@ Package Installer is an easy-to-use .deb package management tool with a simple i
 
 ### Run Package Installer
 
+You can open Package Installer as follows:
+
 - Double click a .deb package to run.
 - Click the icon of Package Installer from Launcher to run. 
 
@@ -21,17 +23,16 @@ Package Installer is capable to install an individual application or multiple ap
 ### Singularly Install
 
 1. On Package Installer interface, click **Select File** to add a .deb package.
-2. The application will detect the package status:
-   - Newly installed, select **Install** to continue.
-   - Other version installed, select **Reinstall** to continue or **Remove** to uninstall.
-3. Password required to continue when clicking **Install** or **Reinstall**.
-4. Click ![arrow_up](icon/arrow_up.svg) or ![arrow_down](icon/arrow_down.svg) to display or collapse the installing process.
-5. Click **Back** to newly add or click **OK** to exit.
+2. Select the package you want to install, click **Open**.
+3. Click **Install**. 
+4. If authentication window pops up, please input your password.
+5. Click ![arrow_up](icon/arrow_up.svg) or ![arrow_down](icon/arrow_down.svg) to display or collapse the installing process.
+6. Click **Back** to continue installing other packages or click **OK** to exit.
 
-
-> ![notes](icon/notes.svg)Notes: You can also drag and drop file to Package Installer to add.
 
 ![1|single-install](jpg/single-install.png)
+
+> ![notes](icon/notes.svg)Notes: Package Installer will automatically detect your installation package. If the application has been installed locally, the prompt message "same version installed" or "other version installed" will be displayed. You can choose **Remove** or **Reinstall** at this time.
 
 ### Bulk Install
 
@@ -59,9 +60,7 @@ Please read the prompt carefully, common causes include:
 Package Installer is used to uninstall .deb packages of those the same or different versions have been installed already. 
 
 1. On Package Installer interface, click **Select File** to add a .deb package.
-2. The application will detect the package status:
-   - Newly installed, select **Install** to continue.
-   - Other version installed, select **Reinstall** to continue or **Remove** to uninstall.
+2. Select the package which is already installed in the system, click **Open**.
 3. Click **Remove**, then there will be a prompt and click **Confirm** to uninstall.
 4. Click **OK** to exit.
 
@@ -71,14 +70,7 @@ Package Installer is used to uninstall .deb packages of those the same or differ
 
 ## Main Menu
 
-On the main menu, you can switch window themes, view manual and get more information about Package Installer.
-
-### Theme
-
-The window theme includes Light Theme, Dark Theme and System Theme (default).
-
-1.   Click![icon_menu](icon/icon_menu.svg) on the interface.
-2.   Click **Theme** to select a theme.
+On the main menu, you can view manual and get more information about Package Installer.
 
 ### Help
 
@@ -98,5 +90,3 @@ You can click to view the manual, which will help you further know and use Packa
 
 1. Click![icon_menu](icon/icon_menu.svg) on the interface.
 2. Click **Exit**.
-
-<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 5.7</span></div>

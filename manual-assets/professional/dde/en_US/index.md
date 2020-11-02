@@ -128,7 +128,6 @@ You can send application icons from Launcher to Dock so as to open it quickly.
 | ---- | ---- |
 | ![launcher](icon/deepin-launcher.svg) | Launcher - click to view all the installed applications. |
 | ![deepin-toggle-desktop](icon/deepin-toggle-desktop.svg) | Click to show the desktop. |
-| ![deepin-multitasking-view](icon/deepin-multitasking-view.svg) | Multitasking View - click to show workspaces. |
 | ![dde-file-manager](icon/dde-file-manager.svg) | File Manager - click to view files and folders on the disk. |
 | ![uosbrowser](icon/uosbrowser-cn.svg) | Browser- click to open webpages. |
 | ![ deepin-album](icon/deepin-album.svg) | Album - import and manage photos. |
@@ -187,7 +186,7 @@ When there are system or application notifications, they will be shown in the mi
 
 
 
-![notification](jpg/message.png)
+![notification](jpg/notification.png)
 
 Click ![notification](icon/notification.svg) in Dock to view all the notifications.
 
@@ -479,7 +478,7 @@ Cloud synchronization can automatically synchronize various system configuration
 
 > ![tips](icon/tips.svg)Tips: When "Auto Sync" is enabled, you can uncheck the unwanted options; when it is disabled, all settings will not be synced.
 
-![0|sync](jpg/sync.png)
+![0|union-id](jpg/union-ID.png)
 
 
 
@@ -605,7 +604,7 @@ To delete the default applications you have added, do as below:
 
 
 ### Personalization Settings
-You can adjust the transparency of Launcher (in mini mode) and Dock, and also set theme, accent color, font, window effect, change the appearance of the desktop and windows to your favorite style. 
+You can adjust the transparency of Launcher (in mini mode) and Dock, and also set theme, accent color, font, and transparency. 
 
 ![0|personalise](jpg/personalise.png)
 
@@ -623,22 +622,13 @@ Accent color refers to the color used when you select one option or file in the 
 2. Click **General**.
 3. Pick a color under **Accent Color** and view its effects.
 
-
-
-#### Enable Window Effect
-Enable window effect to make the desktop and the windows more beautiful and delicate.
-
-1. On the homepage of Control Center, click ![personalization_normal](icon/personalization_normal.svg).
-2. Click **General**.
-3. Switch on **Window Effect**.
-
-#### Adjust Transparency
-
-This function is available only when "Window Effect" is switched on. Move the slider from left to right to set the transparency of Launcher (in mini mode), which is from totally transparent to opaque.
+#### Adjust Dock Transparency
 
 1. On the homepage of Control Center, click ![personalization_normal](icon/personalization_normal.svg).
 2. Click **General**.
 3. Click the bar to adjust the transparency and view the effect in real time.
+
+> ![notes](icon/notes.svg)Notes: You can set **Window Minimize Effect** as **Scale** or **Magic Lamp**. 
 
 #### Set Icon Theme
 
@@ -691,6 +681,8 @@ Wireless network helps you surf the network without cables, which is more flexib
 5. Select the correct wireless network to connect.
    - If the network is open, it will auto connect to the network.
    - If the network is encrypted, please enter the password and click **Connect**.
+
+> ![notes](icon/notes.svg)Notes: If you switch on **Airplane mode**, Wifi Network is turned off.
 
 ##### Connect to Hidden Network
 
@@ -777,13 +769,13 @@ You can view MAC, IP address, gateway and other network info in network details.
 
 You can set "Do Not Disturb" to system notifications, and also switch on or off the notification hints of some applications.
 
-![noti-center](jpg/notification.png)
+![noti-center](jpg/noti-center.png)
 
 #### System Notification Settings
 
 You can set "Do Not Disturb" to system notifications and whether to show icon on Dock here.
 
-1. On the homepage of Control Center, click ![nav_notifi_42px](icon/dcc_nav_notification_36px.svg).
+1. On the homepage of Control Center, click ![nav_notifi_42px](icon/nav_notifi_42px.svg).
 
 2. Click **System Notification**.
 
@@ -795,7 +787,7 @@ You can set "Do Not Disturb" to system notifications and whether to show icon on
 
 You can custom notification hints for all applications.
 
-1. On the homepage of Control Center, click ![nav_notifi_42px](icon/dcc_nav_notification_36px.svg).
+1. On the homepage of Control Center, click ![nav_notifi_42px](icon/nav_notifi_42px.svg).
 2. Under **App Notifications**, select an application, and in the window on the right, you can choose to check:
    - Play a sound
    - Show messages on lockscreen
@@ -810,23 +802,27 @@ Set your speaker and microphone properly to make you hear more comfortable and m
 
 ![0|sound](jpg/sound.png)
 
-#### Output
+#### Speaker
 
 1. On the homepage of Control Center, click ![sound_normal](icon/sound_normal.svg).
-2. Click **Output** to:
-   - Select output device type from the dropdown list after **Output Device**.
+2. Click **Speaker** to:
    - Drag the slider to adjust output volume and left/right balance.
    - Switch on **Volume Boost**, the volume could be adjustable from 0~150% (the former range is 0~100%).
 
-#### Input
+#### Microphone
 
 1. On the homepage of Control Center, click ![sound_normal](icon/sound_normal.svg).
-2. Click **Input** to:
-   - Select input device type from the dropdown list after **Input Device**.
+2. Click **Microphone** to:
    - Adjust input volume by dragging the slider.
-   - You can enable **Automatic Noise Suppression** by clicking the button after "Automatic Noise Suppression". 
+   - You can view the input level. 
 
 > ![tips](icon/tips.svg)Tips: Usually, you need to turn up the input volume to make sure that you can hear the sound of the sound source, but the volume should not be too high, because it will cause distortion of the sound. Here is how to set input volume: Speak to your microphone at a normal volume and view "Input Level". If the indicator changes obviously according to the volume, then the input volume is at a proper level. 
+
+#### Advanced 
+
+1. On the homepage of Control Center, click ![sound_normal](icon/sound_normal.svg).
+2. Click **Advanced**.
+3. Select the input and output devices.
 
 #### System Sound Effects
 
@@ -848,7 +844,7 @@ Bluetooth helps you make a short-distance wireless communication between Bluetoo
 1. On the homepage of Control Center, click ![bluetooth_normal](icon/bluetooth_normal.svg).
 2. Click ![edit](icon/edit.svg) after the Bluetooth name, and enter a new name for your computer.
 
-> ![notes](icon/notes.svg)Notes: Your computer new name will be broadcasted automatically, and other devices should rescan to find it.
+> ![notes](icon/notes.svg)Notes: Your computer's new name will be broadcasted automatically, and other devices should rescan to find it.
 
 #### Connect to a Bluetooth Device
 
@@ -915,13 +911,6 @@ Note that the auto-sync function will be disabled after changing date and time m
    - Enter the correct date and time.
 3. Click **Confirm**.
 
-#### Set Time Format
-
-Setting the format of time and date is supported.
-
-1. On the homepage of Control Center, click ![time](icon/time.svg).
-2. Click **Time Format** to set the first day of week, long date, short date, long time, and short time.
-
 ### Power Management
 
 Power management turns the system to a low-power state when inactive, thus making a long battery endurance for laptop users, and protects your privacy as well.
@@ -935,8 +924,9 @@ To reduce the power consumption of your laptop, turn on power saving mode to red
 
 1. On the homepage of Control Center, click ![power_normal](icon/power_normal.svg).
 2. Click **General**.
-3. Switch on **Power Saving Mode** to enter power saving mode.
-4. Switch on **Auto Mode Switch**, your laptop will enter power saving mode automatically when unplugged, and revert to normal mode when plugged in.
+   - Switch on **Power Saving Mode**.
+   - Switch on **Auto power saving on low battery**.
+   - Switch on **Auto power saving on battery**, your laptop will enter power saving mode automatically when unplugged, and revert to normal mode when plugged in.
 
 > ![notes](icon/notes.svg)Notes: Power saving mode is only for laptops.
 
@@ -1298,6 +1288,7 @@ Import the activation document
    
    3.  Click **Confirm** in the secondary confirming dialogue box and pops up the activation success interface.
 
+![license file](jpg/license-file.png)
 
 ##### Off-line Activation
 
@@ -1428,7 +1419,7 @@ When there is only one system in the computer, Startup Delay will be switched of
 
 1. On the homepage of Control Center, click ![general](icon/general.svg).
 2. Click **Boot Menu**.
-3. Click the option in the preview window to set it as the default one.
+3. Click the option in the preview window, the authentication window pops up. Please enter your password to authorize so as to set it as the default one.
 
 ##### Boot Menu Theme
 
@@ -1460,94 +1451,6 @@ User Experience Program collects your hardware, application and system informati
 1. On the homepage of Control Center, click ![general](icon/general.svg).
 2. Switch on **User Experience Program**, and read the privacy policy.
 3. If you agree, check **Agree and Join User Experience Program**, and **Confirm**.
-
-## Window Manager
-Window manager controls the placement and appearance of windows. It allows you to switch between your virtual desktops and manage the windows in various workspaces.
-
-> ![notes](icon/notes.svg)Notes: this function is available only when **Window Effect** is turned on in **Personalization** in **Control Center**. 
-
-![1|workspace](jpg/workspace.png)
-
-### Open Workspace
-Manage your desktop windows in different workspaces to enlarge your Workspaces.
-
-On the desktop, press **Super** + **S** or click ![multitasking](icon/deepin-multitasking-view.svg) to open the workspace interface.
-
-### Add Workspace
-On the workspace interface, you can add workspace in the following ways:
-
-- Click ![plus](icon/plus.svg) above.
-- Press <img src="icon/plus.svg" alt="plus" style="zoom:50%;" /> on the keyboard.
-
-> ![notes](icon/notes.svg)Notes: When the workspace number has reached its limit, you cannot add more workspaces. 
-
-### Switch Workspace
-On the workspace interface and desktop, you can switch workspace in the following ways:
-
-- On the desktop, press  **Super**+ ![Left](icon/Left.svg) / ![Right](icon/Right.svg) to switch to Previous/Next workspace.
-- On the desktop, press  **Super** + Numeric keys (1-7)  to switch to a specified workspace.
-- On the workspace interface, scroll up or down to switch to Previous/Next workspace.
-- On the workspace interface, press ![Left](icon/Left.svg) / ![Right](icon/Right.svg) to switch to Previous/Next workspace directly.
-- On the workspace interface, click the preview window or press the numeric keys (1-7) to switch to a specified workspace.
-
-### Delete Workspace
-After deleting a workspace, all windows in the workspace will be moved to a nearby workspace. You cannot delete the workspace when there is only one.
-
-- On the workspace interface, click the **X** icon on the upper right corner to delete a workspace.
-
-### Exit Workspace
-After finishing the operations on the workspace interface, you can quit in the following ways:
-
-- Press **Esc**.
-- Click the blank area on the workspace interface.
-- Press **Super** + **S** again.
-
-### View All Windows
-View all the windows in the workspaces in the following ways:
-
-- On the desktop, press **Super** + **A** on the keyboard to view the windows in all workspaces.
-- On the desktop, press **Super** + **W** to view the windows in the current workspace.
-
-#### Move Windows among Workspaces
-Move the windows to other workspaces in the following ways:
-
-- On the workspace interface, drag and drop the window to another workspace.
-- On the desktop, press **Super** + **Shift** + ![Left](icon/Left.svg) / ![Right](icon/Right.svg) to move the current window to the previous/next workspace.
-- On the desktop, press  **Super** + **Shift** + Numeric Keys to move the current window to the specified workspace.
-- On the desktop, press  **AIt** + **Space** or right-click the window title bar to open the window menu, and select **Always on Visible Workspace** or **Move to Workspace Left/Right** to move the current window to the specified workspace.
-
-> ![tips](icon/tips.svg)Tips: In the window menu, you can also minimize, maximize, move, resize, stick or close the window.
-
-### Switch Desktop Windows
-Switch desktop windows in the current workspace as below.
-
-#### Fast Switch between Nearby Windows
-
-- On the desktop, press  **AIt** + **Tab** at the same time and release, to switch between the current window and the nearby window quickly;
-- On the desktop, press **AIt** + **Shift** + **Tab** at the same time and release, to fast switch between current window and the nearby window reversely;
-
-#### Fast Switch between Windows of the Same Type
-
-- On the desktop, press **Alt** +  ![~](icon/~.svg)  at the same time and release, to switch between the current window and other windows of the same type quickly;
-- On the desktop, press  **AIt** + **Shift** + ![~](icon/~.svg) at the same time and release, to fast switch between current window and other windows in same type reversely;
-
-#### Switch among All Windows
-
-- On the desktop, press and hold **Alt** and press **Tab** continually and it will show the right windows one by one; 
-- On the desktop, press and hold **Alt** + **Shift** and press **Tab** continually and it will show the left windows one by one.
-
-#### Switch among Windows of the Same Type
-- On the desktop, press and hold **Alt** and press ![~](icon/~.svg) continually and it will show the same type of windows one by one.
-- On the desktop, press and hold **Alt** + **Shift** and press ![~](icon/~.svg) continually and it will show the same type of windows one by one reversely.
-
-### Split Screen
-A split-screen allows the simultaneous presentation of related graphical and textual information on a computer display, reduces switching windows and improves your productivity.
-
-1. Drag the window to the left or right part of the screen until the cursor touches the screen edge and the white transparent background appears, drop the window and it will be adsorbed on the left or right half of the screen.
-2. In the screen of which the other half is unoccupied, a preview of all other windows will appear. Click one of them to display it on the other half of the screen to realize split screen browsing.
-3. When browsing in split screens, move the cursor to the junction of the two windows in the middle of the screen and drag left and right to modify the width of the two windows simultaneously. You can also drag other windows to both sides to overlay the split screen window.
-
-> ![tips](icon/tips.svg)Tips: To cancel split screen, just drag a window away from the screen edge.
 
 ## Keyboard Interaction
 

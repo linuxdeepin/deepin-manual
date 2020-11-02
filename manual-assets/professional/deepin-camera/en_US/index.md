@@ -52,20 +52,16 @@ Open folder: open the folder where photos and videos are located.
 
 ![right-menu](jpg/right-menu.png)
 
-
-
 ## Main Menu
 
-On the main menu, you can change settings for Camera, switch window themes, view help manual, and get more information about Camera.
+On the main menu, you can change settings for Camera, view help manual, and get more information about Camera.
 
 ### Settings
 
 1. On the Camera interface, click ![界面按钮图标](icon/icon_menu.svg).
-
 2. Click **Settings** to adjust **Basic**, **Shoot** and **Output** settings.
 
    - **Basic** setting: set up the **File location** for photos and videos.
-
    - **Shoot** setting: set up the **Burst mode** and **Self-timer delay** options.
 
      ![settings](jpg/settings.png)
@@ -73,15 +69,6 @@ On the main menu, you can change settings for Camera, switch window themes, view
    - **Output** setting: set up the **Output format** and **Resolution settings** for photos and videos.
    
      ![output-settings](jpg/output-settings.png)
-
-#### Theme
-
-
-The window theme provides three theme types, namely Light Theme, Dark Theme, and System Theme (default).
-
-1.  On the Camera interface, click ![icon_menu](icon/icon_menu.svg).
-
-2.  Click **Theme** to select a theme.
 
 ### Help
 
@@ -97,6 +84,3 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 
 1.   On the Camera interface, click ![icon_menu](icon/icon_menu.svg). 
 2.  Click **Exit** to exit Camera.
-
-
-<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 1.0</span></div>

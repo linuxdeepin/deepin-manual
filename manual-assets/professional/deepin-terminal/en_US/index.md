@@ -111,7 +111,7 @@ Window serves as the foundation for your operations in Terminal. You can create 
 
 You can create a new window in the following ways:
   - Open Terminal and click ![icon_menu](icon/icon_menu.svg)> **New Window**.
-  - Click ![deepin-terminal](icon/deepin-terminal.svg) in the Dock to select **New Window**.
+  - Right-click ![deepin-terminal](icon/deepin-terminal.svg) in the Dock to select **New Window**.
 
 ![0|new_window](jpg/newwindow.png)
 
@@ -133,7 +133,7 @@ You can create a new window in the following ways:
 2. On the Terminal interface, right-click and select **Rename title**.
 3. Input the name and click **Confirm**.
 
-> ![tips](icon/tips.svg) Tips: You can also press **F2**  to rename the window title.
+> ![tips](icon/tips.svg) Tips: You can also press **F2** to rename the window title.
 
 ![1|rename](jpg/rename.png)
 
@@ -176,8 +176,9 @@ You can freely switch among different workspaces in the following ways:
 
 You can close workspace in the following ways:
 
-1. Select the tab of one workspace, and click ![add](icon/close.svg) to close it.
-2. Right-click any workspace tab and:
+- Select the tab of one workspace, and click ![add](icon/close.svg) to close it.
+
+- Right-click any workspace tab and:
   - Select **Close workspace** to close it.
   - Select **Close other workspaces** to close other workspaces other than the current one.
 
@@ -262,14 +263,7 @@ You can upload and download files after logging in a remote server.
 
 ## Main Menu
 
-In the Main Menu, you can create [create new window](#Create Window), customize commands, switch themes, view help manual, and get more information about Terminal.
-
-### Theme ###
-
-The window theme provides three theme types, namely Light Theme, Dark Theme, and System Theme .
-
-1. On the Terminal interface, click ![main_menu](icon/icon_menu.svg).
-2. Click **Theme** to choose one theme.
+In the Main Menu, you can create [create new window](#Create Window), customize commands, view help manual, and get more information about Terminal.
 
 ### Custom Commands ###
 
@@ -286,10 +280,6 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 1. On the Terminal interface, click ![main_menu](icon/icon_menu.svg).
 2. Click **Settings**.
 3. In the **Basic** options, you can:
-    - Set **Opacity** for the background.
-
-    >![notes](icon/notes.svg) Notes: if Window Effect is turned off in Control Center, **Opacity** scroll bar will be hidden.
-    
     - Set the type and size for font.
 
 #### Shortcuts Settings ####
@@ -312,9 +302,7 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
     - Enable or disable **Scroll on output**.
     - Set the startup mode for window .
     - Enable or disable **Hide Quake window after losing focus**.
-    - Enable or disable **Blur background**.
-    >![notes](icon/notes.svg) Notes: if Window Effect is turned off in Control Center, **Blur background** option will be hidden.
-
+    
 4. **Restore Defaults**: Click this button to restore to all default settings.
 
 ### Help

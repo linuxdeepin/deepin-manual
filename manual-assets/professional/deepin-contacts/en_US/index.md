@@ -35,16 +35,16 @@ Once **Contacts** is run, the interface **Union ID Sign in** pops up automatical
 
 Once **Contacts** is run, the interface **Union ID Sign in** pops up automatically. If you don't have a Union ID account, you can sign up for one as follows.
 
-1. Click hyper link **Sign up**, the default browser of the operation system is called successfully and a signing-up page is opened.
+1. Click hyper link **Register here**, the default browser of the operation system is called successfully and a signing-up page is opened.
 2. Input information to sign up for an account accordingly as required.
-3. After signing up is completed, you can return to the interface of Union ID Sign in to sign in your account.
+3. After signing up is completed, you can return to the interface of **Union ID Sign in** to sign in your account.
 
 
-#### Forgot Password？
+#### Forget Password？
 
 Once **Contacts** is run, the interface **Union ID Sign in** pops up automatically. If you have forgotten password, you can get it back as follows.
 
-1. Click hyper link **Forgot password?** , the default browser of the operation system is called successfully and you can reset your password.
+1. Click hyper link **Forget password?** , the default browser of the operation system is called successfully and you can reset your password.
 2. After password is reset, you can return to the interface of Union ID Sign in to sign in your account.
 
 
@@ -79,7 +79,7 @@ Prerequisite: you have already added some friends or created groups.
 
 This interface mainly displays the contacts who request to add you as a friend.
 
-1. When somebody requests to add you as a friend, a red prompt will pop up from the lower right corner.
+1. When somebody requests to add you as a friend, a red corner marker will pop up.
 2. Click **New friends**, you can select **Agree** or **Refuse** to add this contact. You can also view history.
 
 ![new friend](jpg/new-friend.png)
@@ -115,9 +115,9 @@ There are three ways to add friends, including:
 To add a friend, you can:
 
 1. Click **Add Friend**.
-2. Input user name, email or phone number to search a friend, and he/she will appear in the list if searched successfully, click![add-normal](icon/add-normal.svg) .
+2. Input user name, email or phone number to search a friend, click ![search](icon/search.svg)and he/she will appear in the list if searched successfully, click![add-normal](icon/add-normal.svg) .
 ![add friend2](jpg/3add-friend2.png)
-3. A dialogue box "Add Friend Request" pops up. Select classification, input a message and click  **Send**.
+3. A dialogue box **Add Friend Request** pops up. Select classification, input a message and click  **Send**.
 ![3add friend3](jpg/3add-friend3.png)
 4. After the friend agrees to add you, you can see him/her in the list, which means you have added him/her successfully. 
 5. You can add a remark name for him/her.
@@ -160,8 +160,8 @@ To add a friend, you can:
 
 One default groups classification is displayed here, if you want to add others, do as follows.
 
-1. Hover the cursor over **Groups** and right-click; or click ![19](icon/19.svg), a popping-up box saying  **Add Groups Classification** appears.
-2. click **Add Groups Classification** to input a name, then, a new group classification is created. If you haven't input a name for the new classification when creating it, you can right-click to select **Rename Classification**.
+1. Hover the cursor over **Groups** and right-click; or click ![19](icon/19.svg), and click **Add Groups Classification**.
+2. Input a name and press **Enter** key to save the settings, then, a new group classification is created. You can right-click to select **Rename Classification** if you need to modify the name.
 
 ![add_group_category](jpg/add_group_category.png)
 
@@ -223,7 +223,7 @@ To create a new group, you can:
 #### Start group chatting
 
 1. Click ![chat](icon/chat.svg) to start chatting in the group. 
-2. In the chatting window, you can send emoji, screenshots and files, share contact card, view chat history and make video calls.
+2. In the chatting window, you can send emoji and files, share contact card, view chat history and make video calls.
    - In Chat History, you can enter keywords to search relevant history; click ![clear](jpg/clear.png) to empty all history.
    - Click ![detail](icon/detail.svg) to view the information about the group and its members; click **Dismiss Group** to exit the group.
    - In the list on the left side, right-click the group's name, select **Top**, this group will be displayed on the top; select **Mute**, there will be no reminders when there's any group message; select **Delete**, the group will be deleted from the chatting list.
@@ -236,9 +236,9 @@ On the main interface, click ![17](icon/17.svg) to enter the interface of confer
 
 ### Search
 
-1. Prerequisite: a conference is already created or it's finished.
+Prerequisite: a conference is already created or it's finished.
 
-2. You can search a conference by conference room number or by conference name.
+1. You can search a conference by conference room number or by conference name.
 
    - Searching by conference room number: each user has a fixed conference room number. Searching by conference number means to search all conferences you have joined in, there may be many results.
    - Searching by conference name: Conference names may be repeated. When you search a name, many results may appear.
@@ -281,7 +281,7 @@ This function is designed only for the option **Allow guest dial-in** .
 
 2. Input the conference room number and password, select whether to "turn off camera" or "turn off microphone" or not, then click **Join**. 
 
-![6quick meeting](jpg/6quick-meeting.png)
+
 
 ### During Conference
 
@@ -321,8 +321,6 @@ During conference the owner can do the following settings.
    - Conference invite![5](icon/5.svg) : owner can click this button to invite other participants.
 
    - Layout![6](icon/6.svg) : speaker mode and gallery mode are included. In speaker mode, the speaker's view is bigger than others'. While in gallery mode, all views are in the same size arranged in 2x2 windows. If there are more than four windows, they are displayed in the order of speech activation. 
-
-     ![7in meeting3](jpg/7in-meeting3.png)
 
    - Settings ![7](icon/7.svg) : options such as microphone, speaker, camera and notify mute are included.
 
@@ -368,7 +366,7 @@ List of conferences finished and their related information are displayed below t
 
 ## Main Menu
 
-In the main menu, you can view your user personal info, setting, theme, help, and so on.
+In the main menu, you can view your user personal info, setting, help, and so on.
 
 ### User Personal Info
 
@@ -395,13 +393,6 @@ In the main menu, you can view your user personal info, setting, theme, help, an
 
 3. You can set microphone, speaker, camera and whether to be notified mute or not. You can also do these settings during a conference. 
 
-### Theme
-
-The window theme includes Light Theme, Dark Theme and System Theme (default).
-
-1. Click![icon_menu](icon/icon_menu.svg) on the main interface.
-2. Click  **Theme** to select one.
-
 ### Help
 
 click Help to get the manual, which will help you further know and use Contacts.
@@ -421,5 +412,3 @@ click Help to get the manual, which will help you further know and use Contacts.
 
 
 
-
-<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 1.0</span></div>

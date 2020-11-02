@@ -4,11 +4,7 @@
 
 Music is a local music playing application with brand new UI design and state-of-the-art playing experience featured with local music scanning and lyric sync functions, etc.
 
-
-
 ![main](jpg/main1.png)
-
-
 
 ## Guide
 
@@ -23,7 +19,7 @@ You can run, close, and create a shortcut for Music in the following ways.
  - Click **Send to dock** to fix the application on dock.
  - Click **Add to startup** to add the application to startup and it will automatically run when the system starts up.
 
-> ![notes](icon/notes.svg)Notes: If Music has been fixed in the Dock, you can click ![music_icon-24](icon/music_icon-24.svg) in the Dock to run it.
+> ![notes](icon/notes.svg) Notes: If Music has been fixed in the Dock, you can click ![music_icon-24](icon/music_icon-24.svg) in the Dock to run it.
 
 ### Minimize to System Tray
 
@@ -31,7 +27,7 @@ Music can be minimized to the system tray.
 
 Click ![close_icon](icon/close.svg) on the Music interface to close the main window. Select **Minimize to system tray** and click **Confirm** to minimize in the system tray.
 
-> ![notes](icon/notes.svg)Notes: Check **Do not ask again** and the pop-up window will no longer be displayed.
+> ![notes](icon/notes.svg) Notes: Check **Do not ask again** and the pop-up window will no longer be displayed.
 
 Right-click the Music application icon in the tray and you can perform the following operations:
 
@@ -39,7 +35,6 @@ Right-click the Music application icon in the tray and you can perform the follo
  - Click **Previous** to play the previous song.
  - Click **Next** to play the next song.
  - Click **Exit** to exit Music.
-
 
 ### Exit Music
 
@@ -49,10 +44,9 @@ Right-click the Music application icon in the tray and you can perform the follo
 
 ### View Shortcuts
 
-On the Music interface, press **Ctrl + Shift + ?**  to view the shortcuts. Proficiency in shortcuts will greatly improve your efficiency.
+On the Music interface, press **Ctrl** + **Shift** + **?**  to view the shortcuts. Proficiency in shortcuts will greatly improve your efficiency.
 
 ![0|view](jpg/hotkey.png)
-
 
 ## Main Interface
 
@@ -121,9 +115,7 @@ On the main interface, you can choose from regular options, check view playlist,
     </tbody>
 </table>
 
-
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
 
 ## Common Operations
 
@@ -144,7 +136,6 @@ On the Music interface, you can:
 2. Press the **Enter** key on the keyboard to conduct search.
 
    - When there is matched information, click **Play All** in the search result list to play the music in the search result list.
-
    - When there is no matched information, **No search results** will be displayed in the search result list.
 
 3. Click ![0|close](icon/close.svg) or delete the entered information in the search box to clear the current information or cancel the search.
@@ -157,15 +148,15 @@ You can play music in the following ways:
 - Select a list under the playlist in the left navigation bar. Right-click and select **Play** to play all the songs in the list according to the current order.
 - Click **Play All** to play all the songs in the current list according to the current order. 
 
-> ![tips](icon/tips.svg)Tips: On the Music interface, click ![play_normal](icon/play_normal.svg) to play the selected music. Click ![suspend_normal](icon/suspend_normal.svg) to pause the play. Click ![last_normal](icon/last_normal.svg) or ![next_normal](icon/next_normal.svg) to switch to the previous or the next song according to the current play mode.
+> ![tips](icon/tips.svg) Tips: On the Music interface, click ![play_normal](icon/play_normal.svg) to play the selected music. Click ![suspend_normal](icon/suspend_normal.svg) to pause the play. Click ![last_normal](icon/last_normal.svg) or ![next_normal](icon/next_normal.svg) to switch to the previous or the next song according to the current play mode.
 
 ### Add Music to My Favorites
 
-On the Music interface, click ![collect](icon/collect.svg) to add music to My Favorites.
+1. On the Music interface, click ![collect](icon/collect.svg) to add music to My Favorites.
 
-The prompt information **Successfully added to "My favorites"** pops up and the music is added to **My Favorites** list.
+2. The prompt information **Successfully added to "My favorites"** pops up and the music is added to **My Favorites** list.
 
-> ![notes](icon/notes.svg)Notes: You can also right-click the music, and select **Add to playlist** > **My favorites** to add the music to **My Favorites** list.
+> ![notes](icon/notes.svg) Notes: You can also right-click the music, and select **Add to playlist** > **My favorites** to add the music to **My Favorites** list.
 
 ### View Lyrics
 
@@ -192,8 +183,7 @@ On the Music interface, click ![single](icon/single-tune-circulation_normal.svg)
 
 On the Music interface, right-click the music and you can:
 
-- Click **Remove from playlist** to remove the music from the playlist, but the music file will still be saved on the local disk.
-
+- Click **Remove from play queue** to remove the music from the playlist, but the music file will still be saved on the local disk.
 - Click **Delete from local disk** to remove the music both from the playlist and the local disk. 
 
 ![0|remove](jpg/remove.png)
@@ -212,17 +202,15 @@ On the Music interface, right-click the music and you can:
 
 ![0|info](jpg/info.png)
 
-
 ## Playlist Management
 
 On the Music interface, you can create, delete, and rename playlist. You can also add music to the playlist.
 
-> ![notes](icon/notes.svg)Notes: **All music** and **My Favorites **are set as default playlists and cannot be deleted. Custom playlists are subsets of the **All Music **playlist. **My Favorites **playlist can be managed directly or through the Favorite button on the main interface.
-
+> ![notes](icon/notes.svg) Notes: **All music** and **My Favorites **are set as default playlists and cannot be deleted. Custom playlists are subsets of the **All Music **playlist. **My Favorites **playlist can be managed directly or through the Favorite button on the main interface.
 
 ### Create New Playlist
 
-1.  On the Music interface, click ![icon_plus](icon/icon_plus.svg) right to the **Playlists**, or click ![menu](icon/icon_menu.svg)**> Add playlist**.
+1.  On the Music interface, click ![icon_plus](icon/icon_plus.svg) right to the **Playlists**, or click ![menu](icon/icon_menu.svg)> **Add playlist**.
 2.  Enter the name of the playlist.
 3.  Press the **Enter** key on keyboard.
 
@@ -241,18 +229,16 @@ On the Music interface, you can create, delete, and rename playlist. You can als
 1. On the Music interface, select a music you want to add.
 2. Right-click and select **Add to playlist** to add the music to the selected playlist.
 
-
-> ![notes](icon/notes.svg)Notes: You can drag the local music to a specified playlist to add the music into the current playlist and **All Music** playlist. 
+> ![notes](icon/notes.svg) Notes: You can drag the local music to a specified playlist to add the music into the current playlist and **All Music** playlist. 
 
 ![0|addtolist](jpg/addtolist.png)
 
 ### Remove Music from Playlist
 
 1. Select a playlist from **Playlists**, and select the music you want to remove from it.
-2. Right-click and select **Remove from playlist** to remove the music from the playlist.
+2. Right-click and select **Remove from play queue** to remove the music from the playlist.
 
 ![0|remove](jpg/removefromlist.png)
-
 
 ### Delete Playlist
 
@@ -262,22 +248,18 @@ On the Music interface, you can create, delete, and rename playlist. You can als
 
 ![0|deletelist](jpg/deletelist.png)
 
-
 ## Main Menu
 
-In the main menu, you can [Add Music](#Add Music), set the equalizer and the options, switch window themes, view help manual, and get more information about Music.
+In the main menu, you can [Add Music](#Add Music), set the equalizer and the options, view help manual, and get more information about Music.
 
 ### Equalizer
 
 You can set your favorite music mode, such as classical, rock, and so on. 
 
 1. On the Music interface, click ![menu](icon/icon_menu.svg).
-
 2. Select **Equalizer**.
-
-3. You can switch on equalizer, customize **Preamplifier** values and frequencies, and click **Save**; or select a music mode from the drop-down list which will be automatically saved by the system.
-
-4. Click **Restore Defaults** to restore the default settings.
+- You can switch on equalizer, customize **Preamplifier** values and frequencies, and click **Save**; or select a music mode from the drop-down list which will be automatically saved by the system.
+- Click **Restore Defaults** to restore the default settings.
 
 ![equalizer](jpg/equalizer-1.png)
 
@@ -296,9 +278,7 @@ You can set the basic information and shortcuts in settings.
     - In the option **Close Main Window**, you can:
         - Select **Minimize to system tray** to close the main window, and hide the Music to system tray.
         - Select **Exit** to close the main window, and exit Music. 
-        - Select **Ask me always** to prompt system notification, and confirm whether to exit Music when the main window is closed.
 3. Click **Restore Defaults** to restore the default settings.
-
 
 #### Shortcuts
 
@@ -306,32 +286,17 @@ You can set the basic information and shortcuts in settings.
 2. Select **Settings** > **Shortcuts** to view the shortcuts.
 3. You can select and re-enter shortcut keys to customize your choice.
 
-### Theme
-
-The window theme provides three theme types, namely Light Theme, Dark Theme, and System Theme (default).
-
-1.  On the Music interface, click ![icon_menu](icon/icon_menu.svg).
-
-2.  Click **Theme** to select one theme.
-
 ### Help
 
-1.  On the Music interface, click ![menu](icon/icon_menu.svg).
-
-2.  Click **Help** to view the manual of Music.
+1. On the Music interface, click ![menu](icon/icon_menu.svg).
+2. Click **Help** to view the manual of Music.
 
 ### About
 
 1. On the Music interface, click ![menu](icon/icon_menu.svg).
-
 2. Click **About** to view the version and introduction of Music.
-
 
 ### Exit
 
-1.  On the Music interface, click ![menu](icon/icon_menu.svg).
-
-2.  Click **Exit** to exit Music.
-
-
-<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 6.0</span></div>
+1. On the Music interface, click ![menu](icon/icon_menu.svg).
+2. Click **Exit** to exit Music. 

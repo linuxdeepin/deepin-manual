@@ -31,13 +31,11 @@ You can run, close or create a shortcut for Printer Manager as follows.
 
 On the main interface, click![+](icon/+.svg) and you will have three options including **Discover Printer**, **Find Printer**, and **Enter URI**. 
 
-![0|1add printer](jpg/1add printer.png)
-
 #### Discover Printer
 
 1. Click **Discover Printer** to load printer list automatically. Select the printer you want to add.
 
-2. You can see a drop-down list of drivers for the printer selected. The recommended driver is selected by default. If you select "Select a driver" from the drop-down list, you will skip into an interface to select a driver you want.
+2. You can see a drop-down list of drivers for the printer selected. The recommended driver is selected by default. If you select "Select a driver" from the drop-down list, you will skip into an interface where you can select a driver you want.
 
    ![0|2automatic search](jpg/2automatic search.png)
 
@@ -46,7 +44,7 @@ On the main interface, click![+](icon/+.svg) and you will have three options inc
 
 #### Find Printer
 
-1. Click **Find Printer** , input user name or IP address to search printers through different protocols. 
+1. Click **Find Printer** , input host name or IP address to search printers through different protocols. 
 
    ![0|3manual search](jpg/3manual search.png)
 
@@ -108,7 +106,7 @@ After you add a printer and select the correct driver, click **Install Driver** 
 
 ### Printer Manager Interface
 
-Once a printer is added successfully, when you click the printer in the interface of printer manager, you can see four buttons on the right, which are "Properties", "Print Queue", "Print Test Page", "Supplies" and "Troubleshoot". 
+Once a printer is added successfully, when you click the printer in the interface of printer manager, you can see four buttons on the right, which are "Properties", "Print Queue", "Print Test Page", and "Troubleshoot". 
 
 ![0|9printer management](jpg/9printer-management.png)
 
@@ -116,34 +114,10 @@ Once a printer is added successfully, when you click the printer in the interfac
 
 1. Click **Properties** to view all settings of the printer.
 
-2. You can view the info about the printer's driver, URI, location, description, color mode and resolution instead of setting them.
+2. You can view the info about the printer's driver, URI, location, description, color mode and resolution and so on.
 
-![0|10printer settings1](jpg/10printer settings1.png)
-
-3. Settable items include: paper source, paper type, paper size, duplex, margins, orientation, page order and binding. 
-  - Color Mode: **RGB Color** is set by default. You can choose other options according to your needs.
-
-  - Orientation: **Portrait (no rotation)** is set by default. You also have three other options such as **Landscape (90 degrees)**, **Reverse landscape (270 degrees)**, and ** Reverse portrait (180 degrees)**.
-
-  - Page Order: **Normal** is set by default. The other option is **Reverse**.
-
-  - Page Size: **Letter** is set by default. You can choose other size according to your needs.
-
-  - Resolution: you can choose the suitable resolution here.
-
-  - Media Type: **Photo Paper Pro Platinum** is set by default. There are many other options for you to choose. 
-
-  - Paper source: **Rear Tray** is set as default. You can choose the paper box according to practical situation. 
-
-  - Printout Quality:  **Standard** is set by default. The other option is **Manual**.
-
-  - Resolution: **Automatic**  is set by default. There are many other options for you to choose. 
-
-  - Shrink Page If Necessary to Fit Borders: **Shrink (print the whole page)** is set by default. The other two options are **Crop (preserve dimensions)** and **Expand (use maximum page area)**.
-
-4. Restore defaults: click this button, all settings will be restored to default. 
-   
-   > ![notes](icon/notes.svg)Notes: **Properties** are related to the printer model and its driver. Different printer models and drivers have different properties. You can set according to your practical situation. 
+3. Settable items include: paper source, paper type, paper size, duplex, margins, orientation, page order and so on. You can set them according to your actual needs.
+> ![notes](icon/notes.svg)Notes: **Properties** are related to the printer model and its driver. Please refer to the actual situation. 
 
 
 #### Print Queue
@@ -168,10 +142,6 @@ Click **Print Test Page** to test if printing is completed successfully.
    - Print successfully: if printing is completed successfully, you can continue with other tasks.
 
    - Print failed: if printing fails, you can reinstall a printer or start troubleshooting. 
-
-#### Supplies
-
-In the main interface of Print Manager, click **Supplies** to view the ink/toner status. If it's insufficient, it needs to be replaced.
 
 #### Troubleshoot
 
@@ -209,22 +179,14 @@ In the main menu, you can set basic servers, switch themes, view help manual, an
 
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 
-2. Click **Settings**.
-
-3. Basic server settings include: 
+2. Click **Settings**. Basic server settings include: 
 
    - Publish shared printers connected to this system: Allow printing from the Internet
    - Allow remote administration
    - Save debugging information for troubleshooting 
 
-   ![0|13right click setting main menu](jpg/13right click setting main menu.png)
+   
 
-### Theme
-
-The window theme includes Light Theme, Dark Theme and System Theme (default).
-
-1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
-2. Click  **Theme** to select one.
 
 ### Help
 
@@ -244,5 +206,3 @@ click Help to get the manual, which will help you further know and use Printer M
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Click  **Exit**.
 
-
-<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 0.6</span></div>

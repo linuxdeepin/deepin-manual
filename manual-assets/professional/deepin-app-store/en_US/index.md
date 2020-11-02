@@ -28,11 +28,10 @@ You can run, close or create a shortcut of App Store as follows.
 - On App Store interface, click  ![icon_menu](icon/icon_menu.svg) and select  **Exit**.
 
 ## Main Interface
-Main interface consists of navigation bar, search box, main menu, slide show, new updates, hot apps, rankings, essential apps, hot topics, download management, updates and my apps.
+Main interface consists of navigation bar, search box, main menu, slide show, rankings, hot apps, download management, updates and my apps.
 
 ![1|maininterfacedetail01](jpg/maininterfacedetail1.png)
 
-![1|maininterfacedetail02](jpg/maininterfacedetail2.png)
 
 
 <table class="block1">
@@ -65,8 +64,8 @@ Main interface consists of navigation bar, search box, main menu, slide show, ne
         </tr>
         <tr>
             <td>6</td>
-            <td>New Updates</td>
-            <td>Applications that are newly added into App Store are displayed here.</td>
+             <td>Hot Apps</td>
+            <td>Recommended popular apps are displayed here.</td>
         </tr>
         <tr>
             <td>7</td>
@@ -83,28 +82,14 @@ Main interface consists of navigation bar, search box, main menu, slide show, ne
             <td>My Apps</td>
             <td>You can view all apps installed and uninstall apps you don't need any more here.</td>
         </tr>
-            <tr>
-            <td>10</td>
-            <td>Hot Apps</td>
-            <td>Recommended popular apps are displayed here.</td>
-        </tr>
-             <tr>
-            <td>11</td>
-            <td>Essential Apps</td>
-            <td>You can view all essential software and install the ones you want here.</td>
-        </tr>
-      <tr>
-            <td>12</td>
-            <td>Hot Topics</td>
-            <td>Hot app categories are displayed here.</td>
-        </tr>
    </tbody>
    </table>
 
 
 
+
 ## Application Management
-You can search, download and install different categories of applications, and also, you can explore more splendid applications through slide show, new updates, essential applications, popular applications, recommendations, hot topics, rankings, user comments and other ways. 
+You can search, download and install different categories of applications, and also, you can explore more splendid applications through slide show, hot apps, rankings, user comments and other ways. 
 
 ### Search Applications
 1. Search function is built in App Store, you can click![search](icon/search.svg) to input keywords;
@@ -115,47 +100,37 @@ You can search, download and install different categories of applications, and a
 ![1|Search](jpg/search.png)
 
 ### Download/Install Applications
-App Store offers one-click downloading and installation of applications. During the downloading and installing process, you can pause and delete, as well as view the current progress.
+App Store offers one-click downloading and installation of applications. 
 
-App Store supports application synchronization. After signing in, you can synchronize the applications installed on other devices with the same account, and install the Cloud apps at one click.
-
-> ![notes](icon/notes.svg)Notes: If you haven't signed in, installed applications will be displayed in local applications only.
-
-#### Local Applications
+App Store supports Union ID synchronization. After signing in, downloaded and installed apps will be displayed in both local and cloud applications simultaneously. When you log in to the same Union ID on other devices, you can install cloud applications with one click.
 
 1. On App Store interface, you can directly hover the cursor over the application icon or name, then click  ![installhover](icon/installhover.svg) .
 
-2. Click **Download** in the left panel to view downloading/installing progress.
+2. Click **Download** in the left panel to view downloading/installing progress. You can also pause or delete the downloading task.
 
-   > ![tips](icon/tips.svg)Tips: you can click the application icon or name to enter the information page to view basic information and then click ![installhover](icon/installhover.svg) .
+   
 
    ![1|installprocess](jpg/installprocess.png)
 
-3. After installation, installed applications are displayed in local applications only. Click **App filter** to screen applications based on categories.
+>![notes](icon/notes.svg)Notes: When the union ID is not logged in, the downloaded and installed apps will only be displayed in the **Local Apps**.
 
-   
+#### Local Apps
+1. On App Store interface, click **My Apps** to enter **Local Apps** by default. 
+2. In **Local Apps** interface, you can view all installed apps in a list. Click **App filter** to filter apps by category.
+![1|localapp](jpg/localapp.png)
 
-   ![1|localapp](jpg/localapp.png)
+#### Remote Apps
 
-   
+1. Sign in your Union ID, select  **My Apps**>**Remote Apps** to show all cloud apps installed by the account.
+2. Select the ones you want to install and click ![installhover](icon/installhover.svg) .
+3. After installation, the apps will be displayed both in **Local Apps** and **Remote Apps** synchronically.
+4. If you want to install applications in batches, you can choose  **Install All **. Check all cloud applications you want to install, click  **Start Installation**.
 
-#### Cloud applications
+![1|remoteapp](jpg/remoteapp.png)
 
-1. Sign in your cloud account, select  **My Apps** to show the interface of My Apps from Personal Center.
-2. Click **Remote Apps** to view all cloud applications installed by the account.
-3. Select the ones you want to install and click ![installhover](icon/installhover.svg) .
-4. After installation, the apps will be displayed both in local apps and remote apps synchronically.
-5. If you want to install applications in batches, you can choose  **Install All **. Check all cloud applications you want to install, click  **Start Installation**.
+### Updates
 
-![1|remoteapp](jpg/remoteapp1.png)
-
-
-
-### Update Applications
-
-Select **Updates** on the interface to view applications to be updated here and you can choose whether to update it or not.
-
-
+Select **Updates** on the interface to view applications to be updated here and you can choose whether to update it or not. You can click **Recent** to view all recently updated apps and their information.
 
 ![1|update](jpg/update.png)
 
@@ -165,9 +140,9 @@ Select **Updates** on the interface to view applications to be updated here and 
 
 ### Uninstall Applications
 
-Besides uninstalling applications in Launcher (specific operations refer to [Uninstall Applications](dman:///dde#Uninstall Applications)）you can directly uninstall applications in App Store.
-
 On  **My Apps ** interface, click **Local Apps**, find the applications you want to uninstall, click ![uninstall](icon/uninstall.svg) .
+
+Besides uninstalling applications in App Store, you can directly uninstall applications inLauncher (specific operations refer to [Uninstall Applications](dman:///dde#Uninstall Applications)) .
 
 ![1|Uninstall](jpg/uninstall.png)
 
@@ -178,42 +153,21 @@ You can open the information page of any application to view its ratings, downlo
 
 ![1|softwareinterface](jpg/softwareinterface.png)
 
-### Buy
-
-1. Open App Store, log in your Union ID.
-2. Select a App you want, hover the cursor over its cover or name, you will see a price, which means you have to buy it. Click the price and then click **Buy**. 
-
-![1|buy](jpg/buy.png)
-
-3. The paying interface pops up. You can select a payment method. Currently Alipay and Wechat Pay are supported.
-4. Click **Pay Now**. After the payment is successful, the application can be installed with one click.
-
->![notes](icon/notes.svg)Notes: Only some applications need to be paid to install.
-
-### Refund
-
-1. Open App Store, log in your Union ID.
-
->![notes](icon/notes.svg)Notes: You can request a refund within two hours after payment. Please refer to Refund Policy for details.
-
-2. In **My Apps** interface, click **Remote Apps**. Find the application you want to refund, click **Refund**.
-3. **Refund Request** interface pops up. You have to check one from "Detailed Reasons" and also enter your "Suggestions" to make submission successful. 
-4. Click **Submit**. The money you request for will be returned to your paying account in 2-3 working days. 
-
 ### Comment and Rate
 
-- After sign in your Union ID, you can comment on and rate the applications. Click **Report a bug** to feedback software bugs. You can also like other users' comments. 
+- After sign in your Union ID, you can comment on and rate the applications. But comments and ratings must be submitted at the same time to be successful.
 
 ![1|commenrandrate](jpg/commentandrate.png)
 
 
 
 
-- Click the avatar on the title bar and select  **My Comments**  to view and edit all your ratings and comments. If you have not logged in, you can only view comments and ratings.
+- Click the avatar on the title bar and select  **My Comments**  to view and edit all your ratings and comments. 
+!![notes](icon/notes.svg)Notes: If you have not logged in, you can only view comments and ratings.
 
 ![1|editcomment](jpg/editcomment.png)
 
-
+> ![tips](icon/tips.svg)Tips: You can also click the icon to the right of the comment to like it.
 
 ## Main Menu
 
@@ -231,13 +185,6 @@ You can open the information page of any application to view its ratings, downlo
 1. Click  ![icon_menu](icon/icon_menu.svg) on the main interface.
 2. Click  **Clear cache** to clear up package caches.
 
-### Theme
-
-The window theme includes Light Theme, Dark Theme and System Theme (default).
-
-1. Click  ![icon_menu](icon/icon_menu.svg) on the main interface.
-2. Click **Theme** to choose one theme.
-
 ### Help
 
 Click Help to get the manual, which will help you further know and use App Store.
@@ -247,7 +194,7 @@ Click Help to get the manual, which will help you further know and use App Store
 
 ### About
 1. Click  ![icon_menu](icon/icon_menu.svg) on the main interface.
-2. Click **About** to view version information about App Store and **UnionTech Software Privacy Policy**.
+2. Click **About** to view version information and introduction about App Store.
 
 
 ### Exit

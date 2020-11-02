@@ -27,12 +27,12 @@ You can run, exit or create a shortcut for Archive Manager by the following ways
 ### Exit Archive Manager
 
 - Click  ![close_icon](icon/close.svg) on the Archive Manager interface to exit Archive Manager.
-- Right-click ![deepin-compressor](icon/deepin-compressor.svg)on dock and select **Close All** to exit.
+- Right-click ![deepin-compressor](icon/deepin-compressor.svg) on dock and select **Close All** to exit.
 - Click ![icon_menu](icon/icon_menu.svg) on the Archive Manager interface and select  **Exit** to exit.
 
 ### View Shortcuts
 
-On the Archive Manager interface, press **Ctrl+ Shift+?** on the keyboard to view shortcuts. Proficiency in shortcuts will greatly improve your efficiency.
+On the Archive Manager interface, press **Ctrl+ Shift+？** on the keyboard to view shortcuts. Proficiency in shortcuts will greatly improve your efficiency.
 
 ![1|hotkey](jpg/hotkey.png)
 
@@ -46,7 +46,7 @@ It is available for you to compress a single file/folder/package or a collection
 
    > ![tips](icon/tips.svg)Tips: You can drag one or more files directly to the Archive Manager interface for compression.
    
-2.  Click  ![plus](icon/icon_plus.svg) or click  ![icon_menu](icon/icon_menu.svg) > **Open file** to add files to be compressed.
+2.  Click  ![plus](icon/icon_plus.svg) or ![icon_menu](icon/icon_menu.svg) > **Open file** to add more files to be compressed.
 
    ![1|compressor](jpg/compress-add.png)
 
@@ -55,6 +55,7 @@ It is available for you to compress a single file/folder/package or a collection
 4.  Set the compressed file name, storage location, package format, etc.
 
 5.  If you enable the advanced option mode, it is available for you to set the package encryption password and volume compression.
+
    > ![notes](icon/notes.svg)Notes: The default package is in .zip format, and the available formats for file encryption are .7z and .zip; for list encryption, it is .7z; for volume compression, it is .7z. 
    
    ![1|compressor](jpg/compress-file.png)
@@ -99,7 +100,7 @@ On the Archive Manager interface, select a file to be extracted, right-click and
 
 ## Main Menu
 
-In the main menu, you can open the compression interface, switch window themes, view the help manual and get more information about Archive Manager.
+On the main menu, you can open the compression interface, view the help manual and get more information about Archive Manager.
 
 ### Open file
 1.  Click  ![icon_menu](icon/icon_menu.svg) on the Archive Manager interface.
@@ -107,27 +108,15 @@ In the main menu, you can open the compression interface, switch window themes, 
 
 ### Settings
 
-1.  Click  ![icon_menu](icon/icon_menu.svg) on the Archive Manager interface.
+1.   Click  ![icon_menu](icon/icon_menu.svg) on the Archive Manager interface.
 2.  Click **Settings**.
-   - Extraction:
-      + Set the directory where the extracted archives go to;
-      + Check or uncheck **Auto create a folder for multiple extracted files**;
-      + Check or uncheck **Show extracted files when completed**.
-   - File Management:
-      + Set whether to **Delete archives after extraction**, you have options such as **Never**, **Ask for confirmation** and **Always**.
-      + Check or uncheck **Delete files after compression**.
-   - Files Associated:
-      + Check or uncheck file types of associated files.
-3.  Click **Restore Defaults** on the interface to restore the initial setting.
+3.  You can perform the following settings as needed:
+ - Set the default extraction directory.
+ - Set whether to create folders automatically.
+ -  Set whether to automatically open the corresponding folder after extraction.
+ - Set the associated file type.
 
-
-
-### Theme
-
-The window theme includes Light Theme, Dark Theme and System Theme (default).
-
-1.   On the Archive Manager interface, click![icon_menu](icon/icon_menu.svg).
-2.   Click **Theme** to select a theme.
+![tips](icon/tips.svg)Tips: Click **Restore Defaults** on the interface to restore the default setting.
 
 ### Help
 
@@ -148,5 +137,3 @@ View Help to get more information about Archive Manager.
 
 1.  On the Archive Manager interface, click ![icon_menu](icon/icon_menu.svg) .
 2.  Click **Exit** to exit.
-
-<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 5.9</span></div>

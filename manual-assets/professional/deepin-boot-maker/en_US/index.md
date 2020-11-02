@@ -2,11 +2,13 @@
 
 ## Overview
 
-Boot Maker is an easy-to-use tool with a simple interface to help you burn the system image files into installation medium such as CDs and USB disks.
+Boot Maker is an easy-to-use tool with a simple interface to help you burn the system image files into installation medium such as USB disks.
 
 ![0|boot-maker](jpg/select-file.png)
 
 ## Guide
+
+You can run, close or create a shortcut of Boot Maker as follows.
 
 ### Run Boot Maker
 
@@ -42,9 +44,9 @@ Boot Maker is an easy-to-use tool with a simple interface to help you burn the s
 
 There are two ways to select the image file:
 
-1.Click **Select an ISO image file** to select the downloaded file, then click **Next**.
+   - Click **Select an ISO image file** to select the downloaded file, then click **Next**.
 
-2.Drag an ISO image file and drop it to the interface, then click **Next**.
+   - Drag an ISO image file and drop it to the interface, then click **Next**.
 
 
 > ![notes](icon/notes.svg)Notes: Please check if the MD5 checksum of image file is the same as that in the official website in advance. Failure would occur due to ISO image files that are not downloaded from official website or not downloaded completely.
@@ -76,13 +78,15 @@ Common causes of failure may include:
 - Wrong disk format
 - Wrong disk space 
 - Wrong disk mounting (Only applicable for Linux)
-- Image distract error
+- Image distracting error
 - Execute command error
 - Unknown error
 
 ![boot-maker](jpg/failed.png)
 
-> ![notes](icon/notes.svg)Notes: Click **Feedback** when you see this button, then jump to user feedback page of the community website, and the system will upload the error log automatically. 
+
+
+Click **Feedback** when you see this button, then jump to user feedback page of the community website, and the system will upload the error log automatically. 
 
 
 
@@ -90,33 +94,22 @@ Common causes of failure may include:
 
 ## Main Menu
 
-In the main menu, you can switch themes, view manual, and so on.
-
-### Theme
-
-The window theme includes Light Theme, Dark Theme and System Theme (default).
-
-1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
-2. Click  **Theme** to select one.
+In the main menu, you can view manual, and know more about Boot Maker.
 
 ### Help
 
 You can click to view the manual, which will help you further know and use Boot Maker.
 
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
-2. Click **Help**.
-3. View the manual.
+2. Click **Help** to view the manual.
 
 ### About
 
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
-2. Click **About**.
-3. View the version description.
+2. Click **About** to view the version description and introduction.
 
 ### Exit
 
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 
 2. Click **Exit**.
-
-<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 5.4</span></div>
