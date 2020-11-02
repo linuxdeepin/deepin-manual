@@ -54,6 +54,7 @@ public slots:
     void openManual(const QString &app_name, const QString &title_name);
     void openManualWithSearch(const QString &app_name, const QString &keyword);
     void onAppStartTimeCount(qint64);
+    void onActivateWindow();
 
 };
 

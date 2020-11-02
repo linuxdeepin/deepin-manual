@@ -22,6 +22,7 @@
 #include "resources/themes/images.h"
 #include "controller/shellobj.h"
 #include "base/accessible.h"
+#include "dbus/dbus_consts.h"
 
 #include <DApplication>
 #include <DApplicationSettings>
@@ -34,6 +35,8 @@
 #include <QSurfaceFormat>
 
 DWIDGET_USE_NAMESPACE
+
+#define WM_SENDER_NAME "Sender"
 
 int main(int argc, char **argv)
 {
@@ -99,6 +102,20 @@ int main(int argc, char **argv)
 
     if (!argument_parser.parseArguments()) {
         qDebug() << "argument_parser.parseArguments()";
+        QDBusMessage msg = QDBusMessage::createMethodCall(
+                               "com.deepin.Manual.FilesUpdate",
+                               "/com/deepin/Manual/FilesUpdate",
+                               "local.ManualFilesUpdateProxy",
+                               "ActiveWindow");
+        QDBusMessage response = QDBusConnection::sessionBus().call(msg);
+
+
+        if (response.type() == QDBusMessage::ReplyMessage) {
+            qDebug() << Q_FUNC_INFO << "ReplyMessage success";
+        } else if (response.type() == QDBusMessage::ErrorMessage) {
+            qDebug() << Q_FUNC_INFO << "ErrorMessage: " << QDBusConnection::sessionBus().lastError().message();
+        }
+
         //解析参数失败，１００ｍｓ退出进程
         QTimer::singleShot(100, [&]() {
             app.quit();
@@ -106,6 +123,8 @@ int main(int argc, char **argv)
         return app.exec();
     }
     argument_parser.openManualsDelay();
+
+
 
 
     // 日志保存, 路径:~/.cach/deepin/deepin-manual/

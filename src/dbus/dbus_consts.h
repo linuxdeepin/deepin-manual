@@ -28,5 +28,8 @@ extern const char kLauncherIface[];
 extern const char kManualWinManagerService[];
 extern const char kManualWinManagerIface[];
 
+extern const char kManualFilesUpdateService[];
+extern const char kManualFilesUpdateIface[];
+
 
 #endif // DEEPIN_MANUAL_DBUS_DBUS_CONSTS_H

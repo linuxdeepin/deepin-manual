@@ -157,6 +157,11 @@ set(DBUS_FILES
     dbus/manual_search_adapter.h
     dbus/manual_search_proxy.cpp
     dbus/manual_search_proxy.h
+
+    dbus/manual_filesupdate_proxy.cpp
+    dbus/manual_filesupdate_proxy.h
+    dbus/manual_filesupdate_adapter.cpp
+    dbus/manual_filesupdate_adapter.h
     )
 
 set(RESOURCES_FILES

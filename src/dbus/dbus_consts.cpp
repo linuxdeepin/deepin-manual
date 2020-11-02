@@ -27,3 +27,6 @@ const char kLauncherIface[] = "/com/deepin/dde/daemon/Launcher";
 const char kManualWinManagerService[] = "com.deepin.Manual.WinManager";
 const char kManualWinManagerIface[] = "/com/deepin/Manual/WinManager";
 
+const char kManualFilesUpdateService[] = "com.deepin.Manual.FilesUpdate";
+const char kManualFilesUpdateIface[] = "/com/deepin/Manual/FilesUpdate";
+

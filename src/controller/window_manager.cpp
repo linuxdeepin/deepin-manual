@@ -21,6 +21,8 @@
 #include "dbus/dbus_consts.h"
 #include "view/web_window.h"
 #include "controller/config_manager.h"
+#include "dbus/manual_filesupdate_proxy.h"
+#include "dbus/manual_filesupdate_adapter.h"
 
 #include <QApplication>
 #include <QDesktopWidget>
@@ -66,6 +68,23 @@ void WindowManager::initDBus()
         return;
     } else {
         qDebug() << WM_SENDER_NAME << " register dbus service success!";
+    }
+
+
+    // 注册Dbus filesUpdate服务
+    QDBusConnection conn = QDBusConnection::sessionBus();
+    ManualFilesUpdateProxy *proxy = new ManualFilesUpdateProxy(this);
+    //绑定应用激活信号，启动时判断进程是否存在
+    connect(proxy, &ManualFilesUpdateProxy::ActiveWindowSignal, this, &WindowManager::onActivateWindow);
+    ManualFilesUpdateAdapter *adapter = new ManualFilesUpdateAdapter(proxy);
+
+    Q_UNUSED(adapter);
+    //注册服务, 如果注册失败,则说明已存在一个dman.
+    if (!conn.registerService(kManualFilesUpdateService)
+            || !conn.registerObject(kManualFilesUpdateIface, proxy)) {
+        qCritical() << "filesUpdate failed to register dbus service";
+    } else {
+        qDebug() << "filesUpdate register dbus service success!";
     }
 }
 
@@ -220,4 +239,13 @@ void WindowManager::onAppStartTimeCount(qint64 startfinshTime)
     qDebug() << "finshTime ---> " << startfinshTime;
     qDebug() << "startduration :::";
     qInfo() << "[GRABPOINT] POINT-0001" << startfinshTime - this->appStartTime;
+}
+
+/**
+ * @brief WindowManager::onActivateWindow
+ * 绑定应用激活信号，启动时判断进程是否存在,存在则激活窗口，不存在则创建
+ */
+void WindowManager::onActivateWindow()
+{
+    this->activeOrInitWindow();
 }
