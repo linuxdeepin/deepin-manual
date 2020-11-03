@@ -388,7 +388,7 @@ void WebWindow::initConnections()
     connect(search_edit_, &SearchEdit::enterPressed, this, &WebWindow::onTitleBarEntered);
     connect(search_edit_, &SearchEdit::upKeyPressed, completion_window_,
             &SearchCompletionWindow::goUp);
-    connect(search_edit_, &SearchEdit::focusChanged, this, &WebWindow::onSearchEditFocusOut);
+//    connect(search_edit_, &SearchEdit::focusChanged, this, &WebWindow::onSearchEditFocusOut);
     connect(completion_window_, &SearchCompletionWindow::resultClicked, this,
             &WebWindow::onSearchResultClicked);
     connect(completion_window_, &SearchCompletionWindow::searchButtonClicked, this,
