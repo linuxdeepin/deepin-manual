@@ -233,9 +233,12 @@ void WebWindow::slot_HelpSupportTriggered()
  */
 void WebWindow::closeEvent(QCloseEvent *event)
 {
+    completion_window_->hide();
     //保存窗口大小
     saveWindowSize();
     QWidget::closeEvent(event);
+
+    exit(0);
 }
 
 /**
