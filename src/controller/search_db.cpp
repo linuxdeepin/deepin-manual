@@ -25,6 +25,7 @@ namespace {
 
 const char kSearchDropTable[] = "DROP TABLE IF EXISTS search";
 
+//--------------- search表 sql语句 -------------------
 const char kSearchTableSchema[] =
     "CREATE TABLE IF NOT EXISTS search "
     "(id INTEGER PRIMARY KEY AUTOINCREMENT,"
@@ -43,6 +44,7 @@ const char kSearchIndexSchema[] =
 const char kSearchDeleteEntryByApp[] =
     "DELETE FROM search "
     "WHERE appName = ? AND lang = ?";
+
 const char kSearchInsertEntry[] =
     "INSERT INTO search "
     "(appName, lang, anchor, anchorInitial, anchorSpell, anchorId, content) "
@@ -69,6 +71,37 @@ const char kSearchSelectContent[] =
     "union all "
     "select appName, anchor, anchorId, content from search where lang = ':lang' and content like '%/:content%' escape '/' and anchor not like '%/:content%' escape '/'"
     "order by appName";
+
+//--------------  filetime表sql语句  -----------------
+//建表
+const char kfileTimeTable[] =
+    "CREATE TABLE IF NOT EXISTS filetime "
+    "(id INTEGER PRIMARY KEY AUTOINCREMENT,"
+    "mdPath TEXT,"
+    "time TEXT)";
+//删除
+const char kfileTimeDeleteEntryByApp[] =
+    "DELETE FROM filetime "
+    "WHERE mdPath = ?";
+//插入
+const char kfileTimeInsertEntry[] =
+    "INSERT INTO filetime "
+    "(mdPath, time) "
+    "VALUES (?, ?)";
+//查找所有appName lang
+const char kfileTimeSelectAll[] =
+    "SELECT mdPath, time "
+    "FROM filetime";
+//根据 appName lang 查询time
+const char kfileTimeSelectByTime[] =
+    "SELECT time "
+    "FROM filetime "
+    "WHERE appName = ':appName' AND lang = ':lang'";
+//根据 appName lang 更新time
+const char kfileTimeUpdate[] =
+    "UPDATE filetime "
+    "SET time = ':time' "
+    "WHERE appName = ':appName' AND lang = ':lang'";
 
 const int kResultLimitation = INT_MAX;
 
@@ -127,13 +160,17 @@ void SearchDb::initConnections()
  * @param db_path 数据库文件路径
  * 数据库操作初始化
  */
-void SearchDb::initDb(const QString &db_path)
+void SearchDb::initDb()
 {
-    qDebug() << "initDb database path is--->:" << db_path << endl;
+    QString databasePath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
+    databasePath += "/.local/share/deepin/deepin-manual/search.db";
+
+
+    qDebug() << "initDb database path is--->:" << databasePath  << endl;
     p_->db = QSqlDatabase::addDatabase("QSQLITE");
-    p_->db.setDatabaseName(db_path);
+    p_->db.setDatabaseName(databasePath);
     if (!p_->db.open()) {
-        qCritical() << "Failed to open search db:" << db_path;
+        qCritical() << "Failed to open search db:" << databasePath;
         return;
     }
 }
@@ -144,11 +181,12 @@ void SearchDb::initDb(const QString &db_path)
  */
 void SearchDb::initSearchTable()
 {
+    Q_ASSERT(p_->db.isOpen());
     QSqlQuery query(p_->db);
-    if (!query.exec(kSearchDropTable)) {
-        qCritical() << "Failed to drop search table";
-        return;
-    }
+//    if (!query.exec(kSearchDropTable)) {
+//        qCritical() << "Failed to drop search table";
+//        return;
+//    }
 
     if (!query.exec(kSearchTableSchema)) {
         qCritical() << "Failed to initialize search table:" << query.lastError().text();
@@ -172,7 +210,7 @@ void SearchDb::initSearchTable()
  * @param contents          内容
  * 解析md文件之后，生成数据，插入到数据库
  */
-void SearchDb::addSearchEntry(const QString &system, const QString &app_name, const QString &lang,
+void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
                               const QStringList &anchors, const QStringList &anchorInitialList,
                               const QStringList &anchorSpellList, const QStringList &anchorIdList,
                               const QStringList &contents)
@@ -181,19 +219,13 @@ void SearchDb::addSearchEntry(const QString &system, const QString &app_name, co
     Q_ASSERT(anchors.length() == contents.length());
     qDebug() << "addSearchEntry()" << app_name << lang << anchors; // << contents;
 
-    QString strManualPath = "/" + system;
-    //    int nType = Dtk::Core::DSysInfo::deepinType();
-    //    if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
-    //        strManualPath += "/server";
-    //    } else if (Dtk::Core::DSysInfo::DeepinPersonal == (Dtk::Core::DSysInfo::DeepinType)nType) {
-    //        strManualPath += "/personal";
-    //    } else {
-    //        if (Dtk::Core::DSysInfo::isCommunityEdition()) {
-    //            strManualPath += "/community";
-    //        } else {
-    //            strManualPath += "/professional";
-    //        }
-    //    }
+    QString strManualPath;
+    if (app_name == "dde") {
+        strManualPath = "/system";
+    } else {
+        strManualPath = "/application";
+    }
+
 
     QStringList newContents = contents;
     for (int i = 0; i < contents.size(); i++) {
@@ -247,6 +279,37 @@ void SearchDb::addSearchEntry(const QString &system, const QString &app_name, co
 }
 
 /**
+ * @brief SearchDb::deleteSearchInfo
+ * @param appName
+ * @param lang
+ * 删除数据库操作
+ */
+void SearchDb::deleteSearchInfo(const QStringList &appName, const QStringList &lang)
+{
+    Q_ASSERT(p_->db.isOpen());
+    QSqlQuery query(p_->db);
+    query.prepare(kSearchDeleteEntryByApp);
+    query.bindValue(0, appName);
+    query.bindValue(1, lang);
+    if (!query.execBatch()) {
+        qCritical() << "Failed to delete search entry:" << query.lastError().text();
+        return;
+    }
+}
+
+/**
+ * @brief SearchDb::initTimeTable 初始化创建fileTime表
+ */
+void SearchDb::initTimeTable()
+{
+    QSqlQuery query(p_->db);
+    if (!query.exec(kfileTimeTable)) {
+        qCritical() << "Failed to initialize filetime table:" << query.lastError().text();
+        return;
+    }
+}
+
+/**
  * @brief SearchDb::handleSearchAnchor
  * @param keyword 搜索关键字
  * 根据keyword 在数据库中匹配，匹配结果通过searchAnchorResult()信号发出
@@ -262,7 +325,7 @@ void SearchDb::handleSearchAnchor(const QString &keyword)
     const QString lang = QLocale().name();
     const QString sql =
         QString(kSearchSelectAnchor).replace(":anchor", keyword).replace(":lang", lang);
-    qDebug()<<"=======>"<<sql;
+    qDebug() << "=======>" << sql;
     if (query.exec(sql)) {
         while (query.next() && (result.size() < kResultLimitation)) {
             //只将当前预装应用中的内容输出。
@@ -502,8 +565,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
     Q_ASSERT(p_->db.isOpen());
 
     //屏蔽部分特殊字符，会导致JS层对HTML无法对应替换
-    if(keyword.contains(QRegExp("[|&-]")))
-    {
+    if (keyword.contains(QRegExp("[|&-]"))) {
         emit this->searchContentMismatch(keyword);
         return;
     }
@@ -515,7 +577,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
 
     listStruct.clear();
     nH0OfList = 0;
-    bool result_empty = true; 
+    bool result_empty = true;
     if (query.exec(sql)) {
         bool bIsTitle = false;
         QString last_app_name = "";
@@ -584,4 +646,80 @@ void SearchDb::handleSearchContent(const QString &keyword)
         qDebug() << "searchContentMismatch";
         emit this->searchContentMismatch(keyword);
     }
+}
+
+/**
+ * @brief SearchDb::updateFileTimeEntry
+ * @param appName   应用名
+ * @param lang      语言
+ * @param dataTime  文件时间信息
+ * index.md 时间信息插入fileTime表,
+ * 先找到相应数据删除行，再执行插入操作
+ */
+void SearchDb::insertFilesTimeEntry(const QStringList &listMdPath, const QStringList &listDataTime)
+{
+    Q_ASSERT(p_->db.isOpen());
+
+    QSqlQuery query(p_->db);
+    query.prepare(kfileTimeDeleteEntryByApp);
+    query.bindValue(0, listMdPath);
+    if (!query.execBatch()) {
+        qCritical() << "Failed to delete fileTime entry:" << query.lastError().text();
+        return;
+    }
+
+    if (!p_->db.transaction()) {
+        qWarning() << "Failed to start db transaction!";
+        return;
+    }
+    query.prepare(kfileTimeInsertEntry);
+    query.bindValue(0, listMdPath);
+    query.bindValue(1, listDataTime);
+    bool ok = query.execBatch();
+
+    if (!ok) {
+        p_->db.rollback();
+        qCritical() << "Failed to insert fileTime " << query.lastError().text();
+    } else {
+        p_->db.commit();
+        qCritical() << "insert fileTime";
+    }
+}
+
+/**
+ * @brief SearchDb::deleteFilesTimeEntry
+ * @param listMdPath  删除文件路径列表
+ */
+void SearchDb::deleteFilesTimeEntry(const QStringList &listMdPath)
+{
+    Q_ASSERT(p_->db.isOpen());
+
+    QSqlQuery query(p_->db);
+    query.prepare(kfileTimeDeleteEntryByApp);
+    query.bindValue(0, listMdPath);
+    bool ok = query.execBatch();
+    if (!ok) {
+        p_->db.rollback();
+        qCritical() << "Failed to delete fileTime entry:" << query.lastError().text();
+    } else {
+        p_->db.commit();
+        qCritical() << "delete fileInfo : mdPath = " << listMdPath;
+    }
+}
+
+/**
+ * @brief SearchDb::selectAllFileTime 查询所有的文件更新时间信息
+ * @return
+ */
+QMap<QString, QString> SearchDb::selectAllFileTime()
+{
+    Q_ASSERT(p_->db.isOpen());
+    QMap <QString, QString> mapRet;
+    QSqlQuery query(p_->db);
+    if (query.exec(kfileTimeSelectAll)) {
+        while (query.next()) {
+            mapRet.insert(query.value(0).toString(), query.value(1).toString());
+        }
+    }
+    return mapRet;
 }

@@ -57,9 +57,7 @@ TEST_F(ut_utils_test, getSystemManualList)
 
 TEST_F(ut_utils_test, getSystemManualDir)
 {
-    // QString str = "/home/kevin_w/project/qtest/manual/manual-assets/professional";
-    QString str = DMAN_ORIG_MANUAL_DIR;
-    str += "/professional";
+    QString str = DMAN_MANUAL_DIR;
     ASSERT_EQ(m_utils->getSystemManualDir(), str);
 }
 

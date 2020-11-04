@@ -13,6 +13,7 @@ class Items extends Component {
       show: false
     };
     let path = props.file.slice(0, props.file.lastIndexOf('/') + 1);
+    console.log("========path======>",path);
     global.readFile(props.file, data => {
       let [title, logo] = data
         .substr('# '.length, data.indexOf('\n'))
@@ -125,6 +126,11 @@ export default class SearchPage extends Component {
   componentWillReceiveProps(nextProps){
     // console.log("search componentWillReceiveProps..",this.context.searchResult);
     console.log("search componentWillReceiveProps..");
+  }
+
+  shouldComponentUpdate(nextProps, nextState) {
+    console.log("search shouldComponentUpdate..");
+    return true;
   }
 
   componentDidUpdate() {

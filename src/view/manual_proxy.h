@@ -34,6 +34,7 @@ signals:
     void supportBeClick();
     //发送页面加载完成时间
     void startFinish(qint64);
+    void updateLabel();
 
 public slots:
     QString getSystemManualDir();
@@ -47,6 +48,7 @@ public slots:
     bool bIsLongSon();
     //js页面渲染结束
     void renderFinish();
+    void showUpdateLabel();
 
 private:
     void saveAppList(const QStringList &list);

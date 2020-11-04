@@ -150,6 +150,11 @@ void ManualProxy::renderFinish()
     emit startFinish(dateTime);
 }
 
+void ManualProxy::showUpdateLabel()
+{
+    emit updateLabel();
+}
+
 /**
  * @brief ManualProxy::saveAppList
  * @param list

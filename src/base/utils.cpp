@@ -37,16 +37,16 @@ namespace {
  * @param desktop_file 桌面文件的绝对路径
  * @return 返回帮助手册id如果存在,否则返回空字符串。
  */
-QString GetDeepinManualId(const QString &desktop_file)
-{
-    QSettings settings(desktop_file, QSettings::IniFormat);
-    settings.beginGroup("Desktop Entry");
-    const QVariant value = settings.value("X-Deepin-ManualID");
-    if (value.isValid()) {
-        return value.toString();
-    }
-    return "";
-}
+//QString GetDeepinManualId(const QString &desktop_file)
+//{
+//    QSettings settings(desktop_file, QSettings::IniFormat);
+//    settings.beginGroup("Desktop Entry");
+//    const QVariant value = settings.value("X-Deepin-ManualID");
+//    if (value.isValid()) {
+//        return value.toString();
+//    }
+//    return "";
+//}
 
 } // namespace
 
@@ -405,7 +405,9 @@ QStringList Utils::getSystemManualList()
 
     QStringList app_list_;
     const AppInfoList list = launcherInterface();
-    const QStringList dir_entry = QDir(getSystemManualDir()).entryList();
+//    const QStringList dir_entry = QDir(getSystemManualDir()).entryList();
+    const QStringList applicationList = QDir(QString("%1/application/").arg(DMAN_MANUAL_DIR)).entryList();
+    const QStringList systemList = QDir(QString("%1/system/").arg(DMAN_MANUAL_DIR)).entryList();
 
     QMultiMap<qlonglong, AppInfo> appMap;
     for (int var = 0; var < list.size(); ++var) {
@@ -416,16 +418,16 @@ QStringList Utils::getSystemManualList()
 
     for (int i = 0; i < listApp.size(); ++i) {
         const QString app_name = kAppNameMap.value(listApp.at(i).key, listApp.at(i).key);
-        if ((dir_entry.indexOf(app_name) != -1) && app_list_.indexOf(app_name) == -1) {
+        if ((applicationList.indexOf(app_name) != -1) && app_list_.indexOf(app_name) == -1) {
             app_list_.append(app_name);
         }
-        const QString deepin_app_id = GetDeepinManualId(listApp.at(i).desktop);
-        if (deepin_app_id == app_name && app_list_.indexOf(app_name) == -1) {
-            app_list_.append(app_name);
-        }
+//        const QString deepin_app_id = GetDeepinManualId(listApp.at(i).desktop);
+//        if (deepin_app_id == app_name && app_list_.indexOf(app_name) == -1) {
+//            app_list_.append(app_name);
+//        }
     }
     // Add "dde" by hand, as it has no desktop file.
-    if (dir_entry.contains("dde")) {
+    if (systemList.contains("dde")) {
         app_list_.append("dde");
     }
     // Remove youdao-dict if current locale is not Simplified Chinese.
@@ -445,18 +447,18 @@ QStringList Utils::getSystemManualList()
 QString Utils::getSystemManualDir()
 {
     QString strMANUAL_DIR = DMAN_MANUAL_DIR;
-    int nType = Dtk::Core::DSysInfo::deepinType();
-    if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
-        strMANUAL_DIR += "/server";
-    } else if (Dtk::Core::DSysInfo::DeepinPersonal == (Dtk::Core::DSysInfo::DeepinType)nType) {
-        strMANUAL_DIR += "/personal";
-    } else {
-        if (Dtk::Core::DSysInfo::isCommunityEdition()) {
-            strMANUAL_DIR += "/community";
-        } else {
-            strMANUAL_DIR += "/professional";
-        }
-    }
+//    int nType = Dtk::Core::DSysInfo::deepinType();
+//    if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
+//        strMANUAL_DIR += "/server";
+//    } else if (Dtk::Core::DSysInfo::DeepinPersonal == (Dtk::Core::DSysInfo::DeepinType)nType) {
+//        strMANUAL_DIR += "/personal";
+//    } else {
+//        if (Dtk::Core::DSysInfo::isCommunityEdition()) {
+//            strMANUAL_DIR += "/community";
+//        } else {
+//            strMANUAL_DIR += "/professional";
+//        }
+//    }
     return strMANUAL_DIR;
 }
 

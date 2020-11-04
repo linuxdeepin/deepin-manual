@@ -21,6 +21,8 @@
 #include "dbus/dbus_consts.h"
 #include "view/web_window.h"
 #include "controller/config_manager.h"
+#include "dbus/manual_filesupdate_proxy.h"
+#include "dbus/manual_filesupdate_adapter.h"
 
 #include <QApplication>
 #include <QDesktopWidget>
@@ -67,6 +69,22 @@ void WindowManager::initDBus()
     } else {
         qDebug() << WM_SENDER_NAME << " register dbus service success!";
     }
+
+    // 注册Dbus filesUpdate服务
+    QDBusConnection conn = QDBusConnection::sessionBus();
+    ManualFilesUpdateProxy *proxy = new ManualFilesUpdateProxy(this);
+    connect(proxy, &ManualFilesUpdateProxy::FilesUpdate, this, &WindowManager::onFilesUpdate);
+    ManualFilesUpdateAdapter *adapter = new ManualFilesUpdateAdapter(proxy);
+    //ManualOpenAdapter *adapter = new ManualOpenAdapter(proxy);
+    Q_UNUSED(adapter);
+    //注册服务, 如果注册失败,则说明已存在一个dman.
+    if (!conn.registerService(kManualFilesUpdateService)
+            || !conn.registerObject(kManualFilesUpdateIface, proxy)) {
+        qCritical() << "filesUpdate failed to register dbus service";
+    } else {
+        qDebug() << "filesUpdate register dbus service success!";
+    }
+
 }
 
 /**
@@ -220,4 +238,17 @@ void WindowManager::onAppStartTimeCount(qint64 startfinshTime)
     qDebug() << "finshTime ---> " << startfinshTime;
     QString logInfo = QString("[GRABPOINT] POINT-01 startduration=%1%2").arg(startfinshTime - this->appStartTime).arg("ms");
     qInfo() << logInfo;
+}
+/**
+ * @brief WindowManager::onFilesUpdate
+ * @param filesList
+ * 文件更新提示
+ */
+void WindowManager::onFilesUpdate(const QStringList &filesList)
+{
+    qDebug() << Q_FUNC_INFO << filesList;
+    if (window) {
+        window->updatePage(filesList);
+    }
+    //window->openjsPage()
 }

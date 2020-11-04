@@ -3,6 +3,7 @@ import { Link } from 'react-router-dom';
 import ReactDOM from 'react-dom';
 
 import Scrollbar from './scrollbar.jsx';
+import { type } from 'os';
 
 class Item extends Component {
   constructor(props) {
@@ -13,7 +14,7 @@ class Item extends Component {
       logo: '',
       show: false
     };
-    const path = `${global.path}/${this.props.appName}/${global.lang}/`;
+    const path = `${global.path}/${this.props.type}/${this.props.appName}/${global.lang}/`;
     const file = path + `index.md`;
     global.readFile(file, data => {
       let [title, logo] = data
@@ -70,6 +71,8 @@ export default class Index extends Component {
       openedAppList:[]
     };
 
+    console.log("==========>index constructor");
+
     global.qtObjects.manual.getSystemManualList(appList =>
       this.setState({ appList })
     );
@@ -89,8 +92,19 @@ export default class Index extends Component {
 
   shouldComponentUpdate(nextProps, nextState) {
     console.log("index shouldcomponentupdate");
-    if (nextState.appList.toString() == this.state.appList.toString() 
-          && nextState.openedAppList.toString() == this.state.openedAppList.toString()) 
+    if (global.bIsReload)
+    {
+      global.qtObjects.manual.getSystemManualList(appList =>
+        this.setState({ appList })
+      );
+  
+      global.qtObjects.manual.getUsedAppList(openedAppList =>
+        this.setState({openedAppList})
+      );
+      global.bIsReload = false;
+    }
+    else if (nextState.appList.toString() == this.state.appList.toString() 
+              && nextState.openedAppList.toString() == this.state.openedAppList.toString()) 
     {
       console.log("index no update");
       return false;
@@ -119,14 +133,14 @@ export default class Index extends Component {
           {sysSoft.length > 0 && (
             <div id="forMargin">
                 <div className="items">
-                  {sysSoft.map(appName => <Item key={appName} appName={appName} isOpened={this.bIsBeOpen(appName)}/>)}
+                  {sysSoft.map(appName => <Item key={appName} appName={appName} isOpened={this.bIsBeOpen(appName)} type={"system"}/>)}
                 </div>
             </div>
           )}
           <h2>{global.i18n['Applications']}</h2>
           <div id="forMargin">
               <div className="items">
-                {appSoft.map(appName => <Item key={appName} appName={appName} isOpened={this.bIsBeOpen(appName)}/>)}
+                {appSoft.map(appName => <Item key={appName} appName={appName} isOpened={this.bIsBeOpen(appName)} type={"application"}/>)}
                 {/* {otherSoft.map(appName => <Item key={appName} appName={appName} isOpened={this.bIsBeOpen(appName)}/>)}
                 {Array.from(new Array(10), (val, index) => index).map(i => (
                   <a key={i} className="empty" />

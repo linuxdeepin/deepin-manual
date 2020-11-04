@@ -20,6 +20,7 @@ global.lastHistoryIndex = 0;
 global.lastAction = 'PUSH';
 global.isShowHelperSupport = false;
 global.scrollBehavior = 'smooth';
+global.bIsReload = false;
 // global.gHistoryGo = 0;
 
 
@@ -44,6 +45,7 @@ class App extends React.Component {
       searchResult: [],
       mismatch: false,
       historyGO: 0
+      // changeAppList:[]
     };
     new QWebChannel(qt.webChannelTransport, this.initQt.bind(this));
   }
@@ -88,6 +90,9 @@ class App extends React.Component {
       );
       global.qtObjects.search.onContentResult.connect(
         this.onContentResult.bind(this)
+      );
+      global.qtObjects.search.reloadPage.connect(
+        this.onReloadPage.bind(this)
       );
       global.qtObjects.manual.searchEditTextisEmpty.connect(
         this.onSearchEditClear.bind(this)
@@ -148,14 +153,97 @@ class App extends React.Component {
   onContentResult(appName, titleList, idList, contentList) {
     console.log('搜索结果', appName, titleList, idList, contentList);
     let { searchResult } = this.state;
+    let filePath;
+    if (appName == "dde")
+    {
+      filePath = `${global.path}/system/${appName}/${global.lang}/index.md`;
+    }
+    else
+    {
+      filePath = `${global.path}/application/${appName}/${global.lang}/index.md`;
+    }
     searchResult.push({
-      file: `${global.path}/${appName}/${global.lang}/index.md`,
+      file: filePath,
       idList,
       titleList,
       contentList
     });
     this.setState({ searchResult, mismatch: false });
   }
+
+  onReloadPage(appList) {
+    // console.log("============>page reload...");
+    let bRetFlag = true;
+    var locationPath = this.context.router.history.location.pathname;
+    console.log("============>page reload...",locationPath);
+    var list = locationPath.split("/");
+    if (list[1] == 'open')
+    {
+      const curApp = list[2];
+      console.log("============>open...",appList,curApp);
+      let bFlag = false;
+      appList.map(app =>{
+        if (!bFlag && curApp.indexOf(app) != -1)
+        {
+          bFlag = true;
+        }
+      })
+
+      if (bFlag)
+      {
+        global.qtObjects.manual.getSystemManualList(appNames =>
+        {
+          let bKFlage = false;
+          appNames.map(name=>{
+            if (curApp.indexOf(name) != -1)
+            {
+              bKFlage = true;
+            }
+          })
+
+          if (bKFlage)
+          {
+            global.bIsReload = true;
+            this.context.router.history.go(0);
+          }
+          else
+          {
+            const historyList = this.context.router.history.entries;
+            const index = this.context.router.history.index;
+            const historyLate = historyList.slice(index+1);
+            console.log("===========>",historyLate);
+            this.setState({ historyGO: this.state.historyGO - 1 });
+            this.context.router.history.go(-1);
+
+            historyLate.map(url=>{
+              console.log("..........>",url);
+              this.context.router.history.push(url);
+            })
+            global.backHome();
+          }
+        }); 
+      }
+      else
+      {
+        bRetFlag = false;
+      }
+    }
+    else if (list[1] == 'search')
+    {
+      console.log("============>search...",list[2]);
+      global.qtObjects.search.updateSearch(list[2]);
+    }
+    else
+    {
+      global.bIsReload = true;
+      this.context.router.history.go(0);
+    }
+
+    if (bRetFlag)
+    {
+      global.qtObjects.manual.showUpdateLabel();
+    }
+  };
 
   //搜索框清空后回到上一个页面(未搜索的页面).
   onSearchEditClear(){
@@ -181,7 +269,7 @@ class App extends React.Component {
       for (let i = indexGo; i >= 0; i--)
       {
 
-        let curPath = objList[i].pathname;
+        let curPath = objList[i].pathname;帮助
         let curPathList = curPath.split("/");
         if (curPathList.length == 5 && curPathList[4] == "")
         {
@@ -321,7 +409,16 @@ class App extends React.Component {
       global.handleLocation(global.hash);
       if (title !== '')
       {
-        let filePath = `${global.path}/${file}/${global.lang}/index.md`;
+        let filePath;
+        if(file == "dde")
+        {
+          filePath = `${global.path}/system/${file}/${global.lang}/index.md`
+        }
+        else
+        {
+          filePath = `${global.path}/application/${file}/${global.lang}/index.md`
+        }
+
         global.readFile(filePath, data => {
           let { html } = m2h(filePath, data);
           let d = document.createElement('div');
@@ -561,6 +658,7 @@ class App extends React.Component {
   }
   componentDidUpdate() {
     if (global.qtObjects) {
+      console.log ("app componentDidUpdate------------>",this.state.historyGO,this.context.router.history.length );
       global.qtObjects.titleBar.setBackwardButtonActive(
         this.state.historyGO > 0
         // global.gHistoryGo > 0

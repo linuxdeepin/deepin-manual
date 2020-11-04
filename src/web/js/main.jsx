@@ -33,7 +33,14 @@ export default class Main extends Component {
     global.hash = hash;
     var filePath = file;
     if (filePath.indexOf('/') == -1) {
-      filePath = `${global.path}/${file}/${global.lang}/index.md`;
+      if (filePath == "dde")
+      {
+        filePath = `${global.path}/system/${file}/${global.lang}/index.md`;
+      }
+      else{
+        filePath = `${global.path}/application/${file}/${global.lang}/index.md`;
+      }
+      
     }
   
     global.readFile(filePath, data => {
@@ -121,6 +128,14 @@ export default class Main extends Component {
   }
 
   shouldComponentUpdate(nextProps,nextState){
+
+    if (global.bIsReload)
+    {
+      let { file, hash,key } = nextProps.match.params;
+      console.log("main shouldComponentUpdate: "+file+" "+hash+"  this.file:"+ this.state.file +" this.hash"+this.state.hash+ " key:",key);
+      this.init(decodeURIComponent(file), this.state.hash ? decodeURIComponent(this.state.hash) : null,key);
+      global.bIsReload = false;
+    }
     console.log("main shouldComponentUpdate====");
     return true;
   }

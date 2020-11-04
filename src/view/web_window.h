@@ -23,11 +23,14 @@
 #include <DButtonBox>
 #include <DMainWindow>
 #include <DApplicationHelper>
+#include <DLabel>
 
 #include <QtDBus/QtDBus>
 #include <QWebEngineView>
 #include <QClipboard>
 #include <DSpinner>
+
+DWIDGET_USE_NAMESPACE
 
 class I18nProxy;
 class ImageViewer;
@@ -56,6 +59,7 @@ public:
     ~WebWindow() override;
 
     void initWeb();
+    void updatePage(const QStringList &list);
     void updateBtnBox();
     void cancelTextChanged();
     void openjsPage(const QString &app_name, const QString &title_name);
@@ -71,12 +75,14 @@ signals:
 public slots:
     void slot_ThemeChanged();
     void slot_HelpSupportTriggered();
+    void slotUpdateLabel();
 
 protected:
     void closeEvent(QCloseEvent *event) Q_DECL_OVERRIDE;
     void inputMethodEvent(QInputMethodEvent *e) Q_DECL_OVERRIDE;
     bool eventFilter(QObject *watched, QEvent *event) Q_DECL_OVERRIDE;
     QVariant inputMethodQuery(Qt::InputMethodQuery prop) const Q_DECL_OVERRIDE;
+    void resizeEvent(QResizeEvent *event) Q_DECL_OVERRIDE;
 
 private:
     void initUI();
@@ -112,6 +118,7 @@ private:
     bool bIsSetKeyword{false};
     bool bFinishChannel{false};
     Dtk::Widget::DSpinner *m_spinner;
+    DLabel *m_pUpdatelabel {nullptr};
 
 private slots:
     void onSearchEditFocusOut();

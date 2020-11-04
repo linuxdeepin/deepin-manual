@@ -1,5 +1,13 @@
 #!/bin/sh
 
 killall dman-search
+killall dmanHelper
+killall dman
+
+
+#rm -r /usr/share/deepin-manual/manual-assets/professional
+#rm -r /usr/share/deepin-manual/manual-assets/server
+#rm -r /usr/share/deepin-manual/manual-assets/community
 
 exit 0
+
