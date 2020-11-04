@@ -4,6 +4,8 @@ killall dman-search
 killall dmanHelper
 killall dman
 
+unzip /usr/share/deepin-manual/web_dist/toSearch/node_modules.zip
+
 
 #rm -r /usr/share/deepin-manual/manual-assets/professional
 #rm -r /usr/share/deepin-manual/manual-assets/server
