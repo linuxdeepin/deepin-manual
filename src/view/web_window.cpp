@@ -46,9 +46,6 @@
 
 #include "base/utils.h"
 
-
-DWIDGET_USE_NAMESPACE
-
 namespace {
 
 const int kSearchDelay = 200;
@@ -146,6 +143,8 @@ void WebWindow::updatePage(const QStringList &list)
             appList.append(splitList.at(splitList.count() - 3));
         }
         emit search_proxy_->reloadPage(appList);
+//        DMessageManager::instance()->sendMessage(this->window(), QIcon(":/images/ok.svg"), tr("文件更新"));
+
     }
 }
 
@@ -234,6 +233,17 @@ void WebWindow::slot_HelpSupportTriggered()
     } else {
         qDebug() << "call com.deepin.dde.ServiceAndSupport failed";
     }
+
+    QPoint point;
+    point.rx() = this->width() / 2 - m_pUpdatelabel->width() / 2;
+    point.ry() = this->titlebar()->height();
+    m_pUpdatelabel->move(point);
+    m_pUpdatelabel->show();
+    m_pUpdatelabel->raise();
+    QTimer::singleShot(2000, [ = ] {
+        m_pUpdatelabel->hide();
+    });
+
 }
 
 /**
@@ -280,6 +290,22 @@ QVariant WebWindow::inputMethodQuery(Qt::InputMethodQuery prop) const
 
     return QWidget::inputMethodQuery(prop);
 }
+
+void WebWindow::resizeEvent(QResizeEvent *event)
+{
+
+    if (m_pUpdatelabel != nullptr && m_pUpdatelabel->isVisible()) {
+        QPoint point;
+        point.rx() = this->width() / 2 - m_pUpdatelabel->width() / 2;
+        point.ry() = this->titlebar()->height();
+        m_pUpdatelabel->move(point);
+        m_pUpdatelabel->show();
+        m_pUpdatelabel->raise();
+    }
+
+    QWidget::resizeEvent(event);
+}
+
 
 /**
  * @brief WebWindow::eventFilter
@@ -498,6 +524,13 @@ void WebWindow::initUI()
     this->titlebar()->addWidget(search_edit_, Qt::AlignCenter);
     this->titlebar()->setSeparatorVisible(false);
     this->titlebar()->setIcon(QIcon::fromTheme("deepin-manual"));
+
+    m_pUpdatelabel = new DLabel(this->window());
+    m_pUpdatelabel->setText(QObject::tr("当前内容已更新"));
+    m_pUpdatelabel->setFixedSize(150, 40);
+    m_pUpdatelabel->setAlignment(Qt::AlignCenter);
+    m_pUpdatelabel->hide();
+
     //隐藏title阴影
     this->setTitlebarShadowEnabled(false);
     //键盘盲打
@@ -508,6 +541,7 @@ void WebWindow::initUI()
     QVBoxLayout *spinnerLayout = new QVBoxLayout(spinnerPage);
     m_spinner->setFixedSize(50, 50);
     spinnerLayout->addWidget(m_spinner, 0, Qt::AlignCenter);
+
     this->setCentralWidget(spinnerPage);
     m_spinner->start();
 
