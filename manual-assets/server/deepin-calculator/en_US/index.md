@@ -10,22 +10,22 @@ Calculator is a simple and easy-to-use desktop calculator. It supports addition,
 
 ### Symbol Introduction
 
-| Icon                       | Name                                                | Description                                                  |
-| -------------------------- | :-------------------------------------------------- | ------------------------------------------------------------ |
-| 0~9                        | Number Key                                          | Basic Arabic numerals                                        |
-| MC                         | Clear Key                                           | Clear all memories                                           |
-| MR                         | Storage Key                                         | Memory recall                                                |
-| M+                         | Storage Key                                         | Memory add; click M+ to add the current number accumulatively to the memory and interrupt digital input. |
-| M-                         | Storage Key                                         | Memory subtract; click m- to subtract the current number from the memory and interrupt digital input. |
-| MS                         | Storage Key                                         | Memory store；click MS to add the numeric value in the input box to the memory list. |
-| M^                         | Storage Key                                         | Display the memory list; click M^ to clear the memory after exiting the application. |
-| C                          | Clear                                               | Click once to clear current contents and click twice to clear all. |
-| %                          | Percent Sign                                        | To input percent sign                                        |
-| ![delete](icon/delete.svg) | Delete                                              | Click once to delete a character forward                     |
-| +-×÷                       | Addition, subtraction, multiplication, and division | Basic math operators for addition, subtraction, multiplication and division |
-| .                          | Decimal Point                                       | To input decimal point                                       |
-| ()                         | Bracket                                             | To input brackets with the left and right bracket completed automatically. |
-| =                          | Equal Sign                                          | To get result                                                |
+| Icon                                | Name                                                | Description                                                  |
+| ----------------------------------- | :-------------------------------------------------- | ------------------------------------------------------------ |
+| 0~9                                 | Number Key                                          | Basic Arabic numerals                                        |
+| ![mc](icon/MC.svg)                  | Clear Key                                           | Clear all memories                                           |
+| ![mr](icon/MR.svg)                  | Storage Key                                         | Memory recall                                                |
+| ![m+](icon/M+.svg)                  | Storage Key                                         | Memory add; click ![m+](icon/M+.svg) to add the current number accumulatively to the memory and interrupt digital input. |
+| ![m-](icon/M-.svg)                  | Storage Key                                         | Memory subtract; click ![m-](icon/M-.svg) to subtract the current number from the memory and interrupt digital input. |
+| ![ms](icon/MS.svg)                  | Storage Key                                         | Memory store；click ![ms](icon/MS.svg) to add the numeric value in the input box to the memory list. |
+| ![M](icon/M.svg)/![m^](icon/M^.svg) | Storage Key                                         | Click ![M](icon/M.svg)to expand the memory list; click ![m^](icon/M^.svg) to fold the memory list. The memory will be cleared up when Calculator is closed. |
+| C                                   | Clear                                               | Click once to clear current contents and click twice to clear all. |
+| %                                   | Percent Sign                                        | To input percent sign                                        |
+| ![delete](icon/delete.svg)          | Delete                                              | Click once to delete a character forward                     |
+| +-×÷                                | Addition, subtraction, multiplication, and division | Basic math operators for addition, subtraction, multiplication and division |
+| .                                   | Decimal Point                                       | To input decimal point                                       |
+| ()                                  | Bracket                                             | To input brackets with the left and right bracket completed automatically. |
+| =                                   | Equal Sign                                          | To get result                                                |
 
 
 
@@ -79,7 +79,7 @@ Calculator supports keyboard operation and fault-tolerant computing of special s
 
 ### Digital Linkage
 
-- It is available to continue entering operator after an expression displays its numerical result. The first number in the expression now is the calculation result of the previous one.  Take the current expression 10 + 20 = 30 for example. The displayed result is 30.  Input + and number 9 and a new expression will be formed, 30 + 9. Press the Enter key and the calculation result of the new expression will be 39.
+- It is available to continue entering operator after an expression displays its numerical result. The first number in the expression now is the calculation result of the previous one.  Take the current expression 10 + 20 = 30 for example. The displayed result is 30.  Input + and number 9 and a new expression will be formed, 30 + 9. Press the **Enter** key and the calculation result of the new expression will be 39.
 - After the two expressions are linked, modify the numbers and operators of the previous expression. If the calculation result changes, it will affect the result of the new expression linked to it. For example, the two expressions 10 + 20 = 30 and 30 +9 = 39 are linked. If the operator +  in the first expression is changed to *, the expression will be 10 x 20 = 200. The second expression will be changed to 200 + 9 = 209 automatically. Up to 9 expression linkages are supported according to this rule.
 -  In the process of re-editing an expression containing linked numbers, if the expression of linked numbers or linked numbers are modified incorrectly, the linkage can be released. 
 
@@ -91,7 +91,7 @@ On the main menu, you can switch window themes, view help manual and get more in
 
 ### Theme
 
-The window theme includes Light Theme, Dark Theme and System Theme (default).
+The window theme includes Light Theme, Dark Theme and System Theme.
 
 1.  On the Calculator interface, click  ![main_menu](icon/main_menu.svg).
 2.  Click **Theme** to select a theme.

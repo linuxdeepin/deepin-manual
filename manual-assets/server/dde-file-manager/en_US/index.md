@@ -207,14 +207,16 @@ By clicking the search icon, or right-click the file path and select **Edit addr
 
 ### Search files
 
-Click the search button or press **Ctrl** + **F** to switch to the search bar. Or, input the keywords and press **Enter** key, the search results will be shown in the window.
+Click the search button or press **Ctrl + F**  to switch to the search bar. Or, input the keywords and press **Enter**, the search results will be shown in the window.
 
 - If you need to search in a specified directory, please enter it before search.
 
-> ![notes](icon/notes.svg)Notes: In **Settings**, check "Auto index internal disk" and "Index external storage device after connected to computer" to quicken the searching speed.
+> ![notes](icon/notes.svg)Notes: 
+   - In **Settings**, check "Auto index internal disk" and "Index external storage device after connected to computer" to quicken the searching speed.
+   - In case you want to search files by keywords in the content, you can check **Full-Text search** in **Settings** > **Advanced** > **Index**.
 
 #### Advanced Search
-1. In search bar, input the keywords and press enter, click ![filter](icon/filter.svg) to show advanced search.
+1. In search bar, input the keywords and press **Enter**. When the results appear, you will see ![filter](icon/filter.svg) icon, you can click it to do advanced search.
 2. Select the searching range, file type and size, and modified time to narrow the search results.
 
 ![0|filter](jpg/filter.png)
@@ -244,65 +246,8 @@ File Manager supports multi-tab view.
 To quickly visit a folder from the left panel, you can add bookmarks for frequently used folders.
 
 - Add Bookmarks: On File Manager, right-click the folder, in the pop-up context menu, select **Add to bookmark**.
-
 - Move Bookmarks: you can move bookmarks within the bookmark area. Drag and drop the bookmark to the designated location.
-
 - Delete Bookmarks: you can delete bookmarks by right-clicking the bookmark and select **Remove**, or right-clicking the bookmarked folder and select **Remove bookmark**, or dragging and dropping the bookmark out of the left panel to delete it.
-
-### Manage Tags
-
-By adding tags on file/folder, you can classify and manage your files better.
-
-> ![notes](icon/notes.svg)Notes: currently only x86 platform supports **Tag information**. All contents related to "Tag information" in this manual are only applicable for x86 platform.
-
-#### Add Tags
-
-##### By Tag information
-
-1. Right-click a file/folder, select **Tag information**.
-2. Input tag info. Use comma to separate tags in case of multiple tags.
-3. Press  **Enter** key to finish adding tag.
-
-> ![notes](icon/notes.svg)Notes: The tag color is randomly assigned from eight default colors.
-
-
-![1|tag info](jpg/tag-info.png)
-
-
-##### By Color Tag
-
-Right-click a file/folder, select a "color button" to create a color tag directly.
-
-![1|color tag](jpg/color-tag.png)
-
-##### By information column on the right side
-
-Select a file/folder, click ![fileinfo](icon/fileinfo.svg), and add tags in the information column on the right side.
-
-![1|info tag](jpg/info-tag.png)
-
-> ![notes](icon/notes.svg)Notes: You can add tag to multiple files/folders at a time, or add multiple tags to a single file/folder; you can also add tags in Properties of the file/folder. The tag appears in the left panel.
-
-> ![attention](icon/attention.svg)Attention: If a file has a tag, copy or cut and then paste it, the new file still has the same tag.
-
-#### Rename Tag
-
-Right-click a tag in  the left panel,  select **Rename** to modify the current tag.
-
-![1|rename tag](jpg/rename-tag.png)
-
-#### Change Tag Color
-
-Right-click a tag in  the left panel,  select a "Color button" to change the current tag color.
-
-#### Change Tag Order
-
-Drag and drop the tag upwards or downwards to change its order.
-
-#### Delete Tag
-Right-click a tag in left panel,  select **Remove** to delete the tag.
-
-
 
 ### Preview Files
 
@@ -331,7 +276,7 @@ You can share folders in File Manager, if there are some folders shared, the sha
 #### Share Local Files
 
 1. On File Manager interface, right-click a folder, select **Share folder**.
-2. In the popup window, check **Share this folder** under **Sharing**.
+2. In the pop-up window, check **Share this folder** under **Sharing**.
 3. Input **Share name**, and choose **Permission** and **Anonymous ** according to actual needs before closing the window.
 5. To set share password, click ![menu](icon/icon_menu.svg) and select **Set share password**.
 5. Input password and click **Confirm**.
@@ -378,7 +323,7 @@ You can find sharing folders of other users in the same LAN in **Computers in LA
 
 1. On File Manager interface, right-click the item to create a link for.
 2.  Select **Create link**.
-3. In the popup window, select a location and input the name of the link.
+3. In the pop-up window, select a location and input the name of the link.
 4. Click **Save** to finish creating the link.
 
 > ![tips](icon/tips.svg)Tips: By selecting **Send to desktop** for an item, you can create a link on desktop with one click.
@@ -392,63 +337,7 @@ When there is an external device inserted, you can directly send file/folder to 
 3. Select the device you want to send to.
 4. File/folder will be copied to the device.
 
-## File Vault
 
-File Vault is designed to  create a special safe space for you and protect your privacy. With the advanced encryption technology and convenient operations, it's quite easy to use.
-
-### Set vault password
-
-You will have to set a password when you use File Vault for the first time as follows:
-
-1. Click ![file-vault](icon/file-vault.svg) in the left panel or double-click **My Vault** in the **Computer** interface, and then click **Create** in the pop-up dialogue box.  
-2. Set the "Method", "Password", "Repeat password" and "Hint", click **Next**. 
-
-![0|password](jpg/password.png)
-
-> ![notes](icon/notes.svg)Notes: the password must contain upper case letters, lower case letters,  Arabic numbers and special symbols at the same time and no less that 8 digits. Otherwise, you are not able to go to the next step.
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-3. A key/QR code is generated. It is recommended to save it in case you forget it. Click **Next**. 
-
-4. Click **Encrypt**; enter your login password in the pop-up authentication box and click **Confirm**. 
-   ![encrypt](jpg/encrypt.png)
-
-5. Click **OK** when encryption finishes.
-6. You can now save your files in File Vault.
-
-
-
-### Lock File Vault
-
-After you put files into File Vault, right-click![file-vault](icon/file-vault.svg) in the left panel or right-click **My Vault** in the **Computer** interface. 
-
-- Select **Lock** to lock File Vault. 
-- Select **Auto lock** and select in the sub-menu:
-  + Select "Never", which means the file vault remains unlock until computer is shutdown. 
-  + Select "5 minutes", "10 minutes" or "20 minutes", which means File Vault will be locked automatically in corresponding time. 
-
-![0|right](jpg/right.png)
-
-
-
-### Unlock File Vault
-
-Right-click![file-vault](icon/file-vault.svg) or **My Vault** in the **Computer** interface. 
-
-- Select  **Unlock**, input password in the pop-up dialogue box and click **Unlock**. 
-- Select  **Unlock by key**, input the 32-digit recovery key in the pop-up dialogue box and click **Unlock**. 
-
-> ![tips](icon/tips.svg)Tips: You can click ![file-vault](icon/file-vault.svg) in the left panel or double-click **My Vault** in the **Computer** interface and input password. 
-
-### Delete File Vault
-
-You can delete a vault only after unlocking it.
-
-1. Right-click ![file-vault](icon/file-vault.svg) in the left panel  or right-click **My Vault** in the **Computer** interface and select **Remove File Vault**. 
-2. Input file vault password in the pop-up dialogue box and click **Remove**. 
-3. Input your login password in the pop-up dialogue box and click **Confirm** to finish this operation.
-
-> ![attention](icon/attention.svg)Attention: Files inside the vault would be deleted as you remove the file vault. Please backup them before you remove the file vault if needed. 
 
 ## Disk Management
 
@@ -481,11 +370,8 @@ Local disks are displayed in the left panel of File Manager. When you mount any 
 ### Unmount/Eject/Safely Remove Disks
 
 1. In the left panel of File Manager, right-click the disk you want to remove.
-
 2. Select **Unmount**.
-
 3. The disk will be removed from the disk list, and so will all partition of it .
-
 
 ![0|disk](jpg/disk1.png)
 
@@ -499,14 +385,11 @@ Local disks are displayed in the left panel of File Manager. When you mount any 
 ### Format Disks
 
 1. In the left panel of File Manager, right-click the disk to format.
-
 2. Select **Unmount** and then select **Format**.
-
 3. In the pop-up window, choose the type and volume label for the disk.
-
 4. Click **Format**.
 
-   ![0|disk](jpg/disk2.png)
+![0|disk](jpg/disk2.png)
 
 > ![notes](icon/notes.svg)Notes: If you check **Quick Format**, the disk can be formated quickly in a few seconds, but the data could be restored by file recovery tools. If you don't want these data to be restored, you can uncheck this option box and format the disk.
 
@@ -523,7 +406,7 @@ You can create new window, switch themes, [set share password](#Share Local File
 
 ### Theme
 
-The window theme includes Light Theme, Dark Theme and System Theme (default).
+The window theme includes Light Theme, Dark Theme and System Theme.
 
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Click  **Theme** to select one.
@@ -533,17 +416,16 @@ The window theme includes Light Theme, Dark Theme and System Theme (default).
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Select **Settings**.
 3. Modify the settings according to your needs:
- - In **Open behavior**, you can set whether to open folder in current window or new window, by one click or double click.
- - In **New window and tab**, you can set the default path to open in a new window/tab.
- - In **View**, you can set file icon size and default view.
- - In **Hidden files**, you can set whether to show the hidden file, and hide file extension when rename.
- - In **Index**, you can set whether to auto index internal disk and externally connected storage devices.
- - In **Preview**, you can set which types of files can be previewed.
- - In **Mount**, you can set to auto mount.
- - In **Dialog**, you can set whether to use the file chooser dialog of the File Manager.
- - In **Other**, you can set whether to hide system disk or not.
-
-![1|settings](jpg/settings.png)
+   - Basic:
+      + In **Open behavior**, you can set whether to open folder in new window always by one click or double click.
+      + In **New window and tab**, you can set the default path to open in a new window/tab.
+      + In **View**, you can set file icon size and default view.
+      + In **Hidden files**, you can set whether to show the hidden file, whether to hide file extension when rename, and whether to display recent file entry in left panel.
+   - Advanced: 
+    + In **Preview**, you can set which types of files can be previewed.
+     + In **Mount**, you can set to auto mount.
+     + In **Dialog**, you can set whether to use the file chooser dialog of File Manager.
+     + In **Other**, you can set whether to hide system disk or not.
 
 ### Help
 

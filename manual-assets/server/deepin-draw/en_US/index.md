@@ -64,7 +64,7 @@ Currently, a maximum of 30 pictures can be exported. Formats including JPG, PNG,
 ### Export Pictures
 
 1. On the Draw interface, click ![menu](icon/icon_menu.svg)> **Export**.
-2. Set the parameters including file name, path, format and picture quality. 
+2. Set the parameters including file name, path, format, and picture quality. 
 3. Click **Save**. 
 
 ### Save Pictures
@@ -81,7 +81,7 @@ Currently, a maximum of 30 pictures can be exported. Formats including JPG, PNG,
 2. Select the printer and set the printing parameters.
 3. Click **Print**.
 
-> ![notes](icon/notes.svg)Notes: Click **Advanced** to customize the printing parameters.
+> ![notes](icon/notes.svg)Notes: Click **Options** to customize the printing parameters.
 
 ## Drawing Tools
 
@@ -249,7 +249,7 @@ You can create a new drawing.
 
 ### Theme
 
-The window theme provides three theme types, namely Light Theme, Dark Theme and System Theme (default).
+The window theme provides three theme types, namely Light Theme, Dark Theme and System Theme.
 
 1. On the Draw interface, click ![icon_menu](icon/icon_menu.svg).
 2. Click **Theme** to select one theme.

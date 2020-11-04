@@ -32,7 +32,7 @@ You can run, close or create a shortcut for Log Viewer.
 ### Search
 
 1. Log Viewer supports searching by keywords.
-   - Click![search](icon/search.svg)to input keywords;
+   - Click![search](icon/search.svg)to input keywords.
 2. Results are displayed after input. If no matched service is found, you will see a hint **No search results**.
 3. Click ![close_icon](icon/close_icon.svg) to close current searching.
 
@@ -52,7 +52,7 @@ You can run, close or create a shortcut for Log Viewer.
 
     Options include: "All", "Emergency", "Allert", "Critical", "Error", "Warning", "Notice", "Info"and "Debug". Default option is "Info".
 
-    Applicable for: system logs and application logs
+    Applicable for: system logs, kernel logs, dnf logs and application logs
 
   - Filtering by status: 
 
@@ -82,6 +82,7 @@ You can run, close or create a shortcut for Log Viewer.
 1. On the main interface, click  **Kernel Log **.
 2. You can see a list of kernel logs which are detailed by "Date and time", "User", "Process" and "Info".
 3. Click a log, you can see its particular info below the list, including time, user, process, and info.
+> ![notes](icon/notes.svg)Notes: To view kernel log, a prompt appears saying **Authentication is required to view the log**, you can input login password to continue viewing.
 
 ![0|kernlog](jpg/kernlog.png)
 
@@ -90,22 +91,23 @@ You can run, close or create a shortcut for Log Viewer.
 1. On the main interface, click **Boot Log**.
 2. You can see a list of boot logs which are detailed by "Status" and "Info".
 3. Click a log, you can see its particular info below the list, including process, user, status and info.
+> ![notes](icon/notes.svg)Notes: To view boot log, a prompt appears saying **Authentication is required to view the log**, you can input login password to continue viewing.
 
 ![0|bootlog](jpg/bootlog.png)
 
-### dpkg Log
+### dnf Log
 
-1. On the main interface, click **dpkg Log**. 
-2. You can see a list of dpkg logs which are detailed by "Date and time" and "Info".
-3. Click a log, you can see its particular info below the list, including process, user, action, time and info.
+1. On the main interface, click **dnf Log**. 
+2. You can see a list of dnf logs which are detailed by "Date and time" and "Info".
+3. Click a log, you can see its particular info below the list, including user, level and info.
 
-![0|dpkglog](jpg/dpkglog.png)
+![0|dpkglog](jpg/dnflog.png)
 
 ### Xorg Log
 
-1. On the main interface, click **Ｘorg Log**.
+1. On the main interface, click **Xorg Log**.
 2. You can see a list of Xorg logs which are detailed by "Date and time" and "Info".
-3. Click a log, you can see its particular info below the list, including process, user, time and info.
+3. Click a log, you can see its particular info below the list, including user, time and info.
 
 ![0|xorglog](jpg/xorglog.png)
 
@@ -125,12 +127,6 @@ You can run, close or create a shortcut for Log Viewer.
 3. Click a log, you can see its particular info below the list, including user, event type, username, and detailed info.
 ![0|power event](jpg/power-event.png)
 
-> ![notes](icon/notes.svg)Notes: When using Log Viewer, if a prompt appears saying **Authentication is required to view the log**, you can input login password to continue viewing.
-
-![0|password](jpg/password.png)
-
-
-
 ### Export
 
 You can export logs and save them in format of  txt/doc/xls/html.
@@ -143,25 +139,22 @@ You can export logs and save them in format of  txt/doc/xls/html.
 
 
 
-### Right-click Operation
+### Display in File Manager
 
-You can select a log type in the left panel, right-click to display in file manager, to clear log and to refresh the log.
+1. On the interface of File Manager, select a log type in the left panel and right-click.
+2. Select **Display in file manager**, the folder path of the current log will be opened. 
 
-![0|clear](jpg/right-click.png)
+> ![notes](icon/notes.svg)Notes: **Display in file manager** is only applicable for boot log, dnf log, Xorg log and application log.
 
-   - Select **Display in file manager**, the folder path of the current log will be opened. 
+### Clear Log
+1. On the interface of File Manager, select a log type in the left panel and right-click.
+2. Select **Clear log**, click **Confirm** button in the pop-up window to clear current logs.
+3. If authentication window pops up, please input password to finish the operation.
+> ![notes](icon/notes.svg)Notes: **Clear log** is only applicable for kernel log, boot log, dnf log, Xorg log and application log.
 
-> ![notes](icon/notes.svg)Notes: **Display in file manager** is only applicable for kernel log, boot log, dpkg log, Xorg log and application log.
-
-   - Select **Clear log**, click **Confirm** button in the pop-up window to clear current logs.
-If authentication window pops up, please input password to finish the operation.
-
-
-
-> ![notes](icon/notes.svg)Notes: **Clear log** is only applicable for kernel log, boot log, dpkg log, Xorg log and application log.
-
-
-   - Select **Refresh** to reload the log and update log list.
+### Refresh
+1. On the interface of File Manager, select a log type in the left panel and right-click.
+2. Select **Refresh** to reload the log and update log list.
 
 ## Main Menu
 
@@ -169,7 +162,7 @@ In the main menu, you can switch themes, view help manual, and so on.
 
 ### Theme
 
-The window theme includes Light Theme, Dark Theme and System Theme (default).
+The window theme includes Light Theme, Dark Theme and System Theme.
 
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Click  **Theme** to select one.

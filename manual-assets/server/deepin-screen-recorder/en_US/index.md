@@ -103,7 +103,7 @@ You can fine-tune the screenshot area. For example, you can enlarge or reduce th
 
 ##### Enlarge/Reduce the Screenshot Area
 
-Place the cursor over the white boarder of the screenshot area and the cursor will be changed to ![双箭头](icon/Mouse_Arrow.svg)You can:
+Place the cursor over the white boarder of the screenshot area and the cursor will be changed to ![双箭头](icon/Mouse_Arrow.svg). You can:
 
 - Hold down the left mouse button and drag the mouse to enlarge or reduce the screenshot area. 
 - Press **Ctrl** + ![向上](icon/Up.svg) , ![向下](icon/Down.svg) , ![向左](icon/Left.svg) or ![向右](icon/Right.svg) and drag the mouse to enlarge or reduce the screenshot area vertically or horizontally.
