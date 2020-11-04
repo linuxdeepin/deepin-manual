@@ -203,36 +203,63 @@ var App = function (_React$Component) {
   }, {
     key: 'onReloadPage',
     value: function onReloadPage(appList) {
+      var _this3 = this;
+
       // console.log("============>page reload...");
+      var bRetFlag = true;
       var locationPath = this.context.router.history.location.pathname;
       console.log("============>page reload...", locationPath);
       var list = locationPath.split("/");
       if (list[1] == 'open') {
-        console.log("============>open...", appList, list[2]);
-
+        var curApp = list[2];
+        console.log("============>open...", appList, curApp);
         var bFlag = false;
         appList.map(function (app) {
-          if (!bFlag && list[2].indexOf(app) != -1) {
+          if (!bFlag && curApp.indexOf(app) != -1) {
             bFlag = true;
           }
         });
 
         if (bFlag) {
-          global.bIsReload = true;
-          this.context.router.history.go(0);
-        }
+          global.qtObjects.manual.getSystemManualList(function (appNames) {
+            var bKFlage = false;
+            appNames.map(function (name) {
+              if (curApp.indexOf(name) != -1) {
+                bKFlage = true;
+              }
+            });
 
-        // if (appList.indexOf(list[2]) != -1)
-        // {
-        //   global.bIsReload = true;
-        //   this.context.router.history.go(0);
-        // }
+            if (bKFlage) {
+              global.bIsReload = true;
+              _this3.context.router.history.go(0);
+            } else {
+              var historyList = _this3.context.router.history.entries;
+              var index = _this3.context.router.history.index;
+              var historyLate = historyList.slice(index + 1);
+              console.log("===========>", historyLate);
+              _this3.setState({ historyGO: _this3.state.historyGO - 1 });
+              _this3.context.router.history.go(-1);
+
+              historyLate.map(function (url) {
+                console.log("..........>", url);
+                _this3.context.router.history.push(url);
+              });
+              global.backHome();
+            }
+          });
+        } else {
+          bRetFlag = false;
+        }
       } else if (list[1] == 'search') {
         console.log("============>search...", list[2]);
         global.qtObjects.search.updateSearch(list[2]);
       } else {
         global.bIsReload = true;
         this.context.router.history.go(0);
+      }
+
+      if (bRetFlag) {
+        global.qtObjects.manual.showUpdateLabel();
       }
     }
   }, {
@@ -259,7 +286,7 @@ var App = function (_React$Component) {
         var objList = this.context.router.history.entries;
         for (var i = indexGo; i >= 0; i--) {
 
-          var curPath = objList[i].pathname;
+          var curPath = objList[i].pathname;帮助;
           var curPathList = curPath.split("/");
           if (curPathList.length == 5 && curPathList[4] == "") {
             step = indexGo - i;
@@ -335,24 +362,24 @@ var App = function (_React$Component) {
   }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
-      var _this3 = this;
+      var _this4 = this;
 
       global.index = function () {
         // this.context.router.history.push('/');
-        if (_this3.state.init == false) {
-          _this3.setState({ init: true });
+        if (_this4.state.init == false) {
+          _this4.setState({ init: true });
         }
       };
       global.backHome = function () {
         global.handleLocation(global.hash);
-        console.log("global.backHome()" + _this3.context.router.history.entries.length);
-        console.log("global.backHome()" + _this3.state.historyGO);
-        var goNum = _this3.state.historyGO;
-        _this3.setState({ historyGO: 0 });
+        console.log("global.backHome()" + _this4.context.router.history.entries.length);
+        console.log("global.backHome()" + _this4.state.historyGO);
+        var goNum = _this4.state.historyGO;
+        _this4.setState({ historyGO: 0 });
         console.log("global.backHome()" + goNum);
 
-        if (_this3.context.router.history.canGo(-1 * goNum)) {
-          _this3.context.router.history.go(-1 * goNum);
+        if (_this4.context.router.history.canGo(-1 * goNum)) {
+          _this4.context.router.history.go(-1 * goNum);
           // this.context.router.history.go(0);
         }
       };
@@ -379,12 +406,12 @@ var App = function (_React$Component) {
 
         var url = '/open/' + file + '/' + hash + '/' + key;
         console.log("globla.open==---------->");
-        _this3.context.router.history.push(url);
+        _this4.context.router.history.push(url);
         console.log("globla.open.=========.......");
 
         //Init属性设置, 放在index与opentitle中. 避免直接跳转到特定模块时会先走/模块.
-        if (_this3.state.init == false) {
-          _this3.setState({ init: true });
+        if (_this4.state.init == false) {
+          _this4.setState({ init: true });
         }
 
         //通知qt对象,修改应用打开状态
@@ -428,13 +455,13 @@ var App = function (_React$Component) {
       global.handleLocation = function () {
         var hash = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
 
-        var url = _this3.context.router.history.location.pathname;
+        var url = _this4.context.router.history.location.pathname;
         console.log("global.handhash: ", url);
         var urlList = url.split("/");
         if (urlList.length == 5) {
           url = '/' + urlList[1] + '/' + urlList[2] + '/' + hash + '/' + urlList[4];
           console.log("new url:", url);
-          _this3.context.router.history.replace(url);
+          _this4.context.router.history.replace(url);
         }
       };
 
@@ -586,35 +613,35 @@ var App = function (_React$Component) {
         console.log('====>', keyword);
         var decodeKeyword = Base64.decode(keyword);
         console.log("decodeKeyword", decodeKeyword, "===", encodeURIComponent(decodeKeyword));
-        console.log("openSearchPage", _this3.context.router.history);
+        console.log("openSearchPage", _this4.context.router.history);
         console.log('lastUrl:' + global.lastUrlBeforeSearch + ', lastHistoryIndex: ' + global.lastHistoryIndex);
 
-        var entriesLen = _this3.context.router.history.entries.length;
+        var entriesLen = _this4.context.router.history.entries.length;
         if ('POP' == global.lastAction && lastHistoryIndex > 0 && lastHistoryIndex < entriesLen - 1) {
           console.log("global.opensearch...");
-          _this3.context.router.history.entries.length = lastHistoryIndex;
-          _this3.context.router.history.length = lastHistoryIndex;
-          _this3.context.router.history.index = lastHistoryIndex - 1;
+          _this4.context.router.history.entries.length = lastHistoryIndex;
+          _this4.context.router.history.length = lastHistoryIndex;
+          _this4.context.router.history.index = lastHistoryIndex - 1;
 
-          _this3.setState({ searchResult: [] });
-          _this3.context.router.history.push('/search/' + encodeURIComponent(decodeKeyword));
+          _this4.setState({ searchResult: [] });
+          _this4.context.router.history.push('/search/' + encodeURIComponent(decodeKeyword));
 
           return;
         }
 
-        entriesLen = _this3.context.router.history.entries.length;
+        entriesLen = _this4.context.router.history.entries.length;
         if (entriesLen > 1) {
-          var entry = _this3.context.router.history.entries[entriesLen - 1];
+          var entry = _this4.context.router.history.entries[entriesLen - 1];
           var entryIndex = entry.pathname.toString().indexOf("/search/");
           if (entryIndex != -1) {
-            _this3.context.router.history.entries.length = entriesLen - 1;
-            _this3.context.router.history.length = entriesLen - 1;
-            _this3.context.router.history.index = _this3.context.router.history.entries.length - 1;
+            _this4.context.router.history.entries.length = entriesLen - 1;
+            _this4.context.router.history.length = entriesLen - 1;
+            _this4.context.router.history.index = _this4.context.router.history.entries.length - 1;
           }
         }
 
-        _this3.setState({ searchResult: [] });
-        _this3.context.router.history.push('/search/' + encodeURIComponent(decodeKeyword));
+        _this4.setState({ searchResult: [] });
+        _this4.context.router.history.push('/search/' + encodeURIComponent(decodeKeyword));
       };
 
       this.context.router.history.listen(function (location, action) {
@@ -623,13 +650,13 @@ var App = function (_React$Component) {
         //console.log("index:" + this.context.router.history.index);
         console.log("app router.history.listen...");
         global.lastUrlBeforeSearch = location.pathname;
-        global.lastHistoryIndex = _this3.context.router.history.index;
+        global.lastHistoryIndex = _this4.context.router.history.index;
         global.lastAction = action;
       });
 
       global.back = function () {
         console.log("global.back()");
-        _this3.context.router.history.goBack();
+        _this4.context.router.history.goBack();
       };
       this.componentDidUpdate();
     }
@@ -637,6 +664,7 @@ var App = function (_React$Component) {
     key: 'componentDidUpdate',
     value: function componentDidUpdate() {
       if (global.qtObjects) {
+        console.log("app componentDidUpdate------------>", this.state.historyGO, this.context.router.history.length);
         global.qtObjects.titleBar.setBackwardButtonActive(this.state.historyGO > 0
         // global.gHistoryGo > 0
         );

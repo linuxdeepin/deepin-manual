@@ -32,6 +32,7 @@ signals:
     void channelInit();
     void searchEditTextisEmpty();
     void supportBeClick();
+    void updateLabel();
 
 public slots:
     QString getSystemManualDir();
@@ -43,6 +44,8 @@ public slots:
     void finishChannel();
     void supportClick();
     bool bIsLongSon();
+
+    void showUpdateLabel();
 
 
 private:

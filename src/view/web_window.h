@@ -74,6 +74,7 @@ signals:
 public slots:
     void slot_ThemeChanged();
     void slot_HelpSupportTriggered();
+    void slotUpdateLabel();
 
 protected:
     void closeEvent(QCloseEvent *event) Q_DECL_OVERRIDE;

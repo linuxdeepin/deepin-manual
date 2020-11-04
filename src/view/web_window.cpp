@@ -234,6 +234,12 @@ void WebWindow::slot_HelpSupportTriggered()
         qDebug() << "call com.deepin.dde.ServiceAndSupport failed";
     }
 
+
+
+}
+
+void WebWindow::slotUpdateLabel()
+{
     QPoint point;
     point.rx() = this->width() / 2 - m_pUpdatelabel->width() / 2;
     point.ry() = this->titlebar()->height();
@@ -243,7 +249,6 @@ void WebWindow::slot_HelpSupportTriggered()
     QTimer::singleShot(2000, [ = ] {
         m_pUpdatelabel->hide();
     });
-
 }
 
 /**
@@ -582,6 +587,7 @@ void WebWindow::initWebView()
     connect(web_view_->page(), &QWebEnginePage::loadFinished, this, &WebWindow::onWebPageLoadFinished);
     connect(manual_proxy_, &ManualProxy::channelInit, this, &WebWindow::onChannelFinish);
     connect(manual_proxy_, &ManualProxy::WidgetLower, this, &WebWindow::lower);
+    connect(manual_proxy_, &ManualProxy::updateLabel, this, &WebWindow::slotUpdateLabel);
     connect(manual_proxy_, &ManualProxy::supportBeClick, this, &WebWindow::slot_HelpSupportTriggered);
     connect(search_edit_, &SearchEdit::onClickedClearBtn, manual_proxy_,
             &ManualProxy::searchEditTextisEmpty);

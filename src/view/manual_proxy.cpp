@@ -144,6 +144,11 @@ bool ManualProxy::bIsLongSon()
     return bRet;
 }
 
+void ManualProxy::showUpdateLabel()
+{
+    emit updateLabel();
+}
+
 /**
  * @brief ManualProxy::saveAppList
  * @param list

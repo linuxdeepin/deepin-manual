@@ -172,16 +172,17 @@ class App extends React.Component {
 
   onReloadPage(appList) {
     // console.log("============>page reload...");
+    let bRetFlag = true;
     var locationPath = this.context.router.history.location.pathname;
     console.log("============>page reload...",locationPath);
     var list = locationPath.split("/");
     if (list[1] == 'open')
     {
-      console.log("============>open...",appList,list[2]);
-      
+      const curApp = list[2];
+      console.log("============>open...",appList,curApp);
       let bFlag = false;
       appList.map(app =>{
-        if (!bFlag && list[2].indexOf(app) != -1)
+        if (!bFlag && curApp.indexOf(app) != -1)
         {
           bFlag = true;
         }
@@ -189,16 +190,42 @@ class App extends React.Component {
 
       if (bFlag)
       {
-        global.bIsReload = true;
-        this.context.router.history.go(0);
+        global.qtObjects.manual.getSystemManualList(appNames =>
+        {
+          let bKFlage = false;
+          appNames.map(name=>{
+            if (curApp.indexOf(name) != -1)
+            {
+              bKFlage = true;
+            }
+          })
+
+          if (bKFlage)
+          {
+            global.bIsReload = true;
+            this.context.router.history.go(0);
+          }
+          else
+          {
+            const historyList = this.context.router.history.entries;
+            const index = this.context.router.history.index;
+            const historyLate = historyList.slice(index+1);
+            console.log("===========>",historyLate);
+            this.setState({ historyGO: this.state.historyGO - 1 });
+            this.context.router.history.go(-1);
+
+            historyLate.map(url=>{
+              console.log("..........>",url);
+              this.context.router.history.push(url);
+            })
+            global.backHome();
+          }
+        }); 
       }
-
-
-      // if (appList.indexOf(list[2]) != -1)
-      // {
-      //   global.bIsReload = true;
-      //   this.context.router.history.go(0);
-      // }
+      else
+      {
+        bRetFlag = false;
+      }
     }
     else if (list[1] == 'search')
     {
@@ -209,6 +236,11 @@ class App extends React.Component {
     {
       global.bIsReload = true;
       this.context.router.history.go(0);
+    }
+
+    if (bRetFlag)
+    {
+      global.qtObjects.manual.showUpdateLabel();
     }
   };
 
@@ -236,7 +268,7 @@ class App extends React.Component {
       for (let i = indexGo; i >= 0; i--)
       {
 
-        let curPath = objList[i].pathname;
+        let curPath = objList[i].pathname;帮助
         let curPathList = curPath.split("/");
         if (curPathList.length == 5 && curPathList[4] == "")
         {
@@ -625,6 +657,7 @@ class App extends React.Component {
   }
   componentDidUpdate() {
     if (global.qtObjects) {
+      console.log ("app componentDidUpdate------------>",this.state.historyGO,this.context.router.history.length );
       global.qtObjects.titleBar.setBackwardButtonActive(
         this.state.historyGO > 0
         // global.gHistoryGo > 0
