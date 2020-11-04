@@ -218,6 +218,6 @@ void WindowManager::onAppStartTimeCount(qint64 startfinshTime)
 {
     qDebug() << "startTime ---> " << this->appStartTime;
     qDebug() << "finshTime ---> " << startfinshTime;
-    qDebug() << "startduration :::";
-    qInfo() << "[GRABPOINT] POINT-0001" << startfinshTime - this->appStartTime;
+    QString logInfo = QString("[GRABPOINT] POINT-01 startduration=%1%2").arg(startfinshTime - this->appStartTime).arg("ms");
+    qInfo() << logInfo;
 }
