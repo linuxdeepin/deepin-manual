@@ -2,12 +2,12 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/app/dman.cpp" line="58"/>
+        <location filename="../src/app/dman.cpp" line="76"/>
         <source>Manual</source>
         <translation>설명서</translation>
     </message>
     <message>
-        <location filename="../src/app/dman.cpp" line="60"/>
+        <location filename="../src/app/dman.cpp" line="77"/>
         <source>Manual is designed to help users learn the operating system and its applications, providing specific instructions and function descriptions.</source>
         <translation>설명서는 사용자가 특정 지침 및 기능 설명을 제공, 운영 체제와 응용 프로그램을 배울 수 있도록 설계되었습니다.</translation>
     </message>
@@ -42,23 +42,28 @@
         <translation>결과</translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="272"/>
+        <location filename="../src/view/web_window.cpp" line="520"/>
         <source>Search</source>
         <translation>검색</translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="277"/>
+        <location filename="../src/view/web_window.cpp" line="523"/>
         <source>Support</source>
+        <translation>지원</translation>
+    </message>
+    <message>
+        <location filename="../src/view/web_window.cpp" line="534"/>
+        <source>The content was updated</source>
         <translation type="unfinished"/>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="497"/>
+        <location filename="../src/view/web_window.cpp" line="702"/>
         <source>Copy</source>
         <translation>복사</translation>
     </message>
     <message>
-        <location filename="../src/view/widget/search_completion_window.cpp" line="153"/>
-        <location filename="../src/view/widget/search_completion_window.cpp" line="223"/>
+        <location filename="../src/view/widget/search_completion_window.cpp" line="172"/>
+        <location filename="../src/view/widget/search_completion_window.cpp" line="257"/>
         <source>Search for &quot;%1&quot; in the full text</source>
         <translation>전체 텍스트에서 &quot;%1&quot; 검색</translation>
     </message>
@@ -66,12 +71,12 @@
 <context>
     <name>WebWindow</name>
     <message>
-        <location filename="../src/view/web_window.cpp" line="432"/>
+        <location filename="../src/view/web_window.cpp" line="626"/>
         <source>Ctrl+Alt+F</source>
         <translation>Ctrl+Alt+F</translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="447"/>
+        <location filename="../src/view/web_window.cpp" line="651"/>
         <source>Ctrl+F</source>
         <translation>Ctrl+F</translation>
     </message>

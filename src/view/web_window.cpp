@@ -143,8 +143,6 @@ void WebWindow::updatePage(const QStringList &list)
             appList.append(splitList.at(splitList.count() - 3));
         }
         emit search_proxy_->reloadPage(appList);
-//        DMessageManager::instance()->sendMessage(this->window(), QIcon(":/images/ok.svg"), tr("文件更新"));
-
     }
 }
 
@@ -533,7 +531,7 @@ void WebWindow::initUI()
     this->titlebar()->setIcon(QIcon::fromTheme("deepin-manual"));
 
     m_pUpdatelabel = new DLabel(this->window());
-    m_pUpdatelabel->setText(QObject::tr("当前内容已更新"));
+    m_pUpdatelabel->setText(QObject::tr("The content was updated"));
     m_pUpdatelabel->setFixedSize(150, 40);
     m_pUpdatelabel->setAlignment(Qt::AlignCenter);
     m_pUpdatelabel->hide();
