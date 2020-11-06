@@ -873,6 +873,153 @@ You can view system version, authorization info, hardware info, and the agreemen
 1. On the homepage of Control Center, click ![system_info_normal](icon/system_info_normal.svg).
 2. View the End User License Agreement under **End User License Agreement**.
 
+
+
+### Authorization Management
+
+You can view the version authorization status through the GUI interface, or activate the system through command line operation.
+
+Operations are as follows:
+
+1. Press  **Ctrl + Alt + T**  to open Terminal. 
+
+2. Execute the following command.
+
+   Command:
+
+   uos-activator-cmd  [OPTION]  <key><keyfile><keysfile><index><url>
+
+To view the system activation status and help prompts, you can execute the nonparametric program command **uos-activator-cmd**.
+
+When you need to activate the system or set up the server's address, you can refer to the following program commands with parameters.
+
+| Parameter                       | Description                                                         |
+| -------------------------- | ------------------------------------------------------------ |
+| -t , -T                    | Input command + parameter (-t or -T) to "try full version", which means to activate the system for a probation period.            |
+| -a , -A <key>              | Input command + parameter (-a or -A) +16-digit or 25-digit serial number to activate the system by serial number, in which ”-“ is not essential, and, Letters are not case sensitive.|
+| -f , -F , --file <keyfile> | Input command + option(-f or -f or --file)+.key files to activate the system by key files. |
+| -s , -S                    | To set up the activation server user guide and default server list display.                |
+| -s , -S --default <index>  | Input command uos-activator-cmd  -s/-S --default 0, which means that the address of the activation server selected by the user is: [https://license.chinauos.com](https://license.chinauos.com/) |
+| -s , -S --http/https <url> | Input command + parameter (-s or -S) + parameter (--http/--https custom server)+ (url custom server address) to set up the activating server's address.  |
+| -q , -Q , --query          | Input command + parameter (-q or -Q) to query the activation status of the corresponding server in the current system. |
+| -v , -V , --version        | Input command + parameter (-v or -V or --vision) to view command line program's version and its information. |
+| -h , -H , --help           | Input command +  (-v or -V or --help) to view command line program's help information. |
+
+
+
+#### View Activation Status
+
+Execute command **uos-activator-cmd** to view activation status. 
+
+In Terminal, the following information is displayed: 
+
+`Ser URL: https://license.chinauos.com`
+
+`Status : Unactivated`
+
+`Autrorization : Not authorized`
+
+`Try 'uos-activator-cmd --help' for more information`
+
+
+Execute command **uos-activator-cmd --help**.
+
+In Terminal, the following information is displayed: 
+
+`Uasge : uos-activator-cmd [options]`
+
+`Options :`
+
+`-t , -T                                 Try full version`
+
+`-a , -A <key>                     Activate with an serial number`
+
+`-f , -F , --file <keyfile>      Activate with an activation file`
+
+`-s , -S                                 Set the activation server address`
+
+`-s , -S --default <index>  Set the default activation server address`
+
+`-s , -S --http <url>            Customize activation server address to http://`
+
+`-s , -S --https <url>           Customize activation server address to https://`
+
+`-q , -Q , --query                 Query activation status`
+
+`-v , -V , --version                Show version information`
+
+`-h , -H , --help                    Displays help`
+
+#### Activation Methods
+
+The activation mode of authorization management can be divided into online activation and offline activation, while the online activation mode can be divided into **Try full version**, **Input serial number** and **Import license file**.
+
+##### Online activation
+
+###### Try Full Version
+
+1. Execute command **uos-activator-cmd  -t**.
+In Terminal, the following information is displayed: 
+
+You have only one chance to try the full version in 180 days from the activation date. During the trial period, you can use all system features, and activate the system permanently through a serial number or a license file.
+
+Are you sure you want to try the full version(y/n):
+
+2. Input **y** to confirm.
+
+Input **n**, the program terminates.
+
+###### Input Serial Number
+
+Execute command  **uos-activator-cmd  --a  xxxx-xxxx-xxxx-xxxx**.
+
+xxxx-xxxx-xxxx-xxxx refers to serial number.
+
+###### Import license file
+
+Execute command  **uos-activator-cmd  -f  filename**.
+
+##### **Offline Activation**
+
+The off-line activation can be adopted when the network connection is abnormal. 
+
+When you select to activate the system by inputing serial number or importing license file and the system has detected abnormal network connection and activating server could not be accessed, offline activation interface pops up.
+
+You can scan the QR code by mobile device and input the offline activation code.
+
+In Terminal, the following information is displayed: 
+
+`Please scan the QR code on your device:`
+
+`To quit activation, press [Ctrl+C]`
+
+`Please input offline activation code:`
+
+#### Activating Server Settings
+
+##### Set up Server's User Guide Prompts
+
+Execute command  **uos-activator-cmd -s**.
+
+In Terminal, the following information is displayed: 
+
+`Default servers list:`
+
+`0——[https://license.chinauos.com](https://license.chinauos.com/)`
+
+`1——https://license1.chinauos.com`
+
+`You can use the ‘uos-activator-cmd -s --default number’ to select the default server, or set up a custom server using ‘--http /--https’.`
+
+##### Set up Default Server
+
+Execute command  **uos-activator-cmd -s --default index**.
+
+##### Set up Custom Server
+
+Execute command  **uos-activator-cmd  -s --http/--https url**.
+
+
 ## Keyboard Interaction
 
 You can use the keyboard to switch between various interface areas, select objects and perform operations. 

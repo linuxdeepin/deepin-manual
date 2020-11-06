@@ -850,7 +850,148 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 1. 在控制中心首页，单击 ![system_info_normal](icon/system_info_normal.svg)。
 2. 在 **最终用户许可协议** 下，查看最终用户许可协议。
 
+### 授权管理
 
+您可以通过GUI界面查看版本授权状态，也可以通过命令行操作来激活系统。
+
+命令行的操作如下：
+
+1. 按下 **Ctrl + Alt + T** 快捷键打开终端。
+
+2. 执行如下命令。
+
+命令：
+`uos-activator-cmd  [OPTION]  <key><keyfile><keysfile><index><url>`
+uos-activator-cmd  [选项]  <序列号><激活文件><离线激活文件><默认服务器索引><自定义服务器地址>
+
+查看系统激活状态和帮助提示信息，执行无参数程序命令 uos-activator-cmd 。
+
+当需要激活系统或设置服务器地址时，可参考如下有参数的程序命令。
+
+| 参数                       | 说明                                                         |
+| -------------------------- | ------------------------------------------------------------ |
+| -t , -T                    | 用户输入命令+参数（-t或-T），进行试用期激活系统。            |
+| -a , -A <key>              | 用户输入命令+参数（-a或-A）+16位或25位序列号，进行序列号激活系统。序列号中可以有”-“字符连接，也可以无”-“字符连接。序列号字母不区分大小写。 |
+| -f , -F , --file <keyfile> | 用户输入命令+选项（-f或-f或--file）+.key激活文件，进行激活文件激活系统。 |
+| -s , -S                    | 设置激活服务器用户指引和默认服务器列表展示。                 |
+| -s , -S --default <index>  | 用户输入命令uos-activator-cmd  -s/-S --default 0表示用户选择激活服务器的地址为：[https://license.chinauos.com](https://license.chinauos.com/)。 |
+| -s , -S --http/https <url> | 用户输入命令+参数（-s或-S）+参数（--http/--https自定义服务器）+（url 自定义服务器地址），设置激活服务器地址。 |
+| -q , -Q , --query          | 用户输入命令+参数（-q或-Q），查询当前系统对应服务器下的激活状态。 |
+| -v , -V , --version        | 用户输入命令+参数（-v或-V或--vision），查看命令行程序版本和程序信息。 |
+| -h , -H , --help           | 用户输入命令+参数（-v或-V或--help），查看命令行程序帮助信息。 |
+
+
+
+#### 查看激活状态
+
+执行命令 **uos-activator-cmd** ，查看激活状态。
+
+终端显示：
+
+`Ser URL: https://license.chinauos.com`
+
+`Status : Unactivated`
+
+`Autrorization : Not authorized`
+
+`Try 'uos-activator-cmd --help' for more information`
+
+执行命令 **uos-activator-cmd --help**
+
+终端显示：
+
+`Uasge : uos-activator-cmd [options]`
+
+`Options :`
+
+`-t , -T                                 Try full version`
+
+`-a , -A <key>                     Activate with an serial number`
+
+`-f , -F , --file <keyfile>      Activate with an activation file`
+
+`-s , -S                                 Set the activation server address`
+
+`-s , -S --default <index>  Set the default activation server address`
+
+`-s , -S --http <url>            Customize activation server address to http://`
+
+`-s , -S --https <url>           Customize activation server address to https://`
+
+`-q , -Q , --query                 Query activation status`
+
+`-v , -V , --version                Show version information`
+
+`-h , -H , --help                    Displays help`
+
+#### 激活方式
+
+授权管理激活方式分在线激活和离线激活，而在线激活方式分为试用期激活、输入序列号激活、导入激活文件激活。
+
+##### 在线激活
+
+###### 试用期激活
+
+1. 执行命令 **uos-activator-cmd  -t**
+终端显示：
+
+You have only one chance to try the full version in 180 days from the activation date. During the trial period, you can use all system features, and activate the system permanently through a serial number or a license file.
+
+Are you sure you want to try the full version(y/n):
+
+2. 用户选择输入y，则确认进行试用期激活。
+
+如果用户选择输入n，则程序运行结束。
+
+###### 序列号激活
+
+执行命令 **uos-activator-cmd  --a  xxxx-xxxx-xxxx-xxxx**
+
+xxxx-xxxx-xxxx-xxxx 表示序列号
+
+###### 文件激活
+
+执行命令 **uos-activator-cmd  -f  filename**
+
+##### **离线激活**
+
+离线激活的前提是系统网络连接异常。
+
+当选择输入序列号或导入授权文件激活时，系统检测网络连接异常，连接不上激活服务器，将进入离线激活。
+
+用户使用移动设备扫描二维码后输入离线激活码。
+
+终端显示：
+
+`Please scan the QR code on your device:`
+
+`To quit activation, press [Ctrl+C]`
+
+`Please input offline activation code:`
+
+#### 激活服务器设置
+
+##### 设置服务器用户指引提示
+
+执行命令 **uos-activator-cmd -s**
+
+终端显示：
+
+`Default servers list:`
+
+`0——[https://license.chinauos.com](https://license.chinauos.com/)`
+
+`1——https://license1.chinauos.com`
+
+`You can use the ‘uos-activator-cmd -s --default number’ to select the default server, or set up a custom server using ‘--http /--https’.`
+
+##### 设置默认服务器
+
+执行命令 **uos-activator-cmd -s --default index**
+
+##### 设置自定义服务器
+
+执行命令 **uos-activator-cmd  -s --http/--https url** 
 
 ## 键盘交互
 
