@@ -20,7 +20,8 @@
 const char kAppName[] = "deepin-manual";
 const char kAppProcessName[] = "dman";
 const char kAppVersion[] = "2.0.10";
-const char kIndexPage[] = DMAN_WEB_DIR "/index.html";
+const char kIndexPage[] = DMAN_WEB_DIR "/toManual/index.html";
+const char kSearchIndexPage[] = DMAN_WEB_DIR "/toSearchMd/index.html";
 
 const char kConfigWindowWidth[] = "window_width";
 const char kConfigWindowHeight[] = "window_height";

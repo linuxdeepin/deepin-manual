@@ -121,8 +121,11 @@ set (DMAN_HELPER_LIBS
     Qt5::Sql
     Qt5::DBus
     Qt5::Widgets
+    Qt5::WebChannel
+    Qt5::WebEngineWidgets
     ${DtkGui_LDFLAGS}
     ${DtkCore_LDFLAGS}
+    ${DtkWidget_LDFLAGS}
     )
 
 
@@ -282,6 +285,8 @@ add_executable(dmanHelper
                 app/dman_helper.cpp
                 base/utils.cpp
                 base/utils.h
+                base/consts.cpp
+                base/consts.h
                 dbus/dbus_consts.cpp
                 dbus/dbus_consts.h
                 dbus/dbusvariant/app_info.cpp
@@ -298,6 +303,8 @@ add_executable(dmanHelper
                 controller/search_db.h
                 controller/filewatcher.cpp
                 controller/filewatcher.h
+                view/jscontext.cpp
+                view/jscontext.h
                 )
 target_link_libraries(dmanHelper
                       ${DMAN_HELPER_LIBS})

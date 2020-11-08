@@ -1,8 +1,10 @@
 #include "helpermanager.h"
 #include "base/command.h"
 #include "base/utils.h"
+#include "base/consts.h"
 #include "controller/filewatcher.h"
 #include "controller/search_db.h"
+#include "view/jscontext.h"
 
 #include <QDBusMessage>
 #include <QtDBus>
@@ -13,9 +15,25 @@ helperManager::helperManager(QObject *parent)
     , watcherObj(new fileWatcher)
     , dbObj(new SearchDb)
 {
+    initWeb();
     initDbConfig();
-    getModuleInfo();
     initConnect();
+}
+
+void helperManager::initWeb()
+{
+    qDebug() << Q_FUNC_INFO;
+    m_webView = new QWebEngineView;
+    m_webView->setFixedSize(400, 200);
+//    m_webView->show();
+    connect(m_webView->page(), &QWebEnginePage::loadFinished, this, &helperManager::webLoadFinish);
+    jsObj = new JsContext(this);
+    m_webChannel = new QWebChannel(this);
+    m_webChannel->registerObject("context", jsObj);
+    m_webView->page()->setWebChannel(m_webChannel);
+    const QFileInfo info(kSearchIndexPage);
+    m_webView->load(QUrl::fromLocalFile(info.absoluteFilePath()));
+//    m_webView->load(QUrl::fromLocalFile("/home/wujian/Documents/gitwork/deepin-manual/src/web/toSearchMd/common/index.html"));
 }
 
 /**
@@ -72,6 +90,7 @@ void helperManager::getModuleInfo()
 
 void helperManager::initConnect()
 {
+    connect(jsObj, &JsContext::parseMsg, this, &helperManager::onRecvParseMsg);
     connect(watcherObj, &fileWatcher::filelistChange, this, &helperManager::onFilelistChange);
 }
 
@@ -84,7 +103,6 @@ void helperManager::initConnect()
 void helperManager::handleDb(const QStringList &deleteList, const QStringList &addList, const QStringList &addTime)
 {
     qDebug() << "========>" << deleteList.count() << " " << addList.count();
-    dbusSend(deleteList, addList);
     if (!deleteList.isEmpty()) {
         dbObj->deleteFilesTimeEntry(deleteList);
         QStringList appList;
@@ -102,76 +120,21 @@ void helperManager::handleDb(const QStringList &deleteList, const QStringList &a
     if (!addList.isEmpty() && !addTime.isEmpty()) {
         dbObj->insertFilesTimeEntry(addList, addTime);
 
-
-        QString out, err;
-        QStringList cmd;
-        cmd.append(QString("%1/toSearch/toSearchIndex.js").arg(DMAN_WEB_DIR));
-        cmd.append(addList);
-        const bool ok = dman::SpawnCmd("/usr/bin/node", cmd, out, err);
-        qDebug() << "===========>" << ok;
-
-        QStringList outList = out.split("\n");
-        for (int i = 0; i < outList.count() - 1; i++) {
-            const QString &outKey = outList.at(i);
-            QStringList pathList = addList.at(i).split("/");
-            if (pathList.count() < 3) return;
-            const QString &lang = pathList.at(pathList.count() - 2);
-            const QString &appName = pathList.at(pathList.count() - 3);
-
-            QJsonDocument document = QJsonDocument::fromJson(outKey.toLocal8Bit());
-            const QJsonArray array = document.array();
-            QStringList anchors;
-            QStringList anchorIdList;
-            QStringList anchorInitialList;
-            QStringList anchorSpellList;
-            QStringList contents;
-            bool invalid_entry = false;
-            for (const QJsonValue &value : array) {
-                if (!value.isArray()) {
-                    invalid_entry = true;
-                    break;
+        //通过JS层函数来完成md转html, 然后解析html内所有文本内容
+        if (jsObj) {
+            QString strChange;
+            for (int i = 0; i < addList.count(); i++) {
+                strChange += addList[i];
+                if (i < addList.count() - 1) {
+                    strChange += ",";
                 }
-
-                const QJsonArray anchor = value.toArray();
-                const QString id = anchor.at(0).toString();
-                anchorIdList.append(id);
-                const QString title_ch = anchor.at(1).toString();
-                QString title_us = anchor.at(1).toString();
-                anchors.append(title_ch);
-                if (lang == "zh_CN") {
-                    QString str = Dtk::Core::Chinese2Pinyin(title_ch).remove(QRegExp("[1-9]"));
-                    anchorSpellList.append(str);
-                    if (id == "h0") {
-                        QString anchorInitial;
-                        for (int i = 0; i < title_ch.length(); i++) {
-                            anchorInitial.append(Dtk::Core::Chinese2Pinyin(title_ch.at(i)).left(1));
-                        }
-                        anchorInitialList.append(anchorInitial);
-                    } else {
-                        anchorInitialList.append("");
-                    }
-                } else if (lang == "en_US") {
-                    if (id == "h0") {
-                        QStringList listTitle = title_us.split(" ");
-                        QString anchorInitial;
-                        for (QString str : listTitle) {
-                            anchorInitial.append(str.left(1));
-                        }
-                        anchorInitialList.append(anchorInitial);
-                    } else {
-                        anchorInitialList.append("");
-                    }
-                    anchorSpellList.append(title_us.remove(" "));
-                }
-                const QString content = anchor.at(2).toString();
-                contents.append(content);
             }
-
-            if (!invalid_entry) {
-                dbObj->addSearchEntry(appName, lang, anchors, anchorInitialList, anchorSpellList, anchorIdList, contents);
-            }
+            qDebug() << Q_FUNC_INFO << strChange;
+            m_webView->page()->runJavaScript(QString("parseMdList('%1')").arg(strChange));
         }
     }
+
+    dbusSend(deleteList, addList);
 }
 
 /**
@@ -206,6 +169,78 @@ void helperManager::dbusSend(const QStringList &deleteList, const QStringList &a
 void helperManager::onFilelistChange(QStringList deleteList, QStringList addList, QStringList addTime)
 {
     handleDb(deleteList, addList, addTime);
+}
+
+void helperManager::webLoadFinish(bool ok)
+{
+    qDebug() << "dmanHelper load web======>" << ok;
+    getModuleInfo();
+}
+
+/**
+ * @brief helperManager::onRecvParseMsg  md文件内容处理， 插入数据库
+ * @param msg  解析md返回的内容
+ * @param path 解析md文件的路径
+ */
+void helperManager::onRecvParseMsg(const QString &msg, const QString &path)
+{
+    QStringList pathList = path.split("/");
+    if (pathList.count() < 3) return;
+    const QString &lang = pathList.at(pathList.count() - 2);
+    const QString &appName = pathList.at(pathList.count() - 3);
+
+    QJsonDocument document = QJsonDocument::fromJson(msg.toLocal8Bit());
+    const QJsonArray array = document.array();
+    QStringList anchors;
+    QStringList anchorIdList;
+    QStringList anchorInitialList;
+    QStringList anchorSpellList;
+    QStringList contents;
+    bool invalid_entry = false;
+    for (const QJsonValue &value : array) {
+        if (!value.isArray()) {
+            invalid_entry = true;
+            break;
+        }
+
+        const QJsonArray anchor = value.toArray();
+        const QString id = anchor.at(0).toString();
+        anchorIdList.append(id);
+        const QString title_ch = anchor.at(1).toString();
+        QString title_us = anchor.at(1).toString();
+        anchors.append(title_ch);
+        if (lang == "zh_CN") {
+            QString str = Dtk::Core::Chinese2Pinyin(title_ch).remove(QRegExp("[1-9]"));
+            anchorSpellList.append(str);
+            if (id == "h0") {
+                QString anchorInitial;
+                for (int i = 0; i < title_ch.length(); i++) {
+                    anchorInitial.append(Dtk::Core::Chinese2Pinyin(title_ch.at(i)).left(1));
+                }
+                anchorInitialList.append(anchorInitial);
+            } else {
+                anchorInitialList.append("");
+            }
+        } else if (lang == "en_US") {
+            if (id == "h0") {
+                QStringList listTitle = title_us.split(" ");
+                QString anchorInitial;
+                for (QString str : listTitle) {
+                    anchorInitial.append(str.left(1));
+                }
+                anchorInitialList.append(anchorInitial);
+            } else {
+                anchorInitialList.append("");
+            }
+            anchorSpellList.append(title_us.remove(" "));
+        }
+        const QString content = anchor.at(2).toString();
+        contents.append(content);
+    }
+
+    if (!invalid_entry) {
+        dbObj->addSearchEntry(appName, lang, anchors, anchorInitialList, anchorSpellList, anchorIdList, contents);
+    }
 }
 
 

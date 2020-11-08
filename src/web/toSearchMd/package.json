@@ -1,8 +1,8 @@
 {
-  "name": "web",
+  "name": "webpack",
   "version": "1.0.0",
-  "description": "this is for create or update manual-db",
-  "main": "toSearchIndex.js",
+  "description": "",
+  "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
   },
@@ -10,8 +10,8 @@
   "license": "ISC",
   "devDependencies": {
     "cheerio": "^1.0.0-rc.3",
-    "fs": "0.0.1-security",
-    "marked": "^1.1.1",
-    "yargs": "^16.0.3"
+    "expose-loader": "^1.0.1",
+    "marked": "^1.2.3",
+    "webpack": "^3.5.5"
   }
 }

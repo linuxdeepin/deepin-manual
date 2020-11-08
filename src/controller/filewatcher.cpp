@@ -63,6 +63,9 @@ void fileWatcher::checkMap(QMap<QString, QString> &mapOld, QMap<QString, QString
  */
 void fileWatcher::monitorFile()
 {
+    watcherObj->removePaths(watcherObj->directories());
+    watcherObj->removePaths(watcherObj->files());
+
     QStringList listMonitorFile;
     QStringList listModule;
     QString  assetsPath = Utils::getSystemManualDir();
@@ -156,5 +159,5 @@ void fileWatcher::onTimerOut()
     checkMap(mapOld, mapNow, deleteList, addList, addTime);
     mapOld = mapNow;
     emit filelistChange(deleteList, addList, addTime);
-    this->monitorFile();
+    monitorFile();
 }

@@ -15,6 +15,8 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 #include <QCoreApplication>
+#include <QWebEngineView>
+#include <QApplication>
 #include "controller/helpermanager.h"
 #include "dbus/dbus_consts.h"
 #include "dbus/manual_search_adapter.h"
@@ -22,7 +24,11 @@
 
 int main(int argc, char **argv)
 {
-    QCoreApplication app(argc, argv);
+//    QCoreApplication app(argc, argv);
+
+    QApplication app(argc, argv);
+
+//    qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "7777");
 
     ManualSearchProxy search_obj;
     ManualSearchAdapter adapter(&search_obj);
@@ -36,6 +42,11 @@ int main(int argc, char **argv)
     }
 
     helperManager obj;
+
+//    QWebEngineView *kweb = new QWebEngineView;
+
+//    kweb->setFixedSize(400, 200);
+//    kweb->show();
 
 
 

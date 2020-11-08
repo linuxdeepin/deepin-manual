@@ -846,6 +846,7 @@ void WebWindow::onWebPageLoadFinished(bool ok)
     m_spinner->stop();
     m_spinner->hide();
     this->setCentralWidget(web_view_);
+//    web_view_->hide();
     disconnect(web_view_->page(), &QWebEnginePage::loadFinished, this, &WebWindow::onWebPageLoadFinished);
 }
 

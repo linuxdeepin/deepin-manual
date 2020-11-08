@@ -22,10 +22,13 @@
 #define HELPERMANAGER_H
 
 #include <QObject>
+#include <QWebEngineView>
+#include <QWebChannel>
 #include "dpinyin.h"
 
 class fileWatcher;
 class SearchDb;
+class JsContext;
 class helperManager  : public QObject
 {
     Q_OBJECT
@@ -33,6 +36,8 @@ public:
     helperManager(QObject *parent = nullptr);
 
 private:
+
+    void initWeb();
     //初始化数据库
     void initDbConfig();
     //白名单对比
@@ -47,6 +52,10 @@ private:
 private slots:
     //文件列表发生改变信号槽
     void onFilelistChange(QStringList deleteList, QStringList addList, QStringList addTime);
+    void webLoadFinish(bool ok);
+
+    //JS层返回解析内容处理槽
+    void onRecvParseMsg(const QString &msg, const QString &path);
 
 
 private:
@@ -54,6 +63,10 @@ private:
     fileWatcher *watcherObj;
     //数据库对象
     SearchDb *dbObj;
+
+    QWebEngineView *m_webView;
+    QWebChannel *m_webChannel;
+    JsContext *jsObj;
 };
 
 #endif // HELPERMANAGER_H
