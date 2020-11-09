@@ -1476,7 +1476,6 @@ var Main = function (_Component) {
 
       var key = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
-
       if (key !== '%') {
         key = decodeURIComponent(key);
       }
@@ -1581,31 +1580,79 @@ var Main = function (_Component) {
   }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
+      var _this3 = this;
+
       var _nextProps$match$para = nextProps.match.params,
           file = _nextProps$match$para.file,
           hash = _nextProps$match$para.hash,
           key = _nextProps$match$para.key;
 
-      console.log("main componentWillReceivePropss: " + file + " " + hash + "  this.file:" + this.state.file + " this.hash" + this.state.hash + " key:", key);
-      //仅当页面文件发生改变时(文件改变或hash值发生改变),才刷新页面.
-      if (decodeURIComponent(file) != this.state.file || file == this.state.file && hash != this.state.hash) {
-        this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null, key);
+
+      if (global.bIsReload) {
+        var parentText;
+        var hashText = '';
+
+        for (var i = 0; i < this.state.hlist.length; i++) {
+          var h = this.state.hlist[i];
+          if (h.type == 'h2') {
+            parentText = h.text;
+          }
+          if (h.id == this.state.hash) {
+            hashText = h.text;
+            break;
+          }
+        }
+
+        var filePath;
+
+        if (this.state.file == "dde") {
+          filePath = global.path + '/system/' + this.state.file + '/' + global.lang + '/index.md';
+        } else {
+          filePath = global.path + '/application/' + this.state.file + '/' + global.lang + '/index.md';
+        }
+
+        global.readFile(filePath, function (data) {
+          console.log("main init===>readfile finish...", filePath);
+
+          var _m2h2 = (0, _mdToHtml2.default)(filePath, data, key),
+              html = _m2h2.html,
+              hlist = _m2h2.hlist;
+
+          var newParentHash = 'h1';
+          var newChildHash;
+          var curHash;
+
+          for (var i = 0; i < hlist.length; i++) {
+            var h = hlist[i];
+            if (h.text == parentText) {
+              newParentHash = h.id;
+            } else if (h.text == hashText) {
+              newChildHash = h.id;
+              break;
+            }
+          }
+
+          if (newChildHash) {
+            curHash = newChildHash;
+          } else {
+            curHash = newParentHash;
+          }
+          console.log('================>', curHash);
+
+          _this3.init(decodeURIComponent(file), curHash, key);
+          global.bIsReload = false;
+        });
+      } else {
+        console.log("main componentWillReceivePropss: " + file + " " + hash + "  this.file:" + this.state.file + " this.hash" + this.state.hash + " key:", key);
+        //仅当页面文件发生改变时(文件改变或hash值发生改变),才刷新页面.
+        if (decodeURIComponent(file) != this.state.file || file == this.state.file && hash != this.state.hash) {
+          this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null, key);
+        }
       }
     }
   }, {
     key: 'shouldComponentUpdate',
     value: function shouldComponentUpdate(nextProps, nextState) {
-
-      if (global.bIsReload) {
-        var _nextProps$match$para2 = nextProps.match.params,
-            file = _nextProps$match$para2.file,
-            hash = _nextProps$match$para2.hash,
-            key = _nextProps$match$para2.key;
-
-        console.log("main shouldComponentUpdate: " + file + " " + hash + "  this.file:" + this.state.file + " this.hash" + this.state.hash + " key:", key);
-        this.init(decodeURIComponent(file), this.state.hash ? decodeURIComponent(this.state.hash) : null, key);
-        global.bIsReload = false;
-      }
       console.log("main shouldComponentUpdate====");
       return true;
     }
@@ -1625,7 +1672,7 @@ var Main = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _this3 = this;
+      var _this4 = this;
 
       console.log("main render....hash:", this.state.hash);
       console.log("main render....hList:", this.state.hlist);
@@ -1648,13 +1695,13 @@ var Main = function (_Component) {
           hash: this.state.hash,
           setHash: this.setHash,
           onNavOver: function onNavOver(e) {
-            return _this3.handleNavOver(e);
+            return _this4.handleNavOver(e);
           },
           onNavOut: function onNavOut(e) {
-            return _this3.handleNavOut(e);
+            return _this4.handleNavOut(e);
           },
           onNavMove: function onNavMove(e) {
-            return _this3.handleNavMove(e);
+            return _this4.handleNavMove(e);
           }
         }),
         _react2.default.createElement(_article2.default, {

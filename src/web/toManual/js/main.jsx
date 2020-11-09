@@ -22,7 +22,6 @@ export default class Main extends Component {
     this.onSupportClick = this.onSupportClick.bind(this);
   }
   init(file, hash,key='') {
-
     if (key !== '%')
     {
       key = decodeURIComponent(key)
@@ -119,23 +118,82 @@ export default class Main extends Component {
 
   componentWillReceiveProps(nextProps) {
     let { file, hash,key } = nextProps.match.params;
-    console.log("main componentWillReceivePropss: "+file+" "+hash+"  this.file:"+ this.state.file +" this.hash"+this.state.hash+ " key:",key);
-    //仅当页面文件发生改变时(文件改变或hash值发生改变),才刷新页面.
-    if (decodeURIComponent(file) != this.state.file || ((file == this.state.file) && (hash != this.state.hash)))
+
+    if (global.bIsReload)
     {
-      this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null,key);
+      var parentText;
+      var hashText = '';
+
+      for(var i = 0; i < this.state.hlist.length; i++)
+      {
+        var h = this.state.hlist[i];
+        if (h.type == 'h2')
+        {
+          parentText = h.text;
+        }
+        if (h.id == this.state.hash)
+        {
+          hashText = h.text;
+          break;
+        }
+      }
+
+      var filePath;
+
+      if (this.state.file == "dde")
+      {
+        filePath = `${global.path}/system/${this.state.file}/${global.lang}/index.md`;
+      }
+      else{
+        filePath = `${global.path}/application/${this.state.file}/${global.lang}/index.md`;
+      }
+    
+      global.readFile(filePath, data => {
+        console.log("main init===>readfile finish...",filePath);
+        let { html, hlist } = m2h(filePath, data,key);
+        var newParentHash = 'h1';
+        var newChildHash;
+        var curHash;
+
+        for(var i = 0; i < hlist.length; i++)
+        {
+          var h = hlist[i];
+          if (h.text == parentText)
+          {
+            newParentHash = h.id;
+          }
+          else if (h.text == hashText)
+          {
+            newChildHash = h.id;
+            break;
+          }
+        }
+
+        if (newChildHash)
+        {
+          curHash = newChildHash;
+        }
+        else
+        {
+          curHash = newParentHash;
+        }
+        console.log('================>',curHash);
+
+        this.init(decodeURIComponent(file), curHash, key);
+        global.bIsReload = false;
+      });
+    }
+    else{
+      console.log("main componentWillReceivePropss: "+file+" "+hash+"  this.file:"+ this.state.file +" this.hash"+this.state.hash+ " key:",key);
+      //仅当页面文件发生改变时(文件改变或hash值发生改变),才刷新页面.
+      if (decodeURIComponent(file) != this.state.file || ((file == this.state.file) && (hash != this.state.hash)))
+      {
+        this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null,key);
+      }
     }
   }
 
   shouldComponentUpdate(nextProps,nextState){
-
-    if (global.bIsReload)
-    {
-      let { file, hash,key } = nextProps.match.params;
-      console.log("main shouldComponentUpdate: "+file+" "+hash+"  this.file:"+ this.state.file +" this.hash"+this.state.hash+ " key:",key);
-      this.init(decodeURIComponent(file), this.state.hash ? decodeURIComponent(this.state.hash) : null,key);
-      global.bIsReload = false;
-    }
     console.log("main shouldComponentUpdate====");
     return true;
   }
