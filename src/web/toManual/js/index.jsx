@@ -14,6 +14,7 @@ class Item extends Component {
       logo: '',
       show: false
     };
+    console.log('main item constructor...');
     const path = `${global.path}/${this.props.type}/${this.props.appName}/${global.lang}/`;
     const file = path + `index.md`;
     global.readFile(file, data => {
@@ -25,6 +26,11 @@ class Item extends Component {
       this.setState({ title, logo, file, show: true });
     });
   }
+
+  componentWillReceiveProps(nextProps) {
+    console.log("index item componentWillReceivePropss........");
+  }
+
   render() {
     var contentSpan = null;
     if (this.props.isOpened)
@@ -103,12 +109,12 @@ export default class Index extends Component {
       );
       global.bIsReload = false;
     }
-    else if (nextState.appList.toString() == this.state.appList.toString() 
-              && nextState.openedAppList.toString() == this.state.openedAppList.toString()) 
-    {
-      console.log("index no update");
-      return false;
-    }
+    // else if (nextState.appList.toString() == this.state.appList.toString() 
+    //           && nextState.openedAppList.toString() == this.state.openedAppList.toString()) 
+    // {
+    //   console.log("index no update");
+    //   return false;
+    // }
     return true;
   }
   componentDidUpdate() {
@@ -117,6 +123,7 @@ export default class Index extends Component {
       .focus();
   }
   render() {
+    console.log('index render...');
     let sysSoft = ['dde'].filter(
       appName => this.state.appList.indexOf(appName) != -1
     );

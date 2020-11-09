@@ -62,9 +62,9 @@ global.readFile = function (fileName, callback) {
   var xhr = new XMLHttpRequest();
   xhr.open('GET', fileName);
   xhr.onload = function () {
-    if (xhr.responseText != '') {
-      callback(xhr.responseText);
-    }
+    // if (xhr.responseText != '') {
+    callback(xhr.responseText);
+    // }
   };
   xhr.send();
 };
@@ -836,7 +836,9 @@ var Article = function (_Component) {
           }
         });
       } else {
-        this.props.setHash(this.props.hlist[0].id);
+        if (this.props.hlist.length > 0) {
+          this.props.setHash(this.props.hlist[0].id);
+        }
       }
     }
   }, {
@@ -1205,6 +1207,7 @@ var Item = function (_Component) {
       logo: '',
       show: false
     };
+    console.log('main item constructor...');
     var path = global.path + '/' + _this.props.type + '/' + _this.props.appName + '/' + global.lang + '/';
     var file = path + 'index.md';
     global.readFile(file, function (data) {
@@ -1221,6 +1224,11 @@ var Item = function (_Component) {
   }
 
   _createClass(Item, [{
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      console.log("index item componentWillReceivePropss........");
+    }
+  }, {
     key: 'render',
     value: function render() {
       var _this2 = this;
@@ -1318,10 +1326,13 @@ var Index = function (_Component2) {
           return _this4.setState({ openedAppList: openedAppList });
         });
         global.bIsReload = false;
-      } else if (nextState.appList.toString() == this.state.appList.toString() && nextState.openedAppList.toString() == this.state.openedAppList.toString()) {
-        console.log("index no update");
-        return false;
       }
+      // else if (nextState.appList.toString() == this.state.appList.toString() 
+      //           && nextState.openedAppList.toString() == this.state.openedAppList.toString()) 
+      // {
+      //   console.log("index no update");
+      //   return false;
+      // }
       return true;
     }
   }, {
@@ -1334,6 +1345,7 @@ var Index = function (_Component2) {
     value: function render() {
       var _this5 = this;
 
+      console.log('index render...');
       var sysSoft = ['dde'].filter(function (appName) {
         return _this5.state.appList.indexOf(appName) != -1;
       });
@@ -1882,35 +1894,33 @@ var Nav = function (_Component) {
     value: function render() {
       var _this2 = this;
 
-      console.log("nav render...");
-      var max = this.props.hlist[0];
-      this.props.hlist.map(function (h) {
-        if (max.text.length < h.text.length) {
-          max = h;
-        }
-      });
-      // console.log(max, max.text.length);
-      // let maxWidth = 0;
-      // if (global.lang == 'zh_CN') {
-      //   maxWidth = max.text.length * 16;
-      // } else {
-      //   maxWidth = max.text.length / 1.8;
-      // }
-      var maxWidth = max.text.length;
+      console.log("nav render...", this.props.hlist.length);
+      var maxWidth = 0;
       var c = 0;
-      if (global.lang === 'zh_CN') {
-        if (maxWidth <= 6) {
-          c = 3;
+
+      if (this.props.hlist.length > 0) {
+        var max = this.props.hlist[0];
+        this.props.hlist.map(function (h) {
+          if (max.text.length < h.text.length) {
+            max = h;
+          }
+        });
+        maxWidth = max.text.length;
+        if (global.lang === 'zh_CN') {
+          if (maxWidth <= 6) {
+            c = 3;
+          } else {
+            c = 1;
+          }
+          maxWidth *= 18;
         } else {
-          c = 1;
+          if (maxWidth <= 20) {
+            c = 2;
+          }
+          maxWidth *= 9;
         }
-        maxWidth *= 18;
-      } else {
-        if (maxWidth <= 20) {
-          c = 2;
-        }
-        maxWidth *= 9;
       }
+
       return _react2.default.createElement(
         'div',
         {

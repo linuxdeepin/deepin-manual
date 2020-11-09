@@ -29,9 +29,9 @@ global.readFile = (fileName, callback) => {
   let xhr = new XMLHttpRequest();
   xhr.open('GET', fileName);
   xhr.onload = () => {
-    if (xhr.responseText != '') {
+    // if (xhr.responseText != '') {
       callback(xhr.responseText);
-    }
+    // }
   };
   xhr.send();
 };

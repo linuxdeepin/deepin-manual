@@ -78,7 +78,10 @@ export default class Article extends Component {
         }
       });
     } else {
-      this.props.setHash(this.props.hlist[0].id);
+      if (this.props.hlist.length > 0)
+      {
+        this.props.setHash(this.props.hlist[0].id);
+      }
     }
   }
 

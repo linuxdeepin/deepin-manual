@@ -86,35 +86,34 @@ class Nav extends Component {
   }
 
   render() {
-    console.log("nav render...");
-    let max = this.props.hlist[0];
-    this.props.hlist.map(h => {
-      if (max.text.length < h.text.length) {
-        max = h;
-      }
-    });
-    // console.log(max, max.text.length);
-    // let maxWidth = 0;
-    // if (global.lang == 'zh_CN') {
-    //   maxWidth = max.text.length * 16;
-    // } else {
-    //   maxWidth = max.text.length / 1.8;
-    // }
-    let maxWidth = max.text.length;
+    console.log("nav render...",this.props.hlist.length);
+    let maxWidth = 0;
     let c = 0;
-    if (global.lang === 'zh_CN') {
-      if (maxWidth <= 6) {
-        c = 3;
+
+    if (this.props.hlist.length > 0)
+    {
+      let max = this.props.hlist[0];
+      this.props.hlist.map(h => {
+        if (max.text.length < h.text.length) {
+          max = h;
+        }
+      });
+      maxWidth = max.text.length;
+      if (global.lang === 'zh_CN') {
+        if (maxWidth <= 6) {
+          c = 3;
+        } else {
+          c = 1;
+        }
+        maxWidth *= 18;
       } else {
-        c = 1;
+        if (maxWidth <= 20) {
+          c = 2;
+        }
+        maxWidth *= 9;
       }
-      maxWidth *= 18;
-    } else {
-      if (maxWidth <= 20) {
-        c = 2;
-      }
-      maxWidth *= 9;
     }
+    
     return (
       <div
         id="nav"
