@@ -391,7 +391,7 @@ The title bar contains the back button, search box, main menu and the window but
 
 - Back button: Click ![back](icon/back.svg) to go back to the homepage.
 - Search box: Input a keyword and search the related settings.
-- Main menu: Click ![menu](icon/icon_menu.svg) to enter the main menu where you can set the window theme, view the manual and exit.
+- Main menu: Click ![menu](icon/icon_menu.svg) to enter the main menu where you can view the edition and exit Control Center.
 
 ### Accounts
 You have already created an account when installing the system. Here you can modify account settings or create a new one.
@@ -1496,26 +1496,6 @@ Move upward with two fingers to scroll the screen down. If the "Natural Scrollin
 
 Move downward with two fingers to scroll the screen upward. If the "Natural Scrolling" option is enabled, the screen will scroll downward.
 
-#### Backward/Forward
-
-Move to the left with two fingers to move backward. Move to the right with two fingers to move forward.
-
-#### Display/Hide the Control Center
-
-Display the Control Center by sliding with two fingers from the right edge of the touchpad to the left.
-
-Hide the Control Center by sliding with two fingers from the left edge of the touchpad to the right.
-
-#### Zoom and Rotate
-
-Increase the distance between the two fingers to zoom in, which responds to the operation of **Ctrl** + ![=](icon/=.svg);
-
-Decrease the distance between the two fingers to zoom out, which responds to the operation of **Ctrl** + ![-](icon/-.svg);
-
-Rotate with two fingers to rotate the content, which mainly supports the rotation operation in Image Viewer and Screen Capture;
-
-Double-click with two fingers to zoom in and restore at the ratio of 200% .
-
 #### Open the Right-click Menu
 
 Click with two fingers to display the right-click menu.
@@ -1526,9 +1506,7 @@ Three- finger gestures refer to operation for operating system and application w
 
 #### Maximize/Restore the Window
 
-Move upward with three fingers to maximize the window, which responds to the operation of **Super** + ![Up](icon/Up.svg);
-
-Move downward with three fingers to maximize the window, which responds to the operation of  **Super** + ![Down](icon/Down.svg).
+Move upward or downward with three fingers to maximize or restore the window.
 
 #### Split to Left/Right
 
@@ -1545,15 +1523,7 @@ Increase or decrease the distance between the three fingers to display all the w
 1. Click with three fingers to activate the moving status of the current window, which responds to the operation of **AIt** + **F7** .
 2. Move quickly the window in moving status with one finger and click anywhere to exit the moving status.
 
-#### Fast Translation
-
-Select the text and then click with three fingers, the selected text will be translated in a small window, which corresponds to the operation of  **Ctrl** + **Alt** + **U**.
-
 ### Four/Five-finger Gestures
-
-#### Display/Hide Multi-task View
-
-Move with four/five fingers upwards to display multi-task view, and move downwards immediately to hide multi-task view, which corresponds to the operation of **Super** + **S**. 
 
 #### Switch Workspace
 
@@ -1593,14 +1563,6 @@ Open the right-click menu of the current object by long-press for 1 second and r
 
 Slide in from the bottom of the screen exceeding the dock's height to open Workspace.
 
-### Call out Clipboard
-
-Slide in from the left edge of the screen exceeding the dock's height to call out Clipboard.
-
-### Call out Notification Center
-
-Slide in from the right edge of the screen exceeding the dock's height to call out Notification Center.
-
 ### Call out Dock
 
 When the Dock is set as "Always Hidden" or "Smart Hide", if the Dock is at the bottom, slide in upward from the bottom edge of the screen to call it out; and if the Dock is on the top, slide in downward from the upper edge of the screen to call it out.
@@ -1616,8 +1578,4 @@ The scrolling directions of the screen are the same as where your finger goes.
 ### Zoom in/out
 
 Pinch two fingers to zoom out on the webpage or picture.  Open two fingers to zoom in on the webpage or picture.
-
-### Rotate
-
-Place two fingers on the picture with a certain distance and rotate the two fingers at the same time to rotate the picture.
 

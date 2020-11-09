@@ -200,7 +200,6 @@ You can set the basic information, shortcut keys, and subtitles.
   - Check the **Remember playback position** box to resume the film automatically from the last position played when Movie runs.
   - Check the **Auto add similar files to play **box to add the similar film files in the same folder to the playlist for playback in order.
   - Check the **Show video preview on mouseover** box to show the film preview when you move the mouse over progress bar.
-  - Check the **Pause when minimized** box to pause the playback automatically when minimizing the Movie window.
 4.  Under the **Screenshot** option, you can select the path to save screenshots as you wish.
 
 #### Shortcuts Settings
