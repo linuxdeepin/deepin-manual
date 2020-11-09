@@ -23,12 +23,12 @@
 #include <DButtonBox>
 #include <DMainWindow>
 #include <DApplicationHelper>
-#include <DLabel>
+#include <DSpinner>
+#include <DMessageManager>
 
 #include <QtDBus/QtDBus>
 #include <QWebEngineView>
 #include <QClipboard>
-#include <DSpinner>
 
 DWIDGET_USE_NAMESPACE
 
@@ -118,7 +118,6 @@ private:
     bool bIsSetKeyword{false};
     bool bFinishChannel{false};
     Dtk::Widget::DSpinner *m_spinner;
-    DLabel *m_pUpdatelabel {nullptr};
 
 private slots:
     void onSearchEditFocusOut();

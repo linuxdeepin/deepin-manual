@@ -233,22 +233,11 @@ void WebWindow::slot_HelpSupportTriggered()
     } else {
         qDebug() << "call com.deepin.dde.ServiceAndSupport failed";
     }
-
-
-
 }
 
 void WebWindow::slotUpdateLabel()
 {
-    QPoint point;
-    point.rx() = this->width() / 2 - m_pUpdatelabel->width() / 2;
-    point.ry() = this->titlebar()->height();
-    m_pUpdatelabel->move(point);
-    m_pUpdatelabel->show();
-    m_pUpdatelabel->raise();
-    QTimer::singleShot(2000, [ = ] {
-        m_pUpdatelabel->hide();
-    });
+    DMessageManager::instance()->sendMessage(this, QIcon(":/common/images/ok.svg"), QObject::tr("The content was updated"));
 }
 
 /**
@@ -298,16 +287,6 @@ QVariant WebWindow::inputMethodQuery(Qt::InputMethodQuery prop) const
 
 void WebWindow::resizeEvent(QResizeEvent *event)
 {
-
-    if (m_pUpdatelabel != nullptr && m_pUpdatelabel->isVisible()) {
-        QPoint point;
-        point.rx() = this->width() / 2 - m_pUpdatelabel->width() / 2;
-        point.ry() = this->titlebar()->height();
-        m_pUpdatelabel->move(point);
-        m_pUpdatelabel->show();
-        m_pUpdatelabel->raise();
-    }
-
     QWidget::resizeEvent(event);
 }
 
@@ -529,12 +508,6 @@ void WebWindow::initUI()
     this->titlebar()->addWidget(search_edit_, Qt::AlignCenter);
     this->titlebar()->setSeparatorVisible(false);
     this->titlebar()->setIcon(QIcon::fromTheme("deepin-manual"));
-
-    m_pUpdatelabel = new DLabel(this->window());
-    m_pUpdatelabel->setText(QObject::tr("The content was updated"));
-    m_pUpdatelabel->setFixedSize(150, 40);
-    m_pUpdatelabel->setAlignment(Qt::AlignCenter);
-    m_pUpdatelabel->hide();
 
     //隐藏title阴影
     this->setTitlebarShadowEnabled(false);
