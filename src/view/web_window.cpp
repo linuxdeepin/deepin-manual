@@ -519,7 +519,6 @@ void WebWindow::initUI()
     QVBoxLayout *spinnerLayout = new QVBoxLayout(spinnerPage);
     m_spinner->setFixedSize(50, 50);
     spinnerLayout->addWidget(m_spinner, 0, Qt::AlignCenter);
-
     this->setCentralWidget(spinnerPage);
     m_spinner->start();
 
