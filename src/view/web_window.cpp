@@ -40,7 +40,7 @@
 #include <QWebChannel>
 #include <QWindow>
 #include <QX11Info>
-
+#include <QOpenGLContext>
 #include <QRegion>
 #include <QFocusEvent>
 
@@ -236,9 +236,14 @@ void WebWindow::closeEvent(QCloseEvent *event)
     completion_window_->hide();
     //保存窗口大小
     saveWindowSize();
+
+    if (QOpenGLContext *context = QOpenGLContext::currentContext()){
+        context->doneCurrent();
+    }
+    deleteLater();
+
     QWidget::closeEvent(event);
 
-    exit(0);
 }
 
 /**
