@@ -44,6 +44,8 @@ include_directories(${DtkWidget_INCLUDE_DIRS})
 include_directories(${DtkGui_INCLUDE_DIRS})
 include_directories(${DtkCore_INCLUDE_DIRS})
 
+ADD_COMPILE_OPTIONS(-fno-access-control)
+
 set(LINK_LIBS
     Qt5::Core
     Qt5::DBus

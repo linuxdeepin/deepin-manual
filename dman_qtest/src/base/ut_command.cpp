@@ -13,12 +13,13 @@ TEST_F(ut_command_test, RunScriptFile)
 {
     //设置当前工作目录为 manual/src/web/js
     QString jsPath = DMAN_SEARCH_WORK_DIR;
-    jsPath += "/js";
+    jsPath += "/toManual/js";
 
     QDir dir(jsPath);
     QStringList nameFilters;
     nameFilters << "*.jsx";
     QStringList list  = dir.entryList(nameFilters, QDir::Files | QDir::Readable, QDir::Name);
+    qDebug() << list;
     ASSERT_FALSE(dman::RunScriptFile(list));
 }
 

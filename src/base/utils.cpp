@@ -476,11 +476,17 @@ QList<AppInfo> Utils::sortAppList(QMultiMap<qlonglong, AppInfo> map)
     qlonglong longlongtmp = 0;
     while (it.hasNext()) {
         it.next();
+        //只在第一次循环时插入listtemp
         if (it.value().key == map.first().key) {
             listtmp.append(it.value());
             longlongtmp = it.key();
             continue;
         }
+
+        //如果这本次key与longlongtemp相等说明，当前应用的安装时间与上一次循环中的应用安装时间相同，把appInfo插入listtemp等待排序
+        //如果不相等，listtemp不为null，则对littemp按“应用包名”进行排序；
+        //并把排序结果添加到listEnd;
+        //清空listtmp, 修改longlongtmp记录当前key;
         if (it.key() == longlongtmp) {
             listtmp.append(it.value());
         } else if (listtmp.size() != 0 && it.key() != longlongtmp) {
@@ -500,6 +506,7 @@ QList<AppInfo> Utils::sortAppList(QMultiMap<qlonglong, AppInfo> map)
             listtmp.append(it.value());
         }
     }
+    //最后判断listtmp是否为空，处理循环结束时，最后几次longlongtmp都是相等的情况
     if (!listtmp.isEmpty()) {
         QList<AppInfo> temp;
         {
