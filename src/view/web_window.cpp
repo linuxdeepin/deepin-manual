@@ -207,6 +207,7 @@ void WebWindow::slot_ThemeChanged()
     if (themeType == DGuiApplicationHelper::DarkType) {
         web_view_->page()->setBackgroundColor(QColor(0x28, 0x28, 0x28));
     }
+    completion_window_->updateTheme();
 }
 
 /**
@@ -554,8 +555,8 @@ void WebWindow::initWebView()
             theme_proxy_, &ThemeProxy::slot_ThemeChange);
     //应用启动时，页面加载成功时间获取
     connect(manual_proxy_, &ManualProxy::startFinish, this, &WebWindow::manualStartFinish);
-//    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
-//            this, &WebWindow::slot_ThemeChanged);
+   connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
+           this, &WebWindow::slot_ThemeChanged);
 
     manual_proxy_->setApplicationState("dde");
 }

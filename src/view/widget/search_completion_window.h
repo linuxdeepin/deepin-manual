@@ -39,6 +39,7 @@ public:
     explicit SearchCompletionWindow(QWidget *parent = nullptr);
     ~SearchCompletionWindow() override;
     void updateColor(const QColor &color);
+    void updateTheme();
 
     void autoResize();
     const QString &keyword() const
@@ -47,7 +48,7 @@ public:
     }
 
 protected:
-    void paintEvent(QPaintEvent *event) override;
+    // void paintEvent(QPaintEvent *event) override;
 
 signals:
     void resultClicked(const SearchAnchorResult &result);

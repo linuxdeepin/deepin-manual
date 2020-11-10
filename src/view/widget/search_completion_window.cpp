@@ -35,6 +35,8 @@ SearchCompletionWindow::SearchCompletionWindow(QWidget *parent)
 
     this->initUI();
     this->initConnections();
+    this->updateTheme();
+    
 }
 
 SearchCompletionWindow::~SearchCompletionWindow()
@@ -50,6 +52,16 @@ void SearchCompletionWindow::updateColor(const QColor &color)
 {
     if (search_button_) {
         search_button_->updateColor(color);
+    }
+}
+
+void SearchCompletionWindow::updateTheme()
+{
+    DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
+    if (themeType == DGuiApplicationHelper::LightType) {
+        this->setMaskColor(QColor(255, 255, 255));
+    } else if (themeType == DGuiApplicationHelper::DarkType) {
+        this->setMaskColor(QColor(0, 0, 0));
     }
 }
 
@@ -271,28 +283,28 @@ void SearchCompletionWindow::initUI()
  * @param event
  * 重写绘制事件
  */
-void SearchCompletionWindow::paintEvent(QPaintEvent *event)
-{
-    Q_UNUSED(event)
+// void SearchCompletionWindow::paintEvent(QPaintEvent *event)
+// {
+//     Q_UNUSED(event)
 
-    QStylePainter painter(this);
-    QPainterPath path;
-    path.addRect(this->rect());
-    DPalette pa = ExApplicationHelper::instance()->palette(this);
-    DStyleHelper styleHelper;
-    QColor fillColor;
-    if (DWindowManagerHelper::instance()->hasComposite()) {
-        fillColor = pa.color(DPalette::FrameBorder);
-    } else {
-        DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
-        if (themeType == DGuiApplicationHelper::LightType) {
-            fillColor = QColor(255, 255, 255);
-        } else if (themeType == DGuiApplicationHelper::DarkType) {
-            fillColor = QColor(0, 0, 0);
-        }
-    }
-    painter.fillPath(path, QBrush(fillColor));
-}
+//     QStylePainter painter(this);
+//     QPainterPath path;
+//     path.addRect(this->rect());
+//     DPalette pa = ExApplicationHelper::instance()->palette(this);
+//     DStyleHelper styleHelper;
+//     QColor fillColor;
+//     if (DWindowManagerHelper::instance()->hasComposite()) {
+//         fillColor = pa.color(DPalette::FrameBorder);
+//     } else {
+//         DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
+//         if (themeType == DGuiApplicationHelper::LightType) {
+//             fillColor = QColor(255, 255, 255);
+//         } else if (themeType == DGuiApplicationHelper::DarkType) {
+//             fillColor = QColor(0, 0, 0);
+//         }
+//     }
+//     painter.fillPath(path, QBrush(fillColor));
+// }
 
 /**
  * @brief SearchCompletionWindow::onResultListClicked
