@@ -15,10 +15,13 @@ Build-Depends:
  pkg-config,
  qttools5-dev,
  qttools5-dev-tools,
+ libgtest-dev,
+ libgmock-dev,
 Standards-Version: 3.9.5
 Homepage: https://github.com/linuxdeepin/deepin-manual/
 Vcs-Git: git://github.com/linuxdeepin/deepin-manual.git
 Vcs-Browser: https://github.com/linuxdeepin/deepin-manual/
+
 
 Package:deepin-manual
 Architecture: any

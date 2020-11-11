@@ -34,6 +34,8 @@ find_package(Qt5Widgets REQUIRED)
 find_package(Qt5LinguistTools REQUIRED)
 find_package(Qt5WebEngineWidgets REQUIRED)
 
+find_package(GTest REQUIRED)
+include_directories(${GTEST_INCLUDE_DIRS})
 find_package(Qt5Test REQUIRED)
 
 pkg_search_module(DtkWidget REQUIRED dtkwidget)
@@ -55,6 +57,7 @@ set(LINK_LIBS
     Qt5::WebChannel
     Qt5::WebEngineWidgets
     Qt5::Test
+    ${}
 
     ${DtkWidget_LDFLAGS}
     ${DtkGui_LDFLAGS}
@@ -82,12 +85,14 @@ add_definitions(-DDMAN_SEARCH_CREATE_DB_PATH="${CMAKE_CURRENT_BINARY_DIR}/dbPath
 # This is for icon path on db
 add_definitions(-DDMAN_INSTALL_DB_PATH="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets")
 
-include_directories(googletest)
-include_directories(googletest/googlemock/include)
-include_directories(googletest/googletest/include)
+#include_directories(googletest)
+#include_directories(googletest/googlemock/include)
+#include_directories(googletest/googletest/include)
 
-#GTest & GMock
-add_subdirectory(googletest)
+##GTest & GMock
+#add_subdirectory(googletest)
+
+
 
 include_directories(../src)
 
@@ -148,7 +153,12 @@ target_include_directories(${PROJECT_NAME_TEST} PUBLIC ${Qt5Widgets_LIBRARIES}
                                                        ${DtkGui_INCLUDE_DIRS}
                                                        ${PROJECT_BINARY_DIR})
 # 生成测试可执行程序的依赖库
-target_link_libraries(${PROJECT_NAME_TEST} PUBLIC ${LINK_LIBS} gmock gmock_main gtest gtest_main)
+target_link_libraries(
+    ${PROJECT_NAME_TEST}
+    PUBLIC ${LINK_LIBS}
+    ${GTEST_LIBRARYS}
+    ${GTEST_MAIN_LIBRARYS}
+    gmock gmock_main gtest gtest_main pthread)
 
 #------------------------------ 创建'make test'指令---------------------------------------
 add_custom_target(test
