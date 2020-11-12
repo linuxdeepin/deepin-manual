@@ -15,20 +15,26 @@ class Item extends Component {
       show: false
     };
     console.log('main item constructor...');
-    const path = `${global.path}/${this.props.type}/${this.props.appName}/${global.lang}/`;
-    const file = path + `index.md`;
-    global.readFile(file, data => {
+    this.path = `${global.path}/${this.props.type}/${this.props.appName}/${global.lang}/`;
+    this.file = this.path + `index.md`;
+    this.init();
+  }
+
+  init()
+  {
+    global.readFile(this.file, data => {
       let [title, logo] = data
         .substr('# '.length, data.indexOf('\n'))
         .split('|');
-      logo = `${path}${logo}`;
+      logo = `${this.path}${logo}`;
 
-      this.setState({ title, logo, file, show: true });
+      this.setState({ title, logo, file:this.file, show: true });
     });
   }
 
   componentWillReceiveProps(nextProps) {
     console.log("index item componentWillReceivePropss........");
+    this.init();
   }
 
   render() {

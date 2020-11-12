@@ -1208,30 +1208,38 @@ var Item = function (_Component) {
       show: false
     };
     console.log('main item constructor...');
-    var path = global.path + '/' + _this.props.type + '/' + _this.props.appName + '/' + global.lang + '/';
-    var file = path + 'index.md';
-    global.readFile(file, function (data) {
-      var _data$substr$split = data.substr('# '.length, data.indexOf('\n')).split('|'),
-          _data$substr$split2 = _slicedToArray(_data$substr$split, 2),
-          title = _data$substr$split2[0],
-          logo = _data$substr$split2[1];
-
-      logo = '' + path + logo;
-
-      _this.setState({ title: title, logo: logo, file: file, show: true });
-    });
+    _this.path = global.path + '/' + _this.props.type + '/' + _this.props.appName + '/' + global.lang + '/';
+    _this.file = _this.path + 'index.md';
+    _this.init();
     return _this;
   }
 
   _createClass(Item, [{
+    key: 'init',
+    value: function init() {
+      var _this2 = this;
+
+      global.readFile(this.file, function (data) {
+        var _data$substr$split = data.substr('# '.length, data.indexOf('\n')).split('|'),
+            _data$substr$split2 = _slicedToArray(_data$substr$split, 2),
+            title = _data$substr$split2[0],
+            logo = _data$substr$split2[1];
+
+        logo = '' + _this2.path + logo;
+
+        _this2.setState({ title: title, logo: logo, file: _this2.file, show: true });
+      });
+    }
+  }, {
     key: 'componentWillReceiveProps',
     value: function componentWillReceiveProps(nextProps) {
       console.log("index item componentWillReceivePropss........");
+      this.init();
     }
   }, {
     key: 'render',
     value: function render() {
-      var _this2 = this;
+      var _this3 = this;
 
       var contentSpan = null;
       if (this.props.isOpened) {
@@ -1256,11 +1264,11 @@ var Item = function (_Component) {
           tabIndex: '1',
           className: 'item',
           onClick: function onClick() {
-            return global.open(_this2.props.appName);
+            return global.open(_this3.props.appName);
           },
           onKeyPress: function onKeyPress(e) {
             if (e.key === 'Enter') {
-              global.open(_this2.props.appName);
+              global.open(_this3.props.appName);
             }
           }
         },
@@ -1284,9 +1292,9 @@ var Index = function (_Component2) {
   function Index(props) {
     _classCallCheck(this, Index);
 
-    var _this3 = _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).call(this, props));
+    var _this4 = _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).call(this, props));
 
-    _this3.state = {
+    _this4.state = {
       appList: [],
       openedAppList: []
     };
@@ -1294,13 +1302,13 @@ var Index = function (_Component2) {
     console.log("==========>index constructor");
 
     global.qtObjects.manual.getSystemManualList(function (appList) {
-      return _this3.setState({ appList: appList });
+      return _this4.setState({ appList: appList });
     });
 
     global.qtObjects.manual.getUsedAppList(function (openedAppList) {
-      return _this3.setState({ openedAppList: openedAppList });
+      return _this4.setState({ openedAppList: openedAppList });
     });
-    return _this3;
+    return _this4;
   }
 
   _createClass(Index, [{
@@ -1314,16 +1322,16 @@ var Index = function (_Component2) {
   }, {
     key: 'shouldComponentUpdate',
     value: function shouldComponentUpdate(nextProps, nextState) {
-      var _this4 = this;
+      var _this5 = this;
 
       console.log("index shouldcomponentupdate");
       if (global.bIsReload) {
         global.qtObjects.manual.getSystemManualList(function (appList) {
-          return _this4.setState({ appList: appList });
+          return _this5.setState({ appList: appList });
         });
 
         global.qtObjects.manual.getUsedAppList(function (openedAppList) {
-          return _this4.setState({ openedAppList: openedAppList });
+          return _this5.setState({ openedAppList: openedAppList });
         });
         global.bIsReload = false;
       }
@@ -1343,11 +1351,11 @@ var Index = function (_Component2) {
   }, {
     key: 'render',
     value: function render() {
-      var _this5 = this;
+      var _this6 = this;
 
       console.log('index render...');
       var sysSoft = ['dde'].filter(function (appName) {
-        return _this5.state.appList.indexOf(appName) != -1;
+        return _this6.state.appList.indexOf(appName) != -1;
       });
 
       var appSoft = this.state.appList.concat(); //使用数据副本
@@ -1373,7 +1381,7 @@ var Index = function (_Component2) {
               'div',
               { className: 'items' },
               sysSoft.map(function (appName) {
-                return _react2.default.createElement(Item, { key: appName, appName: appName, isOpened: _this5.bIsBeOpen(appName), type: "system" });
+                return _react2.default.createElement(Item, { key: appName, appName: appName, isOpened: _this6.bIsBeOpen(appName), type: "system" });
               })
             )
           ),
@@ -1389,7 +1397,7 @@ var Index = function (_Component2) {
               'div',
               { className: 'items' },
               appSoft.map(function (appName) {
-                return _react2.default.createElement(Item, { key: appName, appName: appName, isOpened: _this5.bIsBeOpen(appName), type: "application" });
+                return _react2.default.createElement(Item, { key: appName, appName: appName, isOpened: _this6.bIsBeOpen(appName), type: "application" });
               })
             )
           )
