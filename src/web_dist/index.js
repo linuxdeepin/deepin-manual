@@ -684,7 +684,6 @@ var Article = function (_Component) {
 
     _this.state = {
       preview: null,
-      smoothScroll: false,
       fillblank: null,
       bIsTimerOut: true
     };
@@ -695,6 +694,7 @@ var Article = function (_Component) {
 
     var timerObj;
     var bIsMount = false;
+    _this.smoothScroll = false;
     return _this;
   }
   //滚动到锚点
@@ -718,23 +718,22 @@ var Article = function (_Component) {
       if (hashNode) {
         console.log(" article  scrollToHash===============>", this.bIsMount);
         clearTimeout(this.timerObj);
-        this.setState({ smoothScroll: true });
+        this.smoothScroll = true;
 
         var timeVar = 800;
         if (this.bIsMount) {
-          timeVar = 3 * 1000;
+          console.log('===========> is mount');
+          timeVar = 15 * 1000;
           this.bIsMount = false;
         }
 
         this.timerObj = setTimeout(function () {
-          _this2.setState({ smoothScroll: false });
+          _this2.smoothScroll = false;
         }, timeVar);
 
         (0, _smoothScrollIntoViewIfNeeded2.default)(hashNode, { behavior: 'smooth', block: 'start' }).then(function () {
 
           console.log(" scrollIntoView finish ===============>");
-
-          // this.setState({ smoothScroll: false });
 
           //scrollIntoView函数存在异步,如果tempHash != this.hash时,说明存在异步操作,直接return. 
           if (tempHash != _this2.hash) return;
@@ -750,10 +749,13 @@ var Article = function (_Component) {
             if (tempHash == hList[i].id && (hList[i].tagName == 'H4' || hList[i].tagName == 'H5')) {
               console.log("article: scroll hlist:" + hList[i].tagName + "," + hList[i].id);
               console.log("currH3Hash:" + currH3Hash);
-              _this2.hash = currH3Hash;
-              _this2.props.setHash(currH3Hash);
-              _this2.props.setScroll(currH3Hash);
-              break;
+
+              if (_this2.load) {
+                _this2.hash = currH3Hash;
+                _this2.props.setHash(currH3Hash);
+                _this2.props.setScroll(currH3Hash);
+                break;
+              }
             }
           }
         });
@@ -892,7 +894,8 @@ var Article = function (_Component) {
       // if (!this.load) {
       //   return;
       // }
-      if (this.state.smoothScroll) {
+      console.log('smooth::', this.smoothScroll);
+      if (this.smoothScroll) {
         return;
       }
       if (this.state.preview != null) {
@@ -1600,15 +1603,15 @@ exports.default = function (mdFile, mdData) {
     return '<' + type + ' id="' + id + '" text="' + text + '">' + text + '</' + type + '>\n';
   };
   console.log(path);
-  renderer.image = function (href, title, text) {
-    var hrefX2 = href;
-    if (devicePixelRatio >= 1.5 && href.indexOf('.svg') == -1) {
-      var _path = href.split('.');
-      var ext = _path.pop();
-      hrefX2 = _path.join('.') + 'x2.' + ext;
-    }
-    return '<img src="' + hrefX2 + '" data-src="' + href + '" alt="' + text + '" />';
-  };
+  // renderer.image = (href, title, text) => {
+  //   let hrefX2 = href;
+  //   if (devicePixelRatio >= 1.5 && href.indexOf('.svg') == -1) {
+  //     let path = href.split('.');
+  //     let ext = path.pop();
+  //     hrefX2 = `${path.join('.')}x2.${ext}`;
+  //   }
+  //   return `<img src="${hrefX2}" data-src="${href}" alt="${text}" />`;
+  // };
 
   html = (0, _marked2.default)(mdData, { renderer: renderer }).replace(/src="/g, '$&' + path);
   console.log("-----------------------------------");

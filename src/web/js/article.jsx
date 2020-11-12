@@ -10,7 +10,6 @@ export default class Article extends Component {
     super(props);
     this.state = {
       preview: null,
-      smoothScroll: false,
       fillblank: null,
       bIsTimerOut:true
     };
@@ -21,6 +20,7 @@ export default class Article extends Component {
 
     var timerObj;
     var bIsMount=false;
+    this.smoothScroll=false;
   }
   //滚动到锚点
   scrollToHash() {
@@ -37,24 +37,23 @@ export default class Article extends Component {
     if (hashNode) {
       console.log(" article  scrollToHash===============>",this.bIsMount);
       clearTimeout(this.timerObj);
-      this.setState({ smoothScroll: true });
+      this.smoothScroll = true;
 
       var timeVar = 800;
       if (this.bIsMount)
       {
-        timeVar = 3*1000;
+        console.log('===========> is mount');
+        timeVar = 15*1000;
         this.bIsMount = false;
       }
 
       this.timerObj = setTimeout(() => {
-          this.setState({ smoothScroll: false });
+          this.smoothScroll = false;
       },timeVar);
 
       scrollIntoView(hashNode, { behavior: 'smooth', block: 'start' }).then(() => {
-
+ 
         console.log(" scrollIntoView finish ===============>");
-
-        // this.setState({ smoothScroll: false });
 
         //scrollIntoView函数存在异步,如果tempHash != this.hash时,说明存在异步操作,直接return. 
         if(tempHash != this.hash) return;
@@ -70,10 +69,14 @@ export default class Article extends Component {
           if (tempHash == hList[i].id && (hList[i].tagName == 'H4' || hList[i].tagName == 'H5')) {
             console.log("article: scroll hlist:" + hList[i].tagName  + "," + hList[i].id);
             console.log("currH3Hash:" + currH3Hash);
-            this.hash = currH3Hash;
-            this.props.setHash(currH3Hash);
-            this.props.setScroll(currH3Hash);
-            break;
+
+            if (this.load)
+            {
+              this.hash = currH3Hash;
+              this.props.setHash(currH3Hash);
+              this.props.setScroll(currH3Hash);
+              break;
+            }
           }
         }
       });
@@ -199,7 +202,9 @@ export default class Article extends Component {
     // if (!this.load) {
     //   return;
     // }
-    if (this.state.smoothScroll) {
+    console.log('smooth::',this.smoothScroll);
+    if (this.smoothScroll)
+    {
       return;
     }
     if (this.state.preview != null) {
