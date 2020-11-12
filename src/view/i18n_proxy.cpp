@@ -19,14 +19,14 @@
 
 #include <QLocale>
 
-namespace dman {
-
-I18nProxy::I18nProxy(QObject* parent)
+I18nProxy::I18nProxy(QObject *parent)
     : QObject(parent)
 {
 }
 
-I18nProxy::~I18nProxy() {}
+I18nProxy::~I18nProxy()
+{
+}
 
 QVariantHash I18nProxy::getSentences() const
 {
@@ -40,7 +40,7 @@ QVariantHash I18nProxy::getSentences() const
         //          "Change your keywords and try again, or search for it in Deepin Wiki") },
         {"ToIndexPage", QObject::tr("Home")},
         //      { "SearchInWiki", QObject::tr("Deepin Wiki") },
-        {"ResultNumSuffix", QObject::tr("  result")},  //单数结果后缀
+        {"ResultNumSuffix", QObject::tr("  result")}, //单数结果后缀
         {"ResultNumSuffixs", QObject::tr("  results")}};
     return result;
 }
@@ -49,11 +49,16 @@ QString I18nProxy::getLocale() const
 {
     const QString locale = QLocale().name();
     // Fallback to default locale.
-    if (locale != "en_US" && locale != "zh_CN") {
+//    if (locale != "en_US" && locale != "zh_CN") {
+//        return "en_US";
+//    } else {
+//        return locale;
+//    }
+    if (locale == "zh_CN" || locale == "zh_HK" || locale == "zh_TW") {
+        return "zh_CN";
+    } else if (locale == "en_US" || locale == "en_GB") {
         return "en_US";
     } else {
-        return locale;
+        return  "";
     }
 }
-
-}  // namespace dman

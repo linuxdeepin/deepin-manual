@@ -24,11 +24,7 @@
 
 #include "search_completion_delegate.h"
 
-#include <QMetaType>
-#include <QString>
-
 #include <DCheckBox>
-#include <DLabel>
 #include <DListView>
 
 DWIDGET_USE_NAMESPACE
@@ -45,13 +41,10 @@ public:
     void setSelection(const QRect &rect, QItemSelectionModel::SelectionFlags command) override;
     void initDelegate();
 
-    QStandardItemModel *getErrorListSourceModel();
-
 protected:
     void paintEvent(QPaintEvent *event) override;
 
 private:
-
     SearchCompletionDelegate *m_searchCompletionDelegate;
     QStandardItemModel *m_searchCompletionSourceModel;
     QList<SearchCompletionItemModel> m_searchCompletionModelList;
@@ -62,7 +55,6 @@ signals:
     void onClickSearchCompletionItem(QModelIndex index);
 
 private slots:
-
 };
 
 #endif // SEARCH_COMPLETION_LISTVIEW_H

@@ -18,10 +18,7 @@
 #ifndef DEEPIN_MANUAL_CONTROLLER_SEARCH_ENTRY_H
 #define DEEPIN_MANUAL_CONTROLLER_SEARCH_ENTRY_H
 
-#include <QString>
 #include <QList>
-
-namespace dman {
 
 struct SearchAnchorResult {
     QString app_name;               //app name(for system)
@@ -39,6 +36,4 @@ struct SearchContentResult {
 
 typedef QList<SearchContentResult> SearchContentResultList;
 
-}  // namespace dman
-
-#endif  // DEEPIN_MANUAL_CONTROLLER_SEARCH_ENTRY_H
+#endif // DEEPIN_MANUAL_CONTROLLER_SEARCH_ENTRY_H

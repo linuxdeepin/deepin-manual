@@ -20,24 +20,15 @@
 #include <DLog>
 #include <QApplication>
 #include <QDesktopWidget>
-#include <QLabel>
-#include <QMouseEvent>
-#include <QPainter>
-#include <QResizeEvent>
 #include <QShortcut>
-#include <QStackedLayout>
-#include <QtCore/QTimer>
 #include <QImageReader>
-
-DWIDGET_USE_NAMESPACE
-namespace dman {
 
 namespace {
 
 const int kBorderSize = 12;
 const int kCloseBtnSize = 48;
 
-}  // namespace
+} // namespace
 
 ImageViewer::ImageViewer(QWidget *parent)
     : QDialog(parent)
@@ -48,8 +39,15 @@ ImageViewer::ImageViewer(QWidget *parent)
     connect(close_button_, &Dtk::Widget::DIconButton::clicked, this, &ImageViewer::close);
 }
 
-ImageViewer::~ImageViewer() {}
+ImageViewer::~ImageViewer()
+{
+}
 
+/**
+ * @brief ImageViewer::open
+ * @param filepath
+ * @note 根据给定的图片文件路径，打开图片并全屏显示
+ */
 void ImageViewer::open(const QString &filepath)
 {
     qDebug() << Q_FUNC_INFO << filepath;
@@ -65,10 +63,9 @@ void ImageViewer::open(const QString &filepath)
     reader.setDecideFormatFromContent(true);
     if (reader.canRead()) {
         if (reader.read(&image)) {
-
-            qDebug() << "open is successful....";
+            qDebug() << "image open is successful....";
         } else {
-            qDebug() << "open is failed...." << reader.errorString();
+            qDebug() << "image open is failed...." << reader.errorString();
         }
 
     } else {
@@ -82,7 +79,10 @@ void ImageViewer::open(const QString &filepath)
         image = image.scaled(pixmap_max_width, pixmap_max_height, Qt::KeepAspectRatio,
                              Qt::SmoothTransformation);
     }
-
+    //小图标不点击放大
+    if (image.width() < 50 && image.height() < 50) {
+        return;
+    }
     this->move(screen_rect.topLeft());
     this->resize(screen_rect.size());
     this->showFullScreen();
@@ -95,7 +95,7 @@ void ImageViewer::open(const QString &filepath)
                     static_cast<int>((screen_rect.height() - image.height()) / 2.0));
     img_label_->move(img_rect.topLeft());
 
-    // Move close button to top-right corner of image.
+    //关闭按钮移到图片右上角
     const QPoint top_right_point = img_rect.topRight();
     close_button_->move(top_right_point.x() - kCloseBtnSize / 2,
                         top_right_point.y() - kCloseBtnSize / 2);
@@ -103,6 +103,10 @@ void ImageViewer::open(const QString &filepath)
     close_button_->raise();
 }
 
+/**
+ * @brief ImageViewer::initUI
+ * 界面初始化
+ */
 void ImageViewer::initUI()
 {
     img_label_ = new DLabel(this);
@@ -117,8 +121,8 @@ void ImageViewer::initUI()
     close_button_->setFixedSize(45, 45);
 
     this->setContentsMargins(kBorderSize, kBorderSize, kBorderSize, kBorderSize);
-    this->setWindowFlags(Qt::FramelessWindowHint | Qt::BypassWindowManagerHint | Qt::Dialog |
-                         Qt::WindowStaysOnTopHint);
+    this->setWindowFlags(Qt::FramelessWindowHint | Qt::BypassWindowManagerHint
+                         | Qt::Dialog | Qt::WindowStaysOnTopHint);
     this->setAttribute(Qt::WA_TranslucentBackground, true);
     this->setModal(true);
 
@@ -132,17 +136,25 @@ void ImageViewer::initUI()
     });
 }
 
+/**
+ * @brief ImageViewer::mousePressEvent
+ * @param event
+ * 重写鼠标点击事件，打开图片后点击窗口任意位置，都隐藏此界面
+ */
 void ImageViewer::mousePressEvent(QMouseEvent *event)
 {
     QWidget::mousePressEvent(event);
     this->hide();
 }
 
+/**
+ * @brief ImageViewer::paintEvent
+ * @param event
+ * 画图事件，重绘整个屏幕大小
+ */
 void ImageViewer::paintEvent(QPaintEvent *event)
 {
     Q_UNUSED(event);
     QPainter painter(this);
     painter.fillRect(0, 0, this->width(), this->height(), QColor(0, 0, 0, 77));
 }
-
-}  // namespace dman

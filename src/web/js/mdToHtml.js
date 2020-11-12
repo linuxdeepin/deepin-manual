@@ -1,6 +1,11 @@
 import marked from 'marked';
 
-export default function(mdFile, mdData) {
+    //转义特定字符
+function escapeRegExp(text) {
+  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+};
+
+export default function(mdFile, mdData, key='') {
   let hlist = [];
   let info = {};
   let html = '';
@@ -28,15 +33,36 @@ export default function(mdFile, mdData) {
     return `<${type} id="${id}" text="${text}">${text}</${type}>\n`;
   };
   console.log(path);
-  renderer.image = (href, title, text) => {
-    let hrefX2 = href;
-    if (devicePixelRatio >= 1.5 && href.indexOf('.svg') == -1) {
-      let path = href.split('.');
-      let ext = path.pop();
-      hrefX2 = `${path.join('.')}x2.${ext}`;
-    }
-    return `<img src="${hrefX2}" data-src="${href}" alt="${text}" />`;
-  };
+  // renderer.image = (href, title, text) => {
+  //   let hrefX2 = href;
+  //   if (devicePixelRatio >= 1.5 && href.indexOf('.svg') == -1) {
+  //     let path = href.split('.');
+  //     let ext = path.pop();
+  //     hrefX2 = `${path.join('.')}x2.${ext}`;
+  //   }
+  //   return `<img src="${hrefX2}" data-src="${href}" alt="${text}" />`;
+  // };
+  
   html = marked(mdData, { renderer }).replace(/src="/g, `$&${path}`);
+  console.log("-----------------------------------");
+  if (key != '')
+  {
+    console.log("regexp==============>",key);
+    //将'=-='字符串 反向还原成'%'
+    key = key.replace(/=-=/g,'%');
+
+    console.log("regexp===>",key);
+
+    //将关键字转义
+    const keyTemp = new RegExp(escapeRegExp(key), 'gi');
+
+    
+    // key = re;
+    var finder = new RegExp(">.*?<",'g') // 提取位于标签内的文本，避免误操作 class、id 等
+    html = html.replace(finder,function(matched){
+            return matched.replace(new RegExp(keyTemp,'gi'),"<span style='background-color: yellow'>$&</span>");
+    })
+  }
+  
   return { html, hlist, info };
 }

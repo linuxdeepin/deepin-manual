@@ -20,37 +20,50 @@
 
 #include "utils.h"
 
-#include <DLog>
-#include <QApplication>
-#include <QDir>
-#include <QFile>
-#include <QFileInfo>
+#include <DSysInfo>
+
 #include <QFontDatabase>
-#include <QFontInfo>
 #include <QImageReader>
-#include <QMimeDatabase>
-#include <QMimeType>
-#include <QPixmap>
-#include <QStandardPaths>
-#include <QTextCodec>
-#include <QUrl>
 
 QHash<QString, QPixmap> Utils::m_imgCacheHash;
 QHash<QString, QString> Utils::m_fontNameCache;
+
+const char kLauncherService[] = "com.deepin.dde.daemon.Launcher";
+const char kLauncherIface[] = "/com/deepin/dde/daemon/Launcher";
+
+namespace {
+/**
+ * 从应用程序桌面文件获取帮助手册id。
+ * @param desktop_file 桌面文件的绝对路径
+ * @return 返回帮助手册id如果存在,否则返回空字符串。
+ */
+QString GetDeepinManualId(const QString &desktop_file)
+{
+    QSettings settings(desktop_file, QSettings::IniFormat);
+    settings.beginGroup("Desktop Entry");
+    const QVariant value = settings.value("X-Deepin-ManualID");
+    if (value.isValid()) {
+        return value.toString();
+    }
+    return "";
+}
+
+} // namespace
 
 //标题映射表
 const int langCount = 3;
 QString languageArr[][langCount] = {
     //dde model
     {"controlcenter", "控制中心", "Control Center"},
-    {"accounts", "账户设置", "Account Settings"},
-    {"cloudsync", "网络帐户", "Cloud Account"},
+    {"accounts", "帐户设置", "Accounts"},
+    {"cloudsync", "Union ID", "Union ID"},
     {"display", "显示设置", "Display Settings"},
     {"defapp", "默认程序设置", "Default Application Settings"},
     {"personalization", "个性化设置", "Personalization Settings"},
     {"network", "网络设置", "Network Settings"},
+    {"notification", "通知设置", "Notification Settings"},
     {"sound", "声音设置", "Sound Settings"},
-    {"bluetooth", "蓝牙设置", "Sound Settings"},
+    {"bluetooth", "蓝牙设置", "Bluetooth Settings"},
     {"datetime", "时间日期", "Date and Time"},
     {"power", "电源管理", "Power Management"},
     {"mouse", "鼠标和触控板", "Mouse and Touchpad"},
@@ -63,60 +76,138 @@ QString languageArr[][langCount] = {
     {"commoninfo", "通用设置", "General Settings"}
 };
 
+struct ReplyStruct {
+    QString m_desktop;
+    QString m_name;
+    QString m_key;
+    QString m_iconKey;
+
+    qint64 m_categoryId;
+    qint64 m_installedTime;
+};
+
+Q_DECLARE_METATYPE(ReplyStruct)
+
+/**
+ * @brief operator <<
+ * @param argument
+ * @param info
+ * @return
+ */
+QDBusArgument &operator<<(QDBusArgument &argument, const ReplyStruct &info)
+{
+    argument.beginStructure();
+    argument << info.m_desktop << info.m_name << info.m_key << info.m_iconKey;
+    argument << info.m_categoryId << info.m_installedTime;
+    argument.endStructure();
+    return argument;
+}
+
+/**
+ * @brief operator >> //结构体数据检查
+ * @param argument
+ * @param info
+ * @return
+ */
+const QDBusArgument &operator>>(const QDBusArgument &argument, ReplyStruct &info)
+{
+    argument.beginStructure();
+    argument >> info.m_desktop >> info.m_name >> info.m_key >> info.m_iconKey;
+    argument >> info.m_categoryId >> info.m_installedTime;
+    argument.endStructure();
+    return argument;
+}
+
 Utils::Utils(QObject *parent)
     : QObject(parent)
 {
 }
 
-Utils::~Utils() {}
-
-struct timeval Utils::getTime()
+Utils::~Utils()
 {
-    struct timeval tp;
-    gettimeofday(&tp, nullptr);
-    return tp;
 }
 
-struct timeval Utils::showDiffTime(struct timeval tpStart)
-{
-    struct timeval tpEnd;
-    gettimeofday(&tpEnd, nullptr);
-    double timeuse =
-        (1000000 * (tpEnd.tv_sec - tpStart.tv_sec) + tpEnd.tv_usec - tpStart.tv_usec) / 1000000.0;
-    qDebug() << __FUNCTION__ << __LINE__ << timeuse << endl;
+///**
+// * @brief Utils::getTime
+// * @return
+// * 获取系统时间
+// */
+//struct timeval Utils::getTime()
+//{
+//    struct timeval tp;
+//    gettimeofday(&tp, nullptr);
+//    return tp;
+//}
 
-    return tpEnd;
-}
+///**
+// * @brief Utils::showDiffTime
+// * @param tpStart 开始计时时间
+// * @return
+// * 获取时间差
+// */
+//struct timeval Utils::showDiffTime(struct timeval tpStart)
+//{
+//    struct timeval tpEnd;
+//    gettimeofday(&tpEnd, nullptr);
+//    double timeuse =
+//        (1000000 * (tpEnd.tv_sec - tpStart.tv_sec) + tpEnd.tv_usec - tpStart.tv_usec) / 1000000.0;
+//    qDebug() << __FUNCTION__ << __LINE__ << timeuse << endl;
 
-QString Utils::getQssContent(const QString &filePath)
-{
-    QFile file(filePath);
-    QString qss;
+//    return tpEnd;
+//}
 
-    if (file.open(QIODevice::ReadOnly)) {
-        qss = file.readAll();
-    }
+///**
+// * @brief Utils::getQssContent
+// * @param filePath 文件路径
+// * @return
+// * 读取qss文件内容
+// */
+//QString Utils::getQssContent(const QString &filePath)
+//{
+//    QFile file(filePath);
+//    QString qss;
 
-    return qss;
-}
+//    if (file.open(QIODevice::ReadOnly)) {
+//        qss = file.readAll();
+//    }
 
-bool Utils::isFontMimeType(const QString &filePath)
-{
-    const QString mimeName = QMimeDatabase().mimeTypeForFile(filePath).name();
-    ;
+//    return qss;
+//}
 
-    if (mimeName.startsWith("font/") || mimeName.startsWith("application/x-font")) {
-        return true;
-    }
+///**
+// * @brief Utils::isFontMimeType
+// * @param filePath
+// * @return
+// * 判断是否为字体文件
+// */
+//bool Utils::isFontMimeType(const QString &filePath)
+//{
+//    const QString mimeName = QMimeDatabase().mimeTypeForFile(filePath).name();
+//    ;
 
-    return false;
-}
+//    if (mimeName.startsWith("font/") || mimeName.startsWith("application/x-font")) {
+//        return true;
+//    }
 
-QString Utils::suffixList()
-{
-    return QString("Font Files (*.ttf *.ttc *.otf)");
-}
+//    return false;
+//}
 
+///**
+// * @brief Utils::suffixList
+// * @return 返回字体文件格式
+// */
+//QString Utils::suffixList()
+//{
+//    return QString("Font Files (*.ttf *.ttc *.otf)");
+//}
+
+/**
+ * @brief Utils::renderSVG
+ * @param filePath 文件路径
+ * @param size 图标大小
+ * @return
+ * 根据传入的路径，大小，应用信息得到像素图
+ */
 QPixmap Utils::renderSVG(const QString &filePath, const QSize &size)
 {
     if (m_imgCacheHash.contains(filePath)) {
@@ -142,89 +233,307 @@ QPixmap Utils::renderSVG(const QString &filePath, const QSize &size)
     return pixmap;
 }
 
-QString Utils::loadFontFamilyByType(FontType fontType)
-{
-    QString fontFileName = "";
-    switch (fontType) {
-    case SourceHanSansMedium:
-        fontFileName = ":/font/SourceHanSansCN-Medium.ttf";
-        break;
-    case SourceHanSansNormal:
-        fontFileName = ":/font/SourceHanSansCN-Normal.ttf";
-        break;
-    case DefautFont:
-        QFont font;
-        return font.family();
-    }
+//QString Utils::loadFontFamilyByType(FontType fontType)
+//{
+//    QString fontFileName = "";
+//    switch (fontType) {
+//    case SourceHanSansMedium:
+//        fontFileName = ":/font/SourceHanSansCN-Medium.ttf";
+//        break;
+//    case SourceHanSansNormal:
+//        fontFileName = ":/font/SourceHanSansCN-Normal.ttf";
+//        break;
+//    case DefautFont:
+//        QFont font;
+//        return font.family();
+//    }
 
-    if (m_fontNameCache.contains(fontFileName)) {
-        return m_fontNameCache.value(fontFileName);
-    }
+//    if (m_fontNameCache.contains(fontFileName)) {
+//        return m_fontNameCache.value(fontFileName);
+//    }
 
-    QString fontFamilyName = "";
-    QFile fontFile(fontFileName);
-    if (!fontFile.open(QIODevice::ReadOnly)) {
-        qDebug() << "Open font file error";
-        return fontFamilyName;
-    }
+//    QString fontFamilyName = "";
+//    QFile fontFile(fontFileName);
+//    if (!fontFile.open(QIODevice::ReadOnly)) {
+//        qDebug() << "Open font file error";
+//        return fontFamilyName;
+//    }
 
-    int loadedFontID = QFontDatabase::addApplicationFontFromData(fontFile.readAll());
-    QStringList loadedFontFamilies = QFontDatabase::applicationFontFamilies(loadedFontID);
-    if (!loadedFontFamilies.empty()) {
-        fontFamilyName = loadedFontFamilies.at(0);
-    }
-    fontFile.close();
+//    int loadedFontID = QFontDatabase::addApplicationFontFromData(fontFile.readAll());
+//    QStringList loadedFontFamilies = QFontDatabase::applicationFontFamilies(loadedFontID);
+//    if (!loadedFontFamilies.empty()) {
+//        fontFamilyName = loadedFontFamilies.at(0);
+//    }
+//    fontFile.close();
 
-    m_fontNameCache.insert(fontFileName, fontFamilyName);
-    return fontFamilyName;
-}
+//    m_fontNameCache.insert(fontFileName, fontFamilyName);
+//    return fontFamilyName;
+//}
 
-QFont Utils::loadFontBySizeAndWeight(QString fontFamily, int fontSize, int fontWeight)
-{
-    QFont font(fontFamily);
-    font.setPixelSize(fontSize);
-    font.setWeight(fontWeight);
+///**
+// * @brief Utils::loadFontBySizeAndWeight
+// * @param fontFamily 字体格式
+// * @param fontSize 字体大小
+// * @param fontWeight 粗细
+// * @return
+// * 设置传入字体的大小和粗细
+// */
+//QFont Utils::loadFontBySizeAndWeight(QString fontFamily, int fontSize, int fontWeight)
+//{
+//    QFont font(fontFamily);
+//    font.setPixelSize(fontSize);
+//    font.setWeight(fontWeight);
 
-    return font;
-}
+//    return font;
+//}
 
-QString Utils::fromSpecialEncoding(const QString &inputStr)
-{
-    qDebug() << "inputStr is:" << inputStr << endl;
-    bool bFlag = inputStr.contains(QRegExp("[\\x4e00-\\x9fa5]+"));
-    if (bFlag) {
-        return inputStr;
-    }
+///**
+// * @brief Utils::fromSpecialEncoding
+// * @param inputStr
+// * @return 返回文本的 utf-8 格式
+// * 把文本转成utf-8编码格式
+// */
+//QString Utils::fromSpecialEncoding(const QString &inputStr)
+//{
+//    qDebug() << "inputStr is:" << inputStr << endl;
+//    bool bFlag = inputStr.contains(QRegExp("[\\x4e00-\\x9fa5]+"));
+//    if (bFlag) {
+//        return inputStr;
+//    }
 
-    QTextCodec *codec = QTextCodec::codecForName("utf-8");
-    if (codec) {
-        QString unicodeStr = codec->toUnicode(inputStr.toLatin1());
-        qDebug() << "convert to unicode:" << unicodeStr << endl;
-        return unicodeStr;
-    } else {
-        return inputStr;
-    }
-}
+//    QTextCodec *codec = QTextCodec::codecForName("utf-8");
+//    if (codec) {
+//        QString unicodeStr = codec->toUnicode(inputStr.toLatin1());
+//        qDebug() << "convert to unicode:" << unicodeStr << endl;
+//        return unicodeStr;
+//    } else {
+//        return inputStr;
+//    }
+//}
 
-/*** 返回title映射字段，目前主要用于＂控制中心＂跳转 2020-06-29 11:19:37 wangml ***/
+/**
+ * @brief Utils::translateTitle 返回title映射字段，目前主要用于＂控制中心＂跳转
+ * @param titleUS
+ * @return
+ * @note 除简体中文外,其他暂时都当英文.
+ */
 QString Utils::translateTitle(const QString &titleUS)
 {
     QString strRet = titleUS;
     int nCount = sizeof(languageArr) / sizeof(languageArr[0]);
     for (int i = 0; i < nCount; i++) {
         if (languageArr[i][0] == titleUS) {
-            if (QLocale::system().name() == "zh_CN") {
+            if (QLocale::system().name() == "zh_CN" || QLocale::system().name() == "zh_HK" || QLocale::system().name() == "zh_TW") {
                 strRet = languageArr[i][1];
-                return strRet;
-            } else if (QLocale::system().name() == "en_US") {
-                strRet = languageArr[i][2];
-                return strRet;
             } else {
-                break;
+                strRet = languageArr[i][2];
             }
         }
     }
     return strRet;
+}
+
+/**
+ * @brief Utils::launcherInterface
+ * @return 返回系统所有应用列表
+ */
+QList<AppInfo> Utils::launcherInterface()
+{
+    QList<AppInfo> applist;
+
+    qRegisterMetaType<ReplyStruct>("ReplyStruct");
+    qDBusRegisterMetaType<ReplyStruct>();
+    qRegisterMetaType<QList<ReplyStruct>>("a");
+    qDBusRegisterMetaType<QList<ReplyStruct>>();
+
+    QDBusInterface iface(kLauncherService,
+                         kLauncherIface,
+                         kLauncherService,
+                         QDBusConnection::sessionBus());
+    //root权限下此dbus接口无效...
+    if (!iface.isValid()) {
+        qDebug() << qPrintable(QDBusConnection::sessionBus().lastError().message());
+        return applist;
+//        exit(1);
+    }
+
+    QDBusReply<QList<ReplyStruct>> reply = iface.callWithArgumentList(QDBus::CallMode::AutoDetect, "GetAllItemInfos", QVariantList());
+    qDebug() << reply.error().message();
+
+    if (reply.isValid()) {
+        QList<ReplyStruct> list;
+        list = reply.value();
+
+        for (int var = 0; var < list.size(); ++var) {
+            AppInfo app;
+            app.key = list.at(var).m_key;
+            app.name = list.at(var).m_name;
+            app.desktop = list.at(var).m_desktop;
+            app.category_id = list.at(var).m_categoryId;
+            app.installed_time = list.at(var).m_installedTime;
+            applist.append(app);
+            //qDebug() << "dbusMsg ---- : " << var << list.at(var).m_name;
+        }
+//        qDebug() << applist.size() << "applist " <<  applist;
+        return applist;
+    } else {
+        qDebug() << "GetAllItemInfos fail! " << reply.error().message();
+        return applist;
+    }
+}
+
+/**
+ * @brief Utils::getSystemManualList
+ * @return　返回系统中存在帮助手册的应用列表
+ */
+QStringList Utils::getSystemManualList()
+{
+    const QHash<QString, QString> kAppNameMap = {
+        {"org.deepin.flatdeb.deepin-calendar", "dde-calendar"},
+        {"org.deepin.flatdeb.deepin-music", "deepin-music"},
+        {"org.deepin.flatdeb.deepin-screenshot", "deepin-screenshot"},
+        {"org.deepin.flatdeb.deepin-voice-recorder", "deepin-voice-recorder"},
+        {"deepin-cloud-print-configurator", "deepin-cloud-print"},
+        {"org.deepin.flatdeb.deepin-image-viewer", "deepin-image-viewer"},
+        {"deepin-cloud-scan-configurator", "deepin-cloud-scan"},
+        {"org.deepin.flatdeb.deepin-movie", "deepin-movie"},
+        {"org.deepin.flatdeb.deepin-screen-recorder", "deepin-screen-recorder"},
+        {"org.deepin.flatdeb.deepin-calculator", "deepin-calculator"},
+        {"com.deepin.editor", "deepin-editor"},
+        {"org.deepin.scaner", "scaner"},
+    };
+
+    QStringList app_list_;
+    const AppInfoList list = launcherInterface();
+    const QStringList dir_entry = QDir(getSystemManualDir()).entryList();
+
+    QMultiMap<qlonglong, AppInfo> appMap;
+    for (int var = 0; var < list.size(); ++var) {
+        appMap.insert(list.at(var).installed_time, list.at(var));
+    }
+    //安装时间相同时,按名称排序
+    QList<AppInfo> listApp = sortAppList(appMap);
+
+    for (int i = 0; i < listApp.size(); ++i) {
+        const QString app_name = kAppNameMap.value(listApp.at(i).key, listApp.at(i).key);
+        if ((dir_entry.indexOf(app_name) != -1) && app_list_.indexOf(app_name) == -1) {
+            app_list_.append(app_name);
+        }
+        const QString deepin_app_id = GetDeepinManualId(listApp.at(i).desktop);
+        if (deepin_app_id == app_name && app_list_.indexOf(app_name) == -1) {
+            app_list_.append(app_name);
+        }
+    }
+    // Add "dde" by hand, as it has no desktop file.
+    if (dir_entry.contains("dde")) {
+        app_list_.append("dde");
+    }
+    // Remove youdao-dict if current locale is not Simplified Chinese.
+    if (!QLocale().name().startsWith("zh")) {
+        app_list_.removeAll("youdao-dict");
+    }
+
+    qDebug() << "exist app list: " << app_list_ << ", count:" << app_list_.size();
+    return app_list_;
+}
+
+/**
+ * @brief Utils::getSystemManualDir
+ * @return
+ * @note　获取系统版本信息
+ */
+QString Utils::getSystemManualDir()
+{
+    QString strMANUAL_DIR = DMAN_MANUAL_DIR;
+    int nType = Dtk::Core::DSysInfo::deepinType();
+    if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
+        strMANUAL_DIR += "/server";
+    } else if (Dtk::Core::DSysInfo::DeepinPersonal == (Dtk::Core::DSysInfo::DeepinType)nType) {
+        strMANUAL_DIR += "/personal";
+    } else {
+        if (Dtk::Core::DSysInfo::isCommunityEdition()) {
+            strMANUAL_DIR += "/community";
+        } else {
+            strMANUAL_DIR += "/professional";
+        }
+    }
+    return strMANUAL_DIR;
+}
+
+/**
+ * @brief Utils::sortAppList
+ * @param map
+ * @return 返回排序后的ａｐｐｌｉｓｔ
+ * @note appList　排序,如果安装时间相同时按字母前后排序
+ */
+QList<AppInfo> Utils::sortAppList(QMultiMap<qlonglong, AppInfo> map)
+{
+    QMapIterator<qlonglong, AppInfo> it(map);
+    QList<AppInfo> listEnd;
+    QList<AppInfo> listtmp;
+    qlonglong longlongtmp = 0;
+    while (it.hasNext()) {
+        it.next();
+        if (it.value().key == map.first().key) {
+            listtmp.append(it.value());
+            longlongtmp = it.key();
+            continue;
+        }
+        if (it.key() == longlongtmp) {
+            listtmp.append(it.value());
+        } else if (listtmp.size() != 0 && it.key() != longlongtmp) {
+            AppInfo m;
+            for (int i = 0; i < listtmp.size(); ++i) {
+                for (int j = 0; j < listtmp.size() - 1; ++j) {
+                    if (listtmp.at(j).key > listtmp.at(j + 1).key) {
+                        m = listtmp.at(j);
+                        listtmp[j] = listtmp[j + 1];
+                        listtmp[j + 1] = m;
+                    }
+                }
+            }
+            listEnd.append(listtmp);
+            listtmp.clear();
+            longlongtmp = it.key();
+            listtmp.append(it.value());
+        }
+    }
+    if (!listtmp.isEmpty()) {
+        QList<AppInfo> temp;
+        {
+            AppInfo m;
+            for (int i = 0; i < listtmp.size(); ++i) {
+                for (int j = 0; j < listtmp.size() - 1; ++j) {
+                    if (listtmp.at(j).key > listtmp.at(j + 1).key) {
+                        m = listtmp.at(j);
+                        listtmp[j] = listtmp[j + 1];
+                        listtmp[j + 1] = m;
+                    }
+                }
+            }
+            temp.append(listtmp);
+        }
+        listEnd.append(temp);
+    }
+    return listEnd;
+}
+
+/**
+ * @brief Utils::hasSelperSupport
+ * @return
+ * @note 判断是否需要显示服务与支持功能
+ */
+bool Utils::hasSelperSupport()
+{
+    int nType = Dtk::Core::DSysInfo::deepinType();
+    if (Dtk::Core::DSysInfo::DeepinProfessional == (Dtk::Core::DSysInfo::DeepinType)nType) {
+        const QStringList list = getSystemManualList();
+        if (list.contains("uos-service-support")) {
+//            return true;
+            return false;//阉割掉服务与支持
+        }
+    }
+    return false;
 }
 
 ExApplicationHelper *ExApplicationHelper::instance()
@@ -281,40 +590,39 @@ QColor dark_qpalette[QPalette::NColorRoles] {
 };
 
 QColor light_dpalette[DPalette::NColorTypes] {
-    QColor(),                                    // NoType
-    QColor(255, 255, 255, CAST_INT(0.2 * 255)),  // ItemBackground
-//    QColor("#001A2E"),                           // TextTitle
-//    QColor("#8AA1B4"),                           // TextTips
-//    QColor("#FF5736"),                           // TextWarning
-//    QColor("#0082FA"),                           // TextLively
-//    QColor("#25b7ff"),                           // LightLively
-    QColor(0x00, 0x1A, 0x2E),                         // TextTitle
-    QColor(0x8A, 0xA1, 0xB4),                         // TextTips
-    QColor(0xFF, 0x57, 0x36),                         // TextWarning
-    QColor(0x00, 0x82, 0xFA),                         // TextLively
-    QColor(0x25, 0xb7, 0xff),                         // LightLively
+    QColor(), // NoType
+    QColor(255, 255, 255, CAST_INT(0.2 * 255)), // ItemBackground
+    //    QColor("#001A2E"),                           // TextTitle
+    //    QColor("#8AA1B4"),                           // TextTips
+    //    QColor("#FF5736"),                           // TextWarning
+    //    QColor("#0082FA"),                           // TextLively
+    //    QColor("#25b7ff"),                           // LightLively
+    QColor(0x00, 0x1A, 0x2E), // TextTitle
+    QColor(0x8A, 0xA1, 0xB4), // TextTips
+    QColor(0xFF, 0x57, 0x36), // TextWarning
+    QColor(0x00, 0x82, 0xFA), // TextLively
+    QColor(0x25, 0xb7, 0xff), // LightLively
 
-    QColor(235, 235, 235, CAST_INT(0 * 255)),    // DarkLively
-    QColor(235, 235, 235, CAST_INT(0 * 255))     // FrameBorder
+    QColor(235, 235, 235, CAST_INT(0 * 255)), // DarkLively
+    QColor(235, 235, 235, CAST_INT(0 * 255)) // FrameBorder
 };
 
 QColor dark_dpalette[DPalette::NColorTypes] {
-    QColor(),                                // NoType
-    QColor(25, 25, 25, CAST_INT(0 * 255)),   // ItemBackground
-//    QColor("#C0C6D4"),                       // TextTitle
-//    QColor("#6D7C88"),                       // TextTips
-//    QColor("#FF5736"),                       // TextWarning
-//    QColor("#0082FA"),                       // TextLively
-//    QColor("#0056c1"),                       // LightLively
-    QColor(0xC0, 0xC6, 0xD4),                     // TextTitle
-    QColor(0x6D, 0x7C, 0x88),                     // TextTips
-    QColor(0xFF, 0x57, 0x36),                     // TextWarning
-    QColor(0x00, 0x82, 0xFA),                     // TextLively
-    QColor(0x00, 0x56, 0xc1),                     // LightLively
-    QColor(25, 25, 25, CAST_INT(0 * 255)),   // DarkLively
-    QColor(25, 25, 25, CAST_INT(0.5 * 255))  // FrameBorder
+    QColor(), // NoType
+    QColor(25, 25, 25, CAST_INT(0 * 255)), // ItemBackground
+    //    QColor("#C0C6D4"),                       // TextTitle
+    //    QColor("#6D7C88"),                       // TextTips
+    //    QColor("#FF5736"),                       // TextWarning
+    //    QColor("#0082FA"),                       // TextLively
+    //    QColor("#0056c1"),                       // LightLively
+    QColor(0xC0, 0xC6, 0xD4), // TextTitle
+    QColor(0x6D, 0x7C, 0x88), // TextTips
+    QColor(0xFF, 0x57, 0x36), // TextWarning
+    QColor(0x00, 0x82, 0xFA), // TextLively
+    QColor(0x00, 0x56, 0xc1), // LightLively
+    QColor(25, 25, 25, CAST_INT(0 * 255)), // DarkLively
+    QColor(25, 25, 25, CAST_INT(0.5 * 255)) // FrameBorder
 };
-
 
 DPalette ExApplicationHelper::standardPalette(DGuiApplicationHelper::ColorType type) const
 {
@@ -374,15 +682,13 @@ void ExApplicationHelper::setPalette(QWidget *widget, const DPalette &palette)
     widget->setPalette(palette);
 }
 
-void ExApplicationHelper::resetPalette(QWidget *widget)
+ExApplicationHelper::ExApplicationHelper()
 {
-    widget->setProperty("_d_set_palette", QVariant());
-    widget->setAttribute(Qt::WA_SetPalette, false);
 }
 
-ExApplicationHelper::ExApplicationHelper() {}
-
-ExApplicationHelper::~ExApplicationHelper() {}
+ExApplicationHelper::~ExApplicationHelper()
+{
+}
 
 bool ExApplicationHelper::eventFilter(QObject *watched, QEvent *event)
 {

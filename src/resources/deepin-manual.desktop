@@ -10,6 +10,7 @@ StartupNotify=true
 Terminal=false
 Type=Application
 X-Deepin-Vendor=deepin
+TZ='Asia/Shanghai'
 
 # Translations:
 # Do not manually modify!
@@ -43,6 +44,7 @@ GenericName[tr]=Kılavuz
 GenericName[uk]=Підручник
 GenericName[zh_CN]=帮助手册
 GenericName[zh_TW]=說明書
+GenericName[zh_HK]=幫助手冊
 Keywords[ar]=مستندات؛معلومات؛دليل؛مساعدة؛
 Keywords[ast]=documentación;información;manual;ayuda;
 Keywords[bg]=documentation;information;manual;help;
@@ -73,6 +75,7 @@ Keywords[tr]=dokümantasyon;belgeler;bilgi;kılavuz;rehber;yardım;
 Keywords[uk]=documentation;information;manual;help;документація;відомості;підручник;довідка;
 Keywords[zh_CN]=文档;信息;manual;帮助;
 Keywords[zh_TW]=documentation;information;manual;help;文件;資訊;手冊;說明書;幫助;協助;說明;
+Keywords[zh_HK]=文檔;訊息;幫助手冊;幫助;
 Name[am_ET]=የ ዲፕኢን መምርሪያ
 Name[ar]=دليل ديبين
 Name[ast]=Deepin Manual
@@ -108,4 +111,5 @@ Name[ug]= قوللانمىسى  Deepin
 Name[uk]=Підручник Deepin
 Name[zh_CN]=深度帮助手册
 Name[zh_TW]=Deepin 說明書
+Name[zh_HK]=Deepin 幫助手冊
 

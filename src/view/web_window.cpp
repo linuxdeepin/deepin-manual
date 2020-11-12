@@ -16,11 +16,9 @@
  */
 
 #include "view/web_window.h"
-#include "base/command.h"
 #include "base/consts.h"
 #include "base/utils.h"
 #include "controller/search_manager.h"
-#include "dbus/dbus_consts.h"
 #include "view/i18n_proxy.h"
 #include "view/image_viewer_proxy.h"
 #include "view/manual_proxy.h"
@@ -33,53 +31,45 @@
 #include "view/widget/search_edit.h"
 #include "controller/config_manager.h"
 
+#include <DPlatformWindowHandle>
+#include <DTitlebar>
+
 #include <QApplication>
-#include <QDBusConnection>
-#include <QFileInfo>
-#include <QMouseEvent>
 #include <QShortcut>
 #include <QShowEvent>
 #include <QWebChannel>
 #include <QWindow>
 #include <QX11Info>
 
-#include <DApplicationHelper>
-#include <DButtonBox>
-#include <DLog>
-#include <DPlatformWindowHandle>
-#include <DTitlebar>
-#include <QStyleOptionViewItem>
+#include <QRegion>
+#include <QFocusEvent>
+
+#include "base/utils.h"
+
 
 DWIDGET_USE_NAMESPACE
-
-namespace dman {
 
 namespace {
 
 const int kSearchDelay = 200;
-static constexpr const char *CONFIG_WINDOW_WIDTH = "window_width";
-static constexpr const char *CONFIG_WINDOW_HEIGHT = "window_height";
-static constexpr const char *CONFIG_WINDOW_INFO = "window_info";
 
-}  // namespace
+} // namespace
 
 WebWindow::WebWindow(QWidget *parent)
     : Dtk::Widget::DMainWindow(parent)
-    , app_name_()
-    , title_name_("")
-    , search_timer_()
-    , keyword_("")
+    , search_timer_(new QTimer)
     , first_webpage_loaded_(true)
+    , m_spinner(new DSpinner(this))
 {
     // 使用 redirectContent 模式，用于内嵌 x11 窗口时能有正确的圆角效果
     Dtk::Widget::DPlatformWindowHandle::enableDXcbForWindow(this, true);
-
     search_timer_.setSingleShot(true);
+    setAttribute(Qt::WA_InputMethodEnabled, true);
+
     this->initUI();
     this->initConnections();
     this->initShortcuts();
     this->initDBus();
-
     qApp->installEventFilter(this);
 }
 
@@ -89,72 +79,306 @@ WebWindow::~WebWindow()
         delete completion_window_;
         completion_window_ = nullptr;
     }
-
     if (image_viewer_proxy_ != nullptr) {
         image_viewer_proxy_->deleteLater();
         image_viewer_proxy_ = nullptr;
     }
-
     if (search_proxy_ != nullptr) {
         search_proxy_->deleteLater();
         search_proxy_ = nullptr;
     }
-
     if (theme_proxy_ != nullptr) {
         theme_proxy_->deleteLater();
         theme_proxy_ = nullptr;
     }
-
     if (manual_proxy_ != nullptr) {
         manual_proxy_->deleteLater();
         manual_proxy_ = nullptr;
     }
-
     if (title_bar_proxy_ != nullptr) {
         title_bar_proxy_->deleteLater();
         title_bar_proxy_ = nullptr;
     }
-
     if (settings_proxy_ != nullptr) {
         settings_proxy_->deleteLater();
         settings_proxy_ = nullptr;
     }
+    if (search_manager_ != nullptr) {
+        search_manager_->deleteLater();
+        search_manager_ = nullptr;
+    }
+    if (image_viewer_ != nullptr) {
+        image_viewer_->deleteLater();
+        image_viewer_ = nullptr;
+    }
+    if (i18n_proxy != nullptr) {
+        i18n_proxy->deleteLater();
+        i18n_proxy = nullptr;
+    }
+    if (buttonBox != nullptr) {
+        buttonBox->deleteLater();
+        buttonBox = nullptr;
+    }
+    if (search_edit_ != nullptr) {
+        search_edit_->deleteLater();
+        search_edit_ = nullptr;
+    }
 }
 
-const QString &WebWindow::appName() const
+/**
+ * @brief WebWindow::initWeb 初始化web页面. 当主窗口show()完成后执行, 减少启动时间..
+ */
+void WebWindow::initWeb()
 {
-    return app_name_;
+    qDebug() << Q_FUNC_INFO;
+    initWebView();
+    setSearchManager();
+    const QFileInfo info(kIndexPage);
+    web_view_->load(QUrl::fromLocalFile(info.absoluteFilePath()));
 }
 
-void WebWindow::setSearchManager(SearchManager *search_manager)
+/**
+ * @brief WebWindow::updateBtnBox 更新当前按钮组状态
+ */
+void WebWindow::updateBtnBox()
 {
-    search_manager_ = search_manager;
+    if (m_forwardButton->isEnabled() || m_backButton->isEnabled()) {
+        buttonBox->show();
+    } else {
+        buttonBox->hide();
+    }
+}
 
+/**
+ * @brief WebWindow::cancelTextChanged
+ * @note 取消文本选中状态，用于在帮助手册首页时不显示＂Ｃopy＂按钮
+ * 每次切换页面时取消显示menu，当selectionChanged触发时设置显示menu
+ */
+void WebWindow::cancelTextChanged()
+{
+    web_view_->setContextMenuPolicy(Qt::NoContextMenu);
+}
+
+/**
+ * @brief WebWindow::openjsPage
+ * @param app_name
+ * @param title_name
+ */
+void WebWindow::openjsPage(const QString &app_name, const QString &title_name)
+{
+    if (bFinishChannel) {
+        if (app_name.isEmpty()) {
+            web_view_->page()->runJavaScript("index()");
+        } else {
+            QString real_path(app_name);
+            if (real_path.contains('/')) {
+                // Open markdown file with absolute path.
+                QFileInfo info(real_path);
+                real_path = info.canonicalFilePath();
+                web_view_->page()->runJavaScript(QString("open('%1')").arg(real_path));
+            } else {
+                // Open system manual.
+                web_view_->page()->runJavaScript(QString("openTitle('%1','%2')").arg(app_name, title_name));
+            }
+        }
+    }
+}
+
+/**
+ * @brief WebWindow::setAppProperty 设置参数属性
+ * @param appName   模块名称
+ * @param titleName 标题名称
+ * @param keyword   搜索关键字
+ */
+void WebWindow::setAppProperty(const QString &appName, const QString &titleName, const QString &keyword)
+{
+    keyword_ = keyword;
+    app_name_ = appName;
+    title_name_ = titleName;
+}
+
+/**
+ * @brief WebWindow::slot_ThemeChanged
+ * @note 修改背景颜色，　减少WebEngeineView 控件在黑色主题下的明显闪屏效果
+ */
+void WebWindow::slot_ThemeChanged()
+{
+    DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
+    if (themeType == DGuiApplicationHelper::DarkType) {
+        web_view_->page()->setBackgroundColor(QColor(0x28, 0x28, 0x28));
+    }
+}
+
+/**
+ * @brief WebWindow::slot_HelpSupportTriggered  服务与支持触发槽
+ */
+void WebWindow::slot_HelpSupportTriggered()
+{
+    QDBusInterface interface("com.deepin.dde.ServiceAndSupport",
+                                 "/com/deepin/dde/ServiceAndSupport",
+                                 "com.deepin.dde.ServiceAndSupport");
+
+    QDBusReply<void> reply = interface.call("ShowCustomerChat");
+    if (reply.isValid()) {
+        qDebug() << "call com.deepin.dde.ServiceAndSupport success";
+    } else {
+        qDebug() << "call com.deepin.dde.ServiceAndSupport failed";
+    }
+}
+
+/**
+ * @brief WebWindow::closeEvent
+ * @param event
+ * 重写关闭事件，保存窗口大小
+ */
+void WebWindow::closeEvent(QCloseEvent *event)
+{
+    //保存窗口大小
+    saveWindowSize();
+    QWidget::closeEvent(event);
+}
+
+/**
+ * @brief WebWindow::inputMethodEvent
+ * @param e
+ * 中文输入法支持
+ */
+void WebWindow::inputMethodEvent(QInputMethodEvent *e)
+{
+    if (!e->commitString().isEmpty() && search_edit_->lineEdit()->text() != e->commitString()) {
+        search_edit_->lineEdit()->setText(e->commitString());
+        search_edit_->lineEdit()->setFocus();
+    }
+    QWidget::inputMethodEvent(e);
+}
+
+/**
+ * @brief WebWindow::inputMethodQuery
+ * @param prop
+ * @return
+ * 中文输入法支持
+ */
+QVariant WebWindow::inputMethodQuery(Qt::InputMethodQuery prop) const
+{
+    switch (prop) {
+    case Qt::ImEnabled:
+        return true;
+    case Qt::ImCursorRectangle:
+    default:
+        ;
+    }
+
+    return QWidget::inputMethodQuery(prop);
+}
+
+/**
+ * @brief WebWindow::eventFilter
+ * @param watched 事件对象
+ * @param event
+ * @return
+ * 事件过滤器
+ */
+bool WebWindow::eventFilter(QObject *watched, QEvent *event)
+{
+    if (event->type() == QEvent::MouseButtonRelease && qApp->activeWindow() == this &&
+            watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
+        QRect rect = hasWidgetRect(search_edit_);
+        if (web_view_ && web_view_->selectedText().isEmpty() && !rect.contains(QCursor::pos())) {
+            this->setFocus();
+        }
+    }
+    if (event->type() == QEvent::KeyPress && qApp->activeWindow() == this &&
+            watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
+        QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
+        if (keyEvent->key() == Qt::Key_V
+                && keyEvent->modifiers().testFlag(Qt::ControlModifier)) {
+            const QString &clipboardText = QApplication::clipboard()->text();
+            // support Ctrl+V shortcuts.
+            if (!clipboardText.isEmpty()) {
+                search_edit_->lineEdit()->setFocus();
+            }
+        } else if (keyEvent->key() == Qt::Key_C
+                   && keyEvent->modifiers().testFlag(Qt::ControlModifier)) {
+            QApplication::clipboard()->setText(web_view_->selectedText());
+        } else if (((keyEvent->key() <= Qt::Key_Z && keyEvent->key() >= Qt::Key_A)
+                    || (keyEvent->key() <= Qt::Key_9 && keyEvent->key() >= Qt::Key_0)
+                    || (keyEvent->key() == Qt::Key_Space))
+                   && keyEvent->modifiers() == Qt::NoModifier) {
+            search_edit_->lineEdit()->setFocus();
+        } else if (keyEvent->key() == Qt::Key_Enter || keyEvent->key() == Qt::Key_Return) {
+            if (search_edit_->lineEdit()->hasFocus()) {
+                //搜索框内容为空时，按回车键回到未搜索页面
+                if (search_edit_->lineEdit()->text().isEmpty()) {
+                    emit manual_proxy_->searchEditTextisEmpty();
+                    qDebug() << "emit searchEditTextisEmpty";
+                }
+            }
+        } else if (keyEvent->key() == Qt::Key_A
+                   && keyEvent->modifiers().testFlag(Qt::ControlModifier)) {
+            web_view_->setFocus(Qt::ActiveWindowFocusReason);
+        }
+    }
+
+    // Filters mouse press event only.
+    if (event->type() == QEvent::MouseButtonPress && qApp->activeWindow() == this &&
+            watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
+        QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
+        //        this->web_view_->update();
+        if (mouseEvent->button()) {
+            switch (mouseEvent->button()) {
+            case Qt::BackButton: {
+                qDebug() << "eventFilter back";
+                emit title_bar_proxy_->backwardButtonClicked();
+                break;
+            }
+            case Qt::ForwardButton: {
+                qDebug() << "eventFilter forward";
+                emit title_bar_proxy_->forwardButtonClicked();
+                break;
+            }
+            case Qt::MiddleButton: {
+                return true;
+            }
+            default: {
+            }
+            }
+            if (!hasWidgetRect(search_edit_).contains(mapFromGlobal(QCursor::pos()))) {
+                completion_window_->hide();
+            }
+        }
+    }
+
+    //过滤字体改变事件
+    if (event->type() == QEvent::FontChange && watched == this) {
+        if (this->settings_proxy_) {
+            qDebug() << "eventFilter QEvent::FontChange";
+            auto fontInfo = this->fontInfo();
+            emit this->settings_proxy_->fontChangeRequested(fontInfo.family(),
+                                                            fontInfo.pixelSize());
+        }
+    }
+    return QObject::eventFilter(watched, event);
+
+}
+
+/**
+ * @brief WebWindow::setSearchManager
+ * 创建搜索管理类对象，绑定信号槽
+ */
+void WebWindow::setSearchManager()
+{
+    search_manager_ = new SearchManager(this);
     connect(search_manager_, &SearchManager::searchContentResult, search_proxy_,
             &SearchProxy::onContentResult);
     connect(search_manager_, &SearchManager::searchContentMismatch, search_proxy_,
             &SearchProxy::mismatch);
-
     connect(search_manager_, &SearchManager::searchAnchorResult, this,
             &WebWindow::onSearchAnchorResult);
 }
 
-void WebWindow::setAppName(const QString &app_name)
-{
-    app_name_ = app_name;
-    qDebug() << "appName:" << app_name << endl;
-    if (0 == app_name.length()) {
-        this->slot_ButtonHide();
-    }
-}
-
-void WebWindow::setSearchKeyword(const QString &keyword)
-{
-    keyword_ = keyword;
-}
-
 /**
  * @brief WebWindow::initConnections
+ * 绑定信号槽
  */
 void WebWindow::initConnections()
 {
@@ -165,7 +389,6 @@ void WebWindow::initConnections()
     connect(search_edit_, &SearchEdit::upKeyPressed, completion_window_,
             &SearchCompletionWindow::goUp);
     connect(search_edit_, &SearchEdit::focusChanged, this, &WebWindow::onSearchEditFocusOut);
-
     connect(completion_window_, &SearchCompletionWindow::resultClicked, this,
             &WebWindow::onSearchResultClicked);
     connect(completion_window_, &SearchCompletionWindow::searchButtonClicked, this,
@@ -173,14 +396,16 @@ void WebWindow::initConnections()
     connect(&search_timer_, &QTimer::timeout, this, &WebWindow::onSearchTextChangedDelay);
 
     connect(this, &WebWindow::manualSearchByKeyword, this, &WebWindow::onManualSearchByKeyword);
-    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged, this, &WebWindow::onThemeChange);
-
 }
 
+/**
+ * @brief WebWindow::onManualSearchByKeyword
+ * @param keyword
+ * 关键字搜索
+ */
 void WebWindow::onManualSearchByKeyword(const QString &keyword)
 {
     qDebug() << "WebWindow: onManualSearchByKeyword keyword:" << keyword;
-
     this->onSearchContentByKeyword(keyword);
 }
 
@@ -206,29 +431,14 @@ void WebWindow::onACtiveColorChanged(QString, QMap<QString, QVariant>map, QStrin
     }
 }
 
-void WebWindow::onThemeChange(DGuiApplicationHelper::ColorType themeType)
-{
-    Q_UNUSED(themeType)
-    if (web_view_) {
-        QColor fillColor = DGuiApplicationHelper::instance()->applicationPalette().highlight().color();
-        web_view_->page()->runJavaScript(QString("setHashWordColor('%1')").arg(fillColor.name()));
-    } else {
-        QTimer::singleShot(300, this, [&]() {
-            QColor fillColor = DGuiApplicationHelper::instance()->applicationPalette().highlight().color();
-            web_view_->page()->runJavaScript(QString("setHashWordColor('%1')").arg(fillColor.name()));
-        });
-    }
-}
-
 /**
  * @brief WebWindow::initUI
  * @note 初始化窗口
  */
-
 void WebWindow::initUI()
 {
+    //搜索结果框可移至主窗口创建完成后
     completion_window_ = new SearchCompletionWindow();
-    completion_window_->hide();
 
     // 初始化标题栏
     QHBoxLayout *buttonLayout = new QHBoxLayout;
@@ -262,46 +472,35 @@ void WebWindow::initUI()
     QFrame *buttonFrame = new QFrame(this);
     buttonFrame->setLayout(buttonLayout);
 
-    search_edit_ = new SearchEdit(this);
+    search_edit_ = new SearchEdit;
     DFontSizeManager::instance()->bind(search_edit_, DFontSizeManager::T6, QFont::Normal);
     search_edit_->setObjectName("SearchEdit");
     search_edit_->setFixedSize(350, 44);
     search_edit_->setPlaceHolder(QObject::tr("Search"));
-    search_edit_->setFocus();
-
-
+    if (Utils::hasSelperSupport()) {
+        DMenu *pMenu = new DMenu;
+        QAction *pHelpSupport = new QAction(QObject::tr("Support"));
+        pMenu->addAction(pHelpSupport);
+        this->titlebar()->setMenu(pMenu);
+        connect(pHelpSupport, &QAction::triggered, this, &WebWindow::slot_HelpSupportTriggered);
+    }
     this->titlebar()->addWidget(buttonFrame, Qt::AlignLeft);
     this->titlebar()->addWidget(search_edit_, Qt::AlignCenter);
-
-    this->titlebar()->setSeparatorVisible(true);
+    this->titlebar()->setSeparatorVisible(false);
     this->titlebar()->setIcon(QIcon::fromTheme("deepin-manual"));
-    this->titlebar()->setFocusPolicy(Qt::StrongFocus);
-
-    search_proxy_ = new SearchProxy(this);
-    title_bar_proxy_ = new TitleBarProxy(this);
-    connect(m_backButton, &DButtonBoxButton::clicked, title_bar_proxy_,
-            &TitleBarProxy::backwardButtonClicked);
-    connect(m_forwardButton, &DButtonBoxButton::clicked, title_bar_proxy_,
-            &TitleBarProxy::forwardButtonClicked);
-    connect(title_bar_proxy_, &TitleBarProxy::buttonShowSignal, this, &WebWindow::slot_ButtonShow);
-
-    //获取窗口上次保存尺寸,加载上次保存尺寸.
-    QSettings *setting = ConfigManager::getInstance()->getSettings();
-    setting->beginGroup(CONFIG_WINDOW_INFO);
-    int saveWidth = setting->value(CONFIG_WINDOW_WIDTH).toInt();
-    int saveHeight = setting->value(CONFIG_WINDOW_HEIGHT).toInt();
-    setting->endGroup();
-    qDebug() << "load window_width: " << saveWidth;
-    qDebug() << "load window_height: " << saveHeight;
-    // 如果配置文件没有数据
-    if (saveWidth == 0 || saveHeight == 0) {
-        saveWidth = 1024;
-        saveHeight = 680;
-    }
-    resize(QSize(saveWidth, saveHeight));
-
-
+    //隐藏title阴影
+    this->setTitlebarShadowEnabled(false);
+    //键盘盲打
+    search_edit_->setFocus();
     this->setFocusPolicy(Qt::ClickFocus);
+
+    QWidget *spinnerPage = new QWidget;
+    QVBoxLayout *spinnerLayout = new QVBoxLayout(spinnerPage);
+    m_spinner->setFixedSize(50, 50);
+    spinnerLayout->addWidget(m_spinner, 0, Qt::AlignCenter);
+    this->setCentralWidget(spinnerPage);
+    m_spinner->start();
+
 }
 
 /**
@@ -316,15 +515,14 @@ void WebWindow::initWebView()
     settings_proxy_ = new SettingsProxy(this);
     i18n_proxy = new I18nProxy(this);
     manual_proxy_ = new ManualProxy(this);
-    //将当前存在的applist传入到数据库管理类中.
-    if (search_manager_) {
-        QStringList strlist = manual_proxy_->getSystemManualList();
-        emit search_manager_->installApps(strlist);
-    }
+    search_proxy_ = new SearchProxy(this);
 
+    title_bar_proxy_ = new TitleBarProxy(this);
+    connect(m_backButton, &DButtonBoxButton::clicked, title_bar_proxy_,
+            &TitleBarProxy::backwardButtonClicked);
+    connect(m_forwardButton, &DButtonBoxButton::clicked, title_bar_proxy_,
+            &TitleBarProxy::forwardButtonClicked);
     web_view_ = new QWebEngineView;
-    this->setCentralWidget(web_view_);
-    web_view_->hide();
     web_view_->setAcceptDrops(false);
     slot_ThemeChanged();
     QWebChannel *web_channel = new QWebChannel;
@@ -338,51 +536,32 @@ void WebWindow::initWebView()
     web_view_->page()->setWebChannel(web_channel);
 
     connect(web_view_->page(), &QWebEnginePage::loadFinished, this, &WebWindow::onWebPageLoadFinished);
+    connect(manual_proxy_, &ManualProxy::channelInit, this, &WebWindow::onChannelFinish);
     connect(manual_proxy_, &ManualProxy::WidgetLower, this, &WebWindow::lower);
+    connect(manual_proxy_, &ManualProxy::supportBeClick, this, &WebWindow::slot_HelpSupportTriggered);
+    connect(search_edit_, &SearchEdit::onClickedClearBtn, manual_proxy_,
+            &ManualProxy::searchEditTextisEmpty);
+    connect(search_proxy_, &SearchProxy::setKeyword, this, &WebWindow::onSetKeyword);
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
             theme_proxy_, &ThemeProxy::slot_ThemeChange);
-    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
-            this, &WebWindow::slot_ThemeChanged);
-}
+    //应用启动时，页面加载成功时间获取
+    connect(manual_proxy_, &ManualProxy::startFinish, this, &WebWindow::manualStartFinish);
+//    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
+//            this, &WebWindow::slot_ThemeChanged);
 
-void WebWindow::setTitleName(const QString &title_name)
-{
-    title_name_ = title_name;
-}
-
-/**
- * @brief WebWindow::cancelTextChanged
- * @note 取消文本选中状态，用于在帮助手册首页时不显示＂Ｃopy＂按钮
- * 每次切换页面时取消显示menu，当selectionChanged触发时设置显示menu
- */
-void WebWindow::cancelTextChanged()
-{
-    web_view_->setContextMenuPolicy(Qt::NoContextMenu);
+    manual_proxy_->setApplicationState("dde");
 }
 
 /**
- * @brief WebWindow::updateBtnBox 更新当前按钮组状态
- */
-void WebWindow::updateBtnBox()
-{
-    if (m_forwardButton->isEnabled() || m_backButton->isEnabled()) {
-        buttonBox->show();
-    } else {
-        buttonBox->hide();
-    }
-}
-
-/**
- * @brief WebWindow::saveWindowSize 记录最后一个窗口关闭时的大小
+ * @brief WebWindow::saveWindowSize 记录最后一个正常窗口的大小
  */
 void WebWindow::saveWindowSize()
 {
     QSettings *setting = ConfigManager::getInstance()->getSettings();
-    setting->beginGroup(CONFIG_WINDOW_INFO);
-    setting->setValue(CONFIG_WINDOW_WIDTH, width());
-    setting->setValue(CONFIG_WINDOW_HEIGHT, height());
+    setting->beginGroup(kConfigWindowInfo);
+    setting->setValue(kConfigWindowWidth, width());
+    setting->setValue(kConfigWindowHeight, height());
     setting->endGroup();
-    qDebug() << __func__ << "save window_Size:" << width() << ", " << height();
 }
 
 /**
@@ -406,6 +585,16 @@ void WebWindow::initShortcuts()
         }
     });
 
+//    //设置全选切换快捷键
+//    QShortcut *sCheckAll = new QShortcut(this);
+//    sCheckAll->setKey(tr("Ctrl+A"));
+//    sCheckAll->setContext(Qt::WindowShortcut);
+//    sCheckAll->setAutoRepeat(false);
+//    connect(sCheckAll, &QShortcut::activated, this, [this] {
+
+//        web_view_->setFocus();
+//    });
+
     //设置搜索快捷键  后期将支持盲打功能,故不需要此快捷键
     QShortcut *scSearch = new QShortcut(this);
     scSearch->setKey(tr("Ctrl+F"));
@@ -424,13 +613,12 @@ void WebWindow::initDBus()
 {
     QDBusConnection senderConn = QDBusConnection::connectToBus(QDBusConnection::SessionBus, "Sender");
     if (!senderConn.connect(
-                "com.deepin.daemon.Appearance",  // sender's service name
+                "com.deepin.daemon.Appearance",     // sender's service name
                 "/com/deepin/daemon/Appearance",    // sender's path name
                 "org.freedesktop.DBus.Properties",  // interface
-                "PropertiesChanged",                                   // sender's signal name
-                this,                                           // receiver
+                "PropertiesChanged",                // sender's signal name
+                this,                               // receiver
                 SLOT(onACtiveColorChanged(QString, QMap<QString, QVariant>, QStringList)))) {
-
         qDebug() << "connectToBus()::connect()  PropertiesChanged failed";
     } else {
         qDebug() << "connectToBus()::connect()  PropertiesChanged success";
@@ -438,7 +626,8 @@ void WebWindow::initDBus()
 }
 
 /**
- * @brief WebWindow::setHashWordColor 调用ｊｓ接口，改变活动色
+ * @brief WebWindow::setHashWordColor
+ * 调用ｊｓ接口，改变活动色
  */
 void WebWindow::setHashWordColor()
 {
@@ -449,7 +638,8 @@ void WebWindow::setHashWordColor()
 }
 
 /**
- * @brief WebWindow::settingContextMenu 初始化鼠标选中内容右键菜单Menu.
+ * @brief WebWindow::settingContextMenu
+ * 初始化鼠标选中内容右键菜单Menu.
  */
 void WebWindow::settingContextMenu()
 {
@@ -458,7 +648,7 @@ void WebWindow::settingContextMenu()
         web_view_->setContextMenuPolicy(Qt::CustomContextMenu);
     });
     QMenu *menu = new QMenu(this);
-    QAction *action =  menu->addAction(QObject::tr("Copy"));
+    QAction *action = menu->addAction(QObject::tr("Copy"));
     connect(web_view_, &QWidget::customContextMenuRequested, this, [ = ]() {
         if (!web_view_->selectedText().isEmpty()) {
             menu->exec(QCursor::pos());
@@ -469,37 +659,23 @@ void WebWindow::settingContextMenu()
     });
 }
 
-void WebWindow::showEvent(QShowEvent *event)
+/**
+ * @brief WebWindow::hasWidgetRect
+ * @return 返回控件Rect位置
+ * 根据父控件位置确定子控件位置
+ */
+QRect WebWindow::hasWidgetRect(QWidget *widget)
 {
-    QWidget::showEvent(event);
-    if (!is_index_loaded_) {
-        is_index_loaded_ = true;
-        //延迟显示webView，200ms主要用于web_view_->load();
-        QTimer::singleShot(200, this, [this] {
-            qDebug() << Q_FUNC_INFO;
-            emit this->shown(this);
-            this->initWebView();
-            const QFileInfo info(kIndexPage);
-            web_view_->load(QUrl::fromLocalFile(info.absoluteFilePath()));
-        });
+    QRect rect;
+    QWidget *tmpWidget = widget;
+    while (tmpWidget) {
+        rect.setX(rect.x() + tmpWidget->x());
+        rect.setY(rect.y() + tmpWidget->y());
+        tmpWidget = tmpWidget->parentWidget();
     }
-}
-//void WebWindow::inputMethodEvent(QInputMethodEvent *e)
-//{
-//    if (!e->commitString().isEmpty()) {
-//        search_edit_->lineEdit()->setText(e->commitString());
-//        search_edit_->lineEdit()->setFocus();
-//    }
-//    QWidget::inputMethodEvent(e);
-//}
-
-void WebWindow::closeEvent(QCloseEvent *event)
-{
-    emit this->closed(app_name_);
-    //保存窗口大小
-    saveWindowSize();
-
-    QWidget::closeEvent(event);
+    rect.setWidth(widget->width());
+    rect.setHeight(widget->height());
+    return rect;
 }
 
 /**
@@ -511,19 +687,19 @@ void WebWindow::onSearchContentByKeyword(const QString &keyword)
 {
     qDebug() << "calling keyword is:" << keyword << endl;
     QString key(keyword);
-    const QString searchKey = key.remove('\n').remove('\r').remove("\r\n");
-    //发送信号，通过Ｓearch_db类执行搜索
-    emit search_manager_->searchContent(searchKey);
+    const QString searchKey = key.remove('\n').remove('\r').remove("\r\n").remove(QRegExp("\\s"));
+    search_manager_->searchContent(searchKey);
 
     QString base64Key = QString(searchKey.toUtf8().toBase64());
-    qDebug() << base64Key << endl;
+    qDebug() << " base64Key " << base64Key << endl;
 
     // 调用ｊｓ接口显示搜索内容
     web_view_->page()->runJavaScript(QString("openSearchPage('%1')").arg(base64Key));
 }
 
 /**
- * @brief WebWindow::onSearchEditFocusOut 搜索框失去焦点
+ * @brief WebWindow::onSearchEditFocusOut
+ * 搜索框失去焦点
  */
 void WebWindow::onSearchEditFocusOut()
 {
@@ -538,10 +714,9 @@ void WebWindow::onSearchEditFocusOut()
  */
 void WebWindow::onSearchButtonClicked()
 {
-    QString text = search_edit_->text();
-
+    QString textTemp = search_edit_->text();
+    const QString text = textTemp.remove('\n').remove('\r').remove("\r\n");
     this->onSearchContentByKeyword(text);
-
     completion_window_->hide();
 }
 
@@ -552,12 +727,7 @@ void WebWindow::onSearchButtonClicked()
  */
 void WebWindow::onSearchResultClicked(const SearchAnchorResult &result)
 {
-    web_view_->page()->runJavaScript(QString("open('%1', '%2', '%3', '%4')")
-                                     .arg(result.app_name
-                                          , result.anchorId
-                                          , result.anchor
-                                          , result.app_display_name));
-
+    web_view_->page()->runJavaScript(QString("open('%1', '%2', '%3')").arg(result.app_name, result.anchorId, result.anchor));
 }
 
 /**
@@ -567,7 +737,9 @@ void WebWindow::onSearchResultClicked(const SearchAnchorResult &result)
  */
 void WebWindow::onSearchTextChanged(const QString &text)
 {
-    if (text.size() >= 1) {
+    if (bIsSetKeyword) {
+        bIsSetKeyword = false;
+    } else if (text.size() >= 1) {
         search_timer_.stop();
         search_timer_.start(kSearchDelay);
     } else {
@@ -575,26 +747,40 @@ void WebWindow::onSearchTextChanged(const QString &text)
     }
 }
 
+/**
+ * @brief WebWindow::onSearchTextChangedDelay
+ * 获取searchEidt中的文本，过滤特殊字符与中隔，设置searchButton显示文本
+ */
 void WebWindow::onSearchTextChangedDelay()
 {
     QString textTemp = search_edit_->text();
-    const QString text = textTemp.remove('\n').remove('\r').remove("\r\n");
+    const QString text = textTemp.remove('\n').remove('\r').remove("\r\n").remove(QRegExp("\\s"));
     // 过滤特殊字符
-    if (text.isEmpty() || text.contains(QRegExp("[+-_$!@#%^&\\(\\)]"))) {
+    if (text.size() < 1 || text.toLower().contains(QRegExp("[+-_$!@#%^&\\(\\)]"))) {
         return;
     }
     completion_window_->setKeyword(text);
+
     //执行搜索
-    emit search_manager_->searchAnchor(text);
+    if (search_manager_) {
+        emit search_manager_->searchAnchor(text);
+    }
 }
 
+/**
+ * @brief WebWindow::onTitleBarEntered
+ * 焦点在SearchEdit中，按回车时调用 ，调用onEnterPressed()进行搜索操作
+ */
 void WebWindow::onTitleBarEntered()
 {
     QString textTemp = search_edit_->text();
-    const QString text = textTemp.remove('\n').remove('\r').remove("\r\n");
+    const QString text = textTemp.remove('\n').remove('\r').remove("\r\n").remove(QRegExp("\\s"));
     if (text.size() >= 1) {
         completion_window_->onEnterPressed();
     }
+    //    else if (textTemp.isEmpty()) {
+    //        m_backButton->click();
+    //    }
 }
 
 /**
@@ -604,60 +790,85 @@ void WebWindow::onTitleBarEntered()
  */
 void WebWindow::onWebPageLoadFinished(bool ok)
 {
-    //改变ｊs颜色
+    Q_UNUSED(ok)
+    m_spinner->stop();
+    m_spinner->hide();
+    this->setCentralWidget(web_view_);
+    disconnect(web_view_->page(), &QWebEnginePage::loadFinished, this, &WebWindow::onWebPageLoadFinished);
+}
+
+/**
+ * @brief WebWindow::onChannelFinish
+ * 完成channel对象与Qt对象绑定后回调
+ */
+void WebWindow::onChannelFinish()
+{
+    bFinishChannel = true;
     setHashWordColor();
     settingContextMenu();
-    qDebug() << Q_FUNC_INFO << " onWebPageLoadFinished :" << ok;
-    if (ok) {
-        QString qsthemetype = "Null";
-        DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
-        if (themeType == DGuiApplicationHelper::LightType) {
-            qsthemetype = "LightType";
-        } else if (themeType == DGuiApplicationHelper::DarkType) {
-            qsthemetype = "DarkType";
-        }
-        web_view_->page()->runJavaScript(QString("setTheme('%1')").arg(qsthemetype));
-        if (app_name_.isEmpty()) {
-            web_view_->page()->runJavaScript("index()");
+    //设置主题
+    QString qsthemetype = "Null";
+    DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
+    if (themeType == DGuiApplicationHelper::LightType) {
+        qsthemetype = "LightType";
+    } else if (themeType == DGuiApplicationHelper::DarkType) {
+        qsthemetype = "DarkType";
+    }
+    web_view_->page()->runJavaScript(QString("setTheme('%1')").arg(qsthemetype));
+
+    //设置打开页面
+    if (app_name_.isEmpty()) {
+        web_view_->page()->runJavaScript("index()");
+    } else {
+        QString real_path(app_name_);
+        if (real_path.contains('/')) {
+            // Open markdown file with absolute path.
+            QFileInfo info(real_path);
+            real_path = info.canonicalFilePath();
+            web_view_->page()->runJavaScript(QString("open('%1')").arg(real_path));
         } else {
-            QString real_path(app_name_);
-            if (real_path.contains('/')) {
-                // Open markdown file with absolute path.
-                QTimer::singleShot(150, this, [&]() {
-                    QFileInfo info(real_path);
-                    real_path = info.canonicalFilePath();
-                    web_view_->page()->runJavaScript(QString("open('%1')").arg(real_path));
-                });
-            } else {
-                // Open system manual.
-                QTimer::singleShot(150, this, [&]() {
-                    web_view_->page()->runJavaScript(QString("open('%1')").arg(app_name_));
-                });
-            }
-
-            if (!title_name_.isEmpty()) {
-                web_view_->page()->runJavaScript(QString("linkTitle('%1')").arg(title_name_));
-            }
+            web_view_->page()->runJavaScript(QString("openTitle('%1','%2')").arg(app_name_, title_name_));
         }
-
-        QTimer::singleShot(100, this, [&]() {
-            web_view_->show();
-            if (first_webpage_loaded_) {
-                first_webpage_loaded_ = false;
-                if (keyword_.length() > 0) {
-                    qDebug() << "first_webpage_loaded_ manualSearchByKeyword:" << keyword_;
-                    emit this->manualSearchByKeyword(keyword_);
-                }
-            }
-
-            if (this->settings_proxy_) {
-                auto fontInfo = this->fontInfo();
-                emit this->settings_proxy_->fontChangeRequested(fontInfo.family(),
-                                                                fontInfo.pixelSize());
-            }
-        });
+    }
+    if (first_webpage_loaded_) {
+        first_webpage_loaded_ = false;
+        if (keyword_.length() > 0) {
+            emit this->manualSearchByKeyword(keyword_);
+        }
+    }
+    //设置字体
+    if (this->settings_proxy_) {
+        QFontInfo fontInfo = this->fontInfo();
+        emit this->settings_proxy_->fontChangeRequested(fontInfo.family(),
+                                                        fontInfo.pixelSize());
     }
 }
+
+/**
+ * @brief WebWindow::onSetKeyword JS根据页面关键字回调设置搜索框
+ * @param keyword 关键字
+ * @note keyword 可能存在转换后的字符,所以需要将字符反向转换回去.
+ */
+void WebWindow::onSetKeyword(const QString &keyword)
+{
+    bIsSetKeyword = true;
+    QTimer::singleShot(40, [ = ]() {
+        bIsSetKeyword = false;
+    });
+
+    if (search_edit_) {
+        if (keyword.isEmpty()) {
+            search_edit_->clearEdit();
+        } else {
+            QString strTemp = keyword;
+            if (strTemp.contains("=-=")) {
+                strTemp.replace("=-=", "%");
+            }
+            search_edit_->setText(strTemp);
+        }
+    }
+}
+
 /**
  * @brief WebWindow::onSearchAnchorResult 搜索结果框内容显示
  * @param keyword 搜索关键字
@@ -665,7 +876,7 @@ void WebWindow::onWebPageLoadFinished(bool ok)
  */
 void WebWindow::onSearchAnchorResult(const QString &keyword, const SearchAnchorResultList &result)
 {
-    // Ignore this signal if current manual window is not present.
+    //搜索结果不存在，忽略这个信号
     if (keyword != completion_window_->keyword()) {
         return;
     }
@@ -688,116 +899,3 @@ void WebWindow::onSearchAnchorResult(const QString &keyword, const SearchAnchorR
         completion_window_->setFocusPolicy(Qt::StrongFocus);
     }
 }
-
-/**
- * @brief WebWindow::keyPressEvent
- * @param event
- * @note 支持外层窗口ctrl+v直接定位到搜索框同时粘贴, 支持A~Z,0~9 space盲打.
- */
-void WebWindow::keyPressEvent(QKeyEvent *event)
-{
-    if (event->key() == Qt::Key_V &&
-            event->modifiers().testFlag(Qt::ControlModifier)) {
-        const QString &clipboardText = QApplication::clipboard()->text();
-        // support Ctrl+V shortcuts.
-        if (!clipboardText.isEmpty()) {
-            search_edit_->lineEdit()->setText(clipboardText);
-            search_edit_->lineEdit()->setFocus();
-        }
-    } else if (((event->key() <= Qt::Key_Z && event->key() >= Qt::Key_A) ||
-                (event->key() <= Qt::Key_9 && event->key() >= Qt::Key_0) ||
-                (event->key() == Qt::Key_Space)) &&
-               event->modifiers() == Qt::NoModifier) {
-        search_edit_->lineEdit()->setFocus();
-    }
-    QWidget::keyPressEvent(event);
-}
-
-/**
- * @brief WebWindow::eventFilter 事件过滤
- * @param watched
- * @param event
- * @return
- */
-bool WebWindow::eventFilter(QObject *watched, QEvent *event)
-{
-    // 过滤鼠标事件
-    if (event->type() == QEvent::MouseButtonPress && qApp->activeWindow() == this &&
-            watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
-        QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
-        this->web_view_->update();
-        if (mouseEvent->button()) {
-            switch (mouseEvent->button()) {
-            case Qt::BackButton: {
-                qDebug() << "eventFilter back";
-                emit title_bar_proxy_->backwardButtonClicked();
-                break;
-            }
-            case Qt::ForwardButton: {
-                qDebug() << "eventFilter forward";
-                emit title_bar_proxy_->forwardButtonClicked();
-                break;
-            }
-            case Qt::MiddleButton: {
-                return true;
-            }
-            default: {
-            }
-            if (!search_edit_->geometry().contains(this->mapFromGlobal(QCursor::pos()))) {
-                completion_window_->hide();
-            }
-            }
-        }
-    }
-
-    //过滤字体改变事件
-    if (event->type() == QEvent::FontChange && watched == this) {
-        if (this->settings_proxy_) {
-            qDebug() << "eventFilter QEvent::FontChange";
-            auto fontInfo = this->fontInfo();
-            emit this->settings_proxy_->fontChangeRequested(fontInfo.family(),
-                                                            fontInfo.pixelSize());
-        }
-    }
-
-    return QObject::eventFilter(watched, event);
-}
-
-/**
- * @brief WebWindow::slot_ButtonHide
- * @note 隐藏前进/后退按钮
- */
-void WebWindow::slot_ButtonHide()
-{
-//    QTimer::singleShot(20, [ = ]() {
-//        qDebug() << "slot_ButtonHide";
-//        buttonBox->hide();
-//    });
-    buttonBox->hide();
-}
-
-/**
- * @brief WebWindow::slot_ButtonShow
- * @note 显示前进/后退按钮
- */
-void WebWindow::slot_ButtonShow()
-{
-    QTimer::singleShot(20, this, [ = ]() {
-        qDebug() << "slot_ButtonShow";
-        buttonBox->show();
-    });
-}
-/**
- * @brief WebWindow::slot_ThemeChanged
- * @note 修改背景颜色，　减少WebEngeineView 控件在黑色主题下的明显闪屏效果
- */
-void WebWindow::slot_ThemeChanged()
-{
-    DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
-    if (themeType == DGuiApplicationHelper::LightType)
-        web_view_->page()->setBackgroundColor(QColor(0xF8, 0xF8, 0xF8));
-    else if (themeType == DGuiApplicationHelper::DarkType) {
-        web_view_->page()->setBackgroundColor(QColor(0x28, 0x28, 0x28));
-    }
-}
-}  // namespace dman

@@ -18,43 +18,19 @@
 #include "controller/window_manager.h"
 #include "base/consts.h"
 #include "base/utils.h"
-#include "controller/search_manager.h"
 #include "dbus/dbus_consts.h"
 #include "view/web_window.h"
-#include <unistd.h>
 #include "controller/config_manager.h"
 
-
-#include <DLog>
 #include <QApplication>
 #include <QDesktopWidget>
-#include <QFile>
-
-namespace dman {
-
-namespace {
-
-const int kWinMinWidth = 800;
-const int kWinMinHeight = 600;
-const int kWinOffset = 30;
-
-static constexpr const char *CONFIG_WINDOW_INFO = "window_info";
-static constexpr const char *CONFIG_WINDOW_WIDTH = "window_width";
-static constexpr const char *CONFIG_WINDOW_HEIGHT = "window_height";
-
-const char kEnableDomStorageFlush[] = "--enable-aggressive-domstorage-flushing";
-const char kDisableGpu[] = "--disable-gpu";
-const char kEnableLogging[] = "--enable-logging";
-const char kLogLevel[] = "--log-level";
-
-}  // namespace
 
 #define WM_SENDER_NAME "Sender"
+const int kWinMinWidth = 800;
+const int kWinMinHeight = 600;
 
 WindowManager::WindowManager(QObject *parent)
     : QObject(parent)
-    , windows_()
-    , search_manager_(nullptr)
     , curr_app_name_("")
     , curr_keyword_("")
     , curr_title_name_("")
@@ -63,17 +39,17 @@ WindowManager::WindowManager(QObject *parent)
 
 WindowManager::~WindowManager()
 {
-    QHashIterator<QString, WebWindow *> iterator(windows_);
-
-    while (iterator.hasNext()) {
-        iterator.next();
-        WebWindow *web = iterator.value();
-        delete web;
-        web = nullptr;
-    }
-
 }
 
+void WindowManager::setStartTime(qint64 startTime)
+{
+    this->appStartTime = startTime;
+}
+
+/**
+ * @brief WindowManager::initDBus
+ * 初始化前后端通信Dbus,服务端创建在前端.....wait
+ */
 void WindowManager::initDBus()
 {
     QDBusConnection dbusConn =
@@ -83,8 +59,8 @@ void WindowManager::initDBus()
         return;
     }
 
-    if (!dbusConn.registerService(dman::kManualSearchService + QString(WM_SENDER_NAME)) ||
-            !dbusConn.registerObject(dman::kManualSearchIface + QString(WM_SENDER_NAME), this)) {
+    if (!dbusConn.registerService(kManualSearchService + QString(WM_SENDER_NAME))
+            || !dbusConn.registerObject(kManualSearchIface + QString(WM_SENDER_NAME), this)) {
         qCritical() << WM_SENDER_NAME << " failed to register dbus service!";
 
         return;
@@ -93,40 +69,106 @@ void WindowManager::initDBus()
     }
 }
 
+/**
+ * @brief WindowManager::initWebWindow 初始化主窗口
+ */
+void WindowManager::initWebWindow()
+{
+    window = new WebWindow;
+    window->setAppProperty(curr_app_name_, curr_title_name_, curr_keyword_);
+    connect(window, &WebWindow::manualStartFinish, this, &WindowManager::onAppStartTimeCount);
+    setWindow(window);
+    window->show();
+
+    QTimer::singleShot(100, [ = ]() {
+        initDBus();
+        SendMsg(QString::number(window->winId()));
+        window->initWeb();
+    });
+
+}
+
+/**
+ * @brief WindowManager::activeOrInitWindow
+ * 初始化窗口管理，应用启动时进行判断，如果窗口已经创建则激活
+ */
+void WindowManager::activeOrInitWindow()
+{
+    qDebug() << Q_FUNC_INFO;
+    // 单页面该锁可能无用......
+    QMutexLocker locker(&_mutex);
+    /*** 只要有窗口就不再创建新窗口 2020-06-22 16:57:50 wangml ***/
+    if (window != nullptr) {
+        this->setWindow(window);
+        window->show();
+        window->raise();
+        window->activateWindow();
+        window->openjsPage(curr_app_name_, curr_title_name_);
+        return;
+    }
+    initWebWindow();
+}
+
+/**
+ * @brief WindowManager::SendMsg 通过dbus接口来实现前后端通信,
+ * @param msg 信息内容
+ */
 void WindowManager::SendMsg(const QString &msg)
 {
     QDBusConnection dbusConn =
         QDBusConnection::connectToBus(QDBusConnection::SessionBus, WM_SENDER_NAME);
     qDebug() << "start send keyword:" << QString::number(qApp->applicationPid());
     QDBusMessage dbusMsg = QDBusMessage::createSignal(
-                               dman::kManualSearchIface + QString(WM_SENDER_NAME),
-                               dman::kManualSearchService + QString(WM_SENDER_NAME), "SendWinInfo");
+                               kManualSearchIface + QString(WM_SENDER_NAME),
+                               kManualSearchService + QString(WM_SENDER_NAME), "SendWinInfo");
 
     dbusMsg << QString::number(qApp->applicationPid()) + "|" + msg;
 
     //将进程号+窗口WinId拼接后发给dman-search后台进程
     bool isSuccess = dbusConn.send(dbusMsg);
     if (isSuccess) {
-        qDebug() << "send success";
+        qDebug() << Q_FUNC_INFO << " sendMsg success";
     } else {
-        qDebug() << "send failed";
+        qDebug() << Q_FUNC_INFO << "sendMsg failed";
     }
 }
 
-void WindowManager::RecvMsg(const QString &data)
+/**
+ * @brief WindowManager::moveWindow 设置window窗口属性,UI居中显示
+ * @param window 主页面对象
+ * @note 设置窗口最小尺寸,设置窗口大小,设置窗口居中
+ */
+void WindowManager::setWindow(WebWindow *window)
 {
-    qDebug() << "sync:" << data;
+    //获取窗口上次保存尺寸,加载上次保存尺寸.
+    QSettings *setting = ConfigManager::getInstance()->getSettings();
+    setting->beginGroup(kConfigWindowInfo);
+    int saveWidth = setting->value(kConfigWindowWidth).toInt();
+    int saveHeight = setting->value(kConfigWindowHeight).toInt();
+    setting->endGroup();
+    // 如果配置文件没有数据
+    if (saveWidth == 0 || saveHeight == 0) {
+        saveWidth = 1024;
+        saveHeight = 680;
+    }
+
+    //设置window窗口属性
+    window->resize(saveWidth, saveHeight);
+    window->setMinimumSize(kWinMinWidth, kWinMinHeight);
+    window->move((QApplication::desktop()->width() - saveWidth) / 2, (QApplication::desktop()->height() - saveHeight) / 2);
 }
 
+/**
+ * @brief WindowManager::onNewAppOpen
+ * 已存在dman时,再重启窗口时,通知后端将已存在的dman窗口active.
+ */
 void WindowManager::onNewAppOpen()
 {
-    qDebug() << "slot onNewAppOpen";
-    qDebug() << qApp->applicationPid();
-
+    qDebug() << Q_FUNC_INFO << qApp->applicationPid();
     QDBusMessage msg =
-        QDBusMessage::createMethodCall(dman::kManualSearchService + QString("Receiver"),
-                                       dman::kManualSearchIface + QString("Receiver"),
-                                       dman::kManualSearchService, "OnNewWindowOpen");
+        QDBusMessage::createMethodCall(kManualSearchService,
+                                       kManualSearchIface,
+                                       kManualSearchService, "OnNewWindowOpen");
 
     msg << QString::number(qApp->applicationPid());
     QDBusMessage response = QDBusConnection::sessionBus().call(msg);
@@ -140,135 +182,42 @@ void WindowManager::onNewAppOpen()
     }
 }
 
-void WindowManager::initWebWindow()
-{
-    WebWindow *window = new WebWindow;
-    connect(window, &WebWindow::closed, this, &WindowManager::onWindowClosed);
-    connect(window, &WebWindow::shown, this, &WindowManager::onWindowShown);
-    windows_.insert(curr_app_name_, window);
-    moveWindow(window);
-    window->show();
-    window->activateWindow();
-}
-
-void WindowManager::activeExistingWindow()
-{
-    qDebug() << "openManual contains:" << curr_app_name_;
-    WebWindow *window = windows_.value(curr_app_name_);
-    if (window != nullptr) {
-        window->show();
-        window->raise();
-        window->activateWindow();
-
-        SendMsg(QString::number(window->winId()));
-    }
-
-    if (curr_keyword_.length() > 0) {
-        emit window->manualSearchByKeyword(curr_keyword_);
-    }
-}
-
-void WindowManager::activeOrInitWindow(const QString &app_name)
-{
-    qDebug() << Q_FUNC_INFO << app_name;
-    QMutexLocker locker(&_mutex);
-    if (windows_.contains(app_name)) {
-        activeExistingWindow();
-        return;
-    }
-    initWebWindow();
-}
-
+/**
+ * @brief WindowManager::openManual F1快捷启动
+ * @param app_name 应用名称
+ * @param title_name 标签名称
+ */
 void WindowManager::openManual(const QString &app_name, const QString &title_name)
 {
     curr_app_name_ = app_name;
     curr_keyword_ = "";
     curr_title_name_ = title_name;
-    activeOrInitWindow(app_name);
-    qDebug() << Q_FUNC_INFO << app_name << curr_keyword_;
+    activeOrInitWindow();
 }
 
+/**
+ * @brief WindowManager::openManualWithSearch
+ * @param app_name
+ * @param keyword
+ * @note 供　manual_open_proxy::search()接口调用
+ */
 void WindowManager::openManualWithSearch(const QString &app_name, const QString &keyword)
 {
     curr_app_name_ = app_name;
     curr_keyword_ = keyword;
-    activeOrInitWindow(app_name);
+    activeOrInitWindow();
     qDebug() << Q_FUNC_INFO << app_name << curr_keyword_;
 }
 
-SearchManager *WindowManager::currSearchManager()
+/**
+ * @brief WindowManager::onAppStartTimeCount
+ * @param startfinshTime 通过js触发事件获取的系统启动结束时间
+ * 启动时间统计,打印qinfo
+ */
+void WindowManager::onAppStartTimeCount(qint64 startfinshTime)
 {
-    if (nullptr == search_manager_) {
-        qDebug() << "start init SearchManager" << endl;
-        search_manager_ = new SearchManager(this);
-        initDBus();
-    }
-
-    return search_manager_;
+    qDebug() << "startTime ---> " << this->appStartTime;
+    qDebug() << "finshTime ---> " << startfinshTime;
+    QString logInfo = QString("[GRABPOINT] POINT-01 startduration=%1%2").arg(startfinshTime - this->appStartTime).arg("ms");
+    qInfo() << logInfo;
 }
-
-void WindowManager::moveWindow(WebWindow *window)
-{
-    window->setMinimumSize(kWinMinWidth, kWinMinHeight);
-    const QPoint pos = this->newWindowPosition();
-    window->move(pos);
-}
-
-QPoint WindowManager::newWindowPosition()
-{
-    // If there is no window created, move new window to center of screen.
-    // Else stack window one after another.
-    QSettings *setting = ConfigManager::getInstance()->getSettings();
-    setting->beginGroup(CONFIG_WINDOW_INFO);
-    int saveWidth = setting->value(CONFIG_WINDOW_WIDTH).toInt();
-    int saveHeight = setting->value(CONFIG_WINDOW_HEIGHT).toInt();
-    setting->endGroup();
-    // 如果配置文件没有数据
-    if (saveWidth == 0 || saveHeight == 0) {
-        saveWidth = 1024;
-        saveHeight = 680;
-    }
-
-    QDesktopWidget *desktop = QApplication::desktop();
-    Q_ASSERT(desktop != nullptr);
-    const QRect geometry = desktop->availableGeometry(QCursor::pos());
-    if (windows_.isEmpty() || windows_.size() == 1) {
-        const QPoint center = geometry.center();
-        return QPoint(center.x() - saveWidth / 2, center.y() - saveHeight / 2);
-    } else {
-        last_new_window_pos_.setX(last_new_window_pos_.x() + kWinOffset);
-        last_new_window_pos_.setY(last_new_window_pos_.y() + kWinOffset);
-        if ((last_new_window_pos_.x() + saveWidth >= geometry.width()) ||
-                (last_new_window_pos_.y() + saveHeight >= geometry.height())) {
-            last_new_window_pos_.setX(0);
-            last_new_window_pos_.setY(0);
-        }
-        return last_new_window_pos_;
-    }
-}
-
-void WindowManager::onWindowClosed(const QString &app_name)
-{
-    WebWindow *window = windows_.value(app_name);
-    SendMsg(QString::number(window->winId()) + "|close");
-    windows_.remove(app_name);
-}
-
-void WindowManager::onWindowShown(WebWindow *window)
-{
-    // Add a placeholder record.
-//    windows_.insert(curr_app_name_, nullptr);
-//    windows_.insert(curr_app_name_, window);
-    search_manager_ = currSearchManager();
-    window->setSearchManager(search_manager_);
-    window->setAppName(curr_app_name_);
-    window->setTitleName(curr_title_name_);
-
-    if (curr_keyword_.length() > 0) {
-        window->setSearchKeyword(curr_keyword_);
-    }
-
-    SendMsg(QString::number(window->winId()));
-}
-
-}  // namespace dman

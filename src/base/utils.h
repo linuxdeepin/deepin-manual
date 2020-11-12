@@ -21,13 +21,11 @@
 #define UTILS_H
 
 #include "sys/time.h"
-
-#include <QHash>
-#include <QObject>
-#include <QWidget>
+#include "dbus/dbusvariant/app_info.h"
 
 #include <DApplicationHelper>
-#include <DPalette>
+
+#include <QWidget>
 
 #define dApp (static_cast<DApplication *>(QCoreApplication::instance()))
 
@@ -41,22 +39,33 @@ public:
     Utils(QObject *parent = nullptr);
     ~Utils();
 
-    enum FontType { SourceHanSansMedium, SourceHanSansNormal, DefautFont };
+    enum FontType { SourceHanSansMedium,
+                    SourceHanSansNormal,
+                    DefautFont };
 
-    static struct timeval getTime();
-    static struct timeval showDiffTime(struct timeval tpStart);
+//    static struct timeval getTime();
+//    static struct timeval showDiffTime(struct timeval tpStart);
 
     static QHash<QString, QPixmap> m_imgCacheHash;
     static QHash<QString, QString> m_fontNameCache;
 
-    static QString getQssContent(const QString &filePath);
-    static bool isFontMimeType(const QString &filePath);
-    static QString suffixList();
+//    static QString getQssContent(const QString &filePath);
+//    static bool isFontMimeType(const QString &filePath);
+//    static QString suffixList();
     static QPixmap renderSVG(const QString &filePath, const QSize &size);
-    static QString loadFontFamilyByType(FontType fontType);
-    static QFont loadFontBySizeAndWeight(QString fontFamily, int fontSize, int fontWeight);
-    static QString fromSpecialEncoding(const QString &inputStr);
+//    static QString loadFontFamilyByType(FontType fontType);
+//    static QFont loadFontBySizeAndWeight(QString fontFamily, int fontSize, int fontWeight);
+//    static QString fromSpecialEncoding(const QString &inputStr);
     static QString translateTitle(const QString &titleUS);
+
+    //获取所有应用列表
+    static QList<AppInfo> launcherInterface();
+
+    //获取系统应用中有帮助手册的应用列表
+    static QStringList getSystemManualList();
+    static QString getSystemManualDir();
+    static QList<AppInfo> sortAppList(QMultiMap<qlonglong, AppInfo> map);
+    static bool hasSelperSupport();
 };
 
 class ExApplicationHelper : public DGuiApplicationHelper
@@ -69,7 +78,6 @@ public:
     DPalette standardPalette(DGuiApplicationHelper::ColorType type) const;
     DPalette palette(const QWidget *widget, const QPalette &base = QPalette()) const;
     void setPalette(QWidget *widget, const DPalette &palette);
-    void resetPalette(QWidget *widget);
 
 private:
     ExApplicationHelper();

@@ -23,12 +23,14 @@
 /*
  * Proxy class for interface com.deepin.Manual.Open
  */
-class ManualOpenInterface: public QDBusAbstractInterface
+class ManualOpenInterface : public QDBusAbstractInterface
 {
     Q_OBJECT
 public:
     static inline const char *staticInterfaceName()
-    { return "com.deepin.Manual.Open"; }
+    {
+        return "com.deepin.Manual.Open";
+    }
 
 public:
     ManualOpenInterface(const QString &service, const QString &path, const QDBusConnection &connection, QObject *parent = nullptr);
@@ -61,10 +63,10 @@ Q_SIGNALS: // SIGNALS
 };
 
 namespace com {
-  namespace deepin {
-    namespace Manual {
-      typedef ::ManualOpenInterface Open;
-    }
-  }
+namespace deepin {
+namespace Manual {
+typedef ::ManualOpenInterface Open;
 }
+} // namespace deepin
+} // namespace com
 #endif

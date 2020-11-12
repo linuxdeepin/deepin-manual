@@ -13,12 +13,12 @@
    width: calc(100% - 164px);
    margin: 10px 0px 10px 0px;
    border-radius: 8px;
+   user-select: text !important;
    
    #article_bg {
     margin: 0px 10px 0px 10px;
     background-color: var(--nav-background-color);
     border-radius: 8px;
-
     .read {
       position: absolute;
       width: 90%;
@@ -35,16 +35,22 @@
       
       color: var(--article-read-word-color);
       outline: 0px;
-
-      // .divbox
-      // {
-      //       margin-top: 10px;
-      //       a{
-      //           float:right;
-      //           color: red;
-      //       }
-      // }
-
+      .version-info {
+        margin-top: 20px;     
+        border-top: 1px solid var(--index-h2-color);
+        padding-top: 10px;
+        color: #414d68;
+        span {
+          padding-right: 10px;
+        }
+        a{
+          float:right;
+          color:#0081FF;
+        }
+        .spanbox{
+          display: none;      //暂时将历史版本href隐藏
+        }
+      }
       h2 {
         font-weight: normal;
         font-size: 1.5rem;
@@ -79,7 +85,7 @@
               zoom: 0.5/$i;
             }
           }
-          margin-top: 26px;
+          margin-top: 10px;
           max-width: 99%;
           cursor: pointer;
         }
@@ -92,7 +98,7 @@
               zoom: 0.5/$i;
             }
           }
-          margin-top: 26px;
+          margin-top: 10px;
           max-width: 99%;
           cursor: pointer;
           border-radius: 4px;
@@ -136,11 +142,11 @@
         font-weight: bold;
         color: #757575;
         cursor: pointer;
-        &[href^='http'] {
-          &:after {
-            content: '🔗';
-          }
-        }
+        // &[href^='http'] {
+        //   &:after {
+        //     content: '🔗';
+        //   }
+        // }
         &[href^='#'] {
           color: #0082fa;
         }
@@ -241,7 +247,7 @@
        top: -4px;
        box-shadow: 0 -1px rgba(0, 0, 0, 0.1), -1px 0 rgba(0, 0, 0, 0.1);
      }
-   }
+   }  
    #contextMenu {
      user-select: none;
      font-size: 0.9rem;

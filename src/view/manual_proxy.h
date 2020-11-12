@@ -18,66 +18,41 @@
 #ifndef DEEPIN_MANUAL_VIEW_MANUAL_PROXY_H
 #define DEEPIN_MANUAL_VIEW_MANUAL_PROXY_H
 
-#include <DSysInfo>
-#include <QDebug>
-#include <QList>
-#include <QObject>
-
 #include <QDBusConnection>
 #include <QDesktopServices>
-
-#include "dbus/dbus_consts.h"
-#include "dbus/launcher_interface.h"
-
-#include <QtAlgorithms>
-#include <qalgorithms.h>
-#include <QMultiMap>
-
-class LauncherInterface;
-
-namespace dman {
 
 class ManualProxy : public QObject
 {
     Q_OBJECT
 public:
     explicit ManualProxy(QObject *parent = nullptr);
-    QList<AppInfo> sortAppList(QMultiMap<qlonglong, AppInfo> map);
     ~ManualProxy() override;
 signals:
     void WidgetLower();
-public slots:
-    QString getSystemManualDir() const
-    {
-        QString strMANUAL_DIR = DMAN_MANUAL_DIR;
-        int nType = Dtk::Core::DSysInfo::deepinType();
-        if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
-            strMANUAL_DIR += "/server";
-        } else if (Dtk::Core::DSysInfo::DeepinPersonal == (Dtk::Core::DSysInfo::DeepinType)nType) {
-            strMANUAL_DIR += "/personal";
-        } else {
-            if (Dtk::Core::DSysInfo::isCommunityEdition()) {
-                strMANUAL_DIR += "/community";
-            } else {
-                strMANUAL_DIR += "/professional";
-            }
-        }
-        return strMANUAL_DIR;
-    }
+    void channelInit();
+    void searchEditTextisEmpty();
+    void supportBeClick();
+    //发送页面加载完成时间
+    void startFinish(qint64);
 
+public slots:
+    QString getSystemManualDir();
     QStringList getSystemManualList();
 
-    /**
-     * Open link with xdg-open.
-     * @param url
-     */
-    void openExternalLink(const QString &url);
+    void setApplicationState(const QString &appName);
+    QStringList getUsedAppList();
+    bool hasSelperSupport();
+    void finishChannel();
+    void supportClick();
+    bool bIsLongSon();
+    //js页面渲染结束
+    void renderFinish();
 
 private:
-    LauncherInterface *launcher_interface_ = nullptr;
+    void saveAppList(const QStringList &list);
+
+private:
     QStringList app_list_;
 };
 
-}  // namespace dman
-
-#endif  // DEEPIN_MANUAL_VIEW_MANUAL_PROXY_H
+#endif // DEEPIN_MANUAL_VIEW_MANUAL_PROXY_H

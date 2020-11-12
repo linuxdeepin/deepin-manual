@@ -21,10 +21,12 @@
 #include <QObject>
 #include <QDesktopServices>
 
-namespace dman {
-
 class ImageViewer;
 
+/**
+ * @brief The ImageViewerProxy class
+ * 双击放大图片接口类，供ｊｓ调用
+ */
 class ImageViewerProxy : public QObject
 {
     Q_OBJECT
@@ -33,18 +35,11 @@ public:
     ~ImageViewerProxy() override;
 
 public slots:
-    /**
-     * Open image in viewer window.
-     * @param filepath Absolute path to image file.
-     */
     void open(const QString &filepath);
-
     void openHttpUrl(const QString &httpUrl);
 
 private:
     ImageViewer *viewer_ = nullptr;
 };
 
-}  // namespace dman
-
-#endif  // DEEPIN_MANUAL_VIEW_IMAGE_VIEWER_PROXY_H
+#endif // DEEPIN_MANUAL_VIEW_IMAGE_VIEWER_PROXY_H

@@ -4,41 +4,45 @@ import { Link } from 'react-router-dom';
 import Scrollbar from './scrollbar.jsx';
 
 class Nav extends Component {
+  constructor(props) {
+    super(props);
+    this.contentMenu = this.contentMenu.bind(this)
+  }
+
+  componentWillMount(){
+    console.log("nav componentWillMount");
+  }
   componentDidMount() {
+    console.log("nav componentDidMount");
     document.getElementById('article').style.marginLeft = ReactDOM.findDOMNode(
       this
     ).clientWidth;
     this.componentDidUpdate();
   }
+  
   shouldComponentUpdate(newProps, newState) {
-    console.log("global.hash" + global.hash);
-    console.log("shouldComponentUpdate newProps:" + newProps.hash + ", old hash:" + global.oldHash);
+    console.log("nav shouldComponentUpdate newProps:" + newProps.hash +" global hash:" + global.hash);
 
-    if (' ' == global.hash) {
-      return true;
-    }
-
-    if (' ' == global.oldHash) {
+    if ('' == global.hash) {
       return true;
     }
 
     if ('POP' == global.lastAction) {
       return true;
     }
-
-    if (global.hash != global.oldHash) {
-      return false;
-    }
-    if (newProps.hash != global.oldHash) {
+    //why........
+    if (newProps.hash != global.hash) {
       return false;
     }
     return true;
   }
 
   componentWillUpdate() {
-    console.log("componentWillUpdate");
+    console.log("nav componentWillUpdate");
   }
+
   componentDidUpdate() {
+    console.log("nav componentDidUpdate");
     let hashDOM = ReactDOM.findDOMNode(this).querySelector('.hash');
     if (hashDOM == null) {
       return;
@@ -49,17 +53,18 @@ class Nav extends Component {
     }
     hashDOM.scrollIntoViewIfNeeded(false);
   }
+
   click(e) {
     let cid = e.target.getAttribute('cid');
     if (cid) {
       console.log('搜索结果', cid);
       global.hash = cid;
-      global.oldHash = cid;
       global.isMouseClickNav = true;
       global.isMouseScrollArticle = false;
       this.props.setHash(cid);
     }
   }
+  
   wheel(e) {
     let nav = ReactDOM.findDOMNode(this);
     if (e.deltaY > 0) {
@@ -79,60 +84,16 @@ class Nav extends Component {
     e.preventDefault();
     document.getSelection().empty();
   }
-/*
-  mouseOver(e){
-    var value =  e.currentTarget.innerHTML;
-    console.log("mouse over:" + value);
-    // var showFloatTimer=null;
-    
-    // function(event){
-      clearTimeout(this.showFloatTimer);
-      this.showFloatTimer=setTimeout(function(){
-          $('.tooltip-wp').attr('data-title', value); //动态设置data-title属性
-          $('.tooltip-wp').fadeIn(200);//浮动框淡出
-      },300);
-  }
-
-  mouseOut(e){
-    console.log("mouse out" + e.target.getAttribute('cid'));
-    $('.tooltip-wp').hide();
-    // }
-  }
-
-  mouseMove(e){
-    console.log("mouse move : ");
-
-    var xClient = e.clientX;
-    var yClient = e.clientY;
-    console.log(" --:"+ xClient + "  "+ yClient);
-
-    var xPage = e.pageX;
-    var yPage = e.pageY + 20;
-    var canRun=true;
-    // return function(){//e是mousemove的event参数
-        if(!canRun){return;}//如果有一个定时方法，直接返回
-        canRun=false;
-        setTimeout(function(){
-            var top = e.pageY+5;
-            var left = e.pageX+5;
-            $('.tooltip-wp').css({
-                'top' : yPage + 'px',
-                'left': xPage+ 'px'
-            });
-            canRun=true;
-        },150);
-    
-  }
-  */
 
   render() {
+    console.log("nav render...");
     let max = this.props.hlist[0];
     this.props.hlist.map(h => {
       if (max.text.length < h.text.length) {
         max = h;
       }
     });
-    console.log(max, max.text.length);
+    // console.log(max, max.text.length);
     // let maxWidth = 0;
     // if (global.lang == 'zh_CN') {
     //   maxWidth = max.text.length * 16;
@@ -158,8 +119,8 @@ class Nav extends Component {
       <div
         id="nav"
         lang={global.lang}
-        onClick={e => this.click(e)}
-        onContextMenu={this.contentMenu.bind(this)}
+        onMouseDown={e => this.click(e)}
+        onContextMenu={this.contentMenu}
         style={{
           width: `calc(${maxWidth}px + ${c}rem`
         }}
@@ -180,9 +141,6 @@ class Nav extends Component {
                 cid={h.id}
                 type={h.type}
                 className={this.props.hash == h.id ? 'h hash' : 'h'}
-                // onMouseOver={this.mouseOver.bind(this)}
-                // onMouseOut={this.mouseOut.bind(this)}
-                // onMouseMove={this.mouseMove.bind(this)}
                 onMouseOver={(e)=>this.props.onNavOver(e)}
                 onMouseOut ={(e)=>this.props.onNavOut(e)}
                 onMouseMove={(e)=>this.props.onNavMove(e)}

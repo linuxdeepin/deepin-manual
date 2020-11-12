@@ -30,5 +30,5 @@ Depends: ${misc:Depends},
 Recommends: qt5dxcb-plugin,
 Conflicts: dde-help
 Provides: dde-help
-Description:Deepin Manual
+Description: Manual provides user guides of the system and applications. 
  Manual is designed to help users learn the operating system and its applications, providing specific instructions and function descriptions.

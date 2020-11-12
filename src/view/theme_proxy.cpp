@@ -1,29 +1,30 @@
 #include "view/theme_proxy.h"
 #include <DApplicationHelper>
 
-
-dman::ThemeProxy::ThemeProxy(QObject *parent) : QObject(parent)
+ThemeProxy::ThemeProxy(QObject *parent)
+    : QObject(parent)
 {
 }
 
-dman::ThemeProxy::~ThemeProxy()
+ThemeProxy::~ThemeProxy()
 {
 }
 
 /**
- * @brief dman::ThemeProxy::slot_ThemeChange
- * @note 系统主题颜色改变时调用
+ * @brief ThemeProxy::slot_ThemeChange
+ * 系统主题颜色改变时调用
  */
-void dman::ThemeProxy :: slot_ThemeChange()
+void ThemeProxy ::slot_ThemeChange()
 {
     emit themeChange(getTheme());
 }
 
 /**
- * @brief dman::ThemeProxy::getTheme 获取系统主题颜色，白色/黑色
+ * @brief ThemeProxy::getTheme
  * @return
+ * 获取系统主题颜色，白色/黑色
  */
-QString dman::ThemeProxy :: getTheme() const
+QString ThemeProxy ::getTheme() const
 {
     QString qsthemetype = "Null";
     DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();

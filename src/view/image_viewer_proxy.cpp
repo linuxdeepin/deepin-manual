@@ -16,25 +16,26 @@
  */
 
 #include "view/image_viewer_proxy.h"
+#include "view/widget/image_viewer.h"
 
 #include <DLog>
 
-#include "view/widget/image_viewer.h"
-
-namespace dman {
-
 ImageViewerProxy::ImageViewerProxy(ImageViewer *viewer,
                                    QObject *parent)
-    : QObject(parent),
-      viewer_(viewer)
+    : QObject(parent)
+    , viewer_(viewer)
 {
 }
 
 ImageViewerProxy::~ImageViewerProxy()
 {
-
 }
 
+/**
+ * @brief ImageViewerProxy::open
+ * @param filepath 图片的绝对路径
+ * 在窗口中显示图片
+ */
 void ImageViewerProxy::open(const QString &filepath)
 {
     Q_ASSERT(viewer_ != nullptr);
@@ -42,9 +43,12 @@ void ImageViewerProxy::open(const QString &filepath)
     viewer_->open(filepath);
 }
 
+/**
+ * @brief ImageViewerProxy::openHttpUrl
+ * @param httpUrl 链接地址
+ * 打开外部链接
+ */
 void ImageViewerProxy::openHttpUrl(const QString &httpUrl)
 {
     QDesktopServices::openUrl(QUrl(httpUrl));
 }
-
-}  // namespace dman

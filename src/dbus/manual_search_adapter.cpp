@@ -10,14 +10,6 @@
 
 #include "manual_search_adapter.h"
 
-#include <QtCore/QMetaObject>
-#include <QtCore/QByteArray>
-#include <QtCore/QList>
-#include <QtCore/QMap>
-#include <QtCore/QString>
-#include <QtCore/QStringList>
-#include <QtCore/QVariant>
-
 /*
  * Implementation of adaptor class ManualSearchAdapter
  */
@@ -46,4 +38,3 @@ void ManualSearchAdapter::OnNewWindowOpen(const QString &data)
 {
     QMetaObject::invokeMethod(parent(), "OnNewWindowOpen", Q_ARG(QString, data));
 }
-

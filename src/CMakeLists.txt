@@ -6,6 +6,7 @@ project(deepin-manual C CXX)
 
 set(CMAKE_INSTALL_PREFIX /usr)
 
+
 if (CMAKE_BUILD_TYPE MATCHES Debug)
   add_definitions(-DDMAN_SEARCH_DB="${CMAKE_SOURCE_DIR}/manual-assets")
   add_definitions(-DDMAN_WEB_DIR="${CMAKE_CURRENT_SOURCE_DIR}/web_dist")
@@ -15,6 +16,8 @@ else()
   add_definitions(-DDMAN_WEB_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/web_dist")
   add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets")
 endif ()
+#禁止Debug日志输出
+#add_definitions(-DQT_NO_DEBUG_OUTPUT)
 
 
 configure_file(environments.h.in environments.h @ONLY)
@@ -62,6 +65,14 @@ else()
   set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -O2 -Wl,-O1 -Wl,--gc-sections")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -O2 -Wl,-O1 -Wl,--gc-sections")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-rtti")
+
+  set(CMAKE_CXX_FLAGS "-Wl,--as-need -fPIE")
+  set(CMAKE_EXE_LINKER_FLAGS "-pie")
+endif()
+
+if (${CMAKE_SYSTEM_PROCESSOR} MATCHES "mips64")
+    set(CMAKE_CXX_FLAGS "-O3 -ftree-vectorize -march=loongson3a -mhard-float -mno-micromips -mno-mips16 -flax-vector-conversions -mloongson-ext2 -mloongson-mmi -Wl,--as-needed")
+    add_definitions(-DDCPU_IS_LONGSON)
 endif()
 
 find_package(PkgConfig REQUIRED)
@@ -112,6 +123,8 @@ set(BASE_FILES
     base/consts.h
     base/utils.cpp
     base/utils.h
+    base/accessible.h
+    base/accessibledefine.h
     )
 
 set(CONTROLLER_FILES
@@ -126,6 +139,8 @@ set(CONTROLLER_FILES
     controller/window_manager.h
     controller/config_manager.cpp
     controller/config_manager.h
+    controller/shellobj.cpp
+    controller/shellobj.h
     )
 
 set(DBUS_FILES
@@ -137,8 +152,6 @@ set(DBUS_FILES
     dbus/launcher_interface.h
     dbus/manual_open_adapter.cpp
     dbus/manual_open_adapter.h
-    dbus/manual_open_interface.cpp
-    dbus/manual_open_interface.h
     dbus/manual_open_proxy.cpp
     dbus/manual_open_proxy.h
     dbus/manual_search_adapter.cpp
@@ -188,8 +201,12 @@ set(VIEW_FILES
 # Main executable
 set(SEARCH_FILES
     app/generate_search_db.cpp
+    base/utils.cpp
+    base/utils.h
     base/command.cpp
     base/command.h
+    dbus/dbusvariant/app_info.cpp
+    dbus/dbusvariant/app_info.h
     controller/search_db.cpp
     controller/search_db.h
     )
@@ -268,15 +285,17 @@ endif ()
 
 
 ## Installation
+#install(TARGETS dman
+#        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
 install(TARGETS dman
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 # NOTE(Shaohua): Add this script to by pass platform plugin issue in Qt.
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/app/dman.sh
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
-        PERMISSIONS OWNER_READ OWNER_EXECUTE
-        GROUP_READ GROUP_EXECUTE
-        WORLD_READ WORLD_EXECUTE
-        RENAME dman)
+#install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/app/dman.sh
+#        DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
+#        PERMISSIONS OWNER_READ OWNER_EXECUTE
+#        GROUP_READ GROUP_EXECUTE
+#        WORLD_READ WORLD_EXECUTE
+#        RENAME dman)
 install(TARGETS dman-search
         DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 
@@ -290,8 +309,5 @@ install(DIRECTORY ${CMAKE_SOURCE_DIR}/manual-assets
 
 install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/web_dist
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
-
-install(FILES ${CMAKE_SOURCE_DIR}/manual-assets/deepin-manual.svg
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/scalable/apps/)
 
 string(TOLOWER ${CMAKE_SYSTEM_PROCESSOR} LOWERCASE_CMAKE_SYSTEM_PROCESSOR)

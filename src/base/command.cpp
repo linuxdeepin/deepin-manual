@@ -18,8 +18,6 @@
 #include "base/command.h"
 
 #include <DLog>
-#include <QDir>
-#include <QProcess>
 
 namespace dman {
 
@@ -75,8 +73,7 @@ bool SpawnCmd(const QString &cmd, const QStringList &args)
 
     qDebug() << process.readAllStandardOutput();
 
-    return (process.exitStatus() == QProcess::NormalExit &&
-            process.exitCode() == 0);
+    return (process.exitStatus() == QProcess::NormalExit && process.exitCode() == 0);
 }
 
 bool SpawnCmd(const QString &cmd, const QStringList &args, QString &output)
@@ -91,18 +88,16 @@ bool SpawnCmd(const QString &cmd, const QStringList &args,
     QProcess process;
     process.setProgram(cmd);
     process.setArguments(args);
-    process.setEnvironment({ "LANG=en_US.UTF-8", "LANGUAGE=en_US" });
+    process.setEnvironment({"LANG=en_US.UTF-8", "LANGUAGE=en_US"});
     process.start();
     // Wait for process to finish without timeout.
     process.waitForFinished(-1);
     output = process.readAllStandardOutput();
     err = process.readAllStandardError();
-    if (!process.errorString().contains("Unknown"))
-    {
+    if (!process.errorString().contains("Unknown")) {
         qDebug() << "run cmd error, caused by:" << process.errorString();
     }
-    return (process.exitStatus() == QProcess::NormalExit &&
-            process.exitCode() == 0);
+    return (process.exitStatus() == QProcess::NormalExit && process.exitCode() == 0);
 }
 
-}  // namespace dman
+} // namespace dman

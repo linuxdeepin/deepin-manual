@@ -14,37 +14,55 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include <QDBusConnection>
-#include <QDesktopWidget>
-#include <QIcon>
 
 #include "base/consts.h"
-#include "base/utils.h"
 #include "controller/argument_parser.h"
 #include "controller/window_manager.h"
 #include "environments.h"
 #include "resources/themes/images.h"
+#include "controller/shellobj.h"
+#include "base/accessible.h"
+
 #include <DApplication>
 #include <DApplicationSettings>
-#include <DLog>
 #include <DPlatformWindowHandle>
+#include <QDesktopWidget>
+#include <QDBusConnection>
+#include <QIcon>
+#include <DLog>
+#include <QDateTime>
 
 DWIDGET_USE_NAMESPACE
 
 int main(int argc, char **argv)
 {
+    QDateTime time;
+    qint64 startTime = time.currentMSecsSinceEpoch();
+    qDebug() << "startTime: " << startTime;
     qputenv("DXCB_FAKE_PLATFORM_NAME_XCB", "true");
+    //禁用GPU
     qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu");
-
+    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--single-process");
+    //所有进程类型禁用沙箱..此配置开启禁用gpu后无效
+//    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--no-sandbox");
     //龙芯机器配置,使得DApplication能正确加载QTWEBENGINE
     qputenv("DTK_FORCE_RASTER_WIDGETS", "FALSE");
-    qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "7777");
 
 //    Dtk::Widget::DApplication::loadDXcbPlugin();
+//    qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "7777");
+//    Dtk::Widget::DApplication::loadDXcbPlugin();
+
     Dtk::Widget::DApplication app(argc, argv);
     if (!DPlatformWindowHandle::pluginVersion().isEmpty()) {
         app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings, true);
     }
+
+#ifdef DCPU_IS_LONGSON
+    //add by wujian 20200907 for 解决龙芯平台，QWebEngine因字体库字体太多，造成启动失败的问题
+    QString strHomePath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
+    QString strExeShell = QString("rm -fr %1/.cache/fontconfig").arg(strHomePath);
+    shellObj::execSystem(strExeShell);
+#endif
 
     //设置窗口属性
     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
@@ -53,46 +71,44 @@ int main(int argc, char **argv)
     app.setOrganizationName("deepin");
     app.setOrganizationDomain("deepin.org");
     app.setApplicationVersion(VERSION);
-    app.setApplicationName(dman::kAppName);
+    app.setApplicationName(kAppName);
     app.loadTranslator();
     app.setApplicationDisplayName(QObject::tr("Manual"));
-
     app.setApplicationDescription(QObject::tr(
                                       "Manual is designed to help users learn the operating system and its applications,"
                                       " providing specific instructions and function descriptions."));
     app.setApplicationAcknowledgementPage("https://www.deepin.org/acknowledgments/deepin-manual/");
 
-    dman::ArgumentParser argument_parser;
-    dman::WindowManager window_manager;
-    QObject::connect(&argument_parser, &dman::ArgumentParser::onNewAppOpen, &window_manager,
-                     &dman::WindowManager::onNewAppOpen);
+    ArgumentParser argument_parser;
+    WindowManager window_manager;
+    window_manager.setStartTime(startTime);
+    //绑定参数解析 信号与槽
+    QObject::connect(&argument_parser, &ArgumentParser::newAppOpen,
+                     &window_manager, &WindowManager::onNewAppOpen);
+    QObject::connect(&argument_parser, &ArgumentParser::openManualWithSearchRequested,
+                     &window_manager, &WindowManager::openManualWithSearch);
+    QObject::connect(&argument_parser, &ArgumentParser::openManualRequested,
+                     &window_manager, &WindowManager::openManual);
 
     if (!argument_parser.parseArguments()) {
         qDebug() << "argument_parser.parseArguments()";
-        // Exit process after 1000ms.
-        QTimer::singleShot(1000,  [&]() {
+        //解析参数失败，１００ｍｓ退出进程
+        QTimer::singleShot(100, [&]() {
             app.quit();
         });
         return app.exec();
     }
-
-    qDebug() << "argument_parser.openManualsDelay()";
-    QObject::connect(&argument_parser, &dman::ArgumentParser::openManualRequested, &window_manager,
-                     &dman::WindowManager::openManual);
-    QObject::connect(&argument_parser, &dman::ArgumentParser::openManualWithSearchRequested,
-                     &window_manager, &dman::WindowManager::openManualWithSearch);
-
-    //发送openManualRequested()信号后与槽连接。
     argument_parser.openManualsDelay();
 
-    // 保存主题
-    DApplicationSettings dApplicationSettings;
 
+    // 日志保存, 路径:~/.cach/deepin/deepin-manual/
+    DApplicationSettings dApplicationSettings;
     Dtk::Core::DLogManager::registerFileAppender();
     Dtk::Core::DLogManager::registerConsoleAppender();
 
     // fix error for cutelogger
     // No appenders associated with category js
+    // 日志相关
     auto category = "js";
     auto fileAppender =
         new Dtk::Core::RollingFileAppender(Dtk::Core::DLogManager::getlogFilePath());
@@ -100,7 +116,6 @@ int main(int argc, char **argv)
     customLoggerInstance.logToGlobalInstance(category, true);
     customLoggerInstance.registerAppender(fileAppender);
 
-
-
+    QAccessible::installFactory(accessibleFactory);
     return app.exec();
 }

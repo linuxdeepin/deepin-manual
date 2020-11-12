@@ -2,60 +2,78 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/app/dman.cpp" line="82"/>
-        <source>Deepin Manual</source>
-        <translation>Podręcznik Deepin</translation>
+        <location filename="../src/app/dman.cpp" line="58"/>
+        <source>Manual</source>
+        <translation>Podręcznik</translation>
     </message>
     <message>
-        <location filename="../src/app/dman.cpp" line="83"/>
-        <source>Deepin Manual is designed to help users learn deepin and Deepin applications, providing specific instructions and function descriptions.</source>
-        <translation>Podręcznik Deepin został zaprojektowany tak, aby pomóc  użytkownikom dowiedzieć się więcej o systemie Deepin i jego programach, dostarczając szczegółowe instrukcje i opisy funkcji.</translation>
+        <location filename="../src/app/dman.cpp" line="60"/>
+        <source>Manual is designed to help users learn the operating system and its applications, providing specific instructions and function descriptions.</source>
+        <translation>Podręcznik ma na celu pomóc użytkownikom w nauce systemu operacyjnego i jego aplikacji, zapewniając szczegółowe instrukcje i opisy funkcji.</translation>
     </message>
     <message>
-        <location filename="../src/view/web_event_delegate.cpp" line="63"/>
-        <source>Copy</source>
-        <translation>Kopiuj </translation>
-    </message>
-    <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="32"/>
+        <location filename="../src/view/i18n_proxy.cpp" line="34"/>
         <source>System</source>
         <translation>System</translation>
     </message>
     <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="33"/>
+        <location filename="../src/view/i18n_proxy.cpp" line="35"/>
         <source>Applications</source>
         <translation>Programy</translation>
     </message>
     <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="35"/>
-        <source>Sorry, there are no search results of &quot;%1&quot;</source>
-        <translation>Przepraszamy, nie ma żadnego wyniku dla frazy &quot;%1&quot;</translation>
-    </message>
-    <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="36"/>
-        <source>Change your keywords and try again, or search it in Deepin Wiki</source>
-        <translation>Zmień słowa kluczowe i spróbuj ponownie lub wyszukaj je w serwisie Wiki Deepin</translation>
-    </message>
-    <message>
         <location filename="../src/view/i18n_proxy.cpp" line="38"/>
+        <source>No search results</source>
+        <translation>Brak wyników wyszukiwania</translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="41"/>
         <source>Home</source>
         <translation>Start</translation>
     </message>
     <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="39"/>
-        <source>Deepin Wiki</source>
-        <translation>Wiki Deepin</translation>
+        <location filename="../src/view/i18n_proxy.cpp" line="43"/>
+        <source>  result</source>
+        <translation>wynik</translation>
     </message>
     <message>
-        <location filename="../src/view/widget/search_completion_window.cpp" line="113"/>
-        <location filename="../src/view/widget/search_completion_window.cpp" line="162"/>
-        <source>Search &quot;%1&quot; in the full text</source>
-        <translation>Wyszukaj frazy &quot;% 1&quot; w całym tekście</translation>
+        <location filename="../src/view/i18n_proxy.cpp" line="44"/>
+        <source>  results</source>
+        <translation>wyniki</translation>
     </message>
     <message>
-        <location filename="../src/view/widget/title_bar.cpp" line="96"/>
+        <location filename="../src/view/web_window.cpp" line="272"/>
         <source>Search</source>
         <translation>Szukaj</translation>
+    </message>
+    <message>
+        <location filename="../src/view/web_window.cpp" line="277"/>
+        <source>Support</source>
+        <translation type="unfinished"/>
+    </message>
+    <message>
+        <location filename="../src/view/web_window.cpp" line="497"/>
+        <source>Copy</source>
+        <translation>Kopiuj </translation>
+    </message>
+    <message>
+        <location filename="../src/view/widget/search_completion_window.cpp" line="153"/>
+        <location filename="../src/view/widget/search_completion_window.cpp" line="223"/>
+        <source>Search for &quot;%1&quot; in the full text</source>
+        <translation>Wyszukaj „%1” w pełnym tekście</translation>
+    </message>
+</context>
+<context>
+    <name>WebWindow</name>
+    <message>
+        <location filename="../src/view/web_window.cpp" line="432"/>
+        <source>Ctrl+Alt+F</source>
+        <translation>Ctrl+Alt+F</translation>
+    </message>
+    <message>
+        <location filename="../src/view/web_window.cpp" line="447"/>
+        <source>Ctrl+F</source>
+        <translation>Ctrl+F</translation>
     </message>
 </context>
 </TS>

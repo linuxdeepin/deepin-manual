@@ -18,16 +18,18 @@
 #ifndef DEEPIN_MANUAL_VIEW_WIDGETS_IMAGE_VIEWER_H
 #define DEEPIN_MANUAL_VIEW_WIDGETS_IMAGE_VIEWER_H
 
-#include <QDialog>
-
 #include <DLabel>
 #include <DDialogCloseButton>
-#include <DFloatingButton>
+
+#include <QDialog>
 
 DWIDGET_USE_NAMESPACE
 
-namespace dman {
-
+/**
+ * @brief ImageViewer::ImageViewer
+ * @param parent
+ * 用于帮助手册中浏览帮助内容时，点击大图后展示全屏的图片
+ */
 class ImageViewer : public QDialog
 {
     Q_OBJECT
@@ -40,7 +42,6 @@ public slots:
 
 protected:
     void mousePressEvent(QMouseEvent *event) override;
-
     void paintEvent(QPaintEvent *event) override;
 
 private:
@@ -52,6 +53,4 @@ private:
     using QDialog::open;
 };
 
-}  // namespace dman
-
-#endif  // DEEPIN_MANUAL_VIEW_WIDGETS_IMAGE_VIEWER_H
+#endif // DEEPIN_MANUAL_VIEW_WIDGETS_IMAGE_VIEWER_H

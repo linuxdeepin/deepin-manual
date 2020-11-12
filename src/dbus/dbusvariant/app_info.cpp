@@ -18,79 +18,85 @@
 #include "dbus/dbusvariant/app_info.h"
 
 AppInfo::AppInfo()
-    : desktop(),
-      name(),
-      key(),
-      icon_key(),
-      category_id(-1),
-      installed_time(0) {
-
+    : desktop()
+    , name()
+    , key()
+    , icon_key()
+    , category_id(-1)
+    , installed_time(0)
+{
 }
 
-AppInfo::~AppInfo() {
-
+AppInfo::~AppInfo()
+{
 }
 
 // static
-void AppInfo::registerMetaType() {
-  qRegisterMetaType<AppInfo>("AppInfo");
-  qDBusRegisterMetaType<AppInfo>();
-  qRegisterMetaType<AppInfoList>("AppInfoList");
-  qDBusRegisterMetaType<AppInfoList>();
+void AppInfo::registerMetaType()
+{
+    qRegisterMetaType<AppInfo>("AppInfo");
+    qDBusRegisterMetaType<AppInfo>();
+    qRegisterMetaType<AppInfoList>("AppInfoList");
+    qDBusRegisterMetaType<AppInfoList>();
 }
 
-QDebug operator<<(QDebug debug, const AppInfo& info) {
-  debug << info.category_id
-        << info.installed_time
-        << info.desktop
-        << info.name
-        << info.key
-        << info.icon_key;
-  return debug;
+QDebug operator<<(QDebug debug, const AppInfo &info)
+{
+    debug << info.category_id
+          << info.installed_time
+          << info.desktop
+          << info.name
+          << info.key
+          << info.icon_key;
+    return debug;
 }
 
-QDBusArgument& operator<<(QDBusArgument& argument,
-                          const AppInfo& info) {
-  argument.beginStructure();
-  argument << info.desktop
+QDBusArgument &operator<<(QDBusArgument &argument,
+                          const AppInfo &info)
+{
+    argument.beginStructure();
+    argument << info.desktop
+             << info.name
+             << info.key
+             << info.icon_key
+             << info.category_id
+             << info.installed_time;
+    argument.endStructure();
+    return argument;
+}
+
+QDataStream &operator<<(QDataStream &stream, const AppInfo &info)
+{
+    stream << info.desktop
            << info.name
            << info.key
            << info.icon_key
            << info.category_id
            << info.installed_time;
-  argument.endStructure();
-  return argument;
+    return stream;
 }
 
-QDataStream& operator<<(QDataStream& stream, const AppInfo& info) {
-  stream << info.desktop
-         << info.name
-         << info.key
-         << info.icon_key
-         << info.category_id
-         << info.installed_time;
-  return stream;
+const QDBusArgument &operator>>(const QDBusArgument &argument,
+                                AppInfo &info)
+{
+    argument.beginStructure();
+    argument >> info.desktop
+        >> info.name
+        >> info.key
+        >> info.icon_key
+        >> info.category_id
+        >> info.installed_time;
+    argument.endStructure();
+    return argument;
 }
 
-const QDBusArgument& operator>>(const QDBusArgument& argument,
-                                AppInfo& info) {
-  argument.beginStructure();
-  argument >> info.desktop
-           >> info.name
-           >> info.key
-           >> info.icon_key
-           >> info.category_id
-           >> info.installed_time;
-  argument.endStructure();
-  return argument;
-}
-
-const QDataStream& operator>>(QDataStream& stream, AppInfo& info) {
-  stream >> info.desktop
-         >> info.name
-         >> info.key
-         >> info.icon_key
-         >> info.category_id
-         >> info.installed_time;
-  return stream;
+const QDataStream &operator>>(QDataStream &stream, AppInfo &info)
+{
+    stream >> info.desktop
+        >> info.name
+        >> info.key
+        >> info.icon_key
+        >> info.category_id
+        >> info.installed_time;
+    return stream;
 }

@@ -15,35 +15,23 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QtGui/QDesktopServices>
-#include <QUrl>
-#include <QDebug>
-
 #include "settings_proxy.h"
 
-namespace dman {
+#include <QtGui/QDesktopServices>
+#include <QUrl>
 
-SettingsProxy::SettingsProxy(QObject *parent) : QObject(parent)
+SettingsProxy::SettingsProxy(QObject *parent)
+    : QObject(parent)
 {
     this->setObjectName("SettingsProxy");
 }
 
 /**
  * @brief SettingsProxy::openUrl
- * @param url
+ * @param url　链接地址
+ * 打开外部连接
  */
 void SettingsProxy::openUrl(const QString &url)
 {
     QDesktopServices::openUrl(QUrl(url));
 }
-
-/**
- * @brief SettingsProxy::raiseWindow
- */
-void SettingsProxy::raiseWindow()
-{
-    emit this->raiseWindowRequested();
-}
-
-
-}  // namespace dstore

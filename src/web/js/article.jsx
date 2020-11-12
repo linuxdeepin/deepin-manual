@@ -10,21 +10,22 @@ export default class Article extends Component {
     super(props);
     this.state = {
       preview: null,
-      smoothScroll: false,
       fillblank: null,
       bIsTimerOut:true
     };
+    
+    this.scroll = this.scroll.bind(this);
+    this.click  = this.click.bind(this);
+    this.contentMenu = this.contentMenu.bind(this)
 
     var timerObj;
+    var bIsMount=false;
+    this.smoothScroll=false;
   }
   //滚动到锚点
   scrollToHash() {
+    console.log("article scrollToHash ",this.hash);
     let tempHash = this.hash;
-
-    // if (tempHash == 'h21')
-    // {
-    //   tempHash = 'h250';
-    // }
     
     const hashNode = document.getElementById(tempHash);
     console.log("article scrollToHash temphash: " + tempHash + " " + hashNode);
@@ -34,15 +35,29 @@ export default class Article extends Component {
     }
 
     if (hashNode) {
-
+      console.log(" article  scrollToHash===============>",this.bIsMount);
       clearTimeout(this.timerObj);
-      this.setState({ smoothScroll: true });
+      this.smoothScroll = true;
+
+      var timeVar = 800;
+      if (this.bIsMount)
+      {
+        console.log('===========> is mount');
+        timeVar = 15*1000;
+        this.bIsMount = false;
+      }
 
       this.timerObj = setTimeout(() => {
-          this.setState({ smoothScroll: false });
-      },800);
+          this.smoothScroll = false;
+      },timeVar);
 
       scrollIntoView(hashNode, { behavior: 'smooth', block: 'start' }).then(() => {
+ 
+        console.log(" scrollIntoView finish ===============>");
+
+        //scrollIntoView函数存在异步,如果tempHash != this.hash时,说明存在异步操作,直接return. 
+        if(tempHash != this.hash) return;
+
         console.log("scrollIntoView finish..");
         //find parent h3 title of h4 title
         let hList = ReactDOM.findDOMNode(this).querySelectorAll('h2,h3,h4,h5');
@@ -51,14 +66,17 @@ export default class Article extends Component {
           if (hList[i].tagName == 'H3') {
             currH3Hash = hList[i].id; 
           }
-
           if (tempHash == hList[i].id && (hList[i].tagName == 'H4' || hList[i].tagName == 'H5')) {
             console.log("article: scroll hlist:" + hList[i].tagName  + "," + hList[i].id);
             console.log("currH3Hash:" + currH3Hash);
-            this.hash = currH3Hash;
-            this.props.setHash(currH3Hash);
-            this.props.setScroll(currH3Hash);
-            break;
+
+            if (this.load)
+            {
+              this.hash = currH3Hash;
+              this.props.setHash(currH3Hash);
+              this.props.setScroll(currH3Hash);
+              break;
+            }
           }
         }
       });
@@ -66,6 +84,45 @@ export default class Article extends Component {
       this.props.setHash(this.props.hlist[0].id);
     }
   }
+
+  componentWillMount(){
+    console.log("article componentWillMount");
+  }
+
+  componentDidMount() {
+    console.log("article componentDidMount");
+    this.bIsMount = true;
+    this.componentDidUpdate();
+  }
+
+  shouldComponentUpdate(nextProps,nextState){
+    console.log("article shouldComponentUpdate====",this.hash , "prop hash:" ,this.props.hash);
+    // if (this.hash == this.props.hash)
+    // {
+    //   return false;
+    // }
+    return true;
+  }
+
+  componentWillReceiveProps(nextProps) {
+    console.log("article componentWillReceiveProps nextfile",nextProps.nextProps,' prop.file:',this.props.file);
+    if (nextProps.file != this.props.file) {
+      this.hash = '';
+      this.load = false;
+      this.bIsMount = true;
+    }
+  }
+
+  componentWillUpdate() {
+    console.log("article componentWillUpdate..");
+    var alink_arr = document.getElementsByTagName('a');
+    for(var i=0; i<alink_arr.length; i++) {
+      alink_arr[i].onclick = function () {
+        global.isLinkClicked = true;
+      };
+    }
+  }
+
   componentDidUpdate() {
     console.log("article componentDidUpdate.." + this.hash + " props hash->"+ this.props.hash);
     if (this.hash != this.props.hash) {
@@ -80,9 +137,10 @@ export default class Article extends Component {
       let loadCount = 0;
       imgList.map(el => {
         el.onload = () => {
+          console.log("------img onload---------");
           loadCount++;
           if (loadCount == imgList.length) {
-            // console.log('image loaded');
+            console.log('image loaded。。。。。。。。。。。。。。。。');
             this.load = true;
             this.scrollToHash();
             let last = article.querySelector(
@@ -97,9 +155,12 @@ export default class Article extends Component {
           }
         };
         el.onerror = () => {
+          console.log("------img onerror---------");
           if (el.getAttribute('src') == el.dataset.src) {
+            console.log("------img == dataset---------");
             el.onload();
           } else {
+            console.log("------img == no dataset---------");
             el.src = el.dataset.src;
           }
         };
@@ -107,27 +168,6 @@ export default class Article extends Component {
     }
   }
 
-  componentWillUpdate() {
-    console.log("article componentWillUpdate..");
-    var alink_arr = document.getElementsByTagName('a');
-    for(var i=0; i<alink_arr.length; i++) {
-      alink_arr[i].onclick = function () {
-        global.isLinkClicked = true;
-      };
-    }
-  }
-
-  componentDidMount() {
-    this.componentDidUpdate();
-  }
-
-  componentWillReceiveProps(nextProps) {
-    console.log("article componentWillReceiveProps..");
-    if (nextProps.file != this.props.file) {
-      this.hash = '';
-      this.load = false;
-    }
-  }
   gethID(htext) {
     let id = this.props.hlist[0].id;
     console.log(this.props.hlist[0]);
@@ -159,10 +199,12 @@ export default class Article extends Component {
 
   //滚动事件
   scroll() {
-    if (!this.load) {
-      return;
-    }
-    if (this.state.smoothScroll) {
+    // if (!this.load) {
+    //   return;
+    // }
+    console.log('smooth::',this.smoothScroll);
+    if (this.smoothScroll)
+    {
       return;
     }
     if (this.state.preview != null) {
@@ -201,69 +243,14 @@ export default class Article extends Component {
       }
     }
   }
-  //内部链接预览
-  showPreview(appName, hash, rect) {
-    let file = `${global.path}/${appName}/${global.lang}/index.md`;
-    global.readFile(file, data => {
-      let { html } = m2h(file, data);
-      let d = document.createElement('div');
-      d.innerHTML = html;
-      let hashDom = d.querySelector(`[text="${hash}"]`);
-      let DomList = [hashDom];
-      let nextDom = hashDom.nextElementSibling;
-      while (nextDom) {
-        if (nextDom.nodeName == hashDom.nodeName) {
-          break;
-        }
-        DomList.push(nextDom);
-        nextDom = nextDom.nextElementSibling;
-      }
-      d.innerHTML = '';
-      DomList.map(el => d.appendChild(el));
-      html = d.innerHTML;
-      let { top, left, right } = rect;
-      let style = {};
-      let tClass = 't_';
 
-      console.log("left-right:"+(left) + "  - "+ right);
-      //center
-      if (((right + left)/2 > (300 + 170)) && (((right + left)/2 + 300 < document.body.clientWidth))) {
-        style.left　=　(right + left)/2 - 300;
-        tClass += 'center_';
-      }
-      //right
-      else if (((right + left)/2  > (600 + 170)))
-      {
-        style.left　=　right - 600;
-        tClass += 'right_';
-      }
-      //left
-      else if ((right + left)/2 <= (300 + 170))
-      {
-        style.left　=　left;
-        tClass += 'left_';
-      }
-      //left
-      else {
-        style.left　= 170;
-        tClass += 'left_';
-        
-      }
-      if (top > document.body.clientHeight / 2) {
-        tClass += 'down';
-        style.top = top - 250 - 20;
-      } else {
-        tClass += 'up';
-        style.top = top + rect.height + 10;
-      }
-      this.setState({ preview: { html, style, tClass } });
-    });
-  }
   //链接处理
   click(e) {
+    console.log("article click");
     if (this.state.preview != null) {
       this.setState({ preview: null });
     }
+    console.log("======>",e.target.nodeName);
     switch (e.target.nodeName) {
       case 'IMG':
         e.preventDefault();
@@ -275,6 +262,7 @@ export default class Article extends Component {
         global.qtObjects.imageViewer.open(src);
         return;
       case 'A':
+      {
         const dmanProtocol = 'dman://';
         const hashProtocol = '#';
         const httpProtocol = 'http';
@@ -288,14 +276,41 @@ export default class Article extends Component {
           case href.indexOf(dmanProtocol):
             e.preventDefault();
             const [appName, hash] = href.slice(dmanProtocol.length + 1).split('#');
-            const rect = e.target.getBoundingClientRect();
-            this.showPreview(appName, hash, rect);
+            global.openTitle(appName,hash);
             return;
           case href.indexOf(httpProtocol):
             e.preventDefault();
             global.qtObjects.imageViewer.openHttpUrl(href);
             return;
         }
+      }
+      //解决bug-46888, 当a标签内含有span标签,点击获取的是span标签,此时用其父元素来处理.
+      case 'SPAN':
+        e.preventDefault();
+        var parNode = e.target.parentNode;
+        if (parNode.nodeName == 'A')
+        {
+          const dmanProtocol = 'dman://';
+          const hashProtocol = '#';
+          const httpProtocol = 'http';
+          const hrefTmp = parNode.getAttribute('href');
+          switch (0) {
+            case hrefTmp.indexOf(hashProtocol):
+              e.preventDefault();
+              this.props.setHash(document.querySelector(`[text="${href.slice(1)}"]`).id);
+              return;
+            case hrefTmp.indexOf(dmanProtocol):
+              e.preventDefault();
+              const [appName, hash] = hrefTmp.slice(dmanProtocol.length + 1).split('#');
+              global.openTitle(appName,hash);
+              return;
+            case hrefTmp.indexOf(httpProtocol):
+              e.preventDefault();
+              global.qtObjects.imageViewer.openHttpUrl(hrefTmp);
+              return;
+          }
+        }
+        return;
     }
   }
 
@@ -317,10 +332,11 @@ export default class Article extends Component {
   }
 
   render() {
+    console.log("article render...", this.state.preview);
     return (
           <div id="article">
             <div id="article_bg">
-              <Scrollbar onScroll={this.scroll.bind(this)}
+              <Scrollbar onScroll={this.scroll}
                          onWheel={(e) => this.handleWheelScroll(e)}
                          onKeyUp={(e) => this.handleKeyUp(e)}
                          onKeyDown={(e) => this.handleKeyDown(e)}>
@@ -331,27 +347,9 @@ export default class Article extends Component {
                   tabIndex="-1"
                   dangerouslySetInnerHTML={{ __html: this.props.html }}
                   style={this.state.fillblank}
-                  onClick={this.click.bind(this)}
-                  onContextMenu={this.contentMenu.bind(this)}
+                  onClick = {this.click}
+                  onContextMenu={this.contentMenu}
                 />
-                {this.state.preview != null && (
-                  <div
-                    style={this.state.preview.style}
-                    className={this.state.preview.tClass}
-                    id="preview"
-                  >
-                    <div id="view">
-                      <Scrollbar>
-                        <div
-                          className="read"
-                          dangerouslySetInnerHTML={{
-                            __html: this.state.preview.html,
-                          }}
-                        />
-                      </Scrollbar>
-                    </div>
-                  </div>
-                )}
               </Scrollbar>
             </div>
           </div>
