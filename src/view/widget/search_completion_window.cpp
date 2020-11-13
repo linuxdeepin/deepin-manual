@@ -60,8 +60,10 @@ void SearchCompletionWindow::updateTheme()
     DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
     if (themeType == DGuiApplicationHelper::LightType) {
         this->setMaskColor(QColor(255, 255, 255));
+        this->setMaskAlpha(255);
     } else if (themeType == DGuiApplicationHelper::DarkType) {
         this->setMaskColor(QColor(0, 0, 0));
+        this->setMaskAlpha(255);
     }
 }
 
