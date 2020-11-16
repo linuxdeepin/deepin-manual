@@ -397,7 +397,7 @@ void WebWindow::initConnections()
     connect(search_edit_, &SearchEdit::enterPressed, this, &WebWindow::onTitleBarEntered);
     connect(search_edit_, &SearchEdit::upKeyPressed, completion_window_,
             &SearchCompletionWindow::goUp);
-//    connect(search_edit_, &SearchEdit::focusChanged, this, &WebWindow::onSearchEditFocusOut);
+   connect(search_edit_, &SearchEdit::focusChanged, this, &WebWindow::onSearchEditFocusOut);
     connect(completion_window_, &SearchCompletionWindow::resultClicked, this,
             &WebWindow::onSearchResultClicked);
     connect(completion_window_, &SearchCompletionWindow::searchButtonClicked, this,
@@ -447,7 +447,8 @@ void WebWindow::onACtiveColorChanged(QString, QMap<QString, QVariant>map, QStrin
 void WebWindow::initUI()
 {
     //搜索结果框可移至主窗口创建完成后
-    completion_window_ = new SearchCompletionWindow();
+    completion_window_ = new SearchCompletionWindow(this);
+    completion_window_->hide();
 
     // 初始化标题栏
     QHBoxLayout *buttonLayout = new QHBoxLayout;
@@ -903,7 +904,7 @@ void WebWindow::onSearchAnchorResult(const QString &keyword, const SearchAnchorR
         const QPoint local_point(this->rect().width() / 2 - search_edit_->width() / 2,
                                  titlebar()->height() - 3);
         const QPoint global_point(this->mapToGlobal(local_point));
-        completion_window_->move(global_point);
+        completion_window_->move(local_point);
         completion_window_->setFocusPolicy(Qt::NoFocus);
         completion_window_->setFocusPolicy(Qt::StrongFocus);
     }

@@ -274,10 +274,12 @@ void SearchCompletionWindow::initUI()
     this->setContentsMargins(0, 0, 0, 0);
     this->setMinimumHeight(kItemHeight);
     this->setFixedWidth(350);
-    this->setWindowFlags(Qt::FramelessWindowHint
-                         | Qt::CustomizeWindowHint
-                         | Qt::BypassWindowManagerHint);
-    this->setAttribute(Qt::WA_NativeWindow, true);
+
+    //wayland环境下，该窗口设置父窗口后，会导致webengines闪屏，需去除
+    // this->setWindowFlags(Qt::FramelessWindowHint
+    //                      | Qt::CustomizeWindowHint
+    //                      | Qt::BypassWindowManagerHint);
+    // this->setAttribute(Qt::WA_NativeWindow, true);
 }
 
 /**
