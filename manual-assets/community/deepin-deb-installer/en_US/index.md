@@ -75,7 +75,7 @@ On the main menu, you can switch window themes, view manual and get more informa
 
 ### Theme
 
-The window theme includes Light Theme, Dark Theme and System Theme (default).
+The window theme includes Light Theme, Dark Theme and System Theme.
 
 1.   Click![icon_menu](icon/icon_menu.svg) on the interface.
 2.   Click **Theme** to select a theme.
@@ -98,5 +98,3 @@ You can click to view the manual, which will help you further know and use Packa
 
 1. Click![icon_menu](icon/icon_menu.svg) on the interface.
 2. Click **Exit**.
-
-<div class="version-info"><span>Update Date: 2020-09-07</span><span> Version: 5.3</span></div>

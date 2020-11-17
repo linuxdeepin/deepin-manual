@@ -159,26 +159,28 @@ void WebWindow::cancelTextChanged()
     web_view_->setContextMenuPolicy(Qt::NoContextMenu);
 }
 
+/**
+ * @brief WebWindow::openjsPage
+ * @param app_name
+ * @param title_name
+ */
 void WebWindow::openjsPage(const QString &app_name, const QString &title_name)
 {
-    if (app_name.isEmpty()) {
-        web_view_->page()->runJavaScript("index()");
-    } else {
-        QString real_path(app_name);
-        if (real_path.contains('/')) {
-            // Open markdown file with absolute path.
-            QFileInfo info(real_path);
-            real_path = info.canonicalFilePath();
-            web_view_->page()->runJavaScript(QString("open('%1')").arg(real_path));
+    if (bFinishChannel) {
+        if (app_name.isEmpty()) {
+            web_view_->page()->runJavaScript("index()");
         } else {
-            // Open system manual.
-//            web_view_->page()->runJavaScript(QString("open('%1')").arg(app_name));
-            web_view_->page()->runJavaScript(QString("openTitle('%1','%2')").arg(app_name, title_name));
+            QString real_path(app_name);
+            if (real_path.contains('/')) {
+                // Open markdown file with absolute path.
+                QFileInfo info(real_path);
+                real_path = info.canonicalFilePath();
+                web_view_->page()->runJavaScript(QString("open('%1')").arg(real_path));
+            } else {
+                // Open system manual.
+                web_view_->page()->runJavaScript(QString("openTitle('%1','%2')").arg(app_name, title_name));
+            }
         }
-
-//        if (!title_name.isEmpty()) {
-//            web_view_->page()->runJavaScript(QString("linkTitle('%1')").arg(title_name));
-//        }
     }
 }
 
@@ -542,6 +544,8 @@ void WebWindow::initWebView()
     connect(search_proxy_, &SearchProxy::setKeyword, this, &WebWindow::onSetKeyword);
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
             theme_proxy_, &ThemeProxy::slot_ThemeChange);
+    //应用启动时，页面加载成功时间获取
+    connect(manual_proxy_, &ManualProxy::startFinish, this, &WebWindow::manualStartFinish);
 //    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
 //            this, &WebWindow::slot_ThemeChanged);
 
@@ -799,6 +803,7 @@ void WebWindow::onWebPageLoadFinished(bool ok)
  */
 void WebWindow::onChannelFinish()
 {
+    bFinishChannel = true;
     setHashWordColor();
     settingContextMenu();
     //设置主题

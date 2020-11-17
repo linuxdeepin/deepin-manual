@@ -10,7 +10,7 @@ Screen Capture is a tool which integrates the screen capture and recorder functi
 
 ## Guide
 
-You can run, close or create shortcuts for screen capture by the following operations.
+You can run, close or create shortcuts for Screen Capture by the following operations.
 
 ### Run Screen Capture
 
@@ -54,7 +54,7 @@ There are three kinds of common screenshot areas, namely the full screen, progra
 
 > ![notes](icon/notes.svg)Notes: When the computer is connected to multiple monitors, you can also use Screen Capture to capture areas on different monitors.
 
-##### Full Screen Selection
+##### Select Full Screen
 
 Full screen selection is used to identify the entire screen of the current monitor.
 
@@ -74,7 +74,7 @@ You can also take a full screen screenshot directly in the following ways:
 - If Screen Capture has been fixed in the dock, right-click ![deepin-screenshot](icon/deepin-screenshot.svg) in the dock to select **Full screenshot**. 
 - Press ![print](icon/Print.svg) on the keyboard to take a full screen screenshot.
 
-##### Program Window Selection
+##### Select Program Window
 
 Program window selection is used to identify the current application window automatically.
 
@@ -87,7 +87,7 @@ Program window selection is used to identify the current application window auto
 3.  Click the window and a toolbar will pop up.
 4.  Click ![ ](icon/close.svg) on the toolbar or right-click to select **Exit** to exit Screen Capture.
 
-##### Customized Area Selection
+##### Select Customized Area
 
 Customized area selection is used to select the screenshot area freely by dragging the mouse.
 
@@ -96,7 +96,7 @@ Customized area selection is used to select the screenshot area freely by draggi
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 1.  Press **Ctrl + Alt + A** on the keyboard to enter the screen capture mode.
-2.  Hold down and drag the left mouse button to select the screen capture area. The screenshot dimension is displayed in the upper left. 
+2.  Hold down and drag the left mouse button to select the screen capture area. The screenshot dimension will be displayed in the upper left. 
 3.  Release the left mouse button to to complete area selection and a toolbar will pop up.
 4.  Click ![关闭](icon/close.svg) on the toolbar or right-click to select **Exit** to exit the screen capture.
 
@@ -209,7 +209,7 @@ While capturing screenshots, you can click the icons on the toolbar to complete 
 ![1|pencil](jpg/pencil.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 1.  Click ![画笔](icon/Combined_Shape-normal.svg) on the toolbar beside the screenshot area.
-2.  In the toolbar extension panel, select the the weight of pencil. 
+2.  In the toolbar extension panel, select the weight of pencil. 
 3.  Place the cursor on the screenshot area and the cursor will be changed to ![画笔指针](icon/brush red.svg).
 4.  Hold down the left mouse button and drag the mouse to complete drawing.
 
@@ -235,7 +235,7 @@ You can modify and move the drawn graphics in the screenshot.
 ##### Edit Graphics
 
 1.  Place the cursor over the outline of graphics.
-2.  Left click to enter the editing mode and you can:
+2.  Left-click to enter the editing mode and you can:
     - Press the **Delete** key on the keyboard to delete the graphics.
     - Press **Ctrl + Z** on the keyboard to return to the previous step.
     - Place the cursor over the edit box and the mouse will be changed to![双箭头](icon/Mouse_Arrow.svg). Enlarge or reduce the graphic area by dragging the cursor.
@@ -304,10 +304,10 @@ Click **Options** in the toolbar of the Screen Capture interface and expand the 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 - Select **Clipboard** to save the screenshot to clipboard.
-- Click **Desktop** (the default setting) and the screenshot will be saved to the desktop.
+- Click **Desktop** (default) and the screenshot will be saved to the desktop.
 - Click **Pictures** and the screenshot will be saved to the pictures folder.
 - Click **Folder**. Select the destination folder of the screenshot and the screenshot will be saved to the folder directory selected by you. 
-- Select **Show cursor** and the cursor will be displayed in the screenshot area. Its position and pattern will also be saved in the picture.
+- Select **Show pointer** and the pointer will be displayed in the screenshot area. Its position and pattern will also be saved in the picture.
 - Select **PNG/JPG/BMP** to set the screenshot format.
 
 
@@ -318,8 +318,8 @@ Click **Options** in the toolbar of the Screen Capture interface and expand the 
 ![0|工具栏](jpg/recorder-bar.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 >![notes](icon/notes.svg)Notes: 
-    - If window effect is turned off in Control Center, screen recording will be hidden.
-    - Screen recording is not available on Loongson and SW platforms.
+   - If window effect is turned off in Control Center, screen recording will be hidden.
+   - Screen recording is not available on Loongson and SW platforms.
 
 <table class="block1">
     <caption>Icon Description</caption>
@@ -393,4 +393,3 @@ The recorded video will be saved to the desktop automatically.
 ### View Help
 
 Press ![F1](icon/F1.svg) on the keyboard to view the help manual after launching Screen Capture.
-<div class="version-info"><span>Update Date: 2020-09-07</span><span> Version: 5.8</span></div>

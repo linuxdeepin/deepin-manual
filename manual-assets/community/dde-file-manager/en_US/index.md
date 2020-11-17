@@ -2,7 +2,7 @@
 
 ## Overview
 
-As the core component to manage files, File Manager is a powerful, easy-to-use tool with an elegant and simple interface. Full-featured, well-designed, efficient-improved, File Manager will be a good help in your daily life and work.
+File Manager is a powerful, simple and easy-to-use file management tool. It follows the classic function and layout of traditional file manager, and simplifies the user operation and adds many features. The open-and-shut navigation bar, the search box with intelligent identification, a variety of views and sorting let you manage files easily. It's beyond classic, just to give you a better experience!
 
 ![1|overview](jpg/overview.png)
 
@@ -21,7 +21,7 @@ You can run, close and create a shortcut for File Manager by the following ways.
 
 ### Exit File Manager
 
-- On File Manager interface, click **X** to exit.
+- On File Manager interface, click **x** to exit.
 - Right-click ![File Manager](icon/deepin-file-manager.svg) on Dock, select **Close All** to exit File Manager.
 - Click ![Settings](icon/icon_menu.svg) and select **Exit** to exit File Manager.
 
@@ -106,15 +106,12 @@ Click ![icon_view](icon/icon_view.svg) and ![list_view](icon/list_view.svg) on t
 
 > ![tips](icon/tips.svg)Tips: Press  **Ctrl**+**1**  or  **Ctrl**+ **2**  to switch icon view and list view. 
 
-
-
 ### Sorting
 
 1. Right-click in the blank area on File Manager, select **Sort by**.
 2. Choose among the sorting options, which include **Name**, **Time modified**, **Size** and **Type**.
 
 > ![tips](icon/tips.svg)Tips: you can click the head of the columns in the list view to change the sort order.
-
 
 
 ### Open Files
@@ -128,8 +125,6 @@ Click ![icon_view](icon/icon_view.svg) and ![list_view](icon/list_view.svg) on t
 ![0|open_with](jpg/open.png)
 
 > ![tips](icon/tips.svg)Tips: You can right-click multiple files of the same type, and select **Open with** to open them at a time.
-
-
 
 ### Hide files
 
@@ -211,11 +206,13 @@ Click the search button or press **Ctrl + F**  to switch to the search bar. Or, 
 
 - If you need to search in a specified directory, please enter it before search.
 
-> ![notes](icon/notes.svg)Notes: In **Settings**, check "Auto index internal disk" and "Index external storage device after connected to computer" to quicken the searching speed.
+> ![notes](icon/notes.svg)Notes: 
+   - In **Settings**, check "Auto index internal disk" and "Index external storage device after connected to computer" to quicken the searching speed.
+   - In case you want to search files by keywords in the content, you can check **Full-Text search** in **Settings** > **Advanced** > **Index**.
 
 #### Advanced Search
-1. In search bar, input the keywords and press enter, click ![filter](icon/filter.svg) to show advanced search.
-2. Select the searching range, file type and size, and modified time to narrow the search results.
+1. In search bar, input the keywords and press **Enter**. When the results appear, you will see ![filter](icon/filter.svg) icon, you can click it to do advanced search.
+2. Select the searching range, file type and size, and modified time, accessed time and created time to narrow the search results.
 
 ![0|filter](jpg/filter.png)
 
@@ -261,7 +258,7 @@ By adding tags on file/folder, you can classify and manage your files better.
 
 1. Right-click a file/folder, select **Tag information**.
 2. Input tag info. Use comma to separate tags in case of multiple tags.
-3. Press  **Enter** to finish adding tag.
+3. Click any blank area to finish adding tag.
 
 > ![notes](icon/notes.svg)Notes: The tag color is randomly assigned from eight default colors.
 
@@ -302,9 +299,11 @@ Drag and drop the tag upwards or downwards to change its order.
 #### Delete Tag
 Right-click a tag in left panel,  select **Remove** to delete the tag.
 
+
+
 ### Preview Files
 
-File Manager supports file preview by pressing space bar. Select a file and press the space bar on the keyboard to quickly preview it. In the preview window, you can view the file info, including image resolution, document size, text content. It also supports gif, audio and video playback.
+File Manager supports file preview by pressing space bar. Select a file and press the space bar on the keyboard to quickly preview it. In the preview window, you can view the file info, including image resolution, document size, text content. It also supports gif format, audio and video playback.
 
 #### Preview Video
 
@@ -329,7 +328,7 @@ You can share folders in File Manager, if there are some folders shared, the sha
 #### Share Local Files
 
 1. On File Manager interface, right-click a folder, select **Share folder**.
-2. In the popup window, check **Share this folder** under **Sharing**.
+2. In the pop-up window, check **Share this folder** under **Sharing**.
 3. Input **Share name**, and choose **Permission** and **Anonymous ** according to actual needs before closing the window.
 5. To set share password, click ![menu](icon/icon_menu.svg) and select **Set share password**.
 5. Input password and click **Confirm**.
@@ -344,8 +343,8 @@ You can find sharing folders of other users in the same LAN in **Computers in LA
 
 
 
-1. On File Manager interface, input the sharing address of the LAN user, e.g. smb://xx.x.xx.xxx (usually it should be an IP address), press **Enter**.
-2. Input the username and password or visit by anonymous access.
+1. On File Manager interface, click ![icon_menu](icon/icon_menu.svg) > **Connect to Server**, input the sharing address of the LAN user, e.g. smb://xx.x.xx.xxx (usually it should be an IP address), click **Connect**.  Or, input the server's address in the address bar directly and press **Enter**.
+2. Double-click the shared document you need to visit, input the username and password or visit by anonymous access in the pop-up dialogue box.
 - Unencrypted folders can be visited by anonymous access without inputting username and password.
 - When you visit encrypted folders, a window pops up and you will have to input user name and password before visiting. If you check **Remember password**, you don't have to input password when you visit the folder next time.
   - Username: i.e. the name created when the user installed the system, which means the one used to log in the system.
@@ -363,12 +362,16 @@ You can find sharing folders of other users in the same LAN in **Computers in LA
    - When you visit encrypted folders, a window pops up and you will have to input user name and password before visiting. If you check **Remember password**, you don't have to input password when you visit the folder next time.
 4. Click **Connect** to establish connection.
 
+### Open in new window as admin
 
+1. Right-click in the blank area on File Manager. 
+2. Select **Open in new window as admin**, input your login password in the pop-up window and click **Confirm**.
+3. The file will be opened in a new window, in which you can operate with admin permissions. And you will exit admin permissions when you close this window.
 
-### Open in Terminal
+### Open in terminal
 
-1. On File Manager interface, right-click in any blank area.
-2. Select **Open in terminal** to start up Terminal, and its path is the current directory.
+1. Right-click in the blank area on File Manager. 
+2. Select **Open in terminal**, Terminal will be opened, and its directory will be the current one.
 
 ![0|openinterminal](jpg/openinterminal.png)
 
@@ -389,8 +392,6 @@ When there is an external device inserted, you can directly send file/folder to 
 2. Right-click and select **Send to**.
 3. Select the device you want to send to.
 4. File/folder will be copied to the device.
-
-
 
 ## Disk Management
 
@@ -463,9 +464,22 @@ You can create new window, switch themes, [set share password](#Share Local File
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Select **New window** to open a new window.
 
+### Connect to Server
+
+You can [visit sharing folders](#Visit Sharing Folders) by connecting to server.
+
+1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
+2. Select **Connect to Server**, input server's IP address in the editing box.
+   - Click ![+](icon/+.svg) to add the address into **My Favorites**.
+   - Select an address from **My Favorites** and click ![-](icon/-.svg) to delete in from **My Favorites**.
+3. Click **Connect**.
+
+![conncet](jpg/connect to server.png)
+
+
 ### Theme
 
-The window theme includes Light Theme, Dark Theme and System Theme (default).
+The window theme includes Light Theme, Dark Theme and System Theme.
 
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Click  **Theme** to select one.
@@ -475,15 +489,17 @@ The window theme includes Light Theme, Dark Theme and System Theme (default).
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Select **Settings**.
 3. Modify the settings according to your needs:
- - In **Open behavior**, you can set whether to open folder in current window or new window, by one click or double click.
- - In **New window and tab**, you can set the default path to open in a new window/tab.
- - In **View**, you can set file icon size and default view.
- - In **Hidden files**, you can set whether to show the hidden file, and hide file extension when rename.
- - In **Index**, you can set whether to auto index internal disk and externally connected storage devices.
- - In **Preview**, you can set which types of files can be previewed.
- - In **Mount**, you can set to auto mount.
- - In **Dialog**, you can set whether to use the file chooser dialog of the File Manager.
- - In **Other**, you can set whether to hide system disk or not.
+   - Basic:
+      + In **Open behavior**, you can set whether to open folder in current window or new window, by one click or double click.
+      + In **New window and tab**, you can set the default path to open in a new window/tab.
+      + In **View**, you can set file icon size and default view.
+      + In **Hidden files**, you can set whether to show the hidden file, and hide file extension when rename.
+   - Advanced: 
+      + In **Index**, you can set whether to auto index internal disk and externally connected storage devices, and whether to search by file content.
+      + In **Preview**, you can set which types of files can be previewed.
+      + In **Mount**, you can set to auto mount.
+      + In **Dialog**, you can set whether to use the file chooser dialog of the File Manager.
+      + In **Other**, you can set whether to hide system disk or not.
 
 
 
@@ -505,5 +521,3 @@ The window theme includes Light Theme, Dark Theme and System Theme (default).
 
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Click **Exit**.
-
-<div class="version-info"><span>Update Date: 2020-09-07</span><span> Version: 5.2</span></div>

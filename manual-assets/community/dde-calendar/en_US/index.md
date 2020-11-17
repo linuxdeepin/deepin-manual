@@ -52,7 +52,7 @@ Monthly view is defaulted and you can click to switch between different views.
 | Yearly View  | Display the months and days of the whole year.               |
 | Monthly View | Display the holiday information and schedule.                |
 | Weekly View  | Display the schedule of this week.                           |
-| Daily View   | Display the holiday information, detailed schedule arrangements and an almanac. |
+| Daily View   | Display the holiday information and detailed schedule arrangements. |
 
 ### Create Events
 
@@ -72,7 +72,7 @@ Monthly view is defaulted and you can click to switch between different views.
       
       - When all day is not checked:
          - You can select dates, hours and minutes as starts and ends.
-         - Remind me: Never, At time of event, 15 minutes before, 30 minutes before, 1 hour before, 1 day before, 2 days before and 1 week before. 
+         - Remind Me: Never, At time of event, 15 minutes before, 30 minutes before, 1 hour before, 1 day before, 2 days before and 1 week before. 
    
    - Repeat: Never, Daily, Weekdays, Weekly, Monthly or Yearly.
    
@@ -87,12 +87,12 @@ Monthly view is defaulted and you can click to switch between different views.
 ### Edit Events
 
 1. Right-click a date with schedule in the monthly, weekly or daily view.
-2.  Select **Edit** and an **Edit Event** dialogue will pop up.
+2.  Select **Edit** and the **Edit Event** dialogue will pop up.
 3.  Set properties for the event under editing.  
 4.  Click **Save**. 
 5.  If it is set as an all day event or a repeated event, a prompt box will pop up for you to confirm information and then complete editing. 
 
-When editing an event, different prompt information will be displayed according to the changes of content. Description of icons contained in the prompt information is listed as below.
+During event editing, different prompt information will be displayed according to the changes of content. Description of icons contained in the prompt information is listed as below.
 
 | Icon              | Description                                                  |
 | ----------------- | ------------------------------------------------------------ |
@@ -118,7 +118,7 @@ Check **All Day**, set the **Starts** and **Ends **and you are able to set an al
 
 ### View Events
 
-Double-click an event title in the monthly, weekly or daily view and a **My Event** window will pop up. You can view events, [Edit Events](#Edit Events) or [Delete Events](#Delete Events). 
+Double-click an event title in the monthly, weekly or daily view and the **My Event** window will pop up. You can view events, [Edit Events](#Edit Events) or [Delete Events](#Delete Events). 
 
 ### View Schedule Reminder Details
 
@@ -128,7 +128,7 @@ Description of icons contained in the prompt information is listed as below.
 
 | Icon                   | Description                                                  |
 | ---------------------- | ------------------------------------------------------------ |
-| Remind me later        | The reminder is set on the current day. After the first reminder is given, click **Remind me later** and you will be reminded 10 minutes later. The following reminder intervals will be increased by 5 minutes each time on the basis of the then reminder internal when you click the **Remind me later**. |
+| Remind me later        | The reminder is set on the current day. After the first reminder is given, click **Remind me later** and you will be reminded 10 minutes later. The following reminder intervals will be increased by 5 minutes each time on the basis of the then reminder internal when you click **Remind me later**. |
 | Remind  me    tomorrow | The reminder is set to one day or two days ahead of the schedule. |
 | One day before start   | The reminder is set to one week ahead of the schedule.       |
 | Close                  | Turn off the prompt information.                             |
@@ -164,11 +164,11 @@ Description of icons contained in the prompt information for repeating and non-r
 
 ### Delete All Occurrences of Repeating Events
 
-In the Calendar, if you select the first occurrence of the repeating events, you can click **Delete All** to delete all occurrences of the event. 
+In Calendar, if you select the first occurrence of the repeating events, you can click **Delete All** to delete all occurrences of the event. 
 
 ### Delete Part of the Repeating events
 
-In the Calendar, if you select one or more occurrences of the repeating events, you can perform below tasks when deleting events:
+In Calendar, if you select one or more occurrences of the repeating events, you can perform following tasks when deleting events:
 
 - Click **Delete Only This Event**: delete the selected event only.
 - Click **Delete All Future Events**: delete the selected occurrence and all future occurrences of the event.
@@ -179,7 +179,7 @@ On the main menu, you can switch window themes, view help manual and get more in
 
 ### Theme
 
-The window theme provides three theme types, namely Light Theme, Dark Theme and System Theme (default).
+The window theme provides three theme types, namely Light Theme, Dark Theme and System Theme.
 
 1.  On the Calendar interface, click ![icon_menu](icon/icon_menu.svg).
 
@@ -200,5 +200,3 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 1.   On the Calendar interface, click ![icon_menu](icon/icon_menu.svg). 
 2.  Click **Exit** to exit Calendar.
 
-
-<div class="version-info"><span>Update Date: 2020-09-07</span><span> Version: 5.7</span></div>

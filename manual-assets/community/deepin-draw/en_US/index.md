@@ -8,15 +8,15 @@ Draw is a simple drawing tool, supporting rotation, cropping, flipping and addin
 
 ## Guide
 
-You can run, close and create shortcuts for Image Viewer by the following ways.
+You can run, close and create shortcuts for Draw by the following ways.
 
 ### Run Draw
 
-1.   Click ![deepin-launcher](icon/deepin-launcher.svg) in the Dock to enter the Launcher interface.
+1.   Click ![deepin-launcher](icon/deepin-launcher.svg) in Dock to enter the Launcher interface.
 2.   Locate ![draw](icon/deepin-draw.svg) by scrolling the mouse wheel or searching "draw" in the Launcher interface.
-3.   Right click ![draw](icon/deepin-draw.svg) and the user can:
+3.   Right-click ![draw](icon/deepin-draw.svg) and the user can:
  - Click **Send to desktop** to create a desktop shortcut.
- - Click **Send to dock** to fix the application in the Dock.
+ - Click **Send to dock** to fix the application in Dock.
  - Click **Add to startup** to add the application to startup and it will automatically run when the system starts up.
 
 ![tips](icon/tips.svg)Tips: In Control Center, you can set Draw as the defaulted picture viewer. Please refer to [Default Applications](dman:///dde#Default Application Settings) for specific operations.
@@ -24,7 +24,7 @@ You can run, close and create shortcuts for Image Viewer by the following ways.
 ### Exit Draw
 
 - On the Draw interface, click ![close_icon](icon/close.svg) to exit Draw.
-- Right-click ![draw](icon/deepin-draw.svg) in the Dock and select **Close All** to exit Draw.
+- Right-click ![draw](icon/deepin-draw.svg) in Dock and select **Close All** to exit Draw.
 - Click ![icon_menu](icon/icon_menu.svg) on the Draw interface and select **Exit** to exit Draw.
 
 ### View Shortcuts
@@ -52,7 +52,7 @@ When there are multiple tabs, you can adjust the order of tabs by dragging the t
 ### Close tabs
 
 - Click a tab. Click ![close_icon](icon/close.svg) to close the current tab.
-- Right click a tab. Select **Close tab** or **Close other tabs**. 
+- Right-click a tab. Select **Close tab** or **Close other tabs**. 
 
 ### Open Pictures
 
@@ -66,7 +66,8 @@ Currently, a maximum of 30 pictures could be exported. Formats including JPG, PN
 ### Export Pictures
 
 1.  On the Draw interface, click ![menu](icon/icon_menu.svg)> **Export**.
-2.  Set the parameters including file name, path, format and picture quality. Click **Save**. 
+2.  Set the parameters including file name, path, format and picture quality. 
+3.  Click **Save**. 
 
 ### Save Pictures
 
@@ -81,7 +82,7 @@ Currently, a maximum of 30 pictures could be exported. Formats including JPG, PN
 2.  Select the printer and set the printing parameters.
 3.  Click **Print**.
 
-> ![notes](icon/notes.svg)Notes: Click **Properties** and **Options** to customize your printing effect.
+> ![notes](icon/notes.svg)Notes: Click **Advanced** to customize your printing parameters.
 
 
 
@@ -107,15 +108,13 @@ After drawing entities with the graphics drawing tool, you can perform the follo
  - Click **Fill** to set the fill color and transparency for graphics.
  - Click **Stroke** to set the stroke color and transparency for graphics.
  - Choose and set the width of Stroke from the drop-down list right to the **Stroke** button.
- - Click **Points** (from 3 to 50) and **Diameter** (from 0% to 100%) to set the points and diameter for star graphics only.
+ - Click **Points** (from 3 to 50) and **Radius** (from 0% to 100%) to set the points and radius for star graphics only.
  - Click **Sides** to set sides for polygon graphics only. The number of sides ranges from 4 to 10, which can be adjusted by clicking the up and down adjustment icon or entering the value manually.
-3.   Drag the mouse to draw graphics in Draw area. 
+3.   Drag the mouse to draw graphics in the Draw area. 
 
 >![tips](icon/tips.svg)Tips: Facilitated by the **Shift** or **Shift + Alt** keys on the keyboard, you can draw a square, perfect circle, equilateral triangle, regular pentagram and regular pentagon when drawing graphics with ![rectangle](icon/rectangle_normal.svg), ![oval](icon/oval_normal.svg), ![triangle](icon/triangle_tool_normal.svg), ![star](icon/draw-star.svg) and ![hexagon](icon/hexagon_tool_normal.svg).
 
-![1|shape](jpg/shape01 .png)
-
-![1|shape](jpg/shape2.png)
+![1|shape](jpg/shape1.png)
 
 ![1|shape](jpg/star.png)
 
@@ -128,6 +127,7 @@ After drawing entities with the graphics drawing tool, you can perform the follo
 2.   You can set parameters for your pencil as follows:
 
    - Click **Color** to set the color and transparency of the pencil.
+   -  Select the weight of pencil from the drop-down list. 
    - Click **Start** and **End** to choose the style of starting point and ending point of the graphics including different arrow and circle types.
 3. Drag the mouse in the Draw area to draw lines.
 
@@ -138,25 +138,25 @@ After drawing entities with the graphics drawing tool, you can perform the follo
 1. On the Draw interface, click ![text](icon/text_normal.svg).
 
 2.   You can set text styles as follows:
-   - Click **Color** to set the text fill color and transparency.
-   - Select your font style under the **Font** drop-down list.
-   - Select the regular font or bold font.
-   - Adjust the **Size** by entering manually a value or selecting a size in the drop-down list.
+   - Click **Color** to set the fill color and transparency of texts.
+   - Select the font style in the **Font** drop-down list.
+   - Select regular font or bold font in the drop-down list.
+   - Adjust the **Size** by entering a value manually or selecting a size in the drop-down list.
    
 3. Click in the Draw area to enter texts in the text box.
 
 ![1|text](jpg/text.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
->![tips](icon/tips.svg)Tips: You can use shortcuts to adjust the font size. When font is under editing, select or click font size and click ![up](icon/Up.svg) key on the keyboard to enlarge the size for one scale; you can also select or click font size and click ![up](icon/Down.svg) key on the keyboard to narrow the size for one scale.
+>![tips](icon/tips.svg)Tips: You can use shortcuts to adjust the font size. When font is under editing, select or click font **Size** and click ![up](icon/Up.svg) key on the keyboard to enlarge the size for one scale; you can also select or click font **Size** and click ![up](icon/Down.svg) key on the keyboard to reduce the size for one scale.
 
 
 
 ### Blur Tool
 
 1.   On the Draw interface, click ![blur](icon/blur_normal.svg).
-2.   Select the blur type.
-3.   Change the blur area width by dragging the Width slider.
+2.   Select the blur **Type**.
+3.   Change the blur area width by clicking the up or down arrow in **Width** dropdown list.
 4.   Drag the mouse in the Draw area to blur the area as needed.
 
 ![1|blur](jpg/blur.png)
@@ -165,13 +165,13 @@ After drawing entities with the graphics drawing tool, you can perform the follo
 
 ## Edit Functions
 
-You can copy, crop and rotate graphics with the edition functions, and also adjust layer and texts.
+You can copy, crop and rotate graphics with the editing functions, and also adjust layer and texts.
 
 ### Copy and Paste
 
 1.  On the Draw interface, select the graphics to be copied.
-2.  Right click to select **Copy** or use the shortcuts **Ctrl + C** to copy the graphics to the clipboard.
-3.  Right click to select **Paste** or use the shortcuts **Ctrl + V** to paste the graphics to Draw.
+2.  Right-click to select **Copy** or use the shortcuts **Ctrl + C** to copy the graphics to the clipboard.
+3.  Right-click to select **Paste** or use the shortcuts **Ctrl + V** to paste the graphics to Draw.
 
 ![1|copy](jpg/copy.png)
 
@@ -183,7 +183,7 @@ You can copy, crop and rotate graphics with the edition functions, and also adju
   - Original: crop in proportion to the original picture by a ratio of 1:1, 2:3, 8:5 and 16:9 respectively.
 
 3.  Select the cropping mode and select the area to be cropped.
-4.  Press the **Enter** key to crop the graphics out of the selected area.
+4.  Press the **Enter** key to crop the graphics from the selected area.
 
 ![1|cut](jpg/cut.png)
 
@@ -193,13 +193,16 @@ You can copy, crop and rotate graphics with the edition functions, and also adju
 1. On the Draw interface, select an imported picture.
 2.  Click ![flip](icon/filp_Vertical_normal.svg) or ![flip](icon/flip_Horizontal_normal.svg) to flip the picture vertically or horizontally.
 
-![1|roll-over](jpg/rotate.png)
-
 
 ### Rotate
 
 1.  On the Draw interface, select an imported picture.
 2.  Click ![rotate](icon/rotate_right_normal.svg) or ![rotate](icon/rotate_left_normal.svg) to rotate the picture for 90 degrees clockwise or counterclockwise.
+
+![1|roll-over](jpg/rotate.png)
+
+
+
 >![tips](icon/tips.svg)Tips: You can also rotate it freely by dragging the base point of the picture or graphics with the mouse.
 
 
@@ -215,14 +218,14 @@ You can copy, crop and rotate graphics with the edition functions, and also adju
 ### Delete
 
 1.  On the Draw interface, select an imported picture.
-2.  Right click to select **Delete** or use the ![Delete](icon/delete.svg) key on the keyboard to delete the selected picture.
+2.  Right-click to select **Delete** or use the ![Delete](icon/delete.svg) key on the keyboard to delete the selected picture.
 
 ![1|delete](jpg/delete.png)
 
 ### Adjust Layers
 
 1.  On the Draw interface, select an imported picture.
-2.  Right click **Layer** to select **Raise Layer**, **Lower Layer**, **Layer to Top** or **Layer to Bottom** to adjust the layer order.
+2.  Right-click **Layer** to select **Raise Layer**, **Lower Layer**, **Layer to Top** or **Layer to Bottom** to adjust the layer order.
 
 ![1|layer](jpg/layer.png)
 
@@ -230,18 +233,18 @@ You can copy, crop and rotate graphics with the edition functions, and also adju
 
 1. On the Draw interface, select one or several graphics.
 
-2. Right click and select **Align**. Now you can choose **Align left**, **Horizontal centers**, **Align right**, **Align top**, **Vertical centers**, **Align bottom**, **Distribute horizontal space** or **Distribute vertical space**. 
+2. Right-click and select **Align**. Now you can choose **Align left**, **Horizontal centers**, **Align right**, **Align top**, **Vertical centers**, **Align bottom**, **Flip horizontally** or **Distribute vertical space**. 
 
 >![notes](icon/notes.svg)Notes: 
-    - When you select one graphic, the layer will be aligned with the canvas.
-    - When you select 3 or more graphics, **Distribute horizontal space** and **Distribute vertical space** are available.
+   - When you select one graphic, the layer will be aligned with the canvas.
+   - When you select 3 or more graphics, **Flip horizontally** and **Distribute vertical space** are available.
 
 ![1|align1](jpg/align1.png)
 
 ### Align Texts
 
-1.  On the Draw interface, click ![text](icon/text_normal.svg) and adjust the size of text box.
-2.  Select target text. Right click and select **Text Alight Left**, **Text  Align Right** or **Text Align Center** to align texts as needed.
+1.  On the Draw interface, click ![text](icon/text_normal.svg) and adjust the size of the text box.
+2.  Select target text. Right-click and select **Text Alight Left**, **Text  Align Right** or **Text Align Center** to align texts as needed.
 
 ![1|layer](jpg/align.png)
 
@@ -259,7 +262,7 @@ You can create a new drawing.
 
 ### Theme
 
-The window theme provides three theme types, namely Light Theme, Dark Theme and System Theme (default).
+The window theme provides three theme types, namely Light Theme, Dark Theme and System Theme.
 
 1. On the Draw interface, click ![icon_menu](icon/icon_menu.svg).
 2. Click **Theme** to select one theme.
@@ -280,5 +283,3 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 1.  On the Draw interface, click ![icon_menu](icon/icon_menu.svg).
 2.  Click **Exit** to exit Draw.
 
-
-<div class="version-info"><span>Update Date: 2020-09-07</span><span> Version: 5.8</span></div>

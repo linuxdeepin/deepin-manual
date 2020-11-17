@@ -2,3 +2,6 @@
 	path = src/web/node_modules
 	url = ../vendor-deps
 	branch = deepin-manual
+[submodule "dman_qtest/googletest"]
+	path = dman_qtest/googletest
+	url = https://github.com/google/googletest.git

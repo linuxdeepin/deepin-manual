@@ -73,7 +73,7 @@ You can run, close or create a shortcut for Log Viewer.
 
 1. On the main interface, click **System Log **. 
 2. You can see a list of system logs which are detailed by "Level", "Process", "Date and Time", and "Info".
-3. Click a log, you can see its particular info below the list, including process, user, PID, time and info.
+3. Click a log, you can see its particular info below the list, including level, process, user, PID, time and info.
 
 ![0|rsyslog](jpg/rsyslog.png)
 
@@ -162,7 +162,7 @@ In the main menu, you can switch themes, view help manual, and so on.
 
 ### Theme
 
-The window theme includes Light Theme, Dark Theme and System Theme (default).
+The window theme includes Light Theme, Dark Theme and System Theme.
 
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Click  **Theme** to select one.
@@ -186,5 +186,3 @@ Click Help to get the manual, which will help you further know and use Log Viewe
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Click  **Exit**.
 
-
-<div class="version-info"><span>Update Date: 2020-09-07</span><span> Version: 5.8</span></div>

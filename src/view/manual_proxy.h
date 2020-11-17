@@ -32,6 +32,8 @@ signals:
     void channelInit();
     void searchEditTextisEmpty();
     void supportBeClick();
+    //发送页面加载完成时间
+    void startFinish(qint64);
 
 public slots:
     QString getSystemManualDir();
@@ -43,7 +45,8 @@ public slots:
     void finishChannel();
     void supportClick();
     bool bIsLongSon();
-
+    //js页面渲染结束
+    void renderFinish();
 
 private:
     void saveAppList(const QStringList &list);

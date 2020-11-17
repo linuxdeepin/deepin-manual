@@ -474,7 +474,7 @@ QList<AppInfo> Utils::sortAppList(QMultiMap<qlonglong, AppInfo> map)
     qlonglong longlongtmp = 0;
     while (it.hasNext()) {
         it.next();
-        if (it.value().name == map.first().name) {
+        if (it.value().key == map.first().key) {
             listtmp.append(it.value());
             longlongtmp = it.key();
             continue;
@@ -485,7 +485,7 @@ QList<AppInfo> Utils::sortAppList(QMultiMap<qlonglong, AppInfo> map)
             AppInfo m;
             for (int i = 0; i < listtmp.size(); ++i) {
                 for (int j = 0; j < listtmp.size() - 1; ++j) {
-                    if (listtmp.at(j).name > listtmp.at(j + 1).name) {
+                    if (listtmp.at(j).key > listtmp.at(j + 1).key) {
                         m = listtmp.at(j);
                         listtmp[j] = listtmp[j + 1];
                         listtmp[j + 1] = m;
@@ -504,7 +504,7 @@ QList<AppInfo> Utils::sortAppList(QMultiMap<qlonglong, AppInfo> map)
             AppInfo m;
             for (int i = 0; i < listtmp.size(); ++i) {
                 for (int j = 0; j < listtmp.size() - 1; ++j) {
-                    if (listtmp.at(j).name > listtmp.at(j + 1).name) {
+                    if (listtmp.at(j).key > listtmp.at(j + 1).key) {
                         m = listtmp.at(j);
                         listtmp[j] = listtmp[j + 1];
                         listtmp[j + 1] = m;
@@ -529,7 +529,8 @@ bool Utils::hasSelperSupport()
     if (Dtk::Core::DSysInfo::DeepinProfessional == (Dtk::Core::DSysInfo::DeepinType)nType) {
         const QStringList list = getSystemManualList();
         if (list.contains("uos-service-support")) {
-            return true;
+//            return true;
+            return false;//阉割掉服务与支持
         }
     }
     return false;

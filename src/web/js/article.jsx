@@ -10,7 +10,6 @@ export default class Article extends Component {
     super(props);
     this.state = {
       preview: null,
-      smoothScroll: false,
       fillblank: null,
       bIsTimerOut:true
     };
@@ -20,16 +19,13 @@ export default class Article extends Component {
     this.contentMenu = this.contentMenu.bind(this)
 
     var timerObj;
+    var bIsMount=false;
+    this.smoothScroll=false;
   }
   //滚动到锚点
   scrollToHash() {
     console.log("article scrollToHash ",this.hash);
     let tempHash = this.hash;
-
-    // if (tempHash == 'h21')
-    // {
-    //   tempHash = 'h250';
-    // }
     
     const hashNode = document.getElementById(tempHash);
     console.log("article scrollToHash temphash: " + tempHash + " " + hashNode);
@@ -39,15 +35,25 @@ export default class Article extends Component {
     }
 
     if (hashNode) {
-      console.log(" article===============>");
+      console.log(" article  scrollToHash===============>",this.bIsMount);
       clearTimeout(this.timerObj);
-      this.setState({ smoothScroll: true });
+      this.smoothScroll = true;
+
+      var timeVar = 800;
+      if (this.bIsMount)
+      {
+        console.log('===========> is mount');
+        timeVar = 15*1000;
+        this.bIsMount = false;
+      }
 
       this.timerObj = setTimeout(() => {
-          this.setState({ smoothScroll: false });
-      },800);
+          this.smoothScroll = false;
+      },timeVar);
 
-      scrollIntoView(hashNode, { behavior: global.scrollBehavior, block: 'start' }).then(() => {
+      scrollIntoView(hashNode, { behavior: 'smooth', block: 'start' }).then(() => {
+ 
+        console.log(" scrollIntoView finish ===============>");
 
         //scrollIntoView函数存在异步,如果tempHash != this.hash时,说明存在异步操作,直接return. 
         if(tempHash != this.hash) return;
@@ -63,10 +69,14 @@ export default class Article extends Component {
           if (tempHash == hList[i].id && (hList[i].tagName == 'H4' || hList[i].tagName == 'H5')) {
             console.log("article: scroll hlist:" + hList[i].tagName  + "," + hList[i].id);
             console.log("currH3Hash:" + currH3Hash);
-            this.hash = currH3Hash;
-            this.props.setHash(currH3Hash);
-            this.props.setScroll(currH3Hash);
-            break;
+
+            if (this.load)
+            {
+              this.hash = currH3Hash;
+              this.props.setHash(currH3Hash);
+              this.props.setScroll(currH3Hash);
+              break;
+            }
           }
         }
       });
@@ -81,6 +91,7 @@ export default class Article extends Component {
 
   componentDidMount() {
     console.log("article componentDidMount");
+    this.bIsMount = true;
     this.componentDidUpdate();
   }
 
@@ -98,6 +109,7 @@ export default class Article extends Component {
     if (nextProps.file != this.props.file) {
       this.hash = '';
       this.load = false;
+      this.bIsMount = true;
     }
   }
 
@@ -125,9 +137,10 @@ export default class Article extends Component {
       let loadCount = 0;
       imgList.map(el => {
         el.onload = () => {
+          console.log("------img onload---------");
           loadCount++;
           if (loadCount == imgList.length) {
-            // console.log('image loaded');
+            console.log('image loaded。。。。。。。。。。。。。。。。');
             this.load = true;
             this.scrollToHash();
             let last = article.querySelector(
@@ -142,9 +155,12 @@ export default class Article extends Component {
           }
         };
         el.onerror = () => {
+          console.log("------img onerror---------");
           if (el.getAttribute('src') == el.dataset.src) {
+            console.log("------img == dataset---------");
             el.onload();
           } else {
+            console.log("------img == no dataset---------");
             el.src = el.dataset.src;
           }
         };
@@ -186,7 +202,9 @@ export default class Article extends Component {
     // if (!this.load) {
     //   return;
     // }
-    if (this.state.smoothScroll) {
+    console.log('smooth::',this.smoothScroll);
+    if (this.smoothScroll)
+    {
       return;
     }
     if (this.state.preview != null) {
@@ -332,24 +350,6 @@ export default class Article extends Component {
                   onClick = {this.click}
                   onContextMenu={this.contentMenu}
                 />
-                {/* {this.state.preview != null && (
-                  <div
-                    style={this.state.preview.style}
-                    className={this.state.preview.tClass}
-                    id="preview"
-                  >
-                    <div id="view">
-                      <Scrollbar>
-                        <div
-                          className="read"
-                          dangerouslySetInnerHTML={{
-                            __html: this.state.preview.html,
-                          }}
-                        />
-                      </Scrollbar>
-                    </div>
-                  </div>
-                )} */}
               </Scrollbar>
             </div>
           </div>

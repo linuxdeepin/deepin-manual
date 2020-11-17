@@ -15,7 +15,7 @@ You can run, close or create shortcuts for Album by the following ways.
 ### Run Album
 
 1. Click ![launcher](icon/deepin-launcher.svg) in the Dock and enter the Launcher interface.
-2. Locate ![deepin-album](icon/deepin-album.svg) by scrolling the mouse wheel or searching "Image Viewer" in the Launcher interface and click it to run.
+2. Locate ![deepin-album](icon/deepin-album.svg) by scrolling the mouse wheel or searching "album" in the Launcher interface and click it to run.
 3. Right-click ![deepin-album](icon/deepin-album.svg) and you can:
  - Click **Send to desktop** to create a desktop shortcut.
  - Click **Send to dock** to fix the application in the Dock.
@@ -26,7 +26,7 @@ You can run, close or create shortcuts for Album by the following ways.
 ### Exit Album
 
 - On the Album interface, click![close_icon](icon/close.svg)to exit Album.
-- Right-click ![deepin-album](icon/deepin-album.svg) in the Dock and select **Close all** to exit Album.
+- Right-click ![deepin-album](icon/deepin-album.svg) in the Dock and select **Close All** to exit Album.
 - On the Album interface, click ![icon_menu](icon/icon_menu.svg) and select **Exit** to exit Album.
 
 ### View Shortcuts
@@ -63,7 +63,7 @@ On the Album interface, you are able to import photos as follows:
 
 Click the scroll bar in the Album interface to adjust the thumbnail size of photos.
 
-Double-click or right-click the photo to select **View** and enter the photo viewing interface. Press **Esc** on the keyboard to exit.
+Double-click the photo, or right-click the photo and select **View** to enter the photo viewing interface. Press **Esc** on the keyboard to exit.
 
 | Icon                                               | Name                    | Description                                                  |
 | -------------------------------------------------- | ----------------------- | ------------------------------------------------------------ |
@@ -71,7 +71,7 @@ Double-click or right-click the photo to select **View** and enter the photo vie
 | ![previous](icon/previous.svg)                     | Previous                | Switch to the previous photo.                                |
 | ![next](icon/next.svg)                             | Next                    | Switch to the next image.                                    |
 | ![adapt-image](icon/adapt-image.svg)               | 1:1 Size                | The photo will be displayed in 1:1 size without changing the size of the window. |
-| ![adapt-screen](icon/adapt-screen.svg)             | Fit to window           | The photo will be resized to adapt to the current window.    |
+| ![fit_hover](icon/fit_hover.svg)                   | Fit to window           | The photo will be resized to adapt to the current window.    |
 | ![collect](icon/collect.svg)                       | Favorite                | Add favorite photos to your Favorites.                       |
 | ![clockwise-rotation](icon/clockwise-rotation.svg) | Rotate clockwise        | Rotate the photo 90 degrees clockwise.                       |
 | ![contrarotate](icon/contrarotate.svg)             | Rotate counterclockwise | Rotate the photo 90 degrees counterclockwise.                |
@@ -87,7 +87,7 @@ Double-click or right-click the photo to select **View** and enter the photo vie
 
 ### View Timelines
 
-In timelines, all photos are sorted by date. Photos with the same date are displayed together and photos with different dates are displayed in different columns. You are able to locate photos of a specific day quickly by timelines.
+In Timelines, all photos are sorted by date. Photos with the same date are displayed together and photos with different dates are displayed in different columns. You are able to locate photos of a specific day quickly by timelines.
 
 ### Print Photos
 
@@ -99,7 +99,7 @@ In timelines, all photos are sorted by date. Photos with the same date are displ
 
 1.  On the Album interface, right-click a photo.
 2. Select **Slide show** to play the photo as slides in full screen.
-3. Press **Esc** on the keyboard to exit. 
+3. Press **ESC** on the keyboard to exit. 
 
 ![0|copy](jpg/play.png)
 
@@ -117,7 +117,7 @@ You can delete photos from Albums by the following ways:
 
 - Click the ![delete_press](icon/delete.svg) icon on the Album interface when viewing photos.
 - Right-click the photo to select **Delete**.
-- On the Album interface, press **Delete** on the keyboard.
+- On the Album interface, select the photo and press **Delete** on the keyboard.
 
 > ![tips](icon/tips.svg)Tips: The deleted photos in the Album are not deleted permanently but temporarily stored in "Trash" (click **Albums** on the top of the interface and it will display in the left panel). When the number displayed in remaining days on the photo is 0, the photos will be deleted permanently. You are able to restore or delete the photo in advance.
 
@@ -125,8 +125,8 @@ You can delete photos from Albums by the following ways:
 ### Favorite Photos
 
 1. On the Album interface, right-click a photo.
-2. Select **Favorite** and the photo will be added to "Favorites".
-3. Right-click the photo in Favorite to **Unfavorite** it.
+2. Select **Favorite** and the photo will be added to **"Favorites"**.
+3. Right-click the photo in **Favorites** to **Unfavorite** it.
 
 > ![tips](icon/tips.svg)Tips: When viewing a photo, click the ![collect](icon/collect.svg) icon to favorite the photo and click ![collect-active](icon/collect-active.svg) again to unfavorite it.
 
@@ -209,11 +209,11 @@ On the Album interface, you are able to create new albums, manage photos in the 
 
 ## Main Menu
 
-In the main menu, you can create [New Albums](#Create New Albums), [Import photos](#Import Photos), switch window themes, view help and get more information about Album.
+In the main menu, you can [Create New Albums](#Create New Albums), [Import Photos](#Import Photos), switch window themes, view help and get more information about Album.
 
 ### Theme
 
-The window theme includes Light Theme, Dark Theme and System Theme (default).
+The window theme includes Light Theme, Dark Theme and System Theme.
 
 1.  On the Album interface, click ![main_menu](icon/icon_menu.svg).
 2.  Click **Theme** to choose one theme.
@@ -235,5 +235,3 @@ Click **Help** to view the manual.
 
 1.  On the Album interface, click ![icon_menu](icon/icon_menu.svg).
 2.  Click **Exit** to exit Album.
-
-<div class="version-info"><span>Update Date: 2020-09-07</span><span> Version: 5.6</span></div>

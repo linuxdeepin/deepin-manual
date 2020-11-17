@@ -52,7 +52,7 @@ With Font Manager, you can not only install a single font but also install multi
 #### Single Font Installation
 
 1.  On the Font Manager interface, click ![add](icon/icon_plus.svg) or select ![icon_menu](icon/icon_menu.svg)> **Add font**.
-2. Select the file. Select the font to be installed and click **Open** or double click the font file to open Font Manager for installation.
+2. Select the font file to be installed, right-click and select **Open**, or double-click the font file to open Font Manager for installation.
 3.  Please enter the authorization password in the pop-up authorization window (if any).
 4.  Right-click the font file after successful installation and select **Display in file manager** to view the specific installation location.
 
@@ -66,7 +66,7 @@ With Font Manager, you can not only install a single font but also install multi
 
 You can add multiple fonts in a batch at one time by dragging or selecting files in the Font Manager. Please refer to [Single Font Installation](#Single Font Installation) for the installation steps. Pay attention to the following points during batch installation:
 
-- Addition is available after successful batch installation.
+- You can install a single font or batch fonts after successful batch installation.
 - Re-installation can be performed for fonts which are already installed locally during batch installation.
 
 > ![notes](icon/notes.svg)Notes: If you want to use the installed font as your system font, you can open the **Control Center**, click **Font** in **Personalization**, and set the font as **Standard Font**.
@@ -97,9 +97,7 @@ The exported font is saved in the desk folder by default, with Font as its defau
 You can view the basic font information via Font Manager.
 
 1. Right-click to select **Details** in the font sets list on the Font Manager interface.
-
-   You can view the font icon, name, style, type, version and description information.
-   
+2. You can view the font icon, name, style, type, version and description information.
 
 ![0|info](jpg/info.png)
 
@@ -111,17 +109,17 @@ Right-click to select **Display in file manager** in the font sets list on the F
 
 ### Preview Fonts
 
-Each text block of the font in the font sets presents its font style and you can view the display effect by previewing fonts.
+Each text block of the font in the font sets presents the corresponding font style and you can view the display effect by previewing fonts.
 
-The default preview copy is "Don't let your dreams be dreams" and displayed in English.
+The default preview copy is **Don't let your dreams be dreams** and displayed in English.
 
 1.   Enter texts in the font preview input box at the bottom on the Font Manager interface.
 
 2.   Set the font size by dragging the control bar horizontally.
 
-   View the display effect in the font set list.
+3. View the display effect in the font set list.
 
-   > ![notes](icon/notes.svg)Notes: Slide the control bar to the left to reduce the font size and slide it to the right to enlarge the font size. The font size ranges from 6px to 60px.
+   > ![notes](icon/notes.svg)Notes: Drag the scroll bar to the left to reduce the font size and drag it to the right to enlarge the font size. The font size ranges from 6px to 60px.
 
 ### Favorite/Unfavorite Fonts
 
@@ -130,13 +128,11 @@ You can favorite or unfavorite a font via Font Manager.
 
 2.   Click the ![uncollect](icon/uncollection_normal.svg) icon to the right of a row in the list.
 
-3.  View the font in **Favorites** List. The status is changed to **Favorite** ![collect](icon/collection_normal.svg).
+3.  View the font in the **Favorites** List. The status is changed to **Favorite** ![collect](icon/collection_normal.svg).
 
-4.   Click the ![collect](icon/collection_normal.svg) icon in **All Fonts** lists.
+4.   Click the ![collect](icon/collection_normal.svg) icon in the **All Fonts** lists. The unfavorite font will not be displayed in the **Favorites** list and the status displayed in other font set lists is changed to **Unfavorite** ![uncollect](icon/uncollection_normal.svg).
 
-   The unfavorite font will not be displayed in the **Favorites** list and the status displayed in other font set lists is changed to **Unfavorite** ![uncollect](icon/uncollection_normal.svg).
-
-5.   In All Fonts list,  you can also right-click to **Favorite** or **Unfavorite**.
+5.   In the **All Fonts** list,  you can also right-click to select **Favorite** or **Unfavorite**.
 
 > ![notes](icon/notes.svg)Notes: Favorite/Unfavorite are available for a single font and a batch of fonts.
 
@@ -144,7 +140,7 @@ You can favorite or unfavorite a font via Font Manager.
 
 You can enable or disable a font via Font Manager.
 
-1.   Select the font with **Disabled** status in the **User Fonts** list on the Font Manager interface.
+1.   Select the font with **Disabled** status in the **User** list on the Font Manager interface.
 
 2.   Check the font. The font will be enabled and displayed in the **Active** list. 
 
@@ -152,18 +148,18 @@ You can enable or disable a font via Font Manager.
 
    The disabled font will not be displayed in the **Active** list and is grayed out in other font set lists with a **Disabled** status.
 
-4.   You can also right-click to **Enable** or **Disable** in the **All Fonts** list to complete the corresponding operation. 
+4.   You can also right-click to **Enable** or **Disable** in the **User** list to complete the corresponding operation. 
 
-> ![notes](icon/notes.svg)Notes: Enable/Disable are available for a single font and a batch of fonts. System font can not be disabled.
+> ![notes](icon/notes.svg)Notes: Enable/Disable are available for a single font and a batch of fonts. System font and font currently being used can not be disabled.
 
 ### Delete Fonts
 
 You can delete a font through Font Manager.
 
-> ![notes](icon/notes.svg)Notes: Delete is available for a single font and a batch of fonts. System font can not be deleted.
+> ![notes](icon/notes.svg)Notes: Delete is available for a single font and a batch of fonts. System font and font currently being used can not be deleted.
 
 1. Select a font in the **User** list on the Font Manager interface and right-click **Delete**.
-2.  Click **Confirm** in the pop-up box.
+2.  Click **Delete** in the pop-up box.
 3.  Please enter the authorization password in the pop-up authorization dialogue (if any) to delete the font.
 
 ![0|font-delete](jpg/font-delete.png)
@@ -176,7 +172,7 @@ On the main menu, you can switch window themes, view help manual and get more in
 
 ### Theme
 
-The window theme provides three theme types, namely Light Theme, Dark Theme and System Theme (default).
+The window theme provides three theme types, namely Light Theme, Dark Theme and System Theme.
 
 1.   On the Font Manager interface, click ![icon_menu](icon/icon_menu.svg).
 2.   Click **Theme** to select a theme.
@@ -197,5 +193,3 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 1.   On the Font Manager interface, click ![icon_menu](icon/icon_menu.svg).
 2.   Click **Exit** to exit Font Manager.
 
-
-<div class="version-info"><span>Update Date: 2020-09-07</span><span> Version: 5.6</span></div>

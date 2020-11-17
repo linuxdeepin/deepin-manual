@@ -12,7 +12,7 @@ You can run, exit or create a shortcut for Voice Notes by the following ways.
 ### Run Voice Notes
 
 1.  Click ![deepin-launcher](icon/deepin-launcher.svg) in the dock to enter the Launcher interface.
-2.  Locate ![deepin-voice-note](icon/deepin-voice-note.svg) by scrolling the mouse wheel or searching Voice Notes in the Launcher interface and click it to run.
+2.  Locate ![deepin-voice-note](icon/deepin-voice-note.svg) by scrolling the mouse wheel or searching "voice notes" in the Launcher interface and click it to run.
 3.  Right-click ![deepin-voice-note](icon/deepin-voice-note.svg) and you can:
 
    - Click **Send to desktop** to create a desktop shortcut.
@@ -61,7 +61,7 @@ You can record audios simply in two steps:
 
 > ![tips](icon/tips.svg)Tips: Click ![pause](icon/pause_red_normal.svg) icon to pause recording during the recording process and click ![record_normal](icon/record_normal.svg) again to resume recording.
 
-> ![notes](icon/notes.svg)Notes: The maximum recording time is 60 minutes. Voice notes can only be created in the text notes. 
+> ![notes](icon/notes.svg)Notes: The maximum recording time is 60 minutes. 
 
 ![0|Recorder](jpg/recorder2.png)
 
@@ -74,17 +74,19 @@ The recorded voice files are displayed on the Voice Notes interface in a list. S
 ![0|replay](jpg/replay.png)
 
 
-### Search
+### Search Voice Notes
 
-1. In the search box located in the top center area of the Voice Notes interface, you can click ![search](icon/search.svg) to enter keywords.
+1. In the search box located in the top center area of the Voice Notes interface, you can:
 
-2.  Press the **Enter** key on the keyboard to fast locate.
+   - Click ![search](icon/search.svg) to enter keywords.
 
-   - When there is matched information, the search result list will display on the right.
+2. Press the **Enter** key on the keyboard to fast locate.
 
-   - When there is no matched information, **No search results** will display on the right.
+   - When there is matched information, the search result list will be displayed on the right.
 
-3.  Click ![0|three_dots](icon/close_normal-2.svg) in the search box  to clear the current keywords or cancel the search. 
+   - When there is no matched information, **No search results** will be displayed on the right.
+
+3. Click ![0|three_dots](icon/close_normal-2.svg) in the search box  to clear the current keywords or cancel the search. 
 
 
 ### Save Voices as MP3 Format
@@ -98,7 +100,7 @@ The recorded voice files are displayed on the Voice Notes interface in a list. S
 1. Select a notebook, right-click and select **New note** or click ![mic](icon/circlebutton_add2.svg) icon on the Voice Notes interface to add a new text note.
 2.  Move the cursor to the right column to click and input text. 
 
-> ![tips](icon/tips.svg)Tips: You can record audios in notebooks. Please refer to recording audios for details.
+> ![tips](icon/tips.svg)Tips: You can record audios in notebooks. Please refer to [Record Voice Notes](#Record Voice Notes) for details.
 
 ![0|words_recorder](jpg/main.png)
 
@@ -110,7 +112,7 @@ The recorded voice files are displayed on the Voice Notes interface in a list. S
 3.  Save the text note to the storage device in TXT format.
     ![0|save](jpg/toTxT.png)
 
-### Rename New Notebooks
+### Rename Notebooks
 
 The notebook created will be automatically saved as **Note(n)**. You can rename it in the following steps. 
 
@@ -120,9 +122,9 @@ The notebook created will be automatically saved as **Note(n)**. You can rename 
 
 3. Enter the file name.
 
-4. Click in the blank area on the interface or press the **Enter** key on the keyboard to rename.
+4. Click in the blank area on the interface or press the **Enter** key on the keyboard to rename it.
 
-   > ![tips](icon/tips.svg)Tips: You can also rename each text note under a notebook. Please refer to **Rename New Notebook** for details. 
+   > ![tips](icon/tips.svg)Tips: You can also rename each text note under a notebook. Please refer to **Rename Notebooks** for details. 
 
 ![0|rename](jpg/rename.png)
 
@@ -143,7 +145,7 @@ The notebook created will be automatically saved as **Note(n)**. You can rename 
 3.  Click **Confirm** in the pop-up prompt box.
 
 
-### Delete Notebook
+### Delete Notebooks
 
 1. Select a notebook on the Voice Notes interface.
 2. Right-click and select **Delete**.
@@ -152,11 +154,20 @@ The notebook created will be automatically saved as **Note(n)**. You can rename 
 
 ## Main Menu
 
-On the main menu, you can switch window themes, view help manual and get more information about Voice Notes.
+On the main menu, you can set audio source, check privacy policy, switch window themes, view help manual, and get more information about Voice Notes.
+
+### Settings
+
+You can set up audio source from **Internal** and **Microphone** options.
+
+1. On the Voice Notes interface, click ![icon_menu](icon/icon_menu.svg).
+2. Set up the audio source:
+   - Select **Internal** source and only system built-in sound will be recorded. 
+   - Select **Microphone** source and only microphone sound will be recorded. 
 
 ### Theme
 
-The window theme provides three theme types, namely Light Theme, Dark Theme and System Theme (default).
+The window theme provides three theme types, namely Light Theme, Dark Theme and System Theme.
 
 1. On the Voice Notes interface, click ![icon_menu](icon/icon_menu.svg).
 2. Click **Theme** to select one theme.
@@ -177,5 +188,3 @@ View Help to get more information about Voice Notes.
 
 1. On the Voice Notes interface, click ![icon_menu](icon/icon_menu.svg).
 2.  Click **Exit** to exit Voice Notes.
-
-<div class="version-info"><span>Update Date: 2020-09-07</span><span> Version: 5.7</span></div>

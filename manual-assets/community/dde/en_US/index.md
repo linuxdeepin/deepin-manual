@@ -399,7 +399,7 @@ Fingerprint password is used in system login, application authorization and othe
 4. Put your finger on a fingerprint reader and follow the instructions repeatedly until your fingerprint is added successfully.
 5. Click **Done**. 
 
-> ![notes](icon/notes.svg)Notes: You can add 10 fingerprint passwords for one account; Click **Delete fingerprint** to remove all fingerprint passwords. 
+> ![notes](icon/notes.svg)Notes: You can add 10 fingerprint passwords for one account; Click **Delete fingerprint** to remove fingerprint passwords one by one. 
 
 
 #### Delete Account
@@ -413,7 +413,11 @@ Fingerprint password is used in system login, application authorization and othe
 
 ### Deepin ID
 
-By signing in Deepin ID, you can sync the current system settings to the cloud, including network settings, sound settings, mouse settings, update settings, power settings, theme, wallpaper, launcher and Dock. To sync the settings from the cloud to another computer, just sign in with the same Deepin ID on that computer.
+By signing in Deepin ID, you are able to use cloud synchronization, app store and other related cloud services.
+
+When logging in for the first time, the window of **Privacy Policy** will pop up. If users need to open cloud services and other functions, you can check **I have read and agree to the Privacy Policy**, and click **Confirm**.
+
+Cloud synchronization can automatically synchronize various system configurations to the cloud, such as network, sound, mouse, update, dock, launcher, wallpaper, theme, power supply, etc. To sync the settings from the cloud to another computer, just sign in with the same Deepin ID on that computer.
 
 > ![tips](icon/tips.svg)Tips: When "Auto Sync" is enabled, you can uncheck the unwanted options; when it is disabled, all settings will not be synced.
 
@@ -442,7 +446,7 @@ Set screen resolution, brightness, direction and display scaling properly to hav
 2. Click **Brightness**.
    - Drag the slider to set screen brightness.
    - Once **Night Shift** is switched on, the screen hue will be auto-adjusted according to your location.
-   - Once **Change Color Temperature** is switched on, you can adjust the monitor brightness as you wish. 
+   - Once **Change Color Temperature** is switched on, you can adjust the monitor brightness as you wish. 
 
 ##### Set Display Scaling
 
@@ -475,14 +479,10 @@ Expand your desktop by multiple screens! Use VGA/HDMI/DP cable(s) to connect you
 2. Click **Multiple Displays**.
 3. Select a display mode:
     - **Duplicate**: display the same image on other screens.
-    - **Extend**: expand the desktop across the screens.
-    - **XXX only**: display the screen content only on one screen.
+    - **Extend**: expand the desktop across the screens to enlarge the desktop.
     - **Customize**: customize the display settings for multiple screens.
 
-> ![tips](icon/tips.svg)Tips: In multiple displays, press **Super** + **P** to show its OSD. Operations are as follows:
->
-> 1. Hold **Super** and press **P** or click to select the options. 
-> 2. Release the keys and the selected mode will take into effect.
+> ![tips](icon/tips.svg)Tips: In multiple displays, press **Super** + **P** to show its OSD. Hold **Super** and press **P** or click to select the options. Release the keys and the selected mode will take into effect.
 
 >![notes](icon/notes.svg)Notes: When multiple displays are in the extend mode, only the main screen supports desktop icon display, right-click menu and other functions. Sub-screens do not support. 
 
@@ -550,15 +550,6 @@ Accent color refers to the color used when you select one option or file in the 
 2. Click **General**.
 3. Pick a color under **Accent Color** and view its effects.
 
-
-
-#### Enable Window Effect
-Enable window effect to improve your desktop and window display.
-
-1. On the homepage of Control Center, click ![personalization_normal](icon/personalization_normal.svg).
-2. Click **General**.
-3. Switch on **Window Effect**.
-
 #### Adjust Transparency
 
 This function is available only when "Window Effect" is switched on. Move the slider from left to right to change the transparency of Launcher (in mini mode) from transparent to opaque.
@@ -566,6 +557,14 @@ This function is available only when "Window Effect" is switched on. Move the sl
 1. On the homepage of Control Center, click ![personalization_normal](icon/personalization_normal.svg).
 2. Click **General**.
 3. Click the bar to adjust the transparency and view the effect in real time.
+
+#### Enable Window Effect
+Enable window effect to improve your desktop and window display.
+
+1. On the homepage of Control Center, click ![personalization_normal](icon/personalization_normal.svg).
+2. Click **General**.
+3. Switch on **Window Effect**.
+>![notes](icon/notes.svg)Notes: When **Window Effect** is enabled, you can set **Scale** or **Magic Lamp** when the window is minimized, and rounded corner as well.
 
 #### Set Icon Theme
 
@@ -702,13 +701,13 @@ You can view MAC, IP address, gateway and other network info in network details.
 
 You can set "Do Not Disturb" to system notifications, and also switch on or off the notification hints of some applications.
 
-![0|noti](jpg/noti.png)
+![0|noti](jpg/noti-center.png)
 
 #### System Notification Settings
 
 You can set "Do Not Disturb" to system notifications and whether to show icon on Dock here.
 
-1. On the homepage of Control Center, click ![nav_notifi_42px](icon/nav_notifi_42px.svg).
+1. On the homepage of Control Center, click ![nav_notifi_42px](icon/dcc_nav_notification_36px.svg).
 
 2. Click **System Notification**.
 
@@ -720,45 +719,38 @@ You can set "Do Not Disturb" to system notifications and whether to show icon on
 
 You can custom notification hints for all applications.
 
-1. On the homepage of Control Center, click ![nav_notifi_42px](icon/nav_notifi_42px.svg).
+1. On the homepage of Control Center, click ![nav_notifi_42px](icon/dcc_nav_notification_36px.svg).
 2. Under **App Notifications**, select an application, and in the window on the right, you can choose to check:
    - Play a sound
    - Show messages on lockscreen
-   - Show only in notification center
+   - Show in notification center
    - Show message preview
 
 
 
 ### Sound Settings
 
-Set your speaker and microphone properly to make the sound more clear and pleasant.
+Set your output and input devices (such as speaker and microphone) properly to make the sound more clear and pleasant.
 
 ![0|sound](jpg/sound.png)
 
-#### Speaker
+#### Output
 
 1. On the homepage of Control Center, click ![sound_normal](icon/sound_normal.svg).
-2. Click **Speaker**.
-3. Switch on **Speaker** and you can:
+2. Click **Output** to:
+   - Select output device type from the dropdown list after **Output Device**.
    - Drag the slider to adjust output volume and left/right balance.
-   - Switch on **Volume Boost**. The volume can be adjusted from 0~150% (while the previous range is 0~100%).
+   - Switch on **Volume Boost**, the volume could be adjustable from 0~150% (the former range is 0~100%).
 
-> ![tips](icon/tips.svg)Tips: If "Speaker" is switched off, you will not hear any sound.
-
-#### Microphone
+#### Input
 
 1. On the homepage of Control Center, click ![sound_normal](icon/sound_normal.svg).
-2. Click **Microphone**.
-3. Switch on **Microphone** to enable the microphone.
-4. Adjust the input volume.
+2. Click **Input** to:
+   - Select input device type from the dropdown list after **Input Device**.
+   - Adjust input volume by dragging the slider.
+   - You can enable **Automatic Noise Suppression** by clicking the button after "Automatic Noise Suppression". 
 
 > ![tips](icon/tips.svg)Tips: Usually, you need to turn up the input volume to make sure that you can hear the sound of the source. However, the volume should not be too high as it will cause distortion of sound. Here is how to set the input volume: speak to your microphone at a normal volume and view the "Input Level". If the indicator of "Input Level " changes notably in accordance with the volume, it shows that the input volume is set at a proper level. 
-
-#### Advanced Settings
-
-1. On the homepage of Control Center, click ![sound_normal](icon/sound_normal.svg).
-2. Click **Advanced**.
-3. Select the input and output devices.
 
 #### System Sound Effects
 
@@ -790,7 +782,30 @@ Without the hassle of cables or network, Bluetooth enables a wireless communicat
 4. Following step 3, the Bluetooth device will be added to **My Device** list.
 5. In the list, click the device and you can **Disconnect** the device or change its name.
 
+#### Transfer/Receive files via Bluetooth
+
+Files could be transferred / received between deepin PC and non deepin PC or between deepin PC and mobile device (mobile phone / tablet).
+
+Prerequisite: the Bluetooth device of the sender (deepin PC) and the Bluetooth device of the receiver (non deepin PC / mobile phone / tablet) have been paired and connected successfully.
+
+1. On the homepage of Control Center, click ![bluetooth_normal](icon/bluetooth_normal.svg).
+
+2. Switch on Bluetooth. The system will scan Bluetooth devices nearby automatically.
+
+3. Select a paired and connected Bluetooth device in "My Devices". Click **Send Files** (this button will only appear on pc / mobile phone / tablet Bluetooth devices), the interface for you to select files pops up.
+
+4. Select the files to be sent and click **Open**, a request for file transfer is sent. 
+
+   - If the receiver agrees with the request, then the sender starts to transfer the file and "Bluetooth File Transfer" window is displayed; after the file transfer is completed, a prompt message will pop up at the the receiver, and the user can view the file content.
+   - If the receiver is in the following situation, part of the file transfer fails, which will be displayed in the transmission failure list.
+     - The file transfer request is refused by the receiver, then the transfer terminates, and "File Transfer Failed" window pops up.
+     - The receiver times out or the transferring distance is beyond transmission range, and "File Transfer Failed" window pops up(Bluetooth device connection failed).
+     - The receiver does not operate for 1 minute, then the transfer terminates by default,  and "File Transfer Failed" window pops up. 
+
+
+
 ### Date and Time
+
 Set your timezone properly to display correct date and time. You can also change manually.
 
 ![0|time](jpg/time.png)
@@ -827,6 +842,12 @@ Note that the auto-sync function will be disabled after changing date and time m
    - Enter the correct date and time.
 3. Click **Confirm**.
 
+#### Set Time Format
+
+Setting the format of time and date is supported.
+
+1. On the homepage of Control Center, click ![time](icon/time.svg).
+2. Click **Time Format** to set the first day of week, long date, short date, long time, and short time.
 
 ### Power Management
 
@@ -873,13 +894,31 @@ To reduce the power consumption of your laptop, turn on power saving mode to red
 2. Click **Plugged In** and **On Battery**.
 3. Set the time to lock screen.
 
+#### Set "When the lid is closed"
+
+1. On the homepage of Control Center, click ![power_normal](icon/power_normal.svg).
+2. Click **Plugged In** and **On Battery**.
+3. You can select **Suspend**, **Hibernate**, **Turn off the monitor** and **Do nothing** from the drop-down list after **When the lid is closed**.  
+
+>![notes](icon/notes.svg)Notes: This function is only available for laptops.
+
 #### Power button settings
 
 1. On the homepage of Control Center, click ![power_normal](icon/power_normal.svg).
 2. Click **Plugged In** and **On Battery**.
 3. You can select **Shut down, Suspend, Hibernate, Turn off the monitor, Do nothing** from the drop-down list after **When pressing the power button**.
 
-Any changes to the settings take effect immediately. At the same time, you will be notified by the system that the power setting is changed. 
+Any operation done here will take effect immediately. At the same time, the system will notify the user that the power button setting is changed. 
+
+#### Set "Low Battery Notification"
+
+1. On the homepage of Control Center, click ![power_normal](icon/power_normal.svg).
+2. Click **Plugged In**.
+3. Switch on **Low Battery Notification**. The system issues a low battery notification when the remaining battery power is below a set threshold (for example, 20%).
+
+You can adjust the threshold of low battery level by dragging the slider below "Low battery level".  You can adjust the threshold of auto suspend battery level by dragging the slider below "Auto suspend battery level".
+
+>![notes](icon/notes.svg)Notes: This function is only available for laptops.
 
 ### Mouse and Touchpad
 Mouse and Touchpad are common input devices for computers. You can process tasks more easily with a mouse. If you use a laptop but don't have a mouse, you can also use the touchpad instead.
@@ -912,7 +951,7 @@ After inserting or connecting the mouse, you can set up your preferred options i
 
 ![0|touchpad](jpg/touchpad.png)
 
-If you use a laptop, to avoid mis-operation on the touchpad, switch on **Disable touchpad while typing**, **Disable touchpad when a mouse is connected**, and turn on **Palm Detection** to set **Minimum Contact Surface** and **Minimum Pressure Value**. 
+If you are using a laptop,  in order to avoid mis-operation on the touchpad, you can switch on **Disable touchpad while typing** in **Mouse > General** interface, and switch on **Disable touchpad when a mouse is connected** in **Mouse > Mouse** interface.  
 
 You can also change **Pointer Speed** and switch on **Natural Scrolling** for the touchpad.
 
@@ -1082,7 +1121,62 @@ You can view system version, authorization info, hardware info and the agreement
 1. On the homepage of Control Center, click ![system_info_normal](icon/system_info_normal.svg).
 2. View the End User License Agreement under **End User License Agreement**.
 
+### Backup and Restore
 
+In order to avoid data loss or damage caused by software defects, hardware damage, improper human operation, hacker attacks, computer viruses, natural disasters and other factors, the application data or system data can be backed up and restored to ensure the normal operation of the system.
+
+![0|backup-recovery](jpg/backup-restore.png)
+
+#### Backup
+
+Deepin operating system provides backup by initialization and backup through Control Center.
+
+##### Backup by initialization
+
+When the system is installed, it will automatically create a recovery partition, then backup the boot partition and root partition, and save the recovery partition information and disk partition configuration.
+
+##### Backup through control center
+
+You can either manually backup / restore data or restore data by one click.
+
+1. On the homepage of Control Center, click ![system_info_normal](icon/system_info_normal.svg).
+
+2. Select **Backup and Restore** > **Backup** to set the backup type and save the path of files backed up.
+   Backup Type: Full Backup and System Backup
+
+   - Full Backup: to back up system files and user files of the whole disk
+
+   - System Backup: When the user data is not reserved, the files of the root partition and the boot partition are backed up; when the user data is reserved, the files of the root partition, boot partition, opt partition and home partition are backed up.
+
+   > ![attention](icon/attention.svg)Attention:  **Full Backup** cannot backed up files on its own disk, but can only back up files in other storage media. **System Backup** has set the default storage location of files. When the storage space is insufficient, you can manually change the storage path of backup files.
+
+3. Click **Back Up**, the password input box pops up, please input the password to authorize the backup file until the file backup is completed.
+
+> ![notes](icon/notes.svg)Notes: In the process of file backup, please do not unplug the power supply or forcibly shut down to prevent data loss or damage.
+
+
+
+#### Restore
+
+Deepin operating system provides "restore from grub" and "restore from control center".
+
+##### Restore from Grub
+
+During system startup, in the system selection interface, click **Deepin 20 Backup & Restore**, you can choose "Reset to factory settings" to read and restore factory settings backup, or choose "restore Deepin 20 historical backup" to open the file directory and select the backup to be restored.
+
+##### Restore from Control Center
+
+You can either restore all settings or manually restore the previous backup data.
+
+1. On the homepage of Control Center, click ![system_info_normal](icon/system_info_normal.svg).
+2. Click **Backup and Restore** > **Restore** to select:
+
+   - Restore All Settings
+     1. You can choose to check **Keep personal files and apps** and click **Restore Now**. Click **Confirm** in the dialogue box pops up. 
+     2. Please input the password to authorize the data restoring.
+   - Manual Restore
+     1. After selecting restoring directory, click ![three_dots](jpg/three_dots.png) to select the files you want to restore.
+     2. Click **Restore Now** to start system restoring.
 
 ### General Settings
 
@@ -1119,7 +1213,7 @@ Window manager controls the alignment and appearance of windows. It allows you t
 
 > ![notes](icon/notes.svg)Notes: this function is available only when **Window Effect** is turned on in **Personalization** in **Control Center**. 
 
-![1|workspace](jpg/workspace.jpg)
+![1|workspace](jpg/workspace.png)
 
 ### Open Workspace
 Manage your desktop windows in different workspaces to enlarge your Workspaces.
@@ -1220,86 +1314,102 @@ On the touchpad, you can use the following gestures as a substitute for mouse op
 
 > ![attention](icon/attention.svg)Attention: Your touchpad may not support some of the following gestures. Please confirm whether the touchpad supports multi-touch. 
 
-### Move the Cursor
+### One-finger Gestures
+
+One-finger gestures are the most basic operation of the operating system, which only includes movement and clicking.
+
+#### Move the Cursor
 
 Move your finger to move the cursor.
 
-### Click
+#### Click
 
 Click with a single finger to finish the mouse click operation.
 
-### Double-click
+#### Double-click
 
-Double click with a single finger to mimic double-click operation on a mouse.
+Double-click with a single finger to finish the mouse double-click operation.
 
-### Scroll Screen
+### Two-finger Gestures 
+
+Two- finger gestures refer to operation for operating system and application window content, including moving, zooming, and clicking.
+
+#### Scroll the Screen
 
 Move upward with two fingers to scroll the screen down. If the "Natural Scrolling" option is enabled, the screen will scroll upward.
 
 Move downward with two fingers to scroll the screen upward. If the "Natural Scrolling" option is enabled, the screen will scroll downward.
 
-### Backward/Forward
+#### Backward/Forward
 
 Move to the left with two fingers to move backward. Move to the right with two fingers to move forward.
 
-### Display/Hide the Control Center
+#### Display/Hide the Control Center
 
 Display the Control Center by sliding with two fingers from the right edge of the touchpad to the left.
 
 Hide the Control Center by sliding with two fingers from the left edge of the touchpad to the right.
 
-### Zoom and Rotate
+#### Zoom and Rotate
 
-Increase the distance between the two fingers to zoom in, which corresponds to the operation of **Ctrl** + ![=](icon/=.svg);
+Increase the distance between the two fingers to zoom in, which responds to the operation of **Ctrl** + ![=](icon/=.svg);
 
-Decrease the distance between the two fingers to zoom out, which corresponds to the operation of **Ctrl** + ![-](icon/-.svg);
+Decrease the distance between the two fingers to zoom out, which responds to the operation of **Ctrl** + ![-](icon/-.svg);
 
 Rotate with two fingers to rotate the content, which mainly supports the rotation operation in Image Viewer and Screen Capture;
 
-Double click with two fingers to zoom in and restore at the ratio of 200% .
+Double-click with two fingers to zoom in and restore at the ratio of 200% .
 
-### Open Right-click Menu
+#### Open the Right-click Menu
 
 Click with two fingers to display the right-click menu.
 
-### Maximize/Restore the Window
+### Three-finger Gestures
 
-Move upward with three fingers to maximize the window, which corresponds to the operation of **Super** + ![Up](icon/Up.svg);
+Three- finger gestures refer to operation for operating system and application window themselves, including moving, zooming, and clicking.
 
-Move downward with three fingers to maximize the window, which corresponds to the operation of  **Super** + ![Down](icon/Down.svg).
+#### Maximize/Restore the Window
 
-### Split to Left/Right
+Move upward with three fingers to maximize the window, which responds to the operation of **Super** + ![Up](icon/Up.svg);
+
+Move downward with three fingers to maximize the window, which responds to the operation of  **Super** + ![Down](icon/Down.svg).
+
+#### Split to Left/Right
 
 Slide with three fingers from the right edge of the touchpad to the left to split the current window left.
 
 Slide with three fingers from the left edge of the touchpad to the right to split the current window right.
 
-### Display All Windows
+#### Display All Windows
 
-Increase or decrease the distance between the three fingers to display all the windows, which corresponds to the operation of **Super** + **W**.
+Increase or decrease the distance between the three fingers to display all the windows, which responds to the operation of **Super** + **W**.
 
-### Move Window
+#### Move the Window
 
-1. Click with three fingers to activate the moving status of the current window, which corresponds to the operation of **AIt** + **F7** .
+1. Click with three fingers to activate the moving status of the current window, which responds to the operation of **AIt** + **F7** .
 2. Move quickly the window in moving status with one finger and click anywhere to exit the moving status.
 
-### Hide/Display Workspace
+#### Fast Translation
 
-Move upward or downward with four/five fingers to display/hide the workspace, which corresponds to the operation of  **Super** + **S**.
+Select the text and then click with three fingers, the selected text will be translated in a small window, which corresponds to the operation of  **Ctrl** + **Alt** + **U**.
 
-### Switch Workspaces
+### Four/Five-finger Gestures
 
-Move with four/five fingers to the left to switch to the previous workspace, which corresponds to the operation of **Super** + ![Left](icon/Left.svg).
+#### Display/Hide Multi-task View
 
-Move with four/five fingers to the right to switch to the next workspace, which corresponds to the operation of **Super** + ![Right](icon/Right.svg).
+Move with four/five fingers upwards to display multi-task view, and move downwards immediately to hide multi-task view, which corresponds to the operation of **Super** + **S**. 
 
-### Display/Hide Desktop
+#### Switch Workspace
 
-Increase the distance between the four/five fingers to display/hide the desktop, which corresponds to the operation of **Super** + **D**.
+Move with four/five fingers to the left/right to switch to the previous or next workspace, which corresponds to the operation of **Super** + **Left** or **Super** + **Right**. 
 
-### Display/Hide Launcher
+#### Display/Hide Desktop
 
-Decrease the distance between the four/five fingers to display/hide Launcher, which corresponds to the operation of **Super**.
+Move with four/five fingers downwards to display desktop, and move upwards immediately to hide which corresponds to the operation of **Super** + **D**. 
+
+#### Display/Hide Launcher
+
+Click with four/five fingers to display/hide Launcher, which corresponds to the operation of  **Super**.
 
 ## Touchscreen Gestures
 
@@ -1307,33 +1417,37 @@ On touchscreen computers, you can use the following gestures as a substitute for
 
 ### Click
 
-Click with a single finger to mimic the operation on your mouse.
+Click with a single finger to finish the mouse click operation on your touchscreen.
 
 ### Double-click
 
-Double click with a single finger to mimic the same operation with your mouse on your touchscreen.
+Double-click with a single finger to finish the mouse double-click operation on your touchscreen.
 
-> ![tips](icon/tips.svg)Tips: Double click to select the texts and drag your finger on the screen to select more texts.
+> ![tips](icon/tips.svg)Tips: Double-click to select the texts and drag your finger on the screen to select more texts.
 
 ### Move and Drag 
 
-Select the content and move your finger on the touchscreen to mimic the operation on your mouse.
+Select the content and move your finger on the touchscreen to finish the mouse dragging operation.
 
 ### Open the Right-click Menu
 
-Open the right-click menu of the current object by long-press and release on the touchscreen.
+Open the right-click menu of the current object by long-press for 1 second and release on the touchscreen.
 
 ###  Open Workspace
 
-Slide in from the left side of the screen to open Workspace.
+Slide in from the bottom of the screen exceeding the dock's height to open Workspace.
 
-###  Open Control Center
+### Call out Clipboard
 
-Slide in from the right side of the screen to open Control Center.
+Slide in from the left edge of the screen exceeding the dock's height to call out Clipboard.
+
+### Call out Notification Center
+
+Slide in from the right edge of the screen exceeding the dock's height to call out Notification Center.
 
 ### Call out Dock
 
-When the Dock is set as "Always Hidden", if the Dock is at the bottom, slide in upward from the bottom edge of the screen to call it out; and if the Dock is on the top, slide in downward from the upper edge of the screen to call it out.
+When the Dock is set as "Always Hidden" or "Smart Hide", if the Dock is at the bottom, slide in upward from the bottom edge of the screen to call it out; and if the Dock is on the top, slide in downward from the upper edge of the screen to call it out.
 
 ### Backward/Forward
 
@@ -1341,11 +1455,12 @@ In Browser, slide to the left to enter the next page and slide to the right to r
 
 ### Scroll Screen
 
-The scrolling direction of the screen is the same as where your finger goes.
+The scrolling directions of the screen are the same as where your finger goes.
 
 ### Zoom in/out
 
-Pinch two fingers to zoom out on the web page or picture. Open two fingers to zoom in on the web page or picture.
+Pinch two fingers to zoom out on the webpage or picture.  Open two fingers to zoom in on the webpage or picture.
 
+### Rotate
 
-<div class="version-info"><span>Update Date: 2020-09-07</span><span> Version: 2020.08</span></div>
+Place two fingers on the picture with a certain distance and rotate the two fingers at the same time to rotate the picture.

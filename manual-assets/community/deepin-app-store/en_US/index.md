@@ -18,7 +18,7 @@ You can run, close or create a shortcut of App Store as follows.
  - Select **Send to dock** to fix it onto the dock.
  - Select **Add to startup** to add it to startup. When the computer starts up, App Store runs automatically.
 
-> ![notes](icon/notes.svg) Notes: App Store has been fixed on the dock by default. You can click on  ![store-24](icon/store-24.svg) on the dock to run it.
+> ![notes](icon/notes.svg) Notes: App Store has been fixed on the dock by default. You can click  ![store-24](icon/store-24.svg) on the dock to run it.
 
 
 ### Exit App Store
@@ -28,7 +28,7 @@ You can run, close or create a shortcut of App Store as follows.
 - On App Store interface, click  ![icon_menu](icon/icon_menu.svg) and select  **Exit**.
 
 ## Main Interface
-Main interface consists of navigation bar, search box, main menu, slide show, hot apps, rankings, essential apps, hot topics, download management, and my apps.
+Main interface consists of navigation bar, search box, main menu, slide show, new updates, hot apps, rankings, essential apps, hot topics, download management, updates and my apps.
 
 ![1|maininterfacedetail01](jpg/maininterfacedetail1.png)
 
@@ -65,37 +65,35 @@ Main interface consists of navigation bar, search box, main menu, slide show, ho
         <tr>
             <td>6</td>
             <td>Hot Apps</td>
-        <td>Recommended popular apps are displayed here.</td>
+            <td>Recommended popular apps are displayed here.</td>
         </tr>
         <tr>
             <td>7</td>
             <td>Download</td>
             <td>Currently downloading tasks, downloading and installing progress are displayed here. You can pause and delete any download task.</td>
-        </tr>  
+        </tr>
         <tr>
-        <td>8</td>
-        <td>Updates</td>
-        <td>You can view all apps to be updated and select whether to update them here.</td>
-    </tr>
+            <td>8</td>
+            <td>Updates</td>
+            <td>You can view applications to be updated here and you can choose whether to update it or not.</td>
+        </tr>
         <tr>
-        <td>9</td>
-        <td>My Apps</td>
-        <td>You can view all apps installed and uninstall apps you don't need any more here.</td>
-    </tr>
-        <tr>
-        <td>10</td>
-        <td>Essential Apps</td>
-        <td>You can view all essential software and install the ones you want here.</td>
-    </tr>
-  <tr>
-        <td>11</td>
-        <td>Hot Topics</td>
-        <td>Hot app categories are displayed here.</td>
-    </tr>
+            <td>9</td>
+            <td>My Apps</td>
+            <td>You can view all apps installed and uninstall apps you don't need any more here.</td>
+        </tr>
+            <tr>
+            <td>10</td>
+            <td>New Updates</td>
+            <td>Applications that are newly added into App Store are displayed here.</td>
+        </tr>
+             <tr>
+            <td>11</td>
+            <td>Hot Topics</td>
+            <td>Hot app categories are displayed here.</td>
+        </tr>
    </tbody>
    </table>
-
-
 
 
 
@@ -104,7 +102,7 @@ Main interface consists of navigation bar, search box, main menu, slide show, ho
 You can search, download and install different categories of applications, and also, you can explore more splendid applications through slide show, new updates, essential applications, popular applications, recommendations, hot topics, rankings, user comments and other ways. 
 
 ### Search Applications
-1. Search function is built in App Store, which supports keywords input. Click![search](icon/search.svg) to input keywords.
+1. Search function is built in App Store, you can click![search](icon/search.svg) to input keywords;
 
 2. When you input a keyword, all applications containing that keyword will be displayed automatically below, then you can view all applications containing that keyword.
 
@@ -128,7 +126,11 @@ App Store supports application synchronization. After signing in, you can synchr
 
    ![1|installprocess](jpg/installprocess.png)
 
-3. After installation, installed applications are displayed in local applications only. 
+3. After installation, installed applications are displayed in local applications only. Click **App filter** to screen applications based on categories.
+
+   
+
+   ![1|localapp](jpg/localapp.png)
 
    
 
@@ -140,19 +142,21 @@ App Store supports application synchronization. After signing in, you can synchr
 4. After installation, the apps will be displayed both in local apps and remote apps synchronically.
 5. If you want to install applications in batches, you can choose  **Install All **. Check all cloud applications you want to install, click  **Start Installation**.
 
-![1|remoteapp](jpg/remoteapp.png)
+![1|remoteapp](jpg/remoteapp1.png)
 
 
 
-### Update Application
+### Update Applications
 
-You can click **Updates** in the left panel to view applications to be updates and select whether to update them. 
+Select **Updates** on the interface to view applications to be updated here and you can choose whether to update it or not.
+
+
 
 ![1|update](jpg/update.png)
 
+
+
 > ![tips](icon/tips.svg)Tips: You can also update/upgrade applications in Control Center. Refer to [Update Settings](dman:///dde#Update Settings) for particular operations.
-
-
 
 ### Uninstall Applications
 
@@ -171,16 +175,18 @@ You can open the information page of any application to view its ratings, downlo
 
 ### Comment and Rate
 
-- After sign in, you can comment on and rate the applications. But you have to submit your comments and ratings at the same time.
+- After sign in your Union ID, you can comment on and rate the applications. Click **Report a bug** to feedback software bugs. You can also like other users' comments. 
 
-> ![tips](icon/tips.svg)Tips: You can click the icon at the right of the comment to like it.
+![1|commenrandrate](jpg/commentandrate.png)
 
 
-- Click the avatar on the title bar and select  **My Comments**  to view and edit all your ratings and comments.
+
+
+- Click the avatar on the title bar and select  **My Comments**  to view and edit all your ratings and comments. If you have not logged in, you can only view comments and ratings.
 
 ![1|editcomment](jpg/editcomment.png)
 
-> ![notes](icon/notes.svg)Notes: If you haven't signed in your cloud account, you can not comment or rate but only view comments and ratings.
+
 
 ## Main Menu
 
@@ -200,7 +206,7 @@ You can open the information page of any application to view its ratings, downlo
 
 ### Theme
 
-The window theme includes Light Theme, Dark Theme and System Theme (default).
+The window theme includes Light Theme, Dark Theme and System Theme.
 
 1. Click  ![icon_menu](icon/icon_menu.svg) on the main interface.
 2. Click **Theme** to choose one theme.
@@ -220,5 +226,3 @@ Click Help to get the manual, which will help you further know and use App Store
 ### Exit
 1. Click  ![icon_menu](icon/icon_menu.svg) on the main interface.
 2. Click  **Exit**.
-
-<div class="version-info"><span>Update Date: 2020-09-07</span><span> Version: 6.0</span></div>

@@ -26,7 +26,6 @@ You can run, close or create a shortcut for Device Manager as follows.
 
    - Select **Add to startup** to run it automatically when the computer is turned on.
 
-   
 
 ### Exit Device Manager
 
@@ -35,6 +34,9 @@ You can run, close or create a shortcut for Device Manager as follows.
 - On interface of Device Manager, click ![icon_menu](icon/icon_menu.svg)  and select **Exit** to exit.
 
 ## Operations
+
+The following hardware device information is for reference only. If there is no mouse, keyboard, and other devices inserted into your computer, the corresponding hardware information will not be displayed in the device manager.
+
 ### Overview
 
 1. On the main interface, click **Overview**.
@@ -63,31 +65,12 @@ You can run, close or create a shortcut for Device Manager as follows.
 
 ![0|RAM](jpg/RAM.png)
 
-### Storage
-
-1. On the main interface, click **Storage**.
-2. You can view a storage device list and particular info such as model, vendor, media type, size, speed and so on.
-
-![0|storage device](jpg/storage-device.png)
-
 ### Display Adapter
 
 1. On the main interface, click **Display Adapter**.
 2. You can view info about Display Adapter such as name, vendor, graphic memory, resolution, driver and so on.
 
 ![0|display adapter](jpg/display-adapter.png)
-
-### Monitor
-
-1. On the main interface, click **Monitor **.
-2. You can view info about Monitor such as name, vendor, resolution, connect type and so on.
-
-![0|display device](jpg/display-device.png)
-
-### Network Adapter
-
-1. On the main interface, click **Network Adapter**.
-2. You can view info about Network Adapter such as name, vendor, Mac address, speed and so on.![0|network adapter](jpg/network-adapter.png)
 
 ### Sound Adapter
 
@@ -96,32 +79,18 @@ You can run, close or create a shortcut for Device Manager as follows.
 
 ![0|audio adapter](jpg/audio-adapter.png)
 
-### Bluetooth
+### Storage
 
-1. On the main interface, click **Bluetooth **.
-2. You can view info about bluetooth such as name, vendor, Mac address, connect type and so on.
+1. On the main interface, click **Storage**.
+2. You can view a storage device list and particular info such as model, vendor, media type, size, speed and so on.
 
-![0|bluetooth](jpg/bluetooth.png)
+![0|storage device](jpg/storage-device.png)
 
-### Other PCI Devices
+### Network Adapter
 
-1. On the main interface, click **Other PCI Devices **.
-2. If no PCI devices are connected to the computer, you will see a hint **No Other PCI Devices Found!** .
-
-![0|pci](jpg/pci.png)
-
-### Battery
-1. On the main interface, click **Battery **.
-2. You can view info such as name, vendor, size, type, and so on.
-
-![0|power supply](jpg/power-supply.png)
-
-### Keyboard
-
-1. On the main interface, click **Keyboard **。
-2. You can view info such as name, vendor, bus info, type, driver and so on.
-
-![0|keyboard](jpg/keyboard.png)
+1. On the main interface, click **Network Adapter**.
+2. You can view info about Network Adapter such as name, vendor, Mac address, speed and so on.
+![0|network adapter](jpg/network-adapter.png)
 
 ### Mouse
 
@@ -130,21 +99,27 @@ You can run, close or create a shortcut for Device Manager as follows.
 
 ![0|mouse](jpg/mouse.png)
 
+### Keyboard
+
+1. On the main interface, click **Keyboard **。
+2. You can view info such as name, vendor, bus info, type, driver and so on.
+
+![0|keyboard](jpg/keyboard.png)
+
+### Monitor
+
+1. On the main interface, click **Monitor **.
+2. You can view info about Monitor such as name, vendor, type and so on.
+
+![0|display device](jpg/display-device.png)
+
 ### Printer
 
 1. On the main interface, click **Printer**.
-2. You can view a list of printers connected and info such as name, vendor, model, device URI and so on.
+2. You can view a list of printers connected and info such as name, model, vendor, URI and so on.
 
 ![0|printer](jpg/printer.png)
 
-### Camera
-
-Image Devices include cameras and scanners and so on connected to any port.
-
-1. On the main interface, click **Camera**.
-2. You can view info such as name, vendor, type, and so on.
-
-![0|imaging device](jpg/imaging-device.png)
 
 ### CD-ROM
 
@@ -154,13 +129,6 @@ Device Manager is capable to identify built-in and externally connected CD-ROM d
 2. You can view info such as name, vendor, type, and so on.
 
 ![0|optical drive](jpg/optical-drive.png)
-
-### Other Devices
-
-Other devices include other non-PCI input devices connected to other ports such as electronic pens, handwriting pads, joysticks and so on. 
-
-
-> ![notes](icon/notes.svg)Notes: If several devices are found, you can select one to view its info. If no devices are found, you will see a hint **No Other PCI Devices Found**.
 
 ### Right-click Operations 
 
@@ -176,7 +144,7 @@ In the main menu, you can switch themes, view manual, and so on.
 
 ### Theme
 
-The window theme includes Light Theme, Dark Theme and System Theme (default).
+The window theme includes Light Theme, Dark Theme and System Theme.
 
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Click  **Theme** to select one.
@@ -200,5 +168,3 @@ Click Help to get the manual, which will help you further know and use Device Ma
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Click  **Exit**.
 
-
-<div class="version-info"><span>Update Date: 2020-09-07</span><span> Version: 5.5</span></div>

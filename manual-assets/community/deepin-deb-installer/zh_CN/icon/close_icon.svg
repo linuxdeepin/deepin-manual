@@ -1,15 +1,24 @@
-<?xml version="1.0" encoding="UTF-8"?>
-<svg width="27px" height="23px" viewBox="0 0 27 23" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
-    <!-- Generator: Sketch 47 (45396) - http://www.bohemiancoding.com/sketch -->
-    <title>Rectangle 9</title>
-    <desc>Created with Sketch.</desc>
-    <defs></defs>
-    <g id="Symbols" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
-        <g id="titlebutton" transform="translate(-81.000000, 0.000000)" fill="#000000">
-            <g id="close_normal" transform="translate(81.000000, 0.000000)">
-                <rect id="Rectangle-9" fill-opacity="0.288836051" opacity="0" x="0" y="0" width="27" height="23"></rect>
-                <polygon id="Combined-Shape" fill-opacity="0.8" fill-rule="nonzero" points="13.2426407 11.9497475 10.0606602 15.131728 9.70710678 15.4852814 9 14.7781746 9.35355339 14.4246212 12.5355339 11.2426407 9.35355339 8.06066017 9 7.70710678 9.70710678 7 10.0606602 7.35355339 13.2426407 10.5355339 16.4246212 7.35355339 16.7781746 7 17.4852814 7.70710678 17.131728 8.06066017 13.9497475 11.2426407 17.131728 14.4246212 17.4852814 14.7781746 16.7781746 15.4852814 16.4246212 15.131728"></polygon>
-            </g>
-        </g>
-    </g>
+<?xml version="1.0" encoding="iso-8859-1"?>
+<!-- Generator: Adobe Illustrator 18.1.1, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd" [
+	<!ENTITY ns_extend "http://ns.adobe.com/Extensibility/1.0/">
+	<!ENTITY ns_ai "http://ns.adobe.com/AdobeIllustrator/10.0/">
+	<!ENTITY ns_graphs "http://ns.adobe.com/Graphs/1.0/">
+	<!ENTITY ns_vars "http://ns.adobe.com/Variables/1.0/">
+	<!ENTITY ns_imrep "http://ns.adobe.com/ImageReplacement/1.0/">
+	<!ENTITY ns_sfw "http://ns.adobe.com/SaveForWeb/1.0/">
+	<!ENTITY ns_custom "http://ns.adobe.com/GenericCustomNamespace/1.0/">
+	<!ENTITY ns_adobe_xpath "http://ns.adobe.com/XPath/1.0/">
+]>
+<svg version="1.1" id="&#x56FE;&#x5C42;_1" xmlns:x="&ns_extend;" xmlns:i="&ns_ai;" xmlns:graph="&ns_graphs;"
+	 xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" viewBox="0 0 20 20"
+	 enable-background="new 0 0 20 20" xml:space="preserve">
+<metadata>
+	<sfw  xmlns="&ns_sfw;">
+		<slices></slices>
+		<sliceSourceBounds  width="37" height="36.973" y="-41.973" x="3" bottomLeftOrigin="true"></sliceSourceBounds>
+	</sfw>
+</metadata>
+<polygon fill="#717171" points="15,6.429 13.571,5 10,8.571 6.429,5 5,6.429 8.571,10 5,13.571 6.429,15 10,11.429 13.571,15 
+	15,13.571 11.429,10 "/>
 </svg>
