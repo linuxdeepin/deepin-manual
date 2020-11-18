@@ -195,3 +195,5 @@
 1. 在日志收集工具界面，单击 ![icon_menu](icon/icon_menu.svg)。
 2. 选择 **退出**。
 
+
+<div class="version-info"><span>文档更新时间: 2020-11-18</span><span> 版本: 5.8</span></div>

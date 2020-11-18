@@ -521,3 +521,5 @@ The window theme includes Light Theme, Dark Theme and System Theme.
 
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Click **Exit**.
+
+<div class="version-info"><span>Update Date: 2020-11-18</span><span> Version: 5.2</span></div>

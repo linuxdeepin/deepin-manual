@@ -1464,3 +1464,5 @@ Pinch two fingers to zoom out on the webpage or picture.  Open two fingers to zo
 ### Rotate
 
 Place two fingers on the picture with a certain distance and rotate the two fingers at the same time to rotate the picture.
+
+<div class="version-info"><span>Update Date: 2020-11-18</span><span> Version: 2020.08</span></div>

@@ -98,3 +98,5 @@ You can click to view the manual, which will help you further know and use Packa
 
 1. Click![icon_menu](icon/icon_menu.svg) on the interface.
 2. Click **Exit**.
+
+<div class="version-info"><span>Update Date: 2020-11-18</span><span> Version: 5.7</span></div>

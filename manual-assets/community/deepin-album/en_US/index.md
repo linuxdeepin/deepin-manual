@@ -235,3 +235,5 @@ Click **Help** to view the manual.
 
 1.  On the Album interface, click ![icon_menu](icon/icon_menu.svg).
 2.  Click **Exit** to exit Album.
+
+<div class="version-info"><span>Update Date: 2020-11-18</span><span> Version: 5.8</span></div>
