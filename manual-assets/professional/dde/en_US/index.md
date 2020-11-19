@@ -137,7 +137,6 @@ You can send application icons from Launcher to Dock so as to open it quickly.
 | ![dde-calendar](icon/dde-calendar.svg) | Calendar -  view dates and create new schedules. |
 | ![controlcenter](icon/controlcenter.svg) |   Control Center - click to check or change system settings.   |
 | ![notification](icon/notification.svg) | Notification Center - show all notifications from the system and applications. |
-| ![desktop-ai-assistant](icon/desktop-ai-assistant.svg) | Desktop AI Assistant - click to issue instructions or make inquiries with voice or texts. |
 | ![onboard](icon/onboard.svg) | Onboard virtual keyboard. |
 | ![shutdown](icon/system-shutdown.svg) | Click to enter the shutdown interface. |
 | ![trash](icon/trash_icon.svg) | Trash. |
@@ -189,57 +188,6 @@ When there are system or application notifications, they will be shown in the mi
 ![notification](jpg/notification.png)
 
 Click ![notification](icon/notification.svg) in Dock to view all the notifications.
-
-### Use AI Assistant
-
-AI Assistant is pre-programmed by the system, supporting voice and text input, information search, operation instructions, etc.
-
-> ![notes](icon/notes.svg)Notes: Voice dictation, voice reading, translation and other functions of desktop AI Assistant are available only after you activate the system. When you run AI Assistant for the first time, a private agreement window pops up. After you agree with it, you can use functions such as voice dictation, voice reading, translation and others normally.
-
-You can wake up AI Assistant as follows:
-
-1. Press **Super** + **Q** to wake up AI Assistant.
-
-2. Use fixed phrase "Hello Xiaohua" or "Hello Xiaohua + order" to wake up AI Assistant.
-
-You can input words and voice as follows：
-
-1. Click ![ai](icon/desktop-ai-assistant.svg) in the Dock to open AI Assistant.
-2. Connect the recording devices and  talk to AI Assistant directly, such as  "change the wallpaper", "adjust the screen brightness", and "what's the weather".
-3. It is also available to input text instructions after the input box appears.
-
-
-
-
-
-![ai1](jpg/ai1.png) ![ai2](jpg/ai2.png)
-> ![tips](icon/tips.svg)Tips: Select the text information needed and press **Ctrl** + **Alt** + **P** for voice reading; after connecting the recording devices, press **Ctrl** + **Alt** + **O** in the input box to enter the dictation mode and convert the voice input to texts.
-#### Set up Speech to Text
-
-Speech to Text is set in Assistive Tools in Control Center.  It is enabled by default and can be disabled as needed. 
-
-Select the input box, invoke the Speech to Text function via the shortcut keys and start dictating the input voice. 
-
-#### Set up Text to Speech
-
-Text to Speech is set by default in Assistive Tools in Control Center. Only when it is enabled, Text to Speech function can be available. 
-
-Text to Speech is only available for the currently-selected texts and the operation steps are as follows:
-
-1. Select the texts, press  **Ctrl** + **AIt** + **O** on the keyboard or right-click **Text to Speech** to start reading.
-2. Click the speaker icon or right-click **Stop reading** to stop reading.
-
-> ![notes](icon/notes.svg)Notes: If you select other texts during reading, the current speaker icon will be displayed in the newly-selected location. Click the speaker icon, use the shortcut key or right-click **Text to Speech**, the current reading will be interrupted and  it starts reading the newly-selected texts.
-
-#### Set up Translation
-
-Translation is set by default (enabled) in Assistive Tools in Control Center. Only when it is enabled, the Translation function can be available. 
-
-Translation is only available for the currently-selected texts and the operation steps are as follows:
-
-1. Select the texts, press  **Ctrl** + **AIt** + **U** on the keyboard or right-click **Translate** to start translation.
-
-> ![notes](icon/notes.svg)Notes: It only supports Chinese-English translation currently.
 
 ### View Date and Time
 
@@ -1143,37 +1091,6 @@ The shortcut list includes all shortcuts in the system. View, modify and customi
 7. Click ![delete](icon/delete.svg) to delete the custom shortcut.
 
 > ![tips](icon/tips.svg)Tips: To change the shortcut, click it and press a new shortcut to change it directly. To edit the name and command of the custom shortcut, click **Edit ** > ![edit](icon/edit.svg) near the shortcut name to enter the shortcut settings.
-
-### Assistive Tools
-
-Desktop AI Assistant, Speech to Text, Text to Speech and Translation are available on the Assistive Tools interface.
-
-![0|auxiliary](jpg/auxiliary_function.png)
-
-#### Desktop AI Assistant
-
-Desktop AI Assistant  boosts your productivity by executing voice commands, such as checking the whether, creating events, etc. 
-
-- Switch on/off **Voice Wakeup**: when you switch on **Voice Wakeup**, you can check **OneShot** to enable wakeup order + semantic order, for example, "Hello, Xiaohua. What's the weather in Beijing?".
-- **Language**: Chinese-Mandarin, English
-- Switch on/off **Show in the Dock**: When it is enabled, Desktop AI Assistant will be displayed in the Dock. Otherwise, it will not be displayed but can be woken up by shortcuts.
-- **Voice Test**: Test whether the voice input is normal or not.
-
-#### Speech to Text
-
-- Speech to Text: When there is audio input device available, Speech to Text is enabled by default. Otherwise it is disabled.
-- Language: It supports both Chinese-Mandarin and English. The default language is Chinese-Mandarin.
-
-#### Text to Speech: 
-
-- Text to Speech: When there is audio input device available, Speech to Text is enabled by default. Otherwise it is disabled and hidden.
-- Show Speech Widget: It is disabled by default and is set not to display the speech widget only but can be woken up by the shortcut.
-- Voice Gender: It is used to set the voice gender and supports male and female with female as default.
-
-#### Translation
-
-- Translation: It is enabled by default.
-- Language: It is used to set the translation language and supports both cn-en and en-cn with cn-en as default.
 
 ### Update Settings
 

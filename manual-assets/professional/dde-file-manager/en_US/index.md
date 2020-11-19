@@ -336,61 +336,6 @@ When there is an external device inserted, you can directly send file/folder to 
 3. Select the device you want to send to.
 4. File/folder will be copied to the device.
 
-
-
-## File Vault
-
-File Vault is designed to  create a special safe space for you and protect your privacy. With the advanced encryption technology and convenient operations, it's quite easy to use.
-
-### Set vault password
-
-You will have to set a password when you use File Vault for the first time as follows:
-
-1. Click ![file-vault](icon/file-vault.svg) in the left panel or double-click **My Vault** in the **Computer** interface, and then click **Create** in the pop-up dialogue box.  
-2. Set the "Method", "Password", "Repeat password" and "Hint", click **Next**. 
-
-![0|password](jpg/password.png)
-
-> ![notes](icon/notes.svg)Notes: the password must contain upper case letters, lower case letters,  Arabic numbers and special symbols at the same time and no less than 8 digits. Otherwise, you are not able to go to the next step.
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-3. A key/QR code is generated. It is recommended to save it in case you forget it. Click **Next**. 
-
-4. Click **Encrypt**; enter your login password in the pop-up authentication box and click **Confirm**. 
-   ![encrypt](jpg/encrypt.png)
-
-5. Click **Confirm** when encryption finishes.
-
-
-
-### Lock File Vault
-
-After you put files into File Vault, right-click![file-vault](icon/file-vault.svg) in the left panel or right-click **My Vault** in the **Computer** interface. 
-
-- Select **Lock** to lock File Vault. 
-- Select **Auto lock** and select in the sub-menu:
-  + Select "Never", which means the file vault remains unlock until the screen is locked or the computer is shutdown. 
-  + Select "5 minutes", "10 minutes" or "20 minutes", which means File Vault will be locked automatically in corresponding time. 
-
-### Unlock File Vault
-
-Right-click![file-vault](icon/file-vault.svg) or **My Vault** in the **Computer** interface. 
-
-- Select  **Unlock**, input password in the pop-up dialogue box and click **Unlock**. 
-- Select  **Unlock by key**, input the 32-digit recovery key in the pop-up dialogue box and click **Unlock**. 
-
-> ![tips](icon/tips.svg)Tips: You can click ![file-vault](icon/file-vault.svg) in the left panel or double-click **My Vault** in the **Computer** interface and input password. 
-
-### Delete File Vault
-
-You can delete a vault only after unlocking it.
-
-1. Right-click ![file-vault](icon/file-vault.svg) in the left panel  or right-click **My Vault** in the **Computer** interface and select **Remove File Vault**. 
-2. Input file vault password in the pop-up dialogue box and click **Remove**. 
-3. Input your login password in the pop-up dialogue box and click **Confirm** to finish this operation.
-
-> ![attention](icon/attention.svg)Attention: Files inside the vault would be deleted as you remove the file vault. Please backup them before you remove the file vault if needed. 
-
 ## Disk Management
 
 On File Manager interface, you can manage local and external disks. 
