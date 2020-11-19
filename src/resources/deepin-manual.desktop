@@ -10,7 +10,7 @@ StartupNotify=true
 Terminal=false
 Type=Application
 X-Deepin-Vendor=deepin
-TZ='Asia/Shanghai'
+X-Deepin-TurboType=dtkwidget
 
 # Translations:
 # Do not manually modify!

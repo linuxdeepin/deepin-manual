@@ -52,9 +52,15 @@ int main(int argc, char **argv)
 //    Dtk::Widget::DApplication::loadDXcbPlugin();
 
 
-    Dtk::Widget::DApplication app(argc, argv);
+//    Dtk::Widget::DApplication app(argc, argv);
+    DApplication *app = nullptr;
+#if (DTK_VERSION < DTK_VERSION_CHECK(5, 4, 0, 0))
+    app = new DApplication(argc, argv);
+#else
+    app = DApplication::globalApplication(argc, argv);
+#endif
     if (!DPlatformWindowHandle::pluginVersion().isEmpty()) {
-        app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings, true);
+        app->setAttribute(Qt::AA_DontCreateNativeWidgetSiblings, true);
     }
 
 #ifdef DCPU_IS_LONGSON
@@ -65,19 +71,20 @@ int main(int argc, char **argv)
 #endif
 
     //设置窗口属性
-    app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);
-    app.setWindowIcon(QIcon::fromTheme("deepin-manual"));
-    app.setProductIcon(QIcon::fromTheme("deepin-manual"));
-    app.setOrganizationName("deepin");
-    app.setOrganizationDomain("deepin.org");
-    app.setApplicationVersion(VERSION);
-    app.setApplicationName(kAppName);
-    app.loadTranslator();
-    app.setApplicationDisplayName(QObject::tr("Manual"));
-    app.setApplicationDescription(QObject::tr(
-                                      "Manual is designed to help users learn the operating system and its applications,"
-                                      " providing specific instructions and function descriptions."));
-    app.setApplicationAcknowledgementPage("https://www.deepin.org/acknowledgments/deepin-manual/");
+    app->setAttribute(Qt::AA_UseHighDpiPixmaps, true);
+    app->setWindowIcon(QIcon::fromTheme("deepin-manual"));
+    app->setProductIcon(QIcon::fromTheme("deepin-manual"));
+    app->setOrganizationName("deepin");
+    app->setOrganizationDomain("deepin.org");
+    app->setApplicationVersion(VERSION);
+    app->setApplicationName(kAppName);
+
+    app->setApplicationDisplayName(QObject::tr("Manual"));
+    app->setApplicationDescription(QObject::tr(
+                                       "Manual is designed to help users learn the operating system and its applications,"
+                                       " providing specific instructions and function descriptions."));
+    app->setApplicationAcknowledgementPage("https://www.deepin.org/acknowledgments/deepin-manual/");
+    app->loadTranslator();
 
     ArgumentParser argument_parser;
     WindowManager window_manager;
@@ -94,9 +101,9 @@ int main(int argc, char **argv)
         qDebug() << "argument_parser.parseArguments()";
         //解析参数失败，１００ｍｓ退出进程
         QTimer::singleShot(100, [&]() {
-            app.quit();
+            app->quit();
         });
-        return app.exec();
+        return app->exec();
     }
     argument_parser.openManualsDelay();
 
@@ -117,5 +124,5 @@ int main(int argc, char **argv)
     customLoggerInstance.registerAppender(fileAppender);
 
     QAccessible::installFactory(accessibleFactory);
-    return app.exec();
+    return app->exec();
 }
