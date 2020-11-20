@@ -1,8 +1,7 @@
 #include "ut_manual_search_proxy.h"
 
-#define private public
 #include "../src/dbus/manual_search_proxy.h"
-#undef private
+
 ut_manual_search_proxy::ut_manual_search_proxy()
 {
 

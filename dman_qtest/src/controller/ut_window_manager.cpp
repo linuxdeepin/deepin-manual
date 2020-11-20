@@ -1,8 +1,6 @@
 #include "ut_window_manager.h"
 
-#define private public
 #include "controller/window_manager.h"
-#undef private
 
 #include "view/web_window.h"
 #include "dbus/dbus_consts.h"

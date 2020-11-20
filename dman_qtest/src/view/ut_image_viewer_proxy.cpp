@@ -17,10 +17,8 @@
 */
 #include "ut_image_viewer_proxy.h"
 
-#define private public
 #include "view/image_viewer_proxy.h"
 #include "view/widget/image_viewer.h"
-#undef private
 
 #include "resources/themes/images.h"
 

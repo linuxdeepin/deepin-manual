@@ -1,8 +1,6 @@
 #include "ut_argument_parser.h"
 
-#define private public
 #include "controller/argument_parser.h"
-#undef private
 #include "dbus/dbus_consts.h"
 #include "dbus/manual_open_proxy.h"
 #include "dbus/manual_open_adapter.h"

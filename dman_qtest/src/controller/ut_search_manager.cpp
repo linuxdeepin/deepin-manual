@@ -1,8 +1,6 @@
 #include "ut_search_manager.h"
 
-#define private public
 #include "controller/search_manager.h"
-#undef private
 
 namespace dman {
 

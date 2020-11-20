@@ -17,12 +17,7 @@
 */
 #include "ut_search_button.h"
 
-#define private public
-#define protected public
 #include "view/widget/search_button.h"
-
-#undef private
-#undef protected
 
 #include "resources/themes/images.h"
 #include "base/utils.h"

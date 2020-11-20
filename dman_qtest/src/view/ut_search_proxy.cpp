@@ -1,10 +1,8 @@
 #include "ut_search_proxy.h"
 
 #include "view/search_proxy.h"
-#define private public
 #include "view/web_window.h"
 #include "view/widget/search_edit.h"
-#undef private
 
 ut_search_proxy_test::ut_search_proxy_test()
 {

@@ -18,9 +18,7 @@
 #include "ut_filewatcher.h"
 #include "base/utils.h"
 
-#define private public
 #include "controller/filewatcher.h"
-#undef private
 
 ut_fileWatcher::ut_fileWatcher()
 {

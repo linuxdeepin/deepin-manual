@@ -17,9 +17,7 @@
 */
 #include "ut_helpermanager.h"
 
-#define private public
 #include "controller/helpermanager.h"
-#undef private
 
 ut_helperManager::ut_helperManager(QObject *parent) : QObject(parent)
 {

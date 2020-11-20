@@ -1,8 +1,6 @@
 #include "ut_config_manager.h"
 
-#define private public
 #include "controller/config_manager.h"
-#undef private
 #include <QProcess>
 #include <QStandardPaths>
 

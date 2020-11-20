@@ -17,8 +17,6 @@
 */
 #include "ut_web_window.h"
 
-#define private public
-#define protected public
 #include "view/web_window.h"
 #include "view/widget/search_edit.h"
 #include "view/widget/search_completion_window.h"
@@ -27,8 +25,6 @@
 #include "controller/search_result.h"
 #include "base/consts.h"
 #include "controller/config_manager.h"
-#undef private
-#undef protected
 
 namespace dman {
 

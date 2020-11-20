@@ -17,9 +17,7 @@
 */
 #include "ut_search_completion_delegate.h"
 
-#define private public
 #include "view/widget/search_completion_delegate.h"
-#undef private
 
 #include "view/widget/search_completion_listview.h"
 #include "controller/search_result.h"

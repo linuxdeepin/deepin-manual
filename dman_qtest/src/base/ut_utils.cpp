@@ -17,9 +17,7 @@
 */
 
 #include "ut_utils.h"
-#define private public
 #include "base/utils.h"
-#undef private
 #include "resources/themes/images.h"
 
 ut_utils_test::ut_utils_test()

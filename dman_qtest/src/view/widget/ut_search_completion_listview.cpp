@@ -17,14 +17,7 @@
 */
 #include "ut_search_completion_listview.h"
 
-
-#define private public
-#define protected public
 #include "view/widget/search_completion_listview.h"
-
-#undef private
-#undef protected
-
 
 ut_search_completion_listview_test::ut_search_completion_listview_test()
 {

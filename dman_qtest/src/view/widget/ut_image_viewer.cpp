@@ -17,11 +17,7 @@
 */
 #include "ut_image_viewer.h"
 
-#define private public
-#define protected public
 #include "view/widget/image_viewer.h"
-#undef private
-#undef protected
 
 #include "resources/themes/images.h"
 #include <QDesktopWidget>

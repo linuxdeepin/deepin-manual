@@ -17,9 +17,7 @@
 */
 #include "ut_manual_proxy.h"
 
-#define private public
 #include "view/manual_proxy.h"
-#undef private
 #include "controller/config_manager.h"
 #include "base/consts.h"
 #include <QProcess>

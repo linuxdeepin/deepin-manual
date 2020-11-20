@@ -16,9 +16,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "ut_shellobj.h"
-#define private public
 #include "controller/shellobj.h"
-#undef private
 
 ut_shellObj::ut_shellObj()
 {

@@ -17,16 +17,11 @@
 */
 #include "ut_search_completion_window.h"
 
-#define private public
-#define protected public
 #include "view/widget/search_completion_window.h"
 #include "view/widget/search_button.h"
 #include "view/web_window.h"
 #include "base/utils.h"
 #include <DWindowManagerHelper>
-#undef private
-#undef protected
-
 
 namespace dman {
 
