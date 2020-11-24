@@ -79,13 +79,13 @@ int main(int argc, char **argv)
     app->setOrganizationDomain("deepin.org");
     app->setApplicationVersion(VERSION);
     app->setApplicationName(kAppName);
-
+    app->loadTranslator();
     app->setApplicationDisplayName(QObject::tr("Manual"));
     app->setApplicationDescription(QObject::tr(
                                        "Manual is designed to help users learn the operating system and its applications,"
                                        " providing specific instructions and function descriptions."));
     app->setApplicationAcknowledgementPage("https://www.deepin.org/acknowledgments/deepin-manual/");
-    app->loadTranslator();
+
 
     ArgumentParser argument_parser;
     WindowManager window_manager;
