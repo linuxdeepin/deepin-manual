@@ -62,6 +62,7 @@ int main(int argc, char **argv)
     if (!DPlatformWindowHandle::pluginVersion().isEmpty()) {
         app->setAttribute(Qt::AA_DontCreateNativeWidgetSiblings, true);
     }
+    app->setAttribute(Qt::AA_ForceRasterWidgets, false);
 
 #ifdef DCPU_IS_LONGSON
     //add by wujian 20200907 for 解决龙芯平台，QWebEngine因字体库字体太多，造成启动失败的问题
