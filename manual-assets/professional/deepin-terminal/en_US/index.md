@@ -297,8 +297,8 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 1. On the Terminal interface, click ![main_menu](icon/icon_menu.svg).
 2. Click **Settings**.
 3. In the **Shortcuts** options, you can:
-    - Click the shortcuts to be modified, and input new shortcuts by keyboard.
-    - Press ![Backspace](icon/Backspace.svg) if you want to disable the shortcut.
+    - Modify shortcuts: Click the shortcuts to be modified and input new shortcuts via the keyboard in the editable input box.
+    - Disable shortcuts: Click the shortcuts to be modified and the input box will be editable.  Press **Backspace** on the keyboard to disable the shortcut.
 
 #### Advanced Settings ####
 
@@ -331,3 +331,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 
 1. On the Terminal interface, click ![icon_menu](icon/icon_menu.svg).
 2. Click **Exit** to exit Terminal.
+<div class="version-info"><span>Update Date: 2020-11-24</span><span> Version: 5.3</span></div>

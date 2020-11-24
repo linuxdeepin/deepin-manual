@@ -98,4 +98,4 @@
 2. 单击 **退出**。
 
 
-<div class="version-info"><span>文档更新时间: 2020-10-20</span><span> 版本: 1.0</span></div>
+<div class="version-info"><span>文档更新时间: 2020-11-24</span><span> 版本: 1.0</span></div>

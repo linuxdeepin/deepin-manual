@@ -307,6 +307,8 @@
 
 - 双击鼠标左键来保存。
 - 点击截图工具栏中的 ![cion](icon/screenshot button.svg) 按钮。
+  
+   >![notes](icon/notes.svg)说明：如果您的电脑支持触控屏或触控板，可以使用手势替代鼠标操作：一指双击完成截图。
 - 按下键盘上的 **Ctrl + S** 组合键来保存。
 - 在截取的图片中，点击鼠标右键，选择 **保存** 完成保存操作。
 
@@ -413,4 +415,4 @@
 启动截图录屏后按下键盘上的 **F1** 键即可打开帮助手册。
 
 
-<div class="version-info"><span>文档更新时间: 2020-10-20</span><span> 版本: 5.8</span></div>
+<div class="version-info"><span>文档更新时间: 2020-11-24</span><span> 版本: 5.8</span></div>

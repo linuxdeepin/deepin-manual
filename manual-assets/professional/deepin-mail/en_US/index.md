@@ -230,6 +230,9 @@ You can enable security password. When there are no activities in 15 minutes, Ma
 
 ![advanced-setting](jpg/advanced-setting.png)
 
+#### Restore Defaults
+
+Click **Restore Defaults** to restore all your settings to defaults.
 
 
 ### Theme
@@ -258,4 +261,4 @@ Click Help to get the manual, which will help you further know and use Mail.
 2. Click  **Exit**.
 
 
-<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 5.1</span></div>
+<div class="version-info"><span>Update Date: 2020-11-24</span><span> Version: 5.1</span></div>

@@ -14,9 +14,7 @@
 
 1. 单击任务栏上的启动器 ![deepin-launcher](icon/deepin-launcher.svg)，进入启动器界面。
 
-2. 上下滚动鼠标滚轮浏览或通过搜索，找到设备管理器 ![deepin-devicemanager](icon/deepin-devicemanager.svg) ，单击运行。弹出授权框，需要输入系统登录密码认证。
-
-   ![0|password](jpg/password.png)
+2. 上下滚动鼠标滚轮浏览或通过搜索，找到设备管理器 ![deepin-devicemanager](icon/deepin-devicemanager.svg) ，并单击运行。
 
 3. 右键单击![deepin-devicemanager](icon/deepin-devicemanager.svg) ，您可以：
 
@@ -165,4 +163,4 @@
 2. 单击 **退出**。
 
 
-<div class="version-info"><span>文档更新时间: 2020-10-20</span><span> 版本: 5.6</span></div>
+<div class="version-info"><span>文档更新时间: 2020-11-24</span><span> 版本: 5.6</span></div>

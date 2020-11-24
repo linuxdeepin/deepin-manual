@@ -190,7 +190,7 @@
 
 ### 翻转
 
-1. 在画板界面上，选择已导入的图片。
+1. 在画板界面上，选中图片。
 2. 点击 ![flip](icon/filp_Vertical_normal.svg) 或 ![flip](icon/flip_Horizontal_normal.svg) 将图片垂直翻转或水平翻转。
 
 
@@ -198,10 +198,10 @@
 
 ### 旋转
 
-1. 在画板界面上，选择已导入的图片。
-2. 点击 ![rotate](icon/rotate_right_normal.svg) 或 ![rotate](icon/rotate_left_normal.svg) 将图片顺时针或逆时针旋转90°。
+1. 在画板界面上，选中图片。
+2. 单击 ![rotate](icon/rotate_right_normal.svg) 或 ![rotate](icon/rotate_left_normal.svg) 将图片顺时针或逆时针旋转90°，或鼠标左键单击图片上的 ![icon](icon/icon_rotate.svg) 不放来旋转图片。
 
-> ![tips](icon/tips.svg)窍门：您也可以通过鼠标拖动图片或图形的原点来自由旋转操作。
+> ![notes](icon/notes.svg)说明：如果您的电脑支持触控屏，可以使用手势来替代鼠标操作：一指单击选中图片，手指按住 ![icon](icon/icon_rotate.svg) 自由旋转图片。
 
 ![1|rotate](jpg/rotate.png)
 
@@ -261,7 +261,7 @@
 
 ### 主题
 
-窗口主题包含浅色主题、深色主题和跟随系统主题，其中跟随系统主题为默认设置。
+窗口主题包含浅色主题、深色主题和跟随系统主题。
 
 1. 在画板界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **主题**，选择一个主题颜色。
@@ -290,4 +290,4 @@
 1. 在画板界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **退出**。
 
-<div class="version-info"><span>文档更新时间: 2020-10-20</span><span> 版本: 5.8</span></div>
+<div class="version-info"><span>文档更新时间: 2020-11-24</span><span> 版本: 5.8</span></div>

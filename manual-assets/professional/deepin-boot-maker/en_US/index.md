@@ -94,7 +94,7 @@ In the main menu, you can switch themes, view manual, and so on.
 
 ### Theme
 
-The window theme includes Light Theme, Dark Theme and System Theme (default).
+The window theme includes Light Theme, Dark Theme and System Theme.
 
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Click  **Theme** to select one.
@@ -119,4 +119,4 @@ You can click to view the manual, which will help you further know and use Boot 
 
 2. Click **Exit**.
 
-<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 5.4</span></div>
+<div class="version-info"><span>Update Date: 2020-11-24</span><span> Version: 5.4</span></div>

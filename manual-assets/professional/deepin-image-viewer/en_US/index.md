@@ -4,7 +4,6 @@
 
 Image Viewer is a lightweight image viewer with a trendy look and smooth performance. Supporting a wide range of image formats, it's more than just easy to use. 
 
-
 ![1|maininterface](jpg/main.png)
 
 ## Guide
@@ -19,7 +18,6 @@ You can run, close, and create shortcuts for Image Viewer in the following ways.
  - Click **Send to desktop** to create a desktop shortcut.
  - Click **Send to dock** to fix the application in the dock.
  - Click **Add to startup** to add the application to startup, and it will automatically run when the system starts up.
-
 
 ### Exit Image Viewer
 
@@ -36,6 +34,7 @@ On the Image Viewer interface, press **Ctrl + Shift + ?** on the keyboard to vie
 ## Image Viewing
 
 ### Open Images
+
 You can use one of the following ways to open image files:
 
 - Right-click an image and select **Open with** > **Image Viewer**. 
@@ -44,13 +43,17 @@ You can use one of the following ways to open image files:
 - Open Image Viewer and drag the image to the interface to open it.
 - Drag the image to the Image Viewer icon on desktop or in the dock to open it.
 
-> ![tips](icon/tips.svg)Tips: In the Control Center, you can set Image Viewer as the default image viewer. Please refer to [Default Applications](dman:///dde#Default Application Settings) for specific operations.
+> ![tips](icon/tips.svg) Tips: 
+>   - In Control Center, you can set Image Viewer as the default image viewer. Please refer to [Default Applications](dman:///dde#Default Application Settings) for specific operations.
+>   - Following Image formats are supported: BMP, ICO, JPG/JPE/JPEG, PNG, TGA, TIF/TIFF, XPM, GIF, SGI, RAW, WEBP, CR2, NEF, DNG, RAF, MEF, MRW, XBM, SVG, ORF, and MNG.
 
-Following Image formats are supported: BMP, ICO, JPG/JPE/JPEG, PNG, TGA, TIF/TIFF, XPM, GIF, SGI, RAW, WEBP, CR2, NEF, DNG, RAF, MEF, MRW, XBM, SVG, ORF, and MNG.
+>![notes](icon/notes.svg) Notes: If you are using a  computer equipped with touch-screen or touchpad, you can use gestures instead of the mouse to zoom in on or zoom out of the images being viewed:
+   > -  On the touchscreen, open your two fingers to zoom in and pinch them to zoom out.
+   > -  On the touchpad that supports multiple-point touch, open your two fingers to zoom in on the picture and pinch them to zoom out.
 
 ### Main Interface
 
-![1|main](jpg/main.png)
+![1|main-interface](jpg/main-interface.png)
 
 | Icon                                               | Name                    | Description                                                  |
 | -------------------------------------------------- | ----------------------- | ------------------------------------------------------------ |
@@ -63,10 +66,9 @@ Following Image formats are supported: BMP, ICO, JPG/JPE/JPEG, PNG, TGA, TIF/TIF
 | ![delete](icon/delete.svg)                         | Delete                  | Delete the current image.                                    |
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+> ![tips](icon/tips.svg) Tips: If the image size exceeds the window, a navigation window will appear at the lower left corner of the interface, which helps you fast locate image areas. If you don't want to show the navigation window automatically, you can close it by clicking ![close](icon/close.svg) at the top right corner of the window. You can right-click to select **Hide/Show navigation window** on the Image Viewer interface.
 
-> ![tips](icon/tips.svg)Tips: If the image size exceeds the window, a navigation window will appear at the lower left corner of the interface, which helps you fast locate image areas. If you don't want to show the navigation window automatically, you can close it by clicking ![close](icon/close.svg) at the top right corner of the window. You can right-click to select **Hide/Show navigation window** on the Image Viewer interface.
-
-> ![notess](icon/notes.svg)Notes: The Rotate and Delete icons are grayed out and disabled for system images.
+> ![notess](icon/notes.svg) Notes: The Rotate and Delete icons are grayed out and disabled for system images.
 
 ### Print Images
 
@@ -76,7 +78,7 @@ You can print images in Image Viewer.
 2. Select the printer and set the printing parameters.
 3. Click **Print**.
 
-> ![notes](icon/notes.svg)Notes: Click **Advanced** to customize the printing parameters.
+> ![notes](icon/notes.svg) Notes: Click **Advanced** to customize the printing parameters.
 
 ### Rename Images
 
@@ -84,7 +86,7 @@ You can print images in Image Viewer.
 2. Input a new name in the pop-up window.
 3. Click **Confirm** to rename.
 
-> ![notess](icon/notes.svg)Notes: System images can not be renamed.
+> ![notess](icon/notes.svg) Notes: System images can not be renamed.
 
 ### Show in slides
 
@@ -99,7 +101,7 @@ You can copy images in Image Viewer.
 1. Right-click the image on the Image Viewer interface and select **Copy**.
 2. On the desktop or in the target place, right-click the blank area and select **Paste** to copy the image to that location.
 
-> ![tips](icon/tips.svg)Tips: Both the path and content of picture are copied.
+> ![tips](icon/tips.svg) Tips: Both the path and content of picture are copied.
 
 ![0|copy](jpg/copy.png)
 
@@ -118,6 +120,11 @@ You can delete images from Image Viewer in the following ways.
 
 ![0|rotate](jpg/rotate.png)
 
+   ![notes](icon/notes.svg) Notes:  If you are using a computer equipped with touch-screen or touchpad, you can use gestures instead of the mouse: 
+
+- On the touchscreen, place two fingers on the photo and keep a certain distance, and rotate the two fingers at the same time to rotate the photo.
+- On the touchpad that supports multiple-point touch,  place two fingers on the photo and keep a certain distance, and rotate the two fingers at the same time to rotate the photo.
+
 ### Set as Wallpaper
 
 You can set an image as desktop wallpaper. Right-click the image on the Image Viewer interface and select **Set as wallpaper**.
@@ -127,7 +134,7 @@ You can set an image as desktop wallpaper. Right-click the image on the Image Vi
 ### Display in File Manager
 
 1. Right-click the image in the Image Viewer interface and select **Display in file manager**.
-2. The folder location of the image will be opened and displayed.
+2. The folder contained the image will be opened and displayed.
 
 ### View Image Information
 
@@ -144,7 +151,7 @@ In the main menu, you can switch window themes, view help manual, and get more i
 
 ### Theme
 
-The window theme provides three theme types, namely Light Theme, Dark Theme, and System Theme (default).
+The window theme provides three theme types, namely Light Theme, Dark Theme, and System Theme.
 
 1. On the Image Viewer interface, click ![main_menu](icon/icon_menu.svg).
 2. Click **Theme** to select one theme.
@@ -162,4 +169,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 
 1. On the Image Viewer interface, click ![icon_menu](icon/icon_menu.svg).
 2. Click **Exit** to exit Image Viewer.
-<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 5.6</span></div>
+<div class="version-info"><span>Update Date: 2020-11-24</span><span> Version: 5.6</span></div>

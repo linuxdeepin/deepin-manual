@@ -48,7 +48,7 @@
 
    > ![tips](icon/tips.svg)窍门：当相册中尚无照片时，点击 **导入照片**，将照片导入相册管理系统。
 
-   > ![notes](icon/notes.svg)说明：相册支持的图片格式有BMP、GIF、JPG、PNG、PBM、PGM、PPM、XBM、XPM、SVG、DDS、ICNS、JP2、MNG、TGA、TIFF、WBMP、WEBP、PSD、PDF、EPS。
+   > ![notes](icon/notes.svg)说明：相册支持的图片格式有bmp、gif、jpg、png、pbm、pgm、ppm、xbm、xpm、svg、dds、icns、mng、tga、tiff、wbmp、webp、psd、ico、jng、pcd、pcx、tif、ras、mrw、dng、raf、cr2、raw、orf、nef。
 
 ### 搜索照片
 
@@ -128,13 +128,16 @@
 
    > ![tips](icon/tips.svg)窍门：在查看照片时，点击界面上的![collect](icon/collect.svg)，将照片加入我的收藏。再次点击![collect-active](icon/collect-active.svg)，取消收藏。
 
-
-
 ### 旋转照片
 
 1. 在相册界面上，右键单击照片。
 2. 选择 **顺时针旋转/逆时针旋转**。
 3. 照片将会顺时针转旋转90°/逆时针旋转90°。
+   
+   > ![notes](icon/notes.svg)说明：如果您的电脑支持触控屏或触控板，可以使用手势代替鼠标操作：
+      > - 在触控屏上：二指放置在照片上并保持一定距离，同时旋转二指来旋转照片。
+      > - 在触控板上（触控板支持多点触控）：二指放置在照片上并保持一定距离，同时旋转二指来旋转照片。
+
 
 ### 设置为壁纸
 
@@ -212,7 +215,7 @@
 
 ### 主题
 
-窗口主题包含浅色主题、深色主题和跟随系统主题，其中跟随系统主题为默认设置。
+窗口主题包含浅色主题、深色主题和跟随系统主题。
 
 1. 在相册界面，点击![icon_menu](icon/icon_menu.svg)。
 2. 点击 **主题**，选择一个主题颜色。
@@ -237,4 +240,4 @@
 1. 在相册界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **退出**。
 
-<div class="version-info"><span>文档更新时间: 2020-10-20</span><span> 版本: 5.8</span></div>
+<div class="version-info"><span>文档更新时间: 2020-11-24</span><span> 版本: 5.8</span></div>
