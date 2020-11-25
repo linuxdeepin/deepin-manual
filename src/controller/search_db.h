@@ -18,9 +18,9 @@
 #ifndef DEEPIN_MANUAL_CONTROLLER_SEARCH_DB_H
 #define DEEPIN_MANUAL_CONTROLLER_SEARCH_DB_H
 
-#include <QObject>
-
 #include "controller/search_result.h"
+
+#include <QObject>
 
 struct SearchDbPrivate;
 struct searchStrct;

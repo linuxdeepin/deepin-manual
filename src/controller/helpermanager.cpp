@@ -20,12 +20,14 @@ helperManager::helperManager(QObject *parent)
     initConnect();
 }
 
+/**
+ * @brief helperManager::initWeb 初始化web配置
+ */
 void helperManager::initWeb()
 {
     qDebug() << Q_FUNC_INFO;
     m_webView = new QWebEngineView;
     m_webView->setFixedSize(400, 200);
-//    m_webView->show();
     connect(m_webView->page(), &QWebEnginePage::loadFinished, this, &helperManager::webLoadFinish);
     jsObj = new JsContext(this);
     m_webChannel = new QWebChannel(this);
@@ -33,7 +35,6 @@ void helperManager::initWeb()
     m_webView->page()->setWebChannel(m_webChannel);
     const QFileInfo info(kSearchIndexPage);
     m_webView->load(QUrl::fromLocalFile(info.absoluteFilePath()));
-//    m_webView->load(QUrl::fromLocalFile("/home/wujian/Documents/gitwork/deepin-manual/src/web/toSearchMd/common/index.html"));
 }
 
 /**

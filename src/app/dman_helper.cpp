@@ -43,12 +43,5 @@ int main(int argc, char **argv)
 
     helperManager obj;
 
-//    QWebEngineView *kweb = new QWebEngineView;
-
-//    kweb->setFixedSize(400, 200);
-//    kweb->show();
-
-
-
     return app.exec();
 }

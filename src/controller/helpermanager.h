@@ -21,10 +21,11 @@
 #ifndef HELPERMANAGER_H
 #define HELPERMANAGER_H
 
+#include "dpinyin.h"
+
 #include <QObject>
 #include <QWebEngineView>
 #include <QWebChannel>
-#include "dpinyin.h"
 
 class fileWatcher;
 class SearchDb;
