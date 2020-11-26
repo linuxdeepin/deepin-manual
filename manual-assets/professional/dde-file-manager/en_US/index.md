@@ -43,7 +43,7 @@ On File Manager interface, you can execute many operations with the functional b
 | 2    | Address bar        | You can quickly switch visiting history, switch among directory levels, search and input address in address bar. |
 | 3    | View | Click ![icon_view](icon/icon_view.svg) and ![list_view](icon/list_view.svg) to switch view modes. |
 | 4    | Info column        | Click ![fileinfo](icon/fileinfo.svg) to view basic information and tags of files(folders). |
-| 5    | Main menu        | You can create new window, switch themes, set share password, make settings, view manual and application information, and exit the application in Main menu. |
+| 5    | Main menu        | You can create new window, set share password, make settings, view manual and application information, and exit the application in Main menu. |
 | 6    | Status bar        | You can view the number of files or selected files.                            |
 
 
