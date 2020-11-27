@@ -2,7 +2,7 @@
 
 ## Overview
 
-As the core component to manage files, File Manager is a powerful, easy-to-use tool with an elegant and simple interface. Full-featured, well-designed, efficient-improved, File Manager will be a good help in your daily life and work.
+File Manager is a powerful, simple and easy-to-use file management tool. It follows the classic function and layout of traditional file manager, and simplifies the user operation and adds many features. The open-and-shut navigation bar, the search box with intelligent identification, a variety of views and sorting let you manage files easily. It's beyond classic, just to give you a better experience!
 
 ![1|overview](jpg/overview.png)
 
@@ -27,7 +27,7 @@ You can run, close and create a shortcut for File Manager by the following ways.
 
 ### View Shortcut Keys
 
-On Document Viewer interface, press  **Ctrl** +**Shift** +**?** to view all shortcut keys quickly, which helps you to use them skillfully and improves your working efficiency. 
+On Document Viewer interface, press **Ctrl + Shift + ?** to view all shortcut keys quickly, which helps you to use them skillfully and improves your working efficiency. 
 
 ![1|hotkey](jpg/hotkey.png)
 
@@ -35,7 +35,7 @@ On Document Viewer interface, press  **Ctrl** +**Shift** +**?** to view all shor
 
 On File Manager interface, you can execute many operations with the functional bars. It is designed to be easy-to-use, user-friendly and efficient improving.
 
-![1|maininterface](jpg/main-interface.png)
+![1|maininterface](jpg/maininterface.png)
 
 | No. | Name          | Description                                                         |
 | ---- | ------------- | ------------------------------------------------------------ |
@@ -61,19 +61,19 @@ File Manager is featured with the basic functions as a file manager, you can eas
 
 1. On File Manager interface, right-click and select **New document**.
 2. In the pop-up menu, select the document format you want to create.
-3. Input a name for the new document, and press **Enter** key, or click at blank area.
+3. Input a name for the new document, and press **Enter**, or click at blank area.
 
 ![0|newdoc](jpg/newdoc.png)
 
 #### New Folder
 
 1. On File Manager interface, right-click and select **New folder**.
-2. Input a name for the new folder, and press **Enter** key, or click at blank area.
+2. Input a name for the new folder, and press **Enter**, or click at blank area.
 
 ### Rename File/Folder
 
 1. Select the file/folder, right-click to select **Rename**.
-2. Input a new name for the file/folder, and press **Enter** key, or click at any blank area.
+2. Input a new name for the file/folder, and press **Enter**, or click at any blank area.
 
 ![0|rename](jpg/contextmenu.png)
 
@@ -96,17 +96,15 @@ Click ![icon_view](icon/icon_view.svg) and ![list_view](icon/list_view.svg) on t
 
 - Icon view: displaying filenames, icons or thumbnails.
 
-![1|icon-view](jpg/icon-view.png)
+![1|iconview](jpg/iconview.png)
 
 - List view: displaying file icons or thumbnails, names, time modified, sizes, types and etc in a list. 
 
-![1|list-view](jpg/list-view.png)
+![1|listview](jpg/listview.png)
 
 > ![tips](icon/tips.svg)Tips: In list view, place the cursor on the dividing line between any two columns and drag it to change the width of the current column. Double-click the dividing line to adjust to the biggest width of the current column automatically. 
 
 > ![tips](icon/tips.svg)Tips: Press  **Ctrl**+**1**  or  **Ctrl**+ **2**  to switch icon view and list view. 
-
-
 
 ### Sorting
 
@@ -114,7 +112,6 @@ Click ![icon_view](icon/icon_view.svg) and ![list_view](icon/list_view.svg) on t
 2. Choose among the sorting options, which include **Name**, **Time modified**, **Size** and **Type**.
 
 > ![tips](icon/tips.svg)Tips: you can click the head of the columns in the list view to change the sort order.
-
 
 
 ### Open Files
@@ -128,8 +125,6 @@ Click ![icon_view](icon/icon_view.svg) and ![list_view](icon/list_view.svg) on t
 ![0|open_with](jpg/open.png)
 
 > ![tips](icon/tips.svg)Tips: You can right-click multiple files of the same type, and select **Open with** to open them at a time.
-
-
 
 ### Hide files
 
@@ -182,6 +177,8 @@ In Properties of files, you can view the basic info, open with list, and permiss
 
 > ![notes](icon/notes.svg)Notes: If you check the properties of multiple files at a time, the total size and quantities will be displayed. If you check the properties of a shortcut, the source file location will be displayed in addition. You can use shortcuts **Ctrl + I** to view the properties as well.
 
+
+
 ## Common Operations
 
 File Manager is featured with many useful functions, which are all designed to ease the commonly used operations.
@@ -192,7 +189,7 @@ There are three sections in address bar, namely back/forward buttons, breadcrumb
 
 
 
-![0|addressbar](jpg/addressbar1.jpg)
+![0|addressbar](jpg/addressbar1.png)
 
 - Clicking back/forward buttons to quickly view the previous address or the next address. 
 - Each level of the location of a file will form a breadcrumb. You can switch quickly among levels by clicking all breadcrumbs.
@@ -201,21 +198,23 @@ By clicking the search icon, or right-click the file path and select **Edit addr
 
 
 
-![0|addressbar](jpg/addressbar2.jpg)
+![0|addressbar](jpg/addressbar2.png)
 
-- The inputting box can identify smartly. You can input keywords or an address and press **Enter** key, the system will identify automatically and search or visit.
+- The inputting box can identify smartly. You can input keywords or an address and press **Enter**, the system will identify automatically and search or visit.
 
 ### Search files
 
-Click the search button or press **Ctrl + F**  to switch to the search bar. Or, input the keywords and press **Enter** key, the search results will be shown in the window.
+Click the search button or press **Ctrl + F**  to switch to the search bar. Or, input the keywords and press **Enter**, the search results will be shown in the window.
 
 - If you need to search in a specified directory, please enter it before search.
 
-> ![notes](icon/notes.svg)Notes: In **Settings**, check "Auto index internal disk" and "Index external storage device after connected to computer" to quicken the searching speed.
+> ![notes](icon/notes.svg)Notes: 
+   - In **Settings**, check "Auto index internal disk" and "Index external storage device after connected to computer" to quicken the searching speed.
+   - In case you want to search files by keywords in the content, you can check **Full-Text search** in **Settings** > **Advanced** > **Index**.
 
 #### Advanced Search
-1. In search bar, input the keywords and press enter, click ![filter](icon/filter.svg) to show advanced search.
-2. Select the searching range, file type and size, and modified time to narrow the search results.
+1. In search bar, input the keywords and press **Enter**. When the results appear, you will see ![filter](icon/filter.svg) icon, you can click it to do advanced search.
+2. Select the searching range, file type and size, and modified time, accessed time and created time to narrow the search results.
 
 ![0|filter](jpg/filter.png)
 
@@ -261,25 +260,25 @@ By adding tags on file/folder, you can classify and manage your files better.
 
 1. Right-click a file/folder, select **Tag information**.
 2. Input tag info. Use comma to separate tags in case of multiple tags.
-3. Press  **Enter** key to finish adding tag.
+3. Click any blank area to finish adding tag.
 
 > ![notes](icon/notes.svg)Notes: The tag color is randomly assigned from eight default colors.
 
 
-![1|tag info](jpg/tag info.png)
+![1|taginfo](jpg/taginfo.png)
 
 
 ##### By Color Tag
 
 Right-click a file/folder, select a "color button" to create a color tag directly.
 
-![1|color tag](jpg/color tag.png)
+![1|colortag](jpg/colortag.png)
 
 ##### By information column on the right side
 
 Select a file/folder, click ![fileinfo](icon/fileinfo.svg), and add tags in the information column on the right side.
 
-![1|info tag](jpg/info tag.png)
+![1|infotag](jpg/infotag.png)
 
 > ![notes](icon/notes.svg)Notes: You can add tag to multiple files/folders at a time, or add multiple tags to a single file/folder; you can also add tags in Properties of the file/folder. The tag appears in the left panel.
 
@@ -289,7 +288,7 @@ Select a file/folder, click ![fileinfo](icon/fileinfo.svg), and add tags in the 
 
 Right-click a tag in  the left panel,  select **Rename** to modify the current tag.
 
-![1|rename tag](jpg/rename tag.png)
+![1|renametag](jpg/renametag.png)
 
 #### Change Tag Color
 
@@ -302,9 +301,11 @@ Drag and drop the tag upwards or downwards to change its order.
 #### Delete Tag
 Right-click a tag in left panel,  select **Remove** to delete the tag.
 
+
+
 ### Preview Files
 
-File Manager supports file preview by pressing space bar. Select a file and press the space bar on the keyboard to quickly preview it. In the preview window, you can view the file info, including image resolution, document size, text content. It also supports gif, audio and video playback.
+File Manager supports file preview by pressing space bar. Select a file and press the space bar on the keyboard to quickly preview it. In the preview window, you can view the file info, including image resolution, document size, text content. It also supports gif format, audio and video playback.
 
 #### Preview Video
 
@@ -313,7 +314,7 @@ File Manager supports file preview by pressing space bar. Select a file and pres
 3. Drag the progress bar to play forward or backward.
 4. Click **Open** at the bottom to open the video by default program.
 
-![1|video preview](jpg/video preview.png)
+![1|videopreview](jpg/videopreview.png)
 
 ![notes](icon/notes.svg)Notes: You can select multiple files and press space bar to preview them at a time.
 
@@ -344,8 +345,8 @@ You can find sharing folders of other users in the same LAN in **Computers in LA
 
 
 
-1. On File Manager interface, input the sharing address of the LAN user, e.g. smb://xx.x.xx.xxx (usually it should be an IP address), press ![enter](icon/enter.svg).
-2. Input the username and password or visit by anonymous access.
+1. On File Manager interface, click ![icon_menu](icon/icon_menu.svg) > **Connect to Server**, input the sharing address of the LAN user, e.g. smb://xx.x.xx.xxx (usually it should be an IP address), click **Connect**.  Or, input the server's address in the address bar directly and press **Enter**.
+2. Double-click the shared document you need to visit, input the username and password or visit by anonymous access in the pop-up dialogue box.
 - Unencrypted folders can be visited by anonymous access without inputting username and password.
 - When you visit encrypted folders, a window pops up and you will have to input user name and password before visiting. If you check **Remember password**, you don't have to input password when you visit the folder next time.
   - Username: i.e. the name created when the user installed the system, which means the one used to log in the system.
@@ -363,12 +364,16 @@ You can find sharing folders of other users in the same LAN in **Computers in LA
    - When you visit encrypted folders, a window pops up and you will have to input user name and password before visiting. If you check **Remember password**, you don't have to input password when you visit the folder next time.
 4. Click **Connect** to establish connection.
 
+### Open in new window as admin
 
+1. Right-click in the blank area on File Manager. 
+2. Select **Open in new window as admin**, input your login password in the pop-up window and click **Confirm**.
+3. The file will be opened in a new window, in which you can operate with admin permissions. And you will exit admin permissions when you close this window.
 
-### Open in Terminal
+### Open in terminal
 
-1. On File Manager interface, right-click in any blank area.
-2. Select **Open in terminal** to start up Terminal, and its path is the current directory.
+1. Right-click in the blank area on File Manager. 
+2. Select **Open in terminal**, Terminal will be opened, and its directory will be the current one.
 
 ![0|openinterminal](jpg/openinterminal.png)
 
@@ -390,7 +395,41 @@ When there is an external device inserted, you can directly send file/folder to 
 3. Select the device you want to send to.
 4. File/folder will be copied to the device.
 
+### Send to bluetooth
+If your computer is equipped with Bluetooth module, you can transfer files in short distance through Bluetooth.
+1. On File Manager interface, select a file.
+2. Right-click and select **Send to** > **Send to Bluetooth**.
+3. If your computer is not connected to a Bluetooth device, click "Go to Bluetooth Settings" in the pop-up dialog box, and the interface will jump to the **Control Center** > **Bluetooth** setting window. Refer to [Connect to a Bluetooth Device](dman:///dde#Connect to a Bluetooth Device) for details.
+4. After the connection is successful, a dialogue box pops up, you can select a receiving device and click **Next**.
+5. After transferring is finished successfully, click **Done** in the pop-up dialogue box.
+>![tips](icon/tips.svg)Tips: If you need to transfer a folder, you can compress it in advance and send it through Bluetooth.
 
+## Add Corner Marker to Files/Folders
+
+You can assign an icon file to a file or folder icon through the command line and display it as a corner marker.
+>![notes](icon/notes.svg)Notes: 
+>   - The corner marker files support formats such as svg, jpg, png, bmp, and gif, but not bigger than 100kb.
+>   - The corner marker could not be added to files in USB disks and CD-ROM disks.
+
+### Add single corner marker
+
+1. Open Terminal, input **gio set xxx(file path)  -t stringv metadata::emblems "xxx(icon path)"**, which means to add a corner marker in the lower right corner of the file/folder icon by default.
+>![attention](icon/attention.svg)Attention: the special corner markers defined by the system could not be replaced.
+2. You can add position codes into the above command to add a corner marker to the upper left corner(lu), lower left corner(ld), upper right corner(ru) or lower right corner(rd).
+For example, to add a corner marker to the upper left corner, you have to input:
+**gio set xxx(file path)  -t stringv metadata::emblems "xxx(icon path);lu"**
+![mark](jpg/single.png)
+
+### Add multiple corner markers
+To add 2~4 corner markers to a file/folder, you can input "|" in the command to seperate multiple paths of the corner marker files. Only one corner marker can be added to the same corner, but you can replace it.
+
+For example, to add 4 corner markers to a file/folder icon, you can input:
+**gio set xxx(file path)  -t stringv metadata::emblems "xxx(icon path);lu|xxx(icon path);ld|xxx(icon path);ru|xxx(icon path);rd"**
+
+![mark](jpg/multi.png)
+
+### Cancel corner markers
+Open Terminal, input **gio set xxx(file path) -t stringv metadata::emblems ""** to cancel all corner markers on the file/folder icon. 
 
 ## Disk Management
 
@@ -455,7 +494,7 @@ Local disks are displayed in the left panel of File Manager. When you mount any 
 
 ## Main Menu
 
-You can create new window, switch themes, [set share password](#Share Local Files),make settings, view manual and version information in Main Menu.
+You can create new window, switch themes, connect to server, [set share password](#Share Local Files),make settings, view manual and version information in Main Menu.
 
 
 ### New Window
@@ -463,27 +502,45 @@ You can create new window, switch themes, [set share password](#Share Local File
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Select **New window** to open a new window.
 
-### Theme
+### Connect to Server
 
-The window theme includes Light Theme, Dark Theme and System Theme (default).
+You can [visit sharing folders](#Visit Sharing Folders) by connecting to server.
 
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
-2. Click  **Theme** to select one.
+2. Select **Connect to Server**, input server's IP address in the editing box.
+   - Click ![+](icon/+.svg) to add the address into **My Favorites**.
+   - Select an address from **My Favorites** and click ![-](icon/-.svg) to delete in from **My Favorites**.
+3. Click **Connect**.
+
+![conncet](jpg/connecttoserver.png)
+
+
 
 ### Settings
 
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Select **Settings**.
 3. Modify the settings according to your needs:
- - In **Open behavior**, you can set whether to open folder in current window or new window, by one click or double click.
- - In **New window and tab**, you can set the default path to open in a new window/tab.
- - In **View**, you can set file icon size and default view.
- - In **Hidden files**, you can set whether to show the hidden file, and hide file extension when rename.
- - In **Index**, you can set whether to auto index internal disk and externally connected storage devices.
- - In **Preview**, you can set which types of files can be previewed.
- - In **Mount**, you can set to auto mount.
- - In **Dialog**, you can set whether to use the file chooser dialog of the File Manager.
- - In **Other**, you can set whether to hide system disk or not.
+   - Basic:
+      + In **Open behavior**, you can set whether to open folder in current window or new window, by one click or double click.
+      + In **New window and tab**, you can set the default path to open in a new window/tab.
+      + In **View**, you can set file icon size and default view.
+      + In **Hidden files**, you can set whether to show the hidden file, and hide file extension when rename.
+   - Advanced: 
+      + In **Index**, you can set whether to auto index internal disk and externally connected storage devices, and whether to search by file content.
+      + In **Preview**, you can set which types of files can be previewed.
+      + In **Mount**, you can set to auto mount.
+      + In **Dialog**, you can set whether to use the file chooser dialog of the File Manager.
+      + In **Other**, you can set whether to hide system disk or not.
+
+
+
+### Theme
+
+The window theme includes Light Theme, Dark Theme and System Theme.
+
+1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
+2. Click  **Theme** to select one.
 
 
 
@@ -505,3 +562,5 @@ The window theme includes Light Theme, Dark Theme and System Theme (default).
 
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Click **Exit**.
+
+<div class="version-info"><span>Update Date: 2020-11-27</span><span> Version: 5.2</span></div>

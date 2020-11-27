@@ -27,44 +27,41 @@ You can run, close or create a shortcut for Contacts as follows.
 
 ## Sign In
 
-Once **Contacts** is run, the interface **Cloud Sync Sign in** pops up automatically.
+Once **Contacts** is run, the interface **Union ID Sign in** pops up automatically.
 
-![2login](jpg/2login.png)
+![login](jpg/login.png)
 
 #### Sign up
 
-Once **Contacts** is run, the interface **Cloud Sync Sign in** pops up automatically. If you don't have a Cloud Sync account, you can sign up for one as follows.
+Once **Contacts** is run, the interface **Union ID Sign in** pops up automatically. If you don't have a Union ID account, you can sign up for one as follows.
 
-- Click hyper link **Sign up**, the default browser of the operation system is called successfully and a signing-up page is opened.
-
-- Input information to sign up for an account accordingly as required.
-
-- After signing up is completed, you can return to the interface of Cloud Sync Sign in to sign in your account.
+1. Click hyper link **Sign up**, the default browser of the operation system is called successfully and a signing-up page is opened.
+2. Input information to sign up for an account accordingly as required.
+3. After signing up is completed, you can return to the interface of Union ID Sign in to sign in your account.
 
 
 #### Forgot Password？
 
-Once **Contacts** is run, the interface **Cloud Sync Sign in** pops up automatically. If you have forgotten password, you can get it back as follows.
+Once **Contacts** is run, the interface **Union ID Sign in** pops up automatically. If you have forgotten password, you can get it back as follows.
 
-- Click hyper link **Forgot password?** , the default browser of the operation system is called successfully and you can reset your password.
-
-- After password is reset, you can return to the interface of Cloud Sync Sign in to sign in your account.
+1. Click hyper link **Forgot password?** , the default browser of the operation system is called successfully and you can reset your password.
+2. After password is reset, you can return to the interface of Union ID Sign in to sign in your account.
 
 
 #### Auto-login
 
-1. Prerequisite: you have logged in the operation system with the Union ID. 
+Prerequisite: you have logged in the operation system with the Union ID. 
 
-2. Once **Contacts** is run, the system will enter into main interface of Contacts without inputing Union ID and password.
+1. Once **Contacts** is run, the system will enter into main interface of Contacts without inputing Union ID and password.
 
 
 #### Manually login
 
-1. Prerequisite: you haven't logged in the operation system with the Union ID.
+Prerequisite: you haven't logged in the operation system with the Union ID.
 
-2. Once **Contacts** is run, the interface **Cloud Sync Sign in** pops up automatically.
+1. Once **Contacts** is run, the interface **Union ID Sign in** pops up automatically.
 
-3. Input your Union ID and password. After verification is completed successfully, logging in from the client terminal is also done and main interface of Contacts is opened. 
+2. Input your Union ID and password. After verification is completed successfully, logging in from the client terminal is also done and main interface of Contacts is opened. 
 
 ## Contacts
 
@@ -72,9 +69,9 @@ On the main interface, click ![18](icon/18.svg) .
 
 ### Search
 
-1. Prerequisite: you have already added some friends or created groups.
+Prerequisite: you have already added some friends or created groups.
 
-2. To find a friend quickly, you can input his/her Union ID, nickname, remark name, or group name into the searching box.
+1. To find a friend quickly, you can input his/her Union ID, nickname, remark name, or group name into the searching box.
 
   > ![notes](icon/notes.svg) Notes: The object being searched should be somehow related to the Union ID, instead of a totally stranger.
 
@@ -85,7 +82,7 @@ This interface mainly displays the contacts who request to add you as a friend.
 1. When somebody requests to add you as a friend, a red prompt will pop up from the lower right corner.
 2. Click **New friends**, you can select **Agree** or **Refuse** to add this contact. You can also view history.
 
-![new friend](jpg/new-friend.png)
+![newfriend](jpg/newfriend.png)
 
 ### Friends
 
@@ -93,11 +90,11 @@ This interface mainly displays the contacts who request to add you as a friend.
 
 One default friends classification is displayed here, if you want to add others, do as follows.
 
-2. Hover the cursor over **Friends** and right-click; or click ![19](icon/19.svg), a popping-up box saying  **Add Friends Classification** appears.
+1. Hover the cursor over **Friends** and right-click; or click ![19](icon/19.svg), a popping-up box saying  **Add Friends Classification** appears.
 
-3. Input a name and press **Enter** key, then, a new classification is created. If you have to change its name, you can right-click to select **Rename Classification**.
+2. Input a name and press **Enter** key, then, a new classification is created. If you have to change its name, you can right-click to select **Rename Classification**.
 
-![3add friend group](jpg/3add-friend-group.png)
+![3addfriendgroup](jpg/3addfriendgroup.png)
 
 
 #### Delete Classification
@@ -118,25 +115,21 @@ There are three ways to add friends, including:
 To add a friend, you can:
 
 1. Click **Add Friend**.
-
 2. Input user name, email or phone number to search a friend, and he/she will appear in the list if searched successfully, click![add-normal](icon/add-normal.svg) .
-
-![add friend2](jpg/3add-friend2.png)
-
+![addfriend2](jpg/3addfriend2.png)
 3. A dialogue box "Add Friend Request" pops up. Select classification, input a message and click  **Send**.
-
-![3add friend3](jpg/3add-friend3.png)
-
+![3addfriend3](jpg/3addfriend3.png)
 4. After the friend agrees to add you, you can see him/her in the list, which means you have added him/her successfully. 
-
 5. You can add a remark name for him/her.
+
+> ![tips](icon/tips.svg)Tips: You can wake up the AI assistant to add new friends.
 
 #### Contact Information
 
 1. Click a friend you want to view in the list, you can see detailed information about him/her.
 2. The detailed information includes account, remark name, mobile phone and email. You can also create a conference here.
 
-![3friend inf](jpg/3friend-inf.png)
+![3friendinf](jpg/3friendinf.png)
 
 #### Move Friend to
 
@@ -155,9 +148,11 @@ To add a friend, you can:
 
 #### Chat with friend
 
-1. Click ![chat](icon/chat.svg) to chat with a friend, and in the chatting window, you can send emoji and files, share contact card, view chat history and make video calls.
-2. Click![detail](icon/detail.svg) to view the friend's information and create a new group with him/her.
-3. In the left column, right-click a friend and select **Top**, this friend will be displayed on the top; select **Mute**, there will be no reminders when the friend sends you messages; select **Delete**, the friend will be deleted from the chatting list.
+1. Click ![chat](icon/chat.svg) to chat with a friend
+2. In the chatting window, you can send emoji, screenshots and files, share contact card, view chat history and make video calls.
+   - In Chat History, you can enter keywords to search relevant history; click ![clear](jpg/clear.png) to empty all history.
+   - Click ![detail](icon/detail.svg) to view the friend's information and create a new group.
+   - In the list on the left side, right-click a friend's name, select **Top**, this friend will be displayed on the top; select **Mute**, there will be no reminders when the friend sends you messages; select **Delete**, the friend will be deleted from the chatting list.
 
 
 
@@ -175,7 +170,7 @@ One default groups classification is displayed here, if you want to add others, 
 #### Delete Groups Classification
 
 1. Select the groups classification you want to delete, and right-click; or click![19](icon/19.svg) then select **Delete Classification**.
-2. A confirming box pops up, click **OK** then the selected groups classification will be deleted, members in the classification will be moved into default groups classification. .
+2. A confirming box pops up, click **OK** then the selected groups classification will be deleted, members in the classification will be moved into default groups classification.
 
 #### Create New Group
 
@@ -192,7 +187,7 @@ To create a new group, you can:
 
 3. Click **OK**. After created successfully, you can see it in Default Groups Classifications.
 
-![4add group](jpg/4add-group.png)
+![4addgroup](jpg/4addgroup.png)
 
 
 
@@ -201,7 +196,7 @@ To create a new group, you can:
 1. Select the group you want to view, and the detailed information will appear on the right side.
 2. You can see group name, group notice, create time, invitation mode and group members. You can also dismiss group or transfer group here.
 
-![4group inf](jpg/4group-inf.png)
+![4groupinf](jpg/4groupinf.png)
 
 #### Move Group to
 
@@ -229,15 +224,19 @@ To create a new group, you can:
 
 #### Start group chatting
 
-1. Click ![chat](icon/chat.svg) to start chatting in the group, and in the chatting window, you can send emoji and files, share contact card, view chat history and make video calls.
-2. Click![detail](icon/detail.svg) to view the group's information and group members' personal information;  click ![14](icon/14.svg) to exit the group. 
-3. In the left column, right-click a group and select **Top**, this group will be displayed on the top; select **Mute**, there will be no reminders when there are group messages; select **Delete**, the group will be deleted from the chatting list.
+1. Click ![chat](icon/chat.svg) to start chatting in the group. 
+2. In the chatting window, you can send emoji, screenshots and files, share contact card, view chat history and make video calls.
+   - In Chat History, you can enter keywords to search relevant history; click ![clear](jpg/clear.png) to empty all history.
+   - Click ![detail](icon/detail.svg) to view the information about the group and its members; click **Dismiss Group** to exit the group.
+   - In the list on the left side, right-click the group's name, select **Top**, this group will be displayed on the top; select **Mute**, there will be no reminders when there's any group message; select **Delete**, the group will be deleted from the chatting list.
 
-
+     
 
 ## Conference
 
 On the main interface, click ![17](icon/17.svg) to enter the interface of conference.
+
+> ![tips](icon/tips.svg)Tips: You can wake up the AI assistant to create a video conference, book a conference, and invite friends to join video conference.
 
 ### Search
 
@@ -276,7 +275,7 @@ On the main interface, click ![17](icon/17.svg) to enter the interface of confer
 
    - Invite participants: you can select participants from the list on the left.
 
-![5new meeting](jpg/5new-meeting.png)
+![5newmeeting](jpg/5newmeeting.png)
 
 ### Quickly Join Conference
 
@@ -286,13 +285,13 @@ This function is designed only for the option **Allow guest dial-in** .
 
 2. Input the conference room number and password, select whether to "turn off camera" or "turn off microphone" or not, then click **Join**. 
 
-![6quick meeting](jpg/6quick-meeting.png)
+![6quickmeeting](jpg/6quickmeeting.png)
 
 ### During Conference
 
 During conference the owner can do the following settings.
 
-![7in meeting](jpg/7in-meeting.png)
+![7inmeeting](jpg/7inmeeting.png)
 
    - Mute![1](icon/1.svg) : you can mute your microphone. "Unmute" is set by default. 
 
@@ -321,17 +320,17 @@ During conference the owner can do the following settings.
 
        - Hand up/Hand down.
 
-     ![7in meeting1](jpg/7in-meeting1.png)
+     ![7inmeeting1](jpg/7inmeeting1.png)
 
    - Conference invite![5](icon/5.svg) : owner can click this button to invite other participants.
 
    - Layout![6](icon/6.svg) : speaker mode and gallery mode are included. In speaker mode, the speaker's view is bigger than others'. While in gallery mode, all views are in the same size arranged in 2x2 windows. If there are more than four windows, they are displayed in the order of speech activation. 
 
-     ![7in meeting3](jpg/7in-meeting3.png)
+     ![7inmeeting3](jpg/7inmeeting3.png)
 
    - Settings ![7](icon/7.svg) : options such as microphone, speaker, camera and notify mute are included.
 
-     ![7in meeting4](jpg/7in-meeting4.png)
+     ![7inmeeting4](jpg/7inmeeting4.png)
 
    - Terminate conference![8](icon/8.svg) : only the owner can click this button to terminate the conference while participants could not terminate a conference. 
 
@@ -348,7 +347,7 @@ List of conference rooms and their particular numbers are displayed below this t
 
    - Grant Access to Conference Room: you can grant your conference room to others so they are able to create conferences using your room, and, your room will appear in their lists of **ConfRooms**.
 
-![8meeting room](jpg/8meeting-room.png)
+![8meetingroom](jpg/8meetingroom.png)
 
 ### To be Attending Conferences
 
@@ -362,14 +361,14 @@ List of conferences to be attending and their related information are displayed 
    - Edit: click![11](icon/11.svg) to revise conference info.
    - Delete: click![12](icon/12.svg) to delete conferences to be attending.
 
-![8future meeting](jpg/8future-meeting.png)
+![8futuremeeting](jpg/8futuremeeting.png)
 
 
 ### History Conference
 
 List of conferences finished and their related information are displayed below this title.
 
-![8history meeting ](jpg/8history-meeting.png)
+![8historymeeting ](jpg/8historymeeting.png)
 
 ## Main Menu
 
@@ -381,7 +380,7 @@ In the main menu, you can view your user personal info, setting, theme, help, an
 
 2. Click **User Personal Info** to view personal information and buy a service package. 
 
-![user info](jpg/user-info.png)
+![userinfo](jpg/userinfo.png)
 
 3. Click **Recharge**, you can choose to buy monthly, seasonly or annually, and you can also view your purchasing history. After you buy any service package, you have the following rights:
 
@@ -402,7 +401,7 @@ In the main menu, you can view your user personal info, setting, theme, help, an
 
 ### Theme
 
-The window theme includes Light Theme, Dark Theme and System Theme (default).
+The window theme includes Light Theme, Dark Theme and System Theme.
 
 1. Click![icon_menu](icon/icon_menu.svg) on the main interface.
 2. Click  **Theme** to select one.
@@ -426,3 +425,5 @@ click Help to get the manual, which will help you further know and use Contacts.
 
 
 
+
+<div class="version-info"><span>Update Date: 2020-11-27</span><span> Version: 1.0</span></div>

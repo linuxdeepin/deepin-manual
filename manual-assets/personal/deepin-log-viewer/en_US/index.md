@@ -82,6 +82,7 @@ You can run, close or create a shortcut for Log Viewer.
 1. On the main interface, click  **Kernel Log **.
 2. You can see a list of kernel logs which are detailed by "Date and time", "User", "Process" and "Info".
 3. Click a log, you can see its particular info below the list, including time, user, process, and info.
+> ![notes](icon/notes.svg)Notes: To view kernel log, a prompt appears saying **Authentication is required to view the log**, you can input login password to continue viewing.
 
 ![0|kernlog](jpg/kernlog.png)
 
@@ -90,6 +91,7 @@ You can run, close or create a shortcut for Log Viewer.
 1. On the main interface, click **Boot Log**.
 2. You can see a list of boot logs which are detailed by "Status" and "Info".
 3. Click a log, you can see its particular info below the list, including process, user, status and info.
+> ![notes](icon/notes.svg)Notes: To view boot log, a prompt appears saying **Authentication is required to view the log**, you can input login password to continue viewing.
 
 ![0|bootlog](jpg/bootlog.png)
 
@@ -123,13 +125,7 @@ You can run, close or create a shortcut for Log Viewer.
 1. On the main interface, click  **Boot-Shutdown Event**.
 2. You can see a list of boot-shutdown events which are detailed by "Event Type", "Username", "Date and Time", and "Info".
 3. Click a log, you can see its particular info below the list, including user, event type, username, and detailed info.
-![0|power event](jpg/power-event.png)
-
-> ![notes](icon/notes.svg)Notes: When using Log Viewer, if a prompt appears saying **Authentication is required to view the log**, you can input login password to continue viewing.
-
-![0|password](jpg/password.png)
-
-
+![0|powerevent](jpg/powerevent.png)
 
 ### Export
 
@@ -138,8 +134,6 @@ You can export logs and save them in format of  txt/doc/xls/html.
 1. On the main interface, click **Export**. 
 2. An interface of file manager pops up. Input a file name and select a format. 
 3. Click **Save**. 
-
-![0|export](jpg/export.png)
 
 
 
@@ -150,7 +144,10 @@ You can export logs and save them in format of  txt/doc/xls/html.
 
 > ![notes](icon/notes.svg)Notes: **Display in file manager** is only applicable for kernel log, boot log, dpkg log, Xorg log and application log.
 
+![display](jpg/displayinfm.png)
+
 ### Clear Log
+
 1. On the interface of File Manager, select a log type in the left panel and right-click.
 2. Select **Clear log**, click **Confirm** button in the pop-up window to clear current logs.
 3. If authentication window pops up, please input password to finish the operation.
@@ -190,3 +187,5 @@ Click Help to get the manual, which will help you further know and use Log Viewe
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Click  **Exit**.
 
+
+<div class="version-info"><span>Update Date: 2020-11-27</span><span> Version: 5.8</span></div>

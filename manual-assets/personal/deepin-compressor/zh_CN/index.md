@@ -3,7 +3,7 @@
 ## 概述
 
 
-归档管理器是一款界面友好、使用方便的压缩与解压缩软件，支持7z、jar、tar、tar.bz2、tar.gz、tar.lz、tar.lzm、tar.lzo、tar.Z、zip等多种压缩包格式，还支持加密压缩等设置。
+归档管理器是一款界面友好、使用方便的压缩与解压缩软件，支持7z、jar、tar、tar.bz2、tar.gz、tar.lz、tar.lzma、tar.lzo、tar.xz、tar.Z、tar.7z、zip等多种压缩包格式，还支持加密压缩等设置。
 
 ![1|main](jpg/main.png)
 
@@ -16,7 +16,7 @@
 ### 运行压缩
 
 1. 点击桌面底部的 ![launcher](icon/deepin-launcher.svg)，进入启动器界面。
-2. 上下滚动鼠标滚轮浏览或通过搜索，找到归档管理器 ![deepin-compressor](icon/deepin-compressor.svg) 点击运行。
+2. 上下滚动鼠标滚轮浏览或通过搜索，找到归档管理器 ![deepin-compressor](icon/deepin-compressor.svg)点击运行。
 3. 右键单击 ![deepin-compressor](icon/deepin-compressor.svg)，您可以：
  - 点击 **发送到桌面**，在桌面创建快捷方式。
  - 点击 **发送到任务栏**，将应用程序固定到任务栏。
@@ -26,13 +26,13 @@
 
 ### 关闭压缩
 
-- 在归档管理器界面点击 ![close_icon](icon/close_icon.svg)，退出压缩。
+- 在归档管理器界面点击  ![close_icon](icon/close_icon.svg)，退出压缩。
 - 在任务栏右键单击 ![deepin-compressor](icon/deepin-compressor.svg)，选择 **关闭所有** 来退出归档管理器。
-- 在归档管理器界面点击 ![icon_menu](icon/icon_menu.svg) ，选择 **退出** 来退出归档管理器。
+- 在归档管理器界面点击 ![icon_menu](icon/icon_menu.svg)，选择 **退出** 来退出归档管理器。
 
 ### 查看快捷键
 
-在归档管理器界面上，按下键盘上的 **Ctrl + Shift + ?** 组合键来查看快捷键，熟练地使用快捷键，将大大提升您的操作效率。
+在归档管理器界面上，按下键盘上的 **Ctrl + Shift + ? ** 组合键来查看快捷键，熟练地使用快捷键，将大大提升您的操作效率。
 
 ![1|hotkey](jpg/hotkey.png)
 
@@ -46,19 +46,21 @@
 
    > ![tips](icon/tips.svg)窍门：也可以选择将一个或者多个文件拖拽到界面上进行压缩操作。
    
-2. 如果需要添加压缩文件时，点击 ![plus](icon/icon_plus.svg) 添加。
+2. 如果需要继续添加压缩文件，可点击工具栏上的 ![plus](icon/icon_plus.svg)或者  ![icon_menu](icon/icon_menu.svg)> **打开文件**，添加压缩文件。
 
-   > ![tips](icon/tips.svg)窍门：也可以点击 ![icon_menu](icon/icon_menu.svg) > **打开文件**，添加压缩文件。
-
-   ![1|compressor](jpg/compress-add.png)
+   ![1|compressor](jpg/compress_add.png)
 
 3. 点击 **下一步**。
 4. 设置文件名、存储路径、压缩包格式等。
-5. 如果开启高级选项模式，可以设置压缩包加密密码、分卷压缩。
+5. 如果开启高级选项模式，可以设置文件加密、文件列表加密或分卷压缩。
 
-   > ![notes](icon/notes.svg)说明：压缩包的默认文件格式是zip，可以设置加密文件的格式有7z、cbz、exe、zip。
-   
-   ![1|compressor](jpg/compress-file.png)
+   > ![notes](icon/notes.svg)说明：
+   > - 压缩包的默认文件格式是zip。
+   > -  可设置文件加密的格式有7z、zip。
+   > - 可设置文件列表加密的格式有7z，列表加密和文件加密属于同一个密码。
+   > - 可设置分卷压缩的格式有7z。
+
+   ![1|compressor](jpg/compress_file.png)
 
 6. 点击 **压缩**。
 7. 压缩成功之后，您可以
@@ -67,14 +69,14 @@
    
    > ![tips](icon/tips.svg)窍门：您还可以右键点击 **压缩**，对文件执行压缩操作。
    
-   ![1|compressor](jpg/compress-success.png)
+   ![1|compressor](jpg/compress_success.png)
 
 
 ### 解压缩
 
 1. 在归档管理器界面，点击 **选择文件** 。
 2. 选择需要解压缩的文件，点击 **打开**。
-3. 点击 **解压到：/home/viki** ，您也可以重新设置解压缩路径。
+3. 点击 **解压到：xxx（路径）** ，您也可以重新设置解压缩路径。
 
    ![1|decompression](jpg/decompression.png)
 
@@ -104,24 +106,28 @@
 在主菜单中，您可以打开压缩界面、切换窗口主题、查看帮助手册，了解归档管理器的更多信息。
 
 ### 打开
-1. 在归档管理器界面，点击 ![icon_menu](icon/icon_menu.svg)。
+1. 在归档管理器界面，点击  ![icon_menu](icon/icon_menu.svg) 。
 2. 选择 **打开文件**，从文件选择器选择添加压缩文件或解压文件。
 
 ### 设置
 
-1. 在归档管理器界面，点击 ![icon_menu](icon/icon_menu.svg)。
-2. 选择 **设置**。
-3. 您可以根据需要进行以下设置：
- - 设置默认解压位置。
- - 设置自动创建文件夹。
- - 设置当解压完成后自动打开对应的文件夹。
- - 设置关联文件类型。
+1. 在归档管理器界面，点击  ![icon_menu](icon/icon_menu.svg) 。
+2. 点击 **设置**，可进行如下操作：
+   - 解压设置
+     + 设置默认解压位置。
+     + 勾选或取消 **自动创建文件夹**。
+     + 勾选或取消 **当解压完成后自动打开对应的文件夹**。
+   - 文件管理设置
+     + 设置是否 **解压后删除压缩文件**，可选择“从不”、“询问确认”或“总是”。
+     + 勾选或取消 **压缩后删除原来的文件**。
+   - 关联文件设置
+     + 勾选或取消关联文件类型。
+3. 点击 **恢复默认** 按钮，将所有设置恢复到初始状态。
 
->![tips](icon/tips.svg)窍门：点击设置界面上的 **恢复默认**，会将所有设置恢复到默认状态。
 
 ### 主题
 
-窗口主题包含浅色主题、深色主题和跟随系统主题，其中跟随系统主题为默认设置。
+窗口主题包含浅色主题、深色主题和跟随系统主题。
 
 1. 在归档管理器界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **主题**，选择一个主题颜色。
@@ -145,3 +151,5 @@
 
 1. 在归档管理器界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **退出**。
+
+<div class="version-info"><span>文档更新时间: 2020-11-27</span><span> 版本: 5.9</span></div>

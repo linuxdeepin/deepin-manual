@@ -4,7 +4,7 @@
 
 Boot Maker is an easy-to-use tool with a simple interface to help you burn the system image files into installation medium such as CDs and USB disks.
 
-![0|boot-maker](jpg/select-file.png)
+![0|bootmaker](jpg/selectfile.png)
 
 ## Guide
 
@@ -49,7 +49,7 @@ There are two ways to select the image file:
 
 > ![notes](icon/notes.svg)Notes: Please check if the MD5 checksum of image file is the same as that in the official website in advance. Failure would occur due to ISO image files that are not downloaded from official website or not downloaded completely.
 
-![0|file](jpg/select-file.png)
+![0|file](jpg/selectfile.png)
 
 
 ### Select Disk
@@ -80,7 +80,7 @@ Common causes of failure may include:
 - Execute command error
 - Unknown error
 
-![boot-maker](jpg/failed.png)
+![bootmaker](jpg/failed.png)
 
 > ![notes](icon/notes.svg)Notes: Click **Feedback** when you see this button, then jump to user feedback page of the community website, and the system will upload the error log automatically. 
 
@@ -94,7 +94,7 @@ In the main menu, you can switch themes, view manual, and so on.
 
 ### Theme
 
-The window theme includes Light Theme, Dark Theme and System Theme (default).
+The window theme includes Light Theme, Dark Theme and System Theme.
 
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Click  **Theme** to select one.
@@ -118,3 +118,5 @@ You can click to view the manual, which will help you further know and use Boot 
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 
 2. Click **Exit**.
+
+<div class="version-info"><span>Update Date: 2020-11-27</span><span> Version: 5.4</span></div>

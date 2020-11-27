@@ -176,7 +176,7 @@
    - 是否允许远程管理打印机
    - 是否保留调试信息用于故障排除
 
-   ![0|13right click setting main menu](jpg/right-click-setting-main-menu.png)
+   ![0|right-click-setting-main-menu](jpg/right-click-setting-main-menu.png)
 
 
 ### 主题
@@ -202,3 +202,5 @@
 1. 在打印管理器界面，单击 ![icon_menu](icon/icon_menu.svg)。
 2. 单击 **退出**。
 
+
+<div class="version-info"><span>文档更新时间: 2020-11-27</span><span> 版本: 0.7</span></div>

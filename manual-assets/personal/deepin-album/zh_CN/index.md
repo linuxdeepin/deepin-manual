@@ -5,7 +5,7 @@
 
 相册是一款外观时尚、性能流畅的照片管理工具，支持查看、管理多种图片格式。您可以按日期时间线排列照片，还可以将照片添加到个人收藏，或者归类到不同的相册中，将照片管理得井井有条。
 
-![1|main](jpg/album-main.png)
+![1|main](jpg/album_main.png)
 
 
 ## 使用入门
@@ -14,8 +14,8 @@
 
 ### 运行相册
 
-1. 点击桌面底部的 ![launcher](icon/deepin-launcher.svg) ，进入启动器界面。
-2. 上下滚动鼠标滚轮浏览或通过搜索，找到相册 ![deepin-album](icon/deepin-album.svg) 点击运行。
+1. 点击桌面底部的 ![launcher](icon/deepin-launcher.svg)，进入启动器界面。
+2. 上下滚动鼠标滚轮浏览或通过搜索，找到相册 ![deepin-album](icon/deepin-album.svg)点击运行。
 3. 右键单击 ![deepin-album](icon/deepin-album.svg)，您可以：
  - 点击 **发送到桌面**，在桌面创建快捷方式。
  - 点击 **发送到任务栏**，将应用程序固定到任务栏。
@@ -42,18 +42,18 @@
 ### 导入照片
 
 在相册界面，可以采用以下方式导入照片。
-- 点击 ![icon_menu](icon/icon_menu.svg) >  **导入照片**。
+- 点击![icon_menu](icon/icon_menu.svg)> **导入照片**。
 - 直接将照片或所在文件夹拖拽到界面上。
 - 从移动设备导入照片。
 
    > ![tips](icon/tips.svg)窍门：当相册中尚无照片时，点击 **导入照片**，将照片导入相册管理系统。
 
-   > ![notes](icon/notes.svg)说明：相册支持的图片格式有BMP、GIF、JPG、PNG、PBM、PGM、PPM、XBM、XPM、SVG、DDS、ICNS、JP2、MNG、TGA、TIFF、WBMP、WEBP、PSD、PDF、EPS。
+   > ![notes](icon/notes.svg)说明：相册支持的图片格式有bmp、gif、jpg、png、pbm、pgm、ppm、xbm、xpm、svg、dds、icns、mng、tga、tiff、wbmp、webp、psd、ico、jng、pcd、pcx、tif、ras、mrw、dng、raf、cr2、raw、orf、nef。
 
 ### 搜索照片
 
 1. 在相册顶部的搜索框，您可以：
-   - 点击 ![search](icon/search.svg)，输入关键字。
+   - 点击![search](icon/search.svg)，输入关键字。
 2. 按下键盘上的 **Enter** 键后快速定位。
    - 当搜索到匹配的信息时，在界面中显示搜索结果列表。
    - 当没有搜索到匹配的信息时，在界面中间显示“无搜索结果”。
@@ -77,7 +77,7 @@
 | ![contrarotate](icon/contrarotate.svg)             | 逆时针旋转 | 照片逆时针旋转90度。         |
 | ![delete](icon/delete.svg)                         | 删除       | 删除当前照片。               |
 
-   > ![tips](icon/tips.svg)窍门：滚动鼠标放大图片且当图片超出界面范围时，界面上会出现导航窗口。拖动导航窗口内的方框，查看该区域的信息。点击导航窗口右上角 **x **按钮，关闭导航窗口；也可以在看图界面上单击鼠标右键选择 **隐藏导航窗口** / **显示导航窗口**。
+   > ![tips](icon/tips.svg)窍门：滚动鼠标放大图片且当图片超出界面范围时，界面上会出现导航窗口。拖动导航窗口内的方框，查看该区域的信息。点击导航窗口右上角 **x **按钮，关闭导航窗口；也可以在看图界面上单击鼠标右键选择 **隐藏导航窗口**/ **显示导航窗口**。
 
 ![0|copy](jpg/navagation.png)
 
@@ -88,7 +88,7 @@
 
 ### 打印照片
 
-1. 在相册界面上，单击鼠标右键，选择**打印**。
+1. 在相册界面上，单击鼠标右键，选择 **打印**。
 2. 选择一个打印机，根据需要设置打印属性。
 3. 选择 **打印**，将照片发送到打印机进行打印。
 
@@ -113,7 +113,7 @@
 
 在相册中您可以通过如下方法删除照片：
 
-- 查看图片时，点击界面上的 ![delete_press](icon/delete.svg) 图标。
+- 查看图片时，点击界面上的 ![delete_press](icon/delete.svg)图标。
 - 右键单击照片，选择 **删除**。
 - 在相册界面上，按下键盘上的 **Delete** 键。
 
@@ -126,12 +126,18 @@
 2. 选择 **收藏**，照片将会添加到“我的收藏”。
 3. 右键单击已收藏的照片，也可以 **取消收藏**。
 
-   > ![tips](icon/tips.svg)窍门：在查看照片时，点击界面上的 ![collect](icon/collect.svg)，将照片加入我的收藏。再次点击 ![collect-active](icon/collect-active.svg)，取消收藏。
+   > ![tips](icon/tips.svg)窍门：在查看照片时，点击界面上的![collect](icon/collect.svg)，将照片加入我的收藏。再次点击![collect-active](icon/collect-active.svg)，取消收藏。
+
 ### 旋转照片
 
 1. 在相册界面上，右键单击照片。
 2. 选择 **顺时针旋转/逆时针旋转**。
 3. 照片将会顺时针转旋转90°/逆时针旋转90°。
+   
+   > ![notes](icon/notes.svg)说明：如果您的电脑支持触控屏或触控板，可以使用手势代替鼠标操作：
+      > - 在触控屏上：二指放置在照片上并保持一定距离，同时旋转二指来旋转照片。
+      > - 在触控板上（触控板支持多点触控）：二指放置在照片上并保持一定距离，同时旋转二指来旋转照片。
+
 
 ### 设置为壁纸
 
@@ -165,7 +171,7 @@
 
 ### 新建相册
 
-1. 在相册界面，点击 ![icon_menu](icon/create.png) 或 ![icon_menu](icon/icon_menu.svg) > **新建相册**。
+1. 在相册界面，点击![icon_menu](icon/create.png) 或 ![icon_menu](icon/icon_menu.svg) > **新建相册**。
 2. 输入相册名称，点击 **新建**。
 
    > ![tips](icon/tips.svg)窍门：右键单击已创建的相册，也可以新建相册。您还可以在添加照片到相册时新建相册。
@@ -178,7 +184,7 @@
 
    > ![tips](icon/tips.svg)窍门：也可以直接拖拽照片或照片文件夹到相册中，添加照片到相册。
 
-![0|add-to-album](jpg/add-to-album.png)
+![0|add_to_album](jpg/add_to_album.png)
 
 
 
@@ -209,23 +215,23 @@
 
 ### 主题
 
-窗口主题包含浅色主题、深色主题和跟随系统主题，其中跟随系统主题为默认设置。
+窗口主题包含浅色主题、深色主题和跟随系统主题。
 
-1. 在相册界面，点击 ![icon_menu](icon/icon_menu.svg)。
+1. 在相册界面，点击![icon_menu](icon/icon_menu.svg)。
 2. 点击 **主题**，选择一个主题颜色。
 
 ### 帮助
 
 查看帮助手册，进一步了解和使用相册。
 
-1. 在相册界面，点击 ![icon_menu](icon/icon_menu.svg)。
+1. 在相册界面，点击  ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **帮助**。
 3. 查看相册的帮助手册。
 
 
 ### 关于
 
-1. 在相册界面，点击 ![icon_menu](icon/icon_menu.svg)。
+1. 在相册界面，点击  ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **关于**。
 3. 查看相册的版本和介绍。
 
@@ -233,3 +239,5 @@
 
 1. 在相册界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **退出**。
+
+<div class="version-info"><span>文档更新时间: 2020-11-27</span><span> 版本: 5.8</span></div>

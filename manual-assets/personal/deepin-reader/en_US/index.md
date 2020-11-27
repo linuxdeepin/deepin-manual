@@ -32,7 +32,7 @@ You can run, close or create a shortcut of Document Viewer as follows.
 
 ### View Shortcut Keys
 
-On Document Viewer interface, press  **Ctrl + Shift+ ？** to view all shortcut keys quickly, which helps you to use them skillfully and improves your working efficiency. 
+On Document Viewer interface, press  **Ctrl + Shift+ ?** to view all shortcut keys quickly, which helps you to use them skillfully and improves your working efficiency. 
 
 ![1|hotkey](jpg/hotkey.png)
 
@@ -44,19 +44,17 @@ Document Viewer realizes basic document management such as opening files, saving
 
 ### Open files
 
-You can open a file by: 
+Document Viewer supports PDF and DJVU formats. You can open a file by: 
 
 - Dragging it directly into the interface or onto the icon. 
-
 - Right-clicking it and selecting **Open with** > **Select default program**, and then selecting Document Viewer from the list.
 
    > ![tips](icon/tips.svg)Tips: Document will be opened by default program by directly double clicking on it. You can right-click it and select a default program by clicking on **Properties** > **Open with**. Or you can set a default program for this type of documents in [Default Applications](dman:///dde#Default Application Settings) from Control Center. 
 
 - Clicking **Select File** and selecting a file on Document Viewer interface.
-
 - On Document Viewer interface, pressing **Ctrl+O** and selecting the file you want to open. 
 
-> ![notes](icon/notes.svg)Notes: Document Viewer supports PDF and DJVU formats.
+
 
 ### Save documents
 
@@ -64,42 +62,41 @@ To save the document that has been edited and modified, you can
 
 - Press **Ctrl+S**.
 - Click ![icon_menu](icon/icon_menu.svg) > **Save**.
-> ![tips](icon/tips.svg)Tips: Besides, you can press **Ctrl + Shift + S** or click ![icon_menu](icon/icon_menu.svg) > **Save as**.
-
+- Press **Ctrl + Shift + S** or click ![icon_menu](icon/icon_menu.svg) > **Save as**.
 
 ### Print documents
 
 To print you have to connect and configure a printer. 
 
-1. Click ![icon_menu](icon/icon_menu.svg) > **Print** or press **Ctrl+P** to preview.
+1. Open a document in Document Viewer, right-click and select **Print**, or press **Ctrl  + P** to open the preview page.
 2. In this previewing interface, you can preview and set the printing page. 
-3. In this previewing interface, click the printer icon on the right, and select a printer from the popped out window and set the parameters you want. 
+3. In this previewing interface, click **Advanced** to set the page size, print method and other parameters. 
 4. Click **Print**  then the document will be sent to the printer for printing. 
 
-![preview](jpg/preview-doc1.png)
+![preview](jpg/previewdoc1.png)
 
-![pagesetup](jpg/pageSetup-doc.png)
+![pagesetup](jpg/pageSetupdoc.png)
 
-![printer](jpg/printer-doc.png)
+
 
 ### Manage tabs
 
 New tab
 
-1. Click ![icon_menu](icon/plus_icon.svg) or ![icon_menu](icon/icon_menu.svg) > **New tab** to add a tab. 
+- Click ![icon_menu](icon/icon_menu.svg) > **New tab** to add a tab. 
+- When there are 2 or more tabs, you will see **+** button. And you can click it to add new tabs.
 
 To switch/adjust tabs, you can:
 
 - Drag within the window to adjust the sequence of tabs. 
 - Click the ![previous](icon/previous.svg) or ![next](icon/next.svg)button to move left and right. 
-- The left button for the first tab is unavailable, and so is the right button for the last one. 
 - Scroll the mouse wheel to switch tabs automatically.  
-- When there is only one window currently, double-click or right-click the file and select Document Viewer to open the file in a new tab in the window. 
+- When there is only one window currently, double-click or right-click the file and select Document Viewer to open the file in the window which was opened first.  
 
 
 Operations among windows
 
-- Drag any tab to move it out of the window and create a new window. 
+- Drag any tab to move it out of the current window and create a new one. 
 - Drag a tab from one window to another. 
 - When there are several windows, double-click or right-click the file and select Document Viewer to open the file in the first window.
 
@@ -128,25 +125,20 @@ On Document Viewer interface, open a file.
 
 On Document Viewer interface, open a file. 
 
-- Add note
+- Add annotation
 
-  1. Select text using the selecting tool and right-click, select **Add annotation** and an inputing window pops up. When you finish the operation, the text selected is highlighted.
-  2. Move the cursor into annotation window and click to input your annotation.
-  3. Click "**x**" of the window or in any blank area outside the window, the note will be saved automatically.  
-
-The selected text will be highlighted after the note is added successfully. 
-
-   > ![tips](icon/tips.svg)Tips: You can also right-click at any blank area or the place you want to add a note and select **Add annotation**. After a note is successfully added, a highlighted note icon appears.
-
-   > ![notes](icon/notes.svg)Notes: 
-   >
-   > * Click "**x**" of the window without inputing any content, then the note is not added successfully or is deleted automatically. 
-   > * Click "**x**" of the window after inputing some content, the content will be saved automatically and displayed as a small icon. 
+   - Select text using the selecting tool and right-click, select **Add annotation**. The selected text will be highlighted after the annotation is added successfully.
+   - Right-click at any blank area or the place you want to add an annotation and select **Add annotation**. After a note is successfully added, a highlighted note icon appears.
+     
+      > ![notes](icon/notes.svg)Notes: 
+      >
+      > - Click in any blank area outside the window without inputing any content, then the note is not added successfully or is deleted automatically. 
+      > - Click in any blank area outside the window after inputing some content, the content will be saved automatically and displayed as a small icon. 
 
 - Copy note
    -  Right-click the highlighted text to which a note is successfully added and select **Copy** to copy the content.
    -  Right-click the note icon, select **Copy** to copy the content.
-   -  Click![menu](icon/thumbnail_normal_light.svg) and the catalog icon ![view](icon/comments_normal.svg) on the left and select a note, right-click and select **Copy**. 
+   -  Click![menu](icon/thumbnail_normal_light.svg) and the catalog icon ![view](icon/comments_normal_light.svg) on the left and select a note, right-click and select **Copy**. 
    
 - Show note  
    1.  Hove the cursor over the note icon to show the content. 
@@ -155,9 +147,11 @@ The selected text will be highlighted after the note is added successfully.
 - Delete note 
    - Right-click the highlighted text to which you have added a note, and select **Remove highlight**. 
    - Right-click the note icon and select **Remove annotation**. 
-   - Click the catalog icon ![view](icon/comments_normal.svg) on the left column, and select a note, right-click to select **Remove annotation**, this note is deleted and so is its content. 
+   - Click the catalog icon ![view](icon/comments_normal_light.svg) on the left column, and select a note, right-click to select **Remove annotation**, this note is deleted and so is its content. 
 
-> ![notes](icon\notes.svg)Notes: You can not add annotations to DJVU files.
+   > ![notes](icon\notes.svg)Notes: 
+   > + You can move the note icon in the current page.
+   > + You can not add annotations to DJVU files.
 
 ## Common operations
 
@@ -176,9 +170,8 @@ This function is only applicable for the current tab.
    
 5.  When matching results are found, click![search](icon/previous-up.svg) or ![search](icon/next-down.svg) to view results one by one. 
 
-6. Click one result, you can skip to the page it's located, and it's highlighted. 
-   
-> ![attention](icon/attention.svg)Attention: The above mentioned operations are only applicable when PDF file supports searching. Searching fails in case the text is coded in pictures in some PDF files. 
+6. Click one result, you can skip to the page where it's located, and it's highlighted. 
+> ![attention](icon/attention.svg)Attention: Searching fails in case the text is coded in pictures in some PDF files. 
 
 7. Clear up words in the searching box to clear up all results. 
 
@@ -192,7 +185,7 @@ To move in each page of the file you can:
 - Scroll the mouse wheel up and down. 
 - Drag the scroll bar up and down in the window. 
 - Press the up key and down key on the keyboard. 
-- Use the hand tool ![hand](icon/hand_small_normal_light.svg) and drag by the mouse, just like you are holding the page by your hand. 
+- Click ![icon_menu](icon/icon_menu.svg) > **Tools** > **Hand Tool**, you will see ![hand](icon/hand_small_normal_light.svg) and drag by the mouse, just like you are holding the page by your hand. 
 
 ### Flip pages quickly 
 
@@ -201,17 +194,23 @@ To move from page to page, you can:
 - Right-click and select **Previous page** or **Next page**. 
 - Press ![Down](icon/Down.svg)  or ![Up](icon/Up.svg) on the keyboard. 
 - To go to a specialized page, you can: 
-  - Input the page number and press enter key. 
+  - Input the page number and press **Enter** key. 
   - To go the beginning or the end of the file, you can right-click and select **First page** or **Last page**. 
 
 ### Switch catalog 
 
-Using thumbnails you can switch file thumbnails catalog![view](icon/view_normal.svg), file catalog![catalog](icon/catalog.svg), bookmark catalog![view](icon/bookmark_normal.svg) and annotation catalog![view](icon/comments_normal.svg). Drag the frame of the catalog, thumbnails vary as the width that can be dragged changes. 
+Using thumbnails you can switch file thumbnails catalog![view](icon/view_normal.svg), file catalog![catalog](icon/catalog.svg), bookmark catalog![view](icon/bookmark_normal.svg) and annotation catalog![view](icon/comments_normal_light.svg). Drag the frame of the catalog, thumbnails vary as the width that can be dragged changes. 
+
+### Fullscreen
+
+1. On Document Viewer interface, right-click and select **Fullscreen** or press shortcut key **F11**.
+2. Move the cursor to the top or the left part of the window to call out the top tool bar or the left tool bar. Otherwise, the tool bar will be hidden.
+3. After you call out the side tool bar under **Fullscreen** mode, click ![icon](icon/thumbnail_normal_light.svg) to keep it shown.
+4. Press **Esc** or **F11** key to exit **Fullscreen** mode.
 
 ### Slide show
 
-1. On Document Viewer interface, click![icon_menu](icon/icon_menu.svg) . 
-2. Select **Slide show** to display the file as slides. 
+1. On Document Viewer interface, right-click and select **Slide show** to display the file as slides. 
 3. Click![play](icon/previous.svg)or![play](icon/next.svg) to switch pages, or click ![play](icon/suspend_normal.svg)to pause. 
 4. Press **Esc** key to quit. 
 
@@ -219,18 +218,19 @@ Using thumbnails you can switch file thumbnails catalog![view](icon/view_normal.
 
 To zoom in or out a page, you can:
 
-- Press **Ctrl +“+”**  or**Ctrl +“-”** .
-- Press**Ctrl** and scroll the mouse wheel up and down at the same time. 
-- On Document Viewer interface, click  **+**  or  **-**. 
-> ![notes](icon/notes.svg)Notes: Manual input is supported here. You can choose display percentage from the drop-down box of the menu bar: 10%, 25%, 50%, 75%, 100%, 125%, 150%, 175%, 200%, 300%, 400%, and 500%, according to which the file is zoomed in and out.
+- Press **Ctrl +“+”**  or **Ctrl +“-”** .
+- Press **Ctrl** and scroll the mouse wheel up and down at the same time. 
+- On Document Viewer interface, click "**+**"  or  "**-**". 
+- Manual input is supported here. You can choose display percentage from the drop-down box of the menu bar: 10%, 25%, 50%, 75%, 100%, 125%, 150%, 175%, 200%, 300%, 400%, and 500%, according to which the file is zoomed in and out.
+> ![notes](icon/notes.svg)Notes: If you are using a computer equipped with a touchscreen or a touchpad, you can use gestures instead of the  mouse:
+>    - On the touchscreen, pinch two fingers to zoom out on the page; open two fingers to zoom in on the page.
+>    -  On the touchpad that supports multiple-point touch, pinch two fingers to zoom out on the page; open two fingers to zoom in on the page.  
 
 
 ### Highlight
 
-1. On Document Viewer interface, click  ![choose](icon/choose_normal_light.svg) and select ![choose](icon/choose_small_normal_light.svg). 
+1. On Document Viewer interface, select some text and right-click, select **Highlight**, there are several colors for you to choose. 
 
-2. Select the text, right-click and select **Highlight**, there are several colors for you to choose. 
-   
 > ![notes](icon/notes.svg)Notes: If no text is highlighted, **Remove highlight** button is unavailable. 
 
 3. Select a color, the text selected will be highlighted in that color. 
@@ -240,15 +240,17 @@ To zoom in or out a page, you can:
 > ![notes](icon/notes.svg)Notes: 
 >
 > - Document Viewer memorizes the color choice of the user, which will be the default color used when the user highlights any text the next time.  You can change the color as you wish. 
-> - DJVU files don't support highlighting.
+> - You can not highlight in DJVU files.
 
 ### Adjust view
 
 Click![view](icon/setting_normal_light.svg) , and in its submenu you can:
 
 - Click **Two-page View** to view two pages at a time. 
-- Click **Fit Height**, the page's displayed in the window fully in vertical direction. 
-- Click **Fit Width**, the page's displayed in the window fully in horizontal direction.
+- Click **1:1 size** to display the file in 100% ratio.
+- Click **Fit Page** to display a whole page in the current window.
+- Click **Fit Height** to display the page in the window fully in vertical direction. 
+- Click **Fit Width**  to display the page in the window fully in horizontal direction.
 
 ### Adapt window
 
@@ -261,7 +263,23 @@ To make the window adapted to all sizes, you can:
 ### Rotate
 
 1. On Document Viewer interface, open a document. 
-2. Click ![view](icon/setting_normal_light.svg)and select **Rotate Left** or **Rotate Right** from the submenu, the page will rotate to the left or right by 90°. 
+2. Right-click and select **Rotate Left** or **Rotate Right** from the submenu, the page will rotate to the left or right by 90°. 
+> ![notes](icon/notes.svg)Notes:  If you are using a computer equipped with a touchscreen or a touchpad, you can use gestures instead of the  mouse:
+>    - On the touchscreen, place two fingers on the picture with a certain distance and rotate the two fingers at the same time to rotate the page.
+>    - On the touchpad that supports multiple-point touch, place two fingers on the picture with a certain distance and rotate the two fingers at the same time to rotate the page.
+
+### Document info
+1. On Document Viewer interface, open a document. 
+2. Right-click and select **Document info** to check the relevant information such as properties about the document.
+
+## Main Menu
+
+In the main menu, you can create new window and new tabs, [save](#Save documents), [search](#Search), switch themes, view help to know more about Document Viewer. 
+
+### Display in file manager
+
+1. Click ![icon_menu](icon/icon_menu.svg) on the main interface.
+2. Click **Display in file manager** to open and show the file's storing location in File Manager. 
 
 ### Magnifier 
 
@@ -270,34 +288,16 @@ To make the window adapted to all sizes, you can:
 3. Move the cursor to the area you want to view to magnify. 
 4. Press **Esc** or right-click to cancel magnifying. 
 
-
-
-
-## Main Menu
-
-In the main menu, you can save, print, view document info, switch themes, view help to know more about Document Viewer. 
-
-
-### Document info
-
-1. Click ![icon_menu](icon/icon_menu.svg) on the main interface.
-2. Click **Document info** to view relevant parameters about the document. 
-
-### Display in file manager
-
-1. Click ![icon_menu](icon/icon_menu.svg) on the main interface.
-2. Click **Display in file manager** to open and show the file's storing location in File Manager. 
-
 ### Theme
 
-There are options including light theme, dark theme and system theme. System theme is set by default.
+There are options including light theme, dark theme and system theme. 
 
    1. Click ![icon_menu](icon/icon_menu.svg) on the main interface.
    2. Click  **Theme** to select one.
 
 ### Help
 
-click Help to get the manual, which will help you further know and use Document Viewer.
+Click Help to get the manual, which will help you further know and use Document Viewer.
 
    1. Click ![icon_menu](icon/icon_menu.svg) on the main interface.
    2. Click **Help** to view the manual.
@@ -313,3 +313,5 @@ click Help to get the manual, which will help you further know and use Document 
 1. Click ![icon_menu](icon/icon_menu.svg) on the main interface.
 2. Click  **Exit**.
 
+
+<div class="version-info"><span>Update Date: 2020-11-27</span><span> Version: 5.8</span></div>

@@ -18,7 +18,7 @@ You can run, close or create a shortcut of App Store as follows.
  - Select **Send to dock** to fix it onto the dock.
  - Select **Add to startup** to add it to startup. When the computer starts up, App Store runs automatically.
 
-> ![notes](icon/notes.svg) Notes: App Store has been fixed on the dock by default. You can click on  ![store-24](icon/store-24.svg) on the dock to run it.
+> ![notes](icon/notes.svg) Notes: App Store has been fixed on the dock by default. You can click  ![store-24](icon/store-24.svg) on the dock to run it.
 
 
 ### Exit App Store
@@ -28,7 +28,7 @@ You can run, close or create a shortcut of App Store as follows.
 - On App Store interface, click  ![icon_menu](icon/icon_menu.svg) and select  **Exit**.
 
 ## Main Interface
-Main interface consists of navigation bar, search box, main menu, slide show, new updates, hot apps, rankings, essential apps, hot topics, download management， updates and my apps.
+Main interface consists of navigation bar, search box, main menu, slide show, new updates, hot apps, rankings, essential apps, hot topics, download management, updates and my apps.
 
 ![1|maininterfacedetail01](jpg/maininterfacedetail1.png)
 
@@ -153,7 +153,7 @@ App Store supports application synchronization. After signing in, you can synchr
 
 ### Update Applications
 
-Select **Updates** on the interface to view view applications to be updated here and you can choose whether to update it or not.
+Select **Updates** on the interface to view applications to be updated here and you can choose whether to update it or not.
 
 
 
@@ -178,20 +178,42 @@ You can open the information page of any application to view its ratings, downlo
 
 ![1|softwareinterface](jpg/softwareinterface.png)
 
+### Buy
+
+1. Open App Store, log in your Union ID.
+2. Select a App you want, hover the cursor over its cover or name, you will see a price, which means you have to buy it. Click the price and then click **Buy**. 
+
+![1|buy](jpg/buy.png)
+
+3. The paying interface pops up. You can select a payment method. Currently Alipay and Wechat Pay are supported.
+4. Click **Pay Now**. After the payment is successful, the application can be installed with one click.
+
+>![notes](icon/notes.svg)Notes: Only some applications need to be paid to install.
+
+### Refund
+
+1. Open App Store, log in your Union ID.
+
+>![notes](icon/notes.svg)Notes: You can request a refund within two hours after payment. Please refer to Refund Policy for details.
+
+2. In **My Apps** interface, click **Remote Apps**. Find the application you want to refund, click **Refund**.
+3. **Refund Request** interface pops up. You have to check one from "Detailed Reasons" and also enter your "Suggestions" to make submission successful. 
+4. Click **Submit**. The money you request for will be returned to your paying account in 2-3 working days. 
+
 ### Comment and Rate
 
-- After sign in, you can comment on and rate the applications. But you have to submit your comments and ratings at the same time.
+- After sign in your Union ID, you can comment on and rate the applications. Click **Report a bug** to feedback software bugs. You can also like other users' comments. 
 
 ![1|commenrandrate](jpg/commentandrate.png)
 
-> ![tips](icon/tips.svg)Tips: You can click the icon at the right of the comment to like it.
 
 
-- Click the avatar on the title bar and select  **My Comments**  to view and edit all your ratings and comments.
+
+- Click the avatar on the title bar and select  **My Comments**  to view and edit all your ratings and comments. If you have not logged in, you can only view comments and ratings.
 
 ![1|editcomment](jpg/editcomment.png)
 
-> ![notes](icon/notes.svg)Notes: If you haven't signed in your cloud account, you can not comment or rate but only view comments and ratings.
+
 
 ## Main Menu
 
@@ -231,3 +253,5 @@ Click Help to get the manual, which will help you further know and use App Store
 ### Exit
 1. Click  ![icon_menu](icon/icon_menu.svg) on the main interface.
 2. Click  **Exit**.
+
+<div class="version-info"><span>Update Date: 2020-11-27</span><span> Version: 6.2</span></div>

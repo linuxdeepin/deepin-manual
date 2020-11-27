@@ -31,7 +31,7 @@ You can run, close or create a shortcut for Printer Manager as follows.
 
 On the main interface, click![+](icon/+.svg) and you will have three options including **Discover Printer**, **Find Printer**, and **Enter URI**. 
 
-![0|1add printer](jpg/1add printer.png)
+![0|1addprinter](jpg/1addprinter.png)
 
 #### Discover Printer
 
@@ -39,7 +39,7 @@ On the main interface, click![+](icon/+.svg) and you will have three options inc
 
 2. You can see a drop-down list of drivers for the printer selected. The recommended driver is selected by default. If you select "Select a driver" from the drop-down list, you will skip into an interface to select a driver you want.
 
-   ![0|2automatic search](jpg/2automatic search.png)
+   ![0|2automaticsearch](jpg/2automaticsearch.png)
 
 3. Click  **Install Driver** to enter installing interface.
 
@@ -48,7 +48,7 @@ On the main interface, click![+](icon/+.svg) and you will have three options inc
 
 1. Click **Find Printer** , input user name or IP address to search printers through different protocols. 
 
-   ![0|3manual search](jpg/3manual search.png)
+   ![0|3manualsearch](jpg/3manualsearch.png)
 
 2. After you select a printer, its driver list is loaded below, and the recommended driver is selected by default. If no list is loaded, you can choose "Select a driver" from the drop down list to enter an interface to choose a driver.
 
@@ -61,7 +61,7 @@ On the main interface, click![+](icon/+.svg) and you will have three options inc
 
 2. Click **Enter URI** and input printer's URI.
 
-   ![0|4URI search](jpg/4URI search.png)
+   ![0|4URIsearch](jpg/4URIsearch.png)
 
 3. "Select a driver" is set by default. Click **Next** to enter driver installing interface.  
 
@@ -79,17 +79,17 @@ On the main interface, click![+](icon/+.svg) and you will have three options inc
 
    * Local driver: select vendor and model from drop-down box to query local drivers.
 
-     ![0|5local driver](jpg/5local driver.png)
+     ![0|5localdriver](jpg/5localdriver.png)
 
    * Local PPD files: drag and drop local PPD files here or click **Select a PPD file** to find one in local folder, for example, you can select a PPD file under the directory of /usr/share/ppd.  
 
    > ![notes](icon/notes.svg)Notes: Prerequisite of this operation is that user has installed driver locally. If not, you will get a hint "Driver install failed".
 
-   ![0|6ppd document](jpg/6ppd document.png)
+   ![0|6ppddocument](jpg/6ppddocument.png)
 
    * Search for a driver: input particular vendor and model, and the system will search in background driver library. Results will be listed in the drop-down box. 
 
-   ![0|7search driver](jpg/7search driver.png)
+   ![0|7searchdriver](jpg/7searchdriver.png)
 
 ### Install Printer
 
@@ -98,7 +98,7 @@ After you add a printer and select the correct driver, click **Install Driver** 
 - Successfully Installed 
   A window pops up saying the printer is successfully installed, in which you can click **Print Test Page** to verify if printing works normally, or, you can click **View Printer** to enter the interface of printer manager. 
 
-  ![0|8successful installion](jpg/8successful install.png)
+  ![0|8successfulinstallion](jpg/8successfulinstall.png)
 
 - Install Failed
   
@@ -108,9 +108,9 @@ After you add a printer and select the correct driver, click **Install Driver** 
 
 ### Printer Manager Interface
 
-Once a printer is added successfully, when you click the printer in the interface of printer manager, you can see four buttons on the right, which are "Properties", "Print Queue", "Print Test Page" and "Troubleshoot". 
+Once a printer is added successfully, when you click the printer in the interface of printer manager, you can see five buttons on the right, which are "Properties", "Print Queue", "Print Test Page", "Supplies" and "Troubleshoot". 
 
-![0|9printer management](jpg/9printer management.png)
+![0|9printermanagement](jpg/9printermanagement.png)
 
 #### Properties 
 
@@ -118,7 +118,7 @@ Once a printer is added successfully, when you click the printer in the interfac
 
 2. You can view the info about the printer's driver, URI, location, description, color mode and resolution instead of setting them.
 
-![0|10printer settings1](jpg/10printer settings1.png)
+![0|10printersettings1](jpg/10printersettings1.png)
 
 3. Settable items include: paper source, paper type, paper size, duplex, margins, orientation, page order and binding. 
   - Color Mode: **RGB Color** is set by default. You can choose other options according to your needs.
@@ -129,7 +129,7 @@ Once a printer is added successfully, when you click the printer in the interfac
 
   - Page Size: **Letter** is set by default. You can choose other size according to your needs.
 
-  - Color Precision: **Normal** is set by default. The other option is **Best**.
+  - Resolution: you can choose the suitable resolution here.
 
   - Media Type: **Photo Paper Pro Platinum** is set by default. There are many other options for you to choose. 
 
@@ -140,8 +140,6 @@ Once a printer is added successfully, when you click the printer in the interfac
   - Resolution: **Automatic**  is set by default. There are many other options for you to choose. 
 
   - Shrink Page If Necessary to Fit Borders: **Shrink (print the whole page)** is set by default. The other two options are **Crop (preserve dimensions)** and **Expand (use maximum page area)**.
-
-![0|10printer settings2](jpg/10printer settings2.png)
 
 4. Restore defaults: click this button, all settings will be restored to default. 
    
@@ -154,21 +152,12 @@ Once a printer is added successfully, when you click the printer in the interfac
 
 2. The list contains: "Job", "User", "Document", "Printer", "Size", "Time Submitted", "Status" and "Action". 
 
-3. Options of Action: 
-
-   - Start/Pause printing: click this button to start or pause current job. 
-
-   - Delete: click this button to delete current job. 
-
-     ![0|11print queue](jpg/11print queue.png)
-
-4. Operation with right-clicking:
-
-​       Select a job and right-click, you will have options such as **Cancel**, **Delete**, **Pause**, **Resume**, **Print first**,  and **Reprint**. 
+3. Select a job, right-click and you can select **Cancel**, **Delete**, **Pause**, **Resume**, **Print first**,  and **Reprint**. 
 
 
 
-![0|11right click setting](jpg/11right click setting.png)
+
+![0|11rightclicksetting](jpg/11rightclicksetting.png)
 
 
 
@@ -179,6 +168,10 @@ Click **Print Test Page** to test if printing is completed successfully.
    - Print successfully: if printing is completed successfully, you can continue with other tasks.
 
    - Print failed: if printing fails, you can reinstall a printer or start troubleshooting. 
+
+#### Supplies
+
+In the main interface of Print Manager, click **Supplies** to view the ink/toner status. If it's insufficient, it needs to be replaced.
 
 #### Troubleshoot
 
@@ -199,7 +192,7 @@ If printing fails, you can click **Troubleshoot**, the checklist includes follow
 
 Select the printer and right-click, you will have four options such as "Shared", "Enabled", "Accept jobs", and "Set as default". 
 
-![0|9right click setting](jpg/9right click setting.png)
+![0|9rightclicksetting](jpg/9rightclicksetting.png)
 
 ### Delete Printer
 
@@ -224,18 +217,18 @@ In the main menu, you can set basic servers, switch themes, view help manual, an
    - Allow remote administration
    - Save debugging information for troubleshooting 
 
-   ![0|13right click setting main menu](jpg/13right click setting main menu.png)
+   ![0|13rightclicksettingmainmenu](jpg/13rightclicksettingmainmenu.png)
 
 ### Theme
 
-The window theme includes Light Theme, Dark Theme and System Theme (default).
+The window theme includes Light Theme, Dark Theme and System Theme.
 
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Click  **Theme** to select one.
 
 ### Help
 
-click Help to get the manual, which will help you further know and use Printer Manager.
+Click Help to get the manual, which will help you further know and use Printer Manager.
 
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Click **Help** to view the manual.
@@ -246,8 +239,10 @@ click Help to get the manual, which will help you further know and use Printer M
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Click **About** to view version information and introduction about Printer Manager.
 
-### Quit
+### Exit
 
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Click  **Exit**.
 
+
+<div class="version-info"><span>Update Date: 2020-11-27</span><span> Version: 0.7</span></div>
