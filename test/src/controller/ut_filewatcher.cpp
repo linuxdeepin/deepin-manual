@@ -80,7 +80,3 @@ TEST_F(ut_fileWatcher, checkMap)
 
 }
 
-TEST_F(ut_fileWatcher, a)
-{
-
-}

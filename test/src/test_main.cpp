@@ -12,6 +12,7 @@ QT_END_NAMESPACE
 
 int main(int argc, char *argv[])
 {
+    qputenv("QT_QPA_PLATFORM", "offscreen");
     QApplication app(argc, argv);
     QTEST_DISABLE_KEYPAD_NAVIGATION
     QTEST_ADD_GPU_BLACKLIST_SUPPORT

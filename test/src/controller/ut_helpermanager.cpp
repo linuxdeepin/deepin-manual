@@ -39,55 +39,51 @@ void ut_helperManager::TearDown()
     delete m_hm;
 }
 
-TEST_F(ut_helperManager, initDbConfig)
-{
-    m_hm->initDbConfig();
-}
+//TEST_F(ut_helperManager, initDbConfig)
+//{
+////    m_hm->initDbConfig();
+//}
 
-TEST_F(ut_helperManager, getModuleInfo)
-{
-    m_hm->getModuleInfo();
-}
+//TEST_F(ut_helperManager, getModuleInfo)
+//{
+//    m_hm->getModuleInfo();
+//}
 
-TEST_F(ut_helperManager, initConnect)
-{
-    m_hm->initConnect();
-}
+//TEST_F(ut_helperManager, initConnect)
+//{
+//    m_hm->initConnect();
+//}
 
-TEST_F(ut_helperManager, handleDb)
-{
-    QStringList deleteList;
-    QStringList addList;
-    QStringList addTime;
-    deleteList << "aaaa";
-    addList << "bbbb";
-    addTime << "001002";
-    m_hm->handleDb(deleteList, addList, addTime);
+//TEST_F(ut_helperManager, handleDb)
+//{
+//    QStringList deleteList;
+//    QStringList addList;
+//    QStringList addTime;
+//    deleteList << "aaaa";
+//    addList << "bbbb";
+//    addTime << "001002";
+//    m_hm->handleDb(deleteList, addList, addTime);
 
-}
+//}
 
-TEST_F(ut_helperManager, dbusSend)
-{
-    QStringList deleteList;
-    QStringList addList;
-    deleteList << "aaa";
-    addList << "bbb";
-    m_hm->dbusSend(deleteList, addList);
+//TEST_F(ut_helperManager, dbusSend)
+//{
+//    QStringList deleteList;
+//    QStringList addList;
+//    deleteList << "aaa";
+//    addList << "bbb";
+//    m_hm->dbusSend(deleteList, addList);
 
-}
+//}
 
-TEST_F(ut_helperManager, onFilelistChange)
-{
-    QStringList deleteList;
-    QStringList addList;
-    QStringList addTime;
-    deleteList << "aaaa";
-    addList << "bbbb";
-    addTime << "001002";
-    m_hm->onFilelistChange(deleteList, addList, addTime);
-}
+//TEST_F(ut_helperManager, onFilelistChange)
+//{
+//    QStringList deleteList;
+//    QStringList addList;
+//    QStringList addTime;
+//    deleteList << "aaaa";
+//    addList << "bbbb";
+//    addTime << "001002";
+////    m_hm->onFilelistChange(deleteList, addList, addTime);
+//}
 
-TEST_F(ut_helperManager, a)
-{
-
-}

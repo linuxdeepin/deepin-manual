@@ -19,10 +19,10 @@ void ut_search_proxy_test::TearDown()
     delete m_searchProxy;
 }
 
-TEST_F(ut_search_proxy_test, getKeyword)
-{
-    WebWindow web;
-    web.initWeb();
-    web.search_proxy_->getKeyword("应用");
-    ASSERT_EQ(web.search_edit_->lineEdit()->text(), "应用");
-}
+//TEST_F(ut_search_proxy_test, getKeyword)
+//{
+//    WebWindow web;
+//    web.initWeb();
+//    web.search_proxy_->getKeyword("应用");
+//    ASSERT_EQ(web.search_edit_->lineEdit()->text(), "应用");
+//}

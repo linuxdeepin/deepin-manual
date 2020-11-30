@@ -13,5 +13,5 @@ add_subdirectory(src)
 #option (USE_TEST "TEST" OFF)
 
 #if(USE_TEST)
-add_subdirectory(dman_qtest)
+add_subdirectory(test)
 #endif(USE_TEST)
