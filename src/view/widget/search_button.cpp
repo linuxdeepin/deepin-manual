@@ -23,6 +23,7 @@
 
 #include <QHBoxLayout>
 #include <QStylePainter>
+#include <QPainterPath>
 
 DWIDGET_USE_NAMESPACE
 

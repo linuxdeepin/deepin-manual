@@ -2,6 +2,7 @@
 #include "base/utils.h"
 
 #include <DStyleHelper>
+#include <QPainterPath>
 
 SearchCompletionDelegate::SearchCompletionDelegate(QAbstractItemView *parent)
     : DStyledItemDelegate(parent)
