@@ -238,10 +238,11 @@ void WebWindow::closeEvent(QCloseEvent *event)
     //保存窗口大小
     saveWindowSize();
 
-    if (QOpenGLContext *context = QOpenGLContext::currentContext()){
-        context->doneCurrent();
-    }
-    deleteLater();
+// panguv环境上 该代码块会导致退出速度慢问题
+//    if (QOpenGLContext *context = QOpenGLContext::currentContext()){
+//        context->doneCurrent();
+//    }
+//    deleteLater();
 
     QWidget::closeEvent(event);
 
@@ -397,7 +398,7 @@ void WebWindow::initConnections()
     connect(search_edit_, &SearchEdit::enterPressed, this, &WebWindow::onTitleBarEntered);
     connect(search_edit_, &SearchEdit::upKeyPressed, completion_window_,
             &SearchCompletionWindow::goUp);
-   connect(search_edit_, &SearchEdit::focusChanged, this, &WebWindow::onSearchEditFocusOut);
+    connect(search_edit_, &SearchEdit::focusChanged, this, &WebWindow::onSearchEditFocusOut);
     connect(completion_window_, &SearchCompletionWindow::resultClicked, this,
             &WebWindow::onSearchResultClicked);
     connect(completion_window_, &SearchCompletionWindow::searchButtonClicked, this,
@@ -556,8 +557,8 @@ void WebWindow::initWebView()
             theme_proxy_, &ThemeProxy::slot_ThemeChange);
     //应用启动时，页面加载成功时间获取
     connect(manual_proxy_, &ManualProxy::startFinish, this, &WebWindow::manualStartFinish);
-   connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
-           this, &WebWindow::slot_ThemeChanged);
+    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
+            this, &WebWindow::slot_ThemeChanged);
 
     manual_proxy_->setApplicationState("dde");
 }
