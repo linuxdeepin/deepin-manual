@@ -53,7 +53,7 @@ Immerse yourself in the pure joy of wonderful videos through frequently used fun
 | ----------------------------------------------------- | ---------- | ---------------------------------------------------- | --------- |
 | <img src="icon/last_normal.svg" class="inline" />     | Previous   | <img src="icon/next_normal.svg" class="inline" />    | Next      |
 | <img src="icon/play_normal.svg" class="inline" />     | Play       | <img src="icon/suspend_normal.svg" class="inline" /> | Pause     |
-| <img src="icon/zoom in_normal.svg" class="inline" />  | Fullscreen | <img src="icon/volume_normal.svg" class="inline" />  | Volume    |
+| <img src="icon/zoominnormal.svg" class="inline" />    | Fullscreen | <img src="icon/volumenormal.svg" class="inline" />   | Volume    |
 | <img src="icon/episodes_normal.svg" class="inline" /> | Playlist   | <img src="icon/menu.svg" class="inline" />           | Main Menu |
 | <img src="icon/mix.svg" class="inline" />             | Minimize   | <img src="icon/max.svg" class="inline" />            | Maximize  |
 | <img src="icon/close.svg" class="inline" />           | Close      |                                                      |           |
@@ -201,7 +201,7 @@ You can set the basic information, shortcut keys, and subtitles.
 
 #### Basic Settings
 
-1. Right-click or click ![界面按钮图标](icon/icon_menu.svg) on the Movie interface.
+1. Right-click or click ![menu](icon/icon_menu.svg) on the Movie interface.
 2. Click **Settings** > **Basic**.
 3. In the option **Play**, you can:
   - Check the **Clear playlist when exit** box to clear the playlist when you exit Movie.
@@ -209,6 +209,9 @@ You can set the basic information, shortcut keys, and subtitles.
   - Check the **Auto add similar files to play **box to add the similar film files in the same folder to the playlist for playback in order.
   - Check the **Show video preview on mouseover** box to show the film preview when you move the mouse over progress bar.
   - Check the **Show thumbnails in progress bar** and a preview window will be displayed when you move the mouse over progress bar.
+
+![notes](icon/notes.svg) Notes: This feature is only available on X86 platform. 
+
   - Check the **Pause when minimized** to pause the playback automatically when minimizing the Movie window.
   - Check the **Default play mode** box, select one mode in the **Default play mode** dropdown list and Movie will run in such mode next time.
 4.  Under the **Screenshot** option, you can select the path to save screenshots as you wish.
@@ -247,4 +250,5 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 
 1. On the Movie interface, click ![icon_menu](icon/icon_menu.svg).
 2. Click **Exit** to exit Movie.
+
 <div class="version-info"><span>Update Date: 2020-11-24</span><span> Version: 5.7</span></div>

@@ -15,7 +15,7 @@
 ### 运行截图录屏
 
 1. 点击桌面底部的 ![deepin-launcher](icon/deepin-launcher.svg)，进入启动器界面。
-2. 上下滚动鼠标滚轮浏览或通过搜索，找到截图录屏 ![deepin-screenshot](icon/deepin-screenshot.svg)点击运行。
+2. 上下滚动鼠标滚轮浏览或通过搜索，找到截图录屏 ![deepin-screenshot](icon/deepin-screenshot.svg)点击运行。
 3. 右键单击 ![deepin-screenshot](icon/deepin-screenshot.svg)，您可以：
 
    - 点击 **发送到桌面**，在桌面创建快捷方式。
@@ -122,7 +122,7 @@
 
 将鼠标指针置于截图区域上，鼠标指针变为 ![手指](icon/hand.svg)。您可以：
 - 按住鼠标左键不放，拖动鼠标来移动截图区域的位置。
-- 按下键盘上的 ![向上](icon/Up.svg)或 ![向下](icon/Down.svg)来上下移动截图区域，按下键盘上的 ![向左](icon/Left.svg)或 ![向右](icon/Right.svg)来左右移动截图区域。
+- 按下键盘上的 ![向上](icon/Up.svg)或 ![向下](icon/Down.svg)来上下移动截图区域，按下键盘上的 ![向左](icon/Left.svg) 或 ![向右](icon/Right.svg)来左右移动截图区域。
 
 #### 编辑截图
 
@@ -225,7 +225,7 @@
 
 1. 在截图区域下方的工具栏中，点击 ![画笔](icon/Combined_Shape-normal.svg)。
 2. 在工具栏展开面板中，选择画笔的粗细。
-3. 将鼠标指针置于截图区域上，鼠标指针变为 ![画笔指针](icon/brush red.svg)。
+3. 将鼠标指针置于截图区域上，鼠标指针变为 ![画笔指针](icon/brush_red.svg)。
 4. 按住鼠标左键不放，拖动鼠标以完成图形区域的绘制。
 
 如果需要绘制正方形、圆形等图形，您可以：
@@ -306,7 +306,7 @@
 开启截图录屏，并选定截图区域后，您可以通过执行以下操作之一来保存截取的图片：
 
 - 双击鼠标左键来保存。
-- 点击截图工具栏中的 ![cion](icon/screenshot button.svg) 按钮。
+- 点击截图工具栏中的 ![icon](icon/screenshot_button.svg) 按钮。
   
    >![notes](icon/notes.svg)说明：如果您的电脑支持触控屏或触控板，可以使用手势替代鼠标操作：一指双击完成截图。
 - 按下键盘上的 **Ctrl + S** 组合键来保存。
@@ -413,6 +413,5 @@
 ### 查看帮助手册
 
 启动截图录屏后按下键盘上的 **F1** 键即可打开帮助手册。
-
 
 <div class="version-info"><span>文档更新时间: 2020-11-24</span><span> 版本: 5.8</span></div>

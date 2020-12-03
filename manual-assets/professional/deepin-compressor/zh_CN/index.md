@@ -3,7 +3,7 @@
 ## 概述
 
 
-归档管理器是一款界面友好、使用方便的压缩与解压缩软件，支持7z、jar、tar、tar.bz2、tar.gz、tar.lz、tar.lzma、tar.lzo、tar.Z、zip等多种压缩包格式，还支持加密压缩等设置。
+归档管理器是一款界面友好、使用方便的压缩与解压缩软件，支持7z、jar、tar、tar.bz2、tar.gz、tar.lz、tar.lzma、tar.lzo、tar.xz、tar.Z、tar.7z、zip等多种压缩包格式，还支持加密压缩等设置。
 
 ![1|main](jpg/main.png)
 
@@ -48,7 +48,7 @@
    
 2. 如果需要继续添加压缩文件，可点击工具栏上的 ![plus](icon/icon_plus.svg)或者  ![icon_menu](icon/icon_menu.svg)> **打开文件**，添加压缩文件。
 
-   ![1|compressor](jpg/compress-add.png)
+   ![1|compressor](jpg/compress_add.png)
 
 3. 点击 **下一步**。
 4. 设置文件名、存储路径、压缩包格式等。
@@ -56,11 +56,11 @@
 
    > ![notes](icon/notes.svg)说明：
    > - 压缩包的默认文件格式是zip。
-   > -  可设置文件加密的格式有7z、zip，支持使用汉字加密。
+   > -  可设置文件加密的格式有7z、zip。
    > - 可设置文件列表加密的格式有7z，列表加密和文件加密属于同一个密码。
    > - 可设置分卷压缩的格式有7z。
 
-   ![1|compressor](jpg/compress-file.png)
+   ![1|compressor](jpg/compress_file.png)
 
 6. 点击 **压缩**。
 7. 压缩成功之后，您可以
@@ -69,7 +69,7 @@
    
    > ![tips](icon/tips.svg)窍门：您还可以右键点击 **压缩**，对文件执行压缩操作。
    
-   ![1|compressor](jpg/compress-success.png)
+   ![1|compressor](jpg/compress_success.png)
 
 
 ### 解压缩
@@ -127,7 +127,7 @@
 
 ### 主题
 
-窗口主题包含浅色主题、深色主题和跟随系统主题，其中跟随系统主题为默认设置。
+窗口主题包含浅色主题、深色主题和跟随系统主题。
 
 1. 在归档管理器界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **主题**，选择一个主题颜色。

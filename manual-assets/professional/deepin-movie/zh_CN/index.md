@@ -56,7 +56,7 @@
 | ----------------------------------------------------- | ----------------- | ---------------------------------------------------- | -------------- |
 | <img src="icon/last_normal.svg" class="inline" />     | 播放上一个影片    | <img src="icon/next_normal.svg" class="inline" />    | 播放下一个影片 |
 | <img src="icon/play_normal.svg" class="inline" />     | 开始播放影片      | <img src="icon/suspend_normal.svg" class="inline" /> | 暂停播放影片   |
-| <img src="icon/zoom in_normal.svg" class="inline" />  | 全屏播放          | <img src="icon/volume_normal.svg" class="inline" />  | 调节音量       |
+| <img src="icon/zoom_in_normal.svg" class="inline" />  | 全屏播放          | <img src="icon/volume_normal.svg" class="inline" />  | 调节音量       |
 | <img src="icon/episodes_normal.svg" class="inline" /> | 呼出/隐藏播放列表 | <img src="icon/menu.svg" class="inline" />           | 主菜单         |
 | <img src="icon/mix.svg" class="inline" />             | 最小化按钮        | <img src="icon/max.svg" class="inline" />            | 最大化按钮     |
 | <img src="icon/close.svg" class="inline" />           | 关闭按钮          |                                                      |                |
@@ -179,8 +179,8 @@
 ### 删除视频文件
 
 1. 在影院界面，点击 ![movie](icon/episodes_normal.svg )。
-2. 进入播放列表窗口，将鼠标指针置于视频文件上。
-3. 右键单击 **从播放列表删除**。
+2. 进入播放列表窗口，右键单击视频文件。
+3. 选择 **从播放列表删除**。
 
 > ![tips](icon/tips.svg) 窍门： 在播放列表界面，将鼠标指针置于视频文件上，点击![关闭图标](icon/close.svg) 删除视频文件。
 
@@ -190,14 +190,14 @@
 ### 清空播放列表
 
 1. 在影院界面，点击 ![movie](icon/episodes_normal.svg )。
-2. 进入播放列表窗口，将鼠标指针置于视频文件上。
-3. 单击右键选择 **清空播放列表** 或 直接点击左侧 **清空列表**。
+2. 进入播放列表窗口，右键单击视频文件。
+3. 选择 **清空播放列表** 或 直接点击左侧 **清空列表**。
 
 ### 在文件管理器中显示
 
 1. 在影院界面，点击 ![movie](icon/episodes_normal.svg )。
-2. 进入播放列表窗口，将鼠标指针置于视频文件上。
-3. 右键单击 **在文件管理器中显示**，将自动跳转到文件管理器界面并显示到当前文件位置。
+2. 进入播放列表窗口，右键单击视频文件。
+3. 选择 **在文件管理器中显示**，将自动跳转到文件管理器界面并显示到当前文件位置。
 
 ## 主菜单
 
@@ -217,6 +217,9 @@
   - 勾选 **自动查找相似文件连续播放** 复选框，将同一个文件夹下名称相似的视频文件自动添加到播放列表中依次进行播放。
   - 勾选 **鼠标悬停进度条时显示预览** 复选框，当鼠标置于播放进度条上时显示预览窗口。
   - 勾选 **鼠标滑动进度条为胶片格式** 复选框，当鼠标置于播放进度条时显示胶片进度。
+
+   >![notes](icon/notes.svg)说明：仅x86平台支持胶片格式。
+
   - 勾选 **最小化时暂停** 复选框，在影院最小化时自动暂停视频文件的播放。
   - 设置默认播放模式，在“默认播放模式”下拉框中选择一个模式，下次启动影院时默认以该模式来播放。
 4. 在 **截图** 选项，您可以自定义截图的保存路径。
@@ -268,4 +271,5 @@
 
 1. 在影院界面，点击 ![icon_menu](icon/icon_menu.svg)。
 2. 点击 **退出**。
+
 <div class="version-info"><span>文档更新时间: 2020-11-24</span><span> 版本: 5.7</span></div>
