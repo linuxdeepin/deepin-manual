@@ -193,24 +193,6 @@ Use the shortcuts below to edit lines easily:
 
 ![read-only](jpg/read-only-02.png)
 
-### Text to Speech  
-
-You can perform the following operations after enabling the Text to Speech and Speech to Text features in the Control Center.
-
-1. Right-click and select **Speech to Text **. The input voices through microphone will be converted to texts and can be edited in the document.
-2. Select a paragraph of texts. Right-click it and select **Text to Speech**. The texts selected will be broadcast.
-
-> ![notes](icon/notes.svg) Notes: The **Text to Speech** option in the right-click menu is grayed out and cannot be activated when no text is selected.
-
-![speech](jpg/texttospeech.png)
-
-### Translate
-
-1. Enable **Translation** in **Control Center** > **Assistive Tools** and set the corresponding language pairs according to your needs. 
-2. Select the texts to be translated in Text Editor. Right-click and select **Translate**, and the texts selected will be translated into the target language.
-
-![translate](jpg/translate.png)
-
 ### Use Column Mode
 
 You can input identical content to or remove content from multiple lines of code by using the column mode function efficiently. 
