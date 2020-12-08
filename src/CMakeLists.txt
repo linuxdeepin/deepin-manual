@@ -74,6 +74,10 @@ if (${CMAKE_SYSTEM_PROCESSOR} MATCHES "mips64")
     add_definitions(-DDCPU_IS_LONGSON)
 endif()
 
+if (${CMAKE_SYSTEM_PROCESSOR} MATCHES "sw_64")
+    add_definitions(-DDCPU_IS_SW)
+endif()
+
 find_package(PkgConfig REQUIRED)
 find_package(Qt5Core REQUIRED)
 find_package(Qt5DBus REQUIRED)

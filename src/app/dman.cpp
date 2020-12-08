@@ -48,6 +48,10 @@ int main(int argc, char **argv)
     //龙芯机器配置,使得DApplication能正确加载QTWEBENGINE
     qputenv("DTK_FORCE_RASTER_WIDGETS", "FALSE");
 
+#ifdef DCPU_IS_SW
+    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-seccom-filter-sandbox");
+#endif
+
 //    qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "7777");
 //    Dtk::Widget::DApplication::loadDXcbPlugin();
 
