@@ -10,8 +10,6 @@ option(DMAN_RELEAE OFF "Install dman resources to system or not")
 
 add_subdirectory(src)
 
-#option (USE_TEST "TEST" OFF)
-
-#if(USE_TEST)
-add_subdirectory(test)
-#endif(USE_TEST)
+if (${CMAKE_SYSTEM_PROCESSOR} MATCHES "x86_64")
+    add_subdirectory(test)
+endif()
