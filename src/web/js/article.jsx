@@ -134,37 +134,35 @@ export default class Article extends Component {
       let read = article.querySelector('#read');
       read.focus();
       let imgList = [...article.querySelectorAll('img')];
+      
       let loadCount = 0;
+      let promiseAll = [];
       imgList.map(el => {
-        el.onload = () => {
-          console.log("------img onload---------");
-          loadCount++;
-          if (loadCount == imgList.length) {
-            console.log('image loaded。。。。。。。。。。。。。。。。');
-            this.load = true;
-            this.scrollToHash();
-            let last = article.querySelector(
-              '#' + this.props.hlist[this.props.hlist.length - 1].id,
-            );
-            let fillblank = {
-              marginBottom: article.clientHeight - (read.clientHeight - last.offsetTop),
+        promiseAll.push(new Promise((resolve, reject) => {
+            el.onload = function() {
+              console.log("------img onload---------");
+              resolve(el);
             };
-            this.setState({
-              fillblank,
-            });
-          }
-        };
-        el.onerror = () => {
-          console.log("------img onerror---------");
-          if (el.getAttribute('src') == el.dataset.src) {
-            console.log("------img == dataset---------");
-            el.onload();
-          } else {
-            console.log("------img == no dataset---------");
-            el.src = el.dataset.src;
-          }
-        };
+            el.onerror = function() {
+              console.log("------img onerror---------");
+              resolve(el);
+            }
+          }))
       });
+      Promise.all(promiseAll).then(() => {
+        // 全部图片加载完成
+        this.load = true;
+        this.scrollToHash();
+        let last = article.querySelector(
+          '#' + this.props.hlist[this.props.hlist.length - 1].id,
+        );
+        let fillblank = {
+          marginBottom: article.clientHeight - (read.clientHeight - last.offsetTop),
+        };
+        this.setState({
+          fillblank,
+        });
+      })
     }
   }
 

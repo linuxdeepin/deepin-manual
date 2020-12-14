@@ -52,7 +52,7 @@ int main(int argc, char **argv)
     qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-seccom-filter-sandbox");
 #endif
 
-    qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "7777");
+//    qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "7777");
 //    Dtk::Widget::DApplication::loadDXcbPlugin();
 
 

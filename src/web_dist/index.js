@@ -817,38 +817,71 @@ var Article = function (_Component) {
         this.scrollToHash();
       }
       if (!this.load) {
+        // let article = ReactDOM.findDOMNode(this);
+        // let read = article.querySelector('#read');
+        // read.focus();
+        // let imgList = [...article.querySelectorAll('img')];
+        // let loadCount = 0;
+        // imgList.map(el => {
+        //   el.onload = () => {
+        //     console.log("------img onload---------");
+        //     loadCount++;
+        //     if (loadCount == imgList.length) {
+        //       console.log('image loaded。。。。。。。。。。。。。。。。');
+        //       this.load = true;
+        //       this.scrollToHash();
+        //       let last = article.querySelector(
+        //         '#' + this.props.hlist[this.props.hlist.length - 1].id,
+        //       );
+        //       let fillblank = {
+        //         marginBottom: article.clientHeight - (read.clientHeight - last.offsetTop),
+        //       };
+        //       this.setState({
+        //         fillblank,
+        //       });
+        //     }
+        //   };
+        //   el.onerror = () => {
+        //     console.log("------img onerror---------");
+        //     if (el.getAttribute('src') == el.dataset.src) {
+        //       console.log("------img == dataset---------");
+        //       el.onload();
+        //     } else {
+        //       console.log("------img == no dataset---------");
+        //       el.src = el.dataset.src;
+        //     }
+        //   };
+        // });
         var article = _reactDom2.default.findDOMNode(this);
         var read = article.querySelector('#read');
         read.focus();
         var imgList = [].concat(_toConsumableArray(article.querySelectorAll('img')));
+
         var loadCount = 0;
+        var promiseAll = [];
         imgList.map(function (el) {
-          el.onload = function () {
-            console.log("------img onload---------");
-            loadCount++;
-            if (loadCount == imgList.length) {
-              console.log('image loaded。。。。。。。。。。。。。。。。');
-              _this3.load = true;
-              _this3.scrollToHash();
-              var last = article.querySelector('#' + _this3.props.hlist[_this3.props.hlist.length - 1].id);
-              var fillblank = {
-                marginBottom: article.clientHeight - (read.clientHeight - last.offsetTop)
-              };
-              _this3.setState({
-                fillblank: fillblank
-              });
-            }
+          promiseAll.push(new Promise(function (resolve, reject) {
+            el.onload = function () {
+              console.log("------img onload---------");
+              resolve(el);
+            };
+            el.onerror = function () {
+              console.log("------img onerror---------");
+              resolve(el);
+            };
+          }));
+        });
+        Promise.all(promiseAll).then(function () {
+          // 全部图片加载完成
+          _this3.load = true;
+          _this3.scrollToHash();
+          var last = article.querySelector('#' + _this3.props.hlist[_this3.props.hlist.length - 1].id);
+          var fillblank = {
+            marginBottom: article.clientHeight - (read.clientHeight - last.offsetTop)
           };
-          el.onerror = function () {
-            console.log("------img onerror---------");
-            if (el.getAttribute('src') == el.dataset.src) {
-              console.log("------img == dataset---------");
-              el.onload();
-            } else {
-              console.log("------img == no dataset---------");
-              el.src = el.dataset.src;
-            }
-          };
+          _this3.setState({
+            fillblank: fillblank
+          });
         });
       }
     }
