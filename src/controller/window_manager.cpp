@@ -26,6 +26,7 @@
 
 #include <QApplication>
 #include <QDesktopWidget>
+#include <DWidgetUtil>
 
 #define WM_SENDER_NAME "Sender"
 const int kWinMinWidth = 800;
@@ -174,7 +175,9 @@ void WindowManager::setWindow(WebWindow *window)
     //设置window窗口属性
     window->resize(saveWidth, saveHeight);
     window->setMinimumSize(kWinMinWidth, kWinMinHeight);
-    window->move((QApplication::desktop()->width() - saveWidth) / 2, (QApplication::desktop()->height() - saveHeight) / 2);
+//    window->move((QApplication::desktop()->width() - saveWidth) / 2, (QApplication::desktop()->height() - saveHeight) / 2);
+    //使用dtk方法使窗口居中
+    Dtk::Widget::moveToCenter(window);
 }
 
 /**
