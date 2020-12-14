@@ -50,7 +50,7 @@ Main interface consists of navigation bar, search box, main menu, slide show, ra
          <tr>
             <td>3</td>
             <td>Main menu</td>
-            <td>You can clear cache, switch themes, view contents of Help and About, and exit App Store.</td>
+            <td>You can clear cache, view contents of Help and About, and exit App Store.</td>
         </tr>
         <tr>
             <td>4</td>
