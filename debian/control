@@ -8,19 +8,19 @@ Build-Depends:
  debhelper (>= 9),
  libdtkwidget-dev,
  libdtkgui-dev,
- qtwebengine5-dev,
+ libqt5sql5-sqlite,
  libqt5webchannel5-dev,
  libsass-dev,
- libqt5sql5-sqlite,
  pkg-config,
  qttools5-dev,
  qttools5-dev-tools,
+ qtwebengine5-dev,
 Standards-Version: 3.9.5
 Homepage: https://github.com/linuxdeepin/deepin-manual/
 Vcs-Git: git://github.com/linuxdeepin/deepin-manual.git
 Vcs-Browser: https://github.com/linuxdeepin/deepin-manual/
 
-Package:deepin-manual
+Package: deepin-manual
 Architecture: any
 Depends: ${misc:Depends},
  ${shlibs:Depends},

@@ -9,8 +9,6 @@ Name=Deepin Manual
 StartupNotify=true
 Terminal=false
 Type=Application
-X-Deepin-Vendor=deepin
-X-Deepin-TurboType=dtkwidget
 
 # Translations:
 # Do not manually modify!
