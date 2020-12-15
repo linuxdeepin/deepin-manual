@@ -57,7 +57,7 @@ QString languageArr[][langCount] = {
     {"controlcenter", "控制中心", "Control Center"},
     {"accounts", "帐户设置", "Accounts"},
     {"cloudsync", "Union ID", "Union ID"},
-    {"display", "显示设置", "Display Settings"},
+    {"display", "显示设置", "Display"},
     {"defapp", "默认程序设置", "Default Application Settings"},
     {"personalization", "个性化设置", "Personalization Settings"},
     {"network", "网络设置", "Network Settings"},

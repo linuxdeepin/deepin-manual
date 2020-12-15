@@ -1072,7 +1072,7 @@ You can also change **Pointer Speed**, and switch on **Natural Scrolling** for t
 
 TrackPoint, also called pointing stick, is a small joystick used as a pointing device, typically mounted centrally in a laptop keyboard and used to control pointer movements on the screen.
 
-1. On the homepage of Control Center, click ![mouse_touchpad_normal](D:/工作/专业版/专业版SP3-1019/dde/en_US/icon/mouse_touchpad_normal.svg).
+1. On the homepage of Control Center, click ![mouse_touchpad_normal](icon/mouse_touchpad_normal.svg).
 2. Click **TrackPoint**.
 3. Adjust **Pointer Speed** to a proper level.
 
