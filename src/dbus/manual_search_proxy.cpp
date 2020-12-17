@@ -122,19 +122,4 @@ bool ManualSearchProxy::ManualExists(const QString &app_name)
         }
     }
     return moduleList.contains(app_name);
-
-//    int nType = Dtk::Core::DSysInfo::deepinType();
-//    if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
-//        strManualPath += "/server";
-//    } else if (Dtk::Core::DSysInfo::DeepinPersonal == (Dtk::Core::DSysInfo::DeepinType)nType) {
-//        strManualPath += "/personal";
-//    } else {
-//        if (Dtk::Core::DSysInfo::isCommunityEdition()) {
-//            strManualPath += "/community";
-//        } else {
-//            strManualPath += "/professional";
-//        }
-//    }
-//    QDir manual_dir(strManualPath);
-//    return manual_dir.exists(app_name);
 }

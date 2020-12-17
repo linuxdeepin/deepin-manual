@@ -328,6 +328,7 @@ void SearchDb::handleSearchAnchor(const QString &keyword)
     qDebug() << "=======>" << sql;
     if (query.exec(sql)) {
         while (query.next() && (result.size() < kResultLimitation)) {
+            qDebug() << "handleSearchAnchor===> " << query.value(0).toString();
             //只将当前预装应用中的内容输出。
             if (strlistApp.contains(query.value(0).toString())) {
                 //搜索结果优先显示应用名称

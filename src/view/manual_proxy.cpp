@@ -49,6 +49,7 @@ QStringList ManualProxy::getSystemManualList()
 {
     QStringList list = Utils::getSystemManualList();
     saveAppList(list);
+    qDebug() << "======================>" << list;
     return list;
 }
 
@@ -153,6 +154,56 @@ void ManualProxy::renderFinish()
 void ManualProxy::showUpdateLabel()
 {
     emit updateLabel();
+}
+
+QString ManualProxy::appToPath(const QString &appName)
+{
+    qDebug() << "========>" << appName;
+    QStringList omitType = Utils::systemToOmit(Dtk::Core::DSysInfo::uosEditionType());
+    QString assetPath = Utils::getSystemManualDir();
+    qDebug() << "========>" << assetPath;
+    QString appNameT;
+    QStringList mdList;
+    if (appName == "dde") {
+        assetPath += "/system/" + appName;
+    } else {
+        assetPath += "/application/" + appName;
+    }
+    qDebug() << "========>" << assetPath;
+    QStringList list = QDir(assetPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs);
+    qDebug() << "========>" << list;
+    if (list.count() == 1) {
+        appNameT = list.at(0);
+    } else if (list.count() > 1) {
+        qWarning() << Q_FUNC_INFO << assetPath << "have move dir" << list;
+        appNameT = list.at(1);
+    } else {
+        appNameT = "error";
+
+        qWarning() << Q_FUNC_INFO << " no dir";
+    }
+    assetPath += "/" + appNameT + "/" + QLocale().name();
+    qDebug() << "========>" << assetPath;
+
+    if (omitType.length() > 1) {
+        mdList.append(assetPath + "/" + QString("%1_%2.md").arg(omitType.at(0)).arg(appNameT));
+        mdList.append(assetPath + "/" + QString("%1_%2.md").arg(omitType.at(1)).arg(appNameT));
+    } else {
+        mdList.append(assetPath + "/" + QString("%1_%2.md").arg(omitType.at(0)).arg(appNameT));
+        mdList.append(assetPath + "/" + QString("%1.md").arg(appNameT));
+    }
+
+    QString ret;
+    if (QFile(mdList[0]).exists()) {
+        ret = mdList[0];
+    } else if (QFile(mdList[1]).exists()) {
+        ret = mdList[1];
+    } else {
+
+        qWarning() << Q_FUNC_INFO << " no exist file:" << appName;
+    }
+    qDebug() << "========>" << ret;
+    return ret;
 }
 
 /**

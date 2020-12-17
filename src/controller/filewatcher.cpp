@@ -75,15 +75,30 @@ void fileWatcher::monitorFile()
         if (type == "system" || type == "application") {
             QString typePath = assetsPath + "/" + type;
             listModule.append(typePath);
+            //监控资源文件夹
             for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+                //./manual-assets/application(system)/appName
                 QString modulePath = typePath + "/" + module;
                 listModule.append(modulePath);
-                QStringList listLang;
-                for (QString &lang : QDir(modulePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+                QStringList listAppNameT = QDir(modulePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs);
+                if (listAppNameT.count() != 1) {
+                    qCritical() << Q_FUNC_INFO << modulePath << listAppNameT << "：there are more folders..";
+                }
+                //./manual-assets/application(system)/appName/appNameT
+                QString appPath = modulePath + "/" + listAppNameT.at(0);
+                listModule.append(appPath);
+                for (QString &lang : QDir(appPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
                     if (lang == "zh_CN" || lang == "en_US") {
-                        listLang.append(lang);
-                        QString strMd = modulePath + "/" + lang + "/index.md";
-                        listMonitorFile.append(strMd);
+                        //./manual-assets/application(system)/appName/appNameT/lang
+                        QString langPath = appPath + "/" + lang;
+                        listModule.append(langPath);
+                        for (QString &mdFile : QDir(langPath).entryList(QDir::Files)) {
+                            if (mdFile.endsWith("md")) {
+                                //./manual-assets/application(system)/appName/appNameT/lang/md
+                                QString strMd = langPath + "/" + mdFile;
+                                listMonitorFile.append(strMd);
+                            }
+                        }
                     }
                 }
             }
@@ -136,16 +151,28 @@ void fileWatcher::onTimerOut()
             QString typePath = assetsPath + "/" + type;
             //监控资源文件夹
             for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+                //./manual-assets/application(system)/appName
                 QString modulePath = typePath + "/" + module;
-                QStringList listLang;
-                for (QString &lang : QDir(modulePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+                QStringList listAppNameT = QDir(modulePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs);
+                if (listAppNameT.count() != 1) {
+                    qCritical() << modulePath << listAppNameT << "：there are more folders..";
+                }
+                //./manual-assets/application(system)/appName/appNameT
+                QString appPath = modulePath + "/" + listAppNameT.at(0);
+                for (QString &lang : QDir(appPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
                     if (lang == "zh_CN" || lang == "en_US") {
-                        listLang.append(lang);
-                        QString strMd = modulePath + "/" + lang + "/index.md";
-                        QFileInfo fileInfo(strMd);
-                        if (fileInfo.exists()) {
-                            QString modifyTime = fileInfo.lastModified().toString();
-                            mapNow.insert(strMd, modifyTime);
+                        //./manual-assets/application(system)/appName/appNameT/lang
+                        QString langPath = appPath + "/" + lang;
+                        for (QString &mdFile : QDir(langPath).entryList(QDir::Files)) {
+                            if (mdFile.endsWith("md")) {
+                                //./manual-assets/application(system)/appName/appNameT/lang/md
+                                QString strMd = langPath + "/" + mdFile;
+                                QFileInfo fileInfo(strMd);
+                                if (fileInfo.exists()) {
+                                    QString modifyTime = fileInfo.lastModified().toString();
+                                    mapNow.insert(strMd, modifyTime);
+                                }
+                            }
                         }
                     }
                 }

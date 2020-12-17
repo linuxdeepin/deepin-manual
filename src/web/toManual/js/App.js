@@ -154,21 +154,30 @@ class App extends React.Component {
     console.log('搜索结果', appName, titleList, idList, contentList);
     let { searchResult } = this.state;
     let filePath;
-    if (appName == "dde")
-    {
-      filePath = `${global.path}/system/${appName}/${global.lang}/index.md`;
-    }
-    else
-    {
-      filePath = `${global.path}/application/${appName}/${global.lang}/index.md`;
-    }
-    searchResult.push({
-      file: filePath,
-      idList,
-      titleList,
-      contentList
+    // if (appName == "dde")
+    // {
+    //   filePath = `${global.path}/system/${appName}/${global.lang}/index.md`;
+    // }
+    // else
+    // {
+    //   filePath = `${global.path}/application/${appName}/${global.lang}/index.md`;
+    // }
+    var myPromise = new Promise(function(resolve, reject){
+      global.qtObjects.manual.appToPath(appName, function (filepath) {
+        filePath = filepath;
+        resolve()
+      })
     });
-    this.setState({ searchResult, mismatch: false });
+   
+    myPromise.then(()=>{
+      searchResult.push({
+        file: filePath,
+        idList,
+        titleList,
+        contentList
+      });
+      this.setState({ searchResult, mismatch: false });
+    })
   }
 
   onReloadPage(appList) {
@@ -390,9 +399,7 @@ class App extends React.Component {
       }
 
       let url = `/open/${file}/${hash}/${key}`;
-      console.log("globla.open==---------->");
       this.context.router.history.push(url);
-      console.log("globla.open.=========.......");
 
       //Init属性设置, 放在index与opentitle中. 避免直接跳转到特定模块时会先走/模块.
       if (this.state.init == false)
@@ -410,30 +417,39 @@ class App extends React.Component {
       if (title !== '')
       {
         let filePath;
-        if(file == "dde")
-        {
-          filePath = `${global.path}/system/${file}/${global.lang}/index.md`
-        }
-        else
-        {
-          filePath = `${global.path}/application/${file}/${global.lang}/index.md`
-        }
+        // if(file == "dde")
+        // {
+        //   filePath = `${global.path}/system/${file}/${global.lang}/index.md`
+        // }
+        // else
+        // {
+        //   filePath = `${global.path}/application/${file}/${global.lang}/index.md`
+        // }
 
-        global.readFile(filePath, data => {
-          let { html } = m2h(filePath, data);
-          let d = document.createElement('div');
-          d.innerHTML = html;
-          let dlist = d.querySelectorAll(`[text="${title}"]`);
-          let hashID = 'h0';
-          for(let i = 0; i < dlist.length; i++)
-          {
-            if (dlist[i].tagName == 'H2' || dlist[i].tagName == 'H3')
+        var myPromise = new Promise(function(resolve, reject){
+          global.qtObjects.manual.appToPath(file, function (filepath) {
+            filePath = filepath;
+            resolve()
+          })
+        });
+       
+        myPromise.then(()=>{
+          global.readFile(filePath, data => {
+            let { html } = m2h(filePath, data);
+            let d = document.createElement('div');
+            d.innerHTML = html;
+            let dlist = d.querySelectorAll(`[text="${title}"]`);
+            let hashID = 'h0';
+            for(let i = 0; i < dlist.length; i++)
             {
-              hashID = dlist[i].id;
+              if (dlist[i].tagName == 'H2' || dlist[i].tagName == 'H3')
+              {
+                hashID = dlist[i].id;
+              }
             }
-          }
-          global.open(file,hashID);
-        })
+            global.open(file,hashID);
+          })
+        });
       }
       else
       {

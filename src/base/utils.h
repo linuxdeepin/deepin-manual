@@ -24,7 +24,7 @@
 #include "dbus/dbusvariant/app_info.h"
 
 #include <DApplicationHelper>
-
+#include <DSysInfo>
 #include <QWidget>
 
 #define dApp (static_cast<DApplication *>(QCoreApplication::instance()))
@@ -41,7 +41,8 @@ public:
 
     enum FontType { SourceHanSansMedium,
                     SourceHanSansNormal,
-                    DefautFont };
+                    DefautFont
+                  };
 
 //    static struct timeval getTime();
 //    static struct timeval showDiffTime(struct timeval tpStart);
@@ -66,6 +67,7 @@ public:
     static QString getSystemManualDir();
     static QList<AppInfo> sortAppList(QMultiMap<qlonglong, AppInfo> map);
     static bool hasSelperSupport();
+    static QStringList systemToOmit(Dtk::Core::DSysInfo::UosEdition);
 };
 
 class ExApplicationHelper : public DGuiApplicationHelper

@@ -20,8 +20,6 @@
 
 #include "utils.h"
 
-#include <DSysInfo>
-
 #include <QFontDatabase>
 #include <QImageReader>
 
@@ -75,6 +73,11 @@ QString languageArr[][langCount] = {
     {"License activator", "授权管理", "Authorization Management"},
     {"commoninfo", "通用设置", "General Settings"}
 };
+
+//const QMap<Dtk::Core::DSysInfo::UosEdition,QString> map;
+//map
+//={(Dtk::Core::DSysInfo::UosProfessional,"p")};
+
 
 struct ReplyStruct {
     QString m_desktop;
@@ -543,6 +546,45 @@ bool Utils::hasSelperSupport()
         }
     }
     return false;
+}
+
+//表示桌面专业版，h表示个人版，d表示社区版
+//s表示服务器版，e表示服务器企业版，eu表示服务器欧拉版，i表示服务器行业版，klu表示KelvinU项目版本，pgv表示PanguV项目版本。
+QStringList Utils::systemToOmit(Dtk::Core::DSysInfo::UosEdition type)
+{
+    QStringList retList;
+    switch (type) {
+    //专业版
+    case  Dtk::Core::DSysInfo::UosProfessional:
+        retList.append("p");
+        break;
+    //个人版
+    case  Dtk::Core::DSysInfo::UosHome:
+        retList.append("h");
+        break;
+    //社区版
+    case  Dtk::Core::DSysInfo::UosCommunity:
+        retList.append("d");
+        break;
+    //服务器企业版
+    case  Dtk::Core::DSysInfo::UosEnterprise:
+        retList.append("s");
+        retList.append("e");
+        break;
+    //服务器行业版
+    case  Dtk::Core::DSysInfo::UosEnterpriseC:
+        retList.append("i");
+        retList.append("e");
+        break;
+    //服务器欧拉版
+    case  Dtk::Core::DSysInfo::UosEuler:
+        retList.append("eu");
+        retList.append("e");
+        break;
+    default:
+        break;
+    }
+    return retList;
 }
 
 ExApplicationHelper *ExApplicationHelper::instance()

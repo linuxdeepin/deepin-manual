@@ -184,27 +184,41 @@ var App = function (_React$Component) {
   }, {
     key: 'onContentResult',
     value: function onContentResult(appName, titleList, idList, contentList) {
+      var _this3 = this;
+
       console.log('搜索结果', appName, titleList, idList, contentList);
       var searchResult = this.state.searchResult;
 
       var filePath = void 0;
-      if (appName == "dde") {
-        filePath = global.path + '/system/' + appName + '/' + global.lang + '/index.md';
-      } else {
-        filePath = global.path + '/application/' + appName + '/' + global.lang + '/index.md';
-      }
-      searchResult.push({
-        file: filePath,
-        idList: idList,
-        titleList: titleList,
-        contentList: contentList
+      // if (appName == "dde")
+      // {
+      //   filePath = `${global.path}/system/${appName}/${global.lang}/index.md`;
+      // }
+      // else
+      // {
+      //   filePath = `${global.path}/application/${appName}/${global.lang}/index.md`;
+      // }
+      var myPromise = new Promise(function (resolve, reject) {
+        global.qtObjects.manual.appToPath(appName, function (filepath) {
+          filePath = filepath;
+          resolve();
+        });
       });
-      this.setState({ searchResult: searchResult, mismatch: false });
+
+      myPromise.then(function () {
+        searchResult.push({
+          file: filePath,
+          idList: idList,
+          titleList: titleList,
+          contentList: contentList
+        });
+        _this3.setState({ searchResult: searchResult, mismatch: false });
+      });
     }
   }, {
     key: 'onReloadPage',
     value: function onReloadPage(appList) {
-      var _this3 = this;
+      var _this4 = this;
 
       // console.log("============>page reload...");
       var bRetFlag = true;
@@ -232,18 +246,18 @@ var App = function (_React$Component) {
 
             if (bKFlage) {
               global.bIsReload = true;
-              _this3.context.router.history.go(0);
+              _this4.context.router.history.go(0);
             } else {
-              var historyList = _this3.context.router.history.entries;
-              var index = _this3.context.router.history.index;
+              var historyList = _this4.context.router.history.entries;
+              var index = _this4.context.router.history.index;
               var historyLate = historyList.slice(index + 1);
               console.log("===========>", historyLate);
-              _this3.setState({ historyGO: _this3.state.historyGO - 1 });
-              _this3.context.router.history.go(-1);
+              _this4.setState({ historyGO: _this4.state.historyGO - 1 });
+              _this4.context.router.history.go(-1);
 
               historyLate.map(function (url) {
                 console.log("..........>", url);
-                _this3.context.router.history.push(url);
+                _this4.context.router.history.push(url);
               });
               global.backHome();
             }
@@ -363,24 +377,24 @@ var App = function (_React$Component) {
   }, {
     key: 'componentDidMount',
     value: function componentDidMount() {
-      var _this4 = this;
+      var _this5 = this;
 
       global.index = function () {
         // this.context.router.history.push('/');
-        if (_this4.state.init == false) {
-          _this4.setState({ init: true });
+        if (_this5.state.init == false) {
+          _this5.setState({ init: true });
         }
       };
       global.backHome = function () {
         global.handleLocation(global.hash);
-        console.log("global.backHome()" + _this4.context.router.history.entries.length);
-        console.log("global.backHome()" + _this4.state.historyGO);
-        var goNum = _this4.state.historyGO;
-        _this4.setState({ historyGO: 0 });
+        console.log("global.backHome()" + _this5.context.router.history.entries.length);
+        console.log("global.backHome()" + _this5.state.historyGO);
+        var goNum = _this5.state.historyGO;
+        _this5.setState({ historyGO: 0 });
         console.log("global.backHome()" + goNum);
 
-        if (_this4.context.router.history.canGo(-1 * goNum)) {
-          _this4.context.router.history.go(-1 * goNum);
+        if (_this5.context.router.history.canGo(-1 * goNum)) {
+          _this5.context.router.history.go(-1 * goNum);
           // this.context.router.history.go(0);
         }
       };
@@ -406,13 +420,11 @@ var App = function (_React$Component) {
         }
 
         var url = '/open/' + file + '/' + hash + '/' + key;
-        console.log("globla.open==---------->");
-        _this4.context.router.history.push(url);
-        console.log("globla.open.=========.......");
+        _this5.context.router.history.push(url);
 
         //Init属性设置, 放在index与opentitle中. 避免直接跳转到特定模块时会先走/模块.
-        if (_this4.state.init == false) {
-          _this4.setState({ init: true });
+        if (_this5.state.init == false) {
+          _this5.setState({ init: true });
         }
 
         //通知qt对象,修改应用打开状态
@@ -426,26 +438,38 @@ var App = function (_React$Component) {
         global.handleLocation(global.hash);
         if (title !== '') {
           var filePath = void 0;
-          if (file == "dde") {
-            filePath = global.path + '/system/' + file + '/' + global.lang + '/index.md';
-          } else {
-            filePath = global.path + '/application/' + file + '/' + global.lang + '/index.md';
-          }
+          // if(file == "dde")
+          // {
+          //   filePath = `${global.path}/system/${file}/${global.lang}/index.md`
+          // }
+          // else
+          // {
+          //   filePath = `${global.path}/application/${file}/${global.lang}/index.md`
+          // }
 
-          global.readFile(filePath, function (data) {
-            var _m2h = (0, _mdToHtml2.default)(filePath, data),
-                html = _m2h.html;
+          var myPromise = new Promise(function (resolve, reject) {
+            global.qtObjects.manual.appToPath(file, function (filepath) {
+              filePath = filepath;
+              resolve();
+            });
+          });
 
-            var d = document.createElement('div');
-            d.innerHTML = html;
-            var dlist = d.querySelectorAll('[text="' + title + '"]');
-            var hashID = 'h0';
-            for (var i = 0; i < dlist.length; i++) {
-              if (dlist[i].tagName == 'H2' || dlist[i].tagName == 'H3') {
-                hashID = dlist[i].id;
+          myPromise.then(function () {
+            global.readFile(filePath, function (data) {
+              var _m2h = (0, _mdToHtml2.default)(filePath, data),
+                  html = _m2h.html;
+
+              var d = document.createElement('div');
+              d.innerHTML = html;
+              var dlist = d.querySelectorAll('[text="' + title + '"]');
+              var hashID = 'h0';
+              for (var i = 0; i < dlist.length; i++) {
+                if (dlist[i].tagName == 'H2' || dlist[i].tagName == 'H3') {
+                  hashID = dlist[i].id;
+                }
               }
-            }
-            global.open(file, hashID);
+              global.open(file, hashID);
+            });
           });
         } else {
           global.open(file);
@@ -456,13 +480,13 @@ var App = function (_React$Component) {
       global.handleLocation = function () {
         var hash = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
 
-        var url = _this4.context.router.history.location.pathname;
+        var url = _this5.context.router.history.location.pathname;
         console.log("global.handhash: ", url);
         var urlList = url.split("/");
         if (urlList.length == 5) {
           url = '/' + urlList[1] + '/' + urlList[2] + '/' + hash + '/' + urlList[4];
           console.log("new url:", url);
-          _this4.context.router.history.replace(url);
+          _this5.context.router.history.replace(url);
         }
       };
 
@@ -614,35 +638,35 @@ var App = function (_React$Component) {
         console.log('====>', keyword);
         var decodeKeyword = Base64.decode(keyword);
         console.log("decodeKeyword", decodeKeyword, "===", encodeURIComponent(decodeKeyword));
-        console.log("openSearchPage", _this4.context.router.history);
+        console.log("openSearchPage", _this5.context.router.history);
         console.log('lastUrl:' + global.lastUrlBeforeSearch + ', lastHistoryIndex: ' + global.lastHistoryIndex);
 
-        var entriesLen = _this4.context.router.history.entries.length;
+        var entriesLen = _this5.context.router.history.entries.length;
         if ('POP' == global.lastAction && lastHistoryIndex > 0 && lastHistoryIndex < entriesLen - 1) {
           console.log("global.opensearch...");
-          _this4.context.router.history.entries.length = lastHistoryIndex;
-          _this4.context.router.history.length = lastHistoryIndex;
-          _this4.context.router.history.index = lastHistoryIndex - 1;
+          _this5.context.router.history.entries.length = lastHistoryIndex;
+          _this5.context.router.history.length = lastHistoryIndex;
+          _this5.context.router.history.index = lastHistoryIndex - 1;
 
-          _this4.setState({ searchResult: [] });
-          _this4.context.router.history.push('/search/' + encodeURIComponent(decodeKeyword));
+          _this5.setState({ searchResult: [] });
+          _this5.context.router.history.push('/search/' + encodeURIComponent(decodeKeyword));
 
           return;
         }
 
-        entriesLen = _this4.context.router.history.entries.length;
+        entriesLen = _this5.context.router.history.entries.length;
         if (entriesLen > 1) {
-          var entry = _this4.context.router.history.entries[entriesLen - 1];
+          var entry = _this5.context.router.history.entries[entriesLen - 1];
           var entryIndex = entry.pathname.toString().indexOf("/search/");
           if (entryIndex != -1) {
-            _this4.context.router.history.entries.length = entriesLen - 1;
-            _this4.context.router.history.length = entriesLen - 1;
-            _this4.context.router.history.index = _this4.context.router.history.entries.length - 1;
+            _this5.context.router.history.entries.length = entriesLen - 1;
+            _this5.context.router.history.length = entriesLen - 1;
+            _this5.context.router.history.index = _this5.context.router.history.entries.length - 1;
           }
         }
 
-        _this4.setState({ searchResult: [] });
-        _this4.context.router.history.push('/search/' + encodeURIComponent(decodeKeyword));
+        _this5.setState({ searchResult: [] });
+        _this5.context.router.history.push('/search/' + encodeURIComponent(decodeKeyword));
       };
 
       this.context.router.history.listen(function (location, action) {
@@ -651,13 +675,13 @@ var App = function (_React$Component) {
         //console.log("index:" + this.context.router.history.index);
         console.log("app router.history.listen...");
         global.lastUrlBeforeSearch = location.pathname;
-        global.lastHistoryIndex = _this4.context.router.history.index;
+        global.lastHistoryIndex = _this5.context.router.history.index;
         global.lastAction = action;
       });
 
       global.back = function () {
         console.log("global.back()");
-        _this4.context.router.history.goBack();
+        _this5.context.router.history.goBack();
       };
       this.componentDidUpdate();
     }
@@ -1208,8 +1232,6 @@ var Item = function (_Component) {
       show: false
     };
     console.log('main item constructor...');
-    _this.path = global.path + '/' + _this.props.type + '/' + _this.props.appName + '/' + global.lang + '/';
-    _this.file = _this.path + 'index.md';
     _this.init();
     return _this;
   }
@@ -1219,15 +1241,35 @@ var Item = function (_Component) {
     value: function init() {
       var _this2 = this;
 
-      global.readFile(this.file, function (data) {
-        var _data$substr$split = data.substr('# '.length, data.indexOf('\n')).split('|'),
-            _data$substr$split2 = _slicedToArray(_data$substr$split, 2),
-            title = _data$substr$split2[0],
-            logo = _data$substr$split2[1];
+      var filePath;
+      var appName = this.props.appName;
+      var myPromise = new Promise(function (resolve, reject) {
+        global.qtObjects.manual.appToPath(appName, function (filepath) {
+          filePath = filepath;
+          resolve();
+        });
+      });
 
-        logo = '' + _this2.path + logo;
+      myPromise.then(function () {
+        global.readFile(filePath, function (data) {
+          var _data$substr$split = data.substr('# '.length, data.indexOf('\n')).split('|'),
+              _data$substr$split2 = _slicedToArray(_data$substr$split, 2),
+              title = _data$substr$split2[0],
+              logo = _data$substr$split2[1];
+          // logo = `${this.path}${logo}`;
 
-        _this2.setState({ title: title, logo: logo, file: _this2.file, show: true });
+          //获取logo路劲
+
+
+          var pathList = filePath.split('/');
+          pathList = pathList.splice(0, pathList.length - 1);
+          var logoPath = pathList.join("/") + "/";
+          logo = '' + logoPath + logo;
+
+          console.log("=logo===>", logo);
+
+          _this2.setState({ title: title, logo: logo, file: _this2.file, show: true });
+        });
       });
     }
   }, {
@@ -1299,10 +1341,8 @@ var Index = function (_Component2) {
       openedAppList: []
     };
 
-    console.log("==========>index constructor");
-
     global.qtObjects.manual.getSystemManualList(function (appList) {
-      return _this4.setState({ appList: appList });
+      _this4.setState({ appList: appList });
     });
 
     global.qtObjects.manual.getUsedAppList(function (openedAppList) {
@@ -1327,7 +1367,7 @@ var Index = function (_Component2) {
       console.log("index shouldcomponentupdate");
       if (global.bIsReload) {
         global.qtObjects.manual.getSystemManualList(function (appList) {
-          return _this5.setState({ appList: appList });
+          _this5.setState({ appList: appList });
         });
 
         global.qtObjects.manual.getUsedAppList(function (openedAppList) {
@@ -1357,11 +1397,11 @@ var Index = function (_Component2) {
       var sysSoft = ['dde'].filter(function (appName) {
         return _this6.state.appList.indexOf(appName) != -1;
       });
-
-      var appSoft = this.state.appList.concat(); //使用数据副本
+      var appSoft = JSON.parse(JSON.stringify(this.state.appList)); //使用数据副本
       var index = appSoft.indexOf("dde");
-      appSoft.splice(index, 1);
-      // let otherSoft = [""];
+      if (index !== -1) {
+        appSoft.splice(index, 1);
+      }
 
       return _react2.default.createElement(
         _scrollbar2.default,
@@ -1491,27 +1531,42 @@ var Main = function (_Component) {
 
       global.hash = hash;
       var filePath = file;
-      if (filePath.indexOf('/') == -1) {
-        if (filePath == "dde") {
-          filePath = global.path + '/system/' + file + '/' + global.lang + '/index.md';
+      // if (filePath.indexOf('/') == -1) {
+      //   if (filePath == "dde")
+      //   {
+      //     filePath = `${global.path}/system/${file}/${global.lang}/index.md`;
+      //   }
+      //   else{
+      //     filePath = `${global.path}/application/${file}/${global.lang}/index.md`;
+      //   }
+
+      // }
+
+      var myPromise = new Promise(function (resolve, reject) {
+        if (filePath.indexOf('/') == -1) {
+          global.qtObjects.manual.appToPath(file, function (filepath) {
+            filePath = filepath;
+            resolve();
+          });
         } else {
-          filePath = global.path + '/application/' + file + '/' + global.lang + '/index.md';
+          resolve();
         }
-      }
+      });
+      myPromise.then(function () {
+        global.readFile(filePath, function (data) {
+          console.log("main init===>readfile finish...", filePath);
 
-      global.readFile(filePath, function (data) {
-        console.log("main init===>readfile finish...", filePath);
+          var _m2h = (0, _mdToHtml2.default)(filePath, data, key),
+              html = _m2h.html,
+              hlist = _m2h.hlist;
 
-        var _m2h = (0, _mdToHtml2.default)(filePath, data, key),
-            html = _m2h.html,
-            hlist = _m2h.hlist;
-
-        _this2.setState({
-          file: file,
-          html: html,
-          hlist: hlist,
-          init: true,
-          hash: hash ? hash : hlist[0].id
+          _this2.setState({
+            file: file,
+            html: html,
+            hlist: hlist,
+            init: true,
+            hash: hash ? hash : hlist[0].id
+          });
         });
       });
     }
@@ -1613,42 +1668,51 @@ var Main = function (_Component) {
 
         var filePath;
 
-        if (this.state.file == "dde") {
-          filePath = global.path + '/system/' + this.state.file + '/' + global.lang + '/index.md';
-        } else {
-          filePath = global.path + '/application/' + this.state.file + '/' + global.lang + '/index.md';
-        }
+        // if (this.state.file == "dde")
+        // {
+        //   filePath = `${global.path}/system/${this.state.file}/${global.lang}/index.md`;
+        // }
+        // else{
+        //   filePath = `${global.path}/application/${this.state.file}/${global.lang}/index.md`;
+        // }
+        var myPromise = new Promise(function (resolve, reject) {
+          global.qtObjects.manual.appToPath(file, function (filepath) {
+            filePath = filepath;
+            resolve();
+          });
+        });
+        myPromise.then(function () {
+          global.readFile(filePath, function (data) {
+            console.log("main init===>readfile finish...", filePath);
 
-        global.readFile(filePath, function (data) {
-          console.log("main init===>readfile finish...", filePath);
+            var _m2h2 = (0, _mdToHtml2.default)(filePath, data, key),
+                html = _m2h2.html,
+                hlist = _m2h2.hlist;
 
-          var _m2h2 = (0, _mdToHtml2.default)(filePath, data, key),
-              html = _m2h2.html,
-              hlist = _m2h2.hlist;
+            var newParentHash = 'h1';
+            var newChildHash;
+            var curHash;
 
-          var newParentHash = 'h1';
-          var newChildHash;
-          var curHash;
-
-          for (var i = 0; i < hlist.length; i++) {
-            var h = hlist[i];
-            if (h.text == parentText) {
-              newParentHash = h.id;
-            } else if (h.text == hashText) {
-              newChildHash = h.id;
-              break;
+            for (var i = 0; i < hlist.length; i++) {
+              var h = hlist[i];
+              if (h.text == parentText) {
+                newParentHash = h.id;
+              } else if (h.text == hashText) {
+                newChildHash = h.id;
+                break;
+              }
             }
-          }
 
-          if (newChildHash) {
-            curHash = newChildHash;
-          } else {
-            curHash = newParentHash;
-          }
-          console.log('================>', curHash);
+            if (newChildHash) {
+              curHash = newChildHash;
+            } else {
+              curHash = newParentHash;
+            }
+            console.log('================>', curHash);
 
-          _this3.init(decodeURIComponent(file), curHash, key);
-          global.bIsReload = false;
+            _this3.init(decodeURIComponent(file), curHash, key);
+            global.bIsReload = false;
+          });
         });
       } else {
         console.log("main componentWillReceivePropss: " + file + " " + hash + "  this.file:" + this.state.file + " this.hash" + this.state.hash + " key:", key);

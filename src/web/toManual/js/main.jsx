@@ -31,28 +31,43 @@ export default class Main extends Component {
 
     global.hash = hash;
     var filePath = file;
-    if (filePath.indexOf('/') == -1) {
-      if (filePath == "dde")
-      {
-        filePath = `${global.path}/system/${file}/${global.lang}/index.md`;
-      }
-      else{
-        filePath = `${global.path}/application/${file}/${global.lang}/index.md`;
-      }
+    // if (filePath.indexOf('/') == -1) {
+    //   if (filePath == "dde")
+    //   {
+    //     filePath = `${global.path}/system/${file}/${global.lang}/index.md`;
+    //   }
+    //   else{
+    //     filePath = `${global.path}/application/${file}/${global.lang}/index.md`;
+    //   }
       
-    }
-  
-    global.readFile(filePath, data => {
-      console.log("main init===>readfile finish...",filePath);
-      let { html, hlist } = m2h(filePath, data,key);
-      this.setState({
-        file,
-        html,
-        hlist,
-        init: true,
-        hash: hash ? hash : hlist[0].id
-      });
+    // }
+    
+    var myPromise = new Promise(function(resolve, reject){
+      if (filePath.indexOf('/') == -1)
+      {
+        global.qtObjects.manual.appToPath(file, function (filepath) {
+          filePath = filepath;
+          resolve()
+        })
+      }
+      else
+      {
+        resolve()
+      }
     });
+    myPromise.then(()=>{
+      global.readFile(filePath, data => {
+        console.log("main init===>readfile finish...",filePath);
+        let { html, hlist } = m2h(filePath, data,key);
+        this.setState({
+          file,
+          html,
+          hlist,
+          init: true,
+          hash: hash ? hash : hlist[0].id
+        });
+      });
+    })
   }
 
   setHash(hash) {
@@ -140,48 +155,55 @@ export default class Main extends Component {
 
       var filePath;
 
-      if (this.state.file == "dde")
-      {
-        filePath = `${global.path}/system/${this.state.file}/${global.lang}/index.md`;
-      }
-      else{
-        filePath = `${global.path}/application/${this.state.file}/${global.lang}/index.md`;
-      }
-    
-      global.readFile(filePath, data => {
-        console.log("main init===>readfile finish...",filePath);
-        let { html, hlist } = m2h(filePath, data,key);
-        var newParentHash = 'h1';
-        var newChildHash;
-        var curHash;
-
-        for(var i = 0; i < hlist.length; i++)
-        {
-          var h = hlist[i];
-          if (h.text == parentText)
-          {
-            newParentHash = h.id;
-          }
-          else if (h.text == hashText)
-          {
-            newChildHash = h.id;
-            break;
-          }
-        }
-
-        if (newChildHash)
-        {
-          curHash = newChildHash;
-        }
-        else
-        {
-          curHash = newParentHash;
-        }
-        console.log('================>',curHash);
-
-        this.init(decodeURIComponent(file), curHash, key);
-        global.bIsReload = false;
+      // if (this.state.file == "dde")
+      // {
+      //   filePath = `${global.path}/system/${this.state.file}/${global.lang}/index.md`;
+      // }
+      // else{
+      //   filePath = `${global.path}/application/${this.state.file}/${global.lang}/index.md`;
+      // }
+      var myPromise = new Promise(function(resolve, reject){
+        global.qtObjects.manual.appToPath(file, function (filepath) {
+          filePath = filepath;
+          resolve()
+        })
       });
+      myPromise.then(()=>{
+        global.readFile(filePath, data => {
+          console.log("main init===>readfile finish...",filePath);
+          let { html, hlist } = m2h(filePath, data,key);
+          var newParentHash = 'h1';
+          var newChildHash;
+          var curHash;
+  
+          for(var i = 0; i < hlist.length; i++)
+          {
+            var h = hlist[i];
+            if (h.text == parentText)
+            {
+              newParentHash = h.id;
+            }
+            else if (h.text == hashText)
+            {
+              newChildHash = h.id;
+              break;
+            }
+          }
+  
+          if (newChildHash)
+          {
+            curHash = newChildHash;
+          }
+          else
+          {
+            curHash = newParentHash;
+          }
+          console.log('================>',curHash);
+  
+          this.init(decodeURIComponent(file), curHash, key);
+          global.bIsReload = false;
+        });
+      })
     }
     else{
       console.log("main componentWillReceivePropss: "+file+" "+hash+"  this.file:"+ this.state.file +" this.hash"+this.state.hash+ " key:",key);

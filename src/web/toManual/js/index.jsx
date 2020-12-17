@@ -15,21 +15,40 @@ class Item extends Component {
       show: false
     };
     console.log('main item constructor...');
-    this.path = `${global.path}/${this.props.type}/${this.props.appName}/${global.lang}/`;
-    this.file = this.path + `index.md`;
     this.init();
   }
 
   init()
   {
-    global.readFile(this.file, data => {
-      let [title, logo] = data
-        .substr('# '.length, data.indexOf('\n'))
-        .split('|');
-      logo = `${this.path}${logo}`;
-
-      this.setState({ title, logo, file:this.file, show: true });
+    var filePath;
+    var appName = this.props.appName;
+    var myPromise = new Promise(function(resolve, reject){
+      global.qtObjects.manual.appToPath(appName, function (filepath) {
+        filePath = filepath;
+        resolve()
+      })
     });
+   
+    myPromise.then(()=>{
+      global.readFile(filePath, data => {
+        
+        let [title, logo] = data
+          .substr('# '.length, data.indexOf('\n'))
+          .split('|');
+        // logo = `${this.path}${logo}`;
+
+        //获取logo路劲
+        var pathList = filePath.split('/');
+        pathList = pathList.splice(0,pathList.length -1);
+        var logoPath = pathList.join("/") + "/";
+        logo = `${logoPath}${logo}`;
+
+        console.log("=logo===>",logo);
+  
+        this.setState({ title, logo, file:this.file, show: true });
+      });
+    })
+    
   }
 
   componentWillReceiveProps(nextProps) {
@@ -83,11 +102,9 @@ export default class Index extends Component {
       openedAppList:[]
     };
 
-    console.log("==========>index constructor");
-
-    global.qtObjects.manual.getSystemManualList(appList =>
-      this.setState({ appList })
-    );
+    global.qtObjects.manual.getSystemManualList(appList =>{
+      this.setState({ appList });
+    });
 
     global.qtObjects.manual.getUsedAppList(openedAppList =>
       this.setState({openedAppList})
@@ -106,9 +123,9 @@ export default class Index extends Component {
     console.log("index shouldcomponentupdate");
     if (global.bIsReload)
     {
-      global.qtObjects.manual.getSystemManualList(appList =>
+      global.qtObjects.manual.getSystemManualList(appList =>{
         this.setState({ appList })
-      );
+      });
   
       global.qtObjects.manual.getUsedAppList(openedAppList =>
         this.setState({openedAppList})
@@ -133,11 +150,12 @@ export default class Index extends Component {
     let sysSoft = ['dde'].filter(
       appName => this.state.appList.indexOf(appName) != -1
     );
-
-    let appSoft = this.state.appList.concat(); //使用数据副本
+    let appSoft = JSON.parse(JSON.stringify(this.state.appList))//使用数据副本
     var index = appSoft.indexOf("dde");
-    appSoft.splice(index, 1);
-    // let otherSoft = [""];
+    if (index !== -1)
+    {
+      appSoft.splice(index, 1);
+    }
 
     return (
       <Scrollbar>
