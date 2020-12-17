@@ -364,9 +364,7 @@ var App = function (_React$Component) {
             var dlist = d.querySelectorAll('[text="' + title + '"]');
             var hashID = 'h0';
             for (var i = 0; i < dlist.length; i++) {
-              if (dlist[i].tagName == 'H2' || dlist[i].tagName == 'H3') {
-                hashID = dlist[i].id;
-              }
+              hashID = dlist[i].id;
             }
             global.open(file, hashID);
           });
@@ -817,41 +815,6 @@ var Article = function (_Component) {
         this.scrollToHash();
       }
       if (!this.load) {
-        // let article = ReactDOM.findDOMNode(this);
-        // let read = article.querySelector('#read');
-        // read.focus();
-        // let imgList = [...article.querySelectorAll('img')];
-        // let loadCount = 0;
-        // imgList.map(el => {
-        //   el.onload = () => {
-        //     console.log("------img onload---------");
-        //     loadCount++;
-        //     if (loadCount == imgList.length) {
-        //       console.log('image loaded。。。。。。。。。。。。。。。。');
-        //       this.load = true;
-        //       this.scrollToHash();
-        //       let last = article.querySelector(
-        //         '#' + this.props.hlist[this.props.hlist.length - 1].id,
-        //       );
-        //       let fillblank = {
-        //         marginBottom: article.clientHeight - (read.clientHeight - last.offsetTop),
-        //       };
-        //       this.setState({
-        //         fillblank,
-        //       });
-        //     }
-        //   };
-        //   el.onerror = () => {
-        //     console.log("------img onerror---------");
-        //     if (el.getAttribute('src') == el.dataset.src) {
-        //       console.log("------img == dataset---------");
-        //       el.onload();
-        //     } else {
-        //       console.log("------img == no dataset---------");
-        //       el.src = el.dataset.src;
-        //     }
-        //   };
-        // });
         var article = _reactDom2.default.findDOMNode(this);
         var read = article.querySelector('#read');
         read.focus();

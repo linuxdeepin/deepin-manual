@@ -330,10 +330,7 @@ class App extends React.Component {
           let hashID = 'h0';
           for(let i = 0; i < dlist.length; i++)
           {
-            if (dlist[i].tagName == 'H2' || dlist[i].tagName == 'H3')
-            {
               hashID = dlist[i].id;
-            }
           }
           global.open(file,hashID);
         })
