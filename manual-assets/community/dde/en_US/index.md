@@ -1231,7 +1231,7 @@ Deepin operating system provides "restore from grub" and "restore from control c
 
 ##### Restore from Grub
 
-During system startup, in the system selection interface, click **Deepin 20 OS Restore**, you can choose "Reset to factory settings" to read and restore factory settings backup, or choose "restore Deepin 20 historical backup" to open the file directory and select the backup to be restored.
+During system startup, in the system selection interface, click **Deepin Restore**, you can choose "Reset to factory settings" to read and restore factory settings backup, or choose "restore Deepin 20 historical backup" to open the file directory and select the backup to be restored.
 
 ##### Restore from Control Center
 
