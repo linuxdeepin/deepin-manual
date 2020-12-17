@@ -2,7 +2,7 @@
 
 ## Overview 
 
-Device Manager is a tool to view and manage hardware devices, through which you can view all kinds of parameters and export data of all hardware devices running in the operating system. 
+Device Manager is a tool to view and manage hardware devices, through which you can view all kinds of parameters and export data of all hardware devices running in the operating system, you can also disable/enable some hardware drives. 
 
 ![0|overview](jpg/overview.png)
 
@@ -14,9 +14,7 @@ You can run, close or create a shortcut for Device Manager as follows.
 
 1. Click ![deepin-launcher](icon/deepin-launcher.svg) on the Dock to enter the interface of launcher.
 
-2. Locate ![deepin-devicemanager](icon/deepin-devicemanager.svg) by scrolling the mouse wheel or searching "Device Manager" in the Launcher interface and click it to run. An authentication box pops up. You should input the login password for verification. 
-
-   ![0|password](jpg/password.png)
+2. Locate ![deepin-devicemanager](icon/deepin-devicemanager.svg) by scrolling the mouse wheel or searching "Device Manager" in the Launcher interface and click it to run. 
 
 3. Right-click![deepin-devicemanager](icon/deepin-devicemanager.svg) to:
 
@@ -26,6 +24,7 @@ You can run, close or create a shortcut for Device Manager as follows.
 
    - Select **Add to startup** to run it automatically when the computer is turned on.
 
+   
 
 ### Exit Device Manager
 
@@ -40,7 +39,7 @@ The following hardware device information is for reference only. If there is no 
 ### Overview
 
 1. On the main interface, click **Overview**.
-2. You can see a list containing **Device**, **Operating System**, **CPU** and so on in this interface, and particular info such as brands, names, models and specifications in it as well. 
+2. You can see a list containing **CPU**, **Motherboard**, **Memory** and so on in this interface, and particular info such as brands, names, models and specifications in it as well. 
 
 ![0|overview](jpg/overview.png)
 
@@ -54,55 +53,56 @@ The following hardware device information is for reference only. If there is no 
 ### Motherboard 
 
 1. On the main interface, click **Motherboard**. 
-2. You can view info about motherboard, memory bank, system, Bios, chassis, and so on.
+2. You can view info about motherboard, memory bank, system, BIOS, chassis, and so on.
 
 ![0|board](jpg/board.png)
 
 ### Memory
 
 1. On the main interface, click **Memory**.
-2. You can view a memory list and particular info such as model, vendor, size, type, speed and so on.
+2. You can view a memory list and particular info such as name, vendor, size, type, speed and so on.
 
 ![0|RAM](jpg/RAM.png)
 
 ### Display Adapter
 
 1. On the main interface, click **Display Adapter**.
-2. You can view info about Display Adapter such as name, vendor, graphic memory, resolution, driver and so on.
+2. You can view info about Display Adapter such as name, vendor, model and so on.
 
-![0|display adapter](jpg/display-adapter.png)
+![0|displayadapter](jpg/displayadapter.png)
 
 ### Sound Adapter
 
-1. On the main interface, click **Sound Adapter **。
-2. You can view a list of audio adapters and info such as name, vendor, bus info, width, driver and so on.
+1. On the main interface, click **Sound Adapter **.
+2. You can view a list of audio adapters and info such as name, vendor, model and so on.
 
-![0|audio adapter](jpg/audio-adapter.png)
+![0|audioadapter](jpg/audioadapter.png)
 
 ### Storage
 
 1. On the main interface, click **Storage**.
-2. You can view a storage device list and particular info such as model, vendor, media type, size, speed and so on.
+2. You can view a storage device list and particular info such as model, vendor, media type, size, and so on.
 
-![0|storage device](jpg/storage-device.png)
+![0|storagedevice](jpg/storagedevice.png)
 
 ### Network Adapter
 
 1. On the main interface, click **Network Adapter**.
-2. You can view info about Network Adapter such as name, vendor, Mac address, speed and so on.
-![0|network adapter](jpg/network-adapter.png)
+2. You can view info about Network Adapter such as name, vendor, type, driver and so on.!
+
+![0|networkadapter](jpg/networkadapter.png)
 
 ### Mouse
 
 1. On the main interface, click **Mouse**.
-2. You can view info such as name, bus info, type, driver, speed and so on.
+2. You can view info such as name, vendor, bus info, driver, speed and so on.
 
 ![0|mouse](jpg/mouse.png)
 
 ### Keyboard
 
-1. On the main interface, click **Keyboard **。
-2. You can view info such as name, vendor, bus info, type, driver and so on.
+1. On the main interface, click **Keyboard **.
+2. You can view info such as name, vendor, model, bus info, driver and so on.
 
 ![0|keyboard](jpg/keyboard.png)
 
@@ -111,7 +111,7 @@ The following hardware device information is for reference only. If there is no 
 1. On the main interface, click **Monitor **.
 2. You can view info about Monitor such as name, vendor, type and so on.
 
-![0|display device](jpg/display-device.png)
+![0|displaydevice](jpg/displaydevice.png)
 
 ### Printer
 
@@ -121,22 +121,18 @@ The following hardware device information is for reference only. If there is no 
 ![0|printer](jpg/printer.png)
 
 
-### CD-ROM
-
-Device Manager is capable to identify built-in and externally connected CD-ROM drives.
-
-1. On the main interface, click **CD-ROM**.
-2. You can view info such as name, vendor, type, and so on.
-
-![0|optical drive](jpg/optical-drive.png)
 
 ### Right-click Operations 
 
 **Copy**: To copy contents selected by cursor, right-click to select  **Copy**.
 
+**Disable/Enable**: You can disable some hardware drives. You can judge whether the hardware device supports the disable function according to the right-click menu options. 
+
 **Refresh**: Right-click and select  **Refresh** to reload info of all devices of the operating system. You can also use shortcut key F5 to realize this function.
 
-**Export**: Right-click and select **Export**，an interface to save files pops up. To finish exporting info, select the path you want to save the file and file name and format(txt/docx/xls/html) and click **Save**. 
+**Export**: You can export the device information to the specified folder,formats such as txt/docx/xls/html are supported. 
+
+
 
 ## Main Menu
 
@@ -168,5 +164,3 @@ Click Help to get the manual, which will help you further know and use Device Ma
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Click  **Exit**.
 
-
-<div class="version-info"><span>Update Date: 2020-11-18</span><span> Version: 5.6</span></div>

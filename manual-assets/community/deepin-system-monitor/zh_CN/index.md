@@ -47,11 +47,11 @@
 
 您可以点击界面右上角的图标切换进程标签，分别可以查看应用程序进程、我的进程和所有进程。
 
-- 点击图标 ![monitor](jpg/app-process.png) 切换到 **应用程序进程** 页面。
-- 点击图标 ![monitor](jpg/my-process.png) 切换到 **我的进程** 页面。
-- 点击图标 ![monitor](jpg/all-process.png) 切换到 **所有进程** 页面。
+- 点击图标 ![monitor](jpg/app_process.png) 切换到 **应用程序进程** 页面。
+- 点击图标 ![monitor](jpg/my_process.png) 切换到 **我的进程** 页面。
+- 点击图标 ![monitor](jpg/all_process.png) 切换到 **所有进程** 页面。
 
-![1|monitor](jpg/tab-switch.png)
+![1|monitor](jpg/tab_switch.png)
 
 #### 调整进程排序
 
@@ -73,17 +73,16 @@
 
 
 
+#### 结束图形化进程
 
-#### 结束应用程序
+您可以使用系统监视器来关闭桌面上图形化的进程。
 
-1. 在系统监视器界面，点击 ![icon_menu](icon/icon_menu.svg)。
+1. 在系统监视器界面，单击 ![icon_menu](icon/icon_menu.svg)。
 2. 选择 **强制结束应用程序**。   
-   
-   >![notes](icon/notes.svg)说明：**强制结束应用程序** 只能用来关闭图形化进程。
 3. 根据屏幕提示在桌面上点击想要关闭的应用窗口。
-4. 在弹出的对话框中点击 **强制结束**，来确认结束该应用。
+4. 在弹出的对话框中单击 **强制结束**，来确认结束该应用。
 
->![tips](icon/tips.svg)窍门：您可以选择一个程序进程，右键单击 **结束进程** 关闭进程。
+>![notes](icon/notes.svg)说明：若要中止上述操作，可按下键盘上 **Esc** 键返回至系统监视器界面。
 
 
 #### 暂停和继续进程
@@ -161,7 +160,7 @@
 1. 在系统监视器界面，单击  ![icon_menu](icon/icon_menu.svg)。
 2. 选择 **视图**，选择一种视图模式。
 
->![notes](icon/notes.svg)说明：在系统服务列表下切换视图后，需要切换至程序进程列表中查看视图。
+>![notes](icon/notes.svg)说明：舒展模式和紧凑模式仅在程序进程页签中展示。
 
 
 ### 帮助
@@ -183,5 +182,3 @@
 1. 在系统监视器界面，单击  ![icon_menu](icon/icon_menu.svg)。
 2. 选择 **退出**。
 
-
-<div class="version-info"><span>文档更新时间: 2020-11-18</span><span> 版本: 5.8</span></div>

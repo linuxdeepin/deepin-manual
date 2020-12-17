@@ -49,7 +49,7 @@ Click the top right tabs on the System Monitoring interface to view **Applicatio
 
 You can adjust the process order by Name, CPU, User, Memory, Upload, Download, Disk read, Disk write, PID, Nice and Priority.
 
-- On System Monitor interface, click the tabs in the top of the process list to sort the processes. Multiple clicks allows sorting from low to high or high to low.
+- On System Monitor interface, click the tabs in the top of the process list to sort the processes. Multiple clicks allow sorting from low to high or high to low.
 - Right-click the top tabs to check the options you want to view or uncheck the options you want to hide.
 
 ![1|sort](jpg/sort.png)
@@ -120,7 +120,7 @@ In the list of system services, force-ending application is prohibited.
 
 #### Start system service
 1. Select **Services** tab on the System Monitor interface.
-2. Select a process that is not started yet, right-click and select **Start**. Enter password if authentication window pops up.
+2. Select a process that is not started yet, right-click and select **Start**. Enter the password if the authentication window pops up.
 3. **active** is displayed in the **Active** column.
 4. Right-click the service and select **Startup type** to select from **Auto** and **Manual** options.
 5. Right-click the service and select **Refresh**.
@@ -128,7 +128,7 @@ In the list of system services, force-ending application is prohibited.
 #### Stop system service
 
 1. Select **Services** tab on the System Monitor interface.
-2. Select a process that is started already, right-click and select **Stop**. Enter password if authentication window pops up.
+2. Select a process that is started already, right-click and select **Stop**. Enter the password if the authentication window pops up.
 3. **inactive** is displayed in the **Active** column.
 4. Right-click the service and select **Refresh**.
 
@@ -153,7 +153,7 @@ System Monitor offers Expand view and Compact view for your choice.
 
 2. Click **View** to select one mode.
 
-> ![notes](icon/notes.svg)Notes: If you switched views under the **Services** tab, please click the **Processes** tab to view the effect.
+> ![notes](icon/notes.svg)Notes: Compact view and expand view are only available for processes. 
 
 
 ### Help
@@ -170,5 +170,3 @@ System Monitor offers Expand view and Compact view for your choice.
 
 1. On the System Monitor interface, click ![icon_menu](icon/icon_menu.svg).
 2. Click **Exit** to exit System Monitor.
-
-<div class="version-info"><span>Update Date: 2020-11-18</span><span> Version: 5.8</span></div>

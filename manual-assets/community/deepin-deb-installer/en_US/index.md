@@ -31,7 +31,7 @@ Package Installer is capable to install an individual application or multiple ap
 
 > ![notes](icon/notes.svg)Notes: You can also drag and drop file to Package Installer to add.
 
-![1|single-install](jpg/single-install.png)
+![1|singleinstall](jpg/singleinstall.png)
 
 ### Bulk Install
 
@@ -41,7 +41,7 @@ To install multiple .deb packages at a time, you can click **Select File** or dr
 - Only **Install** button is displayed in the window. Installation would be done for packages of those other versions have been installed locally before. Re-installation would be done for packages of those the same versions have been installed locally before.
 - To remove a package from the list, right-click it and select **Delete**. 
 
-![1|bulk-install](jpg/bulk-install.png)
+![1|bulkinstall](jpg/bulkinstall.png)
 
 ### Unable to Install
 
@@ -98,5 +98,3 @@ You can click to view the manual, which will help you further know and use Packa
 
 1. Click![icon_menu](icon/icon_menu.svg) on the interface.
 2. Click **Exit**.
-
-<div class="version-info"><span>Update Date: 2020-11-18</span><span> Version: 5.7</span></div>

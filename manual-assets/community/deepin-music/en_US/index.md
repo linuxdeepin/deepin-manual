@@ -2,7 +2,7 @@
 
 ## Overview
 
-Music is a local music playing application with brand new UI design and state-of-the-art playing experience featured with local music scanning and lyric sync functions, etc.
+Music is a local music playing application with brand-new UI design and state-of-the-art playing experience featured with local music scanning and lyric sync functions, etc.
 
 
 
@@ -136,6 +136,8 @@ On the Music interface, you can:
 - Click ![icon_menu](icon/icon_menu.svg) > **Add music** to add music files to the playlist.
 - Drag the music file/folder to the Music interface and add the music file to the playlist.
 
+> ![notes](icon/notes.svg) Notes: If you are using a computer equipped with touch-screen or touchpad, you can use touchscreen gestures to operate instead of the mouse: Hold down the music file with one finger and drag it to the Music interface to add music.
+
 ### Search Music
 
 1. In the search box on top of the Music interface, you can click ![search](icon/search.svg) to enter keywords.
@@ -168,7 +170,14 @@ The prompt information **Successfully added to "My favorites"** pops up and the 
 
 ### View Lyrics
 
-On the Music interface, click ![lyric_normal](icon/lyric_normal.svg) to switch to the lyrics interface. Click it again to fold the lyrics interface.
+On the Music interface, you can:
+
+- Click ![lyric_normal](icon/lyric_normal.svg) to switch to the lyrics interface. Click it again to fold the lyrics interface.
+
+- Click ![music](icon/music.svg)to switch to the lyrics interface. Click it again to fold the lyrics interface.
+
+
+> ![notes](icon/notes.svg) Notes:  If the music being played has a cover picture,  ![music](icon/music.svg)will be displayed as the cover picture. Click it to switch to the lyrics interface and click it again to fold the lyrics interface.
 
 ### Adjust Play Mode
 
@@ -288,20 +297,21 @@ You can set the basic information and shortcuts in settings.
 
 1. On the Music interface, click ![menu](icon/icon_menu.svg).
 2. Select **Settings** > **Basic**.
-3. In the option **Play**, you can:
- - Check the **Autoplay** box and the music will be played automatically when Music runs.
- - Check the **Remember playback position** box and the music will be played automatically from the last position played when Music runs.
- - Check the **Enable fade in/out** box and the music will fade in and out when Music runs.
-4. In the option **Close Main Window**, you can:
+   - In the option **Play**, you can:
+        - Check the **Autoplay** box and the music will be played automatically when Music runs.
+        - Check the **Remember playback position** box and the music will be played automatically from the last position played when Music runs.
+        - Check the **Enable fade in/out** box and the music will fade in and out when Music runs.
 
- - Select **Minimize to system tray** to close the main window, and hide the Music to system tray.
- - Select **Exit**  to close the main window, and exit Music. 
- - Select **Ask me always** to prompt system notification, and confirm whether to exit Music when the main window is closed.
+   - In the option **Close Main Window**, you can:
 
-5. Click **Restore Defaults** to restore the default settings.
+        - Select **Minimize to system tray** to close the main window, and hide the Music to system tray.
+        - Select **Exit**  to close the main window, and exit Music. 
+        - Select **Ask me always** to prompt system notification, and confirm whether to exit Music when the main window is closed.
+
+3. Click **Restore Defaults** to restore the default settings.
 
 
-### Shortcuts Settings
+#### Shortcuts Settings
 
 1. On the Music interface, click ![menu](icon/icon_menu.svg).
 2. Select **Settings** > **Shortcuts** to view the shortcuts.
@@ -334,5 +344,3 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 
 2.  Click **Exit** to exit Music.
 
-
-<div class="version-info"><span>Update Date: 2020-11-18</span><span> Version: 6.0</span></div>

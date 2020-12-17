@@ -2,7 +2,7 @@
 
 ## Overview
 
-Voice Notes is a simple memo software with texts and voice recordings. You are able to save the recordings as MP3 format or texts. ![0|voice_recorder](jpg/main.png)
+Voice Notes is a simple memo software with texts and voice recordings. ![0|voice_recorder](jpg/main.png)
 
 
 ## Guide
@@ -43,33 +43,29 @@ On the Voice Notes interface, press **Ctrl** + **Shift** + **?** on the keyboard
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-- When a notebook is created in Voice Note, a text is also created by default. Click ![add](icon/circlebutton_add2.svg) icon on the Voice Notes interface to create more new texts.
+- When a notebook is created in Voice Note, a text is also created by default. Click the ![add](icon/circlebutton_add2.svg) icon on the Voice Notes interface to create more new texts.
 
   You can start recording voices or making texts after creating a text.
   
-  The default naming rules for Voice Notes is Notebook(n), in which n is an integer no less than 0.
+   In the notebook list, you can drag a notebook to set the display sequence and view the number of texts contained in each notebook.
+  
 
 ![0|new](jpg/create1.png)
 
 
-### Record Voice Notes
+### Record/Playback Voice Notes
 
 You can record audios simply in two steps:
 
-1. Click ![record_normal](icon/record_normal.svg) icon on the Voice Notes interface to start recording.
-2.  Click ![finish](icon/finish_normal.svg) icon to finish recording.
+1. Click the![record_normal](icon/record_normal.svg) icon on the Voice Notes interface to start recording.
+2.  Click the ![finish](icon/finish_normal.svg) icon to finish recording.
 
-> ![tips](icon/tips.svg)Tips: Click ![pause](icon/pause_red_normal.svg) icon to pause recording during the recording process and click ![record_normal](icon/record_normal.svg) again to resume recording.
+> ![tips](icon/tips.svg)Tips: Click the ![pause](icon/pause_red_normal.svg) icon to pause recording during the recording process and click ![record_normal](icon/record_normal.svg) again to resume recording.
 
 > ![notes](icon/notes.svg)Notes: The maximum recording time is 60 minutes. 
 
-![0|Recorder](jpg/recorder2.png)
+3. Click the ![play_blue_normal](icon/play_blue_normal.svg) icon to listen to the playback after recording is finished.
 
-### Playback Voice Notes
-
-The recorded voice files are displayed on the Voice Notes interface in a list. Select a voice file and click ![play_blue_normal](icon/play_blue_normal.svg) icon to listen to the playback.
-
-> ![tips](icon/tips.svg)Tips: Click ![pause_blue_normal](icon/pause_blue_normal.svg) icon to pause or stop playback and click ![play_blue_normal](icon/play_blue_normal.svg) again to resume playback when you are listening to the recording.
 
 ![0|replay](jpg/replay.png)
 
@@ -89,18 +85,23 @@ The recorded voice files are displayed on the Voice Notes interface in a list. S
 3. Click ![0|three_dots](icon/close_normal-2.svg) in the search box  to clear the current keywords or cancel the search. 
 
 
-### Save Voices as MP3 Format
+### Save Voice Recording
 
 1.   Select a voice file on the Voice Notes interface.
-2.   Right-click and select **Save as MP3**.
+2.   Right-click and select **Save voice recording**.
 3.   Save it to the storage device.
+
+>![tips](icon/tips.svg)Tips: You can also right-click the voice file and select **Save as MP3** to save it.
 
 
 ### Add Text Notes
-1. Select a notebook, right-click and select **New note** or click ![mic](icon/circlebutton_add2.svg) icon on the Voice Notes interface to add a new text note.
-2.  Move the cursor to the right column to click and input text. 
+1. Select a notebook, right-click and select **New note** or click the![mic](icon/circlebutton_add2.svg) icon on the Voice Notes interface to add a new text note.
+2.  Move the cursor to the right column and click to input the text needed. 
 
-> ![tips](icon/tips.svg)Tips: You can record audios in notebooks. Please refer to [Record Voice Notes](#Record Voice Notes) for details.
+> ![tips](icon/tips.svg)Tips: 
+>
+> - You can record audios in notebooks. Please refer to [Record/Playback Voice Notes](#Record/Playback Voice Notes) for details.
+> - Select a text note in the notebook list and right-click to select **Sticky on Top** to place the text note on top.
 
 ![0|words_recorder](jpg/main.png)
 
@@ -111,6 +112,14 @@ The recorded voice files are displayed on the Voice Notes interface in a list. S
 2.  Right-click and select **Save as TXT**.
 3.  Save the text note to the storage device in TXT format.
     ![0|save](jpg/toTxT.png)
+
+### Move Text Notes
+
+1. Select a text note on the Voice Notes interface.
+2. Right-click to select **Move** and select a notebook in the pop-up prompt box.
+3. Click **Confirm** and move the text note to the selected notebook.
+
+![move](jpg/move.png)
 
 ### Rename Notebooks
 
@@ -124,7 +133,7 @@ The notebook created will be automatically saved as **Note(n)**. You can rename 
 
 4. Click in the blank area on the interface or press the **Enter** key on the keyboard to rename it.
 
-   > ![tips](icon/tips.svg)Tips: You can also rename each text note under a notebook. Please refer to **Rename Notebooks** for details. 
+   > ![tips](icon/tips.svg)Tips: You can also rename each text note under a notebook. 
 
 ![0|rename](jpg/rename.png)
 
@@ -150,6 +159,15 @@ The notebook created will be automatically saved as **Note(n)**. You can rename 
 1. Select a notebook on the Voice Notes interface.
 2. Right-click and select **Delete**.
 3. Click **Confirm** in the pop-up prompt box.
+
+### Batch Operation
+
+You can select multiple text notes at one time assisted by the keyboard to perform batch operations.
+
+1. Press **Ctrl/Shift** to select multiple text notes in the text notes list.
+2. Right-click to select or click **Move**/ **Save as Text**/ **Save voice recording**/**Delete** to perform batch operations.
+
+![0|multi](jpg/multi.png)
 
 
 ## Main Menu
@@ -188,5 +206,3 @@ View Help to get more information about Voice Notes.
 
 1. On the Voice Notes interface, click ![icon_menu](icon/icon_menu.svg).
 2.  Click **Exit** to exit Voice Notes.
-
-<div class="version-info"><span>Update Date: 2020-11-18</span><span> Version: 5.8</span></div>

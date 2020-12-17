@@ -3,7 +3,7 @@
 ## Overview
 deepin operating system is a homegrown, easy-to-use and reliable Linux desktop operating system with exquisite visual experiences. It is equipped with a series of original applications such as File Manager, App Store, Image Viewer, Movie and many other original apps, which not only indulge you with enriched entertainments, but also serve your daily work and life. With continuous improvement and upgrades, it is becoming one of the most popular open-source operating systems in China.
 
-![1|desk](jpg/desk.png)
+![1|desk](jpg/desk.jpg)
 
 ### Get Ready
 
@@ -21,7 +21,10 @@ Desktop is the main screen you will see after logging in. On the desktop, you ca
 
 ![0|contextmenu](jpg/contextmenu.png)
 
+> ![notes](icon/notes.svg)Notes: On the touchpad that supports multiple-point touch, you can use the gesture to operate instead of the mouse: move with four/five fingers downwards to display desktop, and move upwards immediately to hide which corresponds to the operation of **Super** + **D**. 
+
 ### Create New Folder/Document
+
 You can create a new folder/document on the desktop or run some regular tasks on the files, just as how you work with the File Manager.
 
 - Right click the desktop. Select **New folder** and enter the name for it.
@@ -31,7 +34,7 @@ Right click a file or folder on the desktop, and use the features of File Manage
 
 | Function         | Description                                                  |
 | ---------------- | ------------------------------------------------------------ |
-| Open with        | Select an app to open it with system default method or other linked applications. |
+| Open with        | Select a default application to open it, or other associated ones to open it. |
 | Cut              | Move the file or folder to another location.                 |
 | Copy             | Copy the file or folder to another location.                 |
 | Rename           | Change the name of file or folder.                           |
@@ -40,6 +43,13 @@ Right click a file or folder on the desktop, and use the features of File Manage
 | Tag information  | Add a tag to the the file or folder.                         |
 | Compress/Extract | Compress the file or folder or extract the compressed file.  |
 | Properties       | View the basic info, share it or change the permission.      |
+
+>![notes](icon/notes.svg)Notes: 
+>  - If you are using a computer equipped with a touchscreen, you can use touchscreen gestures to operate instead of the mouse: long press for 1 second and release on the touchscreen.
+>  - On the touchpad that supports multiple-point touch, you can use the gesture to operate instead of the mouse: click with two fingers to display the right-click menu. 
+>  - Press **Ctrl** + **M** on the keyboard to open right-click menu. 
+
+
 
 ### Sort Files
 
@@ -82,8 +92,9 @@ Choose exquisite and trendy wallpapers to decorate your desktop. Make it unique!
 
 ![1|wallpaper](jpg/wallpaper.png)
 
-> ![tips](icon/tips.svg)Tips: Check **Wallpaper Slideshow** and set the time interval to allow automatic wallpaper change. Or you can set to change the wallpaper in the process of login or wakeup. 
-> ![tips](icon/tips.svg)Tips: You can also set your favorite picture as wallpaper in an image viewer.
+> ![tips](icon/tips.svg)Tips: 
+>    - Check **Wallpaper Slideshow** and set the time interval to allow automatic wallpaper change. Or you can set to change the wallpaper in the process of login or wakeup. 
+>    - You can also set your favorite picture as wallpaper in an image viewer.
 
 ### Set Screensaver
 The screensaver was once used to protect the monitor, however, it is now used to protect personal privacy from peering.
@@ -110,6 +121,10 @@ All the texts, pictures and documents cut and copied by the current user after l
 
    ![1|clipboard](jpg/clipboard.png)
 
+> ![notes](icon/notes.svg)Notes: If you are using a computer equipped with a touchscreen, you can use touchscreen gestures to operate instead of the mouse: slide in from the left edge of the screen exceeding the dock's height to call out Clipboard.
+
+
+
 ## Dock
 
 Dock is at the bottom of the desktop by default to help you quickly open frequently-used applications, which are comprised of Launcher, applications, system tray and plugins. On Dock, you can open launcher, show the desktop, enter the workspaces, open and exit apps, set input methods, adjust the volume, connect to a wireless network, view the calendar and enter the shutdown interface among other tasks.
@@ -117,7 +132,7 @@ Dock is at the bottom of the desktop by default to help you quickly open frequen
 ### Know Icons on Dock 
 Icons of Launcher, applications, system tray and plugins are displayed on Dock. You can send application icons from Launcher to Dock so as to open them quickly.
 
-![1|fashion](jpg/efficient.jpg)
+![1|fashion](jpg/efficient.png)
 
 | Icon | Description |
 | ---- | ---- |
@@ -140,9 +155,9 @@ Icons of Launcher, applications, system tray and plugins are displayed on Dock. 
 ### Switch Display Mode
 There are two display modes of Dock: fashion mode and efficient mode. Icon sizes and window effects are different in different modes.
 
-![1|fashion](jpg/fashion.jpg)
+![1|fashion](jpg/fashion.png)
 
-![1|efficient](jpg/efficient.jpg)
+![1|efficient](jpg/efficient.png)
 
 You can switch the display modes by the following:
 
@@ -169,6 +184,9 @@ You can hide the Dock in order to maximize the expansion of the desktop operatin
 - **Smart Hide** -  hide Dock automatically if the dock area is used.
 
 
+
+> ![notes](icon/notes.svg)Notes: If you are using a computer equipped with a touchscreen, you can use touchscreen gestures to operate instead of the mouse: when the Dock is set as "Always Hidden" or "Smart Hide", if the Dock is at the bottom, slide in upward from the bottom edge of the screen to call it out; and if the Dock is on the top, slide in downward from the upper edge of the screen to call it out. 
+
 ### Show/Hide Plugins
 
 1. Right click the Dock and select **Plugins**.
@@ -179,9 +197,13 @@ When there are system or application notifications, they will be shown in the mi
 
 
 
-![notification](jpg/notification.png)
+![message](jpg/message.png)
 
 Click ![notification](icon/notification.svg) on Dock to view all the notifications.
+
+
+
+> ![notes](icon/notes.svg)Notes: If you are using a computer equipped with a touchscreen, you can use touchscreen gestures to operate instead of the mouse: slide in from the right edge of the screen exceeding the dock's height to call out Notification Center.
 
 ### View Date and Time
 
@@ -222,14 +244,15 @@ You can restore deleted files in Trash or press **Ctrl** + **Z** to restore the 
 > ![attention](icon/attention.svg)Attention: If the original folder of the file has been deleted, the deleted file will be restored to a newly-created folder automatically.
 
 #### Empty Trash
-Empty trash to release the occupied space on your disk.
-
-- In the trash, click **Empty** to permanently delete all the files in the trash.
+In the trash, click **Empty** to permanently delete all the files in the trash.
 
 ## Launcher
 Launcher ![launcher](icon/deepin-launcher.svg)  helps you manage all the installed applications, where you can quickly find an application by category navigation or by a search.
 
-> ![tips](icon/tips.svg)Tips: You can view newly installed applications in Launcher. The newly-installed ones are followed with a blue dot.
+You can view newly installed applications in Launcher. The newly-installed ones are followed with a blue dot.
+
+> ![notes](icon/notes.svg)Notes: On the touchpad that supports multiple-point touch, you can use the gesture to operate instead of the mouse: click with four/five fingers to display/hide Launcher, which corresponds to the operation of  **Super**.
+
 
 
 ### Switch Launcher Modes
@@ -266,7 +289,7 @@ The shortcut offers a method to run applications easily and quickly.
 #### Create App Shortcut
 Send the application icon to the desktop or Dock to facilitate the follow-up operations.
 
-In Launcher, right click an app icon and you can:
+In Launcher, right-click an application icon and you can:
 
 * Select **Send to desktop** to create a shortcut on the desktop.
 * Select **Send to dock** to fix the application icon in Dock.
@@ -304,7 +327,7 @@ For the applications whose shortcuts have been created on the desktop or Dock, y
 
 To open the application only shown in Launcher, click the icon or right click it and select **Open**.
 
-> ![tips](icon/tips.svg)Tips: For the frequently-used applications, right click the app icon and select **Add to startup** to run it when the computer boots.
+> ![tips](icon/tips.svg)Tips: For the frequently-used applications, right click the application icon and select **Add to startup** to run it when the computer boots.
 
 ### Uninstall Applications
 Uninstall the applications you no longer use to save disk space.
@@ -318,14 +341,19 @@ Uninstall the applications you no longer use to save disk space.
 ## Control Center
 You can manage the system settings in Control Center, including account management, network settings, date and time, personalization, display settings, system and application update, etc. After enter the desktop environment, click ![controlcenter](icon/controlcenter.svg) to open Control Center.
 
+> ![notes](icon/notes.svg)Notes: On the touchpad that supports multiple-point touch, you can use the gesture to operate instead of the mouse: display the Control Center by sliding with two fingers from the right edge of the touchpad to the left; hide the Control Center by sliding with two fingers from the left edge of the touchpad to the right.
+
+
+
 ### Homepage Introduction
+
 The homepage of Control Center provides several setting modules. You can click one to enter the detailed settings. 
 
 ![0|dcchomepage](jpg/dcc.png)
 
 Once you open a setting module in Control Center, the navigation appears on the left. Click the left navigation to quickly switch to other settings.
 
-![0|cc-navigation](jpg/cc-navigation.png)
+![0|ccnavigation](jpg/ccnavigation.png)
 
 #### Title Bar
 
@@ -399,7 +427,7 @@ Fingerprint password is used in system login, application authorization and othe
 4. Put your finger on a fingerprint reader and follow the instructions repeatedly until your fingerprint is added successfully.
 5. Click **Done**. 
 
-> ![notes](icon/notes.svg)Notes: You can add 10 fingerprint passwords for one account; Click **Delete fingerprint** to remove fingerprint passwords one by one. 
+> ![notes](icon/notes.svg)Notes: You can add several fingerprint passwords for one account; Click **Delete fingerprint** to remove all fingerprint passwords. 
 
 
 #### Delete Account
@@ -413,7 +441,7 @@ Fingerprint password is used in system login, application authorization and othe
 
 ### Deepin ID
 
-By signing in Deepin ID, you are able to use cloud synchronization, app store and other related cloud services.
+By signing in Deepin ID, you are able to use cloud synchronization, App Atore and other related cloud services.
 
 When logging in for the first time, the window of **Privacy Policy** will pop up. If users need to open cloud services and other functions, you can check **I have read and agree to the Privacy Policy**, and click **Confirm**.
 
@@ -444,9 +472,12 @@ Set screen resolution, brightness, direction and display scaling properly to hav
 
 1. On the homepage of Control Center, click ![display_normal](icon/display_normal.svg).
 2. Click **Brightness**.
-   - Drag the slider to set screen brightness.
-   - Once **Night Shift** is switched on, the screen hue will be auto-adjusted according to your location.
-   - Once **Change Color Temperature** is switched on, you can adjust the monitor brightness as you wish. 
+   - Set up **Brightness**: drag the slider to adjust screen brightness.
+   - Set up **Color Temperature**:
+      - Switch on **Night Shift**, the screen hue will be auto-adjusted according to your location.
+      - Switch on **Change Color Temperature** is switched on, you can adjust the monitor brightness as you wish. 
+   
+> ![notes](icon/notes.svg)Notes: When **Night Shift** is switched on, **Change Color Temperature** becomes unavailable automatically, and vice versa.
 
 ##### Set Display Scaling
 
@@ -482,7 +513,12 @@ Expand your desktop by multiple screens! Use VGA/HDMI/DP cable(s) to connect you
     - **Extend**: expand the desktop across the screens to enlarge the desktop.
     - **Customize**: customize the display settings for multiple screens.
 
-> ![tips](icon/tips.svg)Tips: In multiple displays, press **Super** + **P** to show its OSD. Hold **Super** and press **P** or click to select the options. Release the keys and the selected mode will take into effect.
+ In multiple displays, press **Super** + **P** to show its OSD. 
+
+Operations are as follows:
+
+1. Hold **Super** and press **P** or click to select the options. 
+2. Release the keys, the selected mode will take into effect.
 
 >![notes](icon/notes.svg)Notes: When multiple displays are in the extend mode, only the main screen supports desktop icon display, right-click menu and other functions. Sub-screens do not support. 
 
@@ -496,10 +532,21 @@ Expand your desktop by multiple screens! Use VGA/HDMI/DP cable(s) to connect you
 
 > ![notes](icon/notes.svg)Notes: "Merge" means duplicate mode. "Split" means extend mode. 
 
+#### Touch Screen
+
+If your computer has a touch screen, you can set your screen and adjust it.
+
+1. On the homepage of Control Center, click ![display_normal](D:/工作/专业版/专业版SP3-1124/dde/en_US/icon/display_normal.svg).
+2. Click **Touch Screen** to set your screen.
+3. Click **Confirm**. 
+
+![touchscreen](jpg/touchscreen.png)
+
 ### Default Application Settings
+
 If you have installed several applications with similar functions, you can choose one as the default application to open that type of files.
 
-![0|default](jpg/cc-navigation.png)
+![0|default](jpg/ccnavigation.png)
 
 #### Set Default Application
 
@@ -564,7 +611,7 @@ Enable window effect to improve your desktop and window display.
 1. On the homepage of Control Center, click ![personalization_normal](icon/personalization_normal.svg).
 2. Click **General**.
 3. Switch on **Window Effect**.
->![notes](icon/notes.svg)Notes: When **Window Effect** is enabled, you can set **Scale** or **Magic Lamp** when the window is minimized, and rounded corner as well.
+>![notes](icon/notes.svg)Notes: When **Window Effect** is enabled, you can set **Scale** or **Magic Lamp** when the window is minimized, and the size of the rounded corner can be adjusted as well.
 
 #### Set Icon Theme
 
@@ -701,7 +748,7 @@ You can view MAC, IP address, gateway and other network info in network details.
 
 You can set "Do Not Disturb" to system notifications, and also switch on or off the notification hints of some applications.
 
-![0|noti](jpg/noti-center.png)
+![0|noti](jpg/noticenter.png)
 
 #### System Notification Settings
 
@@ -738,7 +785,7 @@ Set your output and input devices (such as speaker and microphone) properly to m
 
 1. On the homepage of Control Center, click ![sound_normal](icon/sound_normal.svg).
 2. Click **Output** to:
-   - Select output device type from the dropdown list after **Output Device**.
+   - Select output device type from the drop-down list after **Output Device**.
    - Drag the slider to adjust output volume and left/right balance.
    - Switch on **Volume Boost**, the volume could be adjustable from 0~150% (the former range is 0~100%).
 
@@ -746,7 +793,7 @@ Set your output and input devices (such as speaker and microphone) properly to m
 
 1. On the homepage of Control Center, click ![sound_normal](icon/sound_normal.svg).
 2. Click **Input** to:
-   - Select input device type from the dropdown list after **Input Device**.
+   - Select input device type from the drop-down list after **Input Device**.
    - Adjust input volume by dragging the slider.
    - You can enable **Automatic Noise Suppression** by clicking the button after "Automatic Noise Suppression". 
 
@@ -842,6 +889,8 @@ Note that the auto-sync function will be disabled after changing date and time m
    - Enter the correct date and time.
 3. Click **Confirm**.
 
+
+
 #### Set Time Format
 
 Setting the format of time and date is supported.
@@ -861,17 +910,35 @@ Power management turns the system to a low-power state during inactive status, t
 To reduce the power consumption of your laptop, turn on power saving mode to reduce screen brightness.
 
 1. On the homepage of Control Center, click ![power_normal](icon/power_normal.svg).
-2. Click **General**.
-3. Switch on **Power Saving Mode** to enter power saving mode.
-4. Switch on **Auto Mode Switch**. Your laptop will enter power saving mode automatically when unplugged, and exit to normal mode when plugged in.
 
-> ![notes](icon/notes.svg)Notes: Power saving mode is only applicable for laptops.
+2. Click **General**.
+
+3. Switch on **Power Saving Mode** to enter power saving mode.
+
+4. Under **Power Saving Mode**, you can:
+      - Switch on **Auto power saving on low battery**(only applicable for laptops).
+      - Switch on **Auto power saving on battery** (only applicable for laptops).
+      - Drag the slider of **Decrease brightness** to adjust brightness.
+
+   
+
+> ![notes](icon/notes.svg)Notes: 
+>    - If you switch off **Auto power saving on battery**, the computer goes into **Balanced** mode. 
+>    - Only when the device supports **High Performance**, the option would be displayed.
 
 #### Password Required on Wakeup
 
 1. On the homepage of Control Center, click ![power_normal](icon/power_normal.svg).
 2. Click **General**.
 3. Switch on **Password is required to wake up the monitor** and **Password is required to wake up the computer** to improve security.
+
+#### Display capacity 
+1. On the homepage of Control Center, click ![power_normal](icon/power_normal.svg).
+2. Click **General**.
+      - Switch on **Display capacity and remaining charging time** to display remaining capacity and charging time.
+      - Switch off **Display capacity and remaining charging time** to display remaining capacity only.
+
+>![notes](icon/notes.svg)Notes: This function is only available on laptops.
 
 ####  Time to Turn Off Monitor
 
@@ -940,11 +1007,14 @@ After inserting or connecting the mouse, you can set up your preferred options i
 
 1. On the homepage of Control Center, click ![mouse_touchpad_normal](icon/mouse_touchpad_normal.svg).
 2. Click **Mouse**.
-3. Adjust **Pointer Speed** and switch on **Natural Scrolling**/**Mouse Acceleration** if needed.
+3. Adjust **Pointer Speed**.
+4. Switch on **Natural Scrolling**/**Mouse Acceleration** if needed.
 
-> ![notes](icon/notes.svg)Notes: Turn on the mouse acceleration to improve the accuracy of the pointer. The moving distance of the mouse pointer on the screen will increase according to the acceleration of the moving speed. It can be turned on or off according to your use.
+> ![notes](icon/notes.svg)Notes: 
+>
+>    - Turn on the mouse acceleration to improve the accuracy of the pointer. The moving distance of the mouse pointer on the screen will increase according to the acceleration of the moving speed. It can be turned on or off according to your use.
 
-> ![notes](icon/notes.svg)Notes: If Natural Scrolling is enabled, when you scroll down, the page will scroll down; and when you scroll up, the page will scroll up. 
+>    - If Natural Scrolling is enabled, when you scroll down, the page will scroll down; and when you scroll up, the page will scroll up. 
 
 
 #### Touchpad
@@ -1084,8 +1154,8 @@ When there is a system update, you will be notified on the home page of Control 
 
 1. On the homepage of Control Center, click ![update](icon/update.svg).
 2. Click **Update** to check if there is an update.
- - If there is no update, you will see "Your system is up to date".
- - If there is an update, you will see **Download and install updates** button, change log info and other messages.
+   - If there is no update, you will see "Your system is up to date".
+   - If there is an update, you will see **Download and install updates** button, change log info and other messages.
 3. Click the button to download and install updates.
 4. After updating finishes, a hint appears saying the system is updated successfully. 
 
@@ -1109,7 +1179,6 @@ You can view system version, authorization info, hardware info and the agreement
 
 1. On the homepage of Control Center, click ![system_info_normal](icon/system_info_normal.svg).
 2. Under **About This PC**, you can view system version, authorization and hardware information.
-3. If the system has not been activated, click **Activate** to activate the system.
 
 #### Edition License
 
@@ -1125,7 +1194,7 @@ You can view system version, authorization info, hardware info and the agreement
 
 In order to avoid data loss or damage caused by software defects, hardware damage, improper human operation, hacker attacks, computer viruses, natural disasters and other factors, the application data or system data can be backed up and restored to ensure the normal operation of the system.
 
-![0|backup-recovery](jpg/backup-restore.png)
+![0|backuprecovery](jpg/backuprestore.png)
 
 #### Backup
 
@@ -1162,7 +1231,7 @@ Deepin operating system provides "restore from grub" and "restore from control c
 
 ##### Restore from Grub
 
-During system startup, in the system selection interface, click **Deepin 20 Backup & Restore**, you can choose "Reset to factory settings" to read and restore factory settings backup, or choose "restore Deepin 20 historical backup" to open the file directory and select the backup to be restored.
+During system startup, in the system selection interface, click **Deepin 20 OS Restore**, you can choose "Reset to factory settings" to read and restore factory settings backup, or choose "restore Deepin 20 historical backup" to open the file directory and select the backup to be restored.
 
 ##### Restore from Control Center
 
@@ -1206,6 +1275,12 @@ When there is only one system in the computer, Startup Delay will be switched of
 
 > ![tips](icon/tips.svg)Tips: You can drag and drop an image to the preview window to change the background of boot menu.
 
+#### User Experience Program
+User Experience Program collects your hardware, application and system information and help us better understand the user needs and thus improve user experiences. To have a better operating system, you are recommended to join the User Experience Program. And you are free to join and exit the program anytime.
+
+1. On the homepage of Control Center, click ![general](icon/general.svg).
+2. Switch on **User Experience Program**, and read the privacy policy.
+3. If you agree, check **Agree and Join User Experience Program**, and **Confirm**.
 
 ## Window Manager
 
@@ -1215,12 +1290,20 @@ Window manager controls the alignment and appearance of windows. It allows you t
 
 ![1|workspace](jpg/workspace.png)
 
+
+
+> ![notes](icon/notes.svg)Notes: On the touchpad that supports multiple-point touch, you can use the gesture to operate instead of the mouse: move with four/five fingers upwards to display multi-task view, and move downwards immediately to hide multi-task view, which corresponds to the operation of **Super** + **S**. 
+
 ### Open Workspace
+
 Manage your desktop windows in different workspaces to enlarge your Workspaces.
 
 On the desktop, press **Super** + **S** or click ![multitasking](icon/deepin-multitasking-view.svg) to open the workspace interface.
 
+> ![notes](icon/notes.svg)Notes: If you are using a computer equipped with a touchscreen, you can use touchscreen gestures to operate instead of the mouse: slide in from the bottom of the screen exceeding the dock's height to open Workspace.
+
 ### Add Workspace
+
 On the workspace interface, you can add workspace in the following ways:
 
 - Click ![plus](icon/plus.svg) above.
@@ -1232,21 +1315,28 @@ On the workspace interface, you can add workspace in the following ways:
 On the workspace interface and desktop, you can switch workspace in the following ways:
 
 - On the desktop, press **Super** + ![Left](icon/Left.svg) / ![Right](icon/Right.svg) to switch to Previous/Next workspace.
-- On the desktop, press **Super** + Numeric keys (1-7)  to switch to a specified workspace.
+- On the desktop, press **Super** + Numeric keys (1-4)  to switch to a specified workspace.
 - On the workspace interface, scroll up or down to switch to Previous/Next workspace.
 - On the workspace interface, press ![Left](icon/Left.svg) / ![Right](icon/Right.svg) to switch to Previous/Next workspace directly.
-- On the workspace interface, click the preview window or press the numeric keys (1-7) to switch to a specified workspace.
+- On the workspace interface, click the preview window or press the numeric keys (1-4) to switch to a specified workspace.
+
+
+
+> ![notes](icon/notes.svg)Notes: On the touchpad that supports multiple-point touch, you can use the gesture to operate instead of the mouse: move with four/five fingers to the left/right to switch to the previous or next workspace, which corresponds to the operation of **Super** + **Left** or **Super** + **Right**. 
 
 ### Delete Workspace
+
 After deleting a workspace, all windows in the workspace will be moved to a nearby workspace. You cannot delete the workspace when there is only one.
 
 - On the workspace interface, click the **X** icon on the upper right corner to delete a workspace.
+- On the workspace interface, press **Alt** + **-** to delete a workspace.
+- Drag a workspace upward outside the screen to delete it.
 
-### Quit Workspace
+### Exit Workspace
 After completing operations on the workspace interface, you can quit in the following ways:
 
 - Press **Esc**.
-- Click the blank area on the workspace interface.
+- Click the blank area outside the workspace interface.
 - Press **Super** + **S** again.
 
 ### View All Windows
@@ -1291,178 +1381,7 @@ Switch desktop windows in the current workspace as below.
 A split-screen allows the simultaneous presentation of related graphical and textual information on a computer display, reduces switching windows and improves your productivity.
 
 1. Drag the window to the left or right part of the screen until the cursor touches the screen edge and the white transparent background appears. Drop the window and it will be adsorbed on the left or right half of the screen.
-2. In the screen of which the other half is unoccupied, a preview of all other windows will appear. Click one of them to display on the other half of the screen to realize split screen browsing.
-3. When browsing in split screens, move the cursor to the junction of the two windows in the middle of the screen and drag left and right to modify the width of the two windows simultaneously. You can also drag other windows to both sides to overlay the split screen window.
 
 > ![tips](icon/tips.svg)Tips: To cancel split screen, just drag a window away from the screen edge.
 
-## Keyboard Interaction
 
-You can use the keyboard to switch between various interface areas, select objects and perform operations. 
-
-| Key                                                          | Function                                                     |
-| :----------------------------------------------------------- | :----------------------------------------------------------- |
-| **Tab**                                                      | Switch between different areas or dialog buttons.            |
-| ![Up](icon/Up.svg)    ![Down](icon/Down.svg)     ![Left](icon/Left.svg) ![Right](icon/Right.svg) | Select different objects in the same area. Press ![Right](icon/Right.svg) to enter the lower menu and  ![Left](icon/Left.svg) to return to the upper menu. Press![Up](icon/Up.svg)and ![Down](icon/Down.svg) to switch between up and down. |
-| **Enter**                                                    | Execute the selected operation.                              |
-| **Space**                                                    | Preview the selected object in File Manager; start and pause the playback in Music and Movie; expand the drop-down options in the drop-down list (The enter key is also available). |
-| **Ctrl** + **M**                                             | Open the right-click menu.                                   |
-
-## Touchpad Gestures
-
-On the touchpad, you can use the following gestures as a substitute for mouse operations.
-
-> ![attention](icon/attention.svg)Attention: Your touchpad may not support some of the following gestures. Please confirm whether the touchpad supports multi-touch. 
-
-### One-finger Gestures
-
-One-finger gestures are the most basic operation of the operating system, which only includes movement and clicking.
-
-#### Move the Cursor
-
-Move your finger to move the cursor.
-
-#### Click
-
-Click with a single finger to finish the mouse click operation.
-
-#### Double-click
-
-Double-click with a single finger to finish the mouse double-click operation.
-
-### Two-finger Gestures 
-
-Two- finger gestures refer to operation for operating system and application window content, including moving, zooming, and clicking.
-
-#### Scroll the Screen
-
-Move upward with two fingers to scroll the screen down. If the "Natural Scrolling" option is enabled, the screen will scroll upward.
-
-Move downward with two fingers to scroll the screen upward. If the "Natural Scrolling" option is enabled, the screen will scroll downward.
-
-#### Backward/Forward
-
-Move to the left with two fingers to move backward. Move to the right with two fingers to move forward.
-
-#### Display/Hide the Control Center
-
-Display the Control Center by sliding with two fingers from the right edge of the touchpad to the left.
-
-Hide the Control Center by sliding with two fingers from the left edge of the touchpad to the right.
-
-#### Zoom and Rotate
-
-Increase the distance between the two fingers to zoom in, which responds to the operation of **Ctrl** + ![=](icon/=.svg);
-
-Decrease the distance between the two fingers to zoom out, which responds to the operation of **Ctrl** + ![-](icon/-.svg);
-
-Rotate with two fingers to rotate the content, which mainly supports the rotation operation in Image Viewer and Screen Capture;
-
-Double-click with two fingers to zoom in and restore at the ratio of 200% .
-
-#### Open the Right-click Menu
-
-Click with two fingers to display the right-click menu.
-
-### Three-finger Gestures
-
-Three- finger gestures refer to operation for operating system and application window themselves, including moving, zooming, and clicking.
-
-#### Maximize/Restore the Window
-
-Move upward with three fingers to maximize the window, which responds to the operation of **Super** + ![Up](icon/Up.svg);
-
-Move downward with three fingers to maximize the window, which responds to the operation of  **Super** + ![Down](icon/Down.svg).
-
-#### Split to Left/Right
-
-Slide with three fingers from the right edge of the touchpad to the left to split the current window left.
-
-Slide with three fingers from the left edge of the touchpad to the right to split the current window right.
-
-#### Display All Windows
-
-Increase or decrease the distance between the three fingers to display all the windows, which responds to the operation of **Super** + **W**.
-
-#### Move the Window
-
-1. Click with three fingers to activate the moving status of the current window, which responds to the operation of **AIt** + **F7** .
-2. Move quickly the window in moving status with one finger and click anywhere to exit the moving status.
-
-#### Fast Translation
-
-Select the text and then click with three fingers, the selected text will be translated in a small window, which corresponds to the operation of  **Ctrl** + **Alt** + **U**.
-
-### Four/Five-finger Gestures
-
-#### Display/Hide Multi-task View
-
-Move with four/five fingers upwards to display multi-task view, and move downwards immediately to hide multi-task view, which corresponds to the operation of **Super** + **S**. 
-
-#### Switch Workspace
-
-Move with four/five fingers to the left/right to switch to the previous or next workspace, which corresponds to the operation of **Super** + **Left** or **Super** + **Right**. 
-
-#### Display/Hide Desktop
-
-Move with four/five fingers downwards to display desktop, and move upwards immediately to hide which corresponds to the operation of **Super** + **D**. 
-
-#### Display/Hide Launcher
-
-Click with four/five fingers to display/hide Launcher, which corresponds to the operation of  **Super**.
-
-## Touchscreen Gestures
-
-On touchscreen computers, you can use the following gestures as a substitute for mouse operations.
-
-### Click
-
-Click with a single finger to finish the mouse click operation on your touchscreen.
-
-### Double-click
-
-Double-click with a single finger to finish the mouse double-click operation on your touchscreen.
-
-> ![tips](icon/tips.svg)Tips: Double-click to select the texts and drag your finger on the screen to select more texts.
-
-### Move and Drag 
-
-Select the content and move your finger on the touchscreen to finish the mouse dragging operation.
-
-### Open the Right-click Menu
-
-Open the right-click menu of the current object by long-press for 1 second and release on the touchscreen.
-
-###  Open Workspace
-
-Slide in from the bottom of the screen exceeding the dock's height to open Workspace.
-
-### Call out Clipboard
-
-Slide in from the left edge of the screen exceeding the dock's height to call out Clipboard.
-
-### Call out Notification Center
-
-Slide in from the right edge of the screen exceeding the dock's height to call out Notification Center.
-
-### Call out Dock
-
-When the Dock is set as "Always Hidden" or "Smart Hide", if the Dock is at the bottom, slide in upward from the bottom edge of the screen to call it out; and if the Dock is on the top, slide in downward from the upper edge of the screen to call it out.
-
-### Backward/Forward
-
-In Browser, slide to the left to enter the next page and slide to the right to return to the previous page.
-
-### Scroll Screen
-
-The scrolling directions of the screen are the same as where your finger goes.
-
-### Zoom in/out
-
-Pinch two fingers to zoom out on the webpage or picture.  Open two fingers to zoom in on the webpage or picture.
-
-### Rotate
-
-Place two fingers on the picture with a certain distance and rotate the two fingers at the same time to rotate the picture.
-
-<div class="version-info"><span>Update Date: 2020-11-18</span><span> Version: 2020.08</span></div>

@@ -38,21 +38,20 @@ Click ![plus_icon](icon/+.svg) on the title bar, or press **Ctrl + N**, or click
 
 ### Open Files
 
-You can open the text file in the following ways, and the selected file will open in the new tab:
+You can open one or multiple text files at one time in the following ways, and the selected file will open in the new tab:
 
 - Drag the file directly to the Text Editor interface or its icon.
 - Right-click the file and open it with Text Editor. After selecting Text Editor as the default application for text files in Control Center, you can double-click the file to open it directly.
 - On the Text Editor interface, click ![icon_menu](icon/icon_menu.svg)> **Open file** and select the file.
 - On the Text Editor interface, use **Ctrl + O** to open the file.
 
-> ![tips](icon/tips.svg)Tips: You can open multiple files at one time.
-
 ### Save Files
 
 - Press **Ctrl + S** to save the current document.
 - Click ![icon_menu](icon/icon_menu.svg)> **Save** to save the file.
 
-You can also press **Ctrl + Shift + S** to save the file as  a new one.
+-  Press **Ctrl + Shift + S** to save the file as  a new one.
+
 
 ### Close Files
 
@@ -316,5 +315,3 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 
 1. On the Text Editor interface, click ![menu](icon/icon_menu.svg).
 2. Click **Exit** to exit Text Editor.  
-
-<div class="version-info"><span>Update Date: 2020-11-18</span><span> Version: 5.9</span></div>

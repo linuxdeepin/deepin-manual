@@ -42,7 +42,7 @@ Immerse yourself in the pure joy of wonderful videos through frequently used fun
 | 1      | Play window    | Display the video content. The video information and function icons will display after the mouse pointer is moved into the play window. Otherwise, they will be hidden. The play window is frameless. You can freely drag the play window to manually adjust its size. |
 | 2      | Time display   | Display the total time and played time of the current video. |
 | 3      | Preview window | Display the video preview. You can view the video content at a time point via the preview window. |
-| 4      | Progress bar   | Display the play progress. Drag the progress bar to change your play progress. The progress bar will turn bold automatically and the video preview window will display when the mouse pointer is placed over the progress bar. |
+| 4      | Progress bar   | Display the play progress. Drag the progress bar to change your play progress. The video preview window will display when the mouse pointer is placed over the progress bar. |
 | 5      | Video title    | Display the name of video which is now playing.              |
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -72,6 +72,8 @@ You can play films in the following ways:
 - On the Movie interface, right-click to select **Open CD/DVD** to play the films in CD/DVD.
 - Drag the file/folder directly to the Movie interface to play local films.
 
+> ![notes](icon/notes.svg) Notes: If you are using a computer equipped with a touchscreen, you can use touchscreen gestures to operate instead of the mouse. Hold down the film file with one finger and drag it to the Movie interface to play the film.
+
 > ![attention](icon/attention.svg)Attention: Please make sure your network is well connected before playing online videos with Movie.
 
 
@@ -81,6 +83,8 @@ You can play films in the following ways:
 
 1.  On the Movie interface, press ![Right](icon/Right.svg) on the keyboard to fast forward the film.
 2.  On the Movie interface, press ![Left](icon/Left.svg) on the keyboard to fast rewind the film.
+
+> ![notes](icon/notes.svg) Notes: If you are using a computer equipped with a touchscreen, you can use touchscreen gestures to operate instead of the mouse: Slide leftward with one finger on the video picture area to rewind and rightward to forward.
 
 ### Speed Up/Down
 
@@ -102,7 +106,7 @@ You can adjust the window size as you wish during playback.
 - Select **Always on Top** to put the window on the top layer.
 - You can also drag the window edge to adjust the window size.
 
->![notes](icon/notes.svg)Notes: Double click the window to switch between **Fullscreen** and **Normal Window**.
+>![notes](icon/notes.svg)Notes: Double-click the window to switch between **Fullscreen** and **Normal Window**.
 
 ![0|window](jpg/window.png)
 
@@ -132,6 +136,10 @@ You can adjust the window size as you wish during playback.
 2.  Select **Sound** and you can:
  - Select **Channel** and select the channel on which the film is played.
  - Select **Track** and select the play track for the film.
+
+> ![notes](icon/notes.svg) Notes: 
+>
+> If you are using a computer equipped with a touchscreen, you can use touchscreen gestures to operate instead of the mouse: Slide upward with one finger on the video picture area to increase the volume and downward to decrease the volume.
 
 ![0|sound](jpg/sound.png)
 
@@ -178,7 +186,7 @@ You can add films to the playlist by the following ways:
 
 > ![tips](icon/tips.svg)Tips: On the playlist interface, hover mouse pointer over the video file and click ![关闭图标](icon/close.svg) to delete it.
 
-![list](jpg/list-manag.png)
+![list](jpg/listmanag.png)
 
 
 ### Clear Playlist
@@ -208,6 +216,9 @@ You can set the basic information, shortcut keys and subtitles.
   - Check the **Auto add similar files to play **box to add the similar film files in the same folder to the playlist for playback in order.
   - Check the **Show video preview on mouseover** box to show the film preview when you move the mouse over progress bar.
   - Check the **Show thumbnails in progress bar**, a preview window will be displayed when you move the mouse over progress bar.
+
+![notes](icon/notes.svg) Notes: This feature is only available on X86 platform. 
+
   - Check the **Pause when minimized** to pause the playback automatically when minimizing the Movie window.
   - Check the **Default play mode** box, select one mode in the **Default play mode** dropdown list and Movie will run in such mode next time.
 4.  Under the **Screenshot** option, you can select the path to save screenshots as you wish.
@@ -247,5 +258,3 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 1.   On the Movie interface, click ![icon_menu](icon/icon_menu.svg).
 2.  Click **Exit** to exit Movie.
 
-
-<div class="version-info"><span>Update Date: 2020-11-18</span><span> Version: 5.7</span></div>

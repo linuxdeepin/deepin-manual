@@ -105,7 +105,7 @@ You can view the basic font information via Font Manager.
 
 When the font is installed successfully, you can view its installation location via File Manager.
 
-Right-click to select **Display in file manager** in the font sets list on the Font Manager interface to view the specific installation location.
+Right-click a font in the font sets list and select **Display in file manager** on the Font Manager interface to view the specific installation location.
 
 ### Preview Fonts
 
@@ -193,5 +193,3 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 1.   On the Font Manager interface, click ![icon_menu](icon/icon_menu.svg).
 2.   Click **Exit** to exit Font Manager.
 
-
-<div class="version-info"><span>Update Date: 2020-11-18</span><span> Version: 5.8</span></div>

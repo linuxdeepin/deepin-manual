@@ -52,10 +52,9 @@ You can right-click on the Terminal interface for daily operations.
 
 You can use **Find** function to quickly search contents in terminal.
 
-1. Right-click on the Terminal interface.
-2. Click **Find**.
+1. Right-click on the Terminal interface to select **Find** or click the **Ctrl** + **Alt ** +**F** key on the keyboard.
 3. Type the word in search box.
-4. Press **Enter** key on keyboard and the search results will be highlighted.
+4. Press the **Enter** key on the keyboard and the search results will be highlighted.
 5. Press **Esc** on keyboard or click any blank area on the Terminal interface to hide search.
 
 > ![tips](icon/tips.svg)Tips: Press **Enter** to search down from the current location. You can also search by clicking ![up](icon/up.svg) and ![down](icon/down.svg) on the interface.
@@ -68,7 +67,7 @@ You can use browser in Terminal for quick and convenient web search against sele
 1. On the Terminal interface, select the content you want to search.
 2. Right-click to select **Search**.
 3. Select a search website.
-4. Your browser will pop up and start searching based on the content you select on the Terminal interface.
+4. Your browser will pop up and start searching based on the content selected on the Terminal interface.
 
 
 ### Copy/Paste ###
@@ -111,14 +110,12 @@ When there is a messy code or display error, you may switch the encoding to solv
 3. Select one encoding in the list to see if the content is correctly displayed.
 4. Repeat Step 2 until you get correct display of content.
 
-> ![notes](icon/notes.svg)Notes: Usually, correct encoding methods are matched automatically in Terminal. Once any error appears under some special circumstances, you can adjust encoding methods manually. You can directly choose the correct encoding method if you are sure of it. If you are not sure, you can try multiple times. 
-
- 
+> ![notes](icon/notes.svg)Notes: Usually, correct encoding methods are matched automatically in Terminal. Once any error appears under some special circumstances, you can adjust encoding methods manually. You can directly choose the correct encoding method if you are sure of it. If you are not sure, you can try multiple times.  
 
 
 ## Window Operations
 
-Window serves as the foundation for your operations in Terminal. You can create many workspaces and split one into multiple windows.
+Window serves as the foundation for your operations in Terminal. A window is created when you launch the terminal. You can create many tabs in one window and split one tab or window into multiple workspaces.
 
 
 ### Create Window ###
@@ -137,7 +134,7 @@ You can create a new window in the following ways:
 ### Split Window ###
 
 1. Open Terminal in Launcher.
-2. On the Terminal interface, right-click.
+2. On the Terminal interface, right-click to:
 
   - Select **Vertical split** to split the interface into left and right columns.
 
@@ -145,22 +142,9 @@ You can create a new window in the following ways:
 
 3. You can input commands in each terminal window, and view execution results of different commands in different windows simultaneously.
 
-> ![tips](icon/tips.svg)Tips: You can also press **Ctrl **+ **Shift** +**J** on keyboard to split windows vertically, and press **Ctrl** + **Shift** + **H** to split windows horizontally.
+> ![tips](icon/tips.svg)Tips: You can also press **Ctrl **+ **Shift** +**J** on the keyboard to split windows vertically, and press **Ctrl** + **Shift** + **H** to split windows horizontally.
 
  ![1|splitscreen](jpg/splitscreen.png)
-
-### Rename Window ###
-
-
-1. Open Terminal in Launcher.
-2. On the Terminal interface, right-click and select **Rename title**.
-4. Input the name and click **Confirm**.
-
-> ![tips](icon/tips.svg)Tips: You can also press **F2**  to rename the window title.
-
- ![1|rename](jpg/rename.png)
-
-
 
 
 ### Display Window in Fullscreen ###
@@ -173,51 +157,69 @@ You can create a new window in the following ways:
 
 > ![notes](icon/notes.svg)Notes: You can also right-click to select **Fullscreen** or **Exit fullscreen** on the Terminal interface.
 
-### Close Window ###
+### Close Workspace ###
 
-You can close multiple split windows in the following steps:
+You can close multiple split workspaces in the following steps:
 
-1. On the Terminal interface, move the cursor over one of the split windows.
+1. On the Terminal interface, move the cursor over one of the split workspaces.
 
 2. Right-click to:
 
-  - Select **Close window** to close this split window.
+  - Select **Close workspace** to close this split workspace.
 
-  - Select **Close other windows** to close other split windows except for the current one.
+  - Select **Close other workspaces** to close other split workspaces except for the current one.
 
  ![1|closewindow](jpg/closesplitscreen.png)
 
 
-## Workspace Operations
+## Tab Operations
 
-### Create Workspace ###
+### Create Tab ###
 
-You can create new workspaces as follows:
+You can create new tabs as follows:
 
-- On the Terminal interface, right-click and select **New workspace** to create a new workspace.
+- On the Terminal interface, right-click and select **New tab** to create a new tab.
 
-- Click ![add](icon/+.svg) on the top to create a workspace.
-- Press **Ctrl** + **Shift** + **T** on the keyboard to create a new workspace.
+- Click ![add](icon/+.svg) on the top to create a tab.
+- Press **Ctrl** + **Shift** + **T** on the keyboard to create a new tab.
 
 
-### Select Workspace ###
+### Switch/Adjust Tab ###
 
-You can freely switch among multiple workspaces via following methods:
+You can freely switch among multiple tabs via following methods:
 
-- Directly click the workspace tab to select a workspace.
-- Press **Ctrl** + **Tab** to switch in sequence.
-- Press **Ctrl** + **Shift** + **1~9** number keys to select the workspace. When there are more than 9 workspaces, the last workspace will be selected rather the ninth one.
+- Press **Ctrl** + **Tab** or scroll the mouse wheel on the tab title to switch in sequence.
+- Press **Ctrl** + **Shift** + **1~9** number keys to select the tab. When there are more than 9 tabs, the last tab will be selected rather the ninth one.
+- Drag one tab to switch sequence in the one window.
+- Drag one tab out of the current window to create a new window.
+- Drag one tab out of the current window to another window.
 
-### Close Workspace ###
+### Close Tab ###
 
-You can close workspace as follows:
+You can close tab as follows:
 
-1. Select the tab of one workspace, and click ![add](icon/close.svg) to close it.
-2. Right-click any workspace tab to:
- - Select **Close workspace** to close it.
- - Select **Close other workspaces** to close other workspaces other than the current one.
+1. Select the tab to be closed and click ![add](icon/close.svg) .
+2. Right-click any tab to:
+ - Select **Close tab** to close it.
+ - Select **Close other tabs** to close other tabs other than the current one.
 
-> ![tips](icon/tips.svg)Tips: When there is only one window in the workspace, you can also right-click and select **Close window** to close the workspace.
+> ![tips](icon/tips.svg)Tips: When there is only one tab in the workspace, you can also right-click and select **Close workspace** to close the tab.
+
+### Rename Tab ###
+
+
+1. On the Terminal interface, right-click a tab and select **Rename title**.
+
+- Tab title format: Select one format in the **Insert** drop-down list and you can customize the current tab title as needed.
+
+- Remote tab title format: Select one format in the **Insert** drop-down list and you can customize the remote tab title as needed.
+
+
+2. Click **Confirm**.
+
+> ![tips](icon/tips.svg)Tips: You can also press **F2**  to rename the window title.
+
+ ![1|rename](jpg/rename.png)
 
 
 ## Remote Server Management
@@ -233,7 +235,7 @@ You can open remote management panel to add remote servers via the main menu or 
 
    >  ![notes](icon/notes.svg)Notes: If you need to set up more parameters, please click **Advanced options**. Or, you can keep the default values and edit them when you need.
 
- ![1|addssh](jpg/addssh-all.png)
+ ![1|addssh](jpg/addsshall.png)
 
 
 
@@ -252,7 +254,7 @@ You can open remote management panel to add remote servers via the main menu or 
 
 When you set a group for a server, it will be added in the corresponding group and displayed in the remote management panel on the right side.
 
-1. On the terminal interface, click the **Add Server** icon to open the Add Server dialogue or click the ![edit_icon](icon/edit_icon.svg)beside an existing server to open the Edit Server dialogue.
+1. On the terminal interface, click the **Add Server** icon to open the Add Server dialogue or click the ![edit_icon](icon/edit_icon.svg)icon beside an existing server to open the Edit Server dialogue.
 2. Click **Advanced options**.
 3. Input **Group** information.
 4. Click **Save**.
@@ -271,11 +273,9 @@ When there are multiple servers or groups, the search box will be displayed on t
 ![0|searchssh](jpg/searchssh.png)
 
 
-
-
 ### Upload/Download File ###
 
-You can upload and download files after logging in a remote server.
+You can upload and download files after logging into a remote server.
 
 #### Upload Files ####
 
@@ -283,6 +283,8 @@ You can upload and download files after logging in a remote server.
 2. On the Terminal interface, right-click to select **Upload file**.
 3. Select the file to be uploaded in the pop-up window.
 4. Click **Upload** and the file will be uploaded to the remote server.
+
+> ![tips](icon/tips.svg)Tips: You can drag the file directly into the terminal interface to upload after connecting the remote server.
 
 ![1|upload](jpg/upload.png)
 
@@ -312,7 +314,7 @@ In the Main Menu, you can create [Create New Window](#Create New Window), custom
 
 ### Theme ###
 
-The window theme provides three theme types, namely Light Theme, Dark Theme and System Theme.
+The window theme provides multiple themes.
 
 1. On the Terminal interface, click ![main_menu](icon/icon_menu.svg).
 2. Click **Theme** to choose one theme.
@@ -333,35 +335,33 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 
 #### Basic Settings ####
 
-1. On the Terminal interface, click ![main_menu](icon/icon_menu.svg).
-
-2. Click **Settings**.
+1. On the Terminal interface, click ![main_menu](icon/icon_menu.svg)> **Settings**.
 
 3. In the **Basic** options, you can:
 
-  - Set **Opacity** for the background.
+   - Set **Opacity** for the background.
    >![notes](icon/notes.svg)Notes: if Window Effect is turned off in Control Center, **Opacity** scroll bar will be hidden.
 
-  - Set the type and size for font.
+   - Set the type and size for font.
+
+   Click the "+" or "-" icon or scroll the mouse wheel in the Font Size edition box to adjust the font size.
+
+3. In the **Tab titles** options, you can set the name for all the tabs and remote tabs in terminal.
 
 #### Shortcuts Settings ####
 
-1. On the Terminal interface, click ![main_menu](icon/icon_menu.svg).
-
-2. Click **Settings**.
+1. On the Terminal interface, click ![main_menu](icon/icon_menu.svg)> **Settings**.
 
 3. In the **Shortcuts** options, you can:
 
   - Modify shortcuts: Click the shortcuts to be modified and input new shortcuts via the keyboard in the editable input box.
 
-  - Modify shortcuts: Click the shortcuts to be modified and the input box will be editable.  Press **Backspace** on the keyboard to disable the shortcut.
+  - Disable shortcuts: Click the shortcuts to be modified and the input box will be editable.  Press **Backspace** on the keyboard to disable the shortcut.
 
 
 #### Advanced Settings ####
 
-1. On the Terminal interface, click ![main_menu](icon/icon_menu.svg).
-
-2. Click **Settings**.
+1. On the Terminal interface, click ![main_menu](icon/icon_menu.svg)> **Settings**.
 
 3. In the **Advanced** options, you can:
 
@@ -375,6 +375,7 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
   - Enable or disable **Blur background**.
    >![notes](icon/notes.svg)Notes: if Window Effect is turned off in Control Center, **Blur background** option will be hidden.
 
+  - Enable or disable flow control by **Ctrl** + **S** and **Ctrl** + **Q**
   - **Restore defaults**: Click this button to restore to all default settings.  
 
 ### Help
@@ -395,5 +396,3 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 1. On the Terminal interface, click ![icon_menu](icon/icon_menu.svg).
 
 2. Click **Exit** to exit Terminal.
-
-<div class="version-info"><span>Update Date: 2020-11-18</span><span> Version: 5.3</span></div>

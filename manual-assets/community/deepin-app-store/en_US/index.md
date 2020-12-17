@@ -112,7 +112,7 @@ You can search, download and install different categories of applications, and a
 ### Download/Install Applications
 App Store offers one-click downloading and installation of applications. During the downloading and installing process, you can pause and delete, as well as view the current progress.
 
-App Store supports application synchronization. After signing in, you can synchronize the applications installed on other devices with the same account, and install the Cloud apps at one click.
+App Store supports application synchronization. After signing in, you can synchronize the applications installed on other devices with the same ID, and install the Cloud apps at one click.
 
 > ![notes](icon/notes.svg)Notes: If you haven't signed in, installed applications will be displayed in local applications only.
 
@@ -136,8 +136,8 @@ App Store supports application synchronization. After signing in, you can synchr
 
 #### Cloud applications
 
-1. Sign in your cloud account, select  **My Apps** to show the interface of My Apps from Personal Center.
-2. Click **Remote Apps** to view all cloud applications installed by the account.
+1. Sign in your Deepin ID, select  **My Apps** to show the interface of My Apps from Personal Center.
+2. Click **Remote Apps** to view all cloud applications installed by the ID.
 3. Select the ones you want to install and click ![installhover](icon/installhover.svg) .
 4. After installation, the apps will be displayed both in local apps and remote apps synchronically.
 5. If you want to install applications in batches, you can choose  **Install All **. Check all cloud applications you want to install, click  **Start Installation**.
@@ -175,7 +175,7 @@ You can open the information page of any application to view its ratings, downlo
 
 ### Comment and Rate
 
-- After sign in your Union ID, you can comment on and rate the applications. Click **Report a bug** to feedback software bugs. You can also like other users' comments. 
+- After sign in your Deepin ID, you can comment on and rate the applications. Click **Report a bug** to feedback software bugs. You can also like other users' comments. 
 
 ![1|commenrandrate](jpg/commentandrate.png)
 
@@ -196,7 +196,7 @@ You can open the information page of any application to view its ratings, downlo
 
 3. Click **Sign In**.
 
-> ![attention](icon/attention.svg)Attention: If you don't have an account yet, you can click **Sign Up** in the pop-up box to sign up. 
+> ![attention](icon/attention.svg)Attention: If you don't have a deepin ID yet, you can click **Sign Up** in the pop-up box to sign up. 
 
 ![login](jpg/login.png)
 
@@ -226,5 +226,3 @@ Click Help to get the manual, which will help you further know and use App Store
 ### Exit
 1. Click  ![icon_menu](icon/icon_menu.svg) on the main interface.
 2. Click  **Exit**.
-
-<div class="version-info"><span>Update Date: 2020-11-18</span><span> Version: 6.2</span></div>

@@ -4,7 +4,7 @@
 
 截图录屏是一款集截图和录制屏幕于一体的工具。在截图或者录制屏幕时，既可以自动选定窗口，也可手动选择区域。
 
-![part-area](jpg/part-area.png)
+![part_area](jpg/part_area.png)
 
 
 
@@ -14,21 +14,21 @@
 
 ### 运行截图录屏
 
-1. 点击桌面底部的 ![deepin-launcher](icon/deepin-launcher.svg)，进入启动器界面。
-2. 上下滚动鼠标滚轮浏览或通过搜索，找到截图录屏 ![deepin-screenshot](icon/deepin-screenshot.svg)点击运行。
-3. 右键单击 ![deepin-screenshot](icon/deepin-screenshot.svg)，您可以：
+1. 点击桌面底部的 ![deepin_launcher](icon/deepin_launcher.svg)，进入启动器界面。
+2. 上下滚动鼠标滚轮浏览或通过搜索，找到截图录屏 ![deepin_screenshot](icon/deepin_screenshot.svg)点击运行。
+3. 右键单击 ![deepin_screenshot](icon/deepin_screenshot.svg)，您可以：
 
    - 点击 **发送到桌面**，在桌面创建快捷方式。
    - 点击 **发送到任务栏**，将应用程序固定到任务栏。
    - 点击 **开机自动启动**，将应用程序添加到开机启动项，在电脑开机时自动运行该应用。
 
-> ![notes](icon/notes.svg)说明：如果截图录屏已经默认固定在任务栏上，您也可以点击任务栏上的 ![deepin-screenshot](icon/deepin-screenshot.svg)来运行。
+> ![notes](icon/notes.svg)说明：如果截图录屏已经默认固定在任务栏上，您也可以点击任务栏上的 ![deepin_screenshot](icon/deepin_screenshot.svg)来运行。
 
 ### 关闭截图录屏
 
 - 截图录屏会在截图结束后自动退出。
 - 截图录屏会在录制结束后自动退出。
-- 在截图录屏界面，点击![close](icon/close-normal.svg)，退出录屏。
+- 在截图录屏界面，点击![close](icon/close_normal.svg)，退出录屏。
 - 按下键盘上的 **Ctrl + S** 组合键 或 **Esc** 键。
 - 在截图录屏界面，点击鼠标右键，选择 **保存** 或 **退出**。
 
@@ -77,7 +77,7 @@
 
 您也可以直接操作以下步骤来进行全屏截图：
 
-- 如果您已经将录屏截图固定到任务栏，右键单击任务栏上的![deepin-screenshot](icon/deepin-screenshot.svg)，然后选择截取全屏 。
+- 如果您已经将录屏截图固定到任务栏，右键单击任务栏上的![deepin_screenshot](icon/deepin_screenshot.svg)，然后选择截取全屏 。
 - 按下键盘上的 ![print](icon/Print.svg)键，实现全屏截图。
 
 ##### 选择程序窗口
@@ -97,7 +97,7 @@
 
 选择自选区域是通过拖动鼠标，自由选择截取的范围。
 
-![1|区域截图](jpg/part-area.png)
+![1|区域截图](jpg/part_area.png)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -145,33 +145,34 @@
 > ![attention](icon/attention.svg)注意：如果您已经对工具栏和属性栏中，如线条粗细、字体大小等进行了设置，录屏截图会记住您的选择。当您下次启动录屏截图后，将默认使用该设置，您也可以重新进行选择。
 
 
-![0|截图工具栏](jpg/capture-bar.png)
+![0|截图工具栏](jpg/capture_bar.png)
 
 <table class="block1">
     <caption>图标说明</caption>
     <tbody>
         <tr>
-            <td><img src="icon/rectangle-normal.svg" alt="矩形工具" class="inline" /></td>
+            <td><img src="icon/rectangle_normal.svg" alt="矩形工具" class="inline" /></td>
             <td>矩形工具</td>
             <td class="blank"></td>
-            <td><img src="icon/oval-normal.svg" alt="椭圆工具" class="inline" /></td>
+            <td><img src="icon/oval_normal.svg" alt="椭圆工具" class="inline" /></td>
             <td>椭圆工具</td>
         <td class="blank"></td>
-            <td><img src="icon/line-normal.svg" alt="箭头工具" class="inline" /></td>
+            <td><img src="icon/line_normal.svg" alt="箭头工具" class="inline" /></td>
             <td>线条工具</td>
         </tr>
           <tr>
-            <td><img src="icon/Combined_Shape-normal.svg" alt="画笔工具" class="inline" /></td>
+            <td><img src="icon/Combined_Shape_normal.svg" alt="画笔工具" class="inline" /></td>
             <td>画笔工具</td>
             <td class="blank"></td>
             <td><img src="icon/text_normal.svg" alt="文本工具" class="inline" /></td>
             <td>文本工具</td>
             <td class="blank"></td>
-            <td><img src="icon/close-normal.svg" alt="关闭" class="inline" /></td>
+            <td><img src="icon/close_normal.svg" alt="关闭" class="inline" /></td>
             <td>退出截图</td>
         </tr>
     </tbody>
 </table>
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 ##### 矩形工具
@@ -180,7 +181,7 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-1. 在截图区域下方的工具栏中，点击 ![矩形](icon/rectangle-normal.svg)。
+1. 在截图区域下方的工具栏中，点击 ![矩形](icon/rectangle_normal.svg)。
 2. 在工具栏展开面板中，选择矩形边线的粗细。
 3. 将鼠标指针置于截图区域上，鼠标指针变为 ![矩形指针](icon/rect_mouse.svg)。
 4. 按住鼠标左键不放，拖动鼠标以完成图形区域的绘制。
@@ -197,7 +198,7 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-1. 在截图区域下方的工具栏中，点击 ![椭圆](icon/oval-normal.svg)。
+1. 在截图区域下方的工具栏中，点击 ![椭圆](icon/oval_normal.svg)。
 2. 在工具栏展开面板中，选择椭圆边线的粗细。
 3. 将鼠标指针置于截图区域上，鼠标指针变为 ![椭圆指针](icon/ellipse_mouse.svg)。
 4. 按住鼠标左键不放，拖动鼠标以完成图形区域的绘制。
@@ -210,9 +211,9 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-1. 在截图区域下方的工具栏中，点击 ![直线](icon/line-normal.svg)。
+1. 在截图区域下方的工具栏中，点击 ![直线](icon/line_normal.svg)。
 2. 在工具栏展开面板中，选择线条的粗细。
-3. 点击 ![直线](icon/line-normal.svg)或 ![箭头](icon/Arrow-normal.svg)，在直线和箭头之间切换。
+3. 点击 ![直线](icon/line_normal.svg)或 ![箭头](icon/Arrow_normal.svg)，在直线和箭头之间切换。
 4. 将鼠标指针置于截图区域上，鼠标指针变为 ![线条指针](icon/line_mouse.svg)或 ![箭头指针](icon/arrow_mouse.svg)。
 5. 按住鼠标左键不放，拖动鼠标以完成图形区域的绘制。
 
@@ -223,16 +224,16 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-1. 在截图区域下方的工具栏中，点击 ![画笔](icon/Combined_Shape-normal.svg)。
+1. 在截图区域下方的工具栏中，点击 ![画笔](icon/Combined_Shape_normal.svg)。
 2. 在工具栏展开面板中，选择画笔的粗细。
-3. 将鼠标指针置于截图区域上，鼠标指针变为 ![画笔指针](icon/brush red.svg)。
+3. 将鼠标指针置于截图区域上，鼠标指针变为 ![画笔指针](icon/brush_red.svg)。
 4. 按住鼠标左键不放，拖动鼠标以完成图形区域的绘制。
 
 如果需要绘制正方形、圆形等图形，您可以：
 
-- 按住键盘上的 **Shift** 键，然后选择 ![矩形](icon/rectangle-normal.svg)，绘制正方形。
-- 按住键盘上的 **Shift** 键，然后选择 ![椭圆](icon/oval-normal.svg)，绘制圆形。
-- 按住键盘上的 **Shift** 键，然后选择![直线](icon/line-normal.svg)或![箭头](icon/Arrow-normal.svg)，绘制水平或垂直方向的直线或带箭头的直线。
+- 按住键盘上的 **Shift** 键，然后选择 ![矩形](icon/rectangle_normal.svg)，绘制正方形。
+- 按住键盘上的 **Shift** 键，然后选择 ![椭圆](icon/oval_normal.svg)，绘制圆形。
+- 按住键盘上的 **Shift** 键，然后选择![直线](icon/line_normal.svg)或![箭头](icon/Arrow_normal.svg)，绘制水平或垂直方向的直线或带箭头的直线。
 
 
 #### 修改图形
@@ -306,7 +307,9 @@
 开启截图录屏，并选定截图区域后，您可以通过执行以下操作之一来保存截取的图片：
 
 - 双击鼠标左键来保存。
-- 点击截图工具栏中的![icon](icon/screenshot button.svg)按钮。
+  
+   >![notes](icon/notes.svg)说明：如果您的电脑支持触控屏或触控板，可以使用手势替代鼠标操作：一指双击完成截图。
+- 点击截图工具栏中的![icon](icon/screenshot_button.svg)按钮。
 - 按下键盘上的 **Ctrl + S** 组合键来保存。
 - 在截取的图片中，点击鼠标右键，选择 **保存** 完成保存操作。
 
@@ -331,7 +334,7 @@
 
 #### 工具栏说明
 
-![0|工具栏](jpg/recorder-bar.png)
+![0|工具栏](jpg/recorder_bar.png)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -346,7 +349,7 @@
             <td><img src="icon/microphone_normal.svg" alt="录制声音" class="inline" /></td>
             <td>麦克风</td>
             <td class="blank"></td>
-            <td><img src="icon/audio-frequency_normal.svg" alt="录制声音" class="inline" /></td>
+            <td><img src="icon/audio_frequency_normal.svg" alt="录制声音" class="inline" /></td>
             <td>系统音频</td>
         <td class="blank"></td>
             <td><img src="icon/key_mormal.svg" alt="按键" class="inline" /></td>
@@ -359,11 +362,12 @@
             <td><img src="icon/mouse_mormal.svg" alt="鼠标点击" class="inline" /></td>
             <td>显示鼠标点击</td>
             <td class="blank"></td>
-            <td><img src="icon/close-normal.svg" alt="关闭" class="inline" /></td>
+            <td><img src="icon/close_normal.svg" alt="关闭" class="inline" /></td>
             <td>退出录屏</td>
         </tr>
     </tbody>
 </table>
+
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 #### 选择录制区域
@@ -398,7 +402,7 @@
 
 录屏可以自定义录制区域，还可以选择录制格式，基本操作步骤如下：
 
-1. 启动录屏后，点击 ![ctrl](icon/screencap-normal.svg)**录屏** 开始选择录制区域。
+1. 启动录屏后，点击 ![ctrl](icon/screencap_normal.svg)**录屏** 开始选择录制区域。
 2. 选择录制格式。
 3. 点击 **开始录屏**，录制开始后，托盘区域出现录制图标并闪烁。
 4. 录制完成后点击任务栏上的图标或者托盘区域录制图标结束录制。
@@ -412,5 +416,3 @@
 
 启动截图录屏后按下键盘上的 **F1** 键即可打开帮助手册。
 
-
-<div class="version-info"><span>文档更新时间: 2020-11-18</span><span> 版本: 5.8</span></div>

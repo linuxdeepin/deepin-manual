@@ -40,7 +40,7 @@ You can run, close or create a shortcut for Log Viewer.
 
 ### Filter
 
- Filtering parameters include **period**, **level**, **status**, **application list** and **event type**.. 
+ Filtering parameters include **period**, **level**, **status**, **application list** and **event type**.
 
   - Filtering by period: Filtering in the order of log generating date
 
@@ -73,7 +73,7 @@ You can run, close or create a shortcut for Log Viewer.
 
 1. On the main interface, click **System Log **. 
 2. You can see a list of system logs which are detailed by "Level", "Process", "Date and Time", and "Info".
-3. Click a log, you can see its particular info below the list, including level, process, user, PID, time and info.
+3. Click a log, you can see its particular info below the list, including process, user, PID, time and info.
 
 ![0|rsyslog](jpg/rsyslog.png)
 
@@ -125,7 +125,7 @@ You can run, close or create a shortcut for Log Viewer.
 1. On the main interface, click  **Boot-Shutdown Event**.
 2. You can see a list of boot-shutdown events which are detailed by "Event Type", "Username", "Date and Time", and "Info".
 3. Click a log, you can see its particular info below the list, including user, event type, username, and detailed info.
-![0|power event](jpg/power-event.png)
+![0|powerevent](jpg/powerevent.png)
 
 ### Export
 
@@ -135,10 +135,6 @@ You can export logs and save them in format of  txt/doc/xls/html.
 2. An interface of file manager pops up. Input a file name and select a format. 
 3. Click **Save**. 
 
-![0|export](jpg/export.png)
-
-
-
 ### Display in File Manager
 
 1. On the interface of File Manager, select a log type in the left panel and right-click.
@@ -146,7 +142,10 @@ You can export logs and save them in format of  txt/doc/xls/html.
 
 > ![notes](icon/notes.svg)Notes: **Display in file manager** is only applicable for kernel log, boot log, dpkg log, Xorg log and application log.
 
+![display](jpg/displayinfm.png)
+
 ### Clear Log
+
 1. On the interface of File Manager, select a log type in the left panel and right-click.
 2. Select **Clear log**, click **Confirm** button in the pop-up window to clear current logs.
 3. If authentication window pops up, please input password to finish the operation.
@@ -165,7 +164,7 @@ In the main menu, you can switch themes, view help manual, and so on.
 The window theme includes Light Theme, Dark Theme and System Theme.
 
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
-2. Click  **Theme** to select one.
+2. Click **Theme** to select one.
 
 
 ### Help
@@ -186,5 +185,3 @@ Click Help to get the manual, which will help you further know and use Log Viewe
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Click  **Exit**.
 
-
-<div class="version-info"><span>Update Date: 2020-11-18</span><span> Version: 5.8</span></div>

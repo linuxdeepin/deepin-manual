@@ -12,9 +12,9 @@
 
 ### 运行文件管理器
 
-1. 单击桌面底部的 ![deepin-launcher ](icon/deepin-launcher.svg)，进入启动器界面。
-2. 上下滚动鼠标滚轮浏览或通过搜索找到文件管理器 ![deepin-file-manager](icon/deepin-file-manager.svg)，单击运行。
-3. 右键单击 ![deepin-file-manager](icon/deepin-file-manager.svg)，您可以：
+1. 单击桌面底部的 ![deepin_launcher ](icon/deepin_launcher.svg)，进入启动器界面。
+2. 上下滚动鼠标滚轮浏览或通过搜索找到文件管理器 ![deepin_file_manager](icon/deepin_file_manager.svg)，单击运行。
+3. 右键单击 ![deepin_file_manager](icon/deepin_file_manager.svg)，您可以：
  - 单击 **发送到桌面**，在桌面创建快捷方式。
  - 单击 **发送到任务栏**，将应用程序固定到任务栏。
  - 单击 **开机自动启动**，将应用程序添加到开机启动项，在电脑开机时自动运行该应用。
@@ -23,7 +23,7 @@
 ### 关闭文件管理器
 
 - 在文件管理器界面，单击 ![close_icon](icon/close_icon.svg)，退出文件管理器。
-- 在任务栏右键单击 ![deepin-file-manager](icon/deepin-file-manager.svg)，选择 **关闭所有** 来退出文件管理器。
+- 在任务栏右键单击 ![deepin_file-manager](icon/deepin_file_manager.svg)，选择 **关闭所有** 来退出文件管理器。
 - 在文件管理器界面，单击 ![icon_menu](icon/icon_menu.svg)，选择 **退出** 来退出文件管理器。
 
 ### 查看快捷键
@@ -36,7 +36,7 @@
 
 文件管理器的主界面简单易用、功能全面，熟练地使用界面功能将使文件管理更加简单高效。
 
-![1|main-interface](jpg/main-introduce.png)
+![1|main_interface](jpg/main_introduce.png)
 
 
 | 标号 | 名称          | 描述                                                         |
@@ -78,20 +78,20 @@
 2. 选择 **重命名**。
 3. 输入文件名称，按 **Enter** 键或者鼠标单击界面空白区域。
 
-![0|contextmenu](jpg/contextmenu.png)
+![0|rename](jpg/rename.png)
 
 > ![tips](icon/tips.svg)窍门：在 **设置** 中勾选“重命名时隐藏文件扩展名”，能更方便地修改文件名称。
 
 ### 批量重命名
 
 1. 在文件管理器界面上，选中多个文件。
-2. 右击文件，并选择 **重命名**。
+2. 右键单击文件，并选择 **重命名**。
    - **替换文本 **查找需要替换的文本，并输入替换后的文本，文件名中的关键字将被统一替换。
    - **添加文本** 输入需要添加的文本，并选择位置是名称之前还是之后，文件名将统一加入被添加的文本。
    - **自定义文本** 输入文件名，并输入序列的递进数字，文件名将统一改成新文件名+递进数字。
 4. 单击 **重命名** 来完成操作。
 
-![1|rename](jpg/rename.png)
+![1|rename](jpg/batch_rename.png)
 
 ### 查看文件
 
@@ -99,15 +99,17 @@
 
 - 图标视图：平铺显示文件的名称、图标或缩略图。
 
-![1|icon-view](jpg/icon-view.png)
+![1|iconview](jpg/iconview.png)
 
 - 列表视图：列表显示文件图标或缩略图、名称、修改时间、大小、类型等信息。
 
-![1|list-view](jpg/list-view.png)
+![1|listview](jpg/listview.png)
 
-> ![tips](icon/tips.svg)窍门：在列表视图中，把光标置于两列之间的分隔线上， 拖动它来改变列的宽度；双击分隔线可将当前列自动调整为本列内容最宽的宽度。
+> ![tips](icon/tips.svg)窍门：
+>
+> - 在列表视图中，把光标置于两列之间的分隔线上， 拖动它来改变列的宽度；双击分隔线可将当前列自动调整为本列内容最宽的宽度。
 
-> ![tips](icon/tips.svg)窍门：使用  **Ctrl**+**1**  和  **Ctrl**+ **2**   快捷键，切换图标视图和列表视图。
+> - 使用  **Ctrl**+**1**  和  **Ctrl**+ **2**   快捷键，切换图标视图和列表视图。
 
 
 ### 排序文件
@@ -206,7 +208,7 @@
 
 ### 搜索文件
 
-在文件管理器中单击搜索按钮，或使用  **Ctrl + F** 快捷键进入搜索状态，或在地址栏中输入关键词后按 **Enter** 键，搜索相关文件。
+在文件管理器中单击搜索按钮，或使用  **Ctrl + F** 快捷键进入搜索状态，在地址栏中输入关键词后按 **Enter** 键，搜索相关文件。
   - 需要指定目录搜索时，请先进入该目录，然后再进行搜索。
 
 > ![notes](icon/notes.svg)说明：
@@ -271,7 +273,7 @@
 
 >![notes](icon/notes.svg)说明：标记颜色从8种默认颜色中随机分配。
 
-![1|tag info](jpg/tag info.png)
+![1|taginfo](jpg/taginfo.png)
 
 
 
@@ -279,12 +281,12 @@
 
 右键单击文件(夹)，选择“颜色按钮”，直接生成这个颜色的标记。
 
-![1|color tag](jpg/color tag.png)
+![1|colortag](jpg/colortag.png)
 
 ##### 通过右侧信息栏添加标记
 选择文件(夹)后，单击 ![fileinfo](icon/fileinfo.svg)，在右侧信息栏中也可以添加标记。
 
-![1|info tag](jpg/info tag.png)
+![1|infotag](jpg/infotag.png)
 
 >![notes](icon/notes.svg)说明：您可以一次为多个文件(夹)添加标记，一个文件(夹)也可以添加多个标记；您还可以在文件(夹)的属性中添加标记。添加成功的标记会出现在左侧导航栏内。
 
@@ -295,7 +297,7 @@
 
 在侧边导航栏中，右键单击某个标记，选择 **重命名**，修改当前标记的名称。
 
-![1|rename tag](jpg/rename tag.png)
+![1|renametag](jpg/rename_tag.png)
 
 #### 修改标记颜色
 
@@ -320,7 +322,7 @@
 3. 播放过程中，可以拖动进度条来快进快退。
 4. 单击底部 **打开** 按扭，在默认程序中打开该视频文件。
 
-    ![1|video preview](jpg/video preview.png)
+    ![1|video_preview](jpg/video_preview.png)
 
 > ![notes](icon/notes.svg)说明：您也可以同时选择多个文件，按下空格键进行预览。
 
@@ -385,7 +387,7 @@
 1. 在文件管理器界面空白处单击鼠标右键。
 2. 选择 **从终端中打开**，会启动终端应用程序，终端的路径为当前目录。
 
-![0|open-terminal](jpg/open-terminal.png)
+![0|openterminal](jpg/openterminal.png)
 
 ### 创建快捷方式
 
@@ -396,13 +398,63 @@
 
 > ![tips](icon/tips.svg)窍门：选择 **发送到桌面** 可以直接在桌面上生成该文件(夹)的快捷方式。
 
-### 发送文件(夹)
+### 发送文件(夹)到外接磁盘
 
 当有外接磁盘接入时，您可以将文件或文件夹发送到外接磁盘。
 
 1. 在文件管理器界面上，右键单击文件(夹)。
 2. 选择 **发送到** > 外接磁盘。
 3. 文件(夹)将会被发送到移动外接磁盘。
+
+### 发送文件到蓝牙
+
+若您的电脑配置了蓝牙模块，便可通过蓝牙进行短距离文件传输的操作。
+
+前提条件：发送端与接收端蓝牙设备已配对并成功连接。具体连接方法可参考 [连接蓝牙设备](dman:///dde#连接蓝牙设备)。
+
+1. 在文件管理器界面，右键单击需要发送的文件。
+2. 选择 **发送到** > **发送到蓝牙**。
+3. 在弹出的蓝牙文件传输对话框中勾选接收设备，点击 **下一步**。
+4. 此时接收端会收到文件接收的请求，待接收端同意请求后，发送端开始传输文件。
+
+   >![tips](icon/tips.svg)窍门：若您需要传输文件夹，可提前将文件夹压缩后再通过蓝牙发送。
+
+
+
+## 文件角标
+
+您可以通过命令行，将图标文件指定给一个文件或文件夹作为角标显示出来。
+   >![icon](icon/notes.svg)说明：
+   >- 角标文件支持svg、jpg、png、bmp、gif格式，且大小<=100kb。
+   >- U盘及光盘下的文件，不支持添加角标。
+
+### 添加单个角标
+
+1. 在终端输入命令 **gio set xxx(文件路径)  -t stringv metadata::emblems "xxx(图标路径)"** ，该命令默认在文件（夹）右下角添加角标。
+   
+>![icon](icon/attention.svg)注意：系统已定义的特殊角标，不支持被替换。
+   
+2. 您也可以在上述命令中加入位置参数，将角标添加在文件（夹）的左上角（lu）、左下角（ld）、右上角（ru）或右下角（rd）。
+
+例如：在文件（夹）左上角添加角标
+
+**gio set xxx(文件路径)  -t stringv metadata::emblems "xxx(图标路径);lu"**
+
+![mark](jpg/single.png)
+
+### 添加多个角标
+
+在命令行中加入“**|**”符号将角标文件路径链接起来，为文件（夹）添加2~4个角标。文件（夹）同一个位置不支持叠加角标，仅支持替换。
+
+例如：在文件（夹）四个角都添加角标
+
+**gio set xxx(文件路径)  -t stringv metadata::emblems "xxx(图标路径);lu|xxx(图标路径);ld|xxx(图标路径);ru|xxx(图标路径);rd"**
+
+![mark](jpg/multi.png)
+
+### 撤销角标
+
+在终端中输入命令 **gio set xxx(文件路径) -t stringv metadata::emblems ""** 撤销文件（夹）上所有的角标。
 
 ## 磁盘管理
 
@@ -468,7 +520,7 @@
 打开一个新的文件管理器窗口。
 
 1. 在文件管理器界面，单击 ![icon_menu](icon/icon_menu.svg)。
-2. 单击 **新建窗口**。
+2. 选择 **新建窗口**。
 
 ### 连接到服务器
 
@@ -480,7 +532,7 @@
    - 在“个人收藏服务器”列表中选中一个地址，单击 ![-](icon/-.svg) 按钮，将该地址从收藏列表中移除。
 3. 单击 **连接**。
 
-![conncet](jpg/connect to server.png)
+![conncet](jpg/connect_to_server.png)
 
 ### 主题
 
@@ -511,20 +563,18 @@
 查看帮助手册，进一步了解和使用文件管理器。
 
 1. 在文件管理器界面，单击 ![icon_menu](icon/icon_menu.svg)。
-2. 单击 **帮助**。
+2. 选择 **帮助**。
 3. 查看文件管理器的帮助手册。
 
 
 ### 关于
 
 1. 在文件管理器界面，单击 ![icon_menu](icon/icon_menu.svg)。
-2. 单击 **关于**。
+2. 选择 **关于**。
 3. 查看文件管理器的版本和介绍。
 
 
 ### 退出
 
 1. 在文件管理器界面，单击 ![icon_menu](icon/icon_menu.svg)。
-2. 单击 **退出**。
-
-<div class="version-info"><span>文档更新时间: 2020-11-18</span><span> 版本: 5.2</span></div>
+2. 选择 **退出**。

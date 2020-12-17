@@ -6,11 +6,11 @@
 
 ## 操作介绍
 
-在计算器界面，点击 ![icon_menu](icon/icon_menu.svg) > **模式**，选择标准模式或科学模式。标准模式执行基本的加减乘除运算，而科学模式执行函数、指数、方根等高级运算，其中标准模式为默认设置。
+在计算器界面，单击 ![icon_menu](icon/icon_menu.svg) > **模式**，选择标准模式或科学模式。标准模式执行基本的加减乘除运算，而科学模式执行函数、指数、方根等高级运算，其中标准模式为默认设置。
 
 ### 标准模式
 
-![0|standard](jpg/standard mode.png)
+![0|standard](jpg/standard_mode.png)
 
 | 图标                       | 名称     | 说明                                                         |
 | -------------------------- | :------- | ------------------------------------------------------------ |
@@ -29,19 +29,19 @@
 | ()                         | 括号     | 用来输入括号，点击一次，同时显示左右括号。如果从键盘输入，输入左括号则出现左括号，输入右括号则出现右括号，若只出现一侧括号，则表达式计算错误。 |
 | =                          | 等于     | 用来得出计算结果。                                           |
 ### 科学模式
-![0|scientific](jpg/scientific mode.png)
+![0|scientific](jpg/scientific_mode.png)
 
 | 图标                       | 名称     | 说明                                                         |
 | -------------------------- | :------- | ------------------------------------------------------------ |
 | F-E        | 科学计数 | 点击 **F-E** 开启科学计数；点击 ![icon](icon/F-E.svg) 关闭科学计数。 |
-| ![icon](jpg/deg_normal.png)/![icon](jpg/grad_normal.png)/![icon](jpg/rad_normal.png) | 度量转换 | 分别计算角度、梯度、弧度。 |
+| ![icon](jpg/deg.png)/![icon](jpg/grad.png)/![icon](jpg/rad.png) | 度量转换 | 分别计算角度、梯度、弧度。 |
 | sin、cos、tan、cot          | 三角函数 | 分别计算数值的正弦、余弦、正切、余切。                        |
 | sin<sup>-1</sup>、cos<sup>-1</sup>、tan<sup>-1</sup>、cot<sup>-1</sup> | 反三角函数 | 第二功能界面按钮，分别计算sin、cos、tan、cot的反三角函数。 |
 | &#124;x&#124;、Rand | F函数 | 分别计算数值的绝对值和随机显示一个31位的数。                 |
 | 2<sup>nd</sup> | 第二功能键 | 点击 **2<sup>nd</sup>** 切换到反三角函数和开根运算界面；点击 ![icon](icon/2nd.svg) 切换到三角函数与次方运算界面。 |
 |  x<sup>2</sup>、x<sup>3</sup> 、x<sup>y</sup> | 幂函数 | 分别计算数值的平方、立方、y次方。 |
 |  10<sup>x</sup>、2<sup>x</sup>、e<sup>x</sup>  | 指数函数 | 分别计算10的x次方、2的x次方和e的x次方。其中2<sup>x</sup>和e<sup>x</sup>为第二功能界面按钮。 |
-|  ![icon](jpg/square root_normal.png)、![icon](jpg/cube root_normal.png)、![icon](jpg/y root_normal.png) | 幂函数  | 第二功能界面按钮，分别计算数值的平方根、立方根、x的y次方根。 |
+|  ![icon](jpg/square_root.png)、![icon](jpg/cube_root.png)、![icon](jpg/y_root.png) | 幂函数  | 第二功能界面按钮，分别计算数值的平方根、立方根、x的y次方根。 |
 | log、In、log<sub>y</sub><sup>x</sup> | 对数函数 | 分别以10为底的对数值、以e为底的对数值、以y为底x的对数。其中log<sub>y</sub><sup>x</sup> 为第二功能界面按钮。 |
 | π | 圆周率 | 约等于3.14159......，可精确到小数点后31位。 |
 | e              | 自然常数 | 约等于2.71828......，可精确到小数点后31位。 |
@@ -91,7 +91,7 @@
    + 当计算结果为正数且大于16位/32位时，显示数字+小数点后15位/31位+E+数字。
    + 当计算结果为小数且大于16位/32位时，显示数字+小数点后15位/31位+E-数字。
 
-![0|scientific-notation](jpg/scientific-notation.png)
+![0|scientific_notation](jpg/scientific_notation.png)
 
 
 
@@ -112,8 +112,8 @@
 
 历史记录仅在科学模式下才被激活，请先切换至科学模式再查看历史记录。
 
-1. 在计算器界面，点击 ![icon_menu](icon/icon_menu.svg)。
-2. 点击 **历史记录**，查看历史表达式和内存列表。
+1. 在计算器界面，单击 ![icon_menu](icon/icon_menu.svg)。
+2. 选择 **历史记录**，查看历史表达式和内存列表。
    
    >![icon](icon/notes.svg)说明：关闭应用后，历史记录会清零。
 
@@ -121,29 +121,27 @@
 
 窗口主题包含浅色主题、深色主题和跟随系统主题。
 
-1. 在计算器界面，点击 ![icon_menu](icon/icon_menu.svg)。
-2. 点击 **主题**，选择一个主题颜色。
+1. 在计算器界面，单击 ![icon_menu](icon/icon_menu.svg)。
+2. 选择 **主题**，选择一个主题颜色。
 
 ### 帮助
 
 查看帮助手册，进一步了解和使用计算器。
 
-1. 在计算器界面，点击 ![icon_menu](icon/icon_menu.svg)。
-2. 点击 **帮助**。
+1. 在计算器界面，单击 ![icon_menu](icon/icon_menu.svg)。
+2. 选择 **帮助**。
 3. 查看计算器的帮助手册。
 
 
 ### 关于
 
-1. 在计算器界面，点击 ![icon_menu](icon/icon_menu.svg)。
-2. 点击 **关于**。
+1. 在计算器界面，单击 ![icon_menu](icon/icon_menu.svg)。
+2. 选择 **关于**。
 3. 查看计算器的版本和介绍。
 
 
 ### 退出
 
-1. 在计算器界面，点击 ![icon_menu](icon/icon_menu.svg)。
-2. 点击 **退出**。
+1. 在计算器界面，单击 ![icon_menu](icon/icon_menu.svg)。
+2. 选择 **退出**。
 
-
-<div class="version-info"><span>文档更新时间: 2020-11-18</span><span> 版本: 5.6</span></div>

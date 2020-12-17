@@ -3,7 +3,7 @@
 ## Overview
 
 
-Archive Manager is a user-friendly and easy-to-use compressing and decompressing software, supporting multiple compressing formats such as 7z, jar, tar, tar.bz2, tar.gz, tar.lz, tar.lzma, tar.lzo, tar.Z, zip as well as encrypted compressing settings.
+Archive Manager is a user-friendly and easy-to-use compressing and decompressing software, supporting multiple compressing formats such as 7z, jar, tar, tar.bz2, tar.gz, tar.lz, tar.lzma, tar.lzo, tar.xz, tar.Z, tar.7z, zip and so on as well as encrypted compressing settings.
 
 ![1|main](jpg/main.png)
 
@@ -48,17 +48,20 @@ It is available for you to compress a single file/folder/package or a collection
    
 2.  Click  ![plus](icon/icon_plus.svg) or click  ![icon_menu](icon/icon_menu.svg) > **Open file** to add files to be compressed.
 
-   ![1|compressor](jpg/compress-add.png)
+   ![1|compressor](jpg/compressadd.png)
 
 3.  Click **Next**.
 
 4.  Set the compressed file name, storage location, package format, etc.
 
-5.  If you enable the advanced option mode, it is available for you to set the package encryption password and volume compression.
-
-   > ![notes](icon/notes.svg)Notes: The default package is in .zip format, and the available formats for file encryption are .7z, .cbz, .exe and .zip; for list encryption, it is .7z; for volume compression, it is .7z. 
+5.  If you enable the advanced option mode, it is available for you to set file encryption, list encryption and volume compression.
+   > ![notes](icon/notes.svg)Notes: 
+      + The default package is in .zip format.
+      + The available formats for file encryption are .7z and .zip.
+      + The available format for list encryption is .7z; the file encryption password is the same as the one for list encryption.
+      + The available format for volume compression is .7z. 
    
-   ![1|compressor](jpg/compress-file.png)
+   ![1|compressor](jpg/compressfile.png)
 
 6.  Click **Compress**.
 
@@ -69,7 +72,7 @@ It is available for you to compress a single file/folder/package or a collection
    
    > ![tips](icon/tips.svg)Tips: You can also right-click **Compress** to compress the file.
    
-   ![1|compressor](jpg/compress-success.png)
+   ![1|compressor](jpg/compresssuccess.png)
 
 
 ### Decompression
@@ -100,7 +103,7 @@ On the Archive Manager interface, select a file to be extracted, right-click and
 
 ## Main Menu
 
-On the main menu, you can open the compression interface, switch window themes, view the help manual and get more information about Archive Manager.
+In the main menu, you can open the compression interface, switch window themes, view the help manual and get more information about Archive Manager.
 
 ### Open file
 1.  Click  ![icon_menu](icon/icon_menu.svg) on the Archive Manager interface.
@@ -108,18 +111,21 @@ On the main menu, you can open the compression interface, switch window themes, 
 
 ### Settings
 
-1.   Click  ![icon_menu](D:/工作/专业版/专业版SP3-1019/archive-manager/en_US/icon/icon_menu.svg) on the Archive Manager interface.
-2.   Click **Settings**.
-     - Extraction:
-       + Set the directory where the extracted archives go to;
-       + Check or uncheck **Auto create a folder for multiple extracted files**;
-       + Check or uncheck **Show extracted files when completed**.
-     - File Management:
-       + Set whether to **Delete archives after extraction**, you have options such as **Never**, **Ask for confirmation** and **Always**.
-       + Check or uncheck **Delete files after compression**.
-     - Files Associated:
-       + Check or uncheck file types of associated files.
-3.   Click **Restore Defaults** on the interface to restore the initial setting.
+1.  Click  ![icon_menu](icon/icon_menu.svg) on the Archive Manager interface.
+2.  Click **Settings**.
+   - Extraction:
+      + Set the directory where the extracted archives go to;
+      + Check or uncheck **Auto create a folder for multiple extracted files**;
+      + Check or uncheck **Show extracted files when completed**.
+   - File Management:
+      + Set whether to **Delete archives after extraction**, you have options such as **Never**, **Ask for confirmation** and **Always**.
+      + Check or uncheck **Delete files after compression**.
+   - Files Associated:
+      + Check or uncheck file types of associated files.
+3.  Click **Restore Defaults** on the interface to restore the initial setting.
+
+
+
 ### Theme
 
 The window theme includes Light Theme, Dark Theme and System Theme.
@@ -146,5 +152,3 @@ View Help to get more information about Archive Manager.
 
 1.  On the Archive Manager interface, click ![icon_menu](icon/icon_menu.svg) .
 2.  Click **Exit** to exit.
-
-<div class="version-info"><span>Update Date: 2020-11-18</span><span> Version: 5.9</span></div>

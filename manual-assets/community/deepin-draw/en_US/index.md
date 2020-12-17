@@ -56,12 +56,10 @@ When there are multiple tabs, you can adjust the order of tabs by dragging the t
 
 ### Open Pictures
 
-1.   On the Draw interface, click ![import](icon/Import_normal.svg).
+1.   On the Draw interface, click ![import](icon/Import_normal.svg)or  ![menu](icon/icon_menu.svg) > **Open**.
 2.   Select the picture to be imported and click **Open**.
 
-> ![tips](icon/tips.svg)Tips: You are able to import multiple pictures at one time or import pictures via ![menu](icon/icon_menu.svg) > **Open**. 
-
-Currently, a maximum of 30 pictures could be exported. Formats including JPG, PNG, TIF and BMP are supported.
+Currently, a maximum of 30 pictures could be exported. Formats including JPG, PNG, TIF, BMP and DDF are supported.
 
 ### Export Pictures
 
@@ -197,15 +195,12 @@ You can copy, crop and rotate graphics with the editing functions, and also adju
 ### Rotate
 
 1.  On the Draw interface, select an imported picture.
-2.  Click ![rotate](icon/rotate_right_normal.svg) or ![rotate](icon/rotate_left_normal.svg) to rotate the picture for 90 degrees clockwise or counterclockwise.
+2.  Click ![rotate](icon/rotate_right_normal.svg) or ![rotate](icon/rotate_left_normal.svg) to rotate the picture for 90 degrees clockwise or counterclockwise. Or rotate the picture by clicking the![icon](icon/icon_rotate.svg) on the picture.
 
 ![1|roll-over](jpg/rotate.png)
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-
-
->![tips](icon/tips.svg)Tips: You can also rotate it freely by dragging the base point of the picture or graphics with the mouse.
-
-
+>   ![notes](C:/Users/Admin/Documents/aiwa/personal/1125/draw/en_US/icon/notes.svg) Notes: If you are using a computer equipped with a touchscreen, you can use touchscreen gestures to operate instead of the mouse. Click to select the picture with one finger and hold down ![icon](icon/icon_rotate.svg) to rotate the picture freely.
 
 ### Auto Fit
 
@@ -283,5 +278,3 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 1.  On the Draw interface, click ![icon_menu](icon/icon_menu.svg).
 2.  Click **Exit** to exit Draw.
 
-
-<div class="version-info"><span>Update Date: 2020-11-18</span><span> Version: 5.8</span></div>

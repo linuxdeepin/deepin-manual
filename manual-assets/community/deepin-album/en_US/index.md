@@ -48,7 +48,7 @@ On the Album interface, you are able to import photos as follows:
 
 > ![tips](icon/tips.svg)Tips: You can also import photos to the empty Album by clicking **Import Photos** on the Album interface.
 
-> ![notes](icon/notes.svg)Notes: The photo formats supported include BMP, GIF, JPG, PNG, PBM, PGM, PPM, XBM, XPM, SVG, DDS, ICNS, JP2, MNG, TGA, TIFF, WBMP, WEBP, PSD, PDF and EPS.
+> ![notes](icon/notes.svg)Notes:  The photo formats supported include BMP, GIF, JPG, PNG, PBM, PGM, PPM, XBM, XPM, SVG, DDS, ICNS,  MNG, TGA, TIFF, WBMP, WEBP, PSD, ICO, JNG, PCD, PCX, TIF, RAS, MRW, DNG, RAF, CR2, RAW, ORF and NEF.
 
 ### Search Photos 
 
@@ -135,6 +135,11 @@ You can delete photos from Albums by the following ways:
 
 1. On the Album interface, right-click a photo and select **Rotate clockwise** or **Rotate counterclockwise**.
 2. The photo will be rotated clockwise or counterclockwise for 90 degrees.
+
+> ![notes](icon/notes.svg) Notes: If you are using a computer equipped with touch-screen or touchpad, you can use touchscreen gestures to operate instead of the mouse: 
+>
+> - On the touchscreen, place two fingers on the photo and keep a certain distance, and rotate the two fingers at the same time to rotate the photo.
+> - On the touchpad that supports multiple-point touch, place two fingers on the photo and keep a certain distance, and rotate the two fingers at the same time to rotate the photo.
 
 ### Set as Wallpaper
 
@@ -235,5 +240,3 @@ Click **Help** to view the manual.
 
 1.  On the Album interface, click ![icon_menu](icon/icon_menu.svg).
 2.  Click **Exit** to exit Album.
-
-<div class="version-info"><span>Update Date: 2020-11-18</span><span> Version: 5.8</span></div>

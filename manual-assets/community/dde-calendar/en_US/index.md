@@ -200,5 +200,3 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 1.   On the Calendar interface, click ![icon_menu](icon/icon_menu.svg). 
 2.  Click **Exit** to exit Calendar.
 
-
-<div class="version-info"><span>Update Date: 2020-11-18</span><span> Version: 5.7</span></div>

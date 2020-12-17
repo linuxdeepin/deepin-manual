@@ -39,7 +39,7 @@ You can quickly capture screenshots in the following ways:
 
 - Press the ![print](icon/Print.svg) key on the keyboard to capture the entire monitor screen.
 - Use the screen capture features of various applications such as Tencent QQ and Chrome browser.
-- Use specialized screen capture software to take screenshots, such as the Screen Capture software that comes with the operating system.
+- Use the specialized screen capture software to take screenshots, such as the Screen Capture software that comes with the operating system.
 
 #### Shortcuts
 
@@ -65,7 +65,7 @@ Full screen selection is used to identify the entire screen of the current monit
 You can select the full screen in the following ways:
 
 1.  Press **Ctrl + Alt + A** on the keyboard to enter the screen capture mode.
-2.  Move the cursor to the desktop and the full screen will be selected automatically. The screenshot dimension will be displayed in the upper left corner. 
+2.  Move the pointer to the desktop and the full screen will be selected automatically. The screenshot dimension will be displayed in the upper left corner. 
 3.  Click the desktop and a toolbar will pop up.
 4.  Click ![关闭](icon/close.svg) on the toolbar or right-click to select **Exit** to exit Screen Capture.
 
@@ -83,7 +83,7 @@ Program window selection is used to identify the current application window auto
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 1.  Press **Ctrl + Alt + A** on the keyboard to enter the screen capture mode.
-2.  Move the cursor to the application window and the window will be selected automatically. The screenshot dimension will be displayed above the upper left corner. 
+2.  Move the pointer to the application window and the window will be selected automatically. The screenshot dimension will be displayed above the upper left corner. 
 3.  Click the window and a toolbar will pop up.
 4.  Click ![ ](icon/close.svg) on the toolbar or right-click to select **Exit** to exit Screen Capture.
 
@@ -106,14 +106,14 @@ You can fine-tune the screenshot area. For example, you can enlarge or reduce th
 
 ##### Enlarge/Reduce the Screenshot Area
 
-Place the cursor over the white boarder of the screenshot area and the cursor will be changed to ![双箭头](icon/Mouse_Arrow.svg)You can:
+Place the pointer over the white boarder of the screenshot area and the pointer will be changed to ![双箭头](icon/Mouse_Arrow.svg)You can:
 
 - Hold down the left mouse button and drag the mouse to enlarge or reduce the screenshot area. 
 - Press **Ctrl** + ![向上](icon/Up.svg) , ![向下](icon/Down.svg) , ![向左](icon/Left.svg) or ![向右](icon/Right.svg) and drag the mouse to enlarge or reduce the screenshot area vertically or horizontally.
 
 ##### Move the Screenshot Position
 
-Place the cursor over the screenshot area and it will be changed to ![手指](jpg/fingers2.png). You can:
+Place the pointer over the screenshot area and it will be changed to ![手指](jpg/fingers2.png). You can:
 
 - Hold down the left mouse button and drag the mouse to move the position of the screenshot area.
 - Press ![向上](icon/Up.svg) , ![向下](icon/Down.svg) , ![向左](icon/Left.svg) or ![向右](icon/Right.svg) on the keyboard to move the screenshot area vertically or horizontally.
@@ -173,7 +173,7 @@ While capturing screenshots, you can click the icons on the toolbar to complete 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 1.  Click ![矩形](icon/rectangle-normal.svg) on the toolbar which appears beside the screenshot area.
 2.  In the toolbar extension panel, select the weight of outline for the rectangle shape. 
-3.  Place the cursor on the screenshot area and the cursor will be changed to ![矩形指针](icon/rect_mouse.svg).
+3.  Place the pointer on the screenshot area and the pointer will be changed to ![矩形指针](icon/rect_mouse.svg).
 4.  Hold down the left mouse button and drag the mouse to complete drawing.
 5.  Click ![模糊](icon/vague_normal.svg) or ![马赛克](icon/Mosaic_normal.svg) in the toolbar extension panel to mosaic the private information in the screenshot (if any).
 
@@ -190,7 +190,7 @@ While capturing screenshots, you can click the icons on the toolbar to complete 
 
 1.  Click ![椭圆](icon/oval-normal.svg) on the toolbar which appears beside the screenshot area.
 2.  In the toolbar extension panel, select the weight of outline for the ellipse shape. 
-3.  Place the cursor on the screenshot area and the cursor will be changed to ![椭圆指针](icon/ellipse_mouse.svg).
+3.  Place the pointer on the screenshot area and the pointer will be changed to ![椭圆指针](icon/ellipse_mouse.svg).
 4.  Hold down the left mouse button and drag the mouse to complete drawing.
 5.  Click ![模糊](icon/vague_normal.svg) or ![马赛克](icon/Mosaic_normal.svg)in the toolbar extension panel to mosaic the private information in the screenshot (if any).
 
@@ -201,7 +201,7 @@ While capturing screenshots, you can click the icons on the toolbar to complete 
 1.  Click ![直线](icon/line-normal.svg) on the toolbar which appears beside the screenshot area.
 2.  In the toolbar extension panel, select the weight of line. 
 3.  Click ![直线](icon/line-normal.svg) or ![箭头](icon/Arrow-normal.svg) to toggle between straight line and arrow.
-4.  Place the cursor on the screenshot area and the cursor will be changed to ![线条指针](icon/line_mouse.svg) or ![箭头指针](icon/arrow_mouse.svg).
+4.  Place the pointer on the screenshot area and the pointer will be changed to ![线条指针](icon/line_mouse.svg) or ![箭头指针](icon/arrow_mouse.svg).
 5.  Hold down the left mouse button and drag the mouse to complete drawing.
 
 
@@ -210,7 +210,7 @@ While capturing screenshots, you can click the icons on the toolbar to complete 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 1.  Click ![画笔](icon/Combined_Shape-normal.svg) on the toolbar beside the screenshot area.
 2.  In the toolbar extension panel, select the weight of pencil. 
-3.  Place the cursor on the screenshot area and the cursor will be changed to ![画笔指针](icon/brush red.svg).
+3.  Place the pointer on the screenshot area and the pointer will be changed to ![画笔指针](icon/brush red.svg).
 4.  Hold down the left mouse button and drag the mouse to complete drawing.
 
 If you need to draw a square, circle, or other shapes, you can:
@@ -227,20 +227,20 @@ You can modify and move the drawn graphics in the screenshot.
 ![1|修改图形](jpg/changetool.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 ##### Move Graphics
-1.  Place the cursor over the graphics border line and the mouse will be changed to ![手指](jpg/fingers.png).
+1.  Place the pointer over the graphics border line and the mouse will be changed to ![手指](jpg/fingers.png).
 2.  Hold down the left mouse button and drag the graphics to any place in the screenshot area.
 3.  Press ![向上](icon/Up.svg) , ![向下](icon/Down.svg) , ![向左](icon/Left.svg) or ![向右](icon/Right.svg) on the keyboard to move the graphics vertically or horizontally.
 
 
 ##### Edit Graphics
 
-1.  Place the cursor over the outline of graphics.
+1.  Place the pointer over the outline of graphics.
 2.  Left-click to enter the editing mode and you can:
     - Press the **Delete** key on the keyboard to delete the graphics.
     - Press **Ctrl + Z** on the keyboard to return to the previous step.
-    - Place the cursor over the edit box and the mouse will be changed to![双箭头](icon/Mouse_Arrow.svg). Enlarge or reduce the graphic area by dragging the cursor.
+    - Place the pointer over the edit box and the mouse will be changed to![双箭头](icon/Mouse_Arrow.svg). Enlarge or reduce the graphic area by dragging the pointer.
     - Press **Ctrl** + ![向上](icon/Up.svg) , ![向下](icon/Down.svg) , ![向左](icon/Left.svg) or ![向左](icon/Right.svg) to extend the graphics area vertically or horizontally.
-    - Place the cursor over ![旋转](icon/icon_rotate.svg) in the edit box and the cursor will be changed to ![旋转](icon/rotate_mouse.svg). Rotate the graphics by dragging the cursor.
+    - Place the pointer over ![旋转](icon/icon_rotate.svg) in the edit box and the pointer will be changed to ![旋转](icon/rotate_mouse.svg). Rotate the graphics by dragging the pointer.
 3.  Left-click outside the edit box to exit the editing mode.
 
 
@@ -252,7 +252,7 @@ Add text annotations to the screenshot in order to help others better understand
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 1.  Click ![文字](icon/text_normal.svg) on the toolbar which appears beside the screenshot area.
 2.  In the toolbar extension panel, select the font size via the scroll bar. 
-3.  Place the cursor over the screenshot and the mouse will be changed to ![文字指针](icon/text_mouse.svg).
+3.  Place the pointer over the screenshot and the mouse will be changed to ![文字指针](icon/text_mouse.svg).
 4.  Click where you want to add an annotation and a text box will appear.
 5.  Enter texts in the text box.
 
@@ -263,12 +263,12 @@ You can modify and move the text annotations after they're entered.
 
 ##### Move Text Annotations
 
-1.   Place the cursor over the text and the cursor will be changed to ![手指](jpg/fingers.png).
+1.   Place the pointer over the text and the pointer will be changed to ![手指](jpg/fingers.png).
 2.   Hold down the left mouse button and drag to move the text anywhere in the screenshot area.
 
 ##### Edit Text Annotations
 
-1.  Place the cursor over the text and the cursor will be changed to ![手指](jpg/fingers.png).
+1.  Place the pointer over the text and the pointer will be changed to ![手指](jpg/fingers.png).
 2.  Left-click to enter the text editing mode and you can:
     - Press **Delete** on the keyboard to delete text annotations.
     - Press **Ctrl + Z** on the keyboard to return to the previous step.
@@ -293,8 +293,12 @@ When the screenshot is saved successfully, you can see a prompt message in the u
 You can save the screenshot in the following ways after launching Screen Capture and selecting the screenshot area:
 
 - Double-click to save the screen capture.
-- Click the ![notes](icon/capture.svg) in the toolbar and press **Ctrl + S** to save the screenshot.
-- Right-click the screenshot to select **Save** to save the screenshot.
+- Click the ![notes](icon/capture.svg) in the toolbar.
+
+> ![notes](icon/notes.svg)Notes: If you are using a computer equipped with a touchscreen or touchpad, you can use touchscreen gestures to operate instead of the mouse: Double-click with one finger to finish screenshots.
+
+-  Press **Ctrl + S** to save the screenshot.
+- Right-click the screenshot and select **Save** to save the screenshot.
 
 > ![notes](icon/notes.svg)Notes: The screenshot is saved to the desktop by default.
 
@@ -360,11 +364,11 @@ After running screen recorder, you can select the recording area, namely the ful
 On the toolbar of Screen Capture, you can set sound, keystroke, camera, etc. to get ready for video recording.
 
 - Record sound: including microphone and built-in audio (enabled by default).
-- Keystroke: hover the cursor over ![icon](icon/key_mormal.svg) and **Show Keystroke** will display. Click it and the operation keystroke will be displayed during screen recording. Up to five recent operation keystrokes can be displayed at the same time. Click the icon again to enable **Hide Keystroke** and cancel keystroke display.
-- Camera: hover the cursor over ![icon](icon/webcam_normal.svg) and **Webcam On** will display. Click it and the camera window will be displayed on the recording screen. Drag the camera window outline to adjust the window size and position. Click the icon again to disable the camera. No image can be displayed except for a black screen.
-- Click: hover the cursor over ![icon](icon/mouse_mormal.svg) and **Show Click** will display. Click it to display mouse and touchscreen during screen recording. Click it again to cancel display.
+- Keystroke: hover the pointer over ![icon](icon/key_mormal.svg) and **Show Keystroke** will display. Click it and the operation keystroke will be displayed during screen recording. Up to five recent operation keystrokes can be displayed at the same time. Click the icon again to enable **Hide Keystroke** and cancel keystroke display.
+- Camera: hover the pointer over ![icon](icon/webcam_normal.svg) and **Webcam On** will display. Click it and the camera window will be displayed on the recording screen. Drag the camera window outline to adjust the window size and position. Click the icon again to disable the camera. No image can be displayed except for a black screen.
+- Click: hover the pointer over ![icon](icon/mouse_mormal.svg) and **Show Click** will display. Click it to display mouse and touchscreen during screen recording. Click it again to cancel display.
 
-> ![attention](icon/attention.svg)Attention: first, check whether the device connected supports sound recording and camera functions.
+> ![attention](icon/attention.svg)Attention: First, check whether the device connected supports sound recording and camera functions.
 >   - When the device connected supports sound recording and camera functions, you are able to process relevant operations.
 >   - When the device connected does not support sound recording and camera functions, the icons are grayed out and you are not able to process relevant operations.
 
@@ -393,4 +397,3 @@ The recorded video will be saved to the desktop automatically.
 ### View Help
 
 Press ![F1](icon/F1.svg) on the keyboard to view the help manual after launching Screen Capture.
-<div class="version-info"><span>Update Date: 2020-11-18</span><span> Version: 5.8</span></div>

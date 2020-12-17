@@ -14,9 +14,7 @@
 
 1. 单击任务栏上的启动器 ![deepin-launcher](icon/deepin-launcher.svg)，进入启动器界面。
 
-2. 上下滚动鼠标滚轮浏览或通过搜索，找到设备管理器 ![deepin-devicemanager](icon/deepin-devicemanager.svg) ，单击运行。弹出授权框，需要输入系统登录密码认证。
-
-   ![0|password](jpg/password.png)
+2. 上下滚动鼠标滚轮浏览或通过搜索，找到设备管理器 ![deepin-devicemanager](icon/deepin-devicemanager.svg) ，单击运行。
 
 3. 右键单击![deepin-devicemanager](icon/deepin-devicemanager.svg) ，您可以：
 
@@ -140,7 +138,7 @@
 
 ### 主题
 
-窗口主题包含浅色主题、深色主题和系统主题，其中系统主题为默认设置。
+窗口主题包含浅色主题、深色主题和系统主题。
 
 1. 在设备管理器界面，单击![icon_menu](icon/icon_menu.svg)。
 2. 单击 **主题**，选择一个主题颜色。
@@ -162,5 +160,3 @@
 1. 在设备管理器界面，单击 ![icon_menu](icon/icon_menu.svg)。
 2. 单击 **退出**。
 
-
-<div class="version-info"><span>文档更新时间: 2020-11-18</span><span> 版本: 5.6</span></div>
