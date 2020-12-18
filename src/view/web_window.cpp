@@ -144,6 +144,9 @@ void WebWindow::updateBtnBox()
 {
     if (m_forwardButton->isEnabled() || m_backButton->isEnabled()) {
         buttonBox->show();
+        //wayland下， 窗口焦点在qwebengines上时，如果titlebar原有没有buttonbox，将titlebar上buttonbox->show（）后会出现黑方角，像是没有渲染完成一样。。。。
+        //避免方法：刷新一次主窗口。。
+        this->update();
     } else {
         buttonBox->hide();
     }
@@ -238,7 +241,7 @@ void WebWindow::closeEvent(QCloseEvent *event)
     //保存窗口大小
     saveWindowSize();
 
-    if (QOpenGLContext *context = QOpenGLContext::currentContext()){
+    if (QOpenGLContext *context = QOpenGLContext::currentContext()) {
         context->doneCurrent();
     }
     deleteLater();
@@ -397,7 +400,7 @@ void WebWindow::initConnections()
     connect(search_edit_, &SearchEdit::enterPressed, this, &WebWindow::onTitleBarEntered);
     connect(search_edit_, &SearchEdit::upKeyPressed, completion_window_,
             &SearchCompletionWindow::goUp);
-   connect(search_edit_, &SearchEdit::focusChanged, this, &WebWindow::onSearchEditFocusOut);
+    connect(search_edit_, &SearchEdit::focusChanged, this, &WebWindow::onSearchEditFocusOut);
     connect(completion_window_, &SearchCompletionWindow::resultClicked, this,
             &WebWindow::onSearchResultClicked);
     connect(completion_window_, &SearchCompletionWindow::searchButtonClicked, this,
@@ -556,8 +559,8 @@ void WebWindow::initWebView()
             theme_proxy_, &ThemeProxy::slot_ThemeChange);
     //应用启动时，页面加载成功时间获取
     connect(manual_proxy_, &ManualProxy::startFinish, this, &WebWindow::manualStartFinish);
-   connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
-           this, &WebWindow::slot_ThemeChanged);
+    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
+            this, &WebWindow::slot_ThemeChanged);
 
     manual_proxy_->setApplicationState("dde");
 }
