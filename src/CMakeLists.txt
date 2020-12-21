@@ -366,8 +366,8 @@ file(GLOB QM_FILES  ${CMAKE_SOURCE_DIR}/translations/deepin-manual*.qm)
 install(FILES ${QM_FILES}
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual/translations/)
 
-install(DIRECTORY ${CMAKE_SOURCE_DIR}/manual-assets
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
+#install(DIRECTORY ${CMAKE_SOURCE_DIR}/manual-assets
+#        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
 
 install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/web_dist
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)

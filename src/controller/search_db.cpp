@@ -153,6 +153,7 @@ void SearchDb::initConnections()
     connect(this, &SearchDb::initDbAsync, this, &SearchDb::initDb);
     connect(this, &SearchDb::searchAnchor, this, &SearchDb::handleSearchAnchor);
     connect(this, &SearchDb::searchContent, this, &SearchDb::handleSearchContent);
+    connect(this, &SearchDb::updateModule, this, &SearchDb::getAllApp);
 }
 
 /**
@@ -213,26 +214,41 @@ void SearchDb::initSearchTable()
 void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
                               const QStringList &anchors, const QStringList &anchorInitialList,
                               const QStringList &anchorSpellList, const QStringList &anchorIdList,
-                              const QStringList &contents)
+                              const QStringList &contents, const QString &mdPath)
 {
     Q_ASSERT(p_->db.isOpen());
     Q_ASSERT(anchors.length() == contents.length());
     qDebug() << "addSearchEntry()" << app_name << lang << anchors; // << contents;
 
-    QString strManualPath;
-    if (app_name == "dde") {
-        strManualPath = "/system";
-    } else {
-        strManualPath = "/application";
-    }
-
-
     QStringList newContents = contents;
-    for (int i = 0; i < contents.size(); i++) {
-        QString content = contents.at(i);
-        content = content.replace("icon/", DMAN_INSTALL_DB_PATH + strManualPath
-                                  + "/" + app_name + "/" + lang + "/icon/");
-        newContents.replace(i, content);
+
+    if (mdPath.isEmpty()) {
+        QString strManualPath;
+        if (app_name == "dde") {
+            strManualPath = "/system";
+        } else {
+            strManualPath = "/application";
+        }
+
+
+        for (int i = 0; i < contents.size(); i++) {
+            QString content = contents.at(i);
+            content = content.replace("icon/", DMAN_INSTALL_DB_PATH + strManualPath
+                                      + "/" + app_name + "/" + lang + "/icon/");
+            newContents.replace(i, content);
+        }
+    } else {
+        QStringList list = mdPath.split("/");
+        list.removeLast();
+        QString strTemp = list.join("/");
+        for (int i = 0; i < contents.size(); i++) {
+            QString content = contents.at(i);
+            //正则替换所有的svg路径
+            QRegExp exp("\"(.*svg)\"");
+            exp.setMinimal(true);
+            content = content.replace(exp,  QString("\"%1/%2\"").arg(strTemp).arg("\\1"));
+            newContents.replace(i, content);
+        }
     }
 
     if (anchors.length() != newContents.length() || anchors.length() != anchorIdList.length()) {
@@ -328,7 +344,7 @@ void SearchDb::handleSearchAnchor(const QString &keyword)
     qDebug() << "=======>" << sql;
     if (query.exec(sql)) {
         while (query.next() && (result.size() < kResultLimitation)) {
-            qDebug() << "handleSearchAnchor===> " << query.value(0).toString();
+            qDebug() << "handleSearchAnchor===> " << query.value(0).toString() << strlistApp;
             //只将当前预装应用中的内容输出。
             if (strlistApp.contains(query.value(0).toString())) {
                 //搜索结果优先显示应用名称
@@ -467,15 +483,6 @@ QString SearchDb::highlightKeyword(QString srcString, QString keyword)
     }
 
     return highlightString;
-}
-
-/**
- * @brief SearchDb::getAllApp
- * 获取系统中存在帮助手册的应用列表
- */
-void SearchDb::getAllApp()
-{
-    strlistApp = Utils::getSystemManualList();
 }
 
 /**
@@ -723,4 +730,13 @@ QMap<QString, QString> SearchDb::selectAllFileTime()
         }
     }
     return mapRet;
+}
+
+/**
+ * @brief SearchDb::getAllApp
+ * 获取系统中存在帮助手册的应用列表
+ */
+void SearchDb::getAllApp()
+{
+    strlistApp = Utils::getSystemManualList();
 }

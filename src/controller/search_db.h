@@ -32,6 +32,7 @@ public:
     explicit SearchDb(QObject *parent = nullptr);
     ~SearchDb() override;
 
+
 signals:
     void initDbAsync();
     void searchAnchor(const QString &keyword);
@@ -44,6 +45,7 @@ signals:
                              const QStringList &anchorIdList,
                              const QStringList &contents);
     void searchContentMismatch(const QString &keyword);
+    void updateModule();
 
 public slots:
     void initDb();
@@ -55,7 +57,8 @@ public slots:
                         const QStringList &anchorInitialList,
                         const QStringList &anchorSpellList,
                         const QStringList &anchorIdList,
-                        const QStringList &contents);
+                        const QStringList &contents,
+                        const QString &mdPath = "");
     void deleteSearchInfo(const QStringList &appName, const QStringList &lang);
 
 
@@ -71,10 +74,12 @@ public slots:
     //查找filetime表所有内容, key:md文件路径 value: md文件更新时间
     QMap<QString, QString> selectAllFileTime();
 
+    void getAllApp();
+
 private:
     void initConnections();
     inline QString highlightKeyword(QString srcString, QString keyword);
-    void getAllApp();
+
     void sortSearchList(const QString &appName, const QStringList &anchors
                         , const QStringList &anchorIds, const QStringList &contents
                         , bool bIsTitleHigh);

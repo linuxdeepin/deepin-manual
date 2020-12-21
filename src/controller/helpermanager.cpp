@@ -10,6 +10,10 @@
 #include <QtDBus>
 #include <QDBusConnection>
 
+//p表示桌面专业版,h表示个人版，d表示社区版,s表示服务器版，e表示服务器企业版，eu表示服务器欧拉版，i表示服务器行业版
+//klu表示KelvinU项目版本，pgv表示PanguV项目版本。
+const QStringList systemList = {"p", "h", "d", "s", "e", "eu", "i", "klu", "pgv"};
+
 helperManager::helperManager(QObject *parent)
     : QObject(parent)
     , watcherObj(new fileWatcher)
@@ -119,8 +123,8 @@ void helperManager::initConnect()
  */
 void helperManager::handleDb(const QStringList &deleteList, const QStringList &addList, const QStringList &addTime)
 {
-    qDebug() << "========>" << deleteList.count() << " " << addList.count();
     QStringList list = handlePriority(addList);
+    qDebug() << "========>" << deleteList.count() << " " << addList.count() << " " << list;
     if (!deleteList.isEmpty()) {
         dbObj->deleteFilesTimeEntry(deleteList);
         QStringList appList;
@@ -150,6 +154,7 @@ void helperManager::handleDb(const QStringList &deleteList, const QStringList &a
 
     deleteTList = deleteList;
     addTList = list;
+    timerObj->start();
 }
 
 /**
@@ -201,12 +206,11 @@ QStringList helperManager::handlePriority(const QStringList &list)
         QString moduleLang = splitList.at(splitList.count() - 4) + splitList.at(splitList.count() - 2);
         QString mdFile = splitList.at(splitList.count() - 1);
         QStringList listTemp = mdFile.split("_");
-        //appName.md 长度为1  *_appName.md长度为二
-        if ((listTemp.count() == 1) && !moduleList.contains(moduleLang)) {
+        // 首位如果包含在系统类型里， 则代表其为特定系统类型文件*_appName.md，否则为默认文件appName.md
+        if (!systemList.contains(listTemp.at(0)) && !moduleList.contains(moduleLang)) {
             moduleList.append(moduleLang);
             retList.append(mdPath);
-
-        } else if (listTemp.count() == 2 && omitType.contains(listTemp.at(0))) {
+        } else if (systemList.contains(listTemp.at(0)) && omitType.contains(listTemp.at(0))) {
             int nIndex = moduleList.indexOf(moduleLang);
             if (nIndex != -1) {
                 moduleList.removeAt(nIndex);
@@ -292,7 +296,7 @@ void helperManager::onRecvParseMsg(const QString &msg, const QString &path)
     }
 
     if (!invalid_entry) {
-        dbObj->addSearchEntry(appName, lang, anchors, anchorInitialList, anchorSpellList, anchorIdList, contents);
+        dbObj->addSearchEntry(appName, lang, anchors, anchorInitialList, anchorSpellList, anchorIdList, contents, path);
     }
     //获取内容解析返回 重置定时器
     timerObj->start();

@@ -2,3 +2,5 @@
 
 killall dmanHelper
 killall dman
+
+exit 0

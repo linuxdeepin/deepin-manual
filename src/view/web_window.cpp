@@ -140,9 +140,14 @@ void WebWindow::updatePage(const QStringList &list)
         QStringList appList;
         for (const QString &app : list) {
             QStringList splitList = app.split("/");
-            appList.append(splitList.at(splitList.count() - 3));
+            appList.append(splitList.at(splitList.count() - 4));
         }
+
         emit search_proxy_->reloadPage(appList);
+    }
+
+    if (search_manager_) {
+        emit search_manager_->updateModule();
     }
 }
 

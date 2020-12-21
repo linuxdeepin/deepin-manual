@@ -45,6 +45,7 @@ void SearchManager::initSearchManager()
     connect(this, &SearchManager::searchContent, db_, &SearchDb::searchContent);
     connect(db_, &SearchDb::searchContentResult, this, &SearchManager::searchContentResult);
     connect(db_, &SearchDb::searchContentMismatch, this, &SearchManager::searchContentMismatch);
+    connect(this, &SearchManager::updateModule, db_, &SearchDb::updateModule);
     connect(db_thread_, &QThread::destroyed, db_, &QObject::deleteLater);
 
     emit db_->initDbAsync();
