@@ -107,6 +107,7 @@ FILE (GLOB allTestSource
     src/view/*.cpp
     src/view/widget/*.cpp
     src/test_main.cpp
+    src/third-party/stub/*
     )
 
 #Include all app source files
@@ -175,6 +176,6 @@ add_custom_command(TARGET test
 add_dependencies(test ${PROJECT_NAME_TEST})
 
 ## 设置添加gocv相关信息的输出
-set(CMAKE_CXX_FLAGS "-g -fprofile-arcs -ftest-coverage")
+set(CMAKE_CXX_FLAGS "-g -fprofile-arcs -ftest-coverage -fno-inline")
 
 

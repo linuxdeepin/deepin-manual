@@ -2,7 +2,7 @@
 * Copyright (C) 2019 ~ 2020 Deepin Technology Co., Ltd.
 *
 * Author:     wangmingliang <wangmingliang@uniontech.com>
-* Maintainer: wangmingliang <wanmgmingliang@uniontech.com>
+* Maintainer: wangmingliang <wangmingliang@uniontech.com>
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -15,23 +15,26 @@
 * You should have received a copy of the GNU General Public License
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef UT_IMAGE_VIEWER_PROXY_TEST_H
-#define UT_IMAGE_VIEWER_PROXY_TEST_H
+#include "ut_jscontext.h"
+#include "../src/view/jscontext.h"
 
-#include "gtest/gtest.h"
-#include <QTest>
 
-class ImageViewerProxy;
-class ImageViewer;
-class ut_image_viewer_proxy_test : public::testing::Test
+ut_JsContext::ut_JsContext()
 {
-public:
-    ut_image_viewer_proxy_test();
-    virtual void SetUp() override;
-    virtual void TearDown() override;
-    ImageViewerProxy *m_ivp = nullptr;
-    ImageViewer *m_iv = nullptr;
-};
 
-//}
-#endif // UT_IMAGE_VIEWER_PROXY_TEST_H
+}
+
+void ut_JsContext::SetUp()
+{
+    m_jc = new JsContext();
+}
+
+void ut_JsContext::TearDown()
+{
+    delete m_jc;
+}
+
+TEST_F(ut_JsContext, recvParseMsg)
+{
+    m_jc->recvParseMsg("aaaaa", "path");
+}

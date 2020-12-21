@@ -21,13 +21,14 @@
 #include "gtest/gtest.h"
 #include <QTest>
 
-namespace dman {
-
+class ManualProxy;
 class ut_manual_proxy_test : public::testing::Test
 {
 public:
     ut_manual_proxy_test();
+    virtual void SetUp() override;
+    virtual void TearDown() override;
+    ManualProxy *m_mp;
 };
 
-}
 #endif // UT_MANUAL_PROXY_TEST_H

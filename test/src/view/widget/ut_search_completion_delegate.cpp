@@ -21,12 +21,18 @@
 
 #include "view/widget/search_completion_listview.h"
 #include "controller/search_result.h"
+#include "src/third-party/stub/stub.h"
 
 #include <QPainter>
 
 ut_search_completion_delegate_test::ut_search_completion_delegate_test()
 {
 
+}
+
+bool stub_true()
+{
+    return true;
 }
 
 TEST_F(ut_search_completion_delegate_test, paint)
@@ -72,6 +78,9 @@ TEST_F(ut_search_completion_delegate_test, paint)
     const QStyleOptionViewItem  option;
 //    const QModelIndex index;
 
+    Stub s;
+    s.set(ADDR(QModelIndex, isValid), stub_true);
+
     sd->paint(painter, option, index);
-//        sd->paint()
+    s.reset(ADDR(QModelIndex, isValid));
 }

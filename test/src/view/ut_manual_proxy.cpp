@@ -23,17 +23,33 @@
 #include <QProcess>
 #include <QMutex>
 
-namespace dman {
-
 ut_manual_proxy_test::ut_manual_proxy_test()
 {
 
 }
 
-TEST_F(ut_manual_proxy_test, openExternalLink)
+void ut_manual_proxy_test::SetUp()
 {
-    ManualProxy mp;
-    //mp.openExternalLink("//===home/kevin_w/project/qtest/build-manual-unknown-Debug/coverageResult/report/home/kevin_w/project/qtest/manual/src/view/index.html");
+    m_mp = new ManualProxy();
+}
+
+void ut_manual_proxy_test::TearDown()
+{
+    delete m_mp;
+}
+
+TEST_F(ut_manual_proxy_test, getSystemManualDir)
+{
+    QString str = m_mp->getSystemManualDir();
+    QString tmp = "deepin-manual/manual-assets";
+    ASSERT_NE(str.indexOf(tmp), -1);
+}
+
+TEST_F(ut_manual_proxy_test, getSystemManualList)
+{
+    QStringList list = m_mp->getSystemManualList();
+
+//    ASSERT_GE(list.count(), 1);
 }
 
 TEST_F(ut_manual_proxy_test, setApplicationState)
@@ -45,32 +61,53 @@ TEST_F(ut_manual_proxy_test, setApplicationState)
     }
     QString winInfoFilePath(winInfoPath.filePath("wininfo-config.conf"));
 
+
+
     QDir configPath(winInfoFilePath);
     if (!configPath.exists()) {
         QProcess p;
-        p.start("cp /home/kevin_w/.config/deepin/deepin-manual/wininfo-config.conf /home/kevin_w/.config/deepin-manual_test/wininfo-config.conf");
+        QString cmd = "cp ";
+        //user目录
+        cmd +=  QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
+        cmd += "/.config/deepin/deepin-manual/wininfo-config.conf ";
+        cmd += QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
+        cmd += "/.config/deepin-manual_test/wininfo-config.conf";
+        p.start(cmd);
         p.close();
-    } else {
+
         QSettings *setting = new QSettings(winInfoFilePath, QSettings::IniFormat);
 
         setting->beginGroup(kConfigAppList);
-//    setting->setValue("dde", true);
         QString appName("dde");
         if (setting->contains(appName)) {
             setting->setValue(appName, true);
 
             qDebug() << "dde=" << setting->value(appName).toString();
+            ManualProxy mp;
+            ASSERT_TRUE(setting->value(appName).toBool());
+            qDebug() << "setting->value.dde.bool->>" << setting->value(appName).toBool();
+            mp.setApplicationState(appName);
+            ASSERT_FALSE(setting->value(appName).toBool());
+            qDebug() << "setting->value.dde.bool->>" << setting->value(appName).toBool();
+            setting->endGroup();
         }
-//    setting->endGroup();
+    } else {
+        QSettings *setting = new QSettings(winInfoFilePath, QSettings::IniFormat);
 
-        ManualProxy mp;
-//    setting->beginGroup(kConfigAppList);
-        ASSERT_TRUE(setting->value(appName).toBool());
-        qDebug() << "setting->value.dde.bool->>" << setting->value(appName).toBool();
-        mp.setApplicationState(appName);
-        ASSERT_FALSE(setting->value(appName).toBool());
-        qDebug() << "setting->value.dde.bool->>" << setting->value(appName).toBool();
-        setting->endGroup();
+        setting->beginGroup(kConfigAppList);
+        QString appName("dde");
+        if (setting->contains(appName)) {
+            setting->setValue(appName, true);
+
+            qDebug() << "dde=" << setting->value(appName).toString();
+            ManualProxy mp;
+            ASSERT_TRUE(setting->value(appName).toBool());
+            qDebug() << "setting->value.dde.bool->>" << setting->value(appName).toBool();
+            mp.setApplicationState(appName);
+            ASSERT_FALSE(setting->value(appName).toBool());
+            qDebug() << "setting->value.dde.bool->>" << setting->value(appName).toBool();
+            setting->endGroup();
+        }
     }
 }
 
@@ -85,9 +122,29 @@ TEST_F(ut_manual_proxy_test, setApplicationState2)
     QDir configPath(winInfoFilePath);
     if (!configPath.exists()) {
         QProcess p;
-        p.start("cp /home/kevin_w/.config/deepin/deepin-manual/wininfo-config.conf "
-                "/home/kevin_w/.config/deepin-manual_test/wininfo-config.conf");
+        QString cmd = "cp ";
+        //user目录
+        cmd +=  QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
+        cmd += "/.config/deepin/deepin-manual/wininfo-config.conf ";
+        cmd += QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
+        cmd += "/.config/deepin-manual_test/wininfo-config.conf";
+        p.start(cmd);
         p.close();
+
+        QSettings *setting = new QSettings(winInfoFilePath, QSettings::IniFormat);
+
+        setting->beginGroup(kConfigAppList);
+        QString appName("dde");
+        if (setting->contains(appName)) {
+            setting->setValue(appName, true);
+            qDebug() << "dde=" << setting->value(appName).toString();
+            ASSERT_TRUE(setting->value(appName).toBool());
+            ManualProxy mp;
+            QString strName("dde%2Findex%2F.html");
+            mp.setApplicationState(strName);
+            ASSERT_FALSE(setting->value(appName).toBool());
+            setting->endGroup();
+        }
     } else {
         QSettings *setting = new QSettings(winInfoFilePath, QSettings::IniFormat);
 
@@ -95,15 +152,14 @@ TEST_F(ut_manual_proxy_test, setApplicationState2)
         QString appName("dde");
         if (setting->contains(appName)) {
             setting->setValue(appName, true);
-
             qDebug() << "dde=" << setting->value(appName).toString();
+            ASSERT_TRUE(setting->value(appName).toBool());
+            ManualProxy mp;
+            QString strName("dde%2Findex%2F.html");
+            mp.setApplicationState(strName);
+            ASSERT_FALSE(setting->value(appName).toBool());
+            setting->endGroup();
         }
-        ASSERT_TRUE(setting->value(appName).toBool());
-        ManualProxy mp;
-        QString strName("dde%2Findex%2F.html");
-        mp.setApplicationState(strName);
-        ASSERT_FALSE(setting->value(appName).toBool());
-        setting->endGroup();
     }
 }
 
@@ -147,6 +203,3 @@ TEST_F(ut_manual_proxy_test, saveApplist)
     setting->endGroup();
 }
 
-
-
-}

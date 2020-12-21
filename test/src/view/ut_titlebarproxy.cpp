@@ -2,7 +2,7 @@
 * Copyright (C) 2019 ~ 2020 Deepin Technology Co., Ltd.
 *
 * Author:     wangmingliang <wangmingliang@uniontech.com>
-* Maintainer: wangmingliang <wanmgmingliang@uniontech.com>
+* Maintainer: wangmingliang <wangmingliang@uniontech.com>
 *
 * This program is free software: you can redistribute it and/or modify
 * it under the terms of the GNU General Public License as published by
@@ -15,23 +15,39 @@
 * You should have received a copy of the GNU General Public License
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
-#ifndef UT_IMAGE_VIEWER_PROXY_TEST_H
-#define UT_IMAGE_VIEWER_PROXY_TEST_H
+#include "ut_titlebarproxy.h"
 
-#include "gtest/gtest.h"
-#include <QTest>
+#include "view/title_bar_proxy.h"
+#include "view/web_window.h"
+#include "view/widget/search_edit.h"
+#include "view/widget/search_completion_window.h"
+#include "view/widget/search_button.h"
+#include "controller/search_manager.h"
+#include "controller/search_result.h"
+#include "base/consts.h"
+#include "controller/config_manager.h"
 
-class ImageViewerProxy;
-class ImageViewer;
-class ut_image_viewer_proxy_test : public::testing::Test
+ut_TitleBarProxy::ut_TitleBarProxy()
 {
-public:
-    ut_image_viewer_proxy_test();
-    virtual void SetUp() override;
-    virtual void TearDown() override;
-    ImageViewerProxy *m_ivp = nullptr;
-    ImageViewer *m_iv = nullptr;
-};
 
-//}
-#endif // UT_IMAGE_VIEWER_PROXY_TEST_H
+}
+
+void ut_TitleBarProxy::SetUp()
+{
+    m_tbp = new TitleBarProxy();
+}
+
+void ut_TitleBarProxy::TearDown()
+{
+    delete m_tbp;
+}
+
+TEST_F(ut_TitleBarProxy, setBackwardButtonActive)
+{
+
+}
+
+TEST_F(ut_TitleBarProxy, setForwardButtonActive)
+{
+
+}
