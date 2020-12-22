@@ -70,6 +70,7 @@ void fileWatcher::monitorFile()
     QStringList listModule;
     QString  assetsPath = Utils::getSystemManualDir();
     listModule.append(assetsPath);
+    //新文案结构 /usr/share/deepin-manual/manual-assets/[application | system]/appName/appNameT/land/*_appNameT.md
     for (const QString &type : QDir(assetsPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
         //监控资源文件夹
         if (type == "system" || type == "application") {
@@ -104,6 +105,26 @@ void fileWatcher::monitorFile()
             }
         }
     }
+
+//旧文案结构兼容  /usr/share/deepin-manual/manual-assets/[professional | server]/appName/lang/index.md
+#if 1
+    for (const QString &system : QDir(assetsPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+        if (systemType.contains(system)) {
+            QString typePath = assetsPath + "/" + system;
+            listModule.append(typePath);
+            for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+                QString modulePath = typePath + "/" + module;
+                listModule.append(typePath);
+                for (QString &lang : QDir(modulePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+                    if (lang == "zh_CN" || lang == "en_US") {
+                        QString strMd = modulePath + "/" + lang + "/index.md";
+                        listMonitorFile.append(strMd);
+                    }
+                }
+            }
+        }
+    }
+#endif
 
     //监控模块资源文件夹
     if (!listModule.isEmpty()) {
@@ -179,6 +200,28 @@ void fileWatcher::onTimerOut()
             }
         }
     }
+
+//旧文案结构兼容  /usr/share/deepin-manual/manual-assets/[professional | server]/appName/lang/index.md
+#if 1
+    for (const QString &system : QDir(assetsPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+        if (systemType.contains(system)) {
+            QString typePath = assetsPath + "/" + system;
+            for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+                QString modulePath = typePath + "/" + module;
+                for (QString &lang : QDir(modulePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+                    if (lang == "zh_CN" || lang == "en_US") {
+                        QString strMd = modulePath + "/" + lang + "/index.md";
+                        QFileInfo fileInfo(strMd);
+                        if (fileInfo.exists()) {
+                            QString modifyTime = fileInfo.lastModified().toString();
+                            mapNow.insert(strMd, modifyTime);
+                        }
+                    }
+                }
+            }
+        }
+    }
+#endif
 
     QStringList deleteList;
     QStringList addList;

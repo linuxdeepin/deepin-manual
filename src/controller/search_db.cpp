@@ -244,7 +244,7 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
         for (int i = 0; i < contents.size(); i++) {
             QString content = contents.at(i);
             //正则替换所有的svg路径
-            QRegExp exp("\"(.*svg)\"");
+            QRegExp exp("\"([^>]*svg)\"");
             exp.setMinimal(true);
             content = content.replace(exp,  QString("\"%1/%2\"").arg(strTemp).arg("\\1"));
             newContents.replace(i, content);
@@ -612,9 +612,15 @@ void SearchDb::handleSearchContent(const QString &keyword)
             if (highlightContent.isEmpty() && !anchor.contains(keyword)) continue;
 
             //去除jpg文件, 影响页面格式.
-            QRegExp exp("<img src=\\\"jpg.*>");
-            exp.setMinimal(true);
-            highlightContent.remove(exp);
+            //旧结构
+            QRegExp expJpg("<img src=\\\"jpg.*>");
+            expJpg.setMinimal(true);
+            //新结构
+            QRegExp expFit("<img src=\\\"fig.*>");
+            expFit.setMinimal(true);
+
+            highlightContent.remove(expFit);
+            highlightContent.remove(expJpg);
 
             //处理内容是否省略..
             omitHighlight(highlightContent, keyword);

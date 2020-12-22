@@ -20,6 +20,8 @@
 
 #include <QtDBus/QtDBus>
 
+const QStringList systemType = {"professional", "server", "community", "personal"};
+
 ManualSearchProxy::ManualSearchProxy(QObject *parent)
     : QObject(parent)
     , m_bWindowState(false)
@@ -120,6 +122,15 @@ bool ManualSearchProxy::ManualExists(const QString &app_name)
                 moduleList.append(module);
             }
         }
+#if 1 //旧文案结构兼容
+        if (systemType.contains(type)) {
+            QString typePath = strManualPath + "/" + type;
+            for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+                moduleList.append(module);
+            }
+        }
+#endif
     }
+
     return moduleList.contains(app_name);
 }

@@ -10,9 +10,7 @@
 #include <QtDBus>
 #include <QDBusConnection>
 
-//p表示桌面专业版,h表示个人版，d表示社区版,s表示服务器版，e表示服务器企业版，eu表示服务器欧拉版，i表示服务器行业版
-//klu表示KelvinU项目版本，pgv表示PanguV项目版本。
-const QStringList systemList = {"p", "h", "d", "s", "e", "eu", "i", "klu", "pgv"};
+
 
 helperManager::helperManager(QObject *parent)
     : QObject(parent)
@@ -97,6 +95,28 @@ void helperManager::getModuleInfo()
         }
     }
 
+//旧文案结构兼容  /usr/share/deepin-manual/manual-assets/[professional | server]/appName/lang/index.md
+#if 1
+    for (const QString &system : QDir(assetsPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+        if (systemType.contains(system)) {
+            QString typePath = assetsPath + "/" + system;
+            for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+                QString modulePath = typePath + "/" + module;
+                for (QString &lang : QDir(modulePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+                    if (lang == "zh_CN" || lang == "en_US") {
+                        QString strMd = modulePath + "/" + lang + "/index.md";
+                        QFileInfo fileInfo(strMd);
+                        if (fileInfo.exists()) {
+                            QString modifyTime = fileInfo.lastModified().toString();
+                            mapNow.insert(strMd, modifyTime);
+                        }
+                    }
+                }
+            }
+        }
+    }
+#endif
+
 
     QStringList deleteList;
     QStringList addList;
@@ -123,8 +143,7 @@ void helperManager::initConnect()
  */
 void helperManager::handleDb(const QStringList &deleteList, const QStringList &addList, const QStringList &addTime)
 {
-    QStringList list = handlePriority(addList);
-    qDebug() << "========>" << deleteList.count() << " " << addList.count() << " " << list;
+    qDebug() << Q_FUNC_INFO << deleteList.count() << " " << addList.count();
     if (!deleteList.isEmpty()) {
         dbObj->deleteFilesTimeEntry(deleteList);
         QStringList appList;
@@ -139,11 +158,9 @@ void helperManager::handleDb(const QStringList &deleteList, const QStringList &a
         dbObj->deleteSearchInfo(appList, langList);
     }
 
+    QStringList list = handlePriority(addList);
     if (!list.isEmpty() && !addTime.isEmpty()) {
         dbObj->insertFilesTimeEntry(addList, addTime);
-
-
-
         //通过JS层函数来完成md转html, 然后解析html内所有文本内容
         if (jsObj) {
             QString strChange = list.join(",");
@@ -199,26 +216,59 @@ QStringList helperManager::handlePriority(const QStringList &list)
     qDebug() << Q_FUNC_INFO << omitType;
     QStringList moduleList;
     QStringList retList;
+    //key: md路径  value:md文件是否为最高优先级别
+    QMap<QString, bool> map;
 
     for (int i = 0; i < list.count(); i++) {
         QString mdPath = list.at(i);
         QStringList splitList = mdPath.split("/");
-        QString moduleLang = splitList.at(splitList.count() - 4) + splitList.at(splitList.count() - 2);
-        QString mdFile = splitList.at(splitList.count() - 1);
-        QStringList listTemp = mdFile.split("_");
-        // 首位如果包含在系统类型里， 则代表其为特定系统类型文件*_appName.md，否则为默认文件appName.md
-        if (!systemList.contains(listTemp.at(0)) && !moduleList.contains(moduleLang)) {
-            moduleList.append(moduleLang);
-            retList.append(mdPath);
-        } else if (systemList.contains(listTemp.at(0)) && omitType.contains(listTemp.at(0))) {
-            int nIndex = moduleList.indexOf(moduleLang);
-            if (nIndex != -1) {
-                moduleList.removeAt(nIndex);
-                retList.removeAt(nIndex);
+
+        //新文案结构 /usr/share/deepin-manual/manual-assets/[application | system]/appName/appNameT/land/*_appNameT.md
+        if (splitList.count() == 10 && ("application" == splitList.at(5) || "system" == splitList.at(5))) {
+            QString moduleLang = splitList.at(splitList.count() - 4) + splitList.at(splitList.count() - 2);
+            QString mdFile = splitList.at(splitList.count() - 1);
+            QStringList listTemp = mdFile.split("_");
+            // 首位如果包含在系统类型里， 则代表其为特定系统类型文件*_appName.md，否则为默认文件appName.md
+            if (!systemList.contains(listTemp.at(0))) {
+                //如果之前没有对应的模块语言的md文件， 则直接添加
+                if (!moduleList.contains(moduleLang)) {
+                    moduleList.append(moduleLang);
+                    retList.append(mdPath);
+                }
+                //如果之前存在对应的模块语言的md文件，则判断对应文件是否为最高优先级， 不是最高优先级，则添加。
+                else if (!map.value(moduleLang)) {
+                    int nIndex = moduleList.indexOf(moduleLang);
+                    if (nIndex != -1) {
+                        moduleList.removeAt(nIndex);
+                        retList.removeAt(nIndex);
+                    }
+                    moduleList.append(moduleLang);
+                    map.insert(moduleLang, false);
+                    retList.append(mdPath);
+                }
+            } else if (systemList.contains(listTemp.at(0)) && omitType.contains(listTemp.at(0))) {
+                int nIndex = moduleList.indexOf(moduleLang);
+                if (nIndex != -1) {
+                    moduleList.removeAt(nIndex);
+                    retList.removeAt(nIndex);
+                }
+                moduleList.append(moduleLang);
+                map.insert(moduleLang, true);
+                retList.append(mdPath);
             }
-            moduleList.append(moduleLang);
-            retList.append(mdPath);
         }
+
+//旧文案结构兼容  /usr/share/deepin-manual/manual-assets/[professional | server]/appName/lang/index.md
+#if 1
+        if (splitList.count() == 9 && systemType.contains(splitList.at(5))) {
+            QString moduleLang = splitList.at(splitList.count() - 3) + splitList.at(splitList.count() - 2);
+            if (!moduleList.contains(moduleLang)) {
+                moduleList.append(moduleLang);
+                map.insert(moduleLang, false);
+                retList.append(mdPath);
+            }
+        }
+#endif
     }
     return  retList;
 }
@@ -242,9 +292,16 @@ void helperManager::webLoadFinish(bool ok)
 void helperManager::onRecvParseMsg(const QString &msg, const QString &path)
 {
     QStringList pathList = path.split("/");
-    if (pathList.count() < 3) return;
-    const QString &lang = pathList.at(pathList.count() - 2);
-    const QString &appName = pathList.at(pathList.count() - 4);
+    QString lang = pathList.at(pathList.count() - 2);
+    QString appName = pathList.at(pathList.count() - 4);
+
+//旧文案结构兼容  /usr/share/deepin-manual/manual-assets/[professional | server]/appName/lang/index.md
+#if 1
+    if (systemType.contains(pathList.at(pathList.count() - 4))) {
+        lang = pathList.at(pathList.count() - 2);
+        appName = pathList.at(pathList.count() - 3);
+    }
+#endif
 
     QJsonDocument document = QJsonDocument::fromJson(msg.toLocal8Bit());
     const QJsonArray array = document.array();

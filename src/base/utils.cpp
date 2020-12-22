@@ -408,9 +408,24 @@ QStringList Utils::getSystemManualList()
 
     QStringList app_list_;
     const AppInfoList list = launcherInterface();
-//    const QStringList dir_entry = QDir(getSystemManualDir()).entryList();
     const QStringList applicationList = QDir(QString("%1/application/").arg(DMAN_MANUAL_DIR)).entryList();
     const QStringList systemList = QDir(QString("%1/system/").arg(DMAN_MANUAL_DIR)).entryList();
+
+#if 1 //旧文案结构兼容
+    QString oldMdPath = DMAN_MANUAL_DIR;
+    if (Dtk::Core::DSysInfo::DeepinServer == Dtk::Core::DSysInfo::deepinType()) {
+        oldMdPath += "/server";
+    } else if (Dtk::Core::DSysInfo::DeepinPersonal == Dtk::Core::DSysInfo::deepinType()) {
+        oldMdPath += "/personal";
+    } else {
+        if (Dtk::Core::DSysInfo::isCommunityEdition()) {
+            oldMdPath += "/community";
+        } else {
+            oldMdPath += "/professional";
+        }
+    }
+    const QStringList oldAppList = QDir(oldMdPath).entryList();
+#endif
 
     QMultiMap<qlonglong, AppInfo> appMap;
     for (int var = 0; var < list.size(); ++var) {
@@ -421,21 +436,13 @@ QStringList Utils::getSystemManualList()
 
     for (int i = 0; i < listApp.size(); ++i) {
         const QString app_name = kAppNameMap.value(listApp.at(i).key, listApp.at(i).key);
-        if ((applicationList.indexOf(app_name) != -1) && app_list_.indexOf(app_name) == -1) {
+        if ((applicationList.contains(app_name) || oldAppList.contains(app_name))  && app_list_.indexOf(app_name) == -1) {
             app_list_.append(app_name);
         }
-//        const QString deepin_app_id = GetDeepinManualId(listApp.at(i).desktop);
-//        if (deepin_app_id == app_name && app_list_.indexOf(app_name) == -1) {
-//            app_list_.append(app_name);
-//        }
     }
-    // Add "dde" by hand, as it has no desktop file.
-    if (systemList.contains("dde")) {
+
+    if (systemList.contains("dde") || oldAppList.contains("dde")) {
         app_list_.append("dde");
-    }
-    // Remove youdao-dict if current locale is not Simplified Chinese.
-    if (!QLocale().name().startsWith("zh")) {
-        app_list_.removeAll("youdao-dict");
     }
 
     qDebug() << "exist app list: " << app_list_ << ", count:" << app_list_.size();
@@ -585,6 +592,20 @@ QStringList Utils::systemToOmit(Dtk::Core::DSysInfo::UosEdition type)
         break;
     }
     return retList;
+}
+
+/**
+ * @brief Utils::isMostPriority 判断当前文件是否为最优先级文件
+ * @param mdPath
+ * @param morePriorityPath
+ * @return
+ */
+bool Utils::isMostPriority(const QString &mdPath, QString &morePriorityPath)
+{
+    Q_UNUSED(mdPath);
+    Q_UNUSED(morePriorityPath);
+
+    return  true;
 }
 
 ExApplicationHelper *ExApplicationHelper::instance()

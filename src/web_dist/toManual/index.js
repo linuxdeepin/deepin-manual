@@ -1342,6 +1342,7 @@ var Index = function (_Component2) {
     };
 
     global.qtObjects.manual.getSystemManualList(function (appList) {
+      console.log("======>applist==+>", appList);
       _this4.setState({ appList: appList });
     });
 

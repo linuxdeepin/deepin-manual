@@ -27,6 +27,11 @@
 #include <QFileSystemWatcher>
 
 
+//p表示桌面专业版,h表示个人版，d表示社区版,s表示服务器版，e表示服务器企业版，eu表示服务器欧拉版，i表示服务器行业版
+//klu表示KelvinU项目版本，pgv表示PanguV项目版本。
+const QStringList systemList = {"p", "h", "d", "s", "e", "eu", "i", "klu", "pgv"};
+const QStringList systemType = {"professional", "server", "community", "personal"};
+
 class Utils;
 class fileWatcher : public QObject
 {

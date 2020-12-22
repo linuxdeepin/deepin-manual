@@ -103,6 +103,7 @@ export default class Index extends Component {
     };
 
     global.qtObjects.manual.getSystemManualList(appList =>{
+      console.log("======>applist==+>",appList);
       this.setState({ appList });
     });
 
