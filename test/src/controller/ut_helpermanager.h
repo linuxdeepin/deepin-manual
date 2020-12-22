@@ -32,13 +32,7 @@ public:
     ~ut_helperManager();
     virtual void SetUp() override;
     virtual void TearDown() override;
-
-
-signals:
-
-public slots:
-protected:
-    helperManager *m_hm;
+    helperManager *m_hm = nullptr;
 
 };
 

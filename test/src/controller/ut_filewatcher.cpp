@@ -19,6 +19,8 @@
 #include "base/utils.h"
 
 #include "controller/filewatcher.h"
+#include "src/third-party/stub/stub.h"
+#include "base/utils.h"
 
 ut_fileWatcher::ut_fileWatcher()
 {
@@ -33,11 +35,6 @@ void ut_fileWatcher::SetUp()
 void ut_fileWatcher::TearDown()
 {
     delete m_fw;
-}
-
-TEST_F(ut_fileWatcher, monitorFile)
-{
-    m_fw->monitorFile();
 }
 
 TEST_F(ut_fileWatcher, onChangeFile)
@@ -75,8 +72,54 @@ TEST_F(ut_fileWatcher, checkMap)
     QStringList addList;
     QStringList addTime;
 
+    mapOld.insert("111", "aaa");
+    mapNow.insert("222", "bbb");
+    addList<< "ccc";
     m_fw->checkMap(mapOld, mapNow, deleteList, addList, addTime);
-
-
 }
+
+TEST_F(ut_fileWatcher, checkMap2)
+{
+    QMap<QString, QString> mapOld;
+    QMap<QString, QString> mapNow;
+
+    QStringList deleteList;
+    QStringList addList;
+    QStringList addTime;
+
+    mapOld.insert("111", "aaa");
+    mapNow.insert("222", "bbb");
+    mapNow.insert("111", "aaa");
+    addList<< "ccc";
+    m_fw->checkMap(mapOld, mapNow, deleteList, addList, addTime);
+}
+
+TEST_F(ut_fileWatcher, checkMap3)
+{
+    QMap<QString, QString> mapOld;
+    QMap<QString, QString> mapNow;
+
+    QStringList deleteList;
+    QStringList addList;
+    QStringList addTime;
+
+    mapOld.insert("111", "aaa");
+    mapNow.insert("111", "bbb");
+    addList<< "ccc";
+    m_fw->checkMap(mapOld, mapNow, deleteList, addList, addTime);
+}
+
+QString stub_getSystemManualDir()
+{
+    return "s";
+}
+TEST_F(ut_fileWatcher, monitorFile)
+{
+    Utils ut;
+
+    Stub s;
+    s.set(ADDR(Utils, getSystemManualDir), stub_getSystemManualDir);
+    m_fw->monitorFile();
+}
+
 

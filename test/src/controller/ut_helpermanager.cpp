@@ -18,6 +18,7 @@
 #include "ut_helpermanager.h"
 
 #include "controller/helpermanager.h"
+#include <QTimer>
 
 ut_helperManager::ut_helperManager(QObject *parent) : QObject(parent)
 {
@@ -39,9 +40,15 @@ void ut_helperManager::TearDown()
     delete m_hm;
 }
 
-//TEST_F(ut_helperManager, initDbConfig)
+//TEST_F(ut_helperManager, iniweb)
 //{
-////    m_hm->initDbConfig();
+////    m_hm->initWeb();
+////    sleep(1000);
+//}
+
+//TEST_F(ut_helperManager, iniinitDbConfig)
+//{
+//   m_hm->initDbConfig();
 //}
 
 //TEST_F(ut_helperManager, getModuleInfo)
@@ -76,7 +83,7 @@ void ut_helperManager::TearDown()
 
 //}
 
-//TEST_F(ut_helperManager, onFilelistChange)
+//TEST_F(ut_helperManager, handlePriority)
 //{
 //    QStringList deleteList;
 //    QStringList addList;
@@ -84,6 +91,6 @@ void ut_helperManager::TearDown()
 //    deleteList << "aaaa";
 //    addList << "bbbb";
 //    addTime << "001002";
-////    m_hm->onFilelistChange(deleteList, addList, addTime);
+//    m_hm->handlePriority(deleteList);
 //}
 

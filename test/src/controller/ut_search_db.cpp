@@ -5,10 +5,18 @@
 #include <QSqlQuery>
 #include <QSqlDatabase>
 
-namespace dman {
-
 ut_search_db_test::ut_search_db_test()
 {
+}
+
+void ut_search_db_test::SetUp()
+{
+    sd = new SearchDb();
+}
+
+void ut_search_db_test::TearDown()
+{
+    delete sd;
 }
 
 
@@ -511,5 +519,3 @@ pro2.start(cmdCp);
 
 //}
 
-
-}

@@ -104,6 +104,7 @@ FILE (GLOB allTestSource
     src/base/*.cpp
     src/controller/*.cpp
     src/dbus/*.cpp
+    src/dbus/dbusvariant/*.cpp
     src/view/*.cpp
     src/view/widget/*.cpp
     src/test_main.cpp
