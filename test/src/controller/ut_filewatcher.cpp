@@ -42,7 +42,6 @@ TEST_F(ut_fileWatcher, onChangeFile)
     QString  dbPath = Utils::getSystemManualDir();
     dbPath += "/search.db";
     m_fw->onChangeFile(dbPath);
-
 }
 TEST_F(ut_fileWatcher, onChangeDirSlot)
 {
@@ -50,10 +49,7 @@ TEST_F(ut_fileWatcher, onChangeDirSlot)
     m_fw->onChangeDirSlot(assetsPath);
     ASSERT_TRUE(m_fw->timerObj->isActive());
 }
-TEST_F(ut_fileWatcher, onTimerOut)
-{
-    m_fw->onTimerOut();
-}
+
 TEST_F(ut_fileWatcher, setFileMap)
 {
     QMap<QString, QString> map;
@@ -74,7 +70,7 @@ TEST_F(ut_fileWatcher, checkMap)
 
     mapOld.insert("111", "aaa");
     mapNow.insert("222", "bbb");
-    addList<< "ccc";
+    addList << "ccc";
     m_fw->checkMap(mapOld, mapNow, deleteList, addList, addTime);
 }
 
@@ -90,7 +86,7 @@ TEST_F(ut_fileWatcher, checkMap2)
     mapOld.insert("111", "aaa");
     mapNow.insert("222", "bbb");
     mapNow.insert("111", "aaa");
-    addList<< "ccc";
+    addList << "ccc";
     m_fw->checkMap(mapOld, mapNow, deleteList, addList, addTime);
 }
 
@@ -105,21 +101,63 @@ TEST_F(ut_fileWatcher, checkMap3)
 
     mapOld.insert("111", "aaa");
     mapNow.insert("111", "bbb");
-    addList<< "ccc";
+    addList << "ccc";
     m_fw->checkMap(mapOld, mapNow, deleteList, addList, addTime);
 }
 
-QString stub_getSystemManualDir()
-{
-    return "s";
-}
+
 TEST_F(ut_fileWatcher, monitorFile)
 {
-    Utils ut;
+    QDir dir;
+    dir.mkpath("./manual-assets/system/dde/dde/zh_CN/");
+    dir.mkpath("./manual-assets/system/dde/dde11/zh_CN/");
+    dir.mkpath("./manual-assets/application/deepin-voice-note/voice-note/zh_CN/");
+    dir.mkpath("./manual-assets/professional/deepin-voice-note/zh_CN/");
 
+    QFile file("./manual-assets/system/dde/dde/zh_CN/index.md");
+    file.open(QIODevice::ReadWrite | QIODevice::Text);
+    file.close();
+    QFile file1("./manual-assets/application/deepin-voice-note/voice-note/zh_CN/index.md");
+    file1.open(QIODevice::ReadWrite | QIODevice::Text);
+    file1.close();
+    QFile file2("./manual-assets/professional/deepin-voice-note/zh_CN/index.md");
+    file2.open(QIODevice::ReadWrite | QIODevice::Text);
+    file2.close();
+
+    Utils ut;
     Stub s;
     s.set(ADDR(Utils, getSystemManualDir), stub_getSystemManualDir);
     m_fw->monitorFile();
+
+    QDir dirRemove;
+    dirRemove.rmpath("./manual-assets/");
+}
+
+TEST_F(ut_fileWatcher, onTimerOut)
+{
+    QDir dir;
+    dir.mkpath("./manual-assets/system/dde/dde/zh_CN/");
+    dir.mkpath("./manual-assets/system/dde/dde11/zh_CN/");
+    dir.mkpath("./manual-assets/application/deepin-voice-note/voice-note/zh_CN/");
+    dir.mkpath("./manual-assets/professional/deepin-voice-note/zh_CN/");
+
+    QFile file("./manual-assets/system/dde/dde/zh_CN/index.md");
+    file.open(QIODevice::ReadWrite | QIODevice::Text);
+    file.close();
+    QFile file1("./manual-assets/application/deepin-voice-note/voice-note/zh_CN/index.md");
+    file1.open(QIODevice::ReadWrite | QIODevice::Text);
+    file1.close();
+    QFile file2("./manual-assets/professional/deepin-voice-note/zh_CN/index.md");
+    file2.open(QIODevice::ReadWrite | QIODevice::Text);
+    file2.close();
+
+    Utils ut;
+    Stub s;
+    s.set(ADDR(Utils, getSystemManualDir), stub_getSystemManualDir);
+    m_fw->onTimerOut();
+    QDir dirRemove;
+    bool b = dirRemove.rmdir("./manual-assets/");
+//    qDebug() << "=======+>===========" << b;
 }
 
 

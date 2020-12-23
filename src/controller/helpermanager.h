@@ -73,7 +73,7 @@ private:
     //定时器对象
     QTimer *timerObj;
 
-    QWebEngineView *m_webView;
+    QWebEngineView *m_webView = nullptr;
     QWebChannel *m_webChannel;
     JsContext *jsObj;
     QStringList deleteTList;

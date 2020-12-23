@@ -22,12 +22,18 @@
 #include <QTest>
 
 class fileWatcher;
-class ut_fileWatcher :public::testing::Test
+class ut_fileWatcher : public::testing::Test
 {
 public:
     ut_fileWatcher();
     virtual void SetUp() override;
     virtual void TearDown() override;
+
+    static QString stub_getSystemManualDir()
+    {
+        return "./manual-assets";
+    }
+
 
 protected:
     fileWatcher *m_fw;

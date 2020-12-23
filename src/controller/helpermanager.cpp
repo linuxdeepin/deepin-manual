@@ -17,6 +17,7 @@ helperManager::helperManager(QObject *parent)
     , watcherObj(new fileWatcher)
     , dbObj(new SearchDb)
     , timerObj(new QTimer)
+    , jsObj(new JsContext)
 {
     timerObj->setSingleShot(true);
     timerObj->setInterval(1000);
@@ -34,7 +35,6 @@ void helperManager::initWeb()
     m_webView = new QWebEngineView;
     m_webView->setFixedSize(400, 200);
     connect(m_webView->page(), &QWebEnginePage::loadFinished, this, &helperManager::webLoadFinish);
-    jsObj = new JsContext(this);
     m_webChannel = new QWebChannel(this);
     m_webChannel->registerObject("context", jsObj);
     m_webView->page()->setWebChannel(m_webChannel);
@@ -150,7 +150,7 @@ void helperManager::handleDb(const QStringList &deleteList, const QStringList &a
         QStringList langList;
         for (const QString &path : deleteList) {
             QStringList list = path.split("/");
-            if (list.count() > 2) {
+            if (list.count() >= 4) {
                 langList.append(list.at(list.count() - 2));
                 appList.append(list.at(list.count() - 4));
             }
@@ -162,9 +162,10 @@ void helperManager::handleDb(const QStringList &deleteList, const QStringList &a
     if (!list.isEmpty() && !addTime.isEmpty()) {
         dbObj->insertFilesTimeEntry(addList, addTime);
         //通过JS层函数来完成md转html, 然后解析html内所有文本内容
-        if (jsObj) {
+        if (jsObj && m_webView) {
             QString strChange = list.join(",");
             qDebug() << Q_FUNC_INFO << strChange;
+
             m_webView->page()->runJavaScript(QString("parseMdList('%1')").arg(strChange));
         }
     }
