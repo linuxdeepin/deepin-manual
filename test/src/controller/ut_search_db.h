@@ -11,6 +11,8 @@ public:
     ut_search_db_test();
     virtual void SetUp() override;
     virtual void TearDown() override;
+    bool fromLocalFileBackup();
+    bool fromLocalFileRestore();
     SearchDb *sd;
 };
 

@@ -118,7 +118,6 @@ struct searchStrct {
     QStringList contents;
 };
 
-
 SearchDb::SearchDb(QObject *parent)
     : QObject(parent)
     , p_(new SearchDbPrivate())
@@ -166,8 +165,7 @@ void SearchDb::initDb()
     QString databasePath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
     databasePath += "/.local/share/deepin/deepin-manual/search.db";
 
-
-    qDebug() << "initDb database path is--->:" << databasePath  << endl;
+    qDebug() << "initDb database path is--->:" << databasePath << endl;
     p_->db = QSqlDatabase::addDatabase("QSQLITE");
     p_->db.setDatabaseName(databasePath);
     if (!p_->db.open()) {
@@ -184,10 +182,10 @@ void SearchDb::initSearchTable()
 {
     Q_ASSERT(p_->db.isOpen());
     QSqlQuery query(p_->db);
-//    if (!query.exec(kSearchDropTable)) {
-//        qCritical() << "Failed to drop search table";
-//        return;
-//    }
+    //    if (!query.exec(kSearchDropTable)) {
+    //        qCritical() << "Failed to drop search table";
+    //        return;
+    //    }
 
     if (!query.exec(kSearchTableSchema)) {
         qCritical() << "Failed to initialize search table:" << query.lastError().text();
@@ -230,11 +228,10 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
             strManualPath = "/application";
         }
 
-
         for (int i = 0; i < contents.size(); i++) {
             QString content = contents.at(i);
             content = content.replace("icon/", DMAN_INSTALL_DB_PATH + strManualPath
-                                      + "/" + app_name + "/" + lang + "/icon/");
+                                                   + "/" + app_name + "/" + lang + "/icon/");
             newContents.replace(i, content);
         }
     } else {
@@ -246,7 +243,7 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
             //正则替换所有的svg路径
             QRegExp exp("\"([^>]*svg)\"");
             exp.setMinimal(true);
-            content = content.replace(exp,  QString("\"%1/%2\"").arg(strTemp).arg("\\1"));
+            content = content.replace(exp, QString("\"%1/%2\"").arg(strTemp).arg("\\1"));
             newContents.replace(i, content);
         }
     }
@@ -379,7 +376,7 @@ void SearchDb::handleSearchAnchor(const QString &keyword)
  * @return
  * 在传入的文本中的搜索关键字加入<span>标签，用以js解析显示高亮
  */
-QString insertHighlight(QString srcString, QString keyword)
+QString SearchDb::insertHighlight(QString srcString, QString keyword)
 {
     QString resultString = srcString;
     int currIndex = 0;
@@ -554,7 +551,6 @@ void SearchDb::omitHighlight(QString &highLight, const QString &keyword)
         for (int i = 0; i < imgIndexList.count(); i++) {
             if (nOmitIndex > imgIndexList[i]) {
                 nOmitIndex += imgList[i].length();
-
             }
         }
         highLight = "..." + highLight.mid(nOmitIndex);
@@ -609,7 +605,8 @@ void SearchDb::handleSearchContent(const QString &keyword)
             QString highlightContent = highlightKeyword(tmpContent, keyword);
 
             //如果关键字在img路径中,返回后退出本次循环.
-            if (highlightContent.isEmpty() && !anchor.contains(keyword)) continue;
+            if (highlightContent.isEmpty() && !anchor.contains(keyword))
+                continue;
 
             //去除jpg文件, 影响页面格式.
             //旧结构
@@ -629,7 +626,8 @@ void SearchDb::handleSearchContent(const QString &keyword)
                 anchors.append(anchor);
                 anchorIds.append(anchorId);
                 contents.append(highlightContent);
-                if (anchor.contains(keyword)) bIsTitle = true;
+                if (anchor.contains(keyword))
+                    bIsTitle = true;
             } else {
                 if (!last_app_name.isEmpty()) {
                     sortSearchList(last_app_name, anchors, anchorIds, contents, bIsTitle);
@@ -641,7 +639,8 @@ void SearchDb::handleSearchContent(const QString &keyword)
                 anchors.append(anchor);
                 anchorIds.append(anchorId);
                 contents.append(highlightContent);
-                if (anchor.contains(keyword)) bIsTitle = true;
+                if (anchor.contains(keyword))
+                    bIsTitle = true;
                 last_app_name = app_name;
             }
         }
@@ -649,7 +648,8 @@ void SearchDb::handleSearchContent(const QString &keyword)
             sortSearchList(last_app_name, anchors, anchorIds, contents, bIsTitle);
         }
         for (searchStrct obj : listStruct) {
-            if (result_empty) result_empty = false;
+            if (result_empty)
+                result_empty = false;
             emit this->searchContentResult(obj.appName, obj.anchors, obj.anchorIds, obj.contents);
         }
     } else {
@@ -728,7 +728,7 @@ void SearchDb::deleteFilesTimeEntry(const QStringList &listMdPath)
 QMap<QString, QString> SearchDb::selectAllFileTime()
 {
     Q_ASSERT(p_->db.isOpen());
-    QMap <QString, QString> mapRet;
+    QMap<QString, QString> mapRet;
     QSqlQuery query(p_->db);
     if (query.exec(kfileTimeSelectAll)) {
         while (query.next()) {

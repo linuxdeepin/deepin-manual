@@ -32,7 +32,6 @@ public:
     explicit SearchDb(QObject *parent = nullptr);
     ~SearchDb() override;
 
-
 signals:
     void initDbAsync();
     void searchAnchor(const QString &keyword);
@@ -61,7 +60,6 @@ public slots:
                         const QString &mdPath = "");
     void deleteSearchInfo(const QStringList &appName, const QStringList &lang);
 
-
     /***************filetime表***************/
     void initTimeTable();
     //文件信息插入数据库 （先删除数据，再插入数据）
@@ -80,11 +78,11 @@ private:
     void initConnections();
     inline QString highlightKeyword(QString srcString, QString keyword);
 
-    void sortSearchList(const QString &appName, const QStringList &anchors
-                        , const QStringList &anchorIds, const QStringList &contents
-                        , bool bIsTitleHigh);
+    void sortSearchList(const QString &appName, const QStringList &anchors, const QStringList &anchorIds, const QStringList &contents, bool bIsTitleHigh);
 
     void omitHighlight(QString &highLight, const QString &keyword);
+
+    QString insertHighlight(QString srcString, QString keyword);
 
     SearchDbPrivate *p_ = nullptr;
     QStringList strlistApp;

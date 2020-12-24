@@ -1,23 +1,22 @@
 #include "ut_lanuncher_interface.h"
 
-//#define protected public
-//#include "dbus/launcher_interface.h"
-//#define protected
+#include "dbus/launcher_interface.h"
 #include <QDBusAbstractInterface>
 
 ut_lanuncher_interface_test::ut_lanuncher_interface_test()
 {
-
 }
 
 void ut_lanuncher_interface_test::SetUp()
 {
-
+    QDBusConnection dbusConn =
+        QDBusConnection::connectToBus(QDBusConnection::SessionBus, "Sender");
+    li = new LauncherInterface("com.deepin.dde.daemon.Launcher", "com/deepin/dde/daemon/Launcher", dbusConn);
 }
 
 void ut_lanuncher_interface_test::TearDown()
 {
-
+    delete li;
 }
 
 TEST_F(ut_lanuncher_interface_test, LauncherInterface)
@@ -34,35 +33,28 @@ TEST_F(ut_lanuncher_interface_test, LauncherInterface2)
         QDBusConnection::connectToBus(QDBusConnection::SessionBus, "Sender");
     LauncherInterface li("com.deepin.dde.daemon.Launcher", "com/deepin/dde/daemon/Launcher", dbusConn);
     //QDBusAbstractInterface qdbusInf("com.deepin.dde.daemon.Launcher", "com/deepin/dde/daemon/Launcher", li.staticInterfaceName(), dbusConn, &li);
-//    li.staticInterfaceName();
+    //    li.staticInterfaceName();
     //LauncherInterface li("com.deepin.dde.daemon.Launcher", "com/deepin/dde/daemon/Launcher", dbusConn);
 
     com::deepin::dde::daemon::Launcher("com.deepin.dde.daemon.Launcher", "com/deepin/dde/daemon/Launcher", dbusConn);
     li.deleteLater();
-
 }
 
 TEST_F(ut_lanuncher_interface_test, LauncherInterface3)
 {
     QDBusConnection dbusConn =
         QDBusConnection::connectToBus(QDBusConnection::SessionBus, "Sender");
-//    LauncherInterface li("com.deepin.dde.daemon.Launcher", "com/deepin/dde/daemon/Launcher", dbusConn);
+    //    LauncherInterface li("com.deepin.dde.daemon.Launcher", "com/deepin/dde/daemon/Launcher", dbusConn);
     LauncherInterface li();
-//    li.deleteLater();
+    //    li.deleteLater();
 }
 
 TEST_F(ut_lanuncher_interface_test, GetAllItemInfos)
 {
-//    QDBusConnection dbusConn =
-//        QDBusConnection::connectToBus(QDBusConnection::SessionBus, "Sender");
-//    LauncherInterface li("com.deepin.dde.daemon.Launcher", "com/deepin/dde/daemon/Launcher", dbusConn);
-//    li.GetAllItemInfos();
+    //    li->GetAllItemInfos();
 }
 
 TEST_F(ut_lanuncher_interface_test, GetItemInfo)
 {
-//    QDBusConnection dbusConn =
-//        QDBusConnection::connectToBus(QDBusConnection::SessionBus, "Sender");
-//    LauncherInterface li("com.deepin.dde.daemon.Launcher", "com/deepin/dde/daemon/Launcher", dbusConn);
-//    li.GetItemInfo("");
+    //    li->GetItemInfo("send");
 }
