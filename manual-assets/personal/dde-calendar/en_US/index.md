@@ -83,9 +83,9 @@ Monthly view is defaulted and you can click to switch between different views.
 2. Select **Edit** and an **Edit Event** dialogue will pop up.
 3. Set properties for the event under editing.  
 4. Click **Save**. 
-5. If it is set as an all day event or a repeated event, a prompt box will pop up for you to confirm information and then complete editing. 
+5. If it is set as an all day event or a repeating event, a prompt box will pop up for you to confirm information and then complete editing. 
 
-When editing an event, different prompt information will be displayed according to the changes of content. Description of icons contained in the prompt information is listed as below.
+In the process of editing an event, different prompt information will be displayed according to the changes of content. Description of icons contained in the prompt information is listed as below.
 
 | Icon              | Description                                                  |
 | ----------------- | ------------------------------------------------------------ |
@@ -100,13 +100,8 @@ Check **All Day**, set the **Starts** and **Ends **and you are able to set an al
 
 ### Set Repeating Events
 
-1. Click the drop-down list on the right of **Repeat** and select an option when creating or editing an event.
-   - **Daily**: Enter the number of days between each repetition.
-   - **Weekdays**: Enter the number of weekdays between each repetition.
-   - **Weekly**: Enter the number of weeks between each repetition and select the day on which the event shall occur.
-   - **Monthly**: Enter the number of months between each repetition.
-   - **Yearly**: Enter the number of years between each repetition and click the month in which the schedule shall occur.
-
+1. Click the drop-down list on the right of **Repeat** and select an option as needed when creating or editing an event.
+   
 2. Click the drop-down list on the right of **End Repeat** and select the end time of the schedule.
 
 ### View Events
@@ -121,7 +116,7 @@ Description of icons contained in the prompt information is listed as below.
 
 | Icon                   | Description                                                  |
 | ---------------------- | ------------------------------------------------------------ |
-| Remind me later        | The reminder is set on the current day. After the first reminder is given, click **Remind me later** and you will be reminded 10 minutes later. The following reminder intervals will be increased by 5 minutes each time on the basis of the then reminder internal when you click the **Remind me later**. |
+| Remind me later        | The reminder is set on the current day. After the first reminder is given, click **Remind me later** and you will be reminded 10 minutes later. The following reminder intervals will be increased by 5 minutes each time on the basis of the then reminder internal when you click **Remind me later**. |
 | Remind  me    tomorrow | The reminder is set to one day or two days ahead of the schedule. |
 | One day before start   | The reminder is set to one week ahead of the schedule.       |
 | Close                  | Turn off the prompt information.                             |
@@ -144,7 +139,7 @@ In the yearly, monthly, weekly, or daily view, when the events are entered in th
 
 You can also click **Cancel** to cancel the operation.
 
-Description of icons contained in the prompt information for repeating and non-repeating events when deleting a event is listed as below.
+Description of icons contained in the prompt information for repeating and non-repeating events when deleting an event is listed as below.
 
 | Icon                     | Description                                                  |
 | ------------------------ | ------------------------------------------------------------ |
@@ -155,11 +150,11 @@ Description of icons contained in the prompt information for repeating and non-r
 
 ### Delete All Occurrences of Repeating Events
 
-In the Calendar, if you select the first occurrence of the repeating events, you can click **Delete All** to delete all occurrences of the event. 
+In Calendar, if you select the first occurrence of the repeating events, you can click **Delete All** to delete all occurrences of the event. 
 
 ### Delete Part of the Repeating events
 
-In the Calendar, if you select one or more occurrences of the repeating events, you can perform below tasks when deleting events:
+In Calendar, if you select one or more occurrences of the repeating events, you can perform the following tasks when deleting events:
 
 - Click **Delete Only This Event**: delete the selected event only.
 - Click **Delete All Future Events**: delete the selected occurrence and all future occurrences of the event.
@@ -191,4 +186,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 2. Click **Exit** to exit Calendar.
 
 
-<div class="version-info"><span>Update Date: 2020-11-27</span><span> Version: 5.7</span></div>
+<div class="version-info"><span>Update Date: 2020-12-24</span><span> Version: 5.7</span></div>

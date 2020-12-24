@@ -37,21 +37,20 @@ Click ![plus_icon](icon/+.svg) on the title bar, or press **Ctrl + N**, or click
 
 ### Open Files
 
-You can open the text file in the following ways, and the selected file will open in the new tab:
+You can open one or multiple text files at one time in the following ways, and the selected file will open in the new tab:
 
 - Drag the file directly to the Text Editor interface or the Text Editor icon.
-- Right-click the file and open it with Text Editor. After selecting Text Editor as the default application for text files in the Control Center, you can double-click the file to open it directly.
+- Right-click the file and open it with Text Editor. After selecting Text Editor as the default application for text files in Control Center, you can double-click the file to open it directly.
 - On the Text Editor interface, click ![icon_menu](icon/icon_menu.svg)> **Open file**, and select the file.
 - On the Text Editor interface, use **Ctrl + O** to open the file.
-
-> ![tips](icon/tips.svg) Tips: You can open multiple files at one time.
 
 ### Save Files
 
 - Press **Ctrl + S** to save the current document.
 - Click ![icon_menu](icon/icon_menu.svg)> **Save** to save the file.
 
-You can also press **Ctrl + Shift + S** to save the file as a new one.
+- Press **Ctrl + Shift + S** to save the file as a new one.
+
 
 ### Close Files
 
@@ -250,8 +249,8 @@ You can add a bookmark for any current line on the Text Editor interface. The ic
 
 -   Delete bookmark 
    + Click the colored bookmark icon ![bookmarkbig](icon/bookmarkbig_checked_light.svg) to delete the bookmark of the line directly.
-   + Right-click the colored bookmark icon ![bookmarkbig](icon/bookmarkbig_checked_light.svg) , and select **Cancel bookmark** to delete the bookmark in the line.
-   + Right-click a bookmark, and select **Clear bookmark** to delete all the bookmarks in the text.
+   + Right-click the colored bookmark icon ![bookmarkbig](icon/bookmarkbig_checked_light.svg) , and select **Remove Bookmark** to delete the bookmark in the line.
+   + Right-click a bookmark, and select **Remove All Bookmarks** to delete all the bookmarks in the text.
   >![Notes](icon/notes.svg) Notes: The bookmark icon appears only when cursor is hovered over to the left of the line number in the left column; when it's moved beyond the left bookmark column, the bookmark icon will disappear. Click the icon when it appears and it will be filled with color, after which this filled color icon will remain no matter if the cursor hovers near the bookmark column.
 
 ### Manage Comment 
@@ -259,11 +258,11 @@ You can add a bookmark for any current line on the Text Editor interface. The ic
 You can add comments to any text with a code type suffix, such as cpp and java, among others.
 
 - Add comment
-  - Select the text needed, and right-click to select **Add comment**.
+  - Select the text needed, and right-click to select **Add Comment**.
   - Select the text needed, and press **Alt + A** to add comment.
 
 - Cancel comment
-  - Select the text with comments, and right-click to select **Cancel comment**.
+  - Select the text with comments, and right-click to select **Remove Comment**.
   - Select the text with comments, and press **Alt + Z** to cancel comment.
 
 > ![notes](icon/notes.svg) Notes: This supports comments in different languages. Please refer to actual conditions for detailed information. For example, comment symbol for C, C# and Java is //, and comment symbol for Python is #.
@@ -281,7 +280,7 @@ You can set the basic information, shortcuts, and advanced information in settin
 Click ![icon_menu](icon/icon_menu.svg)> **Settings** and you can perform the following in the **Basic** option:
 
 - Select the Font and Font Size.
-- Check or uncheck **Word Wrap**.
+- Check or uncheck **Word wrap**.
 - Check **Code folding flag** and ![next](icon/next.svg) or ![next](icon/next-down.svg) are displayed in the edit area. Right-click and select **Fold/Unfold Current Level** or **Fold/Unfold All** to perform the corresponding operations.
 - Check **Show line numbers** to display the line number in the edit area.
 - Check **Show whitespaces and tabs** to display all the white spaces and tabs. You can also input or delete white spaces and tabs manually.
@@ -325,4 +324,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 
 1. On the Text Editor interface, click ![menu](icon/icon_menu.svg).
 2. Click **Exit** to exit Text Editor. 
-<div class="version-info"><span>Update Date: 2020-11-27</span><span> Version: 5.9</span></div>
+<div class="version-info"><span>Update Date: 2020-12-24</span><span> Version: 5.9</span></div>

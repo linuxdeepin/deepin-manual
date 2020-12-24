@@ -5,7 +5,7 @@
 
 看图是一款小巧的图片查看应用软件。外观时尚、性能流畅，支持多种图片格式，随时想看就看，实用又快捷。
 
-![1|main](jpg/main.png)
+
 
 ## 使用入门
 
@@ -13,19 +13,19 @@
 
 ### 运行看图
 
-1. 点击桌面底部的 ![deepin-launcher](icon/deepin-launcher.svg) ，进入启动器界面。
-2. 上下滚动鼠标滚轮浏览或通过搜索，找到看图 ![viewer](icon/deepin-image-viewer.svg)点击运行。
-3. 右键单击 ![viewer](icon/deepin-image-viewer.svg)，您可以：
- - 点击 **发送到桌面**，在桌面创建快捷方式。
- - 点击 **发送到任务栏**，将应用程序固定到任务栏。
- - 点击 **开机自动启动**，将应用程序添加到开机启动项，在电脑开机时自动运行该应用。
+1. 单击桌面底部的 ![deepin_launcher](icon/deepin_launcher.svg)，进入启动器界面。
+2. 上下滚动鼠标滚轮浏览或通过搜索，找到看图 ![viewer](icon/deepin_image_viewer.svg) 单击运行。
+3. 右键单击 ![viewer](icon/deepin_image_viewer.svg)，您可以：
+ - 单击 **发送到桌面**，在桌面创建快捷方式。
+ - 单击 **发送到任务栏**，将应用程序固定到任务栏。
+ - 单击 **开机自动启动**，将应用程序添加到开机启动项，在电脑开机时自动运行该应用。
 
 
 ### 关闭看图
 
-- 在看图界面点击  ![close_icon](icon/close_icon.svg)，退出看图。
-- 在任务栏右键单击 ![viewer](icon/deepin-image-viewer.svg)，选择 **关闭所有** 来退出看图。
-- 在看图界面点击 ![icon_menu](icon/icon_menu.svg)，选择 **退出** 来退出看图。
+- 在看图界面点击 ![close_icon](icon/close_icon.svg)，退出看图。
+- 在任务栏右键单击 ![viewer](icon/deepin_image_viewer.svg)，选择 **关闭所有** 来退出看图。
+- 在看图界面单击 ![icon_menu](icon/icon_menu.svg)，选择 **退出** 来退出看图。
 
 ### 查看快捷键
 
@@ -39,36 +39,46 @@
 采用以下任一方式打开图片。
 - 右键单击图片，选择用看图工具打开图片。
 - 设置看图为默认的图片查看程序后，可双击图片打开。
-- 运行看图后，点击 **打开图片**，选择文件打开。
+- 运行看图后，单击 **打开图片**，选择文件打开。
 - 运行看图后，拖动图片到看图界面，打开图片。
 - 直接拖动图片到看图在桌面或任务栏的图标，打开图片。
 
 > ![tips](icon/tips.svg)窍门：您可以在控制中心中将看图设置为默认的图片查看程序，具体操作请参阅 [默认程序设置](dman:///dde#默认程序设置)。
 
-图片支持的格式BMP、ICO、JPG/JPE/JPEG、PNG、TGA、TIF/TIFF、XPM、GIF、SGI、RAW、WEBP、CR2、NEF、DNG、RAF、MEF、MRW、XBM、SVG、ORF、MNG。
+看图支持查看BMP、ICO、JPG/JPE/JPEG、PNG、TGA、TIF/TIFF、XPM、GIF、WEBP、SVG等多种格式的图片。
 
-> ![notes](icon/notes.svg)说明：如果您的电脑支持触控屏或触控板，可以使用手势替代鼠标来放大缩小查看图片：
-   > - 在触控屏上：二指张开，放大图片；二指捏合，缩小图片。
-   > - 在触控板上（触控板支持多点触控）：二指张开，放大图片；二指捏合，缩小图片。
+> ![notes](icon/notes.svg)说明：如果您的电脑支持触控屏，可以使用手势替代鼠标来放大缩小查看图片：
+>
+> - 在触控屏上：二指张开，放大图片；二指捏合，缩小图片。
 
 ### 界面介绍
 
+![1|main](jpg/main.png)
+
+| 图标                                             | 名称       | 说明                   |
+| ------------------------------------------------ | ---------- | ---------------------- |
+| ![previous](icon/previous.svg)                   | 上一张     | 显示上一张图片。       |
+| ![next](icon/next.svg)                           | 下一张     | 显示下一张图片。       |
+| ![adaptimage](icon/adaptimage.svg)               | 1:1视图    | 图片按照实际尺寸显示。 |
+| ![adaptscreen](icon/adaptscreen.svg)             | 适应窗口   | 图片适应窗口尺寸显示。 |
+| ![clockwiserotation](icon/clockwiserotation.svg) | 顺时针旋转 | 图片顺时针旋转90度。   |
+| ![contrarotate](icon/contrarotate.svg)           | 逆时针旋转 | 图片逆时针旋转90度。   |
+| ![delete](icon/delete.svg)                       | 删除       | 删除当前图片。         |
+
+
+> ![notess](icon/notes.svg)说明：如果打开的是系统图片，旋转功能、删除图标处于置灰状态，即不能使用该操作。
+
+
+
+### 显示/隐藏导航窗口
+
+1. 在看图界面上，单击工具栏上的 ![adaptimage](icon/adaptimage.svg) 按钮或滚动鼠标放大图片且当图片超出界面范围时，界面上会出现导航窗口。
+2. 拖动导航窗口内的方框，查看该区域的信息。
+3. 单击导航窗口上的 **x** 按钮或在右键菜单中选择 **隐藏导航窗口** 来关闭导航窗口。
+   
+   关闭导航窗口后下次不会再显示，需在右键菜单中选择 **显示导航窗口** 来开启。
+
 ![1|main](jpg/navigation.png)
-
-| 图标                                               | 名称       | 说明                   |
-| -------------------------------------------------- | ---------- | ---------------------- |
-| ![previous](icon/previous.svg)                     | 上一张     | 显示上一张图片。       |
-| ![next](icon/next.svg)                             | 下一张     | 显示下一张图片。       |
-| ![adapt-image](icon/adapt-image.svg)               | 1:1视图    | 图片按照实际尺寸显示。 |
-| ![adapt-screen](icon/adapt-screen.svg)             | 适应窗口   | 图片适应窗口尺寸显示。 |
-| ![clockwise-rotation](icon/clockwise-rotation.svg) | 顺时针旋转 | 图片顺时针旋转90度。   |
-| ![contrarotate](icon/contrarotate.svg)             | 逆时针旋转 | 图片逆时针旋转90度。   |
-| ![delete](icon/delete.svg)                         | 删除       | 删除当前图片。         |
-
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-> ![tips](icon/tips.svg)窍门：滚动鼠标放大图片且当图片超出界面范围时，界面上会出现导航窗口。拖动导航窗口内的方框，查看该区域的信息。点击导航窗口右上角 **x** 按钮，关闭导航窗口；也可以在看图界面上单击鼠标右键选择 **隐藏导航窗口**/**显示导航窗口**。
-
-
 
 ### 打印图片
 
@@ -83,8 +93,9 @@
 
 1. 在看图界面上，单击鼠标右键。
 2. 选择 **重命名**，在弹出的重命名窗口内，将图片名字进行修改。
-3. 点击 **确定** 完成修改。
->![notes](icon/notes.svg)说明：系统图片不支持重命名。
+3. 单击 **确定** 完成修改。
+
+
 
 ### 幻灯片放映
 
@@ -108,7 +119,7 @@
 
 在看图中您可以通过如下方法删除图片：
 
-- 点击看图界面上的 ![delete_press](icon/delete.svg)  图标。
+- 单击看图界面上的 ![delete_press](icon/delete.svg) 图标。
 - 右键单击图片，选择 **删除**。
 - 在看图界面上，按下键盘的 **Delete** 键。
 
@@ -117,10 +128,9 @@
 1. 在看图界面上，单击鼠标右键。
 2. 选择 **顺时针旋转/逆时针旋转**。
 3. 图片将会顺时针转旋转90°/逆时针旋转90°。
-   
-   > ![notes](icon/notes.svg)说明：如果您的电脑支持触控屏或触控板，可以使用手势代替鼠标操作：
-      > - 在触控屏上：二指放置在图片上并保持一定距离，同时旋转二指来旋转图片。
-      > - 在触控板上（触控板支持多点触控）：二指放置在图片上并保持一定距离，同时旋转二指来旋转图片。
+   > ![notes](icon/notes.svg)说明：如果您的电脑支持触控屏，可以使用手势代替鼠标操作：
+   >
+   > - 在触控屏上：二指放置在图片上并保持一定距离，同时旋转二指来旋转图片。
 
 ![0|rotate](jpg/rotate.png)
 
@@ -136,15 +146,12 @@
 1. 在看图界面上，单击鼠标右键。
 2. 选择 **在文件管理器中显示**，打开并定位该图片所在的文件夹位置。
 
-
 ### 查看图片信息
 
 1. 在看图界面上，单击鼠标右键。
 2. 选择 **图片信息** 可以显示图片信息。
 
 ![info](jpg/info.png)
-
-
 
 ## 主菜单
 
@@ -154,26 +161,26 @@
 
 窗口主题包含浅色主题、深色主题和跟随系统主题。
 
-1. 在看图界面，点击  ![icon_menu](icon/icon_menu.svg)。
-2. 点击 **主题**，选择一个主题颜色。
+1. 在看图界面，单击 ![icon_menu](icon/icon_menu.svg)。
+2. 选择 **主题**，选择一个主题颜色。
 
 ### 帮助
 
 查看帮助手册，进一步了解和使用看图。
 
-1. 在看图界面，点击  ![icon_menu](icon/icon_menu.svg)。
-2. 点击 **帮助**。
+1. 在看图界面，单击 ![icon_menu](icon/icon_menu.svg)。
+2. 选择 **帮助**。
 3. 查看看图的帮助手册。
 
 ### 关于
 
-1. 在看图界面，点击  ![icon_menu](icon/icon_menu.svg)。
-2. 点击 **关于**。
+1. 在看图界面，单击 ![icon_menu](icon/icon_menu.svg)。
+2. 选择 **关于**。
 3. 查看看图的版本和介绍。
 
 ### 退出
 
-1. 在看图界面，点击 ![icon_menu](icon/icon_menu.svg)。
-2. 点击 **退出**。   
+1. 在看图界面，单击 ![icon_menu](icon/icon_menu.svg)。
+2. 选择 **退出**。   
 
-<div class="version-info"><span>文档更新时间: 2020-11-27</span><span> 版本: 5.6</span></div>
+<div class="version-info"><span>文档更新时间: 2020-12-24</span><span> 版本: 5.6</span></div>

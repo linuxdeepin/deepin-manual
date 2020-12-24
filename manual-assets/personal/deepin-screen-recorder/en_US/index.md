@@ -67,7 +67,7 @@ You can select the full screen in the following ways:
 
 You can also take a full screen screenshot directly in the following ways:
 
-- If Screen Capture has been fixed in the dock, right-click ![deepin-screenshot](icon/deepin-screenshot.svg) in the dock to select **Full screenshot**. 
+- If Screen Capture has been fixed in the dock, right-click ![deepin-screenshot](icon/deepin-screenshot.svg) in the dock to select **Full creenshot**. 
 - Press ![print](icon/Print.svg) on the keyboard to take a full screen screenshot.
 
 ##### Select Program Window
@@ -286,7 +286,7 @@ You can save the screenshot in the following ways after launching Screen Capture
 - Press **Ctrl + S** on the keyboard to save the screenshot.
 - Right-click the screenshot, and select **Save** to save the screenshot.
 
-> ![notes](icon/notes.svg) Notes: The screenshot is saved to the desktop by default.
+> ![notes](icon/notes.svg) Notes: The screenshot is saved to the clipboard by default.
 
 Click **Options** on the toolbar of the Screen Capture interface, and expand the drop-down list:
 
@@ -294,7 +294,7 @@ Click **Options** on the toolbar of the Screen Capture interface, and expand the
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 - Select **Clipboard** to save the screenshot to the clipboard.
-- Click **Desktop** (default), and the screenshot will be saved to the desktop.
+- Click **Desktop** and the screenshot will be saved to the desktop.
 - Click **Pictures**, and the screenshot will be saved to the pictures folder.
 - Click **Folder**. Select the destination folder of the screenshot, and the screenshot will be saved to the folder directory selected by you. 
 - Select **Show pointer**, and the pointer will be displayed in the screenshot area. Its position and pattern will also be saved in the picture.
@@ -381,4 +381,4 @@ The recorded video will be saved to the desktop automatically.
 Press ![F1](icon/F1.svg) on the keyboard to view the help manual after launching Screen Capture.
 
 
-<div class="version-info"><span>Update Date: 2020-11-27</span><span> Version: 5.8</span></div>
+<div class="version-info"><span>Update Date: 2020-12-24</span><span> Version: 5.8</span></div>

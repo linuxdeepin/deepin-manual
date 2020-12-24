@@ -425,5 +425,3 @@ click Help to get the manual, which will help you further know and use Contacts.
 
 
 
-
-<div class="version-info"><span>Update Date: 2020-11-27</span><span> Version: 1.0</span></div>

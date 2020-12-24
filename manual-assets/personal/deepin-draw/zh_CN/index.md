@@ -12,20 +12,20 @@
 
 ### 运行画板
 
-1. 点击桌面底部的 ![deepin-launcher](icon/deepin-launcher.svg)，进入启动器界面。
+1. 单击桌面底部的 ![deepin-launcher](icon/deepin-launcher.svg)，进入启动器界面。
 2. 上下滚动鼠标滚轮浏览或通过搜索，找到画板 ![draw](icon/deepin-draw.svg)点击运行。
 3. 右键单击 ![draw](icon/deepin-draw.svg)，您可以：
- - 点击 **发送到桌面**，在桌面创建快捷方式。
- - 点击 **发送到任务栏**，将应用程序固定到任务栏。
- - 点击 **开机自动启动**，将应用程序添加到开机启动项，在电脑开机时自动运行该应用。
+ - 单击 **发送到桌面**，在桌面创建快捷方式。
+ - 单击 **发送到任务栏**，将应用程序固定到任务栏。
+ - 单击 **开机自动启动**，将应用程序添加到开机启动项，在电脑开机时自动运行该应用。
 
 ![tips](icon/tips.svg)窍门：您可以在控制中心中将画板设置为默认的图片查看程序，具体操作请参考 [默认程序设置](dman:///dde#默认程序设置)。
 
 ### 关闭画板
 
-- 在画板界面点击  ![close_icon](icon/close_icon.svg)，退出画板。
+- 在画板界面单击  ![close_icon](icon/close_icon.svg)，退出画板。
 - 在任务栏右键单击 ![draw](icon/deepin-draw.svg)，选择 **关闭所有** 来退出画板。
-- 在画板界面点击 ![icon_menu](icon/icon_menu.svg)，选择 **退出** 来退出画板。
+- 在画板界面单击 ![icon_menu](icon/icon_menu.svg)，选择 **退出** 来退出画板。
 
 ### 查看快捷键
 
@@ -42,48 +42,48 @@
 
 ![1|mian](jpg/open.png)
 
-- 在画板界面上，点击 ![menu](icon/icon_menu.svg) > **新建**，新建标签页。
-- 当窗口有两个或两个以上标签页时，也可以点击 ![add](jpg/add.png)， 新建标签页。
-
- 当标签页比较多时，通过拖拽调整标签页，或点击 ![previous](jpg/previous.png) 或 ![next](jpg/next.png)按钮来调整标签页。  
+- 在画板界面上，单击 ![menu](icon/icon_menu.svg) > **新建**，新建标签页。
+- 当窗口有两个或两个以上标签页时，也可以单击 ![add](jpg/add.png)， 新建标签页。
 
 ### 关闭标签页
 
-- 鼠标左键点击标签页，点击 ![close_icon](icon/close_icon.svg) 按钮关闭当前标签页。
-- 鼠标右键点击标签页，选择 **关闭标签页** 或 **关闭其他标签页**。
+- 鼠标左键单击标签页，单击 ![close_icon](icon/close_icon.svg) 按钮关闭当前标签页。
+- 鼠标右键单击标签页，选择 **关闭标签页** 或 **关闭其他标签页**。
 
 
 ### 导入图片
 
-1. 在画板界面上，点击 ![import](icon/Import_normal.svg) 或 ![icon_menu](icon/icon_menu.svg) > **打开**。
-2. 选择想要导入的图片，点击 **打开**。
+1. 在画板界面上，单击 ![import](icon/Import_normal.svg) 或 ![menu](icon/icon_menu.svg) > **打开** 。
+2. 选择想要导入的图片，单击 **打开** 导入图片。
 
-支持导入的图片格式为JPG、PNG、TIF、BMP、DDF。
+   目前仅支持导入30张图片，且支持的图片格式为JPG、PNG、TIF、BMP和DDF。
+
+
 
 ### 导出图片
 
-1. 在画板界面上，点击 ![menu](icon/icon_menu.svg) > **导出**。
+1. 在画板界面上，单击 ![menu](icon/icon_menu.svg) > **导出**。
 2. 设置保存文件名、路径、文件格式、图片质量等参数。
-3. 点击 **保存**。
+3. 单击 **保存**。
 
-支持导出的图片格式为JPG、PNG、BMP、TIF、PDF。
+   支持导出的图片格式为JPG、PNG、BMP、TIF、PDF。
 
 ### 保存图片
 
-1. 在画板界面上，点击 ![menu](icon/icon_menu.svg) > **保存** 或 ![menu](icon/icon_menu.svg) > **另存为**。
+1. 在画板界面上，单击 ![menu](icon/icon_menu.svg) > **保存** 或 ![menu](icon/icon_menu.svg) > **另存为**。
 2. 设置保存的文件名、格式。
-3. 点击 **保存**。
+3. 单击 **保存**。
 
 > ![notes](icon/notes.svg)说明：填写保存文件名时可以省略后缀名，会自动保存为文件格式栏选择的格式。
 
 ### 打印图片
 
-1. 在画板界面上，点击 ![menu](icon/icon_menu.svg) > **打印**。
+1. 在画板界面上，单击 ![menu](icon/icon_menu.svg) > **打印**。
 2. 选择打印机。
 3. 设置打印参数。
-4. 点击 **打印**。
+4. 单击 **打印**。
 
-> ![notes](icon/notes.svg)说明：点击 **高级设置** 可以自定义打印效果。
+> ![notes](icon/notes.svg)说明：点击 **高级设置** 可以自定义您的打印效果。
 
 
 
@@ -104,18 +104,18 @@
 
 ### 形状工具
 
-1. 在画板界面上，点击 ![rectangle](icon/rectangle_normal.svg) 或 ![oval](icon/oval_normal.svg) 或 ![triangle](icon/triangle_tool_normal.svg) 或 ![star](icon/draw_star.svg) 或 ![hexagon](icon/hexagon_tool_normal.svg)。
+1. 在画板界面上，单击 ![rectangle](icon/rectangle_normal.svg) 或 ![oval](icon/oval_normal.svg) 或 ![triangle](icon/triangle_tool_normal.svg) 或 ![star](icon/drawstar.svg) 或 ![hexagon](icon/hexagon_tool_normal.svg)。
 2. 您可以设置图形的参数：
- - 点击 **填充** 设置图形的填充颜色和透明度。
- - 点击 **描边** 设置图形的描边颜色和透明度。
- - 在粗细值下拉框中设置图形的粗细值。
+ - 单击 **填充** 设置图形的填充颜色和透明度。
+ - 单击 **描边** 设置图形的描边颜色和透明度。
+ - 在粗细值下拉框中设置图形的描边粗细。
  - 设置锚点数（取值范围为3-50个）和半径值（取值范围为0%-100%），仅适用于星型。
  - 设置侧边数（取值范围为4-10条），仅适用于多边形。
    
-      + 锚点数、半径值和侧边数既可以通过点击![icon](icon/up.svg) 或 ![icon](icon/down.svg)按钮来调节，也可以选中数值后使用键盘![Up](icon/Up.svg)或![down](icon/Down.svg) 键或滚动鼠标来调节。
+      + 锚点数、半径值和侧边数既可以通过点击![icon](icon/up.svg) 或 ![icon](icon/down.svg)按钮来调节，也可以选中数值后使用键盘上![Up](icon/Up.svg)或![down](icon/Down.svg) 键或者滚动鼠标来调节。
 3. 在画板区域拖动鼠标来绘制形状。
 
-> ![tips](icon/tips.svg)窍门：在使用 ![rectangle](icon/rectangle_normal.svg) 或 ![oval](icon/oval_normal.svg) 或 ![triangle](icon/triangle_tool_normal.svg) 或 ![star](icon/draw_star.svg) 或 ![hexagon](icon/hexagon_tool_normal.svg)绘制图形时，配合键盘上的 **Shift** 或 **Shift + Alt** 键可以画出正方形、正圆、正三角、正五角星、正多边形。
+> ![tips](icon/tips.svg)窍门：在使用 ![rectangle](icon/rectangle_normal.svg) 或 ![oval](icon/oval_normal.svg) 或 ![triangle](icon/triangle_tool_normal.svg) 或 ![star](icon/drawstar.svg) 或 ![hexagon](icon/hexagon_tool_normal.svg)绘制图形时，配合键盘上的 **Shift** 或 **Shift + Alt** 键可以画出正方形、正圆、正三角、正五角星、正多边形。
 
 ![1|shape](jpg/shape1.png)
 
@@ -128,20 +128,20 @@
 ### 画线/画笔工具
 
 
-1. 在画板界面上，点击 ![line](icon/line_normal.svg) 或 ![line](icon/pencil_normal.svg)。
+1. 在画板界面上，单击 ![line](icon/line_normal.svg) 或 ![line](icon/pencil_normal.svg)。
 2. 您可以设置画笔参数：
-   - 点击 **颜色** 设置画笔的颜色和透明度。
-   - 在粗细值下拉框中选择画笔的粗细值。
+   - 单击 **颜色** 设置画笔的颜色和透明度。
+   - 在粗细值下拉框中设置画笔的粗细值。
    - 设置线条的起点和终点样式。
 3. 在画板区域拖动鼠标来绘制线条。
 
-![1|pencil](jpg/line_pencil.png)
+![1|pencil](jpg/linepencil.png)
 
 ### 文本工具
 
-1. 在画板界面上，点击 ![text](icon/text_normal.svg)。
+1. 在画板界面上，单击 ![text](icon/text_normal.svg)。
 2. 您可以设置文本样式：
-   - 点击 **颜色** 设置文本的填充颜色和透明度。
+   - 单击 **颜色** 设置文本的填充颜色和透明度。
    - 在 **字体** 下拉框中选择字体样式。
    - 设置常规字体或加粗字体。
    - 在 **字号**下拉框中选择字号大小。
@@ -154,7 +154,7 @@
 
 ### 模糊工具
 
-1. 在画板界面上，点击 ![blur](icon/blur_normal.svg)。
+1. 在画板界面上，单击 ![blur](icon/blur_normal.svg)。
 2. 选择模糊类型。
 3. 选择涂抹区域的粗细值。
 4. 在画板区域拖动鼠标来涂抹需要模糊的区域。
@@ -176,7 +176,7 @@
 ### 裁剪
 
 1. 在画板界面上，选择已导入的图片。
-2. 点击 ![cut](icon/cut_normal.svg) 进入裁剪模式。
+2. 单击 ![cut](icon/cut_normal.svg) 进入裁剪模式。
   - 自由：自定义截取，手动输入尺寸或拖动裁剪边框来调整需要裁剪的区域。
   - 原始：按照原图比例截取，如1:1、2:3、8:5、 16:9。
 
@@ -188,25 +188,25 @@
 
 ### 翻转
 
-1. 在画板界面上，选中图片。
-2. 点击 ![flip](icon/filp_Vertical_normal.svg) 或 ![flip](icon/flip_Horizontal_normal.svg) 将图片垂直翻转或水平翻转。
-
-
+1. 在画板界面上，选择已导入的图片。
+2. 单击 ![flip](icon/filp_Vertical_normal.svg) 或 ![flip](icon/flip_Horizontal_normal.svg) 将图片垂直翻转或水平翻转。
 
 
 ### 旋转
 
 1. 在画板界面上，选中图片。
-2. 单击 ![rotate](icon/rotate_right_normal.svg) 或 ![rotate](icon/rotate_left_normal.svg) 将图片顺时针或逆时针旋转90°，或鼠标左键单击图片上的 ![icon](icon/icon_rotate.svg) 不放来旋转图片。
+2. 单击 ![rotate](icon/rotate_right_normal.svg) 或 ![rotate](icon/rotate_left_normal.svg) 将图片顺时针或逆时针旋转90°，或单击图片上的 ![icon](icon/icon_rotate.svg) 不放来旋转图片。
 
 > ![notes](icon/notes.svg)说明：如果您的电脑支持触控屏，可以使用手势来替代鼠标操作：一指单击选中图片，手指按住 ![icon](icon/icon_rotate.svg) 自由旋转图片。
 
 ![1|rotate](jpg/rotate.png)
 
+
+
 ### 自适应画布
 
 1. 在画板界面，选择已导入的图片。
-2. 点击 ![auto_fit](icon/auto_fit.svg)，根据图片自适应画布大小。
+2. 单击 ![auto_fit](icon/auto_fit.svg)，根据图片自适应画布大小。
    - 若选择单张图片，根据图片的宽高来调整画布大小。
    - 若选择多张图片，根据最大边界范围调整画布大小。
 
@@ -240,7 +240,7 @@
 
 ### 对齐文本
 
-1. 在画板界面上，点击 ![text](icon/text_normal.svg)，调整文本框大小。
+1. 在画板界面上，单击 ![text](icon/text_normal.svg)，调整文本框大小。
 2. 选中文本内容后单击鼠标右键选择 **左对齐**、**右对齐**、**居中对齐** 来对齐文本。
 
 ![1|layer](jpg/align.png)
@@ -248,28 +248,28 @@
 
 ## 主菜单
 
-在主菜单中，您可以新建标签页、[打开图片](#打开图片)、[导出图片](#导出图片)、[保存图片](#保存图片)、[打印图片](#打印图片)、切换窗口主题、查看帮助手册、了解画板的更多信息。
+在主菜单中，您可以新建标签页、[打开图片](#打开图片)、[导出图片](#导出图片)、[保存图片](#保存图片)、打印图片、切换窗口主题、查看帮助手册，了解画板的更多信息。
 
 ### 新建
 
 您可以通过新建添加一个标签页。
 
-1. 在画板界面，点击 ![icon_menu](icon/icon_menu.svg)。
-2. 点击 **新建**，添加一个标签页。
+1. 在画板界面，单击 ![icon_menu](icon/icon_menu.svg)。
+2. 选择 **新建**，添加一个标签页。
 
 ### 主题
 
 窗口主题包含浅色主题、深色主题和跟随系统主题。
 
-1. 在画板界面，点击 ![icon_menu](icon/icon_menu.svg)。
-2. 点击 **主题**，选择一个主题颜色。
+1. 在画板界面，单击 ![icon_menu](icon/icon_menu.svg)。
+2. 选择 **主题**，选择一个主题颜色。
 
 ### 帮助
 
 查看帮助手册，通过帮助进一步让您了解和使用画板。
 
-1. 在画板界面，点击 ![icon_menu](icon/icon_menu.svg)。
-2. 点击 **帮助**。
+1. 在画板界面，单击 ![icon_menu](icon/icon_menu.svg)。
+2. 选择 **帮助**。
 3. 查看关于画板的帮助手册。
 
 
@@ -277,15 +277,15 @@
 
 ### 关于
 
-1. 在画板界面，点击 ![icon_menu](icon/icon_menu.svg)。
-2. 点击 **关于**。
+1. 在画板界面，单击 ![icon_menu](icon/icon_menu.svg)。
+2. 选择 **关于**。
 3. 查看关于画板的版本和介绍。
 
 
 
 ### 退出
 
-1. 在画板界面，点击 ![icon_menu](icon/icon_menu.svg)。
-2. 点击 **退出**。
+1. 在画板界面，单击 ![icon_menu](icon/icon_menu.svg)。
+2. 选择 **退出**。
 
-<div class="version-info"><span>文档更新时间: 2020-11-27</span><span> 版本: 5.8</span></div>
+<div class="version-info"><span>文档更新时间: 2020-12-24</span><span> 版本: 5.8</span></div>

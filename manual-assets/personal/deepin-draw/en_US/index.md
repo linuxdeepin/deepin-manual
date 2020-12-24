@@ -44,8 +44,6 @@ With Draw, you are able to process imported pictures and draw pictures freely. Y
 - On the Draw interface, click ![menu](icon/icon_menu.svg)> **New** to create a new tab.
 - You can also click ![add](jpg/add.png) to create a new tab when there are two or more tabs in the window.
 
-When there are multiple tabs, you can adjust the order of tabs by dragging the tab or clicking ![previous](jpg/previous.png) or ![next](jpg/next.png) icons.
-
 ### Close tabs
 
 - Click a tab. Then click ![close_icon](icon/close.svg) on the tab to close the current tab.
@@ -53,7 +51,7 @@ When there are multiple tabs, you can adjust the order of tabs by dragging the t
 
 ### Open Pictures
 
-1. On the Draw interface, click ![import](C:/Users/Admin/Documents/aiwa/community/社区版1106/draw/en_US/icon/Import_normal.svg)or  ![menu](C:/Users/Admin/Documents/aiwa/community/社区版1106/draw/en_US/icon/icon_menu.svg) > **Open**.
+1. On the Draw interface, click ![import](icon/Import_normal.svg)or  ![menu](icon/icon_menu.svg) > **Open**.
 2. Select the picture to be imported and click **Open**.
 
 Currently, a maximum of 30 pictures could be exported. Formats including JPG, PNG, TIF, BMP and DDF are supported.
@@ -93,7 +91,7 @@ After drawing entities with the graphics drawing tool, you can perform the follo
 - Drag to adjust the size of the graphic within the selected area.
 - Hold down the **Shift** key and click to select multiple graphics.
 
-> ![notes](icon/notes.svg) Notes: Click the blank area in the Draw to cancel the graphics selected.
+> ![notes](icon/notes.svg) Notes: Click the blank area in Draw to cancel the graphics selected.
 
 ### Shape Tool
 
@@ -228,7 +226,7 @@ You can copy, crop, and rotate graphics with the editing functions, and also adj
 ### Align Texts
 
 1. On the Draw interface, click ![text](icon/text_normal.svg) and adjust the size of the text box.
-2. Select target text. Right-click and select **Text Alight Left**, **Text Align Right** or **Text Align Center** to align texts.
+2. Select target text. Right-click and select **Text Align Left**, **Text Align Right** or **Text Align Center** to align texts.
 
 ![1|layer](jpg/align.png)
 
@@ -264,4 +262,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 
 1. On the Draw interface, click ![icon_menu](icon/icon_menu.svg).
 2. Click **Exit** to exit Draw.
-<div class="version-info"><span>Update Date: 2020-11-27</span><span> Version: 5.8</span></div>
+<div class="version-info"><span>Update Date: 2020-12-24</span><span> Version: 5.8</span></div>

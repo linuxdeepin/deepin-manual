@@ -130,7 +130,6 @@ You can delete photos from Album in the following ways:
 >    ![notes](icon/notes.svg) Notes: If you are using a computer equipped with touch-screen or touchpad, you can use touchscreen gestures to operate instead of the mouse: 
 >
    > - On the touchscreen, place two fingers on the photo and keep a certain distance, and rotate the two fingers at the same time to rotate the photo.
-   >- On the touchpad that supports multiple-point touch, place two fingers on the photo and keep a certain distance, and rotate the two fingers at the same time to rotate the photo.
 
 ### Set as Wallpaper
 
@@ -220,4 +219,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 
 1.  On the Album interface, click ![icon_menu](icon/icon_menu.svg).
 2.  Click **Exit** to exit Album.
-<div class="version-info"><span>Update Date: 2020-11-27</span><span> Version: 5.8</span></div>
+<div class="version-info"><span>Update Date: 2020-12-24</span><span> Version: 5.8</span></div>

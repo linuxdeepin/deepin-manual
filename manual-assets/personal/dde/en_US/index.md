@@ -47,7 +47,7 @@ Right-click a file or folder on the desktop, and use the features of File Manage
 >![notes](icon/notes.svg)Notes: 
 >   - If you are using a computer equipped with a touchscreen, you can use touchscreen gestures to operate instead of the mouse: long press for 1 second and release on the touchscreen.
 >   - On the touchpad that supports multiple-point touch, you can use the gesture to operate instead of the mouse: click with two fingers to display the right-click menu. 
->   - Press **Ctrl** + **M** on the keyboard to open rigsht-click menu. 
+>   - Press **Ctrl** + **M** on the keyboard to open right-click menu. 
 
 ### Sort Files
 
@@ -210,7 +210,7 @@ Click ![notification](icon/notification.svg) in Dock to view all the notificatio
 
 ### Use AI Assistant
 
-AI Assistant is pre-programmed by the system, supporting voice and text input, information search, operation instructions, etc. With it, you can adjust system volume and screen brightness, and switch on/off power saving mode, WiFi or Blurtooth.
+AI Assistant is pre-programmed by the system, supporting voice and text input, information search, operation instructions, etc. With it, you can adjust system volume and screen brightness, and switch on/off power saving mode, WiFi or Bluetooth.
 
 > ![notes](icon/notes.svg)Notes: Voice dictation, voice reading, translation and other functions of desktop AI Assistant are available only after you activate the system. When you run AI Assistant for the first time, a private agreement window pops up. After you agree with it, you can use functions such as voice dictation, voice reading, translation and others normally.
 
@@ -730,7 +730,7 @@ To prevent others from scanning your network and cracking your password, you can
 
 #### Hotspot
 
-Hotspot changes the connected network signal to Wi-Fi hotspot, so that other devices nearby can connect to the hotspot and surf the internet. To enable hotspot, your computer must connect to a network and have a wireless network adapter.
+Hotspot changes the connected network signal to Wi-Fi hotspot, so that other devices nearby can connect to the hotspot and surf the Internet. To enable hotspot, your computer must connect to a network and have a wireless network adapter.
 
 1. On the homepage of Control Center, click ![network_normal](icon/network_normal.svg).
 2. Click **Personal Hotspot**.
@@ -839,7 +839,7 @@ Set your speaker and microphone properly to make you hear more comfortable and m
 
 1. On the homepage of Control Center, click ![sound_normal](icon/sound_normal.svg).
 2. Click **Output** to:
-   - Select output device type from the dropdown list after **Output Device**.
+   - Select output device type from the drop-down list after **Output Device**.
    - Drag the slider to adjust output volume and left/right balance.
    - Switch on **Volume Boost**, the volume could be adjustable from 0~150% (the former range is 0~100%).
 
@@ -847,7 +847,7 @@ Set your speaker and microphone properly to make you hear more comfortable and m
 
 1. On the homepage of Control Center, click ![sound_normal](icon/sound_normal.svg).
 2. Click **Input** to:
-   - Select input device type from the dropdown list after **Input Device**.
+   - Select input device type from the drop-down list after **Input Device**.
    - Adjust input volume by dragging the slider.
    - You can enable **Automatic Noise Suppression**. 
 
@@ -999,7 +999,7 @@ To reduce the power consumption of your laptop, turn on power saving mode to red
 2. Click **Plugged In** and **On Battery**.
 3. Set the time to suspend.
 
-> ![tips](icon/tips.svg)Tips: For laptop users, you can select **Suspend** from the dropdown list after **When the lid is closed**.  
+> ![tips](icon/tips.svg)Tips: For laptop users, you can select **Suspend** from the drop-down list after **When the lid is closed**.  
 
 #### Time to Lock Screen
 
@@ -1011,7 +1011,7 @@ To reduce the power consumption of your laptop, turn on power saving mode to red
 
 1. On the homepage of Control Center, click ![power_normal](icon/power_normal.svg).
 2. Click **Plugged In** and **On Battery**.
-3. You can select **Suspend**, **Hibernate**, **Turn off the monitor** and **Do nothing** from the dropdown list after **When the lid is closed**.  
+3. You can select **Suspend**, **Hibernate**, **Turn off the monitor** and **Do nothing** from the drop-down list after **When the lid is closed**.  
 >![notes](icon/notes.svg)Notes: This function is only available for laptops.
 
 #### Power button settings
@@ -1216,7 +1216,7 @@ Desktop AI Assistant  boosts your productivity by executing voice commands, such
 #### Translation
 
 - Translation: It is enabled by default.
-- Language: It is used to set the translation language and supports both cn-en and en-cn with cn-en as default.
+- Language: It is used to set the translation language and supports both Chinese-English and English-Chinese with Chinese-English as default.
 
 ### Update Settings
 
@@ -1316,22 +1316,22 @@ UnionTech OS provides backup by initialization and backup through Control Center
 
 ##### Backup by initialization
 
-When the system is installed, it will automatically create a recovery partition, then backup the boot partition and root partition, and save the recovery partition information and disk partition configuration.
+In the process of system installation, only when full disk installation is selected, the recovery partition will be created automatically, and then the root partition and boot partition will be backed up.
 
 ##### Backup through control center
 
-You can either manually backup / restore data or restore data by one click.
+You can set up both full disk backup and system backup. 
 
 1. On the homepage of Control Center, click ![system_info_normal](icon/system_info_normal.svg).
 
 2. Select **Backup and Restore** > **Backup** to set the backup type and save the path of files backed up.
    Backup Type: Full Backup and System Backup
 
-   - Full Backup: to back up system files and user files of the whole disk
+   - Full Backup: to back up system files and user files of the whole disk.
 
-   - System Backup: When the user data is not reserved, the files of the root partition and the boot partition are backed up; when the user data is reserved, the files of the root partition, boot partition, opt partition and home partition are backed up.
+   - System Backup: to back up the files of the root partition and the boot partition.
 
-   > ![attention](icon/attention.svg)Attention:  **Full Backup** cannot backed up files on its own disk, but can only back up files in other storage media. **System Backup** has set the default storage location of files. When the storage space is insufficient, you can manually change the storage path of backup files.
+   > ![attention](icon/attention.svg)Attention:  **Full Backup** cannot backed up files on its own disk, but can only back up files in other storage media. 
 
 3. Click **Back Up**, the password input box pops up, please input the password to authorize the backup file until the file backup is completed.
 
@@ -1345,20 +1345,20 @@ UnionTech OS provides "restore from grub" and "restore from control center".
 
 ##### Restore from Grub
 
-During system startup, in the system selection interface, click **UnionTech OS Backup & Restore**, you can choose "Reset to factory settings" to read and restore factory settings backup, or choose "restore UnionTech OS historical backup" to open the file directory and select the backup to be restored.
+During system startup, in the system selection interface, click **UnionTech OS Restore**, you can choose "Reset to factory settings" to read and restore factory settings backup, or choose "custom restore" to restore to a historical backup point in time.
 
 ##### Restore from Control Center
 
-You can either restore all settings or manually restore the previous backup data.
+You can either restore all settings or custom restore the previous backup data.
 
 1. On the homepage of Control Center, click ![system_info_normal](icon/system_info_normal.svg).
 2. Click **Backup and Restore** > **Restore** to select:
 
-   - Restore All Settings
+   - Reset to factory settings
      1. You can choose to check **Keep personal files and apps** and click **Restore Now**. Click **Confirm** in the dialogue box pops up. 
      2. Please input the password to authorize the data restoring.
-   - Manual Restore
-     1. After selecting restoring directory, click ![three_dots](jpg/three_dots.png) to select the files you want to restore.
+   - Restore from backup files
+     1. After selecting backup directory, click ![three_dots](jpg/three_dots.png) to select the files you want to restore.
      2. Click **Restore Now** to start system restoring.
 
 
@@ -1512,4 +1512,4 @@ With split screen, multiple applications and tasks are displayed simultaneously,
 
 
 
-<div class="version-info"><span>Update Date: 2020-11-27</span><span> Version: 2020.04</span></div>
+<div class="version-info"><span>Update Date: 2020-12-24</span><span> Version: 2020.04</span></div>

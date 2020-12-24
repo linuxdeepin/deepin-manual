@@ -11,7 +11,7 @@ Click ![icon_menu](icon/icon_menu.svg) > **Mode** to select standard mode or sci
 ### Standard Mode
 
 
-​                            ![0|calculator](jpg/standard mode.png)
+​                            ![0|calculator](jpg/standardmode.png)
 
 | Icon                                | Name                                                | Description                                                  |
 | ----------------------------------- | :-------------------------------------------------- | ------------------------------------------------------------ |
@@ -32,7 +32,7 @@ Click ![icon_menu](icon/icon_menu.svg) > **Mode** to select standard mode or sci
 
 ### Scientific Mode
 
-![0|scientific](jpg/scientific mode.png)
+![0|scientific](jpg/scientificmode.png)
 
 
 
@@ -96,7 +96,7 @@ Calculator supports keyboard operation and fault-tolerant computing of special s
 
   - When the calculation result is decimal and greater than 16 digits / 32 digits, it is displayed in the following format: number + numbers of 15 digits / 31 digits after the decimal point+E-number.
 
-  ![0|scientific-notation](jpg/scientificnotation.png)
+  ![0|scientificnotation](jpg/scientificnotation.png)
 
 ### Digital Linkage
 
@@ -145,4 +145,4 @@ View Help to get more information about Calculator.
 1. On the Calculator interface, click ![main_menu](icon/main_menu.svg).
 2. Click **Exit** to exit.
 
-<div class="version-info"><span>Update Date: 2020-11-27</span><span> Version: 5.6</span></div>
+<div class="version-info"><span>Update Date: 2020-12-24</span><span> Version: 5.6</span></div>

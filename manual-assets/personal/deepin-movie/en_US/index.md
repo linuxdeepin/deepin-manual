@@ -79,17 +79,18 @@ You can play films in the following ways:
 1. On the Movie interface, press ![Right](icon/Right.svg) on the keyboard to fast forward the film.
 2. On the Movie interface, press ![Left](icon/Left.svg) on the keyboard to fast rewind the film.
 
+>![notes](icon/notes.svg) Notes: If you are using a computer equipped with a touchscreen, you can use touchscreen gestures to operate instead of the mouse: Slide leftward with one finger on the video picture area to rewind and rightward to forward.
+
 ### Speed Up/Down
 
 1. On the Movie interface, press **Ctrl** + ![Right](icon/Right.svg) on the keyboard to speed up the film playback.
 2. Press **Ctrl** + ![Left](icon/Left.svg) on the keyboard to speed down the film playback.
 3. If you want to restore to the original play speed, press **R** on the keyboard.
 
->![notes](icon/notes.svg) Notes: 
+>![>![notes](icon/notes.svg) Notes: If you are using a computer equipped with a touchscreen, you can use touchscreen gestures to operate instead of the mouse: Slide leftward with one finger on the video picture area to rewind and rightward to forward.](icon/notes.svg) Notes: 
 >
 >- Speed up/down is relative to the original play speed. The video playback speed increases/decreases by 0.1 times in default mode each time when it is sped up/down. Press and hold **Ctrl **+ ![Right](icon/Right.svg) or ![Left](icon/Left.svg) on the keyboard and the playback speed will increase or decrease. The maximum playback speed is 2 times faster than the original speed and the minimum playback speed is 10 times slower than the original speed.
 >
-> - If you are using a computer equipped with a touchscreen, you can use touchscreen gestures to operate instead of the mouse: Slide leftward with one finger on the video picture area to rewind and rightward to forward.
 
 ## Functions
 
@@ -180,7 +181,7 @@ You can add films to the playlist in the following ways:
 
 > ![tips](icon/tips.svg) Tips: On the Playlist interface, hover mouse pointer over the video file and click ![关闭图标](icon/close.svg) to delete it.
 
-![list](jpg/list-manag.png)
+![list](jpg/listmanage.png)
 
 ### Clear Playlist
 
@@ -204,16 +205,16 @@ You can set the basic information, shortcut keys, and subtitles.
 1. Right-click or click ![menu](icon/icon_menu.svg) on the Movie interface.
 2. Click **Settings** > **Basic**.
 3. In the option **Play**, you can:
-  - Check the **Clear playlist when exit** box to clear the playlist when you exit Movie.
-  - Check the **Remember playback position** box to resume the film automatically from the last position played when Movie runs.
-  - Check the **Auto add similar files to play **box to add the similar film files in the same folder to the playlist for playback in order.
-  - Check the **Show video preview on mouseover** box to show the film preview when you move the mouse over progress bar.
-  - Check the **Show thumbnails in progress bar** and a preview window will be displayed when you move the mouse over progress bar.
+   - Check the **Clear playlist when exit** box to clear the playlist when you exit Movie.
+   - Check the **Remember playback position** box to resume the film automatically from the last position played when Movie runs.
+   - Check the **Auto add similar files to play **box to add the similar film files in the same folder to the playlist for playback in order.
+   - Check the **Show video preview on mouseover** box to show the film preview when you move the mouse over progress bar.
+   - Check the **Show thumbnails in progress bar** and a preview window will be displayed when you move the mouse over progress bar.
 
-![notes](icon/notes.svg) Notes: This feature is only available on X86 platform. 
+   >![notes](icon/notes.svg) Notes: This feature is only available on X86 platform. 
 
-  - Check the **Pause when minimized** to pause the playback automatically when minimizing the Movie window.
-  - Check the **Default play mode** box, select one mode in the **Default play mode** dropdown list and Movie will run in such mode next time.
+   - Check the **Pause when minimized** to pause the playback automatically when minimizing the Movie window.
+   - Check the **Default play mode** box, select one mode in the **Default play mode** dropdown list and Movie will run in such mode next time.
 4.  Under the **Screenshot** option, you can select the path to save screenshots as you wish.
 
 #### Shortcuts Settings
@@ -250,4 +251,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 
 1. On the Movie interface, click ![icon_menu](icon/icon_menu.svg).
 2. Click **Exit** to exit Movie.
-<div class="version-info"><span>Update Date: 2020-11-27</span><span> Version: 5.7</span></div>
+<div class="version-info"><span>Update Date: 2020-12-24</span><span> Version: 5.7</span></div>

@@ -209,10 +209,20 @@ Click the search button or press **Ctrl + F**  to switch to the search bar. Or, 
 - If you need to search in a specified directory, please enter it before search.
 
 > ![notes](icon/notes.svg)Notes: 
+
    - In **Settings**, check "Auto index internal disk" and "Index external storage device after connected to computer" to quicken the searching speed.
-   - In case you want to search files by keywords in the content, you can check **Full-Text search** in **Settings** > **Advanced** > **Index**.
+
+#### Full-Text Search
+
+You can search a file by keywords in its content.
+1. In File Manager, click ![icon_menu](icon/icon_menu.svg) > **Settings**.
+2. Check ** Full-Text search** under **Index** of **Advanced**.
+3. Press **Ctrl + F** or click the searching button in the address bar to start searching. Enter the keywords and press **Enter**.
 
 #### Advanced Search
+
+When there are many files and the search is slow, you can enable advanced search to narrow the search scope and improve the search efficiency.
+
 1. In search bar, input the keywords and press **Enter**. When the results appear, you will see ![filter](icon/filter.svg) icon, you can click it to do advanced search.
 2. Select the searching range, file type and size, and modified time, accessed time and created time to narrow the search results.
 
@@ -366,7 +376,7 @@ You can find sharing folders of other users in the same LAN in **Computers in LA
 
 ### Open in new window as admin
 
-1. Right-click in the blank area on File Manager. 
+1. Right-click a folder in File Manager. 
 2. Select **Open in new window as admin**, input your login password in the pop-up window and click **Confirm**.
 3. The file will be opened in a new window, in which you can operate with admin permissions. And you will exit admin permissions when you close this window.
 
@@ -408,7 +418,7 @@ If your computer is equipped with Bluetooth module, you can transfer files in sh
 
 You can assign an icon file to a file or folder icon through the command line and display it as a corner marker.
 >![notes](icon/notes.svg)Notes: 
->   - The corner marker files support formats such as svg, jpg, png, bmp, and gif, but not bigger than 100kb.
+>   - The corner marker files support formats such as svg, jpg, png, bmp, and gif, but not bigger than 100KB.
 >   - The corner marker could not be added to files in USB disks and CD-ROM disks.
 
 ### Add single corner marker
@@ -563,4 +573,4 @@ The window theme includes Light Theme, Dark Theme and System Theme.
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Click **Exit**.
 
-<div class="version-info"><span>Update Date: 2020-11-27</span><span> Version: 5.2</span></div>
+<div class="version-info"><span>Update Date: 2020-12-24</span><span> Version: 5.2</span></div>

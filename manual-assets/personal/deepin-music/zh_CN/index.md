@@ -12,14 +12,14 @@
 
 ### 运行音乐
 
-1. 单击桌面底部的 ![launcher_icon](icon/deepin-launcher.svg)，进入启动器界面。
-2. 上下滚动鼠标滚轮浏览或通过搜索，找到音乐 ![music_icon-24](icon/music_icon-24.svg) 单击运行。
-3. 右键单击 ![music_icon-24](icon/music_icon-24.svg)，您可以：
+1. 单击桌面底部的 ![launcher_icon](icon/deepin_launcher.svg)，进入启动器界面。
+2. 上下滚动鼠标滚轮浏览或通过搜索，找到音乐 ![music_icon24](icon/music_icon24.svg) 单击运行。
+3. 右键单击 ![music_icon24](icon/music_icon24.svg)，您可以：
    - 单击 **发送到桌面**，在桌面创建快捷方式。
    - 单击 **发送到任务栏**，将应用程序固定到任务栏。
    - 单击 **开机自动启动**，将应用程序添加到开机启动项，在电脑开机时自动运行该应用。
 
-> ![notes](icon/notes.svg)说明：如果音乐已经默认固定在任务栏上，您也可以单击任务栏上的 ![music_icon-24](icon/music_icon-24.svg) 来运行。
+> ![notes](icon/notes.svg)说明：如果音乐已经默认固定在任务栏上，您也可以单击任务栏上的 ![music_icon24](icon/music_icon24.svg) 来运行。
 
 ### 隐藏到系统托盘
 
@@ -39,8 +39,8 @@
 ### 关闭音乐
 
 - 在音乐界面，如果您设置关闭主窗口的操作是退出，可以单击 ![close_icon](icon/close.svg)，退出音乐。
-- 右键单击系统托盘中的 ![music_icon-24](icon/music_icon-24.svg)，选择 **退出**，退出音乐。
-- 右键单击任务栏上的 ![music_icon-24](icon/music_icon-24.svg)，选择 **关闭所有**，退出音乐。
+- 右键单击系统托盘中的 ![music_icon24](icon/music_icon24.svg)，选择 **退出**，退出音乐。
+- 右键单击任务栏上的 ![music_icon24](icon/music_icon24.svg)，选择 **关闭所有**，退出音乐。
 
 ### 查看快捷键
 
@@ -125,15 +125,15 @@
 
 ### 调整播放模式
 
-在音乐界面，单击 ![single](icon/single-tune-circulation_normal.svg) 或 ![cross-cycling_normal](icon/cross-cycling_normal.svg) 或 ![sequential-loop_normal](icon/sequential-loop_normal.svg) 调整播放模式。
+在音乐界面，单击 ![single](icon/single_tune_circulation_normal.svg) 或 ![cross_cycling_normal](icon/cross_cycling_normal.svg) 或 ![sequential_loop_normal](icon/sequential_loop_normal.svg) 调整播放模式。
 
 其中，
 
-![single](icon/single-tune-circulation_normal.svg)：单曲循环
+![single](icon/single_tune_circulation_normal.svg)：单曲循环
 
-![cross-cycling_normal](icon/cross-cycling_normal.svg)：随机播放
+![cross_cycling_normal](icon/cross_cycling_normal.svg)：随机播放
 
-![sequential-loop_normal](icon/sequential-loop_normal.svg)：列表循环
+![sequential_loop_normal](icon/sequential_loop_normal.svg)：列表循环
 
 
 ### 在文件管理器中显示
@@ -290,4 +290,4 @@
 1. 在音乐界面，单击 ![icon_menu](icon/icon_menu.svg)。
 2. 选择 **退出**。
 
-<div class="version-info"><span>文档更新时间: 2020-11-27</span><span> 版本: 6.0</span></div>
+<div class="version-info"><span>文档更新时间: 2020-12-24</span><span> 版本: 6.0</span></div>

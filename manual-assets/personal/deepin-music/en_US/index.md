@@ -164,9 +164,10 @@ The prompt information **Successfully added to "My favorites"** pops up and the 
 
 On the Music interface, you can:
 
-Click ![lyric_normal](icon/lyric_normal.svg) to switch to the lyrics interface. Click it again to fold the lyrics interface.
+- Click ![lyric_normal](icon/lyric_normal.svg) to switch to the lyrics interface. Click it again to fold the lyrics interface.
 
-Click ![music](icon/music.svg)to switch to the lyrics interface. Click it again to fold the lyrics interface.
+- Click ![music](icon/music.svg)to switch to the lyrics interface. Click it again to fold the lyrics interface.
+
 
 > ![notes](icon/notes.svg) Notes:  If the music being played has a cover picture,  ![music](icon/music.svg)will be displayed as the cover picture. Click it switch to the lyrics interface and click it again to fold the lyrics interface.
 
@@ -284,7 +285,7 @@ You can set the basic information and shortcuts in settings.
         - Check the **Remember playback position** box, and the music will be played automatically from the last position played when Music runs.
         - Check the **Enable fade in/out** box, and the music will fade in and out when Music runs.
     - In the option **Close Main Window**, you can:
-        - Select **Minimize to system tray** to close the main window, and hide the Music to system tray.
+        - Select **Minimize to system tray** to close the main window, and hide Music to system tray.
         - Select **Exit** to close the main window, and exit Music. 
         - Select **Ask me always** to prompt system notification, and confirm whether to exit Music when the main window is closed.
 3. Click **Restore Defaults** to restore the default settings.
@@ -316,4 +317,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 
 1. On the Music interface, click ![menu](icon/icon_menu.svg).
 2. Click **Exit** to exit Music.
-<div class="version-info"><span>Update Date: 2020-11-27</span><span> Version: 6.0</span></div>
+<div class="version-info"><span>Update Date: 2020-12-24</span><span> Version: 6.0</span></div>

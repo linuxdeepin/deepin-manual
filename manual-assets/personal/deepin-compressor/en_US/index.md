@@ -153,4 +153,4 @@ View Help to get more information about Archive Manager.
 1.  On the Archive Manager interface, click ![icon_menu](icon/icon_menu.svg) .
 2.  Click **Exit** to exit.
 
-<div class="version-info"><span>Update Date: 2020-11-27</span><span> Version: 5.9</span></div>
+<div class="version-info"><span>Update Date: 2020-12-24</span><span> Version: 5.9</span></div>
