@@ -43,6 +43,7 @@
 
 #include <QRegion>
 #include <QFocusEvent>
+#include <QWebEngineHistory>
 
 #include "base/utils.h"
 
@@ -629,7 +630,6 @@ void WebWindow::initShortcuts()
     scSearch->setContext(Qt::WindowShortcut);
     scSearch->setAutoRepeat(false);
     connect(scSearch, &QShortcut::activated, this, [this] {
-        qDebug() << "search" << endl;
         search_edit_->lineEdit()->setFocus(Qt::ShortcutFocusReason);
     });
 }

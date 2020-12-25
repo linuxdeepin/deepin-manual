@@ -35,3 +35,4 @@ obj-*
 /test/coverage/
 /test/deepin-manual.csv
 /test/report/
+/review/

@@ -21,7 +21,6 @@
 #include "environments.h"
 #include "resources/themes/images.h"
 #include "controller/shellobj.h"
-#include "base/accessible.h"
 
 #include <DApplication>
 #include <DApplicationSettings>
@@ -100,7 +99,6 @@ int main(int argc, char **argv)
     }
     argument_parser.openManualsDelay();
 
-
     // 日志保存, 路径:~/.cach/deepin/deepin-manual/
     DApplicationSettings dApplicationSettings;
     Dtk::Core::DLogManager::registerFileAppender();
@@ -116,6 +114,5 @@ int main(int argc, char **argv)
     customLoggerInstance.logToGlobalInstance(category, true);
     customLoggerInstance.registerAppender(fileAppender);
 
-    QAccessible::installFactory(accessibleFactory);
     return app.exec();
 }

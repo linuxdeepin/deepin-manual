@@ -26,6 +26,7 @@ class ArgumentParser : public QObject
 public:
     explicit ArgumentParser(QObject *parent = nullptr);
     ~ArgumentParser() override;
+    //解析传入参数
     bool parseArguments();
     void openManualsDelay();
 
@@ -34,13 +35,15 @@ signals:
     void openManualWithSearchRequested(const QString &app_name, const QString &keyword);
     void newAppOpen();
 
+private slots:
+    //打开对应模块文案槽函数
+    void onOpenAppRequested(const QString &app_name, const QString &title_name = "");
+    //查找关键字槽函数
+    void onSearchRequested(const QString &keyword);
+
 private:
     QString curManual;
-    bool bIsDbus {false};
-
-private slots:
-    void onOpenAppRequested(const QString &app_name, const QString &title_name = "");
-    void onSearchRequested(const QString &keyword);
+    bool bIsDbus;
 };
 
 #endif // DEEPIN_MANUAL_CONTROLLER_ARGUMENT_PARSER_H

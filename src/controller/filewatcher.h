@@ -1,9 +1,9 @@
 /*
    * Copyright (C) 2019 ~ 2020 Uniontech Software Technology Co.,Ltd.
    *
-   * Author:     xxx <xxx@uniontech.com>
+   * Author:     wujian <wujian@uniontech.com>
    *
-   * Maintainer: xxx <xxx@uniontech.com>
+   * Maintainer: wujian <wujian@uniontech.com>
    *
    * This program is free software: you can redistribute it and/or modify
    * it under the terms of the GNU General Public License as published by
@@ -26,7 +26,6 @@
 #include <QMap>
 #include <QFileSystemWatcher>
 
-
 //p表示桌面专业版,h表示个人版，d表示社区版,s表示服务器版，e表示服务器企业版，eu表示服务器欧拉版，i表示服务器行业版
 //klu表示KelvinU项目版本，pgv表示PanguV项目版本。
 const QStringList systemList = {"p", "h", "d", "s", "e", "eu", "i", "klu", "pgv"};
@@ -43,7 +42,6 @@ public:
 
     //文件列表信息对比
     void checkMap(QMap<QString, QString> &mapOld, QMap<QString, QString> &mapNow, QStringList &deleteList, QStringList &addList, QStringList &addTime);
-
 
 signals:
     //文件列表发生改变信号
