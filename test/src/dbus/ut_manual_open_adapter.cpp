@@ -15,20 +15,41 @@
 * You should have received a copy of the GNU General Public License
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include "ut_manual_open_adapter.h"
+#include "../src/dbus/manual_open_adapter.h"
 
-#ifndef UT_SEARCH_MANAGER_TEST_H
-#define UT_SEARCH_MANAGER_TEST_H
-
-#include "gtest/gtest.h"
-#include <QTest>
-
-namespace dman {
-
-class ut_search_manager_test : public ::testing::Test
+ut_ManualOpenAdapter::ut_ManualOpenAdapter()
 {
-public:
-    ut_search_manager_test();
-};
+}
 
-} // namespace dman
-#endif // UT_SEARCH_MANAGER_TEST_H
+void ut_ManualOpenAdapter::SetUp()
+{
+    widget = new QWidget;
+    adapter = new ManualOpenAdapter(widget);
+}
+
+void ut_ManualOpenAdapter::TearDown()
+{
+    delete adapter;
+    delete widget;
+}
+
+TEST_F(ut_ManualOpenAdapter, open)
+{
+    adapter->Open("dde");
+}
+
+TEST_F(ut_ManualOpenAdapter, OpenTitle)
+{
+    adapter->OpenTitle("deepin-a", "a");
+}
+
+TEST_F(ut_ManualOpenAdapter, Search)
+{
+    adapter->Search("a");
+}
+
+TEST_F(ut_ManualOpenAdapter, ShowManual)
+{
+    adapter->ShowManual("deepin");
+}

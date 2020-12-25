@@ -15,20 +15,29 @@
 * You should have received a copy of the GNU General Public License
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
+#include "ut_manual_filesupdate_adapter.h"
+#include "../src/dbus/manual_filesupdate_adapter.h"
 
-#ifndef UT_SEARCH_MANAGER_TEST_H
-#define UT_SEARCH_MANAGER_TEST_H
-
-#include "gtest/gtest.h"
-#include <QTest>
-
-namespace dman {
-
-class ut_search_manager_test : public ::testing::Test
+ut_ManualFilesUpdateAdapter::ut_ManualFilesUpdateAdapter()
 {
-public:
-    ut_search_manager_test();
-};
+}
 
-} // namespace dman
-#endif // UT_SEARCH_MANAGER_TEST_H
+void ut_ManualFilesUpdateAdapter::SetUp()
+{
+    widget = new QWidget;
+    adapter = new ManualFilesUpdateAdapter(widget);
+}
+
+void ut_ManualFilesUpdateAdapter::TearDown()
+{
+    delete adapter;
+    delete widget;
+}
+
+TEST_F(ut_ManualFilesUpdateAdapter, OnFilesUpdate)
+{
+    QStringList list;
+    list << "aaa";
+    list << "bb";
+    adapter->OnFilesUpdate(list);
+}

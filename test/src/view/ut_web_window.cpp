@@ -21,41 +21,56 @@
 #include "view/widget/search_edit.h"
 #include "view/widget/search_completion_window.h"
 #include "view/widget/search_button.h"
+#include "view/widget/image_viewer.h"
 #include "controller/search_manager.h"
 #include "controller/search_result.h"
-#include "base/consts.h"
 #include "controller/config_manager.h"
+#include "base/consts.h"
+#include "view/i18n_proxy.h"
+#include "view/image_viewer_proxy.h"
+#include "view/manual_proxy.h"
+#include "view/search_proxy.h"
+#include "view/settings_proxy.h"
+#include "view/theme_proxy.h"
+#include "view/title_bar_proxy.h"
+
+#include "../third-party/stub/stub.h"
 
 namespace dman {
 
 ut_web_window_test::ut_web_window_test()
 {
-
 }
 
+void stub_inintweb_rebutn()
+{
+    return;
+}
 void ut_web_window_test::SetUp()
 {
-//    m_webwindow = new WebWindow;
-//    m_webwindow->show();
+    Stub st;
+    st.set(ADDR(WebWindow, initWeb), stub_inintweb_rebutn);
+    window = new WebWindow;
 }
 
 void ut_web_window_test::TearDown()
 {
-//    delete m_webwindow;
+    delete window;
 }
-TEST_F(ut_web_window_test, init)
+TEST_F(ut_web_window_test, deleteWin)
 {
-//    WebWindow web;
-//    qDebug() << "web.width()--->" << web.width();
-//    ASSERT_FALSE(web.isVisible());
-//    web.initUI();
-//    web.initConnections();
-//    web.initWeb();
-//    web.onChannelFinish();
-//    web.setSearchManager();
+    window->image_viewer_ = new ImageViewer();
+    window->image_viewer_proxy_ = new ImageViewerProxy(window->image_viewer_);
+    window->search_proxy_ = new SearchProxy;
+    window->theme_proxy_ = new ThemeProxy;
+    window->manual_proxy_ = new ManualProxy;
+    window->title_bar_proxy_ = new TitleBarProxy;
+    window->settings_proxy_ = new SettingsProxy;
+    window->search_manager_ = new SearchManager;
+    window->i18n_proxy = new I18nProxy;
+    window->buttonBox = new Dtk::Widget::DButtonBox;
+    window->search_edit_ = new SearchEdit;
 }
-
-
 
 TEST_F(ut_web_window_test, updateBtnBox)
 {
@@ -68,7 +83,6 @@ TEST_F(ut_web_window_test, updateBtnBox)
     web.m_forwardButton->setEnabled(false);
     web.updateBtnBox();
     ASSERT_FALSE(web.buttonBox->isVisible());
-
 }
 
 //TEST_F(ut_web_window_test, openjsPage)
@@ -80,20 +94,20 @@ TEST_F(ut_web_window_test, updateBtnBox)
 
 TEST_F(ut_web_window_test, slot_ThemeChanged)
 {
-//    WebWindow web;
-//    web.initWeb();
-//    web.web_view_->page()->setBackgroundColor(QColor(255, 255, 255));
-//    QColor c = web.web_view_->page()->backgroundColor();
-//    qDebug() << "QColor---c--->" << c;
-//    web.slot_ThemeChanged();
-//    QColor c1 = web.web_view_->page()->backgroundColor();
-//    qDebug() << "QColor---c1--->" << c1;
-//    DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
-//    if (themeType == DGuiApplicationHelper::LightType)
-//        ASSERT_EQ(c1, QColor(0xF8, 0xF8, 0xF8));
-//    else if (themeType == DGuiApplicationHelper::DarkType) {
-//        ASSERT_EQ(c1, QColor(0x28, 0x28, 0x28));
-//    }
+    //    WebWindow web;
+    //    web.initWeb();
+    //    web.web_view_->page()->setBackgroundColor(QColor(255, 255, 255));
+    //    QColor c = web.web_view_->page()->backgroundColor();
+    //    qDebug() << "QColor---c--->" << c;
+    //    web.slot_ThemeChanged();
+    //    QColor c1 = web.web_view_->page()->backgroundColor();
+    //    qDebug() << "QColor---c1--->" << c1;
+    //    DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
+    //    if (themeType == DGuiApplicationHelper::LightType)
+    //        ASSERT_EQ(c1, QColor(0xF8, 0xF8, 0xF8));
+    //    else if (themeType == DGuiApplicationHelper::DarkType) {
+    //        ASSERT_EQ(c1, QColor(0x28, 0x28, 0x28));
+    //    }
 }
 
 TEST_F(ut_web_window_test, slot_HelpSupportTriggered)
@@ -104,16 +118,16 @@ TEST_F(ut_web_window_test, slot_HelpSupportTriggered)
 
 TEST_F(ut_web_window_test, closeEvent)
 {
-//    WebWindow web;
-//    web.initUI();
-//    web.initWeb();
-//    web.setFixedWidth(600);
-//    web.setFixedHeight(1200);
-//    web.close();
-//    QSettings *setting = ConfigManager::getInstance()->getSettings();
-//    setting->beginGroup(kConfigWindowInfo);
-//    ASSERT_EQ(setting->value(kConfigWindowWidth), 600);
-//    ASSERT_EQ(setting->value(kConfigWindowHeight), 1200);
+    //    WebWindow web;
+    //    web.initUI();
+    //    web.initWeb();
+    //    web.setFixedWidth(600);
+    //    web.setFixedHeight(1200);
+    //    web.close();
+    //    QSettings *setting = ConfigManager::getInstance()->getSettings();
+    //    setting->beginGroup(kConfigWindowInfo);
+    //    ASSERT_EQ(setting->value(kConfigWindowWidth), 600);
+    //    ASSERT_EQ(setting->value(kConfigWindowHeight), 1200);
 }
 
 //TEST_F(ut_web_window_test, inputMethodEvent)
@@ -134,25 +148,24 @@ TEST_F(ut_web_window_test, closeEvent)
 
 TEST_F(ut_web_window_test, eventFilter)
 {
-//    WebWindow web;
-//    web.initUI();
-//    web.initWeb();
-//    web.setFocus();
+    //    WebWindow web;
+    //    web.initUI();
+    //    web.initWeb();
+    //    web.setFocus();
 
-//    //web.search_edit_->lineEdit()->setFocus();
-//    QTest::keyPress(&web, Qt::Key_1);
-//    qDebug() << "searchText---> :  " << web.search_edit_->text();
-//    ASSERT_EQ(web.search_edit_->text().toStdString(), QString::number(1).toStdString());
+    //    //web.search_edit_->lineEdit()->setFocus();
+    //    QTest::keyPress(&web, Qt::Key_1);
+    //    qDebug() << "searchText---> :  " << web.search_edit_->text();
+    //    ASSERT_EQ(web.search_edit_->text().toStdString(), QString::number(1).toStdString());
 }
 
 TEST_F(ut_web_window_test, onManualSearchByKeyword)
 {
-//    WebWindow web;
-//    web.initUI();
-//    web.initWeb();
+    //    WebWindow web;
+    //    web.initUI();
+    //    web.initWeb();
     //web.onManualSearchByKeyword("关闭应用商店");
 }
-
 
 TEST_F(ut_web_window_test, onACtiveColorChanged)
 {
@@ -172,19 +185,19 @@ TEST_F(ut_web_window_test, onThemeChange)
 
 TEST_F(ut_web_window_test, onSearchTextChanged)
 {
-//    WebWindow web;
-//    web.initUI();
-//    web.onSearchTextChanged("应用");
+    //    WebWindow web;
+    //    web.initUI();
+    //    web.onSearchTextChanged("应用");
     //usleep(200000);
-//    ASSERT_FALSE(web.completion_window_->isVisible());
+    //    ASSERT_FALSE(web.completion_window_->isVisible());
 }
 
 TEST_F(ut_web_window_test, onSearchTextChangedDelay)
 {
-//    WebWindow web;
-//    web.initUI();
-//    web.initWeb();
-//    web.search_edit_->setText("关闭应用商店");
+    //    WebWindow web;
+    //    web.initUI();
+    //    web.initWeb();
+    //    web.search_edit_->setText("关闭应用商店");
     //web.onSearchTextChangedDelay();
     //ASSERT_EQ(web.completion_window_->keyword(), "关闭应用商店");
 }
@@ -234,5 +247,4 @@ TEST_F(ut_web_window_test, onSearchAnchorResult2)
     ASSERT_FALSE(web.completion_window_->isVisible());
 }
 
-
-}
+} // namespace dman

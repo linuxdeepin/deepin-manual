@@ -26,8 +26,8 @@
 
 DWIDGET_USE_NAMESPACE
 
+class WebWindow;
 namespace dman {
-
 
 class ut_web_window_test : public ::testing::Test
 {
@@ -35,9 +35,7 @@ public:
     explicit ut_web_window_test();
     virtual void SetUp() override;
     virtual void TearDown() override;
-
-protected:
-//    WebWindow /***/m_webwindow;
+    WebWindow *window;
 };
-}
+} // namespace dman
 #endif // UT_WEB_WINDOW_TEST_H

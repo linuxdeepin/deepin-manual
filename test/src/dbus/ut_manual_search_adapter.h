@@ -16,19 +16,22 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef UT_SEARCH_MANAGER_TEST_H
-#define UT_SEARCH_MANAGER_TEST_H
+#ifndef UT_MANUAL_SEARCH_ADAPTER_H
+#define UT_MANUAL_SEARCH_ADAPTER_H
 
 #include "gtest/gtest.h"
 #include <QTest>
 
-namespace dman {
+class ManualSearchAdapter;
 
-class ut_search_manager_test : public ::testing::Test
+class ut_ManualSearchAdapter : public testing::Test
 {
 public:
-    ut_search_manager_test();
+    ut_ManualSearchAdapter();
+    virtual void SetUp() override;
+    virtual void TearDown() override;
+    ManualSearchAdapter *msAdapter;
+    QWidget *wiget;
 };
 
-} // namespace dman
-#endif // UT_SEARCH_MANAGER_TEST_H
+#endif // UT_MANUAL_SEARCH_ADAPTER_H

@@ -16,19 +16,20 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-#ifndef UT_SEARCH_MANAGER_TEST_H
-#define UT_SEARCH_MANAGER_TEST_H
+#ifndef UT_MANUAL_OPEN_INTERFACE_H
+#define UT_MANUAL_OPEN_INTERFACE_H
 
 #include "gtest/gtest.h"
 #include <QTest>
 
-namespace dman {
-
-class ut_search_manager_test : public ::testing::Test
+class ManualOpenInterface;
+class ut_ManualOpenInterface : public testing::Test
 {
 public:
-    ut_search_manager_test();
+    ut_ManualOpenInterface();
+    virtual void SetUp() override;
+    virtual void TearDown() override;
+    ManualOpenInterface *interface;
 };
 
-} // namespace dman
-#endif // UT_SEARCH_MANAGER_TEST_H
+#endif // UT_MANUALOPENINTERFACE_H

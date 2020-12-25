@@ -48,13 +48,3 @@ TEST_F(ut_lanuncher_interface_test, LauncherInterface3)
     LauncherInterface li();
     //    li.deleteLater();
 }
-
-TEST_F(ut_lanuncher_interface_test, GetAllItemInfos)
-{
-    //    li->GetAllItemInfos();
-}
-
-TEST_F(ut_lanuncher_interface_test, GetItemInfo)
-{
-    //    li->GetItemInfo("send");
-}
