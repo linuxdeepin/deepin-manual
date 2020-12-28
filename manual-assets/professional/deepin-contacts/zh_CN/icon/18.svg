@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+<filter  id="filter-3" y="-20.8%" x="-29.2%" width="158.3%" height="158.3%" filterUnits="objectBoundingBox">
+	<feOffset  result="shadowOffsetOuter1" in="SourceAlpha" dy="2" dx="0"></feOffset>
+	<feGaussianBlur  result="shadowBlurOuter1" in="shadowOffsetOuter1" stdDeviation="2"></feGaussianBlur>
+	<feComposite  in2="SourceAlpha" result="shadowBlurOuter1" in="shadowBlurOuter1" operator="out"></feComposite>
+	<feColorMatrix  values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.05 0" in="shadowBlurOuter1" type="matrix"></feColorMatrix>
+</filter>
+<title>切片</title>
+<desc>Created with Sketch.</desc>
+<g id="矩形">
+	<g filter="url(#filter-3)">
+		<path id="path-2_2_" d="M5,0h14c2.762,0,5,2.239,5,5v14c0,2.762-2.238,5-5,5H5c-2.761,0-5-2.238-5-5V5C0,2.239,2.239,0,5,0z"/>
+	</g>
+	<g>
+		<path id="path-2_1_" fill-opacity="0.08" d="M5,0h14c2.762,0,5,2.239,5,5v14c0,2.762-2.238,5-5,5H5c-2.761,0-5-2.238-5-5V5
+			C0,2.239,2.239,0,5,0z"/>
+	</g>
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-272.2231" y1="415.7861" x2="-272.2231" y2="414.8296" gradientTransform="matrix(23 0 0 -23 6273.1406 9563.5625)">
+		<stop  offset="0" style="stop-color:#E6E6E6"/>
+		<stop  offset="1" style="stop-color:#E3E3E3"/>
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#000000" stroke-opacity="0.03" d="M5.5,0.5h13c2.762,0,5,2.239,5,5v13c0,2.762-2.238,5-5,5
+		h-13c-2.761,0-5-2.238-5-5v-13C0.5,2.739,2.739,0.5,5.5,0.5z"/>
+</g>
+<g id="iconmonstr-speech-bubble-3" transform="translate(4.000000, 4.666667)">
+</g>
+<g id="通讯录-icon" transform="translate(5.333333, 4.000000)">
+	<g id="Fill-1">
+		<path fill="#536076" d="M4.07,12.911c-1.164,0-1.164-0.859-1.164-1.146c0-1.26,1.396-3.151,3.201-3.151h1.745
+			c1.805,0,3.2,1.892,3.2,3.151c0,0.286,0,1.146-1.163,1.146H4.07z M9.173,5.852C9.173,7.033,8.186,8,6.979,8
+			C5.773,8,4.786,7.033,4.786,5.852c0-1.182,0.987-2.149,2.193-2.149C8.186,3.703,9.173,4.669,9.173,5.852z M0.882-0.595
+			c-0.983,0-1.735,0.745-1.735,1.719v3.323h1.156c0.348,0,0.579,0.229,0.579,0.573c0,0.344-0.231,0.573-0.579,0.573h-1.156v4.584
+			h1.156c0.348,0,0.579,0.229,0.579,0.573c0,0.343-0.231,0.573-0.579,0.573h-1.156v3.552c0,0.974,0.752,1.719,1.735,1.719h11.569
+			c0.983,0,1.736-0.745,1.736-1.719V1.125c0-0.974-0.753-1.719-1.736-1.719H0.882z"/>
+	</g>
+</g>
+</svg>

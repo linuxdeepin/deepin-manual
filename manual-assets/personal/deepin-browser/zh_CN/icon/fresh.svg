@@ -1,0 +1,21 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="44" height="44" viewBox="0 0 44 44">
+  <defs>
+    <linearGradient id="编组-8-c" x1="50%" x2="50%" y1="0%" y2="95.653%">
+      <stop offset="0%" stop-color="#E6E6E6"/>
+      <stop offset="100%" stop-color="#E3E3E3"/>
+    </linearGradient>
+    <rect id="编组-8-b" width="36" height="36" x="0" y="0" rx="8"/>
+    <filter id="编组-8-a" width="138.9%" height="138.9%" x="-19.4%" y="-13.9%" filterUnits="objectBoundingBox">
+      <feOffset dy="2" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="2"/>
+      <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.05 0"/>
+    </filter>
+  </defs>
+  <g fill="none" fill-rule="evenodd" transform="translate(4 2)">
+    <use fill="#000" filter="url(#编组-8-a)" xlink:href="#编组-8-b"/>
+    <rect width="35" height="35" x=".5" y=".5" fill="url(#编组-8-c)" stroke="#000" stroke-linejoin="square" stroke-opacity=".03" rx="8"/>
+    <path stroke="#536076" stroke-linecap="round" stroke-linejoin="round" d="M22.7315283,14.3100316 C21.633437,12.9039845 19.9222869,12 18,12 C14.6862915,12 12,14.6862915 12,18 C12,21.3137085 14.6862915,24 18,24 L18,24 C21.3137085,24 24,21.3137085 24,18"/>
+    <path fill="#536076" d="M23.4472136,13.8944272 L24.6381966,16.2763932 C24.7616912,16.5233825 24.6615791,16.823719 24.4145898,16.9472136 C24.3451621,16.9819275 24.2686056,17 24.190983,17 L21.809017,17 C21.5328746,17 21.309017,16.7761424 21.309017,16.5 C21.309017,16.4223775 21.3270895,16.3458209 21.3618034,16.2763932 L22.5527864,13.8944272 C22.676281,13.6474379 22.9766175,13.5473258 23.2236068,13.6708204 C23.3203705,13.7192022 23.3988317,13.7976635 23.4472136,13.8944272 Z" transform="rotate(142 23 15)"/>
+  </g>
+</svg>

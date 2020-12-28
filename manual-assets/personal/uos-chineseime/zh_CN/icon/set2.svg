@@ -1,0 +1,78 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="43" height="41" viewBox="0 0 43 41">
+  <defs>
+    <filter id="编组-2-a" width="138.5%" height="132.5%" x="-16.7%" y="-16.2%" filterUnits="objectBoundingBox">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1"/>
+      <feComposite in="shadowBlurOuter1" in2="SourceAlpha" operator="out" result="shadowBlurOuter1"/>
+      <feColorMatrix in="shadowBlurOuter1" result="shadowMatrixOuter1" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.2 0"/>
+      <feMerge>
+        <feMergeNode in="shadowMatrixOuter1"/>
+        <feMergeNode in="SourceGraphic"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="编组-2-b" x1="50%" x2="50%" y1="0%" y2="98.139%">
+      <stop offset="0%" stop-color="#FFF"/>
+      <stop offset="100%" stop-color="#EDEDED"/>
+    </linearGradient>
+    <linearGradient id="编组-2-e" x1="50%" x2="50%" y1="0%" y2="97.645%">
+      <stop offset="0%" stop-color="#4A4A4A"/>
+      <stop offset="100%" stop-color="#363636"/>
+    </linearGradient>
+    <path id="编组-2-d" d="M29.45,13.3 C30.499341,13.3 31.35,14.150659 31.35,15.2 C31.35,16.249341 30.499341,17.1 29.45,17.1 L14.25,17.1 C13.200659,17.1 12.35,16.249341 12.35,15.2 C12.35,14.150659 13.200659,13.3 14.25,13.3 L29.45,13.3 Z M34.2,13.3 C35.249341,13.3 36.1,14.150659 36.1,15.2 C36.1,16.249341 35.249341,17.1 34.2,17.1 C33.150659,17.1 32.3,16.249341 32.3,15.2 C32.3,14.150659 33.150659,13.3 34.2,13.3 Z M4.75,13.3 C5.79934102,13.3 6.65,14.150659 6.65,15.2 C6.65,16.249341 5.79934102,17.1 4.75,17.1 C3.70065898,17.1 2.85,16.249341 2.85,15.2 C2.85,14.150659 3.70065898,13.3 4.75,13.3 Z M9.5,13.3 C10.549341,13.3 11.4,14.150659 11.4,15.2 C11.4,16.249341 10.549341,17.1 9.5,17.1 C8.45065898,17.1 7.6,16.249341 7.6,15.2 C7.6,14.150659 8.45065898,13.3 9.5,13.3 Z M7.6,8.55 C8.64934102,8.55 9.5,9.40065898 9.5,10.45 C9.5,11.499341 8.64934102,12.35 7.6,12.35 L4.75,12.35 C3.70065898,12.35 2.85,11.499341 2.85,10.45 C2.85,9.40065898 3.70065898,8.55 4.75,8.55 L7.6,8.55 Z M34.2,8.55 C35.249341,8.55 36.1,9.40065898 36.1,10.45 C36.1,11.499341 35.249341,12.35 34.2,12.35 L31.35,12.35 C30.300659,12.35 29.45,11.499341 29.45,10.45 C29.45,9.40065898 30.300659,8.55 31.35,8.55 L34.2,8.55 Z M12.35,8.55 C13.399341,8.55 14.25,9.40065898 14.25,10.45 C14.25,11.499341 13.399341,12.35 12.35,12.35 C11.300659,12.35 10.45,11.499341 10.45,10.45 C10.45,9.40065898 11.300659,8.55 12.35,8.55 Z M17.1,8.55 C18.149341,8.55 19,9.40065898 19,10.45 C19,11.499341 18.149341,12.35 17.1,12.35 C16.050659,12.35 15.2,11.499341 15.2,10.45 C15.2,9.40065898 16.050659,8.55 17.1,8.55 Z M26.6,8.55 C27.649341,8.55 28.5,9.40065898 28.5,10.45 C28.5,11.499341 27.649341,12.35 26.6,12.35 C25.550659,12.35 24.7,11.499341 24.7,10.45 C24.7,9.40065898 25.550659,8.55 26.6,8.55 Z M21.85,8.55 C22.899341,8.55 23.75,9.40065898 23.75,10.45 C23.75,11.499341 22.899341,12.35 21.85,12.35 C20.800659,12.35 19.95,11.499341 19.95,10.45 C19.95,9.40065898 20.800659,8.55 21.85,8.55 Z M4.75,3.8 C5.79934102,3.8 6.65,4.65065898 6.65,5.7 C6.65,6.74934102 5.79934102,7.6 4.75,7.6 C3.70065898,7.6 2.85,6.74934102 2.85,5.7 C2.85,4.65065898 3.70065898,3.8 4.75,3.8 Z M24.7,3.8 C25.749341,3.8 26.6,4.65065898 26.6,5.7 C26.6,6.74934102 25.749341,7.6 24.7,7.6 C23.650659,7.6 22.8,6.74934102 22.8,5.7 C22.8,4.65065898 23.650659,3.8 24.7,3.8 Z M9.5,3.8 C10.549341,3.8 11.4,4.65065898 11.4,5.7 C11.4,6.74934102 10.549341,7.6 9.5,7.6 C8.45065898,7.6 7.6,6.74934102 7.6,5.7 C7.6,4.65065898 8.45065898,3.8 9.5,3.8 Z M14.25,3.8 C15.299341,3.8 16.15,4.65065898 16.15,5.7 C16.15,6.74934102 15.299341,7.6 14.25,7.6 C13.200659,7.6 12.35,6.74934102 12.35,5.7 C12.35,4.65065898 13.200659,3.8 14.25,3.8 Z M29.45,3.8 C30.499341,3.8 31.35,4.65065898 31.35,5.7 C31.35,6.74934102 30.499341,7.6 29.45,7.6 C28.400659,7.6 27.55,6.74934102 27.55,5.7 C27.55,4.65065898 28.400659,3.8 29.45,3.8 Z M34.2,3.8 C35.249341,3.8 36.1,4.65065898 36.1,5.7 C36.1,6.74934102 35.249341,7.6 34.2,7.6 C33.150659,7.6 32.3,6.74934102 32.3,5.7 C32.3,4.65065898 33.150659,3.8 34.2,3.8 Z M19,3.8 C20.049341,3.8 20.9,4.65065898 20.9,5.7 C20.9,6.74934102 20.049341,7.6 19,7.6 C17.950659,7.6 17.1,6.74934102 17.1,5.7 C17.1,4.65065898 17.950659,3.8 19,3.8 Z"/>
+    <filter id="编组-2-c" width="103%" height="115%" x="-1.5%" y="-3.8%" filterUnits="objectBoundingBox">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feColorMatrix in="shadowOffsetOuter1" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.1 0"/>
+    </filter>
+    <filter id="编组-2-f" width="103%" height="115%" x="-1.5%" y="-3.8%" filterUnits="objectBoundingBox">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetInner1"/>
+      <feComposite in="shadowOffsetInner1" in2="SourceAlpha" k2="-1" k3="1" operator="arithmetic" result="shadowInnerInner1"/>
+      <feColorMatrix in="shadowInnerInner1" result="shadowMatrixInner1" values="0 0 0 0 1   0 0 0 0 1   0 0 0 0 1  0 0 0 0.05 0"/>
+      <feOffset dy="-1" in="SourceAlpha" result="shadowOffsetInner2"/>
+      <feComposite in="shadowOffsetInner2" in2="SourceAlpha" k2="-1" k3="1" operator="arithmetic" result="shadowInnerInner2"/>
+      <feColorMatrix in="shadowInnerInner2" result="shadowMatrixInner2" values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.5 0"/>
+      <feMerge>
+        <feMergeNode in="shadowMatrixInner1"/>
+        <feMergeNode in="shadowMatrixInner2"/>
+      </feMerge>
+    </filter>
+    <linearGradient id="编组-2-i" x1="50%" x2="50%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#B674F1"/>
+      <stop offset="100%" stop-color="#FF5959"/>
+    </linearGradient>
+    <rect id="编组-2-h" width="24.67" height="24.72" x="0" y="3.561" rx="12.335"/>
+    <filter id="编组-2-g" width="128.4%" height="128.3%" x="-14.2%" y="-10.1%" filterUnits="objectBoundingBox">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.146286232   0 0 0 0 0.00297143909   0 0 0 0 0.0789821476  0 0 0 0.32107736 0"/>
+    </filter>
+    <linearGradient id="编组-2-l" x1="50%" x2="50%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#FFF"/>
+      <stop offset="100%" stop-color="#FFF" stop-opacity=".917"/>
+    </linearGradient>
+    <text id="编组-2-k" font-family="SourceHanSansSC-Medium, Source Han Sans SC" font-size="19.688" font-weight="400">
+      <tspan x="2.511" y="23.784">中</tspan>
+    </text>
+    <filter id="编组-2-j" width="121.1%" height="113.8%" x="-10.5%" y="-3.4%" filterUnits="objectBoundingBox">
+      <feOffset dy="1" in="SourceAlpha" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation=".5"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0.784313725   0 0 0 0 0.0392156863   0 0 0 0 0.0392156863  0 0 0 0.2 0"/>
+    </filter>
+  </defs>
+  <g fill="none" fill-rule="evenodd" filter="url(#编组-2-a)" transform="translate(2 -2)">
+    <g transform="translate(0 18.154)">
+      <path fill="url(#编组-2-b)" d="M4.6875,0 L33.3125,0 C35.9013348,-4.75561231e-16 38,2.09866524 38,4.6875 L38,16.2125 C38,18.8013348 35.9013348,20.9 33.3125,20.9 L4.6875,20.9 C2.09866524,20.9 3.17040821e-16,18.8013348 0,16.2125 L0,4.6875 C-3.17040821e-16,2.09866524 2.09866524,1.36373965e-15 4.6875,0 Z"/>
+      <g fill-rule="nonzero">
+        <use fill="#000" filter="url(#编组-2-c)" xlink:href="#编组-2-d"/>
+        <use fill="url(#编组-2-e)" xlink:href="#编组-2-d"/>
+        <use fill="#000" filter="url(#编组-2-f)" xlink:href="#编组-2-d"/>
+      </g>
+    </g>
+    <g fill-rule="nonzero" transform="translate(13.3)">
+      <use fill="#000" filter="url(#编组-2-g)" xlink:href="#编组-2-h"/>
+      <use fill="url(#编组-2-i)" xlink:href="#编组-2-h"/>
+      <use fill="#FFF" filter="url(#编组-2-j)" xlink:href="#编组-2-k"/>
+      <use fill="url(#编组-2-l)" xlink:href="#编组-2-k"/>
+      <use fill="#FFF" xlink:href="#编组-2-k"/>
+    </g>
+  </g>
+</svg>

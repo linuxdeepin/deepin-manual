@@ -232,23 +232,6 @@ add_executable(generate-search-db
                ${SEARCH_FILES})
 target_link_libraries(generate-search-db ${LINK_LIBS})
 
-## TODO(Shaohua): Generate search db by hand.
-#add_custom_command(OUTPUT _update-search-db
-#                   COMMAND pwd
-#                   COMMAND ${CMAKE_CURRENT_BINARY_DIR}/generate-search-db
-#                   WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/
-#                   )
-#add_custom_target(update-search-db DEPENDS _update-search-db)
-#add_dependencies(update-search-db
-#                 generate-search-db)
-
-## Generate .qm files from .ts files.
-#file(GLOB DMAN_TRANSLATION_TS
-#     ${CMAKE_SOURCE_DIR}/translations/deepin-manual*.ts)
-#set_source_files_properties(${DMAN_TRANSLATION_TS}
-#                            PROPERTIES OUTPUT_LOCATION ${CMAKE_BINARY_DIR}/translations)
-#qt5_add_translation(DMAN_TRANSLATION_QM ${DMAN_TRANSLATION_TS})
-#add_custom_target(update-qm DEPENDS ${DMAN_TRANSLATION_QM})
 
 # Build web project and generate js files.
 add_custom_command(OUTPUT rebuild-web
@@ -272,12 +255,6 @@ set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
 set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 target_link_libraries(dman  ${LINK_LIBS})
 
-#add_executable(dman-search
-#               app/dman_search.cpp
-#               ${DBUS_FILES}
-#               )
-#target_link_libraries(dman-search
-#                      ${DMAN_SEARCH_LINK_LIBS})
 
 add_executable(dmanHelper
                 app/dman_helper.cpp
@@ -331,30 +308,18 @@ if (CMAKE_BUILD_TYPE MATCHES Debug)
 
 endif ()
 
+#set different ISO types
+#1:professional 2:community 3:server 4:personal
+set(ISO_TYPE "professional")
+#set(ISO_TYPE "community")
+#set(ISO_TYPE "server")
+#set(ISO_TYPE "personal")
+
+
 
 ## Installation
-#install(TARGETS dman
-#        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
 install(TARGETS dman
         DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
-#<<<<<<< HEAD
-##install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/app/dman.sh
-#        DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
-#        PERMISSIONS OWNER_READ OWNER_EXECUTE
-#        GROUP_READ GROUP_EXECUTE
-#        WORLD_READ WORLD_EXECUTE
-#        RENAME dman)
-#install(TARGETS dman-search
-#=======
-#install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/app/dman.sh
-#        DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
-#        PERMISSIONS OWNER_READ OWNER_EXECUTE
-#        GROUP_READ GROUP_EXECUTE
-#        WORLD_READ WORLD_EXECUTE
-#        RENAME dman)
-#install(TARGETS dman-search
-#        DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
-
 install(TARGETS dmanHelper
         DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 
@@ -364,14 +329,11 @@ file(GLOB QM_FILES  ${CMAKE_SOURCE_DIR}/translations/deepin-manual*.qm)
 install(FILES ${QM_FILES}
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual/translations/)
 
-install(DIRECTORY ${CMAKE_SOURCE_DIR}/manual-assets
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/manual-assets/${ISO_TYPE}
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets/)
 
 install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/web_dist
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
-#后台服务文件
-#install(FILES ${CMAKE_SOURCE_DIR}/src/controller/dman-helper.service
-#            DESTINATION ${CMAKE_INSTALL_PREFIX}/lib/systemd/system)
 
 
 string(TOLOWER ${CMAKE_SYSTEM_PROCESSOR} LOWERCASE_CMAKE_SYSTEM_PROCESSOR)

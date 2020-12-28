@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+<filter  id="filter-3" y="-20.8%" x="-29.2%" width="158.3%" height="158.3%" filterUnits="objectBoundingBox">
+	<feOffset  result="shadowOffsetOuter1" in="SourceAlpha" dy="2" dx="0"></feOffset>
+	<feGaussianBlur  result="shadowBlurOuter1" in="shadowOffsetOuter1" stdDeviation="2"></feGaussianBlur>
+	<feComposite  in2="SourceAlpha" result="shadowBlurOuter1" in="shadowBlurOuter1" operator="out"></feComposite>
+	<feColorMatrix  values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.05 0" in="shadowBlurOuter1" type="matrix"></feColorMatrix>
+</filter>
+<title>切片</title>
+<desc>Created with Sketch.</desc>
+<g id="页面-1">
+	<g filter="url(#filter-3)">
+		<path id="path-2_2_" d="M19,0H5C2.239,0,0,2.239,0,5v14c0,2.762,2.239,5,5,5h14c2.762,0,5-2.238,5-5V5C24,2.239,21.762,0,19,0z"/>
+	</g>
+	<g>
+		<g>
+			<path id="path-2_1_" fill-opacity="0.08" d="M19,0H5C2.239,0,0,2.239,0,5v14c0,2.762,2.239,5,5,5h14c2.762,0,5-2.238,5-5V5
+				C24,2.239,21.762,0,19,0z"/>
+		</g>
+		
+			<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-297.7769" y1="415.7861" x2="-297.7769" y2="414.8296" gradientTransform="matrix(-23 0 0 -23 -6836.8594 9563.5625)">
+			<stop  offset="0" style="stop-color:#E6E6E6"/>
+			<stop  offset="1" style="stop-color:#E3E3E3"/>
+		</linearGradient>
+		<path fill="url(#SVGID_1_)" stroke="#000000" stroke-opacity="0.03" d="M18.5,0.5h-13c-2.761,0-5,2.239-5,5v13
+			c0,2.762,2.239,5,5,5h13c2.762,0,5-2.238,5-5v-13C23.5,2.739,21.262,0.5,18.5,0.5z"/>
+	</g>
+	<g id="编组">
+		<path id="形状" fill="#536076" d="M14.159,18.207H9.841v-0.539h1.89v-1.629c-1.96-0.139-3.509-1.773-3.509-3.769v-1.08h0.54
+			v1.085c0.003,1.785,1.453,3.232,3.238,3.232c1.788,0,3.239-1.451,3.239-3.238v-1.08h0.539v1.08c0,1.996-1.549,3.63-3.508,3.769
+			v1.629h1.889V18.207z M14.159,7.952c0-1.192-0.966-2.16-2.159-2.16c-1.191,0-2.159,0.967-2.159,2.16v4.318
+			c0,1.193,0.968,2.16,2.159,2.16c1.193,0,2.159-0.967,2.159-2.16V7.952z"/>
+	</g>
+</g>
+</svg>
