@@ -996,7 +996,7 @@ After connecting to the computer, you can set the pressure sensing force of the 
 3. Adjust **Pressure Sensitivity** for the pen.
 
 ### Keyboard and Language
-Set keyboard properties and select your keyboard layout to keep your typing habit. You can also adjust the keyboard layout according to the country and language, change system language, and customize shortcuts here.
+Set keyboard properties and select your keyboard layout to keep your typing habit. You can also adjust the keyboard layout according to the country and language, change system language.
 
 ![0|keyboard](jpg/keyboard.png)
 
@@ -1068,29 +1068,6 @@ The shortcut list includes all shortcuts in the system. View, modify and customi
 1. On the homepage of Control Center, click ![keyboard_normal](icon/keyboard_normal.svg).
 2. Click **Shortcuts**.
 3. You can search or view the default shortcuts for system, window and workspace.
-
-   
-
-##### Modify Shortcuts
-
-1. On the homepage of Control Center, click ![keyboard_normal](icon/keyboard_normal.svg).
-2. Click **Shortcuts**.
-3. Click the shortcut you want to modify.
-4. Press new shortcut to change it.
-
-> ![tips](icon/tips.svg)Tips: To disable a shortcut, please press ![Backspace](icon/Backspace.svg) on the keyboard. To cancel modifying, press **Esc** or click Restore Defaults at the bottom.
-
-##### Customize Shortcuts
-
-1. On the homepage of Control Center, click ![keyboard_normal](icon/keyboard_normal.svg).
-2. Click **Shortcuts**.
-3. Click ![add](icon/add.svg).
-4. Enter the name, command and shortcut.
-5. Click **Add**.
-6. After being successfully added, click **Edit**.
-7. Click ![delete](icon/delete.svg) to delete the custom shortcut.
-
-> ![tips](icon/tips.svg)Tips: To change the shortcut, click it and press a new shortcut to change it directly. To edit the name and command of the custom shortcut, click **Edit ** > ![edit](icon/edit.svg) near the shortcut name to enter the shortcut settings.
 
 ### Update Settings
 
