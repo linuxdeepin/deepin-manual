@@ -311,9 +311,9 @@ endif ()
 #set different ISO types
 #1:professional 2:community 3:server 4:personal
 #set(ISO_TYPE "professional")
-set(ISO_TYPE "community")
+#set(ISO_TYPE "community")
 #set(ISO_TYPE "server")
-#set(ISO_TYPE "personal")
+set(ISO_TYPE "personal")
 
 
 
