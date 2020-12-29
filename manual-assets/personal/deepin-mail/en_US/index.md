@@ -261,4 +261,3 @@ Click Help to get the manual, which will help you further know and use Mail.
 2. Click  **Exit**.
 
 <div class="version-info"><span>Update Date: 2020-12-24</span><span> Version: 5.1</span></div>
-

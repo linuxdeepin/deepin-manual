@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="48px" height="48px" viewBox="0 0 48 48" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <!-- Generator: Sketch 42 (36781) - http://www.bohemiancoding.com/sketch -->
+    <title>deepin-voice-recorder-48</title>
+    <desc>Created with Sketch.</desc>
+    <defs>
+        <linearGradient x1="49.9997727%" y1="1.85111235%" x2="49.9997727%" y2="99.833549%" id="linearGradient-1">
+            <stop stop-color="#FF4B83" offset="0%"></stop>
+            <stop stop-color="#EE3A3A" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="Page-1" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="deepin-voice-recorder-48">
+            <g id="深度录音" transform="translate(1.000000, 2.000000)">
+                <g id="Page-1">
+                    <g id="深度录音">
+                        <g id="Group-2">
+                            <image id="Bitmap" x="0" y="0" width="46" height="46" xlink:href="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAC4AAAAuCAYAAABXuSs3AAAABGdBTUEAA1teXP8meAAAA21JREFUaAXV2Alv2zAMhuF194FhB4Zh//8v7j47Pm4+zW4VV0GbxiPA6jAlvaQo2c3ZvZvL2W6KlJrzuva5PztJPWX6DyovLzA6OOOU9P5uIJi56o5NSn1/SmOnfbATJjtEYg80sL+rDuQQMfbBboCxGT/sQEBGFmU7B/45MmjA5tHOJg4MwY+Aswm08lfp0OQ7oJHCvA9383LA/KtrZLvKriuBzqSgjyWAk0Kr0ADWwBNlWwlYLh9bEm1rrsLvAw+0SP+4bpJb9gYwB1bhe+BJj0TaJKcSgeuu3wOXZxlwF+mxLygiL4gY1RepA3IuMVQe8yDO11yrY5gzNdt5xBlwRIp8bxanr0iVx6WLlLkccY4wWGxLtU8pWDDNg9xe24l2bpFTgvbWdrNhE2isDVy9ewg82IDkcLaoJ1V4waPb+v44hq/YMLaIq1BObOEmKYyuYEuqnCXiOZTdERvqbIc0HiS/N8TYRZHrWFvEObC4J7vDTt+JccqSpIoc/1/AF4eTA6f8LhndS4xYW6pMXoyOPrFdi3g42uWejg2WjTE5ntO6QdYFUrv9gHc/Yhbm22kAd4mczyPudbp1wSjQF3dilbzwHb51wThd20mVXIVbhg8b1pYqGr6+npduVbBhnIKciMsbnU9Kt3inY8KGEWuLuIbPRt68LN2aYMKGcXE4gXrgn+QXpVuKuqzAhG1KkyqX/4DqKHHl2JZvGhuQ18XgJvlaCvxKxKtvegD4aekWDioGLJhatKvejfjkUT17VWrAdG9Wedfi+ntX+rk04GHrggMEK7dsk4FtQNXvQqz9oVR6fCltKVL1SdrXVjp2JVDwnr8pjcdVPbr41Qq0wyhouQKr+k/2gbMIPO/Bm4AeU+T0+1KRnkNf2fE1cICinm2S8/JOJK5MVH03EcF5W2oNwIG2fnet68Br3ATv4jfJs1LRd89z4KZiHudIlNU/lcrppEcXup4PvWhMSDkp/1xPHBAlkflY6re9Q8Q83oZeLAIiNZwj82SH90KXzRA4OwIebBzwkuJEfgJOpOyOiCmJF5oUSymPzQMSrJ0L8N7UKJuFgDlEYh8HAgOMcop6HluRAySSNIc8zunznKxG+cLk4m8mn/eN1DNOSS8D98AvO6Ad0JQja082ARge0DHMHCmZzOvac7DUU3p+sPwFBgrZAV5sE2wAAAAASUVORK5CYII="></image>
+                            <circle id="Combined-Shape" fill="url(#linearGradient-1)" fill-rule="nonzero" cx="23" cy="22" r="21"></circle>
+                            <g id="Group" transform="translate(16.000000, 10.000000)">
+                                <path d="M11,10 L3,10 L3,3.99620271 C3,1.78916089 4.79535615,0 7,0 C9.209139,0 11,1.78883037 11,3.99620271 L11,10 Z M11,11 L11,12.0037973 C11,14.2108391 9.20464385,16 7,16 C4.790861,16 3,14.2111696 3,12.0037973 L3,11 L11,11 Z M3,6 L3,7 L6,7 L6,6 L3,6 Z M8,6 L8,7 L11,7 L11,6 L8,6 Z M3,8 L3,9 L6,9 L6,8 L3,8 Z M8,8 L8,9 L11,9 L11,8 L8,8 Z" id="Combined-Shape" fill="#FFFFFF" fill-rule="nonzero"></path>
+                                <path d="M14,11 L14,11.99057 C14,12.387521 13.9669652,12.7767654 13.9035109,13.1557098 C13.3481368,16.4723597 10.4625163,19 7,19 C3.13400675,19 1.77635684e-14,15.8736968 0,11.9972393 L0,11" id="Rectangle-41" stroke="#FFFFFF" stroke-width="2"></path>
+                                <polygon id="Combined-Shape" fill="#FFFFFF" fill-rule="nonzero" points="8 21 8 18 6 18 6 21 2 21 2 23 12 23 12 21"></polygon>
+                            </g>
+                        </g>
+                    </g>
+                </g>
+            </g>
+        </g>
+    </g>
+</svg>
