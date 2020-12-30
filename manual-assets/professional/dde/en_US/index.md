@@ -920,14 +920,6 @@ To reduce the power consumption of your laptop, turn on power saving mode to red
 3. You can select **Suspend**, **Hibernate**, **Turn off the monitor** and **Do nothing** from the dropdown list after **When the lid is closed**.  
 >![notes](icon/notes.svg)Notes: This function is only available for laptops.
 
-#### Power button settings
-
-1. On the homepage of Control Center, click ![power_normal](icon/power_normal.svg).
-2. Click **Plugged In** and **On Battery**.
-3. You can select **Shut down, Suspend, Hibernate, Turn off the monitor, Do nothing** from the drop-down list after **When pressing the power button**.
-
-Any operation done here will take effect immediately. At the same time, the system will notify the user that the power button setting is changed. 
-
 #### Set "Low Battery Notification"
 
 1. On the homepage of Control Center, click ![power_normal](icon/power_normal.svg).
