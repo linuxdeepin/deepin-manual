@@ -209,7 +209,8 @@ QString ManualProxy::appToPath(const QString &appName)
     mdList.append(oldMdPath + "/" + appName + "/" + QLocale().name() + "/index.md");
 #endif
 
-    QString ret;
+    //初始化赋值，如果为空字符，web层路径请求依旧能onload成功...
+    QString ret = "error";
     if (QFile(mdList[0]).exists()) {
         ret = mdList[0];
     } else if (mdList.length() > 1 && QFile(mdList[1]).exists()) {

@@ -1246,6 +1246,10 @@ var Item = function (_Component) {
       var myPromise = new Promise(function (resolve, reject) {
         global.qtObjects.manual.appToPath(appName, function (filepath) {
           filePath = filepath;
+          //error： 目标文件不存在
+          if (filePath == 'error') {
+            return;
+          }
           resolve();
         });
       });
