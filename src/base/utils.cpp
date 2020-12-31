@@ -556,7 +556,7 @@ bool Utils::hasSelperSupport()
 }
 
 //p表示桌面专业版，h表示个人版，d表示社区版
-//s表示服务器版，e表示服务器企业版，eu表示服务器欧拉版，i表示服务器行业版，klu表示KelvinU项目版本，pgv表示PanguV项目版本。
+//s表示默认服务器版，e表示服务器企业版，eu表示服务器欧拉版，i表示服务器行业版，klu表示KelvinU项目版本，pgv表示PanguV项目版本。
 QStringList Utils::systemToOmit(Dtk::Core::DSysInfo::UosEdition type)
 {
     QStringList retList;
@@ -575,18 +575,18 @@ QStringList Utils::systemToOmit(Dtk::Core::DSysInfo::UosEdition type)
         break;
     //服务器企业版
     case  Dtk::Core::DSysInfo::UosEnterprise:
-        retList.append("s");
         retList.append("e");
+        retList.append("s");
         break;
     //服务器行业版
     case  Dtk::Core::DSysInfo::UosEnterpriseC:
         retList.append("i");
-        retList.append("e");
+        retList.append("s");
         break;
     //服务器欧拉版
     case  Dtk::Core::DSysInfo::UosEuler:
         retList.append("eu");
-        retList.append("e");
+        retList.append("s");
         break;
     default:
         break;
