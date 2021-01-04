@@ -247,7 +247,7 @@ void WindowManager::onAppStartTimeCount(qint64 startfinshTime)
 void WindowManager::onFilesUpdate(const QStringList &filesList)
 {
     qDebug() << Q_FUNC_INFO << filesList;
-    if (window) {
+    if (window && !filesList.isEmpty()) {
         window->updatePage(filesList);
     }
     //window->openjsPage()

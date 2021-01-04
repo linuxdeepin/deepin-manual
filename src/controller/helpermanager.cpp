@@ -102,7 +102,7 @@ void helperManager::getModuleInfo()
                                 QString strMd = langPath + "/" + mdFile;
                                 QFileInfo fileInfo(strMd);
                                 if (fileInfo.exists()) {
-                                    QString modifyTime = fileInfo.lastModified().toString();
+                                    QString modifyTime = fileInfo.lastModified().toString("yyyy-MM-dd hh:mm:ss.zzz");
                                     mapNow.insert(strMd, modifyTime);
                                 }
                             }
@@ -125,7 +125,7 @@ void helperManager::getModuleInfo()
                         QString strMd = modulePath + "/" + lang + "/index.md";
                         QFileInfo fileInfo(strMd);
                         if (fileInfo.exists()) {
-                            QString modifyTime = fileInfo.lastModified().toString();
+                            QString modifyTime = fileInfo.lastModified().toString("yyyy-MM-dd hh:mm:ss.zzz");
                             mapNow.insert(strMd, modifyTime);
                         }
                     }
@@ -382,5 +382,7 @@ void helperManager::onRecvParseMsg(const QString &msg, const QString &path)
  */
 void helperManager::onTimerOut()
 {
-    dbusSend(deleteTList, addTList);
+    if (!deleteTList.isEmpty() || !addTList.isEmpty()) {
+        dbusSend(deleteTList, addTList);
+    }
 }

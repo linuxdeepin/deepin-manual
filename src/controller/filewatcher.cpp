@@ -210,7 +210,7 @@ void fileWatcher::onTimerOut()
                                 QString strMd = langPath + "/" + mdFile;
                                 QFileInfo fileInfo(strMd);
                                 if (fileInfo.exists()) {
-                                    QString modifyTime = fileInfo.lastModified().toString();
+                                    QString modifyTime = fileInfo.lastModified().toString("yyyy-MM-dd hh:mm:ss.zzz");
                                     mapNow.insert(strMd, modifyTime);
                                 }
                             }
@@ -233,7 +233,7 @@ void fileWatcher::onTimerOut()
                         QString strMd = modulePath + "/" + lang + "/index.md";
                         QFileInfo fileInfo(strMd);
                         if (fileInfo.exists()) {
-                            QString modifyTime = fileInfo.lastModified().toString();
+                            QString modifyTime = fileInfo.lastModified().toString("yyyy-MM-dd hh:mm:ss.zzz");
                             mapNow.insert(strMd, modifyTime);
                         }
                     }
