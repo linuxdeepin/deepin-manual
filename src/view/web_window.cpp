@@ -550,8 +550,10 @@ void WebWindow::initWebView()
     connect(m_forwardButton, &DButtonBoxButton::clicked, title_bar_proxy_,
             &TitleBarProxy::forwardButtonClicked);
     web_view_ = new QWebEngineView;
+    web_view_->setAttribute(Qt::WA_NativeWindow, true);
     web_view_->setAcceptDrops(false);
-    slot_ThemeChanged();
+    web_view_->page()->setBackgroundColor(Qt::transparent);
+    //slot_ThemeChanged();
     QWebChannel *web_channel = new QWebChannel;
     web_channel->registerObject("i18n", i18n_proxy);
     web_channel->registerObject("imageViewer", image_viewer_proxy_);
