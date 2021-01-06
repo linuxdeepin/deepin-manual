@@ -220,7 +220,9 @@ void WebWindow::slot_ThemeChanged()
 {
     DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
     if (themeType == DGuiApplicationHelper::DarkType) {
-        web_view_->page()->setBackgroundColor(QColor(0x28, 0x28, 0x28));
+        web_view_->page()->setBackgroundColor(QColor(37, 37, 37));
+    } else {
+        web_view_->page()->setBackgroundColor(QColor(248, 248, 248));
     }
 }
 
@@ -243,7 +245,7 @@ void WebWindow::slot_HelpSupportTriggered()
 
 void WebWindow::slotUpdateLabel()
 {
-    DMessageManager::instance()->sendMessage(this, QIcon(":/common/images/ok.svg"), QObject::tr("The content was updated"));
+    sendMessage(QIcon(":/common/images/ok.svg"), QObject::tr("The content was updated"));
 }
 
 /**
@@ -552,8 +554,9 @@ void WebWindow::initWebView()
     web_view_ = new QWebEngineView;
     web_view_->setAttribute(Qt::WA_NativeWindow, true);
     web_view_->setAcceptDrops(false);
-    web_view_->page()->setBackgroundColor(Qt::transparent);
-    //slot_ThemeChanged();
+    //使用该方法效果最好但使用后消息提示控件不可见,所以根据主题设置相适应的背景色
+    // web_view_->page()->setBackgroundColor(Qt::transparent);
+    slot_ThemeChanged();
     QWebChannel *web_channel = new QWebChannel;
     web_channel->registerObject("i18n", i18n_proxy);
     web_channel->registerObject("imageViewer", image_viewer_proxy_);
@@ -577,8 +580,8 @@ void WebWindow::initWebView()
             theme_proxy_, &ThemeProxy::slot_ThemeChange);
     //应用启动时，页面加载成功时间获取
     connect(manual_proxy_, &ManualProxy::startFinish, this, &WebWindow::manualStartFinish);
-//    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
-//            this, &WebWindow::slot_ThemeChanged);
+    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
+            this, &WebWindow::slot_ThemeChanged);
 
     manual_proxy_->setApplicationState("dde");
 }
