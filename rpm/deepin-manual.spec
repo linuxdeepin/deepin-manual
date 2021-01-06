@@ -31,7 +31,8 @@ BuildRequires: qt5-qtx11extras-devel
 
 
 %prep
-%autosetup -c -n %{name}-%{version}
+%autosetup
+# %autosetup -c -n %{name}-%{version}
 
 %build
 # help find (and prefer) qt5 utilities, e.g. qmake, lrelease
