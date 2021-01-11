@@ -58,679 +58,692 @@ global.bIsReload = false;
 
 
 global.readFile = function (fileName, callback) {
-  console.log("global.readFile...");
-  var xhr = new XMLHttpRequest();
-  xhr.open('GET', fileName);
-  xhr.onload = function () {
-    // if (xhr.responseText != '') {
-    callback(xhr.responseText);
-    // }
-  };
-  xhr.send();
+    console.log("global.readFile...");
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', fileName);
+    xhr.onload = function () {
+        // if (xhr.responseText != '') {
+        callback(xhr.responseText);
+        // }
+    };
+    xhr.send();
 };
 
 var App = function (_React$Component) {
-  _inherits(App, _React$Component);
+    _inherits(App, _React$Component);
 
-  function App(props, context) {
-    _classCallCheck(this, App);
+    function App(props, context) {
+        _classCallCheck(this, App);
 
-    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props, context));
+        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props, context));
 
-    _this.state = {
-      init: false,
-      searchResult: [],
-      mismatch: false,
-      historyGO: 0
-      // changeAppList:[]
-    };
-    new QWebChannel(qt.webChannelTransport, _this.initQt.bind(_this));
-    return _this;
-  }
-
-  _createClass(App, [{
-    key: 'initQt',
-    value: function initQt(channel) {
-      var _this2 = this;
-
-      console.log("channel initqt.....");
-      channel.objects.i18n.getSentences(function (i18n) {
-        channel.objects.i18n.getLocale(function (lang) {
-          if (lang === 'en_US' || lang === 'zh_CN') {
-            global.lang = lang;
-          } else {
-            global.lang = 'en_US';
-          }
-        });
-
-        global.i18n = i18n;
-        global.qtObjects = channel.objects;
-
-        global.qtObjects.manual.hasSelperSupport(function (bFlag) {
-          global.isShowHelperSupport = bFlag;
-        });
-
-        global.qtObjects.manual.bIsLongSon(function (isLongSon) {
-          if (isLongSon) {
-            global.scrollBehavior = 'auto';
-          }
-        });
-
-        channel.objects.manual.getSystemManualDir(function (path) {
-          global.path = path;
-        });
-        // global.openWindow = global.qtObjects.manual.openExternalLink;
-        // global.qtObjects.titleBar.setBackwardButtonActive(false);
-        // global.qtObjects.titleBar.setForwardButtonActive(false);
-        global.qtObjects.titleBar.backwardButtonClicked.connect(_this2.onBackwardClick.bind(_this2));
-        global.qtObjects.titleBar.forwardButtonClicked.connect(_this2.onForwardClick.bind(_this2));
-        global.qtObjects.search.mismatch.connect(function () {
-          return _this2.setState({ mismatch: true });
-        });
-        global.qtObjects.search.onContentResult.connect(_this2.onContentResult.bind(_this2));
-        global.qtObjects.search.reloadPage.connect(_this2.onReloadPage.bind(_this2));
-        global.qtObjects.manual.searchEditTextisEmpty.connect(_this2.onSearchEditClear.bind(_this2));
-        global.qtObjects.theme.getTheme(function (themeType) {
-          return _this2.themeChange(themeType);
-        });
-        global.qtObjects.theme.themeChange.connect(_this2.themeChange.bind(_this2));
-        global.qtObjects.settings.fontChangeRequested.connect(_this2.onFontChange.bind(_this2));
-        console.log("finsh global.qtObjects = channel.objects...");
-        global.qtObjects.manual.finishChannel();
-        global.qtObjects.manual.renderFinish();
-      });
+        _this.state = {
+            init: false,
+            searchResult: [],
+            mismatch: false,
+            historyGO: 0
+            // changeAppList:[]
+        };
+        new QWebChannel(qt.webChannelTransport, _this.initQt.bind(_this));
+        return _this;
     }
-  }, {
-    key: 'onBackwardClick',
-    value: function onBackwardClick() {
-      global.handleLocation(global.hash);
-      console.log("----------backwardButtonClicked----------");
-      this.setState({ historyGO: this.state.historyGO - 1 });
-      console.log("==========backwardButtonClicked=========>");
-      this.context.router.history.goBack();
-      console.log("back history location: " + this.context.router.history.location.pathname);
-    }
-  }, {
-    key: 'onForwardClick',
-    value: function onForwardClick() {
-      global.handleLocation(global.hash);
-      console.log("----------forwardButtonClicked----------");
-      this.setState({ historyGO: this.state.historyGO + 1 });
-      console.log("==========forwardButtonClicked=========>");
-      this.context.router.history.goForward();
-      console.log("forward history location: " + this.context.router.history.location.pathname);
-    }
-  }, {
-    key: 'onFontChange',
-    value: function onFontChange(fontFamily, fontSize) {
-      console.log("fontChangeRequested: fontFamily:" + fontFamily + ",fontSize:" + fontSize);
-      console.log("fontSize/13.0:" + fontSize);
-      var HTMLGlobal = document.querySelector('html');
-      HTMLGlobal.style.fontFamily = fontFamily;
-      HTMLGlobal.style.fontSize = fontSize; //设置rem标准   设计图上默认是在14px字体上设计,所以默认1rem = 14px.
-      if (fontSize >= 18) {
-        document.documentElement.style.setProperty('--index-item-size', '170px');
-        document.documentElement.style.setProperty('--index-span-width', '140px');
-      } else {
-        document.documentElement.style.setProperty('--index-item-size', '160px');
-        document.documentElement.style.setProperty('--index-span-width', '130px');
-      }
-    }
-  }, {
-    key: 'themeChange',
-    value: function themeChange(themeType) {
-      global.setTheme(themeType);
-    }
-  }, {
-    key: 'onContentResult',
-    value: function onContentResult(appName, titleList, idList, contentList) {
-      var _this3 = this;
 
-      console.log('搜索结果', appName, titleList, idList, contentList);
-      var searchResult = this.state.searchResult;
+    _createClass(App, [{
+        key: 'initQt',
+        value: function initQt(channel) {
+            var _this2 = this;
 
-      var filePath = void 0;
-      // if (appName == "dde")
-      // {
-      //   filePath = `${global.path}/system/${appName}/${global.lang}/index.md`;
-      // }
-      // else
-      // {
-      //   filePath = `${global.path}/application/${appName}/${global.lang}/index.md`;
-      // }
-      var myPromise = new Promise(function (resolve, reject) {
-        global.qtObjects.manual.appToPath(appName, function (filepath) {
-          filePath = filepath;
-          resolve();
-        });
-      });
+            console.log("channel initqt.....");
+            channel.objects.i18n.getSentences(function (i18n) {
+                channel.objects.i18n.getLocale(function (lang) {
+                    if (lang === 'en_US' || lang === 'zh_CN') {
+                        global.lang = lang;
+                    } else {
+                        global.lang = 'en_US';
+                    }
+                });
 
-      myPromise.then(function () {
-        searchResult.push({
-          file: filePath,
-          idList: idList,
-          titleList: titleList,
-          contentList: contentList
-        });
-        _this3.setState({ searchResult: searchResult, mismatch: false });
-      });
-    }
-  }, {
-    key: 'onReloadPage',
-    value: function onReloadPage(appList) {
-      var _this4 = this;
+                global.i18n = i18n;
+                global.qtObjects = channel.objects;
 
-      // console.log("============>page reload...");
-      var bRetFlag = true;
-      var locationPath = this.context.router.history.location.pathname;
-      console.log("============>page reload...", locationPath);
-      var list = locationPath.split("/");
-      if (list[1] == 'open') {
-        var curApp = list[2];
-        console.log("============>open...", appList, curApp);
-        var bFlag = false;
-        appList.map(function (app) {
-          if (!bFlag && curApp.indexOf(app) != -1) {
-            bFlag = true;
-          }
-        });
+                global.qtObjects.manual.hasSelperSupport(function (bFlag) {
+                    global.isShowHelperSupport = bFlag;
+                });
 
-        if (bFlag) {
-          global.qtObjects.manual.getSystemManualList(function (appNames) {
-            var bKFlage = false;
-            appNames.map(function (name) {
-              if (curApp.indexOf(name) != -1) {
-                bKFlage = true;
-              }
+                global.qtObjects.manual.bIsLongSon(function (isLongSon) {
+                    if (isLongSon) {
+                        global.scrollBehavior = 'auto';
+                    }
+                });
+
+                channel.objects.manual.getSystemManualDir(function (path) {
+                    global.path = path;
+                });
+                // global.openWindow = global.qtObjects.manual.openExternalLink;
+                // global.qtObjects.titleBar.setBackwardButtonActive(false);
+                // global.qtObjects.titleBar.setForwardButtonActive(false);
+                global.qtObjects.titleBar.backwardButtonClicked.connect(_this2.onBackwardClick.bind(_this2));
+                global.qtObjects.titleBar.forwardButtonClicked.connect(_this2.onForwardClick.bind(_this2));
+                global.qtObjects.search.mismatch.connect(function () {
+                    return _this2.setState({ mismatch: true });
+                });
+                global.qtObjects.search.onContentResult.connect(_this2.onContentResult.bind(_this2));
+                global.qtObjects.search.reloadPage.connect(_this2.onReloadPage.bind(_this2));
+                global.qtObjects.manual.searchEditTextisEmpty.connect(_this2.onSearchEditClear.bind(_this2));
+                global.qtObjects.theme.getTheme(function (themeType) {
+                    return _this2.themeChange(themeType);
+                });
+                global.qtObjects.theme.themeChange.connect(_this2.themeChange.bind(_this2));
+                global.qtObjects.settings.fontChangeRequested.connect(_this2.onFontChange.bind(_this2));
+                console.log("finsh global.qtObjects = channel.objects...");
+                global.qtObjects.manual.finishChannel();
+                global.qtObjects.manual.renderFinish();
             });
-
-            if (bKFlage) {
-              global.bIsReload = true;
-              _this4.context.router.history.go(0);
+        }
+    }, {
+        key: 'onBackwardClick',
+        value: function onBackwardClick() {
+            global.handleLocation(global.hash);
+            console.log("----------backwardButtonClicked----------");
+            this.setState({ historyGO: this.state.historyGO - 1 });
+            console.log("==========backwardButtonClicked=========>");
+            this.context.router.history.goBack();
+            console.log("back history location: " + this.context.router.history.location.pathname);
+        }
+    }, {
+        key: 'onForwardClick',
+        value: function onForwardClick() {
+            global.handleLocation(global.hash);
+            console.log("----------forwardButtonClicked----------");
+            this.setState({ historyGO: this.state.historyGO + 1 });
+            console.log("==========forwardButtonClicked=========>");
+            this.context.router.history.goForward();
+            console.log("forward history location: " + this.context.router.history.location.pathname);
+        }
+    }, {
+        key: 'onFontChange',
+        value: function onFontChange(fontFamily, fontSize) {
+            console.log("fontChangeRequested: fontFamily:" + fontFamily + ",fontSize:" + fontSize);
+            console.log("fontSize/13.0:" + fontSize);
+            var HTMLGlobal = document.querySelector('html');
+            HTMLGlobal.style.fontFamily = fontFamily;
+            HTMLGlobal.style.fontSize = fontSize; //设置rem标准   设计图上默认是在14px字体上设计,所以默认1rem = 14px.
+            if (fontSize >= 18) {
+                document.documentElement.style.setProperty('--index-item-size', '170px');
+                document.documentElement.style.setProperty('--index-span-width', '140px');
             } else {
-              var historyList = _this4.context.router.history.entries;
-              var index = _this4.context.router.history.index;
-              var historyLate = historyList.slice(index + 1);
-              console.log("===========>", historyLate);
-              _this4.setState({ historyGO: _this4.state.historyGO - 1 });
-              _this4.context.router.history.go(-1);
-
-              historyLate.map(function (url) {
-                console.log("..........>", url);
-                _this4.context.router.history.push(url);
-              });
-              global.backHome();
+                document.documentElement.style.setProperty('--index-item-size', '160px');
+                document.documentElement.style.setProperty('--index-span-width', '130px');
             }
-          });
-        } else {
-          bRetFlag = false;
         }
-      } else if (list[1] == 'search') {
-        console.log("============>search...", list[2]);
-        global.qtObjects.search.updateSearch(list[2]);
-      } else {
-        global.bIsReload = true;
-        this.context.router.history.go(0);
-      }
-
-      if (bRetFlag) {
-        global.qtObjects.manual.showUpdateLabel();
-      }
-    }
-  }, {
-    key: 'onSearchEditClear',
-
-
-    //搜索框清空后回到上一个页面(未搜索的页面).
-    value: function onSearchEditClear() {
-      console.log("==================>onSearcheditclear");
-      var locationPath = this.context.router.history.location.pathname;
-      var list = locationPath.split("/");
-      var bFlag = false;
-      //open页length = 5, search页length = 3
-      if (list.length == 5 && list[4] != "") {
-        bFlag = true;
-      } else if (list.length == 3 && list[2] != "") {
-        bFlag = true;
-      }
-
-      if (bFlag) {
-        var step;
-        var indexGo = this.state.historyGO;
-        // var indexGo = global.gHistoryGo;
-        var objList = this.context.router.history.entries;
-        for (var i = indexGo; i >= 0; i--) {
-
-          var curPath = objList[i].pathname;帮助;
-          var curPathList = curPath.split("/");
-          if (curPathList.length == 5 && curPathList[4] == "") {
-            step = indexGo - i;
-            break;
-          } else if (curPathList.length == 3 && curPathList[2] == "") {
-            step = indexGo - i;
-            break;
-          } else if (curPathList.length == 2) {
-            step = indexGo - i;
-            break;
-          }
+    }, {
+        key: 'themeChange',
+        value: function themeChange(themeType) {
+            global.setTheme(themeType);
         }
-        if (step) {
-          if (this.context.router.history.canGo(-1 * step)) {
-            this.setState({ historyGO: this.state.historyGO - step });
-            // global.gHistoryGo = global.gHistoryGo - step;
-            this.context.router.history.go(-1 * step);
-          }
-        }
-      }
-    }
-  }, {
-    key: 'getChildContext',
-    value: function getChildContext() {
-      var _state = this.state,
-          searchResult = _state.searchResult,
-          mismatch = _state.mismatch;
+    }, {
+        key: 'onContentResult',
+        value: function onContentResult(appName, titleList, idList, contentList) {
+            var _this3 = this;
 
-      return { searchResult: searchResult, mismatch: mismatch };
-    }
-  }, {
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
-      console.log("app componentWillReceiveProps", this.context.router.history);
-      console.log("this location: " + this.context.router.history.location);
-      var pathName = this.context.router.history.location.pathname;
-      var pathList = pathName.split("/");
-      var cKeyword = '';
+            console.log('搜索结果', appName, titleList, idList, contentList);
+            var searchResult = this.state.searchResult;
 
-      //search页===>/search/:keyword 
-      //open页=====>/open/:file/:hash?/:key? 
-      if (pathList.length == 3) {
-        cKeyword = pathList[2];
-      } else if (pathList.length == 5) {
-        cKeyword = pathList[4];
-      }
-
-      // global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
-      if (cKeyword == '%') {
-        global.qtObjects.search.getKeyword(cKeyword);
-      } else {
-        console.log("decode URIComponent componentWillReceiveProps");
-        global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
-      }
-
-      if (this.context.router.history.action == 'PUSH') {
-        var entriesLen = this.context.router.history.entries.length;
-        if (entriesLen > 1) {
-          var entry = this.context.router.history.entries[entriesLen - 1];
-          if (entry.pathname.toString().indexOf("/search/") != -1) {
-            this.setState({ historyGO: entriesLen - 1 });
-            // global.gHistoryGo = entriesLen - 1;
-            return;
-          }
-        }
-        this.setState({ historyGO: entriesLen - 1 });
-        // global.gHistoryGo = entriesLen - 1;
-      }
-
-      //切换状态时,去除选中状态....为何选中状态切换页面时会保留??????
-      window.getSelection().empty();
-    }
-  }, {
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      var _this5 = this;
-
-      global.index = function () {
-        // this.context.router.history.push('/');
-        if (_this5.state.init == false) {
-          _this5.setState({ init: true });
-        }
-      };
-      global.backHome = function () {
-        global.handleLocation(global.hash);
-        console.log("global.backHome()" + _this5.context.router.history.entries.length);
-        console.log("global.backHome()" + _this5.state.historyGO);
-        var goNum = _this5.state.historyGO;
-        _this5.setState({ historyGO: 0 });
-        console.log("global.backHome()" + goNum);
-
-        if (_this5.context.router.history.canGo(-1 * goNum)) {
-          _this5.context.router.history.go(-1 * goNum);
-          // this.context.router.history.go(0);
-        }
-      };
-
-      //打开某一个文件,并定位到具体hash
-      global.open = function (file) {
-        var hash = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-        var key = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
-
-        console.log("global.open()....file:" + file + " hash:" + hash + " key:" + key);
-        //h0默认为应用名称，内容为空，所以当打开h0，将其变为h1概述的位置。
-        if (hash == 'h0' || hash == '') {
-          hash = 'h1';
-        }
-        file = encodeURIComponent(file);
-        console.log("globla.open...........");
-        hash = encodeURIComponent(hash);
-        global.hash = hash;
-
-        // '%'字符替换为其他非常用字符组合,来替代'%', 路由URL单含此字符会出错。。。
-        if (key == '%') {
-          key = '=-=';
-        }
-
-        var url = '/open/' + file + '/' + hash + '/' + key;
-        _this5.context.router.history.push(url);
-
-        //Init属性设置, 放在index与opentitle中. 避免直接跳转到特定模块时会先走/模块.
-        if (_this5.state.init == false) {
-          _this5.setState({ init: true });
-        }
-
-        //通知qt对象,修改应用打开状态
-        global.qtObjects.manual.setApplicationState(file);
-      };
-
-      global.openTitle = function (file) {
-        var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-
-        console.log("global linkTitle==> file:" + file + " title: " + title);
-        global.handleLocation(global.hash);
-        if (title !== '') {
-          var filePath = void 0;
-          // if(file == "dde")
-          // {
-          //   filePath = `${global.path}/system/${file}/${global.lang}/index.md`
-          // }
-          // else
-          // {
-          //   filePath = `${global.path}/application/${file}/${global.lang}/index.md`
-          // }
-
-          var myPromise = new Promise(function (resolve, reject) {
-            global.qtObjects.manual.appToPath(file, function (filepath) {
-              filePath = filepath;
-              resolve();
+            var filePath = void 0;
+            // if (appName == "dde")
+            // {
+            //   filePath = `${global.path}/system/${appName}/${global.lang}/index.md`;
+            // }
+            // else
+            // {
+            //   filePath = `${global.path}/application/${appName}/${global.lang}/index.md`;
+            // }
+            var myPromise = new Promise(function (resolve, reject) {
+                global.qtObjects.manual.appToPath(appName, function (filepath) {
+                    filePath = filepath;
+                    resolve();
+                });
             });
-          });
 
-          myPromise.then(function () {
-            global.readFile(filePath, function (data) {
-              var _m2h = (0, _mdToHtml2.default)(filePath, data),
-                  html = _m2h.html;
+            myPromise.then(function () {
+                searchResult.push({
+                    file: filePath,
+                    idList: idList,
+                    titleList: titleList,
+                    contentList: contentList
+                });
+                _this3.setState({ searchResult: searchResult, mismatch: false });
+            });
+        }
+    }, {
+        key: 'onReloadPage',
+        value: function onReloadPage(appList) {
+            var _this4 = this;
 
-              var d = document.createElement('div');
-              d.innerHTML = html;
-              var dlist = d.querySelectorAll('[text="' + title + '"]');
-              var hashID = 'h0';
-              for (var i = 0; i < dlist.length; i++) {
-                if (dlist[i].tagName == 'H2' || dlist[i].tagName == 'H3') {
-                  hashID = dlist[i].id;
+            // console.log("============>page reload...");
+            var bRetFlag = true;
+            var locationPath = this.context.router.history.location.pathname;
+            console.log("============>page reload...", locationPath);
+            var list = locationPath.split("/");
+            if (list[1] == 'open') {
+                var curApp = list[2];
+                console.log("============>open...", appList, curApp);
+                var bFlag = false;
+                appList.map(function (app) {
+                    if (!bFlag && curApp.indexOf(app) != -1) {
+                        bFlag = true;
+                    }
+                });
+
+                if (bFlag) {
+                    global.qtObjects.manual.getSystemManualList(function (appNames) {
+                        var bKFlage = false;
+                        appNames.map(function (name) {
+                            if (curApp.indexOf(name) != -1) {
+                                bKFlage = true;
+                            }
+                        });
+
+                        if (bKFlage) {
+                            global.bIsReload = true;
+                            _this4.context.router.history.go(0);
+                        } else {
+                            var historyList = _this4.context.router.history.entries;
+                            var index = _this4.context.router.history.index;
+                            var historyLate = historyList.slice(index + 1);
+                            console.log("===========>", historyLate);
+                            _this4.setState({ historyGO: _this4.state.historyGO - 1 });
+                            _this4.context.router.history.go(-1);
+
+                            historyLate.map(function (url) {
+                                console.log("..........>", url);
+                                _this4.context.router.history.push(url);
+                            });
+                            global.backHome();
+                        }
+                    });
+                } else {
+                    bRetFlag = false;
                 }
-              }
-              global.open(file, hashID);
+            } else if (list[1] == 'search') {
+                console.log("============>search...", list[2]);
+                global.qtObjects.search.updateSearch(list[2]);
+            } else {
+                global.bIsReload = true;
+                this.context.router.history.go(0);
+            }
+
+            if (bRetFlag) {
+                global.qtObjects.manual.showUpdateLabel();
+            }
+        }
+    }, {
+        key: 'onSearchEditClear',
+
+
+        //搜索框清空后回到上一个页面(未搜索的页面).
+        value: function onSearchEditClear() {
+            console.log("==================>onSearcheditclear");
+            var locationPath = this.context.router.history.location.pathname;
+            var list = locationPath.split("/");
+            var bFlag = false;
+            //open页length = 5, search页length = 3
+            if (list.length == 5 && list[4] != "") {
+                bFlag = true;
+            } else if (list.length == 3 && list[2] != "") {
+                bFlag = true;
+            }
+
+            if (bFlag) {
+                var step;
+                var indexGo = this.state.historyGO;
+                // var indexGo = global.gHistoryGo;
+                var objList = this.context.router.history.entries;
+                for (var i = indexGo; i >= 0; i--) {
+
+                    var curPath = objList[i].pathname;
+                    帮助;
+                    var curPathList = curPath.split("/");
+                    if (curPathList.length == 5 && curPathList[4] == "") {
+                        step = indexGo - i;
+                        break;
+                    } else if (curPathList.length == 3 && curPathList[2] == "") {
+                        step = indexGo - i;
+                        break;
+                    } else if (curPathList.length == 2) {
+                        step = indexGo - i;
+                        break;
+                    }
+                }
+                if (step) {
+                    if (this.context.router.history.canGo(-1 * step)) {
+                        this.setState({ historyGO: this.state.historyGO - step });
+                        // global.gHistoryGo = global.gHistoryGo - step;
+                        this.context.router.history.go(-1 * step);
+                    }
+                }
+            }
+        }
+    }, {
+        key: 'getChildContext',
+        value: function getChildContext() {
+            var _state = this.state,
+                searchResult = _state.searchResult,
+                mismatch = _state.mismatch;
+
+            return { searchResult: searchResult, mismatch: mismatch };
+        }
+    }, {
+        key: 'componentWillReceiveProps',
+        value: function componentWillReceiveProps(nextProps) {
+            console.log("app componentWillReceiveProps", this.context.router.history);
+            console.log("this location: " + this.context.router.history.location);
+            var pathName = this.context.router.history.location.pathname;
+            var pathList = pathName.split("/");
+            var cKeyword = '';
+
+            //search页===>/search/:keyword 
+            //open页=====>/open/:file/:hash?/:key? 
+            if (pathList.length == 3) {
+                cKeyword = pathList[2];
+            } else if (pathList.length == 5) {
+                cKeyword = pathList[4];
+            }
+
+            // global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
+            if (cKeyword == '%') {
+                global.qtObjects.search.getKeyword(cKeyword);
+            } else {
+                console.log("decode URIComponent componentWillReceiveProps");
+                global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
+            }
+
+            if (this.context.router.history.action == 'PUSH') {
+                var entriesLen = this.context.router.history.entries.length;
+                if (entriesLen > 1) {
+                    var entry = this.context.router.history.entries[entriesLen - 1];
+                    if (entry.pathname.toString().indexOf("/search/") != -1) {
+                        this.setState({ historyGO: entriesLen - 1 });
+                        // global.gHistoryGo = entriesLen - 1;
+                        return;
+                    }
+                }
+                this.setState({ historyGO: entriesLen - 1 });
+                // global.gHistoryGo = entriesLen - 1;
+            }
+
+            //切换状态时,去除选中状态....为何选中状态切换页面时会保留??????
+            window.getSelection().empty();
+        }
+    }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var _this5 = this;
+
+            global.index = function () {
+                // this.context.router.history.push('/');
+                if (_this5.state.init == false) {
+                    _this5.setState({ init: true });
+                }
+            };
+            global.backHome = function () {
+                global.handleLocation(global.hash);
+                console.log("global.backHome()" + _this5.context.router.history.entries.length);
+                console.log("global.backHome()" + _this5.state.historyGO);
+                var goNum = _this5.state.historyGO;
+                _this5.setState({ historyGO: 0 });
+                console.log("global.backHome()" + goNum);
+
+                if (_this5.context.router.history.canGo(-1 * goNum)) {
+                    _this5.context.router.history.go(-1 * goNum);
+                    // this.context.router.history.go(0);
+                }
+            };
+
+            //打开某一个文件,并定位到具体hash
+            global.open = function (file) {
+                var hash = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+                var key = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
+
+                console.log("global.open()....file:" + file + " hash:" + hash + " key:" + key);
+                //h0默认为应用名称，内容为空，所以当打开h0，将其变为h1概述的位置。
+                if (hash == 'h0' || hash == '') {
+                    hash = 'h1';
+                }
+                file = encodeURIComponent(file);
+                console.log("globla.open...........");
+                hash = encodeURIComponent(hash);
+                global.hash = hash;
+
+                // '%'字符替换为其他非常用字符组合,来替代'%', 路由URL单含此字符会出错。。。
+                if (key == '%') {
+                    key = '=-=';
+                }
+
+                var url = '/open/' + file + '/' + hash + '/' + key;
+                _this5.context.router.history.push(url);
+
+                //Init属性设置, 放在index与opentitle中. 避免直接跳转到特定模块时会先走/模块.
+                if (_this5.state.init == false) {
+                    _this5.setState({ init: true });
+                }
+
+                //通知qt对象,修改应用打开状态
+                global.qtObjects.manual.setApplicationState(file);
+            };
+
+            global.openTitle = function (file) {
+                var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
+                console.log("global linkTitle==> file:" + file + " title: " + title);
+                global.handleLocation(global.hash);
+                if (title !== '') {
+                    var filePath = void 0;
+                    // if(file == "dde")
+                    // {
+                    //   filePath = `${global.path}/system/${file}/${global.lang}/index.md`
+                    // }
+                    // else
+                    // {
+                    //   filePath = `${global.path}/application/${file}/${global.lang}/index.md`
+                    // }
+
+                    var myPromise = new Promise(function (resolve, reject) {
+                        global.qtObjects.manual.appToPath(file, function (filepath) {
+                            filePath = filepath;
+                            resolve();
+                        });
+                    });
+
+                    myPromise.then(function () {
+                        global.readFile(filePath, function (data) {
+                            var _m2h = (0, _mdToHtml2.default)(filePath, data),
+                                html = _m2h.html;
+
+                            var d = document.createElement('div');
+                            d.innerHTML = html;
+                            var dlist = d.querySelectorAll('[text="' + title + '"]');
+                            var hashID = 'h0';
+                            for (var i = 0; i < dlist.length; i++) {
+                                hashID = dlist[i].id;
+                            }
+                            global.open(file, hashID);
+                        });
+                    });
+                } else {
+                    global.open(file);
+                }
+            };
+
+            //替换当前URL,仅仅在切换到其他页面处调用...(包含前进,后退,重新打开一个新的页面)
+            global.handleLocation = function () {
+                var hash = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+                var url = _this5.context.router.history.location.pathname;
+                console.log("global.handhash: ", url);
+                var urlList = url.split("/");
+                if (urlList.length == 5) {
+                    url = '/' + urlList[1] + '/' + urlList[2] + '/' + hash + '/' + urlList[4];
+                    console.log("new url:", url);
+                    _this5.context.router.history.replace(url);
+                }
+            };
+
+            //获取当前系统活动色
+            global.setHashWordColor = function (strRgb) {
+                console.log("hash color: ", strRgb);
+                document.documentElement.style.setProperty('--nav-hash-word-color', strRgb); //btnlist 改这行
+
+                //对系统活动色统一增加一定的值作为Hover色
+                var rgb = strRgb.slice(1);
+                var r = rgb.substr(0, 2);
+                var g = rgb.substr(2, 2);
+                var b = rgb.substr(4, 2);
+                var nR = parseInt(r, 16);
+                var nG = parseInt(g, 16);
+                var nB = parseInt(b, 16);
+                nR += 16;
+                nG += 16;
+                nB += 16;
+                if (nR > 255) nR = 255;
+                if (nG > 255) nG = 255;
+                if (nB > 255) nB = 255;
+                var toR = nR.toString(16);
+                var toG = nG.toString(16);
+                var toB = nB.toString(16);
+                if (toR.length == 1) toR = '0' + toR;
+                if (toG.length == 1) toG = '0' + toG;
+                if (toB.length == 1) toB = '0' + toB;
+
+                var toRGB = "#" + toR + toG + toB;
+                console.log('hover color:', toRGB);
+                document.documentElement.style.setProperty('--nav-hash-hover-color', toRGB);
+            };
+
+            global.setWordFontfamily = function (strFontFamily) {
+                document.documentElement.style.setProperty('--nav-world-font-family', strFontFamily); //btnlist 改这行
+            };
+
+            global.setTheme = function (themeType) {
+                console.log('主题切换', themeType);
+                if (navigator.language.toString().indexOf('en_') != -1) {
+                    document.documentElement.style.setProperty('--span-line-height', '1.0rem');
+                    document.documentElement.style.setProperty('--span-font-size', '0.9rem');
+                    document.documentElement.style.setProperty('--span-maring-bottom', '0.15rem');
+                } else {
+                    document.documentElement.style.setProperty('--span-line-height', '1.4rem');
+                    document.documentElement.style.setProperty('--span-font-size', '1.03rem');
+                    document.documentElement.style.setProperty('--span-maring-bottom', '0.15rem');
+                }
+                if ("DarkType" == themeType) {
+                    console.log('DarkType');
+                    document.documentElement.style.setProperty('--nav-hover-color', 'rgba(255,255,255,0.1)');
+                    document.documentElement.style.setProperty('--body-background-color', '#252525');
+                    document.documentElement.style.setProperty('--body-color-white2black', '#000000');
+                    document.documentElement.style.setProperty('--app-word-color', '#C0C6D4');
+                    document.documentElement.style.setProperty('--nav-background-color', '#282828');
+                    document.documentElement.style.setProperty('--nav-h2-word-color', '#C0C6D4');
+                    document.documentElement.style.setProperty('--nav-h3-word-color', '#C0C0C0');
+                    //document.documentElement.style.setProperty(`--nav-hash-word-color`, '#0059D2');     //btnlist 改这行
+                    document.documentElement.style.setProperty('--article-read-word-color', '#C0C6D4');
+                    document.documentElement.style.setProperty('--article-read-h2-word-color', '#0082FA');
+                    document.documentElement.style.setProperty('--article-table-text-color', '#6D7C88');
+                    document.documentElement.style.setProperty('--article-table-border-color', 'rgba(96, 96, 96, 0.5)');
+                    document.documentElement.style.setProperty('--article-table-cell-border-color', 'rgba(96, 96, 96, 0.1)');
+                    document.documentElement.style.setProperty('--index-item-background-color', 'rgba(255,255,255,0.05)');
+                    document.documentElement.style.setProperty('--index-item-hover-color', 'rgba(255,255,255,0.2)');
+                    document.documentElement.style.setProperty('--index-item-span-word-color', '#C0C6D4');
+                    document.documentElement.style.setProperty('--search-noresult-word-color', '#C0C6D4');
+                    document.documentElement.style.setProperty('--search-button-word-color', '#C0C6D4');
+                    document.documentElement.style.setProperty('--search-button-hover-word-color', '#FFFFFF');
+                    document.documentElement.style.setProperty('--search-items-word-color', '#6D7C88');
+                    document.documentElement.style.setProperty('--search-items-resultnum-word-color', '#6D7C88');
+                    document.documentElement.style.setProperty('--search-item-background-color', 'rgba(255,255,255,0.05)');
+                    document.documentElement.style.setProperty('--scrollbar-div-background-color', '#444444');
+                    document.documentElement.style.setProperty('--scrollbar-div-hover-background-color', '#3D3D3D');
+                    document.documentElement.style.setProperty('--scrollbar-div-select-background-color', '#303B69');
+                    document.documentElement.style.setProperty('--index-h2-color', 'rgba(255,255,255,0.05)');
+                    document.documentElement.style.setProperty('--search-button-background-color-start', '#484848');
+                    document.documentElement.style.setProperty('--search-button-background-color-end', '#414141');
+                    document.documentElement.style.setProperty('--search-button-hover-color-start', '#676767');
+                    document.documentElement.style.setProperty('--search-button-hover-color-end', '#606060');
+                    document.documentElement.style.setProperty('--search-WikiSearch-color', '#6D7C88');
+                    document.documentElement.style.setProperty('--search-itemTitle-word-color', '#C0C6D4');
+                    document.documentElement.style.setProperty('--search-context-word-color', '#6D7C88');
+                    document.documentElement.style.setProperty('--tips-background-color', '#2A2A2A');
+                    document.documentElement.style.setProperty('--tips-border-color', 'rgba(0, 0, 0,0.3)');
+                } else if ("LightType" == themeType) {
+                    console.log('LightType');
+                    document.documentElement.style.setProperty('--nav-hover-color', 'rgba(0,0,0,0.1)');
+                    document.documentElement.style.setProperty('--body-background-color', '#F8F8F8');
+                    document.documentElement.style.setProperty('--body-color-white2black', '#FFFFFF');
+                    document.documentElement.style.setProperty('--app-word-color', '#414D68');
+                    document.documentElement.style.setProperty('--nav-background-color', '#FFFFFF');
+                    document.documentElement.style.setProperty('--nav-h2-word-color', '#001A2E');
+                    document.documentElement.style.setProperty('--nav-h3-word-color', '#001A2E');
+                    // document.documentElement.style.setProperty(`--nav-hash-word-color`, '#ca0c16');   //btn list 改这一行
+                    document.documentElement.style.setProperty('--article-read-word-color', '#000000');
+                    document.documentElement.style.setProperty('--article-read-h2-word-color', '#2CA7F8');
+                    document.documentElement.style.setProperty('--article-table-text-color', '#606060');
+                    document.documentElement.style.setProperty('--article-table-border-color', 'rgba(0, 0, 0, 0.1)');
+                    document.documentElement.style.setProperty('--article-table-cell-border-color', 'rgba(0, 0, 0, 0.05)');
+                    document.documentElement.style.setProperty('--index-item-background-color', '#FFFFFF');
+                    document.documentElement.style.setProperty('--index-item-hover-color', 'rgba(0,0,0,0.05)');
+                    document.documentElement.style.setProperty('--index-item-span-word-color', '#414D68');
+                    document.documentElement.style.setProperty('--search-noresult-word-color', '#000000');
+                    document.documentElement.style.setProperty('--search-button-word-color', '#414D68');
+                    document.documentElement.style.setProperty('--search-button-hover-word-color', '#001B2E');
+                    document.documentElement.style.setProperty('--search-items-word-color', '#000000');
+                    document.documentElement.style.setProperty('--search-items-resultnum-word-color', '#8AA1B4');
+                    document.documentElement.style.setProperty('--search-item-background-color', 'rgba(255,255,255,1)');
+                    document.documentElement.style.setProperty('--scrollbar-div-background-color', 'rgba(83,96,118,0.4)');
+                    document.documentElement.style.setProperty('--scrollbar-div-hover-background-color', 'rgba(83,96,118,0.5)');
+                    document.documentElement.style.setProperty('--scrollbar-div-select-background-color', 'rgba(83,96,118,0.6)');
+                    document.documentElement.style.setProperty('--index-h2-color', 'rgba(0, 0, 0, 0.1)');
+                    document.documentElement.style.setProperty('--search-button-background-color-start', '#E6E6E6');
+                    document.documentElement.style.setProperty('--search-button-background-color-end', '#E3E3E3');
+                    document.documentElement.style.setProperty('--search-button-hover-color-start', '#CACACA');
+                    document.documentElement.style.setProperty('--search-button-hover-color-end', '#C6C6C6');
+                    document.documentElement.style.setProperty('--search-WikiSearch-color', '#7a7a7a');
+                    document.documentElement.style.setProperty('--search-itemTitle-word-color', '#000000');
+                    document.documentElement.style.setProperty('--search-context-word-color', '#000000');
+                    document.documentElement.style.setProperty('--tips-background-color', '#F7F7F7');
+                    document.documentElement.style.setProperty('--tips-border-color', 'rgba(0,0,0,0.05)');
+                } else {
+                    console.log('Null');
+                }
+            };
+
+            var Base64 = {
+                encode: function encode(str) {
+                    // first we use encodeURIComponent to get percent-encoded UTF-8,
+                    // then we convert the percent encodings into raw bytes which
+                    // can be fed into btoa.
+                    return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function toSolidBytes(match, p1) {
+                        return String.fromCharCode('0x' + p1);
+                    }));
+                },
+                decode: function decode(str) {
+                    // Going backwards: from bytestream, to percent-encoding, to original string.
+                    console.log("decode URIComponent decode");
+                    return decodeURIComponent(atob(str).split('').map(function (c) {
+                        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                    }).join(''));
+                }
+            };
+
+            global.openSearchPage = function (keyword) {
+                global.handleLocation(global.hash);
+                console.log('====>', keyword);
+                var decodeKeyword = Base64.decode(keyword);
+                console.log("decodeKeyword", decodeKeyword, "===", encodeURIComponent(decodeKeyword));
+                console.log("openSearchPage", _this5.context.router.history);
+                console.log('lastUrl:' + global.lastUrlBeforeSearch + ', lastHistoryIndex: ' + global.lastHistoryIndex);
+
+                var entriesLen = _this5.context.router.history.entries.length;
+                if ('POP' == global.lastAction && lastHistoryIndex > 0 && lastHistoryIndex < entriesLen - 1) {
+                    console.log("global.opensearch...");
+                    _this5.context.router.history.entries.length = lastHistoryIndex;
+                    _this5.context.router.history.length = lastHistoryIndex;
+                    _this5.context.router.history.index = lastHistoryIndex - 1;
+
+                    _this5.setState({ searchResult: [] });
+                    _this5.context.router.history.push('/search/' + encodeURIComponent(decodeKeyword));
+
+                    return;
+                }
+
+                entriesLen = _this5.context.router.history.entries.length;
+                if (entriesLen > 1) {
+                    var entry = _this5.context.router.history.entries[entriesLen - 1];
+                    var entryIndex = entry.pathname.toString().indexOf("/search/");
+                    if (entryIndex != -1) {
+                        _this5.context.router.history.entries.length = entriesLen - 1;
+                        _this5.context.router.history.length = entriesLen - 1;
+                        _this5.context.router.history.index = _this5.context.router.history.entries.length - 1;
+                    }
+                }
+
+                _this5.setState({ searchResult: [] });
+                _this5.context.router.history.push('/search/' + encodeURIComponent(decodeKeyword));
+            };
+
+            this.context.router.history.listen(function (location, action) {
+                //console.log(`The current URL is ${location.pathname}${location.search}${location.hash}` );
+                //console.log(`The last navigation action was ${action}`);
+                //console.log("index:" + this.context.router.history.index);
+                console.log("app router.history.listen...");
+                global.lastUrlBeforeSearch = location.pathname;
+                global.lastHistoryIndex = _this5.context.router.history.index;
+                global.lastAction = action;
             });
-          });
-        } else {
-          global.open(file);
+
+            global.back = function () {
+                console.log("global.back()");
+                _this5.context.router.history.goBack();
+            };
+            this.componentDidUpdate();
         }
-      };
-
-      //替换当前URL,仅仅在切换到其他页面处调用...(包含前进,后退,重新打开一个新的页面)
-      global.handleLocation = function () {
-        var hash = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-
-        var url = _this5.context.router.history.location.pathname;
-        console.log("global.handhash: ", url);
-        var urlList = url.split("/");
-        if (urlList.length == 5) {
-          url = '/' + urlList[1] + '/' + urlList[2] + '/' + hash + '/' + urlList[4];
-          console.log("new url:", url);
-          _this5.context.router.history.replace(url);
+    }, {
+        key: 'componentDidUpdate',
+        value: function componentDidUpdate() {
+            if (global.qtObjects) {
+                console.log("app componentDidUpdate------------>", this.state.historyGO, this.context.router.history.length);
+                global.qtObjects.titleBar.setBackwardButtonActive(this.state.historyGO > 0
+                // global.gHistoryGo > 0
+                );
+                global.qtObjects.titleBar.setForwardButtonActive(this.context.router.history.length - this.state.historyGO > 1
+                // this.context.router.history.length  - global.gHistoryGo > 1
+                );
+            }
         }
-      };
-
-      //获取当前系统活动色
-      global.setHashWordColor = function (strRgb) {
-        console.log("hash color: ", strRgb);
-        document.documentElement.style.setProperty('--nav-hash-word-color', strRgb); //btnlist 改这行
-
-        //对系统活动色统一增加一定的值作为Hover色
-        var rgb = strRgb.slice(1);
-        var r = rgb.substr(0, 2);
-        var g = rgb.substr(2, 2);
-        var b = rgb.substr(4, 2);
-        var nR = parseInt(r, 16);
-        var nG = parseInt(g, 16);
-        var nB = parseInt(b, 16);
-        nR += 16;
-        nG += 16;
-        nB += 16;
-        if (nR > 255) nR = 255;
-        if (nG > 255) nG = 255;
-        if (nB > 255) nB = 255;
-        var toR = nR.toString(16);
-        var toG = nG.toString(16);
-        var toB = nB.toString(16);
-        if (toR.length == 1) toR = '0' + toR;
-        if (toG.length == 1) toG = '0' + toG;
-        if (toB.length == 1) toB = '0' + toB;
-
-        var toRGB = "#" + toR + toG + toB;
-        console.log('hover color:', toRGB);
-        document.documentElement.style.setProperty('--nav-hash-hover-color', toRGB);
-      };
-
-      global.setWordFontfamily = function (strFontFamily) {
-        document.documentElement.style.setProperty('--nav-world-font-family', strFontFamily); //btnlist 改这行
-      };
-
-      global.setTheme = function (themeType) {
-        console.log('主题切换', themeType);
-        if (navigator.language.toString().indexOf('en_') != -1) {
-          document.documentElement.style.setProperty('--span-line-height', '1.0rem');
-          document.documentElement.style.setProperty('--span-font-size', '0.9rem');
-          document.documentElement.style.setProperty('--span-maring-bottom', '0.15rem');
-        } else {
-          document.documentElement.style.setProperty('--span-line-height', '1.4rem');
-          document.documentElement.style.setProperty('--span-font-size', '1.03rem');
-          document.documentElement.style.setProperty('--span-maring-bottom', '0.15rem');
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                null,
+                ' ',
+                this.state.init && _react2.default.createElement(
+                    _reactRouterDom.Switch,
+                    null,
+                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/',
+                        component: _index2.default
+                    }),
+                    ' ',
+                    _react2.default.createElement(_reactRouterDom.Route, { path: '/index',
+                        component: _index2.default
+                    }),
+                    ' ',
+                    _react2.default.createElement(_reactRouterDom.Route, { path: '/open/:file/:hash?/:key?',
+                        component: _main2.default
+                    }),
+                    ' ',
+                    _react2.default.createElement(_reactRouterDom.Route, { path: '/search/:keyword',
+                        component: _search2.default
+                    }),
+                    ' '
+                ),
+                ' '
+            );
         }
-        if ("DarkType" == themeType) {
-          console.log('DarkType');
-          document.documentElement.style.setProperty('--nav-hover-color', 'rgba(255,255,255,0.1)');
-          document.documentElement.style.setProperty('--body-background-color', '#252525');
-          document.documentElement.style.setProperty('--body-color-white2black', '#000000');
-          document.documentElement.style.setProperty('--app-word-color', '#C0C6D4');
-          document.documentElement.style.setProperty('--nav-background-color', '#282828');
-          document.documentElement.style.setProperty('--nav-h2-word-color', '#C0C6D4');
-          document.documentElement.style.setProperty('--nav-h3-word-color', '#C0C0C0');
-          //document.documentElement.style.setProperty(`--nav-hash-word-color`, '#0059D2');     //btnlist 改这行
-          document.documentElement.style.setProperty('--article-read-word-color', '#C0C6D4');
-          document.documentElement.style.setProperty('--article-read-h2-word-color', '#0082FA');
-          document.documentElement.style.setProperty('--article-table-text-color', '#6D7C88');
-          document.documentElement.style.setProperty('--article-table-border-color', 'rgba(96, 96, 96, 0.5)');
-          document.documentElement.style.setProperty('--article-table-cell-border-color', 'rgba(96, 96, 96, 0.1)');
-          document.documentElement.style.setProperty('--index-item-background-color', 'rgba(255,255,255,0.05)');
-          document.documentElement.style.setProperty('--index-item-hover-color', 'rgba(255,255,255,0.2)');
-          document.documentElement.style.setProperty('--index-item-span-word-color', '#C0C6D4');
-          document.documentElement.style.setProperty('--search-noresult-word-color', '#C0C6D4');
-          document.documentElement.style.setProperty('--search-button-word-color', '#C0C6D4');
-          document.documentElement.style.setProperty('--search-button-hover-word-color', '#FFFFFF');
-          document.documentElement.style.setProperty('--search-items-word-color', '#6D7C88');
-          document.documentElement.style.setProperty('--search-items-resultnum-word-color', '#6D7C88');
-          document.documentElement.style.setProperty('--search-item-background-color', 'rgba(255,255,255,0.05)');
-          document.documentElement.style.setProperty('--scrollbar-div-background-color', '#444444');
-          document.documentElement.style.setProperty('--scrollbar-div-hover-background-color', '#3D3D3D');
-          document.documentElement.style.setProperty('--scrollbar-div-select-background-color', '#303B69');
-          document.documentElement.style.setProperty('--index-h2-color', 'rgba(255,255,255,0.05)');
-          document.documentElement.style.setProperty('--search-button-background-color-start', '#484848');
-          document.documentElement.style.setProperty('--search-button-background-color-end', '#414141');
-          document.documentElement.style.setProperty('--search-button-hover-color-start', '#676767');
-          document.documentElement.style.setProperty('--search-button-hover-color-end', '#606060');
-          document.documentElement.style.setProperty('--search-WikiSearch-color', '#6D7C88');
-          document.documentElement.style.setProperty('--search-itemTitle-word-color', '#C0C6D4');
-          document.documentElement.style.setProperty('--search-context-word-color', '#6D7C88');
-          document.documentElement.style.setProperty('--tips-background-color', '#2A2A2A');
-          document.documentElement.style.setProperty('--tips-border-color', 'rgba(0, 0, 0,0.3)');
-        } else if ("LightType" == themeType) {
-          console.log('LightType');
-          document.documentElement.style.setProperty('--nav-hover-color', 'rgba(0,0,0,0.1)');
-          document.documentElement.style.setProperty('--body-background-color', '#F8F8F8');
-          document.documentElement.style.setProperty('--body-color-white2black', '#FFFFFF');
-          document.documentElement.style.setProperty('--app-word-color', '#414D68');
-          document.documentElement.style.setProperty('--nav-background-color', '#FFFFFF');
-          document.documentElement.style.setProperty('--nav-h2-word-color', '#001A2E');
-          document.documentElement.style.setProperty('--nav-h3-word-color', '#001A2E');
-          // document.documentElement.style.setProperty(`--nav-hash-word-color`, '#ca0c16');   //btn list 改这一行
-          document.documentElement.style.setProperty('--article-read-word-color', '#000000');
-          document.documentElement.style.setProperty('--article-read-h2-word-color', '#2CA7F8');
-          document.documentElement.style.setProperty('--article-table-text-color', '#606060');
-          document.documentElement.style.setProperty('--article-table-border-color', 'rgba(0, 0, 0, 0.1)');
-          document.documentElement.style.setProperty('--article-table-cell-border-color', 'rgba(0, 0, 0, 0.05)');
-          document.documentElement.style.setProperty('--index-item-background-color', '#FFFFFF');
-          document.documentElement.style.setProperty('--index-item-hover-color', 'rgba(0,0,0,0.05)');
-          document.documentElement.style.setProperty('--index-item-span-word-color', '#414D68');
-          document.documentElement.style.setProperty('--search-noresult-word-color', '#000000');
-          document.documentElement.style.setProperty('--search-button-word-color', '#414D68');
-          document.documentElement.style.setProperty('--search-button-hover-word-color', '#001B2E');
-          document.documentElement.style.setProperty('--search-items-word-color', '#000000');
-          document.documentElement.style.setProperty('--search-items-resultnum-word-color', '#8AA1B4');
-          document.documentElement.style.setProperty('--search-item-background-color', 'rgba(255,255,255,1)');
-          document.documentElement.style.setProperty('--scrollbar-div-background-color', 'rgba(83,96,118,0.4)');
-          document.documentElement.style.setProperty('--scrollbar-div-hover-background-color', 'rgba(83,96,118,0.5)');
-          document.documentElement.style.setProperty('--scrollbar-div-select-background-color', 'rgba(83,96,118,0.6)');
-          document.documentElement.style.setProperty('--index-h2-color', 'rgba(0, 0, 0, 0.1)');
-          document.documentElement.style.setProperty('--search-button-background-color-start', '#E6E6E6');
-          document.documentElement.style.setProperty('--search-button-background-color-end', '#E3E3E3');
-          document.documentElement.style.setProperty('--search-button-hover-color-start', '#CACACA');
-          document.documentElement.style.setProperty('--search-button-hover-color-end', '#C6C6C6');
-          document.documentElement.style.setProperty('--search-WikiSearch-color', '#7a7a7a');
-          document.documentElement.style.setProperty('--search-itemTitle-word-color', '#000000');
-          document.documentElement.style.setProperty('--search-context-word-color', '#000000');
-          document.documentElement.style.setProperty('--tips-background-color', '#F7F7F7');
-          document.documentElement.style.setProperty('--tips-border-color', 'rgba(0,0,0,0.05)');
-        } else {
-          console.log('Null');
-        }
-      };
+    }]);
 
-      var Base64 = {
-        encode: function encode(str) {
-          // first we use encodeURIComponent to get percent-encoded UTF-8,
-          // then we convert the percent encodings into raw bytes which
-          // can be fed into btoa.
-          return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function toSolidBytes(match, p1) {
-            return String.fromCharCode('0x' + p1);
-          }));
-        },
-        decode: function decode(str) {
-          // Going backwards: from bytestream, to percent-encoding, to original string.
-          console.log("decode URIComponent decode");
-          return decodeURIComponent(atob(str).split('').map(function (c) {
-            return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-          }).join(''));
-        }
-      };
-
-      global.openSearchPage = function (keyword) {
-        global.handleLocation(global.hash);
-        console.log('====>', keyword);
-        var decodeKeyword = Base64.decode(keyword);
-        console.log("decodeKeyword", decodeKeyword, "===", encodeURIComponent(decodeKeyword));
-        console.log("openSearchPage", _this5.context.router.history);
-        console.log('lastUrl:' + global.lastUrlBeforeSearch + ', lastHistoryIndex: ' + global.lastHistoryIndex);
-
-        var entriesLen = _this5.context.router.history.entries.length;
-        if ('POP' == global.lastAction && lastHistoryIndex > 0 && lastHistoryIndex < entriesLen - 1) {
-          console.log("global.opensearch...");
-          _this5.context.router.history.entries.length = lastHistoryIndex;
-          _this5.context.router.history.length = lastHistoryIndex;
-          _this5.context.router.history.index = lastHistoryIndex - 1;
-
-          _this5.setState({ searchResult: [] });
-          _this5.context.router.history.push('/search/' + encodeURIComponent(decodeKeyword));
-
-          return;
-        }
-
-        entriesLen = _this5.context.router.history.entries.length;
-        if (entriesLen > 1) {
-          var entry = _this5.context.router.history.entries[entriesLen - 1];
-          var entryIndex = entry.pathname.toString().indexOf("/search/");
-          if (entryIndex != -1) {
-            _this5.context.router.history.entries.length = entriesLen - 1;
-            _this5.context.router.history.length = entriesLen - 1;
-            _this5.context.router.history.index = _this5.context.router.history.entries.length - 1;
-          }
-        }
-
-        _this5.setState({ searchResult: [] });
-        _this5.context.router.history.push('/search/' + encodeURIComponent(decodeKeyword));
-      };
-
-      this.context.router.history.listen(function (location, action) {
-        //console.log(`The current URL is ${location.pathname}${location.search}${location.hash}` );
-        //console.log(`The last navigation action was ${action}`);
-        //console.log("index:" + this.context.router.history.index);
-        console.log("app router.history.listen...");
-        global.lastUrlBeforeSearch = location.pathname;
-        global.lastHistoryIndex = _this5.context.router.history.index;
-        global.lastAction = action;
-      });
-
-      global.back = function () {
-        console.log("global.back()");
-        _this5.context.router.history.goBack();
-      };
-      this.componentDidUpdate();
-    }
-  }, {
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate() {
-      if (global.qtObjects) {
-        console.log("app componentDidUpdate------------>", this.state.historyGO, this.context.router.history.length);
-        global.qtObjects.titleBar.setBackwardButtonActive(this.state.historyGO > 0
-        // global.gHistoryGo > 0
-        );
-        global.qtObjects.titleBar.setForwardButtonActive(this.context.router.history.length - this.state.historyGO > 1
-        // this.context.router.history.length  - global.gHistoryGo > 1
-        );
-      }
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      return _react2.default.createElement(
-        'div',
-        null,
-        this.state.init && _react2.default.createElement(
-          _reactRouterDom.Switch,
-          null,
-          _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/', component: _index2.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/index', component: _index2.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/open/:file/:hash?/:key?', component: _main2.default }),
-          _react2.default.createElement(_reactRouterDom.Route, { path: '/search/:keyword', component: _search2.default })
-        )
-      );
-    }
-  }]);
-
-  return App;
+    return App;
 }(_react2.default.Component);
 
 App.contextTypes = {
-  router: _propTypes2.default.object
+    router: _propTypes2.default.object
 };
 App.childContextTypes = {
-  searchResult: _propTypes2.default.array,
-  mismatch: _propTypes2.default.bool
+    searchResult: _propTypes2.default.array,
+    mismatch: _propTypes2.default.bool
 };
 
 (0, _reactDom.render)(_react2.default.createElement(
-  _reactRouterDom.Router,
-  { history: (0, _history.createMemoryHistory)('/') },
-  _react2.default.createElement(App, null)
+    _reactRouterDom.Router,
+    { history: (0, _history.createMemoryHistory)('/') },
+    _react2.default.createElement(App, null)
 ), document.getElementById('app'));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
