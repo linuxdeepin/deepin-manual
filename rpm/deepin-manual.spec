@@ -31,9 +31,10 @@ BuildRequires: qt5-qtx11extras-devel
 
 
 %prep
+echo "aaaaaaaaaaaaaaaaaaaa"
 %autosetup 
 # %autosetup -c -n %{name}-%{version}
-
+echo "bbbbbbbbbbbbbbbbbbbb"
 %build
 # help find (and prefer) qt5 utilities, e.g. qmake, lrelease
 export PATH=%{_qt5_bindir}:$PATH
@@ -43,7 +44,7 @@ sed -i "s|^cmake_minimum_required.*|cmake_minimum_required(VERSION 3.0)|" $(find
 mkdir build && pushd build
 pwd
 ls ../
-%cmake -DCMAKE_BUILD_TYPE=Release -DAPP_VERSION=%{version} -DVERSION=%{version}  ../
+%cmake -DCMAKE_BUILD_TYPE=Release -DAPP_VERSION=%{version} -DVERSION=%{version}  ../%{name}-%{version}/
 %make_build
 popd
 
