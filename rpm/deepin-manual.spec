@@ -37,7 +37,7 @@ BuildRequires: qt5-qtx11extras-devel
 # help find (and prefer) qt5 utilities, e.g. qmake, lrelease
 export PATH=%{_qt5_bindir}:$PATH
 # cmake_minimum_required version is too high
-sed -i "s|^cmake_minimum_required.*|cmake_minimum_required(VERSION 3.0)|" $(find . -name "CMakeLists.txt")
+sed -i "s|^cmake_minimum_required.*|cmake_minimum_required(VERSION 3.0)|" $(find / -name "CMakeLists.txt")
 mkdir build && pushd build
 %cmake -DCMAKE_BUILD_TYPE=Release -DAPP_VERSION=%{version} -DVERSION=%{version}  ../CMakeLists.txt
 %make_build
