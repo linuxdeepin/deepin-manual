@@ -32,7 +32,7 @@ BuildRequires: qt5-qtx11extras-devel
 
 %prep
 echo "aaaaaaaaaaaaaaaaaaaa"
-%autosetup 
+%setup 
 # %autosetup -c -n %{name}-%{version}
 echo "bbbbbbbbbbbbbbbbbbbb"
 %build
@@ -44,7 +44,7 @@ sed -i "s|^cmake_minimum_required.*|cmake_minimum_required(VERSION 3.0)|" $(find
 mkdir build && pushd build
 pwd
 ls ../
-%cmake -DCMAKE_BUILD_TYPE=Release -DAPP_VERSION=%{version} -DVERSION=%{version}  ../%{name}-%{version}/
+%cmake -DCMAKE_BUILD_TYPE=Release -DAPP_VERSION=%{version} -DVERSION=%{version}  ../
 %make_build
 popd
 
