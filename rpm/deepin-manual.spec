@@ -1,3 +1,4 @@
+%global debug_package   %{nil}
 %define specrelease 1%{?dist}
 %if 0%{?openeuler}
 %define specrelease 1
