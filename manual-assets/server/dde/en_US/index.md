@@ -1218,3 +1218,5 @@ You can use the keyboard to switch between various interface areas, select objec
 | **Space**                                                    | Preview the selected object in File Manager; start and pause the playback in Music and Movie; expand the drop-down options in the drop-down list (The enter key is also available.). |
 | **Ctrl** + **M**                                             | Open the right-click menu.                                   |
 
+
+<div class="version-info"><span>Update Date: 2021-01-13</span><span> Version: 2020.11</span></div>

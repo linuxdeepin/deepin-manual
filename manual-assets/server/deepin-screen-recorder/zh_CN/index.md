@@ -329,3 +329,5 @@
 ### 查看帮助手册
 
 启动录屏后按下键盘上的 ![F1](icon/F1.svg) 键即可打开帮助手册。
+
+<div class="version-info"><span>文档更新时间: 2021-01-13</span><span> 版本: 5.8</span></div>
