@@ -31,20 +31,17 @@ BuildRequires: qt5-qtx11extras-devel
 
 
 %prep
-echo "aaaaaaaaaaaaaaaaaaaa"
-%setup 
+%autosetup 
 # %autosetup -c -n %{name}-%{version}
-echo "bbbbbbbbbbbbbbbbbbbb"
+
+
 %build
 # help find (and prefer) qt5 utilities, e.g. qmake, lrelease
 export PATH=%{_qt5_bindir}:$PATH
 # cmake_minimum_required version is too high
-pwd
 sed -i "s|^cmake_minimum_required.*|cmake_minimum_required(VERSION 3.0)|" $(find . -name "CMakeLists.txt")
 mkdir build && pushd build
-pwd
-ls ../
-%cmake -DCMAKE_BUILD_TYPE=Release -DAPP_VERSION=%{version} -DVERSION=%{version}  ../
+%cmake -DCMAKE_BUILD_TYPE=Release -DAPP_VERSION=%{version} -DVERSION=%{version}  ../%{name}-%{version}/
 %make_build
 popd
 
@@ -57,17 +54,13 @@ popd
 %{_datadir}/applications/deepin-manual.desktop
 %{_datadir}/dbus-1/services/com.deepin.Manual.Open.service
 %{_datadir}/dbus-1/services/com.deepin.Manual.Search.service
-%{_datadir}/deepin-manual/dman
 %{_datadir}/deepin-manual/web_dist/index.css
 %{_datadir}/deepin-manual/web_dist/index.html
 %{_datadir}/deepin-manual/web_dist/index.js
 %{_datadir}/deepin-manual/web_dist/qwebchannel.js
 %{_datadir}/icons/hicolor/scalable/apps/deepin-manual.svg
-%{_datadir}/%{name}/manual-assets/deepin-manual.svg
 %{_datadir}/%{name}/translations/*.qm
 %{_datadir}/deepin-manual/manual-assets/server/*
-%doc README.md
-%license LICENSE
 
 
 %changelog
