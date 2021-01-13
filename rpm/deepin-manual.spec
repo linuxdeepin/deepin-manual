@@ -62,6 +62,7 @@ popd
 %{_datadir}/icons/hicolor/scalable/apps/deepin-manual.svg
 %{_datadir}/%{name}/translations/*.qm
 %{_datadir}/deepin-manual/manual-assets/server/*
+%{_datadir}/deepin-manual/web_dist/pic.svg
 
 
 %changelog
