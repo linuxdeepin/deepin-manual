@@ -205,7 +205,9 @@ void WebWindow::slot_ThemeChanged()
 {
     DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
     if (themeType == DGuiApplicationHelper::DarkType) {
-        web_view_->page()->setBackgroundColor(QColor(0x28, 0x28, 0x28));
+        web_view_->page()->setBackgroundColor(QColor(37, 37, 37));
+    } else {
+        web_view_->page()->setBackgroundColor(QColor(248, 248, 248));
     }
 }
 
@@ -523,6 +525,7 @@ void WebWindow::initWebView()
     connect(m_forwardButton, &DButtonBoxButton::clicked, title_bar_proxy_,
             &TitleBarProxy::forwardButtonClicked);
     web_view_ = new QWebEngineView;
+    web_view_->setAttribute(Qt::WA_NativeWindow, true);
     web_view_->setAcceptDrops(false);
     slot_ThemeChanged();
     QWebChannel *web_channel = new QWebChannel;
@@ -546,8 +549,8 @@ void WebWindow::initWebView()
             theme_proxy_, &ThemeProxy::slot_ThemeChange);
     //应用启动时，页面加载成功时间获取
     connect(manual_proxy_, &ManualProxy::startFinish, this, &WebWindow::manualStartFinish);
-//    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
-//            this, &WebWindow::slot_ThemeChanged);
+    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
+            this, &WebWindow::slot_ThemeChanged);
 
     manual_proxy_->setApplicationState("dde");
 }
