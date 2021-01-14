@@ -806,7 +806,7 @@ You can adjust the threshold of low battery level by dragging the slider below "
 
 >![notes](icon/notes.svg)Notes: This function is only available for laptops.
 
-### Mouse
+### Mouse and Touchpad
 
 Mouse and Touchpad are common computer input devices. Using the mouse, you can make the operation easier and faster. For laptop computer users, when there is no mouse, the touchpad can also be used to replace the mouse for operation.
 
@@ -1219,4 +1219,4 @@ You can use the keyboard to switch between various interface areas, select objec
 | **Ctrl** + **M**                                             | Open the right-click menu.                                   |
 
 
-<div class="version-info"><span>Update Date: 2021-01-13</span><span> Version: 2020.11</span></div>
+<div class="version-info"><span>Update Date: 2021-01-14</span><span> Version: 2020.11</span></div>

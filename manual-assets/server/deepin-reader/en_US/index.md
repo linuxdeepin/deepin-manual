@@ -306,4 +306,4 @@ click Help to get the manual, which will help you further know and use Document 
 2. Click  **Exit**.
 
 
-<div class="version-info"><span>Update Date: 2021-01-13</span><span> Version: 5.8</span></div>
+<div class="version-info"><span>Update Date: 2021-01-14</span><span> Version: 5.8</span></div>

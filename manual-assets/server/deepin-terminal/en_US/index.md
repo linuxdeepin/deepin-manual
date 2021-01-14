@@ -325,4 +325,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme (def
 1. On the Terminal interface, click ![icon_menu](icon/icon_menu.svg).
 2. Click **Exit** to exit Terminal.
 
-<div class="version-info"><span>Update Date: 2021-01-13</span><span> Version: 5.3</span></div>
+<div class="version-info"><span>Update Date: 2021-01-14</span><span> Version: 5.3</span></div>

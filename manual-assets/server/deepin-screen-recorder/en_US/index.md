@@ -322,4 +322,4 @@ Click **Options** on the toolbar of the Screen Capture interface and expand the 
 ### View Help
 
 Press ![F1](icon/F1.svg) on the keyboard to view the help manual after launching Screen Capture.
-<div class="version-info"><span>Update Date: 2021-01-13</span><span> Version: 5.8</span></div>
+<div class="version-info"><span>Update Date: 2021-01-14</span><span> Version: 5.8</span></div>
