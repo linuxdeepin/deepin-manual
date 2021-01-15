@@ -70,6 +70,7 @@ public:
     static QStringList systemToOmit(Dtk::Core::DSysInfo::UosEdition);
     //判断当前文件是否为最优先级文件
     static bool isMostPriority(const QString &mdPath, QString &morePriorityPath);
+    static bool activeWindow(quintptr winId);
 };
 
 class ExApplicationHelper : public DGuiApplicationHelper

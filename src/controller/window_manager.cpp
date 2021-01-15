@@ -24,6 +24,8 @@
 #include "dbus/manual_filesupdate_proxy.h"
 #include "dbus/manual_filesupdate_adapter.h"
 
+#include <DWidgetUtil>
+
 #include <QApplication>
 #include <QDesktopWidget>
 
@@ -117,10 +119,16 @@ void WindowManager::activeOrInitWindow()
     QMutexLocker locker(&_mutex);
     /*** 只要有窗口就不再创建新窗口 2020-06-22 16:57:50 wangml ***/
     if (window != nullptr) {
-        this->setWindow(window);
-        window->show();
-        window->raise();
-        window->activateWindow();
+        //2020-01-15 kyz 在专业服务器版最小化后show的方式可能无法激活窗口桌面版正常，可能是桌面环境问题，优先采用dock接口激活，如果失败再使用其它激活
+        if (Q_LIKELY(Utils::activeWindow(window->winId()))) {
+            window->saveWindowSize();
+            Dtk::Widget::moveToCenter(window);
+        } else {
+            setWindow(window);
+            window->show();
+            window->raise();
+            window->activateWindow();
+        }
         window->openjsPage(curr_app_name_, curr_title_name_);
         return;
     }
