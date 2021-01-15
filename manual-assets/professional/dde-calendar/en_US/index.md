@@ -1,4 +1,4 @@
-# Calendar|../common/dde_calendar.svg|
+# Calendar|../common/dde-calendar.svg|
 
 ## Overview
 

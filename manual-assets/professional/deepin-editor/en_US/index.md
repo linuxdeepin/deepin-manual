@@ -1,4 +1,4 @@
-# Text Editor|../common/deepin_editor.svg|
+# Text Editor|../common/deepin-editor.svg|
 
 ## Overview
 
