@@ -60,7 +60,7 @@ public:
     void cancelTextChanged();
     void openjsPage(const QString &app_name, const QString &title_name);
     void setAppProperty(const QString &appName, const QString &titleName, const QString &keyword);
-
+    void saveWindowSize();
     Dtk::Widget::DButtonBoxButton *m_backButton;
     Dtk::Widget::DButtonBoxButton *m_forwardButton;
 
@@ -83,7 +83,6 @@ private:
     void initDBus();
     void initWebView();
     void initShortcuts();
-    void saveWindowSize();
     void initConnections();
     void setHashWordColor();
     void setSearchManager();

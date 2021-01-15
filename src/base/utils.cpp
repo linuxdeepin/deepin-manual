@@ -536,6 +536,20 @@ bool Utils::hasSelperSupport()
     return false;
 }
 
+bool Utils::activeWindow(quintptr winId)
+{
+    bool bsuccess = true;
+    // new interface use applicationName as id
+    QDBusInterface manual("com.deepin.dde.daemon.Dock", "/com/deepin/dde/daemon/Dock",
+                          "com.deepin.dde.daemon.Dock");
+    QDBusReply<void> reply = manual.call("ActivateWindow", winId);
+    if (!reply.isValid()) {
+        qDebug() << "call com.deepin.dde.daemon.Dock failed" << reply.error();
+        bsuccess = false;
+    }
+    return bsuccess;
+}
+
 ExApplicationHelper *ExApplicationHelper::instance()
 {
     return qobject_cast<ExApplicationHelper *>(DGuiApplicationHelper::instance());

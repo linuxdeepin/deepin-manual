@@ -41,10 +41,11 @@ public:
 
     enum FontType { SourceHanSansMedium,
                     SourceHanSansNormal,
-                    DefautFont };
+                    DefautFont
+    };
 
-//    static struct timeval getTime();
-//    static struct timeval showDiffTime(struct timeval tpStart);
+    //    static struct timeval getTime();
+    //    static struct timeval showDiffTime(struct timeval tpStart);
 
     static QHash<QString, QPixmap> m_imgCacheHash;
     static QHash<QString, QString> m_fontNameCache;
@@ -66,6 +67,7 @@ public:
     static QString getSystemManualDir();
     static QList<AppInfo> sortAppList(QMultiMap<qlonglong, AppInfo> map);
     static bool hasSelperSupport();
+    static bool activeWindow(quintptr winId);
 };
 
 class ExApplicationHelper : public DGuiApplicationHelper
