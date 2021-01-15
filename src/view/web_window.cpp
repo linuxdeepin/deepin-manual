@@ -235,7 +235,11 @@ void WebWindow::slot_HelpSupportTriggered()
                                  "/com/deepin/dde/ServiceAndSupport",
                                  "com.deepin.dde.ServiceAndSupport");
 
-    QDBusReply<void> reply = interface.call("ShowCustomerChat");
+    //    selfSupport = 0, //自助支持
+    //    messageConsultation = 1, //留言咨询
+    //    customerChat = 2, //在线客服
+    //    contentUs = 3 //联系我们
+    QDBusReply<void> reply = interface.call("ServiceSession", 0);
     if (reply.isValid()) {
         qDebug() << "call com.deepin.dde.ServiceAndSupport success";
     } else {

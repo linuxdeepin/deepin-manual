@@ -548,8 +548,7 @@ bool Utils::hasSelperSupport()
     if (Dtk::Core::DSysInfo::DeepinProfessional == (Dtk::Core::DSysInfo::DeepinType)nType) {
         const QStringList list = getSystemManualList();
         if (list.contains("uos-service-support")) {
-//            return true;
-            return false;//阉割掉服务与支持
+            return true;
         }
     }
     return false;
