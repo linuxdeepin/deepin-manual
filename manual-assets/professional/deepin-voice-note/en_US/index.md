@@ -78,13 +78,6 @@ The recorded voice files are displayed on the Voice Notes interface in a list. S
    - When there is no matched information, **No search results** will display on the right.
 3.  Click ![0|three_dots](icon/close_normal-2.svg) in the search box  to clear the current keywords or cancel the search. 
 
-### Convert Voices to Texts
-
-1. Select a voice file on the Voice Notes interface.
-2. Right-click, and select **Voice to Text**.
-
-![0|save](jpg/toVoice.png)
-
 ### Save Voices as MP3 Format
 
 1.   Select a voice file on the Voice Notes interface.
