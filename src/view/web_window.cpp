@@ -209,6 +209,13 @@ void WebWindow::slot_ThemeChanged()
     DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
     if (themeType == DGuiApplicationHelper::DarkType) {
         web_view_->page()->setBackgroundColor(QColor(0x28, 0x28, 0x28));
+        QPalette pa = palette();
+        pa.setColor(QPalette::Window, QColor("#161616"));
+        setPalette(pa);
+    } else if (themeType == DGuiApplicationHelper::LightType) {
+        QPalette pa = palette();
+        pa.setColor(QPalette::Window, Qt::white);
+        setPalette(pa);
     }
     completion_window_->updateTheme();
 }
@@ -501,6 +508,8 @@ void WebWindow::initUI()
     this->titlebar()->addWidget(search_edit_, Qt::AlignCenter);
     this->titlebar()->setSeparatorVisible(false);
     this->titlebar()->setIcon(QIcon::fromTheme("deepin-manual"));
+    this->titlebar()->setAutoFillBackground(false);
+    this->titlebar()->setBackgroundRole(QPalette::Window);
     //隐藏title阴影
     this->setTitlebarShadowEnabled(false);
     //键盘盲打
@@ -547,6 +556,7 @@ void WebWindow::initWebView()
     web_channel->registerObject("titleBar", title_bar_proxy_);
     web_channel->registerObject("settings", settings_proxy_);
     web_view_->page()->setWebChannel(web_channel);
+    slot_ThemeChanged();
 
     connect(web_view_->page(), &QWebEnginePage::loadFinished, this, &WebWindow::onWebPageLoadFinished);
     connect(manual_proxy_, &ManualProxy::channelInit, this, &WebWindow::onChannelFinish);
