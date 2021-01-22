@@ -182,17 +182,6 @@ Use the shortcuts below to edit lines easily:
 | Cut line | Super + X |
 | Merge lines | Ctrl + J |
 
-### Enable/Disable Read-only Mode
-
-1. Open the document with Text Editor, right-click on the Text Editor interface, and select **Turn on Read-Only mode**.
-
-![readonly](jpg/read-only.png)
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-
-2. Right-click on the Text Editor interface, and select **Turn off Read-Only mode** under the read-only mode.
-
-![read-only](jpg/read-only-02.png)
-
 ### Use Column Mode
 
 You can input identical content to or remove content from multiple lines of code by using the column mode function efficiently. 
