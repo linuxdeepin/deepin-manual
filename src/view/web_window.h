@@ -128,7 +128,7 @@ private slots:
     void onSearchTextChanged(const QString &text);
     void onSearchTextChangedDelay();
     void onTitleBarEntered();
-    void onWebPageLoadFinished(bool ok);
+    void onWebPageLoadProgress(int valpro);
     void onChannelFinish();
     void onSetKeyword(const QString &keyword);
     void onManualSearchByKeyword(const QString &keyword);

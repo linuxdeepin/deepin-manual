@@ -147,8 +147,8 @@ bool ManualProxy::bIsLongSon()
 
 void ManualProxy::renderFinish()
 {
-    qint64 dateTime = QDateTime::currentMSecsSinceEpoch();
-    emit startFinish(dateTime);
+    //qint64 dateTime = QDateTime::currentMSecsSinceEpoch();
+    // emit startFinish(dateTime);
 }
 
 void ManualProxy::showUpdateLabel()

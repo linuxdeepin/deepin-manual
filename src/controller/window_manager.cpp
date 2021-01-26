@@ -95,17 +95,15 @@ void WindowManager::initDBus()
 void WindowManager::initWebWindow()
 {
     window = new WebWindow;
-    window->setAppProperty(curr_app_name_, curr_title_name_, curr_keyword_);
-    connect(window, &WebWindow::manualStartFinish, this, &WindowManager::onAppStartTimeCount);
     setWindow(window);
     window->show();
+    window->setAppProperty(curr_app_name_, curr_title_name_, curr_keyword_);
 
-    QTimer::singleShot(100, [ = ]() {
-        initDBus();
+    QTimer::singleShot(0, [=]() {
         SendMsg(QString::number(window->winId()));
         window->initWeb();
+        initDBus();
     });
-
 }
 
 /**

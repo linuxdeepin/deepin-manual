@@ -44,7 +44,7 @@
 #include <QRegion>
 #include <QFocusEvent>
 #include <QWebEngineHistory>
-
+#include <QTime>
 #include "base/utils.h"
 
 namespace {
@@ -129,10 +129,8 @@ WebWindow::~WebWindow()
 void WebWindow::initWeb()
 {
     qDebug() << Q_FUNC_INFO;
+    setSearchManager(); //防止启动后立即搜索响应测试不通过
     initWebView();
-    setSearchManager();
-    const QFileInfo info(kIndexPage);
-    web_view_->load(QUrl::fromLocalFile(info.absoluteFilePath()));
 }
 
 void WebWindow::updatePage(const QStringList &list)
@@ -399,6 +397,7 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
  */
 void WebWindow::setSearchManager()
 {
+    search_proxy_ = new SearchProxy(this);
     search_manager_ = new SearchManager(this);
     connect(search_manager_, &SearchManager::searchContentResult, search_proxy_,
             &SearchProxy::onContentResult);
@@ -548,7 +547,6 @@ void WebWindow::initWebView()
     settings_proxy_ = new SettingsProxy(this);
     i18n_proxy = new I18nProxy(this);
     manual_proxy_ = new ManualProxy(this);
-    search_proxy_ = new SearchProxy(this);
 
     title_bar_proxy_ = new TitleBarProxy(this);
     connect(m_backButton, &DButtonBoxButton::clicked, title_bar_proxy_,
@@ -571,19 +569,21 @@ void WebWindow::initWebView()
     web_channel->registerObject("settings", settings_proxy_);
     web_view_->page()->setWebChannel(web_channel);
 
-    connect(web_view_->page(), &QWebEnginePage::loadFinished, this, &WebWindow::onWebPageLoadFinished);
+    connect(web_view_->page(), &QWebEnginePage::loadProgress, this, &WebWindow::onWebPageLoadProgress);
     connect(manual_proxy_, &ManualProxy::channelInit, this, &WebWindow::onChannelFinish);
     connect(manual_proxy_, &ManualProxy::WidgetLower, this, &WebWindow::lower);
     connect(manual_proxy_, &ManualProxy::updateLabel, this, &WebWindow::slotUpdateLabel);
     connect(manual_proxy_, &ManualProxy::supportBeClick, this, &WebWindow::slot_HelpSupportTriggered);
+
+    const QFileInfo info(kIndexPage);
+    web_view_->load(QUrl::fromLocalFile(info.absoluteFilePath()));
     connect(search_edit_, &SearchEdit::onClickedClearBtn, manual_proxy_,
             &ManualProxy::searchEditTextisEmpty);
     connect(search_proxy_, &SearchProxy::setKeyword, this, &WebWindow::onSetKeyword);
     connect(search_proxy_, &SearchProxy::updateSearchResult, this, &WebWindow::onTitleBarEntered);
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
             theme_proxy_, &ThemeProxy::slot_ThemeChange);
-    //应用启动时，页面加载成功时间获取
-    connect(manual_proxy_, &ManualProxy::startFinish, this, &WebWindow::manualStartFinish);
+
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
             this, &WebWindow::slot_ThemeChanged);
 
@@ -822,18 +822,18 @@ void WebWindow::onTitleBarEntered()
 }
 
 /**
- * @brief WebWindow::onWebPageLoadFinished qwebengines加载页面完成槽
- * @note  网页加载完成后设置其配置
- * @param ok
+ * @brief WebWindow::onWebPageLoadProcess qwebengines加载进度响应槽
+ * @valpro  网页加载进度响应
+ * 网页加载达到20%就显示提什用户体验
  */
-void WebWindow::onWebPageLoadFinished(bool ok)
+void WebWindow::onWebPageLoadProgress(int valpro)
 {
-    Q_UNUSED(ok)
-    m_spinner->stop();
-    m_spinner->hide();
-    this->setCentralWidget(web_view_);
-//    web_view_->hide();
-    disconnect(web_view_->page(), &QWebEnginePage::loadFinished, this, &WebWindow::onWebPageLoadFinished);
+    if (m_spinner->isPlaying() && valpro > 20) {
+        m_spinner->stop();
+        m_spinner->hide();
+        this->setCentralWidget(web_view_);
+        disconnect(web_view_->page(), &QWebEnginePage::loadProgress, this, &WebWindow::onWebPageLoadProgress);
+    }
 }
 
 /**
@@ -854,7 +854,6 @@ void WebWindow::onChannelFinish()
         qsthemetype = "DarkType";
     }
     web_view_->page()->runJavaScript(QString("setTheme('%1')").arg(qsthemetype));
-
     //设置打开页面
     if (app_name_.isEmpty()) {
         web_view_->page()->runJavaScript("index()");
