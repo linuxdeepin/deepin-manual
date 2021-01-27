@@ -499,10 +499,13 @@ void SearchDb::sortSearchList(const QString &appName, const QStringList &anchors
     obj.contents = contents;
 
     if (anchorIds.contains("h0")) {
-        listStruct.insert(0, obj);
+        emit this->searchContentResult(obj.appName, obj.anchors, obj.anchorIds, obj.contents);
         nH0OfList++;
+        //        listStruct.insert(0, obj);
+        //        nH0OfList++;
     } else if (bIsTitleHigh) {
-        listStruct.insert(nH0OfList, obj);
+        //        listStruct.insert(nH0OfList, obj);
+        listStruct.insert(0, obj);
     } else {
         listStruct.append(obj);
     }
@@ -589,6 +592,8 @@ void SearchDb::handleSearchContent(const QString &keyword)
         QStringList anchorIds;
         QStringList contents;
         QHash<QString, bool> appHasMatchHash;
+        QTime tm;
+        tm.start();
         while (query.next()) {
             const QString app_name = query.value(0).toString();
             const QString anchor = query.value(1).toString();
@@ -644,6 +649,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
                 last_app_name = app_name;
             }
         }
+        qInfo() << "_______" << tm.elapsed();
         if (!last_app_name.isEmpty()) {
             sortSearchList(last_app_name, anchors, anchorIds, contents, bIsTitle);
         }
@@ -656,7 +662,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
         qCritical() << "Failed to select contents:" << query.lastError().text();
     }
 
-    if (result_empty) {
+    if (result_empty && 0 == nH0OfList) {
         qDebug() << "searchContentMismatch";
         emit this->searchContentMismatch(keyword);
     }

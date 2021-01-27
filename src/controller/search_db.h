@@ -76,7 +76,7 @@ public slots:
 
 private:
     void initConnections();
-    inline QString highlightKeyword(QString srcString, QString keyword);
+    QString highlightKeyword(QString srcString, QString keyword);
 
     void sortSearchList(const QString &appName, const QStringList &anchors, const QStringList &anchorIds, const QStringList &contents, bool bIsTitleHigh);
 
