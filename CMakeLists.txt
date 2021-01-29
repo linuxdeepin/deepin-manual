@@ -9,4 +9,4 @@ project(deepin-manual)
 option(DMAN_RELEAE OFF "Install dman resources to system or not")
 
 add_subdirectory(src)
-add_subdirectory(test)
+add_subdirectory(tests)

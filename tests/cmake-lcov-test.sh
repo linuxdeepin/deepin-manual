@@ -4,7 +4,7 @@ appname=$2
 
 cd $workspace
 
-dpkg-buildpackage -b -d -uc -us
+dpkg-buildpackage -b -d -uc -us -j8
 
 project_path=$(cd `dirname $0`; pwd)
 #获取工程名
@@ -16,7 +16,7 @@ pathname=$(find . -name obj*)
 
 echo $pathname
 
-cd $pathname/test
+cd $pathname/tests
 
 mkdir -p coverage
 

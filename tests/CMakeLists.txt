@@ -169,7 +169,7 @@ add_custom_command(TARGET test
     COMMAND echo " =================== TEST BEGIN ==================== "
 
 #    #1.清理原先的gcov信息
-    COMMAND ${CMAKE_BINARY_DIR}/test/${PROJECT_NAME_TEST}
+    COMMAND ${CMAKE_BINARY_DIR}/tests/${PROJECT_NAME_TEST}
     COMMAND echo " =================== TEST END ==================== "
     )
 
