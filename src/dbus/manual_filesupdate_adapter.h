@@ -31,14 +31,14 @@ class ManualFilesUpdateAdapter: public QDBusAbstractAdaptor
     Q_OBJECT
     Q_CLASSINFO("D-Bus Interface", "local.ManualFilesUpdateProxy")
     Q_CLASSINFO("D-Bus Introspection", ""
-"  <interface name=\"local.ManualFilesUpdateProxy\">\n"
-"    <method name=\"OnFilesUpdate\">\n"
-"      <arg direction=\"in\" type=\"as\" name=\"list\"/>\n"
-"    </method>\n"
-"  </interface>\n"
-        "")
+                                       "  <interface name=\"local.ManualFilesUpdateProxy\">\n"
+                                       "    <method name=\"OnFilesUpdate\">\n"
+                                       "      <arg direction=\"in\" type=\"as\" name=\"list\"/>\n"
+                                       "    </method>\n"
+                                       "  </interface>\n"
+                                       "")
 public:
-    ManualFilesUpdateAdapter(QObject *parent);
+    explicit ManualFilesUpdateAdapter(QObject *parent);
     virtual ~ManualFilesUpdateAdapter();
 
 public: // PROPERTIES

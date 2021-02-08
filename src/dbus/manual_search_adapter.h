@@ -47,7 +47,7 @@ class ManualSearchAdapter : public QDBusAbstractAdaptor
                                        "  </interface>\n"
                                        "")
 public:
-    ManualSearchAdapter(QObject *parent);
+    explicit ManualSearchAdapter(QObject *parent);
     virtual ~ManualSearchAdapter();
 
 public: // PROPERTIES

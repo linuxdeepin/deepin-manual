@@ -39,7 +39,7 @@ class SearchCompletionDelegate : public DStyledItemDelegate
 {
     Q_OBJECT
 public:
-    SearchCompletionDelegate(QAbstractItemView *parent = nullptr);
+    explicit SearchCompletionDelegate(QAbstractItemView *parent = nullptr);
 
     void paint(QPainter *painter, const QStyleOptionViewItem &option,
                const QModelIndex &index) const override;

@@ -27,7 +27,7 @@ class JsContext : public QObject
 {
     Q_OBJECT
 public:
-    JsContext(QObject *parent = nullptr);
+    explicit JsContext(QObject *parent = nullptr);
 
 signals:
     void parseMsg(QString msg, QString path);

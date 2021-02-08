@@ -52,7 +52,7 @@ class ManualOpenAdapter : public QDBusAbstractAdaptor
                 "  </interface>\n"
                 "")
 public:
-    ManualOpenAdapter(QObject *parent = nullptr);
+    explicit ManualOpenAdapter(QObject *parent = nullptr);
     virtual ~ManualOpenAdapter();
 
 public: // PROPERTIES

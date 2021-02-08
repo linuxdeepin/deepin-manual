@@ -35,7 +35,7 @@ class helperManager  : public QObject
 {
     Q_OBJECT
 public:
-    helperManager(QObject *parent = nullptr);
+    explicit helperManager(QObject *parent = nullptr);
 
 private:
 

@@ -37,7 +37,7 @@ class fileWatcher : public QObject
     Q_OBJECT
 public:
     //构造函数
-    fileWatcher(QObject *parent = nullptr);
+    explicit fileWatcher(QObject *parent = nullptr);
     void setFileMap(QMap<QString, QString> &map);
 
     //文件列表信息对比
