@@ -441,11 +441,11 @@ void WebWindow::onManualSearchByKeyword(const QString &keyword)
 }
 
 /**
- * @brief WebWindow::onACtiveColorChanged
+ * @brief WebWindow::onAppearanceChanged
  * @param map 个性化对, QString:更改类型  QVariant:更改后的值
  * @note 改变系统个性化时，触发此槽
  */
-void WebWindow::onACtiveColorChanged(QString, QMap<QString, QVariant>map, QStringList)
+void WebWindow::onAppearanceChanged(QString, QMap<QString, QVariant> map, QStringList)
 {
     QString strValue = map.begin().value().toString();
     QString strKey = map.begin().key();
@@ -459,6 +459,9 @@ void WebWindow::onACtiveColorChanged(QString, QMap<QString, QVariant>map, QStrin
     } else if (0 == strKey.compare("StandardFont")) {
         //获取系统字体
         web_view_->page()->runJavaScript(QString("setWordFontfamily('%1')").arg(strValue));
+    } else if (0 == strKey.compare("IconTheme") && nullptr != manual_proxy_) {
+        //系统图表主题变更
+        emit manual_proxy_->iconThemeChanged(strValue);
     }
 }
 
@@ -650,12 +653,12 @@ void WebWindow::initDBus()
 {
     QDBusConnection senderConn = QDBusConnection::connectToBus(QDBusConnection::SessionBus, "Sender");
     if (!senderConn.connect(
-                "com.deepin.daemon.Appearance",     // sender's service name
-                "/com/deepin/daemon/Appearance",    // sender's path name
-                "org.freedesktop.DBus.Properties",  // interface
-                "PropertiesChanged",                // sender's signal name
-                this,                               // receiver
-                SLOT(onACtiveColorChanged(QString, QMap<QString, QVariant>, QStringList)))) {
+            "com.deepin.daemon.Appearance", // sender's service name
+            "/com/deepin/daemon/Appearance", // sender's path name
+            "org.freedesktop.DBus.Properties", // interface
+            "PropertiesChanged", // sender's signal name
+            this, // receiver
+            SLOT(onAppearanceChanged(QString, QMap<QString, QVariant>, QStringList)))) {
         qDebug() << "connectToBus()::connect()  PropertiesChanged failed";
     } else {
         qDebug() << "connectToBus()::connect()  PropertiesChanged success";

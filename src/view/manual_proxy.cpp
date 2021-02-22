@@ -19,6 +19,8 @@
 #include "base/consts.h"
 #include "base/utils.h"
 
+#include <QtGui/private/qiconloader_p.h>
+
 ManualProxy::ManualProxy(QObject *parent)
     : QObject(parent)
 {
@@ -229,6 +231,53 @@ QString ManualProxy::appToPath(const QString &appName)
     }
     qDebug() << "========>" << ret;
     return ret;
+}
+
+//根据应用名称获取当前图表主题下的应用图表路径
+QString ManualProxy::getAppIconPath(const QString &logoPath)
+{
+    QString strlogoname = logoPath.mid(logoPath.lastIndexOf("/") + 1).split(".svg").at(0);
+    QString strIconPath;
+    if (QIcon::hasThemeIcon(strlogoname)) {
+        QIconLoader *pload = QIconLoader::instance();
+        QThemeIconInfo info = pload->loadIcon(strlogoname);
+
+        QString str96, str64, str48, str36;
+        for (int i = 0; i < info.entries.size(); i++) {
+            QString filepath = info.entries.at(i)->filename;
+            if (filepath.contains("96")) {
+                str96 = filepath;
+                break;
+            } else if (filepath.contains("64")) {
+                str64 = filepath;
+            } else if (filepath.contains("48")) {
+                str48 = filepath;
+            } else if (filepath.contains("36")) {
+                str36 = filepath;
+            } else {
+                strIconPath = filepath;
+            }
+        }
+
+        if (!str96.isEmpty()) {
+            strIconPath = str96;
+        } else if (!str64.isEmpty()) {
+            strIconPath = str64;
+        } else if (!str48.isEmpty()) {
+            strIconPath = str48;
+        } else if (!str36.isEmpty()) {
+            strIconPath = str36;
+        }
+    }
+    //兼容处理，保证在找不到对于图片时使用自带图片
+    //    qInfo() << strIconPath;
+    //    QFile file(strIconPath);
+    //    if (!file.exists()) {
+    //        strIconPath = logoPath;
+    //        qInfo() << "icon not exist :" << strIconPath;
+    //    }
+
+    return strIconPath;
 }
 
 /**

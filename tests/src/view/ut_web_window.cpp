@@ -167,13 +167,13 @@ TEST_F(ut_web_window_test, onManualSearchByKeyword)
     //web.onManualSearchByKeyword("关闭应用商店");
 }
 
-TEST_F(ut_web_window_test, onACtiveColorChanged)
+TEST_F(ut_web_window_test, onAppearanceChanged)
 {
     QMap<QString, QVariant> map;
     QVariant var = "#00A48A";
     map.insert("QtActiveColor", var);
     WebWindow web;
-    web.onACtiveColorChanged("", map, QStringList());
+    web.onAppearanceChanged("", map, QStringList());
 }
 
 TEST_F(ut_web_window_test, onThemeChange)

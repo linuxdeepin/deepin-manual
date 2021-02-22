@@ -621,6 +621,28 @@ bool Utils::activeWindow(quintptr winId)
     return bsuccess;
 }
 
+QString Utils::getIconThemeType()
+{
+    QString striconTheme = "bloom";
+    QDBusMessage msg =
+        QDBusMessage::createMethodCall("com.deepin.daemon.Appearance",
+                                       "/com/deepin/daemon/Appearance",
+                                       "org.freedesktop.DBus.Properties",
+                                       "Get");
+    msg << "com.deepin.daemon.Appearance"
+        << "IconTheme";
+    QDBusMessage response = QDBusConnection::sessionBus().call(msg);
+
+    if (response.type() == QDBusMessage::ReplyMessage) {
+        QDBusReply<QVariant> icontheme = response;
+        striconTheme = icontheme.value().toString();
+        qDebug() << Q_FUNC_INFO << "ReplyMessage" << icontheme.value().toString();
+    } else if (response.type() == QDBusMessage::ErrorMessage) {
+        qDebug() << Q_FUNC_INFO << "ErrorMessage: " << QDBusConnection::sessionBus().lastError().message();
+    }
+    return striconTheme;
+}
+
 ExApplicationHelper *ExApplicationHelper::instance()
 {
     return qobject_cast<ExApplicationHelper *>(DGuiApplicationHelper::instance());

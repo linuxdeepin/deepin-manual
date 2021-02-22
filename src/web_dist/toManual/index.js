@@ -1281,10 +1281,25 @@ var Item = function (_Component) {
           var logoPath = pathList.join("/") + "/";
           logo = '' + logoPath + logo;
 
-          console.log("=logo===>", logo);
+          global.qtObjects.manual.getAppIconPath(logo, function (logopath) {
+            _this2.setState({ logo: logopath });
+          });
 
-          _this2.setState({ title: title, logo: logo, file: _this2.file, show: true });
+          _this2.setState({ title: title, file: _this2.file, show: true });
         });
+      });
+
+      global.qtObjects.manual.iconThemeChanged.connect(this.iconThemeChange.bind(this));
+    }
+  }, {
+    key: 'iconThemeChange',
+    value: function iconThemeChange(themeType) {
+      var _this3 = this;
+
+      global.qtObjects.manual.getAppIconPath(this.state.logo, function (logopath) {
+        if (_this3.ismounted) {
+          _this3.setState({ logo: logopath });
+        }
       });
     }
   }, {
@@ -1296,7 +1311,7 @@ var Item = function (_Component) {
   }, {
     key: 'render',
     value: function render() {
-      var _this3 = this;
+      var _this4 = this;
 
       var contentSpan = null;
       if (this.props.isOpened) {
@@ -1321,11 +1336,11 @@ var Item = function (_Component) {
           tabIndex: '1',
           className: 'item',
           onClick: function onClick() {
-            return global.open(_this3.props.appName);
+            return global.open(_this4.props.appName);
           },
           onKeyPress: function onKeyPress(e) {
             if (e.key === 'Enter') {
-              global.open(_this3.props.appName);
+              global.open(_this4.props.appName);
             }
           }
         },
@@ -1349,22 +1364,22 @@ var Index = function (_Component2) {
   function Index(props) {
     _classCallCheck(this, Index);
 
-    var _this4 = _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).call(this, props));
+    var _this5 = _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).call(this, props));
 
-    _this4.state = {
+    _this5.state = {
       appList: [],
       openedAppList: []
     };
 
     global.qtObjects.manual.getSystemManualList(function (appList) {
       console.log("======>applist==+>", appList);
-      _this4.setState({ appList: appList });
+      _this5.setState({ appList: appList });
     });
 
     global.qtObjects.manual.getUsedAppList(function (openedAppList) {
-      return _this4.setState({ openedAppList: openedAppList });
+      return _this5.setState({ openedAppList: openedAppList });
     });
-    return _this4;
+    return _this5;
   }
 
   _createClass(Index, [{
@@ -1378,16 +1393,16 @@ var Index = function (_Component2) {
   }, {
     key: 'shouldComponentUpdate',
     value: function shouldComponentUpdate(nextProps, nextState) {
-      var _this5 = this;
+      var _this6 = this;
 
       console.log("index shouldcomponentupdate");
       if (global.bIsReload) {
         global.qtObjects.manual.getSystemManualList(function (appList) {
-          _this5.setState({ appList: appList });
+          _this6.setState({ appList: appList });
         });
 
         global.qtObjects.manual.getUsedAppList(function (openedAppList) {
-          return _this5.setState({ openedAppList: openedAppList });
+          return _this6.setState({ openedAppList: openedAppList });
         });
         global.bIsReload = false;
       }
@@ -1407,11 +1422,11 @@ var Index = function (_Component2) {
   }, {
     key: 'render',
     value: function render() {
-      var _this6 = this;
+      var _this7 = this;
 
       console.log('index render...');
       var sysSoft = ['dde'].filter(function (appName) {
-        return _this6.state.appList.indexOf(appName) != -1;
+        return _this7.state.appList.indexOf(appName) != -1;
       });
       var appSoft = JSON.parse(JSON.stringify(this.state.appList)); //使用数据副本
       var index = appSoft.indexOf("dde");
@@ -1437,7 +1452,7 @@ var Index = function (_Component2) {
               'div',
               { className: 'items' },
               sysSoft.map(function (appName) {
-                return _react2.default.createElement(Item, { key: appName, appName: appName, isOpened: _this6.bIsBeOpen(appName), type: "system" });
+                return _react2.default.createElement(Item, { key: appName, appName: appName, isOpened: _this7.bIsBeOpen(appName), type: "system" });
               })
             )
           ),
@@ -1453,7 +1468,7 @@ var Index = function (_Component2) {
               'div',
               { className: 'items' },
               appSoft.map(function (appName) {
-                return _react2.default.createElement(Item, { key: appName, appName: appName, isOpened: _this6.bIsBeOpen(appName), type: "application" });
+                return _react2.default.createElement(Item, { key: appName, appName: appName, isOpened: _this7.bIsBeOpen(appName), type: "application" });
               })
             )
           )

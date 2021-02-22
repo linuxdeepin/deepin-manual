@@ -47,17 +47,32 @@ class Item extends Component {
         pathList = pathList.splice(0,pathList.length -1);
         var logoPath = pathList.join("/") + "/";
         logo = `${logoPath}${logo}`;
+   
 
-        console.log("=logo===>",logo);
-  
-        this.setState({ title, logo, file:this.file, show: true });
+     global.qtObjects.manual.getAppIconPath(logo,(logopath) =>{
+      this.setState({ logo:logopath}); 
+      })  
+   
+     this.setState({ title, file:this.file, show: true}); 
       });
     })
+
+    global.qtObjects.manual.iconThemeChanged.connect(
+      this.iconThemeChange.bind(this)
+   );
     
   }
 
+  iconThemeChange(themeType) {
+    global.qtObjects.manual.getAppIconPath(this.state.logo,(logopath) =>{  
+      if(this.ismounted)   {      
+        this.setState({ logo:logopath});     
+      }      
+      })  
+  }
+ 
   componentWillReceiveProps(nextProps) {
-    console.log("index item componentWillReceivePropss........");
+    console.log("index item componentWillReceivePropss........");   
     this.init();
   }
 
@@ -160,7 +175,7 @@ export default class Index extends Component {
     var index = appSoft.indexOf("dde");
     if (index !== -1)
     {
-      appSoft.splice(index, 1);
+      appSoft.splice(index, 1); 
     }
 
     return (

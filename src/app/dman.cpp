@@ -106,6 +106,7 @@ int main(int argc, char **argv)
     auto category = "js";
     auto fileAppender =
         new Dtk::Core::RollingFileAppender(Dtk::Core::DLogManager::getlogFilePath());
+    qInfo() << Dtk::Core::DLogManager::getlogFilePath() << fileAppender->datePatternString();
     static Dtk::Core::Logger customLoggerInstance(category);
     customLoggerInstance.logToGlobalInstance(category, true);
     customLoggerInstance.registerAppender(fileAppender);

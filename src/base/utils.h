@@ -71,6 +71,7 @@ public:
     //判断当前文件是否为最优先级文件
     static bool isMostPriority(const QString &mdPath, QString &morePriorityPath);
     static bool activeWindow(quintptr winId);
+    static QString getIconThemeType();
 };
 
 class ExApplicationHelper : public DGuiApplicationHelper

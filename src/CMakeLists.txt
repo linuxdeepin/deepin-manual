@@ -93,6 +93,7 @@ pkg_search_module(DtkCore REQUIRED dtkcore)
 include_directories(${DtkWidget_INCLUDE_DIRS})
 include_directories(${DtkGui_INCLUDE_DIRS})
 include_directories(${DtkCore_INCLUDE_DIRS})
+include_directories(${Qt5Gui_PRIVATE_INCLUDE_DIRS})
 
 set(LINK_LIBS
     Qt5::Core

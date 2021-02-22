@@ -132,8 +132,8 @@ private slots:
     void onChannelFinish();
     void onSetKeyword(const QString &keyword);
     void onManualSearchByKeyword(const QString &keyword);
-    void onACtiveColorChanged(QString, QMap<QString, QVariant>, QStringList);
-//    void onThemeChange(DGuiApplicationHelper::ColorType themeType);
+    void onAppearanceChanged(QString, QMap<QString, QVariant>, QStringList);
+    //    void onThemeChange(DGuiApplicationHelper::ColorType themeType);
 };
 
 #endif // DEEPIN_MANUAL_VIEW_WEB_WINDOW_H

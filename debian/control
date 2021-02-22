@@ -17,6 +17,7 @@ Build-Depends:
  qttools5-dev-tools,
  libgtest-dev,
  libgmock-dev,
+ qtbase5-private-dev,
 Standards-Version: 3.9.5
 Homepage: https://github.com/linuxdeepin/deepin-manual/
 Vcs-Git: git://github.com/linuxdeepin/deepin-manual.git

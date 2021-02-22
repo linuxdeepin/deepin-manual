@@ -35,6 +35,7 @@ signals:
     //发送页面加载完成时间
     void startFinish(qint64);
     void updateLabel();
+    void iconThemeChanged(const QString &iconTheme);
 
 public slots:
     QString getSystemManualDir();
@@ -50,6 +51,7 @@ public slots:
     void renderFinish();
     void showUpdateLabel();
     QString appToPath(const QString &appName);
+    QString getAppIconPath(const QString &logoPath);
 
 private:
     void saveAppList(const QStringList &list);
