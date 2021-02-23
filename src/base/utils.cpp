@@ -457,6 +457,12 @@ QString Utils::getSystemManualDir()
             strMANUAL_DIR += "/professional";
         }
     }
+
+    //新增教育版判断
+    if (Dtk::Core::DSysInfo::UosEducation == Dtk::Core::DSysInfo::uosEditionType()) {
+        strMANUAL_DIR = QString("%1/education").arg(DMAN_MANUAL_DIR);
+    }
+
     return strMANUAL_DIR;
 }
 

@@ -125,6 +125,11 @@ bool ManualSearchProxy::ManualExists(const QString &app_name)
         }
     }
 
+    //新增教育版判断
+    if (Dtk::Core::DSysInfo::UosEducation == Dtk::Core::DSysInfo::uosEditionType()) {
+        strManualPath = QString("%1/education").arg(DMAN_MANUAL_DIR);
+    }
+
     QDir manual_dir(strManualPath);
     return manual_dir.exists(app_name);
 }

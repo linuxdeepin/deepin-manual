@@ -60,6 +60,11 @@ void SearchManager::initSearchManager()
             strDB += "/professional/search.db";
         }
     }
+    //新增教育版判断
+    if (Dtk::Core::DSysInfo::UosEducation == Dtk::Core::DSysInfo::uosEditionType()) {
+        strDB = QString("%1/education/search.db").arg(DMAN_SEARCH_DB);
+    }
+
     emit db_->initDbAsync(strDB);
 }
 
