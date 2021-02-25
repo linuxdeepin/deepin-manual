@@ -2,12 +2,12 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/app/dman.cpp" line="76"/>
+        <location filename="../src/app/dman.cpp" line="71"/>
         <source>Manual</source>
         <translation>Manual</translation>
     </message>
     <message>
-        <location filename="../src/app/dman.cpp" line="77"/>
+        <location filename="../src/app/dman.cpp" line="72"/>
         <source>Manual is designed to help users learn the operating system and its applications, providing specific instructions and function descriptions.</source>
         <translation>O manual está deseñado para axudar aos usuarios a aprender o sistema operativo e os seus aplicativos, proporcionando instrucións específicas e descricións de funcións.</translation>
     </message>
@@ -42,28 +42,28 @@
         <translation>resultados</translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="520"/>
+        <location filename="../src/view/web_window.cpp" line="513"/>
         <source>Search</source>
         <translation>Buscar</translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="523"/>
+        <location filename="../src/view/web_window.cpp" line="516"/>
         <source>Support</source>
         <translation>Axuda</translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="534"/>
+        <location filename="../src/view/web_window.cpp" line="250"/>
         <source>The content was updated</source>
-        <translation type="unfinished"/>
+        <translation>Actualizouse o contido</translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="702"/>
+        <location filename="../src/view/web_window.cpp" line="691"/>
         <source>Copy</source>
         <translation>Copiar</translation>
     </message>
     <message>
-        <location filename="../src/view/widget/search_completion_window.cpp" line="172"/>
-        <location filename="../src/view/widget/search_completion_window.cpp" line="257"/>
+        <location filename="../src/view/widget/search_completion_window.cpp" line="174"/>
+        <location filename="../src/view/widget/search_completion_window.cpp" line="259"/>
         <source>Search for &quot;%1&quot; in the full text</source>
         <translation>Buscar por &quot;%1&quot; en todo o texto</translation>
     </message>
@@ -71,12 +71,12 @@
 <context>
     <name>WebWindow</name>
     <message>
-        <location filename="../src/view/web_window.cpp" line="626"/>
+        <location filename="../src/view/web_window.cpp" line="616"/>
         <source>Ctrl+Alt+F</source>
         <translation>Ctrl+Alt+F</translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="651"/>
+        <location filename="../src/view/web_window.cpp" line="641"/>
         <source>Ctrl+F</source>
         <translation>Ctrl+F</translation>
     </message>
