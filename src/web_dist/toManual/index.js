@@ -1228,6 +1228,8 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 
+global.show = false;
+
 var Item = function (_Component) {
   _inherits(Item, _Component);
 
@@ -1240,7 +1242,8 @@ var Item = function (_Component) {
       name: '',
       title: '',
       logo: '',
-      show: false
+      show: false,
+      btop: false
     };
     console.log('main item constructor...');
     _this.init();
@@ -1285,10 +1288,10 @@ var Item = function (_Component) {
             _this2.setState({ logo: logopath });
           });
 
-          _this2.setState({ title: title, file: _this2.file, show: true });
+          _this2.setState({ title: title, file: _this2.file, show: true, btop: true });
         });
       });
-
+      global.show = true;
       global.qtObjects.manual.iconThemeChanged.connect(this.iconThemeChange.bind(this));
     }
   }, {
@@ -1297,7 +1300,7 @@ var Item = function (_Component) {
       var _this3 = this;
 
       global.qtObjects.manual.getAppIconPath(this.state.logo, function (logopath) {
-        if (_this3.ismounted) {
+        if (global.show === true) {
           _this3.setState({ logo: logopath });
         }
       });
@@ -1307,6 +1310,11 @@ var Item = function (_Component) {
     value: function componentWillReceiveProps(nextProps) {
       console.log("index item componentWillReceivePropss........");
       this.init();
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      global.show = false;
     }
   }, {
     key: 'render',

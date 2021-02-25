@@ -36,6 +36,7 @@ signals:
     void startFinish(qint64);
     void updateLabel();
     void iconThemeChanged(const QString &iconTheme);
+    void languageChanged();
 
 public slots:
     QString getSystemManualDir();
@@ -52,6 +53,8 @@ public slots:
     void showUpdateLabel();
     QString appToPath(const QString &appName);
     QString getAppIconPath(const QString &logoPath);
+    QString getLocalAppName(const QString &appname);
+    void manualtest(const QString &fuc, const QString &appname);
 
 private:
     void saveAppList(const QStringList &list);

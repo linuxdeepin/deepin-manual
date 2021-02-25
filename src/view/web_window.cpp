@@ -387,8 +387,8 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
                                                             fontInfo.pixelSize());
         }
     }
-    return QObject::eventFilter(watched, event);
 
+    return QObject::eventFilter(watched, event);
 }
 
 /**

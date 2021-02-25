@@ -19,6 +19,8 @@
 #include "base/consts.h"
 #include "base/utils.h"
 
+#include <DDesktopEntry>
+
 #include <QtGui/private/qiconloader_p.h>
 
 ManualProxy::ManualProxy(QObject *parent)
@@ -258,7 +260,6 @@ QString ManualProxy::getAppIconPath(const QString &logoPath)
                 strIconPath = filepath;
             }
         }
-
         if (!str96.isEmpty()) {
             strIconPath = str96;
         } else if (!str64.isEmpty()) {
@@ -278,6 +279,24 @@ QString ManualProxy::getAppIconPath(const QString &logoPath)
     //    }
 
     return strIconPath;
+}
+
+QString ManualProxy::getLocalAppName(const QString &appname)
+{
+    QString filepath = QString("/usr/share/applications/%1.desktop").arg(appname);
+    QFile file(filepath);
+    QString strdisplayname = appname;
+    if (file.exists()) {
+        Dtk::Core::DDesktopEntry entry(filepath);
+        qDebug() << entry.ddeDisplayName() << entry.localizedValue("Name") << entry.localizedValue("GenericName") << entry.genericName() << entry.name();
+        strdisplayname = entry.ddeDisplayName();
+    }
+    return strdisplayname;
+}
+
+void ManualProxy::manualtest(const QString &fuc, const QString &appname)
+{
+    qDebug() << fuc << appname;
 }
 
 /**

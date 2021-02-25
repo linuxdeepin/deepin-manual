@@ -4,7 +4,7 @@ import ReactDOM from 'react-dom';
 
 import Scrollbar from './scrollbar.jsx';
 import { type } from 'os';
-
+global.show = false;
 class Item extends Component {
   constructor(props) {
     super(props);
@@ -12,7 +12,8 @@ class Item extends Component {
       name: '',
       title: '',
       logo: '',
-      show: false
+      show: false,
+      btop:false,
     };
     console.log('main item constructor...');
     this.init();
@@ -48,15 +49,15 @@ class Item extends Component {
         var logoPath = pathList.join("/") + "/";
         logo = `${logoPath}${logo}`;
    
-
+    
      global.qtObjects.manual.getAppIconPath(logo,(logopath) =>{
-      this.setState({ logo:logopath}); 
-      })  
-   
-     this.setState({ title, file:this.file, show: true}); 
+      this.setState({ logo:logopath});     
       });
-    })
-
+    
+     this.setState({ title, file:this.file, show: true,btop:true}); 
+      });
+    });
+    global.show=true;
     global.qtObjects.manual.iconThemeChanged.connect(
       this.iconThemeChange.bind(this)
    );
@@ -64,16 +65,20 @@ class Item extends Component {
   }
 
   iconThemeChange(themeType) {
-    global.qtObjects.manual.getAppIconPath(this.state.logo,(logopath) =>{  
-      if(this.ismounted)   {      
+     global.qtObjects.manual.getAppIconPath(this.state.logo,(logopath) =>{      
+      if( global.show===true)   {      
         this.setState({ logo:logopath});     
       }      
-      })  
+      });
   }
  
   componentWillReceiveProps(nextProps) {
     console.log("index item componentWillReceivePropss........");   
     this.init();
+  }
+
+  componentWillUnmount(){
+    global.show=false;  
   }
 
   render() {
