@@ -44,24 +44,12 @@ public:
                     DefautFont
                   };
 
-//    static struct timeval getTime();
-//    static struct timeval showDiffTime(struct timeval tpStart);
-
     static QHash<QString, QPixmap> m_imgCacheHash;
     static QHash<QString, QString> m_fontNameCache;
-
-//    static QString getQssContent(const QString &filePath);
-//    static bool isFontMimeType(const QString &filePath);
-//    static QString suffixList();
     static QPixmap renderSVG(const QString &filePath, const QSize &size);
-//    static QString loadFontFamilyByType(FontType fontType);
-//    static QFont loadFontBySizeAndWeight(QString fontFamily, int fontSize, int fontWeight);
-//    static QString fromSpecialEncoding(const QString &inputStr);
     static QString translateTitle(const QString &titleUS);
-
     //获取所有应用列表
     static QList<AppInfo> launcherInterface();
-
     //获取系统应用中有帮助手册的应用列表
     static QStringList getSystemManualList();
     static QString getSystemManualDir();
@@ -71,7 +59,6 @@ public:
     //判断当前文件是否为最优先级文件
     static bool isMostPriority(const QString &mdPath, QString &morePriorityPath);
     static bool activeWindow(quintptr winId);
-    static QString getIconThemeType();
 };
 
 class ExApplicationHelper : public DGuiApplicationHelper
