@@ -20,6 +20,7 @@
 #include "view/manual_proxy.h"
 #include "controller/config_manager.h"
 #include "base/consts.h"
+#include "../third-party/stub/stub.h"
 #include <QProcess>
 #include <QMutex>
 
@@ -36,6 +37,10 @@ void ut_manual_proxy_test::SetUp()
 void ut_manual_proxy_test::TearDown()
 {
     delete m_mp;
+}
+
+void stub_Handle()
+{
 }
 
 TEST_F(ut_manual_proxy_test, getSystemManualDir)
@@ -203,3 +208,27 @@ TEST_F(ut_manual_proxy_test, saveApplist)
     setting->endGroup();
 }
 
+TEST_F(ut_manual_proxy_test, showUpdateLabel)
+{
+}
+
+TEST_F(ut_manual_proxy_test, appToPath)
+{
+    ManualProxy mp;
+    QString path = mp.appToPath("ceshi");
+    ASSERT_TRUE(path.compare("error") == 0);
+}
+
+TEST_F(ut_manual_proxy_test, getAppIconPath)
+{
+    ManualProxy mp;
+    QString iconpaht = mp.getAppIconPath("dde-ceshi");
+    ASSERT_TRUE(iconpaht.isEmpty());
+}
+
+TEST_F(ut_manual_proxy_test, getLocalAppName)
+{
+    ManualProxy mp;
+    QString iconpaht = mp.getAppIconPath("dde-ceshi");
+    ASSERT_TRUE(iconpaht.isEmpty());
+}

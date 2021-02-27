@@ -29,6 +29,7 @@ public:
     virtual void SetUp() override;
     virtual void TearDown() override;
     ManualProxy *m_mp;
+    void stub_Handle();
 };
 
 #endif // UT_MANUAL_PROXY_TEST_H
