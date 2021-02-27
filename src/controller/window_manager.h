@@ -49,8 +49,6 @@ private:
     qint64 appStartTime;
 
 public slots:
-
-    void onNewAppOpen();
     void openManual(const QString &app_name, const QString &title_name);
     void openManualWithSearch(const QString &app_name, const QString &keyword);
     void onAppStartTimeCount(qint64);

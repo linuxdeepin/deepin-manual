@@ -77,7 +77,6 @@ void WindowManager::initDBus()
     ManualFilesUpdateProxy *proxy = new ManualFilesUpdateProxy(this);
     connect(proxy, &ManualFilesUpdateProxy::FilesUpdate, this, &WindowManager::onFilesUpdate);
     ManualFilesUpdateAdapter *adapter = new ManualFilesUpdateAdapter(proxy);
-    //ManualOpenAdapter *adapter = new ManualOpenAdapter(proxy);
     Q_UNUSED(adapter);
     //注册服务, 如果注册失败,则说明已存在一个dman.
     if (!conn.registerService(kManualFilesUpdateService)
@@ -180,30 +179,6 @@ void WindowManager::setWindow(WebWindow *window)
     window->resize(saveWidth, saveHeight);
     window->setMinimumSize(kWinMinWidth, kWinMinHeight);
     window->move((QApplication::desktop()->width() - saveWidth) / 2, (QApplication::desktop()->height() - saveHeight) / 2);
-}
-
-/**
- * @brief WindowManager::onNewAppOpen
- * 已存在dman时,再重启窗口时,通知后端将已存在的dman窗口active.
- */
-void WindowManager::onNewAppOpen()
-{
-    qDebug() << Q_FUNC_INFO << qApp->applicationPid();
-    QDBusMessage msg =
-        QDBusMessage::createMethodCall(kManualSearchService,
-                                       kManualSearchIface,
-                                       kManualSearchService, "OnNewWindowOpen");
-
-    msg << QString::number(qApp->applicationPid());
-    QDBusMessage response = QDBusConnection::sessionBus().call(msg);
-
-    if (response.type() == QDBusMessage::ReplyMessage) {
-        qDebug() << "ReplyMessage";
-    }
-
-    if (QDBusMessage::ErrorMessage == response.type()) {
-        qDebug() << "ErrorMessage";
-    }
 }
 
 /**

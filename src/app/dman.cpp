@@ -78,8 +78,6 @@ int main(int argc, char **argv)
     WindowManager window_manager;
     // window_manager.setStartTime(startTime);
     //绑定参数解析 信号与槽
-    QObject::connect(&argument_parser, &ArgumentParser::newAppOpen,
-                     &window_manager, &WindowManager::onNewAppOpen);
     QObject::connect(&argument_parser, &ArgumentParser::openManualWithSearchRequested,
                      &window_manager, &WindowManager::openManualWithSearch);
     QObject::connect(&argument_parser, &ArgumentParser::openManualRequested,

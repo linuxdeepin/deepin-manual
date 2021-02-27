@@ -68,12 +68,6 @@ TEST_F(ut_window_manager_test, SendMsg)
 //    p2.close();
 }
 
-TEST_F(ut_window_manager_test, onNewAppOpen)
-{
-    WindowManager vm;
-    vm.onNewAppOpen();
-}
-
 TEST_F(ut_window_manager_test, openManual)
 {
     WindowManager mv;

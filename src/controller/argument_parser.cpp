@@ -57,7 +57,6 @@ bool ArgumentParser::parseArguments()
             &ArgumentParser::onOpenAppRequested);
     connect(proxy, &ManualOpenProxy::searchRequested, this,
             &ArgumentParser::onSearchRequested);
-
     ManualOpenAdapter *adapter = new ManualOpenAdapter(proxy);
     Q_UNUSED(adapter);
 
@@ -66,15 +65,16 @@ bool ArgumentParser::parseArguments()
             || !conn.registerObject(kManualOpenIface, proxy)) {
         qDebug() << "Failed to register dbus";
         const QStringList position_args = parser.positionalArguments();
+        QDBusInterface manual(kManualOpenService, kManualOpenIface, kManualOpenService);
         if (!position_args.isEmpty()) {
             qDebug() << Q_FUNC_INFO << "position_args is not empty";
-            QDBusInterface manual(kManualOpenService, kManualOpenIface, kManualOpenService);
             for (const QString &arg : position_args) {
                 QDBusReply<void> reply = manual.call("Open", arg);
             }
         } else {
             qDebug() << Q_FUNC_INFO << "position_args is empty";
-            emit newAppOpen();
+            //激活已有dman
+            QDBusReply<void> reply = manual.call("Open", "");
         }
         return false;
     } else {
