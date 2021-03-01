@@ -182,10 +182,6 @@ void SearchDb::initSearchTable()
 {
     Q_ASSERT(p_->db.isOpen());
     QSqlQuery query(p_->db);
-    //    if (!query.exec(kSearchDropTable)) {
-    //        qCritical() << "Failed to drop search table";
-    //        return;
-    //    }
 
     if (!query.exec(kSearchTableSchema)) {
         qCritical() << "Failed to initialize search table:" << query.lastError().text();

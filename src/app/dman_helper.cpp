@@ -14,18 +14,19 @@
  * You should have received a copy of the GNU General Public License
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
-#include <QCoreApplication>
-#include <QWebEngineView>
-#include <QApplication>
 #include "controller/helpermanager.h"
 #include "dbus/dbus_consts.h"
 #include "dbus/manual_search_adapter.h"
 #include "dbus/manual_search_proxy.h"
 
+#include <DLog>
+
+#include <QWebEngineView>
+#include <QApplication>
+#include <QDebug>
+
 int main(int argc, char **argv)
 {
-//    QCoreApplication app(argc, argv);
-
     QApplication app(argc, argv);
 
 //    qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "7777");
@@ -33,10 +34,16 @@ int main(int argc, char **argv)
     ManualSearchProxy search_obj;
     ManualSearchAdapter adapter(&search_obj);
 
+    qDebug() << Dtk::Core::DLogManager::getlogFilePath();
+
+    Dtk::Core::DLogManager::registerFileAppender();
+    Dtk::Core::DLogManager::registerConsoleAppender();
+
     QDBusConnection conn = QDBusConnection::sessionBus();
     if (!conn.registerService(kManualSearchService)
             || !conn.registerObject(kManualSearchIface, &search_obj)) {
         qCritical() << "dman-search failed to register dbus service";
+        return -1;
     } else {
         qDebug() << "dman-search register dbus service success!";
     }
