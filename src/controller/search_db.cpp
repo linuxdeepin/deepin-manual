@@ -169,7 +169,10 @@ void SearchDb::initDb()
     p_->db = QSqlDatabase::addDatabase("QSQLITE");
     p_->db.setDatabaseName(databasePath);
     if (!p_->db.open()) {
-        qCritical() << "Failed to open search db:" << databasePath;
+        qCritical() << "Failed to open search db:" << databasePath << p_->db.lastError().text()
+                    << p_->db.lastError().nativeErrorCode() << p_->db.lastError().type()
+                    << p_->db.lastError().databaseText() << p_->db.lastError().driverText()
+                    << p_->db.lastError().isValid();
         return;
     }
 }
