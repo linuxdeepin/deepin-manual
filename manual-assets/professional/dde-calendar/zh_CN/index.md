@@ -81,7 +81,9 @@
 
 4. 点击 **保存**，创建日程。
    
-   > ![tips](icon/tips.svg)窍门：支持将日程标签拖拽到指定的日期或时间上。
+   > ![tips](icon/tips.svg)窍门：
+   > - 支持将日程标签拖拽到指定的日期或时间上。
+   > - 支持唤起桌面语音助手来新建日程、查询日程、取消日程等
 
 
 
@@ -212,4 +214,4 @@
 2. 点击 **退出**。
 
 
-<div class="version-info"><span>文档更新时间: 2020-10-20</span><span> 版本: 5.7</span></div>
+<div class="version-info"><span>文档更新时间: 2020-11-24</span><span> 版本: 5.7</span></div>

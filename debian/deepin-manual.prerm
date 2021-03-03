@@ -1,0 +1,6 @@
+#!/bin/sh
+
+killall dmanHelper
+killall dman
+
+exit 0

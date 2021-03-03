@@ -22,6 +22,8 @@
 #include <DWindowManagerHelper>
 
 #include <QStylePainter>
+#include <QPainterPath>
+
 namespace {
 
 const int kItemHeight = 34;

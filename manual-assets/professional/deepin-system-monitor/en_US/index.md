@@ -4,7 +4,6 @@
 
 System Monitor is a system tool monitoring and managing hardware load, program running and system services. It supports real-time monitoring of CPU status, memory footprint, and upload/download speed, helps manage system and application process, and enables searching and force ending of processes.
 
-
 ## Basic Operations
 
 ### Search Process
@@ -16,8 +15,6 @@ System Monitor is a system tool monitoring and managing hardware load, program r
 
 ![1|search](jpg/search.png)
 
-
-
 ### Hardware Monitoring
 
 System Monitor can monitor the CPU, memory and network status of your system:
@@ -25,13 +22,18 @@ System Monitor can monitor the CPU, memory and network status of your system:
 - CPU monitoring: you can view the CPU usage and recent usage trends through graphics, numerical and curve displays.
 
   - In **Expand view**, CPU load is displayed in doughnut chart with percentage. The curve inside the doughnut shows the recent CPU load summary, the height of which automatically fits the inner height of doughnut. 
-  ![1|monitor](jpg/expand.png)
-  - In **Compact view**, CPU load is displayed in oscillogram with percentage. The curve shows the recent CPU load summary, the height of which automatically fits the height of the oscillogram. 
-  ![1|monitor](jpg/compact.png)
-- Memory monitoring shows the real-time usage of memory, total memory and current usage, total swap space and current usage in percentage and graphics.
-- Network monitoring shows the current downloading and uploading speed, and the recent trend of such activities in waves.
-- Disk monitoring shows the current reading and writing speed, and the recent trend of such activities in waves.
 
+  ![1|monitor](jpg/expand.png)
+
+  - In **Compact view**, CPU load is displayed in oscillogram with percentage. The curve shows the recent CPU load summary, the height of which automatically fits the height of the oscillogram. 
+
+  ![1|monitor](jpg/compact.png)
+
+- Memory monitoring shows the real-time usage of memory, total memory and current usage, total swap space and current usage in percentage and graphics.
+
+- Network monitoring shows the current downloading and uploading speed, and the recent trend of such activities in waves.
+
+- Disk monitoring shows the current reading and writing speed, and the recent trend of such activities in waves.
 
 ### Process Management
 
@@ -54,7 +56,6 @@ You can adjust the process order by Name, CPU, User, Memory, Upload, Download, D
 
 ![1|sort](jpg/sort.png)
 
-
 #### End Process
 
 System Monitor can be used to end processes.
@@ -70,13 +71,13 @@ System Monitor can be used to end processes.
 1. On the System Monitor interface, click ![icon_menu](icon/icon_menu.svg).
 
 2. Select **Force end application**.
-> ![notes](icon/notes.svg)Notes: This function can only end graphical processes.
+> ![notes](icon/notes.svg) Notes: This function can only end graphical processes.
 
 3. Click the window of application you want to close according to the prompt.
 
 4. Click **Force End** in the pop-up window to confirm.
 
-> ![tips](icon/tips.svg)Tips: You can end a process by selecting a process, right-clicking it, and selecting **End Process**. 
+> ![tips](icon/tips.svg) Tips: You can end a process by selecting a process, right-clicking it, and selecting **End Process**. 
 
 
 #### Suspend/Resume Process
@@ -87,11 +88,9 @@ System Monitor can be used to end processes.
 
 ![1|pause](jpg/pause.png)
 
-
 #### Change Process Priority 
 
 1. On the System Monitor interface, right-click a process.
-
 2. Select **Change priority** and select a priority level.
 
 > ![notes](icon/notes.svg)Notes: You can also select **Custom** priority level.
@@ -116,7 +115,7 @@ System Monitor can be used to end processes.
 You can start, stop, restart, set startup type, and refresh system service processes.
 In the list of system services, force-ending of application is prohibited.
 
->![attention](icon/attention.svg)Attention: For better system operation, please don't end any system services processes and root processes.
+>![attention](icon/attention.svg) Attention: For better system operation, please don't end any system services processes and root processes.
 
 #### Start system service
 1. Select **Services** tab on the System Monitor interface.
@@ -140,7 +139,7 @@ In the main menu, you can switch monitoring modes and themes, view help manual, 
 
 ### Theme
 
-The window theme provides three theme types, namely Light Theme, Dark Theme, and System Theme (default).
+The window theme provides three theme types, namely Light Theme, Dark Theme, and System Theme.
 
 1. On the System Monitor interface, click ![icon_menu](icon/icon_menu.svg).
 2. Click **Theme** to select one theme.
@@ -150,10 +149,9 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 System Monitor offers Expand view and Compact view for your choice.
 
 1. On the System Monitor interface, click ![icon_menu](icon/icon_menu.svg).
-
 2. Click **View** to select one mode.
 
-> ![notes](icon/notes.svg)Notes: If you switched views under the **Services** tab, please click the **Processes** tab to view the display.
+> ![notes](icon/notes.svg) Notes: If you switched views under the **Services** tab, please click the **Processes** tab to view the display.
 
 
 ### Help
@@ -171,4 +169,4 @@ System Monitor offers Expand view and Compact view for your choice.
 1. On the System Monitor interface, click ![icon_menu](icon/icon_menu.svg).
 2. Click **Exit** to exit System Monitor.
 
-<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 5.8</span></div>
+<div class="version-info"><span>Update Date: 2020-11-24</span><span> Version: 5.8</span></div>

@@ -43,11 +43,9 @@
 
 #include <QRegion>
 #include <QFocusEvent>
-
+#include <QWebEngineHistory>
+#include <QTime>
 #include "base/utils.h"
-
-
-DWIDGET_USE_NAMESPACE
 
 namespace {
 
@@ -131,10 +129,25 @@ WebWindow::~WebWindow()
 void WebWindow::initWeb()
 {
     qDebug() << Q_FUNC_INFO;
+    setSearchManager(); //防止启动后立即搜索响应测试不通过
     initWebView();
-    setSearchManager();
-    const QFileInfo info(kIndexPage);
-    web_view_->load(QUrl::fromLocalFile(info.absoluteFilePath()));
+}
+
+void WebWindow::updatePage(const QStringList &list)
+{
+    if (search_proxy_) {
+        QStringList appList;
+        for (const QString &app : list) {
+            QStringList splitList = app.split("/");
+            appList.append(splitList.at(splitList.count() - 4));
+        }
+
+        emit search_proxy_->reloadPage(appList);
+    }
+
+    if (search_manager_) {
+        emit search_manager_->updateModule();
+    }
 }
 
 /**
@@ -159,26 +172,28 @@ void WebWindow::cancelTextChanged()
     web_view_->setContextMenuPolicy(Qt::NoContextMenu);
 }
 
+/**
+ * @brief WebWindow::openjsPage
+ * @param app_name
+ * @param title_name
+ */
 void WebWindow::openjsPage(const QString &app_name, const QString &title_name)
 {
-    if (app_name.isEmpty()) {
-        web_view_->page()->runJavaScript("index()");
-    } else {
-        QString real_path(app_name);
-        if (real_path.contains('/')) {
-            // Open markdown file with absolute path.
-            QFileInfo info(real_path);
-            real_path = info.canonicalFilePath();
-            web_view_->page()->runJavaScript(QString("open('%1')").arg(real_path));
+    if (bFinishChannel) {
+        if (app_name.isEmpty()) {
+            web_view_->page()->runJavaScript("index()");
         } else {
-            // Open system manual.
-//            web_view_->page()->runJavaScript(QString("open('%1')").arg(app_name));
-            web_view_->page()->runJavaScript(QString("openTitle('%1','%2')").arg(app_name, title_name));
+            QString real_path(app_name);
+            if (real_path.contains('/')) {
+                // Open markdown file with absolute path.
+                QFileInfo info(real_path);
+                real_path = info.canonicalFilePath();
+                web_view_->page()->runJavaScript(QString("open('%1')").arg(real_path));
+            } else {
+                // Open system manual.
+                web_view_->page()->runJavaScript(QString("openTitle('%1','%2')").arg(app_name, title_name));
+            }
         }
-
-//        if (!title_name.isEmpty()) {
-//            web_view_->page()->runJavaScript(QString("linkTitle('%1')").arg(title_name));
-//        }
     }
 }
 
@@ -203,7 +218,9 @@ void WebWindow::slot_ThemeChanged()
 {
     DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
     if (themeType == DGuiApplicationHelper::DarkType) {
-        web_view_->page()->setBackgroundColor(QColor(0x28, 0x28, 0x28));
+        web_view_->page()->setBackgroundColor(QColor(37, 37, 37));
+    } else {
+        web_view_->page()->setBackgroundColor(QColor(248, 248, 248));
     }
 }
 
@@ -216,12 +233,21 @@ void WebWindow::slot_HelpSupportTriggered()
                                  "/com/deepin/dde/ServiceAndSupport",
                                  "com.deepin.dde.ServiceAndSupport");
 
-    QDBusReply<void> reply = interface.call("ShowCustomerChat");
+    //    selfSupport = 0, //自助支持
+    //    messageConsultation = 1, //留言咨询
+    //    customerChat = 2, //在线客服
+    //    contentUs = 3 //联系我们
+    QDBusReply<void> reply = interface.call("ServiceSession", 0);
     if (reply.isValid()) {
         qDebug() << "call com.deepin.dde.ServiceAndSupport success";
     } else {
         qDebug() << "call com.deepin.dde.ServiceAndSupport failed";
     }
+}
+
+void WebWindow::slotUpdateLabel()
+{
+    sendMessage(QIcon(":/common/images/ok.svg"), QObject::tr("The content was updated"));
 }
 
 /**
@@ -268,6 +294,12 @@ QVariant WebWindow::inputMethodQuery(Qt::InputMethodQuery prop) const
 
     return QWidget::inputMethodQuery(prop);
 }
+
+void WebWindow::resizeEvent(QResizeEvent *event)
+{
+    QWidget::resizeEvent(event);
+}
+
 
 /**
  * @brief WebWindow::eventFilter
@@ -365,6 +397,7 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
  */
 void WebWindow::setSearchManager()
 {
+    search_proxy_ = new SearchProxy(this);
     search_manager_ = new SearchManager(this);
     connect(search_manager_, &SearchManager::searchContentResult, search_proxy_,
             &SearchProxy::onContentResult);
@@ -486,6 +519,7 @@ void WebWindow::initUI()
     this->titlebar()->addWidget(search_edit_, Qt::AlignCenter);
     this->titlebar()->setSeparatorVisible(false);
     this->titlebar()->setIcon(QIcon::fromTheme("deepin-manual"));
+
     //隐藏title阴影
     this->setTitlebarShadowEnabled(false);
     //键盘盲打
@@ -513,7 +547,6 @@ void WebWindow::initWebView()
     settings_proxy_ = new SettingsProxy(this);
     i18n_proxy = new I18nProxy(this);
     manual_proxy_ = new ManualProxy(this);
-    search_proxy_ = new SearchProxy(this);
 
     title_bar_proxy_ = new TitleBarProxy(this);
     connect(m_backButton, &DButtonBoxButton::clicked, title_bar_proxy_,
@@ -521,7 +554,10 @@ void WebWindow::initWebView()
     connect(m_forwardButton, &DButtonBoxButton::clicked, title_bar_proxy_,
             &TitleBarProxy::forwardButtonClicked);
     web_view_ = new QWebEngineView;
+    web_view_->setAttribute(Qt::WA_NativeWindow, true);
     web_view_->setAcceptDrops(false);
+    //使用该方法效果最好但使用后消息提示控件不可见,所以根据主题设置相适应的背景色
+    // web_view_->page()->setBackgroundColor(Qt::transparent);
     slot_ThemeChanged();
     QWebChannel *web_channel = new QWebChannel;
     web_channel->registerObject("i18n", i18n_proxy);
@@ -533,19 +569,23 @@ void WebWindow::initWebView()
     web_channel->registerObject("settings", settings_proxy_);
     web_view_->page()->setWebChannel(web_channel);
 
-    connect(web_view_->page(), &QWebEnginePage::loadFinished, this, &WebWindow::onWebPageLoadFinished);
+    connect(web_view_->page(), &QWebEnginePage::loadProgress, this, &WebWindow::onWebPageLoadProgress);
     connect(manual_proxy_, &ManualProxy::channelInit, this, &WebWindow::onChannelFinish);
     connect(manual_proxy_, &ManualProxy::WidgetLower, this, &WebWindow::lower);
+    connect(manual_proxy_, &ManualProxy::updateLabel, this, &WebWindow::slotUpdateLabel);
     connect(manual_proxy_, &ManualProxy::supportBeClick, this, &WebWindow::slot_HelpSupportTriggered);
+
+    const QFileInfo info(kIndexPage);
+    web_view_->load(QUrl::fromLocalFile(info.absoluteFilePath()));
     connect(search_edit_, &SearchEdit::onClickedClearBtn, manual_proxy_,
             &ManualProxy::searchEditTextisEmpty);
     connect(search_proxy_, &SearchProxy::setKeyword, this, &WebWindow::onSetKeyword);
+    connect(search_proxy_, &SearchProxy::updateSearchResult, this, &WebWindow::onTitleBarEntered);
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
             theme_proxy_, &ThemeProxy::slot_ThemeChange);
-    //应用启动时，页面加载成功时间获取
-    connect(manual_proxy_, &ManualProxy::startFinish, this, &WebWindow::manualStartFinish);
-//    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
-//            this, &WebWindow::slot_ThemeChanged);
+
+    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
+            this, &WebWindow::slot_ThemeChanged);
 
     manual_proxy_->setApplicationState("dde");
 }
@@ -599,7 +639,6 @@ void WebWindow::initShortcuts()
     scSearch->setContext(Qt::WindowShortcut);
     scSearch->setAutoRepeat(false);
     connect(scSearch, &QShortcut::activated, this, [this] {
-        qDebug() << "search" << endl;
         search_edit_->lineEdit()->setFocus(Qt::ShortcutFocusReason);
     });
 }
@@ -771,6 +810,7 @@ void WebWindow::onSearchTextChangedDelay()
  */
 void WebWindow::onTitleBarEntered()
 {
+    qDebug() << Q_FUNC_INFO;
     QString textTemp = search_edit_->text();
     const QString text = textTemp.remove('\n').remove('\r').remove("\r\n").remove(QRegExp("\\s"));
     if (text.size() >= 1) {
@@ -782,17 +822,18 @@ void WebWindow::onTitleBarEntered()
 }
 
 /**
- * @brief WebWindow::onWebPageLoadFinished qwebengines加载页面完成槽
- * @note  网页加载完成后设置其配置
- * @param ok
+ * @brief WebWindow::onWebPageLoadProcess qwebengines加载进度响应槽
+ * @valpro  网页加载进度响应
+ * 网页加载达到20%就显示提什用户体验
  */
-void WebWindow::onWebPageLoadFinished(bool ok)
+void WebWindow::onWebPageLoadProgress(int valpro)
 {
-    Q_UNUSED(ok)
-    m_spinner->stop();
-    m_spinner->hide();
-    this->setCentralWidget(web_view_);
-    disconnect(web_view_->page(), &QWebEnginePage::loadFinished, this, &WebWindow::onWebPageLoadFinished);
+    if (m_spinner->isPlaying() && valpro > 20) {
+        m_spinner->stop();
+        m_spinner->hide();
+        this->setCentralWidget(web_view_);
+        disconnect(web_view_->page(), &QWebEnginePage::loadProgress, this, &WebWindow::onWebPageLoadProgress);
+    }
 }
 
 /**
@@ -801,6 +842,7 @@ void WebWindow::onWebPageLoadFinished(bool ok)
  */
 void WebWindow::onChannelFinish()
 {
+    bFinishChannel = true;
     setHashWordColor();
     settingContextMenu();
     //设置主题
@@ -812,7 +854,6 @@ void WebWindow::onChannelFinish()
         qsthemetype = "DarkType";
     }
     web_view_->page()->runJavaScript(QString("setTheme('%1')").arg(qsthemetype));
-
     //设置打开页面
     if (app_name_.isEmpty()) {
         web_view_->page()->runJavaScript("index()");

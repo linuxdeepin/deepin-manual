@@ -23,7 +23,6 @@
 #define CONFIG_MANAGER_H
 
 #include <QObject>
-//#include <QMutexLocker>
 #include <QSettings>
 
 class ConfigManager : public QObject
@@ -31,20 +30,12 @@ class ConfigManager : public QObject
     Q_OBJECT
 public:
     static ConfigManager *getInstance();
-
-signals:
-
-public slots:
-
-public:
     QString getWinInfoConfigPath();
     QSettings *getSettings();
 
-protected:
 private:
-    explicit ConfigManager(QObject *parent = 0);
+    explicit ConfigManager(QObject *parent = nullptr);
     static ConfigManager *_pInstance;
-//    static QMutex _mutex;
     QSettings *m_winInfoConfig = nullptr;
 };
 

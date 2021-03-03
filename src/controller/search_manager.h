@@ -34,6 +34,7 @@ public:
 
     ~SearchManager() override;
 
+
 signals:
     void searchAnchor(const QString &keyword);
     void searchAnchorResult(const QString &keyword,
@@ -45,6 +46,7 @@ signals:
                              const QStringList &anchorIdList,
                              const QStringList &contents);
     void searchContentMismatch(const QString &keyword);
+    void updateModule();
 
 private:
     void initSearchManager();

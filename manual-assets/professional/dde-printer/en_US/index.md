@@ -108,7 +108,7 @@ After you add a printer and select the correct driver, click **Install Driver** 
 
 ### Printer Manager Interface
 
-Once a printer is added successfully, when you click the printer in the interface of printer manager, you can see four buttons on the right, which are "Properties", "Print Queue", "Print Test Page", "Supplies" and "Troubleshoot". 
+Once a printer is added successfully, when you click the printer in the interface of printer manager, you can see five buttons on the right, which are "Properties", "Print Queue", "Print Test Page", "Supplies" and "Troubleshoot". 
 
 ![0|9printer management](jpg/9printer-management.png)
 
@@ -245,4 +245,4 @@ click Help to get the manual, which will help you further know and use Printer M
 2. Click  **Exit**.
 
 
-<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 0.6</span></div>
+<div class="version-info"><span>Update Date: 2020-11-24</span><span> Version: 0.7</span></div>

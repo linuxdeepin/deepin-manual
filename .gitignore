@@ -31,3 +31,8 @@ CMakeLists.txt.user
 .sass-cache
 debian/debhelper-build-stamp
 obj-*
+/*.csv
+/test/coverage/
+/test/deepin-manual.csv
+/test/report/
+/review/

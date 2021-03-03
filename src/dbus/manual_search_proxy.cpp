@@ -17,8 +17,11 @@
 
 #include "dbus/manual_search_proxy.h"
 #include "dbus/dbus_consts.h"
+#include "base/utils.h"
 
 #include <QtDBus/QtDBus>
+
+const QStringList systemType = {"professional", "server", "community", "personal"};
 
 ManualSearchProxy::ManualSearchProxy(QObject *parent)
     : QObject(parent)
@@ -42,12 +45,12 @@ void ManualSearchProxy::connectToSender()
         QDBusConnection::connectToBus(QDBusConnection::SessionBus, "Sender");
 
     if (!senderConn.connect(
-                kManualSearchService + QString("Sender"),  // sender's service name
-                kManualSearchIface + QString("Sender"),    // sender's path name
-                kManualSearchService + QString("Sender"),  // interface
-                "SendWinInfo",                                   // sender's signal name
-                this,                                            // receiver
-                SLOT(RecvMsg(const QString &)))) {               // slot
+            kManualSearchService + QString("Sender"), // sender's service name
+            kManualSearchIface + QString("Sender"), // sender's path name
+            kManualSearchService + QString("Sender"), // interface
+            "SendWinInfo", // sender's signal name
+            this, // receiver
+            SLOT(RecvMsg(const QString &)))) { // slot
 
         qDebug() << "connectToBus()::connect() Sender SendWinInfo failed";
     } else {
@@ -91,15 +94,7 @@ void ManualSearchProxy::OnNewWindowOpen(const QString &data)
     if (m_bWindowState) {
         qDebug() << "Window:process" << m_sApplicationPid;
         quintptr winId = m_sApplicationPid.toULong();
-        // new interface use applicationName as id
-        QDBusInterface manual("com.deepin.dde.daemon.Dock", "/com/deepin/dde/daemon/Dock",
-                              "com.deepin.dde.daemon.Dock");
-        QDBusReply<void> reply = manual.call("ActivateWindow", winId);
-        if (reply.isValid()) {
-            qDebug() << "call com.deepin.dde.daemon.Dock success";
-            return;
-        }
-        qDebug() << "call com.deepin.dde.daemon.Dock failed" << reply.error();
+        Utils::activeWindow(winId);
     }
 }
 
@@ -111,20 +106,24 @@ void ManualSearchProxy::OnNewWindowOpen(const QString &data)
  */
 bool ManualSearchProxy::ManualExists(const QString &app_name)
 {
+    QStringList moduleList;
     QString strManualPath = DMAN_MANUAL_DIR;
-    int nType = Dtk::Core::DSysInfo::deepinType();
-    if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
-        strManualPath += "/server";
-    } else if (Dtk::Core::DSysInfo::DeepinPersonal == (Dtk::Core::DSysInfo::DeepinType)nType) {
-        strManualPath += "/personal";
-    } else {
-        if (Dtk::Core::DSysInfo::isCommunityEdition()) {
-            strManualPath += "/community";
-        } else {
-            strManualPath += "/professional";
+    for (const QString &type : QDir(strManualPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+        if (type == "system" || type == "application") {
+            QString typePath = strManualPath + "/" + type;
+            for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+                moduleList.append(module);
+            }
         }
+#if 1 //旧文案结构兼容
+        if (systemType.contains(type)) {
+            QString typePath = strManualPath + "/" + type;
+            for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+                moduleList.append(module);
+            }
+        }
+#endif
     }
 
-    QDir manual_dir(strManualPath);
-    return manual_dir.exists(app_name);
+    return moduleList.contains(app_name);
 }

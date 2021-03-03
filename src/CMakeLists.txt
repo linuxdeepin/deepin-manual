@@ -65,7 +65,7 @@ else()
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -O2 -Wl,-O1 -Wl,--gc-sections")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-rtti")
 
-  set(CMAKE_CXX_FLAGS "-Wl,--as-need -fPIE")
+  set(CMAKE_CXX_FLAGS "-Wl,--as-needed -fPIE")
   set(CMAKE_EXE_LINKER_FLAGS "-pie")
 endif()
 
@@ -116,14 +116,25 @@ set(DMAN_SEARCH_LINK_LIBS
     ${DtkCore_LDFLAGS}
     )
 
+set (DMAN_HELPER_LIBS
+    Qt5::Core
+    Qt5::Sql
+    Qt5::DBus
+    Qt5::Widgets
+    Qt5::WebChannel
+    Qt5::WebEngineWidgets
+    ${DtkGui_LDFLAGS}
+    ${DtkCore_LDFLAGS}
+    ${DtkWidget_LDFLAGS}
+    )
+
+
 
 set(BASE_FILES
     base/consts.cpp
     base/consts.h
     base/utils.cpp
     base/utils.h
-    base/accessible.h
-    base/accessibledefine.h
     )
 
 set(CONTROLLER_FILES
@@ -157,6 +168,10 @@ set(DBUS_FILES
     dbus/manual_search_adapter.h
     dbus/manual_search_proxy.cpp
     dbus/manual_search_proxy.h
+    dbus/manual_filesupdate_proxy.cpp
+    dbus/manual_filesupdate_proxy.h
+    dbus/manual_filesupdate_adapter.cpp
+    dbus/manual_filesupdate_adapter.h
     )
 
 set(RESOURCES_FILES
@@ -197,6 +212,10 @@ set(VIEW_FILES
     view/widget/search_edit.h
     )
 
+
+
+
+
 # Main executable
 set(SEARCH_FILES
     app/generate_search_db.cpp
@@ -213,23 +232,6 @@ add_executable(generate-search-db
                ${SEARCH_FILES})
 target_link_libraries(generate-search-db ${LINK_LIBS})
 
-# TODO(Shaohua): Generate search db by hand.
-add_custom_command(OUTPUT _update-search-db
-                   COMMAND pwd
-                   COMMAND ${CMAKE_CURRENT_BINARY_DIR}/generate-search-db
-                   WORKING_DIRECTORY ${CMAKE_BINARY_DIR}/
-                   )
-add_custom_target(update-search-db DEPENDS _update-search-db)
-add_dependencies(update-search-db
-                 generate-search-db)
-
-## Generate .qm files from .ts files.
-#file(GLOB DMAN_TRANSLATION_TS
-#     ${CMAKE_SOURCE_DIR}/translations/deepin-manual*.ts)
-#set_source_files_properties(${DMAN_TRANSLATION_TS}
-#                            PROPERTIES OUTPUT_LOCATION ${CMAKE_BINARY_DIR}/translations)
-#qt5_add_translation(DMAN_TRANSLATION_QM ${DMAN_TRANSLATION_TS})
-#add_custom_target(update-qm DEPENDS ${DMAN_TRANSLATION_QM})
 
 # Build web project and generate js files.
 add_custom_command(OUTPUT rebuild-web
@@ -253,12 +255,36 @@ set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
 set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
 target_link_libraries(dman  ${LINK_LIBS})
 
-add_executable(dman-search
-               app/dman_search.cpp
-               ${DBUS_FILES}
-               )
-target_link_libraries(dman-search
-                      ${DMAN_SEARCH_LINK_LIBS})
+
+add_executable(dmanHelper
+                app/dman_helper.cpp
+                base/utils.cpp
+                base/utils.h
+                base/consts.cpp
+                base/consts.h
+                dbus/dbus_consts.cpp
+                dbus/dbus_consts.h
+                dbus/dbusvariant/app_info.cpp
+                dbus/dbusvariant/app_info.h
+                dbus/manual_search_adapter.cpp
+                dbus/manual_search_adapter.h
+                dbus/manual_search_proxy.cpp
+                dbus/manual_search_proxy.h
+                base/command.cpp
+                base/command.h
+                controller/helpermanager.cpp
+                controller/helpermanager.h
+                controller/search_db.cpp
+                controller/search_db.h
+                controller/filewatcher.cpp
+                controller/filewatcher.h
+                view/jscontext.cpp
+                view/jscontext.h
+                )
+target_link_libraries(dmanHelper
+                      ${DMAN_HELPER_LIBS})
+
+
 
 # Auto generate qm files and search.db in release mode.
 if (NOT (${CMAKE_BUILD_TYPE} MATCHES "Debug"))
@@ -282,29 +308,32 @@ if (CMAKE_BUILD_TYPE MATCHES Debug)
 
 endif ()
 
+#set different ISO types
+#1:professional 2:community 3:server 4:personal
+set(ISO_TYPE "professional")
+#set(ISO_TYPE "community")
+#set(ISO_TYPE "server")
+#set(ISO_TYPE "personal")
+
+
 
 ## Installation
 install(TARGETS dman
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
-# NOTE(Shaohua): Add this script to by pass platform plugin issue in Qt.
-install(FILES ${CMAKE_CURRENT_SOURCE_DIR}/app/dman.sh
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/bin
-        PERMISSIONS OWNER_READ OWNER_EXECUTE
-        GROUP_READ GROUP_EXECUTE
-        WORLD_READ WORLD_EXECUTE
-        RENAME dman)
-install(TARGETS dman-search
         DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+install(TARGETS dmanHelper
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+
 
 # Install qm files
 file(GLOB QM_FILES  ${CMAKE_SOURCE_DIR}/translations/deepin-manual*.qm)
 install(FILES ${QM_FILES}
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual/translations/)
 
-install(DIRECTORY ${CMAKE_SOURCE_DIR}/manual-assets
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/manual-assets/${ISO_TYPE}
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets/)
 
 install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/web_dist
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
+
 
 string(TOLOWER ${CMAKE_SYSTEM_PROCESSOR} LOWERCASE_CMAKE_SYSTEM_PROCESSOR)

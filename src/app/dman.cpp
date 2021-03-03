@@ -21,7 +21,6 @@
 #include "environments.h"
 #include "resources/themes/images.h"
 #include "controller/shellobj.h"
-#include "base/accessible.h"
 
 #include <DApplication>
 #include <DApplicationSettings>
@@ -30,15 +29,12 @@
 #include <QDBusConnection>
 #include <QIcon>
 #include <DLog>
-#include <QDateTime>
 
 DWIDGET_USE_NAMESPACE
 
 int main(int argc, char **argv)
 {
     QDateTime time;
-    qint64 startTime = time.currentMSecsSinceEpoch();
-    qDebug() << "startTime: " << startTime;
     qputenv("DXCB_FAKE_PLATFORM_NAME_XCB", "true");
     //禁用GPU
     qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu");
@@ -50,7 +46,6 @@ int main(int argc, char **argv)
 
 //    qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "7777");
 //    Dtk::Widget::DApplication::loadDXcbPlugin();
-
 
     Dtk::Widget::DApplication app(argc, argv);
     if (!DPlatformWindowHandle::pluginVersion().isEmpty()) {
@@ -81,7 +76,7 @@ int main(int argc, char **argv)
 
     ArgumentParser argument_parser;
     WindowManager window_manager;
-    window_manager.setStartTime(startTime);
+    // window_manager.setStartTime(startTime);
     //绑定参数解析 信号与槽
     QObject::connect(&argument_parser, &ArgumentParser::newAppOpen,
                      &window_manager, &WindowManager::onNewAppOpen);
@@ -100,7 +95,6 @@ int main(int argc, char **argv)
     }
     argument_parser.openManualsDelay();
 
-
     // 日志保存, 路径:~/.cach/deepin/deepin-manual/
     DApplicationSettings dApplicationSettings;
     Dtk::Core::DLogManager::registerFileAppender();
@@ -116,6 +110,5 @@ int main(int argc, char **argv)
     customLoggerInstance.logToGlobalInstance(category, true);
     customLoggerInstance.registerAppender(fileAppender);
 
-    QAccessible::installFactory(accessibleFactory);
     return app.exec();
 }

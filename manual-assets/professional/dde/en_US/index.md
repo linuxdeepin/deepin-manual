@@ -21,7 +21,10 @@ Desktop is the main screen you see after logging in. On the desktop, you can cre
 
 ![0|contextmenu](jpg/contextmenu.png)
 
+> ![notes](icon/notes.svg)Notes: On the touchpad that supports multiple-point touch, you can use the gesture to operate instead of the mouse: move with four/five fingers downwards to display desktop, and move upwards immediately to hide which corresponds to the operation of **Super** + **D**. 
+
 ### Create New Folder/Document
+
 Just as in File Manager, you can create a new folder/document on the desktop, or do some operations for the files on it.
 
 - Right-click the desktop, select **New folder** and enter the name for it.
@@ -40,6 +43,11 @@ Right-click a file or folder on the desktop, and use the features of File Manage
 | Tag information  | Add a tag.                                                   |
 | Compress/Extract | Compress the file or folder, or extract the compressed file. |
 | Properties       | View the basic info, share it or change the permission.      |
+
+>![notes](icon/notes.svg)Notes: 
+>   - If you are using a computer equipped with a touchscreen, you can use touchscreen gestures to operate instead of the mouse: long press for 1 second and release on the touchscreen.
+>   - On the touchpad that supports multiple-point touch, you can use the gesture to operate instead of the mouse: click with two fingers to display the right-click menu. 
+>   - Press **Ctrl** + **M** on the keyboard to open rigsht-click menu. 
 
 ### Sort Files
 
@@ -84,9 +92,9 @@ Select some elegant and fashionable wallpapers to beautify your desktop and make
 
 ![1|wallpaper](jpg/wallpaper.png)
 
-> ![tips](icon/tips.svg)Tips: Check **Wallpaper Slideshow**, and set the time interval to change wallpaper automatically, or set to change the wallpaper in the process of login or wakeup. 
-
-> ![tips](icon/tips.svg)Tips: You can also set your favorite picture as wallpaper in an image viewer.
+> ![tips](icon/tips.svg)Tips: 
+>    - Check **Wallpaper Slideshow**, and set the time interval to change wallpaper automatically, or set to change the wallpaper in the process of login or wakeup. 
+>    - You can also set your favorite picture as wallpaper in an image viewer.
 
 ### Set Screensaver
 The screensaver was used to protect the kinescope before, but now it is mainly for protecting personal privacy from peering.
@@ -98,6 +106,10 @@ The screensaver was used to protect the kinescope before, but now it is mainly f
 5. After that idle time, the screensaver will start.
 
 ![1|screensaver](jpg/screensaver.png)
+
+
+
+
 
 ### Clipboard
 
@@ -113,6 +125,8 @@ All the texts, pictures and documents cut and copied by the current user after l
 
    ![1|clipboard](jpg/clipboard.png)
 
+>![notes](icon/notes.svg)Notes: If you are using a computer equipped with a touchscreen, you can use touchscreen gestures to operate instead of the mouse: slide in from the left edge of the screen exceeding the dock's height to call out Clipboard.
+
 ## Dock
 
 Dock is at the bottom of the desktop by default to help you quickly open frequently-used applications, which includes Launcher, applications, system tray, and plugins. In the dock, you can open launcher, show the desktop, enter the workspaces, open and exit apps, set input methods, adjust the volume, connect to a wireless network, view the calendar and enter the shutdown interface, and so on.
@@ -122,7 +136,7 @@ In the Dock, there are icons of Launcher, applications, system tray, and plugins
 
 You can send application icons from Launcher to Dock so as to open it quickly.
 
-![1|fashion](jpg/dock.png)
+![1|fashion](jpg/efficient.png)
 
 | Icon | Description |
 | ---- | ---- |
@@ -176,6 +190,7 @@ You can hide the Dock in order to maximize the expansion of the desktop operatin
 - **Keep Hidden** - hide Dock and display it only when hovering on the dock area.
 - **Smart Hide** -  hide Dock automatically if the dock area is used.
 
+> ![notes](icon/notes.svg)Notes: If you are using a computer equipped with a touchscreen, you can use touchscreen gestures to operate instead of the mouse: when the Dock is set as "Always Hidden" or "Smart Hide", if the Dock is at the bottom, slide in upward from the bottom edge of the screen to call it out; and if the Dock is on the top, slide in downward from the upper edge of the screen to call it out. 
 
 ### Show/Hide Plugins
 
@@ -191,15 +206,17 @@ When there are system or application notifications, they will be shown in the mi
 
 Click ![notification](icon/notification.svg) in Dock to view all the notifications.
 
+>![notes](icon/notes.svg)Notes: If you are using a computer equipped with a touchscreen, you can use touchscreen gestures to operate instead of the mouse: slide in from the right edge of the screen exceeding the dock's height to call out Notification Center.
+
 ### Use AI Assistant
 
-AI Assistant is pre-programmed by the system, supporting voice and text input, information search, operation instructions, etc.
+AI Assistant is pre-programmed by the system, supporting voice and text input, information search, operation instructions, etc. With it, you can adjust system volume and screen brightness, and switch on/off power saving mode, WiFi or Blurtooth.
 
 > ![notes](icon/notes.svg)Notes: Voice dictation, voice reading, translation and other functions of desktop AI Assistant are available only after you activate the system. When you run AI Assistant for the first time, a private agreement window pops up. After you agree with it, you can use functions such as voice dictation, voice reading, translation and others normally.
 
 You can wake up AI Assistant as follows:
 
-1. Press **Super** + **Q** to wake up AI Assistant.
+1. Press **Super** + **q** to wake up AI Assistant.
 
 2. Use fixed phrase "Hello Xiaohua" or "Hello Xiaohua + order" to wake up AI Assistant.
 
@@ -288,7 +305,9 @@ Empty trash to release the occupied space on your disk.
 ## Launcher
 Launcher ![launcher](icon/deepin-launcher.svg)  helps you manage all the installed applications, where you can quickly find an application by category navigation or by a search.
 
-> ![tips](icon/tips.svg)Tips: You can view newly installed applications in Launcher. The newly-installed ones are followed with a blue dot.
+You can view newly installed applications in Launcher. The newly-installed ones are followed with a blue dot.
+
+>![notes](icon/notes.svg)Notes: On the touchpad that supports multiple-point touch, you can use the gesture to operate instead of the mouse: click with four/five fingers to display/hide Launcher, which corresponds to the operation of  **Super**.
 
 
 ### Switch Launcher Modes
@@ -377,7 +396,10 @@ Uninstall the applications you no longer use to save disk space.
 ## Control Center
 You can manage the system settings in Control Center, including account management, network settings, date and time, personalization, display settings, system and application update, etc. After entering the desktop environment, click ![controlcenter](icon/controlcenter.svg) to open Control Center.
 
+>![notes](icon/notes.svg)Notes: On the touchpad that supports multiple-point touch, you can use the gesture to operate instead of the mouse: display the Control Center by sliding with two fingers from the right edge of the touchpad to the left; hide the Control Center by sliding with two fingers from the left edge of the touchpad to the right. 
+
 ### Homepage Introduction
+
 The homepage of Control Center provides several setting modules and click one to enter the detailed settings. 
 
 ![0|dcchomepage](jpg/dcc.png)
@@ -502,9 +524,12 @@ Set screen resolution, brightness, direction and display scaling properly to hav
 
 1. On the homepage of Control Center, click ![display_normal](icon/display_normal.svg).
 2. Click **Brightness**.
-   - Drag the slider to set screen brightness.
-   - Switch on **Night Shift**, the screen hue will be auto-adjusted according to your location.
-   - Once **Change Color Temperature** is switched on, you can adjust the monitor brightness as you wish. 
+   - Set up **Brightness**: drag the slider to adjust screen brightness.
+   - Set up **Color Temperature**:
+     - Switch on **Night Shift**, the screen hue will be auto-adjusted according to your location.
+     - Switch on **Change Color Temperature** is switched on, you can adjust the monitor brightness as you wish. 
+
+> ![notes](icon/notes.svg)Notes: When **Night Shift** is switched on, **Change Color Temperature** becomes unavailable automatically, and vice versa.
 
 ##### Set Display Scaling
 
@@ -623,8 +648,6 @@ Accent color refers to the color used when you select one option or file in the 
 2. Click **General**.
 3. Pick a color under **Accent Color** and view its effects.
 
-
-
 #### Enable Window Effect
 Enable window effect to make the desktop and the windows more beautiful and delicate.
 
@@ -632,12 +655,14 @@ Enable window effect to make the desktop and the windows more beautiful and deli
 2. Click **General**.
 3. Switch on **Window Effect**.
 
+> ![notes](icon/notes.svg)Notes: You can set **Window Minimize Effect** as **Scale** or **Magic Lamp**. 
+
 #### Adjust Transparency
 
 This function is available only when "Window Effect" is switched on. Move the slider from left to right to set the transparency of Launcher (in mini mode), which is from totally transparent to opaque.
 
 1. On the homepage of Control Center, click ![personalization_normal](icon/personalization_normal.svg).
-2. Click **General**.
+2. Click **General**, and switch on **Window Effect**.
 3. Click the bar to adjust the transparency and view the effect in real time.
 
 #### Set Icon Theme
@@ -824,7 +849,7 @@ Set your speaker and microphone properly to make you hear more comfortable and m
 2. Click **Input** to:
    - Select input device type from the dropdown list after **Input Device**.
    - Adjust input volume by dragging the slider.
-   - You can enable **Automatic Noise Suppression** by clicking the button after "Automatic Noise Suppression". 
+   - You can enable **Automatic Noise Suppression**. 
 
 > ![tips](icon/tips.svg)Tips: Usually, you need to turn up the input volume to make sure that you can hear the sound of the sound source, but the volume should not be too high, because it will cause distortion of the sound. Here is how to set input volume: Speak to your microphone at a normal volume and view "Input Level". If the indicator changes obviously according to the volume, then the input volume is at a proper level. 
 
@@ -848,7 +873,7 @@ Bluetooth helps you make a short-distance wireless communication between Bluetoo
 1. On the homepage of Control Center, click ![bluetooth_normal](icon/bluetooth_normal.svg).
 2. Click ![edit](icon/edit.svg) after the Bluetooth name, and enter a new name for your computer.
 
-> ![notes](icon/notes.svg)Notes: Your computer new name will be broadcasted automatically, and other devices should rescan to find it.
+> ![notes](icon/notes.svg)Notes: Your computer's new name will be broadcasted automatically, and other devices should rescan to find it.
 
 #### Connect to a Bluetooth Device
 
@@ -911,9 +936,11 @@ Note that the auto-sync function will be disabled after changing date and time m
 
 1. On the homepage of Control Center, click ![time](icon/time.svg).
 2. Click **Time Settings**.
-   - Switch on/off **Auto Sync**.
-   - Enter the correct date and time.
-3. Click **Confirm**.
+3. Switch off **Auto Sync**.
+4. Enter the correct date and time.
+5. Click **Confirm**.
+
+> ![notes](icon/notes.svg)Notes: You can also switch on **Auto Sync**. 
 
 #### Set Time Format
 
@@ -924,7 +951,7 @@ Setting the format of time and date is supported.
 
 ### Power Management
 
-Power management turns the system to a low-power state when inactive, thus making a long battery endurance for laptop users, and protects your privacy as well.
+Power management turns the system to a low-power state when inactive, thus making a long battery endurance for laptop users, and protects system security.
 
 ![0|power](jpg/power.png)
 
@@ -936,9 +963,14 @@ To reduce the power consumption of your laptop, turn on power saving mode to red
 1. On the homepage of Control Center, click ![power_normal](icon/power_normal.svg).
 2. Click **General**.
 3. Switch on **Power Saving Mode** to enter power saving mode.
-4. Switch on **Auto Mode Switch**, your laptop will enter power saving mode automatically when unplugged, and revert to normal mode when plugged in.
+4. Under **Power Saving Mode**, you can:
+   - Switch on **Auto power saving on low battery**(only applicable for laptops).
+   - Switch on **Auto power saving on battery** (only applicable for laptops).
+   - Drag the slider of **Decrease brightness** to adjust brightness.
 
-> ![notes](icon/notes.svg)Notes: Power saving mode is only for laptops.
+> ![notes](icon/notes.svg)Notes: 
+>    - If you switch off **Auto power saving on battery**, the computer goes into **Balanced** mode. 
+>    - Only when the device supports **High Performance**, the option would be displayed.
 
 #### Password Required on Wakeup
 
@@ -959,7 +991,7 @@ To reduce the power consumption of your laptop, turn on power saving mode to red
 2. Click **Plugged In** or **On Battery**.
 3. Set the time to turn off the monitor.
 
-> ![notes](icon/notes.svg)Notes: The time to turn off monitor, suspend and lock screen can be different in the settings of "Plugged In" and "On Battery".
+> ![notes](icon/notes.svg)Notes: Laptop users can set different time for the same setting item under "Plugged In" and "On Battery".
 
 #### Time to Suspend
 
@@ -1037,6 +1069,7 @@ If you are using a laptop,  in order to avoid mis-operation on the touchpad, you
 You can also change **Pointer Speed**, and switch on **Natural Scrolling** for the touchpad.
 
 #### TrackPoint
+
 TrackPoint, also called pointing stick, is a small joystick used as a pointing device, typically mounted centrally in a laptop keyboard and used to control pointer movements on the screen.
 
 1. On the homepage of Control Center, click ![mouse_touchpad_normal](icon/mouse_touchpad_normal.svg).
@@ -1462,22 +1495,26 @@ User Experience Program collects your hardware, application and system informati
 3. If you agree, check **Agree and Join User Experience Program**, and **Confirm**.
 
 ## Window Manager
-Window manager controls the placement and appearance of windows. It allows you to switch between your virtual desktops and manage the windows in various workspaces.
+Window Manager can display different window contents in different workspaces. With the Window Manager, you can use multiple desktops at the same time to manage desktop windows in groups.
 
-> ![notes](icon/notes.svg)Notes: this function is available only when **Window Effect** is turned on in **Personalization** in **Control Center**. 
+> ![notes](icon/notes.svg)Notes: this function is available only when **Window Effect** is turned on in **Control Center**>**Personalization** >**General** . 
 
 ![1|workspace](jpg/workspace.png)
 
+> ![notes](icon/notes.svg)Notes: On the touchpad that supports multiple-point touch, you can use the gesture to operate instead of the mouse: move with four/five fingers upwards to display multi-task view, and move downwards immediately to hide multi-task view, which corresponds to the operation of **Super** + **S**. 
 ### Open Workspace
-Manage your desktop windows in different workspaces to enlarge your Workspaces.
+Workspace manages your desktop windows in different groups. Your work area could be enlarged by dividing the workspace.
 
 On the desktop, press **Super** + **S** or click ![multitasking](icon/deepin-multitasking-view.svg) to open the workspace interface.
 
+![notes](icon/notes.svg)Notes: If you are using a computer equipped with a touchscreen, you can use touchscreen gestures to operate instead of the mouse: slide in from the bottom of the screen exceeding the dock's height to open Workspace.
+
 ### Add Workspace
+
 On the workspace interface, you can add workspace in the following ways:
 
-- Click ![plus](icon/plus.svg) above.
-- Press <img src="icon/plus.svg" alt="plus" style="zoom:50%;" /> on the keyboard.
+- Click **+** above workspace.
+- Press **Alt** + **+** on the keyboard.
 
 > ![notes](icon/notes.svg)Notes: When the workspace number has reached its limit, you cannot add more workspaces. 
 
@@ -1485,21 +1522,25 @@ On the workspace interface, you can add workspace in the following ways:
 On the workspace interface and desktop, you can switch workspace in the following ways:
 
 - On the desktop, press  **Super**+ ![Left](icon/Left.svg) / ![Right](icon/Right.svg) to switch to Previous/Next workspace.
-- On the desktop, press  **Super** + Numeric keys (1-7)  to switch to a specified workspace.
+- On the desktop, press  **Super** + Numeric keys (1-4)  to switch to a specified workspace.
 - On the workspace interface, scroll up or down to switch to Previous/Next workspace.
-- On the workspace interface, press ![Left](icon/Left.svg) / ![Right](icon/Right.svg) to switch to Previous/Next workspace directly.
-- On the workspace interface, click the preview window or press the numeric keys (1-7) to switch to a specified workspace.
+- On the workspace interface, click the preview window or press the numeric keys (1-4) to switch to a specified workspace.
+
+>![notes](icon/notes.svg)Notes: On the touchpad that supports multiple-point touch, you can use the gesture to operate instead of the mouse: move with four/five fingers to the left/right to switch to the previous or next workspace, which corresponds to the operation of **Super** + **Left** or **Super** + **Right**. 
 
 ### Delete Workspace
+
 After deleting a workspace, all windows in the workspace will be moved to a nearby workspace. You cannot delete the workspace when there is only one.
 
-- On the workspace interface, click the **X** icon on the upper right corner to delete a workspace.
+- On the workspace interface, click the **X** to delete a workspace.
+- On the workspace interface, press **Alt** + **-** to delete a workspace.
+- Drag a workspace upward outside the screen to delete it.
 
 ### Exit Workspace
 After finishing the operations on the workspace interface, you can quit in the following ways:
 
 - Press **Esc**.
-- Click the blank area on the workspace interface.
+- Click the blank area outside the workspace interface.
 - Press **Super** + **S** again.
 
 ### View All Windows
@@ -1509,14 +1550,14 @@ View all the windows in the workspaces in the following ways:
 - On the desktop, press **Super** + **W** to view the windows in the current workspace.
 
 #### Move Windows among Workspaces
-Move the windows to other workspaces in the following ways:
+Move the windows to another workspace in the following ways:
 
-- On the workspace interface, drag and drop the window to another workspace.
-- On the desktop, press **Super** + **Shift** + ![Left](icon/Left.svg) / ![Right](icon/Right.svg) to move the current window to the previous/next workspace.
-- On the desktop, press  **Super** + **Shift** + Numeric Keys to move the current window to the specified workspace.
+- On the workspace interface, drag and drop the window to the specified workspace.
+- On the desktop, press  **Super**+ **Shift** + ![Left](icon/Left.svg) / ![Right](icon/Right.svg) to move the current window to the Previous/Next workspace.
+- On the desktop, press  **Super** + **Shift** + Numeric Keys to move the current window to the workspace in the corresponding order.
 - On the desktop, press  **AIt** + **Space** or right-click the window title bar to open the window menu, and select **Always on Visible Workspace** or **Move to Workspace Left/Right** to move the current window to the specified workspace.
 
-> ![tips](icon/tips.svg)Tips: In the window menu, you can also minimize, maximize, move, resize, stick or close the window.
+> ![tips](icon/tips.svg)Tips: In the window menu, you can also minimize, maximize, move, resize, top or close the window.
 
 ### Switch Desktop Windows
 Switch desktop windows in the current workspace as below.
@@ -1537,184 +1578,18 @@ Switch desktop windows in the current workspace as below.
 - On the desktop, press and hold **Alt** + **Shift** and press **Tab** continually and it will show the left windows one by one.
 
 #### Switch among Windows of the Same Type
-- On the desktop, press and hold **Alt** and press ![~](icon/~.svg) continually and it will show the same type of windows one by one.
-- On the desktop, press and hold **Alt** + **Shift** and press ![~](icon/~.svg) continually and it will show the same type of windows one by one reversely.
+- On the desktop, press and hold **Alt** and press ![~](icon/~.svg) continually and it will show the same type of windows towards the right one by one.
+- On the desktop, press and hold **Alt** + **Shift** and press ![~](icon/~.svg) continually and it will show the same type of windows towards the left one by one.
 
 ### Split Screen
-A split-screen allows the simultaneous presentation of related graphical and textual information on a computer display, reduces switching windows and improves your productivity.
+With split screen, multiple applications and tasks are displayed simultaneously, which  improves your work and learning efficiency by not only making full use of the space of the large screen, but also reducing frequent switching between multiple application windows.
 
 1. Drag the window to the left or right part of the screen until the cursor touches the screen edge and the white transparent background appears, drop the window and it will be adsorbed on the left or right half of the screen.
-2. In the screen of which the other half is unoccupied, a preview of all other windows will appear. Click one of them to display it on the other half of the screen to realize split screen browsing.
-3. When browsing in split screens, move the cursor to the junction of the two windows in the middle of the screen and drag left and right to modify the width of the two windows simultaneously. You can also drag other windows to both sides to overlay the split screen window.
+
 
 > ![tips](icon/tips.svg)Tips: To cancel split screen, just drag a window away from the screen edge.
 
-## Keyboard Interaction
 
-You can use the keyboard to switch between various interface areas, select objects and perform operations. 
 
-| Key                                                          | Function                                                     |
-| :----------------------------------------------------------- | :----------------------------------------------------------- |
-| **Tab**                                                      | Switch between different areas or dialog buttons.            |
-| ![Up](icon/Up.svg)    ![Down](icon/Down.svg)     ![Left](icon/Left.svg) ![Right](icon/Right.svg) | Used to select different objects in the same area. Press ![Right](icon/Right.svg) to enter the lower menu and  ![Left](icon/Left.svg) to return to the upper menu. Press![Up](icon/Up.svg)and ![Down](icon/Down.svg) to switch between up and down. |
-| **Enter**                                                    | Execute the selected operation.                              |
-| **Space**                                                    | Preview the selected object in File Manager; start and pause the playback in Music and Movie; expand the drop-down options in the drop-down list (The enter key is also available.). |
-| **Ctrl** + **M**                                             | Open the right-click menu.                                   |
 
-## Touchpad Gestures
-
-On the touchpad, you can use the following gestures as a substitute for mouse operations.
-
-> ![attention](icon/attention.svg)Attention: Your touchpad may not support some of the following gestures. Please confirm whether the touchpad supports multi-touch. 
-
-### One-finger Gestures
-
-One-finger gestures are the most basic operation of the operating system, which only includes movement and clicking.
-
-#### Move the Cursor
-
-Move your finger to move the cursor.
-
-#### Click
-
-Click with a single finger to finish the mouse click operation.
-
-#### Double-click
-
-Double-click with a single finger to finish the mouse double-click operation.
-
-### Two-finger Gestures 
-
-Two- finger gestures refer to operation for operating system and application window content, including moving, zooming, and clicking.
-
-#### Scroll the Screen
-
-Move upward with two fingers to scroll the screen down. If the "Natural Scrolling" option is enabled, the screen will scroll upward.
-
-Move downward with two fingers to scroll the screen upward. If the "Natural Scrolling" option is enabled, the screen will scroll downward.
-
-#### Backward/Forward
-
-Move to the left with two fingers to move backward. Move to the right with two fingers to move forward.
-
-#### Display/Hide the Control Center
-
-Display the Control Center by sliding with two fingers from the right edge of the touchpad to the left.
-
-Hide the Control Center by sliding with two fingers from the left edge of the touchpad to the right.
-
-#### Zoom and Rotate
-
-Increase the distance between the two fingers to zoom in, which responds to the operation of **Ctrl** + ![=](icon/=.svg);
-
-Decrease the distance between the two fingers to zoom out, which responds to the operation of **Ctrl** + ![-](icon/-.svg);
-
-Rotate with two fingers to rotate the content, which mainly supports the rotation operation in Image Viewer and Screen Capture;
-
-Double-click with two fingers to zoom in and restore at the ratio of 200% .
-
-#### Open the Right-click Menu
-
-Click with two fingers to display the right-click menu.
-
-### Three-finger Gestures
-
-Three- finger gestures refer to operation for operating system and application window themselves, including moving, zooming, and clicking.
-
-#### Maximize/Restore the Window
-
-Move upward with three fingers to maximize the window, which responds to the operation of **Super** + ![Up](icon/Up.svg);
-
-Move downward with three fingers to maximize the window, which responds to the operation of  **Super** + ![Down](icon/Down.svg).
-
-#### Split to Left/Right
-
-Slide with three fingers from the right edge of the touchpad to the left to split the current window left.
-
-Slide with three fingers from the left edge of the touchpad to the right to split the current window right.
-
-#### Display All Windows
-
-Increase or decrease the distance between the three fingers to display all the windows, which responds to the operation of **Super** + **W**.
-
-#### Move the Window
-
-1. Click with three fingers to activate the moving status of the current window, which responds to the operation of **AIt** + **F7** .
-2. Move quickly the window in moving status with one finger and click anywhere to exit the moving status.
-
-#### Fast Translation
-
-Select the text and then click with three fingers, the selected text will be translated in a small window, which corresponds to the operation of  **Ctrl** + **Alt** + **U**.
-
-### Four/Five-finger Gestures
-
-#### Display/Hide Multi-task View
-
-Move with four/five fingers upwards to display multi-task view, and move downwards immediately to hide multi-task view, which corresponds to the operation of **Super** + **S**. 
-
-#### Switch Workspace
-
-Move with four/five fingers to the left/right to switch to the previous or next workspace, which corresponds to the operation of **Super** + **Left** or **Super** + **Right**. 
-
-#### Display/Hide Desktop
-
-Move with four/five fingers downwards to display desktop, and move upwards immediately to hide which corresponds to the operation of **Super** + **D**. 
-
-#### Display/Hide Launcher
-
-Click with four/five fingers to display/hide Launcher, which corresponds to the operation of  **Super**.
-
-## Touchscreen Gestures
-
-On touchscreen computers, you can use the following gestures as a substitute for mouse operations.
-
-### Click
-
-Click with a single finger to finish the mouse click operation on your touchscreen.
-
-### Double-click
-
-Double-click with a single finger to finish the mouse double-click operation on your touchscreen.
-
-> ![tips](icon/tips.svg)Tips: Double-click to select the texts and drag your finger on the screen to select more texts.
-
-### Move and Drag 
-
-Select the content and move your finger on the touchscreen to finish the mouse dragging operation.
-
-### Open the Right-click Menu
-
-Open the right-click menu of the current object by long-press for 1 second and release on the touchscreen.
-
-###  Open Workspace
-
-Slide in from the bottom of the screen exceeding the dock's height to open Workspace.
-
-### Call out Clipboard
-
-Slide in from the left edge of the screen exceeding the dock's height to call out Clipboard.
-
-### Call out Notification Center
-
-Slide in from the right edge of the screen exceeding the dock's height to call out Notification Center.
-
-### Call out Dock
-
-When the Dock is set as "Always Hidden" or "Smart Hide", if the Dock is at the bottom, slide in upward from the bottom edge of the screen to call it out; and if the Dock is on the top, slide in downward from the upper edge of the screen to call it out.
-
-### Backward/Forward
-
-In Browser, slide to the left to enter the next page and slide to the right to return to the previous page.
-
-### Scroll Screen
-
-The scrolling directions of the screen are the same as where your finger goes.
-
-### Zoom in/out
-
-Pinch two fingers to zoom out on the webpage or picture.  Open two fingers to zoom in on the webpage or picture.
-
-### Rotate
-
-Place two fingers on the picture with a certain distance and rotate the two fingers at the same time to rotate the picture.
-
+<div class="version-info"><span>Update Date: 2020-11-24</span><span> Version: 2020.03</span></div>

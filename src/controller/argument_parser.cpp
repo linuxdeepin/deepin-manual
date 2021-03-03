@@ -30,6 +30,7 @@ QString ConvertOldDmanPath(const QString &app_name)
 
 ArgumentParser::ArgumentParser(QObject *parent)
     : QObject(parent)
+    , bIsDbus(false)
 {
 }
 
@@ -74,14 +75,6 @@ bool ArgumentParser::parseArguments()
         } else {
             qDebug() << Q_FUNC_INFO << "position_args is empty";
             emit newAppOpen();
-            //            QString argName = qApp->arguments().value(0);
-            //            qDebug() << "argName:" << argName;
-
-            //            if (argName == QString(kAppProcessName) ||
-            //                    argName.endsWith("/" + QString(kAppProcessName))) {
-            //                qDebug() << "emit onNewAppOpen";
-            //                emit newAppOpen();
-            //            }
         }
         return false;
     } else {
@@ -94,9 +87,6 @@ bool ArgumentParser::parseArguments()
                 bIsDbus = true;
             }
         } else {
-            //            for (const QString &manual : position_args) {
-            //                manuals_.append(manual);
-            //            }
             curManual = position_args.at(0);
         }
         return true;
@@ -128,6 +118,10 @@ void ArgumentParser::onOpenAppRequested(const QString &app_name, const QString &
     emit this->openManualRequested(compact_app_name, title);
 }
 
+/**
+ * @brief ArgumentParser::onSearchRequested 搜索触发槽
+ * @param keyword 搜索关键字
+ */
 void ArgumentParser::onSearchRequested(const QString &keyword)
 {
     qDebug() << Q_FUNC_INFO << keyword;

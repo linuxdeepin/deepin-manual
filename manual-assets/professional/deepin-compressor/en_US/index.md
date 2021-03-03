@@ -54,8 +54,12 @@ It is available for you to compress a single file/folder/package or a collection
 
 4.  Set the compressed file name, storage location, package format, etc.
 
-5.  If you enable the advanced option mode, it is available for you to set the package encryption password and volume compression.
-   > ![notes](icon/notes.svg)Notes: The default package is in .zip format, and the available formats for file encryption are .7z and .zip; for list encryption, it is .7z; for volume compression, it is .7z. 
+5.  If you enable the advanced option mode, it is available for you to set file encryption, list encryption and volume compression.
+   > ![notes](icon/notes.svg)Notes: 
+      + The default package is in .zip format.
+      + The available formats for file encryption are .7z and .zip, and you can use Chinese characters for encryption.
+      + The available format for list encryption is .7z; the file encryption password is the same as the one for list encryption.
+      + The available format for volume compression is .7z. 
    
    ![1|compressor](jpg/compress-file.png)
 
@@ -149,4 +153,4 @@ View Help to get more information about Archive Manager.
 1.  On the Archive Manager interface, click ![icon_menu](icon/icon_menu.svg) .
 2.  Click **Exit** to exit.
 
-<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 5.9</span></div>
+<div class="version-info"><span>Update Date: 2020-11-24</span><span> Version: 5.9</span></div>

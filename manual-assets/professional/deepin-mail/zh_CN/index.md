@@ -229,6 +229,10 @@
 
 ![advanced-setting](jpg/advanced-setting.png)
 
+#### 恢复默认
+
+单击 **恢复默认** ，可恢复当前页面为默认设置。
+
 ### 主题
 
 窗口主题包含浅色主题、深色主题和系统主题，其中系统主题为默认设置。
@@ -254,4 +258,4 @@
 2. 单击 **退出**。
 
 
-<div class="version-info"><span>文档更新时间: 2020-10-20</span><span> 版本: 5.1</span></div>
+<div class="version-info"><span>文档更新时间: 2020-11-24</span><span> 版本: 5.1</span></div>

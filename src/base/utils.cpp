@@ -20,8 +20,6 @@
 
 #include "utils.h"
 
-#include <DSysInfo>
-
 #include <QFontDatabase>
 #include <QImageReader>
 
@@ -37,16 +35,16 @@ namespace {
  * @param desktop_file 桌面文件的绝对路径
  * @return 返回帮助手册id如果存在,否则返回空字符串。
  */
-QString GetDeepinManualId(const QString &desktop_file)
-{
-    QSettings settings(desktop_file, QSettings::IniFormat);
-    settings.beginGroup("Desktop Entry");
-    const QVariant value = settings.value("X-Deepin-ManualID");
-    if (value.isValid()) {
-        return value.toString();
-    }
-    return "";
-}
+//QString GetDeepinManualId(const QString &desktop_file)
+//{
+//    QSettings settings(desktop_file, QSettings::IniFormat);
+//    settings.beginGroup("Desktop Entry");
+//    const QVariant value = settings.value("X-Deepin-ManualID");
+//    if (value.isValid()) {
+//        return value.toString();
+//    }
+//    return "";
+//}
 
 } // namespace
 
@@ -75,6 +73,11 @@ QString languageArr[][langCount] = {
     {"License activator", "授权管理", "Authorization Management"},
     {"commoninfo", "通用设置", "General Settings"}
 };
+
+//const QMap<Dtk::Core::DSysInfo::UosEdition,QString> map;
+//map
+//={(Dtk::Core::DSysInfo::UosProfessional,"p")};
+
 
 struct ReplyStruct {
     QString m_desktop;
@@ -405,7 +408,24 @@ QStringList Utils::getSystemManualList()
 
     QStringList app_list_;
     const AppInfoList list = launcherInterface();
-    const QStringList dir_entry = QDir(getSystemManualDir()).entryList();
+    const QStringList applicationList = QDir(QString("%1/application/").arg(DMAN_MANUAL_DIR)).entryList();
+    const QStringList systemList = QDir(QString("%1/system/").arg(DMAN_MANUAL_DIR)).entryList();
+
+#if 1 //旧文案结构兼容
+    QString oldMdPath = DMAN_MANUAL_DIR;
+    if (Dtk::Core::DSysInfo::DeepinServer == Dtk::Core::DSysInfo::deepinType()) {
+        oldMdPath += "/server";
+    } else if (Dtk::Core::DSysInfo::DeepinPersonal == Dtk::Core::DSysInfo::deepinType()) {
+        oldMdPath += "/personal";
+    } else {
+        if (Dtk::Core::DSysInfo::isCommunityEdition()) {
+            oldMdPath += "/community";
+        } else {
+            oldMdPath += "/professional";
+        }
+    }
+    const QStringList oldAppList = QDir(oldMdPath).entryList();
+#endif
 
     QMultiMap<qlonglong, AppInfo> appMap;
     for (int var = 0; var < list.size(); ++var) {
@@ -416,21 +436,13 @@ QStringList Utils::getSystemManualList()
 
     for (int i = 0; i < listApp.size(); ++i) {
         const QString app_name = kAppNameMap.value(listApp.at(i).key, listApp.at(i).key);
-        if ((dir_entry.indexOf(app_name) != -1) && app_list_.indexOf(app_name) == -1) {
-            app_list_.append(app_name);
-        }
-        const QString deepin_app_id = GetDeepinManualId(listApp.at(i).desktop);
-        if (deepin_app_id == app_name && app_list_.indexOf(app_name) == -1) {
+        if ((applicationList.contains(app_name) || oldAppList.contains(app_name))  && app_list_.indexOf(app_name) == -1) {
             app_list_.append(app_name);
         }
     }
-    // Add "dde" by hand, as it has no desktop file.
-    if (dir_entry.contains("dde")) {
+
+    if (systemList.contains("dde") || oldAppList.contains("dde")) {
         app_list_.append("dde");
-    }
-    // Remove youdao-dict if current locale is not Simplified Chinese.
-    if (!QLocale().name().startsWith("zh")) {
-        app_list_.removeAll("youdao-dict");
     }
 
     qDebug() << "exist app list: " << app_list_ << ", count:" << app_list_.size();
@@ -445,18 +457,18 @@ QStringList Utils::getSystemManualList()
 QString Utils::getSystemManualDir()
 {
     QString strMANUAL_DIR = DMAN_MANUAL_DIR;
-    int nType = Dtk::Core::DSysInfo::deepinType();
-    if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
-        strMANUAL_DIR += "/server";
-    } else if (Dtk::Core::DSysInfo::DeepinPersonal == (Dtk::Core::DSysInfo::DeepinType)nType) {
-        strMANUAL_DIR += "/personal";
-    } else {
-        if (Dtk::Core::DSysInfo::isCommunityEdition()) {
-            strMANUAL_DIR += "/community";
-        } else {
-            strMANUAL_DIR += "/professional";
-        }
-    }
+//    int nType = Dtk::Core::DSysInfo::deepinType();
+//    if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
+//        strMANUAL_DIR += "/server";
+//    } else if (Dtk::Core::DSysInfo::DeepinPersonal == (Dtk::Core::DSysInfo::DeepinType)nType) {
+//        strMANUAL_DIR += "/personal";
+//    } else {
+//        if (Dtk::Core::DSysInfo::isCommunityEdition()) {
+//            strMANUAL_DIR += "/community";
+//        } else {
+//            strMANUAL_DIR += "/professional";
+//        }
+//    }
     return strMANUAL_DIR;
 }
 
@@ -474,18 +486,24 @@ QList<AppInfo> Utils::sortAppList(QMultiMap<qlonglong, AppInfo> map)
     qlonglong longlongtmp = 0;
     while (it.hasNext()) {
         it.next();
-        if (it.value().name == map.first().name) {
+        //只在第一次循环时插入listtemp
+        if (it.value().key == map.first().key) {
             listtmp.append(it.value());
             longlongtmp = it.key();
             continue;
         }
+
+        //如果这本次key与longlongtemp相等说明，当前应用的安装时间与上一次循环中的应用安装时间相同，把appInfo插入listtemp等待排序
+        //如果不相等，listtemp不为null，则对littemp按“应用包名”进行排序；
+        //并把排序结果添加到listEnd;
+        //清空listtmp, 修改longlongtmp记录当前key;
         if (it.key() == longlongtmp) {
             listtmp.append(it.value());
         } else if (listtmp.size() != 0 && it.key() != longlongtmp) {
             AppInfo m;
             for (int i = 0; i < listtmp.size(); ++i) {
                 for (int j = 0; j < listtmp.size() - 1; ++j) {
-                    if (listtmp.at(j).name > listtmp.at(j + 1).name) {
+                    if (listtmp.at(j).key > listtmp.at(j + 1).key) {
                         m = listtmp.at(j);
                         listtmp[j] = listtmp[j + 1];
                         listtmp[j + 1] = m;
@@ -498,13 +516,14 @@ QList<AppInfo> Utils::sortAppList(QMultiMap<qlonglong, AppInfo> map)
             listtmp.append(it.value());
         }
     }
+    //最后判断listtmp是否为空，处理循环结束时，最后几次longlongtmp都是相等的情况
     if (!listtmp.isEmpty()) {
         QList<AppInfo> temp;
         {
             AppInfo m;
             for (int i = 0; i < listtmp.size(); ++i) {
                 for (int j = 0; j < listtmp.size() - 1; ++j) {
-                    if (listtmp.at(j).name > listtmp.at(j + 1).name) {
+                    if (listtmp.at(j).key > listtmp.at(j + 1).key) {
                         m = listtmp.at(j);
                         listtmp[j] = listtmp[j + 1];
                         listtmp[j + 1] = m;
@@ -529,11 +548,77 @@ bool Utils::hasSelperSupport()
     if (Dtk::Core::DSysInfo::DeepinProfessional == (Dtk::Core::DSysInfo::DeepinType)nType) {
         const QStringList list = getSystemManualList();
         if (list.contains("uos-service-support")) {
-//            return true;
-            return false;//阉割掉服务与支持
+            return true;
         }
     }
     return false;
+}
+
+//p表示桌面专业版，h表示个人版，d表示社区版
+//s表示默认服务器版，e表示服务器企业版，eu表示服务器欧拉版，i表示服务器行业版，klu表示KelvinU项目版本，pgv表示PanguV项目版本。
+QStringList Utils::systemToOmit(Dtk::Core::DSysInfo::UosEdition type)
+{
+    QStringList retList;
+    switch (type) {
+    //专业版
+    case  Dtk::Core::DSysInfo::UosProfessional:
+        retList.append("p");
+        break;
+    //个人版
+    case  Dtk::Core::DSysInfo::UosHome:
+        retList.append("h");
+        break;
+    //社区版
+    case  Dtk::Core::DSysInfo::UosCommunity:
+        retList.append("d");
+        break;
+    //服务器企业版
+    case  Dtk::Core::DSysInfo::UosEnterprise:
+        retList.append("e");
+        retList.append("s");
+        break;
+    //服务器行业版
+    case  Dtk::Core::DSysInfo::UosEnterpriseC:
+        retList.append("i");
+        retList.append("s");
+        break;
+    //服务器欧拉版
+    case  Dtk::Core::DSysInfo::UosEuler:
+        retList.append("eu");
+        retList.append("s");
+        break;
+    default:
+        break;
+    }
+    return retList;
+}
+
+/**
+ * @brief Utils::isMostPriority 判断当前文件是否为最优先级文件
+ * @param mdPath
+ * @param morePriorityPath
+ * @return
+ */
+bool Utils::isMostPriority(const QString &mdPath, QString &morePriorityPath)
+{
+    Q_UNUSED(mdPath);
+    Q_UNUSED(morePriorityPath);
+
+    return  true;
+}
+
+bool Utils::activeWindow(quintptr winId)
+{
+    bool bsuccess = true;
+    // new interface use applicationName as id
+    QDBusInterface manual("com.deepin.dde.daemon.Dock", "/com/deepin/dde/daemon/Dock",
+                          "com.deepin.dde.daemon.Dock");
+    QDBusReply<void> reply = manual.call("ActivateWindow", winId);
+    if (!reply.isValid()) {
+        qDebug() << "call com.deepin.dde.daemon.Dock failed" << reply.error();
+        bsuccess = false;
+    }
+    return bsuccess;
 }
 
 ExApplicationHelper *ExApplicationHelper::instance()

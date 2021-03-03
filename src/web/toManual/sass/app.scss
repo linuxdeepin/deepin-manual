@@ -1,0 +1,78 @@
+@charset "utf-8";
+
+body {
+  background-color: var(--body-background-color);
+  width: 100%;  
+  margin:0px;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+#app {
+  width: 100%;
+  height: calc(100%);
+  color: var(--app-word-color);
+  a {
+    text-decoration: none;
+    color: #00162c;
+  }
+}
+
+.scrollbar > div:last-child {
+  width: 6px !important;
+  border-radius:3px !important;
+  div {
+    background-color: var(--scrollbar-div-background-color) !important;
+    
+    &:hover {
+        background-color: var(--scrollbar-div-hover-background-color) !important;
+    }
+  }
+  &:hover {
+    width: 8px !important;
+    border-radius:4px !important;
+  }
+}
+body[style*='user-select: none'] {
+  .scrollbar > div:last-child {
+    width: 8px !important;
+    border-radius:4px !important;
+    div {
+      background-color: var(--scrollbar-div-select-background-color) !important;
+    }
+  }
+}
+
+
+div {
+  outline: none;
+  
+  //if screen is over 4K and webkit-min >= 2 ,the follow setting  will  create some warning...
+  //so remove them  now... 
+
+  // @media screen and (-webkit-min-device-pixel-ratio: 1.25) {
+  //   border-right: 0.01px solid var(--body-background-color);
+  // }
+  // @media screen and (-webkit-min-device-pixel-ratio: 1.5) {
+  //   border-right: 0.01px solid var(--body-background-color);
+  // }
+  // @media screen and (-webkit-min-device-pixel-ratio: 1.75) {
+  //   border-right: 0.01px solid var(--body-background-color);
+  // }
+  // @media screen and (-webkit-min-device-pixel-ratio: 2) {
+  //   border-right: 0.01px solid var(--body-background-color);
+  // }
+  // @media screen and (-webkit-min-device-pixel-ratio: 2.25) {
+  //   border-right: 1px solid var(--body-background-color);
+  // }
+  // @media screen and (-webkit-min-device-pixel-ratio: 2.5) {
+  //   border-right: 1px solid var(--body-background-color);
+  // }
+  // @media screen and (-webkit-min-device-pixel-ratio: 2.75) {
+  //   border-right: 1px solid var(--body-background-color);
+  // }
+  // @media screen and (-webkit-min-device-pixel-ratio: 3) {
+  //   border-right: 1px solid var(--body-background-color);
+  // }
+}
+

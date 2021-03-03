@@ -24,6 +24,7 @@ extern const char kAppName[];
 extern const char kAppProcessName[];
 extern const char kAppVersion[];
 extern const char kIndexPage[];
+extern const char kSearchIndexPage[];
 
 extern const char kConfigWindowWidth[];
 extern const char kConfigWindowHeight[];

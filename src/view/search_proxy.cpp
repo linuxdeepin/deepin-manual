@@ -38,3 +38,15 @@ void SearchProxy::getKeyword(const QString &keyword)
     qDebug() << "-->" << keyword;
     emit setKeyword(keyword);
 }
+
+void SearchProxy::updateSearch(const QString &keyword)
+{
+    qDebug() << Q_FUNC_INFO;
+    emit setKeyword(keyword);
+
+    //延时查找数据库： 立即查找会出现无法查到刚插入数据的情况
+    QTimer::singleShot(1000, this, [ = ]() {
+        emit updateSearchResult();
+    });
+
+}

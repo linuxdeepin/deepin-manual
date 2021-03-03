@@ -21,6 +21,10 @@
 #include "dbus/dbus_consts.h"
 #include "view/web_window.h"
 #include "controller/config_manager.h"
+#include "dbus/manual_filesupdate_proxy.h"
+#include "dbus/manual_filesupdate_adapter.h"
+
+#include <DWidgetUtil>
 
 #include <QApplication>
 #include <QDesktopWidget>
@@ -67,6 +71,22 @@ void WindowManager::initDBus()
     } else {
         qDebug() << WM_SENDER_NAME << " register dbus service success!";
     }
+
+    // 注册Dbus filesUpdate服务
+    QDBusConnection conn = QDBusConnection::sessionBus();
+    ManualFilesUpdateProxy *proxy = new ManualFilesUpdateProxy(this);
+    connect(proxy, &ManualFilesUpdateProxy::FilesUpdate, this, &WindowManager::onFilesUpdate);
+    ManualFilesUpdateAdapter *adapter = new ManualFilesUpdateAdapter(proxy);
+    //ManualOpenAdapter *adapter = new ManualOpenAdapter(proxy);
+    Q_UNUSED(adapter);
+    //注册服务, 如果注册失败,则说明已存在一个dman.
+    if (!conn.registerService(kManualFilesUpdateService)
+            || !conn.registerObject(kManualFilesUpdateIface, proxy)) {
+        qCritical() << "filesUpdate failed to register dbus service";
+    } else {
+        qDebug() << "filesUpdate register dbus service success!";
+    }
+
 }
 
 /**
@@ -75,17 +95,15 @@ void WindowManager::initDBus()
 void WindowManager::initWebWindow()
 {
     window = new WebWindow;
-    window->setAppProperty(curr_app_name_, curr_title_name_, curr_keyword_);
-    connect(window, &WebWindow::manualStartFinish, this, &WindowManager::onAppStartTimeCount);
     setWindow(window);
     window->show();
+    window->setAppProperty(curr_app_name_, curr_title_name_, curr_keyword_);
 
-    QTimer::singleShot(100, [ = ]() {
-        initDBus();
+    QTimer::singleShot(0, [=]() {
         SendMsg(QString::number(window->winId()));
         window->initWeb();
+        initDBus();
     });
-
 }
 
 /**
@@ -99,10 +117,16 @@ void WindowManager::activeOrInitWindow()
     QMutexLocker locker(&_mutex);
     /*** 只要有窗口就不再创建新窗口 2020-06-22 16:57:50 wangml ***/
     if (window != nullptr) {
-        this->setWindow(window);
-        window->show();
-        window->raise();
-        window->activateWindow();
+        //2020-01-15 kyz 在专业服务器版最小化后show的方式可能无法激活窗口桌面版正常，可能是桌面环境问题，优先采用dock接口激活，如果失败再使用其它激活
+        if (Q_LIKELY(Utils::activeWindow(window->winId()))) {
+            window->saveWindowSize();
+            Dtk::Widget::moveToCenter(window);
+        } else {
+            setWindow(window);
+            window->show();
+            window->raise();
+            window->activateWindow();
+        }
         window->openjsPage(curr_app_name_, curr_title_name_);
         return;
     }
@@ -218,6 +242,19 @@ void WindowManager::onAppStartTimeCount(qint64 startfinshTime)
 {
     qDebug() << "startTime ---> " << this->appStartTime;
     qDebug() << "finshTime ---> " << startfinshTime;
-    qDebug() << "startduration :::";
-    qInfo() << "[GRABPOINT] POINT-0001" << startfinshTime - this->appStartTime;
+    QString logInfo = QString("[GRABPOINT] POINT-01 startduration=%1%2").arg(startfinshTime - this->appStartTime).arg("ms");
+    qInfo() << logInfo;
+}
+/**
+ * @brief WindowManager::onFilesUpdate
+ * @param filesList
+ * 文件更新提示
+ */
+void WindowManager::onFilesUpdate(const QStringList &filesList)
+{
+    qDebug() << Q_FUNC_INFO << filesList;
+    if (window && !filesList.isEmpty()) {
+        window->updatePage(filesList);
+    }
+    //window->openjsPage()
 }

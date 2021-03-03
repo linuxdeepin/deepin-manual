@@ -122,6 +122,8 @@ To add a friend, you can:
 4. After the friend agrees to add you, you can see him/her in the list, which means you have added him/her successfully. 
 5. You can add a remark name for him/her.
 
+> ![tips](icon/tips.svg)Tips: You can wake up the AI assistant to add new friends.
+
 #### Contact Information
 
 1. Click a friend you want to view in the list, you can see detailed information about him/her.
@@ -233,6 +235,8 @@ To create a new group, you can:
 ## Conference
 
 On the main interface, click ![17](icon/17.svg) to enter the interface of conference.
+
+> ![tips](icon/tips.svg)Tips: You can wake up the AI assistant to create a video conference, book a conference, and invite friends to join video conference.
 
 ### Search
 
@@ -422,4 +426,4 @@ click Help to get the manual, which will help you further know and use Contacts.
 
 
 
-<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 1.0</span></div>
+<div class="version-info"><span>Update Date: 2020-11-24</span><span> Version: 1.0</span></div>

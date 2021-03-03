@@ -40,7 +40,7 @@ You can run, close or create a shortcut for Log Viewer.
 
 ### Filter
 
- Filtering parameters include **period**, **level**, **status**, **application list** and **event type**.. 
+ Filtering parameters include **period**, **level**, **status**, **application list** and **event type**.
 
   - Filtering by period: Filtering in the order of log generating date
 
@@ -187,4 +187,4 @@ Click Help to get the manual, which will help you further know and use Log Viewe
 2. Click  **Exit**.
 
 
-<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 5.8</span></div>
+<div class="version-info"><span>Update Date: 2020-11-24</span><span> Version: 5.8</span></div>

@@ -22,5 +22,6 @@
         <file>common/images/search_indicator_dark.svg</file>
         <file>common/images/search_indicator_light.svg</file>
         <file>common/images/search_indicator_white.svg</file>
+        <file>common/images/ok.svg</file>
     </qresource>
 </RCC>

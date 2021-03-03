@@ -33,10 +33,13 @@ signals:
                          const QStringList &anchors,
                          const QStringList &anchorIdList,
                          const QStringList &contents);
+    void reloadPage(const QStringList &appList);
     void setKeyword(const QString &keyword);
+    void updateSearchResult();
 
 public slots:
     void getKeyword(const QString &keyword);
+    void updateSearch(const QString &keyword);
 };
 
 #endif // DEEPIN_MANUAL_VIEW_SEARCH_PROXY_H

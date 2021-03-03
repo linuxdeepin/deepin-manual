@@ -350,8 +350,8 @@ You can find sharing folders of other users in the same LAN in **Computers in LA
 
 
 
-1. On File Manager interface, input the sharing address of the LAN user, e.g. smb://xx.x.xx.xxx (usually it should be an IP address), press **Enter**.
-2. Input the username and password or visit by anonymous access.
+1. On File Manager interface, click ![icon_menu](icon/icon_menu.svg) > **Connect to Server**, input the sharing address of the LAN user, e.g. smb://xx.x.xx.xxx (usually it should be an IP address), click **Connect**.  Or, input the server's address in the address bar directly and press **Enter**.
+2. Double-click the shared document you need to visit, input the username and password or visit by anonymous access in the pop-up dialogue box.
 - Unencrypted folders can be visited by anonymous access without inputting username and password.
 - When you visit encrypted folders, a window pops up and you will have to input user name and password before visiting. If you check **Remember password**, you don't have to input password when you visit the folder next time.
   - Username: i.e. the name created when the user installed the system, which means the one used to log in the system.
@@ -468,7 +468,7 @@ After you put files into File Vault, right-click![file-vault](icon/file-vault.sv
 
 - Select **Lock** to lock File Vault. 
 - Select **Auto lock** and select in the sub-menu:
-  + Select "Never", which means the file vault remains unlock until computer is shutdown. 
+  + Select "Never", which means the file vault remains unlock until the screen is locked or the computer is shutdown. 
   + Select "5 minutes", "10 minutes" or "20 minutes", which means File Vault will be locked automatically in corresponding time. 
 
 ![0|right](jpg/right.png)
@@ -557,7 +557,7 @@ Local disks are displayed in the left panel of File Manager. When you mount any 
 
 ## Main Menu
 
-You can create new window, switch themes, [set share password](#Share Local Files),make settings, view manual and version information in Main Menu.
+You can create new window, switch themes, connect to server, [set share password](#Share Local Files),make settings, view manual and version information in Main Menu.
 
 
 ### New Window
@@ -565,12 +565,18 @@ You can create new window, switch themes, [set share password](#Share Local File
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Select **New window** to open a new window.
 
-### Theme
+### Connect to Server
 
-The window theme includes Light Theme, Dark Theme and System Theme (default).
+You can [visit sharing folders](#Visit Sharing Folders) by connecting to server.
 
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
-2. Click  **Theme** to select one.
+2. Select **Connect to Server**, input server's IP address in the editing box.
+   - Click ![+](icon/+.svg) to add the address into **My Favorites**.
+   - Select an address from **My Favorites** and click ![-](icon/-.svg) to delete in from **My Favorites**.
+3. Click **Connect**.
+   ![conncet](jpg/connect to server.png)
+
+
 
 ### Settings
 
@@ -588,6 +594,15 @@ The window theme includes Light Theme, Dark Theme and System Theme (default).
       + In **Mount**, you can set to auto mount.
       + In **Dialog**, you can set whether to use the file chooser dialog of the File Manager.
       + In **Other**, you can set whether to hide system disk or not.
+
+
+
+### Theme
+
+The window theme includes Light Theme, Dark Theme and System Theme.
+
+1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
+2. Click  **Theme** to select one.
 
 
 
@@ -610,4 +625,4 @@ The window theme includes Light Theme, Dark Theme and System Theme (default).
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Click **Exit**.
 
-<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 5.2</span></div>
+<div class="version-info"><span>Update Date: 2020-11-24</span><span> Version: 5.2</span></div>

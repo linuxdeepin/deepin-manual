@@ -44,7 +44,7 @@ Document Viewer realizes basic document management such as opening files, saving
 
 ### Open files
 
-You can open a file by: 
+Document Viewer supports PDF and DJVU formats. You can open a file by: 
 
 - Dragging it directly into the interface or onto the icon. 
 - Right-clicking it and selecting **Open with** > **Select default program**, and then selecting Document Viewer from the list.
@@ -54,7 +54,7 @@ You can open a file by:
 - Clicking **Select File** and selecting a file on Document Viewer interface.
 - On Document Viewer interface, pressing **Ctrl+O** and selecting the file you want to open. 
 
-> ![notes](icon/notes.svg)Notes: Document Viewer supports PDF and DJVU formats.
+
 
 ### Save documents
 
@@ -62,8 +62,7 @@ To save the document that has been edited and modified, you can
 
 - Press **Ctrl+S**.
 - Click ![icon_menu](icon/icon_menu.svg) > **Save**.
-> ![tips](icon/tips.svg)Tips: Besides, you can press **Ctrl + Shift + S** or click ![icon_menu](icon/icon_menu.svg) > **Save as**.
-
+- Press **Ctrl + Shift + S** or click ![icon_menu](icon/icon_menu.svg) > **Save as**.
 
 ### Print documents
 
@@ -128,13 +127,9 @@ On Document Viewer interface, open a file.
 
 - Add annotation
 
-  1. Select text using the selecting tool and right-click, select **Add annotation**.
-  2. Input your annotation.
-  3. Click in any blank area outside the window, your annotation will be saved automatically.  
-  The selected text will be highlighted after the annotation is added successfully. 
-
-      > ![tips](icon/tips.svg)Tips: You can also right-click at any blank area or the place you want to add an annotation and select **Add annotation**. After a note is successfully added, a highlighted note icon appears.
-      
+   - Select text using the selecting tool and right-click, select **Add annotation**. The selected text will be highlighted after the annotation is added successfully.
+   - Right-click at any blank area or the place you want to add an annotation and select **Add annotation**. After a note is successfully added, a highlighted note icon appears.
+     
       > ![notes](icon/notes.svg)Notes: 
       >
       > - Click in any blank area outside the window without inputing any content, then the note is not added successfully or is deleted automatically. 
@@ -226,7 +221,10 @@ To zoom in or out a page, you can:
 - Press **Ctrl +“+”**  or **Ctrl +“-”** .
 - Press **Ctrl** and scroll the mouse wheel up and down at the same time. 
 - On Document Viewer interface, click "**+**"  or  "**-**". 
-> ![notes](icon/notes.svg)Notes: Manual input is supported here. You can choose display percentage from the drop-down box of the menu bar: 10%, 25%, 50%, 75%, 100%, 125%, 150%, 175%, 200%, 300%, 400%, and 500%, according to which the file is zoomed in and out.
+- Manual input is supported here. You can choose display percentage from the drop-down box of the menu bar: 10%, 25%, 50%, 75%, 100%, 125%, 150%, 175%, 200%, 300%, 400%, and 500%, according to which the file is zoomed in and out.
+> ![notes](icon/notes.svg)Notes: If you are using a computer equipped with a touchscreen or a touchpad, you can use gestures instead of the  mouse:
+>    - On the touchscreen, pinch two fingers to zoom out on the page; open two fingers to zoom in on the page.
+>    -  On the touchpad that supports multiple-point touch, pinch two fingers to zoom out on the page; open two fingers to zoom in on the page.  
 
 
 ### Highlight
@@ -266,6 +264,9 @@ To make the window adapted to all sizes, you can:
 
 1. On Document Viewer interface, open a document. 
 2. Right-click and select **Rotate Left** or **Rotate Right** from the submenu, the page will rotate to the left or right by 90°. 
+> ![notes](icon/notes.svg)Notes:  If you are using a computer equipped with a touchscreen or a touchpad, you can use gestures instead of the  mouse:
+>    - On the touchscreen, place two fingers on the picture with a certain distance and rotate the two fingers at the same time to rotate the page.
+>    - On the touchpad that supports multiple-point touch, place two fingers on the picture with a certain distance and rotate the two fingers at the same time to rotate the page.
 
 ### Document info
 1. On Document Viewer interface, open a document. 
@@ -313,4 +314,4 @@ click Help to get the manual, which will help you further know and use Document 
 2. Click  **Exit**.
 
 
-<div class="version-info"><span>Update Date: 2020-10-20</span><span> Version: 5.8</span></div>
+<div class="version-info"><span>Update Date: 2020-11-24</span><span> Version: 5.8</span></div>
