@@ -20,6 +20,7 @@
 
 #include <QSqlError>
 #include <QSqlQuery>
+#include <QUuid>
 
 namespace {
 
@@ -162,18 +163,20 @@ void SearchDb::initConnections()
  */
 void SearchDb::initDb()
 {
-    QString databasePath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
-    databasePath += "/.local/share/deepin/deepin-manual/search.db";
+    QString dbdir = QStandardPaths::writableLocation(QStandardPaths::HomeLocation).append("/.local/share/deepin/deepin-manual");
+    QDir dir(dbdir);
+    if (!dir.exists()) {
+        dir.mkdir(dbdir);
+    }
+    QString databasePath = dbdir.append("/search.db");
 
-    qDebug() << "initDb database path is--->:" << databasePath << endl;
-    p_->db = QSqlDatabase::addDatabase("QSQLITE");
+    p_->db = QSqlDatabase::addDatabase("QSQLITE", QUuid::createUuid().toString(QUuid::WithoutBraces));
     p_->db.setDatabaseName(databasePath);
     if (!p_->db.open()) {
         qCritical() << "Failed to open search db:" << databasePath << p_->db.lastError().text()
                     << p_->db.lastError().nativeErrorCode() << p_->db.lastError().type()
                     << p_->db.lastError().databaseText() << p_->db.lastError().driverText()
                     << p_->db.lastError().isValid();
-        return;
     }
 }
 
