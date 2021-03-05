@@ -1,4 +1,4 @@
-# Centro de control: haga clic para comprobar o cambiar la configuración del sistema.Desktop Environment|../common/dde.svg|
+# Desktop Environment|../common/dde.svg|
 
 ## Vistazo
 Deepin es un sistema operativo de escritorio Linux de elaboración propia, fácil de usar y fiable, con agradables experiencias visuales. Está equipado con una serie de aplicaciones originales, como el gestor de archivos, la tienda de aplicaciones, el visor de imágenes, las películas y muchas otras aplicaciones originales, que no sólo le permiten disfrutar de entretenimiento enriquecido, sino que también le sirven para su trabajo y su vida diaria. Con continuas mejoras y actualizaciones, se está convirtiendo en uno de los sistemas operativos de código abierto más populares de China.
@@ -121,7 +121,7 @@ Todos los textos, imágenes y documentos cortados y copiados por el usuario actu
 
    ![1|clipboard](jpg/clipboard.png)
 
-> ![notes](icon/notes.svg)Nota: Si utiliza un ordenador equipado con una pantalla táctil, puede utilizar los gestos de la pantalla táctil para operar en lugar del ratón: deslice desde el borde izquierdo de la pantalla superando la altura del muelle para llamar a Portapapeles.
+> ![notes](icon/notes.svg)Nota: Si utiliza un equipo provisto con una pantalla táctil, puede utilizar los gestos de la pantalla táctil para operar en lugar del ratón: deslice desde el borde izquierdo de la pantalla superando la altura del muelle para llamar a Portapapeles.
 
 
 
@@ -223,7 +223,7 @@ Hay dos maneras de entrar en la interfaz de apagado:
 | Reiniciar ![reboot_normal](icon/reboot_normal.svg)           | Reinicia el equipo.                                          |
 | Suspender ![suspend_normal](icon/suspend_normal.svg)         | The computer will run with low consumption.                  |
 | Hibernar ![sleep_hover](icon/sleep_hover.svg)                | "Hibernar" se monta en sistemas con partición swap. Esta opción no aparece en los sistemas sin partición de intercambio. |
-| Bloquear ![lock_normal](icon/lock_normal.svg)                | Bloquea el ordenador con la contraseña. O pulse **Super** + **L** para bloquearlo. |
+| Bloquear ![lock_normal](icon/lock_normal.svg)                | Bloquea el equipo con la contraseña. O pulse **Super** + **L** para bloquearlo. |
 | Cambiar usuario ![userswitch_normal](icon/userswitch_normal.svg) | Inicia sesión con otra cuenta de usuario.                    |
 | Log out ![logout_normal](icon/logout_normal.svg)             | Finaliza todos los procesos e inicializa el sistema.         |
 | Start system monitor![deepin-system-monitor](icon/deepin-system-monitor.svg) | Vea los procesos en ejecución y finalice el que desee.       |
@@ -327,7 +327,7 @@ Para las aplicaciones cuyos accesos directos se han creado en el escritorio o en
 
 Para abrir la aplicación que sólo se muestra en el lanzador, haga clic en el icono o haga clic derecho y seleccione **Abrir**.
 
-> ![tips](icon/tips.svg)Consejo: Para las aplicaciones de uso frecuente, haga clic con el botón derecho del ratón en el icono de la aplicación y seleccione **Añadir al arranque** para que se ejecute al arrancar el ordenador.
+> ![tips](icon/tips.svg)Consejo: Para las aplicaciones de uso frecuente, haga clic con el botón derecho del ratón en el icono de la aplicación y seleccione **Añadir al arranque** para que se ejecute al arrancar el equipo.
 
 ### Desinstalar aplicaciones
 Desinstale las aplicaciones que ya no utiliza para ahorrar espacio en el disco.
@@ -397,7 +397,7 @@ El nombre completo de la cuenta se muestra en la lista de cuentas y en la interf
 4. Introduzca una nueva contraseña dos veces y confirme.
 
 #### Inicio de sesión automático
-Si la opción "Inicio de sesión automático" está activada, podrá iniciar la sesión en el sistema directamente sin necesidad de introducir una contraseña cuando el ordenador se reinicie o se inicie la próxima vez. Sin embargo, sigue siendo necesario introducir la contraseña después de bloquear o cerrar la sesión del ordenador.
+Si la opción "Inicio de sesión automático" está activada, podrá iniciar la sesión en el sistema directamente sin necesidad de introducir una contraseña cuando el equipo se reinicie o se inicie la próxima vez. Sin embargo, sigue siendo necesario introducir la contraseña después de bloquear o cerrar la sesión del equipo.
 
 1. En la página de inicio del centro de control, haga clic en![account_normal](icon/account_normal.svg).
 2. Haga clic en la cuenta actual.
@@ -411,7 +411,7 @@ Si "Iniciar sesión sin contraseña" está activada, solo necesita hacer clic en
 2. Haga clic en la cuenta actual.
 3. Active **Inicio de sesión sin contraseña** y podrá iniciar sesión en el sistema sin contraseña.
 
-> ![tips](icon/tips.svg)Consejo: Si tanto el **Inicio de sesión automático** como el **Inicio sin contraseña** están activados, una vez que se reinicie o inicie, su ordenador entrará directamente en el escritorio sin escribir una contraseña.
+> ![tips](icon/tips.svg)Consejo: Si tanto el **Inicio de sesión automático** como el **Inicio sin contraseña** están activados, una vez que se reinicie o inicie, su equipo entrará directamente en el escritorio sin escribir una contraseña.
 >
 > ![tips](icon/tips.svg)Consejo: La opción "Contraseña del llavero vacía" está marcada por defecto, lo que significa que no tiene que volver a introducir la contraseña de inicio de sesión para las aplicaciones cuyas contraseñas se recuerdan en el modo "Inicio de sesión sin contraseña". De lo contrario, tendrá que introducir la contraseña cada vez que ejecute la aplicación.
 
@@ -443,7 +443,7 @@ Al iniciar sesión en Deepin ID, podrá utilizar la sincronización en la nube, 
 
 Al iniciar la sesión por primera vez, aparecerá la ventana de **Política de privacidad**. Si los usuarios necesitan abrir los servicios en la nube y otras funciones, puede marcar **He leído y acepto la política de privacidad**, y hacer clic en **Confirmar**.
 
-La sincronización en la nube puede sincronizar automáticamente varias configuraciones del sistema a la nube, como la red, el sonido, el ratón, la actualización, el dock, el lanzador, el fondo de pantalla, el tema, la fuente de alimentación, etc. Para sincronizar las configuraciones desde la nube a otro ordenador, sólo tienes que iniciar sesión con el mismo Deepin ID en ese ordenador.
+La sincronización en la nube puede sincronizar automáticamente varias configuraciones del sistema a la nube, como la red, el sonido, el ratón, la actualización, el dock, el lanzador, el fondo de pantalla, el tema, la fuente de alimentación, etc. Para sincronizar las configuraciones desde la nube a otro equipo, sólo tienes que iniciar sesión con el mismo Deepin ID en ese ordenador.
 
 > ![tips](icon/tips.svg)Consejo: Cuando la "Sincronización automática" está activada, puedes desmarcar las opciones no deseadas; cuando está desactivada, todos los ajustes no se sincronizarán.
 
@@ -459,14 +459,14 @@ Ajusta correctamente la resolución de la pantalla, el brillo, la dirección y l
 
 #### Ajustes para una pantalla
 
-##### Change Resolution
+##### Cambiar resolución
 
 1. En la página de inicio del centro de control, haga clic en![display_normal](icon/display_normal.svg).
 2. Clic en **Resolución**.
 3. Seleccione una resolución adecuada en la lista.
 4. Clic en **Guardar**.
 
-##### Adjust Brightness
+##### Ajustar brillo
 
 1. En la página de inicio del centro de control, haga clic en![display_normal](icon/display_normal.svg).
 2. Clic en **Brillo**.
@@ -502,7 +502,7 @@ Establezca una escala de visualización adecuada para tener una visualización n
 4. Para volver a la dirección original, haga clic derecho para salir; para utilizar la dirección actual, pulse **Ctrl** + **S** para guardar.
 
 #### Ajustes de múltiples pantallas
-¡Amplíe su escritorio con varias pantallas! Utilice los cables VGA/HDMI/DP para conectar su ordenador a otros dispositivos de visualización.
+¡Amplíe su escritorio con varias pantallas! Utilice los cables VGA/HDMI/DP para conectar su equipo a otros dispositivos de visualización.
 
 1. En la página de inicio del centro de control, haga clic en![display_normal](icon/display_normal.svg).
 2. Clic en **Pantallas múltiples**.
@@ -520,7 +520,7 @@ Las operaciones son las siguientes:
 
 >![notes](icon/notes.svg)Notas: Cuando hay varias pantallas en el modo de extensión, sólo la pantalla principal admite la visualización de los iconos del escritorio, el menú del botón derecho y otras funciones. Las subpantallas no son compatibles. 
 
-##### Custom Settings
+##### Ajustes personalizados
 
 1. En la página de inicio del centro de control, haga clic en![display_normal](icon/display_normal.svg).
 2. Clic en **Pantallas múltiples** > **Personalizar**.
@@ -532,7 +532,7 @@ Las operaciones son las siguientes:
 
 #### Pantalla táctil
 
-If your computer has a touch screen, you can set your screen and adjust it.
+Si su equipo tiene una pantalla táctil, puede definirla y ajustarla.
 
 1. En la página de inicio del centro de control, haga clic en![display_normal](icon/display_normal.svg).
 2. Clic en **Pantalla táctil** para ajustar su pantalla.
@@ -638,9 +638,9 @@ Una vez iniciada la sesión, necesitará conectarse a una red para navegar por I
 
 #### Red cableada
 
-Al ser la forma más habitual de conectarse a Internet, la red por cable es segura y estable. Una vez configurado el router, conecta un extremo del cable de red al ordenador y el otro al router, y podrás conectarte a una red por cable. 
+Al ser la forma más habitual de conectarse a Internet, la red por cable es segura y estable. Una vez configurado el router, conecta un extremo del cable de red al equipo y el otro al router, y podrás conectarte a una red por cable. 
 
-1. Conecte el cable a la toma de red de un ordenador.
+1. Conecte el cable a la toma de red de un equipo.
 2. Conecte el otro extremo del cable al router o al puerto de red.
 3. En la página de inicio del centro de control, haga clic en![network_normal](icon/network_normal.svg).
 4. Haga clic en **Red cableada** para entrar en la página de configuración de la red cableada.
@@ -676,7 +676,7 @@ Para evitar que otros exploren su red y descifren su contraseña, puede ocultar 
 
 #### Conexión compartida
 
-La red compartida (hotspot) convierte la señal de red de la conexión del equipo en una zona activa Wi-Fi, proporcionando conexión inalámbrica a otros dispositivos dentro de una determinada distancia. Para activar la zona activa, el ordenador debe estar conectado a una red equipada con un adaptador de red inalámbrica.
+La red compartida (hotspot) convierte la señal de red de la conexión del equipo en una zona activa Wi-Fi, proporcionando conexión inalámbrica a otros dispositivos dentro de una determinada distancia. Para activar la zona activa, el equipo debe estar conectado a una red equipada con un adaptador de red inalámbrica.
 
 1. En la página de inicio del centro de control, haga clic en![network_normal](icon/network_normal.svg).
 2. Clic en **Compartir conexión personal**.
@@ -687,14 +687,14 @@ La red compartida (hotspot) convierte la señal de red de la conexión del equip
 #### Conexión en red móvil
 Si se encuentra en un lugar sin señal de red, el adaptador de red de telefonía móvil es una herramienta útil para ayudarle a conectarse a Internet siempre que ese lugar esté cubierto por señales telefónicas.
 
-1. Conecte el adaptador de red móvil al puerto USB de su ordenador.
+1. Conecte el adaptador de red móvil al puerto USB de su equipo.
 2. Su equipo se conectará automáticamente a la red.
 3. En la página de inicio del centro de control, haga clic en![network_normal](icon/network_normal.svg).
 4. Haga clic en **Red móvil** para ver la información detallada de la red.
 
 #### Conexión DSL/PPPoE
 
-La DSL es una conexión telefónica operada por una línea telefónica estándar y un módem analógico. Configure el módem, conecte la línea telefónica al puerto de red de su ordenador, cree una conexión telefónica de banda ancha e introduzca el nombre de usuario y la contraseña proporcionados por la operadora para marcar y conectarse a Internet.
+La DSL es una conexión telefónica operada por una línea telefónica estándar y un módem analógico. Configure el módem, conecte la línea telefónica al puerto de red de su equipo, cree una conexión telefónica de banda ancha e introduzca el nombre de usuario y la contraseña proporcionados por la operadora para marcar y conectarse a Internet.
 
 ##### Crear una conexión PPPoE
 
@@ -750,636 +750,635 @@ Puede configurar "No molestar" a las notificaciones del sistema, y también acti
 
 #### Ajustes de notificaciones del sistema
 
-You can set "Do Not Disturb" to system notifications and whether to show icon on Dock here.
+Puede establecer "No molestar" a las notificaciones del sistema y si desea mostrar el icono en el muelle.
 
 1. En la página de inicio del centro de control, haga clic en![nav_notifi_42px](icon/dcc_nav_notification_36px.svg).
 
-2. Clic en **System Notification**.
+2. Clic en **Notificaciones del sistema**.
 
-   - Switch on/off **Do Not Disturb**.
-     After switching on this button, you can set the starting and ending time; also, you can check **When the screen is locked**. Under this mode, all notification are muted, but you can view all notifications in Notification Center. 
-   - Switch on/off **Show icon on Dock**.
+   - Active o desactive **No molestar**.
+     Después de activar este botón, puede establecer la hora de inicio y de finalización; también puede marcar **Cuando la pantalla está bloqueada**. En este modo, todas las notificaciones están silenciadas, pero puedes ver todas las notificaciones en el Centro de Notificaciones. 
+   - Active o desactive **Mostrar icono en el muelle**.
 
-#### App Notification Settings
+#### Ajustes de notificación en aplicaciones
 
-You can custom notification hints for all applications.
+Puede personalizar las sugerencias de notificación para todas las aplicaciones.
 
 1. En la página de inicio del centro de control, haga clic en![nav_notifi_42px](icon/dcc_nav_notification_36px.svg).
-2. Under **App Notifications**, select an application, and in the window on the right, you can choose to check:
-   - Play a sound
-   - Show messages on lockscreen
-   - Show in notification center
-   - Show message preview
+2. En **Notificaciones de aplicaciones**, seleccione una aplicación y, en la ventana de la derecha, podrá elegir si desea:
+   - Reproducir un sonido
+   - Mostrar mensajes en la pantalla de bloqueo
+   - Mostrar en el centro de notificaciones
+   - Mostrar la vista previa del mensaje
 
 
 
-### Sound Settings
+### Ajustes de sonido
 
-Set your output and input devices (such as speaker and microphone) properly to make the sound more clear and pleasant.
+Ajuste correctamente los dispositivos de salida y entrada (como el altavoz y el micrófono) para que el sonido sea más claro y agradable.
 
 ![0|sound](jpg/sound.png)
 
-#### Output
+#### Salida
 
 1. En la página de inicio del centro de control, haga clic en![sound_normal](icon/sound_normal.svg).
-2. Clic en **Output** to:
-   - Select output device type from the drop-down list after **Output Device**.
-   - Drag the slider to adjust output volume and left/right balance.
-   - Active el parámetro **Volume Boost**, the volume could be adjustable from 0~150% (the former range is 0~100%).
+2. Clic en **Salida** para que:
+   - Seleccione el tipo de dispositivo de salida en la lista desplegable después de **Dispositivo de salida**.
+   - Arrastre el control deslizante para ajustar el volumen de salida y el balance izquierdo/derecho.
+   - Active el parámetro **Amplificar el volumen**, el volumen se puede ajustar de 0~150% (el rango anterior es 0~100%).
 
-#### Input
-
-1. En la página de inicio del centro de control, haga clic en![sound_normal](icon/sound_normal.svg).
-2. Clic en **Input** to:
-   - Select input device type from the drop-down list after **Input Device**.
-   - Adjust input volume by dragging the slider.
-   - You can enable **Automatic Noise Suppression** by clicking the button after "Automatic Noise Suppression". 
-
-> ![tips](icon/tips.svg)Tips: Usually, you need to turn up the input volume to make sure that you can hear the sound of the source. However, the volume should not be too high as it will cause distortion of sound. Here is how to set the input volume: speak to your microphone at a normal volume and view the "Input Level". If the indicator of "Input Level " changes notably in accordance with the volume, it shows that the input volume is set at a proper level. 
-
-#### System Sound Effects
+#### Entrada
 
 1. En la página de inicio del centro de control, haga clic en![sound_normal](icon/sound_normal.svg).
-2. Clic en **Sound Effects**. Check the options you want to switch on the sound when the corresponding event occurs.
+2. Clic en **Entrada** para que:
+   - Seleccione el tipo de dispositivo de entrada en la lista desplegable después de **Dispositivo de entrada**.
+   - Ajuste el volumen de entrada arrastrando el deslizador.
+   - Puede activar la **Supresión automática de ruido** haciendo clic en el botón que aparece después de "Supresión automática de ruido". 
 
-> ![tips](icon/tips.svg)Tips: Click to listen to the sound effect.
+> ![tips](icon/tips.svg)Consejo: Por lo general, es necesario subir el volumen de entrada para asegurarse de que puede escuchar el sonido de la fuente. Sin embargo, el volumen no debe ser demasiado alto, ya que provocará una distorsión del sonido. Así es como se ajusta el volumen de entrada: hable con su micrófono a un volumen normal y vea el "Nivel de entrada". Si el indicador de "Nivel de entrada" cambia notablemente de acuerdo con el volumen, muestra que el volumen de entrada está ajustado a un nivel adecuado.
+>
+
+#### Efectos del sonido del sistema
+
+1. En la página de inicio del centro de control, haga clic en![sound_normal](icon/sound_normal.svg).
+2. Clic en **Efectos de sonido**. Marque las opciones que desee para activar el sonido cuando se produzca el evento correspondiente.
+
+> ![tips](icon/tips.svg)Consejo: Haga clic para escuchar el efecto de sonido.
 
 
-### Bluetooth Settings
-Without the hassle of cables or network, Bluetooth enables a wireless communication between Bluetooth devices in a short distance. The common Bluetooth devices are Bluetooth keyboard, Bluetooth mouse, Bluetooth earphones, Bluetooth speakers, etc.
+### Ajustes de Bluetooth
+Sin la molestia de los cables o la red, la conexión Bluetooth permite una comunicación inalámbrica entre dispositivos a corta distancia. Los dispositivos que operan bajo Bluetooth más comunes son el teclado, el ratón, los auriculares, los altavoces, etc.
 
 ![0|bluetooth](jpg/bluetooth.png)
 
-> ![notes](icon/notes.svg)Notas: Most laptops have Bluetooth. Just enable and use it. However, as most desktop computers do not have Bluetooth, you can purchase a Bluetooth adapter and plug it into the USB port of your computer to use this function.
+> ![notes](icon/notes.svg)Nota: La mayoría de los portátiles tienen Bluetooth. Basta con activarlo y utilizarlo. Sin embargo, como la mayoría de los equipos es de sobremesa no tienen Bluetooth, puede comprar un adaptador Bluetooth y conectarlo al puerto USB de su ordenador para utilizar esta función.
 
-#### Change Bluetooth Name
-
-1. En la página de inicio del centro de control, haga clic en![bluetooth_normal](icon/bluetooth_normal.svg).
-2. Clic en ![edit](icon/edit.svg) after the Bluetooth name, and enter a new name for your computer.
-
-> ![notes](icon/notes.svg)Notas: Once your Bluetooth Name is changed, it will be broadcast automatically. Other devices may need to rescan to be connected to your Bluetooth.
-
-#### Connect to a Bluetooth Device
+#### Cambiar nombre del dispositivo Bluetooth
 
 1. En la página de inicio del centro de control, haga clic en![bluetooth_normal](icon/bluetooth_normal.svg).
-2. Active el parámetro **Bluetooth**. The system will scan the nearby devices automatically and list them in **Other Devices**.
-3. Click the device you want to connect and input the PIN code if required. After pairing successfully, the device will be connected automatically. 
-4. Following step 3, the Bluetooth device will be added to **My Device** list.
-5. In the list, click the device and you can **Disconnect** the device or change its name.
+2. Clic en ![edit](icon/edit.svg) después del nombre del dispositivo Bluetooth, e introduzca un nuevo nombre para su equipo.
 
-#### Transfer/Receive files via Bluetooth
+> ![notes](icon/notes.svg)Notas: Una vez que se cambie el nombre del dispositivo Bluetooth, se emitirá automáticamente. Es posible que otros dispositivos tengan que volver a escanear para conectarse a su dispositivo Bluetooth.
 
-Files could be transferred / received between deepin PC and non deepin PC or between deepin PC and mobile device (mobile phone / tablet).
-
-Prerequisite: the Bluetooth device of the sender (deepin PC) and the Bluetooth device of the receiver (non deepin PC / mobile phone / tablet) have been paired and connected successfully.
+#### Conectar a otro dispositivo Bluetooth
 
 1. En la página de inicio del centro de control, haga clic en![bluetooth_normal](icon/bluetooth_normal.svg).
+2. Active el parámetro **Bluetooth**. El sistema escaneará los dispositivos cercanos automáticamente y los listará en **Otros dispositivos**.
+3. Haga clic en el dispositivo que quieras conectar e introduce el código PIN si es necesario. Una vez emparejado con éxito, el dispositivo se conectará automáticamente. 
+4. Tras el paso 3, el dispositivo Bluetooth se añadirá a la lista **Mi dispositivo**.
+5. En la lista, haga clic en el dispositivo y podrá **desconectar** el dispositivo o cambiar su nombre.
 
-2. Switch on Bluetooth. The system will scan Bluetooth devices nearby automatically.
+#### Transferir/Recibir archivos via Bluetooth
 
-3. Select a paired and connected Bluetooth device in "My Devices". Clic en **Send Files** (this button will only appear on pc / mobile phone / tablet Bluetooth devices), the interface for you to select files pops up.
+Los archivos pueden transferirse/recibirse entre el equipo de Deepin y otro sistema operativo o entre el equipo de Deepin y el dispositivo móvil (teléfono inteligente/tableta).
 
-4. Select the files to be sent and Clic en **Open**, a request for file transfer is sent. 
+Requisito: el dispositivo Bluetooth del emisor (deepin PC) y el dispositivo Bluetooth del receptor (PC sin deepin / teléfono móvil / tableta) se han emparejado y conectado correctamente.
 
-   - If the receiver agrees with the request, then the sender starts to transfer the file and "Bluetooth File Transfer" window is displayed; after the file transfer is completed, a prompt message will pop up at the the receiver, and the user can view the file content.
-   - If the receiver is in the following situation, part of the file transfer fails, which will be displayed in the transmission failure list.
-     - The file transfer request is refused by the receiver, then the transfer terminates, and "File Transfer Failed" window pops up.
-     - The receiver times out or the transferring distance is beyond transmission range, and "File Transfer Failed" window pops up(Bluetooth device connection failed).
-     - The receiver does not operate for 1 minute, then the transfer terminates by default,  and "File Transfer Failed" window pops up. 
+1. En la página de inicio del centro de control, haga clic en![bluetooth_normal](icon/bluetooth_normal.svg).
+2. Encienda el Bluetooth. El sistema escaneará automáticamente los dispositivos Bluetooth cercanos.
+2. Seleccione un dispositivo Bluetooth emparejado y conectado en "Mis dispositivos". Haga clic en **Enviar archivos** (este botón sólo aparecerá en los dispositivos Bluetooth de PC, teléfono móvil o tableta), aparecerá la interfaz para que seleccione los archivos.
+
+4. Seleccione los archivos que desea enviar y haga clic en **Abrir**, se enviará una solicitud de transferencia de archivos. 
+   - Si el receptor aceptó la solicitud, entonces el emisor comenzará a transferir el archivo y se muestra la ventana "Transferencia de archivos Bluetooth"; después de que la transferencia de archivos se haya completado, un mensaje de aviso aparecerá en el receptor, y el usuario puede ver el contenido del archivo.
+   - Si el receptor se encuentra en la siguiente situación, parte de la transferencia de archivos fallará y se mostrará una lista de fallos entre la transmisión.
+     - La solicitud de transferencia de archivos es rechazada por el receptor, entonces la transferencia termina, y aparece la ventana "Transferencia de archivo fallida".
+     - El receptor esperó demasiado tiempo o la distancia de transferencia está más allá del rango de transmisión, y aparece la ventana "Transferencia de archivo fallida" (falla la conexión del dispositivo Bluetooth).
+     - El receptor no funciona durante 1 minuto, entonces la transferencia termina por defecto y aparece la ventana "Transferencia de archivo fallida". 
 
 
 
-### Date and Time
+### Fecha y hora
 
-Set your timezone properly to display correct date and time. You can also change manually.
+Ajuste su zona horaria adecuadamente para mostrar la fecha y hora correctas. También puede cambiarla manualmente.
 
 ![0|time](jpg/time.png)
 
 #### Change Timezone
-You have selected the timezone during system installation. Please follow below steps if you want to change your timezone.
+Cuando haya seleccionado la zona horaria durante la instalación del sistema, por favor, siga los siguientes pasos si quiere volver a cambiar su zona horaria.
 
 1. En la página de inicio del centro de control, haga clic en![time](icon/time.svg).
-2. Clic en **Timezone List**.
-3. Clic en **Change System Timezone** and select a timezone by searching or clicking on the map.
-4. Clic en **Confirm**.
+2. Clic en **Lista de zonas horarias**.
+3. Clic en **Cambiar la zona horaria del sistema** y seleccione una zona horaria buscando o haciendo clic en el mapa.
+4. Clic en **Confirmar**.
 
-#### Add Timezone
-Add another timezone to check the date and time there.
-
-1. En la página de inicio del centro de control, haga clic en![time](icon/time.svg).
-2. Clic en **Timezone List**.
-3. Clic en ![add](icon/add.svg) and select a timezone by searching or clicking on the map.
-4. Clic en **Add**.
-
-#### Delete Timezone
+#### Añadir zona horaria
+Añada otra zona horaria para comprobar la fecha y la hora allí.
 
 1. En la página de inicio del centro de control, haga clic en![time](icon/time.svg).
-2. Clic en **Timezone List**.
-3. Clic en **Edit** after "Timezone List".
-4. Clic en ![delete](icon/delete.svg) to remove the timezone.
+2. Clic en **Lista de zonas horarias**.
+3. Clic en ![add](icon/add.svg) y seleccione una zona horaria buscando o haciendo clic en un mapa.
+4. Clic en **Añadir**.
 
-#### Change Date and Time
-Note that the auto-sync function will be disabled after changing date and time manually.
-
-1. En la página de inicio del centro de control, haga clic en![time](icon/time.svg).
-2. Clic en **Time Settings**.
-   - Switch on/off **Auto Sync**.
-   - Enter the correct date and time.
-3. Clic en **Confirm**.
-
-
-
-#### Set Time Format
-
-Setting the format of time and date is supported.
+#### Borrar zona horaria
 
 1. En la página de inicio del centro de control, haga clic en![time](icon/time.svg).
-2. Clic en **Time Format** to set the first day of week, long date, short date, long time, and short time.
+2. Clic en **Lista de zonas horarias**.
+3. Clic en **Edit** después de "Lista de zonas horarias".
+4. Clic en ![delete](icon/delete.svg) para quitar la zona horaria.
 
-### Power Management
+#### Cambiar la fecha y la hora
+Tenga en cuenta que la función de sincronización automática se desactivará después de cambiar la fecha y la hora manualmente.
 
-Power management turns the system to a low-power state during inactive status, thus ensuring laptop battery endurance while maintaining system security.
+1. En la página de inicio del centro de control, haga clic en![time](icon/time.svg).
+2. Clic en **Ajustes de hora**.
+   - Active o desactive **Autosincronizar**.
+   - Introduzca la fecha y la hora correctas.
+3. Clic en **Confirmar**.
+
+
+
+#### Establecer formato de hora
+
+Se puede ajustar el formato de la hora y la fecha.
+
+1. En la página de inicio del centro de control, haga clic en![time](icon/time.svg).
+2. Clic en **Formato de hora** para fijar el primer día de la semana, la fecha larga, la fecha corta, la hora larga y la hora corta.
+
+### Gestión de energía
+
+La gestión de la energía hace que el sistema pase a un estado de bajo consumo durante la inactividad, lo que garantiza la duración de la batería del portátil y mantiene la seguridad del sistema.
 
 ![0|power](jpg/power.png)
 
-> ![notes](icon/notes.svg)Notas: If you are using a desktop computer, you will not see Power Saving Mode and On Battery options. 
+> ![notes](icon/notes.svg)Notas: Si está utilizando un ordenador de sobremesa, no verá las opciones de Modo de ahorro de energía y Batería activada.
 
-#### Power Saving Mode
-To reduce the power consumption of your laptop, turn on power saving mode to reduce screen brightness.
+#### Modo ahorro de energía
+Para reducir el consumo de energía de su portátil, active el modo de ahorro de energía para reducir el brillo de la pantalla.
 
 1. En la página de inicio del centro de control, haga clic en![power_normal](icon/power_normal.svg).
 
 2. Clic en **General**.
 
-3. Active el parámetro **Power Saving Mode** to enter power saving mode.
+3. Active el parámetro **Modo ahorro de energía** to enter Modo ahorro de energía.
 
-4. Under **Power Saving Mode**, you can:
-      - Active el parámetro **Auto power saving on low battery**(only applicable for laptops).
-      - Active el parámetro **Auto power saving on battery** (only applicable for laptops).
-      - Drag the slider of **Decrease brightness** to adjust brightness.
+4. Under **Modo ahorro de energía**, puede que:
+      - Active el parámetro **Ahorro de energía automático cuando la batería está baja** (solo aplicable a portátiles).
+      - Active el parámetro **Ahorro automático de energía en la batería** (solo aplicable a portátiles).
+      - Deslice la barra de **Dismunir brillo** para ajustar la luz.
 
    
 
 > ![notes](icon/notes.svg)Notas: 
->    - If you switch off **Auto power saving on battery**, the computer goes into **Balanced** mode. 
->    - Only when the device supports **High Performance**, the option would be displayed.
+>    - Si desactiva el **Ahorro automático de energía de la batería**, el equipo pasa al modo **Balanceado**. 
+>    - Sólo cuando el dispositivo soporta **Alto rendimiento**, la opción se mostraría.
 
-#### Password Required on Wakeup
+#### Requerir contraseña al encender
 
 1. En la página de inicio del centro de control, haga clic en![power_normal](icon/power_normal.svg).
 2. Clic en **General**.
-3. Active el parámetro **Password is required to wake up the monitor** and **Password is required to wake up the computer** to improve security.
+3. Active el parámetro **Contraseña requerida para encender el monitor** and **Contraseña requerida para encender el equipo** para mejorar la seguridad..
 
-#### Display capacity 
+#### Mostrar capacidad
 1. En la página de inicio del centro de control, haga clic en![power_normal](icon/power_normal.svg).
 2. Clic en **General**.
-      - Active el parámetro **Display capacity and remaining charging time** to display remaining capacity and charging time.
-      - Switch off **Display capacity and remaining charging time** to display remaining capacity only.
+      - Active el parámetro **Mostrar capacidad y tiempo de carga restante** para mostrar la capacidad restante y el tiempo de carga.
+      - Desactive el parámetro **Mostrar capacidad y tiempo de carga restante** para mostrar solo capacidad restante.
 
->![notes](icon/notes.svg)Notas: This function is only available on laptops.
+>![notes](icon/notes.svg)Nota: Esta función sólo está disponible en los portátiles.
 
-####  Time to Turn Off Monitor
-
-1. En la página de inicio del centro de control, haga clic en![power_normal](icon/power_normal.svg).
-2. Clic en **Plugged In** or **On Battery**.
-3. Set the time to turn off the monitor.
-
-> ![notes](icon/notes.svg)Notas: Time to turn off monitor and suspend or lock screen can be different between the "Plugged In" and "On Battery" settings.
-
-#### Time to Suspend
+####  Tiempo para apagar el monitor
 
 1. En la página de inicio del centro de control, haga clic en![power_normal](icon/power_normal.svg).
-2. Clic en **Plugged In** and **On Battery**.
-3. Set the time to suspend.
+2. Clic en **Enchufado** o **Con batería**.
+3. Seleccione el tiempo para apagar el monitor.
 
-> ![tips](icon/tips.svg)Tips: If you use a laptop, you can also switch on the **Suspend on lid close** option. 
+> ![notes](icon/notes.svg)Nota: El tiempo para apagar el monitor y suspender o bloquear la pantalla puede ser diferente entre los ajustes "Enchufado" y "Con batería".
 
-#### Time to Lock Screen
-1. En la página de inicio del centro de control, haga clic en![power_normal](icon/power_normal.svg).
-2. Clic en **Plugged In** and **On Battery**.
-3. Set the time to lock screen.
-
-#### Set "When the lid is closed"
+#### Tiempo para suspender
 
 1. En la página de inicio del centro de control, haga clic en![power_normal](icon/power_normal.svg).
-2. Clic en **Plugged In** and **On Battery**.
-3. You can select **Suspend**, **Hibernate**, **Turn off the monitor** and **Do nothing** from the drop-down list after **When the lid is closed**.  
+2. Clic en **Enchufado** o **Con batería**.
+3. Seleccione el tiempo para suspender.
 
->![notes](icon/notes.svg)Notas: This function is only available for laptops.
+> ![tips](icon/tips.svg)Consejo: Si usa un portátil, también puedes activar la opción **Suspender al cerrar la tapa**.
 
-#### Power button settings
+#### Tiempo para bloquear
+1. En la página de inicio del centro de control, haga clic en![power_normal](icon/power_normal.svg).
+2. Clic en **Enchufado** o **Con batería**.
+3. Establece la hora para bloquear la pantalla.
+
+#### Establecer "cuando la tapa está cerrada"
 
 1. En la página de inicio del centro de control, haga clic en![power_normal](icon/power_normal.svg).
-2. Clic en **Plugged In** and **On Battery**.
-3. You can select **Shut down, Suspend, Hibernate, Turn off the monitor, Do nothing** from the drop-down list after **When pressing the power button**.
+2. Clic en **Enchufado** o **Con batería**.
+3. Puedes seleccionar **Suspender**, **Hibernar**, **Apagar el monitor** y **No hacer nada** de la lista desplegable después de **Cuando la tapa está cerrada**.  
 
-Any operation done here will take effect immediately. At the same time, the system will notify the user that the power button setting is changed. 
+>![notes](icon/notes.svg)Nota: Esta función sólo está disponible para portátiles.
+
+#### Establecer al botón de apagado
+
+1. En la página de inicio del centro de control, haga clic en![power_normal](icon/power_normal.svg).
+2. Clic en **Enchufado** o **Con batería**.
+3. Puedes seleccionar **Suspender**, **Hibernar**, **Apagar el monitor** y **No hacer nada** de la lista desplegable después de **Cuando presiona el botón de apagado**.  
+
+Cualquier operación realizada aquí tendrá efecto inmediato. Al mismo tiempo, el sistema notificará al usuario que la configuración del botón de encendido se ha modificado. 
 
 #### Set "Low Battery Notification"
 
 1. En la página de inicio del centro de control, haga clic en![power_normal](icon/power_normal.svg).
-2. Clic en **Plugged In**.
-3. Active el parámetro **Low Battery Notification**. The system issues a low battery notification when the remaining battery power is below a set threshold (for example, 20%).
+2. Clic en **Enchufado**.
+3. Activa el parámetro **Notificación de batería baja**. El sistema emite una notificación de batería baja cuando la energía restante de la batería está por debajo de un umbral establecido (por ejemplo, 20%).
 
-You can adjust the threshold of low battery level by dragging the slider below "Low battery level".  You can adjust the threshold of auto suspend battery level by dragging the slider below "Auto suspend battery level".
+Puede ajustar el umbral de nivel de batería bajo arrastrando el control deslizante debajo del "Nivel de batería bajo".  Puede ajustar el umbral del nivel de batería de suspensión automática arrastrando el control deslizante debajo de "Nivel de batería de suspensión automática".
 
->![notes](icon/notes.svg)Notas: This function is only available for laptops.
+>![notes](icon/notes.svg)Nota: Esta función sólo está disponible para portátiles.
 
-### Mouse and Touchpad
-Mouse and Touchpad are common input devices for computers. You can process tasks more easily with a mouse. If you use a laptop but don't have a mouse, you can also use the touchpad instead.
+### Ratón y panel táctil
+El ratón y el panel táctil (touchpad) son dispositivos de entrada habituales en los ordenadores. Con el ratón puede procesar las tareas más fácilmente. Si usa un portátil pero no tiene ratón, podrá usar el panel táctil en su lugar.
 
 ![0|mouse](jpg/mouse.png)
 
-#### General Settings
+#### Ajustes generales
 
 1. En la página de inicio del centro de control, haga clic en![mouse_touchpad_normal](icon/mouse_touchpad_normal.svg).
 2. Clic en **General**.
-3. Active el parámetro **Left Hand**, and adjust **Scrolling Speed**, **Double-click Speed** for both mouse and touchpad.
+3. Active el parámetro **Mano izquierda**, y ajuste la **Velocidad de desplazamiento** y la **Velocidad de doble clic** tanto para el ratón como para el panel táctil.
 
-> ![notes](icon/notes.svg)Notas: If "Left Hand" is enabled, left-click and right-click of the mouse and touchpad will swap.
+> ![notes](icon/notes.svg)Nota: Si la opción "Mano izquierda" está activada, el clic izquierdo y el clic derecho del ratón y del panel táctil se intercambiarán.
 
-#### Mouse
-After inserting or connecting the mouse, you can set up your preferred options in the Control Center according to your needs. 
+#### Ratón
+Después de insertar o conectar el ratón, puede configurar sus opciones de preferencia en el Centro de control según sus necesidades. 
 
-> ![notes](icon/notes.svg)Notas: If there is no touchpad, “Disable touchpad when a mouse is connected” will not be displayed.
+> ![notes](icon/notes.svg)Notas: Si no hay panel táctil, no se mostrará la opción "Desactivar el panel táctil cuando hay un ratón conectado".
 
 1. En la página de inicio del centro de control, haga clic en![mouse_touchpad_normal](icon/mouse_touchpad_normal.svg).
-2. Clic en **Mouse**.
-3. Adjust **Pointer Speed**.
-4. Active el parámetro **Natural Scrolling**/**Mouse Acceleration** if needed.
+2. Clic en **Ratón**.
+3. Adjuste la **Velocidad de puntero**.
+4. Active el parámetro **Desplazamiento natural**/**Acceleración del ratón** si necesita.
 
 > ![notes](icon/notes.svg)Notas: 
 >
->    - Turn on the mouse acceleration to improve the accuracy of the pointer. The moving distance of the mouse pointer on the screen will increase according to the acceleration of the moving speed. It can be turned on or off according to your use.
+>    - Active la aceleración del ratón para mejorar la precisión del puntero. La distancia de desplazamiento del puntero del ratón en la pantalla aumentará según la aceleración de la velocidad de desplazamiento. Se puede activar o desactivar según su uso.
 
->    - If Natural Scrolling is enabled, when you scroll down, the page will scroll down; and when you scroll up, the page will scroll up. 
+>    - Si el desplazamiento natural está activado, cuando se desplace hacia abajo, la página se desplazará hacia abajo; y cuando se desplace hacia arriba, la página se desplazará hacia arriba. 
 
 
-#### Touchpad
+#### Panel táctil
 
 ![0|touchpad](jpg/touchpad.png)
 
-If you are using a laptop,  in order to avoid mis-operation on the touchpad, you can Active el parámetro **Disable touchpad while typing** in **Mouse > General** interface, and Active el parámetro **Disable touchpad when a mouse is connected** in **Mouse > Mouse** interface.  
+Si utiliza un ordenador portátil, y para evitar un mal funcionamiento del panel táctil, puede activar el parámetro **Desactivar el panel táctil mientras escribe** en la interfaz **Ratón > General**, y active el parámetro **Desactivar el panel táctil cuando hay un ratón conectado** en la interfaz **Ratón > Ratón**.  
 
-You can also change **Pointer Speed** and Active el parámetro **Natural Scrolling** for the touchpad.
+También puede cambiar la **Velocidad del puntero** y activar el parámetro **Desplazamiento natural** para el panel táctil.
 
 #### TrackPoint
-TrackPoint, also called as pointing stick, is a small joystick used as a pointing device, typically mounted centrally in a laptop keyboard and used to control pointer movements on the screen.
+El TrackPoint, también llamado pointing stick, es un pequeño joystick utilizado como dispositivo señalador, normalmente montado en el centro de un teclado del ordenador portátil y utilizado para controlar los movimientos del puntero en la pantalla.
 
 1. En la página de inicio del centro de control, haga clic en![mouse_touchpad_normal](icon/mouse_touchpad_normal.svg).
 2. Clic en **TrackPoint**.
-3. Adjust **Pointer Speed** to a proper level.
+3. Ajuste la **Velocidad del puntero** a un nivel adecuado.
 
-### Drawing Tablet
-Drawing tablet, also called as graphics tablet and pen tablet, is a computer input device which enables you to hand draw images, animations and graphics with a special pen-like stylus. 
+### Tableta de dibujo
+La tableta de dibujo, también llamada tableta gráfica y tablet a lápiz, es un dispositivo de entrada del equipo que permite dibujar a mano imágenes, animaciones y gráficos con un lápiz especial. 
 
-After connecting to the computer, you can set the pressure sensitivity of the drawing tablet, that is, the pressure sensing value of the pen tip and eraser.
+Después de conectarse al equipo, puede ajustar la sensibilidad a la presión de la tableta de dibujo, es decir, el valor de detección de la presión de la punta del lápiz y del borrador.
 
-> ![notes](icon/notes.svg)Notas: This part will be displayed only if a drawing tablet is connected.
+> ![notes](icon/notes.svg)Notas: Esta parte sólo se mostrará si se conecta una tableta de dibujo.
 
 1. En la página de inicio del centro de control, haga clic en![drawing](icon/drawing.svg).
-2. Choose **Pen** mode.
-3. Adjust **Pressure Sensitivity** for the pen.
+2. Escoga el modo **Lápiz**.
+3. Ajuste la **Sensibilidad a la presión** del lápiz.
 
-### Keyboard and Language
-Set keyboard properties and select your keyboard layout to fit your needs. You can also adjust the keyboard layout according to different countries and languages, change system language and customize shortcuts.
+### Teclado e idioma
+Ajuste las propiedades del teclado y seleccione la distribución del mismo para que se adapte a sus necesidades. También puede ajustar la distribución del teclado según los distintos países e idiomas, cambiar el idioma del sistema y personalizar los atajos.
 
 ![0|keyboard](jpg/keyboard.png)
 
-#### Keyboard Properties
+#### Propiedades de teclado
 
 1. En la página de inicio del centro de control, haga clic en![keyboard_normal](icon/keyboard_normal.svg).
 2. Clic en **General**.
-3. Adjust **Repeat Delay**/**Repeat Rate**.
-4. Click "Test here" and hold down a key to test the repeat rate.
-5. Active el parámetro **Numeric Keypad** and **Caps Lock Prompt** if you want.
+3. Adjust **Intervalo de repetición**/**Tasa de repetición**.
+4. Clic en "Probar aquí" y mantén pulsada una tecla para comprobar la tasa de repetición..
+5. Active el parámetro **Teclado numérico** y **Indicador bloquear mayúsculas** si desea.
 
-#### Keyboard Layout
-Set the keyboard layout to customize the keyboard for your current language. When you press a key on the keyboard, the keyboard layout controls which characters are displayed on the screen. After changing the keyboard layout, the characters on the screen may not match the characters on the keyboard keys.
+#### Distribución de teclado
+Configure la distribución del teclado para personalizarlo en su idioma actual. Al pulsar una tecla del teclado, la distribución del teclado controla los caracteres que se muestran en la pantalla. Después de cambiar la distribución del teclado, es posible que los caracteres de la pantalla no coincidan con los de las teclas del teclado.
 
-You have set a keyboard layout during system installation. You can also add more for other purposes. 
+Durante la instalación del sistema ha establecido una distribución de teclado. También puede añadir más para otros fines. 
 
 ![layout](jpg/layout.png)
 
-##### Add Keyboard Layout
+##### Añadir distribución de teclado
 
 1. En la página de inicio del centro de control, haga clic en![keyboard_normal](icon/keyboard_normal.svg).
-2. Clic en **Keyboard Layout**.
-3. Clic en ![add](icon/add.svg). Click a keyboard layout to add it.
+2. Clic en **Distribución de teclado**.
+3. Clic en ![add](icon/add.svg). Clic en una distribución para añadirla.
 
-##### Delete Keyboard Layout
-
-1. En la página de inicio del centro de control, haga clic en![keyboard_normal](icon/keyboard_normal.svg).
-2. Clic en **Keyboard Layout**.
-3. Clic en **Edit**.
-4. Clic en ![delete](icon/delete.svg) to delete keyboard layout.
-
-##### Switch Keyboard Layout
+##### Borrar distribución de teclado
 
 1. En la página de inicio del centro de control, haga clic en![keyboard_normal](icon/keyboard_normal.svg).
-2. Clic en **Keyboard Layout**.
-3. Click the layout you want to switch to.
-4. After successful switching, the layout will be marked with a check.
+2. Clic en **Distribución de teclado**.
+3. Clic en **Editar**.
+4. Clic en ![delete](icon/delete.svg) para borrar la distribución de teclado.
 
-> ![tips](icon/tips.svg)Tips: You can also select one or more shortcuts to switch the keyboard layouts in order. Select **Applies to** to ensure the adjusted keyboard layout is applied to your system or current application.
-
-#### System Language
-
-The system language is the language selected when you installed the system by default. It can be changed at any time.
-
-##### Add System Language
-Add multiple languages into the list to change language conveniently.
+##### Cambiar distribución de teclado
 
 1. En la página de inicio del centro de control, haga clic en![keyboard_normal](icon/keyboard_normal.svg).
-2. Clic en **System Language**.
-3. Clic en ![add](icon/add.svg) to enter the language list.
-4. Select the language you want and it will be added into the system language list automatically.
+2. Clic en **Distribución de teclado**.
+3. Clic en la distribución que desea cambiarla.
+4. Después de la conmutación con éxito, la disposición se marcará con un cheque.
 
-##### Change System Language
+> ![tips](icon/tips.svg)Consejo: También puede seleccionar uno o más atajos para cambiar las distribuciones de teclado en orden. Seleccione **Aplica a** para asegurarse de que la distribución del teclado ajustada se aplica a su sistema o a la aplicación actual.
+
+#### Idioma del sistema
+
+El idioma del sistema es el seleccionado por defecto al instalar el sistema. Se puede cambiar en cualquier momento.
+
+##### Añadir idioma del sistema
+Añade varios idiomas a la lista para cambiar de idioma cómodamente.
 
 1. En la página de inicio del centro de control, haga clic en![keyboard_normal](icon/keyboard_normal.svg).
-2. Clic en **System Language**.
-3. Select the language you want to switch to and the language package will be installed automatically.
-4. After successfully installation, please log out and log in again to view the changes.
+2. Clic en **Idioma del sistema**.
+3. Clic en ![add](icon/add.svg) para entrar a la lista de idiomas.
+4. Seleccione el idioma que desee y se añadirá a la lista de idiomas del sistema automáticamente.
 
-> ![attention](icon/attention.svg)Attention: The keyboard layout may also be changed in the process of switching the system language. Please make sure that you select a correct keyboard layout to enter the login password.
+##### Cambiar idioma del sistema
 
-#### Shortcuts
-The shortcut list includes all shortcuts in the system. View, modify and customize the shortcuts here as you need.
+1. En la página de inicio del centro de control, haga clic en![keyboard_normal](icon/keyboard_normal.svg).
+2. Clic en **Idioma del sistema**.
+3. Seleccione el idioma al que desea cambiar y el paquete de idiomas se instalará automáticamente.
+4. Después de la instalación, cierre la sesión y vuelva a iniciarla para ver los cambios.
+
+> ![attention](icon/attention.svg)Atención: La disposición del teclado también puede cambiarse en el proceso de cambiar el idioma del sistema. Por favor, asegúrese de seleccionar una disposición de teclado correcta para introducir la contraseña de inicio de sesión.
+
+#### Atajos de teclado
+La lista de accesos directos incluye todos los accesos directos del sistema. Vea, modifique y personalice los accesos directos aquí según sus necesidades.
 
 ![0|shortcut](jpg/shortcut.png)
 
-##### View Shortcuts
+##### Ver atajos de teclado
 
 1. En la página de inicio del centro de control, haga clic en![keyboard_normal](icon/keyboard_normal.svg).
-2. Clic en **Shortcuts**.
-3. You can search or view the default shortcuts for system, window and workspace.
+2. Clic en **Atajos de teclado**.
+3. Puede buscar o ver los accesos directos por defecto para el sistema, la ventana y el espacio de trabajo.
 
    
 
-##### Modify Shortcuts
+##### Modificar atajos de teclado
 
 1. En la página de inicio del centro de control, haga clic en![keyboard_normal](icon/keyboard_normal.svg).
-2. Clic en **Shortcuts**.
-3. Click the shortcut you want to modify.
-4. Press new shortcut to change it.
+2. Clic en **Atajos de teclado**.
+3. Haga clic en el acceso directo que desea modificar.
+4. Pulse el nuevo acceso directo para cambiarlo.
 
-> ![tips](icon/tips.svg)Tips: To disable a shortcut, please press ![Backspace](icon/Backspace.svg) on the keyboard. To cancel modification, press **Esc** or click "Restore Defaults" at the bottom.
+> ![tips](icon/tips.svg)Consejo: Para desactivar un acceso directo, pulse  ![Backspace](icon/Backspace.svg) en el teclado. Para cancelar la modificación, pulse **Esc** o haga clic en "Restaurar valores predeterminados" en la parte inferior.
 
-##### Customize Shortcuts
+##### Personalizar atajos de teclado
 
 1. En la página de inicio del centro de control, haga clic en![keyboard_normal](icon/keyboard_normal.svg).
-2. Clic en **Shortcuts**.
+2. Clic en **Atajos de teclado**.
 3. Clic en ![add](icon/add.svg).
-4. Enter name, command and shortcut.
-5. Clic en **Add**.
-6. After successful addition, Clic en **Edit**.
-7. Clic en ![delete](icon/delete.svg) to delete the customized shortcut.
+4. Introduzca el nombre, el comando y el acceso directo.
+5. Clic en **Añadir**.
+6. Después de la adición exitosa, haga clic en **Editar**.
+7. Clic en ![delete](icon/delete.svg) para eliminar el acceso directo personalizado.
 
-> ![tips](icon/tips.svg)Tips: To change the shortcut, click it and press a new shortcut to change directly. To edit the name and command of the customized shortcut, Clic en **Edit ** > ![edit](icon/edit.svg) near the shortcut name to enter the shortcut setting.
+> ![tips](icon/tips.svg)Consejos: Para cambiar el atajo de teclado, haga clic en él y pulse un nuevo atajo para cambiar directamente. Para editar el nombre y el comando del atajo personalizado, haga clic en **Editar ** >  ![edit](icon/edit.svg) cerca del nombre del atajo para entrar al ajuste correspondiente.
 
 
 
-### Update Settings
+### Ajustes de actualización
 
-When there is a system update, you will be notified on the home page of Control Center. Clic en ![update](icon/update.svg) to enter the "check for updates" page. After checking, you can download and install updates for your system and applications. You can also set to download the updates automatically. 
+Cuando haya una actualización del sistema, se le notificará en la página de inicio del Centro de Control. Haga clic en ![update](icon/update.svg) para entrar en la página de "buscar actualizaciones". Después de la comprobación, puede descargar e instalar actualizaciones para su sistema y aplicaciones. También puede configurar la descarga automática de las actualizaciones. 
 
-> ![tips](icon/tips.svg)Tips: If you do not want to get the prompt message of updates, switch off "Updates Notification" in Update Settings.
+> ![tips](icon/tips.svg)Consejo: Si no quiere recibir el mensaje de aviso de las actualizaciones, desactiva la "Notificación de actualizaciones" en los Ajustes de actualización.
 
 ![0|update](jpg/update.png)
 
-#### Update and Upgrade
+#### Actualizar e instalar
 
 1. En la página de inicio del centro de control, haga clic en![update](icon/update.svg).
-2. Clic en **Update** to check if there is an update.
-   - If there is no update, you will see "Your system is up to date".
-   - If there is an update, you will see **Download and install updates** button, change log info and other messages.
-3. Click the button to download and install updates.
-4. After updating finishes, a hint appears saying the system is updated successfully. 
+2. Clic en **Actualizar** para comprobar si hay una actualización.
+   - Si no hay ninguna actualización, verá "Su sistema está actualizado".
+   - Si hay una actualización, verá el botón **Descargar e instalar actualizaciones**, la información del registro de cambios y otros mensajes.
+2. Haga clic en el botón para descargar e instalar actualizaciones.
+3. Una vez finalizada la actualización, aparecerá una indicación de que el sistema se ha actualizado correctamente.
 
-> ![notes](icon/notes.svg)Notas: You can click the button to pause and resume the downloading process. After updating, a dialogue box pops up and you will be reminded to **Reboot** or **Shut down** computer to complete the update.
+> ![notes](icon/notes.svg)Notas:  Puede hacer clic en el botón para pausar y reanudar el proceso de descarga. Tras la actualización, aparecerá un cuadro de diálogo y se le recordará que debe **reiniciar** o **apagar** el equipo para completar la actualización.
 
-#### Auto Download Updates
+#### Autodescargar actualizaciones
 
 1. En la página de inicio del centro de control, haga clic en![update](icon/update.svg).
-2. Clic en **Update Settings**.
-3. Active el parámetro **Auto Download Updates**.
-4. System updates will be automatically downloaded.
+2. Clic en **Ajustes de actualización**.
+3. Active el parámetro **Autodescargar actualizaciones**.
+4. Las actualizaciones del sistema se descargarán automáticamente.
 
-> ![tips](icon/tips.svg)Tips: Active el parámetro **Auto Clear Package Cache** to remove the downloaded package caches regularly. 
+> ![tips](icon/tips.svg)Tips: Active el parámetro **Autoborrar caché de paquetes ** para borrar regularmente las cachés de los paquetes descargados. 
 
-### System Info
-You can view system version, authorization info, hardware info and the agreements here.
+### Información del sistema
+Puede ver la versión del sistema, la información de autorización, la información del hardware y los acuerdos aquí.
 
 ![0|info](jpg/info.png)
 
-#### About This PC
+#### Acerca del equipo
 
 1. En la página de inicio del centro de control, haga clic en![system_info_normal](icon/system_info_normal.svg).
-2. Under **About This PC**, you can view system version, authorization and hardware information.
+2. Bajo **Acerca del equipo**, podrá ver la información del sistema, versión, autorización e información de hardware.
 
-#### Edition License
-
-1. En la página de inicio del centro de control, haga clic en![system_info_normal](icon/system_info_normal.svg).
-2. View the system edition license under **Edition License**.
-
-#### End User License Agreement
+#### Licencia
 
 1. En la página de inicio del centro de control, haga clic en![system_info_normal](icon/system_info_normal.svg).
-2. View the End User License Agreement under **End User License Agreement**.
+2. Observe la licencia de la edición del sistema bajo el apartado **Licencia**.
 
-### Backup and Restore
+#### Acuerdo de licencia de usuario final
 
-In order to avoid data loss or damage caused by software defects, hardware damage, improper human operation, hacker attacks, computer viruses, natural disasters and other factors, the application data or system data can be backed up and restored to ensure the normal operation of the system.
+1. En la página de inicio del centro de control, haga clic en![system_info_normal](icon/system_info_normal.svg).
+2. Observa el EULA en el apartado **Acuerdo de licencia de usuario final**.
+
+### Respaldar y restaurar
+
+Para evitar la pérdida de datos o los daños causados por defectos de software, daños de hardware, funcionamiento humano inadecuado, ataques de hackers, virus informáticos, catástrofes naturales y otros factores, se puede hacer una copia de seguridad de los datos de la aplicación o del sistema y restaurarlos para garantizar el funcionamiento normal del sistema.
 
 ![0|backuprecovery](jpg/backuprestore.png)
 
-#### Backup
+#### Copia de seguridad
 
-Deepin operating system provides backup by initialization and backup through Control Center.
+El sistema operativo Deepin proporciona una copia de seguridad mediante la inicialización y respaldo a través del Centro de Control.
 
-##### Backup by initialization
+##### Respaldar en la iniciación
 
-When the system is installed, it will automatically create a recovery partition, then backup the boot partition and root partition, and save the recovery partition information and disk partition configuration.
+Cuando el sistema se instale, creará automáticamente una partición de recuperación, luego hará una copia de seguridad de la partición de arranque y de la partición raíz, y guardará la información de la partición de recuperación y la configuración de la partición del disco.
 
-##### Backup through control center
+##### Respaldar por el centro de control
 
-You can either manually backup / restore data or restore data by one click.
-
-1. En la página de inicio del centro de control, haga clic en![system_info_normal](icon/system_info_normal.svg).
-
-2. Select **Backup and Restore** > **Backup** to set the backup type and save the path of files backed up.
-   Backup Type: Full Backup and System Backup
-
-   - Full Backup: to back up system files and user files of the whole disk
-
-   - System Backup: When the user data is not reserved, the files of the root partition and the boot partition are backed up; when the user data is reserved, the files of the root partition, boot partition, opt partition and home partition are backed up.
-
-   > ![attention](icon/attention.svg)Attention:  **Full Backup** cannot backed up files on its own disk, but can only back up files in other storage media. **System Backup** has set the default storage location of files. When the storage space is insufficient, you can manually change the storage path of backup files.
-
-3. Clic en **Back Up**, the password input box pops up, please input the password to authorize the backup file until the file backup is completed.
-
-> ![notes](icon/notes.svg)Notas: In the process of file backup, please do not unplug the power supply or forcibly shut down to prevent data loss or damage.
-
-
-
-#### Restore
-
-Deepin operating system provides "restore from grub" and "restore from control center".
-
-##### Restore from Grub
-
-During system startup, in the system selection interface, Clic en **Deepin Restore**, you can choose "Reset to factory settings" to read and restore factory settings backup, or choose "restore Deepin 20 historical backup" to open the file directory and select the backup to be restored.
-
-##### Restore from Control Center
-
-You can either restore all settings or manually restore the previous backup data.
+Puede respaldar/restaurar los datos manualmente o restaurar los datos con un solo clic.
 
 1. En la página de inicio del centro de control, haga clic en![system_info_normal](icon/system_info_normal.svg).
-2. Clic en **Backup and Restore** > **Restore** to select:
 
-   - Restore All Settings
-     1. You can choose to check **Keep personal files and apps** and Clic en **Restore Now**. Clic en **Confirm** in the dialogue box pops up. 
-     2. Please input the password to authorize the data restoring.
-   - Manual Restore
-     1. After selecting restoring directory, Clic en ![three_dots](jpg/three_dots.png) to select the files you want to restore.
-     2. Clic en **Restore Now** to start system restoring.
+2. Seleccione **Respaldar y restaurar** > **Respaldar** para establecer el tipo de copia de seguridad y guardar la ruta de los archivos copiados. Hay dos tipos: Respaldo completo y Respaldo del sistema
+   
+- Respaldo completo: para hacer una copia de seguridad de los archivos del sistema y de los archivos de usuario de todo el disco
+   
+- Respaldo del sistema: Cuando los datos del usuario no están reservados, se hace un respaldo de los archivos de la partición raíz y de la partición de arranque; cuando los datos del usuario están reservados, se hace un respaldo de los archivos de la partición raíz, de la partición de arranque, de la partición opt y de la partición home.
+   
+> ![attention](icon/attention.svg)Atención: El **Respaldo completo** no puede hacer una copia de archivos en su propio disco, pero sólo puede respaldar archivos en otros medios de almacenamiento. El **Respaldo del sistema** establece la ubicación de almacenamiento por defecto de los archivos. Cuando el espacio de almacenamiento es insuficiente, puede cambiar manualmente la ruta de almacenamiento de los archivos de copia de seguridad.
+   
+3. Clic en **Respaldar datos**, aparecerá un cuadro para introducir la contraseña, introduzca la contraseña para autorizar el archivo de copia de seguridad hasta que se complete la copia de seguridad del archivo.
 
-### General Settings
+> ![notes](icon/notes.svg)Nota: Durante el proceso de respaldo de los archivos, por favor, no desenchufe la fuente de alimentación ni la apague a la fuerza para evitar la pérdida o el daño de los datos.
+
+
+
+#### Restaurar
+
+El sistema operativo Deepin ofrece "restaurar desde grub" y "restaurar desde el centro de control".
+
+##### Restaurar desde Grub
+
+Durante el inicio del sistema, en la interfaz de selección del sistema, haga clic en **Restaurar Deepin**, puede elegir "Reestablecer ajustes de fábrica" para leer y restaurar la copia de seguridad de los ajustes de fábrica, o elegir "restaurar la copia de seguridad histórica de Deepin 20" para abrir el directorio de archivos y seleccionar la copia de seguridad a restaurar.
+
+##### Restaurar desde el Centro de control
+
+Puede restaurar todos los ajustes o restaurar manualmente los datos de la copia de seguridad anterior.
+
+1. En la página de inicio del centro de control, haga clic en![system_info_normal](icon/system_info_normal.svg).
+2. Clic en **Respaldar y restaurar** > **Restaurar** para que:
+
+   - Restaurar todos los ajustes
+     1. Puede optar por marcar **Conservar archivos personales y aplicaciones** y hacer clic en **Restaurar ahora**. Clic en **Confirmar** en el cuadro emergente. 
+     2. Introduzca la contraseña para autorizar el restablecimiento de los datos.
+   - Restaurar manualmente
+     1. Después de seleccionar el directorio de restauración, clic en ![three_dots](jpg/three_dots.png) para seleccionar los archivos que desea restaurar.
+     2. Clic en **Restaurar ahora** para iniciar la restauración del sistema.
+
+### Ajustes generales
 
 ![general](jpg/general.png)
 
-#### Boot Menu
+#### Menú de arranque
 
-Boot menu is the grub menu for users to select an operating system to start. After selecting and confirming the boot option, your computer will load the system.
+El menú de arranque es el menú grub para que los usuarios seleccionen un sistema operativo para arrancar. Tras seleccionar y confirmar la opción de arranque, el ordenador cargará el sistema.
 
-##### Startup Delay
+##### Mostrar menú de arranque
 
-When there are multiple systems in the computer, Startup Delay will be switched on by default, and the grub menu will stay 5 seconds for users to select.
+Cuando hay varios sistemas en el ordenador, el menú de arranque se mostrará por defecto, y el menú grub permanecerá 5 segundos para que los usuarios lo seleccionen.
 
-When there is only one system in the computer, Startup Delay will be switched off by default and the grub menu will keep only 1 second.
+Cuando sólo hay un sistema en el ordenador, el menú de arranque se ocultará por defecto y el menú grub mantendrá sólo 1 segundo.
 
-##### Default Boot Entry
-
-1. En la página de inicio del centro de control, haga clic en![general](icon/general.svg).
-2. Clic en **Boot Menu**.
-3. Click the option in the preview window to set it as default.
-
-##### Boot Menu Theme
+##### Entrada de arranque por defecto
 
 1. En la página de inicio del centro de control, haga clic en![general](icon/general.svg).
-2. Clic en **Boot Menu**.
-3. Active el parámetro **Theme** to use as the theme of boot menu.
+2. Clic en **Menú de arranque**.
+3. Haga clic en la opción de la ventana de vista previa para establecerla como predeterminada.
 
-> ![tips](icon/tips.svg)Tips: You can drag and drop an image to the preview window to change the background of boot menu.
-
-#### User Experience Program
-User Experience Program collects your hardware, application and system information and help us better understand the user needs and thus improve user experiences. To have a better operating system, you are recommended to join the User Experience Program. And you are free to join and exit the program anytime.
+##### Tema del menú de arranque
 
 1. En la página de inicio del centro de control, haga clic en![general](icon/general.svg).
-2. Active el parámetro **User Experience Program**, and read the privacy policy.
-3. If you agree, check **Agree and Join User Experience Program**, and **Confirm**.
+2. Clic en **Menú de arranque**.
+3. Active el parámetro **Theme** para utilizarlo como tema del menú de arranque.
 
-## Window Manager
+> ![tips](icon/tips.svg)Consejo: Puede arrastrar y soltar una imagen a la ventana de vista previa para cambiar el fondo del menú de arranque.
 
-Window manager controls the alignment and appearance of windows. It allows you to switch between your virtual desktops and manage the windows in various workspaces.
+#### Experiencia de usuario
+El Programa de Experiencia del Usuario recoge la información de su hardware, aplicaciones y sistema y nos ayuda a entender mejor las necesidades del usuario y así mejorar su experiencia. Para tener un mejor sistema operativo, se le recomienda unirse al Programa de Experiencia del Usuario. Además, es libre de unirse y salir del programa en cualquier momento.
 
-> ![notes](icon/notes.svg)Notas: this function is available only when **Window Effect** is turned on in **Personalization** in **Control Center**. 
+1. En la página de inicio del centro de control, haga clic en![general](icon/general.svg).
+2. Active el parámetro **Experiencia de usuario**, y lea la política de privacidad.
+3. Si acepta, marque **Aceptar y unirse al programa de experiencia de usuario**, y **Confirme**.
+
+## Gestor de ventanas
+
+El gestor de ventanas controla la alineación y el aspecto de las ventanas. Permite cambiar entre los escritorios virtuales y gestionar las ventanas en varios espacios de trabajo.
+
+> ![notes](icon/notes.svg)Notas: esta función sólo está disponible cuando **Efectos de ventana** está activado en **Personalización** en **Centro de control**. 
 
 ![1|workspace](jpg/workspace.png)
 
 
 
-> ![notes](icon/notes.svg)Notas: On the panel táctil que admite la pulsación en múltiples puntos, you can use the gesture to operate instead of the mouse: move with four/five fingers upwards to display multi-task view, and move downwards immediately to hide multi-task view, which corresponds to the operation of **Super** + **S**. 
+> ![notes](icon/notes.svg)Notas: En el panel táctil que admite la pulsación en múltiples puntos, se puede utilizar el gesto para operar en reemplazo del ratón: mueva con cuatro/cinco dedos hacia arriba para mostrar la vista multitarea, y mueva hacia abajo inmediatamente para ocultar la vista multitarea, lo que corresponde a la operación de **Super** + **S**. 
 
-### Open Workspace
+### Abrir espacio de trabajo
 
-Manage your desktop windows in different workspaces to enlarge your Workspaces.
+Gestione las ventanas de su escritorio en diferentes espacios de trabajo para ampliar sus espacios de trabajo.
 
-On the desktop, press **Super** + **S** or Clic en ![multitasking](icon/deepin-multitasking-view.svg) to open the workspace interface.
+En el escritorio, pulse **Super** + **S** o haga clic en  ![multitasking](icon/deepin-multitasking-view.svg) para abrir la interfaz del espacio de trabajo.
 
-> ![notes](icon/notes.svg)Notas: If you are using a computer equipped with a touchscreen, you can use touchscreen gestures to operate instead of the mouse: slide in from the bottom of the screen exceeding the dock's height to open Workspace.
+> ![notes](icon/notes.svg)Notas: Si utiliza un equipo provisto con una pantalla táctil, puede utilizar los gestos de la pantalla táctil para operar en reemplazo del ratón: deslice desde la parte inferior de la pantalla superando la altura del dock para abrir el Espacio de trabajo.
 
-### Add Workspace
+### Añadir espacio de trabajo
 
-On the workspace interface, you can add workspace in the following ways:
+En la interfaz de espacios de trabajo, puede añadir espacios de trabajo de las siguientes maneras:
 
-- Clic en ![plus](icon/plus.svg) above.
-- Press <img src="icon/plus.svg" alt="plus" style="zoom:50%;" /> on the keyboard.
+- Clic en ![plus](icon/plus.svg) arriba.
+- Pulse <img src="icon/plus.svg" alt="plus" style="zoom:50%;" />en el teclado.
 
-> ![notes](icon/notes.svg)Notas: When the workspace number has reached its limit, you cannot add more workspaces. 
+> ![notes](icon/notes.svg)Notas: Cuando el número de espacios de trabajo ha alcanzado su límite, no se podrán añadir más. 
 
-### Switch Workspace
-On the workspace interface and desktop, you can switch workspace in the following ways:
+### Cambiar espacio de trabajo
+En la interfaz del espacio de trabajo y en el escritorio, puede cambiar de espacio de trabajo de las siguientes maneras:
 
-- On the desktop, press **Super** + ![Left](icon/Left.svg) / ![Right](icon/Right.svg) to switch to Previous/Next workspace.
-- On the desktop, press **Super** + Numeric keys (1-4)  to switch to a specified workspace.
-- On the workspace interface, scroll up or down to switch to Previous/Next workspace.
-- On the workspace interface, press ![Left](icon/Left.svg) / ![Right](icon/Right.svg) to switch to Previous/Next workspace directly.
-- On the workspace interface, click the preview window or press the numeric keys (1-4) to switch to a specified workspace.
+- En el escritorio, pulse **Super** + ![Izquierda](icon/Left.svg) / ![Derecha](icon/Right.svg) para cambiar al espacio de trabajo anterior/siguiente.
+- En el escritorio, pulse **Super** + teclas numéricas (1-4) para cambiar a un espacio de trabajo específico.
+- En la interfaz del espacio de trabajo, desplácese hacia arriba o hacia abajo para cambiar al espacio de trabajo anterior/siguiente.
+- En la interfaz del espacio de trabajo, pulse ![Izquierda](icon/Left.svg) / ![Derecha](icon/Right.svg) para cambiar directamente al espacio de trabajo Anterior/Siguiente.
+- En la interfaz del espacio de trabajo, haga clic en la ventana de vista previa o pulse las teclas numéricas (1-4) para cambiar a un espacio de trabajo específico.
 
 
 
-> ![notes](icon/notes.svg)Notas: On the panel táctil que admite la pulsación en múltiples puntos, you can use the gesture to operate instead of the mouse: move with four/five fingers to the left/right to switch to the previous or next workspace, which corresponds to the operation of **Super** + **Left** or **Super** + **Right**. 
+> ![notes](icon/notes.svg)Notas: En el panel táctil que admite la pulsación en múltiples puntos, se puede utilizar el gesto para operar en reemplazo del ratón: mueva con cuatro/cinco dedos a la izquierda/derecha para cambiar al espacio de trabajo anterior o siguiente, lo que corresponde a la operación de **Super** + **Izquierda** o **Super** + **Derecha**.
 
-### Delete Workspace
+### Borrar espacio de trabajo
 
-After deleting a workspace, all windows in the workspace will be moved to a nearby workspace. You cannot delete the workspace when there is only one.
+Después de eliminar un espacio de trabajo, todas las ventanas del espacio de trabajo se moverán a un espacio de trabajo cercano. No se puede eliminar el espacio de trabajo cuando sólo hay uno.
 
-- On the workspace interface, click the **X** icon on the upper right corner to delete a workspace.
-- On the workspace interface, press **Alt** + **-** to delete a workspace.
-- Drag a workspace upward outside the screen to delete it.
+- En la interfaz del espacio de trabajo, haga clic en el icono **X** de la esquina superior derecha para eliminar un espacio de trabajo.
+- En la interfaz del espacio de trabajo, pulse **Alt** + **-** para eliminar un espacio de trabajo.
+- Arrastre un espacio de trabajo hacia arriba fuera de la pantalla para eliminarlo.
 
-### Exit Workspace
-After completing operations on the workspace interface, you can quit in the following ways:
+### Salir espacio de trabajo
+Después de completar las operaciones en la interfaz del espacio de trabajo, puede salir de las siguientes maneras:
 
-- Press **Esc**.
-- Click the blank area outside the workspace interface.
-- Press **Super** + **S** again.
+- Pulse **Esc**.
+- Haga clic en la zona en blanco fuera de la interfaz del espacio de trabajo.
+- Pulse de nuevo **Super** + **S**.
 
-### View All Windows
-View all the windows in the workspaces in the following ways:
+### Ver todas las ventanas
+Observe todas las ventanas de los espacios de trabajo de las siguientes maneras:
 
-- On the desktop, press **Super** + **A** on the keyboard to view the windows in all workspaces.
-- On the desktop, press **Super** + **W** to view the windows in the current workspace.
+- En el escritorio, pulse **Super** + **A** en el teclado para ver las ventanas de todos los espacios de trabajo.
+- En el escritorio, pulse **Super** + **W** para ver las ventanas del espacio de trabajo actual.
 
 #### Move Windows among Workspaces
-Move the windows to other workspaces in the following ways:
+Mueva las ventanas a otros espacios de trabajo de las siguientes maneras:
 
-- On the workspace interface, drag and drop the window to another workspace.
-- On the desktop, press **Super** + **Shift** + ![Left](icon/Left.svg) / ![Right](icon/Right.svg) to move the current window to the previous/next workspace.
-- On the desktop, press  **Super** + **Shift** + Numeric Keys to move the current window to the specified workspace.
-- On the desktop, press  **AIt** + **Space** or right click the window title bar to open the window menu, and select **Always on Visible Workspace** or **Move to Workspace Left/Right** to move the current window to the specified workspace.
+- En la interfaz del espacio de trabajo, arrastre y suelte la ventana a otro espacio de trabajo.
+- En el escritorio, pulse **Super** + **Mayúsculas** + ![Izquierda](icon/Left.svg) / ![Derecha](icon/Right.svg) para mover la ventana actual al espacio de trabajo anterior/siguiente.
+- En el escritorio, pulse **Super** + **Mayúsculas** + Teclas numéricas para mover la ventana actual al espacio de trabajo especificado.
+- En el escritorio, pulse **AIt** + **Espacio** o haga clic con el botón derecho del ratón en la barra de título de la ventana para abrir el menú de la ventana y seleccione **Siempre en el espacio de trabajo visible** o **Mover al espacio de trabajo izquierdo/derecho** para mover la ventana actual al espacio de trabajo especificado.
 
-> ![tips](icon/tips.svg)Tips: In the window menu, you can also minimize, maximize, move, resize, stick or close the window.
+> ![tips](icon/tips.svg)Tips: En el menú de la ventana, también puede minimizar, maximizar, mover, redimensionar, pegar o cerrar la ventana.
 
-### Switch Desktop Windows
-Switch desktop windows in the current workspace as below.
+### Cambiar las ventanas del escritorio
 
-#### Fast Switch between Nearby Windows
+Cambie las ventanas del escritorio en el espacio de trabajo actual como se indica a continuación.
 
-- On the desktop, press  **AIt** + **Tab** at the same time and release, to fast switch between the current window and the nearby window;
-- On the desktop, press **AIt** + **Shift** + **Tab** at the same time and release, to fast switch between current window and the nearby window reversely.
+#### Cambiar rápidamente entre ventanas cercanas
 
-#### Fast Switch between Windows of the Same Type
+- En el escritorio, pulse **AIt** + **Tab** al mismo tiempo y suéltelo, para cambiar rápidamente entre la ventana actual y la ventana cercana;
+- En el escritorio, pulse **AIt** + **Mayúsculas** + **Tab** al mismo tiempo y suéltelo, para cambiar rápidamente entre la ventana actual y la ventana cercana de forma inversa.
 
-- On the desktop, press **Alt** + ![~](icon/~.svg) at the same time and release, to switch between the current window and other windows of the same type quickly;
-- On the desktop, press **AIt** + **Shift** + ![~](icon/~.svg) at the same time and release, to fast switch between current window and other windows in same type reversely.
+#### Cambio rápido entre ventanas del mismo tipo
 
-#### Switch among All Windows
+- En el escritorio, pulse **Alt** + ![~](icon/~.svg) al mismo tiempo y suéltelo, para cambiar rápidamente entre la ventana actual y otras ventanas del mismo tipo;
+- En el escritorio, pulse **AIt** + **Mayúsculas** + ![~](icon/~.svg) al mismo tiempo y suéltelo, para cambiar rápidamente entre la ventana actual y otras ventanas del mismo tipo de forma inversa.
 
-- On the desktop, press and hold **Alt** and press **Tab** continually. Right windows will show one by one; 
-- On the desktop, press and hold **Alt** + **Shift** and press **Tab** continually. Left windows will show one by one.
+#### Cambiar entre todas las ventanas
 
-#### Switch among Windows of the Same Type
-- On the desktop, press and hold **Alt** and press ![~](icon/~.svg) continually. The same type of windows will show one by one.
-- On the desktop, press and hold **Alt** + **Shift** and press ![~](icon/~.svg) continually. The same type of windows will show one by one reversely.
+- En el escritorio, mantenga pulsada la tecla **Alt** y pulse continuamente **Tab**. Las ventanas de la derecha se mostrarán una a una; 
+- En el escritorio, mantenga pulsada **Alt** + **Mayúsculas** y pulse **Tab** continuamente. Las ventanas de la izquierda se mostrarán una a una.
 
-### Split Screen
-A split-screen allows the simultaneous presentation of related graphical and textual information on a computer display, reduces switching windows and improves your productivity.
+#### Cambiar entre ventanas del mismo tipo
 
-1. Drag the window to the left or right part of the screen until the cursor touches the screen edge and the white transparent background appears. Drop the window and it will be adsorbed on the left or right half of the screen.
+- En el escritorio, mantenga pulsado **Alt** y pulse continuamente ![~](icon/~.svg). Las ventanas del mismo tipo se mostrarán una a una.
+- En el escritorio, mantenga pulsados **Alt** + **Mayúsculas** y pulse ![~](icon/~.svg) continuamente. Las ventanas del mismo tipo se mostrarán una a una de forma inversa.
 
-> ![tips](icon/tips.svg)Tips: To cancel split screen, just drag a window away from the screen edge.
+### Dividir ventana
+Una pantalla dividida permite la presentación simultánea de información gráfica y textual relacionada en una pantalla de ordenador, reduce el cambio de ventanas y mejora su productividad.
+
+1. Arrastre la ventana a la parte izquierda o derecha de la pantalla hasta que el cursor toque el borde de la pantalla y aparezca el fondo blanco transparente. Suelte la ventana y se adsorberá en la mitad izquierda o derecha de la pantalla.
+
+> ![tips](icon/tips.svg) Consejos: Para cancelar la pantalla dividida, basta con arrastrar una ventana lejos del borde de la pantalla.
 
 
