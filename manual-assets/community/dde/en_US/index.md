@@ -536,7 +536,7 @@ Operations are as follows:
 
 If your computer has a touch screen, you can set your screen and adjust it.
 
-1. On the homepage of Control Center, click ![display_normal](D:/工作/专业版/专业版SP3-1124/dde/en_US/icon/display_normal.svg).
+1. On the homepage of Control Center, click ![display_normal](icon/display_normal.svg).
 2. Click **Touch Screen** to set your screen.
 3. Click **Confirm**. 
 

@@ -30,6 +30,11 @@ QString stub_en_US()
     return "en_US";
 }
 
+QString stub_es()
+{
+    return "es";
+}
+
 QString stub_zh_CN()
 {
     return "zh_CN";
@@ -45,6 +50,15 @@ TEST_F(ut_i18n_proxy, getKeyword2)
     const QString locale = "en_US";
     Stub st;
     st.set(ADDR(QLocale, name), stub_en_US);
+    ASSERT_EQ(ip->getLocale(), locale);
+    st.reset(ADDR(QLocale, name));
+}
+
+TEST_F(ut_i18n_proxy, getKeyword5)
+{
+    const QString locale = "es";
+    Stub st;
+    st.set(ADDR(QLocale, name), stub_es);
     ASSERT_EQ(ip->getLocale(), locale);
     st.reset(ADDR(QLocale, name));
 }

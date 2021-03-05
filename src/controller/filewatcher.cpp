@@ -109,7 +109,7 @@ void fileWatcher::monitorFile()
                 QString appPath = modulePath + "/" + listAppNameT.at(0);
                 listModule.append(appPath);
                 for (QString &lang : QDir(appPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-                    if (lang == "zh_CN" || lang == "en_US") {
+                    if (lang == "zh_CN" || lang == "en_US" || lang == "es") {
                         //./manual-assets/application(system)/appName/appNameT/lang
                         QString langPath = appPath + "/" + lang;
                         listModule.append(langPath);
@@ -136,7 +136,7 @@ void fileWatcher::monitorFile()
                 QString modulePath = typePath + "/" + module;
                 listModule.append(typePath);
                 for (QString &lang : QDir(modulePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-                    if (lang == "zh_CN" || lang == "en_US") {
+                    if (lang == "zh_CN" || lang == "en_US" || lang == "es") {
                         QString strMd = modulePath + "/" + lang + "/index.md";
                         listMonitorFile.append(strMd);
                     }
@@ -201,7 +201,7 @@ void fileWatcher::onTimerOut()
                 //./manual-assets/application(system)/appName/appNameT
                 QString appPath = modulePath + "/" + listAppNameT.at(0);
                 for (QString &lang : QDir(appPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-                    if (lang == "zh_CN" || lang == "en_US") {
+                    if (lang == "zh_CN" || lang == "en_US" || lang == "es") {
                         //./manual-assets/application(system)/appName/appNameT/lang
                         QString langPath = appPath + "/" + lang;
                         for (QString &mdFile : QDir(langPath).entryList(QDir::Files)) {
@@ -229,7 +229,7 @@ void fileWatcher::onTimerOut()
             for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
                 QString modulePath = typePath + "/" + module;
                 for (QString &lang : QDir(modulePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-                    if (lang == "zh_CN" || lang == "en_US") {
+                    if (lang == "zh_CN" || lang == "en_US" || lang == "es") {
                         QString strMd = modulePath + "/" + lang + "/index.md";
                         QFileInfo fileInfo(strMd);
                         if (fileInfo.exists()) {

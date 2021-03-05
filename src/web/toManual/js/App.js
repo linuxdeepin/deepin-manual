@@ -53,7 +53,7 @@ class App extends React.Component {
         console.log("channel initqt.....");
         channel.objects.i18n.getSentences(i18n => {
             channel.objects.i18n.getLocale(lang => {
-                if (lang === 'en_US' || lang === 'zh_CN') {
+                if (lang === 'en_US' || lang === 'es' || lang === 'zh_CN') {
                     global.lang = lang;
                 } else {
                     global.lang = 'en_US';
