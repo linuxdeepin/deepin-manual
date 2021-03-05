@@ -2,6 +2,14 @@
 <!DOCTYPE TS>
 <TS version="2.1">
 <context>
+    <name>ManualProxy</name>
+    <message>
+        <location filename="../src/view/manual_proxy.cpp" line="306"/>
+        <source>Desktop Environment</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
         <location filename="../src/app/dman.cpp" line="71"/>

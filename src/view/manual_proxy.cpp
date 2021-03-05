@@ -25,6 +25,7 @@
 
 ManualProxy::ManualProxy(QObject *parent)
     : QObject(parent)
+    , strIconTheme("")
 {
     AppInfo::registerMetaType();
 }
@@ -170,6 +171,7 @@ QString ManualProxy::appToPath(const QString &appName)
     if (QLocale::system().name() == "zh_CN" || QLocale::system().name() == "zh_HK" || QLocale::system().name() == "zh_TW") {
         strlocal = "zh_CN";
     }
+
     QStringList omitType = Utils::systemToOmit(Dtk::Core::DSysInfo::uosEditionType());
     const QString assetPath = Utils::getSystemManualDir();
     QStringList mdList;
@@ -219,7 +221,7 @@ QString ManualProxy::appToPath(const QString &appName)
     }
     mdList.append(oldMdPath + "/" + appName + "/" + strlocal + "/index.md");
 #endif
-
+    qDebug() << mdList;
     //初始化赋值，如果为空字符，web层路径请求依旧能onload成功...
     QString ret = "error";
     if (QFile(mdList[0]).exists()) {
@@ -235,14 +237,37 @@ QString ManualProxy::appToPath(const QString &appName)
     return ret;
 }
 
-//根据应用名称获取当前图表主题下的应用图表路径
-QString ManualProxy::getAppIconPath(const QString &logoPath)
+//根据应用desktop文件解析图标名称并获取图标路径
+QString ManualProxy::getAppIconPath(const QString &desktopname)
 {
-    QString strlogoname = logoPath.mid(logoPath.lastIndexOf("/") + 1).split(".svg").at(0);
+    //首次获取默认图标主题，如果获取失败默认bloom
+    if (strIconTheme.isEmpty()) {
+        QFile file("/usr/share/glib-2.0/schemas/com.deepin.dde.appearance.gschema.xml");
+        if (file.exists()) {
+            QString strContent(file.readAll());
+            strContent = Utils::regexp_label(strContent, "(icon-theme\">\n)(.*)?(['</default>])");
+            strIconTheme = Utils::regexp_label(strContent, "(?<=<default>')(.*)?(?='</default>)");
+        }
+        if (strIconTheme.isEmpty()) {
+            strIconTheme = "bloom";
+        }
+    }
+
+    QString filepath = QString("/usr/share/applications/%1.desktop").arg(desktopname);
+    QFile file(filepath);
+    QString strIcon = desktopname;
+    if (file.exists()) {
+        Dtk::Core::DDesktopEntry entry(filepath);
+        strIcon = entry.stringValue("Icon");
+        qDebug() << strIcon;
+    }
+
     QString strIconPath;
-    if (QIcon::hasThemeIcon(strlogoname)) {
+    if (QIcon::hasThemeIcon(strIcon)) {
         QIconLoader *pload = QIconLoader::instance();
-        QThemeIconInfo info = pload->loadIcon(strlogoname);
+        //强制设置主题为默认主题保证获取的图标来自与默认图标主题
+        pload->setThemeName(strIconTheme);
+        QThemeIconInfo info = pload->loadIcon(strIcon);
 
         QString str96, str64, str48, str36;
         for (int i = 0; i < info.entries.size(); i++) {
@@ -270,33 +295,24 @@ QString ManualProxy::getAppIconPath(const QString &logoPath)
             strIconPath = str36;
         }
     }
-    //兼容处理，保证在找不到对于图片时使用自带图片
-    //    qInfo() << strIconPath;
-    //    QFile file(strIconPath);
-    //    if (!file.exists()) {
-    //        strIconPath = logoPath;
-    //        qInfo() << "icon not exist :" << strIconPath;
-    //    }
 
     return strIconPath;
 }
 
-QString ManualProxy::getLocalAppName(const QString &appname)
+QString ManualProxy::getLocalAppName(const QString &desktopname)
 {
-    QString filepath = QString("/usr/share/applications/%1.desktop").arg(appname);
-    QFile file(filepath);
-    QString strdisplayname = appname;
-    if (file.exists()) {
-        Dtk::Core::DDesktopEntry entry(filepath);
-        qDebug() << entry.ddeDisplayName() << entry.localizedValue("Name") << entry.localizedValue("GenericName") << entry.genericName() << entry.name();
-        strdisplayname = entry.ddeDisplayName();
+    QString strdisplayname = desktopname;
+    if (0 == desktopname.compare("dde", Qt::CaseInsensitive)) {
+        strdisplayname = tr("Desktop Environment");
+    } else {
+        QString filepath = QString("/usr/share/applications/%1.desktop").arg(desktopname);
+        QFile file(filepath);
+        if (file.exists()) {
+            Dtk::Core::DDesktopEntry entry(filepath);
+            strdisplayname = entry.ddeDisplayName();
+        }
     }
     return strdisplayname;
-}
-
-void ManualProxy::manualtest(const QString &fuc, const QString &appname)
-{
-    qDebug() << fuc << appname;
 }
 
 /**

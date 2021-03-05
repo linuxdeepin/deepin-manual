@@ -1243,7 +1243,7 @@ var Item = function (_Component) {
       title: '',
       logo: '',
       show: false,
-      btop: false
+      desktopname: ''
     };
     console.log('main item constructor...');
     _this.init();
@@ -1273,33 +1273,31 @@ var Item = function (_Component) {
           var _data$substr$split = data.substr('# '.length, data.indexOf('\n')).split('|'),
               _data$substr$split2 = _slicedToArray(_data$substr$split, 2),
               title = _data$substr$split2[0],
-              logo = _data$substr$split2[1];
-          // logo = `${this.path}${logo}`;
+              desktopname = _data$substr$split2[1];
 
-          //获取logo路劲
-
-
-          var pathList = filePath.split('/');
-          pathList = pathList.splice(0, pathList.length - 1);
-          var logoPath = pathList.join("/") + "/";
-          logo = '' + logoPath + logo;
-
-          global.qtObjects.manual.getAppIconPath(logo, function (logopath) {
+          global.qtObjects.manual.getAppIconPath(desktopname, function (logopath) {
             _this2.setState({ logo: logopath });
           });
 
-          _this2.setState({ title: title, file: _this2.file, show: true, btop: true });
+          global.qtObjects.manual.getLocalAppName(desktopname, function (appname) {
+            _this2.setState({ title: appname });
+          });
+
+          _this2.setState({ desktopname: desktopname, file: _this2.file, show: true });
         });
       });
       global.show = true;
-      global.qtObjects.manual.iconThemeChanged.connect(this.iconThemeChange.bind(this));
+      //2021.3.4产品决定取消图标动态切换，使用default图标主题，暂时注释
+      //   global.qtObjects.manual.iconThemeChanged.connect(
+      //     this.iconThemeChange.bind(this)
+      //  );
     }
   }, {
     key: 'iconThemeChange',
     value: function iconThemeChange(themeType) {
       var _this3 = this;
 
-      global.qtObjects.manual.getAppIconPath(this.state.logo, function (logopath) {
+      global.qtObjects.manual.getAppIconPath(this.state.desktopname, function (logopath) {
         if (global.show === true) {
           _this3.setState({ logo: logopath });
         }

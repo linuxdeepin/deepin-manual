@@ -13,7 +13,7 @@ class Item extends Component {
       title: '',
       logo: '',
       show: false,
-      btop:false,
+      desktopname:'',
     };
     console.log('main item constructor...');
     this.init();
@@ -38,34 +38,31 @@ class Item extends Component {
     myPromise.then(()=>{
       global.readFile(filePath, data => {
         
-        let [title, logo] = data
+        let [title, desktopname] = data
           .substr('# '.length, data.indexOf('\n'))
-          .split('|');
-        // logo = `${this.path}${logo}`;
-
-        //获取logo路劲
-        var pathList = filePath.split('/');
-        pathList = pathList.splice(0,pathList.length -1);
-        var logoPath = pathList.join("/") + "/";
-        logo = `${logoPath}${logo}`;
-   
-    
-     global.qtObjects.manual.getAppIconPath(logo,(logopath) =>{
+          .split('|');   
+     
+     global.qtObjects.manual.getAppIconPath(desktopname,(logopath) =>{
       this.setState({ logo:logopath});     
       });
+
+      global.qtObjects.manual.getLocalAppName(desktopname,(appname) =>{
+        this.setState({ title:appname});     
+        });
     
-     this.setState({ title, file:this.file, show: true,btop:true}); 
+     this.setState({desktopname, file:this.file, show: true}); 
       });
     });
     global.show=true;
-    global.qtObjects.manual.iconThemeChanged.connect(
-      this.iconThemeChange.bind(this)
-   );
+    //2021.3.4产品决定取消图标动态切换，使用default图标主题，暂时注释
+  //   global.qtObjects.manual.iconThemeChanged.connect(
+  //     this.iconThemeChange.bind(this)
+  //  );
     
   }
 
   iconThemeChange(themeType) {
-     global.qtObjects.manual.getAppIconPath(this.state.logo,(logopath) =>{      
+     global.qtObjects.manual.getAppIconPath(this.state.desktopname,(logopath) =>{      
       if( global.show===true)   {      
         this.setState({ logo:logopath});     
       }      

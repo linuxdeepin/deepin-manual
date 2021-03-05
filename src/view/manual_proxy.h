@@ -52,15 +52,15 @@ public slots:
     void renderFinish();
     void showUpdateLabel();
     QString appToPath(const QString &appName);
-    QString getAppIconPath(const QString &logoPath);
-    QString getLocalAppName(const QString &appname);
-    void manualtest(const QString &fuc, const QString &appname);
+    QString getAppIconPath(const QString &desktopname);
+    QString getLocalAppName(const QString &desktopname);
 
 private:
     void saveAppList(const QStringList &list);
 
 private:
     QStringList app_list_;
+    QString strIconTheme;
 };
 
 #endif // DEEPIN_MANUAL_VIEW_MANUAL_PROXY_H

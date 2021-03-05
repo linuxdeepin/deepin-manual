@@ -433,6 +433,22 @@ bool Utils::activeWindow(quintptr winId)
     return bsuccess;
 }
 
+QString Utils::regexp_label(const QString &strtext, const QString &strpatter)
+{
+    QString strsource = strtext;
+    QString result;
+    QRegularExpression re(strpatter, QRegularExpression::MultilineOption | QRegularExpression::CaseInsensitiveOption);
+    QRegularExpressionMatch match = re.match(strsource);
+    if (match.isValid() && match.hasMatch()) {
+        for (int i = 0; i <= match.lastCapturedIndex(); i++) {
+            result = match.captured(i);
+            qDebug() << __FUNCTION__ << "-------****" << result;
+            break;
+        }
+    }
+    return result;
+}
+
 ExApplicationHelper *ExApplicationHelper::instance()
 {
     return qobject_cast<ExApplicationHelper *>(DGuiApplicationHelper::instance());
