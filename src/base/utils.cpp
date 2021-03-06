@@ -264,7 +264,7 @@ QStringList Utils::getSystemManualList()
             app_list_.append(app_name);
         }
     }
-    //app_list_.append("DeepinAIAssistant");//语音助手无法通过launcherInterface获取目前只能手动添加
+    app_list_.append("DeepinAIAssistant"); //语音助手无法通过launcherInterface获取目前只能手动添加
     if (systemList.contains("dde") || oldAppList.contains("dde")) {
         app_list_.append("dde");
     }

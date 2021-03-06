@@ -169,7 +169,7 @@ QString ManualProxy::appToPath(const QString &appName)
     qDebug() << "========>" << appName;
     QString strlocal = "en_US";
     if (QLocale::system().name() == "zh_CN" || QLocale::system().name() == "zh_HK" || QLocale::system().name() == "zh_TW") {
-        strlocal = "zh_CN";
+        strlocal = QLocale::system().name();
     }
 
     QStringList omitType = Utils::systemToOmit(Dtk::Core::DSysInfo::uosEditionType());
@@ -188,7 +188,7 @@ QString ManualProxy::appToPath(const QString &appName)
         if (list.count() == 1) {
             appNameT = list.at(0);
         } else if (list.count() > 1) {
-            qWarning() << Q_FUNC_INFO << assetPath << "have move dir" << list;
+            qWarning() << Q_FUNC_INFO << assetPath << "dir greater than one:" << list;
             appNameT = list.at(1);
         } else {
             appNameT = "error";
@@ -309,7 +309,8 @@ QString ManualProxy::getLocalAppName(const QString &desktopname)
         QFile file(filepath);
         if (file.exists()) {
             Dtk::Core::DDesktopEntry entry(filepath);
-            strdisplayname = entry.ddeDisplayName();
+            strdisplayname = entry.genericName();
+            strdisplayname = strdisplayname.isEmpty() ? entry.ddeDisplayName() : strdisplayname;
         }
     }
     return strdisplayname;
