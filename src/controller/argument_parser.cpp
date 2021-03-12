@@ -48,7 +48,7 @@ bool ArgumentParser::parseArguments()
     parser.addHelpOption();
     parser.addVersionOption();
     parser.addOption(QCommandLineOption("dbus", "enable daemon mode"));
-    parser.parse(qApp->arguments());
+    parser.process(*(qobject_cast<QGuiApplication *>(this)));
 
     // 注册Dbus open服务,对外主要接口
     QDBusConnection conn = QDBusConnection::sessionBus();

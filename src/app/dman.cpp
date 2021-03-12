@@ -74,7 +74,7 @@ int main(int argc, char **argv)
                                       " providing specific instructions and function descriptions."));
     app.setApplicationAcknowledgementPage("https://www.deepin.org/acknowledgments/deepin-manual/");
 
-    ArgumentParser argument_parser;
+    ArgumentParser argument_parser(&app);
     WindowManager window_manager;
     // window_manager.setStartTime(startTime);
     //绑定参数解析 信号与槽
