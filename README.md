@@ -76,3 +76,7 @@ subprocess.Popen("dman myApp", stdin = None, stdout = None, stderr = None)
 ## For document writers
 
 Run the following in the terminal: `dman dman`
+
+## License 
+
+Deepin Manual is licensed under [GPLv3](LICENSE) or any later version.
