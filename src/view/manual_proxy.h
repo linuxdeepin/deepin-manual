@@ -54,6 +54,7 @@ public slots:
     QString appToPath(const QString &appName);
     QString getAppIconPath(const QString &desktopname);
     QString getLocalAppName(const QString &desktopname);
+    void LogPrint(const QString &log);
 
 private:
     void saveAppList(const QStringList &list);

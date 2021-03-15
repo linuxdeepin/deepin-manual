@@ -43,9 +43,9 @@ int main(int argc, char **argv)
 //    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--no-sandbox");
     //龙芯机器配置,使得DApplication能正确加载QTWEBENGINE
     qputenv("DTK_FORCE_RASTER_WIDGETS", "FALSE");
-
-//    qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "7777");
-//    Dtk::Widget::DApplication::loadDXcbPlugin();
+    //访问http://127.0.0.1:7777/调试
+    qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "7777");
+    //    Dtk::Widget::DApplication::loadDXcbPlugin();
 
     Dtk::Widget::DApplication app(argc, argv);
     if (!DPlatformWindowHandle::pluginVersion().isEmpty()) {

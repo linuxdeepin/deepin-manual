@@ -1834,78 +1834,83 @@ exports.default = Main;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./article.jsx":2,"./mdToHtml.js":5,"./nav.jsx":6,"jquery":18,"react":74}],5:[function(require,module,exports){
+(function (global){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
-  value: true
+    value: true
 });
 
 var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
 
 exports.default = function (mdFile, mdData) {
-  var key = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
+    var key = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
-  var hlist = [];
-  var info = {};
-  var html = '';
+    var hlist = [];
+    var info = {};
+    var html = '';
 
-  var path = mdFile.slice(0, mdFile.lastIndexOf('/') + 1);
-  var renderer = new _marked2.default.Renderer();
-  var count = 0;
-  renderer.heading = function (text, level) {
-    var id = 'h' + count;
-    count++;
-    if (level == 1) {
-      var _text$split = text.split('|'),
-          _text$split2 = _slicedToArray(_text$split, 2),
-          title = _text$split2[0],
-          logo = _text$split2[1];
+    var path = mdFile.slice(0, mdFile.lastIndexOf('/') + 1);
+    var renderer = new _marked2.default.Renderer();
+    var count = 0;
+    renderer.heading = function (text, level) {
+        var id = 'h' + count;
+        count++;
+        if (level == 1) {
+            var _text$split = text.split('|'),
+                _text$split2 = _slicedToArray(_text$split, 2),
+                title = _text$split2[0],
+                logo = _text$split2[1];
 
-      logo = path + logo;
-      console.log(logo);
-      info = { title: title, logo: logo };
-      return '';
+            logo = path + logo;
+            console.log(logo);
+            info = { title: title, logo: logo };
+            return '';
+        }
+        if (level == 2) {
+            text = text.split('|')[0];
+        }
+        var type = 'h' + level;
+        if (level == 2 || level == 3) {
+            hlist.push({ id: id, text: text, type: type });
+        }
+        return '<' + type + ' id="' + id + '" text="' + text + '">' + text + '</' + type + '>\n';
+    };
+    console.log(path);
+    renderer.image = function (href, title, text) {
+        var hrefX2 = href;
+        if (devicePixelRatio >= 0.5 && href.indexOf('.svg') == -1) {
+            global.qtObjects.manual.LogPrint('start hrefX2:' + hrefX2);
+            var _path = href.split('.');
+            var ext = _path.pop();
+            global.qtObjects.manual.LogPrint(_path + '--' + ext);
+            hrefX2 = _path.join('.') + 'x2.' + ext;
+            global.qtObjects.manual.LogPrint('end hrefX2:' + hrefX2);
+        }
+
+        return '<img src="' + hrefX2 + '" data-src="' + href + '" alt="' + text + '" />';
+    };
+
+    html = (0, _marked2.default)(mdData, { renderer: renderer }).replace(/src="/g, '$&' + path);
+    console.log("-----------------------------------");
+    if (key != '') {
+        console.log("regexp==============>", key);
+        //将'=-='字符串 反向还原成'%'
+        key = key.replace(/=-=/g, '%');
+
+        console.log("regexp===>", key);
+
+        //将关键字转义
+        var keyTemp = new RegExp(escapeRegExp(key), 'gi');
+
+        // key = re;
+        var finder = new RegExp(">.*?<", 'g'); // 提取位于标签内的文本，避免误操作 class、id 等
+        html = html.replace(finder, function (matched) {
+            return matched.replace(new RegExp(keyTemp, 'gi'), "<span style='background-color: yellow'>$&</span>");
+        });
     }
-    if (level == 2) {
-      text = text.split('|')[0];
-    }
-    var type = 'h' + level;
-    if (level == 2 || level == 3) {
-      hlist.push({ id: id, text: text, type: type });
-    }
-    return '<' + type + ' id="' + id + '" text="' + text + '">' + text + '</' + type + '>\n';
-  };
-  console.log(path);
-  renderer.image = function (href, title, text) {
-    var hrefX2 = href;
-    if (devicePixelRatio >= 1.5 && href.indexOf('.svg') == -1) {
-      var _path = href.split('.');
-      var ext = _path.pop();
-      hrefX2 = _path.join('.') + 'x2.' + ext;
-    }
-    return '<img src="' + hrefX2 + '" data-src="' + href + '" alt="' + text + '" />';
-  };
 
-  html = (0, _marked2.default)(mdData, { renderer: renderer }).replace(/src="/g, '$&' + path);
-  console.log("-----------------------------------");
-  if (key != '') {
-    console.log("regexp==============>", key);
-    //将'=-='字符串 反向还原成'%'
-    key = key.replace(/=-=/g, '%');
-
-    console.log("regexp===>", key);
-
-    //将关键字转义
-    var keyTemp = new RegExp(escapeRegExp(key), 'gi');
-
-    // key = re;
-    var finder = new RegExp(">.*?<", 'g'); // 提取位于标签内的文本，避免误操作 class、id 等
-    html = html.replace(finder, function (matched) {
-      return matched.replace(new RegExp(keyTemp, 'gi'), "<span style='background-color: yellow'>$&</span>");
-    });
-  }
-
-  return { html: html, hlist: hlist, info: info };
+    return { html: html, hlist: hlist, info: info };
 };
 
 var _marked = require('marked');
@@ -1916,9 +1921,10 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 //转义特定字符
 function escapeRegExp(text) {
-  return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
 };
 
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"marked":19}],6:[function(require,module,exports){
 (function (global){
 'use strict';
@@ -2223,10 +2229,19 @@ var Items = function (_Component) {
       var _data$substr$split = data.substr('# '.length, data.indexOf('\n')).split('|'),
           _data$substr$split2 = _slicedToArray(_data$substr$split, 2),
           title = _data$substr$split2[0],
-          logo = _data$substr$split2[1];
+          desktopname = _data$substr$split2[1];
+      // logo = `${path}${logo}`;
+      // this.setState({ title, logo, show: true });
 
-      logo = '' + path + logo;
-      _this.setState({ title: title, logo: logo, show: true });
+
+      global.qtObjects.manual.getAppIconPath(desktopname, function (logopath) {
+        _this.setState({ logo: logopath });
+      });
+
+      global.qtObjects.manual.getLocalAppName(desktopname, function (appname) {
+        _this.setState({ title: appname });
+      });
+      _this.setState({ show: true });
     });
     return _this;
   }

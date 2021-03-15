@@ -15,11 +15,19 @@ class Items extends Component {
     let path = props.file.slice(0, props.file.lastIndexOf('/') + 1);
     console.log("========path======>",path);
     global.readFile(props.file, data => {
-      let [title, logo] = data
+      let [title, desktopname] = data
         .substr('# '.length, data.indexOf('\n'))
         .split('|');
-      logo = `${path}${logo}`;
-      this.setState({ title, logo, show: true });
+      // logo = `${path}${logo}`;
+      // this.setState({ title, logo, show: true });
+      global.qtObjects.manual.getAppIconPath(desktopname,(logopath) =>{
+        this.setState({ logo:logopath});     
+        });
+  
+      global.qtObjects.manual.getLocalAppName(desktopname,(appname) =>{
+          this.setState({ title:appname});     
+          });
+      this.setState({show: true });
     });
   }
 

@@ -316,6 +316,11 @@ QString ManualProxy::getLocalAppName(const QString &desktopname)
     return strdisplayname;
 }
 
+void ManualProxy::LogPrint(const QString &log)
+{
+    qDebug() << "js-log:" << log;
+}
+
 /**
  * @brief ManualProxy::saveAppList
  * @param list
