@@ -36,14 +36,14 @@ export default function(mdFile, mdData, key = '') {
     renderer.image = (href, title, text) => {
         let hrefX2 = href;
 
-        if (devicePixelRatio >= 5.0 && href.indexOf('.svg') == -1) {
-            // global.qtObjects.manual.LogPrint('start hrefX2:' + hrefX2);
-            let path = href.split('.');
-            let ext = path.pop();
-            // global.qtObjects.manual.LogPrint(path + '--' + ext);
-            hrefX2 = `${path.join('.')}x2.${ext}`;
-            // global.qtObjects.manual.LogPrint('end hrefX2:' + hrefX2);
-        }
+        // if (devicePixelRatio >= 5.0 && href.indexOf('.svg') == -1) {
+        //     // global.qtObjects.manual.LogPrint('start hrefX2:' + hrefX2);
+        //     let path = href.split('.');
+        //     let ext = path.pop();
+        //     // global.qtObjects.manual.LogPrint(path + '--' + ext);
+        //     hrefX2 = `${path.join('.')}x2.${ext}`;
+        //     // global.qtObjects.manual.LogPrint('end hrefX2:' + hrefX2);
+        // }
 
         return `<img src="${hrefX2}" data-src="${href}" alt="${text}" />`;
     };

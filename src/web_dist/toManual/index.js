@@ -1834,7 +1834,6 @@ exports.default = Main;
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"./article.jsx":2,"./mdToHtml.js":5,"./nav.jsx":6,"jquery":18,"react":74}],5:[function(require,module,exports){
-(function (global){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -1879,14 +1878,15 @@ exports.default = function (mdFile, mdData) {
     console.log(path);
     renderer.image = function (href, title, text) {
         var hrefX2 = href;
-        if (devicePixelRatio >= 0.5 && href.indexOf('.svg') == -1) {
-            global.qtObjects.manual.LogPrint('start hrefX2:' + hrefX2);
-            var _path = href.split('.');
-            var ext = _path.pop();
-            global.qtObjects.manual.LogPrint(_path + '--' + ext);
-            hrefX2 = _path.join('.') + 'x2.' + ext;
-            global.qtObjects.manual.LogPrint('end hrefX2:' + hrefX2);
-        }
+
+        // if (devicePixelRatio >= 5.0 && href.indexOf('.svg') == -1) {
+        //     // global.qtObjects.manual.LogPrint('start hrefX2:' + hrefX2);
+        //     let path = href.split('.');
+        //     let ext = path.pop();
+        //     // global.qtObjects.manual.LogPrint(path + '--' + ext);
+        //     hrefX2 = `${path.join('.')}x2.${ext}`;
+        //     // global.qtObjects.manual.LogPrint('end hrefX2:' + hrefX2);
+        // }
 
         return '<img src="' + hrefX2 + '" data-src="' + href + '" alt="' + text + '" />';
     };
@@ -1924,7 +1924,6 @@ function escapeRegExp(text) {
     return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
 };
 
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
 },{"marked":19}],6:[function(require,module,exports){
 (function (global){
 'use strict';
@@ -2091,10 +2090,10 @@ var Nav = function (_Component) {
           onMouseDown: function onMouseDown(e) {
             return _this2.click(e);
           },
-          onContextMenu: this.contentMenu,
-          style: {
-            width: 'calc(' + maxWidth + 'px + ' + c + 'rem'
-          }
+          onContextMenu: this.contentMenu
+          // style={{
+          //   width: `calc(${maxWidth}px + ${c}rem)`
+          // }}
         },
         _react2.default.createElement(
           _scrollbar2.default,

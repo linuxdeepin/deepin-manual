@@ -120,9 +120,9 @@ class Nav extends Component {
         lang={global.lang}
         onMouseDown={e => this.click(e)}
         onContextMenu={this.contentMenu}
-        style={{
-          width: `calc(${maxWidth}px + ${c}rem`
-        }}
+        // style={{
+        //   width: `calc(${maxWidth}px + ${c}rem)`
+        // }}
       >
         <Scrollbar>
           <div
