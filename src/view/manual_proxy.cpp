@@ -166,7 +166,7 @@ void ManualProxy::showUpdateLabel()
 //根据产品约定出简体中文、繁体中文（香港）、正体中文(台湾）都使用简体中文文案，其它的都使用英文
 QString ManualProxy::appToPath(const QString &appName)
 {
-    qDebug() << "========>" << appName;
+    qDebug() << __FUNCTION__ << "========>" << appName;
     QString strlocal = "en_US";
     if (QLocale::system().name() == "zh_CN" || QLocale::system().name() == "zh_HK" || QLocale::system().name() == "zh_TW") {
         strlocal = QLocale::system().name();
@@ -184,6 +184,7 @@ QString ManualProxy::appToPath(const QString &appName)
 
     if (QDir(appPath).exists()) {
         QStringList list = QDir(appPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs);
+        qDebug() << __FUNCTION__ << "3" << list;
         QString appNameT;
         if (list.count() == 1) {
             appNameT = list.at(0);
@@ -200,7 +201,9 @@ QString ManualProxy::appToPath(const QString &appName)
             mdList.append(appPath + "/" + QString("%1_%2.md").arg(omitType.at(0)).arg(appNameT));
             mdList.append(appPath + "/" + QString("%1_%2.md").arg(omitType.at(1)).arg(appNameT));
         } else {
-            mdList.append(appPath + "/" + QString("%1_%2.md").arg(omitType.at(0)).arg(appNameT));
+            if (omitType.size() > 0) {
+                mdList.append(appPath + "/" + QString("%1_%2.md").arg(omitType.at(0)).arg(appNameT));
+            }
             mdList.append(appPath + "/" + QString("%1.md").arg(appNameT));
         }
     }
