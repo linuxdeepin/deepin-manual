@@ -58,6 +58,7 @@ public slots:
 
 private:
     void saveAppList(const QStringList &list);
+    QString getAppLocalDir(const QString &appPath);
 
 private:
     QStringList app_list_;

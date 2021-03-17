@@ -162,15 +162,9 @@ void ManualProxy::showUpdateLabel()
 }
 
 //根据app名称找到对应md文件
-//目前只有简体中文和英文两种文案
-//根据产品约定出简体中文、繁体中文（香港）、正体中文(台湾）都使用简体中文文案，其它的都使用英文
 QString ManualProxy::appToPath(const QString &appName)
 {
     qDebug() << __FUNCTION__ << "========>" << appName;
-    QString strlocal = "en_US";
-    if (QLocale::system().name() == "zh_CN" || QLocale::system().name() == "zh_HK" || QLocale::system().name() == "zh_TW") {
-        strlocal = QLocale::system().name();
-    }
 
     QStringList omitType = Utils::systemToOmit(Dtk::Core::DSysInfo::uosEditionType());
     const QString assetPath = Utils::getSystemManualDir();
@@ -184,7 +178,6 @@ QString ManualProxy::appToPath(const QString &appName)
 
     if (QDir(appPath).exists()) {
         QStringList list = QDir(appPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs);
-        qDebug() << __FUNCTION__ << "3" << list;
         QString appNameT;
         if (list.count() == 1) {
             appNameT = list.at(0);
@@ -195,7 +188,8 @@ QString ManualProxy::appToPath(const QString &appName)
             appNameT = "error";
             qWarning() << Q_FUNC_INFO << " no dir";
         }
-        appPath += "/" + appNameT + "/" + strlocal;
+        appPath.append("/").append(appNameT).append("/");
+        appPath = getAppLocalDir(appPath);
 
         if (omitType.length() > 1) {
             mdList.append(appPath + "/" + QString("%1_%2.md").arg(omitType.at(0)).arg(appNameT));
@@ -222,7 +216,9 @@ QString ManualProxy::appToPath(const QString &appName)
             oldMdPath += "/professional";
         }
     }
-    mdList.append(oldMdPath + "/" + appName + "/" + strlocal + "/index.md");
+    oldMdPath.append("/").append(appName).append("/");
+    oldMdPath = getAppLocalDir(oldMdPath);
+    mdList.append(oldMdPath.append("/index.md"));
 #endif
     qDebug() << mdList;
     //初始化赋值，如果为空字符，web层路径请求依旧能onload成功...
@@ -345,6 +341,27 @@ void ManualProxy::saveAppList(const QStringList &list)
     setting->endGroup();
     setting->sync();
     qDebug() << "app config  allKeys count : " << l.size();
+}
+
+QString ManualProxy::getAppLocalDir(const QString &appPath)
+{
+    //appPath like /usr/share/deepin-manual/manual-assets/application/deepin-boot-maker/boot-maker/
+    QString appdir(appPath);
+    QString strlocal(QLocale::system().name());
+    QString AppLocalDir = QString(appPath).append(strlocal);
+    QDir dir(AppLocalDir);
+    //如果不存在该种语言的文档路径，藏语、维语使用简体中文，其它使用英文
+    qInfo() << __FUNCTION__ << dir.absolutePath() << strlocal;
+    if (!dir.exists()) {
+        //藏语维语使用简体中文
+        if (0 == strlocal.compare("ug_CN") || 0 == strlocal.compare("bo_CN")) {
+            AppLocalDir = QString(appPath).append("zh_CN");
+        } else {
+            AppLocalDir = QString(appPath).append("en_US");
+        }
+    }
+    qInfo() << __FUNCTION__ << "AppLocalDir:" << AppLocalDir;
+    return AppLocalDir;
 }
 
 //bool ManualPro
