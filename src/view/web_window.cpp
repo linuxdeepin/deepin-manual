@@ -217,11 +217,13 @@ void WebWindow::setAppProperty(const QString &appName, const QString &titleName,
 void WebWindow::slot_ThemeChanged()
 {
     DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
+    QColor fillColor = DGuiApplicationHelper::instance()->applicationPalette().highlight().color();
     if (themeType == DGuiApplicationHelper::DarkType) {
         web_view_->page()->setBackgroundColor(QColor(37, 37, 37));
     } else {
         web_view_->page()->setBackgroundColor(QColor(248, 248, 248));
     }
+    web_view_->page()->runJavaScript(QString("setHashWordColor('%1')").arg(fillColor.name()));
 }
 
 /**
