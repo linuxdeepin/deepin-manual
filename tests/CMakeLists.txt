@@ -97,7 +97,7 @@ add_definitions(-DDMAN_INSTALL_DB_PATH="${CMAKE_INSTALL_PREFIX}/share/deepin-man
 include_directories(../src)
 
 set(PROJECT_NAME_TEST
-    ${PROJECT_NAME}_test)
+    ${PROJECT_NAME}-test)
 
 # 定义 source 文件
 FILE (GLOB allTestSource
