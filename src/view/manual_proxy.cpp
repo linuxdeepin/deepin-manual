@@ -354,7 +354,8 @@ QString ManualProxy::getAppLocalDir(const QString &appPath)
     qInfo() << __FUNCTION__ << dir.absolutePath() << strlocal;
     if (!dir.exists()) {
         //藏语维语使用简体中文
-        if (0 == strlocal.compare("ug_CN") || 0 == strlocal.compare("bo_CN")) {
+        if (0 == strlocal.compare("ug_CN") || 0 == strlocal.compare("bo_CN")
+            || 0 == strlocal.compare("zh_HK") || 0 == strlocal.compare("zh_TW")) {
             AppLocalDir = QString(appPath).append("zh_CN");
         } else {
             AppLocalDir = QString(appPath).append("en_US");

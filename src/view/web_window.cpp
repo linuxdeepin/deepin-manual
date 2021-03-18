@@ -520,6 +520,7 @@ void WebWindow::initUI()
         this->titlebar()->setMenu(pMenu);
         connect(pHelpSupport, &QAction::triggered, this, &WebWindow::slot_HelpSupportTriggered);
     }
+
     this->titlebar()->addWidget(buttonFrame, Qt::AlignLeft);
     this->titlebar()->addWidget(search_edit_, Qt::AlignCenter);
     this->titlebar()->setSeparatorVisible(false);
@@ -537,7 +538,6 @@ void WebWindow::initUI()
     spinnerLayout->addWidget(m_spinner, 0, Qt::AlignCenter);
     this->setCentralWidget(spinnerPage);
     m_spinner->start();
-
 }
 
 /**
