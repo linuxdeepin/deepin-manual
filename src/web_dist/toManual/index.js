@@ -1276,6 +1276,10 @@ var Item = function (_Component) {
               desktopname = _data$substr$split2[1];
 
           global.qtObjects.manual.getAppIconPath(desktopname, function (logopath) {
+            //按约定会在图标主题放置dde图标，但为保险起见如果未获取到则取common中的
+            if (logopath == '' && desktopname == "dde") {
+              logopath = filePath.substr(0, filePath.lastIndexOf('/') + 1) + '../common/dde.svg';
+            }
             _this2.setState({ logo: logopath });
           });
 

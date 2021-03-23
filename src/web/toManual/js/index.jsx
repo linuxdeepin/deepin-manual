@@ -41,8 +41,12 @@ class Item extends Component {
         let [title, desktopname] = data
           .substr('# '.length, data.indexOf('\n'))
           .split('|');   
-     
+          
      global.qtObjects.manual.getAppIconPath(desktopname,(logopath) =>{
+       //按约定会在图标主题放置dde图标，但为保险起见如果未获取到则取common中的
+       if(logopath==''&&desktopname=="dde"){
+        logopath=filePath.substr(0,filePath.lastIndexOf('/')+1)+'../common/dde.svg';       
+       }
       this.setState({ logo:logopath});     
       });
 
