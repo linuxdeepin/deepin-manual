@@ -45,6 +45,7 @@ int shellObj::startSystemThread(const QString &cmd)
 {
     this->cmd = cmd;
     thread = new QThread();
+    connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
     moveToThread(thread);
     connect(thread, &QThread::started, [ = ]() {
         runSystem();

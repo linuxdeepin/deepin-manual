@@ -83,4 +83,5 @@ TEST_F(ut_search_completion_delegate_test, paint)
 
     sd->paint(painter, option, index);
     s.reset(ADDR(QModelIndex, isValid));
+    delete painter;
 }

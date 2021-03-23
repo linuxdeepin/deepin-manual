@@ -32,10 +32,10 @@
 
 helperManager::helperManager(QObject *parent)
     : QObject(parent)
-    , watcherObj(new fileWatcher)
-    , dbObj(new SearchDb)
-    , timerObj(new QTimer)
-    , jsObj(new JsContext)
+    , watcherObj(new fileWatcher(this))
+    , dbObj(new SearchDb(this))
+    , timerObj(new QTimer(this))
+    , jsObj(new JsContext(this))
 {
     timerObj->setSingleShot(true);
     timerObj->setInterval(1000);

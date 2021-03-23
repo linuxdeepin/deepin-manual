@@ -96,6 +96,7 @@ TEST_F(ut_manual_proxy_test, setApplicationState)
             qDebug() << "setting->value.dde.bool->>" << setting->value(appName).toBool();
             setting->endGroup();
         }
+         delete setting;
     } else {
         QSettings *setting = new QSettings(winInfoFilePath, QSettings::IniFormat);
 
@@ -113,7 +114,9 @@ TEST_F(ut_manual_proxy_test, setApplicationState)
             qDebug() << "setting->value.dde.bool->>" << setting->value(appName).toBool();
             setting->endGroup();
         }
+         delete setting;
     }
+
 }
 
 TEST_F(ut_manual_proxy_test, setApplicationState2)
@@ -150,6 +153,7 @@ TEST_F(ut_manual_proxy_test, setApplicationState2)
             ASSERT_FALSE(setting->value(appName).toBool());
             setting->endGroup();
         }
+        delete setting;
     } else {
         QSettings *setting = new QSettings(winInfoFilePath, QSettings::IniFormat);
 
@@ -165,6 +169,7 @@ TEST_F(ut_manual_proxy_test, setApplicationState2)
             ASSERT_FALSE(setting->value(appName).toBool());
             setting->endGroup();
         }
+        delete setting;
     }
 }
 
@@ -206,6 +211,7 @@ TEST_F(ut_manual_proxy_test, saveApplist)
         ASSERT_TRUE(setting->value("dde_test").toBool());
     }
     setting->endGroup();
+    delete setting;
 }
 
 TEST_F(ut_manual_proxy_test, showUpdateLabel)

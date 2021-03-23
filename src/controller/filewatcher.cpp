@@ -27,8 +27,8 @@
 
 fileWatcher::fileWatcher(QObject *parent)
     : QObject(parent)
-    , watcherObj(new QFileSystemWatcher)
-    , timerObj(new QTimer)
+    , watcherObj(new QFileSystemWatcher(this))
+    , timerObj(new QTimer(this))
 {
     timerObj->setSingleShot(true);
     timerObj->setInterval(3 * 1000);
