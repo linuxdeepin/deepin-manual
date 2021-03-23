@@ -525,7 +525,8 @@ void WebWindow::initUI()
     this->titlebar()->addWidget(search_edit_, Qt::AlignCenter);
     this->titlebar()->setSeparatorVisible(false);
     this->titlebar()->setIcon(QIcon::fromTheme("deepin-manual"));
-
+    //通过强制设置主题获取图标后，dtk获取图标失败，此处临时方案，后续进行源码级修复
+    QIcon::fromTheme("mark_indicator");
     //隐藏title阴影
     this->setTitlebarShadowEnabled(false);
     //键盘盲打

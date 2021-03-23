@@ -93,7 +93,7 @@ void helperManager::getModuleInfo()
                 //./manual-assets/application(system)/appName/appNameT
                 QString appPath = modulePath + "/" + listAppNameT.at(0);
                 for (QString &lang : QDir(appPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-                    if (lang == "zh_CN" || lang == "en_US") {
+                    if (0 != lang.compare("common")) {
                         //./manual-assets/application(system)/appName/appNameT/lang
                         QString langPath = appPath + "/" + lang;
                         for (QString &mdFile : QDir(langPath).entryList(QDir::Files)) {
@@ -121,7 +121,8 @@ void helperManager::getModuleInfo()
             for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
                 QString modulePath = typePath + "/" + module;
                 for (QString &lang : QDir(modulePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-                    if (lang == "zh_CN" || lang == "en_US") {
+                    // 除了common目录其它其它都是各语言对应文档目录
+                    if (0 != lang.compare("common")) {
                         QString strMd = modulePath + "/" + lang + "/index.md";
                         QFileInfo fileInfo(strMd);
                         if (fileInfo.exists()) {
@@ -365,6 +366,9 @@ void helperManager::onRecvParseMsg(const QString &msg, const QString &path)
                 anchorInitialList.append("");
             }
             anchorSpellList.append(title_us.remove(" "));
+        } else {
+            anchorInitialList.append("");
+            anchorSpellList.append("");
         }
         const QString content = anchor.at(2).toString();
         contents.append(content);

@@ -276,20 +276,25 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
         app_names.append(app_name);
         lang_list.append(lang);
     }
-    query.bindValue(0, app_names);
-    query.bindValue(1, lang_list);
-    query.bindValue(2, anchors);
-    query.bindValue(3, anchorInitialList);
-    query.bindValue(4, anchorSpellList);
-    query.bindValue(5, anchorIdList);
-    query.bindValue(6, newContents);
-    bool ok = query.execBatch();
+    int icout = app_names.size();
+    if (icout == lang_list.size() && icout == anchors.size() && icout == anchorInitialList.size() && icout == anchorSpellList.size() && icout == anchorIdList.size() && icout == newContents.size()) {
+        query.bindValue(0, app_names);
+        query.bindValue(1, lang_list);
+        query.bindValue(2, anchors);
+        query.bindValue(3, anchorInitialList);
+        query.bindValue(4, anchorSpellList);
+        query.bindValue(5, anchorIdList);
+        query.bindValue(6, newContents);
+        bool ok = query.execBatch();
 
-    if (!ok) {
-        p_->db.rollback();
-        qCritical() << "Failed to insert search entry:" << query.lastError().text();
+        if (!ok) {
+            p_->db.rollback();
+            qCritical() << "Failed to insert search entry:" << query.lastError().text();
+        } else {
+            p_->db.commit();
+        }
     } else {
-        p_->db.commit();
+        qDebug() << __FUNCTION__ << "field size not match execBatch may crash ,app-name :" << app_name;
     }
 }
 
@@ -337,7 +342,20 @@ void SearchDb::handleSearchAnchor(const QString &keyword)
     SearchAnchorResultList result;
 
     QSqlQuery query(p_->db);
-    const QString lang = QLocale().name();
+    QString lang = QLocale().name();
+    if (query.exec(QString("select count(*) from search where lang='%1';").arg(lang)) && query.next()) {
+        int icount = query.value(0).toInt();
+        //如果当前语言不存在
+        if (0 == icount) {
+            //藏语维语使用简体中文
+            if (0 == lang.compare("ug_CN") || 0 == lang.compare("bo_CN")
+                || 0 == lang.compare("zh_HK") || 0 == lang.compare("zh_TW")) {
+                lang = "zh_CN";
+            } else {
+                lang = "en_US";
+            }
+        }
+    }
     const QString sql =
         QString(kSearchSelectAnchor).replace(":anchor", keyword).replace(":lang", lang);
     qDebug() << "=======>" << sql;
@@ -580,7 +598,20 @@ void SearchDb::handleSearchContent(const QString &keyword)
     }
 
     QSqlQuery query(p_->db);
-    const QString lang = QLocale().name();
+    QString lang = QLocale().name();
+    if (query.exec(QString("select count(*) from search where lang='%1';").arg(lang)) && query.next()) {
+        int icount = query.value(0).toInt();
+        //如果当前语言不存在
+        if (0 == icount) {
+            //藏语维语使用简体中文
+            if (0 == lang.compare("ug_CN") || 0 == lang.compare("bo_CN")
+                || 0 == lang.compare("zh_HK") || 0 == lang.compare("zh_TW")) {
+                lang = "zh_CN";
+            } else {
+                lang = "en_US";
+            }
+        }
+    }
     const QString sql =
         QString(kSearchSelectContent).replace(":lang", lang).replace(":content", keyword);
 
