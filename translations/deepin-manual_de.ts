@@ -1,5 +1,13 @@
 <?xml version="1.0" ?><!DOCTYPE TS><TS language="de" version="2.1">
 <context>
+    <name>ManualProxy</name>
+    <message>
+        <location filename="../src/view/manual_proxy.cpp" line="306"/>
+        <source>Desktop Environment</source>
+        <translation type="unfinished"/>
+    </message>
+</context>
+<context>
     <name>QObject</name>
     <message>
         <location filename="../src/app/dman.cpp" line="71"/>
