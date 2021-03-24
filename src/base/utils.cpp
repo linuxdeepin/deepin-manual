@@ -30,30 +30,30 @@ const char kLauncherService[] = "com.deepin.dde.daemon.Launcher";
 const char kLauncherIface[] = "/com/deepin/dde/daemon/Launcher";
 
 //标题映射表
-const int langCount = 3;
+const int langCount = 5;
+//key zh_Cn en_Us zh_HK zh_TW
 QString languageArr[][langCount] = {
     //dde model
-    {"controlcenter", "控制中心", "Control Center"},
-    {"accounts", "帐户设置", "Accounts"},
-    {"cloudsync", "Union ID", "Union ID"},
-    {"display", "显示设置", "Display Settings"},
-    {"defapp", "默认程序设置", "Default Application Settings"},
-    {"personalization", "个性化设置", "Personalization Settings"},
-    {"network", "网络设置", "Network Settings"},
-    {"notification", "通知设置", "Notification Settings"},
-    {"sound", "声音设置", "Sound Settings"},
-    {"bluetooth", "蓝牙设置", "Bluetooth Settings"},
-    {"datetime", "时间日期", "Date and Time"},
-    {"power", "电源管理", "Power Management"},
-    {"mouse", "鼠标和触控板", "Mouse and Touchpad"},
-    {"tablet", "数位板", "Drawing Tablet"},
-    {"keyboard", "键盘和语言", "Keyboard and Language"},
-    {"voice", "辅助功能", "Assistive Tools"},
-    {"update", "系统更新", "Update Settings"},
-    {"systeminfo", "系统信息", "System Info"},
-    {"License activator", "授权管理", "Authorization Management"},
-    {"commoninfo", "通用设置", "General Settings"}
-};
+    {"controlcenter", "控制中心", "Control Center", "控制中心", "控制中心"},
+    {"accounts", "帐户设置", "Accounts", "賬號設置", "帳戶設定"},
+    {"cloudsync", "Union ID", "Union ID", "Union ID", "Union ID"},
+    {"display", "显示设置", "Display", "顯示設置", "螢幕設定"},
+    {"defapp", "默认程序设置", "Default Application", "默認程序設置", "預設程式"},
+    {"personalization", "个性化设置", "Personalization Settings", "個性化設置", "個性化設定"},
+    {"network", "网络设置", "Network Settings", "網絡設置", "網路設定"},
+    {"notification", "通知设置", "Notification Settings", "通知設置", "通知設定"},
+    {"sound", "声音设置", "Sound Settings", "聲音設置", "聲音設定"},
+    {"bluetooth", "蓝牙设置", "Bluetooth Settings", "藍牙設置", "藍牙設定"},
+    {"datetime", "时间日期", "Date and Time", "日期與時刻", "時間日期"},
+    {"power", "电源管理", "Power Management", "電源管理", "電源管理"},
+    {"mouse", "鼠标和触控板", "Mouse and Touchpad", "鼠標和觸控板", "滑鼠和觸控板"},
+    {"tablet", "数位板", "Drawing Tablet", "數位板", "數位板"},
+    {"keyboard", "键盘和语言", "Keyboard and Language", "鍵盤和語言", "鍵盤和語言"},
+    {"voice", "辅助功能", "Assistive Tools", "輔助功能", "輔助功能"},
+    {"update", "系统更新", "Update Settings", "更新", "檢查更新"},
+    {"systeminfo", "系统信息", "System Info", "系統訊息", "系統資訊"},
+    {"License activator", "授权管理", "Authorization Management", "授權管理", "授權管理"},
+    {"commoninfo", "通用设置", "General Settings", "通用設置", "一般設定"}};
 
 struct ReplyStruct {
     QString m_desktop;
@@ -147,11 +147,16 @@ QPixmap Utils::renderSVG(const QString &filePath, const QSize &size)
 QString Utils::translateTitle(const QString &titleUS)
 {
     QString strRet = titleUS;
+    QString strlocal(QLocale::system().name());
     int nCount = sizeof(languageArr) / sizeof(languageArr[0]);
     for (int i = 0; i < nCount; i++) {
         if (languageArr[i][0] == titleUS) {
-            if (QLocale::system().name() == "zh_CN" || QLocale::system().name() == "zh_HK" || QLocale::system().name() == "zh_TW") {
+            if (0 == strlocal.compare("ug_CN") || 0 == strlocal.compare("bo_CN") || 0 == strlocal.compare("zh_CN")) {
                 strRet = languageArr[i][1];
+            } else if (0 == strlocal.compare("zh_HK")) {
+                strRet = languageArr[i][3];
+            } else if (0 == strlocal.compare("zh_TW")) {
+                strRet = languageArr[i][4];
             } else {
                 strRet = languageArr[i][2];
             }

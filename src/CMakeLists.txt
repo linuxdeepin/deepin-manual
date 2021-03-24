@@ -66,7 +66,7 @@ else()
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -O2 -Wl,-O1 -Wl,--gc-sections")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-rtti")
 
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wl,--as-needed -fPIE")
+  set(CMAKE_CXX_FLAGS "-Wl,--as-needed -fPIE")
   set(CMAKE_EXE_LINKER_FLAGS "-pie")
 endif()
 
