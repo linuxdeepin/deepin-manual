@@ -219,7 +219,6 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
     Q_ASSERT(p_->db.isOpen());
     Q_ASSERT(anchors.length() == contents.length());
     qDebug() << "addSearchEntry()" << app_name << lang << anchors; // << contents;
-
     QStringList newContents = contents;
 
     if (mdPath.isEmpty()) {
@@ -243,9 +242,9 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
         for (int i = 0; i < contents.size(); i++) {
             QString content = contents.at(i);
             //正则替换所有的svg路径
-            QRegExp exp("\"([^>]*svg)\"");
+            QRegExp exp("src=\"([^>]*svg)\"");
             exp.setMinimal(true);
-            content = content.replace(exp, QString("\"%1/%2\"").arg(strTemp).arg("\\1"));
+            content = content.replace(exp, QString("src=\"%1/%2\"").arg(strTemp).arg("\\1"));
             newContents.replace(i, content);
         }
     }
