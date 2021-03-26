@@ -40,12 +40,14 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
-if (CMAKE_BUILD_TYPE MATCHES Debug)
-  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -Wall -Werror -Wextra")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -Wextra -fno-rtti -fno-exceptions")
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -Wall -Wextra")
+
+if (CMAKE_BUILD_TYPE MATCHES Debug)  
   # -fno-rtti, Disable real-time type information
   # -fno-exceptions Disable exceptions
   # -fsanitize=address Enable memory sanitize plugin
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -Werror -Wextra -fno-rtti -fno-exceptions")
+
   # -fsanitize=address, Enable memory address sanitizer.
   # set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fsanitize=address")
   # -fsanitize=leak, Enable memory leak sanitizer.
@@ -66,7 +68,7 @@ else()
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -O2 -Wl,-O1 -Wl,--gc-sections")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-rtti")
 
-  set(CMAKE_CXX_FLAGS "-Wl,--as-needed -fPIE")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wl,--as-needed -fPIE")
   set(CMAKE_EXE_LINKER_FLAGS "-pie")
 endif()
 
@@ -312,8 +314,8 @@ endif ()
 
 #set different ISO types
 #1:professional 2:community 3:server 4:personal
-#set(ISO_TYPE "professional")
-set(ISO_TYPE "community")
+set(ISO_TYPE "professional")
+#set(ISO_TYPE "community")
 #set(ISO_TYPE "server")
 #set(ISO_TYPE "personal")
 

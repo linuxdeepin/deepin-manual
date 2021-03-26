@@ -5,7 +5,7 @@ Priority: optional
 Build-Depends:
  ca-certificates,
  cmake,
- debhelper (>= 9),
+ debhelper (>= 11),
  libdtkwidget-dev,
  libdtkgui-dev,
  qtwebengine5-dev,
@@ -18,7 +18,7 @@ Build-Depends:
  libgtest-dev,
  libgmock-dev,
  qtbase5-private-dev,
-Standards-Version: 3.9.5
+Standards-Version: 4.5.1
 Homepage: https://github.com/linuxdeepin/deepin-manual/
 Vcs-Git: git://github.com/linuxdeepin/deepin-manual.git
 Vcs-Browser: https://github.com/linuxdeepin/deepin-manual/

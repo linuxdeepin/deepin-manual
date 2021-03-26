@@ -7,7 +7,6 @@ Keywords=documentation;information;manual;help;
 MimeType=x-scheme-handler/dman;
 Name=Deepin Manual
 StartupNotify=true
-TZ='Asia/Shanghai'
 Terminal=false
 Type=Application
 X-Deepin-Vendor=deepin
