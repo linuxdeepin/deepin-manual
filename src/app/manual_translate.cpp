@@ -37,7 +37,7 @@ int main(int argc, char **argv)
         {"downloader", "uos-downloadmanager"}, //下载器
         {"chinese-input-method", "uos-chineseime"}, //中文输入法
         {"print-manager", "dde-printer"}, //打印管理器
-        {"scan-manager", "org.deepin.scaner"}, //扫描管理器
+        {"scan-manager", "org.deepin.scanner"}, //扫描管理器
         {"device-manager", "deepin-devicemanager"}, //设备管理器
         {"graphics-driver-manager", "deepin-graphics-driver-manager"}, //显卡驱动管理器
         {"camera", "deepin-camera"}, //相机
