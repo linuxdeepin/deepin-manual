@@ -796,13 +796,13 @@ Bluetooth helps you make a short-distance wireless communication between Bluetoo
 
 #### Transfer/Receive files via Bluetooth
 
-Files could be transferred / received via Bluetooth between UOS PC and non UOS PC or between UOS PC and mobile device (mobile phone / tablet).
+Files could be transferred / received via Bluetooth between Deepin PC and non Deepin PC or between Deepin PC and mobile device (mobile phone / tablet).
 
 Prerequisite: the Bluetooth devices of both the sender and the receiver have been paired and connected successfully.
 
-**Transfer files from Bluetooth of UOS PC**
+**Transfer files from Bluetooth of Deepin PC**
 
-Usage scenario: sender (UOS PC) transfers files via Bluetooth to receiver(non UOS PC / mobile phone / tablet)
+Usage scenario: sender (Deepin PC) transfers files via Bluetooth to receiver(non Deepin PC / mobile phone / tablet)
 
 1. On the homepage of Control Center, click ![bluetooth_normal](../common/bluetooth_normal.svg).
 2. Switch on **Bluetooth**. The system will scan Bluetooth devices nearby automatically.
@@ -811,9 +811,9 @@ Usage scenario: sender (UOS PC) transfers files via Bluetooth to receiver(non UO
 
 **Transfer files from Bluetooth of a mobile phone**
 
-Usage scenario: sender (taking android phones as an example) transfers files via Bluetooth to receiver(UOS PC)
+Usage scenario: sender (taking android phones as an example) transfers files via Bluetooth to receiver(Deepin PC)
 
-1. Switch on Bluetooth. The system will scan Bluetooth devices nearby automatically.
+1. Switch on **Bluetooth**. The system will scan Bluetooth devices nearby automatically.
 2. Select a paired and connected Bluetooth device.
 3. Select a file to be sent in the phone, click **Send** to send it via Bluetooth.
 
@@ -1159,25 +1159,25 @@ You can view system version, authorization info, hardware info, and the agreemen
 
 #### About This PC
 
-1. On the homepage of Control Center, click ![system_info_normal](../common/nav_info_42px.svg).
+1. On the homepage of Control Center, click ![system_info_normal](../common/system_info_normal.svg).
 2. Under **About This PC**, you can view system version, authorization and hardware information.
 3. If the system has not been activated, click **Activate** to activate the system.
 
 #### Edition License
 
-1. On the homepage of Control Center, click ![system_info_normal](../common/nav_info_42px.svg).
+1. On the homepage of Control Center, click ![system_info_normal](../common/system_info_normal.svg).
 2. View the system edition license under **Edition License**.
 
 #### End User License Agreement
 
-1. On the homepage of Control Center, click ![system_info_normal](../common/nav_info_42px.svg).
+1. On the homepage of Control Center, click ![system_info_normal](../common/system_info_normal.svg).
 2. View the End User License Agreement under **End User License Agreement**.
 
 ### Backup and Restore
 
 In order to avoid data loss or damage caused by software defects, hardware damage, improper human operation, hacker attacks, computer viruses, natural disasters and other factors, the application data or system data can be backed up and restored to ensure the normal operation of the system.
 
-![0|backuprecovery](fig/d_backupRestore.png)
+![0|backuprecovery](fig/d_backuprestore.png)
 
 #### Backup
 
@@ -1191,7 +1191,7 @@ If "Full Disk" is selected during system installation, a recovery partition woul
 
 You can backup data through either **Full Backup** or **System Backup** from Control Center.
 
-1. On the homepage of Control Center, click ![system_info_normal](../common/nav_info_42px.svg).
+1. On the homepage of Control Center, click ![system_info_normal](../common/system_info_normal.svg).
 
 2. Select **Backup and Restore** > **Backup** to set the backup type and save the path of files backed up.
    Backup Type: Full Backup and System Backup
@@ -1220,14 +1220,14 @@ During system startup, in the system selection interface, click **Deepin Restore
 
 You can either restore all settings or manually restore the previous backup data.
 
-1. On the homepage of Control Center, click ![system_info_normal](../common/nav_info_42px.svg).
+1. On the homepage of Control Center, click ![system_info_normal](../common/system_info_normal.svg).
 2. Click **Backup and Restore** > **Restore** to select:
 
    - Restore to factory settings
      1. You can choose to check **Keep personal files and apps** and click **Restore Now**. Click **Confirm** in the dialogue box pops up. 
      2. Please input the password to authorize the data restoring.
    - Restore from backup files
-     1. After selecting restoring directory, click ![loadfile](../common/loadfile.svg) to select the files you want to restore.
+     1. After selecting restoring directory, click ![three_dots](fig/three_dots.png) to select the files you want to restore.
      2. Click **Restore Now** to start system restoring.
 
 
