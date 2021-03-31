@@ -52,7 +52,7 @@ int main(int argc, char **argv)
         {"presentation-assistant", "deepin-presentation-assistant"}, //演示助手**
         {"picker", "deepin-picker"}, //取色器**
         {"cloud-scan", "deepin-cloud-scan"}, //云扫描**
-        {"cloud-print", "deepin-cloud-print"}, //云打印**
+        {"cloud-print-configurator", "deepin-cloud-print-configurator"}, //云打印**
     };
 
     QWidget widget;
