@@ -163,10 +163,11 @@ void SearchDb::initConnections()
  */
 void SearchDb::initDb()
 {
-    QString dbdir = QStandardPaths::writableLocation(QStandardPaths::HomeLocation).append("/.local/share/deepin/deepin-manual");
+    QString dbdir = Utils::mkMutiDir(QStandardPaths::writableLocation(QStandardPaths::HomeLocation).append("/.local/share/deepin/deepin-manual"));
+    qDebug() << dbdir;
     QDir dir(dbdir);
     if (!dir.exists()) {
-        dir.mkdir(dbdir);
+        qCritical() << __FUNCTION__ << "db path not exist!" << dbdir;
     }
     QString databasePath = dbdir.append("/search.db");
 

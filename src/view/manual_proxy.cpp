@@ -165,7 +165,6 @@ void ManualProxy::showUpdateLabel()
 QString ManualProxy::appToPath(const QString &appName)
 {
     qDebug() << __FUNCTION__ << "========>" << appName;
-
     QStringList omitType = Utils::systemToOmit(Dtk::Core::DSysInfo::uosEditionType());
     const QString assetPath = Utils::getSystemManualDir();
     QStringList mdList;

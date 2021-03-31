@@ -60,6 +60,8 @@ public:
     static bool isMostPriority(const QString &mdPath, QString &morePriorityPath);
     static bool activeWindow(quintptr winId);
     static QString regexp_label(const QString &strtext, const QString &strpatter);
+    //创建多级目录
+    static QString mkMutiDir(const QString &path);
 };
 
 class ExApplicationHelper : public DGuiApplicationHelper

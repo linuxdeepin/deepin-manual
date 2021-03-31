@@ -57,7 +57,7 @@ void ut_helperManager::TearDown()
 //    m_hm->initWeb();
 //}
 
-TEST_F(ut_helperManager, iniinitDbConfig)
+TEST_F(ut_helperManager, initDbConfig)
 {
     m_hm->initDbConfig();
 }
