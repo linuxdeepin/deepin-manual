@@ -59,6 +59,13 @@ TEST_F(ut_utils_test, getSystemManualDir)
     ASSERT_EQ(m_utils->getSystemManualDir(), str);
 }
 
+TEST_F(ut_utils_test, mkMutiDir)
+{
+    QString strbasepath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation).append("/.local/share/deepin/deepin-manual");
+    QString strpath = strbasepath.append("/dirtest/11/22/33/44");
+    m_utils->mkMutiDir(strpath);
+}
+
 /*
 TEST_F(ut_utils_test, getTime)
 {

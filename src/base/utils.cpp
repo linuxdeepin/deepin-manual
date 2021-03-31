@@ -225,7 +225,6 @@ QStringList Utils::getSystemManualList()
         {"org.deepin.flatdeb.deepin-music", "deepin-music"},
         {"org.deepin.flatdeb.deepin-screenshot", "deepin-screenshot"},
         {"org.deepin.flatdeb.deepin-voice-recorder", "deepin-voice-recorder"},
-        {"deepin-cloud-print-configurator", "deepin-cloud-print"},
         {"org.deepin.flatdeb.deepin-image-viewer", "deepin-image-viewer"},
         {"deepin-cloud-scan-configurator", "deepin-cloud-scan"},
         {"org.deepin.flatdeb.deepin-movie", "deepin-movie"},
