@@ -4,7 +4,7 @@
     <message>
         <location filename="../src/view/manual_proxy.cpp" line="306"/>
         <source>Desktop Environment</source>
-        <translation type="unfinished"/>
+        <translation>ཅོག་ངོས་ཁོར་ཡུག</translation>
     </message>
 </context>
 <context>
