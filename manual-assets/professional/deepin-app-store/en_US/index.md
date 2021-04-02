@@ -74,7 +74,7 @@ Main interface consists of left panel, application management, search box, login
 2. In the pop-up window, input username/email/phone number and password, click **Sign In**.
 
 
-> ![attention](icon/attention.svg)Attention: If you don't have an ID yet, you can click **Sign Up** in the pop-up box and go to the website to sign up. 
+> ![attention](icon/attention.svg)Attention: If you don't have an ID yet, you can click **Register here** in the pop-up box and go to the website to sign up. 
 
 ![login](jpg/login.png)
 
@@ -209,4 +209,4 @@ Click Help to get the manual, which will help you further know and use App Store
 1. Click ![icon_menu](icon/icon_menu.svg) on the main interface.
 2. Click **Exit**.
 
-<div class="version-info"><span>Update Date: 2021-01-15</span><span> Version: 6.2</span></div>
+<div class="version-info"><span>Update Date: 2021-04-02</span><span> Version: 6.2</span></div>

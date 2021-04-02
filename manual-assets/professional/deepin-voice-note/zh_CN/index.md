@@ -6,29 +6,28 @@
 
 ## 使用入门
 
-通过以下方式运行、关闭语音记事本，同时还可以创建快捷方式。
+通过以下方式运行或关闭语音记事本，同时还可以创建快捷方式。
 
 ### 运行语音记事本
 
-1. 单击桌面底部的 ![deepin-launcher](icon/deepin-launcher.svg)，进入启动器界面。
-2. 上下滚动鼠标滚轮浏览或通过搜索，找到语音记事本 ![deepin-voice-note](icon/deepin-voice-note.svg)单击运行。
+1. 单击任务栏上的启动器图标 ![deepin-launcher](icon/deepin-launcher.svg)，进入启动器界面。
+2. 上下滚动鼠标滚轮浏览或通过搜索，找到语音记事本图标 ![deepin-voice-note](icon/deepin-voice-note.svg)单击运行。
 3. 右键单击 ![deepin-voice-note](icon/deepin-voice-note.svg)，您可以：
 
    - 单击 **发送到桌面**，在桌面创建快捷方式。
    - 单击 **发送到任务栏**，将应用程序固定到任务栏。
    - 单击 **开机自动启动**，将应用程序添加到开机启动项，在电脑开机时自动运行该应用。
 
-> ![notes](icon/notes.svg)说明：如果语音记事本已经默认固定在任务栏上，您也可以单击任务栏上的 ![deepin-voice-note](icon/deepin-voice-note.svg)来运行。
 
 ### 关闭语音记事本
 
 - 在语音记事本界面单击 ![close_icon](icon/close_icon.svg)，退出语音记事本。
-- 在任务栏右键单击 ![deepin-voice-note](icon/deepin-voice-note.svg)，选择 **关闭所有** 来退出语音记事本。
-- 在语音记事本界面单击 ![icon_menu](icon/icon_menu.svg)，选择 **退出** 来退出语音记事本。
+- 在任务栏右键单击 ![deepin-voice-note](icon/deepin-voice-note.svg)，选择 **关闭所有**，退出语音记事本。
+- 在语音记事本界面单击 ![icon_menu](icon/icon_menu.svg)，选择 **退出**，退出语音记事本。
 
 ### 查看快捷键
 
-在语音记事本界面上，按下键盘上的 **Ctrl + Shift + ?** 组合键来查看快捷键，熟练地使用快捷键，将大大提升您的操作效率。
+在语音记事本界面，使用快捷键 **Ctrl + Shift + ?** 打开快捷键预览界面，熟练地使用快捷键，将大大提升您的操作效率。
 
  ![1|hotkey](jpg/hotkey.png)
 
@@ -41,7 +40,7 @@
 
 ### 新建笔记
 
-- 当第一次新建记事本后，系统默认创建一个笔记，在笔记列表内单击 ![add](icon/circlebutton_add2.svg) 按钮可继续创建新的笔记。
+- 当第一次新建记事本后，系统默认创建一个笔记，在笔记列表内单击按钮 ![add](icon/circlebutton_add2.svg) 可继续创建新的笔记。
 - 右键单击记事本或笔记，选择 **新建笔记** 来创建一个新笔记。
 
 ![0|new](jpg/create1.png)
@@ -55,12 +54,12 @@
 
 ### 添加语音
 
-1. 在语音记事本界面上，选择一个笔记。
-2. 在右侧详情页内单击 ![record_normal](icon/record_normal.svg)，添加语音。
-3. 单击 ![finish](icon/finish_normal.svg) 按钮完成语音录制。
+1. 在语音记事本界面，选择一个笔记。
+2. 在右侧详情页内单击按钮 ![record_normal](icon/record_normal.svg)，添加语音。
+3. 单击按钮 ![finish](icon/finish_normal.svg) 完成语音录制。
    
-   > ![notes](icon/notes.svg)说明：添加语音的过程中您可以单击 ![pause](icon/pause_red_normal.svg) 按钮暂停录音，再次单击 ![record_normal](icon/record_normal.svg) 按钮继续录音。录音的限制时长为60分钟。
-3. 录制完成后，单击 ![play_blue_normal](icon/play_blue_normal.svg) 播放按钮可以回放语音。
+   > ![notes](icon/notes.svg)说明：添加语音的过程中您可以单击按钮 ![pause](icon/pause_red_normal.svg) 暂停录音，再次单击按钮 ![record_normal](icon/record_normal.svg) 继续录音。录音的限制时长为60分钟。
+3. 录制完成后，单击播放按钮 ![play_blue_normal](icon/play_blue_normal.svg) 可以回放语音。
 
 
 ![0|Recorder](jpg/recorder2.png)
@@ -74,7 +73,7 @@
 
 ### 语音转文字
 
-1. 在语音记事本界面上，选择一个语音文件。
+1. 在语音记事本界面，选择一个语音文件。
 2. 单击鼠标右键选择 **语音转文字**。
 
 ![0|save](jpg/toVoice.png)
@@ -138,7 +137,7 @@
 
 记事文件完成后，文件将自动保存名为“记事本（n）”，您可以重命名记事本。
 
-1. 在语音记事本界面上，右键单击记事本。
+1. 在语音记事本界面，右键单击记事本。
 2. 选择 **重命名**。
 3. 输入文件名称。
 4. 鼠标单击界面空白处或者按下键盘上的 **Enter** 键完成重命名。
@@ -149,19 +148,19 @@
 
 ### 删除记事本
 
-1. 在语音记事本界面上，选择一个记事本。
+1. 在语音记事本界面，选择一个记事本。
 2. 单击鼠标右键选择 **删除**。
 3. 在弹出的对话框中，单击 **确定**。
 
 ### 删除笔记
 
-1. 在语音记事本界面上，选择一个文字笔记。
+1. 在语音记事本界面，选择一个文字笔记。
 2. 单击鼠标右键选择 **删除**。
 3. 在弹出的对话框中，单击 **确定**。
 
 ### 删除语音
 
-1. 在语音记事本界面上，选择一个语音文件。
+1. 在语音记事本界面，选择一个语音文件。
 2. 单击鼠标右键选择 **删除**。
 3. 在弹出的对话框中，单击 **确定**。
 
@@ -187,14 +186,14 @@
 
 ### 主题
 
-窗口主题包含浅色主题、深色主题和跟随系统主题。
+窗口主题包含浅色主题、深色主题和系统主题。
 
 1. 在语音记事本界面，单击 ![icon_menu](icon/icon_menu.svg)。
 2. 单击 **主题**，选择一个主题颜色。
 
 ### 帮助
 
-查看帮助手册，通过帮助进一步让您了解和使用语音记事本。
+查看帮助手册，进一步了解和使用语音记事本。
 
 1. 在语音记事本界面，单击 ![icon_menu](icon/icon_menu.svg)。
 2. 单击 **帮助**。
@@ -213,4 +212,4 @@
 
 
 
-<div class="version-info"><span>文档更新时间: 2021-01-15</span><span> 版本: 5.7</span></div>
+<div class="version-info"><span>文档更新时间: 2021-04-02</span><span> 版本: 5.7</span></div>

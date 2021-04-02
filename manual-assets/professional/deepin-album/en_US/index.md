@@ -12,8 +12,8 @@ You can run, close, and create shortcuts for Album in the following ways.
 
 ### Run Album
 
-1. Click ![launcher](icon/deepin_launcher.svg) in the Dock and enter the Launcher interface.
-2. Locate ![deepin_album](icon/deepin_album.svg) by scrolling the mouse wheel or searching "album" in the Launcher interface and click it to run.
+1. Click the Launcher icon![launcher](icon/deepin_launcher.svg) in the Dock and enter the Launcher interface.
+2. Locate Album![deepin_album](icon/deepin_album.svg) by scrolling the mouse wheel or searching "album" in the Launcher interface and click it to run.
 3. Right-click ![deepin_album](icon/deepin_album.svg) and you can:
  - Click **Send to desktop** to create a desktop shortcut.
  - Click **Send to dock** to fix the application in the dock.
@@ -45,8 +45,6 @@ On the Album interface, you are able to import photos as follows:
 - Drag directly the photo or the folder where the photo is located to the Album interface.
 - Import photos from the mobile device.
 
-> ![tips](icon/tips.svg) Tips: You can also import photos to the empty Album by clicking **Import Photos** on the Album interface.
-
 > ![notes](icon/notes.svg) Notes: The photo formats supported include BMP, GIF, JPG, PNG, PBM, PGM, PPM, XBM, XPM, SVG, DDS, ICNS,  MNG, TGA, TIFF, WBMP, WEBP, PSD, ICO, JNG, PCD, PCX, TIF, RAS, MRW, DNG, RAF, CR2, RAW, ORF, NEF, etc.
 
 ### Search Photos 
@@ -75,7 +73,7 @@ Double-click the photo, or right-click the photo and select **View** to enter th
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 > ![tips](icon/tips.svg) Tips: Scroll the mouse wheel to enlarge the picture. If the photo size exceeds the window, a navigation window will appear at the lower part. Drag the box in the window to fast locate the corresponding photo areas. You can click ![close_icon](icon/close.svg) on the top right corner of the navigation window to close it. Right-click the photo, you can select **Hide navigation window/Show navigation window**.
 
-![0|copy](jpg/view-pic.png)
+![0|copy](jpg/view_pic.png)
 
 ### View Timelines
 
@@ -170,7 +168,7 @@ On the Album interface, you are able to create new albums, manage photos in the 
 
 >![tips](icon/tips.svg) Tips: You are also able to add photos to an album by dragging the photo or photo folder directly to it.
 
-![0|add-to-album](jpg/add-to-album.png)
+![0|add_to_album](jpg/add_to_album.png)
 
 ### Delete Photos from Albums
 
@@ -219,4 +217,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 
 1.  On the Album interface, click ![icon_menu](icon/icon_menu.svg).
 2.  Click **Exit** to exit Album.
-<div class="version-info"><span>Update Date: 2021-01-15</span><span> Version: 5.8</span></div>
+<div class="version-info"><span>Update Date: 2021-04-02</span><span> Version: 5.8</span></div>

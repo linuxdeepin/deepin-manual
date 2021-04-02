@@ -1,4 +1,4 @@
-# Package Installer |../common/deepin-deb-installer.svg|
+# Package Installer|../common/deepin-deb-installer.svg|
 
 ## Overview
 
@@ -11,7 +11,7 @@ Package Installer is an easy-to-use .deb package management tool with a simple i
 
 ### Run Package Installer
 
-You can run Package Installer as follows:
+You can open Package Installer as follows:
 
 - Double click a .deb package to run.
 - Click the icon of Package Installer from Launcher to run. 
@@ -23,20 +23,18 @@ Package Installer is capable to install an individual application or multiple ap
 #### Singularly Install
 
 1. On Package Installer interface, you can:
-   - Click **Select File**, select a .deb package and click **Open**.
-   - Drag a .deb package directly into the interface.
-2. Click **Install**.
-3. If the authentication window pops up, enter your login password required to continue.
-4. Click ![arrow_up](icon/arrow_up.svg) or ![arrow_down](icon/arrow_down.svg) to display or collapse the installing process during installation.
-5. Click **Back** to keep on adding more packages or click **OK** to exit.
+   - click **Select File**, select the package you want to install, click **Open**. 
+   - drag a .deb package directly into the interface.
+3. Click **Install**.
+4. If authentication window pops up, enter your login password required to continue.
+5. Click ![arrow_up](icon/down.svg) or ![arrow_down](icon/up.svg) to display or collapse the installing process during installation.
+6. Click **Back** to keep on adding more packages or click **OK** to exit.
 
-![1|singleinstall](jpg/singleinstall.png)
-
->![notes](icon/notes.svg)Notes: Package Installer will automatically detect your packages. If the application has been installed locally, the prompt message "same version installed" or "other version installed" will be displayed. At this time, you can choose to **Uninstall** or **Reinstall**.
+![1|success](jpg/success.png)
 
 #### Bulk Install
 
-To install multiple .deb packages at a time, you can click **Select File** or drag files into Package Installer. Please refer to [Singularly Install](Singularly Install) for operation steps. Pay attention to the following:
+To install multiple .deb packages at a time, you can click **Select File** or drag files into Package Installer. Please refer to [Singularly Install](#Singularly Install) for operation steps. Pay attention to the following:
 
 - You can view installing process when multiply installing.
 - Only **Install** button is displayed in the window. Installation would be done for packages of those other versions have been installed locally before. Re-installation would be done for packages of those the same versions have been installed locally before.
@@ -53,23 +51,25 @@ Please read the prompt carefully, common causes include:
 - Unmatched package architecture.
 - Broken dependencies.
 
-![1|unable](jpg/unable.png)
+![1|unable](jpg/unable.png) ![1|unable](jpg/unable1.png)
 
 ### Uninstall
 
 Package Installer is used to uninstall .deb packages of those the same or different versions have been installed already. 
 
 1. On Package Installer interface, you can:
-   - Click **Select File**, select a .deb package and click **Open**.
-   - Drag a .deb package directly into the interface.
+   - click **Select File**, select the package you want to install, click **Open**. 
+   - drag a .deb package directly into the interface.
 2. Click **Remove**.
-3. Then there will be a prompt and click **Confirm** to uninstall.
-4. If the authentication window pops up, enter your login password required to continue.
+3. Then there will be a prompt and click **Confirm** to uninstall. If authentication window pops up, enter your login password required to continue.
+4. Click ![arrow_down](icon/down.svg) or ![arrow_up](icon/up.svg) to display or collapse the uninstalling process during uninstallation.
 5. Click **OK** to exit.
 
 ![1|remove](jpg/remove.png)
 
 > ![attention](icon/attention.svg)Attention: The system or other applications would be affected if you have uninstalled some applications. Please operate carefully. 
+
+
 
 ## Main Menu
 
@@ -101,4 +101,4 @@ You can click to view the manual, which will help you further know and use Packa
 1. Click![icon_menu](icon/icon_menu.svg) on the interface.
 2. Click **Exit**.
 
-<div class="version-info"><span>Update Date: 2021-01-15</span><span> Version: 5.7</span></div>
+<div class="version-info"><span>Update Date: 2021-04-02</span><span> Version: 5.7</span></div>

@@ -24,9 +24,9 @@ Click ![icon_menu](icon/icon_menu.svg)> **View** in the System Monitor interface
 | Network | Display the upload and download speed of the current network in real-time |
 | Disk    | Display the reading and writing speed in the current disk which is only in "Compact" view |
 
-- ![1|monitor](jpg/expand.png)
+![1|monitor](jpg/expand.png)
 
-  ![1|monitor](jpg/compact.png)
+![1|monitor](jpg/compact.png)
 
 
 ### Process Management
@@ -66,16 +66,13 @@ System Monitor can be used to end processes.
 
 1. On the System Monitor interface, click ![icon_menu](icon/icon_menu.svg).
 
-2. Select **Force end application**.
-> ![notes](icon/notes.svg) Notes: This function can only end graphical processes.
-
+2. Select **Force end application** (available for graphical processes only).
 3. Click the window of application you want to close according to the prompt.
 
 4. Click **Force End** in the pop-up window to confirm.
 
-> ![notes](icon/notes.svg) Notes: 
+> ![notes](icon/notes.svg) Notes: Press **Esc** on the keyboard to terminate the operation above and return to the System Monitor interface.
 >
-> - Press **Esc** on the keyboard to terminate the operation above and return to the System Monitor interface.
 
 
 #### Suspend/Resume Process
@@ -165,4 +162,4 @@ System Monitor offers Expand view and Compact view for your choice.
 1. On the System Monitor interface, click ![icon_menu](icon/icon_menu.svg).
 2. Click **Exit** to exit System Monitor.
 
-<div class="version-info"><span>Update Date: 2021-01-15</span><span> Version: 5.8</span></div>
+<div class="version-info"><span>Update Date: 2021-04-02</span><span> Version: 5.8</span></div>

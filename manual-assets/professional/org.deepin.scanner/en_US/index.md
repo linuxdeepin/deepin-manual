@@ -2,7 +2,7 @@
 
 ## Overview 
 
-Scan Assistant is a tool for managing scanning devices at the same time. The interface is visual and easy to operate. It can help users to improve the efficiency and quality of scanning and save storage space.
+Scan Assistant is a tool for managing multiple scanning devices at the same time. 
 
 ## Guide
 
@@ -50,7 +50,7 @@ On Scan Assistant main interface, click![scan_button](jpg/scan_button.png), all 
 
 1. After selecting the capture, scanning parameters can be set in the right side of the interface, including general settings, cropping, watermark and image processing scheme.
 
-   **General**: you can set resolution, format(i.e. video format), image(i.e. image format, supporting jpg/bmp/tif/png) and color mode(supporting colorful, grey, black and white) here.
+   **General**: you can set resolution, format(i.e. video format), image(i.e. image format, supporting jpg/bmp/tif) and color mode(supporting colorful, grey, black and white) here.
 
    **Method**: The default method is manual scan. You can also select timer and the time.
 
@@ -72,7 +72,7 @@ On Scan Assistant main interface, click![scan_button](jpg/scan_button.png), all 
 
 1. After selecting the scanner, scanning parameters can be set in the right side of the interface, including general settings, cropping, watermark and image processing scheme.
 
-   **General**: you can set mode(color24, gray8, lineart), source(ADF_FRONT, ADF_DUPLEX, FLAT_FRONT), resolution, image(i.e. image format, supporting jpg/bmp/tif/png) here.
+   **General**: you can set mode(color24, gray8, lineart), source(ADF_FRONT, ADF_DUPLEX, FLAT_FRONT), resolution, image(i.e. image format) here.
 
    **Crop**: The default setting is "no crop", but you can select "single area" or "multiple areas". If "multiple areas" is selected, you can shoot multiple files at the same time and cut them into multiple pictures.
 
@@ -140,4 +140,4 @@ You can click to view the manual, which will help you further know and use Scan 
 
 1. Click![icon_menu](icon/icon_menu.svg) on the interface.
 2. Click **Exit**.
-<div class="version-info"><span>Update Date: 2021-01-15</span><span> Version: 5.1</span></div>
+<div class="version-info"><span>Update Date: 2021-04-02</span><span> Version: 5.1</span></div>

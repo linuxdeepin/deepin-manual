@@ -12,8 +12,8 @@
 
 ### 运行安全中心
 
-1. 单击任务栏上的启动器图标 ![deepin-launcher](icon/deepin-launcher.svg)，进入启动器界面。
-2. 上下滚动鼠标滚轮浏览或通过搜索，找到安全中心图标  ![deepin-defender](icon/deepin-defender.svg) ，单击运行  。
+1. 单击任务栏上的启动器 ![deepin-launcher](icon/deepin-launcher.svg)，进入启动器界面。
+2. 上下滚动鼠标滚轮浏览或通过搜索，找到安全中心  ![deepin-defender](icon/deepin-defender.svg) ，单击运行  。
 3. 右键单击 ![deepin-defender](icon/deepin-defender.svg)，您可以：
    - 单击 **发送到桌面**，在桌面创建快捷方式。
 
@@ -24,7 +24,7 @@
 ### 关闭安全中心
 
 - 在安全中心界面，单击![close](icon/close.svg)，退出安全中心。
-- 右键单击任务栏上的 ![deepin-defender](icon/deepin-defender.svg)，选择 **关闭所有** 来退出安全中心。
+- 右键单击任务栏上的 ![deepin-defender](icon/deepin-defender.svg)图标，选择 **关闭所有** 来退出安全中心。
 - 在安全中心界面单击 ![icon_menu](icon/icon_menu.svg) ，选择 **退出** 来退出安全中心。
 
 ## 操作介绍
@@ -246,4 +246,4 @@
 2. 选择 **退出**。
 
 
-<div class="version-info"><span>文档更新时间: 2021-01-15</span><span> 版本: 2.1</span></div>
+<div class="version-info"><span>文档更新时间: 2021-04-02</span><span> 版本: 2.1</span></div>

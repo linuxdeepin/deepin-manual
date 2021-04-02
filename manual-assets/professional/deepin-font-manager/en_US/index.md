@@ -14,8 +14,8 @@ You can run, exit, and create shortcuts for Font Manager in the following ways.
 
 ### Run Font Manager
 
-1. Click ![launcher](icon/deepin_launcher.svg) in the dock to enter the Launcher interface.
-2. Locate ![deepin_font_manager](icon/deepin_font_manager.svg) by by scrolling the mouse wheel or searching "font manager" in the Launcher interface, and click it to run.
+1. Click the Launcher icon ![launcher](icon/deepin_launcher.svg) in the dock to enter the Launcher interface.
+2. Locate Font Manager![deepin_font_manager](icon/deepin_font_manager.svg) by scrolling the mouse wheel or searching "font manager" in the Launcher interface, and click it to run.
 3. Right-click ![deepin_font_manager](icon/deepin_font_manager.svg) , and you can:
 
    - Click **Send to desktop** to create a desktop shortcut
@@ -27,6 +27,12 @@ You can run, exit, and create shortcuts for Font Manager in the following ways.
 - Click ![close](icon/close.svg) on the Font Manager interface to exit Font Manager.
 - Right-click ![deepin_font_manager](icon/deepin_font_manager.svg) in the dock, and select **Close All** to exit.
 - Click ![icon_menu](icon/icon_menu.svg) on the Font Manager interface, and select **Exit** to exit.
+
+### View Shortcuts
+
+On the Font Manager interface, press **Ctrl** + **Shift** + **?** on the keyboard to view shortcuts. Proficiency in shortcuts will greatly improve your efficiency.
+
+![hotkey](jpg/hotkey.png)
 
 ## Operation
 
@@ -46,12 +52,12 @@ You can run, exit, and create shortcuts for Font Manager in the following ways.
 
 With Font Manager, you can not only install a single font but also install multiple fonts in a batch in the following ways:
 
-- On the Font Manager interface, click ![add](icon/icon_plus.svg) or select ![icon_menu](icon/icon_menu.svg)> **Add font**.
+- On the Font Manager interface, click ![add](icon/icon_plus.svg) or select ![icon_menu](icon/icon_menu.svg)> **Add font** or right-click a font to select **Add font**.
 
 
 - Double-click the font file.
--  Right-click the font file, select **Open with** > ![deepin-font-manager](icon/deepin_font_manager.svg) **Font Manager** to enter the Font Manager interface, and install the font.
-- Drag the font file directly to the Font Manager icon  or its interface.
+-  Right-click the font file and select **Open with** > ![deepin-font-manager](icon/deepin_font_manager.svg) **Font Manager** to enter the Font Manager interface, and install the font.
+- Drag the font file directly to the Font Manager icon or its interface.
 
 > ![notes](icon/notes.svg) Notes: 
 >
@@ -65,7 +71,7 @@ Each text block of the font in the font sets presents the corresponding font sty
 The default preview copy is **Don't let your dreams be dreams**, and is displayed in English.
 
 1. Enter texts in the font preview input box at the bottom of the Font Manager interface.
-2. Set the font size by dragging the control bar horizontally.
+2. Set the font size by dragging the scroll bar horizontally.
 3. View the display effect in the font set list.
 
    > ![notes](icon/notes.svg) Notes: Drag the scroll bar to the left to reduce the font size, and drag it to the right to enlarge the font size. The font size ranges from 6px to 60px.
@@ -78,14 +84,13 @@ The default preview copy is **Don't let your dreams be dreams**, and is displaye
    
 3. Click ![0|close](icon/close.svg) or delete the entered information in the search box to clear the current search criteria or cancel the search.
 
-
 ### Export Fonts
 
-1. On the Font Manager interface, right-click the font and select **Export**.
+1. Right-click a font in the User list.
 
-2. A prompt message **The font exported to your desktop** pops up, and disappears several seconds later.
+2. Select **Export**.
 
-   The exported font is saved in the desk folder by default, with Font as its default folder name.
+The exported font is saved in the desk folder by default, with Font as its default folder name.
 
 > ![notes](icon/notes.svg) Notes: Single and batch font(s) export are supported. System font cannot be exported.
 
@@ -163,4 +168,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 
 1. On the Font Manager interface, click ![icon_menu](icon/icon_menu.svg).
 2. Click **Exit** to exit Font Manager.
-<div class="version-info"><span>Update Date: 2021-01-15</span><span> Version: 5.8</span></div>
+<div class="version-info"><span>Update Date: 2021-04-02</span><span> Version: 5.8</span></div>

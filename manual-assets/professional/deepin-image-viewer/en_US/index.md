@@ -12,8 +12,8 @@ You can run, close, and create shortcuts for Image Viewer in the following ways.
 
 ### Run Image Viewer
 
-1. Click ![deepin_launcher](icon/deepin_launcher.svg) in the dock to enter the Launcher interface.
-2. Locate ![viewer](icon/deepin_image_viewer.svg) by scrolling the mouse wheel or searching "image viewer" in the Launcher interface.
+1. Click the Launcher icon ![deepin_launcher](icon/deepin_launcher.svg) in the dock to enter the Launcher interface.
+2. Locate Image Viewer ![viewer](icon/deepin_image_viewer.svg) by scrolling the mouse wheel or searching "image viewer" in the Launcher interface.
 3. Right-click ![viewer](icon/deepin_image_viewer.svg) and the user can:
  - Click **Send to desktop** to create a desktop shortcut.
  - Click **Send to dock** to fix the application in the dock.
@@ -42,14 +42,12 @@ You can use one of the following ways to open image files:
 - Open Image Viewer, click **Open Image** and select the image file to open it.
 - Open Image Viewer and drag the image to the interface to open it.
 - Drag the image to the Image Viewer icon on the desktop or in the dock to open it.
+>![tips](icon/tips.svg) Tips: In Control Center, you can set Image Viewer as the default image viewer. Please refer to [Default Applications](dman:///dde#Default Application Settings) for specific operations.
 
-> ![tips](icon/tips.svg) Tips: 
->   - In Control Center, you can set Image Viewer as the default image viewer. Please refer to [Default Applications](dman:///dde#Default Application Settings) for specific operations.
->   - Following Image formats are supported: BMP, ICO, JPG/JPE/JPEG, PNG, TGA, TIF/TIFF, XPM, GIF, WEBP, CR2, NEF, DNG, RAF, MEF, MRW, XBM, SVG, ORF, MNG, etc.
+Following Image formats are supported: BMP, ICO, JPG/JPE/JPEG, PNG, TGA, TIF/TIFF, XPM, GIF, WEBP, CR2, NEF, DNG, RAF, MEF, MRW, XBM, SVG, ORF, MNG, etc.
 
->![notes](icon/notes.svg) Notes: If you are using a  computer equipped with touch-screen, you can use gestures instead of the mouse to zoom in on or zoom out of the images being viewed:
+>![notes](icon/notes.svg) Notes: If you are using a  computer equipped with touch-screen, open your two fingers to zoom in and pinch them to zoom out on the touchscreen.
 >
->-  On the touchscreen, open your two fingers to zoom in and pinch them to zoom out.
 
 ### Main Interface
 
@@ -71,8 +69,6 @@ You can use one of the following ways to open image files:
 > ![notess](icon/notes.svg) Notes: The Rotate and Delete icons are grayed out and disabled for system images.
 
 ### Print Images
-
-You can print images in Image Viewer.
 
 1. Right-click the image on the Image Viewer interface and select **Print**.
 2. Select the printer and set the printing parameters.
@@ -96,12 +92,8 @@ You can print images in Image Viewer.
 
 ### Copy Images
 
-You can copy images in Image Viewer.
-
 1. Right-click the image on the Image Viewer interface and select **Copy**.
 2. On the desktop or in the target place, right-click the blank area and select **Paste** to copy the image to that location.
-
-> ![tips](icon/tips.svg) Tips: Both the path and content of picture are copied.
 
 ![0|copy](jpg/copy.png)
 
@@ -111,9 +103,11 @@ You can copy images in Image Viewer.
 1. Right-click the image on the Image Viewer interface and select **Rotate clockwise** or **Rotate counterclockwise**.
 2. The image will rotate clockwise or counterclockwise for 90 degrees.
 
+   ![notes](icon/notes.svg) Notes:  On the touchscreen, place two fingers on the photo and keep a certain distance, and rotate the two fingers at the same time to rotate the photo.
+
 ![0|rotate](jpg/rotate.png)
 
-   ![notes](icon/notes.svg) Notes:  On the touchscreen, place two fingers on the photo and keep a certain distance, and rotate the two fingers at the same time to rotate the photo.
+
 
 ### Set as Wallpaper
 
@@ -166,4 +160,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 
 1. On the Image Viewer interface, click ![icon_menu](icon/icon_menu.svg).
 2. Click **Exit** to exit Image Viewer.
-<div class="version-info"><span>Update Date: 2021-01-15</span><span> Version: 5.6</span></div>
+<div class="version-info"><span>Update Date: 2021-04-02</span><span> Version: 5.6</span></div>

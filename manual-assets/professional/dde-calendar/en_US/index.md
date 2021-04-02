@@ -12,8 +12,8 @@ You can run, close, and create a shortcut for Calendar in the following ways.
 
 ### Run Calender
 
-1. Click ![deepin_launcher](icon/deepin_launcher.svg) in the dock to enter the Launcher interface.
-2. Locate ![draw](icon/dde_calendar.svg) by scrolling the mouse wheel or searching "calendar" in the Launcher interface and click it to run.
+1. Click the Launcher icon ![deepin_launcher](icon/deepin_launcher.svg) in the dock to enter the Launcher interface.
+2. Locate Calendar![draw](icon/dde_calendar.svg) by scrolling the mouse wheel or searching "calendar" in the Launcher interface and click it to run.
 3. Right-click ![draw](icon/dde_calendar.svg) and you can:
    - Click **Send to desktop** to create a desktop shortcut.
    - Click **Send to dock** to fix it in the Dock.
@@ -41,12 +41,12 @@ Monthly view is defaulted and you can click to switch between different views.
 - The date starts from the year **1900** and you cannot view dates earlier than that year during date switching. 
 - In the monthly and weekly view, the display of Saturday and Sunday is different from that of days between Monday to Friday. 
 
-| View         | Feature                                                      |
-| ------------ | ------------------------------------------------------------ |
-| Yearly View  | Display the months and days of the whole year.               |
-| Monthly View | Display the holiday information and schedule.                |
-| Weekly View  | Display the schedule of this week.                           |
-| Daily View   | Display the holiday information and detailed schedule arrangements. |
+| View         | Feature                                        |
+| ------------ | ---------------------------------------------- |
+| Yearly View  | Display the months and days of the whole year. |
+| Monthly View | Display the schedule arrangements.             |
+| Weekly View  | Display the schedule of this week.             |
+| Daily View   | Display the detailed schedule arrangements.    |
 
 ### Create Events
 
@@ -72,10 +72,8 @@ Monthly view is defaulted and you can click to switch between different views.
 
 4.  Click **Save** to create the event.
 
- > ![tips](icon/tips.svg) Tips: 
+ > ![notes](icon/notes.svg) Notes: You can drag the event label to a specified time or date.
  >
- > - You can drag the event label to a specified time or date.
- > - You can perform multiple operations such as creating, searching, canceling events with Desktop AI Assistant.
 
 ### Edit Events
 
@@ -96,7 +94,7 @@ When you are editing an event, different prompt information will be displayed ac
 
 ### Set an All-day or Multiple-day Event
 
-Check **All Day**, set the **Starts** and **Ends **and you are able to set an all-day or consecutive all-day events when creating or editing an event.
+Set the **Starts** and **Ends** and you are able to set an all-day or consecutive multiple-day events when creating or editing an event.
 
 ### Set Repeating Events
 
@@ -140,7 +138,7 @@ Description of icons contained in the prompt information for repeating and non-r
 | Icon                     | Description                                                  |
 | ------------------------ | ------------------------------------------------------------ |
 | Delete                   | Delete non-repeating events.                                 |
-| Delete all               | Delete all occurrences of this event.                        |
+| Delete All               | Delete all occurrences of this event.                        |
 | Delete Only This Event   | Delete only the selected occurrence of the event. This is only applicable to the repeating events. |
 | Delete All Future Events | Delete this and all future occurrences of this event but the occurrences of the event before the selected date will be retained. This is only applicable to the repeating events. |
 
@@ -171,4 +169,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 2. Click **Exit** to exit Calendar.
 
 
-<div class="version-info"><span>Update Date: 2021-01-15</span><span> Version: 5.7</span></div>
+<div class="version-info"><span>Update Date: 2021-04-02</span><span> Version: 5.8</span></div>

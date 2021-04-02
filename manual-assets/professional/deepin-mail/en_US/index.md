@@ -261,4 +261,4 @@ Click Help to get the manual, which will help you further know and use Mail.
 2. Click  **Exit**.
 
 
-<div class="version-info"><span>Update Date: 2021-01-15</span><span> Version: 1.1</span></div>
+<div class="version-info"><span>Update Date: 2021-04-02</span><span> Version: 1.1</span></div>

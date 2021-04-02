@@ -22,7 +22,7 @@
 ### 关闭相机
 
 - 在相机界面，单击  ![close](icon/close.svg) ，退出相机。
-- 右键单击任务栏上的 ![camera](icon/camera.svg)图标，选择 **关闭所有** 来退出相机。
+- 右键单击任务栏上的 ![camera](icon/camera.svg)，选择 **关闭所有** 来退出相机。
 - 在相机界面单击 ![icon_menu](icon/icon_menu.svg) ，选择 **退出** 来退出相机。
 
 ## 操作介绍
@@ -55,7 +55,7 @@
 
 ## 主菜单
 
-在主菜单中，您可以进行相机设置、切换窗口主题，查看帮助手册等操作。
+在主菜单中，可以进行相机设置、切换窗口主题，查看帮助手册等操作。
 
 ### 设置
 
@@ -98,4 +98,4 @@
 2. 单击 **退出**。
 
 
-<div class="version-info"><span>文档更新时间: 2021-01-15</span><span> 版本: 1.0</span></div>
+<div class="version-info"><span>文档更新时间: 2021-04-02</span><span> 版本: 1.0</span></div>

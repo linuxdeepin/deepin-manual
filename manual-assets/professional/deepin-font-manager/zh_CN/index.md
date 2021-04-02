@@ -14,8 +14,8 @@
 
 ### 运行字体管理器
 
-1. 单击桌面底部的 ![launcher](icon/deepin-launcher.svg)，进入启动器界面。
-2. 上下滚动鼠标滚轮浏览或通过搜索，找到字体管理器 ![deepin-font-manager](icon/deepin_font_manager.svg) 单击运行。
+1. 单击任务栏上的启动器图标 ![launcher](icon/deepin-launcher.svg)，进入启动器界面。
+2. 上下滚动鼠标滚轮浏览或通过搜索，找到字体管理器图标 ![deepin-font-manager](icon/deepin_font_manager.svg)，单击运行。
 3. 右键单击 ![deepin_font_manager](icon/deepin_font_manager.svg)，您可以：
 
    - 单击 **发送到桌面**，在桌面创建快捷方式。
@@ -26,8 +26,8 @@
 ### 关闭字体管理器
 
 - 在字体管理器界面单击 ![close_icon](icon/close_icon.svg)，退出字体管理器。
-- 在任务栏右键单击 ![deepin_font_manager](icon/deepin_font_manager.svg)，选择 **关闭所有** 来退出字体管理器。
-- 在字体管理器界面单击 ![icon_menu](icon/icon_menu.svg)，选择 **退出** 来退出字体管理器。
+- 在任务栏右键单击 ![deepin_font_manager](icon/deepin_font_manager.svg)，选择 **关闭所有**，退出字体管理器。
+- 在字体管理器界面单击 ![icon_menu](icon/icon_menu.svg)，选择 **退出**，退出字体管理器。
 
 ## 操作介绍
 
@@ -47,7 +47,7 @@
 
 字体管理器可以安装单个字体，也可以批量安装多个字体，您可以通过以下方式进行安装。
 
-- 在字体管理器界面，单击 ![add](icon/icon_plus.svg) 或 ![icon_menu](icon/icon_menu.svg) > **添加字体**。
+- 在字体管理器界面，单击 ![add](icon/icon_plus.svg) 或 ![icon_menu](icon/icon_menu.svg) > **添加字体**，或右键单击字体，选择 **添加字体**。
 - 双击字体文件。
 - 右键单击字体文件并选择 **打开方式** > ![deepin_font_manager](icon/deepin_font_manager.svg)**字体管理器**，进入字体管理器界面，安装字体。
 - 将字体文件拖拽到字体管理器界面或图标上。
@@ -117,8 +117,6 @@
 
 ### 查看字体安装位置
 
-您可以通过文件管理器查看字体的安装位置。
-
 1. 在字体管理器界面，右键单击字体。
 2. 选择 **在文件管理器中显示**，查看该字体的安装位置。
 
@@ -143,7 +141,7 @@
 
 ### 主题
 
-窗口主题包含浅色主题、深色主题和跟随系统主题。
+窗口主题包含浅色主题、深色主题和系统主题。
 
 1. 在字体管理器界面，单击 ![icon_menu](icon/icon_menu.svg)。
 2. 单击 **主题**，选择一个主题颜色。
@@ -169,4 +167,4 @@
 2. 单击 **退出**。
 
 
-<div class="version-info"><span>文档更新时间: 2021-01-15</span><span> 版本: 5.8</span></div>
+<div class="version-info"><span>文档更新时间: 2021-04-02</span><span> 版本: 5.8</span></div>

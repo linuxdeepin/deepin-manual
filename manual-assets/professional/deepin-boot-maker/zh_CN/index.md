@@ -4,16 +4,14 @@
 
 启动盘制作工具是一款将系统镜像文件写入U盘等安装介质的小工具，界面简洁、操作简单。
 
-![0|boot-maker](jpg/select-file.png)
-
 ## 使用入门
 
 通过以下方式运行或关闭启动盘制作工具，或者创建启动盘制作工具的快捷方式。
 
 ### 运行启动盘制作工具
 
-1. 单击任务栏上的启动器图标 ![deepin-launcher](icon/deepin-launcher.svg)，进入启动器界面。
-2. 上下滚动鼠标滚轮浏览或通过搜索，找到启动盘制作工具图标![deepin-boot-maker](icon/deepin-boot-maker.svg) ，单击运行。
+1. 单击任务栏上的启动器 ![deepin-launcher](icon/deepin-launcher.svg)，进入启动器界面。
+2. 上下滚动鼠标滚轮浏览或通过搜索，找到启动盘制作工具![deepin-boot-maker](icon/deepin-boot-maker.svg) ，单击运行。
 3. 右键单击 ![deepin-boot-maker](icon/deepin-boot-maker.svg)  ，您可以：
  - 单击 **发送到桌面**，在桌面创建快捷方式。
  - 单击 **发送到任务栏**，将应用程序固定到任务栏。
@@ -35,7 +33,7 @@
 3. 安装启动盘制作工具。
    - 系统中已经默认集成了启动盘制作工具，可以直接在启动器中找到并使用。
    - Windows系统可以从光盘镜像中解压 xxx-boot-maker.exe 到电脑中使用。
-   - 您也可以访问官网下载指定版本的启动盘制作工具来使用。
+   - 也可以访问官网下载指定版本的启动盘制作工具来使用。
 
 ### 选择镜像文件
 
@@ -79,8 +77,6 @@
 
 - 解压镜像错误
 
-- 执行命令错误
-
 - 未知错误等
 
 ![boot-maker](jpg/failed.png)
@@ -89,7 +85,7 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-当制作失败窗口中出现“提交反馈”的信息时，单击 **提交反馈**，跳转到服务与支持应用首页。在服务与支持应用中，您可以通过留言咨询、在线咨询等方式获得帮助。
+当制作失败窗口中出现“提交反馈”的信息时，单击 **提交反馈**，跳转到相关界面。
 
 ![boot-maker](jpg/failed-01.png)
 
@@ -121,4 +117,4 @@
 2. 单击 **退出**。
 
 
-<div class="version-info"><span>文档更新时间: 2021-01-15</span><span> 版本: 5.4</span></div>
+<div class="version-info"><span>文档更新时间: 2021-04-02</span><span> 版本: 5.6</span></div>

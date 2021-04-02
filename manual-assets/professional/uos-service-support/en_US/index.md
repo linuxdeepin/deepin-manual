@@ -8,8 +8,8 @@ Support is an application developed by UnionTech Software enabling quality custo
 
 ### Run Support
 
-1. Enter the UnionTech OS system and click ![deepin-launcher](icon/deepin-launcher.svg) in the dock to enter the Launcher interface.
-2. Locate ![support](icon/support.svg) by scrolling the mouse wheel or searching "support" in the Launcher interface and click it to run.
+1. Enter the UnionTech OS system and click the Launcher icon ![deepin_launcher](icon/deepin_launcher.svg) in the dock to enter the Launcher interface.
+2. Locate Support ![support](icon/support.svg) by scrolling the mouse wheel or searching "support" in the Launcher interface and click it to run.
 3. Right-click ![support](icon/support.svg) and you can:
  - Click  **Send to desktop** to create a desktop shortcut.
  - Click **Send to dock** to fix the application in the dock.
@@ -30,18 +30,18 @@ Sign in your Union ID to access the Consults and Online Support services.
 ![login](jpg/login.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; 
 
-   > ![Notes](icon/notes.svg) Notes: If you have not registered Union ID yet, click **Register here** icon on the interface to go to the Union ID Sign Up page for registration.
+   > ![Notes](icon/notes.svg) Notes: If you have not registered Union ID yet, click the **Register here** icon on the interface to go to the Union ID Sign Up page for registration.
 
 ## Self-Service
 
 Click **Self-Service** on the left panel to enter the Self-Service interface. You can search and read the manual, document center and FAQ on the UnionTech OS website to resolve issues.  
 
-- **Document Center**: Click **Document Center** and you will be directed to the document center of the product website of UnionTech OS. Input the user name and password to log in (If you don't have an account, you need to sign up first before logging into the website.) and view the corresponding documents in the **Document Center** page.
+- **Document Center**: Click **Document Center** and you will be directed to the document center of the product website of UnionTech OS.  You can view the corresponding documents in the **Document Center** page.
 - **FAQ**: Click **FAQ** and you will be directed to the document center of the product website of UnionTech OS. 
 - **Manual**: Click **Manual** to view the manual.
 - **Read More**: Click **Read More** to go to the ChinaUOS website and learn more about self-service.
 
-![self-service](jpg/self-support-service.png)
+![self_service](jpg/self_support_service.png)
 
 ## Consults
 
@@ -61,8 +61,9 @@ Please sign in your Union ID and connect to the Internet to access Consults serv
    - **Upload log**: optional and disabled by default. You can choose to enable it and your personal information will be protected in the process of uploading.
    - **Email**: required. You will receive the progress and results from UnionTech OS support team via email. 
 
-![message-submit](jpg/message-submit.png)
+![message_submit](jpg/message_submit.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
 3. Click **Submit** to provide feedback to the service and support team of UnionTech OS.
 
    > ![Notes](icon/notes.svg) Notes: If you click **Reset**, all messages, uploaded content or attachments will be restored to the initial default status. Please proceed with caution.
@@ -76,7 +77,7 @@ Communicate and discuss on services and technical issues with the customer servi
 Please sign in your Union ID, ensure your system is in trial period or has been activated, and connect to the Internet to access Online Support service.
 
 1. Click **Online Support** on the left panel.
-   - You will be directed to the Online Support interface and execute Step 2 as below when network connection is available.
+   - You will be directed to the Online Support interface and execute Step 2 as below when the network connection is available.
    - Click **Contact Us** when the external network is unavailable. Please refer to [Contact Us](#Contact Us) for detailed information on how to operate. 
 
 2. You can chat online, send attachments, or view the history.
@@ -84,7 +85,7 @@ Please sign in your Union ID, ensure your system is in trial period or has been 
    - Click ![upload attachments](jpg/upload attachments.png) to upload attachments.
    - Click **View history** on top of the dialogue to view the history.
 
-![online-service](jpg/online-service.png)
+![online_service](jpg/online_service.png)
 
 ## Contact Us
 
@@ -120,4 +121,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 
 1. On the Support interface, click ![icon_menu](icon/icon_menu.svg).
 2. Click **Exit** to exit Support.
-<div class="version-info"><span>Update Date: 2021-01-15</span><span> Version: 2.2</span></div>
+<div class="version-info"><span>Update Date: 2021-04-02</span><span> Version: 2.3</span></div>

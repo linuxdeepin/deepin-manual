@@ -142,5 +142,5 @@
 
 将光标放在状态栏上并单击右键，选择 **帮助中心-关于输入法**，可以查看中文输入法的版本等信息。
 
-<div class="version-info"><span>文档更新时间: 2021-01-15</span><span> 版本: (无)
+<div class="version-info"><span>文档更新时间: 2021-04-02</span><span> 版本: (无)
 </span></div>

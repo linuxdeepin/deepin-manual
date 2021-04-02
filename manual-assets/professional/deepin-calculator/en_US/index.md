@@ -142,4 +142,4 @@ View Help to get more information about Calculator.
 1. On the Calculator interface, click ![main_menu](icon/main_menu.svg).
 2. Click **Exit** to exit.
 
-<div class="version-info"><span>Update Date: 2021-01-15</span><span> Version: 5.6</span></div>
+<div class="version-info"><span>Update Date: 2021-04-02</span><span> Version: 5.6</span></div>

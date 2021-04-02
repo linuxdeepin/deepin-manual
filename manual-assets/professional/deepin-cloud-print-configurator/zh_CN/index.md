@@ -8,7 +8,7 @@
 
 统信云打印解决方案需要在客户端及服务端安装对应的程序。
 
-### windows云打印服务端
+### Windows云打印服务端
 
 1. 在Windows操作系统中安装云服务程序 “UniontechCloudPrintServerInstaller.exe”。
 
@@ -20,7 +20,7 @@
 
 4. 输入新的授权码，单击 **更新** 后，完成授权码设置。
 
-5. 当云打印和windows其他程序端口冲突时，可以手动修改远程通信端口。在云打印设置界面，选择![icon_menu](icon/icon_menu.svg)> **设置**，设置远端通信端口，配置范围为1025-65535。
+5. 当云打印和Windows其他程序端口冲突时，可以手动修改远程通信端口。在云打印设置界面，选择![icon_menu](icon/icon_menu.svg)> **设置**，设置远端通信端口，配置范围为1025-65535。
 
 ### 统信操作系统云打印客户端
 
@@ -76,4 +76,5 @@
 1. 在云打印界面，单击 ![icon_menu](icon/icon_menu.svg)。
 2. 单击 **退出**。
 
-<div class="version-info"><span>文档更新时间: 2021-03-31</span><span> 版本: 0.7</span></div>
+
+<div class="version-info"><span>文档更新时间: 2021-04-02</span><span> 版本: 5.3</span></div>

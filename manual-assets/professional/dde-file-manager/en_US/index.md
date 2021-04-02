@@ -1,4 +1,4 @@
-# File Manager|../common/deepin-file-manager.svg|
+# File Manager|../common/dde-file-manager.svg|
 
 ## Overview
 
@@ -12,22 +12,24 @@ You can run, close and create a shortcut for File Manager by the following ways.
 
 ### Run File Manager
 
-1. Click ![Launcher](icon/deepin-launcher.svg) on dock to enter Launcher interface.
-2. Locate ![FileManager](icon/deepin-file-manager.svg) by scrolling mouse wheel or searching by "File Manager" in Launcher interface.
-3. Right-click ![FileManager](icon/deepin-file-manager.svg), you can
+1. Click ![Launcher](icon/deepin_launcher.svg) on dock to enter Launcher interface.
+2. Locate ![FileManager](icon/deepin_file_manager.svg) by scrolling mouse wheel or searching by "File Manager" in Launcher interface.
+3. Right-click ![FileManager](icon/deepin_file_manager.svg), you can
  - Click **Send to desktop** to create a desktop shortcut.
  - Click **Send to dock** to fix the application on dock.
  - Click **Add to startup** to add the application to startup, it will automatically run when the system starts up.
 
+   >![tips](icon/tips.svg)Tips: You can also press **Super** + **E** to start File Manager.
+
 ### Exit File Manager
 
-- On File Manager interface, click ![close](icon/close.svg) to exit.
-- Right-click ![FileManager](icon/deepin-file-manager.svg) on Dock, select **Close All** to exit File Manager.
+- On File Manager interface, click ![close](icon/close_icon.svg) to exit.
+- Right-click ![FileManager](icon/deepin_file_manager.svg) on Dock, select **Close All** to exit File Manager.
 - Click ![Settings](icon/icon_menu.svg) and select **Exit** to exit File Manager.
 
 ### View Shortcut Keys
 
-On Document Viewer interface, press **Ctrl + Shift + ?** to view all shortcut keys quickly, which helps you to use them skillfully and improves your working efficiency. 
+On Document Viewer interface, press **Ctrl + Shift + /** to view all shortcut keys quickly, which helps you to use them skillfully and improves your working efficiency. 
 
 ![1|hotkey](jpg/hotkey.png)
 
@@ -102,9 +104,11 @@ Click ![icon_view](icon/icon_view.svg) and ![list_view](icon/list_view.svg) on t
 
 ![1|listview](jpg/listview.png)
 
-> ![tips](icon/tips.svg)Tips: In list view, place the cursor on the dividing line between any two columns and drag it to change the width of the current column. Double-click the dividing line to adjust to the biggest width of the current column automatically. 
+> ![tips](icon/tips.svg)Tips:
+>
+> -  In list view, place the cursor on the dividing line between any two columns and drag it to change the width of the current column. Double-click the dividing line to adjust to the biggest width of the current column automatically. 
 
-> ![tips](icon/tips.svg)Tips: Press  **Ctrl**+**1**  or  **Ctrl**+ **2**  to switch icon view and list view. 
+> - Press  **Ctrl**+**1**  or  **Ctrl**+ **2**  to switch icon view and list view. 
 
 ### Sorting
 
@@ -120,11 +124,11 @@ Click ![icon_view](icon/icon_view.svg) and ![list_view](icon/list_view.svg) on t
 2. In the context menu, select **Open with**>**Select default program**.
 3. Select the application you want to open the file in the list.
 
-> ![notes](icon/notes.svg)Notes: It will use the default application to open the file when you double-click it. You can right-click the file, select **Properties** and choose a default application in **Open with ** list. You can also set the options in the [Default Applications](dman:///dde#Default Application Settings) of the Control Center to change the global default applications of the specified file types.
+> ![notes](icon/notes.svg)Notes: It will use the default application to open the file when you double-click it. You can right-click multiple files of the same type, and select **Open with** to open them at a time.
 
 ![0|open_with](jpg/open.png)
 
-> ![tips](icon/tips.svg)Tips: You can right-click multiple files of the same type, and select **Open with** to open them at a time.
+
 
 ### Hide files
 
@@ -134,20 +138,20 @@ Click ![icon_view](icon/icon_view.svg) and ![list_view](icon/list_view.svg) on t
 ### Copy File/Folder
 
 1. Select the files/folders to be copied, right-click and select **Copy**.
-2. Enter the directory to which the files/folders will be pasted, right-click and select **Paste**.
+2. Select a target saving location, right-click and select **Paste**.
 
 ### Compress File/Folder
 
 1. Select the files/folders to be compressed, right-click and select **Compress**.
-2. Input a file name and select a file format for the to be compressed file.
-3. Select a location to store it.
-4. Select **Compress** to generate the compressed file.
+2. The compress page of Archive Manager pops up. Set the format, name, storing path and so on. 
+3. Click **Compress**.
 
-> ![notes](icon/notes.svg)Notes: Switch on **Advanced Options** to set password and split volumes sizes. **Encrypt the archive** and **Split to volumes** are only applicable for some formats.
+
 
 ### Delete File/Folder
 
-Right-click file/folder to select **Delete**.
+1. Right-click a file/folder to select **Delete**.
+
   - You can find the deleted files in Trash. Right-click files in Trash, you can choose **Restore** or **Delete**. 
   - The shortcut of the deleted files will become invalid.
 
@@ -161,7 +165,7 @@ In file manager,  use **Ctrl + Z** to undo the previous steps, including:
 - Restore the moved (via dragging or cutting) file/folder to the previous location.
 - Delete the copied and pasted file/folder.
 
-> ![attention](icon/attention.svg)Attention: If the above operations are continuous, you can undo all of them; if there is file overwriting or permanently file deleting, then you can only return to that step.
+> ![attention](icon/attention.svg)Attention: It can undo two continuous steps at most. If there is file overwriting or permanently file deleting, then you can only return to that step.
 
 
 
@@ -179,10 +183,15 @@ In Properties of files, you can view the basic info, open with list, and permiss
 
 ### Virus scan
 
-1. On File Manager interface, right-click a file. 
-2. Select **Virus scan**, the **Virus Scan** interface of Security Center pops up, so you can scan the file for virus.
+1. On File Manager interface, right-click a file(folder). 
+2. Select **Virus scan**, the **Virus Scan** interface of Security Center pops up, so you can scan the file(folder) for virus. Refer to [Virus Scan](dman:///security-center#Virus Scan) for detailed operations.
 
->![notes](icon/notes.svg)Notes: If Security Center is executing virus scanning currently, you can click **View** in the pop-up window to enter the **Virus Scan** interface of Security Center.
+   >![notes](icon/notes.svg)Notes: 
+   >
+   >- If there is a scanning task in Security Center currently, click **View** in the pop-up dialog box to enter the virus scanning interface of Security Center.
+
+
+
 
 ## Common Operations
 
@@ -192,16 +201,12 @@ File Manager is featured with many useful functions, which are all designed to e
 
 There are three sections in address bar, namely back/forward buttons, breadcrumb bar, and directory/search bar. By default, breadcrumb bar is displayed in the address bar. 
 
-
-
 ![0|addressbar](jpg/addressbar1.png)
 
 - Clicking back/forward buttons to quickly view the previous address or the next address. 
 - Each level of the location of a file will form a breadcrumb. You can switch quickly among levels by clicking all breadcrumbs.
 
 By clicking the search icon, or right-click the file path and select **Edit address**, the address bar will be switched into inputting box. By clicking out of the inputting box, the address bar will restore to breadcrumbs automatically. 
-
-
 
 ![0|addressbar](jpg/addressbar2.png)
 
@@ -213,20 +218,29 @@ Click the search button or press **Ctrl + F**  to switch to the search bar. Or, 
 
 - If you need to search in a specified directory, please enter it before search.
 
-> ![notes](icon/notes.svg)Notes: 
-   - In **Settings**, check "Auto index internal disk" and "Index external storage device after connected to computer" to quicken the searching speed.
-   - In case you want to search files by keywords in the content, you can check **Full-Text search** in **Settings** > **Advanced** > **Index**.
+> ![notes](icon/notes.svg)Notes: In **Settings**, check "Auto index internal disk" and "Index external storage device after connected to computer" to quicken the searching speed.
+
+#### Full-Text Search
+
+You can search a file by keywords in its content.
+1. In File Manager, click ![icon_menu](icon/icon_menu.svg) > **Settings**.
+2. Check **Full-Text search** under **Index** of **Advanced**.
+3. Press **Ctrl + F** or click the searching button in the address bar to start searching. Enter the keywords and press **Enter**.
 
 #### Advanced Search
+
+When there are many files and the search is slow, you can enable advanced search to narrow the search scope and improve the search efficiency.
+
 1. In search bar, input the keywords and press **Enter**. When the results appear, you will see ![filter](icon/filter.svg) icon, you can click it to do advanced search.
 2. Select the searching range, file type and size, and modified time, accessed time and created time to narrow the search results.
 
 ![0|filter](jpg/filter.png)
 
+
 ### Recent Files
 By default, there is a **Recent** entry on left panel. Click it to view the recently used files. Files are sorted by default in reverse order of access time.
 
-> ![notes](icon/notes.svg)Notes: If you want to hide "Recent", you can uncheck "Display recent file entry in left panel" in Settings > Basic > Hidden files. To hide the access record of a specific file, right-click the file and select **Remove** which will not delete the file.
+> ![notes](icon/notes.svg)Notes: If you want to hide "Recent", you can uncheck "Display recent file entry in left panel" in **Settings** > **Basic** > **Hidden files**. To hide the access record of a specific file, right-click the file and select **Remove** which will not delete the file.
 
 ### Manage Tabs
 
@@ -236,8 +250,7 @@ File Manager supports multi-tab view.
 2. In the pop-up context menu, select **Open in new tab**.
 3. When the window has multi-tabs, you can:
  - Click + in tab bar to add a new tab.
- - Click × on the tab to close it. 
- - Place the cursor on the tab, middle-click to close it.
+ - Place the cursor on the tab, click × on the tab to close it or middle-click to close it.
 
 ![1|tab](jpg/tab.png)
 
@@ -251,13 +264,13 @@ To quickly visit a folder from the left panel, you can add bookmarks for frequen
 
 - Move Bookmarks: you can move bookmarks within the bookmark area. Drag and drop the bookmark to the designated location.
 
-- Delete Bookmarks: you can delete bookmarks by right-clicking the bookmark and select **Remove**, or right-clicking the bookmarked folder and select **Remove bookmark**, or dragging and dropping the bookmark out of the left panel to delete it.
+- Delete Bookmarks: you can delete bookmarks by right-clicking the bookmark and select **Remove**, or right-clicking the bookmarked folder and select **Remove bookmark**.
 
 ### Manage Tags
 
 By adding tags on file/folder, you can classify and manage your files better.
 
-> ![notes](icon/notes.svg)Notes: currently only x86 platform supports **Tag information**. All contents related to "Tag information" in this manual are only applicable for x86 platform.
+> ![notes](icon/notes.svg)Notes: currently only x86 platform supports **Tag information**. 
 
 #### Add Tags
 
@@ -336,7 +349,7 @@ You can share folders in File Manager, if there are some folders shared, the sha
 
 1. On File Manager interface, right-click a folder, select **Share folder**.
 2. In the properties window, check **Share this folder**.
-3. Input **Share name**, and choose **Permission** and **Anonymous ** according to actual needs before closing the window.
+3. Input **Share name**, and choose **Permission** and **Anonymous** according to actual needs before closing the window.
 5. To set share password, click ![menu](icon/icon_menu.svg) and select **Set share password**.
 5. Input password and click **Confirm**.
 
@@ -348,8 +361,6 @@ You can share folders in File Manager, if there are some folders shared, the sha
 
 You can find sharing folders of other users in the same LAN in **Computers in LAN**. You can also visit sharing folders via smb.
 
-
-
 1. On File Manager interface, click ![icon_menu](icon/icon_menu.svg) > **Connect to Server**, input the sharing address of the LAN user, e.g. smb://xx.x.xx.xxx (usually it should be an IP address), click **Connect**.  Or, input the server's address in the address bar directly and press **Enter**.
 2. Double-click the shared document you need to visit, input the username and password or visit by anonymous access in the pop-up dialogue box.
    - Unencrypted folders can be visited by anonymous access without inputting username and password.
@@ -360,14 +371,7 @@ You can find sharing folders of other users in the same LAN in **Computers in LA
 
 ![1|viewshare](jpg/visitshare.png)
 
-### Computers in LAN
 
-1. On File Manager interface, click ![network](icon/network.svg).
-2. Double-click the folder you want to visit.
-3. Input the username and password or visit by anonymous access.
-   - Unencrypted folders can be visited by anonymous access without inputting username and password.
-   - When you visit encrypted folders, a window pops up and you will have to input user name and password before visiting. If you check **Remember password**, you don't have to input password when you visit the folder next time.
-4. Click **Connect** to establish connection.
 
 ### Open in new window as admin
 
@@ -383,6 +387,32 @@ Prerequisite: Please enable **Developer Mode** from Control Center > General Set
 2. Select **Open in terminal**, Terminal will be opened, and its directory will be the current one.
 
 ![0|openinterminal](jpg/openinterminal.png)
+
+### Burn CD
+
+You can copy music, video, pictures, or mirror files to a CD or DVD through the burning feature. Please prepare an imprint drive, a blank CD, or DVD disc in advance.
+
+1. Insert the disc into the recording drive.
+
+2. Open File Manager and click the CD Icon in the left panel to enter the burning interface.
+
+![cd](jpg/cd_interface.png)
+
+3. Right click the file (folder) and select **Add to disc** or drag the file (folder) directly to the burning interface.
+
+4. In the burning interface, click **Burn** in the upper right corner.
+
+>![notes](icon/notes.svg)Notes: if you want to delete a file/folder from the burning list, right-click it and select **Delete** to remove it from the list.
+
+5. A dialog box pops up. Input the disc name. You can also enter the **Advanced settings** interface, set the file system and write speed, or check "Allow files to be added later", "Verify data" and so on, and click **Burn**.
+
+![cd](jpg/cd_rename.png)
+
+6. After burning, a prompt box will pop up in the interface, and click **OK**.
+
+>![notes](icon/notes.svg)Notes:
+>- You can directly copy the files in the CD to the computer.
+>- If you need to erase the disc data, you can right-click the disc icon in the left panel and select **Unmount**, right-click the disc icon again and select **Erase**.
 
 ### Create Link
 
@@ -407,18 +437,19 @@ If your computer is equipped with Bluetooth module, you can transfer files in sh
 
 Prerequisite: The Bluetooth devices of sender and receiver have been paired and connected successfully. Refer to [Connect to a Bluetooth Device](dman:///dde#Connect to a Bluetooth Device) for details.
 
-1. On File Manager interface, right-click the file to be sent.
+1. On File Manager interface, right-click the file or package to be sent.
 2. Select **Send to** > **Send to Bluetooth**.
 3. Select the receiver in the pop-up dialog box, and click **Next**.  
 4. A file receiving request will pop up on the receiving device. After the receiver agrees the request, the sender starts to transfer the file.
->![tips](icon/tips.svg)Tips: If you need to transfer a folder, you can compress it in advance and send it through Bluetooth.
+
+
 
 ## Add Corner Marker to Files/Folders
 
 You can assign an icon file to a file or folder icon through the command line and display it as a corner marker.
 >![notes](icon/notes.svg)Notes: 
->   - The corner marker files support formats such as svg, jpg, png, bmp, and gif, but not bigger than 100KB.
->   - The corner marker could not be added to files in USB disks and CD-ROM disks.
+>- The corner marker files support formats such as svg, jpg, png, bmp, and gif, but not bigger than 100KB.
+>- The corner marker could not be added to files in USB disks and CD-ROM disks.
 
 ### Add single corner marker
 
@@ -448,13 +479,13 @@ File Vault is designed to  create a special safe space for you and protect your 
 
 You will have to set a password when you use File Vault for the first time as follows:
 
-1. Click ![file-vault](icon/file-vault.svg) in the left panel or double-click **My Vault** in the **Computer** interface, and then click **Create** in the pop-up dialogue box.  
+1. Click ![file_vault](icon/file_vault.svg) in the left panel or double-click **My Vault** in the **Computer** interface, and then click **Create** in the pop-up dialogue box.  
 2. Set the "Method", "Password", "Repeat password" and "Hint", click **Next**. 
 
 ![0|password](jpg/password.png)
 
 > ![notes](icon/notes.svg)Notes: the password must contain upper case letters, lower case letters,  Arabic numbers and special symbols at the same time and no less than 8 digits. Otherwise, you are not able to go to the next step.
-> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
 
 3. A key/QR code is generated. It is recommended to save it in case you forget it. Click **Next**. 
 
@@ -468,7 +499,7 @@ You will have to set a password when you use File Vault for the first time as fo
 
 ### Lock File Vault
 
-After you put files into File Vault, right-click![file-vault](icon/file-vault.svg) in the left panel or right-click **My Vault** in the **Computer** interface. 
+After you put files into File Vault, right-click![file_vault](icon/file_vault.svg) in the left panel or right-click **My Vault** in the **Computer** interface. 
 
 - Select **Lock** to lock File Vault. 
 - Select **Auto lock** and select in the sub-menu:
@@ -481,18 +512,18 @@ After you put files into File Vault, right-click![file-vault](icon/file-vault.sv
 
 ### Unlock File Vault
 
-Right-click![file-vault](icon/file-vault.svg) or **My Vault** in the **Computer** interface. 
+Right-click![file_vault](icon/file_vault.svg) or **My Vault** in the **Computer** interface. 
 
 - Select  **Unlock**, input password in the pop-up dialogue box and click **Unlock**. 
 - Select  **Unlock by key**, input the 32-digit recovery key in the pop-up dialogue box and click **Unlock**. 
 
-> ![tips](icon/tips.svg)Tips: You can click ![file-vault](icon/file-vault.svg) in the left panel or double-click **My Vault** in the **Computer** interface and input password. 
+> ![tips](icon/tips.svg)Tips: You can click ![file_vault](icon/file_vault.svg) in the left panel or double-click **My Vault** in the **Computer** interface and input password. 
 
 ### Delete File Vault
 
 You can delete a vault only after unlocking it.
 
-1. Right-click ![file-vault](icon/file-vault.svg) in the left panel  or right-click **My Vault** in the **Computer** interface and select **Remove File Vault**. 
+1. Right-click ![file_vault](icon/file_vault.svg) in the left panel  or right-click **My Vault** in the **Computer** interface and select **Remove File Vault**. 
 2. Input file vault password in the pop-up dialogue box and click **Remove**. 
 3. Input your login password in the pop-up dialogue box and click **Confirm** to finish this operation.
 
@@ -501,8 +532,6 @@ You can delete a vault only after unlocking it.
 ## Disk Management
 
 On File Manager interface, you can manage local and external disks. 
-
-### View Disks
 
 Local disks are displayed in the left panel of File Manager. When you mount any external disks or insert other mobile storage devices, the corresponding icons will be displayed in the left panel.
 
@@ -526,11 +555,17 @@ Local disks are displayed in the left panel of File Manager. When you mount any 
 
 > ![notes](icon/notes.svg)Notes: If disks or folders in the disk are encrypted, you will have to input password before visiting them. 
 
-### Unmount/Eject/Safely Remove Disks
+### Local Disks
+#### Hide Local Disks
+1. Click ![icon_menu](icon/icon_menu.svg)> **Settings** on the interface of File Manager.
+2. Check **Hide system disk** under **Advanced** > **Other**.
+
+### External Disks
+#### Eject External Disks
 
 1. In the left panel of File Manager, right-click the disk you want to remove.
 
-2. Select **Unmount**.
+2. Select **Safely Remove**.
 
 3. The disk will be removed from the disk list, and so will all partition of it .
 
@@ -539,12 +574,12 @@ Local disks are displayed in the left panel of File Manager. When you mount any 
 
 > ![tips](icon/tips.svg)Tips: you can also select **Eject** or click ![unmount](icon/unmount_normal.svg) in the left panel to unmount the disk.
 
-### Rename Disks
+#### Rename External Disks
 1. In the left panel or on computer interface, right-click the disk you want to rename.
 2. Select **Unmount** and then select **Rename**.
-3. Input the new name.
+3. Input the new name and press **Enter** or click any blank area to save the modification.
 
-### Format Disks
+#### Format External Disks
 
 1. In the left panel of File Manager, right-click the disk to format.
 
@@ -561,7 +596,7 @@ Local disks are displayed in the left panel of File Manager. When you mount any 
 
 ## Main Menu
 
-You can create new window, switch themes, connect to server, [set share password](#Share Local Files),make settings, view manual and version information in Main Menu.
+You can create new window, switch themes, connect to server, [set share password](#Share Local Files), make settings, view manual and version information in Main Menu.
 
 
 ### New Window
@@ -630,4 +665,4 @@ The window theme includes Light Theme, Dark Theme and System Theme.
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Click **Exit**.
 
-<div class="version-info"><span>Update Date: 2021-01-15</span><span> Version: 5.2</span></div>
+<div class="version-info"><span>Update Date: 2021-04-02</span><span> Version: 5.2</span></div>

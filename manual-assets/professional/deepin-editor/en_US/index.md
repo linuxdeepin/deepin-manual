@@ -10,7 +10,7 @@ Text Editor is a simple text editing tool. You can use it to write a simple text
 
 ### Run Text Editor
 
-1. Click ![deepin_launcher](icon/deepin_launcher.svg) in the dock to enter the Launcher interface. 
+1. Click the Launcher icon ![deepin_launcher](icon/deepin_launcher.svg) in the dock to enter the Launcher interface. 
 2. Locate Text Editor ![deepin_editor](icon/deepin_editor.svg) by  scrolling the mouse wheel or searching "text editor" in the Launcher interface, and click it to run.
 3. In Launcher, right-click Text Editor to:
   - Click **Send to desktop** to create a desktop shortcut.
@@ -19,7 +19,7 @@ Text Editor is a simple text editing tool. You can use it to write a simple text
 
 ### Exit Text Editor
 
-- On the Text Editor interface, click ![close](icon/close.svg) to exit.
+- On the Text Editor interface, click ![close](icon/close_icon.svg) to exit.
 - On the Text Editor interface, click ![icon_menu](icon/icon_menu.svg)> **Exit** to exit.
 - Right-click ![deepin_editor](icon/deepin_editor.svg) in the Dock, and select **Close All** to exit.
 
@@ -31,38 +31,39 @@ On the Text Editor Interface, press **Ctrl** + **Shift** + **?** to view all the
 
 ## Basic Operations
 
-### Create Files
+### Manage Tabs
 
-Click ![plus_icon](icon/+.svg) on the title bar, or press **Ctrl + N**, or click ![icon_menu](icon/icon_menu.svg)> **New window** or **New tab** to create a blank document in Text Editor.
+- Create New Tabs/Windows
+  - Click ![plus_icon](icon/+.svg) or ![icon_menu](icon/icon_menu.svg)> **New tab** on the title bar or press **Ctrl + T** to create a new tab.
+  - Click ![icon_menu](icon/icon_menu.svg)> **New window** or press **Ctrl + N** to create a new window.
+
+- Adjust Tabs/Windows
+  - Drag the tab in the same window to reorder tabs.
+  - Scroll the mouse wheel on the title of a tab to reorder tabs in the same window.
+  - Move the tab out of the window to create a new window or move the tab from one window to another.
+
+- Close Tabs /Windows
+
+  The window will be closed as well when there is only one tab in the window.
+
+  - Press **Ctrl + W** to close the file on the file interface.
+  - Move the cursor to the file title, and click the ![close](icon/close_icon.svg) icon there or the mouse middle button to close the file.
+  - Right-click the file title and select **Close tab** or **Close other tabs** or **More options** to close the tabs.
+
+> ![notes](icon/notes.svg) Notes: If you make changes to the file but does not save it, you will be prompted by Text Editor to save before closing the file.
 
 ### Open Files
 
 You can open one or multiple text files at one time in the following ways, and the selected file will open in the new tab:
 
 - Drag the file directly to the Text Editor interface or the Text Editor icon.
-- Right-click the file and open it with Text Editor. After selecting Text Editor as the default application for text files in Control Center, you can double-click the file to open it directly.
-- On the Text Editor interface, click ![icon_menu](icon/icon_menu.svg)> **Open file**, and select the file.
-- On the Text Editor interface, use **Ctrl + O** to open the file.
+- Right-click the file and Select **Open with** > **Text Editor**. After selecting Text Editor as the default application for text files in Control Center, you can double-click the file to open it directly.
+- On the Text Editor interface, click ![icon_menu](icon/icon_menu.svg)> **Open file** or use the shortcuts **Ctrl + O** to open the file in File Manager.
 
 ### Save Files
 
-- Press **Ctrl + S** to save the current document.
-- Click ![icon_menu](icon/icon_menu.svg)> **Save** to save the file.
-
-- Press **Ctrl + Shift + S** to save the file as a new one.
-
-
-### Close Files
-
-- Press **Ctrl + W** to close the file on the file interface.
-- Move the cursor to the file title, and click the ![close](icon/close.svg) button there or the mouse middle button to close the file.
-- Right-click the file title and select **Close tab** or **Close other tabs**.
-- Right-click the file title and select **More options**, and you can:
-   - Select **Close tabs to the left** to close all the tabs on the left of the current tab.
-   - Select **Close tabs to the right** to close all the tabs on the right of the current tab.
-   - Select **Close unmodified tabs** to close all the unmodified tabs.
-
-> ![notes](icon/notes.svg) Notes: If you make changes to the file but does not save it, you will be prompted by Text Editor to save before closing the file.
+- Press the shortcuts **Ctrl + S** or click ![icon_menu](icon/icon_menu.svg)> **Save** to save the current document.
+- Press the shortcuts **Ctrl + Shift + S** or click ![icon_menu](icon/icon_menu.svg)> **Save as **to save the file as a new one.
 
 ### Print Files
 
@@ -70,27 +71,12 @@ To print a file in the Text Editor interface, you should connect and set up the 
 
 1. Click ![icon_menu](icon/icon_menu.svg)> **Print**, or press **Ctrl + P** to open the print preview interface.
 2. On the preview interface, preview the document, select a printer, and set the printing page. 
-3. Click **Advanced** option on the preview interface to select parameters including paper size and layout. 
+3. Click the **Advanced** option on the preview interface to select parameters including paper size and layout. 
 4. Click **Print** to start printing at the printer selected.
 
 ![preview](jpg/preview.png)
 
 ![pagesetup](jpg/advanced-preview.png)
-
-### Manage Tabs
-
-In Text Editor, you can reorder tabs within the same window through dragging or by scrolling the mouse wheel on the tab title. You can also remove the tab out to create a new window, or move the tab from one window to another.
-
-#### Tab Shortcuts
-
-| Function   |  Shortcuts |
-| ---------------------------------- | ------------ |
-| New tab   |  Ctrl + T |
-| Next tab | Ctrl + Tab |
-| Previous tab  | Ctrl + Shift + Backtab |
-| Close tab | Ctrl + W |
-| Close other tabs | Ctrl + Shift + W |
-| Restore tab (Reopen closed tab) | Ctrl + Shift + T |
 
 ## Edit Texts
 
@@ -200,7 +186,7 @@ Use the shortcuts below to edit lines easily:
 
 You can perform the following operations after enabling the Text to Speech and Speech to Text features in the Control Center.
 
-1. Right-click and select **Speech to Text **. The input voices through microphone will be converted to texts and can be edited in the document.
+1. Right-click and select **Speech to Text**. The input voices through microphone will be converted to texts and can be edited in the document.
 2. Select a paragraph of texts. Right-click it and select **Text to Speech**. The texts selected will be broadcast.
 
 > ![notes](icon/notes.svg) Notes: The **Text to Speech** option in the right-click menu is grayed out and cannot be activated when no text is selected.
@@ -216,10 +202,7 @@ You can perform the following operations after enabling the Text to Speech and S
 
 ### Use Column Mode
 
-You can input identical content to or remove content from multiple lines of code by using the column mode function efficiently. 
-
-- Edit content in multiple lines at the same time: Press and hold the **Alt** key, drag the mouse to select multiple lines, and edit the content.
-- Delete content in multiple lines at the same time: Press and hold the **Alt** key, drag the mouse to select multiple lines, and right-click to select **Delete** or click **Delete** on the keyboard to delete content.
+Press and hold the **Alt** key on the keyboard, drag the mouse to select multiple lines, and edit the identical contents in multiple lines of codes efficiently by using the column mode function. 
 
 ![mode](jpg/column mode.png)
 
@@ -270,7 +253,7 @@ You can add comments to any text with a code type suffix, such as cpp and java, 
 
 ## Main Menu
 
-On the main menu, you can [Create New Windows](#Create Files), [Create New Files](#Create Files), [Find Texts](#Find Texts), [Replace Texts](#Replace Texts), [Save Files](#Save Files), switch window themes, view help manual, and get more information about Text Editor.
+On the main menu, you can [Create New Windows](#Manage Tabs), [Create New Files](#Manage Tabs), [Find Texts](#Find Texts), [Replace Texts](#Replace Texts), [Save Files](#Save Files), switch window themes, view help manual, and get more information about Text Editor.
 
 ### Settings
 
@@ -284,7 +267,7 @@ Click ![icon_menu](icon/icon_menu.svg)> **Settings** and you can perform the fol
 - Check or uncheck **Word wrap**.
 - Check **Code folding flag** and ![next](icon/next.svg) or ![next](icon/next_down.svg) are displayed in the edit area. Right-click and select **Fold/Unfold Current Level** or **Fold/Unfold All** to perform the corresponding operations.
 - Check **Show line numbers** to display the line number in the edit area.
-- Check **Hightlight current line** to highlight the current line.
+- Check **Show whitespaces and tabs** to display all the white spaces and tabs. You can also input or delete white spaces and tabs manually.
 
 > ![tips](icon/tips.svg) Tips: You can also use **Ctrl + “+”/ “-” ** to adjust the font size, and press **Ctrl + 0** to restore to default font size.
 
@@ -325,4 +308,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 
 1. On the Text Editor interface, click ![menu](icon/icon_menu.svg).
 2. Click **Exit** to exit Text Editor. 
-<div class="version-info"><span>Update Date: 2021-01-15</span><span> Version: 5.9</span></div>
+<div class="version-info"><span>Update Date: 2021-04-02</span><span> Version: 5.9</span></div>

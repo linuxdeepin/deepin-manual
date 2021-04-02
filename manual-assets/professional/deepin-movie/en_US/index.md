@@ -10,8 +10,8 @@ Movie shares a pleasant leisure time with you! Movie is a video player which sup
 
 ### Run Movie
 
-1. Run ![deepin_launcher](icon/deepin_launcher.svg) in the dock to enter the Launcher interface.
-2. Locate ![movie_24](icon/movie_24.svg) by scrolling the mouse wheel or searching "movie" in the Launcher interface and click it to run.
+1. Run the Launcher icon ![deepin_launcher](icon/deepin_launcher.svg) in the dock to enter the Launcher interface.
+2. Locate Movie ![movie_24](icon/movie_24.svg) by scrolling the mouse wheel or searching "movie" in the Launcher interface and click it to run.
 3. Right-click ![movie_24](icon/movie_24.svg) and you can:
  - Click **Send to desktop** to create a desktop shortcut.
  - Click **Send to dock** to fix it in the Dock.
@@ -54,10 +54,10 @@ Immerse yourself in the pure joy of wonderful videos through frequently used fun
 | ---------------------------------------------------------- | ---------- | --------------------------------------------------------- | --------- |
 | <img src="icon/last_normal.svg" class="inline" />     | Previous   | <img src="icon/next_normal.svg" class="inline" />    | Next      |
 | <img src="icon/play_normal.svg" class="inline" />     | Play       | <img src="icon/suspend_normal.svg" class="inline" /> | Pause     |
-| <img src="icon/zoominnormal.svg" class="inline" />    | Fullscreen | <img src="icon/volumenormal.svg" class="inline" />   | Volume    |
-| <img src="icon/episodes_normal.svg" class="inline" /> | Playlist   | <img src="icon/menu.svg" class="inline" />           | Main Menu |
-| <img src="icon/mix.svg" class="inline" />             | Minimize   | <img src="icon/max.svg" class="inline" />            | Maximize  |
-| <img src="icon/close.svg" class="inline" />           | Close      |                                                           |           |
+| <img src="icon/zoominnormal.svg" class="inline" />    | Fullscreen | <img src="icon/zoom_out_normal.svg" class="inline" />   | Exit fullscreen |
+| <img src="icon/episodes_normal.svg" class="inline" /> | Playlist   |<img src="icon/volumenormal.svg" class="inline" />|Volume|
+
+
 
 ## Basic Operations
 
@@ -65,15 +65,15 @@ Immerse yourself in the pure joy of wonderful videos through frequently used fun
 
 You can play films in the following ways:
 - When there are no files in the playlist, click ![play](icon/play_normal.svg) or ![movie_24](icon/movie_24.svg) and open the file manager to select a film file.
-- On the Movie interface, right-click or click ![menu](icon/icon_menu.svg) to select **Open file** and open the file manager to select a film file.
+- On the Movie interface, right-click or click ![menu](icon/icon_menu.svg) to select **Open file** and open the File Manager to select a film file.
 - On the Movie interface, right-click or click ![menu](icon/icon_menu.svg) to select **Open folder**. All the audiovisual files in the folder are displayed in the playlist and will be played in turn. 
-- On the Movie interface, right-click, select **Open URL**, and paste the online address to play the film.
+- On the Movie interface, right-click, select **Open URL**, and paste the address to play the film.
 - On the Movie interface, right-click and select **Open CD/DVD** to play the films in CD/DVD.
 - Drag the file/folder directly to the Movie interface to play local films.
 
-> ![notes](icon/notes.svg) Notes: If you are using a computer equipped with a touchscreen, you can use touchscreen gestures to operate instead of the mouse. Hold down the film file with one finger and drag it to the Movie interface to play the film.
+> ![notes](icon/notes.svg) Notes: If you are using a computer equipped with a touchscreen, hold down the film file with one finger and drag it to the Movie interface to play the film.
 
-> ![attention](icon/attention.svg) Attention: Make sure your network is well connected before playing online videos with Movie.
+> ![attention](icon/attention.svg) Attention: Make sure your network is well-connected before playing online videos with Movie.
 
 ![0|open](jpg/open.png)
 
@@ -81,7 +81,7 @@ You can play films in the following ways:
 
 On the Movie interface, drag the progress bar with the mouse or press ![Right](icon/Right.svg) or ![Left](icon/Left.svg)on the keyboard to fast forward or rewind the film.
 
->![notes](icon/notes.svg) Notes: If you are using a computer equipped with a touchscreen, you can use touchscreen gestures to operate instead of the mouse: Slide leftward with one finger on the video picture area to rewind and rightward to forward.
+>![notes](icon/notes.svg) Notes: If you are using a computer equipped with a touchscreen, slide leftward with one finger on the video picture area to rewind and rightward to forward.
 
 ### Speed Up/Down
 
@@ -135,7 +135,7 @@ Right-click on the Movie interface and you can:
 
 ![0|sound](jpg/sound.png)
 
-> ![notes](icon/notes.svg) Notes: If you are using a computer equipped with a touchscreen, you can use touchscreen gestures to operate instead of the mouse: Slide upward with one finger on the video picture area to increase the volume and downward to decrease the volume.
+> ![notes](icon/notes.svg) Notes: If you are using a computer equipped with a touchscreen, slide upward with one finger on the video picture area to increase the volume and downward to decrease the volume.
 
 ### Set Subtitle
 1. Right-click on the Movie interface.
@@ -183,7 +183,7 @@ You can enter the playlist to manage the existing video files.
 ### Display in File Manager
 
 1. Click ![movie](icon/episodes_normal.svg ) on the Movie interface.
-2. Hover the mouse pointer over the video file, right-click, and select **Display in file manager** to show the film file in file manager.
+2. Hover the mouse pointer over the video file, right-click, and select **Display in file manager** to show the film file in File Manager.
 
 ## Main Menu
 
@@ -206,7 +206,7 @@ You can set the basic information, shortcut keys, and subtitles.
    >![notes](icon/notes.svg) Notes: This feature is only available on X86 platform. 
 
    - Check the **Pause when minimized** to pause the playback automatically when minimizing the Movie window.
-   - Check the **Default play mode** box, select one mode in the **Default play mode** dropdown list and Movie will run in such mode next time.
+   - Select one mode from the **Default play mode** dropdown list, and Movie will run in such mode next time.
 4.  Under the **Screenshot** option, you can select the path to save screenshots as you wish.
 
 #### Shortcuts Settings
@@ -243,4 +243,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 
 1. On the Movie interface, click ![icon_menu](icon/icon_menu.svg).
 2. Click **Exit** to exit Movie.
-<div class="version-info"><span>Update Date: 2021-01-15</span><span> Version: 5.7</span></div>
+<div class="version-info"><span>Update Date: 2021-04-02</span><span> Version: 5.7</span></div>

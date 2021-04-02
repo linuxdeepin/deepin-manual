@@ -81,7 +81,7 @@
 ![0|uninstall](jpg/uninstall.png)
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-> ![attention](icon/attention.svg)注意: 卸载某些应用可能会对系统或其他软件产生影响，请谨慎操作。
+> ![attention](icon/attention.svg)注意：卸载某些应用可能会对系统或其他软件产生影响，请谨慎操作。
 
 
 
@@ -91,7 +91,7 @@
 
 ### 主题
 
-窗口主题包含浅色主题、深色主题和跟随系统主题。
+窗口主题包含浅色主题、深色主题和系统主题。
 
 1. 在软件包安装器界面，单击 ![icon_menu](icon/icon_menu.svg)。
 2. 选择 **主题**，选择一个主题颜色。
@@ -118,4 +118,4 @@
 2. 选择 **退出**。
 
 
-<div class="version-info"><span>文档更新时间: 2021-01-15</span><span> 版本: 5.7</span></div>
+<div class="version-info"><span>文档更新时间: 2021-04-02</span><span> 版本: 5.7</span></div>

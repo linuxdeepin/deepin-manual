@@ -12,7 +12,7 @@
 
 1. 单击任务栏上的启动器图标 ![deepin-launcher](icon/deepin-launcher.svg)，进入启动器界面。
 
-2. 上下滚动鼠标滚轮浏览或通过搜索，找到磁盘管理器图标![disk-manager](icon/disk-manager.svg) ，单击运行。弹出授权框，需要输入系统登录密码进行认证。
+2. 上下滚动鼠标滚轮浏览或通过搜索，找到磁盘管理器图标 ![disk-manager](icon/disk-manager.svg) ，单击运行。弹出授权框，需要输入系统登录密码进行认证。
 
    ![0|password](jpg/password.png)
 
@@ -26,7 +26,7 @@
 ### 关闭磁盘管理器
 
 - 在磁盘管理器界面，单击  ![close](icon/close.svg) ，退出磁盘管理器。
-- 右键单击任务栏上的 ![disk-manager](icon/disk-manager.svg)，选择 **关闭所有** 来退出磁盘管理器。
+- 右键单击任务栏上的![disk-manager](icon/disk-manager.svg)，选择 **关闭所有** 来退出磁盘管理器。
 - 在磁盘管理器界面单击 ![icon_menu](icon/icon_menu.svg) ，选择 **退出** 来退出磁盘管理器。
 
 ## 磁盘分区管理
@@ -182,4 +182,4 @@
 2. 单击 **退出**。
 
 
-<div class="version-info"><span>文档更新时间: 2021-01-15</span><span> 版本: 1.1</span></div>
+<div class="version-info"><span>文档更新时间: 2021-04-02</span><span> 版本: 1.2</span></div>

@@ -84,7 +84,7 @@ Common causes of failure may include:
 
 ![bootmaker](jpg/failed.png)
 
-Click **Feedback** when you see this button, then jump to the homepage of **Support**. In **Support**, you can obtain help by leaving a message, online service and so on. 
+Click **Feedback** when you see this button, then jump to the relevant web page. 
 
 
 
@@ -121,4 +121,4 @@ You can click to view the manual, which will help you further know and use Boot 
 
 2. Click **Exit**.
 
-<div class="version-info"><span>Update Date: 2021-01-15</span><span> Version: 5.4</span></div>
+<div class="version-info"><span>Update Date: 2021-04-02</span><span> Version: 5.6</span></div>

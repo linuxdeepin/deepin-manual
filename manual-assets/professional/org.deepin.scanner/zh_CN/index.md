@@ -2,7 +2,7 @@
 
 ## 概述
 
-扫描管理器是一款管理扫描设备的工具，可同时管理多个扫描设备。界面可视化，操作简单，提高扫描的效率及质量。
+扫描管理器是一款管理扫描设备的工具，可同时管理多个扫描设备。
 
 ## 使用入门
 
@@ -11,7 +11,7 @@
 ### 运行扫描管理器
 
 1. 单击任务栏上的启动器图标 ![deepin-launcher](icon/deepin-launcher.svg)，进入启动器界面。
-2. 上下滚动鼠标滚轮浏览或通过搜索，找到扫描管理器图标![scan-manager](icon/scan-manager.svg) ，单击即可打开 。
+2. 上下滚动鼠标滚轮浏览或通过搜索，找到扫描管理器图标 ![scan-manager](icon/scan-manager.svg) ，单击即可打开  。
 3. 右键单击![scan-manager](icon/scan-manager.svg) ，您可以：
    - 单击 **发送到桌面**，在桌面创建快捷方式。
 
@@ -23,7 +23,7 @@
 
 - 在扫描管理器界面，单击  ![close](icon/close.svg) ，退出扫描管理器。
 - 右键单击任务栏上的 ![scan-manager](icon/scan-manager.svg)，选择 **关闭所有** 来退出扫描管理器。
-- 在扫描管理器界面单击 ![icon_menu](icon/icon_menu.svg) ，选择 **退出** 来退出扫描管理器。 
+- 在扫描管理器界面单击 ![icon_menu](icon/icon_menu.svg) ，选择 **退出** 来退出扫描管理器。
 
 ## 扫描操作介绍
 
@@ -138,4 +138,4 @@
 2. 单击 **退出**。
 
 
-<div class="version-info"><span>文档更新时间: 2021-01-15</span><span> 版本: 5.1</span></div>
+<div class="version-info"><span>文档更新时间: 2021-04-02</span><span> 版本: 5.1</span></div>

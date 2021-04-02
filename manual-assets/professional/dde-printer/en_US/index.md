@@ -67,7 +67,7 @@ On the main interface, click![add-normal](icon/add-normal.svg) and you will have
 
 4. Choose the correct driver and click **Install Driver** to enter installing interface. 
 
-> ![notes](icon/notes.svg)Notes: Prerequisite of this operation is that user knows the printer's URI and applicable protocol. 
+
 
 
 ### Select drivers
@@ -245,4 +245,4 @@ Click Help to get the manual, which will help you further know and use Print Man
 2. Click  **Exit**.
 
 
-<div class="version-info"><span>Update Date: 2021-01-15</span><span> Version: 0.7</span></div>
+<div class="version-info"><span>Update Date: 2021-04-02</span><span> Version: 0.7</span></div>

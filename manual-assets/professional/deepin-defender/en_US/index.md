@@ -82,7 +82,7 @@ On the interface of Virus Scan, you can click **Scan Logs** icon below to view s
 
 New virus keep coming out everyday. So your virus database should be regularly updated to satisfy the security needs of your computer.
 
-On the interface of Virus Scan, whenever there is a new virus database, you can click **The virus database is not up to date. Update first and start a scan please.** in the lower right corner. 
+On the interface of Virus Scan, whenever there is a new virus database, you can click **Updates available** in the lower right corner to choose whether to update it. 
 
 ### Firewall
 
@@ -246,4 +246,4 @@ View the manual to help you further know and use Security Center.
 2. Click **Exit**.
 
 
-<div class="version-info"><span>Update Date: 2021-01-15</span><span> Version: 2.1</span></div>
+<div class="version-info"><span>Update Date: 2021-04-02</span><span> Version: 2.1</span></div>

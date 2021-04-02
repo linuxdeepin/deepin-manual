@@ -12,9 +12,9 @@
 
 ### 运行设备管理器
 
-1. 单击任务栏上的启动器图标 ![deepin-launcher](icon/deepin-launcher.svg)，进入启动器界面。
+1. 单击任务栏上的启动器 ![deepin-launcher](icon/deepin-launcher.svg)，进入启动器界面。
 
-2. 上下滚动鼠标滚轮浏览或通过搜索，找到设备管理器图标![deepin-devicemanager](icon/deepin-devicemanager.svg) ，并单击运行。
+2. 上下滚动鼠标滚轮浏览或通过搜索，找到设备管理器 ![deepin-devicemanager](icon/deepin-devicemanager.svg) ，并单击运行。
 
 3. 右键单击![deepin-devicemanager](icon/deepin-devicemanager.svg) ，您可以：
 
@@ -28,7 +28,7 @@
 ### 关闭设备管理器
 
 - 在设备管理器界面，单击  ![close](icon/close.svg) ，退出设备管理器。
-- 右键单击任务栏上的 ![deepin-devicemanager](icon/deepin-devicemanager.svg) ，选择 **关闭所有** 来退出设备管理器。
+- 右键单击任务栏上的 ![deepin-devicemanager](icon/deepin-devicemanager.svg)  图标，选择 **关闭所有** 来退出设备管理器。
 - 在设备管理器界面单击 ![icon_menu](icon/icon_menu.svg) ，选择 **退出** 来退出设备管理器。
 
 ## 操作介绍
@@ -161,4 +161,4 @@
 2. 单击 **退出**。
 
 
-<div class="version-info"><span>文档更新时间: 2021-01-15</span><span> 版本: 5.6</span></div>
+<div class="version-info"><span>文档更新时间: 2021-04-02</span><span> 版本: 5.6</span></div>

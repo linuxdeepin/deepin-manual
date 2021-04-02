@@ -12,15 +12,13 @@ You can run, close, and create shortcuts for Screen Capture in the following ope
 
 ### Run Screen Capture
 
-1. Click ![deepin_launcher](icon/deepin_launcher.svg) in the dock to enter the launcher interface.
-2. Locate ![deepin_screenshot](icon/deepin_screenshot.svg) by scrolling the mouse wheel or searching "screen capture" in the Launcher interface and click it to run. 
+1. Click the Launcher icon ![deepin_launcher](icon/deepin_launcher.svg) in the dock to enter the launcher interface.
+2. Locate Screen Capture ![deepin_screenshot](icon/deepin_screenshot.svg) by scrolling the mouse wheel or searching "screen capture" in the Launcher interface and click it to run. 
 3. Right-click ![deepin_screenshot](icon/deepin_screenshot.svg) and you can:
 
     - Click **Send to desktop** to create a desktop shortcut.
     - Click **Send to dock** to fix it in the Dock.
     - Click **Add to startup** to add it to startup and it will automatically run when the system starts up.
-
-> ![notes](icon/notes.svg) Notes: If Screen Capture has been fixed in the dock by default, you can click ![deepin_screenshot](icon/deepin_screenshot.svg) in the dock to run it.
 
 ### Close Screen Capture
 
@@ -88,9 +86,9 @@ You can fine-tune the screenshot and recording area. For example, you can enlarg
 
 #### Enlarge/Reduce the Screenshot and Recording Area
 
-Place the pointer over the white boarder of the screenshot area and the pointer will be changed to ![mouse_arrow](icon/Mouse_Arrow.svg). You can:
+- Place the pointer over the white boarder of the screenshot area and the pointer will be changed to ![mouse_arrow](icon/Mouse_Arrow.svg). Hold down the left mouse button and drag the mouse to enlarge or reduce the screenshot area. 
 
-- Hold down the left mouse button and drag the mouse to enlarge or reduce the screenshot area. 
+
 - Press **Ctrl** + ![up](icon/Up.svg) , ![down](icon/Down.svg) , ![left](icon/Left.svg) or ![right](icon/Right.svg) and drag the mouse to enlarge or reduce the screenshot area vertically or horizontally.
 
 #### Move the Screenshot and Recording Area Position
@@ -113,25 +111,22 @@ Under the screenshot mode, click the corresponding icons on the toolbar and you 
         <tr>
             <td><img src="icon/rectangle_normal.svg" alt="Rectangle" class="inline" /></td>
             <td>Rectangle</td>
-            <td class="blank"></td>
             <td><img src="icon/oval_normal.svg" alt="Elipse" class="inline" /></td>
             <td>Elipse</td>
-        <td class="blank"></td>
             <td><img src="icon/line_normal.svg" alt="Arrow" class="inline" /></td>
             <td>Line</td>
         </tr>
           <tr>
             <td><img src="icon/Combined_Shape.svg" alt="Pencil" class="inline" /></td>
             <td>Pencil</td>
-            <td class="blank"></td>
             <td><img src="icon/text_normal.svg" alt="文本工具" class="inline" /></td>
             <td>Text</td>
-            <td class="blank"></td>
             <td><img src="icon/close.svg" alt="关闭" class="inline" /></td>
-            <td>Exit</td>
-        </tr>
-    </tbody>
+        <td>Exit</td>
+    </tr>
+</tbody>
 </table>
+
 
 > ![notes](icon/notes.svg)Notes: Your settings in the toolbar and attribute column, such as the line weight and font size, are remembered and applied by default and will be resumed the next time when you launch Screen Capture. You are able to reset it as well. 
 
@@ -258,7 +253,7 @@ You can save the screenshot in the following ways after launching Screen Capture
 
 - Double-click to save the screen capture.
 
-  > ![notes](icon/notes.svg) Notes: If your computer is equipped with a touchscreen or touchpad,  you can use touchscreen gestures to operate instead of the mouse: Double-click with one finger to finish screenshots.
+  > ![notes](icon/notes.svg) Notes: If your computer is equipped with a touchscreen or touchpad,  double-click with one finger to finish screenshots.
 
 - Click ![notes](icon/screenshot_button.svg) on the toolbar.
 
@@ -292,20 +287,16 @@ Under the recording mode, click the icons on the toolbar and you can perform rec
         <tr>
             <td><img src="icon/microphone_normal.svg" alt="microphone_normal" class="inline" /></td>
             <td>Microphone</td>
-            <td class="blank"></td>
             <td><img src="icon/audio_frequency_normal.svg" alt="audio_frequency_normal" class="inline" /></td>
-            <td>Sound On</td>
-        <td class="blank"></td>
+            <td>System Audio</td>
             <td><img src="icon/key_normal.svg" alt="key_normal" class="inline" /></td>
             <td>Show Keystroke</td>
         </tr>
           <tr>
             <td><img src="icon/webcam_normal.svg" alt="webcam_normal" class="inline" /></td>
             <td>Webcam On</td>
-            <td class="blank"></td>
             <td><img src="icon/mouse_mormal.svg" alt="mouse_normal" class="inline" /></td>
             <td>Show Click</td>
-            <td class="blank"></td>
             <td><img src="icon/close.svg" alt="close" class="inline" /></td>
             <td>Exit</td>
         </tr>
@@ -350,4 +341,4 @@ The recorded video will be saved to the desktop automatically.
 Press ![F1](icon/F1.svg) on the keyboard to view the help manual after launching Screen Capture.
 
 
-<div class="version-info"><span>Update Date: 2021-01-15</span><span> Version: 5.8</span></div>
+<div class="version-info"><span>Update Date: 2021-04-02</span><span> Version: 5.8</span></div>

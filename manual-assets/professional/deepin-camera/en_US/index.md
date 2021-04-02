@@ -10,8 +10,8 @@ You can run, close or create shortcuts for Camera in the following ways.
 
 ### Run Camera
 
-1. Click ![launcher](icon/deepin-launcher.svg) in the Dock and enter the Launcher interface.
-2. Locate ![camera](icon/camera.svg) by scrolling the mouse wheel or searching "camera" in the Launcher interface and click it to run.
+1. Click the Launcher icon ![launcher](icon/deepin_launcher.svg) in the Dock and enter the Launcher interface.
+2. Locate Camera ![camera](icon/camera.svg) by scrolling the mouse wheel or searching "camera" in the Launcher interface and click it to run.
 3. Right-click ![camera](icon/camera.svg) and you can:
 
  - Click **Send to desktop** to create a desktop shortcut.
@@ -36,7 +36,7 @@ Photo mode is defaulted when Camera starts up. Click the![photograph](icon/photo
 
 ### Record Videos
 
-On the Camera interface, click ![transcribe-bottom](icon/transcribe-bottom.svg) icon to to enter video mode. Click the ![transcribe](icon/transcribe.svg) icon to start recording, and click the![stop](icon/stop.svg) icon to stop recording after video recording is completed. Video files will be displayed on the interface, and will also be saved in the default path.
+On the Camera interface, click the ![transcribe_bottom](icon/transcribe_bottom.svg) icon to to enter video mode. Click the ![transcribe](icon/transcribe.svg) icon to start recording, and click the![stop](icon/stop.svg) icon to stop recording after video recording is completed. Video files will be displayed on the interface, and will also be saved in the default path.
 
 ![video](jpg/video.png)
 
@@ -50,7 +50,7 @@ Delete: delete the selected photo.
 
 Open folder: open the folder where photos and videos are located.
 
-![right-menu](jpg/right-menu.png)
+![right_menu](jpg/right_menu.png)
 
 ## Main Menu
 
@@ -68,9 +68,9 @@ On the main menu, you can change settings for Camera, switch window themes, view
 
    - **Output** setting: set up the **Output format** and **Resolution settings** for photos and videos.
    
-     ![output-settings](jpg/output-settings.png)
+     ![output_settings](jpg/output_settings.png)
 
-#### Theme
+### Theme
 
 The window theme provides three theme types, namely Light Theme, Dark Theme, and System Theme.
 
@@ -91,4 +91,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 
 1.   On the Camera interface, click ![icon_menu](icon/icon_menu.svg). 
 2.  Click **Exit** to exit Camera.
-<div class="version-info"><span>Update Date: 2021-01-15</span><span> Version: 1.0</span></div>
+<div class="version-info"><span>Update Date: 2021-04-02</span><span> Version: 1.0</span></div>

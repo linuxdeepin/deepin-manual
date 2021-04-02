@@ -10,14 +10,12 @@ You can run, exit, and create a shortcut for Voice Notes in the following ways.
 
 ### Run Voice Notes
 
-1. Click ![deepin_launcher](icon/deepin_launcher.svg) in the dock to enter the Launcher interface.
-2. Locate ![deepin_voice_note](icon/deepin_voice_note.svg) by scrolling the mouse wheel or searching "voice notes" in the Launcher interface, and click it to run.
+1. Click the Launcher icon ![deepin_launcher](icon/deepin_launcher.svg) in the dock to enter the Launcher interface.
+2. Locate Voice Notes![deepin_voice_note](icon/deepin_voice_note.svg) by scrolling the mouse wheel or searching "voice notes" in the Launcher interface, and click it to run.
 3. Right-click ![deepin_voice_note](icon/deepin_voice_note.svg), and you can:
    - Click **Send to desktop** to create a desktop shortcut.
    - Click **Send to dock** to fix it in the Dock.
    - Click **Add to startup** to add the application to startup, and it will automatically run when the system starts up.
-
-> ![notes](icon/notes.svg) Notes: If Voice Notes has been fixed in the dock by default, you can click ![deepin_voice_note](icon/deepin_voice_note.svg) in the dock to run it.
 
 ### Exit Voice Notes
 
@@ -169,9 +167,10 @@ You can set up audio source from **Internal** and **Microphone** (default) optio
 
 ### Privacy Policy
 
-On the Voice Notes interface, click ![icon_menu](icon/icon_menu.svg).
+1. On the Voice Notes interface, click ![icon_menu](icon/icon_menu.svg).
 
-Click **Privacy Policy** to view the relevant content on privacy policies.
+2. Click **Privacy Policy** to view the relevant content on privacy policies.
+
 
 ### Theme
 
@@ -194,4 +193,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 1. On the Voice Notes interface, click ![icon_menu](icon/icon_menu.svg).
 2. Click **Exit** to exit Voice Notes.
 
-<div class="version-info"><span>Update Date: 2021-01-15</span><span> Version: 5.7</span></div>
+<div class="version-info"><span>Update Date: 2021-04-02</span><span> Version: 5.7</span></div>

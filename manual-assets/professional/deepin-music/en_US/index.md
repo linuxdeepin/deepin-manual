@@ -12,8 +12,8 @@ You can run, close, and create a shortcut for Music in the following ways.
 
 ### Run Music
 
-1. Click ![launcher_icon](icon/deepin_launcher.svg) in the dock to enter the Launcher interface.
-2. Locate ![music_icon_24](icon/music_icon_24.svg) by scrolling mouse wheel or searching "music" in the Launcher interface.
+1. Click the Launcher icon ![launcher_icon](icon/deepin_launcher.svg) in the dock to enter the Launcher interface.
+2. Locate Music by scrolling mouse wheel or searching "music" in the Launcher interface.
 3. Right-click the Music application icon and you can:
  - Click **Send to desktop** to create a desktop shortcut.
  - Click **Send to dock** to fix the application on dock.
@@ -28,7 +28,7 @@ Music can be minimized to the system tray in the following ways:
 - Click ![icon_menu](icon/icon_menu.svg) > **Settings** on the music interface and check **Minimize to system tray**. Music will be minimized directly to the system tray each time you close the main window. 
 - Click ![close_icon](icon/close.svg) on the Music interface to close the main window, select **Minimize to system tray** and click **Confirm**.
 
-> ![notes](icon/notes.svg) Notes: Check **Do not ask again** and the pop-up window will no longer be displayed.
+> ![notes](icon/notes.svg) Notes: Check **Minimize to system tray** and **Do not ask again** and the pop-up window will no longer be displayed.
 
 Right-click the Music application icon in the tray and you can perform the following operations:
 
@@ -39,7 +39,7 @@ Right-click the Music application icon in the tray and you can perform the follo
 
 ### Exit Music
 
-- On the Music interface, click ![close_icon](icon/close.svg) and select **Exit** to exit Music.
+- On the Music interface, click ![close_icon](icon/close.svg) and select **Exit** to exit Music or click ![close](icon/close.svg)to exit music directly if you have checked the **Exit** option in the **Close Main Window** option.
 - Right-click the Music application icon ![music_icon_24](icon/music_icon_24.svg) in the Dock and select **Close All** to exit Music.
 - Right-click ![music_icon-24](icon/music_icon_24.svg) in the system tray and select **Exit** to exit Music. 
 
@@ -71,7 +71,7 @@ On the main interface, you can choose from regular options, check view playlist,
     	<tr>
             <td>3</td>
             <td>Sort options</td>
-            <td>You can sort the songs by different types of order including time added, title, artist, or album name.</td>
+            <td>You can sort the list by different types of order including time added, title, artist, or album name.</td>
         </tr>
     	<tr>
             <td>4</td>
@@ -106,7 +106,7 @@ On the main interface, you can choose from regular options, check view playlist,
     		<tr>
             <td>10</td>
             <td>Volume</td>
-            <td>Click it to Mute/Unmute and move to show the volume bar to adjust the volume.</td>
+            <td>Click it and drag the volume bar to adjust the volume.</td>
         </tr>
     		<tr>
             <td>11</td>
@@ -130,7 +130,7 @@ On the Music interface, you can:
 - Click ![icon_menu](icon/icon_menu.svg)> **Add music** to add music files to the playlist.
 - Drag the music file/folder to the Music interface, and add the music file to the playlist.
 
-> ![notes](icon/notes.svg) Notes: If you are using a computer equipped with touch-screen or touchpad, you can use touchscreen gestures to operate instead of the mouse: Hold down the music file with one finger and drag it to the Music interface to add music.
+> ![notes](icon/notes.svg) Notes: If you are using a computer equipped with touch-screen or touchpad, hold down the music file with one finger and drag it to the Music interface to add music.
 
 ### Search Music
 
@@ -148,7 +148,7 @@ You can play music in the following ways:
 - Select a list under the playlist in the left navigation bar. Right-click and select **Play** to play all the songs in the list according to the current order.
 - Click **Play All** to play all the songs in the current list according to the current order. 
 
-> ![tips](icon/tips.svg) Tips: On the Music interface, click ![play_normal](icon/play_normal.svg) to play the selected music. Click ![suspend_normal](icon/suspend_normal.svg) to pause the play. Click ![last_normal](icon/last_normal.svg) or ![next_normal](icon/next_normal.svg) to switch to the previous or the next song according to the current play mode.
+> ![notes](icon/notes.svg) Notes: On the Music interface, click ![play_normal](icon/play_normal.svg) to play the selected music. Click ![suspend_normal](icon/suspend_normal.svg) to pause the play. Click ![last_normal](icon/last_normal.svg) or ![next_normal](icon/next_normal.svg) to switch to the previous or the next song according to the current play mode.
 
 ### Add Music to My Favorites
 
@@ -160,11 +160,7 @@ The prompt information **Successfully added to "My favorites"** pops up and the 
 
 ### View Lyrics
 
-On the Music interface, you can:
-
-- Click ![lyric_normal](icon/lyric_normal.svg) to switch to the lyrics interface. Click it again to fold the lyrics interface.
-
-- Click ![music](icon/music.svg)to switch to the lyrics interface. Click it again to fold the lyrics interface.
+On the Music interface, click ![lyric_normal](icon/lyric_normal.svg) or ![music](icon/music.svg)on the tool bar to switch to the lyrics interface. Click it again to fold the lyrics interface.
 
 
 > ![notes](icon/notes.svg) Notes:  If the music being played has a cover picture,  ![music](icon/music.svg)will be displayed as the cover picture. Click it to switch to the lyrics interface and click it again to fold the lyrics interface.
@@ -186,8 +182,9 @@ On the Music interface, click ![single](icon/single_tune_circulation_normal.svg)
 
 ![0|infile](jpg/infile.png)
 
-
 ### Select Encoding
+
+For music with garbled characters, you can make it display normally by switching the encoding methods.
 
 1. On the Music interface, right-click the music.
 2. Click **Encoding**, and you can select the encoding as needed.
@@ -317,4 +314,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 
 1. On the Music interface, click ![menu](icon/icon_menu.svg).
 2. Click **Exit** to exit Music.
-<div class="version-info"><span>Update Date: 2021-01-15</span><span> Version: 6.0</span></div>
+<div class="version-info"><span>Update Date: 2021-04-02</span><span> Version: 6.0</span></div>
