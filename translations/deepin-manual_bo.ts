@@ -1,10 +1,10 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="cs" version="2.1">
+<?xml version="1.0" ?><!DOCTYPE TS><TS language="bo" version="2.1">
 <context>
     <name>ManualProxy</name>
     <message>
         <location filename="../src/view/manual_proxy.cpp" line="306"/>
         <source>Desktop Environment</source>
-        <translation type="unfinished"/>
+        <translation>ཅོག་ངོས་ཁོར་ཡུག</translation>
     </message>
 </context>
 <context>
@@ -12,68 +12,68 @@
     <message>
         <location filename="../src/app/dman.cpp" line="71"/>
         <source>Manual</source>
-        <translation>Příručka</translation>
+        <translation>རོགས་རམ་ལག་དེབ།</translation>
     </message>
     <message>
         <location filename="../src/app/dman.cpp" line="72"/>
         <source>Manual is designed to help users learn the operating system and its applications, providing specific instructions and function descriptions.</source>
-        <translation>Příručka je navržena tak, aby pomáhala uživatelům naučit se pracovat s operačním systémem a přidruženými aplikacemi. Poskytuje pokyny k jeho specifikům a popisy fungování.</translation>
+        <translation>རོགས་རམ་ལག་དེབ་ནི་སྤྱོད་མཁན་གྱིས་བཀོལ་སྤྱོད་མ་ལག་དང་དེའི་མ་ལག་ཉེར་སྤྱོད་ལ་རྒྱུས་ལོན་བྱེད་རོགས་བྱེད་པ་དང་། ཞིབ་ཕྲའི་སྤྱོད་ཐབས་དང་ནུས་པའི་གསལ་བཤད་འདོན་སྤྲོད་བྱེད་ཐུབ།</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="34"/>
         <source>System</source>
-        <translation>Systém</translation>
+        <translation>མ་ལག</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="35"/>
         <source>Applications</source>
-        <translation>Aplikace</translation>
+        <translation>ཉེར་སྤྱོད།</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="38"/>
         <source>No search results</source>
-        <translation>Nic nenalezeno</translation>
+        <translation>འཚོལ་ཞིབ་བྱས་འབྲས་མེད།</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="41"/>
         <source>Home</source>
-        <translation>Domů</translation>
+        <translation>གཙོ་ངོས་སུ་ཕྱིར་ལོག་པ།</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="43"/>
         <source>  result</source>
-        <translation>výsledek</translation>
+        <translation>འབྲས་བུ།</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="44"/>
         <source>  results</source>
-        <translation>výsledky</translation>
+        <translation>འབྲས་བུ།</translation>
     </message>
     <message>
         <location filename="../src/view/web_window.cpp" line="513"/>
         <source>Search</source>
-        <translation>Hledat</translation>
+        <translation>འཚོལ་ཞིབ།</translation>
     </message>
     <message>
         <location filename="../src/view/web_window.cpp" line="516"/>
         <source>Support</source>
-        <translation>Podpora</translation>
+        <translation>ཞབས་ཞུ་དང་རོགས་སྐྱོར།</translation>
     </message>
     <message>
         <location filename="../src/view/web_window.cpp" line="250"/>
         <source>The content was updated</source>
-        <translation>Obsah byl aktualizován</translation>
+        <translation>མིག་སྔའི་ནང་དོན་གསར་བརྗེ་བྱས་ཟིན།</translation>
     </message>
     <message>
         <location filename="../src/view/web_window.cpp" line="691"/>
         <source>Copy</source>
-        <translation>Zkopírovat</translation>
+        <translation>པར་སློག</translation>
     </message>
     <message>
         <location filename="../src/view/widget/search_completion_window.cpp" line="174"/>
         <location filename="../src/view/widget/search_completion_window.cpp" line="259"/>
         <source>Search for &quot;%1&quot; in the full text</source>
-        <translation>Vyhledat „%1“ napříč celým textem</translation>
+        <translation>ཡིག་ཆ་ཚང་མའི་ནང་དུ་“%1”འཚོལ་བ།</translation>
     </message>
 </context>
 <context>
