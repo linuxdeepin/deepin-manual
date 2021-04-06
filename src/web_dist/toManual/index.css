@@ -391,7 +391,7 @@ body {
       padding: 4px 0 5px;
       margin-left: 10px;
       margin-right: 10px;
-      text-indent: 1.5rem; }
+      padding-left: 1.5rem; }
     #nav .h:hover {
       border-radius: 8px;
       background-color: var(--nav-hover-color); }
