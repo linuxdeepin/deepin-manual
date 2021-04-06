@@ -385,6 +385,7 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
         if (this->settings_proxy_) {
             qDebug() << "eventFilter QEvent::FontChange";
             auto fontInfo = this->fontInfo();
+            qWarning()<<fontInfo.family() << fontInfo.pixelSize();
             emit this->settings_proxy_->fontChangeRequested(fontInfo.family(),
                                                             fontInfo.pixelSize());
         }
@@ -529,7 +530,7 @@ void WebWindow::initUI()
     //隐藏title阴影
     this->setTitlebarShadowEnabled(false);
     //键盘盲打
-    search_edit_->setFocus();
+   // search_edit_->setFocus();
     this->setFocusPolicy(Qt::ClickFocus);
 
     QWidget *spinnerPage = new QWidget;

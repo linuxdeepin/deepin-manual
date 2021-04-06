@@ -43,6 +43,7 @@ WindowManager::WindowManager(QObject *parent)
 
 WindowManager::~WindowManager()
 {
+    delete window;
 }
 
 void WindowManager::setStartTime(qint64 startTime)
