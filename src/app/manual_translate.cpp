@@ -32,7 +32,7 @@ int main(int argc, char **argv)
         {"security-center", "deepin-defender"}, //安全中心
         {"phone-master", "deepin-phone-assistant"}, //手机助手
         {"contacts", "deepin-contacts"}, //联系人
-        {"browser", "deepin-browser"}, //浏览器
+        {"browser", "org.deepin.browser"}, //浏览器
         {"email-client", "deepin-mail"}, //邮箱
         {"downloader", "uos-downloadmanager"}, //下载器
         {"chinese-input-method", "uos-chineseime"}, //中文输入法
