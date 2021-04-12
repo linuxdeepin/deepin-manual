@@ -29,8 +29,10 @@ ConfigManager *ConfigManager::_pInstance = nullptr;
 ConfigManager::ConfigManager(QObject *parent)
     : QObject(parent)
 {
-    m_winInfoConfig = new QSettings(getWinInfoConfigPath(), QSettings::IniFormat);
+    m_winInfoConfig = new QSettings(getWinInfoConfigPath(), QSettings::IniFormat, this);
 }
+
+
 
 /**
  * @brief ConfigManager::getInstance
