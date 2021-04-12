@@ -70,6 +70,7 @@ TEST_F(ut_web_window_test, deleteWin)
     window->i18n_proxy = new I18nProxy;
     window->buttonBox = new Dtk::Widget::DButtonBox;
     window->search_edit_ = new SearchEdit;
+    window->web_view_ = new QWebEngineView;
 }
 
 TEST_F(ut_web_window_test, updateBtnBox)
@@ -85,30 +86,24 @@ TEST_F(ut_web_window_test, updateBtnBox)
     ASSERT_FALSE(web.buttonBox->isVisible());
 }
 
-//TEST_F(ut_web_window_test, openjsPage)
-//{
+TEST_F(ut_web_window_test, openjsPage)
+{
 //    WebWindow web;
 //    web.initWeb();
 //    web.openjsPage("deepin-terminal", "查找");
-//}
-
-TEST_F(ut_web_window_test, slot_ThemeChanged)
-{
-    //    WebWindow web;
-    //    web.initWeb();
-    //    web.web_view_->page()->setBackgroundColor(QColor(255, 255, 255));
-    //    QColor c = web.web_view_->page()->backgroundColor();
-    //    qDebug() << "QColor---c--->" << c;
-    //    web.slot_ThemeChanged();
-    //    QColor c1 = web.web_view_->page()->backgroundColor();
-    //    qDebug() << "QColor---c1--->" << c1;
-    //    DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
-    //    if (themeType == DGuiApplicationHelper::LightType)
-    //        ASSERT_EQ(c1, QColor(0xF8, 0xF8, 0xF8));
-    //    else if (themeType == DGuiApplicationHelper::DarkType) {
-    //        ASSERT_EQ(c1, QColor(0x28, 0x28, 0x28));
-    //    }
 }
+
+
+TEST_F(ut_web_window_test, updatePage)
+{
+    WebWindow web;
+    web.initUI();
+    QStringList applistmd;
+    applistmd.append("/usr/share/deepin-manual/manual-assets/application/dde-calendar/calendar/zh_HK/calendar.md");
+    applistmd.append("/usr/share/deepin-manual/manual-assets/application/deepin-terminal/terminal/zh_CN/terminal.md");
+    web.updatePage(applistmd);
+}
+
 
 TEST_F(ut_web_window_test, slot_HelpSupportTriggered)
 {
@@ -116,55 +111,53 @@ TEST_F(ut_web_window_test, slot_HelpSupportTriggered)
     web.slot_HelpSupportTriggered();
 }
 
-TEST_F(ut_web_window_test, closeEvent)
+
+TEST_F(ut_web_window_test, slotUpdateLabel)
 {
-    //    WebWindow web;
-    //    web.initUI();
-    //    web.initWeb();
-    //    web.setFixedWidth(600);
-    //    web.setFixedHeight(1200);
-    //    web.close();
-    //    QSettings *setting = ConfigManager::getInstance()->getSettings();
-    //    setting->beginGroup(kConfigWindowInfo);
-    //    ASSERT_EQ(setting->value(kConfigWindowWidth), 600);
-    //    ASSERT_EQ(setting->value(kConfigWindowHeight), 1200);
+    WebWindow web;
+    web.slotUpdateLabel();
 }
 
-//TEST_F(ut_web_window_test, inputMethodEvent)
-//{
-//    WebWindow web;
-//    web.initUI();
-//    web.initWeb();
-//    QInputMethodEvent *e;
-//    web.inputMethodEvent(e);
-//}
+TEST_F(ut_web_window_test, closeEvent)
+{
+        WebWindow web;
+        web.initUI();
+        //web.initWeb();
+        web.setFixedWidth(600);
+        web.setFixedHeight(1200);
+        web.close();
+        QSettings *setting = ConfigManager::getInstance()->getSettings();
+        setting->beginGroup(kConfigWindowInfo);
+        ASSERT_EQ(setting->value(kConfigWindowWidth), 600);
+        ASSERT_EQ(setting->value(kConfigWindowHeight), 1200);
+}
 
-//TEST_F(ut_web_window_test, inputMethodQuery)
-//{
-//    WebWindow web;
-//    Qt::InputMethodQuery prop;
-//    web.inputMethodQuery(prop);
-//}
+
+
+TEST_F(ut_web_window_test, inputMethodQuery)
+{
+    WebWindow web;
+    Qt::InputMethodQuery prop;
+    prop = Qt::ImEnabled;
+    ASSERT_TRUE(web.inputMethodQuery(prop).toBool());
+}
 
 TEST_F(ut_web_window_test, eventFilter)
 {
-    //    WebWindow web;
-    //    web.initUI();
-    //    web.initWeb();
-    //    web.setFocus();
-
-    //    //web.search_edit_->lineEdit()->setFocus();
-    //    QTest::keyPress(&web, Qt::Key_1);
-    //    qDebug() << "searchText---> :  " << web.search_edit_->text();
-    //    ASSERT_EQ(web.search_edit_->text().toStdString(), QString::number(1).toStdString());
+        WebWindow web;
+        web.setObjectName("QMainWindowClassWindow");
+        web.initUI();
+        web.setFocus();
+        qApp->setActiveWindow(&web);
+        //web.search_edit_->lineEdit()->setFocus();
+        QTest::keyPress(&web, Qt::Key_1);
+        ASSERT_TRUE(web.search_edit_->lineEdit()->hasFocus());
 }
 
 TEST_F(ut_web_window_test, onManualSearchByKeyword)
 {
-    //    WebWindow web;
-    //    web.initUI();
-    //    web.initWeb();
-    //web.onManualSearchByKeyword("关闭应用商店");
+
+
 }
 
 TEST_F(ut_web_window_test, onAppearanceChanged)
@@ -176,30 +169,42 @@ TEST_F(ut_web_window_test, onAppearanceChanged)
     web.onAppearanceChanged("", map, QStringList());
 }
 
-TEST_F(ut_web_window_test, onThemeChange)
+
+TEST_F(ut_web_window_test, saveWindowSize)
 {
     WebWindow web;
-    DGuiApplicationHelper::ColorType ty;
-    //web.onThemeChange(ty);
+    web.initUI();
+    //web.initWeb();
+    web.setFixedWidth(600);
+    web.setFixedHeight(1200);
+    web.saveWindowSize();
+    QSettings *setting = ConfigManager::getInstance()->getSettings();
+
+    setting->beginGroup(kConfigWindowInfo);
+    ASSERT_EQ(setting->value(kConfigWindowWidth), 600);
+    ASSERT_EQ(setting->value(kConfigWindowHeight), 1200);
+    setting->endGroup();
 }
+
+
 
 TEST_F(ut_web_window_test, onSearchTextChanged)
 {
-    //    WebWindow web;
-    //    web.initUI();
-    //    web.onSearchTextChanged("应用");
-    //usleep(200000);
-    //    ASSERT_FALSE(web.completion_window_->isVisible());
+        WebWindow web;
+        web.initUI();
+        web.onSearchTextChanged("应用");
+        usleep(200000);
+        ASSERT_FALSE(web.completion_window_->isVisible());
 }
+
 
 TEST_F(ut_web_window_test, onSearchTextChangedDelay)
 {
-    //    WebWindow web;
-    //    web.initUI();
-    //    web.initWeb();
-    //    web.search_edit_->setText("关闭应用商店");
-    //web.onSearchTextChangedDelay();
-    //ASSERT_EQ(web.completion_window_->keyword(), "关闭应用商店");
+        WebWindow web;
+        web.initUI();
+        web.search_edit_->setText("关闭应用商店");
+        web.onSearchTextChangedDelay();
+        ASSERT_EQ(web.completion_window_->keyword(), "关闭应用商店");
 }
 TEST_F(ut_web_window_test, onTitleBarEntered)
 {

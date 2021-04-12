@@ -76,7 +76,6 @@ TEST_F(ut_command_test, SpawnCmd2)
     QDir dir(jsPath);
     QStringList nameFilters;
     nameFilters << "*.jsx";
-    //QStringList list  = dir.entryList(nameFilters, QDir::Files | QDir::Readable, QDir::Name);
 
 
     QStringList list{"app/src/app.js"};

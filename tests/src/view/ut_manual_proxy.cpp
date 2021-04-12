@@ -57,6 +57,22 @@ TEST_F(ut_manual_proxy_test, getSystemManualList)
 //    ASSERT_GE(list.count(), 1);
 }
 
+
+TEST_F(ut_manual_proxy_test, getUsedAppList)
+{
+    QStringList list = m_mp->getUsedAppList();
+
+//    ASSERT_GE(list.count(), 1);
+}
+
+
+TEST_F(ut_manual_proxy_test, hasSelperSupport)
+{
+     m_mp->hasSelperSupport();
+
+//    ASSERT_GE(list.count(), 1);
+}
+
 TEST_F(ut_manual_proxy_test, setApplicationState)
 {
 
@@ -175,8 +191,8 @@ TEST_F(ut_manual_proxy_test, setApplicationState2)
 
 TEST_F(ut_manual_proxy_test, supportClick)
 {
-//    ManualProxy mp;
-//    mp.supportClick();
+    ManualProxy mp;
+    mp.supportClick();
 }
 TEST_F(ut_manual_proxy_test, saveApplist)
 {
@@ -237,4 +253,11 @@ TEST_F(ut_manual_proxy_test, getLocalAppName)
     ManualProxy mp;
     QString iconpaht = mp.getAppIconPath("dde-ceshi");
     ASSERT_TRUE(iconpaht.isEmpty());
+}
+
+TEST_F(ut_manual_proxy_test, getAppLocalDir)
+{
+    ManualProxy mp;
+    QString iconpaht = mp.getAppLocalDir("/usr/share/deepin-manual/manual-assets/application/deepin-boot-maker/boot-maker1/");
+    ASSERT_FALSE(iconpaht.isEmpty());
 }

@@ -76,6 +76,32 @@ TEST_F(ut_search_button_test, leaveFocus2)
 
 }
 
+
+TEST_F(ut_search_button_test, setChecked)
+{
+    SearchButton sb;
+    sb.setChecked(false);
+    ASSERT_FALSE(sb.m_bHover);
+}
+
+
+TEST_F(ut_search_button_test, onThemeChange)
+{
+    SearchButton sb;
+    sb.onThemeChange(DGuiApplicationHelper::DarkType);
+    QPixmap iconPm = Utils::renderSVG(QString(kImageDarkSearchIcon), QSize(20, 20));
+    ASSERT_EQ(sb.iconBtn->icon().pixmap(QSize(20, 20)), iconPm);
+}
+
+
+TEST_F(ut_search_button_test, onThemeChange2)
+{
+    SearchButton sb;
+    sb.onThemeChange(DGuiApplicationHelper::LightType);
+    QPixmap iconPm = Utils::renderSVG(QString(kImageLightSearchIcon), QSize(20, 20));
+    ASSERT_EQ(sb.iconBtn->icon().pixmap(QSize(20, 20)), iconPm);
+}
+
 TEST_F(ut_search_button_test, paintEvent)
 {
     SearchButton sb;

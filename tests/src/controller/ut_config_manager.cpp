@@ -10,42 +10,35 @@ ut_config_manager_test::ut_config_manager_test()
 
 }
 
+
+void ut_config_manager_test::SetUp()
+{
+    m_ap = new ConfigManager();
+}
+
+void ut_config_manager_test::TearDown()
+{
+    delete m_ap;
+}
+
+TEST_F(ut_config_manager_test, getSettings)
+{
+    m_ap->getSettings();
+}
+
 TEST_F(ut_config_manager_test, getWinInfoConfigPath)
 {
-//    QProcess pro(0);
-//    QString command = "whoami";
-//    QStringList args;
-//    pro.start(command, args);
-//    pro.waitForFinished();
-//    QString strTemp = QString::fromLocal8Bit(pro.readAllStandardOutput());
-//    QString LoginUser = strTemp.trimmed();
+    QProcess pro(0);
+    QString command = "whoami";
+    QStringList args;
+    pro.start(command, args);
+    pro.waitForFinished();
+    QString strTemp = QString::fromLocal8Bit(pro.readAllStandardOutput());
+    QString LoginUser = strTemp.trimmed();
 
-//    QDir winInfoPath(QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation));
-//    if (winInfoPath.exists()) {
-//        QString comm;
-//        comm = "rm -rf /home/"
-//               + LoginUser
-//               + "/.config/deepin-manual_test";
-//        QProcess p;
-//        p.start(comm);
-//        p.close();
-//    }
-//    ConfigManager cm;
-//    QString strPath =  cm.getWinInfoConfigPath();
-//    QString configPath = "/home/"
-//                         + LoginUser
-//                         + "/.config/deepin-manual_test/wininfo-config.conf";
-//    ASSERT_EQ(strPath, configPath);
 
-//    QProcess p;
-//    QString strManualPath;
-//    strManualPath = "/home/"
-//                    + LoginUser
-//                    + "/.config/deepin/deepin-manual/wininfo-config.conf";
-//    QString strTestPath;
-//    strTestPath = "/home/"
-//                  + LoginUser
-//                  + ".config/deepin-manual_test/wininfo-config.conf";
-//    p.start("cp " + strManualPath + " " + strTestPath);
-//    p.close();
+    ConfigManager cm;
+    QString strPath =  cm.getWinInfoConfigPath();
+
+    ASSERT_FALSE(strPath.isEmpty());
 }

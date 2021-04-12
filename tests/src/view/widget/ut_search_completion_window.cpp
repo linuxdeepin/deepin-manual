@@ -78,6 +78,7 @@ TEST_F(ut_search_completion_window_test, autoResize)
     ASSERT_EQ(sw.height(), 116);
 }
 
+
 TEST_F(ut_search_completion_window_test, autoResize2)
 {
     SearchCompletionWindow sw;
@@ -111,6 +112,43 @@ TEST_F(ut_search_completion_window_test, autoResize2)
     ASSERT_EQ(sw.result_view_->height(), 245);
     ASSERT_EQ(sw.height(), 286);
 }
+
+TEST_F(ut_search_completion_window_test, initSearchCompletionListData)
+{
+    SearchCompletionWindow sw;
+    sw.initUI();
+    SearchAnchorResultList list;
+    for (int i = 0; i < 8; ++i) {
+        SearchAnchorResult result;
+        result.anchor = QString("运行应用商店") + QString::number(i);
+        result.anchorId = "h0";
+        result.app_name = "deepin-app-store";
+        result.app_display_name = "应用商店";
+        list.append(result);
+    }
+    qDebug() << "searchAnchorResultList.size-->" << list.size();
+
+    QList<SearchCompletionItemModel> searchDataList;
+    for (const SearchAnchorResult &entry : list) {
+        SearchCompletionItemModel model;
+        model.strSearchKeyword = entry.anchor;
+        model.strSearchAnchorId = entry.anchorId;
+        model.strSearchAppName = entry.app_name;
+        model.strSearchAppDisplayName = entry.app_display_name;
+        searchDataList.append(model);
+    }
+    sw.initSearchCompletionListData(searchDataList);
+    sw.autoResize();
+
+    sw.goDown();
+    QVariant variant = sw.result_view_->currentIndex().data(Qt::DisplayRole);
+    SearchCompletionItemModel data = variant.value<SearchCompletionItemModel>();
+    QString msg = data.strSearchAppName;
+
+    ASSERT_EQ(msg, "deepin-app-store");
+}
+
+
 TEST_F(ut_search_completion_window_test, goDown)
 {
     SearchCompletionWindow sw;
@@ -233,15 +271,6 @@ TEST_F(ut_search_completion_window_test, paintEvent2)
 //    QColor fillColor = pa.color(DPalette::FrameBorder);
     QPaintEvent *event;
     sw.paintEvent(event);
-    //DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::LightType;
-    //  qDebug() << "fillcolor--> " << fillColor;
-//    ASSERT_EQ(fillColor, QColor(255, 255, 255));
-//    DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
-//    if (themeType == DGuiApplicationHelper::LightType) {
-//       ASSERT_EQ(fillColor, QColor(255, 255, 255));
-//    } else if (themeType == DGuiApplicationHelper::DarkType) {
-//       ASSERT_EQ(fillColor, QColor(0, 0, 0));
-//    }
 }
 TEST_F(ut_search_completion_window_test, onResultListClicked)
 {

@@ -18,7 +18,7 @@
 #include "ut_titlebarproxy.h"
 
 #include "view/title_bar_proxy.h"
-#include "view/web_window.h"
+
 #include "view/widget/search_edit.h"
 #include "view/widget/search_completion_window.h"
 #include "view/widget/search_button.h"
@@ -34,7 +34,9 @@ ut_TitleBarProxy::ut_TitleBarProxy()
 
 void ut_TitleBarProxy::SetUp()
 {
-    m_tbp = new TitleBarProxy();
+
+    web.initUI();
+    m_tbp = new TitleBarProxy(&web);
 }
 
 void ut_TitleBarProxy::TearDown()
@@ -44,10 +46,14 @@ void ut_TitleBarProxy::TearDown()
 
 TEST_F(ut_TitleBarProxy, setBackwardButtonActive)
 {
-
+    web.web_view_ = new QWebEngineView;
+    m_tbp->setBackwardButtonActive(true);
+    ASSERT_TRUE(m_tbp->m_webWindow->m_backButton->isEnabled());
+    delete web.web_view_ ;
 }
 
 TEST_F(ut_TitleBarProxy, setForwardButtonActive)
 {
-
+    m_tbp->setForwardButtonActive(true);
+    ASSERT_TRUE(m_tbp->m_webWindow->m_forwardButton->isEnabled());
 }

@@ -66,38 +66,6 @@ TEST_F(ut_utils_test, mkMutiDir)
     m_utils->mkMutiDir(strpath);
 }
 
-/*
-TEST_F(ut_utils_test, getTime)
-{
-    struct timeval tp;
-    gettimeofday(&tp, nullptr);
-    ASSERT_EQ(m_utils->getTime().tv_sec, tp.tv_sec);
-}
-TEST_F(ut_utils_test, showDiffTime)
-{
-    struct timeval tp;
-    gettimeofday(&tp, nullptr);
-    //sleep(1);
-    struct timeval tmp = m_utils->showDiffTime(tp);
-
-    double timeuse =
-        (1000000 * (tmp.tv_sec - tp.tv_sec) + tmp.tv_usec - tp.tv_usec) / 1000000.0;
-
-    qDebug() << "test----------" <<  timeuse;
-    ASSERT_EQ(m_utils->showDiffTime(tp).tv_sec, tmp.tv_sec);
-}
-
-
-TEST_F(ut_utils_test, getQssContent)
-{
-    QString strMANUAL_DIR = DMAN_MANUAL_DIR;
-    strMANUAL_DIR.replace("manual-assets", "src/web/sass/nav.scss");
-
-    qDebug() << "test--dir.size()-->" << m_utils->getQssContent(strMANUAL_DIR).size();
-    ASSERT_NE(m_utils->getQssContent(strMANUAL_DIR).size(), 0);
-}
-*/
-
 TEST_F(ut_utils_test, renderSVG)
 {
     QPixmap pix = m_utils->renderSVG(QString(kImageDarkSearchIcon), QSize(20, 20));
@@ -106,48 +74,34 @@ TEST_F(ut_utils_test, renderSVG)
     ASSERT_EQ(pix.height(), 20);
 }
 
+
+TEST_F(ut_utils_test, sortAppList)
+{
+    AppInfo info;
+    info.key = "key";
+    info.installed_time = 0002;
+    info.desktop = "desktop";
+    info.name = "name";
+    info.category_id = 001;
+    info.icon_key = "icon";
+
+    QMultiMap<qlonglong, AppInfo> appmultma;
+    appmultma.insert(1, info);
+    appmultma.insert(3, info);
+    appmultma.insert(2, info);
+    appmultma.insert(4, info);
+
+    m_utils->sortAppList(appmultma);
+}
+
 TEST_F(ut_utils_test, renderSVG2)
 {
     QString imgPath = kImageDarkSearchIcon;
     imgPath += "xx";
     QPixmap pix = m_utils->renderSVG(imgPath, QSize(20, 20));
-//    ASSERT_EQ(pix.width(), 20);
-//    ASSERT_EQ(pix.height(), 20);
 }
 
-/*
-TEST_F(ut_utils_test, loadFontFamilyByType)
-{
-    m_utils->loadFontFamilyByType(m_utils->FontType:: SourceHanSansMedium);
-}
 
-TEST_F(ut_utils_test, loadFontFamilyByType2)
-{
-    QString str = m_utils->loadFontFamilyByType(m_utils->FontType:: SourceHanSansNormal);
-    ASSERT_EQ(str, "");
-}
-
-TEST_F(ut_utils_test, loadFontFamilyByType3)
-{
-    m_utils->loadFontFamilyByType(m_utils->FontType:: DefautFont);
-}
-
-TEST_F(ut_utils_test, loadFontBySizeAndWeight)
-{
-    QFont font = m_utils->loadFontBySizeAndWeight("arial", 20, 20);
-    ASSERT_EQ(font.family(), "arial");
-}
-
-TEST_F(ut_utils_test, fromSpecialEncoding)
-{
-    ASSERT_EQ(m_utils->fromSpecialEncoding("帮助"), "帮助");
-}
-
-TEST_F(ut_utils_test, fromSpecialEncoding2)
-{
-    ASSERT_EQ(m_utils->fromSpecialEncoding("1"), "1");
-}
-*/
 
 TEST_F(ut_utils_test, translateTitle)
 {
@@ -172,15 +126,52 @@ TEST_F(ut_utils_test, hasSelperSupport)
     ASSERT_FALSE(m_utils->hasSelperSupport());
 }
 
+
+TEST_F(ut_utils_test, systemToOmit)
+{
+//    ASSERT_TRUE(m_utils->hasSelperSupport());
+    QStringList omitlist = m_utils->systemToOmit(Dtk::Core::DSysInfo::UosProfessional);
+    ASSERT_TRUE( omitlist.contains("p"));
+
+    omitlist = m_utils->systemToOmit(Dtk::Core::DSysInfo::UosHome);
+    ASSERT_TRUE( omitlist.contains("h"));
+
+    omitlist = m_utils->systemToOmit(Dtk::Core::DSysInfo::UosCommunity);
+    ASSERT_TRUE( omitlist.contains("d"));
+
+    omitlist = m_utils->systemToOmit(Dtk::Core::DSysInfo::UosEnterprise);
+    ASSERT_TRUE( omitlist.contains("e") && omitlist.contains("s")) ;
+
+
+    omitlist = m_utils->systemToOmit(Dtk::Core::DSysInfo::UosEnterpriseC);
+    ASSERT_TRUE( omitlist.contains("i") && omitlist.contains("s")) ;
+
+    omitlist = m_utils->systemToOmit(Dtk::Core::DSysInfo::UosEuler);
+    ASSERT_TRUE( omitlist.contains("eu") && omitlist.contains("s")) ;
+}
+
 TEST_F(ut_utils_test, exapplicationHelperInstance)
 {
     ExApplicationHelper *eh = ExApplicationHelper::instance();
 }
 
+TEST_F(ut_utils_test, activeWindow)
+{
+    ASSERT_FALSE(m_utils->activeWindow(123));
+}
+
+TEST_F(ut_utils_test, regexp_label)
+{
+    QFile file("/usr/share/glib-2.0/schemas/com.deepin.dde.appearance.gschema.xml");
+    if (file.exists() && file.open(QIODevice::ReadWrite)) {
+        QString strContent(file.readAll());
+        strContent = m_utils->regexp_label(strContent, "(icon-theme\">\n)(.*)?(['</default>])");
+    }
+}
+
 TEST_F(ut_utils_test, standardPalette)
 {
     ExApplicationHelper ex;
-//    ExApplicationHelper::standardPalette(DGuiApplicationHelper::DarkType);
     ex.standardPalette(DGuiApplicationHelper::DarkType);
 }
 
@@ -189,6 +180,15 @@ TEST_F(ut_utils_test, eventFilter)
     ExApplicationHelper ex;
     QEvent *e;
     ex.eventFilter(&ex, e);
+}
+
+TEST_F(ut_utils_test, palette)
+{
+    QWidget *w = new QWidget;
+    DPalette p;
+    ExApplicationHelper ex;
+    ex.palette(w, p);
+    delete w;
 }
 
 TEST_F(ut_utils_test, setPalette)

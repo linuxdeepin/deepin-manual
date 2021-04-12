@@ -174,85 +174,6 @@ TEST_F(ut_search_db_test, addSearchEntry)
     this->fromLocalFileRestore();
 }
 
-//TEST_F(ut_search_db_test, addSearchEntry2)
-//{
-//    QString system = "professional";
-//    QString app_name = "chineseime";
-//    QString lang = "zh_CN";
-
-//    QStringList anchors{"概述", "使用入门", "切换输入法", "状态栏", "属性设置", "基本设置", "默认设置"};
-//    QStringList anchorInitialList{"gs", "syrm", "qhsrf", "ztl", "sxsz", "jbsz", "mrsz"};
-//    QStringList anchorSpellList{"gaishu", "shiyongrumen", "qiehuanshurufa", "zhuangtailan", "shuxingshezhi", "jibenshezhi", "morenshezhi"};
-//    QStringList anchorIdList{"h0", "h0", "h0", "h0", "h0", "h0"}; //六项
-//    QStringList contents{"00系统会预装中文输入法，单击右下角托盘上的",
-//                         "01进入输入法配置页面。单击 输入法，选择中文输入法",
-//                         "02托盘中输入法图标变为<img，则表示切换成功。",
-//                         "03系统会预装中文输入法，单击右下角托盘上的",
-//                         "04seime/zh_CN/icon/onboard.svg",
-//                         "05>进入输入法配置页面。单击 输入法，选择中文输入法，托盘中输入法图标变为<img src=",
-//                         "06/usr/share/deepin-manual/manual-assets/professional/chineseime/zh_CN/icon/inputer.svg"
-//                        };
-
-//
-//     sd->initDb();
-//     sd->initSearchTable();
-//     sd->addSearchEntry(app_name, lang, anchors, anchorInitialList, anchorSpellList, anchorIdList, contents);
-
-//    QString databasePath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
-//    QString cmdCp = "cp ";
-//    cmdCp += DMAN_SEARCH_CREATE_DB_PATH;
-//    cmdCp += "/search.db ";
-//    cmdCp += databasePath;
-//    cmdCp += "/.local/share/deepin/deepin-manual";
-//    QProcess pro2;
-//    pro2.start(cmdCp);
-
-//    QProcess p;
-//    p.start("cp /usr/share/deepin-manual/manual-assets/professional/search.db "
-//            "/home/kevin_w/project/qtest/build-manual-unknown-Debug/src/dbPath/");
-//    p.close();
-//}
-
-/*
-TEST_F(ut_search_db_test, addSearchEntry3)
-{
-    QString system = "professional";
-    QString app_name = "chineseime";
-    QString lang = "zh_CN";
-
-    QStringList anchors{"概述", "使用入门", "切换输入法", "状态栏", "属性设置", "基本设置", "默认设置"};
-    QStringList anchorInitialList{"gs", "syrm", "qhsrf", "ztl", "sxsz", "jbsz", "mrsz"};
-//    QStringList anchorSpellList{"gaishu", "shiyongrumen", "qiehuanshurufa", "zhuangtailan", "shuxingshezhi", "jibenshezhi", "morenshezhi"};
-    QStringList anchorSpellList{};
-    QStringList anchorIdList{"h0", "h0", "h0", "h0", "h0", "h0", "h1"};
-    QStringList contents{"00系统会预装中文输入法，单击右下角托盘上的",
-                         "01进入输入法配置页面。单击 输入法，选择中文输入法",
-                         "02托盘中输入法图标变为<img，则表示切换成功。",
-                         "03系统会预装中文输入法，单击右下角托盘上的",
-                         "04seime/zh_CN/icon/onboard.svg",
-                         "05>进入输入法配置页面。单击 输入法，选择中文输入法，托盘中输入法图标变为<img src=",
-                         "06/usr/share/deepin-manual/manual-assets/professional/chineseime/zh_CN/icon/inputer.svg"
-                        };
-
-
-    QString strCreateDbPath = DMAN_SEARCH_CREATE_DB_PATH;
-
-    QDir dir(strCreateDbPath);
-    dir.setFilter(QDir::Files);
-    if (!dir.exists()) {
-        dir.mkpath(strCreateDbPath);
-    }
-    strCreateDbPath += "/search.db";
-    QFileInfo fileInfo(strCreateDbPath);
-     sd->initDb(strCreateDbPath);
-    if (!fileInfo.isFile()) {
-         sd->initSearchTable();
-    }
-
-     sd->addSearchEntry(system, app_name, lang, anchors, anchorInitialList, anchorSpellList, anchorIdList, contents);
-}
-*/
-
 bool stub_exec2()
 {
     return false;
@@ -295,6 +216,17 @@ TEST_F(ut_search_db_test, handleSearchAchor)
 TEST_F(ut_search_db_test, insertHighlight)
 {
     QString str = sd->insertHighlight("abcd", "a");
+}
+
+TEST_F(ut_search_db_test, deleteSearchInfo)
+{
+    sd->initDb();
+    QStringList applist;
+    applist.append("abcd");
+    QStringList applistlang;
+    applistlang.append("a");
+    sd->deleteSearchInfo(applist, applistlang);
+    this->fromLocalFileRestore();
 }
 
 TEST_F(ut_search_db_test, highlightKeyword)

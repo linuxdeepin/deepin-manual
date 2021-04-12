@@ -64,4 +64,10 @@ TEST_F(ut_argument_parser_test, onSearchRequested)
     ap.onSearchRequested("应用");
 }
 
+TEST_F(ut_argument_parser_test, onOpenAppRequested)
+{
+    ArgumentParser ap;
+    ap.onOpenAppRequested("应用", "打开");
+}
+
 }

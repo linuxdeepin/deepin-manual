@@ -14,6 +14,14 @@ ut_window_manager_test::ut_window_manager_test()
 
 }
 
+
+TEST_F(ut_window_manager_test, setStartTime)
+{
+    WindowManager wm;
+    wm.setStartTime(1233444);
+    ASSERT_EQ(wm.appStartTime, 1233444);
+}
+
 TEST_F(ut_window_manager_test, initDBus)
 {
     WindowManager wm;
@@ -53,19 +61,23 @@ TEST_F(ut_window_manager_test, activeOrInitWindow2)
 
 TEST_F(ut_window_manager_test, SendMsg)
 {
-//    QProcess p;
-//    QString cmd = "mv /usr/share/dbus-1/services/com.deepin.Manual.Search.service "
-//                  "/usr/share/dbus-1/services/com.deepin.Manual.Search.service-test";
-//    qDebug() << cmd;
-//    p.start(cmd);
-//    p.close();
     WindowManager wm;
     wm.SendMsg("中国");
-//    QProcess p2;
-//    QString cmd2 = "sudo mv /usr/share/dbus-1/services/com.deepin.Manual.Search.service-test "
-//                   "/usr/share/dbus-1/services/com.deepin.Manual.Search.service";
-//    p2.start(cmd2);
-//    p2.close();
+
+}
+
+
+TEST_F(ut_window_manager_test, setWindow)
+{
+    WindowManager mv;
+    mv.initWebWindow();
+    mv.window->setFixedWidth(900);
+    mv.window->setFixedHeight(1200);
+    mv.window->saveWindowSize();
+    mv.setWindow(mv.window);
+
+    ASSERT_EQ(mv.window->width(), 900);
+    ASSERT_EQ(mv.window->height(), 1200);
 }
 
 TEST_F(ut_window_manager_test, openManual)
@@ -78,6 +90,23 @@ TEST_F(ut_window_manager_test, openManualWithSearch)
 {
     WindowManager mv;
     mv.openManualWithSearch("输入法", "");
+}
+
+
+TEST_F(ut_window_manager_test, onAppStartTimeCount)
+{
+    WindowManager mv;
+    mv.onAppStartTimeCount(123);
+}
+
+TEST_F(ut_window_manager_test, onFilesUpdate)
+{
+    WindowManager mv;
+
+    QStringList upfileList;
+    upfileList.append("/usr/share/deepin-manual/manual-assets/application/dde-calendar/calendar/zh_HK/calendar.md");
+    upfileList.append("/usr/share/deepin-manual/manual-assets/application/deepin-terminal/terminal/zh_CN/terminal.md");
+    mv.onFilesUpdate(upfileList);
 }
 
 }

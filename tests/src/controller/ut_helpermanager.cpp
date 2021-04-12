@@ -52,10 +52,6 @@ void ut_helperManager::TearDown()
     delete m_hm;
 }
 
-//TEST_F(ut_helperManager, initWeb)
-//{
-//    m_hm->initWeb();
-//}
 
 TEST_F(ut_helperManager, initDbConfig)
 {
@@ -126,16 +122,17 @@ TEST_F(ut_helperManager, dbusSend)
     m_hm->dbusSend(deleteList, addList);
 }
 
-//TEST_F(ut_helperManager, handlePriority)
-//{
-//    QStringList deleteList;
-//    QStringList addList;
-//    QStringList addTime;
-//    deleteList << "aaaa";
-//    addList << "bbbb";
-//    addTime << "001002";
-//    m_hm->handlePriority(deleteList);
-//}
+TEST_F(ut_helperManager, handlePriority)
+{
+
+    QStringList addList;
+    addList << "/usr/share/deepin-manual/manual-assets/professional/deepin-terminal/zh_CN/index.md";
+    addList << "/usr/share/deepin-manual/manual-assets/application/deepin-terminal/terminal/zh_CN/voice-note.md";
+    addList << "/usr/share/deepin-manual/manual-assets/application/deepin-voice-note/voice-note/zh_CN/voice-note.md";
+    addList << "/usr/share/deepin-manual/manual-assets/application/deepin-voice-note/voice-note/zh_CN/p_voice-note.md";
+    addList << "/usr/share/deepin-manual/manual-assets/professional/deepin-terminal/zh_CN/index.md";
+    m_hm->handlePriority(addList);
+}
 
 TEST_F(ut_helperManager, onFilelistChange)
 {

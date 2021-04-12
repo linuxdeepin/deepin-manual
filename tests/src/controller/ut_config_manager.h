@@ -22,10 +22,16 @@
 #include "gtest/gtest.h"
 #include <QTest>
 
+class ConfigManager;
+
 class ut_config_manager_test : public ::testing::Test
 {
 public:
     ut_config_manager_test();
+    virtual void SetUp() override;
+    virtual void TearDown() override;
+protected:
+    ConfigManager *m_ap;
 };
 
 #endif // UT_CONFIG_MANAGER_TEST_H

@@ -32,9 +32,6 @@ TEST_F(ut_lanuncher_interface_test, LauncherInterface2)
     QDBusConnection dbusConn =
         QDBusConnection::connectToBus(QDBusConnection::SessionBus, "Sender");
     LauncherInterface li("com.deepin.dde.daemon.Launcher", "com/deepin/dde/daemon/Launcher", dbusConn);
-    //QDBusAbstractInterface qdbusInf("com.deepin.dde.daemon.Launcher", "com/deepin/dde/daemon/Launcher", li.staticInterfaceName(), dbusConn, &li);
-    //    li.staticInterfaceName();
-    //LauncherInterface li("com.deepin.dde.daemon.Launcher", "com/deepin/dde/daemon/Launcher", dbusConn);
 
     com::deepin::dde::daemon::Launcher("com.deepin.dde.daemon.Launcher", "com/deepin/dde/daemon/Launcher", dbusConn);
     li.deleteLater();
@@ -44,7 +41,5 @@ TEST_F(ut_lanuncher_interface_test, LauncherInterface3)
 {
     QDBusConnection dbusConn =
         QDBusConnection::connectToBus(QDBusConnection::SessionBus, "Sender");
-    //    LauncherInterface li("com.deepin.dde.daemon.Launcher", "com/deepin/dde/daemon/Launcher", dbusConn);
     LauncherInterface li();
-    //    li.deleteLater();
 }

@@ -20,7 +20,7 @@
 
 #include "gtest/gtest.h"
 #include <QTest>
-
+#include "view/web_window.h"
 class TitleBarProxy;
 
 class ut_TitleBarProxy : public testing::Test
@@ -31,6 +31,7 @@ public:
     virtual void SetUp() override;
     virtual void TearDown() override;
     TitleBarProxy *m_tbp = nullptr;
+     WebWindow web;
 
 };
 

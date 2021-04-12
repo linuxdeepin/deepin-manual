@@ -66,7 +66,7 @@ TEST_F(ut_image_viewer_test, initUi)
     ASSERT_EQ(iv.img_label_->objectName(), "ImageLabel");
 }
 
-TEST_F(ut_image_viewer_test, moushPressEvent)
+TEST_F(ut_image_viewer_test, mousePressEvent)
 {
     QString filePath = "/home/kevin_w/Pictures/Glossy-Gradient.jpg";
     ImageViewer iv;
