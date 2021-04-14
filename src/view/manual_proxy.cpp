@@ -26,12 +26,16 @@
 ManualProxy::ManualProxy(QObject *parent)
     : QObject(parent)
     , strIconTheme("")
+    , piconload(new QIconLoader)
 {
+    piconload->ensureInitialized();
     AppInfo::registerMetaType();
 }
 
 ManualProxy::~ManualProxy()
 {
+    if (nullptr != piconload)
+        delete piconload;
 }
 
 /**
@@ -261,11 +265,10 @@ QString ManualProxy::getAppIconPath(const QString &desktopname)
     }
 
     QString strIconPath;
-    if (QIcon::hasThemeIcon(strIcon)) {
-        QIconLoader *pload = QIconLoader::instance();
+    if (QIcon::hasThemeIcon(strIcon) && nullptr != piconload) {
         //强制设置主题为默认主题保证获取的图标来自与默认图标主题
-        pload->setThemeName(strIconTheme);
-        QThemeIconInfo info = pload->loadIcon(strIcon);
+        piconload->setThemeName(strIconTheme);
+        QThemeIconInfo info = piconload->loadIcon(strIcon);
 
         QString str96, str64, str48, str36;
         for (int i = 0; i < info.entries.size(); i++) {

@@ -20,7 +20,7 @@
 
 #include <QDBusConnection>
 #include <QDesktopServices>
-
+class QIconLoader;
 class ManualProxy : public QObject
 {
     Q_OBJECT
@@ -63,6 +63,7 @@ private:
 private:
     QStringList app_list_;
     QString strIconTheme;
+    QIconLoader *piconload;
 };
 
 #endif // DEEPIN_MANUAL_VIEW_MANUAL_PROXY_H
