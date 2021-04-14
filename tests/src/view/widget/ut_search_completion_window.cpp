@@ -146,6 +146,44 @@ TEST_F(ut_search_completion_window_test, initSearchCompletionListData)
     QString msg = data.strSearchAppName;
 
     ASSERT_EQ(msg, "deepin-app-store");
+
+}
+
+
+TEST_F(ut_search_completion_window_test, initSearchCompletionListData2)
+{
+    SearchCompletionWindow sw;
+    sw.initUI();
+    SearchAnchorResultList list;
+    for (int i = 0; i < 5; ++i) {
+        SearchAnchorResult result;
+        result.anchor = QString("运行应用商店") + QString::number(i);
+        result.anchorId = "h0";
+        result.app_name = "deepin-app-store";
+        result.app_display_name = "应用商店";
+        list.append(result);
+    }
+    qDebug() << "searchAnchorResultList.size-->" << list.size();
+
+    QList<SearchCompletionItemModel> searchDataList;
+    for (const SearchAnchorResult &entry : list) {
+        SearchCompletionItemModel model;
+        model.strSearchKeyword = entry.anchor;
+        model.strSearchAnchorId = entry.anchorId;
+        model.strSearchAppName = entry.app_name;
+        model.strSearchAppDisplayName = entry.app_display_name;
+        searchDataList.append(model);
+    }
+    sw.initSearchCompletionListData(searchDataList);
+    sw.autoResize();
+
+    sw.goDown();
+    QVariant variant = sw.result_view_->currentIndex().data(Qt::DisplayRole);
+    SearchCompletionItemModel data = variant.value<SearchCompletionItemModel>();
+    QString msg = data.strSearchAppName;
+
+    ASSERT_EQ(msg, "deepin-app-store");
+
 }
 
 

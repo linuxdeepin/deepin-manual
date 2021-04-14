@@ -29,7 +29,7 @@ public:
     ut_ManualOpenInterface();
     virtual void SetUp() override;
     virtual void TearDown() override;
-    ManualOpenInterface *interface;
+    ManualOpenInterface *interface = nullptr;
 };
 
 #endif // UT_MANUALOPENINTERFACE_H

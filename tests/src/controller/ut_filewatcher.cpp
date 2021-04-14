@@ -156,7 +156,7 @@ TEST_F(ut_fileWatcher, onTimerOut)
     s.set(ADDR(Utils, getSystemManualDir), stub_getSystemManualDir);
     m_fw->onTimerOut();
     QDir dirRemove;
-    bool b = dirRemove.rmdir("./manual-assets/");
+    dirRemove.rmdir("./manual-assets/");
 //    qDebug() << "=======+>===========" << b;
 }
 

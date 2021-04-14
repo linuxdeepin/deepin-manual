@@ -32,7 +32,7 @@ public:
     virtual void TearDown() override;
 
 protected:
-    ManualOpenProxy *mopen;
+    ManualOpenProxy *mopen = nullptr;
 };
 
 #endif // UT_MANUAL_OPEN_PROXY_H

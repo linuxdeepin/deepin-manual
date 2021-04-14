@@ -28,8 +28,8 @@ public:
     ut_ManualOpenAdapter();
     virtual void SetUp() override;
     virtual void TearDown() override;
-    ManualOpenAdapter *adapter;
-    QWidget *widget;
+    ManualOpenAdapter *adapter = nullptr;
+    QWidget *widget = nullptr;
 };
 
 #endif // UT_MANUAL_OPEN_ADAPTER_H

@@ -29,7 +29,7 @@ public:
     ut_AppInfo();
     virtual void SetUp() override;
     virtual void TearDown() override;
-    AppInfo *app;
+    AppInfo *app = nullptr;
 };
 
 #endif // UT_APPINFO_H

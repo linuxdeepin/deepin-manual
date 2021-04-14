@@ -30,8 +30,8 @@ public:
     ut_ManualSearchAdapter();
     virtual void SetUp() override;
     virtual void TearDown() override;
-    ManualSearchAdapter *msAdapter;
-    QWidget *wiget;
+    ManualSearchAdapter *msAdapter = nullptr;
+    QWidget *wiget = nullptr;
 };
 
 #endif // UT_MANUAL_SEARCH_ADAPTER_H

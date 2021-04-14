@@ -31,7 +31,7 @@ public:
     virtual void TearDown() override;
     bool fromLocalFileBackup();
     bool fromLocalFileRestore();
-    SearchDb *sd;
+    SearchDb *sd = nullptr;
 };
 
 #endif // UT_SEARCH_DB_TEST_H

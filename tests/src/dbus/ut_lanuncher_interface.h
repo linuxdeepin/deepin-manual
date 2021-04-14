@@ -30,7 +30,7 @@ public:
     ut_lanuncher_interface_test();
     virtual void SetUp() override;
     virtual void TearDown() override;
-    LauncherInterface *li;
+    LauncherInterface *li = nullptr;
 
 private:
 };

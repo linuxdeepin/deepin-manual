@@ -22,4 +22,11 @@ TEST_F(ut_theme_proxy_test, getTheme)
 
 
 }
+
+TEST_F(ut_theme_proxy_test, slot_ThemeChange)
+{
+    ThemeProxy tp;
+
+    tp.slot_ThemeChange();
+}
 }

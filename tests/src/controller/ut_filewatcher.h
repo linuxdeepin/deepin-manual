@@ -36,7 +36,7 @@ public:
 
 
 protected:
-    fileWatcher *m_fw;
+    fileWatcher *m_fw = nullptr;
 };
 
 #endif // UT_FILEWATCHER_H

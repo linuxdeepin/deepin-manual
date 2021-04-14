@@ -28,7 +28,7 @@ public:
     ut_manual_proxy_test();
     virtual void SetUp() override;
     virtual void TearDown() override;
-    ManualProxy *m_mp;
+    ManualProxy *m_mp = nullptr;
     void stub_Handle();
 };
 

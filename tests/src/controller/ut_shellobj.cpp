@@ -35,5 +35,5 @@ void ut_shellObj::TearDown()
 
 TEST_F(ut_shellObj, execSystem)
 {
-    shellObj &sh = m_so->execSystem("ls");
+    m_so->execSystem("ls");
 }

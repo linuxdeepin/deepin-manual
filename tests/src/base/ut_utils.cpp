@@ -152,7 +152,7 @@ TEST_F(ut_utils_test, systemToOmit)
 
 TEST_F(ut_utils_test, exapplicationHelperInstance)
 {
-    ExApplicationHelper *eh = ExApplicationHelper::instance();
+    ExApplicationHelper::instance();
 }
 
 TEST_F(ut_utils_test, activeWindow)

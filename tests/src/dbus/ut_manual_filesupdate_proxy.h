@@ -29,7 +29,7 @@ public:
     ut_ManualFilesUpdateProxy();
     virtual void SetUp() override;
     virtual void TearDown() override;
-    ManualFilesUpdateProxy *mfuProxy;
+    ManualFilesUpdateProxy *mfuProxy = nullptr;
 };
 
 #endif // UT_MANUAL_FILESUPDATE_PROXY_H

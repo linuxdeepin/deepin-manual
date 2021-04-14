@@ -30,7 +30,7 @@ public:
     ut_manual_search_proxy();
     virtual void SetUp() override;
     virtual void TearDown() override;
-    ManualSearchProxy *msp;
+    ManualSearchProxy *msp = nullptr;
 };
 
 #endif // UT_MANUAL_SEARCH_PROXY_H

@@ -112,6 +112,19 @@ TEST_F(ut_search_button_test, paintEvent)
     ASSERT_EQ(sb.iconBtn->icon().pixmap(QSize(20, 20)), iconPm);
 }
 
+TEST_F(ut_search_button_test, paintEvent2)
+{
+    SearchButton sb;
+    sb.m_bHover = false;
+    QPaintEvent *event;
+
+    sb.paintEvent(event);
+    DPalette paLabel = ExApplicationHelper::instance()->palette(&sb);
+    paLabel.setColor(DPalette::WindowText, paLabel.color(DPalette::Text));
+
+    ASSERT_EQ(sb.m_textLabel->palette(), paLabel);
+}
+
 TEST_F(ut_search_button_test, mouseReleaseEvent)
 {
     SearchButton *sb = new SearchButton;

@@ -28,8 +28,8 @@ public:
     ut_ManualFilesUpdateAdapter();
     virtual void SetUp() override;
     virtual void TearDown() override;
-    ManualFilesUpdateAdapter *adapter;
-    QWidget *widget;
+    ManualFilesUpdateAdapter *adapter = nullptr;
+    QWidget *widget = nullptr;
 };
 
 #endif // UT_MANUAL_FILESUPDATE_ADAPTER_H

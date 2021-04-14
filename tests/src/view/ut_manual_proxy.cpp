@@ -39,10 +39,6 @@ void ut_manual_proxy_test::TearDown()
     delete m_mp;
 }
 
-void stub_Handle()
-{
-}
-
 TEST_F(ut_manual_proxy_test, getSystemManualDir)
 {
     QString str = m_mp->getSystemManualDir();

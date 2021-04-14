@@ -13,7 +13,7 @@ public:
     virtual void TearDown() override;
 
 public:
-    SearchProxy *m_searchProxy;
+    SearchProxy *m_searchProxy = nullptr;
 };
 
 #endif // UT_SEARCH_PROXY_TEST_H

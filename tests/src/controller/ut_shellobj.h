@@ -30,7 +30,7 @@ public:
     virtual void SetUp() override;
     virtual void TearDown() override;
 protected:
-    shellObj *m_so;
+    shellObj *m_so = nullptr;
 };
 
 #endif // UT_SHELLOBJ_H

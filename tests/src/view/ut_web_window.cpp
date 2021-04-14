@@ -98,6 +98,8 @@ TEST_F(ut_web_window_test, updatePage)
 {
     WebWindow web;
     web.initUI();
+    web.search_proxy_ = new SearchProxy;
+    web.search_manager_ = new SearchManager;
     QStringList applistmd;
     applistmd.append("/usr/share/deepin-manual/manual-assets/application/dde-calendar/calendar/zh_HK/calendar.md");
     applistmd.append("/usr/share/deepin-manual/manual-assets/application/deepin-terminal/terminal/zh_CN/terminal.md");
@@ -152,6 +154,12 @@ TEST_F(ut_web_window_test, eventFilter)
         //web.search_edit_->lineEdit()->setFocus();
         QTest::keyPress(&web, Qt::Key_1);
         ASSERT_TRUE(web.search_edit_->lineEdit()->hasFocus());
+
+        QApplication::clipboard()->setText("uos");
+        QTest::keyPress(&web, Qt::Key_V, Qt::ControlModifier);
+        ASSERT_TRUE(web.search_edit_->lineEdit()->hasFocus());
+        web.manual_proxy_ = new ManualProxy;
+        QTest::keyPress(&web, Qt::Key_Enter);
 }
 
 TEST_F(ut_web_window_test, onManualSearchByKeyword)
@@ -167,6 +175,13 @@ TEST_F(ut_web_window_test, onAppearanceChanged)
     map.insert("QtActiveColor", var);
     WebWindow web;
     web.onAppearanceChanged("", map, QStringList());
+    web.manual_proxy_ = new ManualProxy;
+
+    QMap<QString, QVariant> Iconvarmap;
+    QVariant Iconvar = "#00A48A";
+    Iconvarmap.insert("IconTheme", Iconvar);
+    web.onAppearanceChanged("", Iconvarmap, QStringList());
+
 }
 
 
@@ -251,5 +266,15 @@ TEST_F(ut_web_window_test, onSearchAnchorResult2)
     web.onSearchAnchorResult("", list);
     ASSERT_FALSE(web.completion_window_->isVisible());
 }
+
+TEST_F(ut_web_window_test, hasWidgetRect)
+{
+    WebWindow web;
+    QWidget *wid = new QWidget;
+
+    web.hasWidgetRect(wid);
+
+}
+
 
 } // namespace dman
