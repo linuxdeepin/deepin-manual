@@ -151,9 +151,11 @@ void SearchCompletionWindow::goUp()
 void SearchCompletionWindow::onEnterPressed()
 {
     if (search_button_->isChecked()) {
+        //最后选项在内容中查找结果 WebWindow::onSearchButtonClicked
         emit this->searchButtonClicked();
     } else {
         const QModelIndex idx = result_view_->currentIndex();
+        //搜索结果选项单击
         this->onResultListClicked(idx);
     }
     // 点击任何一个Ｉｔｅｍ后都隐藏整个窗口
@@ -194,6 +196,7 @@ void SearchCompletionWindow::setSearchAnchorResult(const SearchAnchorResultList 
 
         searchDataList.append(model);
     }
+    //查询结果显示
     initSearchCompletionListData(searchDataList);
     this->autoResize();
 }
@@ -308,6 +311,7 @@ void SearchCompletionWindow::onResultListClicked(const QModelIndex &index)
 {
     if (index.isValid()) {
         const int row = index.row();
+        //发送信号->WebWindow::onSearchResultClicked
         emit this->resultClicked(result_.at(row));
         result_view_->setCurrentIndex(QModelIndex());
     } else {

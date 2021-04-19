@@ -45,7 +45,6 @@ TEST_F(ut_search_completion_listview_test, mousePressEvent)
 
 TEST_F(ut_search_completion_listview_test, mousePressEvent2)
 {
-    QMouseEvent *event;
     SearchCompletionListView sv;
     QTest::mouseClick(sv.window(), Qt::LeftButton);
     ASSERT_TRUE(sv.m_bLeftMouse);

@@ -163,6 +163,7 @@ void SearchDb::initConnections()
  */
 void SearchDb::initDb()
 {
+    //获取本地配置文件目录
     QString dbdir = Utils::mkMutiDir(QStandardPaths::writableLocation(QStandardPaths::HomeLocation).append("/.local/share/deepin/deepin-manual"));
     qDebug() << dbdir;
     QDir dir(dbdir);
@@ -171,6 +172,7 @@ void SearchDb::initDb()
     }
     QString databasePath = dbdir.append("/search.db");
 
+    //创建数据库
     p_->db = QSqlDatabase::addDatabase("QSQLITE", QUuid::createUuid().toString(QUuid::WithoutBraces));
     p_->db.setDatabaseName(databasePath);
     if (!p_->db.open()) {
@@ -190,6 +192,7 @@ void SearchDb::initSearchTable()
     Q_ASSERT(p_->db.isOpen());
     QSqlQuery query(p_->db);
 
+    //创建相关表
     if (!query.exec(kSearchTableSchema)) {
         qCritical() << "Failed to initialize search table:" << query.lastError().text();
         return;
@@ -230,6 +233,7 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
             strManualPath = "/application";
         }
 
+        //图片路径替换为绝对路径
         for (int i = 0; i < contents.size(); i++) {
             QString content = contents.at(i);
             content = content.replace("icon/", DMAN_INSTALL_DB_PATH + strManualPath
@@ -519,6 +523,7 @@ void SearchDb::sortSearchList(const QString &appName, const QStringList &anchors
     obj.contents = contents;
 
     if (anchorIds.contains("h0")) {
+        //发送查询结果->SearchManager::searchContentResult->SearchProxy::onContentResult->js
         emit this->searchContentResult(obj.appName, obj.anchors, obj.anchorIds, obj.contents);
         nH0OfList++;
         //        listStruct.insert(0, obj);
@@ -593,6 +598,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
 
     //屏蔽部分特殊字符，会导致JS层对HTML无法对应替换
     if (keyword.contains(QRegExp("[|&-]"))) {
+        //发送未查找到结果->SearchManager::searchContentMismatch->SearchProxy::mismatch->JS
         emit this->searchContentMismatch(keyword);
         return;
     }
@@ -689,6 +695,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
         for (searchStrct obj : listStruct) {
             if (result_empty)
                 result_empty = false;
+            //发送查询结果->SearchManager::searchContentResult->SearchProxy::onContentResult->js
             emit this->searchContentResult(obj.appName, obj.anchors, obj.anchorIds, obj.contents);
         }
     } else {
@@ -697,6 +704,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
 
     if (result_empty && 0 == nH0OfList) {
         qDebug() << "searchContentMismatch";
+        //发送未查找到结果->SearchManager::searchContentMismatch->SearchProxy::mismatch->JS
         emit this->searchContentMismatch(keyword);
     }
 }

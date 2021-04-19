@@ -22,13 +22,11 @@
 #include "gtest/gtest.h"
 #include <QTest>
 
-namespace dman {
-
 class ut_search_completion_window_test : public::testing::Test
 {
 public:
     ut_search_completion_window_test();
 
 };
-}
+
 #endif // UT_SEARCH_COMPLETION_WINDOW_TEST_H

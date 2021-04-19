@@ -7,7 +7,6 @@
 #include "dbus/dbus_consts.h"
 #include <QDBusConnection>
 
-namespace dman {
 
 ut_window_manager_test::ut_window_manager_test()
 {
@@ -107,6 +106,4 @@ TEST_F(ut_window_manager_test, onFilesUpdate)
     upfileList.append("/usr/share/deepin-manual/manual-assets/application/dde-calendar/calendar/zh_HK/calendar.md");
     upfileList.append("/usr/share/deepin-manual/manual-assets/application/deepin-terminal/terminal/zh_CN/terminal.md");
     mv.onFilesUpdate(upfileList);
-}
-
 }

@@ -19,7 +19,7 @@
 #include <QToolButton>
 #include <QAction>
 
-namespace dman {
+
 
 ut_SearchEdit_test::ut_SearchEdit_test()
 {
@@ -71,6 +71,4 @@ TEST_F(ut_SearchEdit_test, keyEvent)
             }
         }
     }
-}
-
 }

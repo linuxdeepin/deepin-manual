@@ -22,12 +22,11 @@
 #include "gtest/gtest.h"
 #include <QTest>
 
-namespace dman {
 
 class ut_argument_parser_test : public testing::Test
 {
 public:
     ut_argument_parser_test();
 };
-} // namespace dman
+
 #endif // UT_ARGUMENT_PARSER_TEST_H

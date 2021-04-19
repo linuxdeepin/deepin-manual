@@ -87,6 +87,7 @@ bool ArgumentParser::parseArguments()
                 bIsDbus = true;
             }
         } else {
+            //获取命令行第一个参数应用名
             curManual = position_args.at(0);
         }
         return true;
@@ -99,6 +100,8 @@ bool ArgumentParser::parseArguments()
 void ArgumentParser::openManualsDelay()
 {
     qDebug() << Q_FUNC_INFO << curManual;
+
+    //判断是否为dbus服务，否则打开帮助手册窗口
     if (!bIsDbus) {
         this->onOpenAppRequested(curManual);
     }
@@ -111,6 +114,7 @@ void ArgumentParser::openManualsDelay()
  */
 void ArgumentParser::onOpenAppRequested(const QString &app_name, const QString &title_name)
 {
+    //解析老的应用名为路径，解析出dman后的应用名称
     const QString compact_app_name = ConvertOldDmanPath(app_name);
     //通过语言映射表,将传入标题名称映射转换成对应名称.
     const QString title = Utils::translateTitle(title_name);

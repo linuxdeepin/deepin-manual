@@ -26,6 +26,11 @@ ManualSearchAdapter::~ManualSearchAdapter()
     // destructor
 }
 
+/**
+ * @brief ManualSearchAdapter::ManualExists
+ * @param in0
+ * @return
+ */
 bool ManualSearchAdapter::ManualExists(const QString &in0)
 {
     // handle method call com.deepin.Manual.Search.ManualExists
@@ -34,6 +39,10 @@ bool ManualSearchAdapter::ManualExists(const QString &in0)
     return out0;
 }
 
+/**
+ * @brief ManualSearchAdapter::OnNewWindowOpen
+ * @param data
+ */
 void ManualSearchAdapter::OnNewWindowOpen(const QString &data)
 {
     QMetaObject::invokeMethod(parent(), "OnNewWindowOpen", Q_ARG(QString, data));

@@ -36,8 +36,6 @@
 
 #include "../third-party/stub/stub.h"
 
-namespace dman {
-
 ut_web_window_test::ut_web_window_test()
 {
 }
@@ -275,6 +273,3 @@ TEST_F(ut_web_window_test, hasWidgetRect)
     web.hasWidgetRect(wid);
 
 }
-
-
-} // namespace dman

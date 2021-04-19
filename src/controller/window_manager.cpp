@@ -95,12 +95,15 @@ void WindowManager::initDBus()
 void WindowManager::initWebWindow()
 {
     window = new WebWindow;
+    //设置窗口大小
     setWindow(window);
     window->show();
     window->setAppProperty(curr_app_name_, curr_title_name_, curr_keyword_);
 
     QTimer::singleShot(0, [=]() {
+        //dbus发送窗口ID给search服务
         SendMsg(QString::number(window->winId()));
+        //初始化web窗口
         window->initWeb();
         initDBus();
     });
@@ -130,11 +133,13 @@ void WindowManager::activeOrInitWindow()
         window->openjsPage(curr_app_name_, curr_title_name_);
         return;
     }
+    //不存在窗口,则初始化窗口
     initWebWindow();
 }
 
 /**
  * @brief WindowManager::SendMsg 通过dbus接口来实现前后端通信,
+ * @note 通过dbus接口来实现前后端通信Search 发送窗口ID号进程号
  * @param msg 信息内容
  */
 void WindowManager::SendMsg(const QString &msg)
@@ -148,7 +153,7 @@ void WindowManager::SendMsg(const QString &msg)
 
     dbusMsg << QString::number(qApp->applicationPid()) + "|" + msg;
 
-    //将进程号+窗口WinId拼接后发给dman-search后台进程
+    //将进程号+窗口WinId拼接后发给dman-search后台进程 发送信号SendWinInfo－＞RecvMsg
     bool isSuccess = dbusConn.send(dbusMsg);
     if (isSuccess) {
         qDebug() << Q_FUNC_INFO << " sendMsg success";

@@ -105,9 +105,10 @@ public:
     ~Stub()
     {
         std::map<char*,func_stub*>::iterator iter;
-        struct func_stub *pstub;
-        for(iter=m_result.begin(); iter != m_result.end(); iter++)
+
+        for(iter=m_result.begin(); iter != m_result.end(); ++iter)
         {
+            struct func_stub *pstub;
             pstub = iter->second;
 #ifdef _WIN32
             DWORD lpflOldProtect;

@@ -37,6 +37,7 @@ shellObj &shellObj::execSystem(const QString &cmds)
 {
     shellObj *shell = new shellObj();
     qDebug() << "shell exec:" << cmds;
+    //执行shell命令
     shell->startSystemThread(cmds);
     return *shell;
 }

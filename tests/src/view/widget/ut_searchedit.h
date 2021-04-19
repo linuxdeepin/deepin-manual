@@ -23,7 +23,6 @@
 #include <QTest>
 #include <QObject>
 
-namespace dman {
 
 class ut_SearchEdit_test: public::testing::Test
 {
@@ -33,8 +32,7 @@ public:
     virtual void SetUp() override;
     virtual void TearDown() override;
 protected:
-    SearchEdit *m_se;
+    SearchEdit *m_se = nullptr;
 };
 
-}
 #endif // UT_SEARCHEDIT_TEST_H

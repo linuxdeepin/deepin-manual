@@ -22,7 +22,6 @@
 #include "gtest/gtest.h"
 #include <QTest>
 
-namespace dman {
 
 class ut_search_manager_test : public ::testing::Test
 {
@@ -30,5 +29,4 @@ public:
     ut_search_manager_test();
 };
 
-} // namespace dman
 #endif // UT_SEARCH_MANAGER_TEST_H

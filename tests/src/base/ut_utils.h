@@ -31,14 +31,9 @@ class ut_utils_test : public QObject, public::testing::Test
     Q_OBJECT
 public:
     ut_utils_test();
-    virtual void SetUp() override;
-    virtual void TearDown() override;
 
 private slots:
 
-protected:
-    Utils *m_utils;
-//    QTimer m_timer;
 };
 
 #endif // UT_UTILS_TEST_H

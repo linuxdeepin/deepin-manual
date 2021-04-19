@@ -11,19 +11,11 @@ ut_config_manager_test::ut_config_manager_test()
 }
 
 
-void ut_config_manager_test::SetUp()
-{
-    m_ap = new ConfigManager();
-}
-
-void ut_config_manager_test::TearDown()
-{
-    delete m_ap;
-}
-
 TEST_F(ut_config_manager_test, getSettings)
 {
+    ConfigManager *m_ap = new ConfigManager();
     m_ap->getSettings();
+    delete m_ap;
 }
 
 TEST_F(ut_config_manager_test, getWinInfoConfigPath)

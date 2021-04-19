@@ -39,13 +39,20 @@ void SearchProxy::getKeyword(const QString &keyword)
     emit setKeyword(keyword);
 }
 
+/**
+ * @brief SearchProxy::updateSearch
+ * @node 更新搜索结果
+ * @param keyword
+ */
 void SearchProxy::updateSearch(const QString &keyword)
 {
     qDebug() << Q_FUNC_INFO;
+    //WebWindow::onSetKeyword 设置搜索框值
     emit setKeyword(keyword);
 
     //延时查找数据库： 立即查找会出现无法查到刚插入数据的情况
     QTimer::singleShot(1000, this, [ = ]() {
+        //查询结果并显示 WebWindow::onTitleBarEntered
         emit updateSearchResult();
     });
 

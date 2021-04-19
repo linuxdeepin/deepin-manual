@@ -234,6 +234,7 @@ QStringList Utils::getSystemManualList()
     };
 
     QStringList app_list_;
+    //调用dbus服务获取系统安装应用
     const AppInfoList list = launcherInterface();
     const QStringList applicationList = QDir(QString("%1/application/").arg(DMAN_MANUAL_DIR)).entryList();
     const QStringList systemList = QDir(QString("%1/system/").arg(DMAN_MANUAL_DIR)).entryList();
@@ -261,6 +262,7 @@ QStringList Utils::getSystemManualList()
     //安装时间相同时,按名称排序
     QList<AppInfo> listApp = sortAppList(appMap);
 
+    //比对存在帮助md文件的应用
     for (int i = 0; i < listApp.size(); ++i) {
         const QString app_name = kAppNameMap.value(listApp.at(i).key, listApp.at(i).key);
         if ((applicationList.contains(app_name) || oldAppList.contains(app_name))  && app_list_.indexOf(app_name) == -1) {
@@ -360,6 +362,7 @@ QList<AppInfo> Utils::sortAppList(QMultiMap<qlonglong, AppInfo> map)
 bool Utils::hasSelperSupport()
 {
     int nType = Dtk::Core::DSysInfo::deepinType();
+    //专业版判断是否有服务与支持
     if (Dtk::Core::DSysInfo::DeepinProfessional == (Dtk::Core::DSysInfo::DeepinType)nType) {
         const QStringList list = getSystemManualList();
         if (list.contains("uos-service-support")) {

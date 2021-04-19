@@ -27,7 +27,6 @@ ut_image_viewer_test::ut_image_viewer_test()
 
 }
 
-namespace dman {
 
 TEST_F(ut_image_viewer_test, open)
 {
@@ -83,7 +82,4 @@ TEST_F(ut_image_viewer_test, paintEvent)
     ImageViewer iv;
     QPaintEvent *e;
     iv.paintEvent(e);
-}
-
-
 }

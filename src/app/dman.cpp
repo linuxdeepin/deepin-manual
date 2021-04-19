@@ -83,6 +83,7 @@ int main(int argc, char **argv)
     QObject::connect(&argument_parser, &ArgumentParser::openManualRequested,
                      &window_manager, &WindowManager::openManual);
 
+    //解析启动参数
     if (!argument_parser.parseArguments()) {
         qDebug() << "argument_parser.parseArguments()";
         //解析参数失败，１００ｍｓ退出进程

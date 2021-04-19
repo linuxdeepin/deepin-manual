@@ -26,23 +26,41 @@ ManualOpenAdapter::~ManualOpenAdapter()
 {
 }
 
+/**
+ * @brief ManualOpenAdapter::Open
+ * @param in0
+ */
 void ManualOpenAdapter::Open(const QString &in0)
 {
     // 调用 com.deepin.Manual.Open.Open
     QMetaObject::invokeMethod(parent(), "Open", Q_ARG(QString, in0));
 }
 
+/**
+ * @brief ManualOpenAdapter::OpenTitle
+ * @param in0
+ * @param in1
+ */
 void ManualOpenAdapter::OpenTitle(const QString &in0, const QString &in1)
 {
     QMetaObject::invokeMethod(parent(), "OpenTitle", Q_ARG(QString, in0), Q_ARG(QString, in1));
 }
 
+
+/**
+ * @brief ManualOpenAdapter::Search
+ * @param keyword
+ */
 void ManualOpenAdapter::Search(const QString &keyword)
 {
     // 调用 com.deepin.Manual.Open.Search
     QMetaObject::invokeMethod(parent(), "Search", Q_ARG(QString, keyword));
 }
 
+/**
+ * @brief ManualOpenAdapter::ShowManual
+ * @param in0
+ */
 void ManualOpenAdapter::ShowManual(const QString &in0)
 {
     // 调用 com.deepin.Manual.Open.ShowManual

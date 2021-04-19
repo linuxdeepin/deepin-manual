@@ -17,25 +17,15 @@
 */
 #include "ut_consts.h"
 
-namespace dman {
-
-
 ut_consts_test::ut_consts_test()
 {
 
 }
 
-void ut_consts_test::SetUp()
-{
-}
-
-void ut_consts_test::TearDown()
-{
-}
 
 TEST_F(ut_consts_test, GetCacheDir)
 {
     // ASSERT_EQ(GetCacheDir(), QString("/home/kevin_w/.cache/deepin/deepin-manual"));
 }
 
-}
+

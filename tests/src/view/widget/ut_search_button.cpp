@@ -26,7 +26,7 @@
 #include <QEvent>
 
 
-namespace dman {
+
 
 ut_search_button_test::ut_search_button_test()
 {
@@ -162,7 +162,5 @@ TEST_F(ut_search_button_test, leaveEvent2)
     ASSERT_FALSE(sb.m_bHover);
     QPixmap iconPm1 = Utils::renderSVG(QString(kImageLightSearchIcon), QSize(20, 20));
     ASSERT_EQ(sb.iconBtn->icon().pixmap(QSize(20, 20)), iconPm1);
-
-}
 
 }

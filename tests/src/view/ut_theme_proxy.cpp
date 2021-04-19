@@ -3,7 +3,7 @@
 #include "view/theme_proxy.h"
 #include <DGuiApplicationHelper>
 
-namespace dman {
+
 
 ut_theme_proxy_test::ut_theme_proxy_test()
 {
@@ -29,4 +29,4 @@ TEST_F(ut_theme_proxy_test, slot_ThemeChange)
 
     tp.slot_ThemeChange();
 }
-}
+

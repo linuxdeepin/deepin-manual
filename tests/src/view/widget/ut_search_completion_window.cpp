@@ -23,7 +23,7 @@
 #include "base/utils.h"
 #include <DWindowManagerHelper>
 
-namespace dman {
+
 
 ut_search_completion_window_test::ut_search_completion_window_test()
 {
@@ -364,6 +364,4 @@ TEST_F(ut_search_completion_window_test, onResultListEntered)
     sw.onResultListEntered(index);
     ASSERT_EQ(sw.result_view_->currentIndex(), index);
     ASSERT_FALSE(sw.search_button_->isChecked());
-}
-
 }

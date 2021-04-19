@@ -12,7 +12,7 @@ public:
     ut_i18n_proxy();
     virtual void SetUp() override;
     virtual void TearDown() override;
-    I18nProxy *ip;
+    I18nProxy *ip = nullptr;
 
 };
 

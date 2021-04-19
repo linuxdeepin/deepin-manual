@@ -33,6 +33,10 @@ ManualFilesUpdateAdapter::~ManualFilesUpdateAdapter()
     // destructor
 }
 
+/**
+ * @brief ManualFilesUpdateAdapter::OnFilesUpdate
+ * @param list
+ */
 void ManualFilesUpdateAdapter::OnFilesUpdate(const QStringList &list)
 {
     // handle method call local.ManualFilesUpdateProxy.OnFilesUpdate

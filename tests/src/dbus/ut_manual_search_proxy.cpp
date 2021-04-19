@@ -80,6 +80,6 @@ TEST_F(ut_manual_search_proxy, ManualExists2)
 {
     Stub st;
     st.set((QStringList(QDir::*)(const QStringList &, QDir::Filters, QDir::SortFlags) const)ADDR(QDir, entryList), stub_entryList);
-    bool b = msp->ManualExists("dde");
+    msp->ManualExists("dde");
     //    ASSERT_EQ(b, false);
 }

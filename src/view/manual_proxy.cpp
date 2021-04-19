@@ -272,18 +272,19 @@ QString ManualProxy::getAppIconPath(const QString &desktopname)
 
         QString str96, str64, str48, str36;
         for (int i = 0; i < info.entries.size(); i++) {
-            QString filepath = info.entries.at(i)->filename;
-            if (filepath.contains("96")) {
-                str96 = filepath;
+            //修改变量名 cppcheck错误 20210419
+            QString filepathtmp = info.entries.at(i)->filename;
+            if (filepathtmp.contains("96")) {
+                str96 = filepathtmp;
                 break;
-            } else if (filepath.contains("64")) {
-                str64 = filepath;
-            } else if (filepath.contains("48")) {
-                str48 = filepath;
-            } else if (filepath.contains("36")) {
-                str36 = filepath;
+            } else if (filepathtmp.contains("64")) {
+                str64 = filepathtmp;
+            } else if (filepathtmp.contains("48")) {
+                str48 = filepathtmp;
+            } else if (filepathtmp.contains("36")) {
+                str36 = filepathtmp;
             } else {
-                strIconPath = filepath;
+                strIconPath = filepathtmp;
             }
         }
         if (!str96.isEmpty()) {
@@ -331,11 +332,13 @@ void ManualProxy::saveAppList(const QStringList &list)
 {
     Q_UNUSED(list)
     QSettings *setting = ConfigManager::getInstance()->getSettings();
+    //获取配置文件中应用列表
     setting->beginGroup(kConfigAppList);
     for (int i = 0; i < list.size(); ++i) {
         if (setting->contains(list.at(i))) {
             continue;
         } else {
+            //应用不存在则保存
             setting->setValue(list.at(i), true);
         }
     }

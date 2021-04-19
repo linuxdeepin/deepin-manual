@@ -23,16 +23,13 @@
 #include "base/consts.h"
 #include <QTest>
 
-namespace dman {
+
 
 class ut_consts_test : public ::testing::Test
 {
 
 public:
     ut_consts_test();
-    virtual void SetUp() override;
-    virtual void TearDown() override;
 };
 
-}
 #endif // UT_CONSTS_TEST_H

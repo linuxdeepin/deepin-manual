@@ -8,9 +8,6 @@
 #include "QCommandLineParser"
 #include <QDBusInterface>
 
-
-namespace dman {
-
 ut_argument_parser_test::ut_argument_parser_test()
 {
 
@@ -68,6 +65,4 @@ TEST_F(ut_argument_parser_test, onOpenAppRequested)
 {
     ArgumentParser ap;
     ap.onOpenAppRequested("应用", "打开");
-}
-
 }

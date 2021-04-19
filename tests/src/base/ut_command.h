@@ -21,14 +21,15 @@
 
 #include "gtest/gtest.h"
 #include <QtTest>
+#include <QObject>
 
-namespace dman {
 
-class ut_command_test : public ::testing::Test
+
+class ut_command_test : public QObject, public ::testing::Test
 {
 public:
     ut_command_test();
 };
 
-} // namespace dman
+
 #endif // UT_COMMAND_TEST_H

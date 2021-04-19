@@ -25,19 +25,10 @@ ut_utils_test::ut_utils_test()
 
 }
 
-void ut_utils_test::SetUp()
-{
-    m_utils = new Utils;
-}
-
-void ut_utils_test::TearDown()
-{
-    delete m_utils;
-}
-
 
 TEST_F(ut_utils_test, getSystemManualList)
 {
+    Utils *m_utils = new Utils;
     /*QStringList list = {"deepin-defender", "deepin-picker", "deepin-voice-note", "deepin-browser",
                         "dde-calendar", "dde-file-manager", "deepin-album", "deepin-app-store",
                         "deepin-compressor", "deepin-calculator", "deepin-deb-installer",
@@ -51,27 +42,34 @@ TEST_F(ut_utils_test, getSystemManualList)
     */
     //ASSERT_EQ(m_utils->getSystemManualList().size(), list.size());
     m_utils->getSystemManualList();
+    delete m_utils;
 }
 
 TEST_F(ut_utils_test, getSystemManualDir)
 {
+    Utils *m_utils = new Utils;
     QString str = DMAN_MANUAL_DIR;
     ASSERT_EQ(m_utils->getSystemManualDir(), str);
+    delete m_utils;
 }
 
 TEST_F(ut_utils_test, mkMutiDir)
 {
+    Utils *m_utils = new Utils;
     QString strbasepath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation).append("/.local/share/deepin/deepin-manual");
     QString strpath = strbasepath.append("/dirtest/11/22/33/44");
     m_utils->mkMutiDir(strpath);
+    delete m_utils;
 }
 
 TEST_F(ut_utils_test, renderSVG)
 {
+    Utils *m_utils = new Utils;
     QPixmap pix = m_utils->renderSVG(QString(kImageDarkSearchIcon), QSize(20, 20));
     qDebug() << pix;
     ASSERT_EQ(pix.width(), 20);
     ASSERT_EQ(pix.height(), 20);
+    delete m_utils;
 }
 
 
@@ -90,46 +88,55 @@ TEST_F(ut_utils_test, sortAppList)
     appmultma.insert(3, info);
     appmultma.insert(2, info);
     appmultma.insert(4, info);
-
+    Utils *m_utils = new Utils;
     m_utils->sortAppList(appmultma);
+    delete m_utils;
 }
 
 TEST_F(ut_utils_test, renderSVG2)
 {
     QString imgPath = kImageDarkSearchIcon;
     imgPath += "xx";
+    Utils *m_utils = new Utils;
     QPixmap pix = m_utils->renderSVG(imgPath, QSize(20, 20));
+    delete m_utils;
 }
 
 
 
 TEST_F(ut_utils_test, translateTitle)
 {
+    Utils *m_utils = new Utils;
     QString str = m_utils->translateTitle("controlcenter");
     if (QLocale::system().name() == "zh_CN")
         ASSERT_EQ(str, "控制中心");
     else
         ASSERT_EQ(str, "Control Center");
-
+    delete m_utils;
 }
 
 TEST_F(ut_utils_test, launcherInterface)
 {
 
+    Utils *m_utils = new Utils;
     m_utils->launcherInterface();
+    delete m_utils;
 }
 
 
 TEST_F(ut_utils_test, hasSelperSupport)
 {
 //    ASSERT_TRUE(m_utils->hasSelperSupport());
+    Utils *m_utils = new Utils;
     ASSERT_FALSE(m_utils->hasSelperSupport());
+    delete m_utils;
 }
 
 
 TEST_F(ut_utils_test, systemToOmit)
 {
 //    ASSERT_TRUE(m_utils->hasSelperSupport());
+    Utils *m_utils = new Utils;
     QStringList omitlist = m_utils->systemToOmit(Dtk::Core::DSysInfo::UosProfessional);
     ASSERT_TRUE( omitlist.contains("p"));
 
@@ -148,6 +155,7 @@ TEST_F(ut_utils_test, systemToOmit)
 
     omitlist = m_utils->systemToOmit(Dtk::Core::DSysInfo::UosEuler);
     ASSERT_TRUE( omitlist.contains("eu") && omitlist.contains("s")) ;
+    delete m_utils;
 }
 
 TEST_F(ut_utils_test, exapplicationHelperInstance)
@@ -155,17 +163,30 @@ TEST_F(ut_utils_test, exapplicationHelperInstance)
     ExApplicationHelper::instance();
 }
 
+TEST_F(ut_utils_test, isMostPriority)
+{
+    QString mdPath;
+    QString morePriorityPath;
+    Utils *m_utils = new Utils;
+    m_utils->isMostPriority(mdPath, morePriorityPath);
+    delete m_utils;
+}
+
 TEST_F(ut_utils_test, activeWindow)
 {
+    Utils *m_utils = new Utils;
     ASSERT_FALSE(m_utils->activeWindow(123));
+    delete m_utils;
 }
 
 TEST_F(ut_utils_test, regexp_label)
 {
+    Utils *m_utils = new Utils;
     QFile file("/usr/share/glib-2.0/schemas/com.deepin.dde.appearance.gschema.xml");
     if (file.exists() && file.open(QIODevice::ReadWrite)) {
         QString strContent(file.readAll());
         strContent = m_utils->regexp_label(strContent, "(icon-theme\">\n)(.*)?(['</default>])");
+        delete m_utils;
     }
 }
 

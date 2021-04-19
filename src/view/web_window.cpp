@@ -142,10 +142,13 @@ void WebWindow::updatePage(const QStringList &list)
             appList.append(splitList.at(splitList.count() - 4));
         }
 
+        //发送到前端页面更新内容
         emit search_proxy_->reloadPage(appList);
     }
 
     if (search_manager_) {
+        //重新获取应用列表
+        //SearchDb::updateModule-->SearchDb::getAllApp
         emit search_manager_->updateModule();
     }
 }
@@ -174,6 +177,7 @@ void WebWindow::cancelTextChanged()
 
 /**
  * @brief WebWindow::openjsPage
+ * @note 根据应用名和标题名定位到当前页面
  * @param app_name
  * @param title_name
  */
@@ -401,8 +405,10 @@ void WebWindow::setSearchManager()
 {
     search_proxy_ = new SearchProxy(this);
     search_manager_ = new SearchManager(this);
+    //searchContentResult绑定到JS页面
     connect(search_manager_, &SearchManager::searchContentResult, search_proxy_,
             &SearchProxy::onContentResult);
+    //searchContentMismatch绑定到JS页面
     connect(search_manager_, &SearchManager::searchContentMismatch, search_proxy_,
             &SearchProxy::mismatch);
     connect(search_manager_, &SearchManager::searchAnchorResult, this,
@@ -545,25 +551,37 @@ void WebWindow::initUI()
  */
 void WebWindow::initWebView()
 {
+    //图片控件
     image_viewer_ = new ImageViewer(this);
+    //图片显示
     image_viewer_proxy_ = new ImageViewerProxy(image_viewer_, this);
+    //主题代理类
     theme_proxy_ = new ThemeProxy(this);
+    //设置代理类
     settings_proxy_ = new SettingsProxy(this);
+    //语言代理类
     i18n_proxy = new I18nProxy(this);
+    //手册处理代理类
     manual_proxy_ = new ManualProxy(this);
-
+    //标题栏代理类
     title_bar_proxy_ = new TitleBarProxy(this);
+
+    //上一页按钮
     connect(m_backButton, &DButtonBoxButton::clicked, title_bar_proxy_,
             &TitleBarProxy::backwardButtonClicked);
+    //下一页按钮
     connect(m_forwardButton, &DButtonBoxButton::clicked, title_bar_proxy_,
             &TitleBarProxy::forwardButtonClicked);
     web_view_ = new QWebEngineView;
     web_view_->setAttribute(Qt::WA_NativeWindow, true);
+    //禁止拖文件
     web_view_->setAcceptDrops(false);
     //使用该方法效果最好但使用后消息提示控件不可见,所以根据主题设置相适应的背景色
     // web_view_->page()->setBackgroundColor(Qt::transparent);
+    //根据系统主题设置web背景色
     slot_ThemeChanged();
     QWebChannel *web_channel = new QWebChannel;
+    //向web页面注册C++类对象
     web_channel->registerObject("i18n", i18n_proxy);
     web_channel->registerObject("imageViewer", image_viewer_proxy_);
     web_channel->registerObject("manual", manual_proxy_);
@@ -579,15 +597,19 @@ void WebWindow::initWebView()
     connect(manual_proxy_, &ManualProxy::updateLabel, this, &WebWindow::slotUpdateLabel);
     connect(manual_proxy_, &ManualProxy::supportBeClick, this, &WebWindow::slot_HelpSupportTriggered);
 
+    //web主页html路径
     const QFileInfo info(kIndexPage);
     web_view_->load(QUrl::fromLocalFile(info.absoluteFilePath()));
     connect(search_edit_, &SearchEdit::onClickedClearBtn, manual_proxy_,
             &ManualProxy::searchEditTextisEmpty);
     connect(search_proxy_, &SearchProxy::setKeyword, this, &WebWindow::onSetKeyword);
     connect(search_proxy_, &SearchProxy::updateSearchResult, this, &WebWindow::onTitleBarEntered);
+
+    //接收系统主题变化信号发送给前端JS
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
             theme_proxy_, &ThemeProxy::slot_ThemeChange);
 
+    //接收系统主题变化信号
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged,
             this, &WebWindow::slot_ThemeChanged);
 
@@ -729,6 +751,7 @@ void WebWindow::onSearchContentByKeyword(const QString &keyword)
     qDebug() << "calling keyword is:" << keyword << endl;
     QString key(keyword);
     const QString searchKey = key.remove('\n').remove('\r').remove("\r\n").remove(QRegExp("\\s"));
+    //在数据库中查询->SearchDb::searchContent->SearchDb::handleSearchContent
     search_manager_->searchContent(searchKey);
 
     QString base64Key = QString(searchKey.toUtf8().toBase64());
@@ -757,6 +780,7 @@ void WebWindow::onSearchButtonClicked()
 {
     QString textTemp = search_edit_->text();
     const QString text = textTemp.remove('\n').remove('\r').remove("\r\n");
+    //根据关键字在内容中查找
     this->onSearchContentByKeyword(text);
     completion_window_->hide();
 }
@@ -900,12 +924,14 @@ void WebWindow::onSetKeyword(const QString &keyword)
 
     if (search_edit_) {
         if (keyword.isEmpty()) {
+            //清空搜索框
             search_edit_->clearEdit();
         } else {
             QString strTemp = keyword;
             if (strTemp.contains("=-=")) {
                 strTemp.replace("=-=", "%");
             }
+            //设置搜索框值
             search_edit_->setText(strTemp);
         }
     }

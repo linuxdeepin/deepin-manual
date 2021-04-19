@@ -65,6 +65,13 @@ QDBusArgument &operator<<(QDBusArgument &argument,
     return argument;
 }
 
+/**
+ * @brief operator <<
+ * @note 重载<< 输出info信息
+ * @param stream
+ * @param info
+ * @return
+ */
 QDataStream &operator<<(QDataStream &stream, const AppInfo &info)
 {
     stream << info.desktop
@@ -76,6 +83,13 @@ QDataStream &operator<<(QDataStream &stream, const AppInfo &info)
     return stream;
 }
 
+/**
+ * @brief operator >>
+ * @note 重载>> 对AppInfo赋值
+ * @param argument
+ * @param info
+ * @return
+ */
 const QDBusArgument &operator>>(const QDBusArgument &argument,
                                 AppInfo &info)
 {
@@ -90,6 +104,14 @@ const QDBusArgument &operator>>(const QDBusArgument &argument,
     return argument;
 }
 
+
+/**
+ * @brief operator >>
+ * @node 从QDataStream中赋值到AppInfo
+ * @param stream
+ * @param info
+ * @return
+ */
 const QDataStream &operator>>(QDataStream &stream, AppInfo &info)
 {
     stream >> info.desktop

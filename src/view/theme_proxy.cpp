@@ -16,6 +16,7 @@ ThemeProxy::~ThemeProxy()
  */
 void ThemeProxy ::slot_ThemeChange()
 {
+    //更新到前端JS
     emit themeChange(getTheme());
 }
 

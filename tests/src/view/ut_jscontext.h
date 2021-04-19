@@ -29,7 +29,7 @@ public:
     ut_JsContext();
     virtual void SetUp() override;
     virtual void TearDown() override;
-    JsContext *m_jc;
+    JsContext *m_jc = nullptr;
 };
 
 #endif // UT_JSCONTEXT_H

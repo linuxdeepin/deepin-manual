@@ -48,6 +48,7 @@ void SearchManager::initSearchManager()
     connect(this, &SearchManager::updateModule, db_, &SearchDb::updateModule);
     connect(db_thread_, &QThread::destroyed, db_, &QObject::deleteLater);
 
+    //初始化创建数据库SearchDb::initDb
     emit db_->initDbAsync();
 }
 
