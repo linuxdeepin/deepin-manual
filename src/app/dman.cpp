@@ -21,6 +21,7 @@
 #include "environments.h"
 #include "resources/themes/images.h"
 #include "controller/shellobj.h"
+#include "base/utils.h"
 
 #include <DApplication>
 #include <DApplicationSettings>
@@ -52,12 +53,15 @@ int main(int argc, char **argv)
         app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings, true);
     }
     qInfo() << QString(QLocale::system().name()) << QLocale().name();
-#ifdef DCPU_IS_LONGSON
-    //add by wujian 20200907 for 解决龙芯平台，QWebEngine因字体库字体太多，造成启动失败的问题
-    QString strHomePath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
-    QString strExeShell = QString("rm -fr %1/.cache/fontconfig").arg(strHomePath);
-    shellObj::execSystem(strExeShell);
-#endif
+
+    //判断龙芯 20210419
+    if(Utils::judgeLoongson())
+    {
+        //add by wujian 20200907 for 解决龙芯平台，QWebEngine因字体库字体太多，造成启动失败的问题
+        QString strHomePath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
+        QString strExeShell = QString("rm -fr %1/.cache/fontconfig").arg(strHomePath);
+        shellObj::execSystem(strExeShell);
+    }
 
     //设置窗口属性
     app.setAttribute(Qt::AA_UseHighDpiPixmaps, true);

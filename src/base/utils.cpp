@@ -25,6 +25,7 @@
 
 QHash<QString, QPixmap> Utils::m_imgCacheHash;
 QHash<QString, QString> Utils::m_fontNameCache;
+QString Utils::cpuModeName;
 
 const char kLauncherService[] = "com.deepin.dde.daemon.Launcher";
 const char kLauncherIface[] = "/com/deepin/dde/daemon/Launcher";
@@ -467,6 +468,42 @@ QString Utils::mkMutiDir(const QString &path)
     if (!dirname.isEmpty())
         parentPath.mkpath(dirname);
     return parentDir + "/" + dirname;
+}
+
+/**
+ * @brief Utils::judgeLongson
+ * @node 判断龙芯
+ * @return
+ */
+bool Utils::judgeLoongson()
+{
+    if(cpuModeName.isEmpty())
+    {
+        QProcess process;
+        //获取CPU型号
+        process.start("cat /proc/cpuinfo");
+
+        if(process.waitForFinished())
+        {
+            QString result = process.readAllStandardOutput();
+
+            if(result.contains("Loongson"))
+            {
+                qWarning()<<"cpu mode name is loongson";
+                cpuModeName = "Loongson";
+            }
+            else {
+                cpuModeName = "other";
+            }
+        }
+    }
+
+    if(cpuModeName.contains("Loongson"))
+    {
+        return  true;
+    }
+
+    return false;
 }
 
 ExApplicationHelper *ExApplicationHelper::instance()

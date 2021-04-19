@@ -147,11 +147,7 @@ void ManualProxy::supportClick()
 
 bool ManualProxy::bIsLongSon()
 {
-    bool bRet = false;
-#ifdef DCPU_IS_LONGSON
-    bRet = true;
-#endif
-    return bRet;
+    return Utils::judgeLoongson();
 }
 
 void ManualProxy::renderFinish()

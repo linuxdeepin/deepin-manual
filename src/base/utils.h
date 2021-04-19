@@ -46,6 +46,7 @@ public:
 
     static QHash<QString, QPixmap> m_imgCacheHash;
     static QHash<QString, QString> m_fontNameCache;
+    static QString cpuModeName;
     static QPixmap renderSVG(const QString &filePath, const QSize &size);
     static QString translateTitle(const QString &titleUS);
     //获取所有应用列表
@@ -62,6 +63,9 @@ public:
     static QString regexp_label(const QString &strtext, const QString &strpatter);
     //创建多级目录
     static QString mkMutiDir(const QString &path);
+    //判断是否为龙芯平台
+    static bool judgeLoongson();
+
 };
 
 class ExApplicationHelper : public DGuiApplicationHelper

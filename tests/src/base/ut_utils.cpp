@@ -172,6 +172,14 @@ TEST_F(ut_utils_test, isMostPriority)
     delete m_utils;
 }
 
+TEST_F(ut_utils_test, judgeLongson)
+{
+    Utils *m_utils = new Utils;
+    m_utils->judgeLoongson();
+    delete m_utils;
+
+}
+
 TEST_F(ut_utils_test, activeWindow)
 {
     Utils *m_utils = new Utils;
@@ -186,8 +194,8 @@ TEST_F(ut_utils_test, regexp_label)
     if (file.exists() && file.open(QIODevice::ReadWrite)) {
         QString strContent(file.readAll());
         strContent = m_utils->regexp_label(strContent, "(icon-theme\">\n)(.*)?(['</default>])");
-        delete m_utils;
     }
+    delete m_utils;
 }
 
 TEST_F(ut_utils_test, standardPalette)
