@@ -1,7 +1,7 @@
 # Desktop Environment|dde|
 
 ## Overview
-UnionTech OS(UnionTech operating system) is a beautiful, easy-to-use and reliable Linux desktop operating system. It is equipped with a series of original applications such as File Manager, App Store, Image Viewer, Movie, and etc, which not only offers you abundant entertainment experience but also meet your daily needs of learning and working. With continual improvement, UnionTech OS is becoming one of the most popular open-source operating systems in China.
+UnionTech OS(UnionTech operating system) is a beautiful, easy-to-use and reliable Linux desktop operating system. It is equipped with a series of original applications such as File Manager, App Store, Image Viewer, and etc, which not only offers you abundant entertainment experience but also meet your daily needs of learning and working. With continual improvement, UnionTech OS is becoming one of the most popular open-source operating systems in China.
 
 ![1|desk](fig/p_desk.png)
 
@@ -27,8 +27,8 @@ Desktop is the main screen you see after logging in. On the desktop, you can cre
 
 Just as in File Manager, you can create a new folder/document on the desktop, or do some operations for the files on it.
 
-- Right-click the desktop, select **New folder** and enter the name for it.
-- Right-click the desktop, select **New document**, select the type and enter its name.
+   - Right-click the desktop, select **New folder** and enter the name for it.
+   - Right-click the desktop, select **New document**, select the type and enter its name.
 
 Right-click a file or folder on the desktop, and use the features of File Manager as below:
 
@@ -134,7 +134,7 @@ In the Dock, there are icons of Launcher, applications, system tray, and plugins
 | ![deepin-toggle-desktop](../common/deepin-toggle-desktop.svg) | Click to show the desktop. |
 | ![deepin-multitasking-view](../common/deepin-multitasking-view.svg) | Multitasking View - click to show workspaces. |
 | ![dde-file-manager](../common/dde-file-manager.svg) | File Manager - click to view files and folders on the disk. |
-| ![uosbrowser](../common/uosbrowser-cn.svg) | Browser- click to open webpages. |
+| ![uosbrowser](../common/deepin_browser.svg) | Browser- click to open webpages. |
 | ![ deepin-album](../common/deepin-album.svg) | Album - import and manage photos. |
 | ![deepin-appstore](../common/deepin-appstore.svg) | Store - search and install applications. |
 | ![deepin-music](../common/deepin-music.svg) |  Music - play local songs.  |
@@ -146,7 +146,8 @@ In the Dock, there are icons of Launcher, applications, system tray, and plugins
 | ![onboard](../common/onboard.svg) | Onboard virtual keyboard. |
 | ![shutdown](../common/system-shutdown.svg) | Click to enter the shutdown interface. |
 | ![trash](../common/trash_icon.svg) | Trash. |
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+
 > ![tips](../common/tips.svg)Tips: In Efficient Mode, you can click the right side of Dock to show the desktop. Move the cursor to the running app in the Dock and you will see its preview window.
 
 ### Switch Display Mode
@@ -178,9 +179,9 @@ You can hide the Dock in order to maximize the expansion of the desktop operatin
 
 1. Right-click the Dock and select **Status**.
 2. On the submenu, you can select:
-- **Keep Shown** - display Dock all the time.
-- **Keep Hidden** - hide Dock and display it only when hovering on the dock area.
-- **Smart Hide** -  hide Dock automatically if the dock area is used.
+   - **Keep Shown** - display Dock all the time.
+   - **Keep Hidden** - hide Dock and display it only when hovering on the dock area.
+   - **Smart Hide** -  hide Dock automatically if the dock area is used.
 
 > ![notes](../common/notes.svg)Notes: If you are using a computer equipped with a touchscreen: 
 > when the Dock is set as "Always Hidden" or "Smart Hide", if the Dock is at the bottom, slide in upward from the bottom edge of the screen to call it out; and if the Dock is on the top, slide in downward from the upper edge of the screen to call it out. 
@@ -205,7 +206,7 @@ Click ![notification](../common/notification.svg) in Dock to view all the notifi
 
 Desktop AI Assistant supports voice and text input, information search, operation instructions, etc. With it, you can adjust system volume and screen brightness, and switch on/off power saving mode, WiFi or Bluetooth.
 
-> ![notes](icon/notes.svg)Notes: Voice dictation, voice reading, translation and other functions of Desktop AI Assistant are available only after you activate the system. When you run Desktop AI Assistant for the first time, a private agreement window pops up. After you agree with it, you can use functions such as voice dictation, voice reading, translation and others normally.
+> ![notes](../common/notes.svg)Notes: Voice dictation, voice reading, translation and other functions of Desktop AI Assistant are available only after you activate the system. When you run Desktop AI Assistant for the first time, a private agreement window pops up. After you agree with it, you can use functions such as voice dictation, voice reading, translation and others normally.
 
 You can wake up Desktop AI Assistant as follows:
 
@@ -215,14 +216,14 @@ You can wake up Desktop AI Assistant as follows:
 
 You can input words and voice as follows：
 
-1. Click ![ai](icon/desktop-ai-assistant.svg) in the Dock to open Desktop AI Assistant.
+1. Click ![ai](../common/desktop-ai-assistant.svg) in the Dock to open Desktop AI Assistant.
 2. Connect the recording devices and  talk to Desktop AI Assistant directly, such as  "change the wallpaper", "adjust the screen brightness", and "what's the weather".
 3. It is also available to input text instructions after the input box appears.
 
-![ai1](jpg/ai1.png) 
+![ai1](fig/ai1.png) 
 
-![ai2](jpg/ai2.png)
-> ![tips](icon/tips.svg)Tips: Select the text information needed and press **Ctrl** + **Alt** + **P** for voice reading; after connecting the recording devices, press **Ctrl** + **Alt** + **O** in the input box to enter the dictation mode and convert the voice input to texts.
+![ai2](fig/ai2.png)
+> ![tips](../common/tips.svg)Tips: Select the text information needed and press **Ctrl** + **Alt** + **P** for voice reading; after connecting the recording devices, press **Ctrl** + **Alt** + **O** in the input box to enter the dictation mode and convert the voice input to texts.
 
 #### Set up Speech to Text
 
@@ -239,7 +240,7 @@ Text to Speech is only available for the currently-selected texts and the operat
 1. Select the texts, press  **Ctrl** + **AIt** + **P** on the keyboard or right-click **Text to Speech** to start reading.
 2. Click the speaker icon or right-click **Stop reading** to stop reading.
 
-> ![notes](icon/notes.svg)Notes: If you select other texts during reading, the current speaker icon will be displayed in the newly-selected location. Click the speaker icon, use the shortcut key or right-click **Text to Speech**, the current reading will be interrupted and  it starts reading the newly-selected texts.
+> ![notes](../common/notes.svg)Notes: If you select other texts during reading, the current speaker icon will be displayed in the newly-selected location. Click the speaker icon, use the shortcut key or right-click **Text to Speech**, the current reading will be interrupted and  it starts reading the newly-selected texts.
 
 #### Set up Translation
 
@@ -249,12 +250,12 @@ Translation is only available for the currently-selected texts and the operation
 
 1. Select the texts, press  **Ctrl** + **AIt** + **U** on the keyboard or right-click **Translate** to start translation.
 
-> ![notes](icon/notes.svg)Notes: It only supports Chinese-English and English-Chinese translation currently.
+> ![notes](../common/notes.svg)Notes: It only supports Chinese-English and English-Chinese translation currently.
 
 ### View Date and Time
 
-- Hover the cursor over the Time icon in Dock to view the current time, date and day of the week.
-- Click the Time icon to open Calendar.
+   - Hover the cursor over the Time icon in Dock to view the current time, date and day of the week.
+   - Click the Time icon to open Calendar.
 
 ### Enter Shutdown Interface
 
@@ -319,8 +320,8 @@ The mini mode also supports opening File Manager, Control Center and shutdown in
 
 In fullscreen mode, all applications in Launcher are listed by the installation time by default. You can sort the application icons as the ways below:
 
-- Hover the cursor over an application icon, hold down the left key of mouse, drag and drop the application icon to arrange it freely.
-- Click the category icon ![category](../common/category_icon.svg) on the upper left in Launcher to arrange the icons by category.
+   - Hover the cursor over an application icon, hold down the left key of mouse, drag and drop the application icon to arrange it freely.
+   - Click the category icon ![category](../common/category_icon.svg) on the upper left in Launcher to arrange the icons by category.
 
 ![1|sortapp](fig/p_sortapp.png)
 
@@ -352,14 +353,14 @@ Delete a shortcut from the desktop directly, or remove it from Dock or Launcher.
 
 **Remove the shortcut from Dock:**
 
-- Hold down the left key of mouse, drag and drop the icon away from Dock. 
-- You cannot drag and drop the application icon while it is running. Then you can right-click the application icon in Dock and select **Undock** to remove it from Dock.
+   - Hold down the left key of mouse, drag and drop the icon away from Dock. 
+   - You cannot drag and drop the application icon while it is running. Then you can right-click the application icon in Dock and select **Undock** to remove it from Dock.
 
 **Remove the shortcut from Launcher:**
 
 In Launcher, right-click the icon and you can:
-- Select **Remove from desktop** to delete the shortcut from the desktop.
-- Select **Remove from dock** to remove the application icon from Dock.
+   - Select **Remove from desktop** to delete the shortcut from the desktop.
+   - Select **Remove from dock** to remove the application icon from Dock.
 
 > ![notes](../common/notes.svg)Notes: The above operations only delete the shortcut rather than uninstall the applications.
 
@@ -371,8 +372,8 @@ Search and install more applications you want in App Store.
 ### Run Applications
 For the applications whose shortcuts have been created on the desktop or Dock, you can open them in the following ways:
 
-- Double-click the desktop icon or right-click it and select **Open**.
-- Click the application icon in Dock or right-click it and select **Open**.
+   - Double-click the desktop icon or right-click it and select **Open**.
+   - Click the application icon in Dock or right-click it and select **Open**.
 
 To open the application only shown in Launcher, click the icon or right-click it and select **Open**.
 
@@ -406,9 +407,9 @@ Once you open a setting module in Control Center, the navigation appears on the 
 
 The title bar contains the back button, search box, main menu and the window buttons.
 
-- Back button: Click ![back](../common/back.svg) to go back to the homepage.
-- Search box: Input a keyword and search the related settings.
-- Main menu: Click ![menu](../common/icon_menu.svg) to enter the main menu where you can set the window theme, view the manual and exit.
+   - Back button: Click ![back](../common/back.svg) to go back to the homepage.
+   - Search box: Input a keyword and search the related settings.
+   - Main menu: Click ![menu](../common/icon_menu.svg) to enter the main menu where you can set the window theme, view the manual and exit.
 
 ### Accounts
 You have already created an account when installing the system. Here you can modify account settings or create a new one.
@@ -504,26 +505,24 @@ Set screen resolution, brightness, direction and display scaling properly to hav
 
 ![0|display](fig/p_display.png)
 
-
 #### Single Screen Settings
 
-When there is only one screen, you can change the resolution, brightness, scaling, refresh rate and display direction.
-
-##### Change Resolution
-
-1. On the homepage of Control Center, click ![display_normal](../common/display_normal.svg).
-2. Click **Resolution**.
-3. Select a proper resolution in the list.
-4. Click **Save**.
+When there is only one screen, you can adjust the brightness, resolution, refresh rate and display direction.
 
 ##### Adjust Brightness
 
 1. On the homepage of Control Center, click ![display_normal](../common/display_normal.svg).
-2. Click **Brightness**.
-   - Set up **Brightness**: drag the slider to adjust screen brightness.
-   - Set up **Color Temperature**:
-     - Switch on **Night Shift**, the screen hue will be auto-adjusted according to your location.
-     - Switch on **Change Color Temperature** is switched on, you can adjust the monitor brightness as you wish. 
+
+2. In "Brightness" area, you can drag the slider to adjust the brightness.
+   
+##### Adjust Color Temperature
+
+1. On the homepage of Control Center, click ![display_normal](../common/display_normal.svg).
+
+2. In "Color Temperature" area, you can:
+
+   - Switch on **Night Shift**, the screen hue will be auto-adjusted according to your location.
+   - Switch on **Change Color Temperature** is switched on, you can adjust the monitor brightness as you wish. 
 
 > ![notes](../common/notes.svg)Notes: When **Night Shift** is switched on, **Change Color Temperature** becomes unavailable automatically, and vice versa.
 
@@ -539,7 +538,14 @@ Set a proper display scale to have a normal display.
 >- When a HiDPI screen is detected, the display scaling will be automatically adjusted.
 >-  For the applications that do not support scaling, right-click it in Launcher and select **Disable display scaling** to get a better display.
 
+##### Change Resolution
+
+1. On the homepage of Control Center, click ![display_normal](../common/display_normal.svg).
+2. Select a proper resolution parameter from the drop-down list in "Resolution" area.
+3. Click **Save**.
+
 ##### Change Refresh Rate
+
 1. On the homepage of Control Center, click ![display_normal](../common/display_normal.svg).
 2. Click **Refresh Rate**.
 3. Select a proper one, and click **Save**.
@@ -547,19 +553,17 @@ Set a proper display scale to have a normal display.
 ##### Change Display Direction
 
 1. On the homepage of Control Center, click ![display_normal](../common/display_normal.svg).
-2. Click ![rotate](../common/rotate.svg).
-3. Every time you click, the screen will rotate 90 degrees counterclockwise.
-4. To restore to the original direction, click the right button to exit; to use the current direction,  press **Ctrl**+ **S** to save it.
+2. Select a proper direction parameter from the drop-down list in "Rotation" area.
+3. Click **Save**.
 
 #### Multiple Screen Settings
 Expand your desktop by multiple screens! Use VGA/HDMI/EDP cable to connect your computer to other display devices such as monitor, projector and so on. When the computer is connected to another display device, **Multiple Displays** will appear.
 
 1. On the homepage of Control Center, click ![display_normal](../common/display_normal.svg).
-2. Click **Multiple Displays**.
-3. Select a display mode:
+2. In **Multiple Displays**, select a display mode:
     - **Duplicate**: display the same image on other screens.
     - **Extend**: expand the desktop across the screens.
-    - **Customize**: customize the display settings for multiple screens.
+    - **Only on xxxx**: only display on one screen.
 
  In multiple displays, press **Super** + **P** to show its OSD. 
 
@@ -570,16 +574,6 @@ Operations are as follows:
 
 >![notes](../common/notes.svg)Notes: When the multiple displays are in the extend mode, only the main screen supports desktop icon display, right-click menu operation and other functions, while the sub-screens do not. 
 
-##### Custom Settings
-
-1. On the homepage of Control Center, click ![display_normal](../common/display_normal.svg).
-2. Click **Multiple Displays** > **Customize**.
-3. Click **Recognize**. 
-4. Choose **Merge** or **Split** the screens, specify the main screen, set the resolution and refresh rate, and rotate screen if you want.
-5. Click **Save**.
-
-> ![notes](../common/notes.svg)Notes: "Merge" means duplicate mode, "Split" means extend mode. 
-
 #### Touch Screen
 
 If your computer has a touch screen, you can set your screen and adjust it.
@@ -588,7 +582,7 @@ If your computer has a touch screen, you can set your screen and adjust it.
 2. Click **Touch Screen** to set your screen.
 3. Click **Confirm**. 
 
-![touchscreen](fig/p_touchscreen.png)
+
 
 ### Default Application
 If you have installed several applications with similar functions, such as text editor, choose one of them to be the default application to open that type of file.
@@ -626,7 +620,7 @@ To delete the default applications you have added, do as below:
 
 
 ### Personalization Settings
-You can adjust the transparency of Launcher (in mini mode) and Dock, and also set theme, accent color, font, window effect, change the appearance of the desktop and windows to your favorite style. In addition, you can set icon theme, cursor theme and font.
+You can set overall personalization items such as theme, accent color, font, window effect and transparency, change the appearance of the desktop and windows to your favorite style. In addition, you can set icon theme, cursor theme and font.
 
 ![0|personalise](fig/p_personalise.png)
 
@@ -973,37 +967,36 @@ Power management turns the system to a low-power state when inactive, thus makin
 
 > ![notes](../common/notes.svg)Notes: **High Performance** is displayed only when the computer supports high performance mode.
 
-#### Power Saving Mode
-To reduce the power consumption of your laptop, turn on power saving mode to reduce screen brightness.
+#### Power Saving Settings
+To reduce the power consumption of your laptop, set your power saving mode.
 
 1. On the homepage of Control Center, click ![power_normal](../common/power_normal.svg).
 2. Click **General**.
-3. Switch on **Power Saving Mode** to enter power saving mode.
-4. Under **Power Saving Mode**, you can:
+3. In **Power Saving Settings** area, you can:
    - Switch on **Auto power saving on low battery**(only applicable for laptops).
    - Switch on **Auto power saving on battery** (only applicable for laptops).
    - Drag the slider of **Decrease brightness** to adjust brightness.
 
 > ![notes](../common/notes.svg)Notes: when **Auto power saving on battery** is switched off, the system enters **Balanced** mode directly.
 
-#### Password Required on Wakeup
+#### Wakeup Settings
 
 1. On the homepage of Control Center, click ![power_normal](../common/power_normal.svg).
 2. Click **General**.
-3. Switch on **Password is required to wake up the monitor** and **Password is required to wake up the computer** to improve the security.
+3. Switch on **Password is required to wake up the monitor** and **Password is required to wake up the computer** in **Wakeup Settings** area to improve the security.
 
-#### Display capacity 
+#### Battery 
 1. On the homepage of Control Center, click ![power_normal](../common/power_normal.svg).
 2. Click **General**.
-      - Switch on **Display capacity and remaining charging time** to display remaining capacity and charging time.
-      - Switch off **Display capacity and remaining charging time** to display remaining capacity only.
+      - Switch on **Display capacity and remaining charging time** in **Battery** area to display remaining capacity and charging time(when you place the cursor over the battery icon on Tray).
+      - Switch off **Display capacity and remaining charging time** in **Battery** area to display remaining capacity only(when you place the cursor over the battery icon on Tray).
 >![notes](../common/notes.svg)Notes: This function is only available on laptops.
 
 ####  Time to Turn Off Monitor
 
 1. On the homepage of Control Center, click ![power_normal](../common/power_normal.svg).
 2. Click **Plugged In** or **On Battery**.
-3. Set the time to turn off the monitor.
+3. Set the time to turn off the monitor by dragging the slider in "Monitor will suspend after" area.
 
 > ![notes](../common/notes.svg)Notes: Laptop users can set different time for the same setting item under "Plugged In" and "On Battery".
 
@@ -1011,7 +1004,7 @@ To reduce the power consumption of your laptop, turn on power saving mode to red
 
 1. On the homepage of Control Center, click ![power_normal](../common/power_normal.svg).
 2. Click **Plugged In** and **On Battery**.
-3. Set the time to suspend.
+3. Set the time to suspend by dragging the slider in "Computer will suspend after" area.
 
 > ![tips](../common/tips.svg)Tips: For laptop users, you can select **Suspend** from the drop-down list after **When the lid is closed**.  
 
@@ -1019,7 +1012,7 @@ To reduce the power consumption of your laptop, turn on power saving mode to red
 
 1. On the homepage of Control Center, click ![power_normal](../common/power_normal.svg).
 2. Click **Plugged In** and **On Battery**.
-3. Set the time to lock screen.
+3. Set the time to lock screen by dragging the slider in "Lock screen after" area.
 
 #### Set "When the lid is closed"
 
@@ -1039,10 +1032,17 @@ Any operation done here will take effect immediately. At the same time, the syst
 #### Set "Low Battery Notification"
 
 1. On the homepage of Control Center, click ![power_normal](../common/power_normal.svg).
-2. Click **Plugged In**.
+2. Click **On Battery**.
 3. Switch on **Low Battery Notification**. The system issues a low battery notification when the remaining battery power is below a set threshold (for example, 20%).
 
 You can adjust the threshold of low battery level by dragging the slider below "Low battery level".  You can adjust the threshold of auto suspend battery level by dragging the slider below "Auto suspend battery level".
+
+>![notes](../common/notes.svg)Notes: This function is only available for laptops.
+
+#### Set "Auto suspend battery level"
+1. On the homepage of Control Center, click ![power_normal](../common/power_normal.svg).
+2. Click **On Battery**.
+3. Adjust the threshold of auto suspend battery level by dragging the slider below "Auto suspend battery level".
 
 >![notes](../common/notes.svg)Notes: This function is only available for laptops.
 
@@ -1105,7 +1105,7 @@ After connecting to the computer, you can set the pressure sensing force of the 
 3. Adjust **Pressure Sensitivity** for the pen.
 
 ### Keyboard and Language
-Set keyboard properties and select your keyboard layout to keep your typing habit. You can also adjust the keyboard layout according to the country and language, change system language, and customize shortcuts here.
+Set keyboard properties and select your keyboard layout to keep your typing habit. You can also adjust the keyboard layout according to the country and language, set up input method, change system language, and customize shortcuts here.
 
 ![0|keyboard](fig/p_keyboard.png)
 
@@ -1137,14 +1137,42 @@ You have set a keyboard layout during system installation, but you can add more 
 3. Click **Edit**.
 4. Click ![delete](../common/delete.svg) to delete keyboard layout.
 
-##### Switch Keyboard Layout
+#### Manage Input Methods
+
+Setting the input method can provide more input methods for the system. In the input method interface, you can add multiple input methods and set the shortcut keys for input method switching, so that users can choose the input method that conforms to their personal typing habits.
+
+##### Add Input Method
+
+You can add multiple input methods to the input method management list to switch input methods.
 
 1. On the homepage of Control Center, click ![keyboard_normal](../common/keyboard_normal.svg).
-2. Click **Keyboard Layout**.
-3. Click the layout you want to switch to.
-4. After successful switching, the layout will be marked with a check.
+2. Click **Manage Input Methods**.
+3. Click ![add](../common/add.svg) to:
+   - Click **Find more in App Store**, then you can download an input method in App Store. After being successfully downloaded, it will be set as the default input method by the system automatically.
+   - In "Add Input Method" page, select an input method to add it to the list.
 
-> ![tips](../common/tips.svg)Tips: You can also select one or more shortcuts to switch the keyboard layouts in order. Select **Applies to** to make the keyboard layout after switching be applied to the whole system or current application.
+>![notes](../common/notes.svg)Notes: In "Manage Input Methods" page, click **Edit**, click ![delete](../common/delete.svg) button to remove an input method. You can add the removed (but not uninstalled) input method in "Add Input Method" page.
+
+##### Sort Input Method
+
+1. On the homepage of Control Center, click ![keyboard_normal](../common/keyboard_normal.svg).
+2. Click **Manage Input Methods**.
+3. In "Manage input methods" area, drag the input method up and down or click the up and down arrows after the input method to sort them.
+
+##### Configure Input Method
+
+1. On the homepage of Control Center, click ![keyboard_normal](../common/keyboard_normal.svg).
+2. Click **Manage Input Methods**.
+3. In "Manage input methods" area, click ![set1](../common/set1.svg) button after each input method to set up configurations.
+
+##### Set Shortcut Key for Switching Input Methods
+
+1. On the homepage of Control Center, click ![keyboard_normal](../common/keyboard_normal.svg).
+2. Click **Manage Input Methods**.
+3. In "Shortcuts" area, select the shortcut key for switching input methods from the drop-down box.
+>![notes](../common/notes.svg)Notes: Once the shortcut key is set successfully, when the input method is switched, it will automatically switch to the keyboard layout corresponding to the input method. Select **Applies to** to apply the switched keyboard layout to the whole system or current application.
+
+
 
 #### System Language
 
@@ -1198,7 +1226,7 @@ The shortcut list includes all shortcuts in the system. View, modify and customi
 6. After being successfully added, click **Edit**.
 7. Click ![delete](../common/delete.svg) to delete the custom shortcut.
 
-> ![tips](../common/tips.svg)Tips: To change the shortcut, click it and press a new shortcut to change it directly. To edit the name and command of the custom shortcut, click **Edit ** > ![edit](../common/edit.svg) near the shortcut name to enter the shortcut settings.
+> ![tips](../common/tips.svg)Tips: To change the shortcut, click it and press a new shortcut to change it directly. To edit the name and command of the custom shortcut, click **Edit** > ![edit](../common/edit.svg) near the shortcut name to enter the shortcut settings.
 
 ### Assistive Tools
 
@@ -1210,26 +1238,26 @@ Desktop AI Assistant, Speech to Text, Text to Speech and Translation are availab
 
 Desktop AI Assistant  boosts your productivity by executing voice commands, such as checking the whether, creating events, etc. 
 
-- Switch on/off **Voice Wakeup**: when you switch on **Voice Wakeup**, you can check **OneShot** to enable wakeup order + semantic order, for example, "Hello, Xiaohua. What's the weather in Beijing?".
-- **Language**: Chinese-Mandarin, English
-- Switch on/off **Show in the Dock**: When it is enabled, Desktop AI Assistant will be displayed in the Dock. Otherwise, it will not be displayed but can be woken up by shortcuts.
-- **Voice Test**: Test whether the voice input is normal or not.
+   - Switch on/off **Voice Wakeup**: when you switch on **Voice Wakeup**, you can check **OneShot** to enable wakeup order + semantic order, for example, "Hello, Xiaohua. What's the weather in Beijing?".
+   - **Language**: Chinese-Mandarin, English
+   - Switch on/off **Show in the Dock**: When it is enabled, Desktop AI Assistant will be displayed in the Dock. Otherwise, it will not be displayed but can be woken up by shortcuts.
+   - **Voice Test**: Test whether the voice input is normal or not.
 
 #### Speech to Text
 
-- Speech to Text: When there is audio input device available, Speech to Text is enabled by default. Otherwise it is disabled.
-- Language: It supports both Chinese-Mandarin and English. The default language is Chinese-Mandarin.
+   - Speech to Text: When there is audio input device available, Speech to Text is enabled by default. Otherwise it is disabled.
+   - Language: It supports both Chinese-Mandarin and English. The default language is Chinese-Mandarin.
 
 #### Text to Speech
 
-- Text to Speech: When there is audio input device available, Speech to Text is enabled by default. Otherwise it is disabled and hidden.
-- Show Speech Widget: It is disabled by default and is set not to display the speech widget only but can be woken up by the shortcut.
-- Voice Gender: It is used to set the voice gender and supports male and female with female as default.
+   - Text to Speech: When there is audio input device available, Speech to Text is enabled by default. Otherwise it is disabled and hidden.
+   - Show Speech Widget: It is disabled by default and is set not to display the speech widget only but can be woken up by the shortcut.
+   - Voice Gender: It is used to set the voice gender and supports male and female with female as default.
 
 #### Translation
 
-- Translation: It is enabled by default.
-- Language: It is used to set the translation language and supports both Chinese-English and English-Chinese with Chinese-English as default.
+   - Translation: It is enabled by default.
+   - Language: It is used to set the translation language and supports both Chinese-English and English-Chinese with Chinese-English as default.
 
 ### Update Settings
 
@@ -1243,8 +1271,8 @@ When there are system updates, it will be notified on the home page of Control C
 
 1. On the homepage of Control Center, click ![update](../common/update.svg).
 2. Click **Update** to check if there is an update.
- - If there is no update, you will see "Your system is up to date".
- - If there is an update, you will see **Download and install updates** button, change log and other messages.
+   - If there is no update, you will see "Your system is up to date".
+   - If there is an update, you will see **Download and install updates** button, change log and other messages.
 3. Click **Download and install updates** to download and install updates.
 4. After updating finishes, a hint appears telling you the system is updated successfully, 
 
@@ -1360,7 +1388,7 @@ The off-line activation can be adopted when the network connection is abnormal.
 
 2. Scan the QR code with your mobile phone  and the current device ID as well as activation code are displayed in the pop-up activation interface.
 
-   ![0|activateoffline2](fig/p_activateoffline2.jpg) 
+   ![0|activateoffline2](fig/p_activateoffline2.png) 
 
 3. Click **Activate Now** and click **Confirm** in the pop-up confirmation dialogue. 
 
@@ -1378,14 +1406,36 @@ The activation success interface shows the information such as product name, ver
 
 The major information shown includes:
 
-- Product Name:  operation system name
-- Version: operation system version
-- Activation Status: including unactivated, expired and unactivated, and activated.
-- Authorization Status: including unauthorized, expired and authorized. 
-- Activation Method: it displays your actual activation method.
-- Expiration Date: From the 10th day to expiration date, the system will remind you that the authorization is about to expire.
+   - Product Name:  operation system name
+   - Version: operation system version
+   - Activation Status: including unactivated, expired and unactivated, and activated.
+   - Authorization Status: including unauthorized, expired and authorized. 
+   - Activation Method: it displays your actual activation method.
+   - Expiration Date: From the 10th day to expiration date, the system will remind you that the authorization is about to expire.
 
 ![0|activationcode3](fig/p_activationcode3.png)
+
+##### Change Serial Number
+
+When the system is activated successfully, the serial number needs to be changed for some reasons.
+
+If and only if the following conditions are met, the serial number can be changed.
+
+   - When the network status is online, changing serial number is supported. When the network status is offline, changing serial number is not supported, but activation by mobile phone code scanning is still supported.
+
+   - Changing serial number is supported only when the authorization status is activated.
+
+   - Only when the authorization mode is OPEN, the serial number can be changed.
+
+Operation steps are as follows:
+
+1. In the "View details" page, click **Change serial number**.
+2. A prompt box pops up, click **Change**.
+3. Enter the new serial number.
+4. Click **Activate Now** to change the serial number.
+
+!![notes](../common/notes.svg)Notes: the system supports changing serial number by executing the command **uos-activator-cmd -c/-C**, but it can only be changed for 3 times.
+
 
 #### Activation Failure
 
@@ -1401,7 +1451,7 @@ If the current server crashes, it is available to customize a new activation ser
 
 In order to avoid data loss or damage caused by software defects, hardware damage, improper human operation, hacker attacks, computer viruses, natural disasters and other factors, the application data or system data can be backed up and restored to ensure the normal operation of the system.
 
-![0|backuprecovery](fig/p_backupRestore.png)
+![0|backuprecovery](fig/p_backuprestore.png)
 
 #### Backup
 
@@ -1528,18 +1578,18 @@ On the desktop, press **Super** + **S** or click ![multitasking](../common/deepi
 
 On the workspace interface, you can add workspace in the following ways:
 
-- Click **+** above workspace.
-- Press **Alt** + **+** on the keyboard.
+   - Click **+** above workspace.
+   - Press **Alt** + **+** on the keyboard.
 
 > ![notes](../common/notes.svg)Notes: When the workspace number has reached its limit, you cannot add more workspaces. 
 
 ### Switch Workspace
 On the workspace interface and desktop, you can switch workspace in the following ways:
 
-- On the desktop, press  **Super**+ ![Left](../common/Left.svg) / ![Right](../common/Right.svg) to switch to Previous/Next workspace.
-- On the desktop, press  **Super** + Numeric keys (1-4)  to switch to a specified workspace.
-- On the workspace interface, scroll up or down to switch to Previous/Next workspace.
-- On the workspace interface, click the preview window or press the numeric keys (1-4) to switch to a specified workspace.
+   - On the desktop, press  **Super**+ ![Left](../common/Left.svg) / ![Right](../common/Right.svg) to switch to Previous/Next workspace.
+   - On the desktop, press  **Super** + Numeric keys (1-4)  to switch to a specified workspace.
+   - On the workspace interface, scroll up or down to switch to Previous/Next workspace.
+   - On the workspace interface, click the preview window or press the numeric keys (1-4) to switch to a specified workspace.
 
 >![notes](../common/notes.svg)Notes: On the touchpad, move with four/five fingers to the left/right to switch to the previous or next workspace, which corresponds to the operation of **Super** + **Left** or **Super** + **Right**. 
 
@@ -1547,30 +1597,30 @@ On the workspace interface and desktop, you can switch workspace in the followin
 
 After deleting a workspace, all windows in the workspace will be moved to a nearby workspace. You cannot delete the workspace when there is only one.
 
-- On the workspace interface, click the ![close](../common/close_icon.svg) to delete a workspace.
-- On the workspace interface, press **Alt** + **-** to delete a workspace.
-- Drag a workspace upward outside the screen to delete it.
+   - On the workspace interface, click the ![close](../common/close_icon.svg) to delete a workspace.
+   - On the workspace interface, press **Alt** + **-** to delete a workspace.
+   - Drag a workspace upward outside the screen to delete it.
 
 ### Exit Workspace
 After finishing the operations on the workspace interface, you can quit in the following ways:
 
-- Press **Esc**.
-- Click the blank area outside the workspace interface.
-- Press **Super** + **S** again.
+   - Press **Esc**.
+   - Click the blank area outside the workspace interface.
+   - Press **Super** + **S** again.
 
 ### View All Windows
 View all the windows in the workspaces in the following ways:
 
-- On the desktop, press **Super** + **A** on the keyboard to view the windows in all workspaces.
-- On the desktop, press **Super** + **W** to view the windows in the current workspace.
+   - On the desktop, press **Super** + **A** on the keyboard to view the windows in all workspaces.
+   - On the desktop, press **Super** + **W** to view the windows in the current workspace.
 
 #### Move Windows among Workspaces
 Move the windows to another workspace in the following ways:
 
-- On the workspace interface, drag and drop the window to the specified workspace.
-- On the desktop, press  **Super**+ **Shift** + ![Left](../common/Left.svg) / ![Right](../common/Right.svg) to move the current window to the Previous/Next workspace.
-- On the desktop, press  **Super** + **Shift** + Numeric Keys to move the current window to the workspace in the corresponding order.
-- On the desktop, press  **AIt** + **Space** or right-click the window title bar to open the window menu, and select **Always on Visible Workspace** or **Move to Workspace Left/Right** to move the current window to the specified workspace.
+   - On the workspace interface, drag and drop the window to the specified workspace.
+   - On the desktop, press  **Super**+ **Shift** + ![Left](../common/Left.svg) / ![Right](../common/Right.svg) to move the current window to the Previous/Next workspace.
+   - On the desktop, press  **Super** + **Shift** + Numeric Keys to move the current window to the workspace in the corresponding order.
+   - On the desktop, press  **AIt** + **Space** or right-click the window title bar to open the window menu, and select **Always on Visible Workspace** or **Move to Workspace Left/Right** to move the current window to the specified workspace.
 
 > ![tips](../common/tips.svg)Tips: In the window menu, you can also minimize, maximize, move, resize, top or close the window.
 
@@ -1579,22 +1629,22 @@ Switch desktop windows in the current workspace as below.
 
 #### Fast Switch between Nearby Windows
 
-- On the desktop, press  **AIt** + **Tab** at the same time and release, to switch between the current window and the nearby window quickly;
-- On the desktop, press **AIt** + **Shift** + **Tab** at the same time and release, to fast switch between current window and the nearby window reversely;
+   - On the desktop, press  **AIt** + **Tab** at the same time and release, to switch between the current window and the nearby window quickly;
+   - On the desktop, press **AIt** + **Shift** + **Tab** at the same time and release, to fast switch between current window and the nearby window reversely;
 
 #### Fast Switch between Windows of the Same Type
 
-- On the desktop, press **Alt** +  ![~](../common/~.svg)  at the same time and release, to switch between the current window and other windows of the same type quickly;
-- On the desktop, press  **AIt** + **Shift** + ![~](../common/~.svg) at the same time and release, to fast switch between current window and other windows in same type reversely;
+   - On the desktop, press **Alt** +  ![~](../common/~.svg)  at the same time and release, to switch between the current window and other windows of the same type quickly;
+   - On the desktop, press  **AIt** + **Shift** + ![~](../common/~.svg) at the same time and release, to fast switch between current window and other windows in same type reversely;
 
 #### Switch among All Windows
 
-- On the desktop, press and hold **Alt** and press **Tab** continually and it will show the right windows one by one; 
-- On the desktop, press and hold **Alt** + **Shift** and press **Tab** continually and it will show the left windows one by one.
+   - On the desktop, press and hold **Alt** and press **Tab** continually and it will show the right windows one by one; 
+   - On the desktop, press and hold **Alt** + **Shift** and press **Tab** continually and it will show the left windows one by one.
 
 #### Switch among Windows of the Same Type
-- On the desktop, press and hold **Alt** and press ![~](../common/~.svg) continually and it will show the same type of windows towards the right one by one.
-- On the desktop, press and hold **Alt** + **Shift** and press ![~](../common/~.svg) continually and it will show the same type of windows towards the left one by one.
+   - On the desktop, press and hold **Alt** and press ![~](../common/~.svg) continually and it will show the same type of windows towards the right one by one.
+   - On the desktop, press and hold **Alt** + **Shift** and press ![~](../common/~.svg) continually and it will show the same type of windows towards the left one by one.
 
 ### Split Screen
 With split screen, multiple applications and tasks are displayed simultaneously, which  improves your work and learning efficiency by not only making full use of the space of the large screen, but also reducing frequent switching between multiple application windows.
