@@ -35,7 +35,7 @@ int main(int argc, char **argv)
         {"browser", "org.deepin.browser"}, //浏览器
         {"email-client", "deepin-mail"}, //邮箱
         {"downloader", "uos-downloadmanager"}, //下载器
-        {"chinese-input-method", "uos-chineseime"}, //中文输入法
+        {"chinese-input-method", "chineseime-setting"}, //中文输入法
         {"print-manager", "dde-printer"}, //打印管理器
         {"scan-manager", "org.deepin.scanner"}, //扫描管理器
         {"device-manager", "deepin-devicemanager"}, //设备管理器
