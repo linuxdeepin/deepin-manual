@@ -197,8 +197,9 @@ QString ManualProxy::appToPath(const QString &appName)
             if (omitType.size() > 0) {
                 mdList.append(appPath + "/" + QString("%1_%2.md").arg(omitType.at(0)).arg(appNameT));
             }
-            mdList.append(appPath + "/" + QString("%1.md").arg(appNameT));
         }
+        //根据文档命名规则不带前缀文档为所有文档的兜底文档
+        mdList.append(appPath + "/" + QString("%1.md").arg(appNameT));
     }
 
 #if 1 //旧文案结构兼容
@@ -228,6 +229,8 @@ QString ManualProxy::appToPath(const QString &appName)
         ret = mdList[1];
     } else if (mdList.length() > 2 && QFile(mdList[2]).exists()) {
         ret = mdList[2];
+    } else if (mdList.length() > 3 && QFile(mdList[3]).exists()) {
+        ret = mdList[3];
     } else {
         qWarning() << Q_FUNC_INFO << " no exist file:" << appName;
     }
