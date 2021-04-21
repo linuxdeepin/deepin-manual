@@ -55,18 +55,22 @@ popd
 
 %files
 %{_bindir}/dman
-# %{_bindir}/dman-search
+%{_bindir}/dmanHelper
 %{_datadir}/applications/deepin-manual.desktop
 %{_datadir}/dbus-1/services/com.deepin.Manual.Open.service
 %{_datadir}/dbus-1/services/com.deepin.Manual.Search.service
-# %{_datadir}/deepin-manual/web_dist/index.css
-# %{_datadir}/deepin-manual/web_dist/index.html
-# %{_datadir}/deepin-manual/web_dist/index.js
-# %{_datadir}/deepin-manual/web_dist/qwebchannel.js
+%{_datadir}/deepin-manual/web_dist/toManual/index.css
+%{_datadir}/deepin-manual/web_dist/toManual/index.html
+%{_datadir}/deepin-manual/web_dist/toManual/index.js
+%{_datadir}/deepin-manual/web_dist/toManual/qwebchannel.js
+%{_datadir}/deepin-manual/web_dist/toManual/pic.svg
+%{_datadir}/deepin-manual/web_dist/toSearchMd/index.html
+%{_datadir}/deepin-manual/web_dist/toSearchMd/index.js
+%{_datadir}/deepin-manual/web_dist/toSearchMd/qwebchannel.js
 %{_datadir}/icons/hicolor/scalable/apps/deepin-manual.svg
 %{_datadir}/%{name}/translations/*.qm
 %{_datadir}/deepin-manual/manual-assets/server/*
-# %{_datadir}/deepin-manual/web_dist/pic.svg
+
 
 
 %changelog
