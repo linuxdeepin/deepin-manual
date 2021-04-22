@@ -12,15 +12,20 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
-#if (CMAKE_BUILD_TYPE MATCHES Debug)
-#  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -Wall -Werror -Wextra")
-#  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -Werror -Wextra -fno-rtti -fno-exceptions")
-#  add_definitions("-DQT_MESSAGELOGCONTEXT")
-#else()
-#  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -O2 -Wl,-O1 -Wl,--gc-sections")
-#  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -O2 -Wl,-O1 -Wl,--gc-sections")
-#  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-rtti")
-#endif()
+set(CMAKE_SAFETYTEST "${CMAKE_SAFETYTEST_ARG}")
+
+if(CMAKE_SAFETYTEST STREQUAL "")
+    set(CMAKE_SAFETYTEST "CMAKE_SAFETYTEST_ARG_OFF")
+endif()
+
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D${CMAKE_SAFETYTEST}")
+
+if(CMAKE_SAFETYTEST STREQUAL "CMAKE_SAFETYTEST_ARG_ON")
+  #安全测试选项
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -fsanitize=address -O2")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -fsanitize=address -O2")
+endif()
+
 
 find_package(PkgConfig REQUIRED)
 find_package(Qt5Core REQUIRED)

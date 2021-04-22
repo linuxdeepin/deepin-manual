@@ -1,10 +1,13 @@
 // test_main.cpp 测试入口
 
 #include <gtest/gtest.h>
-//#include <gmock/gmock-matchers.h>
 
 #include <QTest>
 #include <QApplication>
+
+#if defined(CMAKE_SAFETYTEST_ARG_ON)
+#include <sanitizer/asan_interface.h>
+#endif
 
 QT_BEGIN_NAMESPACE
 QTEST_ADD_GPU_BLACKLIST_SUPPORT_DEFS
@@ -24,5 +27,9 @@ int main(int argc, char *argv[])
     app.exec();
 #endif
     QTEST_SET_MAIN_SOURCE_PATH
+
+#ifdef CMAKE_SAFETYTEST_ARG_ON
+    __sanitizer_set_report_path("asan.log");
+#endif
     return ret;
 }
