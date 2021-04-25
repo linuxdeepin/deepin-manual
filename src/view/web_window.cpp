@@ -231,9 +231,9 @@ void WebWindow::slot_ThemeChanged()
 }
 
 /**
- * @brief WebWindow::slot_HelpSupportTriggered  服务与支持触发槽
+ * @brief WebWindow::slot_HelpSupportTriggered  服务与支持响应处理
  */
-void WebWindow::slot_HelpSupportTriggered()
+void WebWindow::HelpSupportTriggered(bool bActiontrigger)
 {
     QDBusInterface interface("com.deepin.dde.ServiceAndSupport",
                                  "/com/deepin/dde/ServiceAndSupport",
@@ -243,7 +243,11 @@ void WebWindow::slot_HelpSupportTriggered()
     //    messageConsultation = 1, //留言咨询
     //    customerChat = 2, //在线客服
     //    contentUs = 3 //联系我们
-    QDBusReply<void> reply = interface.call("ServiceSession", 0);
+    uint8_t supporttype = 0;
+    if (!bActiontrigger) {
+        supporttype = 2;
+    }
+    QDBusReply<void> reply = interface.call("ServiceSession", supporttype);
     if (reply.isValid()) {
         qDebug() << "call com.deepin.dde.ServiceAndSupport success";
     } else {
@@ -524,7 +528,7 @@ void WebWindow::initUI()
         QAction *pHelpSupport = new QAction(QObject::tr("Support"));
         pMenu->addAction(pHelpSupport);
         this->titlebar()->setMenu(pMenu);
-        connect(pHelpSupport, &QAction::triggered, this, &WebWindow::slot_HelpSupportTriggered);
+        connect(pHelpSupport, &QAction::triggered, this, [this] { this->HelpSupportTriggered(true); });
     }
     this->titlebar()->addWidget(buttonFrame, Qt::AlignLeft);
     this->titlebar()->addWidget(search_edit_, Qt::AlignCenter);
@@ -595,7 +599,7 @@ void WebWindow::initWebView()
     connect(manual_proxy_, &ManualProxy::channelInit, this, &WebWindow::onChannelFinish);
     connect(manual_proxy_, &ManualProxy::WidgetLower, this, &WebWindow::lower);
     connect(manual_proxy_, &ManualProxy::updateLabel, this, &WebWindow::slotUpdateLabel);
-    connect(manual_proxy_, &ManualProxy::supportBeClick, this, &WebWindow::slot_HelpSupportTriggered);
+    connect(manual_proxy_, &ManualProxy::supportBeClick, this, [this] { this->HelpSupportTriggered(); });
 
     //web主页html路径
     const QFileInfo info(kIndexPage);

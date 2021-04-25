@@ -104,11 +104,10 @@ TEST_F(ut_web_window_test, updatePage)
     web.updatePage(applistmd);
 }
 
-
-TEST_F(ut_web_window_test, slot_HelpSupportTriggered)
+TEST_F(ut_web_window_test, HelpSupportTriggered)
 {
     WebWindow web;
-    web.slot_HelpSupportTriggered();
+    web.HelpSupportTriggered();
 }
 
 
@@ -120,16 +119,16 @@ TEST_F(ut_web_window_test, slotUpdateLabel)
 
 TEST_F(ut_web_window_test, closeEvent)
 {
-        WebWindow web;
-        web.initUI();
-        //web.initWeb();
-        web.setFixedWidth(600);
-        web.setFixedHeight(1200);
-        web.close();
-        QSettings *setting = ConfigManager::getInstance()->getSettings();
-        setting->beginGroup(kConfigWindowInfo);
-        ASSERT_EQ(setting->value(kConfigWindowWidth), 600);
-        ASSERT_EQ(setting->value(kConfigWindowHeight), 1200);
+    WebWindow web;
+    web.initUI();
+    //web.initWeb();
+    web.setFixedWidth(600);
+    web.setFixedHeight(1200);
+    web.close();
+    QSettings *setting = ConfigManager::getInstance()->getSettings();
+    setting->beginGroup(kConfigWindowInfo);
+    ASSERT_EQ(setting->value(kConfigWindowWidth), 600);
+    ASSERT_EQ(setting->value(kConfigWindowHeight), 1200);
 }
 
 
@@ -144,20 +143,20 @@ TEST_F(ut_web_window_test, inputMethodQuery)
 
 TEST_F(ut_web_window_test, eventFilter)
 {
-        WebWindow web;
-        web.setObjectName("QMainWindowClassWindow");
-        web.initUI();
-        web.setFocus();
-        qApp->setActiveWindow(&web);
-        //web.search_edit_->lineEdit()->setFocus();
-        QTest::keyPress(&web, Qt::Key_1);
-        ASSERT_TRUE(web.search_edit_->lineEdit()->hasFocus());
+    WebWindow web;
+    web.setObjectName("QMainWindowClassWindow");
+    web.initUI();
+    web.setFocus();
+    qApp->setActiveWindow(&web);
+    //web.search_edit_->lineEdit()->setFocus();
+    QTest::keyPress(&web, Qt::Key_1);
+    ASSERT_TRUE(web.search_edit_->lineEdit()->hasFocus());
 
-        QApplication::clipboard()->setText("uos");
-        QTest::keyPress(&web, Qt::Key_V, Qt::ControlModifier);
-        ASSERT_TRUE(web.search_edit_->lineEdit()->hasFocus());
-        web.manual_proxy_ = new ManualProxy;
-        QTest::keyPress(&web, Qt::Key_Enter);
+    QApplication::clipboard()->setText("uos");
+    QTest::keyPress(&web, Qt::Key_V, Qt::ControlModifier);
+    ASSERT_TRUE(web.search_edit_->lineEdit()->hasFocus());
+    web.manual_proxy_ = new ManualProxy;
+    QTest::keyPress(&web, Qt::Key_Enter);
 }
 
 TEST_F(ut_web_window_test, onManualSearchByKeyword)
@@ -203,21 +202,21 @@ TEST_F(ut_web_window_test, saveWindowSize)
 
 TEST_F(ut_web_window_test, onSearchTextChanged)
 {
-        WebWindow web;
-        web.initUI();
-        web.onSearchTextChanged("应用");
-        usleep(200000);
-        ASSERT_FALSE(web.completion_window_->isVisible());
+    WebWindow web;
+    web.initUI();
+    web.onSearchTextChanged("应用");
+    usleep(200000);
+    ASSERT_FALSE(web.completion_window_->isVisible());
 }
 
 
 TEST_F(ut_web_window_test, onSearchTextChangedDelay)
 {
-        WebWindow web;
-        web.initUI();
-        web.search_edit_->setText("关闭应用商店");
-        web.onSearchTextChangedDelay();
-        ASSERT_EQ(web.completion_window_->keyword(), "关闭应用商店");
+    WebWindow web;
+    web.initUI();
+    web.search_edit_->setText("关闭应用商店");
+    web.onSearchTextChangedDelay();
+    ASSERT_EQ(web.completion_window_->keyword(), "关闭应用商店");
 }
 TEST_F(ut_web_window_test, onTitleBarEntered)
 {

@@ -75,7 +75,6 @@ signals:
 
 public slots:
     void slot_ThemeChanged();
-    void slot_HelpSupportTriggered();
     void slotUpdateLabel();
 
 protected:
@@ -95,6 +94,7 @@ private:
     void setSearchManager();
     void settingContextMenu();
     QRect hasWidgetRect(QWidget *);
+    void HelpSupportTriggered(bool bActiontrigger = false);
 
     QString app_name_;
     QString keyword_;
