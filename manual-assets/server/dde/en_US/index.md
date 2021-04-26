@@ -1,7 +1,7 @@
 # Desktop Environment|dde|
 
 ## Overview
-UnionTech OS(UnionTech operating system) is a beautiful, easy-to-use and reliable Linux desktop operating system. It is equipped with a series of original applications such as File Manager, App Store, Image Viewer and etc, which not only offers you abundant entertainment experience but also meet your daily needs of learning and working. With continual improvement, UnionTech OS is becoming one of the most popular open-source operating systems in China.
+UnionTech OS(UnionTech operating system) is a beautiful, easy-to-use and reliable Linux desktop operating system. It is equipped with a series of original applications such as File Manager, App Store, System Monitor and etc, which not only offers you abundant entertainment experience but also meet your daily needs of learning and working. With continual improvement, UnionTech OS is becoming one of the most popular open-source operating systems in China.
 
 ![1|desk](fig/e_desk.png)
 
@@ -17,7 +17,7 @@ Once login, you are experiencing UnionTech OS Desktop Environment, which is comp
 
 ## Desktop
 
-Desktop is the main screen you see after logging in. On the desktop, you can create a new file/folder, sort files, open in terminal, set wallpaper and screensaver and etc. You can also add shortcuts for applications  on desktop by using [Send to desktop](#Set App Shortcut).
+Desktop is the main screen you see after logging in. On the desktop, you can create a new file/folder, sort files, open in terminal, set wallpaper and screensaver and etc. You can also add shortcuts for applications  on desktop by using "Send to desktop" function, see [Set App Shortcut](#Set App Shortcut).
 
 ![0|contextmenu](fig/contextmenu.png)
 
@@ -25,8 +25,8 @@ Desktop is the main screen you see after logging in. On the desktop, you can cre
 
 Just as in File Manager, you can create a new folder/document on the desktop, or do some operations for the files on it.
 
-- Right-click the desktop, select **New folder** and enter the name for it.
-- Right-click the desktop, select **New document**, select the type and enter its name.
+   - Right-click the desktop, select **New folder** and enter the name for it.
+   - Right-click the desktop, select **New document**, select the type and enter its name.
 
 Right-click a file or folder on the desktop, and use the features of File Manager as below:
 
@@ -51,10 +51,10 @@ Sort the files on your desktop to make it organized and fit your needs.
 1. Right-click the desktop.
 2. Click **Sort by**, you can:
 
- - Click **Name** to display files in the name sequence.
- - Click **Size** to display files in the size sequence.
- - Click **Type** to display files in type.
- - Click **Time modified** to display files in the order of last modified date.
+   - Click **Name** to display files in the name sequence.
+   - Click **Size** to display files in the size sequence.
+   - Click **Type** to display files in type.
+   - Click **Time modified** to display files in the order of last modified date.
 
 
 >![tips](../common/tips.svg)Tips: Check **Auto arrange**, icons on the desktop will be listed in order automatically, and if an icon is removed, another one will fill in the blank.
@@ -185,8 +185,8 @@ Click ![notification](../common/notification.svg) in Dock to view all the notifi
 
 ### View Date and Time
 
-- Hover the cursor over the Time icon in Dock to view the current time, date and day of the week.
-- Click the Time icon to open Calendar.
+   - Hover the cursor over the Time icon in Dock to view the current time, date and day of the week.
+   - Click the Time icon to open Calendar.
 
 ### Enter Shutdown Interface
 
@@ -458,9 +458,9 @@ Expand your desktop by multiple screens! Use VGA/HDMI/EDP cable to connect your 
 1. On the homepage of Control Center, click ![display_normal](../common/display_normal.svg).
 2. Click **Multiple Displays**.
 3. Select a display mode:
-    - **Duplicate**: display the same image on other screens.
-    - **Extend**: expand the desktop across the screens.
-    - **Only on xxxx**: only display on one screen.
+   - **Duplicate**: display the same image on other screens.
+   - **Extend**: expand the desktop across the screens.
+   - **Only on xxxx**: only display on one screen.
 
 In multiple displays, press **Super** + **P** to show its OSD. 
 
@@ -483,35 +483,35 @@ If your computer has a touch screen, you can set your screen and adjust it.
 
 
 
-### Default Application Settings
-If you have installed several applications with similar functions, such as text editor, choose one of them to be the default application to open that type of file.
+### Default Applications
+If you have installed several applications with similar functions, such as text editor, choose one of them to be the Default Applications to open that type of file.
 
 ![0|default](fig/e_ccnavigation.png)
 
-#### Set Default Application
+#### Set Default Applications
 
 1. Right-click the file, choose **Open with** > **Set default program**.
 2. Select one application, **Set as default** is checked by default, and click **Confirm**.
-3. The application will automatically be added to the default application list in Control Center.
+3. The application will automatically be added to the Default Applications list in Control Center.
 
-#### Change Default Application
-
-1. On the homepage of Control Center, click ![default_applications_normal](../common/default_applications_normal.svg).
-2. Select a file type.
-3. Select another one in the list as the default application.
-
-#### Add Default Application
+#### Change Default Applications
 
 1. On the homepage of Control Center, click ![default_applications_normal](../common/default_applications_normal.svg).
 2. Select a file type.
-3. Click ![add](../common/add.svg) below to add a desktop file (usually at /usr/share/applications) or a specified binary file as the default application.
-4. The application will be added to the list and set as default application automatically. 
+3. Select another one in the list as the Default Applications.
 
-#### Delete Default Application
+#### Add Default Applications
 
-In the default application list, you can only delete the applications you added. To remove other applications from the list,  the only way is to uninstall them. Once uninstalled, they will automatically be deleted from the list.
+1. On the homepage of Control Center, click ![default_applications_normal](../common/default_applications_normal.svg).
+2. Select a file type.
+3. Click ![add](../common/add.svg) below to add a desktop file (usually at /usr/share/applications) or a specified binary file as the Default Applications.
+4. The application will be added to the list and set as Default Applications automatically. 
 
-To delete the default applications you have added, do as below:
+#### Delete Default Applications
+
+In the Default Applications list, you can only delete the applications you added. To remove other applications from the list,  the only way is to uninstall them. Once uninstalled, they will automatically be deleted from the list.
+
+To delete the Default Applicationss you have added, do as below:
 
 1. On the homepage of Control Center, click ![default_applications_normal](../common/default_applications_normal.svg).
 2. Select a file type.
@@ -825,7 +825,7 @@ You can adjust the threshold of low battery level by dragging the slider below "
 
 >![notes](../common/notes.svg)Notes: This function is only available for laptops.
 
-### Mouse
+### Mouse and Touchpad
 Mouse is a common computer input device. Using the mouse, you can make the operation easier and faster. 
 
 ![0|mouse](fig/e_mouse.png)
@@ -1144,21 +1144,15 @@ The off-line activation can be adopted when the network connection is abnormal.
 
 #### Activation Success
 
-After the system is activated successfully, the authorization management icon will not be shown in the Dock. You can check the relevant information from "Control Center > System Info > About This PC". 
-
-The activation success interface shows the information such as product name, version, etc. You can click **View Details** to view more information. 
-
-The major information shown includes:
-
+1. The major information shown in this page includes:
    - Product Name:  operation system name
    - Version: operation system version
    - Activation Status: including unactivated, expired and unactivated, and activated.
    - Authorization Status: including unauthorized, expired and authorized. 
    - Activation Method: it displays your actual activation method.
    - Expiration Date: From the 10th day to expiration date, the system will remind you that the authorization is about to expire.
-
-![0|activationcode3](fig/e_activationcode3.png)
-
+   ![0|activationcode3](fig/e_activationcode3.png)
+2. After the system is activated successfully, the authorization management icon is no longer displayed in the tray area in the lower right corner. You can view the authorization management tool through Control Center.
 
 
 ##### Change Serial Number
@@ -1180,7 +1174,7 @@ Operation steps are as follows:
 3. Enter the new serial number.
 4. Click **Activate Now** to change the serial number.
 
-![notes](../common/notes.svg)Notes: the system supports changing serial number by executing the command **uos-activator-cmd -c/-C**, but it can only be changed for 3 times.
+>![notes](../common/notes.svg)Notes: the system supports changing serial number by executing the command **uos-activator-cmd -c/-C**, but it can only be changed for 3 times.
 
 #### Activation Failure
 
@@ -1219,7 +1213,7 @@ You can backup data through either **Full Backup** or **System Backup** from Con
 
    - System Backup: When the user data is not reserved, the files of the root partition and the boot partition are backed up; when the user data is reserved, the files of the root partition, boot partition, opt partition and home partition are backed up.
 
-   >![attention](../common/attention.svg)Attention:  **Full Backup** cannot backed up files on its own disk, but can only back up files in other storage media.
+   >![attention](../common/attention.svg)Attention:  The function **Full Backup** can only back up files in other storage media instead of files on its own disk.
 
 3. Click **Back Up**, the password input box pops up, please input the password to authorize the backup file until the file backup is completed.
 
@@ -1243,11 +1237,11 @@ You can either restore all settings or manually restore the previous backup data
 2. Click **Backup and Restore** > **Restore** to select:
 
    - Restore to factory settings
-      1. You can choose to check **Keep personal files and apps** and click **Restore Now**. Click **Confirm** in the dialogue box pops up. 
-      2. Please input the password to authorize the data restoring.
+   1. You can choose to check **Keep personal files and apps** and click **Restore Now**. Click **Confirm** in the dialogue box pops up. 
+   2. Please input the password to authorize the data restoring.
    - Restore from backup files
-      1. After selecting restoring directory, click ![three_dots](fig/three_dots.png) to select the files you want to restore.
-      2. Click **Restore Now** to start system restoring.
+   1. After selecting restoring directory, click ![three_dots](fig/three_dots.png) to select the files you want to restore.
+   2. Click **Restore Now** to start system restoring.
 
 
 

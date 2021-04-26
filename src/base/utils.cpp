@@ -39,7 +39,7 @@ QString languageArr[][langCount] = {
     {"accounts", "帐户设置", "Accounts", "賬號設置", "帳戶設定"},
     {"cloudsync", "Union ID", "Union ID", "Union ID", "Union ID"},
     {"display", "显示设置", "Display", "顯示設置", "螢幕設定"},
-    {"defapp", "默认程序设置", "Default Application", "默認程序設置", "預設程式"},
+    {"defapp", "默认程序设置", "Default Applications", "默認程序設置", "預設程式"},
     {"personalization", "个性化设置", "Personalization Settings", "個性化設置", "個性化設定"},
     {"network", "网络设置", "Network Settings", "網絡設置", "網路設定"},
     {"notification", "通知设置", "Notification Settings", "通知設置", "通知設定"},
@@ -477,29 +477,24 @@ QString Utils::mkMutiDir(const QString &path)
  */
 bool Utils::judgeLoongson()
 {
-    if(cpuModeName.isEmpty())
-    {
+    if (cpuModeName.isEmpty()) {
         QProcess process;
         //获取CPU型号
         process.start("cat /proc/cpuinfo");
 
-        if(process.waitForFinished())
-        {
+        if (process.waitForFinished()) {
             QString result = process.readAllStandardOutput();
 
-            if(result.contains("Loongson"))
-            {
-                qWarning()<<"cpu mode name is loongson";
+            if (result.contains("Loongson")) {
+                qWarning() << "cpu mode name is loongson";
                 cpuModeName = "Loongson";
-            }
-            else {
+            } else {
                 cpuModeName = "other";
             }
         }
     }
 
-    if(cpuModeName.contains("Loongson"))
-    {
+    if (cpuModeName.contains("Loongson")) {
         return  true;
     }
 
