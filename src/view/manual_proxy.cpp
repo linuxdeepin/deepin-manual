@@ -152,8 +152,6 @@ bool ManualProxy::bIsLongSon()
 
 void ManualProxy::renderFinish()
 {
-    //qint64 dateTime = QDateTime::currentMSecsSinceEpoch();
-    // emit startFinish(dateTime);
 }
 
 void ManualProxy::showUpdateLabel()
@@ -203,7 +201,6 @@ QString ManualProxy::appToPath(const QString &appName)
     }
 
 #if 1 //旧文案结构兼容
-//    int nType = ;
     QString oldMdPath = assetPath;
     if (Dtk::Core::DSysInfo::DeepinServer == Dtk::Core::DSysInfo::deepinType()) {
         oldMdPath += "/server";
@@ -369,4 +366,3 @@ QString ManualProxy::getAppLocalDir(const QString &appPath)
     return AppLocalDir;
 }
 
-//bool ManualPro

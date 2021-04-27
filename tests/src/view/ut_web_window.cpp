@@ -36,6 +36,8 @@
 
 #include "../third-party/stub/stub.h"
 
+#include <QClipboard>
+
 ut_web_window_test::ut_web_window_test()
 {
 }

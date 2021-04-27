@@ -21,8 +21,10 @@
 #include "controller/config_manager.h"
 #include "base/consts.h"
 #include "../third-party/stub/stub.h"
+
 #include <QProcess>
 #include <QMutex>
+#include <QDesktopServices>
 
 ut_manual_proxy_test::ut_manual_proxy_test()
 {
@@ -64,9 +66,9 @@ TEST_F(ut_manual_proxy_test, getUsedAppList)
 
 TEST_F(ut_manual_proxy_test, hasSelperSupport)
 {
-     m_mp->hasSelperSupport();
+    m_mp->hasSelperSupport();
 
-//    ASSERT_GE(list.count(), 1);
+    //    ASSERT_GE(list.count(), 1);
 }
 
 TEST_F(ut_manual_proxy_test, setApplicationState)
@@ -108,7 +110,7 @@ TEST_F(ut_manual_proxy_test, setApplicationState)
             qDebug() << "setting->value.dde.bool->>" << setting->value(appName).toBool();
             setting->endGroup();
         }
-         delete setting;
+        delete setting;
     } else {
         QSettings *setting = new QSettings(winInfoFilePath, QSettings::IniFormat);
 
@@ -126,7 +128,7 @@ TEST_F(ut_manual_proxy_test, setApplicationState)
             qDebug() << "setting->value.dde.bool->>" << setting->value(appName).toBool();
             setting->endGroup();
         }
-         delete setting;
+        delete setting;
     }
 
 }

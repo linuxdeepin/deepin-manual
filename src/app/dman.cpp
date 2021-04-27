@@ -26,11 +26,12 @@
 #include <DApplication>
 #include <DApplicationSettings>
 #include <DPlatformWindowHandle>
+#include <DLog>
+
 #include <QDesktopWidget>
 #include <QDBusConnection>
 #include <QIcon>
-#include <DLog>
-#include <QLocale>
+
 DWIDGET_USE_NAMESPACE
 
 int main(int argc, char **argv)
@@ -52,11 +53,9 @@ int main(int argc, char **argv)
     if (!DPlatformWindowHandle::pluginVersion().isEmpty()) {
         app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings, true);
     }
-    qInfo() << QString(QLocale::system().name()) << QLocale().name();
 
     //判断龙芯 20210419
-    if(Utils::judgeLoongson())
-    {
+    if (Utils::judgeLoongson()) {
         //add by wujian 20200907 for 解决龙芯平台，QWebEngine因字体库字体太多，造成启动失败的问题
         QString strHomePath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
         QString strExeShell = QString("rm -fr %1/.cache/fontconfig").arg(strHomePath);

@@ -40,12 +40,11 @@
 #include <QWebChannel>
 #include <QWindow>
 #include <QX11Info>
-
 #include <QRegion>
 #include <QFocusEvent>
 #include <QWebEngineHistory>
 #include <QTime>
-#include "base/utils.h"
+#include <QClipboard>
 
 namespace {
 
@@ -231,7 +230,8 @@ void WebWindow::slot_ThemeChanged()
 }
 
 /**
- * @brief WebWindow::slot_HelpSupportTriggered  服务与支持响应处理
+ * @brief WebWindow::HelpSupportTriggered  服务与支持响应处理
+ * @param bActiontrigger   是否为菜单触发
  */
 void WebWindow::HelpSupportTriggered(bool bActiontrigger)
 {
@@ -848,9 +848,6 @@ void WebWindow::onTitleBarEntered()
     if (text.size() >= 1) {
         completion_window_->onEnterPressed();
     }
-    //    else if (textTemp.isEmpty()) {
-    //        m_backButton->click();
-    //    }
 }
 
 /**

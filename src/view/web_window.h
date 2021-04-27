@@ -28,7 +28,6 @@
 
 #include <QtDBus/QtDBus>
 #include <QWebEngineView>
-#include <QClipboard>
 
 DWIDGET_USE_NAMESPACE
 

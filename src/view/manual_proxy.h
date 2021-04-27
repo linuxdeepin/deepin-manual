@@ -18,8 +18,8 @@
 #ifndef DEEPIN_MANUAL_VIEW_MANUAL_PROXY_H
 #define DEEPIN_MANUAL_VIEW_MANUAL_PROXY_H
 
-#include <QDBusConnection>
-#include <QDesktopServices>
+#include <QObject>
+
 class QIconLoader;
 class ManualProxy : public QObject
 {
