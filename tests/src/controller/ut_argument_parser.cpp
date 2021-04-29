@@ -7,11 +7,17 @@
 
 #include "QCommandLineParser"
 #include <QDBusInterface>
-
+#include "../third-party/stub/stub.h"
 ut_argument_parser_test::ut_argument_parser_test()
 {
 
 }
+
+bool stubregisterServicefalse()
+{
+    return  false;
+}
+
 
 TEST_F(ut_argument_parser_test, parseArguments)
 {
@@ -21,6 +27,13 @@ TEST_F(ut_argument_parser_test, parseArguments)
     p.close();
     ArgumentParser ap;
     qDebug() << "pars eArguments.bool-->" << ap.parseArguments();
+
+    Stub st;
+    st.set((bool (QDBusConnection::*)(const QString &))ADDR(QDBusConnection, registerService), stubregisterServicefalse);
+    ap.parseArguments();
+
+    st.set((bool (QStringList::*)() const)ADDR(QStringList, isEmpty), stubregisterServicefalse);
+    ap.parseArguments();
 }
 
 TEST_F(ut_argument_parser_test, parseArguments2)

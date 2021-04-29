@@ -20,4 +20,7 @@ void ut_ManualOpenInterface::TearDown()
 
 TEST_F(ut_ManualOpenInterface, ManualOpenInterface)
 {
+    interface->Open("lancher");
+    interface->Search("lancher");
+    interface->ShowManual("lancher");
 }

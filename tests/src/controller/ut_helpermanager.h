@@ -21,6 +21,7 @@
 #include "gtest/gtest.h"
 #include <QObject>
 #include <QTest>
+#include <QWebEngineView>
 
 class helperManager;
 
@@ -33,6 +34,9 @@ public:
     virtual void SetUp() override;
     virtual void TearDown() override;
     helperManager *m_hm = nullptr;
+    QWebEnginePage* stub_page();
+    void stub_setWeb(QWebChannel * webchannel);
+    QWebChannel * webchannel = nullptr;
 
 };
 

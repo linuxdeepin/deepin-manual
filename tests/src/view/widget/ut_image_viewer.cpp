@@ -18,15 +18,20 @@
 #include "ut_image_viewer.h"
 
 #include "view/widget/image_viewer.h"
-
+#include "../../third-party/stub/stub.h"
 #include "resources/themes/images.h"
 #include <QDesktopWidget>
+#include <QImageReader>
 
 ut_image_viewer_test::ut_image_viewer_test()
 {
 
 }
 
+bool imageread()
+{
+    return  false;
+}
 
 TEST_F(ut_image_viewer_test, open)
 {
@@ -38,6 +43,12 @@ TEST_F(ut_image_viewer_test, open)
     label.setPixmap(pix);
     label.setFixedSize(pix.size());
     ASSERT_EQ(iv.img_label_->width(), label.width());
+
+     iv.open(filePath+"://");
+
+     Stub st;
+     st.set((bool (QImageReader::*)(QImage *))ADDR(QImageReader, read), imageread);
+     iv.open(filePath);
 }
 
 
@@ -74,6 +85,10 @@ TEST_F(ut_image_viewer_test, mousePressEvent)
     QTest::mouseClick(iv.window(), Qt::LeftButton);
     ASSERT_FALSE(iv.isVisible());
     ASSERT_FALSE(iv.isActiveWindow());
+    QMouseEvent *evnReleaseEnter;
+    evnReleaseEnter = new QMouseEvent( QEvent::MouseButtonRelease, QPoint(0, 0), Qt::RightButton, Qt::NoButton, Qt::NoModifier );
+    iv.mousePressEvent(evnReleaseEnter);
+    delete evnReleaseEnter;
 }
 
 

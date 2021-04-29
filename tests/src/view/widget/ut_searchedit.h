@@ -29,8 +29,7 @@ class ut_SearchEdit_test: public::testing::Test
 //    Q_OBJECT
 public:
     ut_SearchEdit_test();
-    virtual void SetUp() override;
-    virtual void TearDown() override;
+
 protected:
     SearchEdit *m_se = nullptr;
 };

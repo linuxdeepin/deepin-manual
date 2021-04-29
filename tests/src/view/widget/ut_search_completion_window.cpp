@@ -22,6 +22,7 @@
 #include "view/web_window.h"
 #include "base/utils.h"
 #include <DWindowManagerHelper>
+#include "../../third-party/stub/stub.h"
 
 
 
@@ -288,6 +289,17 @@ TEST_F(ut_search_completion_window_test, onEnterPressed)
     sw.onEnterPressed();
     ASSERT_FALSE(sw.isVisible());
 }
+
+bool stub_hasComposite()
+{
+    return false;
+}
+
+DGuiApplicationHelper::ColorType stub_themeType()
+{
+    return DGuiApplicationHelper::DarkType;
+}
+
 TEST_F(ut_search_completion_window_test, paintEvent)
 {
     SearchCompletionWindow sw;
@@ -299,6 +311,12 @@ TEST_F(ut_search_completion_window_test, paintEvent)
         ASSERT_EQ(fillColor, pa.color(DPalette::FrameBorder));
     }
 
+    Stub st;
+    st.set(ADDR(DWindowManagerHelper, hasComposite), stub_hasComposite);
+    sw.paintEvent(event);
+
+    st.set(ADDR(DGuiApplicationHelper, themeType), stub_themeType);
+    sw.paintEvent(event);
 
 
 }

@@ -23,6 +23,8 @@
 #include <QTest>
 #include <DObject>
 #include <DApplicationHelper>
+#include <QWebChannel>
+#include <QWebEnginePage>
 
 DWIDGET_USE_NAMESPACE
 
@@ -32,9 +34,17 @@ class ut_web_window_test : public ::testing::Test
 {
 public:
     explicit ut_web_window_test();
-    virtual void SetUp() override;
-    virtual void TearDown() override;
+
+    void stub_initweb();
+    bool stub_isValid();
+    void stub_setWeb(QWebChannel*);
+    QWebEnginePage* stub_page();
     WebWindow *window = nullptr;
+    DGuiApplicationHelper::ColorType stub_themeType() const;
+    QString stub_selectText() const;
+    Qt::MouseButton stub_MouseButtonBack() const;
+    Qt::MouseButton stub_MouseButtonForward() const;
+    Qt::MouseButton stub_MouseButtonMiddle() const;
 };
 
 #endif // UT_WEB_WINDOW_TEST_H

@@ -23,6 +23,8 @@
 #include <QTest>
 #include <QObject>
 #include <QTimer>
+#include <DApplicationHelper>
+#include <DSysInfo>
 
 class Utils;
 
@@ -31,6 +33,52 @@ class ut_utils_test : public QObject, public::testing::Test
     Q_OBJECT
 public:
     ut_utils_test();
+
+    static Dtk::Core::DSysInfo::DeepinType stub_deepinType()
+    {
+        return Dtk::Core::DSysInfo::DeepinServer;
+    }
+
+    static Dtk::Core::DSysInfo::DeepinType stub_deepinTypeDeepinPersonal()
+    {
+        return Dtk::Core::DSysInfo::DeepinPersonal;
+    }
+
+    static Dtk::Core::DSysInfo::DeepinType stub_deepinTypeDeepinUnknownDeepin()
+    {
+        return Dtk::Core::DSysInfo::UnknownDeepin;
+    }
+
+    static QString stub_LocalNamezh_HK()
+    {
+        return "zh_HK";
+    }
+
+    static QString stub_LocalNamezh_TW()
+    {
+        return "zh_TW";
+    }
+
+    static QString stub_LocalNameug_CN()
+    {
+        return "ug_CN";
+    }
+
+
+    static bool stub_isValid();
+
+    static bool stub_deepinTypeDeepinCommunity()
+    {
+        return true;
+    }
+
+    static QByteArray stub_readAllStandardOutput()
+    {
+        QByteArray bytes("Loongson");
+        return bytes;
+    }
+
+    bool stub_exists() const;
 
 private slots:
 

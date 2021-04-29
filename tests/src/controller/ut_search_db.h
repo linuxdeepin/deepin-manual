@@ -21,7 +21,7 @@
 
 #include "gtest/gtest.h"
 #include <QtTest>
-
+#include "src/third-party/stub/stub.h"
 class SearchDb;
 class ut_search_db_test : public ::testing::Test
 {
@@ -32,6 +32,13 @@ public:
     bool fromLocalFileBackup();
     bool fromLocalFileRestore();
     SearchDb *sd = nullptr;
+    static Stub *stt;
+
+    QVariant stub_value(int num) const;
+    QVariant stub_valueh3(int num) const;
+    QVariant stub_nextfalse(int num) const;
+    bool stub_transactionture() const;
+    QVariant stub_valuenoh0(int num) const;
 };
 
 #endif // UT_SEARCH_DB_TEST_H

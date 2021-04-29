@@ -41,13 +41,18 @@ TEST_F(ut_search_completion_listview_test, mousePressEvent)
     sv.mousePressEvent(evnPressEnter);
     ASSERT_TRUE(sv.m_bLeftMouse);
     delete evnPressEnter;
+
+    evnPressEnter = new QMouseEvent( QEvent::MouseButtonPress, QPoint(0, 0), Qt::RightButton, Qt::NoButton, Qt::NoModifier );
+    sv.mousePressEvent(evnPressEnter);
+    ASSERT_FALSE(sv.m_bLeftMouse);
+    delete evnPressEnter;
 }
 
 TEST_F(ut_search_completion_listview_test, mousePressEvent2)
 {
     SearchCompletionListView sv;
     QTest::mouseClick(sv.window(), Qt::LeftButton);
-    ASSERT_TRUE(sv.m_bLeftMouse);
+    ASSERT_FALSE(sv.m_bLeftMouse);
     QTest::mouseClick(sv.window(), Qt::RightButton);
     ASSERT_FALSE(sv.m_bLeftMouse);
 }
@@ -55,10 +60,24 @@ TEST_F(ut_search_completion_listview_test, mousePressEvent2)
 TEST_F(ut_search_completion_listview_test, setSelection)
 {
 
-    SearchCompletionListView sv;
+    SearchCompletionListView *sv = new SearchCompletionListView();
     QRect rect;
     QItemSelectionModel::SelectionFlags command;
-    sv.m_bLeftMouse = true;
-    sv.SearchCompletionListView::setSelection(rect, command);
+    sv->m_bLeftMouse = true;
+    sv->setSelection(rect, command);
+    sv->m_bLeftMouse = false;
+    sv->setSelection(rect, command);
+
+}
+
+
+TEST_F(ut_search_completion_listview_test, paintEvent)
+{
+
+    SearchCompletionListView *sv = new SearchCompletionListView();
+    QRect rect;
+    QPaintEvent *event = new QPaintEvent(rect);
+    sv->paintEvent(event);
+    delete event;
 
 }

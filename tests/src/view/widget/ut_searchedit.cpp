@@ -26,48 +26,33 @@ ut_SearchEdit_test::ut_SearchEdit_test()
 
 }
 
-void ut_SearchEdit_test::SetUp()
-{
-    if (m_se == nullptr)
-        qDebug() << "null";
-    else {
-        qDebug() << "!= null";
-    }
 
-    m_se = new SearchEdit;
-
-
-//    m_se->show();
-}
-
-void ut_SearchEdit_test::TearDown()
-{
-    delete m_se;
-}
 
 TEST_F(ut_SearchEdit_test, settext)
 {
-    m_se->setText("abc");
-    ASSERT_EQ(m_se->text(), "abc");
+    SearchEdit m_se;
+    m_se.setText("abc");
+    ASSERT_EQ(m_se.text(), "abc");
 }
 
 TEST_F(ut_SearchEdit_test, keyEvent)
 {
-    QTest::keyClick(m_se->lineEdit(), Qt::Key_Up);
-    QTest::keyClick(m_se->lineEdit(), Qt::Key_Down);
-    QTest::keyClick(m_se->lineEdit(), Qt::Key_Enter);
+    SearchEdit m_se;
+    QTest::keyClick(m_se.lineEdit(), Qt::Key_Up);
+    QTest::keyClick(m_se.lineEdit(), Qt::Key_Down);
+    QTest::keyClick(m_se.lineEdit(), Qt::Key_Enter);
 
-    QTest::keyClick(m_se->lineEdit(), Qt::Key_A);
-    qDebug() << "se.text()-->" << m_se->text();
-    ASSERT_EQ(m_se->text(), 'a');
-    QAction *clearAction = m_se->lineEdit()->findChild<QAction *>(QLatin1String("_q_qlineeditclearaction"));
+    QTest::keyClick(m_se.lineEdit(), Qt::Key_A);
+    qDebug() << "se.text()-->" << m_se.text();
+    ASSERT_EQ(m_se.text(), 'a');
+    QAction *clearAction = m_se.lineEdit()->findChild<QAction *>(QLatin1String("_q_qlineeditclearaction"));
     if (clearAction != nullptr) {
-        QList<QToolButton *> list = m_se->lineEdit()->findChildren<QToolButton *>();
+        QList<QToolButton *> list = m_se.lineEdit()->findChildren<QToolButton *>();
         for (int i = 0; i < list.count(); i++) {
             if (list.at(i)->defaultAction() == clearAction) {
                 QToolButton *clearBtn = list.at(i);
                 QTest::mouseClick(clearBtn, Qt::LeftButton);
-                ASSERT_EQ(m_se->text(), "");
+                ASSERT_EQ(m_se.text(), "");
             }
         }
     }

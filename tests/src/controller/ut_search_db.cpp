@@ -1,7 +1,7 @@
 #include "ut_search_db.h"
 
 #include "controller/search_db.h"
-#include "src/third-party/stub/stub.h"
+
 #include "base/utils.h"
 
 #include <QSqlQuery>
@@ -9,6 +9,8 @@
 #include <QFile>
 
 static int m_count = 0;
+static int m_count1 = 0;
+Stub *ut_search_db_test::stt = nullptr;
 
 ut_search_db_test::ut_search_db_test()
 {
@@ -65,6 +67,16 @@ bool stub_open()
     return true;
 }
 
+bool stub_openFalse()
+{
+    return false;
+}
+
+QString stub_mkdir(const QString & path)
+{
+    return "/detest";
+}
+
 TEST_F(ut_search_db_test, SearchDb)
 {
     Stub s;
@@ -96,6 +108,10 @@ TEST_F(ut_search_db_test, initSearchTable)
     sd->initSearchTable();
     qCritical() << "Failed to drop search table";
 
+    Stub s;
+    s.set((bool (QSqlQuery::*)(const QString &))ADDR(QSqlQuery, exec), stub_openFalse);
+    sd->initSearchTable();
+
     QString cmdCp = "cp ";
     cmdCp += DMAN_SEARCH_CREATE_DB_PATH;
     cmdCp += "/search.db ";
@@ -114,6 +130,16 @@ bool stub_exec()
     } else {
         return true;
     }
+}
+
+
+TEST_F(ut_search_db_test, initDb)
+{
+    Stub s;
+    s.set((bool (QSqlDatabase::*)())ADDR(QSqlDatabase, open), stub_openFalse);
+    sd->initDb();
+    s.set(ADDR(Utils, mkMutiDir), stub_mkdir);
+    sd->initDb();
 }
 
 TEST_F(ut_search_db_test, initSearchTable2)
@@ -166,12 +192,66 @@ TEST_F(ut_search_db_test, addSearchEntry)
                           "04seime/zh_CN/icon/onboard.svg",
                           "05>进入输入法配置页面。单击 输入法，选择中文输入法，托盘中输入法图标变为<img src=",
                           "06/usr/share/deepin-manual/manual-assets/professional/chineseime/zh_CN/icon/inputer.svg"};
+    QString mdPath = "/usr/share/deepin-manual/manual-assets/application/dde-file-manager/file-manager/zh_CN/d_file-manager.md";
+
+    Stub st;
+
 
     sd->initDb();
     sd->initSearchTable();
     sd->addSearchEntry(app_name, lang, anchors, anchorInitialList, anchorSpellList, anchorIdList, contents);
 
     this->fromLocalFileRestore();
+
+    QString app_name1 = "dde";
+    sd->addSearchEntry(app_name1, lang, anchors, anchorInitialList, anchorSpellList, anchorIdList, contents);
+
+    this->fromLocalFileRestore();
+
+    sd->addSearchEntry(app_name, lang, anchors, anchorInitialList, anchorSpellList, anchorIdList, contents, mdPath);
+
+    this->fromLocalFileRestore();
+
+    QStringList anchorIdList1 {"h0", "h0", "h0", "h0", "h0", "h0"};
+
+    sd->initDb();
+    sd->initSearchTable();
+    sd->addSearchEntry(app_name, lang, anchors, anchorInitialList, anchorSpellList, anchorIdList1, contents);
+
+    this->fromLocalFileRestore();
+
+
+    QSqlQuery ql;
+    st.set((bool (QSqlQuery::*)())ADDR(QSqlQuery, execBatch), stub_openFalse);
+
+    sd->initDb();
+    sd->initSearchTable();
+    sd->addSearchEntry(app_name, lang, anchors, anchorInitialList, anchorSpellList, anchorIdList, contents);
+
+    this->fromLocalFileRestore();
+
+
+    st.set((bool (QSqlQuery::*)())ADDR(QSqlQuery, exec), stub_openFalse);
+
+    sd->initDb();
+    sd->initSearchTable();
+    sd->addSearchEntry(app_name, lang, anchors, anchorInitialList, anchorSpellList, anchorIdList, contents);
+
+    this->fromLocalFileRestore();
+    st.reset((bool (QSqlQuery::*)())ADDR(QSqlQuery, exec));
+
+
+
+    st.set((bool (QSqlDatabase::*)())ADDR(QSqlDatabase, transaction), stub_openFalse);
+
+    sd->initDb();
+    sd->initSearchTable();
+    sd->addSearchEntry(app_name, lang, anchors, anchorInitialList, anchorSpellList, anchorIdList, contents);
+
+    this->fromLocalFileRestore();
+    st.reset((bool (QSqlQuery::*)())ADDR(QSqlQuery, exec));
+
+
 }
 
 bool stub_exec2()
@@ -184,6 +264,103 @@ TEST_F(ut_search_db_test, initTimeTable)
     st.set((bool (QSqlQuery::*)(const QString &))ADDR(QSqlQuery, exec), stub_exec2);
     sd->initTimeTable();
 }
+
+QString stub_LocalNamezh_HK()
+{
+    return "zh_HK";
+}
+
+ QString stub_LocalNamezh_TW()
+{
+    return "zh_TW";
+}
+
+QString stub_LocalNameug_CN()
+{
+    return "ug_CN";
+}
+
+QString stub_LocalNameug_eu()
+{
+    return "en_US";
+}
+
+QString stub_LocalNameug_bo_CN()
+{
+    return "bo_CN";
+}
+
+
+QVariant ut_search_db_test::stub_value(int num) const
+{
+    if(num == 3)
+    {
+        return "h0";
+    }
+
+    return "dde";
+}
+
+
+QVariant ut_search_db_test::stub_valuenoh0(int num) const
+{
+    if(num == 3)
+    {
+        return "h1";
+    }
+
+    return "dde";
+}
+
+
+QVariant ut_search_db_test::stub_nextfalse(int num) const
+{
+    if(num == 3)
+    {
+        if(m_count1 == 4)
+        {
+            delete stt;
+            stt = new Stub;
+            stt->set((bool (QSqlQuery::*)())ADDR(QSqlQuery, next), stub_exec2);
+        }
+        m_count1++;
+
+    }
+    else if(num == 0 && m_count1 == 0)
+    {
+        m_count1++;
+        return 1;
+    }
+    else if(num == 0 && m_count1 == 1)
+    {
+        m_count1++;
+        return "dde";
+    }
+    else if(num == 0 && m_count1 == 3)
+    {
+        m_count1++;
+        return "dde";
+    }
+    return 0;
+}
+
+
+bool ut_search_db_test::stub_transactionture() const
+{
+        stt->set((bool (QSqlQuery::*)())ADDR(QSqlQuery, execBatch), stub_openFalse);
+        return  true;
+}
+
+QVariant ut_search_db_test::stub_valueh3(int num) const
+{
+    if(num == 3)
+    {
+        return "h1";
+    }
+
+    return "dde";
+}
+
 
 TEST_F(ut_search_db_test, handleSearchAchor)
 {
@@ -208,9 +385,57 @@ TEST_F(ut_search_db_test, handleSearchAchor)
     sd->initDb();
     sd->initSearchTable();
     sd->addSearchEntry(app_name, lang, anchors, anchorInitialList, anchorSpellList, anchorIdList, contents);
-    sd->handleSearchAnchor("概述");
 
+    Stub s;
+    s.set(ADDR(QLocale, name), stub_LocalNameug_CN);
+    sd->handleSearchAnchor("概述");
     this->fromLocalFileRestore();
+    s.reset(ADDR(QLocale, name));
+
+    s.set(ADDR(QLocale, name), stub_LocalNameug_eu);
+    sd->handleSearchAnchor("概述");
+    this->fromLocalFileRestore();
+    s.reset(ADDR(QLocale, name));
+
+    s.set(ADDR(QLocale, name), stub_LocalNamezh_TW);
+    sd->handleSearchAnchor("概述");
+    this->fromLocalFileRestore();
+    s.reset(ADDR(QLocale, name));
+
+    s.set(ADDR(QLocale, name), stub_LocalNamezh_HK);
+    sd->handleSearchAnchor("概述");
+    this->fromLocalFileRestore();
+    s.reset(ADDR(QLocale, name));
+    s.set(ADDR(QLocale, name), stub_LocalNameug_bo_CN);
+    sd->handleSearchAnchor("概述");
+    this->fromLocalFileRestore();
+    s.reset(ADDR(QLocale, name));
+
+    m_count = 0;
+    s.set((QVariant (QSqlQuery::*)(int num) const)ADDR(QSqlQuery, value), ADDR(ut_search_db_test, stub_value));
+    s.set((bool (QSqlQuery::*)())ADDR(QSqlQuery, next), stub_exec);
+    sd->handleSearchAnchor("概述");
+    this->fromLocalFileRestore();
+    s.reset((QVariant (QSqlQuery::*)(int num) const)ADDR(QSqlQuery, value));
+    s.reset((bool (QSqlQuery::*)())ADDR(QSqlQuery, next));
+
+    m_count = 0;
+    s.set((QVariant (QSqlQuery::*)(int num) const)ADDR(QSqlQuery, value), ADDR(ut_search_db_test, stub_valuenoh0));
+    s.set((bool (QSqlQuery::*)())ADDR(QSqlQuery, next), stub_exec);
+    sd->handleSearchAnchor("概述");
+    this->fromLocalFileRestore();
+    s.reset((QVariant (QSqlQuery::*)(int num) const)ADDR(QSqlQuery, value));
+    s.reset((bool (QSqlQuery::*)())ADDR(QSqlQuery, next));
+
+    s.set((QVariant (QSqlQuery::*)(int num) const)ADDR(QSqlQuery, value), ADDR(ut_search_db_test, stub_valueh3));
+    sd->handleSearchAnchor("概述");
+    this->fromLocalFileRestore();
+    s.reset((QVariant (QSqlQuery::*)(int num) const)ADDR(QSqlQuery, value));
+
+    s.set((bool (QSqlQuery::*)(const QString &))ADDR(QSqlQuery, exec), stub_openFalse);
+    sd->handleSearchAnchor("概述");
+    this->fromLocalFileRestore();
+    s.reset((bool (QSqlQuery::*)(const QString &))ADDR(QSqlQuery, exec));
 }
 
 TEST_F(ut_search_db_test, insertHighlight)
@@ -225,6 +450,9 @@ TEST_F(ut_search_db_test, deleteSearchInfo)
     applist.append("abcd");
     QStringList applistlang;
     applistlang.append("a");
+    Stub s;
+    s.set((bool (QSqlQuery::*)())ADDR(QSqlQuery, execBatch), stub_openFalse);
+
     sd->deleteSearchInfo(applist, applistlang);
     this->fromLocalFileRestore();
 }
@@ -244,6 +472,11 @@ TEST_F(ut_search_db_test, highlightKeyword2)
     QString srcKeyword = "中文";
     QString value = "系统会预装<span class='highlight'>中文</span>输入法";
     QString tmp = sd->highlightKeyword(srcString, srcKeyword);
+    srcString = "\"><img系统会预装中文输入法.jpg>";
+    sd->highlightKeyword(srcString, srcKeyword);
+
+     srcString = "\">12344555<img系统会预装中文输入法.jpg>";
+     sd->highlightKeyword(srcString, srcKeyword);
     //    ASSERT_EQ(tmp, value);
 }
 
@@ -323,6 +556,11 @@ TEST_F(ut_search_db_test, handleSearchContent)
     sd->initSearchTable();
     sd->initTimeTable();
     sd->handleSearchContent("&");
+
+    Stub s;
+    s.set(ADDR(QLocale, name), stub_LocalNameug_CN);
+    s.set((bool (QSqlQuery::*)(const QString &))ADDR(QSqlQuery, exec), stub_openFalse);
+    sd->handleSearchContent("应用名称");
 }
 
 TEST_F(ut_search_db_test, handleSearchContent2)
@@ -353,7 +591,15 @@ TEST_F(ut_search_db_test, handleSearchContent2)
     sd->initDb();
     sd->initSearchTable();
     sd->initTimeTable();
+
+   sd->handleSearchContent("app");
+
+    stt = new Stub;
+    stt->set((bool (QSqlQuery::*)())ADDR(QSqlQuery, next), stub_open);
+    stt->set((QVariant (QSqlQuery::*)(int num) const)ADDR(QSqlQuery, value), ADDR(ut_search_db_test, stub_nextfalse));
     sd->handleSearchContent("应用名称");
+    delete stt;
+    stt = nullptr;
 
     //数据库表名恢复
     QSqlDatabase db2;
@@ -381,6 +627,20 @@ TEST_F(ut_search_db_test, insertFilesTimeEntry)
     sd->initTimeTable();
     sd->insertFilesTimeEntry(listMdPath, listDataTime);
 
+    Stub s;
+    s.set((bool (QSqlQuery::*)())ADDR(QSqlQuery, execBatch), stub_openFalse);
+    sd->insertFilesTimeEntry(listMdPath, listDataTime);
+
+    s.reset((bool (QSqlQuery::*)())ADDR(QSqlQuery, execBatch));
+    s.set((bool (QSqlDatabase::*)())ADDR(QSqlDatabase, transaction), stub_openFalse);
+    sd->insertFilesTimeEntry(listMdPath, listDataTime);
+    s.reset((bool (QSqlDatabase::*)())ADDR(QSqlDatabase, transaction));
+
+    stt = new Stub;
+    stt->set((bool (QSqlDatabase::*)())ADDR(QSqlDatabase, transaction), ADDR(ut_search_db_test, stub_transactionture));
+    sd->insertFilesTimeEntry(listMdPath, listDataTime);
+    delete stt;
+    stt = nullptr;
     this->fromLocalFileRestore();
 }
 
@@ -396,6 +656,11 @@ TEST_F(ut_search_db_test, deleteFilesTimeEntry)
 
     sd->initDb();
     sd->initTimeTable();
+    sd->insertFilesTimeEntry(listMdPath, listTime);
+    sd->deleteFilesTimeEntry(listMdPath);
+
+    Stub s;
+    s.set((bool (QSqlQuery::*)())ADDR(QSqlQuery, execBatch), stub_openFalse);
     sd->insertFilesTimeEntry(listMdPath, listTime);
     sd->deleteFilesTimeEntry(listMdPath);
 
