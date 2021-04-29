@@ -443,22 +443,16 @@ QStringList Utils::getSystemManualList()
 QString Utils::getSystemManualDir()
 {
     QString strMANUAL_DIR = DMAN_MANUAL_DIR;
-    int nType = Dtk::Core::DSysInfo::deepinType();
-    if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
+    if (Dtk::Core::DSysInfo::UosServer == Dtk::Core::DSysInfo::uosType()) {
         strMANUAL_DIR += "/server";
-    } else if (Dtk::Core::DSysInfo::DeepinPersonal == (Dtk::Core::DSysInfo::DeepinType)nType) {
+    } else if (Dtk::Core::DSysInfo::UosHome == Dtk::Core::DSysInfo::uosEditionType()) {
         strMANUAL_DIR += "/personal";
+    } else if (Dtk::Core::DSysInfo::UosEducation == Dtk::Core::DSysInfo::uosEditionType()) {
+        strMANUAL_DIR += "/education";
+    } else if (Dtk::Core::DSysInfo::UosCommunity == Dtk::Core::DSysInfo::uosEditionType()) {
+        strMANUAL_DIR += "/community";
     } else {
-        if (Dtk::Core::DSysInfo::isCommunityEdition()) {
-            strMANUAL_DIR += "/community";
-        } else {
-            strMANUAL_DIR += "/professional";
-        }
-    }
-
-    //新增教育版判断
-    if (Dtk::Core::DSysInfo::UosEducation == Dtk::Core::DSysInfo::uosEditionType()) {
-        strMANUAL_DIR = QString("%1/education").arg(DMAN_MANUAL_DIR);
+        strMANUAL_DIR += "/professional";
     }
 
     return strMANUAL_DIR;
@@ -529,11 +523,9 @@ QList<AppInfo> Utils::sortAppList(QMultiMap<qlonglong, AppInfo> map)
  */
 bool Utils::hasSelperSupport()
 {
-    int nType = Dtk::Core::DSysInfo::deepinType();
-    if (Dtk::Core::DSysInfo::DeepinProfessional == (Dtk::Core::DSysInfo::DeepinType)nType) {
+    if (Dtk::Core::DSysInfo::UosProfessional == Dtk::Core::DSysInfo::uosEditionType()) {
         const QStringList list = getSystemManualList();
         if (list.contains("uos-service-support")) {
-//            return true;
             return false;//阉割掉服务与支持
         }
     }

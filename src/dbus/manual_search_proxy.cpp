@@ -112,22 +112,16 @@ void ManualSearchProxy::OnNewWindowOpen(const QString &data)
 bool ManualSearchProxy::ManualExists(const QString &app_name)
 {
     QString strManualPath = DMAN_MANUAL_DIR;
-    int nType = Dtk::Core::DSysInfo::deepinType();
-    if (Dtk::Core::DSysInfo::DeepinServer == (Dtk::Core::DSysInfo::DeepinType)nType) {
+    if (Dtk::Core::DSysInfo::UosServer == Dtk::Core::DSysInfo::uosType()) {
         strManualPath += "/server";
-    } else if (Dtk::Core::DSysInfo::DeepinPersonal == (Dtk::Core::DSysInfo::DeepinType)nType) {
+    } else if (Dtk::Core::DSysInfo::UosHome == Dtk::Core::DSysInfo::uosEditionType()) {
         strManualPath += "/personal";
+    } else if (Dtk::Core::DSysInfo::UosEducation == Dtk::Core::DSysInfo::uosEditionType()) {
+        strManualPath += "/education";
+    } else if (Dtk::Core::DSysInfo::UosCommunity == Dtk::Core::DSysInfo::uosEditionType()) {
+        strManualPath += "/community";
     } else {
-        if (Dtk::Core::DSysInfo::isCommunityEdition()) {
-            strManualPath += "/community";
-        } else {
-            strManualPath += "/professional";
-        }
-    }
-
-    //新增教育版判断
-    if (Dtk::Core::DSysInfo::UosEducation == Dtk::Core::DSysInfo::uosEditionType()) {
-        strManualPath = QString("%1/education").arg(DMAN_MANUAL_DIR);
+        strManualPath += "/professional";
     }
 
     QDir manual_dir(strManualPath);
