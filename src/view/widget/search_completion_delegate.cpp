@@ -3,6 +3,8 @@
 
 #include <DStyleHelper>
 
+#include <QPainterPath>
+
 SearchCompletionDelegate::SearchCompletionDelegate(QAbstractItemView *parent)
     : DStyledItemDelegate(parent)
     , m_parentView(parent)
