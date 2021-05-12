@@ -498,9 +498,9 @@ class App extends React.Component {
                 document.documentElement.style.setProperty(`--search-items-word-color`, '#6D7C88');
                 document.documentElement.style.setProperty(`--search-items-resultnum-word-color`, '#6D7C88');
                 document.documentElement.style.setProperty(`--search-item-background-color`, 'rgba(255,255,255,0.05)');
-                document.documentElement.style.setProperty(`--scrollbar-div-background-color`, '#444444');
-                document.documentElement.style.setProperty(`--scrollbar-div-hover-background-color`, '#3D3D3D');
-                document.documentElement.style.setProperty(`--scrollbar-div-select-background-color`, '#303B69');
+                document.documentElement.style.setProperty(`--scrollbar-div-background-color`, 'rgba(255,255,255,0.2)');
+                document.documentElement.style.setProperty(`--scrollbar-div-hover-background-color`, 'rgba(255,255,255,0.25)');
+                document.documentElement.style.setProperty(`--scrollbar-div-select-background-color`, 'rgba(255,255,255,0.3)');
                 document.documentElement.style.setProperty(`--index-h2-color`, 'rgba(255,255,255,0.05)');
                 document.documentElement.style.setProperty(`--search-button-background-color-start`, '#484848');
                 document.documentElement.style.setProperty(`--search-button-background-color-end`, '#414141');
@@ -535,9 +535,9 @@ class App extends React.Component {
                 document.documentElement.style.setProperty(`--search-items-word-color`, '#000000');
                 document.documentElement.style.setProperty(`--search-items-resultnum-word-color`, '#8AA1B4');
                 document.documentElement.style.setProperty(`--search-item-background-color`, 'rgba(255,255,255,1)');
-                document.documentElement.style.setProperty(`--scrollbar-div-background-color`, 'rgba(83,96,118,0.4)');
-                document.documentElement.style.setProperty(`--scrollbar-div-hover-background-color`, 'rgba(83,96,118,0.5)');
-                document.documentElement.style.setProperty(`--scrollbar-div-select-background-color`, 'rgba(83,96,118,0.6)');
+                document.documentElement.style.setProperty(`--scrollbar-div-background-color`, 'rgba(0,0,0,0.3)');
+                document.documentElement.style.setProperty(`--scrollbar-div-hover-background-color`, 'rgba(0,0,0,0.5)');
+                document.documentElement.style.setProperty(`--scrollbar-div-select-background-color`, 'rgba(0,0,0,0.4)');
                 document.documentElement.style.setProperty(`--index-h2-color`, 'rgba(0, 0, 0, 0.1)');
                 document.documentElement.style.setProperty(`--search-button-background-color-start`, '#E6E6E6');
                 document.documentElement.style.setProperty(`--search-button-background-color-end`, '#E3E3E3');
