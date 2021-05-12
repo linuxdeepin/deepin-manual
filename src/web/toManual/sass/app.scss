@@ -23,7 +23,7 @@ body {
   border-radius:3px !important;
   div {
     background-color: var(--scrollbar-div-background-color) !important;
-    
+    cursor: default !important;
     &:hover {
         background-color: var(--scrollbar-div-hover-background-color) !important;
     }

@@ -17,7 +17,8 @@ body {
   width: 6px !important;
   border-radius: 3px !important; }
   .scrollbar > div:last-child div {
-    background-color: var(--scrollbar-div-background-color) !important; }
+    background-color: var(--scrollbar-div-background-color) !important;
+    cursor: default !important; }
     .scrollbar > div:last-child div:hover {
       background-color: var(--scrollbar-div-hover-background-color) !important; }
   .scrollbar > div:last-child:hover {
