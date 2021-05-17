@@ -443,6 +443,7 @@ QStringList Utils::getSystemManualList()
 QString Utils::getSystemManualDir()
 {
     QString strMANUAL_DIR = DMAN_MANUAL_DIR;
+#if (DTK_VERSION > DTK_VERSION_CHECK(5, 4, 12, 0))
     if (Dtk::Core::DSysInfo::UosServer == Dtk::Core::DSysInfo::uosType()) {
         strMANUAL_DIR += "/server";
     } else if (Dtk::Core::DSysInfo::UosHome == Dtk::Core::DSysInfo::uosEditionType()) {
@@ -454,6 +455,20 @@ QString Utils::getSystemManualDir()
     } else {
         strMANUAL_DIR += "/professional";
     }
+#else
+    Dtk::Core::DSysInfo::DeepinType nType = Dtk::Core::DSysInfo::deepinType();
+    if (Dtk::Core::DSysInfo::DeepinServer == nType) {
+        strMANUAL_DIR += "/server";
+    } else if (Dtk::Core::DSysInfo::DeepinPersonal == nType) {
+        strMANUAL_DIR += "/personal";
+    } else {
+        if (Dtk::Core::DSysInfo::isCommunityEdition()) {
+            strMANUAL_DIR += "/community";
+        } else {
+            strMANUAL_DIR += "/professional";
+        }
+    }
+#endif
 
     return strMANUAL_DIR;
 }

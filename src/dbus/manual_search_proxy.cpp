@@ -112,6 +112,7 @@ void ManualSearchProxy::OnNewWindowOpen(const QString &data)
 bool ManualSearchProxy::ManualExists(const QString &app_name)
 {
     QString strManualPath = DMAN_MANUAL_DIR;
+#if (DTK_VERSION > DTK_VERSION_CHECK(5, 4, 12, 0))
     if (Dtk::Core::DSysInfo::UosServer == Dtk::Core::DSysInfo::uosType()) {
         strManualPath += "/server";
     } else if (Dtk::Core::DSysInfo::UosHome == Dtk::Core::DSysInfo::uosEditionType()) {
@@ -123,6 +124,20 @@ bool ManualSearchProxy::ManualExists(const QString &app_name)
     } else {
         strManualPath += "/professional";
     }
+#else
+    Dtk::Core::DSysInfo::DeepinType nType = Dtk::Core::DSysInfo::deepinType();
+    if (Dtk::Core::DSysInfo::DeepinServer == nType) {
+        strManualPath += "/server";
+    } else if (Dtk::Core::DSysInfo::DeepinPersonal == nType) {
+        strManualPath += "/personal";
+    } else {
+        if (Dtk::Core::DSysInfo::isCommunityEdition()) {
+            strManualPath += "/community";
+        } else {
+            strManualPath += "/professional";
+        }
+    }
+#endif
 
     QDir manual_dir(strManualPath);
     return manual_dir.exists(app_name);
