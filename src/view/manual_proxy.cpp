@@ -217,7 +217,7 @@ QString ManualProxy::appToPath(const QString &appName)
     oldMdPath = getAppLocalDir(oldMdPath);
     mdList.append(oldMdPath.append("/index.md"));
 #endif
-    qDebug() << mdList;
+    qInfo() << mdList;
     //初始化赋值，如果为空字符，web层路径请求依旧能onload成功...
     QString ret = "error";
     if (QFile(mdList[0]).exists()) {
@@ -231,7 +231,7 @@ QString ManualProxy::appToPath(const QString &appName)
     } else {
         qWarning() << Q_FUNC_INFO << " no exist file:" << appName;
     }
-    qDebug() << "========>" << ret;
+    qInfo() << "========>" << ret;
     return ret;
 }
 
