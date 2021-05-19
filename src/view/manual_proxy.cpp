@@ -164,7 +164,7 @@ void ManualProxy::showUpdateLabel()
 //根据app名称找到对应md文件
 QString ManualProxy::appToPath(const QString &appName)
 {
-    qDebug() << __FUNCTION__ << "========>" << appName;
+    qInfo() << __FUNCTION__ << "========>" << appName;
     QStringList omitType = Utils::systemToOmit(Dtk::Core::DSysInfo::uosEditionType());
     const QString assetPath = Utils::getSystemManualDir();
     QStringList mdList;
@@ -220,7 +220,7 @@ QString ManualProxy::appToPath(const QString &appName)
     oldMdPath = getAppLocalDir(oldMdPath);
     mdList.append(oldMdPath.append("/index.md"));
 #endif
-    qDebug() << mdList;
+    qInfo() << mdList;
     //初始化赋值，如果为空字符，web层路径请求依旧能onload成功...
     QString ret = "error";
     if (QFile(mdList[0]).exists()) {
@@ -234,7 +234,7 @@ QString ManualProxy::appToPath(const QString &appName)
     } else {
         qWarning() << Q_FUNC_INFO << " no exist file:" << appName;
     }
-    qDebug() << "========>" << ret;
+    qInfo() << "========>" << ret;
     return ret;
 }
 
