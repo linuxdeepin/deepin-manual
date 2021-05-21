@@ -54,7 +54,8 @@ QString languageArr[][langCount] = {
     {"update", "系统更新", "Update Settings", "更新", "檢查更新"},
     {"systeminfo", "系统信息", "System Info", "系統訊息", "系統資訊"},
     {"License activator", "授权管理", "Authorization Management", "授權管理", "授權管理"},
-    {"commoninfo", "通用设置", "General Settings", "通用設置", "一般設定"}};
+    {"commoninfo", "通用设置", "General Settings", "通用設置", "一般設定"},
+    {"touchscreen", "触控屏设置", "Touch Screen", "觸控屏設置", "觸控屏設定"}};
 
 struct ReplyStruct {
     QString m_desktop;

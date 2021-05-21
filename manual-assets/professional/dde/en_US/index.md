@@ -580,7 +580,7 @@ Operations are as follows:
 
 If your computer has a touch screen, you can set your screen and adjust it.
 
-1. On the homepage of Control Center, click ![display_normal](../common/touchscreen.svg)to set your screen.
+1. On the homepage of Control Center, click ![display_normal](../common/touchScreen.svg)to set your screen.
 3. Click **Confirm**. 
 
 
@@ -698,7 +698,7 @@ You can also edit and add a new wired network in the setting page.
 
 Wireless network helps you surf the network without cables, which is more flexible and supports more devices.
 
-##### Connect to Wi-Fi Network
+##### Connect to WLAN Network
 
 1. On the homepage of Control Center, click ![network_normal](../common/network_normal.svg).
 2. Click **Wireless Network** to enter the setting page of wireless network.
@@ -721,7 +721,7 @@ To prevent others from scanning your network and cracking your password, you can
 
 #### Hotspot
 
-Hotspot changes the connected network signal to Wi-Fi hotspot, so that other devices nearby can connect to the hotspot and surf the Internet. To enable hotspot, your computer must connect to a network and have a wireless network adapter.
+Hotspot changes the connected network signal to WLAN hotspot, so that other devices nearby can connect to the hotspot and surf the Internet. To enable hotspot, your computer must connect to a network and have a wireless network adapter.
 
 1. On the homepage of Control Center, click ![network_normal](../common/network_normal.svg).
 2. Click **Personal Hotspot**.
@@ -877,13 +877,13 @@ Bluetooth helps you make a short-distance wireless communication between Bluetoo
 
 #### Transfer/Receive files via Bluetooth
 
-Files could be transferred / received via Bluetooth between UOS PC and non UOS PC or between UOS PC and mobile device (mobile phone / tablet).
+Files could be transferred / received via Bluetooth between UnionTech OS PC and non UnionTech OS PC or between UnionTech OS PC and mobile device (mobile phone / tablet).
 
 Prerequisite: the Bluetooth devices of both the sender and the receiver have been paired and connected successfully.
 
-**Transfer files from Bluetooth of UOS PC**
+**Transfer files from Bluetooth of UnionTech OS PC**
 
-Usage scenario: sender (UOS PC) transfers files via Bluetooth to receiver(non UOS PC / mobile phone / tablet)
+Usage scenario: sender (UnionTech OS PC) transfers files via Bluetooth to receiver(non UnionTech OS PC / mobile phone / tablet)
 
 1. On the homepage of Control Center, click ![bluetooth_normal](../common/bluetooth_normal.svg).
 2. Switch on **Bluetooth**. The system will scan Bluetooth devices nearby automatically.
@@ -892,7 +892,7 @@ Usage scenario: sender (UOS PC) transfers files via Bluetooth to receiver(non UO
 
 **Transfer files from Bluetooth of a mobile phone**
 
-Usage scenario: sender (taking android phones as an example) transfers files via Bluetooth to receiver(UOS PC)
+Usage scenario: sender (taking android phones as an example) transfers files via Bluetooth to receiver(UnionTech OS PC)
 
 1. Switch on Bluetooth. The system will scan Bluetooth devices nearby automatically.
 2. Select a paired and connected Bluetooth device.

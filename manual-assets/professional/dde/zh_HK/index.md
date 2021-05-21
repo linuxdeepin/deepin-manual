@@ -263,13 +263,13 @@
 
 | 功能                                                         | 說明                                                     |
 | ------------------------------------------------------------ | -------------------------------------------------------- |
-| 關機![poweroff_normal](../common/poweroff_normal.svg)             | 關閉電腦。                                               |
-| 重啟![reboot_normal](../common/reboot_normal.svg)                 | 關機後再次重新運行您的電腦。                             |
-| 待機![suspend_normal](../common/suspend_normal.svg)               | 整個系統將處於低能耗運轉的狀態。                         |
-| 休眠![sleep_hover](../common/sleep_hover.svg)                     | 沒有swap分區不顯示此項。有swap分區的機器休眠掛載到硬碟。 |
-| 鎖定![lock_normal](../common/lock_normal.svg)                     | 鎖定電腦，按下快捷鍵 **Super** + **L** 鎖定。            |
-| 切換使用者![userswitch_normal](../common/userswitch_normal.svg)   | 選擇另一個用戶帳戶登錄。                                 |
-| 登出![logout_normal](../common/logout_normal.svg)                 | 清除當前登錄用戶的訊息。                                 |
+| 關機![poweroff_normal](../common/poweroff_normal.svg)        | 關閉電腦。                                               |
+| 重啟![reboot_normal](../common/reboot_normal.svg)            | 關機後再次重新運行您的電腦。                             |
+| 待機![suspend_normal](../common/suspend_normal.svg)          | 整個系統將處於低能耗運轉的狀態。                         |
+| 休眠![sleep_hover](../common/sleep_hover.svg)                | 沒有swap分區不顯示此項。有swap分區的機器休眠掛載到硬碟。 |
+| 鎖定![lock_normal](../common/lock_normal.svg)                | 鎖定電腦，按下快捷鍵 **Super** + **L** 鎖定。            |
+| 切換使用者![userswitch_normal](../common/userswitch_normal.svg) | 選擇另一個用戶帳戶登錄。                                 |
+| 註銷![logout_normal](../common/logout_normal.svg)            | 清除當前登錄用戶的訊息。                                 |
 | 系統監視器![deepin-system-monitor](../common/deepin-system-monitor.svg) | 快速啟動系統監視器。                                     |
 
 
@@ -406,7 +406,7 @@
 
 ## 控制中心
 
-統信操作系統通過控制中心來管理系統的基本設置，包括帳號管理、網絡設置、日期和時間、個性化設置、顯示設置、系統升級等。當您進入桌面環境後，單擊任務欄上的 ![controlcenter](../common/controlcenter.svg) 即可打開控制中心窗口。
+統信操作系統通過控制中心來管理系統的基本設置，包括帳號管理、網絡設置、日期與時刻設置、個性化設置、顯示設置、系統升級等。當您進入桌面環境後，單擊任務欄上的 ![controlcenter](../common/controlcenter.svg) 即可打開控制中心窗口。
 
 > ![notes](../common/notes.svg)說明：在觸控板上，二指從觸控板右邊緣向左滑動，顯示控制中心；二指從觸控板左邊緣向右滑動，隱藏控制中心。
 
