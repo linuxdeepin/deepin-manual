@@ -1,4 +1,4 @@
-# 影院|..common/deepin-movie.svg|
+# 影院|../common/deepin-movie.svg|
 
 ## 概述
 
