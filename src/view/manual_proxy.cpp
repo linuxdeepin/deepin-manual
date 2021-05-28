@@ -241,7 +241,7 @@ QString ManualProxy::getAppIconPath(const QString &desktopname)
     //首次获取默认图标主题，如果获取失败默认bloom
     if (strIconTheme.isEmpty()) {
         QFile file("/usr/share/glib-2.0/schemas/com.deepin.dde.appearance.gschema.xml");
-        if (file.exists() && file.open(QIODevice::ReadWrite)) {
+        if (file.exists() && file.open(QIODevice::ReadOnly)) {
             QString strContent(file.readAll());
             strContent = Utils::regexp_label(strContent, "(icon-theme\">\n)(.*)?(['</default>])");
             strIconTheme = Utils::regexp_label(strContent, "(?<=<default>')(.*)?(?='</default>)");

@@ -63,15 +63,20 @@ WebWindow::WebWindow(QWidget *parent)
     search_timer_.setSingleShot(true);
     setAttribute(Qt::WA_InputMethodEnabled, true);
 
+    //初始化窗口
     this->initUI();
+    //初始化信号
     this->initConnections();
+    //初始化快捷键
     this->initShortcuts();
+    //初始化dbus服务
     this->initDBus();
     qApp->installEventFilter(this);
 }
 
 WebWindow::~WebWindow()
 {
+    //释放各个资源
     if (completion_window_ != nullptr) {
         delete completion_window_;
         completion_window_ = nullptr;
@@ -236,8 +241,8 @@ void WebWindow::slot_ThemeChanged()
 void WebWindow::HelpSupportTriggered(bool bActiontrigger)
 {
     QDBusInterface interface("com.deepin.dde.ServiceAndSupport",
-                                 "/com/deepin/dde/ServiceAndSupport",
-                                 "com.deepin.dde.ServiceAndSupport");
+                             "/com/deepin/dde/ServiceAndSupport",
+                             "com.deepin.dde.ServiceAndSupport");
 
     //    selfSupport = 0, //自助支持
     //    messageConsultation = 1, //留言咨询
@@ -297,17 +302,11 @@ QVariant WebWindow::inputMethodQuery(Qt::InputMethodQuery prop) const
     switch (prop) {
     case Qt::ImEnabled:
         return true;
-    case Qt::ImCursorRectangle:
     default:
-        ;
+        break;
     }
 
     return QWidget::inputMethodQuery(prop);
-}
-
-void WebWindow::resizeEvent(QResizeEvent *event)
-{
-    QWidget::resizeEvent(event);
 }
 
 
@@ -362,9 +361,10 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
     // Filters mouse press event only.
     if (event->type() == QEvent::MouseButtonPress && qApp->activeWindow() == this &&
             watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
+
         QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
-        //        this->web_view_->update();
-        if (mouseEvent->button()) {
+
+        if(nullptr != mouseEvent){
             switch (mouseEvent->button()) {
             case Qt::BackButton: {
                 qDebug() << "eventFilter back";
@@ -376,16 +376,16 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
                 emit title_bar_proxy_->forwardButtonClicked();
                 break;
             }
-            case Qt::MiddleButton: {
+            case Qt::MiddleButton:
                 return true;
-            }
-            default: {
-            }
-            }
-            if (!hasWidgetRect(search_edit_).contains(mapFromGlobal(QCursor::pos()))) {
-                completion_window_->hide();
+            default:
+                break;
             }
         }
+        if (!hasWidgetRect(search_edit_).contains(mapFromGlobal(QCursor::pos()))) {
+            completion_window_->hide();
+        }
+
     }
 
     //过滤字体改变事件
@@ -644,24 +644,12 @@ void WebWindow::initShortcuts()
     scWndReize->setContext(Qt::WindowShortcut);
     scWndReize->setAutoRepeat(false);
     connect(scWndReize, &QShortcut::activated, this, [this] {
-        if (this->windowState() & Qt::WindowMaximized)
-        {
+        if (this->windowState() & Qt::WindowMaximized){
             this->showNormal();
-        } else if (this->windowState() == Qt::WindowNoState)
-        {
+        } else if (this->windowState() == Qt::WindowNoState){
             this->showMaximized();
         }
     });
-
-//    //设置全选切换快捷键
-//    QShortcut *sCheckAll = new QShortcut(this);
-//    sCheckAll->setKey(tr("Ctrl+A"));
-//    sCheckAll->setContext(Qt::WindowShortcut);
-//    sCheckAll->setAutoRepeat(false);
-//    connect(sCheckAll, &QShortcut::activated, this, [this] {
-
-//        web_view_->setFocus();
-//    });
 
     //设置搜索快捷键  后期将支持盲打功能,故不需要此快捷键
     QShortcut *scSearch = new QShortcut(this);
@@ -680,12 +668,12 @@ void WebWindow::initDBus()
 {
     QDBusConnection senderConn = QDBusConnection::connectToBus(QDBusConnection::SessionBus, "Sender");
     if (!senderConn.connect(
-            "com.deepin.daemon.Appearance", // sender's service name
-            "/com/deepin/daemon/Appearance", // sender's path name
-            "org.freedesktop.DBus.Properties", // interface
-            "PropertiesChanged", // sender's signal name
-            this, // receiver
-            SLOT(onAppearanceChanged(QString, QMap<QString, QVariant>, QStringList)))) {
+                "com.deepin.daemon.Appearance", // sender's service name
+                "/com/deepin/daemon/Appearance", // sender's path name
+                "org.freedesktop.DBus.Properties", // interface
+                "PropertiesChanged", // sender's signal name
+                this, // receiver
+                SLOT(onAppearanceChanged(QString, QMap<QString, QVariant>, QStringList)))) {
         qDebug() << "connectToBus()::connect()  PropertiesChanged failed";
     } else {
         qDebug() << "connectToBus()::connect()  PropertiesChanged success";
@@ -715,6 +703,7 @@ void WebWindow::settingContextMenu()
         web_view_->setContextMenuPolicy(Qt::CustomContextMenu);
     });
     QMenu *menu = new QMenu(this);
+    //文案内容右键显示复制
     QAction *action = menu->addAction(QObject::tr("Copy"));
     connect(web_view_, &QWidget::customContextMenuRequested, this, [ = ]() {
         if (!web_view_->selectedText().isEmpty()) {
