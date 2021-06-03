@@ -1,7 +1,7 @@
 # Desktop Environment|dde|
 
 ## Overview
-Deepin operating system is a homegrown, easy-to-use and reliable Linux desktop operating system with exquisite visual experiences. It is equipped with a series of original applications such as File Manager, App Store, Image Viewer, Movie and many other original apps, which not only indulge you with enriched entertainments, but also serve your daily work and life. With continuous improvement and upgrades, it is becoming one of the most popular open-source operating systems in China.
+Deepin operating system is a homegrown, easy-to-use and reliable Linux desktop operating system with exquisite visual experiences. It is equipped with a series of original applications such as File Manager, App Store, System Monitor and many other original apps, which not only indulge you with enriched entertainments, but also serve your daily work and life. With continuous improvement and upgrades, it is becoming one of the most popular open-source operating systems in China.
 
 ![1|desk](fig/d_desk.png)
 
@@ -17,7 +17,7 @@ Once login, you are ready to experience deepin Desktop Environment. It is compri
 
 ## Desktop
 
-Desktop is the main screen you see after logging in. On the desktop, you can create a new file/folder, sort files, open in terminal, set wallpaper and screensaver and etc. You can also add shortcuts for applications  on desktop by using [Send to desktop](#Set App Shortcut).
+Desktop is the main screen you see after logging in. On the desktop, you can create a new file/folder, sort files, open in terminal, set wallpaper and screensaver and so on. You can also add shortcuts for applications  on desktop by using "Send to desktop" function, see [Set App Shortcut](#Set App Shortcut).
 
 ![0|contextmenu](fig/contextmenu.png)
 
@@ -47,7 +47,7 @@ Right-click a file or folder on the desktop, and use the features of File Manage
 >![notes](../common/notes.svg)Notes: 
 >   - If you are using a computer equipped with a touchscreen, long press for 1 second and release on the touchscreen.
 >   - On the touchpad, click with two fingers to display the right-click menu. 
->   - Press **Ctrl** + **M** on the keyboard to open right-click menu. 
+>   - Press **Alt** + **M** on the keyboard to open right-click menu. 
 
 ### Sort Files
 
@@ -134,8 +134,9 @@ In the Dock, there are icons of Launcher, applications, system tray, and plugins
 | ![deepin-toggle-desktop](../common/deepin-toggle-desktop.svg) | Click to show the desktop. |
 | ![deepin-multitasking-view](../common/deepin-multitasking-view.svg) | Multitasking View - click to show workspaces. |
 | ![dde-file-manager](../common/dde-file-manager.svg) | File Manager - click to view files and folders on the disk. |
+| ![uosbrowser](../common/deepin_browser.svg) | Browser- click to open webpages. |
 | ![ deepin-album](../common/deepin-album.svg) | Album - import and manage photos. |
-| ![deepin-appstore](../common/deepin-appstore.svg) | Store - search and install applications. |
+| ![deepin-appstore](../common/deepin-appstore.svg) | App Store - search and install applications. |
 | ![deepin-music](../common/deepin-music.svg) |  Music - play local songs.  |
 | ![dde-calendar](../common/dde-calendar.svg) | Calendar -  view dates and create new schedules. |
 | ![controlcenter](../common/controlcenter.svg) |   Control Center - click to check or change system settings.   |
@@ -143,7 +144,7 @@ In the Dock, there are icons of Launcher, applications, system tray, and plugins
 | ![onboard](../common/onboard.svg) | Onboard virtual keyboard. |
 | ![shutdown](../common/system-shutdown.svg) | Click to enter the shutdown interface. |
 | ![trash](../common/trash_icon.svg) | Trash. |
-&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
 > ![tips](../common/tips.svg)Tips: In Efficient Mode, you can click the right side of Dock to show the desktop. Move the cursor to the running app in the Dock and you will see its preview window.
 
 ### Switch Display Mode
@@ -246,6 +247,8 @@ In the trash, click **Empty** to permanently delete all the files in the trash.
 ## Launcher
 Launcher ![launcher](../common/deepin-launcher.svg)  helps you manage all the installed applications, where you can quickly find an application by category navigation or by a search.
 
+> ![notes](../common/notes.svg)Notes: arm architecture does not support startup menu setting for now.
+
 You can view newly installed applications in Launcher. The newly-installed ones are followed by a blue dot.
 
 >![notes](../common/notes.svg)Notes: On the touchpad, click with four/five fingers to display/hide Launcher, which corresponds to the operation of  **Super**.
@@ -287,10 +290,10 @@ Send the application icon to the desktop or Dock to facilitate the follow-up ope
 
 In Launcher, right-click an app icon and you can:
 
-* Select **Send to desktop** to create a shortcut on the desktop.
-* Select **Send to dock** to fix the application icon in Dock.
+   - Select **Send to desktop** to create a shortcut on the desktop.
+   - Select **Send to dock** to fix the application icon in Dock.
 
-![0|sendto](fig/sendto.png)
+![0|sendto](fig/d_sendto.png)
 
 > ![notes](../common/notes.svg)Notes: You can drag the application icon from Launcher to Dock. But you cannot drag and drop the application while it is running. Then you can right-click the application icon in Dock and select **Dock** to fix it in order to open it quickly for the next time.
 
@@ -299,14 +302,14 @@ Delete a shortcut from the desktop directly, or remove it from Dock or Launcher.
 
 **Remove the shortcut from Dock:**
 
-- Hold down the left key of mouse, drag and drop the icon away from Dock. 
-- You cannot drag and drop the application icon while it is running. Then you can right-click the application icon in Dock and select **Undock** to remove it from Dock.
+   - Hold down the left key of mouse, drag and drop the icon away from Dock. 
+   - You cannot drag and drop the application icon while it is running. Then you can right-click the application icon in Dock and select **Undock** to remove it from Dock.
 
 **Remove the shortcut from Launcher:**
 
 In Launcher, right-click the icon and you can:
-- Select **Remove from desktop** to delete the shortcut from the desktop.
-- Select **Remove from dock** to remove the application icon from Dock.
+   - Select **Remove from desktop** to delete the shortcut from the desktop.
+   - Select **Remove from dock** to remove the application icon from Dock.
 
 > ![notes](../common/notes.svg)Notes: The above operations only delete the shortcut rather than uninstall the applications.
 
@@ -500,39 +503,44 @@ Operations are as follows:
 1. Hold **Super** and press **P** or click to select the options. 
 2. Release the keys, the selected mode will take into effect.
 
->![notes](../common/notes.svg)Notes: When the multiple displays are in the extend mode, only the main screen supports desktop icon display, right-click menu operation and other functions, while the sub-screens do not. 
+>![notes](../common/notes.svg)Notes: In multiple display mode, the sub-screens also support desktop icon display, right-click menu operation and other functions. 
 
+### Touch Screen
 
+If your computer has a touch screen, you can set your screen and adjust it.
 
-### Default Application
-If you have installed several applications with similar functions, such as text editor, choose one of them to be the default application to open that type of file.
+1. On the homepage of Control Center, click ![display_normal](../common/touchScreen.svg)to set your screen.
+3. Click **Confirm**. 
+
+### Default Applications
+If you have installed several applications with similar functions, such as text editor, choose one of them to be the Default Applications to open that type of file.
 
 ![0|default](fig/d_ccnavigation.png)
 
-#### Set Default Application
+#### Set Default Applications
 
 1. Right-click the file, choose **Open with** > **Set default program**.
 2. Select one application, **Set as default** is checked by default, and click **Confirm**.
-3. The application will automatically be added to the default application list in Control Center.
+3. The application will automatically be added to the Default Applications list in Control Center.
 
-#### Change Default Application
-
-1. On the homepage of Control Center, click ![default_applications_normal](../common/default_applications_normal.svg).
-2. Select a file type.
-3. Select another one in the list as the default application.
-
-#### Add Default Application
+#### Change Default Applications
 
 1. On the homepage of Control Center, click ![default_applications_normal](../common/default_applications_normal.svg).
 2. Select a file type.
-3. Click ![add](../common/add.svg) below to add a desktop file (usually at /usr/share/applications) or a specified binary file as the default application.
-4. The application will be added to the list and set as default application automatically. 
+3. Select another one in the list as the Default Applications.
 
-#### Delete Default Application
+#### Add Default Applications
 
-In the default application list, you can only delete the applications you added. To remove other applications from the list,  the only way is to uninstall them. Once uninstalled, they will automatically be deleted from the list.
+1. On the homepage of Control Center, click ![default_applications_normal](../common/default_applications_normal.svg).
+2. Select a file type.
+3. Click ![add](../common/add.svg) below to add a desktop file (usually at /usr/share/applications) or a specified binary file as the Default Applications.
+4. The application will be added to the list and set as Default Applications automatically. 
 
-To delete the default applications you have added, do as below:
+#### Delete Default Applications
+
+In the Default Applications list, you can only delete the applications you added. To remove other applications from the list,  the only way is to uninstall them. Once uninstalled, they will automatically be deleted from the list.
+
+To delete the Default Applicationss you have added, do as below:
 
 1. On the homepage of Control Center, click ![default_applications_normal](../common/default_applications_normal.svg).
 2. Select a file type.
@@ -617,7 +625,7 @@ You can also edit and add a new wired network in the setting page.
 
 Wireless network helps you surf the network without cables, which is more flexible and supports more devices.
 
-##### Connect to Wi-Fi Network
+##### Connect to WLAN Network
 
 1. On the homepage of Control Center, click ![network_normal](../common/network_normal.svg).
 2. Click **Wireless Network** to enter the setting page of wireless network.
@@ -640,7 +648,7 @@ To prevent others from scanning your network and cracking your password, you can
 
 #### Hotspot
 
-Hotspot changes the connected network signal to Wi-Fi hotspot, so that other devices nearby can connect to the hotspot and surf the Internet. To enable hotspot, your computer must connect to a network and have a wireless network adapter.
+Hotspot changes the connected network signal to WLAN hotspot, so that other devices nearby can connect to the hotspot and surf the Internet. To enable hotspot, your computer must connect to a network and have a wireless network adapter.
 
 1. On the homepage of Control Center, click ![network_normal](../common/network_normal.svg).
 2. Click **Personal Hotspot**.
@@ -823,9 +831,9 @@ When the sender sends a file, a prompt window pops up in the receiver's device, 
 
    - If the receiver agrees with the request, then the sender starts to transfer the file and Bluetooth file transfer window is displayed; after the file transfer is completed, a prompt message will pop up at the the receiver, and the user can view the file content.
    - If the receiver is in the following situation, part of the file transfer fails, which will be displayed in the transmission failure list.
-      - The file transfer request is refused by the receiver, then the transfer terminates, and "File Transfer Failed" window pops up.
-      - The receiver times out or the transferring distance is beyond transmission range, and "File Transfer Failed" window pops up(Bluetooth device connection failed).
-      - The receiver does not operate for 1 minute, then the transfer terminates by default,  and "File Transfer Failed" window pops up. 
+      + The file transfer request is refused by the receiver, then the transfer terminates, and "File Transfer Failed" window pops up.
+      + The receiver times out or the transferring distance is beyond transmission range, and "File Transfer Failed" window pops up(Bluetooth device connection failed).
+      + The receiver does not operate for 1 minute, then the transfer terminates by default,  and "File Transfer Failed" window pops up. 
 
 ### Date and Time
 Set your timezone properly to have correct date and time. You can also change them manually.
@@ -864,7 +872,7 @@ Note that the auto-sync function will be disabled after changing date and time m
 4. Enter the correct date and time.
 5. Click **Confirm**.
 
-> ![notes](../common/notes.svg)Notes: You can also switch on **Auto Sync**. 
+> ![notes](../common/notes.svg)Notes: You can also switch on **Auto Sync**, and set the server sync parameters.
 
 #### Set Time Format
 
@@ -1059,14 +1067,40 @@ You have set a keyboard layout during system installation, but you can add more 
 3. Click **Edit**.
 4. Click ![delete](../common/delete.svg) to delete keyboard layout.
 
-##### Switch Keyboard Layout
+#### Manage Input Methods
+
+Setting the input method can provide more input methods for the system. In the input method interface, you can add multiple input methods and set the shortcut keys for input method switching, so that users can choose the input method that conforms to their personal typing habits.
+
+##### Add Input Method
+
+You can add multiple input methods to the input method management list to switch input methods.
 
 1. On the homepage of Control Center, click ![keyboard_normal](../common/keyboard_normal.svg).
-2. Click **Keyboard Layout**.
-3. Click the layout you want to switch to.
-4. After successful switching, the layout will be marked with a check.
+2. Click **Manage Input Methods**.
+3. Click ![add](../common/add.svg) to:
+   - Click **Find more in App Store**, then you can download an input method in App Store. After being successfully downloaded, it will be set as the default input method by the system automatically.
+   - In "Add Input Method" page, select an input method to add it to the list.
 
-> ![tips](../common/tips.svg)Tips: You can also select one or more shortcuts to switch the keyboard layouts in order. Select **Applies to** to make the keyboard layout after switching be applied to the whole system or current application.
+>![notes](../common/notes.svg)Notes: In "Manage Input Methods" page, click **Edit**, click ![delete](../common/delete.svg) button to remove an input method. You can add the removed (but not uninstalled) input method in "Add Input Method" page.
+
+##### Sort Input Method
+
+1. On the homepage of Control Center, click ![keyboard_normal](../common/keyboard_normal.svg).
+2. Click **Manage Input Methods**.
+3. In "Manage input methods" area, drag the input method up and down or click the up and down arrows after the input method to sort them.
+
+##### Configure Input Method
+
+1. On the homepage of Control Center, click ![keyboard_normal](../common/keyboard_normal.svg).
+2. Click **Manage Input Methods**.
+3. In "Manage input methods" area, click ![set1](../common/set1.svg) button after each input method to set up configurations.
+
+##### Set Shortcut Key for Switching Input Methods
+
+1. On the homepage of Control Center, click ![keyboard_normal](../common/keyboard_normal.svg).
+2. Click **Manage Input Methods**.
+3. In "Shortcuts" area, select the shortcut key for switching input methods from the drop-down box.
+>![notes](../common/notes.svg)Notes: Once the shortcut key is set successfully, when the input method is switched, it will automatically switch to the keyboard layout corresponding to the input method. Select **Applies to** to apply the switched keyboard layout to the whole system or current application.
 
 #### System Language
 
@@ -1120,7 +1154,7 @@ The shortcut list includes all shortcuts in the system. View, modify and customi
 6. After being successfully added, click **Edit**.
 7. Click ![delete](../common/delete.svg) to delete the custom shortcut.
 
-> ![tips](../common/tips.svg)Tips: To change the shortcut, click it and press a new shortcut to change it directly. To edit the name and command of the custom shortcut, click **Edit ** > ![edit](../common/edit.svg) near the shortcut name to enter the shortcut settings.
+> ![tips](../common/tips.svg)Tips: To change the shortcut, click it and press a new shortcut to change it directly. To edit the name and command of the custom shortcut, click **Edit** > ![edit](../common/edit.svg) near the shortcut name to enter the shortcut settings.
 
 
 
@@ -1159,19 +1193,24 @@ You can view system version, authorization info, hardware info, and the agreemen
 
 #### About This PC
 
-1. On the homepage of Control Center, click ![system_info_normal](../common/system_info_normal.svg).
+1. On the homepage of Control Center, click ![system_info_normal](../common/nav_info_42px.svg).
 2. Under **About This PC**, you can view system version, authorization and hardware information.
 3. If the system has not been activated, click **Activate** to activate the system.
 
 #### Edition License
 
-1. On the homepage of Control Center, click ![system_info_normal](../common/system_info_normal.svg).
+1. On the homepage of Control Center, click ![system_info_normal](../common/nav_info_42px.svg).
 2. View the system edition license under **Edition License**.
 
 #### End User License Agreement
 
-1. On the homepage of Control Center, click ![system_info_normal](../common/system_info_normal.svg).
+1. On the homepage of Control Center, click ![system_info_normal](../common/nav_info_42px.svg).
 2. View the End User License Agreement under **End User License Agreement**.
+
+#### Privacy Policy
+
+1. On the homepage of Control Center, click ![system_info_normal](../common/nav_info_42px.svg).
+2. View the Privacy Policy under **Privacy Policy**.
 
 ### Backup and Restore
 
@@ -1191,16 +1230,16 @@ If "Full Disk" is selected during system installation, a recovery partition woul
 
 You can backup data through either **Full Backup** or **System Backup** from Control Center.
 
-1. On the homepage of Control Center, click ![system_info_normal](../common/system_info_normal.svg).
+1. On the homepage of Control Center, click ![system_info_normal](../common/nav_info_42px.svg).
 
 2. Select **Backup and Restore** > **Backup** to set the backup type and save the path of files backed up.
-   Backup Type: Full Backup and System Backup
-
-   - Full Backup: to back up system files and user files of the whole disk
-
-   - System Backup: When the user data is not reserved, the files of the root partition and the boot partition are backed up; when the user data is reserved, the files of the root partition, boot partition, opt partition and home partition are backed up.
-
-   > ![notes](../common/notes.svg)Notes: in **Full Backup** mode, you cannot back up files into local disks, but you can only back up files into other storage media.
+   - Backup Type: Full Backup and System Backup
+      + Full Backup: to back up system files and user files of the whole disk
+      + System Backup: When the user data is not reserved, the files of the root partition and the boot partition are backed up; when the user data is reserved, the files of the root partition, boot partition, opt partition and home partition are backed up.
+   - Saving Method: New Backup and System Incremental Backup
+     
+   
+> ![notes](../common/notes.svg)Notes: in **Full Backup** mode, you cannot back up files into local disks, but you can only back up files into other storage media.
 
 3. Click **Back Up**, the password input box pops up, please input the password to authorize the backup file until the file backup is completed.
 
@@ -1220,15 +1259,14 @@ During system startup, in the system selection interface, click **Deepin Restore
 
 You can either restore all settings or manually restore the previous backup data.
 
-1. On the homepage of Control Center, click ![system_info_normal](../common/system_info_normal.svg).
+1. On the homepage of Control Center, click ![system_info_normal](../common/nav_info_42px.svg).
 2. Click **Backup and Restore** > **Restore** to select:
-
    - Restore to factory settings
-     1. You can choose to check **Keep personal files and apps** and click **Restore Now**. Click **Confirm** in the dialogue box pops up. 
-     2. Please input the password to authorize the data restoring.
+      1. You can choose to check **Keep personal files and apps** and click **Restore Now**. Click **Confirm** in the dialogue box pops up. 
+      2. Please input the password to authorize the data restoring.
    - Restore from backup files
-     1. After selecting restoring directory, click ![three_dots](fig/three_dots.png) to select the files you want to restore.
-     2. Click **Restore Now** to start system restoring.
+      1. After selecting restoring directory, click ![three_dots](fig/three_dots.png) to select the files you want to restore.
+      2. Click **Restore Now** to start system restoring.
 
 
 
@@ -1261,15 +1299,6 @@ When there is only one system in the computer, Startup Delay will be switched of
 > ![tips](../common/tips.svg)Tips: You can drag and drop an image to the preview window to change the background of boot menu.
 
 
-
-
-
-#### User Experience Program
-User Experience Program collects your hardware, application and system information and help us better understand the user needs and thus improve user experiences. To have a better operating system, you are recommended to join the User Experience Program. And you are free to join and exit the program anytime.
-
-1. On the homepage of Control Center, click ![general](../common/general.svg).
-2. Switch on **User Experience Program**, and read the privacy policy.
-3. If you agree, check **Agree and Join User Experience Program**, and **Confirm**.
 
 ## Window Manager
 Window Manager can display different window contents in different workspaces. With the Window Manager, you can use multiple desktops at the same time to manage desktop windows in groups.

@@ -2,7 +2,7 @@
 
 ## 概述
 
-深之度操作系統（簡稱「deepin」）是一款美觀易用、安全可靠的國產桌面操作系統。deepin預裝了檔案管理員、應用商店、看圖、影院等一系列原生應用。它既能讓您體驗到豐富多彩的娛樂生活，也可以滿足您的日常工作需要。隨着功能的不斷升級和完善，深之度操作系統已成為國內最受歡迎的桌面操作系統之一。
+深之度操作系統（簡稱「deepin」）是一款美觀易用、安全可靠的國產桌面操作系統。deepin預裝了檔案管理員、應用商店、看圖、系統監視器等一系列原生應用。它既能讓您體驗到豐富多彩的娛樂生活，也可以滿足您的日常工作需要。隨着功能的不斷升級和完善，深之度操作系統已成為國內最受歡迎的桌面操作系統之一。
 
 ![1|desk](fig/d_desk.jpg)
 
@@ -46,7 +46,7 @@
 > ![notes](../common/notes.svg)說明：
 > - 當使用觸控螢幕電腦時，在觸摸屏上長按1秒再抬起即打開當前對象的右鍵菜單。
 > - 在觸控板上，二指單擊，顯示右鍵菜單。
-> - 在鍵盤上按下 **Ctrl** + **M** 快捷鍵，打開右鍵菜單。
+> - 在鍵盤上按下 **Alt** + **M** 快捷鍵，打開右鍵菜單。
 
 ### 設置排列方式
 
@@ -130,14 +130,21 @@
 
 ![1|fashion](fig/d_efficient.png)
 
-| 圖標 | 說明 | 圖標 | 說明 |
-| ------------------------------------------------------------ | :---------------------------------- | -------------------------------------------------------- | --------------------------------------------------- |
-| ![launcher](../common/deepin-launcher.svg)                        | 啟動器 - 單擊查看所有已安裝的應用。 | ![deepin-toggle-desktop](../common/deepin-toggle-desktop.svg) | 顯示桌面。                                          |
-| ![deepin-multitasking-view](../common/deepin-multitasking-view.svg) | 多任務視圖 - 單擊顯示工作區。     | ![dde-file-manager](../common/dde-file-manager.svg)           | 檔案管理員 - 單擊查看磁盤中的文檔、文件夾。 |
-| ![deepin-appstore](../common/deepin-appstore.svg) | 應用商店 - 搜索安裝應用軟件。 | ![ deepin-album](../common/deepin-album.svg) | 相冊 - 導入並管理照片。            |
-| ![deepin-music](../common/deepin-music.svg) | 音樂 - 播放本地音樂。 | ![dde-calendar](../common/dde-calendar.svg) | 日曆 - 查看日期、新建日程。                |
-| ![controlcenter](../common/controlcenter.svg)                     | 控制中心 - 單擊進入系統設置。     | ![notification](../common/notification.svg)                   | 通知中心 - 顯示所有系統和應用的通知。               |
-| ![onboard](../common/onboard.svg)   | 螢幕鍵盤 - 單擊使用虛擬鍵盤。 |![shutdown](../common/system-shutdown.svg) | 電源 - 單擊進入關機界面。 |
+| 圖標 | 說明 |
+| ------------------------------------------------------------ | :---------------------------------- |
+| ![launcher](../common/deepin-launcher.svg)                        | 啟動器 - 單擊查看所有已安裝的應用。 |
+| ![deepin-toggle-desktop](../common/deepin-toggle-desktop.svg) | 顯示桌面。                                          |
+| ![deepin-multitasking-view](../common/deepin-multitasking-view.svg) | 多任務視圖 - 單擊顯示工作區。     |
+| ![dde-file-manager](../common/dde-file-manager.svg)           | 檔案管理員 - 單擊查看磁盤中的文檔、文件夾。 |
+| ![ org.deepin.browser](../common/org.deepin.browser.svg)| 瀏覽器 - 單擊打開網頁。 |
+| ![deepin-appstore](../common/deepin-appstore.svg) | 應用商店 - 搜索安裝應用軟件。 |
+| ![ deepin-album](../common/deepin-album.svg) | 相冊 - 導入並管理照片。          |
+| ![deepin-music](../common/deepin-music.svg) | 音樂 - 播放本地音樂。 |
+| ![dde-calendar](../common/dde-calendar.svg) | 日曆 - 查看日期、新建日程。                |
+| ![controlcenter](../common/controlcenter.svg)                     | 控制中心 - 單擊進入系統設置。     |
+| ![notification](../common/notification.svg)                   | 通知中心 - 顯示所有系統和應用的通知。               |
+| ![onboard](../common/onboard.svg)   | 螢幕鍵盤 - 單擊使用虛擬鍵盤。 |
+|![shutdown](../common/system-shutdown.svg) | 電源 - 單擊進入關機界面。 |
 | ![trash](../common/trash_icon.svg) | 回收站。      |                             |                                             |
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
@@ -302,7 +309,7 @@
 
 - 單擊 **傳送到任務欄**，將應用固定到任務欄。
 
-![0|sendto](fig/sendto.png)
+![0|sendto](fig/d_sendto.png)
 
 > ![notes](../common/notes.svg) 說明：您還可以從啟動器拖拽應用圖標到任務欄上放置。但是當應用處於運行狀態時您將無法拖拽固定，此時您可以右鍵單擊任務欄上的應用圖標，選擇 **駐留** 將應用固定到任務欄，以便下次使用時從任務欄上快速打開。
 
@@ -352,7 +359,7 @@
 
 ## 控制中心
 
-深之度操作系統通過控制中心來管理系統的基本設置，包括帳號管理、網絡設置、日期和時間、個性化設置、顯示設置、系統升級等。當您進入桌面環境後，單擊任務欄上的 ![controlcenter](../common/controlcenter.svg) 即可打開控制中心窗口。
+深之度操作系統通過控制中心來管理系統的基本設置，包括帳號管理、網絡設置、日期與時刻設置、個性化設置、顯示設置、系統升級等。當您進入桌面環境後，單擊任務欄上的 ![controlcenter](../common/controlcenter.svg) 即可打開控制中心窗口。
 
 > ![notes](../common/notes.svg)說明：在觸控板上，二指從觸控板右邊緣向左滑動，顯示控制中心；二指從觸控板左邊緣向右滑動，隱藏控制中心。
 
@@ -545,6 +552,13 @@
 
 > ![notes](../common/notes.svg) 說明：當多螢幕顯示模式為延伸模式時，僅主螢幕支持桌面圖標顯示、操作右鍵菜單等功能，而副螢幕不支持。
 
+### 觸控屏設置
+
+當接入觸控屏時，您可以設置所在螢幕，並對其進行調整。
+
+1. 在控制中心首頁，單擊 ![display_normal](../common/touchScreen.svg)。
+2. 並對螢幕進行設置後，單擊 **確定**。
+
 ### 默認程序設置
 
 當安裝有多個功能相似的應用程序時，可以通過右鍵菜單或控制中心為某種類型的文件指定其中的一個應用作為打開文件的默認啟動程序。
@@ -682,7 +696,7 @@
 
 ##### 連接隱藏網絡
 
-為了防止他人掃描到自己的WiFi，進而破解WiFi密碼連接您的網絡，您可以在路由器設置界面隱藏無線網絡。設置後，您需要手動連接隱藏網絡才能上網。
+為了防止他人掃描到自己的無線網絡，進而破解無線網絡密碼連接您的網絡，您可以在路由器設置界面隱藏無線網絡。設置後，您需要手動連接隱藏網絡才能上網。
 
 1. 在控制中心首頁，單擊 ![network_normal](../common/network_normal.svg)。
 2. 單擊 **無線網絡**，進入無線網絡設置界面。
@@ -692,7 +706,7 @@
 
 #### 無線熱點
 
-無線熱點將電腦連接的網絡信號轉換為WiFi熱點，以供一定距離內的其他設備無線上網。要開啟無線熱點，電腦必須連接到網絡並裝有無線網卡。
+無線熱點將電腦連接的網絡信號轉換為無線網絡熱點，以供一定距離內的其他設備無線上網。要開啟無線熱點，電腦必須連接到網絡並裝有無線網卡。
 
 1. 在控制中心首頁，單擊 ![network_normal](../common/network_normal.svg)。
 2. 單擊 **個人熱點**。
@@ -920,13 +934,13 @@ Deepin PC與非Deepin PC或者Deepin PC與移動設備（手機/平板）之間�
 4. 手動設置正確的時間和日期。
 5. 單擊 **確定**。
 
-> ![notes](../common/notes.svg)說明：您還可以打開 **自動同步配置**。
+> ![notes](../common/notes.svg)說明：您還可以打開 **自動同步配置**、設置伺服器同步參數。。
 
 #### 設置時間日期格式
 
 系統支持即時設置時間日期的格式。
 
-1. 在控制中心首頁，單擊 ![time](../common//time.svg)。
+1. 在控制中心首頁，單擊 ![time](../common/time.svg)。
 2. 單擊 **格式設置**，可以設置星期、長短日期、長短時間等格式。
 
 ### 電源管理
@@ -1131,14 +1145,42 @@ Deepin PC與非Deepin PC或者Deepin PC與移動設備（手機/平板）之間�
 3. 單擊 **鍵盤佈局** 後的 **更改**。
 4. 單擊 ![delete](../common/delete.svg)，刪除該鍵盤佈局。
 
-##### 切換鍵盤佈局
+
+#### 輸入法
+
+對輸入法進行設置，可以為系統提供更豐富的輸入方式。在輸入法界面可以添加多個輸入法，設置輸入法切換的快捷鍵，以便用戶選擇符合個人打字習慣的輸入方式。
+
+##### 添加輸入法
+
+您可以添加多個輸入法到輸入法管理列表，以便切換輸入法。
 
 1. 在控制中心首頁，單擊 ![keyboard_normal](../common/keyboard_normal.svg)。
-2. 單擊 **鍵盤佈局**，進入鍵盤佈局界面。
-3. 選擇一個鍵盤佈局進行切換。
-4. 切換成功後，該鍵盤佈局將標記為已選擇。
+2. 單擊 **輸入法**，進入輸入法界面。
+3. 單擊 **添加** 按鈕 ![add](../common/add.svg) ，您可以：
+   - 單擊 **前往商店下載**，在應用商店下載輸入法，當該輸入法下載完成後，系統自動設置其為默認輸入法。
+   - 進入添加輸入法界面，選擇輸入法，將該輸入法添加到輸入法管理列表。
 
-> ![tips](../common/tips.svg) 竅門：您也可以選擇一組或多組快捷鍵，按順序切換已添加的鍵盤佈局。選擇 **切換方式**，讓切換後的鍵盤佈局應用於整個系統或當前應用。
+> ![notes](../common/notes.svg)說明： 在輸入法管理界面，單擊 **編輯**，單擊 **刪除** 按鈕![delete](../common/delete.svg)即可移除某輸入法。對於被移除（非卸載）的輸入法，可以在添加輸入法界面進行添加。
+
+##### 設置輸入法排序
+
+1. 在控制中心首頁，單擊 ![keyboard_normal](../common/keyboard_normal.svg)。
+2. 單擊 **輸入法**，進入輸入法界面。
+3. 在輸入法管理區域，上下拖動輸入法或單擊輸入法後面的上下箭頭，進行排序。
+
+##### 設置輸入法配置項
+
+1. 在控制中心首頁，單擊 ![keyboard_normal](../common/keyboard_normal.svg)。
+2. 單擊 **輸入法**，進入輸入法界面。
+3. 在輸入法管理區域，單擊輸入法後面的 **設置** 按鈕 ![set1](../common/set1.svg)，設置輸入法自身的配置項。
+
+##### 設置輸入法切換快捷鍵
+
+1. 在控制中心首頁，單擊 ![keyboard_normal](../common/keyboard_normal.svg)。
+2. 單擊 **輸入法**，進入輸入法界面。
+3. 在快捷鍵區域，切換輸入法下拉框中，選擇輸入法切換的快捷鍵。
+
+> ![notes](../common/notes.svg)說明：輸入法切換快捷鍵設置成功後，當切換輸入法，自動切換為輸入法對應的鍵盤佈局。選擇 **切換方式**， 讓切換後的鍵盤佈局應用於整個系統或當前應用。
 
 #### 系統語言
 
@@ -1236,19 +1278,23 @@ Deepin PC與非Deepin PC或者Deepin PC與移動設備（手機/平板）之間�
 
 #### 關於本機
 
-1. 在控制中心首頁，單擊 ![system_info_normal](../common/system_info_normal.svg)。
+1. 在控制中心首頁，單擊 ![system_info_normal](../common/nav_info_42px.svg)。
 2. 在 **關於本機** 下，您可以查看當前系統版本、版本授權及電腦硬件訊息。
-3. 若系統未啟動，可在此頁面單擊 **啟動**，進行系統啟動。
 
 #### 版本協議
 
-1. 在控制中心首頁，單擊 ![system_info_normal](../common/system_info_normal.svg)。
+1. 在控制中心首頁，單擊 ![system_info_normal](../common/nav_info_42px.svg)。
 2. 在 **版本協議** 下，查看系統版本協議。
 
 #### 最終用戶許可協議
 
-1. 在控制中心首頁，單擊 ![system_info_normal](../common/system_info_normal.svg)。
+1. 在控制中心首頁，單擊 ![system_info_normal](../common/nav_info_42px.svg)。
 2. 在 **最終用戶許可協議** 下，查看最終用戶許可協議。
+
+#### 私隱政策
+
+1. 在控制中心首頁，單擊 ![system_info_normal](../common/nav_info_42px.svg)。
+2. 在 **私隱政策** 下，查看私隱政策。
 
 ### 備份還原
 
@@ -1268,11 +1314,12 @@ deepin提供初始化備份、控制中心備份的備份方式。
 
 在控制中心，用戶可以通過全盤備份或系統備份來備份數據。
 
-1. 在控制中心首頁，單擊 ![system_info_normal](../common/system_info_normal.svg)。
+1. 在控制中心首頁，單擊 ![system_info_normal](../common/nav_info_42px.svg)。
 2. 選擇 **備份/還原** > **備份**，設置備份模式和備份文檔的保存路徑。
-   備份模式：全盤備份、系統備份
-   - 全盤備份：備份全磁盤的系統文檔和用戶文檔
-   - 系統備份：備份根分區、啟動分區
+   - 備份模式：全盤備份、系統備份
+      - 全盤備份：備份全磁盤的系統文檔和用戶文檔
+      - 系統備份：備份根分區、啟動分區
+   - 保存方式：新增備份、系統增量備份
 
    > ![notes](../common/notes.svg)說明：全盤備份無法備份在自己本身的磁盤裏，只能備份在其他存儲介質中。
 
@@ -1292,7 +1339,7 @@ deepin支持從Grub、控制中心進行數據還原。
 
 用戶既可以恢復出廠設置，也可以自定義恢復還原前期備份的數據。
 
-1. 在控制中心首頁，單擊 ![system_info_normal](../common/system_info_normal.svg)。
+1. 在控制中心首頁，單擊 ![system_info_normal](../common/nav_info_42px.svg)。
 2. 選擇 **備份/還原** > **還原**，您可以選擇：
 
    - 恢復出廠設置
@@ -1331,14 +1378,6 @@ deepin支持從Grub、控制中心進行數據還原。
 3. 開啟 **主題**，使用該主題為啟動菜單的背景。
 
 > ![tips](../common/tips.svg) 竅門：您也可以把圖片拖拽到預覽窗口，來更換啟動菜單的背景。
-
-#### 用戶體驗計劃
-用戶體驗計劃會收集用戶的硬件訊息、應用訊息和系統訊息，收集到的訊息方便研發團隊改善用戶最常使用的功能，並幫助解決軟件操作過程遇到的問題，從而更好地滿足用戶的需求、提升用戶體驗。
-為了更好地使用該系統，建議用戶開啟用戶體驗計劃，該計劃可以隨時參與或退出。
-
-1. 在控制中心首頁，單擊 ![general](../common/general.svg)。
-2. 打開 **用戶體驗計劃** 開關，了解私隱協議。
-3. 若同意，勾選 **同意並加入用戶體驗計劃**，單擊 **確定**。
 
 ## 窗口管理器
 
