@@ -27,6 +27,8 @@
 
 int main(int argc, char **argv)
 {
+    //欧拉版root用户登录时会报no-sandbox错误的问题,增加此参数后使qtwebengine进程与主进程合并
+    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--single-process");
     QApplication app(argc, argv);
 
 //    qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "7777");
