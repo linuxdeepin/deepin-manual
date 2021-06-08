@@ -317,7 +317,10 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
             }
         } else if (keyEvent->key() == Qt::Key_A
                    && keyEvent->modifiers().testFlag(Qt::ControlModifier)) {
-            web_view_->setFocus(Qt::ActiveWindowFocusReason);
+            //20210608 龙芯搜索框全选bug-83042
+            if (!search_edit_->lineEdit()->hasFocus()) {
+                web_view_->setFocus(Qt::ActiveWindowFocusReason);
+            }
         }
     }
 
@@ -493,7 +496,8 @@ void WebWindow::initUI()
     //隐藏title阴影
     this->setTitlebarShadowEnabled(false);
     //键盘盲打
-    search_edit_->setFocus();
+    //20210527注释启动时焦点在搜索框
+    //search_edit_->setFocus();
     this->setFocusPolicy(Qt::ClickFocus);
 
     QWidget *spinnerPage = new QWidget;
