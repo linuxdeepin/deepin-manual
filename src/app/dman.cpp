@@ -37,6 +37,10 @@ DWIDGET_USE_NAMESPACE
 int main(int argc, char **argv)
 {
     QDateTime time;
+
+    if (!QString(qgetenv("XDG_CURRENT_DESKTOP")).toLower().startsWith("deepin")) {
+        setenv("XDG_CURRENT_DESKTOP", "Deepin", 1);
+    }
     qputenv("DXCB_FAKE_PLATFORM_NAME_XCB", "true");
     //禁用GPU
     qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu");
@@ -48,6 +52,10 @@ int main(int argc, char **argv)
     //访问http://127.0.0.1:7777/调试
     qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "7777");
     //    Dtk::Widget::DApplication::loadDXcbPlugin();
+
+#ifdef __sw_64__
+    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--no-sandbox");
+#endif
 
     Dtk::Widget::DApplication app(argc, argv);
     if (!DPlatformWindowHandle::pluginVersion().isEmpty()) {
