@@ -354,7 +354,10 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
             }
         } else if (keyEvent->key() == Qt::Key_A
                    && keyEvent->modifiers().testFlag(Qt::ControlModifier)) {
-            web_view_->setFocus(Qt::ActiveWindowFocusReason);
+            //搜索框全选
+            if (!search_edit_->lineEdit()->hasFocus()) {
+                web_view_->setFocus(Qt::ActiveWindowFocusReason);
+            }
         }
     }
 
