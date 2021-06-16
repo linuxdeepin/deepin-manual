@@ -44,19 +44,23 @@ int main(int argc, char **argv)
     qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu");
     qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--single-process");
     //所有进程类型禁用沙箱..此配置开启禁用gpu后无效
-//    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--no-sandbox");
+    //qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--no-sandbox");
     //龙芯机器配置,使得DApplication能正确加载QTWEBENGINE
     qputenv("DTK_FORCE_RASTER_WIDGETS", "FALSE");
 
-#ifdef DCPU_IS_SW
-    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-seccom-filter-sandbox");
+    //20210616与sw工程师沟通可以去除这个环境变量,使用宏__sw_64__
+    //#ifdef DCPU_IS_SW
+    //    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-seccom-filter-sandbox");
+    //#endif
+
+#ifdef __sw_64__
+    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--no-sandbox");
 #endif
 
-//    qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "7777");
-//    Dtk::Widget::DApplication::loadDXcbPlugin();
+    //    qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "7777");
+    //    Dtk::Widget::DApplication::loadDXcbPlugin();
 
-
-//    Dtk::Widget::DApplication app(argc, argv);
+    //    Dtk::Widget::DApplication app(argc, argv);
     DApplication *app = nullptr;
 #if (DTK_VERSION < DTK_VERSION_CHECK(5, 4, 0, 0))
     app = new DApplication(argc, argv);
