@@ -1383,3 +1383,5 @@ UOS PC与非UOS PC或者UOS PC与移动设备（手机/平板）之间通过蓝�
 ### 缩放
 
 双指捏合，缩小网页或图片；双指张开，放大网页或图片。
+
+<div class="version-info"><span>文档更新时间: 2021-06-23</span><span> 版本: 2020.11</span></div>

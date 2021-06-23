@@ -214,3 +214,4 @@ In the main menu, you can [Create New Albums](#Create New Albums), [Import Photo
 
 1.  On the Album interface, click ![icon_menu](icon/icon_menu.svg).
 2.  Click **Exit** to exit Album.
+<div class="version-info"><span>Update Date: 2021-06-23</span><span> Version: 5.8</span></div>

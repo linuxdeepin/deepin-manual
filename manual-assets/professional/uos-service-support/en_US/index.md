@@ -100,3 +100,4 @@ On the main menu, you can view manual and get more information about Support.
 
 1. On the Support interface, click ![icon_menu](icon/icon_menu.svg).
 2. Click **Exit** to exit Support.
+<div class="version-info"><span>Update Date: 2021-06-23</span><span> Version: 2.2</span></div>

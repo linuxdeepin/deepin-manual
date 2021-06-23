@@ -84,3 +84,4 @@ On the main menu, you can change settings for Camera, view help manual, and get 
 
 1.   On the Camera interface, click ![icon_menu](icon/icon_menu.svg). 
 2.  Click **Exit** to exit Camera.
+<div class="version-info"><span>Update Date: 2021-06-23</span><span> Version: 1.0</span></div>

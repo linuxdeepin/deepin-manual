@@ -319,3 +319,4 @@ In the Main Menu, you can create [create new window](#Create Window), customize 
 
 1. On the Terminal interface, click ![icon_menu](icon/icon_menu.svg).
 2. Click **Exit** to exit Terminal.
+<div class="version-info"><span>Update Date: 2021-06-23</span><span> Version: 5.3</span></div>

@@ -115,3 +115,5 @@
 1. 在服务与支持界面，单击 ![icon_menu](icon/icon_menu.svg)。
 2. 单击 **退出**。
 
+
+<div class="version-info"><span>文档更新时间: 2021-06-23</span><span> 版本: 2.2</span></div>
