@@ -113,3 +113,5 @@ You can click to view the manual, which will help you further know and use Boot 
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 
 2. Click **Exit**.
+
+<div class="version-info"><span>Update Date: 2021-06-23</span><span> Version: 5.4</span></div>

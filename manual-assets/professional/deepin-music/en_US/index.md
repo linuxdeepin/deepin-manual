@@ -300,3 +300,4 @@ You can set the basic information and shortcuts in settings.
 
 1. On the Music interface, click ![menu](icon/icon_menu.svg).
 2. Click **Exit** to exit Music. 
+<div class="version-info"><span>Update Date: 2021-06-23</span><span> Version: 6.0</span></div>

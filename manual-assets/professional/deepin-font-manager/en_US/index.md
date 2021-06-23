@@ -443,3 +443,5 @@ You can create new window, [set share password](#Share Local Files),make setting
 
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Click **Exit**.
+
+<div class="version-info"><span>Update Date: 2021-06-23</span><span> Version: 5.8</span></div>

@@ -150,3 +150,4 @@ In the main menu, you can view help manual and get more information about Image 
 
 1. On the Image Viewer interface, click ![icon_menu](icon/icon_menu.svg).
 2. Click **Exit** to exit Image Viewer.
+<div class="version-info"><span>Update Date: 2021-06-23</span><span> Version: 5.7</span></div>
