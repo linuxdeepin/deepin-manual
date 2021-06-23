@@ -12,11 +12,11 @@ You can run, exit, and create shortcuts for Terminal in the following ways.
 
 ### Run Terminal 
 
-1. Click the Launcher icon ![deepin_launcher](icon/deepin_launcher.svg) in the dock to enter launcher interface.
+1. Click the Launcher icon ![deepin_launcher](icon/deepin_launcher.svg) in the Dock to enter launcher interface.
 2. Locate Terminal ![deepin_terminal](icon/deepin_terminal.svg) by scrolling the mouse wheel or searching "terminal" in the Launcher interface and click it to run.
 3. Right-click ![deepin_terminal](icon/deepin_terminal.svg) to: 
  - Select **Send to desktop** to create a desktop shortcut.
- - Select **Send to dock** to fix it in the dock.
+ - Select **Send to dock** to fix it in the Dock.
  - Select **Add to startup** to add the application to startup and it will automatically run when the system starts up.
 
 > ![notes](icon/notes.svg) Notes: You can also press **Ctrl** + **Alt** + **T** to open Terminal.
@@ -187,7 +187,7 @@ You can close workspace in the following ways:
 
 
 
-## Remote Server Managements
+## Remote Managements
 
 You can open the remote management panel to add remote servers via the main menu or the right-click menu. Once a remote server is added into the management list, you can automatically login just by one click. 
 
@@ -266,7 +266,7 @@ You can upload and download files after logging into a remote server.
 
 ## Main Menu
 
-In the Main Menu, you can [Create Windows](#Create Windows), perform [Remote Server Managements](#Remote Server Managements), customize commands, switch themes, view help manual, and get more information about Terminal.
+In the Main Menu, you can [Create Windows](#Create Windows), perform [Remote Managements](#Remote Managements), customize commands, switch themes, view help manual, and get more information about Terminal.
 
 ### Theme
 
@@ -329,4 +329,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme and 
 
 1. On the Terminal interface, click ![icon_menu](icon/icon_menu.svg).
 2. Click **Exit** to exit Terminal.
-<div class="version-info"><span>Update Date: 2021-05-17</span><span> Version: 5.3</span></div>
+<div class="version-info"><span>Update Date: 2021-06-23</span><span> Version: 5.3</span></div>

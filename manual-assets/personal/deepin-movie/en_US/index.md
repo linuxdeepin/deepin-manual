@@ -10,7 +10,7 @@ Movie is a video player with simple interface and smooth performance, which is c
 
 ### Run Movie
 
-1. Run the Launcher icon ![deepin_launcher](icon/deepin_launcher.svg) in the dock to enter the Launcher interface.
+1. Run the Launcher icon ![deepin_launcher](icon/deepin_launcher.svg) in the Dock to enter the Launcher interface.
 2. Locate Movie ![movie_24](icon/movie_24.svg) by scrolling the mouse wheel or searching "movie" in the Launcher interface and click it to run.
 3. Right-click ![movie_24](icon/movie_24.svg) and you can:
  - Click **Send to desktop** to create a desktop shortcut.
@@ -64,12 +64,11 @@ You can play films in the following ways:
 - On the Movie interface, right-click or click ![menu](icon/icon_menu.svg) to select **Open file** and open the File Manager to select a film file.
 - On the Movie interface, right-click or click ![menu](icon/icon_menu.svg) to select **Open folder**. All the audiovisual files in the folder are displayed in the playlist and will be played in turn. 
 - On the Movie interface, right-click, select **Open URL**, and paste the address to play the film.
+> ![attention](icon/attention.svg) Attention: Make sure your network is well-connected before playing online videos with Movie.
 - On the Movie interface, right-click and select **Open CD/DVD** to play the films in CD/DVD.
 - Drag the file/folder directly to the Movie interface to play local films.
 
 > ![notes](icon/notes.svg) Notes: If you are using a computer equipped with a touchscreen, hold down the film file with one finger and drag it to the Movie interface to play the film.
-
-> ![attention](icon/attention.svg) Attention: Make sure your network is well-connected before playing online videos with Movie.
 
 ![0|open](jpg/open.png)
 
@@ -237,4 +236,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 
 1. On the Movie interface, click ![icon_menu](icon/icon_menu.svg).
 2. Click **Exit** to exit Movie.
-<div class="version-info"><span>Update Date: 2021-05-17</span><span> Version: 5.7</span></div>
+<div class="version-info"><span>Update Date: 2021-06-23</span><span> Version: 5.7</span></div>

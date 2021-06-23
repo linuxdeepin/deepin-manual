@@ -48,7 +48,7 @@ In the interface of archive manager, single or multiple files (folders) can be c
 
    ![1|compressor](jpg/compressadd.png)
 
-2. Set the name, storage location, compression method, etc. Click **Advanced Options**, then you can encrypt the archive, encrypt the file list or split to volumes.
+2. Set the name, storage location, etc. Click **Advanced Options**, then you can encrypt the archive, encrypt the file list or split to volumes.
    
    > ![notes](icon/notes.svg)Notes: the default format of compressed packages is .zip. 
 
@@ -153,4 +153,4 @@ View Help to get more information about Archive Manager.
 1.  On the Archive Manager interface, click ![icon_menu](icon/icon_menu.svg) .
 2.  Click **Exit** to exit.
 
-<div class="version-info"><span>Update Date: 2021-05-17</span><span> Version: 5.9</span></div>
+<div class="version-info"><span>Update Date: 2021-06-23</span><span> Version: 5.9</span></div>

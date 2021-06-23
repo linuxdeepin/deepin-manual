@@ -131,7 +131,7 @@
 1. 在 **用户字体** 列表，右键单击字体选择 **删除字体**。
 2. 在弹出的提示对话框中单击 **删除** 。
 
-![0|font-delete](jpg/font-delete.png)
+![0|font-delete](jpg/delete.png)
 
 
 
@@ -167,4 +167,4 @@
 2. 单击 **退出**。
 
 
-<div class="version-info"><span>文档更新时间: 2021-05-17</span><span> 版本: 5.8</span></div>
+<div class="version-info"><span>文档更新时间: 2021-06-23</span><span> 版本: 5.8</span></div>

@@ -45,7 +45,7 @@
 
 ![login](jpg/login2.png)
 
->  ![attention](icon/attention.svg)注意：如果您未注册帐号，单击登录界面的 **注册新的Union ID** 按钮进行帐号注册，具体操作请参阅[Union ID注册](dman:///dde#Union ID)。
+>  ![attention](icon/attention.svg)注意：如果未注册帐号，单击登录界面的 **注册新的Union ID** 按钮进行帐号注册，具体操作请参阅 [Union ID注册](dman:///dde#Union ID)。
 
 ### 搜索应用
 
@@ -88,9 +88,11 @@
 
 ### 设置
 
-1. 在应用商店界面，单击 ![icon_menu](icon/icon_menu.svg)> **设置**。
+在应用商店界面，单击 ![icon_menu](icon/icon_menu.svg)> **设置**，勾选设置选项。
 
-2. 选择勾选“创建桌面快捷方式”和“网络闲置时，应用更新预下载”。
+- 安装后，自动生成桌面快捷图标
+
+- 网络闲置时，自动下载有更新的应用
 
 ### 帮助
 
@@ -102,9 +104,9 @@
 
 2. 查看应用商店的版本、介绍及《统信软件隐私政策》。
 
-### 更新
+### 检查更新
 
-1. 在应用商店界面，单击 ![icon_menu](icon/icon_menu.svg)> **更新**。
+1. 在应用商店界面，单击 ![icon_menu](icon/icon_menu.svg)> **检查更新**。
 
 2. 更新应用商店为最新版本。
-<div class="version-info"><span>文档更新时间: 2021-05-17</span><span> 版本: 6.2</span></div>
+<div class="version-info"><span>文档更新时间: 2021-06-23</span><span> 版本: 6.2</span></div>

@@ -167,4 +167,4 @@ Click Help to get the manual, which will help you further know and use Device Ma
 2. Click  **Exit**.
 
 
-<div class="version-info"><span>Update Date: 2021-05-17</span><span> Version: 5.6</span></div>
+<div class="version-info"><span>Update Date: 2021-06-23</span><span> Version: 5.6</span></div>

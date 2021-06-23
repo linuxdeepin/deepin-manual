@@ -59,12 +59,15 @@
 
 - 软件包架构不匹配。
 - 依赖关系不满足。
+- 安装包没有有效的数字签名。
 
+   ![0|cant](jpg/cant1.png)
 
-![0|cant](jpg/cant1.png)
+   ![0|cant](jpg/cant2.png)
 
-![0|cant](jpg/cant2.png)
+   ![0|cant](jpg/cant4.png)
 
+  
 
 ### 卸载
 
@@ -118,4 +121,4 @@
 2. 选择 **退出**。
 
 
-<div class="version-info"><span>文档更新时间: 2021-05-17</span><span> 版本: 5.7</span></div>
+<div class="version-info"><span>文档更新时间: 2021-06-23</span><span> 版本: 5.7</span></div>

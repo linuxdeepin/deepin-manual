@@ -21,7 +21,7 @@ You can run, close or create shortcuts for Camera in the following ways.
 ### Exit Camera
 
 - On the Camera interface, click![close_icon](icon/close.svg)to exit Camera.
-- Right-click ![camera](icon/camera.svg) in the dock and select **Close All** to exit Camera.
+- Right-click ![camera](icon/camera.svg) in the Dock and select **Close All** to exit Camera.
 - On the Camera interface, click ![icon_menu](icon/icon_menu.svg) and select **Exit** to exit Camera.
 
 ## Operations
@@ -91,4 +91,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 
 1.   On the Camera interface, click ![icon_menu](icon/icon_menu.svg). 
 2.  Click **Exit** to exit Camera.
-<div class="version-info"><span>Update Date: 2021-05-17</span><span> Version: 1.0</span></div>
+<div class="version-info"><span>Update Date: 2021-06-23</span><span> Version: 1.0</span></div>

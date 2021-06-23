@@ -65,12 +65,14 @@
 - 单击鼠标右键或从![menu](icon/icon_menu.svg)选择 **打开文件**，打开文件管理器选择影片文件。
 - 单击鼠标右键或从![menu](icon/icon_menu.svg)选择 **打开文件夹**，文件夹中的影音文件将全部显示在播放列表中，并依次进行播放。
 - 单击鼠标右键，选择 **打开URL**，输入视频文件的网络地址，播放影片。
+
+   > ![attention](icon/attention.svg) 注意 ：使用影院播放网络视频时，请确保您的电脑是连网状态。
+
 - 单击鼠标右键，选择 **播放光盘**，播放光盘中的影片。
 - 直接拖拽文件或文件夹到影院界面上，来添加本地影片。
   
 > ![notes](icon/notes.svg) 说明：当使用触控屏电脑时，一指按住影片文件拖拽到影院界面来播放影片。
 
-> ![attention](icon/attention.svg) 注意 ：使用影院播放网络视频时，请确保您的电脑是连网状态。
 
 ![0|open](jpg/open.png)
 
@@ -263,4 +265,4 @@
 
 1. 在影院界面，单击 ![icon_menu](icon/icon_menu.svg)。
 2. 选择 **退出**。
-<div class="version-info"><span>文档更新时间: 2021-05-17</span><span> 版本: 5.7</span></div>
+<div class="version-info"><span>文档更新时间: 2021-06-23</span><span> 版本: 5.7</span></div>

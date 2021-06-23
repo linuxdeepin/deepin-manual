@@ -12,7 +12,7 @@ You can run, close, and create shortcuts for Screen Capture in the following ope
 
 ### Run Screen Capture
 
-1. Click the Launcher icon ![deepin_launcher](icon/deepin_launcher.svg) in the dock to enter the launcher interface.
+1. Click the Launcher icon ![deepin_launcher](icon/deepin_launcher.svg) in the Dock to enter the launcher interface.
 2. Locate Screen Capture ![deepin_screenshot](icon/deepin_screenshot.svg) by scrolling the mouse wheel or searching "screen capture" in the Launcher interface and click it to run. 
 3. Right-click ![deepin_screenshot](icon/deepin_screenshot.svg) and you can:
 
@@ -55,7 +55,7 @@ You can select the full screen in the following ways:
 
 You can also take a full screen screenshot directly in the following ways:
 
-- If Screen Capture has been fixed in the dock, right-click ![deepin_screenshot](icon/deepin_screenshot.svg) in the dock to select **Full creenshot**. 
+- If Screen Capture has been fixed in the Dock, right-click ![deepin_screenshot](icon/deepin_screenshot.svg) in the Dock to select **Full creenshot**. 
 - Press ![print](icon/Print.svg) on the keyboard to take a full screen screenshot.
 
 #### Select Program Window
@@ -239,7 +239,7 @@ You can modify and move the text annotations after they're entered.
 
 You are able to capture the screenshot in a specific state or at specific time with the delay screenshot feature.
 
-- Right-click the Screen Capture icon fixed in dock and select **Delay Screenshot**.
+- Right-click the Screen Capture icon fixed in the Dock and select **Delay Screenshot**.
 - Press  **Ctrl** + ![icon](icon/Print.svg) to start delay screenshot.
 - Execute  “deepin-screen-recorder -d n”  in Terminal, among which n represents the delayed time in second.
 
@@ -329,7 +329,7 @@ You can capture the screen activities in the following ways:
 1. Launch screen recorder by **Ctrl + Alt + R**.
 2. Select the recording area and make relevant settings as needed.
 3. Click  ![icon](icon/recorder_button.svg) and recording will be started in 3 seconds with a flickering **Record** icon in the system tray.
-4.  Press the **Ctrl + Alt + R** shortcuts on the keyboard, click the **Screen Capture** icon in the dock or click the **Record** icon in the system tray to complete recording. 
+4.  Press the **Ctrl + Alt + R** shortcuts on the keyboard, click the **Screen Capture** icon in the Dock or click the **Record** icon in the system tray to complete recording. 
 
 The recorded video will be saved to the desktop automatically.
 
@@ -341,4 +341,4 @@ The recorded video will be saved to the desktop automatically.
 Press ![F1](icon/F1.svg) on the keyboard to view the help manual after launching Screen Capture.
 
 
-<div class="version-info"><span>Update Date: 2021-05-17</span><span> Version: 5.8</span></div>
+<div class="version-info"><span>Update Date: 2021-06-23</span><span> Version: 5.9</span></div>

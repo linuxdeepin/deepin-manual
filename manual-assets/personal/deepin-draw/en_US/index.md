@@ -12,7 +12,7 @@ You can run, close, and create shortcuts for Draw in the following ways.
 
 ### Run Draw
 
-1. Click the Launcher icon ![deepin_launcher](icon/deepin_launcher.svg) in the dock to enter the Launcher interface.
+1. Click the Launcher icon ![deepin_launcher](icon/deepin_launcher.svg) in the Dock to enter the Launcher interface.
 2. Locate Draw ![draw](icon/deepin_draw.svg) by scrolling the mouse wheel or searching "draw" in the Launcher interface.
 3. Right-click ![draw](icon/deepin_draw.svg) and the user can:
  - Click **Send to desktop** to create a desktop shortcut.
@@ -24,7 +24,7 @@ You can run, close, and create shortcuts for Draw in the following ways.
 ### Exit Draw
 
 - On the Draw interface, click ![close_icon](icon/close.svg) to exit Draw.
-- Right-click ![draw](icon/deepin_draw.svg) in the dock and select **Close All** to exit Draw.
+- Right-click ![draw](icon/deepin_draw.svg) in the Dock and select **Close All** to exit Draw.
 - Click ![icon_menu](icon/icon_menu.svg) on the Draw interface and select **Exit** to exit Draw.
 
 ### View Shortcuts
@@ -264,4 +264,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 
 1. On the Draw interface, click ![icon_menu](icon/icon_menu.svg).
 2. Click **Exit** to exit Draw.
-<div class="version-info"><span>Update Date: 2021-05-17</span><span> Version: 5.8</span></div>
+<div class="version-info"><span>Update Date: 2021-06-23</span><span> Version: 5.8</span></div>

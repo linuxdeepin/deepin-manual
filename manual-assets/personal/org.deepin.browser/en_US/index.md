@@ -1,4 +1,4 @@
-# Browser|../common/deepin-browser.svg|
+# Browser|../common/deepin_browser_96.svg|
 
 ## Overview
 

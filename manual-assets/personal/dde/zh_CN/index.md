@@ -40,7 +40,7 @@
 > ![notes](icon/notes.svg)说明：
 > - 当使用触屏电脑时，在触摸屏上长按1秒再抬起即可打开当前对象的右键菜单。
 > - 在触控板上，二指单击，显示右键菜单。
-> - 在键盘上按下 **Ctrl** + **M** 快捷键，打开右键菜单。
+> - 在键盘上按下 **Alt** + **M** 快捷键，打开右键菜单。
 
 ### 设置排列方式
 您可以对桌面上的图标按照需要进行排序。
@@ -120,14 +120,14 @@
 
 | 图标 | 说明 | 图标 | 说明 |
 | ------------------------------------------------------------ | :---------------------------------- | -------------------------------------------------------- | --------------------------------------------------- |
-| ![launcher](icon/deepin-launcher.svg)                        | 启动器 - 点击查看所有已安装的应用。 | ![deepin-toggle-desktop](icon/deepin-toggle-desktop.svg) | 显示桌面。                                          |
-| ![deepin-multitasking-view](icon/deepin-multitasking-view.svg) | 多任务视图 - 点击显示工作区。       | ![dde-file-manager](icon/dde-file-manager.svg)           | 文件管理器 - 点击查看磁盘中的文件、文件夹。         |
-| ![browser-cn](icon/browser-cn.svg)                | 浏览器 - 点击打开网页。             | ![deepin-appstore](icon/deepin-appstore.svg)             | 商店 - 搜索安装应用软件。                           |
+| ![launcher](icon/deepin-launcher.svg)                        | 启动器 - 单击查看所有已安装的应用。 | ![deepin-toggle-desktop](icon/deepin-toggle-desktop.svg) | 显示桌面。                                          |
+| ![deepin-multitasking-view](icon/deepin-multitasking-view.svg) | 多任务视图 - 单击显示工作区。       | ![dde-file-manager](icon/dde-file-manager.svg)           | 文件管理器 - 单击查看磁盘中的文件、文件夹。         |
+| ![browser-cn](icon/org.deepin.browser.svg) | 浏览器 - 单击打开网页。             | ![deepin-appstore](icon/deepin-appstore.svg)             | 商店 - 搜索安装应用软件。                           |
 | ![ deepin-album](icon/deepin-album.svg)                      | 相册 - 导入并管理照片。             | ![deepin-music](icon/deepin-music.svg)                   | 音乐 - 播放本地音乐。                               |
 | ![deepin-contacts](icon/deepin-contacts.svg)                 | 联系人 - 好友通讯，视频会议。       | ![dde-calendar](icon/dde-calendar.svg)                   | 日历 - 查看日期、新建日程。                         |
-| ![controlcenter](icon/controlcenter.svg)                     | 控制中心 - 点击进入系统设置。       | ![notification](icon/notification.svg)                   | 通知中心 - 显示所有系统和应用的通知。               |
-| ![desktop-ai-assistant](icon/desktop-ai-assistant.svg)                                    |   桌面智能助手 - 使用语音或文字来发布指令或进行询问。     |![onboard](icon/onboard.svg) | 屏幕键盘 - 点击使用虚拟键盘。 |
-| ![shutdown](icon/system-shutdown.svg)                        | 电源 - 点击进入关机界面。            | ![trash](icon/trash_icon.svg)                            | 回收站。                                            |
+| ![controlcenter](icon/controlcenter.svg)                     | 控制中心 - 单击进入系统设置。       | ![notification](icon/notification.svg)                   | 通知中心 - 显示所有系统和应用的通知。               |
+| ![desktop-ai-assistant](icon/desktop-ai-assistant.svg)                                    |   桌面智能助手 - 使用语音或文字来发布指令或进行询问。     |![onboard](icon/onboard.svg) | 屏幕键盘 - 单击使用虚拟键盘。 |
+| ![shutdown](icon/system-shutdown.svg)                        | 电源 - 单击进入关机界面。            | ![trash](icon/trash_icon.svg)                            | 回收站。                                            |
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 > ![tips](icon/tips.svg)窍门：在高效模式下，单击任务栏右侧可显示桌面。将鼠标指针移到任务栏上已打开窗口的图标时，会显示相应的预览窗口。
@@ -482,20 +482,24 @@
 
 开启云同步，可以自动同步各种系统配置到云端，如网络、声音、鼠标、更新、任务栏、启动器、壁纸、主题、电源等。若想在另一台电脑上使用相同的系统配置，只需登录此Union ID帐户，即可一键同步配置。
 
-> ![tips](icon/tips.svg)窍门： 当“自动同步配置”开启时，可以选择同步项；当“自动同步配置”关闭时，则全部不能同步。
+> ![notes](icon/notes.svg)说明：
+> a. 自动同步配置功能，只有在已激活或者试用期状态下才可以使用，未激活状态下则无法使用。 
+> b. 当“自动同步配置”开启时，可以选择同步项；当“自动同步配置”关闭时，则全部不能同步。
+
 
 ![0|sync](jpg/h_sync.png)
 
-如果您尚未注册Union ID，可以先对其进行注册，注册成功并登陆后，才可以使用Union ID相关的功能。
+如果您尚未注册Union ID，可以先进行注册，注册成功并登录后，才能使用Union ID相关的功能。
 
 1. 在控制中心首页，单击 ![account_normal](icon/dcc_nav_unionid_42px.svg)。
 2. 单击 **注册** ，弹出 **隐私政策** 窗口，勾选 **我已阅读并同意《隐私政策》**，并单击 **确定**。
 3. 弹出Union ID注册窗口，使用微信扫描注册、手机号码进行注册或在官网进行注册。
+
    ![0|sync](jpg/h_signUp-Wechat.png)
    ![0|sync](jpg/h_signUp-telephoneNo.png)
 4. 注册成功后，即可登录Union ID。
 
-登录Union ID后，单击 **修改资料**，配置用户名、手机号码、邮箱、密码、微信等帐号信息。
+登录Union ID后，单击 **修改资料**，可以配置用户名、手机号码、邮箱、密码、微信等帐号信息。
 
 ### 显示设置
 设置显示器的分辨率、亮度、屏幕方向以及缩放倍数，让您的电脑显示到达最佳状态。
@@ -1317,7 +1321,7 @@ UOS PC与非UOS PC或者UOS PC与移动设备（手机/平板）之间通过蓝�
 
 > ![notes](icon/notes.svg)说明：如果系统未激活，授权管理图标 ![authorize1](icon/authorize1.svg) 会一直显示在系统托盘。
 
-在授权管理界面，单击 **立即激活**，弹出激活UOS窗口，您可以使用微信或下载安装统信UOS助手扫描激活系统。
+在授权管理界面，单击 **立即激活**，弹出激活UOS窗口，您可以使用微信扫描激活系统。
 
 ![0|activation](jpg/h_activation2.png)
 
@@ -1354,8 +1358,8 @@ UOS PC与非UOS PC或者UOS PC与移动设备（手机/平板）之间通过蓝�
    备份模式：全盘备份、系统备份
    
    - 全盘备份：备份全磁盘的系统文件和用户文件
-- 系统备份：备份根分区、启动分区
-  
+   - 系统备份：备份根分区、启动分区
+
 > ![attention](icon/attention.svg)注意： 全盘备份无法备份在自己本身的磁盘里，只能备份在其它存储介质中。
 
 3. 单击 **开始备份**，弹出密码输入框，请输入密码授权备份文件，直至文件备份完成。
@@ -1535,4 +1539,4 @@ UOS PC与非UOS PC或者UOS PC与移动设备（手机/平板）之间通过蓝�
 
 > ![tips](icon/tips.svg)窍门：要取消窗口分屏，只需将窗口从屏幕一侧拖离即可。
 
-<div class="version-info"><span>文档更新时间: 2021-05-17</span><span> 版本: 2020.11</span></div>
+<div class="version-info"><span>文档更新时间: 2021-06-23</span><span> 版本: 2020.11</span></div>

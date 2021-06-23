@@ -10,7 +10,7 @@ Text Editor is a simple text editing tool. You can use it to write a simple text
 
 ### Run Text Editor
 
-1. Click the Launcher icon ![deepin_launcher](icon/deepin_launcher.svg) in the dock to enter the Launcher interface. 
+1. Click the Launcher icon ![deepin_launcher](icon/deepin_launcher.svg) in the Dock to enter the Launcher interface. 
 2. Locate Text Editor ![deepin_editor](icon/deepin_editor.svg) by  scrolling the mouse wheel or searching "text editor" in the Launcher interface, and click it to run.
 3. In Launcher, right-click Text Editor to:
   - Click **Send to desktop** to create a desktop shortcut.
@@ -305,4 +305,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 
 1. On the Text Editor interface, click ![menu](icon/icon_menu.svg).
 2. Click **Exit** to exit Text Editor. 
-<div class="version-info"><span>Update Date: 2021-05-17</span><span> Version: 5.9</span></div>
+<div class="version-info"><span>Update Date: 2021-06-23</span><span> Version: 5.9</span></div>

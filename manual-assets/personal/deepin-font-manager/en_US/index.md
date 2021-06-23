@@ -14,7 +14,7 @@ You can run, exit, and create shortcuts for Font Manager in the following ways.
 
 ### Run Font Manager
 
-1. Click the Launcher icon ![launcher](icon/deepin_launcher.svg) in the dock to enter the Launcher interface.
+1. Click the Launcher icon ![launcher](icon/deepin_launcher.svg) in the Dock to enter the Launcher interface.
 2. Locate Font Manager![deepin_font_manager](icon/deepin_font_manager.svg) by scrolling the mouse wheel or searching "font manager" in the Launcher interface, and click it to run.
 3. Right-click ![deepin_font_manager](icon/deepin_font_manager.svg) , and you can:
 
@@ -25,7 +25,7 @@ You can run, exit, and create shortcuts for Font Manager in the following ways.
 ### Exit Font Manager
 
 - Click ![close](icon/close.svg) on the Font Manager interface to exit Font Manager.
-- Right-click ![deepin_font_manager](icon/deepin_font_manager.svg) in the dock, and select **Close All** to exit.
+- Right-click ![deepin_font_manager](icon/deepin_font_manager.svg) in the Dock, and select **Close All** to exit.
 - Click ![icon_menu](icon/icon_menu.svg) on the Font Manager interface, and select **Exit** to exit.
 
 ### View Shortcuts
@@ -168,4 +168,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 
 1. On the Font Manager interface, click ![icon_menu](icon/icon_menu.svg).
 2. Click **Exit** to exit Font Manager.
-<div class="version-info"><span>Update Date: 2021-05-17</span><span> Version: 5.8</span></div>
+<div class="version-info"><span>Update Date: 2021-06-23</span><span> Version: 5.8</span></div>

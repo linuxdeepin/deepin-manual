@@ -12,7 +12,7 @@ You can run, close, and create shortcuts for Image Viewer in the following ways.
 
 ### Run Image Viewer
 
-1. Click the Launcher icon ![deepin_launcher](icon/deepin_launcher.svg) in the dock to enter the Launcher interface.
+1. Click the Launcher icon ![deepin_launcher](icon/deepin_launcher.svg) in the Dock to enter the Launcher interface.
 2. Locate Image Viewer ![viewer](icon/deepin_image_viewer.svg) by scrolling the mouse wheel or searching "image viewer" in the Launcher interface.
 3. Right-click ![viewer](icon/deepin_image_viewer.svg) and the user can:
  - Click **Send to desktop** to create a desktop shortcut.
@@ -22,7 +22,7 @@ You can run, close, and create shortcuts for Image Viewer in the following ways.
 ### Exit Image Viewer
 
 - On the Image Viewer interface, click ![close](icon/close.svg) to exit Image Viewer.
-- Right-click ![viewer](icon/deepin_image_viewer.svg) in the dock and select **Close All** to exit Image Viewer.
+- Right-click ![viewer](icon/deepin_image_viewer.svg) in the Dock and select **Close All** to exit Image Viewer.
 - Click ![Settings](icon/icon_menu.svg) on the Image Viewer interface and select **Exit** to exit Image Viewer.
 
 ### View Shortcuts 
@@ -41,7 +41,7 @@ You can use one of the following ways to open image files:
 - Double-click an image to open if Image Viewer has been set as the default application for image viewing.
 - Open Image Viewer, click **Open Image** and select the image file to open it.
 - Open Image Viewer and drag the image to the interface to open it.
-- Drag the image to the Image Viewer icon on the desktop or in the dock to open it.
+- Drag the image to the Image Viewer icon on the desktop or in the Dock to open it.
 >![tips](icon/tips.svg) Tips: In Control Center, you can set Image Viewer as the default image viewer. Please refer to [Default Applications](dman:///dde#Default Applications) for specific operations.
 
 Following Image formats are supported: BMP, ICO, JPG/JPE/JPEG, PNG, TGA, TIF/TIFF, XPM, GIF, WEBP, CR2, NEF, DNG, RAF, MEF, MRW, XBM, SVG, ORF, MNG, etc.
@@ -160,4 +160,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 
 1. On the Image Viewer interface, click ![icon_menu](icon/icon_menu.svg).
 2. Click **Exit** to exit Image Viewer.
-<div class="version-info"><span>Update Date: 2021-05-17</span><span> Version: 5.6</span></div>
+<div class="version-info"><span>Update Date: 2021-06-23</span><span> Version: 5.7</span></div>

@@ -261,4 +261,4 @@ View the manual to help you further know and use Security Center.
 2. Click **Exit**.
 
 
-<div class="version-info"><span>Update Date: 2021-05-17</span><span> Version: 2.1</span></div>
+<div class="version-info"><span>Update Date: 2021-06-23</span><span> Version: 2.1</span></div>

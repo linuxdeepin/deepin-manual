@@ -199,8 +199,8 @@
 
 
 ### 编辑服务器
-1.  打开终端远程管理界面，将光标置于某一个服务器上，会显示按钮 ![edit_icon](icon/editor_icon.svg)，单击该按钮弹出编辑服务器窗口。
-2.  修改服务器信息。
+1.  打开终端远程管理界面，将光标置于某一个服务器上，会显示编辑按钮 ![edit_icon](icon/editor_icon.svg)，单击该按钮弹出编辑服务器窗口。
+2.  修改服务器名称、地址等信息。
 3.  单击 **保存**。
 
 ![0|editssh](jpg/editssh.png)
@@ -330,4 +330,4 @@
 
 1. 在终端界面，单击 ![icon_menu](icon/icon_menu.svg)。
 2. 单击 **退出**。
-<div class="version-info"><span>文档更新时间: 2021-05-17</span><span> 版本: 5.3</span></div>
+<div class="version-info"><span>文档更新时间: 2021-06-23</span><span> 版本: 5.3</span></div>

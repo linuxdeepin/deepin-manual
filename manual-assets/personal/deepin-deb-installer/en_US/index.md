@@ -50,8 +50,13 @@ Please read the prompt carefully, common causes include:
 
 - Unmatched package architecture.
 - Broken dependencies.
+- Lack of valid digital signature.
 
-![1|unable](jpg/unable.png) ![1|unable](jpg/unable1.png)
+![1|unable](jpg/unable.png)
+
+![1|unable](jpg/unable1.png)
+
+![cant4](jpg/cant4.png)
 
 ### Uninstall
 
@@ -101,4 +106,4 @@ You can click to view the manual, which will help you further know and use Packa
 1. Click![icon_menu](icon/icon_menu.svg) on the interface.
 2. Click **Exit**.
 
-<div class="version-info"><span>Update Date: 2021-05-17</span><span> Version: 5.7</span></div>
+<div class="version-info"><span>Update Date: 2021-06-23</span><span> Version: 5.7</span></div>

@@ -12,14 +12,14 @@ You can run, close, and create a shortcut for Music in the following ways.
 
 ### Run Music
 
-1. Click the Launcher icon ![launcher_icon](icon/deepin_launcher.svg) in the dock to enter the Launcher interface.
+1. Click the Launcher icon ![launcher_icon](icon/deepin_launcher.svg)in the Dock to enter the Launcher interface.
 2. Locate Music by scrolling mouse wheel or searching "music" in the Launcher interface.
 3. Right-click the Music application icon and you can:
  - Click **Send to desktop** to create a desktop shortcut.
- - Click **Send to dock** to fix the application on dock.
+ - Click **Send to dock** to fix the application in the Dock.
  - Click **Add to startup** to add the application to startup and it will automatically run when the system starts up.
 
-> ![notes](icon/notes.svg) Notes: If Music has been fixed in the Dock, you can also click ![music_icon_24](icon/music_icon_24.svg) in the Dock to run it.
+> ![notes](icon/notes.svg) Notes: If Music has been fixedin the Dock, you can also click ![music_icon_24](icon/music_icon_24.svg)in the Dock to run it.
 
 ### Minimize to System Tray
 
@@ -40,7 +40,7 @@ Right-click the Music application icon in the tray and you can perform the follo
 ### Exit Music
 
 - On the Music interface, click ![close_icon](icon/close.svg) and select **Exit** to exit Music or click ![close](icon/close.svg)to exit music directly if you have checked the **Exit** option in the **Close Main Window** option.
-- Right-click the Music application icon ![music_icon_24](icon/music_icon_24.svg) in the Dock and select **Close All** to exit Music.
+- Right-click the Music application icon ![music_icon_24](icon/music_icon_24.svg)in the Dock and select **Close All** to exit Music.
 - Right-click ![music_icon-24](icon/music_icon_24.svg) in the system tray and select **Exit** to exit Music. 
 
 ### View Shortcuts
@@ -313,4 +313,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 
 1. On the Music interface, click ![menu](icon/icon_menu.svg).
 2. Click **Exit** to exit Music.
-<div class="version-info"><span>Update Date: 2021-05-17</span><span> Version: 6.0</span></div>
+<div class="version-info"><span>Update Date: 2021-06-23</span><span> Version: 6.0</span></div>

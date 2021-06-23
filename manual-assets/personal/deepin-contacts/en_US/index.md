@@ -468,4 +468,4 @@ click Help to get the manual, which will help you further know and use Contacts.
 
 
 
-<div class="version-info"><span>Update Date: 2021-05-17</span><span> Version: 1.0</span></div>
+<div class="version-info"><span>Update Date: 2021-06-23</span><span> Version: 1.0</span></div>

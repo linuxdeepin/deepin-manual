@@ -122,7 +122,7 @@
             <td>椭圆工具</td>
         <td class="blank"></td>
             <td><img src="icon/line_normal.svg" alt="箭头工具" class="inline" /></td>
-            <td>线条工具</td>
+            <td>直线工具</td>
         </tr>
           <tr>
             <td><img src="icon/Combined_Shape.svg" alt="画笔工具" class="inline" /></td>
@@ -136,6 +136,7 @@
         </tr>
     </tbody>
 </table>
+
 
 
 > ![notes](icon/notes.svg)说明：如果您已经对工具栏和属性栏中，如线条粗细、字体大小等进行了设置，截图会保存该设置。再次启动截图录屏，将默认使用该设置，您也可以重新进行选择。
@@ -366,4 +367,4 @@
 启动截图录屏后按下键盘上的 **F1** 键即可打开帮助手册。
 
 
-<div class="version-info"><span>文档更新时间: 2021-05-17</span><span> 版本: 5.8</span></div>
+<div class="version-info"><span>文档更新时间: 2021-06-23</span><span> 版本: 5.9</span></div>

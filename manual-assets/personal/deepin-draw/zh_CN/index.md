@@ -43,7 +43,7 @@
 ![1|mian](jpg/open.png)
 
 - 在画板界面上，单击 ![menu](icon/icon_menu.svg) > **新建**，新建标签页。
-- 当窗口有两个或两个以上标签页时，也可以单击按钮 ![add](jpg/add.png)， 新建标签页。
+- 当窗口有两个或两个以上标签页时，也可以单击按钮 ![add](icon/add.svg)， 新建标签页。
 
 ### 关闭标签页
 
@@ -287,4 +287,4 @@
 1. 在画板界面，单击 ![icon_menu](icon/icon_menu.svg)。
 2. 选择 **退出**。
 
-<div class="version-info"><span>文档更新时间: 2021-05-17</span><span> 版本: 5.8</span></div>
+<div class="version-info"><span>文档更新时间: 2021-06-23</span><span> 版本: 5.8</span></div>

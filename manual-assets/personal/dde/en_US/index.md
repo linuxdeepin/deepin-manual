@@ -41,9 +41,9 @@ Right-click a file or folder on the desktop, and use the features of File Manage
 | Properties       | View the basic info, share it or change the permission.      |
 
 >![notes](icon/notes.svg)Notes: 
->   - If you are using a computer equipped with a touchscreen, long press for 1 second and release on the touchscreen.
+>   - If you are using a computer equipped with a touchscreen, long press for one second and release on the touchscreen.
 >   - On the touchpad, click with two fingers to display the right-click menu. 
->   - Press **Ctrl** + **M** on the keyboard to open right-click menu. 
+>   - Press **Alt** + **M** on the keyboard to open right-click menu. 
 
 ### Sort Files
 
@@ -93,7 +93,7 @@ The screensaver was used to protect the kinescope before, but now it is mainly f
 
 1. Right-click the desktop.
 2. Click **Wallpaper and Screensaver**, and select **Screensaver** to preview all the screensavers.
-3. Select one and click **Apply**, and set the **Wait**(waiting time) for the screensaver to start.
+3. Select one and click **Apply**, and set the **WAlt**(wAlting time) for the screensaver to start.
 4. You can also check the box of **Require a password on wakeup** for a better privacy protection.
 5. After that idle time, the screensaver will start.
 
@@ -130,7 +130,7 @@ In the Dock, there are icons of Launcher, applications, system tray, and plugins
 | ![deepin-toggle-desktop](icon/deepin-toggle-desktop.svg) | Click to show the desktop. |
 | ![deepin-multitasking-view](icon/deepin-multitasking-view.svg) | Multitasking View - click to show workspaces. |
 | ![dde-file-manager](icon/dde-file-manager.svg) | File Manager - click to view files and folders on the disk. |
-| ![uosbrowser](icon/browser-cn.svg) | Browser- click to open webpages. |
+| ![uosbrowser](icon/org.deepin.browser.svg) | Browser- click to open webpages. |
 | ![ deepin-album](icon/deepin-album.svg) | Album - import and manage photos. |
 | ![deepin-appstore](icon/deepin-appstore.svg) | Store - search and install applications. |
 | ![deepin-music](icon/deepin-music.svg) |  Music - play local songs.  |
@@ -232,7 +232,7 @@ Text to Speech is set by default in Assistive Tools in Control Center. Only when
 
 Text to Speech is only available for the currently-selected texts and the operation steps are as follows:
 
-1. Select the texts, press  **Ctrl** + **AIt** + **P** on the keyboard or right-click **Text to Speech** to start reading.
+1. Select the texts, press  **Ctrl** + **Alt** + **P** on the keyboard or right-click **Text to Speech** to start reading.
 2. Click the speaker icon or right-click **Stop reading** to stop reading.
 
 > ![notes](icon/notes.svg)Notes: If you select other texts during reading, the current speaker icon will be displayed in the newly-selected location. Click the speaker icon, use the shortcut key or right-click **Text to Speech**, the current reading will be interrupted and  it starts reading the newly-selected texts.
@@ -243,7 +243,7 @@ Translation is set by default (enabled) in Assistive Tools in Control Center. On
 
 Translation is only available for the currently-selected texts and the operation steps are as follows:
 
-1. Select the texts, press  **Ctrl** + **AIt** + **U** on the keyboard or right-click **Translate** to start translation.
+1. Select the texts, press  **Ctrl** + **Alt** + **U** on the keyboard or right-click **Translate** to start translation.
 
 > ![notes](icon/notes.svg)Notes: It only supports Chinese-English and English-Chinese translation currently.
 
@@ -1206,7 +1206,7 @@ The shortcut list includes all shortcuts in the system. View, modify and customi
 6. After being successfully added, click **Edit**.
 7. Click ![delete](icon/delete.svg) to delete the custom shortcut.
 
-> ![tips](icon/tips.svg)Tips: To change the shortcut, click it and press a new shortcut to change it directly. To edit the name and command of the custom shortcut, click **Edit ** > ![edit](icon/edit.svg) near the shortcut name to enter the shortcut settings.
+> ![tips](icon/tips.svg)Tips: To change the shortcut, click it and press a new shortcut to change it directly. To edit the name and command of the custom shortcut, click **Edit** > ![edit](icon/edit.svg) near the shortcut name to enter the shortcut settings.
 
 
 
@@ -1304,7 +1304,7 @@ There are two ways to run the authorization management tool:
 
 > ![notes](icon/notes.svg)Notes: If the system is not activated, the authorization management icon ![authorize1](icon/authorize1.svg) will be always displayed on the tray in the lower right corner.
 
-In the authorization management interface, click **Activate Now**, a window pops up. You can download and install UnionTech OS Assistant via WeChat on your phone to activate the system. 
+In the authorization management interface, click **Activate Now**, a window pops up. You can activate the system via WeChat on your phone. 
 
 ![0|activation](jpg/probation1.png)
 
@@ -1495,7 +1495,7 @@ Move the windows to another workspace in the following ways:
    - On the workspace interface, drag and drop the window to the specified workspace.
    - On the desktop, press  **Super**+ **Shift** + ![Left](icon/Left.svg) / ![Right](icon/Right.svg) to move the current window to the Previous/Next workspace.
    - On the desktop, press  **Super** + **Shift** + Numeric Keys to move the current window to the workspace in the corresponding order.
-   - On the desktop, press  **AIt** + **Space** or right-click the window title bar to open the window menu, and select **Always on Visible Workspace** or **Move to Workspace Left/Right** to move the current window to the specified workspace.
+   - On the desktop, press  **Alt** + **Space** or right-click the window title bar to open the window menu, and select **Always on Visible Workspace** or **Move to Workspace Left/Right** to move the current window to the specified workspace.
 
 > ![tips](icon/tips.svg)Tips: In the window menu, you can also minimize, maximize, move, resize, top or close the window.
 
@@ -1504,13 +1504,13 @@ Switch desktop windows in the current workspace as below.
 
 #### Fast Switch between Nearby Windows
 
-   - On the desktop, press  **AIt** + **Tab** at the same time and release, to switch between the current window and the nearby window quickly;
-   - On the desktop, press **AIt** + **Shift** + **Tab** at the same time and release, to fast switch between current window and the nearby window reversely;
+   - On the desktop, press  **Alt** + **Tab** at the same time and release, to switch between the current window and the nearby window quickly;
+   - On the desktop, press **Alt** + **Shift** + **Tab** at the same time and release, to fast switch between current window and the nearby window reversely;
 
 #### Fast Switch between Windows of the Same Type
 
    - On the desktop, press **Alt** +  ![~](icon/~.svg)  at the same time and release, to switch between the current window and other windows of the same type quickly;
-   - On the desktop, press  **AIt** + **Shift** + ![~](icon/~.svg) at the same time and release, to fast switch between current window and other windows in same type reversely;
+   - On the desktop, press  **Alt** + **Shift** + ![~](icon/~.svg) at the same time and release, to fast switch between current window and other windows in same type reversely;
 
 #### Switch among All Windows
 
@@ -1532,4 +1532,4 @@ With split screen, multiple applications and tasks are displayed simultaneously,
 
 
 
-<div class="version-info"><span>Update Date: 2021-05-17</span><span> Version: 2020.11</span></div>
+<div class="version-info"><span>Update Date: 2021-06-23</span><span> Version: 2020.11</span></div>

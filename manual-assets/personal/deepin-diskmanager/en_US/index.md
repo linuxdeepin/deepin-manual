@@ -24,7 +24,7 @@ You can run, close, and create shortcuts for Disk Utility in the following ways.
 ### Exit Disk Utility
 
 - On the Disk Utility interface, click![close_icon](icon/close.svg)to exit Disk Utility.
-- Right-click ![disk_manager](icon/disk_manager.svg) in the dock and select **Close All** to exit Disk Utility.
+- Right-click ![disk_manager](icon/disk_manager.svg) in the Dock and select **Close All** to exit Disk Utility.
 - On the Disk Utility interface, click ![icon_menu](icon/icon_menu.svg) and select **Exit** to exit Disk Utility.
 
 ## Disk Partitioning
@@ -169,4 +169,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 
 1.  On the Disk Utility interface, click ![icon_menu](icon/icon_menu.svg).
 2.  Click **Exit** to exit Disk Utility.
-<div class="version-info"><span>Update Date: 2021-05-17</span><span> Version: 1.1</span></div>
+<div class="version-info"><span>Update Date: 2021-06-23</span><span> Version: 1.1</span></div>

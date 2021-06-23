@@ -167,7 +167,7 @@
 
 ### 新建歌单
 
-1. 在音乐界面，单击“我的歌单”右侧的按钮 ![icon_plus](icon/icon_plus.svg) 或者 ![icon_menu](icon/icon_menu.svg) > **添加新歌单**。
+1. 在音乐界面，单击“我的歌单”右侧的按钮 ![icon_plus](icon/add.svg) 或者 ![icon_menu](icon/icon_menu.svg) > **添加新歌单**。
 2. 输入歌单的名称。
 3. 按下键盘上的 **Enter** 键。
 
@@ -277,4 +277,4 @@
 1. 在音乐界面，单击 ![icon_menu](icon/icon_menu.svg)。
 2. 选择 **退出**。
 
-<div class="version-info"><span>文档更新时间: 2021-05-17</span><span> 版本: 6.0</span></div>
+<div class="version-info"><span>文档更新时间: 2021-06-23</span><span> 版本: 6.0</span></div>

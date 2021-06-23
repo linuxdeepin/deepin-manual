@@ -12,7 +12,7 @@ You can run, close, and create a shortcut for Calendar in the following ways.
 
 ### Run Calender
 
-1. Click the Launcher icon ![deepin_launcher](icon/deepin_launcher.svg) in the dock to enter the Launcher interface.
+1. Click the Launcher icon ![deepin_launcher](icon/deepin_launcher.svg) in the Dock to enter the Launcher interface.
 2. Locate Calendar![draw](icon/dde_calendar.svg) by scrolling the mouse wheel or searching "calendar" in the Launcher interface and click it to run.
 3. Right-click ![draw](icon/dde_calendar.svg) and you can:
    - Click **Send to desktop** to create a desktop shortcut.
@@ -22,7 +22,7 @@ You can run, close, and create a shortcut for Calendar in the following ways.
 ### Exit Calendar
 
 - On the Calendar interface, click ![close_icon](icon/close.svg) to exit calendar.
-- Right-click ![draw](icon/dde_calendar.svg) in the dock and select **Close All** to exit.
+- Right-click ![draw](icon/dde_calendar.svg) in the Dock and select **Close All** to exit.
 - Click ![icon_menu](icon/icon_menu.svg) on the Calendar interface and select **Exit** to exit.
 
 ### View Shortcuts
@@ -169,4 +169,4 @@ The window theme provides three theme types, namely Light Theme, Dark Theme, and
 2. Click **Exit** to exit Calendar.
 
 
-<div class="version-info"><span>Update Date: 2021-05-17</span><span> Version: 5.8</span></div>
+<div class="version-info"><span>Update Date: 2021-06-23</span><span> Version: 5.7</span></div>

@@ -142,8 +142,6 @@
 
 - 默认（xx）：对应应用联网的默认设置。
 
-   > ![tips](icon/tips.svg)窍门：名称和状态支持单击排序，升序：允许、询问、禁止、默认（xx），降序：禁止、询问、允许、默认（xx）。 
-
    ![0|network-control](jpg/network-control.png)
 
 #### 流量详情
@@ -244,4 +242,4 @@
 2. 选择 **退出**。
 
 
-<div class="version-info"><span>文档更新时间: 2021-05-17</span><span> 版本: 2.1</span></div>
+<div class="version-info"><span>文档更新时间: 2021-06-23</span><span> 版本: 2.1</span></div>

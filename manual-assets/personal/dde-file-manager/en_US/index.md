@@ -274,6 +274,8 @@ By adding tags on file/folder, you can classify and manage your files better.
 
 #### Add Tags
 
+You can add tag to multiple files/folders at a time, or add multiple tags to a single file/folder; you can also add tags in Properties of the file/folder. The tag appears in the left panel.
+
 ##### By Tag information
 
 1. Right-click a file/folder, select **Tag information**.
@@ -298,9 +300,9 @@ Select a file/folder, click ![fileinfo](icon/fileinfo.svg), and add tags in the 
 
 ![1|infotag](jpg/infotag.png)
 
-> ![notes](icon/notes.svg)Notes: You can add tag to multiple files/folders at a time, or add multiple tags to a single file/folder; you can also add tags in Properties of the file/folder. The tag appears in the left panel.
 
-> ![attention](icon/attention.svg)Attention: If a file has a tag, copy or cut and then paste it, the new file still has the same tag.
+
+> ![notes](icon/notes.svg)Notes: If a file has a tag, copy or cut and then paste it, the new file still has the same tag.
 
 #### Rename Tag
 
@@ -390,7 +392,7 @@ Prerequisite: Please enable **Developer Mode** from Control Center > General Set
 
 ### Burn CD
 
-You can copy music, video, pictures, or mirror files to a CD or DVD through the burning feature. Please prepare an imprint drive, a blank CD, or DVD disc in advance.
+You can copy music, video, pictures, or mirror files to a CD or DVD through the burning feature. Please prepare an imprint drive, a CD, or DVD disc in advance.
 
 1. Insert the disc into the recording drive.
 
@@ -411,7 +413,7 @@ You can copy music, video, pictures, or mirror files to a CD or DVD through the 
 6. After burning, a prompt box will pop up in the interface, and click **OK**.
 
 >![notes](icon/notes.svg)Notes:
->- You can directly copy the files in the CD to the computer.
+>- Only formats of ISO9660 file system are supported.
 >- If you need to erase the disc data, you can right-click the disc icon in the left panel and select **Unmount**, right-click the disc icon again and select **Erase**.
 
 ### Create Link
@@ -449,7 +451,7 @@ UnionTech OS Assistant is a practical tool to realize cross terminal cooperation
 ### Install UnionTech OS Assistant
 
 1. Click ![icon](icon/phone.svg) in the system tray or open File Manager and click **My Phone** in the left panel.
-2. Click **Download UnionTech OS Assistant**, a window with a QR code inside pops up.
+2. Click **Install UnionTech OS Assistant**, a window with a QR code inside pops up.
 
 ![phone](jpg/myphone.png)
 
@@ -649,4 +651,4 @@ The window theme includes Light Theme, Dark Theme and System Theme.
 1. Click ![icon_menu](icon/icon_menu.svg)on the interface.
 2. Click **Exit**.
 
-<div class="version-info"><span>Update Date: 2021-05-17</span><span> Version: 5.2</span></div>
+<div class="version-info"><span>Update Date: 2021-06-23</span><span> Version: 5.2</span></div>
