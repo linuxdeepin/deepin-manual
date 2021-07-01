@@ -462,6 +462,11 @@ void WebWindow::onManualSearchByKeyword(const QString &keyword)
  */
 void WebWindow::onAppearanceChanged(QString, QMap<QString, QVariant> map, QStringList)
 {
+    //20210630codereview
+    if (map.isEmpty()) {
+        return;
+    }
+
     QString strValue = map.begin().value().toString();
     QString strKey = map.begin().key();
     qDebug() << __func__ << " key: " << strKey << " value: " << strValue;
@@ -942,7 +947,6 @@ void WebWindow::onSearchAnchorResult(const QString &keyword, const SearchAnchorR
         return;
     }
 
-    Q_UNUSED(keyword);
     if (result.isEmpty()) {
         // Hide completion window if no anchor entry matches.
         completion_window_->hide();

@@ -41,9 +41,6 @@ public:
     void setSelection(const QRect &rect, QItemSelectionModel::SelectionFlags command) override;
     void initDelegate();
 
-protected:
-    void paintEvent(QPaintEvent *event) override;
-
 private:
     SearchCompletionDelegate *m_searchCompletionDelegate;
     QStandardItemModel *m_searchCompletionSourceModel;

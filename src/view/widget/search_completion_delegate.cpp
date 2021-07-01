@@ -19,6 +19,11 @@ void SearchCompletionDelegate::paint(QPainter *painter, const QStyleOptionViewIt
         painter->setRenderHint(QPainter::Antialiasing, true);
 
         QVariant varErrorItem = index.data(Qt::DisplayRole);
+        //20210629 codereview
+        if (!varErrorItem.isValid()) {
+            return;
+        }
+
         SearchCompletionItemModel itemModel = varErrorItem.value<SearchCompletionItemModel>();
 
         QString strSearchKeyword = itemModel.strSearchKeyword;
@@ -46,7 +51,6 @@ void SearchCompletionDelegate::paint(QPainter *painter, const QStyleOptionViewIt
             rect.setHeight(option.rect.height());
             path.addRect(rect);
             DPalette pa = DApplicationHelper::instance()->palette(m_parentView);
-            DStyleHelper styleHelper;
             QColor fillColor = option.palette.color(cg, DPalette::Highlight);
             painter->fillPath(path, QBrush(fillColor));
 
