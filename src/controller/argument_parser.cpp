@@ -60,6 +60,11 @@ bool ArgumentParser::parseArguments()
     ManualOpenAdapter *adapter = new ManualOpenAdapter(proxy);
     Q_UNUSED(adapter);
 
+    //20210705 由于新版本dtk不启动dmanHelper,dman尝试启动dmanHelper
+    QDBusInterface(kManualSearchService,
+                   kManualSearchIface,
+                   kManualSearchService);
+
     //注册Open服务, 如果注册失败,则说明已存在一个dman.
     if (!conn.registerService(kManualOpenService)
             || !conn.registerObject(kManualOpenIface, proxy)) {
