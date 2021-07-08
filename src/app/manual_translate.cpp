@@ -45,7 +45,7 @@ int main(int argc, char **argv)
         {"boot-maker", "deepin-boot-maker"}, //启动盘制作工具
         {"clone", "deepin-clone"}, //备份还原工具
         {"file-manager", "dde-file-manager"}, //文件管理器
-        {"disk-manager ", "deepin-diskmanager "}, //磁盘管理器
+        {"disk-manager", "deepin-diskmanager"}, //磁盘管理器
 
         {"voice-recorder", "deepin-voice-recorder"}, //录音 **
         {"remote-assistance", "deepin-remote-assistance"}, //远程协助**
