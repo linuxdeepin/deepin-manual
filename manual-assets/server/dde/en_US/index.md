@@ -1,4 +1,4 @@
-# Desktop Environment|dde|
+
 
 ## Overview
 UnionTech OS(UnionTech operating system) is a beautiful, easy-to-use and reliable Linux desktop operating system. It is equipped with a series of original applications such as File Manager, Image Viewer, System Monitor, and so on, which not only offers you abundant entertainment experience but also meet your daily needs of learning and working. With continual improvement, UnionTech OS is becoming one of the most popular open-source operating systems in China.
@@ -21,7 +21,7 @@ Desktop is the main screen you see after logging in. On the desktop, you can cre
 
 ![0|contextmenu](fig/eu_contextmenu.png)
 
->![notes](../common/notes.svg)Notes: On the touchpad, move with four/five fingers downwards to display desktop, and move upwards immediately to hide which corresponds to the operation of **Super** + **D**. 
+
 
 ### Create New Folder/Document
 
@@ -78,13 +78,28 @@ You can set display scaling, screen resolution, brightness and so on from the de
 Select some elegant and fashionable wallpapers to beautify your desktop and make it distinctive.
 
 1. Right-click the desktop.
-2. Click **Set Wallpaper** to preview all the wallpapers.
+2. Click **Wallpaper and Screensaver** to preview all the wallpapers.
 3. Click your favorite one and it will apply in your desktop and screen lock.
 4. You can also choose **Only desktop** or **Only lock screen**.
 
 ![1|wallpaper](fig/eu_wallpaper.png)
 
 >![tips](../common/tips.svg)Tips: You can also set your favorite picture as wallpaper in an image viewer.
+
+
+
+### Set Screensaver
+The screensaver was used to protect the kinescope before, but now it is mainly for protecting personal privacy from peering.
+
+1. Right-click the desktop.
+2. Click **Wallpaper and Screensaver**, and select **Screensaver** to preview all the screensavers.
+3. Select one and click **Apply**, and set the **Wait**(waiting time) for the screensaver to start.
+4. You can also check the box of **Require a password on wakeup** for a better privacy protection.
+5. After that idle time, the screensaver will start.
+
+![1|screensaver](fig/eu_screensaver.png)
+
+
 
 ### Clipboard
 
@@ -150,18 +165,6 @@ You can place Dock in any direction of your desktop.
 ### Change Dock Height
 Drag the top edge to increase or decrease the height.
 
-### Show/Hide Dock
-
-You can hide the Dock in order to maximize the expansion of the desktop operating area. 
-
-1. Right-click the Dock and select **Status**.
-2. On the submenu, you can select:
-   - **Keep Shown** - display Dock all the time.
-   - **Keep Hidden** - hide Dock and display it only when hovering on the dock area.
-   - **Smart Hide** -  hide Dock automatically if the dock area is used.
-
-
-
 ### Show/Hide Plugins
 
 1. Right-click the Dock and select **Plugins**.
@@ -191,8 +194,6 @@ You can either click ![shutdown](../common/system-shutdown.svg) in Dock or click
 | ------------------------------------------------------------ | ------------------------------------------------------------ |
 | Shut down ![poweroff_normal](../common/poweroff_normal.svg)  | Shut down the computer.                                      |
 | Reboot ![reboot_normal](../common/reboot_normal.svg)         | Restart the computer.                                        |
-| Suspend ![suspend_normal](../common/suspend_normal.svg)      | The computer will run with low consumption.                  |
-| Hibernate ![sleep_hover](../common/sleep_hover.svg)          | "Hibernate" is mounted to system with swap partition. This option does not appear for systems without swap partition. |
 | Lock ![lock_normal](../common/lock_normal.svg)               | Lock the computer, or press **Super** + **L** to lock it.    |
 | Switch user ![userswitch_normal](../common/userswitch_normal.svg) | Log in with another user account.                            |
 | Log out ![logout_normal](../common/logout_normal.svg)        | Click it to clear up all information about the current account. |
@@ -225,8 +226,6 @@ In the trash, click **Empty** to permanently delete all the files in the trash.
 
 ## Launcher
 Launcher ![launcher](../common/deepin-launcher.svg)  helps you manage all the installed applications, where you can quickly find an application by category navigation or by a search.
-
-> ![notes](../common/notes.svg)Notes: arm architecture does not support startup menu setting for now.
 
 You can view newly installed applications in Launcher. The newly-installed ones are followed by a blue dot.
 
@@ -371,15 +370,11 @@ The account full name is shown in account list and system login interface and yo
 
 #### Privilege
 
-The first account has administrator privilege when you install the system. All other accounts you add after that are common users. One account can be grouped in many user groups.
+Adding administrator, common account and customized account is supported.
 
 ##### Group setting
 
-When you add or modify accounts, you can:
-
-- Select a group existing in the system.
-- Select the group with the same name as the current user.
-- Select the group with the same name as another user when the account was previously added. 
+When you add or modify accounts, you can select a group existing in the system.
 
 ### Display
 Set screen resolution, brightness, direction and display scaling properly to have the best visual effect.
@@ -396,17 +391,6 @@ When there is only one screen, you can adjust the brightness, resolution, refres
 
 2. In "Brightness" area, you can drag the slider to adjust the brightness.
    
-##### Adjust Color Temperature
-
-1. On the homepage of Control Center, click ![display_normal](../common/display_normal.svg).
-
-2. In "Color Temperature" area, you can:
-
-   - Switch on **Night Shift**, the screen hue will be auto-adjusted according to your location.
-   - Switch on **Change Color Temperature** is switched on, you can adjust the monitor brightness as you wish. 
-
->![notes](../common/notes.svg)Notes: When **Night Shift** is switched on, **Change Color Temperature** becomes unavailable automatically, and vice versa.
-
 ##### Set Display Scaling
 
 Set a proper display scale to have a normal display.
@@ -455,12 +439,7 @@ Operations are as follows:
 
 >![notes](../common/notes.svg)Notes: In multiple display mode, the sub-screens also support desktop icon display, right-click menu operation and other functions. 
 
-### Touch Screen
 
-If your computer has a touch screen, you can set your screen and adjust it.
-
-1. On the homepage of Control Center, click ![display_normal](../common/touchScreen.svg)to set your screen.
-3. Click **Confirm**. 
 
 ### Default Applications
 If you have installed several applications with similar functions, such as text editor, choose one of them to be the Default Applications to open that type of file.
@@ -581,7 +560,7 @@ To prevent others from scanning your network and cracking your password, you can
 
 #### Hotspot
 
-Hotspot changes the connected network signal to WLAN hotspot, so that other devices nearby can connect to the hotspot and surf the Internet. To enable hotspot, your computer must connect to a network and have a wireless network adapter.
+Hotspot changes the connected network signal to WLAN hotspot, so that other devices nearby can connect to the hotspot and surf the Internet. To enable hotspot, your computer must connect to a network and have a wireless network adapter that supports hotspot.
 
 1. On the homepage of Control Center, click ![network_normal](../common/network_normal.svg).
 2. Click **Personal Hotspot**.
@@ -590,6 +569,7 @@ Hotspot changes the connected network signal to WLAN hotspot, so that other devi
 
 
 #### Mobile Network
+
 If you are at a place without network, mobile network adapter is a useful tool to help you connect to the Internet as long as the place is covered by telephone signals.
 
 1. Plug the mobile network adapter into your computer USB port.
@@ -761,94 +741,40 @@ Setting the format of time and date is supported.
 
 ### Power Management
 
-Power management turns the system to a low-power state when inactive, thus making a long battery endurance for laptop users, and protects system security.
+In power management, you can set power options, such as "time to turn off monitor", "time to lock screen" and so on.
 
 ![0|power](fig/eu_power.png)
-
-#### Power Plans
-
-1. On the homepage of Control Center, click ![power_normal](../common/power_normal.svg).
-2. Click **General**.
-3. You can select **Balanced**, **Power Saver** and **High Performance**.
-
->![notes](../common/notes.svg)Notes: **High Performance** is displayed only when the computer supports high performance mode.
-
-#### Power Saving Settings
-To reduce the power consumption of your laptop, set your power saving mode.
-
-1. On the homepage of Control Center, click ![power_normal](../common/power_normal.svg).
-2. Click **General**.
-3. In **Power Saving Settings** area, you can:
-   - Switch on **Auto power saving on low battery**(only applicable for laptops).
-   - Switch on **Auto power saving on battery** (only applicable for laptops).
-   - Drag the slider of **Decrease brightness** to adjust brightness.
-
->![notes](../common/notes.svg)Notes: when **Auto power saving on battery** is switched off, the system enters **Balanced** mode directly.
-
-#### Wakeup Settings
-
-1. On the homepage of Control Center, click ![power_normal](../common/power_normal.svg).
-2. Click **General**.
-3. Switch on **Password is required to wake up the monitor** and **Password is required to wake up the computer** in **Wakeup Settings** area to improve the security.
 
 
 
 ####  Time to Turn Off Monitor
 
 1. On the homepage of Control Center, click ![power_normal](../common/power_normal.svg).
-2. Click **Plugged In** or **On Battery**.
+2. Click **Plugged In**.
 3. Set the time to turn off the monitor by dragging the slider in "Monitor will suspend after" area.
 
->![notes](../common/notes.svg)Notes: Laptop users can set different time for the same setting item under "Plugged In" and "On Battery".
 
-#### Time to Suspend
-
-1. On the homepage of Control Center, click ![power_normal](../common/power_normal.svg).
-2. Click **Plugged In** and **On Battery**.
-3. Set the time to suspend by dragging the slider in "Computer will suspend after" area.
-
->![tips](../common/tips.svg)Tips: For laptop users, you can select **Suspend** from the drop-down list after **When the lid is closed**.  
 
 #### Time to Lock Screen
 
 1. On the homepage of Control Center, click ![power_normal](../common/power_normal.svg).
-2. Click **Plugged In** and **On Battery**.
+2. Click **Plugged In**.
 3. Set the time to lock screen by dragging the slider in "Lock screen after" area.
 
-#### Set "When the lid is closed"
 
-1. On the homepage of Control Center, click ![power_normal](../common/power_normal.svg).
-2. Click **Plugged In** and **On Battery**.
-3. You can select **Suspend**, **Hibernate**, **Turn off the monitor** and **Do nothing** from the drop-down list after **When the lid is closed**.  
->![notes](../common/notes.svg)Notes: This function is only available for laptops.
 
 #### Power button settings
 
 1. On the homepage of Control Center, click ![power_normal](../common/power_normal.svg).
-2. Click **Plugged In** and **On Battery**.
-3. You can select **Shut down, Suspend, Hibernate, Turn off the monitor, Do nothing** from the drop-down list after **When pressing the power button**.
+2. Click **Plugged In**.
+3. You can select **Shut down, Turn off the monitor, Do nothing** from the drop-down list after **When pressing the power button**.
 
 Any operation done here will take effect immediately. At the same time, the system will notify the user that the power button setting is changed. 
 
-#### Set "Low Battery Notification"
 
-1. On the homepage of Control Center, click ![power_normal](../common/power_normal.svg).
-2. Click **On Battery**.
-3. Switch on **Low Battery Notification**. The system issues a low battery notification when the remaining battery power is below a set threshold (for example, 20%).
 
-You can adjust the threshold of low battery level by dragging the slider below "Low battery level".  You can adjust the threshold of auto suspend battery level by dragging the slider below "Auto suspend battery level".
-
->![notes](../common/notes.svg)Notes: This function is only available for laptops.
-
-#### Set "Auto suspend battery level"
-1. On the homepage of Control Center, click ![power_normal](../common/power_normal.svg).
-2. Click **On Battery**.
-3. Adjust the threshold of auto suspend battery level by dragging the slider below "Auto suspend battery level".
-
->![notes](../common/notes.svg)Notes: This function is only available for laptops.
-
-### Mouse and Touchpad
-Mouse and Touchpad are common computer input devices. Using the mouse, you can make the operation easier and faster. For laptop computer users, when there is no mouse, the touchpad can also be used to replace the mouse for operation. Some devices also support a pointer, which can operate the mouse without moving the finger away from the reference key. In **Mouse** setting module, users can set the mouse, touchpad and trackpoint to make the device experience more consistent with their own habits.
+### Mouse
+The mouse is the common computer input device. Using the mouse, you can make the operation easier and faster. In **Mouse** setting module, users can set the mouse to make the device experience more consistent with their own habits.
 
 ![0|mouse](fig/eu_mouse.png)
 
@@ -856,14 +782,12 @@ Mouse and Touchpad are common computer input devices. Using the mouse, you can m
 
 1. On the homepage of Control Center, click ![mouse_touchpad_normal](../common/mouse_touchpad_normal.svg).
 2. Click **General**.
-3. Switch on **Left Hand**, and adjust **Scrolling Speed**, **Double-click Speed** for both mouse and touchpad.
+3. Switch on **Left Hand**, and adjust **Scrolling Speed**, **Double-click Speed** for the mouse.
 
->![notes](../common/notes.svg)Notes: If "Left Hand" is enabled, left-click and right-click of the mouse and touchpad exchange.
+>![notes](../common/notes.svg)Notes: If "Left Hand" is enabled, left-click and right-click of the mouse exchange.
 
 #### Mouse
 After inserting or connecting the mouse, make relevant settings in the Control Center to make it more in line with your usage habits. 
-
->![notes](../common/notes.svg)Notes: If there is no touchpad, “Disable touchpad when a mouse is connected” will not be shown.
 
 1. On the homepage of Control Center, click ![mouse_touchpad_normal](../common/mouse_touchpad_normal.svg).
 2. Click **Mouse**.
@@ -874,20 +798,6 @@ After inserting or connecting the mouse, make relevant settings in the Control C
 >   - Turn on the mouse acceleration to improve the accuracy of the pointer. The moving distance of the mouse pointer on the screen will increase according to the acceleration of the moving speed. It can be turned on or off according to the usage.
 >   - If Natural Scrolling is enabled, when you scroll down, the page will scroll down, when you scroll up, the page will scroll up as well. 
 
-
-#### Touchpad
-
-If you are using a laptop,  in order to avoid mis-operation on the touchpad, you can switch on **Disable touchpad while typing** in **Mouse > General** interface, and switch on **Disable touchpad when a mouse is connected** in **Mouse > Mouse** interface.  
-
-You can also change **Pointer Speed**, and switch on **Natural Scrolling** for the touchpad.
-
-#### TrackPoint
-
-TrackPoint, also called pointing stick, is a small joystick used as a pointing device, typically mounted centrally in a laptop keyboard and used to control pointer movements on the screen.
-
-1. On the homepage of Control Center, click ![mouse_touchpad_normal](../common/mouse_touchpad_normal.svg).
-2. Click **TrackPoint**.
-3. Adjust **Pointer Speed** to a proper level.
 
 ### Keyboard and Language
 Set keyboard properties and select your keyboard layout to keep your typing habit. You can also adjust the keyboard layout according to the country and language, set up input method, change system language, and customize shortcuts here.
@@ -1020,7 +930,7 @@ You can view system version, authorization info, hardware info, and the agreemen
 
 1. On the homepage of Control Center, click ![system_info_normal](../common/system_info_normal.svg).
 2. Under **About This PC**, you can view system version, authorization and hardware information.
-3. If the system has not been activated, click **Activate** to activate the system.
+3. If the system has not been activated, use commands to activate it.
 
 #### Edition License
 
@@ -1101,6 +1011,8 @@ The activation mode of authorization management can be divided into online activ
 ##### Online activation
 
 ###### Try Full Version
+
+Each computer has only one chance to activate in trial period (automatic activation on startup by default), and the validity is 180 days from the day on activation. After that period, you can activate the system officially by purchasing serial number and other methods.
 
 1. Execute command **uos-activator-cmd  -t**.
 In Terminal, the following information is displayed: 

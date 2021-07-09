@@ -124,18 +124,22 @@ TEST_F(ut_search_completion_delegate_test, paint2)
     sv.setModel(&search_compeletion_model_);
 
     SearchCompletionDelegate *sd = new SearchCompletionDelegate(&sv);
-//    sv.setItemDelegate(sd);
+    sv.setItemDelegate(sd);
     QPainter *painter = new QPainter;
-    const QModelIndex index =  sv.model()->index(1, 1);
+    const QModelIndex index = sv.model()->index(0, 0);
     QStyleOptionViewItem  option;
 //    const QModelIndex index;
 
     option.state = QStyle::State_Selected;
-    Stub s;
-    s.set(ADDR(QModelIndex, isValid), stub_true);
+    //    Stub s;
+    //    s.set(ADDR(QModelIndex, isValid), stub_true);
 
     sd->paint(painter, option, index);
-    s.reset(ADDR(QModelIndex, isValid));
+    // s.reset(ADDR(QModelIndex, isValid));
+
+    option.state = QStyle::State_On;
+    sd->paint(painter, option, index);
+
     delete painter;
 }
 
