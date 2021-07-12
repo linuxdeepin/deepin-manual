@@ -72,7 +72,7 @@ TEST_F(ut_manual_proxy_test, getSystemManualDir)
 {
     QString str = m_mp->getSystemManualDir();
     QString tmp = "deepin-manual/manual-assets";
-    ASSERT_NE(str.indexOf(tmp), -1);
+    ASSERT_TRUE(str.contains(tmp));
 }
 
 TEST_F(ut_manual_proxy_test, getSystemManualList)
