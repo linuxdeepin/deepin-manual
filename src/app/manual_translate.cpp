@@ -27,7 +27,8 @@ int main(int argc, char **argv)
         {"system-monitor", "deepin-system-monitor"}, //系统监视器
         {"log-viewer", "deepin-log-viewer"}, //日志收集工具
         {"terminal", "deepin-terminal"}, //终端
-        {"app-store", "deepin-app-store"}, //应用商店
+        //{"app-store", "deepin-app-store"}, //应用商店
+        {"education-center", "deepin-app-store"}, //应用商店家庭版教育中心
         {"support", "uos-service-support"}, //服务与支持
         {"security-center", "deepin-defender"}, //安全中心
         {"phone-master", "deepin-phone-assistant"}, //手机助手
