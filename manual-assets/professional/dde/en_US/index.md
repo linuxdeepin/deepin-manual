@@ -9,7 +9,7 @@ UnionTech OS(UnionTech operating system) is a beautiful, easy-to-use and reliabl
 
 When you log into the system for the first time, a welcome program will automatically start.  Watch the introduction video to get new features, customize your desktop, enable the window effect and know more about UnionTech OS.
 
-![0|welcome](fig/welcome.png)
+![0|welcome](fig/p_welcome.png)
 
 Once login, you are experiencing UnionTech OS Desktop Environment, which is comprised of Desktop, Dock, Launcher, Control Center, and window manager. 
 
@@ -97,7 +97,7 @@ The screensaver was used to protect the kinescope before, but now it is mainly f
 
 1. Right-click the desktop.
 2. Click **Wallpaper and Screensaver**, and select **Screensaver** to preview all the screensavers.
-3. Select one and click **Apply**, and set the **Wait**(waiting time) for the screensaver to start.
+3. Select one and click **Apply**, and set the **WAlt**(wAlting time) for the screensaver to start.
 4. You can also check the box of **Require a password on wakeup** for a better privacy protection.
 5. After that idle time, the screensaver will start.
 
@@ -134,7 +134,7 @@ In the Dock, there are icons of Launcher, applications, system tray, and plugins
 | ![deepin-toggle-desktop](../common/deepin-toggle-desktop.svg) | Click to show the desktop. |
 | ![deepin-multitasking-view](../common/deepin-multitasking-view.svg) | Multitasking View - click to show workspaces. |
 | ![dde-file-manager](../common/dde-file-manager.svg) | File Manager - click to view files and folders on the disk. |
-| ![uosbrowser](../common/deepin_browser.svg) | Browser- click to open webpages. |
+| ![uosbrowser](../common/org.deepin.browser.svg) | Browser- click to open webpages. |
 | ![ deepin-album](../common/deepin-album.svg) | Album - import and manage photos. |
 | ![deepin-appstore](../common/deepin-appstore.svg) | Store - search and install applications. |
 | ![deepin-music](../common/deepin-music.svg) |  Music - play local songs.  |
@@ -183,8 +183,12 @@ You can hide the Dock in order to maximize the expansion of the desktop operatin
    - **Keep Hidden** - hide Dock and display it only when hovering on the dock area.
    - **Smart Hide** -  hide Dock automatically if the dock area is used.
 
->![notes](../common/notes.svg)Notes: If you are using a computer equipped with a touchscreen: 
-> when the Dock is set as "Always Hidden" or "Smart Hide", if the Dock is at the bottom, slide in upward from the bottom edge of the screen to call it out; and if the Dock is on the top, slide in downward from the upper edge of the screen to call it out. 
+>![notes](../common/notes.svg)Notes: If you are using a computer equipped with a touchscreen, when the Dock is set as "Always Hidden" or "Smart Hide": 
+>
+>- if the Dock is at the bottom, slide in upward from the bottom edge of the screen to call it out;
+>- if the Dock is on the top, slide in downward from the upper edge of the screen to call it out; 
+>- if the Dock is on the left side, slide in from the left edge of the screen towards the right to call it out;  
+>- if the Dock is on the right side, slide in from the right edge of the screen towards the left to call it out.
 
 ### Show/Hide Plugins
 
@@ -237,7 +241,7 @@ Text to Speech is set by default in Assistive Tools in Control Center. Only when
 
 Text to Speech is only available for the currently-selected texts and the operation steps are as follows:
 
-1. Select the texts, press  **Ctrl** + **AIt** + **P** on the keyboard or right-click **Text to Speech** to start reading.
+1. Select the texts, press  **Ctrl** + **Alt** + **P** on the keyboard or right-click **Text to Speech** to start reading.
 2. Click the speaker icon or right-click **Stop reading** to stop reading.
 
 >![notes](../common/notes.svg)Notes: If you select other texts during reading, the current speaker icon will be displayed in the newly-selected location. Click the speaker icon, use the shortcut key or right-click **Text to Speech**, the current reading will be interrupted and  it starts reading the newly-selected texts.
@@ -248,7 +252,7 @@ Translation is set by default (enabled) in Assistive Tools in Control Center. On
 
 Translation is only available for the currently-selected texts and the operation steps are as follows:
 
-1. Select the texts, press  **Ctrl** + **AIt** + **U** on the keyboard or right-click **Translate** to start translation.
+1. Select the texts, press  **Ctrl** + **Alt** + **U** on the keyboard or right-click **Translate** to start translation.
 
 >![notes](../common/notes.svg)Notes: It only supports Chinese-English and English-Chinese translation currently.
 
@@ -299,8 +303,6 @@ In the trash, click **Empty** to permanently delete all the files in the trash.
 
 ## Launcher
 Launcher ![launcher](../common/deepin-launcher.svg)  helps you manage all the installed applications, where you can quickly find an application by category navigation or by a search.
-
-> ![notes](../common/notes.svg)Notes: arm architecture does not support startup menu setting for now.
 
 You can view newly installed applications in Launcher. The newly-installed ones are followed by a blue dot.
 
@@ -516,7 +518,7 @@ When there is only one screen, you can adjust the brightness, resolution, refres
 1. On the homepage of Control Center, click ![display_normal](../common/display_normal.svg).
 
 2. In "Brightness" area, you can drag the slider to adjust the brightness.
-   
+
 ##### Adjust Color Temperature
 
 1. On the homepage of Control Center, click ![display_normal](../common/display_normal.svg).
@@ -721,7 +723,7 @@ To prevent others from scanning your network and cracking your password, you can
 
 #### Hotspot
 
-Hotspot changes the connected network signal to WLAN hotspot, so that other devices nearby can connect to the hotspot and surf the Internet. To enable hotspot, your computer must connect to a network and have a wireless network adapter.
+Hotspot changes the connected network signal to WLAN hotspot, so that other devices nearby can connect to the hotspot and surf the Internet. To enable hotspot, your computer must connect to a network and have a wireless network adapter that supports hotspot.
 
 1. On the homepage of Control Center, click ![network_normal](../common/network_normal.svg).
 2. Click **Personal Hotspot**.
@@ -1253,7 +1255,7 @@ Desktop AI Assistant  boosts your productivity by executing voice commands, such
 
    - Text to Speech: When there is audio input device available, Speech to Text is enabled by default. Otherwise it is disabled and hidden.
    - Show Speech Widget: It is disabled by default and is set not to display the speech widget only but can be woken up by the shortcut.
-   - Voice Gender: It is used to set the voice gender and supports male and female with female as default.
+   - Voice Gender: It is used to set the voice gender and supports male, female and children with female as default.
 
 #### Translation
 
@@ -1512,6 +1514,8 @@ You can either restore all settings or manually restore the previous backup data
 
 Boot menu is the grub menu for users to select an operating system to start. After selecting and confirming the boot option, your computer will load the system.
 
+> ![notes](../common/notes.svg)Notes: arm architecture does not support startup menu setting for now; mips architecture does not support modifying boot menu background for now.
+
 ##### Startup Delay
 
 When there are multiple systems in the computer, Startup Delay will be switched on by default, and the grub menu will keep 5 seconds for users to select.
@@ -1550,8 +1554,16 @@ In Developer Mode, you can have root access, perform sudo operation, install and
 User Experience Program collects your hardware, application and system information and help us better understand the user needs and thus improve user experiences. To have a better operating system, you are recommended to join the User Experience Program. And you are free to join and exit the program anytime.
 
 1. On the homepage of Control Center, click ![general](../common/general.svg).
+
 2. Switch on **User Experience Program**, and read the privacy policy.
+
 3. If you agree, check **Agree and Join User Experience Program**, and **Confirm**.
+
+#### Domain Management
+1. On the homepage of Control Center, click ![general](../common/general.svg).
+2. Click **Domain Management**。
+3. Switch on **Domain Management** and set **Domain Address**、**Port**。
+4. Click **Confirm**。
 
 ## Window Manager
 Window Manager can display different window contents in different workspaces. With the Window Manager, you can use multiple desktops at the same time to manage desktop windows in groups.
@@ -1576,7 +1588,7 @@ On the workspace interface, you can add workspace in the following ways:
    - Click **+** above workspace.
    - Press **Alt** + **+** on the keyboard.
 
->![notes](../common/notes.svg)Notes: When the workspace number has reached its limit, you cannot add more workspaces. 
+>![notes](../common/notes.svg)Notes: When the workspace number has reached its limit (4), you cannot add more workspaces. 
 
 ### Switch Workspace
 On the workspace interface and desktop, you can switch workspace in the following ways:
@@ -1615,7 +1627,7 @@ Move the windows to another workspace in the following ways:
    - On the workspace interface, drag and drop the window to the specified workspace.
    - On the desktop, press  **Super**+ **Shift** + ![Left](../common/Left.svg) / ![Right](../common/Right.svg) to move the current window to the Previous/Next workspace.
    - On the desktop, press  **Super** + **Shift** + Numeric Keys to move the current window to the workspace in the corresponding order.
-   - On the desktop, press  **AIt** + **Space** or right-click the window title bar to open the window menu, and select **Always on Visible Workspace** or **Move to Workspace Left/Right** to move the current window to the specified workspace.
+   - On the desktop, press  **Alt** + **Space** or right-click the window title bar to open the window menu, and select **Always on Visible Workspace** or **Move to Workspace Left/Right** to move the current window to the specified workspace.
 
 >![tips](../common/tips.svg)Tips: In the window menu, you can also minimize, maximize, move, resize, top or close the window.
 
@@ -1624,13 +1636,13 @@ Switch desktop windows in the current workspace as below.
 
 #### Fast Switch between Nearby Windows
 
-   - On the desktop, press  **AIt** + **Tab** at the same time and release, to switch between the current window and the nearby window quickly;
-   - On the desktop, press **AIt** + **Shift** + **Tab** at the same time and release, to fast switch between current window and the nearby window reversely;
+   - On the desktop, press  **Alt** + **Tab** at the same time and release, to switch between the current window and the nearby window quickly;
+   - On the desktop, press **Alt** + **Shift** + **Tab** at the same time and release, to fast switch between current window and the nearby window reversely;
 
 #### Fast Switch between Windows of the Same Type
 
    - On the desktop, press **Alt** +  ![~](../common/~.svg)  at the same time and release, to switch between the current window and other windows of the same type quickly;
-   - On the desktop, press  **AIt** + **Shift** + ![~](../common/~.svg) at the same time and release, to fast switch between current window and other windows in same type reversely;
+   - On the desktop, press  **Alt** + **Shift** + ![~](../common/~.svg) at the same time and release, to fast switch between current window and other windows in same type reversely;
 
 #### Switch among All Windows
 
