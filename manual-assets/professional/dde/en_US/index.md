@@ -1,7 +1,7 @@
 # Desktop Environment|dde|
 
 ## Overview
-UnionTech OS(UnionTech operating system) is a beautiful, easy-to-use and reliable Linux desktop operating system. It is equipped with a series of original applications such as File Manager, App Store, System Monitor, and etc, which not only offers you abundant entertainment experience but also meet your daily needs of learning and working. With continual improvement, UnionTech OS is becoming one of the most popular open-source operating systems in China.
+UnionTech OS(UnionTech operating system) is a beautiful, easy-to-use and reliable Linux desktop operating system. It is equipped with a series of original applications such as File Manager, App Store, System Monitor, and etc, which not only offers you abundant entertainment experience but also meet your daily needs of learning and working. With continual improvement, UnionTech OS is becoming one of the most popular open-source operating systems in China.
 
 ![1|desk](fig/p_desk.png)
 
@@ -576,7 +576,10 @@ Operations are as follows:
 1. Hold **Super** and press **P** or click to select the options. 
 2. Release the keys, the selected mode will take into effect.
 
->![notes](../common/notes.svg)Notes: In multiple display mode, the sub-screens also support desktop icon display, right-click menu operation and other functions. 
+>![notes](../common/notes.svg)Notes: In multiple display mode, 
+>
+>- the sub-screens also support desktop icon display, right-click menu operation and other functions.
+>- **Multiple displays** is displayed in the right-click menu of the Dock, which includes **Only on main screen**, and **On screen where the cursor is**.
 
 ### Touch Screen
 
@@ -741,7 +744,7 @@ If you are at a place without network, mobile network adapter is a useful tool t
 
 #### DSL/PPPoE Connections
 
-DSL is a dial-up connection using a standard phone line and analog modem to access the Internet. Configure the modem, plug the telephone line into the network interface of the computer, create a broadband dial-up connection, and enter the user name and password provided by the operator to dial up the Internet.
+DSL is a dial-up connection using a standard phone line and analog modem to access the Internet. Configure the modem, plug the telephone line into the network interface of the computer, create a broadband dial-up connection, and enter the user name and password provided by the operator to dial up the Internet.
 
 ##### Create a PPPoE Connection
 
@@ -853,6 +856,13 @@ Set your speaker and microphone properly to make you hear more comfortable and m
 2. Click **Sound Effects**, check the options you want to switch on the sound when the corresponding event occurs.
 
 >![tips](../common/tips.svg)Tips: Click to listen to the sound effect.
+
+#### Devices
+
+1. On the homepage of Control Center, click ![sound_normal](../common/sound_normal.svg).
+2. Click **Devices** to enable/disable the input devices and output devices.
+
+
 
 
 ### Bluetooth Settings
@@ -1279,7 +1289,7 @@ When there are system updates, it will be notified on the home page of Control C
 3. Click **Download and install updates** to download and install updates.
 4. After updating finishes, a hint appears telling you the system is updated successfully, 
 
->![notes](../common/notes.svg)Notes: You can click the button to pause and resume the downloading process. After updating finishes, a dialogue box pops up to remind you to **Reboot** or **Shut down** your computer to make the updates come into effect.
+>![notes](../common/notes.svg)Notes: You can click the button to pause and resume the downloading process. After updating finishes, a dialogue box pops up to remind you to **Reboot** or **Shut down** your computer to make the updates come into effect or **Cancel** the operations.
 
 #### Auto Download Updates
 
@@ -1298,7 +1308,9 @@ You can view system version, authorization info, hardware info, and the agreemen
 #### About This PC
 
 1. On the homepage of Control Center, click ![system_info_normal](../common/system_info_normal.svg).
-2. Under **About This PC**, you can view system version, authorization and hardware information.
+2. Under **About This PC**, you can:
+- click ![edit](../common/edit.svg) to modify the computer name;
+- view system version, authorization and hardware information.
 3. If the system has not been activated, click **Activate** to activate the system.
 
 #### Edition License
@@ -1331,11 +1343,11 @@ The inactive status includes "unactivated" and "unactivated after expiration".
 
 There are two ways to run the authorization management tool when the system has not been activated before:
 
-   - Click ![uos1](../common/uos1.svg)on the tray in the lower right corner to enter the interface.
+   - Click ![uos1](../common/authorize1.svg)on the tray in the lower right corner to enter the interface.
 
    - Open the **Control Center** to select the **System Info** and click **About This PC** to view the edition authorization column. Click **Activate** to enter the interface.
 
->![notes](../common/notes.svg)Notes: If the system is not activated, the authorization management icon ![uos1](../common/uos1.svg)will be always displayed on the tray in the lower right corner.
+>![notes](../common/notes.svg)Notes: If the system is not activated, the authorization management icon ![uos1](../common/authorize1.svg)will be always displayed on the tray in the lower right corner.
 
 #### Activation Method
 
@@ -1352,12 +1364,12 @@ The on-line activation is available only when the network is connected normally.
 
 There is only one chance of **Try Full Version** for each device and the valid period is 90 days calculated from the activation date. All the system functions are available in the trial period.
 
-1. Click  ![uos1](../common/uos1.svg)on the tray in the lower right corner to enter the interface.
+1. Click ![uos1](../common/authorize1.svg) on the tray in the lower right corner to enter the interface.
 
    ![0|probation1](fig/p_probation1.png)
 
 2. Click **Try Full Version** and go to the activation interface.
-3. Click **Activate Now** and pops up the confirmation dialogue once again. Click **Confirm** to successfully activate the interface and the icon in the dock is changed to ![uos2](../common/uos2.svg).
+3. Click **Activate Now** and pops up the confirmation dialogue once again. Click **Confirm** to successfully activate the interface and the icon in the dock is changed to ![uos2](../common/authorize2.svg).
 
 It is available to view the information such as status, expiration date and so on. The system could also be activated by serial number and license files.
 
@@ -1366,7 +1378,7 @@ It is available to view the information such as status, expiration date and so o
 
 ###### Input Serial Number
 
-1. Click  ![uos1](../common/uos1.svg)on the tray in the lower right corner to enter the interface.
+1. Click ![uos1](../common/authorize1.svg) on the tray in the lower right corner to enter the interface.
 2. Click **Input Serial Number** to input the correct activation code and click **Activate Now**.
    >![notes](../common/notes.svg)Notes: UnionTech OS supports both 16-digit and 25-digit serial numbers. 
 
@@ -1378,7 +1390,7 @@ It is available to view the information such as status, expiration date and so o
 
 ###### Import License File
 
-1. Click  ![uos1](../common/uos1.svg)on the tray in the lower right corner to enter the interface.
+1. Click ![uos1](../common/authorize1.svg)on the tray in the lower right corner to enter the interface.
 2. Click **Import License File**, select the correct license file in .key format in the File Manager and click **Activate Now**.  
 3. Click **Confirm** in the secondary confirming dialogue box and pops up the activation success interface.
 
@@ -1561,9 +1573,9 @@ User Experience Program collects your hardware, application and system informati
 
 #### Domain Management
 1. On the homepage of Control Center, click ![general](../common/general.svg).
-2. Click **Domain Management**。
-3. Switch on **Domain Management** and set **Domain Address**、**Port**。
-4. Click **Confirm**。
+2. Click **Domain Management**.
+3. Switch on **Domain Management** and set **Domain Address** and **Port**.
+4. Click **Confirm**.
 
 ## Window Manager
 Window Manager can display different window contents in different workspaces. With the Window Manager, you can use multiple desktops at the same time to manage desktop windows in groups.
