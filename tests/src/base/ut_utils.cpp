@@ -244,12 +244,22 @@ TEST_F(ut_utils_test, launcherInterface)
     delete m_utils;
 }
 
+QStringList stub_getSystemManualList()
+{
+    QStringList bytes;
+    bytes << "uos-service-support";
+    return bytes;
+}
 
 TEST_F(ut_utils_test, hasSelperSupport)
 {
 //    ASSERT_TRUE(m_utils->hasSelperSupport());
     Utils *m_utils = new Utils;
-    ASSERT_FALSE(m_utils->hasSelperSupport());
+    Stub s;
+    s.set(ADDR(Utils, getSystemManualList), stub_getSystemManualList);
+
+    ASSERT_TRUE(m_utils->hasSelperSupport());
+
     delete m_utils;
 }
 

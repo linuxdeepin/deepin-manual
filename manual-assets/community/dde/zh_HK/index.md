@@ -230,7 +230,7 @@
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
-> ![notes](../common/notes.svg) 說明：當系統存在多個賬戶時才顯示 **切換使用者** ![userswitch_normal](../common/userswitch_normal.svg)。
+> ![notes](../common/notes.svg) 說明：當系統存在多個帳戶時才顯示 **切換使用者** ![userswitch_normal](../common/userswitch_normal.svg)。
 
 ### 回收站
 
@@ -383,9 +383,9 @@
 - 搜索框：輸入關鍵字，單擊鍵盤上 **Enter** 鍵，搜索相應設置。
 - 主菜單：單擊 ![menu](../common/icon_menu.svg) 進入主菜單。在主菜單中，您可以設置窗口主題、查看版本或退出控制中心。
 
-### 賬號設置
+### 帳號設置
 
-在安裝系統時會創建一個賬戶，在控制中心的賬戶設置模塊可以修改賬戶設置或創建一個新賬戶。
+在安裝系統時會創建一個帳戶，在控制中心的帳戶設置模塊可以修改帳戶設置或創建一個新帳戶。
 
 ![0|account](fig/d_account.png)
 
@@ -395,21 +395,21 @@
 2. 單擊 **創建帳戶** 按鈕 ![add](../common/add.svg)。
 3. 輸入用戶名、密碼和重複密碼。
 4. 單擊 **創建**。
-5. 在授權對話框輸入當前賬號的密碼，新賬號就會添加到賬號列表中。
+5. 在授權對話框輸入當前帳號的密碼，新帳號就會添加到帳號列表中。
 
 #### 更改頭像
 
 1. 在控制中心首頁，單擊 ![account_normal](../common/account_normal.svg)。
 2. 單擊列表中的帳號。
-3. 單擊賬號頭像，選擇一個頭像或添加本地頭像，頭像就替換完成了。
+3. 單擊帳號頭像，選擇一個頭像或添加本地頭像，頭像就替換完成了。
 
 #### 設置全名
 
-賬號全名會顯示在賬號列表和系統登錄界面，可根據需要設置。
+帳號全名會顯示在帳號列表和系統登錄界面，可根據需要設置。
 
 1. 在控制中心首頁，單擊 ![account_normal](../common/account_normal.svg)。
 2. 單擊列表中的帳號。
-3. 單擊 **設置全名** 後的 ![edit](../common/edit.svg)，輸入賬號全名。
+3. 單擊 **設置全名** 後的 ![edit](../common/edit.svg)，輸入帳號全名。
 
 #### 修改密碼
 
@@ -442,7 +442,7 @@
 
 #### 設置指紋ID
 
-指紋ID可以用來登錄系統、解鎖螢幕、特殊操作授權。當需要輸入賬號密碼時，請掃描您的指紋。
+指紋ID可以用來登錄系統、解鎖螢幕、特殊操作授權。當需要輸入帳號密碼時，請掃描您的指紋。
 
 1. 在控制中心首頁，單擊 ![account_normal](../common/account_normal.svg)。
 2. 單擊當前帳號。
@@ -456,10 +456,10 @@
 
 1. 在控制中心首頁，單擊 ![account_normal](../common/account_normal.svg)。
 2. 單擊其他未登錄的帳戶。
-3. 單擊 **刪除賬號** 。
+3. 單擊 **刪除帳號** 。
 4. 在彈出的確認界面中單擊 **刪除**。
 
-> ![attention](../common/attention.svg) 注意：已登錄的賬號無法被刪除。
+> ![attention](../common/attention.svg) 注意：已登錄的帳號無法被刪除。
 
 ### Deepin ID 
 
@@ -739,7 +739,7 @@ VPN即虛擬專用網絡，其主要功能是在公用網絡上建立專用網�
 
 1. 在控制中心首頁，單擊 ![network_normal](../common/network_normal.svg)。
 2. 單擊 **VPN**，選擇 **添加VPN** 按鈕![add](../common/add.svg) 或 **導入VPN** 按鈕![import](../common/import.svg)。
-3. 選擇VPN協議類型，並輸入名稱、網關、賬號、密碼等訊息。（導入VPN會自動填充訊息）
+3. 選擇VPN協議類型，並輸入名稱、網關、帳號、密碼等訊息。（導入VPN會自動填充訊息）
 4. 單擊 **保存**，系統自動嘗試連接VPN網絡。
 5. 您可以將VPN設置導出，備用或共享給其他用戶。
 

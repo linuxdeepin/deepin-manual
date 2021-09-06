@@ -134,7 +134,7 @@ In the Dock, there are icons of Launcher, applications, system tray, and plugins
 | ![deepin-toggle-desktop](../common/deepin-toggle-desktop.svg) | Click to show the desktop. |
 | ![deepin-multitasking-view](../common/deepin-multitasking-view.svg) | Multitasking View - click to show workspaces. |
 | ![dde-file-manager](../common/dde-file-manager.svg) | File Manager - click to view files and folders on the disk. |
-| ![uosbrowser](../common/deepin_browser.svg) | Browser- click to open webpages. |
+| ![uosbrowser](../common/org.deepin.browser.svg) | Browser- click to open webpages. |
 | ![ deepin-album](../common/deepin-album.svg) | Album - import and manage photos. |
 | ![deepin-appstore](../common/deepin-appstore.svg) | App Store - search and install applications. |
 | ![deepin-music](../common/deepin-music.svg) |  Music - play local songs.  |
@@ -180,8 +180,12 @@ You can hide the Dock in order to maximize the expansion of the desktop operatin
 - **Keep Hidden** - hide Dock and display it only when hovering on the dock area.
 - **Smart Hide** -  hide Dock automatically if the dock area is used.
 
-> ![notes](../common/notes.svg)Notes: If you are using a computer equipped with a touchscreen: 
-> when the Dock is set as "Always Hidden" or "Smart Hide", if the Dock is at the bottom, slide in upward from the bottom edge of the screen to call it out; and if the Dock is on the top, slide in downward from the upper edge of the screen to call it out. 
+> ![notes](../common/notes.svg)Notes:  If you are using a computer equipped with a touchscreen, when the Dock is set as "Always Hidden" or "Smart Hide":
+>
+> - if the Dock is at the bottom, slide in upward from the bottom edge of the screen to call it out; 
+> - if the Dock is on the top, slide in downward from the upper edge of the screen to call it out; 
+> - if the Dock is on the left side, slide in from the left edge of the screen towards the right to call it out;  
+> - if the Dock is on the right side, slide in from the right edge of the screen towards the left to call it out.
 
 ### Show/Hide Plugins
 
@@ -246,8 +250,6 @@ In the trash, click **Empty** to permanently delete all the files in the trash.
 
 ## Launcher
 Launcher ![launcher](../common/deepin-launcher.svg)  helps you manage all the installed applications, where you can quickly find an application by category navigation or by a search.
-
-> ![notes](../common/notes.svg)Notes: arm architecture does not support startup menu setting for now.
 
 You can view newly installed applications in Launcher. The newly-installed ones are followed by a blue dot.
 
@@ -648,7 +650,7 @@ To prevent others from scanning your network and cracking your password, you can
 
 #### Hotspot
 
-Hotspot changes the connected network signal to WLAN hotspot, so that other devices nearby can connect to the hotspot and surf the Internet. To enable hotspot, your computer must connect to a network and have a wireless network adapter.
+Hotspot changes the connected network signal to WLAN hotspot, so that other devices nearby can connect to the hotspot and surf the Internet. To enable hotspot, your computer must connect to a network and have a wireless network adapter that supports hotspot.
 
 1. On the homepage of Control Center, click ![network_normal](../common/network_normal.svg).
 2. Click **Personal Hotspot**.
@@ -1278,6 +1280,8 @@ You can either restore all settings or manually restore the previous backup data
 
 Boot menu is the grub menu for users to select an operating system to start. After selecting and confirming the boot option, your computer will load the system.
 
+> ![notes](../common/notes.svg)Notes: arm architecture does not support startup menu setting for now; mips architecture does not support modifying boot menu background for now.
+
 ##### Startup Delay
 
 When there are multiple systems in the computer, Startup Delay will be switched on by default, and the grub menu will keep 5 seconds for users to select.
@@ -1322,7 +1326,7 @@ On the workspace interface, you can add workspace in the following ways:
 - Click **+** above workspace.
 - Press **Alt** + **+** on the keyboard.
 
-> ![notes](../common/notes.svg)Notes: When the workspace number has reached its limit, you cannot add more workspaces. 
+> ![notes](../common/notes.svg)Notes: When the workspace number has reached its limit (4), you cannot add more workspaces. 
 
 ### Switch Workspace
 On the workspace interface and desktop, you can switch workspace in the following ways:
