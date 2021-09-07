@@ -46,7 +46,7 @@ int main(int argc, char **argv)
     qputenv("DXCB_FAKE_PLATFORM_NAME_XCB", "true");
     //禁用GPU
     qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu");
-    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--single-process");
+    //qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--single-process");
     //所有进程类型禁用沙箱..此配置开启禁用gpu后无效
 //    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--no-sandbox");
     //龙芯机器配置,使得DApplication能正确加载QTWEBENGINE
