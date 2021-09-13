@@ -18,6 +18,7 @@
 #include "ut_jscontext.h"
 #include "../src/view/jscontext.h"
 
+#include <QSignalSpy>
 
 ut_JsContext::ut_JsContext()
 {
@@ -36,5 +37,9 @@ void ut_JsContext::TearDown()
 
 TEST_F(ut_JsContext, recvParseMsg)
 {
+    QSignalSpy spy(m_jc, SIGNAL(parseMsg(QString, QString)));
     m_jc->recvParseMsg("aaaaa", "path");
+    QList<QVariant> argu = spy.takeFirst();
+    ASSERT_EQ(argu.at(0).toString(), "aaaaa");
+    ASSERT_EQ(argu.at(1).toString(), "path");
 }

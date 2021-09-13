@@ -118,7 +118,8 @@ FILE (GLOB allTestSource
 
 #Include all app source files
 FILE (GLOB dmanCppFiles
-    ../src/base/*.cpp
+    ../src/base/consts.cpp
+    ../src/base/utils.cpp
     ../src/controller/*.cpp
     ../src/dbus/*.cpp
     ../src/dbus/dbusvariant/*.cpp
@@ -127,7 +128,8 @@ FILE (GLOB dmanCppFiles
     ../src/view/widget/*.cpp)
 
 FILE (GLOB dmanHeaderFiles
-    ../src/base/*.h
+    ../src/base/consts.h
+    ../src/base/utils.h
     ../src/controller/*.h
     ../src/dbus/*.h
     ../src/dbus/dbusvariant/*.h

@@ -1,21 +1,25 @@
 #include "ut_manual_search_adapter.h"
 #include "../src/dbus/manual_search_adapter.h"
+
 #include <QWidget>
 
 ut_ManualSearchAdapter::ut_ManualSearchAdapter()
 {
 }
 
+void ut_ManualSearchAdapter::OnNewWindowOpen(const QString &data)
+{
+    isOnNewWindowOpen = true;
+}
+
 void ut_ManualSearchAdapter::SetUp()
 {
-    wiget = new QWidget();
-    msAdapter = new ManualSearchAdapter(wiget);
+    msAdapter = new ManualSearchAdapter(this);
 }
 
 void ut_ManualSearchAdapter::TearDown()
 {
     delete msAdapter;
-    delete wiget;
 }
 
 TEST_F(ut_ManualSearchAdapter, ManualExists)
@@ -27,4 +31,5 @@ TEST_F(ut_ManualSearchAdapter, ManualExists)
 TEST_F(ut_ManualSearchAdapter, OnNewWindowOpen)
 {
     msAdapter->OnNewWindowOpen("deepin");
+    ASSERT_TRUE(isOnNewWindowOpen);
 }

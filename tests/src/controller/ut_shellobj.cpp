@@ -35,5 +35,12 @@ void ut_shellObj::TearDown()
 
 TEST_F(ut_shellObj, execSystem)
 {
-    m_so->execSystem("ls");
+    m_so->execSystem("touch /tmp/1.txt");
+    sleep(1);
+    QFileInfo fileinfo("/tmp/1.txt");
+    ASSERT_TRUE(fileinfo.exists());
+    m_so->execSystem("rm /tmp/1.txt");
+    sleep(1);
+    QFile fileinfo1("/tmp/1.txt");
+    ASSERT_FALSE(fileinfo1.exists());
 }

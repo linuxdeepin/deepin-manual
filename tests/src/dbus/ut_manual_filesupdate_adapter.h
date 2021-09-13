@@ -22,14 +22,18 @@
 #include <QTest>
 
 class ManualFilesUpdateAdapter;
-class ut_ManualFilesUpdateAdapter :public testing::Test
+class ut_ManualFilesUpdateAdapter : public QObject
+    , public testing::Test
 {
+    Q_OBJECT
 public:
     ut_ManualFilesUpdateAdapter();
     virtual void SetUp() override;
     virtual void TearDown() override;
     ManualFilesUpdateAdapter *adapter = nullptr;
-    QWidget *widget = nullptr;
+    bool isOnFilesUpdate = false;
+public slots:
+    void OnFilesUpdate(const QStringList &list);
 };
 
 #endif // UT_MANUAL_FILESUPDATE_ADAPTER_H

@@ -44,10 +44,10 @@ int main(int argc, char **argv)
     QDBusConnection conn = QDBusConnection::sessionBus();
     if (!conn.registerService(kManualSearchService)
             || !conn.registerObject(kManualSearchIface, &search_obj)) {
-        qCritical() << "dman-search failed to register dbus service";
+        qCritical() << "dmanHelper failed to register dbus service";
         return -1;
     } else {
-        qDebug() << "dman-search register dbus service success!";
+        qDebug() << "dmanHelper register dbus service success!";
     }
 
     helperManager obj;

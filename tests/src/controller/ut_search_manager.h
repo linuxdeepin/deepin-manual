@@ -27,6 +27,7 @@ class ut_search_manager_test : public ::testing::Test
 {
 public:
     ut_search_manager_test();
+    QString stub_writableLocation();
 };
 
 #endif // UT_SEARCH_MANAGER_TEST_H

@@ -16,9 +16,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "ut_search_completion_delegate.h"
-
 #include "view/widget/search_completion_delegate.h"
-
 #include "view/widget/search_completion_listview.h"
 #include "controller/search_result.h"
 #include "src/third-party/stub/stub.h"
@@ -135,6 +133,8 @@ TEST_F(ut_search_completion_delegate_test, paint2)
     //    s.set(ADDR(QModelIndex, isValid), stub_true);
 
     sd->paint(painter, option, index);
+    QPixmap pix = sv.grab(QRect(QPoint(0, 0), QSize(0, 0)));
+
     // s.reset(ADDR(QModelIndex, isValid));
 
     option.state = QStyle::State_On;
@@ -190,6 +190,7 @@ TEST_F(ut_search_completion_delegate_test, sizeHint)
 
     sd->paint(painter, option, index);
     QSize sizehit = sd->sizeHint(option, index);
+    ASSERT_TRUE(sizehit.height() > 0);
 
     s.reset(ADDR(QModelIndex, isValid));
     delete painter;

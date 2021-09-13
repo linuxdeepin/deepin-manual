@@ -413,20 +413,6 @@ QStringList Utils::systemToOmit(Dtk::Core::DSysInfo::UosEdition type)
     return retList;
 }
 
-/**
- * @brief Utils::isMostPriority 判断当前文件是否为最优先级文件
- * @param mdPath
- * @param morePriorityPath
- * @return
- */
-bool Utils::isMostPriority(const QString &mdPath, QString &morePriorityPath)
-{
-    Q_UNUSED(mdPath);
-    Q_UNUSED(morePriorityPath);
-
-    return  true;
-}
-
 bool Utils::activeWindow(quintptr winId)
 {
     bool bsuccess = true;
@@ -466,8 +452,10 @@ QString Utils::mkMutiDir(const QString &path)
     QString parentDir = mkMutiDir(path.mid(0, path.lastIndexOf('/')));
     QString dirname = path.mid(path.lastIndexOf('/') + 1);
     QDir parentPath(parentDir);
-    if (!dirname.isEmpty())
-        parentPath.mkpath(dirname);
+    if (!dirname.isEmpty()) {
+        bool ret = parentPath.mkpath(dirname);
+        qDebug() << "mkpath result:" << ret << dirname;
+    }
     return parentDir + "/" + dirname;
 }
 
@@ -628,15 +616,13 @@ DPalette ExApplicationHelper::palette(const QWidget *widget, const QPalette &bas
 
     DPalette palette;
 
-    do {
-        // 存在自定义palette时应该根据其自定义的palette获取对应色调的DPalette
-        const QPalette &wp = widget->palette();
+    // 存在自定义palette时应该根据其自定义的palette获取对应色调的DPalette
+    const QPalette &wp = widget->palette();
 
-        palette = standardPalette(toColorType(wp));
+    palette = standardPalette(toColorType(wp));
 
-        // 关注控件palette改变的事件
-        const_cast<QWidget *>(widget)->installEventFilter(const_cast<ExApplicationHelper *>(this));
-    } while (false);
+    // 关注控件palette改变的事件
+    const_cast<QWidget *>(widget)->installEventFilter(const_cast<ExApplicationHelper *>(this));
 
     return palette;
 }

@@ -20,7 +20,10 @@ void ut_ManualOpenInterface::TearDown()
 
 TEST_F(ut_ManualOpenInterface, ManualOpenInterface)
 {
-    interface->Open("lancher");
-    interface->Search("lancher");
-    interface->ShowManual("lancher");
+    QDBusPendingReply<bool> reply = interface->Open("lancher");
+    ASSERT_TRUE(!reply.isValid());
+    reply = interface->Search("lancher");
+    ASSERT_TRUE(!reply.isValid());
+    reply = interface->ShowManual("lancher");
+    ASSERT_TRUE(!reply.isValid());
 }

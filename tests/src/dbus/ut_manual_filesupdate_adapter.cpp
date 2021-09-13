@@ -24,14 +24,17 @@ ut_ManualFilesUpdateAdapter::ut_ManualFilesUpdateAdapter()
 
 void ut_ManualFilesUpdateAdapter::SetUp()
 {
-    widget = new QWidget;
-    adapter = new ManualFilesUpdateAdapter(widget);
+    adapter = new ManualFilesUpdateAdapter(this);
+}
+
+void ut_ManualFilesUpdateAdapter::OnFilesUpdate(const QStringList &list)
+{
+    isOnFilesUpdate = true;
 }
 
 void ut_ManualFilesUpdateAdapter::TearDown()
 {
     delete adapter;
-    delete widget;
 }
 
 TEST_F(ut_ManualFilesUpdateAdapter, OnFilesUpdate)
@@ -40,4 +43,5 @@ TEST_F(ut_ManualFilesUpdateAdapter, OnFilesUpdate)
     list << "aaa";
     list << "bb";
     adapter->OnFilesUpdate(list);
+    ASSERT_TRUE(isOnFilesUpdate);
 }

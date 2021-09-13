@@ -3,6 +3,7 @@
 #include "src/third-party/stub/stub.h"
 
 #include <QLocale>
+
 ut_i18n_proxy::ut_i18n_proxy()
 {
 

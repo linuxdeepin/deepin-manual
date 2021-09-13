@@ -16,15 +16,13 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "ut_search_completion_window.h"
-
 #include "view/widget/search_completion_window.h"
 #include "view/widget/search_button.h"
 #include "view/web_window.h"
 #include "base/utils.h"
+#include "src/third-party/stub/stub.h"
+
 #include <DWindowManagerHelper>
-#include "../../third-party/stub/stub.h"
-
-
 
 ut_search_completion_window_test::ut_search_completion_window_test()
 {
@@ -320,14 +318,7 @@ TEST_F(ut_search_completion_window_test, paintEvent)
 
 
 }
-TEST_F(ut_search_completion_window_test, paintEvent2)
-{
-    SearchCompletionWindow sw;
-//    DPalette pa = ExApplicationHelper::instance()->palette(sw.window());
-//    QColor fillColor = pa.color(DPalette::FrameBorder);
-    QPaintEvent *event;
-    sw.paintEvent(event);
-}
+
 TEST_F(ut_search_completion_window_test, onResultListClicked)
 {
     SearchCompletionWindow sw;

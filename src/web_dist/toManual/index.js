@@ -48146,7 +48146,6 @@ var App = function (_React$Component) {
                 global.qtObjects.settings.fontChangeRequested.connect(_this2.onFontChange.bind(_this2));
                 console.log("finsh global.qtObjects = channel.objects...");
                 global.qtObjects.manual.finishChannel();
-                global.qtObjects.manual.renderFinish();
             });
         }
     }, {
@@ -50248,10 +50247,10 @@ var Items = function (_Component) {
 
       global.qtObjects.manual.getAppIconPath(desktopname, function (logopath) {
         //按约定会在图标主题放置dde图标，但为保险起见如果未获取到则取common中的
-        global.qtObjects.manual.LogPrint("sbkebcmj");
+        //global.qtObjects.manual.LogPrint("sbkebcmj");
         if (logopath == '' && desktopname == "dde") {
           logopath = path + '../common/dde.svg';
-          global.qtObjects.manual.LogPrint("logopath:" + logopath);
+          //global.qtObjects.manual.LogPrint("logopath:"+ logopath);         
         }
         _this.setState({ logo: logopath });
       });

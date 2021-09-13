@@ -20,11 +20,12 @@
 
 #include "gtest/gtest.h"
 
+#include <DApplicationHelper>
+#include <DSysInfo>
+
 #include <QTest>
 #include <QObject>
 #include <QTimer>
-#include <DApplicationHelper>
-#include <DSysInfo>
 
 class Utils;
 
@@ -34,7 +35,7 @@ class ut_utils_test : public QObject, public::testing::Test
 public:
     ut_utils_test();
 
-    static Dtk::Core::DSysInfo::DeepinType stub_deepinType()
+    static Dtk::Core::DSysInfo::DeepinType stub_deepinTypeServer()
     {
         return Dtk::Core::DSysInfo::DeepinServer;
     }
@@ -64,6 +65,10 @@ public:
         return "ug_CN";
     }
 
+    static QString stub_LocalNameug_EU()
+    {
+        return "en_us";
+    }
 
     static bool stub_isValid();
 

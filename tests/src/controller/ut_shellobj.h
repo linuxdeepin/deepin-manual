@@ -18,8 +18,9 @@
 #ifndef UT_SHELLOBJ_H
 #define UT_SHELLOBJ_H
 
-#include <QObject>
 #include "gtest/gtest.h"
+
+#include <QObject>
 #include <QtTest>
 
 class shellObj;

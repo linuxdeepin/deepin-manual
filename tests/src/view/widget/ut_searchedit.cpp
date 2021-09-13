@@ -16,10 +16,9 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "ut_searchedit.h"
+
 #include <QToolButton>
 #include <QAction>
-
-
 
 ut_SearchEdit_test::ut_SearchEdit_test()
 {

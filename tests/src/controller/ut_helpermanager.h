@@ -19,9 +19,11 @@
 #define UT_HELPERMANAGER_H
 
 #include "gtest/gtest.h"
+
 #include <QObject>
 #include <QTest>
 #include <QWebEngineView>
+#include <QStandardPaths>
 
 class helperManager;
 
@@ -36,6 +38,8 @@ public:
     helperManager *m_hm = nullptr;
     QWebEnginePage* stub_page();
     void stub_setWeb(QWebChannel * webchannel);
+    QString stub_writableLocation(QStandardPaths::StandardLocation type);
+
     QWebChannel * webchannel = nullptr;
 
 };

@@ -762,8 +762,8 @@ void SearchDb::insertFilesTimeEntry(const QStringList &listMdPath, const QString
         p_->db.rollback();
         qCritical() << "Failed to insert fileTime " << query.lastError().text();
     } else {
-        p_->db.commit();
-        qCritical() << "insert fileTime";
+        bool ret = p_->db.commit();
+        qCritical() << "insert fileTime" << ret;
     }
 }
 
