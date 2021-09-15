@@ -384,7 +384,7 @@ TEST_F(ut_manual_proxy_test, appToPath)
 
     st.set(ADDR(Utils, systemToOmit), ADDR(ut_manual_proxy_test, stub_entryList));
     st.set(ADDR(Dtk::Core::DSysInfo, deepinType), stub_deepinTypeDeepinPersonal);
-    path = mp.appToPath("dde");
+    path = mp.appToPath("ceshi");
     ASSERT_TRUE(path.compare("error") == 0);
     st.reset(ADDR(Dtk::Core::DSysInfo, deepinType));
 

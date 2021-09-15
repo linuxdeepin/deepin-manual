@@ -196,11 +196,25 @@ QString ManualProxy::appToPath(const QString &appName)
         mdList.append(appPath + "/" + QString("%1.md").arg(appNameT));
     }
 
-#if 1 //旧文案结构兼容
     QString oldMdPath = assetPath;
-    if (Dtk::Core::DSysInfo::DeepinServer == Dtk::Core::DSysInfo::deepinType()) {
+
+#if (DTK_VERSION > DTK_VERSION_CHECK(5, 4, 12, 0))
+    if (Dtk::Core::DSysInfo::UosServer == Dtk::Core::DSysInfo::uosType()) {
         oldMdPath += "/server";
-    } else if (Dtk::Core::DSysInfo::DeepinPersonal == Dtk::Core::DSysInfo::deepinType()) {
+    } else if (Dtk::Core::DSysInfo::UosHome == Dtk::Core::DSysInfo::uosEditionType()) {
+        oldMdPath += "/personal";
+    } else if (Dtk::Core::DSysInfo::UosEducation == Dtk::Core::DSysInfo::uosEditionType()) {
+        oldMdPath += "/education";
+    } else if (Dtk::Core::DSysInfo::UosCommunity == Dtk::Core::DSysInfo::uosEditionType()) {
+        oldMdPath += "/community";
+    } else {
+        oldMdPath += "/professional";
+    }
+#else
+    Dtk::Core::DSysInfo::DeepinType nType = Dtk::Core::DSysInfo::deepinType();
+    if (Dtk::Core::DSysInfo::DeepinServer == nType) {
+        oldMdPath += "/server";
+    } else if (Dtk::Core::DSysInfo::DeepinPersonal == nType) {
         oldMdPath += "/personal";
     } else {
         if (Dtk::Core::DSysInfo::isCommunityEdition()) {
@@ -209,10 +223,12 @@ QString ManualProxy::appToPath(const QString &appName)
             oldMdPath += "/professional";
         }
     }
+
+#endif
     oldMdPath.append("/").append(appName).append("/");
     oldMdPath = getAppLocalDir(oldMdPath);
     mdList.append(oldMdPath.append("/index.md"));
-#endif
+
     qInfo() << mdList;
     //初始化赋值，如果为空字符，web层路径请求依旧能onload成功...
     QString ret = "error";
