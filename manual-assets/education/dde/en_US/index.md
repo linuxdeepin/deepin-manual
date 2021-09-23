@@ -1,4 +1,4 @@
-# Desktop Environment|../common/dde.svg|
+# Desktop Environment|dde|
 
 ## Overview
 
