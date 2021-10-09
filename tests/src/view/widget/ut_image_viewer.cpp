@@ -98,5 +98,8 @@ TEST_F(ut_image_viewer_test, mousePressEvent)
 TEST_F(ut_image_viewer_test, paintEvent)
 {
     ImageViewer iv;
-    iv.paintEvent(nullptr);
+    iv.setFixedSize(600, 600);
+    QPixmap pixmap(iv.size());
+    iv.render(&pixmap);
+    EXPECT_EQ(pixmap.size(), iv.size());
 }

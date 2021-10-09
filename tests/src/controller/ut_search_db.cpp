@@ -581,6 +581,7 @@ TEST_F(ut_search_db_test, deleteSearchInfo)
     icount = query.value(0).toInt();
     query.next();
     ASSERT_TRUE(icount > 0);
+    db.close();
 }
 
 TEST_F(ut_search_db_test, highlightKeyword)
