@@ -318,7 +318,7 @@ endif ()
 #set(ISO_TYPE "community")
 #set(ISO_TYPE "server")
 #set(ISO_TYPE "personal")
-set(ISO_TYPE "education")
+#set(ISO_TYPE "education")
 
 
 ## Installation
@@ -333,8 +333,8 @@ file(GLOB QM_FILES  ${CMAKE_SOURCE_DIR}/translations/deepin-manual*.qm)
 install(FILES ${QM_FILES}
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual/translations/)
 
-install(DIRECTORY ${CMAKE_SOURCE_DIR}/manual-assets/${ISO_TYPE}
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets/)
+#install(DIRECTORY ${CMAKE_SOURCE_DIR}/manual-assets/${ISO_TYPE}
+#        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets/)
 
 install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/web_dist
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)

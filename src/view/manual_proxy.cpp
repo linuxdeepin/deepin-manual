@@ -247,6 +247,13 @@ QString ManualProxy::appToPath(const QString &appName)
     return ret;
 }
 
+
+//根据dde子项未匹配到md key则翻译
+QString ManualProxy::translateTitle(const QString &titleUS)
+{
+    return Utils::translateTitle(titleUS);
+}
+
 //根据应用desktop文件解析图标名称并获取图标路径
 QString ManualProxy::getAppIconPath(const QString &desktopname)
 {

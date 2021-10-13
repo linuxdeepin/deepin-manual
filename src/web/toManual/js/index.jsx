@@ -37,10 +37,10 @@ class Item extends Component {
    
     myPromise.then(()=>{
       global.readFile(filePath, data => {
-        
+
         let [title, desktopname] = data
           .substr('# '.length, data.indexOf('\n'))
-          .split('|');   
+          .split('|');
           
      global.qtObjects.manual.getAppIconPath(desktopname,(logopath) =>{
        //按约定会在图标主题放置dde图标，但为保险起见如果未获取到则取common中的

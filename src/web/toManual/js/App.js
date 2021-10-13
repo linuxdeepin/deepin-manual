@@ -402,11 +402,33 @@ class App extends React.Component {
                         let d = document.createElement('div');
                         d.innerHTML = html;
                         let dlist = d.querySelectorAll(`[text="${title}"]`);
-                        let hashID = 'h0';
-                        for (let i = 0; i < dlist.length; i++) {                           
-                                hashID = dlist[i].id;                          
+                        if(dlist.length == 0)
+                        {
+                            var translatePromise = new Promise(function(resolve, reject) {
+                                global.qtObjects.manual.translateTitle(title, function(titleTr) {
+                                    title = titleTr;
+                                    resolve()
+                                })
+                            });
+
+                            translatePromise.then(() => {
+                                dlist = d.querySelectorAll(`[text="${title}"]`);
+                                let hashID = 'h0';
+                                for (let i = 0; i < dlist.length; i++) {                           
+                                        hashID = dlist[i].id;                          
+                                }
+                                global.open(file, hashID);
+                            });
                         }
-                        global.open(file, hashID);
+                        else
+                        { 
+                            let hashID = 'h0';
+                            for (let i = 0; i < dlist.length; i++) {                           
+                                    hashID = dlist[i].id;                          
+                            }
+                            global.open(file, hashID);}
+                        
+                       
                     })
                 });
             } else {
@@ -482,6 +504,8 @@ class App extends React.Component {
                 document.documentElement.style.setProperty(`--nav-background-color`, '#282828');
                 document.documentElement.style.setProperty(`--nav-h2-word-color`, '#C0C6D4');
                 document.documentElement.style.setProperty(`--nav-h3-word-color`, '#C0C0C0');
+                document.documentElement.style.setProperty('--nav-hove-word-color', '#C0C6D4');
+                document.documentElement.style.setProperty('--nav-hove-border-color', 'rgba(0, 0, 0, 0.3)');
                 //document.documentElement.style.setProperty(`--nav-hash-word-color`, '#0059D2');     //btnlist 改这行
                 document.documentElement.style.setProperty(`--article-read-word-color`, '#C0C6D4');
                 document.documentElement.style.setProperty(`--article-read-h2-word-color`, '#0082FA');
@@ -519,6 +543,8 @@ class App extends React.Component {
                 document.documentElement.style.setProperty(`--nav-background-color`, '#FFFFFF');
                 document.documentElement.style.setProperty(`--nav-h2-word-color`, '#001A2E');
                 document.documentElement.style.setProperty(`--nav-h3-word-color`, '#001A2E');
+                document.documentElement.style.setProperty('--nav-hove-word-color', '#000000');
+                document.documentElement.style.setProperty('--nav-hove-border-color', 'rgba(0, 0, 0, 0.05)'); 
                 // document.documentElement.style.setProperty(`--nav-hash-word-color`, '#ca0c16');   //btn list 改这一行
                 document.documentElement.style.setProperty(`--article-read-word-color`, '#000000');
                 document.documentElement.style.setProperty(`--article-read-h2-word-color`, '#2CA7F8');

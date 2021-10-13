@@ -343,7 +343,7 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
                     || (keyEvent->key() <= Qt::Key_9 && keyEvent->key() >= Qt::Key_0)
                     || (keyEvent->key() == Qt::Key_Space))
                    && keyEvent->modifiers() == Qt::NoModifier) {
-            search_edit_->lineEdit()->setFocus();
+                search_edit_->lineEdit()->setFocus();
         } else if (keyEvent->key() == Qt::Key_Enter || keyEvent->key() == Qt::Key_Return) {
             if (search_edit_->lineEdit()->hasFocus()) {
                 //搜索框内容为空时，按回车键回到未搜索页面
@@ -494,6 +494,7 @@ void WebWindow::initUI()
     //搜索结果框可移至主窗口创建完成后
     completion_window_ = new SearchCompletionWindow();
 
+    setFocus(Qt::ActiveWindowFocusReason);
     // 初始化标题栏
     QHBoxLayout *buttonLayout = new QHBoxLayout;
     buttonLayout->setMargin(0);
@@ -585,7 +586,8 @@ void WebWindow::initWebView()
     connect(m_forwardButton, &DButtonBoxButton::clicked, title_bar_proxy_,
             &TitleBarProxy::forwardButtonClicked);
     web_view_ = new QWebEngineView;
-    web_view_->setAttribute(Qt::WA_NativeWindow, true);
+    web_view_->setAttribute(Qt::WA_KeyCompression, true);
+    web_view_->setAttribute(Qt::WA_InputMethodEnabled, true);
     //禁止拖文件
     web_view_->setAcceptDrops(false);
     //使用该方法效果最好但使用后消息提示控件不可见,所以根据主题设置相适应的背景色

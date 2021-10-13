@@ -121,11 +121,8 @@ void ArgumentParser::onOpenAppRequested(const QString &app_name, const QString &
 {
     //解析老的应用名为路径，解析出dman后的应用名称
     const QString compact_app_name = ConvertOldDmanPath(app_name);
-    //通过语言映射表,将传入标题名称映射转换成对应名称.
-    const QString title = Utils::translateTitle(title_name);
-    qDebug() << Q_FUNC_INFO << compact_app_name << "---" << title;
     //openManualRequested---->WindowManager::openManual
-    emit this->openManualRequested(compact_app_name, title);
+    emit this->openManualRequested(compact_app_name, title_name);
 }
 
 /**
