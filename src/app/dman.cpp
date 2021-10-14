@@ -31,6 +31,7 @@
 #include <QDesktopWidget>
 #include <QDBusConnection>
 #include <QIcon>
+#include <QSurfaceFormat>
 
 DWIDGET_USE_NAMESPACE
 
@@ -44,18 +45,32 @@ int main(int argc, char **argv)
     qputenv("DXCB_FAKE_PLATFORM_NAME_XCB", "true");
     //禁用GPU
     qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu");
-    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--single-process");
+    
+    if(!Utils::judgeWayLand()){
+        qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--single-process");
+    }
+
     //所有进程类型禁用沙箱..此配置开启禁用gpu后无效
 //    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--no-sandbox");
     //龙芯机器配置,使得DApplication能正确加载QTWEBENGINE
     qputenv("DTK_FORCE_RASTER_WIDGETS", "FALSE");
     //访问http://127.0.0.1:7777/调试
-    //qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "7777");
+    qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "7777");
     //    Dtk::Widget::DApplication::loadDXcbPlugin();
 
 #ifdef __sw_64__
     qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--no-sandbox");
 #endif
+
+    if(Utils::judgeWayLand()){
+        qputenv("QT_WAYLAND_SHELL_INTEGRATION", "kwayland-shell");
+        qputenv("_d_disableDBusFileDialog", "true");
+        setenv("PULSE_PROP_media.role", "video", 1);
+        QSurfaceFormat format;
+        format.setRenderableType(QSurfaceFormat::OpenGLES);
+        format.setDefaultFormat(format);
+    }
+
 
     Dtk::Widget::DApplication app(argc, argv);
     if (!DPlatformWindowHandle::pluginVersion().isEmpty()) {

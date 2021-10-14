@@ -49903,13 +49903,14 @@ exports.default = function (mdFile, mdData) {
         if (level == 2) {
             text = text.split('|')[0];
         }
-        key = text;
+        var titlekey = text;
+        console.log("key======text========>", titlekey);
         var type = 'h' + level;
         if (level == 2) {
             hlist.push({ id: id, text: text, type: type });
         } else if (level == 3) {
             if (text.split('|').length > 1) {
-                key = text.split('|')[1];
+                titlekey = text.split('|')[1];
                 text = text.split('|')[0];
                 //global.qtObjects.manual.LogPrint('start key:' + key);
                 //global.qtObjects.manual.LogPrint('start key:' + text);
@@ -49918,7 +49919,7 @@ exports.default = function (mdFile, mdData) {
             hlist.push({ id: id, text: text, type: type });
         }
 
-        return '<' + type + ' id="' + id + '" text="' + key + '">' + text + '</' + type + '>\n';
+        return '<' + type + ' id="' + id + '" text="' + titlekey + '">' + text + '</' + type + '>\n';
     };
     console.log(path);
     renderer.image = function (href, title, text) {

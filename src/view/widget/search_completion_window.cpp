@@ -286,16 +286,29 @@ void SearchCompletionWindow::paintEvent(QPaintEvent *event)
     DPalette pa = ExApplicationHelper::instance()->palette(this);
     DStyleHelper styleHelper;
     QColor fillColor;
-    if (DWindowManagerHelper::instance()->hasComposite()) {
-        fillColor = pa.color(DPalette::FrameBorder);
-    } else {
+
+    if(!Utils::judgeWayLand()){
+        if (DWindowManagerHelper::instance()->hasComposite()) {
+            fillColor = pa.color(DPalette::FrameBorder);
+        } else {
+            DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
+            if (themeType == DGuiApplicationHelper::LightType) {
+                fillColor = QColor(255, 255, 255);
+            } else if (themeType == DGuiApplicationHelper::DarkType) {
+                fillColor = QColor(0, 0, 0);
+            }
+        }
+    }else {
         DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
         if (themeType == DGuiApplicationHelper::LightType) {
             fillColor = QColor(255, 255, 255);
+            setMaskAlpha(255);
         } else if (themeType == DGuiApplicationHelper::DarkType) {
             fillColor = QColor(0, 0, 0);
+            setMaskAlpha(255);
         }
     }
+
     painter.fillPath(path, QBrush(fillColor));
 }
 

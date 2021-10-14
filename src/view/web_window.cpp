@@ -164,6 +164,9 @@ void WebWindow::updateBtnBox()
 {
     if (m_forwardButton->isEnabled() || m_backButton->isEnabled()) {
         buttonBox->show();
+        //wayland下， 窗口焦点在qwebengines上时，如果titlebar原有没有buttonbox，将titlebar上buttonbox->show（）后会出现黑方角，像是没有渲染完成一样。。。。
+        //避免方法：刷新一次主窗口。。
+        this->update();
     } else {
         buttonBox->hide();
     }
@@ -226,10 +229,25 @@ void WebWindow::slot_ThemeChanged()
 {
     DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
     QColor fillColor = DGuiApplicationHelper::instance()->applicationPalette().highlight().color();
-    if (themeType == DGuiApplicationHelper::DarkType) {
-        web_view_->page()->setBackgroundColor(QColor(37, 37, 37));
-    } else {
-        web_view_->page()->setBackgroundColor(QColor(248, 248, 248));
+    if(!Utils::judgeWayLand()){
+
+        if (themeType == DGuiApplicationHelper::DarkType) {
+            web_view_->page()->setBackgroundColor(QColor(37, 37, 37));
+        } else {
+            web_view_->page()->setBackgroundColor(QColor(248, 248, 248));
+        }
+    }else {
+        if (themeType == DGuiApplicationHelper::DarkType) {
+            web_view_->page()->setBackgroundColor(QColor(0x28, 0x28, 0x28));
+            QPalette pa = palette();
+            pa.setColor(QPalette::Window, QColor("#161616"));
+            setPalette(pa);
+        } else if (themeType == DGuiApplicationHelper::LightType) {
+            QPalette pa = palette();
+            pa.setColor(QPalette::Window, Qt::white);
+            setPalette(pa);
+            web_view_->page()->setBackgroundColor(QColor(248, 248, 248));
+        }
     }
     web_view_->page()->runJavaScript(QString("setHashWordColor('%1')").arg(fillColor.name()));
 }
@@ -278,6 +296,32 @@ void WebWindow::closeEvent(QCloseEvent *event)
 }
 
 /**
+ * @brief WebWindow::resizeEvent
+ * @param event
+ * 拖拽调整窗口大小时重新设置搜索结果位置
+ */
+void WebWindow::resizeEvent(QResizeEvent *event)
+{
+    Q_UNUSED(event);
+    if(completion_window_->isVisible()){
+        completion_window_->autoResize();
+        // Move to below of search edit.
+        const QPoint local_point(this->rect().width() / 2 - search_edit_->width() / 2,
+                                 titlebar()->height() - 3);
+        if(!Utils::judgeWayLand()){
+            const QPoint global_point(this->mapToGlobal(local_point));
+            completion_window_->move(global_point);
+        }else {
+            completion_window_->move(local_point);
+        }
+    }
+
+    if(web_view_){
+        slot_ThemeChanged();
+    }
+}
+
+/**
  * @brief WebWindow::inputMethodEvent
  * @param e
  * 中文输入法支持
@@ -319,15 +363,14 @@ QVariant WebWindow::inputMethodQuery(Qt::InputMethodQuery prop) const
  */
 bool WebWindow::eventFilter(QObject *watched, QEvent *event)
 {
-    if (event->type() == QEvent::MouseButtonRelease && qApp->activeWindow() == this &&
-            watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
+    //warland环境下watched的objectname不是QMainWindowClassWindow,先去除验证
+    if (event->type() == QEvent::MouseButtonRelease && qApp->activeWindow() == this ) {
         QRect rect = hasWidgetRect(search_edit_);
         if (web_view_ && web_view_->selectedText().isEmpty() && !rect.contains(QCursor::pos())) {
             this->setFocus();
         }
     }
-    if (event->type() == QEvent::KeyPress && qApp->activeWindow() == this &&
-            watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
+    if (event->type() == QEvent::KeyPress && qApp->activeWindow() == this ) {
         QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
         if (keyEvent->key() == Qt::Key_V
                 && keyEvent->modifiers().testFlag(Qt::ControlModifier)) {
@@ -362,8 +405,7 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
     }
 
     // Filters mouse press event only.
-    if (event->type() == QEvent::MouseButtonPress && qApp->activeWindow() == this &&
-            watched->objectName() == QLatin1String("QMainWindowClassWindow")) {
+    if (event->type() == QEvent::MouseButtonPress && qApp->activeWindow() == this) {
 
         QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
 
@@ -492,7 +534,12 @@ void WebWindow::onAppearanceChanged(QString, QMap<QString, QVariant> map, QStrin
 void WebWindow::initUI()
 {
     //搜索结果框可移至主窗口创建完成后
-    completion_window_ = new SearchCompletionWindow();
+    if(!Utils::judgeWayLand()){
+        completion_window_ = new SearchCompletionWindow();
+    }else {
+        completion_window_ = new SearchCompletionWindow(this);
+        completion_window_->hide();
+    }
 
     setFocus(Qt::ActiveWindowFocusReason);
     // 初始化标题栏
@@ -543,6 +590,11 @@ void WebWindow::initUI()
     this->titlebar()->addWidget(search_edit_, Qt::AlignCenter);
     this->titlebar()->setSeparatorVisible(false);
     this->titlebar()->setIcon(QIcon::fromTheme("deepin-manual"));
+
+    if(Utils::judgeWayLand()){
+        this->titlebar()->setAutoFillBackground(false);
+        this->titlebar()->setBackgroundRole(QPalette::Window);
+    }
     //隐藏title阴影
     this->setTitlebarShadowEnabled(false);
     //键盘盲打
@@ -588,6 +640,11 @@ void WebWindow::initWebView()
     web_view_ = new QWebEngineView;
     web_view_->setAttribute(Qt::WA_KeyCompression, true);
     web_view_->setAttribute(Qt::WA_InputMethodEnabled, true);
+
+    if(!Utils::judgeWayLand()){
+        web_view_->setAttribute(Qt::WA_NativeWindow, true);
+    }
+
     //禁止拖文件
     web_view_->setAcceptDrops(false);
     //使用该方法效果最好但使用后消息提示控件不可见,所以根据主题设置相适应的背景色
@@ -960,8 +1017,13 @@ void WebWindow::onSearchAnchorResult(const QString &keyword, const SearchAnchorR
         // Move to below of search edit.
         const QPoint local_point(this->rect().width() / 2 - search_edit_->width() / 2,
                                  titlebar()->height() - 3);
-        const QPoint global_point(this->mapToGlobal(local_point));
-        completion_window_->move(global_point);
+        if(!Utils::judgeWayLand()){
+            const QPoint global_point(this->mapToGlobal(local_point));
+            completion_window_->move(global_point);
+        }else {
+            completion_window_->move(local_point);
+        }
+
         completion_window_->setFocusPolicy(Qt::NoFocus);
         completion_window_->setFocusPolicy(Qt::StrongFocus);
     }

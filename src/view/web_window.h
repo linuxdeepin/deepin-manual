@@ -80,6 +80,7 @@ protected:
     void closeEvent(QCloseEvent *event) Q_DECL_OVERRIDE;
     void inputMethodEvent(QInputMethodEvent *e) Q_DECL_OVERRIDE;
     bool eventFilter(QObject *watched, QEvent *event) Q_DECL_OVERRIDE;
+    void resizeEvent(QResizeEvent *event) override;
     QVariant inputMethodQuery(Qt::InputMethodQuery prop) const Q_DECL_OVERRIDE;
 
 private:

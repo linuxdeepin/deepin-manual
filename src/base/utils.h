@@ -63,6 +63,8 @@ public:
     static QString mkMutiDir(const QString &path);
     //判断是否为龙芯平台
     static bool judgeLoongson();
+    //判断是否Wayland
+    static bool judgeWayLand();
 
 };
 

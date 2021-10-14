@@ -217,6 +217,26 @@ QList<AppInfo> Utils::launcherInterface()
 }
 
 /**
+ * @brief Utils::judgeWayLand
+ * @return
+ * 判断是否为wayland
+ */
+bool Utils::judgeWayLand()
+{
+   auto env = QProcessEnvironment::systemEnvironment();
+
+   QString XDG_SESSION_TYPE = env.value(QStringLiteral("XDG_SESSION_TYPE"));
+
+   QString WAYLAND_DISPLAY = env.value(QStringLiteral("WAYLAND_DISPLAY"));
+
+   if (XDG_SESSION_TYPE == QLatin1String("wayland") || WAYLAND_DISPLAY.contains(QLatin1String("wayland"), Qt::CaseInsensitive)){
+      return true;
+   }
+
+   return false;
+}
+
+/**
  * @brief Utils::getSystemManualList
  * @return　返回系统中存在帮助手册的应用列表
  */
