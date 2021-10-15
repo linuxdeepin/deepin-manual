@@ -44,6 +44,7 @@ public:
     QWebEnginePage* stub_page();
     WebWindow *window = nullptr;
     DGuiApplicationHelper::ColorType stub_themeType() const;
+    DGuiApplicationHelper::ColorType stub_themeTypeDark() const;
     QString stub_selectText() const;
     Qt::MouseButton stub_MouseButtonBack() const;
     Qt::MouseButton stub_MouseButtonForward() const;

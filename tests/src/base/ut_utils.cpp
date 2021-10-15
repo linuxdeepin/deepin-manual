@@ -411,3 +411,20 @@ TEST_F(ut_utils_test, ExApplicationHelper)
     ExApplicationHelper *ex = new ExApplicationHelper;
     ex->deleteLater();
 }
+
+
+TEST_F(ut_utils_test, judgeWayLand)
+{
+    Utils *m_utils = new Utils;
+
+    auto env = QProcessEnvironment::systemEnvironment();
+    QString XDG_SESSION_TYPE = env.value(QStringLiteral("XDG_SESSION_TYPE"));
+    QString WAYLAND_DISPLAY = env.value(QStringLiteral("WAYLAND_DISPLAY"));
+
+    if (XDG_SESSION_TYPE == QLatin1String("wayland") || WAYLAND_DISPLAY.contains(QLatin1String("wayland"), Qt::CaseInsensitive)){
+       EXPECT_TRUE(m_utils->judgeWayLand());
+    }else {
+       EXPECT_FALSE(m_utils->judgeWayLand());
+    }
+    delete m_utils;
+}

@@ -35,6 +35,8 @@
 #include "base/utils.h"
 #include "src/third-party/stub/stub.h"
 
+#include <DTitlebar>
+
 #include <QClipboard>
 #include <QSignalSpy>
 
@@ -448,6 +450,11 @@ DGuiApplicationHelper::ColorType ut_web_window_test::stub_themeType() const
     return DGuiApplicationHelper::LightType;
 }
 
+DGuiApplicationHelper::ColorType ut_web_window_test::stub_themeTypeDark() const
+{
+    return DGuiApplicationHelper::DarkType;
+}
+
 void ut_web_window_test::stub_setWeb(QWebChannel * m_webchannel)
 {
     webchannel = m_webchannel;
@@ -611,10 +618,11 @@ TEST_F(ut_web_window_test, onChannelFinish)
 }
 
 
-TEST_F(ut_web_window_test, slot_ThemeChanged)
+TEST_F(ut_web_window_test, slot_ThemeChanged_001)
 {
-    WebWindow *web = new WebWindow;
     Stub s;
+    s.set(ADDR(Utils, judgeWayLand), ADDR(ut_web_window_test, stub_isValidfalse));
+    WebWindow *web = new WebWindow;
     s.set((QWebEnginePage* (QWebEngineView::*)())ADDR(QWebEngineView, page), ADDR(ut_web_window_test, stub_page));
     s.set((void (QWebEnginePage::*)(QWebChannel *))ADDR(QWebEnginePage, setWebChannel), ADDR(ut_web_window_test, stub_setWeb));
     s.set((void (QWebEngineView::*)(const QUrl &))ADDR(QWebEngineView, load), ADDR(ut_web_window_test, stub_initweb));
@@ -624,6 +632,50 @@ TEST_F(ut_web_window_test, slot_ThemeChanged)
 
     web->initWeb();
     web->slot_ThemeChanged();
+    delete webchannel;
+    delete web;
+}
+
+TEST_F(ut_web_window_test, slot_ThemeChanged_002)
+{
+    Stub s;
+    s.set(ADDR(Utils, judgeWayLand), ADDR(ut_web_window_test, stub_isValid));
+    WebWindow *web = new WebWindow;
+    s.set((QWebEnginePage* (QWebEngineView::*)())ADDR(QWebEngineView, page), ADDR(ut_web_window_test, stub_page));
+    s.set((void (QWebEnginePage::*)(QWebChannel *))ADDR(QWebEnginePage, setWebChannel), ADDR(ut_web_window_test, stub_setWeb));
+    s.set((void (QWebEngineView::*)(const QUrl &))ADDR(QWebEngineView, load), ADDR(ut_web_window_test, stub_initweb));
+    s.set((void (QWebEnginePage::*)(const QString&))ADDR(QWebEnginePage, runJavaScript), ADDR(ut_web_window_test, stub_initweb));
+    s.set((void (QWebEnginePage::*)(const QColor &))ADDR(QWebEnginePage, setBackgroundColor), ADDR(ut_web_window_test, stub_initweb));
+    s.set((DGuiApplicationHelper::ColorType (DGuiApplicationHelper::*)() const)ADDR(DGuiApplicationHelper, themeType), ADDR(ut_web_window_test, stub_themeType));
+
+    web->initWeb();
+    web->slot_ThemeChanged();
+
+    DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
+    if (themeType == DGuiApplicationHelper::DarkType) {
+        QPalette pa = web->palette();
+        QColor clor = pa.color(QPalette::Window);
+        EXPECT_EQ(clor, QColor("#161616"));
+    }else {
+        QPalette pa = web->palette();
+        QColor clor = pa.color(QPalette::Window);
+        EXPECT_EQ(clor, Qt::white);
+    }
+
+    s.set((DGuiApplicationHelper::ColorType (DGuiApplicationHelper::*)() const)ADDR(DGuiApplicationHelper, themeType), ADDR(ut_web_window_test, stub_themeTypeDark));
+    web->slot_ThemeChanged();
+
+    themeType = DGuiApplicationHelper::instance()->themeType();
+    if (themeType == DGuiApplicationHelper::DarkType) {
+        QPalette pa = web->palette();
+        QColor clor = pa.color(QPalette::Window);
+        EXPECT_EQ(clor, QColor("#161616"));
+    }else {
+        QPalette pa = web->palette();
+        QColor clor = pa.color(QPalette::Window);
+        EXPECT_EQ(clor, Qt::white);
+    }
+
     delete webchannel;
     delete web;
 }
@@ -670,6 +722,64 @@ TEST_F(ut_web_window_test, onSearchEditFocusOut)
 
     web->onSearchEditFocusOut();
     ASSERT_TRUE(web->completion_window_->isHidden());
+    delete  web;
+}
+
+
+TEST_F(ut_web_window_test, resizeEvent_001)
+{
+    Stub s;
+    s.set(ADDR(QWidget, isVisible), ADDR(ut_web_window_test, stub_isValid));
+    s.set(ADDR(Utils, judgeWayLand), ADDR(ut_web_window_test, stub_isValid));
+    WebWindow *web = new WebWindow;
+    SearchAnchorResult result2;
+    SearchAnchorResultList list;
+    result2.anchor = "运行应用商店";
+    result2.anchorId = "h3";
+    result2.app_name = "deepin-app-store";
+    result2.app_display_name = "应用商店";
+    list.append(result2);
+    web->onSearchAnchorResult("", list);
+
+    QResizeEvent *event;
+
+    web->completion_window_->setVisible(true);
+    web->resizeEvent(event);
+
+    const QPoint local_point(web->rect().width() / 2 - web->search_edit_->width() / 2,
+                             web->titlebar()->height() - 3);
+
+    EXPECT_EQ(local_point, web->completion_window_->pos());
+
+    delete  web;
+}
+
+
+TEST_F(ut_web_window_test, resizeEvent_002)
+{
+    Stub s;
+    s.set(ADDR(QWidget, isVisible), ADDR(ut_web_window_test, stub_isValid));
+    s.set(ADDR(Utils, judgeWayLand), ADDR(ut_web_window_test, stub_isValidfalse));
+    WebWindow *web = new WebWindow;
+    SearchAnchorResult result2;
+    SearchAnchorResultList list;
+    result2.anchor = "运行应用商店";
+    result2.anchorId = "h3";
+    result2.app_name = "deepin-app-store";
+    result2.app_display_name = "应用商店";
+    list.append(result2);
+    web->onSearchAnchorResult("", list);
+
+    QResizeEvent *event;
+
+    web->completion_window_->setVisible(true);
+    web->resizeEvent(event);
+
+    const QPoint local_point(web->rect().width() / 2 - web->search_edit_->width() / 2,
+                             web->titlebar()->height() - 3);
+
+    EXPECT_EQ(local_point, web->completion_window_->pos());
+
     delete  web;
 }
 

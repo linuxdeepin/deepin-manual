@@ -293,12 +293,22 @@ bool stub_hasComposite()
     return false;
 }
 
+bool stub_wayland()
+{
+    return true;
+}
+
 DGuiApplicationHelper::ColorType stub_themeType()
 {
     return DGuiApplicationHelper::DarkType;
 }
 
-TEST_F(ut_search_completion_window_test, paintEvent)
+DGuiApplicationHelper::ColorType stub_themeTypeLight()
+{
+    return DGuiApplicationHelper::LightType;
+}
+
+TEST_F(ut_search_completion_window_test, paintEvent_001)
 {
     SearchCompletionWindow sw;
     QPaintEvent *event;
@@ -315,9 +325,33 @@ TEST_F(ut_search_completion_window_test, paintEvent)
 
     st.set(ADDR(DGuiApplicationHelper, themeType), stub_themeType);
     sw.paintEvent(event);
-
-
 }
+
+TEST_F(ut_search_completion_window_test, paintEvent_002)
+{
+
+    SearchCompletionWindow sw;
+    QPaintEvent *event;
+    sw.paintEvent(event);
+    DPalette pa = ExApplicationHelper::instance()->palette(sw.window());
+    QColor fillColor = pa.color(DPalette::FrameBorder);
+    if (DWindowManagerHelper::instance()->hasComposite()) {
+        ASSERT_EQ(fillColor, pa.color(DPalette::FrameBorder));
+    }
+
+    Stub st;
+    st.set(ADDR(DWindowManagerHelper, hasComposite), stub_hasComposite);
+    sw.paintEvent(event);
+
+    st.set(ADDR(Utils, judgeWayLand), stub_wayland);
+    st.set(ADDR(DGuiApplicationHelper, themeType), stub_themeType);
+    sw.paintEvent(event);
+    st.reset(ADDR(DGuiApplicationHelper, themeType));
+    st.set(ADDR(DGuiApplicationHelper, themeType), stub_themeTypeLight);
+    sw.paintEvent(event);
+}
+
+
 
 TEST_F(ut_search_completion_window_test, onResultListClicked)
 {
