@@ -427,10 +427,13 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
                 break;
             }
         }
-        if (!hasWidgetRect(search_edit_).contains(mapFromGlobal(QCursor::pos()))) {
-            completion_window_->hide();
-        }
 
+        //wayland 当搜索结果隐藏之后,将无法触发鼠标点击事件无法跳转内容
+        if(!Utils::judgeWayLand()){
+            if (!hasWidgetRect(search_edit_).contains(mapFromGlobal(QCursor::pos()))) {
+                completion_window_->hide();
+            }
+        }
     }
 
     //过滤字体改变事件

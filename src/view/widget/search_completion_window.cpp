@@ -172,9 +172,9 @@ void SearchCompletionWindow::setKeyword(const QString &keyword)
     keyword_ = keyword;
     QFontMetrics metrics = search_button_->fontMetrics();
     search_button_->setText(
-        metrics.elidedText(
-            QObject::tr("Search for \"%1\" in the full text").arg(keyword),
-            Qt::ElideRight, 350 - 39));
+                metrics.elidedText(
+                    QObject::tr("Search for \"%1\" in the full text").arg(keyword),
+                    Qt::ElideRight, 350 - 39));
 }
 
 /**
@@ -265,10 +265,13 @@ void SearchCompletionWindow::initUI()
     this->setContentsMargins(0, 0, 0, 0);
     this->setMinimumHeight(kItemHeight);
     this->setFixedWidth(350);
-    this->setWindowFlags(Qt::FramelessWindowHint
-                         | Qt::CustomizeWindowHint
-                         | Qt::BypassWindowManagerHint);
-    this->setAttribute(Qt::WA_NativeWindow, true);
+    if(!Utils::judgeWayLand()){
+        this->setWindowFlags(Qt::FramelessWindowHint
+                             | Qt::CustomizeWindowHint
+                             | Qt::BypassWindowManagerHint);
+        this->setAttribute(Qt::WA_NativeWindow, true);
+    }
+
 }
 
 /**
