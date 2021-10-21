@@ -90,7 +90,6 @@ TEST_F(ut_search_db_test, SearchDb)
 
     SearchDb db;
     ASSERT_GT(db.strlistApp.size(), 0);
-    s.reset(ADDR(QSqlDatabase, isOpen));
 }
 
 TEST_F(ut_search_db_test, initSearchTable)
