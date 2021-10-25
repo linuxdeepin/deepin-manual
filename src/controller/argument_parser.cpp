@@ -61,9 +61,12 @@ bool ArgumentParser::parseArguments()
     Q_UNUSED(adapter);
 
     //20210705 由于新版本dtk不启动dmanHelper,dman尝试启动dmanHelper
-    QDBusInterface(kManualSearchService,
-                   kManualSearchIface,
-                   kManualSearchService);
+    //20211025 之前同步调用会增加启动时间,改为异步调用
+    QDBusMessage msg = QDBusMessage::createMethodCall(kManualSearchService,
+                                                          kManualSearchIface,
+                                                          kManualSearchService,
+                                                          "ManualExists");
+    QDBusConnection::sessionBus().asyncCall(msg);
 
     //注册Open服务, 如果注册失败,则说明已存在一个dman.
     if (!conn.registerService(kManualOpenService)

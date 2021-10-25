@@ -371,7 +371,7 @@ In Launcher, right-click the icon and you can:
 ### Install Applications
 Search and install more applications you want in App Store.
 
-![0|Search](fig/search.png)
+![0|Search](fig/p_search.png)
 
 ### Run Applications
 For the applications whose shortcuts have been created on the desktop or Dock, you can open them in the following ways:
@@ -454,7 +454,7 @@ If "Auto Login" is enabled, you can log into the system directly, without inputt
 
 1. On the homepage of Control Center, click ![account_normal](../common/account_normal.svg).
 2. Click the current account.
-3. Switch on **Auto Login**.
+3. Switch on **Auto Login**. Input the password of the current account and confirm in the pop-up authorization window. 
 
 
 #### Login Without Password
@@ -462,7 +462,7 @@ If "Login Without Password" is enabled, you only need to click ![login](../commo
 
 1. On the homepage of Control Center, click ![account_normal](../common/account_normal.svg).
 2. Click the current account.
-3. Switch on **Login Without Password** and you can log into the system without a password.
+3. Switch on **Login Without Password**. Input the password of the current account and confirm in the pop-up authorization window. Then you can log into the system without password.
 
 >![tips](../common/tips.svg)Tips: 
 >   - If both **Auto Login** and **Login Without Password** are enabled, once reboot or start, your computer will enter the desktop directly without requiring a password.
@@ -480,6 +480,15 @@ Fingerprint password is used in system login, application authorization, and oth
 
 >![notes](../common/notes.svg)Notes: You can add multiple fingerprint passwords for one account, and delete one by one as well. 
 
+#### Set password validity period
+
+1. On the homepage of Control Center, click ![account_normal](../common/account_normal.svg).
+2. Click the current account.
+3. Set the validity period of the password. You can set a particular number or select "Always". 
+
+>![notes](../common/notes.svg)Notes: the validity period starts to take effect from the day you modify the password.   
+
+For example, you modify the password on September 1st, and set the validity period as 30 days. Then the new password could be normally used from September 1st to September 30th. 
 
 #### Delete Account
 
@@ -563,23 +572,39 @@ Set a proper display scale to have a normal display.
 #### Multiple Screen Settings
 Expand your desktop by multiple screens! Use VGA/HDMI/EDP cable to connect your computer to other display devices such as monitor, projector and so on. When the computer is connected to another display device, **Multiple Displays** will appear.
 
+![0|display](fig/p_displayMulti.png)
+
+
+
 1. On the homepage of Control Center, click ![display_normal](../common/display_normal.svg).
 2. In **Multiple Displays**, select a display mode:
-   - **Duplicate**: display the same image on other screens.
-   - **Extend**: expand the desktop across the screens.
-   - **Only on xxxx**: only display on one screen.
+- **Duplicate**: display the same image on other screens.
+- **Extend**: expand the desktop across the screens.
+- **Only on xxxx**: only display on one screen.
 
- In multiple displays, press **Super** + **P** to show its OSD. 
+In duplicate or extend mode, click **Recognize**, then the screen name appears in the center of each screen.
+
+In extend mode, click **Gather Windows** to gather all setting windows to the center of that screen.
+
+- on the main screen, setting windows of the main screen will be placed at the bottom layer, and the ones of the sub screen will be placed on the top layer.
+- on the sub screen, setting windows of the current sub screen will be placed on the top layer, and the ones of the main screen will be placed at the bottom layer.
+
+
+>![notes](../common/notes.svg) Notes: in extend mode, "multiple displays" is displayed in right-click menu of the Dock, including "only on main screen" and "on screen where the cursor is", which are mutually exclusive.
+
+
+In multiple displays, press **Super** + **P** to show its OSD. 
 
 Operations are as follows:
 
 1. Hold **Super** and press **P** or click to select the options. 
 2. Release the keys, the selected mode will take into effect.
 
->![notes](../common/notes.svg)Notes: In multiple display mode, 
->
->- the sub-screens also support desktop icon display, right-click menu operation and other functions.
->- **Multiple displays** is displayed in the right-click menu of the Dock, which includes **Only on main screen**, and **On screen where the cursor is**.
+>![notes](../common/notes.svg) Notes: In multiple display mode, the sub-screens also support desktop icon display, right-click menu operation and other functions.
+
+Refer to [Single Screen Settings](#Single Screen Settings) for how to set brightness, color temperature, scaling, resolution, refreshing rate, direction and so on for multiple screens. 
+
+
 
 ### Touch Screen
 
@@ -836,17 +861,18 @@ Set your speaker and microphone properly to make you hear more comfortable and m
 
 1. On the homepage of Control Center, click ![sound_normal](../common/sound_normal.svg).
 2. Click **Output** to:
-   - Select output device type from the drop-down list after **Output Device**.
    - Drag the slider to adjust output volume and left/right balance.
    - Switch on **Volume Boost**, the volume could be adjustable from 0~150% (the former range is 0~100%).
+   - Select output device type from the drop-down list after **Output Device**.
 
 #### Input
 
 1. On the homepage of Control Center, click ![sound_normal](../common/sound_normal.svg).
 2. Click **Input** to:
-   - Select input device type from the drop-down list after **Input Device**.
+
    - Adjust input volume by dragging the slider.
    - You can enable **Automatic Noise Suppression**. 
+   - Select input device type from the drop-down list after **Input Device**.
 
 >![tips](../common/tips.svg)Tips: Usually, you need to turn up the input volume to make sure that you can hear the sound of the sound source, but the volume should not be too high, because it will cause distortion of the sound. Here is how to set input volume: Speak to your microphone at a normal volume and view "Input Level". If the indicator changes obviously according to the volume, then the input volume is at a proper level. 
 
@@ -885,7 +911,7 @@ Bluetooth helps you make a short-distance wireless communication between Bluetoo
 2. Switch on **Bluetooth**. The system will scan the nearby devices automatically and list them in **Other Devices**.
 3. Click the device you want to connect, and input the PIN code if required. After pairing successfully, the device will be connected automatically. 
 4. After that, the Bluetooth device will be added to **My Device** list.
-5. In the list, click the device, you can **Disconnect** the device, or change its name.
+5. In "My Device" list, click the device, you can **Disconnect** the device, or change its name.
 
 #### Transfer/Receive files via Bluetooth
 
@@ -900,7 +926,7 @@ Usage scenario: sender (UnionTech OS PC) transfers files via Bluetooth to receiv
 1. On the homepage of Control Center, click ![bluetooth_normal](../common/bluetooth_normal.svg).
 2. Switch on **Bluetooth**. The system will scan Bluetooth devices nearby automatically.
 3. Select a paired and connected Bluetooth device in "My Devices". Click **Send Files** (this button will only appear on PC / mobile phone / tablet Bluetooth devices). Select a file to be sent from the popped-up File Manager interface, click **Open**.  
-4. Click **Send** in the interface pops up to send a request. 
+4. Select the Bluetooth device to receive the files in the pop-up "Bluetooth file transfer" window and click **Send** to send a request. 
 
 **Transfer files from Bluetooth of a mobile phone**
 

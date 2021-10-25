@@ -171,10 +171,12 @@ void SearchDb::initDb()
         qCritical() << __FUNCTION__ << "db path not exist!" << dbdir;
     }
     QString databasePath = dbdir.append("/search.db");
+    qDebug() << "dbfilename" << databasePath;
 
     //创建数据库
     p_->db = QSqlDatabase::addDatabase("QSQLITE", QUuid::createUuid().toString(QUuid::WithoutBraces));
     p_->db.setDatabaseName(databasePath);
+    qDebug() << "dbcreate success";
     if (!p_->db.open()) {
         qCritical() << "Failed to open search db:" << databasePath << p_->db.lastError().text()
                     << p_->db.lastError().nativeErrorCode() << p_->db.lastError().type()
