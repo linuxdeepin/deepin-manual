@@ -90,6 +90,7 @@ TEST_F(ut_search_db_test, SearchDb)
 
     SearchDb *db = new SearchDb;
     ASSERT_GT(db->strlistApp.size(), 0);
+    delete db;
 }
 
 TEST_F(ut_search_db_test, initSearchTable)

@@ -1,14 +1,14 @@
-#  桌面环境|dde|
+# 桌面环境|dde|
 
 ## 概述
-统信操作系统(简称“统信UOS”)是一款美观易用、安全可靠的国产桌面操作系统。统信UOS预装了文件管理器、看图、系统监视器等一系列原生应用。它既能让您体验到丰富多彩的娱乐生活，也可以满足您的日常工作需要。随着功能的不断升级和完善，统信操作系统已成为国内最受欢迎的操作系统之一。
+统信操作系统(简称“统信UOS”)是一款美观易用、安全可靠的国产桌面操作系统。统信UOS预装了文件管理器、应用商店、看图、系统监视器等一系列原生应用。它既能让您体验到丰富多彩的娱乐生活，也可以满足您的日常工作需要。随着功能的不断升级和完善，统信操作系统已成为国内最受欢迎的操作系统之一。
 
-![1|desk](fig/eu_desk.jpg)
+![1|desk](fig/e_desk.jpg)
 
 ### 系统简介
 初次进入统信操作系统，会自动打开欢迎程序。您可以观看视频了解系统功能，选择桌面样式和图标主题，进一步了解该系统。
 
-![welcome](fig/eu_welcome.png)
+![welcome](fig/s_welcome.png)
 
 成功登录系统后，即可体验统信UOS桌面环境。桌面环境主要由桌面、任务栏、启动器、控制中心等组成，是使用该操作系统的基础。
 
@@ -80,7 +80,7 @@
 ![1|wallpaper](fig/s_wallpaper.jpg)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
-> ![tips](../common/tips.svg)窍门：您还可以在图片查看器中设置您喜欢的图片为桌面壁纸。
+> ![tips](../common/tips.svg)窍门： 您还可以在图片查看器中设置您喜欢的图片为桌面壁纸。
 
 ### 设置屏保
 屏幕保护程序原本是为了保护显像管，现在一般用来防范他人偷窥您电脑上的一些隐私。
@@ -91,7 +91,7 @@
 4. 勾选 **恢复时需要密码**，以便更好地保护您的隐私。
 5. 待电脑空闲指定时间后，将启动您选择的屏幕保护程序。
 
-![1|screensaver](fig/screensaver.jpg)
+![1|screensaver](fig/s_screensaver.jpg)
 
 ### 剪贴板
 剪贴板展示当前用户登录系统后复制和剪切的所有文本、图片和文件。使用剪贴板可以快速复制其中的某项内容。注销或关机后，剪贴板会自动清空。
@@ -112,20 +112,16 @@
 ### 认识任务栏图标
 任务栏图标包括启动器图标、应用程序图标、托盘区图标、系统插件图标等。
 
-![1|fashion](fig/eu_efficient.png)
+![1|fashion](fig/e_efficient.png)
 
-| 图标 | 说明 |
-| ------------------------------------------------------------ | :---------------------------------- |
-| ![launcher](../common/deepin-launcher.svg)                   | 启动器 - 单击查看所有已安装的应用。 |
-| ![deepin-toggle-desktop](../common/deepin-toggle-desktop.svg) | 显示桌面。                                          |
-| ![dde-file-manager](../common/dde-file-manager.svg) | 文件管理器 - 单击查看磁盘中的文件、文件夹。 |
-| ![ uosbrowser-cn](../common/org.deepin.browser.svg) | 浏览器 - 单击打开网页。 |
-| ![dde-calendar](../common/dde-calendar.svg) | 日历 - 查看日期、新建日程。 |
-| ![controlcenter](../common/controlcenter.svg) |  控制中心 - 单击进入系统设置。           |
-| ![notification](../common/notification.svg) | 通知中心 - 显示所有系统和应用的通知。 |
-| ![onboard](../common/onboard.svg) | 屏幕键盘 - 单击使用虚拟键盘。 |
-| ![shutdown](../common/system-shutdown.svg) | 电源 - 单击进入关机界面。 |
-|![trash](../common/trash_icon.svg) | 回收站。 |
+| 图标 | 说明 | 图标 | 说明 |
+| ------------------------------------------------------------ | :---------------------------------- | -------------------------------------------------------- | --------------------------------------------------- |
+| ![launcher](../common/deepin-launcher.svg)                   | 启动器 - 单击查看所有已安装的应用。 | ![deepin-toggle-desktop](../common/deepin-toggle-desktop.svg) | 显示桌面。                                          |
+| ![dde-file-manager](../common/dde-file-manager.svg) | 文件管理器 - 单击查看磁盘中的文件、文件夹。 | ![ uosbrowser-cn](../common/org.deepin.browser.svg) | 浏览器 - 单击打开网页。 |
+| ![deepin-appstore](../common/deepin-appstore.svg) | 商店 - 搜索安装应用软件。 | ![dde-calendar](../common/dde-calendar.svg) | 日历 - 查看日期、新建日程。            |
+| ![controlcenter](../common/controlcenter.svg)                | 控制中心 - 单击进入系统设置。     | ![notification](../common/notification.svg)              | 通知中心 - 显示所有系统和应用的通知。               |
+| ![onboard](../common/onboard.svg)   | 屏幕键盘 - 单击使用虚拟键盘。 |![shutdown](../common/system-shutdown.svg) | 电源 - 单击进入关机界面。 |
+| ![trash](../common/trash_icon.svg) | 回收站。        |                             |                                             |
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 > ![tips](../common/tips.svg)窍门：在高效模式下，单击任务栏最右侧可显示桌面。将鼠标指针移到任务栏上已打开窗口的图标时，会显示相应的预览窗口。
@@ -134,9 +130,9 @@
 任务栏提供两种显示模式：时尚模式和高效模式，显示不同的图标大小和应用窗口激活效果。
 
 
-![1|fashion](fig/eu_fashion.png)
+![1|fashion](fig/e_fashion.png)
 
-![1|efficient](fig/eu_efficient.png)
+![1|efficient](fig/e_efficient.png)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -153,6 +149,15 @@
 
 ### 调整任务栏高度 
 鼠标拖动任务栏边缘，改变任务栏高度。
+
+### 显示/隐藏任务栏
+任务栏可以隐藏，以便最大程度的扩展桌面的可操作区域。
+
+1. 右键单击任务栏。
+2. 在 **状态** 子菜单中您可以：
+   - 选择 **一直显示**，任务栏将会一直显示在桌面上。
+   - 选择 **一直隐藏**，任务栏将会隐藏起来，只有在鼠标移至任务栏区域时才会显示。
+   - 选择 **智能隐藏**，当占用任务栏区域时，任务栏自动隐藏。
 
 ### 显示/隐藏插件
 1. 右键单击任务栏。
@@ -224,7 +229,7 @@
 
 小窗口模式还支持快速打开文件管理器，控制中心和进入关机界面等功能。
 
-![1|launch](fig/eu_fullscreen.jpg)![1|launch](fig/eu_mini.jpg)
+![1|launch](fig/e_fullscreen.jpg)![1|launch](fig/e_mini.jpg)
 
 
 ### 排列应用
@@ -234,7 +239,7 @@
 - 将鼠标悬停在应用图标上，按住鼠标左键不放，将应用图标拖拽到指定的位置自由排列。
 - 单击启动器界面左上角分类图标![category](../common/category_icon.svg)进行排列。
 
-![1|sortapp](fig/eu_sortapp.jpg)
+![1|sortapp](fig/e_sortapp.jpg)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -258,7 +263,7 @@
 
 - 单击 **发送到任务栏**，将应用固定到任务栏。
 
-![0|sendto](fig/eu_sendto.png)
+![0|sendto](fig/sendto.png)
 
 > ![notes](../common/notes.svg)说明：您还可以从启动器拖拽应用图标到任务栏上放置。但是当应用处于运行状态时您将无法拖拽固定，此时您可以右键单击任务栏上的应用图标，选择 **驻留** 将应用固定到任务栏，以便下次使用时从任务栏上快速打开。
 
@@ -279,8 +284,12 @@
 
 > ![notes](../common/notes.svg)说明：以上操作，只能删除应用的快捷方式，而不会卸载应用。
 
-### 运行应用
+### 安装应用
+如果启动器中没有您需要的应用，可以在应用商店一键下载安装。
 
+![0|appstore](fig/e_appstore.png)
+
+### 运行应用
 对于已经创建了桌面快捷方式或固定到任务栏上的应用，您可以通过以下途径来打开应用。
 
 - 双击桌面图标，或右键单击桌面图标选择 **打开**。
@@ -290,20 +299,29 @@
 
 > ![tips](../common/tips.svg)窍门：对于经常使用的应用，您可以在启动器中，右键单击应用图标选择 **开机自动启动**。
 
-## 控制中心
 
-统信操作系统通过控制中心来管理系统的基本设置，包括帐户管理、网络设置、时间日期设置、个性化设置、显示设置等。当您进入桌面环境后，单击任务栏上的 ![controlcenter](../common/controlcenter.svg) 即可打开控制中心窗口。
+### 卸载应用
+对于不再使用的应用，您可以选择将其卸载，以节省硬盘空间。
+
+1. 在启动器中，右键单击应用图标。
+2. 单击 **卸载**。
+
+> ![tips](../common/tips.svg)窍门：在 **时尚模式** 下，您还可以在启动器的全屏模式界面，按住鼠标左键不放，将应用图标拖拽到任务栏的 ![trash](../common/trash_icon.svg) 中卸载应用。
+
+
+## 控制中心
+统信操作系统通过控制中心来管理系统的基本设置，包括帐户管理、网络设置、日期和时间、个性化设置、显示设置、系统升级等。当您进入桌面环境后，单击任务栏上的![controlcenter](../common/controlcenter.svg) 即可打开控制中心窗口。
 
 ### 首页介绍
 控制中心首页主要展示各个设置模块，方便日常查看和快速设置。
 
-![2|dcchomepage](fig/eu_dcc.png)
+![2|dcchomepage](fig/e_dcc.png)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 打开控制中心的某一设置模块后，可以通过左侧导航栏快速切换到另一设置模块。
 
-![2|cc-navigation](fig/eu_cc-navigation.png)
+![2|cc-navigation](fig/e_cc-navigation.png)
 
 
 
@@ -315,9 +333,9 @@
 - 主菜单：单击![menu](../common/icon_menu.svg) 进入主菜单。在主菜单中，您可以设置窗口主题，查看版本，或退出控制中心。
 
 ### 帐户设置
-在安装系统时会创建了一个帐户，在控制中心的帐户设置模块可以修改帐户设置或创建一个新帐户。
+在安装系统时会创建了一个账户，在控制中心的账户设置模块可以修改账户设置或创建一个新账户。
 
-![0|account](fig/eu_account.png)
+![0|account](fig/e_account.png)
 
 #### 创建新帐户
 
@@ -351,11 +369,6 @@
 3. 单击 **修改密码**，进入修改密码页面。
 4. 输入当前密码、新密码和重复密码。
 
-#### 自动登录
-开启“自动登录”后， 下次启动系统时（重启、开机）可直接进入桌面。在锁屏和注销后再次登录需要密码。
-1. 在控制中心首页，单击![account_normal](../common/account_normal.svg)。
-2. 单击当前帐户。
-3. 打开 **自动登录** 开关，开启自动登录功能。
 
 #### 删除帐户
 
@@ -368,16 +381,22 @@
 
 #### 权限设置
 
-支持添加管理员用户、普通用户、自定义用户。
+除安装时的第一个帐户是管理员权限外，后面所添加的所有帐户都是普通用户。一个帐户可以在多个用户组内。
 
 ##### 设置组
 
-添加或修改帐户时，可以选择系统内已有的组。
+添加或修改帐户时，可以：
+
+- 选择系统内已有的组。
+- 选择当前用户同名的组。
+- 选择之前添加帐户时和其他用户同名的组。
 
 ### 显示设置
 设置显示器的亮度、分辨率、屏幕方向以及缩放倍数等，让您的电脑显示到达最佳状态。
 
-![0|video](fig/eu_display.png)
+
+
+![0|video](fig/e_display.png)
 
 #### 单屏设置
 
@@ -387,6 +406,15 @@
 
 1. 在控制中心首页，单击 ![display_normal](../common/display_normal.svg)。
 2. 在亮度区域，拖动亮度条滑块，调节屏幕亮度。
+
+##### 调节色温
+
+1. 在控制中心首页，单击 ![display_normal](../common/display_normal.svg)。
+2. 在色温区域，可以：
+   - 打开 **自动调节色温** 开关，开启进入护眼模式，自动调节色温。
+   - 打开 **手动调节** 色温开关，可以手动拖动色温条滑块调节屏幕色温。
+
+> ![notes](../common/notes.svg)说明：当打开 **自动调节色温** 开关时，系统将自动关闭 **手动调节** 色温开关，反之亦然。
 
 ##### 设置屏幕缩放
 
@@ -434,13 +462,21 @@
 1. 按住 **Super** 不放，再按下 **P** 或鼠标单击来进行模式选择。
 2. 松开按键，确认选择，模式生效。
 
-> ![notes](../common/notes.svg)说明：当多屏显示时，副屏也支持桌面图标显示、右键菜单操作等功能。
+> ![notes](../common/notes.svg)说明：当多屏显示模式为为扩展模式时，仅主屏支持桌面图标显示、右键菜单操作等功能，而副屏不支持。
+
+#### 触控屏设置
+
+当接入触控屏时，您可以设置所在屏幕，并对其进行调整。
+
+1. 在控制中心首页，单击 ![display_normal](../common/display_normal.svg)。
+2. 单击 **触控屏**，并对屏幕进行设置。
+3. 单击 **确定**。
 
 ### 默认程序设置
 
 当安装有多个功能相似的应用程序时，可以通过右键菜单或控制中心为某种类型的文件指定其中的一个应用作为打开文件的默认启动程序。
 
-![0|default](fig/eu_cc-navigation.png)
+![0|default](fig/e_cc-navigation.png)
 
 #### 设置默认程序
 
@@ -472,9 +508,9 @@
 3. 单击程序后面的![close](../common/close_normal.svg)，删除默认程序。
 
 ### 个性化设置
-在控制中心个性化设置模块可以进行一些通用的个性化设置，包括系统主题、活动用色、字体，改变桌面和窗口的外观。除此之外还可设置图标主题、光标主题和字体。
+在这里，您可以设置系统主题、活动用色、字体等，改变桌面和窗口的外观，设置成您喜欢的显示风格。
 
-![0|personalise](fig/eu_personalise.png)
+![0|personalise](fig/e_personalise.png)
 
 #### 设置窗口主题
 1. 在控制中心首页，单击 ![personalization_normal](../common/personalization_normal.svg)。
@@ -511,7 +547,7 @@
 
 > ![tips](../common/tips.svg)窍门：您可以单击任务栏托盘区的网络图标，查看当前网络状态。
 
-![0|network](fig/eu_network.png)
+![0|network](fig/e_network.png)
 
 #### 有线网络
 
@@ -621,7 +657,7 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 
 设置通知勿扰模式，开启或关闭某些应用的通知显示。
 
-![0|notification](fig/eu_notification.png)
+![0|notification](fig/e_notification.png)
 
 #### 设置系统通知
 
@@ -650,7 +686,7 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 
 输入输出设备声音的设置（如设置扬声器和麦克风），让您听得更舒适，录音更清晰。
 
-![0|sound](fig/eu_sound.png)
+![0|sound](fig/e_sound.png)
 
 
 #### 输出设备
@@ -682,7 +718,7 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 ### 时间日期
 选择正确的所在时区，即可在电脑上显示所在地的时间和日期，也可以手动修改时间和日期。
 
-![0|time](fig/eu_time.png)
+![0|time](fig/e_time.png)
 
 #### 修改时区
 在您安装系统时，已选择了系统时区。若要修改系统时区，请按如下步骤设置。
@@ -711,13 +747,10 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 #### 修改时间和日期
 默认情况下，系统通过网络自动同步该时区的本地时间和日期。您也可以手动修改时间和日期。手动设置后，自动同步功能会被关闭。
 1. 在控制中心首页，单击 ![time](../common/time.svg)。
-
 2. 单击 **时间设置** 。
-3. 关闭 **自动同步配置**。
-4. 手动设置正确的时间和日期。
-5. 单击 **确定**。
-
-> ![notes](../common/notes.svg)说明：您还可以打开 **自动同步配置**、设置服务器同步参数。
+   - 开启或关闭自动同步配置。
+   - 设置正确的时间和日期。
+3. 单击 **确定**。
 
 #### 设置时间日期格式
 
@@ -728,37 +761,57 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 
 ### 电源管理
 
-对系统电源进行一些设置，如设置显示器的关闭时间、自动锁屏时间等。
+对系统电源进行一些设置，让笔记本电池更耐用，让系统更安全。
 
-![0|power](fig/eu_power.png)
+![0|power](fig/e_power.png)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 #### 设置显示器关闭时间
 
 1. 在控制中心首页，单击 ![power_normal](../common/power_normal.svg)。
-2. 单击 **使用电源**。
+2. 单击 **使用电源** 或 **使用电池**。
 3. 选择关闭显示器的时间。
+
+> ![notes](../common/notes.svg)说明：笔记本电脑用户可以在“使用电源”和“使用电池”下对同一设置项分别设置不同的时间。
 
 #### 设置自动锁屏时间
 
 1. 在控制中心首页，单击 ![power_normal](../common/power_normal.svg)。
-2. 单击 **使用电源**。
+2. 单击 **使用电源** 或 **使用电池**。
 3. 选择自动锁屏的时间。
+
+#### 设置合盖显示状态
+
+1. 在控制中心首页，单击 ![power_normal](../common/power_normal.svg)。
+2. 单击 **使用电源** 或 **使用电池**。
+3. 设置 **笔记本合盖时** 为 **关闭显示器** 或 **无任何操作**。
+
+> ![notes](../common/notes.svg)说明：仅笔记本电脑支持设置合盖显示状态。
 
 #### 设置按电源按钮时显示状态
 
 1. 在控制中心首页，单击 ![power_normal](../common/power_normal.svg)。
-2. 单击 **使用电源**。
+2. 单击 **使用电源** 或 **使用电池**。
 3. 选择电源按钮 **关机**、**关闭显示器** 或 **无任何操作**，更改电源设置。
 
 更改设置后会即时生效，并有通知提示。
 
-### 鼠标
+#### 设置低电量通知
 
-鼠标是电脑常用的输入设备。使用鼠标，可以使操作更加简便快捷。在控制中心鼠标设置模块，用户可以对鼠标进行设置，从而让设备使用体验更加符合自己的使用习惯。
+1. 在控制中心首页，单击 ![power_normal](../common/power_normal.svg)。
+2. 单击 **使用电池**。
+3. 打开 **低电量通知**，当电池剩余电量低于设置的阈值（例如，20%）时，系统会发出低电量通知。
 
-![0|mouse](fig/eu_mouse.png)
+通过拖拽低电量滑块，调节低电量的阈值。
+
+> ![notes](../common/notes.svg)说明：仅笔记本电脑支持设置低电量通知。
+
+### 鼠标和触控板
+
+鼠标和触控板是电脑常用的输入设备。使用鼠标，可以使操作更加简便快捷。对于笔记本电脑用户，当没有鼠标时，也可以使用触控板代替鼠标进行操作。部分设备还支持指点杆，使用指点杆不需要将手指从基准键上移开便能操纵鼠标。在控制中心鼠标设置模块，用户可以对鼠标、触控板和指点杆进行设置，从而让设备使用体验更加符合自己的使用习惯。
+
+![0|mouse](fig/e_mouse.png)
 
 #### 通用设置
 
@@ -781,11 +834,29 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 > - 开启鼠标加速，提高了指针精确度，鼠标指针在屏幕上的移动距离会根据移动速度的加快而增加。可以根据使用情况开启或关闭。
 > - 自然滚动开启后，鼠标滚轮向下滚动，内容会向下滚动；鼠标滚轮向上滚动，内容会向上滚动。
 
+#### 触控板设置
+
+![0|touchpad](fig/s_touchpad.png)
+
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+
+若您使用的是笔记本电脑，可以在 **鼠标 > 通用** 界面开启 **输入时禁用触控板**，在 **鼠标 > 鼠标** 界面开启 **插入鼠标时禁用触控板**，以避免误触触控板。
+
+您还可以调节触控板的 **指针速度**，控制手指移动时指针移动的速度；开启自然滚动，变更滚动方向。
+
+
+#### 指点杆设置
+指点杆，常称为小红帽，是一种主要应用于笔记本电脑的定点设备，可用来控制指针的移动。
+
+1. 在控制中心首页，单击 ![mouse_touchpad_normal](../common/mouse_touchpad_normal.svg)。
+2. 单击 **指点杆**。
+3. 调节 **指针速度**， 控制使用指点杆时指针移动的速度。
+
 ### 键盘和语言
 
 在此模块可以设置键盘属性，以便符合个人的输入习惯，还可以根据国家和语言调整键盘布局，设置输入法、系统语言，以及自定义快捷键。
 
-![0|keyboard](fig/eu_keyboard.png)
+![0|keyboard](fig/e_keyboard.png)
 
 #### 键盘属性
 
@@ -802,7 +873,7 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 
 
 
-![layout](fig/eu_layout.png)
+![layout](fig/e_layout.png)
 
 ##### 添加键盘布局
 
@@ -827,7 +898,9 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 
 1. 在控制中心首页，单击 ![keyboard_normal](../common/keyboard_normal.svg)。
 2. 单击 **输入法**，进入输入法界面。
-3. 单击 **添加** 按钮 ![add](../common/add.svg) ，您可以进入添加输入法界面，选择输入法，将该输入法添加到输入法管理列表。
+3. 单击 **添加** 按钮 ![add](../common/add.svg) ，您可以：
+   - 单击 **前往商店下载**，在应用商店下载输入法，当该输入法下载完成后，系统自动设置其为默认输入法。
+   - 进入添加输入法界面，选择输入法，将该输入法添加到输入法管理列表。
 
 > ![notes](../common/notes.svg)说明： 在输入法管理界面，单击 **编辑**，单击 **删除** 按钮![delete](../common/delete.svg)即可移除某输入法。对于被移除（非卸载）的输入法，可以在添加输入法界面进行添加。
 
@@ -876,7 +949,7 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 #### 快捷键
 快捷键列表显示了系统所有的快捷键，在这里查看、修改和自定义快捷键。
 
-![0|shortcut](fig/eu_shortcut.png)
+![0|shortcut](fig/s_shortcut.png)
 
 ##### 查看快捷键
 
@@ -891,7 +964,7 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 3. 单击需要修改的快捷键。
 4. 使用键盘输入新的快捷键。
 
-> ![tips](../common/tips.svg)窍门：若要禁用快捷键，请按下键盘上的 **Backspace** ![Backspace](../common/Backspace.svg)键。若要取消修改快捷键，按下键盘上 **Esc** 键， 或单击下方的”恢复默认”按钮。
+> ![tips](../common/tips.svg)窍门：若要禁用快捷键，请按下键盘上的 ![Backspace](../common/Backspace.svg)。若要取消修改快捷键，按下键盘上 **Esc** 键， 或单击下方的”恢复默认”按钮。
 
 ##### 自定义快捷键
 您可以为常用的应用自定义一个快捷键。
@@ -907,16 +980,46 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 > ![tips](../common/tips.svg)窍门：若要修改快捷键，单击输入新的快捷键即可。若要修改自定义快捷键的名称和命令，单击“自定义快捷键”后的 **编辑** ，单击快捷键名称后的 ![edit](../common/edit.svg)，进入修改页面。
 
 
+### 系统更新
+当系统存在更新时会在控制中心首页进行提示，单击 **更新** 按钮 ![update](../common/update.svg) 进入"检查更新"页面，检查完毕后，即可进行下载和安装更新。除此之外，在更新设置模块中还可以设置自动下载更新。
+
+> ![tips](../common/tips.svg)窍门：如果您不想收到系统或应用更新的提示，可在“更新设置”中关闭“更新提醒”。
+
+![0|update](fig/e_update.png)
+
+
+#### 更新和升级
+
+1. 在控制中心首页，单击 ![update](../common/update.svg)。
+2. 单击 **检查更新**，进入检查系统更新界面。
+ - 如果系统没有更新将会提示“您的系统已经是最新的”。
+ - 如果系统存在更新，将显示 **下载并安装更新** 按钮、下载数据大小和更新详情。
+3. 单击 **下载并安装更新** 按钮，系统将自动开始下载并安装更新。
+4. 更新完成后，会出现”更新成功”提示。
+
+> ![notes](../common/notes.svg)说明：在下载过程中，您可以单击按钮暂停下载，再次单击按钮继续下载。更新完成后，会弹出对话框提醒用户 **重启** 或 **关机** 。
+
+#### 自动下载更新
+
+1. 在控制中心首页，单击 ![update](../common/update.svg)。
+2. 单击 **更新设置**。
+3. 打开 **下载更新**。
+4. 当系统存在更新时，将自动下载数据。
+
+> ![tips](../common/tips.svg)窍门：打开 **清除软件包缓存** 开关，系统会定期自动清理下载软件包导致的缓存。
+
+
 ### 系统信息
 
 查看系统版本、版本授权和电脑硬件等信息，以及该系统的一些协议。
 
-![0|info](fig/eu_info.png)
+![0|info](fig/e_info.png)
 
 #### 关于本机
 
 1. 在控制中心首页，单击 ![system_info_normal](../common/system_info_normal.svg)。
-2. 在 **关于本机** 下，您可以查看当前系统版本、版本授权及电脑硬件信息。
+2. 在 **关于本机** 下，您可以查看当前系统版本、版本授权及电脑硬件信息；
+3. 若系统未激活，可在此页面单击 **激活**，进行系统激活。
 
 #### 版本协议
 
@@ -928,153 +1031,229 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 1. 在控制中心首页，单击 ![system_info_normal](../common/system_info_normal.svg)。
 2. 在 **最终用户许可协议** 下，查看最终用户许可协议。
 
-#### 隐私政策
-
-1. 在控制中心首页，单击 ![system_info_normal](../common/system_info_normal.svg)。
-2. 在 **隐私政策** 下，查看隐私政策。
-
 ### 授权管理
+授权管理是系统预装的工具，帮助您激活系统。
 
-您可以通过GUI界面查看版本授权状态，也可以通过命令行操作来激活系统。
-
-命令行的操作如下：
-
-1. 按下 **Ctrl + Alt + T** 快捷键打开终端。
-
-2. 执行如下命令。
-
-命令：
-`uos-activator-cmd  [OPTION]  <key><keyfile><keysfile><index><url>`
-
-uos-activator-cmd  [选项]  <序列号><激活文件><离线激活文件><默认服务器索引><自定义服务器地址>
-
-查看系统激活状态和帮助提示信息，执行无参数程序命令 uos-activator-cmd 。
-
-当需要激活系统或设置服务器地址时，可参考如下参数说明。
-
-| 参数                       | 说明                                                         |
-| -------------------------- | ------------------------------------------------------------ |
-| -t , -T                    | 用户输入命令+参数（-t或-T），进行试用期激活系统。            |
-| -a , -A <key>              | 用户输入命令+参数（-a或-A）+16位或25位序列号，进行序列号激活系统。序列号中可以有”-“字符连接，也可以无”-“字符连接。序列号字母不区分大小写。 |
-| -f , -F , --file <keyfile> | 用户输入命令+选项（-f或-f或--file）+.key激活文件，进行激活文件激活系统。 |
-| -s , -S                    | 设置激活服务器用户指引和默认服务器列表展示。                 |
-| -s , -S --default <index>  | 用户输入命令uos-activator-cmd  -s/-S --default 0表示用户选择激活服务器的地址为：[https://license.chinauos.com](https://license.chinauos.com/)。 |
-| -s , -S --http/https <url> | 用户输入命令+参数（-s或-S）+参数（--http/--https自定义服务器）+（url 自定义服务器地址），设置激活服务器地址。 |
-| -q , -Q , --query          | 用户输入命令+参数（-q或-Q），查询当前系统对应服务器下的激活状态。 |
-| -v , -V , --version        | 用户输入命令+参数（-v或-V或--vision），查看命令行程序版本和程序信息。 |
-| -h , -H , --help           | 用户输入命令+参数（-v或-V或--help），查看命令行程序帮助信息。 |
+以下将从未激活、激活方式、激活成功及激活失败这几个方面进行介绍。
 
 
+#### 未激活
 
-#### 查看激活状态
+1. 运行授权管理工具有两种方式：
 
-执行命令 **uos-activator-cmd** ，查看激活状态。
+   - 单击右下角托盘上的 ![sys_auth1](../common/authorize1.svg)进入界面。
 
-终端显示：
+   - 打开 **控制中心**，选择 **系统信息**，单击 **关于本机**。可查看版本授权栏，单击 **激活** 进入页面。
 
-`Ser URL: https://license.chinauos.com`
+2. 未激活状态分为两种：未激活和过期未激活。
 
-`Status : Unactivated`
+   - 未激活：界面包括产品名称、产品版本和授权状态信息。
 
-`Autrorization : Not authorized`
+   - 过期未激活：在截止时间内未激活系统，界面包括产品名称、产品版本、授权状态、授权对象和截止日期信息。
 
-`Try 'uos-activator-cmd --help' for more information`
+3. 可选择激活方式激活系统。
 
-执行命令 **uos-activator-cmd --help**
-
-终端显示：
-
-`Uasge : uos-activator-cmd [options]`
-
-`Options :`
-
-`-t , -T                                 Try full version`
-
-`-a , -A <key>                     Activate with an serial number`
-
-`-f , -F , --file <keyfile>      Activate with an activation file`
-
-`-s , -S                                 Set the activation server address`
-
-`-s , -S --default <index>  Set the default activation server address`
-
-`-s , -S --http <url>            Customize activation server address to http://`
-
-`-s , -S --https <url>           Customize activation server address to https://`
-
-`-q , -Q , --query                 Query activation status`
-
-`-v , -V , --version                Show version information`
-
-`-h , -H , --help                    Displays help`
+> ![notes](../common/notes.svg)说明：如果系统未激活，授权管理图标 ![sys_auth1](../common/authorize1.svg)一直常驻在右下角托盘，开机即显示。
 
 #### 激活方式
 
-授权管理激活方式分在线激活和离线激活，而在线激活方式分为试用期激活、输入序列号激活、导入激活文件激活。
+授权管理激活方式分在线激活和离线激活，而在线激活方式包含试用期激活、输入序列号、导入激活文件。
+
+> ![attention](../common/attention.svg)注意： 只有在试用期或被激活成功的系统，才能正常使用统信UOS的所有功能，否则会有部分功能受到限制。
 
 ##### 在线激活
 
+网络连接正常时，可以使用在线激活。
+
 ###### 试用期激活
 
-每台设备仅有一次试用期激活机会（默认开机自动激活），从激活当天算起，有效期为180天。试用期完成后，您可以通过购买序列号等方式正式激活系统。
+每台设备仅有一次试用期激活机会，从激活当天算起，有效期为90天。试用期间可使用系统全部功能。
 
-1. 执行命令 **uos-activator-cmd  -t**
-终端显示：
+1. 单击右下角托盘上的 ![sys_auth1](../common/authorize1.svg)进入界面。
 
-You have only one chance to try the full version in 180 days from the activation date. During the trial period, you can use all system features, and activate the system permanently through a serial number or a license file.
+   ![0|probation1](fig/e_probation1.png)
 
-Are you sure you want to try the full version(y/n):
+2. 单击 **试用期激活**，跳转到激活界面。
 
-2. 用户选择输入y，则确认进行试用期激活。
+3. 单击 **立即激活**，会弹出二次确认弹框，单击 **确定**，弹出试用期激活成功界面，任务栏图标变为![sys_auth2](../common/authorize2.svg)。
 
-如果用户选择输入n，则程序运行结束。
+4. 在此界面，可查看试用到期时间等信息，也可以选择通过输入序列号、导入激活文件来激活系统。
 
-###### 序列号激活
+   ![0|probation3](fig/e_probation3.png)
 
-执行命令 **uos-activator-cmd  --a  xxxx-xxxx-xxxx-xxxx**
+###### 输入序列号
 
-xxxx-xxxx-xxxx-xxxx 表示序列号
+1. 单击右下角托盘上的 ![sys_auth1](../common/authorize1.svg)进入界面。
 
-###### 文件激活
+2. 单击 **输入序列号**，输入或复制正确的序列号，单击 **立即激活**。
 
-执行命令 **uos-activator-cmd  -f  filename**
+   ![0|activation_code1](fig/e_activation_code1.png)
 
-##### **离线激活**
+3. 会弹出二次确认弹框，单击 **确定**，弹出激活成功界面。
 
-离线激活的前提是系统网络连接异常。
+###### 导入激活文件
 
-当选择输入序列号或导入授权文件激活时，系统检测网络连接异常，连接不上激活服务器，将进入离线激活。
+1. 单击右下角托盘上的 ![sys_auth1](../common/authorize1.svg)进入界面。
 
-用户使用移动设备扫描二维码后输入离线激活码。
+2. 单击 **导入激活文件**，弹出文件管理器，选择.key格式的激活文件。
 
-终端显示：
+   ![0|file_activation2](fig/e_activation_via_file2.png)
 
-`Please scan the QR code on your device:`
+3. 选择正确的文件，单击 **立即激活**。会弹出二次确认弹框，单击 **确定**，弹出激活成功界面。
 
-`To quit activation, press [Ctrl+C]`
+##### 离线激活
 
-`Please input offline activation code:`
+网络连接异常时，可使用离线激活。
+
+1. 选择输入序列号或导入授权文件激活时，系统检测网络连接异常，则跳转到离线激活界面。
+
+   ![0|activate_offline1](fig/e_activation_offline1.jpg)
+
+3. 手机扫描二维码，手机端弹出激活界面，界面显示当前机器ID及序列号。
+
+   ![0|activate_offline2](fig/e_activate_offline2.jpg)
+
+4. 单击 **立即激活**，会弹出二次确认弹框，单击 **确定**。
+
+5. 跳转到激活成功界面，显示机器ID、序列号和离线激活码。
+
+   ![0|activate_offline3](fig/e_activate_offline3.jpg)
+
+6. 手动将手机端的离线激活码输入电脑端的离线激活码输入框。
+
+   ![0|activate_offline4](fig/e_activation_offline4.jpg)
+
+7. 单击 **离线激活**，跳转到激活成功界面。
+
+#### 激活成功
+
+系统激活成功后，右下角托盘不再显示授权管理图标，在“控制中心 > 系统信息 > 关于本机”中，单击 **查看** 可以查看授权管理信息。
+激活成功界面包含产品名称、版本和激活状态等信息，也可以单击 **查看详情** 查看更多信息。
+
+主要信息如下所示：
+
+- 产品名称：操作系统的名称。
+- 版本：操作系统的版本。
+- 激活状态：分为未激活、过期未激活、已激活。
+- 授权状态：分为未授权、已过期、已授权。
+- 激活方式：根据实际激活方式体现。
+- 到期时间：到期时间前 10 天开始，每次开机进入系统，会弹出系统授权即将到期的提示信息。
+
+![0|activation_code3](fig/e_activation_code3.png)
+
+##### 更换序列号
+
+当系统激活成功后，由于某些原因需要变更序列号。
+
+有且仅当满足如下条件时，支持更换序列号。
+
+- 网络状态为在线时，支持序列号更换，离线状态暂不支持序列号更换，但支持手机扫码激活。
+- 仅授权状态为已激活时，支持序列号更换。
+- 仅授权模式为OPEN时，支持序列号更换
+
+更换序列号操作步骤如下：
+
+1. 在激活详情界面，单击 **更换序列号**。
+2. 弹出更换序列号提示框，单击 **更换**。
+3. 进入序列号激活界面，输入新的序列号。
+4. 单击 **立即激活** 即可更换序列号。
+
+> ![notes](../common/notes.svg)说明：系统支持命令行 **uos-activator-cmd -c/-C** 更换序列号，仅支持3次序列号更换。
+
+#### 激活失败
+
+若激活文件已使用或已失效，则会弹出激活失败界面。
 
 #### 激活服务器设置
 
-##### 设置服务器用户指引提示
+如果当前激活服务器崩溃了，通过授权管理工具，单击![menu](../common/icon_menu.svg) 主菜单中的设置，可以自定义新的激活服务器。
 
-执行命令 **uos-activator-cmd -s**
 
-终端显示：
+### 备份还原
 
-`Default servers list:`
+为避免因软件缺陷、硬件损毁、人为操作不当、骇客攻击、电脑病毒、自然灾害等因素造成数据缺失或损坏，可以进行应用数据或系统数据的备份还原，以保障系统的正常运行。
 
-`0——[https://license.chinauos.com](https://license.chinauos.com/)`
+![0|backup-recovery](fig/s_backupRestore.png)
 
-`1——https://license1.chinauos.com`
+#### 备份
 
-`You can use the ‘uos-activator-cmd -s --default number’ to select the default server, or set up a custom server using ‘--http /--https’.`
+统信UOS提供初始化备份、控制中心备份的备份方式。
 
-##### 设置默认服务器
+##### 通过初始化进行备份
 
-执行命令 **uos-activator-cmd -s --default index**
+在系统安装时，如果选择全盘安装，会先自动创建恢复分区，并在后续安装过程中备份启动分区和根分区。
 
-##### 设置自定义服务器
+##### 通过控制中心进行备份
 
-执行命令 **uos-activator-cmd  -s --http/--https url** 
+在控制中心，用户可以通过全盘备份或系统备份来备份数据。
+
+1. 在控制中心首页，单击 ![system_info_normal](../common/system_info_normal.svg)。
+2. 选择 **备份/还原** > **备份**，设置备份模式和备份文件的保存路径。
+   备份模式：全盘备份、系统备份
+   - 全盘备份：备份全磁盘的系统文件和用户文件
+
+   - 系统备份：不保留用户数据时，备份根分区和启动分区的文件；保留用户数据时，备份根分区、启动分区、opt分区、home分区文件。
+
+   > ![notes](../common/notes.svg)说明： 全盘备份无法备份在自己本身的磁盘里，只能备份在其它存储介质中。
+
+3. 单击 **开始备份**，弹出密码输入框，请输入密码授权备份文件，直至文件备份完成。
+
+> ![attention](../common/attention.svg)注意： 在备份文件的过程中，请不要拔掉电源或强行关机，以防止数据的丢失或损坏。
+
+
+
+#### 还原
+
+统信UOS支持从Grub、控制中心进行数据还原。
+
+##### 从Grub进入还原
+
+在开机时，选择系统界面，单击 **UnionTech OS Restore**，进入统信UOS系统还原。用户可以选择“恢复出厂设置”读取安装时的初始化备份，也可以选择“自定义恢复”恢复已创建的历史还原点。
+
+##### 通过控制中心进行还原
+
+用户既可以恢复出厂设置，也可以自定义恢复还原前期备份的数据。
+
+1. 在控制中心首页，单击 ![system_info_normal](../common/system_info_normal.svg)。
+2. 选择 **备份/还原** > **还原**，您可以选择：
+
+   - 恢复出厂设置
+      1. 选择是否勾选 **保留个人数据**，单击 **开始还原**，在弹出的对话框中，单击 **确定**。 
+      2. 在弹出的密码输入框中，输入密码授权进行数据的还原。
+   - 自定义恢复
+      1. 勾选 **自定义恢复** 后，单击![loadfile](../common/loadfile.svg)选择要还原的文件。
+      2. 单击 **开始还原**，开始还原系统。
+
+
+
+### 通用设置
+
+通用设置模块下包括启动菜单的相关信息。
+
+![general](fig/e_general.png)
+
+#### 设置启动菜单
+
+启动菜单，指的是开机后选择操作系统的菜单。选择某一系统后，计算机就会引导进入该操作系统。
+
+##### 设置启动延时
+
+当系统存在多个系统时，“启动延时”默认开启，开机后在启动菜单停留5秒钟，您可以在启动菜单单击要进入的系统。
+
+当系统仅存在一个系统时，“启动延时”默认关闭，开机后在启动菜单停留1秒钟，不需要进行选择。
+
+##### 修改默认启动项
+
+1. 在控制中心首页，单击 ![general](../common/general.svg)。
+2. 单击 **启动菜单**，进入启动菜单界面。
+3. 单击选中某一菜单项后，该项将成为默认启动项。
+
+##### 更改启动菜单背景
+
+1. 在控制中心首页，单击 ![general](../common/general.svg)。
+2. 单击 **启动菜单**，进入启动菜单界面。
+3. 开启 **主题**，使用该主题为启动菜单的背景。
+
+> ![tips](../common/tips.svg)窍门：您也可以把图片拖拽到预览窗口，来更换启动菜单的背景。
+>
+> 
