@@ -751,6 +751,8 @@ void WebWindow::onSearchContentByKeyword(const QString &keyword)
 {
     qDebug() << "calling keyword is:" << keyword << endl;
     QString key(keyword);
+    if (key.size() > 1 && key.contains("%"))
+        key.remove("%");
     const QString searchKey = key.remove('\n').remove('\r').remove("\r\n").remove(QRegExp("\\s"));
     //在数据库中查询->SearchDb::searchContent->SearchDb::handleSearchContent
     search_manager_->searchContent(searchKey);
