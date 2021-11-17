@@ -1416,7 +1416,7 @@ UOS PC与非UOS PC或者UOS PC与移动设备（手机/平板）之间通过蓝�
 
 通用设置模块下包括启动菜单、开发者模式和用户体验计划等信息。
 
-![general](fig/p_general.png)
+![general](fig/h_general.png)
 
 #### 设置启动菜单
 
