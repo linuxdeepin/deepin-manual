@@ -271,9 +271,12 @@ TEST_F(ut_utils_test, hasSelperSupport)
     Utils *m_utils = new Utils;
     Stub s;
     s.set(ADDR(Utils, getSystemManualList), manaulapplist);
-
-    ASSERT_TRUE(m_utils->hasSelperSupport());
-
+    s.set(ADDR(Dtk::Core::DSysInfo, deepinType), stub_deepinTypeServer);
+    int nType = Dtk::Core::DSysInfo::deepinType();
+    if (Dtk::Core::DSysInfo::DeepinProfessional == nType)
+        ASSERT_TRUE(m_utils->hasSelperSupport());
+    else
+        ASSERT_FALSE(m_utils->hasSelperSupport());
     delete m_utils;
 }
 
