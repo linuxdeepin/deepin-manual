@@ -276,7 +276,6 @@ TEST_F(ut_utils_test, hasSelperSupport)
         ASSERT_TRUE(m_utils->hasSelperSupport());
     else
         ASSERT_FALSE(m_utils->hasSelperSupport());
-    ASSERT_TRUE(m_utils->hasSelperSupport());
 
     delete m_utils;
 }
