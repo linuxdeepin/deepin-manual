@@ -63,7 +63,7 @@ int main(int argc, char **argv)
 #endif
 
     if(Utils::judgeWayLand()){
-        qputenv("QT_WAYLAND_SHELL_INTEGRATION", "kwayland-shell");
+//        qputenv("QT_WAYLAND_SHELL_INTEGRATION", "kwayland-shell");
         qputenv("_d_disableDBusFileDialog", "true");
         setenv("PULSE_PROP_media.role", "video", 1);
         QSurfaceFormat format;
