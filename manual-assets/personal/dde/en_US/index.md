@@ -1323,7 +1323,7 @@ You can view system version, authorization info, hardware info, and the agreemen
 1. On the homepage of Control Center, click ![system_info_normal](../common/system_info_normal.svg).
 2. View the Privacy Policy under **Privacy Policy**.
 
-### Activation
+### Authorization Management
 
 After each device is installed with Uniontech OS, it can be used free for 30 days. During the 30 days trial period, users can use the system's full function. The system can be activated at any time during the trial period and can be used permanently after activation.
 
