@@ -45,6 +45,7 @@
 #include <QWebEngineHistory>
 #include <QTime>
 #include <QClipboard>
+#include <QNetworkProxyFactory>
 
 namespace {
 
@@ -655,6 +656,7 @@ void WebWindow::initWebView()
     //根据系统主题设置web背景色
     slot_ThemeChanged();
     QWebChannel *web_channel = new QWebChannel;
+    QNetworkProxyFactory::setUseSystemConfiguration(false);
     //向web页面注册C++类对象
     web_channel->registerObject("i18n", i18n_proxy);
     web_channel->registerObject("imageViewer", image_viewer_proxy_);
