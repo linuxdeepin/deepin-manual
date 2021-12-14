@@ -45,6 +45,7 @@
 #include <QWebEngineHistory>
 #include <QTime>
 #include <QClipboard>
+#include <QNetworkProxyFactory>
 
 namespace {
 
@@ -647,6 +648,7 @@ void WebWindow::initWebView()
     if(!Utils::judgeWayLand()){
         web_view_->setAttribute(Qt::WA_NativeWindow, true);
     }
+    QNetworkProxyFactory::setUseSystemConfiguration(false);
 
     //禁止拖文件
     web_view_->setAcceptDrops(false);
