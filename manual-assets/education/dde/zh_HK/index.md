@@ -4,7 +4,7 @@
 
 統信操作系統（簡稱「統信UOS」）是一款美觀易用、安全可靠的國產桌面操作系統。統信UOS預裝了檔案管理員、應用商店、看圖、系統監視器等一系列原生應用。它既能讓您體驗到豐富多彩的娛樂生活，也可以滿足您的日常工作需要。隨着功能的不斷升級和完善，統信操作系統已成為國內最受歡迎的桌面操作系統之一。
 
-![1|desk](fig/edu_desk.jpg)
+![1|desk](fig/edu_desk.png)
 
 ### 系統簡介
 
@@ -219,8 +219,7 @@
 2. 連接錄音設備後，使用語音與智能助手直接對話，如更換壁紙、調節螢幕亮度，查詢訊息等。
 3. 等輸入框出現後，還可以輸入文字指令。
 
-![ai1](fig/ai1.png) 
-![ai2](fig/ai2.png)
+![ai1](fig/ai1.png) ![ai2](fig/ai2.png)
 
 > ![tips](../common/tips.svg) 竅門：選中文字按下 **Ctrl** + **AIt** + **P** 可以進行語音播報；連接錄音設備後，輸入框內按下 **Ctrl** + **AIt** + **O** 進入聽寫模式，把語音輸入轉換為文字。
 
@@ -1344,7 +1343,7 @@ UOS PC與非UOS PC或者UOS PC與移動設備（手機/平板）之間通過藍�
 
 您可以查看系統版本、版本協議和電腦硬件等訊息，以及該系統的一些協議。
 
-![0|info](fig/edu_info.png)
+<img src="fig/edu_info1.png" alt="0|info" style="zoom:75%;" />
 
 #### 關於本機
 
@@ -1404,7 +1403,7 @@ UOS PC與非UOS PC或者UOS PC與移動設備（手機/平板）之間通過藍�
 
 1. 單擊右下角托盤上的 ![uos1](../common/authorize1.svg) 進入界面。
 
-![0|probation1](fig/edu_probation1.png)
+<img src="fig/edu_probation1_1.png" alt="0|probation1" style="zoom: 67%;" />
 
 2. 單擊 **試用期啟用**，跳轉到啟用界面。
 
@@ -1412,7 +1411,7 @@ UOS PC與非UOS PC或者UOS PC與移動設備（手機/平板）之間通過藍�
 
 系統成功啟用後，可查看啟用狀態、可查看試用到期時間等訊息，也可以選擇永久啟用系統。
 
-   ![0|probation3](fig/edu_probation3.png)
+<img src="fig/edu_probation3_1.png" alt="0|probation1" style="zoom: 67%;" />
 
 輸入序列號
 
@@ -1429,10 +1428,9 @@ UOS PC與非UOS PC或者UOS PC與移動設備（手機/平板）之間通過藍�
 導入啟用文檔
 
 1. 單擊右下角托盤上的 ![uos1](../common/authorize1.svg) 進入界面。
-
 2. 單擊 **導入啟用文檔**，彈出檔案管理員，選擇.key格式的啟用文檔。
 
- ![0|file_activation2](fig/activation_via_file2.png)
+![0|activation_code1](fig/activation_via_file2.png)
 
 3. 選擇正確的文檔，單擊 **立即啟用**。會彈出二次確認彈框，單擊 **確定**，彈出啟用成功界面。
 
@@ -1448,13 +1446,13 @@ UOS PC與非UOS PC或者UOS PC與移動設備（手機/平板）之間通過藍�
 
 3. 手機掃描二維碼，手機端彈出啟用界面，界面顯示當前機器ID及序列號。
 
-   ![0|activate_offline2](fig/activate_offline2.png)
+   <img src="fig/activate_offline2.png" alt="0|activate_offline2" style="width:480px;" />
 
 4. 單擊 **立即啟用**，會彈出二次確認彈框，單擊 **確定**。
 
 5. 跳轉到啟用成功界面，顯示機器ID、序列號和離線啟用碼。
 
-   ![0|activate_offline3](fig/activate_offline3.png)
+   <img src="fig/activate_offline3.png" alt="0|activate_offline3" style="width:480px;" />
 
 6. 手動將手機端的離線啟用碼輸入電腦端的離線啟用碼輸入框。
 
@@ -1476,7 +1474,7 @@ UOS PC與非UOS PC或者UOS PC與移動設備（手機/平板）之間通過藍�
 - 啟用方式：根據實際啟用方式體現。
 - 到期時間：到期時間前 10 天開始，每次開機進入系統，會彈出系統授權即將到期的提示訊息。
 
-![0|activation_code3](fig/edu_activation_code3.png)
+<img src="fig/edu_activation_code3_1.png" alt="0|activation_code3" style="width:480px;" />
 
 ##### 更換序列號
 

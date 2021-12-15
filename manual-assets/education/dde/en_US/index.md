@@ -232,9 +232,8 @@ You can input words and voice as follows：
 2. Connect the recording devices and  talk to AI Assistant directly, such as  "change the wallpaper", "adjust the screen brightness", and "what's the weather".
 3. It is also available to input text instructions after the input box appears.
 
-![ai1](fig/ai1.png) 
+![ai1](fig/ai1.png) ![ai2](fig/ai2.png)
 
-![ai2](fig/ai2.png)
 > ![tips](../common/tips.svg) Tips: Select the text information needed and press **Ctrl** + **Alt** + **P** for voice reading; after connecting the recording devices, press **Ctrl** + **Alt** + **O** in the input box to enter the dictation mode and convert the voice input to texts.
 
 #### Set up Speech to Text
@@ -1318,7 +1317,7 @@ When there are system updates, it will be notified on the home page of Control C
 
 You can view system version, authorization info, hardware info, and the agreements here.
 
-![0|info](fig/edu_info.png)
+<img src="fig/edu_info1.png" alt="0|info" style="zoom:75%;" />
 
 #### About This PC
 
@@ -1370,7 +1369,7 @@ Under both online/offline mode, the system is activated automatically. There is 
 
 1. Click ![uos1](../common/authorize1.svg) on the tray in the lower right corner to enter the interface.
 
-   ![0|probation1](fig/edu_probation1.png)
+   <img src="fig/edu_probation1_1.png" alt="0|probation1" style="width:480px" />
 
 2. Click **Try Full Version** and goto to the activation interface.
 
@@ -1378,7 +1377,7 @@ Under both online/offline mode, the system is activated automatically. There is 
 
 4. It is available to view the information such as expiration date and so on. The system could also be activated by serial number and license files.
 
-   ![0|probation3](fig/edu_probation3.png)
+   <img src="fig/edu_probation3_1.png" alt="0|probation3" style="width:480px;" />
 
 ###### Input Serial Number
 
@@ -1411,7 +1410,9 @@ The off-line activation can be adopted when the network connection is abnormal.
 
 2. Scan the QR code with your mobile phone  and the current device ID as well as activation code are displayed in the pop-up activation interface.
 
-   ![0|activateoffline2](fig/p_activateoffline2.png) 
+   <img src="fig/p_activateoffline2.png" alt="0|activateoffline1" style="width:480px;" />
+
+    
 
 3. Click **Activate Now** and click **Confirm** in the pop-up confirmation dialogue. 
 
@@ -1436,7 +1437,7 @@ The major information shown includes:
 - Activation Method: it displays your actual activation method.
 - Expiration Date: From the 10th day to expiration date, the system will remind you that the authorization is about to expire.
 
-![0|activationcode3](fig/edu_activationcode3.png)
+<img src="fig/edu_activationcode3_1.png" alt="0|activationcode3" style="width:480px;" />
 
 ##### Change Serial Number
 

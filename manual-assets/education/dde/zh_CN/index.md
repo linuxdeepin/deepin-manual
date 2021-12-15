@@ -3,7 +3,7 @@
 ## 概述
 统信操作系统(简称“统信UOS”)是一款美观易用、安全可靠的国产桌面操作系统。统信UOS预装了文件管理器、应用商店、看图、系统监视器等一系列原生应用。它既能让您体验到丰富多彩的娱乐生活，也可以满足您的日常工作需要。随着功能的不断升级和完善，统信操作系统已成为国内最受欢迎的桌面操作系统之一。
 
-![1|desk](fig/edu_desk.jpg)
+![1|desk](fig/edu_desk.png)
 
 ### 系统简介
 成功登录系统后，即可体验统信UOS桌面环境。桌面环境主要由桌面、任务栏、启动器、控制中心和窗口管理器等组成，是使用该操作系统的基础。
@@ -79,7 +79,7 @@
 3. 选择某一壁纸后，壁纸就会在桌面和锁屏中生效。
 4. 单击 **仅设置桌面** 和 **仅设置锁屏** 来控制壁纸的生效范围。
 
-![1|wallpaper](fig/edu_wallpaper.jpg)
+![1|wallpaper](fig/edu_wallpaper.png)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 > ![tips](../common/tips.svg) 窍门：
@@ -95,7 +95,7 @@
 4. 勾选 **恢复时需要密码**，以便更好地保护您的隐私。
 5. 待电脑空闲指定时间后，将启动您选择的屏幕保护程序。
 
-![1|screensaver](fig/edu_screensaver.jpg)
+![1|screensaver](fig/edu_screensaver.png)
 
 ### 剪贴板
 剪贴板展示当前用户登录系统后复制和剪切的所有文本、图片和文件。使用剪贴板可以快速复制其中的某项内容。注销或关机后，剪贴板会自动清空。
@@ -302,9 +302,9 @@
 
 小窗口模式还支持快速打开文件管理器、控制中心和进入关机界面等功能。
 
-![1|launch](fig/edu_fullscreen.jpg)
+![1|launch](fig/edu_fullscreen.png)
 
-![1|launch](fig/edu_mini.jpg)
+![1|launch](fig/edu_mini.png)
 
 
 ### 排列应用
@@ -314,7 +314,7 @@
 - 将鼠标悬停在应用图标上，按住鼠标左键不放，将应用图标拖拽到指定的位置自由排列。
 - 单击启动器界面左上角分类图标 ![category](../common/category_icon.svg) 进行排列。
 
-![1|sortapp](fig/edu_sortapp.jpg)
+![1|sortapp](fig/edu_sortapp.png)
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -393,13 +393,13 @@
 
 控制中心首页主要展示各个设置模块，方便日常查看和快速设置。
 
-![2|dcchomepage](fig/edu_dcc.png)
+<img src="fig/edu_dcc.png" alt="2|dcchomepage" style="width:800px;" />
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
 打开控制中心的某一设置模块后，可以通过左侧导航栏快速切换到另一设置模块。
 
-![2|cc-navigation](fig/edu_cc-navigation.png)
+<img src="fig/edu_cc-navigation.png" alt="2|cc-navigation" style="width:800px;" />
 
 
 #### 标题栏
@@ -412,7 +412,7 @@
 ### 帐户设置
 在安装系统时会创建一个帐户，在控制中心的帐户设置模块可以修改帐户设置或创建一个新帐户。
 
-![0|account](fig/edu_account.png)
+<img src="fig/edu_account.png" alt="0|account" style="width:800px;" />
 
 #### 创建新帐户
 
@@ -494,7 +494,7 @@
 > a. 自动同步配置功能，只有在已激活或者试用期状态下才可以使用，未激活状态下则无法使用。 
 > b. 当“自动同步配置”开启时，可以选择同步项；当“自动同步配置”关闭时，则全部不能同步。
 
-![0|sync](fig/edu_sync.png)
+<img src="fig/edu_sync.png" alt="0|sync" style="width:800px;" />
 
 如果您尚未注册Union ID，可以在官网先进行注册（支持微信扫描、手机号码等方式进行注册），注册成功并登录后，才能使用Union ID相关的功能。
 
@@ -502,7 +502,7 @@
 
 设置显示器的亮度、分辨率、屏幕方向以及缩放倍数等，让您的电脑显示到达最佳状态。
 
-![0|video](fig/edu_display.png)
+<img src="fig/edu_display.png" alt="0|video" style="width:800px;" />
 
 #### 单屏设置
 
@@ -582,7 +582,7 @@
 
 当安装有多个功能相似的应用程序时，可以通过右键菜单或控制中心为某种类型的文件指定其中的一个应用作为打开文件的默认启动程序。
 
-![0|default](fig/edu_cc-navigation.png)
+<img src="fig/edu_cc-navigation.png" alt="0|default" style="width:800px;" />
 
 #### 设置默认程序
 
@@ -616,7 +616,7 @@
 ### 个性化设置
 在控制中心个性化设置模块可以进行一些通用的个性化设置，包括系统主题、活动用色、字体、窗口特效和透明度，改变桌面和窗口的外观。除此之外还可设置图标主题、光标主题和字体。
 
-![p0|personalise](fig/edu_personalise.png)
+<img src="fig/edu_personalise.png" alt="p0|personalise" style="width:800px;" />
 
 #### 设置窗口主题
 1. 在控制中心首页，单击 ![personalization_normal](../common/personalization_normal.svg)。
@@ -672,7 +672,7 @@
 
 > ![tips](../common/tips.svg) 窍门：您可以单击任务栏托盘区的网络图标，查看当前网络状态。
 
-![0|network](fig/edu_network.png)
+<img src="fig/edu_network.png" alt="0|network" style="width:800px;" />
 
 #### 有线网络
 
@@ -783,7 +783,7 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 
 设置通知勿扰模式，开启或关闭某些应用的通知显示。
 
-![0|sound](fig/edu_notification.png)
+<img src="fig/edu_notification.png" alt="0|sound" style="width:800px;" />
 
 #### 设置系统通知
 
@@ -812,7 +812,7 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 
 输入输出设备声音的设置（如设置扬声器和麦克风），让您听得更舒适，录音更清晰。
 
-![0|sound](fig/edu_sound.png)
+<img src="fig/edu_sound.png" alt="0|sound" style="width:800px;" />
 
 
 #### 输出设备
@@ -845,7 +845,7 @@ VPN即虚拟专用网络，其主要功能是在公用网络上建立专用网�
 
 蓝牙能够实现短距离的无线通信。通过蓝牙无需网络或连接线就可以与附近的其它蓝牙设备连接。常见的蓝牙设备包括：蓝牙键盘、蓝牙鼠标、蓝牙耳机、蓝牙音响等。
 
-![0|bluetooth](fig/edu_bluetooth.png)
+<img src="fig/edu_bluetooth.png" alt="0|bluetooth" style="width:800px;" />
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -904,7 +904,7 @@ UOS PC与非UOS PC或者UOS PC与移动设备（手机/平板）之间通过蓝�
 
 选择正确的所在时区，即可在电脑上显示所在地的时间和日期，也可以手动修改时间和日期。
 
-![0|time](fig/edu_time.png)
+<img src="fig/edu_time.png" alt="0|time" style="width:800px;" />
 
 #### 修改时区
 在您安装系统时，已选择了系统时区。若要修改系统时区，请按如下步骤设置。
@@ -951,7 +951,7 @@ UOS PC与非UOS PC或者UOS PC与移动设备（手机/平板）之间通过蓝�
 
 对系统电源进行一些设置，让笔记本电池更耐用，让系统更安全。
 
-![m0|power](fig/edu_power.png)
+<img src="fig/edu_power.png" alt="m0|power" style="width:800px;" />
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -1055,7 +1055,7 @@ UOS PC与非UOS PC或者UOS PC与移动设备（手机/平板）之间通过蓝�
 
 鼠标和触控板是电脑常用的输入设备。使用鼠标，可以使操作更加简便快捷。对于笔记本电脑用户，当没有鼠标时，也可以使用触控板代替鼠标进行操作。部分设备还支持指点杆，使用指点杆不需要将手指从基准键上移开便能操纵鼠标。在控制中心鼠标设置模块，用户可以对鼠标、触控板和指点杆进行设置，从而让设备使用体验更加符合自己的使用习惯。
 
-![0|mouse](fig/edu_mouse.png)
+<img src="fig/edu_mouse.png" alt="0|mouse" style="width:800px;" />
 
 #### 通用设置
 
@@ -1084,7 +1084,7 @@ UOS PC与非UOS PC或者UOS PC与移动设备（手机/平板）之间通过蓝�
 
 #### 触控板设置
 
-![0|touchpad](fig/edu_touchpad.png)
+<img src="fig/edu_touchpad.png" alt="0|touchpad" style="width:800px;" />
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -1106,7 +1106,7 @@ UOS PC与非UOS PC或者UOS PC与移动设备（手机/平板）之间通过蓝�
 
 > ![notes](../common/notes.svg) 说明： 连接数位板设备后，该模块才会显示。
 
-![0|graphics-tablet](fig/edu_graphics-tablet.png)
+<img src="fig/edu_graphics-tablet.png" alt="0|graphics-tablet" style="width:800px;" />
 
 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
 
@@ -1117,7 +1117,7 @@ UOS PC与非UOS PC或者UOS PC与移动设备（手机/平板）之间通过蓝�
 ### 键盘和语言
 在此模块可以设置键盘属性，以便符合个人的输入习惯，还可以根据国家和语言调整键盘布局，设置输入法、系统语言，以及自定义快捷键。
 
-![0|keyboard](fig/edu_keyboard.png)
+<img src="fig/edu_keyboard.png" alt="0|keyboard" style="width:800px;" />
 
 #### 键盘属性
 
@@ -1132,7 +1132,7 @@ UOS PC与非UOS PC或者UOS PC与移动设备（手机/平板）之间通过蓝�
 
 一般在安装系统时就已经设置了键盘布局，可以根据需求添加或删除其他的键盘布局。
 
-![layout](fig/edu_layout.png)
+<img src="fig/edu_layout.png" alt="layout" style="width:800px;" />
 
 ##### 添加键盘布局
 
@@ -1209,7 +1209,7 @@ UOS PC与非UOS PC或者UOS PC与移动设备（手机/平板）之间通过蓝�
 #### 快捷键
 快捷键列表显示了系统所有的快捷键，在这里查看、修改和自定义快捷键。
 
-![0|shortcut](fig/edu_shortcut.png)
+<img src="fig/edu_shortcut.png" alt="0|shortcut" style="width:800px;" />
 
 ##### 查看快捷键
 
@@ -1244,7 +1244,7 @@ UOS PC与非UOS PC或者UOS PC与移动设备（手机/平板）之间通过蓝�
 
 在辅助功能界面，您可以设置桌面智能助手、语音听写、语音朗读、文本翻译等相关的功能。
 
-![0|auxiliary](fig/edu_auxiliary_function.png)
+<img src="fig/edu_auxiliary_function.png" alt="0|auxiliary" style="width:800px;" />
 
 #### 桌面智能助手
 
@@ -1279,7 +1279,7 @@ UOS PC与非UOS PC或者UOS PC与移动设备（手机/平板）之间通过蓝�
 
 > ![tips](../common/tips.svg) 窍门：如果不需要检查更新，不需要收到系统或应用的更新提示，可在“更新设置”中关闭“自动检查”或“更新提醒”。
 
-![0|update](fig/edu_update.png)
+<img src="fig/edu_update.png" alt="0|update" style="width:800px;" />
 
 
 #### 更新和升级
@@ -1306,7 +1306,7 @@ UOS PC与非UOS PC或者UOS PC与移动设备（手机/平板）之间通过蓝�
 
 查看系统版本、版本授权和电脑硬件等信息，以及该系统的一些协议。
 
-![0|info](fig/edu_info.png)
+<img src="fig/edu_info1.png" alt="0|info" style="width:800px;" />
 
 #### 关于本机
 
@@ -1364,7 +1364,7 @@ UOS PC与非UOS PC或者UOS PC与移动设备（手机/平板）之间通过蓝�
 
 1. 单击右下角托盘上的 ![authorize1](../common/authorize1.svg) 进入界面。
 
-   ![0|probation1](fig/edu_probation1.png)
+   <img src="fig/edu_probation1_1.png" alt="0|probation1" style="width:450px;" />
 
 2. 单击 **试用期激活**，跳转到激活界面。
 
@@ -1372,16 +1372,16 @@ UOS PC与非UOS PC或者UOS PC与移动设备（手机/平板）之间通过蓝�
 
 系统成功激活后，可查看激活状态、试用到期时间等信息，也可以选择通过输入序列号、导入激活文件来激活系统。
 
-   ![0|probation3](fig/edu_probation3.png)
+<img src="fig/edu_probation3_1.png" alt="0|probation3" style="width:450px;" />
 
-###### 输入序列号
+   输入序列号
 
 1. 单击右下角托盘上的 ![authorize1](../common/authorize1.svg)进入界面。
 
 2. 单击 **输入序列号**，输入或复制正确的序列号，单击 **立即激活**。
    > ![notes](../common/notes.svg) 说明：统信UOS既支持16位的序列号，也支持25位的序列号。
 
-   ![0|activation_code1](fig/activation_code1.png)
+   <img src="fig/activation_code1.png" alt="0|activation_code1" style="width:450px;" />
 
 3. 在弹出二次确认框中，单击 **确定**，弹出激活成功界面。
 
@@ -1391,7 +1391,7 @@ UOS PC与非UOS PC或者UOS PC与移动设备（手机/平板）之间通过蓝�
 
 2. 单击 **导入激活文件**，弹出文件管理器，选择.key格式的激活文件。
 
-   ![0|file_activation2](fig/activation_via_file2.png)
+   <img src="fig/activation_via_file2.png" alt="0|file_activation2" style="width:450px;" />
 
 3. 选择正确的文件，单击 **立即激活**。
 
@@ -1403,21 +1403,21 @@ UOS PC与非UOS PC或者UOS PC与移动设备（手机/平板）之间通过蓝�
 
 1. 选择输入序列号或导入授权文件激活时，系统检测网络连接异常，则跳转到离线激活界面。
 
-   ![0|activate_offline1](fig/activation_offline1.png)
+   <img src="fig/activation_offline1.png" alt="0|activate_offline1" style="width:450px;" />
 
 3. 手机扫描二维码，手机端弹出激活界面，界面显示当前机器ID及序列号。
 
-   ![0|activate_offline2](fig/activate_offline2.png)
+   <img src="fig/activate_offline2.png" alt="0|activate_offline2" style="width:450px;" />
 
 4. 单击 **立即激活**，弹出二次确认框，单击 **确定**。
 
 5. 跳转到激活成功界面，显示机器ID、序列号和离线激活码。
 
-   ![0|activate_offline3](fig/activate_offline3.png)
+   <img src="fig/activate_offline3.png" alt="0|activate_offline3" style="width:450px;" />
 
 6. 手动将手机端的离线激活码输入电脑端的离线激活码输入框。
 
-   ![0|activate_offline4](fig/activation_offline4.png)
+   <img src="fig/activation_offline4.png" alt="0|activate_offline4" style="width:450px;" />
 
 7. 单击 **离线激活**，跳转到激活成功界面。
 
@@ -1435,7 +1435,7 @@ UOS PC与非UOS PC或者UOS PC与移动设备（手机/平板）之间通过蓝�
 - 激活方式：根据实际激活方式体现。
 - 到期时间：到期时间前 10 天开始，每次开机进入系统，会弹出系统授权即将到期的提示信息。
 
-![0|activation_code3](fig/edu_activation_code3.png)
+<img src="fig/edu_activation_code3_1.png" alt="0|activation_code3" style="width:450px;" />
 
 ##### 更换序列号
 
@@ -1468,7 +1468,7 @@ UOS PC与非UOS PC或者UOS PC与移动设备（手机/平板）之间通过蓝�
 
 为避免因软件缺陷、硬件损毁、人为操作不当、骇客攻击、电脑病毒、自然灾害等因素造成数据缺失或损坏，可以进行应用数据或系统数据的备份还原，以保障系统的正常运行。
 
-![0|backupRestore](fig/edu_backupRestore.png)
+<img src="fig/edu_backupRestore.png" alt="0|backupRestore" style="width:800px;" />
 
 #### 备份
 
@@ -1521,7 +1521,7 @@ UOS PC与非UOS PC或者UOS PC与移动设备（手机/平板）之间通过蓝�
 
 通用设置模块下包括启动菜单、开发者模式和用户体验计划等信息。
 
-![general](fig/edu_general.png)
+<img src="fig/edu_general.png" alt="general" style="width:800px;" />
 
 #### 设置启动菜单
 

@@ -382,7 +382,7 @@
 
 如果啟動器中沒有您需要的應用，可以在應用商店一鍵下載安裝。
 
-![0|appstore](fig/edu_search.png)
+![0|appstore](fig/edu_appstore.png)
 
 ### 執行應用程式
 
@@ -1347,7 +1347,7 @@ VPN即虛擬專用網路，其主要功能是在公用網路上建立專用網�
 
 您可以查看系統版本、版本許可證和電腦硬體等訊息，以及該系統的一些協議。
 
-![0|info](fig/edu_info.png)
+<img src="fig/edu_info1.png" alt="0|info" style="zoom:75%;" />
 
 #### 關於此電腦
 
@@ -1409,14 +1409,14 @@ VPN即虛擬專用網路，其主要功能是在公用網路上建立專用網�
 
 1. 單擊右下角託盤區上的 ![authorize1](../common/authorize1.svg) 進入介面。
 
-![0|probation1](fig/edu_probation1.png)
+<img src="fig/edu_probation1_1.png" alt="0|probation1" style="width:520px;" />
 
 2. 單擊 **試用期啟用**，跳轉到啟用介面。
 
 3. 單擊 **立即啟用**，會彈出二次確認彈框，單擊 **確定**，彈出試用期啟用成功介面，任務欄圖示變為 ![authorize2](../common/authorize2.svg)。
 4. 在此介面，可查看試用到期時間等訊息，也可以選擇永久啟用系統。
 
-   ![0|probation3](fig/edu_probation3.png)
+   <img src="fig/edu_probation3_1.png" alt="0|probation3" style="width:520px;" />
 
 輸入序號
 
@@ -1468,7 +1468,7 @@ VPN即虛擬專用網路，其主要功能是在公用網路上建立專用網�
    - 啟用方式：啟用方式分為序號、啟用文件及離線啟用碼，根據實際活化方式體現。
    - 到期時間：超過了截止時間，系統會提醒授權即將到期。
 
-![0|activation_code3](fig/p_activation_code3.png)
+<img src="fig/edu_activationcode3_1.png" alt="0|activation_code3" style="width:520px;" />
 
 ##### 更換序號
 
