@@ -1,0 +1,114 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="84" height="84" viewBox="0 0 84 84">
+  <defs>
+    <linearGradient id="生物认证-a" x1="50%" x2="50%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#42EABC"/>
+      <stop offset="100%" stop-color="#298CC3"/>
+    </linearGradient>
+    <linearGradient id="生物认证-b" x1="50%" x2="50%" y1="0%" y2="100%">
+      <stop offset="0%" stop-color="#22DAB0"/>
+      <stop offset="100%" stop-color="#00638A"/>
+    </linearGradient>
+    <linearGradient id="生物认证-e" x1="50%" x2="50%" y1="-27.673%" y2="153.259%">
+      <stop offset="0%" stop-color="#FFF"/>
+      <stop offset="100%" stop-color="#A6DDF9"/>
+    </linearGradient>
+    <path id="生物认证-d" d="M20,27 L20,24 C20,21.790861 21.790861,20 24,20 L27,20 L27,20"/>
+    <filter id="生物认证-c" width="228.6%" height="228.6%" x="-64.3%" y="-50%" filterUnits="objectBoundingBox">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="1" result="shadowSpreadOuter1"/>
+      <feOffset dy="1" in="shadowSpreadOuter1" result="shadowOffsetOuter1"/>
+      <feMorphology in="SourceAlpha" radius="1" result="shadowInner"/>
+      <feOffset dy="1" in="shadowInner" result="shadowInner"/>
+      <feComposite in="shadowOffsetOuter1" in2="shadowInner" operator="out" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0   0 0 0 0 0.207843137   0 0 0 0 0.462745098  0 0 0 0.140024038 0"/>
+    </filter>
+    <path id="生物认证-g" d="M57,27 L57,24 C57,21.790861 58.790861,20 61,20 L64,20 L64,20"/>
+    <filter id="生物认证-f" width="228.6%" height="228.6%" x="-64.3%" y="-50%" filterUnits="objectBoundingBox">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="1" result="shadowSpreadOuter1"/>
+      <feOffset dy="1" in="shadowSpreadOuter1" result="shadowOffsetOuter1"/>
+      <feMorphology in="SourceAlpha" radius="1" result="shadowInner"/>
+      <feOffset dy="1" in="shadowInner" result="shadowInner"/>
+      <feComposite in="shadowOffsetOuter1" in2="shadowInner" operator="out" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0   0 0 0 0 0.207843137   0 0 0 0 0.462745098  0 0 0 0.140024038 0"/>
+    </filter>
+    <linearGradient id="生物认证-j" x1="50%" x2="50%" y1="-27.673%" y2="153.259%">
+      <stop offset="0%" stop-color="#A6DDF9"/>
+      <stop offset="100%" stop-color="#FFF"/>
+    </linearGradient>
+    <path id="生物认证-i" d="M20,64 L20,61 C20,58.790861 21.790861,57 24,57 L27,57 L27,57"/>
+    <filter id="生物认证-h" width="228.6%" height="228.6%" x="-64.3%" y="-78.6%" filterUnits="objectBoundingBox">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="1" result="shadowSpreadOuter1"/>
+      <feOffset dy="-1" in="shadowSpreadOuter1" result="shadowOffsetOuter1"/>
+      <feMorphology in="SourceAlpha" radius="1" result="shadowInner"/>
+      <feOffset dy="-1" in="shadowInner" result="shadowInner"/>
+      <feComposite in="shadowOffsetOuter1" in2="shadowInner" operator="out" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0   0 0 0 0 0.207843137   0 0 0 0 0.462745098  0 0 0 0.140024038 0"/>
+    </filter>
+    <path id="生物认证-l" d="M57,64 L57,61 C57,58.790861 58.790861,57 61,57 L64,57 L64,57"/>
+    <filter id="生物认证-k" width="228.6%" height="228.6%" x="-64.3%" y="-78.6%" filterUnits="objectBoundingBox">
+      <feMorphology in="SourceAlpha" operator="dilate" radius="1" result="shadowSpreadOuter1"/>
+      <feOffset dy="-1" in="shadowSpreadOuter1" result="shadowOffsetOuter1"/>
+      <feMorphology in="SourceAlpha" radius="1" result="shadowInner"/>
+      <feOffset dy="-1" in="shadowInner" result="shadowInner"/>
+      <feComposite in="shadowOffsetOuter1" in2="shadowInner" operator="out" result="shadowOffsetOuter1"/>
+      <feGaussianBlur in="shadowOffsetOuter1" result="shadowBlurOuter1" stdDeviation="1"/>
+      <feColorMatrix in="shadowBlurOuter1" values="0 0 0 0 0   0 0 0 0 0.207843137   0 0 0 0 0.462745098  0 0 0 0.140024038 0"/>
+    </filter>
+    <radialGradient id="生物认证-m" cx="50%" cy="50%" r="94.578%" fx="50%" fy="50%" gradientTransform="matrix(.45876 0 0 .30467 .27 .348)">
+      <stop offset="0%" stop-color="#59FF26"/>
+      <stop offset="100%" stop-color="#5FFF3D" stop-opacity="0"/>
+    </radialGradient>
+    <filter id="生物认证-n" width="145.9%" height="200%" x="-22.9%" y="-50%" filterUnits="objectBoundingBox">
+      <feGaussianBlur in="SourceGraphic" stdDeviation="5"/>
+    </filter>
+    <radialGradient id="生物认证-o" cx="50%" cy="50%" r="508.645%" fx="50%" fy="50%" gradientTransform="matrix(.09675 0 0 .07199 .452 .464)">
+      <stop offset="0%" stop-color="#F7FF81" stop-opacity=".995"/>
+      <stop offset="100%" stop-color="#F8FF98" stop-opacity="0"/>
+    </radialGradient>
+    <radialGradient id="生物认证-p" cx="50%" cy="50%" r="1328.764%" fx="50%" fy="50%" gradientTransform="matrix(.03704 0 0 .01306 .481 .493)">
+      <stop offset="0%" stop-color="#FFF" stop-opacity=".995"/>
+      <stop offset="100%" stop-color="#FFF" stop-opacity="0"/>
+    </radialGradient>
+    <linearGradient id="生物认证-q" x1="0%" x2="99.213%" y1="50%" y2="50%">
+      <stop offset="0%" stop-color="#FFF" stop-opacity="0"/>
+      <stop offset="49.798%" stop-color="#FFF" stop-opacity=".892"/>
+      <stop offset="100%" stop-color="#FFF" stop-opacity="0"/>
+    </linearGradient>
+  </defs>
+  <g fill="none" fill-rule="evenodd">
+    <image width="64" height="64" x="9.998" y="13" xlink:href="data:image/png;base64,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"/>
+    <path fill="url(#生物认证-a)" fill-rule="nonzero" d="M24.9977576,16 L58.9977576,16 C63.9683204,16 67.9977576,20.0294373 67.9977576,25 L67.9977576,59 C67.9977576,63.9705627 63.9683204,68 58.9977576,68 L24.9977576,68 C20.0271949,68 15.9977576,63.9705627 15.9977576,59 L15.9977576,25 C15.9977576,20.0294373 20.0271949,16 24.9977576,16 Z"/>
+    <path fill="url(#生物认证-b)" fill-rule="nonzero" d="M58.9977576,15 L24.9977576,15 C19.4749102,15 14.9977576,19.4771525 14.9977576,25 L14.9977576,59 C14.9977576,64.5228475 19.4749102,69 24.9977576,69 L58.9977576,69 C64.5206051,69 68.9977576,64.5228475 68.9977576,59 L68.9977576,25 C68.9977576,19.4771525 64.5206051,15 58.9977576,15 Z M58.9977576,16 C63.9683204,16 67.9977576,20.0294373 67.9977576,25 L67.9977576,59 C67.9977576,63.9705627 63.9683204,68 58.9977576,68 L24.9977576,68 C20.0271949,68 15.9977576,63.9705627 15.9977576,59 L15.9977576,25 C15.9977576,20.0294373 20.0271949,16 24.9977576,16 L58.9977576,16 Z"/>
+    <g stroke="#FFF" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.4" opacity=".6" transform="translate(25 23.815)">
+      <path d="M11,35.9880371 L11,16.5435927 C11,13.4753519 13.6863,10.9880371 17,10.9880371 C20.3137,10.9880371 23,13.4753519 23,16.5435927 L23,35.9880371"/>
+      <path d="M6,33.0210693 L6,16.2210693 C6,10.035496 10.9248833,5.02106934 17,5.02106934 C23.0751167,5.02106934 28,10.035496 28,16.2210693 L28,33.0210693"/>
+      <path d="M0,28 L0,16.2580645 C0,7.27900645 7.61118333,0 17,0 C26.3888167,0 34,7.27900645 34,16.2580645 L34,28"/>
+      <line x1="17" x2="17" y1="36.685" y2="24.685"/>
+      <line x1="17" x2="17" y1="20.005" y2="17.405"/>
+    </g>
+    <g stroke-linecap="round" stroke-linejoin="round">
+      <use fill="#000" filter="url(#生物认证-c)" xlink:href="#生物认证-d"/>
+      <use stroke="url(#生物认证-e)" stroke-width="2" xlink:href="#生物认证-d"/>
+    </g>
+    <g stroke-linecap="round" stroke-linejoin="round" transform="matrix(-1 0 0 1 121 0)">
+      <use fill="#000" filter="url(#生物认证-f)" xlink:href="#生物认证-g"/>
+      <use stroke="url(#生物认证-e)" stroke-width="2" xlink:href="#生物认证-g"/>
+    </g>
+    <g stroke-linecap="round" stroke-linejoin="round" transform="matrix(1 0 0 -1 0 121)">
+      <use fill="#000" filter="url(#生物认证-h)" xlink:href="#生物认证-i"/>
+      <use stroke="url(#生物认证-j)" stroke-width="2" xlink:href="#生物认证-i"/>
+    </g>
+    <g stroke-linecap="round" stroke-linejoin="round" transform="rotate(180 60.5 60.5)">
+      <use fill="#000" filter="url(#生物认证-k)" xlink:href="#生物认证-l"/>
+      <use stroke="url(#生物认证-j)" stroke-width="2" xlink:href="#生物认证-l"/>
+    </g>
+    <g transform="translate(9.303 28.5)">
+      <polygon fill="url(#生物认证-m)" points="0 13.359 32.697 0 65.393 11.953 65.393 18.516 33.118 30 0 19.922" filter="url(#生物认证-n)" opacity=".799"/>
+      <rect width="54" height="5.225" x="5.674" y="12.388" fill="url(#生物认证-o)"/>
+      <rect width="54" height="2" x="5.697" y="14" fill="url(#生物认证-p)" opacity=".953"/>
+      <rect width="36" height="1" x="14.697" y="14.66" fill="url(#生物认证-q)" opacity=".953"/>
+    </g>
+  </g>
+</svg>
