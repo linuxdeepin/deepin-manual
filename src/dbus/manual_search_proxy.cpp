@@ -21,7 +21,7 @@
 
 #include <QtDBus/QtDBus>
 
-const QStringList systemType = {"professional", "server", "community", "personal"};
+const QStringList systemType = {"professional", "server", "community", "personal", "education"};
 
 ManualSearchProxy::ManualSearchProxy(QObject *parent)
     : QObject(parent)
