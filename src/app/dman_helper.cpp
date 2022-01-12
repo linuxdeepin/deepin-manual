@@ -26,6 +26,7 @@
 #include <QApplication>
 #include <QDebug>
 #include <QSurfaceFormat>
+#include <QOpenGLContext>
 
 int main(int argc, char **argv)
 {
@@ -42,14 +43,24 @@ int main(int argc, char **argv)
 
     Dtk::Core::DLogManager::registerFileAppender();
     Dtk::Core::DLogManager::registerConsoleAppender();
-    if(Utils::judgeWayLand()){
-        qputenv("QT_WAYLAND_SHELL_INTEGRATION", "kwayland-shell");
-        qputenv("_d_disableDBusFileDialog", "true");
-        setenv("PULSE_PROP_media.role", "video", 1);
-        QSurfaceFormat format;
-        format.setRenderableType(QSurfaceFormat::OpenGLES);
-        format.setDefaultFormat(format);
-    }
+//    if(Utils::judgeWayLand()){
+//        qputenv("QT_WAYLAND_SHELL_INTEGRATION", "kwayland-shell");
+//        qputenv("_d_disableDBusFileDialog", "true");
+//        setenv("PULSE_PROP_media.role", "video", 1);
+//        QSurfaceFormat format;
+//        format.setRenderableType(QSurfaceFormat::OpenGLES);
+//        format.setDefaultFormat(format);
+//        format.setProfile(QSurfaceFormat::CoreProfile);
+//    }
+       QOpenGLContext ctx;
+       QSurfaceFormat fmt;
+       fmt.setRenderableType(QSurfaceFormat::OpenGL);
+       ctx.setFormat(fmt);
+       ctx.create();
+       if (!ctx.isValid()) {
+           fmt.setRenderableType(QSurfaceFormat::OpenGLES);
+       }
+
 
     QDBusConnection conn = QDBusConnection::sessionBus();
     if (!conn.registerService(kManualSearchService)
