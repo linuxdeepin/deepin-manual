@@ -43,24 +43,27 @@ int main(int argc, char **argv)
 
     Dtk::Core::DLogManager::registerFileAppender();
     Dtk::Core::DLogManager::registerConsoleAppender();
-//    if(Utils::judgeWayLand()){
-//        qputenv("QT_WAYLAND_SHELL_INTEGRATION", "kwayland-shell");
-//        qputenv("_d_disableDBusFileDialog", "true");
-//        setenv("PULSE_PROP_media.role", "video", 1);
-//        QSurfaceFormat format;
-//        format.setRenderableType(QSurfaceFormat::OpenGLES);
-//        format.setDefaultFormat(format);
-//        format.setProfile(QSurfaceFormat::CoreProfile);
-//    }
+    if(Utils::judgeWayLand()){
+        qputenv("QT_WAYLAND_SHELL_INTEGRATION", "kwayland-shell");
+        qputenv("_d_disableDBusFileDialog", "true");
+        setenv("PULSE_PROP_media.role", "video", 1);
+    }
        QOpenGLContext ctx;
        QSurfaceFormat fmt;
        fmt.setRenderableType(QSurfaceFormat::OpenGL);
        ctx.setFormat(fmt);
        ctx.create();
        if (!ctx.isValid()) {
-           fmt.setRenderableType(QSurfaceFormat::OpenGLES);
-       }
-
+           qInfo() << "---------------------opengles";
+           QSurfaceFormat fmt1;
+           fmt1.setRenderableType(QSurfaceFormat::OpenGLES);
+           fmt1.setDefaultFormat(fmt1);
+           fmt1.setProfile(QSurfaceFormat::CoreProfile);
+       } else {
+           qInfo() << "+++++++++++++++++++++++opengl";
+           fmt.setDefaultFormat(fmt);
+           fmt.setProfile(QSurfaceFormat::CoreProfile);
+      }
 
     QDBusConnection conn = QDBusConnection::sessionBus();
     if (!conn.registerService(kManualSearchService)
