@@ -18,12 +18,14 @@
 #include "dbus/dbus_consts.h"
 #include "dbus/manual_search_adapter.h"
 #include "dbus/manual_search_proxy.h"
+#include "base/utils.h"
 
 #include <DLog>
 
 #include <QWebEngineView>
 #include <QApplication>
 #include <QDebug>
+#include <QSurfaceFormat>
 
 int main(int argc, char **argv)
 {
@@ -40,6 +42,14 @@ int main(int argc, char **argv)
 
     Dtk::Core::DLogManager::registerFileAppender();
     Dtk::Core::DLogManager::registerConsoleAppender();
+    if(Utils::judgeWayLand()){
+        qputenv("QT_WAYLAND_SHELL_INTEGRATION", "kwayland-shell");
+        qputenv("_d_disableDBusFileDialog", "true");
+        setenv("PULSE_PROP_media.role", "video", 1);
+        QSurfaceFormat format;
+        format.setRenderableType(QSurfaceFormat::OpenGLES);
+        format.setDefaultFormat(format);
+    }
 
     QDBusConnection conn = QDBusConnection::sessionBus();
     if (!conn.registerService(kManualSearchService)
