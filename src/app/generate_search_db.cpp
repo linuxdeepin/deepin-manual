@@ -73,10 +73,10 @@ int main(int argc, char **argv)
 
                 QDir manualDir = QDir(DMAN_ORIG_MANUAL_DIR);
                 manualDir.cdUp();
-                qDebug() << manualDir.path();
+                qInfo() << manualDir.path();
                 QString searchIndexFilePath = QString("%1/%2/%3/%4")
                                               .arg(manualDir.path(), "src", "web", "toSearchIndex.js");
-                qDebug() << searchIndexFilePath;
+                qInfo() << searchIndexFilePath;
                 QString out, err;
                 //            QStringList cmdList = {"node"};
                 //            const bool queryNode = dman::SpawnCmd("which", cmdList);
@@ -148,7 +148,7 @@ int main(int argc, char **argv)
                 }
 
                 if (!invalid_entry) {
-                    qDebug() << "add search entry" << app_name << locale << anchors << endl;
+                    qInfo() << "add search entry" << app_name << locale << anchors << endl;
                     db.addSearchEntry(dbType, app_name, locale, anchors, anchorInitialList, anchorSpellList, anchorIdList, contents);
                 }
             }

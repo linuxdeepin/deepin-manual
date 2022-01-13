@@ -1,0 +1,38 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Generator: Adobe Illustrator 16.0.0, SVG Export Plug-In . SVG Version: 6.00 Build 0)  -->
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<svg version="1.1" id="图层_1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px"
+	 width="24px" height="24px" viewBox="0 0 24 24" enable-background="new 0 0 24 24" xml:space="preserve">
+<filter  id="filter-3" y="-20.8%" x="-29.2%" width="158.3%" height="158.3%" filterUnits="objectBoundingBox">
+	<feOffset  result="shadowOffsetOuter1" in="SourceAlpha" dy="2" dx="0"></feOffset>
+	<feGaussianBlur  result="shadowBlurOuter1" in="shadowOffsetOuter1" stdDeviation="2"></feGaussianBlur>
+	<feComposite  in2="SourceAlpha" result="shadowBlurOuter1" in="shadowBlurOuter1" operator="out"></feComposite>
+	<feColorMatrix  values="0 0 0 0 0   0 0 0 0 0   0 0 0 0 0  0 0 0 0.05 0" in="shadowBlurOuter1" type="matrix"></feColorMatrix>
+</filter>
+<title>切片</title>
+<desc>Created with Sketch.</desc>
+<g id="矩形">
+	<g filter="url(#filter-3)">
+		<path id="path-2_2_" d="M5,0h14c2.762,0,5,2.239,5,5v14c0,2.762-2.238,5-5,5H5c-2.761,0-5-2.238-5-5V5C0,2.239,2.239,0,5,0z"/>
+	</g>
+	<g>
+		<path id="path-2_1_" fill-opacity="0.08" d="M5,0h14c2.762,0,5,2.239,5,5v14c0,2.762-2.238,5-5,5H5c-2.761,0-5-2.238-5-5V5
+			C0,2.239,2.239,0,5,0z"/>
+	</g>
+	
+		<linearGradient id="SVGID_1_" gradientUnits="userSpaceOnUse" x1="-272.2231" y1="415.7861" x2="-272.2231" y2="414.8296" gradientTransform="matrix(23 0 0 -23 6273.1406 9563.5625)">
+		<stop  offset="0" style="stop-color:#E6E6E6"/>
+		<stop  offset="1" style="stop-color:#E3E3E3"/>
+	</linearGradient>
+	<path fill="url(#SVGID_1_)" stroke="#000000" stroke-opacity="0.03" d="M5.5,0.5h13c2.762,0,5,2.239,5,5v13c0,2.762-2.238,5-5,5
+		h-13c-2.761,0-5-2.238-5-5v-13C0.5,2.739,2.739,0.5,5.5,0.5z"/>
+</g>
+<path id="Fill-1" fill="#536076" d="M13.309,6.154L12.418,6.98H6.159V17.85h10.857v-5.735l0.842-0.856v6.508
+	c0,0.502-0.354,0.9-0.842,0.9L6.198,18.688c-0.487,0-0.886-0.399-0.886-0.886V6.987c0-0.487,0.398-0.833,0.886-0.833H13.309z
+	 M16.809,5.427l1.763,1.761c0.154,0.154,0.154,0.405,0,0.56l-6.6,6.599c-0.043,0.045-0.096,0.077-0.154,0.097l-2.639,0.879
+	c-0.041,0.015-0.083,0.021-0.127,0.021c-0.219,0-0.396-0.178-0.396-0.396c0-0.043,0.008-0.084,0.021-0.125l0.88-2.64
+	c0.021-0.058,0.053-0.111,0.096-0.154l6.599-6.6C16.405,5.274,16.654,5.273,16.809,5.427z M16.607,6.148l-6.493,6.49l-0.622,1.869
+	l1.869-0.623l6.49-6.491L16.607,6.148z"/>
+<g id="编组">
+</g>
+</svg>
