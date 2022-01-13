@@ -57,6 +57,14 @@ QString languageArr[][langCount] = {
     {"commoninfo", "通用设置", "General Settings", "通用設置", "一般設定"},
     {"touchscreen", "触控屏设置", "Touch Screen", "觸控屏設置", "觸控屏設定"}};
 
+QString lenvno[][langCount] = {
+    {"manual", "产品说明书", "Product Manual", "產品說明書", "產品說明書"},
+    {"guide", "产品使用说明", "User Guide", "產品使用說明", "產品使用說明"},
+    {"recovery", "一键式恢复", "One-Click Recovery", "一鍵式恢復", "一鍵式復原"},
+    {"safety", "安全与保修指南", "Safety and Warranty Guide", "安全與保修指南", "安全與保修指南"},
+};
+
+
 struct ReplyStruct {
     QString m_desktop;
     QString m_name;
@@ -150,20 +158,38 @@ QString Utils::translateTitle(const QString &titleUS)
 {
     QString strRet = titleUS;
     QString strlocal(QLocale::system().name());
-    int nCount = sizeof(languageArr) / sizeof(languageArr[0]);
-    for (int i = 0; i < nCount; i++) {
-        if (languageArr[i][0] == titleUS) {
-            if (0 == strlocal.compare("ug_CN") || 0 == strlocal.compare("bo_CN") || 0 == strlocal.compare("zh_CN")) {
-                strRet = languageArr[i][1];
-            } else if (0 == strlocal.compare("zh_HK")) {
-                strRet = languageArr[i][3];
-            } else if (0 == strlocal.compare("zh_TW")) {
-                strRet = languageArr[i][4];
-            } else {
-                strRet = languageArr[i][2];
+    if(getComputerManualList().contains(titleUS)) {
+        int nCount = sizeof(lenvno) / sizeof(lenvno[0]);
+        for (int i = 0; i < nCount; i++) {
+            if (lenvno[i][0] == titleUS) {
+                if (0 == strlocal.compare("ug_CN") || 0 == strlocal.compare("bo_CN") || 0 == strlocal.compare("zh_CN")) {
+                    strRet = lenvno[i][1];
+                } else if (0 == strlocal.compare("zh_HK")) {
+                    strRet = lenvno[i][3];
+                } else if (0 == strlocal.compare("zh_TW")) {
+                    strRet = lenvno[i][4];
+                } else {
+                    strRet = lenvno[i][2];
+                }
+            }
+        }
+    } else {
+        int nCount = sizeof(languageArr) / sizeof(languageArr[0]);
+        for (int i = 0; i < nCount; i++) {
+            if (languageArr[i][0] == titleUS) {
+                if (0 == strlocal.compare("ug_CN") || 0 == strlocal.compare("bo_CN") || 0 == strlocal.compare("zh_CN")) {
+                    strRet = languageArr[i][1];
+                } else if (0 == strlocal.compare("zh_HK")) {
+                    strRet = languageArr[i][3];
+                } else if (0 == strlocal.compare("zh_TW")) {
+                    strRet = languageArr[i][4];
+                } else {
+                    strRet = languageArr[i][2];
+                }
             }
         }
     }
+
     return strRet;
 }
 
@@ -290,9 +316,20 @@ QStringList Utils::getSystemManualList()
     if (systemList.contains("dde") || oldAppList.contains("dde")) {
         app_list_.append("dde");
     }
-
     qDebug() << "exist app list: " << app_list_ << ", count:" << app_list_.size();
     return app_list_;
+}
+
+QStringList Utils::getComputerManualList()
+{
+    QStringList pro_list = {"manual", "guide", "recovery", "safety"};
+    const QStringList list = QDir(QString("%1/lenovo/").arg(DMAN_MANUAL_DIR)).entryList();
+    for (QString path : list) {
+        QString name = path.right(path.lastIndexOf("/"));
+        if (!pro_list.contains(name))
+             pro_list.removeOne(name);
+    }
+    return pro_list;
 }
 
 /**

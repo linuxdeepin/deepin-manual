@@ -27,6 +27,7 @@ class Item extends Component {
       global.qtObjects.manual.appToPath(appName, function (filepath) {
         filePath = filepath;
         //error： 目标文件不存在
+        console.log("........" + filePath);   
         if (filePath == 'error')
         {
           return;
@@ -41,11 +42,13 @@ class Item extends Component {
         let [title, desktopname] = data
           .substr('# '.length, data.indexOf('\n'))
           .split('|');   
-          
+          console.log('...' + desktopname);
      global.qtObjects.manual.getAppIconPath(desktopname,(logopath) =>{
-       //按约定会在图标主题放置dde图标，但为保险起见如果未获取到则取common中的
-       if(logopath==''&&desktopname=="dde"){
-        logopath=filePath.substr(0,filePath.lastIndexOf('/')+1)+'../common/dde.svg';       
+       //按约定会在图标主题放置dde图标，但为保险起见如果未获取到则取common中的 
+       if(logopath==''){
+         logopath=filePath.substr(0,filePath.lastIndexOf('/')+1)+'../common/'+desktopname+'.svg';
+         if(desktopname=="dde")
+           logopath=filePath.substr(0,filePath.lastIndexOf('/')+1)+'../common/dde.svg'; 
        }
       this.setState({ logo:logopath});     
       });
@@ -125,14 +128,18 @@ export default class Index extends Component {
     super(props);
     this.state = {
       appList: [],
-      openedAppList:[]
+      openedAppList:[],
+      proList: []
     };
 
     global.qtObjects.manual.getSystemManualList(appList =>{
       console.log("======>applist==+>",appList);
       this.setState({ appList });
     });
-
+    global.qtObjects.manual.getComputerManualList(proList =>{
+      console.log("======>proList==+>",proList);
+      this.setState({ proList });
+    });
     global.qtObjects.manual.getUsedAppList(openedAppList =>
       this.setState({openedAppList})
     );
@@ -154,6 +161,11 @@ export default class Index extends Component {
         this.setState({ appList })
       });
   
+      global.qtObjects.manual.getComputerManualList(proList =>{
+        console.log("--------" + proList);
+        this.setState({ proList })
+      });
+
       global.qtObjects.manual.getUsedAppList(openedAppList =>
         this.setState({openedAppList})
       );
@@ -183,10 +195,21 @@ export default class Index extends Component {
     {
       appSoft.splice(index, 1); 
     }
-
+    let proSoft = JSON.parse(JSON.stringify(this.state.proList))
+    console.log("prosoft-------" + proSoft);
     return (
       <Scrollbar>
         <div id="index" tabIndex="-1">
+       {proSoft.length > 0 && (
+          <h2>{global.i18n['Computer']}</h2>
+       )}
+          {proSoft.length > 1 && (
+            <div id="forMargin">
+                <div className="items">
+                  {proSoft.map(appName => <Item key={appName} appName={appName} isOpened={this.bIsBeOpen(appName)} type={"computer"}/>)}
+                </div>
+            </div>
+          )}
           <h2>{global.i18n['System']}</h2>
           {sysSoft.length > 0 && (
             <div id="forMargin">

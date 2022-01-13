@@ -25,7 +25,7 @@ global.bIsReload = false;
 
 
 global.readFile = (fileName, callback) => {
-    console.log("global.readFile...");
+    console.log("global.readFile..." + fileName);
     let xhr = new XMLHttpRequest();
     xhr.open('GET', fileName);
     xhr.onload = () => {
@@ -195,6 +195,32 @@ class App extends React.Component {
 
             if (bFlag) {
                 global.qtObjects.manual.getSystemManualList(appNames => {
+                    let bKFlage = false;
+                    appNames.map(name => {
+                        if (curApp.indexOf(name) != -1) {
+                            bKFlage = true;
+                        }
+                    })
+
+                    if (bKFlage) {
+                        global.bIsReload = true;
+                        this.context.router.history.go(0);
+                    } else {
+                        const historyList = this.context.router.history.entries;
+                        const index = this.context.router.history.index;
+                        const historyLate = historyList.slice(index + 1);
+                        console.log("===========>", historyLate);
+                        this.setState({ historyGO: this.state.historyGO - 1 });
+                        this.context.router.history.go(-1);
+
+                        historyLate.map(url => {
+                            console.log("..........>", url);
+                            this.context.router.history.push(url);
+                        })
+                        global.backHome();
+                    }
+                });
+                global.qtObjects.manual.getComputerManualList(appNames => {
                     let bKFlage = false;
                     appNames.map(name => {
                         if (curApp.indexOf(name) != -1) {
@@ -398,6 +424,7 @@ class App extends React.Component {
 
                 myPromise.then(() => {
                     global.readFile(filePath, data => {
+                        console.log("-----------------==> file:" + filePath);
                         let { html } = m2h(filePath, data);
                         let d = document.createElement('div');
                         d.innerHTML = html;

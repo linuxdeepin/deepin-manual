@@ -226,10 +226,12 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
     Q_ASSERT(anchors.length() == contents.length());
     qDebug() << "addSearchEntry()" << app_name << lang << anchors; // << contents;
     QStringList newContents = contents;
-
+    qInfo() << app_name;
     if (mdPath.isEmpty()) {
         QString strManualPath;
-        if (app_name == "dde") {
+        if(Utils::getComputerManualList().contains(app_name)) {
+            strManualPath = "/lenovo";
+        }else if (app_name == "dde") {
             strManualPath = "/system";
         } else {
             strManualPath = "/application";
@@ -376,10 +378,10 @@ void SearchDb::handleSearchAnchor(const QString &keyword)
     }
     const QString sql =
         QString(kSearchSelectAnchor).replace(":anchor", keyword).replace(":lang", lang);
-    qDebug() << "=======>" << sql;
+    qInfo() << "=======>" << sql;
     if (query.exec(sql)) {
         while (query.next() && (result.size() < kResultLimitation)) {
-            qDebug() << "handleSearchAnchor===> " << query.value(0).toString() << strlistApp;
+            qInfo() << "handleSearchAnchor===> " << query.value(0).toString() << strlistApp;
             //只将当前预装应用中的内容输出。
             if (strlistApp.contains(query.value(0).toString())) {
                 //搜索结果优先显示应用名称
@@ -403,7 +405,7 @@ void SearchDb::handleSearchAnchor(const QString &keyword)
     } else {
         qCritical() << "Failed to select anchor:" << query.lastError().text();
     }
-    qDebug() << "result size:" << result.size() << keyword;
+    qInfo() << "result size:" << result.size() << keyword;
     emit this->searchAnchorResult(keyword, result);
 }
 
@@ -710,6 +712,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
             if (result_empty)
                 result_empty = false;
             //发送查询结果->SearchManager::searchContentResult->SearchProxy::onContentResult->js
+            qInfo() << obj.contents;
             emit this->searchContentResult(obj.appName, obj.anchors, obj.anchorIds, obj.contents);
         }
     } else {
@@ -817,5 +820,6 @@ QMap<QString, QString> SearchDb::selectAllFileTime()
  */
 void SearchDb::getAllApp()
 {
-    strlistApp = Utils::getSystemManualList();
+    strlistApp.append(Utils::getSystemManualList());
+    strlistApp.append(Utils::getComputerManualList());
 }

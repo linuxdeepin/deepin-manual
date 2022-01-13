@@ -93,7 +93,7 @@ void fileWatcher::monitorFile()
     //新文案结构 /usr/share/deepin-manual/manual-assets/[application | system]/appName/appNameT/land/*_appNameT.md
     for (const QString &type : QDir(assetsPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
         //监控资源文件夹
-        if (type == "system" || type == "application") {
+        if (type == "system" || type == "application" || type == "lenovo") {
             QString typePath = assetsPath + "/" + type;
             listModule.append(typePath);
             //监控资源文件夹
@@ -114,6 +114,7 @@ void fileWatcher::monitorFile()
                     if (lang == "zh_CN" || lang == "en_US") {
                         //./manual-assets/application(system)/appName/appNameT/lang
                         QString langPath = appPath + "/" + lang;
+                        qInfo() << "--------" << langPath;
                         listModule.append(langPath);
                         for (QString &mdFile : QDir(langPath).entryList(QDir::Files)) {
                             if (mdFile.endsWith("md")) {
@@ -190,7 +191,7 @@ void fileWatcher::onTimerOut()
     QString  assetsPath = Utils::getSystemManualDir();
 
     for (const QString &type : QDir(assetsPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-        if (type == "system" || type == "application") {
+        if (type == "system" || type == "application" || type == "lenovo") {
             QString typePath = assetsPath + "/" + type;
             //监控资源文件夹
             for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {

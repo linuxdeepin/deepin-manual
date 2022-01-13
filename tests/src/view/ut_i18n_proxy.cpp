@@ -23,7 +23,7 @@ TEST_F(ut_i18n_proxy, getLocale)
 {
     QVariantHash qh;
     qh = ip->getSentences();
-    ASSERT_EQ(qh.size(), 6);
+    ASSERT_EQ(qh.size(), 7);
 }
 
 QString stub_en_US()

@@ -1,4 +1,2475 @@
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
+(function (global){
+'use strict';
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _reactDom = require('react-dom');
+
+var _reactRouterDom = require('react-router-dom');
+
+var _history = require('history');
+
+var _mdToHtml = require('./mdToHtml');
+
+var _mdToHtml2 = _interopRequireDefault(_mdToHtml);
+
+var _index = require('./index.jsx');
+
+var _index2 = _interopRequireDefault(_index);
+
+var _main = require('./main.jsx');
+
+var _main2 = _interopRequireDefault(_main);
+
+var _search = require('./search.jsx');
+
+var _search2 = _interopRequireDefault(_search);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+global.hash = ' ';
+global.isMouseClickNav = false;
+global.isMouseScrollArticle = false;
+
+global.isLinkClicked = false;
+
+global.lastUrlBeforeSearch = '/';
+global.lastHistoryIndex = 0;
+global.lastAction = 'PUSH';
+global.isShowHelperSupport = false;
+global.scrollBehavior = 'smooth';
+global.bIsReload = false;
+// global.gHistoryGo = 0;
+
+
+global.readFile = function (fileName, callback) {
+    console.log("global.readFile..." + fileName);
+    var xhr = new XMLHttpRequest();
+    xhr.open('GET', fileName);
+    xhr.onload = function () {
+        // if (xhr.responseText != '') {
+        callback(xhr.responseText);
+        // }
+    };
+    xhr.send();
+};
+
+var App = function (_React$Component) {
+    _inherits(App, _React$Component);
+
+    function App(props, context) {
+        _classCallCheck(this, App);
+
+        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props, context));
+
+        _this.state = {
+            init: false,
+            searchResult: [],
+            mismatch: false,
+            historyGO: 0
+            // changeAppList:[]
+        };
+        new QWebChannel(qt.webChannelTransport, _this.initQt.bind(_this));
+        return _this;
+    }
+
+    _createClass(App, [{
+        key: 'initQt',
+        value: function initQt(channel) {
+            var _this2 = this;
+
+            console.log("channel initqt.....");
+            channel.objects.i18n.getSentences(function (i18n) {
+                channel.objects.i18n.getLocale(function (lang) {
+                    if (lang === 'en_US' || lang === 'zh_CN') {
+                        global.lang = lang;
+                    } else {
+                        global.lang = 'en_US';
+                    }
+                });
+
+                global.i18n = i18n;
+                global.qtObjects = channel.objects;
+
+                global.qtObjects.manual.hasSelperSupport(function (bFlag) {
+                    global.isShowHelperSupport = bFlag;
+                });
+
+                global.qtObjects.manual.bIsLongSon(function (isLongSon) {
+                    if (isLongSon) {
+                        global.scrollBehavior = 'auto';
+                    }
+                });
+
+                channel.objects.manual.getSystemManualDir(function (path) {
+                    global.path = path;
+                });
+                // global.openWindow = global.qtObjects.manual.openExternalLink;
+                // global.qtObjects.titleBar.setBackwardButtonActive(false);
+                // global.qtObjects.titleBar.setForwardButtonActive(false);
+                global.qtObjects.titleBar.backwardButtonClicked.connect(_this2.onBackwardClick.bind(_this2));
+                global.qtObjects.titleBar.forwardButtonClicked.connect(_this2.onForwardClick.bind(_this2));
+                global.qtObjects.search.mismatch.connect(function () {
+                    return _this2.setState({ mismatch: true });
+                });
+                global.qtObjects.search.onContentResult.connect(_this2.onContentResult.bind(_this2));
+                global.qtObjects.search.reloadPage.connect(_this2.onReloadPage.bind(_this2));
+                global.qtObjects.manual.searchEditTextisEmpty.connect(_this2.onSearchEditClear.bind(_this2));
+                global.qtObjects.theme.getTheme(function (themeType) {
+                    return _this2.themeChange(themeType);
+                });
+                global.qtObjects.theme.themeChange.connect(_this2.themeChange.bind(_this2));
+                global.qtObjects.settings.fontChangeRequested.connect(_this2.onFontChange.bind(_this2));
+                console.log("finsh global.qtObjects = channel.objects...");
+                global.qtObjects.manual.finishChannel();
+            });
+        }
+    }, {
+        key: 'onBackwardClick',
+        value: function onBackwardClick() {
+            global.handleLocation(global.hash);
+            console.log("----------backwardButtonClicked----------");
+            this.setState({ historyGO: this.state.historyGO - 1 });
+            console.log("==========backwardButtonClicked=========>");
+            this.context.router.history.goBack();
+            console.log("back history location: " + this.context.router.history.location.pathname);
+        }
+    }, {
+        key: 'onForwardClick',
+        value: function onForwardClick() {
+            global.handleLocation(global.hash);
+            console.log("----------forwardButtonClicked----------");
+            this.setState({ historyGO: this.state.historyGO + 1 });
+            console.log("==========forwardButtonClicked=========>");
+            this.context.router.history.goForward();
+            console.log("forward history location: " + this.context.router.history.location.pathname);
+        }
+    }, {
+        key: 'onFontChange',
+        value: function onFontChange(fontFamily, fontSize) {
+            console.log("fontChangeRequested: fontFamily:" + fontFamily + ",fontSize:" + fontSize);
+            console.log("fontSize/13.0:" + fontSize);
+            var HTMLGlobal = document.querySelector('html');
+            HTMLGlobal.style.fontFamily = fontFamily;
+            HTMLGlobal.style.fontSize = fontSize; //设置rem标准   设计图上默认是在14px字体上设计,所以默认1rem = 14px.
+            if (fontSize >= 18) {
+                document.documentElement.style.setProperty('--index-item-size', '170px');
+                document.documentElement.style.setProperty('--index-span-width', '140px');
+            } else {
+                document.documentElement.style.setProperty('--index-item-size', '160px');
+                document.documentElement.style.setProperty('--index-span-width', '130px');
+            }
+        }
+    }, {
+        key: 'themeChange',
+        value: function themeChange(themeType) {
+            global.setTheme(themeType);
+        }
+    }, {
+        key: 'onContentResult',
+        value: function onContentResult(appName, titleList, idList, contentList) {
+            var _this3 = this;
+
+            console.log('搜索结果', appName, titleList, idList, contentList);
+            var searchResult = this.state.searchResult;
+
+            var filePath = void 0;
+            // if (appName == "dde")
+            // {
+            //   filePath = `${global.path}/system/${appName}/${global.lang}/index.md`;
+            // }
+            // else
+            // {
+            //   filePath = `${global.path}/application/${appName}/${global.lang}/index.md`;
+            // }
+            var myPromise = new Promise(function (resolve, reject) {
+                global.qtObjects.manual.appToPath(appName, function (filepath) {
+                    filePath = filepath;
+                    resolve();
+                });
+            });
+
+            myPromise.then(function () {
+                searchResult.push({
+                    file: filePath,
+                    idList: idList,
+                    titleList: titleList,
+                    contentList: contentList
+                });
+                _this3.setState({ searchResult: searchResult, mismatch: false });
+            });
+        }
+    }, {
+        key: 'onReloadPage',
+        value: function onReloadPage(appList) {
+            var _this4 = this;
+
+            // console.log("============>page reload...");
+            var bRetFlag = true;
+            var locationPath = this.context.router.history.location.pathname;
+            console.log("============>page reload...", locationPath);
+            var list = locationPath.split("/");
+            if (list[1] == 'open') {
+                var curApp = list[2];
+                console.log("============>open...", appList, curApp);
+                var bFlag = false;
+                appList.map(function (app) {
+                    if (!bFlag && curApp.indexOf(app) != -1) {
+                        bFlag = true;
+                    }
+                });
+
+                if (bFlag) {
+                    global.qtObjects.manual.getSystemManualList(function (appNames) {
+                        var bKFlage = false;
+                        appNames.map(function (name) {
+                            if (curApp.indexOf(name) != -1) {
+                                bKFlage = true;
+                            }
+                        });
+
+                        if (bKFlage) {
+                            global.bIsReload = true;
+                            _this4.context.router.history.go(0);
+                        } else {
+                            var historyList = _this4.context.router.history.entries;
+                            var index = _this4.context.router.history.index;
+                            var historyLate = historyList.slice(index + 1);
+                            console.log("===========>", historyLate);
+                            _this4.setState({ historyGO: _this4.state.historyGO - 1 });
+                            _this4.context.router.history.go(-1);
+
+                            historyLate.map(function (url) {
+                                console.log("..........>", url);
+                                _this4.context.router.history.push(url);
+                            });
+                            global.backHome();
+                        }
+                    });
+                } else {
+                    bRetFlag = false;
+                }
+            } else if (list[1] == 'search') {
+                console.log("============>search...", list[2]);
+                global.qtObjects.search.updateSearch(list[2]);
+            } else {
+                global.bIsReload = true;
+                this.context.router.history.go(0);
+            }
+
+            if (bRetFlag) {
+                global.qtObjects.manual.showUpdateLabel();
+            }
+        }
+    }, {
+        key: 'onSearchEditClear',
+
+
+        //搜索框清空后回到上一个页面(未搜索的页面).
+        value: function onSearchEditClear() {
+            console.log("==================>onSearcheditclear");
+            var locationPath = this.context.router.history.location.pathname;
+            var list = locationPath.split("/");
+            var bFlag = false;
+            //open页length = 5, search页length = 3
+            if (list.length == 5 && list[4] != "") {
+                bFlag = true;
+            } else if (list.length == 3 && list[2] != "") {
+                bFlag = true;
+            }
+
+            if (bFlag) {
+                var step;
+                var indexGo = this.state.historyGO;
+                // var indexGo = global.gHistoryGo;
+                var objList = this.context.router.history.entries;
+                for (var i = indexGo; i >= 0; i--) {
+
+                    var curPath = objList[i].pathname;
+                    帮助;
+                    var curPathList = curPath.split("/");
+                    if (curPathList.length == 5 && curPathList[4] == "") {
+                        step = indexGo - i;
+                        break;
+                    } else if (curPathList.length == 3 && curPathList[2] == "") {
+                        step = indexGo - i;
+                        break;
+                    } else if (curPathList.length == 2) {
+                        step = indexGo - i;
+                        break;
+                    }
+                }
+                if (step) {
+                    if (this.context.router.history.canGo(-1 * step)) {
+                        this.setState({ historyGO: this.state.historyGO - step });
+                        // global.gHistoryGo = global.gHistoryGo - step;
+                        this.context.router.history.go(-1 * step);
+                    }
+                }
+            }
+        }
+    }, {
+        key: 'getChildContext',
+        value: function getChildContext() {
+            var _state = this.state,
+                searchResult = _state.searchResult,
+                mismatch = _state.mismatch;
+
+            return { searchResult: searchResult, mismatch: mismatch };
+        }
+    }, {
+        key: 'componentWillReceiveProps',
+        value: function componentWillReceiveProps(nextProps) {
+            console.log("app componentWillReceiveProps", this.context.router.history);
+            console.log("this location: " + this.context.router.history.location);
+            var pathName = this.context.router.history.location.pathname;
+            var pathList = pathName.split("/");
+            var cKeyword = '';
+
+            //search页===>/search/:keyword 
+            //open页=====>/open/:file/:hash?/:key? 
+            if (pathList.length == 3) {
+                cKeyword = pathList[2];
+            } else if (pathList.length == 5) {
+                cKeyword = pathList[4];
+            }
+
+            // global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
+            if (cKeyword == '%') {
+                global.qtObjects.search.getKeyword(cKeyword);
+            } else {
+                console.log("decode URIComponent componentWillReceiveProps");
+                global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
+            }
+
+            if (this.context.router.history.action == 'PUSH') {
+                var entriesLen = this.context.router.history.entries.length;
+                if (entriesLen > 1) {
+                    var entry = this.context.router.history.entries[entriesLen - 1];
+                    if (entry.pathname.toString().indexOf("/search/") != -1) {
+                        this.setState({ historyGO: entriesLen - 1 });
+                        // global.gHistoryGo = entriesLen - 1;
+                        return;
+                    }
+                }
+                this.setState({ historyGO: entriesLen - 1 });
+                // global.gHistoryGo = entriesLen - 1;
+            }
+
+            //切换状态时,去除选中状态....为何选中状态切换页面时会保留??????
+            window.getSelection().empty();
+        }
+    }, {
+        key: 'componentDidMount',
+        value: function componentDidMount() {
+            var _this5 = this;
+
+            global.index = function () {
+                // this.context.router.history.push('/');
+                if (_this5.state.init == false) {
+                    _this5.setState({ init: true });
+                }
+            };
+            global.backHome = function () {
+                global.handleLocation(global.hash);
+                console.log("global.backHome()" + _this5.context.router.history.entries.length);
+                console.log("global.backHome()" + _this5.state.historyGO);
+                var goNum = _this5.state.historyGO;
+                _this5.setState({ historyGO: 0 });
+                console.log("global.backHome()" + goNum);
+
+                if (_this5.context.router.history.canGo(-1 * goNum)) {
+                    _this5.context.router.history.go(-1 * goNum);
+                    // this.context.router.history.go(0);
+                }
+            };
+
+            //打开某一个文件,并定位到具体hash
+            global.open = function (file) {
+                var hash = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+                var key = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
+
+                console.log("global.open()....file:" + file + " hash:" + hash + " key:" + key);
+                //h0默认为应用名称，内容为空，所以当打开h0，将其变为h1概述的位置。
+                if (hash == 'h0' || hash == '') {
+                    hash = 'h1';
+                }
+                file = encodeURIComponent(file);
+                console.log("globla.open...........");
+                hash = encodeURIComponent(hash);
+                global.hash = hash;
+
+                // '%'字符替换为其他非常用字符组合,来替代'%', 路由URL单含此字符会出错。。。
+                if (key == '%') {
+                    key = '=-=';
+                }
+
+                var url = '/open/' + file + '/' + hash + '/' + key;
+                _this5.context.router.history.push(url);
+
+                //Init属性设置, 放在index与opentitle中. 避免直接跳转到特定模块时会先走/模块.
+                if (_this5.state.init == false) {
+                    _this5.setState({ init: true });
+                }
+
+                //通知qt对象,修改应用打开状态
+                global.qtObjects.manual.setApplicationState(file);
+            };
+
+            global.openTitle = function (file) {
+                var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
+
+                console.log("global linkTitle==> file:" + file + " title: " + title);
+                global.handleLocation(global.hash);
+                if (title !== '') {
+                    var filePath = void 0;
+                    // if(file == "dde")
+                    // {
+                    //   filePath = `${global.path}/system/${file}/${global.lang}/index.md`
+                    // }
+                    // else
+                    // {
+                    //   filePath = `${global.path}/application/${file}/${global.lang}/index.md`
+                    // }
+
+                    var myPromise = new Promise(function (resolve, reject) {
+                        global.qtObjects.manual.appToPath(file, function (filepath) {
+                            filePath = filepath;
+                            resolve();
+                        });
+                    });
+
+                    myPromise.then(function () {
+                        global.readFile(filePath, function (data) {
+                            console.log("-----------------==> file:" + filePath);
+
+                            var _m2h = (0, _mdToHtml2.default)(filePath, data),
+                                html = _m2h.html;
+
+                            var d = document.createElement('div');
+                            d.innerHTML = html;
+                            var dlist = d.querySelectorAll('[text="' + title + '"]');
+                            var hashID = 'h0';
+                            for (var i = 0; i < dlist.length; i++) {
+                                hashID = dlist[i].id;
+                            }
+                            global.open(file, hashID);
+                        });
+                    });
+                } else {
+                    global.open(file);
+                }
+            };
+
+            //替换当前URL,仅仅在切换到其他页面处调用...(包含前进,后退,重新打开一个新的页面)
+            global.handleLocation = function () {
+                var hash = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
+
+                var url = _this5.context.router.history.location.pathname;
+                console.log("global.handhash: ", url);
+                var urlList = url.split("/");
+                if (urlList.length == 5) {
+                    url = '/' + urlList[1] + '/' + urlList[2] + '/' + hash + '/' + urlList[4];
+                    console.log("new url:", url);
+                    _this5.context.router.history.replace(url);
+                }
+            };
+
+            //获取当前系统活动色
+            global.setHashWordColor = function (strRgb) {
+                console.log("hash color: ", strRgb);
+                document.documentElement.style.setProperty('--nav-hash-word-color', strRgb); //btnlist 改这行
+
+                //对系统活动色统一增加一定的值作为Hover色
+                var rgb = strRgb.slice(1);
+                var r = rgb.substr(0, 2);
+                var g = rgb.substr(2, 2);
+                var b = rgb.substr(4, 2);
+                var nR = parseInt(r, 16);
+                var nG = parseInt(g, 16);
+                var nB = parseInt(b, 16);
+                nR += 16;
+                nG += 16;
+                nB += 16;
+                if (nR > 255) nR = 255;
+                if (nG > 255) nG = 255;
+                if (nB > 255) nB = 255;
+                var toR = nR.toString(16);
+                var toG = nG.toString(16);
+                var toB = nB.toString(16);
+                if (toR.length == 1) toR = '0' + toR;
+                if (toG.length == 1) toG = '0' + toG;
+                if (toB.length == 1) toB = '0' + toB;
+
+                var toRGB = "#" + toR + toG + toB;
+                console.log('hover color:', toRGB);
+                document.documentElement.style.setProperty('--nav-hash-hover-color', toRGB);
+            };
+
+            global.setWordFontfamily = function (strFontFamily) {
+                document.documentElement.style.setProperty('--nav-world-font-family', strFontFamily); //btnlist 改这行
+            };
+
+            global.setTheme = function (themeType) {
+                console.log('主题切换', themeType);
+                if (navigator.language.toString().indexOf('en_') != -1) {
+                    document.documentElement.style.setProperty('--span-line-height', '1.0rem');
+                    document.documentElement.style.setProperty('--span-font-size', '0.9rem');
+                    document.documentElement.style.setProperty('--span-maring-bottom', '0.15rem');
+                } else {
+                    document.documentElement.style.setProperty('--span-line-height', '1.4rem');
+                    document.documentElement.style.setProperty('--span-font-size', '1.03rem');
+                    document.documentElement.style.setProperty('--span-maring-bottom', '0.15rem');
+                }
+                if ("DarkType" == themeType) {
+                    console.log('DarkType');
+                    document.documentElement.style.setProperty('--nav-hover-color', 'rgba(255,255,255,0.1)');
+                    document.documentElement.style.setProperty('--body-background-color', '#252525');
+                    document.documentElement.style.setProperty('--body-color-white2black', '#000000');
+                    document.documentElement.style.setProperty('--app-word-color', '#C0C6D4');
+                    document.documentElement.style.setProperty('--nav-background-color', '#282828');
+                    document.documentElement.style.setProperty('--nav-h2-word-color', '#C0C6D4');
+                    document.documentElement.style.setProperty('--nav-h3-word-color', '#C0C0C0');
+                    //document.documentElement.style.setProperty(`--nav-hash-word-color`, '#0059D2');     //btnlist 改这行
+                    document.documentElement.style.setProperty('--article-read-word-color', '#C0C6D4');
+                    document.documentElement.style.setProperty('--article-read-h2-word-color', '#0082FA');
+                    document.documentElement.style.setProperty('--article-table-text-color', '#6D7C88');
+                    document.documentElement.style.setProperty('--article-table-border-color', 'rgba(96, 96, 96, 0.5)');
+                    document.documentElement.style.setProperty('--article-table-cell-border-color', 'rgba(96, 96, 96, 0.1)');
+                    document.documentElement.style.setProperty('--index-item-background-color', 'rgba(255,255,255,0.05)');
+                    document.documentElement.style.setProperty('--index-item-hover-color', 'rgba(255,255,255,0.2)');
+                    document.documentElement.style.setProperty('--index-item-span-word-color', '#C0C6D4');
+                    document.documentElement.style.setProperty('--search-noresult-word-color', '#C0C6D4');
+                    document.documentElement.style.setProperty('--search-button-word-color', '#C0C6D4');
+                    document.documentElement.style.setProperty('--search-button-hover-word-color', '#FFFFFF');
+                    document.documentElement.style.setProperty('--search-items-word-color', '#6D7C88');
+                    document.documentElement.style.setProperty('--search-items-resultnum-word-color', '#6D7C88');
+                    document.documentElement.style.setProperty('--search-item-background-color', 'rgba(255,255,255,0.05)');
+                    document.documentElement.style.setProperty('--scrollbar-div-background-color', 'rgba(255,255,255,0.2)');
+                    document.documentElement.style.setProperty('--scrollbar-div-hover-background-color', 'rgba(255,255,255,0.25)');
+                    document.documentElement.style.setProperty('--scrollbar-div-select-background-color', 'rgba(255,255,255,0.3)');
+                    document.documentElement.style.setProperty('--index-h2-color', 'rgba(255,255,255,0.05)');
+                    document.documentElement.style.setProperty('--search-button-background-color-start', '#484848');
+                    document.documentElement.style.setProperty('--search-button-background-color-end', '#414141');
+                    document.documentElement.style.setProperty('--search-button-hover-color-start', '#676767');
+                    document.documentElement.style.setProperty('--search-button-hover-color-end', '#606060');
+                    document.documentElement.style.setProperty('--search-WikiSearch-color', '#6D7C88');
+                    document.documentElement.style.setProperty('--search-itemTitle-word-color', '#C0C6D4');
+                    document.documentElement.style.setProperty('--search-context-word-color', '#6D7C88');
+                    document.documentElement.style.setProperty('--tips-background-color', '#2A2A2A');
+                    document.documentElement.style.setProperty('--tips-border-color', 'rgba(0, 0, 0,0.3)');
+                } else if ("LightType" == themeType) {
+                    console.log('LightType');
+                    document.documentElement.style.setProperty('--nav-hover-color', 'rgba(0,0,0,0.1)');
+                    document.documentElement.style.setProperty('--body-background-color', '#F8F8F8');
+                    document.documentElement.style.setProperty('--body-color-white2black', '#FFFFFF');
+                    document.documentElement.style.setProperty('--app-word-color', '#414D68');
+                    document.documentElement.style.setProperty('--nav-background-color', '#FFFFFF');
+                    document.documentElement.style.setProperty('--nav-h2-word-color', '#001A2E');
+                    document.documentElement.style.setProperty('--nav-h3-word-color', '#001A2E');
+                    // document.documentElement.style.setProperty(`--nav-hash-word-color`, '#ca0c16');   //btn list 改这一行
+                    document.documentElement.style.setProperty('--article-read-word-color', '#000000');
+                    document.documentElement.style.setProperty('--article-read-h2-word-color', '#2CA7F8');
+                    document.documentElement.style.setProperty('--article-table-text-color', '#606060');
+                    document.documentElement.style.setProperty('--article-table-border-color', 'rgba(0, 0, 0, 0.1)');
+                    document.documentElement.style.setProperty('--article-table-cell-border-color', 'rgba(0, 0, 0, 0.05)');
+                    document.documentElement.style.setProperty('--index-item-background-color', '#FFFFFF');
+                    document.documentElement.style.setProperty('--index-item-hover-color', 'rgba(0,0,0,0.05)');
+                    document.documentElement.style.setProperty('--index-item-span-word-color', '#414D68');
+                    document.documentElement.style.setProperty('--search-noresult-word-color', '#000000');
+                    document.documentElement.style.setProperty('--search-button-word-color', '#414D68');
+                    document.documentElement.style.setProperty('--search-button-hover-word-color', '#001B2E');
+                    document.documentElement.style.setProperty('--search-items-word-color', '#000000');
+                    document.documentElement.style.setProperty('--search-items-resultnum-word-color', '#8AA1B4');
+                    document.documentElement.style.setProperty('--search-item-background-color', 'rgba(255,255,255,1)');
+                    document.documentElement.style.setProperty('--scrollbar-div-background-color', 'rgba(0,0,0,0.3)');
+                    document.documentElement.style.setProperty('--scrollbar-div-hover-background-color', 'rgba(0,0,0,0.5)');
+                    document.documentElement.style.setProperty('--scrollbar-div-select-background-color', 'rgba(0,0,0,0.4)');
+                    document.documentElement.style.setProperty('--index-h2-color', 'rgba(0, 0, 0, 0.1)');
+                    document.documentElement.style.setProperty('--search-button-background-color-start', '#E6E6E6');
+                    document.documentElement.style.setProperty('--search-button-background-color-end', '#E3E3E3');
+                    document.documentElement.style.setProperty('--search-button-hover-color-start', '#CACACA');
+                    document.documentElement.style.setProperty('--search-button-hover-color-end', '#C6C6C6');
+                    document.documentElement.style.setProperty('--search-WikiSearch-color', '#7a7a7a');
+                    document.documentElement.style.setProperty('--search-itemTitle-word-color', '#000000');
+                    document.documentElement.style.setProperty('--search-context-word-color', '#000000');
+                    document.documentElement.style.setProperty('--tips-background-color', '#F7F7F7');
+                    document.documentElement.style.setProperty('--tips-border-color', 'rgba(0,0,0,0.05)');
+                } else {
+                    console.log('Null');
+                }
+            };
+
+            var Base64 = {
+                encode: function encode(str) {
+                    // first we use encodeURIComponent to get percent-encoded UTF-8,
+                    // then we convert the percent encodings into raw bytes which
+                    // can be fed into btoa.
+                    return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function toSolidBytes(match, p1) {
+                        return String.fromCharCode('0x' + p1);
+                    }));
+                },
+                decode: function decode(str) {
+                    // Going backwards: from bytestream, to percent-encoding, to original string.
+                    console.log("decode URIComponent decode");
+                    return decodeURIComponent(atob(str).split('').map(function (c) {
+                        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
+                    }).join(''));
+                }
+            };
+
+            global.openSearchPage = function (keyword) {
+                global.handleLocation(global.hash);
+                console.log('====>', keyword);
+                var decodeKeyword = Base64.decode(keyword);
+                console.log("decodeKeyword", decodeKeyword, "===", encodeURIComponent(decodeKeyword));
+                console.log("openSearchPage", _this5.context.router.history);
+                console.log('lastUrl:' + global.lastUrlBeforeSearch + ', lastHistoryIndex: ' + global.lastHistoryIndex);
+
+                var entriesLen = _this5.context.router.history.entries.length;
+                if ('POP' == global.lastAction && lastHistoryIndex > 0 && lastHistoryIndex < entriesLen - 1) {
+                    console.log("global.opensearch...");
+                    _this5.context.router.history.entries.length = lastHistoryIndex;
+                    _this5.context.router.history.length = lastHistoryIndex;
+                    _this5.context.router.history.index = lastHistoryIndex - 1;
+
+                    _this5.setState({ searchResult: [] });
+                    _this5.context.router.history.push('/search/' + encodeURIComponent(decodeKeyword));
+
+                    return;
+                }
+
+                entriesLen = _this5.context.router.history.entries.length;
+                if (entriesLen > 1) {
+                    var entry = _this5.context.router.history.entries[entriesLen - 1];
+                    var entryIndex = entry.pathname.toString().indexOf("/search/");
+                    if (entryIndex != -1) {
+                        _this5.context.router.history.entries.length = entriesLen - 1;
+                        _this5.context.router.history.length = entriesLen - 1;
+                        _this5.context.router.history.index = _this5.context.router.history.entries.length - 1;
+                    }
+                }
+
+                _this5.setState({ searchResult: [] });
+                _this5.context.router.history.push('/search/' + encodeURIComponent(decodeKeyword));
+            };
+
+            this.context.router.history.listen(function (location, action) {
+                //console.log(`The current URL is ${location.pathname}${location.search}${location.hash}` );
+                //console.log(`The last navigation action was ${action}`);
+                //console.log("index:" + this.context.router.history.index);
+                console.log("app router.history.listen...");
+                global.lastUrlBeforeSearch = location.pathname;
+                global.lastHistoryIndex = _this5.context.router.history.index;
+                global.lastAction = action;
+            });
+
+            global.back = function () {
+                console.log("global.back()");
+                _this5.context.router.history.goBack();
+            };
+            this.componentDidUpdate();
+        }
+    }, {
+        key: 'componentDidUpdate',
+        value: function componentDidUpdate() {
+            if (global.qtObjects) {
+                console.log("app componentDidUpdate------------>", this.state.historyGO, this.context.router.history.length);
+                global.qtObjects.titleBar.setBackwardButtonActive(this.state.historyGO > 0
+                // global.gHistoryGo > 0
+                );
+                global.qtObjects.titleBar.setForwardButtonActive(this.context.router.history.length - this.state.historyGO > 1
+                // this.context.router.history.length  - global.gHistoryGo > 1
+                );
+            }
+        }
+    }, {
+        key: 'render',
+        value: function render() {
+            return _react2.default.createElement(
+                'div',
+                null,
+                ' ',
+                this.state.init && _react2.default.createElement(
+                    _reactRouterDom.Switch,
+                    null,
+                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/',
+                        component: _index2.default
+                    }),
+                    ' ',
+                    _react2.default.createElement(_reactRouterDom.Route, { path: '/index',
+                        component: _index2.default
+                    }),
+                    ' ',
+                    _react2.default.createElement(_reactRouterDom.Route, { path: '/open/:file/:hash?/:key?',
+                        component: _main2.default
+                    }),
+                    ' ',
+                    _react2.default.createElement(_reactRouterDom.Route, { path: '/search/:keyword',
+                        component: _search2.default
+                    }),
+                    ' '
+                ),
+                ' '
+            );
+        }
+    }]);
+
+    return App;
+}(_react2.default.Component);
+
+App.contextTypes = {
+    router: _propTypes2.default.object
+};
+App.childContextTypes = {
+    searchResult: _propTypes2.default.array,
+    mismatch: _propTypes2.default.bool
+};
+
+(0, _reactDom.render)(_react2.default.createElement(
+    _reactRouterDom.Router,
+    { history: (0, _history.createMemoryHistory)('/') },
+    _react2.default.createElement(App, null)
+), document.getElementById('app'));
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"./index.jsx":3,"./main.jsx":4,"./mdToHtml":5,"./search.jsx":8,"history":14,"prop-types":29,"react":74,"react-dom":43,"react-router-dom":59}],2:[function(require,module,exports){
+(function (global){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = require('react-dom');
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _smoothScrollIntoViewIfNeeded = require('smooth-scroll-into-view-if-needed');
+
+var _smoothScrollIntoViewIfNeeded2 = _interopRequireDefault(_smoothScrollIntoViewIfNeeded);
+
+var _mdToHtml = require('./mdToHtml');
+
+var _mdToHtml2 = _interopRequireDefault(_mdToHtml);
+
+var _scrollbar = require('./scrollbar.jsx');
+
+var _scrollbar2 = _interopRequireDefault(_scrollbar);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Article = function (_Component) {
+  _inherits(Article, _Component);
+
+  function Article(props) {
+    _classCallCheck(this, Article);
+
+    var _this = _possibleConstructorReturn(this, (Article.__proto__ || Object.getPrototypeOf(Article)).call(this, props));
+
+    _this.state = {
+      preview: null,
+      smoothScroll: false,
+      fillblank: null,
+      bIsTimerOut: true
+    };
+
+    _this.scroll = _this.scroll.bind(_this);
+    _this.click = _this.click.bind(_this);
+    _this.contentMenu = _this.contentMenu.bind(_this);
+
+    var timerObj;
+    var bIsMount = false;
+    return _this;
+  }
+  //滚动到锚点
+
+
+  _createClass(Article, [{
+    key: 'scrollToHash',
+    value: function scrollToHash() {
+      var _this2 = this;
+
+      console.log("article scrollToHash ", this.hash);
+      var tempHash = this.hash;
+
+      var hashNode = document.getElementById(tempHash);
+      console.log("article scrollToHash temphash: " + tempHash + " " + hashNode);
+
+      if (this.state.preview != null) {
+        this.setState({ preview: null });
+      }
+
+      if (hashNode) {
+        console.log(" article  scrollToHash===============>", this.bIsMount);
+        clearTimeout(this.timerObj);
+        this.setState({ smoothScroll: true });
+
+        var timeVar = 800;
+        if (this.bIsMount) {
+          timeVar = 3 * 1000;
+          this.bIsMount = false;
+        }
+
+        this.timerObj = setTimeout(function () {
+          _this2.setState({ smoothScroll: false });
+        }, timeVar);
+
+        (0, _smoothScrollIntoViewIfNeeded2.default)(hashNode, { behavior: 'smooth', block: 'start' }).then(function () {
+
+          console.log(" scrollIntoView finish ===============>");
+
+          // this.setState({ smoothScroll: false });
+
+          //scrollIntoView函数存在异步,如果tempHash != this.hash时,说明存在异步操作,直接return. 
+          if (tempHash != _this2.hash) return;
+
+          console.log("scrollIntoView finish..");
+          //find parent h3 title of h4 title
+          var hList = _reactDom2.default.findDOMNode(_this2).querySelectorAll('h2,h3,h4,h5');
+          var currH3Hash = '';
+          for (var i = 0; i < hList.length; i++) {
+            if (hList[i].tagName == 'H3') {
+              currH3Hash = hList[i].id;
+            }
+            if (tempHash == hList[i].id && (hList[i].tagName == 'H4' || hList[i].tagName == 'H5')) {
+              console.log("article: scroll hlist:" + hList[i].tagName + "," + hList[i].id);
+              console.log("currH3Hash:" + currH3Hash);
+              _this2.hash = currH3Hash;
+              _this2.props.setHash(currH3Hash);
+              _this2.props.setScroll(currH3Hash);
+              break;
+            }
+          }
+        });
+      } else {
+        if (this.props.hlist.length > 0) {
+          this.props.setHash(this.props.hlist[0].id);
+        }
+      }
+    }
+  }, {
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      console.log("article componentWillMount");
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      console.log("article componentDidMount");
+      this.bIsMount = true;
+      this.componentDidUpdate();
+    }
+  }, {
+    key: 'shouldComponentUpdate',
+    value: function shouldComponentUpdate(nextProps, nextState) {
+      console.log("article shouldComponentUpdate====", this.hash, "prop hash:", this.props.hash);
+      // if (this.hash == this.props.hash)
+      // {
+      //   return false;
+      // }
+      return true;
+    }
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      console.log("article componentWillReceiveProps nextfile", nextProps.nextProps, ' prop.file:', this.props.file);
+      if (nextProps.file != this.props.file) {
+        this.hash = '';
+        this.load = false;
+        this.bIsMount = true;
+      }
+    }
+  }, {
+    key: 'componentWillUpdate',
+    value: function componentWillUpdate() {
+      console.log("article componentWillUpdate..");
+      var alink_arr = document.getElementsByTagName('a');
+      for (var i = 0; i < alink_arr.length; i++) {
+        alink_arr[i].onclick = function () {
+          global.isLinkClicked = true;
+        };
+      }
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+      var _this3 = this;
+
+      console.log("article componentDidUpdate.." + this.hash + " props hash->" + this.props.hash);
+      if (this.hash != this.props.hash) {
+        this.hash = this.props.hash;
+        this.scrollToHash();
+      }
+      if (!this.load) {
+        var article = _reactDom2.default.findDOMNode(this);
+        var read = article.querySelector('#read');
+        read.focus();
+        var imgList = [].concat(_toConsumableArray(article.querySelectorAll('img')));
+
+        var loadCount = 0;
+        var promiseAll = [];
+        imgList.map(function (el) {
+          promiseAll.push(new Promise(function (resolve, reject) {
+            el.onload = function () {
+              console.log("------img onload---------");
+              resolve(el);
+            };
+            el.onerror = function () {
+              console.log("------img onerror---------");
+              resolve(el);
+            };
+          }));
+        });
+        Promise.all(promiseAll).then(function () {
+          // 全部图片加载完成
+          _this3.load = true;
+          _this3.scrollToHash();
+          var last = article.querySelector('#' + _this3.props.hlist[_this3.props.hlist.length - 1].id);
+          var fillblank = {
+            marginBottom: article.clientHeight - (read.clientHeight - last.offsetTop)
+          };
+          _this3.setState({
+            fillblank: fillblank
+          });
+        });
+      }
+    }
+  }, {
+    key: 'gethID',
+    value: function gethID(htext) {
+      var id = this.props.hlist[0].id;
+      console.log(this.props.hlist[0]);
+      var hlist = this.props.hlist.filter(function (h) {
+        return h.text == htext;
+      });
+      if (hlist.length > 0) {
+        id = hlist[0].id;
+      }
+      console.log(htext, id);
+      return id;
+    }
+  }, {
+    key: 'handleWheelScroll',
+    value: function handleWheelScroll(e) {
+      global.isMouseScrollArticle = true;
+    }
+  }, {
+    key: 'handleKeyDown',
+    value: function handleKeyDown(e) {
+      if (38 == e.keyCode || 40 == e.keyCode) {
+        global.isMouseScrollArticle = true;
+      }
+    }
+  }, {
+    key: 'handleKeyUp',
+    value: function handleKeyUp(e) {
+      if (38 == e.keyCode || 40 == e.keyCode) {
+        global.isMouseScrollArticle = true;
+      }
+    }
+
+    //滚动事件
+
+  }, {
+    key: 'scroll',
+    value: function scroll() {
+      // if (!this.load) {
+      //   return;
+      // }
+      if (this.state.smoothScroll) {
+        return;
+      }
+      if (this.state.preview != null) {
+        this.setState({ preview: null });
+      }
+      var hList = _reactDom2.default.findDOMNode(this).querySelectorAll('h2,h3');
+      var aritleView = this.refs.articleView;
+
+      var hash = hList[0].id;
+      for (var i = 0; i < hList.length; i++) {
+        //console.log("article: scroll hlist:" + hList[i]);
+        //console.log("article: scroll hlist offset top:" + hList[i].getBoundingClientRect().top);
+        var articleTop = Math.abs(aritleView.getBoundingClientRect().top);
+        //console.log(hList[i].id + "," + hList[i].nodeName + ", hList[" + i + "].offsetTop" + hList[i].offsetTop + ", articleTop" + articleTop);
+        var offsetY = 10;
+        if (hList[i].nodeName == 'H2') {
+          offsetY = 10;
+        } else if (hList[i].nodeName == 'H3') {
+          offsetY = 30;
+        }
+        if (hList[i].offsetTop - offsetY >= articleTop) {
+          //console.log("article: scroll hlist offset top:" + hList[i].offsetTop);
+          break;
+        }
+        hash = hList[i].id;
+      }
+      console.log("article: scroll this.hash:" + this.hash + "   hash:" + hash);
+      if (this.hash != hash) {
+        console.log('article: scroll hash update');
+        this.hash = hash;
+        this.props.setHash(hash);
+        if (global.isMouseScrollArticle) {
+          this.props.setScroll(hash);
+        }
+      }
+    }
+
+    //链接处理
+
+  }, {
+    key: 'click',
+    value: function click(e) {
+      console.log("article click");
+      if (this.state.preview != null) {
+        this.setState({ preview: null });
+      }
+      console.log("======>", e.target.nodeName);
+      switch (e.target.nodeName) {
+        case 'IMG':
+          e.preventDefault();
+          var src = e.target.src;
+          if (src.indexOf('.svg') != -1) {
+            return;
+          }
+          console.log('imageViewer', src);
+          global.qtObjects.imageViewer.open(src);
+          return;
+        case 'A':
+          {
+            var dmanProtocol = 'dman://';
+            var hashProtocol = '#';
+            var httpProtocol = 'http';
+            var _href = e.target.getAttribute('href');
+            console.log("href:" + _href);
+            switch (0) {
+              case _href.indexOf(hashProtocol):
+                e.preventDefault();
+                this.props.setHash(document.querySelector('[text="' + _href.slice(1) + '"]').id);
+                return;
+              case _href.indexOf(dmanProtocol):
+                e.preventDefault();
+
+                var _href$slice$split = _href.slice(dmanProtocol.length + 1).split('#'),
+                    _href$slice$split2 = _slicedToArray(_href$slice$split, 2),
+                    appName = _href$slice$split2[0],
+                    hash = _href$slice$split2[1];
+
+                global.openTitle(appName, hash);
+                return;
+              case _href.indexOf(httpProtocol):
+                e.preventDefault();
+                global.qtObjects.imageViewer.openHttpUrl(_href);
+                return;
+            }
+          }
+        //解决bug-46888, 当a标签内含有span标签,点击获取的是span标签,此时用其父元素来处理.
+        case 'SPAN':
+          e.preventDefault();
+          var parNode = e.target.parentNode;
+          if (parNode.nodeName == 'A') {
+            var _dmanProtocol = 'dman://';
+            var _hashProtocol = '#';
+            var _httpProtocol = 'http';
+            var hrefTmp = parNode.getAttribute('href');
+            switch (0) {
+              case hrefTmp.indexOf(_hashProtocol):
+                e.preventDefault();
+                this.props.setHash(document.querySelector('[text="' + href.slice(1) + '"]').id);
+                return;
+              case hrefTmp.indexOf(_dmanProtocol):
+                e.preventDefault();
+
+                var _hrefTmp$slice$split = hrefTmp.slice(_dmanProtocol.length + 1).split('#'),
+                    _hrefTmp$slice$split2 = _slicedToArray(_hrefTmp$slice$split, 2),
+                    _appName = _hrefTmp$slice$split2[0],
+                    _hash = _hrefTmp$slice$split2[1];
+
+                global.openTitle(_appName, _hash);
+                return;
+              case hrefTmp.indexOf(_httpProtocol):
+                e.preventDefault();
+                global.qtObjects.imageViewer.openHttpUrl(hrefTmp);
+                return;
+            }
+          }
+          return;
+      }
+    }
+
+    //右键菜单事件
+
+  }, {
+    key: 'contentMenu',
+    value: function contentMenu(e) {
+      switch (e.target.nodeName) {
+        //当前为图片或者链接时,右键清除选中状态.
+        //当前为图片
+        case 'IMG':
+          e.preventDefault();
+          document.getSelection().empty();
+          return;
+        //当前为链接
+        case 'A':
+          e.preventDefault();
+          document.getSelection().empty();
+          return;
+      }
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this4 = this;
+
+      console.log("article render...", this.state.preview);
+      return _react2.default.createElement(
+        'div',
+        { id: 'article' },
+        _react2.default.createElement(
+          'div',
+          { id: 'article_bg' },
+          _react2.default.createElement(
+            _scrollbar2.default,
+            { onScroll: this.scroll,
+              onWheel: function onWheel(e) {
+                return _this4.handleWheelScroll(e);
+              },
+              onKeyUp: function onKeyUp(e) {
+                return _this4.handleKeyUp(e);
+              },
+              onKeyDown: function onKeyDown(e) {
+                return _this4.handleKeyDown(e);
+              } },
+            _react2.default.createElement('div', {
+              id: 'read',
+              ref: 'articleView',
+              className: 'read',
+              tabIndex: '-1',
+              dangerouslySetInnerHTML: { __html: this.props.html },
+              style: this.state.fillblank,
+              onClick: this.click,
+              onContextMenu: this.contentMenu
+            })
+          )
+        )
+      );
+    }
+  }]);
+
+  return Article;
+}(_react.Component);
+
+exports.default = Article;
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"./mdToHtml":5,"./scrollbar.jsx":7,"react":74,"react-dom":43,"smooth-scroll-into-view-if-needed":83}],3:[function(require,module,exports){
+(function (global){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactRouterDom = require('react-router-dom');
+
+var _reactDom = require('react-dom');
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _scrollbar = require('./scrollbar.jsx');
+
+var _scrollbar2 = _interopRequireDefault(_scrollbar);
+
+var _os = require('os');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+global.show = false;
+
+var Item = function (_Component) {
+  _inherits(Item, _Component);
+
+  function Item(props) {
+    _classCallCheck(this, Item);
+
+    var _this = _possibleConstructorReturn(this, (Item.__proto__ || Object.getPrototypeOf(Item)).call(this, props));
+
+    _this.state = {
+      name: '',
+      title: '',
+      logo: '',
+      show: false,
+      desktopname: ''
+    };
+    console.log('main item constructor...');
+    _this.init();
+    return _this;
+  }
+
+  _createClass(Item, [{
+    key: 'init',
+    value: function init() {
+      var _this2 = this;
+
+      var filePath;
+      var appName = this.props.appName;
+      var myPromise = new Promise(function (resolve, reject) {
+        global.qtObjects.manual.appToPath(appName, function (filepath) {
+          filePath = filepath;
+          //error： 目标文件不存在
+          console.log("........" + filePath);
+          if (filePath == 'error') {
+            return;
+          }
+          resolve();
+        });
+      });
+
+      myPromise.then(function () {
+        global.readFile(filePath, function (data) {
+          var _data$substr$split = data.substr('# '.length, data.indexOf('\n')).split('|'),
+              _data$substr$split2 = _slicedToArray(_data$substr$split, 2),
+              title = _data$substr$split2[0],
+              desktopname = _data$substr$split2[1];
+
+          console.log('...' + desktopname);
+          global.qtObjects.manual.getAppIconPath(desktopname, function (logopath) {
+            //按约定会在图标主题放置dde图标，但为保险起见如果未获取到则取common中的 
+            if (logopath == '') {
+              logopath = filePath.substr(0, filePath.lastIndexOf('/') + 1) + '../common/' + desktopname + '.svg';
+              if (desktopname == "dde") logopath = filePath.substr(0, filePath.lastIndexOf('/') + 1) + '../common/dde.svg';
+            }
+            _this2.setState({ logo: logopath });
+          });
+
+          global.qtObjects.manual.getLocalAppName(desktopname, function (appname) {
+            _this2.setState({ title: appname });
+          });
+
+          _this2.setState({ desktopname: desktopname, file: _this2.file, show: true });
+        });
+      });
+      global.show = true;
+      //2021.3.4产品决定取消图标动态切换，使用default图标主题，暂时注释
+      //   global.qtObjects.manual.iconThemeChanged.connect(
+      //     this.iconThemeChange.bind(this)
+      //  );
+    }
+  }, {
+    key: 'iconThemeChange',
+    value: function iconThemeChange(themeType) {
+      var _this3 = this;
+
+      global.qtObjects.manual.getAppIconPath(this.state.desktopname, function (logopath) {
+        if (global.show === true) {
+          _this3.setState({ logo: logopath });
+        }
+      });
+    }
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      console.log("index item componentWillReceivePropss........");
+      this.init();
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      global.show = false;
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this4 = this;
+
+      var contentSpan = null;
+      if (this.props.isOpened) {
+        contentSpan = _react2.default.createElement(
+          'span',
+          { className: 'content', lang: global.lang },
+          this.state.title
+        );
+      } else {
+        contentSpan = _react2.default.createElement(
+          'span',
+          { className: 'content', lang: global.lang },
+          _react2.default.createElement('span', { className: 'tag' }),
+          this.state.title
+        );
+      }
+
+      return this.state.show && _react2.default.createElement(
+        'div',
+        {
+          draggable: 'false',
+          tabIndex: '1',
+          className: 'item',
+          onClick: function onClick() {
+            return global.open(_this4.props.appName);
+          },
+          onKeyPress: function onKeyPress(e) {
+            if (e.key === 'Enter') {
+              global.open(_this4.props.appName);
+            }
+          }
+        },
+        _react2.default.createElement('img', {
+          draggable: 'false',
+          src: this.state.logo,
+          alt: this.props.appName
+        }),
+        _react2.default.createElement('br', null),
+        contentSpan
+      );
+    }
+  }]);
+
+  return Item;
+}(_react.Component);
+
+var Index = function (_Component2) {
+  _inherits(Index, _Component2);
+
+  function Index(props) {
+    _classCallCheck(this, Index);
+
+    var _this5 = _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).call(this, props));
+
+    _this5.state = {
+      appList: [],
+      openedAppList: [],
+      proList: []
+    };
+
+    global.qtObjects.manual.getSystemManualList(function (appList) {
+      console.log("======>applist==+>", appList);
+      _this5.setState({ appList: appList });
+    });
+    global.qtObjects.manual.getComputerManualList(function (proList) {
+      console.log("======>proList==+>", proList);
+      _this5.setState({ proList: proList });
+    });
+    global.qtObjects.manual.getUsedAppList(function (openedAppList) {
+      return _this5.setState({ openedAppList: openedAppList });
+    });
+    return _this5;
+  }
+
+  _createClass(Index, [{
+    key: 'bIsBeOpen',
+    value: function bIsBeOpen(app) {
+      if (this.state.openedAppList.indexOf(app) != -1) {
+        return true;
+      }
+      return false;
+    }
+  }, {
+    key: 'shouldComponentUpdate',
+    value: function shouldComponentUpdate(nextProps, nextState) {
+      var _this6 = this;
+
+      console.log("index shouldcomponentupdate");
+      if (global.bIsReload) {
+        global.qtObjects.manual.getSystemManualList(function (appList) {
+          _this6.setState({ appList: appList });
+        });
+
+        global.qtObjects.manual.getComputerManualList(function (proList) {
+          console.log("--------" + proList);
+          _this6.setState({ proList: proList });
+        });
+
+        global.qtObjects.manual.getUsedAppList(function (openedAppList) {
+          return _this6.setState({ openedAppList: openedAppList });
+        });
+        global.bIsReload = false;
+      }
+      // else if (nextState.appList.toString() == this.state.appList.toString() 
+      //           && nextState.openedAppList.toString() == this.state.openedAppList.toString()) 
+      // {
+      //   console.log("index no update");
+      //   return false;
+      // }
+      return true;
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+      _reactDom2.default.findDOMNode(this).querySelector('#index').focus();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this7 = this;
+
+      console.log('index render...');
+      var sysSoft = ['dde'].filter(function (appName) {
+        return _this7.state.appList.indexOf(appName) != -1;
+      });
+      var appSoft = JSON.parse(JSON.stringify(this.state.appList)); //使用数据副本
+      var index = appSoft.indexOf("dde");
+      if (index !== -1) {
+        appSoft.splice(index, 1);
+      }
+      var proSoft = JSON.parse(JSON.stringify(this.state.proList));
+      console.log("prosoft-------" + proSoft);
+      return _react2.default.createElement(
+        _scrollbar2.default,
+        null,
+        _react2.default.createElement(
+          'div',
+          { id: 'index', tabIndex: '-1' },
+          proSoft.length > 0 && _react2.default.createElement(
+            'h2',
+            null,
+            global.i18n['Computer']
+          ),
+          proSoft.length > 1 && _react2.default.createElement(
+            'div',
+            { id: 'forMargin' },
+            _react2.default.createElement(
+              'div',
+              { className: 'items' },
+              proSoft.map(function (appName) {
+                return _react2.default.createElement(Item, { key: appName, appName: appName, isOpened: _this7.bIsBeOpen(appName), type: "computer" });
+              })
+            )
+          ),
+          _react2.default.createElement(
+            'h2',
+            null,
+            global.i18n['System']
+          ),
+          sysSoft.length > 0 && _react2.default.createElement(
+            'div',
+            { id: 'forMargin' },
+            _react2.default.createElement(
+              'div',
+              { className: 'items' },
+              sysSoft.map(function (appName) {
+                return _react2.default.createElement(Item, { key: appName, appName: appName, isOpened: _this7.bIsBeOpen(appName), type: "system" });
+              })
+            )
+          ),
+          _react2.default.createElement(
+            'h2',
+            null,
+            global.i18n['Applications']
+          ),
+          _react2.default.createElement(
+            'div',
+            { id: 'forMargin' },
+            _react2.default.createElement(
+              'div',
+              { className: 'items' },
+              appSoft.map(function (appName) {
+                return _react2.default.createElement(Item, { key: appName, appName: appName, isOpened: _this7.bIsBeOpen(appName), type: "application" });
+              })
+            )
+          )
+        )
+      );
+    }
+  }]);
+
+  return Index;
+}(_react.Component);
+
+exports.default = Index;
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"./scrollbar.jsx":7,"os":20,"react":74,"react-dom":43,"react-router-dom":59}],4:[function(require,module,exports){
+(function (global){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _jquery = require('jquery');
+
+var _jquery2 = _interopRequireDefault(_jquery);
+
+var _nav = require('./nav.jsx');
+
+var _nav2 = _interopRequireDefault(_nav);
+
+var _article = require('./article.jsx');
+
+var _article2 = _interopRequireDefault(_article);
+
+var _mdToHtml = require('./mdToHtml.js');
+
+var _mdToHtml2 = _interopRequireDefault(_mdToHtml);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Main = function (_Component) {
+  _inherits(Main, _Component);
+
+  function Main(props) {
+    _classCallCheck(this, Main);
+
+    var _this = _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this, props));
+
+    _this.state = {
+      init: false,
+      bTest: true
+    };
+    var _this$props$match$par = _this.props.match.params,
+        file = _this$props$match$par.file,
+        hash = _this$props$match$par.hash,
+        key = _this$props$match$par.key;
+
+    console.log("main constructor...");
+    _this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null, key);
+    var showFloatTimer = null;
+
+    _this.setHash = _this.setHash.bind(_this);
+    _this.setScroll = _this.setScroll.bind(_this);
+    _this.onSupportClick = _this.onSupportClick.bind(_this);
+    return _this;
+  }
+
+  _createClass(Main, [{
+    key: 'init',
+    value: function init(file, hash) {
+      var _this2 = this;
+
+      var key = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
+
+      if (key !== '%') {
+        key = decodeURIComponent(key);
+      }
+      console.log("main init==>file:", file, " hash:", hash, " key:", key);
+
+      global.hash = hash;
+      var filePath = file;
+      // if (filePath.indexOf('/') == -1) {
+      //   if (filePath == "dde")
+      //   {
+      //     filePath = `${global.path}/system/${file}/${global.lang}/index.md`;
+      //   }
+      //   else{
+      //     filePath = `${global.path}/application/${file}/${global.lang}/index.md`;
+      //   }
+
+      // }
+
+      var myPromise = new Promise(function (resolve, reject) {
+        if (filePath.indexOf('/') == -1) {
+          global.qtObjects.manual.appToPath(file, function (filepath) {
+            filePath = filepath;
+            resolve();
+          });
+        } else {
+          resolve();
+        }
+      });
+      myPromise.then(function () {
+        global.readFile(filePath, function (data) {
+          console.log("main init===>readfile finish...", filePath);
+
+          var _m2h = (0, _mdToHtml2.default)(filePath, data, key),
+              html = _m2h.html,
+              hlist = _m2h.hlist;
+
+          _this2.setState({
+            file: file,
+            html: html,
+            hlist: hlist,
+            init: true,
+            hash: hash ? hash : hlist[0].id
+          });
+        });
+      });
+    }
+  }, {
+    key: 'setHash',
+    value: function setHash(hash) {
+      console.log("main setHash: " + hash);
+      if (global.isLinkClicked) {
+        console.log("main --setHash");
+        global.hash = hash;
+        global.isLinkClicked = false;
+      }
+      console.log("main*********setHash");
+      this.setState({ hash: hash });
+    }
+
+    // setScrollTitle(hash){
+    //   console.log("main setScrollTitle: " + hash);
+    //   setTimeout(() => {
+    //     global.hash = hash;
+    //     global.oldHash = hash;
+    //     global.isMouseClickNav = true;
+    //     global.isMouseScrollArticle = false;
+    //     this.setState({ hash });
+    //   },800);
+    // }
+
+  }, {
+    key: 'setScroll',
+    value: function setScroll(hash) {
+      console.log("main setScroll:" + hash);
+      global.hash = hash;
+      this.setState({ hash: hash });
+    }
+
+    //处理Nav类的Over Out Move事件,自定义Title框
+
+  }, {
+    key: 'handleNavOver',
+    value: function handleNavOver(e) {
+      var value = e.currentTarget.innerHTML;
+      clearTimeout(this.showFloatTimer);
+      this.showFloatTimer = setTimeout(function () {
+        (0, _jquery2.default)('.tooltip-wp').attr('data-title', value); //动态设置data-title属性
+        (0, _jquery2.default)('.tooltip-wp').fadeIn(200); //浮动框淡出
+      }, 300);
+    }
+  }, {
+    key: 'handleNavOut',
+    value: function handleNavOut(e) {
+      clearTimeout(this.showFloatTimer);
+      (0, _jquery2.default)('.tooltip-wp').hide();
+    }
+  }, {
+    key: 'handleNavMove',
+    value: function handleNavMove(e) {
+      var xPage = e.pageX + 10;
+      var yPage = e.pageY;
+      if (yPage + 40 > document.body.scrollHeight) {
+        yPage = document.body.scrollHeight - 40;
+      }
+      setTimeout(function () {
+        (0, _jquery2.default)('.tooltip-wp').css({
+          'top': yPage + 'px',
+          'left': xPage + 'px'
+        });
+      }, 150);
+    }
+  }, {
+    key: 'onSupportClick',
+    value: function onSupportClick() {
+      global.qtObjects.manual.supportClick();
+    }
+  }, {
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      var _this3 = this;
+
+      var _nextProps$match$para = nextProps.match.params,
+          file = _nextProps$match$para.file,
+          hash = _nextProps$match$para.hash,
+          key = _nextProps$match$para.key;
+
+
+      if (global.bIsReload) {
+        var parentText;
+        var hashText = '';
+
+        for (var i = 0; i < this.state.hlist.length; i++) {
+          var h = this.state.hlist[i];
+          if (h.type == 'h2') {
+            parentText = h.text;
+          }
+          if (h.id == this.state.hash) {
+            hashText = h.text;
+            break;
+          }
+        }
+
+        var filePath;
+
+        // if (this.state.file == "dde")
+        // {
+        //   filePath = `${global.path}/system/${this.state.file}/${global.lang}/index.md`;
+        // }
+        // else{
+        //   filePath = `${global.path}/application/${this.state.file}/${global.lang}/index.md`;
+        // }
+        var myPromise = new Promise(function (resolve, reject) {
+          global.qtObjects.manual.appToPath(file, function (filepath) {
+            filePath = filepath;
+            resolve();
+          });
+        });
+        myPromise.then(function () {
+          global.readFile(filePath, function (data) {
+            console.log("main init===>readfile finish...", filePath);
+
+            var _m2h2 = (0, _mdToHtml2.default)(filePath, data, key),
+                html = _m2h2.html,
+                hlist = _m2h2.hlist;
+
+            var newParentHash = 'h1';
+            var newChildHash;
+            var curHash;
+
+            for (var i = 0; i < hlist.length; i++) {
+              var h = hlist[i];
+              if (h.text == parentText) {
+                newParentHash = h.id;
+              } else if (h.text == hashText) {
+                newChildHash = h.id;
+                break;
+              }
+            }
+
+            if (newChildHash) {
+              curHash = newChildHash;
+            } else {
+              curHash = newParentHash;
+            }
+            console.log('================>', curHash);
+
+            _this3.init(decodeURIComponent(file), curHash, key);
+            global.bIsReload = false;
+          });
+        });
+      } else {
+        console.log("main componentWillReceivePropss: " + file + " " + hash + "  this.file:" + this.state.file + " this.hash" + this.state.hash + " key:", key);
+        //仅当页面文件发生改变时(文件改变或hash值发生改变),才刷新页面.
+        if (decodeURIComponent(file) != this.state.file || file == this.state.file && hash != this.state.hash) {
+          this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null, key);
+        }
+      }
+    }
+  }, {
+    key: 'shouldComponentUpdate',
+    value: function shouldComponentUpdate(nextProps, nextState) {
+      console.log("main shouldComponentUpdate====");
+      return true;
+    }
+  }, {
+    key: 'componentWillUpdate',
+    value: function componentWillUpdate() {
+      console.log("main componentWillUpdate..");
+    }
+  }, {
+    key: 'componentWillUnmount',
+    value: function componentWillUnmount() {
+      global.hash = '';
+      global.isMouseClickNav = false;
+      global.isMouseScrollArticle = false;
+      global.isLinkClicked = false;
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this4 = this;
+
+      console.log("main render....hash:", this.state.hash);
+      console.log("main render....hList:", this.state.hlist);
+      var support = null;
+      if (global.isShowHelperSupport) {
+        support = _react2.default.createElement(
+          'div',
+          { className: 'support-div', onClick: this.onSupportClick },
+          _react2.default.createElement('img', { className: 'support', src: './pic.svg' })
+        );
+      } else {
+        support = _react2.default.createElement('div', null);
+      }
+
+      return this.state.init && _react2.default.createElement(
+        'div',
+        { id: 'main' },
+        _react2.default.createElement(_nav2.default, {
+          hlist: this.state.hlist,
+          hash: this.state.hash,
+          setHash: this.setHash,
+          onNavOver: function onNavOver(e) {
+            return _this4.handleNavOver(e);
+          },
+          onNavOut: function onNavOut(e) {
+            return _this4.handleNavOut(e);
+          },
+          onNavMove: function onNavMove(e) {
+            return _this4.handleNavMove(e);
+          }
+        }),
+        _react2.default.createElement(_article2.default, {
+          file: this.props.match.params.file,
+          hlist: this.state.hlist,
+          html: this.state.html,
+          hash: this.state.hash,
+          setHash: this.setHash,
+          setScroll: this.setScroll
+        }),
+        support,
+        _react2.default.createElement('div', { className: 'tooltip-wp' })
+      );
+    }
+  }]);
+
+  return Main;
+}(_react.Component);
+
+exports.default = Main;
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"./article.jsx":2,"./mdToHtml.js":5,"./nav.jsx":6,"jquery":17,"react":74}],5:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+    value: true
+});
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+exports.default = function (mdFile, mdData) {
+    var key = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
+
+    var hlist = [];
+    var info = {};
+    var html = '';
+
+    var path = mdFile.slice(0, mdFile.lastIndexOf('/') + 1);
+    var renderer = new _marked2.default.Renderer();
+    var count = 0;
+    renderer.heading = function (text, level) {
+        var id = 'h' + count;
+        count++;
+        if (level == 1) {
+            var _text$split = text.split('|'),
+                _text$split2 = _slicedToArray(_text$split, 2),
+                title = _text$split2[0],
+                logo = _text$split2[1];
+
+            logo = path + logo;
+            console.log(logo);
+            info = { title: title, logo: logo };
+            return '';
+        }
+        if (level == 2) {
+            text = text.split('|')[0];
+        }
+        var type = 'h' + level;
+        if (level == 2 || level == 3) {
+            hlist.push({ id: id, text: text, type: type });
+        }
+        return '<' + type + ' id="' + id + '" text="' + text + '">' + text + '</' + type + '>\n';
+    };
+    console.log(path);
+    renderer.image = function (href, title, text) {
+        var hrefX2 = href;
+
+        // if (devicePixelRatio >= 5.0 && href.indexOf('.svg') == -1) {
+        //     // global.qtObjects.manual.LogPrint('start hrefX2:' + hrefX2);
+        //     let path = href.split('.');
+        //     let ext = path.pop();
+        //     // global.qtObjects.manual.LogPrint(path + '--' + ext);
+        //     hrefX2 = `${path.join('.')}x2.${ext}`;
+        //     // global.qtObjects.manual.LogPrint('end hrefX2:' + hrefX2);
+        // }
+
+        return '<img src="' + hrefX2 + '" data-src="' + href + '" alt="' + text + '" />';
+    };
+
+    html = (0, _marked2.default)(mdData, { renderer: renderer }).replace(/src="/g, '$&' + path);
+    console.log("-----------------------------------");
+    if (key != '') {
+        console.log("regexp==============>", key);
+        //将'=-='字符串 反向还原成'%'
+        key = key.replace(/=-=/g, '%');
+
+        console.log("regexp===>", key);
+
+        //将关键字转义
+        var keyTemp = new RegExp(escapeRegExp(key), 'gi');
+
+        // key = re;
+        var finder = new RegExp(">.*?<", 'g'); // 提取位于标签内的文本，避免误操作 class、id 等
+        html = html.replace(finder, function (matched) {
+            return matched.replace(new RegExp(keyTemp, 'gi'), "<span style='background-color: yellow'>$&</span>");
+        });
+    }
+
+    return { html: html, hlist: hlist, info: info };
+};
+
+var _marked = require('marked');
+
+var _marked2 = _interopRequireDefault(_marked);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+//转义特定字符
+function escapeRegExp(text) {
+    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+};
+
+},{"marked":18}],6:[function(require,module,exports){
+(function (global){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = require('react-dom');
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _reactRouterDom = require('react-router-dom');
+
+var _scrollbar = require('./scrollbar.jsx');
+
+var _scrollbar2 = _interopRequireDefault(_scrollbar);
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Nav = function (_Component) {
+  _inherits(Nav, _Component);
+
+  function Nav(props) {
+    _classCallCheck(this, Nav);
+
+    var _this = _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).call(this, props));
+
+    _this.contentMenu = _this.contentMenu.bind(_this);
+    return _this;
+  }
+
+  _createClass(Nav, [{
+    key: 'componentWillMount',
+    value: function componentWillMount() {
+      console.log("nav componentWillMount");
+    }
+  }, {
+    key: 'componentDidMount',
+    value: function componentDidMount() {
+      console.log("nav componentDidMount");
+      document.getElementById('article').style.marginLeft = _reactDom2.default.findDOMNode(this).clientWidth;
+      this.componentDidUpdate();
+    }
+  }, {
+    key: 'shouldComponentUpdate',
+    value: function shouldComponentUpdate(newProps, newState) {
+      console.log("nav shouldComponentUpdate newProps:" + newProps.hash + " global hash:" + global.hash);
+
+      if ('' == global.hash) {
+        return true;
+      }
+
+      if ('POP' == global.lastAction) {
+        return true;
+      }
+      //why........
+      if (newProps.hash != global.hash) {
+        return false;
+      }
+      return true;
+    }
+  }, {
+    key: 'componentWillUpdate',
+    value: function componentWillUpdate() {
+      console.log("nav componentWillUpdate");
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+      console.log("nav componentDidUpdate");
+      var hashDOM = _reactDom2.default.findDOMNode(this).querySelector('.hash');
+      if (hashDOM == null) {
+        return;
+      }
+      if (hashDOM.getAttribute('cid') == this.props.hlist[0].id) {
+        document.getElementById('backHome').scrollIntoViewIfNeeded(false);
+        return;
+      }
+      hashDOM.scrollIntoViewIfNeeded(false);
+    }
+  }, {
+    key: 'click',
+    value: function click(e) {
+      var cid = e.target.getAttribute('cid');
+      if (cid) {
+        console.log('搜索结果', cid);
+        global.hash = cid;
+        global.isMouseClickNav = true;
+        global.isMouseScrollArticle = false;
+        this.props.setHash(cid);
+      }
+    }
+  }, {
+    key: 'wheel',
+    value: function wheel(e) {
+      var nav = _reactDom2.default.findDOMNode(this);
+      if (e.deltaY > 0) {
+        if (e.deltaY > 0 && nav.scrollHeight == nav.clientHeight + nav.scrollTop) {
+          e.preventDefault();
+        } else if (e.deltaY < 0 && nav.scrollTop == 0) {
+          e.preventDefault();
+        }
+      }
+    }
+
+    //右键菜单事件,去除选中状态
+
+  }, {
+    key: 'contentMenu',
+    value: function contentMenu(e) {
+      e.preventDefault();
+      document.getSelection().empty();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      console.log("nav render...", this.props.hlist.length);
+      var maxWidth = 0;
+      var c = 0;
+
+      if (this.props.hlist.length > 0) {
+        var max = this.props.hlist[0];
+        this.props.hlist.map(function (h) {
+          if (max.text.length < h.text.length) {
+            max = h;
+          }
+        });
+        maxWidth = max.text.length;
+        if (global.lang === 'zh_CN') {
+          if (maxWidth <= 6) {
+            c = 3;
+          } else {
+            c = 1;
+          }
+          maxWidth *= 18;
+        } else {
+          if (maxWidth <= 20) {
+            c = 2;
+          }
+          maxWidth *= 9;
+        }
+      }
+
+      return _react2.default.createElement(
+        'div',
+        {
+          id: 'nav',
+          lang: global.lang,
+          onMouseDown: function onMouseDown(e) {
+            return _this2.click(e);
+          },
+          onContextMenu: this.contentMenu
+          // style={{
+          //   width: `calc(${maxWidth}px + ${c}rem)`
+          // }}
+        },
+        _react2.default.createElement(
+          _scrollbar2.default,
+          null,
+          _react2.default.createElement(
+            'div',
+            {
+              type: 'h2',
+              id: 'backHome',
+              className: 'h',
+              onClick: function onClick() {
+                return global.backHome();
+              }
+            },
+            global.i18n['ToIndexPage']
+          ),
+          this.props.hlist.map(function (h) {
+            return _react2.default.createElement(
+              'div',
+              {
+                key: h.id,
+                cid: h.id,
+                type: h.type,
+                className: _this2.props.hash == h.id ? 'h hash' : 'h',
+                onMouseOver: function onMouseOver(e) {
+                  return _this2.props.onNavOver(e);
+                },
+                onMouseOut: function onMouseOut(e) {
+                  return _this2.props.onNavOut(e);
+                },
+                onMouseMove: function onMouseMove(e) {
+                  return _this2.props.onNavMove(e);
+                }
+              },
+              h.text
+            );
+          })
+        )
+      );
+    }
+  }]);
+
+  return Nav;
+}(_react.Component);
+
+exports.default = Nav;
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"./scrollbar.jsx":7,"react":74,"react-dom":43,"react-router-dom":59}],7:[function(require,module,exports){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
+
+exports.default = function (props) {
+  return _react2.default.createElement(
+    _reactCustomScrollbars.Scrollbars,
+    _extends({}, props, { className: 'scrollbar', autoHide: true, renderTrackHorizontal: renderScrollBarTrackHorizontal, autoHideTimeout: 800 }),
+    props.children
+  );
+};
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactCustomScrollbars = require('react-custom-scrollbars');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function renderScrollBarTrackHorizontal(props) {
+  return _react2.default.createElement('span', null);
+}
+
+},{"react":74,"react-custom-scrollbars":35}],8:[function(require,module,exports){
+(function (global){
+'use strict';
+
+Object.defineProperty(exports, "__esModule", {
+  value: true
+});
+
+var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
+
+var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+var _react = require('react');
+
+var _react2 = _interopRequireDefault(_react);
+
+var _reactDom = require('react-dom');
+
+var _reactDom2 = _interopRequireDefault(_reactDom);
+
+var _propTypes = require('prop-types');
+
+var _propTypes2 = _interopRequireDefault(_propTypes);
+
+var _scrollbar = require('./scrollbar.jsx');
+
+var _scrollbar2 = _interopRequireDefault(_scrollbar);
+
+var _reactRouterDom = require('react-router-dom');
+
+function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+var Items = function (_Component) {
+  _inherits(Items, _Component);
+
+  function Items(props) {
+    _classCallCheck(this, Items);
+
+    var _this = _possibleConstructorReturn(this, (Items.__proto__ || Object.getPrototypeOf(Items)).call(this, props));
+
+    _this.state = {
+      title: '',
+      logo: '',
+      show: false
+    };
+    var path = props.file.slice(0, props.file.lastIndexOf('/') + 1);
+    console.log("========path======>", path);
+    global.readFile(props.file, function (data) {
+      var _data$substr$split = data.substr('# '.length, data.indexOf('\n')).split('|'),
+          _data$substr$split2 = _slicedToArray(_data$substr$split, 2),
+          title = _data$substr$split2[0],
+          desktopname = _data$substr$split2[1];
+      // logo = `${path}${logo}`;
+      // this.setState({ title, logo, show: true });
+
+
+      global.qtObjects.manual.getAppIconPath(desktopname, function (logopath) {
+        //按约定会在图标主题放置dde图标，但为保险起见如果未获取到则取common中的
+        //global.qtObjects.manual.LogPrint("sbkebcmj");
+        if (logopath == '') {
+          logopath = path + '../common/' + desktopname + '.svg';
+          if (desktopname == "dde") logopath = path + '../common/dde.svg';
+          //global.qtObjects.manual.LogPrint("logopath:"+ logopath);         
+        }
+        _this.setState({ logo: logopath });
+      });
+
+      global.qtObjects.manual.getLocalAppName(desktopname, function (appname) {
+        _this.setState({ title: appname });
+      });
+      _this.setState({ show: true });
+    });
+    return _this;
+  }
+
+  //转义特定字符
+
+
+  _createClass(Items, [{
+    key: 'escapeRegExp',
+    value: function escapeRegExp(text) {
+      return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this2 = this;
+
+      var resultList = [];
+
+      //将关键字转义
+
+      var keyTemp = this.props.keyword;
+      if (this.props.keyword !== '%') {
+        keyTemp = decodeURIComponent(this.props.keyword);
+      }
+
+      // let keyTemp = decodeURIComponent(this.props.keyword)
+      var re = new RegExp(this.escapeRegExp(keyTemp), 'gi');
+
+      var cTitle = _react2.default.createElement('span', {
+        className: 'resulttitle',
+        dangerouslySetInnerHTML: {
+          __html: this.state.title.replace(re, "<span class='highlight'>$&</span>")
+        }
+      });
+
+      var _loop = function _loop(i) {
+        if (_this2.props.idList[i] == 'h0') {
+          return 'continue';
+        }
+
+        var c = _react2.default.createElement(
+          'div',
+          { className: 'item', key: i, onClick: function onClick() {
+              return global.open(_this2.props.file, _this2.props.idList[i], _this2.props.keyword);
+            } },
+          _react2.default.createElement('div', {
+            className: 'itemTitle',
+            dangerouslySetInnerHTML: {
+              __html: _this2.props.titleList[i].replace(re, "<span class='highlight'>$&</span>")
+            }
+          }),
+          _react2.default.createElement('div', {
+            className: 'context',
+            dangerouslySetInnerHTML: {
+              __html: _this2.props.contentList[i]
+              // __html:contentTrans
+            }
+          })
+        );
+        if (resultList.length < 5) {
+          resultList.push(c);
+        }
+      };
+
+      for (var i = 0; i < this.props.idList.length; i++) {
+        var _ret = _loop(i);
+
+        if (_ret === 'continue') continue;
+      }
+      var sresultnum;
+      if (this.props.idList.length > 1) sresultnum = this.props.idList.length + global.i18n['ResultNumSuffixs'];else sresultnum = this.props.idList.length + global.i18n['ResultNumSuffix'];
+      return this.state.show && _react2.default.createElement(
+        'div',
+        { className: 'items' },
+        _react2.default.createElement(
+          'div',
+          { className: 'itemsTitle', onClick: function onClick() {
+              return global.open(_this2.props.file, '', _this2.props.keyword);
+            } },
+          _react2.default.createElement('img', { src: this.state.logo }),
+          cTitle,
+          _react2.default.createElement(
+            'span',
+            { className: 'resultnum' },
+            sresultnum
+          )
+        ),
+        resultList
+      );
+    }
+  }]);
+
+  return Items;
+}(_react.Component);
+
+function Mismatch(props) {
+  return _react2.default.createElement(
+    'div',
+    { id: 'mismatch' },
+    _react2.default.createElement(
+      'div',
+      null,
+      _react2.default.createElement(
+        'div',
+        { id: 'NoResult' },
+        global.i18n['NoResult']
+      )
+    )
+  );
+}
+
+var SearchPage = function (_Component2) {
+  _inherits(SearchPage, _Component2);
+
+  function SearchPage(props, context) {
+    _classCallCheck(this, SearchPage);
+
+    return _possibleConstructorReturn(this, (SearchPage.__proto__ || Object.getPrototypeOf(SearchPage)).call(this, props, context));
+
+    // console.log('search constructor:',this.context);
+  }
+
+  _createClass(SearchPage, [{
+    key: 'componentWillReceiveProps',
+    value: function componentWillReceiveProps(nextProps) {
+      // console.log("search componentWillReceiveProps..",this.context.searchResult);
+      console.log("search componentWillReceiveProps..");
+    }
+  }, {
+    key: 'shouldComponentUpdate',
+    value: function shouldComponentUpdate(nextProps, nextState) {
+      console.log("search shouldComponentUpdate..");
+      return true;
+    }
+  }, {
+    key: 'componentDidUpdate',
+    value: function componentDidUpdate() {
+      _reactDom2.default.findDOMNode(this).querySelector('#search').focus();
+    }
+  }, {
+    key: 'render',
+    value: function render() {
+      var _this4 = this;
+
+      var c = null;
+      if (this.context.mismatch) {
+        c = _react2.default.createElement(Mismatch, { keyword: this.props.match.params.keyword });
+      } else {
+        c = this.context.searchResult.map(function (result) {
+          return _react2.default.createElement(Items, {
+            key: result.file,
+            file: result.file,
+            idList: result.idList,
+            titleList: result.titleList,
+            contentList: result.contentList,
+            keyword: _this4.props.match.params.keyword
+          });
+        });
+      }
+      return _react2.default.createElement(
+        _scrollbar2.default,
+        null,
+        _react2.default.createElement(
+          'div',
+          {
+            id: 'search',
+            tabIndex: '-1'
+          },
+          c
+        )
+      );
+    }
+  }]);
+
+  return SearchPage;
+}(_react.Component);
+
+exports.default = SearchPage;
+
+
+SearchPage.contextTypes = {
+  searchResult: _propTypes2.default.array,
+  mismatch: _propTypes2.default.bool
+};
+
+}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
+},{"./scrollbar.jsx":7,"prop-types":29,"react":74,"react-dom":43,"react-router-dom":59}],9:[function(require,module,exports){
 /* The following list is defined in React's core */
 var IS_UNITLESS = {
   animationIterationCount: true,
@@ -40,7 +2511,7 @@ module.exports = function(name, value) {
     return value;
   }
 };
-},{}],2:[function(require,module,exports){
+},{}],10:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -224,7 +2695,7 @@ var _default = function _default(target, options) {
 
 exports.default = _default;
 module.exports = exports.default;
-},{}],3:[function(require,module,exports){
+},{}],11:[function(require,module,exports){
 var prefix = require('prefix-style')
 var toCamelCase = require('to-camel-case')
 var cache = { 'float': 'cssFloat' }
@@ -287,7 +2758,7 @@ module.exports.get = function (element, properties) {
   }
 }
 
-},{"add-px-to-style":1,"prefix-style":16,"to-camel-case":78}],4:[function(require,module,exports){
+},{"add-px-to-style":9,"prefix-style":24,"to-camel-case":86}],12:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, '__esModule', { value: true });
@@ -1222,10 +3693,10 @@ exports.locationsAreEqual = locationsAreEqual;
 exports.parsePath = parsePath;
 exports.createPath = createPath;
 
-},{"resolve-pathname":67,"tiny-invariant":76,"tiny-warning":77,"value-equal":81}],5:[function(require,module,exports){
+},{"resolve-pathname":75,"tiny-invariant":84,"tiny-warning":85,"value-equal":89}],13:[function(require,module,exports){
 "use strict";function _interopDefault(n){return n&&"object"==typeof n&&"default"in n?n.default:n}Object.defineProperty(exports,"__esModule",{value:!0});var resolvePathname=_interopDefault(require("resolve-pathname")),valueEqual=_interopDefault(require("value-equal"));require("tiny-warning");var invariant=_interopDefault(require("tiny-invariant"));function _extends(){return(_extends=Object.assign||function(n){for(var t=1;t<arguments.length;t++){var e=arguments[t];for(var a in e)Object.prototype.hasOwnProperty.call(e,a)&&(n[a]=e[a])}return n}).apply(this,arguments)}function addLeadingSlash(n){return"/"===n.charAt(0)?n:"/"+n}function stripLeadingSlash(n){return"/"===n.charAt(0)?n.substr(1):n}function hasBasename(n,t){return new RegExp("^"+t+"(\\/|\\?|#|$)","i").test(n)}function stripBasename(n,t){return hasBasename(n,t)?n.substr(t.length):n}function stripTrailingSlash(n){return"/"===n.charAt(n.length-1)?n.slice(0,-1):n}function parsePath(n){var t=n||"/",e="",a="",o=t.indexOf("#");-1!==o&&(a=t.substr(o),t=t.substr(0,o));var r=t.indexOf("?");return-1!==r&&(e=t.substr(r),t=t.substr(0,r)),{pathname:t,search:"?"===e?"":e,hash:"#"===a?"":a}}function createPath(n){var t=n.pathname,e=n.search,a=n.hash,o=t||"/";return e&&"?"!==e&&(o+="?"===e.charAt(0)?e:"?"+e),a&&"#"!==a&&(o+="#"===a.charAt(0)?a:"#"+a),o}function createLocation(n,t,e,a){var o;"string"==typeof n?(o=parsePath(n)).state=t:(void 0===(o=_extends({},n)).pathname&&(o.pathname=""),o.search?"?"!==o.search.charAt(0)&&(o.search="?"+o.search):o.search="",o.hash?"#"!==o.hash.charAt(0)&&(o.hash="#"+o.hash):o.hash="",void 0!==t&&void 0===o.state&&(o.state=t));try{o.pathname=decodeURI(o.pathname)}catch(n){throw n instanceof URIError?new URIError('Pathname "'+o.pathname+'" could not be decoded. This is likely caused by an invalid percent-encoding.'):n}return e&&(o.key=e),a?o.pathname?"/"!==o.pathname.charAt(0)&&(o.pathname=resolvePathname(o.pathname,a.pathname)):o.pathname=a.pathname:o.pathname||(o.pathname="/"),o}function locationsAreEqual(n,t){return n.pathname===t.pathname&&n.search===t.search&&n.hash===t.hash&&n.key===t.key&&valueEqual(n.state,t.state)}function createTransitionManager(){var r=null;var a=[];return{setPrompt:function(n){return r=n,function(){r===n&&(r=null)}},confirmTransitionTo:function(n,t,e,a){if(null!=r){var o="function"==typeof r?r(n,t):r;"string"==typeof o?"function"==typeof e?e(o,a):a(!0):a(!1!==o)}else a(!0)},appendListener:function(n){var t=!0;function e(){t&&n.apply(void 0,arguments)}return a.push(e),function(){t=!1,a=a.filter(function(n){return n!==e})}},notifyListeners:function(){for(var n=arguments.length,t=new Array(n),e=0;e<n;e++)t[e]=arguments[e];a.forEach(function(n){return n.apply(void 0,t)})}}}var canUseDOM=!("undefined"==typeof window||!window.document||!window.document.createElement);function getConfirmation(n,t){t(window.confirm(n))}function supportsHistory(){var n=window.navigator.userAgent;return(-1===n.indexOf("Android 2.")&&-1===n.indexOf("Android 4.0")||-1===n.indexOf("Mobile Safari")||-1!==n.indexOf("Chrome")||-1!==n.indexOf("Windows Phone"))&&(window.history&&"pushState"in window.history)}function supportsPopStateOnHashChange(){return-1===window.navigator.userAgent.indexOf("Trident")}function supportsGoWithoutReloadUsingHash(){return-1===window.navigator.userAgent.indexOf("Firefox")}function isExtraneousPopstateEvent(n){void 0===n.state&&navigator.userAgent.indexOf("CriOS")}var PopStateEvent="popstate",HashChangeEvent="hashchange";function getHistoryState(){try{return window.history.state||{}}catch(n){return{}}}function createBrowserHistory(n){void 0===n&&(n={}),canUseDOM||invariant(!1);var c=window.history,s=supportsHistory(),t=!supportsPopStateOnHashChange(),e=n,a=e.forceRefresh,h=void 0!==a&&a,o=e.getUserConfirmation,u=void 0===o?getConfirmation:o,r=e.keyLength,i=void 0===r?6:r,f=n.basename?stripTrailingSlash(addLeadingSlash(n.basename)):"";function l(n){var t=n||{},e=t.key,a=t.state,o=window.location,r=o.pathname+o.search+o.hash;return f&&(r=stripBasename(r,f)),createLocation(r,a,e)}function d(){return Math.random().toString(36).substr(2,i)}var v=createTransitionManager();function p(n){_extends(T,n),T.length=c.length,v.notifyListeners(T.location,T.action)}function g(n){isExtraneousPopstateEvent(n)||w(l(n.state))}function P(){w(l(getHistoryState()))}var m=!1;function w(t){if(m)m=!1,p();else{v.confirmTransitionTo(t,"POP",u,function(n){n?p({action:"POP",location:t}):function(n){var t=T.location,e=H.indexOf(t.key);-1===e&&(e=0);var a=H.indexOf(n.key);-1===a&&(a=0);var o=e-a;o&&(m=!0,L(o))}(t)})}}var y=l(getHistoryState()),H=[y.key];function x(n){return f+createPath(n)}function L(n){c.go(n)}var O=0;function E(n){1===(O+=n)&&1===n?(window.addEventListener(PopStateEvent,g),t&&window.addEventListener(HashChangeEvent,P)):0===O&&(window.removeEventListener(PopStateEvent,g),t&&window.removeEventListener(HashChangeEvent,P))}var S=!1;var T={length:c.length,action:"POP",location:y,createHref:x,push:function(n,t){var i=createLocation(n,t,d(),T.location);v.confirmTransitionTo(i,"PUSH",u,function(n){if(n){var t=x(i),e=i.key,a=i.state;if(s)if(c.pushState({key:e,state:a},null,t),h)window.location.href=t;else{var o=H.indexOf(T.location.key),r=H.slice(0,-1===o?0:o+1);r.push(i.key),H=r,p({action:"PUSH",location:i})}else window.location.href=t}})},replace:function(n,t){var r="REPLACE",i=createLocation(n,t,d(),T.location);v.confirmTransitionTo(i,r,u,function(n){if(n){var t=x(i),e=i.key,a=i.state;if(s)if(c.replaceState({key:e,state:a},null,t),h)window.location.replace(t);else{var o=H.indexOf(T.location.key);-1!==o&&(H[o]=i.key),p({action:r,location:i})}else window.location.replace(t)}})},go:L,goBack:function(){L(-1)},goForward:function(){L(1)},block:function(n){void 0===n&&(n=!1);var t=v.setPrompt(n);return S||(E(1),S=!0),function(){return S&&(S=!1,E(-1)),t()}},listen:function(n){var t=v.appendListener(n);return E(1),function(){E(-1),t()}}};return T}var HashChangeEvent$1="hashchange",HashPathCoders={hashbang:{encodePath:function(n){return"!"===n.charAt(0)?n:"!/"+stripLeadingSlash(n)},decodePath:function(n){return"!"===n.charAt(0)?n.substr(1):n}},noslash:{encodePath:stripLeadingSlash,decodePath:addLeadingSlash},slash:{encodePath:addLeadingSlash,decodePath:addLeadingSlash}};function getHashPath(){var n=window.location.href,t=n.indexOf("#");return-1===t?"":n.substring(t+1)}function pushHashPath(n){window.location.hash=n}function replaceHashPath(n){var t=window.location.href.indexOf("#");window.location.replace(window.location.href.slice(0,0<=t?t:0)+"#"+n)}function createHashHistory(n){void 0===n&&(n={}),canUseDOM||invariant(!1);var t=window.history,e=(supportsGoWithoutReloadUsingHash(),n),a=e.getUserConfirmation,i=void 0===a?getConfirmation:a,o=e.hashType,r=void 0===o?"slash":o,c=n.basename?stripTrailingSlash(addLeadingSlash(n.basename)):"",s=HashPathCoders[r],h=s.encodePath,u=s.decodePath;function f(){var n=u(getHashPath());return c&&(n=stripBasename(n,c)),createLocation(n)}var l=createTransitionManager();function d(n){_extends(E,n),E.length=t.length,l.notifyListeners(E.location,E.action)}var v=!1,p=null;function g(){var n=getHashPath(),t=h(n);if(n!==t)replaceHashPath(t);else{var e=f(),a=E.location;if(!v&&locationsAreEqual(a,e))return;if(p===createPath(e))return;p=null,function(t){if(v)v=!1,d();else{l.confirmTransitionTo(t,"POP",i,function(n){n?d({action:"POP",location:t}):function(n){var t=E.location,e=y.lastIndexOf(createPath(t));-1===e&&(e=0);var a=y.lastIndexOf(createPath(n));-1===a&&(a=0);var o=e-a;o&&(v=!0,H(o))}(t)})}}(e)}}var P=getHashPath(),m=h(P);P!==m&&replaceHashPath(m);var w=f(),y=[createPath(w)];function H(n){t.go(n)}var x=0;function L(n){1===(x+=n)&&1===n?window.addEventListener(HashChangeEvent$1,g):0===x&&window.removeEventListener(HashChangeEvent$1,g)}var O=!1;var E={length:t.length,action:"POP",location:w,createHref:function(n){return"#"+h(c+createPath(n))},push:function(n,t){var r=createLocation(n,void 0,void 0,E.location);l.confirmTransitionTo(r,"PUSH",i,function(n){if(n){var t=createPath(r),e=h(c+t);if(getHashPath()!==e){p=t,pushHashPath(e);var a=y.lastIndexOf(createPath(E.location)),o=y.slice(0,-1===a?0:a+1);o.push(t),y=o,d({action:"PUSH",location:r})}else d()}})},replace:function(n,t){var o="REPLACE",r=createLocation(n,void 0,void 0,E.location);l.confirmTransitionTo(r,o,i,function(n){if(n){var t=createPath(r),e=h(c+t);getHashPath()!==e&&(p=t,replaceHashPath(e));var a=y.indexOf(createPath(E.location));-1!==a&&(y[a]=t),d({action:o,location:r})}})},go:H,goBack:function(){H(-1)},goForward:function(){H(1)},block:function(n){void 0===n&&(n=!1);var t=l.setPrompt(n);return O||(L(1),O=!0),function(){return O&&(O=!1,L(-1)),t()}},listen:function(n){var t=l.appendListener(n);return L(1),function(){L(-1),t()}}};return E}function clamp(n,t,e){return Math.min(Math.max(n,t),e)}function createMemoryHistory(n){void 0===n&&(n={});var t=n,o=t.getUserConfirmation,e=t.initialEntries,a=void 0===e?["/"]:e,r=t.initialIndex,i=void 0===r?0:r,c=t.keyLength,s=void 0===c?6:c,h=createTransitionManager();function u(n){_extends(g,n),g.length=g.entries.length,h.notifyListeners(g.location,g.action)}function f(){return Math.random().toString(36).substr(2,s)}var l=clamp(i,0,a.length-1),d=a.map(function(n){return createLocation(n,void 0,"string"==typeof n?f():n.key||f())}),v=createPath;function p(n){var t=clamp(g.index+n,0,g.entries.length-1),e=g.entries[t];h.confirmTransitionTo(e,"POP",o,function(n){n?u({action:"POP",location:e,index:t}):u()})}var g={length:d.length,action:"POP",location:d[l],index:l,entries:d,createHref:v,push:function(n,t){var a=createLocation(n,t,f(),g.location);h.confirmTransitionTo(a,"PUSH",o,function(n){if(n){var t=g.index+1,e=g.entries.slice(0);e.length>t?e.splice(t,e.length-t,a):e.push(a),u({action:"PUSH",location:a,index:t,entries:e})}})},replace:function(n,t){var e="REPLACE",a=createLocation(n,t,f(),g.location);h.confirmTransitionTo(a,e,o,function(n){n&&(g.entries[g.index]=a,u({action:e,location:a}))})},go:p,goBack:function(){p(-1)},goForward:function(){p(1)},canGo:function(n){var t=g.index+n;return 0<=t&&t<g.entries.length},block:function(n){return void 0===n&&(n=!1),h.setPrompt(n)},listen:function(n){return h.appendListener(n)}};return g}exports.createBrowserHistory=createBrowserHistory,exports.createHashHistory=createHashHistory,exports.createMemoryHistory=createMemoryHistory,exports.createLocation=createLocation,exports.locationsAreEqual=locationsAreEqual,exports.parsePath=parsePath,exports.createPath=createPath;
 
-},{"resolve-pathname":67,"tiny-invariant":76,"tiny-warning":77,"value-equal":81}],6:[function(require,module,exports){
+},{"resolve-pathname":75,"tiny-invariant":84,"tiny-warning":85,"value-equal":89}],14:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -1236,7 +3707,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./cjs/history.js":4,"./cjs/history.min.js":5,"_process":17}],7:[function(require,module,exports){
+},{"./cjs/history.js":12,"./cjs/history.min.js":13,"_process":25}],15:[function(require,module,exports){
 'use strict';
 
 /**
@@ -1306,7 +3777,7 @@ function hoistNonReactStatics(targetComponent, sourceComponent, blacklist) {
 
 module.exports = hoistNonReactStatics;
 
-},{}],8:[function(require,module,exports){
+},{}],16:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -1359,12 +3830,7 @@ var invariant = function(condition, format, a, b, c, d, e, f) {
 module.exports = invariant;
 
 }).call(this,require('_process'))
-},{"_process":17}],9:[function(require,module,exports){
-module.exports = Array.isArray || function (arr) {
-  return Object.prototype.toString.call(arr) == '[object Array]';
-};
-
-},{}],10:[function(require,module,exports){
+},{"_process":25}],17:[function(require,module,exports){
 /*!
  * jQuery JavaScript Library v3.5.1
  * https://jquery.com/
@@ -12238,7 +14704,7 @@ if ( typeof noGlobal === "undefined" ) {
 return jQuery;
 } );
 
-},{}],11:[function(require,module,exports){
+},{}],18:[function(require,module,exports){
 (function (global){
 /**
  * marked - a markdown parser
@@ -13630,7 +16096,7 @@ if (typeof module !== 'undefined' && typeof exports === 'object') {
 })(this || (typeof window !== 'undefined' ? window : global));
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{}],12:[function(require,module,exports){
+},{}],19:[function(require,module,exports){
 /*
 object-assign
 (c) Sindre Sorhus
@@ -13722,7 +16188,7 @@ module.exports = shouldUseNative() ? Object.assign : function (target, source) {
 	return to;
 };
 
-},{}],13:[function(require,module,exports){
+},{}],20:[function(require,module,exports){
 exports.endianness = function () { return 'LE' };
 
 exports.hostname = function () {
@@ -13773,7 +16239,7 @@ exports.homedir = function () {
 	return '/'
 };
 
-},{}],14:[function(require,module,exports){
+},{}],21:[function(require,module,exports){
 var isarray = require('isarray')
 
 /**
@@ -14201,7 +16667,12 @@ function pathToRegexp (path, keys, options) {
   return stringToRegexp(/** @type {string} */ (path), /** @type {!Array} */ (keys), options)
 }
 
-},{"isarray":9}],15:[function(require,module,exports){
+},{"isarray":22}],22:[function(require,module,exports){
+module.exports = Array.isArray || function (arr) {
+  return Object.prototype.toString.call(arr) == '[object Array]';
+};
+
+},{}],23:[function(require,module,exports){
 (function (process){
 // Generated by CoffeeScript 1.12.2
 (function() {
@@ -14241,7 +16712,7 @@ function pathToRegexp (path, keys, options) {
 
 
 }).call(this,require('_process'))
-},{"_process":17}],16:[function(require,module,exports){
+},{"_process":25}],24:[function(require,module,exports){
 var div = null
 var prefixes = [ 'Webkit', 'Moz', 'O', 'ms' ]
 
@@ -14273,7 +16744,7 @@ module.exports = function prefixStyle (prop) {
   return false
 }
 
-},{}],17:[function(require,module,exports){
+},{}],25:[function(require,module,exports){
 // shim for using process in browser
 var process = module.exports = {};
 
@@ -14459,7 +16930,7 @@ process.chdir = function (dir) {
 };
 process.umask = function() { return 0; };
 
-},{}],18:[function(require,module,exports){
+},{}],26:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -14565,7 +17036,7 @@ checkPropTypes.resetWarningCache = function() {
 module.exports = checkPropTypes;
 
 }).call(this,require('_process'))
-},{"./lib/ReactPropTypesSecret":22,"_process":17}],19:[function(require,module,exports){
+},{"./lib/ReactPropTypesSecret":30,"_process":25}],27:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -14631,7 +17102,7 @@ module.exports = function() {
   return ReactPropTypes;
 };
 
-},{"./lib/ReactPropTypesSecret":22}],20:[function(require,module,exports){
+},{"./lib/ReactPropTypesSecret":30}],28:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -15226,7 +17697,7 @@ module.exports = function(isValidElement, throwOnDirectAccess) {
 };
 
 }).call(this,require('_process'))
-},{"./checkPropTypes":18,"./lib/ReactPropTypesSecret":22,"_process":17,"object-assign":12,"react-is":38}],21:[function(require,module,exports){
+},{"./checkPropTypes":26,"./lib/ReactPropTypesSecret":30,"_process":25,"object-assign":19,"react-is":46}],29:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
@@ -15249,7 +17720,7 @@ if (process.env.NODE_ENV !== 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./factoryWithThrowingShims":19,"./factoryWithTypeCheckers":20,"_process":17,"react-is":38}],22:[function(require,module,exports){
+},{"./factoryWithThrowingShims":27,"./factoryWithTypeCheckers":28,"_process":25,"react-is":46}],30:[function(require,module,exports){
 /**
  * Copyright (c) 2013-present, Facebook, Inc.
  *
@@ -15263,7 +17734,7 @@ var ReactPropTypesSecret = 'SECRET_DO_NOT_PASS_THIS_OR_YOU_WILL_BE_FIRED';
 
 module.exports = ReactPropTypesSecret;
 
-},{}],23:[function(require,module,exports){
+},{}],31:[function(require,module,exports){
 (function (global){
 var now = require('performance-now')
   , root = typeof window === 'undefined' ? global : window
@@ -15342,7 +17813,7 @@ module.exports.polyfill = function(object) {
 }
 
 }).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"performance-now":15}],24:[function(require,module,exports){
+},{"performance-now":23}],32:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -15420,7 +17891,7 @@ function renderThumbVerticalDefault(_ref4) {
     });
     return _react2["default"].createElement('div', _extends({ style: finalStyle }, props));
 }
-},{"react":66}],25:[function(require,module,exports){
+},{"react":74}],33:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -16214,7 +18685,7 @@ Scrollbars.defaultProps = {
     autoHeightMax: 200,
     universal: false
 };
-},{"../utils/getInnerHeight":28,"../utils/getInnerWidth":29,"../utils/getScrollbarWidth":30,"../utils/isString":31,"../utils/returnFalse":32,"./defaultRenderElements":24,"./styles":26,"dom-css":3,"prop-types":21,"raf":23,"react":66}],26:[function(require,module,exports){
+},{"../utils/getInnerHeight":36,"../utils/getInnerWidth":37,"../utils/getScrollbarWidth":38,"../utils/isString":39,"../utils/returnFalse":40,"./defaultRenderElements":32,"./styles":34,"dom-css":11,"prop-types":29,"raf":31,"react":74}],34:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -16286,7 +18757,7 @@ var disableSelectStyle = exports.disableSelectStyle = {
 var disableSelectStyleReset = exports.disableSelectStyleReset = {
     userSelect: ''
 };
-},{}],27:[function(require,module,exports){
+},{}],35:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -16302,7 +18773,7 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { "d
 
 exports["default"] = _Scrollbars2["default"];
 exports.Scrollbars = _Scrollbars2["default"];
-},{"./Scrollbars":25}],28:[function(require,module,exports){
+},{"./Scrollbars":33}],36:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -16318,7 +18789,7 @@ function getInnerHeight(el) {
 
     return clientHeight - parseFloat(paddingTop) - parseFloat(paddingBottom);
 }
-},{}],29:[function(require,module,exports){
+},{}],37:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -16334,7 +18805,7 @@ function getInnerWidth(el) {
 
     return clientWidth - parseFloat(paddingLeft) - parseFloat(paddingRight);
 }
-},{}],30:[function(require,module,exports){
+},{}],38:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -16371,7 +18842,7 @@ function getScrollbarWidth() {
     }
     return scrollbarWidth || 0;
 }
-},{"dom-css":3}],31:[function(require,module,exports){
+},{"dom-css":11}],39:[function(require,module,exports){
 'use strict';
 
 Object.defineProperty(exports, "__esModule", {
@@ -16381,7 +18852,7 @@ exports["default"] = isString;
 function isString(maybe) {
     return typeof maybe === 'string';
 }
-},{}],32:[function(require,module,exports){
+},{}],40:[function(require,module,exports){
 "use strict";
 
 Object.defineProperty(exports, "__esModule", {
@@ -16391,7 +18862,7 @@ exports["default"] = returnFalse;
 function returnFalse() {
     return false;
 }
-},{}],33:[function(require,module,exports){
+},{}],41:[function(require,module,exports){
 (function (process){
 /** @license React v16.9.0
  * react-dom.development.js
@@ -41610,7 +44081,7 @@ module.exports = reactDom;
 }
 
 }).call(this,require('_process'))
-},{"_process":17,"object-assign":12,"prop-types/checkPropTypes":18,"react":66,"scheduler":72,"scheduler/tracing":73}],34:[function(require,module,exports){
+},{"_process":25,"object-assign":19,"prop-types/checkPropTypes":26,"react":74,"scheduler":80,"scheduler/tracing":81}],42:[function(require,module,exports){
 /** @license React v16.9.0
  * react-dom.production.min.js
  *
@@ -41890,7 +44361,7 @@ function Lj(a,b){if(!Hj(a))throw t(Error(299),"unstable_createRoot");return new 
 (function(a){var b=a.findFiberByHostInstance;return tj(m({},a,{overrideHookState:null,overrideProps:null,setSuspenseHandler:null,scheduleUpdate:null,currentDispatcherRef:Xb.ReactCurrentDispatcher,findHostInstanceByFiber:function(a){a=qd(a);return null===a?null:a.stateNode},findFiberByHostInstance:function(a){return b?b(a):null},findHostInstancesForRefresh:null,scheduleRefresh:null,scheduleRoot:null,setRefreshHandler:null,getCurrentFiber:null}))})({findFiberByHostInstance:Ha,bundleType:0,version:"16.9.0",
 rendererPackageName:"react-dom"});var Oj={default:Nj},Pj=Oj&&Nj||Oj;module.exports=Pj.default||Pj;
 
-},{"object-assign":12,"react":66,"scheduler":72}],35:[function(require,module,exports){
+},{"object-assign":19,"react":74,"scheduler":80}],43:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -41932,7 +44403,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./cjs/react-dom.development.js":33,"./cjs/react-dom.production.min.js":34,"_process":17}],36:[function(require,module,exports){
+},{"./cjs/react-dom.development.js":41,"./cjs/react-dom.production.min.js":42,"_process":25}],44:[function(require,module,exports){
 (function (process){
 /** @license React v16.9.0
  * react-is.development.js
@@ -42168,7 +44639,7 @@ exports.isSuspense = isSuspense;
 }
 
 }).call(this,require('_process'))
-},{"_process":17}],37:[function(require,module,exports){
+},{"_process":25}],45:[function(require,module,exports){
 /** @license React v16.9.0
  * react-is.production.min.js
  *
@@ -42185,7 +44656,7 @@ exports.ConcurrentMode=m;exports.ContextConsumer=k;exports.ContextProvider=h;exp
 exports.isValidElementType=function(a){return"string"===typeof a||"function"===typeof a||a===e||a===m||a===g||a===f||a===p||a===q||"object"===typeof a&&null!==a&&(a.$$typeof===t||a.$$typeof===r||a.$$typeof===h||a.$$typeof===k||a.$$typeof===n||a.$$typeof===v||a.$$typeof===w)};exports.isAsyncMode=function(a){return y(a)||x(a)===l};exports.isConcurrentMode=y;exports.isContextConsumer=function(a){return x(a)===k};exports.isContextProvider=function(a){return x(a)===h};
 exports.isElement=function(a){return"object"===typeof a&&null!==a&&a.$$typeof===c};exports.isForwardRef=function(a){return x(a)===n};exports.isFragment=function(a){return x(a)===e};exports.isLazy=function(a){return x(a)===t};exports.isMemo=function(a){return x(a)===r};exports.isPortal=function(a){return x(a)===d};exports.isProfiler=function(a){return x(a)===g};exports.isStrictMode=function(a){return x(a)===f};exports.isSuspense=function(a){return x(a)===p};
 
-},{}],38:[function(require,module,exports){
+},{}],46:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -42196,7 +44667,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./cjs/react-is.development.js":36,"./cjs/react-is.production.min.js":37,"_process":17}],39:[function(require,module,exports){
+},{"./cjs/react-is.development.js":44,"./cjs/react-is.production.min.js":45,"_process":25}],47:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -42264,7 +44735,7 @@ BrowserRouter.propTypes = {
   children: _propTypes2.default.node
 };
 exports.default = BrowserRouter;
-},{"./Router":47,"history":6,"prop-types":21,"react":66,"warning":82}],40:[function(require,module,exports){
+},{"./Router":55,"history":14,"prop-types":29,"react":74,"warning":90}],48:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -42331,7 +44802,7 @@ HashRouter.propTypes = {
   children: _propTypes2.default.node
 };
 exports.default = HashRouter;
-},{"./Router":47,"history":6,"prop-types":21,"react":66,"warning":82}],41:[function(require,module,exports){
+},{"./Router":55,"history":14,"prop-types":29,"react":74,"warning":90}],49:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -42449,7 +44920,7 @@ Link.contextTypes = {
   }).isRequired
 };
 exports.default = Link;
-},{"history":6,"invariant":8,"prop-types":21,"react":66}],42:[function(require,module,exports){
+},{"history":14,"invariant":16,"prop-types":29,"react":74}],50:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -42461,7 +44932,7 @@ var _MemoryRouter2 = _interopRequireDefault(_MemoryRouter);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = _MemoryRouter2.default; // Written in this round about way for babel-transform-imports
-},{"react-router/MemoryRouter":54}],43:[function(require,module,exports){
+},{"react-router/MemoryRouter":62}],51:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -42553,7 +45024,7 @@ NavLink.defaultProps = {
 };
 
 exports.default = NavLink;
-},{"./Link":41,"./Route":46,"prop-types":21,"react":66}],44:[function(require,module,exports){
+},{"./Link":49,"./Route":54,"prop-types":29,"react":74}],52:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -42565,7 +45036,7 @@ var _Prompt2 = _interopRequireDefault(_Prompt);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = _Prompt2.default; // Written in this round about way for babel-transform-imports
-},{"react-router/Prompt":55}],45:[function(require,module,exports){
+},{"react-router/Prompt":63}],53:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -42577,7 +45048,7 @@ var _Redirect2 = _interopRequireDefault(_Redirect);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = _Redirect2.default; // Written in this round about way for babel-transform-imports
-},{"react-router/Redirect":56}],46:[function(require,module,exports){
+},{"react-router/Redirect":64}],54:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -42589,7 +45060,7 @@ var _Route2 = _interopRequireDefault(_Route);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = _Route2.default; // Written in this round about way for babel-transform-imports
-},{"react-router/Route":57}],47:[function(require,module,exports){
+},{"react-router/Route":65}],55:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -42601,7 +45072,7 @@ var _Router2 = _interopRequireDefault(_Router);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = _Router2.default; // Written in this round about way for babel-transform-imports
-},{"react-router/Router":58}],48:[function(require,module,exports){
+},{"react-router/Router":66}],56:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -42613,7 +45084,7 @@ var _StaticRouter2 = _interopRequireDefault(_StaticRouter);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = _StaticRouter2.default; // Written in this round about way for babel-transform-imports
-},{"react-router/StaticRouter":59}],49:[function(require,module,exports){
+},{"react-router/StaticRouter":67}],57:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -42625,7 +45096,7 @@ var _Switch2 = _interopRequireDefault(_Switch);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = _Switch2.default; // Written in this round about way for babel-transform-imports
-},{"react-router/Switch":60}],50:[function(require,module,exports){
+},{"react-router/Switch":68}],58:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -42637,7 +45108,7 @@ var _generatePath2 = _interopRequireDefault(_generatePath);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = _generatePath2.default; // Written in this round about way for babel-transform-imports
-},{"react-router/generatePath":61}],51:[function(require,module,exports){
+},{"react-router/generatePath":69}],59:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -42715,7 +45186,7 @@ exports.Switch = _Switch3.default;
 exports.generatePath = _generatePath3.default;
 exports.matchPath = _matchPath3.default;
 exports.withRouter = _withRouter3.default;
-},{"./BrowserRouter":39,"./HashRouter":40,"./Link":41,"./MemoryRouter":42,"./NavLink":43,"./Prompt":44,"./Redirect":45,"./Route":46,"./Router":47,"./StaticRouter":48,"./Switch":49,"./generatePath":50,"./matchPath":52,"./withRouter":53}],52:[function(require,module,exports){
+},{"./BrowserRouter":47,"./HashRouter":48,"./Link":49,"./MemoryRouter":50,"./NavLink":51,"./Prompt":52,"./Redirect":53,"./Route":54,"./Router":55,"./StaticRouter":56,"./Switch":57,"./generatePath":58,"./matchPath":60,"./withRouter":61}],60:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -42727,7 +45198,7 @@ var _matchPath2 = _interopRequireDefault(_matchPath);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = _matchPath2.default; // Written in this round about way for babel-transform-imports
-},{"react-router/matchPath":62}],53:[function(require,module,exports){
+},{"react-router/matchPath":70}],61:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -42739,7 +45210,7 @@ var _withRouter2 = _interopRequireDefault(_withRouter);
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 exports.default = _withRouter2.default; // Written in this round about way for babel-transform-imports
-},{"react-router/withRouter":63}],54:[function(require,module,exports){
+},{"react-router/withRouter":71}],62:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -42807,7 +45278,7 @@ MemoryRouter.propTypes = {
   children: _propTypes2.default.node
 };
 exports.default = MemoryRouter;
-},{"./Router":58,"history":6,"prop-types":21,"react":66,"warning":82}],55:[function(require,module,exports){
+},{"./Router":66,"history":14,"prop-types":29,"react":74,"warning":90}],63:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -42898,7 +45369,7 @@ Prompt.contextTypes = {
   }).isRequired
 };
 exports.default = Prompt;
-},{"invariant":8,"prop-types":21,"react":66}],56:[function(require,module,exports){
+},{"invariant":16,"prop-types":29,"react":74}],64:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -43030,7 +45501,7 @@ Redirect.contextTypes = {
   }).isRequired
 };
 exports.default = Redirect;
-},{"./generatePath":61,"history":6,"invariant":8,"prop-types":21,"react":66,"warning":82}],57:[function(require,module,exports){
+},{"./generatePath":69,"history":14,"invariant":16,"prop-types":29,"react":74,"warning":90}],65:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -43188,7 +45659,7 @@ Route.childContextTypes = {
   router: _propTypes2.default.object.isRequired
 };
 exports.default = Route;
-},{"./matchPath":62,"invariant":8,"prop-types":21,"react":66,"warning":82}],58:[function(require,module,exports){
+},{"./matchPath":70,"invariant":16,"prop-types":29,"react":74,"warning":90}],66:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -43308,7 +45779,7 @@ Router.childContextTypes = {
   router: _propTypes2.default.object.isRequired
 };
 exports.default = Router;
-},{"invariant":8,"prop-types":21,"react":66,"warning":82}],59:[function(require,module,exports){
+},{"invariant":16,"prop-types":29,"react":74,"warning":90}],67:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -43478,7 +45949,7 @@ StaticRouter.childContextTypes = {
   router: _propTypes2.default.object.isRequired
 };
 exports.default = StaticRouter;
-},{"./Router":58,"history":6,"invariant":8,"prop-types":21,"react":66,"warning":82}],60:[function(require,module,exports){
+},{"./Router":66,"history":14,"invariant":16,"prop-types":29,"react":74,"warning":90}],68:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -43573,7 +46044,7 @@ Switch.propTypes = {
   location: _propTypes2.default.object
 };
 exports.default = Switch;
-},{"./matchPath":62,"invariant":8,"prop-types":21,"react":66,"warning":82}],61:[function(require,module,exports){
+},{"./matchPath":70,"invariant":16,"prop-types":29,"react":74,"warning":90}],69:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -43619,7 +46090,7 @@ var generatePath = function generatePath() {
 };
 
 exports.default = generatePath;
-},{"path-to-regexp":14}],62:[function(require,module,exports){
+},{"path-to-regexp":21}],70:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -43700,7 +46171,7 @@ var matchPath = function matchPath(pathname) {
 };
 
 exports.default = matchPath;
-},{"path-to-regexp":14}],63:[function(require,module,exports){
+},{"path-to-regexp":21}],71:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -43754,7 +46225,7 @@ var withRouter = function withRouter(Component) {
 };
 
 exports.default = withRouter;
-},{"./Route":57,"hoist-non-react-statics":7,"prop-types":21,"react":66}],64:[function(require,module,exports){
+},{"./Route":65,"hoist-non-react-statics":15,"prop-types":29,"react":74}],72:[function(require,module,exports){
 (function (process){
 /** @license React v16.9.0
  * react.development.js
@@ -45993,7 +48464,7 @@ module.exports = react;
 }
 
 }).call(this,require('_process'))
-},{"_process":17,"object-assign":12,"prop-types/checkPropTypes":18}],65:[function(require,module,exports){
+},{"_process":25,"object-assign":19,"prop-types/checkPropTypes":26}],73:[function(require,module,exports){
 /** @license React v16.9.0
  * react.production.min.js
  *
@@ -46020,7 +48491,7 @@ b,d){return W().useImperativeHandle(a,b,d)},useDebugValue:function(){},useLayout
 h({},a.props),g=a.key,k=a.ref,f=a._owner;if(null!=b){void 0!==b.ref&&(k=b.ref,f=J.current);void 0!==b.key&&(g=""+b.key);var l=void 0;a.type&&a.type.defaultProps&&(l=a.type.defaultProps);for(c in b)K.call(b,c)&&!L.hasOwnProperty(c)&&(e[c]=void 0===b[c]&&void 0!==l?l[c]:b[c])}c=arguments.length-2;if(1===c)e.children=d;else if(1<c){l=Array(c);for(var m=0;m<c;m++)l[m]=arguments[m+2];e.children=l}return{$$typeof:p,type:a.type,key:g,ref:k,props:e,_owner:f}},createFactory:function(a){var b=M.bind(null,a);
 b.type=a;return b},isValidElement:N,version:"16.9.0",unstable_withSuspenseConfig:function(a,b){var d=I.suspense;I.suspense=void 0===b?null:b;try{a()}finally{I.suspense=d}},__SECRET_INTERNALS_DO_NOT_USE_OR_YOU_WILL_BE_FIRED:{ReactCurrentDispatcher:H,ReactCurrentBatchConfig:I,ReactCurrentOwner:J,IsSomeRendererActing:{current:!1},assign:h}},Y={default:X},Z=Y&&X||Y;module.exports=Z.default||Z;
 
-},{"object-assign":12}],66:[function(require,module,exports){
+},{"object-assign":19}],74:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -46031,7 +48502,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./cjs/react.development.js":64,"./cjs/react.production.min.js":65,"_process":17}],67:[function(require,module,exports){
+},{"./cjs/react.development.js":72,"./cjs/react.production.min.js":73,"_process":25}],75:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -46106,7 +48577,7 @@ function resolvePathname(to) {
 
 exports.default = resolvePathname;
 module.exports = exports['default'];
-},{}],68:[function(require,module,exports){
+},{}],76:[function(require,module,exports){
 (function (process){
 /** @license React v0.15.0
  * scheduler-tracing.development.js
@@ -46576,7 +49047,7 @@ exports.unstable_unsubscribe = unstable_unsubscribe;
 }
 
 }).call(this,require('_process'))
-},{"_process":17}],69:[function(require,module,exports){
+},{"_process":25}],77:[function(require,module,exports){
 /** @license React v0.15.0
  * scheduler-tracing.production.min.js
  *
@@ -46588,7 +49059,7 @@ exports.unstable_unsubscribe = unstable_unsubscribe;
 
 'use strict';Object.defineProperty(exports,"__esModule",{value:!0});var b=0;exports.__interactionsRef=null;exports.__subscriberRef=null;exports.unstable_clear=function(a){return a()};exports.unstable_getCurrent=function(){return null};exports.unstable_getThreadID=function(){return++b};exports.unstable_trace=function(a,d,c){return c()};exports.unstable_wrap=function(a){return a};exports.unstable_subscribe=function(){};exports.unstable_unsubscribe=function(){};
 
-},{}],70:[function(require,module,exports){
+},{}],78:[function(require,module,exports){
 (function (process){
 /** @license React v0.15.0
  * scheduler.development.js
@@ -47493,7 +49964,7 @@ exports.unstable_getFirstCallbackNode = unstable_getFirstCallbackNode;
 }
 
 }).call(this,require('_process'))
-},{"_process":17}],71:[function(require,module,exports){
+},{"_process":25}],79:[function(require,module,exports){
 /** @license React v0.15.0
  * scheduler.production.min.js
  *
@@ -47518,7 +49989,7 @@ exports.unstable_scheduleCallback=function(a,b,c){var f=exports.unstable_now();i
 c}null===M&&N===a&&(S?g():S=!0,e(W,l-f))}else V(a,c),R||Q||(R=!0,d(X));return a};exports.unstable_cancelCallback=function(a){var b=a.next;if(null!==b){if(a===b)a===M?M=null:a===N&&(N=null);else{a===M?M=b:a===N&&(N=b);var c=a.previous;c.next=b;b.previous=c}a.next=a.previous=null}};exports.unstable_wrapCallback=function(a){var b=P;return function(){var c=P;P=b;try{return a.apply(this,arguments)}finally{P=c}}};exports.unstable_getCurrentPriorityLevel=function(){return P};
 exports.unstable_shouldYield=function(){var a=exports.unstable_now();U(a);return null!==O&&null!==M&&M.startTime<=a&&M.expirationTime<O.expirationTime||m()};exports.unstable_requestPaint=aa;exports.unstable_continueExecution=function(){R||Q||(R=!0,d(X))};exports.unstable_pauseExecution=function(){};exports.unstable_getFirstCallbackNode=function(){return M};
 
-},{}],72:[function(require,module,exports){
+},{}],80:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -47529,7 +50000,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./cjs/scheduler.development.js":70,"./cjs/scheduler.production.min.js":71,"_process":17}],73:[function(require,module,exports){
+},{"./cjs/scheduler.development.js":78,"./cjs/scheduler.production.min.js":79,"_process":25}],81:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -47540,7 +50011,7 @@ if (process.env.NODE_ENV === 'production') {
 }
 
 }).call(this,require('_process'))
-},{"./cjs/scheduler-tracing.development.js":68,"./cjs/scheduler-tracing.production.min.js":69,"_process":17}],74:[function(require,module,exports){
+},{"./cjs/scheduler-tracing.development.js":76,"./cjs/scheduler-tracing.production.min.js":77,"_process":25}],82:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -47614,7 +50085,7 @@ function scrollIntoView(target, options) {
 var _default = scrollIntoView;
 exports.default = _default;
 module.exports = exports.default;
-},{"compute-scroll-into-view":2}],75:[function(require,module,exports){
+},{"compute-scroll-into-view":10}],83:[function(require,module,exports){
 "use strict";
 
 exports.__esModule = true;
@@ -47735,7 +50206,7 @@ var smoothScrollIntoView = scroll;
 var _default = smoothScrollIntoView;
 exports.default = _default;
 module.exports = exports.default;
-},{"scroll-into-view-if-needed":74}],76:[function(require,module,exports){
+},{"scroll-into-view-if-needed":82}],84:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -47756,7 +50227,7 @@ function invariant(condition, message) {
 module.exports = invariant;
 
 }).call(this,require('_process'))
-},{"_process":17}],77:[function(require,module,exports){
+},{"_process":25}],85:[function(require,module,exports){
 (function (process){
 'use strict';
 
@@ -47782,7 +50253,7 @@ function warning(condition, message) {
 module.exports = warning;
 
 }).call(this,require('_process'))
-},{"_process":17}],78:[function(require,module,exports){
+},{"_process":25}],86:[function(require,module,exports){
 
 var space = require('to-space-case')
 
@@ -47805,7 +50276,7 @@ function toCamelCase(string) {
   })
 }
 
-},{"to-space-case":80}],79:[function(require,module,exports){
+},{"to-space-case":88}],87:[function(require,module,exports){
 
 /**
  * Export.
@@ -47874,7 +50345,7 @@ function uncamelize(string) {
   })
 }
 
-},{}],80:[function(require,module,exports){
+},{}],88:[function(require,module,exports){
 
 var clean = require('to-no-case')
 
@@ -47897,7 +50368,7 @@ function toSpaceCase(string) {
   }).trim()
 }
 
-},{"to-no-case":79}],81:[function(require,module,exports){
+},{"to-no-case":87}],89:[function(require,module,exports){
 'use strict';
 
 exports.__esModule = true;
@@ -47941,7 +50412,7 @@ function valueEqual(a, b) {
 
 exports.default = valueEqual;
 module.exports = exports['default'];
-},{}],82:[function(require,module,exports){
+},{}],90:[function(require,module,exports){
 (function (process){
 /**
  * Copyright (c) 2014-present, Facebook, Inc.
@@ -48007,2443 +50478,4 @@ if (__DEV__) {
 module.exports = warning;
 
 }).call(this,require('_process'))
-},{"_process":17}],83:[function(require,module,exports){
-(function (global){
-'use strict';
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _reactDom = require('react-dom');
-
-var _reactRouterDom = require('react-router-dom');
-
-var _history = require('history');
-
-var _mdToHtml = require('./mdToHtml');
-
-var _mdToHtml2 = _interopRequireDefault(_mdToHtml);
-
-var _index = require('./index.jsx');
-
-var _index2 = _interopRequireDefault(_index);
-
-var _main = require('./main.jsx');
-
-var _main2 = _interopRequireDefault(_main);
-
-var _search = require('./search.jsx');
-
-var _search2 = _interopRequireDefault(_search);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-global.hash = ' ';
-global.isMouseClickNav = false;
-global.isMouseScrollArticle = false;
-
-global.isLinkClicked = false;
-
-global.lastUrlBeforeSearch = '/';
-global.lastHistoryIndex = 0;
-global.lastAction = 'PUSH';
-global.isShowHelperSupport = false;
-global.scrollBehavior = 'smooth';
-global.bIsReload = false;
-// global.gHistoryGo = 0;
-
-
-global.readFile = function (fileName, callback) {
-    console.log("global.readFile...");
-    var xhr = new XMLHttpRequest();
-    xhr.open('GET', fileName);
-    xhr.onload = function () {
-        // if (xhr.responseText != '') {
-        callback(xhr.responseText);
-        // }
-    };
-    xhr.send();
-};
-
-var App = function (_React$Component) {
-    _inherits(App, _React$Component);
-
-    function App(props, context) {
-        _classCallCheck(this, App);
-
-        var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this, props, context));
-
-        _this.state = {
-            init: false,
-            searchResult: [],
-            mismatch: false,
-            historyGO: 0
-            // changeAppList:[]
-        };
-        new QWebChannel(qt.webChannelTransport, _this.initQt.bind(_this));
-        return _this;
-    }
-
-    _createClass(App, [{
-        key: 'initQt',
-        value: function initQt(channel) {
-            var _this2 = this;
-
-            console.log("channel initqt.....");
-            channel.objects.i18n.getSentences(function (i18n) {
-                channel.objects.i18n.getLocale(function (lang) {
-                    if (lang === 'en_US' || lang === 'zh_CN') {
-                        global.lang = lang;
-                    } else {
-                        global.lang = 'en_US';
-                    }
-                });
-
-                global.i18n = i18n;
-                global.qtObjects = channel.objects;
-
-                global.qtObjects.manual.hasSelperSupport(function (bFlag) {
-                    global.isShowHelperSupport = bFlag;
-                });
-
-                global.qtObjects.manual.bIsLongSon(function (isLongSon) {
-                    if (isLongSon) {
-                        global.scrollBehavior = 'auto';
-                    }
-                });
-
-                channel.objects.manual.getSystemManualDir(function (path) {
-                    global.path = path;
-                });
-                // global.openWindow = global.qtObjects.manual.openExternalLink;
-                // global.qtObjects.titleBar.setBackwardButtonActive(false);
-                // global.qtObjects.titleBar.setForwardButtonActive(false);
-                global.qtObjects.titleBar.backwardButtonClicked.connect(_this2.onBackwardClick.bind(_this2));
-                global.qtObjects.titleBar.forwardButtonClicked.connect(_this2.onForwardClick.bind(_this2));
-                global.qtObjects.search.mismatch.connect(function () {
-                    return _this2.setState({ mismatch: true });
-                });
-                global.qtObjects.search.onContentResult.connect(_this2.onContentResult.bind(_this2));
-                global.qtObjects.search.reloadPage.connect(_this2.onReloadPage.bind(_this2));
-                global.qtObjects.manual.searchEditTextisEmpty.connect(_this2.onSearchEditClear.bind(_this2));
-                global.qtObjects.theme.getTheme(function (themeType) {
-                    return _this2.themeChange(themeType);
-                });
-                global.qtObjects.theme.themeChange.connect(_this2.themeChange.bind(_this2));
-                global.qtObjects.settings.fontChangeRequested.connect(_this2.onFontChange.bind(_this2));
-                console.log("finsh global.qtObjects = channel.objects...");
-                global.qtObjects.manual.finishChannel();
-            });
-        }
-    }, {
-        key: 'onBackwardClick',
-        value: function onBackwardClick() {
-            global.handleLocation(global.hash);
-            console.log("----------backwardButtonClicked----------");
-            this.setState({ historyGO: this.state.historyGO - 1 });
-            console.log("==========backwardButtonClicked=========>");
-            this.context.router.history.goBack();
-            console.log("back history location: " + this.context.router.history.location.pathname);
-        }
-    }, {
-        key: 'onForwardClick',
-        value: function onForwardClick() {
-            global.handleLocation(global.hash);
-            console.log("----------forwardButtonClicked----------");
-            this.setState({ historyGO: this.state.historyGO + 1 });
-            console.log("==========forwardButtonClicked=========>");
-            this.context.router.history.goForward();
-            console.log("forward history location: " + this.context.router.history.location.pathname);
-        }
-    }, {
-        key: 'onFontChange',
-        value: function onFontChange(fontFamily, fontSize) {
-            console.log("fontChangeRequested: fontFamily:" + fontFamily + ",fontSize:" + fontSize);
-            console.log("fontSize/13.0:" + fontSize);
-            var HTMLGlobal = document.querySelector('html');
-            HTMLGlobal.style.fontFamily = fontFamily;
-            HTMLGlobal.style.fontSize = fontSize; //设置rem标准   设计图上默认是在14px字体上设计,所以默认1rem = 14px.
-            if (fontSize >= 18) {
-                document.documentElement.style.setProperty('--index-item-size', '170px');
-                document.documentElement.style.setProperty('--index-span-width', '140px');
-            } else {
-                document.documentElement.style.setProperty('--index-item-size', '160px');
-                document.documentElement.style.setProperty('--index-span-width', '130px');
-            }
-        }
-    }, {
-        key: 'themeChange',
-        value: function themeChange(themeType) {
-            global.setTheme(themeType);
-        }
-    }, {
-        key: 'onContentResult',
-        value: function onContentResult(appName, titleList, idList, contentList) {
-            var _this3 = this;
-
-            console.log('搜索结果', appName, titleList, idList, contentList);
-            var searchResult = this.state.searchResult;
-
-            var filePath = void 0;
-            // if (appName == "dde")
-            // {
-            //   filePath = `${global.path}/system/${appName}/${global.lang}/index.md`;
-            // }
-            // else
-            // {
-            //   filePath = `${global.path}/application/${appName}/${global.lang}/index.md`;
-            // }
-            var myPromise = new Promise(function (resolve, reject) {
-                global.qtObjects.manual.appToPath(appName, function (filepath) {
-                    filePath = filepath;
-                    resolve();
-                });
-            });
-
-            myPromise.then(function () {
-                searchResult.push({
-                    file: filePath,
-                    idList: idList,
-                    titleList: titleList,
-                    contentList: contentList
-                });
-                _this3.setState({ searchResult: searchResult, mismatch: false });
-            });
-        }
-    }, {
-        key: 'onReloadPage',
-        value: function onReloadPage(appList) {
-            var _this4 = this;
-
-            // console.log("============>page reload...");
-            var bRetFlag = true;
-            var locationPath = this.context.router.history.location.pathname;
-            console.log("============>page reload...", locationPath);
-            var list = locationPath.split("/");
-            if (list[1] == 'open') {
-                var curApp = list[2];
-                console.log("============>open...", appList, curApp);
-                var bFlag = false;
-                appList.map(function (app) {
-                    if (!bFlag && curApp.indexOf(app) != -1) {
-                        bFlag = true;
-                    }
-                });
-
-                if (bFlag) {
-                    global.qtObjects.manual.getSystemManualList(function (appNames) {
-                        var bKFlage = false;
-                        appNames.map(function (name) {
-                            if (curApp.indexOf(name) != -1) {
-                                bKFlage = true;
-                            }
-                        });
-
-                        if (bKFlage) {
-                            global.bIsReload = true;
-                            _this4.context.router.history.go(0);
-                        } else {
-                            var historyList = _this4.context.router.history.entries;
-                            var index = _this4.context.router.history.index;
-                            var historyLate = historyList.slice(index + 1);
-                            console.log("===========>", historyLate);
-                            _this4.setState({ historyGO: _this4.state.historyGO - 1 });
-                            _this4.context.router.history.go(-1);
-
-                            historyLate.map(function (url) {
-                                console.log("..........>", url);
-                                _this4.context.router.history.push(url);
-                            });
-                            global.backHome();
-                        }
-                    });
-                } else {
-                    bRetFlag = false;
-                }
-            } else if (list[1] == 'search') {
-                console.log("============>search...", list[2]);
-                global.qtObjects.search.updateSearch(list[2]);
-            } else {
-                global.bIsReload = true;
-                this.context.router.history.go(0);
-            }
-
-            if (bRetFlag) {
-                global.qtObjects.manual.showUpdateLabel();
-            }
-        }
-    }, {
-        key: 'onSearchEditClear',
-
-
-        //搜索框清空后回到上一个页面(未搜索的页面).
-        value: function onSearchEditClear() {
-            console.log("==================>onSearcheditclear");
-            var locationPath = this.context.router.history.location.pathname;
-            var list = locationPath.split("/");
-            var bFlag = false;
-            //open页length = 5, search页length = 3
-            if (list.length == 5 && list[4] != "") {
-                bFlag = true;
-            } else if (list.length == 3 && list[2] != "") {
-                bFlag = true;
-            }
-
-            if (bFlag) {
-                var step;
-                var indexGo = this.state.historyGO;
-                // var indexGo = global.gHistoryGo;
-                var objList = this.context.router.history.entries;
-                for (var i = indexGo; i >= 0; i--) {
-
-                    var curPath = objList[i].pathname;
-                    帮助;
-                    var curPathList = curPath.split("/");
-                    if (curPathList.length == 5 && curPathList[4] == "") {
-                        step = indexGo - i;
-                        break;
-                    } else if (curPathList.length == 3 && curPathList[2] == "") {
-                        step = indexGo - i;
-                        break;
-                    } else if (curPathList.length == 2) {
-                        step = indexGo - i;
-                        break;
-                    }
-                }
-                if (step) {
-                    if (this.context.router.history.canGo(-1 * step)) {
-                        this.setState({ historyGO: this.state.historyGO - step });
-                        // global.gHistoryGo = global.gHistoryGo - step;
-                        this.context.router.history.go(-1 * step);
-                    }
-                }
-            }
-        }
-    }, {
-        key: 'getChildContext',
-        value: function getChildContext() {
-            var _state = this.state,
-                searchResult = _state.searchResult,
-                mismatch = _state.mismatch;
-
-            return { searchResult: searchResult, mismatch: mismatch };
-        }
-    }, {
-        key: 'componentWillReceiveProps',
-        value: function componentWillReceiveProps(nextProps) {
-            console.log("app componentWillReceiveProps", this.context.router.history);
-            console.log("this location: " + this.context.router.history.location);
-            var pathName = this.context.router.history.location.pathname;
-            var pathList = pathName.split("/");
-            var cKeyword = '';
-
-            //search页===>/search/:keyword 
-            //open页=====>/open/:file/:hash?/:key? 
-            if (pathList.length == 3) {
-                cKeyword = pathList[2];
-            } else if (pathList.length == 5) {
-                cKeyword = pathList[4];
-            }
-
-            // global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
-            if (cKeyword == '%') {
-                global.qtObjects.search.getKeyword(cKeyword);
-            } else {
-                console.log("decode URIComponent componentWillReceiveProps");
-                global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
-            }
-
-            if (this.context.router.history.action == 'PUSH') {
-                var entriesLen = this.context.router.history.entries.length;
-                if (entriesLen > 1) {
-                    var entry = this.context.router.history.entries[entriesLen - 1];
-                    if (entry.pathname.toString().indexOf("/search/") != -1) {
-                        this.setState({ historyGO: entriesLen - 1 });
-                        // global.gHistoryGo = entriesLen - 1;
-                        return;
-                    }
-                }
-                this.setState({ historyGO: entriesLen - 1 });
-                // global.gHistoryGo = entriesLen - 1;
-            }
-
-            //切换状态时,去除选中状态....为何选中状态切换页面时会保留??????
-            window.getSelection().empty();
-        }
-    }, {
-        key: 'componentDidMount',
-        value: function componentDidMount() {
-            var _this5 = this;
-
-            global.index = function () {
-                // this.context.router.history.push('/');
-                if (_this5.state.init == false) {
-                    _this5.setState({ init: true });
-                }
-            };
-            global.backHome = function () {
-                global.handleLocation(global.hash);
-                console.log("global.backHome()" + _this5.context.router.history.entries.length);
-                console.log("global.backHome()" + _this5.state.historyGO);
-                var goNum = _this5.state.historyGO;
-                _this5.setState({ historyGO: 0 });
-                console.log("global.backHome()" + goNum);
-
-                if (_this5.context.router.history.canGo(-1 * goNum)) {
-                    _this5.context.router.history.go(-1 * goNum);
-                    // this.context.router.history.go(0);
-                }
-            };
-
-            //打开某一个文件,并定位到具体hash
-            global.open = function (file) {
-                var hash = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-                var key = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
-
-                console.log("global.open()....file:" + file + " hash:" + hash + " key:" + key);
-                //h0默认为应用名称，内容为空，所以当打开h0，将其变为h1概述的位置。
-                if (hash == 'h0' || hash == '') {
-                    hash = 'h1';
-                }
-                file = encodeURIComponent(file);
-                console.log("globla.open...........");
-                hash = encodeURIComponent(hash);
-                global.hash = hash;
-
-                // '%'字符替换为其他非常用字符组合,来替代'%', 路由URL单含此字符会出错。。。
-                if (key == '%') {
-                    key = '=-=';
-                }
-
-                var url = '/open/' + file + '/' + hash + '/' + key;
-                _this5.context.router.history.push(url);
-
-                //Init属性设置, 放在index与opentitle中. 避免直接跳转到特定模块时会先走/模块.
-                if (_this5.state.init == false) {
-                    _this5.setState({ init: true });
-                }
-
-                //通知qt对象,修改应用打开状态
-                global.qtObjects.manual.setApplicationState(file);
-            };
-
-            global.openTitle = function (file) {
-                var title = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
-
-                console.log("global linkTitle==> file:" + file + " title: " + title);
-                global.handleLocation(global.hash);
-                if (title !== '') {
-                    var filePath = void 0;
-                    // if(file == "dde")
-                    // {
-                    //   filePath = `${global.path}/system/${file}/${global.lang}/index.md`
-                    // }
-                    // else
-                    // {
-                    //   filePath = `${global.path}/application/${file}/${global.lang}/index.md`
-                    // }
-
-                    var myPromise = new Promise(function (resolve, reject) {
-                        global.qtObjects.manual.appToPath(file, function (filepath) {
-                            filePath = filepath;
-                            resolve();
-                        });
-                    });
-
-                    myPromise.then(function () {
-                        global.readFile(filePath, function (data) {
-                            var _m2h = (0, _mdToHtml2.default)(filePath, data),
-                                html = _m2h.html;
-
-                            var d = document.createElement('div');
-                            d.innerHTML = html;
-                            var dlist = d.querySelectorAll('[text="' + title + '"]');
-                            var hashID = 'h0';
-                            for (var i = 0; i < dlist.length; i++) {
-                                hashID = dlist[i].id;
-                            }
-                            global.open(file, hashID);
-                        });
-                    });
-                } else {
-                    global.open(file);
-                }
-            };
-
-            //替换当前URL,仅仅在切换到其他页面处调用...(包含前进,后退,重新打开一个新的页面)
-            global.handleLocation = function () {
-                var hash = arguments.length > 0 && arguments[0] !== undefined ? arguments[0] : '';
-
-                var url = _this5.context.router.history.location.pathname;
-                console.log("global.handhash: ", url);
-                var urlList = url.split("/");
-                if (urlList.length == 5) {
-                    url = '/' + urlList[1] + '/' + urlList[2] + '/' + hash + '/' + urlList[4];
-                    console.log("new url:", url);
-                    _this5.context.router.history.replace(url);
-                }
-            };
-
-            //获取当前系统活动色
-            global.setHashWordColor = function (strRgb) {
-                console.log("hash color: ", strRgb);
-                document.documentElement.style.setProperty('--nav-hash-word-color', strRgb); //btnlist 改这行
-
-                //对系统活动色统一增加一定的值作为Hover色
-                var rgb = strRgb.slice(1);
-                var r = rgb.substr(0, 2);
-                var g = rgb.substr(2, 2);
-                var b = rgb.substr(4, 2);
-                var nR = parseInt(r, 16);
-                var nG = parseInt(g, 16);
-                var nB = parseInt(b, 16);
-                nR += 16;
-                nG += 16;
-                nB += 16;
-                if (nR > 255) nR = 255;
-                if (nG > 255) nG = 255;
-                if (nB > 255) nB = 255;
-                var toR = nR.toString(16);
-                var toG = nG.toString(16);
-                var toB = nB.toString(16);
-                if (toR.length == 1) toR = '0' + toR;
-                if (toG.length == 1) toG = '0' + toG;
-                if (toB.length == 1) toB = '0' + toB;
-
-                var toRGB = "#" + toR + toG + toB;
-                console.log('hover color:', toRGB);
-                document.documentElement.style.setProperty('--nav-hash-hover-color', toRGB);
-            };
-
-            global.setWordFontfamily = function (strFontFamily) {
-                document.documentElement.style.setProperty('--nav-world-font-family', strFontFamily); //btnlist 改这行
-            };
-
-            global.setTheme = function (themeType) {
-                console.log('主题切换', themeType);
-                if (navigator.language.toString().indexOf('en_') != -1) {
-                    document.documentElement.style.setProperty('--span-line-height', '1.0rem');
-                    document.documentElement.style.setProperty('--span-font-size', '0.9rem');
-                    document.documentElement.style.setProperty('--span-maring-bottom', '0.15rem');
-                } else {
-                    document.documentElement.style.setProperty('--span-line-height', '1.4rem');
-                    document.documentElement.style.setProperty('--span-font-size', '1.03rem');
-                    document.documentElement.style.setProperty('--span-maring-bottom', '0.15rem');
-                }
-                if ("DarkType" == themeType) {
-                    console.log('DarkType');
-                    document.documentElement.style.setProperty('--nav-hover-color', 'rgba(255,255,255,0.1)');
-                    document.documentElement.style.setProperty('--body-background-color', '#252525');
-                    document.documentElement.style.setProperty('--body-color-white2black', '#000000');
-                    document.documentElement.style.setProperty('--app-word-color', '#C0C6D4');
-                    document.documentElement.style.setProperty('--nav-background-color', '#282828');
-                    document.documentElement.style.setProperty('--nav-h2-word-color', '#C0C6D4');
-                    document.documentElement.style.setProperty('--nav-h3-word-color', '#C0C0C0');
-                    //document.documentElement.style.setProperty(`--nav-hash-word-color`, '#0059D2');     //btnlist 改这行
-                    document.documentElement.style.setProperty('--article-read-word-color', '#C0C6D4');
-                    document.documentElement.style.setProperty('--article-read-h2-word-color', '#0082FA');
-                    document.documentElement.style.setProperty('--article-table-text-color', '#6D7C88');
-                    document.documentElement.style.setProperty('--article-table-border-color', 'rgba(96, 96, 96, 0.5)');
-                    document.documentElement.style.setProperty('--article-table-cell-border-color', 'rgba(96, 96, 96, 0.1)');
-                    document.documentElement.style.setProperty('--index-item-background-color', 'rgba(255,255,255,0.05)');
-                    document.documentElement.style.setProperty('--index-item-hover-color', 'rgba(255,255,255,0.2)');
-                    document.documentElement.style.setProperty('--index-item-span-word-color', '#C0C6D4');
-                    document.documentElement.style.setProperty('--search-noresult-word-color', '#C0C6D4');
-                    document.documentElement.style.setProperty('--search-button-word-color', '#C0C6D4');
-                    document.documentElement.style.setProperty('--search-button-hover-word-color', '#FFFFFF');
-                    document.documentElement.style.setProperty('--search-items-word-color', '#6D7C88');
-                    document.documentElement.style.setProperty('--search-items-resultnum-word-color', '#6D7C88');
-                    document.documentElement.style.setProperty('--search-item-background-color', 'rgba(255,255,255,0.05)');
-                    document.documentElement.style.setProperty('--scrollbar-div-background-color', 'rgba(255,255,255,0.2)');
-                    document.documentElement.style.setProperty('--scrollbar-div-hover-background-color', 'rgba(255,255,255,0.25)');
-                    document.documentElement.style.setProperty('--scrollbar-div-select-background-color', 'rgba(255,255,255,0.3)');
-                    document.documentElement.style.setProperty('--index-h2-color', 'rgba(255,255,255,0.05)');
-                    document.documentElement.style.setProperty('--search-button-background-color-start', '#484848');
-                    document.documentElement.style.setProperty('--search-button-background-color-end', '#414141');
-                    document.documentElement.style.setProperty('--search-button-hover-color-start', '#676767');
-                    document.documentElement.style.setProperty('--search-button-hover-color-end', '#606060');
-                    document.documentElement.style.setProperty('--search-WikiSearch-color', '#6D7C88');
-                    document.documentElement.style.setProperty('--search-itemTitle-word-color', '#C0C6D4');
-                    document.documentElement.style.setProperty('--search-context-word-color', '#6D7C88');
-                    document.documentElement.style.setProperty('--tips-background-color', '#2A2A2A');
-                    document.documentElement.style.setProperty('--tips-border-color', 'rgba(0, 0, 0,0.3)');
-                } else if ("LightType" == themeType) {
-                    console.log('LightType');
-                    document.documentElement.style.setProperty('--nav-hover-color', 'rgba(0,0,0,0.1)');
-                    document.documentElement.style.setProperty('--body-background-color', '#F8F8F8');
-                    document.documentElement.style.setProperty('--body-color-white2black', '#FFFFFF');
-                    document.documentElement.style.setProperty('--app-word-color', '#414D68');
-                    document.documentElement.style.setProperty('--nav-background-color', '#FFFFFF');
-                    document.documentElement.style.setProperty('--nav-h2-word-color', '#001A2E');
-                    document.documentElement.style.setProperty('--nav-h3-word-color', '#001A2E');
-                    // document.documentElement.style.setProperty(`--nav-hash-word-color`, '#ca0c16');   //btn list 改这一行
-                    document.documentElement.style.setProperty('--article-read-word-color', '#000000');
-                    document.documentElement.style.setProperty('--article-read-h2-word-color', '#2CA7F8');
-                    document.documentElement.style.setProperty('--article-table-text-color', '#606060');
-                    document.documentElement.style.setProperty('--article-table-border-color', 'rgba(0, 0, 0, 0.1)');
-                    document.documentElement.style.setProperty('--article-table-cell-border-color', 'rgba(0, 0, 0, 0.05)');
-                    document.documentElement.style.setProperty('--index-item-background-color', '#FFFFFF');
-                    document.documentElement.style.setProperty('--index-item-hover-color', 'rgba(0,0,0,0.05)');
-                    document.documentElement.style.setProperty('--index-item-span-word-color', '#414D68');
-                    document.documentElement.style.setProperty('--search-noresult-word-color', '#000000');
-                    document.documentElement.style.setProperty('--search-button-word-color', '#414D68');
-                    document.documentElement.style.setProperty('--search-button-hover-word-color', '#001B2E');
-                    document.documentElement.style.setProperty('--search-items-word-color', '#000000');
-                    document.documentElement.style.setProperty('--search-items-resultnum-word-color', '#8AA1B4');
-                    document.documentElement.style.setProperty('--search-item-background-color', 'rgba(255,255,255,1)');
-                    document.documentElement.style.setProperty('--scrollbar-div-background-color', 'rgba(0,0,0,0.3)');
-                    document.documentElement.style.setProperty('--scrollbar-div-hover-background-color', 'rgba(0,0,0,0.5)');
-                    document.documentElement.style.setProperty('--scrollbar-div-select-background-color', 'rgba(0,0,0,0.4)');
-                    document.documentElement.style.setProperty('--index-h2-color', 'rgba(0, 0, 0, 0.1)');
-                    document.documentElement.style.setProperty('--search-button-background-color-start', '#E6E6E6');
-                    document.documentElement.style.setProperty('--search-button-background-color-end', '#E3E3E3');
-                    document.documentElement.style.setProperty('--search-button-hover-color-start', '#CACACA');
-                    document.documentElement.style.setProperty('--search-button-hover-color-end', '#C6C6C6');
-                    document.documentElement.style.setProperty('--search-WikiSearch-color', '#7a7a7a');
-                    document.documentElement.style.setProperty('--search-itemTitle-word-color', '#000000');
-                    document.documentElement.style.setProperty('--search-context-word-color', '#000000');
-                    document.documentElement.style.setProperty('--tips-background-color', '#F7F7F7');
-                    document.documentElement.style.setProperty('--tips-border-color', 'rgba(0,0,0,0.05)');
-                } else {
-                    console.log('Null');
-                }
-            };
-
-            var Base64 = {
-                encode: function encode(str) {
-                    // first we use encodeURIComponent to get percent-encoded UTF-8,
-                    // then we convert the percent encodings into raw bytes which
-                    // can be fed into btoa.
-                    return btoa(encodeURIComponent(str).replace(/%([0-9A-F]{2})/g, function toSolidBytes(match, p1) {
-                        return String.fromCharCode('0x' + p1);
-                    }));
-                },
-                decode: function decode(str) {
-                    // Going backwards: from bytestream, to percent-encoding, to original string.
-                    console.log("decode URIComponent decode");
-                    return decodeURIComponent(atob(str).split('').map(function (c) {
-                        return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
-                    }).join(''));
-                }
-            };
-
-            global.openSearchPage = function (keyword) {
-                global.handleLocation(global.hash);
-                console.log('====>', keyword);
-                var decodeKeyword = Base64.decode(keyword);
-                console.log("decodeKeyword", decodeKeyword, "===", encodeURIComponent(decodeKeyword));
-                console.log("openSearchPage", _this5.context.router.history);
-                console.log('lastUrl:' + global.lastUrlBeforeSearch + ', lastHistoryIndex: ' + global.lastHistoryIndex);
-
-                var entriesLen = _this5.context.router.history.entries.length;
-                if ('POP' == global.lastAction && lastHistoryIndex > 0 && lastHistoryIndex < entriesLen - 1) {
-                    console.log("global.opensearch...");
-                    _this5.context.router.history.entries.length = lastHistoryIndex;
-                    _this5.context.router.history.length = lastHistoryIndex;
-                    _this5.context.router.history.index = lastHistoryIndex - 1;
-
-                    _this5.setState({ searchResult: [] });
-                    _this5.context.router.history.push('/search/' + encodeURIComponent(decodeKeyword));
-
-                    return;
-                }
-
-                entriesLen = _this5.context.router.history.entries.length;
-                if (entriesLen > 1) {
-                    var entry = _this5.context.router.history.entries[entriesLen - 1];
-                    var entryIndex = entry.pathname.toString().indexOf("/search/");
-                    if (entryIndex != -1) {
-                        _this5.context.router.history.entries.length = entriesLen - 1;
-                        _this5.context.router.history.length = entriesLen - 1;
-                        _this5.context.router.history.index = _this5.context.router.history.entries.length - 1;
-                    }
-                }
-
-                _this5.setState({ searchResult: [] });
-                _this5.context.router.history.push('/search/' + encodeURIComponent(decodeKeyword));
-            };
-
-            this.context.router.history.listen(function (location, action) {
-                //console.log(`The current URL is ${location.pathname}${location.search}${location.hash}` );
-                //console.log(`The last navigation action was ${action}`);
-                //console.log("index:" + this.context.router.history.index);
-                console.log("app router.history.listen...");
-                global.lastUrlBeforeSearch = location.pathname;
-                global.lastHistoryIndex = _this5.context.router.history.index;
-                global.lastAction = action;
-            });
-
-            global.back = function () {
-                console.log("global.back()");
-                _this5.context.router.history.goBack();
-            };
-            this.componentDidUpdate();
-        }
-    }, {
-        key: 'componentDidUpdate',
-        value: function componentDidUpdate() {
-            if (global.qtObjects) {
-                console.log("app componentDidUpdate------------>", this.state.historyGO, this.context.router.history.length);
-                global.qtObjects.titleBar.setBackwardButtonActive(this.state.historyGO > 0
-                // global.gHistoryGo > 0
-                );
-                global.qtObjects.titleBar.setForwardButtonActive(this.context.router.history.length - this.state.historyGO > 1
-                // this.context.router.history.length  - global.gHistoryGo > 1
-                );
-            }
-        }
-    }, {
-        key: 'render',
-        value: function render() {
-            return _react2.default.createElement(
-                'div',
-                null,
-                ' ',
-                this.state.init && _react2.default.createElement(
-                    _reactRouterDom.Switch,
-                    null,
-                    _react2.default.createElement(_reactRouterDom.Route, { exact: true, path: '/',
-                        component: _index2.default
-                    }),
-                    ' ',
-                    _react2.default.createElement(_reactRouterDom.Route, { path: '/index',
-                        component: _index2.default
-                    }),
-                    ' ',
-                    _react2.default.createElement(_reactRouterDom.Route, { path: '/open/:file/:hash?/:key?',
-                        component: _main2.default
-                    }),
-                    ' ',
-                    _react2.default.createElement(_reactRouterDom.Route, { path: '/search/:keyword',
-                        component: _search2.default
-                    }),
-                    ' '
-                ),
-                ' '
-            );
-        }
-    }]);
-
-    return App;
-}(_react2.default.Component);
-
-App.contextTypes = {
-    router: _propTypes2.default.object
-};
-App.childContextTypes = {
-    searchResult: _propTypes2.default.array,
-    mismatch: _propTypes2.default.bool
-};
-
-(0, _reactDom.render)(_react2.default.createElement(
-    _reactRouterDom.Router,
-    { history: (0, _history.createMemoryHistory)('/') },
-    _react2.default.createElement(App, null)
-), document.getElementById('app'));
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./index.jsx":85,"./main.jsx":86,"./mdToHtml":87,"./search.jsx":90,"history":6,"prop-types":21,"react":66,"react-dom":35,"react-router-dom":51}],84:[function(require,module,exports){
-(function (global){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = require('react-dom');
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _smoothScrollIntoViewIfNeeded = require('smooth-scroll-into-view-if-needed');
-
-var _smoothScrollIntoViewIfNeeded2 = _interopRequireDefault(_smoothScrollIntoViewIfNeeded);
-
-var _mdToHtml = require('./mdToHtml');
-
-var _mdToHtml2 = _interopRequireDefault(_mdToHtml);
-
-var _scrollbar = require('./scrollbar.jsx');
-
-var _scrollbar2 = _interopRequireDefault(_scrollbar);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _toConsumableArray(arr) { if (Array.isArray(arr)) { for (var i = 0, arr2 = Array(arr.length); i < arr.length; i++) { arr2[i] = arr[i]; } return arr2; } else { return Array.from(arr); } }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Article = function (_Component) {
-  _inherits(Article, _Component);
-
-  function Article(props) {
-    _classCallCheck(this, Article);
-
-    var _this = _possibleConstructorReturn(this, (Article.__proto__ || Object.getPrototypeOf(Article)).call(this, props));
-
-    _this.state = {
-      preview: null,
-      smoothScroll: false,
-      fillblank: null,
-      bIsTimerOut: true
-    };
-
-    _this.scroll = _this.scroll.bind(_this);
-    _this.click = _this.click.bind(_this);
-    _this.contentMenu = _this.contentMenu.bind(_this);
-
-    var timerObj;
-    var bIsMount = false;
-    return _this;
-  }
-  //滚动到锚点
-
-
-  _createClass(Article, [{
-    key: 'scrollToHash',
-    value: function scrollToHash() {
-      var _this2 = this;
-
-      console.log("article scrollToHash ", this.hash);
-      var tempHash = this.hash;
-
-      var hashNode = document.getElementById(tempHash);
-      console.log("article scrollToHash temphash: " + tempHash + " " + hashNode);
-
-      if (this.state.preview != null) {
-        this.setState({ preview: null });
-      }
-
-      if (hashNode) {
-        console.log(" article  scrollToHash===============>", this.bIsMount);
-        clearTimeout(this.timerObj);
-        this.setState({ smoothScroll: true });
-
-        var timeVar = 800;
-        if (this.bIsMount) {
-          timeVar = 3 * 1000;
-          this.bIsMount = false;
-        }
-
-        this.timerObj = setTimeout(function () {
-          _this2.setState({ smoothScroll: false });
-        }, timeVar);
-
-        (0, _smoothScrollIntoViewIfNeeded2.default)(hashNode, { behavior: 'smooth', block: 'start' }).then(function () {
-
-          console.log(" scrollIntoView finish ===============>");
-
-          // this.setState({ smoothScroll: false });
-
-          //scrollIntoView函数存在异步,如果tempHash != this.hash时,说明存在异步操作,直接return. 
-          if (tempHash != _this2.hash) return;
-
-          console.log("scrollIntoView finish..");
-          //find parent h3 title of h4 title
-          var hList = _reactDom2.default.findDOMNode(_this2).querySelectorAll('h2,h3,h4,h5');
-          var currH3Hash = '';
-          for (var i = 0; i < hList.length; i++) {
-            if (hList[i].tagName == 'H3') {
-              currH3Hash = hList[i].id;
-            }
-            if (tempHash == hList[i].id && (hList[i].tagName == 'H4' || hList[i].tagName == 'H5')) {
-              console.log("article: scroll hlist:" + hList[i].tagName + "," + hList[i].id);
-              console.log("currH3Hash:" + currH3Hash);
-              _this2.hash = currH3Hash;
-              _this2.props.setHash(currH3Hash);
-              _this2.props.setScroll(currH3Hash);
-              break;
-            }
-          }
-        });
-      } else {
-        if (this.props.hlist.length > 0) {
-          this.props.setHash(this.props.hlist[0].id);
-        }
-      }
-    }
-  }, {
-    key: 'componentWillMount',
-    value: function componentWillMount() {
-      console.log("article componentWillMount");
-    }
-  }, {
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      console.log("article componentDidMount");
-      this.bIsMount = true;
-      this.componentDidUpdate();
-    }
-  }, {
-    key: 'shouldComponentUpdate',
-    value: function shouldComponentUpdate(nextProps, nextState) {
-      console.log("article shouldComponentUpdate====", this.hash, "prop hash:", this.props.hash);
-      // if (this.hash == this.props.hash)
-      // {
-      //   return false;
-      // }
-      return true;
-    }
-  }, {
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
-      console.log("article componentWillReceiveProps nextfile", nextProps.nextProps, ' prop.file:', this.props.file);
-      if (nextProps.file != this.props.file) {
-        this.hash = '';
-        this.load = false;
-        this.bIsMount = true;
-      }
-    }
-  }, {
-    key: 'componentWillUpdate',
-    value: function componentWillUpdate() {
-      console.log("article componentWillUpdate..");
-      var alink_arr = document.getElementsByTagName('a');
-      for (var i = 0; i < alink_arr.length; i++) {
-        alink_arr[i].onclick = function () {
-          global.isLinkClicked = true;
-        };
-      }
-    }
-  }, {
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate() {
-      var _this3 = this;
-
-      console.log("article componentDidUpdate.." + this.hash + " props hash->" + this.props.hash);
-      if (this.hash != this.props.hash) {
-        this.hash = this.props.hash;
-        this.scrollToHash();
-      }
-      if (!this.load) {
-        var article = _reactDom2.default.findDOMNode(this);
-        var read = article.querySelector('#read');
-        read.focus();
-        var imgList = [].concat(_toConsumableArray(article.querySelectorAll('img')));
-
-        var loadCount = 0;
-        var promiseAll = [];
-        imgList.map(function (el) {
-          promiseAll.push(new Promise(function (resolve, reject) {
-            el.onload = function () {
-              console.log("------img onload---------");
-              resolve(el);
-            };
-            el.onerror = function () {
-              console.log("------img onerror---------");
-              resolve(el);
-            };
-          }));
-        });
-        Promise.all(promiseAll).then(function () {
-          // 全部图片加载完成
-          _this3.load = true;
-          _this3.scrollToHash();
-          var last = article.querySelector('#' + _this3.props.hlist[_this3.props.hlist.length - 1].id);
-          var fillblank = {
-            marginBottom: article.clientHeight - (read.clientHeight - last.offsetTop)
-          };
-          _this3.setState({
-            fillblank: fillblank
-          });
-        });
-      }
-    }
-  }, {
-    key: 'gethID',
-    value: function gethID(htext) {
-      var id = this.props.hlist[0].id;
-      console.log(this.props.hlist[0]);
-      var hlist = this.props.hlist.filter(function (h) {
-        return h.text == htext;
-      });
-      if (hlist.length > 0) {
-        id = hlist[0].id;
-      }
-      console.log(htext, id);
-      return id;
-    }
-  }, {
-    key: 'handleWheelScroll',
-    value: function handleWheelScroll(e) {
-      global.isMouseScrollArticle = true;
-    }
-  }, {
-    key: 'handleKeyDown',
-    value: function handleKeyDown(e) {
-      if (38 == e.keyCode || 40 == e.keyCode) {
-        global.isMouseScrollArticle = true;
-      }
-    }
-  }, {
-    key: 'handleKeyUp',
-    value: function handleKeyUp(e) {
-      if (38 == e.keyCode || 40 == e.keyCode) {
-        global.isMouseScrollArticle = true;
-      }
-    }
-
-    //滚动事件
-
-  }, {
-    key: 'scroll',
-    value: function scroll() {
-      // if (!this.load) {
-      //   return;
-      // }
-      if (this.state.smoothScroll) {
-        return;
-      }
-      if (this.state.preview != null) {
-        this.setState({ preview: null });
-      }
-      var hList = _reactDom2.default.findDOMNode(this).querySelectorAll('h2,h3');
-      var aritleView = this.refs.articleView;
-
-      var hash = hList[0].id;
-      for (var i = 0; i < hList.length; i++) {
-        //console.log("article: scroll hlist:" + hList[i]);
-        //console.log("article: scroll hlist offset top:" + hList[i].getBoundingClientRect().top);
-        var articleTop = Math.abs(aritleView.getBoundingClientRect().top);
-        //console.log(hList[i].id + "," + hList[i].nodeName + ", hList[" + i + "].offsetTop" + hList[i].offsetTop + ", articleTop" + articleTop);
-        var offsetY = 10;
-        if (hList[i].nodeName == 'H2') {
-          offsetY = 10;
-        } else if (hList[i].nodeName == 'H3') {
-          offsetY = 30;
-        }
-        if (hList[i].offsetTop - offsetY >= articleTop) {
-          //console.log("article: scroll hlist offset top:" + hList[i].offsetTop);
-          break;
-        }
-        hash = hList[i].id;
-      }
-      console.log("article: scroll this.hash:" + this.hash + "   hash:" + hash);
-      if (this.hash != hash) {
-        console.log('article: scroll hash update');
-        this.hash = hash;
-        this.props.setHash(hash);
-        if (global.isMouseScrollArticle) {
-          this.props.setScroll(hash);
-        }
-      }
-    }
-
-    //链接处理
-
-  }, {
-    key: 'click',
-    value: function click(e) {
-      console.log("article click");
-      if (this.state.preview != null) {
-        this.setState({ preview: null });
-      }
-      console.log("======>", e.target.nodeName);
-      switch (e.target.nodeName) {
-        case 'IMG':
-          e.preventDefault();
-          var src = e.target.src;
-          if (src.indexOf('.svg') != -1) {
-            return;
-          }
-          console.log('imageViewer', src);
-          global.qtObjects.imageViewer.open(src);
-          return;
-        case 'A':
-          {
-            var dmanProtocol = 'dman://';
-            var hashProtocol = '#';
-            var httpProtocol = 'http';
-            var _href = e.target.getAttribute('href');
-            console.log("href:" + _href);
-            switch (0) {
-              case _href.indexOf(hashProtocol):
-                e.preventDefault();
-                this.props.setHash(document.querySelector('[text="' + _href.slice(1) + '"]').id);
-                return;
-              case _href.indexOf(dmanProtocol):
-                e.preventDefault();
-
-                var _href$slice$split = _href.slice(dmanProtocol.length + 1).split('#'),
-                    _href$slice$split2 = _slicedToArray(_href$slice$split, 2),
-                    appName = _href$slice$split2[0],
-                    hash = _href$slice$split2[1];
-
-                global.openTitle(appName, hash);
-                return;
-              case _href.indexOf(httpProtocol):
-                e.preventDefault();
-                global.qtObjects.imageViewer.openHttpUrl(_href);
-                return;
-            }
-          }
-        //解决bug-46888, 当a标签内含有span标签,点击获取的是span标签,此时用其父元素来处理.
-        case 'SPAN':
-          e.preventDefault();
-          var parNode = e.target.parentNode;
-          if (parNode.nodeName == 'A') {
-            var _dmanProtocol = 'dman://';
-            var _hashProtocol = '#';
-            var _httpProtocol = 'http';
-            var hrefTmp = parNode.getAttribute('href');
-            switch (0) {
-              case hrefTmp.indexOf(_hashProtocol):
-                e.preventDefault();
-                this.props.setHash(document.querySelector('[text="' + href.slice(1) + '"]').id);
-                return;
-              case hrefTmp.indexOf(_dmanProtocol):
-                e.preventDefault();
-
-                var _hrefTmp$slice$split = hrefTmp.slice(_dmanProtocol.length + 1).split('#'),
-                    _hrefTmp$slice$split2 = _slicedToArray(_hrefTmp$slice$split, 2),
-                    _appName = _hrefTmp$slice$split2[0],
-                    _hash = _hrefTmp$slice$split2[1];
-
-                global.openTitle(_appName, _hash);
-                return;
-              case hrefTmp.indexOf(_httpProtocol):
-                e.preventDefault();
-                global.qtObjects.imageViewer.openHttpUrl(hrefTmp);
-                return;
-            }
-          }
-          return;
-      }
-    }
-
-    //右键菜单事件
-
-  }, {
-    key: 'contentMenu',
-    value: function contentMenu(e) {
-      switch (e.target.nodeName) {
-        //当前为图片或者链接时,右键清除选中状态.
-        //当前为图片
-        case 'IMG':
-          e.preventDefault();
-          document.getSelection().empty();
-          return;
-        //当前为链接
-        case 'A':
-          e.preventDefault();
-          document.getSelection().empty();
-          return;
-      }
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this4 = this;
-
-      console.log("article render...", this.state.preview);
-      return _react2.default.createElement(
-        'div',
-        { id: 'article' },
-        _react2.default.createElement(
-          'div',
-          { id: 'article_bg' },
-          _react2.default.createElement(
-            _scrollbar2.default,
-            { onScroll: this.scroll,
-              onWheel: function onWheel(e) {
-                return _this4.handleWheelScroll(e);
-              },
-              onKeyUp: function onKeyUp(e) {
-                return _this4.handleKeyUp(e);
-              },
-              onKeyDown: function onKeyDown(e) {
-                return _this4.handleKeyDown(e);
-              } },
-            _react2.default.createElement('div', {
-              id: 'read',
-              ref: 'articleView',
-              className: 'read',
-              tabIndex: '-1',
-              dangerouslySetInnerHTML: { __html: this.props.html },
-              style: this.state.fillblank,
-              onClick: this.click,
-              onContextMenu: this.contentMenu
-            })
-          )
-        )
-      );
-    }
-  }]);
-
-  return Article;
-}(_react.Component);
-
-exports.default = Article;
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./mdToHtml":87,"./scrollbar.jsx":89,"react":66,"react-dom":35,"smooth-scroll-into-view-if-needed":75}],85:[function(require,module,exports){
-(function (global){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactRouterDom = require('react-router-dom');
-
-var _reactDom = require('react-dom');
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _scrollbar = require('./scrollbar.jsx');
-
-var _scrollbar2 = _interopRequireDefault(_scrollbar);
-
-var _os = require('os');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-global.show = false;
-
-var Item = function (_Component) {
-  _inherits(Item, _Component);
-
-  function Item(props) {
-    _classCallCheck(this, Item);
-
-    var _this = _possibleConstructorReturn(this, (Item.__proto__ || Object.getPrototypeOf(Item)).call(this, props));
-
-    _this.state = {
-      name: '',
-      title: '',
-      logo: '',
-      show: false,
-      desktopname: ''
-    };
-    console.log('main item constructor...');
-    _this.init();
-    return _this;
-  }
-
-  _createClass(Item, [{
-    key: 'init',
-    value: function init() {
-      var _this2 = this;
-
-      var filePath;
-      var appName = this.props.appName;
-      var myPromise = new Promise(function (resolve, reject) {
-        global.qtObjects.manual.appToPath(appName, function (filepath) {
-          filePath = filepath;
-          //error： 目标文件不存在
-          if (filePath == 'error') {
-            return;
-          }
-          resolve();
-        });
-      });
-
-      myPromise.then(function () {
-        global.readFile(filePath, function (data) {
-          var _data$substr$split = data.substr('# '.length, data.indexOf('\n')).split('|'),
-              _data$substr$split2 = _slicedToArray(_data$substr$split, 2),
-              title = _data$substr$split2[0],
-              desktopname = _data$substr$split2[1];
-
-          global.qtObjects.manual.getAppIconPath(desktopname, function (logopath) {
-            //按约定会在图标主题放置dde图标，但为保险起见如果未获取到则取common中的
-            if (logopath == '' && desktopname == "dde") {
-              logopath = filePath.substr(0, filePath.lastIndexOf('/') + 1) + '../common/dde.svg';
-            }
-            _this2.setState({ logo: logopath });
-          });
-
-          global.qtObjects.manual.getLocalAppName(desktopname, function (appname) {
-            _this2.setState({ title: appname });
-          });
-
-          _this2.setState({ desktopname: desktopname, file: _this2.file, show: true });
-        });
-      });
-      global.show = true;
-      //2021.3.4产品决定取消图标动态切换，使用default图标主题，暂时注释
-      //   global.qtObjects.manual.iconThemeChanged.connect(
-      //     this.iconThemeChange.bind(this)
-      //  );
-    }
-  }, {
-    key: 'iconThemeChange',
-    value: function iconThemeChange(themeType) {
-      var _this3 = this;
-
-      global.qtObjects.manual.getAppIconPath(this.state.desktopname, function (logopath) {
-        if (global.show === true) {
-          _this3.setState({ logo: logopath });
-        }
-      });
-    }
-  }, {
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
-      console.log("index item componentWillReceivePropss........");
-      this.init();
-    }
-  }, {
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      global.show = false;
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this4 = this;
-
-      var contentSpan = null;
-      if (this.props.isOpened) {
-        contentSpan = _react2.default.createElement(
-          'span',
-          { className: 'content', lang: global.lang },
-          this.state.title
-        );
-      } else {
-        contentSpan = _react2.default.createElement(
-          'span',
-          { className: 'content', lang: global.lang },
-          _react2.default.createElement('span', { className: 'tag' }),
-          this.state.title
-        );
-      }
-
-      return this.state.show && _react2.default.createElement(
-        'div',
-        {
-          draggable: 'false',
-          tabIndex: '1',
-          className: 'item',
-          onClick: function onClick() {
-            return global.open(_this4.props.appName);
-          },
-          onKeyPress: function onKeyPress(e) {
-            if (e.key === 'Enter') {
-              global.open(_this4.props.appName);
-            }
-          }
-        },
-        _react2.default.createElement('img', {
-          draggable: 'false',
-          src: this.state.logo,
-          alt: this.props.appName
-        }),
-        _react2.default.createElement('br', null),
-        contentSpan
-      );
-    }
-  }]);
-
-  return Item;
-}(_react.Component);
-
-var Index = function (_Component2) {
-  _inherits(Index, _Component2);
-
-  function Index(props) {
-    _classCallCheck(this, Index);
-
-    var _this5 = _possibleConstructorReturn(this, (Index.__proto__ || Object.getPrototypeOf(Index)).call(this, props));
-
-    _this5.state = {
-      appList: [],
-      openedAppList: []
-    };
-
-    global.qtObjects.manual.getSystemManualList(function (appList) {
-      console.log("======>applist==+>", appList);
-      _this5.setState({ appList: appList });
-    });
-
-    global.qtObjects.manual.getUsedAppList(function (openedAppList) {
-      return _this5.setState({ openedAppList: openedAppList });
-    });
-    return _this5;
-  }
-
-  _createClass(Index, [{
-    key: 'bIsBeOpen',
-    value: function bIsBeOpen(app) {
-      if (this.state.openedAppList.indexOf(app) != -1) {
-        return true;
-      }
-      return false;
-    }
-  }, {
-    key: 'shouldComponentUpdate',
-    value: function shouldComponentUpdate(nextProps, nextState) {
-      var _this6 = this;
-
-      console.log("index shouldcomponentupdate");
-      if (global.bIsReload) {
-        global.qtObjects.manual.getSystemManualList(function (appList) {
-          _this6.setState({ appList: appList });
-        });
-
-        global.qtObjects.manual.getUsedAppList(function (openedAppList) {
-          return _this6.setState({ openedAppList: openedAppList });
-        });
-        global.bIsReload = false;
-      }
-      // else if (nextState.appList.toString() == this.state.appList.toString() 
-      //           && nextState.openedAppList.toString() == this.state.openedAppList.toString()) 
-      // {
-      //   console.log("index no update");
-      //   return false;
-      // }
-      return true;
-    }
-  }, {
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate() {
-      _reactDom2.default.findDOMNode(this).querySelector('#index').focus();
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this7 = this;
-
-      console.log('index render...');
-      var sysSoft = ['dde'].filter(function (appName) {
-        return _this7.state.appList.indexOf(appName) != -1;
-      });
-      var appSoft = JSON.parse(JSON.stringify(this.state.appList)); //使用数据副本
-      var index = appSoft.indexOf("dde");
-      if (index !== -1) {
-        appSoft.splice(index, 1);
-      }
-
-      return _react2.default.createElement(
-        _scrollbar2.default,
-        null,
-        _react2.default.createElement(
-          'div',
-          { id: 'index', tabIndex: '-1' },
-          _react2.default.createElement(
-            'h2',
-            null,
-            global.i18n['System']
-          ),
-          sysSoft.length > 0 && _react2.default.createElement(
-            'div',
-            { id: 'forMargin' },
-            _react2.default.createElement(
-              'div',
-              { className: 'items' },
-              sysSoft.map(function (appName) {
-                return _react2.default.createElement(Item, { key: appName, appName: appName, isOpened: _this7.bIsBeOpen(appName), type: "system" });
-              })
-            )
-          ),
-          _react2.default.createElement(
-            'h2',
-            null,
-            global.i18n['Applications']
-          ),
-          _react2.default.createElement(
-            'div',
-            { id: 'forMargin' },
-            _react2.default.createElement(
-              'div',
-              { className: 'items' },
-              appSoft.map(function (appName) {
-                return _react2.default.createElement(Item, { key: appName, appName: appName, isOpened: _this7.bIsBeOpen(appName), type: "application" });
-              })
-            )
-          )
-        )
-      );
-    }
-  }]);
-
-  return Index;
-}(_react.Component);
-
-exports.default = Index;
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./scrollbar.jsx":89,"os":13,"react":66,"react-dom":35,"react-router-dom":51}],86:[function(require,module,exports){
-(function (global){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _jquery = require('jquery');
-
-var _jquery2 = _interopRequireDefault(_jquery);
-
-var _nav = require('./nav.jsx');
-
-var _nav2 = _interopRequireDefault(_nav);
-
-var _article = require('./article.jsx');
-
-var _article2 = _interopRequireDefault(_article);
-
-var _mdToHtml = require('./mdToHtml.js');
-
-var _mdToHtml2 = _interopRequireDefault(_mdToHtml);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Main = function (_Component) {
-  _inherits(Main, _Component);
-
-  function Main(props) {
-    _classCallCheck(this, Main);
-
-    var _this = _possibleConstructorReturn(this, (Main.__proto__ || Object.getPrototypeOf(Main)).call(this, props));
-
-    _this.state = {
-      init: false,
-      bTest: true
-    };
-    var _this$props$match$par = _this.props.match.params,
-        file = _this$props$match$par.file,
-        hash = _this$props$match$par.hash,
-        key = _this$props$match$par.key;
-
-    console.log("main constructor...");
-    _this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null, key);
-    var showFloatTimer = null;
-
-    _this.setHash = _this.setHash.bind(_this);
-    _this.setScroll = _this.setScroll.bind(_this);
-    _this.onSupportClick = _this.onSupportClick.bind(_this);
-    return _this;
-  }
-
-  _createClass(Main, [{
-    key: 'init',
-    value: function init(file, hash) {
-      var _this2 = this;
-
-      var key = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
-
-      if (key !== '%') {
-        key = decodeURIComponent(key);
-      }
-      console.log("main init==>file:", file, " hash:", hash, " key:", key);
-
-      global.hash = hash;
-      var filePath = file;
-      // if (filePath.indexOf('/') == -1) {
-      //   if (filePath == "dde")
-      //   {
-      //     filePath = `${global.path}/system/${file}/${global.lang}/index.md`;
-      //   }
-      //   else{
-      //     filePath = `${global.path}/application/${file}/${global.lang}/index.md`;
-      //   }
-
-      // }
-
-      var myPromise = new Promise(function (resolve, reject) {
-        if (filePath.indexOf('/') == -1) {
-          global.qtObjects.manual.appToPath(file, function (filepath) {
-            filePath = filepath;
-            resolve();
-          });
-        } else {
-          resolve();
-        }
-      });
-      myPromise.then(function () {
-        global.readFile(filePath, function (data) {
-          console.log("main init===>readfile finish...", filePath);
-
-          var _m2h = (0, _mdToHtml2.default)(filePath, data, key),
-              html = _m2h.html,
-              hlist = _m2h.hlist;
-
-          _this2.setState({
-            file: file,
-            html: html,
-            hlist: hlist,
-            init: true,
-            hash: hash ? hash : hlist[0].id
-          });
-        });
-      });
-    }
-  }, {
-    key: 'setHash',
-    value: function setHash(hash) {
-      console.log("main setHash: " + hash);
-      if (global.isLinkClicked) {
-        console.log("main --setHash");
-        global.hash = hash;
-        global.isLinkClicked = false;
-      }
-      console.log("main*********setHash");
-      this.setState({ hash: hash });
-    }
-
-    // setScrollTitle(hash){
-    //   console.log("main setScrollTitle: " + hash);
-    //   setTimeout(() => {
-    //     global.hash = hash;
-    //     global.oldHash = hash;
-    //     global.isMouseClickNav = true;
-    //     global.isMouseScrollArticle = false;
-    //     this.setState({ hash });
-    //   },800);
-    // }
-
-  }, {
-    key: 'setScroll',
-    value: function setScroll(hash) {
-      console.log("main setScroll:" + hash);
-      global.hash = hash;
-      this.setState({ hash: hash });
-    }
-
-    //处理Nav类的Over Out Move事件,自定义Title框
-
-  }, {
-    key: 'handleNavOver',
-    value: function handleNavOver(e) {
-      var value = e.currentTarget.innerHTML;
-      clearTimeout(this.showFloatTimer);
-      this.showFloatTimer = setTimeout(function () {
-        (0, _jquery2.default)('.tooltip-wp').attr('data-title', value); //动态设置data-title属性
-        (0, _jquery2.default)('.tooltip-wp').fadeIn(200); //浮动框淡出
-      }, 300);
-    }
-  }, {
-    key: 'handleNavOut',
-    value: function handleNavOut(e) {
-      clearTimeout(this.showFloatTimer);
-      (0, _jquery2.default)('.tooltip-wp').hide();
-    }
-  }, {
-    key: 'handleNavMove',
-    value: function handleNavMove(e) {
-      var xPage = e.pageX + 10;
-      var yPage = e.pageY;
-      if (yPage + 40 > document.body.scrollHeight) {
-        yPage = document.body.scrollHeight - 40;
-      }
-      setTimeout(function () {
-        (0, _jquery2.default)('.tooltip-wp').css({
-          'top': yPage + 'px',
-          'left': xPage + 'px'
-        });
-      }, 150);
-    }
-  }, {
-    key: 'onSupportClick',
-    value: function onSupportClick() {
-      global.qtObjects.manual.supportClick();
-    }
-  }, {
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
-      var _this3 = this;
-
-      var _nextProps$match$para = nextProps.match.params,
-          file = _nextProps$match$para.file,
-          hash = _nextProps$match$para.hash,
-          key = _nextProps$match$para.key;
-
-
-      if (global.bIsReload) {
-        var parentText;
-        var hashText = '';
-
-        for (var i = 0; i < this.state.hlist.length; i++) {
-          var h = this.state.hlist[i];
-          if (h.type == 'h2') {
-            parentText = h.text;
-          }
-          if (h.id == this.state.hash) {
-            hashText = h.text;
-            break;
-          }
-        }
-
-        var filePath;
-
-        // if (this.state.file == "dde")
-        // {
-        //   filePath = `${global.path}/system/${this.state.file}/${global.lang}/index.md`;
-        // }
-        // else{
-        //   filePath = `${global.path}/application/${this.state.file}/${global.lang}/index.md`;
-        // }
-        var myPromise = new Promise(function (resolve, reject) {
-          global.qtObjects.manual.appToPath(file, function (filepath) {
-            filePath = filepath;
-            resolve();
-          });
-        });
-        myPromise.then(function () {
-          global.readFile(filePath, function (data) {
-            console.log("main init===>readfile finish...", filePath);
-
-            var _m2h2 = (0, _mdToHtml2.default)(filePath, data, key),
-                html = _m2h2.html,
-                hlist = _m2h2.hlist;
-
-            var newParentHash = 'h1';
-            var newChildHash;
-            var curHash;
-
-            for (var i = 0; i < hlist.length; i++) {
-              var h = hlist[i];
-              if (h.text == parentText) {
-                newParentHash = h.id;
-              } else if (h.text == hashText) {
-                newChildHash = h.id;
-                break;
-              }
-            }
-
-            if (newChildHash) {
-              curHash = newChildHash;
-            } else {
-              curHash = newParentHash;
-            }
-            console.log('================>', curHash);
-
-            _this3.init(decodeURIComponent(file), curHash, key);
-            global.bIsReload = false;
-          });
-        });
-      } else {
-        console.log("main componentWillReceivePropss: " + file + " " + hash + "  this.file:" + this.state.file + " this.hash" + this.state.hash + " key:", key);
-        //仅当页面文件发生改变时(文件改变或hash值发生改变),才刷新页面.
-        if (decodeURIComponent(file) != this.state.file || file == this.state.file && hash != this.state.hash) {
-          this.init(decodeURIComponent(file), hash ? decodeURIComponent(hash) : null, key);
-        }
-      }
-    }
-  }, {
-    key: 'shouldComponentUpdate',
-    value: function shouldComponentUpdate(nextProps, nextState) {
-      console.log("main shouldComponentUpdate====");
-      return true;
-    }
-  }, {
-    key: 'componentWillUpdate',
-    value: function componentWillUpdate() {
-      console.log("main componentWillUpdate..");
-    }
-  }, {
-    key: 'componentWillUnmount',
-    value: function componentWillUnmount() {
-      global.hash = '';
-      global.isMouseClickNav = false;
-      global.isMouseScrollArticle = false;
-      global.isLinkClicked = false;
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this4 = this;
-
-      console.log("main render....hash:", this.state.hash);
-      console.log("main render....hList:", this.state.hlist);
-      var support = null;
-      if (global.isShowHelperSupport) {
-        support = _react2.default.createElement(
-          'div',
-          { className: 'support-div', onClick: this.onSupportClick },
-          _react2.default.createElement('img', { className: 'support', src: './pic.svg' })
-        );
-      } else {
-        support = _react2.default.createElement('div', null);
-      }
-
-      return this.state.init && _react2.default.createElement(
-        'div',
-        { id: 'main' },
-        _react2.default.createElement(_nav2.default, {
-          hlist: this.state.hlist,
-          hash: this.state.hash,
-          setHash: this.setHash,
-          onNavOver: function onNavOver(e) {
-            return _this4.handleNavOver(e);
-          },
-          onNavOut: function onNavOut(e) {
-            return _this4.handleNavOut(e);
-          },
-          onNavMove: function onNavMove(e) {
-            return _this4.handleNavMove(e);
-          }
-        }),
-        _react2.default.createElement(_article2.default, {
-          file: this.props.match.params.file,
-          hlist: this.state.hlist,
-          html: this.state.html,
-          hash: this.state.hash,
-          setHash: this.setHash,
-          setScroll: this.setScroll
-        }),
-        support,
-        _react2.default.createElement('div', { className: 'tooltip-wp' })
-      );
-    }
-  }]);
-
-  return Main;
-}(_react.Component);
-
-exports.default = Main;
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./article.jsx":84,"./mdToHtml.js":87,"./nav.jsx":88,"jquery":10,"react":66}],87:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-    value: true
-});
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-exports.default = function (mdFile, mdData) {
-    var key = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
-
-    var hlist = [];
-    var info = {};
-    var html = '';
-
-    var path = mdFile.slice(0, mdFile.lastIndexOf('/') + 1);
-    var renderer = new _marked2.default.Renderer();
-    var count = 0;
-    renderer.heading = function (text, level) {
-        var id = 'h' + count;
-        count++;
-        if (level == 1) {
-            var _text$split = text.split('|'),
-                _text$split2 = _slicedToArray(_text$split, 2),
-                title = _text$split2[0],
-                logo = _text$split2[1];
-
-            logo = path + logo;
-            console.log(logo);
-            info = { title: title, logo: logo };
-            return '';
-        }
-        if (level == 2) {
-            text = text.split('|')[0];
-        }
-        var type = 'h' + level;
-        if (level == 2 || level == 3) {
-            hlist.push({ id: id, text: text, type: type });
-        }
-        return '<' + type + ' id="' + id + '" text="' + text + '">' + text + '</' + type + '>\n';
-    };
-    console.log(path);
-    renderer.image = function (href, title, text) {
-        var hrefX2 = href;
-
-        // if (devicePixelRatio >= 5.0 && href.indexOf('.svg') == -1) {
-        //     // global.qtObjects.manual.LogPrint('start hrefX2:' + hrefX2);
-        //     let path = href.split('.');
-        //     let ext = path.pop();
-        //     // global.qtObjects.manual.LogPrint(path + '--' + ext);
-        //     hrefX2 = `${path.join('.')}x2.${ext}`;
-        //     // global.qtObjects.manual.LogPrint('end hrefX2:' + hrefX2);
-        // }
-
-        return '<img src="' + hrefX2 + '" data-src="' + href + '" alt="' + text + '" />';
-    };
-
-    html = (0, _marked2.default)(mdData, { renderer: renderer }).replace(/src="/g, '$&' + path);
-    console.log("-----------------------------------");
-    if (key != '') {
-        console.log("regexp==============>", key);
-        //将'=-='字符串 反向还原成'%'
-        key = key.replace(/=-=/g, '%');
-
-        console.log("regexp===>", key);
-
-        //将关键字转义
-        var keyTemp = new RegExp(escapeRegExp(key), 'gi');
-
-        // key = re;
-        var finder = new RegExp(">.*?<", 'g'); // 提取位于标签内的文本，避免误操作 class、id 等
-        html = html.replace(finder, function (matched) {
-            return matched.replace(new RegExp(keyTemp, 'gi'), "<span style='background-color: yellow'>$&</span>");
-        });
-    }
-
-    return { html: html, hlist: hlist, info: info };
-};
-
-var _marked = require('marked');
-
-var _marked2 = _interopRequireDefault(_marked);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-//转义特定字符
-function escapeRegExp(text) {
-    return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
-};
-
-},{"marked":11}],88:[function(require,module,exports){
-(function (global){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = require('react-dom');
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _reactRouterDom = require('react-router-dom');
-
-var _scrollbar = require('./scrollbar.jsx');
-
-var _scrollbar2 = _interopRequireDefault(_scrollbar);
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Nav = function (_Component) {
-  _inherits(Nav, _Component);
-
-  function Nav(props) {
-    _classCallCheck(this, Nav);
-
-    var _this = _possibleConstructorReturn(this, (Nav.__proto__ || Object.getPrototypeOf(Nav)).call(this, props));
-
-    _this.contentMenu = _this.contentMenu.bind(_this);
-    return _this;
-  }
-
-  _createClass(Nav, [{
-    key: 'componentWillMount',
-    value: function componentWillMount() {
-      console.log("nav componentWillMount");
-    }
-  }, {
-    key: 'componentDidMount',
-    value: function componentDidMount() {
-      console.log("nav componentDidMount");
-      document.getElementById('article').style.marginLeft = _reactDom2.default.findDOMNode(this).clientWidth;
-      this.componentDidUpdate();
-    }
-  }, {
-    key: 'shouldComponentUpdate',
-    value: function shouldComponentUpdate(newProps, newState) {
-      console.log("nav shouldComponentUpdate newProps:" + newProps.hash + " global hash:" + global.hash);
-
-      if ('' == global.hash) {
-        return true;
-      }
-
-      if ('POP' == global.lastAction) {
-        return true;
-      }
-      //why........
-      if (newProps.hash != global.hash) {
-        return false;
-      }
-      return true;
-    }
-  }, {
-    key: 'componentWillUpdate',
-    value: function componentWillUpdate() {
-      console.log("nav componentWillUpdate");
-    }
-  }, {
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate() {
-      console.log("nav componentDidUpdate");
-      var hashDOM = _reactDom2.default.findDOMNode(this).querySelector('.hash');
-      if (hashDOM == null) {
-        return;
-      }
-      if (hashDOM.getAttribute('cid') == this.props.hlist[0].id) {
-        document.getElementById('backHome').scrollIntoViewIfNeeded(false);
-        return;
-      }
-      hashDOM.scrollIntoViewIfNeeded(false);
-    }
-  }, {
-    key: 'click',
-    value: function click(e) {
-      var cid = e.target.getAttribute('cid');
-      if (cid) {
-        console.log('搜索结果', cid);
-        global.hash = cid;
-        global.isMouseClickNav = true;
-        global.isMouseScrollArticle = false;
-        this.props.setHash(cid);
-      }
-    }
-  }, {
-    key: 'wheel',
-    value: function wheel(e) {
-      var nav = _reactDom2.default.findDOMNode(this);
-      if (e.deltaY > 0) {
-        if (e.deltaY > 0 && nav.scrollHeight == nav.clientHeight + nav.scrollTop) {
-          e.preventDefault();
-        } else if (e.deltaY < 0 && nav.scrollTop == 0) {
-          e.preventDefault();
-        }
-      }
-    }
-
-    //右键菜单事件,去除选中状态
-
-  }, {
-    key: 'contentMenu',
-    value: function contentMenu(e) {
-      e.preventDefault();
-      document.getSelection().empty();
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this2 = this;
-
-      console.log("nav render...", this.props.hlist.length);
-      var maxWidth = 0;
-      var c = 0;
-
-      if (this.props.hlist.length > 0) {
-        var max = this.props.hlist[0];
-        this.props.hlist.map(function (h) {
-          if (max.text.length < h.text.length) {
-            max = h;
-          }
-        });
-        maxWidth = max.text.length;
-        if (global.lang === 'zh_CN') {
-          if (maxWidth <= 6) {
-            c = 3;
-          } else {
-            c = 1;
-          }
-          maxWidth *= 18;
-        } else {
-          if (maxWidth <= 20) {
-            c = 2;
-          }
-          maxWidth *= 9;
-        }
-      }
-
-      return _react2.default.createElement(
-        'div',
-        {
-          id: 'nav',
-          lang: global.lang,
-          onMouseDown: function onMouseDown(e) {
-            return _this2.click(e);
-          },
-          onContextMenu: this.contentMenu
-          // style={{
-          //   width: `calc(${maxWidth}px + ${c}rem)`
-          // }}
-        },
-        _react2.default.createElement(
-          _scrollbar2.default,
-          null,
-          _react2.default.createElement(
-            'div',
-            {
-              type: 'h2',
-              id: 'backHome',
-              className: 'h',
-              onClick: function onClick() {
-                return global.backHome();
-              }
-            },
-            global.i18n['ToIndexPage']
-          ),
-          this.props.hlist.map(function (h) {
-            return _react2.default.createElement(
-              'div',
-              {
-                key: h.id,
-                cid: h.id,
-                type: h.type,
-                className: _this2.props.hash == h.id ? 'h hash' : 'h',
-                onMouseOver: function onMouseOver(e) {
-                  return _this2.props.onNavOver(e);
-                },
-                onMouseOut: function onMouseOut(e) {
-                  return _this2.props.onNavOut(e);
-                },
-                onMouseMove: function onMouseMove(e) {
-                  return _this2.props.onNavMove(e);
-                }
-              },
-              h.text
-            );
-          })
-        )
-      );
-    }
-  }]);
-
-  return Nav;
-}(_react.Component);
-
-exports.default = Nav;
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./scrollbar.jsx":89,"react":66,"react-dom":35,"react-router-dom":51}],89:[function(require,module,exports){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; };
-
-exports.default = function (props) {
-  return _react2.default.createElement(
-    _reactCustomScrollbars.Scrollbars,
-    _extends({}, props, { className: 'scrollbar', autoHide: true, renderTrackHorizontal: renderScrollBarTrackHorizontal, autoHideTimeout: 800 }),
-    props.children
-  );
-};
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactCustomScrollbars = require('react-custom-scrollbars');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function renderScrollBarTrackHorizontal(props) {
-  return _react2.default.createElement('span', null);
-}
-
-},{"react":66,"react-custom-scrollbars":27}],90:[function(require,module,exports){
-(function (global){
-'use strict';
-
-Object.defineProperty(exports, "__esModule", {
-  value: true
-});
-
-var _slicedToArray = function () { function sliceIterator(arr, i) { var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"]) _i["return"](); } finally { if (_d) throw _e; } } return _arr; } return function (arr, i) { if (Array.isArray(arr)) { return arr; } else if (Symbol.iterator in Object(arr)) { return sliceIterator(arr, i); } else { throw new TypeError("Invalid attempt to destructure non-iterable instance"); } }; }();
-
-var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-var _react = require('react');
-
-var _react2 = _interopRequireDefault(_react);
-
-var _reactDom = require('react-dom');
-
-var _reactDom2 = _interopRequireDefault(_reactDom);
-
-var _propTypes = require('prop-types');
-
-var _propTypes2 = _interopRequireDefault(_propTypes);
-
-var _scrollbar = require('./scrollbar.jsx');
-
-var _scrollbar2 = _interopRequireDefault(_scrollbar);
-
-var _reactRouterDom = require('react-router-dom');
-
-function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-var Items = function (_Component) {
-  _inherits(Items, _Component);
-
-  function Items(props) {
-    _classCallCheck(this, Items);
-
-    var _this = _possibleConstructorReturn(this, (Items.__proto__ || Object.getPrototypeOf(Items)).call(this, props));
-
-    _this.state = {
-      title: '',
-      logo: '',
-      show: false
-    };
-    var path = props.file.slice(0, props.file.lastIndexOf('/') + 1);
-    console.log("========path======>", path);
-    global.readFile(props.file, function (data) {
-      var _data$substr$split = data.substr('# '.length, data.indexOf('\n')).split('|'),
-          _data$substr$split2 = _slicedToArray(_data$substr$split, 2),
-          title = _data$substr$split2[0],
-          desktopname = _data$substr$split2[1];
-      // logo = `${path}${logo}`;
-      // this.setState({ title, logo, show: true });
-
-
-      global.qtObjects.manual.getAppIconPath(desktopname, function (logopath) {
-        //按约定会在图标主题放置dde图标，但为保险起见如果未获取到则取common中的
-        //global.qtObjects.manual.LogPrint("sbkebcmj");
-        if (logopath == '' && desktopname == "dde") {
-          logopath = path + '../common/dde.svg';
-          //global.qtObjects.manual.LogPrint("logopath:"+ logopath);         
-        }
-        _this.setState({ logo: logopath });
-      });
-
-      global.qtObjects.manual.getLocalAppName(desktopname, function (appname) {
-        _this.setState({ title: appname });
-      });
-      _this.setState({ show: true });
-    });
-    return _this;
-  }
-
-  //转义特定字符
-
-
-  _createClass(Items, [{
-    key: 'escapeRegExp',
-    value: function escapeRegExp(text) {
-      return text.replace(/[-[\]{}()*+?.,\\^$|#\s]/g, '\\$&');
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this2 = this;
-
-      var resultList = [];
-
-      //将关键字转义
-
-      var keyTemp = this.props.keyword;
-      if (this.props.keyword !== '%') {
-        keyTemp = decodeURIComponent(this.props.keyword);
-      }
-
-      // let keyTemp = decodeURIComponent(this.props.keyword)
-      var re = new RegExp(this.escapeRegExp(keyTemp), 'gi');
-
-      var cTitle = _react2.default.createElement('span', {
-        className: 'resulttitle',
-        dangerouslySetInnerHTML: {
-          __html: this.state.title.replace(re, "<span class='highlight'>$&</span>")
-        }
-      });
-
-      var _loop = function _loop(i) {
-        if (_this2.props.idList[i] == 'h0') {
-          return 'continue';
-        }
-
-        var c = _react2.default.createElement(
-          'div',
-          { className: 'item', key: i, onClick: function onClick() {
-              return global.open(_this2.props.file, _this2.props.idList[i], _this2.props.keyword);
-            } },
-          _react2.default.createElement('div', {
-            className: 'itemTitle',
-            dangerouslySetInnerHTML: {
-              __html: _this2.props.titleList[i].replace(re, "<span class='highlight'>$&</span>")
-            }
-          }),
-          _react2.default.createElement('div', {
-            className: 'context',
-            dangerouslySetInnerHTML: {
-              __html: _this2.props.contentList[i]
-              // __html:contentTrans
-            }
-          })
-        );
-        if (resultList.length < 5) {
-          resultList.push(c);
-        }
-      };
-
-      for (var i = 0; i < this.props.idList.length; i++) {
-        var _ret = _loop(i);
-
-        if (_ret === 'continue') continue;
-      }
-      var sresultnum;
-      if (this.props.idList.length > 1) sresultnum = this.props.idList.length + global.i18n['ResultNumSuffixs'];else sresultnum = this.props.idList.length + global.i18n['ResultNumSuffix'];
-      return this.state.show && _react2.default.createElement(
-        'div',
-        { className: 'items' },
-        _react2.default.createElement(
-          'div',
-          { className: 'itemsTitle', onClick: function onClick() {
-              return global.open(_this2.props.file, '', _this2.props.keyword);
-            } },
-          _react2.default.createElement('img', { src: this.state.logo }),
-          cTitle,
-          _react2.default.createElement(
-            'span',
-            { className: 'resultnum' },
-            sresultnum
-          )
-        ),
-        resultList
-      );
-    }
-  }]);
-
-  return Items;
-}(_react.Component);
-
-function Mismatch(props) {
-  return _react2.default.createElement(
-    'div',
-    { id: 'mismatch' },
-    _react2.default.createElement(
-      'div',
-      null,
-      _react2.default.createElement(
-        'div',
-        { id: 'NoResult' },
-        global.i18n['NoResult']
-      )
-    )
-  );
-}
-
-var SearchPage = function (_Component2) {
-  _inherits(SearchPage, _Component2);
-
-  function SearchPage(props, context) {
-    _classCallCheck(this, SearchPage);
-
-    return _possibleConstructorReturn(this, (SearchPage.__proto__ || Object.getPrototypeOf(SearchPage)).call(this, props, context));
-
-    // console.log('search constructor:',this.context);
-  }
-
-  _createClass(SearchPage, [{
-    key: 'componentWillReceiveProps',
-    value: function componentWillReceiveProps(nextProps) {
-      // console.log("search componentWillReceiveProps..",this.context.searchResult);
-      console.log("search componentWillReceiveProps..");
-    }
-  }, {
-    key: 'shouldComponentUpdate',
-    value: function shouldComponentUpdate(nextProps, nextState) {
-      console.log("search shouldComponentUpdate..");
-      return true;
-    }
-  }, {
-    key: 'componentDidUpdate',
-    value: function componentDidUpdate() {
-      _reactDom2.default.findDOMNode(this).querySelector('#search').focus();
-    }
-  }, {
-    key: 'render',
-    value: function render() {
-      var _this4 = this;
-
-      var c = null;
-      if (this.context.mismatch) {
-        c = _react2.default.createElement(Mismatch, { keyword: this.props.match.params.keyword });
-      } else {
-        c = this.context.searchResult.map(function (result) {
-          return _react2.default.createElement(Items, {
-            key: result.file,
-            file: result.file,
-            idList: result.idList,
-            titleList: result.titleList,
-            contentList: result.contentList,
-            keyword: _this4.props.match.params.keyword
-          });
-        });
-      }
-      return _react2.default.createElement(
-        _scrollbar2.default,
-        null,
-        _react2.default.createElement(
-          'div',
-          {
-            id: 'search',
-            tabIndex: '-1'
-          },
-          c
-        )
-      );
-    }
-  }]);
-
-  return SearchPage;
-}(_react.Component);
-
-exports.default = SearchPage;
-
-
-SearchPage.contextTypes = {
-  searchResult: _propTypes2.default.array,
-  mismatch: _propTypes2.default.bool
-};
-
-}).call(this,typeof global !== "undefined" ? global : typeof self !== "undefined" ? self : typeof window !== "undefined" ? window : {})
-},{"./scrollbar.jsx":89,"prop-types":21,"react":66,"react-dom":35,"react-router-dom":51}]},{},[83]);
+},{"_process":25}]},{},[1]);

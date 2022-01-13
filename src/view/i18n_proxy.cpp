@@ -33,6 +33,7 @@ QVariantHash I18nProxy::getSentences() const
     QVariantHash result {
         {"System", QObject::tr("System")},
         {"Applications", QObject::tr("Applications")},
+        {"Computer", QObject::tr("Computer")},
         //      { "NoResult",QObject::tr(
         //                      "Sorry, there are no search results for \"%1\"") },
         {"NoResult", QObject::tr("No search results")},

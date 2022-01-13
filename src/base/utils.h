@@ -53,6 +53,7 @@ public:
     static QList<AppInfo> launcherInterface();
     //获取系统应用中有帮助手册的应用列表
     static QStringList getSystemManualList();
+    static QStringList getComputerManualList();
     static QString getSystemManualDir();
     static QList<AppInfo> sortAppList(QMultiMap<qlonglong, AppInfo> map);
     static bool hasSelperSupport();

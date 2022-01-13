@@ -109,7 +109,7 @@ bool ManualSearchProxy::ManualExists(const QString &app_name)
     QStringList moduleList;
     QString strManualPath = DMAN_MANUAL_DIR;
     for (const QString &type : QDir(strManualPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-        if (type == "system" || type == "application") {
+        if (type == "system" || type == "application" || type == "lenovo") {
             QString typePath = strManualPath + "/" + type;
             for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
                 moduleList.append(module);

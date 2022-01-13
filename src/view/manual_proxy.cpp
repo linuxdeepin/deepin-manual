@@ -62,6 +62,14 @@ QStringList ManualProxy::getSystemManualList()
     return list;
 }
 
+QStringList ManualProxy::getComputerManualList()
+{
+    QStringList list = Utils::getComputerManualList();
+    saveAppList(list);
+    qInfo() << "======================>" << list;
+    return list;
+}
+
 /**
  * @brief ManualProxy::setApplicationState
  * @param appName
@@ -163,7 +171,9 @@ QString ManualProxy::appToPath(const QString &appName)
     const QString assetPath = Utils::getSystemManualDir();
     QStringList mdList;
     QString appPath;
-    if (appName == "dde") {
+    if (Utils::getComputerManualList().contains(appName)) {
+        appPath = assetPath + "/lenovo/" + appName;
+    } else if (appName == "dde") {
         appPath = assetPath + "/system/" + appName;
     } else {
         appPath = assetPath + "/application/" + appName;
@@ -183,7 +193,7 @@ QString ManualProxy::appToPath(const QString &appName)
         }
         appPath.append("/").append(appNameT).append("/");
         appPath = getAppLocalDir(appPath);
-
+        qInfo() << appPath;
         if (omitType.length() > 1) {
             mdList.append(appPath + "/" + QString("%1_%2.md").arg(omitType.at(0)).arg(appNameT));
             mdList.append(appPath + "/" + QString("%1_%2.md").arg(omitType.at(1)).arg(appNameT));
@@ -305,14 +315,15 @@ QString ManualProxy::getAppIconPath(const QString &desktopname)
             strIconPath = str36;
         }
     }
-
     return strIconPath;
 }
 
 QString ManualProxy::getLocalAppName(const QString &desktopname)
 {
     QString strdisplayname = desktopname;
-    if (0 == desktopname.compare("dde", Qt::CaseInsensitive)) {
+    if (Utils::getComputerManualList().contains(desktopname)) {
+       strdisplayname = Utils::translateTitle(desktopname);
+    } else if (0 == desktopname.compare("dde", Qt::CaseInsensitive)) {
         strdisplayname = tr("Desktop Environment");
     } else {
         QString filepath = QString("/usr/share/applications/%1.desktop").arg(desktopname);
@@ -362,12 +373,17 @@ QString ManualProxy::getAppLocalDir(const QString &appPath)
     //如果不存在该种语言的文档路径，藏语、维语使用简体中文，其它使用英文
     qInfo() << __FUNCTION__ << dir.absolutePath() << strlocal;
     if (!dir.exists()) {
-        //藏语维语使用简体中文
-        if (0 == strlocal.compare("ug_CN") || 0 == strlocal.compare("bo_CN")
-            || 0 == strlocal.compare("zh_HK") || 0 == strlocal.compare("zh_TW")) {
-            AppLocalDir = QString(appPath).append("zh_CN");
+        if (appPath.contains("lenovo")) {
+            QString path = appPath;
+            AppLocalDir = path.append("zh_CN");
         } else {
-            AppLocalDir = QString(appPath).append("en_US");
+            //藏语维语使用简体中文
+            if (0 == strlocal.compare("ug_CN") || 0 == strlocal.compare("bo_CN")
+                || 0 == strlocal.compare("zh_HK") || 0 == strlocal.compare("zh_TW")) {
+                AppLocalDir = QString(appPath).append("zh_CN");
+            } else {
+                AppLocalDir = QString(appPath).append("en_US");
+            }
         }
     }
     qInfo() << __FUNCTION__ << "AppLocalDir:" << AppLocalDir;

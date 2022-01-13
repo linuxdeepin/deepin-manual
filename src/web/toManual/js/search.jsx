@@ -23,8 +23,10 @@ class Items extends Component {
       global.qtObjects.manual.getAppIconPath(desktopname,(logopath) =>{
          //按约定会在图标主题放置dde图标，但为保险起见如果未获取到则取common中的
          //global.qtObjects.manual.LogPrint("sbkebcmj");
-       if(logopath==''&&desktopname=="dde"){
-        logopath=path+'../common/dde.svg';   
+       if(logopath==''){
+          logopath = path + '../common/' + desktopname + '.svg';
+          if(desktopname=="dde")
+             logopath=path+'../common/dde.svg';   
         //global.qtObjects.manual.LogPrint("logopath:"+ logopath);         
        }
         this.setState({ logo:logopath});     

@@ -80,7 +80,7 @@ void helperManager::getModuleInfo()
     QMap<QString, QString> mapNow;
     QString  assetsPath = Utils::getSystemManualDir();
     for (const QString &type : QDir(assetsPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-        if (type == "system" || type == "application") {
+        if (type == "system" || type == "application" || type == "lenovo") {
             QString typePath = assetsPath + "/" + type;
             //监控资源文件夹
             for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
@@ -98,6 +98,7 @@ void helperManager::getModuleInfo()
                     if (0 != lang.compare("common")) {
                         //./manual-assets/application(system)/appName/appNameT/lang
                         QString langPath = appPath + "/" + lang;
+                        qInfo() << langPath;
                         for (QString &mdFile : QDir(langPath).entryList(QDir::Files)) {
                             if (mdFile.endsWith("md")) {
                                 //./manual-assets/application(system)/appName/appNameT/lang/md
@@ -125,6 +126,7 @@ void helperManager::getModuleInfo()
                 for (QString &lang : QDir(modulePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
                     // 除了common目录其它其它都是各语言对应文档目录
                     if (0 != lang.compare("common")) {
+                        qInfo() << modulePath;
                         QString strMd = modulePath + "/" + lang + "/index.md";
                         QFileInfo fileInfo(strMd);
                         if (fileInfo.exists()) {
@@ -245,7 +247,7 @@ QStringList helperManager::handlePriority(const QStringList &list)
         QStringList splitList = mdPath.split("/");
 
         //新文案结构 /usr/share/deepin-manual/manual-assets/[application | system]/appName/appNameT/land/*_appNameT.md
-        if (splitList.count() == 10 && ("application" == splitList.at(5) || "system" == splitList.at(5))) {
+        if (splitList.count() == 10 && ("application" == splitList.at(5) || "system" == splitList.at(5) || "lenovo" == splitList.at(5))) {
             QString moduleLang = splitList.at(splitList.count() - 4) + splitList.at(splitList.count() - 2);
             QString mdFile = splitList.at(splitList.count() - 1);
             QStringList listTemp = mdFile.split("_");
@@ -315,7 +317,7 @@ void helperManager::onRecvParseMsg(const QString &msg, const QString &path)
     QStringList pathList = path.split("/");
     QString lang = pathList.at(pathList.count() - 2);
     QString appName = pathList.at(pathList.count() - 4);
-
+    qInfo() << appName;
 //旧文案结构兼容  /usr/share/deepin-manual/manual-assets/[professional | server]/appName/lang/index.md
 #if 1
     if (systemType.contains(pathList.at(pathList.count() - 4))) {

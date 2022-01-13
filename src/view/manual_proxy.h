@@ -41,6 +41,7 @@ signals:
 public slots:
     QString getSystemManualDir();
     QStringList getSystemManualList();
+    QStringList getComputerManualList();
 
     void setApplicationState(const QString &appName);
     QStringList getUsedAppList();
