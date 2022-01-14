@@ -64,6 +64,8 @@ int main(int argc, char **argv)
            fmt.setDefaultFormat(fmt);
            fmt.setProfile(QSurfaceFormat::CoreProfile);
       }
+       qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu");
+
 
     QDBusConnection conn = QDBusConnection::sessionBus();
     if (!conn.registerService(kManualSearchService)
