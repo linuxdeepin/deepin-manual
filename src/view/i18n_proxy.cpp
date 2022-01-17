@@ -43,6 +43,13 @@ QVariantHash I18nProxy::getSentences() const
         //      { "SearchInWiki", QObject::tr("Deepin Wiki") },
         {"ResultNumSuffix", QObject::tr("  result")}, //单数结果后缀
         {"ResultNumSuffixs", QObject::tr("  results")}};
+    QString lang = QLocale().name();
+    QString computer = "Computer";
+    if (0 == lang.compare("ug_CN") || 0 == lang.compare("bo_CN")) {
+        result["Computer"] = "整机";
+    } else {
+        result["Computer"] = QObject::tr("Computer");
+    }
     return result;
 }
 
