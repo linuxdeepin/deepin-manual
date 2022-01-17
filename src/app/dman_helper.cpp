@@ -24,6 +24,8 @@
 #include <QWebEngineView>
 #include <QApplication>
 #include <QDebug>
+#include <QOpenGLContext>
+#include <QSurfaceFormat>
 
 int main(int argc, char **argv)
 {
@@ -37,6 +39,18 @@ int main(int argc, char **argv)
     ManualSearchAdapter adapter(&search_obj);
 
     qDebug() << Dtk::Core::DLogManager::getlogFilePath();
+
+    QOpenGLContext ctx;
+    QSurfaceFormat fmt;
+    fmt.setRenderableType(QSurfaceFormat::OpenGL);
+    ctx.setFormat(fmt);
+    ctx.create();
+    if (!ctx.isValid()) {
+       fmt.setRenderableType(QSurfaceFormat::OpenGLES);
+    }
+    fmt.setDefaultFormat(fmt);
+    fmt.setProfile(QSurfaceFormat::CoreProfile);
+    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu");
 
     Dtk::Core::DLogManager::registerFileAppender();
     Dtk::Core::DLogManager::registerConsoleAppender();
