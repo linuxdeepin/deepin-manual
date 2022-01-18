@@ -324,6 +324,8 @@ QStringList Utils::getComputerManualList()
 {
     QStringList pro_list = {"manual", "guide", "recovery", "safety"};
     const QStringList list = QDir(QString("%1/lenovo/").arg(DMAN_MANUAL_DIR)).entryList();
+    if (list.isEmpty())
+        pro_list.clear();
     for (QString path : list) {
         QString name = path.right(path.lastIndexOf("/"));
         if (!pro_list.contains(name))

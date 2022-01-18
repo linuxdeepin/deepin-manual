@@ -200,10 +200,10 @@ export default class Index extends Component {
     return (
       <Scrollbar>
         <div id="index" tabIndex="-1">
-       {proSoft.length > 0 && (
+        {proSoft.length > 0 && (
           <h2>{global.i18n['Computer']}</h2>
-       )}
-          {proSoft.length > 1 && (
+        )}
+          {proSoft.length > 0 && (
             <div id="forMargin">
                 <div className="items">
                   {proSoft.map(appName => <Item key={appName} appName={appName} isOpened={this.bIsBeOpen(appName)} type={"computer"}/>)}
