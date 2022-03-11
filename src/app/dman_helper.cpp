@@ -40,6 +40,7 @@ int main(int argc, char **argv)
 
     qDebug() << Dtk::Core::DLogManager::getlogFilePath();
 
+#ifndef __sw_64__
     QOpenGLContext ctx;
     QSurfaceFormat fmt;
     fmt.setRenderableType(QSurfaceFormat::OpenGL);
@@ -51,6 +52,7 @@ int main(int argc, char **argv)
     fmt.setDefaultFormat(fmt);
     fmt.setProfile(QSurfaceFormat::CoreProfile);
     qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu");
+#endif
 
     Dtk::Core::DLogManager::registerFileAppender();
     Dtk::Core::DLogManager::registerConsoleAppender();
