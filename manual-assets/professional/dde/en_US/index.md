@@ -1,6 +1,7 @@
 # Desktop Environment|../common/dde.svg|
 
 ## Overview
+
 UnionTech OS(UnionTech operating system) is a beautiful, easy-to-use and reliable Linux desktop operating system. It is equipped with a series of original applications such as File Manager, App Store, Image Viewer, Movie, and etc, which not only offers you abundant entertainment experience but also meet your daily needs of learning and working. With continual improvement, UnionTech OS is becoming one of the most popular open-source operating systems in China.
 
 ![1|desk](jpg/desk.png)
@@ -13,8 +14,6 @@ When you log into the system for the first time, a welcome program will automati
 
 Once login, you are experiencing UnionTech OS Desktop Environment, which is comprised of Desktop, Dock, Launcher, Control Center, and window manager. 
 
-Read below and learn how to work in the UnionTech OS Desktop Environment.
-
 ## Desktop
 
 Desktop is the main screen you see after logging in. On the desktop, you can create a new file/folder, sort files, open in terminal, set wallpaper and screensaver and etc. You can also add shortcuts for applications  on desktop by using [Send to desktop](#Set App Shortcut).
@@ -22,6 +21,7 @@ Desktop is the main screen you see after logging in. On the desktop, you can cre
 ![0|contextmenu](jpg/contextmenu.png)
 
 ### Create New Folder/Document
+
 Just as in File Manager, you can create a new folder/document on the desktop, or do some operations for the files on it.
 
 - Right-click the desktop, select **New folder** and enter the name for it.
@@ -31,7 +31,7 @@ Right-click a file or folder on the desktop, and use the features of File Manage
 
 | Function         | Description                                                  |
 | ---------------- | ------------------------------------------------------------ |
-| Open with        | Select an app to open it.                                    |
+| Open with        | Select an application to open it.                            |
 | Cut              | Move it to another location.                                 |
 | Copy             | Copy it to another location.                                 |
 | Rename           | Change its name.                                             |
@@ -54,7 +54,7 @@ Sort the files on your desktop to make it organized and fit your needs.
  - Click **Time modified** to display files in the order of last modified date.
 
 
-> ![tips](icon/tips.svg)Tips: Check **Auto arrange**, icons on the desktop will be listed in order automatically, and if an icon is removed, another one will fill in the blank.
+> ![tips](icon/tips.svg) Tips: Check **Auto arrange**, icons on the desktop will be listed in order automatically, and if an icon is removed, another one will fill in the blank.
 
 
 
@@ -64,17 +64,19 @@ Sort the files on your desktop to make it organized and fit your needs.
 1. Right-click the desktop.
 2. Click **Icon size**, and choose a proper size.
 
-> ![tips](icon/tips.svg)Tips: Press **Ctrl** + ![=](icon/=.svg)/![-](icon/-.svg) /scrolling mouse wheel to adjust icon size on the desktop and in Launcher.
+> ![tips](icon/tips.svg) Tips: Press **Ctrl** + ![=](icon/=.svg)/![-](icon/-.svg) /scrolling mouse wheel to adjust icon size on the desktop and in Launcher.
 
 ### Set Display
+
 You can set display scaling, screen resolution, brightness and so on from the desktop.
 
 1. Right-click the desktop.
 2. Click **Display Settings** to open the settings in Control Center.
 
-> ![notes](icon/notes.svg)Notes: For specific operations, please refer to [Display](#Display).
+> ![notes](icon/notes.svg) Notes: For specific operations, please refer to [Display](#Display).
 
 ### Change Wallpaper
+
 Select some elegant and fashionable wallpapers to beautify your desktop and make it distinctive.
 
 1. Right-click the desktop.
@@ -84,11 +86,12 @@ Select some elegant and fashionable wallpapers to beautify your desktop and make
 
 ![1|wallpaper](jpg/wallpaper.png)
 
-> ![tips](icon/tips.svg)Tips: Check **Wallpaper Slideshow**, and set the time interval to change wallpaper automatically, or set to change the wallpaper in the process of login or wakeup. 
-
-> ![tips](icon/tips.svg)Tips: You can also set your favorite picture as wallpaper in an image viewer.
+> ![tips](icon/tips.svg) Tips:
+> - Check **Wallpaper Slideshow**, and set the time interval to change wallpaper automatically, or set to change the wallpaper in the process of login or wakeup. 
+> - You can also set your favorite picture as wallpaper in an image viewer.
 
 ### Set Screensaver
+
 The screensaver was used to protect the kinescope before, but now it is mainly for protecting personal privacy from peering.
 
 1. Right-click the desktop.
@@ -115,9 +118,10 @@ All the texts, pictures and documents cut and copied by the current user after l
 
 ## Dock
 
-Dock is at the bottom of the desktop by default to help you quickly open frequently-used applications, which includes Launcher, applications, system tray, and plugins. In the dock, you can open launcher, show the desktop, enter the workspaces, open and exit apps, set input methods, adjust the volume, connect to a wireless network, view the calendar and enter the shutdown interface, and so on.
+Dock is at the bottom of the desktop by default to help you quickly open frequently-used applications, which includes Launcher, applications, system tray, and plug-ins. In the dock, you can open launcher, show the desktop, enter the workspaces, open and exit applications, set input methods, adjust the volume, connect to a wireless network, view the calendar and enter the shutdown interface, and so on.
 
 ### Icons on Dock 
+
 In the Dock, there are icons of Launcher, applications, system tray, and plugins.
 
 You can send application icons from Launcher to Dock so as to open it quickly.
@@ -141,9 +145,10 @@ You can send application icons from Launcher to Dock so as to open it quickly.
 | ![shutdown](icon/system-shutdown.svg) | Click to enter the shutdown interface. |
 | ![trash](icon/trash_icon.svg) | Trash. |
 
-> ![tips](icon/tips.svg)Tips: In Efficient Mode, you can click the right side of Dock to show the desktop. Move the cursor to the running app in the Dock and you will see its preview window.
+> ![tips](icon/tips.svg) Tips: In Efficient Mode, you can click the right side of Dock to show the desktop. Move the cursor to the running application in the Dock and you will see its preview window.
 
 ### Switch Display Mode
+
 There are two display modes of Dock: fashion mode and efficient mode, icon sizes and window effects are different in them.
 
 ![1|fashion](jpg/fashion.png)
@@ -156,12 +161,14 @@ You can switch the display modes by the following operations:
 2. Select the display mode.
 
 ### Change Dock Location
+
 You can place Dock on any direction of your desktop.
 
 1. Right-click the Dock and select **Location**.
 2. Select a location.
 
 ### Change Dock Height
+
 Drag the top edge to increase or decrease the height.
 
 ### Show/Hide Dock
@@ -178,12 +185,11 @@ You can hide the Dock in order to maximize the expansion of the desktop operatin
 ### Show/Hide Plugins
 
 1. Right-click the Dock and select **Plugins**.
-2. On the submenu, you can check or uncheck **Trash, Power, Show Desktop, Onboard, Notification Center, Multitasking View, Datetime and Desktop AI Assistant** to show or hide the corresponding icon in the Dock.
+2. On the submenu, you can check or uncheck **Trash, Power, Show Desktop, Onboard, Notification Center** and **Datetime** to show or hide the corresponding icon in the Dock.
 
 ### View Notifications
+
 When there are system or application notifications, they will be shown in the middle of the screen. If there are buttons in the message, click buttons to do the actions; if there are not, click the message to close it.
-
-
 
 ![notification](jpg/notification.png)
 
@@ -212,9 +218,10 @@ There are two ways to enter the shutdown interface:
 | Log out ![logout_normal](icon/logout_normal.svg)             | End all the processes and initialize the system.             |
 | Start system monitor![deepin-system-monitor](icon/deepin-system-monitor.svg) | View the running processes and end the one you want.         |
 
-> ![notes](icon/notes.svg)Notes: ![userswitch_normal](icon/userswitch_normal.svg) will be shown if there are multiple accounts in the system.
+> ![notes](icon/notes.svg) Notes: ![userswitch_normal](icon/userswitch_normal.svg) will be shown if there are multiple accounts in the system.
 
 ### Trash
+
 You can find all deleted files in the trash, which can be restored or emptied.
 
 #### Restore Files
@@ -225,17 +232,17 @@ You can restore deleted files in Trash or press **Ctrl** + **Z** to restore the 
 2. Right-click the file and select **Restore**.
 3. The file will be in its original path.
 
-> ![attention](icon/attention.svg)Attention: If the original folder of the file has been deleted, the deleted file will be restored to a new folder automatically created.
+> ![attention](icon/attention.svg) Attention: If the original folder of the file has been deleted, the deleted file will be restored to a new folder automatically created.
 
 #### Empty Trash
-Empty trash to release the occupied space on your disk.
 
-- In the trash, click **Empty** to permanently delete all the files in the trash.
+In the trash, click **Empty** to permanently delete all the files in the trash.
 
 ## Launcher
+
 Launcher ![launcher](icon/deepin-launcher.svg)  helps you manage all the installed applications, where you can quickly find an application by category navigation or by a search.
 
-> ![tips](icon/tips.svg)Tips: You can view newly installed applications in Launcher. The newly-installed ones are followed with a blue dot.
+> ![tips](icon/tips.svg) Tips: You can view newly installed applications in Launcher. The newly-installed ones are followed with a blue dot.
 
 
 ### Switch Launcher Modes
@@ -267,9 +274,11 @@ In Launcher, you can scroll up and down to find an application, or locate it wit
 If you already know the application name, just search for it.
 
 ### Set App Shortcut
+
 The shortcut offers a method to run applications easily and quickly.
 
 #### Create App Shortcut
+
 Send the application icon to the desktop or Dock to facilitate the follow-up operations.
 
 In Launcher, right-click an app icon and you can:
@@ -279,9 +288,10 @@ In Launcher, right-click an app icon and you can:
 
 ![0|sendto](jpg/sendto.png)
 
-> ![notes](icon/notes.svg)Notes: You can drag the application icon from Launcher to Dock. But you cannot drag and drop the application while it is running. Then you can right-click the application icon in Dock and select **Dock** to fix it in order to open it quickly for the next time.
+> ![notes](icon/notes.svg) Notes: You can drag the application icon from Launcher to Dock. But you cannot drag and drop the application while it is running. Then you can right-click the application icon in Dock and select **Dock** to fix it in order to open it quickly for the next time.
 
 #### Delete Shortcut
+
 Delete a shortcut from the desktop directly, or remove it from Dock or Launcher.
 
 **Remove the shortcut from Dock:**
@@ -295,14 +305,16 @@ In Launcher, right-click the icon and you can:
 - Select **Remove from desktop** to delete the shortcut from the desktop.
 - Select **Remove from dock** to remove the application icon from Dock.
 
-> ![notes](icon/notes.svg)Notes: The above operations only delete the shortcut rather than uninstall the applications.
+> ![notes](icon/notes.svg) Notes: The above operations only delete the shortcut rather than uninstall the applications.
 
 ### Install Applications
+
 Search and install more applications you want in App Store.
 
 ![0|Search](jpg/search.png)
 
 ### Run Applications
+
 For the applications whose shortcuts have been created on the desktop or Dock, you can open them in the following ways:
 
 - Double-click the desktop icon or right-click it and select **Open**.
@@ -310,21 +322,24 @@ For the applications whose shortcuts have been created on the desktop or Dock, y
 
 To open the application only shown in Launcher, click the icon or right-click it and select **Open**.
 
-> ![tips](icon/tips.svg)Tips: For the frequently-used applications, right-click the app icon and select **Add to startup** to run it when the computer boots.
+> ![tips](icon/tips.svg) Tips: For the frequently-used applications, right-click the app icon and select **Add to startup** to run it when the computer boots.
 
 ### Uninstall Applications
+
 Uninstall the applications you no longer use to save disk space.
 
 1. In Launcher, right-click the application icon.
 2. Click **Uninstall**.
 
-> ![tips](icon/tips.svg)Tips: In **Fashion mode**, drag the application icon in Launcher fullscreen mode to ![trash](icon/trash_icon.svg) in the Dock to uninstall the application.
+> ![tips](icon/tips.svg) Tips: In **Fashion mode**, drag the application icon in Launcher fullscreen mode to ![trash](icon/trash_icon.svg) in the Dock to uninstall the application.
 
 
 ## Control Center
+
 You can manage the system settings in Control Center, including account management, network settings, date and time, personalization, display settings, system and application update, etc. After entering the desktop environment, click ![controlcenter](icon/controlcenter.svg) to open Control Center.
 
 ### Homepage Introduction
+
 The homepage of Control Center provides several setting modules and click one to enter the detailed settings. 
 
 ![0|dcchomepage](jpg/dcc.png)
@@ -342,6 +357,7 @@ The title bar contains the back button, search box, main menu and the window but
 - Main menu: Click ![menu](icon/icon_menu.svg) to enter the main menu where you can view the edition and exit Control Center.
 
 ### Accounts
+
 You have already created an account when installing the system. Here you can modify account settings or create a new one.
 
 ![0|account](jpg/account.png)
@@ -362,6 +378,7 @@ You have already created an account when installing the system. Here you can mod
 3. Click the user avatar, select a avatar or upload a local avatar.
 
 #### Set Full Name
+
 The account full name is shown in account list and system login interface and you can set it as needed.
 
 1. On the homepage of Control Center, click ![account_normal](icon/account_normal.svg).
@@ -376,6 +393,7 @@ The account full name is shown in account list and system login interface and yo
 4. Input a new password twice and confirm.
 
 #### Auto Login
+
 If "Auto Login" is enabled, you can log into the system directly, without inputting a password when the computer reboots or starts next time. But you still have to enter the password after locking or logging out of  the computer.
 
 1. On the homepage of Control Center, click ![account_normal](icon/account_normal.svg).
@@ -384,13 +402,14 @@ If "Auto Login" is enabled, you can log into the system directly, without inputt
 
 
 #### Login Without Password
+
 If "Login Without Password" is enabled, you only need to click ![login](icon/login.svg) to log into the system without inputting a password. 
 
 1. On the homepage of Control Center, click ![account_normal](icon/account_normal.svg).
 2. Click the current account.
 3. Switch on **Login Without Password** and you can log into the system without a password.
 
-> ![tips](icon/tips.svg)Tips: 
+> ![tips](icon/tips.svg) Tips: 
 >   - If both **Auto Login** and **Login Without Password** are enabled, once reboot or start, your computer will enter the desktop directly without requiring a password.
 >   - "Empty keyring password" is checked by default, which means you don't have to input login password again for the applications of which the password is remembered under "Login Without Password" mode. Otherwise, you will have to input password whenever you run the application.
 
@@ -404,7 +423,7 @@ Fingerprint password is used in system login, application authorization, and oth
 4. Put your finger on a fingerprint reader and follow the instructions repeatedly until your fingerprint is added successfully.
 5. Click **Done**. 
 
-> ![notes](icon/notes.svg)Notes: You can add multiple fingerprint passwords for one account, and delete one by one as well. 
+> ![notes](icon/notes.svg) Notes: You can add multiple fingerprint passwords for one account, and delete one by one as well. 
 
 
 #### Delete Account
@@ -414,23 +433,22 @@ Fingerprint password is used in system login, application authorization, and oth
 3. Click **Delete Account**.
 4. In the confirm dialog, click **Delete**.
 
-> ![attention](icon/attention.svg)Attention: The logged in account cannot be deleted.
+> ![attention](icon/attention.svg) Attention: The logged in account cannot be deleted.
 
 ### Union ID
 
 By signing in Union ID, You can use cloud services such as cloud synchronization, app store, mail, browser and others.
 
- When logging in for the first time, the window of **Privacy Policy** will pop up. If users need to open cloud services and other functions, you can check **I have read and agree to the Privacy Policy**, and click **Confirm**.
-
 Cloud synchronization can automatically synchronize various system configurations to the cloud, such as network, sound, mouse, update, dock, launcher, wallpaper, theme, power supply, etc. To sync the settings from the cloud to another computer, just sign in with the same Union ID on that computer.
 
-> ![tips](icon/tips.svg)Tips: When "Auto Sync" is enabled, you can uncheck the unwanted options; when it is disabled, all settings will not be synced.
+> ![tips](icon/tips.svg) Tips: When "Auto Sync" is enabled, you can uncheck the unwanted options; when it is disabled, all settings will not be synced.
 
 ![0|union-id](jpg/union-ID.png)
 
 
 
 ### Display
+
 Set screen resolution, brightness, direction and display scaling properly to have the best visual effect.
 
 ![0|display](jpg/display.png)
@@ -461,11 +479,12 @@ Set a proper display scale to have a normal display.
 2. Click **Display Scaling**.
 3. Change the display scaling, log out and log in again to see the changes.
 
-> ![notes](icon/notes.svg)Notes: 
+> ![notes](icon/notes.svg) Notes: 
 >- When a HiDPI screen is detected, the display scaling will be automatically adjusted.
 >-  For the applications that do not support scaling, right-click it in Launcher and select **Disable display scaling** to get a better display.
 
 ##### Change Refresh Rate
+
 1. On the homepage of Control Center, click ![display_normal](icon/display_normal.svg).
 2. Click **Refresh Rate**.
 3. Select a proper one, and click **Save**.
@@ -478,6 +497,7 @@ Set a proper display scale to have a normal display.
 4. To restore to the original direction, click the right button to exit; to use the current direction,  press **Ctrl**+ **S** to save it.
 
 #### Multiple Screen Settings
+
 Expand your desktop by multiple screens! Use VGA/HDMI/DP cable to connect your computer to other display devices.
 
 1. On the homepage of Control Center, click ![display_normal](icon/display_normal.svg).
@@ -485,16 +505,12 @@ Expand your desktop by multiple screens! Use VGA/HDMI/DP cable to connect your c
 3. Select a display mode:
     - **Duplicate**: display the same image on other screens.
     - **Extend**: expand the desktop across the screens.
+    - **Only on xxx**: only display on one screen.
     - **Customize**: customize the display settings for multiple screens.
 
- In multiple displays, press **Super** + **P** to show its OSD. 
+>![tips](icon/tips.svg) Tips: In multiple displays, press **Super** + **P** to show its OSD. Hold **Super** and press **P** or click to select the options. Release the keys, the selected mode will take into effect.
 
-Operations are as follows:
-
-1. Hold **Super** and press **P** or click to select the options. 
-2. Release the keys, the selected mode will take into effect.
-
->![notes](icon/notes.svg)Notes: When the multiple displays are in the extend mode, only the main screen supports desktop icon display, right-click menu operation and other functions, while the sub-screens do not. 
+>![notes](icon/notes.svg) Notes: When the multiple displays are in the extend mode, only the main screen supports desktop icon display, right-click menu operation and other functions, while the sub-screens do not. 
 
 ##### Custom Settings
 
@@ -504,19 +520,10 @@ Operations are as follows:
 4. Choose **Merge** or **Split** the screens, specify the main screen, set the resolution and refresh rate, and rotate screen if you want.
 5. Click **Save**.
 
-> ![notes](icon/notes.svg)Notes: "Merge" means duplicate mode, "Split" means extend mode. 
-
-#### Touch Screen
-
-If your computer has a touch screen, you can set your screen and adjust it.
-
-1. On the homepage of Control Center, click ![display_normal](icon/display_normal.svg).
-2. Click **Touch Screen** to set your screen.
-3. Click **Confirm**. 
-
-![touchscreen](jpg/touchscreen.png)
+> ![notes](icon/notes.svg) Notes: "Merge" means duplicate mode, "Split" means extend mode. 
 
 ### Default Application Settings
+
 If you have installed several applications with similar functions, such as text editor, choose one of them to be the default application to open that type of file.
 
 ![0|default](jpg/cc-navigation.png)
@@ -552,18 +559,21 @@ To delete the default applications you have added, do as below:
 
 
 ### Personalization Settings
-You can adjust the transparency of Launcher (in mini mode) and Dock, and also set theme, accent color, font, and transparency. 
+
+You can adjust the transparency of Launcher (in mini mode) and Dock, and also set theme, accent color, font, and so on. You can change the appearance of the desktop and windows to your favorite style
 
 ![0|personalise](jpg/personalise.png)
 
 #### Set Window Theme
+
 1. On the homepage of Control Center, click ![personalization_normal](icon/personalization_normal.svg).
 2. Click **General**.
 3. Select one window theme, which will be used as system theme.
 
-> ![notes](icon/notes.svg)Notes: "Auto" means changing window theme automatically according to the sunset and sunrise time. After sunrise, it is light theme; after sunset, it is dark theme.
+> ![notes](icon/notes.svg) Notes: "Auto" means changing window theme automatically according to the sunset and sunrise time. After sunrise, it is light theme; after sunset, it is dark theme.
 
 #### Change Accent Color
+
 Accent color refers to the color used when you select one option or file in the system.
 
 1. On the homepage of Control Center, click ![personalization_normal](icon/personalization_normal.svg).
@@ -576,7 +586,7 @@ Accent color refers to the color used when you select one option or file in the 
 2. Click **General**.
 3. Click the bar to adjust the transparency and view the effect in real time.
 
-> ![notes](icon/notes.svg)Notes: You can set **Window Minimize Effect** as **Scale** or **Magic Lamp**. 
+> ![notes](icon/notes.svg) Notes: You can set **Window Minimize Effect** as **Scale** or **Magic Lamp**. 
 
 #### Set Icon Theme
 
@@ -597,9 +607,10 @@ Accent color refers to the color used when you select one option or file in the 
 
 
 ### Network Settings
+
 After login, you need to connect to a network first and then surf the Internet! 
 
-> ![tips](icon/tips.svg)Tips: Check your network status by hovering over or clicking the network icon in Dock.
+> ![tips](icon/tips.svg) Tips: Check your network status by hovering over or clicking the network icon in Dock.
 
 ![0|network](jpg/network.png)
 
@@ -630,7 +641,7 @@ Wireless network helps you surf the network without cables, which is more flexib
    - If the network is open, it will auto connect to the network.
    - If the network is encrypted, please enter the password and click **Connect**.
 
-> ![notes](icon/notes.svg)Notes: If you switch on **Airplane mode**, Wifi Network is turned off.
+> ![notes](icon/notes.svg) Notes: If you switch on **Airplane mode**, Wifi Network is turned off.
 
 ##### Connect to Hidden Network
 
@@ -652,8 +663,16 @@ Hotspot changes the connected network signal to Wi-Fi hotspot, so that other dev
 3. Switch on **Hotspot** and do the settings.
 4. Click **Save**. 
 
+#### Airplane Mode
+
+Airplane mode, also known as flight mode, is a way to disconnect from the network. When traveling on an airplane, passengers on board are generally required to place their electronic devices in airplane mode in order to prevent electronic devices (such as personal computers) from affecting or interfering with the communication system between the cockpit and the ground tower, which would pose a safety hazard.
+
+1. On the homepage of Control Center, click ![network_normal](icon/network_normal.svg).
+2. Click **Airplane Mode**.
+3. Turn on the switch.
 
 #### Mobile Network
+
 If you are at a place without network, mobile network adapter is a useful tool to help you connect to the Internet as long as the place is covered by telephone signals.
 
 1. Plug the mobile network adapter into your computer USB port.
@@ -663,7 +682,7 @@ If you are at a place without network, mobile network adapter is a useful tool t
 
 #### DSL/PPPoE Connections
 
-DSL is a dial-up connection using a standard phone line and analog modem to access the Internet. Configure the modem, plug the telephone line into the network interface of the computer, create a broadband dial-up connection, and enter the user name and password provided by the operator to dial up the Internet.
+DSL is a dial-up connection using a standard phone line and analog modem to access the Internet. Configure the modem, after connecting the modem's network port and the computer's network port via a network cable, create a broadband dial-up connection, and enter the user name and password provided by the operator to dial up the Internet.
 
 ##### Create a PPPoE Connection
 
@@ -684,7 +703,7 @@ VPN is a virtual private network. Its main function is to establish a private ne
 4. Click **Save**,  the system will try to connect VPN network automatically.
 5. You can export the VPN settings to backup or share with other users. 
 
-> ![notes](icon/notes.svg)Notes: If you don't want to use the VPN as the default routing, but only want it to take effect on specific network resources, switch on **Only applied in corresponding resources**.
+> ![notes](icon/notes.svg) Notes: If you don't want to use the VPN as the default routing, but only want it to take effect on specific network resources, switch on **Only applied in corresponding resources**.
 
 #### System Proxy
 
@@ -701,7 +720,7 @@ VPN is a virtual private network. Its main function is to establish a private ne
 3. Select a proxy type, and fill in the IP address, port, etc.
 4. Click **Save** to save the proxy settings.
 
-> ![notes](icon/notes.svg)Notes: After being configured, run Launcher, right-click any application's icon and check **Use a proxy**, and then the application will be opened by proxy.
+> ![notes](icon/notes.svg) Notes: After being configured, run Launcher, right-click any application's icon and check **Use a proxy**, and then the application will be opened by proxy.
 
 #### Network Info
 
@@ -742,8 +761,6 @@ You can custom notification hints for all applications.
    - Show only in notification center
    - Show message preview
 
-
-
 ### Sound Settings
 
 Set your speaker and microphone properly to make you hear more comfortable and make clearer recordings.
@@ -764,7 +781,7 @@ Set your speaker and microphone properly to make you hear more comfortable and m
    - Adjust input volume by dragging the slider.
    - You can view the input level. 
 
-> ![tips](icon/tips.svg)Tips: Usually, you need to turn up the input volume to make sure that you can hear the sound of the sound source, but the volume should not be too high, because it will cause distortion of the sound. Here is how to set input volume: Speak to your microphone at a normal volume and view "Input Level". If the indicator changes obviously according to the volume, then the input volume is at a proper level. 
+> ![tips](icon/tips.svg) Tips: Usually, you need to turn up the input volume to make sure that you can hear the sound of the sound source, but the volume should not be too high, because it will cause distortion of the sound. Here is how to set input volume: Speak to your microphone at a normal volume and view "Input Level". If the indicator changes obviously according to the volume, then the input volume is at a proper level. 
 
 #### Advanced 
 
@@ -777,22 +794,23 @@ Set your speaker and microphone properly to make you hear more comfortable and m
 1. On the homepage of Control Center, click ![sound_normal](icon/sound_normal.svg).
 2. Click **Sound Effects**, check the options you want to switch on the sound when the corresponding event occurs.
 
-> ![tips](icon/tips.svg)Tips: Click to listen to the sound effect.
+> ![tips](icon/tips.svg) Tips: Click to listen to the sound effect.
 
 
 ### Bluetooth Settings
+
 Bluetooth helps you make a short-distance wireless communication between Bluetooth devices without cable or network. The common Bluetooth devices are Bluetooth keyboard, Bluetooth mouse, Bluetooth earphones, Bluetooth speakers, etc.
 
 ![0|bluetooth](jpg/bluetooth.png)
 
-> ![notes](icon/notes.svg)Notes: Most laptops have Bluetooth. Just enable and use it. But most desktop computers do not have it and you can purchase one Bluetooth adapter and plug it into computer USB port to enable the function.
+> ![notes](icon/notes.svg) Notes: When the laptop is equipped with Bluetooth, you can directly turn on the Bluetooth switch; when the desktop computer is not equipped with Bluetooth, you can buy a Bluetooth adapter, plug it into the USB port of your computer, and then use Bluetooth. 
 
 #### Change Bluetooth Name
 
 1. On the homepage of Control Center, click ![bluetooth_normal](icon/bluetooth_normal.svg).
 2. Click ![edit](icon/edit.svg) after the Bluetooth name, and enter a new name for your computer.
 
-> ![notes](icon/notes.svg)Notes: Your computer's new name will be broadcasted automatically, and other devices should rescan to find it.
+> ![notes](icon/notes.svg) Notes: Your computer's new name will be broadcasted automatically, and other devices should rescan to find it.
 
 #### Connect to a Bluetooth Device
 
@@ -802,32 +820,47 @@ Bluetooth helps you make a short-distance wireless communication between Bluetoo
 4. After that, the Bluetooth device will be added to **My Device** list.
 5. In the list, click the device, you can **Disconnect** the device, or change its name.
 
-#### Transfer/Receive files via Bluetooth
+#### Transfer/Receive Files via Bluetooth
 
-Files could be transferred / received between UOS PC and non UOS PC or between UOS PC and mobile device (mobile phone / tablet).
+Files could be transferred / received via Bluetooth between UnionTech OS PC and non UnionTech OS PC or between UnionTech OS PC and mobile device (mobile phone / tablet).
 
-Prerequisite: the Bluetooth device of the sender (UOS PC) and the Bluetooth device of the receiver (non UOS PC / mobile phone / tablet) have been paired and connected successfully.
+Prerequisite: the Bluetooth devices of both the sender and the receiver have been paired and connected successfully.
+
+**Transfer files from Bluetooth of UnionTech OS PC**
+
+Usage scenario: sender (UnionTech OS PC) transfers files via Bluetooth to receiver (non UnionTech OS PC / mobile phone / tablet)
 
 1. On the homepage of Control Center, click ![bluetooth_normal](icon/bluetooth_normal.svg).
+2. Switch on **Bluetooth**. The system will scan Bluetooth devices nearby automatically.
+3. Select a paired and connected Bluetooth device in "My Devices". Click **Send Files** (this button will only appear on PC / mobile phone / tablet Bluetooth devices). Select a file to be sent from the popped-up File Manager interface, click **Open**.  
+4. Select the Bluetooth device to receive the files in the pop-up "Bluetooth file transfer" window and click **Send** to send a request. 
 
-2. Switch on Bluetooth. The system will scan Bluetooth devices nearby automatically.
+**Transfer files from Bluetooth of a mobile phone**
 
-3. Select a paired and connected Bluetooth device in "My Devices". Click **Send Files** (this button will only appear on pc / mobile phone / tablet Bluetooth devices), the interface for you to select files pops up.
+Usage scenario: sender (taking android phones as an example) transfers files via Bluetooth to receiver (UnionTech OS PC)
 
-4. Select the files to be sent and click **Open**, a request for file transfer is sent. 
+1. Switch on Bluetooth. The system will scan Bluetooth devices nearby automatically.
+2. Select a paired and connected Bluetooth device.
+3. Select a file to be sent in the phone, click **Send** to send it via Bluetooth.
 
-   - If the receiver agrees with the request, then the sender starts to transfer the file and "Bluetooth File Transfer" window is displayed; after the file transfer is completed, a prompt message will pop up at the the receiver, and the user can view the file content.
+**Receive files via Bluetooth**
+
+When the sender sends a file, a prompt window pops up in the receiver's device, and the receiver can **Agree** or **Refuse** the file transfer.
+
+   - If the receiver agrees with the request, then the sender starts to transfer the file and Bluetooth file transfer window is displayed; after the file transfer is completed, a prompt message will pop up at the the receiver, and the user can view the file content.
    - If the receiver is in the following situation, part of the file transfer fails, which will be displayed in the transmission failure list.
       - The file transfer request is refused by the receiver, then the transfer terminates, and "File Transfer Failed" window pops up.
       - The receiver times out or the transferring distance is beyond transmission range, and "File Transfer Failed" window pops up(Bluetooth device connection failed).
-      - The receiver does not operate for 1 minute, then the transfer terminates by default,  and "File Transfer Failed" window pops up. 
+      - The receiver does not operate for one minute, then the transfer terminates by default,  and "File Transfer Failed" window pops up. 
 
 ### Date and Time
+
 Set your timezone properly to have correct date and time. You can also change them manually.
 
 ![0|time](jpg/time.png)
 
 #### Change Timezone
+
 You have selected the timezone during system installation and do as follows to change it.
 
 1. On the homepage of Control Center, click ![time](icon/time.svg).
@@ -836,6 +869,7 @@ You have selected the timezone during system installation and do as follows to c
 4. Click **Confirm**.
 
 #### Add Timezone
+
 Add another timezone to see the date and time there.
 
 1. On the homepage of Control Center, click ![time](icon/time.svg).
@@ -851,6 +885,7 @@ Add another timezone to see the date and time there.
 4. Click ![delete](icon/delete.svg) to remove the timezone.
 
 #### Change Date and Time
+
 Note that the auto-sync function will be disabled after changing date and time manually.
 
 1. On the homepage of Control Center, click ![time](icon/time.svg).
@@ -865,9 +900,10 @@ Power management turns the system to a low-power state when inactive, thus makin
 
 ![0|power](jpg/power.png)
 
-> ![notes](icon/notes.svg)Notes: If you are using a desktop computer, you will not see Power Saving Mode and On Battery. 
+> ![notes](icon/notes.svg) Notes: If you are using a desktop computer, you will not see Power Saving Mode and On Battery. 
 
 #### Power Saving Mode
+
 To reduce the power consumption of your laptop, turn on power saving mode to reduce screen brightness.
 
 1. On the homepage of Control Center, click ![power_normal](icon/power_normal.svg).
@@ -876,7 +912,7 @@ To reduce the power consumption of your laptop, turn on power saving mode to red
    - Switch on **Auto power saving on low battery**.
    - Switch on **Auto power saving on battery**, your laptop will enter power saving mode automatically when unplugged, and revert to normal mode when plugged in.
 
-> ![notes](icon/notes.svg)Notes: Power saving mode is only for laptops.
+> ![notes](icon/notes.svg) Notes: Power saving mode is only for laptops.
 
 #### Password Required on Wakeup
 
@@ -884,12 +920,13 @@ To reduce the power consumption of your laptop, turn on power saving mode to red
 2. Click **General**.
 3. Switch on **Password is required to wake up the monitor** and **Password is required to wake up the computer** to improve the security.
 
-#### Display capacity 
+#### Display Capacity 
+
 1. On the homepage of Control Center, click ![power_normal](icon/power_normal.svg).
 2. Click **General**.
       - Switch on **Display capacity and remaining charging time** to display remaining capacity and charging time.
       - Switch off **Display capacity and remaining charging time** to display remaining capacity only.
->![notes](icon/notes.svg)Notes: This function is only available on laptops.
+>![notes](icon/notes.svg) Notes: This function is only available on laptops.
 
 ####  Time to Turn Off Monitor
 
@@ -897,7 +934,7 @@ To reduce the power consumption of your laptop, turn on power saving mode to red
 2. Click **Plugged In** or **On Battery**.
 3. Set the time to turn off the monitor.
 
-> ![notes](icon/notes.svg)Notes: The time to turn off monitor, suspend and lock screen can be different in the settings of "Plugged In" and "On Battery".
+> ![notes](icon/notes.svg) Notes: The time to turn off monitor, suspend and lock screen can be different in the settings of "Plugged In" and "On Battery".
 
 #### Time to Suspend
 
@@ -905,7 +942,7 @@ To reduce the power consumption of your laptop, turn on power saving mode to red
 2. Click **Plugged In** and **On Battery**.
 3. Set the time to suspend.
 
-> ![tips](icon/tips.svg)Tips: For laptop users, you can select **Suspend** from the dropdown list after **When the lid is closed**.  
+> ![tips](icon/tips.svg) Tips: For laptop users, you can select **Suspend** from the dropdown list after **When the lid is closed**.  
 
 #### Time to Lock Screen
 
@@ -918,7 +955,15 @@ To reduce the power consumption of your laptop, turn on power saving mode to red
 1. On the homepage of Control Center, click ![power_normal](icon/power_normal.svg).
 2. Click **Plugged In** and **On Battery**.
 3. You can select **Suspend**, **Hibernate**, **Turn off the monitor** and **Do nothing** from the dropdown list after **When the lid is closed**.  
->![notes](icon/notes.svg)Notes: This function is only available for laptops.
+>![notes](icon/notes.svg) Notes: This function is only available for laptops.
+
+#### Power Button Settings
+
+1. On the homepage of Control Center, click ![power_normal](icon/power_normal.svg).
+2. Click **Plugged In** and **On Battery**.
+3. You can select **Shut down, Suspend, Hibernate, Turn off the monitor, Do nothing** from the drop-down list after **When pressing the power button**.
+
+Any operation done here will take effect immediately. At the same time, the system will notify the user that the power button setting is changed. 
 
 #### Set "Low Battery Notification"
 
@@ -928,9 +973,10 @@ To reduce the power consumption of your laptop, turn on power saving mode to red
 
 You can adjust the threshold of low battery level by dragging the slider below "Low battery level".  You can adjust the threshold of auto suspend battery level by dragging the slider below "Auto suspend battery level".
 
->![notes](icon/notes.svg)Notes: This function is only available for laptops.
+>![notes](icon/notes.svg) Notes: This function is only available for laptops.
 
 ### Mouse and Touchpad
+
 Mouse and Touchpad are common computer input devices. Using the mouse, you can make the operation easier and faster. For laptop computer users, when there is no mouse, the touchpad can also be used to replace the mouse for operation.
 
 ![0|mouse](jpg/mouse.png)
@@ -941,21 +987,20 @@ Mouse and Touchpad are common computer input devices. Using the mouse, you can m
 2. Click **General**.
 3. Switch on **Left Hand**, and adjust **Scrolling Speed**, **Double-click Speed** for both mouse and touchpad.
 
-> ![notes](icon/notes.svg)Notes: If "Left Hand" is enabled, left-click and right-click of the mouse and touchpad exchange.
+> ![notes](icon/notes.svg) Notes: If "Left Hand" is enabled, left-click and right-click of the mouse and touchpad exchange.
 
 #### Mouse
+
 After inserting or connecting the mouse, make relevant settings in the Control Center to make it more in line with your usage habits. 
 
-> ![notes](icon/notes.svg)Notes: If there is no touchpad, “Disable touchpad when a mouse is connected” will not be shown.
+> ![notes](icon/notes.svg) Notes: If there is no touchpad, “Disable touchpad when a mouse is connected” will not be shown.
 
 1. On the homepage of Control Center, click ![mouse_touchpad_normal](icon/mouse_touchpad_normal.svg).
 2. Click **Mouse**.
 3. Adjust **Pointer Speed**, which helps you to control the speed at which the pointer moves as the mouse moves.
-4. Switch on **Natural Scrolling**/**Mouse Acceleration** if you want.
+4. Switch on **Natural Scrolling** if you want to.
 
-> ![notes](icon/notes.svg)Notes: 
->   - Turn on the mouse acceleration to improve the accuracy of the pointer. The moving distance of the mouse pointer on the screen will increase according to the acceleration of the moving speed. It can be turned on or off according to the usage.
->   - If Natural Scrolling is enabled, when you scroll down, the page will scroll down, when you scroll up, the page will scroll up as well. 
+> ![notes](icon/notes.svg) Notes: If Natural Scrolling is enabled, when you scroll down, the page will scroll down, when you scroll up, the page will scroll up as well. 
 
 
 #### Touchpad
@@ -967,6 +1012,7 @@ If you are using a laptop,  in order to avoid mis-operation on the touchpad, you
 You can also change **Pointer Speed**, and switch on **Natural Scrolling** for the touchpad.
 
 #### TrackPoint
+
 TrackPoint, also called pointing stick, is a small joystick used as a pointing device, typically mounted centrally in a laptop keyboard and used to control pointer movements on the screen.
 
 1. On the homepage of Control Center, click ![mouse_touchpad_normal](icon/mouse_touchpad_normal.svg).
@@ -979,7 +1025,7 @@ Drawing tablet, also called graphics tablet and pen tablet, is a computer input 
 
 After connecting to the computer, you can set the pressure sensing force of the drawing tablet, that is, the pressure sensing value of the pen tip and eraser.
 
-> ![notes](icon/notes.svg)Notes: This part will be shown only if a drawing tablet is connected.
+> ![notes](icon/notes.svg) Notes: This part will be shown only if a drawing tablet is connected.
 
 ![0|graphics-tablet](jpg/graphics-tablet.png)
 
@@ -988,7 +1034,8 @@ After connecting to the computer, you can set the pressure sensing force of the 
 3. Adjust **Pressure Sensitivity** for the pen.
 
 ### Keyboard and Language
-Set keyboard properties and select your keyboard layout to keep your typing habit. You can also adjust the keyboard layout according to the country and language, change system language.
+
+Set keyboard properties and select your keyboard layout to keep your typing habit. You can also adjust the keyboard layout according to the country and language, change system language, and customize shortcuts here.
 
 ![0|keyboard](jpg/keyboard.png)
 
@@ -1001,6 +1048,7 @@ Set keyboard properties and select your keyboard layout to keep your typing habi
 5. Switch on **Numeric Keypad** and **Caps Lock Prompt** if you want.
 
 #### Keyboard Layout
+
 Set the keyboard layout to customize the keyboard for the current language. When you press a key on the keyboard, the keyboard layout controls which characters are displayed on the screen. After changing the keyboard layout, the characters on the screen may not match the characters on the keyboard keys.
 
 You have set a keyboard layout during system installation, but you can add more for other purposes. 
@@ -1027,13 +1075,14 @@ You have set a keyboard layout during system installation, but you can add more 
 3. Click the layout you want to switch to.
 4. After successful switching, the layout will be marked with a check.
 
-> ![tips](icon/tips.svg)Tips: You can also select one or more shortcuts to switch the keyboard layouts in order. Select **Applies to** to make the keyboard layout after switching be applied to the whole system or current application.
+> ![tips](icon/tips.svg) Tips: You can also select one or more shortcuts to switch the keyboard layouts in order. Select **Applies to** to make the keyboard layout after switching be applied to the whole system or current application.
 
 #### System Language
 
 The system language is the language you selected when you installed the system by default, which can be changed at any time.
 
 ##### Add System Language
+
 Add multiple languages into the list to change language conveniently.
 
 1. On the homepage of Control Center, click ![keyboard_normal](icon/keyboard_normal.svg).
@@ -1048,9 +1097,10 @@ Add multiple languages into the list to change language conveniently.
 3. Select the language you want to switch to, and the language package will be installed automatically.
 4. After being successfully installed, log out and log in again to view the changes.
 
-> ![attention](icon/attention.svg)Attention: The keyboard layout may also be changed in the process of switching the system language. Please make sure that you select a correct keyboard layout to enter the login password.
+> ![attention](icon/attention.svg) Attention: The keyboard layout may also be changed in the process of switching the system language. Please make sure that you select a correct keyboard layout to enter the login password.
 
 #### Shortcuts
+
 The shortcut list includes all shortcuts in the system. View, modify and customize the shortcuts here as you want.
 
 ![0|shortcut](jpg/shortcut.png)
@@ -1061,35 +1111,59 @@ The shortcut list includes all shortcuts in the system. View, modify and customi
 2. Click **Shortcuts**.
 3. You can search or view the default shortcuts for system, window and workspace.
 
+   
+
+##### Modify Shortcuts
+
+1. On the homepage of Control Center, click ![keyboard_normal](icon/keyboard_normal.svg).
+2. Click **Shortcuts**.
+3. Click the shortcut you want to modify.
+4. Press new shortcut to change it.
+
+> ![tips](icon/tips.svg) Tips: To disable a shortcut, please press ![Backspace](icon/Backspace.svg) on the keyboard. To cancel modifying, press **Esc** or click Restore Defaults at the bottom.
+
+##### Customize Shortcuts
+
+1. On the homepage of Control Center, click ![keyboard_normal](icon/keyboard_normal.svg).
+2. Click **Shortcuts**.
+3. Click ![add](icon/add.svg).
+4. Enter the name, command and shortcut.
+5. Click **Add**.
+6. After being successfully added, click **Edit**.
+7. Click ![delete](icon/delete.svg) to delete the custom shortcut.
+
+> ![tips](icon/tips.svg) Tips: To change the shortcut, click it and press a new shortcut to change it directly. To edit the name and command of the custom shortcut, click **Edit** > ![edit](icon/edit.svg) near the shortcut name to enter the shortcut settings.
+
 ### Update Settings
 
 When there are system updates, it will be notified on the home page of Control Center. Click ![update](icon/update.svg) to enter "check for updates" page. After checking is done, you can download and install system and application updates. You can also set to download the updates automatically. 
 
-> ![tips](icon/tips.svg)Tips: If you do not want to get the updates prompt, switch off "Updates Notification" in Update Settings.
+> ![tips](icon/tips.svg) Tips: If you do not want to get the updates prompt, switch off "Updates Notification" in Update Settings.
 
 ![0|update](jpg/update.png)
 
 #### Update and Upgrade
 
 1. On the homepage of Control Center, click ![update](icon/update.svg).
-2. Click **Update** to check if there is an update.
+2. Click **Check for Updates** to check if there is an update.
  - If there is no update, you will see "Your system is up to date".
  - If there is an update, you will see **Download and install updates** button, change log and other messages.
 3. Click the button to download and install updates.
 4. After updating finishes, a hint appears telling you the system is updated successfully, 
 
-> ![notes](icon/notes.svg)Notes: You can click the button to pause and resume the downloading process. After updating finishes, a dialogue box pops up to remind you to **Reboot** or **Shut down** your computer to make the updates come into effect.
+> ![notes](icon/notes.svg) Notes: You can click the button to pause and resume the downloading process. After updating finishes, a dialogue box pops up to remind you to **Reboot** or **Shut down** your computer to make the updates come into effect.
 
 #### Auto Download Updates
 
 1. On the homepage of Control Center, click ![update](icon/update.svg).
 2. Click **Update Settings**.
-3. Switch on **Auto Download Updates**.
+3. Switch on **Download Updates**.
 4. When there are system updates, they will be automatically downloaded.
 
-> ![tips](icon/tips.svg)Tips:  Switch on **Auto Clear Package Cache** to remove the downloaded package caches regularly. 
+> ![tips](icon/tips.svg) Tips:  Switch on **Clear Package Cache** to remove the downloaded package caches regularly. 
 
 ### System Info
+
 You can view system version, authorization info, hardware info, and the agreements here.
 
 ![0|info](jpg/info.png)
@@ -1110,124 +1184,6 @@ You can view system version, authorization info, hardware info, and the agreemen
 1. On the homepage of Control Center, click ![system_info_normal](icon/system_info_normal.svg).
 2. View the End User License Agreement under **End User License Agreement**.
 
-### Authorization Management
-
-Authorization management is a pre-installed system tool to help you activate the system.  Here mainly introduces the inactive interface, activation method, activation success and activation failure interfaces.
-
-#### Unactivated Interface
-
-1. There are two ways to run the authorization management tool:
-
-   - Click ![uos1](icon/uos1.svg)on the tray in the lower right corner to enter the interface.
-
-   - Open the **Control Center** to select the **System Info** and click **About This PC** to view the edition authorization column. Click **Activate** to enter the interface.
-2. The inactive status includes being unactivated and being unactivated after expiration.
-   - Unactivated: info in the interface includes name, edition, and authorization status.
-   - Unactivated after expiration: the system is not activated within expiration date, info in the interface includes name, edition, authorization status, authorization object and expiration date. 
-3. Choose the proper way to activate the system.
-
-> ![notes](icon/notes.svg)Notes: If the system is not activated, the authorization management icon ![uos1](icon/uos1.svg)will be docked on the tray in the lower right corner and displayed immediately upon startup.
-
-#### Activation Method
-
-The activation methods of authorization management can be divided into online activation and offline activation, while the online activation methods include "Try Full Version", "Input Serial Number" and "Import License File".
-
-> ![attention](icon/attention.svg)Attention: Only systems in the trial period or the ones activated successfully can all the functions of UOS be used normally, otherwise some functions will be limited. 
->
-
-##### **On-line Activation**
-
-The on-line activation is available only when the network is connected normally.
-
-Trial Period Activation
-
-Under both online/offline mode, the system is activated automatically. There is only one trial period activation opportunity for each device and the valid period is 90 days calculated from the activation date. All the system functions are available in the trial period.
-
-1. Click  ![uos1](icon/uos1.svg)on the tray in the lower right corner to enter the interface.
-
-   ![0|probation1](jpg/probation1.png)
-
-2. Click **Try Full Version** and goto to the activation interface.
-
-3. Click **Activate Now** and pops up the confirmation dialogue once again. Click **Confirm** to successfully activate the interface and the icon in the dock is changed to ![uos2](icon/uos2.svg).
-
-4. It is available to view the product name, version, authorization status, expiration date, etc. in this interface or choose to activate the system forever.
-
-   ![0|probation3](jpg/probation3.png)
-
-Input the serial number
-
-1. Click  ![uos1](icon/uos1.svg)on the tray in the lower right corner to enter the interface.
-2. Click **Input Serial Number** to input the correct activation code and click **Activate Now**.
-> ![notes](icon/notes.svg)Notes: UOS supports both 16-digit and 25-digit serial numbers. 
-
-![0|activation code1](jpg/activation-code1.png)
-
-3. Click **Confirm** in the pop-up confirmation dialogue box and pops up the activation success interface.
-
-
-
-Import the activation document
-   1. Click  ![uos1](icon/uos1.svg)on the tray in the lower right corner to enter the interface.
-   
-   2.  Click **Import License File**, select the correct license file in .key format in the File Manager and click **Activate Now**.  
-   
-   3.  Click **Confirm** in the secondary confirming dialogue box and pops up the activation success interface.
-
-![license file](jpg/license-file.png)
-
-##### Off-line Activation
-
-The off-line activation can be adopted when the network connection is abnormal.    
-
-1. It will jump to the off-line activation interface when abnormal network connection is detected by the system in the process of activating the system by inputing the serial number or  importing the authorization file.
-
-2. The off-line activation interface shows the QR code, serial number, device ID as well as the off-line activation code input box.
-
-   ![0|activate offline1](jpg/activate-offline1.png)
-
-3. Scan the QR code with your mobile phone  and the current device ID as well as activation code are displayed in the pop-up activation interface.
-
-   ![0|activate offline2](jpg/activate-offline2.jpg) 
-
-4. Click **Activate Now** and click **Confirm** in the pop-up confirmation dialogue. 
-
-5. The device ID, activation code and off-line activation code are displayed in the activation success interface.
-
-6. Input manually in the input box in PC the off-line activation code in the your mobile phone.
-
-7. Click **Activate Offline** to jump to the activation success interface.
-
-#### Activation Success
-
-1.  The activation success interface shows the product name, version number, activation method, etc.
-
-   - Product Name:  operation system name
-
-   - Product Version: operation system version
-
-   - Authorization Status: Authorization Status includes Unauthorized, Expired and Authorized.  Successful activation indicates Authorized.
-
-   - Authorized Object: authorized user name
-
-   - Activation Method: Activation Methods include activation code, activation file as well as off-line activation code.
-
-   - Expiration Time: The system will remind you that the authorization is about to expire when the deadline is approaching.
-
-![0|activation code3](jpg/activation-code3.png)
-
-2. The authorization management icon will no longer be displayed in the tray in the lower right corner after the system is activated successfully. It is available to view the authorization management tool in the Control Center.
-
-#### Activation Failure
-
-The activation failure interface will pop up if the activation file has been used or expired.
-
-#### Server Activation Setting
-
-If the current server crashes, it is available to customize a new activation server by clicking the **Settings** in the main menu ![menu](icon/icon_menu.svg)of the authorization management tool.
-
-
-
 ### Backup and Restore
 
 In order to avoid data loss or damage caused by software defects, hardware damage, improper human operation, hacker attacks, computer viruses, natural disasters and other factors, the application data or system data can be backed up and restored to ensure the normal operation of the system.
@@ -1238,11 +1194,11 @@ In order to avoid data loss or damage caused by software defects, hardware damag
 
 UnionTech OS provides backup by initialization and backup through Control Center.
 
-##### Backup by initialization
+##### Backup by Initialization
 
 When the system is installed, it will automatically create a recovery partition, then backup the boot partition and root partition, and save the recovery partition information and disk partition configuration.
 
-##### Backup through control center
+##### Backup through Control Center
 
 You can either manually backup / restore data or restore data by one click.
 
@@ -1253,13 +1209,13 @@ You can either manually backup / restore data or restore data by one click.
 
    - Full Backup: to back up system files and user files of the whole disk
 
-   - System Backup: When the user data is not reserved, the files of the root partition and the boot partition are backed up; when the user data is reserved, the files of the root partition, boot partition, opt partition and home partition are backed up.
+   - System Backup: to back up root partition and boot partition.
 
-   > ![attention](icon/attention.svg)Attention:  **Full Backup** cannot backed up files on its own disk, but can only back up files in other storage media. **System Backup** has set the default storage location of files. When the storage space is insufficient, you can manually change the storage path of backup files.
+   > ![attention](icon/attention.svg) Attention:  **Full Backup** cannot backed up files on its own disk, but can only back up files in other storage media. **System Backup** has set the default storage location of files. When the storage space is insufficient, you can manually change the storage path of backup files.
 
 3. Click **Back Up**, the password input box pops up, please input the password to authorize the backup file until the file backup is completed.
 
-> ![notes](icon/notes.svg)Notes: In the process of file backup, please do not unplug the power supply or forcibly shut down to prevent data loss or damage.
+> ![notes](icon/notes.svg) Notes: In the process of file backup, please do not unplug the power supply or forcibly shut down to prevent data loss or damage.
 
 
 
@@ -1286,6 +1242,111 @@ You can either restore all settings or manually restore the previous backup data
      2. Click **Restore Now** to start system restoring.
 
 
+### Authorization Management
+
+Authorization management is a pre-installed system tool to help you activate the system.  Here mainly introduces the inactive interface, activation method, activation success and activation failure interfaces.
+
+#### Unactivated Interface
+
+1. There are two ways to run the authorization management tool:
+
+   - Click ![uos1](icon/uos1.svg) on the tray in the lower right corner to enter the interface.
+
+   - Open the **Control Center** to select the **System Info** and click **About This PC** to view the edition authorization column. Click **Activate** to enter the interface.
+2. The inactive status includes being unactivated and being unactivated after expiration.
+   - Unactivated: info in the interface includes name, edition, and authorization status.
+   - Unactivated after expiration: the system is not activated within expiration date, info in the interface includes name, edition, authorization status, authorization object and expiration date. 
+3. Choose the proper way to activate the system.
+
+> ![notes](icon/notes.svg) Notes: If the system is not activated, the authorization management icon ![uos1](icon/uos1.svg) will be docked on the tray in the lower right corner and displayed immediately upon startup.
+
+#### Activation Methods
+
+**On-line Activation**
+
+The on-line activation is available only when the network is connected normally.
+
+Trial Period Activation
+
+There is only one trial period activation opportunity for each device and the valid period is 90 days calculated from the activation date. All the system functions are available in the trial period.
+
+1. Click ![uos1](icon/uos1.svg) on the tray in the lower right corner to enter the interface.
+
+   ![0|probation1](jpg/probation1.png)
+
+2. Click **Try Full Version** and goto to the activation interface.
+
+3. Click **Activate Now** and pops up the confirmation dialogue once again. Click **Confirm** to successfully activate the interface and the icon in the dock is changed to ![uos2](icon/uos2.svg).
+
+4. It is available to view the product name, version, authorization status, expiration date, etc. in this interface or choose to activate the system forever.
+
+   ![0|probation3](jpg/probation3.png)
+
+Input the serial number
+
+1. Click ![uos1](icon/uos1.svg) on the tray in the lower right corner to enter the interface.
+2. Click **Input Serial Number** to input the correct activation code and click **Activate Now**.
+> ![notes](icon/notes.svg) Notes: UnionTech OS supports both 16-digit and 25-digit serial numbers. 
+
+![0|activation code1](jpg/activation-code1.png)
+
+3. Click **Confirm** in the pop-up confirmation dialogue box and pops up the activation success interface.
+
+Import the activation document
+
+1. Click ![uos1](icon/uos1.svg) on the tray in the lower right corner to enter the interface.
+   
+2.  Click **Import License File**, select the correct license file in .key format in the File Manager and click **Activate Now**.  
+   
+3.  Click **Confirm** in the secondary confirming dialogue box and pops up the activation success interface.
+
+![license file](jpg/license-file.png)
+
+**Off-line Activation**
+
+The off-line activation can be adopted when the network connection is abnormal.    
+
+1. It will jump to the off-line activation interface when abnormal network connection is detected by the system in the process of activating the system by inputing the serial number or  importing the authorization file.
+
+2. The off-line activation interface shows the QR code, serial number, device ID as well as the off-line activation code input box.
+
+   ![0|activate offline1](jpg/activate-offline1.png)
+
+3. Scan the QR code with your mobile phone  and the current device ID as well as activation code are displayed in the pop-up activation interface.
+
+   ![0|activate offline2](jpg/activate-offline2.jpg) 
+
+4. Click **Activate Now** and click **Confirm** in the pop-up confirmation dialogue. 
+
+5. The device ID, activation code and off-line activation code are displayed in the activation success interface.
+
+6. Input manually in the input box in PC the off-line activation code in the your mobile phone.
+
+7. Click **Activate Offline** to jump to the activation success interface.
+
+#### Activation Success
+
+1. The activation success interface shows the product name, version number, activation method, etc.
+
+   - Product Name:  operation system name
+   - Product Version: operation system version
+   - Authorization Status: Authorization Status includes Unauthorized, Expired and Authorized.  Successful activation indicates Authorized.
+   - Authorized Object: authorized user name
+   - Activation Method: Activation Methods include activation code, activation file as well as off-line activation code.
+   - Expiration Time: The system will remind you that the authorization is about to expire when the deadline is approaching.
+
+![0|activation code3](jpg/activation-code3.png)
+
+2. The authorization management icon will no longer be displayed in the tray in the lower right corner after the system is activated successfully. It is available to view the authorization management tool in the Control Center.
+
+#### Activation Failure
+
+The activation failure interface will pop up if the activation file has been used or expired.
+
+#### Server Activation Setting
+
+If the current server crashes, it is available to customize a new activation server by clicking the **Settings** in the main menu ![menu](icon/icon_menu.svg) of the authorization management tool.
+
 
 ### General Settings
 
@@ -1297,9 +1358,9 @@ Boot menu is the grub menu for users to select an operating system to start. Aft
 
 ##### Startup Delay
 
-When there are multiple systems in the computer, Startup Delay will be switched on by default, and the grub menu will keep 5 seconds for users to select.
+When there are multiple systems in the computer, Startup Delay will be switched on by default, and the grub menu will keep five seconds for users to select.
 
-When there is only one system in the computer, Startup Delay will be switched off by default, and the grub menu will keep only 1 second.
+When there is only one system in the computer, Startup Delay will be switched off by default, and the grub menu will keep only one second.
 
 ##### Default Boot Entry
 
@@ -1313,25 +1374,23 @@ When there is only one system in the computer, Startup Delay will be switched of
 2. Click **Boot Menu**.
 3. Switch on **Theme** to use it as the theme of boot menu.
 
-> ![tips](icon/tips.svg)Tips: You can drag and drop an image to the preview window to change the background of boot menu.
+> ![tips](icon/tips.svg) Tips: You can drag and drop an image to the preview window to change the background of boot menu.
+
 #### Developer Mode
 
-It is available to use the root permission, execute sudo operations, install and run the unsigned applications that are not in the App Store, which may damage the integrity of the system. No official maintenance services are available for such damage. Please use it with caution. The system is not in developer mode by default.
+It is available to use the root permission, execute sudo commands, install and run the unsigned applications that are not in the App Store, which may damage the integrity of the system. No official maintenance services are available for such damage. Please use it with caution. The system is not in developer mode by default.
 
 1. On the homepage of Control Center, click ![general](icon/general.svg).
 2. Click the **Developer Mode** and click the **Enter Developer Mode** Icon.
-
-- If you choose the online Mode, please log into your network account first. Read the disclaimer carefully, check **Agree and Enter the Developer Mode** and click **Confirm** after understanding the precautions. The button will be changed to **Having Entered the Developer Mode** after the certificate is issued by the system.
-- If you choose the offline mode, download the certificate according to the prompt. Enter the developer mode after importing the certificate.
+   - If you choose the online Mode, please log into your network account first. Read the disclaimer carefully, check **Agree and Enter the Developer Mode** and click **Confirm** after understanding the precautions. The button will be changed to **Having Entered the Developer Mode** after the certificate is issued by the system.
+   - If you choose the offline mode, download the certificate according to the prompt. Enter the developer mode after importing the certificate.
 
 3. Click **Reboot Immediately** in the pop-up  dialogue and enter the developer mode after rebooting the system.
 
-   > ![attention](icon/attention.svg)Attention: You can not exit or undo after you enter Developer Mode. All accounts will have root access.
-
-
-
+   > ![attention](icon/attention.svg) Attention: You can not exit or undo after you enter Developer Mode. All accounts will have root access.
 
 #### User Experience Program
+
 User Experience Program collects your hardware, application and system information and help us better understand the user needs and thus improve user experiences. To have a better operating system, you are recommended to join the User Experience Program. And you are free to join and exit the program anytime.
 
 1. On the homepage of Control Center, click ![general](icon/general.svg).
@@ -1348,13 +1407,13 @@ You can use the keyboard to switch between various interface areas, select objec
 | ![Up](icon/Up.svg)    ![Down](icon/Down.svg)     ![Left](icon/Left.svg) ![Right](icon/Right.svg) | Used to select different objects in the same area. Press ![Right](icon/Right.svg) to enter the lower menu and  ![Left](icon/Left.svg) to return to the upper menu. Press![Up](icon/Up.svg)and ![Down](icon/Down.svg) to switch between up and down. |
 | **Enter**                                                    | Execute the selected operation.                              |
 | **Space**                                                    | Preview the selected object in File Manager; start and pause the playback in Music and Movie; expand the drop-down options in the drop-down list (The enter key is also available.). |
-| **Ctrl** + **M**                                             | Open the right-click menu.                                   |
+
 
 ## Touchpad Gestures
 
 On the touchpad, you can use the following gestures as a substitute for mouse operations.
 
-> ![attention](icon/attention.svg)Attention: Your touchpad may not support some of the following gestures. Please confirm whether the touchpad supports multi-touch. 
+> ![attention](icon/attention.svg) Attention: Your touchpad may not support some of the following gestures. Please confirm whether the touchpad supports multi-touch. 
 
 ### One-finger Gestures
 
@@ -1435,7 +1494,7 @@ Click with a single finger to finish the mouse click operation on your touchscre
 
 Double-click with a single finger to finish the mouse double-click operation on your touchscreen.
 
-> ![tips](icon/tips.svg)Tips: Double-click to select the texts and drag your finger on the screen to select more texts.
+> ![tips](icon/tips.svg) Tips: Double-click to select the texts and drag your finger on the screen to select more texts.
 
 ### Move and Drag 
 
@@ -1451,7 +1510,7 @@ Slide in from the bottom of the screen exceeding the dock's height to open Works
 
 ### Call out Dock
 
-When the Dock is set as "Always Hidden" or "Smart Hide", if the Dock is at the bottom, slide in upward from the bottom edge of the screen to call it out; and if the Dock is on the top, slide in downward from the upper edge of the screen to call it out.
+When the Dock is set as "Keep Hidden" or "Smart Hide", if the Dock is at the bottom, slide in upward from the bottom edge of the screen to call it out; and if the Dock is on the top, slide in downward from the upper edge of the screen to call it out.
 
 ### Backward/Forward
 
@@ -1466,4 +1525,4 @@ The scrolling directions of the screen are the same as where your finger goes.
 Pinch two fingers to zoom out on the webpage or picture.  Open two fingers to zoom in on the webpage or picture.
 
 
-<div class="version-info"><span>Update Date: 2021-06-23</span><span> Version: 2020.11</span></div>
+<div class="version-info"><span>Update Date: 2022-03-14</span><span> Version: 2022.02</span></div>
