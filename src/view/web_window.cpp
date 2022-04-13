@@ -47,6 +47,10 @@
 #include <QClipboard>
 #include <QNetworkProxyFactory>
 
+#define SEARCH_EDIT_WIDTH 350  // 一般情况下搜索窗口的大小
+#define SEARCH_EDIT_HEIGHT 44  // 一般情况下搜索窗口的大小
+#define LIMIT_SEARCH_EDIT_WIDTH 750 // 当主窗口
+
 namespace {
 
 const int kSearchDelay = 200;
@@ -304,6 +308,15 @@ void WebWindow::closeEvent(QCloseEvent *event)
 void WebWindow::resizeEvent(QResizeEvent *event)
 {
     Q_UNUSED(event);
+
+    // 当窗口缩小时，搜索控件会被压缩，现调整为动态变化
+    int detal = LIMIT_SEARCH_EDIT_WIDTH - event->size().width();
+    if(detal <= 0){
+        search_edit_->setFixedWidth(SEARCH_EDIT_WIDTH);
+    }else if(detal != LIMIT_SEARCH_EDIT_WIDTH){
+        search_edit_->setFixedWidth(SEARCH_EDIT_WIDTH - detal);
+    }
+
     if(completion_window_->isVisible()){
         completion_window_->autoResize();
         // Move to below of search edit.
@@ -581,7 +594,7 @@ void WebWindow::initUI()
     search_edit_ = new SearchEdit;
     DFontSizeManager::instance()->bind(search_edit_, DFontSizeManager::T6, QFont::Normal);
     search_edit_->setObjectName("SearchEdit");
-    search_edit_->setFixedSize(350, 44);
+    search_edit_->setFixedSize(SEARCH_EDIT_WIDTH, SEARCH_EDIT_HEIGHT);
     search_edit_->setPlaceHolder(QObject::tr("Search"));
     if (Utils::hasSelperSupport()) {
         DMenu *pMenu = new DMenu;

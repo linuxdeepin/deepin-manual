@@ -741,10 +741,8 @@ TEST_F(ut_web_window_test, resizeEvent_001)
     list.append(result2);
     web->onSearchAnchorResult("", list);
 
-    QResizeEvent *event;
-
     web->completion_window_->setVisible(true);
-    web->resizeEvent(event);
+    web->resize(web->size()+QSize(1,1));
 
     const QPoint local_point(web->rect().width() / 2 - web->search_edit_->width() / 2,
                              web->titlebar()->height() - 3);
@@ -770,10 +768,8 @@ TEST_F(ut_web_window_test, resizeEvent_002)
     list.append(result2);
     web->onSearchAnchorResult("", list);
 
-    QResizeEvent *event;
-
     web->completion_window_->setVisible(true);
-    web->resizeEvent(event);
+    web->resize(web->size()+QSize(1,1));
 
     const QPoint local_point(web->rect().width() / 2 - web->search_edit_->width() / 2,
                              web->titlebar()->height() - 3);
