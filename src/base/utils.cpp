@@ -217,6 +217,26 @@ QList<AppInfo> Utils::launcherInterface()
 }
 
 /**
+ * @brief Utils::judgeWayLand
+ * @return
+ * 判断是否为wayland
+ */
+bool Utils::judgeWayLand()
+{
+   auto env = QProcessEnvironment::systemEnvironment();
+
+   QString XDG_SESSION_TYPE = env.value(QStringLiteral("XDG_SESSION_TYPE"));
+
+   QString WAYLAND_DISPLAY = env.value(QStringLiteral("WAYLAND_DISPLAY"));
+
+   if (XDG_SESSION_TYPE == QLatin1String("wayland") || WAYLAND_DISPLAY.contains(QLatin1String("wayland"), Qt::CaseInsensitive)){
+      return true;
+   }
+
+   return false;
+}
+
+/**
  * @brief Utils::getSystemManualList
  * @return　返回系统中存在帮助手册的应用列表
  */
@@ -241,11 +261,25 @@ QStringList Utils::getSystemManualList()
     const QStringList applicationList = QDir(QString("%1/application/").arg(DMAN_MANUAL_DIR)).entryList();
     const QStringList systemList = QDir(QString("%1/system/").arg(DMAN_MANUAL_DIR)).entryList();
 
-#if 1 //旧文案结构兼容
     QString oldMdPath = DMAN_MANUAL_DIR;
-    if (Dtk::Core::DSysInfo::DeepinServer == Dtk::Core::DSysInfo::deepinType()) {
+
+#if (DTK_VERSION > DTK_VERSION_CHECK(5, 4, 12, 0))
+    if (Dtk::Core::DSysInfo::UosServer == Dtk::Core::DSysInfo::uosType()) {
         oldMdPath += "/server";
-    } else if (Dtk::Core::DSysInfo::DeepinPersonal == Dtk::Core::DSysInfo::deepinType()) {
+    } else if (Dtk::Core::DSysInfo::UosHome == Dtk::Core::DSysInfo::uosEditionType()) {
+        oldMdPath += "/personal";
+    } else if (Dtk::Core::DSysInfo::UosEducation == Dtk::Core::DSysInfo::uosEditionType()) {
+        oldMdPath += "/education";
+    } else if (Dtk::Core::DSysInfo::UosCommunity == Dtk::Core::DSysInfo::uosEditionType()) {
+        oldMdPath += "/community";
+    } else {
+        oldMdPath += "/professional";
+    }
+#else
+    Dtk::Core::DSysInfo::DeepinType nType = Dtk::Core::DSysInfo::deepinType();
+    if (Dtk::Core::DSysInfo::DeepinServer == nType) {
+        oldMdPath += "/server";
+    } else if (Dtk::Core::DSysInfo::DeepinPersonal == nType) {
         oldMdPath += "/personal";
     } else {
         if (Dtk::Core::DSysInfo::isCommunityEdition()) {
@@ -254,8 +288,9 @@ QStringList Utils::getSystemManualList()
             oldMdPath += "/professional";
         }
     }
-    const QStringList oldAppList = QDir(oldMdPath).entryList();
+
 #endif
+    const QStringList oldAppList = QDir(oldMdPath).entryList();
 
     QMultiMap<qlonglong, AppInfo> appMap;
     for (int var = 0; var < list.size(); ++var) {
@@ -382,6 +417,7 @@ QStringList Utils::systemToOmit(Dtk::Core::DSysInfo::UosEdition type)
     switch (type) {
     //专业版
     case  Dtk::Core::DSysInfo::UosProfessional:
+    case  Dtk::Core::DSysInfo::UosMilitary:
         retList.append("p");
         break;
     //个人版
@@ -394,6 +430,7 @@ QStringList Utils::systemToOmit(Dtk::Core::DSysInfo::UosEdition type)
         break;
     //服务器企业版
     case  Dtk::Core::DSysInfo::UosEnterprise:
+    case  Dtk::Core::DSysInfo::UosMilitaryS:
         retList.append("e");
         retList.append("s");
         break;
@@ -407,24 +444,14 @@ QStringList Utils::systemToOmit(Dtk::Core::DSysInfo::UosEdition type)
         retList.append("eu");
         retList.append("s");
         break;
+    //教育版
+    case Dtk::Core::DSysInfo::UosEducation:
+        retList.append("edu");
+        break;
     default:
         break;
     }
     return retList;
-}
-
-/**
- * @brief Utils::isMostPriority 判断当前文件是否为最优先级文件
- * @param mdPath
- * @param morePriorityPath
- * @return
- */
-bool Utils::isMostPriority(const QString &mdPath, QString &morePriorityPath)
-{
-    Q_UNUSED(mdPath);
-    Q_UNUSED(morePriorityPath);
-
-    return  true;
 }
 
 bool Utils::activeWindow(quintptr winId)
@@ -466,8 +493,10 @@ QString Utils::mkMutiDir(const QString &path)
     QString parentDir = mkMutiDir(path.mid(0, path.lastIndexOf('/')));
     QString dirname = path.mid(path.lastIndexOf('/') + 1);
     QDir parentPath(parentDir);
-    if (!dirname.isEmpty())
-        parentPath.mkpath(dirname);
+    if (!dirname.isEmpty()) {
+        bool ret = parentPath.mkpath(dirname);
+        qDebug() << "mkpath result:" << ret << dirname;
+    }
     return parentDir + "/" + dirname;
 }
 
@@ -628,15 +657,13 @@ DPalette ExApplicationHelper::palette(const QWidget *widget, const QPalette &bas
 
     DPalette palette;
 
-    do {
-        // 存在自定义palette时应该根据其自定义的palette获取对应色调的DPalette
-        const QPalette &wp = widget->palette();
+    // 存在自定义palette时应该根据其自定义的palette获取对应色调的DPalette
+    const QPalette &wp = widget->palette();
 
-        palette = standardPalette(toColorType(wp));
+    palette = standardPalette(toColorType(wp));
 
-        // 关注控件palette改变的事件
-        const_cast<QWidget *>(widget)->installEventFilter(const_cast<ExApplicationHelper *>(this));
-    } while (false);
+    // 关注控件palette改变的事件
+    const_cast<QWidget *>(widget)->installEventFilter(const_cast<ExApplicationHelper *>(this));
 
     return palette;
 }

@@ -16,9 +16,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "ut_search_completion_delegate.h"
-
 #include "view/widget/search_completion_delegate.h"
-
 #include "view/widget/search_completion_listview.h"
 #include "controller/search_result.h"
 #include "src/third-party/stub/stub.h"
@@ -124,18 +122,24 @@ TEST_F(ut_search_completion_delegate_test, paint2)
     sv.setModel(&search_compeletion_model_);
 
     SearchCompletionDelegate *sd = new SearchCompletionDelegate(&sv);
-//    sv.setItemDelegate(sd);
+    sv.setItemDelegate(sd);
     QPainter *painter = new QPainter;
-    const QModelIndex index =  sv.model()->index(1, 1);
+    const QModelIndex index = sv.model()->index(0, 0);
     QStyleOptionViewItem  option;
 //    const QModelIndex index;
 
     option.state = QStyle::State_Selected;
-    Stub s;
-    s.set(ADDR(QModelIndex, isValid), stub_true);
+    //    Stub s;
+    //    s.set(ADDR(QModelIndex, isValid), stub_true);
 
     sd->paint(painter, option, index);
-    s.reset(ADDR(QModelIndex, isValid));
+    QPixmap pix = sv.grab(QRect(QPoint(0, 0), QSize(0, 0)));
+
+    // s.reset(ADDR(QModelIndex, isValid));
+
+    option.state = QStyle::State_On;
+    sd->paint(painter, option, index);
+
     delete painter;
 }
 
@@ -186,6 +190,7 @@ TEST_F(ut_search_completion_delegate_test, sizeHint)
 
     sd->paint(painter, option, index);
     QSize sizehit = sd->sizeHint(option, index);
+    ASSERT_TRUE(sizehit.height() > 0);
 
     s.reset(ADDR(QModelIndex, isValid));
     delete painter;

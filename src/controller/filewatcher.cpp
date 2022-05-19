@@ -102,8 +102,10 @@ void fileWatcher::monitorFile()
                 QString modulePath = typePath + "/" + module;
                 listModule.append(modulePath);
                 QStringList listAppNameT = QDir(modulePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs);
+
                 if (listAppNameT.count() != 1) {
-                    qCritical() << Q_FUNC_INFO << modulePath << listAppNameT << "：there are more folders..";
+                    qCritical() << Q_FUNC_INFO << modulePath  << "：there are more folders..:" << listAppNameT.count();
+                    continue;
                 }
                 //./manual-assets/application(system)/appName/appNameT
                 QString appPath = modulePath + "/" + listAppNameT.at(0);
@@ -195,8 +197,10 @@ void fileWatcher::onTimerOut()
                 //./manual-assets/application(system)/appName
                 QString modulePath = typePath + "/" + module;
                 QStringList listAppNameT = QDir(modulePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs);
+
                 if (listAppNameT.count() != 1) {
-                    qCritical() << modulePath << listAppNameT << "：there are more folders..";
+                    qCritical() << Q_FUNC_INFO << modulePath  << "：there are more folders..:" << listAppNameT.count();
+                    continue;
                 }
                 //./manual-assets/application(system)/appName/appNameT
                 QString appPath = modulePath + "/" + listAppNameT.at(0);

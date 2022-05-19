@@ -58,8 +58,3 @@ void SearchCompletionListView::setSelection(const QRect &rect, QItemSelectionMod
         emit onClickSearchCompletionItem(modelIndex);
     }
 }
-
-void SearchCompletionListView::paintEvent(QPaintEvent *event)
-{
-    DListView::paintEvent(event);
-}

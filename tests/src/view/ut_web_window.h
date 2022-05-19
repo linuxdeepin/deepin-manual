@@ -18,11 +18,13 @@
 #ifndef UT_WEB_WINDOW_TEST_H
 #define UT_WEB_WINDOW_TEST_H
 
-#include <QMainWindow>
 #include "gtest/gtest.h"
-#include <QTest>
+
 #include <DObject>
 #include <DApplicationHelper>
+
+#include <QTest>
+#include <QMainWindow>
 #include <QWebChannel>
 #include <QWebEnginePage>
 
@@ -37,10 +39,12 @@ public:
 
     void stub_initweb();
     bool stub_isValid();
+    bool stub_isValidfalse();
     void stub_setWeb(QWebChannel*);
     QWebEnginePage* stub_page();
     WebWindow *window = nullptr;
     DGuiApplicationHelper::ColorType stub_themeType() const;
+    DGuiApplicationHelper::ColorType stub_themeTypeDark() const;
     QString stub_selectText() const;
     Qt::MouseButton stub_MouseButtonBack() const;
     Qt::MouseButton stub_MouseButtonForward() const;

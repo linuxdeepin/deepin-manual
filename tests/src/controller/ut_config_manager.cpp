@@ -1,6 +1,6 @@
 #include "ut_config_manager.h"
-
 #include "controller/config_manager.h"
+
 #include <QProcess>
 #include <QStandardPaths>
 
@@ -14,7 +14,8 @@ ut_config_manager_test::ut_config_manager_test()
 TEST_F(ut_config_manager_test, getSettings)
 {
     ConfigManager *m_ap = new ConfigManager();
-    m_ap->getSettings();
+    QSettings *qs = m_ap->getSettings();
+    ASSERT_TRUE(qs != nullptr);
     delete m_ap;
 }
 

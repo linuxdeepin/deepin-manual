@@ -33,8 +33,6 @@ public:
 Q_SIGNALS:
     void fontChangeRequested(const QString &fontFamily, int pixelSize);
 
-public Q_SLOTS:
-    void openUrl(const QString &url);
 };
 
 #endif // DEEPIN_MANUAL_UI_CHANNEL_SETTINGS_PROXY_H

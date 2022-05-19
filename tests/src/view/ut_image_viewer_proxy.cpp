@@ -16,13 +16,10 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "ut_image_viewer_proxy.h"
-
 #include "view/image_viewer_proxy.h"
 #include "view/widget/image_viewer.h"
-
 #include "resources/themes/images.h"
 
-//namespace dman {
 
 ut_image_viewer_proxy_test::ut_image_viewer_proxy_test()
 {

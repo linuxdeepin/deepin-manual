@@ -22,7 +22,6 @@
 #include "gtest/gtest.h"
 #include <QTest>
 
-
 class ut_window_manager_test : public ::testing::Test
 {
 public:

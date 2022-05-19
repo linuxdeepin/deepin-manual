@@ -16,8 +16,10 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "ut_search_completion_listview.h"
-
 #include "view/widget/search_completion_listview.h"
+
+#include <QSignalSpy>
+#include <QStandardItemModel>
 
 ut_search_completion_listview_test::ut_search_completion_listview_test()
 {
@@ -61,23 +63,29 @@ TEST_F(ut_search_completion_listview_test, setSelection)
 {
 
     SearchCompletionListView *sv = new SearchCompletionListView();
-    QRect rect;
+    QSignalSpy spy(sv, SIGNAL(onClickSearchCompletionItem(QModelIndex)));
+    QStandardItemModel *ItemModel = new QStandardItemModel(sv);
+
+    QStringList strList;
+    strList.append("A");
+
+    int nCount = strList.size();
+    for (int i = 0; i < nCount; i++) {
+        QString string = static_cast<QString>(strList.at(i));
+        QStandardItem *item = new QStandardItem(string);
+        ItemModel->appendRow(item);
+    }
+    sv->setModel(ItemModel);
+    sv->setFixedSize(200, 300);
+    QRect rect(10, 10, 200, 50);
     QItemSelectionModel::SelectionFlags command;
     sv->m_bLeftMouse = true;
     sv->setSelection(rect, command);
+    qWarning() << spy.count();
+    QList<QVariant> argu = spy.takeFirst();
+    ASSERT_EQ(sv->visualRect(argu.at(0).toModelIndex()).width(), 200);
     sv->m_bLeftMouse = false;
     sv->setSelection(rect, command);
-
-}
-
-
-TEST_F(ut_search_completion_listview_test, paintEvent)
-{
-
-    SearchCompletionListView *sv = new SearchCompletionListView();
-    QRect rect;
-    QPaintEvent *event = new QPaintEvent(rect);
-    sv->paintEvent(event);
-    delete event;
-
+    ASSERT_EQ(spy.count(), 0);
+    delete sv;
 }

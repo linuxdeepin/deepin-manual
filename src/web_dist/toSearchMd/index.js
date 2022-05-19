@@ -18901,9 +18901,9 @@ function mainTmp(pathList){
             let count = 0;
             let renderer = new marked.Renderer();
             renderer.heading = (text, level) => {
-              if (level <= 2) {
+              if (level <= 2 || level == 3) {
                 text = text.split('|')[0];
-              }
+              } 
               let id = 'h' + count;
               count++;
               let type = 'h' + level;

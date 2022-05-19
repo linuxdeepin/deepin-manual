@@ -31,7 +31,7 @@ class TitleBarProxy : public QObject
     Q_OBJECT
 
 public:
-    TitleBarProxy(/*TitleBar* title_bar,*/ QObject *parent = nullptr);
+    TitleBarProxy(QObject *parent = nullptr);
     ~TitleBarProxy() override;
 
 signals:

@@ -261,7 +261,11 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
     }
 
     QSqlQuery query(p_->db);
-    query.prepare(kSearchDeleteEntryByApp);
+    bool preok = query.prepare(kSearchDeleteEntryByApp);
+    if(!preok){
+        qCritical() << "Failed to prepare skSearchDeleteEntryByApp:" << query.lastError().text();
+        return;
+    }
     query.bindValue(0, app_name);
     query.bindValue(1, lang);
     if (!query.exec()) {
@@ -273,7 +277,11 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
         qWarning() << "Failed to start db transaction!";
         return;
     }
-    query.prepare(kSearchInsertEntry);
+    preok = query.prepare(kSearchInsertEntry);
+    if(!preok){
+        qCritical() << "Failed to prepare kSearchInsertEntry:" << query.lastError().text();
+        return;
+    }
     QStringList app_names;
     QStringList lang_list;
     for (int i = 0; i < anchors.length(); ++i) {
@@ -312,7 +320,11 @@ void SearchDb::deleteSearchInfo(const QStringList &appName, const QStringList &l
 {
     Q_ASSERT(p_->db.isOpen());
     QSqlQuery query(p_->db);
-    query.prepare(kSearchDeleteEntryByApp);
+    bool preok = query.prepare(kSearchDeleteEntryByApp);
+    if(!preok){
+        qCritical() << "Failed to prepare kSearchDeleteEntryByApp:" << query.lastError().text();
+        return;
+    }
     query.bindValue(0, appName);
     query.bindValue(1, lang);
     if (!query.execBatch()) {
@@ -722,7 +734,11 @@ void SearchDb::insertFilesTimeEntry(const QStringList &listMdPath, const QString
     Q_ASSERT(p_->db.isOpen());
 
     QSqlQuery query(p_->db);
-    query.prepare(kfileTimeDeleteEntryByApp);
+    bool preok = query.prepare(kfileTimeDeleteEntryByApp);
+    if(!preok){
+        qCritical() << "Failed to prepare kSearchDeleteEntryByApp:" << query.lastError().text();
+        return;
+    }
     query.bindValue(0, listMdPath);
     if (!query.execBatch()) {
         qCritical() << "Failed to delete fileTime entry:" << query.lastError().text();
@@ -733,7 +749,11 @@ void SearchDb::insertFilesTimeEntry(const QStringList &listMdPath, const QString
         qWarning() << "Failed to start db transaction!";
         return;
     }
-    query.prepare(kfileTimeInsertEntry);
+    preok = query.prepare(kfileTimeInsertEntry);
+    if(!preok){
+        qCritical() << "Failed to prepare kfileTimeInsertEntry:" << query.lastError().text();
+        return;
+    }
     query.bindValue(0, listMdPath);
     query.bindValue(1, listDataTime);
     bool ok = query.execBatch();
@@ -742,8 +762,8 @@ void SearchDb::insertFilesTimeEntry(const QStringList &listMdPath, const QString
         p_->db.rollback();
         qCritical() << "Failed to insert fileTime " << query.lastError().text();
     } else {
-        p_->db.commit();
-        qCritical() << "insert fileTime";
+        bool ret = p_->db.commit();
+        qCritical() << "insert fileTime" << ret;
     }
 }
 
@@ -756,7 +776,11 @@ void SearchDb::deleteFilesTimeEntry(const QStringList &listMdPath)
     Q_ASSERT(p_->db.isOpen());
 
     QSqlQuery query(p_->db);
-    query.prepare(kfileTimeDeleteEntryByApp);
+    bool preok = query.prepare(kfileTimeDeleteEntryByApp);
+    if(!preok){
+        qCritical() << "Failed to prepare kfileTimeDeleteEntryByApp:" << query.lastError().text();
+        return;
+    }
     query.bindValue(0, listMdPath);
     bool ok = query.execBatch();
     if (!ok) {

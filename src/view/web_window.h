@@ -80,8 +80,8 @@ protected:
     void closeEvent(QCloseEvent *event) Q_DECL_OVERRIDE;
     void inputMethodEvent(QInputMethodEvent *e) Q_DECL_OVERRIDE;
     bool eventFilter(QObject *watched, QEvent *event) Q_DECL_OVERRIDE;
+    void resizeEvent(QResizeEvent *event) override;
     QVariant inputMethodQuery(Qt::InputMethodQuery prop) const Q_DECL_OVERRIDE;
-    void resizeEvent(QResizeEvent *event) Q_DECL_OVERRIDE;
 
 private:
     void initUI();
@@ -132,7 +132,6 @@ private slots:
     void onSetKeyword(const QString &keyword);
     void onManualSearchByKeyword(const QString &keyword);
     void onAppearanceChanged(QString, QMap<QString, QVariant>, QStringList);
-    //    void onThemeChange(DGuiApplicationHelper::ColorType themeType);
 };
 
 #endif // DEEPIN_MANUAL_VIEW_WEB_WINDOW_H

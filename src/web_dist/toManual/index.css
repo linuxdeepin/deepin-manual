@@ -56,7 +56,7 @@ div {
     #article #article_bg .read {
       position: absolute;
       width: 90%;
-      min-width: 600px;
+      min-width: 400px;
       max-width: 1024px;
       left: 50%;
       transform: translateX(-50%);
@@ -289,12 +289,11 @@ div {
         margin-top: 18px;
         margin-bottom: 3px; }
       #index .items .item .content {
-        margin-left: 15px;
         width: var(--index-span-width);
         word-break: normal;
         overflow: hidden;
         text-overflow: ellipsis;
-        display: -webkit-box;
+        margin: auto;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
         font-family: var(--nav-world-font-family);
@@ -333,10 +332,10 @@ body {
   padding: 2px 5px;
   word-break: normal;
   background-color: var(--tips-background-color);
-  color: var(--nav-h2-word-color);
+  color: var(--nav-hove-word-color);
   font-family: var(--nav-world-font-family);
-  border-radius: 5px;
-  border: 1px solid gray; }
+  border-radius: 8px;
+  border: 1px solid var(--nav-hove-border-color); }
 
 #main .support-div {
   width: 48px;
