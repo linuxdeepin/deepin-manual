@@ -417,6 +417,7 @@ QStringList Utils::systemToOmit(Dtk::Core::DSysInfo::UosEdition type)
     switch (type) {
     //专业版
     case  Dtk::Core::DSysInfo::UosProfessional:
+    case  Dtk::Core::DSysInfo::UosMilitary:
         retList.append("p");
         break;
     //个人版
@@ -429,6 +430,7 @@ QStringList Utils::systemToOmit(Dtk::Core::DSysInfo::UosEdition type)
         break;
     //服务器企业版
     case  Dtk::Core::DSysInfo::UosEnterprise:
+    case  Dtk::Core::DSysInfo::UosMilitaryS:
         retList.append("e");
         retList.append("s");
         break;
