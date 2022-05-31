@@ -398,9 +398,9 @@ QList<AppInfo> Utils::sortAppList(QMultiMap<qlonglong, AppInfo> map)
  */
 bool Utils::hasSelperSupport()
 {
-    int nType = Dtk::Core::DSysInfo::deepinType();
+    Dtk::Core::DSysInfo::UosEdition type = Dtk::Core::DSysInfo::uosEditionType();
     //专业版判断是否有服务与支持
-    if (Dtk::Core::DSysInfo::DeepinProfessional == (Dtk::Core::DSysInfo::DeepinType)nType) {
+    if (Dtk::Core::DSysInfo::UosProfessional == type || Dtk::Core::DSysInfo::UosMilitary == type || Dtk::Core::DSysInfo::UosMilitaryS == type) {
         const QStringList list = getSystemManualList();
         if (list.contains("uos-service-support")) {
             return true;
