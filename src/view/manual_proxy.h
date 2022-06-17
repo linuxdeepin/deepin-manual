@@ -48,13 +48,12 @@ public slots:
     void finishChannel();
     void supportClick();
     bool bIsLongSon();
-    //js页面渲染结束
-    void renderFinish();
     void showUpdateLabel();
     QString appToPath(const QString &appName);
     QString getAppIconPath(const QString &desktopname);
     QString getLocalAppName(const QString &desktopname);
-    void LogPrint(const QString &log);
+
+    QString translateTitle(const QString &titleUS);
 
 private:
     void saveAppList(const QStringList &list);

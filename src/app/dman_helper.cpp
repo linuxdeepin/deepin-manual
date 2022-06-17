@@ -24,9 +24,13 @@
 #include <QWebEngineView>
 #include <QApplication>
 #include <QDebug>
+#include <QOpenGLContext>
+#include <QSurfaceFormat>
 
 int main(int argc, char **argv)
 {
+    //欧拉版root用户登录时会报no-sandbox错误的问题,增加此参数后使qtwebengine进程与主进程合并
+    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--single-process");
     QApplication app(argc, argv);
 
 //    qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "7777");
@@ -36,16 +40,28 @@ int main(int argc, char **argv)
 
     qDebug() << Dtk::Core::DLogManager::getlogFilePath();
 
+    QOpenGLContext ctx;
+    QSurfaceFormat fmt;
+    fmt.setRenderableType(QSurfaceFormat::OpenGL);
+    ctx.setFormat(fmt);
+    ctx.create();
+    if (!ctx.isValid()) {
+       fmt.setRenderableType(QSurfaceFormat::OpenGLES);
+    }
+    fmt.setDefaultFormat(fmt);
+    fmt.setProfile(QSurfaceFormat::CoreProfile);
+    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu");
+
     Dtk::Core::DLogManager::registerFileAppender();
     Dtk::Core::DLogManager::registerConsoleAppender();
 
     QDBusConnection conn = QDBusConnection::sessionBus();
     if (!conn.registerService(kManualSearchService)
             || !conn.registerObject(kManualSearchIface, &search_obj)) {
-        qCritical() << "dman-search failed to register dbus service";
+        qCritical() << "dmanHelper failed to register dbus service";
         return -1;
     } else {
-        qDebug() << "dman-search register dbus service success!";
+        qDebug() << "dmanHelper register dbus service success!";
     }
 
     helperManager obj;

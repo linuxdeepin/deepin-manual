@@ -30,8 +30,8 @@
 #include <QDesktopWidget>
 
 #define WM_SENDER_NAME "Sender"
-const int kWinMinWidth = 800;
-const int kWinMinHeight = 600;
+const int kWinMinWidth = 680;
+const int kWinMinHeight = 300;
 
 WindowManager::WindowManager(QObject *parent)
     : QObject(parent)
@@ -214,18 +214,6 @@ void WindowManager::openManualWithSearch(const QString &app_name, const QString 
     qDebug() << Q_FUNC_INFO << app_name << curr_keyword_;
 }
 
-/**
- * @brief WindowManager::onAppStartTimeCount
- * @param startfinshTime 通过js触发事件获取的系统启动结束时间
- * 启动时间统计,打印qinfo
- */
-void WindowManager::onAppStartTimeCount(qint64 startfinshTime)
-{
-    qDebug() << "startTime ---> " << this->appStartTime;
-    qDebug() << "finshTime ---> " << startfinshTime;
-    QString logInfo = QString("[GRABPOINT] POINT-01 startduration=%1%2").arg(startfinshTime - this->appStartTime).arg("ms");
-    qInfo() << logInfo;
-}
 /**
  * @brief WindowManager::onFilesUpdate
  * @param filesList

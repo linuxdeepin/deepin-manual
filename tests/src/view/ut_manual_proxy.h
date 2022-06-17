@@ -19,9 +19,11 @@
 #define UT_MANUAL_PROXY_TEST_H
 
 #include "gtest/gtest.h"
-#include <QTest>
+
 #include <DSysInfo>
 
+#include <QStandardPaths>
+#include <QTest>
 #include <QtGui/private/qiconloader_p.h>
 
 class ManualProxy;
@@ -51,6 +53,8 @@ public:
 
     QString stub_LocalNameug_bo_CN();
 
+    QString stub_writableLocation(QStandardPaths::StandardLocation type);
+
     static Dtk::Core::DSysInfo::DeepinType stub_deepinTypeDeepinPersonal()
     {
         return Dtk::Core::DSysInfo::DeepinPersonal;
@@ -59,6 +63,11 @@ public:
     static Dtk::Core::DSysInfo::DeepinType stub_deepinTypeDeepinServer()
     {
         return Dtk::Core::DSysInfo::DeepinServer;
+    }
+
+    static Dtk::Core::DSysInfo::UosEdition stub_deepinTypeUosEnterprise()
+    {
+        return Dtk::Core::DSysInfo::UosEnterprise;
     }
 
     static Dtk::Core::DSysInfo::DeepinType stub_deepinTypeDeepinUnknownDeepin()

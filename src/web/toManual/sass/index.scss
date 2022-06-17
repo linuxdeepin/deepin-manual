@@ -55,12 +55,13 @@
         margin-bottom: 3px;
       }
       .content {
-        margin-left: 15px;    //保持span居中,当设置display:-webkit-box后,默认居左,故设置其外边距
+        //margin-left: 15px;    //保持span居中,当设置display:-webkit-box后,默认居左,故设置其外边距
         width: var(--index-span-width);
         word-break: normal;
         overflow: hidden;
         text-overflow: ellipsis;
-        display:-webkit-box;    //设置其排列两行
+        margin: auto;
+        //display:-webkit-box;    //设置其排列两行
         -webkit-box-orient:vertical;
         -webkit-line-clamp:2;
         font-family: var(--nav-world-font-family);

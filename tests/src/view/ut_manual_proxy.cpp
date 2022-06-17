@@ -16,16 +16,17 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "ut_manual_proxy.h"
-
 #include "view/manual_proxy.h"
 #include "controller/config_manager.h"
 #include "base/consts.h"
 #include "base/utils.h"
-#include "../third-party/stub/stub.h"
+#include "src/third-party/stub/stub.h"
+
 #include <QProcess>
 #include <QMutex>
 #include <QDir>
 #include <QtGui/private/qiconloader_p.h>
+#include <QSignalSpy>
 
 ut_manual_proxy_test::ut_manual_proxy_test()
 {
@@ -48,7 +49,7 @@ QString ut_manual_proxy_test::stub_LocalNamezh_HK()
     return "zh_HK";
 }
 
- QString ut_manual_proxy_test::stub_LocalNamezh_TW()
+QString ut_manual_proxy_test::stub_LocalNamezh_TW()
 {
     return "zh_TW";
 }
@@ -71,23 +72,39 @@ QString ut_manual_proxy_test::stub_LocalNameug_bo_CN()
 TEST_F(ut_manual_proxy_test, getSystemManualDir)
 {
     QString str = m_mp->getSystemManualDir();
-    QString tmp = "deepin-manual/manual-assets";
-    ASSERT_NE(str.indexOf(tmp), -1);
+    QString tmp = "manual-assets";
+    ASSERT_TRUE(str.contains(tmp));
 }
 
 TEST_F(ut_manual_proxy_test, getSystemManualList)
 {
     QStringList list = m_mp->getSystemManualList();
 
-//    ASSERT_GE(list.count(), 1);
+    ASSERT_GE(list.count(), 1);
 }
 
 
 TEST_F(ut_manual_proxy_test, bIsLongSon)
 {
-    m_mp->bIsLongSon();
+    bool isLongson = false;
+    QProcess process;
+    //获取CPU型号
+    process.start("cat /proc/cpuinfo");
 
-//    ASSERT_GE(list.count(), 1);
+    if (process.waitForFinished()) {
+        QString result = process.readAllStandardOutput();
+
+        if (result.contains("Loongson")) {
+            qWarning() << "cpu mode name is loongson";
+            isLongson = true;
+        } else {
+            isLongson = false;
+        }
+    }
+    Utils::cpuModeName = "";
+    bool re = m_mp->bIsLongSon();
+
+    ASSERT_EQ(re, isLongson);
 }
 
 
@@ -95,20 +112,36 @@ TEST_F(ut_manual_proxy_test, getUsedAppList)
 {
     QStringList list = m_mp->getUsedAppList();
 
-//    ASSERT_GE(list.count(), 1);
+    ASSERT_GE(list.count(), 0);
 }
 
 
 TEST_F(ut_manual_proxy_test, hasSelperSupport)
 {
-     m_mp->hasSelperSupport();
+    bool isSupport = false;
+    int nType = Dtk::Core::DSysInfo::deepinType();
+    //专业版判断是否有服务与支持
+    if (Dtk::Core::DSysInfo::DeepinProfessional == (Dtk::Core::DSysInfo::DeepinType)nType) {
+        const QStringList list = m_mp->getSystemManualList();
+        if (list.contains("uos-service-support")) {
+            isSupport = true;
+        }
+    }
 
-//    ASSERT_GE(list.count(), 1);
+    bool ret = m_mp->hasSelperSupport();
+
+    ASSERT_EQ(isSupport, ret);
+}
+
+QString ut_manual_proxy_test::stub_writableLocation(QStandardPaths::StandardLocation type)
+{
+    return "/tmp";
 }
 
 TEST_F(ut_manual_proxy_test, setApplicationState)
 {
-
+    Stub s;
+    s.set(ADDR(QStandardPaths, writableLocation), ADDR(ut_manual_proxy_test, stub_writableLocation));
     QDir winInfoPath(QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation));
     if (!winInfoPath.exists()) {
         winInfoPath.mkpath(QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation));
@@ -153,11 +186,17 @@ TEST_F(ut_manual_proxy_test, setApplicationState)
 
 
         appName = "test";
-         ManualProxy mp;
-         mp.setApplicationState(appName);
-         qDebug() << "setting->value.dde.bool->>" << setting->value(appName).toBool();
-         setting->endGroup();
-         delete setting;
+        ManualProxy mp;
+        mp.setApplicationState(appName);
+        ASSERT_FALSE(setting->value(appName).toBool());
+        qDebug() << "setting->value.dde.bool->>" << setting->value(appName).toBool();
+
+        appName = "test%2Featt%2FFF";
+        mp.setApplicationState(appName);
+        ASSERT_FALSE(setting->value(appName).toBool());
+        qDebug() << "setting->value.dde.bool->>" << setting->value(appName).toBool();
+        setting->endGroup();
+        delete setting;
     } else {
         QSettings *setting = new QSettings(winInfoFilePath, QSettings::IniFormat);
 
@@ -175,14 +214,15 @@ TEST_F(ut_manual_proxy_test, setApplicationState)
             qDebug() << "setting->value.dde.bool->>" << setting->value(appName).toBool();
             setting->endGroup();
         }
-         delete setting;
-    }
 
+        delete setting;
+    }
 }
 
 TEST_F(ut_manual_proxy_test, setApplicationState2)
 {
-
+    Stub s;
+    s.set(ADDR(QStandardPaths, writableLocation), ADDR(ut_manual_proxy_test, stub_writableLocation));
     QDir winInfoPath(QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation));
     if (!winInfoPath.exists()) {
         winInfoPath.mkpath(QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation));
@@ -237,19 +277,17 @@ TEST_F(ut_manual_proxy_test, setApplicationState2)
 TEST_F(ut_manual_proxy_test, supportClick)
 {
     ManualProxy mp;
+    QSignalSpy spy(&mp, SIGNAL(supportBeClick()));
     mp.supportClick();
+    ASSERT_EQ(spy.count(), 1);
 }
 
 TEST_F(ut_manual_proxy_test, finishChannel)
 {
     ManualProxy mp;
+    QSignalSpy spy(&mp, SIGNAL(channelInit()));
     mp.finishChannel();
-}
-
-TEST_F(ut_manual_proxy_test, renderFinish)
-{
-    ManualProxy mp;
-    mp.renderFinish();
+    ASSERT_EQ(spy.count(), 1);
 }
 
 
@@ -257,7 +295,8 @@ TEST_F(ut_manual_proxy_test, saveApplist)
 {
     QStringList list;
     list << "dde";
-
+    Stub s;
+    s.set(ADDR(QStandardPaths, writableLocation), ADDR(ut_manual_proxy_test, stub_writableLocation));
     QDir winInfoPath(QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation));
     if (!winInfoPath.exists()) {
         winInfoPath.mkpath(QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation));
@@ -273,7 +312,7 @@ TEST_F(ut_manual_proxy_test, saveApplist)
         qDebug() << "dde.value-->" << b;
     } else {
         mp.saveAppList(list);
-        ASSERT_TRUE(setting->value("dde").toBool());
+        ASSERT_FALSE(setting->value("dde").toBool());
     }
 
     QStringList list2;
@@ -283,7 +322,7 @@ TEST_F(ut_manual_proxy_test, saveApplist)
         qDebug() << "dde_test.value-->" << b;
     } else {
         mp.saveAppList(list2);
-        ASSERT_TRUE(setting->value("dde_tests").toBool());
+        ASSERT_FALSE(setting->value("dde_tests").toBool());
     }
     setting->endGroup();
     delete setting;
@@ -292,7 +331,9 @@ TEST_F(ut_manual_proxy_test, saveApplist)
 TEST_F(ut_manual_proxy_test, showUpdateLabel)
 {
     ManualProxy mp;
+    QSignalSpy spy(&mp, SIGNAL(updateLabel()));
     mp.showUpdateLabel();
+    ASSERT_EQ(spy.count(), 1);
 }
 
 bool ut_manual_proxy_test::stub_exists() const
@@ -308,8 +349,13 @@ bool ut_manual_proxy_test::stub_fileopen(QFile::OpenMode s)
 QStringList ut_manual_proxy_test::stub_entryList(QDir::Filters f, QDir::SortFlags s) const
 {
     QStringList d;
-    d <<"dde"<<"dde1";
+    d << "ceshi";
     return d;
+}
+
+QString manmdname()
+{
+    return "/tmp";
 }
 
 TEST_F(ut_manual_proxy_test, appToPath)
@@ -318,37 +364,42 @@ TEST_F(ut_manual_proxy_test, appToPath)
     QString path = mp.appToPath("ceshi");
     ASSERT_TRUE(path.compare("error") == 0);
 
+    Utils::mkMutiDir("/tmp/system/dde/aae");
+    Utils::mkMutiDir("/tmp/system/dde/dde/zh_CN");
+    system("touch /tmp/system/dde/dde/zh_CN/dde.md");
+
     Stub st;
     st.set((bool (QDir::*)() const)ADDR(QDir, exists), ADDR(ut_manual_proxy_test, stub_exists));
-    mp.appToPath("ceshi");
+    path = mp.appToPath("ceshi");
+    ASSERT_TRUE(path.compare("error") == 0);
 
     st.set((QStringList (QDir::*)(QDir::Filters, QDir::SortFlags) const)ADDR(QDir, entryList), ADDR(ut_manual_proxy_test, stub_entryList));
-    mp.appToPath("ceshi");
+    path = mp.appToPath("ceshi");
+    ASSERT_TRUE(path.compare("error") == 0);
+    st.reset((QStringList(QDir::*)(QDir::Filters, QDir::SortFlags) const)ADDR(QDir, entryList));
 
-    st.set(ADDR(Utils, systemToOmit),  ADDR(ut_manual_proxy_test, stub_entryList));
-    mp.appToPath("ceshi");
-
-    st.set(ADDR(Dtk::Core::DSysInfo, deepinType), stub_deepinTypeDeepinPersonal);
-    mp.appToPath("ceshi");
+    st.set(ADDR(Dtk::Core::DSysInfo, uosEditionType), stub_deepinTypeUosEnterprise);
+    path = mp.appToPath("dde");
     st.reset(ADDR(Dtk::Core::DSysInfo, deepinType));
-    st.set(ADDR(Dtk::Core::DSysInfo, deepinType), stub_deepinTypeDeepinServer);
-    mp.appToPath("ceshi");
+
+    st.set(ADDR(Utils, systemToOmit), ADDR(ut_manual_proxy_test, stub_entryList));
+    st.set(ADDR(Dtk::Core::DSysInfo, deepinType), stub_deepinTypeDeepinPersonal);
+    path = mp.appToPath("ceshi");
+    ASSERT_TRUE(path.compare("error") == 0);
+    st.reset(ADDR(Dtk::Core::DSysInfo, deepinType));
+
     st.reset(ADDR(Dtk::Core::DSysInfo, deepinType));
     st.set(ADDR(Dtk::Core::DSysInfo, deepinType), stub_deepinTypeDeepinUnknownDeepin);
     st.set(ADDR(Dtk::Core::DSysInfo, isCommunityEdition), stub_deepinTypeDeepinCommunity);
-    mp.appToPath("ceshi");
+    st.set(ADDR(Utils, getSystemManualDir), manmdname);
+
+    path = mp.appToPath("ceshi");
+    ASSERT_FALSE(path.contains("ceshi"));
     st.reset(ADDR(Dtk::Core::DSysInfo, deepinType));
     st.reset(ADDR(Dtk::Core::DSysInfo, isCommunityEdition));
 }
 
-TEST_F(ut_manual_proxy_test, appToPath2)
-{
-    ManualProxy mp;
-    QString path = mp.appToPath("dde");
-    path.compare("error");
 
-
-}
 QThemeIconInfo ut_manual_proxy_test::stub_loadIcon(const QString &iconname) const
 {
     QThemeIconInfo tee = QIconLoader::instance()->loadIcon(iconname);
@@ -360,14 +411,6 @@ TEST_F(ut_manual_proxy_test, getAppIconPath)
     ManualProxy mp;
     QString iconpaht = mp.getAppIconPath("dde-ceshi");
     ASSERT_TRUE(iconpaht.isEmpty());
-
-    mp.getAppIconPath("dde-launcher");
-
-
-//    Stub st;
-//    st.set(ADDR(QIcon, hasThemeIcon), stub_deepinTypeDeepinCommunity);
-//    //st.set((QThemeIconInfo (QIconLoader::*)(const QString &) const)ADDR(QIconLoader, loadIcon), ADDR(ut_manual_proxy_test, stub_loadIcon));
-//     mp.getAppIconPath("dde-file-manager");
 }
 
 TEST_F(ut_manual_proxy_test, getLocalAppName)
@@ -375,15 +418,12 @@ TEST_F(ut_manual_proxy_test, getLocalAppName)
     ManualProxy mp;
     QString iconpaht = mp.getLocalAppName("dde-ceshi");
     ASSERT_FALSE(iconpaht.isEmpty());
-    mp.getLocalAppName("dde");
-    mp.getLocalAppName("dde-launcher");
+    iconpaht = mp.getLocalAppName("dde");
+    ASSERT_TRUE(iconpaht.compare("Desktop Environment") == 0);
+    iconpaht = mp.getLocalAppName("dde-calendar");
+    ASSERT_FALSE(iconpaht.isEmpty());
 }
 
-TEST_F(ut_manual_proxy_test, LogPrint)
-{
-    ManualProxy mp;
-    mp.LogPrint("dde-ceshi");
-}
 
 TEST_F(ut_manual_proxy_test, getAppLocalDir)
 {
@@ -393,19 +433,23 @@ TEST_F(ut_manual_proxy_test, getAppLocalDir)
 
     Stub st;
     st.set(ADDR(QLocale, name), ADDR(ut_manual_proxy_test, stub_LocalNamezh_TW));
-    mp.getAppLocalDir("/usr/share/deepin-manual/manual-assets/application/deepin-boot-maker/boot-maker1/");
+    iconpaht = mp.getAppLocalDir("/usr/share/deepin-manual/manual-assets/application/deepin-boot-maker/boot-maker1/");
     st.reset(ADDR(QLocale, name));
-
+    ASSERT_TRUE(iconpaht.contains("zh_CN"));
     st.set(ADDR(QLocale, name), ADDR(ut_manual_proxy_test, stub_LocalNamezh_HK));
-    mp.getAppLocalDir("/usr/share/deepin-manual/manual-assets/application/deepin-boot-maker/boot-maker1/");
+    iconpaht = mp.getAppLocalDir("/usr/share/deepin-manual/manual-assets/application/deepin-boot-maker/boot-maker1/");
+    ASSERT_TRUE(iconpaht.contains("zh_CN"));
     st.reset(ADDR(QLocale, name));
     st.set(ADDR(QLocale, name), ADDR(ut_manual_proxy_test, stub_LocalNameug_CN)) ;
-    mp.getAppLocalDir("/usr/share/deepin-manual/manual-assets/application/deepin-boot-maker/boot-maker1/");
+    iconpaht = mp.getAppLocalDir("/usr/share/deepin-manual/manual-assets/application/deepin-boot-maker/boot-maker1/");
     st.reset(ADDR(QLocale, name));
+    ASSERT_TRUE(iconpaht.contains("zh_CN"));
     st.set(ADDR(QLocale, name), ADDR(ut_manual_proxy_test, stub_LocalNameug_eu));
-    mp.getAppLocalDir("/usr/share/deepin-manual/manual-assets/application/deepin-boot-maker/boot-maker1/");
+    iconpaht = mp.getAppLocalDir("/usr/share/deepin-manual/manual-assets/application/deepin-boot-maker/boot-maker1/");
     st.reset(ADDR(QLocale, name));
+    ASSERT_TRUE(iconpaht.contains("en_US"));
     st.set(ADDR(QLocale, name), ADDR(ut_manual_proxy_test, stub_LocalNameug_bo_CN)) ;
-    mp.getAppLocalDir("/usr/share/deepin-manual/manual-assets/application/deepin-boot-maker/boot-maker1/");
+    iconpaht = mp.getAppLocalDir("/usr/share/deepin-manual/manual-assets/application/deepin-boot-maker/boot-maker1/");
     st.reset(ADDR(QLocale, name));
+    ASSERT_TRUE(iconpaht.contains("zh_CN"));
 }

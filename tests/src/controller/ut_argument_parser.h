@@ -20,8 +20,9 @@
 #define UT_ARGUMENT_PARSER_TEST_H
 
 #include "gtest/gtest.h"
-#include <QTest>
 
+#include <QTest>
+#include <QObject>
 
 class ut_argument_parser_test : public testing::Test
 {

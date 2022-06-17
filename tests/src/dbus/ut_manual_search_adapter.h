@@ -24,14 +24,18 @@
 
 class ManualSearchAdapter;
 
-class ut_ManualSearchAdapter : public testing::Test
+class ut_ManualSearchAdapter : public QObject
+    , public testing::Test
 {
+    Q_OBJECT
 public:
     ut_ManualSearchAdapter();
     virtual void SetUp() override;
     virtual void TearDown() override;
     ManualSearchAdapter *msAdapter = nullptr;
-    QWidget *wiget = nullptr;
+    bool isOnNewWindowOpen = false;
+public slots:
+    void OnNewWindowOpen(const QString &data);
 };
 
 #endif // UT_MANUAL_SEARCH_ADAPTER_H

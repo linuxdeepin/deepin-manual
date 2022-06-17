@@ -18,9 +18,11 @@
 #ifndef UT_TITLEBARPROXY_H
 #define UT_TITLEBARPROXY_H
 
-#include "gtest/gtest.h"
-#include <QTest>
 #include "view/web_window.h"
+#include "gtest/gtest.h"
+
+#include <QTest>
+
 class TitleBarProxy;
 
 class ut_TitleBarProxy : public testing::Test

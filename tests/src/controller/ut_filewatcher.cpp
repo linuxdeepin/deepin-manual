@@ -17,7 +17,6 @@
 */
 #include "ut_filewatcher.h"
 #include "base/utils.h"
-
 #include "controller/filewatcher.h"
 #include "src/third-party/stub/stub.h"
 #include "base/utils.h"
@@ -42,6 +41,7 @@ TEST_F(ut_fileWatcher, onChangeFile)
     QString  dbPath = Utils::getSystemManualDir();
     dbPath += "/search.db";
     m_fw->onChangeFile(dbPath);
+    ASSERT_TRUE(m_fw->timerObj->isActive());
 }
 TEST_F(ut_fileWatcher, onChangeDirSlot)
 {
@@ -72,6 +72,8 @@ TEST_F(ut_fileWatcher, checkMap)
     mapNow.insert("222", "bbb");
     addList << "ccc";
     m_fw->checkMap(mapOld, mapNow, deleteList, addList, addTime);
+    ASSERT_EQ(addTime[0], "");
+    ASSERT_EQ(addTime[1], "bbb");
 }
 
 TEST_F(ut_fileWatcher, checkMap2)
@@ -88,6 +90,8 @@ TEST_F(ut_fileWatcher, checkMap2)
     mapNow.insert("111", "aaa");
     addList << "ccc";
     m_fw->checkMap(mapOld, mapNow, deleteList, addList, addTime);
+    ASSERT_EQ(addTime[0], "");
+    ASSERT_EQ(addTime[1], "bbb");
 }
 
 TEST_F(ut_fileWatcher, checkMap3)
@@ -103,6 +107,8 @@ TEST_F(ut_fileWatcher, checkMap3)
     mapNow.insert("111", "bbb");
     addList << "ccc";
     m_fw->checkMap(mapOld, mapNow, deleteList, addList, addTime);
+    ASSERT_EQ(addTime[0], "");
+    ASSERT_EQ(addTime[1], "bbb");
 }
 
 
@@ -128,6 +134,8 @@ TEST_F(ut_fileWatcher, monitorFile)
     Stub s;
     s.set(ADDR(Utils, getSystemManualDir), stub_getSystemManualDir);
     m_fw->monitorFile();
+    ASSERT_EQ(m_fw->watcherObj->files()[0], "./manual-assets/application/deepin-voice-note/voice-note/zh_CN/index.md");
+    ASSERT_EQ(m_fw->watcherObj->files()[1], "./manual-assets/professional/deepin-voice-note/zh_CN/index.md");
 
     QDir dirRemove;
     dirRemove.rmpath("./manual-assets/");
@@ -155,6 +163,9 @@ TEST_F(ut_fileWatcher, onTimerOut)
     Stub s;
     s.set(ADDR(Utils, getSystemManualDir), stub_getSystemManualDir);
     m_fw->onTimerOut();
+    ASSERT_EQ(m_fw->watcherObj->files()[0], "./manual-assets/application/deepin-voice-note/voice-note/zh_CN/index.md");
+    ASSERT_EQ(m_fw->watcherObj->files()[1], "./manual-assets/professional/deepin-voice-note/zh_CN/index.md");
+
     QDir dirRemove;
     dirRemove.rmdir("./manual-assets/");
 //    qDebug() << "=======+>===========" << b;

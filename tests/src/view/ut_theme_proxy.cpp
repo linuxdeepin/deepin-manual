@@ -1,9 +1,9 @@
 #include "ut_theme_proxy.h"
-
 #include "view/theme_proxy.h"
+
 #include <DGuiApplicationHelper>
 
-
+#include <QSignalSpy>
 
 ut_theme_proxy_test::ut_theme_proxy_test()
 {
@@ -26,7 +26,11 @@ TEST_F(ut_theme_proxy_test, getTheme)
 TEST_F(ut_theme_proxy_test, slot_ThemeChange)
 {
     ThemeProxy tp;
+    QSignalSpy spy(&tp, SIGNAL(themeChange(const QString &)));
 
     tp.slot_ThemeChange();
+    qWarning() << spy.count();
+    QList<QVariant> argu = spy.takeFirst();
+    ASSERT_EQ(argu.at(0).toString(), tp.getTheme());
 }
 

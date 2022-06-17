@@ -41,15 +41,12 @@ public:
     void setSelection(const QRect &rect, QItemSelectionModel::SelectionFlags command) override;
     void initDelegate();
 
-protected:
-    void paintEvent(QPaintEvent *event) override;
-
 private:
     SearchCompletionDelegate *m_searchCompletionDelegate;
     QStandardItemModel *m_searchCompletionSourceModel;
     QList<SearchCompletionItemModel> m_searchCompletionModelList;
 
-    bool m_bLeftMouse;
+    bool m_bLeftMouse = false;
 
 signals:
     void onClickSearchCompletionItem(QModelIndex index);

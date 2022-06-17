@@ -57,14 +57,14 @@ public:
     static QList<AppInfo> sortAppList(QMultiMap<qlonglong, AppInfo> map);
     static bool hasSelperSupport();
     static QStringList systemToOmit(Dtk::Core::DSysInfo::UosEdition);
-    //判断当前文件是否为最优先级文件
-    static bool isMostPriority(const QString &mdPath, QString &morePriorityPath);
     static bool activeWindow(quintptr winId);
     static QString regexp_label(const QString &strtext, const QString &strpatter);
     //创建多级目录
     static QString mkMutiDir(const QString &path);
     //判断是否为龙芯平台
     static bool judgeLoongson();
+    //判断是否Wayland
+    static bool judgeWayLand();
 
 };
 

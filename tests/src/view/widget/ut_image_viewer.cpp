@@ -16,10 +16,10 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "ut_image_viewer.h"
-
-#include "view/widget/image_viewer.h"
-#include "../../third-party/stub/stub.h"
 #include "resources/themes/images.h"
+#include "view/widget/image_viewer.h"
+#include "src/third-party/stub/stub.h"
+
 #include <QDesktopWidget>
 #include <QImageReader>
 
@@ -49,6 +49,8 @@ TEST_F(ut_image_viewer_test, open)
      Stub st;
      st.set((bool (QImageReader::*)(QImage *))ADDR(QImageReader, read), imageread);
      iv.open(filePath);
+
+     ASSERT_EQ(iv.img_label_->width(), label.width());
 }
 
 
@@ -64,7 +66,7 @@ TEST_F(ut_image_viewer_test, open2)
     const int pixmap_max_height = static_cast<int>(screen_rect.height() * 0.8);
     pix = pix.scaled(pixmap_max_width, pixmap_max_height, Qt::KeepAspectRatio,
                      Qt::SmoothTransformation);
-    //ASSERT_EQ(iv.img_label_->width(), pix.width());
+    ASSERT_TRUE(iv.img_label_->width() != pix.width());
 }
 TEST_F(ut_image_viewer_test, initUi)
 {
@@ -89,12 +91,15 @@ TEST_F(ut_image_viewer_test, mousePressEvent)
     evnReleaseEnter = new QMouseEvent( QEvent::MouseButtonRelease, QPoint(0, 0), Qt::RightButton, Qt::NoButton, Qt::NoModifier );
     iv.mousePressEvent(evnReleaseEnter);
     delete evnReleaseEnter;
+    ASSERT_FALSE(iv.isVisible());
 }
 
 
 TEST_F(ut_image_viewer_test, paintEvent)
 {
     ImageViewer iv;
-    QPaintEvent *e;
-    iv.paintEvent(e);
+    iv.setFixedSize(600, 600);
+    QPixmap pixmap(iv.size());
+    iv.render(&pixmap);
+    EXPECT_EQ(pixmap.size(), iv.size());
 }

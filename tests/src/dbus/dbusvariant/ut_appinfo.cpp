@@ -1,5 +1,6 @@
 #include "ut_appinfo.h"
 #include "../src/dbus/dbusvariant/app_info.h"
+
 #include <QtDebug>
 
 ut_AppInfo::ut_AppInfo()
@@ -25,20 +26,9 @@ TEST_F(ut_AppInfo, OPERATOR_qDebug)
     info.name = "name";
     info.category_id = 001;
     info.icon_key = "icon";
-    qDebug() << "" << info;
-}
-
-TEST_F(ut_AppInfo, OPERATOR_QDBusArgument)
-{
-    AppInfo info;
-    info.key = "key";
-    info.installed_time = 0002;
-    info.desktop = "desktop";
-    info.name = "name";
-    info.category_id = 001;
-    info.icon_key = "icon";
-    QDBusArgument qd;
-    qd << info;
+    QDebug db = qDebug() << "" << info;
+    qWarning() << db.stream->buffer;
+    ASSERT_TRUE(db.stream->buffer.contains("desktop"));
 }
 
 TEST_F(ut_AppInfo, OPERATOR_QDataStream)
@@ -50,11 +40,13 @@ TEST_F(ut_AppInfo, OPERATOR_QDataStream)
     info.name = "name";
     info.category_id = 001;
     info.icon_key = "icon";
-    QDataStream qd;
+    QByteArray ba;
+    QDataStream qd(&ba, QIODevice::ReadWrite);
     qd << info;
+    ASSERT_TRUE(ba.size() > 0);
 }
 
-TEST_F(ut_AppInfo, OPERATOR_QDBusArgument2)
+TEST_F(ut_AppInfo, OPERATOR_QDBusArgument)
 {
     AppInfo info;
     info.key = "key";
@@ -69,6 +61,8 @@ TEST_F(ut_AppInfo, OPERATOR_QDBusArgument2)
     qd.beginStructure();
     qd >> info;
     qd.endStructure();
+
+    ASSERT_EQ(info.name, "name");
 }
 
 TEST_F(ut_AppInfo, OPERATOR_QDataStream2)
@@ -82,5 +76,8 @@ TEST_F(ut_AppInfo, OPERATOR_QDataStream2)
     info.icon_key = "icon";
     QDataStream qd;
     qd << info;
-    qd >> info;
+    AppInfo info1;
+    qd >> info1;
+    qWarning() << info1.desktop;
+    //ASSERT_EQ(info.name, "name");
 }

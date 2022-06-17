@@ -16,9 +16,7 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "ut_titlebarproxy.h"
-
 #include "view/title_bar_proxy.h"
-
 #include "view/widget/search_edit.h"
 #include "view/widget/search_completion_window.h"
 #include "view/widget/search_button.h"

@@ -40,8 +40,13 @@ set(CMAKE_INCLUDE_CURRENT_DIR ON)
 set(CMAKE_AUTOMOC ON)
 set(CMAKE_AUTORCC ON)
 
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -Wextra -fno-rtti -fno-exceptions")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -Wextra -fno-rtti -fno-exceptions -fstack-protector-strong -D_FORTITY_SOURCE=1 -z noexecstack -pie -fPIC -z lazy")
   set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -Wall -Wextra")
+
+if(CMAKE_COVERAGE_ARG STREQUAL "CMAKE_COVERAGE_ARG_ON")
+    set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -Wall -fprofile-arcs -ftest-coverage")
+    set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -Wall -fprofile-arcs -ftest-coverage")
+endif()
 
 if (CMAKE_BUILD_TYPE MATCHES Debug)  
   # -fno-rtti, Disable real-time type information
@@ -314,11 +319,11 @@ endif ()
 
 #set different ISO types
 #1:professional 2:community 3:server 4:personal
-set(ISO_TYPE "professional")
+#set(ISO_TYPE "professional")
 #set(ISO_TYPE "community")
 #set(ISO_TYPE "server")
 #set(ISO_TYPE "personal")
-
+#set(ISO_TYPE "education")
 
 
 ## Installation
@@ -333,8 +338,8 @@ file(GLOB QM_FILES  ${CMAKE_SOURCE_DIR}/translations/deepin-manual*.qm)
 install(FILES ${QM_FILES}
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual/translations/)
 
-install(DIRECTORY ${CMAKE_SOURCE_DIR}/manual-assets/${ISO_TYPE}
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets/)
+#install(DIRECTORY ${CMAKE_SOURCE_DIR}/manual-assets/${ISO_TYPE}
+#        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets/)
 
 install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/web_dist
         DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)

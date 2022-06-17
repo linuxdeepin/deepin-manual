@@ -22,8 +22,8 @@ set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -D${CMAKE_SAFETYTEST}")
 
 if(CMAKE_SAFETYTEST STREQUAL "CMAKE_SAFETYTEST_ARG_ON")
   #安全测试选项
-  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -fsanitize=address -O2")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -fsanitize=address -O2")
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -g -fsanitize=undefined,address -O2")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -g -fsanitize=undefined,address -O2")
 endif()
 
 
@@ -118,7 +118,8 @@ FILE (GLOB allTestSource
 
 #Include all app source files
 FILE (GLOB dmanCppFiles
-    ../src/base/*.cpp
+    ../src/base/consts.cpp
+    ../src/base/utils.cpp
     ../src/controller/*.cpp
     ../src/dbus/*.cpp
     ../src/dbus/dbusvariant/*.cpp
@@ -127,7 +128,8 @@ FILE (GLOB dmanCppFiles
     ../src/view/widget/*.cpp)
 
 FILE (GLOB dmanHeaderFiles
-    ../src/base/*.h
+    ../src/base/consts.h
+    ../src/base/utils.h
     ../src/controller/*.h
     ../src/dbus/*.h
     ../src/dbus/dbusvariant/*.h
@@ -182,4 +184,4 @@ add_custom_command(TARGET test
 add_dependencies(test ${PROJECT_NAME_TEST})
 
 ## 设置添加gocv相关信息的输出
-set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}  -g -fprofile-arcs -ftest-coverage -fno-inline")
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS}  -g -fprofile-arcs -ftest-coverage -fno-inline -fstack-protector-strong -D_FORTITY_SOURCE=1 -z noexecstack -pie -fPIC -z lazy")

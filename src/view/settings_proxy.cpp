@@ -25,13 +25,3 @@ SettingsProxy::SettingsProxy(QObject *parent)
 {
     this->setObjectName("SettingsProxy");
 }
-
-/**
- * @brief SettingsProxy::openUrl
- * @param url　链接地址
- * 打开外部连接
- */
-void SettingsProxy::openUrl(const QString &url)
-{
-    QDesktopServices::openUrl(QUrl(url));
-}

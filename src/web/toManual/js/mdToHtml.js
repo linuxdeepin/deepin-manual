@@ -26,11 +26,23 @@ export default function(mdFile, mdData, key = '') {
         if (level == 2) {
             text = text.split('|')[0];
         }
+        let titlekey = text;
+        console.log("key======text========>", titlekey);
         let type = 'h' + level;
-        if (level == 2 || level == 3) {
+        if (level == 2) {
+            hlist.push({ id, text, type });
+        }else if(level == 3){
+            if(text.split('|').length > 1) {
+                titlekey = text.split('|')[1];
+                text = text.split('|')[0];
+                //global.qtObjects.manual.LogPrint('start key:' + key);
+                //global.qtObjects.manual.LogPrint('start key:' + text);
+            }
+            
             hlist.push({ id, text, type });
         }
-        return `<${type} id="${id}" text="${text}">${text}</${type}>\n`;
+
+        return `<${type} id="${id}" text="${titlekey}">${text}</${type}>\n`;
     };
     console.log(path);
     renderer.image = (href, title, text) => {

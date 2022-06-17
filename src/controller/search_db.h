@@ -87,7 +87,7 @@ private:
     SearchDbPrivate *p_ = nullptr;
     QStringList strlistApp;
     QList<searchStrct> listStruct;
-    int nH0OfList;
+    int nH0OfList = 0;
 
 private slots:
     void handleSearchAnchor(const QString &keyword);

@@ -172,9 +172,9 @@ void SearchCompletionWindow::setKeyword(const QString &keyword)
     keyword_ = keyword;
     QFontMetrics metrics = search_button_->fontMetrics();
     search_button_->setText(
-        metrics.elidedText(
-            QObject::tr("Search for \"%1\" in the full text").arg(keyword),
-            Qt::ElideRight, 350 - 39));
+                metrics.elidedText(
+                    QObject::tr("Search for \"%1\" in the full text").arg(keyword),
+                    Qt::ElideRight, 350 - 39));
 }
 
 /**
@@ -265,10 +265,13 @@ void SearchCompletionWindow::initUI()
     this->setContentsMargins(0, 0, 0, 0);
     this->setMinimumHeight(kItemHeight);
     this->setFixedWidth(350);
-    this->setWindowFlags(Qt::FramelessWindowHint
-                         | Qt::CustomizeWindowHint
-                         | Qt::BypassWindowManagerHint);
-    this->setAttribute(Qt::WA_NativeWindow, true);
+    if(!Utils::judgeWayLand()){
+        this->setWindowFlags(Qt::FramelessWindowHint
+                             | Qt::CustomizeWindowHint
+                             | Qt::BypassWindowManagerHint);
+        this->setAttribute(Qt::WA_NativeWindow, true);
+    }
+
 }
 
 /**
@@ -286,16 +289,29 @@ void SearchCompletionWindow::paintEvent(QPaintEvent *event)
     DPalette pa = ExApplicationHelper::instance()->palette(this);
     DStyleHelper styleHelper;
     QColor fillColor;
-    if (DWindowManagerHelper::instance()->hasComposite()) {
-        fillColor = pa.color(DPalette::FrameBorder);
-    } else {
+
+    if(!Utils::judgeWayLand()){
+        if (DWindowManagerHelper::instance()->hasComposite()) {
+            fillColor = pa.color(DPalette::FrameBorder);
+        } else {
+            DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
+            if (themeType == DGuiApplicationHelper::LightType) {
+                fillColor = QColor(255, 255, 255);
+            } else if (themeType == DGuiApplicationHelper::DarkType) {
+                fillColor = QColor(0, 0, 0);
+            }
+        }
+    }else {
         DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
         if (themeType == DGuiApplicationHelper::LightType) {
             fillColor = QColor(255, 255, 255);
+            setMaskAlpha(255);
         } else if (themeType == DGuiApplicationHelper::DarkType) {
             fillColor = QColor(0, 0, 0);
+            setMaskAlpha(255);
         }
     }
+
     painter.fillPath(path, QBrush(fillColor));
 }
 

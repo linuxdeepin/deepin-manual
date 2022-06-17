@@ -16,16 +16,12 @@
 * along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 #include "ut_search_button.h"
-
 #include "view/widget/search_button.h"
-
 #include "resources/themes/images.h"
 #include "base/utils.h"
 
 #include <QGuiApplication>
 #include <QEvent>
-
-
 
 
 ut_search_button_test::ut_search_button_test()
