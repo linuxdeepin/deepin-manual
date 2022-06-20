@@ -326,23 +326,26 @@ endif ()
 #set(ISO_TYPE "education")
 
 
+if(DEFINED ENV{PREFIX})
+   set(CMAKE_INSTALL_PREFIX $ENV{PREFIX})
+else()
+   set(CMAKE_INSTALL_PREFIX /usr)
+endif()
+
 ## Installation
 install(TARGETS dman
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+        DESTINATION bin)
 install(TARGETS dmanHelper
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+        DESTINATION bin)
 
 
 # Install qm files
 file(GLOB QM_FILES  ${CMAKE_SOURCE_DIR}/translations/deepin-manual*.qm)
 install(FILES ${QM_FILES}
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual/translations/)
-
-#install(DIRECTORY ${CMAKE_SOURCE_DIR}/manual-assets/${ISO_TYPE}
-#        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets/)
+        DESTINATION share/deepin-manual/translations/)
 
 install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/web_dist
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
+        DESTINATION share/deepin-manual)
 
 
 string(TOLOWER ${CMAKE_SYSTEM_PROCESSOR} LOWERCASE_CMAKE_SYSTEM_PROCESSOR)
