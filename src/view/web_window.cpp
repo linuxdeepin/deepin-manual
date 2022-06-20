@@ -378,7 +378,8 @@ QVariant WebWindow::inputMethodQuery(Qt::InputMethodQuery prop) const
 bool WebWindow::eventFilter(QObject *watched, QEvent *event)
 {
     //warland环境下watched的objectname不是QMainWindowClassWindow,先去除验证
-    if (event->type() == QEvent::MouseButtonRelease && qApp->activeWindow() == this ) {
+    DIconButton* btn = findChild<DIconButton*>("DTitlebarDWindowMaxButton");
+    if (event->type() == QEvent::MouseButtonRelease && qApp->activeWindow() == this && !btn->isDown()) {
         QRect rect = hasWidgetRect(search_edit_);
         if (web_view_ && web_view_->selectedText().isEmpty() && !rect.contains(QCursor::pos())) {
             this->setFocus();
