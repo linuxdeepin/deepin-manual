@@ -29,6 +29,9 @@ depends:
     type: runtime
   - id: re2
     type: runtime
+  - id: pciutils
+    type: runtime
+    version: 3.5.2.4
 
 source:
   kind: local
