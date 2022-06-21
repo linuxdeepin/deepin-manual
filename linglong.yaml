@@ -32,6 +32,8 @@ depends:
   - id: pciutils
     type: runtime
     version: 3.5.2.4
+  - id: libvpx
+    type: runtime
 
 source:
   kind: local
