@@ -27,6 +27,8 @@ depends:
     type: runtime
   - id: libevent
     type: runtime
+  - id: re2
+    type: runtime
 
 source:
   kind: local
