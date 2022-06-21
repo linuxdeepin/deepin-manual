@@ -19,6 +19,8 @@ depends:
     version: 5.11.3
   - id: googletest
     version: 1.8.1
+  - id: xcb-util
+    type: runtime
 
 source:
   kind: local
