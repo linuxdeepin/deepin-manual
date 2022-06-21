@@ -17,6 +17,7 @@ runtime:
 depends:
   - id: qtwebengine
     version: 5.11.3
+    type: runtime
   - id: googletest
     version: 1.8.1
   - id: xcb-util
