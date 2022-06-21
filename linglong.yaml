@@ -21,6 +21,9 @@ depends:
     version: 1.8.1
   - id: xcb-util
     type: runtime
+  - id: icu
+    version: 63.1
+    type: runtime
 
 source:
   kind: local
