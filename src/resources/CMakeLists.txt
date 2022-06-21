@@ -1,5 +1,11 @@
+if(DEFINED ENV{PREFIX})
+   set(CMAKE_INSTALL_PREFIX $ENV{PREFIX})
+else()
+   set(CMAKE_INSTALL_PREFIX /usr)
+endif()
+
 install(FILES deepin-manual.desktop
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/applications/)
+        DESTINATION share/applications/)
 
 install(FILES themes/common/images/deepin-manual.svg
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/icons/hicolor/scalable/apps/)
+        DESTINATION share/icons/hicolor/scalable/apps/)
