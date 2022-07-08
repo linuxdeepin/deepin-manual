@@ -180,7 +180,7 @@ class App extends React.Component {
     onReloadPage(appList) {
         // console.log("============>page reload...");
         let bRetFlag = true;
-        var locationPath = this.context.router.history.location.pathname;
+        var locationPath = atob(this.context.router.history.location.pathname);
         console.log("============>page reload...", locationPath);
         var list = locationPath.split("/");
         if (list[1] == 'open') {
@@ -239,7 +239,7 @@ class App extends React.Component {
     //搜索框清空后回到上一个页面(未搜索的页面).
     onSearchEditClear() {
         console.log("==================>onSearcheditclear");
-        var locationPath = this.context.router.history.location.pathname;
+        var locationPath = atob(this.context.router.history.location.pathname);
         var list = locationPath.split("/");
         let bFlag = false;
         //open页length = 5, search页length = 3
@@ -288,7 +288,7 @@ class App extends React.Component {
     componentWillReceiveProps(nextProps) {
         console.log("app componentWillReceiveProps", this.context.router.history);
         console.log("this location: " + this.context.router.history.location);
-        var pathName = this.context.router.history.location.pathname;
+        var pathName = atob(this.context.router.history.location.pathname);
         var pathList = pathName.split("/");
         var cKeyword = '';
 
@@ -301,18 +301,14 @@ class App extends React.Component {
         }
 
         // global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
-        if (cKeyword == '%') {
-            global.qtObjects.search.getKeyword(cKeyword);
-        } else {
-            console.log("decode URIComponent componentWillReceiveProps");
-            global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
-        }
+        global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
+
 
         if (this.context.router.history.action == 'PUSH') {
             let entriesLen = this.context.router.history.entries.length;
             if (entriesLen > 1) {
                 let entry = this.context.router.history.entries[entriesLen - 1];
-                if (entry.pathname.toString().indexOf("/search/") != -1) {
+                if (atob(entry.pathname).toString().indexOf("/search/") != -1) {
                     this.setState({ historyGO: entriesLen - 1 });
                     // global.gHistoryGo = entriesLen - 1;
                     return;
@@ -438,7 +434,7 @@ class App extends React.Component {
 
         //替换当前URL,仅仅在切换到其他页面处调用...(包含前进,后退,重新打开一个新的页面)
         global.handleLocation = (hash = '') => {
-            let url = this.context.router.history.location.pathname;
+            let url = atob(his.context.router.history.location.pathname);
             console.log("global.handhash: ", url);
             let urlList = url.split("/");
             if (urlList.length == 5) {
@@ -613,8 +609,8 @@ class App extends React.Component {
                 this.context.router.history.index = lastHistoryIndex - 1;
 
                 this.setState({ searchResult: [] });
-                this.context.router.history.push(
-                    '/search/' + encodeURIComponent(decodeKeyword)
+                this.context.router.history.push(btoa(
+                    '/search/' + encodeURIComponent(decodeKeyword))
                 );
 
                 return;
@@ -623,7 +619,7 @@ class App extends React.Component {
             entriesLen = this.context.router.history.entries.length;
             if (entriesLen > 1) {
                 let entry = this.context.router.history.entries[entriesLen - 1];
-                let entryIndex = entry.pathname.toString().indexOf("/search/");
+                let entryIndex = atob(entry.pathname).toString().indexOf("/search/");
                 if (entryIndex != -1) {
                     this.context.router.history.entries.length = entriesLen - 1;
                     this.context.router.history.length = entriesLen - 1;
@@ -632,8 +628,8 @@ class App extends React.Component {
             }
 
             this.setState({ searchResult: [] });
-            this.context.router.history.push(
-                '/search/' + encodeURIComponent(decodeKeyword)
+            this.context.router.history.push(btoa(
+                '/search/' + encodeURIComponent(decodeKeyword))
             );
         };
 
@@ -642,7 +638,7 @@ class App extends React.Component {
             //console.log(`The last navigation action was ${action}`);
             //console.log("index:" + this.context.router.history.index);
             console.log("app router.history.listen...");
-            global.lastUrlBeforeSearch = location.pathname;
+            global.lastUrlBeforeSearch = atob(location.pathname);
             global.lastHistoryIndex = this.context.router.history.index;
             global.lastAction = action;
         });
