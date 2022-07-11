@@ -237,7 +237,7 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
         for (int i = 0; i < contents.size(); i++) {
             QString content = contents.at(i);
             content = content.replace("icon/", DMAN_INSTALL_DB_PATH + strManualPath
-                                                   + "/" + app_name + "/" + lang + "/icon/");
+                                      + "/" + app_name + "/" + lang + "/icon/");
             newContents.replace(i, content);
         }
     } else {
@@ -262,7 +262,7 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
 
     QSqlQuery query(p_->db);
     bool preok = query.prepare(kSearchDeleteEntryByApp);
-    if(!preok){
+    if (!preok) {
         qCritical() << "Failed to prepare skSearchDeleteEntryByApp:" << query.lastError().text();
         return;
     }
@@ -278,7 +278,7 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
         return;
     }
     preok = query.prepare(kSearchInsertEntry);
-    if(!preok){
+    if (!preok) {
         qCritical() << "Failed to prepare kSearchInsertEntry:" << query.lastError().text();
         return;
     }
@@ -321,7 +321,7 @@ void SearchDb::deleteSearchInfo(const QStringList &appName, const QStringList &l
     Q_ASSERT(p_->db.isOpen());
     QSqlQuery query(p_->db);
     bool preok = query.prepare(kSearchDeleteEntryByApp);
-    if(!preok){
+    if (!preok) {
         qCritical() << "Failed to prepare kSearchDeleteEntryByApp:" << query.lastError().text();
         return;
     }
@@ -365,7 +365,7 @@ void SearchDb::handleSearchAnchor(const QString &keyword)
         if (0 == icount) {
             //藏语维语使用简体中文
             if (0 == lang.compare("ug_CN") || 0 == lang.compare("bo_CN")
-                || 0 == lang.compare("zh_HK") || 0 == lang.compare("zh_TW")) {
+                    || 0 == lang.compare("zh_HK") || 0 == lang.compare("zh_TW")) {
                 lang = "zh_CN";
             } else {
                 lang = "en_US";
@@ -614,6 +614,12 @@ void SearchDb::handleSearchContent(const QString &keyword)
         emit this->searchContentMismatch(keyword);
         return;
     }
+    //多个%号查询，查询条件错误
+    if (keyword.contains(QRegExp("%%"))) {
+        //发送未查找到结果->SearchManager::searchContentMismatch->SearchProxy::mismatch->JS
+        emit this->searchContentMismatch(keyword);
+        return;
+    }
 
     QSqlQuery query(p_->db);
     QString lang = QLocale().name();
@@ -623,7 +629,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
         if (0 == icount) {
             //藏语维语使用简体中文
             if (0 == lang.compare("ug_CN") || 0 == lang.compare("bo_CN")
-                || 0 == lang.compare("zh_HK") || 0 == lang.compare("zh_TW")) {
+                    || 0 == lang.compare("zh_HK") || 0 == lang.compare("zh_TW")) {
                 lang = "zh_CN";
             } else {
                 lang = "en_US";
@@ -735,7 +741,7 @@ void SearchDb::insertFilesTimeEntry(const QStringList &listMdPath, const QString
 
     QSqlQuery query(p_->db);
     bool preok = query.prepare(kfileTimeDeleteEntryByApp);
-    if(!preok){
+    if (!preok) {
         qCritical() << "Failed to prepare kSearchDeleteEntryByApp:" << query.lastError().text();
         return;
     }
@@ -750,7 +756,7 @@ void SearchDb::insertFilesTimeEntry(const QStringList &listMdPath, const QString
         return;
     }
     preok = query.prepare(kfileTimeInsertEntry);
-    if(!preok){
+    if (!preok) {
         qCritical() << "Failed to prepare kfileTimeInsertEntry:" << query.lastError().text();
         return;
     }
@@ -777,7 +783,7 @@ void SearchDb::deleteFilesTimeEntry(const QStringList &listMdPath)
 
     QSqlQuery query(p_->db);
     bool preok = query.prepare(kfileTimeDeleteEntryByApp);
-    if(!preok){
+    if (!preok) {
         qCritical() << "Failed to prepare kfileTimeDeleteEntryByApp:" << query.lastError().text();
         return;
     }
