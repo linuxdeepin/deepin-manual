@@ -48346,6 +48346,7 @@ var App = function (_React$Component) {
         value: function componentWillReceiveProps(nextProps) {
             console.log("app componentWillReceiveProps", this.context.router.history);
             console.log("this location: " + this.context.router.history.location);
+			console.log(this.context.router.history.location.pathname);
             var pathName = this.context.router.history.location.pathname;
             var pathList = pathName.split("/");
             var cKeyword = '';
@@ -48359,12 +48360,8 @@ var App = function (_React$Component) {
             }
 
             // global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
-            if (cKeyword == '%') {
-                global.qtObjects.search.getKeyword(cKeyword);
-            } else {
-                console.log("decode URIComponent componentWillReceiveProps");
-                global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
-            }
+			console.warn(decodeURIComponent(atob(cKeyword)));
+            global.qtObjects.search.getKeyword(decodeURIComponent(atob(cKeyword)));
 
             if (this.context.router.history.action == 'PUSH') {
                 var entriesLen = this.context.router.history.entries.length;
@@ -48678,7 +48675,7 @@ var App = function (_React$Component) {
                     _this5.context.router.history.index = lastHistoryIndex - 1;
 
                     _this5.setState({ searchResult: [] });
-                    _this5.context.router.history.push('/search/' + encodeURIComponent(decodeKeyword));
+                    _this5.context.router.history.push(btoa('/search/' +encodeURIComponent(decodeKeyword)));
 
                     return;
                 }
@@ -48695,7 +48692,7 @@ var App = function (_React$Component) {
                 }
 
                 _this5.setState({ searchResult: [] });
-                _this5.context.router.history.push('/search/' + encodeURIComponent(decodeKeyword));
+                _this5.context.router.history.push('/search/' + btoa(encodeURIComponent(decodeKeyword)));
             };
 
             this.context.router.history.listen(function (location, action) {
@@ -50313,10 +50310,9 @@ var Items = function (_Component) {
       var resultList = [];
 
       //将关键字转义
-
       var keyTemp = this.props.keyword;
       if (this.props.keyword !== '%') {
-        keyTemp = decodeURIComponent(this.props.keyword);
+        keyTemp =this.props.keyword;
       }
 
       // let keyTemp = decodeURIComponent(this.props.keyword)
@@ -50449,7 +50445,7 @@ var SearchPage = function (_Component2) {
             idList: result.idList,
             titleList: result.titleList,
             contentList: result.contentList,
-            keyword: _this4.props.match.params.keyword
+            keyword: _this4.props.match.params.keyword,
           });
         });
       }
