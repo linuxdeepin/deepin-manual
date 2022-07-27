@@ -34,7 +34,8 @@
 #include <QSurfaceFormat>
 
 DWIDGET_USE_NAMESPACE
-
+const QString webEngineSourceTsPath = "/opt/apps/org.deepin.manual/files/share/qt5/translations";
+const QString webEngineSourceResPath = "/opt/apps/org.deepin.manual/files/share/qt5/resources";
 int main(int argc, char **argv)
 {
     QDateTime time;
@@ -45,8 +46,26 @@ int main(int argc, char **argv)
     qputenv("DXCB_FAKE_PLATFORM_NAME_XCB", "true");
     //禁用GPU
     qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu");
-    
-    if(!Utils::judgeWayLand()){
+
+    //玲珑环境添加WebEngine
+    if (Utils::judgeLingLong()) {
+        QString webEngineProcessPath = QString("/opt/apps/org.deepin.manual/files/lib") + QLibraryInfo::location(QLibraryInfo::LibrariesPath).mid(
+                                           QLibraryInfo::location(QLibraryInfo::LibrariesPath).lastIndexOf("/")) + QString("/qt5/libexec/QtWebEngineProcess");
+        QFile file(webEngineProcessPath);
+        if (file.exists())
+            qputenv("QTWEBENGINEPROCESS_PATH", webEngineProcessPath.toLocal8Bit());
+        else
+            qWarning() << "qputenv QTWEBENGINEPROCESS_PATH fail";
+
+        QFile fileTs(webEngineSourceTsPath);
+        QFile fileRes(webEngineSourceResPath);
+        if (fileTs.exists() && fileRes.exists())
+            qputenv("QTWEBENGINERESOURCE_PATH", (webEngineSourceTsPath + ":" + webEngineSourceResPath).toStdString().c_str());
+        else
+            qWarning() << "qputenv QTWEBENGINERESOURCE_PATH fail";
+    }
+
+    if (!Utils::judgeWayLand()) {
         qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--single-process");
     }
 
@@ -62,7 +81,7 @@ int main(int argc, char **argv)
     qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--no-sandbox");
 #endif
 
-    if(Utils::judgeWayLand()){
+    if (Utils::judgeWayLand()) {
         qputenv("QT_WAYLAND_SHELL_INTEGRATION", "kwayland-shell");
         qputenv("_d_disableDBusFileDialog", "true");
         setenv("PULSE_PROP_media.role", "video", 1);

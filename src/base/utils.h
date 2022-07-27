@@ -65,7 +65,8 @@ public:
     static bool judgeLoongson();
     //判断是否Wayland
     static bool judgeWayLand();
-
+    //判断是否为玲珑平台
+    static bool judgeLingLong();
 };
 
 class ExApplicationHelper : public DGuiApplicationHelper

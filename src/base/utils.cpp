@@ -29,6 +29,7 @@ QString Utils::cpuModeName;
 
 const char kLauncherService[] = "com.deepin.dde.daemon.Launcher";
 const char kLauncherIface[] = "/com/deepin/dde/daemon/Launcher";
+const char LingLongPath[] = "/opt/apps/org.deepin.manual/files/";
 
 //标题映射表
 const int langCount = 5;
@@ -55,7 +56,8 @@ QString languageArr[][langCount] = {
     {"systeminfo", "系统信息", "System Info", "系統訊息", "系統資訊"},
     {"License activator", "授权管理", "Authorization Management", "授權管理", "授權管理"},
     {"commoninfo", "通用设置", "General Settings", "通用設置", "一般設定"},
-    {"touchscreen", "触控屏设置", "Touch Screen", "觸控屏設置", "觸控屏設定"}};
+    {"touchscreen", "触控屏设置", "Touch Screen", "觸控屏設置", "觸控屏設定"}
+};
 
 struct ReplyStruct {
     QString m_desktop;
@@ -223,17 +225,25 @@ QList<AppInfo> Utils::launcherInterface()
  */
 bool Utils::judgeWayLand()
 {
-   auto env = QProcessEnvironment::systemEnvironment();
+    auto env = QProcessEnvironment::systemEnvironment();
 
-   QString XDG_SESSION_TYPE = env.value(QStringLiteral("XDG_SESSION_TYPE"));
+    QString XDG_SESSION_TYPE = env.value(QStringLiteral("XDG_SESSION_TYPE"));
 
-   QString WAYLAND_DISPLAY = env.value(QStringLiteral("WAYLAND_DISPLAY"));
+    QString WAYLAND_DISPLAY = env.value(QStringLiteral("WAYLAND_DISPLAY"));
 
-   if (XDG_SESSION_TYPE == QLatin1String("wayland") || WAYLAND_DISPLAY.contains(QLatin1String("wayland"), Qt::CaseInsensitive)){
-      return true;
-   }
+    if (XDG_SESSION_TYPE == QLatin1String("wayland") || WAYLAND_DISPLAY.contains(QLatin1String("wayland"), Qt::CaseInsensitive)) {
+        return true;
+    }
 
-   return false;
+    return false;
+}
+
+bool Utils::judgeLingLong()
+{
+    QFile file(LingLongPath);
+    if (file.exists())
+        return true;
+    return false;
 }
 
 /**
@@ -322,7 +332,12 @@ QStringList Utils::getSystemManualList()
  */
 QString Utils::getSystemManualDir()
 {
-    QString strMANUAL_DIR = DMAN_MANUAL_DIR;
+    QString strMANUAL_DIR;
+    if (judgeLingLong()) {
+        strMANUAL_DIR = QString(qgetenv("XDG_DATA_DIRS"));
+    } else {
+        strMANUAL_DIR = DMAN_MANUAL_DIR;
+    }
     return strMANUAL_DIR;
 }
 
