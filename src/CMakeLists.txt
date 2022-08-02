@@ -144,6 +144,8 @@ set(BASE_FILES
     base/consts.h
     base/utils.cpp
     base/utils.h
+    base/eventlogutils.h
+    base/eventlogutils.cpp
     )
 
 set(CONTROLLER_FILES
@@ -236,6 +238,8 @@ set(SEARCH_FILES
     dbus/dbusvariant/app_info.h
     controller/search_db.cpp
     controller/search_db.h
+    base/eventlogutils.h
+    base/eventlogutils.cpp
     )
 add_executable(generate-search-db
                ${SEARCH_FILES})
@@ -271,6 +275,8 @@ add_executable(dmanHelper
                 base/utils.h
                 base/consts.cpp
                 base/consts.h
+                base/eventlogutils.h
+                base/eventlogutils.cpp
                 dbus/dbus_consts.cpp
                 dbus/dbus_consts.h
                 dbus/dbusvariant/app_info.cpp

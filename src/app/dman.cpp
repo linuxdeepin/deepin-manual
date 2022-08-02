@@ -22,6 +22,7 @@
 #include "resources/themes/images.h"
 #include "controller/shellobj.h"
 #include "base/utils.h"
+#include "base/eventlogutils.h"
 
 #include <DApplication>
 #include <DApplicationSettings>
@@ -45,8 +46,8 @@ int main(int argc, char **argv)
     qputenv("DXCB_FAKE_PLATFORM_NAME_XCB", "true");
     //禁用GPU
     qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu");
-    
-    if(!Utils::judgeWayLand()){
+
+    if (!Utils::judgeWayLand()) {
         qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--single-process");
     }
 
@@ -62,7 +63,7 @@ int main(int argc, char **argv)
     qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--no-sandbox");
 #endif
 
-    if(Utils::judgeWayLand()){
+    if (Utils::judgeWayLand()) {
         qputenv("QT_WAYLAND_SHELL_INTEGRATION", "kwayland-shell");
         qputenv("_d_disableDBusFileDialog", "true");
         setenv("PULSE_PROP_media.role", "video", 1);
@@ -125,6 +126,13 @@ int main(int argc, char **argv)
     Dtk::Core::DLogManager::registerFileAppender();
     Dtk::Core::DLogManager::registerConsoleAppender();
 
+    //埋点记录启动数据
+    QJsonObject objStartEvent{
+        {"tid", Eventlogutils::StartUp},
+        {"vsersion", VERSION},
+        {"mode", 1},
+    };
+    Eventlogutils::GetInstance()->writeLogs(objStartEvent);
     // fix error for cutelogger
     // No appenders associated with category js
     // 日志相关
