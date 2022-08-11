@@ -332,12 +332,7 @@ QStringList Utils::getSystemManualList()
  */
 QString Utils::getSystemManualDir()
 {
-    QString strMANUAL_DIR;
-    if (judgeLingLong()) {
-        strMANUAL_DIR = QString(qgetenv("XDG_DATA_DIRS"));
-    } else {
-        strMANUAL_DIR = DMAN_MANUAL_DIR;
-    }
+    QString strMANUAL_DIR = DMAN_MANUAL_DIR;
     return strMANUAL_DIR;
 }
 

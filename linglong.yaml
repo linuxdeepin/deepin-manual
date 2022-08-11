@@ -18,6 +18,9 @@ depends:
   - id: qtwebengine
     version: 5.11.3
     type: runtime
+  - id: qtwebchannel
+    version: 5.11.3
+    type: runtime
   - id: googletest
     version: 1.8.1
   - id: xcb-util
@@ -39,4 +42,12 @@ source:
   kind: local
 
 build:
-  kind: cmake
+  kind: manual
+  manual:
+    configure: |
+      mkdir build
+      cd build
+      cmake -DCMAKE_INSTALL_PREFIX=${PREFIX} ${extra_args} ..
+      make -j6
+      make test
+      make -j install

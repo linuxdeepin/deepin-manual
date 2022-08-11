@@ -34,8 +34,6 @@
 #include <QSurfaceFormat>
 
 DWIDGET_USE_NAMESPACE
-const QString webEngineSourceTsPath = "/opt/apps/org.deepin.manual/files/share/qt5/translations";
-const QString webEngineSourceResPath = "/opt/apps/org.deepin.manual/files/share/qt5/resources";
 int main(int argc, char **argv)
 {
     QDateTime time;
@@ -49,7 +47,7 @@ int main(int argc, char **argv)
 
     //玲珑环境添加WebEngine
     if (Utils::judgeLingLong()) {
-        QString webEngineProcessPath = QString("/opt/apps/org.deepin.manual/files/lib") + QLibraryInfo::location(QLibraryInfo::LibrariesPath).mid(
+        QString webEngineProcessPath = DMAN_QWEBENGINE_DIR"" + QLibraryInfo::location(QLibraryInfo::LibrariesPath).mid(
                                            QLibraryInfo::location(QLibraryInfo::LibrariesPath).lastIndexOf("/")) + QString("/qt5/libexec/QtWebEngineProcess");
         QFile file(webEngineProcessPath);
         if (file.exists())
@@ -57,10 +55,10 @@ int main(int argc, char **argv)
         else
             qWarning() << "qputenv QTWEBENGINEPROCESS_PATH fail";
 
-        QFile fileTs(webEngineSourceTsPath);
-        QFile fileRes(webEngineSourceResPath);
+        QFile fileTs(DMAN_WEBENGINERES_DIR);
+        QFile fileRes(DMAN_WEBENGINETS_DIR);
         if (fileTs.exists() && fileRes.exists())
-            qputenv("QTWEBENGINERESOURCE_PATH", (webEngineSourceTsPath + ":" + webEngineSourceResPath).toStdString().c_str());
+            qputenv("QTWEBENGINERESOURCE_PATH", (DMAN_WEBENGINETS_DIR":" + QString(DMAN_WEBENGINERES_DIR)).toStdString().c_str());
         else
             qWarning() << "qputenv QTWEBENGINERESOURCE_PATH fail";
     }
