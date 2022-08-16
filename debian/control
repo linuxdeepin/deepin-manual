@@ -36,3 +36,4 @@ Conflicts: dde-help
 Provides: dde-help
 Description: Manual provides user guides of the system and applications. 
  Manual is designed to help users learn the operating system and its applications, providing specific instructions and function descriptions.
+Recommends: uos-reporter, deepin-event-log
