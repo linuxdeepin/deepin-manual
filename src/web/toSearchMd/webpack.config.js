@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+//
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 module.exports = {
     entry:  __dirname + "/app/main.js", // 之前提到的唯一入口文件
     output: {
