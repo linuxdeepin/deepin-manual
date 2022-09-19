@@ -10,7 +10,9 @@ add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/m
 #web_dist玲珑环境需要更改目录
 if(DEFINED ENV{PREFIX})
    set(CMAKE_INSTALL_PREFIX $ENV{PREFIX})
+   add_definitions(-DLINGLONGENV=1)
 else()
+   add_definitions(-DLINGLONGENV=0)
    set(CMAKE_INSTALL_PREFIX /usr)
 endif()
 

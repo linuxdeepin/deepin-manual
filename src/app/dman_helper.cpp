@@ -30,9 +30,13 @@
 int main(int argc, char **argv)
 {
     //欧拉版root用户登录时会报no-sandbox错误的问题,增加此参数后使qtwebengine进程与主进程合并
-    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--single-process");
-    QApplication app(argc, argv);
 
+    QApplication app(argc, argv);
+    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--single-process");
+
+    qputenv("DXCB_FAKE_PLATFORM_NAME_XCB", "true");
+    //禁用GPU
+    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu");
 //    qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "7777");
 
     ManualSearchProxy search_obj;
@@ -46,7 +50,7 @@ int main(int argc, char **argv)
     ctx.setFormat(fmt);
     ctx.create();
     if (!ctx.isValid()) {
-       fmt.setRenderableType(QSurfaceFormat::OpenGLES);
+        fmt.setRenderableType(QSurfaceFormat::OpenGLES);
     }
     fmt.setDefaultFormat(fmt);
     fmt.setProfile(QSurfaceFormat::CoreProfile);

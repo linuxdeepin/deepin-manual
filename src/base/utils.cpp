@@ -29,7 +29,6 @@ QString Utils::cpuModeName;
 
 const char kLauncherService[] = "com.deepin.dde.daemon.Launcher";
 const char kLauncherIface[] = "/com/deepin/dde/daemon/Launcher";
-const char LingLongPath[] = "/opt/apps/org.deepin.manual/files/";
 
 //标题映射表
 const int langCount = 5;
@@ -240,10 +239,10 @@ bool Utils::judgeWayLand()
 
 bool Utils::judgeLingLong()
 {
-    QFile file(LingLongPath);
-    if (file.exists())
+    if (LINGLONGENV)
         return true;
-    return false;
+    else
+        return false;
 }
 
 /**

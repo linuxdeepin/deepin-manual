@@ -49,5 +49,5 @@ build:
       cd build
       cmake -DCMAKE_INSTALL_PREFIX=${PREFIX} ${extra_args} ..
       make -j6
-      make test
+      #make test
       make -j install
