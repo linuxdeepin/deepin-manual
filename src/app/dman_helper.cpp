@@ -20,7 +20,7 @@
 #include "dbus/manual_search_proxy.h"
 
 #include <DLog>
-
+#include "base/utils.h"
 #include <QWebEngineView>
 #include <QApplication>
 #include <QDebug>
@@ -32,13 +32,32 @@ int main(int argc, char **argv)
     //欧拉版root用户登录时会报no-sandbox错误的问题,增加此参数后使qtwebengine进程与主进程合并
 
     QApplication app(argc, argv);
-    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--single-process");
 
     qputenv("DXCB_FAKE_PLATFORM_NAME_XCB", "true");
     //禁用GPU
     qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu");
 //    qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "7777");
+    //玲珑环境添加WebEngine
+    if (Utils::judgeLingLong()) {
+        QString webEngineProcessPath = DMAN_QWEBENGINE_DIR"" + QLibraryInfo::location(QLibraryInfo::LibrariesPath).mid(
+                                           QLibraryInfo::location(QLibraryInfo::LibrariesPath).lastIndexOf("/")) + QString("/qt5/libexec/QtWebEngineProcess");
+        QFile file(webEngineProcessPath);
+        if (file.exists())
+            qputenv("QTWEBENGINEPROCESS_PATH", webEngineProcessPath.toLocal8Bit());
+        else
+            qWarning() << "qputenv QTWEBENGINEPROCESS_PATH fail";
 
+        QFile fileTs(DMAN_WEBENGINERES_DIR);
+        QFile fileRes(DMAN_WEBENGINETS_DIR);
+        if (fileTs.exists() && fileRes.exists())
+            qputenv("QTWEBENGINERESOURCE_PATH", (DMAN_WEBENGINETS_DIR":" + QString(DMAN_WEBENGINERES_DIR)).toStdString().c_str());
+        else
+            qWarning() << "qputenv QTWEBENGINERESOURCE_PATH fail";
+    }
+
+    if (!Utils::judgeWayLand()) {
+        qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--single-process");
+    }
     ManualSearchProxy search_obj;
     ManualSearchAdapter adapter(&search_obj);
 
