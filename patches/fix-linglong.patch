@@ -8,7 +8,7 @@ index eef25b5f..b1abe387 100755
 -Exec=/usr/bin/dman --dbus
 \ No newline at end of file
 +#Exec=/usr/bin/dman --dbus
-+/usr/bin/ll-cli run org.deepin.manual --exec "dman --dbus"
++Exec=/usr/bin/ll-cli run org.deepin.manual --exec "dman --dbus"
 diff --git a/src/dbus/com.deepin.Manual.Search.service b/src/dbus/com.deepin.Manual.Search.service
 index 1729b5b5..f1c29593 100755
 --- a/src/dbus/com.deepin.Manual.Search.service
@@ -19,4 +19,4 @@ index 1729b5b5..f1c29593 100755
 -Exec=/usr/bin/dmanHelper
 \ No newline at end of file
 +#Exec=/usr/bin/dmanHelper
-+/usr/bin/ll-cli run org.deepin.manual --exec "dmanHelper"
++Exec=/usr/bin/ll-cli run org.deepin.manual --exec "dmanHelper"
