@@ -73,7 +73,6 @@ int main(int argc, char **argv)
     }
     fmt.setDefaultFormat(fmt);
     fmt.setProfile(QSurfaceFormat::CoreProfile);
-    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu");
 
     Dtk::Core::DLogManager::registerFileAppender();
     Dtk::Core::DLogManager::registerConsoleAppender();
