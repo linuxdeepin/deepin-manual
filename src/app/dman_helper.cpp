@@ -53,11 +53,16 @@ int main(int argc, char **argv)
             qputenv("QTWEBENGINERESOURCE_PATH", (DMAN_WEBENGINETS_DIR":" + QString(DMAN_WEBENGINERES_DIR)).toStdString().c_str());
         else
             qWarning() << "qputenv QTWEBENGINERESOURCE_PATH fail";
-    }
 
-    if (!Utils::judgeWayLand()) {
         qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--single-process");
     }
+    else {
+        //非玲珑环境waland下不设置
+        if (!Utils::judgeWayLand()) {
+            qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--single-process");
+        }
+    }
+
     ManualSearchProxy search_obj;
     ManualSearchAdapter adapter(&search_obj);
 
