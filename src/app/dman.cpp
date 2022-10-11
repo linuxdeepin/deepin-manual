@@ -81,6 +81,7 @@ int main(int argc, char **argv)
     app.setOrganizationDomain("deepin.org");
     app.setApplicationVersion(VERSION);
     app.setApplicationName(kAppName);
+    app.setDesktopFileName("deepin-manual.desktop");
     app.loadTranslator();
     app.setApplicationDisplayName(QObject::tr("Manual"));
     app.setApplicationDescription(QObject::tr(
