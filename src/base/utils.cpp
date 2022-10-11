@@ -245,6 +245,22 @@ bool Utils::judgeLingLong()
         return false;
 }
 
+QString Utils::getMdsourcePath()
+{
+    QString sourcePath = "";
+    QString path = qgetenv("XDG_DATA_DIRS");
+    QStringList pathlist = QString(qgetenv("XDG_DATA_DIRS")).split(':');
+    for (int i = 0; i < pathlist.size(); ++i) {
+        if (pathlist[i].contains("persistent")) {
+            sourcePath = pathlist[i] + "/deepin-manual/manual-assets";
+            qDebug() << " MD source path : " << sourcePath;
+            return sourcePath;
+        }
+    }
+    qDebug() << "get MD source path fail! ";
+    return sourcePath;
+}
+
 /**
  * @brief Utils::getSystemManualList
  * @return　返回系统中存在帮助手册的应用列表
@@ -265,12 +281,17 @@ QStringList Utils::getSystemManualList()
     };
 
     QStringList app_list_;
+    QString strMANUAL_DIR;
+    if (Utils::judgeLingLong()) {
+        strMANUAL_DIR = Utils::getMdsourcePath();
+    } else {
+        strMANUAL_DIR = DMAN_MANUAL_DIR;
+    }
     //调用dbus服务获取系统安装应用
     const AppInfoList list = launcherInterface();
-    const QStringList applicationList = QDir(QString("%1/application/").arg(DMAN_MANUAL_DIR)).entryList();
-    const QStringList systemList = QDir(QString("%1/system/").arg(DMAN_MANUAL_DIR)).entryList();
-
-    QString oldMdPath = DMAN_MANUAL_DIR;
+    const QStringList applicationList = QDir(QString("%1/application/").arg(strMANUAL_DIR)).entryList();
+    const QStringList systemList = QDir(QString("%1/system/").arg(strMANUAL_DIR)).entryList();
+    QString oldMdPath = strMANUAL_DIR;
 
 #if (DTK_VERSION > DTK_VERSION_CHECK(5, 4, 12, 0))
     if (Dtk::Core::DSysInfo::UosServer == Dtk::Core::DSysInfo::uosType()) {
@@ -331,7 +352,12 @@ QStringList Utils::getSystemManualList()
  */
 QString Utils::getSystemManualDir()
 {
-    QString strMANUAL_DIR = DMAN_MANUAL_DIR;
+    QString strMANUAL_DIR;
+    if (Utils::judgeLingLong()) {
+        strMANUAL_DIR = Utils::getMdsourcePath();
+    } else {
+        strMANUAL_DIR = DMAN_MANUAL_DIR;
+    }
     return strMANUAL_DIR;
 }
 

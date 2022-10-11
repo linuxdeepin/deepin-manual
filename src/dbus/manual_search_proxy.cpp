@@ -45,12 +45,12 @@ void ManualSearchProxy::connectToSender()
         QDBusConnection::connectToBus(QDBusConnection::SessionBus, "Sender");
 
     if (!senderConn.connect(
-            kManualSearchService + QString("Sender"), // sender's service name
-            kManualSearchIface + QString("Sender"), // sender's path name
-            kManualSearchService + QString("Sender"), // interface
-            "SendWinInfo", // sender's signal name
-            this, // receiver
-            SLOT(RecvMsg(const QString &)))) { // slot
+                kManualSearchService + QString("Sender"), // sender's service name
+                kManualSearchIface + QString("Sender"), // sender's path name
+                kManualSearchService + QString("Sender"), // interface
+                "SendWinInfo", // sender's signal name
+                this, // receiver
+                SLOT(RecvMsg(const QString &)))) { // slot
 
         qDebug() << "connectToBus()::connect() Sender SendWinInfo failed";
     } else {
@@ -107,7 +107,13 @@ void ManualSearchProxy::OnNewWindowOpen(const QString &data)
 bool ManualSearchProxy::ManualExists(const QString &app_name)
 {
     QStringList moduleList;
-    QString strManualPath = DMAN_MANUAL_DIR;
+    QString strManualPath;
+    if (Utils::judgeLingLong()) {
+
+        strManualPath = Utils::getMdsourcePath();
+    } else {
+        strManualPath = DMAN_MANUAL_DIR;
+    }
     for (const QString &type : QDir(strManualPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
         if (type == "system" || type == "application") {
             QString typePath = strManualPath + "/" + type;

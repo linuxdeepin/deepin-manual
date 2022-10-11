@@ -67,6 +67,8 @@ public:
     static bool judgeWayLand();
     //判断是否为玲珑平台
     static bool judgeLingLong();
+    //获取md文件路径
+    static QString getMdsourcePath();
 };
 
 class ExApplicationHelper : public DGuiApplicationHelper
