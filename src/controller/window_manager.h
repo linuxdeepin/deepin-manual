@@ -27,6 +27,8 @@ private:
     void activeOrInitWindow();
     void SendMsg(const QString &msg);
     void setWindow(WebWindow *window);
+    void updateDb();
+    void restartDmanHelper();
 
     QString curr_app_name_;
     QString curr_keyword_;

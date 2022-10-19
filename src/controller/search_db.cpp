@@ -810,3 +810,25 @@ void SearchDb::getAllApp()
 {
     strlistApp = Utils::getSystemManualList();
 }
+
+void SearchDb::updateDb()
+{
+    //删除本地数据库
+    QString dbdir = QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/.local/share/deepin/deepin-manual/search.db" ;
+    QDir dir(dbdir);
+    if (!dir.exists()) {
+        qCritical() << __FUNCTION__ << "db path not exist!" << dbdir;
+    }
+
+    dir.remove(dbdir);
+    //重新加载数据库，创建新表
+    createTable();
+
+}
+
+void SearchDb::createTable()
+{
+    initDb();
+    initSearchTable();
+    initTimeTable();
+}

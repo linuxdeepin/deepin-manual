@@ -30,6 +30,10 @@ WindowManager::WindowManager(QObject *parent)
 
 WindowManager::~WindowManager()
 {
+    //退出dmanHelper
+    SendMsg("closeDmanHelper");
+    updateDb();
+    restartDmanHelper();
     delete window;
 }
 
@@ -87,7 +91,7 @@ void WindowManager::initWebWindow()
     window->show();
     window->setAppProperty(curr_app_name_, curr_title_name_, curr_keyword_);
 
-    QTimer::singleShot(0, [=]() {
+    QTimer::singleShot(0, [ = ]() {
         //dbus发送窗口ID给search服务
         SendMsg(QString::number(window->winId()));
         //初始化web窗口
@@ -139,9 +143,15 @@ void WindowManager::SendMsg(const QString &msg)
                                kManualSearchService + QString(WM_SENDER_NAME), "SendWinInfo");
 
     dbusMsg << QString::number(qApp->applicationPid()) + "|" + msg;
+    bool isSuccess = true;
+    if (msg == "closedmanHelper") {
+        //关闭dmanhelper进程需要等待返回
+        dbusConn.call(dbusMsg);
+    } else {
+        //将进程号+窗口WinId拼接后发给dman-search后台进程 发送信号SendWinInfo－＞RecvMsg
+        isSuccess = dbusConn.send(dbusMsg);
+    }
 
-    //将进程号+窗口WinId拼接后发给dman-search后台进程 发送信号SendWinInfo－＞RecvMsg
-    bool isSuccess = dbusConn.send(dbusMsg);
     if (isSuccess) {
         qDebug() << Q_FUNC_INFO << " sendMsg success";
     } else {
@@ -172,6 +182,31 @@ void WindowManager::setWindow(WebWindow *window)
     window->resize(saveWidth, saveHeight);
     window->setMinimumSize(kWinMinWidth, kWinMinHeight);
     window->move((QApplication::desktop()->width() - saveWidth) / 2, (QApplication::desktop()->height() - saveHeight) / 2);
+}
+
+void WindowManager::updateDb()
+{
+    window->updateDb();
+}
+
+void WindowManager::restartDmanHelper()
+{
+    QDBusInterface interface(kManualSearchService, kManualSearchIface,
+                                 kManualSearchService,
+                                 QDBusConnection::sessionBus());
+
+    if (!interface.isValid()) {
+        qDebug() << qPrintable(QDBusConnection::sessionBus().lastError().message());
+        exit(1);
+    }
+
+    // 调用远程对象的方法 setName()
+    QDBusReply<QString> reply = interface.call("ManualExists");
+
+    if (reply.isValid()) {
+        QString value = reply.value();
+        qDebug() << "value = " << value ;
+    }
 }
 
 /**
