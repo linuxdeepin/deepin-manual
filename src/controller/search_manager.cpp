@@ -33,6 +33,7 @@ void SearchManager::initSearchManager()
     connect(db_, &SearchDb::searchContentResult, this, &SearchManager::searchContentResult);
     connect(db_, &SearchDb::searchContentMismatch, this, &SearchManager::searchContentMismatch);
     connect(this, &SearchManager::updateModule, db_, &SearchDb::updateModule);
+    connect(this, &SearchManager::updateDb, db_, &SearchDb::updateDb, Qt::BlockingQueuedConnection);
     connect(db_thread_, &QThread::destroyed, db_, &QObject::deleteLater);
 
     //初始化创建数据库SearchDb::initDb
