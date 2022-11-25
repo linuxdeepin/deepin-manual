@@ -53,7 +53,7 @@ public:
     static QList<AppInfo> launcherInterface();
     //获取系统应用中有帮助手册的应用列表
     static QStringList getSystemManualList();
-    static QString getSystemManualDir();
+    static QStringList getSystemManualDir();
     static QList<AppInfo> sortAppList(QMultiMap<qlonglong, AppInfo> map);
     static bool hasSelperSupport();
     static QStringList systemToOmit(Dtk::Core::DSysInfo::UosEdition);
@@ -68,7 +68,7 @@ public:
     //判断是否为玲珑平台
     static bool judgeLingLong();
     //获取md文件路径
-    static QString getMdsourcePath();
+    static QStringList getMdsourcePath();
 };
 
 class ExApplicationHelper : public DGuiApplicationHelper

@@ -107,29 +107,24 @@ void ManualSearchProxy::OnNewWindowOpen(const QString &data)
 bool ManualSearchProxy::ManualExists(const QString &app_name)
 {
     QStringList moduleList;
-    QString strManualPath;
-    if (Utils::judgeLingLong()) {
-
-        strManualPath = Utils::getMdsourcePath();
-    } else {
-        strManualPath = DMAN_MANUAL_DIR;
-    }
-    for (const QString &type : QDir(strManualPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-        if (type == "system" || type == "application") {
-            QString typePath = strManualPath + "/" + type;
-            for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-                moduleList.append(module);
+    QStringList  strManualPathList = Utils::getMdsourcePath();
+    foreach (auto strManualPath, strManualPathList) {
+        for (const QString &type : QDir(strManualPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+            if (type == "system" || type == "application") {
+                QString typePath = strManualPath + "/" + type;
+                for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+                    moduleList.append(module);
+                }
             }
-        }
 #if 1 //旧文案结构兼容
-        if (systemType.contains(type)) {
-            QString typePath = strManualPath + "/" + type;
-            for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-                moduleList.append(module);
+            if (systemType.contains(type)) {
+                QString typePath = strManualPath + "/" + type;
+                for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+                    moduleList.append(module);
+                }
             }
-        }
 #endif
+        }
     }
-
     return moduleList.contains(app_name);
 }

@@ -245,19 +245,22 @@ bool Utils::judgeLingLong()
         return false;
 }
 
-QString Utils::getMdsourcePath()
+QStringList Utils::getMdsourcePath()
 {
-    QString sourcePath = "";
-    QString path = qgetenv("XDG_DATA_DIRS");
-    QStringList pathlist = QString(qgetenv("XDG_DATA_DIRS")).split(':');
-    for (int i = 0; i < pathlist.size(); ++i) {
-        if (pathlist[i].contains("persistent")) {
-            sourcePath = pathlist[i] + "/deepin-manual/manual-assets";
-            qDebug() << " MD source path : " << sourcePath;
-            return sourcePath;
+    QStringList sourcePath;
+    if (judgeLingLong()) {
+        QString path = qgetenv("XDG_DATA_DIRS");
+        QStringList pathlist = QString(qgetenv("XDG_DATA_DIRS")).split(':');
+        qDebug() << " all source path : " << pathlist;
+        for (int i = 0; i < pathlist.size(); ++i) {
+            if (pathlist[i].contains("deepin-manual")) {
+                sourcePath.push_back(pathlist[i] + "/deepin-manual/manual-assets");
+                qDebug() << " all MD source path : " << sourcePath.last();
+            }
         }
+    } else {
+        sourcePath.push_back(DMAN_MANUAL_DIR);
     }
-    qDebug() << "get MD source path fail! ";
     return sourcePath;
 }
 
@@ -281,67 +284,62 @@ QStringList Utils::getSystemManualList()
     };
 
     QStringList app_list_;
-    QString strMANUAL_DIR;
-    if (Utils::judgeLingLong()) {
-        strMANUAL_DIR = Utils::getMdsourcePath();
-    } else {
-        strMANUAL_DIR = DMAN_MANUAL_DIR;
-    }
+    QStringList strMANUAL_DIR_list = Utils::getMdsourcePath();
     //调用dbus服务获取系统安装应用
     const AppInfoList list = launcherInterface();
-    const QStringList applicationList = QDir(QString("%1/application/").arg(strMANUAL_DIR)).entryList();
-    const QStringList systemList = QDir(QString("%1/system/").arg(strMANUAL_DIR)).entryList();
-    QString oldMdPath = strMANUAL_DIR;
-
-#if (DTK_VERSION > DTK_VERSION_CHECK(5, 4, 12, 0))
-    if (Dtk::Core::DSysInfo::UosServer == Dtk::Core::DSysInfo::uosType()) {
-        oldMdPath += "/server";
-    } else if (Dtk::Core::DSysInfo::UosHome == Dtk::Core::DSysInfo::uosEditionType()) {
-        oldMdPath += "/personal";
-    } else if (Dtk::Core::DSysInfo::UosEducation == Dtk::Core::DSysInfo::uosEditionType()) {
-        oldMdPath += "/education";
-    } else if (Dtk::Core::DSysInfo::UosCommunity == Dtk::Core::DSysInfo::uosEditionType()) {
-        oldMdPath += "/community";
-    } else {
-        oldMdPath += "/professional";
-    }
-#else
-    Dtk::Core::DSysInfo::DeepinType nType = Dtk::Core::DSysInfo::deepinType();
-    if (Dtk::Core::DSysInfo::DeepinServer == nType) {
-        oldMdPath += "/server";
-    } else if (Dtk::Core::DSysInfo::DeepinPersonal == nType) {
-        oldMdPath += "/personal";
-    } else {
-        if (Dtk::Core::DSysInfo::isCommunityEdition()) {
-            oldMdPath += "/community";
-        } else {
-            oldMdPath += "/professional";
-        }
-    }
-
-#endif
-    const QStringList oldAppList = QDir(oldMdPath).entryList();
-
     QMultiMap<qlonglong, AppInfo> appMap;
     for (int var = 0; var < list.size(); ++var) {
         appMap.insert(list.at(var).installed_time, list.at(var));
     }
     //安装时间相同时,按名称排序
     QList<AppInfo> listApp = sortAppList(appMap);
+    foreach (auto strMANUAL_DIR, strMANUAL_DIR_list) {
+        const QStringList applicationList = QDir(QString("%1/application/").arg(strMANUAL_DIR)).entryList();
+        const QStringList systemList = QDir(QString("%1/system/").arg(strMANUAL_DIR)).entryList();
+        QString oldMdPath = strMANUAL_DIR;
 
-    //比对存在帮助md文件的应用
-    for (int i = 0; i < listApp.size(); ++i) {
-        const QString app_name = kAppNameMap.value(listApp.at(i).key, listApp.at(i).key);
-        if ((applicationList.contains(app_name) || oldAppList.contains(app_name))  && app_list_.indexOf(app_name) == -1) {
-            app_list_.append(app_name);
+#if (DTK_VERSION > DTK_VERSION_CHECK(5, 4, 12, 0))
+        if (Dtk::Core::DSysInfo::UosServer == Dtk::Core::DSysInfo::uosType()) {
+            oldMdPath += "/server";
+        } else if (Dtk::Core::DSysInfo::UosHome == Dtk::Core::DSysInfo::uosEditionType()) {
+            oldMdPath += "/personal";
+        } else if (Dtk::Core::DSysInfo::UosEducation == Dtk::Core::DSysInfo::uosEditionType()) {
+            oldMdPath += "/education";
+        } else if (Dtk::Core::DSysInfo::UosCommunity == Dtk::Core::DSysInfo::uosEditionType()) {
+            oldMdPath += "/community";
+        } else {
+            oldMdPath += "/professional";
         }
+#else
+        Dtk::Core::DSysInfo::DeepinType nType = Dtk::Core::DSysInfo::deepinType();
+        if (Dtk::Core::DSysInfo::DeepinServer == nType) {
+            oldMdPath += "/server";
+        } else if (Dtk::Core::DSysInfo::DeepinPersonal == nType) {
+            oldMdPath += "/personal";
+        } else {
+            if (Dtk::Core::DSysInfo::isCommunityEdition()) {
+                oldMdPath += "/community";
+            } else {
+                oldMdPath += "/professional";
+            }
+        }
+
+#endif
+        const QStringList oldAppList = QDir(oldMdPath).entryList();
+
+        //比对存在帮助md文件的应用
+        for (int i = 0; i < listApp.size(); ++i) {
+            const QString app_name = kAppNameMap.value(listApp.at(i).key, listApp.at(i).key);
+            if ((applicationList.contains(app_name) || oldAppList.contains(app_name))  && app_list_.indexOf(app_name) == -1) {
+                app_list_.append(app_name);
+            }
+        }
+        if (systemList.contains("dde") || oldAppList.contains("dde")) {
+            app_list_.append("dde");
+        }
+        qDebug() << "exist app list: " << app_list_ << ", count:" << app_list_.size();
     }
     app_list_.append("DeepinAIAssistant"); //语音助手无法通过launcherInterface获取目前只能手动添加
-    if (systemList.contains("dde") || oldAppList.contains("dde")) {
-        app_list_.append("dde");
-    }
-
-    qDebug() << "exist app list: " << app_list_ << ", count:" << app_list_.size();
     return app_list_;
 }
 
@@ -350,15 +348,9 @@ QStringList Utils::getSystemManualList()
  * @return
  * @note　获取系统版本信息
  */
-QString Utils::getSystemManualDir()
+QStringList Utils::getSystemManualDir()
 {
-    QString strMANUAL_DIR;
-    if (Utils::judgeLingLong()) {
-        strMANUAL_DIR = Utils::getMdsourcePath();
-    } else {
-        strMANUAL_DIR = DMAN_MANUAL_DIR;
-    }
-    return strMANUAL_DIR;
+    return Utils::getMdsourcePath();
 }
 
 /**
