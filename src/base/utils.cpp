@@ -253,7 +253,7 @@ QStringList Utils::getMdsourcePath()
         QStringList pathlist = QString(qgetenv("XDG_DATA_DIRS")).split(':');
         qDebug() << " all source path : " << pathlist;
         for (int i = 0; i < pathlist.size(); ++i) {
-            if (pathlist[i].contains("deepin-manual")) {
+            if (pathlist[i].contains("persistent") || pathlist[i].contains("usr/share")) {
                 sourcePath.push_back(pathlist[i] + "/deepin-manual/manual-assets");
                 qDebug() << " all MD source path : " << sourcePath.last();
             }
