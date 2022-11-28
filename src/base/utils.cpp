@@ -249,9 +249,7 @@ QStringList Utils::getMdsourcePath()
 {
     QStringList sourcePath;
     if (judgeLingLong()) {
-        QString path = qgetenv("XDG_DATA_DIRS");
-        QStringList pathlist = QString(qgetenv("XDG_DATA_DIRS")).split(':');
-        qDebug() << " all source path : " << pathlist;
+        QStringList pathlist = getEnvsourcePath();
         for (int i = 0; i < pathlist.size(); ++i) {
             if (pathlist[i].contains("persistent") || pathlist[i].contains("usr/share")) {
                 sourcePath.push_back(pathlist[i] + "/deepin-manual/manual-assets");
@@ -262,6 +260,13 @@ QStringList Utils::getMdsourcePath()
         sourcePath.push_back(DMAN_MANUAL_DIR);
     }
     return sourcePath;
+}
+
+QStringList Utils::getEnvsourcePath()
+{
+    QStringList pathlist = QString(qgetenv("XDG_DATA_DIRS")).split(':');
+    qDebug() << " all source path : " << pathlist;
+    return pathlist;
 }
 
 /**

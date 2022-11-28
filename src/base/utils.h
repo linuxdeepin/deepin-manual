@@ -69,6 +69,8 @@ public:
     static bool judgeLingLong();
     //获取md文件路径
     static QStringList getMdsourcePath();
+    //获取环境变量
+    static QStringList getEnvsourcePath();
 };
 
 class ExApplicationHelper : public DGuiApplicationHelper

@@ -322,12 +322,16 @@ QString ManualProxy::getLocalAppName(const QString &desktopname)
     if (0 == desktopname.compare("dde", Qt::CaseInsensitive)) {
         strdisplayname = tr("Desktop Environment");
     } else {
-        QString filepath = QString("/usr/share/applications/%1.desktop").arg(desktopname);
-        QFile file(filepath);
-        if (file.exists()) {
-            Dtk::Core::DDesktopEntry entry(filepath);
-            strdisplayname = entry.genericName();
-            strdisplayname = strdisplayname.isEmpty() ? entry.ddeDisplayName() : strdisplayname;
+        QStringList pathList = Utils::getEnvsourcePath();
+        foreach (auto path, pathList) {
+            QString filepath = path + QString("/applications/%1.desktop").arg(desktopname);
+            QFile file(filepath);
+            if (file.exists()) {
+                Dtk::Core::DDesktopEntry entry(filepath);
+                strdisplayname = entry.genericName();
+                strdisplayname = strdisplayname.isEmpty() ? entry.ddeDisplayName() : strdisplayname;
+                return strdisplayname;
+            }
         }
     }
     return strdisplayname;
