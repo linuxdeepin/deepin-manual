@@ -48050,7 +48050,14 @@ function _classCallCheck(instance, Constructor) { if (!(instance instanceof Cons
 function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
+function _isbase64(str){
+    if (str == '' || str.trim == '')
+    {return false;} 
+    try {return btoa(atob(str)) == str}
+    catch(err){
+        return false;
+    }
+}
 global.hash = ' ';
 global.isMouseClickNav = false;
 global.isMouseScrollArticle = false;
@@ -48346,6 +48353,7 @@ var App = function (_React$Component) {
         value: function componentWillReceiveProps(nextProps) {
             console.log("app componentWillReceiveProps", this.context.router.history);
             console.log("this location: " + this.context.router.history.location);
+            console.log(this.context.router.history.location.pathname);
             var pathName = this.context.router.history.location.pathname;
             var pathList = pathName.split("/");
             var cKeyword = '';
@@ -48359,10 +48367,10 @@ var App = function (_React$Component) {
             }
 
             // global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
-            if (cKeyword == '%') {
-                global.qtObjects.search.getKeyword(cKeyword);
-            } else {
-                console.log("decode URIComponent componentWillReceiveProps");
+            if(_isbase64(cKeyword)){
+                global.qtObjects.search.getKeyword(decodeURIComponent(atob(cKeyword)));
+            }
+            else{
                 global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
             }
 
@@ -48413,7 +48421,6 @@ var App = function (_React$Component) {
                 var hash = arguments.length > 1 && arguments[1] !== undefined ? arguments[1] : '';
                 var key = arguments.length > 2 && arguments[2] !== undefined ? arguments[2] : '';
 
-                console.log("global.open()....file:" + file + " hash:" + hash + " key:" + key);
                 //h0默认为应用名称，内容为空，所以当打开h0，将其变为h1概述的位置。
                 if (hash == 'h0' || hash == '') {
                     hash = 'h1';
@@ -48429,6 +48436,7 @@ var App = function (_React$Component) {
                 }
 
                 var url = '/open/' + file + '/' + hash + '/' + key;
+                console.warn(url);
                 _this5.context.router.history.push(url);
 
                 //Init属性设置, 放在index与opentitle中. 避免直接跳转到特定模块时会先走/模块.
@@ -48678,7 +48686,7 @@ var App = function (_React$Component) {
                     _this5.context.router.history.index = lastHistoryIndex - 1;
 
                     _this5.setState({ searchResult: [] });
-                    _this5.context.router.history.push('/search/' + encodeURIComponent(decodeKeyword));
+                    _this5.context.router.history.push('/search/' +btoa(encodeURIComponent(decodeKeyword)));
 
                     return;
                 }
@@ -48695,7 +48703,7 @@ var App = function (_React$Component) {
                 }
 
                 _this5.setState({ searchResult: [] });
-                _this5.context.router.history.push('/search/' + encodeURIComponent(decodeKeyword));
+                _this5.context.router.history.push('/search/' + btoa(encodeURIComponent(decodeKeyword)));
             };
 
             this.context.router.history.listen(function (location, action) {
@@ -50313,10 +50321,9 @@ var Items = function (_Component) {
       var resultList = [];
 
       //将关键字转义
-
       var keyTemp = this.props.keyword;
       if (this.props.keyword !== '%') {
-        keyTemp = decodeURIComponent(this.props.keyword);
+        keyTemp =this.props.keyword;
       }
 
       // let keyTemp = decodeURIComponent(this.props.keyword)
