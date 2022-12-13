@@ -120,7 +120,12 @@ void fileWatcher::monitorFile()
                                 if (mdFile.endsWith("md")) {
                                     //./manual-assets/application(system)/appName/appNameT/lang/md
                                     QString strMd = langPath + "/" + mdFile;
-                                    listMonitorFile.append(strMd);
+                                    QFileInfo fileinfo(strMd);
+                                    if (fileinfo.isSymLink()) {
+                                        listMonitorFile.append(fileinfo.symLinkTarget());
+                                    } else {
+                                        listMonitorFile.append(strMd);
+                                    }
                                 }
                             }
                         }
@@ -141,7 +146,12 @@ void fileWatcher::monitorFile()
                     for (QString &lang : QDir(modulePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
                         if (lang == "zh_CN" || lang == "en_US") {
                             QString strMd = modulePath + "/" + lang + "/index.md";
-                            listMonitorFile.append(strMd);
+                            QFileInfo fileinfo(strMd);
+                            if (fileinfo.isSymLink()) {
+                                listMonitorFile.append(fileinfo.symLinkTarget());
+                            } else {
+                                listMonitorFile.append(strMd);
+                            }
                         }
                     }
                 }
