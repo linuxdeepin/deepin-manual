@@ -13,8 +13,9 @@ public:
     enum EventTID {
         OpenTime     = 1000000000,
         CloseTime     = 1000000001,
-        StartUp           = 1000000003,
+        StartUp           = 1000000003, //帮助手册自启动
         Quit            = 1000000004,
+        DbusStartUp  = 1000800000,  //其他应用启动帮助手册
     };
 
     static Eventlogutils *GetInstance();
