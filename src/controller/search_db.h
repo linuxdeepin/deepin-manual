@@ -73,7 +73,10 @@ public slots:
     QMap<QString, QString> selectAllFileTime();
 
     void getAllApp();
-
+    //更新数据库
+    void updateDb();
+    //创建数据库和相关表
+    void createTable();
 private:
     void initConnections();
     QString highlightKeyword(QString srcString, QString keyword);

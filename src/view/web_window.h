@@ -64,6 +64,7 @@ public:
     void openjsPage(const QString &app_name, const QString &title_name);
     void setAppProperty(const QString &appName, const QString &titleName, const QString &keyword);
     void saveWindowSize();
+    void updateDb();
 
     Dtk::Widget::DButtonBoxButton *m_backButton;
     Dtk::Widget::DButtonBoxButton *m_forwardButton;
