@@ -27,8 +27,8 @@ QHash<QString, QPixmap> Utils::m_imgCacheHash;
 QHash<QString, QString> Utils::m_fontNameCache;
 QString Utils::cpuModeName;
 
-const char kLauncherService[] = "com.deepin.dde.daemon.Launcher";
-const char kLauncherIface[] = "/com/deepin/dde/daemon/Launcher";
+const char kLauncherService[] = "org.deepin.dde.daemon.Launcher1";
+const char kLauncherIface[] = "/org/deepin/dde/daemon/Launcher1";
 
 //标题映射表
 const int langCount = 5;
