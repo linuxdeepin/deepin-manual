@@ -66,6 +66,7 @@ struct ReplyStruct {
 
     qint64 m_categoryId;
     qint64 m_installedTime;
+    QStringList m_appmessage;
 };
 
 Q_DECLARE_METATYPE(ReplyStruct)
@@ -80,7 +81,7 @@ QDBusArgument &operator<<(QDBusArgument &argument, const ReplyStruct &info)
 {
     argument.beginStructure();
     argument << info.m_desktop << info.m_name << info.m_key << info.m_iconKey;
-    argument << info.m_categoryId << info.m_installedTime;
+    argument << info.m_categoryId << info.m_installedTime << info.m_appmessage;
     argument.endStructure();
     return argument;
 }
@@ -95,7 +96,7 @@ const QDBusArgument &operator>>(const QDBusArgument &argument, ReplyStruct &info
 {
     argument.beginStructure();
     argument >> info.m_desktop >> info.m_name >> info.m_key >> info.m_iconKey;
-    argument >> info.m_categoryId >> info.m_installedTime;
+    argument >> info.m_categoryId >> info.m_installedTime >> info.m_appmessage;
     argument.endStructure();
     return argument;
 }
