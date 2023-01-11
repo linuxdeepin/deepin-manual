@@ -1,6 +1,6 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2017 - 2023 UnionTech Software Technology Co., Ltd.
 //
-// SPDX-License-Identifier: GPL-3.0-or-later
+// SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "controller/search_db.h"
 #include "base/utils.h"
@@ -607,7 +607,6 @@ void SearchDb::handleSearchContent(const QString &keyword)
         emit this->searchContentMismatch(keyword);
         return;
     }
-
     QSqlQuery query(p_->db);
     QString lang = QLocale().name();
     if (query.exec(QString("select count(*) from search where lang='%1';").arg(lang)) && query.next()) {

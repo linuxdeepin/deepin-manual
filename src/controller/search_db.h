@@ -1,6 +1,6 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2017 - 2023 UnionTech Software Technology Co., Ltd.
 //
-// SPDX-License-Identifier: GPL-3.0-or-later
+// SPDX-License-Identifier: LGPL-3.0-or-later
 
 #ifndef DEEPIN_MANUAL_CONTROLLER_SEARCH_DB_H
 #define DEEPIN_MANUAL_CONTROLLER_SEARCH_DB_H
@@ -64,7 +64,6 @@ public slots:
     void updateDb();
     //创建数据库和相关表
     void createTable();
-
 private:
     void initConnections();
     QString highlightKeyword(QString srcString, QString keyword);

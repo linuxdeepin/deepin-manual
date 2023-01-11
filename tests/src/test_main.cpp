@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
-//
-// SPDX-License-Identifier: GPL-3.0-or-later
-
 // test_main.cpp 测试入口
 
 #include <gtest/gtest.h>

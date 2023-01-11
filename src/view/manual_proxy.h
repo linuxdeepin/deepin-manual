@@ -1,6 +1,6 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2017 - 2023 UnionTech Software Technology Co., Ltd.
 //
-// SPDX-License-Identifier: GPL-3.0-or-later
+// SPDX-License-Identifier: LGPL-3.0-or-later
 
 #ifndef DEEPIN_MANUAL_VIEW_MANUAL_PROXY_H
 #define DEEPIN_MANUAL_VIEW_MANUAL_PROXY_H
@@ -26,7 +26,7 @@ signals:
     void languageChanged();
 
 public slots:
-    QString getSystemManualDir();
+    QStringList getSystemManualDir();
     QStringList getSystemManualList();
 
     void setApplicationState(const QString &appName);

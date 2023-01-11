@@ -1,26 +1,36 @@
-# SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
-#
-# SPDX-License-Identifier: CC0-1.0
-
 project(deepin-manual C CXX)
 
 #set(CMAKE_C_COMPILER  /usr/bin/clang)
 #set(CMAKE_CXX_COMPILER  /usr/bin/clang++)
 
-
+#assets目录在usr下
 set(CMAKE_INSTALL_PREFIX /usr)
+add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets")
 
+#web_dist玲珑环境需要更改目录
+if(DEFINED ENV{PREFIX})
+   set(CMAKE_INSTALL_PREFIX $ENV{PREFIX})
+   add_definitions(-DLINGLONGENV=1)
+else()
+   add_definitions(-DLINGLONGENV=0)
+   set(CMAKE_INSTALL_PREFIX /usr)
+endif()
 
 if (CMAKE_BUILD_TYPE MATCHES Debug)
   add_definitions(-DDMAN_SEARCH_DB="${CMAKE_SOURCE_DIR}/manual-assets")
   add_definitions(-DDMAN_WEB_DIR="${CMAKE_CURRENT_SOURCE_DIR}/web_dist")
 #  add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_SOURCE_DIR}/manual-assets")
-  add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets")
 else()
   add_definitions(-DDMAN_SEARCH_DB="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets")
   add_definitions(-DDMAN_WEB_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/web_dist")
-  add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets")
 endif ()
+#qwebengine玲珑路径
+add_definitions(-DDMAN_QWEBENGINE_DIR="${CMAKE_INSTALL_PREFIX}/lib")
+#webengine资源玲珑路径
+add_definitions(-DDMAN_WEBENGINERES_DIR="${CMAKE_INSTALL_PREFIX}/share/qt5/resources")
+#webengine翻译玲珑路径
+add_definitions(-DDMAN_WEBENGINETS_DIR="${CMAKE_INSTALL_PREFIX}/share/qt5/translations")
+
 #禁止Debug日志输出
 #add_definitions(-DQT_NO_DEBUG_OUTPUT)
 
@@ -148,8 +158,6 @@ set(BASE_FILES
     base/consts.h
     base/utils.cpp
     base/utils.h
-    base/eventlogutils.h
-    base/eventlogutils.cpp
     )
 
 set(CONTROLLER_FILES
@@ -242,8 +250,6 @@ set(SEARCH_FILES
     dbus/dbusvariant/app_info.h
     controller/search_db.cpp
     controller/search_db.h
-    base/eventlogutils.h
-    base/eventlogutils.cpp
     )
 add_executable(generate-search-db
                ${SEARCH_FILES})
@@ -279,8 +285,6 @@ add_executable(dmanHelper
                 base/utils.h
                 base/consts.cpp
                 base/consts.h
-                base/eventlogutils.h
-                base/eventlogutils.cpp
                 dbus/dbus_consts.cpp
                 dbus/dbus_consts.h
                 dbus/dbusvariant/app_info.cpp
@@ -337,12 +341,14 @@ endif ()
 
 
 ## Installation
+## Installation
 install(TARGETS dman
         DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 install(TARGETS dmanHelper
         DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 
 
+# Install qm files
 # Install qm files
 file(GLOB QM_FILES  ${CMAKE_SOURCE_DIR}/translations/deepin-manual*.qm)
 install(FILES ${QM_FILES}
@@ -352,7 +358,7 @@ install(FILES ${QM_FILES}
 #        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets/)
 
 install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/web_dist
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
+            DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
 
 
 string(TOLOWER ${CMAKE_SYSTEM_PROCESSOR} LOWERCASE_CMAKE_SYSTEM_PROCESSOR)

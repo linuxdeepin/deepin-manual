@@ -1,6 +1,6 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2023 UnionTech Software Technology Co., Ltd.
 //
-// SPDX-License-Identifier: GPL-3.0-or-later
+// SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "controller/argument_parser.h"
 #include "base/consts.h"
@@ -11,7 +11,7 @@
 #include "dbus/manual_open_proxy.h"
 #include "view/web_window.h"
 #include "window_manager.h"
-#include "base/eventlogutils.h"
+
 #include <DLog>
 #include <DApplicationHelper>
 
@@ -67,9 +67,9 @@ bool ArgumentParser::parseArguments()
     //20210705 由于新版本dtk不启动dmanHelper,dman尝试启动dmanHelper
     //20211202 之前同步调用会增加启动时间,改为异步调用
     QDBusMessage msg = QDBusMessage::createMethodCall(kManualSearchService,
-                                                      kManualSearchIface,
-                                                      kManualSearchService,
-                                                      "ManualExists");
+                                                          kManualSearchIface,
+                                                          kManualSearchService,
+                                                          "ManualExists");
     QDBusConnection::sessionBus().asyncCall(msg);
 
     //注册Open服务, 如果注册失败,则说明已存在一个dman.
@@ -126,14 +126,6 @@ void ArgumentParser::openManualsDelay()
  */
 void ArgumentParser::onOpenAppRequested(const QString &app_name, const QString &title_name)
 {
-    //应用F1和帮助打开帮助手册 数据埋点统计
-    QJsonObject objStartEvent;
-    objStartEvent.insert("tid", Eventlogutils::DbusStartUp);
-    objStartEvent.insert("vsersion", qApp->applicationVersion());
-    objStartEvent.insert("appname", app_name);
-    objStartEvent.insert("titlename", title_name);
-    qInfo() << __FUNCTION__ << QJsonDocument(objStartEvent).toJson(QJsonDocument::Compact);
-    Eventlogutils::GetInstance()->writeLogs(objStartEvent);
     //解析老的应用名为路径，解析出dman后的应用名称
     const QString compact_app_name = ConvertOldDmanPath(app_name);
     //openManualRequested---->WindowManager::openManual

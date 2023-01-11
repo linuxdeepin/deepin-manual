@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
-//
-// SPDX-License-Identifier: GPL-3.0-or-later
-
 #include "ut_argument_parser.h"
 #include "controller/window_manager.h"
 #include "src/third-party/stub/stub.h"

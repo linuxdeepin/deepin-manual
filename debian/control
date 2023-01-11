@@ -31,7 +31,7 @@ Depends: ${misc:Depends},
  libqt5core5a,
  libqt5dbus5,
  libqt5sql5-sqlite,
-Recommends: qt5dxcb-plugin,uos-reporter, deepin-event-log
+Recommends: qt5dxcb-plugin,
 Conflicts: dde-help
 Provides: dde-help
 Description: Manual provides user guides of the system and applications. 

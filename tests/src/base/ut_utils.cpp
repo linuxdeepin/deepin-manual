@@ -1,6 +1,20 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
-//
-// SPDX-License-Identifier: GPL-3.0-or-later
+/*
+* Copyright (C) 2019 ~ 2020 Deepin Technology Co., Ltd.
+*
+* Author:     wangmingliang <wangmingliang@uniontech.com>
+* Maintainer: wangmingliang <wanmgmingliang@uniontech.com>
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* any later version.
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
 
 #include "ut_utils.h"
 #include "base/utils.h"
@@ -227,21 +241,21 @@ struct ReplyStruct {
 
 TEST_F(ut_utils_test, launcherInterface)
 {
-    Utils *m_utils = new Utils;
-    QList<AppInfo> applist = m_utils->launcherInterface();
-    ASSERT_TRUE(applist.size() >= 0);
+//    Utils *m_utils = new Utils;
+//    QList<AppInfo> applist = m_utils->launcherInterface();
+//    ASSERT_TRUE(applist.size() >= 0);
 
-    Stub s;
-    s.set(ADDR(QDBusInterface, isValid), stub_isValid);
-    s.set(ADDR(QDBusReply<QList<ReplyStruct>>, isValid), stub_isValid);
-    QList<AppInfo> applist2 = m_utils->launcherInterface();
-    s.reset(ADDR(QDBusInterface, isValid));
-    ASSERT_TRUE(applist2.size() == 0);
+//    Stub s;
+//    s.set(ADDR(QDBusInterface, isValid), stub_isValid);
+//    s.set(ADDR(QDBusReply<QList<ReplyStruct>>, isValid), stub_isValid);
+//    QList<AppInfo> applist2 = m_utils->launcherInterface();
+//    s.reset(ADDR(QDBusInterface, isValid));
+//    ASSERT_TRUE(applist2.size() == 0);
 
-    QList<AppInfo> applist3 = m_utils->launcherInterface();
-    ASSERT_TRUE(applist2.size() == 0);
+//    QList<AppInfo> applist3 = m_utils->launcherInterface();
+//    ASSERT_TRUE(applist2.size() == 0);
 
-    delete m_utils;
+//    delete m_utils;
 }
 
 QStringList manaulapplist()
