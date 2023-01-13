@@ -1,6 +1,6 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2017 - 2023 UnionTech Software Technology Co., Ltd.
 //
-// SPDX-License-Identifier: GPL-3.0-or-later
+// SPDX-License-Identifier: LGPL-3.0-or-later
 
 #ifndef DEEPIN_MANUAL_CONTROLLER_SEARCH_MANAGER_H
 #define DEEPIN_MANUAL_CONTROLLER_SEARCH_MANAGER_H
@@ -34,7 +34,6 @@ signals:
                              const QStringList &contents);
     void searchContentMismatch(const QString &keyword);
     void updateModule();
-
     void updateDb();
 
 private:

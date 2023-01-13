@@ -1,6 +1,6 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2017 - 2023 UnionTech Software Technology Co., Ltd.
 //
-// SPDX-License-Identifier: GPL-3.0-or-later
+// SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "controller/window_manager.h"
 #include "base/consts.h"
@@ -143,6 +143,7 @@ void WindowManager::SendMsg(const QString &msg)
                                kManualSearchService + QString(WM_SENDER_NAME), "SendWinInfo");
 
     dbusMsg << QString::number(qApp->applicationPid()) + "|" + msg;
+
     bool isSuccess = true;
     if (msg == "closedmanHelper") {
         //关闭dmanhelper进程需要等待返回
@@ -151,37 +152,6 @@ void WindowManager::SendMsg(const QString &msg)
         //将进程号+窗口WinId拼接后发给dman-search后台进程 发送信号SendWinInfo－＞RecvMsg
         isSuccess = dbusConn.send(dbusMsg);
     }
-
-    if (isSuccess) {
-        qDebug() << Q_FUNC_INFO << " sendMsg success";
-    } else {
-        qDebug() << Q_FUNC_INFO << "sendMsg failed";
-    }
-}
-
-/**
- * @brief WindowManager::moveWindow 设置window窗口属性,UI居中显示
- * @param window 主页面对象
- * @note 设置窗口最小尺寸,设置窗口大小,设置窗口居中
- */
-void WindowManager::setWindow(WebWindow *window)
-{
-    //获取窗口上次保存尺寸,加载上次保存尺寸.
-    QSettings *setting = ConfigManager::getInstance()->getSettings();
-    setting->beginGroup(kConfigWindowInfo);
-    int saveWidth = setting->value(kConfigWindowWidth).toInt();
-    int saveHeight = setting->value(kConfigWindowHeight).toInt();
-    setting->endGroup();
-    // 如果配置文件没有数据
-    if (saveWidth == 0 || saveHeight == 0) {
-        saveWidth = 1024;
-        saveHeight = 680;
-    }
-
-    //设置window窗口属性
-    window->resize(saveWidth, saveHeight);
-    window->setMinimumSize(kWinMinWidth, kWinMinHeight);
-    window->move((QApplication::desktop()->width() - saveWidth) / 2, (QApplication::desktop()->height() - saveHeight) / 2);
 }
 
 void WindowManager::updateDb()
@@ -207,6 +177,30 @@ void WindowManager::restartDmanHelper()
         QString value = reply.value();
         qDebug() << "value = " << value ;
     }
+}
+/**
+ * @brief WindowManager::moveWindow 设置window窗口属性,UI居中显示
+ * @param window 主页面对象
+ * @note 设置窗口最小尺寸,设置窗口大小,设置窗口居中
+ */
+void WindowManager::setWindow(WebWindow *window)
+{
+    //获取窗口上次保存尺寸,加载上次保存尺寸.
+    QSettings *setting = ConfigManager::getInstance()->getSettings();
+    setting->beginGroup(kConfigWindowInfo);
+    int saveWidth = setting->value(kConfigWindowWidth).toInt();
+    int saveHeight = setting->value(kConfigWindowHeight).toInt();
+    setting->endGroup();
+    // 如果配置文件没有数据
+    if (saveWidth == 0 || saveHeight == 0) {
+        saveWidth = 1024;
+        saveHeight = 680;
+    }
+
+    //设置window窗口属性
+    window->resize(saveWidth, saveHeight);
+    window->setMinimumSize(kWinMinWidth, kWinMinHeight);
+    window->move((QApplication::desktop()->width() - saveWidth) / 2, (QApplication::desktop()->height() - saveHeight) / 2);
 }
 
 /**

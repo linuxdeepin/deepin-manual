@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
-//
-// SPDX-License-Identifier: GPL-3.0-or-later
-
 import React, { Component } from 'react';
 import ReactDOM from 'react-dom';
 import scrollIntoView from 'smooth-scroll-into-view-if-needed';

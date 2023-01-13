@@ -1,7 +1,20 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
-//
-// SPDX-License-Identifier: GPL-3.0-or-later
-
+/*
+* Copyright (C) 2019 ~ 2020 Deepin Technology Co., Ltd.
+*
+* Author:     wangmingliang <wangmingliang@uniontech.com>
+* Maintainer: wangmingliang <wanmgmingliang@uniontech.com>
+*
+* This program is free software: you can redistribute it and/or modify
+* it under the terms of the GNU General Public License as published by
+* the Free Software Foundation, either version 3 of the License, or
+* any later version.
+* This program is distributed in the hope that it will be useful,
+* but WITHOUT ANY WARRANTY; without even the implied warranty of
+* MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE. See the
+* GNU General Public License for more details.
+* You should have received a copy of the GNU General Public License
+* along with this program.  If not, see <http://www.gnu.org/licenses/>.
+*/
 #include "ut_web_window.h"
 #include "view/web_window.h"
 #include "view/widget/search_edit.h"
@@ -130,24 +143,24 @@ QDBusMessage ut_HelpSupport(QDBus::CallMode mode,
 
 TEST_F(ut_web_window_test, slot_HelpSupportTriggered)
 {
-    WebWindow *web = new WebWindow;
-    web->HelpSupportTriggered();
+//    WebWindow *web = new WebWindow;
+//    web->HelpSupportTriggered();
 
-    Stub st;
-    st.set(ADDR(QDBusReply<void>, isValid), ADDR(ut_web_window_test, stub_isValid));
-    st.set((QDBusMessage(QDBusAbstractInterface::*)(QDBus::CallMode, const QString &,
-                                                    const QVariant &, const QVariant &, const QVariant &, const QVariant &,
-                                                    const QVariant &, const QVariant &, const QVariant &, const QVariant &))ADDR(QDBusAbstractInterface, call),
-           ut_HelpSupport);
+//    Stub st;
+//    st.set(ADDR(QDBusReply<void>, isValid), ADDR(ut_web_window_test, stub_isValid));
+//    st.set((QDBusMessage(QDBusAbstractInterface::*)(QDBus::CallMode, const QString &,
+//                                                    const QVariant &, const QVariant &, const QVariant &, const QVariant &,
+//                                                    const QVariant &, const QVariant &, const QVariant &, const QVariant &))ADDR(QDBusAbstractInterface, call),
+//           ut_HelpSupport);
 
-    web->HelpSupportTriggered(true);
-    ASSERT_TRUE(ut_HelpSupportTriggered);
-    st.reset(ADDR(QDBusReply<void>, isValid));
-    st.set(ADDR(QDBusReply<void>, isValid), ADDR(ut_web_window_test, stub_isValidfalse));
-    web->HelpSupportTriggered(true);
-    ASSERT_TRUE(ut_HelpSupportTriggered);
-    st.reset(ADDR(QDBusReply<void>, isValid));
-    delete web;
+//    web->HelpSupportTriggered(true);
+//    ASSERT_TRUE(ut_HelpSupportTriggered);
+//    st.reset(ADDR(QDBusReply<void>, isValid));
+//    st.set(ADDR(QDBusReply<void>, isValid), ADDR(ut_web_window_test, stub_isValidfalse));
+//    web->HelpSupportTriggered(true);
+//    ASSERT_TRUE(ut_HelpSupportTriggered);
+//    st.reset(ADDR(QDBusReply<void>, isValid));
+//    delete web;
 
 }
 

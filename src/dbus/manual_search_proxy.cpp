@@ -1,6 +1,6 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2017 - 2023 UnionTech Software Technology Co., Ltd.
 //
-// SPDX-License-Identifier: GPL-3.0-or-later
+// SPDX-License-Identifier: LGPL-3.0-or-later
 
 #include "dbus/manual_search_proxy.h"
 #include "dbus/dbus_consts.h"
@@ -65,10 +65,6 @@ void ManualSearchProxy::RecvMsg(const QString &data)
     } else {
         m_bWindowState = true;
         m_sApplicationPid = dataList.last();
-        //关闭dmanhelper
-        if ("closeDmanHelper" == flag) {
-            exit(0);
-        }
     }
 
     return;
@@ -98,23 +94,24 @@ void ManualSearchProxy::OnNewWindowOpen(const QString &data)
 bool ManualSearchProxy::ManualExists(const QString &app_name)
 {
     QStringList moduleList;
-    QString strManualPath = DMAN_MANUAL_DIR;
-    for (const QString &type : QDir(strManualPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-        if (type == "system" || type == "application") {
-            QString typePath = strManualPath + "/" + type;
-            for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-                moduleList.append(module);
+    QStringList  strManualPathList = Utils::getMdsourcePath();
+    foreach (auto strManualPath, strManualPathList) {
+        for (const QString &type : QDir(strManualPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+            if (type == "system" || type == "application") {
+                QString typePath = strManualPath + "/" + type;
+                for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+                    moduleList.append(module);
+                }
             }
-        }
 #if 1 //旧文案结构兼容
-        if (systemType.contains(type)) {
-            QString typePath = strManualPath + "/" + type;
-            for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-                moduleList.append(module);
+            if (systemType.contains(type)) {
+                QString typePath = strManualPath + "/" + type;
+                for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+                    moduleList.append(module);
+                }
             }
-        }
 #endif
+        }
     }
-
     return moduleList.contains(app_name);
 }

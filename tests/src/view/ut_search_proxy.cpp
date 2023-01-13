@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
-//
-// SPDX-License-Identifier: GPL-3.0-or-later
-
 #include "ut_search_proxy.h"
 #include "view/search_proxy.h"
 #include "view/web_window.h"

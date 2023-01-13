@@ -1,7 +1,3 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
-//
-// SPDX-License-Identifier: GPL-3.0-or-later
-
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 /* The following list is defined in React's core */
 var IS_UNITLESS = {
@@ -48055,12 +48051,12 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 function _isbase64(str){
-	if (str == '' || str.trim == '')
-	{return false;} 
-	try {return btoa(atob(str)) == str}
-	catch(err){
-		return false;
-	}
+    if (str == '' || str.trim == '')
+    {return false;} 
+    try {return btoa(atob(str)) == str}
+    catch(err){
+        return false;
+    }
 }
 global.hash = ' ';
 global.isMouseClickNav = false;
@@ -48357,7 +48353,7 @@ var App = function (_React$Component) {
         value: function componentWillReceiveProps(nextProps) {
             console.log("app componentWillReceiveProps", this.context.router.history);
             console.log("this location: " + this.context.router.history.location);
-			console.log(this.context.router.history.location.pathname);
+            console.log(this.context.router.history.location.pathname);
             var pathName = this.context.router.history.location.pathname;
             var pathList = pathName.split("/");
             var cKeyword = '';
@@ -48371,14 +48367,12 @@ var App = function (_React$Component) {
             }
 
             // global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
-			if(_isbase64(cKeyword))
-			{
-            	global.qtObjects.search.getKeyword(decodeURIComponent(atob(cKeyword)));
-			}
-			else
-			{
-				global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
-			}
+            if(_isbase64(cKeyword)){
+                global.qtObjects.search.getKeyword(decodeURIComponent(atob(cKeyword)));
+            }
+            else{
+                global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
+            }
 
             if (this.context.router.history.action == 'PUSH') {
                 var entriesLen = this.context.router.history.entries.length;
@@ -48442,7 +48436,7 @@ var App = function (_React$Component) {
                 }
 
                 var url = '/open/' + file + '/' + hash + '/' + key;
-				console.warn(url);
+                console.warn(url);
                 _this5.context.router.history.push(url);
 
                 //Init属性设置, 放在index与opentitle中. 避免直接跳转到特定模块时会先走/模块.
@@ -50462,7 +50456,7 @@ var SearchPage = function (_Component2) {
             idList: result.idList,
             titleList: result.titleList,
             contentList: result.contentList,
-            keyword: _this4.props.match.params.keyword,
+            keyword: _this4.props.match.params.keyword
           });
         });
       }

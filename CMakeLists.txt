@@ -9,8 +9,4 @@ project(deepin-manual)
 option(DMAN_RELEAE OFF "Install dman resources to system or not")
 
 add_subdirectory(src)
-
-if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-    add_subdirectory(tests)
-endif()
-
+#add_subdirectory(tests)

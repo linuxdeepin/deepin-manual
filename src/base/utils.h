@@ -1,6 +1,6 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2017 - 2023 UnionTech Software Technology Co., Ltd.
 //
-// SPDX-License-Identifier: GPL-3.0-or-later
+// SPDX-License-Identifier: LGPL-3.0-or-later
 
 #ifndef UTILS_H
 #define UTILS_H
@@ -38,7 +38,7 @@ public:
     static QList<AppInfo> launcherInterface();
     //获取系统应用中有帮助手册的应用列表
     static QStringList getSystemManualList();
-    static QString getSystemManualDir();
+    static QStringList getSystemManualDir();
     static QList<AppInfo> sortAppList(QMultiMap<qlonglong, AppInfo> map);
     static bool hasSelperSupport();
     static QStringList systemToOmit(Dtk::Core::DSysInfo::UosEdition);
@@ -50,7 +50,12 @@ public:
     static bool judgeLoongson();
     //判断是否Wayland
     static bool judgeWayLand();
-
+    //判断是否为玲珑平台
+    static bool judgeLingLong();
+    //获取md文件路径
+    static QStringList getMdsourcePath();
+    //获取环境变量
+    static QStringList getEnvsourcePath();
 };
 
 class ExApplicationHelper : public DGuiApplicationHelper
