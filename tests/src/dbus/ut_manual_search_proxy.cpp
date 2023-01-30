@@ -1,4 +1,8 @@
-﻿#include "ut_manual_search_proxy.h"
+﻿// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+//
+// SPDX-License-Identifier: GPL-3.0-or-later
+
+#include "ut_manual_search_proxy.h"
 #include "../src/dbus/manual_search_proxy.h"
 #include "src/third-party/stub/stub.h"
 

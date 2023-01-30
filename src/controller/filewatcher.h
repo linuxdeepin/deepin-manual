@@ -1,23 +1,7 @@
-/*
-   * Copyright (C) 2019 ~ 2020 Uniontech Software Technology Co.,Ltd.
-   *
-   * Author:     wujian <wujian@uniontech.com>
-   *
-   * Maintainer: wujian <wujian@uniontech.com>
-   *
-   * This program is free software: you can redistribute it and/or modify
-   * it under the terms of the GNU General Public License as published by
-   * the Free Software Foundation, either version 3 of the License, or
-   * any later version.
-   *
-   * This program is distributed in the hope that it will be useful,
-   * but WITHOUT ANY WARRANTY; without even the implied warranty of
-   * MERCHANTABILITY or FITNESS FOR A PARTICULAR PURPOSE.  See the
-   * GNU General Public License for more details.
-   *
-   * You should have received a copy of the GNU General Public License
-   * along with this program.  If not, see <http://www.gnu.org/licenses/>.
-   */
+// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+//
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 #ifndef FILEWATCHER_H
 #define FILEWATCHER_H
 
@@ -26,9 +10,9 @@
 #include <QMap>
 #include <QFileSystemWatcher>
 
-//p表示桌面专业版,h表示个人版，d表示社区版,s表示服务器版，e表示服务器企业版，eu表示服务器欧拉版，i表示服务器行业版
+//p表示桌面专业版,h表示个人版，d表示社区版,s表示服务器版，e表示服务器企业版，eu表示服务器欧拉版，i表示服务器行业版, edu表示教育版
 //klu表示KelvinU项目版本，pgv表示PanguV项目版本。
-const QStringList systemList = {"p", "h", "d", "s", "e", "eu", "i", "klu", "pgv"};
+const QStringList systemList = {"p", "h", "d", "s", "e", "eu", "i", "klu", "pgv", "edu"};
 const QStringList systemType = {"professional", "server", "community", "personal"};
 
 class Utils;
