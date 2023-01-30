@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+//
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 #include "controller/argument_parser.h"
 #include "base/consts.h"
 #include "base/utils.h"
@@ -63,9 +67,9 @@ bool ArgumentParser::parseArguments()
     //20210705 由于新版本dtk不启动dmanHelper,dman尝试启动dmanHelper
     //20211202 之前同步调用会增加启动时间,改为异步调用
     QDBusMessage msg = QDBusMessage::createMethodCall(kManualSearchService,
-                                                          kManualSearchIface,
-                                                          kManualSearchService,
-                                                          "ManualExists");
+                                                      kManualSearchIface,
+                                                      kManualSearchService,
+                                                      "ManualExists");
     QDBusConnection::sessionBus().asyncCall(msg);
 
     //注册Open服务, 如果注册失败,则说明已存在一个dman.

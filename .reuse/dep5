@@ -1,0 +1,80 @@
+Format: https://www.debian.org/doc/packaging-manuals/copyright-format/1.0/
+Upstream-Name: image-editor
+Upstream-Contact: UnionTech Software Technology Co., Ltd. <>
+Source: https://github.com/linuxdeepin/image-editor
+
+# ci
+Files: .github/*
+Copyright: UnionTech Software Technology Co., Ltd.
+License: CC0-1.0
+
+# gitignore
+Files: .gitignore .gitmodules
+Copyright: UnionTech Software Technology Co., Ltd.
+License: CC0-1.0
+
+# xml toml json conf yaml sh
+Files:  *.toml *.json *conf *.yaml *.sh
+Copyright: UnionTech Software Technology Co., Ltd.
+License: CC0-1.0
+
+# debian
+Files: debian/*
+Copyright: UnionTech Software Technology Co., Ltd.
+License: CC0-1.0
+
+# rpm
+Files: rpm/*
+Copyright: UnionTech Software Technology Co., Ltd.
+License: CC0-1.0
+
+# Project file
+Files: *.pro *.prf *.pri *.qrc *CMakeLists.txt .tx/* 
+Copyright: UnionTech Software Technology Co., Ltd.
+License: CC0-1.0
+
+# docs
+Files: docs/*
+Copyright: UnionTech Software Technology Co., Ltd.
+License: LGPL-3.0-or-later
+
+# README
+Files: README* CHANGELOG.md INTRODUCTION.md
+Copyright: UnionTech Software Technology Co., Ltd.
+License: CC-BY-4.0
+
+# translations 
+Files: libimageviewer/translations/*
+Copyright: UnionTech Software Technology Co., Ltd.
+License: GPL-3.0-or-later
+
+# src
+Files: src/* *.lock
+Copyright: UnionTech Software Technology Co., Ltd.
+License: GPL-3.0-or-later
+
+# translations
+Files: translations/*
+Copyright: UnionTech Software Technology Co., Ltd.
+License: LGPL-3.0-or-later
+
+# tests
+Files: tests/*
+Copyright: UnionTech Software Technology Co., Ltd.
+License: GPL-3.0-or-later
+
+# patches
+Files: patches/*
+Copyright: UnionTech Software Technology Co., Ltd.
+License: GPL-3.0-or-later
+
+# qt web
+Files: src/web/toSearchMd/common/qwebchannel.js src/web/toManual/qwebchannel.js src/web_dist/toManual/qwebchannel.js src/web_dist/toSearchMd/qwebchannel.js
+Copyright: 2016 The Qt Company Ltd.
+           2014 Klarälvdalens Datakonsult AB, a KDAB Group company, info@kdab.com, author Milian Wolff <milian.wolff@kdab.com>
+License: BSD-3-Clause
+
+# stub
+Files: tests/src/third-party/stub/*
+Copyright: 2019 coolxv
+License: MIT
