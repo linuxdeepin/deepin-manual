@@ -153,30 +153,6 @@ void WindowManager::SendMsg(const QString &msg)
     }
 }
 
-void WindowManager::updateDb()
-{
-    window->updateDb();
-}
-
-void WindowManager::restartDmanHelper()
-{
-    QDBusInterface interface(kManualSearchService, kManualSearchIface,
-                                 kManualSearchService,
-                                 QDBusConnection::sessionBus());
-
-    if (!interface.isValid()) {
-        qDebug() << qPrintable(QDBusConnection::sessionBus().lastError().message());
-        exit(1);
-    }
-
-    // 调用远程对象的方法 setName()
-    QDBusReply<QString> reply = interface.call("ManualExists");
-
-    if (reply.isValid()) {
-        QString value = reply.value();
-        qDebug() << "value = " << value ;
-    }
-}
 /**
  * @brief WindowManager::moveWindow 设置window窗口属性,UI居中显示
  * @param window 主页面对象

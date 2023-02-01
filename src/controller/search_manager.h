@@ -34,7 +34,6 @@ signals:
                              const QStringList &contents);
     void searchContentMismatch(const QString &keyword);
     void updateModule();
-    void updateDb();
 
     void updateDb();
 

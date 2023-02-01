@@ -58,7 +58,7 @@ QString ut_manual_proxy_test::stub_LocalNameug_bo_CN()
 
 TEST_F(ut_manual_proxy_test, getSystemManualDir)
 {
-    QString str = m_mp->getSystemManualDir();
+    QString str = m_mp->getSystemManualDir().first();
     QString tmp = "manual-assets";
     ASSERT_TRUE(str.contains(tmp));
 }

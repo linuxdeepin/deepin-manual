@@ -209,57 +209,29 @@ QList<AppInfo> Utils::launcherInterface()
  */
 bool Utils::judgeWayLand()
 {
-    auto env = QProcessEnvironment::systemEnvironment();
+   auto env = QProcessEnvironment::systemEnvironment();
 
-    QString XDG_SESSION_TYPE = env.value(QStringLiteral("XDG_SESSION_TYPE"));
+   QString XDG_SESSION_TYPE = env.value(QStringLiteral("XDG_SESSION_TYPE"));
 
-    QString WAYLAND_DISPLAY = env.value(QStringLiteral("WAYLAND_DISPLAY"));
+   QString WAYLAND_DISPLAY = env.value(QStringLiteral("WAYLAND_DISPLAY"));
 
-    if (XDG_SESSION_TYPE == QLatin1String("wayland") || WAYLAND_DISPLAY.contains(QLatin1String("wayland"), Qt::CaseInsensitive)) {
+   if (XDG_SESSION_TYPE == QLatin1String("wayland") || WAYLAND_DISPLAY.contains(QLatin1String("wayland"), Qt::CaseInsensitive)){
+      return true;
+   }
+
+   return false;
+}
+
+bool Utils::judgeLingLong()
+{
+#ifdef LINGLONGENV
+    if (LINGLONGENV)
         return true;
-    }
-
+    else
+        return false;
+#else
     return false;
-}
-
-bool Utils::judgeLingLong()
-{
-    if (LINGLONGENV)
-        return true;
-    else
-        return false;
-}
-
-QStringList Utils::getMdsourcePath()
-{
-    QStringList sourcePath;
-    if (judgeLingLong()) {
-        QStringList pathlist = getEnvsourcePath();
-        for (int i = 0; i < pathlist.size(); ++i) {
-            if (pathlist[i].contains("persistent") || pathlist[i].contains("usr/share")) {
-                sourcePath.push_back(pathlist[i] + "/deepin-manual/manual-assets");
-                qDebug() << " all MD source path : " << sourcePath.last();
-            }
-        }
-    } else {
-        sourcePath.push_back(DMAN_MANUAL_DIR);
-    }
-    return sourcePath;
-}
-
-QStringList Utils::getEnvsourcePath()
-{
-    QStringList pathlist = QString(qgetenv("XDG_DATA_DIRS")).split(':');
-    qDebug() << " all source path : " << pathlist;
-    return pathlist;
-}
-
-bool Utils::judgeLingLong()
-{
-    if (LINGLONGENV)
-        return true;
-    else
-        return false;
+#endif
 }
 
 QStringList Utils::getMdsourcePath()

@@ -21,6 +21,7 @@
 #include <QSurfaceFormat>
 
 DWIDGET_USE_NAMESPACE
+
 int main(int argc, char **argv)
 {
     QDateTime time;

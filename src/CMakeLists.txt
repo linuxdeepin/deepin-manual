@@ -341,14 +341,12 @@ endif ()
 
 
 ## Installation
-## Installation
 install(TARGETS dman
         DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 install(TARGETS dmanHelper
         DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 
 
-# Install qm files
 # Install qm files
 file(GLOB QM_FILES  ${CMAKE_SOURCE_DIR}/translations/deepin-manual*.qm)
 install(FILES ${QM_FILES}
