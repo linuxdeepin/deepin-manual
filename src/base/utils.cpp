@@ -224,10 +224,14 @@ bool Utils::judgeWayLand()
 
 bool Utils::judgeLingLong()
 {
+#ifdef LINGLONGENV
     if (LINGLONGENV)
         return true;
     else
         return false;
+#else
+    return false;
+#endif
 }
 
 QStringList Utils::getMdsourcePath()

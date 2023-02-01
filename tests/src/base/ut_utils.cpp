@@ -57,7 +57,8 @@ TEST_F(ut_utils_test, getSystemManualDir)
     Utils *m_utils = new Utils;
     QString str = DMAN_MANUAL_DIR;
 
-    ASSERT_EQ(m_utils->getSystemManualDir(), str);
+    QStringList strList = QStringList() << str;
+    ASSERT_EQ(m_utils->getSystemManualDir(), strList);
     delete m_utils;
 }
 
