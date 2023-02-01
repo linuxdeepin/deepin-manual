@@ -151,12 +151,6 @@ void WindowManager::SendMsg(const QString &msg)
         //将进程号+窗口WinId拼接后发给dman-search后台进程 发送信号SendWinInfo－＞RecvMsg
         isSuccess = dbusConn.send(dbusMsg);
     }
-
-    if (isSuccess) {
-        qDebug() << Q_FUNC_INFO << " sendMsg success";
-    } else {
-        qDebug() << Q_FUNC_INFO << "sendMsg failed";
-    }
 }
 
 /**

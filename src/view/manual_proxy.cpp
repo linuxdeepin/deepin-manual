@@ -31,10 +31,9 @@ ManualProxy::~ManualProxy()
  * @return 帮助手册的版本信息 专业版 、服务器版
  * 获取帮助手册版本信息
  */
-QString ManualProxy::getSystemManualDir()
+QStringList ManualProxy::getSystemManualDir()
 {
-    QString str = Utils::getSystemManualDir();
-    return str;
+    return Utils::getSystemManualDir();;
 }
 
 /**
@@ -148,75 +147,76 @@ QString ManualProxy::appToPath(const QString &appName)
 {
     qDebug() << __FUNCTION__ << "========>" << appName;
     QStringList omitType = Utils::systemToOmit(Dtk::Core::DSysInfo::uosEditionType());
-    const QString assetPath = Utils::getSystemManualDir();
     QStringList mdList;
-    QString appPath;
-    if (appName == "dde") {
-        appPath = assetPath + "/system/" + appName;
-    } else {
-        appPath = assetPath + "/application/" + appName;
-    }
-
-    if (QDir(appPath).exists()) {
-        QStringList list = QDir(appPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs);
-        QString appNameT;
-        if (list.count() == 1) {
-            appNameT = list.at(0);
-        } else if (list.count() > 1) {
-            qWarning() << Q_FUNC_INFO << assetPath << "dir greater than one:" << list;
-            appNameT = list.at(1);
+    QStringList  assetsPathList = Utils::getSystemManualDir();
+    foreach (auto assetPath, assetsPathList) {
+        QString appPath;
+        if (appName == "dde") {
+            appPath = assetPath + "/system/" + appName;
         } else {
-            appNameT = "error";
-            qWarning() << Q_FUNC_INFO << " no dir";
+            appPath = assetPath + "/application/" + appName;
         }
-        appPath.append("/").append(appNameT).append("/");
-        appPath = getAppLocalDir(appPath);
 
-        if (omitType.length() > 1) {
-            mdList.append(appPath + "/" + QString("%1_%2.md").arg(omitType.at(0)).arg(appNameT));
-            mdList.append(appPath + "/" + QString("%1_%2.md").arg(omitType.at(1)).arg(appNameT));
-        } else {
-            if (omitType.size() > 0) {
-                mdList.append(appPath + "/" + QString("%1_%2.md").arg(omitType.at(0)).arg(appNameT));
+        if (QDir(appPath).exists()) {
+            QStringList list = QDir(appPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs);
+            QString appNameT;
+            if (list.count() == 1) {
+                appNameT = list.at(0);
+            } else if (list.count() > 1) {
+                qWarning() << Q_FUNC_INFO << assetPath << "dir greater than one:" << list;
+                appNameT = list.at(1);
+            } else {
+                appNameT = "error";
+                qWarning() << Q_FUNC_INFO << " no dir";
             }
-        }
-        //根据文档命名规则不带前缀文档为所有文档的兜底文档
-        mdList.append(appPath + "/" + QString("%1.md").arg(appNameT));
-    }
+            appPath.append("/").append(appNameT).append("/");
+            appPath = getAppLocalDir(appPath);
 
-    QString oldMdPath = assetPath;
+            if (omitType.length() > 1) {
+                mdList.append(appPath + "/" + QString("%1_%2.md").arg(omitType.at(0)).arg(appNameT));
+                mdList.append(appPath + "/" + QString("%1_%2.md").arg(omitType.at(1)).arg(appNameT));
+            } else {
+                if (omitType.size() > 0) {
+                    mdList.append(appPath + "/" + QString("%1_%2.md").arg(omitType.at(0)).arg(appNameT));
+                }
+            }
+            //根据文档命名规则不带前缀文档为所有文档的兜底文档
+            mdList.append(appPath + "/" + QString("%1.md").arg(appNameT));
+        }
+
+        QString oldMdPath = assetPath;
 
 #if (DTK_VERSION > DTK_VERSION_CHECK(5, 4, 12, 0))
-    if (Dtk::Core::DSysInfo::UosServer == Dtk::Core::DSysInfo::uosType()) {
-        oldMdPath += "/server";
-    } else if (Dtk::Core::DSysInfo::UosHome == Dtk::Core::DSysInfo::uosEditionType()) {
-        oldMdPath += "/personal";
-    } else if (Dtk::Core::DSysInfo::UosEducation == Dtk::Core::DSysInfo::uosEditionType()) {
-        oldMdPath += "/education";
-    } else if (Dtk::Core::DSysInfo::UosCommunity == Dtk::Core::DSysInfo::uosEditionType()) {
-        oldMdPath += "/community";
-    } else {
-        oldMdPath += "/professional";
-    }
-#else
-    Dtk::Core::DSysInfo::DeepinType nType = Dtk::Core::DSysInfo::deepinType();
-    if (Dtk::Core::DSysInfo::DeepinServer == nType) {
-        oldMdPath += "/server";
-    } else if (Dtk::Core::DSysInfo::DeepinPersonal == nType) {
-        oldMdPath += "/personal";
-    } else {
-        if (Dtk::Core::DSysInfo::isCommunityEdition()) {
+        if (Dtk::Core::DSysInfo::UosServer == Dtk::Core::DSysInfo::uosType()) {
+            oldMdPath += "/server";
+        } else if (Dtk::Core::DSysInfo::UosHome == Dtk::Core::DSysInfo::uosEditionType()) {
+            oldMdPath += "/personal";
+        } else if (Dtk::Core::DSysInfo::UosEducation == Dtk::Core::DSysInfo::uosEditionType()) {
+            oldMdPath += "/education";
+        } else if (Dtk::Core::DSysInfo::UosCommunity == Dtk::Core::DSysInfo::uosEditionType()) {
             oldMdPath += "/community";
         } else {
             oldMdPath += "/professional";
         }
-    }
+#else
+        Dtk::Core::DSysInfo::DeepinType nType = Dtk::Core::DSysInfo::deepinType();
+        if (Dtk::Core::DSysInfo::DeepinServer == nType) {
+            oldMdPath += "/server";
+        } else if (Dtk::Core::DSysInfo::DeepinPersonal == nType) {
+            oldMdPath += "/personal";
+        } else {
+            if (Dtk::Core::DSysInfo::isCommunityEdition()) {
+                oldMdPath += "/community";
+            } else {
+                oldMdPath += "/professional";
+            }
+        }
 
 #endif
-    oldMdPath.append("/").append(appName).append("/");
-    oldMdPath = getAppLocalDir(oldMdPath);
-    mdList.append(oldMdPath.append("/index.md"));
-
+        oldMdPath.append("/").append(appName).append("/");
+        oldMdPath = getAppLocalDir(oldMdPath);
+        mdList.append(oldMdPath.append("/index.md"));
+    }
     qInfo() << mdList;
     //初始化赋值，如果为空字符，web层路径请求依旧能onload成功...
     QString ret = "error";
@@ -310,12 +310,16 @@ QString ManualProxy::getLocalAppName(const QString &desktopname)
     if (0 == desktopname.compare("dde", Qt::CaseInsensitive)) {
         strdisplayname = tr("Desktop Environment");
     } else {
-        QString filepath = QString("/usr/share/applications/%1.desktop").arg(desktopname);
-        QFile file(filepath);
-        if (file.exists()) {
-            Dtk::Core::DDesktopEntry entry(filepath);
-            strdisplayname = entry.genericName();
-            strdisplayname = strdisplayname.isEmpty() ? entry.ddeDisplayName() : strdisplayname;
+        QStringList pathList = Utils::getEnvsourcePath();
+        foreach (auto path, pathList) {
+            QString filepath = path + QString("/applications/%1.desktop").arg(desktopname);
+            QFile file(filepath);
+            if (file.exists()) {
+                Dtk::Core::DDesktopEntry entry(filepath);
+                strdisplayname = entry.genericName();
+                strdisplayname = strdisplayname.isEmpty() ? entry.ddeDisplayName() : strdisplayname;
+                return strdisplayname;
+            }
         }
     }
     return strdisplayname;
@@ -359,7 +363,7 @@ QString ManualProxy::getAppLocalDir(const QString &appPath)
     if (!dir.exists()) {
         //藏语维语使用简体中文
         if (0 == strlocal.compare("ug_CN") || 0 == strlocal.compare("bo_CN")
-            || 0 == strlocal.compare("zh_HK") || 0 == strlocal.compare("zh_TW")) {
+                || 0 == strlocal.compare("zh_HK") || 0 == strlocal.compare("zh_TW")) {
             AppLocalDir = QString(appPath).append("zh_CN");
         } else {
             AppLocalDir = QString(appPath).append("en_US");

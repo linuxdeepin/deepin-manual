@@ -26,7 +26,7 @@ signals:
     void languageChanged();
 
 public slots:
-    QString getSystemManualDir();
+    QStringList getSystemManualDir();
     QStringList getSystemManualList();
 
     void setApplicationState(const QString &appName);

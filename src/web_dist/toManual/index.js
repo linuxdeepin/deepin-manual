@@ -48055,12 +48055,12 @@ function _possibleConstructorReturn(self, call) { if (!self) { throw new Referen
 
 function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
 function _isbase64(str){
-	if (str == '' || str.trim == '')
-	{return false;} 
-	try {return btoa(atob(str)) == str}
-	catch(err){
-		return false;
-	}
+    if (str == '' || str.trim == '')
+    {return false;} 
+    try {return btoa(atob(str)) == str}
+    catch(err){
+        return false;
+    }
 }
 global.hash = ' ';
 global.isMouseClickNav = false;
@@ -48357,7 +48357,7 @@ var App = function (_React$Component) {
         value: function componentWillReceiveProps(nextProps) {
             console.log("app componentWillReceiveProps", this.context.router.history);
             console.log("this location: " + this.context.router.history.location);
-			console.log(this.context.router.history.location.pathname);
+            console.log(this.context.router.history.location.pathname);
             var pathName = this.context.router.history.location.pathname;
             var pathList = pathName.split("/");
             var cKeyword = '';
@@ -48371,14 +48371,12 @@ var App = function (_React$Component) {
             }
 
             // global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
-			if(_isbase64(cKeyword))
-			{
-            	global.qtObjects.search.getKeyword(decodeURIComponent(atob(cKeyword)));
-			}
-			else
-			{
-				global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
-			}
+            if(_isbase64(cKeyword)){
+                global.qtObjects.search.getKeyword(decodeURIComponent(atob(cKeyword)));
+            }
+            else{
+                global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
+            }
 
             if (this.context.router.history.action == 'PUSH') {
                 var entriesLen = this.context.router.history.entries.length;
@@ -48442,7 +48440,7 @@ var App = function (_React$Component) {
                 }
 
                 var url = '/open/' + file + '/' + hash + '/' + key;
-				console.warn(url);
+                console.warn(url);
                 _this5.context.router.history.push(url);
 
                 //Init属性设置, 放在index与opentitle中. 避免直接跳转到特定模块时会先走/模块.

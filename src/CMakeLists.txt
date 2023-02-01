@@ -7,20 +7,34 @@ project(deepin-manual C CXX)
 #set(CMAKE_C_COMPILER  /usr/bin/clang)
 #set(CMAKE_CXX_COMPILER  /usr/bin/clang++)
 
-
+#assets目录在usr下
 set(CMAKE_INSTALL_PREFIX /usr)
+add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets")
 
+#web_dist玲珑环境需要更改目录
+if(DEFINED ENV{PREFIX})
+   set(CMAKE_INSTALL_PREFIX $ENV{PREFIX})
+   add_definitions(-DLINGLONGENV=1)
+else()
+   add_definitions(-DLINGLONGENV=0)
+   set(CMAKE_INSTALL_PREFIX /usr)
+endif()
 
 if (CMAKE_BUILD_TYPE MATCHES Debug)
   add_definitions(-DDMAN_SEARCH_DB="${CMAKE_SOURCE_DIR}/manual-assets")
   add_definitions(-DDMAN_WEB_DIR="${CMAKE_CURRENT_SOURCE_DIR}/web_dist")
 #  add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_SOURCE_DIR}/manual-assets")
-  add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets")
 else()
   add_definitions(-DDMAN_SEARCH_DB="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets")
   add_definitions(-DDMAN_WEB_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/web_dist")
-  add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets")
 endif ()
+#qwebengine玲珑路径
+add_definitions(-DDMAN_QWEBENGINE_DIR="${CMAKE_INSTALL_PREFIX}/lib")
+#webengine资源玲珑路径
+add_definitions(-DDMAN_WEBENGINERES_DIR="${CMAKE_INSTALL_PREFIX}/share/qt5/resources")
+#webengine翻译玲珑路径
+add_definitions(-DDMAN_WEBENGINETS_DIR="${CMAKE_INSTALL_PREFIX}/share/qt5/translations")
+
 #禁止Debug日志输出
 #add_definitions(-DQT_NO_DEBUG_OUTPUT)
 
@@ -352,7 +366,7 @@ install(FILES ${QM_FILES}
 #        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets/)
 
 install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/web_dist
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
+            DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
 
 
 string(TOLOWER ${CMAKE_SYSTEM_PROCESSOR} LOWERCASE_CMAKE_SYSTEM_PROCESSOR)
