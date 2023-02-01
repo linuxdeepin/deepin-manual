@@ -63,6 +63,11 @@ Files: tests/*
 Copyright: UnionTech Software Technology Co., Ltd.
 License: GPL-3.0-or-later
 
+# patches
+Files: patches/*
+Copyright: UnionTech Software Technology Co., Ltd.
+License: GPL-3.0-or-later
+
 # qt web
 Files: src/web/toSearchMd/common/qwebchannel.js src/web/toManual/qwebchannel.js src/web_dist/toManual/qwebchannel.js src/web_dist/toSearchMd/qwebchannel.js
 Copyright: 2016 The Qt Company Ltd.
@@ -73,8 +78,3 @@ License: BSD-3-Clause
 Files: tests/src/third-party/stub/*
 Copyright: 2019 coolxv
 License: MIT
-
-# patch
-Files: patches/*
-Copyright: UnionTech Software Technology Co., Ltd.
-License: GPL-3.0-or-later

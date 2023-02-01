@@ -1,6 +1,6 @@
-// SPDX-FileCopyrightText: 2017 - 2023 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
 //
-// SPDX-License-Identifier: LGPL-3.0-or-later
+// SPDX-License-Identifier: GPL-3.0-or-later
 
 #include "controller/window_manager.h"
 #include "base/consts.h"
@@ -143,7 +143,6 @@ void WindowManager::SendMsg(const QString &msg)
                                kManualSearchService + QString(WM_SENDER_NAME), "SendWinInfo");
 
     dbusMsg << QString::number(qApp->applicationPid()) + "|" + msg;
-
     bool isSuccess = true;
     if (msg == "closedmanHelper") {
         //关闭dmanhelper进程需要等待返回
@@ -201,6 +200,31 @@ void WindowManager::setWindow(WebWindow *window)
     window->resize(saveWidth, saveHeight);
     window->setMinimumSize(kWinMinWidth, kWinMinHeight);
     window->move((QApplication::desktop()->width() - saveWidth) / 2, (QApplication::desktop()->height() - saveHeight) / 2);
+}
+
+void WindowManager::updateDb()
+{
+    window->updateDb();
+}
+
+void WindowManager::restartDmanHelper()
+{
+    QDBusInterface interface(kManualSearchService, kManualSearchIface,
+                                 kManualSearchService,
+                                 QDBusConnection::sessionBus());
+
+    if (!interface.isValid()) {
+        qDebug() << qPrintable(QDBusConnection::sessionBus().lastError().message());
+        exit(1);
+    }
+
+    // 调用远程对象的方法 setName()
+    QDBusReply<QString> reply = interface.call("ManualExists");
+
+    if (reply.isValid()) {
+        QString value = reply.value();
+        qDebug() << "value = " << value ;
+    }
 }
 
 /**

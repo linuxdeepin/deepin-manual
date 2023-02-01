@@ -1,6 +1,6 @@
-// SPDX-FileCopyrightText: 2017 - 2023 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
 //
-// SPDX-License-Identifier: LGPL-3.0-or-later
+// SPDX-License-Identifier: GPL-3.0-or-later
 
 #include "view/web_window.h"
 #include "base/consts.h"
@@ -717,6 +717,7 @@ void WebWindow::updateDb()
     //更新数据库
     emit search_manager_->updateDb();
 }
+
 /**
  * @brief WebWindow::initShortcuts 设置窗口支持的快捷键
  */

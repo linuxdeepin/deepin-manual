@@ -1,3 +1,7 @@
+// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+//
+// SPDX-License-Identifier: GPL-3.0-or-later
+
 const gulp = require('gulp'),
   sass = require('gulp-sass'),
   concat = require('gulp-concat'),

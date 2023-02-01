@@ -1,6 +1,6 @@
-// SPDX-FileCopyrightText: 2017 - 2023 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
 //
-// SPDX-License-Identifier: LGPL-3.0-or-later
+// SPDX-License-Identifier: GPL-3.0-or-later
 
 #include "utils.h"
 
@@ -50,6 +50,7 @@ struct ReplyStruct {
 
     qint64 m_categoryId;
     qint64 m_installedTime;
+    QStringList m_appmessage;
 };
 
 Q_DECLARE_METATYPE(ReplyStruct)
@@ -64,7 +65,7 @@ QDBusArgument &operator<<(QDBusArgument &argument, const ReplyStruct &info)
 {
     argument.beginStructure();
     argument << info.m_desktop << info.m_name << info.m_key << info.m_iconKey;
-    argument << info.m_categoryId << info.m_installedTime;
+    argument << info.m_categoryId << info.m_installedTime << info.m_appmessage;
     argument.endStructure();
     return argument;
 }
@@ -79,7 +80,7 @@ const QDBusArgument &operator>>(const QDBusArgument &argument, ReplyStruct &info
 {
     argument.beginStructure();
     argument >> info.m_desktop >> info.m_name >> info.m_key >> info.m_iconKey;
-    argument >> info.m_categoryId >> info.m_installedTime;
+    argument >> info.m_categoryId >> info.m_installedTime >> info.m_appmessage;
     argument.endStructure();
     return argument;
 }
@@ -219,6 +220,38 @@ bool Utils::judgeWayLand()
     }
 
     return false;
+}
+
+bool Utils::judgeLingLong()
+{
+    if (LINGLONGENV)
+        return true;
+    else
+        return false;
+}
+
+QStringList Utils::getMdsourcePath()
+{
+    QStringList sourcePath;
+    if (judgeLingLong()) {
+        QStringList pathlist = getEnvsourcePath();
+        for (int i = 0; i < pathlist.size(); ++i) {
+            if (pathlist[i].contains("persistent") || pathlist[i].contains("usr/share")) {
+                sourcePath.push_back(pathlist[i] + "/deepin-manual/manual-assets");
+                qDebug() << " all MD source path : " << sourcePath.last();
+            }
+        }
+    } else {
+        sourcePath.push_back(DMAN_MANUAL_DIR);
+    }
+    return sourcePath;
+}
+
+QStringList Utils::getEnvsourcePath()
+{
+    QStringList pathlist = QString(qgetenv("XDG_DATA_DIRS")).split(':');
+    qDebug() << " all source path : " << pathlist;
+    return pathlist;
 }
 
 bool Utils::judgeLingLong()
