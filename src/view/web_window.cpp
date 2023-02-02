@@ -718,12 +718,6 @@ void WebWindow::updateDb()
     emit search_manager_->updateDb();
 }
 
-void WebWindow::updateDb()
-{
-    //更新数据库
-    emit search_manager_->updateDb();
-}
-
 /**
  * @brief WebWindow::initShortcuts 设置窗口支持的快捷键
  */

@@ -50460,7 +50460,7 @@ var SearchPage = function (_Component2) {
             idList: result.idList,
             titleList: result.titleList,
             contentList: result.contentList,
-            keyword: _this4.props.match.params.keyword,
+            keyword: _this4.props.match.params.keyword
           });
         });
       }
