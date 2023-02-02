@@ -138,7 +138,7 @@ int main(int argc, char **argv)
     //埋点记录启动数据
     QJsonObject objStartEvent{
         {"tid", Eventlogutils::StartUp},
-        {"vsersion", VERSION},
+        {"version", VERSION},
         {"mode", 1},
     };
     Eventlogutils::GetInstance()->writeLogs(objStartEvent);

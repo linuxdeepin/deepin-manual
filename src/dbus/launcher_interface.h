@@ -13,6 +13,8 @@
 
 #include "dbus/dbusvariant/app_info.h"
 
+#include <DSysInfo>
+
 /*
  * Proxy class for interface org.deepin.dde.daemon.Launcher1
  */
@@ -22,7 +24,10 @@ class LauncherInterface : public QDBusAbstractInterface
 public:
     static inline const char *staticInterfaceName()
     {
-        return "org.deepin.dde.daemon.Launcher1";
+        if (Dtk::Core::DSysInfo::majorVersion() == "23")
+            return "org.deepin.dde.daemon.Launcher1";
+
+        return "com.deepin.dde.daemon.Launcher";
     }
 
 public:
