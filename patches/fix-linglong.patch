@@ -1,16 +1,15 @@
 diff --git a/src/dbus/com.deepin.Manual.Open.service b/src/dbus/com.deepin.Manual.Open.service
-index 912a73ee..93712528 100755
+index 912a73ee..23ba3492 100755
 --- a/src/dbus/com.deepin.Manual.Open.service
 +++ b/src/dbus/com.deepin.Manual.Open.service
 @@ -1,3 +1,4 @@
  [D-BUS Service]
  Name=com.deepin.Manual.Open
 -Exec=/usr/bin/dman --dbus
-\ No newline at end of file
-+#Exec=/usr/bin/dman --dbus
 +Exec=/usr/bin/ll-cli run org.deepin.manual --exec "dman --dbus"
++
 diff --git a/src/dbus/com.deepin.Manual.Search.service b/src/dbus/com.deepin.Manual.Search.service
-index 1729b5b5..d7bbe9af 100755
+index 1729b5b5..6641463f 100755
 --- a/src/dbus/com.deepin.Manual.Search.service
 +++ b/src/dbus/com.deepin.Manual.Search.service
 @@ -1,3 +1,4 @@
@@ -18,5 +17,5 @@ index 1729b5b5..d7bbe9af 100755
  Name=com.deepin.Manual.Search
 -Exec=/usr/bin/dmanHelper
 \ No newline at end of file
-+#Exec=/usr/bin/dmanHelper
 +Exec=/usr/bin/ll-cli run org.deepin.manual --exec "dmanHelper"
++
