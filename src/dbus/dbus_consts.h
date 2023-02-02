@@ -9,8 +9,10 @@ extern const char kManualOpenService[];
 extern const char kManualOpenIface[];
 extern const char kManualSearchService[];
 extern const char kManualSearchIface[];
-extern const char kLauncherService[];
-extern const char kLauncherIface[];
+extern const char kLauncherServiceV20[];
+extern const char kLauncherIfaceV20[];
+extern const char kLauncherServiceV23[];
+extern const char kLauncherIfaceV23[];
 
 extern const char kManualWinManagerService[];
 extern const char kManualWinManagerIface[];

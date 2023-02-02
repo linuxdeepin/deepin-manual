@@ -4,6 +4,9 @@
 
 #include "utils.h"
 
+#include <DSysInfo>
+DCORE_USE_NAMESPACE
+
 #include <QFontDatabase>
 #include <QImageReader>
 
@@ -11,8 +14,10 @@ QHash<QString, QPixmap> Utils::m_imgCacheHash;
 QHash<QString, QString> Utils::m_fontNameCache;
 QString Utils::cpuModeName;
 
-const char kLauncherService[] = "org.deepin.dde.daemon.Launcher1";
-const char kLauncherIface[] = "/org/deepin/dde/daemon/Launcher1";
+const char kLauncherServiceV20[] = "com.deepin.dde.daemon.Launcher";
+const char kLauncherIfaceV20[] = "/com/deepin/dde/daemon/Launcher";
+const char kLauncherServiceV23[] = "org.deepin.dde.daemon.Launcher1";
+const char kLauncherIfaceV23[] = "/org/deepin/dde/daemon/Launcher1";
 
 //标题映射表
 const int langCount = 5;
@@ -65,7 +70,10 @@ QDBusArgument &operator<<(QDBusArgument &argument, const ReplyStruct &info)
 {
     argument.beginStructure();
     argument << info.m_desktop << info.m_name << info.m_key << info.m_iconKey;
-    argument << info.m_categoryId << info.m_installedTime << info.m_appmessage;
+    if (DSysInfo::majorVersion() == "23")
+        argument << info.m_categoryId << info.m_installedTime << info.m_appmessage;
+    else
+        argument << info.m_categoryId << info.m_installedTime;
     argument.endStructure();
     return argument;
 }
@@ -80,7 +88,10 @@ const QDBusArgument &operator>>(const QDBusArgument &argument, ReplyStruct &info
 {
     argument.beginStructure();
     argument >> info.m_desktop >> info.m_name >> info.m_key >> info.m_iconKey;
-    argument >> info.m_categoryId >> info.m_installedTime >> info.m_appmessage;
+    if (DSysInfo::majorVersion() == "23")
+        argument >> info.m_categoryId >> info.m_installedTime >> info.m_appmessage;
+    else
+        argument >> info.m_categoryId >> info.m_installedTime;
     argument.endStructure();
     return argument;
 }
@@ -166,13 +177,14 @@ QList<AppInfo> Utils::launcherInterface()
     qRegisterMetaType<QList<ReplyStruct>>("a");
     qDBusRegisterMetaType<QList<ReplyStruct>>();
 
-    QDBusInterface iface(kLauncherService,
-                         kLauncherIface,
-                         kLauncherService,
-                         QDBusConnection::sessionBus());
+    bool bV23 = DSysInfo::majorVersion() == "23";
+    QString sLauncherService = bV23 ? kLauncherServiceV23 : kLauncherServiceV20;
+    QString sLauncherIface = bV23 ? kLauncherIfaceV23 : kLauncherIfaceV20;
+    QDBusInterface iface(sLauncherService, sLauncherIface, sLauncherService, QDBusConnection::sessionBus());
     //root权限下此dbus接口无效...
     if (!iface.isValid()) {
         qDebug() << qPrintable(QDBusConnection::sessionBus().lastError().message());
+        qDebug() << QString("majorVersion:%1, servie:%2 iface:%3").arg(DSysInfo::majorVersion()).arg(sLauncherService).arg(sLauncherIface);
         return applist;
 //        exit(1);
     }
@@ -198,6 +210,7 @@ QList<AppInfo> Utils::launcherInterface()
         return applist;
     } else {
         qDebug() << "GetAllItemInfos fail! " << reply.error().message();
+        qDebug() << QString("majorVersion:%1, servie:%2 iface:%3").arg(DSysInfo::majorVersion()).arg(sLauncherService).arg(sLauncherIface);
         return applist;
     }
 }
