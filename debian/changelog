@@ -1,3 +1,9 @@
+deepin-manual (6.0.2) stable; urgency=medium
+
+  * Update Version 6.0.2
+
+ -- Deepin Packages Builder <packages@deepin.com>  Thu, 16 Feb 2023 14:48:35 +0800
+
 deepin-manual (6.0.1) stable; urgency=medium
 
   * V23 & V20 code merge to same branch
