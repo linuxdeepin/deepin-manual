@@ -222,17 +222,17 @@ QList<AppInfo> Utils::launcherInterface()
  */
 bool Utils::judgeWayLand()
 {
-   auto env = QProcessEnvironment::systemEnvironment();
+    auto env = QProcessEnvironment::systemEnvironment();
 
-   QString XDG_SESSION_TYPE = env.value(QStringLiteral("XDG_SESSION_TYPE"));
+    QString XDG_SESSION_TYPE = env.value(QStringLiteral("XDG_SESSION_TYPE"));
 
-   QString WAYLAND_DISPLAY = env.value(QStringLiteral("WAYLAND_DISPLAY"));
+    QString WAYLAND_DISPLAY = env.value(QStringLiteral("WAYLAND_DISPLAY"));
 
-   if (XDG_SESSION_TYPE == QLatin1String("wayland") || WAYLAND_DISPLAY.contains(QLatin1String("wayland"), Qt::CaseInsensitive)){
-      return true;
-   }
+    if (XDG_SESSION_TYPE == QLatin1String("wayland") || WAYLAND_DISPLAY.contains(QLatin1String("wayland"), Qt::CaseInsensitive)) {
+        return true;
+    }
 
-   return false;
+    return false;
 }
 
 bool Utils::judgeLingLong()
@@ -267,6 +267,8 @@ QStringList Utils::getMdsourcePath()
 QStringList Utils::getEnvsourcePath()
 {
     QStringList pathlist = QString(qgetenv("XDG_DATA_DIRS")).split(':');
+    if (pathlist.size() == 1 && pathlist[0].isEmpty())
+        pathlist[0] = "/usr/share";
     qDebug() << " all source path : " << pathlist;
     return pathlist;
 }
