@@ -34,30 +34,28 @@ int main(int argc, char **argv)
     //禁用GPU
     qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu");
 
+#ifdef LINGLONG_BUILD
     //玲珑环境添加WebEngine
-    if (Utils::judgeLingLong()) {
-        QString webEngineProcessPath = DMAN_QWEBENGINE_DIR"" + QLibraryInfo::location(QLibraryInfo::LibrariesPath).mid(
-                                           QLibraryInfo::location(QLibraryInfo::LibrariesPath).lastIndexOf("/")) + QString("/qt5/libexec/QtWebEngineProcess");
-        QFile file(webEngineProcessPath);
-        if (file.exists())
-            qputenv("QTWEBENGINEPROCESS_PATH", webEngineProcessPath.toLocal8Bit());
-        else
-            qWarning() << "qputenv QTWEBENGINEPROCESS_PATH fail";
+    QString webEngineProcessPath = DMAN_QWEBENGINE_DIR"" + QLibraryInfo::location(QLibraryInfo::LibrariesPath).mid(
+                QLibraryInfo::location(QLibraryInfo::LibrariesPath).lastIndexOf("/")) + QString("/qt5/libexec/QtWebEngineProcess");
+    QFile file(webEngineProcessPath);
+    if (file.exists())
+        qputenv("QTWEBENGINEPROCESS_PATH", webEngineProcessPath.toLocal8Bit());
+    else
+        qWarning() << "qputenv QTWEBENGINEPROCESS_PATH fail";
 
-        QFile fileTs(DMAN_WEBENGINERES_DIR);
-        QFile fileRes(DMAN_WEBENGINETS_DIR);
-        if (fileTs.exists() && fileRes.exists())
-            qputenv("QTWEBENGINERESOURCE_PATH", (DMAN_WEBENGINETS_DIR":" + QString(DMAN_WEBENGINERES_DIR)).toStdString().c_str());
-        else
-            qWarning() << "qputenv QTWEBENGINERESOURCE_PATH fail";
+    QFile fileTs(DMAN_WEBENGINERES_DIR);
+    QFile fileRes(DMAN_WEBENGINETS_DIR);
+    if (fileTs.exists() && fileRes.exists())
+        qputenv("QTWEBENGINERESOURCE_PATH", (DMAN_WEBENGINETS_DIR":" + QString(DMAN_WEBENGINERES_DIR)).toStdString().c_str());
+    else
+        qWarning() << "qputenv QTWEBENGINERESOURCE_PATH fail";
+    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--single-process");
+#else
+    if (!Utils::judgeWayLand()) {
         qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--single-process");
     }
-    else {
-        //非玲珑环境waland下不设置
-        if (!Utils::judgeWayLand()) {
-            qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--single-process");
-        }
-    }
+#endif
 
     //所有进程类型禁用沙箱..此配置开启禁用gpu后无效
 //    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--no-sandbox");

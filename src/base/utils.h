@@ -50,8 +50,6 @@ public:
     static bool judgeLoongson();
     //判断是否Wayland
     static bool judgeWayLand();
-    //判断是否为玲珑平台
-    static bool judgeLingLong();
     //获取md文件路径
     static QStringList getMdsourcePath();
     //获取环境变量
