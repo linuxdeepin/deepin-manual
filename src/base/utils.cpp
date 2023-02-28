@@ -235,32 +235,20 @@ bool Utils::judgeWayLand()
     return false;
 }
 
-bool Utils::judgeLingLong()
-{
-#ifdef LINGLONGENV
-    if (LINGLONGENV)
-        return true;
-    else
-        return false;
-#else
-    return false;
-#endif
-}
-
 QStringList Utils::getMdsourcePath()
 {
     QStringList sourcePath;
-    if (judgeLingLong()) {
-        QStringList pathlist = getEnvsourcePath();
-        for (int i = 0; i < pathlist.size(); ++i) {
-            if (pathlist[i].contains("persistent") || pathlist[i].contains("usr/share")) {
-                sourcePath.push_back(pathlist[i] + "/deepin-manual/manual-assets");
-                qDebug() << " all MD source path : " << sourcePath.last();
-            }
+#ifdef LINGLONG_BUILD
+    QStringList pathlist = getEnvsourcePath();
+    for (int i = 0; i < pathlist.size(); ++i) {
+        if (pathlist[i].contains("persistent") || pathlist[i].contains("usr/share")) {
+            sourcePath.push_back(pathlist[i] + "/deepin-manual/manual-assets");
+            qDebug() << " all MD source path : " << sourcePath.last();
         }
-    } else {
-        sourcePath.push_back(DMAN_MANUAL_DIR);
     }
+#else
+    sourcePath.push_back(DMAN_MANUAL_DIR);
+#endif
     return sourcePath;
 }
 
