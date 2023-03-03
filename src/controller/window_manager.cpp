@@ -34,6 +34,7 @@ WindowManager::~WindowManager()
     SendMsg("closeDmanHelper");
     updateDb();
     restartDmanHelper();
+    ConfigManager::releaseInstance();
     delete window;
 }
 

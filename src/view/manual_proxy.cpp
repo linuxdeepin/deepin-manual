@@ -77,7 +77,6 @@ void ManualProxy::setApplicationState(const QString &appName)
         qDebug() << setting->fileName() << ": " << strApp << " not find";
     }
     setting->endGroup();
-    setting->sync();
 }
 
 /**
@@ -347,7 +346,6 @@ void ManualProxy::saveAppList(const QStringList &list)
     }
     QStringList l = setting->allKeys();
     setting->endGroup();
-    setting->sync();
     qDebug() << "app config  allKeys count : " << l.size();
 }
 
