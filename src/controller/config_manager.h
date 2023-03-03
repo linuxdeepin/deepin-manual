@@ -13,11 +13,14 @@ class ConfigManager : public QObject
     Q_OBJECT
 public:
     static ConfigManager *getInstance();
+    static void releaseInstance();
     QString getWinInfoConfigPath();
     QSettings *getSettings();
 
 private:
     explicit ConfigManager(QObject *parent = nullptr);
+    ~ConfigManager();
+
     static ConfigManager *_pInstance;
     QSettings *m_winInfoConfig = nullptr;
 };

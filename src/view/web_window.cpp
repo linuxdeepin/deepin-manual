@@ -117,6 +117,8 @@ WebWindow::~WebWindow()
         search_edit_->deleteLater();
         search_edit_ = nullptr;
     }
+
+    qDebug() << "WebWindow::~WebWindow() done.";
 }
 
 /**
