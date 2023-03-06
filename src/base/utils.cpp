@@ -261,6 +261,21 @@ QStringList Utils::getEnvsourcePath()
     return pathlist;
 }
 
+QString Utils::getDesktopFilePath(const QString &desktopname)
+{
+    // 遍历XDG_DATA_DIRS中的路径，找寻指定desktop文件
+    QStringList pathList = getEnvsourcePath();
+    foreach (auto path, pathList) {
+        QString filepath = path + QString("/applications/%1.desktop").arg(desktopname);
+        QFile file(filepath);
+        if (file.exists()) {
+            return filepath;
+        }
+    }
+
+    return "";
+}
+
 /**
  * @brief Utils::getSystemManualList
  * @return　返回系统中存在帮助手册的应用列表
