@@ -244,6 +244,7 @@ QString ManualProxy::translateTitle(const QString &titleUS)
 //根据应用desktop文件解析图标名称并获取图标路径
 QString ManualProxy::getAppIconPath(const QString &desktopname)
 {
+    qDebug() << "getAppIconPath: desktopname:" << desktopname;
     //首次获取默认图标主题，如果获取失败默认bloom
     if (strIconTheme.isEmpty()) {
         QFile file("/usr/share/glib-2.0/schemas/com.deepin.dde.appearance.gschema.xml");
@@ -257,13 +258,15 @@ QString ManualProxy::getAppIconPath(const QString &desktopname)
         }
     }
 
-    QString filepath = QString("/usr/share/applications/%1.desktop").arg(desktopname);
+    QString filepath = Utils::getDesktopFilePath(desktopname);
     QFile file(filepath);
     QString strIcon = desktopname;
     if (file.exists()) {
         Dtk::Core::DDesktopEntry entry(filepath);
         strIcon = entry.stringValue("Icon");
         qDebug() << strIcon;
+    } else {
+        qDebug() << QString("filepath:%1 not exit.. desktopname:%2").arg(filepath).arg(desktopname);
     }
 
     QString strIconPath;

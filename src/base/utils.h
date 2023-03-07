@@ -54,6 +54,8 @@ public:
     static QStringList getMdsourcePath();
     //获取环境变量
     static QStringList getEnvsourcePath();
+    //获取desktop文件路径
+    static QString getDesktopFilePath(const QString &desktopname);
 };
 
 class ExApplicationHelper : public DGuiApplicationHelper
