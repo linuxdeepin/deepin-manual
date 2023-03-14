@@ -516,6 +516,9 @@ void WebWindow::onManualSearchByKeyword(const QString &keyword)
  */
 void WebWindow::onAppearanceChanged(QString, QMap<QString, QVariant> map, QStringList)
 {
+    if (image_viewer_)
+        image_viewer_->hide();
+
     //20210630codereview
     if (map.isEmpty()) {
         return;
@@ -536,6 +539,16 @@ void WebWindow::onAppearanceChanged(QString, QMap<QString, QVariant> map, QStrin
     } else if (0 == strKey.compare("IconTheme") && nullptr != manual_proxy_) {
         //系统图表主题变更
         emit manual_proxy_->iconThemeChanged(strValue);
+    }
+}
+
+void WebWindow::onTimeoutLock(const QString &serviceName, QVariantMap key2value, QStringList)
+{
+    Q_UNUSED(serviceName);
+
+    if (key2value.value("Locked").value<bool>()) {
+        if (image_viewer_)
+            image_viewer_->hide();
     }
 }
 
@@ -768,6 +781,11 @@ void WebWindow::initDBus()
     } else {
         qDebug() << "connectToBus()::connect()  PropertiesChanged success";
     }
+
+    // 锁屏通知，显示隐藏图片界面，才能保证图片界面正常隐藏，否则图片界面会一直阻塞主线程鼠标事件传递
+    QDBusConnection::sessionBus().connect("com.deepin.SessionManager", "/com/deepin/SessionManager",
+                                          "org.freedesktop.DBus.Properties", "PropertiesChanged", this,
+                                          SLOT(onTimeoutLock(QString, QVariantMap, QStringList)));
 }
 
 /**

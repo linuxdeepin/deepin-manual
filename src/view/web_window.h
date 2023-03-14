@@ -120,6 +120,8 @@ private slots:
     void onSetKeyword(const QString &keyword);
     void onManualSearchByKeyword(const QString &keyword);
     void onAppearanceChanged(QString, QMap<QString, QVariant>, QStringList);
+    // 是否锁屏
+    void onTimeoutLock(const QString &, QVariantMap, QStringList);
 };
 
 #endif // DEEPIN_MANUAL_VIEW_WEB_WINDOW_H
