@@ -289,6 +289,8 @@ add_executable(dmanHelper
                 dbus/manual_search_adapter.h
                 dbus/manual_search_proxy.cpp
                 dbus/manual_search_proxy.h
+                dbus/dmanwatcher.cpp
+                dbus/dmanwatcher.h
                 base/command.cpp
                 base/command.h
                 controller/helpermanager.cpp

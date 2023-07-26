@@ -123,6 +123,7 @@ FILE (GLOB allTestSource
 FILE (GLOB dmanCppFiles
     ../src/base/consts.cpp
     ../src/base/utils.cpp
+    ../src/base/eventlogutils.cpp
     ../src/controller/*.cpp
     ../src/dbus/*.cpp
     ../src/dbus/dbusvariant/*.cpp
@@ -132,6 +133,7 @@ FILE (GLOB dmanCppFiles
 
 FILE (GLOB dmanHeaderFiles
     ../src/base/consts.h
+    ../src/base/eventlogutils.h
     ../src/base/utils.h
     ../src/controller/*.h
     ../src/dbus/*.h

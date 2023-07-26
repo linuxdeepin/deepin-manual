@@ -6,6 +6,7 @@
 #include "dbus/dbus_consts.h"
 #include "dbus/manual_search_adapter.h"
 #include "dbus/manual_search_proxy.h"
+#include "dbus/dmanwatcher.h"
 
 #include <DLog>
 
@@ -23,6 +24,8 @@ int main(int argc, char **argv)
 
 //    qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "7777");
 
+    // 后端服务dmanHelper自检，若前端dman应用不存在，则后端dmanHelper退出
+    DManWatcher watcher;
     ManualSearchProxy search_obj;
     ManualSearchAdapter adapter(&search_obj);
 
