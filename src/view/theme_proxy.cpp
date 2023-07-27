@@ -5,6 +5,8 @@
 #include "view/theme_proxy.h"
 #include <DApplicationHelper>
 
+DGUI_USE_NAMESPACE
+
 ThemeProxy::ThemeProxy(QObject *parent)
     : QObject(parent)
 {
