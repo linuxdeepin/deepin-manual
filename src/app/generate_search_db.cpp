@@ -3,6 +3,11 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 #include <DLog>
+#include <QStandardPaths>
+#include <QCoreApplication>
+#include <QDir>
+#include <QJsonArray>
+#include <QJsonDocument>
 
 #include "base/command.h"
 #include "controller/search_db.h"
