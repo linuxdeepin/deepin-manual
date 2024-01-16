@@ -1,3 +1,15 @@
+deepin-manual (6.0.7) stable; urgency=medium
+
+  * chore: Sync by https://github.com/linuxdeepin/.github/commit/2e5e092ba3f86b16d1aabbabcf0bfd2ae65b19c8(Influence: none)
+  * chore: Sync by https://github.com/linuxdeepin/.github/commit/559e91167d4919644f37bbcf123eb0651c1528ea(Influence: none)
+  * fix: 修复系统启动后dmanHelper成为常驻进程的问题
+  * feat: support dtk 5.6.17
+    Thanks to Hillwood Yang
+  * fix: missing app list(Issue: https://github.com/linuxdeepin/developer-center/issues/6902)
+  * feat: add metainfo of dde
+
+ -- myml <wurongjie@deepin.org>  Tue, 16 Jan 2024 13:55:52 +0800
+
 deepin-manual (6.0.6) stable; urgency=medium
 
   * Update version to 6.0.6. community
