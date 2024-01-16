@@ -238,17 +238,12 @@ bool Utils::judgeWayLand()
 QStringList Utils::getMdsourcePath()
 {
     QStringList sourcePath;
-#ifdef LINGLONG_BUILD
     QStringList pathlist = getEnvsourcePath();
     for (int i = 0; i < pathlist.size(); ++i) {
-        if (pathlist[i].contains("persistent") || pathlist[i].contains("usr/share")) {
-            sourcePath.push_back(pathlist[i] + "/deepin-manual/manual-assets");
-            qDebug() << " all MD source path : " << sourcePath.last();
-        }
+        sourcePath.push_back(pathlist[i] + "/deepin-manual/manual-assets");
     }
-#else
     sourcePath.push_back(DMAN_MANUAL_DIR);
-#endif
+    qDebug() << " all MD source path : " << sourcePath.last();
     return sourcePath;
 }
 
@@ -282,35 +277,12 @@ QString Utils::getDesktopFilePath(const QString &desktopname)
  */
 QStringList Utils::getSystemManualList()
 {
-    const QHash<QString, QString> kAppNameMap = {
-        {"org.deepin.flatdeb.deepin-calendar", "dde-calendar"},
-        {"org.deepin.flatdeb.deepin-music", "deepin-music"},
-        {"org.deepin.flatdeb.deepin-screenshot", "deepin-screenshot"},
-        {"org.deepin.flatdeb.deepin-voice-recorder", "deepin-voice-recorder"},
-        {"org.deepin.flatdeb.deepin-image-viewer", "deepin-image-viewer"},
-        {"deepin-cloud-scan-configurator", "deepin-cloud-scan"},
-        {"org.deepin.flatdeb.deepin-movie", "deepin-movie"},
-        {"org.deepin.flatdeb.deepin-screen-recorder", "deepin-screen-recorder"},
-        {"org.deepin.flatdeb.deepin-calculator", "deepin-calculator"},
-        {"com.deepin.editor", "deepin-editor"},
-    };
-
     QStringList app_list_;
     QStringList strMANUAL_DIR_list = Utils::getMdsourcePath();
-    //调用dbus服务获取系统安装应用
-    const AppInfoList list = launcherInterface();
-    QMultiMap<qlonglong, AppInfo> appMap;
-    for (int var = 0; var < list.size(); ++var) {
-        appMap.insert(list.at(var).installed_time, list.at(var));
-    }
-    //安装时间相同时,按名称排序
-    QList<AppInfo> listApp = sortAppList(appMap);
     foreach (auto strMANUAL_DIR, strMANUAL_DIR_list) {
-        const QStringList applicationList = QDir(QString("%1/application/").arg(strMANUAL_DIR)).entryList();
-        const QStringList systemList = QDir(QString("%1/system/").arg(strMANUAL_DIR)).entryList();
+        const QStringList applicationList = QDir(QString("%1/application/").arg(strMANUAL_DIR)).entryList(QDir::Dirs|QDir::NoDotAndDotDot);
+        const QStringList systemList = QDir(QString("%1/system/").arg(strMANUAL_DIR)).entryList(QDir::Dirs|QDir::NoDotAndDotDot);
         QString oldMdPath = strMANUAL_DIR;
-
-#if (DTK_VERSION > DTK_VERSION_CHECK(5, 4, 12, 0))
         if (Dtk::Core::DSysInfo::UosServer == Dtk::Core::DSysInfo::uosType()) {
             oldMdPath += "/server";
         } else if (Dtk::Core::DSysInfo::UosHome == Dtk::Core::DSysInfo::uosEditionType()) {
@@ -322,36 +294,19 @@ QStringList Utils::getSystemManualList()
         } else {
             oldMdPath += "/professional";
         }
-#else
-        Dtk::Core::DSysInfo::DeepinType nType = Dtk::Core::DSysInfo::deepinType();
-        if (Dtk::Core::DSysInfo::DeepinServer == nType) {
-            oldMdPath += "/server";
-        } else if (Dtk::Core::DSysInfo::DeepinPersonal == nType) {
-            oldMdPath += "/personal";
-        } else {
-            if (Dtk::Core::DSysInfo::isCommunityEdition()) {
-                oldMdPath += "/community";
-            } else {
-                oldMdPath += "/professional";
-            }
-        }
-
-#endif
-        const QStringList oldAppList = QDir(oldMdPath).entryList();
-
-        //比对存在帮助md文件的应用
-        for (int i = 0; i < listApp.size(); ++i) {
-            const QString app_name = kAppNameMap.value(listApp.at(i).key, listApp.at(i).key);
-            if ((applicationList.contains(app_name) || oldAppList.contains(app_name))  && app_list_.indexOf(app_name) == -1) {
-                app_list_.append(app_name);
+        const QStringList oldAppList = QDir(oldMdPath).entryList(QDir::Dirs|QDir::NoDotAndDotDot);
+        for(auto app:applicationList){
+            if (app_list_.indexOf(app) == -1) {
+                app_list_.append(app);
             }
         }
         if (systemList.contains("dde") || oldAppList.contains("dde")) {
-            app_list_.append("dde");
+            if (app_list_.indexOf("dde") == -1) {
+                app_list_.append("dde");
+            }
         }
-        qDebug() << "exist app list: " << app_list_ << ", count:" << app_list_.size();
     }
-    app_list_.append("DeepinAIAssistant"); //语音助手无法通过launcherInterface获取目前只能手动添加
+    qDebug() << "exist app list: " << app_list_ << ", count:" << app_list_.size();
     return app_list_;
 }
 

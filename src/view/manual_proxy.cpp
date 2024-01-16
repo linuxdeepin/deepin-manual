@@ -216,19 +216,17 @@ QString ManualProxy::appToPath(const QString &appName)
         oldMdPath = getAppLocalDir(oldMdPath);
         mdList.append(oldMdPath.append("/index.md"));
     }
-    qInfo() << mdList;
-    //初始化赋值，如果为空字符，web层路径请求依旧能onload成功...
-    QString ret = "error";
-    if (QFile(mdList[0]).exists()) {
-        ret = mdList[0];
-    } else if (mdList.length() > 1 && QFile(mdList[1]).exists()) {
-        ret = mdList[1];
-    } else if (mdList.length() > 2 && QFile(mdList[2]).exists()) {
-        ret = mdList[2];
-    } else if (mdList.length() > 3 && QFile(mdList[3]).exists()) {
-        ret = mdList[3];
-    } else {
+    qInfo() << "appToPath" << "find markdown file list" << mdList;
+    QString ret;
+    for (auto md : mdList) {
+        if (QFile(md).exists()) {
+            ret = md;
+        }
+    }
+    if (ret.isEmpty()) {
         qWarning() << Q_FUNC_INFO << " no exist file:" << appName;
+        // TODO(wurongjie) 在之前的代码中返回了error,暂不知作用
+        return "error";
     }
     qInfo() << "========>" << ret;
     return ret;
