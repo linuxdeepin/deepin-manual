@@ -9,3 +9,5 @@ install(FILES deepin-manual.desktop
 
 install(FILES themes/common/images/deepin-manual.svg
         DESTINATION share/icons/hicolor/scalable/apps/)
+
+install(FILES org.deepin.manual.metainfo.xml DESTINATION share/metainfo)

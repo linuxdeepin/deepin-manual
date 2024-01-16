@@ -1,0 +1,29 @@
+<?xml version="1.0" encoding="utf-8"?>
+<component type="desktop-application">
+  <id>org.deepin.manual</id>
+  <launchable type="desktop-id">deepin-manual.desktop</launchable>
+  <project_group>DDE</project_group>
+  <compulsory_for_desktop>DDE</compulsory_for_desktop>
+  <metadata_license>CC0-1.0</metadata_license>
+  <project_license>GPL-3.0+</project_license>
+  <content_rating type="oars-1.0"/>
+  <categories>
+    <category>DDE</category>
+    <category>Qt</category>
+  </categories>
+  <name>Deepin Manual</name>
+  <name xml:lang="zh-CN">深度帮助手册</name>
+  <summary>Manual provides user guides of the system and applications.</summary>
+  <summary xml:lang="zh-CN">手册旨在帮助用户了解操作系统及其应用程序，提供具体的使用说明和功能说明。</summary>
+  <icon type="stock">deepin-manual</icon>
+  <description>
+    <p>Manual is designed to help users learn the operating system and its applications, providing specific instructions and function descriptions.</p>
+    <p xml:lang="zh-CN">深度帮助手册覆盖深度操作系统与深度原生应用，主要以系统/应用操作介绍、技巧为主，旨在将帮助大家进一步了解系统和应用。</p>
+  </description>
+  <url type="bugtracker">https://github.com/linuxdeepin/developer-center/issues/</url>
+  <url type="help">https://github.com/linuxdeepin/developer-center/issues/</url>
+  <url type="homepage">https://bbs.deepin.org/</url>
+  <releases>
+    <release version="6.0.7" date="2024-01-16"/>
+  </releases>
+</component>
