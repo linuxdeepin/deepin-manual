@@ -1,10 +1,18 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="ug">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="ug">
 <context>
     <name>ManualProxy</name>
     <message>
-        <location filename="../src/view/manual_proxy.cpp" line="311"/>
+        <location filename="../src/view/manual_proxy.cpp" line="313"/>
+        <source>Learn Basic Operations</source>
+        <translation>ئاساسىي مەشغۇلاتنى چۈشىنىش</translation>
+    </message>
+    <message>
+        <location filename="../src/view/manual_proxy.cpp" line="315"/>
+        <source>Common Application Libraries</source>
+        <translation>دائىملىق ئەپلەر</translation>
+    </message>
+    <message>
+        <location filename="../src/view/manual_proxy.cpp" line="317"/>
         <source>Desktop Environment</source>
         <translation>ئۈستەليۈزى مۇھىتى</translation>
     </message>
@@ -12,22 +20,32 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/app/dman.cpp" line="107"/>
+        <location filename="../src/app/dman.cpp" line="105"/>
         <source>Manual</source>
         <translation>قوللانما</translation>
     </message>
     <message>
-        <location filename="../src/app/dman.cpp" line="108"/>
+        <location filename="../src/app/dman.cpp" line="106"/>
         <source>Manual is designed to help users learn the operating system and its applications, providing specific instructions and function descriptions.</source>
         <translation>قوللانما ئىشلەتكۈچىلەرنىڭ مەشغۇلات سىستېمىسى ۋە ئۇنىڭ قوللىنىشچان پىروگراممىلىرىنى چۈشىنىشىگە ياردەم بېرىش ھەمدە كونكرېت چۈشەندۈرۈش ۋە ئىقتىدار چۈشەندۈرۈشى بىلەن تەمىنلەشنى مەقسەت قىلغان</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="21"/>
+        <source>Quick Start</source>
+        <translation>تېزدىن تونۇشۇش</translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="22"/>
+        <source>Video Guide</source>
+        <translation>سىن كۆرسەتمىسى</translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="23"/>
         <source>System</source>
         <translation>سېستىما </translation>
     </message>
     <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="22"/>
+        <location filename="../src/view/i18n_proxy.cpp" line="24"/>
         <source>Applications</source>
         <translation>پروگراممىلار </translation>
     </message>
@@ -37,37 +55,47 @@
         <translation>ئىزدەش نەتىجىسى يوق</translation>
     </message>
     <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="28"/>
+        <location filename="../src/view/i18n_proxy.cpp" line="26"/>
         <source>Home</source>
         <translation>باش بەت </translation>
     </message>
     <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="30"/>
+        <location filename="../src/view/i18n_proxy.cpp" line="27"/>
         <source>  result</source>
         <translation>نەتىجە</translation>
     </message>
     <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="31"/>
+        <location filename="../src/view/i18n_proxy.cpp" line="28"/>
         <source>  results</source>
         <translation>نەتىجە</translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="591"/>
+        <location filename="../src/view/i18n_proxy.cpp" line="29"/>
+        <source>Click to view </source>
+        <translation>چېكىپ كۆرۈش</translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="30"/>
+        <source>View all</source>
+        <translation>ھەممىنى كۆرۈش</translation>
+    </message>
+    <message>
+        <location filename="../src/view/web_window.cpp" line="606"/>
         <source>Search</source>
         <translation>ئىزدەش </translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="594"/>
+        <location filename="../src/view/web_window.cpp" line="609"/>
         <source>Support</source>
         <translation>قوللاش</translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="275"/>
+        <location filename="../src/view/web_window.cpp" line="277"/>
         <source>The content was updated</source>
         <translation>نۆۋەتتتىكى مەزمۇن يېڭىلانغان</translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="795"/>
+        <location filename="../src/view/web_window.cpp" line="815"/>
         <source>Copy</source>
         <translation>نۇسخىلاش</translation>
     </message>
@@ -81,12 +109,12 @@
 <context>
     <name>WebWindow</name>
     <message>
-        <location filename="../src/view/web_window.cpp" line="729"/>
+        <location filename="../src/view/web_window.cpp" line="744"/>
         <source>Ctrl+Alt+F</source>
         <translation>Ctrl+Alt+F</translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="744"/>
+        <location filename="../src/view/web_window.cpp" line="759"/>
         <source>Ctrl+F</source>
         <translation>Ctrl+F</translation>
     </message>

@@ -8,56 +8,77 @@
   user-select: none;
   display: flex;
   flex-flow: column;
-  margin: -19px 117px -19px 117px;
+  margin: -1px 117px -19px 117px;
+
   &:after {
     content: '';
     display: block;
     width: 100%;
     height: 100px;
   }
+
   h2 {
+    height: 60px;
     // font-family: SourceHanSansSC-Normal;
     font-family: var(--nav-world-font-family);
-    font-weight: normal;
-    font-size: 3.1rem;
+    font-weight: bold;
+    font-size: 1.6rem;
     line-height: 4.5rem;
-    margin: 0.5em 0 0;
-    border-bottom: 1px solid var(--index-h2-color);
-    padding-bottom: 12px;
+    margin: 0 0 0 0;
+    border-top: 1px solid var(--index-h2-color);
+
+    #righttext {
+      color: #0081FF;
+      float: right;
+      text-align: right;
+      bottom: 0;
+      width: 90px;
+      font-family: var(--nav-world-font-family);
+      font-weight: 500;
+      font-size: 1.1rem;
+
+      &:hover {
+        color: #0169d1;
+        cursor: pointer;
+      }
+    }
   }
-  
-  .items {
+
+  .appitems {
     display: flex;
-    position:relative;
-    left:-50px;
-    width:calc(100% + 100px);
-    right:0px;
+    position: relative;
+    left: -10px;
+    width: calc(100% + 50px);
     flex-flow: row;
     flex-wrap: wrap;
     justify-content: flex-start;
+    margin: 0;
+    // background-color: rgba(0, 255, 0, 0.1);
+
     .empty {
       width: 160px;
       padding: 0 10px;
     }
+
     .item {
       background-color: var(--index-item-background-color);
       border-radius: 18px;
-      padding:0px;
-      // width: 160px;
-      // height: 160px;
+      padding: 0px;
       width: var(--index-item-size);
       height: var(--index-item-size);
-      margin: 30px 0px 0px 50px;
+      margin: 5px 40px 30px 10px;
       display: inline-block;
       text-align: center;
       vertical-align: bottom;
       cursor: pointer;
+
       img {
         width: 96px;
         height: 96px;
         margin-top: 18px;
         margin-bottom: 3px;
       }
+
       .content {
         //margin-left: 15px;    //保持span居中,当设置display:-webkit-box后,默认居左,故设置其外边距
         width: var(--index-span-width);
@@ -66,15 +87,15 @@
         text-overflow: ellipsis;
         margin: auto;
         //display:-webkit-box;    //设置其排列两行
-        -webkit-box-orient:vertical;
-        -webkit-line-clamp:2;
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
         font-family: var(--nav-world-font-family);
         font-size: var(--span-font-size);
         line-height: var(--span-line-height);
         // font-weight: bold;
         color: var(--index-item-span-word-color);
       }
-      //&:focus,
+
       &:hover {
         background-clip: content-box;
         border-radius: 18px;
@@ -82,15 +103,156 @@
         background-color: var(--index-item-hover-color);
       }
 
-      .tag{
+      .tag {
         display: inline-block;
         height: 8px;
         width: 8px;
         margin-right: 4px;
-        margin-bottom: var(--span-maring-bottom);;
-        box-shadow:  0px 2px 8px 0px var(--nav-hash-hover-color);
+        margin-bottom: var(--span-maring-bottom);
+        ;
+        box-shadow: 0px 2px 8px 0px var(--nav-hash-hover-color);
         border-radius: 8px;
         background-color: var(--nav-hash-word-color);
+      }
+    }
+  }
+
+  .items {
+    display: flex;
+    position: relative;
+    left: -10px;
+    width: calc(100% + 20px);
+    // right:0px;
+    flex-flow: row;
+    flex-wrap: wrap;
+    justify-content: flex-start;
+    margin: 0 0 30px 0;
+
+    .tooltip-wp {
+      position: fixed;
+      width: 200px;
+      // height: 40px;
+      z-index: 100;
+      display: none;
+    }
+
+    .tooltip-wp:after {
+      content: attr(data-title);
+      position: fixed;
+      left: 0;
+      top: 0;
+      max-width: 500px;
+      padding: 2px 5px;
+      word-break: normal;
+      background-color: var(--tips-background-color);
+      color: var(--nav-hove-word-color);
+      font-family: var(--nav-world-font-family);
+      border-radius: 8px;
+      border: 1px solid var(--nav-hove-border-color);
+    }
+
+    .quickitem {
+      border-radius: 18px;
+      width: calc(50% - 20px);
+      height: 160px;
+      margin: 5px 10px 0px 10px;
+      text-align: center;
+      vertical-align: bottom;
+      // background-color: cadetblue;
+
+      #icon {
+        width: 68px;
+        height: 68px;
+        margin: 10px 0px 0px 0px;
+      }
+
+      #title {
+        height: 50px;
+        color: #FFFFFF;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        font-family: var(--nav-world-font-family);
+        font-weight: bold;
+        font-size: 1.6rem;
+        vertical-align: center;
+        // font-size: 2.5vw;
+        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        padding: 0;
+        margin: 0;
+      }
+
+      #click {
+        color: #FFFFFF;
+        font-family: var(--nav-world-font-family);
+        font-weight: normal;
+        font-size: 1.1rem;
+        // font-size: 1.5vw;
+        text-shadow: 2px 2px 10px rgba(0, 0, 0, 0.2);
+        padding: 0;
+        margin: 0;
+      }
+
+      &:hover {
+        // filter: blur(5px) opacity(10%); 
+        transform: scale(1.05);
+      }
+    }
+
+    .videoitem {
+      border-radius: 18px;
+      width: 182px;
+      height: 143px;
+      padding: 5px 10px 25px 10px;
+      text-align: center;
+      vertical-align: bottom;
+      // background-color: bisque;
+
+      #image {
+        width: 182px;
+        height: 115px;
+        border-radius: 8px;
+        box-shadow: 1px 1px 4px rgba(41, 30, 30, 0.1)
+      }
+
+      .title-div {
+        position: static;
+        width: 162;
+        white-space: nowrap;
+        overflow: hidden;
+        word-break: normal;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        margin: 8px 0 0 10px;
+
+        -webkit-box-orient: vertical;
+        -webkit-line-clamp: 2;
+        font-family: var(--nav-world-font-family);
+        font-size: var(--span-font-size);
+        font-weight: 500;
+        line-height: var(--span-line-height);
+        color: var(--index-item-span-word-color);
+
+        .title-wrapper {
+          position: fixed;
+          visibility: hidden;
+          background-color: var(--tips-background-color);
+          color: var(--nav-hove-word-color);
+          max-width: 500px;
+          padding: 2px 5px;
+          border-radius: 18px;
+          border: 1px solid var(--nav-hove-border-color);
+          font-family: var(--nav-world-font-family);
+        }
+
+        .title-wrapper.show {
+          visibility: visible;
+        }
+      }
+
+      &:hover {
+        // filter: blur(5px) opacity(10%); 
+        transform: scale(1.05);
       }
     }
   }

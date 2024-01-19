@@ -78,5 +78,42 @@ div {
   // @media screen and (-webkit-min-device-pixel-ratio: 3) {
   //   border-right: 1px solid var(--body-background-color);
   // }
+
+  .support-div {
+    width: 48px;
+    height: 48px;
+    border-radius: 48px;
+    background-color: var(--nav-hash-word-color);
+    display: inline-block;
+    position: absolute;
+    right: 20px;
+    bottom: 30px;
+  
+    .support {
+      width: 20px;
+      height: 21px;
+      margin-top: 14px;
+      margin-left: 14px;
+    }
+  
+    .tooltip-wrapper {
+      position: absolute;
+      visibility: hidden;
+      white-space: nowrap;  
+      right: -10px;
+      bottom: -25px;
+      background-color: var(--tips-background-color);
+      color: var(--nav-hove-word-color);
+      max-width: 500px;
+      padding: 2px 5px;
+      border-radius: 18px;
+      border: 1px solid var(--nav-hove-border-color);
+      font-family: var(--nav-world-font-family);
+    }
+  
+    .tooltip-wrapper.show {
+      visibility: visible;
+    }
+  }
 }
 

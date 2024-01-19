@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg width="24px" height="24px" viewBox="0 0 24 24" version="1.1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+    <title>icon/video</title>
+    <defs>
+        <linearGradient x1="58.1917172%" y1="3.4748259%" x2="54.5710972%" y2="107.472447%" id="linearGradient-1">
+            <stop stop-color="#E8F1F7" offset="3.61413489%"></stop>
+            <stop stop-color="#DBE5EC" offset="95.4070832%"></stop>
+        </linearGradient>
+        <linearGradient x1="50%" y1="0%" x2="50%" y2="100%" id="linearGradient-2">
+            <stop stop-color="#DEE8EF" offset="0%"></stop>
+            <stop stop-color="#CADDE6" offset="100%"></stop>
+        </linearGradient>
+        <linearGradient x1="42.492733%" y1="-9.86461639%" x2="50%" y2="97.1809441%" id="linearGradient-3">
+            <stop stop-color="#9C9B9B" stop-opacity="0.7" offset="0%"></stop>
+            <stop stop-color="#000000" stop-opacity="0.7" offset="100%"></stop>
+        </linearGradient>
+    </defs>
+    <g id="icon/video" stroke="none" stroke-width="1" fill="none" fill-rule="evenodd">
+        <g id="编组" transform="translate(2, 2)" fill-rule="nonzero">
+            <circle id="Oval-3" stroke="url(#linearGradient-2)" fill="url(#linearGradient-1)" cx="10" cy="10" r="10"></circle>
+            <path d="M9.46277315,6.23484847 C8.65490585,5.67103547 8,6.15799617 8,7.31464629 L8,12.6855563 C8,13.8457251 8.65756122,14.3273139 9.46277315,13.7653541 L13.3950949,11.020975 C14.2029622,10.457162 14.2003068,9.54118735 13.3950949,8.97922753 L9.46277315,6.23484847 Z" id="play" fill="url(#linearGradient-3)"></path>
+        </g>
+    </g>
+</svg>

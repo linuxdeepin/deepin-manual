@@ -4,7 +4,17 @@
 <context>
     <name>ManualProxy</name>
     <message>
-        <location filename="../src/view/manual_proxy.cpp" line="311"/>
+        <location filename="../src/view/manual_proxy.cpp" line="313"/>
+        <source>Learn Basic Operations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/manual_proxy.cpp" line="315"/>
+        <source>Common Application Libraries</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/manual_proxy.cpp" line="317"/>
         <source>Desktop Environment</source>
         <translation type="unfinished"></translation>
     </message>
@@ -12,22 +22,32 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/app/dman.cpp" line="107"/>
+        <location filename="../src/app/dman.cpp" line="105"/>
         <source>Manual</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/dman.cpp" line="108"/>
+        <location filename="../src/app/dman.cpp" line="106"/>
         <source>Manual is designed to help users learn the operating system and its applications, providing specific instructions and function descriptions.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="21"/>
-        <source>System</source>
+        <source>Quick Start</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="22"/>
+        <source>Video Guide</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="23"/>
+        <source>System</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="24"/>
         <source>Applications</source>
         <translation type="unfinished"></translation>
     </message>
@@ -37,37 +57,52 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="28"/>
+        <location filename="../src/view/i18n_proxy.cpp" line="26"/>
         <source>Home</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="30"/>
+        <location filename="../src/view/i18n_proxy.cpp" line="27"/>
         <source>  result</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="31"/>
+        <location filename="../src/view/i18n_proxy.cpp" line="28"/>
         <source>  results</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="591"/>
+        <location filename="../src/view/i18n_proxy.cpp" line="29"/>
+        <source>Click to view </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="30"/>
+        <source>View all</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="31"/>
+        <source>Service and Support</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/web_window.cpp" line="606"/>
         <source>Search</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="594"/>
+        <location filename="../src/view/web_window.cpp" line="609"/>
         <source>Support</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="275"/>
+        <location filename="../src/view/web_window.cpp" line="277"/>
         <source>The content was updated</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="795"/>
+        <location filename="../src/view/web_window.cpp" line="815"/>
         <source>Copy</source>
         <translation type="unfinished"></translation>
     </message>
@@ -81,12 +116,12 @@
 <context>
     <name>WebWindow</name>
     <message>
-        <location filename="../src/view/web_window.cpp" line="729"/>
+        <location filename="../src/view/web_window.cpp" line="744"/>
         <source>Ctrl+Alt+F</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="744"/>
+        <location filename="../src/view/web_window.cpp" line="759"/>
         <source>Ctrl+F</source>
         <translation type="unfinished"></translation>
     </message>

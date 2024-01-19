@@ -123,6 +123,13 @@ void helperManager::getModuleInfo()
         }
 #endif
     }
+
+    QFileInfo fileInfo(kVideoConfigPath); //配置文件也需要监控
+    if (fileInfo.exists()) {
+        QString modifyTime = fileInfo.lastModified().toString("yyyy-MM-dd hh:mm:ss.zzz");
+        mapNow.insert(kVideoConfigPath, modifyTime);
+    }
+
     QStringList deleteList;
     QStringList addList;
     QStringList addTime;
@@ -154,18 +161,85 @@ void helperManager::handleDb(const QStringList &deleteList, const QStringList &a
         QStringList appList;
         QStringList langList;
         for (const QString &path : deleteList) {
-            QStringList list = path.split("/");
-            if (list.count() >= 4) {
-                langList.append(list.at(list.count() - 2));
-                appList.append(list.at(list.count() - 4));
+            if (path.contains("video-guide")) {
+                appList << "video-guide" << "video-guide";
+                langList << "en_US" << "zh_CN";
+            } else {
+                QStringList list = path.split("/");
+                if (list.count() >= 4) {
+                    langList.append(list.at(list.count() - 2));
+                    appList.append(list.at(list.count() - 4));
+                }
             }
         }
+
         dbObj->deleteSearchInfo(appList, langList);
     }
 
-    QStringList list = handlePriority(addList);
+    QStringList tmpAddList = addList;
+    int videoIndex = tmpAddList.indexOf(kVideoConfigPath);
+    if (videoIndex >= 0) { //视频配置文件单独拿出来处理
+        tmpAddList.removeAt(videoIndex);
+        QFile file(kVideoConfigPath);
+        if (!file.open(QIODevice::ReadOnly)) {
+            qDebug() << "Failed to open video config file.";
+        } else {
+            QByteArray jsonData = file.readAll();
+            QJsonDocument jsonDoc = QJsonDocument::fromJson(jsonData);
+            if (jsonDoc.isNull()) {
+                qDebug() << "Failed to parse JSON of video config file.";
+            } else {
+                QJsonObject jsonObj = jsonDoc.object();
+
+                QMap<QString, QStringList> anchors;
+                QStringList anchorIdList;
+                QMap<QString, QStringList> anchorInitialList;
+                QMap<QString, QStringList> anchorSpellList;
+                QStringList contents;
+
+                for (QString key : jsonObj.keys()) {
+                    QJsonValue jsValue = jsonObj.value(key);
+                    if (jsValue.isArray() && key == "videos") {
+                        QJsonArray jsArray = jsValue.toArray();
+                        QJsonArray resultArray;
+                        for (int i = 0; i < jsArray.count(); i++) {
+                            if (jsArray[i].isObject()) {
+                                QJsonObject obj = jsArray[i].toObject();
+                                if (obj["name[en_US]"].isString() && obj["name[zh_CN]"].isString()) {
+                                    anchors["en_US"].append(obj["name[en_US]"].toString());
+                                    anchors["zh_CN"].append(obj["name[zh_CN]"].toString());
+                                    //anchors["zh_HK"].append(obj["name[zh_HK]"].toString());
+                                    //anchors["zh_TW"].append(obj["name[zh_TW]"].toString());
+
+                                    anchorInitialList["en_US"].append("");
+                                    anchorInitialList["zh_CN"].append("");
+                                    //anchorInitialList["zh_HK"].append("");
+                                    //anchorInitialList["zh_TW"].append("");
+
+                                    anchorSpellList["en_US"].append(obj["name[en_US]"].toString().remove(" "));
+                                    anchorSpellList["zh_CN"].append(Dtk::Core::Chinese2Pinyin(obj["name[zh_CN]"].toString()).remove(QRegExp("[1-9]")));
+                                    //anchorSpellList["zh_HK"].append("");
+                                    //anchorSpellList["zh_TW"].append("");
+
+                                    anchorIdList.append(QString("h%0").arg(i));
+                                    contents.append(obj["url"].toString());
+                                }
+                            }
+                        }
+                    }
+                    for(QString lang_key : anchors.keys()) {
+                        if (anchorInitialList.keys().contains(lang_key) && anchorSpellList.keys().contains(lang_key))
+                            dbObj->addSearchEntry("video-guide", lang_key, anchors[lang_key], anchorInitialList[lang_key], anchorSpellList[lang_key], anchorIdList, contents);
+                    }
+                }
+            }
+        }
+    }
+
+    QStringList list = handlePriority(tmpAddList);
+
     if (!list.isEmpty() && !addTime.isEmpty()) {
-        dbObj->insertFilesTimeEntry(addList, addTime);
+        dbObj->insertFilesTimeEntry(tmpAddList, addTime);
         //通过JS层函数来完成md转html, 然后解析html内所有文本内容
         if (jsObj && m_webView) {
             QString strChange = list.join(",");
@@ -230,7 +304,7 @@ QStringList helperManager::handlePriority(const QStringList &list)
         QStringList splitList = mdPath.split("/");
 
         //新文案结构 /usr/share/deepin-manual/manual-assets/[application | system]/appName/appNameT/land/*_appNameT.md
-        if (splitList.contains("application") || splitList.contains("application")) {
+        if (splitList.contains("application") || splitList.contains("system")) {
             QString moduleLang = splitList.at(splitList.count() - 4) + splitList.at(splitList.count() - 2);
             QString mdFile = splitList.at(splitList.count() - 1);
             QStringList listTemp = mdFile.split("_");

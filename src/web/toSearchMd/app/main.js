@@ -25,7 +25,7 @@ init();
 
 
 global.parseMdList=(listMdPath)=>{
-  console.log("=====>",listMdPath);
+  console.log("global.parseMdList=====>",listMdPath);
 
   var mdList = listMdPath.split(',');
 
@@ -60,8 +60,7 @@ function delHtmlTagAndNewLine(str) {
 
 function mainTmp(pathList){
     console.log("======>", pathList);
-    if (pathList.length > 0)
-    {
+    if (pathList.length > 0) {
         pathList.forEach(function(pathObj){
           global.readFile(pathObj, data => {
             let count = 0;

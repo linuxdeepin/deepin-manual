@@ -2,7 +2,7 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { render } from 'react-dom';
 import { Router as Router, Switch, Route, Link } from 'react-router-dom';
@@ -29,7 +29,7 @@ global.bIsReload = false;
 
 
 global.readFile = (fileName, callback) => {
-    console.log("global.readFile...");
+    console.log("global.readFile...", fileName);
     let xhr = new XMLHttpRequest();
     xhr.open('GET', fileName);
     xhr.onload = () => {
@@ -38,6 +38,39 @@ global.readFile = (fileName, callback) => {
         // }
     };
     xhr.send();
+};
+
+const Support = ({ text }) => {
+    const [isHovered, setIsHovered] = useState(false);
+    const [tooltipText, setTooltipText] = useState(text);
+
+    // useEffect(() => {
+    //   setTooltipText(text);
+    // }, [text]);
+
+    useEffect(() => {
+        if (isHovered) {
+            setTooltipText(global.i18n['Support']);
+        }
+    }, [isHovered]);
+
+    useEffect(() => {
+        if (!isHovered) {
+            setTooltipText('');
+        }
+    }, [isHovered]);
+
+    return (
+        global.isShowHelperSupport ? <div className="support-div"
+            onClick={() => global.qtObjects.manual.supportClick()}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            style={{ userSelect: 'none' }}
+        >
+            <img className="support" src="./pic.svg"></img>
+            {isHovered && <div className={`tooltip-wrapper ${isHovered ? 'show' : ''}`}>{tooltipText}</div>}
+        </div> : <div></div>
+    );
 };
 
 class App extends React.Component {
@@ -49,7 +82,7 @@ class App extends React.Component {
             searchResult: [],
             mismatch: false,
             historyGO: 0
-                // changeAppList:[]
+            // changeAppList:[]
         };
         new QWebChannel(qt.webChannelTransport, this.initQt.bind(this));
     }
@@ -152,7 +185,7 @@ class App extends React.Component {
         global.setTheme(themeType);
     }
     onContentResult(appName, titleList, idList, contentList) {
-        console.log('搜索结果', appName, titleList, idList, contentList);
+        console.log('app 搜索结果', appName, titleList, idList, contentList);
         let { searchResult } = this.state;
         let filePath;
         // if (appName == "dde")
@@ -163,14 +196,17 @@ class App extends React.Component {
         // {
         //   filePath = `${global.path}/application/${appName}/${global.lang}/index.md`;
         // }
-        var myPromise = new Promise(function(resolve, reject) {
-            global.qtObjects.manual.appToPath(appName, function(filepath) {
+        var myPromise = new Promise(function (resolve, reject) {
+            global.qtObjects.manual.appToPath(appName, function (filepath) {
                 filePath = filepath;
                 resolve()
             })
         });
 
         myPromise.then(() => {
+            if (appName === "video-guide") {
+                filePath = "video-guide";
+            }
             searchResult.push({
                 file: filePath,
                 idList,
@@ -184,7 +220,7 @@ class App extends React.Component {
     onReloadPage(appList) {
         // console.log("============>page reload...");
         let bRetFlag = true;
-        var locationPath = atob(this.context.router.history.location.pathname);
+        var locationPath = this.context.router.history.location.pathname;
         console.log("============>page reload...", locationPath);
         var list = locationPath.split("/");
         if (list[1] == 'open') {
@@ -243,7 +279,7 @@ class App extends React.Component {
     //搜索框清空后回到上一个页面(未搜索的页面).
     onSearchEditClear() {
         console.log("==================>onSearcheditclear");
-        var locationPath = atob(this.context.router.history.location.pathname);
+        var locationPath = this.context.router.history.location.pathname;
         var list = locationPath.split("/");
         let bFlag = false;
         //open页length = 5, search页length = 3
@@ -289,30 +325,41 @@ class App extends React.Component {
         let { searchResult, mismatch } = this.state;
         return { searchResult, mismatch };
     }
+
+    isbase64(str) {
+        if (str == '' || str.trim == '') { return false; }
+        try { return btoa(atob(str)) == str }
+        catch (err) {
+            return false;
+        }
+    }
+
     componentWillReceiveProps(nextProps) {
         console.log("app componentWillReceiveProps", this.context.router.history);
         console.log("this location: " + this.context.router.history.location);
-        var pathName = atob(this.context.router.history.location.pathname);
+        var pathName = this.context.router.history.location.pathname;
         var pathList = pathName.split("/");
         var cKeyword = '';
 
-        //search页===>/search/:keyword 
-        //open页=====>/open/:file/:hash?/:key? 
+        //search页===>/search/:keyword
+        //open页=====>/open/:file/:hash?/:key?
         if (pathList.length == 3) {
             cKeyword = pathList[2];
         } else if (pathList.length == 5) {
             cKeyword = pathList[4];
         }
 
-        // global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
-        global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
-
+        if (this.isbase64(cKeyword)) {
+            global.qtObjects.search.getKeyword(decodeURIComponent(atob(cKeyword)));
+        } else {
+            global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
+        }
 
         if (this.context.router.history.action == 'PUSH') {
             let entriesLen = this.context.router.history.entries.length;
             if (entriesLen > 1) {
                 let entry = this.context.router.history.entries[entriesLen - 1];
-                if (atob(entry.pathname).toString().indexOf("/search/") != -1) {
+                if (entry.pathname.toString().indexOf("/search/") != -1) {
                     this.setState({ historyGO: entriesLen - 1 });
                     // global.gHistoryGo = entriesLen - 1;
                     return;
@@ -354,7 +401,7 @@ class App extends React.Component {
                 hash = 'h1'
             }
             file = encodeURIComponent(file);
-            console.log("globla.open...........");
+            // console.log("globla.open...........  ", file);
             hash = encodeURIComponent(hash);
             global.hash = hash;
 
@@ -389,8 +436,8 @@ class App extends React.Component {
                 //   filePath = `${global.path}/application/${file}/${global.lang}/index.md`
                 // }
 
-                var myPromise = new Promise(function(resolve, reject) {
-                    global.qtObjects.manual.appToPath(file, function(filepath) {
+                var myPromise = new Promise(function (resolve, reject) {
+                    global.qtObjects.manual.appToPath(file, function (filepath) {
                         filePath = filepath;
                         resolve()
                     })
@@ -402,10 +449,9 @@ class App extends React.Component {
                         let d = document.createElement('div');
                         d.innerHTML = html;
                         let dlist = d.querySelectorAll(`[text="${title}"]`);
-                        if(dlist.length == 0)
-                        {
-                            var translatePromise = new Promise(function(resolve, reject) {
-                                global.qtObjects.manual.translateTitle(title, function(titleTr) {
+                        if (dlist.length == 0) {
+                            var translatePromise = new Promise(function (resolve, reject) {
+                                global.qtObjects.manual.translateTitle(title, function (titleTr) {
                                     title = titleTr;
                                     resolve()
                                 })
@@ -414,21 +460,21 @@ class App extends React.Component {
                             translatePromise.then(() => {
                                 dlist = d.querySelectorAll(`[text="${title}"]`);
                                 let hashID = 'h0';
-                                for (let i = 0; i < dlist.length; i++) {                           
-                                        hashID = dlist[i].id;                          
+                                for (let i = 0; i < dlist.length; i++) {
+                                    hashID = dlist[i].id;
                                 }
                                 global.open(file, hashID);
                             });
                         }
-                        else
-                        { 
+                        else {
                             let hashID = 'h0';
-                            for (let i = 0; i < dlist.length; i++) {                           
-                                    hashID = dlist[i].id;                          
+                            for (let i = 0; i < dlist.length; i++) {
+                                hashID = dlist[i].id;
                             }
-                            global.open(file, hashID);}
-                        
-                       
+                            global.open(file, hashID);
+                        }
+
+
                     })
                 });
             } else {
@@ -438,7 +484,7 @@ class App extends React.Component {
 
         //替换当前URL,仅仅在切换到其他页面处调用...(包含前进,后退,重新打开一个新的页面)
         global.handleLocation = (hash = '') => {
-            let url = atob(his.context.router.history.location.pathname);
+            let url = this.context.router.history.location.pathname;
             console.log("global.handhash: ", url);
             let urlList = url.split("/");
             if (urlList.length == 5) {
@@ -544,7 +590,7 @@ class App extends React.Component {
                 document.documentElement.style.setProperty(`--nav-h2-word-color`, '#001A2E');
                 document.documentElement.style.setProperty(`--nav-h3-word-color`, '#001A2E');
                 document.documentElement.style.setProperty('--nav-hove-word-color', '#000000');
-                document.documentElement.style.setProperty('--nav-hove-border-color', 'rgba(0, 0, 0, 0.05)'); 
+                document.documentElement.style.setProperty('--nav-hove-border-color', 'rgba(0, 0, 0, 0.05)');
                 // document.documentElement.style.setProperty(`--nav-hash-word-color`, '#ca0c16');   //btn list 改这一行
                 document.documentElement.style.setProperty(`--article-read-word-color`, '#000000');
                 document.documentElement.style.setProperty(`--article-read-h2-word-color`, '#2CA7F8');
@@ -591,7 +637,7 @@ class App extends React.Component {
             decode(str) {
                 // Going backwards: from bytestream, to percent-encoding, to original string.
                 console.log("decode URIComponent decode");
-                return decodeURIComponent(atob(str).split('').map(function(c) {
+                return decodeURIComponent(atob(str).split('').map(function (c) {
                     return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
                 }).join(''));
             }
@@ -613,8 +659,8 @@ class App extends React.Component {
                 this.context.router.history.index = lastHistoryIndex - 1;
 
                 this.setState({ searchResult: [] });
-                this.context.router.history.push(btoa(
-                    '/search/' + encodeURIComponent(decodeKeyword))
+                this.context.router.history.push(
+                    '/search/' + btoa(encodeURIComponent(decodeKeyword))
                 );
 
                 return;
@@ -623,7 +669,7 @@ class App extends React.Component {
             entriesLen = this.context.router.history.entries.length;
             if (entriesLen > 1) {
                 let entry = this.context.router.history.entries[entriesLen - 1];
-                let entryIndex = atob(entry.pathname).toString().indexOf("/search/");
+                let entryIndex = entry.pathname.toString().indexOf("/search/");
                 if (entryIndex != -1) {
                     this.context.router.history.entries.length = entriesLen - 1;
                     this.context.router.history.length = entriesLen - 1;
@@ -632,8 +678,8 @@ class App extends React.Component {
             }
 
             this.setState({ searchResult: [] });
-            this.context.router.history.push(btoa(
-                '/search/' + encodeURIComponent(decodeKeyword))
+            this.context.router.history.push(
+                '/search/' + btoa(encodeURIComponent(decodeKeyword))
             );
         };
 
@@ -642,7 +688,7 @@ class App extends React.Component {
             //console.log(`The last navigation action was ${action}`);
             //console.log("index:" + this.context.router.history.index);
             console.log("app router.history.listen...");
-            global.lastUrlBeforeSearch = atob(location.pathname);
+            global.lastUrlBeforeSearch = location.pathname;
             global.lastHistoryIndex = this.context.router.history.index;
             global.lastAction = action;
         });
@@ -667,27 +713,18 @@ class App extends React.Component {
         }
     }
     render() {
-        return ( <
-            div > {
-                this.state.init && ( <
-                    Switch >
-                    <
-                    Route exact path = "/"
-                    component = { Index }
-                    /> <
-                    Route path = "/index"
-                    component = { Index }
-                    /> <
-                    Route path = "/open/:file/:hash?/:key?"
-                    component = { Main }
-                    /> <
-                    Route path = "/search/:keyword"
-                    component = { Search }
-                    /> <
-                    /Switch>
-                )
-            } <
-            /div>
+        return (
+            <div >
+                {this.state.init && (
+                    <Switch >
+                        <Route exact path="/" component={Index} />
+                        <Route path="/index" component={Index} />
+                        <Route path="/open/:file/:hash?/:key?" component={Main} />
+                        <Route path="/search/:keyword" component={Search} />
+                    </Switch>
+                )}
+                <Support text=" "></Support>
+            </div>
         );
     }
 }
@@ -699,11 +736,9 @@ App.childContextTypes = {
     mismatch: PropTypes.bool
 };
 
-render( <
-    Router history = { createMemoryHistory('/') } >
-    <
-    App / >
-    <
-    /Router>,
+render(
+    <Router history={createMemoryHistory('/')} >
+        <App />
+    </Router>,
     document.getElementById('app')
 );
