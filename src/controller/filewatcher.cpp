@@ -4,6 +4,7 @@
 
 #include "filewatcher.h"
 #include "base/utils.h"
+#include "base/consts.h"
 
 #include <QDir>
 #include <QDebug>
@@ -244,6 +245,12 @@ void fileWatcher::onTimerOut()
         }
 #endif
     }
+    QFileInfo fileInfo(kVideoConfigPath);
+    if (fileInfo.exists()) {
+        QString modifyTime = fileInfo.lastModified().toString("yyyy-MM-dd hh:mm:ss.zzz");
+        mapNow.insert(kVideoConfigPath, modifyTime);
+    }
+
     QStringList deleteList;
     QStringList addList;
     QStringList addTime;

@@ -366,7 +366,7 @@ void SearchDb::handleSearchAnchor(const QString &keyword)
         while (query.next() && (result.size() < kResultLimitation)) {
             qDebug() << "handleSearchAnchor===> " << query.value(0).toString() << strlistApp;
             //只将当前预装应用中的内容输出。
-            if (strlistApp.contains(query.value(0).toString())) {
+            if (strlistApp.contains(query.value(0).toString())/* || query.value(0).toString().contains("video-guide")*/) {
                 //搜索结果优先显示应用名称
                 if (query.value(3) == "h0") {
                     result.prepend(SearchAnchorResult {
@@ -623,8 +623,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
             }
         }
     }
-    const QString sql =
-        QString(kSearchSelectContent).replace(":lang", lang).replace(":content", keyword);
+    const QString sql = QString(kSearchSelectContent).replace(":lang", lang).replace(":content", keyword);
 
     listStruct.clear();
     nH0OfList = 0;
@@ -643,7 +642,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
             const QString anchor = query.value(1).toString();
             const QString anchorId = query.value(2).toString();
             const QString content = query.value(3).toString();
-            if (!strlistApp.contains(app_name)) {
+            if (!strlistApp.contains(app_name) && !app_name.contains("video-guide")) {
                 continue;
             }
 

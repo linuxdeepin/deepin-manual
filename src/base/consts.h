@@ -18,5 +18,10 @@ extern const char kConfigWindowHeight[];
 extern const char kConfigWindowInfo[];
 extern const char kConfigAppList[];
 
+extern const char kVideoConfigPath[];
+
+const char kLearnBasicOperations[] = "learn-basic-operations";
+const char kCommonApplicationLibraries[] = "common-application-libraries";
+
 
 #endif // DEEPIN_MANUAL_BASE_CONSTS_H

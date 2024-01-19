@@ -42,6 +42,9 @@ public slots:
 
     QString translateTitle(const QString &titleUS);
 
+    QVariant getVideoGuideInfo();
+    void openVideo(QString url = "");
+
 private:
     void saveAppList(const QStringList &list);
     QString getAppLocalDir(const QString &appPath);
@@ -50,6 +53,7 @@ private:
     QStringList app_list_;
     QString strIconTheme;
     QIconLoader *piconload;
+    QString videoUrl;
 };
 
 #endif // DEEPIN_MANUAL_VIEW_MANUAL_PROXY_H

@@ -10,6 +10,8 @@ DCORE_USE_NAMESPACE
 #include <QFontDatabase>
 #include <QImageReader>
 
+#include "base/consts.h"
+
 QHash<QString, QPixmap> Utils::m_imgCacheHash;
 QHash<QString, QString> Utils::m_fontNameCache;
 QString Utils::cpuModeName;
@@ -305,6 +307,17 @@ QStringList Utils::getSystemManualList()
                 app_list_.append("dde");
             }
         }
+
+        // 非应用文档，直接添加
+        if (systemList.contains(kLearnBasicOperations) || oldAppList.contains(kLearnBasicOperations)) {
+            if (app_list_.indexOf(kLearnBasicOperations) == -1)
+                app_list_.append(kLearnBasicOperations);
+        }
+        if (systemList.contains(kCommonApplicationLibraries) || oldAppList.contains(kCommonApplicationLibraries)) {
+            if (app_list_.indexOf(kCommonApplicationLibraries) == -1)
+                app_list_.append(kCommonApplicationLibraries);
+        }
+        qDebug() << "exist app list: " << app_list_ << ", count:" << app_list_.size();
     }
     qDebug() << "exist app list: " << app_list_ << ", count:" << app_list_.size();
     return app_list_;

@@ -150,7 +150,7 @@ QString ManualProxy::appToPath(const QString &appName)
     QStringList  assetsPathList = Utils::getSystemManualDir();
     foreach (auto assetPath, assetsPathList) {
         QString appPath;
-        if (appName == "dde") {
+        if (appName == "dde" || appName == kLearnBasicOperations || appName == kCommonApplicationLibraries || appName == "video-guide") {
             appPath = assetPath + "/system/" + appName;
         } else {
             appPath = assetPath + "/application/" + appName;
@@ -307,7 +307,11 @@ QString ManualProxy::getAppIconPath(const QString &desktopname)
 QString ManualProxy::getLocalAppName(const QString &desktopname)
 {
     QString strdisplayname = desktopname;
-    if (0 == desktopname.compare("dde", Qt::CaseInsensitive)) {
+    if (0 == desktopname.compare(kLearnBasicOperations, Qt::CaseInsensitive)) {
+        strdisplayname = tr("Learn Basic Operations");
+    } else if (0 == desktopname.compare(kCommonApplicationLibraries, Qt::CaseInsensitive)) {
+        strdisplayname = tr("Common Application Libraries");
+    } else if (0 == desktopname.compare("dde", Qt::CaseInsensitive)) {
         strdisplayname = tr("Desktop Environment");
     } else {
         QStringList pathList = Utils::getEnvsourcePath();
@@ -325,6 +329,79 @@ QString ManualProxy::getLocalAppName(const QString &desktopname)
     return strdisplayname;
 }
 
+QVariant ManualProxy::getVideoGuideInfo()
+{
+    QFile file(kVideoConfigPath);
+    if (!file.open(QIODevice::ReadOnly)) {
+        qDebug() << "Failed to open file";
+        return QVariantList();
+    }
+
+    QString locale = QLocale().name();
+    //藏语维语使用简体中文
+    if (locale == "ug_CN" || locale == "bo_CN") {
+        locale = "zh_CN";
+    } else if (locale == "en_US" || locale == "en_GB") {
+        locale = "en_US";
+    }
+
+    QByteArray jsonData = file.readAll();
+    QJsonDocument jsonDoc = QJsonDocument::fromJson(jsonData);
+    if (jsonDoc.isNull()) {
+        qDebug() << "Failed to parse JSON";
+        return QVariantList();
+    }
+
+//    locale = "en_US"; //test
+    QJsonObject jsonObj = jsonDoc.object();
+
+    for (QString key : jsonObj.keys()) {
+        QJsonValue jsValue = jsonObj.value(key);
+
+        if (jsValue.isString() && key == "url") {
+            videoUrl = jsValue.toString();
+        } else if (jsValue.isArray() && key == "videos") {
+            QJsonArray jsArray = jsValue.toArray();
+            QJsonArray resultArray;
+
+            for (int i = 0; i < jsArray.count(); i++) {
+                if (jsArray[i].isObject()) {
+                    QJsonObject obj = jsArray[i].toObject();
+                    QJsonObject tmpObj {
+                        {"cover", QString(DMAN_MANUAL_DIR"/system/video-guide/videos/" + obj["cover"].toString())},
+                        {"url", obj["url"]}
+                    };
+
+                    if (locale == "zh_CN") {
+                        tmpObj.insert("name", obj["name[zh_CN]"]);
+                    } else if(locale == "zh_HK") {
+                        tmpObj.insert("name", obj["name[zh_HK]"]);
+                    } else if(locale == "zh_TW") {
+                        tmpObj.insert("name", obj["name[zh_TW]"]);
+                    } else {
+                        tmpObj.insert("name", obj["name[en_US]"]);
+                    }
+
+                    resultArray.append(tmpObj);
+                }
+            }
+
+            return resultArray.toVariantList();
+        }
+    }
+
+    return QVariantList();
+}
+
+void ManualProxy::openVideo(QString url)
+{
+    if(url.isEmpty()) {
+        url = videoUrl;
+    }
+    QProcess process;
+    process.startDetached("browser", QStringList(url));
+    process.waitForFinished();
+}
 
 /**
  * @brief ManualProxy::saveAppList

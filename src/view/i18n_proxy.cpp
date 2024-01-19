@@ -18,17 +18,19 @@ I18nProxy::~I18nProxy()
 QVariantHash I18nProxy::getSentences() const
 {
     QVariantHash result {
+        {"QuickStart", QObject::tr("Quick Start")},
+        {"VideoGuide", QObject::tr("Video Guide")},
         {"System", QObject::tr("System")},
         {"Applications", QObject::tr("Applications")},
-        //      { "NoResult",QObject::tr(
-        //                      "Sorry, there are no search results for \"%1\"") },
         {"NoResult", QObject::tr("No search results")},
-        //      { "WikiSearch", QObject::tr(
-        //          "Change your keywords and try again, or search for it in Deepin Wiki") },
         {"ToIndexPage", QObject::tr("Home")},
-        //      { "SearchInWiki", QObject::tr("Deepin Wiki") },
         {"ResultNumSuffix", QObject::tr("  result")}, //单数结果后缀
-        {"ResultNumSuffixs", QObject::tr("  results")}};
+        {"ResultNumSuffixs", QObject::tr("  results")},
+        {"ClicktoView", QObject::tr("Click to view ")},
+        {"ViewAll", QObject::tr("View all")},
+        {"Support", QObject::tr("Service and Support")}
+    };
+
     return result;
 }
 
