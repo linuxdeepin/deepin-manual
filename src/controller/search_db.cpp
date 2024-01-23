@@ -652,6 +652,10 @@ void SearchDb::handleSearchContent(const QString &keyword)
 
             QString highlightContent = highlightKeyword(tmpContent, keyword);
 
+            if (app_name.contains("video-guide"))
+                highlightContent = tmpContent;
+
+
             //如果关键字在img路径中,返回后退出本次循环.
             if (highlightContent.isEmpty() && !anchor.contains(keyword))
                 continue;
