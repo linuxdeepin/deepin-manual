@@ -208,18 +208,18 @@ void helperManager::handleDb(const QStringList &deleteList, const QStringList &a
                                 if (obj["name[en_US]"].isString() && obj["name[zh_CN]"].isString()) {
                                     anchors["en_US"].append(obj["name[en_US]"].toString());
                                     anchors["zh_CN"].append(obj["name[zh_CN]"].toString());
-                                    //anchors["zh_HK"].append(obj["name[zh_HK]"].toString());
-                                    //anchors["zh_TW"].append(obj["name[zh_TW]"].toString());
+                                    anchors["zh_HK"].append(obj["name[zh_HK]"].toString());
+                                    anchors["zh_TW"].append(obj["name[zh_TW]"].toString());
 
                                     anchorInitialList["en_US"].append("");
                                     anchorInitialList["zh_CN"].append("");
-                                    //anchorInitialList["zh_HK"].append("");
-                                    //anchorInitialList["zh_TW"].append("");
+                                    anchorInitialList["zh_HK"].append("");
+                                    anchorInitialList["zh_TW"].append("");
 
                                     anchorSpellList["en_US"].append(obj["name[en_US]"].toString().remove(" "));
                                     anchorSpellList["zh_CN"].append(Dtk::Core::Chinese2Pinyin(obj["name[zh_CN]"].toString()).remove(QRegExp("[1-9]")));
-                                    //anchorSpellList["zh_HK"].append("");
-                                    //anchorSpellList["zh_TW"].append("");
+                                    anchorSpellList["zh_HK"].append("");
+                                    anchorSpellList["zh_TW"].append("");
 
                                     anchorIdList.append(QString("h%0").arg(i));
                                     contents.append(obj["url"].toString());
