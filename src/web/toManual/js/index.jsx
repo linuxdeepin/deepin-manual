@@ -147,7 +147,7 @@ class QuickStartItem extends Component {
       <div className="quickitem" style={{
         backgroundImage: `url(${backgroundPath})`,
         backgroundRepeat: 'no-repeat',
-        backgroundPosition: 'center', 
+        backgroundPosition: 'center',
         backgroundSize: 'cover',
       }}
         onClick={() => {
@@ -196,10 +196,10 @@ const TitleWithTip = ({ text }) => {
   // 当鼠标移动时，更新提示框的位置为鼠标位置  
   const handleMouseMove = (event) => {
     const rect = titleRef.current.parentNode.getBoundingClientRect();
-    const x = event.pageX - titleRef.current.parentNode.offsetLeft - titleRef.current.parentNode.offsetWidth / 2;
-    const y = event.pageY - rect.y;
+    const x = titleRef.current.parentNode.offsetWidth + event.pageX - titleRef.current.parentNode.offsetWidth;
+    const y = rect.y + titleRef.current.parentNode.offsetHeight;
     // console.log("x:", x, "   y:", y);
-    setTooltipPosition({ left: x + 10, top: y });
+    setTooltipPosition({ left: x + 10, top: y - 20 });
   };
 
   return (
@@ -242,7 +242,7 @@ class VideoGuideItem extends Component {
           }
         }}
       >
-        <img id="image" src={this.state.imgpath} />
+        <img className="image" src={this.state.imgpath} />
 
         <TitleWithTip text={this.state.title}></TitleWithTip>
       </div>

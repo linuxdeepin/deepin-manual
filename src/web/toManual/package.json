@@ -22,6 +22,7 @@
     "yargs": "^10.1.1"
   },
   "dependencies": {
+    "jquery": "^3.7.1",
     "smooth-scroll-into-view-if-needed": "^1.1.19"
   },
   "name": "web",
