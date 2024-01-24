@@ -479,7 +479,7 @@ var App = function (_React$Component) {
                     hash = 'h1';
                 }
                 file = encodeURIComponent(file);
-                console.log("globla.open...........  ", file);
+                // console.log("globla.open...........  ", file);
                 hash = encodeURIComponent(hash);
                 global.hash = hash;
 
@@ -1519,6 +1519,9 @@ var QuickStartItem = function (_Component2) {
   return QuickStartItem;
 }(_react.Component);
 
+// 带toolip的文本框
+
+
 var TitleWithTip = function TitleWithTip(_ref) {
   var text = _ref.text;
 
@@ -1559,10 +1562,10 @@ var TitleWithTip = function TitleWithTip(_ref) {
   // 当鼠标移动时，更新提示框的位置为鼠标位置  
   var handleMouseMove = function handleMouseMove(event) {
     var rect = titleRef.current.parentNode.getBoundingClientRect();
-    var x = event.pageX - titleRef.current.parentNode.offsetLeft - titleRef.current.parentNode.offsetWidth / 2;
-    var y = event.pageY - rect.y;
+    var x = titleRef.current.parentNode.offsetWidth + event.pageX - titleRef.current.parentNode.offsetWidth;
+    var y = rect.y + titleRef.current.parentNode.offsetHeight;
     // console.log("x:", x, "   y:", y);
-    setTooltipPosition({ left: x + 10, top: y });
+    setTooltipPosition({ left: x + 10, top: y - 20 });
   };
 
   return _react2.default.createElement(
@@ -1622,7 +1625,7 @@ var VideoGuideItem = function (_Component3) {
             }
           }
         },
-        _react2.default.createElement('img', { id: 'image', src: this.state.imgpath }),
+        _react2.default.createElement('img', { className: 'image', src: this.state.imgpath }),
         _react2.default.createElement(TitleWithTip, { text: this.state.title })
       );
     }

@@ -216,13 +216,13 @@
         margin: 0 0 0 10px;
         vertical-align: center;
         text-decoration: underline;
-        color: #0081FF;
+        color: var(--nav-hash-word-color);
         font-family: var(--nav-world-font-family);
         font-weight: 500;
         font-size: 1.1rem;
 
         &:hover {
-          color: #0169d1;
+          color: var(--nav-hash-hover-color);
           cursor: pointer;
         }
       }
