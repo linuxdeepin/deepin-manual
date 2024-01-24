@@ -28,7 +28,7 @@ QVariantHash I18nProxy::getSentences() const
         {"ResultNumSuffixs", QObject::tr("  results")},
         {"ClicktoView", QObject::tr("Click to view ")},
         {"ViewAll", QObject::tr("View all")},
-        {"Support", QObject::tr("Service and Support")}
+        {"Support", QObject::tr("Support")}
     };
 
     return result;
