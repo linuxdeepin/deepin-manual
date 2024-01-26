@@ -650,7 +650,7 @@ var App = function (_React$Component) {
                     document.documentElement.style.setProperty('--scrollbar-div-background-color', 'rgba(255,255,255,0.2)');
                     document.documentElement.style.setProperty('--scrollbar-div-hover-background-color', 'rgba(255,255,255,0.25)');
                     document.documentElement.style.setProperty('--scrollbar-div-select-background-color', 'rgba(255,255,255,0.3)');
-                    document.documentElement.style.setProperty('--index-h2-color', 'rgba(255,255,255,0.05)');
+                    document.documentElement.style.setProperty('--index-h2-color', 'rgba(255,255,255,0.1)');
                     document.documentElement.style.setProperty('--search-button-background-color-start', '#484848');
                     document.documentElement.style.setProperty('--search-button-background-color-end', '#414141');
                     document.documentElement.style.setProperty('--search-button-hover-color-start', '#676767');
