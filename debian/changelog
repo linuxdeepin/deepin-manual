@@ -1,3 +1,10 @@
+deepin-manual (6.0.8) unstable; urgency=medium
+
+  * feat: New Quick Start and Video Guide modules added 
+  * fix: Quick Start and Video Guide modules problem repair
+
+ -- fengli <fengli@uniontech.com>  Fri, 26 Jan 2024 11:37:47 +0800
+
 deepin-manual (6.0.7) stable; urgency=medium
 
   * chore: Sync by https://github.com/linuxdeepin/.github/commit/2e5e092ba3f86b16d1aabbabcf0bfd2ae65b19c8(Influence: none)
