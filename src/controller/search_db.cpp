@@ -236,7 +236,12 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
             //正则替换所有的svg路径
             QRegExp exp("src=\"([^>]*svg)\"");
             exp.setMinimal(true);
+            QRegExp expPng("src=\"..\/common([^>]*png)\"");
+            expPng.setMinimal(true);
+
             content = content.replace(exp, QString("src=\"%1/%2\"").arg(strTemp).arg("\\1"));
+            if (content.contains("common")/* && !content.contains("fig")*/)
+                content = content.replace(expPng, QString("src=\"%1/../common%2\"").arg(strTemp).arg("\\1"));
             newContents.replace(i, content);
         }
     }
@@ -667,9 +672,13 @@ void SearchDb::handleSearchContent(const QString &keyword)
             //新结构
             QRegExp expFit("<img src=\\\"fig.*>");
             expFit.setMinimal(true);
+            //相对路径
+            QRegExp expRelative("<img src=\\\"\.\/fig.*>");
+            expRelative.setMinimal(true);
 
             highlightContent.remove(expFit);
             highlightContent.remove(expJpg);
+            highlightContent.remove(expRelative);
 
             //处理内容是否省略..
             omitHighlight(highlightContent, keyword);
