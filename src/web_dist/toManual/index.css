@@ -657,20 +657,9 @@ body {
         height: 18px;
         vertical-align: middle; }
       #search .items .item img[src$='png'] {
-        max-width: 99%;
-        cursor: pointer; }
-        @media screen and (-webkit-min-device-pixel-ratio: 1.25) {
-          #search .items .item img[src$='png'] {
-            zoom: 2; } }
-        @media screen and (-webkit-min-device-pixel-ratio: 1.5) {
-          #search .items .item img[src$='png'] {
-            zoom: 1; } }
-        @media screen and (-webkit-min-device-pixel-ratio: 1.75) {
-          #search .items .item img[src$='png'] {
-            zoom: 0.66667; } }
-        @media screen and (-webkit-min-device-pixel-ratio: 2) {
-          #search .items .item img[src$='png'] {
-            zoom: 0.5; } }
+        margin-top: -2px;
+        height: 18px;
+        vertical-align: middle; }
       #search .items .item img[src$='jpg'] {
         max-width: 99%;
         cursor: pointer;
