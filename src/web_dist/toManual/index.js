@@ -667,8 +667,8 @@ var App = function (_React$Component) {
                     document.documentElement.style.setProperty('--body-color-white2black', '#FFFFFF');
                     document.documentElement.style.setProperty('--app-word-color', '#414D68');
                     document.documentElement.style.setProperty('--nav-background-color', '#FFFFFF');
-                    document.documentElement.style.setProperty('--nav-h2-word-color', '#001A2E');
-                    document.documentElement.style.setProperty('--nav-h3-word-color', '#001A2E');
+                    document.documentElement.style.setProperty('--nav-h2-word-color', 'rgba(0, 0, 0, 0.85)');
+                    document.documentElement.style.setProperty('--nav-h3-word-color', 'rgba(0, 0, 0, 0.7)');
                     document.documentElement.style.setProperty('--nav-hove-word-color', '#000000');
                     document.documentElement.style.setProperty('--nav-hove-border-color', 'rgba(0, 0, 0, 0.05)');
                     // document.documentElement.style.setProperty(`--nav-hash-word-color`, '#ca0c16');   //btn list 改这一行
@@ -679,7 +679,7 @@ var App = function (_React$Component) {
                     document.documentElement.style.setProperty('--article-table-cell-border-color', 'rgba(0, 0, 0, 0.05)');
                     document.documentElement.style.setProperty('--index-item-background-color', '#FFFFFF');
                     document.documentElement.style.setProperty('--index-item-hover-color', 'rgba(0,0,0,0.05)');
-                    document.documentElement.style.setProperty('--index-item-span-word-color', '#414D68');
+                    document.documentElement.style.setProperty('--index-item-span-word-color', 'rgba(0, 0, 0, 0.7)');
                     document.documentElement.style.setProperty('--search-noresult-word-color', '#000000');
                     document.documentElement.style.setProperty('--search-button-word-color', '#414D68');
                     document.documentElement.style.setProperty('--search-button-hover-word-color', '#001B2E');
