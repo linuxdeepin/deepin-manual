@@ -1,3 +1,9 @@
+deepin-manual (6.0.10) unstable; urgency=medium
+
+  * Add resource file
+
+ -- fengli <fengli@uniontech.com>  Thu, 01 Feb 2024 17:14:55 +0800
+
 deepin-manual (6.0.9) unstable; urgency=medium
 
   * Update version 6.0.9
