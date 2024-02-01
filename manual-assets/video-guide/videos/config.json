@@ -1,0 +1,69 @@
+{
+  "url": "https://faq.uniontech.com/video/function/8577",
+  "videos": [
+    {
+      "name[en_US]": "Introduction to Uniontech Desktopp Operating System",
+      "name[zh_CN]": "统信桌面操作系统介绍",
+      "name[zh_HK]": "統信桌面作業系統介紹",
+      "name[zh_TW]": "統信桌⾯作業系統介紹",
+      "url": "https://faq.uniontech.com/video/function/1850",
+      "cover": "01.png"
+    },
+    {
+      "name[en_US]": "Introduction to System Control Center",
+      "name[zh_CN]": "系统控制中心介绍",
+      "name[zh_HK]": "系統控制中心介紹",
+      "name[zh_TW]": "繫統控制中心介紹",
+      "url": "https://faq.uniontech.com/video/function/3dbe",
+      "cover": "02.png"
+    },
+    {
+      "name[en_US]": "Introduction to System File Manager",
+      "name[zh_CN]": "系统文件管理器介绍",
+      "name[zh_HK]": "系統文件管理器介紹",
+      "name[zh_TW]": "繫統文件管理器介紹",
+      "url": "https://faq.uniontech.com/video/function/9650",
+      "cover": "03.png"
+    },
+    {
+      "name[en_US]": "Introduction to System Input Method Settings",
+      "name[zh_CN]": "系统输入法设置介绍",
+      "name[zh_HK]": "系統輸入法設置介紹",
+      "name[zh_TW]": "繫統輸入法設定介紹",
+      "url": "https://faq.uniontech.com/video/function/5aa2",
+      "cover": "04.png"
+    },
+    {
+      "name[en_US]": "Introduction to System Printer Installation",
+      "name[zh_CN]": "系统打印机安装介绍",
+      "name[zh_HK]": "系統打印機安裝介紹",
+      "name[zh_TW]": "繫統印錶機安裝介紹",
+      "url": "https://faq.uniontech.com/video/function/40a1",
+      "cover": "05.png"
+    },
+    {
+      "name[en_US]": "Introduction to System Font Installation",
+      "name[zh_CN]": "系统字体安装介绍",
+      "name[zh_HK]": "系統字體安裝介紹",
+      "name[zh_TW]": "繫統字體安裝介紹",
+      "url": "https://faq.uniontech.com/video/function/aa23",
+      "cover": "06.png"
+    },
+    {
+      "name[en_US]": "Introduction to System Screenshot Function",
+      "name[zh_CN]": "系统截图功能介绍",
+      "name[zh_HK]": "系統截圖功能介紹",
+      "name[zh_TW]": "繫統截圖功能介紹",
+      "url": "https://faq.uniontech.com/video/function/1590",
+      "cover": "07.png"
+    },
+    {
+      "name[en_US]": "Introduction to System CD Burning",
+      "name[zh_CN]": "系统光盘刻录介绍",
+      "name[zh_HK]": "系統光盤刻錄介紹",
+      "name[zh_TW]": "繫統光盤刻錄介紹",
+      "url": "https://faq.uniontech.com/video/function/e160",
+      "cover": "08.png"
+    }
+  ]
+}
