@@ -351,5 +351,9 @@ install(FILES ${QM_FILES}
 install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/web_dist
             DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
 
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/manual-assets/learn-basic-operations
+                  ${CMAKE_SOURCE_DIR}/manual-assets/common-application-libraries
+                  ${CMAKE_SOURCE_DIR}/manual-assets/video-guide
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets/system)
 
 string(TOLOWER ${CMAKE_SYSTEM_PROCESSOR} LOWERCASE_CMAKE_SYSTEM_PROCESSOR)

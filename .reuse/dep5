@@ -78,3 +78,8 @@ License: BSD-3-Clause
 Files: tests/src/third-party/stub/*
 Copyright: 2019 coolxv
 License: MIT
+
+# assets
+Files: manual-assets/*
+Copyright: UnionTech Software Technology Co., Ltd.
+License: LGPL-3.0-or-later
