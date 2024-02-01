@@ -1,3 +1,9 @@
+deepin-manual (6.0.9) unstable; urgency=medium
+
+  * Update version 6.0.9
+
+ -- fengli <fengli@uniontech.com>  Thu, 01 Feb 2024 14:15:33 +0800
+
 deepin-manual (6.0.8) unstable; urgency=medium
 
   * feat: New Quick Start and Video Guide modules added 
