@@ -98,6 +98,16 @@
         <source>View all</source>
         <translation type="unfinished"></translation>
     </message>
+    <message>
+        <location filename="../src/app/dman.cpp" line="105"/>
+        <source>Manual</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/app/dman.cpp" line="106"/>
+        <source>Manual is designed to help users learn the operating system and its applications, providing specific instructions and function descriptions.</source>
+        <translation type="unfinished"></translation>
+    </message>
 </context>
 <context>
     <name>WebWindow</name>

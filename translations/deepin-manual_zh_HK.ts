@@ -1,4 +1,6 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" sourcelanguage="en_US" language="zh_HK">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="zh_HK" sourcelanguage="en_US">
 <context>
     <name>ManualProxy</name>
     <message>
@@ -95,6 +97,16 @@
         <location filename="../src/view/i18n_proxy.cpp" line="30"/>
         <source>View all</source>
         <translation>查看全部</translation>
+    </message>
+    <message>
+        <location filename="../src/app/dman.cpp" line="105"/>
+        <source>Manual</source>
+        <translation>幫助手冊</translation>
+    </message>
+    <message>
+        <location filename="../src/app/dman.cpp" line="106"/>
+        <source>Manual is designed to help users learn the operating system and its applications, providing specific instructions and function descriptions.</source>
+        <translation>幫助手冊為幫助用戶了解此操作系統及其系列應用，提供具體的使用方法和功能說明。</translation>
     </message>
 </context>
 <context>
