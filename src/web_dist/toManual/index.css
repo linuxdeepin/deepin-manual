@@ -7,7 +7,6 @@ body {
 
 #app {
   width: 100%;
-  height: calc(100%);
   color: var(--app-word-color); }
   #app a {
     text-decoration: none;
@@ -39,27 +38,34 @@ div {
     border-radius: 48px;
     background-color: var(--nav-hash-word-color);
     display: inline-block;
-    position: absolute;
-    right: 20px;
+    position: fixed;
+    left: var(--support-position);
     bottom: 25px; }
+    div .support-div:hover {
+      cursor: pointer;
+      background-color: var(--nav-hash-hover-color); }
+    div .support-div:active {
+      background-color: var(--nav-hash-press-color); }
     div .support-div .support {
+      position: absolute;
       width: 20px;
       height: 21px;
-      margin-top: 14px;
-      margin-left: 14px; }
+      top: 14px;
+      left: 14px; }
     div .support-div .tooltip-wrapper {
       position: absolute;
       visibility: hidden;
       white-space: nowrap;
-      right: -10px;
-      bottom: -25px;
+      right: -15px;
+      bottom: -23px;
       background-color: var(--tips-background-color);
       color: var(--nav-hove-word-color);
       max-width: 500px;
       padding: 2px 5px;
-      border-radius: 18px;
+      border-radius: 8px;
       border: 1px solid var(--nav-hove-border-color);
-      font-family: var(--nav-world-font-family); }
+      font-family: var(--nav-world-font-family);
+      box-shadow: 0px 3px 20px rgba(247, 247, 247, 0.6); }
     div .support-div .tooltip-wrapper.show {
       visibility: visible; }
 
@@ -275,7 +281,7 @@ div {
   user-select: none;
   display: flex;
   flex-flow: column;
-  margin-top: -1px;
+  margin-top: -2px;
   margin-bottom: -19px;
   margin-left: auto;
   margin-right: auto;
