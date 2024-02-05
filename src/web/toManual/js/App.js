@@ -519,10 +519,27 @@ class App extends React.Component {
             if (toR.length == 1) toR = '0' + toR;
             if (toG.length == 1) toG = '0' + toG;
             if (toB.length == 1) toB = '0' + toB;
-
             var toRGB = "#" + toR + toG + toB;
             console.log('hover color:', toRGB);
             document.documentElement.style.setProperty(`--nav-hash-hover-color`, toRGB);
+
+            var pR = parseInt(r, 16);
+            var pG = parseInt(g, 16);
+            var pB = parseInt(b, 16);
+            pR -= 16;
+            pG -= 16;
+            pB -= 16;
+            if (pR > 255) pR = 255;
+            if (pG > 255) pG = 255;
+            if (pB > 255) pB = 255;
+            toR = pR.toString(16);
+            toG = pG.toString(16);
+            toB = pB.toString(16);
+            if (toR.length == 1) toR = '0' + toR;
+            if (toG.length == 1) toG = '0' + toG;
+            if (toB.length == 1) toB = '0' + toB;
+            toRGB = "#" + toR + toG + toB;
+            document.documentElement.style.setProperty(`--nav-hash-press-color`, toRGB);
         }
 
         global.setWordFontfamily = (strFontFamily) => {
@@ -622,6 +639,13 @@ class App extends React.Component {
             } else {
                 console.log('Null');
             }
+
+            const windowWidth = window.innerWidth;
+            var leftDistance = windowWidth - 70 + 'px';
+            if (windowWidth > 1630 + 234) {
+                leftDistance = (windowWidth - 1630) / 2 + 1630 + 50 + 'px';
+            }
+            document.documentElement.style.setProperty(`--support-position`, leftDistance);
         }
 
         let Base64 = {
@@ -735,6 +759,16 @@ App.childContextTypes = {
     searchResult: PropTypes.array,
     mismatch: PropTypes.bool
 };
+
+window.addEventListener('resize', function () {
+    const windowWidth = window.innerWidth;
+    var leftDistance = windowWidth - 70 + 'px';
+
+    if (windowWidth > 1630 + 234) {
+        leftDistance = (windowWidth - 1630) / 2 + 1630 + 50 + 'px';
+    }
+    document.documentElement.style.setProperty(`--support-position`, leftDistance);
+});
 
 render(
     <Router history={createMemoryHistory('/')} >

@@ -124,7 +124,7 @@ void helperManager::getModuleInfo()
 #endif
     }
 
-    QFileInfo fileInfo(kVideoConfigPath); //配置文件也需要监控
+    QFileInfo fileInfo(kVideoConfigPath);
     if (fileInfo.exists()) {
         QString modifyTime = fileInfo.lastModified().toString("yyyy-MM-dd hh:mm:ss.zzz");
         mapNow.insert(kVideoConfigPath, modifyTime);
@@ -179,7 +179,7 @@ void helperManager::handleDb(const QStringList &deleteList, const QStringList &a
     QStringList tmpAddList = addList;
     int videoIndex = tmpAddList.indexOf(kVideoConfigPath);
     if (videoIndex >= 0) { //视频配置文件单独拿出来处理
-        tmpAddList.removeAt(videoIndex);
+//        tmpAddList.removeAt(videoIndex);
         QFile file(kVideoConfigPath);
         if (!file.open(QIODevice::ReadOnly)) {
             qDebug() << "Failed to open video config file.";

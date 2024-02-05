@@ -6,41 +6,46 @@
 
 body {
   background-color: var(--body-background-color);
-  width: 100%;  
-  margin:0px;
+  width: 100%;
+  margin: 0px;
   overflow-x: hidden;
   overflow-y: auto;
 }
 
 #app {
   width: 100%;
-  height: calc(100%);
   color: var(--app-word-color);
+
   a {
     text-decoration: none;
     color: #00162c;
   }
 }
 
-.scrollbar > div:last-child {
+.scrollbar>div:last-child {
   width: 6px !important;
-  border-radius:3px !important;
+  border-radius: 3px !important;
+
   div {
     background-color: var(--scrollbar-div-background-color) !important;
     cursor: default !important;
+
     &:hover {
-        background-color: var(--scrollbar-div-hover-background-color) !important;
+      background-color: var(--scrollbar-div-hover-background-color) !important;
     }
   }
+
   &:hover {
     width: 8px !important;
-    border-radius:4px !important;
+    border-radius: 4px !important;
   }
 }
+
 body[style*='user-select: none'] {
-  .scrollbar > div:last-child {
+  .scrollbar>div:last-child {
     width: 8px !important;
-    border-radius:4px !important;
+    border-radius: 4px !important;
+
     div {
       background-color: var(--scrollbar-div-select-background-color) !important;
     }
@@ -50,7 +55,7 @@ body[style*='user-select: none'] {
 
 div {
   outline: none;
-  
+
   //if screen is over 4K and webkit-min >= 2 ,the follow setting  will  create some warning...
   //so remove them  now... 
 
@@ -85,35 +90,45 @@ div {
     border-radius: 48px;
     background-color: var(--nav-hash-word-color);
     display: inline-block;
-    position: absolute;
-    right: 20px;
+    position: fixed;
+    left: var(--support-position);
     bottom: 25px;
-  
+
+    &:hover {
+      cursor: pointer;
+      background-color: var(--nav-hash-hover-color);
+    }
+    &:active {  
+      // background-color: blue;  
+      background-color: var(--nav-hash-press-color);
+    }
+
     .support {
+      position: absolute;
       width: 20px;
       height: 21px;
-      margin-top: 14px;
-      margin-left: 14px;
+      top: 14px;
+      left: 14px;
     }
-  
+
     .tooltip-wrapper {
       position: absolute;
       visibility: hidden;
-      white-space: nowrap;  
-      right: -10px;
-      bottom: -25px;
+      white-space: nowrap;
+      right: -15px;
+      bottom: -23px;
       background-color: var(--tips-background-color);
       color: var(--nav-hove-word-color);
       max-width: 500px;
       padding: 2px 5px;
-      border-radius: 18px;
+      border-radius: 8px;
       border: 1px solid var(--nav-hove-border-color);
       font-family: var(--nav-world-font-family);
+      box-shadow: 0px 3px 20px rgba(247, 247, 247, 0.6);
     }
-  
+
     .tooltip-wrapper.show {
       visibility: visible;
     }
   }
 }
-
