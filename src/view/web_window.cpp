@@ -268,7 +268,21 @@ void WebWindow::HelpSupportTriggered(bool bActiontrigger)
     if (reply.isValid()) {
         qDebug() << "call com.deepin.dde.ServiceAndSupport success";
     } else {
-        qDebug() << "call com.deepin.dde.ServiceAndSupport failed";
+        qDebug() << "call com.deepin.dde.ServiceAndSupport failed, " << interface.lastError();
+        // 打开失败，尝试再次打开
+        QTimer::singleShot(100, this, [bActiontrigger](){
+            QDBusInterface interface("com.deepin.dde.ServiceAndSupport",
+                                     "/com/deepin/dde/ServiceAndSupport",
+                                     "com.deepin.dde.ServiceAndSupport");
+            uint8_t supporttype = 0;
+            if (!bActiontrigger) {
+                supporttype = 2;
+            }
+            QDBusReply<void> reply = interface.call("ServiceSession", supporttype);
+            if (!reply.isValid()) {
+                qDebug() << "call failed again";
+            }
+        });
     }
 }
 
@@ -609,7 +623,9 @@ void WebWindow::initUI()
         QAction *pHelpSupport = new QAction(QObject::tr("Support"));
         pMenu->addAction(pHelpSupport);
         this->titlebar()->setMenu(pMenu);
-        connect(pHelpSupport, &QAction::triggered, this, [this] { this->HelpSupportTriggered(true); });
+        connect(pHelpSupport, &QAction::triggered, this, [this] {
+            this->HelpSupportTriggered(true);
+        });
     }
     this->titlebar()->addWidget(buttonFrame, Qt::AlignLeft);
     this->titlebar()->addWidget(search_edit_, Qt::AlignCenter);
