@@ -1,3 +1,9 @@
+deepin-manual (6.0.12) unstable; urgency=medium
+
+  * fix some bugs.
+
+ -- fengli <fengli@uniontech.com>  Wed, 21 Feb 2024 16:53:13 +0800
+
 deepin-manual (6.0.11) unstable; urgency=medium
 
   * New version 6.0.11
