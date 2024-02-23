@@ -63,9 +63,9 @@ div {
       max-width: 500px;
       padding: 2px 5px;
       border-radius: 8px;
-      border: 1px solid var(--nav-hove-border-color);
+      border: 1px solid var(--tips-border-color);
       font-family: var(--nav-world-font-family);
-      box-shadow: 0px 3px 20px rgba(247, 247, 247, 0.6); }
+      box-shadow: 0px 3px 20px var(--tips-shadow-color); }
     div .support-div .tooltip-wrapper.show {
       visibility: visible; }
 
@@ -299,7 +299,8 @@ div {
     font-size: 1.6rem;
     line-height: 4.5rem;
     margin: 0 0 0 0;
-    border-top: 1px solid var(--index-h2-color); }
+    border-top: 1px solid var(--index-h2-color);
+    color: var(--nav-h2-word-color); }
     #index h2 #righttext {
       color: var(--nav-hash-word-color);
       float: right;

@@ -122,9 +122,9 @@ div {
       max-width: 500px;
       padding: 2px 5px;
       border-radius: 8px;
-      border: 1px solid var(--nav-hove-border-color);
+      border: 1px solid var(--tips-border-color);
       font-family: var(--nav-world-font-family);
-      box-shadow: 0px 3px 20px rgba(247, 247, 247, 0.6);
+      box-shadow: 0px 3px 20px var(--tips-shadow-color);
     }
 
     .tooltip-wrapper.show {
