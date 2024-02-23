@@ -645,8 +645,8 @@ var App = function (_React$Component) {
                     document.documentElement.style.setProperty('--body-color-white2black', '#000000');
                     document.documentElement.style.setProperty('--app-word-color', '#C0C6D4');
                     document.documentElement.style.setProperty('--nav-background-color', '#282828');
-                    document.documentElement.style.setProperty('--nav-h2-word-color', '#C0C6D4');
-                    document.documentElement.style.setProperty('--nav-h3-word-color', '#C0C0C0');
+                    document.documentElement.style.setProperty('--nav-h2-word-color', 'rgba(255, 255, 255, 0.85)');
+                    document.documentElement.style.setProperty('--nav-h3-word-color', 'rgba(255, 255, 255, 0.7)');
                     document.documentElement.style.setProperty('--nav-hove-word-color', '#C0C6D4');
                     document.documentElement.style.setProperty('--nav-hove-border-color', 'rgba(0, 0, 0, 0.3)');
                     //document.documentElement.style.setProperty(`--nav-hash-word-color`, '#0059D2');     //btnlist 改这行
@@ -675,8 +675,9 @@ var App = function (_React$Component) {
                     document.documentElement.style.setProperty('--search-WikiSearch-color', '#6D7C88');
                     document.documentElement.style.setProperty('--search-itemTitle-word-color', '#C0C6D4');
                     document.documentElement.style.setProperty('--search-context-word-color', '#6D7C88');
-                    document.documentElement.style.setProperty('--tips-background-color', '#2A2A2A');
-                    document.documentElement.style.setProperty('--tips-border-color', 'rgba(0, 0, 0,0.3)');
+                    document.documentElement.style.setProperty('--tips-background-color', 'rgba(42, 42, 42, 0.8)');
+                    document.documentElement.style.setProperty('--tips-border-color', 'rgba(0, 0, 0, 0.3)');
+                    document.documentElement.style.setProperty('--tips-shadow-color', 'rgba(0, 0, 0, 0.2)');
                 } else if ("LightType" == themeType) {
                     console.log('LightType');
                     document.documentElement.style.setProperty('--nav-hover-color', 'rgba(0,0,0,0.1)');
@@ -714,8 +715,9 @@ var App = function (_React$Component) {
                     document.documentElement.style.setProperty('--search-WikiSearch-color', '#7a7a7a');
                     document.documentElement.style.setProperty('--search-itemTitle-word-color', '#000000');
                     document.documentElement.style.setProperty('--search-context-word-color', '#000000');
-                    document.documentElement.style.setProperty('--tips-background-color', '#F7F7F7');
-                    document.documentElement.style.setProperty('--tips-border-color', 'rgba(0,0,0,0.05)');
+                    document.documentElement.style.setProperty('--tips-background-color', 'rgba(247, 247, 247, 0.6)');
+                    document.documentElement.style.setProperty('--tips-border-color', 'rgba(0, 0, 0, 0.05)');
+                    document.documentElement.style.setProperty('--tips-shadow-color', 'rgba(0, 0, 0, 0.2)');
                 } else {
                     console.log('Null');
                 }
