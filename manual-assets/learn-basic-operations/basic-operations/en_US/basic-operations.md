@@ -22,9 +22,13 @@ Users familiar with Windows know that using any function will start from the Sta
 
 Like the Taskbar under Windows,UOS Dock also contains several partitions such as Quick Launch, Tray, Plugin and so on. The Quick Launch bar can fix your frequently-used applications for easy one-click opening.
 
-The icon Tray area allows you to set Bluetooth, network and other shortcut settings directly.
+The icon Tray area allows you to set Bluetooth, network and other shortcut settings directly,You can also manage the tray by dragging the tray area icon and storing it in the tray window.
 
-The Plugin Area displays frequently used actions and can also be customized through Control Center - Personalization - Dock. Frequently used plug-ins such as screenshot recording, system monitor, global search, etc. can be resided.
+![pallet](./fig/pallet.png)
+
+The Plugin Area displays frequently used actions and can also be customized through Control Center - Personalization - Dock. Frequently used plug-ins such as screenshot recording, system monitor, global search, etc. can be resided,Some plugins can also be dragged to the shortcut panel for management, which is both beautiful and convenient.
+
+![quick_panel](./fig/quick_panel.png)
 
 ### 3.Computer (This PC)
 
@@ -181,13 +185,13 @@ In Control Center - Keyboard and Language - Input Method Settings, click Edit bu
 
 ## V. Join the community to answer your questions and solve your problems
 
-Welcome to WeChat sweeping code to join the official community of TUNISON, get intimate online services: ** perfect use of skills, fresh product information, interesting official activities **, everything, group activity code, permanently valid.
+Welcome to WeChat sweeping code to join the official community of TUNISON, get intimate online services: **perfect use of skills, fresh product information, interesting official activities **, everything, group activity code, permanently valid.
 
 ![community](./fig/community.png)
 
+You are welcome to scan the QR code on WeChat to open the UOS Tip Assistant mini program and view the tips online.
 
-
-
+![tip_assistant](./fig/tip_assistant.jpg)
 
 
 
