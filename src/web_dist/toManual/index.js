@@ -56,6 +56,7 @@ global.lastUrlBeforeSearch = '/';
 global.lastHistoryIndex = 0;
 global.lastAction = 'PUSH';
 global.isShowHelperSupport = false;
+global.isShowAppStore = false;
 global.scrollBehavior = 'smooth';
 global.bIsReload = false;
 // global.gHistoryGo = 0;
@@ -116,7 +117,55 @@ var Support = function Support(_ref) {
             },
             style: { userSelect: 'none' }
         },
-        _react2.default.createElement('img', { className: 'support', src: './pic.svg' }),
+        _react2.default.createElement('img', { className: 'support', src: './support.svg' }),
+        isHovered && _react2.default.createElement(
+            'div',
+            { className: 'tooltip-wrapper ' + (isHovered ? 'show' : '') },
+            tooltipText
+        )
+    ) : _react2.default.createElement('div', null);
+};
+
+var AppStore = function AppStore(_ref2) {
+    var text = _ref2.text;
+
+    var _useState5 = (0, _react.useState)(false),
+        _useState6 = _slicedToArray(_useState5, 2),
+        isHovered = _useState6[0],
+        setIsHovered = _useState6[1];
+
+    var _useState7 = (0, _react.useState)(text),
+        _useState8 = _slicedToArray(_useState7, 2),
+        tooltipText = _useState8[0],
+        setTooltipText = _useState8[1];
+
+    (0, _react.useEffect)(function () {
+        if (isHovered) {
+            setTooltipText(global.i18n['AppStore']);
+        }
+    }, [isHovered]);
+
+    (0, _react.useEffect)(function () {
+        if (!isHovered) {
+            setTooltipText('');
+        }
+    }, [isHovered]);
+
+    return global.isShowAppStore ? _react2.default.createElement(
+        'div',
+        { className: 'store-div',
+            onClick: function onClick() {
+                return global.qtObjects.manual.appStoreClick();
+            },
+            onMouseEnter: function onMouseEnter() {
+                return setIsHovered(true);
+            },
+            onMouseLeave: function onMouseLeave() {
+                return setIsHovered(false);
+            },
+            style: { userSelect: 'none' }
+        },
+        _react2.default.createElement('img', { className: 'store', src: './shop.svg' }),
         isHovered && _react2.default.createElement(
             'div',
             { className: 'tooltip-wrapper ' + (isHovered ? 'show' : '') },
@@ -164,6 +213,9 @@ var App = function (_React$Component) {
 
                 global.qtObjects.manual.hasSelperSupport(function (bFlag) {
                     global.isShowHelperSupport = bFlag;
+                });
+                global.qtObjects.manual.hasAppStore(function (bFlag) {
+                    global.isShowAppStore = bFlag;
                 });
 
                 global.qtObjects.manual.bIsLongSon(function (isLongSon) {
@@ -412,6 +464,8 @@ var App = function (_React$Component) {
             var pathList = pathName.split("/");
             var cKeyword = '';
 
+            if (pathName.includes("common-application-libraries")) document.documentElement.style.setProperty('--app-store-visibility', 'visible');else document.documentElement.style.setProperty('--app-store-visibility', 'hidden');
+
             //search页===>/search/:keyword
             //open页=====>/open/:file/:hash?/:key?
             if (pathList.length == 3) {
@@ -621,6 +675,8 @@ var App = function (_React$Component) {
                 if (toB.length == 1) toB = '0' + toB;
                 toRGB = "#" + toR + toG + toB;
                 document.documentElement.style.setProperty('--nav-hash-press-color', toRGB);
+                // toRGB = "rgba(" + pR + ", " + pG + ", " + pB + ", " + "0.4)";
+                // document.documentElement.style.setProperty(`--active-shadow-color`, toRGB);
             };
 
             global.setWordFontfamily = function (strFontFamily) {
@@ -799,6 +855,8 @@ var App = function (_React$Component) {
                 _this5.context.router.history.goBack();
             };
             this.componentDidUpdate();
+
+            document.documentElement.style.setProperty('--app-store-visibility', 'hidden');
         }
     }, {
         key: 'componentDidUpdate',
@@ -827,6 +885,7 @@ var App = function (_React$Component) {
                     _react2.default.createElement(_reactRouterDom.Route, { path: '/open/:file/:hash?/:key?', component: _main2.default }),
                     _react2.default.createElement(_reactRouterDom.Route, { path: '/search/:keyword', component: _search2.default })
                 ),
+                _react2.default.createElement(AppStore, { text: ' ' }),
                 _react2.default.createElement(Support, { text: ' ' })
             );
         }

@@ -23,6 +23,7 @@ global.lastUrlBeforeSearch = '/';
 global.lastHistoryIndex = 0;
 global.lastAction = 'PUSH';
 global.isShowHelperSupport = false;
+global.isShowAppStore = false;
 global.scrollBehavior = 'smooth';
 global.bIsReload = false;
 // global.gHistoryGo = 0;
@@ -67,7 +68,36 @@ const Support = ({ text }) => {
             onMouseLeave={() => setIsHovered(false)}
             style={{ userSelect: 'none' }}
         >
-            <img className="support" src="./pic.svg"></img>
+            <img className="support" src="./support.svg"></img>
+            {isHovered && <div className={`tooltip-wrapper ${isHovered ? 'show' : ''}`}>{tooltipText}</div>}
+        </div> : <div></div>
+    );
+};
+
+const AppStore = ({ text }) => {
+    const [isHovered, setIsHovered] = useState(false);
+    const [tooltipText, setTooltipText] = useState(text);
+
+    useEffect(() => {
+        if (isHovered) {
+            setTooltipText(global.i18n['AppStore']);
+        }
+    }, [isHovered]);
+
+    useEffect(() => {
+        if (!isHovered) {
+            setTooltipText('');
+        }
+    }, [isHovered]);
+
+    return (
+        global.isShowAppStore ? <div className="store-div"
+            onClick={() => global.qtObjects.manual.appStoreClick()}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            style={{ userSelect: 'none' }}
+        >
+            <img className="store" src="./shop.svg"></img>
             {isHovered && <div className={`tooltip-wrapper ${isHovered ? 'show' : ''}`}>{tooltipText}</div>}
         </div> : <div></div>
     );
@@ -102,6 +132,9 @@ class App extends React.Component {
 
             global.qtObjects.manual.hasSelperSupport(bFlag => {
                 global.isShowHelperSupport = bFlag;
+            });
+            global.qtObjects.manual.hasAppStore(bFlag => {
+                global.isShowAppStore = bFlag;
             });
 
             global.qtObjects.manual.bIsLongSon(isLongSon => {
@@ -341,6 +374,11 @@ class App extends React.Component {
         var pathList = pathName.split("/");
         var cKeyword = '';
 
+        if (pathName.includes("common-application-libraries"))
+            document.documentElement.style.setProperty(`--app-store-visibility`, 'visible');
+        else
+            document.documentElement.style.setProperty(`--app-store-visibility`, 'hidden');
+
         //search页===>/search/:keyword
         //open页=====>/open/:file/:hash?/:key?
         if (pathList.length == 3) {
@@ -540,6 +578,8 @@ class App extends React.Component {
             if (toB.length == 1) toB = '0' + toB;
             toRGB = "#" + toR + toG + toB;
             document.documentElement.style.setProperty(`--nav-hash-press-color`, toRGB);
+            // toRGB = "rgba(" + pR + ", " + pG + ", " + pB + ", " + "0.4)";
+            // document.documentElement.style.setProperty(`--active-shadow-color`, toRGB);
         }
 
         global.setWordFontfamily = (strFontFamily) => {
@@ -724,6 +764,8 @@ class App extends React.Component {
             this.context.router.history.goBack();
         };
         this.componentDidUpdate();
+
+        document.documentElement.style.setProperty(`--app-store-visibility`, 'hidden');
     }
     componentDidUpdate() {
         if (global.qtObjects) {
@@ -749,6 +791,8 @@ class App extends React.Component {
                         <Route path="/search/:keyword" component={Search} />
                     </Switch>
                 )}
+
+                <AppStore text=" "></AppStore>
                 <Support text=" "></Support>
             </div>
         );

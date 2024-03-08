@@ -68,6 +68,44 @@ div {
       box-shadow: 0px 3px 20px var(--tips-shadow-color); }
     div .support-div .tooltip-wrapper.show {
       visibility: visible; }
+  div .store-div {
+    width: 48px;
+    height: 48px;
+    border-radius: 48px;
+    background-color: var(--nav-hash-word-color);
+    display: inline-block;
+    position: fixed;
+    left: var(--support-position);
+    bottom: 83px;
+    z-index: 10;
+    visibility: var(--app-store-visibility); }
+    div .store-div:hover {
+      cursor: pointer;
+      background-color: var(--nav-hash-hover-color); }
+    div .store-div:active {
+      background-color: var(--nav-hash-press-color); }
+    div .store-div .store {
+      position: absolute;
+      width: 20px;
+      height: 21px;
+      top: 14px;
+      left: 14px; }
+    div .store-div .tooltip-wrapper {
+      position: absolute;
+      visibility: hidden;
+      white-space: nowrap;
+      right: -15px;
+      bottom: -23px;
+      background-color: var(--tips-background-color);
+      color: var(--nav-hove-word-color);
+      max-width: 500px;
+      padding: 2px 5px;
+      border-radius: 8px;
+      border: 1px solid var(--tips-border-color);
+      font-family: var(--nav-world-font-family);
+      box-shadow: 0px 3px 20px var(--tips-shadow-color); }
+    div .store-div .tooltip-wrapper.show {
+      visibility: visible; }
 
 @charset "UTF-8";
 .Triangle, #article .t_center_down::after, #article .t_center_up::after, #article .t_right_down::after, #article .t_right_up::after, #article .t_left_down::after, #article .t_left_up::after {

@@ -82,6 +82,7 @@ private:
     void settingContextMenu();
     QRect hasWidgetRect(QWidget *);
     void HelpSupportTriggered(bool bActiontrigger = false);
+    void appStoreTriggered();
 
     QString app_name_;
     QString keyword_;

@@ -4,17 +4,17 @@
 <context>
     <name>ManualProxy</name>
     <message>
-        <location filename="../src/view/manual_proxy.cpp" line="311"/>
+        <location filename="../src/view/manual_proxy.cpp" line="322"/>
         <source>Learn Basic Operations</source>
         <translation>了解基本操作</translation>
     </message>
     <message>
-        <location filename="../src/view/manual_proxy.cpp" line="313"/>
+        <location filename="../src/view/manual_proxy.cpp" line="324"/>
         <source>Common Application Libraries</source>
         <translation>常用應用庫</translation>
     </message>
     <message>
-        <location filename="../src/view/manual_proxy.cpp" line="315"/>
+        <location filename="../src/view/manual_proxy.cpp" line="326"/>
         <source>Desktop Environment</source>
         <translation>桌面環境</translation>
     </message>
@@ -28,23 +28,23 @@
         <translation>在全文中搜索“%1”</translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="277"/>
+        <location filename="../src/view/web_window.cpp" line="301"/>
         <source>The content was updated</source>
         <translation>當前內容已更新</translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="606"/>
+        <location filename="../src/view/web_window.cpp" line="624"/>
         <source>Search</source>
         <translation>搜索</translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="609"/>
+        <location filename="../src/view/web_window.cpp" line="627"/>
         <location filename="../src/view/i18n_proxy.cpp" line="31"/>
         <source>Support</source>
         <translation>服務與支持</translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="815"/>
+        <location filename="../src/view/web_window.cpp" line="836"/>
         <source>Copy</source>
         <translation>複製</translation>
     </message>
@@ -99,6 +99,11 @@
         <translation>查看全部</translation>
     </message>
     <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="32"/>
+        <source>App Store</source>
+        <translation>應用商店</translation>
+    </message>
+    <message>
         <location filename="../src/app/dman.cpp" line="105"/>
         <source>Manual</source>
         <translation>幫助手冊</translation>
@@ -112,12 +117,12 @@
 <context>
     <name>WebWindow</name>
     <message>
-        <location filename="../src/view/web_window.cpp" line="744"/>
+        <location filename="../src/view/web_window.cpp" line="765"/>
         <source>Ctrl+Alt+F</source>
         <translation>Ctrl+Alt+F</translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="759"/>
+        <location filename="../src/view/web_window.cpp" line="780"/>
         <source>Ctrl+F</source>
         <translation>Ctrl+F</translation>
     </message>
