@@ -342,12 +342,6 @@ void WebWindow::resizeEvent(QResizeEvent *event)
             completion_window_->move(local_point);
         }
     }
-    // 多屏下仅采用单个屏幕处理， 使用主屏的宽度计算
-    QScreen *screen = QGuiApplication::primaryScreen();
-    if (QGuiApplication::screens().size() > 1 && screen) {
-        move((screen->size().width() - size().width()) / 2, (screen->size().height() - size().height()) / 2);
-
-    }
 
     if (web_view_) {
         slot_ThemeChanged();

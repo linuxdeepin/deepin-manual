@@ -176,7 +176,6 @@ void WindowManager::setWindow(WebWindow *window)
     //设置window窗口属性
     window->resize(saveWidth, saveHeight);
     window->setMinimumSize(kWinMinWidth, kWinMinHeight);
-    window->move((QApplication::desktop()->width() - saveWidth) / 2, (QApplication::desktop()->height() - saveHeight) / 2);
 }
 
 void WindowManager::updateDb()
