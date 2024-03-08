@@ -30,7 +30,6 @@ export default class Main extends Component {
     }
     console.log("main init==>file:", file, " hash:", hash, " key:", key);
 
-
     global.hash = hash;
     var filePath = file;
 

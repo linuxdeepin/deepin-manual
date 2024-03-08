@@ -4,17 +4,17 @@
 <context>
     <name>ManualProxy</name>
     <message>
-        <location filename="../src/view/manual_proxy.cpp" line="311"/>
+        <location filename="../src/view/manual_proxy.cpp" line="322"/>
         <source>Learn Basic Operations</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/manual_proxy.cpp" line="313"/>
+        <location filename="../src/view/manual_proxy.cpp" line="324"/>
         <source>Common Application Libraries</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/manual_proxy.cpp" line="315"/>
+        <location filename="../src/view/manual_proxy.cpp" line="326"/>
         <source>Desktop Environment</source>
         <translation>Desktop Environment</translation>
     </message>
@@ -28,23 +28,23 @@
         <translation>Ricerca di &quot;%1&quot; anche nei contenuti</translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="277"/>
+        <location filename="../src/view/web_window.cpp" line="301"/>
         <source>The content was updated</source>
         <translation>Il contenuto è stato aggiornato</translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="606"/>
+        <location filename="../src/view/web_window.cpp" line="624"/>
         <source>Search</source>
         <translation>Cerca</translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="609"/>
+        <location filename="../src/view/web_window.cpp" line="627"/>
         <location filename="../src/view/i18n_proxy.cpp" line="31"/>
         <source>Support</source>
         <translation>Supporto</translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="815"/>
+        <location filename="../src/view/web_window.cpp" line="836"/>
         <source>Copy</source>
         <translation>Copia</translation>
     </message>
@@ -99,6 +99,11 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="32"/>
+        <source>App Store</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../src/app/dman.cpp" line="105"/>
         <source>Manual</source>
         <translation type="unfinished"></translation>
@@ -112,12 +117,12 @@
 <context>
     <name>WebWindow</name>
     <message>
-        <location filename="../src/view/web_window.cpp" line="744"/>
+        <location filename="../src/view/web_window.cpp" line="765"/>
         <source>Ctrl+Alt+F</source>
         <translation>Ctrl+Alt+F</translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="759"/>
+        <location filename="../src/view/web_window.cpp" line="780"/>
         <source>Ctrl+F</source>
         <translation>Ctrl+F</translation>
     </message>

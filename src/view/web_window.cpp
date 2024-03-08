@@ -286,6 +286,16 @@ void WebWindow::HelpSupportTriggered(bool bActiontrigger)
     }
 }
 
+void WebWindow::appStoreTriggered()
+{
+    if (!Utils::hasAppStore())
+        return;
+
+    QProcess process;
+    process.startDetached("deepin-home-appstore-client");
+    process.waitForFinished();
+}
+
 void WebWindow::slotUpdateLabel()
 {
     sendMessage(QIcon(":/common/images/ok.svg"), QObject::tr("The content was updated"));
@@ -463,7 +473,7 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
     if (event->type() == QEvent::FontChange && watched == this) {
         if (this->settings_proxy_) {
             qDebug() << "eventFilter QEvent::FontChange";
-            auto fontInfo = this->fontInfo();
+            QFontInfo fontInfo = this->fontInfo();
             emit this->settings_proxy_->fontChangeRequested(fontInfo.family(),
                                                             fontInfo.pixelSize());
         }
@@ -709,6 +719,7 @@ void WebWindow::initWebView()
     connect(manual_proxy_, &ManualProxy::WidgetLower, this, &WebWindow::lower);
     connect(manual_proxy_, &ManualProxy::updateLabel, this, &WebWindow::slotUpdateLabel);
     connect(manual_proxy_, &ManualProxy::supportBeClick, this, [this] { this->HelpSupportTriggered(); });
+    connect(manual_proxy_, &ManualProxy::appStoreBeClick, this, [this] { this->appStoreTriggered(); });
 
     //web主页html路径
     const QFileInfo info(kIndexPage);

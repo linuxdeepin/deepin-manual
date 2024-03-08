@@ -19,6 +19,7 @@ signals:
     void channelInit();
     void searchEditTextisEmpty();
     void supportBeClick();
+    void appStoreBeClick();
     //发送页面加载完成时间
     void startFinish(qint64);
     void updateLabel();
@@ -32,8 +33,10 @@ public slots:
     void setApplicationState(const QString &appName);
     QStringList getUsedAppList();
     bool hasSelperSupport();
+    bool hasAppStore();
     void finishChannel();
     void supportClick();
+    void appStoreClick();
     bool bIsLongSon();
     void showUpdateLabel();
     QString appToPath(const QString &appName);

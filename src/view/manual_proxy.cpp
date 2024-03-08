@@ -113,6 +113,12 @@ bool ManualProxy::hasSelperSupport()
     return b;
 }
 
+bool ManualProxy::hasAppStore()
+{
+    bool b = Utils::hasAppStore();
+    return b;
+}
+
 /**
  * @brief ManualProxy::finishChannel
  * 完成channel对象与Qt对象绑定后调用WebWindow中的onChannelFinish方法
@@ -129,6 +135,11 @@ void ManualProxy::finishChannel()
 void ManualProxy::supportClick()
 {
     emit supportBeClick();
+}
+
+void ManualProxy::appStoreClick()
+{
+    emit appStoreBeClick();
 }
 
 bool ManualProxy::bIsLongSon()
