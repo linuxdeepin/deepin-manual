@@ -1,3 +1,12 @@
+deepin-manual (6.0.13) unstable; urgency=medium
+
+  * fix: Main page font adjustment and tooltip style modification(Bug: 241593)
+  * fix: Update Quick Start Document
+  * feat: Add app store entrance to commonly used app library pages
+  * fix: In dual screen expansion mode, the help manual is maximized on the main screen before being restored, and the window will be directly displayed on the secondary screen(Bug: 244417)
+
+ -- houchengqiu <houchengqiu@uniontech.com>  Wed, 13 Mar 2024 15:08:16 +0800
+
 deepin-manual (6.0.12) unstable; urgency=medium
 
   * fix some bugs.
