@@ -10,6 +10,7 @@
 #include <DDesktopEntry>
 
 #include <QtGui/private/qiconloader_p.h>
+#include <QDesktopServices>
 
 ManualProxy::ManualProxy(QObject *parent)
     : QObject(parent)
@@ -409,9 +410,7 @@ void ManualProxy::openVideo(QString url)
     if(url.isEmpty()) {
         url = videoUrl;
     }
-    QProcess process;
-    process.startDetached("browser", QStringList(url));
-    process.waitForFinished();
+    QDesktopServices::openUrl(url);
 }
 
 /**
