@@ -1,3 +1,9 @@
+deepin-manual (6.0.14) unstable; urgency=medium
+
+  * fix: unable to open video on older version of the system.
+
+ -- fengli <fengli@uniontech.com>  Wed, 10 Apr 2024 14:17:01 +0800
+
 deepin-manual (6.0.13) unstable; urgency=medium
 
   * fix: Main page font adjustment and tooltip style modification(Bug: 241593)
