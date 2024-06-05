@@ -750,6 +750,9 @@ void WebWindow::saveWindowSize()
  */
 void WebWindow::updateDb()
 {
+    if (!search_manager_)
+        return;
+
     //更新数据库
     emit search_manager_->updateDb();
 }
