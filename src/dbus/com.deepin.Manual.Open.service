@@ -1,3 +1,4 @@
 [D-BUS Service]
 Name=com.deepin.Manual.Open
 Exec=/usr/bin/dman --dbus
+SystemdService=deepin-manual.service

@@ -13,8 +13,8 @@ Files: .gitignore .gitmodules
 Copyright: UnionTech Software Technology Co., Ltd.
 License: CC0-1.0
 
-# xml toml json conf yaml sh
-Files:  *.toml *.json *conf *.yaml *.sh
+# xml toml json conf yaml sh misc/*
+Files:  *.toml *.json *conf *.yaml *.sh misc/*
 Copyright: UnionTech Software Technology Co., Ltd.
 License: CC0-1.0
 
