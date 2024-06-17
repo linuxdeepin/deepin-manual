@@ -1,0 +1,8 @@
+[Unit]
+Description=deepin manual service
+
+[Service]
+ExecStart=/usr/bin/dman --dbus
+Type=dbus
+BusName=com.deepin.Manual.Open
+Slice=app.slice
