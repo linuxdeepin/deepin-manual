@@ -2,6 +2,8 @@
 Description=deepin manual service
 
 [Service]
+CapabilityBoundingSet=~CAP_NET_RAW
+MemoryLimit=8G
 ExecStart=/usr/bin/dman --dbus
 Type=dbus
 BusName=com.deepin.Manual.Open
