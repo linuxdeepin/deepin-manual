@@ -3,9 +3,24 @@ project(deepin-manual C CXX)
 #set(CMAKE_C_COMPILER  /usr/bin/clang)
 #set(CMAKE_CXX_COMPILER  /usr/bin/clang++)
 
-#assets目录在usr下
-set(CMAKE_INSTALL_PREFIX /usr)
-add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets")
+#set(CMAKE_INSTALL_PREFIX /usr)
+
+if(DEFINED LINGLONG_BUILD_ON)
+    # 玲珑构建编译开关
+    add_definitions(-DLINGLONG_BUILD)
+    # qwebengine玲珑路径
+    add_definitions(-DDMAN_QWEBENGINE_DIR="${CMAKE_INSTALL_PREFIX}/lib")
+    # webengine资源玲珑路径
+    add_definitions(-DDMAN_WEBENGINERES_DIR="${CMAKE_INSTALL_PREFIX}/share/qt5/resources")
+    # webengine翻译玲珑路径
+    add_definitions(-DDMAN_WEBENGINETS_DIR="${CMAKE_INSTALL_PREFIX}/share/qt5/translations")
+    message(STATUS "LINGLONG_BUILD is ON")
+    message(STATUS "CMAKE_INSTALL_PREFIX:${CMAKE_INSTALL_PREFIX}")
+    message(STATUS "SYSTEMD_USER_UNIT_DIR:${SYSTEMD_USER_UNIT_DIR}")
+else()
+    set(CMAKE_INSTALL_PREFIX "/usr")
+    message(STATUS "LINGLONG_BUILD is OFF")
+endif()
 
 if (CMAKE_BUILD_TYPE MATCHES Debug)
   add_definitions(-DDMAN_SEARCH_DB="${CMAKE_SOURCE_DIR}/manual-assets")
