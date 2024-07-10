@@ -25,14 +25,14 @@ void ut_fileWatcher::TearDown()
 
 TEST_F(ut_fileWatcher, onChangeFile)
 {
-    QString  dbPath = Utils::getSystemManualDir();
+    QString  dbPath = Utils::getSystemManualDir().first();
     dbPath += "/search.db";
     m_fw->onChangeFile(dbPath);
     ASSERT_TRUE(m_fw->timerObj->isActive());
 }
 TEST_F(ut_fileWatcher, onChangeDirSlot)
 {
-    QString assetsPath = Utils::getSystemManualDir();
+    QString assetsPath = Utils::getSystemManualDir().first();
     m_fw->onChangeDirSlot(assetsPath);
     ASSERT_TRUE(m_fw->timerObj->isActive());
 }

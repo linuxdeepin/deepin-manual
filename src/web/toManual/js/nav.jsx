@@ -61,7 +61,7 @@ class Nav extends Component {
   click(e) {
     let cid = e.target.getAttribute('cid');
     if (cid) {
-      console.log('搜索结果', cid);
+      console.log('nav 搜索结果', cid);
       global.hash = cid;
       global.isMouseClickNav = true;
       global.isMouseScrollArticle = false;

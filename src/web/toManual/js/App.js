@@ -2,7 +2,7 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import PropTypes from 'prop-types';
 import { render } from 'react-dom';
 import { Router as Router, Switch, Route, Link } from 'react-router-dom';
@@ -23,13 +23,14 @@ global.lastUrlBeforeSearch = '/';
 global.lastHistoryIndex = 0;
 global.lastAction = 'PUSH';
 global.isShowHelperSupport = false;
+global.isShowAppStore = false;
 global.scrollBehavior = 'smooth';
 global.bIsReload = false;
 // global.gHistoryGo = 0;
 
 
 global.readFile = (fileName, callback) => {
-    console.log("global.readFile...");
+    console.log("global.readFile...", fileName);
     let xhr = new XMLHttpRequest();
     xhr.open('GET', fileName);
     xhr.onload = () => {
@@ -38,6 +39,68 @@ global.readFile = (fileName, callback) => {
         // }
     };
     xhr.send();
+};
+
+const Support = ({ text }) => {
+    const [isHovered, setIsHovered] = useState(false);
+    const [tooltipText, setTooltipText] = useState(text);
+
+    // useEffect(() => {
+    //   setTooltipText(text);
+    // }, [text]);
+
+    useEffect(() => {
+        if (isHovered) {
+            setTooltipText(global.i18n['Support']);
+        }
+    }, [isHovered]);
+
+    useEffect(() => {
+        if (!isHovered) {
+            setTooltipText('');
+        }
+    }, [isHovered]);
+
+    return (
+        global.isShowHelperSupport ? <div className="support-div"
+            onClick={() => global.qtObjects.manual.supportClick()}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            style={{ userSelect: 'none' }}
+        >
+            <img className="support" src="./support.svg"></img>
+            {isHovered && <div className={`tooltip-wrapper ${isHovered ? 'show' : ''}`}>{tooltipText}</div>}
+        </div> : <div></div>
+    );
+};
+
+const AppStore = ({ text }) => {
+    const [isHovered, setIsHovered] = useState(false);
+    const [tooltipText, setTooltipText] = useState(text);
+
+    useEffect(() => {
+        if (isHovered) {
+            setTooltipText(global.i18n['AppStore']);
+        }
+    }, [isHovered]);
+
+    useEffect(() => {
+        if (!isHovered) {
+            setTooltipText('');
+        }
+    }, [isHovered]);
+
+    return (
+        global.isShowAppStore ? <div className="store-div"
+            onClick={() => global.qtObjects.manual.appStoreClick()}
+            onMouseEnter={() => setIsHovered(true)}
+            onMouseLeave={() => setIsHovered(false)}
+            style={{ userSelect: 'none' }}
+        >
+            <img className="store" src="./shop.svg"></img>
+            {isHovered && <div className={`tooltip-wrapper ${isHovered ? 'show' : ''}`}>{tooltipText}</div>}
+        </div> : <div></div>
+    );
 };
 
 class App extends React.Component {
@@ -49,7 +112,7 @@ class App extends React.Component {
             searchResult: [],
             mismatch: false,
             historyGO: 0
-                // changeAppList:[]
+            // changeAppList:[]
         };
         new QWebChannel(qt.webChannelTransport, this.initQt.bind(this));
     }
@@ -69,6 +132,9 @@ class App extends React.Component {
 
             global.qtObjects.manual.hasSelperSupport(bFlag => {
                 global.isShowHelperSupport = bFlag;
+            });
+            global.qtObjects.manual.hasAppStore(bFlag => {
+                global.isShowAppStore = bFlag;
             });
 
             global.qtObjects.manual.bIsLongSon(isLongSon => {
@@ -152,7 +218,7 @@ class App extends React.Component {
         global.setTheme(themeType);
     }
     onContentResult(appName, titleList, idList, contentList) {
-        console.log('搜索结果', appName, titleList, idList, contentList);
+        console.log('app 搜索结果', appName, titleList, idList, contentList);
         let { searchResult } = this.state;
         let filePath;
         // if (appName == "dde")
@@ -163,14 +229,17 @@ class App extends React.Component {
         // {
         //   filePath = `${global.path}/application/${appName}/${global.lang}/index.md`;
         // }
-        var myPromise = new Promise(function(resolve, reject) {
-            global.qtObjects.manual.appToPath(appName, function(filepath) {
+        var myPromise = new Promise(function (resolve, reject) {
+            global.qtObjects.manual.appToPath(appName, function (filepath) {
                 filePath = filepath;
                 resolve()
             })
         });
 
         myPromise.then(() => {
+            if (appName === "video-guide") {
+                filePath = "video-guide";
+            }
             searchResult.push({
                 file: filePath,
                 idList,
@@ -289,6 +358,15 @@ class App extends React.Component {
         let { searchResult, mismatch } = this.state;
         return { searchResult, mismatch };
     }
+
+    isbase64(str) {
+        if (str == '' || str.trim == '') { return false; }
+        try { return btoa(atob(str)) == str }
+        catch (err) {
+            return false;
+        }
+    }
+
     componentWillReceiveProps(nextProps) {
         console.log("app componentWillReceiveProps", this.context.router.history);
         console.log("this location: " + this.context.router.history.location);
@@ -296,19 +374,22 @@ class App extends React.Component {
         var pathList = pathName.split("/");
         var cKeyword = '';
 
-        //search页===>/search/:keyword 
-        //open页=====>/open/:file/:hash?/:key? 
+        if (pathName.includes("common-application-libraries"))
+            document.documentElement.style.setProperty(`--app-store-visibility`, 'visible');
+        else
+            document.documentElement.style.setProperty(`--app-store-visibility`, 'hidden');
+
+        //search页===>/search/:keyword
+        //open页=====>/open/:file/:hash?/:key?
         if (pathList.length == 3) {
             cKeyword = pathList[2];
         } else if (pathList.length == 5) {
             cKeyword = pathList[4];
         }
 
-        // global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
-        if (cKeyword == '%') {
-            global.qtObjects.search.getKeyword(cKeyword);
+        if (this.isbase64(cKeyword)) {
+            global.qtObjects.search.getKeyword(decodeURIComponent(atob(cKeyword)));
         } else {
-            console.log("decode URIComponent componentWillReceiveProps");
             global.qtObjects.search.getKeyword(decodeURIComponent(cKeyword));
         }
 
@@ -358,7 +439,7 @@ class App extends React.Component {
                 hash = 'h1'
             }
             file = encodeURIComponent(file);
-            console.log("globla.open...........");
+            // console.log("globla.open...........  ", file);
             hash = encodeURIComponent(hash);
             global.hash = hash;
 
@@ -393,8 +474,8 @@ class App extends React.Component {
                 //   filePath = `${global.path}/application/${file}/${global.lang}/index.md`
                 // }
 
-                var myPromise = new Promise(function(resolve, reject) {
-                    global.qtObjects.manual.appToPath(file, function(filepath) {
+                var myPromise = new Promise(function (resolve, reject) {
+                    global.qtObjects.manual.appToPath(file, function (filepath) {
                         filePath = filepath;
                         resolve()
                     })
@@ -406,10 +487,9 @@ class App extends React.Component {
                         let d = document.createElement('div');
                         d.innerHTML = html;
                         let dlist = d.querySelectorAll(`[text="${title}"]`);
-                        if(dlist.length == 0)
-                        {
-                            var translatePromise = new Promise(function(resolve, reject) {
-                                global.qtObjects.manual.translateTitle(title, function(titleTr) {
+                        if (dlist.length == 0) {
+                            var translatePromise = new Promise(function (resolve, reject) {
+                                global.qtObjects.manual.translateTitle(title, function (titleTr) {
                                     title = titleTr;
                                     resolve()
                                 })
@@ -418,21 +498,21 @@ class App extends React.Component {
                             translatePromise.then(() => {
                                 dlist = d.querySelectorAll(`[text="${title}"]`);
                                 let hashID = 'h0';
-                                for (let i = 0; i < dlist.length; i++) {                           
-                                        hashID = dlist[i].id;                          
+                                for (let i = 0; i < dlist.length; i++) {
+                                    hashID = dlist[i].id;
                                 }
                                 global.open(file, hashID);
                             });
                         }
-                        else
-                        { 
+                        else {
                             let hashID = 'h0';
-                            for (let i = 0; i < dlist.length; i++) {                           
-                                    hashID = dlist[i].id;                          
+                            for (let i = 0; i < dlist.length; i++) {
+                                hashID = dlist[i].id;
                             }
-                            global.open(file, hashID);}
-                        
-                       
+                            global.open(file, hashID);
+                        }
+
+
                     })
                 });
             } else {
@@ -477,10 +557,29 @@ class App extends React.Component {
             if (toR.length == 1) toR = '0' + toR;
             if (toG.length == 1) toG = '0' + toG;
             if (toB.length == 1) toB = '0' + toB;
-
             var toRGB = "#" + toR + toG + toB;
             console.log('hover color:', toRGB);
             document.documentElement.style.setProperty(`--nav-hash-hover-color`, toRGB);
+
+            var pR = parseInt(r, 16);
+            var pG = parseInt(g, 16);
+            var pB = parseInt(b, 16);
+            pR -= 16;
+            pG -= 16;
+            pB -= 16;
+            if (pR > 255) pR = 255;
+            if (pG > 255) pG = 255;
+            if (pB > 255) pB = 255;
+            toR = pR.toString(16);
+            toG = pG.toString(16);
+            toB = pB.toString(16);
+            if (toR.length == 1) toR = '0' + toR;
+            if (toG.length == 1) toG = '0' + toG;
+            if (toB.length == 1) toB = '0' + toB;
+            toRGB = "#" + toR + toG + toB;
+            document.documentElement.style.setProperty(`--nav-hash-press-color`, toRGB);
+            // toRGB = "rgba(" + pR + ", " + pG + ", " + pB + ", " + "0.4)";
+            // document.documentElement.style.setProperty(`--active-shadow-color`, toRGB);
         }
 
         global.setWordFontfamily = (strFontFamily) => {
@@ -506,8 +605,8 @@ class App extends React.Component {
                 document.documentElement.style.setProperty(`--body-color-white2black`, '#000000');
                 document.documentElement.style.setProperty(`--app-word-color`, '#C0C6D4');
                 document.documentElement.style.setProperty(`--nav-background-color`, '#282828');
-                document.documentElement.style.setProperty(`--nav-h2-word-color`, '#C0C6D4');
-                document.documentElement.style.setProperty(`--nav-h3-word-color`, '#C0C0C0');
+                document.documentElement.style.setProperty(`--nav-h2-word-color`, 'rgba(255, 255, 255, 0.85)');
+                document.documentElement.style.setProperty(`--nav-h3-word-color`, 'rgba(255, 255, 255, 0.7)');
                 document.documentElement.style.setProperty('--nav-hove-word-color', '#C0C6D4');
                 document.documentElement.style.setProperty('--nav-hove-border-color', 'rgba(0, 0, 0, 0.3)');
                 //document.documentElement.style.setProperty(`--nav-hash-word-color`, '#0059D2');     //btnlist 改这行
@@ -528,7 +627,7 @@ class App extends React.Component {
                 document.documentElement.style.setProperty(`--scrollbar-div-background-color`, 'rgba(255,255,255,0.2)');
                 document.documentElement.style.setProperty(`--scrollbar-div-hover-background-color`, 'rgba(255,255,255,0.25)');
                 document.documentElement.style.setProperty(`--scrollbar-div-select-background-color`, 'rgba(255,255,255,0.3)');
-                document.documentElement.style.setProperty(`--index-h2-color`, 'rgba(255,255,255,0.05)');
+                document.documentElement.style.setProperty(`--index-h2-color`, 'rgba(255,255,255,0.1)');
                 document.documentElement.style.setProperty(`--search-button-background-color-start`, '#484848');
                 document.documentElement.style.setProperty(`--search-button-background-color-end`, '#414141');
                 document.documentElement.style.setProperty(`--search-button-hover-color-start`, '#676767');
@@ -536,8 +635,9 @@ class App extends React.Component {
                 document.documentElement.style.setProperty(`--search-WikiSearch-color`, '#6D7C88');
                 document.documentElement.style.setProperty(`--search-itemTitle-word-color`, '#C0C6D4');
                 document.documentElement.style.setProperty(`--search-context-word-color`, '#6D7C88');
-                document.documentElement.style.setProperty(`--tips-background-color`, '#2A2A2A');
-                document.documentElement.style.setProperty(`--tips-border-color`, 'rgba(0, 0, 0,0.3)');
+                document.documentElement.style.setProperty(`--tips-background-color`, 'rgba(42, 42, 42, 0.8)');
+                document.documentElement.style.setProperty(`--tips-border-color`, 'rgba(0, 0, 0, 0.3)');
+                document.documentElement.style.setProperty('--tips-shadow-color', 'rgba(0, 0, 0, 0.2)');
             } else if ("LightType" == themeType) {
                 console.log('LightType');
                 document.documentElement.style.setProperty(`--nav-hover-color`, 'rgba(0,0,0,0.1)');
@@ -545,10 +645,10 @@ class App extends React.Component {
                 document.documentElement.style.setProperty(`--body-color-white2black`, '#FFFFFF');
                 document.documentElement.style.setProperty(`--app-word-color`, '#414D68');
                 document.documentElement.style.setProperty(`--nav-background-color`, '#FFFFFF');
-                document.documentElement.style.setProperty(`--nav-h2-word-color`, '#001A2E');
-                document.documentElement.style.setProperty(`--nav-h3-word-color`, '#001A2E');
+                document.documentElement.style.setProperty(`--nav-h2-word-color`, 'rgba(0, 0, 0, 0.85)');
+                document.documentElement.style.setProperty(`--nav-h3-word-color`, 'rgba(0, 0, 0, 0.7)');
                 document.documentElement.style.setProperty('--nav-hove-word-color', '#000000');
-                document.documentElement.style.setProperty('--nav-hove-border-color', 'rgba(0, 0, 0, 0.05)'); 
+                document.documentElement.style.setProperty('--nav-hove-border-color', 'rgba(0, 0, 0, 0.05)');
                 // document.documentElement.style.setProperty(`--nav-hash-word-color`, '#ca0c16');   //btn list 改这一行
                 document.documentElement.style.setProperty(`--article-read-word-color`, '#000000');
                 document.documentElement.style.setProperty(`--article-read-h2-word-color`, '#2CA7F8');
@@ -557,7 +657,7 @@ class App extends React.Component {
                 document.documentElement.style.setProperty(`--article-table-cell-border-color`, 'rgba(0, 0, 0, 0.05)');
                 document.documentElement.style.setProperty(`--index-item-background-color`, '#FFFFFF');
                 document.documentElement.style.setProperty(`--index-item-hover-color`, 'rgba(0,0,0,0.05)');
-                document.documentElement.style.setProperty(`--index-item-span-word-color`, '#414D68');
+                document.documentElement.style.setProperty(`--index-item-span-word-color`, 'rgba(0, 0, 0, 0.7)');
                 document.documentElement.style.setProperty(`--search-noresult-word-color`, '#000000');
                 document.documentElement.style.setProperty(`--search-button-word-color`, '#414D68');
                 document.documentElement.style.setProperty(`--search-button-hover-word-color`, '#001B2E');
@@ -575,11 +675,19 @@ class App extends React.Component {
                 document.documentElement.style.setProperty(`--search-WikiSearch-color`, '#7a7a7a');
                 document.documentElement.style.setProperty(`--search-itemTitle-word-color`, '#000000');
                 document.documentElement.style.setProperty(`--search-context-word-color`, '#000000');
-                document.documentElement.style.setProperty(`--tips-background-color`, '#F7F7F7');
-                document.documentElement.style.setProperty(`--tips-border-color`, 'rgba(0,0,0,0.05)');
+                document.documentElement.style.setProperty(`--tips-background-color`, 'rgba(247, 247, 247, 0.6)');
+                document.documentElement.style.setProperty(`--tips-border-color`, 'rgba(0, 0, 0, 0.05)');
+                document.documentElement.style.setProperty('--tips-shadow-color', 'rgba(0, 0, 0, 0.2)');
             } else {
                 console.log('Null');
             }
+
+            const windowWidth = window.innerWidth;
+            var leftDistance = windowWidth - 70 + 'px';
+            if (windowWidth > 1630 + 234) {
+                leftDistance = (windowWidth - 1630) / 2 + 1630 + 50 + 'px';
+            }
+            document.documentElement.style.setProperty(`--support-position`, leftDistance);
         }
 
         let Base64 = {
@@ -595,7 +703,7 @@ class App extends React.Component {
             decode(str) {
                 // Going backwards: from bytestream, to percent-encoding, to original string.
                 console.log("decode URIComponent decode");
-                return decodeURIComponent(atob(str).split('').map(function(c) {
+                return decodeURIComponent(atob(str).split('').map(function (c) {
                     return '%' + ('00' + c.charCodeAt(0).toString(16)).slice(-2);
                 }).join(''));
             }
@@ -618,7 +726,7 @@ class App extends React.Component {
 
                 this.setState({ searchResult: [] });
                 this.context.router.history.push(
-                    '/search/' + encodeURIComponent(decodeKeyword)
+                    '/search/' + btoa(encodeURIComponent(decodeKeyword))
                 );
 
                 return;
@@ -637,7 +745,7 @@ class App extends React.Component {
 
             this.setState({ searchResult: [] });
             this.context.router.history.push(
-                '/search/' + encodeURIComponent(decodeKeyword)
+                '/search/' + btoa(encodeURIComponent(decodeKeyword))
             );
         };
 
@@ -656,6 +764,8 @@ class App extends React.Component {
             this.context.router.history.goBack();
         };
         this.componentDidUpdate();
+
+        document.documentElement.style.setProperty(`--app-store-visibility`, 'hidden');
     }
     componentDidUpdate() {
         if (global.qtObjects) {
@@ -671,27 +781,20 @@ class App extends React.Component {
         }
     }
     render() {
-        return ( <
-            div > {
-                this.state.init && ( <
-                    Switch >
-                    <
-                    Route exact path = "/"
-                    component = { Index }
-                    /> <
-                    Route path = "/index"
-                    component = { Index }
-                    /> <
-                    Route path = "/open/:file/:hash?/:key?"
-                    component = { Main }
-                    /> <
-                    Route path = "/search/:keyword"
-                    component = { Search }
-                    /> <
-                    /Switch>
-                )
-            } <
-            /div>
+        return (
+            <div >
+                {this.state.init && (
+                    <Switch >
+                        <Route exact path="/" component={Index} />
+                        <Route path="/index" component={Index} />
+                        <Route path="/open/:file/:hash?/:key?" component={Main} />
+                        <Route path="/search/:keyword" component={Search} />
+                    </Switch>
+                )}
+
+                <AppStore text=" "></AppStore>
+                <Support text=" "></Support>
+            </div>
         );
     }
 }
@@ -703,11 +806,19 @@ App.childContextTypes = {
     mismatch: PropTypes.bool
 };
 
-render( <
-    Router history = { createMemoryHistory('/') } >
-    <
-    App / >
-    <
-    /Router>,
+window.addEventListener('resize', function () {
+    const windowWidth = window.innerWidth;
+    var leftDistance = windowWidth - 70 + 'px';
+
+    if (windowWidth > 1630 + 234) {
+        leftDistance = (windowWidth - 1630) / 2 + 1630 + 50 + 'px';
+    }
+    document.documentElement.style.setProperty(`--support-position`, leftDistance);
+});
+
+render(
+    <Router history={createMemoryHistory('/')} >
+        <App />
+    </Router>,
     document.getElementById('app')
 );

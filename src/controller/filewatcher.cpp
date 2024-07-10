@@ -4,6 +4,7 @@
 
 #include "filewatcher.h"
 #include "base/utils.h"
+#include "base/consts.h"
 
 #include <QDir>
 #include <QDebug>
@@ -72,37 +73,68 @@ void fileWatcher::monitorFile()
 
     QStringList listMonitorFile;
     QStringList listModule;
-    QString  assetsPath = Utils::getSystemManualDir();
-    listModule.append(assetsPath);
-    //新文案结构 /usr/share/deepin-manual/manual-assets/[application | system]/appName/appNameT/land/*_appNameT.md
-    for (const QString &type : QDir(assetsPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-        //监控资源文件夹
-        if (type == "system" || type == "application") {
-            QString typePath = assetsPath + "/" + type;
-            listModule.append(typePath);
+    QStringList  assetsPathList = Utils::getSystemManualDir();
+    foreach (auto assetsPath, assetsPathList) {
+        listModule.append(assetsPath);
+        //新文案结构 /usr/share/deepin-manual/manual-assets/[application | system]/appName/appNameT/land/*_appNameT.md
+        for (const QString &type : QDir(assetsPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
             //监控资源文件夹
-            for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-                //./manual-assets/application(system)/appName
-                QString modulePath = typePath + "/" + module;
-                listModule.append(modulePath);
-                QStringList listAppNameT = QDir(modulePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs);
+            if (type == "system" || type == "application") {
+                QString typePath = assetsPath + "/" + type;
+                listModule.append(typePath);
+                //监控资源文件夹
+                for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+                    //./manual-assets/application(system)/appName
+                    QString modulePath = typePath + "/" + module;
+                    listModule.append(modulePath);
+                    QStringList listAppNameT = QDir(modulePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs);
 
-                if (listAppNameT.count() != 1) {
-                    qCritical() << Q_FUNC_INFO << modulePath  << "：there are more folders..:" << listAppNameT.count();
-                    continue;
+                    if (listAppNameT.count() != 1) {
+                        qCritical() << Q_FUNC_INFO << modulePath  << "：there are more folders..:" << listAppNameT.count();
+                        continue;
+                    }
+                    //./manual-assets/application(system)/appName/appNameT
+                    QString appPath = modulePath + "/" + listAppNameT.at(0);
+                    listModule.append(appPath);
+                    for (QString &lang : QDir(appPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+                        if (lang == "zh_CN" || lang == "en_US") {
+                            //./manual-assets/application(system)/appName/appNameT/lang
+                            QString langPath = appPath + "/" + lang;
+                            listModule.append(langPath);
+                            for (QString &mdFile : QDir(langPath).entryList(QDir::Files)) {
+                                if (mdFile.endsWith("md")) {
+                                    //./manual-assets/application(system)/appName/appNameT/lang/md
+                                    QString strMd = langPath + "/" + mdFile;
+                                    QFileInfo fileinfo(strMd);
+                                    if (fileinfo.isSymLink()) {
+                                        listMonitorFile.append(fileinfo.symLinkTarget());
+                                    } else {
+                                        listMonitorFile.append(strMd);
+                                    }
+                                }
+                            }
+                        }
+                    }
                 }
-                //./manual-assets/application(system)/appName/appNameT
-                QString appPath = modulePath + "/" + listAppNameT.at(0);
-                listModule.append(appPath);
-                for (QString &lang : QDir(appPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-                    if (lang == "zh_CN" || lang == "en_US") {
-                        //./manual-assets/application(system)/appName/appNameT/lang
-                        QString langPath = appPath + "/" + lang;
-                        listModule.append(langPath);
-                        for (QString &mdFile : QDir(langPath).entryList(QDir::Files)) {
-                            if (mdFile.endsWith("md")) {
-                                //./manual-assets/application(system)/appName/appNameT/lang/md
-                                QString strMd = langPath + "/" + mdFile;
+            }
+        }
+
+//旧文案结构兼容  /usr/share/deepin-manual/manual-assets/[professional | server]/appName/lang/index.md
+#if 1
+        for (const QString &system : QDir(assetsPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+            if (systemType.contains(system)) {
+                QString typePath = assetsPath + "/" + system;
+                listModule.append(typePath);
+                for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+                    QString modulePath = typePath + "/" + module;
+                    listModule.append(typePath);
+                    for (QString &lang : QDir(modulePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+                        if (lang == "zh_CN" || lang == "en_US") {
+                            QString strMd = modulePath + "/" + lang + "/index.md";
+                            QFileInfo fileinfo(strMd);
+                            if (fileinfo.isSymLink()) {
+                                listMonitorFile.append(fileinfo.symLinkTarget());
+                            } else {
                                 listMonitorFile.append(strMd);
                             }
                         }
@@ -110,35 +142,16 @@ void fileWatcher::monitorFile()
                 }
             }
         }
-    }
-
-//旧文案结构兼容  /usr/share/deepin-manual/manual-assets/[professional | server]/appName/lang/index.md
-#if 1
-    for (const QString &system : QDir(assetsPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-        if (systemType.contains(system)) {
-            QString typePath = assetsPath + "/" + system;
-            listModule.append(typePath);
-            for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-                QString modulePath = typePath + "/" + module;
-                listModule.append(typePath);
-                for (QString &lang : QDir(modulePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-                    if (lang == "zh_CN" || lang == "en_US") {
-                        QString strMd = modulePath + "/" + lang + "/index.md";
-                        listMonitorFile.append(strMd);
-                    }
-                }
-            }
-        }
-    }
 #endif
 
-    //监控模块资源文件夹
-    if (!listModule.isEmpty()) {
-        watcherObj->addPaths(listModule);
-    }
-    //监控资源文件
-    if (!listMonitorFile.isEmpty()) {
-        watcherObj->addPaths(listMonitorFile);
+        //监控模块资源文件夹
+        if (!listModule.isEmpty()) {
+            watcherObj->addPaths(listModule);
+        }
+        //监控资源文件
+        if (!listMonitorFile.isEmpty()) {
+            watcherObj->addPaths(listMonitorFile);
+        }
     }
     qDebug() << Q_FUNC_INFO << "WatchAllFiles... ...";
 }
@@ -171,35 +184,37 @@ void fileWatcher::onChangeDirSlot(const QString &path)
 void fileWatcher::onTimerOut()
 {
     QMap<QString, QString> mapNow;
-    QString  assetsPath = Utils::getSystemManualDir();
+    QStringList  assetsPathList = Utils::getSystemManualDir();
+    foreach (auto assetsPath, assetsPathList) {
 
-    for (const QString &type : QDir(assetsPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-        if (type == "system" || type == "application") {
-            QString typePath = assetsPath + "/" + type;
-            //监控资源文件夹
-            for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-                //./manual-assets/application(system)/appName
-                QString modulePath = typePath + "/" + module;
-                QStringList listAppNameT = QDir(modulePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs);
+        for (const QString &type : QDir(assetsPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+            if (type == "system" || type == "application") {
+                QString typePath = assetsPath + "/" + type;
+                //监控资源文件夹
+                for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+                    //./manual-assets/application(system)/appName
+                    QString modulePath = typePath + "/" + module;
+                    QStringList listAppNameT = QDir(modulePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs);
 
-                if (listAppNameT.count() != 1) {
-                    qCritical() << Q_FUNC_INFO << modulePath  << "：there are more folders..:" << listAppNameT.count();
-                    continue;
-                }
-                //./manual-assets/application(system)/appName/appNameT
-                QString appPath = modulePath + "/" + listAppNameT.at(0);
-                for (QString &lang : QDir(appPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-                    if (lang == "zh_CN" || lang == "en_US") {
-                        //./manual-assets/application(system)/appName/appNameT/lang
-                        QString langPath = appPath + "/" + lang;
-                        for (QString &mdFile : QDir(langPath).entryList(QDir::Files)) {
-                            if (mdFile.endsWith("md")) {
-                                //./manual-assets/application(system)/appName/appNameT/lang/md
-                                QString strMd = langPath + "/" + mdFile;
-                                QFileInfo fileInfo(strMd);
-                                if (fileInfo.exists()) {
-                                    QString modifyTime = fileInfo.lastModified().toString("yyyy-MM-dd hh:mm:ss.zzz");
-                                    mapNow.insert(strMd, modifyTime);
+                    if (listAppNameT.count() != 1) {
+                        qCritical() << Q_FUNC_INFO << modulePath  << "：there are more folders..:" << listAppNameT.count();
+                        continue;
+                    }
+                    //./manual-assets/application(system)/appName/appNameT
+                    QString appPath = modulePath + "/" + listAppNameT.at(0);
+                    for (QString &lang : QDir(appPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+                        if (lang == "zh_CN" || lang == "en_US") {
+                            //./manual-assets/application(system)/appName/appNameT/lang
+                            QString langPath = appPath + "/" + lang;
+                            for (QString &mdFile : QDir(langPath).entryList(QDir::Files)) {
+                                if (mdFile.endsWith("md")) {
+                                    //./manual-assets/application(system)/appName/appNameT/lang/md
+                                    QString strMd = langPath + "/" + mdFile;
+                                    QFileInfo fileInfo(strMd);
+                                    if (fileInfo.exists()) {
+                                        QString modifyTime = fileInfo.lastModified().toString("yyyy-MM-dd hh:mm:ss.zzz");
+                                        mapNow.insert(strMd, modifyTime);
+                                    }
                                 }
                             }
                         }
@@ -207,29 +222,34 @@ void fileWatcher::onTimerOut()
                 }
             }
         }
-    }
 
 //旧文案结构兼容  /usr/share/deepin-manual/manual-assets/[professional | server]/appName/lang/index.md
 #if 1
-    for (const QString &system : QDir(assetsPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-        if (systemType.contains(system)) {
-            QString typePath = assetsPath + "/" + system;
-            for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-                QString modulePath = typePath + "/" + module;
-                for (QString &lang : QDir(modulePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
-                    if (lang == "zh_CN" || lang == "en_US") {
-                        QString strMd = modulePath + "/" + lang + "/index.md";
-                        QFileInfo fileInfo(strMd);
-                        if (fileInfo.exists()) {
-                            QString modifyTime = fileInfo.lastModified().toString("yyyy-MM-dd hh:mm:ss.zzz");
-                            mapNow.insert(strMd, modifyTime);
+        for (const QString &system : QDir(assetsPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+            if (systemType.contains(system)) {
+                QString typePath = assetsPath + "/" + system;
+                for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+                    QString modulePath = typePath + "/" + module;
+                    for (QString &lang : QDir(modulePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+                        if (lang == "zh_CN" || lang == "en_US") {
+                            QString strMd = modulePath + "/" + lang + "/index.md";
+                            QFileInfo fileInfo(strMd);
+                            if (fileInfo.exists()) {
+                                QString modifyTime = fileInfo.lastModified().toString("yyyy-MM-dd hh:mm:ss.zzz");
+                                mapNow.insert(strMd, modifyTime);
+                            }
                         }
                     }
                 }
             }
         }
-    }
 #endif
+    }
+    QFileInfo fileInfo(kVideoConfigPath);
+    if (fileInfo.exists()) {
+        QString modifyTime = fileInfo.lastModified().toString("yyyy-MM-dd hh:mm:ss.zzz");
+        mapNow.insert(kVideoConfigPath, modifyTime);
+    }
 
     QStringList deleteList;
     QStringList addList;

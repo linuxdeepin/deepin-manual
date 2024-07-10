@@ -4,15 +4,22 @@
 
 #include "utils.h"
 
+#include <DSysInfo>
+DCORE_USE_NAMESPACE
+
 #include <QFontDatabase>
 #include <QImageReader>
+
+#include "base/consts.h"
 
 QHash<QString, QPixmap> Utils::m_imgCacheHash;
 QHash<QString, QString> Utils::m_fontNameCache;
 QString Utils::cpuModeName;
 
-const char kLauncherService[] = "com.deepin.dde.daemon.Launcher";
-const char kLauncherIface[] = "/com/deepin/dde/daemon/Launcher";
+const char kLauncherServiceV20[] = "com.deepin.dde.daemon.Launcher";
+const char kLauncherIfaceV20[] = "/com/deepin/dde/daemon/Launcher";
+const char kLauncherServiceV23[] = "org.deepin.dde.daemon.Launcher1";
+const char kLauncherIfaceV23[] = "/org/deepin/dde/daemon/Launcher1";
 
 //标题映射表
 const int langCount = 5;
@@ -20,26 +27,32 @@ const int langCount = 5;
 QString languageArr[][langCount] = {
     //dde model
     {"controlcenter", "控制中心", "Control Center", "控制中心", "控制中心"},
-    {"accounts", "帐户设置", "Accounts", "賬號設置", "帳戶設定"},
+    {"", "首页介绍", "Homepage Introduction", "首頁介紹", "首頁介紹"},
+    {"authentication", "生物认证", "Biometric Authentication", "生物認證", "生物認證"},
+    {"passkey", "安全密钥", "Security key", "安全密鑰", "安全金鑰"},
+    {"accounts", "帐户设置", "Accounts", "帳戶設定", "帳戶設定"},
     {"cloudsync", "Union ID", "Union ID", "Union ID", "Union ID"},
-    {"display", "显示设置", "Display", "顯示設置", "螢幕設定"},
-    {"defapp", "默认程序设置", "Default Applications", "默認程序設置", "預設程式"},
-    {"personalization", "个性化设置", "Personalization Settings", "個性化設置", "個性化設定"},
-    {"network", "网络设置", "Network Settings", "網絡設置", "網路設定"},
-    {"notification", "通知设置", "Notification Settings", "通知設置", "通知設定"},
-    {"sound", "声音设置", "Sound Settings", "聲音設置", "聲音設定"},
-    {"bluetooth", "蓝牙设置", "Bluetooth Settings", "藍牙設置", "藍牙設定"},
-    {"datetime", "时间日期", "Date and Time", "日期與時刻", "時間日期"},
+    {"display", "显示设置", "Display", "螢幕設定", "螢幕設定"},
+    {"defapp", "默认程序设置", "Default Applications", "預設程式", "預設程式"},
+    {"personalization", "个性化设置", "Personalization Settings", "個性化設定", "個性化設定"},
+    {"network", "网络设置", "Network Settings", "網路設定", "網路設定"},
+    {"notification", "通知设置", "Notification Settings", "通知設定", "通知設定"},
+    {"sound", "声音设置", "Sound Settings", "聲音設定", "聲音設定"},
+    {"bluetooth", "蓝牙设置", "Bluetooth Settings", "藍牙設定", "藍牙設定"},
+    {"datetime", "时间和格式", "Date and Format", "時間和格式", "時間和格式"},
     {"power", "电源管理", "Power Management", "電源管理", "電源管理"},
-    {"mouse", "鼠标和触控板", "Mouse and Touchpad", "鼠標和觸控板", "滑鼠和觸控板"},
+    {"mouse", "鼠标和触控板", "Mouse and Touchpad", "滑鼠和觸控板", "滑鼠和觸控板"},
     {"tablet", "数位板", "Drawing Tablet", "數位板", "數位板"},
     {"keyboard", "键盘和语言", "Keyboard and Language", "鍵盤和語言", "鍵盤和語言"},
     {"voice", "辅助功能", "Assistive Tools", "輔助功能", "輔助功能"},
-    {"update", "系统更新", "Update Settings", "更新", "檢查更新"},
-    {"systeminfo", "系统信息", "System Info", "系統訊息", "系統資訊"},
+    {"privacy", "隐私和安全", "Privacy and Security", "私隱和安全", "隱私和安全"},
+    {"update", "系统更新", "Update Settings", "檢查更新", "檢查更新"},
+    {"systeminfo", "系统信息", "System Info", "系統資訊", "系統資訊"},
     {"License activator", "授权管理", "Authorization Management", "授權管理", "授權管理"},
-    {"commoninfo", "通用设置", "General Settings", "通用設置", "一般設定"},
-    {"touchscreen", "触控屏设置", "Touch Screen", "觸控屏設置", "觸控屏設定"}};
+    {"Backup and Restore", "备份还原", "Backup and Restore", "備份還原", "備份還原"},
+    {"commoninfo", "通用设置", "General Settings", "一般設定", "一般設定"},
+    {"touchscreen", "触控屏设置", "Touch Screen", "觸控屏設定", "觸控屏設定"},
+};
 
 struct ReplyStruct {
     QString m_desktop;
@@ -49,6 +62,7 @@ struct ReplyStruct {
 
     qint64 m_categoryId;
     qint64 m_installedTime;
+    QStringList m_appmessage;
 };
 
 Q_DECLARE_METATYPE(ReplyStruct)
@@ -63,7 +77,10 @@ QDBusArgument &operator<<(QDBusArgument &argument, const ReplyStruct &info)
 {
     argument.beginStructure();
     argument << info.m_desktop << info.m_name << info.m_key << info.m_iconKey;
-    argument << info.m_categoryId << info.m_installedTime;
+    if (DSysInfo::majorVersion() == "23")
+        argument << info.m_categoryId << info.m_installedTime << info.m_appmessage;
+    else
+        argument << info.m_categoryId << info.m_installedTime;
     argument.endStructure();
     return argument;
 }
@@ -78,7 +95,10 @@ const QDBusArgument &operator>>(const QDBusArgument &argument, ReplyStruct &info
 {
     argument.beginStructure();
     argument >> info.m_desktop >> info.m_name >> info.m_key >> info.m_iconKey;
-    argument >> info.m_categoryId >> info.m_installedTime;
+    if (DSysInfo::majorVersion() == "23")
+        argument >> info.m_categoryId >> info.m_installedTime >> info.m_appmessage;
+    else
+        argument >> info.m_categoryId >> info.m_installedTime;
     argument.endStructure();
     return argument;
 }
@@ -164,13 +184,14 @@ QList<AppInfo> Utils::launcherInterface()
     qRegisterMetaType<QList<ReplyStruct>>("a");
     qDBusRegisterMetaType<QList<ReplyStruct>>();
 
-    QDBusInterface iface(kLauncherService,
-                         kLauncherIface,
-                         kLauncherService,
-                         QDBusConnection::sessionBus());
+    bool bV23 = DSysInfo::majorVersion() == "23";
+    QString sLauncherService = bV23 ? kLauncherServiceV23 : kLauncherServiceV20;
+    QString sLauncherIface = bV23 ? kLauncherIfaceV23 : kLauncherIfaceV20;
+    QDBusInterface iface(sLauncherService, sLauncherIface, sLauncherService, QDBusConnection::sessionBus());
     //root权限下此dbus接口无效...
     if (!iface.isValid()) {
         qDebug() << qPrintable(QDBusConnection::sessionBus().lastError().message());
+        qDebug() << QString("majorVersion:%1, servie:%2 iface:%3").arg(DSysInfo::majorVersion()).arg(sLauncherService).arg(sLauncherIface);
         return applist;
 //        exit(1);
     }
@@ -196,6 +217,7 @@ QList<AppInfo> Utils::launcherInterface()
         return applist;
     } else {
         qDebug() << "GetAllItemInfos fail! " << reply.error().message();
+        qDebug() << QString("majorVersion:%1, servie:%2 iface:%3").arg(DSysInfo::majorVersion()).arg(sLauncherService).arg(sLauncherIface);
         return applist;
     }
 }
@@ -207,17 +229,53 @@ QList<AppInfo> Utils::launcherInterface()
  */
 bool Utils::judgeWayLand()
 {
-   auto env = QProcessEnvironment::systemEnvironment();
+    auto env = QProcessEnvironment::systemEnvironment();
 
-   QString XDG_SESSION_TYPE = env.value(QStringLiteral("XDG_SESSION_TYPE"));
+    QString XDG_SESSION_TYPE = env.value(QStringLiteral("XDG_SESSION_TYPE"));
 
-   QString WAYLAND_DISPLAY = env.value(QStringLiteral("WAYLAND_DISPLAY"));
+    QString WAYLAND_DISPLAY = env.value(QStringLiteral("WAYLAND_DISPLAY"));
 
-   if (XDG_SESSION_TYPE == QLatin1String("wayland") || WAYLAND_DISPLAY.contains(QLatin1String("wayland"), Qt::CaseInsensitive)){
-      return true;
-   }
+    if (XDG_SESSION_TYPE == QLatin1String("wayland") || WAYLAND_DISPLAY.contains(QLatin1String("wayland"), Qt::CaseInsensitive)) {
+        return true;
+    }
 
-   return false;
+    return false;
+}
+
+QStringList Utils::getMdsourcePath()
+{
+    QStringList sourcePath;
+    QStringList pathlist = getEnvsourcePath();
+    for (int i = 0; i < pathlist.size(); ++i) {
+        sourcePath.push_back(pathlist[i] + "/deepin-manual/manual-assets");
+    }
+    sourcePath.push_back(DMAN_MANUAL_DIR);
+    qDebug() << " all MD source path : " << sourcePath.last();
+    return sourcePath;
+}
+
+QStringList Utils::getEnvsourcePath()
+{
+    QStringList pathlist = QString(qgetenv("XDG_DATA_DIRS")).split(':');
+    if (pathlist.size() == 1 && pathlist[0].isEmpty())
+        pathlist[0] = "/usr/share";
+    qDebug() << " all source path : " << pathlist;
+    return pathlist;
+}
+
+QString Utils::getDesktopFilePath(const QString &desktopname)
+{
+    // 遍历XDG_DATA_DIRS中的路径，找寻指定desktop文件
+    QStringList pathList = getEnvsourcePath();
+    foreach (auto path, pathList) {
+        QString filepath = path + QString("/applications/%1.desktop").arg(desktopname);
+        QFile file(filepath);
+        if (file.exists()) {
+            return filepath;
+        }
+    }
+
+    return "";
 }
 
 /**
@@ -226,75 +284,46 @@ bool Utils::judgeWayLand()
  */
 QStringList Utils::getSystemManualList()
 {
-    const QHash<QString, QString> kAppNameMap = {
-        {"org.deepin.flatdeb.deepin-calendar", "dde-calendar"},
-        {"org.deepin.flatdeb.deepin-music", "deepin-music"},
-        {"org.deepin.flatdeb.deepin-screenshot", "deepin-screenshot"},
-        {"org.deepin.flatdeb.deepin-voice-recorder", "deepin-voice-recorder"},
-        {"org.deepin.flatdeb.deepin-image-viewer", "deepin-image-viewer"},
-        {"deepin-cloud-scan-configurator", "deepin-cloud-scan"},
-        {"org.deepin.flatdeb.deepin-movie", "deepin-movie"},
-        {"org.deepin.flatdeb.deepin-screen-recorder", "deepin-screen-recorder"},
-        {"org.deepin.flatdeb.deepin-calculator", "deepin-calculator"},
-        {"com.deepin.editor", "deepin-editor"},
-    };
-
     QStringList app_list_;
-    //调用dbus服务获取系统安装应用
-    const AppInfoList list = launcherInterface();
-    const QStringList applicationList = QDir(QString("%1/application/").arg(DMAN_MANUAL_DIR)).entryList();
-    const QStringList systemList = QDir(QString("%1/system/").arg(DMAN_MANUAL_DIR)).entryList();
-
-    QString oldMdPath = DMAN_MANUAL_DIR;
-
-#if (DTK_VERSION > DTK_VERSION_CHECK(5, 4, 12, 0))
-    if (Dtk::Core::DSysInfo::UosServer == Dtk::Core::DSysInfo::uosType()) {
-        oldMdPath += "/server";
-    } else if (Dtk::Core::DSysInfo::UosHome == Dtk::Core::DSysInfo::uosEditionType()) {
-        oldMdPath += "/personal";
-    } else if (Dtk::Core::DSysInfo::UosEducation == Dtk::Core::DSysInfo::uosEditionType()) {
-        oldMdPath += "/education";
-    } else if (Dtk::Core::DSysInfo::UosCommunity == Dtk::Core::DSysInfo::uosEditionType()) {
-        oldMdPath += "/community";
-    } else {
-        oldMdPath += "/professional";
-    }
-#else
-    Dtk::Core::DSysInfo::DeepinType nType = Dtk::Core::DSysInfo::deepinType();
-    if (Dtk::Core::DSysInfo::DeepinServer == nType) {
-        oldMdPath += "/server";
-    } else if (Dtk::Core::DSysInfo::DeepinPersonal == nType) {
-        oldMdPath += "/personal";
-    } else {
-        if (Dtk::Core::DSysInfo::isCommunityEdition()) {
+    QStringList strMANUAL_DIR_list = Utils::getMdsourcePath();
+    foreach (auto strMANUAL_DIR, strMANUAL_DIR_list) {
+        const QStringList applicationList = QDir(QString("%1/application/").arg(strMANUAL_DIR)).entryList(QDir::Dirs|QDir::NoDotAndDotDot);
+        const QStringList systemList = QDir(QString("%1/system/").arg(strMANUAL_DIR)).entryList(QDir::Dirs|QDir::NoDotAndDotDot);
+        QString oldMdPath = strMANUAL_DIR;
+        if (Dtk::Core::DSysInfo::UosServer == Dtk::Core::DSysInfo::uosType()) {
+            oldMdPath += "/server";
+        } else if (Dtk::Core::DSysInfo::UosHome == Dtk::Core::DSysInfo::uosEditionType()) {
+            oldMdPath += "/personal";
+        } else if (Dtk::Core::DSysInfo::UosEducation == Dtk::Core::DSysInfo::uosEditionType()) {
+            oldMdPath += "/education";
+        } else if (Dtk::Core::DSysInfo::UosCommunity == Dtk::Core::DSysInfo::uosEditionType()) {
             oldMdPath += "/community";
         } else {
             oldMdPath += "/professional";
         }
-    }
-
-#endif
-    const QStringList oldAppList = QDir(oldMdPath).entryList();
-
-    QMultiMap<qlonglong, AppInfo> appMap;
-    for (int var = 0; var < list.size(); ++var) {
-        appMap.insert(list.at(var).installed_time, list.at(var));
-    }
-    //安装时间相同时,按名称排序
-    QList<AppInfo> listApp = sortAppList(appMap);
-
-    //比对存在帮助md文件的应用
-    for (int i = 0; i < listApp.size(); ++i) {
-        const QString app_name = kAppNameMap.value(listApp.at(i).key, listApp.at(i).key);
-        if ((applicationList.contains(app_name) || oldAppList.contains(app_name))  && app_list_.indexOf(app_name) == -1) {
-            app_list_.append(app_name);
+        const QStringList oldAppList = QDir(oldMdPath).entryList(QDir::Dirs|QDir::NoDotAndDotDot);
+        for(auto app:applicationList){
+            if (app_list_.indexOf(app) == -1) {
+                app_list_.append(app);
+            }
         }
-    }
-    app_list_.append("DeepinAIAssistant"); //语音助手无法通过launcherInterface获取目前只能手动添加
-    if (systemList.contains("dde") || oldAppList.contains("dde")) {
-        app_list_.append("dde");
-    }
+        if (systemList.contains("dde") || oldAppList.contains("dde")) {
+            if (app_list_.indexOf("dde") == -1) {
+                app_list_.append("dde");
+            }
+        }
 
+        // 非应用文档，直接添加
+        if (systemList.contains(kLearnBasicOperations) || oldAppList.contains(kLearnBasicOperations)) {
+            if (app_list_.indexOf(kLearnBasicOperations) == -1)
+                app_list_.append(kLearnBasicOperations);
+        }
+        if (systemList.contains(kCommonApplicationLibraries) || oldAppList.contains(kCommonApplicationLibraries)) {
+            if (app_list_.indexOf(kCommonApplicationLibraries) == -1)
+                app_list_.append(kCommonApplicationLibraries);
+        }
+        qDebug() << "exist app list: " << app_list_ << ", count:" << app_list_.size();
+    }
     qDebug() << "exist app list: " << app_list_ << ", count:" << app_list_.size();
     return app_list_;
 }
@@ -304,10 +333,9 @@ QStringList Utils::getSystemManualList()
  * @return
  * @note　获取系统版本信息
  */
-QString Utils::getSystemManualDir()
+QStringList Utils::getSystemManualDir()
 {
-    QString strMANUAL_DIR = DMAN_MANUAL_DIR;
-    return strMANUAL_DIR;
+    return Utils::getMdsourcePath();
 }
 
 /**
@@ -391,6 +419,16 @@ bool Utils::hasSelperSupport()
         }
     }
     return false;
+}
+
+bool Utils::hasAppStore()
+{
+    const QStringList list = getSystemManualList();
+    if (list.contains("deepin-app-store")) {
+        return true;
+    } else {
+        return false;
+    }
 }
 
 //p表示桌面专业版，h表示个人版，d表示社区版

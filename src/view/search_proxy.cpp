@@ -5,6 +5,7 @@
 #include "view/search_proxy.h"
 
 #include <DLog>
+#include <QTimer>
 
 SearchProxy::SearchProxy(QObject *parent)
     : QObject(parent)

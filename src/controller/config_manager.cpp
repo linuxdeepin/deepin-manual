@@ -6,6 +6,7 @@
 
 #include <QDir>
 #include <QStandardPaths>
+#include <QtDebug>
 
 ConfigManager *ConfigManager::_pInstance = nullptr;
 
@@ -13,6 +14,11 @@ ConfigManager::ConfigManager(QObject *parent)
     : QObject(parent)
 {
     m_winInfoConfig = new QSettings(getWinInfoConfigPath(), QSettings::IniFormat, this);
+}
+
+ConfigManager::~ConfigManager()
+{
+    qDebug() << "~configmanager....";
 }
 
 
@@ -28,6 +34,14 @@ ConfigManager *ConfigManager::getInstance()
         _pInstance =  new ConfigManager();
     }
     return _pInstance;
+}
+
+void ConfigManager::releaseInstance()
+{
+    if (_pInstance)
+        delete _pInstance;
+
+    _pInstance = nullptr;
 }
 
 /**

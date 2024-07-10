@@ -6,6 +6,7 @@
 #include "view/widget/image_viewer.h"
 
 #include <DLog>
+#include <QUrl>
 
 ImageViewerProxy::ImageViewerProxy(ImageViewer *viewer,
                                    QObject *parent)

@@ -34,6 +34,7 @@ WindowManager::~WindowManager()
     SendMsg("closeDmanHelper");
     updateDb();
     restartDmanHelper();
+    ConfigManager::releaseInstance();
     delete window;
 }
 
@@ -151,12 +152,6 @@ void WindowManager::SendMsg(const QString &msg)
         //将进程号+窗口WinId拼接后发给dman-search后台进程 发送信号SendWinInfo－＞RecvMsg
         isSuccess = dbusConn.send(dbusMsg);
     }
-
-    if (isSuccess) {
-        qDebug() << Q_FUNC_INFO << " sendMsg success";
-    } else {
-        qDebug() << Q_FUNC_INFO << "sendMsg failed";
-    }
 }
 
 /**
@@ -181,7 +176,6 @@ void WindowManager::setWindow(WebWindow *window)
     //设置window窗口属性
     window->resize(saveWidth, saveHeight);
     window->setMinimumSize(kWinMinWidth, kWinMinHeight);
-    window->move((QApplication::desktop()->width() - saveWidth) / 2, (QApplication::desktop()->height() - saveHeight) / 2);
 }
 
 void WindowManager::updateDb()

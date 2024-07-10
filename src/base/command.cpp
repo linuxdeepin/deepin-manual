@@ -5,6 +5,9 @@
 #include "base/command.h"
 
 #include <DLog>
+#include <QDir>
+#include <QFileInfo>
+#include <QProcess>
 
 namespace dman {
 

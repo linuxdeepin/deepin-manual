@@ -38,9 +38,10 @@ public:
     static QList<AppInfo> launcherInterface();
     //获取系统应用中有帮助手册的应用列表
     static QStringList getSystemManualList();
-    static QString getSystemManualDir();
+    static QStringList getSystemManualDir();
     static QList<AppInfo> sortAppList(QMultiMap<qlonglong, AppInfo> map);
     static bool hasSelperSupport();
+    static bool hasAppStore();
     static QStringList systemToOmit(Dtk::Core::DSysInfo::UosEdition);
     static bool activeWindow(quintptr winId);
     static QString regexp_label(const QString &strtext, const QString &strpatter);
@@ -50,7 +51,12 @@ public:
     static bool judgeLoongson();
     //判断是否Wayland
     static bool judgeWayLand();
-
+    //获取md文件路径
+    static QStringList getMdsourcePath();
+    //获取环境变量
+    static QStringList getEnvsourcePath();
+    //获取desktop文件路径
+    static QString getDesktopFilePath(const QString &desktopname);
 };
 
 class ExApplicationHelper : public DGuiApplicationHelper

@@ -1,61 +1,130 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS language="sk" version="2.1">
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" language="sk" sourcelanguage="en_US">
+<context>
+    <name>ManualProxy</name>
+    <message>
+        <location filename="../src/view/manual_proxy.cpp" line="322"/>
+        <source>Learn Basic Operations</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/manual_proxy.cpp" line="324"/>
+        <source>Common Application Libraries</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/manual_proxy.cpp" line="326"/>
+        <source>Desktop Environment</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/app/dman.cpp" line="82"/>
-        <source>Deepin Manual</source>
-        <translation>Deepin Manuál</translation>
+        <location filename="../src/view/widget/search_completion_window.cpp" line="163"/>
+        <location filename="../src/view/widget/search_completion_window.cpp" line="249"/>
+        <source>Search for &quot;%1&quot; in the full text</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/app/dman.cpp" line="83"/>
-        <source>Deepin Manual is designed to help users learn deepin and Deepin applications, providing specific instructions and function descriptions.</source>
-        <translation>Deepin Manual je navrhnutý tak, aby pomohol používateľom učiť sa z aplikácií Deepin, ktoré poskytujú špecifické pokyny a popisy funkcií.</translation>
+        <location filename="../src/view/web_window.cpp" line="301"/>
+        <source>The content was updated</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/web_event_delegate.cpp" line="63"/>
+        <location filename="../src/view/web_window.cpp" line="624"/>
+        <source>Search</source>
+        <translation>Vyhľadávanie</translation>
+    </message>
+    <message>
+        <location filename="../src/view/web_window.cpp" line="627"/>
+        <location filename="../src/view/i18n_proxy.cpp" line="31"/>
+        <source>Support</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/web_window.cpp" line="836"/>
         <source>Copy</source>
         <translation>Kopírovať</translation>
     </message>
     <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="32"/>
+        <location filename="../src/view/i18n_proxy.cpp" line="21"/>
+        <source>Quick Start</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="22"/>
+        <source>Video Guide</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="23"/>
         <source>System</source>
         <translation>Systém</translation>
     </message>
     <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="33"/>
+        <location filename="../src/view/i18n_proxy.cpp" line="24"/>
         <source>Applications</source>
         <translation>Aplikácie</translation>
     </message>
     <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="35"/>
-        <source>Sorry, there are no search results of &quot;%1&quot;</source>
-        <translation>Ľutujeme, ale neexistujú žiadne výsledky vyhľadávania pre &quot;%1&quot;</translation>
+        <location filename="../src/view/i18n_proxy.cpp" line="25"/>
+        <source>No search results</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="36"/>
-        <source>Change your keywords and try again, or search it in Deepin Wiki</source>
-        <translation>Zmeňte svoje kľúčové slová a skúste to znova alebo ich vyhľadajte na Deepin Wiki</translation>
-    </message>
-    <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="38"/>
+        <location filename="../src/view/i18n_proxy.cpp" line="26"/>
         <source>Home</source>
         <translation>Domov</translation>
     </message>
     <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="39"/>
-        <source>Deepin Wiki</source>
-        <translation>Deepin Wiki</translation>
+        <location filename="../src/view/i18n_proxy.cpp" line="27"/>
+        <source>  result</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/widget/search_completion_window.cpp" line="113"/>
-        <location filename="../src/view/widget/search_completion_window.cpp" line="162"/>
-        <source>Search &quot;%1&quot; in the full text</source>
-        <translation>Vyhľadať &quot;%1&quot; v plnom znení</translation>
+        <location filename="../src/view/i18n_proxy.cpp" line="28"/>
+        <source>  results</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/view/widget/title_bar.cpp" line="96"/>
-        <source>Search</source>
-        <translation>Vyhľadávanie</translation>
+        <location filename="../src/view/i18n_proxy.cpp" line="29"/>
+        <source>Click to view </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="30"/>
+        <source>View all</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="32"/>
+        <source>App Store</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/app/dman.cpp" line="105"/>
+        <source>Manual</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/app/dman.cpp" line="106"/>
+        <source>Manual is designed to help users learn the operating system and its applications, providing specific instructions and function descriptions.</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>WebWindow</name>
+    <message>
+        <location filename="../src/view/web_window.cpp" line="765"/>
+        <source>Ctrl+Alt+F</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/view/web_window.cpp" line="780"/>
+        <source>Ctrl+F</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 </TS>

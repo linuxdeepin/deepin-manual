@@ -129,7 +129,7 @@ void ArgumentParser::onOpenAppRequested(const QString &app_name, const QString &
     //应用F1和帮助打开帮助手册 数据埋点统计
     QJsonObject objStartEvent;
     objStartEvent.insert("tid", Eventlogutils::DbusStartUp);
-    objStartEvent.insert("vsersion", qApp->applicationVersion());
+    objStartEvent.insert("version", qApp->applicationVersion());
     objStartEvent.insert("appname", app_name);
     objStartEvent.insert("titlename", title_name);
     qInfo() << __FUNCTION__ << QJsonDocument(objStartEvent).toJson(QJsonDocument::Compact);
