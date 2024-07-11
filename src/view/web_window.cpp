@@ -33,7 +33,7 @@
 #include <QTime>
 #include <QClipboard>
 #include <QNetworkProxyFactory>
-
+#include <QScreen>
 #define SEARCH_EDIT_WIDTH 350  // 一般情况下搜索窗口的大小
 #define SEARCH_EDIT_HEIGHT 44  // 一般情况下搜索窗口的大小
 #define LIMIT_SEARCH_EDIT_WIDTH 750 // 当主窗口
@@ -117,6 +117,8 @@ WebWindow::~WebWindow()
         search_edit_->deleteLater();
         search_edit_ = nullptr;
     }
+
+    qDebug() << "WebWindow::~WebWindow() done.";
 }
 
 /**
@@ -221,14 +223,14 @@ void WebWindow::slot_ThemeChanged()
 {
     DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
     QColor fillColor = DGuiApplicationHelper::instance()->applicationPalette().highlight().color();
-    if(!Utils::judgeWayLand()){
+    if (!Utils::judgeWayLand()) {
 
         if (themeType == DGuiApplicationHelper::DarkType) {
             web_view_->page()->setBackgroundColor(QColor(37, 37, 37));
         } else {
             web_view_->page()->setBackgroundColor(QColor(248, 248, 248));
         }
-    }else {
+    } else {
         if (themeType == DGuiApplicationHelper::DarkType) {
             web_view_->page()->setBackgroundColor(QColor(0x28, 0x28, 0x28));
             QPalette pa = palette();
@@ -251,8 +253,8 @@ void WebWindow::slot_ThemeChanged()
 void WebWindow::HelpSupportTriggered(bool bActiontrigger)
 {
     QDBusInterface interface("com.deepin.dde.ServiceAndSupport",
-                             "/com/deepin/dde/ServiceAndSupport",
-                             "com.deepin.dde.ServiceAndSupport");
+                                 "/com/deepin/dde/ServiceAndSupport",
+                                 "com.deepin.dde.ServiceAndSupport");
 
     //    selfSupport = 0, //自助支持
     //    messageConsultation = 1, //留言咨询
@@ -266,8 +268,32 @@ void WebWindow::HelpSupportTriggered(bool bActiontrigger)
     if (reply.isValid()) {
         qDebug() << "call com.deepin.dde.ServiceAndSupport success";
     } else {
-        qDebug() << "call com.deepin.dde.ServiceAndSupport failed";
+        qDebug() << "call com.deepin.dde.ServiceAndSupport failed, " << interface.lastError();
+        // 打开失败，尝试再次打开
+        QTimer::singleShot(100, this, [bActiontrigger](){
+            QDBusInterface interface("com.deepin.dde.ServiceAndSupport",
+                                     "/com/deepin/dde/ServiceAndSupport",
+                                     "com.deepin.dde.ServiceAndSupport");
+            uint8_t supporttype = 0;
+            if (!bActiontrigger) {
+                supporttype = 2;
+            }
+            QDBusReply<void> reply = interface.call("ServiceSession", supporttype);
+            if (!reply.isValid()) {
+                qDebug() << "call failed again";
+            }
+        });
     }
+}
+
+void WebWindow::appStoreTriggered()
+{
+    if (!Utils::hasAppStore())
+        return;
+
+    QProcess process;
+    process.startDetached("deepin-home-appstore-client");
+    process.waitForFinished();
 }
 
 void WebWindow::slotUpdateLabel()
@@ -298,26 +324,26 @@ void WebWindow::resizeEvent(QResizeEvent *event)
 
     // 当窗口缩小时，搜索控件会被压缩，现调整为动态变化
     int detal = LIMIT_SEARCH_EDIT_WIDTH - event->size().width();
-    if(detal <= 0){
+    if (detal <= 0) {
         search_edit_->setFixedWidth(SEARCH_EDIT_WIDTH);
-    }else if(detal != LIMIT_SEARCH_EDIT_WIDTH){
+    } else if (detal != LIMIT_SEARCH_EDIT_WIDTH) {
         search_edit_->setFixedWidth(SEARCH_EDIT_WIDTH - detal);
     }
 
-    if(completion_window_->isVisible()){
+    if (completion_window_->isVisible()) {
         completion_window_->autoResize();
         // Move to below of search edit.
         const QPoint local_point(this->rect().width() / 2 - search_edit_->width() / 2,
                                  titlebar()->height() - 3);
-        if(!Utils::judgeWayLand()){
+        if (!Utils::judgeWayLand()) {
             const QPoint global_point(this->mapToGlobal(local_point));
             completion_window_->move(global_point);
-        }else {
+        } else {
             completion_window_->move(local_point);
         }
     }
 
-    if(web_view_){
+    if (web_view_) {
         slot_ThemeChanged();
     }
 }
@@ -365,14 +391,13 @@ QVariant WebWindow::inputMethodQuery(Qt::InputMethodQuery prop) const
 bool WebWindow::eventFilter(QObject *watched, QEvent *event)
 {
     //warland环境下watched的objectname不是QMainWindowClassWindow,先去除验证
-    DIconButton* btn = findChild<DIconButton*>("DTitlebarDWindowMaxButton");
-    if (event->type() == QEvent::MouseButtonRelease && qApp->activeWindow() == this && !btn->isDown()) {
+    if (event->type() == QEvent::MouseButtonRelease && qApp->activeWindow() == this) {
         QRect rect = hasWidgetRect(search_edit_);
         if (web_view_ && web_view_->selectedText().isEmpty() && !rect.contains(QCursor::pos())) {
             this->setFocus();
         }
     }
-    if (event->type() == QEvent::KeyPress && qApp->activeWindow() == this ) {
+    if (event->type() == QEvent::KeyPress && qApp->activeWindow() == this) {
         QKeyEvent *keyEvent = static_cast<QKeyEvent *>(event);
         if (keyEvent->key() == Qt::Key_V
                 && keyEvent->modifiers().testFlag(Qt::ControlModifier)) {
@@ -388,7 +413,7 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
                     || (keyEvent->key() <= Qt::Key_9 && keyEvent->key() >= Qt::Key_0)
                     || (keyEvent->key() == Qt::Key_Space))
                    && keyEvent->modifiers() == Qt::NoModifier) {
-                search_edit_->lineEdit()->setFocus();
+            search_edit_->lineEdit()->setFocus();
         } else if (keyEvent->key() == Qt::Key_Enter || keyEvent->key() == Qt::Key_Return) {
             if (search_edit_->lineEdit()->hasFocus()) {
                 //搜索框内容为空时，按回车键回到未搜索页面
@@ -411,7 +436,7 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
 
         QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(event);
 
-        if(nullptr != mouseEvent){
+        if (nullptr != mouseEvent) {
             switch (mouseEvent->button()) {
             case Qt::BackButton: {
                 qDebug() << "eventFilter back";
@@ -431,7 +456,7 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
         }
 
         //wayland 当搜索结果隐藏之后,将无法触发鼠标点击事件无法跳转内容
-        if(!Utils::judgeWayLand()){
+        if (!Utils::judgeWayLand()) {
             if (!hasWidgetRect(search_edit_).contains(mapFromGlobal(QCursor::pos()))) {
                 completion_window_->hide();
             }
@@ -442,7 +467,7 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
     if (event->type() == QEvent::FontChange && watched == this) {
         if (this->settings_proxy_) {
             qDebug() << "eventFilter QEvent::FontChange";
-            auto fontInfo = this->fontInfo();
+            QFontInfo fontInfo = this->fontInfo();
             emit this->settings_proxy_->fontChangeRequested(fontInfo.family(),
                                                             fontInfo.pixelSize());
         }
@@ -509,6 +534,9 @@ void WebWindow::onManualSearchByKeyword(const QString &keyword)
  */
 void WebWindow::onAppearanceChanged(QString, QMap<QString, QVariant> map, QStringList)
 {
+    if (image_viewer_)
+        image_viewer_->hide();
+
     //20210630codereview
     if (map.isEmpty()) {
         return;
@@ -532,6 +560,16 @@ void WebWindow::onAppearanceChanged(QString, QMap<QString, QVariant> map, QStrin
     }
 }
 
+void WebWindow::onTimeoutLock(const QString &serviceName, QVariantMap key2value, QStringList)
+{
+    Q_UNUSED(serviceName);
+
+    if (key2value.value("Locked").value<bool>()) {
+        if (image_viewer_)
+            image_viewer_->hide();
+    }
+}
+
 /**
  * @brief WebWindow::initUI
  * @note 初始化窗口
@@ -539,9 +577,9 @@ void WebWindow::onAppearanceChanged(QString, QMap<QString, QVariant> map, QStrin
 void WebWindow::initUI()
 {
     //搜索结果框可移至主窗口创建完成后
-    if(!Utils::judgeWayLand()){
+    if (!Utils::judgeWayLand()) {
         completion_window_ = new SearchCompletionWindow();
-    }else {
+    } else {
         completion_window_ = new SearchCompletionWindow(this);
         completion_window_->hide();
     }
@@ -589,14 +627,16 @@ void WebWindow::initUI()
         QAction *pHelpSupport = new QAction(QObject::tr("Support"));
         pMenu->addAction(pHelpSupport);
         this->titlebar()->setMenu(pMenu);
-        connect(pHelpSupport, &QAction::triggered, this, [this] { this->HelpSupportTriggered(true); });
+        connect(pHelpSupport, &QAction::triggered, this, [this] {
+            this->HelpSupportTriggered(true);
+        });
     }
     this->titlebar()->addWidget(buttonFrame, Qt::AlignLeft);
     this->titlebar()->addWidget(search_edit_, Qt::AlignCenter);
     this->titlebar()->setSeparatorVisible(false);
     this->titlebar()->setIcon(QIcon::fromTheme("deepin-manual"));
 
-    if(Utils::judgeWayLand()){
+    if (Utils::judgeWayLand()) {
         this->titlebar()->setAutoFillBackground(false);
         this->titlebar()->setBackgroundRole(QPalette::Window);
     }
@@ -646,7 +686,7 @@ void WebWindow::initWebView()
     web_view_->setAttribute(Qt::WA_KeyCompression, true);
     web_view_->setAttribute(Qt::WA_InputMethodEnabled, true);
 
-    if(!Utils::judgeWayLand()){
+    if (!Utils::judgeWayLand()) {
         web_view_->setAttribute(Qt::WA_NativeWindow, true);
     }
     QNetworkProxyFactory::setUseSystemConfiguration(false);
@@ -673,6 +713,7 @@ void WebWindow::initWebView()
     connect(manual_proxy_, &ManualProxy::WidgetLower, this, &WebWindow::lower);
     connect(manual_proxy_, &ManualProxy::updateLabel, this, &WebWindow::slotUpdateLabel);
     connect(manual_proxy_, &ManualProxy::supportBeClick, this, [this] { this->HelpSupportTriggered(); });
+    connect(manual_proxy_, &ManualProxy::appStoreBeClick, this, [this] { this->appStoreTriggered(); });
 
     //web主页html路径
     const QFileInfo info(kIndexPage);
@@ -704,9 +745,14 @@ void WebWindow::saveWindowSize()
     setting->setValue(kConfigWindowHeight, height());
     setting->endGroup();
 }
-
+/**
+ * @brief WebWindow::updateDb 更新数据库
+ */
 void WebWindow::updateDb()
 {
+    if (!search_manager_)
+        return;
+
     //更新数据库
     emit search_manager_->updateDb();
 }
@@ -723,9 +769,11 @@ void WebWindow::initShortcuts()
     scWndReize->setContext(Qt::WindowShortcut);
     scWndReize->setAutoRepeat(false);
     connect(scWndReize, &QShortcut::activated, this, [this] {
-        if (this->windowState() & Qt::WindowMaximized){
+        if (this->windowState() & Qt::WindowMaximized)
+        {
             this->showNormal();
-        } else if (this->windowState() == Qt::WindowNoState){
+        } else if (this->windowState() == Qt::WindowNoState)
+        {
             this->showMaximized();
         }
     });
@@ -757,6 +805,11 @@ void WebWindow::initDBus()
     } else {
         qDebug() << "connectToBus()::connect()  PropertiesChanged success";
     }
+
+    // 锁屏通知，显示隐藏图片界面，才能保证图片界面正常隐藏，否则图片界面会一直阻塞主线程鼠标事件传递
+    QDBusConnection::sessionBus().connect("com.deepin.SessionManager", "/com/deepin/SessionManager",
+                                          "org.freedesktop.DBus.Properties", "PropertiesChanged", this,
+                                          SLOT(onTimeoutLock(QString, QVariantMap, QStringList)));
 }
 
 /**
@@ -1029,10 +1082,10 @@ void WebWindow::onSearchAnchorResult(const QString &keyword, const SearchAnchorR
         // Move to below of search edit.
         const QPoint local_point(this->rect().width() / 2 - search_edit_->width() / 2,
                                  titlebar()->height() - 3);
-        if(!Utils::judgeWayLand()){
+        if (!Utils::judgeWayLand()) {
             const QPoint global_point(this->mapToGlobal(local_point));
             completion_window_->move(global_point);
-        }else {
+        } else {
             completion_window_->move(local_point);
         }
 

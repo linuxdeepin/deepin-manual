@@ -6,47 +6,30 @@
 
 //去除最外层滚动条
 body {
-    overflow: hidden;
+  overflow: hidden;
 }
 
 #main {
-    .tooltip-wp{
-        position: absolute;
-        width: 200px;
-        // height: 40px;
-        z-index: 100;
-        display: none;
-      }
-      .tooltip-wp:after{
-          content: attr(data-title);
-          position: absolute;
-          left: 0;
-          top: 0;
-          max-width: 500px;
-          padding: 2px 5px;
-          word-break: normal;
-          background-color: var(--tips-background-color);
-          color: var(--nav-hove-word-color);
-          font-family: var(--nav-world-font-family);
-          border-radius: 8px;
-          border: 1px solid var(--nav-hove-border-color);
-      }
-      .support-div{
-        width: 48px;
-        height: 48px;
-        border-radius: 48px;
-        background-color: var(--nav-hash-word-color);
-        display: inline-block;
-        position:absolute;
-        right: 20px;
-        bottom: 20px;
-      }
-          
-      .support{
-        width: 20px;
-        height: 21px;
-        margin-top: 14px;
-        margin-left: 14px;
-      }
+  .tooltip-wp {
+    position: absolute;
+    width: 200px;
+    // height: 40px;
+    z-index: 100;
+    display: none;
+  }
 
+  .tooltip-wp:after {
+    content: attr(data-title);
+    position: absolute;
+    left: 0;
+    top: 0;
+    max-width: 500px;
+    padding: 2px 5px;
+    word-break: normal;
+    background-color: var(--tips-background-color);
+    color: var(--nav-hove-word-color);
+    font-family: var(--nav-world-font-family);
+    border-radius: 8px;
+    border: 1px solid var(--nav-hove-border-color);
+  }
 }

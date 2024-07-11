@@ -19,6 +19,7 @@ signals:
     void channelInit();
     void searchEditTextisEmpty();
     void supportBeClick();
+    void appStoreBeClick();
     //发送页面加载完成时间
     void startFinish(qint64);
     void updateLabel();
@@ -26,14 +27,16 @@ signals:
     void languageChanged();
 
 public slots:
-    QString getSystemManualDir();
+    QStringList getSystemManualDir();
     QStringList getSystemManualList();
 
     void setApplicationState(const QString &appName);
     QStringList getUsedAppList();
     bool hasSelperSupport();
+    bool hasAppStore();
     void finishChannel();
     void supportClick();
+    void appStoreClick();
     bool bIsLongSon();
     void showUpdateLabel();
     QString appToPath(const QString &appName);
@@ -41,6 +44,9 @@ public slots:
     QString getLocalAppName(const QString &desktopname);
 
     QString translateTitle(const QString &titleUS);
+
+    QVariant getVideoGuideInfo();
+    void openVideo(QString url = "");
 
 private:
     void saveAppList(const QStringList &list);
@@ -50,6 +56,7 @@ private:
     QStringList app_list_;
     QString strIconTheme;
     QIconLoader *piconload;
+    QString videoUrl;
 };
 
 #endif // DEEPIN_MANUAL_VIEW_MANUAL_PROXY_H

@@ -14,3 +14,5 @@ const char kConfigWindowWidth[] = "window_width";
 const char kConfigWindowHeight[] = "window_height";
 const char kConfigWindowInfo[] = "window_info";
 const char kConfigAppList[] = "AppList";
+
+const char kVideoConfigPath[] = DMAN_MANUAL_DIR"/system/video-guide/videos/config.json";

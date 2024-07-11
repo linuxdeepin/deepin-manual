@@ -236,7 +236,12 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
             //正则替换所有的svg路径
             QRegExp exp("src=\"([^>]*svg)\"");
             exp.setMinimal(true);
+            QRegExp expPng("src=\"..\/common([^>]*png)\"");
+            expPng.setMinimal(true);
+
             content = content.replace(exp, QString("src=\"%1/%2\"").arg(strTemp).arg("\\1"));
+            if (content.contains("common")/* && !content.contains("fig")*/)
+                content = content.replace(expPng, QString("src=\"%1/../common%2\"").arg(strTemp).arg("\\1"));
             newContents.replace(i, content);
         }
     }
@@ -366,7 +371,7 @@ void SearchDb::handleSearchAnchor(const QString &keyword)
         while (query.next() && (result.size() < kResultLimitation)) {
             qDebug() << "handleSearchAnchor===> " << query.value(0).toString() << strlistApp;
             //只将当前预装应用中的内容输出。
-            if (strlistApp.contains(query.value(0).toString())) {
+            if (strlistApp.contains(query.value(0).toString())/* || query.value(0).toString().contains("video-guide")*/) {
                 //搜索结果优先显示应用名称
                 if (query.value(3) == "h0") {
                     result.prepend(SearchAnchorResult {
@@ -623,8 +628,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
             }
         }
     }
-    const QString sql =
-        QString(kSearchSelectContent).replace(":lang", lang).replace(":content", keyword);
+    const QString sql = QString(kSearchSelectContent).replace(":lang", lang).replace(":content", keyword);
 
     listStruct.clear();
     nH0OfList = 0;
@@ -643,7 +647,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
             const QString anchor = query.value(1).toString();
             const QString anchorId = query.value(2).toString();
             const QString content = query.value(3).toString();
-            if (!strlistApp.contains(app_name)) {
+            if (!strlistApp.contains(app_name) && !app_name.contains("video-guide")) {
                 continue;
             }
 
@@ -652,6 +656,10 @@ void SearchDb::handleSearchContent(const QString &keyword)
             tmpContent = tmpContent.replace("\" >", "\">");
 
             QString highlightContent = highlightKeyword(tmpContent, keyword);
+
+            if (app_name.contains("video-guide"))
+                highlightContent = tmpContent;
+
 
             //如果关键字在img路径中,返回后退出本次循环.
             if (highlightContent.isEmpty() && !anchor.contains(keyword))
@@ -664,9 +672,13 @@ void SearchDb::handleSearchContent(const QString &keyword)
             //新结构
             QRegExp expFit("<img src=\\\"fig.*>");
             expFit.setMinimal(true);
+            //相对路径
+            QRegExp expRelative("<img src=\\\"\.\/fig.*>");
+            expRelative.setMinimal(true);
 
             highlightContent.remove(expFit);
             highlightContent.remove(expJpg);
+            highlightContent.remove(expRelative);
 
             //处理内容是否省略..
             omitHighlight(highlightContent, keyword);

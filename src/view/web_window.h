@@ -82,6 +82,7 @@ private:
     void settingContextMenu();
     QRect hasWidgetRect(QWidget *);
     void HelpSupportTriggered(bool bActiontrigger = false);
+    void appStoreTriggered();
 
     QString app_name_;
     QString keyword_;
@@ -120,6 +121,8 @@ private slots:
     void onSetKeyword(const QString &keyword);
     void onManualSearchByKeyword(const QString &keyword);
     void onAppearanceChanged(QString, QMap<QString, QVariant>, QStringList);
+    // 是否锁屏
+    void onTimeoutLock(const QString &, QVariantMap, QStringList);
 };
 
 #endif // DEEPIN_MANUAL_VIEW_WEB_WINDOW_H

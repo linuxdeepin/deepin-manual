@@ -1,26 +1,21 @@
-# SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
-#
-# SPDX-License-Identifier: CC0-1.0
-
 project(deepin-manual C CXX)
 
 #set(CMAKE_C_COMPILER  /usr/bin/clang)
 #set(CMAKE_CXX_COMPILER  /usr/bin/clang++)
 
-
+#assets目录在usr下
 set(CMAKE_INSTALL_PREFIX /usr)
-
+add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets")
 
 if (CMAKE_BUILD_TYPE MATCHES Debug)
   add_definitions(-DDMAN_SEARCH_DB="${CMAKE_SOURCE_DIR}/manual-assets")
   add_definitions(-DDMAN_WEB_DIR="${CMAKE_CURRENT_SOURCE_DIR}/web_dist")
 #  add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_SOURCE_DIR}/manual-assets")
-  add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets")
 else()
   add_definitions(-DDMAN_SEARCH_DB="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets")
   add_definitions(-DDMAN_WEB_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/web_dist")
-  add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets")
 endif ()
+
 #禁止Debug日志输出
 #add_definitions(-DQT_NO_DEBUG_OUTPUT)
 
@@ -354,7 +349,11 @@ install(FILES ${QM_FILES}
 #        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets/)
 
 install(DIRECTORY ${CMAKE_SOURCE_DIR}/src/web_dist
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
+            DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual)
 
+install(DIRECTORY ${CMAKE_SOURCE_DIR}/manual-assets/learn-basic-operations
+                  ${CMAKE_SOURCE_DIR}/manual-assets/common-application-libraries
+                  ${CMAKE_SOURCE_DIR}/manual-assets/video-guide
+        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets/system)
 
 string(TOLOWER ${CMAKE_SYSTEM_PROCESSOR} LOWERCASE_CMAKE_SYSTEM_PROCESSOR)
