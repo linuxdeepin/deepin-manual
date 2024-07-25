@@ -30,7 +30,7 @@ QString languageArr[][langCount] = {
     {"", "首页介绍", "Homepage Introduction", "首頁介紹", "首頁介紹"},
     {"authentication", "生物认证", "Biometric Authentication", "生物認證", "生物認證"},
     {"passkey", "安全密钥", "Security key", "安全密鑰", "安全金鑰"},
-    {"accounts", "帐户设置", "Accounts", "帳戶設定", "帳戶設定"},
+    {"accounts", "账户设置", "Accounts", "帳戶設定", "帳戶設定"},
     {"cloudsync", "Union ID", "Union ID", "Union ID", "Union ID"},
     {"display", "显示设置", "Display", "螢幕設定", "螢幕設定"},
     {"defapp", "默认程序设置", "Default Applications", "預設程式", "預設程式"},
