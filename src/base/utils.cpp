@@ -245,8 +245,8 @@ bool Utils::judgeWayLand()
 bool Utils::judgeTreeLand() 
 {
     if (qEnvironmentVariable("DDE_CURRENT_COMPOSITOR") == "TreeLand")
-        return false;
-    return true;
+        return true;
+    return false;
 }
 
 QStringList Utils::getMdsourcePath()
