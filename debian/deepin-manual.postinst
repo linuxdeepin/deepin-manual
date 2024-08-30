@@ -1,9 +1,16 @@
-#!/bin/sh
+#!/bin/bash
 
 killall dman-search
 killall dmanHelper
 killall dman
 
+#获取已登陆的用户
+userNameArr=($(who -q | head -n 1))
+
+#根据已登陆的用户开启后端定时任务
+for userName in ${userNameArr[@]} ; do
+    runuser -l ${userName} -c "XDG_RUNTIME_DIR=\"/run/user/$(id -u ${userName})\" systemctl --user daemon-reload" || true
+done
 
 #rm -r /usr/share/deepin-manual/manual-assets/professional
 #rm -r /usr/share/deepin-manual/manual-assets/server

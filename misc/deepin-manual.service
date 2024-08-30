@@ -2,7 +2,7 @@
 Description=deepin manual service
 
 [Service]
-CapabilityBoundingSet=~CAP_NET_RAW
+CapabilityBoundingSet=~
 MemoryLimit=8G
 ExecStart=/usr/bin/dman --dbus
 Type=dbus
