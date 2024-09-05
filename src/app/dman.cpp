@@ -88,8 +88,11 @@ int main(int argc, char **argv)
     if (Utils::judgeLoongson()) {
         //add by wujian 20200907 for 解决龙芯平台，QWebEngine因字体库字体太多，造成启动失败的问题
         QString strHomePath = QStandardPaths::writableLocation(QStandardPaths::HomeLocation);
-        QString strExeShell = QString("rm -fr %1/.cache/fontconfig").arg(strHomePath);
-        shellObj::execSystem(strExeShell);
+        QString strCmd = QString("rm");
+        QStringList args;
+        args << "-rf";
+        args << QString("%1/.cache/fontconfig").arg(strHomePath);
+        shellObj::execSystem(strCmd, args);
     }
 
     //设置窗口属性
