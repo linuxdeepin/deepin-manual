@@ -21,18 +21,19 @@ shellObj::~shellObj()
     thread = nullptr;
 }
 
-shellObj &shellObj::execSystem(const QString &cmds)
+shellObj &shellObj::execSystem(const QString &cmds, const QStringList &args)
 {
     shellObj *shell = new shellObj();
     qDebug() << "shell exec:" << cmds;
     //执行shell命令
-    shell->startSystemThread(cmds);
+    shell->startSystemThread(cmds, args);
     return *shell;
 }
 
-int shellObj::startSystemThread(const QString &cmd)
+int shellObj::startSystemThread(const QString &cmd, const QStringList &args)
 {
     this->cmd = cmd;
+    this->args = args;
     thread = new QThread();
     connect(thread, SIGNAL(finished()), thread, SLOT(deleteLater()));
     moveToThread(thread);
@@ -45,8 +46,10 @@ int shellObj::startSystemThread(const QString &cmd)
 
 void shellObj::runSystem()
 {
-    system(cmd.toStdString().data());
-    qDebug() << "shell " << cmd << endl;
-//    emit onCompleted(iRst < 0 ? "error" : "");
+    QProcess process;
+    process.start(cmd, args);
+    process.waitForFinished(-1);
+
+    qDebug() << "shell cmd:" << cmd << "args:" << args;
     delete this;
 }
