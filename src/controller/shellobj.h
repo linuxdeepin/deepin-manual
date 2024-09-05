@@ -24,11 +24,11 @@ public:
      * @param cmds 命令内容
      * @return  新建的DMailShell对象
      */
-    static shellObj &execSystem(const QString &cmds);
+    static shellObj &execSystem(const QString &cmds, const QStringList &m_args = QStringList());
 
 
 private:
-    int startSystemThread(const QString &cmd);
+    int startSystemThread(const QString &m_cmd, const QStringList &m_args);
     /**
      * @brief runSystem 采用ｓｙｓｔｅｍ来执行ｓｈｅｌｌ命令
      */
@@ -38,7 +38,12 @@ private:
     /**
      * @brief cmd 保存shell命令
      */
-    QString cmd;
+    QString m_cmd;
+
+    /**
+     * @brief args 命令参数
+     */
+    QStringList m_args;
 
     /**
      * @brief thread　线程对象

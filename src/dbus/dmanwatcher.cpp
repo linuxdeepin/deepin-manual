@@ -21,11 +21,21 @@ DManWatcher::DManWatcher():m_Timer(new QTimer (this))
 void DManWatcher::onTimeOut()
 {
     QString cmd, outPut;
+    QStringList args;
     //判断dman客户端是否存在，如果不存在退出服务。
-    cmd = QString("ps aux | grep -w dman$");
-    outPut= executCmd(cmd);
-    int ret = outPut.length();
-    if (!ret)
+    cmd = "ps";
+    args << "aux";
+    outPut= executCmd(cmd, args);
+    bool bHasDman = false;
+    QStringList rows = outPut.split('\n');
+    for (auto line : rows) {
+        QStringList items = line.split(' ');
+        if (items.contains("dman")) {
+            bHasDman = true;
+            break;
+        }
+    }
+    if (!bHasDman)
         QCoreApplication::exit(0);
 }
 
@@ -33,10 +43,10 @@ void DManWatcher::onTimeOut()
  * @brief 执行外部命令
  * @param strCmd:外部命令字符串
  */
-QString DManWatcher::executCmd(const QString &strCmd)
+QString DManWatcher::executCmd(const QString &strCmd, const QStringList &args)
 {
      QProcess proc;
-     proc.start("bash", QStringList() << "-c" << strCmd);
+     proc.start(strCmd, args);
      proc.waitForFinished(-1);
      return  proc.readAllStandardOutput();
 }

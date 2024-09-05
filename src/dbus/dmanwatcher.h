@@ -21,7 +21,7 @@ public:
 public Q_SLOTS:
     void onTimeOut();
 private:
-    QString executCmd(const QString &strCmd);
+    QString executCmd(const QString &strCmd, const QStringList &args = QStringList());
 private:
     QTimer *m_Timer=nullptr;
 };
