@@ -36,3 +36,7 @@ obj-*
 /test/deepin-manual.csv
 /test/report/
 /review/
+
+#linglong building dir
+linglong
+build

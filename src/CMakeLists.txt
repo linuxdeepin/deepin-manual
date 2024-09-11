@@ -1,10 +1,8 @@
 project(deepin-manual C CXX)
 
-#set(CMAKE_C_COMPILER  /usr/bin/clang)
-#set(CMAKE_CXX_COMPILER  /usr/bin/clang++)
-
-#assets目录在usr下
-set(CMAKE_INSTALL_PREFIX /usr)
+if(NOT CMAKE_INSTALL_PREFIX)
+    set(CMAKE_INSTALL_PREFIX "/usr")
+endif()
 add_definitions(-DDMAN_MANUAL_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets")
 
 if (CMAKE_BUILD_TYPE MATCHES Debug)

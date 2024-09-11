@@ -12,8 +12,8 @@ package:
   description: |
     manual for deepin os.
 
-base: org.deepin.base/23.1.0
-runtime: org.deepin.runtime.dtk/23.1.0
+base: org.deepin.base/23.1.0/arm64
+runtime: org.deepin.runtime.dtk/23.1.0/arm64
 
 command:
   - dman
@@ -49,7 +49,7 @@ sources:
   #   url: https://github.com/linuxdeepin/deepin-manual
   #   commit: b07176cfb8b8f657d1abf1f57d2981bd64401889
 
-  # linglong:gen_deb_source sources amd64 https://ci.deepin.com/repo/deepin/deepin-community/backup/rc2 beige main community
+  # linglong:gen_deb_source sources arm64 https://ci.deepin.com/repo/deepin/deepin-community/backup/rc2 beige main community
   # linglong:gen_deb_source install libdtkwidget-dev, libdtkgui-dev, qtwebengine5-dev, libqt5webchannel5-dev
   # linglong:gen_deb_source install libsass-dev, libqt5sql5-sqlite, libgtest-dev, libgmock-dev, systemd
   - kind: file
