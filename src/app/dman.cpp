@@ -112,14 +112,6 @@ int main(int argc, char **argv)
     app.setApplicationAcknowledgementPage("https://www.deepin.org/acknowledgments/deepin-manual/");
 
     ArgumentParser argument_parser(&app);
-    WindowManager window_manager;
-    // window_manager.setStartTime(startTime);
-    //绑定参数解析 信号与槽
-    QObject::connect(&argument_parser, &ArgumentParser::openManualWithSearchRequested,
-                     &window_manager, &WindowManager::openManualWithSearch);
-    QObject::connect(&argument_parser, &ArgumentParser::openManualRequested,
-                     &window_manager, &WindowManager::openManual);
-
     //解析启动参数
     if (!argument_parser.parseArguments()) {
         qDebug() << "argument_parser.parseArguments()";
@@ -129,6 +121,14 @@ int main(int argc, char **argv)
         });
         return app.exec();
     }
+    WindowManager window_manager;
+    // window_manager.setStartTime(startTime);
+    //绑定参数解析 信号与槽
+    QObject::connect(&argument_parser, &ArgumentParser::openManualWithSearchRequested,
+                     &window_manager, &WindowManager::openManualWithSearch);
+    QObject::connect(&argument_parser, &ArgumentParser::openManualRequested,
+                     &window_manager, &WindowManager::openManual);
+
     argument_parser.openManualsDelay();
 
     // 日志保存, 路径:~/.cach/deepin/deepin-manual/
