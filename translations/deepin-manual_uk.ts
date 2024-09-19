@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="uk" sourcelanguage="en_US">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" sourcelanguage="en_US" language="uk">
 <context>
     <name>ManualProxy</name>
     <message>
@@ -101,17 +99,17 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="32"/>
         <source>App Store</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/app/dman.cpp" line="105"/>
         <source>Manual</source>
-        <translation type="unfinished"></translation>
+        <translation>Підручник</translation>
     </message>
     <message>
         <location filename="../src/app/dman.cpp" line="106"/>
         <source>Manual is designed to help users learn the operating system and its applications, providing specific instructions and function descriptions.</source>
-        <translation type="unfinished"></translation>
+        <translation>«Підручник» створено для того, щоб допомогти користувачам, які вивчають операційну систему та її програми. За допомогою цієї програми ви знайдете специфічні настанови та описи функціональних можливостей.</translation>
     </message>
 </context>
 <context>
