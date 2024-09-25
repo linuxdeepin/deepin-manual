@@ -23,7 +23,7 @@
         <location filename="../src/view/widget/search_completion_window.cpp" line="163"/>
         <location filename="../src/view/widget/search_completion_window.cpp" line="249"/>
         <source>Search for &quot;%1&quot; in the full text</source>
-        <translation>Kërko për &quot;%1&quot; në tërë tekstin</translation>
+        <translation>Kërko për “%1” në tërë tekstin</translation>
     </message>
     <message>
         <location filename="../src/view/web_window.cpp" line="301"/>
@@ -99,7 +99,7 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="32"/>
         <source>App Store</source>
-        <translation type="unfinished"/>
+        <translation>Shitore Aplikacionesh</translation>
     </message>
     <message>
         <location filename="../src/app/dman.cpp" line="105"/>
