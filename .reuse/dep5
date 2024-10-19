@@ -83,3 +83,8 @@ License: MIT
 Files: manual-assets/*
 Copyright: UnionTech Software Technology Co., Ltd.
 License: LGPL-3.0-or-later
+
+# linglong
+Files: install_dep arm64/org.deepin.manual.install org.deepin.manual.install
+Copyright: UnionTech Software Technology Co., Ltd.
+License: GPL-3.0-or-later
