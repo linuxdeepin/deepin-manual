@@ -54,7 +54,7 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="22"/>
         <source>Video Guide</source>
-        <translation>Guia de vídeo</translation>
+        <translation>Guia em vídeo</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="23"/>
@@ -109,7 +109,7 @@
     <message>
         <location filename="../src/app/dman.cpp" line="106"/>
         <source>Manual is designed to help users learn the operating system and its applications, providing specific instructions and function descriptions.</source>
-        <translation>O Manual foi desenvolvido para ajudar os usuários a aprender a usar o sistema operacional e aplicativos; fornecendo instruções específicas e descrição das funções.</translation>
+        <translation>O Manual foi desenvolvido para ajudar os usuários a aprender a usar o sistema operacional e seus aplicativos; fornecendo instruções específicas e descrição das funções.</translation>
     </message>
 </context>
 <context>
