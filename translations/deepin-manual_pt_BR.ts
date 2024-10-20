@@ -14,7 +14,7 @@
     <message>
         <location filename="../src/view/manual_proxy.cpp" line="326"/>
         <source>Desktop Environment</source>
-        <translation>Desktop Environment</translation>
+        <translation>Ambiente de desktop</translation>
     </message>
 </context>
 <context>
