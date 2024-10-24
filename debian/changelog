@@ -1,3 +1,9 @@
+deepin-manual (6.5.4) unstable; urgency=medium
+
+  * fix: fail to view application manual.
+
+ -- wangrong <wangrong@uniontech.com>  Thu, 24 Oct 2024 13:59:02 +0800
+
 deepin-manual (6.5.3) unstable; urgency=medium
 
   * chore: linglong package slimming.

@@ -7,7 +7,7 @@ version: "1"
 package:
   id: org.deepin.manual
   name: "deepin-manual"
-  version: 6.5.3.1
+  version: 6.5.4.1
   kind: app
   description: |
     manual for deepin os.
@@ -27,7 +27,6 @@ build: |
   find ${PREFIX} -name "Qt5WebChannelConfig.cmake" -exec sed -i "s|NO_DEFAULT_PATH||g" {} +
 
   #修改服务使用玲珑启动
-  sed -i "s|Exec=/usr/bin/dmanHelper|Exec=/usr/bin/ll-cli run org.deepin.manual --exec \"dmanHelper\"|g" $PWD/src/dbus/com.deepin.Manual.Search.service
   sed -i "s|ExecStart=/usr/bin/dman --dbus|ExecStart=/usr/bin/ll-cli run org.deepin.manual --exec \"dman --dbus\"|g" $PWD/misc/deepin-manual.service
 
   # 获取版本号
