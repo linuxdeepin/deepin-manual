@@ -64,6 +64,11 @@ public slots:
     void slot_ThemeChanged();
     void slotUpdateLabel();
 
+private slots:
+    /**
+     * @brief 根据布局模式(紧凑)变更更新界面布局
+     */
+    void updateSizeMode();
 protected:
     void closeEvent(QCloseEvent *event) Q_DECL_OVERRIDE;
     void inputMethodEvent(QInputMethodEvent *e) Q_DECL_OVERRIDE;
