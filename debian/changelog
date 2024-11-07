@@ -1,3 +1,9 @@
+deepin-manual (6.5.5) unstable; urgency=medium
+
+  * remove kwayland-shell env 
+
+ -- Liu zheng <liuzheng@uniontech.com>  Thu, 07 Nov 2024 08:17:44 +0800
+
 deepin-manual (6.5.4) unstable; urgency=medium
 
   * fix: fail to view application manual.
