@@ -41,7 +41,8 @@
 namespace {
 
 const int kSearchDelay = 200;
-
+const int BUTTON_SIZE  = 36;
+const int BUTTON_SIZE_COMPACT = 24;
 } // namespace
 
 WebWindow::WebWindow(QWidget *parent)
@@ -301,6 +302,26 @@ void WebWindow::slotUpdateLabel()
     sendMessage(QIcon(":/common/images/ok.svg"), QObject::tr("The content was updated"));
 }
 
+void WebWindow::updateSizeMode()
+{
+    int nBtnSize = BUTTON_SIZE;
+#ifdef DTKWIDGET_CLASS_DSizeMode
+    if (DGuiApplicationHelper::isCompactMode())
+        nBtnSize = BUTTON_SIZE_COMPACT;
+    else
+        nBtnSize = BUTTON_SIZE;
+#else
+    nBtnSize = BUTTON_SIZE;
+#endif
+
+    if (m_backButton) {
+        m_backButton->setFixedSize(QSize(nBtnSize, nBtnSize));
+    }
+    if (m_forwardButton) {
+        m_forwardButton->setFixedSize(QSize(nBtnSize, nBtnSize));
+    }
+}
+
 /**
  * @brief WebWindow::closeEvent
  * @param event
@@ -514,6 +535,11 @@ void WebWindow::initConnections()
     connect(&search_timer_, &QTimer::timeout, this, &WebWindow::onSearchTextChangedDelay);
 
     connect(this, &WebWindow::manualSearchByKeyword, this, &WebWindow::onManualSearchByKeyword);
+#ifdef DTKWIDGET_CLASS_DSizeMode
+    // 紧凑模式信号处理
+    connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::sizeModeChanged, this, &WebWindow::updateSizeMode);
+    updateSizeMode();
+#endif
 }
 
 /**
