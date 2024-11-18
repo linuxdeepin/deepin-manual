@@ -1,3 +1,9 @@
+deepin-manual (6.5.7) unstable; urgency=medium
+
+  * fix fail to launch linglong app via dbus.
+
+ -- wangrong <wangrong@uniontech.com>  Mon, 18 Nov 2024 19:42:16 +0800
+
 deepin-manual (6.5.6) unstable; urgency=medium
 
   * adapt compact mode 

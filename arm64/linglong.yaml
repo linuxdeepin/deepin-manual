@@ -7,7 +7,7 @@ version: "1"
 package:
   id: org.deepin.manual
   name: "deepin-manual"
-  version: 6.5.6.1
+  version: 6.5.7.1
   kind: app
   description: |
     manual for deepin os.
