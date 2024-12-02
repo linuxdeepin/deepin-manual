@@ -1,3 +1,9 @@
+deepin-manual (6.0.7.1) stable; urgency=medium
+
+  * update 6.0.7.1 
+
+ -- Liu zheng <liuzheng@uniontech.com>  Mon, 02 Dec 2024 14:19:40 +0800
+
 deepin-manual (6.0.7) stable; urgency=medium
 
   * chore: Sync by https://github.com/linuxdeepin/.github/commit/2e5e092ba3f86b16d1aabbabcf0bfd2ae65b19c8(Influence: none)
