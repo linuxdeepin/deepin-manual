@@ -331,7 +331,8 @@ void WebWindow::closeEvent(QCloseEvent *event)
 {
     //保存窗口大小
     saveWindowSize();
-    QWidget::closeEvent(event);
+    QApplication::exit(0);
+    _Exit(0);
 }
 
 /**
