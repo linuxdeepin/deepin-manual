@@ -20,6 +20,7 @@ class helperManager  : public QObject
     Q_OBJECT
 public:
     explicit helperManager(QObject *parent = nullptr);
+    ~helperManager();
 
 private:
 

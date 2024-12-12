@@ -28,6 +28,33 @@ helperManager::helperManager(QObject *parent)
     initConnect();
 }
 
+helperManager::~helperManager()
+{
+    disconnect(jsObj, &JsContext::parseMsg, this, &helperManager::onRecvParseMsg);
+    disconnect(watcherObj, &fileWatcher::filelistChange, this, &helperManager::onFilelistChange);
+    disconnect(timerObj, &QTimer::timeout, this, &helperManager::onTimerOut);
+    if(timerObj)
+    {
+        timerObj->stop();
+    }
+    if(m_webView && m_webChannel)
+    {
+        m_webChannel->deleteLater();
+        delete m_webChannel;
+        m_webChannel = nullptr;
+        
+        disconnect(m_webView->page(), &QWebEnginePage::loadFinished, this, &helperManager::webLoadFinish);
+        m_webView->deleteLater();
+        delete m_webView;
+        m_webView = nullptr;
+    }
+    if(dbObj)
+    {
+        delete dbObj;
+        dbObj = nullptr;
+    }
+}
+
 /**
  * @brief helperManager::initWeb 初始化web配置
  */
