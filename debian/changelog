@@ -1,3 +1,9 @@
+deepin-manual (6.0.7.2) stable; urgency=medium
+
+  *fix close window crash 
+
+ -- Liu zheng <liuzheng@uniontech.com>  Thu, 12 Dec 2024 22:16:04 +0800
+
 deepin-manual (6.0.7.1) stable; urgency=medium
 
   * update 6.0.7.1 
