@@ -27,7 +27,7 @@ build: |
   find ${PREFIX} -name "Qt5WebChannelConfig.cmake" -exec sed -i "s|NO_DEFAULT_PATH||g" {} +
 
   #修改服务使用玲珑启动
-  sed -i "s|ExecStart=/usr/bin/dman --dbus|ExecStart=/usr/bin/ll-cli run org.deepin.manual --exec \"dman --dbus\"|g" $PWD/misc/deepin-manual.service
+  sed -i "s|ExecStart=/usr/bin/dman --dbus|ExecStart=dman --dbus|g" $PWD/misc/deepin-manual.service
 
   # 获取版本号
   VERSION=$(head -1 debian/changelog | awk -F'[()]' '{print $2}')
