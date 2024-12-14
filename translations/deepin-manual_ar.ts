@@ -49,12 +49,12 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="21"/>
         <source>Quick Start</source>
-        <translation>بداية سريعة</translation>
+        <translation>ابدأ بسرعة</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="22"/>
         <source>Video Guide</source>
-        <translation>دليل مرئي</translation>
+        <translation>الدليل عبر الفيديو</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="23"/>
@@ -89,7 +89,7 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="29"/>
         <source>Click to view </source>
-        <translation>انقر للعرض</translation>
+        <translation>انقر لعرض </translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="30"/>
@@ -99,7 +99,7 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="32"/>
         <source>App Store</source>
-        <translation type="unfinished"/>
+        <translation>متجر التطبيقات</translation>
     </message>
     <message>
         <location filename="../src/app/dman.cpp" line="105"/>
