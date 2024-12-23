@@ -51,6 +51,13 @@ int main(int argc, char **argv)
     }
 #endif
 
+    // 增加路径以搜索主机应用和玲珑应用中的帮助手册
+    if (qEnvironmentVariableIsSet("LINGLONG_APPID")) {
+        QByteArray paths = qgetenv("XDG_DATA_DIRS");
+        paths.append(":/run/host/rootfs/usr/share:/run/host/rootfs/var/lib/linglong/entries/share");
+        qputenv("XDG_DATA_DIRS", paths);
+    }
+
     // 后端服务dmanHelper自检，若前端dman应用不存在，则后端dmanHelper退出
     DManWatcher watcher;
     ManualSearchProxy search_obj;
