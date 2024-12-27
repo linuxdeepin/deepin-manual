@@ -1,22 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="da" sourcelanguage="en_US">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" sourcelanguage="en_US" language="da">
 <context>
     <name>ManualProxy</name>
     <message>
         <location filename="../src/view/manual_proxy.cpp" line="322"/>
         <source>Learn Basic Operations</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/manual_proxy.cpp" line="324"/>
         <source>Common Application Libraries</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/manual_proxy.cpp" line="326"/>
         <source>Desktop Environment</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
 </context>
 <context>
@@ -30,7 +28,7 @@
     <message>
         <location filename="../src/view/web_window.cpp" line="301"/>
         <source>The content was updated</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/web_window.cpp" line="624"/>
@@ -41,7 +39,7 @@
         <location filename="../src/view/web_window.cpp" line="627"/>
         <location filename="../src/view/i18n_proxy.cpp" line="31"/>
         <source>Support</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/web_window.cpp" line="836"/>
@@ -51,12 +49,12 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="21"/>
         <source>Quick Start</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="22"/>
         <source>Video Guide</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="23"/>
@@ -91,27 +89,27 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="29"/>
         <source>Click to view </source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="30"/>
         <source>View all</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="32"/>
         <source>App Store</source>
-        <translation type="unfinished"></translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/app/dman.cpp" line="105"/>
         <source>Manual</source>
-        <translation type="unfinished"></translation>
+        <translation>Manual</translation>
     </message>
     <message>
         <location filename="../src/app/dman.cpp" line="106"/>
         <source>Manual is designed to help users learn the operating system and its applications, providing specific instructions and function descriptions.</source>
-        <translation type="unfinished"></translation>
+        <translation>Manual er designet til at hjælpe brugere med at lære styresystemet og dets programmer, ved at levere bestemte instruktioner og beskrivelser af funktioner.</translation>
     </message>
 </context>
 <context>

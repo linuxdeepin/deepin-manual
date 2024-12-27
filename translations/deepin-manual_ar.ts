@@ -1,22 +1,20 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="ar" sourcelanguage="en_US">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" sourcelanguage="en_US" language="ar">
 <context>
     <name>ManualProxy</name>
     <message>
         <location filename="../src/view/manual_proxy.cpp" line="322"/>
         <source>Learn Basic Operations</source>
-        <translation type="unfinished"></translation>
+        <translation>تعلم العمليات الأساسية</translation>
     </message>
     <message>
         <location filename="../src/view/manual_proxy.cpp" line="324"/>
         <source>Common Application Libraries</source>
-        <translation type="unfinished"></translation>
+        <translation>مكتبات التطبيقات الشائعة</translation>
     </message>
     <message>
         <location filename="../src/view/manual_proxy.cpp" line="326"/>
         <source>Desktop Environment</source>
-        <translation type="unfinished"></translation>
+        <translation>بيئة سطح المكتب</translation>
     </message>
 </context>
 <context>
@@ -30,7 +28,7 @@
     <message>
         <location filename="../src/view/web_window.cpp" line="301"/>
         <source>The content was updated</source>
-        <translation type="unfinished"></translation>
+        <translation>تم تحديث المحتوى</translation>
     </message>
     <message>
         <location filename="../src/view/web_window.cpp" line="624"/>
@@ -41,7 +39,7 @@
         <location filename="../src/view/web_window.cpp" line="627"/>
         <location filename="../src/view/i18n_proxy.cpp" line="31"/>
         <source>Support</source>
-        <translation type="unfinished"></translation>
+        <translation>الدعم</translation>
     </message>
     <message>
         <location filename="../src/view/web_window.cpp" line="836"/>
@@ -51,12 +49,12 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="21"/>
         <source>Quick Start</source>
-        <translation type="unfinished"></translation>
+        <translation>ابدأ بسرعة</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="22"/>
         <source>Video Guide</source>
-        <translation type="unfinished"></translation>
+        <translation>الدليل عبر الفيديو</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="23"/>
@@ -91,17 +89,17 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="29"/>
         <source>Click to view </source>
-        <translation type="unfinished"></translation>
+        <translation>انقر لعرض </translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="30"/>
         <source>View all</source>
-        <translation type="unfinished"></translation>
+        <translation>عرض الكل</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="32"/>
         <source>App Store</source>
-        <translation type="unfinished"></translation>
+        <translation>متجر التطبيقات</translation>
     </message>
     <message>
         <location filename="../src/app/dman.cpp" line="105"/>
