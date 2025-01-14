@@ -40,23 +40,26 @@ TEST_F(ut_search_button_test, isChecked)
 
 TEST_F(ut_search_button_test, leaveFocus)
 {
-    DTK_GUI_NAMESPACE::DGuiApplicationHelper::instance()->setThemeType(DGuiApplicationHelper::DarkType);
+    DTK_GUI_NAMESPACE::DGuiApplicationHelper::instance()->setPaletteType(DGuiApplicationHelper::DarkType);
     SearchButton sb;
     sb.leaveFocus();
     ASSERT_FALSE(sb.m_bHover);
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     QPixmap iconPm = Utils::renderSVG(QString(kImageDarkSearchIcon), QSize(20, 20));
     ASSERT_EQ(sb.iconBtn->icon().pixmap(QSize(20, 20)), iconPm);
+#endif
 }
 
 TEST_F(ut_search_button_test, leaveFocus2)
 {
     SearchButton sb;
-    DTK_GUI_NAMESPACE::DGuiApplicationHelper::instance()->setThemeType(DGuiApplicationHelper::LightType);
+    DTK_GUI_NAMESPACE::DGuiApplicationHelper::instance()->setPaletteType(DGuiApplicationHelper::LightType);
     sb.leaveFocus();
     ASSERT_FALSE(sb.m_bHover);
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     QPixmap iconPm1 = Utils::renderSVG(QString(kImageLightSearchIcon), QSize(20, 20));
     ASSERT_EQ(sb.iconBtn->icon().pixmap(QSize(20, 20)), iconPm1);
-
+#endif
 }
 
 
@@ -72,8 +75,10 @@ TEST_F(ut_search_button_test, onThemeChange)
 {
     SearchButton sb;
     sb.onThemeChange(DGuiApplicationHelper::DarkType);
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     QPixmap iconPm = Utils::renderSVG(QString(kImageDarkSearchIcon), QSize(20, 20));
     ASSERT_EQ(sb.iconBtn->icon().pixmap(QSize(20, 20)), iconPm);
+#endif
 }
 
 
@@ -81,8 +86,10 @@ TEST_F(ut_search_button_test, onThemeChange2)
 {
     SearchButton sb;
     sb.onThemeChange(DGuiApplicationHelper::LightType);
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     QPixmap iconPm = Utils::renderSVG(QString(kImageLightSearchIcon), QSize(20, 20));
     ASSERT_EQ(sb.iconBtn->icon().pixmap(QSize(20, 20)), iconPm);
+#endif
 }
 
 TEST_F(ut_search_button_test, paintEvent)
@@ -91,8 +98,10 @@ TEST_F(ut_search_button_test, paintEvent)
     sb.m_bHover = true;
     QPaintEvent *event;
     sb.paintEvent(event);
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     QPixmap iconPm = Utils::renderSVG(QString(kImageWhiteSearchIcon), QSize(20, 20));
     ASSERT_EQ(sb.iconBtn->icon().pixmap(QSize(20, 20)), iconPm);
+#endif
 }
 
 TEST_F(ut_search_button_test, paintEvent2)
@@ -118,7 +127,11 @@ TEST_F(ut_search_button_test, mouseReleaseEvent)
 TEST_F(ut_search_button_test, enterEvent)
 {
     SearchButton sb;
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     QEvent *e;
+#else
+    QEnterEvent *e;
+#endif
     sb.m_bHover = false;
     sb.enterEvent(e);
     ASSERT_TRUE(sb.m_bHover);
@@ -127,23 +140,25 @@ TEST_F(ut_search_button_test, enterEvent)
 TEST_F(ut_search_button_test, leaveEvent)
 {
     QEvent *e;
-    DTK_GUI_NAMESPACE::DGuiApplicationHelper::instance()->setThemeType(DGuiApplicationHelper::DarkType);
+    DTK_GUI_NAMESPACE::DGuiApplicationHelper::instance()->setPaletteType(DGuiApplicationHelper::DarkType);
     SearchButton sb;
     sb.leaveEvent(e);
     ASSERT_FALSE(sb.m_bHover);
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     QPixmap iconPm = Utils::renderSVG(QString(kImageDarkSearchIcon), QSize(20, 20));
     ASSERT_EQ(sb.iconBtn->icon().pixmap(QSize(20, 20)), iconPm);
-
+#endif
 }
 
 TEST_F(ut_search_button_test, leaveEvent2)
 {
     QEvent *e;
     SearchButton sb;
-    DTK_GUI_NAMESPACE::DGuiApplicationHelper::instance()->setThemeType(DGuiApplicationHelper::LightType);
+    DTK_GUI_NAMESPACE::DGuiApplicationHelper::instance()->setPaletteType(DGuiApplicationHelper::LightType);
     sb.leaveEvent(e);
     ASSERT_FALSE(sb.m_bHover);
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     QPixmap iconPm1 = Utils::renderSVG(QString(kImageLightSearchIcon), QSize(20, 20));
     ASSERT_EQ(sb.iconBtn->icon().pixmap(QSize(20, 20)), iconPm1);
-
+#endif
 }

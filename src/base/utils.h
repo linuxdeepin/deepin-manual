@@ -8,13 +8,15 @@
 #include "sys/time.h"
 #include "dbus/dbusvariant/app_info.h"
 
-#include <DApplicationHelper>
+#include <DGuiApplicationHelper>
+
 #include <DSysInfo>
 #include <QWidget>
+#include <QMultiMap>
 
 #define dApp (static_cast<DApplication *>(QCoreApplication::instance()))
 
-DWIDGET_USE_NAMESPACE
+DGUI_USE_NAMESPACE
 
 class Utils : public QObject
 {

@@ -6,6 +6,7 @@
 #include "base/utils.h"
 
 #include <DStyleHelper>
+#include <DPaletteHelper>
 #include <QPainterPath>
 
 SearchCompletionDelegate::SearchCompletionDelegate(QAbstractItemView *parent)
@@ -54,7 +55,7 @@ void SearchCompletionDelegate::paint(QPainter *painter, const QStyleOptionViewIt
             rect.setWidth(option.rect.width());
             rect.setHeight(option.rect.height());
             path.addRect(rect);
-            DPalette pa = DApplicationHelper::instance()->palette(m_parentView);
+            DPalette pa = DPaletteHelper::instance()->palette(m_parentView);
             QColor fillColor = option.palette.color(cg, DPalette::Highlight);
             painter->fillPath(path, QBrush(fillColor));
 
@@ -72,7 +73,7 @@ void SearchCompletionDelegate::paint(QPainter *painter, const QStyleOptionViewIt
             rect.setWidth(option.rect.width());
             rect.setHeight(option.rect.height() - 1);
             path.addRect(rect);
-            DPalette pa = ExApplicationHelper::instance()->palette(m_parentView);
+            DPalette pa = DPaletteHelper::instance()->palette(m_parentView);
             DStyleHelper styleHelper;
             QColor fillColor = styleHelper.getColor(static_cast<const QStyleOption *>(&option), pa, DPalette::ItemBackground);
             painter->fillPath(path, QBrush(fillColor));

@@ -46,7 +46,7 @@ int shellObj::startSystemThread(const QString &cmd)
 void shellObj::runSystem()
 {
     system(cmd.toStdString().data());
-    qDebug() << "shell " << cmd << endl;
+    qDebug() << "shell " << cmd;
 //    emit onCompleted(iRst < 0 ? "error" : "");
     delete this;
 }

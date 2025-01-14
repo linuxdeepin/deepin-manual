@@ -7,12 +7,13 @@
 
 #include "gtest/gtest.h"
 
-#include <DApplicationHelper>
+#include <DGuiApplicationHelper>
 #include <DSysInfo>
 
 #include <QTest>
 #include <QObject>
 #include <QTimer>
+#include <QMultiMap>
 
 class Utils;
 

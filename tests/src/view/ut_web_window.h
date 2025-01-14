@@ -8,14 +8,14 @@
 #include "gtest/gtest.h"
 
 #include <DObject>
-#include <DApplicationHelper>
+#include <DGuiApplicationHelper>
 
 #include <QTest>
 #include <QMainWindow>
 #include <QWebChannel>
 #include <QWebEnginePage>
 
-DWIDGET_USE_NAMESPACE
+DGUI_USE_NAMESPACE
 
 class WebWindow;
 

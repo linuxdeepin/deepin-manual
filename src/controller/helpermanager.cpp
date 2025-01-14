@@ -216,8 +216,14 @@ void helperManager::handleDb(const QStringList &deleteList, const QStringList &a
                                     anchorInitialList["zh_HK"].append("");
                                     anchorInitialList["zh_TW"].append("");
 
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+                                    QRegExp regExp("[1-9]");
+#else
+                                    QRegularExpression regExp("[1-9]");
+#endif
+
                                     anchorSpellList["en_US"].append(obj["name[en_US]"].toString().remove(" "));
-                                    anchorSpellList["zh_CN"].append(Dtk::Core::Chinese2Pinyin(obj["name[zh_CN]"].toString()).remove(QRegExp("[1-9]")));
+                                    anchorSpellList["zh_CN"].append(Dtk::Core::Chinese2Pinyin(obj["name[zh_CN]"].toString()).remove(regExp));
                                     anchorSpellList["zh_HK"].append("");
                                     anchorSpellList["zh_TW"].append("");
 
@@ -404,7 +410,12 @@ void helperManager::onRecvParseMsg(const QString &msg, const QString &path)
         QString title_us = anchor.at(1).toString();
         anchors.append(title_ch);
         if (lang == "zh_CN") {
-            QString str = Dtk::Core::Chinese2Pinyin(title_ch).remove(QRegExp("[1-9]"));
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+            QRegExp regExp("[1-9]");
+#else
+            QRegularExpression regExp("[1-9]");
+#endif
+            QString str = Dtk::Core::Chinese2Pinyin(title_ch).remove(regExp);
             anchorSpellList.append(str);
             if (id == "h0") {
                 QString anchorInitial;
