@@ -7,6 +7,8 @@
 #include "base/utils.h"
 
 #include <DWindowManagerHelper>
+#include <DPaletteHelper>
+#include <DGuiApplicationHelper>
 
 #include <QStylePainter>
 #include <QPainterPath>

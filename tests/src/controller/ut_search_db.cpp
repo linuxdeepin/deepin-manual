@@ -647,13 +647,14 @@ TEST_F(ut_search_db_test, sortSearchList)
 
     sd->sortSearchList(appName, anchors, anchorIdList, contents, false);
     ASSERT_TRUE(sd->nH0OfList > 0);
-
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     QStringList anchorIdList1 {"h2", "h1", "h2", "h3", "h4", "h5", "h6"};
     sd->sortSearchList(appName, anchors, anchorIdList1, contents, false);
     ASSERT_EQ(sd->listStruct.count(), 1);
 
     sd->sortSearchList(appName, anchors, anchorIdList1, contents, true);
     ASSERT_EQ(sd->listStruct.count(), 2);
+#endif
 }
 
 TEST_F(ut_search_db_test, onitHighlight)

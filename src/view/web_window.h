@@ -9,12 +9,13 @@
 
 #include <DButtonBox>
 #include <DMainWindow>
-#include <DApplicationHelper>
+#include <DGuiApplicationHelper>
 #include <DSpinner>
 #include <DMessageManager>
 
 #include <QtDBus/QtDBus>
 #include <QWebEngineView>
+#include <QStackedWidget>
 
 DWIDGET_USE_NAMESPACE
 
@@ -111,6 +112,7 @@ private:
     bool bIsSetKeyword{false};
     bool bFinishChannel{false};
     Dtk::Widget::DSpinner *m_spinner;
+    QStackedWidget *m_CentralStackWidget;
 
 private slots:
     void onSearchEditFocusOut();

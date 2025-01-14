@@ -107,7 +107,12 @@ int main(int argc, char **argv)
                     QString title_us = anchor.at(1).toString();
                     anchors.append(title_ch);
                     if (locale == "zh_CN") {
-                        QString str = Dtk::Core::Chinese2Pinyin(title_ch).remove(QRegExp("[1-9]"));
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+                        QRegExp regExp("[1-9]");
+#else
+                        QRegularExpression regExp("[1-9]");
+#endif
+                        QString str = Dtk::Core::Chinese2Pinyin(title_ch).remove(regExp);
                         anchorSpellList.append(str);
                         if (id == "h0") {
                             QString anchorInitial;
@@ -136,7 +141,7 @@ int main(int argc, char **argv)
                 }
 
                 if (!invalid_entry) {
-                    qDebug() << "add search entry" << app_name << locale << anchors << endl;
+                    qDebug() << "add search entry" << app_name << locale << anchors;
                     db.addSearchEntry(app_name, locale, anchors, anchorInitialList, anchorSpellList, anchorIdList, contents);
                 }
             }

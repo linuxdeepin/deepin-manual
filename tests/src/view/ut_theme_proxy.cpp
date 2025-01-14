@@ -18,10 +18,10 @@ TEST_F(ut_theme_proxy_test, getTheme)
 {
     ThemeProxy tp;
 
-    DTK_GUI_NAMESPACE::DGuiApplicationHelper::instance()->setThemeType(DTK_GUI_NAMESPACE::DGuiApplicationHelper::LightType);
+    DTK_GUI_NAMESPACE::DGuiApplicationHelper::instance()->setPaletteType(DTK_GUI_NAMESPACE::DGuiApplicationHelper::LightType);
     ASSERT_EQ(tp.getTheme(), "LightType");
 
-    DTK_GUI_NAMESPACE::DGuiApplicationHelper::instance()->setThemeType(DTK_GUI_NAMESPACE::DGuiApplicationHelper::DarkType);
+    DTK_GUI_NAMESPACE::DGuiApplicationHelper::instance()->setPaletteType(DTK_GUI_NAMESPACE::DGuiApplicationHelper::DarkType);
     ASSERT_EQ(tp.getTheme(), "DarkType");
 
 

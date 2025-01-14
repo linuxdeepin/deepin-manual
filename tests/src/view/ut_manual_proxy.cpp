@@ -12,7 +12,7 @@
 #include <QProcess>
 #include <QMutex>
 #include <QDir>
-#include <QtGui/private/qiconloader_p.h>
+// #include <QtGui/private/qiconloader_p.h>
 #include <QSignalSpy>
 
 ut_manual_proxy_test::ut_manual_proxy_test()
@@ -155,7 +155,7 @@ TEST_F(ut_manual_proxy_test, setApplicationState)
 
         QSettings *setting = new QSettings(winInfoFilePath, QSettings::IniFormat);
 
-        setting->beginGroup(kConfigAppList);
+        setting->beginGroup(QString(kConfigAppList));
         QString appName("dde");
         if (setting->contains(appName)) {
             setting->setValue(appName, true);
@@ -187,7 +187,7 @@ TEST_F(ut_manual_proxy_test, setApplicationState)
     } else {
         QSettings *setting = new QSettings(winInfoFilePath, QSettings::IniFormat);
 
-        setting->beginGroup(kConfigAppList);
+        setting->beginGroup(QString(kConfigAppList));
         QString appName("dde");
         if (setting->contains(appName)) {
             setting->setValue(appName, true);
@@ -229,7 +229,7 @@ TEST_F(ut_manual_proxy_test, setApplicationState2)
 
         QSettings *setting = new QSettings(winInfoFilePath, QSettings::IniFormat);
 
-        setting->beginGroup(kConfigAppList);
+        setting->beginGroup(QString(kConfigAppList));
         QString appName("dde");
         if (setting->contains(appName)) {
             setting->setValue(appName, true);
@@ -245,7 +245,7 @@ TEST_F(ut_manual_proxy_test, setApplicationState2)
     } else {
         QSettings *setting = new QSettings(winInfoFilePath, QSettings::IniFormat);
 
-        setting->beginGroup(kConfigAppList);
+        setting->beginGroup(QString(kConfigAppList));
         QString appName("dde");
         if (setting->contains(appName)) {
             setting->setValue(appName, true);
@@ -290,7 +290,7 @@ TEST_F(ut_manual_proxy_test, saveApplist)
     }
     QString winInfoFilePath(winInfoPath.filePath("wininfo-config.conf"));
     QSettings *setting = new QSettings(winInfoFilePath, QSettings::IniFormat);
-    setting->beginGroup(kConfigAppList);
+    setting->beginGroup(QString(kConfigAppList));
 
     ManualProxy mp;
 
@@ -387,11 +387,11 @@ TEST_F(ut_manual_proxy_test, appToPath)
 }
 
 
-QThemeIconInfo ut_manual_proxy_test::stub_loadIcon(const QString &iconname) const
-{
-    QThemeIconInfo tee = QIconLoader::instance()->loadIcon(iconname);
-    return tee;
-}
+// QThemeIconInfo ut_manual_proxy_test::stub_loadIcon(const QString &iconname) const
+// {
+//     QThemeIconInfo tee = QIconLoader::instance()->loadIcon(iconname);
+//     return tee;
+// }
 
 TEST_F(ut_manual_proxy_test, getAppIconPath)
 {

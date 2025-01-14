@@ -115,7 +115,9 @@ TEST_F(ut_helperManager, handleDb)
     s.set((QWebEnginePage * (QWebEngineView::*)()) ADDR(QWebEngineView, page), ADDR(ut_helperManager, stub_page));
     s.set((void (QWebEnginePage::*)(QWebChannel *))ADDR(QWebEnginePage, setWebChannel), ADDR(ut_helperManager, stub_setWeb));
     s.set((void (QWebEngineView::*)(const QUrl &))ADDR(QWebEngineView, load), stub_initweb);
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     s.set((void (QWebEnginePage::*)(const QString &))ADDR(QWebEnginePage, runJavaScript), stub_initweb);
+#endif
     m_hm->initWeb();
     m_hm->handleDb(deleteList, addList, addTime);
     ASSERT_EQ(m_hm->addTList[0], "/usr/share/deepin-manual/manual-assets/application/deepin-terminal/terminal/zh_CN/voice-note.md");

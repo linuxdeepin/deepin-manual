@@ -7,7 +7,6 @@
 
 #include <QObject>
 
-class QIconLoader;
 class ManualProxy : public QObject
 {
     Q_OBJECT
@@ -55,7 +54,6 @@ private:
 private:
     QStringList app_list_;
     QString strIconTheme;
-    QIconLoader *piconload;
     QString videoUrl;
 };
 

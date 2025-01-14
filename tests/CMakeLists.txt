@@ -31,47 +31,44 @@ endif()
 
 
 find_package(PkgConfig REQUIRED)
-find_package(Qt5Core REQUIRED)
-find_package(Qt5DBus REQUIRED)
-find_package(Qt5Gui REQUIRED)
-find_package(Qt5X11Extras REQUIRED)
-find_package(Qt5LinguistTools)
-find_package(Qt5Sql REQUIRED)
-find_package(Qt5WebChannel REQUIRED)
-find_package(Qt5Widgets REQUIRED)
-find_package(Qt5LinguistTools REQUIRED)
-find_package(Qt5WebEngineWidgets REQUIRED)
 
 find_package(GTest REQUIRED)
 include_directories(${GTEST_INCLUDE_DIRS})
-find_package(Qt5Test REQUIRED)
-
-pkg_search_module(DtkWidget REQUIRED dtkwidget)
-pkg_search_module(DtkGui REQUIRED dtkgui)
-pkg_search_module(DtkCore REQUIRED dtkcore)
-
-include_directories(${DtkWidget_INCLUDE_DIRS})
-include_directories(${DtkGui_INCLUDE_DIRS})
-include_directories(${DtkCore_INCLUDE_DIRS})
 
 ADD_COMPILE_OPTIONS(-fno-access-control)
 
+set(qt_required_components Core DBus Gui Widgets Sql WebChannel WebEngineWidgets Test)
+
+if (QT_DESIRED_VERSION MATCHES 6)
+    list(APPEND qt_required_components Core5Compat)
+else()
+    # list(APPEND qt_required_components X11Extras )
+endif()
+
+find_package(Qt${QT_DESIRED_VERSION} REQUIRED COMPONENTS ${qt_required_components})
+find_package(Dtk${DTK_VERSION_MAJOR} REQUIRED COMPONENTS Widget Gui Core)
+
 set(LINK_LIBS
-    Qt5::Core
-    Qt5::DBus
-    Qt5::Sql
-    Qt5::Widgets
-    Qt5::X11Extras
-    Qt5::WebChannel
-    Qt5::WebEngineWidgets
-    Qt5::Test
-    ${}
+    Qt${QT_DESIRED_VERSION}::Core
+    Qt${QT_DESIRED_VERSION}::DBus
+    Qt${QT_DESIRED_VERSION}::Gui
+    Qt${QT_DESIRED_VERSION}::Widgets
+    Qt${QT_DESIRED_VERSION}::Sql
+    Qt${QT_DESIRED_VERSION}::WebChannel
+    Qt${QT_DESIRED_VERSION}::WebEngineWidgets
+    Qt${QT_DESIRED_VERSION}::Test
+    Dtk${DTK_VERSION_MAJOR}::Widget
+    Dtk${DTK_VERSION_MAJOR}::Gui
+    Dtk${DTK_VERSION_MAJOR}::Core
+)
 
-    ${DtkWidget_LDFLAGS}
-    ${DtkGui_LDFLAGS}
-    ${DtkCore_LDFLAGS}
-
-    -lX11)
+if (QT_DESIRED_VERSION MATCHES 6)
+    list(APPEND LINK_LIBS Qt${QT_DESIRED_VERSION}::Core5Compat)
+    # list(APPEND LINK_LIBS Qt${QT_VERSION_MAJOR}::GuiPrivate)
+else()
+    # list(APPEND LINK_LIBS Qt${QT_VERSION_MAJOR}::WidgetsPrivate)
+    # list(APPEND LINK_LIBS Qt${QT_DESIRED_VERSION}::X11Extras)
+endif()
 
 if (CMAKE_BUILD_TYPE MATCHES Debug)
   add_definitions(-DDMAN_SEARCH_DB="${CMAKE_SOURCE_DIR}/manual-assets")
@@ -156,16 +153,6 @@ add_executable(${PROJECT_NAME_TEST}
     ${allTestSource}
 )
 
-target_include_directories(${PROJECT_NAME_TEST} PUBLIC ${Qt5Widgets_LIBRARIES}
-                                                       ${Qt5DBus_LIBRARIES}
-                                                       ${Qt5TestLib_LIBRARIES}
-                                                       ${Qt5Widgets_PRIVATE_INCLUDE_DIRS}
-                                                       ${Qt5Core_PRIVATE_INCLUDE_DIRS}
-                                                       ${Qt5Gui_PRIVATE_INCLUDE_DIRS}
-                                                       ${DtkWidget_INCLUDE_DIRS}
-                                                       ${DtkCore_INCLUDE_DIRS}
-                                                       ${DtkGui_INCLUDE_DIRS}
-                                                       ${PROJECT_BINARY_DIR})
 # 生成测试可执行程序的依赖库
 target_link_libraries(
     ${PROJECT_NAME_TEST}

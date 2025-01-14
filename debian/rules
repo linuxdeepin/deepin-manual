@@ -6,6 +6,21 @@ include /usr/share/dpkg/default.mk
 DEB_TARGET_MULTIARCH ?= $(shell dpkg-architecture -qDEB_TARGET_MULTIARCH)
 DH_AUTO_ARGS = --parallel --buildsystem=cmake
 
+# 检测当前安装的Qt版本，优先使用Qt6，否则使用Qt5
+define detect_qt_version
+ifneq (,$(shell which qmake6 2>/dev/null))
+    QT_DIR="/usr/lib/$(DEB_HOST_MULTIARCH)/cmake/Qt6"
+else
+    QT_DIR="/usr/lib/$(DEB_HOST_MULTIARCH)/cmake/Qt5"
+endif
+endef
+
+# 调用检测Qt版本的命令
+$(eval $(call detect_qt_version))
+
+# hardcode this if want to force build with sepecific Qt version
+# QT_DIR="/usr/lib/$(DEB_HOST_MULTIARCH)/cmake/Qt5"
+
 %:
 	dh $@ --parallel
 
@@ -14,7 +29,9 @@ override_dh_auto_configure:
 	  -DCMAKE_BUILD_TYPE=Release \
       -DCMAKE_SAFETYTEST_ARG="CMAKE_SAFETYTEST_ARG_OFF" \
 	  -DCMAKE_INSTALL_PREFIX=/usr \
-      -DAPP_VERSION=$(DEB_VERSION_UPSTREAM) -DVERSION=$(DEB_VERSION_UPSTREAM) LIB_INSTALL_DIR=/usr/lib/$(DEB_HOST_MULTIARCH)
+      -DAPP_VERSION=$(DEB_VERSION_UPSTREAM) -DVERSION=$(DEB_VERSION_UPSTREAM) \
+	  -DLIB_INSTALL_DIR=/usr/lib/$(DEB_HOST_MULTIARCH) \
+	  -DQT_DIR=$(QT_DIR)
 
 override_dh_auto_build:
 	dh_auto_build -- dman

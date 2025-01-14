@@ -7,6 +7,7 @@
 #include "resources/themes/images.h"
 
 #include <DFontSizeManager>
+#include <DPaletteHelper>
 
 #include <QHBoxLayout>
 #include <QStylePainter>
@@ -21,7 +22,7 @@ SearchButton::SearchButton(QWidget *parent)
     setAutoFillBackground(false);
 
     m_textLabel = new DLabel(this);
-    m_textLabel->setBackgroundRole(QPalette::Background);
+    m_textLabel->setBackgroundRole(QPalette::Window);
     m_textLabel->setAutoFillBackground(false);
     m_textLabel->setAttribute(Qt::WA_TransparentForMouseEvents);
 
@@ -41,14 +42,13 @@ SearchButton::SearchButton(QWidget *parent)
         iconBtn->setIcon(iconPm);
     }
 
-    DPalette paLabel = DApplicationHelper::instance()->palette(m_textLabel);
+    DPalette paLabel = DPaletteHelper::instance()->palette(m_textLabel);
     paLabel.setColor(DPalette::WindowText, paLabel.color(DPalette::WindowText));
     m_textLabel->setPalette(paLabel);
 
     DFontSizeManager::instance()->bind(m_textLabel, DFontSizeManager::T6, QFont::Medium);
 
     QHBoxLayout *centerLayout = new QHBoxLayout(this);
-    centerLayout->setMargin(0);
     centerLayout->setContentsMargins(0, 0, 0, 0);
     centerLayout->setSpacing(0);
 
@@ -201,7 +201,7 @@ void SearchButton::mouseReleaseEvent(QMouseEvent *event)
  * @param event
  * 鼠标移入边界时发送entered()信号,修改ListView索引，实现互斥
  */
-void SearchButton::enterEvent(QEvent *event)
+void SearchButton::enterEvent(EnterEvent *event)
 {
     Q_UNUSED(event);
 

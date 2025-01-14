@@ -7,7 +7,11 @@
 #include "view/widget/image_viewer.h"
 #include "src/third-party/stub/stub.h"
 
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
 #include <QDesktopWidget>
+#else
+#include <QScreen>
+#endif
 #include <QImageReader>
 
 ut_image_viewer_test::ut_image_viewer_test()
@@ -48,7 +52,11 @@ TEST_F(ut_image_viewer_test, open2)
 //    iv.initUI();
     iv.open(filePath);
     QPixmap pix(filePath);
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     const QRect screen_rect = qApp->desktop()->screenGeometry(QCursor::pos());
+#else
+    const QRect screen_rect = QGuiApplication::primaryScreen()->geometry();
+#endif
     const int pixmap_max_width = static_cast<int>(screen_rect.width() * 0.8);
     const int pixmap_max_height = static_cast<int>(screen_rect.height() * 0.8);
     pix = pix.scaled(pixmap_max_width, pixmap_max_height, Qt::KeepAspectRatio,
