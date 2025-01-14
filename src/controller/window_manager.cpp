@@ -14,7 +14,6 @@
 #include <DWidgetUtil>
 
 #include <QApplication>
-#include <QDesktopWidget>
 
 #define WM_SENDER_NAME "Sender"
 const int kWinMinWidth = 680;
@@ -163,9 +162,9 @@ void WindowManager::setWindow(WebWindow *window)
 {
     //获取窗口上次保存尺寸,加载上次保存尺寸.
     QSettings *setting = ConfigManager::getInstance()->getSettings();
-    setting->beginGroup(kConfigWindowInfo);
-    int saveWidth = setting->value(kConfigWindowWidth).toInt();
-    int saveHeight = setting->value(kConfigWindowHeight).toInt();
+    setting->beginGroup(QString(kConfigWindowInfo));
+    int saveWidth = setting->value(QString(kConfigWindowWidth)).toInt();
+    int saveHeight = setting->value(QString(kConfigWindowHeight)).toInt();
     setting->endGroup();
     // 如果配置文件没有数据
     if (saveWidth == 0 || saveHeight == 0) {

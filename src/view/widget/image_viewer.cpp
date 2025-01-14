@@ -6,9 +6,13 @@
 
 #include <DLog>
 #include <QApplication>
-#include <QDesktopWidget>
 #include <QShortcut>
 #include <QImageReader>
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+#include <QDesktopWidget>
+#else
+#include <QScreen>
+#endif
 
 namespace {
 
@@ -58,7 +62,11 @@ void ImageViewer::open(const QString &filepath)
     } else {
         qDebug() << "can not read...." << reader.errorString();
     }
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     const QRect screen_rect = qApp->desktop()->screenGeometry(QCursor::pos());
+#else
+    const QRect screen_rect = QGuiApplication::primaryScreen()->geometry();
+#endif
     const int pixmap_max_width = static_cast<int>(screen_rect.width() * 0.8);
     const int pixmap_max_height = static_cast<int>(screen_rect.height() * 0.8);
 
@@ -118,7 +126,7 @@ void ImageViewer::initUI()
     scHideDialog->setAutoRepeat(false);
 
     connect(scHideDialog, &QShortcut::activated, this, [this] {
-        qDebug() << "pressed esc!" << endl;
+        qDebug() << "pressed esc!";
         this->hide();
     });
 }

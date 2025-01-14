@@ -250,7 +250,7 @@ QStringList Utils::getMdsourcePath()
         sourcePath.push_back(pathlist[i] + "/deepin-manual/manual-assets");
     }
     sourcePath.push_back(DMAN_MANUAL_DIR);
-    qDebug() << " all MD source path : " << sourcePath.last();
+    // qDebug() << " all MD source path : " << sourcePath.last();
     return sourcePath;
 }
 
@@ -259,7 +259,7 @@ QStringList Utils::getEnvsourcePath()
     QStringList pathlist = QString(qgetenv("XDG_DATA_DIRS")).split(':');
     if (pathlist.size() == 1 && pathlist[0].isEmpty())
         pathlist[0] = "/usr/share";
-    qDebug() << " all source path : " << pathlist;
+    // qDebug() << " all source path : " << pathlist;
     return pathlist;
 }
 
@@ -346,16 +346,16 @@ QStringList Utils::getSystemManualDir()
  */
 QList<AppInfo> Utils::sortAppList(QMultiMap<qlonglong, AppInfo> map)
 {
-    QMapIterator<qlonglong, AppInfo> it(map);
     QList<AppInfo> listEnd;
     QList<AppInfo> listtmp;
     qlonglong longlongtmp = 0;
-    while (it.hasNext()) {
-        it.next();
+    QMultiMap<qlonglong, AppInfo>::const_iterator it = map.constBegin();
+    while (it != map.constEnd()) {
         //只在第一次循环时插入listtemp
-        if (it.value().key == map.first().key) {
+        if (listtmp.isEmpty()) {
             listtmp.append(it.value());
             longlongtmp = it.key();
+            ++it;
             continue;
         }
 
@@ -365,7 +365,7 @@ QList<AppInfo> Utils::sortAppList(QMultiMap<qlonglong, AppInfo> map)
         //清空listtmp, 修改longlongtmp记录当前key;
         if (it.key() == longlongtmp) {
             listtmp.append(it.value());
-        } else if (listtmp.size() != 0 && it.key() != longlongtmp) {
+        } else if (!listtmp.isEmpty() && it.key() != longlongtmp) {
             AppInfo m;
             for (int i = 0; i < listtmp.size(); ++i) {
                 for (int j = 0; j < listtmp.size() - 1; ++j) {
@@ -381,6 +381,7 @@ QList<AppInfo> Utils::sortAppList(QMultiMap<qlonglong, AppInfo> map)
             longlongtmp = it.key();
             listtmp.append(it.value());
         }
+        ++it;
     }
     //最后判断listtmp是否为空，处理循环结束时，最后几次longlongtmp都是相等的情况
     if (!listtmp.isEmpty()) {
@@ -499,7 +500,7 @@ QString Utils::regexp_label(const QString &strtext, const QString &strpatter)
     if (match.isValid() && match.hasMatch()) {
         for (int i = 0; i <= match.lastCapturedIndex(); i++) {
             result = match.captured(i);
-            qDebug() << __FUNCTION__ << "-------****" << result;
+            // qDebug() << __FUNCTION__ << "-------****" << result;
             break;
         }
     }

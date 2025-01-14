@@ -9,22 +9,18 @@
 
 #include <DDesktopEntry>
 
-#include <QtGui/private/qiconloader_p.h>
+#include <QIcon>
 #include <QDesktopServices>
 
 ManualProxy::ManualProxy(QObject *parent)
     : QObject(parent)
     , strIconTheme("")
-    , piconload(new QIconLoader)
 {
-    piconload->ensureInitialized();
     AppInfo::registerMetaType();
 }
 
 ManualProxy::~ManualProxy()
 {
-    if (nullptr != piconload)
-        delete piconload;
 }
 
 /**
@@ -69,7 +65,7 @@ void ManualProxy::setApplicationState(const QString &appName)
     qDebug() << "open app---->" << strApp;
 
     QSettings *setting = ConfigManager::getInstance()->getSettings();
-    setting->beginGroup(kConfigAppList);
+    setting->beginGroup(QString(kConfigAppList));
     if (setting->contains(strApp)) {
         setting->setValue(strApp, false);
         qDebug() << setting->applicationName() << setting->fileName() << ": " << appName << " state=false";
@@ -88,7 +84,7 @@ void ManualProxy::setApplicationState(const QString &appName)
 QStringList ManualProxy::getUsedAppList()
 {
     QSettings *setting = ConfigManager::getInstance()->getSettings();
-    setting->beginGroup(kConfigAppList);
+    setting->beginGroup(QString(kConfigAppList));
     QStringList list = setting->allKeys();
     QStringList appList;
     for (int i = 0; i < list.size(); ++i) {
@@ -156,7 +152,7 @@ void ManualProxy::showUpdateLabel()
 //根据app名称找到对应md文件
 QString ManualProxy::appToPath(const QString &appName)
 {
-    qDebug() << __FUNCTION__ << "========>" << appName;
+    // qDebug() << __FUNCTION__ << "========>" << appName;
     QStringList omitType = Utils::systemToOmit(Dtk::Core::DSysInfo::uosEditionType());
     QStringList mdList;
     QStringList  assetsPathList = Utils::getSystemManualDir();
@@ -228,7 +224,7 @@ QString ManualProxy::appToPath(const QString &appName)
         oldMdPath = getAppLocalDir(oldMdPath);
         mdList.append(oldMdPath.append("/index.md"));
     }
-    qInfo() << "appToPath" << "find markdown file list" << mdList;
+    // qInfo() << "appToPath" << "find markdown file list" << mdList;
     QString ret;
     for (auto md : mdList) {
         if (QFile(md).exists()) {
@@ -240,7 +236,7 @@ QString ManualProxy::appToPath(const QString &appName)
         // TODO(wurongjie) 在之前的代码中返回了error,暂不知作用
         return "error";
     }
-    qInfo() << "========>" << ret;
+    // qInfo() << "========>" << ret;
     return ret;
 }
 
@@ -254,7 +250,7 @@ QString ManualProxy::translateTitle(const QString &titleUS)
 //根据应用desktop文件解析图标名称并获取图标路径
 QString ManualProxy::getAppIconPath(const QString &desktopname)
 {
-    qDebug() << "getAppIconPath: desktopname:" << desktopname;
+    // qDebug() << "getAppIconPath: desktopname:" << desktopname;
     //首次获取默认图标主题，如果获取失败默认bloom
     if (strIconTheme.isEmpty()) {
         QFile file("/usr/share/glib-2.0/schemas/com.deepin.dde.appearance.gschema.xml");
@@ -274,45 +270,36 @@ QString ManualProxy::getAppIconPath(const QString &desktopname)
     if (file.exists()) {
         Dtk::Core::DDesktopEntry entry(filepath);
         strIcon = entry.stringValue("Icon");
-        qDebug() << strIcon;
+        // qDebug() << strIcon;
     } else {
         qDebug() << QString("filepath:%1 not exit.. desktopname:%2").arg(filepath).arg(desktopname);
     }
 
     QString strIconPath;
-    if (QIcon::hasThemeIcon(strIcon) && nullptr != piconload) {
-        //强制设置主题为默认主题保证获取的图标来自与默认图标主题
-        piconload->setThemeName(strIconTheme);
-        QThemeIconInfo info = piconload->loadIcon(strIcon);
+    if (QIcon::hasThemeIcon(strIcon)) {
+        QIcon icon = QIcon::fromTheme(strIcon);
+        QStringList themePaths = icon.themeSearchPaths();
+        QString iconPath;
 
-        QString str96, str64, str48, str36;
-        for (int i = 0; i < info.entries.size(); i++) {
-            //修改变量名 cppcheck错误 20210419
-            QString filepathtmp = info.entries.at(i)->filename;
-            if (filepathtmp.contains("96")) {
-                str96 = filepathtmp;
+        // 遍历主题路径，查找图标文件
+        for (const QString &themePath : themePaths) {
+            QStringList iconSizes = {"96", "64", "48", "36"};
+            for (const QString &size : iconSizes) {
+                QString path = QString("%1/%2/apps/%3/%4.svg").arg(themePath).arg(strIconTheme).arg(size).arg(strIcon);
+                if (QFile::exists(path)) {
+                    iconPath = path;
+                    break;
+                }
+            }
+            if (!iconPath.isEmpty()) {
                 break;
-            } else if (filepathtmp.contains("64")) {
-                str64 = filepathtmp;
-            } else if (filepathtmp.contains("48")) {
-                str48 = filepathtmp;
-            } else if (filepathtmp.contains("36")) {
-                str36 = filepathtmp;
-            } else {
-                strIconPath = filepathtmp;
             }
         }
-        if (!str96.isEmpty()) {
-            strIconPath = str96;
-        } else if (!str64.isEmpty()) {
-            strIconPath = str64;
-        } else if (!str48.isEmpty()) {
-            strIconPath = str48;
-        } else if (!str36.isEmpty()) {
-            strIconPath = str36;
+
+        if (!iconPath.isEmpty()) {
+            strIconPath = iconPath;
         }
     }
-
     return strIconPath;
 }
 
@@ -423,7 +410,7 @@ void ManualProxy::saveAppList(const QStringList &list)
     Q_UNUSED(list)
     QSettings *setting = ConfigManager::getInstance()->getSettings();
     //获取配置文件中应用列表
-    setting->beginGroup(kConfigAppList);
+    setting->beginGroup(QString(kConfigAppList));
     for (int i = 0; i < list.size(); ++i) {
         if (setting->contains(list.at(i))) {
             continue;
@@ -445,7 +432,7 @@ QString ManualProxy::getAppLocalDir(const QString &appPath)
     QString AppLocalDir = QString(appPath).append(strlocal);
     QDir dir(AppLocalDir);
     //如果不存在该种语言的文档路径，藏语、维语使用简体中文，其它使用英文
-    qInfo() << __FUNCTION__ << dir.absolutePath() << strlocal;
+    // qInfo() << __FUNCTION__ << dir.absolutePath() << strlocal;
     if (!dir.exists()) {
         //藏语维语使用简体中文
         if (0 == strlocal.compare("ug_CN") || 0 == strlocal.compare("bo_CN")
@@ -455,7 +442,7 @@ QString ManualProxy::getAppLocalDir(const QString &appPath)
             AppLocalDir = QString(appPath).append("en_US");
         }
     }
-    qInfo() << __FUNCTION__ << "AppLocalDir:" << AppLocalDir;
+    // qInfo() << __FUNCTION__ << "AppLocalDir:" << AppLocalDir;
     return AppLocalDir;
 }
 

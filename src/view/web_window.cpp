@@ -20,13 +20,13 @@
 
 #include <DPlatformWindowHandle>
 #include <DTitlebar>
+#include <DPalette>
 
 #include <QApplication>
 #include <QShortcut>
 #include <QShowEvent>
 #include <QWebChannel>
 #include <QWindow>
-#include <QX11Info>
 #include <QRegion>
 #include <QFocusEvent>
 #include <QWebEngineHistory>
@@ -34,6 +34,7 @@
 #include <QClipboard>
 #include <QNetworkProxyFactory>
 #include <QScreen>
+
 #define SEARCH_EDIT_WIDTH 350  // 一般情况下搜索窗口的大小
 #define SEARCH_EDIT_HEIGHT 44  // 一般情况下搜索窗口的大小
 #define LIMIT_SEARCH_EDIT_WIDTH 750 // 当主窗口
@@ -614,7 +615,7 @@ void WebWindow::initUI()
     setFocus(Qt::ActiveWindowFocusReason);
     // 初始化标题栏
     QHBoxLayout *buttonLayout = new QHBoxLayout;
-    buttonLayout->setMargin(0);
+    buttonLayout->setContentsMargins(0, 0, 0, 0);
     buttonLayout->setSpacing(0);
 
     m_backButton = new DButtonBoxButton(DStyle::SP_ArrowLeave);
@@ -673,13 +674,21 @@ void WebWindow::initUI()
     // search_edit_->setFocus();
     this->setFocusPolicy(Qt::ClickFocus);
 
+    // 创建QStackedWidget
+    m_CentralStackWidget = new QStackedWidget(this);
+    
+    // 创建spinner页面
     QWidget *spinnerPage = new QWidget;
     QVBoxLayout *spinnerLayout = new QVBoxLayout(spinnerPage);
     m_spinner->setFixedSize(50, 50);
     spinnerLayout->addWidget(m_spinner, 0, Qt::AlignCenter);
-    this->setCentralWidget(spinnerPage);
     m_spinner->start();
 
+    // 添加spinner页面到stackWidget
+    m_CentralStackWidget->addWidget(spinnerPage);
+    
+    // 设置stackWidget为中央部件
+    this->setCentralWidget(m_CentralStackWidget);
 }
 
 /**
@@ -713,6 +722,9 @@ void WebWindow::initWebView()
     web_view_->setAttribute(Qt::WA_KeyCompression, true);
     web_view_->setAttribute(Qt::WA_InputMethodEnabled, true);
 
+    // 添加web_view_页面到stackWidget
+    m_CentralStackWidget->addWidget(web_view_);
+
     if (!Utils::judgeWayLand()) {
         web_view_->setAttribute(Qt::WA_NativeWindow, true);
     }
@@ -726,13 +738,13 @@ void WebWindow::initWebView()
     slot_ThemeChanged();
     QWebChannel *web_channel = new QWebChannel;
     //向web页面注册C++类对象
-    web_channel->registerObject("i18n", i18n_proxy);
-    web_channel->registerObject("imageViewer", image_viewer_proxy_);
-    web_channel->registerObject("manual", manual_proxy_);
-    web_channel->registerObject("search", search_proxy_);
-    web_channel->registerObject("theme", theme_proxy_);
-    web_channel->registerObject("titleBar", title_bar_proxy_);
-    web_channel->registerObject("settings", settings_proxy_);
+    web_channel->registerObject(QStringLiteral("i18n"), i18n_proxy);
+    web_channel->registerObject(QStringLiteral("imageViewer"), image_viewer_proxy_);
+    web_channel->registerObject(QStringLiteral("manual"), manual_proxy_);
+    web_channel->registerObject(QStringLiteral("search"), search_proxy_);
+    web_channel->registerObject(QStringLiteral("theme"), theme_proxy_);
+    web_channel->registerObject(QStringLiteral("titleBar"), title_bar_proxy_);
+    web_channel->registerObject(QStringLiteral("settings"), settings_proxy_);
     web_view_->page()->setWebChannel(web_channel);
 
     connect(web_view_->page(), &QWebEnginePage::loadProgress, this, &WebWindow::onWebPageLoadProgress);
@@ -767,9 +779,9 @@ void WebWindow::initWebView()
 void WebWindow::saveWindowSize()
 {
     QSettings *setting = ConfigManager::getInstance()->getSettings();
-    setting->beginGroup(kConfigWindowInfo);
-    setting->setValue(kConfigWindowWidth, width());
-    setting->setValue(kConfigWindowHeight, height());
+    setting->beginGroup(QString(kConfigWindowInfo));
+    setting->setValue(QString(kConfigWindowWidth), width());
+    setting->setValue(QString(kConfigWindowHeight), height());
     setting->endGroup();
 }
 /**
@@ -789,7 +801,7 @@ void WebWindow::updateDb()
  */
 void WebWindow::initShortcuts()
 {
-    qDebug() << "init Short cuts" << endl;
+    qDebug() << "init Short cuts";
     //设置窗口大小切换快捷键
     QShortcut *scWndReize = new QShortcut(this);
     scWndReize->setKey(tr("Ctrl+Alt+F"));
@@ -900,14 +912,19 @@ QRect WebWindow::hasWidgetRect(QWidget *widget)
  */
 void WebWindow::onSearchContentByKeyword(const QString &keyword)
 {
-    qDebug() << "calling keyword is:" << keyword << endl;
+    qDebug() << "calling keyword is:" << keyword;
     QString key(keyword);
-    const QString searchKey = key.remove('\n').remove('\r').remove("\r\n").remove(QRegExp("\\s"));
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+    QRegExp sreg("\\s");
+#else
+    QRegularExpression sreg("\\s");
+#endif
+    const QString searchKey = key.remove('\n').remove('\r').remove("\r\n").remove(sreg);
     //在数据库中查询->SearchDb::searchContent->SearchDb::handleSearchContent
     search_manager_->searchContent(searchKey);
 
     QString base64Key = QString(searchKey.toUtf8().toBase64());
-    qDebug() << " base64Key " << base64Key << endl;
+    qDebug() << " base64Key " << base64Key;
 
     // 调用ｊｓ接口显示搜索内容
     web_view_->page()->runJavaScript(QString("openSearchPage('%1')").arg(base64Key));
@@ -971,9 +988,16 @@ void WebWindow::onSearchTextChanged(const QString &text)
 void WebWindow::onSearchTextChangedDelay()
 {
     QString textTemp = search_edit_->text();
-    const QString text = textTemp.remove('\n').remove('\r').remove("\r\n").remove(QRegExp("\\s"));
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+    QRegExp sreg("\\s");
+    QRegExp ereg("[+-_$!@#%^&\\(\\)]");
+#else
+    QRegularExpression sreg("\\s");
+    QRegularExpression ereg("[+-_$!@#%^&\\(\\)]");
+#endif
+    const QString text = textTemp.remove('\n').remove('\r').remove("\r\n").remove(sreg);
     // 过滤特殊字符
-    if (text.size() < 1 || text.toLower().contains(QRegExp("[+-_$!@#%^&\\(\\)]"))) {
+    if (text.size() < 1 || text.toLower().contains(ereg)) {
         return;
     }
     completion_window_->setKeyword(text);
@@ -992,7 +1016,12 @@ void WebWindow::onTitleBarEntered()
 {
     qDebug() << Q_FUNC_INFO;
     QString textTemp = search_edit_->text();
-    const QString text = textTemp.remove('\n').remove('\r').remove("\r\n").remove(QRegExp("\\s"));
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+    QRegExp sreg("\\s");
+#else
+    QRegularExpression sreg("\\s");
+#endif
+    const QString text = textTemp.remove('\n').remove('\r').remove("\r\n").remove(sreg);
     if (text.size() >= 1) {
         completion_window_->onEnterPressed();
     }
@@ -1008,8 +1037,10 @@ void WebWindow::onWebPageLoadProgress(int valpro)
     if (m_spinner->isPlaying() && valpro > 20) {
         m_spinner->stop();
         m_spinner->hide();
-        this->setCentralWidget(web_view_);
         disconnect(web_view_->page(), &QWebEnginePage::loadProgress, this, &WebWindow::onWebPageLoadProgress);
+        
+        // 切换到web_view_页面
+        m_CentralStackWidget->setCurrentWidget(web_view_);
     }
 }
 

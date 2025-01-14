@@ -80,60 +80,40 @@ if (${CMAKE_SYSTEM_PROCESSOR} MATCHES "mips64")
 endif()
 
 find_package(PkgConfig REQUIRED)
-find_package(Qt5Core REQUIRED)
-find_package(Qt5DBus REQUIRED)
-find_package(Qt5Gui REQUIRED)
-find_package(Qt5X11Extras REQUIRED)
-find_package(Qt5LinguistTools)
-find_package(Qt5Sql REQUIRED)
-find_package(Qt5WebChannel REQUIRED)
-find_package(Qt5Widgets REQUIRED)
-find_package(Qt5LinguistTools REQUIRED)
-find_package(Qt5WebEngineWidgets REQUIRED)
 
-pkg_search_module(DtkWidget REQUIRED dtkwidget)
-pkg_search_module(DtkGui REQUIRED dtkgui)
-pkg_search_module(DtkCore REQUIRED dtkcore)
+set(qt_required_components Core DBus Gui Widgets Sql WebChannel WebEngineWidgets)
 
-include_directories(${DtkWidget_INCLUDE_DIRS})
-include_directories(${DtkGui_INCLUDE_DIRS})
-include_directories(${DtkCore_INCLUDE_DIRS})
-include_directories(${Qt5Gui_PRIVATE_INCLUDE_DIRS})
+if (QT_DESIRED_VERSION MATCHES 6)
+    list(APPEND qt_required_components Core5Compat)
+else()
+    # list(APPEND qt_required_components X11Extras )
+endif()
+
+find_package(Qt${QT_DESIRED_VERSION} REQUIRED COMPONENTS ${qt_required_components})
+find_package(Dtk${DTK_VERSION_MAJOR} REQUIRED COMPONENTS Widget Gui Core)
 
 set(LINK_LIBS
-    Qt5::Core
-    Qt5::DBus
-    Qt5::Sql
-    Qt5::Widgets
-    Qt5::X11Extras
-    Qt5::WebChannel
-    Qt5::WebEngineWidgets
+    Qt${QT_DESIRED_VERSION}::Core
+    Qt${QT_DESIRED_VERSION}::DBus
+    Qt${QT_DESIRED_VERSION}::Gui
+    Qt${QT_DESIRED_VERSION}::Widgets
+    Qt${QT_DESIRED_VERSION}::Sql
+    Qt${QT_DESIRED_VERSION}::WebChannel
+    Qt${QT_DESIRED_VERSION}::WebEngineWidgets
+    Dtk${DTK_VERSION_MAJOR}::Widget
+    Dtk${DTK_VERSION_MAJOR}::Gui
+    Dtk${DTK_VERSION_MAJOR}::Core
+)
 
-    ${DtkWidget_LDFLAGS}
-    ${DtkGui_LDFLAGS}
-    ${DtkCore_LDFLAGS}
+set(DMAN_HELPER_LIBS ${LINK_LIBS})
 
-    -lX11
-    )
-
-set(DMAN_SEARCH_LINK_LIBS
-    Qt5::Core
-    Qt5::DBus
-    ${DtkCore_LDFLAGS}
-    )
-
-set (DMAN_HELPER_LIBS
-    Qt5::Core
-    Qt5::Sql
-    Qt5::DBus
-    Qt5::Widgets
-    Qt5::WebChannel
-    Qt5::WebEngineWidgets
-    ${DtkGui_LDFLAGS}
-    ${DtkCore_LDFLAGS}
-    ${DtkWidget_LDFLAGS}
-    )
-
+if (QT_DESIRED_VERSION MATCHES 6)
+    list(APPEND LINK_LIBS Qt${QT_DESIRED_VERSION}::Core5Compat)
+    # list(APPEND LINK_LIBS Qt${QT_VERSION_MAJOR}::GuiPrivate)
+else()
+    # list(APPEND LINK_LIBS Qt${QT_VERSION_MAJOR}::WidgetsPrivate)
+    # list(APPEND LINK_LIBS Qt${QT_DESIRED_VERSION}::X11Extras)
+endif()
 
 
 set(BASE_FILES
@@ -263,7 +243,7 @@ add_executable(dman
 set(CMAKE_SKIP_BUILD_RPATH FALSE)
 set(CMAKE_BUILD_WITH_INSTALL_RPATH FALSE)
 set(CMAKE_INSTALL_RPATH_USE_LINK_PATH TRUE)
-target_link_libraries(dman  ${LINK_LIBS})
+target_link_libraries(dman ${LINK_LIBS})
 
 
 add_executable(dmanHelper
@@ -302,13 +282,7 @@ target_link_libraries(dmanHelper
 
 # Auto generate qm files and search.db in release mode.
 if (NOT (${CMAKE_BUILD_TYPE} MATCHES "Debug"))
-
-    # Generate .qm files from .ts files.
     set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -O3")
-
-    # generate qm files
-    execute_process(COMMAND bash "translate_generation.sh"
-                    WORKING_DIRECTORY ${CMAKE_SOURCE_DIR})
 endif ()
 
 
@@ -338,10 +312,13 @@ install(TARGETS dmanHelper
         DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 
 
-# Install qm files
-file(GLOB QM_FILES  ${CMAKE_SOURCE_DIR}/translations/deepin-manual*.qm)
-install(FILES ${QM_FILES}
-        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual/translations/)
+# translation files
+TRANSLATION_GENERATE(QM_FILES ${CMAKE_SOURCE_DIR}/translations)
+add_custom_target(dman_qm_files DEPENDS ${QM_FILES})
+add_dependencies(dman dman_qm_files)
+
+# Install translations
+install(FILES ${QM_FILES} DESTINATION share/${PROJECT_NAME}/translations)
 
 #install(DIRECTORY ${CMAKE_SOURCE_DIR}/manual-assets/${ISO_TYPE}
 #        DESTINATION ${CMAKE_INSTALL_PREFIX}/share/deepin-manual/manual-assets/)

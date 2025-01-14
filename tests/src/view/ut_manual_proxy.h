@@ -11,7 +11,7 @@
 
 #include <QStandardPaths>
 #include <QTest>
-#include <QtGui/private/qiconloader_p.h>
+// #include <QtGui/private/qiconloader_p.h>
 
 class ManualProxy;
 class ut_manual_proxy_test : public::testing::Test
@@ -77,7 +77,7 @@ public:
         return true;
     }
 
-    QThemeIconInfo stub_loadIcon(const QString &iconname) const;
+    // QThemeIconInfo stub_loadIcon(const QString &iconname) const;
 };
 
 #endif // UT_MANUAL_PROXY_TEST_H

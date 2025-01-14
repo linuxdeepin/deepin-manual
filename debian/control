@@ -6,18 +6,21 @@ Build-Depends:
  ca-certificates,
  cmake,
  debhelper (>= 11),
- libdtkwidget-dev,
- libdtkgui-dev,
- qtwebengine5-dev,
- libqt5webchannel5-dev,
+ qt6-5compat-dev | hello,
+ qt6-base-dev | qtbase5-dev,
+ qt6-tools-dev-tools | qttools5-dev-tools,
+ qt6-tools-dev | qttools5-dev,
+ qt6-base-private-dev | qtbase5-private-dev,
+ qt6-svg-dev | libqt5svg5-dev,
+ qt6-webengine-dev | qtwebengine5-dev,
+ libdtk6widget-dev | libdtkwidget-dev,
+ libdtk6gui-dev | libdtkgui-dev,
+ libdtk6core-dev | libdtkcore-dev,
+ libqt6sql6-sqlite | libqt5sql5-sqlite,
  libsass-dev,
- libqt5sql5-sqlite,
  pkg-config,
- qttools5-dev,
- qttools5-dev-tools,
  libgtest-dev,
  libgmock-dev,
- qtbase5-private-dev,
  systemd
 Standards-Version: 4.5.1
 Homepage: https://github.com/linuxdeepin/deepin-manual/
@@ -29,9 +32,9 @@ Package:deepin-manual
 Architecture: any
 Depends: ${misc:Depends},
  ${shlibs:Depends},
- libqt5core5a,
- libqt5dbus5,
- libqt5sql5-sqlite,
+ libqt6core6 , libqt5core5a,
+ libqt6dbus6 , libqt5dbus5,
+ libqt6sql6-sqlite | libqt5sql5-sqlite,
 Recommends: qt5dxcb-plugin,uos-reporter, deepin-event-log
 Conflicts: dde-help
 Provides: dde-help
