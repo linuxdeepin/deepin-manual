@@ -13,7 +13,7 @@
 #include "window_manager.h"
 #include "base/eventlogutils.h"
 #include <DLog>
-#include <DApplicationHelper>
+#include <DGuiApplicationHelper>
 
 #include <QCommandLineParser>
 #include <QDBusConnection>

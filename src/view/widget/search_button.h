@@ -8,7 +8,13 @@
 #include <DLabel>
 #include <DIconButton>
 #include <DBlurEffectWidget>
-#include <DApplicationHelper>
+#include <DGuiApplicationHelper>
+
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+using EnterEvent = QEvent;
+#else
+using EnterEvent = QEnterEvent;
+#endif
 
 DWIDGET_USE_NAMESPACE
 
@@ -40,7 +46,7 @@ private slots:
     void onThemeChange(DGuiApplicationHelper::ColorType themeType);
 
 protected:
-    void enterEvent(QEvent *event) override;
+    void enterEvent(EnterEvent *event) override;
     void leaveEvent(QEvent *event) override;
     void paintEvent(QPaintEvent *event) override;
     void mousePressEvent(QMouseEvent *event) override;

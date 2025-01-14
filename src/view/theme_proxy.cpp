@@ -3,7 +3,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 #include "view/theme_proxy.h"
-#include <DApplicationHelper>
+#include <DGuiApplicationHelper>
 
 DGUI_USE_NAMESPACE
 

@@ -234,10 +234,15 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
         for (int i = 0; i < contents.size(); i++) {
             QString content = contents.at(i);
             //正则替换所有的svg路径
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
             QRegExp exp("src=\"([^>]*svg)\"");
             exp.setMinimal(true);
             QRegExp expPng("src=\"..\/common([^>]*png)\"");
             expPng.setMinimal(true);
+#else
+            QRegularExpression exp("src=\"([^>]*svg)\"");
+            QRegularExpression expPng("src=\"..\/common([^>]*png)\"");
+#endif
 
             content = content.replace(exp, QString("src=\"%1/%2\"").arg(strTemp).arg("\\1"));
             if (content.contains("common")/* && !content.contains("fig")*/)
@@ -470,7 +475,7 @@ QString SearchDb::highlightKeyword(QString srcString, QString keyword)
         if (substrImgEnd == imgEndString) {
             startSubStringIndex = currIndex + imgEndLen;
             strEndIndexList.append(startSubStringIndex);
-            highlightString.append(srcString.midRef(findImgIndex, startSubStringIndex - findImgIndex));
+            highlightString.append(srcString.mid(findImgIndex, startSubStringIndex - findImgIndex));
         }
 
         if (findImgIndex > startSubStringIndex) {
@@ -562,7 +567,12 @@ void SearchDb::omitHighlight(QString &highLight, const QString &keyword)
 
     while (nSearchIndex > 0) {
         //判断后N个字符里是否含有img路径..
-        if (highLightTemp.indexOf(QRegExp("<img .*"), nSearchIndex) != -1) {
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+        QRegExp regExp("<img .*");
+#else
+        QRegularExpression regExp("<img .*");
+#endif
+        if (highLightTemp.indexOf(regExp, nSearchIndex) != -1) {
             int nImgStart = highLightTemp.indexOf(imgStartString, nSearchIndex);
             int nImgEnd = highLightTemp.indexOf(imgEndString, nSearchIndex);
             if (nImgEnd > nImgStart) {
@@ -599,15 +609,21 @@ void SearchDb::handleSearchContent(const QString &keyword)
 {
     qDebug() << Q_FUNC_INFO << keyword;
     Q_ASSERT(p_->db.isOpen());
-
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
+    QRegExp exp("[|&-]");
+    QRegExp exp2("%%");
+#else
+    QRegularExpression exp("[|&-]");
+    QRegularExpression exp2("%%");
+#endif
     //屏蔽部分特殊字符，会导致JS层对HTML无法对应替换
-    if (keyword.contains(QRegExp("[|&-]"))) {
+    if (keyword.contains(exp)) {
         //发送未查找到结果->SearchManager::searchContentMismatch->SearchProxy::mismatch->JS
         emit this->searchContentMismatch(keyword);
         return;
     }
     //多个%号查询，查询条件错误
-    if (keyword.contains(QRegExp("%%"))) {
+    if (keyword.contains(exp2)) {
         //发送未查找到结果->SearchManager::searchContentMismatch->SearchProxy::mismatch->JS
         emit this->searchContentMismatch(keyword);
         return;
@@ -640,7 +656,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
         QStringList anchorIds;
         QStringList contents;
         QHash<QString, bool> appHasMatchHash;
-        QTime tm;
+        QElapsedTimer tm;
         tm.start();
         while (query.next()) {
             const QString app_name = query.value(0).toString();
@@ -666,6 +682,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
                 continue;
 
             //去除jpg文件, 影响页面格式.
+#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
             //旧结构
             QRegExp expJpg("<img src=\\\"jpg.*>");
             expJpg.setMinimal(true);
@@ -675,6 +692,14 @@ void SearchDb::handleSearchContent(const QString &keyword)
             //相对路径
             QRegExp expRelative("<img src=\\\"\.\/fig.*>");
             expRelative.setMinimal(true);
+#else
+            //旧结构
+            QRegularExpression expJpg("<img src=\\\"jpg.*?>");
+            //新结构
+            QRegularExpression expFit("<img src=\\\"fig.*?>");
+            //相对路径
+            QRegularExpression expRelative("<img src=\\\"\.\/fig.*?>");
+#endif
 
             highlightContent.remove(expFit);
             highlightContent.remove(expJpg);
