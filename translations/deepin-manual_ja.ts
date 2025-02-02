@@ -9,7 +9,7 @@
     <message>
         <location filename="../src/view/manual_proxy.cpp" line="324"/>
         <source>Common Application Libraries</source>
-        <translation type="unfinished"/>
+        <translation>一般的なアプリケーションライブラリ</translation>
     </message>
     <message>
         <location filename="../src/view/manual_proxy.cpp" line="326"/>
@@ -109,7 +109,7 @@
     <message>
         <location filename="../src/app/dman.cpp" line="106"/>
         <source>Manual is designed to help users learn the operating system and its applications, providing specific instructions and function descriptions.</source>
-        <translation type="unfinished"/>
+        <translation>マニュアルは、ユーザーがシステムやアプリケーションの使用方法を学んだり、機能の詳細な説明を提供するように設計されたアプリケーションです。</translation>
     </message>
 </context>
 <context>
