@@ -440,6 +440,9 @@ QStringList Utils::systemToOmit(Dtk::Core::DSysInfo::UosEdition type)
     //专业版
     case  Dtk::Core::DSysInfo::UosProfessional:
     case  Dtk::Core::DSysInfo::UosMilitary:
+#if (DTK_VERSION >= DTK_VERSION_CHECK(5, 6, 11, 1))
+    case Dtk::Core::DSysInfo::UosPersonal:
+#endif
         retList.append("p");
         break;
     //个人版
