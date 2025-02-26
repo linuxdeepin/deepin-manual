@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="pl" sourcelanguage="en_US">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" sourcelanguage="en_US" language="pl">
 <context>
     <name>ManualProxy</name>
     <message>
@@ -101,17 +99,17 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="32"/>
         <source>App Store</source>
-        <translation type="unfinished"></translation>
+        <translation>App Store</translation>
     </message>
     <message>
         <location filename="../src/app/dman.cpp" line="105"/>
         <source>Manual</source>
-        <translation type="unfinished"></translation>
+        <translation>Instrukcja obsługi</translation>
     </message>
     <message>
         <location filename="../src/app/dman.cpp" line="106"/>
         <source>Manual is designed to help users learn the operating system and its applications, providing specific instructions and function descriptions.</source>
-        <translation type="unfinished"></translation>
+        <translation>Instrukcja obsługi została stworzona, aby pomóc nowym użytkownikom nauczyć się korzystać z systemu operacyjnego i jego aplikacji, zapewniając szczegółowe instrukcje i opisy funkcji.</translation>
     </message>
 </context>
 <context>

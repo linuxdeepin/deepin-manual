@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="zh_TW" sourcelanguage="en_US">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" sourcelanguage="en_US" language="zh_TW">
 <context>
     <name>ManualProxy</name>
     <message>
@@ -101,7 +99,7 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="32"/>
         <source>App Store</source>
-        <translation>應用商店</translation>
+        <translation type="unfinished"/>
     </message>
     <message>
         <location filename="../src/app/dman.cpp" line="105"/>

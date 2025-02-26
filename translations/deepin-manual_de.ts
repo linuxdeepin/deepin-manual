@@ -1,17 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="de" sourcelanguage="en_US">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" sourcelanguage="en_US" language="de">
 <context>
     <name>ManualProxy</name>
     <message>
         <location filename="../src/view/manual_proxy.cpp" line="322"/>
         <source>Learn Basic Operations</source>
-        <translation type="unfinished"></translation>
+        <translation>Lerne Grundlagenbefehle</translation>
     </message>
     <message>
         <location filename="../src/view/manual_proxy.cpp" line="324"/>
         <source>Common Application Libraries</source>
-        <translation type="unfinished"></translation>
+        <translation>Gemeinsame Programm-Libraries</translation>
     </message>
     <message>
         <location filename="../src/view/manual_proxy.cpp" line="326"/>
@@ -56,7 +54,7 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="22"/>
         <source>Video Guide</source>
-        <translation type="unfinished"></translation>
+        <translation>Video-Anleitung</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="23"/>
@@ -101,17 +99,17 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="32"/>
         <source>App Store</source>
-        <translation type="unfinished"></translation>
+        <translation>App-Store</translation>
     </message>
     <message>
         <location filename="../src/app/dman.cpp" line="105"/>
         <source>Manual</source>
-        <translation type="unfinished"></translation>
+        <translation>Handbuch</translation>
     </message>
     <message>
         <location filename="../src/app/dman.cpp" line="106"/>
         <source>Manual is designed to help users learn the operating system and its applications, providing specific instructions and function descriptions.</source>
-        <translation type="unfinished"></translation>
+        <translation>Das Benutzerhandbuch wurde entwickelt, um Anwender dabei zu unterstützen, das Betriebssystem und die Anwendungen mithilfe zugeschnittener Anleitungen und Funktionsbeschreibungen zu erlernen und kennen zu lernen.</translation>
     </message>
 </context>
 <context>
