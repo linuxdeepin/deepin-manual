@@ -99,7 +99,7 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="32"/>
         <source>App Store</source>
-        <translation type="unfinished"/>
+        <translation>应用商店</translation>
     </message>
     <message>
         <location filename="../src/app/dman.cpp" line="105"/>
