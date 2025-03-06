@@ -1,3 +1,10 @@
+deepin-manual (6.5.17) unstable; urgency=medium
+
+  * Bump version to 6.5.17
+  * Update linglong env
+
+ -- re2zero <yangwu@uniontech.com>  Thu, 06 Mar 2025 10:48:45 +0800
+
 deepin-manual (6.5.16) unstable; urgency=medium
 
   * Bump version to 6.5.16
