@@ -319,6 +319,15 @@ install(TARGETS dman
 install(TARGETS dmanHelper
         DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 
+##dconfig
+set(APPID org.deepin.manual)
+set(configFile ${CMAKE_SOURCE_DIR}/manual-assets/org.deepin.manual.customui.json)
+if (DEFINED DSG_DATA_DIR)
+    message("-- DConfig is supported by DTK")
+    dtk_add_config_meta_files(APPID ${APPID} FILES ${configFile})
+else()
+    install(FILES ${configFile} DESTINATION ${CMAKE_INSTALL_DATADIR}/dsg/configs/org.deepin.manual/)
+endif()
 
 # translation files
 TRANSLATION_GENERATE(QM_FILES ${CMAKE_SOURCE_DIR}/translations)
