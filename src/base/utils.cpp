@@ -9,6 +9,9 @@ DCORE_USE_NAMESPACE
 
 #include <QFontDatabase>
 #include <QImageReader>
+#ifdef DTKCORE_CLASS_DConfigFile
+#include <DConfig>
+#endif
 
 #include "base/consts.h"
 
@@ -411,10 +414,17 @@ QList<AppInfo> Utils::sortAppList(QMultiMap<qlonglong, AppInfo> map)
 bool Utils::hasSelperSupport()
 {
     Dtk::Core::DSysInfo::UosEdition type = Dtk::Core::DSysInfo::uosEditionType();
+    bool bSelperSupport = true;
+#ifdef DTKCORE_CLASS_DConfigFile
+    DConfig *dconfig = DConfig::create("org.deepin.manual", "org.deepin.manual.customui");
+    if (dconfig && dconfig->isValid()&& dconfig->keyList().contains("selperSupport")) {
+       bSelperSupport = dconfig->value("selperSupport").toBool();
+    }
+#endif
     //专业版判断是否有服务与支持
     if (Dtk::Core::DSysInfo::UosProfessional == type || Dtk::Core::DSysInfo::UosMilitary == type || Dtk::Core::DSysInfo::UosMilitaryS == type) {
         const QStringList list = getSystemManualList();
-        if (list.contains("uos-service-support")) {
+        if (list.contains("uos-service-support") && bSelperSupport) {
             return true;
         }
     }
