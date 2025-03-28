@@ -1,3 +1,10 @@
+deepin-manual (6.5.17) unstable; urgency=medium
+
+  * chore: v6.5.17 release.
+  * [build] Only enable qt6 for special arch.
+
+ -- re2zero <yangwu@uniontech.com>  Fri, 28 Mar 2025 09:58:44 +0800
+
 deepin-manual (6.5.16) unstable; urgency=medium
 
   * Bump version to 6.5.16
