@@ -1,3 +1,9 @@
+deepin-manual (6.5.18) unstable; urgency=medium
+
+  * Update version to 6.5.18
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Wed, 02 Apr 2025 15:09:51 +0800
+
 deepin-manual (6.5.17) unstable; urgency=medium
 
   * chore: v6.5.17 release.
