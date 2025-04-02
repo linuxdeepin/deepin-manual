@@ -32,6 +32,7 @@ Package:deepin-manual
 Architecture: any
 Depends: ${misc:Depends},
  ${shlibs:Depends},
+ libqt6webenginecore6-bin [!mipsel !mips64el] | libqt5core5a
 Recommends: qt5dxcb-plugin,uos-reporter, deepin-event-log
 Conflicts: dde-help
 Provides: dde-help
