@@ -4,17 +4,17 @@
     <message>
         <location filename="../src/view/manual_proxy.cpp" line="322"/>
         <source>Learn Basic Operations</source>
-        <translation type="unfinished"/>
+        <translation>Aprender as operacións básicas</translation>
     </message>
     <message>
         <location filename="../src/view/manual_proxy.cpp" line="324"/>
         <source>Common Application Libraries</source>
-        <translation type="unfinished"/>
+        <translation>Bibliotecas de aplicacións comúns</translation>
     </message>
     <message>
         <location filename="../src/view/manual_proxy.cpp" line="326"/>
         <source>Desktop Environment</source>
-        <translation type="unfinished"/>
+        <translation>Entorno de escritorio</translation>
     </message>
 </context>
 <context>
@@ -49,12 +49,12 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="21"/>
         <source>Quick Start</source>
-        <translation type="unfinished"/>
+        <translation>Comece rápido</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="22"/>
         <source>Video Guide</source>
-        <translation type="unfinished"/>
+        <translation>Guía de vídeo</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="23"/>
@@ -89,17 +89,17 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="29"/>
         <source>Click to view </source>
-        <translation type="unfinished"/>
+        <translation>Clique para ver</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="30"/>
         <source>View all</source>
-        <translation type="unfinished"/>
+        <translation>Ver todo</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="32"/>
         <source>App Store</source>
-        <translation type="unfinished"/>
+        <translation>Tienda de aplicacións</translation>
     </message>
     <message>
         <location filename="../src/app/dman.cpp" line="105"/>
