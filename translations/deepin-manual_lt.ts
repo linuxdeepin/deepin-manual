@@ -4,17 +4,17 @@
     <message>
         <location filename="../src/view/manual_proxy.cpp" line="322"/>
         <source>Learn Basic Operations</source>
-        <translation type="unfinished"/>
+        <translation>Mokslinė operacijų mokymasis</translation>
     </message>
     <message>
         <location filename="../src/view/manual_proxy.cpp" line="324"/>
         <source>Common Application Libraries</source>
-        <translation type="unfinished"/>
+        <translation>Universaliųjų programinės įrangos bibliotekos</translation>
     </message>
     <message>
         <location filename="../src/view/manual_proxy.cpp" line="326"/>
         <source>Desktop Environment</source>
-        <translation type="unfinished"/>
+        <translation>Darbinis aplanakas</translation>
     </message>
 </context>
 <context>
@@ -28,7 +28,7 @@
     <message>
         <location filename="../src/view/web_window.cpp" line="301"/>
         <source>The content was updated</source>
-        <translation type="unfinished"/>
+        <translation>Turinys atnaujintas</translation>
     </message>
     <message>
         <location filename="../src/view/web_window.cpp" line="624"/>
@@ -39,7 +39,7 @@
         <location filename="../src/view/web_window.cpp" line="627"/>
         <location filename="../src/view/i18n_proxy.cpp" line="31"/>
         <source>Support</source>
-        <translation type="unfinished"/>
+        <translation>Pagalba</translation>
     </message>
     <message>
         <location filename="../src/view/web_window.cpp" line="836"/>
@@ -49,12 +49,12 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="21"/>
         <source>Quick Start</source>
-        <translation type="unfinished"/>
+        <translation>Greitas pradžiavimas</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="22"/>
         <source>Video Guide</source>
-        <translation type="unfinished"/>
+        <translation>Video instrukcija</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="23"/>
@@ -89,17 +89,17 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="29"/>
         <source>Click to view </source>
-        <translation type="unfinished"/>
+        <translation>Spustelėkite, kad įžymintumėte</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="30"/>
         <source>View all</source>
-        <translation type="unfinished"/>
+        <translation>Peržiūrėti viską</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="32"/>
         <source>App Store</source>
-        <translation type="unfinished"/>
+        <translation>Programų magazinas</translation>
     </message>
     <message>
         <location filename="../src/app/dman.cpp" line="105"/>
