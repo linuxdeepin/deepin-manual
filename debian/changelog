@@ -1,3 +1,10 @@
+deepin-manual (6.5.19) unstable; urgency=medium
+
+  * chore: update translations.
+  * fix: Disable chrome flag on mips architecture
+
+ -- renbin <renbin@uniontech.com>  Thu, 10 Apr 2025 20:08:34 +0800
+
 deepin-manual (6.5.18) unstable; urgency=medium
 
   * Update version to 6.5.18
