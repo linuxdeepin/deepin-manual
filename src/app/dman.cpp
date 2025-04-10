@@ -32,6 +32,13 @@ int main(int argc, char **argv)
     //禁用GPU
     qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu");
 
+    qputenv("DTK_USE_SEMAPHORE_SINGLEINSTANCE", "1");
+#ifdef __mips__
+    bool enableChromeFlag = false;
+#else
+    bool enableChromeFlag = true;
+#endif
+
 #ifdef LINGLONG_BUILD
     //玲珑环境添加WebEngine
     QString webEngineProcessPath = DMAN_QWEBENGINE_DIR"" + QLibraryInfo::location(QLibraryInfo::LibrariesPath).mid(
@@ -48,9 +55,12 @@ int main(int argc, char **argv)
         qputenv("QTWEBENGINERESOURCE_PATH", (DMAN_WEBENGINETS_DIR":" + QString(DMAN_WEBENGINERES_DIR)).toStdString().c_str());
     else
         qWarning() << "qputenv QTWEBENGINERESOURCE_PATH fail";
-    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--single-process");
+
+    if (enableChromeFlag) {
+        qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--single-process");
+    }
 #else
-    if (!Utils::judgeWayLand()) {
+    if (enableChromeFlag && !Utils::judgeWayLand()) {
         qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--single-process");
     }
 #endif
