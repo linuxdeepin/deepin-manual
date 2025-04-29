@@ -292,11 +292,11 @@ QStringList Utils::getSystemManualList()
         QString oldMdPath = strMANUAL_DIR;
         if (Dtk::Core::DSysInfo::UosServer == Dtk::Core::DSysInfo::uosType()) {
             oldMdPath += "/server";
-        } else if (Dtk::Core::DSysInfo::UosHome == Dtk::Core::DSysInfo::uosEditionType()) {
+        } else if (Dtk::Core::DSysInfo::UosHome == Utils::uosEditionType()) {
             oldMdPath += "/personal";
-        } else if (Dtk::Core::DSysInfo::UosEducation == Dtk::Core::DSysInfo::uosEditionType()) {
+        } else if (Dtk::Core::DSysInfo::UosEducation == Utils::uosEditionType()) {
             oldMdPath += "/education";
-        } else if (Dtk::Core::DSysInfo::UosCommunity == Dtk::Core::DSysInfo::uosEditionType()) {
+        } else if (Dtk::Core::DSysInfo::UosCommunity == Utils::uosEditionType()) {
             oldMdPath += "/community";
         } else {
             oldMdPath += "/professional";
@@ -360,7 +360,7 @@ QList<AppInfo> Utils::sortAppList(QMultiMap<qlonglong, AppInfo> map)
         }
 
         //如果这本次key与longlongtemp相等说明，当前应用的安装时间与上一次循环中的应用安装时间相同，把appInfo插入listtemp等待排序
-        //如果不相等，listtemp不为null，则对littemp按“应用包名”进行排序；
+        //如果不相等，listtemp不为null，则对littemp按"应用包名"进行排序；
         //并把排序结果添加到listEnd;
         //清空listtmp, 修改longlongtmp记录当前key;
         if (it.key() == longlongtmp) {
@@ -411,7 +411,7 @@ QList<AppInfo> Utils::sortAppList(QMultiMap<qlonglong, AppInfo> map)
  */
 bool Utils::hasSelperSupport()
 {
-    Dtk::Core::DSysInfo::UosEdition type = Dtk::Core::DSysInfo::uosEditionType();
+    Dtk::Core::DSysInfo::UosEdition type = uosEditionType();
     //专业版判断是否有服务与支持
     if (Dtk::Core::DSysInfo::UosProfessional == type || Dtk::Core::DSysInfo::UosMilitary == type || Dtk::Core::DSysInfo::UosMilitaryS == type) {
         const QStringList list = getSystemManualList();
@@ -420,6 +420,110 @@ bool Utils::hasSelperSupport()
         }
     }
     return false;
+}
+
+bool checkOsBuildValid(const QString& str)
+{
+    // Format like ABCDE.xyz.abc
+    static QRegularExpression regex("^[1-9A-Z][1-9A-Z][0-9A-Z][1-9A-Z][1-9A-Z](\\.\\w+)*$");
+
+    return regex.match(str).hasMatch();
+}
+
+Dtk::Core::DSysInfo::UosEdition Utils::uosEditionType()
+{
+    // Add static cache, query only once    
+    static Dtk::Core::DSysInfo::UosEdition cachedEdition = Dtk::Core::DSysInfo::UosEdition::UosEditionUnknown;
+    static bool hasQueried = false;
+    
+    // If already queried, return cached result
+    if (hasQueried) {
+        return cachedEdition;
+    }
+    
+    QDBusInterface interface("org.deepin.dde.SystemInfo1",
+                            "/org/deepin/dde/SystemInfo1",
+                            "org.deepin.dde.SystemInfo1",
+                            QDBusConnection::sessionBus());
+
+    if(!interface.isValid()) {
+        hasQueried = true;
+        return cachedEdition;
+    }
+
+    QVariant osBuild = interface.property("OsBuild");
+    if(!osBuild.isValid()) {
+        hasQueried = true;
+        return cachedEdition;
+    }
+
+    QString buildType = osBuild.toString();
+    if(buildType.isEmpty()) {
+        hasQueried = true;
+        return cachedEdition;
+    }
+
+    QStringList parts = buildType.split(".");
+    if(parts.size() != 3) {
+        hasQueried = true;
+        return cachedEdition;
+    }
+
+    // Save result to cache
+    cachedEdition = parseOsBuildType(parts[0]);
+    hasQueried = true;
+    return cachedEdition;
+}
+
+Dtk::Core::DSysInfo::UosEdition Utils::parseOsBuildType(const QString & osBuild)
+{
+    if (!checkOsBuildValid(osBuild))
+        return Dtk::Core::DSysInfo::UosEditionUnknown;
+
+    int uosType = osBuild[1].digitValue();
+    int uosEditType = osBuild[3].digitValue();
+    // copy from dtk-core/src/dsysinfo.cpp
+    if(uosType == 1) {
+        switch (uosEditType) {
+        case 1:
+            return Dtk::Core::DSysInfo::UosEdition::UosProfessional;
+        case 2:
+        case 7:
+            //The new version of the family version (7) and the old version of the personal version (2) The same as the home does not modify the old logic (7) to ensure the adaptation of the old version
+            return Dtk::Core::DSysInfo::UosEdition::UosHome;
+        case 3:
+            return Dtk::Core::DSysInfo::UosEdition::UosCommunity;
+        case 4:
+            return Dtk::Core::DSysInfo::UosEdition::UosMilitary;
+        case 5:
+            return Dtk::Core::DSysInfo::UosEdition::UosDeviceEdition;
+        case 6:
+            return Dtk::Core::DSysInfo::UosEdition::UosEducation;
+        default:
+            break;
+        }
+
+    }else if(uosType == 2) {
+        switch (uosEditType) {
+        case 1:
+            return Dtk::Core::DSysInfo::UosEdition::UosEnterprise;
+        case 2:
+            return Dtk::Core::DSysInfo::UosEdition::UosEnterpriseC;
+        case 3:
+            return Dtk::Core::DSysInfo::UosEdition::UosEuler;
+        case 4:
+            return Dtk::Core::DSysInfo::UosEdition::UosMilitaryS;
+        case 5:
+            return Dtk::Core::DSysInfo::UosEdition::UosDeviceEdition;
+        default:
+            break;
+        }
+    }
+    else if (uosType == 3){
+        return Dtk::Core::DSysInfo::UosEnterprise;
+    }
+
+    return Dtk::Core::DSysInfo::UosEditionUnknown;
 }
 
 bool Utils::hasAppStore()

@@ -298,7 +298,7 @@ void helperManager::dbusSend(const QStringList &deleteList, const QStringList &a
 QStringList helperManager::handlePriority(const QStringList &list)
 {
     qDebug() << Q_FUNC_INFO << list;
-    QStringList omitType = Utils::systemToOmit(Dtk::Core::DSysInfo::uosEditionType());
+    QStringList omitType = Utils::systemToOmit(Utils::uosEditionType());
     qDebug() << Q_FUNC_INFO << omitType;
     QStringList moduleList;
     QStringList retList;

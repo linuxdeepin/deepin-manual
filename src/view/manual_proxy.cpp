@@ -153,7 +153,7 @@ void ManualProxy::showUpdateLabel()
 QString ManualProxy::appToPath(const QString &appName)
 {
     // qDebug() << __FUNCTION__ << "========>" << appName;
-    QStringList omitType = Utils::systemToOmit(Dtk::Core::DSysInfo::uosEditionType());
+    QStringList omitType = Utils::systemToOmit(Utils::uosEditionType());
     QStringList mdList;
     QStringList  assetsPathList = Utils::getSystemManualDir();
     foreach (auto assetPath, assetsPathList) {
@@ -196,11 +196,11 @@ QString ManualProxy::appToPath(const QString &appName)
 #if (DTK_VERSION > DTK_VERSION_CHECK(5, 4, 12, 0))
         if (Dtk::Core::DSysInfo::UosServer == Dtk::Core::DSysInfo::uosType()) {
             oldMdPath += "/server";
-        } else if (Dtk::Core::DSysInfo::UosHome == Dtk::Core::DSysInfo::uosEditionType()) {
+        } else if (Dtk::Core::DSysInfo::UosHome == Utils::uosEditionType()) {
             oldMdPath += "/personal";
-        } else if (Dtk::Core::DSysInfo::UosEducation == Dtk::Core::DSysInfo::uosEditionType()) {
+        } else if (Dtk::Core::DSysInfo::UosEducation == Utils::uosEditionType()) {
             oldMdPath += "/education";
-        } else if (Dtk::Core::DSysInfo::UosCommunity == Dtk::Core::DSysInfo::uosEditionType()) {
+        } else if (Dtk::Core::DSysInfo::UosCommunity == Utils::uosEditionType()) {
             oldMdPath += "/community";
         } else {
             oldMdPath += "/professional";
