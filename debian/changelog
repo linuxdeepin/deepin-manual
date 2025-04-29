@@ -1,3 +1,10 @@
+deepin-manual (6.5.21) unstable; urgency=medium
+
+  * Using dbus interface instead of dtk sysinfo to get Os edition infomation.
+  * Update version to 6.5.21 
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Tue, 29 Apr 2025 19:41:37 +0800
+
 deepin-manual (6.5.20) unstable; urgency=medium
 
   * chore: update translations.
