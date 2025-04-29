@@ -59,6 +59,11 @@ public:
     static QStringList getEnvsourcePath();
     //获取desktop文件路径
     static QString getDesktopFilePath(const QString &desktopname);
+    static Dtk::Core::DSysInfo::UosEdition uosEditionType();
+
+private:
+    static Dtk::Core::DSysInfo::UosEdition parseOsBuildType(const QString& osBuild);
+
 };
 
 class ExApplicationHelper : public DGuiApplicationHelper
