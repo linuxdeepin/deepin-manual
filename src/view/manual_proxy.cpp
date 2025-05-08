@@ -330,6 +330,10 @@ QString ManualProxy::getLocalAppName(const QString &desktopname)
 
 QVariant ManualProxy::getVideoGuideInfo()
 {
+    // 社区版不出现视频指南，返回空进行屏蔽
+    if(Utils::uosEditionType() == Dtk::Core::DSysInfo::UosEdition::UosCommunity)
+        return QVariantList();
+
     QFile file(kVideoConfigPath);
     if (!file.open(QIODevice::ReadOnly)) {
         qDebug() << "Failed to open file";
