@@ -1,3 +1,10 @@
+deepin-manual (6.5.22) unstable; urgency=medium
+
+  * Suppress video guide for UOS Community edition.
+  * Update version to 6.5.22
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Thu, 08 May 2025 17:48:24 +0800
+
 deepin-manual (6.5.21) unstable; urgency=medium
 
   * Using dbus interface instead of dtk sysinfo to get Os edition infomation.
