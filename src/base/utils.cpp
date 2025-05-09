@@ -286,17 +286,18 @@ QStringList Utils::getSystemManualList()
 {
     QStringList app_list_;
     QStringList strMANUAL_DIR_list = Utils::getMdsourcePath();
+    Dtk::Core::DSysInfo::UosEdition type = Utils::uosEditionType();
     foreach (auto strMANUAL_DIR, strMANUAL_DIR_list) {
         const QStringList applicationList = QDir(QString("%1/application/").arg(strMANUAL_DIR)).entryList(QDir::Dirs|QDir::NoDotAndDotDot);
         const QStringList systemList = QDir(QString("%1/system/").arg(strMANUAL_DIR)).entryList(QDir::Dirs|QDir::NoDotAndDotDot);
         QString oldMdPath = strMANUAL_DIR;
         if (Dtk::Core::DSysInfo::UosServer == Dtk::Core::DSysInfo::uosType()) {
             oldMdPath += "/server";
-        } else if (Dtk::Core::DSysInfo::UosHome == Utils::uosEditionType()) {
+        } else if (Dtk::Core::DSysInfo::UosHome == type) {
             oldMdPath += "/personal";
-        } else if (Dtk::Core::DSysInfo::UosEducation == Utils::uosEditionType()) {
+        } else if (Dtk::Core::DSysInfo::UosEducation == type) {
             oldMdPath += "/education";
-        } else if (Dtk::Core::DSysInfo::UosCommunity == Utils::uosEditionType()) {
+        } else if (Dtk::Core::DSysInfo::UosCommunity == type) {
             oldMdPath += "/community";
         } else {
             oldMdPath += "/professional";
@@ -312,14 +313,13 @@ QStringList Utils::getSystemManualList()
                 app_list_.append("dde");
             }
         }
-
         // 非应用文档，直接添加
         if (systemList.contains(kLearnBasicOperations) || oldAppList.contains(kLearnBasicOperations)) {
-            if (app_list_.indexOf(kLearnBasicOperations) == -1)
+            if (Dtk::Core::DSysInfo::UosCommunity != type && app_list_.indexOf(kLearnBasicOperations) == -1)
                 app_list_.append(kLearnBasicOperations);
         }
         if (systemList.contains(kCommonApplicationLibraries) || oldAppList.contains(kCommonApplicationLibraries)) {
-            if (app_list_.indexOf(kCommonApplicationLibraries) == -1)
+            if (Dtk::Core::DSysInfo::UosCommunity != type && app_list_.indexOf(kCommonApplicationLibraries) == -1 )
                 app_list_.append(kCommonApplicationLibraries);
         }
         qDebug() << "exist app list: " << app_list_ << ", count:" << app_list_.size();
