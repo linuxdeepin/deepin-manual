@@ -1,4 +1,4 @@
-deepin-manual (6.5.23) UNRELEASED; urgency=medium
+deepin-manual (6.5.23) unstable; urgency=medium
 
   * Suppress quick-start for UOS Community edition.
   * Update version to 6.5.23
