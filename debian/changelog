@@ -1,10 +1,3 @@
-deepin-manual (6.5.23) UNRELEASED; urgency=medium
-
-  * Suppress quick-start for UOS Community edition.
-  * Update version to 6.5.23
-
- -- dengzhongyuan <dengzhongyuan@uniontech.com>  Fri, 09 May 2025 10:14:23 +0800
-
 deepin-manual (6.5.22) unstable; urgency=medium
 
   * Suppress video guide for UOS Community edition.
