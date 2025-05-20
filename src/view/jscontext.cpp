@@ -13,6 +13,5 @@ JsContext::JsContext(QObject *parent): QObject(parent)
 
 void JsContext::recvParseMsg(const QString &msg, const QString &path)
 {
-    qDebug() << "========>" << msg;
     emit parseMsg(msg, path);
 }

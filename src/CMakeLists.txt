@@ -123,6 +123,8 @@ set(BASE_FILES
     base/utils.h
     base/eventlogutils.h
     base/eventlogutils.cpp
+    base/logger.h
+    base/logger.cpp
     )
 
 set(CONTROLLER_FILES
@@ -211,6 +213,8 @@ set(SEARCH_FILES
     base/utils.h
     base/command.cpp
     base/command.h
+    base/logger.h
+    base/logger.cpp
     dbus/dbusvariant/app_info.cpp
     dbus/dbusvariant/app_info.h
     controller/search_db.cpp
@@ -254,6 +258,8 @@ add_executable(dmanHelper
                 base/consts.h
                 base/eventlogutils.h
                 base/eventlogutils.cpp
+                base/logger.h
+                base/logger.cpp
                 dbus/dbus_consts.cpp
                 dbus/dbus_consts.h
                 dbus/dbusvariant/app_info.cpp
@@ -290,6 +296,8 @@ if (CMAKE_BUILD_TYPE MATCHES Debug)
 
   set(MANUAL_TRANSLATE_FILES
       app/manual_translate.cpp
+      base/logger.h
+      base/logger.cpp
       )
   add_executable(manual-translate-demo ${MANUAL_TRANSLATE_FILES})
   target_link_libraries(manual-translate-demo ${LINK_LIBS})

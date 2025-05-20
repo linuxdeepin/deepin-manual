@@ -5,6 +5,7 @@
 #include "controller/window_manager.h"
 #include "base/consts.h"
 #include "base/utils.h"
+#include "base/ddlog.h"
 #include "dbus/dbus_consts.h"
 #include "view/web_window.h"
 #include "controller/config_manager.h"
@@ -51,7 +52,7 @@ void WindowManager::initDBus()
     QDBusConnection dbusConn =
         QDBusConnection::connectToBus(QDBusConnection::SessionBus, WM_SENDER_NAME);
     if (!dbusConn.isConnected()) {
-        qDebug() << WM_SENDER_NAME << "connectToBus() failed";
+        qCDebug(app) << WM_SENDER_NAME << "connectToBus() failed";
         return;
     }
 
@@ -61,7 +62,7 @@ void WindowManager::initDBus()
 
         return;
     } else {
-        qDebug() << WM_SENDER_NAME << " register dbus service success!";
+        qCDebug(app) << WM_SENDER_NAME << " register dbus service success!";
     }
 
     // 注册Dbus filesUpdate服务
@@ -75,7 +76,7 @@ void WindowManager::initDBus()
             || !conn.registerObject(kManualFilesUpdateIface, proxy)) {
         qCritical() << "filesUpdate failed to register dbus service";
     } else {
-        qDebug() << "filesUpdate register dbus service success!";
+        qCDebug(app) << "filesUpdate register dbus service success!";
     }
 
 }
@@ -106,7 +107,8 @@ void WindowManager::initWebWindow()
  */
 void WindowManager::activeOrInitWindow()
 {
-    qDebug() << Q_FUNC_INFO;
+    qCDebug(app) << "activeOrInitWindow";
+
     // 单页面该锁可能无用......
     QMutexLocker locker(&_mutex);
     /*** 只要有窗口就不再创建新窗口 2020-06-22 16:57:50 wangml ***/
@@ -137,7 +139,7 @@ void WindowManager::SendMsg(const QString &msg)
 {
     QDBusConnection dbusConn =
         QDBusConnection::connectToBus(QDBusConnection::SessionBus, WM_SENDER_NAME);
-    qDebug() << "start send keyword:" << QString::number(qApp->applicationPid());
+    qCDebug(app) << "start send keyword:" << QString::number(qApp->applicationPid());
     QDBusMessage dbusMsg = QDBusMessage::createSignal(
                                kManualSearchIface + QString(WM_SENDER_NAME),
                                kManualSearchService + QString(WM_SENDER_NAME), "SendWinInfo");
@@ -190,7 +192,7 @@ void WindowManager::restartDmanHelper()
                                  QDBusConnection::sessionBus());
 
     if (!interface.isValid()) {
-        qDebug() << qPrintable(QDBusConnection::sessionBus().lastError().message());
+        qCDebug(app) << qPrintable(QDBusConnection::sessionBus().lastError().message());
         exit(1);
     }
 
@@ -199,7 +201,7 @@ void WindowManager::restartDmanHelper()
 
     if (reply.isValid()) {
         QString value = reply.value();
-        qDebug() << "value = " << value ;
+        qCDebug(app) << "value = " << value ;
     }
 }
 
@@ -227,7 +229,7 @@ void WindowManager::openManualWithSearch(const QString &app_name, const QString 
     curr_app_name_ = app_name;
     curr_keyword_ = keyword;
     activeOrInitWindow();
-    qDebug() << Q_FUNC_INFO << app_name << curr_keyword_;
+    qCDebug(app) << app_name << curr_keyword_;
 }
 
 /**
@@ -237,7 +239,7 @@ void WindowManager::openManualWithSearch(const QString &app_name, const QString 
  */
 void WindowManager::onFilesUpdate(const QStringList &filesList)
 {
-    qDebug() << Q_FUNC_INFO << filesList;
+    qCDebug(app) << filesList;
     if (window && !filesList.isEmpty()) {
         window->updatePage(filesList);
     }

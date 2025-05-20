@@ -5,6 +5,7 @@
 #include "view/web_window.h"
 #include "base/consts.h"
 #include "base/utils.h"
+#include "base/ddlog.h"
 #include "controller/search_manager.h"
 #include "view/i18n_proxy.h"
 #include "view/image_viewer_proxy.h"
@@ -120,7 +121,7 @@ WebWindow::~WebWindow()
         search_edit_ = nullptr;
     }
 
-    qDebug() << "WebWindow::~WebWindow() done.";
+    qCDebug(app) << "WebWindow::~WebWindow() done.";
 }
 
 /**
@@ -128,7 +129,8 @@ WebWindow::~WebWindow()
  */
 void WebWindow::initWeb()
 {
-    qDebug() << Q_FUNC_INFO;
+    qCDebug(app) << "WebWindow::initWeb()";
+
     setSearchManager(); //防止启动后立即搜索响应测试不通过
     initWebView();
 }
@@ -268,9 +270,9 @@ void WebWindow::HelpSupportTriggered(bool bActiontrigger)
     }
     QDBusReply<void> reply = interface.call("ServiceSession", supporttype);
     if (reply.isValid()) {
-        qDebug() << "call com.deepin.dde.ServiceAndSupport success";
+        qCDebug(app) << "call com.deepin.dde.ServiceAndSupport success";
     } else {
-        qDebug() << "call com.deepin.dde.ServiceAndSupport failed, " << interface.lastError();
+        qCWarning(app) << "call com.deepin.dde.ServiceAndSupport failed, " << interface.lastError();
         // 打开失败，尝试再次打开
         QTimer::singleShot(100, this, [bActiontrigger](){
             QDBusInterface interface("com.deepin.dde.ServiceAndSupport",
@@ -282,7 +284,7 @@ void WebWindow::HelpSupportTriggered(bool bActiontrigger)
             }
             QDBusReply<void> reply = interface.call("ServiceSession", supporttype);
             if (!reply.isValid()) {
-                qDebug() << "call failed again";
+                qCWarning(app) << "call failed again";
             }
         });
     }
@@ -442,7 +444,7 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
                 //搜索框内容为空时，按回车键回到未搜索页面
                 if (search_edit_->lineEdit()->text().isEmpty()) {
                     emit manual_proxy_->searchEditTextisEmpty();
-                    qDebug() << "emit searchEditTextisEmpty";
+                    qCDebug(app) << "emit searchEditTextisEmpty";
                 }
             }
         } else if (keyEvent->key() == Qt::Key_A
@@ -462,12 +464,12 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
         if (nullptr != mouseEvent) {
             switch (mouseEvent->button()) {
             case Qt::BackButton: {
-                qDebug() << "eventFilter back";
+                qCDebug(app) << "eventFilter back";
                 emit title_bar_proxy_->backwardButtonClicked();
                 break;
             }
             case Qt::ForwardButton: {
-                qDebug() << "eventFilter forward";
+                qCDebug(app) << "eventFilter forward";
                 emit title_bar_proxy_->forwardButtonClicked();
                 break;
             }
@@ -489,7 +491,7 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
     //过滤字体改变事件
     if (event->type() == QEvent::FontChange && watched == this) {
         if (this->settings_proxy_) {
-            qDebug() << "eventFilter QEvent::FontChange";
+            qCDebug(app) << "eventFilter QEvent::FontChange";
             QFontInfo fontInfo = this->fontInfo();
             emit this->settings_proxy_->fontChangeRequested(fontInfo.family(),
                                                             fontInfo.pixelSize());
@@ -551,7 +553,7 @@ void WebWindow::initConnections()
  */
 void WebWindow::onManualSearchByKeyword(const QString &keyword)
 {
-    qDebug() << "WebWindow: onManualSearchByKeyword keyword:" << keyword;
+    qCDebug(app) << "WebWindow: onManualSearchByKeyword keyword:" << keyword;
     this->onSearchContentByKeyword(keyword);
 }
 
@@ -572,7 +574,7 @@ void WebWindow::onAppearanceChanged(QString, QMap<QString, QVariant> map, QStrin
 
     QString strValue = map.begin().value().toString();
     QString strKey = map.begin().key();
-    qDebug() << __func__ << " key: " << strKey << " value: " << strValue;
+    qCDebug(app) << __func__ << " key: " << strKey << " value: " << strValue;
     if (0 == strKey.compare("QtActiveColor")) {
         QTimer::singleShot(100, this, [&]() {
             //获取系统活动色
@@ -801,7 +803,7 @@ void WebWindow::updateDb()
  */
 void WebWindow::initShortcuts()
 {
-    qDebug() << "init Short cuts";
+    qCDebug(app) << "init Short cuts";
     //设置窗口大小切换快捷键
     QShortcut *scWndReize = new QShortcut(this);
     scWndReize->setKey(tr("Ctrl+Alt+F"));
@@ -840,9 +842,9 @@ void WebWindow::initDBus()
                 "PropertiesChanged", // sender's signal name
                 this, // receiver
                 SLOT(onAppearanceChanged(QString, QMap<QString, QVariant>, QStringList)))) {
-        qDebug() << "connectToBus()::connect()  PropertiesChanged failed";
+        qCWarning(app) << "connectToBus()::connect()  PropertiesChanged failed";
     } else {
-        qDebug() << "connectToBus()::connect()  PropertiesChanged success";
+        qCDebug(app) << "connectToBus()::connect()  PropertiesChanged success";
     }
 
     // 锁屏通知，显示隐藏图片界面，才能保证图片界面正常隐藏，否则图片界面会一直阻塞主线程鼠标事件传递
@@ -912,7 +914,7 @@ QRect WebWindow::hasWidgetRect(QWidget *widget)
  */
 void WebWindow::onSearchContentByKeyword(const QString &keyword)
 {
-    qDebug() << "calling keyword is:" << keyword;
+    qCDebug(app) << "calling keyword is:" << keyword;
     QString key(keyword);
 #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     QRegExp sreg("\\s");
@@ -924,7 +926,7 @@ void WebWindow::onSearchContentByKeyword(const QString &keyword)
     search_manager_->searchContent(searchKey);
 
     QString base64Key = QString(searchKey.toUtf8().toBase64());
-    qDebug() << " base64Key " << base64Key;
+    qCDebug(app) << " base64Key " << base64Key;
 
     // 调用ｊｓ接口显示搜索内容
     web_view_->page()->runJavaScript(QString("openSearchPage('%1')").arg(base64Key));
@@ -1014,7 +1016,8 @@ void WebWindow::onSearchTextChangedDelay()
  */
 void WebWindow::onTitleBarEntered()
 {
-    qDebug() << Q_FUNC_INFO;
+    qCDebug(app) << "onTitleBarEntered";
+
     QString textTemp = search_edit_->text();
 #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     QRegExp sreg("\\s");

@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 #include "base/command.h"
+#include "base/ddlog.h"
 
 #include <DLog>
 #include <QDir>
@@ -15,14 +16,14 @@ bool RunScriptFile(const QStringList &args)
 {
     Q_ASSERT(!args.isEmpty());
     if (args.isEmpty()) {
-        qCritical() << "RunScriptFile() args is empty!";
+        qCCritical(app) << "RunScriptFile() args is empty!";
         return false;
     }
 
     // Change working directory.
     const QString current_dir(QFileInfo(args.at(0)).absolutePath());
     if (!QDir::setCurrent(current_dir)) {
-        qCritical() << "Failed to change working directory:" << current_dir;
+        qCCritical(app) << "Failed to change working directory:" << current_dir;
         return false;
     }
 
@@ -61,7 +62,7 @@ bool SpawnCmd(const QString &cmd, const QStringList &args)
     // Wait for process to finish without timeout.
     process.waitForFinished(-1);
 
-    qDebug() << process.readAllStandardOutput();
+    qCDebug(app) << "Command output:" << process.readAllStandardOutput();
 
     return (process.exitStatus() == QProcess::NormalExit && process.exitCode() == 0);
 }
@@ -85,7 +86,7 @@ bool SpawnCmd(const QString &cmd, const QStringList &args,
     output = process.readAllStandardOutput();
     err = process.readAllStandardError();
     if (!process.errorString().contains("Unknown")) {
-        qDebug() << "run cmd error, caused by:" << process.errorString();
+        qCDebug(app) << "Command execution error:" << process.errorString();
     }
     return (process.exitStatus() == QProcess::NormalExit && process.exitCode() == 0);
 }

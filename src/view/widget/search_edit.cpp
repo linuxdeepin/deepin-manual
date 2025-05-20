@@ -21,7 +21,6 @@ SearchEdit::SearchEdit(QWidget *parent)
                 QToolButton *clearBtn = list.at(i);
                 connect(clearBtn, &QToolButton::clicked, this, [ = ] {
                     emit this->onClickedClearBtn();
-                    qDebug() << "emit onClickedClearBtn";
                 });
             }
         }

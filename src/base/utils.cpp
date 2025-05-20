@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 #include "utils.h"
+#include "ddlog.h"
 
 #include <DSysInfo>
 DCORE_USE_NAMESPACE
@@ -190,14 +191,14 @@ QList<AppInfo> Utils::launcherInterface()
     QDBusInterface iface(sLauncherService, sLauncherIface, sLauncherService, QDBusConnection::sessionBus());
     //root权限下此dbus接口无效...
     if (!iface.isValid()) {
-        qDebug() << qPrintable(QDBusConnection::sessionBus().lastError().message());
-        qDebug() << QString("majorVersion:%1, servie:%2 iface:%3").arg(DSysInfo::majorVersion()).arg(sLauncherService).arg(sLauncherIface);
+        qCDebug(app) << qPrintable(QDBusConnection::sessionBus().lastError().message());
+        qCDebug(app) << QString("majorVersion:%1, servie:%2 iface:%3").arg(DSysInfo::majorVersion()).arg(sLauncherService).arg(sLauncherIface);
         return applist;
 //        exit(1);
     }
 
     QDBusReply<QList<ReplyStruct>> reply = iface.callWithArgumentList(QDBus::CallMode::AutoDetect, "GetAllItemInfos", QVariantList());
-    qDebug() << reply.error().message();
+    qCDebug(app) << reply.error().message();
 
     if (reply.isValid()) {
         QList<ReplyStruct> list;
@@ -211,13 +212,13 @@ QList<AppInfo> Utils::launcherInterface()
             app.category_id = list.at(var).m_categoryId;
             app.installed_time = list.at(var).m_installedTime;
             applist.append(app);
-            //qDebug() << "dbusMsg ---- : " << var << list.at(var).m_name;
+            //qCDebug(app) << "dbusMsg ---- : " << var << list.at(var).m_name;
         }
-//        qDebug() << applist.size() << "applist " <<  applist;
+//        qCDebug(app) << applist.size() << "applist " << applist;
         return applist;
     } else {
-        qDebug() << "GetAllItemInfos fail! " << reply.error().message();
-        qDebug() << QString("majorVersion:%1, servie:%2 iface:%3").arg(DSysInfo::majorVersion()).arg(sLauncherService).arg(sLauncherIface);
+        qCDebug(app) << "GetAllItemInfos fail! " << reply.error().message();
+        qCDebug(app) << QString("majorVersion:%1, servie:%2 iface:%3").arg(DSysInfo::majorVersion()).arg(sLauncherService).arg(sLauncherIface);
         return applist;
     }
 }
@@ -250,7 +251,7 @@ QStringList Utils::getMdsourcePath()
         sourcePath.push_back(pathlist[i] + "/deepin-manual/manual-assets");
     }
     sourcePath.push_back(DMAN_MANUAL_DIR);
-    // qDebug() << " all MD source path : " << sourcePath.last();
+    // qCDebug(app) << " all MD source path : " << sourcePath.last();
     return sourcePath;
 }
 
@@ -259,7 +260,7 @@ QStringList Utils::getEnvsourcePath()
     QStringList pathlist = QString(qgetenv("XDG_DATA_DIRS")).split(':');
     if (pathlist.size() == 1 && pathlist[0].isEmpty())
         pathlist[0] = "/usr/share";
-    // qDebug() << " all source path : " << pathlist;
+    // qCDebug(app) << " all source path : " << pathlist;
     return pathlist;
 }
 
@@ -322,9 +323,9 @@ QStringList Utils::getSystemManualList()
             if (Dtk::Core::DSysInfo::UosCommunity != type && app_list_.indexOf(kCommonApplicationLibraries) == -1 )
                 app_list_.append(kCommonApplicationLibraries);
         }
-        qDebug() << "exist app list: " << app_list_ << ", count:" << app_list_.size();
+        qCDebug(app) << "exist app list: " << app_list_ << ", count:" << app_list_.size();
     }
-    qDebug() << "exist app list: " << app_list_ << ", count:" << app_list_.size();
+    qCDebug(app) << "exist app list: " << app_list_ << ", count:" << app_list_.size();
     return app_list_;
 }
 
@@ -589,7 +590,7 @@ bool Utils::activeWindow(quintptr winId)
                           "com.deepin.dde.daemon.Dock");
     QDBusReply<void> reply = manual.call("ActivateWindow", winId);
     if (!reply.isValid()) {
-        qDebug() << "call com.deepin.dde.daemon.Dock failed" << reply.error();
+        qCDebug(app) << "call com.deepin.dde.daemon.Dock failed" << reply.error();
         bsuccess = false;
     }
     return bsuccess;
@@ -604,7 +605,6 @@ QString Utils::regexp_label(const QString &strtext, const QString &strpatter)
     if (match.isValid() && match.hasMatch()) {
         for (int i = 0; i <= match.lastCapturedIndex(); i++) {
             result = match.captured(i);
-            // qDebug() << __FUNCTION__ << "-------****" << result;
             break;
         }
     }
@@ -622,7 +622,7 @@ QString Utils::mkMutiDir(const QString &path)
     QDir parentPath(parentDir);
     if (!dirname.isEmpty()) {
         bool ret = parentPath.mkpath(dirname);
-        qDebug() << "mkpath result:" << ret << dirname;
+        qCDebug(app) << "mkpath result:" << ret << dirname;
     }
     return parentDir + "/" + dirname;
 }
@@ -643,7 +643,7 @@ bool Utils::judgeLoongson()
             QString result = process.readAllStandardOutput();
 
             if (result.contains("Loongson")) {
-                qWarning() << "cpu mode name is loongson";
+                qCInfo(app) << "cpu mode name is loongson";
                 cpuModeName = "Loongson";
             } else {
                 cpuModeName = "other";

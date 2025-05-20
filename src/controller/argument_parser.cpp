@@ -5,6 +5,7 @@
 #include "controller/argument_parser.h"
 #include "base/consts.h"
 #include "base/utils.h"
+#include "base/ddlog.h"
 #include "dbus/dbus_consts.h"
 #include "dbus/manual_open_adapter.h"
 #include "dbus/manual_open_interface.h"
@@ -75,22 +76,22 @@ bool ArgumentParser::parseArguments()
     //注册Open服务, 如果注册失败,则说明已存在一个dman.
     if (!conn.registerService(kManualOpenService)
             || !conn.registerObject(kManualOpenIface, proxy)) {
-        qDebug() << "Failed to register dbus";
+        qCDebug(app) << "Failed to register dbus";
         const QStringList position_args = parser.positionalArguments();
         QDBusInterface manual(kManualOpenService, kManualOpenIface, kManualOpenService);
         if (!position_args.isEmpty()) {
-            qDebug() << Q_FUNC_INFO << "position_args is not empty";
+            qCDebug(app) << "position_args is not empty";
             for (const QString &arg : position_args) {
                 QDBusReply<void> reply = manual.call("Open", arg);
             }
         } else {
-            qDebug() << Q_FUNC_INFO << "position_args is empty";
+            qCDebug(app) << "position_args is empty";
             //激活已有dman
             QDBusReply<void> reply = manual.call("Open", "");
         }
         return false;
     } else {
-        qDebug() << "Register dbus service successfully";
+        qCDebug(app) << "Register dbus service successfully";
         const QStringList position_args = parser.positionalArguments();
         // 不带参为首页,带参跳转到具体模块.
         if (position_args.isEmpty()) {
@@ -111,7 +112,7 @@ bool ArgumentParser::parseArguments()
  */
 void ArgumentParser::openManualsDelay()
 {
-    qDebug() << Q_FUNC_INFO << curManual;
+    qCDebug(app) << curManual;
 
     //判断是否为dbus服务，否则打开帮助手册窗口
     if (!bIsDbus) {
@@ -132,7 +133,10 @@ void ArgumentParser::onOpenAppRequested(const QString &app_name, const QString &
     objStartEvent.insert("version", qApp->applicationVersion());
     objStartEvent.insert("appname", app_name);
     objStartEvent.insert("titlename", title_name);
-    qInfo() << __FUNCTION__ << QJsonDocument(objStartEvent).toJson(QJsonDocument::Compact);
+
+    auto jsonStr = QJsonDocument(objStartEvent).toJson(QJsonDocument::Compact);
+    qCInfo(app) << "jsonStr:" << jsonStr;
+
     Eventlogutils::GetInstance()->writeLogs(objStartEvent);
     //解析老的应用名为路径，解析出dman后的应用名称
     const QString compact_app_name = ConvertOldDmanPath(app_name);
@@ -146,6 +150,6 @@ void ArgumentParser::onOpenAppRequested(const QString &app_name, const QString &
  */
 void ArgumentParser::onSearchRequested(const QString &keyword)
 {
-    qDebug() << Q_FUNC_INFO << keyword;
+    qCDebug(app) << keyword;
     emit this->openManualWithSearchRequested("", keyword);
 }
