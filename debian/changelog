@@ -1,3 +1,13 @@
+deepin-manual (6.5.25) unstable; urgency=medium
+
+  * Update version to 6.5.25 
+  * fix: Core dump occurs when attempting to open manual while it's already
+    open.
+  * fix: Icon display issue in help manual for UOS Windows application
+    compatibility engine.
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Tue, 20 May 2025 13:51:30 +0800
+
 deepin-manual (6.5.24) unstable; urgency=medium
 
   * Update version to 6.5.24 
