@@ -12,6 +12,24 @@
 #include <QIcon>
 #include <QDesktopServices>
 
+namespace {
+    // 迭代查找图标
+    QString findIconFile(const QString &iconName, const QString &directory) {
+        QDirIterator it(directory,
+                        QStringList() << "*.svg",
+                        QDir::Files,
+                        QDirIterator::Subdirectories);
+
+        while (it.hasNext()) {
+            it.next();
+            if (it.fileInfo().baseName() == iconName) {
+                return it.fileInfo().absoluteFilePath();
+            }
+        }
+
+        return QString();
+    }
+}
 ManualProxy::ManualProxy(QObject *parent)
     : QObject(parent)
     , strIconTheme("")
@@ -291,8 +309,22 @@ QString ManualProxy::getAppIconPath(const QString &desktopname)
                     break;
                 }
             }
+
             if (!iconPath.isEmpty()) {
                 break;
+            }
+        }
+
+        // 上面主题查找的方式没有的时候在图标路径遍历查找一下
+        if (iconPath.isEmpty())
+        {
+            for (const QString &themePath : themePaths) {
+
+                QString findPath = findIconFile(strIcon, themePath);
+                if (QFile::exists(findPath)) {
+                    iconPath = findPath;
+                    break;
+                }
             }
         }
 
