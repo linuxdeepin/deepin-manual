@@ -4,6 +4,7 @@
 
 #include "controller/search_db.h"
 #include "base/utils.h"
+#include "base/ddlog.h"
 
 #include <QSqlError>
 #include <QSqlQuery>
@@ -152,10 +153,10 @@ void SearchDb::initDb()
 {
     //获取本地配置文件目录
     QString dbdir = Utils::mkMutiDir(QStandardPaths::writableLocation(QStandardPaths::HomeLocation).append("/.local/share/deepin/deepin-manual"));
-    qDebug() << dbdir;
+    qCDebug(app) << dbdir;
     QDir dir(dbdir);
     if (!dir.exists()) {
-        qCritical() << __FUNCTION__ << "db path not exist!" << dbdir;
+        qCritical() << "db path not exist!" << dbdir;
     }
     QString databasePath = dbdir.append("/search.db");
 
@@ -209,7 +210,7 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
 {
     Q_ASSERT(p_->db.isOpen());
     Q_ASSERT(anchors.length() == contents.length());
-    qDebug() << "addSearchEntry()" << app_name << lang << anchors; // << contents;
+    qCDebug(app) << "addSearchEntry()" << app_name << lang << anchors; // << contents;
     QStringList newContents = contents;
 
     if (mdPath.isEmpty()) {
@@ -303,7 +304,7 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
             p_->db.commit();
         }
     } else {
-        qDebug() << __FUNCTION__ << "field size not match execBatch may crash ,app-name :" << app_name;
+        qCDebug(app) << "field size not match execBatch may crash ,app-name :" << app_name;
     }
 }
 
@@ -349,7 +350,7 @@ void SearchDb::initTimeTable()
  */
 void SearchDb::handleSearchAnchor(const QString &keyword)
 {
-    qDebug() << Q_FUNC_INFO << keyword;
+    qCDebug(app) << keyword;
     Q_ASSERT(p_->db.isOpen());
 
     SearchAnchorResultList result;
@@ -371,10 +372,10 @@ void SearchDb::handleSearchAnchor(const QString &keyword)
     }
     const QString sql =
         QString(kSearchSelectAnchor).replace(":anchor", keyword).replace(":lang", lang);
-    qDebug() << "=======>" << sql;
+    qCDebug(app) << "=======>" << sql;
     if (query.exec(sql)) {
         while (query.next() && (result.size() < kResultLimitation)) {
-            qDebug() << "handleSearchAnchor===> " << query.value(0).toString() << strlistApp;
+            qCDebug(app) << "handleSearchAnchor===> " << query.value(0).toString() << strlistApp;
             //只将当前预装应用中的内容输出。
             if (strlistApp.contains(query.value(0).toString())/* || query.value(0).toString().contains("video-guide")*/) {
                 //搜索结果优先显示应用名称
@@ -398,7 +399,7 @@ void SearchDb::handleSearchAnchor(const QString &keyword)
     } else {
         qCritical() << "Failed to select anchor:" << query.lastError().text();
     }
-    qDebug() << "result size:" << result.size() << keyword;
+    qCDebug(app) << "result size:" << result.size() << keyword;
     emit this->searchAnchorResult(keyword, result);
 }
 
@@ -607,7 +608,7 @@ void SearchDb::omitHighlight(QString &highLight, const QString &keyword)
  */
 void SearchDb::handleSearchContent(const QString &keyword)
 {
-    qDebug() << Q_FUNC_INFO << keyword;
+    qCDebug(app) << keyword;
     Q_ASSERT(p_->db.isOpen());
 #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     QRegExp exp("[|&-]");
@@ -730,7 +731,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
                 last_app_name = app_name;
             }
         }
-        qInfo() << "_______" << tm.elapsed();
+        qCInfo(app) << "search content time:" << tm.elapsed();
         if (!last_app_name.isEmpty()) {
             sortSearchList(last_app_name, anchors, anchorIds, contents, bIsTitle);
         }
@@ -745,7 +746,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
     }
 
     if (result_empty && 0 == nH0OfList) {
-        qDebug() << "searchContentMismatch";
+        qCDebug(app) << "searchContentMismatch";
         //发送未查找到结果->SearchManager::searchContentMismatch->SearchProxy::mismatch->JS
         emit this->searchContentMismatch(keyword);
     }
@@ -854,7 +855,7 @@ void SearchDb::updateDb()
     QString dbdir = QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/.local/share/deepin/deepin-manual/search.db" ;
     QDir dir(dbdir);
     if (!dir.exists()) {
-        qCritical() << __FUNCTION__ << "db path not exist!" << dbdir;
+        qCritical() << "db path not exist!" << dbdir;
     }
 
     dir.remove(dbdir);

@@ -18,7 +18,6 @@ ConfigManager::ConfigManager(QObject *parent)
 
 ConfigManager::~ConfigManager()
 {
-    qDebug() << "~configmanager....";
 }
 
 

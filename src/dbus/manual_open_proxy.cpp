@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 #include "dbus/manual_open_proxy.h"
+#include "base/ddlog.h"
 
 #include <QtDBus/QtDBus>
 
@@ -23,7 +24,7 @@ ManualOpenProxy::~ManualOpenProxy()
  */
 void ManualOpenProxy::Open(const QString &app_name)
 {
-    qDebug() << Q_FUNC_INFO << app_name;
+    qCDebug(app) << app_name;
     emit this->openManualRequested(app_name, "");
 }
 
@@ -35,7 +36,7 @@ void ManualOpenProxy::Open(const QString &app_name)
  */
 void ManualOpenProxy::OpenTitle(const QString &app_name, const QString &title_name)
 {
-    qDebug() << Q_FUNC_INFO << app_name << "---" << title_name;
+    qCDebug(app) << app_name << "---" << title_name;
     emit this->openManualRequested(app_name, title_name);
 }
 
@@ -56,6 +57,6 @@ void ManualOpenProxy::ShowManual(const QString &app_name)
  */
 void ManualOpenProxy::Search(const QString &keyword)
 {
-    qDebug() << Q_FUNC_INFO << keyword;
+    qCDebug(app) << keyword;
     emit this->searchRequested(keyword);
 }

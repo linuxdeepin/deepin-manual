@@ -4,6 +4,7 @@
 
 #include "view/image_viewer_proxy.h"
 #include "view/widget/image_viewer.h"
+#include "base/ddlog.h"
 
 #include <DLog>
 #include <QUrl>
@@ -28,6 +29,7 @@ void ImageViewerProxy::open(const QString &filepath)
 {
     Q_ASSERT(viewer_ != nullptr);
     Q_UNUSED(filepath);
+    qCDebug(app) << "Opening image file:" << filepath;
     viewer_->open(filepath);
 }
 
@@ -38,5 +40,8 @@ void ImageViewerProxy::open(const QString &filepath)
  */
 void ImageViewerProxy::openHttpUrl(const QString &httpUrl)
 {
-    QDesktopServices::openUrl(QUrl(httpUrl));
+    qCDebug(app) << "Opening external URL:" << httpUrl;
+    if (!QDesktopServices::openUrl(QUrl(httpUrl))) {
+        qCWarning(app) << "Failed to open URL:" << httpUrl;
+    }
 }

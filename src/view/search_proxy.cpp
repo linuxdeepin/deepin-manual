@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 #include "view/search_proxy.h"
+#include "base/ddlog.h"
 
 #include <DLog>
 #include <QTimer>
@@ -23,7 +24,7 @@ SearchProxy::~SearchProxy()
  */
 void SearchProxy::getKeyword(const QString &keyword)
 {
-    qDebug() << "-->" << keyword;
+    qCDebug(app) << "Received search keyword:" << keyword;
     emit setKeyword(keyword);
 }
 
@@ -34,7 +35,7 @@ void SearchProxy::getKeyword(const QString &keyword)
  */
 void SearchProxy::updateSearch(const QString &keyword)
 {
-    qDebug() << Q_FUNC_INFO;
+    qCDebug(app) << "Updating search for keyword:" << keyword;
     //WebWindow::onSetKeyword 设置搜索框值
     emit setKeyword(keyword);
 

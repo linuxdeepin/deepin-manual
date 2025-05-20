@@ -5,6 +5,7 @@
 #include "dbus/manual_search_proxy.h"
 #include "dbus/dbus_consts.h"
 #include "base/utils.h"
+#include "base/ddlog.h"
 
 #include <QtDBus/QtDBus>
 
@@ -39,9 +40,9 @@ void ManualSearchProxy::connectToSender()
                 this, // receiver
                 SLOT(RecvMsg(const QString &)))) { // slot
 
-        qDebug() << "connectToBus()::connect() Sender SendWinInfo failed";
+        qCDebug(app) << "connectToBus()::connect() Sender SendWinInfo failed";
     } else {
-        qDebug() << "connectToBus()::connect() Sender SendWinInfo success";
+        qCDebug(app) << "connectToBus()::connect() Sender SendWinInfo success";
     }
 }
 
@@ -52,10 +53,10 @@ void ManualSearchProxy::connectToSender()
  */
 void ManualSearchProxy::RecvMsg(const QString &data)
 {
-    qDebug() << "RecvMsg data is: " << data;
+    qCDebug(app) << "RecvMsg data is: " << data;
     QStringList dataList = data.split("|");
     if (dataList.size() < 2) {
-        qDebug() << "wrong data style! " << data;
+        qCDebug(app) << "wrong data style! " << data;
         return;
     }
     QString flag = dataList.last();
@@ -81,9 +82,9 @@ void ManualSearchProxy::RecvMsg(const QString &data)
  */
 void ManualSearchProxy::OnNewWindowOpen(const QString &data)
 {
-    qDebug() << "Search data is: " << data;
+    qCDebug(app) << "Search data is: " << data;
     if (m_bWindowState) {
-        qDebug() << "Window:process" << m_sApplicationPid;
+        qCDebug(app) << "Window:process" << m_sApplicationPid;
         quintptr winId = m_sApplicationPid.toULong();
         Utils::activeWindow(winId);
     }

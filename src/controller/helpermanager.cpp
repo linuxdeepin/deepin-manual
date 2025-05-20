@@ -6,6 +6,7 @@
 #include "base/command.h"
 #include "base/utils.h"
 #include "base/consts.h"
+#include "base/ddlog.h"
 #include "controller/filewatcher.h"
 #include "controller/search_db.h"
 #include "view/jscontext.h"
@@ -33,7 +34,8 @@ helperManager::helperManager(QObject *parent)
  */
 void helperManager::initWeb()
 {
-    qDebug() << Q_FUNC_INFO;
+    qCDebug(app) << "initWeb";
+
     m_webView = new QWebEngineView;
     m_webView->setFixedSize(400, 200);
     connect(m_webView->page(), &QWebEnginePage::loadFinished, this, &helperManager::webLoadFinish);
@@ -74,7 +76,7 @@ void helperManager::getModuleInfo()
                     QStringList listAppNameT = QDir(modulePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs);
 
                     if (listAppNameT.count() != 1) {
-                        qCritical() << Q_FUNC_INFO << modulePath  << "：there are more folders..:" << listAppNameT.count();
+                        qCritical() << modulePath  << "：there are more folders..:" << listAppNameT.count();
                         continue;
                     }
                     //./manual-assets/application(system)/appName/appNameT
@@ -155,7 +157,7 @@ void helperManager::initConnect()
  */
 void helperManager::handleDb(const QStringList &deleteList, const QStringList &addList, const QStringList &addTime)
 {
-    qDebug() << Q_FUNC_INFO << deleteList.count() << " " << addList.count();
+    qCDebug(app) << deleteList.count() << " " << addList.count();
     if (!deleteList.isEmpty()) {
         dbObj->deleteFilesTimeEntry(deleteList);
         QStringList appList;
@@ -182,12 +184,12 @@ void helperManager::handleDb(const QStringList &deleteList, const QStringList &a
 //        tmpAddList.removeAt(videoIndex);
         QFile file(kVideoConfigPath);
         if (!file.open(QIODevice::ReadOnly)) {
-            qDebug() << "Failed to open video config file.";
+            qCDebug(app) << "Failed to open video config file.";
         } else {
             QByteArray jsonData = file.readAll();
             QJsonDocument jsonDoc = QJsonDocument::fromJson(jsonData);
             if (jsonDoc.isNull()) {
-                qDebug() << "Failed to parse JSON of video config file.";
+                qCDebug(app) << "Failed to parse JSON of video config file.";
             } else {
                 QJsonObject jsonObj = jsonDoc.object();
 
@@ -249,7 +251,7 @@ void helperManager::handleDb(const QStringList &deleteList, const QStringList &a
         //通过JS层函数来完成md转html, 然后解析html内所有文本内容
         if (jsObj && m_webView) {
             QString strChange = list.join(",");
-            qDebug() << Q_FUNC_INFO << strChange;
+            qCDebug(app) << strChange;
 
             m_webView->page()->runJavaScript(QString("parseMdList('%1')").arg(strChange));
         }
@@ -271,7 +273,7 @@ void helperManager::dbusSend(const QStringList &deleteList, const QStringList &a
     list << deleteList;
     list << addList;
 
-    qDebug() << Q_FUNC_INFO << list;
+    qCDebug(app) << list;
     if (!list.isEmpty()) {
         QDBusMessage msg =
             QDBusMessage::createMethodCall("com.deepin.Manual.FilesUpdate",
@@ -282,9 +284,9 @@ void helperManager::dbusSend(const QStringList &deleteList, const QStringList &a
         QDBusMessage response = QDBusConnection::sessionBus().call(msg);
 
         if (response.type() == QDBusMessage::ReplyMessage) {
-            qDebug() << Q_FUNC_INFO << "ReplyMessage";
+            qCDebug(app) << "ReplyMessage";
         } else if (response.type() == QDBusMessage::ErrorMessage) {
-            qDebug() << Q_FUNC_INFO << "ErrorMessage: " << QDBusConnection::sessionBus().lastError().message();
+            qCDebug(app) << "ErrorMessage: " << QDBusConnection::sessionBus().lastError().message();
         }
     }
 }
@@ -297,9 +299,9 @@ void helperManager::dbusSend(const QStringList &deleteList, const QStringList &a
  */
 QStringList helperManager::handlePriority(const QStringList &list)
 {
-    qDebug() << Q_FUNC_INFO << list;
+    qCDebug(app) << list;
     QStringList omitType = Utils::systemToOmit(Utils::uosEditionType());
-    qDebug() << Q_FUNC_INFO << omitType;
+    qCDebug(app) << omitType;
     QStringList moduleList;
     QStringList retList;
     //key: md路径  value:md文件是否为最高优先级别
@@ -366,7 +368,7 @@ void helperManager::onFilelistChange(QStringList deleteList, QStringList addList
 
 void helperManager::webLoadFinish(bool ok)
 {
-    qDebug() << "dmanHelper load web======>" << ok;
+    qCDebug(app) << "dmanHelper load web======>" << ok;
     getModuleInfo();
 }
 

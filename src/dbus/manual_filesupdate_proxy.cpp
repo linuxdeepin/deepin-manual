@@ -22,8 +22,6 @@ ManualFilesUpdateProxy::~ManualFilesUpdateProxy()
  */
 void ManualFilesUpdateProxy::OnFilesUpdate(const QStringList &list)
 {
-    qDebug() << Q_FUNC_INFO << list;
-
     //发送信号->WindowManager::onFilesUpdate
     emit this->FilesUpdate(list);
     return;

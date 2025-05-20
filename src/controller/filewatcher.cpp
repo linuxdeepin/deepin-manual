@@ -5,6 +5,7 @@
 #include "filewatcher.h"
 #include "base/utils.h"
 #include "base/consts.h"
+#include "base/ddlog.h"
 
 #include <QDir>
 #include <QDebug>
@@ -90,7 +91,7 @@ void fileWatcher::monitorFile()
                     QStringList listAppNameT = QDir(modulePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs);
 
                     if (listAppNameT.count() != 1) {
-                        qCritical() << Q_FUNC_INFO << modulePath  << "：there are more folders..:" << listAppNameT.count();
+                        qCritical() << modulePath  << "：there are more folders..:" << listAppNameT.count();
                         continue;
                     }
                     //./manual-assets/application(system)/appName/appNameT
@@ -153,7 +154,7 @@ void fileWatcher::monitorFile()
             watcherObj->addPaths(listMonitorFile);
         }
     }
-    qDebug() << Q_FUNC_INFO << "WatchAllFiles... ...";
+    qCDebug(app) << "WatchAllFiles... ...";
 }
 
 /**
@@ -163,7 +164,7 @@ void fileWatcher::monitorFile()
  */
 void fileWatcher::onChangeFile(const QString &path)
 {
-    qDebug() << Q_FUNC_INFO << path;
+    qCDebug(app) << path;
     QTimer::singleShot(50, [ = ]() {
         watcherObj->addPath(path);
     });
@@ -177,7 +178,7 @@ void fileWatcher::onChangeFile(const QString &path)
  */
 void fileWatcher::onChangeDirSlot(const QString &path)
 {
-    qDebug() << Q_FUNC_INFO << path;
+    qCDebug(app) << path;
     timerObj->start();
 }
 
@@ -197,7 +198,7 @@ void fileWatcher::onTimerOut()
                     QStringList listAppNameT = QDir(modulePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs);
 
                     if (listAppNameT.count() != 1) {
-                        qCritical() << Q_FUNC_INFO << modulePath  << "：there are more folders..:" << listAppNameT.count();
+                        qCritical() << modulePath  << "：there are more folders..:" << listAppNameT.count();
                         continue;
                     }
                     //./manual-assets/application(system)/appName/appNameT

@@ -6,6 +6,7 @@
 #include "controller/config_manager.h"
 #include "base/consts.h"
 #include "base/utils.h"
+#include "base/ddlog.h"
 
 #include <DDesktopEntry>
 
@@ -30,6 +31,7 @@ namespace {
         return QString();
     }
 }
+
 ManualProxy::ManualProxy(QObject *parent)
     : QObject(parent)
     , strIconTheme("")
@@ -60,7 +62,7 @@ QStringList ManualProxy::getSystemManualList()
 {
     QStringList list = Utils::getSystemManualList();
     saveAppList(list);
-    qDebug() << "======================>" << list;
+    qCDebug(app) << "System manual list:" << list;
     return list;
 }
 
@@ -80,16 +82,16 @@ void ManualProxy::setApplicationState(const QString &appName)
     } else {
         strApp = appName;
     }
-    qDebug() << "open app---->" << strApp;
+    qCInfo(app) << "Setting application state:" << strApp;
 
     QSettings *setting = ConfigManager::getInstance()->getSettings();
     setting->beginGroup(QString(kConfigAppList));
     if (setting->contains(strApp)) {
         setting->setValue(strApp, false);
-        qDebug() << setting->applicationName() << setting->fileName() << ": " << appName << " state=false";
+        qCDebug(app) << setting->applicationName() << setting->fileName() << ": " << appName << " state=false";
     } else {
         setting->setValue(strApp, false);
-        qDebug() << setting->fileName() << ": " << strApp << " not find";
+        qCDebug(app) << setting->fileName() << ": " << strApp << " not find";
     }
     setting->endGroup();
 }
@@ -113,7 +115,7 @@ QStringList ManualProxy::getUsedAppList()
         }
     }
     setting->endGroup();
-    qDebug() << "The application of already used： " << appList;
+    qCDebug(app) << "Used application list:" << appList;
     return appList;
 }
 
@@ -170,7 +172,6 @@ void ManualProxy::showUpdateLabel()
 //根据app名称找到对应md文件
 QString ManualProxy::appToPath(const QString &appName)
 {
-    // qDebug() << __FUNCTION__ << "========>" << appName;
     QStringList omitType = Utils::systemToOmit(Utils::uosEditionType());
     QStringList mdList;
     QStringList  assetsPathList = Utils::getSystemManualDir();
@@ -188,11 +189,11 @@ QString ManualProxy::appToPath(const QString &appName)
             if (list.count() == 1) {
                 appNameT = list.at(0);
             } else if (list.count() > 1) {
-                qWarning() << Q_FUNC_INFO << assetPath << "dir greater than one:" << list;
+                qCWarning(app) << assetPath << "dir greater than one:" << list;
                 appNameT = list.at(1);
             } else {
                 appNameT = "error";
-                qWarning() << Q_FUNC_INFO << " no dir";
+                qCWarning(app) << " no dir";
             }
             appPath.append("/").append(appNameT).append("/");
             appPath = getAppLocalDir(appPath);
@@ -242,7 +243,7 @@ QString ManualProxy::appToPath(const QString &appName)
         oldMdPath = getAppLocalDir(oldMdPath);
         mdList.append(oldMdPath.append("/index.md"));
     }
-    // qInfo() << "appToPath" << "find markdown file list" << mdList;
+
     QString ret;
     for (auto md : mdList) {
         if (QFile(md).exists()) {
@@ -250,11 +251,11 @@ QString ManualProxy::appToPath(const QString &appName)
         }
     }
     if (ret.isEmpty()) {
-        qWarning() << Q_FUNC_INFO << " no exist file:" << appName;
+        qCWarning(app) << " no exist file:" << appName;
         // TODO(wurongjie) 在之前的代码中返回了error,暂不知作用
         return "error";
     }
-    // qInfo() << "========>" << ret;
+
     return ret;
 }
 
@@ -268,7 +269,6 @@ QString ManualProxy::translateTitle(const QString &titleUS)
 //根据应用desktop文件解析图标名称并获取图标路径
 QString ManualProxy::getAppIconPath(const QString &desktopname)
 {
-    // qDebug() << "getAppIconPath: desktopname:" << desktopname;
     //首次获取默认图标主题，如果获取失败默认bloom
     if (strIconTheme.isEmpty()) {
         QFile file("/usr/share/glib-2.0/schemas/com.deepin.dde.appearance.gschema.xml");
@@ -288,9 +288,8 @@ QString ManualProxy::getAppIconPath(const QString &desktopname)
     if (file.exists()) {
         Dtk::Core::DDesktopEntry entry(filepath);
         strIcon = entry.stringValue("Icon");
-        // qDebug() << strIcon;
     } else {
-        qDebug() << QString("filepath:%1 not exit.. desktopname:%2").arg(filepath).arg(desktopname);
+        qCWarning(app) << QString("filepath:%1 not exit.. desktopname:%2").arg(filepath).arg(desktopname);
     }
 
     QString strIconPath;
@@ -368,7 +367,7 @@ QVariant ManualProxy::getVideoGuideInfo()
 
     QFile file(kVideoConfigPath);
     if (!file.open(QIODevice::ReadOnly)) {
-        qDebug() << "Failed to open file";
+        qCWarning(app) << "Failed to open file";
         return QVariantList();
     }
 
@@ -383,7 +382,7 @@ QVariant ManualProxy::getVideoGuideInfo()
     QByteArray jsonData = file.readAll();
     QJsonDocument jsonDoc = QJsonDocument::fromJson(jsonData);
     if (jsonDoc.isNull()) {
-        qDebug() << "Failed to parse JSON";
+        qCWarning(app) << "Failed to parse JSON";
         return QVariantList();
     }
 
@@ -457,7 +456,7 @@ void ManualProxy::saveAppList(const QStringList &list)
     }
     QStringList l = setting->allKeys();
     setting->endGroup();
-    qDebug() << "app config  allKeys count : " << l.size();
+    qCDebug(app) << "app config  allKeys count : " << l.size();
 }
 
 QString ManualProxy::getAppLocalDir(const QString &appPath)
@@ -468,7 +467,7 @@ QString ManualProxy::getAppLocalDir(const QString &appPath)
     QString AppLocalDir = QString(appPath).append(strlocal);
     QDir dir(AppLocalDir);
     //如果不存在该种语言的文档路径，藏语、维语使用简体中文，其它使用英文
-    // qInfo() << __FUNCTION__ << dir.absolutePath() << strlocal;
+
     if (!dir.exists()) {
         //藏语维语使用简体中文
         if (0 == strlocal.compare("ug_CN") || 0 == strlocal.compare("bo_CN")
@@ -478,7 +477,7 @@ QString ManualProxy::getAppLocalDir(const QString &appPath)
             AppLocalDir = QString(appPath).append("en_US");
         }
     }
-    // qInfo() << __FUNCTION__ << "AppLocalDir:" << AppLocalDir;
+
     return AppLocalDir;
 }
 

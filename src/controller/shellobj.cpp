@@ -3,9 +3,10 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 #include "shellobj.h"
+#include "base/ddlog.h"
+
 #include <QDebug>
 #include <QProcess>
-
 
 shellObj::shellObj()
 {
@@ -17,14 +18,14 @@ shellObj::~shellObj()
     if (thread != nullptr) {
         thread->quit();
     }
-    qDebug() << "thread exit";
+    qCDebug(app) << "thread exit";
     thread = nullptr;
 }
 
 shellObj &shellObj::execSystem(const QString &cmds)
 {
     shellObj *shell = new shellObj();
-    qDebug() << "shell exec:" << cmds;
+    qCDebug(app) << "shell exec:" << cmds;
     //执行shell命令
     shell->startSystemThread(cmds);
     return *shell;
@@ -46,7 +47,7 @@ int shellObj::startSystemThread(const QString &cmd)
 void shellObj::runSystem()
 {
     system(cmd.toStdString().data());
-    qDebug() << "shell " << cmd;
+    qCDebug(app) << "shell " << cmd;
 //    emit onCompleted(iRst < 0 ? "error" : "");
     delete this;
 }

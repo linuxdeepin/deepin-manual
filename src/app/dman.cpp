@@ -10,6 +10,7 @@
 #include "controller/shellobj.h"
 #include "base/utils.h"
 #include "base/eventlogutils.h"
+#include "base/logger.h"
 
 #include <DApplication>
 #include <DPlatformWindowHandle>
@@ -23,6 +24,9 @@ DWIDGET_USE_NAMESPACE
 
 int main(int argc, char **argv)
 {
+    // 日志处理要放在app之前，否则QApplication 内部可能进行了日志打印，导致环境变量设置不生效
+    MLogger();
+
     QDateTime time;
 
     if (!QString(qgetenv("XDG_CURRENT_DESKTOP")).toLower().startsWith("deepin")) {
@@ -141,9 +145,8 @@ int main(int argc, char **argv)
     }
     argument_parser.openManualsDelay();
 
-    // 日志保存, 路径:~/.cach/deepin/deepin-manual/
-    Dtk::Core::DLogManager::registerFileAppender();
-    Dtk::Core::DLogManager::registerConsoleAppender();
+    // init logger format
+    MLogger::initLogger();
 
     //埋点记录启动数据
     QJsonObject objStartEvent{

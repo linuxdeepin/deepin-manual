@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 #include "view/widget/image_viewer.h"
+#include "base/ddlog.h"
 
 #include <DLog>
 #include <QApplication>
@@ -41,7 +42,7 @@ ImageViewer::~ImageViewer()
  */
 void ImageViewer::open(const QString &filepath)
 {
-    qDebug() << Q_FUNC_INFO << filepath;
+    qCDebug(app) << filepath;
 
     // Escape uri.
     QString abspath(filepath);
@@ -54,13 +55,13 @@ void ImageViewer::open(const QString &filepath)
     reader.setDecideFormatFromContent(true);
     if (reader.canRead()) {
         if (reader.read(&image)) {
-            qDebug() << "image open is successful....";
+            qCDebug(app) << "image open is successful....";
         } else {
-            qDebug() << "image open is failed...." << reader.errorString();
+            qCDebug(app) << "image open is failed...." << reader.errorString();
         }
 
     } else {
-        qDebug() << "can not read...." << reader.errorString();
+        qCDebug(app) << "can not read...." << reader.errorString();
     }
 #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     const QRect screen_rect = qApp->desktop()->screenGeometry(QCursor::pos());
@@ -126,7 +127,7 @@ void ImageViewer::initUI()
     scHideDialog->setAutoRepeat(false);
 
     connect(scHideDialog, &QShortcut::activated, this, [this] {
-        qDebug() << "pressed esc!";
+        qCDebug(app) << "pressed esc!";
         this->hide();
     });
 }
