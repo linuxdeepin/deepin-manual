@@ -179,7 +179,8 @@ void WindowManager::setWindow(WebWindow *window)
 
 void WindowManager::updateDb()
 {
-    window->updateDb();
+    if (window)
+        window->updateDb();
 }
 
 void WindowManager::restartDmanHelper()
