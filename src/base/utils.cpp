@@ -495,6 +495,7 @@ Dtk::Core::DSysInfo::UosEdition Utils::parseOsBuildType(const QString & osBuild)
         case 3:
             return Dtk::Core::DSysInfo::UosEdition::UosCommunity;
         case 4:
+        case 9:
             return Dtk::Core::DSysInfo::UosEdition::UosMilitary;
         case 5:
             return Dtk::Core::DSysInfo::UosEdition::UosDeviceEdition;
@@ -513,6 +514,7 @@ Dtk::Core::DSysInfo::UosEdition Utils::parseOsBuildType(const QString & osBuild)
         case 3:
             return Dtk::Core::DSysInfo::UosEdition::UosEuler;
         case 4:
+        case 9:
             return Dtk::Core::DSysInfo::UosEdition::UosMilitaryS;
         case 5:
             return Dtk::Core::DSysInfo::UosEdition::UosDeviceEdition;
