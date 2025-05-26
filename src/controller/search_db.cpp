@@ -111,13 +111,16 @@ SearchDb::SearchDb(QObject *parent)
     : QObject(parent)
     , p_(new SearchDbPrivate())
 {
+    qCDebug(app) << "Creating SearchDb instance";
     qRegisterMetaType<SearchAnchorResult>("SearchAnchorResult");
     qRegisterMetaType<SearchAnchorResultList>("SearchAnchorResultList");
     qRegisterMetaType<SearchContentResult>("SearchContentResult");
     qRegisterMetaType<SearchContentResultList>("SearchContentResultList");
+    qCDebug(app) << "Meta types registered";
 
     initConnections();
     getAllApp();
+    qCDebug(app) << "SearchDb initialized";
 }
 
 SearchDb::~SearchDb()
@@ -151,20 +154,22 @@ void SearchDb::initConnections()
  */
 void SearchDb::initDb()
 {
+    qCDebug(app) << "Initializing database";
     //获取本地配置文件目录
     QString dbdir = Utils::mkMutiDir(QStandardPaths::writableLocation(QStandardPaths::HomeLocation).append("/.local/share/deepin/deepin-manual"));
     qCDebug(app) << dbdir;
     QDir dir(dbdir);
     if (!dir.exists()) {
-        qCritical() << "db path not exist!" << dbdir;
+        qCCritical(app) << "db path not exist!" << dbdir;
     }
     QString databasePath = dbdir.append("/search.db");
+    qCDebug(app) << "Database file path:" << databasePath;
 
     //创建数据库
     p_->db = QSqlDatabase::addDatabase("QSQLITE", QUuid::createUuid().toString(QUuid::WithoutBraces));
     p_->db.setDatabaseName(databasePath);
     if (!p_->db.open()) {
-        qCritical() << "Failed to open search db:" << databasePath << p_->db.lastError().text()
+        qCCritical(app) << "Failed to open search db:" << databasePath << p_->db.lastError().text()
                     << p_->db.lastError().nativeErrorCode() << p_->db.lastError().type()
                     << p_->db.lastError().databaseText() << p_->db.lastError().driverText()
                     << p_->db.lastError().isValid();
@@ -178,17 +183,25 @@ void SearchDb::initDb()
 void SearchDb::initSearchTable()
 {
     Q_ASSERT(p_->db.isOpen());
+    qCDebug(app) << "Initializing search table";
+    
     QSqlQuery query(p_->db);
 
     //创建相关表
     if (!query.exec(kSearchTableSchema)) {
-        qCritical() << "Failed to initialize search table:" << query.lastError().text();
+        qCCritical(app) << "Failed to initialize search table:" << query.lastError().text();
         return;
     }
+    
+    qCDebug(app) << "Creating search index with schema:" << kSearchIndexSchema;
     if (!query.exec(kSearchIndexSchema)) {
-        qCritical() << "Failed to create index for search table" << query.lastError().text();
+        qCCritical(app) << "Failed to create search index:"
+                       << "error:" << query.lastError().text()
+                       << "query:" << query.lastQuery();
         return;
     }
+    
+    qCDebug(app) << "Search table initialized successfully";
 }
 
 /**
@@ -210,7 +223,11 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
 {
     Q_ASSERT(p_->db.isOpen());
     Q_ASSERT(anchors.length() == contents.length());
-    qCDebug(app) << "addSearchEntry()" << app_name << lang << anchors; // << contents;
+    qCDebug(app) << "Adding search entry:"
+               << "app:" << app_name
+               << "lang:" << lang
+               << "anchors:" << anchors.size()
+               << "contents:" << contents.size();
     QStringList newContents = contents;
 
     if (mdPath.isEmpty()) {
@@ -253,7 +270,7 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
     }
 
     if (anchors.length() != newContents.length() || anchors.length() != anchorIdList.length()) {
-        qCritical() << "anchor list and contents mismatch:" << anchors.length()
+        qCCritical(app) << "anchor list and contents mismatch:" << anchors.length()
                     << newContents.length();
         return;
     }
@@ -261,23 +278,25 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
     QSqlQuery query(p_->db);
     bool preok = query.prepare(kSearchDeleteEntryByApp);
     if (!preok) {
-        qCritical() << "Failed to prepare skSearchDeleteEntryByApp:" << query.lastError().text();
+        qCCritical(app) << "Failed to prepare skSearchDeleteEntryByApp:" << query.lastError().text();
         return;
     }
     query.bindValue(0, app_name);
     query.bindValue(1, lang);
     if (!query.exec()) {
-        qCritical() << "Failed to delete search entry:" << query.lastError().text();
+        qCCritical(app) << "Failed to delete search entry:" << query.lastError().text();
         return;
     }
 
+    qCDebug(app) << "Starting database transaction";
     if (!p_->db.transaction()) {
-        qWarning() << "Failed to start db transaction!";
+        qCWarning(app) << "Failed to start database transaction:"
+                      << "error:" << p_->db.lastError().text();
         return;
     }
     preok = query.prepare(kSearchInsertEntry);
     if (!preok) {
-        qCritical() << "Failed to prepare kSearchInsertEntry:" << query.lastError().text();
+        qCCritical(app) << "Failed to prepare kSearchInsertEntry:" << query.lastError().text();
         return;
     }
     QStringList app_names;
@@ -299,12 +318,18 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
 
         if (!ok) {
             p_->db.rollback();
-            qCritical() << "Failed to insert search entry:" << query.lastError().text();
+            qCCritical(app) << "Failed to insert search entry:"
+                          << "error:" << query.lastError().text()
+                          << "query:" << query.lastQuery();
         } else {
             p_->db.commit();
         }
     } else {
-        qCDebug(app) << "field size not match execBatch may crash ,app-name :" << app_name;
+        qCWarning(app) << "Field size mismatch, execBatch may crash:"
+                     << "app:" << app_name
+                     << "anchors:" << anchors.size()
+                     << "contents:" << contents.size()
+                     << "anchorIds:" << anchorIdList.size();
     }
 }
 
@@ -320,13 +345,13 @@ void SearchDb::deleteSearchInfo(const QStringList &appName, const QStringList &l
     QSqlQuery query(p_->db);
     bool preok = query.prepare(kSearchDeleteEntryByApp);
     if (!preok) {
-        qCritical() << "Failed to prepare kSearchDeleteEntryByApp:" << query.lastError().text();
+        qCCritical(app) << "Failed to prepare kSearchDeleteEntryByApp:" << query.lastError().text();
         return;
     }
     query.bindValue(0, appName);
     query.bindValue(1, lang);
     if (!query.execBatch()) {
-        qCritical() << "Failed to delete search entry:" << query.lastError().text();
+        qCCritical(app) << "Failed to delete search entry:" << query.lastError().text();
         return;
     }
 }
@@ -336,11 +361,17 @@ void SearchDb::deleteSearchInfo(const QStringList &appName, const QStringList &l
  */
 void SearchDb::initTimeTable()
 {
+    qCDebug(app) << "Initializing filetime table";
     QSqlQuery query(p_->db);
+    qCDebug(app) << "Creating filetime table with schema:" << kfileTimeTable;
+    
     if (!query.exec(kfileTimeTable)) {
-        qCritical() << "Failed to initialize filetime table:" << query.lastError().text();
+        qCCritical(app) << "Failed to create filetime table:"
+                       << "error:" << query.lastError().text()
+                       << "query:" << query.lastQuery();
         return;
     }
+    qCDebug(app) << "Filetime table initialized successfully";
 }
 
 /**
@@ -350,7 +381,7 @@ void SearchDb::initTimeTable()
  */
 void SearchDb::handleSearchAnchor(const QString &keyword)
 {
-    qCDebug(app) << keyword;
+    qCDebug(app) << "Searching anchor for keyword:" << keyword;
     Q_ASSERT(p_->db.isOpen());
 
     SearchAnchorResultList result;
@@ -372,7 +403,7 @@ void SearchDb::handleSearchAnchor(const QString &keyword)
     }
     const QString sql =
         QString(kSearchSelectAnchor).replace(":anchor", keyword).replace(":lang", lang);
-    qCDebug(app) << "=======>" << sql;
+    qCDebug(app) << "Executing anchor search query:" << sql;
     if (query.exec(sql)) {
         while (query.next() && (result.size() < kResultLimitation)) {
             qCDebug(app) << "handleSearchAnchor===> " << query.value(0).toString() << strlistApp;
@@ -397,9 +428,11 @@ void SearchDb::handleSearchAnchor(const QString &keyword)
             }
         }
     } else {
-        qCritical() << "Failed to select anchor:" << query.lastError().text();
+        qCCritical(app) << "Failed to select anchor:" << query.lastError().text();
     }
-    qCDebug(app) << "result size:" << result.size() << keyword;
+    qCDebug(app) << "Anchor search completed:"
+               << "keyword:" << keyword
+               << "results:" << result.size();
     emit this->searchAnchorResult(keyword, result);
 }
 
@@ -742,7 +775,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
             emit this->searchContentResult(obj.appName, obj.anchors, obj.anchorIds, obj.contents);
         }
     } else {
-        qCritical() << "Failed to select contents:" << query.lastError().text();
+        qCCritical(app) << "Failed to select contents:" << query.lastError().text();
     }
 
     if (result_empty && 0 == nH0OfList) {
@@ -767,12 +800,12 @@ void SearchDb::insertFilesTimeEntry(const QStringList &listMdPath, const QString
     QSqlQuery query(p_->db);
     bool preok = query.prepare(kfileTimeDeleteEntryByApp);
     if (!preok) {
-        qCritical() << "Failed to prepare kSearchDeleteEntryByApp:" << query.lastError().text();
+        qCCritical(app) << "Failed to prepare kSearchDeleteEntryByApp:" << query.lastError().text();
         return;
     }
     query.bindValue(0, listMdPath);
     if (!query.execBatch()) {
-        qCritical() << "Failed to delete fileTime entry:" << query.lastError().text();
+        qCCritical(app) << "Failed to delete fileTime entry:" << query.lastError().text();
         return;
     }
 
@@ -782,7 +815,7 @@ void SearchDb::insertFilesTimeEntry(const QStringList &listMdPath, const QString
     }
     preok = query.prepare(kfileTimeInsertEntry);
     if (!preok) {
-        qCritical() << "Failed to prepare kfileTimeInsertEntry:" << query.lastError().text();
+        qCCritical(app) << "Failed to prepare kfileTimeInsertEntry:" << query.lastError().text();
         return;
     }
     query.bindValue(0, listMdPath);
@@ -791,10 +824,10 @@ void SearchDb::insertFilesTimeEntry(const QStringList &listMdPath, const QString
 
     if (!ok) {
         p_->db.rollback();
-        qCritical() << "Failed to insert fileTime " << query.lastError().text();
+        qCCritical(app) << "Failed to insert fileTime " << query.lastError().text();
     } else {
         bool ret = p_->db.commit();
-        qCritical() << "insert fileTime" << ret;
+        qCCritical(app) << "insert fileTime" << ret;
     }
 }
 
@@ -809,17 +842,17 @@ void SearchDb::deleteFilesTimeEntry(const QStringList &listMdPath)
     QSqlQuery query(p_->db);
     bool preok = query.prepare(kfileTimeDeleteEntryByApp);
     if (!preok) {
-        qCritical() << "Failed to prepare kfileTimeDeleteEntryByApp:" << query.lastError().text();
+        qCCritical(app) << "Failed to prepare kfileTimeDeleteEntryByApp:" << query.lastError().text();
         return;
     }
     query.bindValue(0, listMdPath);
     bool ok = query.execBatch();
     if (!ok) {
         p_->db.rollback();
-        qCritical() << "Failed to delete fileTime entry:" << query.lastError().text();
+        qCCritical(app) << "Failed to delete fileTime entry:" << query.lastError().text();
     } else {
         p_->db.commit();
-        qCritical() << "delete fileInfo : mdPath = " << listMdPath;
+        qCCritical(app) << "delete fileInfo : mdPath = " << listMdPath;
     }
 }
 
@@ -855,7 +888,7 @@ void SearchDb::updateDb()
     QString dbdir = QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/.local/share/deepin/deepin-manual/search.db" ;
     QDir dir(dbdir);
     if (!dir.exists()) {
-        qCritical() << "db path not exist!" << dbdir;
+        qCCritical(app) << "db path not exist!" << dbdir;
     }
 
     dir.remove(dbdir);

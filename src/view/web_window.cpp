@@ -53,6 +53,8 @@ WebWindow::WebWindow(QWidget *parent)
     , first_webpage_loaded_(true)
     , m_spinner(new DSpinner(this))
 {
+    qCDebug(app) << "WebWindow constructor called";
+
     // 使用 redirectContent 模式，用于内嵌 x11 窗口时能有正确的圆角效果
     Dtk::Widget::DPlatformWindowHandle::enableDXcbForWindow(this, true);
     search_timer_.setSingleShot(true);
@@ -71,6 +73,8 @@ WebWindow::WebWindow(QWidget *parent)
 
 WebWindow::~WebWindow()
 {
+    qCDebug(app) << "WebWindow destructor called";
+
     //释放各个资源
     if (completion_window_ != nullptr) {
         delete completion_window_;
@@ -137,6 +141,8 @@ void WebWindow::initWeb()
 
 void WebWindow::updatePage(const QStringList &list)
 {
+    qCDebug(app) << "Updating page with list size:" << list.size();
+
     if (search_proxy_) {
         QStringList appList;
         for (const QString &app : list) {
@@ -225,6 +231,8 @@ void WebWindow::setAppProperty(const QString &appName, const QString &titleName,
  */
 void WebWindow::slot_ThemeChanged()
 {
+    qCDebug(app) << "Theme changed, current type:" << DGuiApplicationHelper::instance()->themeType();
+
     DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
     QColor fillColor = DGuiApplicationHelper::instance()->applicationPalette().highlight().color();
     if (!Utils::judgeWayLand()) {
@@ -332,6 +340,8 @@ void WebWindow::updateSizeMode()
  */
 void WebWindow::closeEvent(QCloseEvent *event)
 {
+    qCDebug(app) << "Window close event received";
+
     //保存窗口大小
     saveWindowSize();
     QApplication::exit(0);
@@ -345,6 +355,8 @@ void WebWindow::closeEvent(QCloseEvent *event)
  */
 void WebWindow::resizeEvent(QResizeEvent *event)
 {
+    qCDebug(app) << "Window resized to:" << event->size();
+
     Q_UNUSED(event);
 
     // 当窗口缩小时，搜索控件会被压缩，现调整为动态变化
@@ -606,6 +618,8 @@ void WebWindow::onTimeoutLock(const QString &serviceName, QVariantMap key2value,
  */
 void WebWindow::initUI()
 {
+    qCDebug(app) << "Initializing UI components";
+
     //搜索结果框可移至主窗口创建完成后
     if (!Utils::judgeWayLand()) {
         completion_window_ = new SearchCompletionWindow();
@@ -699,6 +713,8 @@ void WebWindow::initUI()
  */
 void WebWindow::initWebView()
 {
+    qCDebug(app) << "Initializing WebView components";
+
     //图片控件
     image_viewer_ = new ImageViewer(this);
     //图片显示
@@ -834,6 +850,8 @@ void WebWindow::initShortcuts()
  */
 void WebWindow::initDBus()
 {
+    qCDebug(app) << "Initializing DBus connections";
+
     QDBusConnection senderConn = QDBusConnection::connectToBus(QDBusConnection::SessionBus, "Sender");
     if (!senderConn.connect(
                 "com.deepin.daemon.Appearance", // sender's service name
@@ -1053,6 +1071,8 @@ void WebWindow::onWebPageLoadProgress(int valpro)
  */
 void WebWindow::onChannelFinish()
 {
+    qCDebug(app) << "Web channel initialization completed";
+
     bFinishChannel = true;
     setHashWordColor();
     settingContextMenu();
@@ -1127,6 +1147,8 @@ void WebWindow::onSetKeyword(const QString &keyword)
  */
 void WebWindow::onSearchAnchorResult(const QString &keyword, const SearchAnchorResultList &result)
 {
+    qCDebug(app) << "Received search anchor results for keyword:" << keyword;
+
     //搜索结果不存在，忽略这个信号
     if (keyword != completion_window_->keyword()) {
         return;

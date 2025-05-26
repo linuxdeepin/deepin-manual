@@ -36,11 +36,13 @@ ManualProxy::ManualProxy(QObject *parent)
     : QObject(parent)
     , strIconTheme("")
 {
+    qCDebug(app) << "ManualProxy constructor called";
     AppInfo::registerMetaType();
 }
 
 ManualProxy::~ManualProxy()
 {
+    qCDebug(app) << "ManualProxy destructor called";
 }
 
 /**
@@ -172,6 +174,7 @@ void ManualProxy::showUpdateLabel()
 //根据app名称找到对应md文件
 QString ManualProxy::appToPath(const QString &appName)
 {
+    qCDebug(app) << "Converting app name to path:" << appName;
     QStringList omitType = Utils::systemToOmit(Utils::uosEditionType());
     QStringList mdList;
     QStringList  assetsPathList = Utils::getSystemManualDir();
@@ -269,6 +272,7 @@ QString ManualProxy::translateTitle(const QString &titleUS)
 //根据应用desktop文件解析图标名称并获取图标路径
 QString ManualProxy::getAppIconPath(const QString &desktopname)
 {
+    qCDebug(app) << "Getting icon path for:" << desktopname;
     //首次获取默认图标主题，如果获取失败默认bloom
     if (strIconTheme.isEmpty()) {
         QFile file("/usr/share/glib-2.0/schemas/com.deepin.dde.appearance.gschema.xml");
@@ -429,6 +433,7 @@ QVariant ManualProxy::getVideoGuideInfo()
 
 void ManualProxy::openVideo(QString url)
 {
+    qInfo() << "Opening video URL:" << url;
     if(url.isEmpty()) {
         url = videoUrl;
     }
