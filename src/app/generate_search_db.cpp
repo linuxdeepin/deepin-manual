@@ -18,10 +18,13 @@ int main(int argc, char **argv)
     qputenv("LANG", "en_US.UTF8");
     qputenv("LC_ALL", "en_US.UTF8");
     qputenv("LANGUAGE", "en_US");
+    qDebug() << "Set locale to en_US.UTF8";
 
     QCoreApplication app(argc, argv);
+    qDebug() << "QCoreApplication initialized";
 
     //设置当前工作目录为 manual/src/web
+    qDebug() << "Setting working directory to:" << DMAN_SEARCH_WORK_DIR;
     QDir::setCurrent(DMAN_SEARCH_WORK_DIR);
 
 //    //获取manual/manual-assets目录下的文件夹列表
@@ -30,12 +33,16 @@ int main(int argc, char **argv)
     //遍历manual/manual-assets目录下的文件夹列表
     for (QString &dbType :
             QDir(DMAN_ORIG_MANUAL_DIR).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
+        qDebug() << "Processing dbType:" << dbType;
         QString strCreateDbPath = DMAN_SEARCH_CREATE_DB_PATH;
         strCreateDbPath += "/" + dbType;
 
         QDir dir(strCreateDbPath);
         if (!dir.exists()) {
+            qDebug() << "Creating directory:" << strCreateDbPath;
             dir.mkpath(strCreateDbPath);
+        } else {
+            qDebug() << "Directory exists:" << strCreateDbPath;
         }
         strCreateDbPath += "/search.db";
 
@@ -48,6 +55,7 @@ int main(int argc, char **argv)
 //        list << "zh_CN"
 //             << "en_US";
         for (QString &locale : list) {
+            qDebug() << "Processing locale:" << locale;
             QString strManualDir = DMAN_ORIG_MANUAL_DIR;
             strManualDir += "/" + dbType;
             for (QString &app_name :
@@ -147,4 +155,6 @@ int main(int argc, char **argv)
             }
         }
     }
+    qInfo() << "generate_search_db completed successfully";
+    return 0;
 }

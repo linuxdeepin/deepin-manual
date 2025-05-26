@@ -22,11 +22,13 @@ helperManager::helperManager(QObject *parent)
     , timerObj(new QTimer(this))
     , jsObj(new JsContext(this))
 {
+    qCDebug(app) << "Initializing helperManager";
     timerObj->setSingleShot(true);
     timerObj->setInterval(1000);
     initWeb();
     initDbConfig();
     initConnect();
+    qCDebug(app) << "helperManager initialized successfully";
 }
 
 /**
@@ -43,7 +45,9 @@ void helperManager::initWeb()
     m_webChannel->registerObject("context", jsObj);
     m_webView->page()->setWebChannel(m_webChannel);
     const QFileInfo info(kSearchIndexPage);
+    qCDebug(app) << "Loading web page from:" << info.absoluteFilePath();
     m_webView->load(QUrl::fromLocalFile(info.absoluteFilePath()));
+    qCDebug(app) << "Web components initialized";
 }
 
 /**
@@ -76,7 +80,7 @@ void helperManager::getModuleInfo()
                     QStringList listAppNameT = QDir(modulePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs);
 
                     if (listAppNameT.count() != 1) {
-                        qCritical() << modulePath  << "：there are more folders..:" << listAppNameT.count();
+                         qCCritical(app) << modulePath  << "：there are more folders..:" << listAppNameT.count();
                         continue;
                     }
                     //./manual-assets/application(system)/appName/appNameT
@@ -401,6 +405,7 @@ void helperManager::onRecvParseMsg(const QString &msg, const QString &path)
     bool invalid_entry = false;
     for (const QJsonValue &value : array) {
         if (!value.isArray()) {
+            qCWarning(app) << "Invalid JSON entry in MD parse result";
             invalid_entry = true;
             break;
         }

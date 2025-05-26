@@ -5,6 +5,7 @@
 #include "view/widget/search_completion_window.h"
 #include "view/widget/search_button.h"
 #include "base/utils.h"
+#include "base/ddlog.h"
 
 #include <DWindowManagerHelper>
 #include <DPaletteHelper>
@@ -22,6 +23,7 @@ const int kItemHeight = 34;
 SearchCompletionWindow::SearchCompletionWindow(QWidget *parent)
     : DBlurEffectWidget(parent)
 {
+    qCDebug(app) << "SearchCompletionWindow constructor called";
     this->setObjectName("SearchCompletionWindow");
 
     this->initUI();
@@ -30,6 +32,7 @@ SearchCompletionWindow::SearchCompletionWindow(QWidget *parent)
 
 SearchCompletionWindow::~SearchCompletionWindow()
 {
+    qCDebug(app) << "SearchCompletionWindow destructor called";
 }
 
 /**
@@ -51,6 +54,7 @@ void SearchCompletionWindow::updateColor(const QColor &color)
  */
 void SearchCompletionWindow::autoResize()
 {
+    qCDebug(app) << "Auto resizing window based on result count";
     int rowCount = result_view_->model()->rowCount();
 
     int resultViewHeight = kItemHeight;
@@ -77,6 +81,7 @@ void SearchCompletionWindow::autoResize()
  */
 void SearchCompletionWindow::goDown()
 {
+    qCDebug(app) << "Processing down arrow key navigation";
     if (nullptr == search_compeletion_model_) {
         return;
     }
@@ -107,6 +112,7 @@ void SearchCompletionWindow::goDown()
  */
 void SearchCompletionWindow::goUp()
 {
+    qCDebug(app) << "Processing up arrow key navigation";
     if (nullptr == search_compeletion_model_) {
         return;
     }
@@ -139,6 +145,8 @@ void SearchCompletionWindow::goUp()
  */
 void SearchCompletionWindow::onEnterPressed()
 {
+    qCDebug(app) << "Enter key pressed, current selection:"
+             << (search_button_->isChecked() ? "search button" : "result item");
     if (search_button_->isChecked()) {
         //最后选项在内容中查找结果 WebWindow::onSearchButtonClicked
         emit this->searchButtonClicked();
@@ -173,6 +181,7 @@ void SearchCompletionWindow::setKeyword(const QString &keyword)
  */
 void SearchCompletionWindow::setSearchAnchorResult(const SearchAnchorResultList &result)
 {
+    qCDebug(app) << "Setting search results, count:" << result.size();
     result_ = result;
     QList<SearchCompletionItemModel> searchDataList;
 
@@ -232,6 +241,7 @@ void SearchCompletionWindow::initSearchCompletionListData(QList<SearchCompletion
  */
 void SearchCompletionWindow::initUI()
 {
+    qCDebug(app) << "Initializing search completion window UI";
     setAutoFillBackground(false);
 
     result_view_ = new SearchCompletionListView(this);
@@ -314,6 +324,7 @@ void SearchCompletionWindow::paintEvent(QPaintEvent *event)
  */
 void SearchCompletionWindow::onResultListClicked(const QModelIndex &index)
 {
+    qCDebug(app) << "Result list item clicked, row:" << index.row();
     if (index.isValid()) {
         const int row = index.row();
         //发送信号->WebWindow::onSearchResultClicked

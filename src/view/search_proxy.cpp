@@ -11,10 +11,12 @@
 SearchProxy::SearchProxy(QObject *parent)
     : QObject(parent)
 {
+    qCDebug(app) << "SearchProxy constructor called";
 }
 
 SearchProxy::~SearchProxy()
 {
+    qCDebug(app) << "SearchProxy destructor called";
 }
 
 /**
@@ -40,7 +42,9 @@ void SearchProxy::updateSearch(const QString &keyword)
     emit setKeyword(keyword);
 
     //延时查找数据库： 立即查找会出现无法查到刚插入数据的情况
+    qCDebug(app) << "Scheduling search update in 1 second";
     QTimer::singleShot(1000, this, [ = ]() {
+        qCDebug(app) << "Executing delayed search update";
         //查询结果并显示 WebWindow::onTitleBarEntered
         emit updateSearchResult();
     });

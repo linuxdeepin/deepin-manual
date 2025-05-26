@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 #include "config_manager.h"
+#include "base/ddlog.h"
 
 #include <QDir>
 #include <QStandardPaths>
@@ -13,7 +14,10 @@ ConfigManager *ConfigManager::_pInstance = nullptr;
 ConfigManager::ConfigManager(QObject *parent)
     : QObject(parent)
 {
-    m_winInfoConfig = new QSettings(getWinInfoConfigPath(), QSettings::IniFormat, this);
+    qCDebug(app) << "Creating ConfigManager instance";
+    QString configPath = getWinInfoConfigPath();
+    qCDebug(app) << "Loading config from:" << configPath;
+    m_winInfoConfig = new QSettings(configPath, QSettings::IniFormat, this);
 }
 
 ConfigManager::~ConfigManager()
@@ -30,6 +34,7 @@ ConfigManager::~ConfigManager()
 ConfigManager *ConfigManager::getInstance()
 {
     if (!_pInstance) {
+        qCDebug(app) << "Creating new ConfigManager instance";
         _pInstance =  new ConfigManager();
     }
     return _pInstance;
@@ -37,8 +42,10 @@ ConfigManager *ConfigManager::getInstance()
 
 void ConfigManager::releaseInstance()
 {
-    if (_pInstance)
+    if (_pInstance) {
+        qCDebug(app) << "Releasing ConfigManager instance";
         delete _pInstance;
+    }
 
     _pInstance = nullptr;
 }
@@ -50,12 +57,16 @@ void ConfigManager::releaseInstance()
  */
 QString ConfigManager::getWinInfoConfigPath()
 {
-    QDir winInfoPath(QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation));
+    QString configDir = QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation);
+    qCDebug(app) << "Config directory:" << configDir;
+    
+    QDir winInfoPath(configDir);
     if (!winInfoPath.exists()) {
         winInfoPath.mkpath(QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation));
     }
 
     QString winInfoFilePath(winInfoPath.filePath("wininfo-config.conf"));
+    qCDebug(app) << "Config file path:" << winInfoFilePath;
 
     return winInfoFilePath;
 }

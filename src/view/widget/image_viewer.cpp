@@ -25,6 +25,7 @@ const int kCloseBtnSize = 48;
 ImageViewer::ImageViewer(QWidget *parent)
     : QDialog(parent)
 {
+    qCDebug(app) << "ImageViewer constructor called";
     this->setObjectName("ImageViewer");
     this->initUI();
 
@@ -33,6 +34,7 @@ ImageViewer::ImageViewer(QWidget *parent)
 
 ImageViewer::~ImageViewer()
 {
+    qCDebug(app) << "ImageViewer destructor called";
 }
 
 /**
@@ -105,6 +107,7 @@ void ImageViewer::open(const QString &filepath)
  */
 void ImageViewer::initUI()
 {
+    qCDebug(app) << "Initializing ImageViewer UI";
     img_label_ = new DLabel(this);
     img_label_->setObjectName("ImageLabel");
 

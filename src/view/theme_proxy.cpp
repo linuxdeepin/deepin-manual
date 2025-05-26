@@ -3,6 +3,8 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 #include "view/theme_proxy.h"
+#include "base/ddlog.h"
+
 #include <DGuiApplicationHelper>
 
 DGUI_USE_NAMESPACE
@@ -10,10 +12,12 @@ DGUI_USE_NAMESPACE
 ThemeProxy::ThemeProxy(QObject *parent)
     : QObject(parent)
 {
+    qCDebug(app) << "ThemeProxy constructor called";
 }
 
 ThemeProxy::~ThemeProxy()
 {
+    qCDebug(app) << "ThemeProxy destructor called";
 }
 
 /**
@@ -22,6 +26,7 @@ ThemeProxy::~ThemeProxy()
  */
 void ThemeProxy ::slot_ThemeChange()
 {
+    qCDebug(app) << "System theme changed, current theme:" << getTheme();
     //更新到前端JS
     emit themeChange(getTheme());
 }
@@ -33,6 +38,7 @@ void ThemeProxy ::slot_ThemeChange()
  */
 QString ThemeProxy ::getTheme() const
 {
+    qCDebug(app) << "Getting current system theme";
     QString qsthemetype = "Null";
     DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
     if (themeType == DGuiApplicationHelper::LightType)
