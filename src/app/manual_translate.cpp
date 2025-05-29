@@ -11,6 +11,7 @@
 int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
+    qDebug() << "QApplication initialized";
 
     // hash--> key: old name   value: new name
     const QHash<QString, QString> hash = {
@@ -59,8 +60,10 @@ int main(int argc, char **argv)
         {"cloud-print", "deepin-cloud-print"},                //云打印**
     };
 
+    qDebug() << "Creating main widget";
     QWidget widget;
     widget.setMinimumSize(QSize(400, 200));
+    qDebug() << "Widget initialized with size 400x200";
     QHBoxLayout *layout = new QHBoxLayout;
     QPushButton *btn = new QPushButton("Open", &widget);
     btn->setFixedSize(80, 40);

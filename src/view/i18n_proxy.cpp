@@ -3,20 +3,24 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 #include "view/i18n_proxy.h"
+#include "base/ddlog.h"
 
 #include <QLocale>
 
 I18nProxy::I18nProxy(QObject *parent)
     : QObject(parent)
 {
+    qCDebug(app) << "I18nProxy constructor called";
 }
 
 I18nProxy::~I18nProxy()
 {
+    qCDebug(app) << "I18nProxy destructor called";
 }
 
 QVariantHash I18nProxy::getSentences() const
 {
+    qCDebug(app) << "Getting i18n sentences";
     QVariantHash result {
         {"QuickStart", QObject::tr("Quick Start")},
         {"VideoGuide", QObject::tr("Video Guide")},
@@ -37,6 +41,7 @@ QVariantHash I18nProxy::getSentences() const
 
 QString I18nProxy::getLocale() const
 {
+    qCDebug(app) << "Getting system locale";
     const QString locale = QLocale().name();
     // Fallback to default locale.
 //    if (locale != "en_US" && locale != "zh_CN") {
@@ -49,6 +54,7 @@ QString I18nProxy::getLocale() const
     } else if (locale == "en_US" || locale == "en_GB") {
         return "en_US";
     } else {
-        return  "";
+        qCInfo(app) << "Unsupported locale detected:" << locale;
+        return "";
     }
 }

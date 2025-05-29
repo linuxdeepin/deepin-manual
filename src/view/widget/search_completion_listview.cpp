@@ -4,18 +4,21 @@
 
 #include "search_completion_listview.h"
 #include "base/utils.h"
+#include "base/ddlog.h"
 
 #include <QMouseEvent>
 
 SearchCompletionListView::SearchCompletionListView(QWidget *parent)
     : DListView(parent)
 {
+    qCDebug(app) << "SearchCompletionListView constructor called";
     setAutoFillBackground(false);
     initDelegate();
 }
 
 SearchCompletionListView::~SearchCompletionListView()
 {
+    qCDebug(app) << "SearchCompletionListView destructor called";
 }
 
 /**
@@ -24,6 +27,7 @@ SearchCompletionListView::~SearchCompletionListView()
  */
 void SearchCompletionListView::initDelegate()
 {
+    qCDebug(app) << "Initializing search completion delegate";
     m_searchCompletionDelegate = new SearchCompletionDelegate(this);
     this->setItemDelegate(m_searchCompletionDelegate);
 }
@@ -53,12 +57,14 @@ void SearchCompletionListView::mousePressEvent(QMouseEvent *event)
  */
 void SearchCompletionListView::setSelection(const QRect &rect, QItemSelectionModel::SelectionFlags command)
 {
+    qCDebug(app) << "SearchCompletionListView selecting item at position:" << rect.topLeft();
     DListView::setSelection(rect, command);
 
     QPoint clickPoint(rect.x(), rect.y());
     QModelIndex modelIndex = indexAt(clickPoint);
 
     if (m_bLeftMouse) {
+        qCDebug(app) << "Left mouse click on search completion item:" << modelIndex;
         emit onClickSearchCompletionItem(modelIndex);
     }
 }

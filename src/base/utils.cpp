@@ -122,7 +122,9 @@ Utils::~Utils()
  */
 QPixmap Utils::renderSVG(const QString &filePath, const QSize &size)
 {
+    qCDebug(app) << "Rendering SVG:" << filePath << "with size:" << size;
     if (m_imgCacheHash.contains(filePath)) {
+        qCDebug(app) << "Using cached image for:" << filePath;
         return m_imgCacheHash.value(filePath);
     }
 
@@ -130,8 +132,10 @@ QPixmap Utils::renderSVG(const QString &filePath, const QSize &size)
     QPixmap pixmap;
 
     reader.setFileName(filePath);
+    qCDebug(app) << "SVG file path:" << filePath;
 
     if (reader.canRead()) {
+        qCDebug(app) << "SVG can be read, device pixel ratio:" << qApp->devicePixelRatio();
         const qreal ratio = qApp->devicePixelRatio();
         reader.setScaledSize(size * ratio);
         pixmap = QPixmap::fromImage(reader.read());
@@ -153,6 +157,7 @@ QPixmap Utils::renderSVG(const QString &filePath, const QSize &size)
  */
 QString Utils::translateTitle(const QString &titleUS)
 {
+    qCDebug(app) << "Translating title:" << titleUS;
     QString strRet = titleUS;
     QString strlocal(QLocale::system().name());
     int nCount = sizeof(languageArr) / sizeof(languageArr[0]);
@@ -178,6 +183,7 @@ QString Utils::translateTitle(const QString &titleUS)
  */
 QList<AppInfo> Utils::launcherInterface()
 {
+    qCDebug(app) << "Getting launcher interface";
     QList<AppInfo> applist;
 
     qRegisterMetaType<ReplyStruct>("ReplyStruct");
@@ -230,6 +236,7 @@ QList<AppInfo> Utils::launcherInterface()
  */
 bool Utils::judgeWayLand()
 {
+    qCDebug(app) << "Checking for Wayland environment";
     auto env = QProcessEnvironment::systemEnvironment();
 
     QString XDG_SESSION_TYPE = env.value(QStringLiteral("XDG_SESSION_TYPE"));
@@ -237,6 +244,7 @@ bool Utils::judgeWayLand()
     QString WAYLAND_DISPLAY = env.value(QStringLiteral("WAYLAND_DISPLAY"));
 
     if (XDG_SESSION_TYPE == QLatin1String("wayland") || WAYLAND_DISPLAY.contains(QLatin1String("wayland"), Qt::CaseInsensitive)) {
+        qCDebug(app) << "Wayland environment detected";
         return true;
     }
 
@@ -245,12 +253,14 @@ bool Utils::judgeWayLand()
 
 QStringList Utils::getMdsourcePath()
 {
+    qCDebug(app) << "Getting manual source paths";
     QStringList sourcePath;
     QStringList pathlist = getEnvsourcePath();
     for (int i = 0; i < pathlist.size(); ++i) {
         sourcePath.push_back(pathlist[i] + "/deepin-manual/manual-assets");
     }
     sourcePath.push_back(DMAN_MANUAL_DIR);
+    qCDebug(app) << "Final manual source paths:" << sourcePath;
     // qCDebug(app) << " all MD source path : " << sourcePath.last();
     return sourcePath;
 }
@@ -266,12 +276,14 @@ QStringList Utils::getEnvsourcePath()
 
 QString Utils::getDesktopFilePath(const QString &desktopname)
 {
+    qCDebug(app) << "Searching desktop file for:" << desktopname;
     // 遍历XDG_DATA_DIRS中的路径，找寻指定desktop文件
     QStringList pathList = getEnvsourcePath();
     foreach (auto path, pathList) {
         QString filepath = path + QString("/applications/%1.desktop").arg(desktopname);
         QFile file(filepath);
         if (file.exists()) {
+            qCDebug(app) << "Found desktop file at:" << filepath;
             return filepath;
         }
     }
@@ -448,24 +460,29 @@ Dtk::Core::DSysInfo::UosEdition Utils::uosEditionType()
                             QDBusConnection::sessionBus());
 
     if(!interface.isValid()) {
+        qCDebug(app) << "SystemInfo DBus interface invalid";
         hasQueried = true;
         return cachedEdition;
     }
 
     QVariant osBuild = interface.property("OsBuild");
     if(!osBuild.isValid()) {
+        qCDebug(app) << "Failed to get OsBuild property";
         hasQueried = true;
         return cachedEdition;
     }
 
     QString buildType = osBuild.toString();
     if(buildType.isEmpty()) {
+        qCDebug(app) << "OsBuild property is empty";
         hasQueried = true;
         return cachedEdition;
     }
 
     QStringList parts = buildType.split(".");
+    qCDebug(app) << "OsBuild parts:" << parts;
     if(parts.size() != 3) {
+        qCDebug(app) << "Invalid OsBuild format, expected 3 parts";
         hasQueried = true;
         return cachedEdition;
     }

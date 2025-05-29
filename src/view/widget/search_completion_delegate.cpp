@@ -4,6 +4,7 @@
 
 #include "search_completion_delegate.h"
 #include "base/utils.h"
+#include "base/ddlog.h"
 
 #include <DStyleHelper>
 #include <DPaletteHelper>
@@ -13,6 +14,7 @@ SearchCompletionDelegate::SearchCompletionDelegate(QAbstractItemView *parent)
     : DStyledItemDelegate(parent)
     , m_parentView(parent)
 {
+    qCDebug(app) << "SearchCompletionDelegate constructor called";
 }
 
 //用于去除选中项的边框
@@ -26,6 +28,7 @@ void SearchCompletionDelegate::paint(QPainter *painter, const QStyleOptionViewIt
         QVariant varErrorItem = index.data(Qt::DisplayRole);
         //20210629 codereview
         if (!varErrorItem.isValid()) {
+            qCWarning(app) << "Invalid item data at index:" << index;
             return;
         }
 
@@ -95,6 +98,7 @@ void SearchCompletionDelegate::paint(QPainter *painter, const QStyleOptionViewIt
 QSize SearchCompletionDelegate::sizeHint(const QStyleOptionViewItem &option,
                                          const QModelIndex &index) const
 {
+    qCDebug(app) << "SearchCompletionDelegate::sizeHint() called for index:" << index;
     if (0 == index.row()) {
         return QSize(option.rect.width(), 34 + 7);
     } else {

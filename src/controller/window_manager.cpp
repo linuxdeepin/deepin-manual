@@ -26,16 +26,19 @@ WindowManager::WindowManager(QObject *parent)
     , curr_keyword_("")
     , curr_title_name_("")
 {
+    qCDebug(app) << "WindowManager constructor";
 }
 
 WindowManager::~WindowManager()
 {
+    qCDebug(app) << "WindowManager destructor start";
     //退出dmanHelper
     SendMsg("closeDmanHelper");
     updateDb();
     restartDmanHelper();
     ConfigManager::releaseInstance();
     delete window;
+    qCDebug(app) << "WindowManager destructor end";
 }
 
 void WindowManager::setStartTime(qint64 startTime)
@@ -49,6 +52,7 @@ void WindowManager::setStartTime(qint64 startTime)
  */
 void WindowManager::initDBus()
 {
+    qCDebug(app) << "initDBus start";
     QDBusConnection dbusConn =
         QDBusConnection::connectToBus(QDBusConnection::SessionBus, WM_SENDER_NAME);
     if (!dbusConn.isConnected()) {
@@ -58,12 +62,13 @@ void WindowManager::initDBus()
 
     if (!dbusConn.registerService(kManualSearchService + QString(WM_SENDER_NAME))
             || !dbusConn.registerObject(kManualSearchIface + QString(WM_SENDER_NAME), this)) {
-        qCritical() << WM_SENDER_NAME << " failed to register dbus service!";
+        qCCritical(app) << WM_SENDER_NAME << " failed to register dbus service!";
 
         return;
     } else {
         qCDebug(app) << WM_SENDER_NAME << " register dbus service success!";
     }
+    qCDebug(app) << "initDBus end";
 
     // 注册Dbus filesUpdate服务
     QDBusConnection conn = QDBusConnection::sessionBus();
@@ -74,7 +79,7 @@ void WindowManager::initDBus()
     //注册服务, 如果注册失败,则说明已存在一个dman.
     if (!conn.registerService(kManualFilesUpdateService)
             || !conn.registerObject(kManualFilesUpdateIface, proxy)) {
-        qCritical() << "filesUpdate failed to register dbus service";
+        qCCritical(app) << "filesUpdate failed to register dbus service";
     } else {
         qCDebug(app) << "filesUpdate register dbus service success!";
     }
@@ -86,6 +91,7 @@ void WindowManager::initDBus()
  */
 void WindowManager::initWebWindow()
 {
+    qCDebug(app) << "initWebWindow start";
     window = new WebWindow;
     //设置窗口大小
     setWindow(window);
@@ -99,6 +105,7 @@ void WindowManager::initWebWindow()
         window->initWeb();
         initDBus();
     });
+    qCDebug(app) << "initWebWindow end";
 }
 
 /**
@@ -137,9 +144,10 @@ void WindowManager::activeOrInitWindow()
  */
 void WindowManager::SendMsg(const QString &msg)
 {
+    qCDebug(app) << "Sending DBus message:" << msg;
     QDBusConnection dbusConn =
         QDBusConnection::connectToBus(QDBusConnection::SessionBus, WM_SENDER_NAME);
-    qCDebug(app) << "start send keyword:" << QString::number(qApp->applicationPid());
+    qCDebug(app) << "Connected to session bus, PID:" << QString::number(qApp->applicationPid());
     QDBusMessage dbusMsg = QDBusMessage::createSignal(
                                kManualSearchIface + QString(WM_SENDER_NAME),
                                kManualSearchService + QString(WM_SENDER_NAME), "SendWinInfo");
@@ -162,6 +170,7 @@ void WindowManager::SendMsg(const QString &msg)
  */
 void WindowManager::setWindow(WebWindow *window)
 {
+    qCDebug(app) << "setWindow with size:" << window->size();
     //获取窗口上次保存尺寸,加载上次保存尺寸.
     QSettings *setting = ConfigManager::getInstance()->getSettings();
     setting->beginGroup(QString(kConfigWindowInfo));
@@ -181,12 +190,16 @@ void WindowManager::setWindow(WebWindow *window)
 
 void WindowManager::updateDb()
 {
-    if (window)
+    qCDebug(app) << "updateDb";
+    if (window) {
+        qCDebug(app) << "Calling window->updateDb()";
         window->updateDb();
+    }
 }
 
 void WindowManager::restartDmanHelper()
 {
+    qCDebug(app) << "restartDmanHelper start";
     QDBusInterface interface(kManualSearchService, kManualSearchIface,
                                  kManualSearchService,
                                  QDBusConnection::sessionBus());
@@ -203,6 +216,7 @@ void WindowManager::restartDmanHelper()
         QString value = reply.value();
         qCDebug(app) << "value = " << value ;
     }
+    qCDebug(app) << "restartDmanHelper end";
 }
 
 /**
@@ -212,6 +226,7 @@ void WindowManager::restartDmanHelper()
  */
 void WindowManager::openManual(const QString &app_name, const QString &title_name)
 {
+    qCDebug(app) << "Opening manual for app:" << app_name << "title:" << title_name;
     curr_app_name_ = app_name;
     curr_keyword_ = "";
     curr_title_name_ = title_name;

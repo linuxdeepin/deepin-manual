@@ -16,12 +16,14 @@ fileWatcher::fileWatcher(QObject *parent)
     , watcherObj(new QFileSystemWatcher(this))
     , timerObj(new QTimer(this))
 {
+    qCDebug(app) << "Initializing file watcher";
     timerObj->setSingleShot(true);
     timerObj->setInterval(3 * 1000);
     connect(timerObj, &QTimer::timeout, this, &fileWatcher::onTimerOut);
     connect(watcherObj, &QFileSystemWatcher::fileChanged, this, &fileWatcher::onChangeFile);
     connect(watcherObj, &QFileSystemWatcher::directoryChanged, this, &fileWatcher::onChangeDirSlot);
     monitorFile();
+    qCDebug(app) << "File watcher initialized successfully";
 }
 
 void fileWatcher::setFileMap(QMap<QString, QString> &map)
@@ -91,7 +93,7 @@ void fileWatcher::monitorFile()
                     QStringList listAppNameT = QDir(modulePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs);
 
                     if (listAppNameT.count() != 1) {
-                        qCritical() << modulePath  << "：there are more folders..:" << listAppNameT.count();
+                         qCCritical(app) << modulePath  << "：there are more folders..:" << listAppNameT.count();
                         continue;
                     }
                     //./manual-assets/application(system)/appName/appNameT
@@ -184,6 +186,7 @@ void fileWatcher::onChangeDirSlot(const QString &path)
 
 void fileWatcher::onTimerOut()
 {
+    qCDebug(app) << "Timer triggered, checking file changes";
     QMap<QString, QString> mapNow;
     QStringList  assetsPathList = Utils::getSystemManualDir();
     foreach (auto assetsPath, assetsPathList) {
@@ -198,7 +201,7 @@ void fileWatcher::onTimerOut()
                     QStringList listAppNameT = QDir(modulePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs);
 
                     if (listAppNameT.count() != 1) {
-                        qCritical() << modulePath  << "：there are more folders..:" << listAppNameT.count();
+                        qCCritical(app) << modulePath  << "：there are more folders..:" << listAppNameT.count();
                         continue;
                     }
                     //./manual-assets/application(system)/appName/appNameT
@@ -255,8 +258,10 @@ void fileWatcher::onTimerOut()
     QStringList deleteList;
     QStringList addList;
     QStringList addTime;
+    qCDebug(app) << "Checking file changes";
     checkMap(mapOld, mapNow, deleteList, addList, addTime);
     mapOld = mapNow;
     emit filelistChange(deleteList, addList, addTime);
     monitorFile();
+    qCDebug(app) << "File change processing completed";
 }

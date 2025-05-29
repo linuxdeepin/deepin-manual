@@ -10,8 +10,11 @@
 int main(int argc, char **argv)
 {
     QCoreApplication app(argc, argv);
+    qDebug() << "QCoreApplication initialized";
 
+    qDebug() << "Creating SearchManager instance";
     dman::SearchManager manager;
+    qDebug() << "SearchManager initialized";
     QObject::connect(&manager, &dman::SearchManager::searchAnchorResult,
                      [](const QString &keyword,
                         const dman::SearchAnchorResultList &result) {
@@ -30,6 +33,7 @@ int main(int argc, char **argv)
                              qDebug() << anchors.at(i) << contents.at(i);
                          }
                      });
+    qDebug() << "Starting anchor search for keyword: application";
     manager.searchAnchor("application");
     manager.searchContent("application");
 

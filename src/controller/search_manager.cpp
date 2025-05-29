@@ -4,6 +4,7 @@
 
 #include "controller/search_manager.h"
 #include "controller/search_db.h"
+#include "base/ddlog.h"
 
 #include <DSysInfo>
 #include <QThread>
@@ -13,7 +14,9 @@ SearchManager::SearchManager(QObject *parent)
     , db_(nullptr)
     , db_thread_(nullptr)
 {
+    qCDebug(app) << "Creating SearchManager instance";
     initSearchManager();
+    qCDebug(app) << "SearchManager created successfully";
 }
 
 /**
@@ -22,9 +25,17 @@ SearchManager::SearchManager(QObject *parent)
  */
 void SearchManager::initSearchManager()
 {
+    qCDebug(app) << "Initializing search manager";
+    
     db_thread_ = new QThread(this);
+    qCDebug(app) << "Created database thread:" << db_thread_;
+    
     db_ = new SearchDb();
+    qCDebug(app) << "Created database instance:" << db_;
+    
     db_thread_->start();
+    qCDebug(app) << "Database thread started";
+    
     db_->moveToThread(db_thread_);
 
     connect(this, &SearchManager::searchAnchor, db_, &SearchDb::searchAnchor);
@@ -38,6 +49,7 @@ void SearchManager::initSearchManager()
 
     //初始化创建数据库SearchDb::initDb
     emit db_->initDbAsync();
+    qCDebug(app) << "Search manager initialized";
 }
 
 SearchManager::~SearchManager()

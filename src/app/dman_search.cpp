@@ -9,11 +9,15 @@
 int main(int argc, char **argv)
 {
     QCoreApplication app(argc, argv);
+    qDebug() << "QCoreApplication initialized";
 
     ManualSearchProxy search_obj;
     ManualSearchAdapter adapter(&search_obj);
+    qDebug() << "DBus objects created";
 
     QDBusConnection conn = QDBusConnection::sessionBus();
+    qDebug() << "Session bus connected:" << conn.isConnected();
+    
     if (!conn.registerService(kManualSearchService)
         || !conn.registerObject(kManualSearchIface, &search_obj)) {
         qCritical() << "dman-search failed to register dbus service";

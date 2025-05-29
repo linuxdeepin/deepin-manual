@@ -9,7 +9,9 @@
 int main(int argc, char **argv)
 {
     QApplication app(argc, argv);
+    qDebug() << "QApplication initialized";
 
+    qDebug() << "Creating ImageViewer instance";
     dman::ImageViewer viewer;
     viewer.open("/tmp/a.jpg");
 

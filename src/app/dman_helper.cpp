@@ -23,8 +23,10 @@ int main(int argc, char **argv)
     QApplication app(argc, argv);
 
     qputenv("DXCB_FAKE_PLATFORM_NAME_XCB", "true");
+    qDebug() << "Set DXCB_FAKE_PLATFORM_NAME_XCB=true";
     //禁用GPU
     qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu");
+    qDebug() << "Set QTWEBENGINE_CHROMIUM_FLAGS=--disable-gpu";
 //    qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "7777");
 
 #ifdef LINGLONG_BUILD
@@ -48,6 +50,9 @@ int main(int argc, char **argv)
 #else
     if (!Utils::judgeWayLand()) {
         qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--single-process");
+        qDebug() << "Non-Wayland environment, set single-process mode";
+    } else {
+        qDebug() << "Wayland environment detected";
     }
 #endif
 
@@ -57,13 +62,15 @@ int main(int argc, char **argv)
         paths.append(":/run/host/rootfs/usr/share:/run/host/rootfs/var/lib/linglong/entries/share");
         qputenv("XDG_DATA_DIRS", paths);
     }
+    qDebug() << "XDG_DATA_DIRS set to:" << qgetenv("XDG_DATA_DIRS");
 
     // 后端服务dmanHelper自检，若前端dman应用不存在，则后端dmanHelper退出
     DManWatcher watcher;
     ManualSearchProxy search_obj;
     ManualSearchAdapter adapter(&search_obj);
 
-    qDebug() << Dtk::Core::DLogManager::getlogFilePath();
+    QString logPath = Dtk::Core::DLogManager::getlogFilePath();
+    qDebug() << "Log file path:" << logPath;
 
     QOpenGLContext ctx;
     QSurfaceFormat fmt;
@@ -71,7 +78,10 @@ int main(int argc, char **argv)
     ctx.setFormat(fmt);
     ctx.create();
     if (!ctx.isValid()) {
+        qWarning() << "OpenGL context invalid, fallback to OpenGLES";
         fmt.setRenderableType(QSurfaceFormat::OpenGLES);
+    } else {
+        qDebug() << "OpenGL context created successfully";
     }
     fmt.setDefaultFormat(fmt);
     fmt.setProfile(QSurfaceFormat::CoreProfile);
@@ -79,6 +89,7 @@ int main(int argc, char **argv)
     Dtk::Core::DLogManager::registerFileAppender();
     Dtk::Core::DLogManager::registerConsoleAppender();
 
+    qInfo() << "Starting DBus service registration";
     QDBusConnection conn = QDBusConnection::sessionBus();
     if (!conn.registerService(kManualSearchService)
             || !conn.registerObject(kManualSearchIface, &search_obj)) {
@@ -90,5 +101,7 @@ int main(int argc, char **argv)
 
     helperManager obj;
 
-    return app.exec();
+    int ret = app.exec();
+    qInfo() << "dmanHelper exiting with code:" << ret;
+    return ret;
 }

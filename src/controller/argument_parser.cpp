@@ -49,6 +49,7 @@ ArgumentParser::~ArgumentParser()
  */
 bool ArgumentParser::parseArguments()
 {
+    qCDebug(app) << "Parsing command line arguments";
     QCommandLineParser parser;
     parser.addHelpOption();
     parser.addVersionOption();
@@ -56,7 +57,9 @@ bool ArgumentParser::parseArguments()
     parser.process(*(qobject_cast<QGuiApplication *>(this)));
 
     // 注册Dbus open服务,对外主要接口
+    qCDebug(app) << "Registering DBus services";
     QDBusConnection conn = QDBusConnection::sessionBus();
+    qCDebug(app) << "Session bus connected:" << conn.isConnected();
     ManualOpenProxy *proxy = new ManualOpenProxy(this);
     connect(proxy, &ManualOpenProxy::openManualRequested, this,
             &ArgumentParser::onOpenAppRequested);
@@ -67,11 +70,13 @@ bool ArgumentParser::parseArguments()
 
     //20210705 由于新版本dtk不启动dmanHelper,dman尝试启动dmanHelper
     //20211202 之前同步调用会增加启动时间,改为异步调用
+    qCDebug(app) << "Checking if manual exists via DBus";
     QDBusMessage msg = QDBusMessage::createMethodCall(kManualSearchService,
                                                       kManualSearchIface,
                                                       kManualSearchService,
                                                       "ManualExists");
     QDBusConnection::sessionBus().asyncCall(msg);
+    qCDebug(app) << "Async DBus call sent";
 
     //注册Open服务, 如果注册失败,则说明已存在一个dman.
     if (!conn.registerService(kManualOpenService)
@@ -80,8 +85,9 @@ bool ArgumentParser::parseArguments()
         const QStringList position_args = parser.positionalArguments();
         QDBusInterface manual(kManualOpenService, kManualOpenIface, kManualOpenService);
         if (!position_args.isEmpty()) {
-            qCDebug(app) << "position_args is not empty";
+            qCDebug(app) << "Positional arguments found:" << position_args;
             for (const QString &arg : position_args) {
+                qCDebug(app) << "Calling Open on existing manual with arg:" << arg;
                 QDBusReply<void> reply = manual.call("Open", arg);
             }
         } else {
@@ -97,11 +103,15 @@ bool ArgumentParser::parseArguments()
         if (position_args.isEmpty()) {
             //如果通过dbus打开dman, 则parser.isSet("dbus")为true
             if (parser.isSet("dbus")) {
+                qCDebug(app) << "DBus mode detected";
                 bIsDbus = true;
+            } else {
+                qCDebug(app) << "Running in normal mode";
             }
         } else {
             //获取命令行第一个参数应用名
             curManual = position_args.at(0);
+            qCDebug(app) << "Manual specified:" << curManual;
         }
         return true;
     }
@@ -112,10 +122,11 @@ bool ArgumentParser::parseArguments()
  */
 void ArgumentParser::openManualsDelay()
 {
-    qCDebug(app) << curManual;
+    qCDebug(app) << "Opening manual with delay, current manual:" << curManual;
 
     //判断是否为dbus服务，否则打开帮助手册窗口
     if (!bIsDbus) {
+        qCDebug(app) << "Not in DBus mode, directly opening manual";
         this->onOpenAppRequested(curManual);
     }
 }
@@ -127,6 +138,7 @@ void ArgumentParser::openManualsDelay()
  */
 void ArgumentParser::onOpenAppRequested(const QString &app_name, const QString &title_name)
 {
+    qCDebug(app) << "Opening app requested:" << app_name << "title:" << title_name;
     //应用F1和帮助打开帮助手册 数据埋点统计
     QJsonObject objStartEvent;
     objStartEvent.insert("tid", Eventlogutils::DbusStartUp);
@@ -140,6 +152,7 @@ void ArgumentParser::onOpenAppRequested(const QString &app_name, const QString &
     Eventlogutils::GetInstance()->writeLogs(objStartEvent);
     //解析老的应用名为路径，解析出dman后的应用名称
     const QString compact_app_name = ConvertOldDmanPath(app_name);
+    qCDebug(app) << "Converted app name:" << compact_app_name << "from:" << app_name;
     //openManualRequested---->WindowManager::openManual
     emit this->openManualRequested(compact_app_name, title_name);
 }
@@ -150,6 +163,6 @@ void ArgumentParser::onOpenAppRequested(const QString &app_name, const QString &
  */
 void ArgumentParser::onSearchRequested(const QString &keyword)
 {
-    qCDebug(app) << keyword;
+    qCDebug(app) << "Search requested with keyword:" << keyword;
     emit this->openManualWithSearchRequested("", keyword);
 }

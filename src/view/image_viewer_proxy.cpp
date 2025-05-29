@@ -14,10 +14,12 @@ ImageViewerProxy::ImageViewerProxy(ImageViewer *viewer,
     : QObject(parent)
     , viewer_(viewer)
 {
+    qCDebug(app) << "ImageViewerProxy constructor called";
 }
 
 ImageViewerProxy::~ImageViewerProxy()
 {
+    qCDebug(app) << "ImageViewerProxy destructor called";
 }
 
 /**
@@ -27,6 +29,7 @@ ImageViewerProxy::~ImageViewerProxy()
  */
 void ImageViewerProxy::open(const QString &filepath)
 {
+    qCDebug(app) << "ImageViewerProxy::open() called with file:" << filepath;
     Q_ASSERT(viewer_ != nullptr);
     Q_UNUSED(filepath);
     qCDebug(app) << "Opening image file:" << filepath;

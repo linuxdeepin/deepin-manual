@@ -5,6 +5,7 @@
 #include "view/widget/search_button.h"
 #include "base/utils.h"
 #include "resources/themes/images.h"
+#include "base/ddlog.h"
 
 #include <DFontSizeManager>
 #include <DPaletteHelper>
@@ -19,6 +20,7 @@ SearchButton::SearchButton(QWidget *parent)
     : DBlurEffectWidget(parent)
     , m_bHover(false)
 {
+    qCDebug(app) << "SearchButton constructor called";
     setAutoFillBackground(false);
 
     m_textLabel = new DLabel(this);
@@ -64,6 +66,7 @@ SearchButton::SearchButton(QWidget *parent)
 
 SearchButton::~SearchButton()
 {
+    qCDebug(app) << "SearchButton destructor called";
 }
 
 /**
@@ -83,6 +86,7 @@ void SearchButton::updateColor(const QColor &color)
  */
 void SearchButton::setText(QString title)
 {
+    qCDebug(app) << "SearchButton::setText() called with title:" << title;
     m_textLabel->setText(title);
 }
 
@@ -133,6 +137,7 @@ void SearchButton::setChecked(bool bChecked)
  */
 void SearchButton::onThemeChange(DGuiApplicationHelper::ColorType themeType)
 {
+    qCDebug(app) << "SearchButton theme changed to:" << (themeType == DGuiApplicationHelper::DarkType ? "Dark" : "Light");
     if (DGuiApplicationHelper::DarkType == themeType) {
         QPixmap iconPm = Utils::renderSVG(QString(kImageDarkSearchIcon), QSize(20, 20));
         iconBtn->setIcon(iconPm);
