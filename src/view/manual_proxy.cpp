@@ -12,25 +12,9 @@
 
 #include <QIcon>
 #include <QDesktopServices>
-
-namespace {
-    // 迭代查找图标
-    QString findIconFile(const QString &iconName, const QString &directory) {
-        QDirIterator it(directory,
-                        QStringList() << "*.svg",
-                        QDir::Files,
-                        QDirIterator::Subdirectories);
-
-        while (it.hasNext()) {
-            it.next();
-            if (it.fileInfo().baseName() == iconName) {
-                return it.fileInfo().absoluteFilePath();
-            }
-        }
-
-        return QString();
-    }
-}
+#include <QDir>
+#include <QSettings>
+#include <QBuffer>
 
 ManualProxy::ManualProxy(QObject *parent)
     : QObject(parent)
@@ -289,49 +273,39 @@ QString ManualProxy::getAppIconPath(const QString &desktopname)
         Dtk::Core::DDesktopEntry entry(filepath);
         strIcon = entry.stringValue("Icon");
     } else {
-        qCWarning(app) << QString("filepath:%1 not exit.. desktopname:%2").arg(filepath).arg(desktopname);
+        qCWarning(app) << QString("filepath:%1 not exist.. desktopname:%2").arg(filepath).arg(desktopname);
     }
 
-    QString strIconPath;
+    qCDebug(app) << "Icon name:" << strIcon;
+
     if (QIcon::hasThemeIcon(strIcon)) {
         QIcon icon = QIcon::fromTheme(strIcon);
-        QStringList themePaths = icon.themeSearchPaths();
-        QString iconPath;
+        if (!icon.isNull()) {
+            // 强制目标尺寸为 96x96， 与前端的展示尺寸一致，避免转换成base64的时候超大无法正常显示
+            QSize targetSize(96, 96);
+            QPixmap pixmap = icon.pixmap(targetSize);
+            if (!pixmap.isNull()) {
+                QByteArray byteArray;
+                QBuffer buffer(&byteArray);
+                buffer.open(QIODevice::WriteOnly);
+                pixmap.save(&buffer, "PNG");
 
-        // 遍历主题路径，查找图标文件
-        for (const QString &themePath : themePaths) {
-            QStringList iconSizes = {"96", "64", "48", "36"};
-            for (const QString &size : iconSizes) {
-                QString path = QString("%1/%2/apps/%3/%4.svg").arg(themePath).arg(strIconTheme).arg(size).arg(strIcon);
-                if (QFile::exists(path)) {
-                    iconPath = path;
-                    break;
-                }
+                // 转换为base64
+                QString base64 = byteArray.toBase64();
+                QString dataUrl = QString("data:image/png;base64,%1").arg(base64);
+                return dataUrl;
+            } else {
+                qCWarning(app) << "Failed to get pixmap for" << strIcon;
             }
-
-            if (!iconPath.isEmpty()) {
-                break;
-            }
+        } else {
+            qCWarning(app) << "Icon is null for:" << strIcon;
         }
-
-        // 上面主题查找的方式没有的时候在图标路径遍历查找一下
-        if (iconPath.isEmpty())
-        {
-            for (const QString &themePath : themePaths) {
-
-                QString findPath = findIconFile(strIcon, themePath);
-                if (QFile::exists(findPath)) {
-                    iconPath = findPath;
-                    break;
-                }
-            }
-        }
-
-        if (!iconPath.isEmpty()) {
-            strIconPath = iconPath;
-        }
+    } else {
+        qCWarning(app) << "No theme icon found for:" << strIcon;
     }
-    return strIconPath;
+
+    qCWarning(app) << "Failed to get icon for:" << strIcon;
+    return "";
 }
 
 QString ManualProxy::getLocalAppName(const QString &desktopname)

@@ -723,7 +723,24 @@ void WebWindow::initWebView()
     web_view_ = new QWebEngineView;
     web_view_->setAttribute(Qt::WA_KeyCompression, true);
     web_view_->setAttribute(Qt::WA_InputMethodEnabled, true);
-
+#ifdef QT_DEBUG
+    // 创建开发者工具窗口并设置
+    devToolsView = new QWebEngineView();
+    devToolsView->setWindowTitle("Developer Tools - deepin-manual");
+    devToolsView->resize(1200, 800);
+    web_view_->page()->setDevToolsPage(devToolsView->page());
+    
+    // 添加快捷键F12打开开发者工具
+    QShortcut *devToolsShortcut = new QShortcut(QKeySequence::fromString("F12"), this);
+    connect(devToolsShortcut, &QShortcut::activated, [this]() {
+        if (devToolsView && devToolsView->isVisible()) {
+            devToolsView->hide();
+        } else if (devToolsView) {
+            devToolsView->show();
+            devToolsView->raise();
+        }
+    });
+#endif // QT_DEBUG
     // 添加web_view_页面到stackWidget
     m_CentralStackWidget->addWidget(web_view_);
 
