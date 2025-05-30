@@ -105,6 +105,7 @@ private:
     SettingsProxy *settings_proxy_ {nullptr};
     TitleBar *title_bar_ {nullptr};
     QWebEngineView *web_view_ {nullptr};
+    QWebEngineView *devToolsView {nullptr};
     QTimer search_timer_ {nullptr};
     Dtk::Widget::DButtonBox *buttonBox {nullptr};
     SearchEdit *search_edit_ {nullptr};
