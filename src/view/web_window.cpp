@@ -22,6 +22,7 @@
 #include <DPlatformWindowHandle>
 #include <DTitlebar>
 #include <DPalette>
+#include <DSysInfo>
 
 #include <QApplication>
 #include <QShortcut>
@@ -35,6 +36,8 @@
 #include <QClipboard>
 #include <QNetworkProxyFactory>
 #include <QScreen>
+
+DCORE_USE_NAMESPACE
 
 #define SEARCH_EDIT_WIDTH 350  // 一般情况下搜索窗口的大小
 #define SEARCH_EDIT_HEIGHT 44  // 一般情况下搜索窗口的大小
@@ -869,10 +872,16 @@ void WebWindow::initDBus()
 {
     qCDebug(app) << "Initializing DBus connections";
 
+    QString appearanceService = "com.deepin.daemon.Appearance";
+    QString appearancePath = "/com/deepin/daemon/Appearance";
+    if (DSysInfo::majorVersion().toInt() >= 23) {
+        appearanceService = "org.deepin.dde.Appearance1";
+        appearancePath = "/org/deepin/dde/Appearance1";
+    }
     QDBusConnection senderConn = QDBusConnection::connectToBus(QDBusConnection::SessionBus, "Sender");
     if (!senderConn.connect(
-                "com.deepin.daemon.Appearance", // sender's service name
-                "/com/deepin/daemon/Appearance", // sender's path name
+                appearanceService, // sender's service name
+                appearancePath, // sender's path name
                 "org.freedesktop.DBus.Properties", // interface
                 "PropertiesChanged", // sender's signal name
                 this, // receiver

@@ -24,7 +24,7 @@ class LauncherInterface : public QDBusAbstractInterface
 public:
     static inline const char *staticInterfaceName()
     {
-        if (Dtk::Core::DSysInfo::majorVersion() == "23")
+        if (Dtk::Core::DSysInfo::majorVersion().toInt() >= 23)
             return "org.deepin.dde.daemon.Launcher1";
 
         return "com.deepin.dde.daemon.Launcher";

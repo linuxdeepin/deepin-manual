@@ -11,8 +11,8 @@ ut_ManualOpenInterface::ut_ManualOpenInterface()
 
 void ut_ManualOpenInterface::SetUp()
 {
-    const QString service = "com.deepin.dde.daemon.Launcher";
-    const QString path = "com/deepin/dde/daemon/Launcher";
+    const QString service = "com.deepin.Manual.Open";
+    const QString path = "/com/deepin/Manual/Open";
     QDBusConnection dbusConn = QDBusConnection::connectToBus(QDBusConnection::SessionBus, "Sender");
     interface = new ManualOpenInterface(service, path, dbusConn);
 }
