@@ -78,7 +78,7 @@ QDBusArgument &operator<<(QDBusArgument &argument, const ReplyStruct &info)
 {
     argument.beginStructure();
     argument << info.m_desktop << info.m_name << info.m_key << info.m_iconKey;
-    if (DSysInfo::majorVersion() == "23")
+    if (DSysInfo::majorVersion().toInt() >= 23)
         argument << info.m_categoryId << info.m_installedTime << info.m_appmessage;
     else
         argument << info.m_categoryId << info.m_installedTime;
@@ -96,7 +96,7 @@ const QDBusArgument &operator>>(const QDBusArgument &argument, ReplyStruct &info
 {
     argument.beginStructure();
     argument >> info.m_desktop >> info.m_name >> info.m_key >> info.m_iconKey;
-    if (DSysInfo::majorVersion() == "23")
+    if (DSysInfo::majorVersion().toInt() >= 23)
         argument >> info.m_categoryId >> info.m_installedTime >> info.m_appmessage;
     else
         argument >> info.m_categoryId >> info.m_installedTime;
@@ -191,7 +191,7 @@ QList<AppInfo> Utils::launcherInterface()
     qRegisterMetaType<QList<ReplyStruct>>("a");
     qDBusRegisterMetaType<QList<ReplyStruct>>();
 
-    bool bV23 = DSysInfo::majorVersion() == "23";
+    bool bV23 = DSysInfo::majorVersion().toInt() >= 23;
     QString sLauncherService = bV23 ? kLauncherServiceV23 : kLauncherServiceV20;
     QString sLauncherIface = bV23 ? kLauncherIfaceV23 : kLauncherIfaceV20;
     QDBusInterface iface(sLauncherService, sLauncherIface, sLauncherService, QDBusConnection::sessionBus());
@@ -605,11 +605,18 @@ bool Utils::activeWindow(quintptr winId)
 {
     bool bsuccess = true;
     // new interface use applicationName as id
-    QDBusInterface manual("com.deepin.dde.daemon.Dock", "/com/deepin/dde/daemon/Dock",
-                          "com.deepin.dde.daemon.Dock");
+    QString dockService = "com.deepin.dde.daemon.Dock";
+    QString dockPath = "/com/deepin/dde/daemon/Dock";
+    QString dockInterface = "com.deepin.dde.daemon.Dock";
+    if (DSysInfo::majorVersion().toInt() >= 23) {
+        dockService = "org.deepin.dde.daemon.Dock1";
+        dockPath = "/org/deepin/dde/daemon/Dock1";
+        dockInterface = "org.deepin.dde.daemon.Dock1";
+    }
+    QDBusInterface manual(dockService, dockPath, dockInterface);
     QDBusReply<void> reply = manual.call("ActivateWindow", winId);
     if (!reply.isValid()) {
-        qCDebug(app) << "call com.deepin.dde.daemon.Dock failed" << reply.error();
+        qCDebug(app) << "call" << dockService << "failed" << reply.error();
         bsuccess = false;
     }
     return bsuccess;

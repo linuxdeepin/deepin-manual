@@ -40,3 +40,7 @@ obj-*
 #linglong building dir
 linglong
 build
+
+# AI
+.cursor
+.specstory
