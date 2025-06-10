@@ -183,11 +183,7 @@ In Control Center - Keyboard and Language - Input Method Settings, click Edit bu
 
 ![controlcenter_input](./fig/controlcenter_input.png)
 
-## V. Join the community to answer your questions and solve your problems
-
-Welcome to WeChat sweeping code to join the official community of TUNISON, get intimate online services: **perfect use of skills, fresh product information, interesting official activities **, everything, group activity code, permanently valid.
-
-![community](./fig/community.png)
+## V. More tips
 
 You are welcome to scan the QR code on WeChat to open the UOS Tip Assistant mini program and view the tips online.
 
