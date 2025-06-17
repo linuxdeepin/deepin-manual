@@ -14,6 +14,7 @@ SearchCompletionListView::SearchCompletionListView(QWidget *parent)
     qCDebug(app) << "SearchCompletionListView constructor called";
     setAutoFillBackground(false);
     initDelegate();
+    qCDebug(app) << "SearchCompletionListView initialization completed";
 }
 
 SearchCompletionListView::~SearchCompletionListView()
@@ -30,6 +31,7 @@ void SearchCompletionListView::initDelegate()
     qCDebug(app) << "Initializing search completion delegate";
     m_searchCompletionDelegate = new SearchCompletionDelegate(this);
     this->setItemDelegate(m_searchCompletionDelegate);
+    qCDebug(app) << "Search completion delegate initialized";
 }
 
 /**
@@ -39,13 +41,18 @@ void SearchCompletionListView::initDelegate()
  */
 void SearchCompletionListView::mousePressEvent(QMouseEvent *event)
 {
+    qCDebug(app) << "Mouse press event received at position:" << event->pos();
+
     if (event->button() == Qt::LeftButton) {
         m_bLeftMouse = true;
+        qCDebug(app) << "Left mouse button pressed";
     } else {
         m_bLeftMouse = false;
+        qCDebug(app) << "Non-left mouse button pressed";
     }
 
     DListView::mousePressEvent(event);
+    qCDebug(app) << "Mouse press event processing completed";
 }
 
 /**
@@ -62,9 +69,11 @@ void SearchCompletionListView::setSelection(const QRect &rect, QItemSelectionMod
 
     QPoint clickPoint(rect.x(), rect.y());
     QModelIndex modelIndex = indexAt(clickPoint);
+    qCDebug(app) << "Selected model index:" << modelIndex << "at position:" << clickPoint;
 
     if (m_bLeftMouse) {
         qCDebug(app) << "Left mouse click on search completion item:" << modelIndex;
+        qCDebug(app) << "Emitting onClickSearchCompletionItem signal";
         emit onClickSearchCompletionItem(modelIndex);
     }
 }

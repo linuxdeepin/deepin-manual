@@ -37,9 +37,11 @@ SearchButton::SearchButton(QWidget *parent)
     iconBtn->setIconSize(QSize(20, 20));
 
     if (DGuiApplicationHelper::DarkType == DGuiApplicationHelper::instance()->themeType()) {
+        qCDebug(app) << "Dark theme, use dark search icon";
         QPixmap iconPm = Utils::renderSVG(QString(kImageDarkSearchIcon), QSize(20, 20));
         iconBtn->setIcon(iconPm);
     } else {
+        qCDebug(app) << "Light theme, use light search icon";
         QPixmap iconPm = Utils::renderSVG(QString(kImageLightSearchIcon), QSize(20, 20));
         iconBtn->setIcon(iconPm);
     }
@@ -62,6 +64,7 @@ SearchButton::SearchButton(QWidget *parent)
     setLayout(centerLayout);
 
     connect(DGuiApplicationHelper::instance(), &DGuiApplicationHelper::themeTypeChanged, this, &SearchButton::onThemeChange);
+    qCDebug(app) << "SearchButton constructor finished";
 }
 
 SearchButton::~SearchButton()
@@ -76,6 +79,7 @@ SearchButton::~SearchButton()
  */
 void SearchButton::updateColor(const QColor &color)
 {
+    qCDebug(app) << "SearchButton::updateColor() called with color:" << color;
     myColor = color;
 }
 
@@ -97,6 +101,7 @@ void SearchButton::setText(QString title)
  */
 bool SearchButton::isChecked()
 {
+    qCDebug(app) << "is checked called: " << m_bHover;
     return m_bHover;
 }
 
@@ -107,15 +112,19 @@ bool SearchButton::isChecked()
  */
 void SearchButton::leaveFocus()
 {
+    qCDebug(app) << "leave focus called";
     m_bHover = false;
     if (DGuiApplicationHelper::DarkType == DGuiApplicationHelper::instance()->themeType()) {
+        qCDebug(app) << "leave focus, update ui, dark theme";
         QPixmap iconPm = Utils::renderSVG(QString(kImageDarkSearchIcon), QSize(20, 20));
         iconBtn->setIcon(iconPm);
     } else {
+        qCDebug(app) << "leave focus, update ui, light theme";
         QPixmap iconPm = Utils::renderSVG(QString(kImageLightSearchIcon), QSize(20, 20));
         iconBtn->setIcon(iconPm);
     }
 
+    qCDebug(app) << "leave focus, update ui";
     update();
 }
 
@@ -126,7 +135,9 @@ void SearchButton::leaveFocus()
  */
 void SearchButton::setChecked(bool bChecked)
 {
+    qCDebug(app) << "set checked called: " << bChecked;
     m_bHover = bChecked;
+    qCDebug(app) << "Search button hover state changed to:" << m_bHover;
     update();
 }
 
@@ -141,10 +152,13 @@ void SearchButton::onThemeChange(DGuiApplicationHelper::ColorType themeType)
     if (DGuiApplicationHelper::DarkType == themeType) {
         QPixmap iconPm = Utils::renderSVG(QString(kImageDarkSearchIcon), QSize(20, 20));
         iconBtn->setIcon(iconPm);
+        qCDebug(app) << "Search button icon changed to dark";
     } else {
         QPixmap iconPm = Utils::renderSVG(QString(kImageLightSearchIcon), QSize(20, 20));
         iconBtn->setIcon(iconPm);
+        qCDebug(app) << "Search button icon changed to light";
     }
+    qCDebug(app) << "Search button theme changed, update ui";
 }
 
 /**
@@ -161,6 +175,7 @@ void SearchButton::paintEvent(QPaintEvent *event)
     path.addRect(this->rect());
 
     if (m_bHover) {
+        qCDebug(app) << "Search button hovered";
         DPalette pa = ExApplicationHelper::instance()->palette(this);
         DStyleHelper styleHelper;
         QColor fillColor = DGuiApplicationHelper::instance()->applicationPalette().highlight().color();
@@ -173,6 +188,7 @@ void SearchButton::paintEvent(QPaintEvent *event)
         QPixmap iconPm = Utils::renderSVG(QString(kImageWhiteSearchIcon), QSize(20, 20));
         iconBtn->setIcon(iconPm);
     } else {
+        qCDebug(app) << "Search button not hovered";
         DPalette pa = ExApplicationHelper::instance()->palette(this);
         DStyleHelper styleHelper;
         QColor fillColor = pa.color(DPalette::ItemBackground);
@@ -188,6 +204,7 @@ void SearchButton::paintEvent(QPaintEvent *event)
 void SearchButton::mousePressEvent(QMouseEvent *event)
 {
     Q_UNUSED(event)
+    qCDebug(app) << "Search button pressed";
 }
 
 /**
@@ -197,8 +214,10 @@ void SearchButton::mousePressEvent(QMouseEvent *event)
  */
 void SearchButton::mouseReleaseEvent(QMouseEvent *event)
 {
+    qCDebug(app) << "Search button clicked";
     QWidget::mouseReleaseEvent(event);
     emit pressed();
+    qCDebug(app) << "Emitted pressed signal";
 }
 
 /**
@@ -209,10 +228,12 @@ void SearchButton::mouseReleaseEvent(QMouseEvent *event)
 void SearchButton::enterEvent(EnterEvent *event)
 {
     Q_UNUSED(event);
+    qCDebug(app) << "Mouse entered search button area";
 
     emit entered();
     m_bHover = true;
     update();
+    qCDebug(app) << "Search button hover state changed to true";
 }
 
 /**
@@ -223,15 +244,20 @@ void SearchButton::enterEvent(EnterEvent *event)
 void SearchButton::leaveEvent(QEvent *event)
 {
     Q_UNUSED(event);
+    qCDebug(app) << "Mouse left search button area";
+
     m_bHover = false;
     //根据不同系统主题使用不同的Ｉｃｏｎ
     if (DGuiApplicationHelper::DarkType == DGuiApplicationHelper::instance()->themeType()) {
+        qCDebug(app) << "Dark theme, change search button icon";
         QPixmap iconPm = Utils::renderSVG(QString(kImageDarkSearchIcon), QSize(20, 20));
         iconBtn->setIcon(iconPm);
     } else {
+        qCDebug(app) << "Light theme, change search button icon";
         QPixmap iconPm = Utils::renderSVG(QString(kImageLightSearchIcon), QSize(20, 20));
         iconBtn->setIcon(iconPm);
     }
 
     update();
+    qCDebug(app) << "Search button hover state changed to false";
 }

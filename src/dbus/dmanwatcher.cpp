@@ -3,6 +3,7 @@
 // SPDX-License-Identifier: GPL-3.0-or-later
 
 #include "dmanwatcher.h"
+#include "base/ddlog.h"
 
 #include <QProcess>
 #include <QCoreApplication>
@@ -10,9 +11,10 @@
 
 DManWatcher::DManWatcher():m_Timer(new QTimer (this))
 {
-
+    qCDebug(app) << "DManWatcher initialized, starting timer";
     connect(m_Timer,&QTimer::timeout,this,&DManWatcher::onTimeOut);
     m_Timer->start(5000);
+    qCDebug(app) << "Timer started with interval:" << m_Timer->interval() << "ms";
 }
 
 /**
@@ -20,13 +22,17 @@ DManWatcher::DManWatcher():m_Timer(new QTimer (this))
  */
 void DManWatcher::onTimeOut()
 {
+    qCDebug(app) << "Checking dman process status...";
     QString cmd, outPut;
     //判断dman客户端是否存在，如果不存在退出服务。
     cmd = QString("ps aux | grep -w dman$");
     outPut= executCmd(cmd);
     int ret = outPut.length();
-    if (!ret)
+    qCDebug(app) << "Process check result:" << outPut;
+    if (!ret) {
+        qWarning() << "dman process not found, exiting application";
         QCoreApplication::exit(0);
+    }
 }
 
 /**
@@ -35,8 +41,11 @@ void DManWatcher::onTimeOut()
  */
 QString DManWatcher::executCmd(const QString &strCmd)
 {
-     QProcess proc;
-     proc.start("bash", QStringList() << "-c" << strCmd);
-     proc.waitForFinished(-1);
-     return  proc.readAllStandardOutput();
+    qCDebug(app) << "Executing command:" << strCmd;
+    QProcess proc;
+    proc.start("bash", QStringList() << "-c" << strCmd);
+    proc.waitForFinished(-1);
+    QString output = proc.readAllStandardOutput();
+    qCDebug(app) << "Command output length:" << output.length();
+    return output;
 }

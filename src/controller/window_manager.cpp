@@ -43,6 +43,7 @@ WindowManager::~WindowManager()
 
 void WindowManager::setStartTime(qint64 startTime)
 {
+    qCDebug(app) << "Setting app start time:" << startTime;
     this->appStartTime = startTime;
 }
 
@@ -97,12 +98,15 @@ void WindowManager::initWebWindow()
     setWindow(window);
     window->show();
     window->setAppProperty(curr_app_name_, curr_title_name_, curr_keyword_);
+    qCDebug(app) << "Window properties applied";
 
     QTimer::singleShot(0, [ = ]() {
         //dbus发送窗口ID给search服务
         SendMsg(QString::number(window->winId()));
         //初始化web窗口
         window->initWeb();
+
+        qCDebug(app) << "Initializing DBus connections...";
         initDBus();
     });
     qCDebug(app) << "initWebWindow end";
@@ -122,17 +126,24 @@ void WindowManager::activeOrInitWindow()
     if (window != nullptr) {
         //2020-01-15 kyz 在专业服务器版最小化后show的方式可能无法激活窗口桌面版正常，可能是桌面环境问题，优先采用dock接口激活，如果失败再使用其它激活
         if (Q_LIKELY(Utils::activeWindow(window->winId()))) {
+            qCDebug(app) << "Window activated via Utils::activeWindow, winId:" << window->winId();
             window->saveWindowSize();
             Dtk::Widget::moveToCenter(window);
+            qCDebug(app) << "Window moved to center";
         } else {
+            qCDebug(app) << "Fallback activation method for winId:" << window->winId();
             setWindow(window);
             window->show();
             window->raise();
             window->activateWindow();
+            qCDebug(app) << "Window shown and activated";
         }
         window->openjsPage(curr_app_name_, curr_title_name_);
+        qCDebug(app) << "openjsPage end";
         return;
     }
+
+    qCDebug(app) << "No existing window found, initializing new window...";
     //不存在窗口,则初始化窗口
     initWebWindow();
 }
@@ -157,10 +168,13 @@ void WindowManager::SendMsg(const QString &msg)
     if (msg == "closedmanHelper") {
         //关闭dmanhelper进程需要等待返回
         dbusConn.call(dbusMsg);
+        qCDebug(app) << "Sent message to close dmanhelper";
     } else {
         //将进程号+窗口WinId拼接后发给dman-search后台进程 发送信号SendWinInfo－＞RecvMsg
         isSuccess = dbusConn.send(dbusMsg);
+        qCDebug(app) << "Sent message to dman-search, isSuccess:" << isSuccess;
     }
+    qCDebug(app) << "DBus message sent, isSuccess:" << isSuccess;
 }
 
 /**
@@ -181,11 +195,16 @@ void WindowManager::setWindow(WebWindow *window)
     if (saveWidth == 0 || saveHeight == 0) {
         saveWidth = 1024;
         saveHeight = 680;
+        qCDebug(app) << "Using default window size:" << saveWidth << "x" << saveHeight;
     }
 
     //设置window窗口属性
     window->resize(saveWidth, saveHeight);
+
+    qCDebug(app) << "Setting minimum window size to:" << kWinMinWidth << "x" << kWinMinHeight;
     window->setMinimumSize(kWinMinWidth, kWinMinHeight);
+
+    qCDebug(app) << "Window properties configured successfully";
 }
 
 void WindowManager::updateDb()
@@ -195,6 +214,7 @@ void WindowManager::updateDb()
         qCDebug(app) << "Calling window->updateDb()";
         window->updateDb();
     }
+    qCDebug(app) << "updateDb end";
 }
 
 void WindowManager::restartDmanHelper()
@@ -231,6 +251,7 @@ void WindowManager::openManual(const QString &app_name, const QString &title_nam
     curr_keyword_ = "";
     curr_title_name_ = title_name;
     activeOrInitWindow();
+    qCDebug(app) << "openManual end";
 }
 
 /**
@@ -241,6 +262,7 @@ void WindowManager::openManual(const QString &app_name, const QString &title_nam
  */
 void WindowManager::openManualWithSearch(const QString &app_name, const QString &keyword)
 {
+    qCDebug(app) << "Opening manual for app:" << app_name << "keyword:" << keyword;
     curr_app_name_ = app_name;
     curr_keyword_ = keyword;
     activeOrInitWindow();
@@ -257,6 +279,8 @@ void WindowManager::onFilesUpdate(const QStringList &filesList)
     qCDebug(app) << filesList;
     if (window && !filesList.isEmpty()) {
         window->updatePage(filesList);
+        qCDebug(app) << "onFilesUpdate updatePage end";
     }
     //window->openjsPage()
+    qCDebug(app) << "onFilesUpdate end";
 }

@@ -24,11 +24,11 @@ ThemeProxy::~ThemeProxy()
  * @brief ThemeProxy::slot_ThemeChange
  * 系统主题颜色改变时调用
  */
-void ThemeProxy ::slot_ThemeChange()
+void ThemeProxy::slot_ThemeChange()
 {
-    qCDebug(app) << "System theme changed, current theme:" << getTheme();
-    //更新到前端JS
-    emit themeChange(getTheme());
+    QString currentTheme = getTheme();
+    qCDebug(app) << "System theme changed, emitting signal with theme:" << currentTheme;
+    emit themeChange(currentTheme);
 }
 
 /**
@@ -36,7 +36,7 @@ void ThemeProxy ::slot_ThemeChange()
  * @return
  * 获取系统主题颜色，白色/黑色
  */
-QString ThemeProxy ::getTheme() const
+QString ThemeProxy::getTheme() const
 {
     qCDebug(app) << "Getting current system theme";
     QString qsthemetype = "Null";
@@ -45,5 +45,6 @@ QString ThemeProxy ::getTheme() const
         qsthemetype = "LightType";
     else if (themeType == DGuiApplicationHelper::DarkType)
         qsthemetype = "DarkType";
+    qCDebug(app) << "Current system theme:" << qsthemetype;
     return qsthemetype;
 }

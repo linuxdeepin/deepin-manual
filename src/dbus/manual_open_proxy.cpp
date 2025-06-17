@@ -11,10 +11,12 @@ ManualOpenProxy::ManualOpenProxy(QObject *parent)
     : QObject(parent)
 {
     this->setObjectName("ManualOpenProxy");
+    qCDebug(app) << "ManualOpenProxy initialized";
 }
 
 ManualOpenProxy::~ManualOpenProxy()
 {
+    qCDebug(app) << "ManualOpenProxy destroyed";
 }
 
 /**
@@ -24,8 +26,9 @@ ManualOpenProxy::~ManualOpenProxy()
  */
 void ManualOpenProxy::Open(const QString &app_name)
 {
-    qCDebug(app) << app_name;
+    qCDebug(app) << "Open manual requested for app:" << app_name;
     emit this->openManualRequested(app_name, "");
+    qCDebug(app) << "Manual open signal emitted";
 }
 
 /**
@@ -38,6 +41,7 @@ void ManualOpenProxy::OpenTitle(const QString &app_name, const QString &title_na
 {
     qCDebug(app) << app_name << "---" << title_name;
     emit this->openManualRequested(app_name, title_name);
+    qCDebug(app) << "Title open signal emitted";
 }
 
 /**
@@ -47,6 +51,7 @@ void ManualOpenProxy::OpenTitle(const QString &app_name, const QString &title_na
  */
 void ManualOpenProxy::ShowManual(const QString &app_name)
 {
+    qCDebug(app) << "Show manual requested for app:" << app_name;
     this->Open(app_name);
 }
 
@@ -59,4 +64,5 @@ void ManualOpenProxy::Search(const QString &keyword)
 {
     qCDebug(app) << keyword;
     emit this->searchRequested(keyword);
+    qCDebug(app) << "Search signal emitted";
 }

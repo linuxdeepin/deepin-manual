@@ -125,13 +125,17 @@ SearchDb::SearchDb(QObject *parent)
 
 SearchDb::~SearchDb()
 {
+    qCDebug(app) << "Destroying SearchDb instance";
     if (p_ != nullptr) {
+        qCDebug(app) << "Closing database connection";
         if (p_->db.isOpen()) {
+            qCDebug(app) << "Closing database connection 1";
             p_->db.close();
         }
         delete p_;
         p_ = nullptr;
     }
+    qCDebug(app) << "SearchDb destroyed";
 }
 
 /**
@@ -141,10 +145,12 @@ SearchDb::~SearchDb()
 
 void SearchDb::initConnections()
 {
+    qCDebug(app) << "Initializing search database connections";
     connect(this, &SearchDb::initDbAsync, this, &SearchDb::initDb);
     connect(this, &SearchDb::searchAnchor, this, &SearchDb::handleSearchAnchor);
     connect(this, &SearchDb::searchContent, this, &SearchDb::handleSearchContent);
     connect(this, &SearchDb::updateModule, this, &SearchDb::getAllApp);
+    qCDebug(app) << "Search database connections initialized";
 }
 
 /**
@@ -186,6 +192,7 @@ void SearchDb::initSearchTable()
     qCDebug(app) << "Initializing search table";
     
     QSqlQuery query(p_->db);
+    qCDebug(app) << "Executing search table schema:" << kSearchTableSchema;
 
     //创建相关表
     if (!query.exec(kSearchTableSchema)) {
@@ -194,6 +201,7 @@ void SearchDb::initSearchTable()
     }
     
     qCDebug(app) << "Creating search index with schema:" << kSearchIndexSchema;
+    
     if (!query.exec(kSearchIndexSchema)) {
         qCCritical(app) << "Failed to create search index:"
                        << "error:" << query.lastError().text()
@@ -231,11 +239,14 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
     QStringList newContents = contents;
 
     if (mdPath.isEmpty()) {
+        qCDebug(app) << "mdPath is empty";
         QString strManualPath;
         if (app_name == "dde") {
             strManualPath = "/system";
+            qCDebug(app) << "app_name is dde";
         } else {
             strManualPath = "/application";
+            qCDebug(app) << "app_name is application";
         }
 
         //图片路径替换为绝对路径
@@ -244,8 +255,10 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
             content = content.replace("icon/", DMAN_INSTALL_DB_PATH + strManualPath
                                       + "/" + app_name + "/" + lang + "/icon/");
             newContents.replace(i, content);
+            qCDebug(app) << "newContent replace icon:" << i;
         }
     } else {
+        qCDebug(app) << "mdPath is not empty";
         QStringList list = mdPath.split("/");
         list.removeLast();
         QString strTemp = list.join("/");
@@ -266,6 +279,7 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
             if (content.contains("common")/* && !content.contains("fig")*/)
                 content = content.replace(expPng, QString("src=\"%1/../common%2\"").arg(strTemp).arg("\\1"));
             newContents.replace(i, content);
+            qCDebug(app) << "newContent replace svg:" << i;
         }
     }
 
@@ -294,6 +308,7 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
                       << "error:" << p_->db.lastError().text();
         return;
     }
+    qCDebug(app) << "Transaction started successfully";
     preok = query.prepare(kSearchInsertEntry);
     if (!preok) {
         qCCritical(app) << "Failed to prepare kSearchInsertEntry:" << query.lastError().text();
@@ -323,6 +338,7 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
                           << "query:" << query.lastQuery();
         } else {
             p_->db.commit();
+            qCDebug(app) << "Search entry added successfully";
         }
     } else {
         qCWarning(app) << "Field size mismatch, execBatch may crash:"
@@ -331,6 +347,7 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
                      << "contents:" << contents.size()
                      << "anchorIds:" << anchorIdList.size();
     }
+    qCDebug(app) << "Ending database transaction";
 }
 
 /**
@@ -342,6 +359,7 @@ void SearchDb::addSearchEntry(const QString &app_name, const QString &lang,
 void SearchDb::deleteSearchInfo(const QStringList &appName, const QStringList &lang)
 {
     Q_ASSERT(p_->db.isOpen());
+    qCDebug(app) << "Deleting search entry";
     QSqlQuery query(p_->db);
     bool preok = query.prepare(kSearchDeleteEntryByApp);
     if (!preok) {
@@ -354,6 +372,7 @@ void SearchDb::deleteSearchInfo(const QStringList &appName, const QStringList &l
         qCCritical(app) << "Failed to delete search entry:" << query.lastError().text();
         return;
     }
+    qCDebug(app) << "Search entry deleted successfully";
 }
 
 /**
@@ -390,17 +409,24 @@ void SearchDb::handleSearchAnchor(const QString &keyword)
     QString lang = QLocale().name();
     if (query.exec(QString("select count(*) from search where lang='%1';").arg(lang)) && query.next()) {
         int icount = query.value(0).toInt();
+        qCDebug(app) << "Found" << icount << "entries for language:" << lang;
+
         //如果当前语言不存在
         if (0 == icount) {
+            qCWarning(app) << "No entries found for language:" << lang << "- falling back to default";
+
             //藏语维语使用简体中文
             if (0 == lang.compare("ug_CN") || 0 == lang.compare("bo_CN")
                     || 0 == lang.compare("zh_HK") || 0 == lang.compare("zh_TW")) {
                 lang = "zh_CN";
+                qCDebug(app) << "Using Simplified Chinese as fallback language";
             } else {
                 lang = "en_US";
+                qCDebug(app) << "Using English as fallback language";
             }
         }
     }
+    qCDebug(app) << "Using language:" << lang;
     const QString sql =
         QString(kSearchSelectAnchor).replace(":anchor", keyword).replace(":lang", lang);
     qCDebug(app) << "Executing anchor search query:" << sql;
@@ -417,6 +443,7 @@ void SearchDb::handleSearchAnchor(const QString &keyword)
                         query.value(2).toString(),
                         query.value(3).toString(),
                     });
+                    qCDebug(app) << "handleSearchAnchor===> " << query.value(0).toString() << "h0";
                 } else {
                     result.append(SearchAnchorResult {
                         query.value(0).toString(),
@@ -424,6 +451,7 @@ void SearchDb::handleSearchAnchor(const QString &keyword)
                         query.value(2).toString(),
                         query.value(3).toString(),
                     });
+                    qCDebug(app) << "handleSearchAnchor===> " << query.value(0).toString() << "not h0";
                 }
             }
         }
@@ -445,6 +473,7 @@ void SearchDb::handleSearchAnchor(const QString &keyword)
  */
 QString SearchDb::insertHighlight(QString srcString, QString keyword)
 {
+    qCDebug(app) << "insertHighlight===>" << srcString << keyword;
     QString resultString = srcString;
     int currIndex = 0;
 
@@ -464,6 +493,7 @@ QString SearchDb::insertHighlight(QString srcString, QString keyword)
 
     } while (currIndex <= resultString.length() - keyword.length());
 
+    qCDebug(app) << "insertHighlight===>" << resultString;
     return resultString;
 }
 
@@ -476,6 +506,7 @@ QString SearchDb::insertHighlight(QString srcString, QString keyword)
  */
 QString SearchDb::highlightKeyword(QString srcString, QString keyword)
 {
+    qCDebug(app) << "highlightKeyword===>" << srcString << keyword;
     QString substrImgStart = "";
     QString substrImgEnd = "";
 
@@ -496,6 +527,7 @@ QString SearchDb::highlightKeyword(QString srcString, QString keyword)
     if (!srcString.contains(imgStartString)) {
         //添加<span>标签
         highlightString = insertHighlight(srcString, keyword);
+        qCDebug(app) << "highlightKeyword===>" << highlightString;
         return highlightString;
     }
 
@@ -515,6 +547,7 @@ QString SearchDb::highlightKeyword(QString srcString, QString keyword)
         if (findImgIndex > startSubStringIndex) {
             QString findStr =
                 srcString.mid(startSubStringIndex, findImgIndex - startSubStringIndex);
+            qCDebug(app) << "findStr===>" << findStr;
             if (!strList.contains(findStr)) {
                 strList.append(findStr);
 
@@ -522,6 +555,7 @@ QString SearchDb::highlightKeyword(QString srcString, QString keyword)
                 //添加<SPAN>标签
                 hightLightStr = insertHighlight(hightLightStr, keyword);
                 highlightString.append(hightLightStr);
+                qCDebug(app) << "highlightKeyword===>" << highlightString;
             }
         }
         ++currIndex;
@@ -532,6 +566,7 @@ QString SearchDb::highlightKeyword(QString srcString, QString keyword)
         int lastImgEndIndex = strEndIndexList.last();
 
         QString lastStr = srcString.mid(lastImgEndIndex, srcString.length() - lastImgEndIndex);
+        qCDebug(app) << "lastStr===>" << lastStr;
         if (lastStr.length() > 0) {
             strList.append(lastStr);
 
@@ -539,13 +574,17 @@ QString SearchDb::highlightKeyword(QString srcString, QString keyword)
             //添加<SPAN>标签
             hightLightStr = insertHighlight(hightLightStr, keyword);
             highlightString.append(hightLightStr);
+            qCDebug(app) << "highlightKeyword===>" << highlightString;
         }
     }
 
+    qCDebug(app) << "highlightKeyword===>" << highlightString;
     if (!strList.join("").contains(keyword, Qt::CaseInsensitive)) {
+        qCDebug(app) << "No keyword found in the highlighted string.";
         return "";
     }
 
+    qCDebug(app) << "highlightKeyword===>" << highlightString;
     return highlightString;
 }
 
@@ -559,6 +598,7 @@ QString SearchDb::highlightKeyword(QString srcString, QString keyword)
  */
 void SearchDb::sortSearchList(const QString &appName, const QStringList &anchors, const QStringList &anchorIds, const QStringList &contents, bool bIsTitleHigh)
 {
+    qCDebug(app) << "sortSearchList===>" << appName << anchors << anchorIds << contents << bIsTitleHigh;
     searchStrct obj;
     obj.appName = appName;
     obj.anchors = anchors;
@@ -571,12 +611,16 @@ void SearchDb::sortSearchList(const QString &appName, const QStringList &anchors
         nH0OfList++;
         //        listStruct.insert(0, obj);
         //        nH0OfList++;
+        qCDebug(app) << "sortSearchList===>h0";
     } else if (bIsTitleHigh) {
         //        listStruct.insert(nH0OfList, obj);
         listStruct.insert(0, obj);
+        qCDebug(app) << "sortSearchList===>title high";
     } else {
         listStruct.append(obj);
+        qCDebug(app) << "sortSearchList===>not h0";
     }
+    qCDebug(app) << "sortSearchList===> listStruct size:" << listStruct.size();
 }
 
 /**
@@ -590,6 +634,7 @@ void SearchDb::sortSearchList(const QString &appName, const QStringList &anchors
  */
 void SearchDb::omitHighlight(QString &highLight, const QString &keyword)
 {
+    qCDebug(app) << "omitHighlight===>" << highLight << keyword;
     QString highLightTemp = highLight;
     int nindex = highLightTemp.length();
     const QString imgStartString = "<img";
@@ -598,6 +643,7 @@ void SearchDb::omitHighlight(QString &highLight, const QString &keyword)
     QList<QString> imgList;
     QList<int> imgIndexList;
     int nSearchIndex = nindex - imgStartLeng;
+    qCDebug(app) << "omitHighlight===> nSearchIndex:" << nSearchIndex;
 
     while (nSearchIndex > 0) {
         //判断后N个字符里是否含有img路径..
@@ -607,6 +653,7 @@ void SearchDb::omitHighlight(QString &highLight, const QString &keyword)
         QRegularExpression regExp("<img .*");
 #endif
         if (highLightTemp.indexOf(regExp, nSearchIndex) != -1) {
+            qCDebug(app) << "omitHighlight===> find img";
             int nImgStart = highLightTemp.indexOf(imgStartString, nSearchIndex);
             int nImgEnd = highLightTemp.indexOf(imgEndString, nSearchIndex);
             if (nImgEnd > nImgStart) {
@@ -614,15 +661,18 @@ void SearchDb::omitHighlight(QString &highLight, const QString &keyword)
                 imgList.insert(0, strImg);
                 imgIndexList.insert(0, nImgStart);
                 highLightTemp = highLightTemp.left(nImgStart + 1) + highLightTemp.right(highLightTemp.length() - nImgEnd);
+                qCDebug(app) << "omitHighlight===> imgList:" << imgList << "imgIndexList:" << imgIndexList;
             }
         }
         nSearchIndex -= imgStartLeng;
     }
+    qCDebug(app) << "omitHighlight===> highLightTemp:" << highLightTemp;
 
     int keywordIndex = highLightTemp.indexOf(keyword, 0, Qt::CaseInsensitive);
     //暂时用150个字符来判断...后期是否可根据不同语言来分别用不同的长度判断条件..
     if (keywordIndex > 150) {
         int nOmitIndex = keywordIndex - 150;
+        qCDebug(app) << "omitHighlight===> nOmitIndex:" << nOmitIndex;
 
         for (int i = 0; i < imgIndexList.count(); i++) {
             if (nOmitIndex > imgIndexList[i]) {
@@ -631,6 +681,7 @@ void SearchDb::omitHighlight(QString &highLight, const QString &keyword)
         }
         highLight = "..." + highLight.mid(nOmitIndex);
     }
+    qCDebug(app) << "omitHighlight===> highLight:" << highLight;
 }
 
 /**
@@ -652,38 +703,46 @@ void SearchDb::handleSearchContent(const QString &keyword)
 #endif
     //屏蔽部分特殊字符，会导致JS层对HTML无法对应替换
     if (keyword.contains(exp)) {
+        qCDebug(app) << "Keyword contains special character, search failed";
         //发送未查找到结果->SearchManager::searchContentMismatch->SearchProxy::mismatch->JS
         emit this->searchContentMismatch(keyword);
         return;
     }
     //多个%号查询，查询条件错误
     if (keyword.contains(exp2)) {
+        qCWarning(app) << "Invalid search keyword containing multiple %%:" << keyword;
         //发送未查找到结果->SearchManager::searchContentMismatch->SearchProxy::mismatch->JS
         emit this->searchContentMismatch(keyword);
         return;
     }
+    qCDebug(app) << "Keyword validation passed, proceeding with search";
 
     QSqlQuery query(p_->db);
     QString lang = QLocale().name();
     if (query.exec(QString("select count(*) from search where lang='%1';").arg(lang)) && query.next()) {
+        qCDebug(app) << "Found" << query.value(0).toInt() << "entries for language:" << lang;
         int icount = query.value(0).toInt();
         //如果当前语言不存在
         if (0 == icount) {
             //藏语维语使用简体中文
             if (0 == lang.compare("ug_CN") || 0 == lang.compare("bo_CN")
                     || 0 == lang.compare("zh_HK") || 0 == lang.compare("zh_TW")) {
+                qCDebug(app) << "No entries found for language:" << lang << "- falling back to zh_CN";
                 lang = "zh_CN";
             } else {
+                qCDebug(app) << "No entries found for language:" << lang << "- falling back to en_US";
                 lang = "en_US";
             }
         }
     }
     const QString sql = QString(kSearchSelectContent).replace(":lang", lang).replace(":content", keyword);
+    qCDebug(app) << "Executing content search query:" << sql;
 
     listStruct.clear();
     nH0OfList = 0;
     bool result_empty = true;
     if (query.exec(sql)) {
+        qCDebug(app) << "Search content query executed successfully";
         bool bIsTitle = false;
         QString last_app_name = "";
         QStringList anchors;
@@ -698,6 +757,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
             const QString anchorId = query.value(2).toString();
             const QString content = query.value(3).toString();
             if (!strlistApp.contains(app_name) && !app_name.contains("video-guide")) {
+                qCDebug(app) << "app_name not in strlistApp, continue";
                 continue;
             }
 
@@ -706,14 +766,19 @@ void SearchDb::handleSearchContent(const QString &keyword)
             tmpContent = tmpContent.replace("\" >", "\">");
 
             QString highlightContent = highlightKeyword(tmpContent, keyword);
+            qCDebug(app) << "highlightContent:" << highlightContent;
 
-            if (app_name.contains("video-guide"))
+            if (app_name.contains("video-guide")) {
+                qCDebug(app) << "app_name contains video-guide, continue";
                 highlightContent = tmpContent;
+            }
 
 
             //如果关键字在img路径中,返回后退出本次循环.
-            if (highlightContent.isEmpty() && !anchor.contains(keyword))
+            if (highlightContent.isEmpty() && !anchor.contains(keyword)) {
+                qCDebug(app) << "highlightContent is empty, continue";
                 continue;
+            }
 
             //去除jpg文件, 影响页面格式.
 #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
@@ -743,24 +808,31 @@ void SearchDb::handleSearchContent(const QString &keyword)
             omitHighlight(highlightContent, keyword);
 
             if (app_name == last_app_name) {
+                qCDebug(app) << "app_name is same with last_app_name, continue";
                 anchors.append(anchor);
                 anchorIds.append(anchorId);
                 contents.append(highlightContent);
-                if (anchor.contains(keyword))
+                if (anchor.contains(keyword)) {
+                    qCDebug(app) << "anchor contains keyword, bIsTitle = true";
                     bIsTitle = true;
+                }
             } else {
+                qCDebug(app) << "app_name is different with last_app_name, sortSearchList";
                 if (!last_app_name.isEmpty()) {
                     sortSearchList(last_app_name, anchors, anchorIds, contents, bIsTitle);
                     anchors.clear();
                     anchorIds.clear();
                     contents.clear();
                     bIsTitle = false;
+                    qCDebug(app) << "sortSearchList done";
                 }
                 anchors.append(anchor);
                 anchorIds.append(anchorId);
                 contents.append(highlightContent);
-                if (anchor.contains(keyword))
+                if (anchor.contains(keyword)) {
+                    qCDebug(app) << "anchor contains keyword, bIsTitle = true";
                     bIsTitle = true;
+                }
                 last_app_name = app_name;
             }
         }
@@ -769,8 +841,10 @@ void SearchDb::handleSearchContent(const QString &keyword)
             sortSearchList(last_app_name, anchors, anchorIds, contents, bIsTitle);
         }
         for (searchStrct obj : listStruct) {
-            if (result_empty)
+            if (result_empty) {
                 result_empty = false;
+                qCDebug(app) << "result_empty = false";
+            }
             //发送查询结果->SearchManager::searchContentResult->SearchProxy::onContentResult->js
             emit this->searchContentResult(obj.appName, obj.anchors, obj.anchorIds, obj.contents);
         }
@@ -783,6 +857,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
         //发送未查找到结果->SearchManager::searchContentMismatch->SearchProxy::mismatch->JS
         emit this->searchContentMismatch(keyword);
     }
+    qCDebug(app) << "handleSearchContent done";
 }
 
 /**
@@ -796,6 +871,7 @@ void SearchDb::handleSearchContent(const QString &keyword)
 void SearchDb::insertFilesTimeEntry(const QStringList &listMdPath, const QStringList &listDataTime)
 {
     Q_ASSERT(p_->db.isOpen());
+    qCDebug(app) << "insertFilesTimeEntry";
 
     QSqlQuery query(p_->db);
     bool preok = query.prepare(kfileTimeDeleteEntryByApp);
@@ -829,6 +905,7 @@ void SearchDb::insertFilesTimeEntry(const QStringList &listMdPath, const QString
         bool ret = p_->db.commit();
         qCCritical(app) << "insert fileTime" << ret;
     }
+    qCDebug(app) << "insertFilesTimeEntry done";
 }
 
 /**
@@ -838,6 +915,7 @@ void SearchDb::insertFilesTimeEntry(const QStringList &listMdPath, const QString
 void SearchDb::deleteFilesTimeEntry(const QStringList &listMdPath)
 {
     Q_ASSERT(p_->db.isOpen());
+    qCDebug(app) << "deleteFilesTimeEntry";
 
     QSqlQuery query(p_->db);
     bool preok = query.prepare(kfileTimeDeleteEntryByApp);
@@ -854,6 +932,7 @@ void SearchDb::deleteFilesTimeEntry(const QStringList &listMdPath)
         p_->db.commit();
         qCCritical(app) << "delete fileInfo : mdPath = " << listMdPath;
     }
+    qCDebug(app) << "deleteFilesTimeEntry done";
 }
 
 /**
@@ -863,13 +942,16 @@ void SearchDb::deleteFilesTimeEntry(const QStringList &listMdPath)
 QMap<QString, QString> SearchDb::selectAllFileTime()
 {
     Q_ASSERT(p_->db.isOpen());
+    qCDebug(app) << "selectAllFileTime";
     QMap<QString, QString> mapRet;
     QSqlQuery query(p_->db);
     if (query.exec(kfileTimeSelectAll)) {
+        qCDebug(app) << "selectAllFileTime query executed successfully";
         while (query.next()) {
             mapRet.insert(query.value(0).toString(), query.value(1).toString());
         }
     }
+    qCDebug(app) << "selectAllFileTime done";
     return mapRet;
 }
 
@@ -879,11 +961,14 @@ QMap<QString, QString> SearchDb::selectAllFileTime()
  */
 void SearchDb::getAllApp()
 {
+    qCDebug(app) << "getAllApp";
     strlistApp = Utils::getSystemManualList();
+    qCDebug(app) << "getAllApp done";
 }
 
 void SearchDb::updateDb()
 {
+    qCDebug(app) << "updateDb";
     //删除本地数据库
     QString dbdir = QStandardPaths::writableLocation(QStandardPaths::HomeLocation) + "/.local/share/deepin/deepin-manual/search.db" ;
     QDir dir(dbdir);
@@ -894,12 +979,14 @@ void SearchDb::updateDb()
     dir.remove(dbdir);
     //重新加载数据库，创建新表
     createTable();
-
+    qCDebug(app) << "updateDb done";
 }
 
 void SearchDb::createTable()
 {
+    qCDebug(app) << "createTable";
     initDb();
     initSearchTable();
     initTimeTable();
+    qCDebug(app) << "createTable done";
 }
