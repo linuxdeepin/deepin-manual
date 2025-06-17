@@ -22,6 +22,7 @@ void SearchCompletionDelegate::paint(QPainter *painter, const QStyleOptionViewIt
                                      const QModelIndex &index) const
 {
     if (index.isValid()) {
+        qCDebug(app) << "Painting completion item at row:" << index.row();
         painter->save();
         painter->setRenderHint(QPainter::Antialiasing, true);
 
@@ -36,6 +37,8 @@ void SearchCompletionDelegate::paint(QPainter *painter, const QStyleOptionViewIt
 
         QString strSearchKeyword = itemModel.strSearchKeyword;
         QString strSearchAppDisplayName = itemModel.strSearchAppDisplayName;
+        qCDebug(app) << "Item data - keyword:" << strSearchKeyword
+                    << "app:" << strSearchAppDisplayName;
 
         QStyleOptionViewItem viewOption(option); //用来在视图中画一个item
 
@@ -50,7 +53,10 @@ void SearchCompletionDelegate::paint(QPainter *painter, const QStyleOptionViewIt
         painter->setFont(nameFont);
 
         QString searchText = QString("%1(%2)").arg(strSearchKeyword, strSearchAppDisplayName);
+        qCDebug(app) << "Formatted search text:" << searchText;
+
         if (option.state & QStyle::State_Selected) {
+            qCDebug(app) << "Painting selected item";
             QPainterPath path;
             QRect rect;
             rect.setX(option.rect.x());
@@ -67,7 +73,11 @@ void SearchCompletionDelegate::paint(QPainter *painter, const QStyleOptionViewIt
             QRect searchTextRect = QRect(rect.left() + 32, rect.top() + 7, rect.width() - 64, rect.height() - 14);
             QFontMetrics fontMetric(nameFont);
             const QString elidedSearchText = fontMetric.elidedText(searchText, Qt::ElideRight, rect.width() - 64);
+            qCDebug(app) << "Original text:" << searchText
+                        << "Elided text:" << elidedSearchText
+                        << "Available width:" << rect.width() - 64;
             painter->drawText(searchTextRect, Qt::AlignLeft | Qt::AlignVCenter, elidedSearchText);
+            qCDebug(app) << "Text drawn in selected state";
         } else {
             QPainterPath path;
             QRect rect;
@@ -86,7 +96,11 @@ void SearchCompletionDelegate::paint(QPainter *painter, const QStyleOptionViewIt
             QRect searchTextRect = QRect(rect.left() + 32, rect.top() + 6, rect.width() - 64, rect.height() - 13);
             QFontMetrics fontMetric(nameFont);
             const QString elidedSearchText = fontMetric.elidedText(searchText, Qt::ElideRight, rect.width() - 64);
+            qCDebug(app) << "Original text:" << searchText
+                        << "Elided text:" << elidedSearchText
+                        << "Available width:" << rect.width() - 64;
             painter->drawText(searchTextRect, Qt::AlignLeft | Qt::AlignVCenter, elidedSearchText);
+            qCDebug(app) << "Text drawn in normal state";
         }
 
         painter->restore();
@@ -100,8 +114,10 @@ QSize SearchCompletionDelegate::sizeHint(const QStyleOptionViewItem &option,
 {
     qCDebug(app) << "SearchCompletionDelegate::sizeHint() called for index:" << index;
     if (0 == index.row()) {
+        qCDebug(app) << "Returning default size 41";
         return QSize(option.rect.width(), 34 + 7);
     } else {
+        qCDebug(app) << "Returning default size 34";
         return QSize(option.rect.width(), 34);
     }
 }

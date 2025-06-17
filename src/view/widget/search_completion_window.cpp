@@ -28,6 +28,7 @@ SearchCompletionWindow::SearchCompletionWindow(QWidget *parent)
 
     this->initUI();
     this->initConnections();
+    qCDebug(app) << "SearchCompletionWindow initialization completed";
 }
 
 SearchCompletionWindow::~SearchCompletionWindow()
@@ -42,8 +43,10 @@ SearchCompletionWindow::~SearchCompletionWindow()
  */
 void SearchCompletionWindow::updateColor(const QColor &color)
 {
+    qCDebug(app) << "Updating button color";
     if (search_button_) {
         search_button_->updateColor(color);
+        qCDebug(app) << "Button color updated";
     }
 }
 
@@ -59,11 +62,13 @@ void SearchCompletionWindow::autoResize()
 
     int resultViewHeight = kItemHeight;
     if (rowCount > 0 && rowCount < 7) {
+        qCDebug(app) << "Result count 0 ~ 7";
         resultViewHeight = rowCount * kItemHeight + 7;
         result_view_->setFixedHeight(resultViewHeight);
         this->setFixedHeight(resultViewHeight + kItemHeight + 7);
         search_button_->setGeometry(0, resultViewHeight, result_view_->width(), kItemHeight + 7);
     } else {
+        qCDebug(app) << "Result count > 7";
         resultViewHeight = 7 * kItemHeight + 7;
         result_view_->setFixedHeight(7 * kItemHeight + 7);
         this->setFixedHeight(resultViewHeight + kItemHeight + 7);
@@ -73,6 +78,7 @@ void SearchCompletionWindow::autoResize()
     result_view_->setFixedWidth(this->width());
     search_button_->setFixedWidth(this->width());
     result_view_->setVisible(search_compeletion_model_->rowCount() > 0);
+    qCDebug(app) << "Window auto resized";
 }
 
 /**
@@ -83,27 +89,34 @@ void SearchCompletionWindow::goDown()
 {
     qCDebug(app) << "Processing down arrow key navigation";
     if (nullptr == search_compeletion_model_) {
+        qCDebug(app) << "Search completion model is null";
         return;
     }
 
     if (search_compeletion_model_->rowCount() == 0) {
+        qCDebug(app) << "Result count 0";
         search_button_->setChecked(true);
     } else {
         if (search_button_->isChecked()) {
+            qCDebug(app) << "Search button is checked";
             search_button_->setChecked(false);
             const QModelIndex first_idx = search_compeletion_model_->index(0, 0);
             result_view_->setCurrentIndex(first_idx);
         } else {
+            qCDebug(app) << "Search button is not checked";
             const int down_row = result_view_->currentIndex().row() + 1;
             if (down_row >= search_compeletion_model_->rowCount()) {
+                qCDebug(app) << "Down row >= row count";
                 search_button_->setChecked(true);
                 result_view_->setCurrentIndex(QModelIndex());
             } else {
+                qCDebug(app) << "Moving down to row:" << down_row;
                 const QModelIndex down_idx = search_compeletion_model_->index(down_row, 0);
                 result_view_->setCurrentIndex(down_idx);
             }
         }
     }
+    qCDebug(app) << "Down arrow key navigation processed";
 }
 
 /**
@@ -114,27 +127,34 @@ void SearchCompletionWindow::goUp()
 {
     qCDebug(app) << "Processing up arrow key navigation";
     if (nullptr == search_compeletion_model_) {
+        qCDebug(app) << "Search completion model is null";
         return;
     }
     if (search_compeletion_model_->rowCount() == 0) {
+        qCDebug(app) << "Result count 0";
         search_button_->setChecked(true);
     } else {
         if (search_button_->isChecked()) {
+            qCDebug(app) << "Search button is checked";
             search_button_->setChecked(false);
             // Select last item.
             const QModelIndex idx = search_compeletion_model_->index(search_compeletion_model_->rowCount() - 1, 0);
             result_view_->setCurrentIndex(idx);
         } else {
+            qCDebug(app) << "Search button is not checked";
             const int up_row = result_view_->currentIndex().row() - 1;
             if (up_row < 0) {
+                qCDebug(app) << "Up row < 0";
                 result_view_->setCurrentIndex(QModelIndex());
                 search_button_->setChecked(true);
             } else {
+                qCDebug(app) << "Moving up to row:" << up_row;
                 const QModelIndex up_idx = search_compeletion_model_->index(up_row, 0);
                 result_view_->setCurrentIndex(up_idx);
             }
         }
     }
+    qCDebug(app) << "Up arrow key navigation processed";
 }
 
 /**
@@ -148,15 +168,18 @@ void SearchCompletionWindow::onEnterPressed()
     qCDebug(app) << "Enter key pressed, current selection:"
              << (search_button_->isChecked() ? "search button" : "result item");
     if (search_button_->isChecked()) {
+        qCDebug(app) << "Search button is checked, performing full text search";
         //最后选项在内容中查找结果 WebWindow::onSearchButtonClicked
         emit this->searchButtonClicked();
     } else {
+        qCDebug(app) << "Result item is selected, getting content and emitting resultClicked signal";
         const QModelIndex idx = result_view_->currentIndex();
         //搜索结果选项单击
         this->onResultListClicked(idx);
     }
     // 点击任何一个Ｉｔｅｍ后都隐藏整个窗口
     this->hide();
+    qCDebug(app) << "Enter key processed";
 }
 
 /**
@@ -166,12 +189,14 @@ void SearchCompletionWindow::onEnterPressed()
  */
 void SearchCompletionWindow::setKeyword(const QString &keyword)
 {
+    qCDebug(app) << "Setting search keyword:" << keyword;
     keyword_ = keyword;
     QFontMetrics metrics = search_button_->fontMetrics();
     search_button_->setText(
                 metrics.elidedText(
                     QObject::tr("Search for \"%1\" in the full text").arg(keyword),
                     Qt::ElideRight, 350 - 39));
+    qCDebug(app) << "Search keyword set";
 }
 
 /**
@@ -197,6 +222,7 @@ void SearchCompletionWindow::setSearchAnchorResult(const SearchAnchorResultList 
     //查询结果显示
     initSearchCompletionListData(searchDataList);
     this->autoResize();
+    qCDebug(app) << "Search results set";
 }
 
 /**
@@ -205,6 +231,7 @@ void SearchCompletionWindow::setSearchAnchorResult(const SearchAnchorResultList 
  */
 void SearchCompletionWindow::initConnections()
 {
+    qCDebug(app) << "Connecting result view signals";
     connect(result_view_, &SearchCompletionListView::onClickSearchCompletionItem,
             this, &SearchCompletionWindow::onResultListClicked);
     connect(result_view_, &DListView::entered,
@@ -213,6 +240,7 @@ void SearchCompletionWindow::initConnections()
             this, &SearchCompletionWindow::onSearchButtonEntered);
     connect(search_button_, &SearchButton::pressed,
             this, &SearchCompletionWindow::searchButtonClicked);
+    qCDebug(app) << "Result view signals connected";
 }
 
 /**
@@ -222,6 +250,7 @@ void SearchCompletionWindow::initConnections()
  */
 void SearchCompletionWindow::initSearchCompletionListData(QList<SearchCompletionItemModel> dataList)
 {
+    qCDebug(app) << "Initializing search completion list data, count:" << dataList.size();
     search_compeletion_model_ = new QStandardItemModel(result_view_);
 
     for (int i = 0; i < dataList.size(); i++) {
@@ -233,6 +262,7 @@ void SearchCompletionWindow::initSearchCompletionListData(QList<SearchCompletion
     }
 
     result_view_->setModel(search_compeletion_model_);
+    qCDebug(app) << "Search completion list data initialized";
 }
 
 /**
@@ -265,12 +295,13 @@ void SearchCompletionWindow::initUI()
     this->setMinimumHeight(kItemHeight);
     this->setFixedWidth(350);
     if(!Utils::judgeWayLand()){
+        qCDebug(app) << "Setting window flags";
         this->setWindowFlags(Qt::FramelessWindowHint
                              | Qt::CustomizeWindowHint
                              | Qt::BypassWindowManagerHint);
         this->setAttribute(Qt::WA_NativeWindow, true);
     }
-
+    qCDebug(app) << "Search completion window UI initialized";
 }
 
 /**
@@ -292,12 +323,15 @@ void SearchCompletionWindow::paintEvent(QPaintEvent *event)
     if(!Utils::judgeWayLand()){
         if (DWindowManagerHelper::instance()->hasComposite()) {
             fillColor = pa.color(DPalette::FrameBorder);
+            qCDebug(app) << "Using frame border color:" << fillColor;
         } else {
             DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
             if (themeType == DGuiApplicationHelper::LightType) {
                 fillColor = QColor(255, 255, 255);
+                qCDebug(app) << "Using light theme color";
             } else if (themeType == DGuiApplicationHelper::DarkType) {
                 fillColor = QColor(0, 0, 0);
+                qCDebug(app) << "Using dark theme color";
             }
         }
     }else {
@@ -305,9 +339,11 @@ void SearchCompletionWindow::paintEvent(QPaintEvent *event)
         if (themeType == DGuiApplicationHelper::LightType) {
             fillColor = QColor(255, 255, 255);
             setMaskAlpha(255);
+            qCDebug(app) << "Using light theme color for Wayland";
         } else if (themeType == DGuiApplicationHelper::DarkType) {
             fillColor = QColor(0, 0, 0);
             setMaskAlpha(255);
+            qCDebug(app) << "Using dark theme color for Wayland";
         }
     }
 
@@ -326,15 +362,18 @@ void SearchCompletionWindow::onResultListClicked(const QModelIndex &index)
 {
     qCDebug(app) << "Result list item clicked, row:" << index.row();
     if (index.isValid()) {
+        qCDebug(app) << "Valid index, getting content and emitting resultClicked signal";
         const int row = index.row();
         //发送信号->WebWindow::onSearchResultClicked
         emit this->resultClicked(result_.at(row));
         result_view_->setCurrentIndex(QModelIndex());
     } else {
+        qCDebug(app) << "Invalid index, simulating search button click";
         // 模拟按钮单击事件。
         emit this->searchButtonClicked();
     }
     this->hide();
+    qCDebug(app) << "Result list item clicked processed";
 }
 
 /**
@@ -343,8 +382,10 @@ void SearchCompletionWindow::onResultListClicked(const QModelIndex &index)
  */
 void SearchCompletionWindow::onSearchButtonEntered()
 {
+    qCDebug(app) << "Search button entered, setting checked state";
     search_button_->setChecked(true);
     result_view_->setCurrentIndex(QModelIndex());
+    qCDebug(app) << "Search button entered processed";
 }
 
 /**
@@ -354,6 +395,8 @@ void SearchCompletionWindow::onSearchButtonEntered()
  */
 void SearchCompletionWindow::onResultListEntered(const QModelIndex &index)
 {
+    qCDebug(app) << "Result list entered, setting current index to row:" << index.row();
     result_view_->setCurrentIndex(index);
     search_button_->setChecked(false);
+    qCDebug(app) << "Result list entered processed";
 }

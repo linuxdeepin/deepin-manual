@@ -30,6 +30,7 @@ ImageViewer::ImageViewer(QWidget *parent)
     this->initUI();
 
     connect(close_button_, &Dtk::Widget::DIconButton::clicked, this, &ImageViewer::close);
+    qCDebug(app) << "ImageViewer constructor done";
 }
 
 ImageViewer::~ImageViewer()
@@ -51,6 +52,7 @@ void ImageViewer::open(const QString &filepath)
     if (abspath.contains("://")) {
         QUrl url(abspath);
         abspath = url.path();
+        qCDebug(app) << "Extracted path from URL:" << abspath;
     }
     QImage image;
     QImageReader reader(abspath);
@@ -74,11 +76,14 @@ void ImageViewer::open(const QString &filepath)
     const int pixmap_max_height = static_cast<int>(screen_rect.height() * 0.8);
 
     if ((image.width() > pixmap_max_width) || (image.height() > pixmap_max_height)) {
+        qCDebug(app) << "Scaling image from" << image.size()
+                    << "to max" << pixmap_max_width << "x" << pixmap_max_height;
         image = image.scaled(pixmap_max_width, pixmap_max_height, Qt::KeepAspectRatio,
                              Qt::SmoothTransformation);
     }
     //小图标不点击放大
     if (image.width() < 50 && image.height() < 50) {
+        qCDebug(app) << "Skipping small image:" << image.size();
         return;
     }
     this->move(screen_rect.topLeft());
@@ -99,6 +104,7 @@ void ImageViewer::open(const QString &filepath)
                         top_right_point.y() - kCloseBtnSize / 2);
     close_button_->show();
     close_button_->raise();
+    qCDebug(app) << "ImageViewer opened:" << filepath;
 }
 
 /**
@@ -133,6 +139,8 @@ void ImageViewer::initUI()
         qCDebug(app) << "pressed esc!";
         this->hide();
     });
+
+    qCDebug(app) << "UI initialization completed";
 }
 
 /**
@@ -142,8 +150,10 @@ void ImageViewer::initUI()
  */
 void ImageViewer::mousePressEvent(QMouseEvent *event)
 {
+    qCDebug(app) << "Mouse press event";
     QWidget::mousePressEvent(event);
     this->hide();
+    qCDebug(app) << "Image viewer hidden by mouse click";
 }
 
 /**

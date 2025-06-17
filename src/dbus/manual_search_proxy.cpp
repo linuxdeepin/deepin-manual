@@ -15,12 +15,15 @@ ManualSearchProxy::ManualSearchProxy(QObject *parent)
     : QObject(parent)
     , m_bWindowState(false)
 {
+    qCDebug(app) << "ManualSearchProxy constructor called";
     this->setObjectName("ManualSearchProxy");
     connectToSender();
+    qCDebug(app) << "ManualSearchProxy initialized";
 }
 
 ManualSearchProxy::~ManualSearchProxy()
 {
+    qCDebug(app) << "ManualSearchProxy destructor called";
 }
 
 /**
@@ -29,6 +32,7 @@ ManualSearchProxy::~ManualSearchProxy()
  */
 void ManualSearchProxy::connectToSender()
 {
+    qCDebug(app) << "connectToBus()::connect() to Sender";
     QDBusConnection senderConn =
         QDBusConnection::connectToBus(QDBusConnection::SessionBus, "Sender");
 
@@ -61,18 +65,21 @@ void ManualSearchProxy::RecvMsg(const QString &data)
     }
     QString flag = dataList.last();
     if ("close" == flag) {
+        qCDebug(app) << "Processing window close message";
         m_sApplicationPid = nullptr;
         m_bWindowState = false;
     } else {
+        qCDebug(app) << "Processing window open message, PID:" << dataList.last();
         m_bWindowState = true;
         m_sApplicationPid = dataList.last();
         //关闭dmanhelper
         if ("closeDmanHelper" == flag) {
+            qCDebug(app) << "Received closeDmanHelper command, exiting";
             exit(0);
         }
     }
 
-    return;
+    qCDebug(app) << "Window state updated - isOpen:" << m_bWindowState;
 }
 
 /**
@@ -88,6 +95,7 @@ void ManualSearchProxy::OnNewWindowOpen(const QString &data)
         quintptr winId = m_sApplicationPid.toULong();
         Utils::activeWindow(winId);
     }
+    qCDebug(app) << "Window state updated - isOpen:" << m_bWindowState;
 }
 
 /**
@@ -98,25 +106,34 @@ void ManualSearchProxy::OnNewWindowOpen(const QString &data)
  */
 bool ManualSearchProxy::ManualExists(const QString &app_name)
 {
+    qCDebug(app) << "Checking if manual exists for:" << app_name;
     QStringList moduleList;
-    QStringList  strManualPathList = Utils::getMdsourcePath();
+    QStringList strManualPathList = Utils::getMdsourcePath();
     foreach (auto strManualPath, strManualPathList) {
+        qCDebug(app) << "Processing path:" << strManualPath;
         for (const QString &type : QDir(strManualPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
             if (type == "system" || type == "application") {
                 QString typePath = strManualPath + "/" + type;
+                qCDebug(app) << "Found system/application dir:" << typePath;
                 for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
                     moduleList.append(module);
+                    qCDebug(app) << "Added module:" << module;
                 }
             }
 #if 1 //旧文案结构兼容
             if (systemType.contains(type)) {
                 QString typePath = strManualPath + "/" + type;
+                qCDebug(app) << "Found legacy dir:" << typePath;
                 for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
                     moduleList.append(module);
+                    qCDebug(app) << "Added legacy module:" << module;
                 }
             }
 #endif
         }
     }
-    return moduleList.contains(app_name);
+
+    bool exists = moduleList.contains(app_name);
+    qCDebug(app) << "Manual exists check result:" << exists;
+    return exists;
 }

@@ -23,11 +23,14 @@ namespace {
 
 QString ConvertOldDmanPath(const QString &app_name)
 {
+    qCDebug(app) << "Converting old dman path:" << app_name;
     const QStringList parts = app_name.split('/');
     const int dman_index = parts.indexOf("dman");
     if (dman_index > 0 && dman_index < parts.length() - 1) {
+        qCDebug(app) << "Found dman index:" << dman_index;
         return parts.at(dman_index + 1);
     }
+    qCDebug(app) << "Failed to convert old dman path:" << app_name;
     return app_name;
 }
 
@@ -37,10 +40,12 @@ ArgumentParser::ArgumentParser(QObject *parent)
     : QObject(parent)
     , bIsDbus(false)
 {
+    qCDebug(app) << "Creating ArgumentParser instance";
 }
 
 ArgumentParser::~ArgumentParser()
 {
+    qCDebug(app) << "Destroying ArgumentParser instance";
 }
 
 /**
@@ -95,12 +100,14 @@ bool ArgumentParser::parseArguments()
             //激活已有dman
             QDBusReply<void> reply = manual.call("Open", "");
         }
+        qCDebug(app) << "returing false";
         return false;
     } else {
         qCDebug(app) << "Register dbus service successfully";
         const QStringList position_args = parser.positionalArguments();
         // 不带参为首页,带参跳转到具体模块.
         if (position_args.isEmpty()) {
+            qCDebug(app) << "No positional arguments found, opening home page";
             //如果通过dbus打开dman, 则parser.isSet("dbus")为true
             if (parser.isSet("dbus")) {
                 qCDebug(app) << "DBus mode detected";
@@ -113,6 +120,7 @@ bool ArgumentParser::parseArguments()
             curManual = position_args.at(0);
             qCDebug(app) << "Manual specified:" << curManual;
         }
+        qCDebug(app) << "returing true";
         return true;
     }
 }
@@ -155,6 +163,7 @@ void ArgumentParser::onOpenAppRequested(const QString &app_name, const QString &
     qCDebug(app) << "Converted app name:" << compact_app_name << "from:" << app_name;
     //openManualRequested---->WindowManager::openManual
     emit this->openManualRequested(compact_app_name, title_name);
+    qCDebug(app) << "Emitted openManualRequested signal";
 }
 
 /**

@@ -58,7 +58,9 @@ int main(int argc, char **argv)
 
     // 增加路径以搜索主机应用和玲珑应用中的帮助手册
     if (qEnvironmentVariableIsSet("LINGLONG_APPID")) {
+        qDebug() << "Running in Linglong container environment";
         QByteArray paths = qgetenv("XDG_DATA_DIRS");
+        qDebug() << "Original XDG_DATA_DIRS:" << paths;
         paths.append(":/run/host/rootfs/usr/share:/run/host/rootfs/var/lib/linglong/entries/share");
         qputenv("XDG_DATA_DIRS", paths);
     }
@@ -72,14 +74,18 @@ int main(int argc, char **argv)
     QString logPath = Dtk::Core::DLogManager::getlogFilePath();
     qDebug() << "Log file path:" << logPath;
 
+    qDebug() << "Initializing OpenGL context";
     QOpenGLContext ctx;
     QSurfaceFormat fmt;
     fmt.setRenderableType(QSurfaceFormat::OpenGL);
+    qDebug() << "Setting OpenGL renderable type";
     ctx.setFormat(fmt);
+    qDebug() << "Creating OpenGL context";
     ctx.create();
     if (!ctx.isValid()) {
         qWarning() << "OpenGL context invalid, fallback to OpenGLES";
         fmt.setRenderableType(QSurfaceFormat::OpenGLES);
+        qDebug() << "OpenGLES format set, profile:" << fmt.profile();
     } else {
         qDebug() << "OpenGL context created successfully";
     }
@@ -98,6 +104,8 @@ int main(int argc, char **argv)
     } else {
         qDebug() << "dmanHelper register dbus service success!";
     }
+    qInfo() << "Successfully registered DBus service:" << kManualSearchService
+           << "and object path:" << kManualSearchIface;
 
     helperManager obj;
 

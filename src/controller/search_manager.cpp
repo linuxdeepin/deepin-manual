@@ -26,16 +26,16 @@ SearchManager::SearchManager(QObject *parent)
 void SearchManager::initSearchManager()
 {
     qCDebug(app) << "Initializing search manager";
-    
+
     db_thread_ = new QThread(this);
     qCDebug(app) << "Created database thread:" << db_thread_;
-    
+
     db_ = new SearchDb();
     qCDebug(app) << "Created database instance:" << db_;
-    
+
     db_thread_->start();
     qCDebug(app) << "Database thread started";
-    
+
     db_->moveToThread(db_thread_);
 
     connect(this, &SearchManager::searchAnchor, db_, &SearchDb::searchAnchor);
@@ -54,10 +54,12 @@ void SearchManager::initSearchManager()
 
 SearchManager::~SearchManager()
 {
+    qCDebug(app) << "Destroying SearchManager instance";
     db_thread_->quit();
     db_thread_->wait();
     delete db_thread_;
     db_thread_ = nullptr;
     delete db_;
     db_ = nullptr;
+    qCDebug(app) << "SearchManager destroyed";
 }

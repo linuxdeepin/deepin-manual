@@ -107,10 +107,12 @@ const QDBusArgument &operator>>(const QDBusArgument &argument, ReplyStruct &info
 Utils::Utils(QObject *parent)
     : QObject(parent)
 {
+    qCDebug(app) << "Utils instance created";
 }
 
 Utils::~Utils()
 {
+    qCDebug(app) << "Utils instance destroyed";
 }
 
 /**
@@ -142,10 +144,11 @@ QPixmap Utils::renderSVG(const QString &filePath, const QSize &size)
         pixmap.setDevicePixelRatio(ratio);
     } else {
         pixmap.load(filePath);
+        qCDebug(app) << "SVG cannot be read, loading directly from file:" << filePath;
     }
 
     m_imgCacheHash.insert(filePath, pixmap);
-
+    qCDebug(app) << "SVG rendered successfully, size:" << pixmap.size();
     return pixmap;
 }
 
@@ -172,6 +175,7 @@ QString Utils::translateTitle(const QString &titleUS)
             } else {
                 strRet = languageArr[i][2];
             }
+            qCDebug(app) << "Translated title:" << strRet;
         }
     }
     return strRet;
@@ -218,9 +222,8 @@ QList<AppInfo> Utils::launcherInterface()
             app.category_id = list.at(var).m_categoryId;
             app.installed_time = list.at(var).m_installedTime;
             applist.append(app);
-            //qCDebug(app) << "dbusMsg ---- : " << var << list.at(var).m_name;
         }
-//        qCDebug(app) << applist.size() << "applist " << applist;
+        qCDebug(app) << applist.size() << "applist " << applist;
         return applist;
     } else {
         qCDebug(app) << "GetAllItemInfos fail! " << reply.error().message();
@@ -248,6 +251,7 @@ bool Utils::judgeWayLand()
         return true;
     }
 
+    qCDebug(app) << "XDG_SESSION_TYPE:" << XDG_SESSION_TYPE << "WAYLAND_DISPLAY:" << WAYLAND_DISPLAY;
     return false;
 }
 
@@ -256,21 +260,33 @@ QStringList Utils::getMdsourcePath()
     qCDebug(app) << "Getting manual source paths";
     QStringList sourcePath;
     QStringList pathlist = getEnvsourcePath();
+    qCDebug(app) << "Environment source paths:" << pathlist;
+
     for (int i = 0; i < pathlist.size(); ++i) {
-        sourcePath.push_back(pathlist[i] + "/deepin-manual/manual-assets");
+        QString manualPath = pathlist[i] + "/deepin-manual/manual-assets";
+        qCDebug(app) << "Checking manual path:" << manualPath;
+        sourcePath.push_back(manualPath);
     }
+
+    qCDebug(app) << "Adding default manual directory:" << DMAN_MANUAL_DIR;
     sourcePath.push_back(DMAN_MANUAL_DIR);
+
     qCDebug(app) << "Final manual source paths:" << sourcePath;
-    // qCDebug(app) << " all MD source path : " << sourcePath.last();
     return sourcePath;
 }
 
 QStringList Utils::getEnvsourcePath()
 {
-    QStringList pathlist = QString(qgetenv("XDG_DATA_DIRS")).split(':');
-    if (pathlist.size() == 1 && pathlist[0].isEmpty())
+    QString xdgDataDirs = qgetenv("XDG_DATA_DIRS");
+    qCDebug(app) << "XDG_DATA_DIRS environment variable:" << xdgDataDirs;
+
+    QStringList pathlist = xdgDataDirs.split(':');
+    if (pathlist.size() == 1 && pathlist[0].isEmpty()) {
+        qCDebug(app) << "XDG_DATA_DIRS is empty, using default path";
         pathlist[0] = "/usr/share";
-    // qCDebug(app) << " all source path : " << pathlist;
+    }
+
+    qCDebug(app) << "Final environment source paths:" << pathlist;
     return pathlist;
 }
 
@@ -279,15 +295,22 @@ QString Utils::getDesktopFilePath(const QString &desktopname)
     qCDebug(app) << "Searching desktop file for:" << desktopname;
     // 遍历XDG_DATA_DIRS中的路径，找寻指定desktop文件
     QStringList pathList = getEnvsourcePath();
+    qCDebug(app) << "Searching in paths:" << pathList;
+
     foreach (auto path, pathList) {
         QString filepath = path + QString("/applications/%1.desktop").arg(desktopname);
+        qCDebug(app) << "Checking path:" << filepath;
+
         QFile file(filepath);
         if (file.exists()) {
             qCDebug(app) << "Found desktop file at:" << filepath;
             return filepath;
+        } else {
+            qCDebug(app) << "Desktop file not found at:" << filepath;
         }
     }
 
+    qCWarning(app) << "Desktop file not found for:" << desktopname;
     return "";
 }
 
@@ -297,6 +320,7 @@ QString Utils::getDesktopFilePath(const QString &desktopname)
  */
 QStringList Utils::getSystemManualList()
 {
+    qCDebug(app) << "Getting system manual list";
     QStringList app_list_;
     QStringList strMANUAL_DIR_list = Utils::getMdsourcePath();
     Dtk::Core::DSysInfo::UosEdition type = Utils::uosEditionType();
@@ -306,15 +330,21 @@ QStringList Utils::getSystemManualList()
         QString oldMdPath = strMANUAL_DIR;
         if (Dtk::Core::DSysInfo::UosServer == Dtk::Core::DSysInfo::uosType()) {
             oldMdPath += "/server";
+            qCDebug(app) << "server manual path:" << oldMdPath;
         } else if (Dtk::Core::DSysInfo::UosHome == type) {
             oldMdPath += "/personal";
+            qCDebug(app) << "personal manual path:" << oldMdPath;
         } else if (Dtk::Core::DSysInfo::UosEducation == type) {
             oldMdPath += "/education";
+            qCDebug(app) << "education manual path:" << oldMdPath;
         } else if (Dtk::Core::DSysInfo::UosCommunity == type) {
             oldMdPath += "/community";
+            qCDebug(app) << "community manual path:" << oldMdPath;
         } else {
             oldMdPath += "/professional";
+            qCDebug(app) << "professional manual path:" << oldMdPath;
         }
+        qCDebug(app) << "old manual path:" << oldMdPath;
         const QStringList oldAppList = QDir(oldMdPath).entryList(QDir::Dirs|QDir::NoDotAndDotDot);
         for(auto app:applicationList){
             if (app_list_.indexOf(app) == -1) {
@@ -325,13 +355,16 @@ QStringList Utils::getSystemManualList()
             if (app_list_.indexOf("dde") == -1) {
                 app_list_.append("dde");
             }
+            qCDebug(app) << "app_list_:" << app_list_ << ", count:" << app_list_.size();
         }
         // 非应用文档，直接添加
         if (systemList.contains(kLearnBasicOperations) || oldAppList.contains(kLearnBasicOperations)) {
+            qCDebug(app) << "systemList contains:" << kLearnBasicOperations;
             if (Dtk::Core::DSysInfo::UosCommunity != type && app_list_.indexOf(kLearnBasicOperations) == -1)
                 app_list_.append(kLearnBasicOperations);
         }
         if (systemList.contains(kCommonApplicationLibraries) || oldAppList.contains(kCommonApplicationLibraries)) {
+            qCDebug(app) << "systemList contains:" << kCommonApplicationLibraries;
             if (Dtk::Core::DSysInfo::UosCommunity != type && app_list_.indexOf(kCommonApplicationLibraries) == -1 )
                 app_list_.append(kCommonApplicationLibraries);
         }
@@ -348,6 +381,7 @@ QStringList Utils::getSystemManualList()
  */
 QStringList Utils::getSystemManualDir()
 {
+    qCDebug(app) << "system manual dir:" << Utils::getMdsourcePath();
     return Utils::getMdsourcePath();
 }
 
@@ -359,6 +393,7 @@ QStringList Utils::getSystemManualDir()
  */
 QList<AppInfo> Utils::sortAppList(QMultiMap<qlonglong, AppInfo> map)
 {
+    qCDebug(app) << "Sorting application list";
     QList<AppInfo> listEnd;
     QList<AppInfo> listtmp;
     qlonglong longlongtmp = 0;
@@ -369,6 +404,7 @@ QList<AppInfo> Utils::sortAppList(QMultiMap<qlonglong, AppInfo> map)
             listtmp.append(it.value());
             longlongtmp = it.key();
             ++it;
+            qCDebug(app) << "First app:" << it.value().name;
             continue;
         }
 
@@ -378,6 +414,7 @@ QList<AppInfo> Utils::sortAppList(QMultiMap<qlonglong, AppInfo> map)
         //清空listtmp, 修改longlongtmp记录当前key;
         if (it.key() == longlongtmp) {
             listtmp.append(it.value());
+            qCDebug(app) << "Same time app:" << it.value().name;
         } else if (!listtmp.isEmpty() && it.key() != longlongtmp) {
             AppInfo m;
             for (int i = 0; i < listtmp.size(); ++i) {
@@ -393,11 +430,14 @@ QList<AppInfo> Utils::sortAppList(QMultiMap<qlonglong, AppInfo> map)
             listtmp.clear();
             longlongtmp = it.key();
             listtmp.append(it.value());
+            qCDebug(app) << "Sort app:" << it.value().name;
         }
         ++it;
+        qCDebug(app) << "Next app:" << it.value().name;
     }
     //最后判断listtmp是否为空，处理循环结束时，最后几次longlongtmp都是相等的情况
     if (!listtmp.isEmpty()) {
+        qCDebug(app) << "Sort last app:" << listtmp.at(0).name;
         QList<AppInfo> temp;
         {
             AppInfo m;
@@ -414,6 +454,7 @@ QList<AppInfo> Utils::sortAppList(QMultiMap<qlonglong, AppInfo> map)
         }
         listEnd.append(temp);
     }
+    qCDebug(app) << "Sort end app size:" << listEnd.size();
     return listEnd;
 }
 
@@ -424,14 +465,18 @@ QList<AppInfo> Utils::sortAppList(QMultiMap<qlonglong, AppInfo> map)
  */
 bool Utils::hasSelperSupport()
 {
+    qCDebug(app) << "hasSelperSupport";
     Dtk::Core::DSysInfo::UosEdition type = uosEditionType();
     //专业版判断是否有服务与支持
     if (Dtk::Core::DSysInfo::UosProfessional == type || Dtk::Core::DSysInfo::UosMilitary == type || Dtk::Core::DSysInfo::UosMilitaryS == type) {
+        qCDebug(app) << "hasSelperSupport true";
         const QStringList list = getSystemManualList();
         if (list.contains("uos-service-support")) {
+            qCDebug(app) << "uos-service-support found in manual list";
             return true;
         }
     }
+    qCDebug(app) << "hasSelperSupport false";
     return false;
 }
 
@@ -439,6 +484,8 @@ bool checkOsBuildValid(const QString& str)
 {
     // Format like ABCDE.xyz.abc
     static QRegularExpression regex("^[1-9A-Z][1-9A-Z][0-9A-Z][1-9A-Z][1-9A-Z](\\.\\w+)*$");
+
+    qCDebug(app) << "checkOsBuildValid:" << str;
 
     return regex.match(str).hasMatch();
 }
@@ -448,9 +495,11 @@ Dtk::Core::DSysInfo::UosEdition Utils::uosEditionType()
     // Add static cache, query only once    
     static Dtk::Core::DSysInfo::UosEdition cachedEdition = Dtk::Core::DSysInfo::UosEdition::UosEditionUnknown;
     static bool hasQueried = false;
+    qCDebug(app) << "uosEditionType";
     
     // If already queried, return cached result
     if (hasQueried) {
+        qCDebug(app) << "uosEditionType cached";
         return cachedEdition;
     }
     
@@ -490,68 +539,92 @@ Dtk::Core::DSysInfo::UosEdition Utils::uosEditionType()
     // Save result to cache
     cachedEdition = parseOsBuildType(parts[0]);
     hasQueried = true;
+    qCDebug(app) << "Parsed OsBuild type:" << cachedEdition;
     return cachedEdition;
 }
 
 Dtk::Core::DSysInfo::UosEdition Utils::parseOsBuildType(const QString & osBuild)
 {
-    if (!checkOsBuildValid(osBuild))
+    qCDebug(app) << "parseOsBuildType:" << osBuild;
+    if (!checkOsBuildValid(osBuild)) {
+        qCDebug(app) << "Invalid OsBuild format:" << osBuild;
         return Dtk::Core::DSysInfo::UosEditionUnknown;
+    }
 
     int uosType = osBuild[1].digitValue();
     int uosEditType = osBuild[3].digitValue();
     // copy from dtk-core/src/dsysinfo.cpp
     if(uosType == 1) {
+        qCDebug(app) << "Uos type 1";
         switch (uosEditType) {
         case 1:
+            qCDebug(app) << "UosProfessional";
             return Dtk::Core::DSysInfo::UosEdition::UosProfessional;
         case 2:
         case 7:
             //The new version of the family version (7) and the old version of the personal version (2) The same as the home does not modify the old logic (7) to ensure the adaptation of the old version
+            qCDebug(app) << "UosHome";
             return Dtk::Core::DSysInfo::UosEdition::UosHome;
         case 3:
+            qCDebug(app) << "UosCommunity";
             return Dtk::Core::DSysInfo::UosEdition::UosCommunity;
         case 4:
         case 9:
+            qCDebug(app) << "UosMilitary";
             return Dtk::Core::DSysInfo::UosEdition::UosMilitary;
         case 5:
+            qCDebug(app) << "UosDeviceEdition";
             return Dtk::Core::DSysInfo::UosEdition::UosDeviceEdition;
         case 6:
+            qCDebug(app) << "UosEducation";
             return Dtk::Core::DSysInfo::UosEdition::UosEducation;
         default:
+            qCDebug(app) << "UosEditionUnknown";
             break;
         }
 
     }else if(uosType == 2) {
+        qCDebug(app) << "Uos type 2";
         switch (uosEditType) {
         case 1:
+            qCDebug(app) << "UosEnterprise";
             return Dtk::Core::DSysInfo::UosEdition::UosEnterprise;
         case 2:
+            qCDebug(app) << "UosProfessionalC";
             return Dtk::Core::DSysInfo::UosEdition::UosEnterpriseC;
         case 3:
+            qCDebug(app) << "UosEuler";
             return Dtk::Core::DSysInfo::UosEdition::UosEuler;
         case 4:
         case 9:
+            qCDebug(app) << "UosMilitaryS";
             return Dtk::Core::DSysInfo::UosEdition::UosMilitaryS;
         case 5:
+            qCDebug(app) << "UosDeviceEdition";
             return Dtk::Core::DSysInfo::UosEdition::UosDeviceEdition;
         default:
+            qCDebug(app) << "UosEditionUnknown";
             break;
         }
     }
     else if (uosType == 3){
+        qCDebug(app) << "Uos type 3";
         return Dtk::Core::DSysInfo::UosEnterprise;
     }
 
+    qCDebug(app) << "final retun UosEditionUnknown";
     return Dtk::Core::DSysInfo::UosEditionUnknown;
 }
 
 bool Utils::hasAppStore()
 {
+    qCDebug(app) << "hasAppStore";
     const QStringList list = getSystemManualList();
     if (list.contains("deepin-app-store")) {
+        qCDebug(app) << "deepin-app-store found in manual list";
         return true;
     } else {
+        qCDebug(app) << "deepin-app-store not found in manual list";
         return false;
     }
 }
@@ -560,49 +633,61 @@ bool Utils::hasAppStore()
 //s表示默认服务器版，e表示服务器企业版，eu表示服务器欧拉版，i表示服务器行业版，klu表示KelvinU项目版本，pgv表示PanguV项目版本。
 QStringList Utils::systemToOmit(Dtk::Core::DSysInfo::UosEdition type)
 {
+    qCDebug(app) << "systemToOmit";
     QStringList retList;
     switch (type) {
+    qCDebug(app) << "type" << type;
     //专业版
     case  Dtk::Core::DSysInfo::UosProfessional:
     case  Dtk::Core::DSysInfo::UosMilitary:
+        qCDebug(app) << "omit p";
         retList.append("p");
         break;
     //个人版
     case  Dtk::Core::DSysInfo::UosHome:
+        qCDebug(app) << "omit h";
         retList.append("h");
         break;
     //社区版
     case  Dtk::Core::DSysInfo::UosCommunity:
+        qCDebug(app) << "omit d";
         retList.append("d");
         break;
     //服务器企业版
     case  Dtk::Core::DSysInfo::UosEnterprise:
     case  Dtk::Core::DSysInfo::UosMilitaryS:
+        qCDebug(app) << "omit e,s";
         retList.append("e");
         retList.append("s");
         break;
     //服务器行业版
     case  Dtk::Core::DSysInfo::UosEnterpriseC:
+        qCDebug(app) << "omit i,s";
         retList.append("i");
         retList.append("s");
         break;
     //服务器欧拉版
     case  Dtk::Core::DSysInfo::UosEuler:
+        qCDebug(app) << "omit eu,s";
         retList.append("eu");
         retList.append("s");
         break;
     //教育版
     case Dtk::Core::DSysInfo::UosEducation:
+        qCDebug(app) << "omit edu";
         retList.append("edu");
         break;
     default:
+        qCDebug(app) << "omit default";
         break;
     }
+    qCDebug(app) << "omit list:" << retList;
     return retList;
 }
 
 bool Utils::activeWindow(quintptr winId)
 {
+    qCDebug(app) << "activeWindow" << winId;
     bool bsuccess = true;
     // new interface use applicationName as id
     QString dockService = "com.deepin.dde.daemon.Dock";
@@ -619,28 +704,35 @@ bool Utils::activeWindow(quintptr winId)
         qCDebug(app) << "call" << dockService << "failed" << reply.error();
         bsuccess = false;
     }
+    qCDebug(app) << "activeWindow result:" << bsuccess;
     return bsuccess;
 }
 
 QString Utils::regexp_label(const QString &strtext, const QString &strpatter)
 {
+    qCDebug(app) << "regexp_label called with text:" << strtext << "pattern:" << strpatter;
     QString strsource = strtext;
     QString result;
     QRegularExpression re(strpatter, QRegularExpression::MultilineOption | QRegularExpression::CaseInsensitiveOption);
     QRegularExpressionMatch match = re.match(strsource);
     if (match.isValid() && match.hasMatch()) {
+        qCDebug(app) << "match! regexp_label captured:" << match.captured(0);
         for (int i = 0; i <= match.lastCapturedIndex(); i++) {
             result = match.captured(i);
+            qCDebug(app) << "break! regexp_label captured:" << result;
             break;
         }
     }
+    qCDebug(app) << "regexp_label result:" << result;
     return result;
 }
 
 QString Utils::mkMutiDir(const QString &path)
 {
+    qCDebug(app) << "mkMutiDir called with path:" << path;
     QDir dir(path);
     if (path.isEmpty() || dir.exists()) {
+        qCDebug(app) << "mkMutiDir result:" << path;
         return path;
     }
     QString parentDir = mkMutiDir(path.mid(0, path.lastIndexOf('/')));
@@ -650,6 +742,7 @@ QString Utils::mkMutiDir(const QString &path)
         bool ret = parentPath.mkpath(dirname);
         qCDebug(app) << "mkpath result:" << ret << dirname;
     }
+    qCDebug(app) << "mkMutiDir result:" << parentDir + "/" + dirname;
     return parentDir + "/" + dirname;
 }
 
@@ -660,28 +753,32 @@ QString Utils::mkMutiDir(const QString &path)
  */
 bool Utils::judgeLoongson()
 {
+    qCDebug(app) << "Checking for Loongson CPU";
+
     if (cpuModeName.isEmpty()) {
         QProcess process;
         //获取CPU型号
+        qCDebug(app) << "Starting process to read CPU info";
         process.start("cat /proc/cpuinfo");
 
         if (process.waitForFinished()) {
             QString result = process.readAllStandardOutput();
+            qCDebug(app) << "CPU info read successfully";
 
             if (result.contains("Loongson")) {
                 qCInfo(app) << "cpu mode name is loongson";
                 cpuModeName = "Loongson";
             } else {
+                qCInfo(app) << "cpu mode name is not loongson";
                 cpuModeName = "other";
             }
         }
     }
 
-    if (cpuModeName.contains("Loongson")) {
-        return  true;
-    }
+    bool isLoongson = cpuModeName.contains("Loongson");
+    qCDebug(app) << "CPU check result - is Loongson:" << isLoongson;
 
-    return false;
+    return isLoongson;
 }
 
 ExApplicationHelper *ExApplicationHelper::instance()
@@ -774,15 +871,18 @@ QColor dark_dpalette[DPalette::NColorTypes] {
 
 DPalette ExApplicationHelper::standardPalette(DGuiApplicationHelper::ColorType type) const
 {
+    qCDebug(app) << "standardPalette called with type:" << type;
     DPalette pa;
     const QColor *qcolor_list, *dcolor_list;
 
     if (type == DarkType) {
         qcolor_list = dark_qpalette;
         dcolor_list = dark_dpalette;
+        qCDebug(app) << "DarkType";
     } else {
         qcolor_list = light_qpalette;
         dcolor_list = light_dpalette;
+        qCDebug(app) << "LightType";
     }
 
     for (int i = 0; i < DPalette::NColorRoles; ++i) {
@@ -791,6 +891,7 @@ DPalette ExApplicationHelper::standardPalette(DGuiApplicationHelper::ColorType t
         QColor color = qcolor_list[i];
         pa.setColor(DPalette::Active, role, color);
         generatePaletteColor(pa, role, type);
+        qCDebug(app) << "role:" << role << "color:" << color;
     }
 
     for (int i = 0; i < DPalette::NColorTypes; ++i) {
@@ -799,13 +900,16 @@ DPalette ExApplicationHelper::standardPalette(DGuiApplicationHelper::ColorType t
         QColor color = dcolor_list[i];
         pa.setColor(DPalette::Active, role, color);
         generatePaletteColor(pa, role, type);
+        qCDebug(app) << "role:" << role << "color:" << color;
     }
 
+    qCDebug(app) << "standardPalette result:" << pa;
     return pa;
 }
 
 DPalette ExApplicationHelper::palette(const QWidget *widget, const QPalette &base) const
 {
+    qCDebug(app) << "palette called with widget:" << widget << "base:" << base;
     Q_UNUSED(base)
 
     DPalette palette;
@@ -818,11 +922,13 @@ DPalette ExApplicationHelper::palette(const QWidget *widget, const QPalette &bas
     // 关注控件palette改变的事件
     const_cast<QWidget *>(widget)->installEventFilter(const_cast<ExApplicationHelper *>(this));
 
+    qCDebug(app) << "palette result:" << palette;
     return palette;
 }
 
 void ExApplicationHelper::setPalette(QWidget *widget, const DPalette &palette)
 {
+    qCDebug(app) << "setPalette called with widget:" << widget << "palette:" << palette;
     // 记录此控件被设置过palette
     widget->setProperty("_d_set_palette", true);
     widget->setPalette(palette);
@@ -830,13 +936,16 @@ void ExApplicationHelper::setPalette(QWidget *widget, const DPalette &palette)
 
 ExApplicationHelper::ExApplicationHelper()
 {
+    qCDebug(app) << "ExApplicationHelper constructor called";
 }
 
 ExApplicationHelper::~ExApplicationHelper()
 {
+    qCDebug(app) << "ExApplicationHelper destructor called";
 }
 
 bool ExApplicationHelper::eventFilter(QObject *watched, QEvent *event)
 {
+    qCDebug(app) << "ExApplicationHelper eventFilter called with watched";
     return DGuiApplicationHelper::eventFilter(watched, event);
 }

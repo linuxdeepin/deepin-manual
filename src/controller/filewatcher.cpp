@@ -43,26 +43,33 @@ void fileWatcher::checkMap(QMap<QString, QString> &mapOld, QMap<QString, QString
 {
     QList<QString> listOldMd = mapOld.keys();
     QList<QString> listNowMd = mapNow.keys();
+    qCDebug(app) << "checkMap listNowMd:" << listNowMd;
+    qCDebug(app) << "checkMap listOldMd:" << listOldMd;
 
     for (const QString &mdPath : listOldMd) {
         if (!listNowMd.contains(mdPath)) {
             deleteList.append(mdPath);
+            qCDebug(app) << "Delete file:" << mdPath;
         }
     }
 
     for (const QString &mdPath : listNowMd) {
         if (!listOldMd.contains(mdPath)) {
             addList.append(mdPath);
+            qCDebug(app) << "Add file:" << mdPath;
         } else if (mapOld.value(mdPath) != mapNow.value(mdPath)) {
             addList.append(mdPath);
+            qCDebug(app) << "Modify file:" << mdPath;
         }
     }
 
     if (!addList.isEmpty()) {
+        qCDebug(app) << "Add list:" << addList;
         for (const QString &file : addList) {
             addTime.append(mapNow.value(file));
         }
     }
+    qCDebug(app) << "Delete list:" << deleteList;
 }
 
 
@@ -71,20 +78,26 @@ void fileWatcher::checkMap(QMap<QString, QString> &mapOld, QMap<QString, QString
  */
 void fileWatcher::monitorFile()
 {
+    qCDebug(app) << "monitorFile";
     watcherObj->removePaths(watcherObj->directories());
     watcherObj->removePaths(watcherObj->files());
 
     QStringList listMonitorFile;
     QStringList listModule;
     QStringList  assetsPathList = Utils::getSystemManualDir();
+    qCDebug(app) << "Found" << assetsPathList.size() << "manual directories to monitor";
+
     foreach (auto assetsPath, assetsPathList) {
+        qCDebug(app) << "Processing manual directory:" << assetsPath;
         listModule.append(assetsPath);
+
         //新文案结构 /usr/share/deepin-manual/manual-assets/[application | system]/appName/appNameT/land/*_appNameT.md
         for (const QString &type : QDir(assetsPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
             //监控资源文件夹
             if (type == "system" || type == "application") {
                 QString typePath = assetsPath + "/" + type;
                 listModule.append(typePath);
+                qCDebug(app) << "Processing manual type:" << typePath;
                 //监控资源文件夹
                 for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
                     //./manual-assets/application(system)/appName
@@ -99,19 +112,24 @@ void fileWatcher::monitorFile()
                     //./manual-assets/application(system)/appName/appNameT
                     QString appPath = modulePath + "/" + listAppNameT.at(0);
                     listModule.append(appPath);
+                    qCDebug(app) << "Processing app:" << appPath;
                     for (QString &lang : QDir(appPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
                         if (lang == "zh_CN" || lang == "en_US") {
                             //./manual-assets/application(system)/appName/appNameT/lang
                             QString langPath = appPath + "/" + lang;
                             listModule.append(langPath);
+                            qCDebug(app) << "Processing language:" << langPath;
                             for (QString &mdFile : QDir(langPath).entryList(QDir::Files)) {
                                 if (mdFile.endsWith("md")) {
                                     //./manual-assets/application(system)/appName/appNameT/lang/md
                                     QString strMd = langPath + "/" + mdFile;
                                     QFileInfo fileinfo(strMd);
                                     if (fileinfo.isSymLink()) {
-                                        listMonitorFile.append(fileinfo.symLinkTarget());
+                                        QString target = fileinfo.symLinkTarget();
+                                        qCDebug(app) << "Adding symlink:" << strMd << "->" << target;
+                                        listMonitorFile.append(target);
                                     } else {
+                                        qCDebug(app) << "Adding markdown file:" << strMd;
                                         listMonitorFile.append(strMd);
                                     }
                                 }
@@ -122,22 +140,28 @@ void fileWatcher::monitorFile()
             }
         }
 
-//旧文案结构兼容  /usr/share/deepin-manual/manual-assets/[professional | server]/appName/lang/index.md
+        //旧文案结构兼容  /usr/share/deepin-manual/manual-assets/[professional | server]/appName/lang/index.md
 #if 1
         for (const QString &system : QDir(assetsPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
             if (systemType.contains(system)) {
                 QString typePath = assetsPath + "/" + system;
                 listModule.append(typePath);
+                qCDebug(app) << "Processing legacy system:" << typePath;
+
                 for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
                     QString modulePath = typePath + "/" + module;
                     listModule.append(typePath);
                     for (QString &lang : QDir(modulePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
                         if (lang == "zh_CN" || lang == "en_US") {
                             QString strMd = modulePath + "/" + lang + "/index.md";
+                            qCDebug(app) << "Adding legacy markdown file:" << strMd;
                             QFileInfo fileinfo(strMd);
                             if (fileinfo.isSymLink()) {
-                                listMonitorFile.append(fileinfo.symLinkTarget());
+                                QString target = fileinfo.symLinkTarget();
+                                qCDebug(app) << "Adding legacy symlink:" << strMd << "->" << target;
+                                listMonitorFile.append(target);
                             } else {
+                                qCDebug(app) << "Adding legacy markdown file:" << strMd;
                                 listMonitorFile.append(strMd);
                             }
                         }
@@ -150,10 +174,13 @@ void fileWatcher::monitorFile()
         //监控模块资源文件夹
         if (!listModule.isEmpty()) {
             watcherObj->addPaths(listModule);
+            qCDebug(app) << "Adding" << listModule.size() << "directories to watch";
         }
+        
         //监控资源文件
         if (!listMonitorFile.isEmpty()) {
             watcherObj->addPaths(listMonitorFile);
+            qCDebug(app) << "Adding" << listMonitorFile.size() << "files to watch";
         }
     }
     qCDebug(app) << "WatchAllFiles... ...";
@@ -169,8 +196,10 @@ void fileWatcher::onChangeFile(const QString &path)
     qCDebug(app) << path;
     QTimer::singleShot(50, [ = ]() {
         watcherObj->addPath(path);
+        qCDebug(app) << "Adding" << path << "to watch";
     });
 
+    qCDebug(app) << "Timer triggered, checking file changes";
     timerObj->start();
 }
 
@@ -210,14 +239,17 @@ void fileWatcher::onTimerOut()
                         if (lang == "zh_CN" || lang == "en_US") {
                             //./manual-assets/application(system)/appName/appNameT/lang
                             QString langPath = appPath + "/" + lang;
+                            qCDebug(app) << "Checking file changes:" << langPath;
                             for (QString &mdFile : QDir(langPath).entryList(QDir::Files)) {
                                 if (mdFile.endsWith("md")) {
                                     //./manual-assets/application(system)/appName/appNameT/lang/md
                                     QString strMd = langPath + "/" + mdFile;
+                                    qCDebug(app) << "Checking file changes:" << strMd;
                                     QFileInfo fileInfo(strMd);
                                     if (fileInfo.exists()) {
                                         QString modifyTime = fileInfo.lastModified().toString("yyyy-MM-dd hh:mm:ss.zzz");
                                         mapNow.insert(strMd, modifyTime);
+                                        qCDebug(app) << "File changed:" << strMd << "modifyTime:" << modifyTime;
                                     }
                                 }
                             }
@@ -232,15 +264,18 @@ void fileWatcher::onTimerOut()
         for (const QString &system : QDir(assetsPath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
             if (systemType.contains(system)) {
                 QString typePath = assetsPath + "/" + system;
+                qCDebug(app) << "Checking file changes:" << typePath;
                 for (QString &module : QDir(typePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
                     QString modulePath = typePath + "/" + module;
                     for (QString &lang : QDir(modulePath).entryList(QDir::NoDotAndDotDot | QDir::Dirs)) {
                         if (lang == "zh_CN" || lang == "en_US") {
                             QString strMd = modulePath + "/" + lang + "/index.md";
+                            qCDebug(app) << "Checking file changes:" << strMd;
                             QFileInfo fileInfo(strMd);
                             if (fileInfo.exists()) {
                                 QString modifyTime = fileInfo.lastModified().toString("yyyy-MM-dd hh:mm:ss.zzz");
                                 mapNow.insert(strMd, modifyTime);
+                                qCDebug(app) << "File changed:" << strMd << "modifyTime:" << modifyTime;
                             }
                         }
                     }
@@ -253,6 +288,7 @@ void fileWatcher::onTimerOut()
     if (fileInfo.exists()) {
         QString modifyTime = fileInfo.lastModified().toString("yyyy-MM-dd hh:mm:ss.zzz");
         mapNow.insert(kVideoConfigPath, modifyTime);
+        qCDebug(app) << "File changed:" << kVideoConfigPath << "modifyTime:" << modifyTime;
     }
 
     QStringList deleteList;

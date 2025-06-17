@@ -22,6 +22,7 @@ ConfigManager::ConfigManager(QObject *parent)
 
 ConfigManager::~ConfigManager()
 {
+    qCDebug(app) << "Destroying ConfigManager instance";
 }
 
 
@@ -63,6 +64,7 @@ QString ConfigManager::getWinInfoConfigPath()
     QDir winInfoPath(configDir);
     if (!winInfoPath.exists()) {
         winInfoPath.mkpath(QStandardPaths::writableLocation(QStandardPaths::AppConfigLocation));
+        qCDebug(app) << "Config directory created successfully";
     }
 
     QString winInfoFilePath(winInfoPath.filePath("wininfo-config.conf"));
@@ -78,5 +80,6 @@ QString ConfigManager::getWinInfoConfigPath()
  */
 QSettings *ConfigManager::getSettings()
 {
+    qCDebug(app) << "Getting QSettings pointer";
     return this->m_winInfoConfig;
 }

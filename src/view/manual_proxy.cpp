@@ -36,6 +36,7 @@ ManualProxy::~ManualProxy()
  */
 QStringList ManualProxy::getSystemManualDir()
 {
+    qCDebug(app) << "Getting system manual directory";
     return Utils::getSystemManualDir();;
 }
 
@@ -46,6 +47,7 @@ QStringList ManualProxy::getSystemManualDir()
  */
 QStringList ManualProxy::getSystemManualList()
 {
+    qCDebug(app) << "Getting system manual list";
     QStringList list = Utils::getSystemManualList();
     saveAppList(list);
     qCDebug(app) << "System manual list:" << list;
@@ -59,6 +61,7 @@ QStringList ManualProxy::getSystemManualList()
  */
 void ManualProxy::setApplicationState(const QString &appName)
 {
+    qCDebug(app) << "Setting application state:" << appName;
     QString strApp;
     //部分传的是完整路径,部分直接是模块名称
     if (appName.contains("%2F")) {
@@ -80,6 +83,7 @@ void ManualProxy::setApplicationState(const QString &appName)
         qCDebug(app) << setting->fileName() << ": " << strApp << " not find";
     }
     setting->endGroup();
+    qCDebug(app) << "Application state updated - appName:" << appName << " state:" << setting->value(strApp).toBool();
 }
 
 /**
@@ -89,6 +93,7 @@ void ManualProxy::setApplicationState(const QString &appName)
  */
 QStringList ManualProxy::getUsedAppList()
 {
+    qCDebug(app) << "Getting used application list";
     QSettings *setting = ConfigManager::getInstance()->getSettings();
     setting->beginGroup(QString(kConfigAppList));
     QStringList list = setting->allKeys();
@@ -96,7 +101,9 @@ QStringList ManualProxy::getUsedAppList()
     for (int i = 0; i < list.size(); ++i) {
         if (!setting->value(list.at(i)).toBool()) {
             appList.append(list.at(i));
+            qCDebug(app) << "Found used application:" << list.at(i);
         } else {
+            qCDebug(app) << "Skipping unused application:" << list.at(i);
             continue;
         }
     }
@@ -113,12 +120,14 @@ QStringList ManualProxy::getUsedAppList()
 bool ManualProxy::hasSelperSupport()
 {
     bool b = Utils::hasSelperSupport();
+    qCDebug(app) << "Checking Selper support status:" << b;
     return b;
 }
 
 bool ManualProxy::hasAppStore()
 {
     bool b = Utils::hasAppStore();
+    qCDebug(app) << "Checking App Store availability:" << b;
     return b;
 }
 
@@ -128,6 +137,7 @@ bool ManualProxy::hasAppStore()
  */
 void ManualProxy::finishChannel()
 {
+    qCDebug(app) << "Channel initialization completed";
     emit channelInit();
 }
 
@@ -137,21 +147,25 @@ void ManualProxy::finishChannel()
  */
 void ManualProxy::supportClick()
 {
+    qCDebug(app) << "Support button clicked";
     emit supportBeClick();
 }
 
 void ManualProxy::appStoreClick()
 {
+    qCDebug(app) << "App Store button clicked";
     emit appStoreBeClick();
 }
 
 bool ManualProxy::bIsLongSon()
 {
+    qCDebug(app) << "Checking system type";
     return Utils::judgeLoongson();
 }
 
 void ManualProxy::showUpdateLabel()
 {
+    qCDebug(app) << "Showing update label";
     emit updateLabel();
 }
 
@@ -166,8 +180,10 @@ QString ManualProxy::appToPath(const QString &appName)
         QString appPath;
         if (appName == "dde" || appName == kLearnBasicOperations || appName == kCommonApplicationLibraries || appName == "video-guide") {
             appPath = assetPath + "/system/" + appName;
+            qCDebug(app) << "dde system appPath:" << appPath;
         } else {
             appPath = assetPath + "/application/" + appName;
+            qCDebug(app) << "other appPath:" << appPath;
         }
 
         if (QDir(appPath).exists()) {
@@ -175,22 +191,27 @@ QString ManualProxy::appToPath(const QString &appName)
             QString appNameT;
             if (list.count() == 1) {
                 appNameT = list.at(0);
+                qCDebug(app) << "Single directory found:" << appNameT;
             } else if (list.count() > 1) {
-                qCWarning(app) << assetPath << "dir greater than one:" << list;
+                qCDebug(app) << assetPath << "dir greater than one:" << list;
                 appNameT = list.at(1);
             } else {
                 appNameT = "error";
-                qCWarning(app) << " no dir";
+                qCDebug(app) << " no dir";
             }
             appPath.append("/").append(appNameT).append("/");
             appPath = getAppLocalDir(appPath);
+            qCDebug(app) << "appPath:" << appPath;
 
             if (omitType.length() > 1) {
                 mdList.append(appPath + "/" + QString("%1_%2.md").arg(omitType.at(0)).arg(appNameT));
                 mdList.append(appPath + "/" + QString("%1_%2.md").arg(omitType.at(1)).arg(appNameT));
+                qCDebug(app) << "omitType:" << omitType.at(0) << omitType.at(1);
             } else {
+                qCDebug(app) << "else omitType:";
                 if (omitType.size() > 0) {
                     mdList.append(appPath + "/" + QString("%1_%2.md").arg(omitType.at(0)).arg(appNameT));
+                    qCDebug(app) << "omitType:" << omitType.at(0);
                 }
             }
             //根据文档命名规则不带前缀文档为所有文档的兜底文档
@@ -198,30 +219,40 @@ QString ManualProxy::appToPath(const QString &appName)
         }
 
         QString oldMdPath = assetPath;
+        qCDebug(app) << "oldMdPath:" << oldMdPath;
 
 #if (DTK_VERSION > DTK_VERSION_CHECK(5, 4, 12, 0))
         if (Dtk::Core::DSysInfo::UosServer == Dtk::Core::DSysInfo::uosType()) {
             oldMdPath += "/server";
+            qCDebug(app) << "server oldMdPath:" << oldMdPath;
         } else if (Dtk::Core::DSysInfo::UosHome == Utils::uosEditionType()) {
             oldMdPath += "/personal";
+            qCDebug(app) << "personal oldMdPath:" << oldMdPath;
         } else if (Dtk::Core::DSysInfo::UosEducation == Utils::uosEditionType()) {
             oldMdPath += "/education";
+            qCDebug(app) << "education oldMdPath:" << oldMdPath;
         } else if (Dtk::Core::DSysInfo::UosCommunity == Utils::uosEditionType()) {
             oldMdPath += "/community";
+            qCDebug(app) << "community oldMdPath:" << oldMdPath;    
         } else {
             oldMdPath += "/professional";
+            qCDebug(app) << "professional oldMdPath:" << oldMdPath;
         }
 #else
         Dtk::Core::DSysInfo::DeepinType nType = Dtk::Core::DSysInfo::deepinType();
         if (Dtk::Core::DSysInfo::DeepinServer == nType) {
             oldMdPath += "/server";
+            qCDebug(app) << "server oldMdPath:" << oldMdPath;
         } else if (Dtk::Core::DSysInfo::DeepinPersonal == nType) {
             oldMdPath += "/personal";
+            qCDebug(app) << "personal oldMdPath:" << oldMdPath;
         } else {
             if (Dtk::Core::DSysInfo::isCommunityEdition()) {
                 oldMdPath += "/community";
+                qCDebug(app) << "community oldMdPath:" << oldMdPath;
             } else {
                 oldMdPath += "/professional";
+                qCDebug(app) << "professional oldMdPath:" << oldMdPath;
             }
         }
 
@@ -234,6 +265,7 @@ QString ManualProxy::appToPath(const QString &appName)
     QString ret;
     for (auto md : mdList) {
         if (QFile(md).exists()) {
+            qCDebug(app) << "Found manual file:" << md;
             ret = md;
         }
     }
@@ -243,6 +275,7 @@ QString ManualProxy::appToPath(const QString &appName)
         return "error";
     }
 
+    qCDebug(app) << "Found manual file:" << ret;
     return ret;
 }
 
@@ -264,18 +297,25 @@ QString ManualProxy::getAppIconPath(const QString &desktopname)
             QString strContent(file.readAll());
             strContent = Utils::regexp_label(strContent, "(icon-theme\">\n)(.*)?(['</default>])");
             strIconTheme = Utils::regexp_label(strContent, "(?<=<default>')(.*)?(?='</default>)");
+            qCDebug(app) << "Extracted icon theme:" << strIconTheme;
         }
         if (strIconTheme.isEmpty()) {
             strIconTheme = "bloom";
+            qCDebug(app) << "Using default icon theme:" << strIconTheme;
         }
     }
 
     QString filepath = Utils::getDesktopFilePath(desktopname);
+    qCDebug(app) << "Desktop file path:" << filepath;
+
     QFile file(filepath);
     QString strIcon = desktopname;
+    
     if (file.exists()) {
+        qCDebug(app) << "Desktop file exists, reading icon name...";
         Dtk::Core::DDesktopEntry entry(filepath);
         strIcon = entry.stringValue("Icon");
+        qCDebug(app) << "Found icon name:" << strIcon;
     } else {
         qCWarning(app) << QString("filepath:%1 not exist.. desktopname:%2").arg(filepath).arg(desktopname);
     }
@@ -298,6 +338,7 @@ QString ManualProxy::getAppIconPath(const QString &desktopname)
                 // 转换为base64
                 QString base64 = byteArray.toBase64();
                 QString dataUrl = QString("data:image/png;base64,%1").arg(base64);
+                qCDebug(app) << "Generated data URL:" << dataUrl;
                 return dataUrl;
             } else {
                 qCWarning(app) << "Failed to get pixmap for" << strIcon;
@@ -315,12 +356,16 @@ QString ManualProxy::getAppIconPath(const QString &desktopname)
 
 QString ManualProxy::getLocalAppName(const QString &desktopname)
 {
+    qCDebug(app) << "Getting local app name for:" << desktopname;
     QString strdisplayname = desktopname;
     if (0 == desktopname.compare(kLearnBasicOperations, Qt::CaseInsensitive)) {
+        qCDebug(app) << "Learn Basic Operations";
         strdisplayname = tr("Learn Basic Operations");
     } else if (0 == desktopname.compare(kCommonApplicationLibraries, Qt::CaseInsensitive)) {
+        qCDebug(app) << "Common Application Libraries";
         strdisplayname = tr("Common Application Libraries");
     } else if (0 == desktopname.compare("dde", Qt::CaseInsensitive)) {
+        qCDebug(app) << "Desktop Environment";
         strdisplayname = tr("Desktop Environment");
     } else {
         QStringList pathList = Utils::getEnvsourcePath();
@@ -331,19 +376,23 @@ QString ManualProxy::getLocalAppName(const QString &desktopname)
                 Dtk::Core::DDesktopEntry entry(filepath);
                 strdisplayname = entry.genericName();
                 strdisplayname = strdisplayname.isEmpty() ? entry.ddeDisplayName() : strdisplayname;
+                qCDebug(app) << "Found local app name:" << strdisplayname;
                 return strdisplayname;
             }
         }
     }
+    qCDebug(app) << "Return local app name:" << strdisplayname;
     return strdisplayname;
 }
 
 QVariant ManualProxy::getVideoGuideInfo()
 {
+    qCDebug(app) << "Getting video guide info";
     // 社区版不出现视频指南，返回空进行屏蔽
     if (Utils::uosEditionType() == Dtk::Core::DSysInfo::UosEdition::UosCommunity)
         return QVariantList();
 
+    qCDebug(app) << "Loading video guide info from:" << kVideoConfigPath;
     QFile file(kVideoConfigPath);
     if (!file.open(QIODevice::ReadOnly)) {
         qCWarning(app) << "Failed to open file";
@@ -353,17 +402,21 @@ QVariant ManualProxy::getVideoGuideInfo()
     QString locale = QLocale().name();
     //藏语维语使用简体中文
     if (locale == "ug_CN" || locale == "bo_CN") {
+        qCDebug(app) << "Using simplified Chinese for locale:" << locale;
         locale = "zh_CN";
     } else if (locale == "en_US" || locale == "en_GB") {
+        qCDebug(app) << "Using English for locale:" << locale;
         locale = "en_US";
     }
 
     QByteArray jsonData = file.readAll();
+    qCDebug(app) << "Parsing video guide JSON data...";
     QJsonDocument jsonDoc = QJsonDocument::fromJson(jsonData);
     if (jsonDoc.isNull()) {
         qCWarning(app) << "Failed to parse JSON";
         return QVariantList();
     }
+    qCDebug(app) << "Successfully parsed JSON data";
 
 //    locale = "en_US"; //test
     QJsonObject jsonObj = jsonDoc.object();
@@ -372,13 +425,16 @@ QVariant ManualProxy::getVideoGuideInfo()
         QJsonValue jsValue = jsonObj.value(key);
 
         if (jsValue.isString() && key == "url") {
+            qCDebug(app) << "Found video URL:" << jsValue.toString();
             videoUrl = jsValue.toString();
         } else if (jsValue.isArray() && key == "videos") {
+            qCDebug(app) << "Found video list:" << jsValue.toArray().count();
             QJsonArray jsArray = jsValue.toArray();
             QJsonArray resultArray;
 
             for (int i = 0; i < jsArray.count(); i++) {
                 if (jsArray[i].isObject()) {
+                    qCDebug(app) << "Is video object!";
                     QJsonObject obj = jsArray[i].toObject();
                     QJsonObject tmpObj {
                         {"cover", QString(DMAN_MANUAL_DIR"/system/video-guide/videos/" + obj["cover"].toString())},
@@ -386,12 +442,16 @@ QVariant ManualProxy::getVideoGuideInfo()
                     };
 
                     if (locale == "zh_CN") {
+                        qCDebug(app) << "Using zh_CN for locale";
                         tmpObj.insert("name", obj["name[zh_CN]"]);
                     } else if(locale == "zh_HK") {
+                        qCDebug(app) << "Using zh_HK for locale";
                         tmpObj.insert("name", obj["name[zh_HK]"]);
                     } else if(locale == "zh_TW") {
+                        qCDebug(app) << "Using zh_TW for locale";
                         tmpObj.insert("name", obj["name[zh_TW]"]);
                     } else {
+                        qCDebug(app) << "Using en_US for locale";
                         tmpObj.insert("name", obj["name[en_US]"]);
                     }
 
@@ -399,19 +459,23 @@ QVariant ManualProxy::getVideoGuideInfo()
                 }
             }
 
+            qCDebug(app) << "Final video list:" << resultArray.count();
             return resultArray.toVariantList();
         }
     }
 
+    qCWarning(app) << "Failed to find video guide info";
     return QVariantList();
 }
 
 void ManualProxy::openVideo(QString url)
 {
-    qInfo() << "Opening video URL:" << url;
+    qCInfo(app) << "Opening video URL:" << url;
     if(url.isEmpty()) {
+        qCDebug(app) << "No video URL found!";
         url = videoUrl;
     }
+    qCDebug(app) << "Opening video URL:" << url;
     QDesktopServices::openUrl(url);
 }
 
@@ -423,15 +487,18 @@ void ManualProxy::openVideo(QString url)
 void ManualProxy::saveAppList(const QStringList &list)
 {
     Q_UNUSED(list)
+    qCDebug(app) << "Saving app list to config file...";
     QSettings *setting = ConfigManager::getInstance()->getSettings();
     //获取配置文件中应用列表
     setting->beginGroup(QString(kConfigAppList));
     for (int i = 0; i < list.size(); ++i) {
         if (setting->contains(list.at(i))) {
+            qCDebug(app) << "App already exists:" << list.at(i);
             continue;
         } else {
             //应用不存在则保存
             setting->setValue(list.at(i), true);
+            qCDebug(app) << "App saved:" << list.at(i);
         }
     }
     QStringList l = setting->allKeys();
@@ -441,6 +508,7 @@ void ManualProxy::saveAppList(const QStringList &list)
 
 QString ManualProxy::getAppLocalDir(const QString &appPath)
 {
+    qCDebug(app) << "Getting app local dir for:" << appPath;
     //appPath like /usr/share/deepin-manual/manual-assets/application/deepin-boot-maker/boot-maker/
     QString appdir(appPath);
     QString strlocal(QLocale::system().name());
@@ -449,15 +517,19 @@ QString ManualProxy::getAppLocalDir(const QString &appPath)
     //如果不存在该种语言的文档路径，藏语、维语使用简体中文，其它使用英文
 
     if (!dir.exists()) {
+        qCDebug(app) << "App local dir not exists:" << AppLocalDir;
         //藏语维语使用简体中文
         if (0 == strlocal.compare("ug_CN") || 0 == strlocal.compare("bo_CN")
                 || 0 == strlocal.compare("zh_HK") || 0 == strlocal.compare("zh_TW")) {
+            qCDebug(app) << "Using zh_CN for locale:" << strlocal;
             AppLocalDir = QString(appPath).append("zh_CN");
         } else {
+            qCDebug(app) << "Using en_US for locale:" << strlocal;
             AppLocalDir = QString(appPath).append("en_US");
         }
     }
 
+    qCDebug(app) << "Final app local dir:" << AppLocalDir;
     return AppLocalDir;
 }
 
