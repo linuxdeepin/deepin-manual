@@ -93,11 +93,7 @@ You can continue to use "IDM and uTorrent", which are commonly used by major ope
 
 
 
-## Join the community to answer your questions
-
-Welcome to scan the code on WeChat to join the official community of UOS and get intimate online services: **perfect use skills, fresh product information, interesting official activities**, etc. The group activity code are permanent validity.
-
-![community](./fig/community.png)
+## More tips
 
 You are welcome to scan the QR code on WeChat to open the UOS Tip Assistant mini program and view the tips online.
 
