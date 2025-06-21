@@ -4,127 +4,126 @@
 <context>
     <name>ManualProxy</name>
     <message>
-        <location filename="../src/view/manual_proxy.cpp" line="322"/>
+        <location filename="../src/view/manual_proxy.cpp" line="363"/>
         <source>Learn Basic Operations</source>
-        <translation type="unfinished"></translation>
+        <translation>Учебно пособие по базовым операциям</translation>
     </message>
     <message>
-        <location filename="../src/view/manual_proxy.cpp" line="324"/>
+        <location filename="../src/view/manual_proxy.cpp" line="366"/>
         <source>Common Application Libraries</source>
-        <translation type="unfinished"></translation>
+        <translation>Часто използвани библиотеки за приложения</translation>
     </message>
     <message>
-        <location filename="../src/view/manual_proxy.cpp" line="326"/>
+        <location filename="../src/view/manual_proxy.cpp" line="369"/>
         <source>Desktop Environment</source>
-        <translation type="unfinished"></translation>
+        <translation>Десктоп окружение</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../src/view/widget/search_completion_window.cpp" line="163"/>
-        <location filename="../src/view/widget/search_completion_window.cpp" line="249"/>
-        <source>Search for &quot;%1&quot; in the full text</source>
-        <translation type="unfinished"></translation>
+        <location filename="../src/view/widget/search_completion_window.cpp" line="197"/>
+        <source>Search for "%1" in the full text</source>
+        <translation>Търси "%1" в целия текст</translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="301"/>
+        <location filename="../src/view/web_window.cpp" line="363"/>
         <source>The content was updated</source>
-        <translation type="unfinished"></translation>
+        <translation>Съдържанието е актуализирано</translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="624"/>
+        <location filename="../src/view/web_window.cpp" line="767"/>
         <source>Search</source>
         <translation>Търсене</translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="627"/>
-        <location filename="../src/view/i18n_proxy.cpp" line="31"/>
+        <location filename="../src/view/i18n_proxy.cpp" line="35"/>
         <source>Support</source>
-        <translation type="unfinished"></translation>
+        <translation>Поддръжка</translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="836"/>
+        <location filename="../src/view/web_window.cpp" line="1038"/>
         <source>Copy</source>
         <translation>Копиране</translation>
     </message>
     <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="21"/>
+        <location filename="../src/view/i18n_proxy.cpp" line="25"/>
         <source>Quick Start</source>
-        <translation type="unfinished"></translation>
+        <translation>Бързо стартиране</translation>
     </message>
     <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="22"/>
+        <location filename="../src/view/i18n_proxy.cpp" line="26"/>
         <source>Video Guide</source>
-        <translation type="unfinished"></translation>
+        <translation>Видео урок</translation>
     </message>
     <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="23"/>
+        <location filename="../src/view/i18n_proxy.cpp" line="27"/>
         <source>System</source>
         <translation>Система</translation>
     </message>
     <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="24"/>
+        <location filename="../src/view/i18n_proxy.cpp" line="28"/>
         <source>Applications</source>
         <translation>Приложения</translation>
     </message>
     <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="25"/>
+        <location filename="../src/view/i18n_proxy.cpp" line="29"/>
         <source>No search results</source>
-        <translation type="unfinished"></translation>
+        <translation>Няма резултати от търсене</translation>
     </message>
     <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="26"/>
+        <location filename="../src/view/i18n_proxy.cpp" line="30"/>
         <source>Home</source>
         <translation>Начало</translation>
     </message>
     <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="27"/>
+        <location filename="../src/view/i18n_proxy.cpp" line="31"/>
         <source>  result</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="28"/>
-        <source>  results</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="29"/>
-        <source>Click to view </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../src/view/i18n_proxy.cpp" line="30"/>
-        <source>View all</source>
-        <translation type="unfinished"></translation>
+        <translation> резултат</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="32"/>
+        <source>  results</source>
+        <translation> резултата</translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="33"/>
+        <source>Click to view </source>
+        <translation>Кликнете за да разгледате </translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="34"/>
+        <source>View all</source>
+        <translation>Погледни всички</translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="36"/>
         <source>App Store</source>
-        <translation type="unfinished"></translation>
+        <translation>Магазин за приложения</translation>
     </message>
     <message>
-        <location filename="../src/app/dman.cpp" line="105"/>
+        <location filename="../src/app/dman.cpp" line="136"/>
         <source>Manual</source>
-        <translation type="unfinished"></translation>
+        <translation>Ръководство</translation>
     </message>
     <message>
-        <location filename="../src/app/dman.cpp" line="106"/>
+        <location filename="../src/app/dman.cpp" line="137"/>
         <source>Manual is designed to help users learn the operating system and its applications, providing specific instructions and function descriptions.</source>
-        <translation type="unfinished"></translation>
+        <translation>>
+Ръководството е предназначено да помогне на потребителят да научи операционната система и приложенията, като предоставя специфични инструкции и описания на функции.</translation>
     </message>
 </context>
 <context>
     <name>WebWindow</name>
     <message>
-        <location filename="../src/view/web_window.cpp" line="765"/>
+        <location filename="../src/view/web_window.cpp" line="952"/>
         <source>Ctrl+Alt+F</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Alt+F</translation>
     </message>
     <message>
-        <location filename="../src/view/web_window.cpp" line="780"/>
+        <location filename="../src/view/web_window.cpp" line="969"/>
         <source>Ctrl+F</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+F</translation>
     </message>
 </context>
 </TS>

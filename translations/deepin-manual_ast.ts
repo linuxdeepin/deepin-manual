@@ -1,34 +1,33 @@
-<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" sourcelanguage="en_US" language="ast">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" language="ast" sourcelanguage="en_US">
 <context>
     <name>ManualProxy</name>
     <message>
         <location filename="../src/view/manual_proxy.cpp" line="322"/>
         <source>Learn Basic Operations</source>
-        <translation type="unfinished"/>
+        <translation>Aprende operaciones básicas</translation>
     </message>
     <message>
         <location filename="../src/view/manual_proxy.cpp" line="324"/>
         <source>Common Application Libraries</source>
-        <translation type="unfinished"/>
+        <translation>Bibliotecas de aplicación comunes</translation>
     </message>
     <message>
         <location filename="../src/view/manual_proxy.cpp" line="326"/>
         <source>Desktop Environment</source>
-        <translation>Entornu d&apos;escritoriu</translation>
+        <translation>Entornu d'escritoriu</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
         <location filename="../src/view/widget/search_completion_window.cpp" line="163"/>
-        <location filename="../src/view/widget/search_completion_window.cpp" line="249"/>
-        <source>Search for &quot;%1&quot; in the full text</source>
-        <translation type="unfinished"/>
+        <source>Search for "%1" in the full text</source>
+        <translation>Buscar "%1" nel testu completu</translation>
     </message>
     <message>
         <location filename="../src/view/web_window.cpp" line="301"/>
         <source>The content was updated</source>
-        <translation>Anovóse&apos;l conteníu</translation>
+        <translation>Anovóse'l conteníu</translation>
     </message>
     <message>
         <location filename="../src/view/web_window.cpp" line="624"/>
@@ -37,7 +36,6 @@
     </message>
     <message>
         <location filename="../src/view/web_window.cpp" line="627"/>
-        <location filename="../src/view/i18n_proxy.cpp" line="31"/>
         <source>Support</source>
         <translation>Sofitu</translation>
     </message>
@@ -49,12 +47,12 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="21"/>
         <source>Quick Start</source>
-        <translation type="unfinished"/>
+        <translation>Comenzar rápido</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="22"/>
         <source>Video Guide</source>
-        <translation type="unfinished"/>
+        <translation>Guía de vídeo</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="23"/>
@@ -89,17 +87,17 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="29"/>
         <source>Click to view </source>
-        <translation type="unfinished"/>
+        <translation>Clicar pa visualizar </translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="30"/>
         <source>View all</source>
-        <translation type="unfinished"/>
+        <translation>Ver tolu</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="32"/>
         <source>App Store</source>
-        <translation type="unfinished"/>
+        <translation>Tienda d'app</translation>
     </message>
     <message>
         <location filename="../src/app/dman.cpp" line="105"/>
@@ -109,7 +107,7 @@
     <message>
         <location filename="../src/app/dman.cpp" line="106"/>
         <source>Manual is designed to help users learn the operating system and its applications, providing specific instructions and function descriptions.</source>
-        <translation>Deepin Manual ta diseñáu p&apos;ayudar a los usuarios a saber cómo funciona&apos;l sistema operativu y les aplicaciones apurriendo instrucciones y descripciones.</translation>
+        <translation>Deepin Manual ta diseñáu p'ayudar a los usuarios a saber cómo funciona'l sistema operativu y les aplicaciones apurriendo instrucciones y descripciones.</translation>
     </message>
 </context>
 <context>
