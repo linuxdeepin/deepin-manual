@@ -15,6 +15,8 @@
 #include <QDir>
 #include <QSettings>
 #include <QBuffer>
+#include <QDBusInterface>
+#include <QDBusReply>
 
 ManualProxy::ManualProxy(QObject *parent)
     : QObject(parent)
@@ -299,6 +301,28 @@ QString ManualProxy::getAppIconPath(const QString &desktopname)
             strIconTheme = Utils::regexp_label(strContent, "(?<=<default>')(.*)?(?='</default>)");
             qCDebug(app) << "Extracted icon theme:" << strIconTheme;
         }
+        
+        // 如果从文件读取失败，尝试从DBus接口获取
+        if (strIconTheme.isEmpty()) {
+            QDBusInterface interface("org.deepin.dde.Appearance1", 
+                                    "/org/deepin/dde/Appearance1", 
+                                    "org.deepin.dde.Appearance1", 
+                                    QDBusConnection::sessionBus());
+            
+            if (interface.isValid()) {
+                QVariant reply = interface.property("GlobalTheme");
+                if (reply.isValid() && !reply.isNull()) {
+                    strIconTheme = reply.toString();
+                    qCDebug(app) << "Got icon theme from DBus:" << strIconTheme;
+                } else {
+                    qCWarning(app) << "Failed to get GlobalTheme from DBus: invalid reply";
+                }
+            } else {
+                qCWarning(app) << "Failed to connect to Appearance DBus interface";
+            }
+        }
+        
+        // 如果文件和DBus都失败，使用默认主题
         if (strIconTheme.isEmpty()) {
             strIconTheme = "bloom";
             qCDebug(app) << "Using default icon theme:" << strIconTheme;
