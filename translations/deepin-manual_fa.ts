@@ -1,0 +1,129 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!DOCTYPE TS>
+<TS version="2.1" sourcelanguage="fa">
+<context>
+    <name>ManualProxy</name>
+    <message>
+        <location filename="../src/view/manual_proxy.cpp" line="363"/>
+        <source>Learn Basic Operations</source>
+        <translation>یادگیری عملیات پایه</translation>
+    </message>
+    <message>
+        <location filename="../src/view/manual_proxy.cpp" line="366"/>
+        <source>Common Application Libraries</source>
+        <translation>کتابخانه‌های کاربردی مشترک</translation>
+    </message>
+    <message>
+        <location filename="../src/view/manual_proxy.cpp" line="369"/>
+        <source>Desktop Environment</source>
+        <translation>محیط میزیاب</translation>
+    </message>
+</context>
+<context>
+    <name>QObject</name>
+    <message>
+        <location filename="../src/view/widget/search_completion_window.cpp" line="197"/>
+        <source>Search for "%1" in the full text</source>
+        <translation>جستجو برای "%1" در متن کامل</translation>
+    </message>
+    <message>
+        <location filename="../src/view/web_window.cpp" line="363"/>
+        <source>The content was updated</source>
+        <translation>محتوا به روزرسانی شد</translation>
+    </message>
+    <message>
+        <location filename="../src/view/web_window.cpp" line="767"/>
+        <source>Search</source>
+        <translation>جستجو</translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="35"/>
+        <source>Support</source>
+        <translation>حمایت</translation>
+    </message>
+    <message>
+        <location filename="../src/view/web_window.cpp" line="1038"/>
+        <source>Copy</source>
+        <translation>کپی</translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="25"/>
+        <source>Quick Start</source>
+        <translation>شروع سریع</translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="26"/>
+        <source>Video Guide</source>
+        <translation>راهنمای ویدئویی</translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="27"/>
+        <source>System</source>
+        <translation>سیستم</translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="28"/>
+        <source>Applications</source>
+        <translation>کاربردها</translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="29"/>
+        <source>No search results</source>
+        <translation>نتیجه‌ای برای جستجو یافت نشد</translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="30"/>
+        <source>Home</source>
+        <translation>خانه</translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="31"/>
+        <source>  result</source>
+        <translation> نتیجه</translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="32"/>
+        <source>  results</source>
+        <translation> نتیجه</translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="33"/>
+        <source>Click to view </source>
+        <translation>برای نمایش کلیک کنید </translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="34"/>
+        <source>View all</source>
+        <translation>نمایش همه</translation>
+    </message>
+    <message>
+        <location filename="../src/view/i18n_proxy.cpp" line="36"/>
+        <source>App Store</source>
+        <translation>فروشگاه کاربردی</translation>
+    </message>
+    <message>
+        <location filename="../src/app/dman.cpp" line="136"/>
+        <source>Manual</source>
+        <translation>کتاب راهنما</translation>
+    </message>
+    <message>
+        <location filename="../src/app/dman.cpp" line="137"/>
+        <source>Manual is designed to help users learn the operating system and its applications, providing specific instructions and function descriptions.</source>
+        <translation>>-
+ کتاب راهنما برای کمک به کاربران در یادگیری سیستم عامل و کاربردهای آن، ارائه راهنمایی‌های خاص و توضیحات تابعی را فراهم می‌کند.</translation>
+    </message>
+</context>
+<context>
+    <name>WebWindow</name>
+    <message>
+        <location filename="../src/view/web_window.cpp" line="952"/>
+        <source>Ctrl+Alt+F</source>
+        <translation>Ctrl+Alt+F</translation>
+    </message>
+    <message>
+        <location filename="../src/view/web_window.cpp" line="969"/>
+        <source>Ctrl+F</source>
+        <translation>Ctrl+F</translation>
+    </message>
+</context>
+</TS>
