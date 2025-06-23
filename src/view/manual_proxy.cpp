@@ -411,6 +411,9 @@ QString ManualProxy::getLocalAppName(const QString &desktopname)
 
 QVariant ManualProxy::getVideoGuideInfo()
 {
+    // 暂时先将视频指南进行屏蔽
+    return QVariantList();
+
     qCDebug(app) << "Getting video guide info";
     // 社区版不出现视频指南，返回空进行屏蔽
     if (Utils::uosEditionType() == Dtk::Core::DSysInfo::UosEdition::UosCommunity)

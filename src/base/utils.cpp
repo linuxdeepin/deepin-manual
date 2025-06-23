@@ -357,15 +357,15 @@ QStringList Utils::getSystemManualList()
             }
             qCDebug(app) << "app_list_:" << app_list_ << ", count:" << app_list_.size();
         }
-        // 非应用文档，直接添加
+        // 只有在专业版下面才显示快速帮助
         if (systemList.contains(kLearnBasicOperations) || oldAppList.contains(kLearnBasicOperations)) {
             qCDebug(app) << "systemList contains:" << kLearnBasicOperations;
-            if (Dtk::Core::DSysInfo::UosCommunity != type && app_list_.indexOf(kLearnBasicOperations) == -1)
+            if (Dtk::Core::DSysInfo::UosProfessional == type && app_list_.indexOf(kLearnBasicOperations) == -1)
                 app_list_.append(kLearnBasicOperations);
         }
         if (systemList.contains(kCommonApplicationLibraries) || oldAppList.contains(kCommonApplicationLibraries)) {
             qCDebug(app) << "systemList contains:" << kCommonApplicationLibraries;
-            if (Dtk::Core::DSysInfo::UosCommunity != type && app_list_.indexOf(kCommonApplicationLibraries) == -1 )
+            if (Dtk::Core::DSysInfo::UosProfessional == type && app_list_.indexOf(kCommonApplicationLibraries) == -1 )
                 app_list_.append(kCommonApplicationLibraries);
         }
         qCDebug(app) << "exist app list: " << app_list_ << ", count:" << app_list_.size();
