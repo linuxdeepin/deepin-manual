@@ -1,3 +1,15 @@
+deepin-manual (6.5.30) unstable; urgency=medium
+
+  * fix: Enhance icon theme retrieval with DBus support (#559)
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Mon, 23 Jun 2025 13:50:15 +0800
+
+deepin-manual (6.5.29) unstable; urgency=medium
+
+  * fix: Enhance icon theme retrieval with DBus support (#559)
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Mon, 23 Jun 2025 13:47:38 +0800
+
 deepin-manual (6.5.28) unstable; urgency=medium
 
   * fix: Enhance icon theme retrieval with DBus support
