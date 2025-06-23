@@ -1,3 +1,9 @@
+deepin-manual (6.5.31) unstable; urgency=medium
+
+  * fix: Update application list visibility based on edition type
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Mon, 23 Jun 2025 16:57:59 +0800
+
 deepin-manual (6.5.30) unstable; urgency=medium
 
   * fix: Enhance icon theme retrieval with DBus support (#559)
