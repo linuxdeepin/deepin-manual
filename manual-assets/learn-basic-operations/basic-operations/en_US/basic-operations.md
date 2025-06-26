@@ -18,15 +18,13 @@ Users familiar with Windows know that using any function will start from the Sta
 
 ### 2. Dock
 
-![docker](./fig/docker.png)
-
 Like the Taskbar under Windows,UOS Dock also contains several partitions such as Quick Launch, Tray, Plugin and so on. The Quick Launch bar can fix your frequently-used applications for easy one-click opening.
 
 The icon Tray area allows you to set Bluetooth, network and other shortcut settings directly,You can also manage the tray by dragging the tray area icon and storing it in the tray window.
 
 ![pallet](./fig/pallet.png)
 
-The Plugin Area displays frequently used actions and can also be customized through Control Center - Personalization - Dock. Frequently used plug-ins such as screenshot recording, system monitor, global search, etc. can be resided,Some plugins can also be dragged to the shortcut panel for management, which is both beautiful and convenient.
+The Plugin Area displays frequently used actions and can also be customized via Control Center > Personalization > Dock. Frequently used plug-ins such as screenshot recording, system monitor, global search, etc. can be resided,Some plugins can also be dragged to the shortcut panel for management, which is both beautiful and convenient.
 
 ![quick_panel](./fig/quick_panel.png)
 
@@ -127,21 +125,19 @@ With the gradual familiarization with the  UOS, do you want to create your own d
 
 ### 1. Wallpaper screensaver settings
 
-**Set wallpaper:** Click "Wallpaper and Screensaver" in the desktop context menu to select your favorite wallpaper at the bottom of the desktop, or customize your photo as wallpaper. For more personalized wallpapers, go to the App Store and search for wallpapers to download.
+**Set wallpaper:** Right-click on desktop and select "Set Wallpaper" to select your favorite wallpaper at the bottom of the desktop, or customize your photo as wallpaper. For more personalized wallpapers, go to the App Store and search for wallpapers to download.
 
-此处缺少图片
-
-SourceURL:file:///home/gogo/Downloads/Get started with UOS 待翻译 en.docx
+![wallpaper_settings](./fig/wallpaper_settings.png)
 
 **Screensaver Settings:** The same entry point as the wallpaper settings, just click on the "Screensaver" settings can be, you can also click on the "Custom Screensaver" will be set to rotate a group of pictures as a screensaver, in the setup pop-up window can be set to rotate the rotation interval and random rotation.
 
-此处缺少图片
+![screensaver_settings](./fig/screensaver_settings.png)
 
 The Control Center also offers more setting features, which can be explored in Control Center - Personalization.
 
 ### 2. External screen setup
 
-When using the extended mode, if you need to adjust the screen splicing, you can go to "Control Center - Display" to set. Use the mouse** to drag** the screen thumbnail to adjust the relative position of the screen, which corresponds to the position of the two screens in reality, so as to achieve a better using experience.
+When using the extended mode, if you need to adjust the screen splicing, Go to Control Center > System > Display for settings. Use the mouse** to drag** the screen thumbnail to adjust the relative position of the screen, which corresponds to the position of the two screens in reality, so as to achieve a better using experience.
 
 ![controlcenter_display](./fig/controlcenter_display.png)
 
@@ -159,7 +155,7 @@ The Cleanup" function of Security Center can clean up invalid files and data to 
 
 During system operation, an application may take up too many resources and cause the system to lag. In this case, you can turn on System Monitor to end the process of the application that takes up too much resources and is not in use, so as to ensure the smoothness of the system.
 
-<img src="./fig/systemmonitor.png" alt="systemmonitor" style="zoom: 60%;" /><img src="./fig/systemmonitor_sidebar.png" alt="systemmonitor_sidebar" style="zoom: 60%;" />
+<img src="./fig/systemmonitor_sidebar.png" alt="systemmonitor_sidebar" style="zoom: 60%;" />
 
 ### 3. How to connect a printer
 
@@ -179,35 +175,6 @@ In general, enterprise network access has its own security authentication scheme
 
 ### 5. How to adjust the input method
 
-In Control Center - Keyboard and Language - Input Method Settings, click Edit button to select the input method you need to remove or drag to adjust the order of input methods. If accidentally removed by mistake, just click Add button, select the input method and confirm the addition, then you can get back the input method you deleted by mistake before.
+In Control Center > Keyboard & Language > Input Method Settings, click Edit button to select the input method you need to remove or drag to adjust the order of input methods. If accidentally removed by mistake, just click Add button, select the input method and confirm the addition, then you can get back the input method you deleted by mistake before.
 
 ![controlcenter_input](./fig/controlcenter_input.png)
-
-## V. Join the community to answer your questions and solve your problems
-
-Welcome to WeChat sweeping code to join the official community of TUNISON, get intimate online services: **perfect use of skills, fresh product information, interesting official activities **, everything, group activity code, permanently valid.
-
-![community](./fig/community.png)
-
-You are welcome to scan the QR code on WeChat to open the UOS Tip Assistant mini program and view the tips online.
-
-![tip_assistant](./fig/tip_assistant.jpg)
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
