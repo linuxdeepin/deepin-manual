@@ -1,3 +1,9 @@
+deepin-manual (6.5.32) unstable; urgency=medium
+
+  * update translations
+
+ -- Liu Zhangjian <liuzhangjian@uniontech.com>  Fri, 27 Jun 2025 17:39:09 +0800
+
 deepin-manual (6.5.31) unstable; urgency=medium
 
   * fix: Update application list visibility based on edition type
