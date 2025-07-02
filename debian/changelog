@@ -1,3 +1,9 @@
+deepin-manual (6.5.33) unstable; urgency=medium
+
+  * chore: Update package URLs and digests in linglong.yaml files
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Wed, 02 Jul 2025 10:57:06 +0800
+
 deepin-manual (6.5.32) unstable; urgency=medium
 
   * update translations
