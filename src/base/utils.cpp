@@ -685,6 +685,24 @@ QStringList Utils::systemToOmit(Dtk::Core::DSysInfo::UosEdition type)
     return retList;
 }
 
+//兼容适配版本：只有社区版使用"d"前缀，其他版本都使用"p"前缀
+QStringList Utils::systemToOmitCompat(Dtk::Core::DSysInfo::UosEdition type)
+{
+    qCDebug(app) << "systemToOmitCompat called with type:" << type;
+    QStringList retList;
+    
+    if (type == Dtk::Core::DSysInfo::UosCommunity) {
+        qCDebug(app) << "Community edition - using 'd' prefix";
+        retList.append("d");
+    } else {
+        qCDebug(app) << "Non-community edition - using 'p' prefix";
+        retList.append("p");
+    }
+    
+    qCDebug(app) << "omit compat list:" << retList;
+    return retList;
+}
+
 bool Utils::activeWindow(quintptr winId)
 {
     qCDebug(app) << "activeWindow" << winId;

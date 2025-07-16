@@ -45,6 +45,7 @@ public:
     static bool hasSelperSupport();
     static bool hasAppStore();
     static QStringList systemToOmit(Dtk::Core::DSysInfo::UosEdition);
+    static QStringList systemToOmitCompat(Dtk::Core::DSysInfo::UosEdition type);
     static bool activeWindow(quintptr winId);
     static QString regexp_label(const QString &strtext, const QString &strpatter);
     //创建多级目录

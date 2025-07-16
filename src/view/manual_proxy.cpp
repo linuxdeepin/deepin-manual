@@ -175,7 +175,7 @@ void ManualProxy::showUpdateLabel()
 QString ManualProxy::appToPath(const QString &appName)
 {
     qCDebug(app) << "Converting app name to path:" << appName;
-    QStringList omitType = Utils::systemToOmit(Utils::uosEditionType());
+    QStringList omitType = Utils::systemToOmitCompat(Utils::uosEditionType());
     QStringList mdList;
     QStringList  assetsPathList = Utils::getSystemManualDir();
     foreach (auto assetPath, assetsPathList) {
