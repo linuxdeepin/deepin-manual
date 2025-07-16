@@ -1,3 +1,9 @@
+deepin-manual (6.5.35) unstable; urgency=medium
+
+  * chore: Update package URLs in linglong.yaml files for crimson_25.0
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Wed, 16 Jul 2025 15:01:29 +0800
+
 deepin-manual (6.5.34) unstable; urgency=medium
 
   * chore: Update package URLs and digests in linglong.yaml files
