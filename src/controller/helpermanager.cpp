@@ -37,6 +37,15 @@ helperManager::helperManager(QObject *parent)
     qCDebug(app) << "helperManager initialized successfully";
 }
 
+helperManager::~helperManager()
+{
+    if (m_webView) {
+        qCDebug(app) << "Deleting WebEngineView";
+        delete m_webView;
+        m_webView = nullptr;
+    }
+}
+
 /**
  * @brief helperManager::initWeb 初始化web配置
  */
