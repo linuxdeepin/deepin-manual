@@ -1,6 +1,6 @@
 # How to get started with UOS|learn-basic-operations|
 
-![welcome](./fig/welcome.png)
+![VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_33_16](./fig/VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_33_16.png)
 
 ## I. Getting Started Quickly
 
@@ -8,57 +8,51 @@ UOS Desktop offers the same home screen layout mode as Windows - Efficient Mode.
 
 **Schematic diagram of desktop layout:**
 
-![desktop](./fig/desktop.png)
+![VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_44_16](./fig/VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_44_16.png)
 
 ### 1.  Launcher（Start）
 
 Users familiar with Windows know that using any function will start from the Start, such as finding/opening applications. In UOS, there is a start menu (Launcher) just like Windows, you can do the same operation as Windows Start in the Launcher. For more information about the use of the Launcher, please refer to **Manual-Desktop Environment-Launcher** or hit "F1" to open the Manual.
 
-![luncher](./fig/luncher.png)
+![VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_44_25](./fig/VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_44_25.png)
 
 ### 2. Dock
-
-![docker](./fig/docker.png)
 
 Like the Taskbar under Windows,UOS Dock also contains several partitions such as Quick Launch, Tray, Plugin and so on. The Quick Launch bar can fix your frequently-used applications for easy one-click opening.
 
 The icon Tray area allows you to set Bluetooth, network and other shortcut settings directly,You can also manage the tray by dragging the tray area icon and storing it in the tray window.
 
-![pallet](./fig/pallet.png)
-
 The Plugin Area displays frequently used actions and can also be customized through Control Center - Personalization - Dock. Frequently used plug-ins such as screenshot recording, system monitor, global search, etc. can be resided,Some plugins can also be dragged to the shortcut panel for management, which is both beautiful and convenient.
-
-![quick_panel](./fig/quick_panel.png)
 
 ### 3.Computer (This PC)
 
 **Computer under UOS**
 
-The same as Windows Explorer,UOS File Manager can manage files as well as the Desktop, and the Desktop defaults to display "Computer" <img src="../common/computer.png" alt="img" style="zoom: 67%;" />, which is equivalent to Windows' "This PC".
+The same as Windows Explorer,UOS File Manager can manage files as well as the Desktop, and the Desktop defaults to display "Computer" ![img](../common/computer.png), which is equivalent to Windows' "This PC".
 
-![filemanager](./fig/filemanager.png)
+![VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_44_56](./fig/VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_44_56.png)
 
 **Set up quick access to frequently used folders**
 
 You can adjust the sidebar and drag and drop to adjust the sorting of frequently used folders. Or you can fix the folders you need to see at any time to the sidebar navigation by "Pin to quick access" in the right-click menu. You can make the file manager more suitable for your personal use.
 
-![File_right_click](./fig/File_right_click.png)
+![VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_45_16](./fig/VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_45_16.png)
 
 **Convenient right-click menu**
 
 Frequently used functions such as printing files, compressing files, and sending files quickly can be found in the right-click menu of the file.
 
-![right_click](./fig/right_click.png)
+![VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_45_42](./fig/VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_45_42.png)
 
 More use of the file manager can be seen in **Manual - File Manager**, or [click on the link](https://www.bilibili.com/video/BV1dT411574j/?share_source=copy_web&vd_source= 76cf82177880a7aa76195eee437b80a6) to watch the video.
 
 ### 4.  App Store
 
-UOS cannot install windows application format (exe) downloaded directly from the internet, but provides a channel for safe and rich application downloads - **App Store** <img src="../common/appstore.png" alt="img" style="zoom: 67%;" />。
+UOS cannot install windows application format (exe) downloaded directly from the internet, but provides a channel for safe and rich application downloads - **App Store** ![img](../common/appstore.png)。
 
 You can download and install different versions of WPS, WeChat, Nail, Sogou Input Method and other apps that you need for your office environment, and it is recommended that you directly choose the apps with the "Recommended" logo to install.
 
-![appstore](./fig/appstore.png)
+![VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_46_03](./fig/VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_46_03.png)
 
 ## II. Common office functions
 
@@ -68,25 +62,25 @@ You can download and install different versions of WPS, WeChat, Nail, Sogou Inpu
 
 When you need to view the contents of two app windows at the same time, you can trigger the app split-screen operation by dragging and dropping the app to the left and right edges of the screen, which will help improve your processing efficiency.
 
-![splitscreen](./fig/splitscreen.png)
+![VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_46_26](./fig/VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_46_26.png)
 
 **Switching windows**
 
 By using the "Alt+Tab" shortcut, you can quickly switch between multiple app windows and find open apps just like in Windows.
 
-![alttab](./fig/alttab.png)
+![VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_46_41](./fig/VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_46_41.png)
 
 **View all windows**
 
-If you have more windows open, you can use the taskbar to open the "Multitasking View" by clicking <img src="../common/multitasking_view.png" alt="img" style="zoom:67%;" /> to open "Multitasking View", or the shortcut key "Super (Win icon key) + S The shortcut key "Super (Win icon key) + S", together with the mouse, will allow you to select any application window for switching.
+If you have more windows open, you can use the taskbar to open the "Multitasking View" by clicking ![img](../common/multitasking_view.png) to open "Multitasking View", or the shortcut key "Super (Win icon key) + S The shortcut key "Super (Win icon key) + S", together with the mouse, will allow you to select any application window for switching.
 
-![multitaking_view](./fig/multitaking_view.png)
+![VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_46_50](./fig/VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_46_50.png)
 
 ### 2. Extracting text content from screenshots
 
-When you have a favorite text in a picture, or some webpage content can not be copied, you can use the system comes with the screenshot recording screen to take a screenshot of it, and then in the toolbar click on the <img src="../common/text_recognition.png" alt="img" style="zoom:67%;" />icon in the toolbar, you can extract the text from the screenshot and copy it to other places or download it locally, and then you can save it or share it with others.
+When you have a favorite text in a picture, or some webpage content can not be copied, you can use the system comes with the screenshot recording screen to take a screenshot of it, and then in the toolbar click on the ![img](../common/text_recognition.png)icon in the toolbar, you can extract the text from the screenshot and copy it to other places or download it locally, and then you can save it or share it with others.
 
-![screenshot](./fig/screenshot.png)
+![VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_47_11](./fig/VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_47_11.png)
 
 ### 3. Learn more about shortcut key operations
 
@@ -129,13 +123,11 @@ With the gradual familiarization with the  UOS, do you want to create your own d
 
 **Set wallpaper:** Click "Wallpaper and Screensaver" in the desktop context menu to select your favorite wallpaper at the bottom of the desktop, or customize your photo as wallpaper. For more personalized wallpapers, go to the App Store and search for wallpapers to download.
 
-此处缺少图片
-
-SourceURL:file:///home/gogo/Downloads/Get started with UOS 待翻译 en.docx
+![VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_47_37](./fig/VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_47_37.png)
 
 **Screensaver Settings:** The same entry point as the wallpaper settings, just click on the "Screensaver" settings can be, you can also click on the "Custom Screensaver" will be set to rotate a group of pictures as a screensaver, in the setup pop-up window can be set to rotate the rotation interval and random rotation.
 
-此处缺少图片
+![VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_47_44](./fig/VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_47_44.png)
 
 The Control Center also offers more setting features, which can be explored in Control Center - Personalization.
 
@@ -143,7 +135,7 @@ The Control Center also offers more setting features, which can be explored in C
 
 When using the extended mode, if you need to adjust the screen splicing, you can go to "Control Center - Display" to set. Use the mouse** to drag** the screen thumbnail to adjust the relative position of the screen, which corresponds to the position of the two screens in reality, so as to achieve a better using experience.
 
-![controlcenter_display](./fig/controlcenter_display.png)
+![VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_47_57](./fig/VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_47_57.png)
 
 ## IV. Frequently Asked Questions
 
@@ -153,13 +145,13 @@ For more questions and answers, please visit [FAQ]( https://faq.uniontech.com/)
 
 The Cleanup" function of Security Center can clean up invalid files and data to free up disk space. Open Security Center, check the type of data you want to clean up, click "Scan Now" to scan for junk files, then select what you want to clean up and click "Clean Up", which is easy to operate.
 
-![securitycenter_garbageremoval](./fig/securitycenter_garbageremoval.png)
+![VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_48_30](./fig/VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_48_30.png)
 
 ### 2. How do I monitor the status of my system
 
 During system operation, an application may take up too many resources and cause the system to lag. In this case, you can turn on System Monitor to end the process of the application that takes up too much resources and is not in use, so as to ensure the smoothness of the system.
 
-<img src="./fig/systemmonitor.png" alt="systemmonitor" style="zoom: 60%;" /><img src="./fig/systemmonitor_sidebar.png" alt="systemmonitor_sidebar" style="zoom: 60%;" />
+![systemmonitor_sidebar](./fig/VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_48_50.png)
 
 ### 3. How to connect a printer
 
@@ -167,27 +159,27 @@ In the Print Manager interface, click the Add button to enter the Add Printer in
 
 For other ways to add printers, check out **Manual - Print Manager**.
 
-![printer](./fig/printer.png)
+![VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_49_06](./fig/VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_49_06.png)
 
 ### 4. How do I connect to the network
 
-If you can't open a web page in your browser, you need to check if you are connected to a wired or wireless network. You can click on the WiFi icon in the taskbar-tray area <img src="../common/wifi.png" alt="wifi" style="zoom:67%;" />, select the name of the WiFi you want to connect to and enter the password, or plug in a cable and enable a wired connection.
+If you can't open a web page in your browser, you need to check if you are connected to a wired or wireless network. You can click on the WiFi icon in the taskbar-tray area ![wifi](../common/wifi.png), select the name of the WiFi you want to connect to and enter the password, or plug in a cable and enable a wired connection.
 
 In general, enterprise network access has its own security authentication scheme. If you need to configure network security authentication, you can go to Control Center-Network and configure wired network or wireless network as needed. To learn more, you can [click the link](https://www.bilibili.com/video/BV1ZT41157dp/?share_source=copy_web&vd_source=76cf82177880a7aa76195eee437b80a6) Watch the video.
 
-![controcenter_wifi](./fig/controlcenter_wifi.png)
+![VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_49_23](./fig/VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_49_23.png)
 
 ### 5. How to adjust the input method
 
 In Control Center - Keyboard and Language - Input Method Settings, click Edit button to select the input method you need to remove or drag to adjust the order of input methods. If accidentally removed by mistake, just click Add button, select the input method and confirm the addition, then you can get back the input method you deleted by mistake before.
 
-![controlcenter_input](./fig/controlcenter_input.png)
+![VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_49_38](./fig/VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_49_38.png)
 
 ## V. More tips
 
 You are welcome to scan the QR code on WeChat to open the UOS Tip Assistant mini program and view the tips online.
 
-![tip_assistant](./fig/tip_assistant.jpg)
+![VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_49_55](./fig/VirtualBox_uos-desktop-20-professional-1070-amd64-202503_25_07_2025_17_49_55.jpg)
 
 
 
