@@ -1,3 +1,9 @@
+deepin-manual (6.5.36) unstable; urgency=medium
+
+  * fix: Add destructor to helperManager for proper resource cleanup
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Thu, 31 Jul 2025 16:03:35 +0800
+
 deepin-manual (6.5.35) unstable; urgency=medium
 
   * chore: Update package URLs in linglong.yaml files for crimson_25.0
