@@ -1,3 +1,9 @@
+deepin-manual (6.5.38) unstable; urgency=medium
+
+  * chore: Add new Lao translation file (#569)
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Thu, 14 Aug 2025 09:14:33 +0800
+
 deepin-manual (6.5.37) unstable; urgency=medium
 
   * chore: Add new Lao translation file

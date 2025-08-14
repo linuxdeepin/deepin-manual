@@ -52,6 +52,7 @@ GenericName[sr]=Приручник
 GenericName[tr]=Kılavuz
 GenericName[ug]=قوللانما 
 GenericName[uk]=Підручник
+GenericName[lo]=ຄູ່ມືການໃຊ້
 GenericName[zh_CN]=帮助手册
 GenericName[zh_HK]=幫助手冊
 GenericName[zh_TW]=說明書
@@ -94,6 +95,7 @@ Keywords[sr]=документација;информације;приручни�
 Keywords[tr]=dokümantasyon;belgeler;bilgi;kılavuz;rehber;yardım;
 Keywords[ug]=ئارخىپ ؛ ئۇچۇر ؛ قوللانما ؛ياردەم ؛
 Keywords[uk]=documentation;information;manual;help;документація;відомості;підручник;довідка;
+Keywords[lo]=ເອກະສານ;ຂໍ້ມູນ;ຄູ່ມື;ຊ່ວຍເຫລືອ;
 Keywords[zh_CN]=文档;信息;manual;帮助;
 Keywords[zh_HK]=文檔;訊息;幫助手冊;幫助;
 Keywords[zh_TW]=documentation;information;manual;help;文件;資訊;手冊;說明書;幫助;協助;說明;
@@ -137,6 +139,7 @@ Name[sr]=Приручник за Дипин
 Name[tr]=Deepin Kılavuz
 Name[ug]= قوللانمىسى  Deepin
 Name[uk]=Підручник Deepin
+Name[lo]=ຄູ່ມືການໃຊ້
 Name[zh_CN]=深度帮助手册
 Name[zh_HK]=Deepin 幫助手冊
 Name[zh_TW]=Deepin 說明書
