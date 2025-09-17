@@ -7,13 +7,13 @@ version: "1"
 package:
   id: org.deepin.manual
   name: "deepin-manual"
-  version: 6.5.38.1
+  version: 6.5.39.1
   kind: app
   description: |
     manual for deepin os.
 
-base: org.deepin.base/25.2.0/loong64
-runtime: org.deepin.runtime.webengine/25.2.0/loong64
+base: org.deepin.base/25.2.1/loong64
+runtime: org.deepin.runtime.webengine/25.2.1/loong64
 
 command:
   - dman
