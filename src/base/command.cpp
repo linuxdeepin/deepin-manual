@@ -65,8 +65,14 @@ bool SpawnCmd(const QString &cmd, const QStringList &args)
     process.start();
     qCDebug(app) << "Process started, PID:" << process.processId();
 
-    // Wait for process to finish without timeout.
-    process.waitForFinished(-1);
+    // Wait for process to finish with default timeout.
+    bool finished = process.waitForFinished();
+    if (!finished) {
+        qCWarning(app) << "Command timed out, terminating process";
+        process.kill();
+        process.waitForFinished(500);
+        return false;
+    }
 
     qCDebug(app) << "Command output:" << process.readAllStandardOutput();
 
@@ -92,8 +98,14 @@ bool SpawnCmd(const QString &cmd, const QStringList &args,
     process.start();
     qCDebug(app) << "Process started, PID:" << process.processId();
 
-    // Wait for process to finish without timeout.
-    process.waitForFinished(-1);
+    // Wait for process to finish with default timeout.
+    bool finished = process.waitForFinished();
+    if (!finished) {
+        qCWarning(app) << "Command timed out, terminating process";
+        process.kill();
+        process.waitForFinished(500);
+        return false;
+    }
     output = process.readAllStandardOutput();
     err = process.readAllStandardError();
     if (!process.errorString().contains("Unknown")) {
