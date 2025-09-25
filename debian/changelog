@@ -1,3 +1,9 @@
+deepin-manual (6.5.40) unstable; urgency=medium
+
+  * Fix the database may be incompletely created, resulting in no searches.
+
+ -- re2zero <yangwu@uniontech.com>  Thu, 25 Sep 2025 21:28:16 +0800
+
 deepin-manual (6.5.39) unstable; urgency=medium
 
   * chore: Update linglong base and runtime
