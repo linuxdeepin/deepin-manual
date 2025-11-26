@@ -530,8 +530,8 @@ Dtk::Core::DSysInfo::UosEdition Utils::uosEditionType()
 
     QStringList parts = buildType.split(".");
     qCDebug(app) << "OsBuild parts:" << parts;
-    if(parts.size() != 3) {
-        qCDebug(app) << "Invalid OsBuild format, expected 3 parts";
+    if(parts.size() != 3 && parts.size() != 2 ) {
+        qCDebug(app) << "Invalid OsBuild format, expected 2 or 3 parts";
         hasQueried = true;
         return cachedEdition;
     }
