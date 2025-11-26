@@ -15,6 +15,7 @@ test_build:
             architectures:
               - x86_64
               - aarch64
+              - loong64
 
           - name: debian
             paths:
