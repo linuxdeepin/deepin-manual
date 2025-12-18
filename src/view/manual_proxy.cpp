@@ -272,7 +272,7 @@ QString ManualProxy::appToPath(const QString &appName)
         }
     }
     if (ret.isEmpty()) {
-        qCWarning(app) << " no exist file:" << appName;
+        qCWarning(app) << " no exist file: " << ret ;
         // TODO(wurongjie) 在之前的代码中返回了error,暂不知作用
         return "error";
     }
