@@ -233,6 +233,7 @@ QString ManualProxy::appToPath(const QString &appName)
     for (auto md : mdList) {
         if (QFile(md).exists()) {
             ret = md;
+            break;  // 找到优先级最高的文件后立即退出
         }
     }
     if (ret.isEmpty()) {
