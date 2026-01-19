@@ -269,6 +269,7 @@ QString ManualProxy::appToPath(const QString &appName)
         if (QFile(md).exists()) {
             qCDebug(app) << "Found manual file:" << md;
             ret = md;
+            break;  // 找到优先级最高的文件后立即退出
         }
     }
     if (ret.isEmpty()) {
