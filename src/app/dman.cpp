@@ -84,7 +84,7 @@ int main(int argc, char **argv)
     //    Dtk::Widget::DApplication::loadDXcbPlugin();
 
 #ifdef __sw_64__
-    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--no-sandbox");
+    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--js-flags=--jitless");
 #endif
 
     bool isWayland = Utils::judgeWayLand();
