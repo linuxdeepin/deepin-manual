@@ -1,3 +1,9 @@
+deepin-manual (6.5.43) unstable; urgency=medium
+
+  * fix: Update QTWEBENGINE_CHROMIUM_FLAGS for sw_64 build (#585)
+
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Thu, 22 Jan 2026 18:51:09 +0800
+
 deepin-manual (6.5.42) unstable; urgency=medium
 
   * Update dman's resources
