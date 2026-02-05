@@ -1,3 +1,9 @@
+deepin-manual (6.5.44) unstable; urgency=medium
+
+  * chore: Update compiler flags for security enhancements
+
+ -- wangrong <wangrong@uniontech.com>  Thu, 05 Feb 2026 13:58:54 +0800
+
 deepin-manual (6.5.43) unstable; urgency=medium
 
   * fix: Update QTWEBENGINE_CHROMIUM_FLAGS for sw_64 build (#585)
