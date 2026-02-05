@@ -66,12 +66,12 @@ else()
   # -Wl, -O2 Enable linker optimizations
   # -Wl, --gc-sections Remove unused code resulting from -fdsta-sections and
   # -ffunction-sections
-  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -O2 -Wl,-O1 -Wl,--gc-sections")
-  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -O2 -Wl,-O1 -Wl,--gc-sections")
+  set(CMAKE_C_FLAGS "${CMAKE_C_FLAGS} -Wall -O2 -Wl,-O1 -Wl,--gc-sections -D_FORTIFY_SOURCE=2 -O2")
+  set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wall -O2 -Wl,-O1 -Wl,--gc-sections -D_FORTIFY_SOURCE=2 -O2")
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -fno-rtti")
 
   set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} -Wl,--as-needed -fPIE")
-  set(CMAKE_EXE_LINKER_FLAGS "-pie")
+  set(CMAKE_EXE_LINKER_FLAGS "-pie -Wl,-z,relro -Wl,-z,now")
 endif()
 
 if (${CMAKE_SYSTEM_PROCESSOR} MATCHES "mips64")
