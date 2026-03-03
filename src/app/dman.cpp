@@ -84,7 +84,8 @@ int main(int argc, char **argv)
     //    Dtk::Widget::DApplication::loadDXcbPlugin();
 
 #ifdef __sw_64__
-    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--js-flags=--jitless");
+    // sw_64 requires combined Chromium flags to avoid overwriting previous settings
+    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu --single-process --js-flags=--jitless");
 #endif
 
     bool isWayland = Utils::judgeWayLand();

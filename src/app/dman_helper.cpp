@@ -24,9 +24,16 @@ int main(int argc, char **argv)
 
     qputenv("DXCB_FAKE_PLATFORM_NAME_XCB", "true");
     qDebug() << "Set DXCB_FAKE_PLATFORM_NAME_XCB=true";
+
+#ifdef __sw_64__
+    // sw_64 requires combined Chromium flags to avoid being overwritten
+    qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu --single-process --js-flags=--jitless");
+    qDebug() << "Set QTWEBENGINE_CHROMIUM_FLAGS for sw_64: --disable-gpu --single-process --js-flags=--jitless";
+#else
     //禁用GPU
     qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--disable-gpu");
     qDebug() << "Set QTWEBENGINE_CHROMIUM_FLAGS=--disable-gpu";
+#endif
 //    qputenv("QTWEBENGINE_REMOTE_DEBUGGING", "7777");
 
 #ifdef LINGLONG_BUILD
@@ -48,12 +55,15 @@ int main(int argc, char **argv)
 
     qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--single-process");
 #else
+#ifndef __sw_64__
+    // sw_64 already has complete flags set above, skip override here
     if (!Utils::judgeWayLand()) {
         qputenv("QTWEBENGINE_CHROMIUM_FLAGS", "--single-process");
         qDebug() << "Non-Wayland environment, set single-process mode";
     } else {
         qDebug() << "Wayland environment detected";
     }
+#endif
 #endif
 
     // 增加路径以搜索主机应用和玲珑应用中的帮助手册
