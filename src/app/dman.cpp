@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -21,6 +21,18 @@
 #include <QSurfaceFormat>
 
 DWIDGET_USE_NAMESPACE
+
+// Environment variable names
+static const char ENV_LINGLONG_APPID[] = "LINGLONG_APPID";
+static const char ENV_XDG_DATA_DIRS[] = "XDG_DATA_DIRS";
+
+// Linglong extra paths for XDG_DATA_DIRS
+// Use QStringLiteral to avoid runtime UTF-8 conversion for better startup performance
+static const QStringList LINGLONG_EXTRA_PATHS = {
+    QStringLiteral("/run/host/rootfs/usr/share"),
+    QStringLiteral("/run/host/rootfs/var/lib/linglong/entries/share"),
+    QStringLiteral("/run/host/rootfs/var/lib/linglong/entries/apps/share")
+};
 
 int main(int argc, char **argv)
 {
@@ -99,12 +111,33 @@ int main(int argc, char **argv)
     }
 
     // 增加路径以搜索主机应用和玲珑应用中的帮助手册
-    bool isLinglong = qEnvironmentVariableIsSet("LINGLONG_APPID");
+    bool isLinglong = qEnvironmentVariableIsSet(ENV_LINGLONG_APPID);
     if (isLinglong) {
-        qDebug() << "Linglong environment detected";
-        QByteArray paths = qgetenv("XDG_DATA_DIRS");
-        paths.append(":/run/host/rootfs/usr/share:/run/host/rootfs/var/lib/linglong/entries/share");
-        qputenv("XDG_DATA_DIRS", paths);
+        qInfo() << "Linglong environment detected";
+
+        QByteArray rawEnv = qgetenv(ENV_XDG_DATA_DIRS);
+        QStringList pathList;
+
+        if (!rawEnv.isEmpty()) {
+            QString paths = QString::fromUtf8(rawEnv);
+            // Discard original value if invalid UTF-8 detected to prevent parsing errors
+            if (paths.toUtf8() != rawEnv) {
+                qWarning() << "XDG_DATA_DIRS contains invalid UTF-8 characters, using default paths.";
+            } else {
+                pathList = paths.split(':', Qt::SkipEmptyParts);
+            }
+        }
+
+        // Avoid duplicate paths
+        for (const QString &extraPath : LINGLONG_EXTRA_PATHS) {
+            if (!pathList.contains(extraPath)) {
+                pathList.append(extraPath);
+            }
+        }
+
+        if (!pathList.isEmpty()) {
+            qputenv(ENV_XDG_DATA_DIRS, pathList.join(':').toUtf8());
+        }
     }
 
     qInfo() << "Creating DApplication instance";
