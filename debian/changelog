@@ -1,3 +1,10 @@
+deepin-manual (6.5.46) unstable; urgency=medium
+
+  * fix(linglong): add apps/share path to XDG_DATA_DIRS
+  * docs(libraries): simplify documentation and remove unused images
+
+ -- Wang Yu <wangyu@uniontech.com>  Wed, 18 Mar 2026 13:25:28 +0800
+
 deepin-manual (6.5.45) unstable; urgency=medium
 
   * fix: combine Chromium flags to fix search functionality
