@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -32,7 +32,7 @@ QString languageArr[][langCount] = {
     {"authentication", "生物认证", "Biometric Authentication", "生物認證", "生物認證"},
     {"passkey", "安全密钥", "Security key", "安全密鑰", "安全金鑰"},
     {"accounts", "帐户", "Accounts", "帳戶", "帳戶"},
-    {"device", "设备", "Device", "設備", "裝置"},
+    {"device", "蓝牙和其他设备", "Bluetooth and Devices", "藍牙和其他設備", "藍牙和其他裝置"},
     {"deepinid", "UOS ID", "UOS ID", "UOS ID", "UOS ID"},
     {"display", "显示", "Display", "螢幕", "螢幕"},
     {"defapp", "默认程序", "Default Programs", "預設程式", "預設程式"},
