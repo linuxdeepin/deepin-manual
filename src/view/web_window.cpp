@@ -356,29 +356,25 @@ void WebWindow::appStoreTriggered()
         return;
     }
 
-    // Try DBus first
-    QDBusInterface interface(APPSTORE_SERVICE,
-                             APPSTORE_PATH,
-                             APPSTORE_INTERFACE,
-                             QDBusConnection::sessionBus());
-    if (interface.isValid()) {
-        QDBusMessage reply = interface.call("newInstence");
-        if (reply.type() == QDBusMessage::ErrorMessage) {
-            qCWarning(app) << "Failed to call appstore DBus method:" << reply.errorMessage();
-        } else {
-            qCDebug(app) << "App store launched via DBus successfully";
-            return;
+    if (!m_appstoreInterface) {
+        m_appstoreInterface = new QDBusInterface(APPSTORE_SERVICE,
+                                                 APPSTORE_PATH,
+                                                 APPSTORE_INTERFACE,
+                                                 QDBusConnection::sessionBus(),
+                                                 this);
+    }
+    QDBusMessage reply = m_appstoreInterface->call("newInstence");
+    if (reply.type() == QDBusMessage::ErrorMessage) {
+        qCWarning(app) << "Failed to call appstore DBus method:" << reply.errorMessage();
+        // Fallback to QProcess if DBus failed
+        qCDebug(app) << "Falling back to QProcess to launch app store";
+        QProcess process;
+        bool started = process.startDetached("deepin-home-appstore-client");
+        if (!started) {
+            qCWarning(app) << "Failed to launch app store via QProcess";
         }
     } else {
-        qCWarning(app) << "DBus interface not available:" << interface.lastError().message();
-    }
-
-    // Fallback to QProcess if DBus failed
-    qCDebug(app) << "Falling back to QProcess to launch app store";
-    QProcess process;
-    bool started = process.startDetached("deepin-home-appstore-client");
-    if (!started) {
-        qCWarning(app) << "Failed to launch app store via QProcess";
+        qCDebug(app) << "App store launched via DBus successfully";
     }
 }
 
