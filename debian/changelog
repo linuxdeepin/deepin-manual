@@ -1,3 +1,11 @@
+deepin-manual (6.5.47) unstable; urgency=medium
+
+  * fix(appstore): use DBus to launch app store instead of QProcess
+  * docs(libraries): update version to V25 and remove obsolete entries
+  * fix: update device translation in language array
+
+ -- Wang Yu <wangyu@uniontech.com>  Fri, 20 Mar 2026 13:44:16 +0800
+
 deepin-manual (6.5.46) unstable; urgency=medium
 
   * fix(linglong): add apps/share path to XDG_DATA_DIRS
