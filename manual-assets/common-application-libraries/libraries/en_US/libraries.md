@@ -1,6 +1,6 @@
 # A library of commonly used applications|common-application-libraries|
 
-Welcome to UOS Desktop V20 Professional! The system has been adapted to **10** more than 100,000 popular applications in the market for you to download. In order to help you get started with the system faster, we have selected the following domestic alternative products for the common software of mainstream operating systems, you can refer to the following product list, go to the system **App Store** and other channels to download and use the application.
+Welcome to UOS Desktop V25! The system has been adapted to **10** more than 100,000 popular applications in the market for you to download. In order to help you get started with the system faster, we have selected the following domestic alternative products for the common software of mainstream operating systems, you can refer to the following product list, go to the system **App Store** and other channels to download and use the application.
 
 
 
@@ -34,7 +34,6 @@ Instant messaging software and email software commonly used in mainstream operat
 | ----------------------- | ------------------------ | -------------------------------------------------- | --------------- |
 | Mailbox                 | Microsoft Outlook        | UOS邮箱（预装）<br />Foxmail                       | App Store       |
 | Instant messaging       | QT语音                   | 微信<br />QQ<br />企业微信<br />腾讯会议<br />钉钉 | App Store       |
-| VoIP                    | 阿里通网络电话           |                                                    | App Store       |
 
 
 
@@ -76,10 +75,9 @@ You can continue to use "IDM and uTorrent", which are commonly used by major ope
 
 ## Compress and burn
 
-| The type of application | The name of the software             | Domestic substitutions                   | How to download |
-| ----------------------- | ------------------------------------ | ---------------------------------------- | --------------- |
-| Compress                | WinRAR<br />WinZip<br />             | UOS归档管理器（预装）<br />Xarchive-压缩 | App Store       |
-| Burn                    | 虚拟光驱（DAEMON）<br />光盘刻录大师 |                                          |                 |
+| The type of application | The name of the software | Domestic substitutions                   | How to download |
+| ----------------------- | ------------------------ | ---------------------------------------- | --------------- |
+| Compress                | WinRAR<br />WinZip<br /> | UOS归档管理器（预装）<br />Xarchive-压缩 | App Store       |
 
 
 
@@ -88,5 +86,4 @@ You can continue to use "IDM and uTorrent", which are commonly used by major ope
 | The type of application | The name of the software | Domestic substitutions                 | How to download |
 | ----------------------- | ------------------------ | -------------------------------------- | --------------- |
 | CAD                     | AutoCAD                  | 中望CAD<br />浩辰CAD<br />CAXA电子图板 | App Store       |
-
 
