@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -48,6 +48,11 @@ namespace {
 const int kSearchDelay = 200;
 const int BUTTON_SIZE  = 36;
 const int BUTTON_SIZE_COMPACT = 24;
+
+// AppStore DBus constants
+static const QString APPSTORE_SERVICE = QStringLiteral("com.home.appstore.client");
+static const QString APPSTORE_PATH = QStringLiteral("/com/home/appstore/client");
+static const QString APPSTORE_INTERFACE = QStringLiteral("com.home.appstore.client");
 } // namespace
 
 WebWindow::WebWindow(QWidget *parent)
@@ -351,10 +356,30 @@ void WebWindow::appStoreTriggered()
         return;
     }
 
+    // Try DBus first
+    QDBusInterface interface(APPSTORE_SERVICE,
+                             APPSTORE_PATH,
+                             APPSTORE_INTERFACE,
+                             QDBusConnection::sessionBus());
+    if (interface.isValid()) {
+        QDBusMessage reply = interface.call("newInstence");
+        if (reply.type() == QDBusMessage::ErrorMessage) {
+            qCWarning(app) << "Failed to call appstore DBus method:" << reply.errorMessage();
+        } else {
+            qCDebug(app) << "App store launched via DBus successfully";
+            return;
+        }
+    } else {
+        qCWarning(app) << "DBus interface not available:" << interface.lastError().message();
+    }
+
+    // Fallback to QProcess if DBus failed
+    qCDebug(app) << "Falling back to QProcess to launch app store";
     QProcess process;
-    process.startDetached("deepin-home-appstore-client");
-    process.waitForFinished();
-    qCDebug(app) << "WebWindow::appStoreTriggered() done.";
+    bool started = process.startDetached("deepin-home-appstore-client");
+    if (!started) {
+        qCWarning(app) << "Failed to launch app store via QProcess";
+    }
 }
 
 void WebWindow::slotUpdateLabel()
