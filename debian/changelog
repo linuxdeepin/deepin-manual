@@ -1,3 +1,12 @@
+deepin-manual (6.5.47) unstable; urgency=medium
+
+  * fix(appstore): use DBus to launch app store instead of QProcess
+  * docs(libraries): update version to V25 and remove obsolete entries
+  * fix: update device translation in language array
+  * chore: update version to 6.5.46 (#599)
+
+ -- Wang Yu <wangyu@uniontech.com>  Fri, 20 Mar 2026 13:44:16 +0800
+
 deepin-manual (6.5.46) unstable; urgency=medium
 
   * fix(linglong): add apps/share path to XDG_DATA_DIRS
@@ -101,7 +110,7 @@ deepin-manual (6.5.30) unstable; urgency=medium
 
   * fix: Enhance icon theme retrieval with DBus support (#559)
 
- -- dengzhongyuan <dengzhongyuan@uniontech.com>  Mon, 23 Jun 2025 13:50:15 +0800
+ -- dengzhongyuan <dengzhongyuan@uniontech.com>  Mon, 23 Jun 2026 13:50:15 +0800
 
 deepin-manual (6.5.29) unstable; urgency=medium
 
@@ -123,13 +132,13 @@ deepin-manual (6.5.27) unstable; urgency=medium
 
 deepin-manual (6.5.26) unstable; urgency=medium
 
-  * Update version to 6.5.26 
+  * Update version to 6.5.26
 
  -- dengzhongyuan <dengzhongyuan@uniontech.com>  Fri, 23 May 2025 18:03:04 +0800
 
 deepin-manual (6.5.25) unstable; urgency=medium
 
-  * Update version to 6.5.25 
+  * Update version to 6.5.25
   * fix: Core dump occurs when attempting to open manual while it's already
     open.
   * fix: Icon display issue in help manual for UOS Windows application
@@ -139,7 +148,7 @@ deepin-manual (6.5.25) unstable; urgency=medium
 
 deepin-manual (6.5.24) unstable; urgency=medium
 
-  * Update version to 6.5.24 
+  * Update version to 6.5.24
 
  -- dengzhongyuan <dengzhongyuan@uniontech.com>  Wed, 14 May 2025 11:13:14 +0800
 
@@ -160,7 +169,7 @@ deepin-manual (6.5.22) unstable; urgency=medium
 deepin-manual (6.5.21) unstable; urgency=medium
 
   * Using dbus interface instead of dtk sysinfo to get Os edition infomation.
-  * Update version to 6.5.21 
+  * Update version to 6.5.21
 
  -- dengzhongyuan <dengzhongyuan@uniontech.com>  Tue, 29 Apr 2025 19:41:37 +0800
 
@@ -258,13 +267,13 @@ deepin-manual (6.5.7) unstable; urgency=medium
 
 deepin-manual (6.5.6) unstable; urgency=medium
 
-  * adapt compact mode 
+  * adapt compact mode
 
  -- houchengqiu <houchengqiu@uniontech.com>  Fri, 08 Nov 2024 13:53:32 +0800
 
 deepin-manual (6.5.5) unstable; urgency=medium
 
-  * remove kwayland-shell env 
+  * remove kwayland-shell env
 
  -- Liu zheng <liuzheng@uniontech.com>  Thu, 07 Nov 2024 08:17:44 +0800
 
@@ -340,7 +349,7 @@ deepin-manual (6.0.9) unstable; urgency=medium
 
 deepin-manual (6.0.8) unstable; urgency=medium
 
-  * feat: New Quick Start and Video Guide modules added 
+  * feat: New Quick Start and Video Guide modules added
   * fix: Quick Start and Video Guide modules problem repair
 
  -- fengli <fengli@uniontech.com>  Fri, 26 Jan 2024 11:37:47 +0800
@@ -396,7 +405,7 @@ deepin-manual (6.0.1) stable; urgency=medium
 
 deepin-manual (6.0.0) stable; urgency=medium
 
-  * V23 code 
+  * V23 code
   * Adapt REUSE license
 
  -- Deepin Packages Builder <packages@deepin.com>  Mon, 30 Jan 2023 17:36:35 +0800
@@ -409,7 +418,7 @@ deepin-manual (5.5.5) stable; urgency=medium
 
 deepin-manual (2.0.9.3) stable; urgency=medium
 
-  * Update manual 
+  * Update manual
 
  -- Xu Shaohua <xushaohua2016@outlook.com>  Tue, 12 Jun 2018 15:37:08 +0800
 
@@ -543,43 +552,43 @@ deepin-manual (2.0.0) unstable; urgency=medium
 
 deepin-manual (1.0.5-1) stable; urgency=low
 
-  * Autobuild Tag 1.0.5 
+  * Autobuild Tag 1.0.5
 
  -- TagBuilder <tagbuilder@linuxdeepin.com>  Tue, 29 Dec 2015 14:30:31 +0000
 
 deepin-manual (1.0.3-2) stable; urgency=low
 
-  * Rebuild Version 1.0.3 
+  * Rebuild Version 1.0.3
 
- -- TagBuilder <tagbuilder@linuxdeepin.com>  Mon, 28 Dec 2015 21:28:20 +0000
+ -- TagBuilder <tagbuilder@linuxdeepin.com>  Mon, 28 Dec 2015 21:28:20 +0800
 
 deepin-manual (1.0.3-1) stable; urgency=low
 
-  * Autobuild Tag 1.0.3 
+  * Autobuild Tag 1.0.3
 
- -- TagBuilder <tabbuilder@linuxdeepin.com>  Sat, 19 Dec 2015 13:04:17 +0000
+ -- TagBuilder <tabbuilder@linuxdeepin.com>  Sat, 19 Dec 2015 13:04:17 +0800
 
 deepin-manual (1.0.2-1) stable; urgency=low
 
-  * Autobuild Tag 1.0.2 
+  * Autobuild Tag 1.0.2
 
- -- TagBuilder <tabbuilder@linuxdeepin.com>  Mon, 23 Nov 2015 09:00:29 +0000
+ -- TagBuilder <tabbuilder@linuxdeepin.com>  Mon, 23 Nov 2015 09:00:29 +0800
 
 deepin-manual (1.0.1-1) stable; urgency=low
 
-  * Autobuild Tag 1.0.1 
+  * Autobuild Tag 1.0.1
 
- -- TagBuilder <tabbuilder@linuxdeepin.com>  Fri, 20 Nov 2015 09:50:19 +0000
+ -- TagBuilder <tabbuilder@linuxdeepin.com>  Fri, 20 Nov 2015 09:50:19 +0800
 
 deepin-manual (1.0.0-1) stable; urgency=low
 
-  * Autobuild Tag 1.0.0 
+  * Autobuild Tag 1.0.0
 
  -- TagBuilder <tabbuilder@linuxdeepin.com>  Wed, 01 Jul 2015 16:03:59 +0000
 
 deepin-manual (0.1) trusty; urgency=medium
 
-  * build from git. 
+  * build from git.
 
  -- pkg-builder <pkg-builder@packages.linuxdeepin.com>  Thu, 07 May 2015 13:05:04 +0800
 
