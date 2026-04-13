@@ -1,17 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="ru" sourcelanguage="en_US">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" sourcelanguage="en_US" language="ru">
 <context>
     <name>ManualProxy</name>
     <message>
         <location filename="../src/view/manual_proxy.cpp" line="363"/>
         <source>Learn Basic Operations</source>
-        <translation>Изучение базовых операций</translation>
+        <translation>Изучение основных операций</translation>
     </message>
     <message>
         <location filename="../src/view/manual_proxy.cpp" line="366"/>
         <source>Common Application Libraries</source>
-        <translation>Общие библиотеки приложений</translation>
+        <translation>Библиотеки распространённых приложений</translation>
     </message>
     <message>
         <location filename="../src/view/manual_proxy.cpp" line="369"/>
@@ -23,7 +21,8 @@
     <name>QObject</name>
     <message>
         <location filename="../src/view/widget/search_completion_window.cpp" line="197"/>
-        <source>Search for "%1" in the full text</source>
+        <location filename="../src/view/widget/search_completion_window.cpp" line="291"/>
+        <source>Search for &quot;%1&quot; in the full text</source>
         <translation>Искать «%1» во всём тексте</translation>
     </message>
     <message>
@@ -38,6 +37,7 @@
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="35"/>
+        <location filename="../src/view/web_window.cpp" line="771"/>
         <source>Support</source>
         <translation>Поддержка</translation>
     </message>
@@ -54,7 +54,7 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="26"/>
         <source>Video Guide</source>
-        <translation>Видеогид</translation>
+        <translation>Видео-гид</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="27"/>
@@ -79,22 +79,22 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="31"/>
         <source>  result</source>
-        <translation>результат</translation>
+        <translation>  результат</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="32"/>
         <source>  results</source>
-        <translation>результаты</translation>
+        <translation>  результаты</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="33"/>
         <source>Click to view </source>
-        <translation>Нажмите, чтобы посмотреть </translation>
+        <translation>Нажмите для просмотра </translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="34"/>
         <source>View all</source>
-        <translation>Посмотреть все</translation>
+        <translation>Показать всё</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="36"/>
