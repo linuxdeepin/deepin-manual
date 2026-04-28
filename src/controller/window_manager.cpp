@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -124,19 +124,28 @@ void WindowManager::activeOrInitWindow()
     QMutexLocker locker(&_mutex);
     /*** 只要有窗口就不再创建新窗口 2020-06-22 16:57:50 wangml ***/
     if (window != nullptr) {
+        bool wasMaximized = window->windowState() & Qt::WindowMaximized;
         //2020-01-15 kyz 在专业服务器版最小化后show的方式可能无法激活窗口桌面版正常，可能是桌面环境问题，优先采用dock接口激活，如果失败再使用其它激活
         if (Q_LIKELY(Utils::activeWindow(window->winId()))) {
             qCDebug(app) << "Window activated via Utils::activeWindow, winId:" << window->winId();
-            window->saveWindowSize();
-            Dtk::Widget::moveToCenter(window);
-            qCDebug(app) << "Window moved to center";
+            if (!wasMaximized) {
+                window->saveWindowSize();
+                Dtk::Widget::moveToCenter(window);
+            } else {
+                qCDebug(app) << "Window was maximized, skipping saveWindowSize and moveToCenter";
+            }
         } else {
             qCDebug(app) << "Fallback activation method for winId:" << window->winId();
-            setWindow(window);
+            if (!wasMaximized) {
+                setWindow(window);
+            }
             window->show();
+            if (wasMaximized) {
+                window->showMaximized();
+            }
             window->raise();
             window->activateWindow();
-            qCDebug(app) << "Window shown and activated";
+            qCDebug(app) << "Window shown and activated, wasMaximized:" << wasMaximized;
         }
         window->openjsPage(curr_app_name_, curr_title_name_);
         qCDebug(app) << "openjsPage end";
