@@ -2547,19 +2547,75 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-exports.default = function (props) {
-  return _react2.default.createElement(
-    _reactCustomScrollbars.Scrollbars,
-    _extends({}, props, { className: 'scrollbar', autoHide: true, renderTrackHorizontal: renderScrollBarTrackHorizontal, renderView: renderView, autoHideTimeout: 800 }),
-    props.children
-  );
-};
-
 var _react = require('react');
 
 var _react2 = _interopRequireDefault(_react);
 
 var _reactCustomScrollbars = require('react-custom-scrollbars');
+
+var useRef = _react2.default.useRef;
+var useEffect = _react2.default.useEffect;
+
+exports.default = function (props) {
+  var scrollbarsRef = useRef(null);
+  var timeoutRef = useRef(null);
+
+  useEffect(function () {
+    var scrollbars = scrollbarsRef.current;
+    if (!scrollbars) return;
+
+    var showScrollbar = function () {
+      var container = scrollbars.container;
+      if (container) {
+        container.style.setProperty('--scrollbar-opacity', '1');
+      }
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      timeoutRef.current = setTimeout(hideScrollbar, 800);
+    };
+
+    var hideScrollbar = function () {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
+      }
+      var container = scrollbars.container;
+      if (container) {
+        container.style.setProperty('--scrollbar-opacity', '0');
+      }
+    };
+
+    var view = scrollbars.view;
+    var container = scrollbars.container;
+    if (view) {
+      view.addEventListener('scroll', showScrollbar);
+    }
+    if (container) {
+      container.addEventListener('mousemove', showScrollbar);
+      container.addEventListener('mouseleave', hideScrollbar);
+    }
+
+    return function () {
+      if (view) {
+        view.removeEventListener('scroll', showScrollbar);
+      }
+      if (container) {
+        container.removeEventListener('mousemove', showScrollbar);
+        container.removeEventListener('mouseleave', hideScrollbar);
+      }
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
+
+  return _react2.default.createElement(
+    _reactCustomScrollbars.Scrollbars,
+    _extends({}, props, { ref: scrollbarsRef, className: 'scrollbar', renderTrackHorizontal: renderScrollBarTrackHorizontal, renderView: renderView }),
+    props.children
+  );
+};
 
 function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -2568,10 +2624,7 @@ function renderScrollBarTrackHorizontal(props) {
 }
 
 function renderView(props) {
-  var mergedStyle = _extends({}, props.style, {
-    overflowX: 'hidden',
-    marginBottom: 0
-  });
+  var mergedStyle = _extends({}, props.style, { overflowX: 'hidden', marginBottom: 0 });
   return _react2.default.createElement('div', _extends({}, props, { style: mergedStyle }));
 }
 
