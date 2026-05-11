@@ -2,7 +2,7 @@
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-import React from 'react';
+import React, { useRef, useEffect } from 'react';
 import { Scrollbars } from 'react-custom-scrollbars';
 
 function renderScrollBarTrackHorizontal(props) {
@@ -27,14 +27,66 @@ function renderView(props) {
 }
 
 export default function(props) {
+  const scrollbarsRef = useRef(null);
+  const timeoutRef = useRef(null);
+
+  useEffect(() => {
+    const scrollbars = scrollbarsRef.current;
+    if (!scrollbars) return;
+
+    const showScrollbar = () => {
+      const container = scrollbars.container;
+      if (container) {
+        container.style.setProperty('--scrollbar-opacity', '1');
+      }
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+      timeoutRef.current = setTimeout(hideScrollbar, 800);
+    };
+
+    const hideScrollbar = () => {
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+        timeoutRef.current = null;
+      }
+      const container = scrollbars.container;
+      if (container) {
+        container.style.setProperty('--scrollbar-opacity', '0');
+      }
+    };
+
+    const view = scrollbars.view;
+    const container = scrollbars.container;
+    if (view) {
+      view.addEventListener('scroll', showScrollbar);
+    }
+    if (container) {
+      container.addEventListener('mousemove', showScrollbar);
+      container.addEventListener('mouseleave', hideScrollbar);
+    }
+
+    return () => {
+      if (view) {
+        view.removeEventListener('scroll', showScrollbar);
+      }
+      if (container) {
+        container.removeEventListener('mousemove', showScrollbar);
+        container.removeEventListener('mouseleave', hideScrollbar);
+      }
+      if (timeoutRef.current) {
+        clearTimeout(timeoutRef.current);
+      }
+    };
+  }, []);
+
   return (
     <Scrollbars
       {...props}
+      ref={scrollbarsRef}
       className="scrollbar"
-      autoHide
       renderTrackHorizontal={renderScrollBarTrackHorizontal}
       renderView={renderView}
-      autoHideTimeout={800}
     >
       {props.children}
     </Scrollbars>

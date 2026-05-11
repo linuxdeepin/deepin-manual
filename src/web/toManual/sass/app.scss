@@ -22,29 +22,39 @@ body {
   }
 }
 
-.scrollbar>div:last-child {
-  width: 6px !important;
-  border-radius: 3px !important;
+// 使用 CSS 变量实现滚动条自动隐藏，避免 JavaScript autoHide 导致的光标闪烁
+// CSS变量的改变只会触发重绘（repaint），不会触发回流（reflow），因此不会导致光标闪烁
+.scrollbar {
+  // 滚动条轨道（垂直）
+  > div:last-child {
+    width: 6px !important;
+    border-radius: 3px !important;
+    opacity: var(--scrollbar-opacity, 0); // 使用CSS变量，默认值为0
+    transition: opacity 0.3s ease-in-out;
 
-  div {
-    background-color: var(--scrollbar-div-background-color) !important;
-    cursor: default !important;
+    // 滚动条滑块
+    div {
+      background-color: var(--scrollbar-div-background-color) !important;
+      cursor: default !important;
+
+      &:hover {
+        background-color: var(--scrollbar-div-hover-background-color) !important;
+      }
+    }
 
     &:hover {
-      background-color: var(--scrollbar-div-hover-background-color) !important;
+      width: 8px !important;
+      border-radius: 4px !important;
     }
-  }
-
-  &:hover {
-    width: 8px !important;
-    border-radius: 4px !important;
   }
 }
 
+// 文本选择模式下滚动条保持显示
 body[style*='user-select: none'] {
-  .scrollbar>div:last-child {
+  .scrollbar > div:last-child {
     width: 8px !important;
     border-radius: 4px !important;
+    opacity: 1;
 
     div {
       background-color: var(--scrollbar-div-select-background-color) !important;
