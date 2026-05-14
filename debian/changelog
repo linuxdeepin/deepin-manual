@@ -1,3 +1,10 @@
+deepin-manual (6.5.50) unstable; urgency=medium
+
+  * fix(scrollbar): prevent horizontal scrollbar and fix bottom content clipping
+  * chore: update version to 6.5.49
+
+ -- xiepengfei <xiepengfei@uniontech.com>  Thu, 14 May 2026 19:30:49 +0800
+
 deepin-manual (6.5.49) unstable; urgency=medium
 
   * fix(window): preserve maximized state when reactivating minimized window
