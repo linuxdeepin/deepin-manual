@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022-2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -52,9 +52,12 @@ public slots:
     //文件信息插入数据库 （先删除数据，再插入数据）
     void insertFilesTimeEntry(const QStringList &listMdPath,
                               const QStringList &listDataTime);
+    void insertFileTimeEntry(const QString &mdPath, const QString &modifyTime);
 
     //根据mdPath删除表数据
     void deleteFilesTimeEntry(const QStringList &listMdPath);
+
+    int searchEntryCount(const QString &appName, const QString &lang);
 
     //查找filetime表所有内容, key:md文件路径 value: md文件更新时间
     QMap<QString, QString> selectAllFileTime();

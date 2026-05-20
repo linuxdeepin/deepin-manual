@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022-2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -14,6 +14,37 @@
 #include <QDBusMessage>
 #include <QtDBus>
 #include <QDBusConnection>
+#include <QFileInfo>
+
+namespace {
+
+bool parseAppLangFromMdPath(const QString &path, QString &appName, QString &lang)
+{
+    if (path.contains("video-guide")) {
+        return false;
+    }
+
+    const QStringList list = path.split("/");
+    if (list.count() < 4) {
+        return false;
+    }
+
+    if (systemType.contains(list.at(list.count() - 4))) {
+        lang = list.at(list.count() - 2);
+        appName = list.at(list.count() - 3);
+        return true;
+    }
+
+    if (list.contains("application") || list.contains("system")) {
+        lang = list.at(list.count() - 2);
+        appName = list.at(list.count() - 4);
+        return true;
+    }
+
+    return false;
+}
+
+} // namespace
 
 helperManager::helperManager(QObject *parent)
     : QObject(parent)
@@ -165,6 +196,8 @@ void helperManager::getModuleInfo()
         qCDebug(app) << "File changed:" << kVideoConfigPath << "modifyTime:" << modifyTime;
     }
 
+    reconcileIncompleteIndex(mapFile, mapNow);
+
     QStringList deleteList;
     QStringList addList;
     QStringList addTime;
@@ -175,6 +208,48 @@ void helperManager::getModuleInfo()
     qCDebug(app) << "addList:" << addList;
     qCDebug(app) << "addTime:" << addTime;
     handleDb(deleteList, addList, addTime);
+}
+
+void helperManager::reconcileIncompleteIndex(QMap<QString, QString> &mapFile,
+                                             const QMap<QString, QString> &mapNow)
+{
+    QStringList stalePaths;
+
+    for (auto it = mapFile.constBegin(); it != mapFile.constEnd(); ++it) {
+        const QString &mdPath = it.key();
+        if (!mapNow.contains(mdPath)) {
+            continue;
+        }
+
+        if (mdPath == kVideoConfigPath) {
+            if (dbObj->searchEntryCount("video-guide", "zh_CN") == 0
+                    || dbObj->searchEntryCount("video-guide", "en_US") == 0) {
+                qCWarning(app) << "Incomplete video-guide index, will rebuild:" << mdPath;
+                stalePaths.append(mdPath);
+            }
+            continue;
+        }
+
+        QString appName;
+        QString lang;
+        if (!parseAppLangFromMdPath(mdPath, appName, lang)) {
+            continue;
+        }
+
+        if (dbObj->searchEntryCount(appName, lang) == 0) {
+            qCWarning(app) << "Incomplete search index, will rebuild:"
+                           << mdPath << "app:" << appName << "lang:" << lang;
+            stalePaths.append(mdPath);
+        }
+    }
+
+    if (!stalePaths.isEmpty()) {
+        dbObj->deleteFilesTimeEntry(stalePaths);
+        for (const QString &path : stalePaths) {
+            mapFile.remove(path);
+        }
+        qCDebug(app) << "Cleared stale filetime entries:" << stalePaths.size();
+    }
 }
 
 void helperManager::initConnect()
@@ -288,15 +363,18 @@ void helperManager::handleDb(const QStringList &deleteList, const QStringList &a
                 }
             }
         }
+        QFileInfo videoFileInfo(kVideoConfigPath);
+        if (videoFileInfo.exists()) {
+            dbObj->insertFileTimeEntry(kVideoConfigPath,
+                                       videoFileInfo.lastModified().toString("yyyy-MM-dd hh:mm:ss.zzz"));
+        }
     }
 
     QStringList list = handlePriority(tmpAddList);
     qCDebug(app) << "addList:" << list;
 
-    if (!list.isEmpty() && !addTime.isEmpty()) {
-        qCDebug(app) << "addTime:" << addTime;
-        dbObj->insertFilesTimeEntry(tmpAddList, addTime);
-        //通过JS层函数来完成md转html, 然后解析html内所有文本内容
+    if (!list.isEmpty()) {
+        // filetime 在 onRecvParseMsg 写入 search 成功之后；此处仅触发 md 解析
         if (jsObj && m_webView) {
             QString strChange = list.join(",");
             qCDebug(app) << strChange;
@@ -527,6 +605,13 @@ void helperManager::onRecvParseMsg(const QString &msg, const QString &path)
     if (!invalid_entry) {
         dbObj->addSearchEntry(appName, lang, anchors, anchorInitialList, anchorSpellList, anchorIdList, contents, path);
         qCDebug(app) << "addSearchEntry end";
+
+        QFileInfo fileInfo(path);
+        if (fileInfo.exists()) {
+            dbObj->insertFileTimeEntry(path,
+                                       fileInfo.lastModified().toString("yyyy-MM-dd hh:mm:ss.zzz"));
+            qCDebug(app) << "insertFileTimeEntry after addSearchEntry:" << path;
+        }
     }
     //获取内容解析返回 重置定时器
     timerObj->start();
