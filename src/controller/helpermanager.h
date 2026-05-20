@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022-2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -37,6 +37,9 @@ private:
     void dbusSend(const QStringList &deleteList, const QStringList &addList);
     //判断返回md文件符合优先选择。
     QStringList handlePriority(const QStringList &list);
+    // filetime 有记录但 search 无数据时，清除 filetime 以触发重建
+    void reconcileIncompleteIndex(QMap<QString, QString> &mapFile,
+                                const QMap<QString, QString> &mapNow);
 
 private slots:
     //文件列表发生改变信号槽

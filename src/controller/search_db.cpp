@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022-2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -906,6 +906,25 @@ void SearchDb::insertFilesTimeEntry(const QStringList &listMdPath, const QString
         qCCritical(app) << "insert fileTime" << ret;
     }
     qCDebug(app) << "insertFilesTimeEntry done";
+}
+
+void SearchDb::insertFileTimeEntry(const QString &mdPath, const QString &modifyTime)
+{
+    insertFilesTimeEntry(QStringList() << mdPath, QStringList() << modifyTime);
+}
+
+int SearchDb::searchEntryCount(const QString &appName, const QString &lang)
+{
+    Q_ASSERT(p_->db.isOpen());
+    QSqlQuery query(p_->db);
+    query.prepare("SELECT COUNT(*) FROM search WHERE appName=? AND lang=?");
+    query.bindValue(0, appName);
+    query.bindValue(1, lang);
+    if (query.exec() && query.next()) {
+        return query.value(0).toInt();
+    }
+    qCWarning(app) << "searchEntryCount failed:" << query.lastError().text();
+    return 0;
 }
 
 /**
