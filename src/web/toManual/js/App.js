@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022-2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -298,7 +298,11 @@ class App extends React.Component {
             }
         } else if (list[1] == 'search') {
             console.log("============>search...", list[2]);
-            global.qtObjects.search.updateSearch(list[2]);
+            let keyword = list[2];
+            if (this.isbase64(keyword)) {
+                keyword = decodeURIComponent(atob(keyword));
+            }
+            global.qtObjects.search.updateSearch(keyword);
         } else {
             global.bIsReload = true;
             this.context.router.history.go(0);
