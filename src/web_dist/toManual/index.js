@@ -1,3 +1,6 @@
+// SPDX-FileCopyrightText: 2022-2026 UnionTech Software Technology Co., Ltd.
+//
+// SPDX-License-Identifier: GPL-3.0-or-later
 (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
 (function (global){(function (){
 'use strict';
@@ -377,7 +380,11 @@ var App = function (_React$Component) {
                 }
             } else if (list[1] == 'search') {
                 console.log("============>search...", list[2]);
-                global.qtObjects.search.updateSearch(list[2]);
+                var keyword = list[2];
+                if (_this4.isbase64(keyword)) {
+                    keyword = decodeURIComponent(atob(keyword));
+                }
+                global.qtObjects.search.updateSearch(keyword);
             } else {
                 global.bIsReload = true;
                 this.context.router.history.go(0);
