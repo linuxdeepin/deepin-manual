@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022-2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -26,6 +26,7 @@
 
 #include <QClipboard>
 #include <QSignalSpy>
+#include <functional>
 
 QWebChannel * webchannel;
 ut_web_window_test::ut_web_window_test()
@@ -62,6 +63,8 @@ TEST_F(ut_web_window_test, openjsPage)
     s.set((void (QWebEngineView::*)(const QUrl &))ADDR(QWebEngineView, load), ADDR(ut_web_window_test, stub_initweb));
 #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     s.set((void (QWebEnginePage::*)(const QString&))ADDR(QWebEnginePage, runJavaScript), ADDR(ut_web_window_test, stub_initweb));
+#else
+    s.set((void (QWebEnginePage::*)(const QString&, quint32, const std::function<void(const QVariant &)> &))ADDR(QWebEnginePage, runJavaScript), ADDR(ut_web_window_test, stub_initweb));
 #endif
     s.set((void (QWebEnginePage::*)(const QColor &))ADDR(QWebEnginePage, setBackgroundColor), ADDR(ut_web_window_test, stub_initweb));
     web->initWeb();
@@ -86,6 +89,8 @@ TEST_F(ut_web_window_test, updatePage)
     s.set((void (QWebEngineView::*)(const QUrl &))ADDR(QWebEngineView, load), ADDR(ut_web_window_test, stub_initweb));
 #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     s.set((void (QWebEnginePage::*)(const QString &))ADDR(QWebEnginePage, runJavaScript), ADDR(ut_web_window_test, stub_initweb));
+#else
+    s.set((void (QWebEnginePage::*)(const QString &, quint32, const std::function<void(const QVariant &)> &))ADDR(QWebEnginePage, runJavaScript), ADDR(ut_web_window_test, stub_initweb));
 #endif
     s.set((QString(QWebEngineView::*)())ADDR(QWebEngineView, selectedText), ADDR(ut_web_window_test, stub_selectText));
     s.set((void (QWebEnginePage::*)(const QColor &))ADDR(QWebEnginePage, setBackgroundColor), ADDR(ut_web_window_test, stub_initweb));
@@ -212,18 +217,20 @@ TEST_F(ut_web_window_test, eventFilter)
     s.set((void (QWebEngineView::*)(const QUrl &))ADDR(QWebEngineView, load), ADDR(ut_web_window_test, stub_initweb));
 #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     s.set((void (QWebEnginePage::*)(const QString &))ADDR(QWebEnginePage, runJavaScript), ADDR(ut_web_window_test, stub_initweb));
+#else
+    s.set((void (QWebEnginePage::*)(const QString &, quint32, const std::function<void(const QVariant &)> &))ADDR(QWebEnginePage, runJavaScript), ADDR(ut_web_window_test, stub_initweb));
 #endif
     s.set((QString(QWebEngineView::*)())ADDR(QWebEngineView, selectedText), ADDR(ut_web_window_test, stub_selectText));
     s.set((void (QWebEnginePage::*)(const QColor &))ADDR(QWebEnginePage, setBackgroundColor), ADDR(ut_web_window_test, stub_initweb));
     web->initWeb();
 
     QMouseEvent *evnReleaseEnter;
-    evnReleaseEnter = new QMouseEvent(QEvent::MouseButtonRelease, QPoint(0, 0), Qt::RightButton, Qt::NoButton, Qt::NoModifier);
+    evnReleaseEnter = new QMouseEvent(QEvent::MouseButtonRelease, QPointF(0, 0), QPointF(0, 0), Qt::RightButton, Qt::NoButton, Qt::NoModifier);
     web->eventFilter(web, evnReleaseEnter);
     delete evnReleaseEnter;
 
     QSignalSpy spy(web->title_bar_proxy_, SIGNAL(backwardButtonClicked()));
-    evnReleaseEnter = new QMouseEvent(QEvent::MouseButtonPress, QPoint(0, 0), Qt::LeftButton, Qt::BackButton, Qt::NoModifier);
+    evnReleaseEnter = new QMouseEvent(QEvent::MouseButtonPress, QPointF(0, 0), QPointF(0, 0), Qt::LeftButton, Qt::BackButton, Qt::NoModifier);
     s.set((Qt::MouseButton(QMouseEvent::*)())ADDR(QMouseEvent, button), ADDR(ut_web_window_test, stub_MouseButtonBack));
     web->eventFilter(web, evnReleaseEnter);
     s.reset((Qt::MouseButton(QMouseEvent::*)())ADDR(QMouseEvent, button));
@@ -231,14 +238,14 @@ TEST_F(ut_web_window_test, eventFilter)
     //ASSERT_EQ(spy.count(), 1);
 
     QSignalSpy spy1(web->title_bar_proxy_, SIGNAL(forwardButtonClicked()));
-    evnReleaseEnter = new QMouseEvent(QEvent::MouseButtonPress, QPoint(0, 0), Qt::LeftButton, Qt::BackButton, Qt::NoModifier);
+    evnReleaseEnter = new QMouseEvent(QEvent::MouseButtonPress, QPointF(0, 0), QPointF(0, 0), Qt::LeftButton, Qt::BackButton, Qt::NoModifier);
     s.set((Qt::MouseButton(QMouseEvent::*)())ADDR(QMouseEvent, button), ADDR(ut_web_window_test, stub_MouseButtonForward));
     web->eventFilter(web, evnReleaseEnter);
     s.reset((Qt::MouseButton(QMouseEvent::*)())ADDR(QMouseEvent, button));
     delete evnReleaseEnter;
     //         ASSERT_EQ(spy1.count(), 1);
 
-    evnReleaseEnter = new QMouseEvent(QEvent::MouseButtonPress, QPoint(0, 0), Qt::LeftButton, Qt::BackButton, Qt::NoModifier);
+    evnReleaseEnter = new QMouseEvent(QEvent::MouseButtonPress, QPointF(0, 0), QPointF(0, 0), Qt::LeftButton, Qt::BackButton, Qt::NoModifier);
     s.set((Qt::MouseButton(QMouseEvent::*)())ADDR(QMouseEvent, button), ADDR(ut_web_window_test, stub_MouseButtonMiddle));
     web->eventFilter(web, evnReleaseEnter);
     s.reset((Qt::MouseButton(QMouseEvent::*)())ADDR(QMouseEvent, button));
@@ -274,6 +281,8 @@ TEST_F(ut_web_window_test, onAppearanceChanged)
     s.set((void (QWebEngineView::*)(const QUrl &))ADDR(QWebEngineView, load), ADDR(ut_web_window_test, stub_initweb));
 #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     s.set((void (QWebEnginePage::*)(const QString &))ADDR(QWebEnginePage, runJavaScript), ADDR(ut_web_window_test, stub_initweb));
+#else
+    s.set((void (QWebEnginePage::*)(const QString &, quint32, const std::function<void(const QVariant &)> &))ADDR(QWebEnginePage, runJavaScript), ADDR(ut_web_window_test, stub_initweb));
 #endif
     s.set((void (QWebEnginePage::*)(const QColor &))ADDR(QWebEnginePage, setBackgroundColor), ADDR(ut_web_window_test, stub_initweb));
     web->initWeb();
@@ -465,6 +474,8 @@ TEST_F(ut_web_window_test, initWeb)
     s.set((void (QWebEngineView::*)(const QUrl &))ADDR(QWebEngineView, load), ADDR(ut_web_window_test, stub_initweb));
 #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     s.set((void (QWebEnginePage::*)(const QString&))ADDR(QWebEnginePage, runJavaScript), ADDR(ut_web_window_test, stub_initweb));
+#else
+    s.set((void (QWebEnginePage::*)(const QString&, quint32, const std::function<void(const QVariant &)> &))ADDR(QWebEnginePage, runJavaScript), ADDR(ut_web_window_test, stub_initweb));
 #endif
     s.set((void (QWebEnginePage::*)(const QColor &))ADDR(QWebEnginePage, setBackgroundColor), ADDR(ut_web_window_test, stub_initweb));
     web->initWeb();
@@ -497,6 +508,8 @@ TEST_F(ut_web_window_test, onWebPageLoadProgress)
     s.set((void (QWebEngineView::*)(const QUrl &))ADDR(QWebEngineView, load), ADDR(ut_web_window_test, stub_initweb));
 #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     s.set((void (QWebEnginePage::*)(const QString&))ADDR(QWebEnginePage, runJavaScript), ADDR(ut_web_window_test, stub_initweb));
+#else
+    s.set((void (QWebEnginePage::*)(const QString&, quint32, const std::function<void(const QVariant &)> &))ADDR(QWebEnginePage, runJavaScript), ADDR(ut_web_window_test, stub_initweb));
 #endif
     s.set((void (QWebEnginePage::*)(const QColor &))ADDR(QWebEnginePage, setBackgroundColor), ADDR(ut_web_window_test, stub_initweb));
     s.set((bool (Dtk::Widget::DSpinner::*)())ADDR(Dtk::Widget::DSpinner, isPlaying), ADDR(ut_web_window_test, stub_isValid));
@@ -516,6 +529,8 @@ TEST_F(ut_web_window_test, onSearchResultClicked)
     s.set((void (QWebEngineView::*)(const QUrl &))ADDR(QWebEngineView, load), ADDR(ut_web_window_test, stub_initweb));
 #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     s.set((void (QWebEnginePage::*)(const QString&))ADDR(QWebEnginePage, runJavaScript), ADDR(ut_web_window_test, stub_initweb));
+#else
+    s.set((void (QWebEnginePage::*)(const QString&, quint32, const std::function<void(const QVariant &)> &))ADDR(QWebEnginePage, runJavaScript), ADDR(ut_web_window_test, stub_initweb));
 #endif
     s.set((void (QWebEnginePage::*)(const QColor &))ADDR(QWebEnginePage, setBackgroundColor), ADDR(ut_web_window_test, stub_initweb));
 
@@ -534,6 +549,8 @@ TEST_F(ut_web_window_test, onSearchButtonClicked)
     s.set((void (QWebEngineView::*)(const QUrl &))ADDR(QWebEngineView, load), ADDR(ut_web_window_test, stub_initweb));
 #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     s.set((void (QWebEnginePage::*)(const QString&))ADDR(QWebEnginePage, runJavaScript), ADDR(ut_web_window_test, stub_initweb));
+#else
+    s.set((void (QWebEnginePage::*)(const QString&, quint32, const std::function<void(const QVariant &)> &))ADDR(QWebEnginePage, runJavaScript), ADDR(ut_web_window_test, stub_initweb));
 #endif
     s.set((void (QWebEnginePage::*)(const QColor &))ADDR(QWebEnginePage, setBackgroundColor), ADDR(ut_web_window_test, stub_initweb));
 
@@ -553,6 +570,8 @@ TEST_F(ut_web_window_test, settingContextMenu)
     s.set((void (QWebEngineView::*)(const QUrl &))ADDR(QWebEngineView, load), ADDR(ut_web_window_test, stub_initweb));
 #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     s.set((void (QWebEnginePage::*)(const QString&))ADDR(QWebEnginePage, runJavaScript), ADDR(ut_web_window_test, stub_initweb));
+#else
+    s.set((void (QWebEnginePage::*)(const QString&, quint32, const std::function<void(const QVariant &)> &))ADDR(QWebEnginePage, runJavaScript), ADDR(ut_web_window_test, stub_initweb));
 #endif
     s.set((void (QWebEnginePage::*)(const QColor &))ADDR(QWebEnginePage, setBackgroundColor), ADDR(ut_web_window_test, stub_initweb));
 
@@ -583,6 +602,8 @@ TEST_F(ut_web_window_test, setHashWordColor)
     s.set((void (QWebEngineView::*)(const QUrl &))ADDR(QWebEngineView, load), ADDR(ut_web_window_test, stub_initweb));
 #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     s.set((void (QWebEnginePage::*)(const QString&))ADDR(QWebEnginePage, runJavaScript), ADDR(ut_web_window_test, stub_initweb));
+#else
+    s.set((void (QWebEnginePage::*)(const QString&, quint32, const std::function<void(const QVariant &)> &))ADDR(QWebEnginePage, runJavaScript), ADDR(ut_web_window_test, stub_initweb));
 #endif
     s.set((void (QWebEnginePage::*)(const QColor &))ADDR(QWebEnginePage, setBackgroundColor), ADDR(ut_web_window_test, stub_initweb));
 
@@ -605,6 +626,8 @@ TEST_F(ut_web_window_test, onChannelFinish)
     s.set((void (QWebEngineView::*)(const QUrl &))ADDR(QWebEngineView, load), ADDR(ut_web_window_test, stub_initweb));
 #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     s.set((void (QWebEnginePage::*)(const QString&))ADDR(QWebEnginePage, runJavaScript), ADDR(ut_web_window_test, stub_initweb));
+#else
+    s.set((void (QWebEnginePage::*)(const QString&, quint32, const std::function<void(const QVariant &)> &))ADDR(QWebEnginePage, runJavaScript), ADDR(ut_web_window_test, stub_initweb));
 #endif
     s.set((void (QWebEnginePage::*)(const QColor &))ADDR(QWebEnginePage, setBackgroundColor), ADDR(ut_web_window_test, stub_initweb));
 
@@ -638,6 +661,8 @@ TEST_F(ut_web_window_test, slot_ThemeChanged_001)
     s.set((void (QWebEngineView::*)(const QUrl &))ADDR(QWebEngineView, load), ADDR(ut_web_window_test, stub_initweb));
 #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     s.set((void (QWebEnginePage::*)(const QString&))ADDR(QWebEnginePage, runJavaScript), ADDR(ut_web_window_test, stub_initweb));
+#else
+    s.set((void (QWebEnginePage::*)(const QString&, quint32, const std::function<void(const QVariant &)> &))ADDR(QWebEnginePage, runJavaScript), ADDR(ut_web_window_test, stub_initweb));
 #endif
     s.set((void (QWebEnginePage::*)(const QColor &))ADDR(QWebEnginePage, setBackgroundColor), ADDR(ut_web_window_test, stub_initweb));
     s.set((DGuiApplicationHelper::ColorType (DGuiApplicationHelper::*)() const)ADDR(DGuiApplicationHelper, themeType), ADDR(ut_web_window_test, stub_themeType));
@@ -658,6 +683,8 @@ TEST_F(ut_web_window_test, slot_ThemeChanged_002)
     s.set((void (QWebEngineView::*)(const QUrl &))ADDR(QWebEngineView, load), ADDR(ut_web_window_test, stub_initweb));
 #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     s.set((void (QWebEnginePage::*)(const QString&))ADDR(QWebEnginePage, runJavaScript), ADDR(ut_web_window_test, stub_initweb));
+#else
+    s.set((void (QWebEnginePage::*)(const QString&, quint32, const std::function<void(const QVariant &)> &))ADDR(QWebEnginePage, runJavaScript), ADDR(ut_web_window_test, stub_initweb));
 #endif
     s.set((void (QWebEnginePage::*)(const QColor &))ADDR(QWebEnginePage, setBackgroundColor), ADDR(ut_web_window_test, stub_initweb));
     s.set((DGuiApplicationHelper::ColorType (DGuiApplicationHelper::*)() const)ADDR(DGuiApplicationHelper, themeType), ADDR(ut_web_window_test, stub_themeType));
@@ -703,6 +730,8 @@ TEST_F(ut_web_window_test, cancelTextChanged)
     s.set((void (QWebEngineView::*)(const QUrl &))ADDR(QWebEngineView, load), ADDR(ut_web_window_test, stub_initweb));
 #if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
     s.set((void (QWebEnginePage::*)(const QString&))ADDR(QWebEnginePage, runJavaScript), ADDR(ut_web_window_test, stub_initweb));
+#else
+    s.set((void (QWebEnginePage::*)(const QString&, quint32, const std::function<void(const QVariant &)> &))ADDR(QWebEnginePage, runJavaScript), ADDR(ut_web_window_test, stub_initweb));
 #endif
     s.set((void (QWebEnginePage::*)(const QColor &))ADDR(QWebEnginePage, setBackgroundColor), ADDR(ut_web_window_test, stub_initweb));
     web->initWeb();

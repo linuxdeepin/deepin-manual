@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022-2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -83,7 +83,7 @@ TEST_F(ut_image_viewer_test, mousePressEvent)
     ASSERT_FALSE(iv.isVisible());
     ASSERT_FALSE(iv.isActiveWindow());
     QMouseEvent *evnReleaseEnter;
-    evnReleaseEnter = new QMouseEvent( QEvent::MouseButtonRelease, QPoint(0, 0), Qt::RightButton, Qt::NoButton, Qt::NoModifier );
+    evnReleaseEnter = new QMouseEvent( QEvent::MouseButtonRelease, QPointF(0, 0), QPointF(0, 0), Qt::RightButton, Qt::NoButton, Qt::NoModifier );
     iv.mousePressEvent(evnReleaseEnter);
     delete evnReleaseEnter;
     ASSERT_FALSE(iv.isVisible());
