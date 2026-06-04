@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022-2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -15,12 +15,18 @@ ut_fileWatcher::ut_fileWatcher()
 
 void ut_fileWatcher::SetUp()
 {
+    // 在构造 fileWatcher 之前 stub 掉 getSystemManualDir，
+    // 避免构造函数中的 monitorFile() 扫描真实系统目录导致卡住。
+    // stub 返回 "./manual-assets"（此时目录不存在，monitorFile 不会监控任何文件）
+    m_stub = new Stub();
+    m_stub->set(ADDR(Utils, getSystemManualDir), ADDR(ut_fileWatcher, stub_getSystemManualDir));
     m_fw = new fileWatcher();
 }
 
 void ut_fileWatcher::TearDown()
 {
     delete m_fw;
+    delete m_stub;
 }
 
 TEST_F(ut_fileWatcher, onChangeFile)

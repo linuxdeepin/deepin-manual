@@ -405,8 +405,8 @@ QList<AppInfo> Utils::sortAppList(QMultiMap<qlonglong, AppInfo> map)
         if (listtmp.isEmpty()) {
             listtmp.append(it.value());
             longlongtmp = it.key();
-            ++it;
             qCDebug(app) << "First app:" << it.value().name;
+            ++it;
             continue;
         }
 
@@ -435,7 +435,6 @@ QList<AppInfo> Utils::sortAppList(QMultiMap<qlonglong, AppInfo> map)
             qCDebug(app) << "Sort app:" << it.value().name;
         }
         ++it;
-        qCDebug(app) << "Next app:" << it.value().name;
     }
     //最后判断listtmp是否为空，处理循环结束时，最后几次longlongtmp都是相等的情况
     if (!listtmp.isEmpty()) {

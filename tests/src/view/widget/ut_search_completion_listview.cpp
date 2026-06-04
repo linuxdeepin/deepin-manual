@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022-2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -26,12 +26,12 @@ TEST_F(ut_search_completion_listview_test, mousePressEvent)
 
     SearchCompletionListView sv;
     QMouseEvent *evnPressEnter;
-    evnPressEnter = new QMouseEvent( QEvent::MouseButtonPress, QPoint(0, 0), Qt::LeftButton, Qt::NoButton, Qt::NoModifier );
+    evnPressEnter = new QMouseEvent( QEvent::MouseButtonPress, QPointF(0, 0), QPointF(0, 0), Qt::LeftButton, Qt::NoButton, Qt::NoModifier );
     sv.mousePressEvent(evnPressEnter);
     ASSERT_TRUE(sv.m_bLeftMouse);
     delete evnPressEnter;
 
-    evnPressEnter = new QMouseEvent( QEvent::MouseButtonPress, QPoint(0, 0), Qt::RightButton, Qt::NoButton, Qt::NoModifier );
+    evnPressEnter = new QMouseEvent( QEvent::MouseButtonPress, QPointF(0, 0), QPointF(0, 0), Qt::RightButton, Qt::NoButton, Qt::NoModifier );
     sv.mousePressEvent(evnPressEnter);
     ASSERT_FALSE(sv.m_bLeftMouse);
     delete evnPressEnter;

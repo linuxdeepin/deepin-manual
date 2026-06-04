@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022-2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -7,6 +7,8 @@
 
 #include "gtest/gtest.h"
 #include <QTest>
+#include "src/third-party/stub/stub.h"
+#include "base/utils.h"
 
 class fileWatcher;
 class ut_fileWatcher : public::testing::Test
@@ -16,14 +18,14 @@ public:
     virtual void SetUp() override;
     virtual void TearDown() override;
 
-    static QString stub_getSystemManualDir()
+    static QStringList stub_getSystemManualDir()
     {
-        return "./manual-assets";
+        return QStringList() << "./manual-assets";
     }
-
 
 protected:
     fileWatcher *m_fw = nullptr;
+    Stub *m_stub = nullptr;
 };
 
 #endif // UT_FILEWATCHER_H
