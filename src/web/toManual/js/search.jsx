@@ -1,8 +1,8 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022-2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
-import React, { Component, useEffect, useRef } from 'react';
+import React, { Component, useRef } from 'react';
 import ReactDOM from 'react-dom';
 import PropTypes from 'prop-types';
 import Scrollbar from './scrollbar.jsx';
@@ -201,17 +201,6 @@ function VideoItems(props) {
     }
   }
 
-  useEffect(() => {
-    const adjustOtherElements = () => {
-      const componentHeight = videoItemsRef.current.offsetHeight + 20;
-      setTimeout(function () {
-        document.getElementsByClassName("items")[0].style.marginTop = `${componentHeight}px`;
-      }, 50);
-    };
-
-    adjustOtherElements(); // 调整其他元素的位置  
-  }, []);
-
   function handleHover() {
     console.log("hover....current:", videoItemsRef.current, "   ", videoItemsRef.current.offsetHeight);
   }
@@ -250,16 +239,28 @@ export default class SearchPage extends Component {
     if (this.context.mismatch) {
       c = <Mismatch keyword={this.props.match.params.keyword} />;
     } else {
-      c = this.context.searchResult.map(result => (
-        result.file === "video-guide" ? <VideoItems
+      // Separate video-guide results to always render first
+      const videoResults = [];
+      const otherResults = [];
+      this.context.searchResult.forEach(result => {
+        if (result.file === "video-guide") {
+          videoResults.push(result);
+        } else {
+          otherResults.push(result);
+        }
+      });
+
+      c = videoResults.map(result => (
+        <VideoItems
           key={result.file}
           file={result.file}
           idList={result.idList}
           titleList={result.titleList}
           contentList={result.contentList}
           keyword={this.props.match.params.keyword}>
-
-        </VideoItems> : <Items
+        </VideoItems>
+      )).concat(otherResults.map(result => (
+        <Items
           key={result.file}
           file={result.file}
           idList={result.idList}
@@ -267,7 +268,7 @@ export default class SearchPage extends Component {
           contentList={result.contentList}
           keyword={this.props.match.params.keyword}
         />
-      ));
+      )));
     }
     return (
       <Scrollbar>
