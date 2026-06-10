@@ -941,11 +941,20 @@ void WebWindow::saveWindowSize()
 {
     qCDebug(app) << "Saving window size";
     QSettings *setting = ConfigManager::getInstance()->getSettings();
+    bool isMaximized = windowState() & Qt::WindowMaximized;
     setting->beginGroup(QString(kConfigWindowInfo));
-    setting->setValue(QString(kConfigWindowWidth), width());
-    setting->setValue(QString(kConfigWindowHeight), height());
+    if (isMaximized) {
+        // 最大化时保存正常状态下的几何信息，以便恢复时使用正确尺寸
+        setting->setValue(QString(kConfigWindowWidth), normalGeometry().width());
+        setting->setValue(QString(kConfigWindowHeight), normalGeometry().height());
+    } else {
+        setting->setValue(QString(kConfigWindowWidth), width());
+        setting->setValue(QString(kConfigWindowHeight), height());
+    }
+    setting->setValue(QString(kConfigWindowMaximized), isMaximized);
+    setting->sync();
     setting->endGroup();
-    qCDebug(app) << "Window size saved";
+    qCDebug(app) << "Window size saved, maximized:" << isMaximized;
 }
 /**
  * @brief WebWindow::updateDb 更新数据库

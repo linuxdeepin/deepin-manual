@@ -15,6 +15,8 @@
 #include <DWidgetUtil>
 
 #include <QApplication>
+#include <QGuiApplication>
+#include <QScreen>
 
 #define WM_SENDER_NAME "Sender"
 const int kWinMinWidth = 680;
@@ -199,6 +201,7 @@ void WindowManager::setWindow(WebWindow *window)
     setting->beginGroup(QString(kConfigWindowInfo));
     int saveWidth = setting->value(QString(kConfigWindowWidth)).toInt();
     int saveHeight = setting->value(QString(kConfigWindowHeight)).toInt();
+    bool saveMaximized = setting->value(QString(kConfigWindowMaximized)).toBool();
     setting->endGroup();
     // 如果配置文件没有数据
     if (saveWidth == 0 || saveHeight == 0) {
@@ -212,6 +215,17 @@ void WindowManager::setWindow(WebWindow *window)
 
     qCDebug(app) << "Setting minimum window size to:" << kWinMinWidth << "x" << kWinMinHeight;
     window->setMinimumSize(kWinMinWidth, kWinMinHeight);
+
+    // 获取当前屏幕可用区域（已排除Dock栏占用区域）
+    QRect screenRect = QGuiApplication::primaryScreen()->availableGeometry();
+
+    if (saveMaximized || (saveWidth > screenRect.width() && saveHeight > screenRect.height())) {
+        // 上次关闭时最大化 或 保存的窗口尺寸宽和高均大于屏幕可用区域，直接最大化
+        window->showMaximized();
+    } else {
+        // 屏幕居中显示
+        Dtk::Widget::moveToCenter(window);
+    }
 
     qCDebug(app) << "Window properties configured successfully";
 }
