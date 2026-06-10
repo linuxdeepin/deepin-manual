@@ -521,7 +521,8 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
     if (event->type() == QEvent::MouseButtonRelease && qApp->activeWindow() == this) {
         qCDebug(app) << "eventFilter mouse release";
         QRect rect = hasWidgetRect(search_edit_);
-        if (web_view_ && web_view_->selectedText().isEmpty() && !rect.contains(QCursor::pos())) {
+        if (web_view_ && web_view_->selectedText().isEmpty() && !rect.contains(QCursor::pos())
+            && search_edit_->lineEdit()->selectedText().isEmpty()) {
             qCDebug(app) << "set focus to web view to maintain scroll responsiveness";
             web_view_->setFocus();
         }
