@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -15,6 +15,7 @@ extern const char kSearchIndexPage[];
 
 extern const char kConfigWindowWidth[];
 extern const char kConfigWindowHeight[];
+extern const char kConfigWindowMaximized[];
 extern const char kConfigWindowInfo[];
 extern const char kConfigAppList[];
 
