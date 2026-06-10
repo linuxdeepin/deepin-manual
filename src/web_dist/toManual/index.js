@@ -2850,17 +2850,6 @@ function VideoItems(props) {
     _loop3(i);
   }
 
-  (0, _react.useEffect)(function () {
-    var adjustOtherElements = function adjustOtherElements() {
-      var componentHeight = videoItemsRef.current.offsetHeight + 20;
-      setTimeout(function () {
-        document.getElementsByClassName("items")[0].style.marginTop = componentHeight + 'px';
-      }, 50);
-    };
-
-    adjustOtherElements(); // 调整其他元素的位置  
-  }, []);
-
   function handleHover() {
     console.log("hover....current:", videoItemsRef.current, "   ", videoItemsRef.current.offsetHeight);
   }
@@ -2910,14 +2899,25 @@ var SearchPage = function (_Component3) {
       if (this.context.mismatch) {
         c = _react2.default.createElement(Mismatch, { keyword: this.props.match.params.keyword });
       } else {
-        c = this.context.searchResult.map(function (result) {
-          return result.file === "video-guide" ? _react2.default.createElement(VideoItems, {
+        var videoResults = [];
+        var otherResults = [];
+        this.context.searchResult.forEach(function (result) {
+          if (result.file === "video-guide") {
+            videoResults.push(result);
+          } else {
+            otherResults.push(result);
+          }
+        });
+        c = videoResults.map(function (result) {
+          return _react2.default.createElement(VideoItems, {
             key: result.file,
             file: result.file,
             idList: result.idList,
             titleList: result.titleList,
             contentList: result.contentList,
-            keyword: _this6.props.match.params.keyword }) : _react2.default.createElement(Items, {
+            keyword: _this6.props.match.params.keyword });
+        }).concat(otherResults.map(function (result) {
+          return _react2.default.createElement(Items, {
             key: result.file,
             file: result.file,
             idList: result.idList,
@@ -2925,7 +2925,7 @@ var SearchPage = function (_Component3) {
             contentList: result.contentList,
             keyword: _this6.props.match.params.keyword
           });
-        });
+        }));
       }
       return _react2.default.createElement(
         _scrollbar2.default,

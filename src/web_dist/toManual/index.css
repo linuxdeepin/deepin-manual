@@ -742,9 +742,7 @@ body {
     #search .items .highlight {
       color: #2bba57; }
   #search .videoItems {
-    padding: 14px 20px 0px 0px;
-    position: absolute;
-    top: 0; }
+    padding: 14px 20px 0px 0px; }
     #search .videoItems #item {
       height: 34px;
       display: flex;
