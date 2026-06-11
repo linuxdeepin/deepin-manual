@@ -1,3 +1,13 @@
+deepin-manual (6.5.53) unstable; urgency=medium
+
+  * fix(window): persist maximized state and center window on startup
+  * fix(search): preserve text selection when mouse released outside titlebar
+  * test: migrate unit tests from Qt5 to Qt6 compatibility
+  * fix(search): decode base64 keywords before updating search
+  * chore: Update version to 6.5.52
+
+ -- xiepengfei <xiepengfei@uniontech.com>  Wed, 11 Jun 2026 10:00:00 +0800
+
 deepin-manual (6.5.52) unstable; urgency=medium
 
   * fix: Implement reconcileIncompleteIndex to manage stale filetime entries
