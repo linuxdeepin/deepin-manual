@@ -1,17 +1,15 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="it" sourcelanguage="en_US">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" sourcelanguage="en_US" language="it">
 <context>
     <name>ManualProxy</name>
     <message>
         <location filename="../src/view/manual_proxy.cpp" line="363"/>
         <source>Learn Basic Operations</source>
-        <translation type="unfinished"></translation>
+        <translation>Impara le operazioni di base</translation>
     </message>
     <message>
         <location filename="../src/view/manual_proxy.cpp" line="366"/>
         <source>Common Application Libraries</source>
-        <translation type="unfinished"></translation>
+        <translation>Librerie comuni delle applicazioni</translation>
     </message>
     <message>
         <location filename="../src/view/manual_proxy.cpp" line="369"/>
@@ -51,12 +49,12 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="25"/>
         <source>Quick Start</source>
-        <translation type="unfinished"></translation>
+        <translation>Avvio rapido</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="26"/>
         <source>Video Guide</source>
-        <translation type="unfinished"></translation>
+        <translation>Guida video</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="27"/>
@@ -91,17 +89,17 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="33"/>
         <source>Click to view </source>
-        <translation type="unfinished"></translation>
+        <translation>Fai clic per visualizzare </translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="34"/>
         <source>View all</source>
-        <translation type="unfinished"></translation>
+        <translation>Visualizza tutto</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="36"/>
         <source>App Store</source>
-        <translation type="unfinished"></translation>
+        <translation>App Store</translation>
     </message>
     <message>
         <location filename="../src/app/dman.cpp" line="136"/>
