@@ -14,7 +14,7 @@
     <message>
         <location filename="../src/view/manual_proxy.cpp" line="369"/>
         <source>Desktop Environment</source>
-        <translation>Desktop Environment</translation>
+        <translation>Ambiente desktop</translation>
     </message>
 </context>
 <context>
@@ -104,7 +104,7 @@
     <message>
         <location filename="../src/app/dman.cpp" line="136"/>
         <source>Manual</source>
-        <translation>Manual</translation>
+        <translation>Manuale</translation>
     </message>
     <message>
         <location filename="../src/app/dman.cpp" line="137"/>
