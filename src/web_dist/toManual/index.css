@@ -387,8 +387,11 @@ div {
         overflow: hidden;
         text-overflow: ellipsis;
         margin: auto;
+        display: -webkit-box;
         -webkit-box-orient: vertical;
         -webkit-line-clamp: 2;
+        overflow-wrap: break-word;
+        text-align: center;
         font-family: var(--nav-world-font-family);
         font-size: var(--span-font-size);
         line-height: var(--span-line-height);
