@@ -490,31 +490,49 @@ class App extends React.Component {
                         let { html } = m2h(filePath, data);
                         let d = document.createElement('div');
                         d.innerHTML = html;
-                        let dlist = d.querySelectorAll(`[text="${title}"]`);
-                        if (dlist.length == 0) {
-                            var translatePromise = new Promise(function (resolve, reject) {
-                                global.qtObjects.manual.translateTitle(title, function (titleTr) {
-                                    title = titleTr;
-                                    resolve()
-                                })
-                            });
-
-                            translatePromise.then(() => {
-                                dlist = d.querySelectorAll(`[text="${title}"]`);
-                                let hashID = 'h0';
-                                for (let i = 0; i < dlist.length; i++) {
-                                    hashID = dlist[i].id;
-                                }
-                                global.open(file, hashID);
-                            });
-                        }
-                        else {
-                            let hashID = 'h0';
-                            for (let i = 0; i < dlist.length; i++) {
-                                hashID = dlist[i].id;
+                        let candidates = [title];
+                        if (file === 'dde') {
+                            candidates = title.split('\u001f').filter(candidate => candidate.length > 0);
+                            if (candidates.length == 0) {
+                                candidates = [title];
                             }
-                            global.open(file, hashID);
                         }
+
+                        const titleNodes = d.querySelectorAll('[text]');
+                        const findHashByTitle = (targetTitle) => {
+                            let hashID = null;
+                            for (let i = 0; i < titleNodes.length; i++) {
+                                if (titleNodes[i].getAttribute('text') === targetTitle) {
+                                    hashID = titleNodes[i].id;
+                                }
+                            }
+                            return hashID;
+                        };
+
+                        const openCandidate = (index) => {
+                            if (index >= candidates.length) {
+                                global.open(file, 'h0');
+                                return;
+                            }
+
+                            const candidate = candidates[index];
+                            const hashID = findHashByTitle(candidate);
+                            if (hashID !== null) {
+                                global.open(file, hashID);
+                                return;
+                            }
+
+                            global.qtObjects.manual.translateTitle(candidate, titleTr => {
+                                const translatedHashID = findHashByTitle(titleTr);
+                                if (translatedHashID !== null) {
+                                    global.open(file, translatedHashID);
+                                } else {
+                                    openCandidate(index + 1);
+                                }
+                            });
+                        };
+
+                        openCandidate(0);
 
 
                     })
