@@ -591,30 +591,51 @@ var App = function (_React$Component) {
 
                             var d = document.createElement('div');
                             d.innerHTML = html;
-                            var dlist = d.querySelectorAll('[text="' + title + '"]');
-                            if (dlist.length == 0) {
-                                var translatePromise = new Promise(function (resolve, reject) {
-                                    global.qtObjects.manual.translateTitle(title, function (titleTr) {
-                                        title = titleTr;
-                                        resolve();
-                                    });
+                            var candidates = [title];
+                            if (file === 'dde') {
+                                candidates = title.split('\u001f').filter(function (candidate) {
+                                    return candidate.length > 0;
                                 });
-
-                                translatePromise.then(function () {
-                                    dlist = d.querySelectorAll('[text="' + title + '"]');
-                                    var hashID = 'h0';
-                                    for (var i = 0; i < dlist.length; i++) {
-                                        hashID = dlist[i].id;
-                                    }
-                                    global.open(file, hashID);
-                                });
-                            } else {
-                                var hashID = 'h0';
-                                for (var i = 0; i < dlist.length; i++) {
-                                    hashID = dlist[i].id;
+                                if (candidates.length == 0) {
+                                    candidates = [title];
                                 }
-                                global.open(file, hashID);
                             }
+
+                            var titleNodes = d.querySelectorAll('[text]');
+                            var findHashByTitle = function findHashByTitle(targetTitle) {
+                                var hashID = null;
+                                for (var i = 0; i < titleNodes.length; i++) {
+                                    if (titleNodes[i].getAttribute('text') === targetTitle) {
+                                        hashID = titleNodes[i].id;
+                                    }
+                                }
+                                return hashID;
+                            };
+
+                            var openCandidate = function openCandidate(index) {
+                                if (index >= candidates.length) {
+                                    global.open(file, 'h0');
+                                    return;
+                                }
+
+                                var candidate = candidates[index];
+                                var hashID = findHashByTitle(candidate);
+                                if (hashID !== null) {
+                                    global.open(file, hashID);
+                                    return;
+                                }
+
+                                global.qtObjects.manual.translateTitle(candidate, function (titleTr) {
+                                    var translatedHashID = findHashByTitle(titleTr);
+                                    if (translatedHashID !== null) {
+                                        global.open(file, translatedHashID);
+                                    } else {
+                                        openCandidate(index + 1);
+                                    }
+                                });
+                            };
+
+                            openCandidate(0);
                         });
                     });
                 } else {
