@@ -1,4 +1,4 @@
-# 如何快速上手UOS|Get started with UOS|
+# 如何快速上手UOS|learn-basic-operations|
 
 ![welcome](./fig/welcome-screen.png)
 
