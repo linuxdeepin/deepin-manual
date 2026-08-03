@@ -422,7 +422,10 @@ bool Utils::hasSelperSupport()
     }
 #endif
     //专业版判断是否有服务与支持
-    if (Dtk::Core::DSysInfo::UosProfessional == type || Dtk::Core::DSysInfo::UosMilitary == type || Dtk::Core::DSysInfo::UosMilitaryS == type) {
+    if (Dtk::Core::DSysInfo::UosProfessional == type
+            || Dtk::Core::DSysInfo::UosMilitary == type
+            || Dtk::Core::DSysInfo::UosMilitaryS == type
+            || Dtk::Core::DSysInfo::UosEducation == type) {
         const QStringList list = getSystemManualList();
         if (list.contains("uos-service-support") && bSelperSupport) {
             return true;
