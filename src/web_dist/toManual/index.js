@@ -2550,7 +2550,7 @@ var _extends = Object.assign || function (target) { for (var i = 1; i < argument
 exports.default = function (props) {
   return _react2.default.createElement(
     _reactCustomScrollbars.Scrollbars,
-    _extends({}, props, { className: 'scrollbar', autoHide: true, renderTrackHorizontal: renderScrollBarTrackHorizontal, autoHideTimeout: 800 }),
+    _extends({}, props, { className: 'scrollbar', autoHide: true, renderTrackHorizontal: renderScrollBarTrackHorizontal, renderView: renderView, autoHideTimeout: 800 }),
     props.children
   );
 };
@@ -2565,6 +2565,14 @@ function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { de
 
 function renderScrollBarTrackHorizontal(props) {
   return _react2.default.createElement('span', null);
+}
+
+function renderView(props) {
+  var mergedStyle = _extends({}, props.style, {
+    overflowX: 'hidden',
+    marginBottom: 0
+  });
+  return _react2.default.createElement('div', _extends({}, props, { style: mergedStyle }));
 }
 
 },{"react":74,"react-custom-scrollbars":35}],8:[function(require,module,exports){
