@@ -152,7 +152,8 @@
       color: var(--nav-hove-word-color);
       font-family: var(--nav-world-font-family);
       border-radius: 8px;
-      border: 1px solid var(--nav-hove-border-color);
+      border: 1px solid var(--tips-border-color);
+      box-shadow: 0px 3px 20px var(--tips-shadow-color);
     }
 
     .quickitem {
@@ -259,7 +260,8 @@
           z-index: 10;
           padding: 2px 5px;
           border-radius: 18px;
-          border: 1px solid var(--nav-hove-border-color);
+          border: 1px solid var(--tips-border-color);
+          box-shadow: 0px 3px 20px var(--tips-shadow-color);
           font-family: var(--nav-world-font-family);
         }
 

@@ -635,9 +635,9 @@ class App extends React.Component {
                 document.documentElement.style.setProperty(`--search-WikiSearch-color`, '#6D7C88');
                 document.documentElement.style.setProperty(`--search-itemTitle-word-color`, '#C0C6D4');
                 document.documentElement.style.setProperty(`--search-context-word-color`, '#6D7C88');
-                document.documentElement.style.setProperty(`--tips-background-color`, 'rgba(42, 42, 42, 0.8)');
-                document.documentElement.style.setProperty(`--tips-border-color`, 'rgba(0, 0, 0, 0.3)');
-                document.documentElement.style.setProperty('--tips-shadow-color', 'rgba(0, 0, 0, 0.2)');
+                document.documentElement.style.setProperty(`--tips-background-color`, 'rgba(56, 56, 56, 0.95)');
+                document.documentElement.style.setProperty(`--tips-border-color`, 'rgba(255, 255, 255, 0.12)');
+                document.documentElement.style.setProperty('--tips-shadow-color', 'rgba(0, 0, 0, 0.45)');
             } else if ("LightType" == themeType) {
                 console.log('LightType');
                 document.documentElement.style.setProperty(`--nav-hover-color`, 'rgba(0,0,0,0.1)');

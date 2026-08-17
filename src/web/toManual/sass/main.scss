@@ -4,6 +4,16 @@
 
 @charset "utf-8";
 
+// tips/tooltip 主题变量静态回退默认值：仅 setTheme() 运行时赋值，
+// 异步加载窗口或 getTheme() 返回 "Null" 时用此兜底，避免 var(--tips-*)
+// 回退 CSS 初始值导致透明背景 + 继承黑文字。取深色基调（与深色 webview 背景可读）。
+:root {
+  --tips-background-color: rgba(56, 56, 56, 0.95);
+  --tips-border-color: rgba(255, 255, 255, 0.12);
+  --tips-shadow-color: rgba(0, 0, 0, 0.45);
+  --nav-hove-word-color: #C0C6D4;
+}
+
 //去除最外层滚动条
 body {
   overflow: hidden;
@@ -30,6 +40,7 @@ body {
     color: var(--nav-hove-word-color);
     font-family: var(--nav-world-font-family);
     border-radius: 8px;
-    border: 1px solid var(--nav-hove-border-color);
+    border: 1px solid var(--tips-border-color);
+    box-shadow: 0px 3px 20px var(--tips-shadow-color);
   }
 }
