@@ -1,6 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" language="pt" sourcelanguage="en_US">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" sourcelanguage="en_US" language="pt">
 <context>
     <name>ManualProxy</name>
     <message>
@@ -23,8 +21,9 @@
     <name>QObject</name>
     <message>
         <location filename="../src/view/widget/search_completion_window.cpp" line="197"/>
-        <source>Search for "%1" in the full text</source>
-        <translation>Pesquisar por "%1" no texto todo</translation>
+        <location filename="../src/view/widget/search_completion_window.cpp" line="291"/>
+        <source>Search for &quot;%1&quot; in the full text</source>
+        <translation>Pesquisar por &quot;%1&quot; no texto todo</translation>
     </message>
     <message>
         <location filename="../src/view/web_window.cpp" line="363"/>
@@ -38,6 +37,7 @@
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="35"/>
+        <location filename="../src/view/web_window.cpp" line="771"/>
         <source>Support</source>
         <translation>Suporte</translation>
     </message>
@@ -49,12 +49,12 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="25"/>
         <source>Quick Start</source>
-        <translation>Começar Rápido</translation>
+        <translation>Início Rápido</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="26"/>
         <source>Video Guide</source>
-        <translation>Guia de Vídeo</translation>
+        <translation>Guia em Vídeo</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="27"/>
@@ -89,7 +89,7 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="33"/>
         <source>Click to view </source>
-        <translation>Clique para visualizar </translation>
+        <translation>Clique para ver</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="34"/>
