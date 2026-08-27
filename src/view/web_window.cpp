@@ -875,7 +875,7 @@ void WebWindow::onSearchContentByKeyword(const QString &keyword)
 {
     qDebug() << "calling keyword is:" << keyword << endl;
     QString key(keyword);
-    const QString searchKey = key.remove('\n').remove('\r').remove("\r\n").remove(QRegExp("\\s"));
+    const QString searchKey = key.simplified();
     //在数据库中查询->SearchDb::searchContent->SearchDb::handleSearchContent
     search_manager_->searchContent(searchKey);
 
@@ -944,7 +944,7 @@ void WebWindow::onSearchTextChanged(const QString &text)
 void WebWindow::onSearchTextChangedDelay()
 {
     QString textTemp = search_edit_->text();
-    const QString text = textTemp.remove('\n').remove('\r').remove("\r\n").remove(QRegExp("\\s"));
+    const QString text = textTemp.simplified();
     // 过滤特殊字符
     if (text.size() < 1 || text.toLower().contains(QRegExp("[+-_$!@#%^&\\(\\)]"))) {
         return;
@@ -965,7 +965,7 @@ void WebWindow::onTitleBarEntered()
 {
     qDebug() << Q_FUNC_INFO;
     QString textTemp = search_edit_->text();
-    const QString text = textTemp.remove('\n').remove('\r').remove("\r\n").remove(QRegExp("\\s"));
+    const QString text = textTemp.simplified();
     if (text.size() >= 1) {
         completion_window_->onEnterPressed();
     }
