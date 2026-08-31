@@ -1,12 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.1" sourcelanguage="sv">
+<?xml version="1.0" ?><!DOCTYPE TS><TS version="2.1" sourcelanguage="en_US" language="sv">
 <context>
     <name>ManualProxy</name>
     <message>
         <location filename="../src/view/manual_proxy.cpp" line="363"/>
         <source>Learn Basic Operations</source>
-        <translation>Lär dig grunderna</translation>
+        <translation>Lär dig grundläggande åtgärder</translation>
     </message>
     <message>
         <location filename="../src/view/manual_proxy.cpp" line="366"/>
@@ -16,15 +14,16 @@
     <message>
         <location filename="../src/view/manual_proxy.cpp" line="369"/>
         <source>Desktop Environment</source>
-        <translation>Skrivbordet</translation>
+        <translation>Skrivbordsmiljö</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
         <location filename="../src/view/widget/search_completion_window.cpp" line="197"/>
-        <source>Search for "%1" in the full text</source>
-        <translation>Sök efter "%1" i hela texten</translation>
+        <location filename="../src/view/widget/search_completion_window.cpp" line="291"/>
+        <source>Search for &quot;%1&quot; in the full text</source>
+        <translation>Sök efter ”%1” i hela texten</translation>
     </message>
     <message>
         <location filename="../src/view/web_window.cpp" line="363"/>
@@ -38,8 +37,9 @@
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="35"/>
+        <location filename="../src/view/web_window.cpp" line="771"/>
         <source>Support</source>
-        <translation>Stöd</translation>
+        <translation>Support</translation>
     </message>
     <message>
         <location filename="../src/view/web_window.cpp" line="1038"/>
@@ -54,7 +54,7 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="26"/>
         <source>Video Guide</source>
-        <translation>Video指南</translation>
+        <translation>Videoguide</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="27"/>
@@ -79,12 +79,12 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="31"/>
         <source>  result</source>
-        <translation> resultat</translation>
+        <translation>  träff</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="32"/>
         <source>  results</source>
-        <translation> resultat</translation>
+        <translation>  träffar</translation>
     </message>
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="33"/>
@@ -99,18 +99,17 @@
     <message>
         <location filename="../src/view/i18n_proxy.cpp" line="36"/>
         <source>App Store</source>
-        <translation>App Store</translation>
+        <translation>Appbutik</translation>
     </message>
     <message>
         <location filename="../src/app/dman.cpp" line="136"/>
         <source>Manual</source>
-        <translation>Manuell</translation>
+        <translation>Handbok</translation>
     </message>
     <message>
         <location filename="../src/app/dman.cpp" line="137"/>
         <source>Manual is designed to help users learn the operating system and its applications, providing specific instructions and function descriptions.</source>
-        <translation>Manualen är utformad för att hjälpa användare att lära sig operativsystemet och dess
-program, med specifika instruktioner och beskrivningar av funktioner.</translation>
+        <translation>Handboken hjälper användare att lära sig operativsystemet och dess program genom konkreta anvisningar och funktionsbeskrivningar.</translation>
     </message>
 </context>
 <context>
