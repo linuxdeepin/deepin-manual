@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -22,6 +22,7 @@
 #include <DTitlebar>
 
 #include <QApplication>
+#include <QLocale>
 #include <QShortcut>
 #include <QShowEvent>
 #include <QWebChannel>
@@ -41,6 +42,27 @@
 namespace {
 
 const int kSearchDelay = 200;
+
+/**
+ * @brief isEnglishLocale 判断当前系统语言是否为英文
+ */
+bool isEnglishLocale()
+{
+    return QLocale::system().name().startsWith("en");
+}
+
+/**
+ * @brief filterSearchText 过滤搜索文本中的换行符；非英文环境下额外移除空白字符
+ */
+QString filterSearchText(const QString &text)
+{
+    QString result = text;
+    result.remove('\n').remove('\r').remove("\r\n");
+    if (!isEnglishLocale()) {
+        result.remove(QRegExp("\\s"));
+    }
+    return result;
+}
 
 } // namespace
 
@@ -874,8 +896,7 @@ QRect WebWindow::hasWidgetRect(QWidget *widget)
 void WebWindow::onSearchContentByKeyword(const QString &keyword)
 {
     qDebug() << "calling keyword is:" << keyword << endl;
-    QString key(keyword);
-    const QString searchKey = key.remove('\n').remove('\r').remove("\r\n").remove(QRegExp("\\s"));
+    const QString searchKey = filterSearchText(keyword);
     //在数据库中查询->SearchDb::searchContent->SearchDb::handleSearchContent
     search_manager_->searchContent(searchKey);
 
@@ -943,9 +964,7 @@ void WebWindow::onSearchTextChanged(const QString &text)
  */
 void WebWindow::onSearchTextChangedDelay()
 {
-    QString textTemp = search_edit_->text();
-    const QString text = textTemp.remove('\n').remove('\r').remove("\r\n").remove(QRegExp("\\s"));
-    // 过滤特殊字符
+    const QString text = filterSearchText(search_edit_->text());
     if (text.size() < 1 || text.toLower().contains(QRegExp("[+-_$!@#%^&\\(\\)]"))) {
         return;
     }
@@ -964,8 +983,7 @@ void WebWindow::onSearchTextChangedDelay()
 void WebWindow::onTitleBarEntered()
 {
     qDebug() << Q_FUNC_INFO;
-    QString textTemp = search_edit_->text();
-    const QString text = textTemp.remove('\n').remove('\r').remove("\r\n").remove(QRegExp("\\s"));
+    const QString text = filterSearchText(search_edit_->text());
     if (text.size() >= 1) {
         completion_window_->onEnterPressed();
     }
