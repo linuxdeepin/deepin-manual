@@ -7,6 +7,7 @@ endif ()
 project(deepin-manual)
 
 option(DMAN_RELEAE OFF "Install dman resources to system or not")
+option(OPT_BUILD_UT "Build unit tests" ON)
 
 set(CMAKE_MODULE_PATH ${CMAKE_MODULE_PATH} ${PROJECT_SOURCE_DIR}/cmake)
 # 引入翻译生成
@@ -26,8 +27,10 @@ message("   >>> Build with DTK: ${DTK_VERSION_MAJOR}")
 
 add_subdirectory(src)
 
-if (CMAKE_BUILD_TYPE STREQUAL "Debug")
-    add_subdirectory(tests)
+if (OPT_BUILD_UT)
+    if (CMAKE_BUILD_TYPE STREQUAL "Debug")
+        add_subdirectory(tests)
+    endif()
 endif()
 
 # systemd service
