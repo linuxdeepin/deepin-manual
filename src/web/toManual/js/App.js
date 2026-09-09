@@ -610,9 +610,9 @@ class App extends React.Component {
                 document.documentElement.style.setProperty('--nav-hove-word-color', '#FFFFFF');
                 document.documentElement.style.setProperty('--nav-hove-border-color', 'rgba(0, 0, 0, 0.3)');
                 //document.documentElement.style.setProperty(`--nav-hash-word-color`, '#0059D2');     //btnlist 改这行
-                document.documentElement.style.setProperty(`--article-read-word-color`, '#C0C6D4');
+                document.documentElement.style.setProperty(`--article-read-word-color`, '#FFFFFF');
                 document.documentElement.style.setProperty(`--article-read-h2-word-color`, '#0082FA');
-                document.documentElement.style.setProperty(`--article-table-text-color`, '#6D7C88');
+                document.documentElement.style.setProperty(`--article-table-text-color`, 'rgba(255, 255, 255, 0.5)');
                 document.documentElement.style.setProperty(`--article-table-border-color`, 'rgba(96, 96, 96, 0.5)');
                 document.documentElement.style.setProperty(`--article-table-cell-border-color`, 'rgba(96, 96, 96, 0.1)');
                 document.documentElement.style.setProperty(`--index-item-background-color`, 'rgba(255,255,255,0.05)');
