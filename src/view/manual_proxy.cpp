@@ -401,6 +401,22 @@ QString ManualProxy::getLocalAppName(const QString &desktopname)
                 Dtk::Core::DDesktopEntry entry(filepath);
                 strdisplayname = entry.genericName();
                 strdisplayname = strdisplayname.isEmpty() ? entry.ddeDisplayName() : strdisplayname;
+                // zh_TW/zh_HK 环境下，若 desktop 文件缺少繁体翻译，
+                // 回退到 zh_CN 以避免 DDesktopEntry 回退到英文 bare key
+                QString currentLocale = QLocale().name();
+                if (currentLocale == "zh_TW" || currentLocale == "zh_HK") {
+                    bool hasTraditional = entry.contains(QString("GenericName[%1]").arg(currentLocale))
+                            || entry.contains(QString("Name[%1]").arg(currentLocale));
+                    if (!hasTraditional) {
+                        QString zhCNName = entry.localizedValue("GenericName", "zh_CN");
+                        zhCNName = zhCNName.isEmpty()
+                                ? entry.localizedValue("Name", "zh_CN")
+                                : zhCNName;
+                        if (!zhCNName.isEmpty()) {
+                            strdisplayname = zhCNName;
+                        }
+                    }
+                }
                 qCDebug(app) << "Found local app name:" << strdisplayname;
                 return strdisplayname;
             }
@@ -560,4 +576,3 @@ QString ManualProxy::getAppLocalDir(const QString &appPath)
     qCDebug(app) << "Final app local dir:" << AppLocalDir;
     return AppLocalDir;
 }
-
