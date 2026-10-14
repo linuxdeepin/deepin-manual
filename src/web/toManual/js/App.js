@@ -617,7 +617,7 @@ class App extends React.Component {
                 document.documentElement.style.setProperty(`--article-table-cell-border-color`, 'rgba(96, 96, 96, 0.1)');
                 document.documentElement.style.setProperty(`--index-item-background-color`, 'rgba(255,255,255,0.05)');
                 document.documentElement.style.setProperty(`--index-item-hover-color`, 'rgba(255,255,255,0.2)');
-                document.documentElement.style.setProperty(`--index-item-span-word-color`, '#C0C6D4');
+                document.documentElement.style.setProperty(`--index-item-span-word-color`, 'rgba(255, 255, 255, 0.7)');
                 document.documentElement.style.setProperty(`--search-noresult-word-color`, '#C0C6D4');
                 document.documentElement.style.setProperty(`--search-button-word-color`, '#C0C6D4');
                 document.documentElement.style.setProperty(`--search-button-hover-word-color`, '#FFFFFF');
