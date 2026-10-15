@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -8,6 +8,34 @@ import scrollIntoView from 'smooth-scroll-into-view-if-needed';
 
 import m2h from './mdToHtml';
 import Scrollbar from './scrollbar.jsx';
+
+//鼠标单击文档后焦点回到主窗口(盲打搜索)，上下键/翻页键由Qt侧通过runJavaScript
+//调到这里滚动文档容器；网页自身获得焦点时的keydown兜底也走同一套逻辑
+window.scrollArticleByKey = function(dir) {
+  let read = document.querySelector('#article #read');
+  let view = read ? read.parentNode : null;
+  if (!view || view.scrollHeight <= view.clientHeight) {
+    return;
+  }
+
+  window.isMouseScrollArticle = true;
+  let line = 40;
+  let page = view.clientHeight - line;
+  switch (dir) {
+    case 'up':
+      view.scrollTop -= line;
+      break;
+    case 'down':
+      view.scrollTop += line;
+      break;
+    case 'pageup':
+      view.scrollTop -= page;
+      break;
+    case 'pagedown':
+      view.scrollTop += page;
+      break;
+  }
+};
 
 export default class Article extends Component {
   constructor(props) {
@@ -22,6 +50,7 @@ export default class Article extends Component {
     this.scroll = this.scroll.bind(this);
     this.click = this.click.bind(this);
     this.contentMenu = this.contentMenu.bind(this)
+    this.handleDocKeyDown = this.handleDocKeyDown.bind(this);
 
     var timerObj;
     var bIsMount = false;
@@ -94,7 +123,12 @@ export default class Article extends Component {
   componentDidMount() {
     console.log("article componentDidMount");
     this.bIsMount = true;
+    document.addEventListener('keydown', this.handleDocKeyDown);
     this.componentDidUpdate();
+  }
+
+  componentWillUnmount() {
+    document.removeEventListener('keydown', this.handleDocKeyDown);
   }
 
   shouldComponentUpdate(nextProps, nextState) {
@@ -120,7 +154,7 @@ export default class Article extends Component {
     var alink_arr = document.getElementsByTagName('a');
     for (var i = 0; i < alink_arr.length; i++) {
       alink_arr[i].onclick = function () {
-        global.isLinkClicked = true;
+        window.isLinkClicked = true;
       };
     }
   }
@@ -180,19 +214,29 @@ export default class Article extends Component {
   }
 
   handleWheelScroll(e) {
-    global.isMouseScrollArticle = true;
+    window.isMouseScrollArticle = true;
   }
 
   handleKeyDown(e) {
     if (38 == e.keyCode || 40 == e.keyCode) {
-      global.isMouseScrollArticle = true;
+      window.isMouseScrollArticle = true;
     }
   }
 
   handleKeyUp(e) {
     if (38 == e.keyCode || 40 == e.keyCode) {
-      global.isMouseScrollArticle = true;
+      window.isMouseScrollArticle = true;
     }
+  }
+
+  //网页自身获得焦点时(如框选内容后)的兜底，与Qt侧调用共用 scrollArticleByKey
+  handleDocKeyDown(e) {
+    const keys = { 33: 'pageup', 34: 'pagedown', 38: 'up', 40: 'down' };
+    if (!keys[e.keyCode]) {
+      return;
+    }
+    e.preventDefault();
+    window.scrollArticleByKey(keys[e.keyCode]);
   }
 
   //滚动事件
@@ -233,7 +277,7 @@ export default class Article extends Component {
       console.log('article: scroll hash update');
       this.hash = hash;
       this.props.setHash(hash);
-      if (global.isMouseScrollArticle) {
+      if (window.isMouseScrollArticle) {
         this.props.setScroll(hash);
       }
     }
@@ -254,7 +298,7 @@ export default class Article extends Component {
           return;
         }
         console.log('imageViewer', src);
-        global.qtObjects.imageViewer.open(src);
+        window.qtObjects.imageViewer.open(src);
         return;
       case 'A':
         {
@@ -271,11 +315,11 @@ export default class Article extends Component {
             case href.indexOf(dmanProtocol):
               e.preventDefault();
               const [appName, hash] = href.slice(dmanProtocol.length + 1).split('#');
-              global.openTitle(appName, hash);
+              window.openTitle(appName, hash);
               return;
             case href.indexOf(httpProtocol):
               e.preventDefault();
-              global.qtObjects.imageViewer.openHttpUrl(href);
+              window.qtObjects.imageViewer.openHttpUrl(href);
               return;
           }
         }
@@ -296,11 +340,11 @@ export default class Article extends Component {
             case hrefTmp.indexOf(dmanProtocol):
               e.preventDefault();
               const [appName, hash] = hrefTmp.slice(dmanProtocol.length + 1).split('#');
-              global.openTitle(appName, hash);
+              window.openTitle(appName, hash);
               return;
             case hrefTmp.indexOf(httpProtocol):
               e.preventDefault();
-              global.qtObjects.imageViewer.openHttpUrl(hrefTmp);
+              window.qtObjects.imageViewer.openHttpUrl(hrefTmp);
               return;
           }
         }

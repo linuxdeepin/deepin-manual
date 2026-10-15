@@ -4,6 +4,7 @@ symdir
 build/
 PageRoot/
 .vscode/
+node_modules/
 
 *.nw
 *.log
