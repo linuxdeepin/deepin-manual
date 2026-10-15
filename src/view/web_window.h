@@ -15,6 +15,7 @@
 
 #include <QtDBus/QtDBus>
 #include <QWebEngineView>
+#include <QColor>
 
 DWIDGET_USE_NAMESPACE
 
@@ -105,6 +106,8 @@ private:
     bool first_webpage_loaded_ {true};
     bool bIsSetKeyword{false};
     bool bFinishChannel{false};
+    QColor theme_background_color_;
+    QColor hash_word_color_;
     Dtk::Widget::DSpinner *m_spinner;
 
 private slots:

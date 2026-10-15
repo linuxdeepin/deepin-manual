@@ -245,27 +245,41 @@ void WebWindow::slot_ThemeChanged()
 {
     DGuiApplicationHelper::ColorType themeType = DGuiApplicationHelper::instance()->themeType();
     QColor fillColor = DGuiApplicationHelper::instance()->applicationPalette().highlight().color();
-    if (!Utils::judgeWayLand()) {
+    QColor backgroundColor;
 
+    if (!Utils::judgeWayLand()) {
         if (themeType == DGuiApplicationHelper::DarkType) {
-            web_view_->page()->setBackgroundColor(QColor(37, 37, 37));
+            backgroundColor = QColor(37, 37, 37);
         } else {
-            web_view_->page()->setBackgroundColor(QColor(248, 248, 248));
+            backgroundColor = QColor(248, 248, 248);
         }
     } else {
         if (themeType == DGuiApplicationHelper::DarkType) {
-            web_view_->page()->setBackgroundColor(QColor(0x28, 0x28, 0x28));
+            backgroundColor = QColor(0x28, 0x28, 0x28);
             QPalette pa = palette();
             pa.setColor(QPalette::Window, QColor("#161616"));
-            setPalette(pa);
+            if (theme_background_color_ != backgroundColor) {
+                setPalette(pa);
+            }
         } else if (themeType == DGuiApplicationHelper::LightType) {
+            backgroundColor = QColor(248, 248, 248);
             QPalette pa = palette();
             pa.setColor(QPalette::Window, Qt::white);
-            setPalette(pa);
-            web_view_->page()->setBackgroundColor(QColor(248, 248, 248));
+            if (theme_background_color_ != backgroundColor) {
+                setPalette(pa);
+            }
         }
     }
-    web_view_->page()->runJavaScript(QString("setHashWordColor('%1')").arg(fillColor.name()));
+
+    if (theme_background_color_ != backgroundColor) {
+        web_view_->page()->setBackgroundColor(backgroundColor);
+        theme_background_color_ = backgroundColor;
+    }
+
+    if (hash_word_color_ != fillColor) {
+        web_view_->page()->runJavaScript(QString("setHashWordColor('%1')").arg(fillColor.name()));
+        hash_word_color_ = fillColor;
+    }
 }
 
 /**
