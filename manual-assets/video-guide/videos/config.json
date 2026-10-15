@@ -6,6 +6,8 @@
       "name[zh_CN]": "统信桌面操作系统介绍",
       "name[zh_HK]": "統信桌面作業系統介紹",
       "name[zh_TW]": "統信桌⾯作業系統介紹",
+      "name[bo_CN]": "ཐུང་ཞིན་ཅོག་ངོས་བཀོལ་སྤྱོད་མ་ལག་གི་ངོ་སྤྲོད།",
+      "name[ug_CN]": "UOS ئۈستەليۈزى مەشغۇلات سىستېمىسى تونۇشتۇرۇشى",
       "url": "https://faq.uniontech.com/video/function/1850",
       "cover": "01.png"
     },
@@ -14,6 +16,8 @@
       "name[zh_CN]": "系统控制中心介绍",
       "name[zh_HK]": "系統控制中心介紹",
       "name[zh_TW]": "繫統控制中心介紹",
+      "name[bo_CN]": "མ་ལག་ཚོད་འཛིན་ལྟེ་གནས་ཀྱི་ངོ་སྤྲོད།",
+      "name[ug_CN]": "سىستېما كونترول مەركىزى تونۇشتۇرۇشى",
       "url": "https://faq.uniontech.com/video/function/3dbe",
       "cover": "02.png"
     },
@@ -22,6 +26,8 @@
       "name[zh_CN]": "系统文件管理器介绍",
       "name[zh_HK]": "系統文件管理器介紹",
       "name[zh_TW]": "繫統文件管理器介紹",
+      "name[bo_CN]": "མ་ལག་ཡིག་ཆ་དོ་དམ་བྱེད་ཆས་ཀྱི་ངོ་སྤྲོད།",
+      "name[ug_CN]": "سىستېما ھۆججەت باشقۇرغۇچ تونۇشتۇرۇشى",
       "url": "https://faq.uniontech.com/video/function/9650",
       "cover": "03.png"
     },
@@ -30,6 +36,8 @@
       "name[zh_CN]": "系统输入法设置介绍",
       "name[zh_HK]": "系統輸入法設置介紹",
       "name[zh_TW]": "繫統輸入法設定介紹",
+      "name[bo_CN]": "མ་ལག་ནང་འཇུག་བྱེད་སྟངས་སྒྲིག་འགོད་ཀྱི་ངོ་སྤྲོད།",
+      "name[ug_CN]": "سىستېما كىرگۈزگۈچ سەپلىمىسى تونۇشتۇرۇشى",
       "url": "https://faq.uniontech.com/video/function/5aa2",
       "cover": "04.png"
     },
@@ -38,6 +46,8 @@
       "name[zh_CN]": "系统打印机安装介绍",
       "name[zh_HK]": "系統打印機安裝介紹",
       "name[zh_TW]": "繫統印錶機安裝介紹",
+      "name[bo_CN]": "མ་ལག་པར་འདེབས་འཕྲུལ་འཁོར་སྒྲིག་སྦྱོར་གྱི་ངོ་སྤྲོད།",
+      "name[ug_CN]": "سىستېما پىرىنتېر ئورنىتىش تونۇشتۇرۇشى",
       "url": "https://faq.uniontech.com/video/function/40a1",
       "cover": "05.png"
     },
@@ -46,6 +56,8 @@
       "name[zh_CN]": "系统字体安装介绍",
       "name[zh_HK]": "系統字體安裝介紹",
       "name[zh_TW]": "繫統字體安裝介紹",
+      "name[bo_CN]": "མ་ལག་ཡིག་གཟུགས་སྒྲིག་སྦྱོར་གྱི་ངོ་སྤྲོད།",
+      "name[ug_CN]": "سىستېما خەت نۇسخىسى ئورنىتىش تونۇشتۇرۇشى",
       "url": "https://faq.uniontech.com/video/function/aa23",
       "cover": "06.png"
     },
@@ -54,6 +66,8 @@
       "name[zh_CN]": "系统截图功能介绍",
       "name[zh_HK]": "系統截圖功能介紹",
       "name[zh_TW]": "繫統截圖功能介紹",
+      "name[bo_CN]": "མ་ལག་བརྙན་བཤུས་བྱེད་ནུས་ཀྱི་ངོ་སྤྲོད།",
+      "name[ug_CN]": "سىستېما رەسىم تۇتۇش ئىقتىدارى تونۇشتۇرۇشى",
       "url": "https://faq.uniontech.com/video/function/1590",
       "cover": "07.png"
     },
@@ -62,6 +76,8 @@
       "name[zh_CN]": "系统光盘刻录介绍",
       "name[zh_HK]": "系統光盤刻錄介紹",
       "name[zh_TW]": "繫統光盤刻錄介紹",
+      "name[bo_CN]": "མ་ལག་CDཕབ་བརྐོའི་ངོ་སྤྲོད།",
+      "name[ug_CN]": "سىستېما دىسكا ئويۇش تونۇشتۇرۇشى",
       "url": "https://faq.uniontech.com/video/function/e160",
       "cover": "08.png"
     }

@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -162,8 +162,11 @@ void helperManager::handleDb(const QStringList &deleteList, const QStringList &a
         QStringList langList;
         for (const QString &path : deleteList) {
             if (path.contains("video-guide")) {
-                appList << "video-guide" << "video-guide";
-                langList << "en_US" << "zh_CN";
+                //视频标题现有六种语言条目，删除时逐一清理
+                for (const QString &lang : {"en_US", "zh_CN", "zh_HK", "zh_TW", "bo_CN", "ug_CN"}) {
+                    appList << "video-guide";
+                    langList << lang;
+                }
             } else {
                 QStringList list = path.split("/");
                 if (list.count() >= 4) {
@@ -210,16 +213,23 @@ void helperManager::handleDb(const QStringList &deleteList, const QStringList &a
                                     anchors["zh_CN"].append(obj["name[zh_CN]"].toString());
                                     anchors["zh_HK"].append(obj["name[zh_HK]"].toString());
                                     anchors["zh_TW"].append(obj["name[zh_TW]"].toString());
+                                    //藏语维语标题缺失时回退简体中文，保证各语言条目与anchorIdList对齐
+                                    anchors["bo_CN"].append(obj["name[bo_CN]"].isString() ? obj["name[bo_CN]"].toString() : obj["name[zh_CN]"].toString());
+                                    anchors["ug_CN"].append(obj["name[ug_CN]"].isString() ? obj["name[ug_CN]"].toString() : obj["name[zh_CN]"].toString());
 
                                     anchorInitialList["en_US"].append("");
                                     anchorInitialList["zh_CN"].append("");
                                     anchorInitialList["zh_HK"].append("");
                                     anchorInitialList["zh_TW"].append("");
+                                    anchorInitialList["bo_CN"].append("");
+                                    anchorInitialList["ug_CN"].append("");
 
                                     anchorSpellList["en_US"].append(obj["name[en_US]"].toString().remove(" "));
                                     anchorSpellList["zh_CN"].append(Dtk::Core::Chinese2Pinyin(obj["name[zh_CN]"].toString()).remove(QRegExp("[1-9]")));
                                     anchorSpellList["zh_HK"].append("");
                                     anchorSpellList["zh_TW"].append("");
+                                    anchorSpellList["bo_CN"].append(obj["name[bo_CN]"].isString() ? obj["name[bo_CN]"].toString().remove(" ") : obj["name[zh_CN]"].toString());
+                                    anchorSpellList["ug_CN"].append(obj["name[ug_CN]"].isString() ? obj["name[ug_CN]"].toString().remove(" ") : obj["name[zh_CN]"].toString());
 
                                     anchorIdList.append(QString("h%0").arg(i));
                                     contents.append(obj["url"].toString());
