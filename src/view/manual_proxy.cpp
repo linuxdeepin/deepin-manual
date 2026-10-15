@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -351,10 +351,7 @@ QVariant ManualProxy::getVideoGuideInfo()
     }
 
     QString locale = QLocale().name();
-    //藏语维语使用简体中文
-    if (locale == "ug_CN" || locale == "bo_CN") {
-        locale = "zh_CN";
-    } else if (locale == "en_US" || locale == "en_GB") {
+    if (locale == "en_GB") {
         locale = "en_US";
     }
 
@@ -391,6 +388,13 @@ QVariant ManualProxy::getVideoGuideInfo()
                         tmpObj.insert("name", obj["name[zh_HK]"]);
                     } else if(locale == "zh_TW") {
                         tmpObj.insert("name", obj["name[zh_TW]"]);
+                    } else if (locale == "bo_CN" || locale == "ug_CN") {
+                        //config未提供对应语言标题时回退简体中文
+                        QString nameKey = QString("name[%1]").arg(locale);
+                        if (!obj.contains(nameKey)) {
+                            nameKey = "name[zh_CN]";
+                        }
+                        tmpObj.insert("name", obj[nameKey]);
                     } else {
                         tmpObj.insert("name", obj["name[en_US]"]);
                     }
