@@ -416,7 +416,7 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
     if (event->type() == QEvent::MouseButtonRelease && qApp->activeWindow() == this) {
         QRect rect = hasWidgetRect(search_edit_);
         if (web_view_ && web_view_->selectedText().isEmpty() && !rect.contains(QCursor::pos())) {
-            this->setFocus();
+            web_view_->setFocus();
         }
     }
     if (event->type() == QEvent::KeyPress && qApp->activeWindow() == this) {
