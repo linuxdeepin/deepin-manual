@@ -436,6 +436,34 @@ bool WebWindow::eventFilter(QObject *watched, QEvent *event)
                     || (keyEvent->key() == Qt::Key_Space))
                    && keyEvent->modifiers() == Qt::NoModifier) {
             search_edit_->lineEdit()->setFocus();
+        } else if (!search_edit_->lineEdit()->hasFocus()
+                   && (keyEvent->key() == Qt::Key_Up || keyEvent->key() == Qt::Key_Down
+                       || keyEvent->key() == Qt::Key_PageUp || keyEvent->key() == Qt::Key_PageDown)) {
+            //单击网页后焦点被回收至主窗口(配合盲打搜索)，这里把翻页键转成网页内滚动调用，
+            //使帮助文档无需选中内容也能使用快捷键翻页。
+            //注意不能向webengine合成原生按键事件，直接sendEvent内部渲染宿主会崩溃
+            QString dir;
+            switch (keyEvent->key()) {
+            case Qt::Key_Up:
+                dir = "up";
+                break;
+            case Qt::Key_Down:
+                dir = "down";
+                break;
+            case Qt::Key_PageUp:
+                dir = "pageup";
+                break;
+            case Qt::Key_PageDown:
+                dir = "pagedown";
+                break;
+            default:
+                break;
+            }
+            if (!dir.isEmpty()) {
+                web_view_->page()->runJavaScript(
+                    QString("window.scrollArticleByKey('%1')").arg(dir));
+            }
+            return true;
         } else if (keyEvent->key() == Qt::Key_Enter || keyEvent->key() == Qt::Key_Return) {
             if (search_edit_->lineEdit()->hasFocus()) {
                 //搜索框内容为空时，按回车键回到未搜索页面
