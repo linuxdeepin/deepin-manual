@@ -19,10 +19,6 @@ command:
   - dman
 
 build: |
-  
-  apt -y install --download-only qt6-5compat-dev qt6-base-dev qt6-tools-dev-tools qt6-tools-dev qt6-base-private-dev qt6-svg-dev qt6-webengine-dev libdtk6widget-dev libdtk6gui-dev libdtk6core-dev libqt6sql6-sqlite libsass-dev libgtest-dev libgmock-dev
-  bash ./install_dep /var/cache/apt/archives "$PREFIX"
-
   #修改路径
   sed -i "s|ExecStart=/usr/bin/dman --dbus|ExecStart=dman --dbus|g" $PWD/misc/deepin-manual.service
   sed -i 's|"/lib|"/runtime/lib|g' $PWD/cmake/translation-generate.cmake
@@ -35,19 +31,12 @@ build: |
         -DCMAKE_INSTALL_PREFIX="${PREFIX}" \
         -DVERSION=${VERSION}
   cmake --build build -j`nproc`
-  cmake --build build --target install >install.log 2>&1
-
-  # 项目生成应用名和动态隐式加载的依赖库，ldd无法找到的其他库
-  LDD_FILES=(
-    dman
-    dmanHelper
-  )
-
-  # 生成.install 文件
-  bash ./deploy_dep "${LDD_FILES[@]}"
+  cmake --build build --target install
 
 # allow apt download in build and do apt update
 buildext:
   apt:
     build_depends:
-      - libc6
+      - libsass-dev
+      - libgtest-dev
+      - libgmock-dev
