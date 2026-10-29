@@ -14,7 +14,9 @@ else()
   add_definitions(-DDMAN_WEB_DIR="${CMAKE_INSTALL_PREFIX}/share/deepin-manual/web_dist")
 endif ()
 
-#禁止Debug日志输出
+# 注意：不要在 Release 下定义 QT_NO_DEBUG_OUTPUT——它会把 qCDebug 编译成硬性空操作
+# （编译期 IsOutputEnabled=false），导致调试模式动态开到 debug 级也无法输出 qCDebug 日志；
+# 分类日志关闭时仅有一次布尔判断开销（Qt 惰性求值），参数不会被计算
 #add_definitions(-DQT_NO_DEBUG_OUTPUT)
 
 configure_file(environments.h.in environments.h @ONLY)
@@ -321,7 +323,8 @@ install(TARGETS dmanHelper
 
 ##dconfig
 set(APPID org.deepin.manual)
-set(configFile ${CMAKE_SOURCE_DIR}/manual-assets/org.deepin.manual.customui.json)
+set(configFile ${CMAKE_SOURCE_DIR}/manual-assets/org.deepin.manual.customui.json
+               ${CMAKE_SOURCE_DIR}/manual-assets/org.deepin.dman.json)
 if (DEFINED DSG_DATA_DIR)
     message("-- DConfig is supported by DTK")
     dtk_add_config_meta_files(APPID ${APPID} FILES ${configFile})

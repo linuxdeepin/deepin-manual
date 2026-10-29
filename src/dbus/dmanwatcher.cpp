@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2023 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2023-2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -30,7 +30,7 @@ void DManWatcher::onTimeOut()
     int ret = outPut.length();
     qCDebug(app) << "Process check result:" << outPut;
     if (!ret) {
-        qWarning() << "dman process not found, exiting application";
+        qCWarning(app) << "dman process not found, exiting application";
         QCoreApplication::exit(0);
     }
 }

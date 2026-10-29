@@ -8,44 +8,77 @@
 #include "ddlog.h"
 #include <QLoggingCategory>
 #include <QObject>
+#include <QTimer>
 
 #include <DConfig>
 
 DCORE_USE_NAMESPACE
 
+// 最近一次应用的日志规则，供 reapplyRules() 恢复使用
+static QString s_lastRules;
+
+void MLogger::reapplyRules()
+{
+    if (s_lastRules.isEmpty())
+        return;
+    QLoggingCategory::setFilterRules(s_lastRules);
+}
+
 MLogger::MLogger(QObject *parent)
-    : QObject(parent), m_rules(""), m_config(nullptr)
+    : QObject(parent), m_rules(""), m_envRules(""), m_config(nullptr)
 {
     QByteArray logRules = qgetenv("QT_LOGGING_RULES");
     // qunsetenv 之前一定不要有任何日志打印，否则取消环境变量设置不会生效
     qunsetenv("QT_LOGGING_RULES");
     qCDebug(app) << "QT_LOGGING_RULES unset";
 
-    // set env
+    // 记录环境变量中的规则作为基线：运行期 DConfig 切换时需重新合并，
+    // 否则 setRules 用 DConfig 新值整体替换会把环境规则丢掉
+    m_envRules = logRules;
     m_rules = logRules;
     qCDebug(app) << "Initial rules set from environment:" << m_rules;
 
     // set dconfig
     qCDebug(app) << "Creating DConfig instance";
     m_config = DConfig::create("org.deepin.manual", "org.deepin.dman");
-    logRules = m_config->value("log_rules").toByteArray();
-    qCDebug(app) << "DConfig log_rules value:" << logRules;
-    appendRules(logRules);
-    setRules(m_rules);
+    if (m_config) {
+        logRules = m_config->value("log_rules").toByteArray();
+        qCDebug(app) << "DConfig log_rules value:" << logRules;
+        appendRules(logRules);
+        setRules(m_rules);
 
-    // watch dconfig
-    qCDebug(app) << "Connecting DConfig valueChanged signal";
-    connect(m_config, &DConfig::valueChanged, this, [this](const QString &key) {
-        qCCritical(app) << "value changed:" << key;
-        if (key == "log_rules") {
-            setRules(m_config->value(key).toByteArray());
-        }
+        // watch dconfig
+        qCDebug(app) << "Connecting DConfig valueChanged signal";
+        connect(m_config, &DConfig::valueChanged, this, [this](const QString &key) {
+            qCDebug(app) << "value changed:" << key;
+            if (key == "log_rules") {
+                // 从环境规则基线重新合并最新 DConfig 值，保证环境规则不丢失
+                m_rules = m_envRules;
+                appendRules(m_config->value(key).toByteArray());
+                setRules(m_rules);
+            }
+        });
+    } else {
+        qCWarning(app) << "Create DConfig failed, fallback to environment rules only";
+        setRules(m_rules);
+    }
+
+    // 日志规则守卫：QtWebEngine（单进程模式）初始化时会重置全局日志规则，
+    // 导致 dmanHelper 运行期的分类日志过滤失效，这里周期性恢复规则。
+    // 注意：MLogger 可能在 QCoreApplication 构造之前创建（静态对象），
+    // 定时器需延迟到事件循环启动后再 start，否则不会真正注册到事件调度器
+    m_rulesGuard = new QTimer(this);
+    m_rulesGuard->setInterval(5000);
+    connect(m_rulesGuard, &QTimer::timeout, this, []() {
+        MLogger::reapplyRules();
     });
+    QMetaObject::invokeMethod(m_rulesGuard, qOverload<>(&QTimer::start), Qt::QueuedConnection);
 }
 
 MLogger::~MLogger()
 {
-    m_config->deleteLater();
+    if (m_config)
+        m_config->deleteLater();
 }
 
 void MLogger::initLogger()
@@ -73,6 +106,7 @@ void MLogger::setRules(const QString &rules)
     m_rules = tmpRules.replace(";", "\n");
     qCDebug(app) << "Processed rules:" << m_rules;
     QLoggingCategory::setFilterRules(m_rules);
+    s_lastRules = m_rules;
     qCDebug(app) << "Logging rules applied successfully";
 }
 
