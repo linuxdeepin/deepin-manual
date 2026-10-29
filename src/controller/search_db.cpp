@@ -886,7 +886,7 @@ void SearchDb::insertFilesTimeEntry(const QStringList &listMdPath, const QString
     }
 
     if (!p_->db.transaction()) {
-        qWarning() << "Failed to start db transaction!";
+        qCWarning(app) << "Failed to start db transaction!";
         return;
     }
     preok = query.prepare(kfileTimeInsertEntry);
