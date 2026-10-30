@@ -8,10 +8,21 @@
 #include "ddlog.h"
 #include <QLoggingCategory>
 #include <QObject>
+#include <QTimer>
 
 #include <DConfig>
 
 DCORE_USE_NAMESPACE
+
+// 最近一次应用的日志规则，供 reapplyRules() 恢复使用
+static QString s_lastRules;
+
+void MLogger::reapplyRules()
+{
+    if (s_lastRules.isEmpty())
+        return;
+    QLoggingCategory::setFilterRules(s_lastRules);
+}
 
 MLogger::MLogger(QObject *parent)
     : QObject(parent), m_rules(""), m_config(nullptr)
@@ -41,6 +52,17 @@ MLogger::MLogger(QObject *parent)
             setRules(m_config->value(key).toByteArray());
         }
     });
+
+    // 日志规则守卫：QtWebEngine（单进程模式）初始化时会重置全局日志规则，
+    // 导致 dmanHelper 运行期的分类日志过滤失效，这里周期性恢复规则。
+    // 注意：MLogger 可能在 QCoreApplication 构造之前创建（静态对象），
+    // 定时器需延迟到事件循环启动后再 start，否则不会真正注册到事件调度器
+    m_rulesGuard = new QTimer(this);
+    m_rulesGuard->setInterval(5000);
+    connect(m_rulesGuard, &QTimer::timeout, this, []() {
+        MLogger::reapplyRules();
+    });
+    QMetaObject::invokeMethod(m_rulesGuard, qOverload<>(&QTimer::start), Qt::QueuedConnection);
 }
 
 MLogger::~MLogger()
@@ -73,6 +95,7 @@ void MLogger::setRules(const QString &rules)
     m_rules = tmpRules.replace(";", "\n");
     qCDebug(app) << "Processed rules:" << m_rules;
     QLoggingCategory::setFilterRules(m_rules);
+    s_lastRules = m_rules;
     qCDebug(app) << "Logging rules applied successfully";
 }
 
