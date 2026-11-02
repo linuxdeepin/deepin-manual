@@ -1,3 +1,17 @@
+deepin-manual (6.5.57) unstable; urgency=medium
+
+  * chore: Update version to 6.5.57
+  * docs(manual): add Brazilian Portuguese manuals
+  * refactor(packaging): migrate dependencies to buildext
+  * [skip CI] Translate deepin-manual.ts in pl
+  * fix: adjust dark theme text colors for better readability
+  * [skip CI] Translate desktop.ts in sv
+  * [skip CI] Translate deepin-manual.ts in sv
+  * [skip CI] Translate deepin-manual.ts in pt
+  * chore: Sync by https://github.com/linuxdeepin/.github/commit/a300f8523d4876677112edab6a0772f7ad112976
+
+ -- re2zero <yangwu@uniontech.com>  Mon, 02 Nov 2026 13:37:46 +0800
+
 deepin-manual (6.5.56) unstable; urgency=medium
 
   * chore: Update version to 6.5.56
