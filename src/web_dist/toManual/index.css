@@ -30,6 +30,10 @@ body[style*='user-select: none'] .scrollbar > div:last-child {
   body[style*='user-select: none'] .scrollbar > div:last-child div {
     background-color: var(--scrollbar-div-select-background-color) !important; }
 
+.scrollbar > div:first-child::-webkit-scrollbar {
+  width: 0;
+  height: 0; }
+
 div {
   outline: none; }
   div .support-div {
