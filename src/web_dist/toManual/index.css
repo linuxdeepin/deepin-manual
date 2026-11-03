@@ -119,6 +119,7 @@ div {
 
 #article {
   width: calc(100% - 164px);
+  height: calc(100% - 20px);
   margin: 10px 0px 10px 0px;
   border-radius: 8px;
   user-select: text !important; }
