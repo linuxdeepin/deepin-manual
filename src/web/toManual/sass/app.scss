@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022-2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -50,6 +50,13 @@ body[style*='user-select: none'] {
       background-color: var(--scrollbar-div-select-background-color) !important;
     }
   }
+}
+
+// 隐藏自定义滚动容器 view 的原生滚动条：其条带顶边与容器裁剪边齐平，
+// 分数 DPI + GPU 合成下浅色 track 会从裁剪边界渗出成一条横带（PMS BUG-196823）
+.scrollbar>div:first-child::-webkit-scrollbar {
+  width: 0;
+  height: 0;
 }
 
 
