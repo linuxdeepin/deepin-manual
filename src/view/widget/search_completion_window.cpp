@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -14,6 +14,8 @@
 namespace {
 
 const int kItemHeight = 34;
+// 内容区顶部留白：第一项的选中高亮不能画进窗口圆角，否则圆角处会露出活动色
+const int kContentTopMargin = 10;
 
 } // namespace
 
@@ -55,14 +57,16 @@ void SearchCompletionWindow::autoResize()
     if (rowCount > 0 && rowCount < 7) {
         resultViewHeight = rowCount * kItemHeight + 7;
         result_view_->setFixedHeight(resultViewHeight);
-        this->setFixedHeight(resultViewHeight + kItemHeight + 7);
-        search_button_->setGeometry(0, resultViewHeight, result_view_->width(), kItemHeight + 7);
+        this->setFixedHeight(kContentTopMargin + resultViewHeight + kItemHeight + 7);
+        search_button_->setGeometry(0, kContentTopMargin + resultViewHeight, result_view_->width(), kItemHeight + 7);
     } else {
         resultViewHeight = 7 * kItemHeight + 7;
         result_view_->setFixedHeight(7 * kItemHeight + 7);
-        this->setFixedHeight(resultViewHeight + kItemHeight + 7);
-        search_button_->setGeometry(0, resultViewHeight, result_view_->width(), kItemHeight + 7);
+        this->setFixedHeight(kContentTopMargin + resultViewHeight + kItemHeight + 7);
+        search_button_->setGeometry(0, kContentTopMargin + resultViewHeight, result_view_->width(), kItemHeight + 7);
     }
+
+    result_view_->move(0, kContentTopMargin);
 
     result_view_->setFixedWidth(this->width());
     search_button_->setFixedWidth(this->width());

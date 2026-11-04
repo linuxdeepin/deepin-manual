@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -174,7 +174,10 @@ void SearchButton::paintEvent(QPaintEvent *event)
         painter.fillPath(path, QBrush(fillColor));
 
         DPalette paLabel = ExApplicationHelper::instance()->palette(this);
-        paLabel.setColor(DPalette::WindowText, paLabel.color(DPalette::Text));
+        // 背景为模糊的半透明底色，使用 brightText 70% 保证文字对比度（PMS bug 157633）
+        QColor textColor = paLabel.color(DPalette::BrightText);
+        textColor.setAlphaF(0.7);
+        paLabel.setColor(DPalette::WindowText, textColor);
         m_textLabel->setPalette(paLabel);
         leaveFocus();
     }
