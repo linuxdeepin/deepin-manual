@@ -690,8 +690,6 @@ void WebWindow::initUI()
         this->titlebar()->setAutoFillBackground(false);
         this->titlebar()->setBackgroundRole(QPalette::Window);
     }
-    //隐藏title阴影
-    this->setTitlebarShadowEnabled(false);
     //键盘盲打
     // search_edit_->setFocus();
     this->setFocusPolicy(Qt::ClickFocus);
