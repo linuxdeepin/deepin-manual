@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022-2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -80,7 +80,7 @@ export default function(mdFile, mdData, key = '') {
         // key = re;
         var finder = new RegExp(">.*?<", 'g') // 提取位于标签内的文本，避免误操作 class、id 等
         html = html.replace(finder, function(matched) {
-            return matched.replace(new RegExp(keyTemp, 'gi'), "<span style='background-color: yellow'>$&</span>");
+            return matched.replace(new RegExp(keyTemp, 'gi'), "<span style='background-color: var(--search-wk-background-color, yellow)'>$&</span>");
         })
     }
 
