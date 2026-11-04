@@ -252,7 +252,7 @@ div {
         margin: 0;
         font-style: italic; }
       #article #article_bg .read .searchWK {
-        background-color: yellow; }
+        background-color: var(--search-wk-background-color, yellow); }
   #article #preview {
     position: fixed;
     width: 600px;
@@ -742,7 +742,7 @@ body {
         -webkit-line-clamp: 3;
         -webkit-box-orient: vertical; }
     #search .items .highlight {
-      color: #2bba57; }
+      color: var(--search-highlight-color, #2bba57); }
   #search .videoItems {
     padding: 14px 20px 0px 0px; }
     #search .videoItems #item {

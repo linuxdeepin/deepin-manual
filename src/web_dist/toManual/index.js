@@ -693,6 +693,8 @@ var App = /*#__PURE__*/function (_React$Component) {
           document.documentElement.style.setProperty("--search-WikiSearch-color", '#6D7C88');
           document.documentElement.style.setProperty("--search-itemTitle-word-color", '#C0C6D4');
           document.documentElement.style.setProperty("--search-context-word-color", '#6D7C88');
+          document.documentElement.style.setProperty("--search-highlight-color", '#3dd97a');
+          document.documentElement.style.setProperty("--search-wk-background-color", 'rgba(255, 199, 0, 0.3)');
           document.documentElement.style.setProperty("--tips-background-color", '#141414');
           document.documentElement.style.setProperty("--tips-border-color", 'rgba(0, 0, 0, 0.3)');
           document.documentElement.style.setProperty('--tips-shadow-color', 'rgba(0, 0, 0, 0.2)');
@@ -733,6 +735,8 @@ var App = /*#__PURE__*/function (_React$Component) {
           document.documentElement.style.setProperty("--search-WikiSearch-color", '#7a7a7a');
           document.documentElement.style.setProperty("--search-itemTitle-word-color", '#000000');
           document.documentElement.style.setProperty("--search-context-word-color", '#000000');
+          document.documentElement.style.setProperty("--search-highlight-color", '#2bba57');
+          document.documentElement.style.setProperty("--search-wk-background-color", 'yellow');
           document.documentElement.style.setProperty("--tips-background-color", 'rgba(247, 247, 247, 0.6)');
           document.documentElement.style.setProperty("--tips-border-color", 'rgba(0, 0, 0, 0.05)');
           document.documentElement.style.setProperty('--tips-shadow-color', 'rgba(0, 0, 0, 0.2)');
@@ -2183,7 +2187,7 @@ function _default(mdFile, mdData) {
     // key = re;
     var finder = new RegExp(">.*?<", 'g'); // 提取位于标签内的文本，避免误操作 class、id 等
     html = html.replace(finder, function (matched) {
-      return matched.replace(new RegExp(keyTemp, 'gi'), "<span style='background-color: yellow'>$&</span>");
+      return matched.replace(new RegExp(keyTemp, 'gi'), "<span style='background-color: var(--search-wk-background-color, yellow)'>$&</span>");
     });
   }
   return {

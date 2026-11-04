@@ -167,7 +167,7 @@
         font-style: italic;
       }
       .searchWK {
-        background-color: yellow;
+        background-color: var(--search-wk-background-color, yellow);
       }
     }
    }
