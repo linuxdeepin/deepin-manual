@@ -1033,7 +1033,14 @@ void WebWindow::initDBus()
     }
 
     // 锁屏通知，显示隐藏图片界面，才能保证图片界面正常隐藏，否则图片界面会一直阻塞主线程鼠标事件传递
-    QDBusConnection::sessionBus().connect("com.deepin.SessionManager", "/com/deepin/SessionManager",
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+    constexpr const char *sessionManagerService = "org.deepin.dde.SessionManager1";
+    constexpr const char *sessionManagerPath = "/org/deepin/dde/SessionManager1";
+#else
+    constexpr const char *sessionManagerService = "com.deepin.SessionManager";
+    constexpr const char *sessionManagerPath = "/com/deepin/SessionManager";
+#endif
+    QDBusConnection::sessionBus().connect(sessionManagerService, sessionManagerPath,
                                           "org.freedesktop.DBus.Properties", "PropertiesChanged", this,
                                           SLOT(onTimeoutLock(QString, QVariantMap, QStringList)));
     qCDebug(app) << "Initializing DBus connections done";
