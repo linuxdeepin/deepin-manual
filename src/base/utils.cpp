@@ -426,10 +426,7 @@ bool Utils::hasSelperSupport()
             || Dtk::Core::DSysInfo::UosMilitary == type
             || Dtk::Core::DSysInfo::UosMilitaryS == type
             || Dtk::Core::DSysInfo::UosEducation == type) {
-        const QStringList list = getSystemManualList();
-        if (list.contains("uos-service-support") && bSelperSupport) {
-            return true;
-        }
+        return bSelperSupport;
     }
     return false;
 }
