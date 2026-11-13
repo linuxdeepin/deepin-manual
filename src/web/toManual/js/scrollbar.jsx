@@ -12,8 +12,9 @@ function renderScrollBarTrackHorizontal(props) {
 }
 
 export default function(props) {
+  const autoHide = global.scrollBarPolicy !== 0;
   return (
-    <Scrollbars {...props} className="scrollbar" autoHide renderTrackHorizontal={renderScrollBarTrackHorizontal} autoHideTimeout={800}>
+    <Scrollbars {...props} className="scrollbar" autoHide={autoHide} renderTrackHorizontal={renderScrollBarTrackHorizontal} autoHideTimeout={800}>
       {props.children}
     </Scrollbars>
   );

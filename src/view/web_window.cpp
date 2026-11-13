@@ -35,6 +35,7 @@
 #include <QClipboard>
 #include <QNetworkProxyFactory>
 #include <QScreen>
+#include <QProcess>
 #define SEARCH_EDIT_WIDTH 350  // 一般情况下搜索窗口的大小
 #define SEARCH_EDIT_HEIGHT 44  // 一般情况下搜索窗口的大小
 #define LIMIT_SEARCH_EDIT_WIDTH 750 // 当主窗口
@@ -1048,6 +1049,12 @@ void WebWindow::onChannelFinish()
         qsthemetype = "DarkType";
     }
     web_view_->page()->runJavaScript(QString("setTheme('%1')").arg(qsthemetype));
+    //读取系统滚动条策略并传递给前端
+    QProcess scrollbarProc;
+    scrollbarProc.start("gsettings", QStringList() << "get" << "com.deepin.xsettings" << "qt-scrollbar-policy");
+    scrollbarProc.waitForFinished();
+    QString scrollBarPolicy = scrollbarProc.readAllStandardOutput().trimmed();
+    web_view_->page()->runJavaScript(QString("setScrollBarPolicy(%1)").arg(scrollBarPolicy));
     //设置打开页面
     if (app_name_.isEmpty()) {
         web_view_->page()->runJavaScript("index()");

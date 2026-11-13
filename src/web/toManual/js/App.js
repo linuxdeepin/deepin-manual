@@ -26,6 +26,7 @@ global.isShowHelperSupport = false;
 global.isShowAppStore = false;
 global.scrollBehavior = 'smooth';
 global.bIsReload = false;
+global.scrollBarPolicy = 1;
 // global.gHistoryGo = 0;
 
 
@@ -586,6 +587,10 @@ class App extends React.Component {
             document.documentElement.style.setProperty(`--nav-world-font-family`, strFontFamily); //btnlist 改这行
         }
 
+
+        global.setScrollBarPolicy = (policy) => {
+            global.scrollBarPolicy = policy;
+        };
 
         global.setTheme = (themeType) => {
             console.log('主题切换', themeType);
