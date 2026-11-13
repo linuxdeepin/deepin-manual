@@ -46,6 +46,7 @@ global.isShowHelperSupport = false;
 global.isShowAppStore = false;
 global.scrollBehavior = 'smooth';
 global.bIsReload = false;
+global.scrollBarPolicy = 1;
 // global.gHistoryGo = 0;
 
 global.readFile = function (fileName, callback) {
@@ -644,6 +645,9 @@ var App = /*#__PURE__*/function (_React$Component) {
       };
       global.setWordFontfamily = function (strFontFamily) {
         document.documentElement.style.setProperty("--nav-world-font-family", strFontFamily); //btnlist 改这行
+      };
+      global.setScrollBarPolicy = function (policy) {
+        global.scrollBarPolicy = policy;
       };
       global.setTheme = function (themeType) {
         console.log('主题切换', themeType);
@@ -2403,7 +2407,7 @@ function renderScrollBarTrackHorizontal(props) {
 function _default(props) {
   return /*#__PURE__*/_react["default"].createElement(_reactCustomScrollbars.Scrollbars, _extends({}, props, {
     className: "scrollbar",
-    autoHide: true,
+    autoHide: global.scrollBarPolicy !== 0,
     renderTrackHorizontal: renderScrollBarTrackHorizontal,
     autoHideTimeout: 800
   }), props.children);
