@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -171,36 +171,27 @@ TEST_F(ut_utils_test, renderSVG2)
 
 TEST_F(ut_utils_test, translateTitle)
 {
-    Utils *m_utils = new Utils;
-
-    QString str = m_utils->translateTitle("controlcenter");
-    if (QLocale::system().name() == "zh_CN")
-        ASSERT_EQ(str, "控制中心");
-    else
-        ASSERT_EQ(str, "Control Center");
-
     Stub s;
+    s.set(ADDR(QLocale, name), +[]() -> QString { return QStringLiteral("pt_BR"); });
+    EXPECT_EQ(Utils::translateTitle("controlcenter"), "Central de Controle");
+    EXPECT_EQ(Utils::translateTitle("display"), "Tela");
+    EXPECT_EQ(Utils::translateTitle("personalization"), "Personalização");
+    EXPECT_EQ(Utils::translateTitle("cloudsync"), "UOS ID");
+    EXPECT_EQ(Utils::translateTitle("voice"), "Assistive Tools");
+    EXPECT_EQ(Utils::translateTitle("unknown-module"), "unknown-module");
+    s.reset(ADDR(QLocale, name));
+
     s.set(ADDR(QLocale, name), stub_LocalNameug_CN);
-    QString transsStr = m_utils->translateTitle("accounts");
-    ASSERT_EQ(transsStr, "帐户设置");
+    EXPECT_EQ(Utils::translateTitle("display"), "显示");
     s.reset(ADDR(QLocale, name));
-
     s.set(ADDR(QLocale, name), stub_LocalNamezh_HK);
-    transsStr = m_utils->translateTitle("accounts");
-    ASSERT_EQ(transsStr, "賬號設置");
+    EXPECT_EQ(Utils::translateTitle("display"), "顯示");
     s.reset(ADDR(QLocale, name));
-
     s.set(ADDR(QLocale, name), stub_LocalNamezh_TW);
-    transsStr = m_utils->translateTitle("accounts");
-    ASSERT_EQ(transsStr, "帳戶設定");
+    EXPECT_EQ(Utils::translateTitle("display"), "顯示");
     s.reset(ADDR(QLocale, name));
-
     s.set(ADDR(QLocale, name), stub_LocalNameug_EU);
-    transsStr = m_utils->translateTitle("accounts");
-    ASSERT_EQ(transsStr, "Accounts");
-    s.reset(ADDR(QLocale, name));
-
-    delete m_utils;
+    EXPECT_EQ(Utils::translateTitle("display"), "Display");
 }
 
 int usercnt = 0;
