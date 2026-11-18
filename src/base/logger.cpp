@@ -72,7 +72,7 @@ MLogger::MLogger(QObject *parent)
     connect(m_rulesGuard, &QTimer::timeout, this, []() {
         MLogger::reapplyRules();
     });
-    QMetaObject::invokeMethod(m_rulesGuard, qOverload<>(&QTimer::start), Qt::QueuedConnection);
+    QMetaObject::invokeMethod(m_rulesGuard, QOverload<>::of(&QTimer::start), Qt::QueuedConnection);
 }
 
 MLogger::~MLogger()
