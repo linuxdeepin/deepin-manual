@@ -421,8 +421,6 @@ void WebWindow::closeEvent(QCloseEvent *event)
     //保存窗口大小
     saveWindowSize();
     QApplication::exit(0);
-    qCDebug(app) << "Force exiting application";
-    _Exit(0);
 }
 
 /**
