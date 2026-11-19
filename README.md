@@ -50,10 +50,9 @@ $ sudo make install
 
 Any usage issues can ask for help via
 
-* [Gitter](https://gitter.im/orgs/linuxdeepin/rooms)
-* [IRC channel](https://webchat.freenode.net/?channels=deepin)
 * [Forum](https://bbs.deepin.org)
-* [WiKi](https://wiki.deepin.org/)
+* [Wiki](https://wiki.deepin.org/)
+* [Official community contact channels](https://www.deepin.org/en/contactus/)
 
 ## Getting involved
 

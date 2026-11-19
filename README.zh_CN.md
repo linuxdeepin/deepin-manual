@@ -60,10 +60,9 @@ sudo make install
 
 任何使用问题都可以通过以下方式寻求帮助:
 
-* [Gitter](https://gitter.im/orgs/linuxdeepin/rooms)
-* [IRC channel](https://webchat.freenode.net/?channels=deepin)
-* [Forum](https://bbs.deepin.org)
-* [WiKi](https://wiki.deepin.org/)
+* [官方论坛](https://bbs.deepin.org)
+* [社区 Wiki](https://wiki.deepin.org/)
+* [官方社区交流渠道](https://www.deepin.org/zh/contactus/)
 
 ## 参与贡献
 
