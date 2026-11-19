@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -528,14 +528,21 @@ QString Utils::mkMutiDir(const QString &path)
     if (path.isEmpty() || dir.exists()) {
         return path;
     }
-    QString parentDir = mkMutiDir(path.mid(0, path.lastIndexOf('/')));
-    QString dirname = path.mid(path.lastIndexOf('/') + 1);
+    // 不含 '/' 的相对路径 lastIndexOf('/') 返回 -1，mid(0, -1) 不会缩短参数，
+    // 会导致无限递归栈溢出，直接在当前目录创建
+    int pos = path.lastIndexOf('/');
+    if (pos < 0) {
+        QDir().mkpath(path);
+        return path;
+    }
+    QString parentDir = pos > 0 ? mkMutiDir(path.mid(0, pos)) : QStringLiteral("/");
+    QString dirname = path.mid(pos + 1);
     QDir parentPath(parentDir);
     if (!dirname.isEmpty()) {
         bool ret = parentPath.mkpath(dirname);
         qDebug() << "mkpath result:" << ret << dirname;
     }
-    return parentDir + "/" + dirname;
+    return parentDir.endsWith('/') ? parentDir + dirname : parentDir + "/" + dirname;
 }
 
 /**

@@ -159,6 +159,11 @@ void WebWindow::updatePage(const QStringList &list)
         QStringList appList;
         for (const QString &app : list) {
             QStringList splitList = app.split("/");
+            // 段数不足时跳过该条目，防止 at() 负索引越界崩溃
+            if (splitList.count() < 4) {
+                qWarning() << "invalid app path, ignore:" << app;
+                continue;
+            }
             appList.append(splitList.at(splitList.count() - 4));
         }
 

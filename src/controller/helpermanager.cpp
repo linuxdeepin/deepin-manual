@@ -382,6 +382,11 @@ void helperManager::webLoadFinish(bool ok)
 void helperManager::onRecvParseMsg(const QString &msg, const QString &path)
 {
     QStringList pathList = path.split("/");
+    // 段数不足时无法解析出语言和应用名，直接忽略，防止 at() 负索引越界崩溃
+    if (pathList.count() < 4) {
+        qWarning() << "invalid manual md path, ignore:" << path;
+        return;
+    }
     QString lang = pathList.at(pathList.count() - 2);
     QString appName = pathList.at(pathList.count() - 4);
 
