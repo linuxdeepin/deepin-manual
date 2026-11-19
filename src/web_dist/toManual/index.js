@@ -62,6 +62,7 @@ global.isShowHelperSupport = false;
 global.isShowAppStore = false;
 global.scrollBehavior = 'smooth';
 global.bIsReload = false;
+global.scrollBarPolicy = 1;
 // global.gHistoryGo = 0;
 
 
@@ -709,6 +710,10 @@ var App = function (_React$Component) {
 
             global.setWordFontfamily = function (strFontFamily) {
                 document.documentElement.style.setProperty('--nav-world-font-family', strFontFamily); //btnlist 改这行
+            };
+
+            global.setScrollBarPolicy = function (policy) {
+                global.scrollBarPolicy = policy;
             };
 
             global.setTheme = function (themeType) {
@@ -2588,6 +2593,7 @@ exports.default = function (props) {
       if (container) {
         container.style.setProperty('--scrollbar-opacity', '1');
       }
+      if (global.scrollBarPolicy === 0) return;
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
       }
@@ -2595,6 +2601,7 @@ exports.default = function (props) {
     };
 
     var hideScrollbar = function hideScrollbar() {
+      if (global.scrollBarPolicy === 0) return;
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
         timeoutRef.current = null;
@@ -2607,6 +2614,9 @@ exports.default = function (props) {
 
     var view = scrollbars.view;
     var container = scrollbars.container;
+    if (global.scrollBarPolicy === 0 && container) {
+      container.style.setProperty('--scrollbar-opacity', '1');
+    }
     if (view) {
       view.addEventListener('scroll', showScrollbar);
     }
