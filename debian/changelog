@@ -1,3 +1,10 @@
+deepin-manual (6.5.60) unstable; urgency=medium
+
+  * chore: Update version to 6.5.60
+  * fix(manual): restore pt_BR help navigation
+
+ -- zhanghongyuan <zhanghongyuan@uniontech.com>  Thu, 19 Nov 2026 14:18:48 +0800
+
 deepin-manual (6.5.59) unstable; urgency=medium
 
   * chore: Update version to 6.5.59
