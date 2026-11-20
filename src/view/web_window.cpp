@@ -23,6 +23,9 @@
 #include <DTitlebar>
 #include <DPalette>
 #include <DSysInfo>
+#ifdef DTKCORE_CLASS_DConfigFile
+#include <DConfig>
+#endif
 
 #include <QApplication>
 #include <QShortcut>
@@ -1293,6 +1296,17 @@ void WebWindow::onChannelFinish()
     }
     qCDebug(app) << "Theme type:" << qsthemetype;
     web_view_->page()->runJavaScript(QString("setTheme('%1')").arg(qsthemetype));
+    //读取滚动条策略
+    {
+#ifdef DTKCORE_CLASS_DConfigFile
+        QScopedPointer<DConfig> scrollBarConfig(DConfig::createGeneric("org.deepin.dtk.preference"));
+        if (scrollBarConfig && scrollBarConfig->isValid()) {
+            int scrollBarPolicy = scrollBarConfig->value("scrollBarPolicy").toInt();
+            qCDebug(app) << "Scroll bar policy:" << scrollBarPolicy;
+            web_view_->page()->runJavaScript(QString("setScrollbarPolicy(%1)").arg(scrollBarPolicy));
+        }
+#endif
+    }
     //设置打开页面
     if (app_name_.isEmpty()) {
         qCDebug(app) << "Open index page";

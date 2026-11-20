@@ -62,6 +62,7 @@ global.isShowHelperSupport = false;
 global.isShowAppStore = false;
 global.scrollBehavior = 'smooth';
 global.bIsReload = false;
+global.scrollbarPolicy = 0;
 // global.gHistoryGo = 0;
 
 
@@ -709,6 +710,18 @@ var App = function (_React$Component) {
 
             global.setWordFontfamily = function (strFontFamily) {
                 document.documentElement.style.setProperty('--nav-world-font-family', strFontFamily); //btnlist 改这行
+            };
+
+            // Qt::ScrollBarPolicy: 0=AsNeeded, 1=AlwaysOff, 2=AlwaysOn
+            global.setScrollbarPolicy = function (policy) {
+                global.scrollbarPolicy = policy;
+                if (policy === 2) { // Qt::ScrollBarAlwaysOn
+                    document.documentElement.style.setProperty('--scrollbar-opacity', "1");
+                } else if (policy === 1) { // Qt::ScrollBarAlwaysOff
+                    document.documentElement.style.setProperty('--scrollbar-opacity', "0");
+                } else { // Qt::ScrollBarAsNeeded (0)
+                    document.documentElement.style.setProperty('--scrollbar-opacity', "0");
+                }
             };
 
             global.setTheme = function (themeType) {
@@ -2584,7 +2597,15 @@ exports.default = function (props) {
     if (!scrollbars) return;
 
     var showScrollbar = function showScrollbar() {
+      // Qt::ScrollBarPolicy: 0=AsNeeded, 1=AlwaysOff, 2=AlwaysOn
+      if (global.scrollbarPolicy === 2) return; // AlwaysOn: stay visible
       var container = scrollbars.container;
+      if (global.scrollbarPolicy === 1) { // AlwaysOff: keep hidden
+        if (container) {
+          container.style.setProperty('--scrollbar-opacity', '0');
+        }
+        return;
+      }
       if (container) {
         container.style.setProperty('--scrollbar-opacity', '1');
       }
@@ -2595,6 +2616,15 @@ exports.default = function (props) {
     };
 
     var hideScrollbar = function hideScrollbar() {
+      // Qt::ScrollBarPolicy: 0=AsNeeded, 1=AlwaysOff, 2=AlwaysOn
+      if (global.scrollbarPolicy === 2) return; // AlwaysOn: don't hide
+      if (global.scrollbarPolicy === 1) { // AlwaysOff: keep hidden
+        var container = scrollbars.container;
+        if (container) {
+          container.style.setProperty('--scrollbar-opacity', '0');
+        }
+        return;
+      }
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
         timeoutRef.current = null;
