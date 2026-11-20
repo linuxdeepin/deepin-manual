@@ -35,7 +35,15 @@ export default function(props) {
     if (!scrollbars) return;
 
     const showScrollbar = () => {
+      // Qt::ScrollBarPolicy: 0=AsNeeded, 1=AlwaysOff, 2=AlwaysOn
+      if (global.scrollbarPolicy === 2) return; // AlwaysOn: stay visible
       const container = scrollbars.container;
+      if (global.scrollbarPolicy === 1) { // AlwaysOff: keep hidden
+        if (container) {
+          container.style.setProperty('--scrollbar-opacity', '0');
+        }
+        return;
+      }
       if (container) {
         container.style.setProperty('--scrollbar-opacity', '1');
       }
@@ -46,6 +54,15 @@ export default function(props) {
     };
 
     const hideScrollbar = () => {
+      // Qt::ScrollBarPolicy: 0=AsNeeded, 1=AlwaysOff, 2=AlwaysOn
+      if (global.scrollbarPolicy === 2) return; // AlwaysOn: don't hide
+      if (global.scrollbarPolicy === 1) { // AlwaysOff: keep hidden
+        const container = scrollbars.container;
+        if (container) {
+          container.style.setProperty('--scrollbar-opacity', '0');
+        }
+        return;
+      }
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
         timeoutRef.current = null;
