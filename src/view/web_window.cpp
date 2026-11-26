@@ -64,7 +64,10 @@ WebWindow::WebWindow(QWidget *parent)
     qCDebug(app) << "WebWindow constructor called";
 
     // 使用 redirectContent 模式，用于内嵌 x11 窗口时能有正确的圆角效果
-    Dtk::Widget::DPlatformWindowHandle::enableDXcbForWindow(this, true);
+    // Wayland 下启用 DXcb 会导致窗口缩放时的残留/闪烁，仅 X11 启用
+    if (!Utils::judgeWayLand()) {
+        Dtk::Widget::DPlatformWindowHandle::enableDXcbForWindow(this, true);
+    }
     search_timer_.setSingleShot(true);
     setAttribute(Qt::WA_InputMethodEnabled, true);
 
@@ -460,10 +463,6 @@ void WebWindow::resizeEvent(QResizeEvent *event)
         }
     }
 
-    if (web_view_) {
-        qCDebug(app) << "Resizing web view to:" << event->size();
-        slot_ThemeChanged();
-    }
     qCDebug(app) << "WebWindow::resizeEvent() done.";
 }
 
