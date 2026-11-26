@@ -149,6 +149,14 @@ int main(int argc, char **argv)
 
     qCInfo(dmanApp) << "Creating DApplication instance";
     Dtk::Widget::DApplication app(argc, argv);
+#if QT_VERSION >= QT_VERSION_CHECK(6, 0, 0)
+    const QString platform = QGuiApplication::platformName();
+    if (!isWayland && (platform == QLatin1String("xcb") || platform == QLatin1String("dxcb"))
+        && qEnvironmentVariableIsEmpty("QT_QUICK_BACKEND")) {
+        // Work around incomplete frames during X11 resizing of the embedded WebEngine view.
+        qputenv("QT_QUICK_BACKEND", "software");
+    }
+#endif
     if (!DPlatformWindowHandle::pluginVersion().isEmpty()) {
         app.setAttribute(Qt::AA_DontCreateNativeWidgetSiblings, true);
     }
