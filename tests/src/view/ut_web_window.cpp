@@ -82,18 +82,12 @@ TEST_F(ut_web_window_test, openjsPage)
 
 TEST_F(ut_web_window_test, updatePage)
 {
+    // 本用例仅 stub 页面加载以避免外部资源依赖；其余 WebEngine 交互须走真实路径（需 xvfb 等有显示的环境），
+    // 若 stub page() 返回空，Qt6 惰性创建的 WebContents 不会初始化，
+    // initWebView 插入 web_view_ 触发的事件里 WebContentsAdapter::setVisible/isVisible 将空指针崩溃
     WebWindow *web = new WebWindow;
     Stub s;
-    s.set((QWebEnginePage * (QWebEngineView::*)()) ADDR(QWebEngineView, page), ADDR(ut_web_window_test, stub_page));
-    s.set((void (QWebEnginePage::*)(QWebChannel *))ADDR(QWebEnginePage, setWebChannel), ADDR(ut_web_window_test, stub_setWeb));
     s.set((void (QWebEngineView::*)(const QUrl &))ADDR(QWebEngineView, load), ADDR(ut_web_window_test, stub_initweb));
-#if (QT_VERSION < QT_VERSION_CHECK(6, 0, 0))
-    s.set((void (QWebEnginePage::*)(const QString &))ADDR(QWebEnginePage, runJavaScript), ADDR(ut_web_window_test, stub_initweb));
-#else
-    s.set((void (QWebEnginePage::*)(const QString &, quint32, const std::function<void(const QVariant &)> &))ADDR(QWebEnginePage, runJavaScript), ADDR(ut_web_window_test, stub_initweb));
-#endif
-    s.set((QString(QWebEngineView::*)())ADDR(QWebEngineView, selectedText), ADDR(ut_web_window_test, stub_selectText));
-    s.set((void (QWebEnginePage::*)(const QColor &))ADDR(QWebEnginePage, setBackgroundColor), ADDR(ut_web_window_test, stub_initweb));
     web->initUI();
     web->initWeb();
 
@@ -103,6 +97,17 @@ TEST_F(ut_web_window_test, updatePage)
     applistmd.append("/usr/share/deepin-manual/manual-assets/application/deepin-terminal/terminal/zh_CN/terminal.md");
     web->updatePage(applistmd);
     ASSERT_EQ(spy.count(), 1);
+
+    // 混入段数不足条目（PMS 383507 fuzz 用例：修复前 at() 负索引越界崩溃，合法条目仍应更新）
+    QSignalSpy spyBad(web->search_proxy_, SIGNAL(reloadPage(const QStringList &)));
+    applistmd.clear();
+    applistmd.append("a/b");
+    applistmd.append("");
+    applistmd.append("/usr/share/deepin-manual/manual-assets/application/dde-calendar/calendar/zh_HK/calendar.md");
+    web->updatePage(applistmd);
+    ASSERT_EQ(spyBad.count(), 1);
+    ASSERT_EQ(spyBad.at(0).at(0).toStringList().size(), 1);
+    ASSERT_EQ(spyBad.at(0).at(0).toStringList().first(), "dde-calendar");
 
     delete webchannel;
     delete web;
