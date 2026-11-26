@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -197,6 +197,12 @@ TEST_F(ut_helperManager, handlePriority)
 
     QStringList retList = m_hm->handlePriority(addList);
     ASSERT_EQ(retList[0], "/usr/share/deepin-manual/manual-assets/application/deepin-terminal/terminal/zh_CN/voice-note.md");
+
+    // 混入段数不足条目（PMS 383507 fuzz 用例：contains("application") 不保证段数充足，
+    // 修复前 at() 负索引越界崩溃，修复后短条目被跳过且合法条目解析不受影响）
+    addList << "application" << "x/application/y";
+    retList = m_hm->handlePriority(addList);
+    ASSERT_EQ(retList[0], "/usr/share/deepin-manual/manual-assets/application/deepin-terminal/terminal/zh_CN/voice-note.md");
 }
 
 TEST_F(ut_helperManager, onFilelistChange)
@@ -266,6 +272,16 @@ TEST_F(ut_helperManager, onRecvParseMsg)
     query.next();
     icount = query.value(0).toInt();
     query.next();
+    ASSERT_EQ(icount, 0);
+
+    // 段数不足的非法路径（PMS 383507 fuzz 用例：修复前 at() 负索引越界崩溃）
+    m_hm->onRecvParseMsg(msgCN, "a");
+    m_hm->onRecvParseMsg(msgCN, "/x/y");
+
+    sql = "select count(1) from search where appname =''";
+    query.exec(sql);
+    query.next();
+    icount = query.value(0).toInt();
     ASSERT_EQ(icount, 0);
     db.close();
 }
