@@ -169,8 +169,14 @@ void WebWindow::updatePage(const QStringList &list)
     if (search_proxy_) {
         qCDebug(app) << "Is search proxy";
         QStringList appList;
-        for (const QString &app : list) {
-            QStringList splitList = app.split("/");
+        for (const QString &appPath : list) {
+            QStringList splitList = appPath.split("/");
+            // 段数不足时跳过该条目，防止 at() 负索引越界崩溃
+            // （此处不可命名循环变量为 app，会遮蔽日志分类对象 app 导致 qCWarning(app) 编译失败）
+            if (splitList.count() < 4) {
+                qCWarning(app) << "invalid app path, ignore:" << appPath;
+                continue;
+            }
             appList.append(splitList.at(splitList.count() - 4));
         }
         qCDebug(app) << "appList size:" << appList.size();

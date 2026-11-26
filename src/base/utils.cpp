@@ -831,15 +831,24 @@ QString Utils::mkMutiDir(const QString &path)
         qCDebug(app) << "mkMutiDir result:" << path;
         return path;
     }
-    QString parentDir = mkMutiDir(path.mid(0, path.lastIndexOf('/')));
-    QString dirname = path.mid(path.lastIndexOf('/') + 1);
+    // 不含 '/' 的相对路径 lastIndexOf('/') 返回 -1，mid(0, -1) 不会缩短参数，
+    // 会导致无限递归栈溢出，直接在当前目录创建
+    int pos = path.lastIndexOf('/');
+    if (pos < 0) {
+        QDir().mkpath(path);
+        qCDebug(app) << "mkMutiDir result:" << path;
+        return path;
+    }
+    QString parentDir = pos > 0 ? mkMutiDir(path.mid(0, pos)) : QStringLiteral("/");
+    QString dirname = path.mid(pos + 1);
     QDir parentPath(parentDir);
     if (!dirname.isEmpty()) {
         bool ret = parentPath.mkpath(dirname);
         qCDebug(app) << "mkpath result:" << ret << dirname;
     }
-    qCDebug(app) << "mkMutiDir result:" << parentDir + "/" + dirname;
-    return parentDir + "/" + dirname;
+    const QString result = parentDir.endsWith('/') ? parentDir + dirname : parentDir + "/" + dirname;
+    qCDebug(app) << "mkMutiDir result:" << result;
+    return result;
 }
 
 /**

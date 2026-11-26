@@ -7,6 +7,9 @@
 #include "resources/themes/images.h"
 #include "src/third-party/stub/stub.h"
 
+#include <QDir>
+#include <QTemporaryDir>
+
 ut_utils_test::ut_utils_test()
 {
 
@@ -81,6 +84,17 @@ TEST_F(ut_utils_test, mkMutiDir)
 
     rmpath = m_utils->mkMutiDir(strpath);
     ASSERT_EQ(rmpath, strpath);
+
+    // 相对路径场景（PMS 383507 fuzz 用例：修复前 mid(0, -1) 不缩短参数导致无限递归栈溢出）
+    QTemporaryDir tmpDir;
+    ASSERT_TRUE(tmpDir.isValid());
+    const QString oldcwd = QDir::currentPath();
+    ASSERT_TRUE(QDir::setCurrent(tmpDir.path()));
+    ASSERT_EQ(m_utils->mkMutiDir("a"), "a");
+    ASSERT_TRUE(QDir("a").exists());
+    ASSERT_EQ(m_utils->mkMutiDir("b/c/d"), "b/c/d");
+    ASSERT_TRUE(QDir("b/c/d").exists());
+    QDir::setCurrent(oldcwd);
 
     delete m_utils;
 }
