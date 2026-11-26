@@ -315,6 +315,11 @@ QStringList helperManager::handlePriority(const QStringList &list)
 
         //新文案结构 /usr/share/deepin-manual/manual-assets/[application | system]/appName/appNameT/land/*_appNameT.md
         if (splitList.contains("application") || splitList.contains("system")) {
+            // 段数不足时无法解析出模块名与语言，跳过防止 at() 负索引越界崩溃
+            if (splitList.count() < 4) {
+                qWarning() << "invalid manual md path, ignore:" << mdPath;
+                continue;
+            }
             QString moduleLang = splitList.at(splitList.count() - 4) + splitList.at(splitList.count() - 2);
             QString mdFile = splitList.at(splitList.count() - 1);
             QStringList listTemp = mdFile.split("_");
@@ -382,6 +387,11 @@ void helperManager::webLoadFinish(bool ok)
 void helperManager::onRecvParseMsg(const QString &msg, const QString &path)
 {
     QStringList pathList = path.split("/");
+    // 段数不足时无法解析出语言和应用名，直接忽略，防止 at() 负索引越界崩溃
+    if (pathList.count() < 4) {
+        qWarning() << "invalid manual md path, ignore:" << path;
+        return;
+    }
     QString lang = pathList.at(pathList.count() - 2);
     QString appName = pathList.at(pathList.count() - 4);
 

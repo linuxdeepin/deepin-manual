@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -6,6 +6,9 @@
 #include "base/utils.h"
 #include "resources/themes/images.h"
 #include "src/third-party/stub/stub.h"
+
+#include <QDir>
+#include <QTemporaryDir>
 
 ut_utils_test::ut_utils_test()
 {
@@ -81,6 +84,18 @@ TEST_F(ut_utils_test, mkMutiDir)
 
     rmpath = m_utils->mkMutiDir(strpath);
     ASSERT_EQ(rmpath, strpath);
+
+    // 相对路径场景（PMS 383507 fuzz 用例：修复前 mid(0, -1) 不缩短参数导致无限递归栈溢出）
+    // 使用 EXPECT 而非 ASSERT：断言失败不会提前返回，保证下方恢复 cwd 的语句总是执行
+    QTemporaryDir tmpDir;
+    ASSERT_TRUE(tmpDir.isValid());
+    const QString oldcwd = QDir::currentPath();
+    EXPECT_TRUE(QDir::setCurrent(tmpDir.path()));
+    EXPECT_EQ(m_utils->mkMutiDir("a"), "a");
+    EXPECT_TRUE(QDir("a").exists());
+    EXPECT_EQ(m_utils->mkMutiDir("b/c/d"), "b/c/d");
+    EXPECT_TRUE(QDir("b/c/d").exists());
+    QDir::setCurrent(oldcwd);
 
     delete m_utils;
 }

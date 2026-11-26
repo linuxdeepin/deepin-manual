@@ -1,4 +1,4 @@
-// SPDX-FileCopyrightText: 2022 UnionTech Software Technology Co., Ltd.
+// SPDX-FileCopyrightText: 2022 - 2026 UnionTech Software Technology Co., Ltd.
 //
 // SPDX-License-Identifier: GPL-3.0-or-later
 
@@ -94,6 +94,17 @@ TEST_F(ut_web_window_test, updatePage)
     applistmd.append("/usr/share/deepin-manual/manual-assets/application/deepin-terminal/terminal/zh_CN/terminal.md");
     web->updatePage(applistmd);
     ASSERT_EQ(spy.count(), 1);
+
+    // 混入段数不足条目（PMS 383507 fuzz 用例：修复前 at() 负索引越界崩溃，合法条目仍应更新）
+    QSignalSpy spyBad(web->search_proxy_, SIGNAL(reloadPage(const QStringList &)));
+    applistmd.clear();
+    applistmd.append("a/b");
+    applistmd.append("");
+    applistmd.append("/usr/share/deepin-manual/manual-assets/application/dde-calendar/calendar/zh_HK/calendar.md");
+    web->updatePage(applistmd);
+    ASSERT_EQ(spyBad.count(), 1);
+    ASSERT_EQ(spyBad.at(0).at(0).toStringList().size(), 1);
+    ASSERT_EQ(spyBad.at(0).at(0).toStringList().first(), "dde-calendar");
 
     delete webchannel;
     delete web;
