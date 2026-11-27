@@ -26,6 +26,7 @@ global.isShowHelperSupport = false;
 global.isShowAppStore = false;
 global.scrollBehavior = 'smooth';
 global.bIsReload = false;
+global.scrollbarPolicy = 0;
 // global.gHistoryGo = 0;
 
 
@@ -607,6 +608,18 @@ class App extends React.Component {
         global.setWordFontfamily = (strFontFamily) => {
             document.documentElement.style.setProperty(`--nav-world-font-family`, strFontFamily); //btnlist 改这行
         }
+        // Qt::ScrollBarPolicy: 0=AsNeeded, 1=AlwaysOff, 2=AlwaysOn
+        global.setScrollbarPolicy = (policy) => {
+            global.scrollbarPolicy = policy;
+            if (policy === 2) { // Qt::ScrollBarAlwaysOn
+                document.documentElement.style.setProperty(`--scrollbar-opacity`, "1");
+            } else if (policy === 1) { // Qt::ScrollBarAlwaysOff
+                document.documentElement.style.setProperty(`--scrollbar-opacity`, "0");
+            } else { // Qt::ScrollBarAsNeeded (0)
+                document.documentElement.style.setProperty(`--scrollbar-opacity`, "0");
+            }
+        }
+
 
 
         global.setTheme = (themeType) => {
