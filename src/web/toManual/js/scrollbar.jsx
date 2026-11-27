@@ -39,6 +39,7 @@ export default function(props) {
       if (container) {
         container.style.setProperty('--scrollbar-opacity', '1');
       }
+      if (global.scrollBarPolicy === 0) return;
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
       }
@@ -46,6 +47,7 @@ export default function(props) {
     };
 
     const hideScrollbar = () => {
+      if (global.scrollBarPolicy === 0) return;
       if (timeoutRef.current) {
         clearTimeout(timeoutRef.current);
         timeoutRef.current = null;
@@ -58,6 +60,9 @@ export default function(props) {
 
     const view = scrollbars.view;
     const container = scrollbars.container;
+    if (global.scrollBarPolicy === 0 && container) {
+      container.style.setProperty('--scrollbar-opacity', '1');
+    }
     if (view) {
       view.addEventListener('scroll', showScrollbar);
     }

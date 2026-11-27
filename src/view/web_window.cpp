@@ -36,6 +36,7 @@
 #include <QClipboard>
 #include <QNetworkProxyFactory>
 #include <QScreen>
+#include <QProcess>
 
 DCORE_USE_NAMESPACE
 
@@ -1299,6 +1300,12 @@ void WebWindow::onChannelFinish()
     }
     qCDebug(app) << "Theme type:" << qsthemetype;
     web_view_->page()->runJavaScript(QString("setTheme('%1')").arg(qsthemetype));
+    //读取系统滚动条策略并传递给前端
+    QProcess scrollbarProc;
+    scrollbarProc.start("gsettings", QStringList() << "get" << "com.deepin.xsettings" << "qt-scrollbar-policy");
+    scrollbarProc.waitForFinished();
+    QString scrollBarPolicy = scrollbarProc.readAllStandardOutput().trimmed();
+    web_view_->page()->runJavaScript(QString("setScrollBarPolicy(%1)").arg(scrollBarPolicy));
     //设置打开页面
     if (app_name_.isEmpty()) {
         qCDebug(app) << "Open index page";
